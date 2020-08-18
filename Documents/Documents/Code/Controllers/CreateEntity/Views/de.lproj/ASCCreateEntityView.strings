@@ -1,0 +1,15 @@
+/* Class = "UIButton"; normalTitle = "New Folder"; ObjectID = "0TH-k4-z5u"; */
+"0TH-k4-z5u.normalTitle" = "Neuer Ordner";
+
+/* Class = "UIButton"; normalTitle = "Take a picture"; ObjectID = "2aV-hB-7Nt"; */
+"2aV-hB-7Nt.normalTitle" = "Foto aufnehmen";
+
+/* Class = "UIButton"; normalTitle = "Import Image"; ObjectID = "IU2-I1-b4Q"; */
+"IU2-I1-b4Q.normalTitle" = "Bild importieren";
+
+/* Class = "UIButton"; normalTitle = "Import File"; ObjectID = "wdt-5y-x9j"; */
+"wdt-5y-x9j.normalTitle" = "Datei importieren";
+
+/* Class = "UIButton"; normalTitle = "Connect Storage"; ObjectID = "ziC-q7-ky6"; */
+"ziC-q7-ky6.normalTitle" = "Speicher verbinden";
+

@@ -1,0 +1,24 @@
+/* Bundle name */
+"CFBundleName" = "Документи";
+
+/* (No Comment) */
+"CFBundleDisplayName" = "Документи";
+
+/* (No Comment) */
+"New Document" = "Нов документ";
+
+/* (No Comment) */
+"New Presentation" = "Нова презентация";
+
+/* (No Comment) */
+"New Spreadsheet" = "Нова електронна таблица";
+
+/* Privacy - Camera Usage Description */
+"NSCameraUsageDescription" = "Това приложение изисква достъп до камерата, за да можете да правите снимки.";
+
+/* Privacy - Face ID Usage Description */
+"NSFaceIDUsageDescription" = "Това приложение изисква разрешението за идентификация на лицето, за да се удостовери с помощта на функцията за разпознаване на лица .";
+
+/* Privacy - Photo Library Usage Description */
+"NSPhotoLibraryUsageDescription" = "Това приложение изисква достъп до библиотеката с снимки, за да можете да качвате снимките си в приложението.";
+

@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Debug Navigation Controller-->
+        <scene sceneID="IBq-dh-LWa">
+            <objects>
+                <navigationController storyboardIdentifier="ASCDebugNavigationController" id="muV-FC-0Z0" customClass="ASCDebugNavigationController" customModule="Documents" customModuleProvider="target" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="oE9-o7-MRH">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="P46-HK-9iN" kind="relationship" relationship="rootViewController" id="Qyv-Uu-ydb"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="gtA-EJ-fso" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-800" y="150"/>
+        </scene>
+        <!--Debug Info-->
+        <scene sceneID="zBF-wt-5VL">
+            <objects>
+                <viewController storyboardIdentifier="ASCDebugConsoleViewController" id="P46-HK-9iN" customClass="ASCDebugConsoleViewController" customModule="Documents" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="MOO-9x-qDH">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" text="Failed to load log file" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="OEQ-iT-vOS">
+                                <rect key="frame" x="0.0" y="88" width="414" height="774"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <color key="textColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <fontDescription key="fontDescription" name="Menlo-Regular" family="Menlo" pointSize="10"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="lyh-fH-GWc" firstAttribute="bottom" secondItem="OEQ-iT-vOS" secondAttribute="bottom" id="4Nd-ct-iOs"/>
+                            <constraint firstItem="lyh-fH-GWc" firstAttribute="trailing" secondItem="OEQ-iT-vOS" secondAttribute="trailing" id="Fzr-HN-kXO"/>
+                            <constraint firstItem="OEQ-iT-vOS" firstAttribute="leading" secondItem="lyh-fH-GWc" secondAttribute="leading" id="bV6-jh-pEN"/>
+                            <constraint firstItem="OEQ-iT-vOS" firstAttribute="top" secondItem="lyh-fH-GWc" secondAttribute="top" id="qHJ-ZO-TJQ"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="lyh-fH-GWc"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Debug Info" id="oKH-mb-hYu">
+                        <barButtonItem key="leftBarButtonItem" style="plain" systemItem="cancel" id="DlX-OH-jR9">
+                            <connections>
+                                <action selector="onDone:" destination="P46-HK-9iN" id="vZl-aF-GxV"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="outputTextView" destination="OEQ-iT-vOS" id="qcm-Bh-KiI"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="fIo-DD-lpq" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="109" y="150"/>
+        </scene>
+    </scenes>
+</document>

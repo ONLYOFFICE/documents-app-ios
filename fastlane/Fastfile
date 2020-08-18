@@ -1,0 +1,111 @@
+fastlane_version "2.62.1"
+
+fastlane_require 'dotenv'
+Dotenv.load '.env.secret'
+
+default_platform :ios
+skip_docs # Do not create fastlane/README.md
+
+platform :ios do
+  before_all do
+    ENV["FASTLANE_XCODEBUILD_SETTINGS_RETRIES"] = "10"
+    ENV["FASTLANE_XCODEBUILD_SETTINGS_TIMEOUT"] = "60"
+    ENV["FASTLANE_XCODE_LIST_TIMEOUT"] = "60"
+    cocoapods
+  end
+
+  def version_string(version_number, build_number)
+    "#{version_number} (#{build_number})"
+  end
+
+  desc "Runs all the tests"
+  lane :test do
+    scan(
+      scheme: "Documents",
+      workspace: "ONLYOFFICE-Documents.xcworkspace",
+      devices: ["iPhone 11 Pro"],
+      clean: true
+    )
+  end
+
+  desc "Submit a new Beta Build to Apple TestFlight"
+  desc "This will also make sure the profile is up to date"
+  lane :beta do
+    # match(type: "appstore") # more information: https://codesigning.guide
+
+    version_number = get_version_number(
+      xcodeproj: "Documents/Documents.xcodeproj"
+    )
+    build_number = get_info_plist_value(
+      path: "Documents/Documents/Info.plist", 
+      key: "CFBundleVersion"
+    )
+
+    # Build
+    gym(
+      clean: true,
+      scheme: "Documents",
+      workspace: "ONLYOFFICE-Documents.xcworkspace",
+      export_xcargs: "-allowProvisioningUpdates"
+    )
+
+    complete_version_number = version_string(version_number, build_number)
+
+    # get the last commit comments from Git history
+    # and creates our changelog
+    change_log = changelog_from_git_commits(
+      pretty: "- %s",
+      date_format: "short",
+      match_lightweight_tag: false,
+      merge_commit_filtering: "exclude_merges"
+    )
+
+    # creates a bump version commit 
+    commit_version_bump(
+        message: "Version bumped to v#{version_number}(#{build_number})",
+        settings: true,
+        xcodeproj: "Documents/Documents.xcodeproj"
+    )
+
+    # create a local tag with the new version
+    add_git_tag(
+      tag: "v#{version_number}-#{build_number}",
+      build_number: build_number
+    )
+
+    # Submit to iTunes Connect
+    pilot(
+      changelog: change_log,
+      skip_waiting_for_build_processing: false
+    )
+
+    begin
+      telegram(
+        token: ENV['TELEGRAM_BOT_TOKEN'],
+        chat_id: ENV['TELEGRAM_CHAT_ID'],
+        parse_mode: 'Markdown',
+        text: "В TestFlight доступна версия ONLYOFFICE Documents #{version_number}(#{build_number}) для внутреннего тестирования.\n\nСписок изменений:\n#{change_log}"
+      )
+    rescue => ex
+      UI.error(ex)
+    end
+
+    clean_build_artifacts
+
+  end
+
+  # You can define as many lanes as you want
+
+  after_all do |lane|
+    # This block is called, only if the executed lane was successful
+  end
+
+  error do |lane, exception|
+    # slack(
+    #   message: exception.message,
+    #   success: false
+    # )
+  end
+end
+
+

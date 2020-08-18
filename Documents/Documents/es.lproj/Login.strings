@@ -1,0 +1,141 @@
+/* Class = "UILabel"; text = "Copy the code"; ObjectID = "00r-ek-IVa"; */
+"00r-ek-IVa.text" = "Copiar el código";
+
+/* Class = "UILabel"; text = "Title"; ObjectID = "0X2-Xg-z5B"; */
+"0X2-Xg-z5B.text" = "Título";
+
+/* Class = "UITextField"; text = "Country Code"; ObjectID = "3oc-kQ-msr"; */
+"3oc-kQ-msr.text" = "Código del país";
+
+/* Class = "UILabel"; text = "-"; ObjectID = "6Zd-HN-8wS"; */
+"6Zd-HN-8wS.text" = "-";
+
+/* Class = "UILabel"; text = "Detail"; ObjectID = "18Q-Kh-0cC"; */
+"18Q-Kh-0cC.text" = "Detalle";
+
+/* Class = "UIButton"; normalTitle = "Login by"; ObjectID = "51s-1D-raN"; */
+"51s-1D-raN.normalTitle" = "Inicio por";
+
+/* Class = "UILabel"; text = "Phone Number"; ObjectID = "76Y-EB-F07"; */
+"76Y-EB-F07.text" = "Número de teléfono";
+
+/* Class = "UIButton"; normalTitle = "Forgot?"; ObjectID = "78r-Ca-NKv"; */
+"78r-Ca-NKv.normalTitle" = "¿Olvidó su contraseña? ";
+
+/* Class = "UILabel"; text = "Account"; ObjectID = "AkN-p0-Mzy"; */
+"AkN-p0-Mzy.text" = "Cuenta";
+
+/* Class = "UIButton"; normalTitle = "Continue"; ObjectID = "AqJ-b9-XQV"; */
+"AqJ-b9-XQV.normalTitle" = "Continuar";
+
+/* Class = "UILabel"; text = "Set up an application to generate the authentication codes"; ObjectID = "B8R-KD-Lml"; */
+"B8R-KD-Lml.text" = "Configurar una aplicación para generar códigos de autenticación";
+
+/* Class = "UILabel"; text = "Haven't received the code?"; ObjectID = "cb0-ic-tPA"; */
+"cb0-ic-tPA.text" = "¿No ha recibido el código?";
+
+/* Class = "UILabel"; text = "Portal"; ObjectID = "cBn-x1-r5A"; */
+"cBn-x1-r5A.text" = "Portal";
+
+/* Class = "UILabel"; text = "Two-Factor\nAuthentication"; ObjectID = "DK4-QO-Jde"; */
+"DK4-QO-Jde.text" = "Autenticación\nde dos factores";
+
+/* Class = "UIButton"; normalTitle = "Next"; ObjectID = "e1X-0t-hcs"; Note = "Do not translate"; */
+"e1X-0t-hcs.normalTitle" = "Siguiente";
+
+/* Class = "UILabel"; text = "Two-Factor\nAuthentication"; ObjectID = "Eb4-3w-0Jf"; */
+"Eb4-3w-0Jf.text" = "Autenticación\nde dos factores";
+
+/* Class = "UILabel"; text = "Address"; ObjectID = "Fso-pj-304"; */
+"Fso-pj-304.text" = "Dirección";
+
+/* Class = "UIButton"; normalTitle = "Create cloud"; ObjectID = "G99-FE-uk4"; */
+"G99-FE-uk4.normalTitle" = "Crear nube";
+
+/* Class = "UILabel"; text = "Connect to your ONLYOFFICE cloud to store files online and collaborate on documents in real time"; ObjectID = "GFx-Ry-9GC"; */
+"GFx-Ry-9GC.text" = "Conecte a su nube ONLYOFFICE para almacenar archivos en línea y colaborar en documentos en tiempo real";
+
+/* Class = "UILabel"; text = "Select an account to sign in"; ObjectID = "Gkv-tP-6EM"; */
+"Gkv-tP-6EM.text" = "Seleccione una cuenta para acceder ";
+
+/* Class = "UINavigationItem"; title = "Accounts"; ObjectID = "gzc-cW-NPT"; */
+"gzc-cW-NPT.title" = "Cuentas";
+
+/* Class = "UINavigationItem"; title = "SSO Login"; ObjectID = "hRN-W6-nA0"; */
+"hRN-W6-nA0.title" = "Acceso SSO";
+
+/* Class = "UILabel"; text = "Copy the key and paste it to the Google Authenticator application"; ObjectID = "K5M-Of-QAk"; */
+"K5M-Of-QAk.text" = "Copie la clave y péguela en la aplicación Google Authenticator";
+
+/* Class = "UILabel"; text = "Launch Google Authenticator application"; ObjectID = "LwV-Os-V4m"; */
+"LwV-Os-V4m.text" = "Lanzce la aplicación Google Authenticator ";
+
+/* Class = "UILabel"; text = "Enter a phone number that can be used to verify your identity"; ObjectID = "MNA-z2-ITx"; */
+"MNA-z2-ITx.text" = "Introduzca un número de teléfono que puede ser usado para verificar su personalidad";
+
+/* Class = "UIBarButtonItem"; title = "Back"; ObjectID = "MUG-TG-NlP"; */
+"MUG-TG-NlP.title" = "Atrás";
+
+/* Class = "UINavigationItem"; title = "Country"; ObjectID = "NBg-dA-b3o"; */
+"NBg-dA-b3o.title" = "País";
+
+/* Class = "UITextField"; placeholder = "Code"; ObjectID = "OnI-QD-xeI"; */
+"OnI-QD-xeI.placeholder" = "Código";
+
+/* Class = "UIButton"; normalTitle = "Select another account"; ObjectID = "peP-Hz-Lai"; */
+"peP-Hz-Lai.normalTitle" = "Seleccionar otra cuenta";
+
+/* Class = "UIButton"; normalTitle = "Sign in"; ObjectID = "QAn-vu-xMR"; */
+"QAn-vu-xMR.normalTitle" = "Acceso";
+
+/* Class = "UITextField"; placeholder = "Code"; ObjectID = "qEs-UQ-wWd"; */
+"qEs-UQ-wWd.placeholder" = "Código";
+
+/* Class = "UILabel"; text = "Run the application and tap the new account icon"; ObjectID = "R2F-fc-11j"; */
+"R2F-fc-11j.text" = "Ejecute la aplicación y toque el icono de la nueva cuenta";
+
+/* Class = "UIButton"; normalTitle = "Open"; ObjectID = "RDr-pH-MKV"; */
+"RDr-pH-MKV.normalTitle" = "Abrir";
+
+/* Class = "UILabel"; text = "Open authentication app and copy code from there"; ObjectID = "SH2-Fd-5Ze"; */
+"SH2-Fd-5Ze.text" = "Abra la aplicación de autenticación y copie el código de ahí";
+
+/* Class = "UILabel"; text = "Login via"; ObjectID = "szM-hs-ncG"; */
+"szM-hs-ncG.text" = "Acceso vía";
+
+/* Class = "UITextField"; placeholder = "Secret"; ObjectID = "tnK-je-flS"; */
+"tnK-je-flS.placeholder" = "Secreta";
+
+/* Class = "UILabel"; text = "Get more information"; ObjectID = "ttx-IC-XrN"; */
+"ttx-IC-XrN.text" = "Obtener más información";
+
+/* Class = "UIBarButtonItem"; title = "Next"; ObjectID = "twm-cB-W69"; */
+"twm-cB-W69.title" = "Siguiente";
+
+/* Class = "UILabel"; text = "Copy the code generated by Google Authenticator application and insert it to the input field"; ObjectID = "vgV-fF-jOl"; */
+"vgV-fF-jOl.text" = "Copie el código generado por la aplicación Google Authenticator e insértelo en el campo de entrada";
+
+/* Class = "UILabel"; text = "Please set up an application to generate the codes for the portal access (e.g. Google Authenticator) to continue the work at the portal"; ObjectID = "vlQ-jV-iFo"; */
+"vlQ-jV-iFo.text" = "Por favor, cree una aplicación para generar los códigos de acceso al portal (por ejemplo, Google Authenticator) para continuar las tareas en el portal.";
+
+/* Class = "UITextField"; placeholder = "Your phone number"; ObjectID = "w2U-Ci-R7v"; */
+"w2U-Ci-R7v.placeholder" = "Su número de teléfono";
+
+/* Class = "UILabel"; text = "We have sent you an SMS with a code to the number %@"; ObjectID = "W8Q-CO-c0L"; */
+"W8Q-CO-c0L.text" = "Le hemos enviado un SMS con un código al número %@";
+
+/* Class = "UILabel"; text = "Add a secret key"; ObjectID = "WuZ-wI-3aH"; */
+"WuZ-wI-3aH.text" = "Añadir una clave secreta";
+
+/* Class = "UITextField"; text = "+"; ObjectID = "x6G-qW-5Pq"; */
+"x6G-qW-5Pq.text" = "+";
+
+/* Class = "UILabel"; text = "Connection to cloud"; ObjectID = "XsM-aD-o1I"; */
+"XsM-aD-o1I.text" = "Conexión a nube";
+
+/* Class = "UIButton"; normalTitle = "Continue"; ObjectID = "yjY-PY-41s"; */
+"yjY-PY-41s.normalTitle" = "Continuar";
+
+/* Class = "UITextField"; placeholder = "Code"; ObjectID = "ZWV-Q1-HY9"; */
+"ZWV-Q1-HY9.placeholder" = "Código";
+

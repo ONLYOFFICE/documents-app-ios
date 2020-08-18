@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>%lu File selected</key>
+	<dict>
+		<key>NSStringLocalizedFormatKey</key>
+		<string>%#@files@</string>
+		<key>files</key>
+		<dict>
+			<key>NSStringFormatSpecTypeKey</key>
+			<string>NSStringPluralRuleType</string>
+			<key>NSStringFormatValueTypeKey</key>
+			<string>lu</string>
+			<key>few</key>
+			<string>%lu файла выбраны</string>
+			<key>many</key>
+			<string>%lu файлов выбрано</string>
+			<key>one</key>
+			<string>%lu файл выбран</string>
+			<key>other</key>
+			<string>%lu файлов выбрано</string>
+		</dict>
+	</dict>
+	<key>%lu Folder and %lu File selected</key>
+	<dict>
+		<key>NSStringLocalizedFormatKey</key>
+		<string>%1$#@lu_folders@</string>
+		<key>lu_files</key>
+		<dict>
+			<key>NSStringFormatSpecTypeKey</key>
+			<string>NSStringPluralRuleType</string>
+			<key>NSStringFormatValueTypeKey</key>
+			<string>lu</string>
+			<key>few</key>
+			<string>и %lu файла выбраны</string>
+			<key>many</key>
+			<string>и %lu файлов выбраны</string>
+			<key>one</key>
+			<string>и %lu файл выбраны</string>
+			<key>other</key>
+			<string>и %lu файлов выбраны</string>
+		</dict>
+		<key>lu_folders</key>
+		<dict>
+			<key>NSStringFormatSpecTypeKey</key>
+			<string>NSStringPluralRuleType</string>
+			<key>NSStringFormatValueTypeKey</key>
+			<string>lu</string>
+			<key>few</key>
+			<string>%lu папки %2$#@lu_files@</string>
+			<key>many</key>
+			<string>%lu папок %2$#@lu_files@</string>
+			<key>one</key>
+			<string>%lu папка %2$#@lu_files@</string>
+			<key>other</key>
+			<string>%lu папок %2$#@lu_files@</string>
+			<key>zero</key>
+			<string>%2$#@lu_files@</string>
+		</dict>
+	</dict>
+	<key>%lu Folder selected</key>
+	<dict>
+		<key>NSStringLocalizedFormatKey</key>
+		<string>%#@folders@</string>
+		<key>folders</key>
+		<dict>
+			<key>NSStringFormatSpecTypeKey</key>
+			<string>NSStringPluralRuleType</string>
+			<key>NSStringFormatValueTypeKey</key>
+			<string>lu</string>
+			<key>few</key>
+			<string>%lu папки выбраны</string>
+			<key>many</key>
+			<string>%lu папок выбрано</string>
+			<key>one</key>
+			<string>%lu папка выбрана</string>
+			<key>other</key>
+			<string>%lu папок выбрано</string>
+		</dict>
+	</dict>
+	<key>Delete %lu File</key>
+	<dict>
+		<key>NSStringLocalizedFormatKey</key>
+		<string>%#@files@</string>
+		<key>files</key>
+		<dict>
+			<key>NSStringFormatSpecTypeKey</key>
+			<string>NSStringPluralRuleType</string>
+			<key>NSStringFormatValueTypeKey</key>
+			<string>lu</string>
+			<key>few</key>
+			<string>Удалить %lu файла</string>
+			<key>many</key>
+			<string>Удалить %lu файлов</string>
+			<key>one</key>
+			<string>Удалить %lu файл</string>
+			<key>other</key>
+			<string>Удалить %lu файлов</string>
+		</dict>
+	</dict>
+	<key>Delete %lu Folder</key>
+	<dict>
+		<key>NSStringLocalizedFormatKey</key>
+		<string>%#@folders@</string>
+		<key>folders</key>
+		<dict>
+			<key>NSStringFormatSpecTypeKey</key>
+			<string>NSStringPluralRuleType</string>
+			<key>NSStringFormatValueTypeKey</key>
+			<string>lu</string>
+			<key>few</key>
+			<string>Удалить %lu папки</string>
+			<key>many</key>
+			<string>Удалить %lu папок</string>
+			<key>one</key>
+			<string>Удалить %lu папку</string>
+			<key>other</key>
+			<string>Удалить %lu папок</string>
+		</dict>
+	</dict>
+	<key>Delete %lu Folder and %lu File</key>
+	<dict>
+		<key>NSStringLocalizedFormatKey</key>
+		<string>%1$#@lu_folders@</string>
+		<key>lu_files</key>
+		<dict>
+			<key>NSStringFormatSpecTypeKey</key>
+			<string>NSStringPluralRuleType</string>
+			<key>NSStringFormatValueTypeKey</key>
+			<string>lu</string>
+			<key>few</key>
+			<string>и %lu файла</string>
+			<key>many</key>
+			<string>и %lu файлов</string>
+			<key>one</key>
+			<string>и %lu файл</string>
+			<key>other</key>
+			<string>и %lu файлов</string>
+			<key>zero</key>
+			<string></string>
+		</dict>
+		<key>lu_folders</key>
+		<dict>
+			<key>NSStringFormatSpecTypeKey</key>
+			<string>NSStringPluralRuleType</string>
+			<key>NSStringFormatValueTypeKey</key>
+			<string>lu</string>
+			<key>few</key>
+			<string>Удалить %lu папки %2$#@lu_files@</string>
+			<key>many</key>
+			<string>Удалить %lu папок %2$#@lu_files@</string>
+			<key>one</key>
+			<string>Удалить %lu папку %2$#@lu_files@</string>
+			<key>other</key>
+			<string>Удалить %lu папок %2$#@lu_files@</string>
+			<key>zero</key>
+			<string>Удалить %2$#@lu_files@</string>
+		</dict>
+	</dict>
+</dict>
+</plist>

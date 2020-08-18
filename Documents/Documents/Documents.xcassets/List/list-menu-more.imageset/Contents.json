@@ -1,0 +1,25 @@
+{
+    "images" : [
+        {
+            "idiom" : "universal",
+            "filename" : "list-menu-more-light.pdf"
+        },
+        {
+            "idiom" : "universal",
+            "filename" : "list-menu-more-dark.pdf",
+            "appearances" : [
+                {
+                    "appearance" : "luminosity",
+                    "value" : "dark"
+                }
+            ]
+        }
+    ],
+    "info" : {
+        "version" : 1,
+        "author" : "xcode"
+    },
+    "properties" : {
+        "preserves-vector-representation" : true
+    }
+}

@@ -1,0 +1,18 @@
+/* (No Comment) */
+"Acknowledgements" = "Poděkování";
+
+/* (No Comment) */
+"Enabled" = "Povoleno";
+
+/* A single strings file, whose title is specified in your preferences schema. The strings files provide the localized content to display to the user for each of your preferences. */
+"Group" = "Skupina";
+
+/* (No Comment) */
+"Name" = "Jméno";
+
+/* (No Comment) */
+"none given" = "nezadáno";
+
+/* (No Comment) */
+"Version" = "Verze";
+

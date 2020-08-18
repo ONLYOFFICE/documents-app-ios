@@ -1,0 +1,18 @@
+/* (No Comment) */
+"Acknowledgements" = "Потвърждения";
+
+/* (No Comment) */
+"Enabled" = "Активирано";
+
+/* A single strings file, whose title is specified in your preferences schema. The strings files provide the localized content to display to the user for each of your preferences. */
+"Group" = "Група";
+
+/* (No Comment) */
+"Name" = "Име";
+
+/* (No Comment) */
+"none given" = "Няма дадени";
+
+/* (No Comment) */
+"Version" = "Версия";
+

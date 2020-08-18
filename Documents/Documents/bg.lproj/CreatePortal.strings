@@ -1,0 +1,36 @@
+/* Class = "UIButton"; normalTitle = "Continue"; ObjectID = "BMv-HP-hD2"; */
+"BMv-HP-hD2.normalTitle" = "Продължи";
+
+/* Class = "UILabel"; text = "By creating the portal you agree with our\nTerms of service"; ObjectID = "cHX-qo-kcu"; */
+"cHX-qo-kcu.text" = "Създавайки портала, Вие се съгласявате с нашите\nУсловия за ползване";
+
+/* Class = "UIButton"; normalTitle = "Create portal"; ObjectID = "d4S-7C-Csx"; */
+"d4S-7C-Csx.normalTitle" = "Създаване на портал";
+
+/* Class = "UILabel"; text = "Make use of 30 days trial for free"; ObjectID = "FZg-vj-AVJ"; */
+"FZg-vj-AVJ.text" = "Използвайте безплатно 30-дневен опит";
+
+/* Class = "UILabel"; text = "Create your own\nweb office"; ObjectID = "huj-vr-CgZ"; */
+"huj-vr-CgZ.text" = "Създайте свой собствен\nуеб-офис";
+
+/* Class = "UITextField"; placeholder = "Last Name"; ObjectID = "iLP-xJ-pU3"; */
+"iLP-xJ-pU3.placeholder" = "Фамилия";
+
+/* Class = "UILabel"; text = "Choose a password and\nstart using your office"; ObjectID = "qKc-e7-uTl"; */
+"qKc-e7-uTl.text" = "Изберете парола и започнете да\nизползвате вашия офис";
+
+/* Class = "UILabel"; text = "After the registration a mail with your portal registration details will be sent to your email address."; ObjectID = "qwT-Pr-auo"; */
+"qwT-Pr-auo.text" = "След това ще бъде изпратено по пощата с информация за регистрацията на портала на вашия имейл адрес.";
+
+/* Class = "UITextField"; placeholder = "Password"; ObjectID = "to9-RR-YBV"; */
+"to9-RR-YBV.placeholder" = "Парола";
+
+/* Class = "UITextField"; placeholder = "First Name"; ObjectID = "TP3-h7-Hq1"; */
+"TP3-h7-Hq1.placeholder" = "Първо име";
+
+/* Class = "UITextField"; placeholder = "Email Address"; ObjectID = "WWd-Za-CPd"; */
+"WWd-Za-CPd.placeholder" = "Имейл адрес";
+
+/* Class = "UITextField"; placeholder = "Repeat Password"; ObjectID = "Zgx-q8-jRP"; */
+"Zgx-q8-jRP.placeholder" = "Повтори паролата";
+

@@ -1,0 +1,39 @@
+/* (No Comment) */
+"PasscodeLockChangeDescription" = "Введите старый пароль.";
+
+/* Change Passcode State */
+"PasscodeLockChangeTitle" = "Введите старый пароль";
+
+/* (No Comment) */
+"PasscodeLockConfirmDescription" = "Введите код доступа еще раз.";
+
+/* Confirm Passcode State */
+"PasscodeLockConfirmTitle" = "Подтвердите код доступа";
+
+/* (No Comment) */
+"PasscodeLockEnterDescription" = "Введите код доступа для продолжения.";
+
+/* Enter Passcode State */
+"PasscodeLockEnterTitle" = "Введите код доступа";
+
+/* (No Comment) */
+"PasscodeLockFaceIDButton" = "Введите код доступа";
+
+/* (No Comment) */
+"PasscodeLockMismatchDescription" = "Коды доступа не совпадают.";
+
+/* Passcode Mismatch State */
+"PasscodeLockMismatchTitle" = "Попробуй еще раз";
+
+/* (No Comment) */
+"PasscodeLockSetDescription" = "Выберите свой код доступа.";
+
+/* Set Passcode State */
+"PasscodeLockSetTitle" = "Введите код доступа";
+
+/* Touch ID Fallback Button */
+"PasscodeLockTouchIDButton" = "Введите код доступа";
+
+/* Touch ID Reason */
+"PasscodeLockTouchIDReason" = "Требуется аутентификация";
+

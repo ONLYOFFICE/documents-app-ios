@@ -1,0 +1,51 @@
+/* Class = "UISegmentedControl"; 9Wg-zE-nZA.segmentTitles[0] = "Users"; ObjectID = "9Wg-zE-nZA"; */
+"9Wg-zE-nZA.segmentTitles[0]" = "Benutzer";
+
+/* Class = "UISegmentedControl"; 9Wg-zE-nZA.segmentTitles[1] = "Groups"; ObjectID = "9Wg-zE-nZA"; */
+"9Wg-zE-nZA.segmentTitles[1]" = "Gruppen";
+
+/* Class = "UILabel"; text = "No available records"; ObjectID = "75q-CN-6uI"; */
+"75q-CN-6uI.text" = "Keine verfügbare Datensätze";
+
+/* Class = "UILabel"; text = "User Name"; ObjectID = "bHR-n3-evx"; Note = "Do not translate"; */
+"bHR-n3-evx.text" = "Benutzername";
+
+/* Class = "UILabel"; text = "Deny Access"; ObjectID = "c9E-27-xIy"; */
+"c9E-27-xIy.text" = "Zugriff verweigern";
+
+/* Class = "UILabel"; text = "Review"; ObjectID = "cmV-9P-RqY"; */
+"cmV-9P-RqY.text" = "Überprüfen";
+
+/* Class = "UITableViewSection"; headerTitle = "Access"; ObjectID = "HLh-xV-DgI"; */
+"HLh-xV-DgI.headerTitle" = "Zugriff";
+
+/* Class = "UILabel"; text = "Add users or groups and give them permissions to read, review or edit the documents."; ObjectID = "kAs-JV-Zff"; */
+"kAs-JV-Zff.text" = "Fügen Sie Benutzer oder Gruppen hinzu und geben Sie ihnen Berechtigungen zum Lesen, Überprüfen oder Bearbeiten der Dokumente.";
+
+/* Class = "UILabel"; text = "Read Only"; ObjectID = "noV-Xw-dnb"; */
+"noV-Xw-dnb.text" = "Schreibgeschützt";
+
+/* Class = "UILabel"; text = "Access"; ObjectID = "v5j-Jm-YE4"; Note = "Do not translate"; */
+"v5j-Jm-YE4.text" = "Zugriff";
+
+/* Class = "UINavigationItem"; title = "Users"; ObjectID = "xae-c9-kdf"; */
+"xae-c9-kdf.title" = "Benutzer";
+
+/* Class = "UINavigationItem"; title = "Share"; ObjectID = "xY8-if-2h2"; */
+"xY8-if-2h2.title" = "Freigeben";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "ZE7-40-yeL"; Note = "Do not translate"; */
+"ZE7-40-yeL.text" = "Label";
+
+/* Class = "UILabel"; text = "Full Access"; ObjectID = "zUl-mf-gTQ"; */
+"zUl-mf-gTQ.text" = "Vollständiger Zugriff";
+
+/* Class = "UISegmentedControl"; ZW9-Zh-W3r.segmentTitles[0] = "Full Access"; ObjectID = "ZW9-Zh-W3r"; */
+"ZW9-Zh-W3r.segmentTitles[0]" = "Vollständiger Zugriff";
+
+/* Class = "UISegmentedControl"; ZW9-Zh-W3r.segmentTitles[1] = "Read Only"; ObjectID = "ZW9-Zh-W3r"; */
+"ZW9-Zh-W3r.segmentTitles[1]" = "Schreibgeschützt";
+
+/* Class = "UISegmentedControl"; ZW9-Zh-W3r.segmentTitles[2] = "Deny Access"; ObjectID = "ZW9-Zh-W3r"; */
+"ZW9-Zh-W3r.segmentTitles[2]" = "Zugriff verweigern";
+

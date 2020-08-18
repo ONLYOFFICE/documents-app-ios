@@ -1,0 +1,18 @@
+/* Class = "UILabel"; text = "Loading..."; ObjectID = "9YY-0H-nww"; */
+"9YY-0H-nww.text" = "Wird geladen...";
+
+/* Class = "UIBarButtonItem"; title = "Copy here"; ObjectID = "fep-T1-W9m"; */
+"fep-T1-W9m.title" = "Kopieren";
+
+/* Class = "UILabel"; text = "Folder"; ObjectID = "lcP-TZ-iV7"; */
+"lcP-TZ-iV7.text" = "Ordner";
+
+/* Class = "UILabel"; text = "No subfolders"; ObjectID = "POc-L2-pZq"; */
+"POc-L2-pZq.text" = "Keine Unterordner";
+
+/* Class = "UINavigationItem"; prompt = "Move items to the selected folder"; ObjectID = "xZh-ES-1Gb"; */
+"xZh-ES-1Gb.prompt" = "Objekte in den gewählten Ordner verschieben";
+
+/* Class = "UINavigationItem"; title = "Root Folders"; ObjectID = "xZh-ES-1Gb"; */
+"xZh-ES-1Gb.title" = "Stammordner";
+

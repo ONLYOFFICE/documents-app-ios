@@ -1,0 +1,980 @@
+/* Presentation Viewer */
+"%i of %i" = "%1$i of %2$i";
+
+/* No comment provided by engineer. */
+"%lu File selected" = "%lu Файлът е избран";
+
+/* No comment provided by engineer. */
+"%lu Folder and %lu File selected" = "%1$lu папка и %2$lu избрани";
+
+/* No comment provided by engineer. */
+"%lu Folder selected" = "%lu Избрана папка";
+
+/* No comment provided by engineer. */
+"%lu items with the same name already exist in the folder '%@'. Overwrite the items?" = "%1$lu елементи със същото име вече съществуват в папката '%2$@'. Презапишете елементите?";
+
+/* No comment provided by engineer. */
+"© Ascensio System SIA %d" = "© Ascensio System SIA %d";
+
+/* No comment provided by engineer. */
+"A file with a similar name already exists in the document directory on the device." = "Файл с подобно име вече съществува в директорията на документа на устройството.";
+
+/* Format info */
+"A0 (84,1%@ x 119,9%@)" = "A0 (84,1%1$@ x 119,9%2$@)";
+
+/* Format info */
+"A1 (59,4%@ x 84,1%@)" = "A1 (59,4%1$@ x 84,1%2$@)";
+
+/* Format info */
+"A2 (42%@ x 59,4%@)" = "A2 (42%1$@ x 59,4%2$@)";
+
+/* Format info */
+"A6 (10,5%@ x 14,8%@)" = "A6 (10,5%1$@ x 14,8%2$@)";
+
+/* No comment provided by engineer. */
+"Account name is empty" = "Името на профила е празно";
+
+/* No comment provided by engineer. */
+"Account name is not valid" = "Името на профила не е валидно";
+
+/* No comment provided by engineer. */
+"Address is empty" = "Адресът е празен";
+
+/* No comment provided by engineer. */
+"All" = "Всички";
+
+/* Category title */
+"All Files" = "Всички файлове";
+
+/* No comment provided by engineer. */
+"An unexpected error has occurred. Please try again later. Sorry for inconvenience." = "An unexpected error has occurred. Please try again later. Sorry for inconvenience.";
+
+/* No comment provided by engineer. */
+"Are you sure you want to delete the account %@ from this device?" = "Наистина ли искате да изтриете профила %@ от това устройство?";
+
+/* No comment provided by engineer. */
+"Are you sure you want to leave this account?" = "Наистина ли искате да напуснете този профил?";
+
+/* No comment provided by engineer. */
+"Author" = "Автор";
+
+/* No comment provided by engineer. */
+"Box directory" = "Поле за директория";
+
+/* Data units */
+"bytes" = "Байта";
+
+/* No comment provided by engineer. */
+"Camera Unavailable" = "Камерата е недостъпна";
+
+/* No comment provided by engineer. */
+"Can not create file in the folder." = "Не може да се създаде файл в папката.";
+
+/* No comment provided by engineer. */
+"Can not create file with this name." = "Не може да се създаде файл с това име.";
+
+/* No comment provided by engineer. */
+"Can not create folder with this name." = "Не може да се създаде папка с това име.";
+
+/* No comment provided by engineer. */
+"Can not duplicate the file." = "Файлът не може да се дублира.";
+
+/* Button title */
+"Cancel" = "Отказ";
+
+/* No comment provided by engineer. */
+"Check your internet connection" = "Проверете връзката си с интернет";
+
+/* No comment provided by engineer. */
+"Choose Code Page" = "Изберете Кодова страница";
+
+/* No comment provided by engineer. */
+"Choose CSV Options" = "Изберете Опции за CSV";
+
+/* Caption of the processing */
+"Cleanup" = "Почисти";
+
+/* Button title */
+"Clear Cache" = "Изтрий кеш-памет";
+
+/* Button title */
+"Clear Cache?" = "Изтрий кеш-памет?";
+
+/* Caption of the processing */
+"Clearing" = "Клиринг";
+
+/* Close view */
+"Close" = "Затвори";
+
+/* No comment provided by engineer. */
+"Close the document before opening a new one." = "Затворете документа, преди да отворите нов.";
+
+/* Default external storage name */
+"Cloud directory" = "Директория в облака";
+
+/* Cut from centimeters */
+"cm" = "см";
+
+/* Introduction Step Five - Title */
+"Collaborate with your team" = "Сътрудничество с екипа си";
+
+/* Category title */
+"Common Documents" = "Общи документи";
+
+/* Cancel */
+"common.cancel" = "Отказ";
+
+/* Error */
+"common.error" = "Грешка";
+
+/* Myself */
+"common.me" = "Аз";
+
+/* OK */
+"common.ok" = "Добре";
+
+/* Payment required message */
+"common.paymentRequiredMsg" = "Платеният период приключи";
+
+/* Payment required title */
+"common.paymentRequiredTitle" = "Изисква се плащане";
+
+/* Button title */
+"Connect" = "Свържете";
+
+/* No comment provided by engineer. */
+"Connect Clouds" = "Свържете се с облака";
+
+/* Introduction Step Three - Description */
+"Connect third-party storage\nlike Nextcloud, ownCloud, Yandex Disk and\nothers which use WebDAV protocol." = "Свържете съхранение на трети страни като Nextcloud, ownCloud, Yandex Disk и други, които използват WebDAV протокол.";
+
+/* Footer text */
+"Connect to your %@ cloud to store files online and collaborate on documents in real time" = "Свържете се с вашия облак %@, за да съхранявате файлове онлайн и да си сътрудничите по документи в реално време";
+
+/* Caption of the process */
+"Connecting" = "Свързване";
+
+/* No comment provided by engineer. */
+"Continue anyway" = "Все пак продължете";
+
+/* No comment provided by engineer. */
+"Converter" = "конвертор";
+
+/* Button title */
+"Copy" = "Копирай";
+
+/* Button title */
+"Copy here" = "Копирайте тук";
+
+/* Caption of the processing */
+"Copying" = "Копиране";
+
+/* No comment provided by engineer. */
+"Could not convert file to export." = "Файлът за експортиране не можа да се конвертира.";
+
+/* No comment provided by engineer. */
+"Could not copy." = "Не можа да се копира.";
+
+/* No comment provided by engineer. */
+"Could not delete the file." = "Файлът не можа да бъде изтрит.";
+
+/* No comment provided by engineer. */
+"Could not delete the folder." = "Папката не можа да бъде изтрита.";
+
+/* No comment provided by engineer. */
+"Could not delete." = "Изтриването не може да се извърши.";
+
+/* No comment provided by engineer. */
+"Could not download file." = "Файлът не можа да бъде изтеглен.";
+
+/* No comment provided by engineer. */
+"Could not download object." = "Не може да се изтегли обект.";
+
+/* No comment provided by engineer. */
+"Could not download the file." = "Файлът не можа да бъде изтеглен.";
+
+/* No comment provided by engineer. */
+"Could not duplicate the file." = "Файлът не можа да се дублира.";
+
+/* No comment provided by engineer. */
+"Could not empty trash." = "Не можа да се изпразни кошчето.";
+
+/* No comment provided by engineer. */
+"Could not export the file." = "Файлът не можа да бъде експортиран.";
+
+/* No comment provided by engineer. */
+"Could not open editor." = "Редакторът не можа да се отвори.";
+
+/* No comment provided by engineer. */
+"Could not open file." = "Файлът не можа да се отвори.";
+
+/* No comment provided by engineer. */
+"Could not read data from file." = "Данните от файл не можаха да бъдат прочетени.";
+
+/* No comment provided by engineer. */
+"Could not read data from the file." = "Данните от файла не можаха да бъдат прочетени.";
+
+/* No comment provided by engineer. */
+"Could not save the file." = "Файлът не можа да бъде запазен.";
+
+/* No comment provided by engineer. */
+"Couldn't open file" = "Couldn't open file";
+
+/* No comment provided by engineer. */
+"Create" = "Създай";
+
+/* Introduction Step Two - Description */
+"Create and edit documents with our comprehensive toolbar: work with complex objects in text documents, perform extensive calculations in spreadsheets, create stunning presentations and view PDF files with no formatting loss." = "Създавайте и редактирайте документи с нашата всеобхватна лента с инструменти: работа със сложни обекти в текстови документи, извършване на обширни изчисления в електронни таблици. Създай на презентации и изглед PDF файлове без загуба на форматиране.";
+
+/* No comment provided by engineer. */
+"Create new documents, spreadsheets or presentations. Create new folders to organize your files." = "Create new documents, spreadsheets or presentations. Create new folders to organize your files.";
+
+/* Caption of the process */
+"Creating" = "Създаване";
+
+/* No comment provided by engineer. */
+"Date" = "Дата";
+
+/* Button title */
+"Delete" = "Изтрий";
+
+/* No comment provided by engineer. */
+"Delete %lu File" = "Изтриване на %lu файл";
+
+/* No comment provided by engineer. */
+"Delete %lu Folder" = "Изтриване на %lu папка";
+
+/* No comment provided by engineer. */
+"Delete %lu Folder and %lu File" = "Изтриване на папката %1$lu и %2$lu";
+
+/* No comment provided by engineer. */
+"Delete account" = "Изтриване на профил";
+
+/* Button title */
+"Delete File" = "Изтрий файла";
+
+/* No comment provided by engineer. */
+"Delete Folder" = "Изтриване на папка";
+
+/* Caption of the processing */
+"Deleting" = "Изтриване";
+
+/* No comment provided by engineer. */
+"Delimiter" = "Разделител";
+
+/* Share status */
+"Deny Access" = "Отказвам достъп";
+
+/* Button title */
+"Disconnect third party" = "Преказнете връзката с трета страна";
+
+/* No comment provided by engineer. */
+"Document" = "Документ";
+
+/* Default title of sample document */
+"Document Sample" = "Пример за документ";
+
+/* Category title */
+"Documents" = "Документи";
+
+/* Button title
+   Operation completed */
+"Done" = "Завършен";
+
+/* Button title */
+"Download" = "Изтегли";
+
+/* Caption of the processing */
+"Downloading" = "Изтеглянето";
+
+/* No comment provided by engineer. */
+"Dropbox" = "Dropbox";
+
+/* No comment provided by engineer. */
+"Dropbox directory" = "Директория на Dropbox";
+
+/* Button title */
+"Duplicate" = "Дубликат";
+
+/* Caption of the processing */
+"Duplication" = "Удвояване";
+
+/* Data units */
+"Eb" = "Эб";
+
+/* Button title */
+"Edit" = "Редактирай";
+
+/* Introduction Step Four - Title */
+"Edit documents locally" = "Редактирайте документи на местно ниво";
+
+/* No comment provided by engineer. */
+"Email" = "Електронна поща";
+
+/* No comment provided by engineer. */
+"Email is empty" = "Имейлът е празен";
+
+/* No comment provided by engineer. */
+"Email is not valid" = "Имейлът не е валиден";
+
+/* No comment provided by engineer. */
+"Empty file." = "Празен файл.";
+
+/* No comment provided by engineer. */
+"Empty name." = "Празно име.";
+
+/* No comment provided by engineer. */
+"Encoding" = "Кодиране";
+
+/* Presentation Viewer */
+"End Slide Show" = "Край на слайдшоуто";
+
+/* No comment provided by engineer. */
+"Enter Portal Address" = "Въведете Адрес на портал";
+
+/* No comment provided by engineer. */
+"Error" = "Грешка";
+
+/* Access is Forbidden message */
+"error.errorForbiddenMsg" = "Свържете се с администратора на портала за достъп до модула Проекти.";
+
+/* Access is Forbidden title */
+"error.errorForbiddenTitle" = "Достъпът до модула „Проекти“ е забранен";
+
+/* The resource can not be found Title */
+"error.errorNotFoundMsg" = "Ресурсът не може да бъде намерен";
+
+/* Unknown Server Error */
+"error.errorServerTitle" = "Грешка в сървъра";
+
+/* No comment provided by engineer. */
+"Failed online conversion service." = "Неуспешно онлайн конвертиране.";
+
+/* No comment provided by engineer. */
+"Failed to check portal availability." = "Неуспешно проверяване на достъпността на портала.";
+
+/* No comment provided by engineer. */
+"Failed to check the name of the portal" = "Проверката на името на портала не е успешна";
+
+/* No comment provided by engineer. */
+"Failed to get file information from the server." = "Неуспешно получаване на информация за файла от сървъра.";
+
+/* No comment provided by engineer. */
+"Failed to get file list." = "Неуспешно получаване на списък с файлове.";
+
+/* No comment provided by engineer. */
+"Failed to get information about the file." = "Неуспешно получаване на информация за файла.";
+
+/* No comment provided by engineer. */
+"Failed to get the address of the document server." = "Неуспешно получаване на адреса на сървъра за документи.";
+
+/* No comment provided by engineer. */
+"Failed upload source file to conversion online service." = "Неуспешно качване на изходния файл към онлайн услугата за реализация.";
+
+/* No comment provided by engineer. */
+"Failure to download file from portal." = "Неуспешно изтегляне на файл от портала.";
+
+/* No comment provided by engineer. */
+"Failure to download result from conversion online service." = "Неуспехът да изтеглите резултат от онлайн услугата за преобразуване.";
+
+/* No comment provided by engineer. */
+"Files" = "Файлове";
+
+/* No comment provided by engineer. */
+"Folder title" = "Заглавие на папката";
+
+/* No comment provided by engineer. */
+"Folders" = "Папки";
+
+/* Share status */
+"Full Access" = "Пълен достъп";
+
+/* Data units */
+"Gb" = "Гб";
+
+/* No comment provided by engineer. */
+"Get started" = "Първи стъпки";
+
+/* No comment provided by engineer. */
+"GET STARTED!" = "ПЪРВИ СТЪПКИ!";
+
+/* Introduction Step One - Title */
+"Getting started" = "Приготвяме се да започнем";
+
+/* No comment provided by engineer. */
+"Google directory" = "Google указател";
+
+/* No comment provided by engineer. */
+"Google Drive" = "Google Диск";
+
+/* No comment provided by engineer. */
+"Groups" = "Групи";
+
+/* No comment provided by engineer. */
+"Images" = "Снимки";
+
+/* Introduction Step Five - Description */
+"In online mode, use real-time co-editing features of %@ to work on documents together with your portal members, share documents and create common storage folders." = "В онлайн режим използвайте в реално време функции за съвместно редактиране на %@, за да работите с документи заедно с членовете на портала, да споделяте документи и да създавате общи папки за съхранение.";
+
+/* No comment provided by engineer. */
+"Incorrect portal address" = "Неправилен адрес на портала";
+
+/* No comment provided by engineer. */
+"Invalid Country Code" = "Невалиден код на държавата";
+
+/* Error message */
+"Invalid URL: The format ot the URL could not be determined" = "Invalid URL: The format ot the URL could not be determined";
+
+/* Data units */
+"Kb" = "Кб";
+
+/* Caption of the process */
+"Logging in" = "Влизане в системата";
+
+/* No comment provided by engineer. */
+"Login" = "Влизам";
+
+/* No comment provided by engineer. */
+"Login by %@" = "Вход от %@";
+
+/* No comment provided by engineer. */
+"Login is empty" = "Входът е празен";
+
+/* Button title
+   Caption of the process */
+"Logout" = "Излез от профила си";
+
+/* Data units */
+"Mb" = "Мб";
+
+/* If current user name is not set */
+"Me" = "Аз";
+
+/* Button title */
+"More" = "Повече";
+
+/* Button title */
+"Move" = "Ход";
+
+/* Button title */
+"Move here" = "Премести се тук";
+
+/* Button title */
+"Move or Copy" = "Преместване или копиране";
+
+/* Caption of the processing */
+"Moving" = "Движещ се";
+
+/* No comment provided by engineer. */
+"My Clouds" = "Моите облачни хранилища";
+
+/* Category title */
+"My Documents" = "Моите документи";
+
+/* No comment provided by engineer. */
+"My Drive" = "My Drive";
+
+/* No comment provided by engineer. */
+"Name is empty" = "Името е празно";
+
+/* No comment provided by engineer. */
+"Needs additional params." = "Необходими са допълнителни параметри.";
+
+/* No comment provided by engineer. */
+"New Document" = "Нов документ";
+
+/* No comment provided by engineer. */
+"New Folder" = "Нова папка";
+
+/* No comment provided by engineer. */
+"New Presentation" = "Нова презентация";
+
+/* No comment provided by engineer. */
+"New Spreadsheet" = "Нова електронна таблица";
+
+/* Next step */
+"Next" = "Следващ";
+
+/* No comment provided by engineer. */
+"Nextcloud" = "Nextcloud";
+
+/* No comment provided by engineer. */
+"No connection" = "Няма връзка";
+
+/* No comment provided by engineer. */
+"No information about the user profile." = "Няма информация за потребителския профил.";
+
+/* No comment provided by engineer. */
+"No network" = "Няма мрежа";
+
+/* No comment provided by engineer. */
+"No network connection can be found. Please check the connection and reload the page." = "No network connection can be found. Please check the connection and reload the page.";
+
+/* No comment provided by engineer. */
+"No results matching your search could be found. Please try another phrase." = "No results matching your search could be found. Please try another phrase.";
+
+/* No comment provided by engineer. */
+"No search result" = "Няма резултат от търсенето";
+
+/* Invalid entity date
+   Invalid entity owner
+   No information */
+"none" = "няма";
+
+/* If the cache is empty
+   Share status */
+"None" = "Няма";
+
+/* No comment provided by engineer. */
+"Note: removal from your account can not be undone." = "Забележка: премахването от профила Ви не може да бъде отменено.";
+
+/* Used in the context: 'Showing 1 of 3 items' */
+"of" = "на";
+
+/* No comment provided by engineer. */
+"OK" = "Добре";
+
+/* Category title */
+"On iPad" = "На iPad";
+
+/* Category title */
+"On iPhone" = "На iPhone";
+
+/* No comment provided by engineer. */
+"Once you enter the password and open the file, the current password to the file will be reset" = "След като въведете паролата и отворите файла, текущата парола за файла ще бъде нулирана";
+
+/* No comment provided by engineer. */
+"OneDrive directory" = "Директория OneDrive";
+
+/* No comment provided by engineer. */
+"OneDrive for Business" = "OneDrive for Business";
+
+/* Short App Name */
+"ONLYOFFICE" = "ONLYOFFICE";
+
+/* Full App Name */
+"ONLYOFFICE Documents" = "ONLYOFFICE документи";
+
+/* No comment provided by engineer. */
+"Oops!" = "Опаа!";
+
+/* No comment provided by engineer. */
+"Open Document" = "Отворете документа";
+
+/* Button title */
+"Open In" = "Отворете в";
+
+/* Caption of the processing */
+"Opening" = "Отвор";
+
+/* No comment provided by engineer. */
+"Order" = "Поръчка";
+
+/* No comment provided by engineer. */
+"Other" = "Друг";
+
+/* Button title */
+"Overwrite" = "Презаписване";
+
+/* Button title */
+"Overwrite confirmation" = "Потвърждение за презаписване";
+
+/* No comment provided by engineer. */
+"ownCloud" = "ownCloud";
+
+/* No comment provided by engineer. */
+"Owner" = "Собственик";
+
+/* No comment provided by engineer. */
+"Password" = "Парола";
+
+/* No comment provided by engineer. */
+"Password is empty" = "Паролата е празна";
+
+/* No comment provided by engineer. */
+"Passwords do not match" = "Паролите не съвпадат";
+
+/* Data units */
+"Pb" = "Пб";
+
+/* Used in the context: '1 photo' */
+"photo" = "снимка";
+
+/* Used in the context: '3 photos' */
+"photos" = "снимки";
+
+/* No comment provided by engineer. */
+"Please go to Settings and enable the camera for this app to use this feature." = "Моля, отворете „Настройки“ и активирайте камерата за това приложение, за да използва тази функция.";
+
+/* No comment provided by engineer. */
+"Please re-login to renew your session." = "Моля, влезте отново, за да подновите сесията си.";
+
+/* No comment provided by engineer. */
+"Please retry. \n\n If the problem persists contact us and mention this error code: Box - %@" = "Моля, опитайте отново.\n\n Ако проблемът продължава, свържете се с нас и споменете този код за грешка: Box - %@";
+
+/* No comment provided by engineer. */
+"Please retry. \n\n If the problem persists contact us and mention this error code: Dropbox - %@" = "Моля, опитайте отново.\n\n Ако проблемът продължава, свържете се с нас и споменете този код за грешка: Dropbox - %@";
+
+/* No comment provided by engineer. */
+"Please retry. \n\n If the problem persists contact us and mention this error code: Google - %@" = "Моля, опитайте отново.\n\n Ако проблемът продължава, свържете се с нас и споменете този код за грешка: Google - %@";
+
+/* No comment provided by engineer. */
+"Please retry. \n\n If the problem persists contact us and mention this error code: OneDrive - %@" = "Моля, опитайте отново. \n\n Ако проблемът продължава, свържете се с нас и споменете този код за грешка: OneDrive - %@";
+
+/* No comment provided by engineer. */
+"Please retry. \n\n If the problem persists contact us and mention this error code: SSO - %@" = "Моля, опитайте отново. \n\n Ако проблемът продължава, свържете се с нас и споменете този код за грешка: SSO - %@";
+
+/* No comment provided by engineer. */
+"Portal Address" = "Адрес на портала";
+
+/* No comment provided by engineer. */
+"Portal is unavailable." = "Portal is unavailable.";
+
+/* No comment provided by engineer. */
+"Presentation" = "Presentation";
+
+/* Default title of sample document */
+"Presentation Sample" = "Представяне Проба";
+
+/* No comment provided by engineer. */
+"Presentations" = "Презентации";
+
+/* Button title */
+"Preview" = "Предварителен преглед";
+
+/* Caption of the processing */
+"Processing" = "Обработване";
+
+/* Category title */
+"Project Documents" = "Документи по проекта";
+
+/* No comment provided by engineer. */
+"Protected File" = "Защитен файл";
+
+/* Share status */
+"Read Only" = "Само за четене";
+
+/* Button title */
+"Recover here" = "Възстановяване тук";
+
+/* Caption of the processing */
+"Recovery" = "Възстановяване";
+
+/* No comment provided by engineer. */
+"Registration" = "Регистрация";
+
+/* No comment provided by engineer. */
+"Reload" = "Презареждане";
+
+/* Button title */
+"Rename" = "Преименувам";
+
+/* No comment provided by engineer. */
+"Rename failed." = "Преименуването не бе успешно.";
+
+/* No comment provided by engineer. */
+"Rename failed. An object with such a similar name exists." = "Преименуването не бе успешно. Съществува обект с подобно име.";
+
+/* Caption of the processing */
+"Renaming" = "Преименуването";
+
+/* No comment provided by engineer. */
+"Renewal" = "Подновяване";
+
+/* Button title */
+"Restore" = "Възстанови";
+
+/* Caption of the processing */
+"Restoring" = "Възстановяване";
+
+/* Share status */
+"Review" = "Преглед";
+
+/* Caption of the processing */
+"Saving" = "Спестяване";
+
+/* Button title */
+"Select" = "Изберете";
+
+/* No comment provided by engineer. */
+"Select another cloud to connect to Nextcloud, ownCloud and others are supported." = "Изберете друг облак, за да се свържете с Nextcloud, ownCloud и други, които се поддържат.";
+
+/* No comment provided by engineer. */
+"Select Photos" = "Изберете снимки";
+
+/* One line. Max 50 charasters */
+"Select the folder to copy the items" = "Изберете папката за копиране на елементи";
+
+/* One line. Max 50 charasters */
+"Select the folder to move the items" = "Изберете папката за преместване на елементите";
+
+/* One line. Max 50 charasters */
+"Select the folder to recover the items" = "Изберете папката за възстановяване на елементи";
+
+/* No comment provided by engineer. */
+"Selected provider is not available" = "Избраният доставчик не е наличен";
+
+/* No comment provided by engineer. */
+"Selected: %ld" = "Избрано: %ld";
+
+/* No comment provided by engineer. */
+"Settings" = "Настройки";
+
+/* Button title */
+"Share" = "Дял";
+
+/* Category title */
+"Shared with Me" = "Споделено с мен";
+
+/* No comment provided by engineer. */
+"SharePoint directory" = "Директория на SharePoint";
+
+/* Caption of the process */
+"Sharing" = "Споделяне";
+
+/* No comment provided by engineer. */
+"Single Sign-on" = "Единично влезне";
+
+/* No comment provided by engineer. */
+"Size" = "Размер";
+
+/* Button title */
+"Skip" = "пропускане";
+
+/* No comment provided by engineer. */
+"SKIP" = "ПРОПУСКАНЕ";
+
+/* Presentation Viewer */
+"Slide %i of %i" = "Слайд %1$i от %2$i";
+
+/* Button title */
+"Sort" = "Вид";
+
+/* No comment provided by engineer. */
+"Space" = "пространство";
+
+/* No comment provided by engineer. */
+"Spreadsheet" = "Електронна таблица";
+
+/* Default title of sample document */
+"Spreadsheet Sample" = "Пример за електронна таблица";
+
+/* No comment provided by engineer. */
+"Spreadsheets" = "Електронни таблици";
+
+/* No comment provided by engineer. */
+"Switch" = "Ключ";
+
+/* No comment provided by engineer. */
+"Tab" = "Раздел";
+
+/* Data units */
+"Tb" = "Тб";
+
+/* Notification title */
+"Text copied" = "Text copied";
+
+/* No comment provided by engineer. */
+"The account name must be between 6 and 50 characters long" = "Името на профила трябва да е между 6 и 50 знака";
+
+/* No comment provided by engineer. */
+"The deleted files go to the trash. You can either restore or delete them forever." = "The deleted files go to the trash. You can either restore or delete them forever.";
+
+/* No comment provided by engineer. */
+"The file in the Trash can not be viewed." = "Файлът в кошчето не може да бъде прегледан.";
+
+/* No comment provided by engineer. */
+"The file will be irretrievably deleted. This action is irreversible." = "Файлът ще бъде безвъзвратно изтрит. Това действие е необратимо.";
+
+/* No comment provided by engineer. */
+"The folder will be irretrievably deleted. This action is irreversible." = "Папката ще бъде безвъзвратно изтрита. Това действие е необратимо.";
+
+/* No comment provided by engineer. */
+"The item with the name '%@' already exists in the folder '%@'." = "Елементът с името „%1$@“ вече съществува в папката „%2$@“.";
+
+/* No comment provided by engineer. */
+"The password is incorrect. It must contain 6 characters" = "The password is incorrect. It must contain 6 characters";
+
+/* No comment provided by engineer. */
+"The portal address is invalid" = "Адресът на портала е невалиден";
+
+/* No comment provided by engineer. */
+"The portal name must be between 6 and 50 characters long" = "Име на портала трябва да е между 6 и 50 символа";
+
+/* No comment provided by engineer. */
+"The server is not available." = "Сървърът не е наличен.";
+
+/* No comment provided by engineer. */
+"The trash is empty" = "Кошчето е празно";
+
+/* Introduction Step Three - Title */
+"Third-party storage" = "Памет за трети страни";
+
+/* No comment provided by engineer. */
+"This document is being edited. Do you want open %@ to view only?" = "This document is being edited. Do you want open %@ to view only?";
+
+/* No comment provided by engineer. */
+"This folder is empty" = "Тази папка е празна";
+
+/* No comment provided by engineer. */
+"This operation will free up space on your device by deleting temporary files. Your offline files and personal data won't be removed." = "This operation will free up space on your device by deleting temporary files. Your offline files and personal data won't be removed.";
+
+/* No comment provided by engineer. */
+"This presentation is being edited. Do you want open %@ to view only?" = "This presentation is being edited. Do you want open %@ to view only?";
+
+/* No comment provided by engineer. */
+"This spreadsheet is being edited. Do you want open %@ to view only?" = "This spreadsheet is being edited. Do you want open %@ to view only?";
+
+/* No comment provided by engineer. */
+"Title" = "Заглавие";
+
+/* No comment provided by engineer. */
+"To open a document, you must go to portal %@ under your account." = "За да отворите документ, трябва да отидете на портал %@ в профила си.";
+
+/* No comment provided by engineer. */
+"To open a new document, you must exit the current document." = "За да отворите нов документ, трябва да излезете от текущия документ.";
+
+/* Category title */
+"Trash" = "Боклук";
+
+/* No comment provided by engineer. */
+"Try again" = "Опитай пак";
+
+/* No comment provided by engineer. */
+"Try Again" = "Опитай пак";
+
+/* No comment provided by engineer. */
+"Try to connect via another protocol?" = "Опитайте да се свържете чрез друг протокол?";
+
+/* No comment provided by engineer. */
+"Turn Passcode Off" = "Изключете паролата";
+
+/* No comment provided by engineer. */
+"Turn Passcode On" = "Включете паролата";
+
+/* No comment provided by engineer. */
+"Type" = "Тип";
+
+/* No comment provided by engineer. */
+"Unable to get information about the portal" = "Не може да се получи информация за портала";
+
+/* No comment provided by engineer. */
+"Unable to get information about the user." = "Не може да се получи информация за потребителя.";
+
+/* No comment provided by engineer. */
+"Unexpected response from the service." = "Неочакван отговор от услугата.";
+
+/* Invalid entity name */
+"Unknown" = "Неизвестен";
+
+/* No comment provided by engineer. */
+"Unknown API response." = "Неизвестен отговор на API.";
+
+/* No comment provided by engineer. */
+"Unknown file provider" = "Неизвестен доставчик на файлове";
+
+/* No comment provided by engineer. */
+"Unknown item type." = "Неизвестен тип елемент.";
+
+/* No comment provided by engineer. */
+"Unlock with Face ID" = "Отключване с Идентификатор на лицето";
+
+/* No comment provided by engineer. */
+"Unlock with Touch ID" = "Отключване с Touch ID";
+
+/* No comment provided by engineer. */
+"Unsupported format." = "Неподдържан формат.";
+
+/* Button title */
+"Upload" = "Качи";
+
+/* Caption of the process */
+"Uploading" = "Качване";
+
+/* Button title */
+"Use Face ID" = "Използвайте Face ID";
+
+/* Button title */
+"Use Touch ID" = "Използвайте Touch ID";
+
+/* Error message */
+"User authentication failed" = "Неуспешна идентификация";
+
+/* No comment provided by engineer. */
+"User undefined" = "Не е определен потребител";
+
+/* No comment provided by engineer. */
+"Users" = "Потребители";
+
+/* Caption of the process */
+"Validation" = "Утвърждаване";
+
+/* Share status */
+"Varies" = "Варира";
+
+/* No comment provided by engineer. */
+"Version" = "Версия";
+
+/* No comment provided by engineer. */
+"Warning" = "Внимание";
+
+/* No comment provided by engineer. */
+"We are sorry, this portal name is already taken" = "За съжаление име на този портал вече е заето";
+
+/* No comment provided by engineer. */
+"We have sent you an SMS with a code to the number %@" = "Изпратихме ви SMS с код на номер %@";
+
+/* No comment provided by engineer. */
+"WebDAV" = "WebDAV";
+
+/* No comment provided by engineer. */
+"WebDAV directory" = "Директорията на WebDAV";
+
+/* Introduction Step One - Description */
+"Welcome to %@ mobile editing suite!\nSwipe to learn more about the app." = "Welcome to %@ mobile editing suite!\nSwipe to learn more about the app.";
+
+/* No comment provided by engineer. */
+"What's New" = "Какво ново";
+
+/* Introduction Step Four - Description */
+"Work with documents offline.\nCreated files can later be uploaded to online portal and\nthen accessed from any other device." = "Работа с документи офлайн.\nСъздадените файлове по-късно могат да бъдат качени в онлайн портала и след това достъпни от всяко друго устройство.";
+
+/* Introduction Step Two - Title */
+"Work with office files" = "Работа с офис файлове";
+
+/* No comment provided by engineer. */
+"Wrong login or password." = "Грешен влизам или парола";
+
+/* No comment provided by engineer. */
+"Yandex directory" = "Yandex директория";
+
+/* No comment provided by engineer. */
+"Yandex Disk" = "Yandex Disk";
+
+/* Data units */
+"Yb" = "Яб";
+
+/* No comment provided by engineer. */
+"You can connect the following accounts to the %@." = "Можете да свържете следните сметки с документите %@.";
+
+/* No comment provided by engineer. */
+"You can connect the following accounts to the %@. They will be displayed in 'My Documents' folder and you will be able to edit and save them right on the portal all in one place." = "Можете да свържете следните сметки с документите %@. Те ще бъдат показани в папката \"Моите документи\" и ще можете да ги редактирате и запазвате направо на портала на едно място.";
+
+/* No comment provided by engineer. */
+"You have read-only access to this folder. You cannot create files or folders here." = "You have read-only access to this folder. You cannot create files or folders here.";
+
+/* No comment provided by engineer. */
+"Your session has expired" = "Сесията ви е изтекла";
+
+/* Data units */
+"Zb" = "Зб";
+
+/* Data units */
+"Zero bytes" = "Нулеви байтове";
+
+/* No comment provided by engineer. */
+"Сould not download file." = "Файлът не може да се изтегли.";
+
+/* No comment provided by engineer. */
+"Сould not upload file." = "Файлът не може да се качи.";
+

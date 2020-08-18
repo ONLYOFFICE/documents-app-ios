@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>%lu File selected</key>
+	<dict>
+		<key>NSStringLocalizedFormatKey</key>
+		<string>%#@Dateien@</string>
+		<key>files</key>
+		<dict>
+			<key>NSStringFormatSpecTypeKey</key>
+			<string>NSStringPluralRuleType</string>
+			<key>NSStringFormatValueTypeKey</key>
+			<string>lu</string>
+			<key>one</key>
+			<string>%lu Datei ausgewählt</string>
+			<key>other</key>
+			<string>%lu Dateien ausgewählt</string>
+		</dict>
+	</dict>
+	<key>%lu Folder and %lu File selected</key>
+	<dict>
+		<key>NSStringLocalizedFormatKey</key>
+		<string>%1$#@lu_folders@</string>
+		<key>lu_files</key>
+		<dict>
+			<key>NSStringFormatSpecTypeKey</key>
+			<string>NSStringPluralRuleType</string>
+			<key>NSStringFormatValueTypeKey</key>
+			<string>lu</string>
+			<key>one</key>
+			<string>und %lu Datei ausgewählt</string>
+			<key>other</key>
+			<string>und %lu Dateien ausgewählt</string>
+		</dict>
+		<key>lu_folders</key>
+		<dict>
+			<key>NSStringFormatSpecTypeKey</key>
+			<string>NSStringPluralRuleType</string>
+			<key>NSStringFormatValueTypeKey</key>
+			<string>lu</string>
+			<key>one</key>
+			<string>%lu Folder %2$#@lu_files@</string>
+			<key>other</key>
+			<string>%lu Folders %2$#@lu_files@</string>
+			<key>zero</key>
+			<string>%2$#@lu_files@</string>
+		</dict>
+	</dict>
+	<key>%lu Folder selected</key>
+	<dict>
+		<key>NSStringLocalizedFormatKey</key>
+		<string>%#@Ordner@</string>
+		<key>folders</key>
+		<dict>
+			<key>NSStringFormatSpecTypeKey</key>
+			<string>NSStringPluralRuleType</string>
+			<key>NSStringFormatValueTypeKey</key>
+			<string>lu</string>
+			<key>one</key>
+			<string>%lu Ordner ausgewählt</string>
+			<key>other</key>
+			<string>%lu Ordner ausgewählt</string>
+		</dict>
+	</dict>
+	<key>Delete %lu File</key>
+	<dict>
+		<key>NSStringLocalizedFormatKey</key>
+		<string>%#@Dateien@</string>
+		<key>files</key>
+		<dict>
+			<key>NSStringFormatSpecTypeKey</key>
+			<string>NSStringPluralRuleType</string>
+			<key>NSStringFormatValueTypeKey</key>
+			<string>lu</string>
+			<key>one</key>
+			<string>%lu Datei löschen</string>
+			<key>other</key>
+			<string>%lu Dateien löschen</string>
+		</dict>
+	</dict>
+	<key>Delete %lu Folder</key>
+	<dict>
+		<key>NSStringLocalizedFormatKey</key>
+		<string>%#@Ordner@</string>
+		<key>folders</key>
+		<dict>
+			<key>NSStringFormatSpecTypeKey</key>
+			<string>NSStringPluralRuleType</string>
+			<key>NSStringFormatValueTypeKey</key>
+			<string>lu</string>
+			<key>one</key>
+			<string>%lu Ordner löschen</string>
+			<key>other</key>
+			<string>%lu Ordner löschen</string>
+		</dict>
+	</dict>
+	<key>Delete %lu Folder and %lu File</key>
+	<dict>
+		<key>NSStringLocalizedFormatKey</key>
+		<string>%1$#@lu_folders@</string>
+		<key>lu_files</key>
+		<dict>
+			<key>NSStringFormatSpecTypeKey</key>
+			<string>NSStringPluralRuleType</string>
+			<key>NSStringFormatValueTypeKey</key>
+			<string>lu</string>
+			<key>one</key>
+			<string>und %lu Datei</string>
+			<key>other</key>
+			<string>und %lu Dateien</string>
+			<key>zero</key>
+			<string></string>
+		</dict>
+		<key>lu_folders</key>
+		<dict>
+			<key>NSStringFormatSpecTypeKey</key>
+			<string>NSStringPluralRuleType</string>
+			<key>NSStringFormatValueTypeKey</key>
+			<string>lu</string>
+			<key>one</key>
+			<string>%lu Ordner %2$#@lu_files@ löschen</string>
+			<key>other</key>
+			<string>%lu Ordner %2$#@lu_files@ löschen</string>
+			<key>zero</key>
+			<string>%2$#@lu_files@ löschen</string>
+		</dict>
+	</dict>
+</dict>
+</plist>

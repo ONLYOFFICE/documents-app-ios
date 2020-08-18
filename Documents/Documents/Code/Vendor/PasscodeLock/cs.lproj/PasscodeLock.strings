@@ -1,0 +1,39 @@
+/* (No Comment) */
+"PasscodeLockChangeDescription" = "Zadejte svůj starý přístupový kód";
+
+/* Change Passcode State */
+"PasscodeLockChangeTitle" = "Zadat starý přístupový kód";
+
+/* (No Comment) */
+"PasscodeLockConfirmDescription" = "Zadejte přístupový kód znovu.";
+
+/* Confirm Passcode State */
+"PasscodeLockConfirmTitle" = "Potvrďte přístupový kód";
+
+/* (No Comment) */
+"PasscodeLockEnterDescription" = "Zadejte přístupový kód a pokračujte.";
+
+/* Enter Passcode State */
+"PasscodeLockEnterTitle" = "Zadejte přístupový kód";
+
+/* (No Comment) */
+"PasscodeLockFaceIDButton" = "Zadejte přístupový kód";
+
+/* (No Comment) */
+"PasscodeLockMismatchDescription" = "Přístupové kódy se neshodují.";
+
+/* Passcode Mismatch State */
+"PasscodeLockMismatchTitle" = "Zkuste znovu";
+
+/* (No Comment) */
+"PasscodeLockSetDescription" = "Zvolte přístupový kód.";
+
+/* Set Passcode State */
+"PasscodeLockSetTitle" = "Zadejte přístupový kód";
+
+/* Touch ID Fallback Button */
+"PasscodeLockTouchIDButton" = "Zadejte přístupový kód";
+
+/* Touch ID Reason */
+"PasscodeLockTouchIDReason" = "Pro pokračování je třeba autorizace";
+

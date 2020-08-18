@@ -1,0 +1,9 @@
+/* Class = "UILabel"; text = "Subtitle"; ObjectID = "1kl-l7-AtV"; Note = "Do not translate"; */
+"1kl-l7-AtV.text" = "Sous-titre";
+
+/* Class = "UILabel"; text = "Title"; ObjectID = "BKA-Ab-Xnn"; Note = "Do not translate"; */
+"BKA-Ab-Xnn.text" = "Titre";
+
+/* Class = "UIButton"; normalTitle = "Button"; ObjectID = "peL-fi-QtV"; Note = "Do not translate"; */
+"peL-fi-QtV.normalTitle" = "Bouton";
+

@@ -1,0 +1,24 @@
+/* Bundle name */
+"CFBundleName" = "Dokumente";
+
+/* (No Comment) */
+"CFBundleDisplayName" = "Dokumente";
+
+/* (No Comment) */
+"New Document" = "Neues Dokument";
+
+/* (No Comment) */
+"New Presentation" = "Neue Präsentation";
+
+/* (No Comment) */
+"New Spreadsheet" = "Neue Tabelle";
+
+/* Privacy - Camera Usage Description */
+"NSCameraUsageDescription" = "Diese App benötigt Zugriff auf die Kamera, damit Sie Fotos machen und in die App hochladen können.";
+
+/* Privacy - Face ID Usage Description */
+"NSFaceIDUsageDescription" = "Für die Authentifizierung mit Gesichtserkennung benötigt diese App die Berechtigung zur Gesichtserkennung.";
+
+/* Privacy - Photo Library Usage Description */
+"NSPhotoLibraryUsageDescription" = "Diese App benötigt Zugriff auf die Foto-Bibliothek, damit Sie Ihre Fotos in die App hochladen können.";
+

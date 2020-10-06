@@ -88,6 +88,15 @@ class ASCTransferViewController: UITableViewController {
             return nil
         }
     }
+    
+    private var sourceItems: [ASCEntity]? {
+        get {
+            if let navigationController = navigationController as? ASCTransferNavigationController {
+                return navigationController.sourceItems
+            }
+            return nil
+        }
+    }
 
     private var sourceProvider: ASCBaseFileProvider? {
         get {
@@ -384,6 +393,16 @@ class ASCTransferViewController: UITableViewController {
                         ? itemInfo.folder.title
                         : itemInfo.provider?.user?.displayName ?? itemInfo.folder.title
                 }
+                
+                cell.isUserInteractionEnabled = true
+                cell.contentView.alpha = 1
+                
+                if let sourceItems = sourceItems {
+                    if let _ = sourceItems.first(where: { $0.id == itemInfo.folder.id }) {
+                        cell.isUserInteractionEnabled = false
+                        cell.contentView.alpha = 0.5
+                    }
+                }
 
                 return cell
             }
@@ -396,6 +415,13 @@ class ASCTransferViewController: UITableViewController {
         tableView.deselectRow(at: indexPath, animated: true)
         
         let itemInfo = tableData[indexPath.row]
+        
+        if let sourceItems = sourceItems {
+            if let _ = sourceItems.first(where: { $0.id == itemInfo.folder.id }) {
+                return
+            }
+        }
+        
         let transferVC = ASCTransferViewController.instantiate(from: Storyboard.transfer)
         
         transferVC.provider = itemInfo.provider?.copy()

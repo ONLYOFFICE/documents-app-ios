@@ -221,6 +221,9 @@
 "Could not save the file." = "Невозможно сохранить файл.";
 
 /* No comment provided by engineer. */
+"Couldn't open file" = "Не удалось открыть файл";
+
+/* No comment provided by engineer. */
 "Create" = "Создать";
 
 /* Introduction Step Two - Description */
@@ -458,6 +461,9 @@
 
 /* Button title */
 "Move here" = "Переместить сюда";
+
+/* Button title */
+"Move or Copy" = "Переместить или скопировать";
 
 /* Caption of the processing */
 "Moving" = "Перемещение";
@@ -697,6 +703,9 @@
 "Select" = "Выбрать";
 
 /* No comment provided by engineer. */
+"Select another cloud to connect to Nextcloud, ownCloud and others are supported." = "Выберите другое облако для подключения к Nextcloud, ownCloud и другим поддерживаемым сервисам.";
+
+/* No comment provided by engineer. */
 "Select Photos" = "Выбрать фото";
 
 /* One line. Max 50 charasters */
@@ -889,7 +898,7 @@
 "Uploading" = "Загрузка";
 
 /* No comment provided by engineer. */
-"Use comments to add notes, suggestions, or questions for your collaborators. Edit, answer, resolve or delete them in process." = "Используйте комментарии, чтобы добавлять примечания, предложения или вопросы для ваших соавторов. Редактируйте, отвечайте, разрешайте или удаляйте их в процессе.";
+"Use comments to add notes, suggestions, or questions for your collaborators. Edit, answer, resolve or delete them in process." = "Используйте комментарии, чтобы добавить примечания, предложения или вопросы для участников совместной работы. Редактируйте, отвечайте, помечайте решенными или удаляйте комментарии в ходе работы.";
 
 /* Button title */
 "Use Face ID" = "Использовать Face ID";
@@ -898,7 +907,7 @@
 "Use Touch ID" = "Использовать Touch ID";
 
 /* No comment provided by engineer. */
-"Use Track Changes mode in text documents to suggest changes, accept or reject them." = "Используйте режим отслеживания изменений в текстовых документах, чтобы предлагать изменения, принимать или отклонять их.";
+"Use Track Changes mode in text documents to suggest changes, accept or reject them." = "Используйте режим отслеживания изменений в текстовых документах, чтобы предложить изменения, принять или отклонить их.";
 
 /* Error message */
 "User authentication failed" = "Не удалось выполнить проверку подлинности пользователя";

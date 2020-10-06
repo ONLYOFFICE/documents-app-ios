@@ -987,6 +987,8 @@ class ASCEntityManager: NSObject, UITextFieldDelegate {
 
         // Upload files
 
+        var uploadErrorFiles: [String] = []
+        
         operationQueue.addOperation {
             if cancel {
                 forceExit()
@@ -1046,6 +1048,7 @@ class ASCEntityManager: NSObject, UITextFieldDelegate {
                                                 if dstProvider.type != .local {
                                                     showNetworkErrorIfNeeded()
                                                 }
+                                                uploadErrorFiles.append(file.title)
                                             }
 
                                             if let result = result as? [String: Any] {
@@ -1075,6 +1078,14 @@ class ASCEntityManager: NSObject, UITextFieldDelegate {
 
             commonProgress = commonProgress + localProgress
             handler(commonProgress, false, false, nil, nil, &cancel)
+            
+            if uploadErrorFiles.count > 0 {
+                let errorMsg = move
+                    ? NSLocalizedString("Failed to move: %@", comment: "")
+                    : NSLocalizedString("Failed to copy: %@", comment: "")
+                handler(1, true, false, nil, ASCProviderError(msg: String(format: errorMsg, uploadErrorFiles.joined(separator: ", ").truncated(toLength: 100))), &cancel)
+                return
+            }
         }
 
         // Remove originals

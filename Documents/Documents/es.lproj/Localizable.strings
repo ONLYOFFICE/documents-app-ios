@@ -690,6 +690,9 @@
 /* Share status */
 "Review" = "Revisar";
 
+/* No comment provided by engineer. */
+"Reviewing" = "Revisión";
+
 /* Caption of the processing */
 "Saving" = "Guardando";
 
@@ -891,11 +894,17 @@
 /* Caption of the process */
 "Uploading" = "Cargando";
 
-/* Button title */
-"Use Face ID" = "Usar Face ID";
+/* No comment provided by engineer. */
+"Use comments to add notes, suggestions, or questions for your collaborators. Edit, answer, resolve or delete them in process." = "Utilice comentarios para añadir notas, sugerencias o preguntas para sus colaboradores. Edite, responda, resuelva o elimínelos en el proceso.";
 
 /* Button title */
-"Use Touch ID" = "Usar Touch ID";
+"Use Face ID" = "Use Face ID";
+
+/* Button title */
+"Use Touch ID" = "Use Touch ID";
+
+/* No comment provided by engineer. */
+"Use Track Changes mode in text documents to suggest changes, accept or reject them." = "Utilice el Modo de Control de Cambios en los documentos de texto para sugerir cambios, aceptarlos o rechazarlos";
 
 /* Error message */
 "User authentication failed" = "Error de autenticación de usuario";

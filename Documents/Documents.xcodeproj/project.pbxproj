@@ -1666,7 +1666,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "SETTINGS_FILE_PATH=\"${SRCROOT}/Settings.bundle/Root.plist\"\nVERSION=$(/usr/libexec/PlistBuddy -c \"Print CFBundleShortVersionString\" \"${INFOPLIST_FILE}\")\nBUILD=$(/usr/libexec/PlistBuddy -c \"Print CFBundleVersion\" \"${INFOPLIST_FILE}\")\n\n/usr/libexec/PlistBuddy -c \"Set PreferenceSpecifiers:0:DefaultValue $VERSION ($BUILD)\" \"${SETTINGS_FILE_PATH}\"\n";
+			shellScript = "if [ \"${CONFIGURATION}\" = \"Release\" ]; then\n\nSETTINGS_FILE_PATH=\"${SRCROOT}/Settings.bundle/Root.plist\"\nVERSION=$(/usr/libexec/PlistBuddy -c \"Print CFBundleShortVersionString\" \"${INFOPLIST_FILE}\")\nBUILD=$(/usr/libexec/PlistBuddy -c \"Print CFBundleVersion\" \"${INFOPLIST_FILE}\")\n\n/usr/libexec/PlistBuddy -c \"Set PreferenceSpecifiers:0:DefaultValue $VERSION ($BUILD)\" \"${SETTINGS_FILE_PATH}\"\n\nfi\n";
 		};
 		FC7DA57E1EF2962A0011092A /* Upload symbols to Firebase Crashlytics */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -2365,7 +2365,7 @@
 				CURRENT_PROJECT_VERSION = 600;
 				DEVELOPMENT_TEAM = 2WH24U26GJ;
 				ENABLE_BITCODE = YES;
-				INFOPLIST_FILE = Documents/Info.plist;
+				INFOPLIST_FILE = "Documents/Info-Debug.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				MARKETING_VERSION = 6.2;

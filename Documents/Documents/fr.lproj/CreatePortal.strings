@@ -8,19 +8,19 @@
 "d4S-7C-Csx.normalTitle" = "Créer un portail";
 
 /* Class = "UILabel"; text = "Make use of 30 days trial for free"; ObjectID = "FZg-vj-AVJ"; */
-"FZg-vj-AVJ.text" = "Faire usage de 30 jours d'essai gratuit";
+"FZg-vj-AVJ.text" = "Profitez d'essai gratuit de 30 jours";
 
 /* Class = "UILabel"; text = "Create your own\nweb office"; ObjectID = "huj-vr-CgZ"; */
 "huj-vr-CgZ.text" = "Créer votre propre \noffice web";
 
 /* Class = "UITextField"; placeholder = "Last Name"; ObjectID = "iLP-xJ-pU3"; */
-"iLP-xJ-pU3.placeholder" = "Nom de Famille";
+"iLP-xJ-pU3.placeholder" = "Nom de famille";
 
 /* Class = "UILabel"; text = "Choose a password and\nstart using your office"; ObjectID = "qKc-e7-uTl"; */
-"qKc-e7-uTl.text" = "Choisissez un mot de passe et \ncommencez à utiliser votre office";
+"qKc-e7-uTl.text" = "Choisissez un mot de passe et \nlancez votre office";
 
 /* Class = "UILabel"; text = "After the registration a mail with your portal registration details will be sent to your email address."; ObjectID = "qwT-Pr-auo"; */
-"qwT-Pr-auo.text" = "Après l'inscription, un mail avec les détails de votre inscription au portail sera envoyé à votre adresse e-mail.";
+"qwT-Pr-auo.text" = "Après l'enregistrement, un courriel avec vos données d'inscription au portail sera envoyé à votre adresse e-mail.";
 
 /* Class = "UITextField"; placeholder = "Password"; ObjectID = "to9-RR-YBV"; */
 "to9-RR-YBV.placeholder" = "Mot de passe";
@@ -32,5 +32,5 @@
 "WWd-Za-CPd.placeholder" = "Adresse E-mail";
 
 /* Class = "UITextField"; placeholder = "Repeat Password"; ObjectID = "Zgx-q8-jRP"; */
-"Zgx-q8-jRP.placeholder" = "Répétez le Mot de Passe";
+"Zgx-q8-jRP.placeholder" = "Confirmez le mot de passe";
 

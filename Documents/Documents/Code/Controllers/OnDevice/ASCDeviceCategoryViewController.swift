@@ -60,7 +60,7 @@ class ASCDeviceCategoryViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        if let documentsNC = navigationController as? ASCBaseNavigationController {
+        if UIDevice.pad, let documentsNC = navigationController as? ASCBaseNavigationController {
             documentsNC.hasShadow = true
         }
 

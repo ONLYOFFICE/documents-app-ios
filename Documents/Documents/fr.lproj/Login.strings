@@ -5,7 +5,7 @@
 "0X2-Xg-z5B.text" = "Titre";
 
 /* Class = "UITextField"; text = "Country Code"; ObjectID = "3oc-kQ-msr"; */
-"3oc-kQ-msr.text" = "Code de Pays";
+"3oc-kQ-msr.text" = "Code de pays";
 
 /* Class = "UILabel"; text = "-"; ObjectID = "6Zd-HN-8wS"; */
 "6Zd-HN-8wS.text" = "-";
@@ -14,13 +14,13 @@
 "18Q-Kh-0cC.text" = "Détail";
 
 /* Class = "UIButton"; normalTitle = "Login by"; ObjectID = "51s-1D-raN"; */
-"51s-1D-raN.normalTitle" = "Connexion par";
+"51s-1D-raN.normalTitle" = "Connexion via";
 
 /* Class = "UILabel"; text = "Phone Number"; ObjectID = "76Y-EB-F07"; */
-"76Y-EB-F07.text" = "Numéro de Téléphone";
+"76Y-EB-F07.text" = "Numéro de téléphone";
 
 /* Class = "UIButton"; normalTitle = "Forgot?"; ObjectID = "78r-Ca-NKv"; */
-"78r-Ca-NKv.normalTitle" = "Oublié?";
+"78r-Ca-NKv.normalTitle" = "Oublié ?";
 
 /* Class = "UILabel"; text = "Account"; ObjectID = "AkN-p0-Mzy"; */
 "AkN-p0-Mzy.text" = "Compte";
@@ -32,19 +32,19 @@
 "B8R-KD-Lml.text" = "Paramétrer l'application pour générer les codes d'authentification ";
 
 /* Class = "UILabel"; text = "Haven't received the code?"; ObjectID = "cb0-ic-tPA"; */
-"cb0-ic-tPA.text" = "Vous n'avez pas reçu de code?";
+"cb0-ic-tPA.text" = "Vous n'avez pas reçu de code ?";
 
 /* Class = "UILabel"; text = "Portal"; ObjectID = "cBn-x1-r5A"; */
 "cBn-x1-r5A.text" = "Portail";
 
 /* Class = "UILabel"; text = "Two-Factor\nAuthentication"; ObjectID = "DK4-QO-Jde"; */
-"DK4-QO-Jde.text" = "L'Authentification \nà Deux Facteurs";
+"DK4-QO-Jde.text" = "L'Authentification \nà deux facteurs";
 
 /* Class = "UIButton"; normalTitle = "Next"; ObjectID = "e1X-0t-hcs"; Note = "Do not translate"; */
 "e1X-0t-hcs.normalTitle" = "Suivant";
 
 /* Class = "UILabel"; text = "Two-Factor\nAuthentication"; ObjectID = "Eb4-3w-0Jf"; */
-"Eb4-3w-0Jf.text" = "L'Authentification \nà Deux Facteurs";
+"Eb4-3w-0Jf.text" = "L'Authentification \nà deux facteurs";
 
 /* Class = "UILabel"; text = "Address"; ObjectID = "Fso-pj-304"; */
 "Fso-pj-304.text" = "Adresse";
@@ -53,7 +53,7 @@
 "G99-FE-uk4.normalTitle" = "Créer cloud";
 
 /* Class = "UILabel"; text = "Connect to your ONLYOFFICE cloud to store files online and collaborate on documents in real time"; ObjectID = "GFx-Ry-9GC"; */
-"GFx-Ry-9GC.text" = "Se connecter à votre ONLYOFFICE cloud pour stocker les fichiers en ligne et de collaborer sur des documents en temps réel";
+"GFx-Ry-9GC.text" = "Se connecter à votre ONLYOFFICE cloud pour stocker les fichiers en ligne et collaborer sur des documents en temps réel";
 
 /* Class = "UILabel"; text = "Select an account to sign in"; ObjectID = "Gkv-tP-6EM"; */
 "Gkv-tP-6EM.text" = "Sélectionnez un compte pour vous connecter";
@@ -62,7 +62,7 @@
 "gzc-cW-NPT.title" = "Comptes";
 
 /* Class = "UINavigationItem"; title = "SSO Login"; ObjectID = "hRN-W6-nA0"; */
-"hRN-W6-nA0.title" = "La Connexion par SSO (Authentification Unique)";
+"hRN-W6-nA0.title" = "La connexion via SSO (authentification unique)";
 
 /* Class = "UILabel"; text = "Copy the key and paste it to the Google Authenticator application"; ObjectID = "K5M-Of-QAk"; */
 "K5M-Of-QAk.text" = "Copiez la clé et collez-la dans l'application Google Authenticator ";
@@ -71,7 +71,7 @@
 "LwV-Os-V4m.text" = "Lancez l'application Google Authenticator ";
 
 /* Class = "UILabel"; text = "Enter a phone number that can be used to verify your identity"; ObjectID = "MNA-z2-ITx"; */
-"MNA-z2-ITx.text" = "Entrez un numéro de téléphone qui peut être utilisé pour vérifier votre identité";
+"MNA-z2-ITx.text" = "Saisissez un numéro de téléphone qui peut être utilisé pour vérifier votre identité";
 
 /* Class = "UIBarButtonItem"; title = "Back"; ObjectID = "MUG-TG-NlP"; */
 "MUG-TG-NlP.title" = "Retour";
@@ -101,13 +101,13 @@
 "SH2-Fd-5Ze.text" = "Ouvrez l'application d'authentication  et copiez le code de l'appli";
 
 /* Class = "UILabel"; text = "Login via"; ObjectID = "szM-hs-ncG"; */
-"szM-hs-ncG.text" = "Connectez-vous par";
+"szM-hs-ncG.text" = "Connectez-vous via";
 
 /* Class = "UITextField"; placeholder = "Secret"; ObjectID = "tnK-je-flS"; */
 "tnK-je-flS.placeholder" = "Secret";
 
 /* Class = "UILabel"; text = "Get more information"; ObjectID = "ttx-IC-XrN"; */
-"ttx-IC-XrN.text" = "Obtenir plus d'informations";
+"ttx-IC-XrN.text" = "Obtenir plus d'information";
 
 /* Class = "UIBarButtonItem"; title = "Next"; ObjectID = "twm-cB-W69"; */
 "twm-cB-W69.title" = "Suivant(e)";

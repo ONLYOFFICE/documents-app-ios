@@ -29,7 +29,7 @@
 			<key>NSStringFormatValueTypeKey</key>
 			<string>lu</string>
 			<key>one</key>
-			<string>et %lu fichier séléctionnés</string>
+			<string>et %lu fichier séléctionné</string>
 			<key>other</key>
 			<string>et %lu fichiers séléctionnés</string>
 		</dict>

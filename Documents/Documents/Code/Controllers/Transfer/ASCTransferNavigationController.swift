@@ -23,9 +23,9 @@ class ASCTransferNavigationController: ASCBaseNavigationController {
     static let identifier = String(describing: ASCTransferNavigationController.self)
 
     var transferType: ASCTransferType = .copy
-//    var transferMode: ASCTransferMode = .local
     var sourceProvider: ASCBaseFileProvider?
     var sourceFolder: ASCFolder?
+    var sourceItems: [ASCEntity]?
     var doneHandler: ((ASCBaseFileProvider?, ASCFolder?) -> Void)?
     
     

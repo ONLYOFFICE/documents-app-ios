@@ -2232,6 +2232,9 @@ class ASCDocumentsViewController: UITableViewController, UIGestureRecognizerDele
                     
                     return
                 }
+                
+                // Force reset open recover version
+                UserDefaults.standard.removeObject(forKey: ASCConstants.SettingsKeys.openedDocumentModifity)
               
                 let closeHandler = closeProgressFile(
                     title: NSLocalizedString("Saving", comment: "Caption of the processing")
@@ -2718,6 +2721,7 @@ class ASCDocumentsViewController: UITableViewController, UIGestureRecognizerDele
 
             transferNavigationVC.sourceProvider = provider
             transferNavigationVC.sourceFolder = folder
+            transferNavigationVC.sourceItems = entities
             transferNavigationVC.doneHandler = { [weak self] destProvider, destFolder in
                 guard
                     let strongSelf = self,
@@ -2779,14 +2783,22 @@ class ASCDocumentsViewController: UITableViewController, UIGestureRecognizerDele
                                             completion?(items)
                                         }
                                         
-                                        if let strongSelf = self,
-                                            srcProvider.type != .local || destProvider.type != .local,
-                                            !ASCNetworkReachability.shared.isReachable
-                                        {
-                                            UIAlertController.showError(
-                                                in: strongSelf,
-                                                message: NSLocalizedString("Check your internet connection", comment: "")
-                                            )
+                                        if let strongSelf = self {
+                                            if srcProvider.type != .local || destProvider.type != .local,
+                                                !ASCNetworkReachability.shared.isReachable
+                                            {
+                                                UIAlertController.showError(
+                                                    in: strongSelf,
+                                                    message: NSLocalizedString("Check your internet connection", comment: "")
+                                                )
+                                            } else {
+                                                if !success, let error = error {
+                                                    UIAlertController.showError(
+                                                        in: strongSelf,
+                                                        message: error.localizedDescription
+                                                    )
+                                                }
+                                            }
                                         }
                                     } else {
                                         transferAlert.progress = progress

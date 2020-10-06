@@ -11,7 +11,7 @@
 "%lu Folder selected" = "%lu Dossier sélectionné";
 
 /* No comment provided by engineer. */
-"%lu items with the same name already exist in the folder '%@'. Overwrite the items?" = "%1$lu les éléments avec le même nom existe déjà dans le dossier '%2$@'. Faut-il remplacer les éléments?";
+"%lu items with the same name already exist in the folder '%@'. Overwrite the items?" = "%1$lu l'élément avec ce nom existe déjà dans le dossier '%2$@'. Voulez-vous le remplacer ?";
 
 /* No comment provided by engineer. */
 "© Ascensio System SIA %d" = "© Ascensio System SIA %d";
@@ -47,19 +47,19 @@
 "All Files" = "Tous les fichiers";
 
 /* No comment provided by engineer. */
-"An unexpected error has occurred. Please try again later. Sorry for inconvenience." = "Une erreur inattendue s'est produite. Veuillez réessayer plus tard. Désolé pour le dérangement.";
+"An unexpected error has occurred. Please try again later. Sorry for inconvenience." = "Une erreur inattendue s'est produite. Veuillez réessayer plus tard. Désolé pour cet inconvénient.";
 
 /* No comment provided by engineer. */
-"Are you sure you want to delete the account %@ from this device?" = "Êtes-vous sûr de vouloir supprimer le compte %@ de cet appareil?";
+"Are you sure you want to delete the account %@ from this device?" = "Êtes-vous sûr de vouloir supprimer le compte %@ de cet appareil ?";
 
 /* No comment provided by engineer. */
-"Are you sure you want to leave this account?" = "Êtes-vous sûr de vouloir quitter ce compte?";
+"Are you sure you want to leave this account?" = "Êtes-vous sûr de vouloir quitter ce compte ?";
 
 /* No comment provided by engineer. */
 "Author" = "Auteur";
 
 /* No comment provided by engineer. */
-"Box directory" = "Boîte de répertoire";
+"Box directory" = "Répertoire";
 
 /* Data units */
 "bytes" = "bytes";
@@ -71,13 +71,13 @@
 "Can not create file in the folder." = "Impossible de créer un fichier dans le dossier.";
 
 /* No comment provided by engineer. */
-"Can not create file with this name." = "Ne peut pas créer de fichier avec ce nom.";
+"Can not create file with this name." = "Impossible de créer de fichier avec ce nom.";
 
 /* No comment provided by engineer. */
-"Can not create folder with this name." = "Ne peut pas créer de dossier avec ce nom.";
+"Can not create folder with this name." = "Impossible de créer de dossier avec ce nom.";
 
 /* No comment provided by engineer. */
-"Can not duplicate the file." = "Ne peut pas dupliquer le fichier.";
+"Can not duplicate the file." = "Impossible de dupliquer le fichier.";
 
 /* Button title */
 "Cancel" = "Annuler";
@@ -92,7 +92,7 @@
 "Choose CSV Options" = "Choisir les options CSV";
 
 /* Caption of the processing */
-"Cleanup" = "Nettoyage";
+"Cleanup" = "Nettoyer";
 
 /* Button title */
 "Clear Cache" = "Vider le cache";
@@ -101,7 +101,7 @@
 "Clear Cache?" = "Vider le cache ?";
 
 /* Caption of the processing */
-"Clearing" = "Liquidation";
+"Clearing" = "Effacement";
 
 /* Close view */
 "Close" = "Fermer";
@@ -110,7 +110,7 @@
 "Close the document before opening a new one." = "Fermer le document actif avant d'en ouvrir un autre";
 
 /* Default external storage name */
-"Cloud directory" = "Répertoire de cloud";
+"Cloud directory" = "Répertoire cloud";
 
 /* Cut from centimeters */
 "cm" = "cm";
@@ -118,8 +118,11 @@
 /* Introduction Step Five - Title */
 "Collaborate with your team" = "Collaborez avec votre équipe";
 
+/* No comment provided by engineer. */
+"Comments" = "Commentaires";
+
 /* Category title */
-"Common Documents" = "Documents Communs";
+"Common Documents" = "Documents communs";
 
 /* Cancel */
 "common.cancel" = "Annuler";
@@ -137,25 +140,25 @@
 "common.paymentRequiredMsg" = "La période payée est terminée";
 
 /* Payment required title */
-"common.paymentRequiredTitle" = "Paiement Requis";
+"common.paymentRequiredTitle" = "Paiement requis";
 
 /* Button title */
 "Connect" = "Connecter";
 
 /* No comment provided by engineer. */
-"Connect Clouds" = "Connecter les Clouds";
+"Connect Clouds" = "Connecter les clouds";
 
 /* Introduction Step Three - Description */
-"Connect third-party storage\nlike Nextcloud, ownCloud, Yandex Disk and\nothers which use WebDAV protocol." = "Connecter un stockage tiers\ncomme Nextcloud, ownCloud, Yandex Disk et\nd'autres qui utilisent le protocole WebDAV.";
+"Connect third-party storage\nlike Nextcloud, ownCloud, Yandex Disk and\nothers which use WebDAV protocol." = "Connecter un stockage tiers\ntel que Nextcloud, ownCloud, Yandex Disk et\nd'autres via le protocole WebDAV.";
 
 /* Footer text */
-"Connect to your %@ cloud to store files online and collaborate on documents in real time" = "Connectez à votre %@ cloud pour stocker vos fichiers en ligne et collaborer sur documents en temps réel";
+"Connect to your %@ cloud to store files online and collaborate on documents in real time" = "Connectez-vous au cloud %@ pour stocker vos fichiers en ligne et collaborer sur documents en temps réel";
 
 /* Caption of the process */
 "Connecting" = "Connexion";
 
 /* No comment provided by engineer. */
-"Continue anyway" = "Continuer quand même";
+"Continue anyway" = "Continuer";
 
 /* No comment provided by engineer. */
 "Converter" = "Convertisseur";
@@ -167,10 +170,10 @@
 "Copy here" = "Copier ici";
 
 /* Caption of the processing */
-"Copying" = "Copiage";
+"Copying" = "Copie en cours";
 
 /* No comment provided by engineer. */
-"Could not convert file to export." = "Impossible de convertir un fichier à l'exportation.";
+"Could not convert file to export." = "Impossible de convertir un fichier pour l'exportation.";
 
 /* No comment provided by engineer. */
 "Could not copy." = "Impossible de copier.";
@@ -224,7 +227,7 @@
 "Create" = "Créer";
 
 /* Introduction Step Two - Description */
-"Create and edit documents with our comprehensive toolbar: work with complex objects in text documents, perform extensive calculations in spreadsheets, create stunning presentations and view PDF files with no formatting loss." = "Vous pouvez créer et modifier les documents avec notre barre d'outils: travailler avec d’objets complexes dans les documents texte, effectuer les calculs dans les feuilles de calcul. Créer des présentations et des fichiers. Affichage PDF sans perte de mise en forme.";
+"Create and edit documents with our comprehensive toolbar: work with complex objects in text documents, perform extensive calculations in spreadsheets, create stunning presentations and view PDF files with no formatting loss." = "Créez et modifiez les documents avec notre barre d'outils : travaillez sur des objets complexes dans les documents texte, effectuez les calculs dans les feuilles de calcul, créez des présentations et visionnez des fichiers PDF sans perte de mise en forme.";
 
 /* No comment provided by engineer. */
 "Create new documents, spreadsheets or presentations. Create new folders to organize your files." = "Créez de nouveaux documents, feuilles de calcul ou présentations. Créez de nouveaux dossiers pour organiser vos fichiers.";
@@ -239,22 +242,22 @@
 "Delete" = "Effacer";
 
 /* No comment provided by engineer. */
-"Delete %lu File" = "Effacer %lu Fichier";
+"Delete %lu File" = "Effacer %lu fichier";
 
 /* No comment provided by engineer. */
-"Delete %lu Folder" = "Effacer %lu Dossier";
+"Delete %lu Folder" = "Effacer %lu dossier";
 
 /* No comment provided by engineer. */
-"Delete %lu Folder and %lu File" = "Effacer %1$lu Dossier et %2$lu Fichier";
+"Delete %lu Folder and %lu File" = "Effacer %1$lu dossier et %2$lu fichier";
 
 /* No comment provided by engineer. */
 "Delete account" = "Supprimer le compte";
 
 /* Button title */
-"Delete File" = "Effacer Fichier";
+"Delete File" = "Effacer fichier";
 
 /* No comment provided by engineer. */
-"Delete Folder" = "Effacer Dossier";
+"Delete Folder" = "Effacer dossier";
 
 /* Caption of the processing */
 "Deleting" = "Suppression";
@@ -263,7 +266,7 @@
 "Delimiter" = "Délimiteur";
 
 /* Share status */
-"Deny Access" = "Refuser l'Accès";
+"Deny Access" = "Accès interdit";
 
 /* Button title */
 "Disconnect third party" = "Débrancher les tiers";
@@ -327,10 +330,10 @@
 "Encoding" = "Codage";
 
 /* Presentation Viewer */
-"End Slide Show" = "Arrêtez le Diaporama";
+"End Slide Show" = "Arrêter le diaporama";
 
 /* No comment provided by engineer. */
-"Enter Portal Address" = "Entrez l'Adresse du Portail";
+"Enter Portal Address" = "Entrez l'adresse du portail";
 
 /* No comment provided by engineer. */
 "Error" = "Erreur";
@@ -348,34 +351,34 @@
 "error.errorServerTitle" = "Erreur de serveur";
 
 /* No comment provided by engineer. */
-"Failed online conversion service." = "Échoué service de conversion en ligne.";
+"Failed online conversion service." = "Conversion en ligne echouée.";
 
 /* No comment provided by engineer. */
-"Failed to check portal availability." = "Échoué de vérifier l'accès au portail.";
+"Failed to check portal availability." = "Vérification d'accès au portail echouée.";
 
 /* No comment provided by engineer. */
-"Failed to check the name of the portal" = "Échoué de vérifier le nom du portail";
+"Failed to check the name of the portal" = "Vérification du nom de portail echouée.";
 
 /* No comment provided by engineer. */
-"Failed to get file information from the server." = "Échoué d’obtenir des informations sur le fichier à partir du serveur";
+"Failed to get file information from the server." = "Tentative échouée d’obtenir des informations sur le fichier à partir du serveur";
 
 /* No comment provided by engineer. */
-"Failed to get file list." = "Échoué d'obtenir la liste des fichiers";
+"Failed to get file list." = "Tentative d'obtenir la liste des fichiers échouée";
 
 /* No comment provided by engineer. */
 "Failed to get information about the file." = "Impossible d'obtenir des informations sur le fichier.";
 
 /* No comment provided by engineer. */
-"Failed to get the address of the document server." = "Échoué d’obtenir l'adresse du serveur de documents.";
+"Failed to get the address of the document server." = "Tentative échouée d’obtenir l'adresse du serveur de documents.";
 
 /* No comment provided by engineer. */
-"Failed upload source file to conversion online service." = "Échoué de télécharger un fichier source pour la conversion de service en ligne.";
+"Failed upload source file to conversion online service." = "Tentative échouée de charger un fichier source vers le service de conversion en ligne.";
 
 /* No comment provided by engineer. */
 "Failure to download file from portal." = "L'échec du téléchargement de fichiers à partir du portail.";
 
 /* No comment provided by engineer. */
-"Failure to download result from conversion online service." = "L'échec du téléchargement de résultat de la conversion de service en ligne.";
+"Failure to download result from conversion online service." = "L'échec du téléchargement de résultat de conversion.";
 
 /* No comment provided by engineer. */
 "Files" = "Fichiers";
@@ -387,16 +390,16 @@
 "Folders" = "Dossiers";
 
 /* Share status */
-"Full Access" = "Accès Complet";
+"Full Access" = "Accès complet";
 
 /* Data units */
 "Gb" = "Go";
 
 /* No comment provided by engineer. */
-"Get started" = "Commencer!";
+"Get started" = "Commencer !";
 
 /* No comment provided by engineer. */
-"GET STARTED!" = "COMMENCER!";
+"GET STARTED!" = "COMMENCER !";
 
 /* Introduction Step One - Title */
 "Getting started" = "Démarrage";
@@ -408,22 +411,22 @@
 "Google Drive" = "Google Drive";
 
 /* No comment provided by engineer. */
-"Groups" = "Les Groupes";
+"Groups" = "Groupes";
 
 /* No comment provided by engineer. */
 "Images" = "Images";
 
 /* Introduction Step Five - Description */
-"In online mode, use real-time co-editing features of %@ to work on documents together with your portal members, share documents and create common storage folders." = "En mode en ligne, utilisez les fonctions de co-édition en temps réel de %@ pour travailler sur les documents avec les membres de votre portail, partager des documents et créer des dossiers de stockage communs.";
+"In online mode, use real-time co-editing features of %@ to work on documents together with your portal members, share documents and create common storage folders." = "En mode connecté, utilisez les fonctions de co-édition en temps réel de %@ pour travailler sur les documents avec les membres de votre portail, partager des documents et créer des dossiers de stockage communs.";
 
 /* No comment provided by engineer. */
 "Incorrect portal address" = "Adresse de portail incorrecte";
 
 /* No comment provided by engineer. */
-"Invalid Country Code" = "Code de Pays Incorrect";
+"Invalid Country Code" = "Code de pays Incorrect";
 
 /* Error message */
-"Invalid URL: The format ot the URL could not be determined" = "URL invalide: Le format de l'URL n'a pu être déterminé";
+"Invalid URL: The format ot the URL could not be determined" = "URL invalide : Le format de l'URL ne pas identifié";
 
 /* Data units */
 "Kb" = "Ko";
@@ -432,13 +435,13 @@
 "Logging in" = "Ouverture de session";
 
 /* No comment provided by engineer. */
-"Login" = "Login";
+"Login" = "Connexion";
 
 /* No comment provided by engineer. */
-"Login by %@" = "Connexion par %@";
+"Login by %@" = "Connexion via %@";
 
 /* No comment provided by engineer. */
-"Login is empty" = "Login est vide.";
+"Login is empty" = "Identifiant est vide.";
 
 /* Button title
    Caption of the process */
@@ -463,13 +466,13 @@
 "Move or Copy" = "Déplacer ou copier";
 
 /* Caption of the processing */
-"Moving" = "Déménagement";
+"Moving" = "Déplacement";
 
 /* No comment provided by engineer. */
-"My Clouds" = "Mes Clouds";
+"My Clouds" = "Mes clouds";
 
 /* Category title */
-"My Documents" = "Mes Documents";
+"My Documents" = "Mes documents";
 
 /* No comment provided by engineer. */
 "My Drive" = "Mon Drive";
@@ -478,19 +481,19 @@
 "Name is empty" = "Le nom est vide";
 
 /* No comment provided by engineer. */
-"Needs additional params." = "Nécessite des paramètres supplémentaires.";
+"Needs additional params." = "Besoins de paramètres supplémentaires.";
 
 /* No comment provided by engineer. */
-"New Document" = "Nouveau Document";
+"New Document" = "Nouveau document";
 
 /* No comment provided by engineer. */
-"New Folder" = "Nouveau Dossier";
+"New Folder" = "Nouveau dossier";
 
 /* No comment provided by engineer. */
 "New Presentation" = "Nouvelle présentation";
 
 /* No comment provided by engineer. */
-"New Spreadsheet" = "Nouvelle Feuille de Calcul";
+"New Spreadsheet" = "Nouvelle feuille de Calcul";
 
 /* Next step */
 "Next" = "Suivant";
@@ -502,13 +505,13 @@
 "No connection" = "Pas de connexion";
 
 /* No comment provided by engineer. */
-"No information about the user profile." = "Aucune information sur le profil de l'utilisateur.";
+"No information about the user profile." = "Aucune information sur le profil utilisateur.";
 
 /* No comment provided by engineer. */
-"No network" = "Pas de réseau";
+"No network" = "Pas de connexion";
 
 /* No comment provided by engineer. */
-"No network connection can be found. Please check the connection and reload the page." = "Aucune connexion réseau ne peut être trouvée. Veuillez vérifier la connexion et recharger la page.";
+"No network connection can be found. Please check the connection and reload the page." = "Aucune connexion réseau ne peut être trouvée. Veuillez vérifier la connexion et rechargez la page.";
 
 /* No comment provided by engineer. */
 "No results matching your search could be found. Please try another phrase." = "Aucun résultat correspondant à votre recherche n'a été trouvé. Veuillez essayer une autre phrase.";
@@ -526,7 +529,7 @@
 "None" = "Aucun";
 
 /* No comment provided by engineer. */
-"Note: removal from your account can not be undone." = "Remarque: la suppression de votre compte ne peut pas être annulée.";
+"Note: removal from your account can not be undone." = "Remarque : l'effacement de votre compte ne peut pas être annulé.";
 
 /* Used in the context: 'Showing 1 of 3 items' */
 "of" = "de";
@@ -562,7 +565,7 @@
 "Open Document" = "Ouvrir le document";
 
 /* Button title */
-"Open In" = "Ouvert(e) en";
+"Open In" = "Ouvert(e) à";
 
 /* Caption of the processing */
 "Opening" = "Ouverture";
@@ -574,10 +577,10 @@
 "Other" = "Autre";
 
 /* Button title */
-"Overwrite" = "Écraser";
+"Overwrite" = "Remplacer";
 
 /* Button title */
-"Overwrite confirmation" = "Confirmation de l'écrasement";
+"Overwrite confirmation" = "Confirmation de remplacement";
 
 /* No comment provided by engineer. */
 "ownCloud" = "ownCloud";
@@ -604,28 +607,28 @@
 "photos" = "photos";
 
 /* No comment provided by engineer. */
-"Please go to Settings and enable the camera for this app to use this feature." = "Veuillez aller dans Paramètres et activer la caméra pour que cette application utilise cette fonction.";
+"Please go to Settings and enable the camera for this app to use this feature." = "Passez aux Paramètres et activez la caméra pour que cette application accède à cette fonction.";
 
 /* No comment provided by engineer. */
 "Please re-login to renew your session." = "Veuillez vous reconnecter pour renouveler votre session.";
 
 /* No comment provided by engineer. */
-"Please retry. \n\n If the problem persists contact us and mention this error code: Box - %@" = "Veuillez réessayer. \n\n Si le problème persiste, contactez nous et mentionnez ce code d'erreur: Boîte - %@";
+"Please retry. \n\n If the problem persists contact us and mention this error code: Box - %@" = "Veuillez réessayer. \n\n Si le problème persiste, contactez-nous et mentionnez ce code d'erreur : Boîte - %@";
 
 /* No comment provided by engineer. */
-"Please retry. \n\n If the problem persists contact us and mention this error code: Dropbox - %@" = "Veuillez réessayer. \n\n Si le problème persiste, contactez nous et mentionnez ce code d'erreur: Dropbox - %@";
+"Please retry. \n\n If the problem persists contact us and mention this error code: Dropbox - %@" = "Veuillez réessayer. \n\n Si le problème persiste, contactez-nous et mentionnez ce code d'erreur : Dropbox - %@";
 
 /* No comment provided by engineer. */
-"Please retry. \n\n If the problem persists contact us and mention this error code: Google - %@" = "Veuillez réessayer. \n\n Si le problème persiste, contactez nous et mentionnez ce code d'erreur: Google - %@";
+"Please retry. \n\n If the problem persists contact us and mention this error code: Google - %@" = "Veuillez réessayer. \n\n Si le problème persiste, contactez-nous et mentionnez ce code d'erreur : Google - %@";
 
 /* No comment provided by engineer. */
-"Please retry. \n\n If the problem persists contact us and mention this error code: OneDrive - %@" = "Veuillez réessayer. \n\n Si le problème persiste, contactez nous et mentionnez ce code d'erreur: OneDrive - %@";
+"Please retry. \n\n If the problem persists contact us and mention this error code: OneDrive - %@" = "Veuillez réessayer. \n\n Si le problème persiste, contactez-nous et mentionnez ce code d'erreur : OneDrive - %@";
 
 /* No comment provided by engineer. */
-"Please retry. \n\n If the problem persists contact us and mention this error code: SSO - %@" = "Veuillez réessayer. \n\n Si le problème persiste, contactez nous et mentionnez ce code d'erreur: SSO - %@";
+"Please retry. \n\n If the problem persists contact us and mention this error code: SSO - %@" = "Veuillez réessayer. \n\n Si le problème persiste, contactez-nous et mentionnez ce code d'erreur : SSO - %@";
 
 /* No comment provided by engineer. */
-"Portal Address" = "Adresse de Portail";
+"Portal Address" = "Adresse de portail";
 
 /* No comment provided by engineer. */
 "Portal is unavailable." = "Le portail n'est pas disponible.";
@@ -634,7 +637,7 @@
 "Presentation" = "Présentation";
 
 /* Default title of sample document */
-"Presentation Sample" = "Exemple de Présentation";
+"Presentation Sample" = "Exemple de présentation";
 
 /* No comment provided by engineer. */
 "Presentations" = "Présentations";
@@ -646,13 +649,13 @@
 "Processing" = "Traitement";
 
 /* Category title */
-"Project Documents" = "Documents de Projet";
+"Project Documents" = "Documents de projet";
 
 /* No comment provided by engineer. */
-"Protected File" = "Fichier Protégé";
+"Protected File" = "Fichier protégé";
 
 /* Share status */
-"Read Only" = "Ne que Lire";
+"Read Only" = "Lecture seule";
 
 /* Button title */
 "Recover here" = "Récupérer ici";
@@ -673,7 +676,7 @@
 "Rename failed." = "Changement de nom a échoué.";
 
 /* No comment provided by engineer. */
-"Rename failed. An object with such a similar name exists." = "Changement de nom a échoué. Il existe un objet avec un nom similaire.";
+"Rename failed. An object with such a similar name exists." = "Changement de nom a échoué. Il existe un objet avec ce nom.";
 
 /* Caption of the processing */
 "Renaming" = "Changement de nom";
@@ -688,7 +691,10 @@
 "Restoring" = "Restauration";
 
 /* Share status */
-"Review" = "Revue";
+"Review" = "Révision";
+
+/* No comment provided by engineer. */
+"Reviewing" = "Révision";
 
 /* Caption of the processing */
 "Saving" = "Enregistrer";
@@ -697,25 +703,25 @@
 "Select" = "Sélectionner";
 
 /* No comment provided by engineer. */
-"Select another cloud to connect to Nextcloud, ownCloud and others are supported." = "Sélectionnez un autre cloud to connecter à Nextcloud, ownCloud et d'autres stockages supportés";
+"Select another cloud to connect to Nextcloud, ownCloud and others are supported." = "Sélectionnez un autre cloud pour vous connecter à Nextcloud, ownCloud et d'autres stockages supportés";
 
 /* No comment provided by engineer. */
-"Select Photos" = "Sélectionner les Photos";
+"Select Photos" = "Sélectionner les photos";
 
 /* One line. Max 50 charasters */
-"Select the folder to copy the items" = "Sélectionner le dossier à copier les éléments";
+"Select the folder to copy the items" = "Sélectionnez le dossier pour copier les éléments";
 
 /* One line. Max 50 charasters */
-"Select the folder to move the items" = "Sélectionner le dossier à déplacer les éléments";
+"Select the folder to move the items" = "Sélectionner le dossier pour déplacer les éléments";
 
 /* One line. Max 50 charasters */
-"Select the folder to recover the items" = "Sélectionner le dossier à récupérer les éléments";
+"Select the folder to recover the items" = "Sélectionner le dossier pour récupérer les éléments";
 
 /* No comment provided by engineer. */
 "Selected provider is not available" = "Le fournisseur sélectionné n'est pas disponible";
 
 /* No comment provided by engineer. */
-"Selected: %ld" = "Sélectionné: %ld";
+"Selected: %ld" = "Sélectionné : %ld";
 
 /* No comment provided by engineer. */
 "Settings" = "Paramètres";
@@ -724,7 +730,7 @@
 "Share" = "Partager";
 
 /* Category title */
-"Shared with Me" = "Partagé avec Moi";
+"Shared with Me" = "Partagé avec moi";
 
 /* No comment provided by engineer. */
 "SharePoint directory" = "Répertoire SharePoint ";
@@ -739,16 +745,16 @@
 "Size" = "Taille";
 
 /* Button title */
-"Skip" = "Sauter";
+"Skip" = "Ignorer";
 
 /* No comment provided by engineer. */
-"SKIP" = "SAUTER";
+"SKIP" = "IGNORER";
 
 /* Presentation Viewer */
-"Slide %i of %i" = "Glisser %1$i of %2$i";
+"Slide %i of %i" = "Diapositive %1$i of %2$i";
 
 /* Button title */
-"Sort" = "Classer";
+"Sort" = "Trier";
 
 /* No comment provided by engineer. */
 "Space" = "Espace";
@@ -757,13 +763,13 @@
 "Spreadsheet" = "Feuille de calcul";
 
 /* Default title of sample document */
-"Spreadsheet Sample" = "Exemple de Feuille de Calcul";
+"Spreadsheet Sample" = "Exemple de feuille de calcul";
 
 /* No comment provided by engineer. */
 "Spreadsheets" = "Feuilles de calcul";
 
 /* No comment provided by engineer. */
-"Switch" = "Passer";
+"Switch" = "Basculer";
 
 /* No comment provided by engineer. */
 "Tab" = "Onglet";
@@ -778,10 +784,10 @@
 "The account name must be between 6 and 50 characters long" = "Le nom du compte doit comporter entre 6 et 50 caractères";
 
 /* No comment provided by engineer. */
-"The deleted files go to the trash. You can either restore or delete them forever." = "Les fichiers supprimés vont à la poubelle. Vous pouvez les restaurer ou les supprimer pour toujours.";
+"The deleted files go to the trash. You can either restore or delete them forever." = "Les fichiers supprimés seront déplacés vers la corbeille. Vous pouvez les restaurer ou les supprimer pour toujours.";
 
 /* No comment provided by engineer. */
-"The file in the Trash can not be viewed." = "Le fichier dans la Corbeille ne peut pas être considéré.";
+"The file in the Trash can not be viewed." = "Le fichier placé dans la Corbeille ne peut pas être affiché.";
 
 /* No comment provided by engineer. */
 "The file will be irretrievably deleted. This action is irreversible." = "Le fichier sera irrémédiablement supprimé. Cette action est irréversible.";
@@ -805,34 +811,34 @@
 "The server is not available." = "Le serveur n'est pas disponible.";
 
 /* No comment provided by engineer. */
-"The trash is empty" = "La poubelle est vide";
+"The trash is empty" = "La corbeille est vide";
 
 /* Introduction Step Three - Title */
 "Third-party storage" = "Le stockage tiers";
 
 /* No comment provided by engineer. */
-"This document is being edited. Do you want open %@ to view only?" = "Ce document est en cours d'édition. Voulez-vous ouvrir %@ en lecture seule ?";
+"This document is being edited. Do you want open %@ to view only?" = "Ce document est en cours d'édition. Voulez-vous ouvrir %@ pour la lecture seule ?";
 
 /* No comment provided by engineer. */
 "This folder is empty" = "Ce dossier est vide";
 
 /* No comment provided by engineer. */
-"This operation will free up space on your device by deleting temporary files. Your offline files and personal data won't be removed." = "Cette opération libère de l'espace sur votre appareil en supprimant les fichiers temporaires. Vos fichiers hors ligne et vos données personnelles ne seront pas supprimés.";
+"This operation will free up space on your device by deleting temporary files. Your offline files and personal data won't be removed." = "Cette opération libère de l'espace sur votre appareil en supprimant les fichiers temporaires. Vos fichiers locaux et vos données personnelles ne seront pas supprimés.";
 
 /* No comment provided by engineer. */
-"This presentation is being edited. Do you want open %@ to view only?" = "Cette présentation est en cours d'édition. Voulez-vous ouvrir %@ en lecture seule ?";
+"This presentation is being edited. Do you want open %@ to view only?" = "Cette présentation est en cours d'édition. Voulez-vous ouvrir %@ pour la lecture seule ?";
 
 /* No comment provided by engineer. */
-"This spreadsheet is being edited. Do you want open %@ to view only?" = "Cette feuille de calcul est en cours d'édition. Voulez-vous ouvrir %@ en lecture seule ?";
+"This spreadsheet is being edited. Do you want open %@ to view only?" = "Cette feuille de calcul est en cours d'édition. Voulez-vous ouvrir %@ pour la lecture seule ?";
 
 /* No comment provided by engineer. */
 "Title" = "Titre";
 
 /* No comment provided by engineer. */
-"To open a document, you must go to portal %@ under your account." = "Pour ouvrir un document, vous devez aller sur le portail %@ sous votre compte.";
+"To open a document, you must go to portal %@ under your account." = "Pour ouvrir un document, vous vous connecter au portail %@ sous votre nom.";
 
 /* No comment provided by engineer. */
-"To open a new document, you must exit the current document." = "Pour ouvrir un nouveau document, vous devez quitter le document actuel.";
+"To open a new document, you must exit the current document." = "Pour ouvrir un nouveau document, veuillez fermer le document actuel.";
 
 /* Category title */
 "Trash" = "Corbeille";
@@ -844,7 +850,7 @@
 "Try Again" = "Essayez à nouveau";
 
 /* No comment provided by engineer. */
-"Try to connect via another protocol?" = "Essayez-vous de connecter via un autre protocole?";
+"Try to connect via another protocol?" = "Essayez-vous de vous connecter via un autre protocole ?";
 
 /* No comment provided by engineer. */
 "Turn Passcode Off" = "Désactiver le mot de passe";
@@ -891,11 +897,17 @@
 /* Caption of the process */
 "Uploading" = "Téléchargement";
 
+/* No comment provided by engineer. */
+"Use comments to add notes, suggestions, or questions for your collaborators. Edit, answer, resolve or delete them in process." = "Utilisez les commentaires pour laisser les remarques, suggestions,ou questions pour vos collaborateurs. Répondez aux commentaires, modifiez ou supprimez-les, marquez comme résolus lors de votre travail.";
+
 /* Button title */
 "Use Face ID" = "Utiliser Face ID (l'identifiant de visage)";
 
 /* Button title */
 "Use Touch ID" = "Utiliser Touch ID";
+
+/* No comment provided by engineer. */
+"Use Track Changes mode in text documents to suggest changes, accept or reject them." = "Utilisez le Suivi de modifications dans le documents texte pour suggérer les changements, les accepter ou rejeter.";
 
 /* Error message */
 "User authentication failed" = "Échec de l'authentification de l'utilisateur";
@@ -910,7 +922,7 @@
 "Validation" = "Validation";
 
 /* Share status */
-"Varies" = "Varier";
+"Varies" = "Varie";
 
 /* No comment provided by engineer. */
 "Version" = "Version";
@@ -919,7 +931,7 @@
 "Warning" = "Alerte";
 
 /* No comment provided by engineer. */
-"We are sorry, this portal name is already taken" = "Nous sommes désolés, ce nom de portail est déjà pris";
+"We are sorry, this portal name is already taken" = "Nous sommes désolés, ce nom de portail existe déjà";
 
 /* No comment provided by engineer. */
 "We have sent you an SMS with a code to the number %@" = "Nous vous avons envoyé un SMS avec un code au numéro %@";
@@ -931,19 +943,19 @@
 "WebDAV directory" = "Répertoire WebDAV";
 
 /* Introduction Step One - Description */
-"Welcome to %@ mobile editing suite!\nSwipe to learn more about the app." = "Bienvenue dans la suite d’édition mobile %@ !\nBalayez pour en savoir plus sur l'application.";
+"Welcome to %@ mobile editing suite!\nSwipe to learn more about the app." = "Bienvenue dans la suite bureautique mobile %@ !\nBalayez pour en savoir plus sur l'application.";
 
 /* No comment provided by engineer. */
 "What's New" = "Quoi de neuf ?";
 
 /* Introduction Step Four - Description */
-"Work with documents offline.\nCreated files can later be uploaded to online portal and\nthen accessed from any other device." = "Travaillez avec des documents hors ligne.\nLes fichiers créés peuvent ensuite être téléchargés sur le portail en ligne et ensuite accessible à partir de n'importe quel autre appareil.";
+"Work with documents offline.\nCreated files can later be uploaded to online portal and\nthen accessed from any other device." = "Travaillez avec des documents hors ligne.\nLes fichiers créés peuvent ensuite être chargés sur le portail en ligne et seront ensuite accessibles à partir de n'importe quel autre appareil.";
 
 /* Introduction Step Two - Title */
 "Work with office files" = "Travailler avec des fichiers office";
 
 /* No comment provided by engineer. */
-"Wrong login or password." = "Login ou mot de passe erroné.";
+"Wrong login or password." = "Identifiant ou mot de passe erroné.";
 
 /* No comment provided by engineer. */
 "Yandex directory" = "Répertoire Yandex";
@@ -961,7 +973,7 @@
 "You can connect the following accounts to the %@. They will be displayed in 'My Documents' folder and you will be able to edit and save them right on the portal all in one place." = "Vous pouvez connecter les comptes suivants au %@. Ils seront affichés dans le dossier 'Mes documents' et vous pourrez les éditer et les enregistrer directement sur le portail en un seul endroit.";
 
 /* No comment provided by engineer. */
-"You have read-only access to this folder. You cannot create files or folders here." = "Vous avez un accès en lecture seule à ce dossier. Vous ne pouvez pas créer de fichiers ou de dossiers ici.";
+"You have read-only access to this folder. You cannot create files or folders here." = "Vous avez une permission de lecture seule pour ce dossier. Vous ne pouvez pas créer de fichiers ou de dossiers ici.";
 
 /* No comment provided by engineer. */
 "Your session has expired" = "Votre session a expiré";

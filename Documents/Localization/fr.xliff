@@ -2,7 +2,7 @@
 <xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="1.2" xsi:schemaLocation="urn:oasis:names:tc:xliff:document:1.2 http://docs.oasis-open.org/xliff/v1.2/os/xliff-core-1.2-strict.xsd">
   <file original="Documents/Base.lproj/ConnectStorage.storyboard" source-language="en" target-language="fr" datatype="plaintext">
     <header>
-      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="11.5" build-num="11E608c"/>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="11.6" build-num="11E708"/>
     </header>
     <body>
       <trans-unit id="1hg-GO-WNq.text" xml:space="preserve">
@@ -17,7 +17,7 @@
       </trans-unit>
       <trans-unit id="7Kx-Sr-sD2.title" xml:space="preserve">
         <source>Connect Cloud</source>
-        <target>Connecter le Cloud</target>
+        <target>Connecter le cloud</target>
         <note>Class = "UINavigationItem"; title = "Connect Cloud"; ObjectID = "7Kx-Sr-sD2";</note>
       </trans-unit>
       <trans-unit id="8QU-S0-L4O.text" xml:space="preserve">
@@ -27,7 +27,7 @@
       </trans-unit>
       <trans-unit id="KNc-kE-PIF.title" xml:space="preserve">
         <source>Connect Storage</source>
-        <target>Connecter le Stockage</target>
+        <target>Connecter le stockage</target>
         <note>Class = "UINavigationItem"; title = "Connect Storage"; ObjectID = "KNc-kE-PIF";</note>
       </trans-unit>
       <trans-unit id="fGf-yk-zsE.text" xml:space="preserve">
@@ -59,7 +59,7 @@
   </file>
   <file original="Documents/Base.lproj/CreatePortal.storyboard" source-language="en" target-language="fr" datatype="plaintext">
     <header>
-      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="11.5" build-num="11E608c"/>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="11.6" build-num="11E708"/>
     </header>
     <body>
       <trans-unit id="BMv-HP-hD2.normalTitle" xml:space="preserve">
@@ -69,7 +69,7 @@
       </trans-unit>
       <trans-unit id="FZg-vj-AVJ.text" xml:space="preserve">
         <source>Make use of 30 days trial for free</source>
-        <target>Faire usage de 30 jours d'essai gratuit</target>
+        <target>Profitez d'essai gratuit de 30 jours</target>
         <note>Class = "UILabel"; text = "Make use of 30 days trial for free"; ObjectID = "FZg-vj-AVJ";</note>
       </trans-unit>
       <trans-unit id="TP3-h7-Hq1.placeholder" xml:space="preserve">
@@ -84,7 +84,7 @@
       </trans-unit>
       <trans-unit id="Zgx-q8-jRP.placeholder" xml:space="preserve">
         <source>Repeat Password</source>
-        <target>Répétez le Mot de Passe</target>
+        <target>Confirmez le mot de passe</target>
         <note>Class = "UITextField"; placeholder = "Repeat Password"; ObjectID = "Zgx-q8-jRP";</note>
       </trans-unit>
       <trans-unit id="cHX-qo-kcu.text" xml:space="preserve">
@@ -108,19 +108,19 @@ office web</target>
       </trans-unit>
       <trans-unit id="iLP-xJ-pU3.placeholder" xml:space="preserve">
         <source>Last Name</source>
-        <target>Nom de Famille</target>
+        <target>Nom de famille</target>
         <note>Class = "UITextField"; placeholder = "Last Name"; ObjectID = "iLP-xJ-pU3";</note>
       </trans-unit>
       <trans-unit id="qKc-e7-uTl.text" xml:space="preserve">
         <source>Choose a password and
 start using your office</source>
         <target>Choisissez un mot de passe et 
-commencez à utiliser votre office</target>
+lancez votre office</target>
         <note>Class = "UILabel"; text = "Choose a password and\nstart using your office"; ObjectID = "qKc-e7-uTl";</note>
       </trans-unit>
       <trans-unit id="qwT-Pr-auo.text" xml:space="preserve">
         <source>After the registration a mail with your portal registration details will be sent to your email address.</source>
-        <target>Après l'inscription, un mail avec les détails de votre inscription au portail sera envoyé à votre adresse e-mail.</target>
+        <target>Après l'enregistrement, un courriel avec vos données d'inscription au portail sera envoyé à votre adresse e-mail.</target>
         <note>Class = "UILabel"; text = "After the registration a mail with your portal registration details will be sent to your email address."; ObjectID = "qwT-Pr-auo";</note>
       </trans-unit>
       <trans-unit id="to9-RR-YBV.placeholder" xml:space="preserve">
@@ -132,7 +132,7 @@ commencez à utiliser votre office</target>
   </file>
   <file original="Documents/Base.lproj/DocumentsEmptyView.xib" source-language="en" target-language="fr" datatype="plaintext">
     <header>
-      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="11.5" build-num="11E608c"/>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="11.6" build-num="11E708"/>
     </header>
     <body>
       <trans-unit id="1kl-l7-AtV.text" xml:space="preserve">
@@ -154,29 +154,29 @@ commencez à utiliser votre office</target>
   </file>
   <file original="Documents/Base.lproj/Intro.storyboard" source-language="en" target-language="fr" datatype="plaintext">
     <header>
-      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="11.5" build-num="11E608c"/>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="11.6" build-num="11E708"/>
     </header>
     <body>
       <trans-unit id="De8-tD-APT.text" xml:space="preserve">
         <source>Here at DESIGN, we sometimes talk about web design, and we’re always talking about print design, but one thing we don’t often write about are mobile design interfaces. </source>
-        <target>Chez DESIGN, nous parlons parfois de conception de sites Web, et nous parlons toujours de design de presse, mais une chose sur laquelle nous n'écrivons pas souvent sont les interfaces de design mobile. </target>
+        <target>Chez DESIGN, nous parlons parfois de conception de sites Web et du design imprimé, mais une chose que nous n'évoquons pas souvent est un design des interfaces mobiles. </target>
         <note>Class = "UILabel"; text = "Here at DESIGN, we sometimes talk about web design, and we’re always talking about print design, but one thing we don’t often write about are mobile design interfaces. "; ObjectID = "De8-tD-APT"; Note = "Do not translate";</note>
       </trans-unit>
       <trans-unit id="JV9-d9-sJs.normalTitle" xml:space="preserve">
         <source>SKIP</source>
-        <target>SAUTER</target>
+        <target>IGNORER</target>
         <note>Class = "UIButton"; normalTitle = "SKIP"; ObjectID = "JV9-d9-sJs";</note>
       </trans-unit>
       <trans-unit id="KAF-Bt-8qi.text" xml:space="preserve">
         <source>App Onboarding Design</source>
-        <target>App Design à l'Intégration</target>
+        <target>Conception et mise en oeuvre des applications</target>
         <note>Class = "UILabel"; text = "App Onboarding Design"; ObjectID = "KAF-Bt-8qi"; Note = "Do not translate";</note>
       </trans-unit>
     </body>
   </file>
   <file original="Documents/Base.lproj/Localizable.stringsdict" source-language="en" target-language="fr" datatype="plaintext">
     <header>
-      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="11.5" build-num="11E608c"/>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="11.6" build-num="11E708"/>
     </header>
     <body>
       <trans-unit id="/%lu File selected:dict/NSStringLocalizedFormatKey:dict/:string" xml:space="preserve">
@@ -201,7 +201,7 @@ commencez à utiliser votre office</target>
       </trans-unit>
       <trans-unit id="/%lu Folder and %lu File selected:dict/lu_files:dict/one:dict/:string" xml:space="preserve">
         <source>and %lu File selected</source>
-        <target>et %lu fichier séléctionnés</target>
+        <target>et %lu fichier séléctionné</target>
         <note/>
       </trans-unit>
       <trans-unit id="/%lu Folder and %lu File selected:dict/lu_files:dict/other:dict/:string" xml:space="preserve">
@@ -308,7 +308,7 @@ commencez à utiliser votre office</target>
   </file>
   <file original="Documents/Base.lproj/Login.storyboard" source-language="en" target-language="fr" datatype="plaintext">
     <header>
-      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="11.5" build-num="11E608c"/>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="11.6" build-num="11E708"/>
     </header>
     <body>
       <trans-unit id="0X2-Xg-z5B.text" xml:space="preserve">
@@ -323,7 +323,7 @@ commencez à utiliser votre office</target>
       </trans-unit>
       <trans-unit id="3oc-kQ-msr.text" xml:space="preserve">
         <source>Country Code</source>
-        <target>Code de Pays</target>
+        <target>Code de pays</target>
         <note>Class = "UITextField"; text = "Country Code"; ObjectID = "3oc-kQ-msr";</note>
       </trans-unit>
       <trans-unit id="6Zd-HN-8wS.text" xml:space="preserve">
@@ -338,17 +338,17 @@ commencez à utiliser votre office</target>
       </trans-unit>
       <trans-unit id="51s-1D-raN.normalTitle" xml:space="preserve">
         <source>Login by</source>
-        <target>Connexion par</target>
+        <target>Connexion via</target>
         <note>Class = "UIButton"; normalTitle = "Login by"; ObjectID = "51s-1D-raN";</note>
       </trans-unit>
       <trans-unit id="76Y-EB-F07.text" xml:space="preserve">
         <source>Phone Number</source>
-        <target>Numéro de Téléphone</target>
+        <target>Numéro de téléphone</target>
         <note>Class = "UILabel"; text = "Phone Number"; ObjectID = "76Y-EB-F07";</note>
       </trans-unit>
       <trans-unit id="78r-Ca-NKv.normalTitle" xml:space="preserve">
         <source>Forgot?</source>
-        <target>Oublié?</target>
+        <target>Oublié ?</target>
         <note>Class = "UIButton"; normalTitle = "Forgot?"; ObjectID = "78r-Ca-NKv";</note>
       </trans-unit>
       <trans-unit id="AkN-p0-Mzy.text" xml:space="preserve">
@@ -370,14 +370,14 @@ commencez à utiliser votre office</target>
         <source>Two-Factor
 Authentication</source>
         <target>L'Authentification 
-à Deux Facteurs</target>
+à deux facteurs</target>
         <note>Class = "UILabel"; text = "Two-Factor\nAuthentication"; ObjectID = "DK4-QO-Jde";</note>
       </trans-unit>
       <trans-unit id="Eb4-3w-0Jf.text" xml:space="preserve">
         <source>Two-Factor
 Authentication</source>
         <target>L'Authentification 
-à Deux Facteurs</target>
+à deux facteurs</target>
         <note>Class = "UILabel"; text = "Two-Factor\nAuthentication"; ObjectID = "Eb4-3w-0Jf";</note>
       </trans-unit>
       <trans-unit id="Fso-pj-304.text" xml:space="preserve">
@@ -392,7 +392,7 @@ Authentication</source>
       </trans-unit>
       <trans-unit id="GFx-Ry-9GC.text" xml:space="preserve">
         <source>Connect to your ONLYOFFICE cloud to store files online and collaborate on documents in real time</source>
-        <target>Se connecter à votre ONLYOFFICE cloud pour stocker les fichiers en ligne et de collaborer sur des documents en temps réel</target>
+        <target>Se connecter à votre ONLYOFFICE cloud pour stocker les fichiers en ligne et collaborer sur des documents en temps réel</target>
         <note>Class = "UILabel"; text = "Connect to your ONLYOFFICE cloud to store files online and collaborate on documents in real time"; ObjectID = "GFx-Ry-9GC";</note>
       </trans-unit>
       <trans-unit id="Gkv-tP-6EM.text" xml:space="preserve">
@@ -412,7 +412,7 @@ Authentication</source>
       </trans-unit>
       <trans-unit id="MNA-z2-ITx.text" xml:space="preserve">
         <source>Enter a phone number that can be used to verify your identity</source>
-        <target>Entrez un numéro de téléphone qui peut être utilisé pour vérifier votre identité</target>
+        <target>Saisissez un numéro de téléphone qui peut être utilisé pour vérifier votre identité</target>
         <note>Class = "UILabel"; text = "Enter a phone number that can be used to verify your identity"; ObjectID = "MNA-z2-ITx";</note>
       </trans-unit>
       <trans-unit id="MUG-TG-NlP.title" xml:space="preserve">
@@ -477,7 +477,7 @@ Authentication</source>
       </trans-unit>
       <trans-unit id="cb0-ic-tPA.text" xml:space="preserve">
         <source>Haven't received the code?</source>
-        <target>Vous n'avez pas reçu de code?</target>
+        <target>Vous n'avez pas reçu de code ?</target>
         <note>Class = "UILabel"; text = "Haven't received the code?"; ObjectID = "cb0-ic-tPA";</note>
       </trans-unit>
       <trans-unit id="e1X-0t-hcs.normalTitle" xml:space="preserve">
@@ -492,7 +492,7 @@ Authentication</source>
       </trans-unit>
       <trans-unit id="hRN-W6-nA0.title" xml:space="preserve">
         <source>SSO Login</source>
-        <target>La Connexion par SSO (Authentification Unique)</target>
+        <target>La connexion via SSO (authentification unique)</target>
         <note>Class = "UINavigationItem"; title = "SSO Login"; ObjectID = "hRN-W6-nA0";</note>
       </trans-unit>
       <trans-unit id="peP-Hz-Lai.normalTitle" xml:space="preserve">
@@ -507,7 +507,7 @@ Authentication</source>
       </trans-unit>
       <trans-unit id="szM-hs-ncG.text" xml:space="preserve">
         <source>Login via</source>
-        <target>Connectez-vous par</target>
+        <target>Connectez-vous via</target>
         <note>Class = "UILabel"; text = "Login via"; ObjectID = "szM-hs-ncG";</note>
       </trans-unit>
       <trans-unit id="tnK-je-flS.placeholder" xml:space="preserve">
@@ -517,7 +517,7 @@ Authentication</source>
       </trans-unit>
       <trans-unit id="ttx-IC-XrN.text" xml:space="preserve">
         <source>Get more information</source>
-        <target>Obtenir plus d'informations</target>
+        <target>Obtenir plus d'information</target>
         <note>Class = "UILabel"; text = "Get more information"; ObjectID = "ttx-IC-XrN";</note>
       </trans-unit>
       <trans-unit id="twm-cB-W69.title" xml:space="preserve">
@@ -554,12 +554,12 @@ Authentication</source>
   </file>
   <file original="Documents/Base.lproj/Main.storyboard" source-language="en" target-language="fr" datatype="plaintext">
     <header>
-      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="11.5" build-num="11E608c"/>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="11.6" build-num="11E708"/>
     </header>
     <body>
       <trans-unit id="0Hf-aP-smp.text" xml:space="preserve">
         <source>Connect to Cloud</source>
-        <target>Connecter à Cloud</target>
+        <target>Connecter au cloud</target>
         <note>Class = "UILabel"; text = "Connect to Cloud"; ObjectID = "0Hf-aP-smp";</note>
       </trans-unit>
       <trans-unit id="6qd-Sb-ejT.title" xml:space="preserve">
@@ -584,7 +584,7 @@ Authentication</source>
       </trans-unit>
       <trans-unit id="FkK-jc-e1U.text" xml:space="preserve">
         <source>Other Cloud</source>
-        <target>Autre Cloud</target>
+        <target>Autre cloud</target>
         <note>Class = "UILabel"; text = "Other Cloud"; ObjectID = "FkK-jc-e1U";</note>
       </trans-unit>
       <trans-unit id="GcW-AI-d08.text" xml:space="preserve">
@@ -619,7 +619,7 @@ Authentication</source>
       </trans-unit>
       <trans-unit id="WIL-sg-dk2.title" xml:space="preserve">
         <source>Choose Cloud</source>
-        <target>Choisir le Cloud</target>
+        <target>Choisir le cloud</target>
         <note>Class = "UINavigationItem"; title = "Choose Cloud"; ObjectID = "WIL-sg-dk2";</note>
       </trans-unit>
       <trans-unit id="WLM-Ff-ccz.title" xml:space="preserve">
@@ -634,7 +634,7 @@ Authentication</source>
       </trans-unit>
       <trans-unit id="WQV-WX-BW2.text" xml:space="preserve">
         <source>Select another cloud to connect to Nextcloud, ownCloud and others are supported.</source>
-        <target>Sélectionnez un autre cloud pour vous connecter à Nextcloud, ownCloud et d'autres sont pris en charge.</target>
+        <target>Sélectionnez un autre cloud pour vous connecter à Nextcloud, ownCloud et d'autres clouds supportés.</target>
         <note>Class = "UILabel"; text = "Select another cloud to connect to Nextcloud, ownCloud and others are supported."; ObjectID = "WQV-WX-BW2";</note>
       </trans-unit>
       <trans-unit id="cGA-Zo-QiU.title" xml:space="preserve">
@@ -679,7 +679,7 @@ Authentication</source>
       </trans-unit>
       <trans-unit id="pM4-zR-Xil.title" xml:space="preserve">
         <source>Choose Cloud</source>
-        <target>Choisir le Cloud</target>
+        <target>Choisir le cloud</target>
         <note>Class = "UIViewController"; title = "Choose Cloud"; ObjectID = "pM4-zR-Xil";</note>
       </trans-unit>
       <trans-unit id="rZi-T5-tyI.title" xml:space="preserve">
@@ -706,12 +706,12 @@ Authentication</source>
   </file>
   <file original="Documents/Base.lproj/Settings.storyboard" source-language="en" target-language="fr" datatype="plaintext">
     <header>
-      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="11.5" build-num="11E608c"/>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="11.6" build-num="11E708"/>
     </header>
     <body>
       <trans-unit id="0DJ-uV-iju.title" xml:space="preserve">
         <source>About</source>
-        <target>Sur</target>
+        <target>A propos</target>
         <note>Class = "UINavigationItem"; title = "About"; ObjectID = "0DJ-uV-iju";</note>
       </trans-unit>
       <trans-unit id="1kc-cf-XDc.text" xml:space="preserve">
@@ -726,16 +726,16 @@ Authentication</source>
       </trans-unit>
       <trans-unit id="7gT-v5-3eH.title" xml:space="preserve">
         <source>Passcode Lock</source>
-        <target>Code de Verrouillage</target>
+        <target>Code de verrouillage</target>
         <note>Class = "UINavigationItem"; title = "Passcode Lock"; ObjectID = "7gT-v5-3eH";</note>
       </trans-unit>
       <trans-unit id="8Qq-uc-rWT.footerTitle" xml:space="preserve">
         <source>Request a password when the application starts.
 
 Note: if you forget the passcode, you'll need to delete and reinstall the app. All local documents will be lost.</source>
-        <target>Demander un mot de passe lorsque l'application démarre.
+        <target>Demander un mot de passe lors du démarrage de l'application.
 
-Remarque: si vous oubliez le mot de passe, vous aurez besoin de supprimer et de réinstaller l'application. Tous les documents locaux seront perdus.</target>
+Remarque: si vous avez oublié le mot de passe, vous avez besoin de supprimer et de réinstaller l'application. Tous les documents locaux seront perdus.</target>
         <note>Class = "UITableViewSection"; footerTitle = "Request a password when the application starts.\n\nNote: if you forget the passcode, you'll need to delete and reinstall the app. All local documents will be lost."; ObjectID = "8Qq-uc-rWT";</note>
       </trans-unit>
       <trans-unit id="13m-jH-9Vu.text" xml:space="preserve">
@@ -745,7 +745,7 @@ Remarque: si vous oubliez le mot de passe, vous aurez besoin de supprimer et de 
       </trans-unit>
       <trans-unit id="19F-CC-u2R.text" xml:space="preserve">
         <source>Compress Images</source>
-        <target>Comprimer les Images</target>
+        <target>Comprimer les images</target>
         <note>Class = "UILabel"; text = "Compress Images"; ObjectID = "19F-CC-u2R";</note>
       </trans-unit>
       <trans-unit id="Bmt-tc-yd7.headerTitle" xml:space="preserve">
@@ -755,7 +755,7 @@ Remarque: si vous oubliez le mot de passe, vous aurez besoin de supprimer et de 
       </trans-unit>
       <trans-unit id="CUM-1F-5Be.text" xml:space="preserve">
         <source>Rate App</source>
-        <target>Application de taux</target>
+        <target>Evaluez l'application</target>
         <note>Class = "UILabel"; text = "Rate App"; ObjectID = "CUM-1F-5Be";</note>
       </trans-unit>
       <trans-unit id="ESd-H3-Pfh.headerTitle" xml:space="preserve">
@@ -765,12 +765,12 @@ Remarque: si vous oubliez le mot de passe, vous aurez besoin de supprimer et de 
       </trans-unit>
       <trans-unit id="GqQ-Bv-Deg.text" xml:space="preserve">
         <source>Tell a Friend</source>
-        <target>Dire à un ami</target>
+        <target>Racontez à un ami</target>
         <note>Class = "UILabel"; text = "Tell a Friend"; ObjectID = "GqQ-Bv-Deg";</note>
       </trans-unit>
       <trans-unit id="IS2-tT-Q4G.text" xml:space="preserve">
         <source>About</source>
-        <target>Sur ONLYOFFICE</target>
+        <target>A propos de ONLYOFFICE</target>
         <note>Class = "UILabel"; text = "About"; ObjectID = "IS2-tT-Q4G";</note>
       </trans-unit>
       <trans-unit id="MZJ-3d-460.title" xml:space="preserve">
@@ -780,7 +780,7 @@ Remarque: si vous oubliez le mot de passe, vous aurez besoin de supprimer et de 
       </trans-unit>
       <trans-unit id="NGC-k1-Jm9.text" xml:space="preserve">
         <source>Introduction Tour</source>
-        <target>Tour d'Introduction</target>
+        <target>Présentation</target>
         <note>Class = "UILabel"; text = "Introduction Tour"; ObjectID = "NGC-k1-Jm9";</note>
       </trans-unit>
       <trans-unit id="OKJ-3w-yJd.title" xml:space="preserve">
@@ -790,12 +790,12 @@ Remarque: si vous oubliez le mot de passe, vous aurez besoin de supprimer et de 
       </trans-unit>
       <trans-unit id="PDj-N7-sjJ.text" xml:space="preserve">
         <source>User agreement</source>
-        <target>Accord de l'utilisateur</target>
+        <target>Accord utilisateur</target>
         <note>Class = "UILabel"; text = "User agreement"; ObjectID = "PDj-N7-sjJ";</note>
       </trans-unit>
       <trans-unit id="RuR-k5-kRu.text" xml:space="preserve">
         <source>Change Passcode</source>
-        <target>Changer le Mot de Passe</target>
+        <target>Changer le mot de passe</target>
         <note>Class = "UILabel"; text = "Change Passcode"; ObjectID = "RuR-k5-kRu";</note>
       </trans-unit>
       <trans-unit id="W0F-l2-98t.text" xml:space="preserve">
@@ -805,12 +805,12 @@ Remarque: si vous oubliez le mot de passe, vous aurez besoin de supprimer et de 
       </trans-unit>
       <trans-unit id="XYC-Zw-fk6.text" xml:space="preserve">
         <source>Turn Passcode On</source>
-        <target>Activer le Mot de Passe sur</target>
+        <target>Activer le mot de passe</target>
         <note>Class = "UILabel"; text = "Turn Passcode On"; ObjectID = "XYC-Zw-fk6";</note>
       </trans-unit>
       <trans-unit id="YfE-Pr-7QU.text" xml:space="preserve">
         <source>Unlock with Touch ID</source>
-        <target>Débloquer avec Touch ID</target>
+        <target>Déverrouiller avec Touch ID</target>
         <note>Class = "UILabel"; text = "Unlock with Touch ID"; ObjectID = "YfE-Pr-7QU";</note>
       </trans-unit>
       <trans-unit id="aV0-Ch-4Py.text" xml:space="preserve">
@@ -820,7 +820,7 @@ Remarque: si vous oubliez le mot de passe, vous aurez besoin de supprimer et de 
       </trans-unit>
       <trans-unit id="i2P-F4-EhP.text" xml:space="preserve">
         <source>Passcode Lock</source>
-        <target>Code de Verrouillage</target>
+        <target>Code de verrouillage</target>
         <note>Class = "UILabel"; text = "Passcode Lock"; ObjectID = "i2P-F4-EhP";</note>
       </trans-unit>
       <trans-unit id="lEo-YM-MnB.text" xml:space="preserve">
@@ -830,14 +830,14 @@ Remarque: si vous oubliez le mot de passe, vous aurez besoin de supprimer et de 
       </trans-unit>
       <trans-unit id="raN-Fz-DnL.text" xml:space="preserve">
         <source>Support</source>
-        <target>Soutien</target>
+        <target>Assistance</target>
         <note>Class = "UILabel"; text = "Support"; ObjectID = "raN-Fz-DnL";</note>
       </trans-unit>
     </body>
   </file>
   <file original="Documents/Base.lproj/Share.storyboard" source-language="en" target-language="fr" datatype="plaintext">
     <header>
-      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="11.5" build-num="11E608c"/>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="11.6" build-num="11E708"/>
     </header>
     <body>
       <trans-unit id="9Wg-zE-nZA.segmentTitles[0]" xml:space="preserve">
@@ -852,7 +852,7 @@ Remarque: si vous oubliez le mot de passe, vous aurez besoin de supprimer et de 
       </trans-unit>
       <trans-unit id="75q-CN-6uI.text" xml:space="preserve">
         <source>No available records</source>
-        <target>Aucun enregistrement disponible</target>
+        <target>Pas d'enregistrements disponibles</target>
         <note>Class = "UILabel"; text = "No available records"; ObjectID = "75q-CN-6uI";</note>
       </trans-unit>
       <trans-unit id="HLh-xV-DgI.headerTitle" xml:space="preserve">
@@ -872,27 +872,27 @@ Remarque: si vous oubliez le mot de passe, vous aurez besoin de supprimer et de 
       </trans-unit>
       <trans-unit id="ZW9-Zh-W3r.segmentTitles[1]" xml:space="preserve">
         <source>Read Only</source>
-        <target>Ne que Lire</target>
+        <target>Lecture seule</target>
         <note>Class = "UISegmentedControl"; ZW9-Zh-W3r.segmentTitles[1] = "Read Only"; ObjectID = "ZW9-Zh-W3r";</note>
       </trans-unit>
       <trans-unit id="ZW9-Zh-W3r.segmentTitles[2]" xml:space="preserve">
         <source>Deny Access</source>
-        <target>Refuser l'Accès</target>
+        <target>Accès interdit</target>
         <note>Class = "UISegmentedControl"; ZW9-Zh-W3r.segmentTitles[2] = "Deny Access"; ObjectID = "ZW9-Zh-W3r";</note>
       </trans-unit>
       <trans-unit id="bHR-n3-evx.text" xml:space="preserve">
         <source>User Name</source>
-        <target>Nom d'Utilisateur</target>
+        <target>Nom d'utilisateur</target>
         <note>Class = "UILabel"; text = "User Name"; ObjectID = "bHR-n3-evx"; Note = "Do not translate";</note>
       </trans-unit>
       <trans-unit id="c9E-27-xIy.text" xml:space="preserve">
         <source>Deny Access</source>
-        <target>Refuser l'Accès</target>
+        <target>Accès interdit</target>
         <note>Class = "UILabel"; text = "Deny Access"; ObjectID = "c9E-27-xIy";</note>
       </trans-unit>
       <trans-unit id="cmV-9P-RqY.text" xml:space="preserve">
         <source>Review</source>
-        <target>Revue</target>
+        <target>Révision</target>
         <note>Class = "UILabel"; text = "Review"; ObjectID = "cmV-9P-RqY";</note>
       </trans-unit>
       <trans-unit id="kAs-JV-Zff.text" xml:space="preserve">
@@ -902,7 +902,7 @@ Remarque: si vous oubliez le mot de passe, vous aurez besoin de supprimer et de 
       </trans-unit>
       <trans-unit id="noV-Xw-dnb.text" xml:space="preserve">
         <source>Read Only</source>
-        <target>Ne Que Lire</target>
+        <target>Lecture seule</target>
         <note>Class = "UILabel"; text = "Read Only"; ObjectID = "noV-Xw-dnb";</note>
       </trans-unit>
       <trans-unit id="v5j-Jm-YE4.text" xml:space="preserve">
@@ -922,14 +922,14 @@ Remarque: si vous oubliez le mot de passe, vous aurez besoin de supprimer et de 
       </trans-unit>
       <trans-unit id="zUl-mf-gTQ.text" xml:space="preserve">
         <source>Full Access</source>
-        <target>Accès Complet</target>
+        <target>Accès complet</target>
         <note>Class = "UILabel"; text = "Full Access"; ObjectID = "zUl-mf-gTQ";</note>
       </trans-unit>
     </body>
   </file>
   <file original="Documents/Base.lproj/Sort.storyboard" source-language="en" target-language="fr" datatype="plaintext">
     <header>
-      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="11.5" build-num="11E608c"/>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="11.6" build-num="11E708"/>
     </header>
     <body>
       <trans-unit id="HjM-la-pDc.text" xml:space="preserve">
@@ -939,24 +939,24 @@ Remarque: si vous oubliez le mot de passe, vous aurez besoin de supprimer et de 
       </trans-unit>
       <trans-unit id="VLB-h5-1fu.text" xml:space="preserve">
         <source>Sort by</source>
-        <target>Classer par</target>
+        <target>Trier par</target>
         <note>Class = "UILabel"; text = "Sort by"; ObjectID = "VLB-h5-1fu";</note>
       </trans-unit>
       <trans-unit id="hSK-XM-USz.title" xml:space="preserve">
         <source>Sort</source>
-        <target>Classer </target>
+        <target>Trier</target>
         <note>Class = "UINavigationItem"; title = "Sort"; ObjectID = "hSK-XM-USz"; Note = "View Title";</note>
       </trans-unit>
       <trans-unit id="yAy-Q3-Av8.title" xml:space="preserve">
         <source>Sort</source>
-        <target>Classer</target>
+        <target>Trier</target>
         <note>Class = "UITableViewController"; title = "Sort"; ObjectID = "yAy-Q3-Av8";</note>
       </trans-unit>
     </body>
   </file>
   <file original="Documents/Base.lproj/Transfer.storyboard" source-language="en" target-language="fr" datatype="plaintext">
     <header>
-      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="11.5" build-num="11E608c"/>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="11.6" build-num="11E708"/>
     </header>
     <body>
       <trans-unit id="9YY-0H-nww.text" xml:space="preserve">
@@ -986,14 +986,14 @@ Remarque: si vous oubliez le mot de passe, vous aurez besoin de supprimer et de 
       </trans-unit>
       <trans-unit id="xZh-ES-1Gb.title" xml:space="preserve">
         <source>Root Folders</source>
-        <target>Dossiers Racines</target>
+        <target>Dossiers racine</target>
         <note>Class = "UINavigationItem"; title = "Root Folders"; ObjectID = "xZh-ES-1Gb";</note>
       </trans-unit>
     </body>
   </file>
   <file original="Documents/Base.lproj/UserProfile.storyboard" source-language="en" target-language="fr" datatype="plaintext">
     <header>
-      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="11.5" build-num="11E608c"/>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="11.6" build-num="11E708"/>
     </header>
     <body>
       <trans-unit id="1S2-Q7-5vL.text" xml:space="preserve">
@@ -1035,7 +1035,7 @@ Remarque: si vous oubliez le mot de passe, vous aurez besoin de supprimer et de 
   </file>
   <file original="Documents/Code/Controllers/CreateEntity/Views/Base.lproj/ASCCreateEntityView.xib" source-language="en" target-language="fr" datatype="plaintext">
     <header>
-      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="11.5" build-num="11E608c"/>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="11.6" build-num="11E708"/>
     </header>
     <body>
       <trans-unit id="0TH-k4-z5u.normalTitle" xml:space="preserve">
@@ -1060,14 +1060,14 @@ Remarque: si vous oubliez le mot de passe, vous aurez besoin de supprimer et de 
       </trans-unit>
       <trans-unit id="ziC-q7-ky6.normalTitle" xml:space="preserve">
         <source>Connect Storage</source>
-        <target>Connecter le Stockage</target>
+        <target>Connecter le stockage</target>
         <note>Class = "UIButton"; normalTitle = "Connect Storage"; ObjectID = "ziC-q7-ky6";</note>
       </trans-unit>
     </body>
   </file>
   <file original="Documents/Code/Vendor/PasscodeLock/Base.lproj/PasscodeLock.strings" source-language="en" target-language="fr" datatype="plaintext">
     <header>
-      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="11.5" build-num="11E608c"/>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="11.6" build-num="11E708"/>
     </header>
     <body>
       <trans-unit id="PasscodeLockChangeDescription" xml:space="preserve">
@@ -1107,7 +1107,7 @@ Remarque: si vous oubliez le mot de passe, vous aurez besoin de supprimer et de 
       </trans-unit>
       <trans-unit id="PasscodeLockMismatchDescription" xml:space="preserve">
         <source>Passcodes didn't match.</source>
-        <target>Passcodes didn't match.</target>
+        <target>Codes d'accès ne sont pas identiques.</target>
         <note/>
       </trans-unit>
       <trans-unit id="PasscodeLockMismatchTitle" xml:space="preserve">
@@ -1139,7 +1139,7 @@ Remarque: si vous oubliez le mot de passe, vous aurez besoin de supprimer et de 
   </file>
   <file original="Documents/Code/Vendor/PasscodeLock/Views/Base.lproj/PasscodeLockView.xib" source-language="en" target-language="fr" datatype="plaintext">
     <header>
-      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="11.5" build-num="11E608c"/>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="11.6" build-num="11E708"/>
     </header>
     <body>
       <trans-unit id="0CR-0R-0Nr.normalTitle" xml:space="preserve">
@@ -1221,7 +1221,7 @@ Remarque: si vous oubliez le mot de passe, vous aurez besoin de supprimer et de 
   </file>
   <file original="Documents/en.lproj/InfoPlist.strings" source-language="en" target-language="fr" datatype="plaintext">
     <header>
-      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="11.5" build-num="11E608c"/>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="11.6" build-num="11E708"/>
     </header>
     <body>
       <trans-unit id="CFBundleName" xml:space="preserve">
@@ -1231,17 +1231,17 @@ Remarque: si vous oubliez le mot de passe, vous aurez besoin de supprimer et de 
       </trans-unit>
       <trans-unit id="NSCameraUsageDescription" xml:space="preserve">
         <source>This app requires access to the camera, so that you can take photo and upload it in the app.</source>
-        <target>Cette application demande  l'accès à l'appareil photo pour que vous puissiez prendre des photos.</target>
+        <target>Cette application demande  l'accès au caméra pour que vous puissiez prendre des photos.</target>
         <note>Privacy - Camera Usage Description</note>
       </trans-unit>
       <trans-unit id="NSFaceIDUsageDescription" xml:space="preserve">
         <source>This app requires Face ID permission to authenticate using Face recognition.</source>
-        <target>Cette application nécessite un accès à la bibliothèque de photos afin que vous puissiez télécharger vos photos dans l'application.</target>
+        <target>Cette application demande un accès à Face ID pour que vous puissiez vous connecter via la reconnaissance de visage.</target>
         <note>Privacy - Face ID Usage Description</note>
       </trans-unit>
       <trans-unit id="NSPhotoLibraryUsageDescription" xml:space="preserve">
         <source>This app requires access to the photo library, so that you can upload your photos in the app.</source>
-        <target>Cette application demande l'accès à la Galerie photo pour que vous puissiez télécharger vos photos dans l'application</target>
+        <target>Cette application demande l'accès à la galérie pour que vous puissiez charger vos photos dans l'application</target>
         <note>Privacy - Photo Library Usage Description</note>
       </trans-unit>
       <trans-unit id="New Document" xml:space="preserve">
@@ -1251,19 +1251,19 @@ Remarque: si vous oubliez le mot de passe, vous aurez besoin de supprimer et de 
       </trans-unit>
       <trans-unit id="New Presentation" xml:space="preserve">
         <source>New Presentation</source>
-        <target>Nouvelle Présentation</target>
+        <target>Nouvelle présentation</target>
         <note/>
       </trans-unit>
       <trans-unit id="New Spreadsheet" xml:space="preserve">
         <source>New Spreadsheet</source>
-        <target>Nouvel tableur</target>
+        <target>Nouveau tableur</target>
         <note/>
       </trans-unit>
     </body>
   </file>
   <file original="Documents/en.lproj/Localizable.strings" source-language="en" target-language="fr" datatype="plaintext">
     <header>
-      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="11.5" build-num="11E608c"/>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="11.6" build-num="11E708"/>
     </header>
     <body>
       <trans-unit id="%i of %i" xml:space="preserve">
@@ -1288,7 +1288,7 @@ Remarque: si vous oubliez le mot de passe, vous aurez besoin de supprimer et de 
       </trans-unit>
       <trans-unit id="%lu items with the same name already exist in the folder '%@'. Overwrite the items?" xml:space="preserve">
         <source>%1$lu items with the same name already exist in the folder '%2$@'. Overwrite the items?</source>
-        <target>%1$lu les éléments avec le même nom existe déjà dans le dossier '%2$@'. Faut-il remplacer les éléments?</target>
+        <target>%1$lu l'élément avec ce nom existe déjà dans le dossier '%2$@'. Voulez-vous le remplacer ?</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="A file with a similar name already exists in the document directory on the device." xml:space="preserve">
@@ -1343,17 +1343,17 @@ Remarque: si vous oubliez le mot de passe, vous aurez besoin de supprimer et de 
       </trans-unit>
       <trans-unit id="An unexpected error has occurred. Please try again later. Sorry for inconvenience." xml:space="preserve">
         <source>An unexpected error has occurred. Please try again later. Sorry for inconvenience.</source>
-        <target>Une erreur inattendue s'est produite. Veuillez réessayer plus tard. Désolé pour le dérangement.</target>
+        <target>Une erreur inattendue s'est produite. Veuillez réessayer plus tard. Désolé pour cet inconvénient.</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Are you sure you want to delete the account %@ from this device?" xml:space="preserve">
         <source>Are you sure you want to delete the account %@ from this device?</source>
-        <target>Êtes-vous sûr de vouloir supprimer le compte %@ de cet appareil?</target>
+        <target>Êtes-vous sûr de vouloir supprimer le compte %@ de cet appareil ?</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Are you sure you want to leave this account?" xml:space="preserve">
         <source>Are you sure you want to leave this account?</source>
-        <target>Êtes-vous sûr de vouloir quitter ce compte?</target>
+        <target>Êtes-vous sûr de vouloir quitter ce compte ?</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Author" xml:space="preserve">
@@ -1363,7 +1363,7 @@ Remarque: si vous oubliez le mot de passe, vous aurez besoin de supprimer et de 
       </trans-unit>
       <trans-unit id="Box directory" xml:space="preserve">
         <source>Box directory</source>
-        <target>Boîte de répertoire</target>
+        <target>Répertoire</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Camera Unavailable" xml:space="preserve">
@@ -1378,17 +1378,17 @@ Remarque: si vous oubliez le mot de passe, vous aurez besoin de supprimer et de 
       </trans-unit>
       <trans-unit id="Can not create file with this name." xml:space="preserve">
         <source>Can not create file with this name.</source>
-        <target>Ne peut pas créer de fichier avec ce nom.</target>
+        <target>Impossible de créer de fichier avec ce nom.</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Can not create folder with this name." xml:space="preserve">
         <source>Can not create folder with this name.</source>
-        <target>Ne peut pas créer de dossier avec ce nom.</target>
+        <target>Impossible de créer de dossier avec ce nom.</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Can not duplicate the file." xml:space="preserve">
         <source>Can not duplicate the file.</source>
-        <target>Ne peut pas dupliquer le fichier.</target>
+        <target>Impossible de dupliquer le fichier.</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Cancel" xml:space="preserve">
@@ -1413,7 +1413,7 @@ Remarque: si vous oubliez le mot de passe, vous aurez besoin de supprimer et de 
       </trans-unit>
       <trans-unit id="Cleanup" xml:space="preserve">
         <source>Cleanup</source>
-        <target>Nettoyage</target>
+        <target>Nettoyer</target>
         <note>Caption of the processing</note>
       </trans-unit>
       <trans-unit id="Clear Cache" xml:space="preserve">
@@ -1428,7 +1428,7 @@ Remarque: si vous oubliez le mot de passe, vous aurez besoin de supprimer et de 
       </trans-unit>
       <trans-unit id="Clearing" xml:space="preserve">
         <source>Clearing</source>
-        <target>Liquidation</target>
+        <target>Effacement</target>
         <note>Caption of the processing</note>
       </trans-unit>
       <trans-unit id="Close" xml:space="preserve">
@@ -1443,7 +1443,7 @@ Remarque: si vous oubliez le mot de passe, vous aurez besoin de supprimer et de 
       </trans-unit>
       <trans-unit id="Cloud directory" xml:space="preserve">
         <source>Cloud directory</source>
-        <target>Répertoire de cloud</target>
+        <target>Répertoire cloud</target>
         <note>Default external storage name</note>
       </trans-unit>
       <trans-unit id="Collaborate with your team" xml:space="preserve">
@@ -1453,11 +1453,12 @@ Remarque: si vous oubliez le mot de passe, vous aurez besoin de supprimer et de 
       </trans-unit>
       <trans-unit id="Comments" xml:space="preserve">
         <source>Comments</source>
+        <target>Commentaires</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Common Documents" xml:space="preserve">
         <source>Common Documents</source>
-        <target>Documents Communs</target>
+        <target>Documents communs</target>
         <note>Category title</note>
       </trans-unit>
       <trans-unit id="Connect" xml:space="preserve">
@@ -1467,7 +1468,7 @@ Remarque: si vous oubliez le mot de passe, vous aurez besoin de supprimer et de 
       </trans-unit>
       <trans-unit id="Connect Clouds" xml:space="preserve">
         <source>Connect Clouds</source>
-        <target>Connecter les Clouds</target>
+        <target>Connecter les clouds</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Connect third-party storage&#10;like Nextcloud, ownCloud, Yandex Disk and&#10;others which use WebDAV protocol." xml:space="preserve">
@@ -1475,13 +1476,13 @@ Remarque: si vous oubliez le mot de passe, vous aurez besoin de supprimer et de 
 like Nextcloud, ownCloud, Yandex Disk and
 others which use WebDAV protocol.</source>
         <target>Connecter un stockage tiers
-comme Nextcloud, ownCloud, Yandex Disk et
-d'autres qui utilisent le protocole WebDAV.</target>
+tel que Nextcloud, ownCloud, Yandex Disk et
+d'autres via le protocole WebDAV.</target>
         <note>Introduction Step Three - Description</note>
       </trans-unit>
       <trans-unit id="Connect to your %@ cloud to store files online and collaborate on documents in real time" xml:space="preserve">
         <source>Connect to your %@ cloud to store files online and collaborate on documents in real time</source>
-        <target>Connectez à votre %@ cloud pour stocker vos fichiers en ligne et collaborer sur documents en temps réel</target>
+        <target>Connectez-vous au cloud %@ pour stocker vos fichiers en ligne et collaborer sur documents en temps réel</target>
         <note>Footer text</note>
       </trans-unit>
       <trans-unit id="Connecting" xml:space="preserve">
@@ -1491,7 +1492,7 @@ d'autres qui utilisent le protocole WebDAV.</target>
       </trans-unit>
       <trans-unit id="Continue anyway" xml:space="preserve">
         <source>Continue anyway</source>
-        <target>Continuer quand même</target>
+        <target>Continuer</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Converter" xml:space="preserve">
@@ -1511,18 +1512,50 @@ d'autres qui utilisent le protocole WebDAV.</target>
       </trans-unit>
       <trans-unit id="Copying" xml:space="preserve">
         <source>Copying</source>
-        <target>Copiage</target>
+        <target>Copie en cours</target>
         <note>Caption of the processing</note>
+      </trans-unit>
+      <trans-unit id="Could not change file attrubutes" xml:space="preserve">
+        <source>Could not change file attrubutes</source>
+        <note>Description of file operation error</note>
+      </trans-unit>
+      <trans-unit id="Could not change the directory" xml:space="preserve">
+        <source>Could not change the directory</source>
+        <note>Description of file operation error</note>
       </trans-unit>
       <trans-unit id="Could not convert file to export." xml:space="preserve">
         <source>Could not convert file to export.</source>
-        <target>Impossible de convertir un fichier à l'exportation.</target>
+        <target>Impossible de convertir un fichier pour l'exportation.</target>
         <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Could not copy file" xml:space="preserve">
+        <source>Could not copy file</source>
+        <note>Description of file operation error</note>
       </trans-unit>
       <trans-unit id="Could not copy." xml:space="preserve">
         <source>Could not copy.</source>
         <target>Impossible de copier.</target>
         <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Could not create a directory" xml:space="preserve">
+        <source>Could not create a directory</source>
+        <note>Description of file operation error</note>
+      </trans-unit>
+      <trans-unit id="Could not create a hard link" xml:space="preserve">
+        <source>Could not create a hard link</source>
+        <note>Description of file operation error</note>
+      </trans-unit>
+      <trans-unit id="Could not create file" xml:space="preserve">
+        <source>Could not create file</source>
+        <note>Description of file operation error</note>
+      </trans-unit>
+      <trans-unit id="Could not create symlink from" xml:space="preserve">
+        <source>Could not create symlink from</source>
+        <note>Description of file operation error</note>
+      </trans-unit>
+      <trans-unit id="Could not delete file" xml:space="preserve">
+        <source>Could not delete file</source>
+        <note>Description of file operation error</note>
       </trans-unit>
       <trans-unit id="Could not delete the file." xml:space="preserve">
         <source>Could not delete the file.</source>
@@ -1569,6 +1602,10 @@ d'autres qui utilisent le protocole WebDAV.</target>
         <target>Impossible d’exporter le fichier.</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
+      <trans-unit id="Could not move file" xml:space="preserve">
+        <source>Could not move file</source>
+        <note>Description of file operation error</note>
+      </trans-unit>
       <trans-unit id="Could not open editor." xml:space="preserve">
         <source>Could not open editor.</source>
         <target>Impossible d’ouvrir l'éditeur.</target>
@@ -1589,10 +1626,18 @@ d'autres qui utilisent le protocole WebDAV.</target>
         <target>Impossible de lire les données à partir du fichier.</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
+      <trans-unit id="Could not read from file" xml:space="preserve">
+        <source>Could not read from file</source>
+        <note>Description of file operation error</note>
+      </trans-unit>
       <trans-unit id="Could not save the file." xml:space="preserve">
         <source>Could not save the file.</source>
         <target>Impossible d’enregistrez le fichier.</target>
         <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Could not write to file" xml:space="preserve">
+        <source>Could not write to file</source>
+        <note>Description of file operation error</note>
       </trans-unit>
       <trans-unit id="Couldn't open file" xml:space="preserve">
         <source>Couldn't open file</source>
@@ -1606,7 +1651,7 @@ d'autres qui utilisent le protocole WebDAV.</target>
       </trans-unit>
       <trans-unit id="Create and edit documents with our comprehensive toolbar: work with complex objects in text documents, perform extensive calculations in spreadsheets, create stunning presentations and view PDF files with no formatting loss." xml:space="preserve">
         <source>Create and edit documents with our comprehensive toolbar: work with complex objects in text documents, perform extensive calculations in spreadsheets, create stunning presentations and view PDF files with no formatting loss.</source>
-        <target>Vous pouvez créer et modifier les documents avec notre barre d'outils: travailler avec d’objets complexes dans les documents texte, effectuer les calculs dans les feuilles de calcul. Créer des présentations et des fichiers. Affichage PDF sans perte de mise en forme.</target>
+        <target>Créez et modifiez les documents avec notre barre d'outils : travaillez sur des objets complexes dans les documents texte, effectuez les calculs dans les feuilles de calcul, créez des présentations et visionnez des fichiers PDF sans perte de mise en forme.</target>
         <note>Introduction Step Two - Description</note>
       </trans-unit>
       <trans-unit id="Create new documents, spreadsheets or presentations. Create new folders to organize your files." xml:space="preserve">
@@ -1631,27 +1676,27 @@ d'autres qui utilisent le protocole WebDAV.</target>
       </trans-unit>
       <trans-unit id="Delete %lu File" xml:space="preserve">
         <source>Delete %lu File</source>
-        <target>Effacer %lu Fichier</target>
+        <target>Effacer %lu fichier</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Delete %lu Folder" xml:space="preserve">
         <source>Delete %lu Folder</source>
-        <target>Effacer %lu Dossier</target>
+        <target>Effacer %lu dossier</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Delete %lu Folder and %lu File" xml:space="preserve">
         <source>Delete %1$lu Folder and %2$lu File</source>
-        <target>Effacer %1$lu Dossier et %2$lu Fichier</target>
+        <target>Effacer %1$lu dossier et %2$lu fichier</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Delete File" xml:space="preserve">
         <source>Delete File</source>
-        <target>Effacer Fichier</target>
+        <target>Effacer fichier</target>
         <note>Button title</note>
       </trans-unit>
       <trans-unit id="Delete Folder" xml:space="preserve">
         <source>Delete Folder</source>
-        <target>Effacer Dossier</target>
+        <target>Effacer dossier</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Delete account" xml:space="preserve">
@@ -1671,7 +1716,7 @@ d'autres qui utilisent le protocole WebDAV.</target>
       </trans-unit>
       <trans-unit id="Deny Access" xml:space="preserve">
         <source>Deny Access</source>
-        <target>Refuser l'Accès</target>
+        <target>Accès interdit</target>
         <note>Share status</note>
       </trans-unit>
       <trans-unit id="Disconnect third party" xml:space="preserve">
@@ -1777,12 +1822,12 @@ d'autres qui utilisent le protocole WebDAV.</target>
       </trans-unit>
       <trans-unit id="End Slide Show" xml:space="preserve">
         <source>End Slide Show</source>
-        <target>Arrêtez le Diaporama</target>
+        <target>Arrêter le diaporama</target>
         <note>Presentation Viewer</note>
       </trans-unit>
       <trans-unit id="Enter Portal Address" xml:space="preserve">
         <source>Enter Portal Address</source>
-        <target>Entrez l'Adresse du Portail</target>
+        <target>Entrez l'adresse du portail</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Error" xml:space="preserve">
@@ -1792,27 +1837,27 @@ d'autres qui utilisent le protocole WebDAV.</target>
       </trans-unit>
       <trans-unit id="Failed online conversion service." xml:space="preserve">
         <source>Failed online conversion service.</source>
-        <target>Échoué service de conversion en ligne.</target>
+        <target>Conversion en ligne echouée.</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Failed to check portal availability." xml:space="preserve">
         <source>Failed to check portal availability.</source>
-        <target>Échoué de vérifier l'accès au portail.</target>
+        <target>Vérification d'accès au portail echouée.</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Failed to check the name of the portal" xml:space="preserve">
         <source>Failed to check the name of the portal</source>
-        <target>Échoué de vérifier le nom du portail</target>
+        <target>Vérification du nom de portail echouée.</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Failed to get file information from the server." xml:space="preserve">
         <source>Failed to get file information from the server.</source>
-        <target>Échoué d’obtenir des informations sur le fichier à partir du serveur</target>
+        <target>Tentative échouée d’obtenir des informations sur le fichier à partir du serveur</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Failed to get file list." xml:space="preserve">
         <source>Failed to get file list.</source>
-        <target>Échoué d'obtenir la liste des fichiers</target>
+        <target>Tentative d'obtenir la liste des fichiers échouée</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Failed to get information about the file." xml:space="preserve">
@@ -1822,12 +1867,12 @@ d'autres qui utilisent le protocole WebDAV.</target>
       </trans-unit>
       <trans-unit id="Failed to get the address of the document server." xml:space="preserve">
         <source>Failed to get the address of the document server.</source>
-        <target>Échoué d’obtenir l'adresse du serveur de documents.</target>
+        <target>Tentative échouée d’obtenir l'adresse du serveur de documents.</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Failed upload source file to conversion online service." xml:space="preserve">
         <source>Failed upload source file to conversion online service.</source>
-        <target>Échoué de télécharger un fichier source pour la conversion de service en ligne.</target>
+        <target>Tentative échouée de charger un fichier source vers le service de conversion en ligne.</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Failure to download file from portal." xml:space="preserve">
@@ -1837,8 +1882,16 @@ d'autres qui utilisent le protocole WebDAV.</target>
       </trans-unit>
       <trans-unit id="Failure to download result from conversion online service." xml:space="preserve">
         <source>Failure to download result from conversion online service.</source>
-        <target>L'échec du téléchargement de résultat de la conversion de service en ligne.</target>
+        <target>L'échec du téléchargement de résultat de conversion.</target>
         <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="File already exists" xml:space="preserve">
+        <source>File already exists</source>
+        <note>Description of file operation error</note>
+      </trans-unit>
+      <trans-unit id="File does not exist" xml:space="preserve">
+        <source>File does not exist</source>
+        <note>Description of file operation error</note>
       </trans-unit>
       <trans-unit id="Files" xml:space="preserve">
         <source>Files</source>
@@ -1857,12 +1910,12 @@ d'autres qui utilisent le protocole WebDAV.</target>
       </trans-unit>
       <trans-unit id="Full Access" xml:space="preserve">
         <source>Full Access</source>
-        <target>Accès Complet</target>
+        <target>Accès complet</target>
         <note>Share status</note>
       </trans-unit>
       <trans-unit id="GET STARTED!" xml:space="preserve">
         <source>GET STARTED!</source>
-        <target>COMMENCER!</target>
+        <target>COMMENCER !</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Gb" xml:space="preserve">
@@ -1872,7 +1925,7 @@ d'autres qui utilisent le protocole WebDAV.</target>
       </trans-unit>
       <trans-unit id="Get started" xml:space="preserve">
         <source>Get started</source>
-        <target>Commencer!</target>
+        <target>Commencer !</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Getting started" xml:space="preserve">
@@ -1892,7 +1945,7 @@ d'autres qui utilisent le protocole WebDAV.</target>
       </trans-unit>
       <trans-unit id="Groups" xml:space="preserve">
         <source>Groups</source>
-        <target>Les Groupes</target>
+        <target>Groupes</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Images" xml:space="preserve">
@@ -1902,7 +1955,7 @@ d'autres qui utilisent le protocole WebDAV.</target>
       </trans-unit>
       <trans-unit id="In online mode, use real-time co-editing features of %@ to work on documents together with your portal members, share documents and create common storage folders." xml:space="preserve">
         <source>In online mode, use real-time co-editing features of %@ to work on documents together with your portal members, share documents and create common storage folders.</source>
-        <target>En mode en ligne, utilisez les fonctions de co-édition en temps réel de %@ pour travailler sur les documents avec les membres de votre portail, partager des documents et créer des dossiers de stockage communs.</target>
+        <target>En mode connecté, utilisez les fonctions de co-édition en temps réel de %@ pour travailler sur les documents avec les membres de votre portail, partager des documents et créer des dossiers de stockage communs.</target>
         <note>Introduction Step Five - Description</note>
       </trans-unit>
       <trans-unit id="Incorrect portal address" xml:space="preserve">
@@ -1912,12 +1965,12 @@ d'autres qui utilisent le protocole WebDAV.</target>
       </trans-unit>
       <trans-unit id="Invalid Country Code" xml:space="preserve">
         <source>Invalid Country Code</source>
-        <target>Code de Pays Incorrect</target>
+        <target>Code de pays Incorrect</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Invalid URL: The format ot the URL could not be determined" xml:space="preserve">
         <source>Invalid URL: The format ot the URL could not be determined</source>
-        <target>URL invalide: Le format de l'URL n'a pu être déterminé</target>
+        <target>URL invalide : Le format de l'URL ne pas identifié</target>
         <note>Error message</note>
       </trans-unit>
       <trans-unit id="Kb" xml:space="preserve">
@@ -1932,17 +1985,17 @@ d'autres qui utilisent le protocole WebDAV.</target>
       </trans-unit>
       <trans-unit id="Login" xml:space="preserve">
         <source>Login</source>
-        <target>Login</target>
+        <target>Connexion</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Login by %@" xml:space="preserve">
         <source>Login by %@</source>
-        <target>Connexion par %@</target>
+        <target>Connexion via %@</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Login is empty" xml:space="preserve">
         <source>Login is empty</source>
-        <target>Login est vide.</target>
+        <target>Identifiant est vide.</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Logout" xml:space="preserve">
@@ -1983,17 +2036,17 @@ d'autres qui utilisent le protocole WebDAV.</target>
       </trans-unit>
       <trans-unit id="Moving" xml:space="preserve">
         <source>Moving</source>
-        <target>Déménagement</target>
+        <target>Déplacement</target>
         <note>Caption of the processing</note>
       </trans-unit>
       <trans-unit id="My Clouds" xml:space="preserve">
         <source>My Clouds</source>
-        <target>Mes Clouds</target>
+        <target>Mes clouds</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="My Documents" xml:space="preserve">
         <source>My Documents</source>
-        <target>Mes Documents</target>
+        <target>Mes documents</target>
         <note>Category title</note>
       </trans-unit>
       <trans-unit id="My Drive" xml:space="preserve">
@@ -2008,17 +2061,17 @@ d'autres qui utilisent le protocole WebDAV.</target>
       </trans-unit>
       <trans-unit id="Needs additional params." xml:space="preserve">
         <source>Needs additional params.</source>
-        <target>Nécessite des paramètres supplémentaires.</target>
+        <target>Besoins de paramètres supplémentaires.</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="New Document" xml:space="preserve">
         <source>New Document</source>
-        <target>Nouveau Document</target>
+        <target>Nouveau document</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="New Folder" xml:space="preserve">
         <source>New Folder</source>
-        <target>Nouveau Dossier</target>
+        <target>Nouveau dossier</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="New Presentation" xml:space="preserve">
@@ -2028,7 +2081,7 @@ d'autres qui utilisent le protocole WebDAV.</target>
       </trans-unit>
       <trans-unit id="New Spreadsheet" xml:space="preserve">
         <source>New Spreadsheet</source>
-        <target>Nouvelle Feuille de Calcul</target>
+        <target>Nouvelle feuille de Calcul</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Next" xml:space="preserve">
@@ -2048,17 +2101,17 @@ d'autres qui utilisent le protocole WebDAV.</target>
       </trans-unit>
       <trans-unit id="No information about the user profile." xml:space="preserve">
         <source>No information about the user profile.</source>
-        <target>Aucune information sur le profil de l'utilisateur.</target>
+        <target>Aucune information sur le profil utilisateur.</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="No network" xml:space="preserve">
         <source>No network</source>
-        <target>Pas de réseau</target>
+        <target>Pas de connexion</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="No network connection can be found. Please check the connection and reload the page." xml:space="preserve">
         <source>No network connection can be found. Please check the connection and reload the page.</source>
-        <target>Aucune connexion réseau ne peut être trouvée. Veuillez vérifier la connexion et recharger la page.</target>
+        <target>Aucune connexion réseau ne peut être trouvée. Veuillez vérifier la connexion et rechargez la page.</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="No results matching your search could be found. Please try another phrase." xml:space="preserve">
@@ -2079,7 +2132,7 @@ d'autres qui utilisent le protocole WebDAV.</target>
       </trans-unit>
       <trans-unit id="Note: removal from your account can not be undone." xml:space="preserve">
         <source>Note: removal from your account can not be undone.</source>
-        <target>Remarque: la suppression de votre compte ne peut pas être annulée.</target>
+        <target>Remarque : l'effacement de votre compte ne peut pas être annulé.</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="OK" xml:space="preserve">
@@ -2134,7 +2187,7 @@ d'autres qui utilisent le protocole WebDAV.</target>
       </trans-unit>
       <trans-unit id="Open In" xml:space="preserve">
         <source>Open In</source>
-        <target>Ouvert(e) en</target>
+        <target>Ouvert(e) à</target>
         <note>Button title</note>
       </trans-unit>
       <trans-unit id="Opening" xml:space="preserve">
@@ -2154,12 +2207,12 @@ d'autres qui utilisent le protocole WebDAV.</target>
       </trans-unit>
       <trans-unit id="Overwrite" xml:space="preserve">
         <source>Overwrite</source>
-        <target>Écraser</target>
+        <target>Remplacer</target>
         <note>Button title</note>
       </trans-unit>
       <trans-unit id="Overwrite confirmation" xml:space="preserve">
         <source>Overwrite confirmation</source>
-        <target>Confirmation de l'écrasement</target>
+        <target>Confirmation de remplacement</target>
         <note>Button title</note>
       </trans-unit>
       <trans-unit id="Owner" xml:space="preserve">
@@ -2189,7 +2242,7 @@ d'autres qui utilisent le protocole WebDAV.</target>
       </trans-unit>
       <trans-unit id="Please go to Settings and enable the camera for this app to use this feature." xml:space="preserve">
         <source>Please go to Settings and enable the camera for this app to use this feature.</source>
-        <target>Veuillez aller dans Paramètres et activer la caméra pour que cette application utilise cette fonction.</target>
+        <target>Passez aux Paramètres et activez la caméra pour que cette application accède à cette fonction.</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Please re-login to renew your session." xml:space="preserve">
@@ -2203,7 +2256,7 @@ d'autres qui utilisent le protocole WebDAV.</target>
  If the problem persists contact us and mention this error code: Box - %@</source>
         <target>Veuillez réessayer. 
 
- Si le problème persiste, contactez nous et mentionnez ce code d'erreur: Boîte - %@</target>
+ Si le problème persiste, contactez-nous et mentionnez ce code d'erreur : Boîte - %@</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Please retry. &#10;&#10; If the problem persists contact us and mention this error code: Dropbox - %@" xml:space="preserve">
@@ -2212,7 +2265,7 @@ d'autres qui utilisent le protocole WebDAV.</target>
  If the problem persists contact us and mention this error code: Dropbox - %@</source>
         <target>Veuillez réessayer. 
 
- Si le problème persiste, contactez nous et mentionnez ce code d'erreur: Dropbox - %@</target>
+ Si le problème persiste, contactez-nous et mentionnez ce code d'erreur : Dropbox - %@</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Please retry. &#10;&#10; If the problem persists contact us and mention this error code: Google - %@" xml:space="preserve">
@@ -2221,7 +2274,7 @@ d'autres qui utilisent le protocole WebDAV.</target>
  If the problem persists contact us and mention this error code: Google - %@</source>
         <target>Veuillez réessayer. 
 
- Si le problème persiste, contactez nous et mentionnez ce code d'erreur: Google - %@</target>
+ Si le problème persiste, contactez-nous et mentionnez ce code d'erreur : Google - %@</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Please retry. &#10;&#10; If the problem persists contact us and mention this error code: OneDrive - %@" xml:space="preserve">
@@ -2230,7 +2283,7 @@ d'autres qui utilisent le protocole WebDAV.</target>
  If the problem persists contact us and mention this error code: OneDrive - %@</source>
         <target>Veuillez réessayer. 
 
- Si le problème persiste, contactez nous et mentionnez ce code d'erreur: OneDrive - %@</target>
+ Si le problème persiste, contactez-nous et mentionnez ce code d'erreur : OneDrive - %@</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Please retry. &#10;&#10; If the problem persists contact us and mention this error code: SSO - %@" xml:space="preserve">
@@ -2239,12 +2292,12 @@ d'autres qui utilisent le protocole WebDAV.</target>
  If the problem persists contact us and mention this error code: SSO - %@</source>
         <target>Veuillez réessayer. 
 
- Si le problème persiste, contactez nous et mentionnez ce code d'erreur: SSO - %@</target>
+ Si le problème persiste, contactez-nous et mentionnez ce code d'erreur : SSO - %@</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Portal Address" xml:space="preserve">
         <source>Portal Address</source>
-        <target>Adresse de Portail</target>
+        <target>Adresse de portail</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Portal is unavailable." xml:space="preserve">
@@ -2259,7 +2312,7 @@ d'autres qui utilisent le protocole WebDAV.</target>
       </trans-unit>
       <trans-unit id="Presentation Sample" xml:space="preserve">
         <source>Presentation Sample</source>
-        <target>Exemple de Présentation</target>
+        <target>Exemple de présentation</target>
         <note>Default title of sample document</note>
       </trans-unit>
       <trans-unit id="Presentations" xml:space="preserve">
@@ -2279,17 +2332,17 @@ d'autres qui utilisent le protocole WebDAV.</target>
       </trans-unit>
       <trans-unit id="Project Documents" xml:space="preserve">
         <source>Project Documents</source>
-        <target>Documents de Projet</target>
+        <target>Documents de projet</target>
         <note>Category title</note>
       </trans-unit>
       <trans-unit id="Protected File" xml:space="preserve">
         <source>Protected File</source>
-        <target>Fichier Protégé</target>
+        <target>Fichier protégé</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Read Only" xml:space="preserve">
         <source>Read Only</source>
-        <target>Ne que Lire</target>
+        <target>Lecture seule</target>
         <note>Share status</note>
       </trans-unit>
       <trans-unit id="Recover here" xml:space="preserve">
@@ -2324,7 +2377,7 @@ d'autres qui utilisent le protocole WebDAV.</target>
       </trans-unit>
       <trans-unit id="Rename failed. An object with such a similar name exists." xml:space="preserve">
         <source>Rename failed. An object with such a similar name exists.</source>
-        <target>Changement de nom a échoué. Il existe un objet avec un nom similaire.</target>
+        <target>Changement de nom a échoué. Il existe un objet avec ce nom.</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Renaming" xml:space="preserve">
@@ -2349,16 +2402,17 @@ d'autres qui utilisent le protocole WebDAV.</target>
       </trans-unit>
       <trans-unit id="Review" xml:space="preserve">
         <source>Review</source>
-        <target>Revue</target>
+        <target>Révision</target>
         <note>Share status</note>
       </trans-unit>
       <trans-unit id="Reviewing" xml:space="preserve">
         <source>Reviewing</source>
+        <target>Révision</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="SKIP" xml:space="preserve">
         <source>SKIP</source>
-        <target>SAUTER</target>
+        <target>IGNORER</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Saving" xml:space="preserve">
@@ -2373,27 +2427,27 @@ d'autres qui utilisent le protocole WebDAV.</target>
       </trans-unit>
       <trans-unit id="Select Photos" xml:space="preserve">
         <source>Select Photos</source>
-        <target>Sélectionner les Photos</target>
+        <target>Sélectionner les photos</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Select another cloud to connect to Nextcloud, ownCloud and others are supported." xml:space="preserve">
         <source>Select another cloud to connect to Nextcloud, ownCloud and others are supported.</source>
-        <target>Sélectionnez un autre cloud to connecter à Nextcloud, ownCloud et d'autres stockages supportés</target>
+        <target>Sélectionnez un autre cloud pour vous connecter à Nextcloud, ownCloud et d'autres stockages supportés</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Select the folder to copy the items" xml:space="preserve">
         <source>Select the folder to copy the items</source>
-        <target>Sélectionner le dossier à copier les éléments</target>
+        <target>Sélectionnez le dossier pour copier les éléments</target>
         <note>One line. Max 50 charasters</note>
       </trans-unit>
       <trans-unit id="Select the folder to move the items" xml:space="preserve">
         <source>Select the folder to move the items</source>
-        <target>Sélectionner le dossier à déplacer les éléments</target>
+        <target>Sélectionner le dossier pour déplacer les éléments</target>
         <note>One line. Max 50 charasters</note>
       </trans-unit>
       <trans-unit id="Select the folder to recover the items" xml:space="preserve">
         <source>Select the folder to recover the items</source>
-        <target>Sélectionner le dossier à récupérer les éléments</target>
+        <target>Sélectionner le dossier pour récupérer les éléments</target>
         <note>One line. Max 50 charasters</note>
       </trans-unit>
       <trans-unit id="Selected provider is not available" xml:space="preserve">
@@ -2403,7 +2457,7 @@ d'autres qui utilisent le protocole WebDAV.</target>
       </trans-unit>
       <trans-unit id="Selected: %ld" xml:space="preserve">
         <source>Selected: %ld</source>
-        <target>Sélectionné: %ld</target>
+        <target>Sélectionné : %ld</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Settings" xml:space="preserve">
@@ -2423,7 +2477,7 @@ d'autres qui utilisent le protocole WebDAV.</target>
       </trans-unit>
       <trans-unit id="Shared with Me" xml:space="preserve">
         <source>Shared with Me</source>
-        <target>Partagé avec Moi</target>
+        <target>Partagé avec moi</target>
         <note>Category title</note>
       </trans-unit>
       <trans-unit id="Sharing" xml:space="preserve">
@@ -2443,17 +2497,17 @@ d'autres qui utilisent le protocole WebDAV.</target>
       </trans-unit>
       <trans-unit id="Skip" xml:space="preserve">
         <source>Skip</source>
-        <target>Sauter</target>
+        <target>Ignorer</target>
         <note>Button title</note>
       </trans-unit>
       <trans-unit id="Slide %i of %i" xml:space="preserve">
         <source>Slide %1$i of %2$i</source>
-        <target>Glisser %1$i of %2$i</target>
+        <target>Diapositive %1$i of %2$i</target>
         <note>Presentation Viewer</note>
       </trans-unit>
       <trans-unit id="Sort" xml:space="preserve">
         <source>Sort</source>
-        <target>Classer</target>
+        <target>Trier</target>
         <note>Button title</note>
       </trans-unit>
       <trans-unit id="Space" xml:space="preserve">
@@ -2468,7 +2522,7 @@ d'autres qui utilisent le protocole WebDAV.</target>
       </trans-unit>
       <trans-unit id="Spreadsheet Sample" xml:space="preserve">
         <source>Spreadsheet Sample</source>
-        <target>Exemple de Feuille de Calcul</target>
+        <target>Exemple de feuille de calcul</target>
         <note>Default title of sample document</note>
       </trans-unit>
       <trans-unit id="Spreadsheets" xml:space="preserve">
@@ -2478,7 +2532,7 @@ d'autres qui utilisent le protocole WebDAV.</target>
       </trans-unit>
       <trans-unit id="Switch" xml:space="preserve">
         <source>Switch</source>
-        <target>Passer</target>
+        <target>Basculer</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Tab" xml:space="preserve">
@@ -2503,12 +2557,12 @@ d'autres qui utilisent le protocole WebDAV.</target>
       </trans-unit>
       <trans-unit id="The deleted files go to the trash. You can either restore or delete them forever." xml:space="preserve">
         <source>The deleted files go to the trash. You can either restore or delete them forever.</source>
-        <target>Les fichiers supprimés vont à la poubelle. Vous pouvez les restaurer ou les supprimer pour toujours.</target>
+        <target>Les fichiers supprimés seront déplacés vers la corbeille. Vous pouvez les restaurer ou les supprimer pour toujours.</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="The file in the Trash can not be viewed." xml:space="preserve">
         <source>The file in the Trash can not be viewed.</source>
-        <target>Le fichier dans la Corbeille ne peut pas être considéré.</target>
+        <target>Le fichier placé dans la Corbeille ne peut pas être affiché.</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="The file will be irretrievably deleted. This action is irreversible." xml:space="preserve">
@@ -2548,7 +2602,7 @@ d'autres qui utilisent le protocole WebDAV.</target>
       </trans-unit>
       <trans-unit id="The trash is empty" xml:space="preserve">
         <source>The trash is empty</source>
-        <target>La poubelle est vide</target>
+        <target>La corbeille est vide</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Third-party storage" xml:space="preserve">
@@ -2558,7 +2612,7 @@ d'autres qui utilisent le protocole WebDAV.</target>
       </trans-unit>
       <trans-unit id="This document is being edited. Do you want open %@ to view only?" xml:space="preserve">
         <source>This document is being edited. Do you want open %@ to view only?</source>
-        <target>Ce document est en cours d'édition. Voulez-vous ouvrir %@ en lecture seule ?</target>
+        <target>Ce document est en cours d'édition. Voulez-vous ouvrir %@ pour la lecture seule ?</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="This folder is empty" xml:space="preserve">
@@ -2568,17 +2622,17 @@ d'autres qui utilisent le protocole WebDAV.</target>
       </trans-unit>
       <trans-unit id="This operation will free up space on your device by deleting temporary files. Your offline files and personal data won't be removed." xml:space="preserve">
         <source>This operation will free up space on your device by deleting temporary files. Your offline files and personal data won't be removed.</source>
-        <target>Cette opération libère de l'espace sur votre appareil en supprimant les fichiers temporaires. Vos fichiers hors ligne et vos données personnelles ne seront pas supprimés.</target>
+        <target>Cette opération libère de l'espace sur votre appareil en supprimant les fichiers temporaires. Vos fichiers locaux et vos données personnelles ne seront pas supprimés.</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="This presentation is being edited. Do you want open %@ to view only?" xml:space="preserve">
         <source>This presentation is being edited. Do you want open %@ to view only?</source>
-        <target>Cette présentation est en cours d'édition. Voulez-vous ouvrir %@ en lecture seule ?</target>
+        <target>Cette présentation est en cours d'édition. Voulez-vous ouvrir %@ pour la lecture seule ?</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="This spreadsheet is being edited. Do you want open %@ to view only?" xml:space="preserve">
         <source>This spreadsheet is being edited. Do you want open %@ to view only?</source>
-        <target>Cette feuille de calcul est en cours d'édition. Voulez-vous ouvrir %@ en lecture seule ?</target>
+        <target>Cette feuille de calcul est en cours d'édition. Voulez-vous ouvrir %@ pour la lecture seule ?</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Title" xml:space="preserve">
@@ -2588,12 +2642,12 @@ d'autres qui utilisent le protocole WebDAV.</target>
       </trans-unit>
       <trans-unit id="To open a document, you must go to portal %@ under your account." xml:space="preserve">
         <source>To open a document, you must go to portal %@ under your account.</source>
-        <target>Pour ouvrir un document, vous devez aller sur le portail %@ sous votre compte.</target>
+        <target>Pour ouvrir un document, vous vous connecter au portail %@ sous votre nom.</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="To open a new document, you must exit the current document." xml:space="preserve">
         <source>To open a new document, you must exit the current document.</source>
-        <target>Pour ouvrir un nouveau document, vous devez quitter le document actuel.</target>
+        <target>Pour ouvrir un nouveau document, veuillez fermer le document actuel.</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Trash" xml:space="preserve">
@@ -2613,7 +2667,7 @@ d'autres qui utilisent le protocole WebDAV.</target>
       </trans-unit>
       <trans-unit id="Try to connect via another protocol?" xml:space="preserve">
         <source>Try to connect via another protocol?</source>
-        <target>Essayez-vous de connecter via un autre protocole?</target>
+        <target>Essayez-vous de vous connecter via un autre protocole ?</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Turn Passcode Off" xml:space="preserve">
@@ -2703,10 +2757,12 @@ d'autres qui utilisent le protocole WebDAV.</target>
       </trans-unit>
       <trans-unit id="Use Track Changes mode in text documents to suggest changes, accept or reject them." xml:space="preserve">
         <source>Use Track Changes mode in text documents to suggest changes, accept or reject them.</source>
+        <target>Utilisez le Suivi de modifications dans le documents texte pour suggérer les changements, les accepter ou rejeter.</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Use comments to add notes, suggestions, or questions for your collaborators. Edit, answer, resolve or delete them in process." xml:space="preserve">
         <source>Use comments to add notes, suggestions, or questions for your collaborators. Edit, answer, resolve or delete them in process.</source>
+        <target>Utilisez les commentaires pour laisser les remarques, suggestions,ou questions pour vos collaborateurs. Répondez aux commentaires, modifiez ou supprimez-les, marquez comme résolus lors de votre travail.</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="User authentication failed" xml:space="preserve">
@@ -2731,7 +2787,7 @@ d'autres qui utilisent le protocole WebDAV.</target>
       </trans-unit>
       <trans-unit id="Varies" xml:space="preserve">
         <source>Varies</source>
-        <target>Varier</target>
+        <target>Varie</target>
         <note>Share status</note>
       </trans-unit>
       <trans-unit id="Version" xml:space="preserve">
@@ -2746,7 +2802,7 @@ d'autres qui utilisent le protocole WebDAV.</target>
       </trans-unit>
       <trans-unit id="We are sorry, this portal name is already taken" xml:space="preserve">
         <source>We are sorry, this portal name is already taken</source>
-        <target>Nous sommes désolés, ce nom de portail est déjà pris</target>
+        <target>Nous sommes désolés, ce nom de portail existe déjà</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="We have sent you an SMS with a code to the number %@" xml:space="preserve">
@@ -2767,7 +2823,7 @@ d'autres qui utilisent le protocole WebDAV.</target>
       <trans-unit id="Welcome to %@ mobile editing suite!&#10;Swipe to learn more about the app." xml:space="preserve">
         <source>Welcome to %@ mobile editing suite!
 Swipe to learn more about the app.</source>
-        <target>Bienvenue dans la suite d’édition mobile %@ !
+        <target>Bienvenue dans la suite bureautique mobile %@ !
 Balayez pour en savoir plus sur l'application.</target>
         <note>Introduction Step One - Description</note>
       </trans-unit>
@@ -2781,7 +2837,7 @@ Balayez pour en savoir plus sur l'application.</target>
 Created files can later be uploaded to online portal and
 then accessed from any other device.</source>
         <target>Travaillez avec des documents hors ligne.
-Les fichiers créés peuvent ensuite être téléchargés sur le portail en ligne et ensuite accessible à partir de n'importe quel autre appareil.</target>
+Les fichiers créés peuvent ensuite être chargés sur le portail en ligne et seront ensuite accessibles à partir de n'importe quel autre appareil.</target>
         <note>Introduction Step Four - Description</note>
       </trans-unit>
       <trans-unit id="Work with office files" xml:space="preserve">
@@ -2791,7 +2847,7 @@ Les fichiers créés peuvent ensuite être téléchargés sur le portail en lign
       </trans-unit>
       <trans-unit id="Wrong login or password." xml:space="preserve">
         <source>Wrong login or password.</source>
-        <target>Login ou mot de passe erroné.</target>
+        <target>Identifiant ou mot de passe erroné.</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Yandex Disk" xml:space="preserve">
@@ -2821,7 +2877,7 @@ Les fichiers créés peuvent ensuite être téléchargés sur le portail en lign
       </trans-unit>
       <trans-unit id="You have read-only access to this folder. You cannot create files or folders here." xml:space="preserve">
         <source>You have read-only access to this folder. You cannot create files or folders here.</source>
-        <target>Vous avez un accès en lecture seule à ce dossier. Vous ne pouvez pas créer de fichiers ou de dossiers ici.</target>
+        <target>Vous avez une permission de lecture seule pour ce dossier. Vous ne pouvez pas créer de fichiers ou de dossiers ici.</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Your session has expired" xml:space="preserve">
@@ -2876,7 +2932,7 @@ Les fichiers créés peuvent ensuite être téléchargés sur le portail en lign
       </trans-unit>
       <trans-unit id="common.paymentRequiredTitle" xml:space="preserve">
         <source>Payment required</source>
-        <target>Paiement Requis</target>
+        <target>Paiement requis</target>
         <note>Payment required title</note>
       </trans-unit>
       <trans-unit id="error.errorForbiddenMsg" xml:space="preserve">
@@ -2945,7 +3001,7 @@ Les fichiers créés peuvent ensuite être téléchargés sur le portail en lign
   </file>
   <file original="Settings.bundle/en.lproj/Root.strings" source-language="en" target-language="fr" datatype="plaintext">
     <header>
-      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="11.5" build-num="11E608c"/>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="11.6" build-num="11E708"/>
     </header>
     <body>
       <trans-unit id="Acknowledgements" xml:space="preserve">

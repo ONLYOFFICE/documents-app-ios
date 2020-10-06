@@ -1,5 +1,5 @@
 /* Class = "UILabel"; text = "Connect to Cloud"; ObjectID = "0Hf-aP-smp"; */
-"0Hf-aP-smp.text" = "Connecter à Cloud";
+"0Hf-aP-smp.text" = "Connecter au cloud";
 
 /* Class = "UITabBarItem"; title = "Clouds"; ObjectID = "6qd-Sb-ejT"; */
 "6qd-Sb-ejT.title" = "Clouds";
@@ -20,7 +20,7 @@
 "FAC-qi-qFR.text" = "Catégorie";
 
 /* Class = "UILabel"; text = "Other Cloud"; ObjectID = "FkK-jc-e1U"; */
-"FkK-jc-e1U.text" = "Autre Cloud";
+"FkK-jc-e1U.text" = "Autre cloud";
 
 /* Class = "UILabel"; text = "Category"; ObjectID = "GcW-AI-d08"; Note = "Do not translate"; */
 "GcW-AI-d08.text" = "Catégorie";
@@ -59,7 +59,7 @@
 "oRP-oW-6D9.title" = "ONLYOFFICE";
 
 /* Class = "UIViewController"; title = "Choose Cloud"; ObjectID = "pM4-zR-Xil"; */
-"pM4-zR-Xil.title" = "Choisir le Cloud";
+"pM4-zR-Xil.title" = "Choisir le cloud";
 
 /* Class = "UINavigationItem"; title = "ONLYOFFICE"; ObjectID = "rZi-T5-tyI"; */
 "rZi-T5-tyI.title" = "ONLYOFFICE";
@@ -74,7 +74,7 @@
 "wcS-gn-5AV.title" = "Clouds";
 
 /* Class = "UINavigationItem"; title = "Choose Cloud"; ObjectID = "WIL-sg-dk2"; */
-"WIL-sg-dk2.title" = "Choisir le Cloud";
+"WIL-sg-dk2.title" = "Choisir le cloud";
 
 /* Class = "UITabBarItem"; title = "ONLYOFFICE"; ObjectID = "WLM-Ff-ccz"; */
 "WLM-Ff-ccz.title" = "ONLYOFFICE";
@@ -83,5 +83,5 @@
 "WM5-Ng-sRj.title" = "Clouds";
 
 /* Class = "UILabel"; text = "Select another cloud to connect to Nextcloud, ownCloud and others are supported."; ObjectID = "WQV-WX-BW2"; */
-"WQV-WX-BW2.text" = "Sélectionnez un autre cloud pour vous connecter à Nextcloud, ownCloud et d'autres sont pris en charge.";
+"WQV-WX-BW2.text" = "Sélectionnez un autre cloud pour vous connecter à Nextcloud, ownCloud et d'autres clouds supportés.";
 

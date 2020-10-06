@@ -34,7 +34,8 @@ platform :ios do
     # match(type: "appstore") # more information: https://codesigning.guide
 
     version_number = get_version_number(
-      xcodeproj: "Documents/Documents.xcodeproj"
+      xcodeproj: "Documents/Documents.xcodeproj",
+      configuration: "Release"
     )
     build_number = get_info_plist_value(
       path: "Documents/Documents/Info.plist", 
@@ -72,6 +73,9 @@ platform :ios do
       tag: "v#{version_number}-#{build_number}",
       build_number: build_number
     )
+
+    # push changes
+    push_to_git_remote
 
     # Submit to iTunes Connect
     pilot(

@@ -5,16 +5,16 @@
 "9Wg-zE-nZA.segmentTitles[1]" = "Groupes";
 
 /* Class = "UILabel"; text = "No available records"; ObjectID = "75q-CN-6uI"; */
-"75q-CN-6uI.text" = "Aucun enregistrement disponible";
+"75q-CN-6uI.text" = "Pas d'enregistrements disponibles";
 
 /* Class = "UILabel"; text = "User Name"; ObjectID = "bHR-n3-evx"; Note = "Do not translate"; */
-"bHR-n3-evx.text" = "Nom d'Utilisateur";
+"bHR-n3-evx.text" = "Nom d'utilisateur";
 
 /* Class = "UILabel"; text = "Deny Access"; ObjectID = "c9E-27-xIy"; */
-"c9E-27-xIy.text" = "Refuser l'Accès";
+"c9E-27-xIy.text" = "Accès interdit";
 
 /* Class = "UILabel"; text = "Review"; ObjectID = "cmV-9P-RqY"; */
-"cmV-9P-RqY.text" = "Revue";
+"cmV-9P-RqY.text" = "Révision";
 
 /* Class = "UITableViewSection"; headerTitle = "Access"; ObjectID = "HLh-xV-DgI"; */
 "HLh-xV-DgI.headerTitle" = "Accès";
@@ -23,7 +23,7 @@
 "kAs-JV-Zff.text" = "Ajoutez des utilisateurs ou des groupes et autorisez-les à lire, réviser ou modifier les documents.";
 
 /* Class = "UILabel"; text = "Read Only"; ObjectID = "noV-Xw-dnb"; */
-"noV-Xw-dnb.text" = "Ne Que Lire";
+"noV-Xw-dnb.text" = "Lecture seule";
 
 /* Class = "UILabel"; text = "Access"; ObjectID = "v5j-Jm-YE4"; Note = "Do not translate"; */
 "v5j-Jm-YE4.text" = "Accès";
@@ -38,14 +38,14 @@
 "ZE7-40-yeL.text" = "Étiquette";
 
 /* Class = "UILabel"; text = "Full Access"; ObjectID = "zUl-mf-gTQ"; */
-"zUl-mf-gTQ.text" = "Accès Complet";
+"zUl-mf-gTQ.text" = "Accès complet";
 
 /* Class = "UISegmentedControl"; ZW9-Zh-W3r.segmentTitles[0] = "Full Access"; ObjectID = "ZW9-Zh-W3r"; */
 "ZW9-Zh-W3r.segmentTitles[0]" = "Accès Complet";
 
 /* Class = "UISegmentedControl"; ZW9-Zh-W3r.segmentTitles[1] = "Read Only"; ObjectID = "ZW9-Zh-W3r"; */
-"ZW9-Zh-W3r.segmentTitles[1]" = "Ne que Lire";
+"ZW9-Zh-W3r.segmentTitles[1]" = "Lecture seule";
 
 /* Class = "UISegmentedControl"; ZW9-Zh-W3r.segmentTitles[2] = "Deny Access"; ObjectID = "ZW9-Zh-W3r"; */
-"ZW9-Zh-W3r.segmentTitles[2]" = "Refuser l'Accès";
+"ZW9-Zh-W3r.segmentTitles[2]" = "Accès interdit";
 

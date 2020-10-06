@@ -118,6 +118,9 @@
 /* Introduction Step Five - Title */
 "Collaborate with your team" = "Arbeiten Sie mit Ihren Teammitgliedern zusammen";
 
+/* No comment provided by engineer. */
+"Comments" = "Kommentare";
+
 /* Category title */
 "Common Documents" = "Gemeinsame Dokumente";
 
@@ -690,6 +693,9 @@
 /* Share status */
 "Review" = "Überprüfen";
 
+/* No comment provided by engineer. */
+"Reviewing" = "Überprüfung";
+
 /* Caption of the processing */
 "Saving" = "Wird gespeichert";
 
@@ -891,11 +897,17 @@
 /* Caption of the process */
 "Uploading" = "Wird hochgeladen";
 
+/* No comment provided by engineer. */
+"Use comments to add notes, suggestions, or questions for your collaborators. Edit, answer, resolve or delete them in process." = "Nutzen Sie Kommentare, um Notizen hinzuzufügen, Vorschläge zu machen oder Fragen an Ihre Kollegen zu stellen.Bearbeiten, beantworten, auflösen oder löschen Sie diese bei der Bearbeitung.";
+
 /* Button title */
 "Use Face ID" = "Face-ID verwenden";
 
 /* Button title */
 "Use Touch ID" = "Touch-ID verwenden";
+
+/* No comment provided by engineer. */
+"Use Track Changes mode in text documents to suggest changes, accept or reject them." = "Nutzen Sie Nachverfolgen von Änderungen in Textdokumenten, um Änderungen vorzuschlagen, anzunehmen oder abzulehnen.";
 
 /* Error message */
 "User authentication failed" = "Benutzerauthentifizierung fehlgeschlagen";

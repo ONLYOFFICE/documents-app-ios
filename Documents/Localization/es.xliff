@@ -2,7 +2,7 @@
 <xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="1.2" xsi:schemaLocation="urn:oasis:names:tc:xliff:document:1.2 http://docs.oasis-open.org/xliff/v1.2/os/xliff-core-1.2-strict.xsd">
   <file original="Documents/Base.lproj/ConnectStorage.storyboard" source-language="en" target-language="es" datatype="plaintext">
     <header>
-      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="11.5" build-num="11E608c"/>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="11.6" build-num="11E708"/>
     </header>
     <body>
       <trans-unit id="1hg-GO-WNq.text" xml:space="preserve">
@@ -59,7 +59,7 @@
   </file>
   <file original="Documents/Base.lproj/CreatePortal.storyboard" source-language="en" target-language="es" datatype="plaintext">
     <header>
-      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="11.5" build-num="11E608c"/>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="11.6" build-num="11E708"/>
     </header>
     <body>
       <trans-unit id="BMv-HP-hD2.normalTitle" xml:space="preserve">
@@ -130,7 +130,7 @@ start using your office</source>
   </file>
   <file original="Documents/Base.lproj/DocumentsEmptyView.xib" source-language="en" target-language="es" datatype="plaintext">
     <header>
-      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="11.5" build-num="11E608c"/>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="11.6" build-num="11E708"/>
     </header>
     <body>
       <trans-unit id="1kl-l7-AtV.text" xml:space="preserve">
@@ -152,7 +152,7 @@ start using your office</source>
   </file>
   <file original="Documents/Base.lproj/Intro.storyboard" source-language="en" target-language="es" datatype="plaintext">
     <header>
-      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="11.5" build-num="11E608c"/>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="11.6" build-num="11E708"/>
     </header>
     <body>
       <trans-unit id="De8-tD-APT.text" xml:space="preserve">
@@ -174,7 +174,7 @@ start using your office</source>
   </file>
   <file original="Documents/Base.lproj/Localizable.stringsdict" source-language="en" target-language="es" datatype="plaintext">
     <header>
-      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="11.5" build-num="11E608c"/>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="11.6" build-num="11E708"/>
     </header>
     <body>
       <trans-unit id="/%lu File selected:dict/NSStringLocalizedFormatKey:dict/:string" xml:space="preserve">
@@ -306,7 +306,7 @@ start using your office</source>
   </file>
   <file original="Documents/Base.lproj/Login.storyboard" source-language="en" target-language="es" datatype="plaintext">
     <header>
-      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="11.5" build-num="11E608c"/>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="11.6" build-num="11E708"/>
     </header>
     <body>
       <trans-unit id="0X2-Xg-z5B.text" xml:space="preserve">
@@ -552,7 +552,7 @@ de dos factores</target>
   </file>
   <file original="Documents/Base.lproj/Main.storyboard" source-language="en" target-language="es" datatype="plaintext">
     <header>
-      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="11.5" build-num="11E608c"/>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="11.6" build-num="11E708"/>
     </header>
     <body>
       <trans-unit id="0Hf-aP-smp.text" xml:space="preserve">
@@ -704,7 +704,7 @@ de dos factores</target>
   </file>
   <file original="Documents/Base.lproj/Settings.storyboard" source-language="en" target-language="es" datatype="plaintext">
     <header>
-      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="11.5" build-num="11E608c"/>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="11.6" build-num="11E708"/>
     </header>
     <body>
       <trans-unit id="0DJ-uV-iju.title" xml:space="preserve">
@@ -835,7 +835,7 @@ Nota: Si Usted olvida el código de acceso, necesitará eliminar e instalar la a
   </file>
   <file original="Documents/Base.lproj/Share.storyboard" source-language="en" target-language="es" datatype="plaintext">
     <header>
-      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="11.5" build-num="11E608c"/>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="11.6" build-num="11E708"/>
     </header>
     <body>
       <trans-unit id="9Wg-zE-nZA.segmentTitles[0]" xml:space="preserve">
@@ -927,7 +927,7 @@ Nota: Si Usted olvida el código de acceso, necesitará eliminar e instalar la a
   </file>
   <file original="Documents/Base.lproj/Sort.storyboard" source-language="en" target-language="es" datatype="plaintext">
     <header>
-      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="11.5" build-num="11E608c"/>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="11.6" build-num="11E708"/>
     </header>
     <body>
       <trans-unit id="HjM-la-pDc.text" xml:space="preserve">
@@ -954,7 +954,7 @@ Nota: Si Usted olvida el código de acceso, necesitará eliminar e instalar la a
   </file>
   <file original="Documents/Base.lproj/Transfer.storyboard" source-language="en" target-language="es" datatype="plaintext">
     <header>
-      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="11.5" build-num="11E608c"/>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="11.6" build-num="11E708"/>
     </header>
     <body>
       <trans-unit id="9YY-0H-nww.text" xml:space="preserve">
@@ -991,7 +991,7 @@ Nota: Si Usted olvida el código de acceso, necesitará eliminar e instalar la a
   </file>
   <file original="Documents/Base.lproj/UserProfile.storyboard" source-language="en" target-language="es" datatype="plaintext">
     <header>
-      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="11.5" build-num="11E608c"/>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="11.6" build-num="11E708"/>
     </header>
     <body>
       <trans-unit id="1S2-Q7-5vL.text" xml:space="preserve">
@@ -1033,7 +1033,7 @@ Nota: Si Usted olvida el código de acceso, necesitará eliminar e instalar la a
   </file>
   <file original="Documents/Code/Controllers/CreateEntity/Views/Base.lproj/ASCCreateEntityView.xib" source-language="en" target-language="es" datatype="plaintext">
     <header>
-      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="11.5" build-num="11E608c"/>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="11.6" build-num="11E708"/>
     </header>
     <body>
       <trans-unit id="0TH-k4-z5u.normalTitle" xml:space="preserve">
@@ -1065,7 +1065,7 @@ Nota: Si Usted olvida el código de acceso, necesitará eliminar e instalar la a
   </file>
   <file original="Documents/Code/Vendor/PasscodeLock/Base.lproj/PasscodeLock.strings" source-language="en" target-language="es" datatype="plaintext">
     <header>
-      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="11.5" build-num="11E608c"/>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="11.6" build-num="11E708"/>
     </header>
     <body>
       <trans-unit id="PasscodeLockChangeDescription" xml:space="preserve">
@@ -1137,7 +1137,7 @@ Nota: Si Usted olvida el código de acceso, necesitará eliminar e instalar la a
   </file>
   <file original="Documents/Code/Vendor/PasscodeLock/Views/Base.lproj/PasscodeLockView.xib" source-language="en" target-language="es" datatype="plaintext">
     <header>
-      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="11.5" build-num="11E608c"/>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="11.6" build-num="11E708"/>
     </header>
     <body>
       <trans-unit id="0CR-0R-0Nr.normalTitle" xml:space="preserve">
@@ -1219,7 +1219,7 @@ Nota: Si Usted olvida el código de acceso, necesitará eliminar e instalar la a
   </file>
   <file original="Documents/en.lproj/InfoPlist.strings" source-language="en" target-language="es" datatype="plaintext">
     <header>
-      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="11.5" build-num="11E608c"/>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="11.6" build-num="11E708"/>
     </header>
     <body>
       <trans-unit id="CFBundleName" xml:space="preserve">
@@ -1261,7 +1261,7 @@ Nota: Si Usted olvida el código de acceso, necesitará eliminar e instalar la a
   </file>
   <file original="Documents/en.lproj/Localizable.strings" source-language="en" target-language="es" datatype="plaintext">
     <header>
-      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="11.5" build-num="11E608c"/>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="11.6" build-num="11E708"/>
     </header>
     <body>
       <trans-unit id="%i of %i" xml:space="preserve">
@@ -1512,15 +1512,47 @@ otros que utilizan el protocolo WebDAV.</target>
         <target>Copiando</target>
         <note>Caption of the processing</note>
       </trans-unit>
+      <trans-unit id="Could not change file attrubutes" xml:space="preserve">
+        <source>Could not change file attrubutes</source>
+        <note>Description of file operation error</note>
+      </trans-unit>
+      <trans-unit id="Could not change the directory" xml:space="preserve">
+        <source>Could not change the directory</source>
+        <note>Description of file operation error</note>
+      </trans-unit>
       <trans-unit id="Could not convert file to export." xml:space="preserve">
         <source>Could not convert file to export.</source>
         <target>No se puede convertir archivo para exportar.</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
+      <trans-unit id="Could not copy file" xml:space="preserve">
+        <source>Could not copy file</source>
+        <note>Description of file operation error</note>
+      </trans-unit>
       <trans-unit id="Could not copy." xml:space="preserve">
         <source>Could not copy.</source>
         <target>No se puede copiar.</target>
         <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Could not create a directory" xml:space="preserve">
+        <source>Could not create a directory</source>
+        <note>Description of file operation error</note>
+      </trans-unit>
+      <trans-unit id="Could not create a hard link" xml:space="preserve">
+        <source>Could not create a hard link</source>
+        <note>Description of file operation error</note>
+      </trans-unit>
+      <trans-unit id="Could not create file" xml:space="preserve">
+        <source>Could not create file</source>
+        <note>Description of file operation error</note>
+      </trans-unit>
+      <trans-unit id="Could not create symlink from" xml:space="preserve">
+        <source>Could not create symlink from</source>
+        <note>Description of file operation error</note>
+      </trans-unit>
+      <trans-unit id="Could not delete file" xml:space="preserve">
+        <source>Could not delete file</source>
+        <note>Description of file operation error</note>
       </trans-unit>
       <trans-unit id="Could not delete the file." xml:space="preserve">
         <source>Could not delete the file.</source>
@@ -1567,6 +1599,10 @@ otros que utilizan el protocolo WebDAV.</target>
         <target>No se puede exportar el archivo.</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
+      <trans-unit id="Could not move file" xml:space="preserve">
+        <source>Could not move file</source>
+        <note>Description of file operation error</note>
+      </trans-unit>
       <trans-unit id="Could not open editor." xml:space="preserve">
         <source>Could not open editor.</source>
         <target>No se puede abrir editor.</target>
@@ -1587,10 +1623,18 @@ otros que utilizan el protocolo WebDAV.</target>
         <target>No se puede leer datos del archivo.</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
+      <trans-unit id="Could not read from file" xml:space="preserve">
+        <source>Could not read from file</source>
+        <note>Description of file operation error</note>
+      </trans-unit>
       <trans-unit id="Could not save the file." xml:space="preserve">
         <source>Could not save the file.</source>
         <target>No se puede guardar el archivo.</target>
         <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Could not write to file" xml:space="preserve">
+        <source>Could not write to file</source>
+        <note>Description of file operation error</note>
       </trans-unit>
       <trans-unit id="Couldn't open file" xml:space="preserve">
         <source>Couldn't open file</source>
@@ -1837,6 +1881,14 @@ otros que utilizan el protocolo WebDAV.</target>
         <source>Failure to download result from conversion online service.</source>
         <target>Fallo al descargar el resultado del servicio de conversión en línea.</target>
         <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="File already exists" xml:space="preserve">
+        <source>File already exists</source>
+        <note>Description of file operation error</note>
+      </trans-unit>
+      <trans-unit id="File does not exist" xml:space="preserve">
+        <source>File does not exist</source>
+        <note>Description of file operation error</note>
       </trans-unit>
       <trans-unit id="Files" xml:space="preserve">
         <source>Files</source>
@@ -2346,6 +2398,7 @@ Si el problema persiste, póngase en contacto con nosotros y mencione este códi
       </trans-unit>
       <trans-unit id="Reviewing" xml:space="preserve">
         <source>Reviewing</source>
+        <target>Revisión</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="SKIP" xml:space="preserve">
@@ -2685,20 +2738,22 @@ Si el problema persiste, póngase en contacto con nosotros y mencione este códi
       </trans-unit>
       <trans-unit id="Use Face ID" xml:space="preserve">
         <source>Use Face ID</source>
-        <target>Usar Face ID</target>
+        <target>Use Face ID</target>
         <note>Button title</note>
       </trans-unit>
       <trans-unit id="Use Touch ID" xml:space="preserve">
         <source>Use Touch ID</source>
-        <target>Usar Touch ID</target>
+        <target>Use Touch ID</target>
         <note>Button title</note>
       </trans-unit>
       <trans-unit id="Use Track Changes mode in text documents to suggest changes, accept or reject them." xml:space="preserve">
         <source>Use Track Changes mode in text documents to suggest changes, accept or reject them.</source>
+        <target>Utilice el Modo de Control de Cambios en los documentos de texto para sugerir cambios, aceptarlos o rechazarlos</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Use comments to add notes, suggestions, or questions for your collaborators. Edit, answer, resolve or delete them in process." xml:space="preserve">
         <source>Use comments to add notes, suggestions, or questions for your collaborators. Edit, answer, resolve or delete them in process.</source>
+        <target>Utilice comentarios para añadir notas, sugerencias o preguntas para sus colaboradores. Edite, responda, resuelva o elimínelos en el proceso.</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="User authentication failed" xml:space="preserve">
@@ -2937,7 +2992,7 @@ Los archivos creados se puede cargar al portal en línea más tarde y luego acce
   </file>
   <file original="Settings.bundle/en.lproj/Root.strings" source-language="en" target-language="es" datatype="plaintext">
     <header>
-      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="11.5" build-num="11E608c"/>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="11.6" build-num="11E708"/>
     </header>
     <body>
       <trans-unit id="Acknowledgements" xml:space="preserve">

@@ -8,6 +8,10 @@ skip_docs # Do not create fastlane/README.md
 
 platform :ios do
   before_all do
+    ensure_env_vars(
+      env_vars: ['GIT_DOCUMENTS_PASSPHRASE']
+    )
+
     ENV["FASTLANE_XCODEBUILD_SETTINGS_RETRIES"] = "10"
     ENV["FASTLANE_XCODEBUILD_SETTINGS_TIMEOUT"] = "60"
     ENV["FASTLANE_XCODE_LIST_TIMEOUT"] = "60"
@@ -32,6 +36,7 @@ platform :ios do
   desc "This will also make sure the profile is up to date"
   lane :beta do
     # match(type: "appstore") # more information: https://codesigning.guide
+    # ensure_git_status_clean
 
     version_number = get_version_number(
       xcodeproj: "Documents/Documents.xcodeproj",
@@ -50,7 +55,8 @@ platform :ios do
       export_xcargs: "-allowProvisioningUpdates"
     )
 
-    complete_version_number = version_string(version_number, build_number)
+    next_build_number = build_number.next
+    next_complete_version_number = version_string(version_number, next_build_number)
 
     # get the last commit comments from Git history
     # and creates our changelog
@@ -61,11 +67,30 @@ platform :ios do
       merge_commit_filtering: "exclude_merges"
     )
 
-    # creates a bump version commit 
-    commit_version_bump(
-        message: "Version bumped to v#{version_number}(#{build_number})",
-        settings: true,
-        xcodeproj: "Documents/Documents.xcodeproj"
+    # creates a bump version commit
+    update_plist(
+      plist_path: "Documents/Documents/Info.plist",
+      block: proc do |plist|
+        plist["CFBundleVersion"] = "#{next_build_number}"
+      end
+    )
+
+    update_plist(
+      plist_path: "Documents/Settings.bundle/Root.plist",
+      block: proc do |plist|
+        version_preference = plist["PreferenceSpecifiers"].find{|key| key["Key"] == "version_preference"}
+        version_preference[:DefaultValue] = "#{next_complete_version_number}"
+      end
+    )
+
+    sh("gpg --quiet --batch --yes --symmetric --cipher-algo AES256 --passphrase=\"$GIT_DOCUMENTS_PASSPHRASE\" --output ../Documents/Documents/Info.plist.gpg ../Documents/Documents/Info.plist")
+
+    git_commit(
+      message: "Version bumped to v#{version_number}(#{build_number})",
+      path: [
+        "Documents/Settings.bundle/Root.plist", 
+        "Documents/Documents/Info.plist.gpg"
+      ]
     )
 
     # create a local tag with the new version
@@ -88,7 +113,7 @@ platform :ios do
         token: ENV['TELEGRAM_BOT_TOKEN'],
         chat_id: ENV['TELEGRAM_CHAT_ID'],
         parse_mode: 'Markdown',
-        text: "В TestFlight доступна версия ONLYOFFICE Documents #{version_number}(#{build_number}) для внутреннего тестирования.\n\nСписок изменений:\n#{change_log}"
+        text: ENV["TELEGRAM_DOCUMENTS_IOS_MESSAGE"] % [version_number: "#{version_number}", build_number: "#{build_number}", change_log: "#{change_log}"]
       )
     rescue => ex
       UI.error(ex)

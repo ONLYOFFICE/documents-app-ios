@@ -12,6 +12,8 @@ class ASCCloudsViewController: UITableViewController {
 
     private var connected: [ASCCategory] = []
     private var login: [ASCCategory] = []
+    
+    private var cloudsSubscription: EventSubscription<Any?>?
 
     fileprivate let providerName: ((_ type: ASCFileProviderType) -> String) = { type in
         switch type {
@@ -27,6 +29,8 @@ class ASCCloudsViewController: UITableViewController {
             return NSLocalizedString("Yandex Disk", comment: "")
         case .webdav:
             return NSLocalizedString("WebDAV", comment: "")
+        case .icloud:
+            return NSLocalizedString("iCloud", comment: "")
         default:
             return NSLocalizedString("Unknown", comment: "")
         }
@@ -46,6 +50,8 @@ class ASCCloudsViewController: UITableViewController {
             return "cloud-yandex-disk"
         case .webdav:
             return "cloud-webdav"
+        case .icloud:
+            return "cloud-icloud"
         default:
             return ""
         }
@@ -70,10 +76,20 @@ class ASCCloudsViewController: UITableViewController {
 
         ASCViewControllerManager.shared.rootController?.tabBar.isHidden = false
     }
+    
+    deinit {
+        if let subscription = cloudsSubscription {
+            ASCFileManager.observer.remove(subscription)
+        }
+    }
 
     func loadData() {
         updateMyClouds()
         updateLoginClouds()
+        
+        cloudsSubscription = ASCFileManager.observer.add(owner: self) { [weak self] objects in
+            self?.tableView?.reloadData()
+        }
 
         tableView?.reloadData()
     }

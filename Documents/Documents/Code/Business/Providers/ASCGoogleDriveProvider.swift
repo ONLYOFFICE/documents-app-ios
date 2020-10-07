@@ -615,11 +615,10 @@ class ASCGoogleDriveProvider: ASCBaseFileProvider {
         // Localize empty template
         if fileExtension == "xlsx" || fileExtension == "pptx" {
             let prefix = "empty-"
-            let avalibleLang = ["EN", "RU", "FR", "DE", "ES", "CS"]
-            var regionCode = (Locale.preferredLanguages.first ?? "EN")[0..<2].uppercased()
+            var regionCode = (Locale.preferredLanguages.first ?? ASCConstants.Locale.defaultLangCode)[0..<2].uppercased()
             
-            if !avalibleLang.contains(regionCode) {
-                regionCode = "EN"
+            if !ASCConstants.Locale.avalibleLangCodes.contains(regionCode) {
+                regionCode = ASCConstants.Locale.defaultLangCode
             }
             
             templateName = (prefix + regionCode).lowercased()

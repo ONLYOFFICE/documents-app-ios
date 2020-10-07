@@ -18,7 +18,11 @@ class ASCFileManager {
     }
     public static var localProvider: ASCLocalProvider = ASCLocalProvider()
     public static var onlyofficeProvider: ASCOnlyofficeProvider?
-    public static var cloudProviders: [ASCBaseFileProvider] = []
+    public static var cloudProviders: [ASCBaseFileProvider] = [] {
+        didSet {
+            observer.notify(observer)
+        }
+    }
 
     private static var keychain: KeychainSwift {
         get {
@@ -29,6 +33,8 @@ class ASCFileManager {
         }
     }
 
+    public static var observer = Event<Any?>()
+    
     static func reset() {
         provider?.reset()
         localProvider.reset()
@@ -52,6 +58,8 @@ class ASCFileManager {
             return ASCYandexFileProvider()
         case .webdav:
             return ASCWebDAVProvider()
+        case .icloud:
+            return ASCiCloudProvider()
         default:
             return nil
         }
@@ -109,6 +117,8 @@ class ASCFileManager {
                             provider = ASCYandexFileProvider()
                         case .some(.webdav):
                             provider = ASCWebDAVProvider()
+                        case .some(.icloud):
+                            provider = ASCiCloudProvider()
                         default:
                             break
                         }
@@ -121,6 +131,9 @@ class ASCFileManager {
                 }
             }
         }
+        
+        // iCloud Setup
+        iCloudUpdate()
 
         // Load last provider
         loadCurrentProvider()
@@ -144,6 +157,24 @@ class ASCFileManager {
             }
         } else {
             provider = localProvider
+        }
+    }
+    
+    private static func iCloudUpdate() {
+        if let iCloudProvider = cloudProviders.first(where: { $0.type == .icloud }) as? ASCiCloudProvider {
+            iCloudProvider.userInfo { success, error in
+                if !iCloudProvider.hasiCloudAccount, let index = cloudProviders.firstIndex(where: { $0.type == .icloud }) {
+                    // Remove if iCloud access is lost
+                    cloudProviders.remove(at: index)
+                }
+            }
+        } else {
+            let iCloudProvider = ASCiCloudProvider()
+            iCloudProvider.initialize { success in
+                if success, iCloudProvider.hasiCloudAccount {
+                    cloudProviders.append(iCloudProvider)
+                }
+            }
         }
     }
 }

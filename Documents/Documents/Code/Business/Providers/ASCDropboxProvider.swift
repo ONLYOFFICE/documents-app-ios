@@ -296,7 +296,7 @@ class ASCDropboxProvider: ASCBaseFileProvider {
                         .map {
                             let cloudFolder = ASCFolder()
                             cloudFolder.id = $0.path
-                            cloudFolder.rootFolderType = .nextcloudAll
+                            cloudFolder.rootFolderType = .dropboxAll
                             cloudFolder.title = $0.name
                             cloudFolder.created = $0.creationDate ?? $0.modifiedDate
                             cloudFolder.updated = $0.modifiedDate
@@ -320,7 +320,7 @@ class ASCDropboxProvider: ASCBaseFileProvider {
                             //                            file.created = $0.creationDate ?? $0.modifiedDate
 
                             cloudFile.id = $0.path
-                            cloudFile.rootFolderType = .nextcloudAll
+                            cloudFile.rootFolderType = .dropboxAll
                             cloudFile.title = $0.name
                             cloudFile.created = $0.creationDate ?? $0.modifiedDate
                             cloudFile.updated = $0.modifiedDate
@@ -486,7 +486,7 @@ class ASCDropboxProvider: ASCBaseFileProvider {
                         
                         let cloudFile = ASCFile()
                         cloudFile.id = fileObject.path
-                        cloudFile.rootFolderType = .nextcloudAll
+                        cloudFile.rootFolderType = .dropboxAll
                         cloudFile.title = fileObject.name
                         cloudFile.created = fileObject.creationDate ?? fileObject.modifiedDate
                         cloudFile.updated = fileObject.modifiedDate
@@ -548,7 +548,7 @@ class ASCDropboxProvider: ASCBaseFileProvider {
         }
         
         var localProgress: Float = 0
-        var uploadProgress: Progress?;
+        var uploadProgress: Progress?
         
         if let localProvider = provider.copy() as? DropboxFileProvider {
             let handlerUid = UUID().uuidString
@@ -574,7 +574,7 @@ class ASCDropboxProvider: ASCBaseFileProvider {
                             
                             let cloudFile = ASCFile()
                             cloudFile.id = fileObject.path
-                            cloudFile.rootFolderType = .nextcloudAll
+                            cloudFile.rootFolderType = .dropboxAll
                             cloudFile.title = fileObject.name
                             cloudFile.created = fileObject.creationDate ?? fileObject.modifiedDate
                             cloudFile.updated = fileObject.modifiedDate
@@ -646,11 +646,10 @@ class ASCDropboxProvider: ASCBaseFileProvider {
         // Localize empty template
         if fileExtension == "xlsx" || fileExtension == "pptx" {
             let prefix = "empty-"
-            let avalibleLang = ["EN", "RU", "FR", "DE", "ES", "CS"]
-            var regionCode = (Locale.preferredLanguages.first ?? "EN")[0..<2].uppercased()
+            var regionCode = (Locale.preferredLanguages.first ?? ASCConstants.Locale.defaultLangCode)[0..<2].uppercased()
             
-            if !avalibleLang.contains(regionCode) {
-                regionCode = "EN"
+            if !ASCConstants.Locale.avalibleLangCodes.contains(regionCode) {
+                regionCode = ASCConstants.Locale.defaultLangCode
             }
             
             templateName = (prefix + regionCode).lowercased()
@@ -678,7 +677,7 @@ class ASCDropboxProvider: ASCBaseFileProvider {
                                     let fileSize: UInt64 = (fileObject.size < 0) ? 0 : UInt64(fileObject.size)
                                     let cloudFile = ASCFile()
                                     cloudFile.id = fileObject.path
-                                    cloudFile.rootFolderType = .nextcloudAll
+                                    cloudFile.rootFolderType = .dropboxAll
                                     cloudFile.title = fileObject.name
                                     cloudFile.created = fileObject.creationDate ?? fileObject.modifiedDate
                                     cloudFile.updated = fileObject.modifiedDate
@@ -747,7 +746,7 @@ class ASCDropboxProvider: ASCBaseFileProvider {
 
                     let cloudFolder = ASCFolder()
                     cloudFolder.id = path
-                    cloudFolder.rootFolderType = .nextcloudAll
+                    cloudFolder.rootFolderType = .dropboxAll
                     cloudFolder.title = name
                     cloudFolder.created = nowDate
                     cloudFolder.updated = nowDate

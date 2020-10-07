@@ -1,116 +1,105 @@
 //
-//  ASCWebDAVProvider.swift
+//  ASCiCloudProvider.swift
 //  Documents
 //
-//  Created by Alexander Yuzhin on 11/10/2018.
-//  Copyright © 2018 Ascensio System SIA. All rights reserved.
+//  Created by Alexander Yuzhin on 28.07.2020.
+//  Copyright © 2020 Ascensio System SIA. All rights reserved.
 //
 
 import UIKit
+import CloudKit
 import FilesProvider
 import FileKit
 import Firebase
 
-class ASCWebDAVProvider: ASCBaseFileProvider {
-
+class ASCiCloudProvider: ASCBaseFileProvider {
+    
     // MARK: - Properties
-
+    
     var type: ASCFileProviderType {
         get {
-            return .webdav
+            return .icloud
         }
     }
     var id: String? {
         get {
-            if
-                let provider = provider,
-                let credential = provider.credential,
-                let baseUrl = provider.baseURL?.absoluteString,
-                let userId = credential.user,
-                let password = credential.password
-            {
-                return (baseUrl + password + userId).md5
-            }
-
-            return nil
+            guard let identifier = identifier else { return nil }
+            return identifier.md5
         }
     }
-    var items: [ASCEntity] = []
-    var page: Int = 0
-    var pageSize: Int = 20
-    var total: Int = 0
-    var user: ASCUser? = nil
-    var authorization: String? {
-        get {
-            guard
-                let provider = provider,
-                let credential = provider.credential,
-                let user = credential.user,
-                let password = credential.password,
-                let credentialData = "\(user):\(password)".data(using: .utf8)
-            else { return nil }
-
-            let base64Credentials = credentialData.base64EncodedData(options: [])
-            if let base64Date = Data(base64Encoded: base64Credentials) {
-                return "Basic \(base64Date.base64EncodedString())"
-            }
-
-            return nil
-        }
-    }
-
     var rootFolder: ASCFolder {
         get {
             return {
-                $0.title = NSLocalizedString("WebDAV", comment: "")
-                $0.rootFolderType = .webdavAll
-                $0.id = "/"
+                $0.title = NSLocalizedString("iCloud Drive", comment: "")
+                $0.rootFolderType = .icloudAll
+                $0.id = ""
                 return $0
             }(ASCFolder())
         }
     }
+    var authorization: String? {
+        get {
+            return nil
+        }
+    }
+    private(set) var hasiCloudAccount = false
 
+    var user: ASCUser?
+    var items: [ASCEntity] = []
+    var page: Int = 0
+    var total: Int = 0
     var delegate: ASCProviderDelegate?
 
-    internal var provider: WebDAVFileProvider?
-
-    fileprivate lazy var providerOperationDelegate = ASCWebDAVProviderDelegate()
+    internal var provider: CloudFileProvider?
+    
+    fileprivate let identifier: String? = (Bundle.main.bundleIdentifier != nil) ? ("iCloud." + Bundle.main.bundleIdentifier!) : nil
+    fileprivate lazy var providerOperationDelegate = ASCiCloudProviderDelegate()
+    private let watcherQuery = NSMetadataQuery()
+    private var watcherObserver: Any?
+    private var folder: ASCFolder?
+    private var fetchInfo: [String : Any?]?
     private var operationProcess: Progress?
     fileprivate var operationHendlers: [(
         uid: String,
         provider: FileProviderBasic,
         progress: Progress,
-        delegate: ASCWebDAVProviderDelegate)] = []
-
-    private let errorProviderUndefined = NSLocalizedString("Unknown file provider", comment: "")
-
-    // MARK: - Lifecycle Methods
+        delegate: ASCiCloudProviderDelegate)] = []
     
+    private let errorProviderUndefined = NSLocalizedString("Unknown file provider", comment: "")
+    
+    // MARK: - Lifecycle Methods
+       
     init() {
-        provider = nil
-        user = nil
+        //
     }
-
-    init(baseURL: URL, credential: URLCredential) {
-        var providerUrl = baseURL
-
-        if providerUrl.scheme == nil,
-            let fixedUrl = URL(string: "https://\(providerUrl.absoluteString)") {
-            providerUrl = fixedUrl
+    
+    deinit {
+        //
+    }
+    
+    func initialize(_ complation: ((Bool) -> Void)? = nil) {
+        DispatchQueue.global().async { [weak self] in
+            guard let strongSelf = self else {
+                complation?(false)
+                return
+            }
+            
+            strongSelf.provider = CloudFileProvider(containerId: strongSelf.identifier, scope: .documents)
+              
+            DispatchQueue.main.async {
+                strongSelf.userInfo { success, error in
+                    DispatchQueue.main.async {
+                        complation?(true)
+                    }
+                }
+            }
         }
-
-        provider = WebDAVFileProvider(baseURL: providerUrl, credential: credential)
-        provider?.credentialType = .basic
-
-        user = ASCUser()
-        user?.userId = credential.user
-        user?.displayName = credential.user
-        user?.department = providerUrl.host
     }
-
+    
     func copy() -> ASCBaseFileProvider {
-        let copy = ASCWebDAVProvider()
+        let copy = ASCiCloudProvider()
         
+        copy.provider = provider
         copy.items = items
         copy.page = page
         copy.total = total
@@ -119,44 +108,20 @@ class ASCWebDAVProvider: ASCBaseFileProvider {
         
         return copy
     }
-
+    
     func reset() {
-        cancel()
-
         page = 0
         total = 0
         items.removeAll()
     }
-
-    func cancel() {
-        operationProcess?.cancel()
-        operationProcess = nil
-
-        operationHendlers.forEach { handler in
-            handler.progress.cancel()
-        }
-        operationHendlers.removeAll()
-    }
-
+    
     func serialize() -> String? {
         var info: [String: Any] = [
-            "type": type.rawValue
+            "type": type.rawValue,
+            "hasiCloudAccount": hasiCloudAccount
         ]
 
-        if let baseUrl = provider?.baseURL?.absoluteString {
-            info += ["baseUrl": baseUrl.hasSuffix("/") ? baseUrl.dropLast() : baseUrl ]
-        }
-
-        if let password = provider?.credential?.password {
-            info += ["password": password]
-        }
-
         if let user = user {
-            info += ["user": user.toJSON()]
-        } else {
-            let user = ASCUser()
-            user.userId = provider?.credential?.user
-            user.displayName = user.userId
             info += ["user": user.toJSON()]
         }
 
@@ -172,40 +137,79 @@ class ASCWebDAVProvider: ASCBaseFileProvider {
             if let userJson = json["user"] as? [String: Any] {
                 user = ASCUser(JSON: userJson)
             }
-
-            if
-                let baseUrl = URL(string: json["baseUrl"] as? String ?? ""),
-                let password = json["password"] as? String,
-                let user = user,
-                let userId = user.userId
-            {
-                let credential = URLCredential(user: userId, password: password, persistence: .permanent)
-
-                provider = WebDAVFileProvider(baseURL: baseUrl, credential: credential)
-                provider?.credentialType = .basic
-            }
-        }
-    }
-
-    func isReachable(completionHandler: @escaping (_ success: Bool, _ error: Error?) -> Void) {
-        guard let provider = provider else {
-            let error = ASCProviderError(msg: errorProviderUndefined)
             
-            DispatchQueue.main.async(execute: {
-                completionHandler(false, error)
-            })
-            return
+            hasiCloudAccount = json["hasiCloudAccount"] as? Bool ?? false
         }
-
-//        ASCBaseApi.clearCookies(for: provider.baseURL)
-
-        provider.isReachable(completionHandler: { success, error in
-            DispatchQueue.main.async(execute: {
-                completionHandler(success, error)
-            })
-        })
     }
-
+    
+    /// Fetch an user information
+    ///
+    /// - Parameter completeon: a closure with result of user or error
+    func userInfo(completeon: ASCProviderUserInfoHandler?) {
+        let container = CKContainer.default()
+        
+        container.accountStatus() { [weak self] accountStatus, error in
+            guard let strongSelf = self else {
+                completeon?(false, nil)
+                return
+            }
+            
+            strongSelf.hasiCloudAccount = accountStatus == .available
+            
+            strongSelf.user = ASCUser()
+            strongSelf.user?.userId = strongSelf.identifier
+//            strongSelf.user?.firstName = "iCloud"
+//            strongSelf.user?.lastName = ""
+            strongSelf.user?.displayName = "iCloud Drive"
+            
+            DispatchQueue.main.async {
+                completeon?(true, nil)
+            }
+            
+//            if accountStatus == .available {
+//
+//                strongSelf.user = ASCUser()
+//                strongSelf.user?.userId = strongSelf.identifier
+//                strongSelf.user?.firstName = "iCloud"
+//                strongSelf.user?.lastName = ""
+//                strongSelf.user?.displayName = "iCloud"
+//
+//                container.requestApplicationPermission(.userDiscoverability) { [weak self] status, error in
+//
+//                    if status == .granted {
+//                        container.fetchUserRecordID { [weak self] recordId, error in
+//                            guard let recordId = recordId else {
+//                                completeon?(false, nil)
+//                                return
+//                            }
+//
+//                            container.discoverUserIdentity(withUserRecordID: recordId) { [weak self] userId, error in
+//                                guard let userId = userId else {
+//                                    completeon?(false, nil)
+//                                    return
+//                                }
+//
+//                                self?.user?.userId = userId.lookupInfo?.emailAddress ?? userId.lookupInfo?.phoneNumber
+//                                self?.user?.firstName = userId.nameComponents?.givenName
+//                                self?.user?.lastName = userId.nameComponents?.familyName
+//                                self?.user?.displayName = (self?.user?.firstName ?? "") + " " + (self?.user?.lastName ?? "")
+//
+//                                DispatchQueue.main.async {
+//                                    completeon?(true, nil)
+//                                }
+//                            }
+//                        }
+//                    }
+//                }
+//            } else {
+//                DispatchQueue.main.async {
+//                    completeon?(false, nil)
+//                }
+//            }
+        }
+    }
+    
+    
     /// Sort records
     ///
     /// - Parameters:
@@ -241,12 +245,34 @@ class ASCWebDAVProvider: ASCBaseFileProvider {
                 : files.sorted { $0.pureContentLength > $1.pureContentLength }
         }
     }
-
-    /// Fetch an user information
-    ///
-    /// - Parameter completeon: a closure with result of user or error
-    func userInfo(completeon: ASCProviderUserInfoHandler?) {
-        completeon?(true, nil)
+    
+    private func directLink(from publicLink: String) -> String? {
+        let getQueryStringParameter: ((String, String) -> String?) = { (url, param) -> String? in
+            guard let url = URLComponents(string: url) else { return nil }
+            return url.queryItems?.first(where: { $0.name == param })?.value
+        }
+        
+        let expandParams: (String?) -> String? = { (value) -> String? in
+            guard let value = value else { return nil }
+            var expandValue = value
+            
+            if let regex = try? NSRegularExpression(pattern: "\\$\\{(\\w+)\\}", options: []) {
+                let matches = regex.matches(in: value,
+                                            options: [],
+                                            range: NSRange(location: 0, length: value.count))
+                for match in matches {
+                    let stringKey = String(value[Range(match.range, in: value)!])
+                    let queryKey = stringKey.trimmingCharacters(in: CharacterSet.letters.inverted)
+                    
+                    if let value = getQueryStringParameter(publicLink, queryKey) {
+                        expandValue = expandValue.replacingOccurrences(of: stringKey, with: value)
+                    }
+                }
+            }
+            return expandValue
+        }
+  
+        return expandParams(getQueryStringParameter(publicLink, "u"))
     }
 
     /// Fetch an Array of 'ASCEntity's identifying the the directory entries via asynchronous completion handler.
@@ -255,13 +281,16 @@ class ASCWebDAVProvider: ASCBaseFileProvider {
     ///   - folder: target directory
     ///   - parameters: dictionary of settings for searching and sorting or any other information
     ///   - completeon: a closure with result of directory entries or error
-    func fetch(for folder: ASCFolder, parameters: [String: Any?], completeon: ASCProviderCompletionHandler?) {
+    func fetch(for folder: ASCFolder, parameters: [String : Any?], completeon: ASCProviderCompletionHandler?) {
         guard let provider = provider else {
             completeon?(self, folder, false, nil)
             return
         }
+        
+        self.folder = folder
 
         let fetch: ((_ completeon: ASCProviderCompletionHandler?) -> Void) = { [weak self] completeon in
+            
             var query = NSPredicate(format: "TRUEPREDICATE")
 
             // Search
@@ -270,11 +299,9 @@ class ASCWebDAVProvider: ASCBaseFileProvider {
                 let text = (search["text"] as? String)?.trim(),
                 text.length > 0
             {
-                query = NSPredicate(format: "(name CONTAINS[cd] %@)", text.lowercased())
+                query = NSPredicate(format: "(name BEGINSWITH[c] %@)", text.lowercased())
             }
-
-            ASCBaseApi.clearCookies(for: provider.baseURL)
-
+            
             provider.searchFiles(
                 path: folder.id,
                 recursive: false,
@@ -301,7 +328,8 @@ class ASCWebDAVProvider: ASCBaseFileProvider {
                         .map {
                             let cloudFolder = ASCFolder()
                             cloudFolder.id = $0.path
-                            cloudFolder.rootFolderType = .nextcloudAll
+                            cloudFolder.providerType = .iCloud
+                            cloudFolder.rootFolderType = .icloudAll
                             cloudFolder.title = $0.name
                             cloudFolder.created = $0.creationDate ?? $0.modifiedDate
                             cloudFolder.updated = $0.modifiedDate
@@ -325,7 +353,7 @@ class ASCWebDAVProvider: ASCBaseFileProvider {
                             //                            file.created = $0.creationDate ?? $0.modifiedDate
 
                             cloudFile.id = $0.path
-                            cloudFile.rootFolderType = .nextcloudAll
+                            cloudFile.rootFolderType = .icloudAll
                             cloudFile.title = $0.name
                             cloudFile.created = $0.creationDate ?? $0.modifiedDate
                             cloudFile.updated = $0.modifiedDate
@@ -339,13 +367,46 @@ class ASCWebDAVProvider: ASCBaseFileProvider {
                             return cloudFile
                     }
 
+                    // Hotfix view url of media files
+                    let mediaFiles = files.filter { file in
+                        let fileExt = file.title.fileExtension().lowercased()
+                        return ASCConstants.FileExtensions.images.contains(fileExt) || ASCConstants.FileExtensions.videos.contains(fileExt)
+                    }
+
+                    if mediaFiles.count > 0 {
+                        let getLinkQueue = OperationQueue()
+
+                        for file in mediaFiles {
+                            getLinkQueue.addOperation { [weak self] in
+                                let semaphore = DispatchSemaphore(value: 0)
+
+                                provider.publicLink(to: file.id) { [weak self] link, fileObj, expiration, error in
+                                    if let viewUrl = link?.absoluteString {
+                                        // Transfor public link to direct link
+                                        let directLink = self?.directLink(from: viewUrl) ?? viewUrl
+                                        print(directLink)
+                                        files.first(where: { $0.id == file.id })?.viewUrl = directLink
+                                    }
+                                    semaphore.signal()
+                                }
+                                semaphore.wait()
+                            }
+                        }
+
+                        getLinkQueue.waitUntilAllOperationsAreFinished()
+                    }
+
                     // Sort
-                    if let sortInfo = parameters["sort"] as? [String: Any] {
+                    strongSelf.fetchInfo = parameters
+                    
+                    if let sortInfo = parameters["sort"] as? [String : Any] {
                         self?.sort(by: sortInfo, folders: &folders, files: &files)
                     }
 
                     strongSelf.items = folders as [ASCEntity] + files as [ASCEntity]
                     strongSelf.total = strongSelf.items.count
+                    
+                    strongSelf.registerNotifcation(path: folder.id)
 
                     completeon?(strongSelf, folder, true, nil)
                 })
@@ -365,91 +426,106 @@ class ASCWebDAVProvider: ASCBaseFileProvider {
             }
         }
     }
-
+    
     func absoluteUrl(from string: String?) -> URL? {
-        return provider?.url(of: string ?? "")
+        guard
+            let path = string,
+            let provider = provider
+        else { return nil }
+        
+        // Public link
+        if path.hasPrefix("http"), let validUrl = path.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) {
+            return URL(string: validUrl)
+        }
+        
+        // Local path
+        return provider.url(of: path)
     }
-
+    
     func download(_ path: String, to destinationURL: URL, processing: @escaping ASCApiProgressHandler) {
         guard let provider = provider else {
             processing(0, nil, nil, nil)
             return
         }
 
-//        ASCBaseApi.clearCookies(for: provider.baseURL)
-
         var downloadProgress: Progress?
 
-        if let localProvider = provider.copy() as? WebDAVFileProvider {
-            let handlerUid = UUID().uuidString
-            let operationDelegate = ASCWebDAVProviderDelegate()
-
-            let cleanupHendler: (String) -> Void = { [weak self] uid in
-                if let processIndex = self?.operationHendlers.firstIndex(where: { $0.uid == uid }) {
-                    self?.operationHendlers.remove(at: processIndex)
-                }
-            }
-
-            operationDelegate.onSucceed = { fileProvider, operation in
-                DispatchQueue.main.async {
-                    processing(1.0, destinationURL, nil, nil)
-                }
-                cleanupHendler(handlerUid)
-            }
-            operationDelegate.onFailed = { fileProvider, operation, error in
-                DispatchQueue.main.async {
-                    processing(1.0, nil, error, nil)
-                }
-                cleanupHendler(handlerUid)
-            }
-            operationDelegate.onProgress = { fileProvider, operation, progress in
-                DispatchQueue.main.async {
-                    processing(Double(progress), nil, nil, nil)
-                }
-            }
-
-            localProvider.delegate = operationDelegate
-
-            do {
-                if FileManager.default.fileExists(atPath: destinationURL.path) {
-                    try FileManager.default.removeItem(at: destinationURL)
-                }
-            } catch {
-                log.error(error)
-                processing(1.0, nil, error, nil)
+        DispatchQueue.global().async { [weak self] in
+            guard let strongSelf = self else {
+                processing(0, nil, nil, nil)
                 return
             }
-
-            downloadProgress = localProvider.copyItem(path: path, toLocalURL: destinationURL, completionHandler: { error in
-                if let error = error {
-                    log.error(error.localizedDescription)
-
+            
+            if let localProvider = provider.copy() as? CloudFileProvider {
+                let handlerUid = UUID().uuidString
+                let operationDelegate = ASCiCloudProviderDelegate()
+                let cleanupHendler: (String) -> Void = { [weak self] uid in
+                    if let processIndex = self?.operationHendlers.firstIndex(where: { $0.uid == uid }) {
+                        self?.operationHendlers.remove(at: processIndex)
+                    }
+                }
+                
+                operationDelegate.onSucceed = { fileProvider, operation in
+                    DispatchQueue.main.async {
+                        processing(1.0, destinationURL, nil, nil)
+                    }
+                    cleanupHendler(handlerUid)
+                }
+                operationDelegate.onFailed = { fileProvider, operation, error in
                     DispatchQueue.main.async {
                         processing(1.0, nil, error, nil)
                     }
                     cleanupHendler(handlerUid)
                 }
-            })
-
-            if let localProgress = downloadProgress {
-                operationHendlers.append((
-                    uid: handlerUid,
-                    provider: localProvider,
-                    progress: localProgress,
-                    delegate: operationDelegate))
+                operationDelegate.onProgress = { fileProvider, operation, progress in
+                    DispatchQueue.main.async {
+                        processing(Double(progress), nil, nil, nil)
+                    }
+                }
+                
+                localProvider.delegate = operationDelegate
+                
+                do {
+                    if FileManager.default.fileExists(atPath: destinationURL.path) {
+                        try FileManager.default.removeItem(at: destinationURL)
+                    }
+                } catch {
+                    log.error(error)
+                    processing(1.0, nil, error, nil)
+                    return
+                }
+                
+                downloadProgress = localProvider.copyItem(path: path, toLocalURL: destinationURL, completionHandler: { error in
+                    if let error = error {
+                        log.error(error.localizedDescription)
+                        
+                        DispatchQueue.main.async {
+                            processing(1.0, nil, error, nil)
+                        }
+                        cleanupHendler(handlerUid)
+                    }
+                })
+                
+                if let localProgress = downloadProgress {
+                    strongSelf.operationHendlers.append((
+                        uid: handlerUid,
+                        provider: localProvider,
+                        progress: localProgress,
+                        delegate: operationDelegate))
+                }
+            } else {
+                DispatchQueue.main.async {
+                    processing(0, nil, nil, nil)
+                }
             }
-        } else {
-            processing(0, nil, nil, nil)
         }
     }
-
+    
     func modify(_ path: String, data: Data, params: [String: Any]?, processing: @escaping ASCApiProgressHandler) {
         guard let provider = provider else {
             processing(0, nil, nil, nil)
             return
         }
-
-//        ASCBaseApi.clearCookies(for: provider.baseURL)
 
         providerOperationDelegate.onSucceed = { [weak self] fileProvider, operation in
             self?.operationProcess = nil
@@ -467,7 +543,7 @@ class ASCWebDAVProvider: ASCBaseFileProvider {
 
                         let cloudFile = ASCFile()
                         cloudFile.id = fileObject.path
-                        cloudFile.rootFolderType = .nextcloudAll
+                        cloudFile.rootFolderType = .icloudAll
                         cloudFile.title = fileObject.name
                         cloudFile.created = fileObject.creationDate ?? fileObject.modifiedDate
                         cloudFile.updated = fileObject.modifiedDate
@@ -513,8 +589,6 @@ class ASCWebDAVProvider: ASCBaseFileProvider {
             return
         }
 
-//        ASCBaseApi.clearCookies(for: provider.baseURL)
-
         var dstPath = path
 
         if let fileName = params?["title"] as? String {
@@ -533,85 +607,96 @@ class ASCWebDAVProvider: ASCBaseFileProvider {
         var localProgress: Float = 0
         var uploadProgress: Progress?
 
-        if let localProvider = provider.copy() as? WebDAVFileProvider {
-            let handlerUid = UUID().uuidString
-            let operationDelegate = ASCWebDAVProviderDelegate()
-
-            let cleanupHendler: (String) -> Void = { [weak self] uid in
-                if let processIndex = self?.operationHendlers.firstIndex(where: { $0.uid == uid }) {
-                    self?.operationHendlers.remove(at: processIndex)
-                }
-            }
-
-            operationDelegate.onSucceed = { fileProvider, operation in
-                fileProvider.attributesOfItem(path: dstPath, completionHandler: { fileObject, error in
-                    DispatchQueue.main.async(execute: { [weak self] in
-                        if let error = error {
-                            processing(1.0, nil, error, nil)
-                        } else if let fileObject = fileObject {
-                            let fileSize: UInt64 = (fileObject.size < 0) ? 0 : UInt64(fileObject.size)
-
-                            let parent = ASCFolder()
-                            parent.id = path
-                            parent.title = (path as NSString).lastPathComponent
-
-                            let cloudFile = ASCFile()
-                            cloudFile.id = fileObject.path
-                            cloudFile.rootFolderType = .nextcloudAll
-                            cloudFile.title = fileObject.name
-                            cloudFile.created = fileObject.creationDate ?? fileObject.modifiedDate
-                            cloudFile.updated = fileObject.modifiedDate
-                            cloudFile.createdBy = self?.user
-                            cloudFile.updatedBy = self?.user
-                            cloudFile.parent = parent
-                            cloudFile.viewUrl = fileObject.path
-                            cloudFile.displayContentLength = String.fileSizeToString(with: fileSize)
-                            cloudFile.pureContentLength = Int(fileSize)
-
-                            processing(1.0, cloudFile, nil, nil)
-                        } else {
-                            processing(1.0, nil, nil, nil)
-                        }
-                        ASCLocalFileHelper.shared.removeFile(dummyFilePath)
-                        cleanupHendler(handlerUid)
-                    })
-                })
-            }
-            operationDelegate.onFailed = { fileProvider, operation, error in
+        DispatchQueue.global().async { [weak self] in
+            guard let strongSelf = self else {
                 DispatchQueue.main.async {
-                    processing(1.0, nil, error, nil)
+                    processing(0, nil, nil, nil)
                 }
-                ASCLocalFileHelper.shared.removeFile(dummyFilePath)
-                cleanupHendler(handlerUid)
+                return
             }
-            operationDelegate.onProgress = { fileProvider, operation, progress in
-                localProgress = max(localProgress, progress)
-                processing(Double(localProgress), nil, nil, nil)
-            }
-
-            localProvider.delegate = operationDelegate
-
-            uploadProgress = localProvider.copyItem(localFile: dummyFilePath.url, to: dstPath) { error in
-                if let error = error {
-                    log.error(error.localizedDescription)
-
+            
+            if let localProvider = provider.copy() as? CloudFileProvider {
+                let handlerUid = UUID().uuidString
+                let operationDelegate = ASCiCloudProviderDelegate()
+                
+                let cleanupHendler: (String) -> Void = { [weak self] uid in
+                    if let processIndex = self?.operationHendlers.firstIndex(where: { $0.uid == uid }) {
+                        self?.operationHendlers.remove(at: processIndex)
+                    }
+                }
+                
+                operationDelegate.onSucceed = { fileProvider, operation in
+                    fileProvider.attributesOfItem(path: dstPath, completionHandler: { fileObject, error in
+                        DispatchQueue.main.async(execute: { [weak self] in
+                            if let error = error {
+                                processing(1.0, nil, error, nil)
+                            } else if let fileObject = fileObject {
+                                let fileSize: UInt64 = (fileObject.size < 0) ? 0 : UInt64(fileObject.size)
+                                
+                                let parent = ASCFolder()
+                                parent.id = path
+                                parent.title = (path as NSString).lastPathComponent
+                                
+                                let cloudFile = ASCFile()
+                                cloudFile.id = fileObject.path
+                                cloudFile.rootFolderType = .icloudAll
+                                cloudFile.title = fileObject.name
+                                cloudFile.created = fileObject.creationDate ?? fileObject.modifiedDate
+                                cloudFile.updated = fileObject.modifiedDate
+                                cloudFile.createdBy = self?.user
+                                cloudFile.updatedBy = self?.user
+                                cloudFile.parent = parent
+                                cloudFile.viewUrl = fileObject.path
+                                cloudFile.displayContentLength = String.fileSizeToString(with: fileSize)
+                                cloudFile.pureContentLength = Int(fileSize)
+                                
+                                processing(1.0, cloudFile, nil, nil)
+                            } else {
+                                processing(1.0, nil, nil, nil)
+                            }
+                            ASCLocalFileHelper.shared.removeFile(dummyFilePath)
+                            cleanupHendler(handlerUid)
+                        })
+                    })
+                }
+                operationDelegate.onFailed = { fileProvider, operation, error in
                     DispatchQueue.main.async {
                         processing(1.0, nil, error, nil)
                     }
                     ASCLocalFileHelper.shared.removeFile(dummyFilePath)
                     cleanupHendler(handlerUid)
                 }
+                operationDelegate.onProgress = { fileProvider, operation, progress in
+                    localProgress = max(localProgress, progress)
+                    processing(Double(localProgress), nil, nil, nil)
+                }
+                
+                localProvider.delegate = operationDelegate
+                
+                uploadProgress = localProvider.copyItem(localFile: dummyFilePath.url, to: dstPath) { error in
+                    if let error = error {
+                        log.error(error.localizedDescription)
+                        
+                        DispatchQueue.main.async {
+                            processing(1.0, nil, error, nil)
+                        }
+                        ASCLocalFileHelper.shared.removeFile(dummyFilePath)
+                        cleanupHendler(handlerUid)
+                    }
+                }
+                
+                if let localProgress = uploadProgress {
+                    strongSelf.operationHendlers.append((
+                        uid: handlerUid,
+                        provider: localProvider,
+                        progress: localProgress,
+                        delegate: operationDelegate))
+                }
+            } else {
+                DispatchQueue.main.async {
+                    processing(0, nil, nil, nil)
+                }
             }
-
-            if let localProgress = uploadProgress {
-                operationHendlers.append((
-                    uid: handlerUid,
-                    provider: localProvider,
-                    progress: localProgress,
-                    delegate: operationDelegate))
-            }
-        } else {
-            processing(0, nil, nil, nil)
         }
     }
 
@@ -620,8 +705,6 @@ class ASCWebDAVProvider: ASCBaseFileProvider {
             completeon?(self, nil, false, ASCProviderError(msg: errorProviderUndefined))
             return
         }
-
-//        ASCBaseApi.clearCookies(for: provider.baseURL)
 
         let fileTitle = name + "." + fileExtension
 
@@ -650,19 +733,19 @@ class ASCWebDAVProvider: ASCBaseFileProvider {
                     guard let strongSelf = self else { return }
                     if let error = error {
                         log.error(error.localizedDescription)
-                        completeon?(strongSelf, nil, false, ASCProviderError(error))
+                        completeon?(strongSelf, nil, false, ASCProviderError(msg: error.localizedDescription))
                     } else {
                         provider.attributesOfItem(path: remotePath, completionHandler: { [weak self] fileObject, error in
                             DispatchQueue.main.async(execute: { [weak self] in
                                 guard let strongSelf = self else { return }
 
                                 if let error = error {
-                                    completeon?(strongSelf, nil, false, ASCProviderError(error))
+                                    completeon?(strongSelf, nil, false, ASCProviderError(msg: error.localizedDescription))
                                 } else if let fileObject = fileObject {
                                     let fileSize: UInt64 = (fileObject.size < 0) ? 0 : UInt64(fileObject.size)
                                     let cloudFile = ASCFile()
                                     cloudFile.id = fileObject.path
-                                    cloudFile.rootFolderType = .nextcloudAll
+                                    cloudFile.rootFolderType = .icloudAll
                                     cloudFile.title = fileObject.name
                                     cloudFile.created = fileObject.creationDate ?? fileObject.modifiedDate
                                     cloudFile.updated = fileObject.modifiedDate
@@ -718,13 +801,11 @@ class ASCWebDAVProvider: ASCBaseFileProvider {
             completeon?(self, nil, false, ASCProviderError(msg: errorProviderUndefined))
             return
         }
-
-//        ASCBaseApi.clearCookies(for: provider.baseURL)
-
+        
         provider.create(folder: name, at: folder.id) { [weak self] error in
             DispatchQueue.main.async(execute: { [weak self] in
                 guard let strongSelf = self else { return }
-
+                
                 if let error = error {
                     completeon?(strongSelf, nil, false, error)
                 } else {
@@ -733,7 +814,7 @@ class ASCWebDAVProvider: ASCBaseFileProvider {
 
                     let cloudFolder = ASCFolder()
                     cloudFolder.id = path
-                    cloudFolder.rootFolderType = .nextcloudAll
+                    cloudFolder.rootFolderType = .icloudAll
                     cloudFolder.title = name
                     cloudFolder.created = nowDate
                     cloudFolder.updated = nowDate
@@ -754,7 +835,7 @@ class ASCWebDAVProvider: ASCBaseFileProvider {
             })
         }
     }
-
+    
     func rename(_ entity: ASCEntity, to newName: String, completeon: ASCProviderCompletionHandler?) {
         guard let provider = provider else {
             completeon?(self, nil, false, ASCProviderError(msg: errorProviderUndefined))
@@ -784,29 +865,21 @@ class ASCWebDAVProvider: ASCBaseFileProvider {
             newPath = oldPath.parent + newName
         }
 
-//        ASCBaseApi.clearCookies(for: provider.baseURL)
-
         provider.moveItem(path: oldPath.rawValue, to: newPath.rawValue, overwrite: false) { [weak self] error in
             DispatchQueue.main.async(execute: { [weak self] in
                 guard let strongSelf = self else { return }
 
                 if let error = error {
-                    completeon?(strongSelf, nil, false, ASCProviderError(error))
+                    completeon?(strongSelf, nil, false, ASCProviderError(msg: error.localizedDescription))
                 } else {
-//                    let now = Date()
-
                     if let file = file {
                         file.id = newPath.rawValue
                         file.title = newPath.fileName
-//                        file.created = now
-//                        file.updated = now
 
                         completeon?(strongSelf, file, true, nil)
                     } else if let folder = folder {
                         folder.id = newPath.rawValue
                         folder.title = newName
-//                        folder.created = now
-//                        folder.updated = now
 
                         completeon?(strongSelf, folder, true, nil)
                     } else {
@@ -816,7 +889,7 @@ class ASCWebDAVProvider: ASCBaseFileProvider {
             })
         }
     }
-
+    
     func delete(_ entities: [ASCEntity], from folder: ASCFolder, completeon: ASCProviderCompletionHandler?) {
         guard let provider = provider else {
             completeon?(self, nil, false, ASCProviderError(msg: errorProviderUndefined))
@@ -832,8 +905,6 @@ class ASCWebDAVProvider: ASCBaseFileProvider {
         for entity in entities {
             operationQueue.addOperation {
                 let semaphore = DispatchSemaphore(value: 0)
-
-//                ASCBaseApi.clearCookies(for: provider.baseURL)
 
                 provider.removeItem(path: entity.id, completionHandler: { error in
                     if let error = error {
@@ -855,7 +926,7 @@ class ASCWebDAVProvider: ASCBaseFileProvider {
             })
         }
     }
-
+    
     func chechTransfer(items: [ASCEntity], to folder: ASCFolder, handler: ASCEntityHandler? = nil) {
         guard let provider = provider else {
             handler?(.error, nil, ASCProviderError(msg: errorProviderUndefined).localizedDescription)
@@ -874,8 +945,6 @@ class ASCWebDAVProvider: ASCBaseFileProvider {
                 let semaphore = DispatchSemaphore(value: 0)
                 let destPath = NSString(string: folder.id).appendingPathComponent(NSString(string: entity.id).lastPathComponent)
 
-//                ASCBaseApi.clearCookies(for: provider.baseURL)
-
                 provider.attributesOfItem(path: destPath, completionHandler: { object, error in
                     if nil == error {
                         conflictItems.append(entity)
@@ -892,7 +961,7 @@ class ASCWebDAVProvider: ASCBaseFileProvider {
             })
         }
     }
-
+    
     func transfer(items: [ASCEntity], to folder: ASCFolder, move: Bool, overwrite: Bool, handler: ASCEntityProgressHandler?) {
         var cancel = false
 
@@ -920,8 +989,6 @@ class ASCWebDAVProvider: ASCBaseFileProvider {
 
                 let semaphore = DispatchSemaphore(value: 0)
                 let destPath = NSString(string: folder.id).appendingPathComponent(NSString(string: entity.id).lastPathComponent)
-
-//                ASCBaseApi.clearCookies(for: provider.baseURL)
 
                 if move {
                     provider.moveItem(path: entity.id, to: destPath, overwrite: overwrite, completionHandler: { error in
@@ -962,7 +1029,7 @@ class ASCWebDAVProvider: ASCBaseFileProvider {
             })
         }
     }
-
+    
     // MARK: - Access
 
     func allowRead(entity: AnyObject?) -> Bool {
@@ -1055,7 +1122,7 @@ class ASCWebDAVProvider: ASCBaseFileProvider {
 
         return entityActions
     }
-
+    
     // MARK: - Open file
 
     func open(file: ASCFile, viewMode: Bool = false) {
@@ -1091,11 +1158,142 @@ class ASCWebDAVProvider: ASCBaseFileProvider {
             }
         }
     }
+    
+    // MARK: - File watcher
+    
+    /// Starts monitoring a path and its subpaths, including files and folders, for any change,
+    /// including copy, move/rename, content changes, etc.
+    ///
+    ///  - Parameters:
+    ///   - path: path of directory.
+    ///   - eventHandler: Closure executed after change, on a secondary thread.
+    private func registerNotifcation(path: String) {
+        guard let provider = provider else {
+            return
+        }
+            
+        unregisterNotifcation(path: path)
+        let pathURL = provider.url(of: path)
+        watcherQuery.predicate = NSPredicate(format: "(%K BEGINSWITH %@)", NSMetadataItemPathKey, pathURL.path)
+        watcherQuery.valueListAttributes = []
+        watcherQuery.searchScopes = [provider.scope.rawValue]
+        
+        
+        watcherObserver = NotificationCenter.default.addObserver(forName: .NSMetadataQueryDidUpdate, object: watcherQuery, queue: nil, using: { [weak self] notification in
+            guard let strongSelf = self else { return }
+            strongSelf.watcherQuery.disableUpdates()
+            strongSelf.handleWatchUpdate(notification)
+            strongSelf.watcherQuery.enableUpdates()
+        })
+        
+        DispatchQueue.main.async { [weak self] in
+            self?.watcherQuery.start()
+        }
+    }
+    
+    /// Stops monitoring the path.
+    ///
+    /// - Parameter path: path of directory.
+    private func unregisterNotifcation(path: String) {
+        if watcherQuery.isStarted {
+            watcherQuery.disableUpdates()
+            watcherQuery.stop()
+        }
+        
+        if let observer = watcherObserver {
+            NotificationCenter.default.removeObserver(observer)
+        }
+    }
+    
+    private func handleWatchUpdate(_ notification: Notification) {
+        guard let folder = folder else { return }
+       
+        let isOwnerEntity: ((ASCEntity) -> Bool) = { (entity) -> Bool in
+            guard
+                let parentPath = (entity as? ASCFolder)?.parent?.id ?? (entity as? ASCFile)?.parent?.id
+            else { return false }
+            
+            return folder.id == parentPath
+        }
+        
+        let attributes = [
+            NSMetadataItemURLKey, NSMetadataItemFSNameKey, NSMetadataItemPathKey,
+            NSMetadataItemFSSizeKey, NSMetadataItemContentTypeTreeKey, NSMetadataItemFSCreationDateKey,
+            NSMetadataItemFSContentChangeDateKey
+        ]
+        
+        /// Filter changes only for current folder
+        let addedItems = (notification.userInfo?[NSMetadataQueryUpdateAddedItemsKey] as? [NSMetadataItem] ?? [])
+            .compactMap { mapEntity(attributes: $0.values(forAttributes: attributes) ?? [:]) }
+            .filter { isOwnerEntity($0) }
+        let changedItems = (notification.userInfo?[NSMetadataQueryUpdateChangedItemsKey] as? [NSMetadataItem] ?? [])
+            .compactMap { mapEntity(attributes: $0.values(forAttributes: attributes) ?? [:]) }
+            .filter { isOwnerEntity($0) }
+        let removedItems = (notification.userInfo?[NSMetadataQueryUpdateRemovedItemsKey] as? [NSMetadataItem] ?? [])
+            .compactMap { mapEntity(attributes: $0.values(forAttributes: attributes) ?? [:]) }
+            .filter { isOwnerEntity($0) }
+        
+        /// Have any change
+        if addedItems.count + changedItems.count + removedItems.count > 0 {
+            fetch(for: folder, parameters: fetchInfo ?? [:]) { [weak self] provider, folder, success, error in
+                guard let strongSelf = self else { return }
+                strongSelf.delegate?.updateItems(provider: strongSelf)
+            }
+        }
+    }
+    
+    private func mapEntity(attributes attribs: [String: Any]) -> ASCEntity? {
+        guard
+            let provider = provider,
+            let url = (attribs[NSMetadataItemURLKey] as? URL)?.standardizedFileURL,
+            let name = attribs[NSMetadataItemFSNameKey] as? String
+        else { return nil }
+        
+        let path = provider.relativePathOf(url: url)
+        let isFolder = (attribs[NSMetadataItemContentTypeTreeKey] as? [String])?.contains("public.folder") ?? false
+        let size = (attribs[NSMetadataItemFSSizeKey] as? NSNumber)?.int64Value ?? -1
+        let creationDate = attribs[NSMetadataItemFSCreationDateKey] as? Date
+        let modifiedDate = attribs[NSMetadataItemFSContentChangeDateKey] as? Date
+        
+        let parent = ASCFolder()
+        parent.id = path.deletingLastPathComponent.replacingOccurrences(of: provider.baseURL?.path ?? "", with: "")
+
+        if isFolder {
+            let folder = ASCFolder()
+            folder.id = path.replacingOccurrences(of: provider.baseURL?.path ?? "", with: "")
+            folder.providerType = .iCloud
+            folder.rootFolderType = .icloudAll
+            folder.title = name
+            folder.created = creationDate ?? modifiedDate
+            folder.updated = modifiedDate
+            folder.createdBy = user
+            folder.updatedBy = user
+            folder.parent = parent
+            folder.parentId = parent.id
+            return folder
+        } else {
+            let fileSize: UInt64 = (size < 0) ? 0 : UInt64(size)
+            let file = ASCFile()
+            file.id = path.replacingOccurrences(of: provider.baseURL?.path ?? "", with: "")
+            file.rootFolderType = .icloudAll
+            file.title = name
+            file.created = creationDate ?? modifiedDate
+            file.updated = modifiedDate
+            file.createdBy = user
+            file.updatedBy = user
+            file.parent = parent
+            file.viewUrl = path
+            file.displayContentLength = String.fileSizeToString(with: fileSize)
+            file.pureContentLength = Int(fileSize)
+            return file
+        }
+    }
+    
 }
 
 // MARK: - FileProvider Delegate
 
-class ASCWebDAVProviderDelegate: FileProviderDelegate {
+class ASCiCloudProviderDelegate: FileProviderDelegate {
     var onSucceed:((_ fileProvider: FileProviderOperations, _ operation: FileOperationType) -> Void)?
     var onFailed:((_ fileProvider: FileProviderOperations, _ operation: FileOperationType, _ error: Error) -> Void)?
     var onProgress:((_ fileProvider: FileProviderOperations, _ operation: FileOperationType, _ progress: Float) -> Void)?
@@ -1117,4 +1315,3 @@ class ASCWebDAVProviderDelegate: FileProviderDelegate {
         onProgress?(fileProvider, operation, progress)
     }
 }
-

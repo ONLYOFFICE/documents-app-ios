@@ -29,10 +29,24 @@ struct ASCEntityActions: OptionSet {
 typealias ASCProviderUserInfoHandler = ((_ success: Bool, _ error: Error?) -> Void)
 typealias ASCProviderCompletionHandler = ((_ provider: ASCBaseFileProvider, _ result: Any?, _ success: Bool, _ error: Error?) -> Void)
 
+
+// MARK: - ASCProviderDelegate protocol
+
 protocol ASCProviderDelegate {
     func openProgressFile(title: String, _ progress: Float) -> ASCEditorManagerOpenHandler
     func closeProgressFile(title: String) -> ASCEditorManagerCloseHandler
+    func updateItems(provider: ASCBaseFileProvider)
 }
+
+
+// MARK: - ASCProviderDelegate protocol optionals
+
+extension ASCProviderDelegate {
+    func updateItems(provider: ASCBaseFileProvider) {}
+}
+
+
+// MARK: - ASCBaseFileProvider protocol
 
 protocol ASCBaseFileProvider {
     // Information
@@ -88,6 +102,9 @@ protocol ASCBaseFileProvider {
     func open(file: ASCFile, viewMode: Bool)
     func preview(file: ASCFile, files: [ASCFile]?, in view: UIView?)
 }
+
+
+// MARK: - ASCBaseFileProvider protocol
 
 extension ASCBaseFileProvider {
     func cancel() {}

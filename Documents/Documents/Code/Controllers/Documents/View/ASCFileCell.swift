@@ -127,5 +127,14 @@ class ASCFileCell: MGSwipeTableCell {
         } else {
             icon?.image = UIImage(named: "list-format-unknown")
         }
+        
+        if let rootFolderType = file?.parent?.rootFolderType {
+            switch rootFolderType {
+            case .icloudAll:
+                owner?.text = nil
+            default:
+                break
+            }
+        }
     }
 }

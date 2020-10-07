@@ -27,4 +27,5 @@ enum ASCFolderType: Int {
     case webdavAll              = 104
     case dropboxAll             = 105
     case googledriveAll         = 106
+    case icloudAll              = 107
 }

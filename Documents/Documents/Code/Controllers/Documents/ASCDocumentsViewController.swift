@@ -342,7 +342,9 @@ class ASCDocumentsViewController: UITableViewController, UIGestureRecognizerDele
 
             delay(seconds: 0.3) { [weak self] in
                 if let index = self?.tableData.firstIndex(where: { $0.id == file.id }) {
-                    self?.searchController.searchBar.isHidden = false
+                    if ASCConstants.Feature.hideSearchbarIfEmpty {
+                        self?.searchController.searchBar.isHidden = false
+                    }
                     self?.tableView.scrollToRow(at: IndexPath(row: index, section: 0), at: .middle, animated: true)
                     self?.tableView.setNeedsLayout()
 
@@ -367,7 +369,9 @@ class ASCDocumentsViewController: UITableViewController, UIGestureRecognizerDele
             tableData.insert(folder, at: 0)
             total += 1
 
-            searchController.searchBar.isHidden = false
+            if ASCConstants.Feature.hideSearchbarIfEmpty {
+                searchController.searchBar.isHidden = false
+            }
             tableView.scrollToRow(at: IndexPath(row: 0, section: 0), at: .middle, animated: true)
             tableView.setNeedsLayout()
             
@@ -504,12 +508,18 @@ class ASCDocumentsViewController: UITableViewController, UIGestureRecognizerDele
     // MARK: - Private
 
     private func configureNavigationBar(animated: Bool = true) {
-        addBarButton = addBarButton ?? ASCStyles.createBarButton(image: UIImage(named: "nav-add"), target: self, action:#selector(onAddEntityAction))
-        sortSelectBarButton = sortSelectBarButton ?? ASCStyles.createBarButton(image: UIImage(named: "nav-more"), target: self, action:#selector(onSortSelectAction))
-        sortBarButton = sortBarButton ?? ASCStyles.createBarButton(image: UIImage(named: "nav-sort"), target: self, action: #selector(onSortAction))
-        selectBarButton = selectBarButton ?? ASCStyles.createBarButton(image: UIImage(named: "nav-select"), target: self, action: #selector(onSelectAction))
-        cancelBarButton = cancelBarButton ?? ASCStyles.createBarButton(title: NSLocalizedString("Cancel", comment: "Button title"), target: self, action: #selector(onCancelAction))
-        selectAllBarButton = selectAllBarButton ?? ASCStyles.createBarButton(title: NSLocalizedString("Select", comment: "Button title"), target: self, action: #selector(onSelectAll))
+        addBarButton = addBarButton
+            ?? ASCStyles.createBarButton(image: UIImage(named: "nav-add"), target: self, action:#selector(onAddEntityAction))
+        sortSelectBarButton = sortSelectBarButton
+            ?? ASCStyles.createBarButton(image: UIImage(named: "nav-more"), target: self, action:#selector(onSortSelectAction))
+        sortBarButton = sortBarButton
+            ?? ASCStyles.createBarButton(image: UIImage(named: "nav-sort"), target: self, action: #selector(onSortAction))
+        selectBarButton = selectBarButton
+            ?? ASCStyles.createBarButton(image: UIImage(named: "nav-select"), target: self, action: #selector(onSelectAction))
+        cancelBarButton = cancelBarButton
+            ?? ASCStyles.createBarButton(title: NSLocalizedString("Cancel", comment: "Button title"), target: self, action: #selector(onCancelAction))
+        selectAllBarButton = selectAllBarButton
+            ?? ASCStyles.createBarButton(title: NSLocalizedString("Select", comment: "Button title"), target: self, action: #selector(onSelectAll))
         
         addBarButton?.isEnabled = provider?.allowEdit(entity: folder) ?? false
         sortSelectBarButton?.isEnabled = total > 0
@@ -531,6 +541,7 @@ class ASCDocumentsViewController: UITableViewController, UIGestureRecognizerDele
         }
 
         if #available(iOS 11.0, *) {
+            navigationController?.navigationBar.backgroundColor = view.backgroundColor
             navigationController?.navigationBar.prefersLargeTitles = true
             navigationItem.largeTitleDisplayMode = .automatic
         }
@@ -812,7 +823,9 @@ class ASCDocumentsViewController: UITableViewController, UIGestureRecognizerDele
             searchController.isActive = false
         }
         
-        searchController.searchBar.isHidden = true
+        if ASCConstants.Feature.hideSearchbarIfEmpty {
+            searchController.searchBar.isHidden = true
+        }
 
         addBarButton?.isEnabled = false // Disable create entity while loading first page
 
@@ -873,8 +886,10 @@ class ASCDocumentsViewController: UITableViewController, UIGestureRecognizerDele
     }
     
     private func showEmptyView(_ show: Bool) {
-        if !searchController.isActive {
-            searchController.searchBar.isHidden = show
+        if ASCConstants.Feature.hideSearchbarIfEmpty {
+            if !searchController.isActive {
+                searchController.searchBar.isHidden = show
+            }
         }
 
         if !show {
@@ -914,8 +929,8 @@ class ASCDocumentsViewController: UITableViewController, UIGestureRecognizerDele
                 localEmptyView.frame = CGRect(
                     x: 0,
                     y: 0,
-                    width: tableView.frame.width,
-                    height: tableView.frame.height
+                    width: tableView.width,
+                    height: tableView.height
                 )
                 if let tableView = view as? UITableView {
                     tableView.backgroundView = localEmptyView
@@ -3363,6 +3378,15 @@ extension ASCDocumentsViewController: ASCProviderDelegate {
         }
 
         return closeHandler
+    }
+    
+    func updateItems(provider: ASCBaseFileProvider) {
+        total = provider.total
+        tableData = provider.items
+        
+        // TODO: Or search diff and do it animated
+        
+        showEmptyView(total < 1)
     }
 }
 

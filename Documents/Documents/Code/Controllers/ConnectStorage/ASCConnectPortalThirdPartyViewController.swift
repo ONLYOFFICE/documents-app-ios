@@ -91,7 +91,6 @@ class ASCConnectPortalThirdPartyViewController: UITableViewController {
             
             strongSelf.providers = orderedProviders
             strongSelf.tableView.reloadData()
-
         }
     }
     
@@ -104,26 +103,18 @@ class ASCConnectPortalThirdPartyViewController: UITableViewController {
             switch type {
             case .googleDrive:
                 folderName = NSLocalizedString("Google directory", comment: "")
-                break
             case .dropBox:
                 folderName = NSLocalizedString("Dropbox directory", comment: "")
-                break
-            case .skyDrive,
-                 .oneDrive:
+            case .skyDrive, .oneDrive:
                 folderName = NSLocalizedString("OneDrive directory", comment: "")
-                break
             case .boxNet:
                 folderName = NSLocalizedString("Box directory", comment: "")
-                break
             case .sharePoint:
                 folderName = NSLocalizedString("SharePoint directory", comment: "")
-                break
             case .yandex:
                 folderName = NSLocalizedString("Yandex directory", comment: "")
-                break
             case .webDav:
                 folderName = NSLocalizedString("WebDAV directory", comment: "")
-                break
             default:
                 break
             }
@@ -340,6 +331,10 @@ class ASCConnectPortalThirdPartyViewController: UITableViewController {
             webDavVC.provider = .webDav
             webDavVC.logo = UIImage(named: "logo-webdav-large")
             viewController = webDavVC
+            
+        default:
+            break
+            
         }
 
         if let viewController = viewController {

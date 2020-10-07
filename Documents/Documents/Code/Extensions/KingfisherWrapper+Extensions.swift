@@ -34,7 +34,7 @@ extension KingfisherWrapper where Base: KFCrossPlatformImageView {
 
         var localOptions = options ?? [.transition(.fade(0.3))]
         
-        if let _ = provider as? ASCOnlyofficeProvider {
+        if provider is ASCOnlyofficeProvider {
             if let baseUrl = ASCOnlyOfficeApi.shared.baseUrl,
                 let resource = resource,
                 URL(string: baseUrl)?.host == resource.downloadURL.host

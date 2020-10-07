@@ -47,6 +47,8 @@ class ASCTransferViewController: UITableViewController {
             return "cloud-yandex-disk"
         case .webdav:
             return "cloud-webdav"
+        case .icloud:
+            return "cloud-icloud"
         default:
             return nil
         }

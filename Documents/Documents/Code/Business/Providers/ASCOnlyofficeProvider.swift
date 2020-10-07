@@ -678,7 +678,7 @@ class ASCOnlyofficeProvider: ASCBaseFileProvider {
                                         handler?(.end, 1, nil, nil, &cancel)
                                     } else {
                                         Thread.sleep(forTimeInterval: 1)
-                                        checkOperation?();
+                                        checkOperation?()
                                     }
                                 } else {
                                     handler?(.error, 1, nil, NSLocalizedString("Unknown API response.", comment: ""), &cancel)
@@ -780,7 +780,7 @@ class ASCOnlyofficeProvider: ASCBaseFileProvider {
             return false
         }
 
-        var access = (file != nil) ? file?.access : folder?.access;
+        var access = (file != nil) ? file?.access : folder?.access
 
         if folder != nil && folder?.id == parentFolder?.id {
             access = parentFolder?.access
@@ -823,7 +823,7 @@ class ASCOnlyofficeProvider: ASCBaseFileProvider {
             return false
         }
 
-        var access = (file != nil) ? file?.access : folder?.access;
+        var access = (file != nil) ? file?.access : folder?.access
 
         if folder != nil && folder?.id == parentFolder?.id {
             access = parentFolder?.access

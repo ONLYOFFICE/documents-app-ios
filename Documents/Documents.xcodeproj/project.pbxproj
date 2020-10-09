@@ -122,7 +122,6 @@
 		FC786FC31EB879F600181D62 /* ASCIntroViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC786FC21EB879F600181D62 /* ASCIntroViewController.swift */; };
 		FC795596243E1A3A00CDD9FC /* KingfisherWrapper+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC795595243E1A3A00CDD9FC /* KingfisherWrapper+Extensions.swift */; };
 		FC7B37D61E929B46009C41AD /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = FC7B37D51E929B46009C41AD /* Settings.bundle */; };
-		FC7B4D582056B3FE00388897 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = FCBFE9B51EE532DB005BB570 /* GoogleService-Info.plist */; };
 		FC7CF5101EF3E76F00C0A64F /* ASCStringTransform.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC7CF50F1EF3E76F00C0A64F /* ASCStringTransform.swift */; };
 		FC7CF5161EF3EFF300C0A64F /* Deprecated.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC7CF5121EF3EFF300C0A64F /* Deprecated.swift */; };
 		FC7CF5171EF3EFF300C0A64F /* HTMLString.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC7CF5131EF3EFF300C0A64F /* HTMLString.swift */; };
@@ -180,7 +179,6 @@
 		FCB8A39521C2881100CF74FA /* ASCDeviceCategoryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCB8A39421C2881100CF74FA /* ASCDeviceCategoryCell.swift */; };
 		FCB8A39721C29D4900CF74FA /* ASCBaseSplitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCB8A39621C29D4900CF74FA /* ASCBaseSplitViewController.swift */; };
 		FCBEA6B6203EEF96000E8695 /* ASCSDWebImageDownloaderOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCBEA6B5203EEF96000E8695 /* ASCSDWebImageDownloaderOperation.swift */; };
-		FCBFE9B61EE532DB005BB570 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = FCBFE9B51EE532DB005BB570 /* GoogleService-Info.plist */; };
 		FCC3963D1ECDC6890016BB10 /* Settings.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FCC3963F1ECDC6890016BB10 /* Settings.storyboard */; };
 		FCC396441ECDC6BD0016BB10 /* UserProfile.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FCC396461ECDC6BD0016BB10 /* UserProfile.storyboard */; };
 		FCC3964B1ECDD9A10016BB10 /* ASCUserProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCC3964A1ECDD9A10016BB10 /* ASCUserProfileViewController.swift */; };
@@ -441,7 +439,6 @@
 		FCB8A39421C2881100CF74FA /* ASCDeviceCategoryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCDeviceCategoryCell.swift; sourceTree = "<group>"; };
 		FCB8A39621C29D4900CF74FA /* ASCBaseSplitViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCBaseSplitViewController.swift; sourceTree = "<group>"; };
 		FCBEA6B5203EEF96000E8695 /* ASCSDWebImageDownloaderOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCSDWebImageDownloaderOperation.swift; sourceTree = "<group>"; };
-		FCBFE9B51EE532DB005BB570 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		FCC3963E1ECDC6890016BB10 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Settings.storyboard; sourceTree = "<group>"; };
 		FCC396411ECDC68C0016BB10 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Settings.strings; sourceTree = "<group>"; };
 		FCC396451ECDC6BD0016BB10 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/UserProfile.storyboard; sourceTree = "<group>"; };
@@ -1325,7 +1322,6 @@
 				FCC62ADF1E8AA1F800D24BE2 /* InfoPlist.strings */,
 				FCC62ADA1E8AA1F700D24BE2 /* Localizable.strings */,
 				FCF916C81ED44F3A0032C135 /* Localizable.stringsdict */,
-				FCBFE9B51EE532DB005BB570 /* GoogleService-Info.plist */,
 				FCF3AAC21EF9483100DF63BA /* Info.plist */,
 			);
 			path = Documents;
@@ -1361,6 +1357,7 @@
 				FCFDAA891E48A10C007A240C /* Sources */,
 				FCFDAA8A1E48A10C007A240C /* Frameworks */,
 				FCFDAA8B1E48A10C007A240C /* Resources */,
+				FC1C80022530567D0048BD4C /* Copy Bundle Resources */,
 				FC7B37D71E929B5F009C41AD /* Write application version into preference */,
 				383A6F0B46F33FEAE7BED239 /* [CP] Copy Pods Resources */,
 				FCC471031F56A2DF00373597 /* Increment Build Number */,
@@ -1444,7 +1441,6 @@
 				FCCDE68220497C0D00CFC653 /* documents in Resources */,
 				FCF8045F212EA38A00378AFD /* Localizable.strings in Resources */,
 				FCF8045C212E94A300378AFD /* InfoPlist.strings in Resources */,
-				FC7B4D582056B3FE00388897 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1477,7 +1473,6 @@
 				FCC3963D1ECDC6890016BB10 /* Settings.storyboard in Resources */,
 				FC786FB91EB8694400181D62 /* Samples in Resources */,
 				FC28F2CF1E8D48E900A8F985 /* Templates in Resources */,
-				FCBFE9B61EE532DB005BB570 /* GoogleService-Info.plist in Resources */,
 				FCA0AD271EBC90AC00AA53EB /* Login.storyboard in Resources */,
 				FC9E28B12244E286000D315E /* DocumentsEmptyView.xib in Resources */,
 				FCC62AE31E8AA91100D24BE2 /* MWPhotoBrowser.bundle in Resources */,
@@ -1652,6 +1647,25 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		FC1C80022530567D0048BD4C /* Copy Bundle Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Bundle Resources";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "ADDITIONAL_FILES=(\n    \"${PROJECT_DIR}/Documents/GoogleService-Info.plist\"\n    \"${PROJECT_DIR}/Documents/Internal.plist\"\n)\n\nfor file_path in ${ADDITIONAL_FILES[@]}; do\n    if [ -f \"${file_path}\" ]; then\n        rsync --delete -av \"${file_path}\" \"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}\"\n    fi\ndone\n";
 			showEnvVarsInLog = 0;
 		};
 		FC7B37D71E929B5F009C41AD /* Write application version into preference */ = {

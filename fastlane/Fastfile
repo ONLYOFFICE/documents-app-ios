@@ -15,7 +15,9 @@ platform :ios do
     ENV["FASTLANE_XCODEBUILD_SETTINGS_RETRIES"] = "10"
     ENV["FASTLANE_XCODEBUILD_SETTINGS_TIMEOUT"] = "60"
     ENV["FASTLANE_XCODE_LIST_TIMEOUT"] = "60"
+
     cocoapods
+    sh "../.github/secrets/decrypt_secret.sh"
   end
 
   def version_string(version_number, build_number)
@@ -55,9 +57,6 @@ platform :ios do
       export_xcargs: "-allowProvisioningUpdates"
     )
 
-    next_build_number = build_number.next
-    next_complete_version_number = version_string(version_number, next_build_number)
-
     # get the last commit comments from Git history
     # and creates our changelog
     change_log = changelog_from_git_commits(
@@ -67,30 +66,11 @@ platform :ios do
       merge_commit_filtering: "exclude_merges"
     )
 
-    # creates a bump version commit
-    update_plist(
-      plist_path: "Documents/Documents/Info.plist",
-      block: proc do |plist|
-        plist["CFBundleVersion"] = "#{next_build_number}"
-      end
-    )
-
-    update_plist(
-      plist_path: "Documents/Settings.bundle/Root.plist",
-      block: proc do |plist|
-        version_preference = plist["PreferenceSpecifiers"].find{|key| key["Key"] == "version_preference"}
-        version_preference[:DefaultValue] = "#{next_complete_version_number}"
-      end
-    )
-
-    sh("gpg --quiet --batch --yes --symmetric --cipher-algo AES256 --passphrase=\"$GIT_DOCUMENTS_PASSPHRASE\" --output ../Documents/Documents/Info.plist.gpg ../Documents/Documents/Info.plist")
-
-    git_commit(
-      message: "Version bumped to v#{version_number}(#{build_number})",
-      path: [
-        "Documents/Settings.bundle/Root.plist", 
-        "Documents/Documents/Info.plist.gpg"
-      ]
+    # creates a bump version commit 
+    commit_version_bump(
+        message: "Version bumped to v#{version_number}(#{build_number})",
+        settings: true,
+        xcodeproj: "Documents/Documents.xcodeproj"
     )
 
     # create a local tag with the new version

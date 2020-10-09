@@ -190,7 +190,6 @@
 		FCB8A39521C2881100CF74FA /* ASCDeviceCategoryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCB8A39421C2881100CF74FA /* ASCDeviceCategoryCell.swift */; };
 		FCB8A39721C29D4900CF74FA /* ASCBaseSplitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCB8A39621C29D4900CF74FA /* ASCBaseSplitViewController.swift */; };
 		FCBEA6B6203EEF96000E8695 /* ASCSDWebImageDownloaderOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCBEA6B5203EEF96000E8695 /* ASCSDWebImageDownloaderOperation.swift */; };
-		FCBFE9B61EE532DB005BB570 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = FCBFE9B51EE532DB005BB570 /* GoogleService-Info.plist */; };
 		FCC38BD222D379DE00F500C3 /* ASCFolderProviderType.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCC38BD122D379DD00F500C3 /* ASCFolderProviderType.swift */; };
 		FCC38BD422D37A2A00F500C3 /* UISplitViewController+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCC38BD322D37A2900F500C3 /* UISplitViewController+Extensions.swift */; };
 		FCC38BD722D37A9D00F500C3 /* ASCConnectStorageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCC38BD622D37A9D00F500C3 /* ASCConnectStorageCell.swift */; };
@@ -525,7 +524,6 @@
 		FCB8A39421C2881100CF74FA /* ASCDeviceCategoryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCDeviceCategoryCell.swift; sourceTree = "<group>"; };
 		FCB8A39621C29D4900CF74FA /* ASCBaseSplitViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCBaseSplitViewController.swift; sourceTree = "<group>"; };
 		FCBEA6B5203EEF96000E8695 /* ASCSDWebImageDownloaderOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCSDWebImageDownloaderOperation.swift; sourceTree = "<group>"; };
-		FCBFE9B51EE532DB005BB570 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		FCC38BD122D379DD00F500C3 /* ASCFolderProviderType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASCFolderProviderType.swift; sourceTree = "<group>"; };
 		FCC38BD322D37A2900F500C3 /* UISplitViewController+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UISplitViewController+Extensions.swift"; sourceTree = "<group>"; };
 		FCC38BD622D37A9D00F500C3 /* ASCConnectStorageCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASCConnectStorageCell.swift; sourceTree = "<group>"; };
@@ -1435,7 +1433,6 @@
 				FCC62ADF1E8AA1F800D24BE2 /* InfoPlist.strings */,
 				FCC62ADA1E8AA1F700D24BE2 /* Localizable.strings */,
 				FCF916C81ED44F3A0032C135 /* Localizable.stringsdict */,
-				FCBFE9B51EE532DB005BB570 /* GoogleService-Info.plist */,
 				FCF3AAC21EF9483100DF63BA /* Info.plist */,
 			);
 			path = Documents;
@@ -1452,6 +1449,7 @@
 				FCFDAA891E48A10C007A240C /* Sources */,
 				FCFDAA8A1E48A10C007A240C /* Frameworks */,
 				FCFDAA8B1E48A10C007A240C /* Resources */,
+				FC1C808B2530AA9E0048BD4C /* Copy Bundle Resources */,
 				FC7B37D71E929B5F009C41AD /* Write application version into preference */,
 				FCC471031F56A2DF00373597 /* Increment Build Number */,
 				FC7DA57E1EF2962A0011092A /* Upload symbols to Firebase Crashlytics */,
@@ -1602,7 +1600,6 @@
 				FCC3963D1ECDC6890016BB10 /* Settings.storyboard in Resources */,
 				FC786FB91EB8694400181D62 /* Samples in Resources */,
 				FC28F2CF1E8D48E900A8F985 /* Templates in Resources */,
-				FCBFE9B61EE532DB005BB570 /* GoogleService-Info.plist in Resources */,
 				FCA0AD271EBC90AC00AA53EB /* Login.storyboard in Resources */,
 				FC9E28B12244E286000D315E /* DocumentsEmptyView.xib in Resources */,
 				FCC62AE31E8AA91100D24BE2 /* MWPhotoBrowser.bundle in Resources */,
@@ -1736,6 +1733,24 @@
 			shellPath = /bin/sh;
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Documents-develop/Pods-Documents-develop-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
+		};
+		FC1C808B2530AA9E0048BD4C /* Copy Bundle Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Bundle Resources";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "ADDITIONAL_FILES=(\n    \"${PROJECT_DIR}/Documents/GoogleService-Info.plist\"\n    \"${PROJECT_DIR}/Documents/Internal.plist\"\n)\n\nfor file_path in ${ADDITIONAL_FILES[@]}; do\n    if [ -f \"${file_path}\" ]; then\n        rsync --delete -av \"${file_path}\" \"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}\"\n    fi\ndone\n";
 		};
 		FC7B37D71E929B5F009C41AD /* Write application version into preference */ = {
 			isa = PBXShellScriptBuildPhase;

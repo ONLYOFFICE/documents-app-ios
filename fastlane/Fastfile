@@ -8,10 +8,16 @@ skip_docs # Do not create fastlane/README.md
 
 platform :ios do
   before_all do
+    ensure_env_vars(
+      env_vars: ['GIT_DOCUMENTS_PASSPHRASE']
+    )
+
     ENV["FASTLANE_XCODEBUILD_SETTINGS_RETRIES"] = "10"
     ENV["FASTLANE_XCODEBUILD_SETTINGS_TIMEOUT"] = "60"
     ENV["FASTLANE_XCODE_LIST_TIMEOUT"] = "60"
+
     cocoapods
+    sh "../.github/secrets/decrypt_secret.sh"
   end
 
   def version_string(version_number, build_number)
@@ -32,6 +38,7 @@ platform :ios do
   desc "This will also make sure the profile is up to date"
   lane :beta do
     # match(type: "appstore") # more information: https://codesigning.guide
+    # ensure_git_status_clean
 
     version_number = get_version_number(
       xcodeproj: "Documents/Documents.xcodeproj",
@@ -49,8 +56,6 @@ platform :ios do
       workspace: "ONLYOFFICE-Documents.xcworkspace",
       export_xcargs: "-allowProvisioningUpdates"
     )
-
-    complete_version_number = version_string(version_number, build_number)
 
     # get the last commit comments from Git history
     # and creates our changelog
@@ -88,7 +93,7 @@ platform :ios do
         token: ENV['TELEGRAM_BOT_TOKEN'],
         chat_id: ENV['TELEGRAM_CHAT_ID'],
         parse_mode: 'Markdown',
-        text: "В TestFlight доступна версия ONLYOFFICE Documents #{version_number}(#{build_number}) для внутреннего тестирования.\n\nСписок изменений:\n#{change_log}"
+        text: ENV["TELEGRAM_DOCUMENTS_IOS_MESSAGE"] % [version_number: "#{version_number}", build_number: "#{build_number}", change_log: "#{change_log}"]
       )
     rescue => ex
       UI.error(ex)

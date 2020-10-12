@@ -50,6 +50,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         _ = ASCAccountsManager.shared
                 
         // Facebook login
+        Settings.appID = ASCConstants.Clouds.Facebook.appId
         ApplicationDelegate.shared.application(application, didFinishLaunchingWithOptions: launchOptions)
         
         // Use Firebase library to configure APIs

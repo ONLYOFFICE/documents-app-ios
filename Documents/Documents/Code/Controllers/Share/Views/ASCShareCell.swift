@@ -47,7 +47,9 @@ class ASCShareCell: UITableViewCell {
         }
         
         if let user = shareInfo.user {
-            if let userAvatar = user.avatar, let userAvatarUrl = ASCOnlyOfficeApi.absoluteUrl(from: URL(string: userAvatar)) {
+            if let userAvatar = user.avatarRetina ?? user.avatar,
+               let userAvatarUrl = ASCOnlyOfficeApi.absoluteUrl(from: URL(string: userAvatar))
+            {
                 avatar?.kf.indicatorType = .activity
                 avatar?.kf.apiSetImage(with: userAvatarUrl,
                                        placeholder: UIImage(named: "avatar-default"))

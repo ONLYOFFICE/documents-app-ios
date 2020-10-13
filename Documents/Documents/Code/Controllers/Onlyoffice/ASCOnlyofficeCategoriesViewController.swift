@@ -48,6 +48,7 @@ class ASCOnlyofficeCategoriesViewController: UITableViewController {
         }
 
         updateUserInfo()
+        fetchUpdateUserInfo()
     }
 
     deinit {
@@ -63,6 +64,11 @@ class ASCOnlyofficeCategoriesViewController: UITableViewController {
 
         ASCViewControllerManager.shared.rootController?.tabBar.isHidden = false
         updateLargeTitlesSize()
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        fetchUpdateUserInfo()
     }
 
     func loadCategories() {
@@ -116,6 +122,19 @@ class ASCOnlyofficeCategoriesViewController: UITableViewController {
                 }(ASCOnlyofficeCategory()))
         }
     }
+    
+    private func fetchUpdateUserInfo() {
+        if let onlyofficeProvider = ASCFileManager.onlyofficeProvider?.copy() as? ASCOnlyofficeProvider {
+            onlyofficeProvider.userInfo { [weak self] success, error in
+                if let localError = error?.localizedDescription {
+                    onlyofficeProvider.errorBanner(localError)
+                } else if success {
+                    ASCFileManager.onlyofficeProvider?.user = onlyofficeProvider.user
+                    self?.updateUserInfo()
+                }
+            }
+        }
+    }
 
     @objc func updateUserInfo() {
         var hasInfo = false
@@ -124,7 +143,7 @@ class ASCOnlyofficeCategoriesViewController: UITableViewController {
             if let user = ASCFileManager.onlyofficeProvider?.user {
                 hasInfo = true
 
-                let avatarUrl = onlyofficeProvider.absoluteUrl(from: user.avatar)
+                let avatarUrl = onlyofficeProvider.absoluteUrl(from: user.avatarRetina ?? user.avatar)
 
                 avatarView?.kf.apiSetImage(with: avatarUrl,
                                            placeholder: UIImage(named: "avatar-default"))

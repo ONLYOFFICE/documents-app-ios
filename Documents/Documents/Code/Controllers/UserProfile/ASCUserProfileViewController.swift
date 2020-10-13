@@ -55,7 +55,7 @@ class ASCUserProfileViewController: UITableViewController {
             portalLabel.text = ASCOnlyOfficeApi.shared.baseUrl
             emailLabel.text = user.email
             
-            if let avatar = user.avatar,
+            if let avatar = user.avatarRetina ?? user.avatar,
                 let avatarUrl = ASCOnlyOfficeApi.absoluteUrl(from: URL(string: avatar)) {
                 avatarView.kf.apiSetImage(with: avatarUrl,
                                           placeholder: UIImage(named: "avatar-default"))
@@ -143,7 +143,7 @@ class ASCUserProfileViewController: UITableViewController {
             portalLabel?.text = ASCFileManager.onlyofficeProvider?.api.baseUrl
             emailLabel?.text = user.email
 
-            if let avatar = user.avatar,
+            if let avatar = user.avatarRetina ?? user.avatar,
                 let avatarUrl = ASCOnlyOfficeApi.absoluteUrl(from: URL(string: avatar)) {
                 avatarView?.kf.apiSetImage(with: avatarUrl,
                                            placeholder: UIImage(named: "avatar-default"))

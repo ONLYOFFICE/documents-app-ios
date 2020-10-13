@@ -21,6 +21,7 @@ extension ASCOnlyOfficeApi {
     static public let apiCapabilities           = "api/\(version)/capabilities"
     static public let apiDeviceRegistration     = "api/\(version)/portal/mobile/registration"
     static public let apiPeopleSelf             = "api/\(version)/people/@self"
+    static public let apiPeoplePhoto            = "api/\(version)/people/%@/photo"
     static public let apiDocumentService        = "api/\(version)/files/docservice"
     static public let apiServersVersion         = "api/\(version)/settings/version/build"
     static public let apiFilesPath              = "api/\(version)/files/"

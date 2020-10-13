@@ -1,34 +1,39 @@
-/* 
-  PasscodeLock.strings
-  PasscodeLock
-
-  Created by Yanko Dimitrov on 8/28/15.
-  Copyright (c) 2015 Yanko Dimitrov. All rights reserved.
-*/
-
-/* Enter Passcode State */
-"PasscodeLockEnterTitle" = "Enter Passcode";
-"PasscodeLockEnterDescription" = "Enter your passcode to proceed.";
-
-/* Set Passcode State */
-"PasscodeLockSetTitle" = "Enter a Passcode";
-"PasscodeLockSetDescription" = "Choose your passcode.";
-
-/* Confirm Passcode State */
-"PasscodeLockConfirmTitle" = "Confirm Passcode";
-"PasscodeLockConfirmDescription" = "Enter the passcode again.";
+/* (No Comment) */
+"PasscodeLockChangeDescription" = "Inserisci il tuo vecchio codice di accesso.";
 
 /* Change Passcode State */
-"PasscodeLockChangeTitle" = "Enter Old Passcode";
-"PasscodeLockChangeDescription" = "Enter your old passcode.";
+"PasscodeLockChangeTitle" = "Inserisci il vecchio codice di accesso";
+
+/* (No Comment) */
+"PasscodeLockConfirmDescription" = "Inserisci nuovamente il codice di accesso.";
+
+/* Confirm Passcode State */
+"PasscodeLockConfirmTitle" = "Conferma il codice di accesso";
+
+/* (No Comment) */
+"PasscodeLockEnterDescription" = "Inserisci il tuo codice di accesso per procedere.";
+
+/* Enter Passcode State */
+"PasscodeLockEnterTitle" = "Inserisci il codice di accesso";
+
+/* (No Comment) */
+"PasscodeLockFaceIDButton" = "Inserisci il codice di accesso";
+
+/* (No Comment) */
+"PasscodeLockMismatchDescription" = "I codici di accesso non corrispondono.";
 
 /* Passcode Mismatch State */
-"PasscodeLockMismatchTitle" = "Try again";
-"PasscodeLockMismatchDescription" = "Passcodes didn\'t match.";
+"PasscodeLockMismatchTitle" = "Riprova";
 
-/* Touch ID Reason */
-"PasscodeLockTouchIDReason" = "Authentication required to proceed";
+/* (No Comment) */
+"PasscodeLockSetDescription" = "Scegli il tuo passcode.";
+
+/* Set Passcode State */
+"PasscodeLockSetTitle" = "Inserisci il codice di accesso";
 
 /* Touch ID Fallback Button */
-"PasscodeLockTouchIDButton" = "Enter Passcode";
-"PasscodeLockFaceIDButton" = "Enter Passcode";
+"PasscodeLockTouchIDButton" = "Inserisci il codice di accesso";
+
+/* Touch ID Reason */
+"PasscodeLockTouchIDReason" = "Per procedere è necessaria l'autenticazione";
+

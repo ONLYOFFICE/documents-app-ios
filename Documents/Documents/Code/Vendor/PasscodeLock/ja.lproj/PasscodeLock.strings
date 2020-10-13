@@ -1,34 +1,39 @@
-/* 
-  PasscodeLock.strings
-  PasscodeLock
-
-  Created by Yanko Dimitrov on 8/28/15.
-  Copyright (c) 2015 Yanko Dimitrov. All rights reserved.
-*/
-
-/* Enter Passcode State */
-"PasscodeLockEnterTitle" = "Enter Passcode";
-"PasscodeLockEnterDescription" = "Enter your passcode to proceed.";
-
-/* Set Passcode State */
-"PasscodeLockSetTitle" = "Enter a Passcode";
-"PasscodeLockSetDescription" = "Choose your passcode.";
-
-/* Confirm Passcode State */
-"PasscodeLockConfirmTitle" = "Confirm Passcode";
-"PasscodeLockConfirmDescription" = "Enter the passcode again.";
+/* (No Comment) */
+"PasscodeLockChangeDescription" = "古いパスコードを入力する";
 
 /* Change Passcode State */
-"PasscodeLockChangeTitle" = "Enter Old Passcode";
-"PasscodeLockChangeDescription" = "Enter your old passcode.";
+"PasscodeLockChangeTitle" = "古いパスコードを入力する";
+
+/* (No Comment) */
+"PasscodeLockConfirmDescription" = "もう一度パスコードを入力する";
+
+/* Confirm Passcode State */
+"PasscodeLockConfirmTitle" = "パスコードを確定";
+
+/* (No Comment) */
+"PasscodeLockEnterDescription" = "パスコードを入力して、進行します。";
+
+/* Enter Passcode State */
+"PasscodeLockEnterTitle" = "パスコードを入力する";
+
+/* (No Comment) */
+"PasscodeLockFaceIDButton" = "パスコードを入力する";
+
+/* (No Comment) */
+"PasscodeLockMismatchDescription" = "パスコードが合いません。";
 
 /* Passcode Mismatch State */
-"PasscodeLockMismatchTitle" = "Try again";
-"PasscodeLockMismatchDescription" = "Passcodes didn\'t match.";
+"PasscodeLockMismatchTitle" = "もう一度お試しください";
 
-/* Touch ID Reason */
-"PasscodeLockTouchIDReason" = "Authentication required to proceed";
+/* (No Comment) */
+"PasscodeLockSetDescription" = "パスコードを選択";
+
+/* Set Passcode State */
+"PasscodeLockSetTitle" = "パスコードを入力する";
 
 /* Touch ID Fallback Button */
-"PasscodeLockTouchIDButton" = "Enter Passcode";
-"PasscodeLockFaceIDButton" = "Enter Passcode";
+"PasscodeLockTouchIDButton" = "パスコードを入力する";
+
+/* Touch ID Reason */
+"PasscodeLockTouchIDReason" = "続けるには、承認が必要です";
+

@@ -1,51 +1,51 @@
-
-/* Class = "UILabel"; text = "No available records"; ObjectID = "75q-CN-6uI"; */
-"75q-CN-6uI.text" = "No available records";
-
 /* Class = "UISegmentedControl"; 9Wg-zE-nZA.segmentTitles[0] = "Users"; ObjectID = "9Wg-zE-nZA"; */
-"9Wg-zE-nZA.segmentTitles[0]" = "Users";
+"9Wg-zE-nZA.segmentTitles[0]" = "Utenti";
 
 /* Class = "UISegmentedControl"; 9Wg-zE-nZA.segmentTitles[1] = "Groups"; ObjectID = "9Wg-zE-nZA"; */
-"9Wg-zE-nZA.segmentTitles[1]" = "Groups";
+"9Wg-zE-nZA.segmentTitles[1]" = "Gruppi";
 
-/* Class = "UITableViewSection"; headerTitle = "Access"; ObjectID = "HLh-xV-DgI"; */
-"HLh-xV-DgI.headerTitle" = "Access";
-
-/* Class = "UILabel"; text = "Label"; ObjectID = "ZE7-40-yeL"; Note = "Do not translate"; */
-"ZE7-40-yeL.text" = "Label";
-
-/* Class = "UISegmentedControl"; ZW9-Zh-W3r.segmentTitles[0] = "Full Access"; ObjectID = "ZW9-Zh-W3r"; */
-"ZW9-Zh-W3r.segmentTitles[0]" = "Full Access";
-
-/* Class = "UISegmentedControl"; ZW9-Zh-W3r.segmentTitles[1] = "Read Only"; ObjectID = "ZW9-Zh-W3r"; */
-"ZW9-Zh-W3r.segmentTitles[1]" = "Read Only";
-
-/* Class = "UISegmentedControl"; ZW9-Zh-W3r.segmentTitles[2] = "Deny Access"; ObjectID = "ZW9-Zh-W3r"; */
-"ZW9-Zh-W3r.segmentTitles[2]" = "Deny Access";
+/* Class = "UILabel"; text = "No available records"; ObjectID = "75q-CN-6uI"; */
+"75q-CN-6uI.text" = "Nessun registro disponibile";
 
 /* Class = "UILabel"; text = "User Name"; ObjectID = "bHR-n3-evx"; Note = "Do not translate"; */
-"bHR-n3-evx.text" = "User Name";
+"bHR-n3-evx.text" = "Nome utente";
 
 /* Class = "UILabel"; text = "Deny Access"; ObjectID = "c9E-27-xIy"; */
-"c9E-27-xIy.text" = "Deny Access";
+"c9E-27-xIy.text" = "Nega accesso";
 
 /* Class = "UILabel"; text = "Review"; ObjectID = "cmV-9P-RqY"; */
-"cmV-9P-RqY.text" = "Review";
+"cmV-9P-RqY.text" = "Revisione";
+
+/* Class = "UITableViewSection"; headerTitle = "Access"; ObjectID = "HLh-xV-DgI"; */
+"HLh-xV-DgI.headerTitle" = "Accesso";
 
 /* Class = "UILabel"; text = "Add users or groups and give them permissions to read, review or edit the documents."; ObjectID = "kAs-JV-Zff"; */
-"kAs-JV-Zff.text" = "Add users or groups and give them permissions to read, review or edit the documents.";
+"kAs-JV-Zff.text" = "Aggiungi utenti o gruppi e dai loro il permesso di leggere, correggere o modificare i documenti.";
 
 /* Class = "UILabel"; text = "Read Only"; ObjectID = "noV-Xw-dnb"; */
-"noV-Xw-dnb.text" = "Read Only";
+"noV-Xw-dnb.text" = "Sola lettura";
 
 /* Class = "UILabel"; text = "Access"; ObjectID = "v5j-Jm-YE4"; Note = "Do not translate"; */
-"v5j-Jm-YE4.text" = "Access";
-
-/* Class = "UINavigationItem"; title = "Share"; ObjectID = "xY8-if-2h2"; */
-"xY8-if-2h2.title" = "Share";
+"v5j-Jm-YE4.text" = "Accesso";
 
 /* Class = "UINavigationItem"; title = "Users"; ObjectID = "xae-c9-kdf"; */
-"xae-c9-kdf.title" = "Users";
+"xae-c9-kdf.title" = "Utenti";
+
+/* Class = "UINavigationItem"; title = "Share"; ObjectID = "xY8-if-2h2"; */
+"xY8-if-2h2.title" = "Condividi";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "ZE7-40-yeL"; Note = "Do not translate"; */
+"ZE7-40-yeL.text" = "Etichetta";
 
 /* Class = "UILabel"; text = "Full Access"; ObjectID = "zUl-mf-gTQ"; */
-"zUl-mf-gTQ.text" = "Full Access";
+"zUl-mf-gTQ.text" = "Accesso completo";
+
+/* Class = "UISegmentedControl"; ZW9-Zh-W3r.segmentTitles[0] = "Full Access"; ObjectID = "ZW9-Zh-W3r"; */
+"ZW9-Zh-W3r.segmentTitles[0]" = "Accesso completo";
+
+/* Class = "UISegmentedControl"; ZW9-Zh-W3r.segmentTitles[1] = "Read Only"; ObjectID = "ZW9-Zh-W3r"; */
+"ZW9-Zh-W3r.segmentTitles[1]" = "Sola lettura";
+
+/* Class = "UISegmentedControl"; ZW9-Zh-W3r.segmentTitles[2] = "Deny Access"; ObjectID = "ZW9-Zh-W3r"; */
+"ZW9-Zh-W3r.segmentTitles[2]" = "Nega accesso";
+

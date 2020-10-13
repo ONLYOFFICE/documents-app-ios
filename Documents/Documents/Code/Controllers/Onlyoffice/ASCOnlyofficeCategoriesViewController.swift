@@ -71,40 +71,66 @@ class ASCOnlyofficeCategoriesViewController: UITableViewController {
         fetchUpdateUserInfo()
     }
 
+    func entrypointCategory() -> ASCOnlyofficeCategory {        
+        var folderType: ASCFolderType = .onlyofficeUser
+        
+        if let onlyoffice = ASCFileManager.onlyofficeProvider, let user = onlyoffice.user {
+            if user.isVisitor {
+                folderType = .onlyofficeShare
+            }
+        }
+        
+        return {
+            $0.title = ASCOnlyofficeCategory.title(of: folderType)
+            $0.folder = ASCOnlyofficeCategory.folder(of: folderType)
+            return $0
+        }(ASCOnlyofficeCategory())
+    }
+
     func loadCategories() {
         categories = []
 
-        if let onlyoffice = ASCFileManager.onlyofficeProvider {
+        if let onlyoffice = ASCFileManager.onlyofficeProvider, let user = onlyoffice.user {
             categories = []
 
             let isPersonal = onlyoffice.api.baseUrl?.contains(ASCConstants.Urls.portalPersonal) ?? false
+            let allowMy = !user.isVisitor
+            let allowShare = !isPersonal
+            let allowCommon = !isPersonal
+            let allowProjects = !(user.isVisitor || isPersonal)
 
             // My Documents
-            categories.append({
-                $0.title = ASCOnlyofficeCategory.title(of: .onlyofficeUser)
-                $0.image = UIImage(named: "category-my")
-                $0.folder = ASCOnlyofficeCategory.folder(of: .onlyofficeUser)
-                return $0
+            if allowMy {
+                categories.append({
+                    $0.title = ASCOnlyofficeCategory.title(of: .onlyofficeUser)
+                    $0.image = UIImage(named: "category-my")
+                    $0.folder = ASCOnlyofficeCategory.folder(of: .onlyofficeUser)
+                    return $0
                 }(ASCOnlyofficeCategory()))
+            }
 
-            if !isPersonal {
-                // Shared with Me Category
+            // Shared with Me Category
+            if allowShare {
                 categories.append({
                     $0.title = ASCOnlyofficeCategory.title(of: .onlyofficeShare)
                     $0.image = UIImage(named: "category-share")
                     $0.folder = ASCOnlyofficeCategory.folder(of: .onlyofficeShare)
                     return $0
                     }(ASCOnlyofficeCategory()))
+            }
 
-                // Common Documents Category
+            // Common Documents Category
+            if allowCommon {
                 categories.append({
                     $0.title = ASCOnlyofficeCategory.title(of: .onlyofficeCommon)
                     $0.image = UIImage(named: "category-common")
                     $0.folder = ASCOnlyofficeCategory.folder(of: .onlyofficeCommon)
                     return $0
                     }(ASCOnlyofficeCategory()))
+            }
 
-                // Project Documents Category
+            // Project Documents Category
+            if allowProjects {
                 categories.append({
                     $0.title = ASCOnlyofficeCategory.title(of: .onlyofficeProjects)
                     $0.image = UIImage(named: "category-projects")

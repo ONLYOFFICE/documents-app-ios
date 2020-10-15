@@ -80,6 +80,14 @@ class ASCUserProfileViewController: UITableViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
+        
+        navigationController?.navigationBar.prefersLargeTitles = false
+        
+        navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
+        navigationController?.navigationBar.shadowImage = UIImage()
+        navigationController?.navigationBar.isTranslucent = true
+        
+        tableView.alwaysBounceVertical = false
     }
 
     override func viewSafeAreaInsetsDidChange() {

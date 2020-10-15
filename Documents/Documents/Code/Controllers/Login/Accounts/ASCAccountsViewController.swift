@@ -37,10 +37,12 @@ class ASCAccountsViewController: UIViewController {
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-
-        navigationController?.navigationBar.setBackgroundImage(nil, for: .default)
+        
+        navigationController?.navigationBar.prefersLargeTitles = false
+        
+        navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
+        navigationController?.navigationBar.shadowImage = UIImage()
         navigationController?.navigationBar.isTranslucent = true
-        navigationController?.navigationBar.shadowImage = nil
     }
 
     override func viewDidDisappear(_ animated: Bool) {

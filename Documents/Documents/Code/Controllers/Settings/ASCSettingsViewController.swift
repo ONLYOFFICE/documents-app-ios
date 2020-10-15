@@ -34,6 +34,31 @@ class ASCSettingsViewController: UITableViewController, MFMailComposeViewControl
         
         compressImagesSwitch?.isOn = UserDefaults.standard.bool(forKey: ASCConstants.SettingsKeys.compressImage)
         previewFilesSwitch?.isOn = UserDefaults.standard.bool(forKey: ASCConstants.SettingsKeys.previewFiles)
+        
+        navigationController?.view.backgroundColor = UIColor(named: "table-background")
+    }
+
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        if UIDevice.pad {
+            navigationController?.navigationBar.prefersLargeTitles = false
+            
+            navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
+            navigationController?.navigationBar.shadowImage = UIImage()
+            navigationController?.navigationBar.isTranslucent = true
+        }
+    }
+    
+    override func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        if UIDevice.pad {
+            guard let navigationBar = navigationController?.navigationBar else { return }
+            
+            let transparent = (navigationBar.y + navigationBar.height + scrollView.contentOffset.y) > 0
+            
+            navigationBar.setBackgroundImage(transparent ? nil : UIImage(), for: .default)
+            navigationBar.shadowImage = transparent ? nil : UIImage()
+        }
     }
 
     override func viewDidAppear(_ animated: Bool) {

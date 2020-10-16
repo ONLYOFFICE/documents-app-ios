@@ -96,10 +96,11 @@ class ASCUserProfileViewController: UITableViewController {
 
             var canvasFrame = canvasView.frame
             let bottomSafeAreaInset = view.safeAreaInsets.bottom
+            let navigationBarHeight = (navigationController?.navigationBar.y ?? 0) + (navigationController?.navigationBar.height ?? 0)
 
             canvasFrame.size.height = UIDevice.phone
-                ? UIDevice.height - 280 - bottomSafeAreaInset
-                : preferredContentSize.height - 190 - bottomSafeAreaInset
+                ? UIDevice.height - navigationBarHeight - 150 - bottomSafeAreaInset
+                : preferredContentSize.height - navigationBarHeight - bottomSafeAreaInset
             canvasView.frame = canvasFrame
         }
     }

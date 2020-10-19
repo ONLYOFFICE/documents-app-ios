@@ -20,6 +20,7 @@ class ASCUser: Mappable {
     var department: String? = nil
     var email: String? = nil
     var avatar: String? = nil
+    var avatarRetina: String? = nil
     var isAdmin: Bool = false
     var isVisitor: Bool = false
     var isShareOwner: Bool = false
@@ -44,6 +45,7 @@ class ASCUser: Mappable {
         department      <- (map["department"], ASCStringTransform())
         email           <- map["email"]
         avatar          <- map["avatar"]
+        avatarRetina    <- map["avatarRetina"]
         isAdmin         <- map["isAdmin"]
         isVisitor       <- map["isVisitor"]
         isShareOwner    <- map["isOwner"]

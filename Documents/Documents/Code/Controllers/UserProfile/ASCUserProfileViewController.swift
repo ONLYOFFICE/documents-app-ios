@@ -55,7 +55,7 @@ class ASCUserProfileViewController: UITableViewController {
             portalLabel.text = ASCOnlyOfficeApi.shared.baseUrl
             emailLabel.text = user.email
             
-            if let avatar = user.avatar,
+            if let avatar = user.avatarRetina ?? user.avatar,
                 let avatarUrl = ASCOnlyOfficeApi.absoluteUrl(from: URL(string: avatar)) {
                 avatarView.kf.apiSetImage(with: avatarUrl,
                                           placeholder: UIImage(named: "avatar-default"))
@@ -80,6 +80,14 @@ class ASCUserProfileViewController: UITableViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
+        
+        navigationController?.navigationBar.prefersLargeTitles = false
+        
+        navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
+        navigationController?.navigationBar.shadowImage = UIImage()
+        navigationController?.navigationBar.isTranslucent = true
+        
+        tableView.alwaysBounceVertical = false
     }
 
     override func viewSafeAreaInsetsDidChange() {
@@ -88,10 +96,11 @@ class ASCUserProfileViewController: UITableViewController {
 
             var canvasFrame = canvasView.frame
             let bottomSafeAreaInset = view.safeAreaInsets.bottom
+            let navigationBarHeight = (navigationController?.navigationBar.y ?? 0) + (navigationController?.navigationBar.height ?? 0)
 
             canvasFrame.size.height = UIDevice.phone
-                ? UIDevice.height - 280 - bottomSafeAreaInset
-                : preferredContentSize.height - 190 - bottomSafeAreaInset
+                ? UIDevice.height - navigationBarHeight - 150 - bottomSafeAreaInset
+                : preferredContentSize.height - navigationBarHeight - bottomSafeAreaInset
             canvasView.frame = canvasFrame
         }
     }
@@ -143,7 +152,7 @@ class ASCUserProfileViewController: UITableViewController {
             portalLabel?.text = ASCFileManager.onlyofficeProvider?.api.baseUrl
             emailLabel?.text = user.email
 
-            if let avatar = user.avatar,
+            if let avatar = user.avatarRetina ?? user.avatar,
                 let avatarUrl = ASCOnlyOfficeApi.absoluteUrl(from: URL(string: avatar)) {
                 avatarView?.kf.apiSetImage(with: avatarUrl,
                                            placeholder: UIImage(named: "avatar-default"))

@@ -162,13 +162,31 @@ class ASCOnlyofficeProvider: ASCBaseFileProvider {
             if let results = results as? [String: Any], error == nil {
                 guard let strongSelf = self else { return }
 
+                let postUpdate = {
+                    NotificationCenter.default.post(name: ASCConstants.Notifications.userInfoOnlyofficeUpdate, object: nil)
+                    ASCFileManager.storeProviders()
+                }
+                
                 if let user = ASCUser(JSON: results) {
                     strongSelf.user = user
-                    NotificationCenter.default.post(name: ASCConstants.Notifications.userInfoOnlyofficeUpdate, object: nil)
-
-                    ASCFileManager.storeProviders()
-
-                    completeon?(true, nil)
+                    
+                    if let userId = user.userId {
+                        ASCOnlyOfficeApi.get(String(format: ASCOnlyOfficeApi.apiPeoplePhoto, userId)) { [weak self] results, error, response in
+                            defer {
+                                postUpdate()
+                                completeon?(true, nil)
+                            }
+                            
+                            guard let strongSelf = self else { return }
+                            
+                            if let results = results as? [String: Any], error == nil {
+                                strongSelf.user?.avatarRetina = results["retina"] as? String
+                            }
+                        }
+                    } else {
+                        postUpdate()
+                        completeon?(true, nil)
+                    }
                 } else {
                     completeon?(false, nil)
                 }

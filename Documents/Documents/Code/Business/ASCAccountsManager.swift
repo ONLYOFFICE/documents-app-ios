@@ -78,7 +78,7 @@ class ASCAccountsManager {
             if let account = ASCAccount(JSON: [
                 "email": user.email ?? "",
                 "displayName": user.displayName ?? "",
-                "avatar": user.avatar ?? "",
+                "avatar": user.avatarRetina ?? user.avatar ?? "",
                 "portal": portal,
                 "token": token,
                 "expires": dateTransform.transformToJSON(provider.api.expires) ?? ""

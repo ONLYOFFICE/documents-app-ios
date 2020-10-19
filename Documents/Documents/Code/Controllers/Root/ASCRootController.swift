@@ -161,12 +161,7 @@ class ASCRootController: UITabBarController {
                             }
                         }
                     } else {
-                        let category: ASCOnlyofficeCategory = {
-                            $0.title = ASCOnlyofficeCategory.title(of: .onlyofficeUser)
-                            $0.folder = ASCOnlyofficeCategory.folder(of: .onlyofficeUser)
-                            return $0
-                        }(ASCOnlyofficeCategory())
-                        categoryVC.select(category: category)
+                        categoryVC.select(category: categoryVC.entrypointCategory())
                     }
                 }
             }

@@ -89,7 +89,7 @@ class ASCiCloudProvider: ASCBaseFileProvider {
             DispatchQueue.main.async {
                 strongSelf.userInfo { success, error in
                     DispatchQueue.main.async {
-                        complation?(true)
+                        complation?(success)
                     }
                 }
             }
@@ -530,7 +530,7 @@ class ASCiCloudProvider: ASCBaseFileProvider {
         providerOperationDelegate.onSucceed = { [weak self] fileProvider, operation in
             self?.operationProcess = nil
 
-            fileProvider.attributesOfItem(path: path, completionHandler: { fileObject, error in
+            self?.attributesOfItem(path: path, completionHandler: { fileObject, error in
                 DispatchQueue.main.async(execute: { [weak self] in
                     if let error = error {
                         processing(1.0, nil, error, nil)
@@ -626,7 +626,7 @@ class ASCiCloudProvider: ASCBaseFileProvider {
                 }
                 
                 operationDelegate.onSucceed = { fileProvider, operation in
-                    fileProvider.attributesOfItem(path: dstPath, completionHandler: { fileObject, error in
+                    self?.attributesOfItem(path: dstPath, completionHandler: { fileObject, error in
                         DispatchQueue.main.async(execute: { [weak self] in
                             if let error = error {
                                 processing(1.0, nil, error, nil)
@@ -735,7 +735,7 @@ class ASCiCloudProvider: ASCBaseFileProvider {
                         log.error(error.localizedDescription)
                         completeon?(strongSelf, nil, false, ASCProviderError(msg: error.localizedDescription))
                     } else {
-                        provider.attributesOfItem(path: remotePath, completionHandler: { [weak self] fileObject, error in
+                        self?.attributesOfItem(path: remotePath, completionHandler: { [weak self] fileObject, error in
                             DispatchQueue.main.async(execute: { [weak self] in
                                 guard let strongSelf = self else { return }
 
@@ -928,10 +928,10 @@ class ASCiCloudProvider: ASCBaseFileProvider {
     }
     
     func chechTransfer(items: [ASCEntity], to folder: ASCFolder, handler: ASCEntityHandler? = nil) {
-        guard let provider = provider else {
-            handler?(.error, nil, ASCProviderError(msg: errorProviderUndefined).localizedDescription)
-            return
-        }
+//        guard let provider = provider else {
+//            handler?(.error, nil, ASCProviderError(msg: errorProviderUndefined).localizedDescription)
+//            return
+//        }
 
         var conflictItems: [Any] = []
 
@@ -941,11 +941,11 @@ class ASCiCloudProvider: ASCBaseFileProvider {
         operationQueue.maxConcurrentOperationCount = 1
 
         for entity in items {
-            operationQueue.addOperation {
+            operationQueue.addOperation { [weak self] in
                 let semaphore = DispatchSemaphore(value: 0)
                 let destPath = NSString(string: folder.id).appendingPathComponent(NSString(string: entity.id).lastPathComponent)
 
-                provider.attributesOfItem(path: destPath, completionHandler: { object, error in
+                self?.attributesOfItem(path: destPath, completionHandler: { object, error in
                     if nil == error {
                         conflictItems.append(entity)
                     }
@@ -1235,10 +1235,41 @@ class ASCiCloudProvider: ASCBaseFileProvider {
         
         /// Have any change
         if addedItems.count + changedItems.count + removedItems.count > 0 {
-            fetch(for: folder, parameters: fetchInfo ?? [:]) { [weak self] provider, folder, success, error in
-                guard let strongSelf = self else { return }
-                strongSelf.delegate?.updateItems(provider: strongSelf)
+//            fetch(for: folder, parameters: fetchInfo ?? [:]) { [weak self] provider, folder, success, error in
+//                guard let strongSelf = self else { return }
+//                strongSelf.delegate?.updateItems(provider: strongSelf)
+//            }
+            
+            for newItem in addedItems {
+                items.append(newItem)
             }
+            
+            for removeItem in removedItems {
+                if let removeIndex = items.firstIndex(where: { $0.id == removeItem.id }) {
+                    items.remove(at: removeIndex)
+                }
+            }
+            
+            for updateItem in changedItems {
+                if let updateIndex = items.firstIndex(where: { $0.id == updateItem.id }) {
+                    items[updateIndex] = updateItem
+                }
+            }
+
+            var folders: [ASCFolder] = items.filter { $0 is ASCFolder } as? [ASCFolder] ?? []
+            var files: [ASCFile] = items.filter { $0 is ASCFile } as? [ASCFile] ?? []
+            
+            let defaultSortInfo = [
+                "type": "dateandtime",
+                "order": "descending"
+            ]
+            let sortInfo = fetchInfo?["sort"] as? [String : Any] ?? defaultSortInfo
+            sort(by: sortInfo, folders: &folders, files: &files)
+            
+            items = folders as [ASCEntity] + files as [ASCEntity]
+            total = items.count
+
+            delegate?.updateItems(provider: self)
         }
     }
     
@@ -1287,6 +1318,18 @@ class ASCiCloudProvider: ASCBaseFileProvider {
             file.pureContentLength = Int(fileSize)
             return file
         }
+    }
+    
+    private func attributesOfItem(path: String, completionHandler: @escaping (_ attributes: FileObject?, _ error: Error?) -> Void) {
+        guard let provider = provider else {
+            completionHandler(nil, ASCProviderError(msg: errorProviderUndefined))
+            return
+        }
+        
+        let query = NSPredicate(format: "TRUEPREDICATE")
+        provider.searchFiles(path: path, recursive: true, query: query, foundItemHandler: nil, completionHandler: { (files, error) in
+            completionHandler(files.first, error)
+        })
     }
     
 }

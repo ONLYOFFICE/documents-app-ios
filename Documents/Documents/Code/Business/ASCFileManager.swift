@@ -162,9 +162,8 @@ class ASCFileManager {
     
     private static func iCloudUpdate() {
         if let iCloudProvider = cloudProviders.first(where: { $0.type == .icloud }) as? ASCiCloudProvider {
-            iCloudProvider.userInfo { success, error in
-                if !iCloudProvider.hasiCloudAccount, let index = cloudProviders.firstIndex(where: { $0.type == .icloud }) {
-                    // Remove if iCloud access is lost
+            iCloudProvider.initialize { success in
+                if !success, let index = cloudProviders.firstIndex(where: { $0.type == .icloud }) {
                     cloudProviders.remove(at: index)
                 }
             }

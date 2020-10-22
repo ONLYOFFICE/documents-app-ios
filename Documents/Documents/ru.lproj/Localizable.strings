@@ -56,7 +56,7 @@
 "Are you sure you want to leave this account?" = "Вы уверены, что хотите выйти из этой учетной записи?";
 
 /* No comment provided by engineer. */
-"Author" = "Автору";
+"Author" = "Автор";
 
 /* No comment provided by engineer. */
 "Box directory" = "Папка Box";
@@ -236,7 +236,7 @@
 "Creating" = "Создание";
 
 /* No comment provided by engineer. */
-"Date" = "Дате";
+"Date" = "Дата";
 
 /* Button title */
 "Delete" = "Удалить";
@@ -742,7 +742,7 @@
 "Single Sign-on" = "Единая точка входа";
 
 /* No comment provided by engineer. */
-"Size" = "Размеру";
+"Size" = "Размер";
 
 /* Button title */
 "Skip" = "Пропустить";
@@ -832,7 +832,7 @@
 "This spreadsheet is being edited. Do you want open %@ to view only?" = "Эта таблица редактируется. Вы хотите открыть %@ только на просмотр?";
 
 /* No comment provided by engineer. */
-"Title" = "Названию";
+"Title" = "Название";
 
 /* No comment provided by engineer. */
 "To open a document, you must go to portal %@ under your account." = "Чтобы открыть документ, вы должны перейти на портал %@ под своей учетной записью.";
@@ -859,7 +859,7 @@
 "Turn Passcode On" = "Включить код доступа";
 
 /* No comment provided by engineer. */
-"Type" = "Типу";
+"Type" = "Тип";
 
 /* No comment provided by engineer. */
 "Unable to get information about the portal" = "Ошибка получения информации о портале";

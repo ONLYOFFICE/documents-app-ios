@@ -1438,7 +1438,7 @@ Note: if you forget the passcode, you'll need to delete and reinstall the app. A
       </trans-unit>
       <trans-unit id="Author" xml:space="preserve">
         <source>Author</source>
-        <target>Автору</target>
+        <target>Автор</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Box directory" xml:space="preserve">
@@ -1746,7 +1746,7 @@ others which use WebDAV protocol.</source>
       </trans-unit>
       <trans-unit id="Date" xml:space="preserve">
         <source>Date</source>
-        <target>Дате</target>
+        <target>Дата</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Delete" xml:space="preserve">
@@ -2572,7 +2572,7 @@ others which use WebDAV protocol.</source>
       </trans-unit>
       <trans-unit id="Size" xml:space="preserve">
         <source>Size</source>
-        <target>Размеру</target>
+        <target>Размер</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Skip" xml:space="preserve">
@@ -2717,7 +2717,7 @@ others which use WebDAV protocol.</source>
       </trans-unit>
       <trans-unit id="Title" xml:space="preserve">
         <source>Title</source>
-        <target>Названию</target>
+        <target>Название</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="To open a document, you must go to portal %@ under your account." xml:space="preserve">
@@ -2762,7 +2762,7 @@ others which use WebDAV protocol.</source>
       </trans-unit>
       <trans-unit id="Type" xml:space="preserve">
         <source>Type</source>
-        <target>Типу</target>
+        <target>Тип</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Unable to get information about the portal" xml:space="preserve">

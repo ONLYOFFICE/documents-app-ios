@@ -23,9 +23,6 @@ class ASCSortViewCell: UITableViewCell {
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
-        selectedBackgroundView = UIView()
-        selectedBackgroundView?.backgroundColor = UIColor(named: "table-cell-selected")
     }
 
     // MARK: - Actions

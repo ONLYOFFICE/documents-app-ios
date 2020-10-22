@@ -71,7 +71,6 @@ extension ASCSortViewController {
         if section == 0 {
             return types.count
         }
-
         return 1
     }
 

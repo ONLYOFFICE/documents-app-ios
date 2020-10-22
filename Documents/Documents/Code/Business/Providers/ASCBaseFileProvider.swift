@@ -69,7 +69,7 @@ protocol ASCBaseFileProvider {
     func reset()
     func userInfo(completeon: ASCProviderUserInfoHandler?)
     func fetch(for folder: ASCFolder, parameters: [String: Any?], completeon: ASCProviderCompletionHandler?)
-
+    func updateSort(completeon: ASCProviderCompletionHandler?)
     func serialize() -> String?
     func deserialize(_ jsonString: String)
 
@@ -109,6 +109,7 @@ protocol ASCBaseFileProvider {
 extension ASCBaseFileProvider {
     func cancel() {}
     func userInfo(completeon: ASCProviderUserInfoHandler?) {}
+    func updateSort(completeon: ASCProviderCompletionHandler?) {}
     func serialize() -> String? { return nil }
     func deserialize(_ jsonString: String) {}
 

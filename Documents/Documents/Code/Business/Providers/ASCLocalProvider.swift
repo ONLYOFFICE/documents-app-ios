@@ -34,6 +34,9 @@ class ASCLocalProvider: ASCBaseFileProvider {
     }
 
     var delegate: ASCProviderDelegate?
+    
+    private var folder: ASCFolder?
+    private var fetchInfo: [String : Any?]?
 
     fileprivate lazy var deviceUser: ASCUser = {
         let owner = ASCUser()
@@ -52,7 +55,7 @@ class ASCLocalProvider: ASCBaseFileProvider {
     func copy() -> ASCBaseFileProvider {
         let copy = ASCLocalProvider()
         
-        copy.items = items
+        copy.items = items.map { $0 }
         copy.page = page
         copy.total = total
         copy.delegate = delegate
@@ -84,6 +87,8 @@ class ASCLocalProvider: ASCBaseFileProvider {
         var files = [ASCFile]()
         let paths = ASCLocalFileHelper.shared.entityList(Path(folder.id))
 
+        self.folder = folder
+        
         for path in paths {
             let owner = ASCUser()
             owner.displayName = UIDevice.pad ? "iPad" : "iPhone"
@@ -137,6 +142,8 @@ class ASCLocalProvider: ASCBaseFileProvider {
         }
 
         // Sort
+        fetchInfo = parameters
+        
         if let sortInfo = parameters["sort"] as? [String: Any] {
             sort(by: sortInfo, folders: &folders, files: &files)
         }
@@ -208,6 +215,20 @@ class ASCLocalProvider: ASCBaseFileProvider {
         }
     }
 
+    func updateSort(completeon: ASCProviderCompletionHandler?) {
+        var folders = items.filter { $0 is ASCFolder } as? [ASCFolder] ?? []
+        var files = items.filter { $0 is ASCFile } as? [ASCFile] ?? []
+        
+        if let sortInfo = fetchInfo?["sort"] as? [String : Any] {
+            sort(by: sortInfo, folders: &folders, files: &files)
+        }
+
+        items = folders as [ASCEntity] + files as [ASCEntity]
+        total = items.count
+        
+        completeon?(self, folder, true, nil)
+    }
+    
     func download(_ path: String, to destinationURL: URL, processing: @escaping ASCApiProgressHandler) {
         processing(0, nil, nil, nil)
 

@@ -336,20 +336,28 @@ class ASCDocumentsViewController: UITableViewController, UIGestureRecognizerDele
 //    }
 
     func add(entity: Any, open: Bool = true) {
+        guard var provider = provider else { return }
+        
         if let file = entity as? ASCFile {
-            tableData.insert(file, at: 0)
-            total += 1
-
-            delay(seconds: 0.3) { [weak self] in
-                if let index = self?.tableData.firstIndex(where: { $0.id == file.id }) {
+            provider.items.append(file)
+            
+            provider.updateSort { provider, currentFolder, success, error in
+                self.total        = provider.total
+                self.tableData    = provider.items
+                
+                self.showEmptyView(self.total < 1)
+                
+                if let index = self.tableData.firstIndex(where: { $0.id == file.id }) {
                     if ASCConstants.Feature.hideSearchbarIfEmpty {
-                        self?.searchController.searchBar.isHidden = false
+                        self.searchController.searchBar.isHidden = false
                     }
-                    self?.tableView.scrollToRow(at: IndexPath(row: index, section: 0), at: .middle, animated: true)
-                    self?.tableView.setNeedsLayout()
-
-                    if let newCell = self?.tableView.cellForRow(at: IndexPath(row: index, section: 0)) {
-                        self?.highlight(cell: newCell)
+                    self.tableView.scrollToRow(at: IndexPath(row: index, section: 0), at: .middle, animated: true)
+                    self.tableView.setNeedsLayout()
+                    
+                    delay(seconds: 0.3) { [weak self] in
+                        if let newCell = self?.tableView.cellForRow(at: IndexPath(row: index, section: 0)) {
+                            self?.highlight(cell: newCell)
+                        }
                     }
                 }
             }
@@ -362,22 +370,31 @@ class ASCDocumentsViewController: UITableViewController, UIGestureRecognizerDele
                 let isPresentation = fileExt == "pptx"
                 
                 if isDocument || isSpreadsheet || isPresentation {
-                    provider?.open(file: file, viewMode: false)
+                    provider.open(file: file, viewMode: false)
                 }
             }
         } else if let folder = entity as? ASCFolder {
-            tableData.insert(folder, at: 0)
-            total += 1
-
-            if ASCConstants.Feature.hideSearchbarIfEmpty {
-                searchController.searchBar.isHidden = false
-            }
-            tableView.scrollToRow(at: IndexPath(row: 0, section: 0), at: .middle, animated: true)
-            tableView.setNeedsLayout()
+            provider.items.append(folder)
             
-            delay(seconds: 0.3) { [weak self] in
-                if let newCell = self?.tableView.cellForRow(at: IndexPath(row: 0, section: 0)) {
-                    self?.highlight(cell: newCell)
+            provider.updateSort { provider, currentFolder, success, error in
+                self.total        = provider.total
+                self.tableData    = provider.items
+
+                self.showEmptyView(self.total < 1)
+                
+                if let index = self.tableData.firstIndex(where: { $0.uid == folder.uid }) {
+                    if ASCConstants.Feature.hideSearchbarIfEmpty {
+                        self.searchController.searchBar.isHidden = false
+                    }
+                    
+                    self.tableView.scrollToRow(at: IndexPath(row: index, section: 0), at: .middle, animated: true)
+                    self.tableView.setNeedsLayout()
+                    
+                    delay(seconds: 0.3) { [weak self] in
+                        if let newCell = self?.tableView.cellForRow(at: IndexPath(row: index, section: 0)) {
+                            self?.highlight(cell: newCell)
+                        }
+                    }
                 }
             }
         }
@@ -738,7 +755,7 @@ class ASCDocumentsViewController: UITableViewController, UIGestureRecognizerDele
             ]
         }
 
-        ASCFileManager.localProvider.fetch(for: folder, parameters: params) { [weak self] provider, folder, success, error in
+        provider?.fetch(for: folder, parameters: params) { [weak self] provider, folder, success, error in
             guard let strongSelf = self else { return }
 
             strongSelf.total        = provider.total

@@ -427,6 +427,20 @@ class ASCiCloudProvider: ASCBaseFileProvider {
         }
     }
     
+    func updateSort(completeon: ASCProviderCompletionHandler?) {
+        var folders = items.filter { $0 is ASCFolder } as? [ASCFolder] ?? []
+        var files = items.filter { $0 is ASCFile } as? [ASCFile] ?? []
+        
+        if let sortInfo = fetchInfo?["sort"] as? [String : Any] {
+            sort(by: sortInfo, folders: &folders, files: &files)
+        }
+
+        items = folders as [ASCEntity] + files as [ASCEntity]
+        total = items.count
+        
+        completeon?(self, folder, true, nil)
+    }
+    
     func absoluteUrl(from string: String?) -> URL? {
         guard
             let path = string,
@@ -757,7 +771,7 @@ class ASCiCloudProvider: ASCBaseFileProvider {
                                     cloudFile.pureContentLength = Int(fileSize)
 
                                     Analytics.logEvent(ASCConstants.Analytics.Event.createEntity, parameters: [
-                                        "portal": strongSelf.provider?.baseURL?.absoluteString ?? "none",
+                                        "portal": "icloud",
                                         "onDevice": false,
                                         "type": "file",
                                         "fileExt": cloudFile.title.fileExtension().lowercased()
@@ -782,10 +796,10 @@ class ASCiCloudProvider: ASCBaseFileProvider {
 
     func createFile(_ name: String, in folder: ASCFolder, data: Data, params: [String: Any]?, processing: @escaping ASCApiProgressHandler) {
         let path = (Path(folder.id) + name).rawValue
-        upload(path, data: data, overwrite: false, params: nil) { [weak self] progress, result, error, response in
+        upload(path, data: data, overwrite: false, params: nil) { progress, result, error, response in
             if let _ = result {
                 Analytics.logEvent(ASCConstants.Analytics.Event.createEntity, parameters: [
-                    "portal": self?.provider?.baseURL?.absoluteString ?? "none",
+                    "portal": "icloud",
                     "onDevice": false,
                     "type": "file",
                     "fileExt": name.fileExtension()
@@ -809,7 +823,7 @@ class ASCiCloudProvider: ASCBaseFileProvider {
                 if let error = error {
                     completeon?(strongSelf, nil, false, error)
                 } else {
-                    let path = (Path(folder.id) + name).rawValue
+                    let path = (Path(folder.id) + name).rawValue + "/"
                     let nowDate = Date()
 
                     let cloudFolder = ASCFolder()
@@ -824,7 +838,7 @@ class ASCiCloudProvider: ASCBaseFileProvider {
                     cloudFolder.parentId = folder.id
 
                     Analytics.logEvent(ASCConstants.Analytics.Event.createEntity, parameters: [
-                        "portal": provider.baseURL?.absoluteString ?? "none",
+                        "portal": "icloud",
                         "onDevice": false,
                         "type": "folder"
                         ]
@@ -1241,7 +1255,9 @@ class ASCiCloudProvider: ASCBaseFileProvider {
 //            }
             
             for newItem in addedItems {
-                items.append(newItem)
+                if nil == items.firstIndex(where: { $0.id == newItem.id }) {
+                    items.append(newItem)
+                }
             }
             
             for removeItem in removedItems {

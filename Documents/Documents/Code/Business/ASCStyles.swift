@@ -55,5 +55,10 @@ class ASCStyles {
     static func createBarButton(title: String, target: Any?, action: Selector) -> UIBarButtonItem {
         return UIBarButtonItem(title: title, style: .plain, target: target, action: action)
     }
+    
+    @available(iOS 14.0, *)
+    static func createBarButton(title: String, menu: UIMenu?) -> UIBarButtonItem {
+        return UIBarButtonItem(title: title, image: nil, primaryAction: nil, menu: menu)
+    }
 
 }

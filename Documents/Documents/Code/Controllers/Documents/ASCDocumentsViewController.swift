@@ -406,40 +406,47 @@ class ASCDocumentsViewController: UITableViewController, UIGestureRecognizerDele
         ASCCreateEntity().showCreateController(for: provider, in: self, sender: addBarButton)
     }
     
-    @objc func onSortSelectAction() {
-        let moreController = UIAlertController(
-            title: nil,
-            message: nil,
-            preferredStyle: .actionSheet,
-            tintColor: nil
-        )
-        
-        moreController.addAction(
-            UIAlertAction(
-                title: NSLocalizedString("Select", comment: "Button title"),
-                style: .default,
-                handler: { [unowned self] (action) in
-                    self.setEditMode(!self.tableView.isEditing)
-            })
-        )
-        
-        moreController.addAction(
-            UIAlertAction(
-                title: NSLocalizedString("Sort", comment: "Button title"),
-                style: .default,
-                handler: { [unowned self] (action) in
-                    self.onSortAction()
-            })
-        )
-        
-        moreController.addAction(
-            UIAlertAction(
-                title: NSLocalizedString("Cancel", comment: "Button title"),
-                style: .cancel,
-                handler: nil)
-        )
-
-        present(moreController, animated: true, completion: nil)
+    @objc func onSortSelectAction(_ sender: Any) {
+        if #available(iOS 14.0, *) {
+            if let button = sender as? UIButton {
+                button.showsMenuAsPrimaryAction = true
+                button.menu = sortSelectMenu(for: button)
+            }
+        } else {
+            let moreController = UIAlertController(
+                title: nil,
+                message: nil,
+                preferredStyle: .actionSheet,
+                tintColor: nil
+            )
+            
+            moreController.addAction(
+                UIAlertAction(
+                    title: NSLocalizedString("Select", comment: "Button title"),
+                    style: .default,
+                    handler: { [unowned self] (action) in
+                        self.setEditMode(!self.tableView.isEditing)
+                    })
+            )
+            
+            moreController.addAction(
+                UIAlertAction(
+                    title: NSLocalizedString("Sort", comment: "Button title"),
+                    style: .default,
+                    handler: { [unowned self] (action) in
+                        self.onSortAction()
+                    })
+            )
+            
+            moreController.addAction(
+                UIAlertAction(
+                    title: NSLocalizedString("Cancel", comment: "Button title"),
+                    style: .cancel,
+                    handler: nil)
+            )
+            
+            present(moreController, animated: true, completion: nil)
+        }
     }
     
     @objc func onCancelAction() {
@@ -517,6 +524,17 @@ class ASCDocumentsViewController: UITableViewController, UIGestureRecognizerDele
         selectBarButton?.isEnabled = total > 0
         selectAllBarButton?.isEnabled = total > 0
         
+        if #available(iOS 14.0, *) {
+            for barButton in [sortSelectBarButton, sortBarButton] {
+                if let button = barButton?.customView as? UIButton {
+                    button.showsMenuAsPrimaryAction = true
+                    button.menu = sortSelectMenu(for: button)
+                }
+            }
+            
+            selectAllBarButton = ASCStyles.createBarButton(title: NSLocalizedString("Select", comment: "Button title"), menu: selectAllMenu())
+        }
+
         if tableView.isEditing {
             navigationItem.setLeftBarButtonItems([selectAllBarButton!], animated: animated)
             navigationItem.setRightBarButtonItems([cancelBarButton!], animated: animated)
@@ -1673,6 +1691,129 @@ class ASCDocumentsViewController: UITableViewController, UIGestureRecognizerDele
         return UIMenu(title: "", children: rootActions)
     }
     
+    @available(iOS 14.0, *)
+    private func sortSelectMenu(for button: UIButton) -> UIMenu? {
+        var selectActions: [UIMenuElement] = []
+        var sortActions: [UIMenuElement] = []
+        
+        selectActions.append(
+            UIAction(
+                title: "Select",
+                image: UIImage(systemName: "checkmark.circle"))
+            { action in
+                self.setEditMode(!self.tableView.isEditing)
+            }
+        )
+        
+        var sortType = "dateandtime"
+        var sortAscending = false
+
+        if let sortInfo = UserDefaults.standard.value(forKey: ASCConstants.SettingsKeys.sortDocuments) as? [String: Any] {
+            if let sortBy = sortInfo["type"] as? String, sortBy.length > 0 {
+                sortType = sortBy
+            }
+
+            if let sortOrder = sortInfo["order"] as? String, sortOrder.length > 0 {
+                sortAscending = sortOrder == "ascending"
+            }
+        }
+
+        var types: [(String, String, Bool)] = [
+            (NSLocalizedString("Date", comment: ""),    "dateandtime",  sortType == "dateandtime"),
+            (NSLocalizedString("Title", comment: ""),   "title",        sortType == "title"),
+            (NSLocalizedString("Type", comment: ""),    "type",         sortType == "type"),
+            (NSLocalizedString("Size", comment: ""),    "size",         sortType == "size")
+        ]
+
+        if folder?.rootFolderType != .deviceDocuments {
+            types.append((NSLocalizedString("Author", comment: ""), "author", sortType == "author"))
+        }
+
+        for type in types {
+            sortActions.append(
+                UIAction(
+                    title: type.0,
+                    image: type.2 ? (sortAscending ? UIImage(systemName: "chevron.up") : UIImage(systemName: "chevron.down")) : nil,
+                    state: type.2 ? .on : .off)
+                { [weak self] action in
+                    var sortInfo = [
+                        "type": sortType,
+                        "order": sortAscending ? "ascending" : "descending"
+                    ]
+                    
+                    if sortType != type.1 {
+                        sortInfo["type"] = type.1
+                    } else {
+                        sortAscending = !sortAscending
+                        sortInfo["order"] = sortAscending ? "ascending" : "descending"
+                    }
+                    
+                    UserDefaults.standard.set(sortInfo, forKey: ASCConstants.SettingsKeys.sortDocuments)
+
+                    button.menu = self?.sortSelectMenu(for: button)
+                }
+            )
+        }
+        
+        let selectMenu = UIMenu(title: "", options: .displayInline, children: selectActions)
+        let sortMenu = UIMenu(title: "", options: .displayInline, children: sortActions)
+        var menus: [UIMenuElement] = [sortMenu]
+        
+        if UIDevice.phone {
+            menus.insert(selectMenu, at: 0)
+        }
+        
+        return UIMenu(title: "", options: [.displayInline], children: menus)
+    }
+    
+    @available(iOS 14.0, *)
+    private func selectAllMenu() -> UIMenu? {
+        return UIMenu(title: "", options: .displayInline, children: [
+            UIAction(
+                title: NSLocalizedString("All", comment: ""),
+                image: UIImage(systemName: "checkmark.circle"),
+                handler: { [weak self] action in
+                self?.selectAllItems(type: AnyObject.self)
+            }),
+            UIAction(
+                title: NSLocalizedString("Files", comment: ""),
+                image: UIImage(systemName: "doc"),
+                handler: { [weak self] action in
+                self?.selectAllItems(type: ASCFile.self)
+            }),
+            UIAction(
+                title: NSLocalizedString("Folders", comment: ""),
+                image: UIImage(systemName: "folder"),
+                handler: { [weak self] action in
+                self?.selectAllItems(type: ASCFolder.self)
+            }),
+            UIAction(
+                title: NSLocalizedString("Documents", comment: ""),
+                image: UIImage(systemName: "doc.text"),
+                handler: { [weak self] action in
+                self?.selectAllItems(type: ASCFile.self, extensions: ASCConstants.FileExtensions.documents)
+            }),
+            UIAction(
+                title: NSLocalizedString("Spreadsheets", comment: ""),
+                image: UIImage(systemName: "tablecells"),
+                handler: { [weak self] action in
+                self?.selectAllItems(type: ASCFile.self, extensions: ASCConstants.FileExtensions.spreadsheets)
+            }),
+            UIAction(
+                title: NSLocalizedString("Presentations", comment: ""),
+                image: UIImage(systemName: "play.rectangle"),
+                handler: { [weak self] action in
+                self?.selectAllItems(type: ASCFile.self, extensions: ASCConstants.FileExtensions.presentations)
+            }),
+            UIAction(
+                title: NSLocalizedString("Images", comment: ""),
+                image: UIImage(systemName: "photo"),
+                handler: { [weak self] action in
+                self?.selectAllItems(type: ASCFile.self, extensions: ASCConstants.FileExtensions.images)
+            })
+        ])
+    }
+    
     private func fileActionMenu(cell: ASCFileCell) -> UIAlertController? {
         guard
             let file = cell.file,
@@ -1695,7 +1836,7 @@ class ASCDocumentsViewController: UITableViewController, UIGestureRecognizerDele
                 UIAlertAction(
                     title: NSLocalizedString("Preview", comment: "Button title"),
                     style: .default,
-                    handler: { [unowned self] (action) in
+                    handler: { [unowned self] action in
                         cell.hideSwipe(animated: true)
                         self.open(file: file, viewMode: true)
                 })
@@ -1707,7 +1848,7 @@ class ASCDocumentsViewController: UITableViewController, UIGestureRecognizerDele
                 UIAlertAction(
                     title: NSLocalizedString("Edit", comment: "Button title"),
                     style: .default,
-                    handler: { [unowned self] (action) in
+                    handler: { [unowned self] action in
                         cell.hideSwipe(animated: true)
                         self.open(file: file)
                 })

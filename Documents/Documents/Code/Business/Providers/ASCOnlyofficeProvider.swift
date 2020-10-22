@@ -11,7 +11,7 @@ import Alamofire
 import FileKit
 import Firebase
 
-class ASCOnlyofficeProvider: ASCBaseFileProvider {
+class ASCOnlyofficeProvider: ASCBaseFileProvider & ASCSortableFileProvider {
     var id: String? {
         get {
             if
@@ -60,6 +60,9 @@ class ASCOnlyofficeProvider: ASCBaseFileProvider {
     }
 
     var delegate: ASCProviderDelegate?
+    
+    internal var folder: ASCFolder?
+    internal var fetchInfo: [String : Any?]?
     
     init() {
         reset()
@@ -226,6 +229,8 @@ class ASCOnlyofficeProvider: ASCBaseFileProvider {
     ///   - parameters: dictionary of settings for searching and sorting or any other information
     ///   - completeon: a closure with result of directory entries or error
     func fetch(for folder: ASCFolder, parameters: [String: Any?], completeon: ASCProviderCompletionHandler?) {
+        self.folder = folder
+        
         let fetch: ((_ completeon: ASCProviderCompletionHandler?) -> Void) = { [weak self] completeon in
             guard let strongSelf = self else { return }
 
@@ -243,6 +248,9 @@ class ASCOnlyofficeProvider: ASCBaseFileProvider {
             }
 
             /// Sort
+            
+            strongSelf.fetchInfo = parameters
+            
             if let sort = parameters["sort"] as? [String: Any] {
                 if let sortBy = sort["type"] as? String, sortBy.length > 0 {
                     params["sortBy"] = sortBy
@@ -326,6 +334,18 @@ class ASCOnlyofficeProvider: ASCBaseFileProvider {
                 }
             }
         }
+    }
+    
+    /// Sort records
+    ///
+    /// - Parameters:
+    ///   - completeon: a closure with result of sort entries or error
+    func updateSort(completeon: ASCProviderCompletionHandler?) {
+        if let sortInfo = fetchInfo?["sort"] as? [String : Any] {
+            sort(by: sortInfo, entities: &items)
+            total = items.count
+        }
+        completeon?(self, folder, true, nil)
     }
 
     func rename(_ entity: ASCEntity, to newName: String, completeon: ASCProviderCompletionHandler?) {

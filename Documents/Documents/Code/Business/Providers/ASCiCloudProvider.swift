@@ -12,7 +12,7 @@ import FilesProvider
 import FileKit
 import Firebase
 
-class ASCiCloudProvider: ASCBaseFileProvider {
+class ASCiCloudProvider: ASCBaseFileProvider & ASCSortableFileProvider {
     
     // MARK: - Properties
     
@@ -50,14 +50,14 @@ class ASCiCloudProvider: ASCBaseFileProvider {
     var total: Int = 0
     var delegate: ASCProviderDelegate?
 
+    internal var folder: ASCFolder?
+    internal var fetchInfo: [String : Any?]?
     internal var provider: CloudFileProvider?
     
     fileprivate let identifier: String? = (Bundle.main.bundleIdentifier != nil) ? ("iCloud." + Bundle.main.bundleIdentifier!) : nil
     fileprivate lazy var providerOperationDelegate = ASCiCloudProviderDelegate()
     private let watcherQuery = NSMetadataQuery()
     private var watcherObserver: Any?
-    private var folder: ASCFolder?
-    private var fetchInfo: [String : Any?]?
     private var operationProcess: Progress?
     fileprivate var operationHendlers: [(
         uid: String,
@@ -68,14 +68,6 @@ class ASCiCloudProvider: ASCBaseFileProvider {
     private let errorProviderUndefined = NSLocalizedString("Unknown file provider", comment: "")
     
     // MARK: - Lifecycle Methods
-       
-    init() {
-        //
-    }
-    
-    deinit {
-        //
-    }
     
     func initialize(_ complation: ((Bool) -> Void)? = nil) {
         DispatchQueue.global().async { [weak self] in
@@ -209,41 +201,16 @@ class ASCiCloudProvider: ASCBaseFileProvider {
         }
     }
     
-    
     /// Sort records
     ///
     /// - Parameters:
-    ///   - info: Sort information as dictinory
-    ///   - folders: Sorted folders
-    ///   - files: Sorted files
-    private func sort(by info: [String: Any], folders: inout [ASCFolder], files: inout [ASCFile]) {
-        let sortBy      = info["type"] as? String ?? "title"
-        let sortOrder   = info["order"] as? String ?? "ascending"
-
-        if sortBy == "title" {
-            folders = sortOrder == "ascending"
-                ? folders.sorted { $0.title < $1.title }
-                : folders.sorted { $0.title > $1.title }
-            files = sortOrder == "ascending"
-                ? files.sorted { $0.title < $1.title }
-                : files.sorted { $0.title > $1.title }
-        } else if sortBy == "type" {
-            files = sortOrder == "ascending"
-                ? files.sorted { $0.title.fileExtension().lowercased() < $1.title.fileExtension().lowercased() }
-                : files.sorted { $0.title.fileExtension().lowercased() > $1.title.fileExtension().lowercased() }
-        } else if sortBy == "dateandtime" {
-            let nowDate = Date()
-            folders = sortOrder == "ascending"
-                ? folders.sorted { $0.created ?? nowDate < $1.created ?? nowDate }
-                : folders.sorted { $0.created ?? nowDate > $1.created ?? nowDate }
-            files = sortOrder == "ascending"
-                ? files.sorted { $0.updated ?? nowDate < $1.updated ?? nowDate }
-                : files.sorted { $0.updated ?? nowDate > $1.updated ?? nowDate }
-        } else if sortBy == "size" {
-            files = sortOrder == "ascending"
-                ? files.sorted { $0.pureContentLength < $1.pureContentLength }
-                : files.sorted { $0.pureContentLength > $1.pureContentLength }
+    ///   - completeon: a closure with result of sort entries or error
+    func updateSort(completeon: ASCProviderCompletionHandler?) {
+        if let sortInfo = fetchInfo?["sort"] as? [String : Any] {
+            sort(by: sortInfo, entities: &items)
+            total = items.count
         }
+        completeon?(self, folder, true, nil)
     }
     
     private func directLink(from publicLink: String) -> String? {
@@ -425,20 +392,6 @@ class ASCiCloudProvider: ASCBaseFileProvider {
                 }
             }
         }
-    }
-    
-    func updateSort(completeon: ASCProviderCompletionHandler?) {
-        var folders = items.filter { $0 is ASCFolder } as? [ASCFolder] ?? []
-        var files = items.filter { $0 is ASCFile } as? [ASCFile] ?? []
-        
-        if let sortInfo = fetchInfo?["sort"] as? [String : Any] {
-            sort(by: sortInfo, folders: &folders, files: &files)
-        }
-
-        items = folders as [ASCEntity] + files as [ASCEntity]
-        total = items.count
-        
-        completeon?(self, folder, true, nil)
     }
     
     func absoluteUrl(from string: String?) -> URL? {

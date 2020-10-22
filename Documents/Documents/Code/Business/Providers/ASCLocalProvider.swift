@@ -10,7 +10,7 @@ import UIKit
 import FileKit
 import Firebase
 
-class ASCLocalProvider: ASCBaseFileProvider {
+class ASCLocalProvider: ASCBaseFileProvider & ASCSortableFileProvider {
     var id: String? {
         get {
             return "device"
@@ -35,8 +35,8 @@ class ASCLocalProvider: ASCBaseFileProvider {
 
     var delegate: ASCProviderDelegate?
     
-    private var folder: ASCFolder?
-    private var fetchInfo: [String : Any?]?
+    internal var folder: ASCFolder?
+    internal var fetchInfo: [String : Any?]?
 
     fileprivate lazy var deviceUser: ASCUser = {
         let owner = ASCUser()
@@ -182,50 +182,12 @@ class ASCLocalProvider: ASCBaseFileProvider {
     /// Sort records
     ///
     /// - Parameters:
-    ///   - info: Sort information as dictinory
-    ///   - folders: Sorted folders
-    ///   - files: Sorted files
-    private func sort(by info: [String: Any], folders: inout [ASCFolder], files: inout [ASCFile]) {
-        let sortBy      = info["type"] as? String ?? "title"
-        let sortOrder   = info["order"] as? String ?? "ascending"
-
-        if sortBy == "title" {
-            folders = sortOrder == "ascending"
-                ? folders.sorted { $0.title < $1.title }
-                : folders.sorted { $0.title > $1.title }
-            files = sortOrder == "ascending"
-                ? files.sorted { $0.title < $1.title }
-                : files.sorted { $0.title > $1.title }
-        } else if sortBy == "type" {
-            files = sortOrder == "ascending"
-                ? files.sorted { $0.title.fileExtension().lowercased() < $1.title.fileExtension().lowercased() }
-                : files.sorted { $0.title.fileExtension().lowercased() > $1.title.fileExtension().lowercased() }
-        } else if sortBy == "dateandtime" {
-            let nowDate = Date()
-            folders = sortOrder == "ascending"
-                ? folders.sorted { $0.created ?? nowDate < $1.created ?? nowDate }
-                : folders.sorted { $0.created ?? nowDate > $1.created ?? nowDate }
-            files = sortOrder == "ascending"
-                ? files.sorted { $0.updated ?? nowDate < $1.updated ?? nowDate }
-                : files.sorted { $0.updated ?? nowDate > $1.updated ?? nowDate }
-        } else if sortBy == "size" {
-            files = sortOrder == "ascending"
-                ? files.sorted { $0.pureContentLength < $1.pureContentLength }
-                : files.sorted { $0.pureContentLength > $1.pureContentLength }
-        }
-    }
-
+    ///   - completeon: a closure with result of sort entries or error
     func updateSort(completeon: ASCProviderCompletionHandler?) {
-        var folders = items.filter { $0 is ASCFolder } as? [ASCFolder] ?? []
-        var files = items.filter { $0 is ASCFile } as? [ASCFile] ?? []
-        
         if let sortInfo = fetchInfo?["sort"] as? [String : Any] {
-            sort(by: sortInfo, folders: &folders, files: &files)
+            sort(by: sortInfo, entities: &items)
+            total = items.count
         }
-
-        items = folders as [ASCEntity] + files as [ASCEntity]
-        total = items.count
-        
         completeon?(self, folder, true, nil)
     }
     
@@ -758,11 +720,3 @@ class ASCLocalProvider: ASCBaseFileProvider {
         }
     }
 }
-
-
-//extension ASCLocalProvider: NSObject, NSCopying {
-//    func copy(with zone: NSZone? = nil) -> Any {
-////        let copy = Person(firstName: firstName, lastName: lastName, age: age)
-//        return UIView()
-//    }
-//}

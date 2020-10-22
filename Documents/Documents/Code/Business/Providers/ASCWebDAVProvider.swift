@@ -11,7 +11,7 @@ import FilesProvider
 import FileKit
 import Firebase
 
-class ASCWebDAVProvider: ASCBaseFileProvider {
+class ASCWebDAVProvider: ASCBaseFileProvider & ASCSortableFileProvider {
 
     // MARK: - Properties
 
@@ -73,6 +73,9 @@ class ASCWebDAVProvider: ASCBaseFileProvider {
     var delegate: ASCProviderDelegate?
 
     internal var provider: WebDAVFileProvider?
+    
+    internal var folder: ASCFolder?
+    internal var fetchInfo: [String : Any?]?
 
     fileprivate lazy var providerOperationDelegate = ASCWebDAVProviderDelegate()
     private var operationProcess: Progress?
@@ -209,37 +212,13 @@ class ASCWebDAVProvider: ASCBaseFileProvider {
     /// Sort records
     ///
     /// - Parameters:
-    ///   - info: Sort information as dictinory
-    ///   - folders: Sorted folders
-    ///   - files: Sorted files
-    private func sort(by info: [String: Any], folders: inout [ASCFolder], files: inout [ASCFile]) {
-        let sortBy      = info["type"] as? String ?? "title"
-        let sortOrder   = info["order"] as? String ?? "ascending"
-
-        if sortBy == "title" {
-            folders = sortOrder == "ascending"
-                ? folders.sorted { $0.title < $1.title }
-                : folders.sorted { $0.title > $1.title }
-            files = sortOrder == "ascending"
-                ? files.sorted { $0.title < $1.title }
-                : files.sorted { $0.title > $1.title }
-        } else if sortBy == "type" {
-            files = sortOrder == "ascending"
-                ? files.sorted { $0.title.fileExtension().lowercased() < $1.title.fileExtension().lowercased() }
-                : files.sorted { $0.title.fileExtension().lowercased() > $1.title.fileExtension().lowercased() }
-        } else if sortBy == "dateandtime" {
-            let nowDate = Date()
-            folders = sortOrder == "ascending"
-                ? folders.sorted { $0.created ?? nowDate < $1.created ?? nowDate }
-                : folders.sorted { $0.created ?? nowDate > $1.created ?? nowDate }
-            files = sortOrder == "ascending"
-                ? files.sorted { $0.updated ?? nowDate < $1.updated ?? nowDate }
-                : files.sorted { $0.updated ?? nowDate > $1.updated ?? nowDate }
-        } else if sortBy == "size" {
-            files = sortOrder == "ascending"
-                ? files.sorted { $0.pureContentLength < $1.pureContentLength }
-                : files.sorted { $0.pureContentLength > $1.pureContentLength }
+    ///   - completeon: a closure with result of sort entries or error
+    func updateSort(completeon: ASCProviderCompletionHandler?) {
+        if let sortInfo = fetchInfo?["sort"] as? [String : Any] {
+            sort(by: sortInfo, entities: &items)
+            total = items.count
         }
+        completeon?(self, folder, true, nil)
     }
 
     /// Fetch an user information
@@ -260,6 +239,8 @@ class ASCWebDAVProvider: ASCBaseFileProvider {
             completeon?(self, folder, false, nil)
             return
         }
+        
+        self.folder = folder
 
         let fetch: ((_ completeon: ASCProviderCompletionHandler?) -> Void) = { [weak self] completeon in
             var query = NSPredicate(format: "TRUEPREDICATE")
@@ -340,6 +321,8 @@ class ASCWebDAVProvider: ASCBaseFileProvider {
                     }
 
                     // Sort
+                    strongSelf.fetchInfo = parameters
+                    
                     if let sortInfo = parameters["sort"] as? [String: Any] {
                         self?.sort(by: sortInfo, folders: &folders, files: &files)
                     }

@@ -137,3 +137,66 @@ extension ASCBaseFileProvider {
     func open(file: ASCFile, viewMode: Bool = false) {}
     func preview(file: ASCFile, files: [ASCFile]? = nil, in view: UIView? = nil) {}
 }
+
+
+// MARK: - ASCSortableFileProvider protocol
+
+protocol ASCSortableFileProvider {
+    var folder: ASCFolder? { get set }
+    var fetchInfo: [String : Any?]? { get set }
+
+    func sort(by info: [String: Any], entities: inout [ASCEntity])
+    func sort(by info: [String: Any], folders: inout [ASCFolder], files: inout [ASCFile])
+}
+
+extension ASCSortableFileProvider {
+    /// Sort records
+    ///
+    /// - Parameters:
+    ///   - info: Sort information as dictinory
+    ///   - folders: Sorted folders
+    ///   - files: Sorted files
+    func sort(by info: [String: Any], folders: inout [ASCFolder], files: inout [ASCFile]) {
+        let sortBy      = info["type"] as? String ?? "title"
+        let sortOrder   = info["order"] as? String ?? "ascending"
+
+        if sortBy == "title" {
+            folders = sortOrder == "ascending"
+                ? folders.sorted { $0.title < $1.title }
+                : folders.sorted { $0.title > $1.title }
+            files = sortOrder == "ascending"
+                ? files.sorted { $0.title < $1.title }
+                : files.sorted { $0.title > $1.title }
+        } else if sortBy == "type" {
+            files = sortOrder == "ascending"
+                ? files.sorted { $0.title.fileExtension().lowercased() < $1.title.fileExtension().lowercased() }
+                : files.sorted { $0.title.fileExtension().lowercased() > $1.title.fileExtension().lowercased() }
+        } else if sortBy == "dateandtime" {
+            let nowDate = Date()
+            folders = sortOrder == "ascending"
+                ? folders.sorted { $0.created ?? nowDate < $1.created ?? nowDate }
+                : folders.sorted { $0.created ?? nowDate > $1.created ?? nowDate }
+            files = sortOrder == "ascending"
+                ? files.sorted { $0.updated ?? nowDate < $1.updated ?? nowDate }
+                : files.sorted { $0.updated ?? nowDate > $1.updated ?? nowDate }
+        } else if sortBy == "size" {
+            files = sortOrder == "ascending"
+                ? files.sorted { $0.pureContentLength < $1.pureContentLength }
+                : files.sorted { $0.pureContentLength > $1.pureContentLength }
+        }
+    }
+    
+    /// Sort records
+    ///
+    /// - Parameters:
+    ///   - info: Sort information as dictinory
+    ///   - entities: Sorted entities
+    func sort(by info: [String: Any], entities: inout [ASCEntity]) {
+        var folders = entities.filter { $0 is ASCFolder } as? [ASCFolder] ?? []
+        var files = entities.filter { $0 is ASCFile } as? [ASCFile] ?? []
+        
+        sort(by: info, folders: &folders, files: &files)
+        
+        entities = folders as [ASCEntity] + files as [ASCEntity]
+    }
+}

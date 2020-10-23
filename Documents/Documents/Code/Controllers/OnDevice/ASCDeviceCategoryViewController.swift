@@ -62,6 +62,7 @@ class ASCDeviceCategoryViewController: UITableViewController {
 
         if UIDevice.pad, let documentsNC = navigationController as? ASCBaseNavigationController {
             documentsNC.hasShadow = true
+            documentsNC.setToolbarHidden(true, animated: false)
         }
 
         title = UIDevice.pad

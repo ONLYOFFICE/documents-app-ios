@@ -1698,7 +1698,7 @@ class ASCDocumentsViewController: UITableViewController, UIGestureRecognizerDele
         
         selectActions.append(
             UIAction(
-                title: "Select",
+                title: NSLocalizedString("Select", comment: "Button title"),
                 image: UIImage(systemName: "checkmark.circle"))
             { action in
                 self.setEditMode(!self.tableView.isEditing)

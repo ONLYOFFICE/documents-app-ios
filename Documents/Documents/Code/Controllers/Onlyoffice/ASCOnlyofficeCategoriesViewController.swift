@@ -35,6 +35,7 @@ class ASCOnlyofficeCategoriesViewController: UITableViewController {
 
         if UIDevice.pad,let documentsNC = navigationController as? ASCBaseNavigationController {
             documentsNC.hasShadow = true
+            documentsNC.setToolbarHidden(true, animated: false)
         }
 
         clearsSelectionOnViewWillAppear = UIDevice.phone

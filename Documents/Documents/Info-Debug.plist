@@ -150,7 +150,7 @@
 	<key>CFBundlePackageType</key>
 	<string>APPL</string>
 	<key>CFBundleShortVersionString</key>
-	<string>6.2</string>
+    <string>6.3</string>
 	<key>CFBundleURLTypes</key>
 	<array>
 		<dict>
@@ -214,10 +214,16 @@
 		<key>NSAllowsArbitraryLoads</key>
 		<true/>
 	</dict>
+	<key>NSBonjourServices</key>
+	<array>
+		<string>_Bagel._tcp</string>
+	</array>
 	<key>NSCameraUsageDescription</key>
 	<string>This app requires access to the camera, so that you can take photo and upload it in the app.</string>
 	<key>NSFaceIDUsageDescription</key>
 	<string>This app requires Face ID permission to authenticate using Face recognition.</string>
+	<key>NSLocalNetworkUsageDescription</key>
+	<string>Network access required</string>
 	<key>NSPhotoLibraryUsageDescription</key>
 	<string>This app requires access to the photo library, so that you can upload your photos in the app.</string>
 	<key>UIApplicationShortcutItems</key>
@@ -280,11 +286,5 @@
 	</array>
 	<key>UISupportsDocumentBrowser</key>
 	<true/>
-	<key>NSBonjourServices</key>
-	<array>
-		<string>_Bagel._tcp</string>
-	</array>
-	<key>NSLocalNetworkUsageDescription</key>
-	<string>Network access required</string>
 </dict>
 </plist>

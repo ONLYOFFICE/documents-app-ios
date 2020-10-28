@@ -188,13 +188,18 @@ class ASCConstants {
         let remoteConfig = RemoteConfig.remoteConfig()
 
     #if DEBUG
-        let debugSettings = RemoteConfigSettings(developerModeEnabled: true)
+        let debugSettings = RemoteConfigSettings()
+        debugSettings.minimumFetchInterval = 0
         remoteConfig.configSettings = debugSettings
     #endif
 
         remoteConfig.fetch(withExpirationDuration: 0) { status, error in
             if status == .success {
-                remoteConfig.activateFetched()
+                remoteConfig.activate { changed, error in
+                    if let error = error {
+                        log.error("Got an error fetching remote values: \(String(describing: error))")
+                    }
+                }
             } else {
                 log.error("Got an error fetching remote values: \(String(describing: error))")
             }

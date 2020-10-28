@@ -25,8 +25,6 @@
 		8A01846223A2654F0025BE85 /* graphics.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 8A01845923A2654E0025BE85 /* graphics.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		8A01846323A2654F0025BE85 /* doctrenderer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8A01845A23A2654E0025BE85 /* doctrenderer.framework */; };
 		8A01846423A2654F0025BE85 /* doctrenderer.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 8A01845A23A2654E0025BE85 /* doctrenderer.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		8A01846523A2654F0025BE85 /* HtmlFile.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8A01845B23A2654E0025BE85 /* HtmlFile.framework */; };
-		8A01846623A2654F0025BE85 /* HtmlFile.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 8A01845B23A2654E0025BE85 /* HtmlFile.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		8A01846723A2654F0025BE85 /* HtmlRenderer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8A01845C23A2654E0025BE85 /* HtmlRenderer.framework */; };
 		8A01846823A2654F0025BE85 /* HtmlRenderer.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 8A01845C23A2654E0025BE85 /* HtmlRenderer.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		8A01846923A2654F0025BE85 /* PdfReader.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8A01845D23A2654E0025BE85 /* PdfReader.framework */; };
@@ -243,6 +241,12 @@
 		FCF2761C22C0E8E500984E83 /* ASCProfileAvatarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCF2761B22C0E8E500984E83 /* ASCProfileAvatarView.swift */; };
 		FCF2761E22C0FA5E00984E83 /* ASCShadowRadiusView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCF2761D22C0FA5E00984E83 /* ASCShadowRadiusView.swift */; };
 		FCF3AA8B1EF91A1B00DF63BA /* ASCTransferViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCF3AA8A1EF91A1B00DF63BA /* ASCTransferViewCell.swift */; };
+		FCF501692549A9B80079518A /* EpubFile.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FCF501682549A9B80079518A /* EpubFile.framework */; };
+		FCF5016B2549A9C30079518A /* Fb2File.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FCF5016A2549A9C30079518A /* Fb2File.framework */; };
+		FCF5016D2549A9CE0079518A /* HtmlFile2.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FCF5016C2549A9CE0079518A /* HtmlFile2.framework */; };
+		FCF5016E2549AB7B0079518A /* HtmlFile2.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = FCF5016C2549A9CE0079518A /* HtmlFile2.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		FCF5016F2549AB860079518A /* EpubFile.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = FCF501682549A9B80079518A /* EpubFile.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		FCF501702549AB910079518A /* Fb2File.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = FCF5016A2549A9C30079518A /* Fb2File.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		FCF67218217716FF004756A0 /* ASCNextCloudApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCF67217217716FF004756A0 /* ASCNextCloudApi.swift */; };
 		FCF6721A21771B21004756A0 /* ASCBaseApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCF6721921771B21004756A0 /* ASCBaseApi.swift */; };
 		FCF865201E4E0D1C003E47B6 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FCF8651C1E4E0D1C003E47B6 /* Main.storyboard */; };
@@ -318,12 +322,14 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
+				FCF501702549AB910079518A /* Fb2File.framework in CopyFiles */,
+				FCF5016F2549AB860079518A /* EpubFile.framework in CopyFiles */,
+				FCF5016E2549AB7B0079518A /* HtmlFile2.framework in CopyFiles */,
 				FC53690424EB1D1A0092765B /* SpreadsheetEditor.framework in CopyFiles */,
 				FC53690324EB1D150092765B /* PresentationEditor.framework in CopyFiles */,
 				FC53690224EB1D110092765B /* DocumentEditor.framework in CopyFiles */,
 				FC53690124EB1D0C0092765B /* DocumentConverter.framework in CopyFiles */,
 				8A01845723A2653C0025BE85 /* x2t.framework in CopyFiles */,
-				8A01846623A2654F0025BE85 /* HtmlFile.framework in CopyFiles */,
 				8A01845523A2653C0025BE85 /* UnicodeConverter.framework in CopyFiles */,
 				8A01846A23A2654F0025BE85 /* PdfReader.framework in CopyFiles */,
 				8A01846C23A2654F0025BE85 /* kernel.framework in CopyFiles */,
@@ -351,7 +357,6 @@
 		8A01845823A2654E0025BE85 /* DjVuFile.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = DjVuFile.framework; path = "../../editors-ios/build/SDK/lib/DjVuFile.framework"; sourceTree = "<group>"; };
 		8A01845923A2654E0025BE85 /* graphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = graphics.framework; path = "../../editors-ios/build/SDK/lib/graphics.framework"; sourceTree = "<group>"; };
 		8A01845A23A2654E0025BE85 /* doctrenderer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = doctrenderer.framework; path = "../../editors-ios/build/SDK/lib/doctrenderer.framework"; sourceTree = "<group>"; };
-		8A01845B23A2654E0025BE85 /* HtmlFile.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = HtmlFile.framework; path = "../../editors-ios/build/SDK/lib/HtmlFile.framework"; sourceTree = "<group>"; };
 		8A01845C23A2654E0025BE85 /* HtmlRenderer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = HtmlRenderer.framework; path = "../../editors-ios/build/SDK/lib/HtmlRenderer.framework"; sourceTree = "<group>"; };
 		8A01845D23A2654E0025BE85 /* PdfReader.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = PdfReader.framework; path = "../../editors-ios/build/SDK/lib/PdfReader.framework"; sourceTree = "<group>"; };
 		8A01845E23A2654E0025BE85 /* kernel.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = kernel.framework; path = "../../editors-ios/build/SDK/lib/kernel.framework"; sourceTree = "<group>"; };
@@ -652,6 +657,9 @@
 		FCF3AAC01EF9455100DF63BA /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/ConnectStorage.strings; sourceTree = "<group>"; };
 		FCF3AAC11EF9455100DF63BA /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/PasscodeLock.strings; sourceTree = "<group>"; };
 		FCF3AAC21EF9483100DF63BA /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		FCF501682549A9B80079518A /* EpubFile.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = EpubFile.framework; path = "../../editors-ios/build/SDK/lib/EpubFile.framework"; sourceTree = "<group>"; };
+		FCF5016A2549A9C30079518A /* Fb2File.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Fb2File.framework; path = "../../editors-ios/build/SDK/lib/Fb2File.framework"; sourceTree = "<group>"; };
+		FCF5016C2549A9CE0079518A /* HtmlFile2.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = HtmlFile2.framework; path = "../../editors-ios/build/SDK/lib/HtmlFile2.framework"; sourceTree = "<group>"; };
 		FCF67217217716FF004756A0 /* ASCNextCloudApi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCNextCloudApi.swift; sourceTree = "<group>"; };
 		FCF6721921771B21004756A0 /* ASCBaseApi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCBaseApi.swift; sourceTree = "<group>"; };
 		FCF8045B212E94A300378AFD /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/InfoPlist.strings; sourceTree = "<group>"; };
@@ -671,8 +679,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				FC53690024EB1C3D0092765B /* SpreadsheetEditor.framework in Frameworks */,
+				FCF5016B2549A9C30079518A /* Fb2File.framework in Frameworks */,
 				FC5368FF24EB1C390092765B /* PresentationEditor.framework in Frameworks */,
 				FC5368FE24EB1C330092765B /* DocumentEditor.framework in Frameworks */,
+				FCF5016D2549A9CE0079518A /* HtmlFile2.framework in Frameworks */,
 				FC5368FD24EB1C2F0092765B /* DocumentConverter.framework in Frameworks */,
 				8A01845F23A2654E0025BE85 /* DjVuFile.framework in Frameworks */,
 				8A01846923A2654F0025BE85 /* PdfReader.framework in Frameworks */,
@@ -681,7 +691,7 @@
 				8A01847023A2666C0025BE85 /* PdfWriter.framework in Frameworks */,
 				8A01846323A2654F0025BE85 /* doctrenderer.framework in Frameworks */,
 				8A01846123A2654F0025BE85 /* graphics.framework in Frameworks */,
-				8A01846523A2654F0025BE85 /* HtmlFile.framework in Frameworks */,
+				FCF501692549A9B80079518A /* EpubFile.framework in Frameworks */,
 				8A01845423A2653C0025BE85 /* UnicodeConverter.framework in Frameworks */,
 				8A01846B23A2654F0025BE85 /* kernel.framework in Frameworks */,
 				3A28005710D299F4507111B1 /* Pods_Documents_develop.framework in Frameworks */,
@@ -717,8 +727,10 @@
 				8A01846F23A2666C0025BE85 /* PdfWriter.framework */,
 				8A01845823A2654E0025BE85 /* DjVuFile.framework */,
 				8A01845A23A2654E0025BE85 /* doctrenderer.framework */,
+				FCF501682549A9B80079518A /* EpubFile.framework */,
+				FCF5016A2549A9C30079518A /* Fb2File.framework */,
 				8A01845923A2654E0025BE85 /* graphics.framework */,
-				8A01845B23A2654E0025BE85 /* HtmlFile.framework */,
+				FCF5016C2549A9CE0079518A /* HtmlFile2.framework */,
 				8A01845C23A2654E0025BE85 /* HtmlRenderer.framework */,
 				8A01845E23A2654E0025BE85 /* kernel.framework */,
 				8A01845D23A2654E0025BE85 /* PdfReader.framework */,

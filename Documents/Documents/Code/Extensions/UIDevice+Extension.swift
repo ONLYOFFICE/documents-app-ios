@@ -52,4 +52,8 @@ extension UIDevice {
         ]
         return !device.isOneOf(allUnsupportedDevicesForEdit)
     }
+    
+    static var displayName: String {
+        return UIDevice.current.name
+    }
 }

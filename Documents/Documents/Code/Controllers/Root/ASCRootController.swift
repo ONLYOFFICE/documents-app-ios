@@ -300,7 +300,7 @@ class ASCRootController: UITabBarController {
                                 }
 
                                 let owner = ASCUser()
-                                owner.displayName = UIDevice.pad ? "iPad" : "iPhone"
+                                owner.displayName = UIDevice.displayName
 
                                 let file = ASCFile()
                                 file.id = newFilePath.rawValue

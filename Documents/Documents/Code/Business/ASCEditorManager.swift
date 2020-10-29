@@ -1546,7 +1546,7 @@ class ASCEditorManager: NSObject, DEEditorDelegate, SEEditorDelegate, PEEditorDe
                             } else {
                                 
                                 let owner = ASCUser()
-                                owner.displayName = UIDevice.pad ? "iPad" : "iPhone"
+                                owner.displayName = UIDevice.displayName
                                 
                                 let file = ASCFile()
                                 file.id = filePath.rawValue
@@ -1828,7 +1828,7 @@ class ASCEditorManager: NSObject, DEEditorDelegate, SEEditorDelegate, PEEditorDe
                             } else {
                                 
                                 let owner = ASCUser()
-                                owner.displayName = UIDevice.pad ? "iPad" : "iPhone"
+                                owner.displayName = UIDevice.displayName
                                 
                                 let file = ASCFile()
                                 file.id = filePath.rawValue
@@ -2117,7 +2117,7 @@ class ASCEditorManager: NSObject, DEEditorDelegate, SEEditorDelegate, PEEditorDe
                             } else {
                                 
                                 let owner = ASCUser()
-                                owner.displayName = UIDevice.pad ? "iPad" : "iPhone"
+                                owner.displayName = UIDevice.displayName
                                 
                                 let file = ASCFile()
                                 file.id = filePath.rawValue

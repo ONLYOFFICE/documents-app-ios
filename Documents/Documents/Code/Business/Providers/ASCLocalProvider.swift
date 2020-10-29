@@ -37,7 +37,7 @@ class ASCLocalProvider: ASCBaseFileProvider {
 
     fileprivate lazy var deviceUser: ASCUser = {
         let owner = ASCUser()
-        owner.displayName = UIDevice.pad ? "iPad" : "iPhone"
+        owner.displayName = UIDevice.displayName
         return owner
     }()
 
@@ -86,7 +86,7 @@ class ASCLocalProvider: ASCBaseFileProvider {
 
         for path in paths {
             let owner = ASCUser()
-            owner.displayName = UIDevice.pad ? "iPad" : "iPhone"
+            owner.displayName = UIDevice.displayName
 
             if path.isDirectory {
                 let localFolder = ASCFolder()
@@ -239,7 +239,7 @@ class ASCLocalProvider: ASCBaseFileProvider {
         } else {
             let destFilePath = Path(dstPath)
             let owner = ASCUser()
-            owner.displayName = UIDevice.pad ? "iPad" : "iPhone"
+            owner.displayName = UIDevice.displayName
 
             let parenFolder = ASCFolder()
             parenFolder.id = destFilePath.parent.rawValue
@@ -391,7 +391,7 @@ class ASCLocalProvider: ASCBaseFileProvider {
 
                 // Create entity info
                 let owner = ASCUser()
-                owner.displayName = UIDevice.pad ? "iPad" : "iPhone"
+                owner.displayName = UIDevice.displayName
 
                 let file = ASCFile()
                 file.id = filePath.rawValue
@@ -440,7 +440,7 @@ class ASCLocalProvider: ASCBaseFileProvider {
 
             // Create entity info
             let owner = ASCUser()
-            owner.displayName = UIDevice.pad ? "iPad" : "iPhone"
+            owner.displayName = UIDevice.displayName
 
             let file = ASCFile()
             file.id = filePath.rawValue
@@ -479,7 +479,7 @@ class ASCLocalProvider: ASCBaseFileProvider {
             if folderPath.exists {
                 // Create entity info
                 let owner = ASCUser()
-                owner.displayName = UIDevice.pad ? "iPad" : "iPhone"
+                owner.displayName = UIDevice.displayName
 
                 let newFolder = ASCFolder()
                 newFolder.id = folderPath.rawValue

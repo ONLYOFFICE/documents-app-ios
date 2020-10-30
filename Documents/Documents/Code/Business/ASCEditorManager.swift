@@ -458,7 +458,7 @@ class ASCEditorManager: NSObject, DEEditorDelegate, SEEditorDelegate, PEEditorDe
         var conversionDirection = ConversionDirection.CD_ERROR
 
         switch fileExtension {
-        case "docx", "doc", "rtf":
+        case "docx", "doc", "rtf", "mht", "html", "htm", "epub", "fb2":
             conversionDirection = ConversionDirection.CD_DOCX2DOCT_BIN
         case "xlsx", "xls":
             conversionDirection = ConversionDirection.CD_XSLX2XSLT_BIN
@@ -595,7 +595,7 @@ class ASCEditorManager: NSObject, DEEditorDelegate, SEEditorDelegate, PEEditorDe
         case "odp":
             conversionDirection = ConversionDirection.CD_PPTT_BIN2PPTX
             fileTo = resolvedFilePath.rawValue
-        case "doc", "rtf":
+        case "doc", "rtf", "mht", "html", "htm", "epub", "fb2":
             conversionDirection = ConversionDirection.CD_DOCT_BIN2DOCX
             fileTo = resolvedFilePath.rawValue
         case "xls":
@@ -621,7 +621,7 @@ class ASCEditorManager: NSObject, DEEditorDelegate, SEEditorDelegate, PEEditorDe
             "themesFolder"          : PEEditorViewController.themesFolder() ?? ""
         ]
         
-        if "" != password {
+        if !password.isEmpty {
             UserDefaults.standard.removeObject(forKey: ASCConstants.SettingsKeys.passwordOpenedDocument)
         }
         

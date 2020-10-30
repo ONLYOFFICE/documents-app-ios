@@ -126,13 +126,13 @@ class ASCConstants {
     }
 
     struct FileExtensions {
-        static let documents                    = ["docx", "doc", "odt", "rtf", "mht", "html", "htm", "epub", "txt"]
+        static let documents                    = ["docx", "doc", "odt", "rtf", "mht", "html", "htm", "epub", "fb2", "txt"]
         static let spreadsheets                 = ["xlsx", "xls", "csv", "ods"]
         static let presentations                = ["pptx", "ppt", "odp"]
         static let images                       = ["jpg", "jpeg", "png", "gif", "bmp", "tif", "tiff", "ico"]
         static let videos                       = ["mpg", "mpeg", "mpg4", "mp4", "m4v", "mov", "avi", "vfw", "m75", "m15", "3g2", "3gp2", "3gp", "3gpp"]
-        static let allowEdit                    = ["docx", "xlsx", "pptx", "csv", "txt", "odt", "ods", "odp", "doc", "xls", "ppt", "rtf"]
-        static let editorImportDocuments        = ["doc", "odt", "txt", "rtf"]
+        static let allowEdit                    = ["docx", "xlsx", "pptx", "csv", "txt", "odt", "ods", "odp", "doc", "xls", "ppt", "rtf", "mht", "html", "htm", "epub", "fb2"]
+        static let editorImportDocuments        = ["doc", "odt", "txt", "rtf", "mht", "html", "htm", "epub", "fb2"]
         static let editorImportSpreadsheets     = ["xls", "ods", "csv"]
         static let editorImportPresentations    = ["ppt", "odp"]
         static let editorExportDocuments        = ["docx", "odt", "dotx", "ott"]

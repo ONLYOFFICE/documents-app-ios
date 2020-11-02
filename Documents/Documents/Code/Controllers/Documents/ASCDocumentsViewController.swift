@@ -181,6 +181,8 @@ class ASCDocumentsViewController: UITableViewController, UIGestureRecognizerDele
             tableView.dragDelegate = self
             tableView.dropDelegate = self
             tableView.dragInteractionEnabled = true
+            
+            tableView.separatorStyle = .none
         }
     }
 

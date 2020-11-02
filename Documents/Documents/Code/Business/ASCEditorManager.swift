@@ -286,7 +286,7 @@ class ASCEditorManager: NSObject, DEEditorDelegate, SEEditorDelegate, PEEditorDe
         guard
             let user = ASCFileManager.onlyofficeProvider?.user,
             let userId = user.userId,
-            let userName = user.userName,
+            let userName = file.createdBy?.displayName ?? user.userName,
             let firstName = user.firstName,
             let lastName = user.lastName
         else {
@@ -299,7 +299,7 @@ class ASCEditorManager: NSObject, DEEditorDelegate, SEEditorDelegate, PEEditorDe
         let documentInfo: [String: Any] = [
             "title"                 : file.title,
             "date"                  : file.created!,
-            "author"                : file.createdBy?.displayName! ?? "",
+            "author"                : file.createdBy?.displayName ?? "",
             "viewMode"              : viewMode || (!sdkCheck),
             "coauthoring"           : true,
             "docUserId"             : userId,

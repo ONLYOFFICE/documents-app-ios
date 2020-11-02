@@ -149,22 +149,33 @@ class ASCSignInController {
                             ASCFileManager.provider = ASCFileManager.onlyofficeProvider
                             ASCFileManager.storeProviders()
 
-                            completion?(true)
+                            // Fetch user info
+                            if let onlyofficeProvider = ASCFileManager.onlyofficeProvider?.copy() as? ASCOnlyofficeProvider {
+                                onlyofficeProvider.userInfo { success, error in
+                                    if success {
+                                        ASCFileManager.onlyofficeProvider?.user = onlyofficeProvider.user
+                                        
+                                        completion?(true)
 
-                            // Registration device into the portal
-                            ASCOnlyOfficeApi.post(ASCOnlyOfficeApi.apiDeviceRegistration, parameters: ["type": 2], completion: { (_, _, _) in
-                                // 2 - IOSDocuments
-                            })
+                                        // Registration device into the portal
+                                        ASCOnlyOfficeApi.post(ASCOnlyOfficeApi.apiDeviceRegistration, parameters: ["type": 2], completion: { (_, _, _) in
+                                            // 2 - IOSDocuments
+                                        })
 
-                            if let portal = apiOptions["portal"], let provider = apiOptions["provider"] {
-                                Analytics.logEvent(ASCConstants.Analytics.Event.loginPortal, parameters: [
-                                    "portal": portal,
-                                    "provider": provider
-                                    ]
-                                )
+                                        if let portal = apiOptions["portal"], let provider = apiOptions["provider"] {
+                                            Analytics.logEvent(ASCConstants.Analytics.Event.loginPortal, parameters: [
+                                                "portal": portal,
+                                                "provider": provider
+                                                ]
+                                            )
+                                        }
+
+                                        ASCEditorManager.shared.fetchDocumentService { _,_,_  in }
+                                    } else {
+                                        completion?(false)
+                                    }
+                                }
                             }
-
-                            ASCEditorManager.shared.fetchDocumentService { _,_,_  in }
                         }
                     } else if results["sms"] as? Bool ?? false {
                         if let hud = MBProgressHUD.currentHUD {

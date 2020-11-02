@@ -789,6 +789,10 @@ class ASCOnlyofficeProvider: ASCBaseFileProvider {
         if file == nil && folder == nil {
             return false
         }
+        
+        if let file = file, file.fileStatus == .isEditing {
+            return false
+        }
 
         guard let user = user else {
             return false

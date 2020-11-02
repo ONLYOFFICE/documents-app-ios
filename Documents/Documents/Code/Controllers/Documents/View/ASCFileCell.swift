@@ -21,6 +21,7 @@ class ASCFileCell: MGSwipeTableCell {
     @IBOutlet weak var separaterLabel: UILabel!
     @IBOutlet weak var icon: UIImageView!
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
+    @IBOutlet weak var statusImageView: UIImageView!
     
     var file: ASCFile? = nil {
         didSet {
@@ -62,7 +63,9 @@ class ASCFileCell: MGSwipeTableCell {
 
         title?.text = fileInfo.title
         owner?.text = fileInfo.updatedBy?.displayName ?? NSLocalizedString("Unknown", comment: "Invalid entity name")
-        date?.text = (fileInfo.updated != nil) ? dateFormatter.string(from: fileInfo.updated!) : NSLocalizedString("Unknown", comment: "Invalid entity name")
+        date?.text = (fileInfo.updated != nil)
+            ? dateFormatter.string(from: fileInfo.updated!)
+            : NSLocalizedString("Unknown", comment: "Invalid entity name")
         
         if fileInfo.pureContentLength < 1 {
             if fileInfo.device {
@@ -76,7 +79,21 @@ class ASCFileCell: MGSwipeTableCell {
             separaterLabel?.text = "•"
             sizeLabel?.text = fileInfo.displayContentLength
         }
-
+        
+        /// Status info
+        statusImageView?.isHidden = true
+        
+        if #available(iOS 13.0, *) {
+            if fileInfo.fileStatus == .isEditing {
+                statusImageView?.isHidden = false
+                statusImageView?.image = UIImage(
+                    systemName: "pencil",
+                    withConfiguration: UIImage.SymbolConfiguration(weight: .black)
+                )
+            }
+        }
+        
+        /// Thumb view
         let fileExt = fileInfo.title.fileExtension().lowercased()
 
         icon?.contentMode = .center

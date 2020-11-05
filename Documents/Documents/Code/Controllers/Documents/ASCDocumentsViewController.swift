@@ -70,7 +70,7 @@ class ASCDocumentsViewController: UITableViewController, UIGestureRecognizerDele
 
         if #available(iOS 11.0, *) {
             navigationItem.searchController = nil
-            navigationItem.hidesSearchBarWhenScrolling = true
+            navigationItem.hidesSearchBarWhenScrolling = featureLargeTitle
         } else {
             tableView.tableHeaderView = $0.searchBar
         }
@@ -94,6 +94,9 @@ class ASCDocumentsViewController: UITableViewController, UIGestureRecognizerDele
     
     // Interaction Controller
     fileprivate lazy var documentInteraction: UIDocumentInteractionController = UIDocumentInteractionController()
+    
+    // Features
+    private let featureLargeTitle = true
 
     
     // MARK: - Outlets
@@ -184,6 +187,13 @@ class ASCDocumentsViewController: UITableViewController, UIGestureRecognizerDele
             
             tableView.separatorStyle = .none
         }
+        
+        if !featureLargeTitle {
+            navigationController?.navigationBar.prefersLargeTitles = false
+            navigationItem.largeTitleDisplayMode = .never
+            navigationItem.searchController = searchController
+        }
+        
     }
 
     deinit {
@@ -198,6 +208,12 @@ class ASCDocumentsViewController: UITableViewController, UIGestureRecognizerDele
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        
+        if !featureLargeTitle {
+            navigationController?.navigationBar.prefersLargeTitles = false
+            navigationItem.largeTitleDisplayMode = .never
+            navigationItem.searchController = searchController
+        }
         
         if UIDevice.phone, let navigationController = navigationController {
             if navigationController.viewControllers.count > 1 {
@@ -226,7 +242,7 @@ class ASCDocumentsViewController: UITableViewController, UIGestureRecognizerDele
             UserDefaults.standard.set(folderAsString, forKey: ASCConstants.SettingsKeys.lastFolder)
         }
 
-        if #available(iOS 11.0, *) {
+        if #available(iOS 11.0, *), featureLargeTitle {
             DispatchQueue.main.async { [weak self] in
                 if let searchController = self?.searchController {
                     searchController.searchBar.alpha = 0
@@ -344,7 +360,9 @@ class ASCDocumentsViewController: UITableViewController, UIGestureRecognizerDele
 
             delay(seconds: 0.3) { [weak self] in
                 if let index = self?.tableData.firstIndex(where: { $0.id == file.id }) {
-                    self?.searchController.searchBar.isHidden = false
+                    if self?.featureLargeTitle ?? false {
+                        self?.searchController.searchBar.isHidden = false
+                    }
                     self?.tableView.scrollToRow(at: IndexPath(row: index, section: 0), at: .middle, animated: true)
                     self?.tableView.setNeedsLayout()
 
@@ -369,7 +387,9 @@ class ASCDocumentsViewController: UITableViewController, UIGestureRecognizerDele
             tableData.insert(folder, at: 0)
             total += 1
 
-            searchController.searchBar.isHidden = false
+            if featureLargeTitle {
+                searchController.searchBar.isHidden = false
+            }
             tableView.scrollToRow(at: IndexPath(row: 0, section: 0), at: .middle, animated: true)
             tableView.setNeedsLayout()
             
@@ -550,7 +570,7 @@ class ASCDocumentsViewController: UITableViewController, UIGestureRecognizerDele
             )
         }
 
-        if #available(iOS 11.0, *) {
+        if #available(iOS 11.0, *), featureLargeTitle {
             navigationController?.navigationBar.prefersLargeTitles = true
             navigationItem.largeTitleDisplayMode = .automatic
         }
@@ -831,8 +851,6 @@ class ASCDocumentsViewController: UITableViewController, UIGestureRecognizerDele
         if searchController.isActive {
             searchController.isActive = false
         }
-        
-        searchController.searchBar.isHidden = true
 
         addBarButton?.isEnabled = false // Disable create entity while loading first page
 
@@ -904,7 +922,15 @@ class ASCDocumentsViewController: UITableViewController, UIGestureRecognizerDele
             if let tableView = view as? UITableView {
                 tableView.backgroundView = nil
             }
+            
+            navigationController?.navigationBar.prefersLargeTitles = true
+            navigationItem.largeTitleDisplayMode = .automatic
+            
         } else {
+            
+            navigationController?.navigationBar.prefersLargeTitles = false
+            navigationItem.largeTitleDisplayMode = .never
+            
             let localEmptyView = searchController.isActive ? searchEmptyView : emptyView
 
             // If loading view still display

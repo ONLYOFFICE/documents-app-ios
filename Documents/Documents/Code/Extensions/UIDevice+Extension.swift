@@ -43,7 +43,7 @@ extension UIDevice {
     }
 
     static var device: Device {
-        return Device()
+        return Device.current
     }
 
     static var allowEditor: Bool {

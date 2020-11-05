@@ -33,6 +33,7 @@ class ASCConstants {
         static let supportMailTo            = "support@onlyoffice.com"
         static let legalTerms               = "https://www.onlyoffice.com/legalterms.aspx"
         static let applicationPage          = "https://www.onlyoffice.com/mobile.aspx"
+        static let applicationFeedbackForum = "https://cloud.onlyoffice.org/viewforum.php?f=48"
         static let appReview                = "itms-apps://itunes.apple.com/app/id944896972?action=write-review"
         static let appStoreGoogleAuth       = "https://itunes.apple.com/app/id388497605"
         static let help2authByApp           = "https://helpcenter.onlyoffice.com/guides/two-factor-authentication.aspx#step4"

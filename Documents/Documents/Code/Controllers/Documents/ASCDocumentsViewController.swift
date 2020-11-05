@@ -3039,7 +3039,8 @@ class ASCDocumentsViewController: UITableViewController, UIGestureRecognizerDele
                     hud?.hide(animated: false, afterDelay: 1.3)
                     hud = nil
                     
-                    completion?(items)
+                    let deletedItems = items.filter { provider.allowDelete(entity: $0) }
+                    completion?(deletedItems)
                 }
             }
         }

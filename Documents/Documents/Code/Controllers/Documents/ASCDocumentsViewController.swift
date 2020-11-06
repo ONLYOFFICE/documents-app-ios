@@ -2582,19 +2582,24 @@ class ASCDocumentsViewController: UITableViewController, UIGestureRecognizerDele
                         delay(seconds: 0.6) {
                             openingAlert.hide()
 
-                            if let splitVC = ASCViewControllerManager.shared.topViewController as? ASCBaseSplitViewController,
-                                let documentsNC = splitVC.detailViewController as? ASCDocumentsNavigationController,
-                                let documentsVC = documentsNC.viewControllers.first as? ASCDocumentsViewController
-                            {
-                                if let index = documentsVC.tableData.firstIndex(where: { ($0 as? ASCFile)?.title == newFile.title }) {
-                                    // Scroll to new cell
-                                    let indexPath = IndexPath(row: index, section: 0)
-                                    documentsVC.tableView.scrollToRow(at: indexPath, at: .middle, animated: true)
-                                    
-                                    // Highlight new cell
-                                    delay(seconds: 0.3) {
-                                        if let newCell = documentsVC.tableView.cellForRow(at: indexPath) {
-                                            documentsVC.highlight(cell: newCell)
+                            let splitVC = ASCViewControllerManager.shared.topViewController as? ASCBaseSplitViewController
+                            let documentsNC = splitVC?.detailViewController as? ASCDocumentsNavigationController
+                            let documentsVC: ASCDocumentsViewController? = documentsNC?.viewControllers.first as? ASCDocumentsViewController ?? ASCViewControllerManager.shared.topViewController as? ASCDocumentsViewController
+                            
+                            if let documentsVC = documentsVC {
+                                documentsVC.loadFirstPage { success in
+                                    if success {
+                                        if let index = documentsVC.tableData.firstIndex(where: { ($0 as? ASCFile)?.title == newFile.title }) {
+                                            // Scroll to new cell
+                                            let indexPath = IndexPath(row: index, section: 0)
+                                            documentsVC.tableView.scrollToRow(at: indexPath, at: .middle, animated: true)
+                                            
+                                            // Highlight new cell
+                                            delay(seconds: 0.3) {
+                                                if let newCell = documentsVC.tableView.cellForRow(at: indexPath) {
+                                                    documentsVC.highlight(cell: newCell)
+                                                }
+                                            }
                                         }
                                     }
                                 }

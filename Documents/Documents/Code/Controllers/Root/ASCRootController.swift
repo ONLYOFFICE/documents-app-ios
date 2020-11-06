@@ -104,7 +104,7 @@ class ASCRootController: UITabBarController {
 
                 if  let splitVC = selectedViewController as? ASCDeviceSplitViewController,
                     let categoryNC = splitVC.primaryViewController as? ASCBaseNavigationController,
-                    let categoryVC = categoryNC.topViewController as? ASCDeviceCategoryViewController
+                    let categoryVC = categoryNC.topViewController as? ASCDeviceCategoryViewController ?? categoryNC.viewControllers.first as? ASCDeviceCategoryViewController
                 {
                     if let folder = folder {
                         isFirstOpenDeviceCategory = true

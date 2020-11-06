@@ -262,7 +262,7 @@ class ASCEntityManager: NSObject, UITextFieldDelegate {
         if isDeviceEntities {
             for entity in entities {
                 if let file = entity as? ASCFile {
-                    if fromFolder.rootFolderType == .onlyofficeTrash {
+                    if fromFolder.rootFolderType == .deviceTrash {
                         ASCLocalFileHelper.shared.removeFile(Path(file.id))
                     } else {
                         guard let filePath = ASCLocalFileHelper.shared.resolve(filePath: Path.userTrash + file.title) else {
@@ -276,7 +276,7 @@ class ASCEntityManager: NSObject, UITextFieldDelegate {
                         }
                     }
                 } else if let folder = entity as? ASCFolder {
-                    if fromFolder.rootFolderType == .onlyofficeTrash {
+                    if fromFolder.rootFolderType == .deviceTrash {
                         ASCLocalFileHelper.shared.removeDirectory(Path(folder.id))
                     } else {
                         guard let folderPath = ASCLocalFileHelper.shared.resolve(folderPath: Path.userTrash + folder.title) else {

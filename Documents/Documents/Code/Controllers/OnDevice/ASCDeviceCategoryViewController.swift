@@ -100,7 +100,7 @@ class ASCDeviceCategoryViewController: UITableViewController {
             documentsVC.title = category.title
 
             documentsVC.navigationItem.leftBarButtonItem = splitVC.displayModeButtonItem
-            documentsVC.navigationItem.leftItemsSupplementBackButton = true
+            documentsVC.navigationItem.leftItemsSupplementBackButton = UIDevice.pad
 
             if let index = categories.firstIndex(where: { $0.folder?.rootFolderType == documentsVC.folder?.rootFolderType }) {
                 tableView.selectRow(at: IndexPath(row: index, section: 0), animated: false, scrollPosition: .none)

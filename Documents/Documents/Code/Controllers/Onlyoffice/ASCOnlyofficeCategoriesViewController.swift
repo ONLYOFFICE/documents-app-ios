@@ -291,7 +291,7 @@ class ASCOnlyofficeCategoriesViewController: UITableViewController {
             documentsVC.title = category.title
 
             documentsVC.navigationItem.leftBarButtonItem = splitVC.displayModeButtonItem
-            documentsVC.navigationItem.leftItemsSupplementBackButton = true
+            documentsVC.navigationItem.leftItemsSupplementBackButton = UIDevice.pad
 
             if categories.count < 1 {
                 loadCategories()

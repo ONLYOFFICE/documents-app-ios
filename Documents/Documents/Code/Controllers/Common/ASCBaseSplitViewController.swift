@@ -33,7 +33,7 @@ class ASCBaseSplitViewController: UISplitViewController {
 
         if let navigationController = viewControllers.last as? UINavigationController {
             navigationController.topViewController?.navigationItem.leftBarButtonItem = displayModeButtonItem
-            navigationController.topViewController?.navigationItem.leftItemsSupplementBackButton = true
+            navigationController.topViewController?.navigationItem.leftItemsSupplementBackButton = UIDevice.pad
         }
     }
 

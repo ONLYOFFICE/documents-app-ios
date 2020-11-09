@@ -255,7 +255,7 @@ class ASCCloudsViewController: UITableViewController {
                 ASCFileManager.provider = provider
 
                 documentsVC.navigationItem.leftBarButtonItem = splitVC.displayModeButtonItem
-                documentsVC.navigationItem.leftItemsSupplementBackButton = true
+                documentsVC.navigationItem.leftItemsSupplementBackButton = UIDevice.pad
 
                 if connected.count < 1 {
                     updateMyClouds()

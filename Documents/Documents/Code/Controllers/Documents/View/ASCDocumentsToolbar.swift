@@ -18,6 +18,10 @@ class ASCDocumentsToolbar : UIToolbar {
         {
             let contentViewHeight =  uiToolbarContentView.frame.height
             
+            if (uiBarBackground.height - contentViewHeight) < contentViewHeight {
+                return
+            }
+            
             uiBarBackground.frame = CGRect(
                 x: uiBarBackground.x,
                 y: uiBarBackground.y + contentViewHeight,

@@ -1867,7 +1867,7 @@ others which use WebDAV protocol.</source>
       </trans-unit>
       <trans-unit id="Edit documents locally" xml:space="preserve">
         <source>Edit documents locally</source>
-        <target>Редактировать документ локально</target>
+        <target>Редактируйте документ локально</target>
         <note>Introduction Step Four - Title</note>
       </trans-unit>
       <trans-unit id="Email" xml:space="preserve">

@@ -55,6 +55,9 @@ class ASCCloudsViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        navigationController?.navigationBar.prefersLargeTitles = true
+        navigationItem.largeTitleDisplayMode = .always
 
         if UIDevice.pad, let documentsNC = navigationController as? ASCBaseNavigationController {
             documentsNC.hasShadow = true
@@ -70,6 +73,13 @@ class ASCCloudsViewController: UITableViewController {
         super.viewWillAppear(animated)
 
         ASCViewControllerManager.shared.rootController?.tabBar.isHidden = false
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        navigationController?.navigationBar.prefersLargeTitles = true
+        navigationItem.largeTitleDisplayMode = .always
     }
 
     func loadData() {

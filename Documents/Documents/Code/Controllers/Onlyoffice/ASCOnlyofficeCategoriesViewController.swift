@@ -59,6 +59,9 @@ class ASCOnlyofficeCategoriesViewController: UITableViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
 
+        navigationController?.navigationBar.prefersLargeTitles = true
+        navigationItem.largeTitleDisplayMode = .always
+        
         title = ASCConstants.Name.appNameShort
         navigationItem.backBarButtonItem?.title = ASCConstants.Name.appNameShort
         navigationItem.title = ASCConstants.Name.appNameShort
@@ -69,6 +72,10 @@ class ASCOnlyofficeCategoriesViewController: UITableViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
+        
+        navigationController?.navigationBar.prefersLargeTitles = true
+        navigationItem.largeTitleDisplayMode = .always
+        
         fetchUpdateUserInfo()
     }
 

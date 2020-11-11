@@ -254,6 +254,9 @@ class ASCDocumentsViewController: UITableViewController, UIGestureRecognizerDele
                 }
             }
         }
+        
+        navigationController?.navigationBar.prefersLargeTitles = tableData.count > 0
+        navigationItem.largeTitleDisplayMode = tableData.count > 0 ? .automatic : .never
     }
 
     override func viewDidDisappear(_ animated: Bool) {

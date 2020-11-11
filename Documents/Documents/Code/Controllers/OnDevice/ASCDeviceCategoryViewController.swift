@@ -74,8 +74,18 @@ class ASCDeviceCategoryViewController: UITableViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
 
+        navigationController?.navigationBar.prefersLargeTitles = true
+        navigationItem.largeTitleDisplayMode = .always
+        
         ASCViewControllerManager.shared.rootController?.tabBar.isHidden = false
         updateLargeTitlesSize()
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        navigationController?.navigationBar.prefersLargeTitles = true
+        navigationItem.largeTitleDisplayMode = .always
     }
 
     func select(category: ASCCategory, animated: Bool = false) {

@@ -149,7 +149,7 @@
 "Connect Clouds" = "Подключить облака";
 
 /* Introduction Step Three - Description */
-"Connect third-party storage\nlike Nextcloud, ownCloud, Yandex Disk and\nothers which use WebDAV protocol." = "Подключите стороннее хранилище,\nтакое как Nextcloud, ownCloud, Яндекс.Диск, и\nдругие, использующие протокол WebDAV.";
+"Connect third-party storage\nlike Nextcloud, ownCloud, Yandex Disk and\nothers which use WebDAV protocol." = "Подключите стороннее хранилище,\nтакое как Nextcloud, ownCloud, Яндекс.Диск и\nдругие, использующие протокол WebDAV.";
 
 /* Footer text */
 "Connect to your %@ cloud to store files online and collaborate on documents in real time" = "Подключитесь к своему облаку %@, чтобы хранить файлы онлайн и работать над документами совместно в режиме реального времени";

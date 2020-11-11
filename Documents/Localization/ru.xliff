@@ -1736,7 +1736,7 @@ others which use WebDAV protocol.</source>
       </trans-unit>
       <trans-unit id="Create new documents, spreadsheets or presentations. Create new folders to organize your files." xml:space="preserve">
         <source>Create new documents, spreadsheets or presentations. Create new folders to organize your files.</source>
-        <target>Создавайте новые документы, таблицы или презентации. Создавайте новый папки, чтобы упорядочивать файлы.</target>
+        <target>Создавайте новые документы, таблицы или презентации. Создавайте новые папки, чтобы упорядочивать файлы.</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Creating" xml:space="preserve">

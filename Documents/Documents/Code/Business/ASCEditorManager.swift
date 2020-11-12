@@ -2348,8 +2348,8 @@ class ASCEditorManager: NSObject, DEEditorDelegate, SEEditorDelegate, PEEditorDe
         }
 
         let createAction = UIAlertAction(title: ASCLocalization.Common.ok) { action in
-            if let textField = alertController.textFields?.first,
-                let password = textField.text?.trim(),
+            if  let textField = alertController.textFields?.first,
+                let password = textField.text,
                 password.length > 0
             {
                 handler(password)
@@ -2367,7 +2367,7 @@ class ASCEditorManager: NSObject, DEEditorDelegate, SEEditorDelegate, PEEditorDe
             textField.isSecureTextEntry = true
 
             textField.add(for: .editingChanged, {
-                createAction.isEnabled = (textField.text?.trim().length)! > 0
+                createAction.isEnabled = (textField.text?.length)! > 0
             })
 
             delay(seconds: 0.2) {

@@ -1478,7 +1478,7 @@ Note: if you forget the passcode, you'll need to delete and reinstall the app. A
       </trans-unit>
       <trans-unit id="Check your internet connection" xml:space="preserve">
         <source>Check your internet connection</source>
-        <target>Проверить интернет-соединение</target>
+        <target>Проверьте интернет-соединение</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Choose CSV Options" xml:space="preserve">

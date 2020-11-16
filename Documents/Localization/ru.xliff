@@ -2131,7 +2131,7 @@ others which use WebDAV protocol.</source>
       </trans-unit>
       <trans-unit id="My Drive" xml:space="preserve">
         <source>My Drive</source>
-        <target>Мои диск</target>
+        <target>Мой диск</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Name is empty" xml:space="preserve">

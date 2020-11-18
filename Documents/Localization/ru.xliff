@@ -2,7 +2,7 @@
 <xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="1.2" xsi:schemaLocation="urn:oasis:names:tc:xliff:document:1.2 http://docs.oasis-open.org/xliff/v1.2/os/xliff-core-1.2-strict.xsd">
   <file original="Documents/Base.lproj/ConnectStorage.storyboard" source-language="en" target-language="ru" datatype="plaintext">
     <header>
-      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="11.6" build-num="11E708"/>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="12.2" build-num="12B45b"/>
     </header>
     <body>
       <trans-unit id="1hg-GO-WNq.text" xml:space="preserve">
@@ -59,7 +59,7 @@
   </file>
   <file original="Documents/Base.lproj/CreatePortal.storyboard" source-language="en" target-language="ru" datatype="plaintext">
     <header>
-      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="11.6" build-num="11E708"/>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="12.2" build-num="12B45b"/>
     </header>
     <body>
       <trans-unit id="BMv-HP-hD2.normalTitle" xml:space="preserve">
@@ -132,7 +132,7 @@ start using your office</source>
   </file>
   <file original="Documents/Base.lproj/DocumentsEmptyView.xib" source-language="en" target-language="ru" datatype="plaintext">
     <header>
-      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="11.6" build-num="11E708"/>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="12.2" build-num="12B45b"/>
     </header>
     <body>
       <trans-unit id="1kl-l7-AtV.text" xml:space="preserve">
@@ -154,7 +154,7 @@ start using your office</source>
   </file>
   <file original="Documents/Base.lproj/Intro.storyboard" source-language="en" target-language="ru" datatype="plaintext">
     <header>
-      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="11.6" build-num="11E708"/>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="12.2" build-num="12B45b"/>
     </header>
     <body>
       <trans-unit id="De8-tD-APT.text" xml:space="preserve">
@@ -176,7 +176,7 @@ start using your office</source>
   </file>
   <file original="Documents/Base.lproj/Localizable.stringsdict" source-language="en" target-language="ru" datatype="plaintext">
     <header>
-      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="11.6" build-num="11E708"/>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="12.2" build-num="12B45b"/>
     </header>
     <body>
       <trans-unit id="/%lu File selected:dict/NSStringLocalizedFormatKey:dict/:string" xml:space="preserve">
@@ -388,7 +388,7 @@ start using your office</source>
   </file>
   <file original="Documents/Base.lproj/Login.storyboard" source-language="en" target-language="ru" datatype="plaintext">
     <header>
-      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="11.6" build-num="11E708"/>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="12.2" build-num="12B45b"/>
     </header>
     <body>
       <trans-unit id="0X2-Xg-z5B.text" xml:space="preserve">
@@ -442,9 +442,12 @@ start using your office</source>
         <note>Class = "UIButton"; normalTitle = "Continue"; ObjectID = "AqJ-b9-XQV";</note>
       </trans-unit>
       <trans-unit id="B8R-KD-Lml.text" xml:space="preserve">
-        <source>Set up an application to generate the authentication codes</source>
-        <target>Настройте приложение для генерации кодов аутентификации.</target>
-        <note>Class = "UILabel"; text = "Set up an application to generate the authentication codes"; ObjectID = "B8R-KD-Lml";</note>
+        <source>Set up an application to generate
+the authentication codes</source>
+        <target>Настройте приложение для генерации
+кодов аутентификации.</target>
+        <note>Class = "UILabel"; text = "Set up an application to generate
+the authentication codes"; ObjectID = "B8R-KD-Lml";</note>
       </trans-unit>
       <trans-unit id="DK4-QO-Jde.text" xml:space="preserve">
         <source>Two-Factor
@@ -481,14 +484,20 @@ Authentication</source>
         <note>Class = "UILabel"; text = "Select an account to sign in"; ObjectID = "Gkv-tP-6EM";</note>
       </trans-unit>
       <trans-unit id="K5M-Of-QAk.text" xml:space="preserve">
-        <source>Copy the key and paste it to the Google Authenticator application</source>
-        <target>Скопируйте ключ и вставьте его в приложение Google Authenticator</target>
-        <note>Class = "UILabel"; text = "Copy the key and paste it to the Google Authenticator application"; ObjectID = "K5M-Of-QAk";</note>
+        <source>Copy the key and paste it to
+the Google Authenticator application</source>
+        <target>Скопируйте ключ и вставьте его
+в приложение Google Authenticator</target>
+        <note>Class = "UILabel"; text = "Copy the key and paste it to
+the Google Authenticator application"; ObjectID = "K5M-Of-QAk";</note>
       </trans-unit>
       <trans-unit id="LwV-Os-V4m.text" xml:space="preserve">
-        <source>Launch Google Authenticator application</source>
-        <target>Запустите приложение Google Authenticator</target>
-        <note>Class = "UILabel"; text = "Launch Google Authenticator application"; ObjectID = "LwV-Os-V4m";</note>
+        <source>Launch Google Authenticator
+application</source>
+        <target>Запустите приложение
+Google Authenticator</target>
+        <note>Class = "UILabel"; text = "Launch Google Authenticator
+application"; ObjectID = "LwV-Os-V4m";</note>
       </trans-unit>
       <trans-unit id="MNA-z2-ITx.text" xml:space="preserve">
         <source>Enter a phone number that can be used to verify your identity</source>
@@ -516,9 +525,12 @@ Authentication</source>
         <note>Class = "UIButton"; normalTitle = "Sign in"; ObjectID = "QAn-vu-xMR";</note>
       </trans-unit>
       <trans-unit id="R2F-fc-11j.text" xml:space="preserve">
-        <source>Run the application and tap the new account icon</source>
-        <target>Запустите приложение и нажмите значок новой учетной записи</target>
-        <note>Class = "UILabel"; text = "Run the application and tap the new account icon"; ObjectID = "R2F-fc-11j";</note>
+        <source>Run the application and
+tap the new account icon</source>
+        <target>Запустите приложение и нажмите
+значок новой учетной записи</target>
+        <note>Class = "UILabel"; text = "Run the application and
+tap the new account icon"; ObjectID = "R2F-fc-11j";</note>
       </trans-unit>
       <trans-unit id="RDr-pH-MKV.normalTitle" xml:space="preserve">
         <source>Open</source>
@@ -526,9 +538,12 @@ Authentication</source>
         <note>Class = "UIButton"; normalTitle = "Open"; ObjectID = "RDr-pH-MKV";</note>
       </trans-unit>
       <trans-unit id="SH2-Fd-5Ze.text" xml:space="preserve">
-        <source>Open authentication app and copy code from there</source>
-        <target>Откройте приложение аутентификации и скопируйте код оттуда</target>
-        <note>Class = "UILabel"; text = "Open authentication app and copy code from there"; ObjectID = "SH2-Fd-5Ze";</note>
+        <source>Open authentication app
+and copy code from there</source>
+        <target>Откройте приложение аутентификации
+и скопируйте код оттуда</target>
+        <note>Class = "UILabel"; text = "Open authentication app
+and copy code from there"; ObjectID = "SH2-Fd-5Ze";</note>
       </trans-unit>
       <trans-unit id="W8Q-CO-c0L.text" xml:space="preserve">
         <source>We have sent you an SMS with a code to the number %@</source>
@@ -606,9 +621,15 @@ Authentication</source>
         <note>Class = "UIBarButtonItem"; title = "Next"; ObjectID = "twm-cB-W69";</note>
       </trans-unit>
       <trans-unit id="vgV-fF-jOl.text" xml:space="preserve">
-        <source>Copy the code generated by Google Authenticator application and insert it to the input field</source>
-        <target>Скопируйте код, созданный приложением Google Authenticator, и вставьте его в поле ввода</target>
-        <note>Class = "UILabel"; text = "Copy the code generated by Google Authenticator application and insert it to the input field"; ObjectID = "vgV-fF-jOl";</note>
+        <source>Copy the code generated by
+Google Authenticator application and
+insert it to the input field</source>
+        <target>Скопируйте код, созданный
+приложением Google Authenticator,
+и вставьте его в поле ввода</target>
+        <note>Class = "UILabel"; text = "Copy the code generated by
+Google Authenticator application and
+insert it to the input field"; ObjectID = "vgV-fF-jOl";</note>
       </trans-unit>
       <trans-unit id="vlQ-jV-iFo.text" xml:space="preserve">
         <source>Please set up an application to generate the codes for the portal access (e.g. Google Authenticator) to continue the work at the portal</source>
@@ -634,7 +655,7 @@ Authentication</source>
   </file>
   <file original="Documents/Base.lproj/Main.storyboard" source-language="en" target-language="ru" datatype="plaintext">
     <header>
-      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="11.6" build-num="11E708"/>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="12.2" build-num="12B45b"/>
     </header>
     <body>
       <trans-unit id="0Hf-aP-smp.text" xml:space="preserve">
@@ -786,7 +807,7 @@ Authentication</source>
   </file>
   <file original="Documents/Base.lproj/Settings.storyboard" source-language="en" target-language="ru" datatype="plaintext">
     <header>
-      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="11.6" build-num="11E708"/>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="12.2" build-num="12B45b"/>
     </header>
     <body>
       <trans-unit id="0DJ-uV-iju.title" xml:space="preserve">
@@ -917,7 +938,7 @@ Note: if you forget the passcode, you'll need to delete and reinstall the app. A
   </file>
   <file original="Documents/Base.lproj/Share.storyboard" source-language="en" target-language="ru" datatype="plaintext">
     <header>
-      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="11.6" build-num="11E708"/>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="12.2" build-num="12B45b"/>
     </header>
     <body>
       <trans-unit id="9Wg-zE-nZA.segmentTitles[0]" xml:space="preserve">
@@ -1009,7 +1030,7 @@ Note: if you forget the passcode, you'll need to delete and reinstall the app. A
   </file>
   <file original="Documents/Base.lproj/Sort.storyboard" source-language="en" target-language="ru" datatype="plaintext">
     <header>
-      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="11.6" build-num="11E708"/>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="12.2" build-num="12B45b"/>
     </header>
     <body>
       <trans-unit id="HjM-la-pDc.text" xml:space="preserve">
@@ -1036,7 +1057,7 @@ Note: if you forget the passcode, you'll need to delete and reinstall the app. A
   </file>
   <file original="Documents/Base.lproj/Transfer.storyboard" source-language="en" target-language="ru" datatype="plaintext">
     <header>
-      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="11.6" build-num="11E708"/>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="12.2" build-num="12B45b"/>
     </header>
     <body>
       <trans-unit id="9YY-0H-nww.text" xml:space="preserve">
@@ -1073,7 +1094,7 @@ Note: if you forget the passcode, you'll need to delete and reinstall the app. A
   </file>
   <file original="Documents/Base.lproj/UserProfile.storyboard" source-language="en" target-language="ru" datatype="plaintext">
     <header>
-      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="11.6" build-num="11E708"/>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="12.2" build-num="12B45b"/>
     </header>
     <body>
       <trans-unit id="1S2-Q7-5vL.text" xml:space="preserve">
@@ -1115,7 +1136,7 @@ Note: if you forget the passcode, you'll need to delete and reinstall the app. A
   </file>
   <file original="Documents/Code/Controllers/CreateEntity/Views/Base.lproj/ASCCreateEntityView.xib" source-language="en" target-language="ru" datatype="plaintext">
     <header>
-      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="11.6" build-num="11E708"/>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="12.2" build-num="12B45b"/>
     </header>
     <body>
       <trans-unit id="0TH-k4-z5u.normalTitle" xml:space="preserve">
@@ -1147,7 +1168,7 @@ Note: if you forget the passcode, you'll need to delete and reinstall the app. A
   </file>
   <file original="Documents/Code/Vendor/PasscodeLock/Base.lproj/PasscodeLock.strings" source-language="en" target-language="ru" datatype="plaintext">
     <header>
-      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="11.6" build-num="11E708"/>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="12.2" build-num="12B45b"/>
     </header>
     <body>
       <trans-unit id="PasscodeLockChangeDescription" xml:space="preserve">
@@ -1219,7 +1240,7 @@ Note: if you forget the passcode, you'll need to delete and reinstall the app. A
   </file>
   <file original="Documents/Code/Vendor/PasscodeLock/Views/Base.lproj/PasscodeLockView.xib" source-language="en" target-language="ru" datatype="plaintext">
     <header>
-      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="11.6" build-num="11E708"/>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="12.2" build-num="12B45b"/>
     </header>
     <body>
       <trans-unit id="0CR-0R-0Nr.normalTitle" xml:space="preserve">
@@ -1301,7 +1322,7 @@ Note: if you forget the passcode, you'll need to delete and reinstall the app. A
   </file>
   <file original="Documents/en.lproj/InfoPlist.strings" source-language="en" target-language="ru" datatype="plaintext">
     <header>
-      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="11.6" build-num="11E708"/>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="12.2" build-num="12B45b"/>
     </header>
     <body>
       <trans-unit id="CFBundleName" xml:space="preserve">
@@ -1343,7 +1364,7 @@ Note: if you forget the passcode, you'll need to delete and reinstall the app. A
   </file>
   <file original="Documents/en.lproj/Localizable.strings" source-language="en" target-language="ru" datatype="plaintext">
     <header>
-      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="11.6" build-num="11E708"/>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="12.2" build-num="12B45b"/>
     </header>
     <body>
       <trans-unit id="%i of %i" xml:space="preserve">
@@ -1930,6 +1951,10 @@ others which use WebDAV protocol.</source>
         <target>Ошибка при проверке имени портала</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
+      <trans-unit id="Failed to copy: %@" xml:space="preserve">
+        <source>Failed to copy: %@</source>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
       <trans-unit id="Failed to get file information from the server." xml:space="preserve">
         <source>Failed to get file information from the server.</source>
         <target>Ошибка при получении информации о файле с сервера.</target>
@@ -1948,6 +1973,15 @@ others which use WebDAV protocol.</source>
       <trans-unit id="Failed to get the address of the document server." xml:space="preserve">
         <source>Failed to get the address of the document server.</source>
         <target>Ошибка получения адреса сервера документов.</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Failed to move: %@" xml:space="preserve">
+        <source>Failed to move: %@</source>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Failed to send feedback by mail. Try to write your request on our forum." xml:space="preserve">
+        <source>Failed to send feedback by mail. Try to write your request on our forum.</source>
+        <target>Не удалось отправить отзыв по почте. Попробуйте написать свой запрос на нашем форуме.</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Failed upload source file to conversion online service." xml:space="preserve">
@@ -2660,9 +2694,9 @@ others which use WebDAV protocol.</source>
         <target>Файл с именем '%1$@' уже существует в папке '%2$@'</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
-      <trans-unit id="The password is incorrect. It must contain 6 characters" xml:space="preserve">
-        <source>The password is incorrect. It must contain 6 characters</source>
-        <target>Некорректный пароль. Он должен содержать не менее 6 символов.</target>
+      <trans-unit id="The password is incorrect. It must contain 8 characters" xml:space="preserve">
+        <source>The password is incorrect. It must contain 8 characters</source>
+        <target>Некорректный пароль. Он должен содержать не менее 8 символов.</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="The portal address is invalid" xml:space="preserve">
@@ -3081,7 +3115,7 @@ then accessed from any other device.</source>
   </file>
   <file original="Settings.bundle/en.lproj/Root.strings" source-language="en" target-language="ru" datatype="plaintext">
     <header>
-      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="11.6" build-num="11E708"/>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="12.2" build-num="12B45b"/>
     </header>
     <body>
       <trans-unit id="Acknowledgements" xml:space="preserve">

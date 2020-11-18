@@ -372,6 +372,9 @@
 "Failed to get the address of the document server." = "Ошибка получения адреса сервера документов.";
 
 /* No comment provided by engineer. */
+"Failed to send feedback by mail. Try to write your request on our forum." = "Не удалось отправить отзыв по почте. Попробуйте написать свой запрос на нашем форуме.";
+
+/* No comment provided by engineer. */
 "Failed upload source file to conversion online service." = "Ошибка загрузки исходного файла в службу онлайн-конвертации.";
 
 /* No comment provided by engineer. */
@@ -799,7 +802,7 @@
 "The item with the name '%@' already exists in the folder '%@'." = "Файл с именем '%1$@' уже существует в папке '%2$@'";
 
 /* No comment provided by engineer. */
-"The password is incorrect. It must contain 6 characters" = "Некорректный пароль. Он должен содержать не менее 6 символов.";
+"The password is incorrect. It must contain 8 characters" = "Некорректный пароль. Он должен содержать не менее 8 символов.";
 
 /* No comment provided by engineer. */
 "The portal address is invalid" = "Некорректный адрес портала";

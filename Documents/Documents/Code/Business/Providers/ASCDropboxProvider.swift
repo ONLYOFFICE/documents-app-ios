@@ -689,7 +689,7 @@ class ASCDropboxProvider: ASCBaseFileProvider {
                                     cloudFile.displayContentLength = String.fileSizeToString(with: fileSize)
                                     cloudFile.pureContentLength = Int(fileSize)
                                     
-                                    Analytics.logEvent(ASCConstants.Analytics.Event.createEntity, parameters: [
+                                    ASCAnalytics.logEvent(ASCConstants.Analytics.Event.createEntity, parameters: [
                                         "portal": strongSelf.provider?.baseURL?.absoluteString ?? "none",
                                         "onDevice": false,
                                         "type": "file",
@@ -717,7 +717,7 @@ class ASCDropboxProvider: ASCBaseFileProvider {
         let path = (Path(folder.id) + name).rawValue
         upload(path, data: data, overwrite: false, params: nil) { [weak self] progress, result, error, response in
             if let _ = result {
-                Analytics.logEvent(ASCConstants.Analytics.Event.createEntity, parameters: [
+                ASCAnalytics.logEvent(ASCConstants.Analytics.Event.createEntity, parameters: [
                     "portal": self?.provider?.baseURL?.absoluteString ?? "none",
                     "onDevice": false,
                     "type": "file",
@@ -756,7 +756,7 @@ class ASCDropboxProvider: ASCBaseFileProvider {
                     cloudFolder.parent = folder
                     cloudFolder.parentId = folder.id
 
-                    Analytics.logEvent(ASCConstants.Analytics.Event.createEntity, parameters: [
+                    ASCAnalytics.logEvent(ASCConstants.Analytics.Event.createEntity, parameters: [
                         "portal": provider.baseURL?.absoluteString ?? "none",
                         "onDevice": false,
                         "type": "folder"

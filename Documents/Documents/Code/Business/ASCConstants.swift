@@ -103,6 +103,10 @@ class ASCConstants {
             static let openExternal             = "open_external"
             static let createEntity             = "create_entity"
         }
+        
+        static var allow: Bool {
+            return UserDefaults.standard.bool(forKey: "share_analytics")
+        }
     }
 
     struct Shortcuts {

@@ -25,6 +25,7 @@
 		FC0F01DF216F443E008D79A5 /* ASCLocalProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC0F01DE216F443E008D79A5 /* ASCLocalProvider.swift */; };
 		FC0F01E1216F46B7008D79A5 /* ASCOnlyofficeProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC0F01E0216F46B7008D79A5 /* ASCOnlyofficeProvider.swift */; };
 		FC0F01E3216F4EA7008D79A5 /* ASCWebDAVProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC0F01E2216F4EA7008D79A5 /* ASCWebDAVProvider.swift */; };
+		FC12ACF42567D1C300FF1CBB /* ASCAnalytics.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC12ACF32567D1C200FF1CBB /* ASCAnalytics.swift */; };
 		FC1755971E9CAFDB00D73D8E /* ASCSortViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC1755961E9CAFDB00D73D8E /* ASCSortViewController.swift */; };
 		FC1AD6142175FE7000DADEE0 /* ASCNetworkReachability.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC1AD6132175FE7000DADEE0 /* ASCNetworkReachability.swift */; };
 		FC1EA5CB1ECECBC3008FEE2E /* ASCBaseNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC1EA5CA1ECECBC3008FEE2E /* ASCBaseNavigationController.swift */; };
@@ -286,6 +287,7 @@
 		FC0F01DE216F443E008D79A5 /* ASCLocalProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCLocalProvider.swift; sourceTree = "<group>"; };
 		FC0F01E0216F46B7008D79A5 /* ASCOnlyofficeProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCOnlyofficeProvider.swift; sourceTree = "<group>"; };
 		FC0F01E2216F4EA7008D79A5 /* ASCWebDAVProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCWebDAVProvider.swift; sourceTree = "<group>"; };
+		FC12ACF32567D1C200FF1CBB /* ASCAnalytics.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASCAnalytics.swift; sourceTree = "<group>"; };
 		FC1755961E9CAFDB00D73D8E /* ASCSortViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASCSortViewController.swift; sourceTree = "<group>"; };
 		FC1AD6132175FE7000DADEE0 /* ASCNetworkReachability.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCNetworkReachability.swift; sourceTree = "<group>"; };
 		FC1EA5CA1ECECBC3008FEE2E /* ASCBaseNavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASCBaseNavigationController.swift; sourceTree = "<group>"; };
@@ -1138,6 +1140,7 @@
 				FC4D0A232494F8B2001EF1B5 /* ASCLogIntercepter.swift */,
 				FC4D0A2C24950503001EF1B5 /* ASCDebugManager.swift */,
 				FC0946AF249776D4005D54E6 /* ASCLogger.swift */,
+				FC12ACF32567D1C200FF1CBB /* ASCAnalytics.swift */,
 			);
 			path = Business;
 			sourceTree = "<group>";
@@ -1776,6 +1779,7 @@
 				FCC552B61EC3196B00F645EE /* ASCCountryCodeViewController.swift in Sources */,
 				FC28F2C41E8D131800A8F985 /* ASCCreateEntity.swift in Sources */,
 				FC301A25230D6F1F00DC25CA /* ASCFileCell.swift in Sources */,
+				FC12ACF42567D1C300FF1CBB /* ASCAnalytics.swift in Sources */,
 				FC786FC31EB879F600181D62 /* ASCIntroViewController.swift in Sources */,
 				FCA7500822BB9CD500991682 /* UITableViewCell+Extensions.swift in Sources */,
 				FC1EA5D21ECF2A6D008FEE2E /* ASCSettingsViewController.swift in Sources */,

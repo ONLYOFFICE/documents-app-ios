@@ -525,7 +525,7 @@ class ASCOnlyofficeProvider: ASCBaseFileProvider {
                 } else {
                     if let result = result as? [String: Any] {
                         let file = ASCFile(JSON: result)
-                        Analytics.logEvent(ASCConstants.Analytics.Event.createEntity, parameters: [
+                        ASCAnalytics.logEvent(ASCConstants.Analytics.Event.createEntity, parameters: [
                             "portal": ASCOnlyOfficeApi.shared.baseUrl ?? "none",
                             "onDevice": false,
                             "type": "file",
@@ -559,7 +559,7 @@ class ASCOnlyofficeProvider: ASCBaseFileProvider {
 
         upload(folder.id, data: data, overwrite: false, params: params) { progress, result, error, response in
             if let _ = result as? [String: Any] {
-                Analytics.logEvent(ASCConstants.Analytics.Event.createEntity, parameters: [
+                ASCAnalytics.logEvent(ASCConstants.Analytics.Event.createEntity, parameters: [
                     "portal": ASCOnlyOfficeApi.shared.baseUrl ?? "none",
                     "onDevice": false,
                     "type": "file",
@@ -583,7 +583,7 @@ class ASCOnlyofficeProvider: ASCBaseFileProvider {
                 } else {
                     if let result = result as? [String: Any] {
                         let folder = ASCFolder(JSON: result)
-                        Analytics.logEvent(ASCConstants.Analytics.Event.createEntity, parameters: [
+                        ASCAnalytics.logEvent(ASCConstants.Analytics.Event.createEntity, parameters: [
                             "portal": self?.api.baseUrl ?? "none",
                             "onDevice": false,
                             "type": "folder"

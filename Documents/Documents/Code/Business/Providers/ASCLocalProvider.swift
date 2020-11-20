@@ -405,7 +405,7 @@ class ASCLocalProvider: ASCBaseFileProvider {
                 file.displayContentLength = String.fileSizeToString(with: filePath.fileSize ?? 0)
                 file.pureContentLength = Int(filePath.fileSize ?? 0)
 
-                Analytics.logEvent(ASCConstants.Analytics.Event.createEntity, parameters: [
+                ASCAnalytics.logEvent(ASCConstants.Analytics.Event.createEntity, parameters: [
                     "portal": "none",
                     "onDevice": true,
                     "type": "file",
@@ -453,7 +453,7 @@ class ASCLocalProvider: ASCBaseFileProvider {
             file.displayContentLength = String.fileSizeToString(with: filePath.fileSize ?? 0)
             file.pureContentLength = Int(filePath.fileSize ?? 0)
 
-            Analytics.logEvent(ASCConstants.Analytics.Event.createEntity, parameters: [
+            ASCAnalytics.logEvent(ASCConstants.Analytics.Event.createEntity, parameters: [
                 "portal": ASCOnlyOfficeApi.shared.baseUrl ?? "none",
                 "onDevice": true,
                 "type": "file",
@@ -495,7 +495,7 @@ class ASCLocalProvider: ASCBaseFileProvider {
                 newFolder.foldersCount = -1
                 newFolder.device = true
 
-                Analytics.logEvent(ASCConstants.Analytics.Event.createEntity, parameters: [
+                ASCAnalytics.logEvent(ASCConstants.Analytics.Event.createEntity, parameters: [
                     "portal": "none",
                     "onDevice": true,
                     "type": "folder"

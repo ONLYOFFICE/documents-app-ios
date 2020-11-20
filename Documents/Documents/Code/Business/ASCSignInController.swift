@@ -163,7 +163,7 @@ class ASCSignInController {
                                         })
 
                                         if let portal = apiOptions["portal"], let provider = apiOptions["provider"] {
-                                            Analytics.logEvent(ASCConstants.Analytics.Event.loginPortal, parameters: [
+                                            ASCAnalytics.logEvent(ASCConstants.Analytics.Event.loginPortal, parameters: [
                                                 "portal": portal,
                                                 "provider": provider
                                                 ]

@@ -341,7 +341,7 @@ class ASCCreatePortalViewController: UIViewController, UITextFieldDelegate {
                     case .success(let responseJson):
                         if let responseJson = responseJson as? [String: Any] {
                             if let tenant = responseJson["tenant"] as? [String: Any], let domain = tenant["domain"] as? String {
-                                Analytics.logEvent(ASCConstants.Analytics.Event.createPortal, parameters: [
+                                ASCAnalytics.logEvent(ASCConstants.Analytics.Event.createPortal, parameters: [
                                     "portal": domain,
                                     "email": email
                                     ]

@@ -290,7 +290,7 @@ class ASCAccountsViewController: UIViewController {
                             // 2 - IOSDocuments
                         })
 
-                        Analytics.logEvent(ASCConstants.Analytics.Event.switchAccount, parameters: [
+                        ASCAnalytics.logEvent(ASCConstants.Analytics.Event.switchAccount, parameters: [
                             "portal": baseUrl
                             ]
                         )

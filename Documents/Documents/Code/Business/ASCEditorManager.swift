@@ -241,7 +241,7 @@ class ASCEditorManager: NSObject, DEEditorDelegate, SEEditorDelegate, PEEditorDe
                             documentEditorNavigation.editorController.delegate = self
                             documentEditorNavigation.editorController.open(document)
                             self.openedFile = file
-                            Analytics.logEvent(ASCConstants.Analytics.Event.openEditor, parameters: [
+                            ASCAnalytics.logEvent(ASCConstants.Analytics.Event.openEditor, parameters: [
                                 "portal": ASCOnlyOfficeApi.shared.baseUrl ?? "none",
                                 "type": isDocument ? "document" : (isSpreadsheet ? "spreadsheet" : (isPresentation ? "presentation" : "unknown")),
                                 "onDevice": file.device,
@@ -347,7 +347,7 @@ class ASCEditorManager: NSObject, DEEditorDelegate, SEEditorDelegate, PEEditorDe
                 documentEditorNavigation.editorController.open(document)
                 self.openedFile = file
                 self.provider = ASCFileManager.onlyofficeProvider
-                Analytics.logEvent(ASCConstants.Analytics.Event.openEditor, parameters: [
+                ASCAnalytics.logEvent(ASCConstants.Analytics.Event.openEditor, parameters: [
                     "portal": ASCOnlyOfficeApi.shared.baseUrl ?? "none",
                     "type": isDocument ? "document" : (isSpreadsheet ? "spreadsheet" : (isPresentation ? "presentation" : "unknown")),
                     "onDevice": false,
@@ -1076,7 +1076,7 @@ class ASCEditorManager: NSObject, DEEditorDelegate, SEEditorDelegate, PEEditorDe
         handler?(.begin, 0, nil, &cancel)
         
         if pdf.device {
-            Analytics.logEvent(ASCConstants.Analytics.Event.openPdf, parameters: [
+            ASCAnalytics.logEvent(ASCConstants.Analytics.Event.openPdf, parameters: [
                 "portal": ASCOnlyOfficeApi.shared.baseUrl ?? "none",
                 "onDevice": !pdf.id.contains(Path.userTemporary.rawValue)
                 ]
@@ -1222,7 +1222,7 @@ class ASCEditorManager: NSObject, DEEditorDelegate, SEEditorDelegate, PEEditorDe
                     self?.cleanupEditorWindow()
                 }
 
-                Analytics.logEvent(ASCConstants.Analytics.Event.openMedia, parameters: [
+                ASCAnalytics.logEvent(ASCConstants.Analytics.Event.openMedia, parameters: [
                     "portal": ASCOnlyOfficeApi.shared.baseUrl ?? "none",
                     "onDevice": file.device
                     ]
@@ -1241,7 +1241,7 @@ class ASCEditorManager: NSObject, DEEditorDelegate, SEEditorDelegate, PEEditorDe
         handler?(.begin, 0, nil, &cancel)
         
         if file.device {
-            Analytics.logEvent(ASCConstants.Analytics.Event.openExternal, parameters: [
+            ASCAnalytics.logEvent(ASCConstants.Analytics.Event.openExternal, parameters: [
                 "portal": ASCOnlyOfficeApi.shared.baseUrl ?? "none",
                 "onDevice": !file.id.contains(Path.userTemporary.rawValue)
                 ]

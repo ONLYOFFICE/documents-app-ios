@@ -28,7 +28,7 @@
 			<key>Title</key>
 			<string>Help improve the product</string>
 			<key>FooterText</key>
-			<string>Help improve the application by automatically sending and use data.</string>
+			<string>Help improve the application by automatically sending statistic data.</string>
 		</dict>
 		<dict>
 			<key>Type</key>
@@ -41,6 +41,8 @@
 			<true/>
 			<key>TrueValue</key>
 			<true/>
+			<key>FalseValue</key>
+			<false/>
 		</dict>
 	</array>
 	<key>StringsTable</key>

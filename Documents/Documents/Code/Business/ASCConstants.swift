@@ -105,7 +105,10 @@ class ASCConstants {
         }
         
         static var allow: Bool {
-            return UserDefaults.standard.bool(forKey: "share_analytics")
+            guard let allow = UserDefaults.standard.object(forKey: "share_analytics") as? Bool else {
+                return true
+            }
+            return allow
         }
     }
 

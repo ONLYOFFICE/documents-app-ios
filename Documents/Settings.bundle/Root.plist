@@ -6,7 +6,7 @@
 	<array>
 		<dict>
 			<key>DefaultValue</key>
-			<string>6.3 (629)</string>
+			<string>6.3 (630)</string>
 			<key>Key</key>
 			<string>version_preference</string>
 			<key>Title</key>
@@ -23,26 +23,26 @@
 			<string>PSChildPaneSpecifier</string>
 		</dict>
 		<dict>
-			<key>Type</key>
-			<string>PSGroupSpecifier</string>
-			<key>Title</key>
-			<string>Help improve the product</string>
 			<key>FooterText</key>
 			<string>Help improve the application by automatically sending statistic data.</string>
+			<key>Title</key>
+			<string>Help improve the product</string>
+			<key>Type</key>
+			<string>PSGroupSpecifier</string>
 		</dict>
 		<dict>
-			<key>Type</key>
-			<string>PSToggleSwitchSpecifier</string>
-			<key>Title</key>
-			<string>Share App Analytics</string>
-			<key>Key</key>
-			<string>share_analytics</string>
 			<key>DefaultValue</key>
-			<true/>
-			<key>TrueValue</key>
 			<true/>
 			<key>FalseValue</key>
 			<false/>
+			<key>Key</key>
+			<string>share_analytics</string>
+			<key>Title</key>
+			<string>Share App Analytics</string>
+			<key>TrueValue</key>
+			<true/>
+			<key>Type</key>
+			<string>PSToggleSwitchSpecifier</string>
 		</dict>
 	</array>
 	<key>StringsTable</key>

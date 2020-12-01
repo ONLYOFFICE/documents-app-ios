@@ -1942,6 +1942,10 @@ others which use WebDAV protocol.</source>
         <target>Приготвяме се да започнем</target>
         <note>Introduction Step One - Title</note>
       </trans-unit>
+      <trans-unit id="Go to forum" xml:space="preserve">
+        <source>Go to forum</source>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
       <trans-unit id="Google Drive" xml:space="preserve">
         <source>Google Drive</source>
         <target>Google Диск</target>

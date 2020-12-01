@@ -219,7 +219,7 @@ class ASCSettingsViewController: UITableViewController, MFMailComposeViewControl
                 in: self,
                 message: NSLocalizedString("Failed to send feedback by mail. Try to write your request on our forum.", comment: ""),
                 actions: [
-                    UIAlertAction(title: "Go to forum", handler: { action in
+                    UIAlertAction(title: NSLocalizedString("Go to forum", comment: ""), handler: { action in
                         if let url = URL(string: ASCConstants.Urls.applicationFeedbackForum), UIApplication.shared.canOpenURL(url) {
                             UIApplication.shared.open(url, options: [:], completionHandler: nil)
                         }

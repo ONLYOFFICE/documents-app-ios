@@ -268,6 +268,8 @@
 	<string>This app requires Face ID permission to authenticate using Face recognition.</string>
 	<key>NSPhotoLibraryUsageDescription</key>
 	<string>This app requires access to the photo library, so that you can upload your photos in the app.</string>
+	<key>NSPhotoLibraryAddUsageDescription</key>
+	<string>This app requires access to the photo library, so that you can upload your photos in the app.</string>
 	<key>UIApplicationShortcutItems</key>
 	<array>
 		<dict>

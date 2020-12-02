@@ -22,3 +22,5 @@
 /* Privacy - Photo Library Usage Description */
 "NSPhotoLibraryUsageDescription" = "Это приложение требует доступа к библиотеке фотографий, для загрузки фотографий из библиотеке фотографий.";
 
+/* Privacy - Photo Library Add Usage Description */
+"NSPhotoLibraryAddUsageDescription" = "Это приложение требует доступа к библиотеке фотографий, для загрузки фотографий из библиотеке фотографий.";

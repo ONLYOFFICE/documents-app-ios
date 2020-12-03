@@ -1720,7 +1720,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "# Replace this with the GOOGLE_APP_ID from your GoogleService-Info.plist file\nGOOGLE_APP_ID=1:948651087073:ios:b88d8cb9f0125cff\n\nif [ \"${CONFIGURATION}\" = \"Release\" ]; then\n    \"${PODS_ROOT}/FirebaseCrashlytics/run\"\n    #find \"${BUILT_PRODUCTS_DIR}\" -name \"*.dSYM\" | xargs -I \\{\\} \"${PODS_ROOT}/FirebaseCrashlytics/upload-symbols\" -gsp \"${PROJECT_DIR}/Documents/GoogleService-Info.plist\" -p ios \\{\\}\nelse\n    echo \"Skip Uploading\"\nfi\n";
+			shellScript = "# Replace this with the GOOGLE_APP_ID from your GoogleService-Info.plist file\nGOOGLE_APP_ID=1:948651087073:ios:b88d8cb9f0125cff\n\nif [ \"${CONFIGURATION}\" = \"Release\" ]; then\n    #\"${PODS_ROOT}/FirebaseCrashlytics/run\"\n    find \"${BUILT_PRODUCTS_DIR}\" -name \"*.dSYM\" | xargs -I \\{\\} \"${PODS_ROOT}/FirebaseCrashlytics/upload-symbols\" -gsp \"${PROJECT_DIR}/Documents/GoogleService-Info.plist\" -p ios \\{\\}\nelse\n    echo \"Skip Uploading\"\nfi\n";
 		};
 		FCC471031F56A2DF00373597 /* Increment Build Number */ = {
 			isa = PBXShellScriptBuildPhase;

@@ -40,14 +40,6 @@ platform :ios do
     # match(type: "appstore") # more information: https://codesigning.guide
     # ensure_git_status_clean
 
-    # Build
-    gym(
-      clean: true,
-      scheme: "Documents",
-      workspace: "ONLYOFFICE-Documents.xcworkspace",
-      export_xcargs: "-allowProvisioningUpdates"
-    )
-
     version_number = get_version_number(
       xcodeproj: "Documents/Documents.xcodeproj",
       configuration: "Release"
@@ -55,6 +47,14 @@ platform :ios do
     build_number = get_info_plist_value(
       path: "Documents/Documents/Info.plist", 
       key: "CFBundleVersion"
+    )
+
+    # Build
+    gym(
+      clean: true,
+      scheme: "Documents",
+      workspace: "ONLYOFFICE-Documents.xcworkspace",
+      export_xcargs: "-allowProvisioningUpdates"
     )
 
     # get the last commit comments from Git history

@@ -318,7 +318,7 @@
 "Email is empty" = "Поле Email не заполнено";
 
 /* No comment provided by engineer. */
-"Email is not valid" = "Email не корректный";
+"Email is not valid" = "Некорректный e-mail";
 
 /* No comment provided by engineer. */
 "Empty file." = "Пустой файл.";

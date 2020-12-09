@@ -1903,7 +1903,7 @@ others which use WebDAV protocol.</source>
       </trans-unit>
       <trans-unit id="Email is not valid" xml:space="preserve">
         <source>Email is not valid</source>
-        <target>Email не корректный</target>
+        <target>Некорректный e-mail</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Empty file." xml:space="preserve">

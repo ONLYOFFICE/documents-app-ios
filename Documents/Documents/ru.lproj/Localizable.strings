@@ -437,6 +437,9 @@
 /* Data units */
 "Kb" = "Кб";
 
+/* No comment provided by engineer. */
+"Last name is empty" = "Фамилия пуста";
+
 /* Caption of the process */
 "Logging in" = "Выполняется вход";
 

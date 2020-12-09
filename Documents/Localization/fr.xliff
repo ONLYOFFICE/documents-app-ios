@@ -1239,6 +1239,10 @@ Remarque: si vous avez oublié le mot de passe, vous avez besoin de supprimer et
         <target>Cette application demande un accès à Face ID pour que vous puissiez vous connecter via la reconnaissance de visage.</target>
         <note>Privacy - Face ID Usage Description</note>
       </trans-unit>
+      <trans-unit id="NSPhotoLibraryAddUsageDescription" xml:space="preserve">
+        <source>This app requires access to the photo library, so that you can upload your photos in the app.</source>
+        <note>Privacy - Photo Library Additions Usage Description</note>
+      </trans-unit>
       <trans-unit id="NSPhotoLibraryUsageDescription" xml:space="preserve">
         <source>This app requires access to the photo library, so that you can upload your photos in the app.</source>
         <target>Cette application demande l'accès à la galérie pour que vous puissiez charger vos photos dans l'application</target>
@@ -1993,6 +1997,10 @@ d'autres via le protocole WebDAV.</target>
         <source>Kb</source>
         <target>Ko</target>
         <note>Data units</note>
+      </trans-unit>
+      <trans-unit id="Last name is empty" xml:space="preserve">
+        <source>Last name is empty</source>
+        <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Logging in" xml:space="preserve">
         <source>Logging in</source>

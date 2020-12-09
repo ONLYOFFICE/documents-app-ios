@@ -1242,6 +1242,10 @@ Hinweis: Wenn Sie das Kennwort vergessen haben, müssen Sie die App löschen und
         <target>Für die Authentifizierung mit Gesichtserkennung benötigt diese App die Berechtigung zur Gesichtserkennung.</target>
         <note>Privacy - Face ID Usage Description</note>
       </trans-unit>
+      <trans-unit id="NSPhotoLibraryAddUsageDescription" xml:space="preserve">
+        <source>This app requires access to the photo library, so that you can upload your photos in the app.</source>
+        <note>Privacy - Photo Library Additions Usage Description</note>
+      </trans-unit>
       <trans-unit id="NSPhotoLibraryUsageDescription" xml:space="preserve">
         <source>This app requires access to the photo library, so that you can upload your photos in the app.</source>
         <target>Diese App benötigt Zugriff auf die Foto-Bibliothek, damit Sie Ihre Fotos in die App hochladen können.</target>
@@ -1996,6 +2000,10 @@ die das WebDAV-Protokoll verwenden.</target>
         <source>Kb</source>
         <target>Kb</target>
         <note>Data units</note>
+      </trans-unit>
+      <trans-unit id="Last name is empty" xml:space="preserve">
+        <source>Last name is empty</source>
+        <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Logging in" xml:space="preserve">
         <source>Logging in</source>

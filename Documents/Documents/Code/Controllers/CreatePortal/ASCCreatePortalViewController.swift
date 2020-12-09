@@ -179,14 +179,26 @@ class ASCCreatePortalViewController: UIViewController, UITextFieldDelegate {
             return
         }
         
-        guard let firstName = firstNameField?.text?.trim(), valid(name: firstName) else {
+        guard let firstName = firstNameField?.text?.trim(), firstName.length > 0 else {
             firstNameField?.errorMessage = NSLocalizedString("Name is empty", comment: "")
             firstNameField?.shake()
             return
         }
         
-        guard let lastName = lastNameField?.text?.trim(), valid(name: lastName) else {
+        guard valid(name: firstName) else {
+            firstNameField?.errorMessage = NSLocalizedString("First name is incorrect", comment: "")
+            firstNameField?.shake()
+            return
+        }
+        
+        guard let lastName = lastNameField?.text?.trim(), lastName.length > 0 else {
             lastNameField?.errorMessage = NSLocalizedString("Last name is empty", comment: "")
+            lastNameField?.shake()
+            return
+        }
+        
+        guard valid(name: lastName) else {
+            lastNameField?.errorMessage = NSLocalizedString("Last name is incorrect", comment: "")
             lastNameField?.shake()
             return
         }

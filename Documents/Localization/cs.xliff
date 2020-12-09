@@ -1993,6 +1993,10 @@ jiné, které používají protokol WebDAV.</target>
         <target>Soubory</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
+      <trans-unit id="First name is incorrect" xml:space="preserve">
+        <source>First name is incorrect</source>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
       <trans-unit id="Folder title" xml:space="preserve">
         <source>Folder title</source>
         <target>Název složky</target>
@@ -2079,6 +2083,10 @@ jiné, které používají protokol WebDAV.</target>
       </trans-unit>
       <trans-unit id="Last name is empty" xml:space="preserve">
         <source>Last name is empty</source>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Last name is incorrect" xml:space="preserve">
+        <source>Last name is incorrect</source>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Logging in" xml:space="preserve">

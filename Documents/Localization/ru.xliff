@@ -2017,6 +2017,11 @@ others which use WebDAV protocol.</source>
         <target>Файлы</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
+      <trans-unit id="First name is incorrect" xml:space="preserve">
+        <source>First name is incorrect</source>
+        <target>Некорректное поле Имя</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
       <trans-unit id="Folder title" xml:space="preserve">
         <source>Folder title</source>
         <target>Название папки</target>
@@ -2105,6 +2110,11 @@ others which use WebDAV protocol.</source>
       <trans-unit id="Last name is empty" xml:space="preserve">
         <source>Last name is empty</source>
         <target>Фамилия пуста</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Last name is incorrect" xml:space="preserve">
+        <source>Last name is incorrect</source>
+        <target>Некорректное поле Фамилия</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Logging in" xml:space="preserve">

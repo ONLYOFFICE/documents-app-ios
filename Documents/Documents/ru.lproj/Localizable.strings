@@ -387,6 +387,9 @@
 "Files" = "Файлы";
 
 /* No comment provided by engineer. */
+"First name is incorrect" = "Некорректное поле Имя";
+
+/* No comment provided by engineer. */
 "Folder title" = "Название папки";
 
 /* No comment provided by engineer. */
@@ -439,6 +442,9 @@
 
 /* No comment provided by engineer. */
 "Last name is empty" = "Фамилия пуста";
+
+/* No comment provided by engineer. */
+"Last name is incorrect" = "Некорректное поле Фамилия";
 
 /* Caption of the process */
 "Logging in" = "Выполняется вход";

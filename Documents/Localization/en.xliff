@@ -1931,6 +1931,11 @@ others which use WebDAV protocol.</target>
         <target>Files</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
+      <trans-unit id="First name is incorrect" xml:space="preserve">
+        <source>First name is incorrect</source>
+        <target>First name is incorrect</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
       <trans-unit id="Folder title" xml:space="preserve">
         <source>Folder title</source>
         <target>Folder title</target>
@@ -2019,6 +2024,11 @@ others which use WebDAV protocol.</target>
       <trans-unit id="Last name is empty" xml:space="preserve">
         <source>Last name is empty</source>
         <target>Last name is empty</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Last name is incorrect" xml:space="preserve">
+        <source>Last name is incorrect</source>
+        <target>Last name is incorrect</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Logging in" xml:space="preserve">

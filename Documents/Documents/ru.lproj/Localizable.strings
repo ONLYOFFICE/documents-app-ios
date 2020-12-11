@@ -579,9 +579,6 @@
 /* No comment provided by engineer. */
 "Open Document" = "Открыть документ";
 
-/* Button title */
-"Open In" = "Открыть в";
-
 /* Caption of the processing */
 "Opening" = "Открытие";
 
@@ -752,6 +749,9 @@
 
 /* Caption of the process */
 "Sharing" = "Предоставление досупа";
+
+/* Button title */
+"Sharing Settings" = "Совместный доступ";
 
 /* No comment provided by engineer. */
 "Single Sign-on" = "Единая точка входа";

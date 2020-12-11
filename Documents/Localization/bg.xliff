@@ -911,9 +911,9 @@ Note: if you forget the passcode, you'll need to delete and reinstall the app. A
         <note>Class = "UILabel"; text = "Access"; ObjectID = "v5j-Jm-YE4"; Note = "Do not translate";</note>
       </trans-unit>
       <trans-unit id="xY8-if-2h2.title" xml:space="preserve">
-        <source>Share</source>
+        <source>Sharing Settings</source>
         <target>Дял</target>
-        <note>Class = "UINavigationItem"; title = "Share"; ObjectID = "xY8-if-2h2";</note>
+        <note>Class = "UINavigationItem"; title = "Sharing Settings"; ObjectID = "xY8-if-2h2";</note>
       </trans-unit>
       <trans-unit id="xae-c9-kdf.title" xml:space="preserve">
         <source>Users</source>
@@ -2214,11 +2214,6 @@ others which use WebDAV protocol.</source>
         <target>Отворете документа</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
-      <trans-unit id="Open In" xml:space="preserve">
-        <source>Open In</source>
-        <target>Отворете в</target>
-        <note>Button title</note>
-      </trans-unit>
       <trans-unit id="Opening" xml:space="preserve">
         <source>Opening</source>
         <target>Отвор</target>
@@ -2512,6 +2507,10 @@ others which use WebDAV protocol.</source>
         <source>Sharing</source>
         <target>Споделяне</target>
         <note>Caption of the process</note>
+      </trans-unit>
+      <trans-unit id="Sharing Settings" xml:space="preserve">
+        <source>Sharing Settings</source>
+        <note>Button title</note>
       </trans-unit>
       <trans-unit id="Single Sign-on" xml:space="preserve">
         <source>Single Sign-on</source>

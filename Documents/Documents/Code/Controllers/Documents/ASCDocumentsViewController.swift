@@ -1533,7 +1533,7 @@ class ASCDocumentsViewController: UITableViewController, UIGestureRecognizerDele
         if actions.contains(.share) {
             rootActions.append(
                 UIAction(
-                    title: NSLocalizedString("Share", comment: "Button title"),
+                    title: NSLocalizedString("Sharing Settings", comment: "Button title"),
                     image: UIImage(systemName: "person.2"))
                 { [unowned self] action in
                     cell.hideSwipe(animated: true)
@@ -1558,7 +1558,7 @@ class ASCDocumentsViewController: UITableViewController, UIGestureRecognizerDele
         if actions.contains(.export) {
             rootActions.append(
                 UIAction(
-                    title: NSLocalizedString("Open In", comment: "Button title"),
+                    title: NSLocalizedString("Share", comment: "Button title"),
                     image: UIImage(systemName: "square.and.arrow.up"))
                 { [unowned self] action in
                     cell.hideSwipe(animated: true)
@@ -1668,7 +1668,7 @@ class ASCDocumentsViewController: UITableViewController, UIGestureRecognizerDele
         if actions.contains(.share) {
             rootActions.append(
                 UIAction(
-                    title: NSLocalizedString("Share", comment: "Button title"),
+                    title: NSLocalizedString("Sharing Settings", comment: "Button title"),
                     image: UIImage(systemName: "person.2"))
                 { [unowned self] action in
                     cell.hideSwipe(animated: true)
@@ -1960,7 +1960,7 @@ class ASCDocumentsViewController: UITableViewController, UIGestureRecognizerDele
         if actions.contains(.share) {
             actionAlertController.addAction(
                 UIAlertAction(
-                    title: NSLocalizedString("Share", comment: "Button title"),
+                    title: NSLocalizedString("Sharing Settings", comment: "Button title"),
                     style: .default,
                     handler: { [unowned self] action in
                         cell.hideSwipe(animated: true)
@@ -1983,7 +1983,7 @@ class ASCDocumentsViewController: UITableViewController, UIGestureRecognizerDele
         if actions.contains(.export) {
             actionAlertController.addAction(
                 UIAlertAction(
-                    title: NSLocalizedString("Open In", comment: "Button title"),
+                    title: NSLocalizedString("Share", comment: "Button title"),
                     style: .default,
                     handler: { [unowned self] action in
                         cell.hideSwipe(animated: true)
@@ -2086,7 +2086,7 @@ class ASCDocumentsViewController: UITableViewController, UIGestureRecognizerDele
         if actions.contains(.share) {
             actionAlertController.addAction(
                 UIAlertAction(
-                    title: NSLocalizedString("Share", comment: "Button title"),
+                    title: NSLocalizedString("Sharing Settings", comment: "Button title"),
                     style: .default,
                     handler: { [unowned self] action in
                         cell.hideSwipe(animated: true)

@@ -909,9 +909,9 @@ Nota: Si Usted olvida el código de acceso, necesitará eliminar e instalar la a
         <note>Class = "UILabel"; text = "Access"; ObjectID = "v5j-Jm-YE4"; Note = "Do not translate";</note>
       </trans-unit>
       <trans-unit id="xY8-if-2h2.title" xml:space="preserve">
-        <source>Share</source>
+        <source>Sharing Settings</source>
         <target>Compartir</target>
-        <note>Class = "UINavigationItem"; title = "Share"; ObjectID = "xY8-if-2h2";</note>
+        <note>Class = "UINavigationItem"; title = "Sharing Settings"; ObjectID = "xY8-if-2h2";</note>
       </trans-unit>
       <trans-unit id="xae-c9-kdf.title" xml:space="preserve">
         <source>Users</source>
@@ -2214,11 +2214,6 @@ otros que utilizan el protocolo WebDAV.</target>
         <target>Abrir Documento</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
-      <trans-unit id="Open In" xml:space="preserve">
-        <source>Open In</source>
-        <target>Abrir en</target>
-        <note>Button title</note>
-      </trans-unit>
       <trans-unit id="Opening" xml:space="preserve">
         <source>Opening</source>
         <target>Abriendo</target>
@@ -2507,6 +2502,10 @@ Si el problema persiste, póngase en contacto con nosotros y mencione este códi
         <source>Sharing</source>
         <target>Compartiendo</target>
         <note>Caption of the process</note>
+      </trans-unit>
+      <trans-unit id="Sharing Settings" xml:space="preserve">
+        <source>Sharing Settings</source>
+        <note>Button title</note>
       </trans-unit>
       <trans-unit id="Single Sign-on" xml:space="preserve">
         <source>Single Sign-on</source>

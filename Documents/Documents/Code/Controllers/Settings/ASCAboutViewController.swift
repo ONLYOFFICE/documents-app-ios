@@ -136,6 +136,8 @@ class ASCAboutViewController: UITableViewController, UIGestureRecognizerDelegate
         let cell = super.tableView(tableView, cellForRowAt: indexPath)
         
         if cell == rateCell {
+            SwiftRater.appName = ASCConstants.Name.appNameFull
+            
             if SwiftRater.isRateDone {
                 if let url = URL(string: ASCConstants.Urls.appReview), UIApplication.shared.canOpenURL(url) {
                     UIApplication.shared.open(url, options: [:], completionHandler: nil)

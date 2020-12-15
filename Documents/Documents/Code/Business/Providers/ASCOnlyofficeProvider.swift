@@ -1002,7 +1002,7 @@ class ASCOnlyofficeProvider: ASCBaseFileProvider {
         let endSessionLife = api.expires == nil || Date() > api.expires!
 
         var alertTitle = ASCLocalization.Error.unknownTitle
-        var alertMessage = String.localizedStringWithFormat("The %@ server is not available.", api.baseUrl ?? "")
+        var alertMessage = String.localizedStringWithFormat(NSLocalizedString("The %@ server is not available.", comment: ""), api.baseUrl ?? "")
 
         if endSessionLife {
             alertTitle = NSLocalizedString("Your session has expired", comment: "")
@@ -1063,7 +1063,7 @@ class ASCOnlyofficeProvider: ASCBaseFileProvider {
             }
         }
 
-        return String.localizedStringWithFormat("The %@ server is not available.", api.baseUrl ?? "")
+        return String.localizedStringWithFormat(NSLocalizedString("The %@ server is not available.", comment: ""), api.baseUrl ?? "")
     }
 
     func errorBanner(_ error: String?) {

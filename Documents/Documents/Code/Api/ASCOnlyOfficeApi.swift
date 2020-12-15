@@ -539,7 +539,7 @@ class ASCOnlyOfficeApi: ASCBaseApi {
             }
         }
         
-        return String.localizedStringWithFormat("The %@ server is not available.", ASCOnlyOfficeApi.shared.baseUrl ?? "")
+        return String.localizedStringWithFormat(NSLocalizedString("The %@ server is not available.", comment: ""), ASCOnlyOfficeApi.shared.baseUrl ?? "")
     }
     
     static public func cancelAllTasks() {

@@ -774,7 +774,7 @@ class ASCOnlyofficeProvider: ASCBaseFileProvider {
         }
 
         switch (access) {
-        case .none, .readWrite:
+        case .none, .readWrite, .review, .comment:
             return true
         default:
             return false

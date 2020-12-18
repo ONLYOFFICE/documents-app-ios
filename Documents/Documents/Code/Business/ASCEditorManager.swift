@@ -373,7 +373,11 @@ class ASCEditorManager: NSObject, DEEditorDelegate, SEEditorDelegate, PEEditorDe
 
                         self.documentPermissions = permissions.jsonString() ?? ""
 
-                        let canEdit = (permissions["edit"] as? Bool)! && !viewMode
+                        let allowEdit = (permissions["edit"] as? Bool) ?? false
+                        let allowReview = (permissions["review"] as? Bool) ?? false
+                        let allowComment = (permissions["comment"] as? Bool) ?? false
+                        
+                        let canEdit = (allowEdit || (!allowEdit && allowReview) || (!allowEdit && allowComment)) && !viewMode
                         
                         if let _ = self.documentKeyForTrack, let _ = self.documentURLForTrack {
                             handler(canEdit, nil)
@@ -2263,6 +2267,7 @@ class ASCEditorManager: NSObject, DEEditorDelegate, SEEditorDelegate, PEEditorDe
     // MARK: - Utils
     
     func checkSDKVersion() -> Bool {
+        return true;
         if let version = UserDefaults.standard.value(forKey: ASCConstants.SettingsKeys.sdkVersion) as? String {
             let webSDK = version.components(separatedBy: ".")
             let localSDK = localSDKVersion()

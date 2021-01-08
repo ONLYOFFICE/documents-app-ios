@@ -372,6 +372,11 @@ extension ASCCloudsViewController {
 
             cell.category = category
             cell.cellType = type
+            
+            if cellIdentifier == cellConnectedIdentifier {
+                cell.accessoryType = (UIDevice.phone || ASCViewControllerManager.shared.currentSizeClass == .compact) ? .disclosureIndicator : .none
+            }
+            
             return cell
         }
 

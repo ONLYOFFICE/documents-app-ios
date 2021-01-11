@@ -51,6 +51,7 @@ extension ASCOnlyOfficeApi {
     static public let apiFileStartEdit          = "api/\(version)/files/file/%@/startedit"
     static public let apiFileTrackEdit          = "api/\(version)/files/file/%@/trackeditfile"
     static public let apiSaveEditing            = "api/\(version)/files/file/%@/saveediting"
+    static public let apiFilesFavorite          = "api/\(version)/files/favorites"
     static public let apiUsers                  = "api/\(version)/people"
     static public let apiGroups                 = "api/\(version)/group"
 }

@@ -23,7 +23,6 @@ class ASCFile: ASCEntity {
     var updatedBy: ASCUser?
     var created: Date?
     var createdBy: ASCUser?
-    var isNew: Bool = false
     var device: Bool = false
     var parent: ASCFolder? = nil
     
@@ -34,6 +33,50 @@ class ASCFile: ASCEntity {
     required init?(map: Map) {
         super.init(map: map)
     }
+    
+    var isEditing: Bool {
+        get { return fileStatus.contains(.isEditing) }
+        set {
+            if newValue {
+                fileStatus.insert(.isEditing)
+            } else {
+                fileStatus.remove(.isEditing)
+            }
+        }
+    }
+    
+    var isNew: Bool {
+        get { return fileStatus.contains(.isNew) }
+        set {
+            if newValue {
+                fileStatus.insert(.isNew)
+            } else {
+                fileStatus.remove(.isNew)
+            }
+        }
+    }
+    
+    var isFavorite: Bool {
+        get { return fileStatus.contains(.isFavorite) }
+        set {
+            if newValue {
+                fileStatus.insert(.isFavorite)
+            } else {
+                fileStatus.remove(.isFavorite)
+            }
+        }
+    }
+    
+    var isTemplate: Bool {
+        get { return fileStatus.contains(.isTemplate) }
+        set {
+            if newValue {
+                fileStatus.insert(.isTemplate)
+            } else {
+                fileStatus.remove(.isTemplate)
+            }
+        }
+    }
 
     override func mapping(map: Map) {
         super.mapping(map: map)
@@ -42,7 +85,7 @@ class ASCFile: ASCEntity {
         version                 <- map["version"]
         displayContentLength    <- map["contentLength"]
         pureContentLength       <- map["pureContentLength"]
-        fileStatus              <- (map["fileStatus"], EnumTransform())
+        fileStatus              <- map["fileStatus"]
         viewUrl                 <- map["viewUrl"]
         title                   <- (map["title"], ASCStringTransform())
         access                  <- (map["access"], EnumTransform())
@@ -53,7 +96,6 @@ class ASCFile: ASCEntity {
         created                 <- (map["created"], ASCDateTransform())
         createdBy               <- map["createdBy"]
         device                  <- map["device"]
-        isNew                   = fileStatus == .isNew
         
         // Internal
         device                  <- map["device"]

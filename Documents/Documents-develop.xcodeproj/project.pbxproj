@@ -122,6 +122,7 @@
 		FC6839A221B81B1D00251CEA /* ASCOwnCloudProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC6839A121B81B1D00251CEA /* ASCOwnCloudProvider.swift */; };
 		FC6DD4E61EDD59330095B16C /* ParkedTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC6DD4E51EDD59330095B16C /* ParkedTextField.swift */; };
 		FC6F0CD71F542E7E002D33D9 /* ASCSSOSignInController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC6F0CD61F542E7E002D33D9 /* ASCSSOSignInController.swift */; };
+		FC707C4325AC5DAF004CB85B /* UILabel+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC707C4225AC5DAF004CB85B /* UILabel+Extension.swift */; };
 		FC708EE421B92E94001BBE5B /* UIBarButtonItem+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC708EE321B92E94001BBE5B /* UIBarButtonItem+Extensions.swift */; };
 		FC786FB91EB8694400181D62 /* Samples in Resources */ = {isa = PBXBuildFile; fileRef = FC786FB81EB8694400181D62 /* Samples */; };
 		FC786FBC1EB8771700181D62 /* Intro.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FC786FBE1EB8771700181D62 /* Intro.storyboard */; };
@@ -440,6 +441,7 @@
 		FC6839A121B81B1D00251CEA /* ASCOwnCloudProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCOwnCloudProvider.swift; sourceTree = "<group>"; };
 		FC6DD4E51EDD59330095B16C /* ParkedTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ParkedTextField.swift; sourceTree = "<group>"; };
 		FC6F0CD61F542E7E002D33D9 /* ASCSSOSignInController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASCSSOSignInController.swift; sourceTree = "<group>"; };
+		FC707C4225AC5DAF004CB85B /* UILabel+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UILabel+Extension.swift"; sourceTree = "<group>"; };
 		FC708EE321B92E94001BBE5B /* UIBarButtonItem+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIBarButtonItem+Extensions.swift"; sourceTree = "<group>"; };
 		FC786FB81EB8694400181D62 /* Samples */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Samples; sourceTree = "<group>"; };
 		FC786FBD1EB8771700181D62 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Intro.storyboard; sourceTree = "<group>"; };
@@ -837,6 +839,7 @@
 				FC28F2C71E8D217F00A8F985 /* UIControl+Extension.swift */,
 				FC37D8E821CB8FA8001A7BFD /* UIDevice+DeviceKit.swift */,
 				FC31B2861E76C09F008699C3 /* UIDevice+Extension.swift */,
+				FC707C4225AC5DAF004CB85B /* UILabel+Extension.swift */,
 				69EBD4C91EF2AB9D00D3C685 /* UINavigationController+Extension.swift */,
 				FC708EE321B92E94001BBE5B /* UIBarButtonItem+Extensions.swift */,
 				FCA7500722BB9CD500991682 /* UITableViewCell+Extensions.swift */,
@@ -1965,6 +1968,7 @@
 				E0609CA78B7ADE534424D45E /* ASCFolder.swift in Sources */,
 				FC708EE421B92E94001BBE5B /* UIBarButtonItem+Extensions.swift in Sources */,
 				FC059D9C1E82657F00BC2F5E /* ASCIndexTransform.swift in Sources */,
+				FC707C4325AC5DAF004CB85B /* UILabel+Extension.swift in Sources */,
 				FC68399A21B808AC00251CEA /* ASCCloudsViewController.swift in Sources */,
 				FCBEA6B6203EEF96000E8695 /* ASCSDWebImageDownloaderOperation.swift in Sources */,
 				FC3AF6B9217081DB004A96FD /* ASCNextCloudProvider.swift in Sources */,

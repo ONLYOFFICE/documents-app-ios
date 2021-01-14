@@ -462,6 +462,9 @@
    Caption of the process */
 "Logout" = "Выход";
 
+/* Button title */
+"Mark as favorite" = "Добавить в избранное";
+
 /* Data units */
 "Mb" = "Мб";
 
@@ -682,6 +685,9 @@
 "Reload" = "Перезагрузить";
 
 /* Button title */
+"Remove from Favorites" = "Удалить из избранного";
+
+/* Button title */
 "Rename" = "Переименовать";
 
 /* No comment provided by engineer. */
@@ -734,6 +740,9 @@
 
 /* No comment provided by engineer. */
 "Selected: %ld" = "Выбрано: %ld";
+
+/* No comment provided by engineer. */
+"Set favorite failed." = "Не удалось изменить отметку Избранное";
 
 /* No comment provided by engineer. */
 "Settings" = "Настройки";
@@ -794,6 +803,9 @@
 
 /* Notification title */
 "Text copied" = "Текст скопирован";
+
+/* No comment provided by engineer. */
+"The %@ server is not available." = "Сервер %@ недоступен.";
 
 /* No comment provided by engineer. */
 "The account name must be between 6 and 50 characters long" = "Имя учетной записи должно быть от 6 до 50 символов";

@@ -318,6 +318,9 @@
 "Email is empty" = "Поле Email не заполнено";
 
 /* No comment provided by engineer. */
+"Email is incorrect." = "Некорректный e-mail";
+
+/* No comment provided by engineer. */
 "Email is not valid" = "Некорректный e-mail";
 
 /* No comment provided by engineer. */
@@ -824,6 +827,9 @@
 
 /* No comment provided by engineer. */
 "The item with the name '%@' already exists in the folder '%@'." = "Файл с именем '%1$@' уже существует в папке '%2$@'";
+
+/* No comment provided by engineer. */
+"The parameters are incorrect." = "Некорректные параметры";
 
 /* No comment provided by engineer. */
 "The password is incorrect. It must contain 8 characters" = "Некорректный пароль. Он должен содержать не менее 8 символов.";

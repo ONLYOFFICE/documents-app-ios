@@ -379,8 +379,24 @@ class ASCCreatePortalViewController: UIViewController, UITextFieldDelegate {
                                      .failureTooShortError:
                                     self.showError(status.description)
                                 default:
-                                    if let errorMessage = responseJson["message"] as? String {
-                                        self.showError(errorMessage)
+                                    if let errorMessages = responseJson["message"] as? [String] {
+                                        var messages: [String] = []
+                                        
+                                        for errorMessage in errorMessages {
+                                            let errorMessageType = ASCCreatePortalStatus(errorMessage)
+                                            
+                                            if errorMessageType != .unknown {
+                                                messages.append(errorMessageType.description)
+                                            } else {
+                                                messages.append(errorMessage)
+                                            }
+                                        }
+                                        
+                                        if messages.count > 0 {
+                                            self.showError(messages.joined(separator: " "))
+                                        } else {
+                                            self.showError(NSLocalizedString("Failed to check the name of the portal", comment: ""))
+                                        }
                                     } else {
                                         self.showError(NSLocalizedString("Failed to check the name of the portal", comment: ""))
                                     }

@@ -1807,6 +1807,10 @@ die das WebDAV-Protokoll verwenden.</target>
         <target>Das Feld E-Mail ist leer</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
+      <trans-unit id="Email is incorrect." xml:space="preserve">
+        <source>Email is incorrect.</source>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
       <trans-unit id="Email is not valid" xml:space="preserve">
         <source>Email is not valid</source>
         <target>Die E-Mail-Adresse ist nicht gültig</target>
@@ -2628,6 +2632,10 @@ die das WebDAV-Protokoll verwenden.</target>
       <trans-unit id="The item with the name '%@' already exists in the folder '%@'." xml:space="preserve">
         <source>The item with the name '%1$@' already exists in the folder '%2$@'.</source>
         <target>Das Element mit dem Namen '%1$@' existiert schon im Ordner '%2$@'.</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="The parameters are incorrect." xml:space="preserve">
+        <source>The parameters are incorrect.</source>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="The password is incorrect. It must contain 8 characters" xml:space="preserve">

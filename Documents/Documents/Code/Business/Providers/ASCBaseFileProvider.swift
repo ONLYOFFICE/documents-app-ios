@@ -24,6 +24,7 @@ struct ASCEntityActions: OptionSet {
     static let export       = ASCEntityActions(rawValue: 1 << 10)
     static let unmount      = ASCEntityActions(rawValue: 1 << 11)
     static let duplicate    = ASCEntityActions(rawValue: 1 << 12)
+    static let favarite     = ASCEntityActions(rawValue: 1 << 13)
 }
 
 typealias ASCProviderUserInfoHandler = ((_ success: Bool, _ error: Error?) -> Void)
@@ -70,6 +71,7 @@ protocol ASCBaseFileProvider {
     func download(_ path: String, to: URL, processing: @escaping ASCApiProgressHandler)
     func upload(_ path: String, data: Data, overwrite: Bool, params: [String: Any]?, processing: @escaping ASCApiProgressHandler)
     func rename(_ entity: ASCEntity, to newName: String, completeon: ASCProviderCompletionHandler?)
+    func favorite(_ entity: ASCEntity, favorite: Bool, completeon: ASCProviderCompletionHandler?)
     func delete(_ entities: [ASCEntity], from folder: ASCFolder, completeon: ASCProviderCompletionHandler?)
     func createDocument(_ name: String, fileExtension: String, in folder: ASCFolder, completeon: ASCProviderCompletionHandler?)
     func createImage(_ name: String, in folder: ASCFolder, data: Data, params: [String: Any]?, processing: @escaping ASCApiProgressHandler)
@@ -104,6 +106,7 @@ extension ASCBaseFileProvider {
     func download(_ path: String, to: URL, processing: @escaping ASCApiProgressHandler) {}
     func upload(_ path: String, data: Data, overwrite: Bool, params: [String: Any]?, processing: @escaping ASCApiProgressHandler) {}
     func rename(_ entity: ASCEntity, to newName: String, completeon: ASCProviderCompletionHandler?) {}
+    func favorite(_ entity: ASCEntity, favorite: Bool, completeon: ASCProviderCompletionHandler?) {}
     func delete(_ entities: [ASCEntity], from folder: ASCFolder, completeon: ASCProviderCompletionHandler?) {}
     func createDocument(_ name: String, fileExtension: String, in folder: ASCFolder, completeon: ASCProviderCompletionHandler?) {}
     func createImage(_ name: String, in folder: ASCFolder, data: Data, params: [String: Any]?, processing: @escaping ASCApiProgressHandler) {}

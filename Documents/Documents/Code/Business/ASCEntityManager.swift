@@ -437,6 +437,23 @@ class ASCEntityManager: NSObject, UITextFieldDelegate {
         }
     }
     
+    func favorite(for provider: ASCBaseFileProvider, entity: AnyObject?, favorite: Bool, handler: ASCEntityHandler? = nil) {
+        guard let file = entity as? ASCFile else {
+            handler?(.error, nil, NSLocalizedString("Unknown item type.", comment: ""))
+            return
+        }
+        
+        handler?(.begin, nil, nil)
+
+        provider.favorite(file, favorite: favorite) { provider, entity, success, error in
+            if !success {
+                handler?(.error, nil, error?.localizedDescription ?? NSLocalizedString("Set favorite failed.", comment: ""))
+            } else {
+                handler?(.end, entity, nil)
+            }
+        }
+    }
+    
     func download(for provider: ASCBaseFileProvider, entity: AnyObject?, handler: ASCEntityProgressHandler? = nil) {
         var cancel = false
         

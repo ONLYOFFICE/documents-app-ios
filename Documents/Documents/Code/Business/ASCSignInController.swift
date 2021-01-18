@@ -203,7 +203,7 @@ class ASCSignInController {
                         if let topViewController = UIApplication.topViewController() {
                             let alertController = UIAlertController.alert(
                                 NSLocalizedString("Error", comment: ""),
-                                message: String.localizedStringWithFormat("The %@ server is not available", baseUrl),
+                                message: String.localizedStringWithFormat(NSLocalizedString("The %@ server is not available.", comment: ""), baseUrl),
                                 actions: []
                                 ).okable()
 

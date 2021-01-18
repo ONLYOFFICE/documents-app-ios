@@ -359,6 +359,33 @@ class ASCOnlyofficeProvider: ASCBaseFileProvider {
             }
         })
     }
+    
+    func favorite(_ entity: ASCEntity, favorite: Bool, completeon: ASCProviderCompletionHandler?) {
+        guard let file = entity as? ASCFile else {
+            completeon?(self, nil, false, ASCProviderError(msg: NSLocalizedString("Unknown item type.", comment: "")))
+            return
+        }
+        
+        if favorite {
+            ASCOnlyOfficeApi.post(ASCOnlyOfficeApi.apiFilesFavorite, parameters: ["fileIds" : [file.id]]) { result, error, response in
+                if result as? Bool ?? false {
+                    file.isFavorite = true
+                    completeon?(self, file, true, nil)
+                } else {
+                    completeon?(self, nil, false, ASCProviderError(msg: NSLocalizedString("Set favorite failed.", comment: "")))
+                }
+            }
+        } else {
+            ASCOnlyOfficeApi.delete(ASCOnlyOfficeApi.apiFilesFavorite, parameters: ["fileIds" : [file.id]]) { result, error, response in
+                if result as? Bool ?? false {
+                    file.isFavorite = false
+                    completeon?(self, file, true, nil)
+                } else {
+                    completeon?(self, nil, false, ASCProviderError(msg: NSLocalizedString("Set favorite failed.", comment: "")))
+                }
+            }
+        }
+    }
 
     func delete(_ entities: [ASCEntity], from folder: ASCFolder, completeon: ASCProviderCompletionHandler?) {
         let isShareRoot = folder.rootFolderType == .onlyofficeShare && (folder.parentId == nil || folder.parentId == "0")
@@ -774,7 +801,7 @@ class ASCOnlyofficeProvider: ASCBaseFileProvider {
         }
 
         switch (access) {
-        case .none, .readWrite:
+        case .none, .readWrite, .review, .comment:
             return true
         default:
             return false
@@ -790,7 +817,7 @@ class ASCOnlyofficeProvider: ASCBaseFileProvider {
             return false
         }
         
-        if let file = file, file.fileStatus == .isEditing {
+        if let file = file, file.isEditing {
             return false
         }
 
@@ -894,6 +921,8 @@ class ASCOnlyofficeProvider: ASCBaseFileProvider {
                 return [.delete, .restore]
             }
 
+            entityActions.insert(.favarite)
+            
             if canRead {
                 entityActions.insert([.copy, .export])
             }
@@ -1002,7 +1031,7 @@ class ASCOnlyofficeProvider: ASCBaseFileProvider {
         let endSessionLife = api.expires == nil || Date() > api.expires!
 
         var alertTitle = ASCLocalization.Error.unknownTitle
-        var alertMessage = String.localizedStringWithFormat("The %@ server is not available.", api.baseUrl ?? "")
+        var alertMessage = String.localizedStringWithFormat(NSLocalizedString("The %@ server is not available.", comment: ""), api.baseUrl ?? "")
 
         if endSessionLife {
             alertTitle = NSLocalizedString("Your session has expired", comment: "")
@@ -1063,7 +1092,7 @@ class ASCOnlyofficeProvider: ASCBaseFileProvider {
             }
         }
 
-        return String.localizedStringWithFormat("The %@ server is not available.", api.baseUrl ?? "")
+        return String.localizedStringWithFormat(NSLocalizedString("The %@ server is not available.", comment: ""), api.baseUrl ?? "")
     }
 
     func errorBanner(_ error: String?) {

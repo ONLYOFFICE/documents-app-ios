@@ -1419,15 +1419,18 @@ class ASCDocumentsViewController: UITableViewController, UIGestureRecognizerDele
         else {
             return nil
         }
-
+        
         let actions = provider.actions(for: file)
 
         var rootActions: [UIMenuElement] = []
+        var topActions: [UIMenuElement] = []
+        var middleActions: [UIMenuElement] = []
+        var bottomActions: [UIMenuElement] = []
 
         /// Preview action
 
         if actions.contains(.open) {
-            rootActions.append(
+            topActions.append(
                 UIAction(
                     title: NSLocalizedString("Preview", comment: "Button title"),
                     image: UIImage(systemName: "eye"))
@@ -1441,7 +1444,7 @@ class ASCDocumentsViewController: UITableViewController, UIGestureRecognizerDele
         /// Edit action
 
         if actions.contains(.edit) {
-            rootActions.append(
+            topActions.append(
                 UIAction(
                     title: NSLocalizedString("Edit", comment: "Button title"),
                     image: UIImage(systemName: "pencil"))
@@ -1455,7 +1458,7 @@ class ASCDocumentsViewController: UITableViewController, UIGestureRecognizerDele
         /// Download action
 
         if actions.contains(.download) {
-            rootActions.append(
+            topActions.append(
                 UIAction(
                     title: NSLocalizedString("Download", comment: "Button title"),
                     image: UIImage(systemName: "square.and.arrow.down"))
@@ -1465,11 +1468,29 @@ class ASCDocumentsViewController: UITableViewController, UIGestureRecognizerDele
                 }
             )
         }
+        
+        /// Favorite action
+
+        if actions.contains(.favarite) {
+            topActions.append(
+                UIAction(
+                    title: file.isFavorite
+                        ? NSLocalizedString("Remove from Favorites", comment: "Button title")
+                        : NSLocalizedString("Mark as favorite", comment: "Button title"),
+                    image: file.isFavorite
+                        ? UIImage(systemName: "star.fill")
+                        : UIImage(systemName: "star"))
+                { [unowned self] action in
+                    cell.hideSwipe(animated: true)
+                    self.favorite(cell: cell, favorite: !file.isFavorite)
+                }
+            )
+        }
 
         /// Rename action
 
         if actions.contains(.rename) {
-            rootActions.append(
+            middleActions.append(
                 UIAction(
                     title: NSLocalizedString("Rename", comment: "Button title"),
                     image: UIImage(systemName: "pencil.and.ellipsis.rectangle"))
@@ -1513,27 +1534,57 @@ class ASCDocumentsViewController: UITableViewController, UIGestureRecognizerDele
         /// Transfer items
 
         if actions.contains(.copy), actions.contains(.duplicate), actions.contains(.move) {
-            rootActions.append(
+            middleActions.append(
                 UIMenu(title: NSLocalizedString("Move or Copy", comment: "Button title") + "...", children: [copy, duplicate, move])
             )
         } else {
             if actions.contains(.copy) {
-                rootActions.append(copy)
+                middleActions.append(copy)
             }
             if actions.contains(.duplicate) {
-                rootActions.append(duplicate)
+                middleActions.append(duplicate)
             }
             if actions.contains(.move) {
-                rootActions.append(move)
+                middleActions.append(move)
             }
+        }
+        
+        /// Delete action
+
+        if actions.contains(.delete) {
+            middleActions.append(
+                UIAction(
+                    title: NSLocalizedString("Delete", comment: "Button title"),
+                    image: UIImage(systemName: "trash"),
+                    attributes: .destructive)
+                { [unowned self] action in
+                    cell.hideSwipe(animated: true)
+                    self.delete(cell: cell)
+                }
+            )
+        }
+
+        /// Unmount action
+
+        if actions.contains(.unmount) {
+            middleActions.append(
+                UIAction(
+                    title: NSLocalizedString("Disconnect third party", comment: "Button title"),
+                    image: UIImage(systemName: "trash"),
+                    attributes: .destructive)
+                { [unowned self] action in
+                    cell.hideSwipe(animated: true)
+                    self.delete(cell: cell)
+                }
+            )
         }
 
         /// Share action
 
         if actions.contains(.share) {
-            rootActions.append(
+            bottomActions.append(
                 UIAction(
-                    title: NSLocalizedString("Share", comment: "Button title"),
+                    title: NSLocalizedString("Sharing Settings", comment: "Button title"),
                     image: UIImage(systemName: "person.2"))
                 { [unowned self] action in
                     cell.hideSwipe(animated: true)
@@ -1556,9 +1607,9 @@ class ASCDocumentsViewController: UITableViewController, UIGestureRecognizerDele
         /// Export action
 
         if actions.contains(.export) {
-            rootActions.append(
+            bottomActions.append(
                 UIAction(
-                    title: NSLocalizedString("Open In", comment: "Button title"),
+                    title: NSLocalizedString("Share", comment: "Button title"),
                     image: UIImage(systemName: "square.and.arrow.up"))
                 { [unowned self] action in
                     cell.hideSwipe(animated: true)
@@ -1567,37 +1618,20 @@ class ASCDocumentsViewController: UITableViewController, UIGestureRecognizerDele
             )
         }
 
-        /// Delete action
-
-        if actions.contains(.delete) {
-            rootActions.append(
-                UIAction(
-                    title: NSLocalizedString("Delete", comment: "Button title"),
-                    image: UIImage(systemName: "trash"),
-                    attributes: .destructive)
-                { [unowned self] action in
-                    cell.hideSwipe(animated: true)
-                    self.delete(cell: cell)
-                }
-            )
+        if #available(iOS 14.0, *) {
+//            let selectMenu = UIMenu(title: "", options: .displayInline, children: selectActions)
+//            let sortMenu = UIMenu(title: "", options: .displayInline, children: sortActions)
+//            var menus: [UIMenuElement] = [sortMenu]
+            
+            return UIMenu(title: "", options: [.displayInline], children: [
+                UIMenu(title: "", options: .displayInline, children: topActions),
+                UIMenu(title: "", options: .displayInline, children: middleActions),
+                UIMenu(title: "", options: .displayInline, children: bottomActions)
+            ])
+        } else {
+            rootActions = [topActions, bottomActions, middleActions].reduce([], +)
+            return UIMenu(title: "", children: rootActions)
         }
-
-        /// Unmount action
-
-        if actions.contains(.unmount) {
-            rootActions.append(
-                UIAction(
-                    title: NSLocalizedString("Disconnect third party", comment: "Button title"),
-                    image: UIImage(systemName: "trash"),
-                    attributes: .destructive)
-                { [unowned self] action in
-                    cell.hideSwipe(animated: true)
-                    self.delete(cell: cell)
-                }
-            )
-        }
-
-        return UIMenu(title: "", children: rootActions)
     }
 
     @available(iOS 13.0, *)
@@ -1668,7 +1702,7 @@ class ASCDocumentsViewController: UITableViewController, UIGestureRecognizerDele
         if actions.contains(.share) {
             rootActions.append(
                 UIAction(
-                    title: NSLocalizedString("Share", comment: "Button title"),
+                    title: NSLocalizedString("Sharing Settings", comment: "Button title"),
                     image: UIImage(systemName: "person.2"))
                 { [unowned self] action in
                     cell.hideSwipe(animated: true)
@@ -1956,11 +1990,25 @@ class ASCDocumentsViewController: UITableViewController, UIGestureRecognizerDele
                 })
             )
         }
+
+        if actions.contains(.favarite) {
+            actionAlertController.addAction(
+                UIAlertAction(
+                    title:file.isFavorite
+                        ? NSLocalizedString("Remove from Favorites", comment: "Button title")
+                        : NSLocalizedString("Mark as favorite", comment: "Button title"),
+                    style: .default,
+                    handler: { [unowned self] action in
+                        cell.hideSwipe(animated: true)
+                        self.favorite(cell: cell, favorite: !file.isFavorite)
+                })
+            )
+        }
         
         if actions.contains(.share) {
             actionAlertController.addAction(
                 UIAlertAction(
-                    title: NSLocalizedString("Share", comment: "Button title"),
+                    title: NSLocalizedString("Sharing Settings", comment: "Button title"),
                     style: .default,
                     handler: { [unowned self] action in
                         cell.hideSwipe(animated: true)
@@ -1983,7 +2031,7 @@ class ASCDocumentsViewController: UITableViewController, UIGestureRecognizerDele
         if actions.contains(.export) {
             actionAlertController.addAction(
                 UIAlertAction(
-                    title: NSLocalizedString("Open In", comment: "Button title"),
+                    title: NSLocalizedString("Share", comment: "Button title"),
                     style: .default,
                     handler: { [unowned self] action in
                         cell.hideSwipe(animated: true)
@@ -2086,7 +2134,7 @@ class ASCDocumentsViewController: UITableViewController, UIGestureRecognizerDele
         if actions.contains(.share) {
             actionAlertController.addAction(
                 UIAlertAction(
-                    title: NSLocalizedString("Share", comment: "Button title"),
+                    title: NSLocalizedString("Sharing Settings", comment: "Button title"),
                     style: .default,
                     handler: { [unowned self] action in
                         cell.hideSwipe(animated: true)
@@ -2609,6 +2657,43 @@ class ASCDocumentsViewController: UITableViewController, UIGestureRecognizerDele
                             }
                         }
                     }
+                }
+            }
+        }
+    }
+    
+    func favorite(cell: UITableViewCell, favorite: Bool) {
+        guard
+            let provider = provider,
+            let fileCell = cell as? ASCFileCell,
+            let file = fileCell.file
+        else { return }
+        
+        var hud: MBProgressHUD? = nil
+        
+        ASCEntityManager.shared.favorite(for: provider, entity: file, favorite: favorite) {  [unowned self] status, entity, error in
+            if status == .begin {
+                hud = MBProgressHUD.showTopMost()
+                hud?.mode = .indeterminate
+            } else if status == .error {
+                hud?.hide(animated: true)
+                
+                if error != nil {
+                    UIAlertController.showError(in: self, message: error!)
+                }
+            } else if status == .end {
+                if entity != nil {
+                    hud?.setSuccessState()
+                    hud?.hide(animated: false, afterDelay: 1.3)
+                    
+                    if let indexPath = self.tableView.indexPath(for: cell), let file = entity as? ASCFile {
+                        self.tableData[indexPath.row] = file
+                        self.tableView.beginUpdates()
+                        self.tableView.reloadRows(at: [indexPath], with: .fade)
+                        self.tableView.endUpdates()
+                    }
+                } else {
+                    hud?.hide(animated: false)
                 }
             }
         }

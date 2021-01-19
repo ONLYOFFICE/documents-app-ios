@@ -94,7 +94,7 @@ class ASCViewControllerManager {
                 rootController?.display(provider: ASCFileManager.localProvider, folder: nil)
                 showIntro()
             } else {
-                showWhatsNew()
+//                showWhatsNew()
             }
         }
 

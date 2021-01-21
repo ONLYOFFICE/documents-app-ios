@@ -61,9 +61,13 @@ class ASCCloudsViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        navigationController?.navigationBar.prefersLargeTitles = true
+        navigationItem.largeTitleDisplayMode = .always
 
         if UIDevice.pad, let documentsNC = navigationController as? ASCBaseNavigationController {
             documentsNC.hasShadow = true
+            documentsNC.setToolbarHidden(true, animated: false)
         }
 
         clearsSelectionOnViewWillAppear = UIDevice.phone
@@ -77,6 +81,13 @@ class ASCCloudsViewController: UITableViewController {
         ASCViewControllerManager.shared.rootController?.tabBar.isHidden = false
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        navigationController?.navigationBar.prefersLargeTitles = true
+        navigationItem.largeTitleDisplayMode = .always
+    }
+
     deinit {
         if let subscription = cloudsSubscription {
             ASCFileManager.observer.remove(subscription)
@@ -270,7 +281,7 @@ class ASCCloudsViewController: UITableViewController {
                 ASCFileManager.provider = provider
 
                 documentsVC.navigationItem.leftBarButtonItem = splitVC.displayModeButtonItem
-                documentsVC.navigationItem.leftItemsSupplementBackButton = true
+                documentsVC.navigationItem.leftItemsSupplementBackButton = UIDevice.pad
 
                 if connected.count < 1 {
                     updateMyClouds()
@@ -377,6 +388,11 @@ extension ASCCloudsViewController {
 
             cell.category = category
             cell.cellType = type
+            
+            if cellIdentifier == cellConnectedIdentifier {
+                cell.accessoryType = (UIDevice.phone || ASCViewControllerManager.shared.currentSizeClass == .compact) ? .disclosureIndicator : .none
+            }
+            
             return cell
         }
 

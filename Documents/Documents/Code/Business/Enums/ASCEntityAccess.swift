@@ -17,4 +17,5 @@ enum ASCEntityAccess: Int {
     case review             = 5
     case comment            = 6
     case fillforms          = 7
+    case customFilter       = 8
 }

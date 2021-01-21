@@ -626,7 +626,7 @@ class ASCGoogleDriveProvider: ASCBaseFileProvider & ASCSortableFileProvider {
                     if let error = error {
                         completeon?(strongSelf, nil, false, ASCProviderError(error))
                     } else if let file = result as? ASCFile {
-                        Analytics.logEvent(ASCConstants.Analytics.Event.createEntity, parameters: [
+                        ASCAnalytics.logEvent(ASCConstants.Analytics.Event.createEntity, parameters: [
                             "portal": "Direct - Google Drive",
                             "onDevice": false,
                             "type": "file",
@@ -670,7 +670,7 @@ class ASCGoogleDriveProvider: ASCBaseFileProvider & ASCSortableFileProvider {
         
         upload(folder.id, data: data, overwrite: false, params: params) { progress, result, error, response in
             if let _ = result {
-                Analytics.logEvent(ASCConstants.Analytics.Event.createEntity, parameters: [
+                ASCAnalytics.logEvent(ASCConstants.Analytics.Event.createEntity, parameters: [
                     "portal": "Direct - Google Drive",
                     "onDevice": false,
                     "type": "file",
@@ -731,7 +731,7 @@ class ASCGoogleDriveProvider: ASCBaseFileProvider & ASCSortableFileProvider {
                 cloudFolder.parent = parent
                 cloudFolder.parentId = parent.id
                 
-                Analytics.logEvent(ASCConstants.Analytics.Event.createEntity, parameters: [
+                ASCAnalytics.logEvent(ASCConstants.Analytics.Event.createEntity, parameters: [
                     "portal": "Direct - Google Drive",
                     "onDevice": false,
                     "type": "folder"

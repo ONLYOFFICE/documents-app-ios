@@ -40,7 +40,7 @@ class ASCLocalProvider: ASCBaseFileProvider & ASCSortableFileProvider {
 
     fileprivate lazy var deviceUser: ASCUser = {
         let owner = ASCUser()
-        owner.displayName = UIDevice.pad ? "iPad" : "iPhone"
+        owner.displayName = UIDevice.displayName
         return owner
     }()
 
@@ -91,7 +91,7 @@ class ASCLocalProvider: ASCBaseFileProvider & ASCSortableFileProvider {
         
         for path in paths {
             let owner = ASCUser()
-            owner.displayName = UIDevice.pad ? "iPad" : "iPhone"
+            owner.displayName = UIDevice.displayName
 
             if path.isDirectory {
                 let localFolder = ASCFolder()
@@ -222,7 +222,7 @@ class ASCLocalProvider: ASCBaseFileProvider & ASCSortableFileProvider {
         } else {
             let destFilePath = Path(dstPath)
             let owner = ASCUser()
-            owner.displayName = UIDevice.pad ? "iPad" : "iPhone"
+            owner.displayName = UIDevice.displayName
 
             let parenFolder = ASCFolder()
             parenFolder.id = destFilePath.parent.rawValue
@@ -373,7 +373,7 @@ class ASCLocalProvider: ASCBaseFileProvider & ASCSortableFileProvider {
 
                 // Create entity info
                 let owner = ASCUser()
-                owner.displayName = UIDevice.pad ? "iPad" : "iPhone"
+                owner.displayName = UIDevice.displayName
 
                 let file = ASCFile()
                 file.id = filePath.rawValue
@@ -387,7 +387,7 @@ class ASCLocalProvider: ASCBaseFileProvider & ASCSortableFileProvider {
                 file.displayContentLength = String.fileSizeToString(with: filePath.fileSize ?? 0)
                 file.pureContentLength = Int(filePath.fileSize ?? 0)
 
-                Analytics.logEvent(ASCConstants.Analytics.Event.createEntity, parameters: [
+                ASCAnalytics.logEvent(ASCConstants.Analytics.Event.createEntity, parameters: [
                     "portal": "none",
                     "onDevice": true,
                     "type": "file",
@@ -422,7 +422,7 @@ class ASCLocalProvider: ASCBaseFileProvider & ASCSortableFileProvider {
 
             // Create entity info
             let owner = ASCUser()
-            owner.displayName = UIDevice.pad ? "iPad" : "iPhone"
+            owner.displayName = UIDevice.displayName
 
             let file = ASCFile()
             file.id = filePath.rawValue
@@ -435,7 +435,7 @@ class ASCLocalProvider: ASCBaseFileProvider & ASCSortableFileProvider {
             file.displayContentLength = String.fileSizeToString(with: filePath.fileSize ?? 0)
             file.pureContentLength = Int(filePath.fileSize ?? 0)
 
-            Analytics.logEvent(ASCConstants.Analytics.Event.createEntity, parameters: [
+            ASCAnalytics.logEvent(ASCConstants.Analytics.Event.createEntity, parameters: [
                 "portal": ASCOnlyOfficeApi.shared.baseUrl ?? "none",
                 "onDevice": true,
                 "type": "file",
@@ -461,7 +461,7 @@ class ASCLocalProvider: ASCBaseFileProvider & ASCSortableFileProvider {
             if folderPath.exists {
                 // Create entity info
                 let owner = ASCUser()
-                owner.displayName = UIDevice.pad ? "iPad" : "iPhone"
+                owner.displayName = UIDevice.displayName
 
                 let newFolder = ASCFolder()
                 newFolder.id = folderPath.rawValue
@@ -477,7 +477,7 @@ class ASCLocalProvider: ASCBaseFileProvider & ASCSortableFileProvider {
                 newFolder.foldersCount = -1
                 newFolder.device = true
 
-                Analytics.logEvent(ASCConstants.Analytics.Event.createEntity, parameters: [
+                ASCAnalytics.logEvent(ASCConstants.Analytics.Event.createEntity, parameters: [
                     "portal": "none",
                     "onDevice": true,
                     "type": "folder"
@@ -610,9 +610,9 @@ class ASCLocalProvider: ASCBaseFileProvider & ASCSortableFileProvider {
             let canDelete       = allowDelete(entity: file)
             let isTrash         = file.rootFolderType == .deviceTrash
             let canOpenEditor   = ASCConstants.FileExtensions.documents.contains(fileExtension) ||
-                ASCConstants.FileExtensions.spreadsheets.contains(fileExtension)
+                ASCConstants.FileExtensions.spreadsheets.contains(fileExtension) ||
+                ASCConstants.FileExtensions.presentations.contains(fileExtension)
             let canPreview      = canOpenEditor ||
-                ASCConstants.FileExtensions.presentations.contains(fileExtension) ||
                 ASCConstants.FileExtensions.images.contains(fileExtension) ||
                 fileExtension == "pdf"
 

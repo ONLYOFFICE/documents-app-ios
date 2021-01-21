@@ -14,6 +14,8 @@ enum ASCCreatePortalStatus: String, CaseIterable {
     case failurePortalNameExist = "portalNameExist"
     case failurePortalNameIncorrect = "portalNameIncorrect"
     case failurePassPolicyError = "passPolicyError"
+    case failureEmailIncorrect = "emailIncorrect"
+    case failureParams = "params"
     case unknown = "unknown"
 
     init() {
@@ -27,6 +29,8 @@ enum ASCCreatePortalStatus: String, CaseIterable {
         case "portalNameExist": self = .failurePortalNameExist
         case "portalNameIncorrect": self = .failurePortalNameIncorrect
         case "passPolicyError": self = .failurePassPolicyError
+        case "emailIncorrect": self = .failureEmailIncorrect
+        case "params": self = .failureParams
         default: self = .unknown
         }
     }
@@ -34,10 +38,12 @@ enum ASCCreatePortalStatus: String, CaseIterable {
     var description: String {
         switch self {
         case .failureTooShortError: return NSLocalizedString("The portal name must be between 6 and 50 characters long", comment: "")
-        case .failurePortalNameExist: return  NSLocalizedString("We are sorry, this portal name is already taken", comment: "")
-        case .failurePortalNameIncorrect: return  NSLocalizedString("Incorrect portal address", comment: "")
-        case .failurePassPolicyError: return  NSLocalizedString("The password is incorrect. It must contain 6 characters", comment: "")
-        case .unknown: return  NSLocalizedString("Failed to check the name of the portal", comment: "")
+        case .failurePortalNameExist: return NSLocalizedString("We are sorry, this portal name is already taken", comment: "")
+        case .failurePortalNameIncorrect: return NSLocalizedString("Incorrect portal address", comment: "")
+        case .failurePassPolicyError: return NSLocalizedString("The password is incorrect. It must contain 8 characters", comment: "")
+        case .failureEmailIncorrect: return NSLocalizedString("Email is incorrect.", comment: "")
+        case .failureParams: return NSLocalizedString("The parameters are incorrect.", comment: "")
+        case .unknown: return NSLocalizedString("Failed to check the name of the portal", comment: "")
         default: return ""
         }
     }

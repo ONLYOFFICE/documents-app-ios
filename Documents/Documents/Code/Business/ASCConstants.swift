@@ -33,6 +33,7 @@ class ASCConstants {
         static let supportMailTo            = "support@onlyoffice.com"
         static let legalTerms               = "https://www.onlyoffice.com/legalterms.aspx"
         static let applicationPage          = "https://www.onlyoffice.com/mobile.aspx"
+        static let applicationFeedbackForum = "https://cloud.onlyoffice.org/viewforum.php?f=48"
         static let appReview                = "itms-apps://itunes.apple.com/app/id944896972?action=write-review"
         static let appStoreGoogleAuth       = "https://itunes.apple.com/app/id388497605"
         static let help2authByApp           = "https://helpcenter.onlyoffice.com/guides/two-factor-authentication.aspx#step4"
@@ -102,6 +103,13 @@ class ASCConstants {
             static let openExternal             = "open_external"
             static let createEntity             = "create_entity"
         }
+        
+        static var allow: Bool {
+            guard let allow = UserDefaults.standard.object(forKey: "share_analytics") as? Bool else {
+                return true
+            }
+            return allow
+        }
     }
 
     struct Shortcuts {
@@ -126,13 +134,13 @@ class ASCConstants {
     }
 
     struct FileExtensions {
-        static let documents                    = ["docx", "doc", "odt", "rtf", "mht", "html", "htm", "epub", "txt"]
+        static let documents                    = ["docx", "doc", "odt", "rtf", "mht", "html", "htm", "epub", "fb2", "txt"]
         static let spreadsheets                 = ["xlsx", "xls", "csv", "ods"]
         static let presentations                = ["pptx", "ppt", "odp"]
         static let images                       = ["jpg", "jpeg", "png", "gif", "bmp", "tif", "tiff", "ico"]
         static let videos                       = ["mpg", "mpeg", "mpg4", "mp4", "m4v", "mov", "avi", "vfw", "m75", "m15", "3g2", "3gp2", "3gp", "3gpp"]
-        static let allowEdit                    = ["docx", "xlsx", "pptx", "csv", "txt", "odt", "ods", "odp", "doc", "xls", "ppt", "rtf"]
-        static let editorImportDocuments        = ["doc", "odt", "txt", "rtf"]
+        static let allowEdit                    = ["docx", "xlsx", "pptx", "csv", "txt", "odt", "ods", "odp", "doc", "xls", "ppt", "rtf", "mht", "html", "htm", "epub", "fb2"]
+        static let editorImportDocuments        = ["doc", "odt", "txt", "rtf", "mht", "html", "htm", "epub", "fb2"]
         static let editorImportSpreadsheets     = ["xls", "ods", "csv"]
         static let editorImportPresentations    = ["ppt", "odp"]
         static let editorExportDocuments        = ["docx", "odt", "dotx", "ott"]
@@ -198,13 +206,18 @@ class ASCConstants {
         let remoteConfig = RemoteConfig.remoteConfig()
 
     #if DEBUG
-        let debugSettings = RemoteConfigSettings(developerModeEnabled: true)
+        let debugSettings = RemoteConfigSettings()
+        debugSettings.minimumFetchInterval = 0
         remoteConfig.configSettings = debugSettings
     #endif
 
         remoteConfig.fetch(withExpirationDuration: 0) { status, error in
             if status == .success {
-                remoteConfig.activateFetched()
+                remoteConfig.activate { changed, error in
+                    if let error = error {
+                        log.error("Got an error fetching remote values: \(String(describing: error))")
+                    }
+                }
             } else {
                 log.error("Got an error fetching remote values: \(String(describing: error))")
             }

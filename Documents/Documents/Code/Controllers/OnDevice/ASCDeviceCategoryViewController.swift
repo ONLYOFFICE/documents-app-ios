@@ -62,6 +62,7 @@ class ASCDeviceCategoryViewController: UITableViewController {
 
         if UIDevice.pad, let documentsNC = navigationController as? ASCBaseNavigationController {
             documentsNC.hasShadow = true
+            documentsNC.setToolbarHidden(true, animated: false)
         }
 
         title = UIDevice.pad
@@ -73,8 +74,18 @@ class ASCDeviceCategoryViewController: UITableViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
 
+        navigationController?.navigationBar.prefersLargeTitles = true
+        navigationItem.largeTitleDisplayMode = .always
+        
         ASCViewControllerManager.shared.rootController?.tabBar.isHidden = false
         updateLargeTitlesSize()
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        navigationController?.navigationBar.prefersLargeTitles = true
+        navigationItem.largeTitleDisplayMode = .always
     }
 
     func select(category: ASCCategory, animated: Bool = false) {
@@ -99,7 +110,7 @@ class ASCDeviceCategoryViewController: UITableViewController {
             documentsVC.title = category.title
 
             documentsVC.navigationItem.leftBarButtonItem = splitVC.displayModeButtonItem
-            documentsVC.navigationItem.leftItemsSupplementBackButton = true
+            documentsVC.navigationItem.leftItemsSupplementBackButton = UIDevice.pad
 
             if let index = categories.firstIndex(where: { $0.folder?.rootFolderType == documentsVC.folder?.rootFolderType }) {
                 tableView.selectRow(at: IndexPath(row: index, section: 0), animated: false, scrollPosition: .none)
@@ -124,6 +135,8 @@ extension ASCDeviceCategoryViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if let cell = tableView.dequeueReusableCell(withIdentifier: ASCDeviceCategoryCell.identifier, for: indexPath) as? ASCDeviceCategoryCell {
             cell.category = categories[indexPath.row]
+            cell.accessoryType = (UIDevice.phone || ASCViewControllerManager.shared.currentSizeClass == .compact) ? .disclosureIndicator : .none
+
             return cell
         }
         return UITableViewCell()

@@ -62,7 +62,9 @@ class ASCFileCell: MGSwipeTableCell {
 
         title?.text = fileInfo.title
         owner?.text = fileInfo.updatedBy?.displayName ?? NSLocalizedString("Unknown", comment: "Invalid entity name")
-        date?.text = (fileInfo.updated != nil) ? dateFormatter.string(from: fileInfo.updated!) : NSLocalizedString("Unknown", comment: "Invalid entity name")
+        date?.text = (fileInfo.updated != nil)
+            ? dateFormatter.string(from: fileInfo.updated!)
+            : NSLocalizedString("Unknown", comment: "Invalid entity name")
         
         if fileInfo.pureContentLength < 1 {
             if fileInfo.device {
@@ -76,7 +78,30 @@ class ASCFileCell: MGSwipeTableCell {
             separaterLabel?.text = "•"
             sizeLabel?.text = fileInfo.displayContentLength
         }
-
+        
+        /// Status info
+        
+        if #available(iOS 13.0, *) {
+            if fileInfo.isEditing {
+                let editImage = UIImage(
+                    systemName: "pencil",
+                    withConfiguration: UIImage.SymbolConfiguration(font: UIFont.systemFont(ofSize: 13, weight: .black))
+                )?.withTintColor(ASCConstants.Colors.brend, renderingMode: .alwaysOriginal) ?? UIImage()
+                
+                title?.addTrailing(image: editImage)
+            }
+            
+            if fileInfo.isFavorite {
+                let favoriteImage = UIImage(
+                    systemName: "star.fill",
+                    withConfiguration: UIImage.SymbolConfiguration(font: UIFont.systemFont(ofSize: 13, weight: .medium))
+                )?.withTintColor(ASCConstants.Colors.brend, renderingMode: .alwaysOriginal) ?? UIImage()
+                
+                title?.addTrailing(image: favoriteImage)
+            }
+        }
+        
+        /// Thumb view
         let fileExt = fileInfo.title.fileExtension().lowercased()
 
         icon?.contentMode = .center

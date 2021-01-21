@@ -14,27 +14,15 @@
 		8A01844B23A261540025BE85 /* ASCConnectCloudViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A01844723A261530025BE85 /* ASCConnectCloudViewController.swift */; };
 		8A01844E23A261900025BE85 /* ASCGoogleDriveProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A01844D23A261900025BE85 /* ASCGoogleDriveProvider.swift */; };
 		8A01845223A2653C0025BE85 /* XpsFile.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8A01844F23A2653C0025BE85 /* XpsFile.framework */; };
-		8A01845323A2653C0025BE85 /* XpsFile.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 8A01844F23A2653C0025BE85 /* XpsFile.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		8A01845423A2653C0025BE85 /* UnicodeConverter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8A01845023A2653C0025BE85 /* UnicodeConverter.framework */; };
-		8A01845523A2653C0025BE85 /* UnicodeConverter.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 8A01845023A2653C0025BE85 /* UnicodeConverter.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		8A01845623A2653C0025BE85 /* x2t.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8A01845123A2653C0025BE85 /* x2t.framework */; };
-		8A01845723A2653C0025BE85 /* x2t.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 8A01845123A2653C0025BE85 /* x2t.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		8A01845F23A2654E0025BE85 /* DjVuFile.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8A01845823A2654E0025BE85 /* DjVuFile.framework */; };
-		8A01846023A2654E0025BE85 /* DjVuFile.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 8A01845823A2654E0025BE85 /* DjVuFile.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		8A01846123A2654F0025BE85 /* graphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8A01845923A2654E0025BE85 /* graphics.framework */; };
-		8A01846223A2654F0025BE85 /* graphics.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 8A01845923A2654E0025BE85 /* graphics.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		8A01846323A2654F0025BE85 /* doctrenderer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8A01845A23A2654E0025BE85 /* doctrenderer.framework */; };
-		8A01846423A2654F0025BE85 /* doctrenderer.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 8A01845A23A2654E0025BE85 /* doctrenderer.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		8A01846523A2654F0025BE85 /* HtmlFile.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8A01845B23A2654E0025BE85 /* HtmlFile.framework */; };
-		8A01846623A2654F0025BE85 /* HtmlFile.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 8A01845B23A2654E0025BE85 /* HtmlFile.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		8A01846723A2654F0025BE85 /* HtmlRenderer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8A01845C23A2654E0025BE85 /* HtmlRenderer.framework */; };
-		8A01846823A2654F0025BE85 /* HtmlRenderer.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 8A01845C23A2654E0025BE85 /* HtmlRenderer.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		8A01846923A2654F0025BE85 /* PdfReader.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8A01845D23A2654E0025BE85 /* PdfReader.framework */; };
-		8A01846A23A2654F0025BE85 /* PdfReader.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 8A01845D23A2654E0025BE85 /* PdfReader.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		8A01846B23A2654F0025BE85 /* kernel.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8A01845E23A2654E0025BE85 /* kernel.framework */; };
-		8A01846C23A2654F0025BE85 /* kernel.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 8A01845E23A2654E0025BE85 /* kernel.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		8A01847023A2666C0025BE85 /* PdfWriter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8A01846F23A2666C0025BE85 /* PdfWriter.framework */; };
-		8A01847123A2666D0025BE85 /* PdfWriter.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 8A01846F23A2666C0025BE85 /* PdfWriter.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		8A278AE42499614C00B6AA30 /* Debug.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8A278AE32499614C00B6AA30 /* Debug.storyboard */; };
 		8A2EB080231FFA3200A12A4E /* ASCLoaderCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8A2EB07C231FFA3100A12A4E /* ASCLoaderCell.xib */; };
 		8A2EB084231FFA3700A12A4E /* ASCFolderCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8A2EB082231FFA3600A12A4E /* ASCFolderCell.xib */; };
@@ -66,6 +54,7 @@
 		FC0F01DF216F443E008D79A5 /* ASCLocalProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC0F01DE216F443E008D79A5 /* ASCLocalProvider.swift */; };
 		FC0F01E1216F46B7008D79A5 /* ASCOnlyofficeProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC0F01E0216F46B7008D79A5 /* ASCOnlyofficeProvider.swift */; };
 		FC0F01E3216F4EA7008D79A5 /* ASCWebDAVProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC0F01E2216F4EA7008D79A5 /* ASCWebDAVProvider.swift */; };
+		FC12ACF22567CF5E00FF1CBB /* ASCAnalytics.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC12ACF12567CF5E00FF1CBB /* ASCAnalytics.swift */; };
 		FC1755971E9CAFDB00D73D8E /* ASCSortViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC1755961E9CAFDB00D73D8E /* ASCSortViewController.swift */; };
 		FC1AD6142175FE7000DADEE0 /* ASCNetworkReachability.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC1AD6132175FE7000DADEE0 /* ASCNetworkReachability.swift */; };
 		FC1EA5CB1ECECBC3008FEE2E /* ASCBaseNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC1EA5CA1ECECBC3008FEE2E /* ASCBaseNavigationController.swift */; };
@@ -143,6 +132,7 @@
 		FC6839A221B81B1D00251CEA /* ASCOwnCloudProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC6839A121B81B1D00251CEA /* ASCOwnCloudProvider.swift */; };
 		FC6DD4E61EDD59330095B16C /* ParkedTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC6DD4E51EDD59330095B16C /* ParkedTextField.swift */; };
 		FC6F0CD71F542E7E002D33D9 /* ASCSSOSignInController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC6F0CD61F542E7E002D33D9 /* ASCSSOSignInController.swift */; };
+		FC707C4325AC5DAF004CB85B /* UILabel+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC707C4225AC5DAF004CB85B /* UILabel+Extension.swift */; };
 		FC708EE421B92E94001BBE5B /* UIBarButtonItem+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC708EE321B92E94001BBE5B /* UIBarButtonItem+Extensions.swift */; };
 		FC786FB91EB8694400181D62 /* Samples in Resources */ = {isa = PBXBuildFile; fileRef = FC786FB81EB8694400181D62 /* Samples */; };
 		FC786FBC1EB8771700181D62 /* Intro.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FC786FBE1EB8771700181D62 /* Intro.storyboard */; };
@@ -162,6 +152,7 @@
 		FC8A137B22686B5D006D8C6E /* ASCPortalCapabilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC8A137A22686B5D006D8C6E /* ASCPortalCapabilities.swift */; };
 		FC8A137D226878C0006D8C6E /* Sequence+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC8A137C226878C0006D8C6E /* Sequence+Extensions.swift */; };
 		FC8A137F2268B57F006D8C6E /* URL+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC8A137E2268B57F006D8C6E /* URL+Extensions.swift */; };
+		FC8A5A8D2565712700D08037 /* ASCDocumentsToolbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC8A5A8C2565712700D08037 /* ASCDocumentsToolbar.swift */; };
 		FC8BBC9E22BA5D6200761152 /* ASCCreatePortalStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC8BBC9D22BA5D6100761152 /* ASCCreatePortalStatus.swift */; };
 		FC8C69791ECC2990005B68D7 /* Date+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC8C69781ECC298F005B68D7 /* Date+Extension.swift */; };
 		FC8C697B1ECC2F44005B68D7 /* ASCConnectStorageOAuth2Google.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC8C697A1ECC2F44005B68D7 /* ASCConnectStorageOAuth2Google.swift */; };
@@ -253,6 +244,9 @@
 		FCF2761C22C0E8E500984E83 /* ASCProfileAvatarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCF2761B22C0E8E500984E83 /* ASCProfileAvatarView.swift */; };
 		FCF2761E22C0FA5E00984E83 /* ASCShadowRadiusView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCF2761D22C0FA5E00984E83 /* ASCShadowRadiusView.swift */; };
 		FCF3AA8B1EF91A1B00DF63BA /* ASCTransferViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCF3AA8A1EF91A1B00DF63BA /* ASCTransferViewCell.swift */; };
+		FCF501692549A9B80079518A /* EpubFile.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FCF501682549A9B80079518A /* EpubFile.framework */; };
+		FCF5016B2549A9C30079518A /* Fb2File.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FCF5016A2549A9C30079518A /* Fb2File.framework */; };
+		FCF5016D2549A9CE0079518A /* HtmlFile2.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FCF5016C2549A9CE0079518A /* HtmlFile2.framework */; };
 		FCF67218217716FF004756A0 /* ASCNextCloudApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCF67217217716FF004756A0 /* ASCNextCloudApi.swift */; };
 		FCF6721A21771B21004756A0 /* ASCBaseApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCF6721921771B21004756A0 /* ASCBaseApi.swift */; };
 		FCF865201E4E0D1C003E47B6 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FCF8651C1E4E0D1C003E47B6 /* Main.storyboard */; };
@@ -332,17 +326,6 @@
 				FC53690324EB1D150092765B /* PresentationEditor.framework in CopyFiles */,
 				FC53690224EB1D110092765B /* DocumentEditor.framework in CopyFiles */,
 				FC53690124EB1D0C0092765B /* DocumentConverter.framework in CopyFiles */,
-				8A01845723A2653C0025BE85 /* x2t.framework in CopyFiles */,
-				8A01846623A2654F0025BE85 /* HtmlFile.framework in CopyFiles */,
-				8A01845523A2653C0025BE85 /* UnicodeConverter.framework in CopyFiles */,
-				8A01846A23A2654F0025BE85 /* PdfReader.framework in CopyFiles */,
-				8A01846C23A2654F0025BE85 /* kernel.framework in CopyFiles */,
-				8A01846423A2654F0025BE85 /* doctrenderer.framework in CopyFiles */,
-				8A01847123A2666D0025BE85 /* PdfWriter.framework in CopyFiles */,
-				8A01845323A2653C0025BE85 /* XpsFile.framework in CopyFiles */,
-				8A01846023A2654E0025BE85 /* DjVuFile.framework in CopyFiles */,
-				8A01846823A2654F0025BE85 /* HtmlRenderer.framework in CopyFiles */,
-				8A01846223A2654F0025BE85 /* graphics.framework in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -361,7 +344,6 @@
 		8A01845823A2654E0025BE85 /* DjVuFile.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = DjVuFile.framework; path = "../../editors-ios/build/SDK/lib/DjVuFile.framework"; sourceTree = "<group>"; };
 		8A01845923A2654E0025BE85 /* graphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = graphics.framework; path = "../../editors-ios/build/SDK/lib/graphics.framework"; sourceTree = "<group>"; };
 		8A01845A23A2654E0025BE85 /* doctrenderer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = doctrenderer.framework; path = "../../editors-ios/build/SDK/lib/doctrenderer.framework"; sourceTree = "<group>"; };
-		8A01845B23A2654E0025BE85 /* HtmlFile.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = HtmlFile.framework; path = "../../editors-ios/build/SDK/lib/HtmlFile.framework"; sourceTree = "<group>"; };
 		8A01845C23A2654E0025BE85 /* HtmlRenderer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = HtmlRenderer.framework; path = "../../editors-ios/build/SDK/lib/HtmlRenderer.framework"; sourceTree = "<group>"; };
 		8A01845D23A2654E0025BE85 /* PdfReader.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = PdfReader.framework; path = "../../editors-ios/build/SDK/lib/PdfReader.framework"; sourceTree = "<group>"; };
 		8A01845E23A2654E0025BE85 /* kernel.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = kernel.framework; path = "../../editors-ios/build/SDK/lib/kernel.framework"; sourceTree = "<group>"; };
@@ -404,6 +386,7 @@
 		FC0F01DE216F443E008D79A5 /* ASCLocalProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCLocalProvider.swift; sourceTree = "<group>"; };
 		FC0F01E0216F46B7008D79A5 /* ASCOnlyofficeProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCOnlyofficeProvider.swift; sourceTree = "<group>"; };
 		FC0F01E2216F4EA7008D79A5 /* ASCWebDAVProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCWebDAVProvider.swift; sourceTree = "<group>"; };
+		FC12ACF12567CF5E00FF1CBB /* ASCAnalytics.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCAnalytics.swift; sourceTree = "<group>"; };
 		FC1755961E9CAFDB00D73D8E /* ASCSortViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASCSortViewController.swift; sourceTree = "<group>"; };
 		FC1AD6132175FE7000DADEE0 /* ASCNetworkReachability.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCNetworkReachability.swift; sourceTree = "<group>"; };
 		FC1EA5CA1ECECBC3008FEE2E /* ASCBaseNavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASCBaseNavigationController.swift; sourceTree = "<group>"; };
@@ -478,6 +461,7 @@
 		FC6839A121B81B1D00251CEA /* ASCOwnCloudProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCOwnCloudProvider.swift; sourceTree = "<group>"; };
 		FC6DD4E51EDD59330095B16C /* ParkedTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ParkedTextField.swift; sourceTree = "<group>"; };
 		FC6F0CD61F542E7E002D33D9 /* ASCSSOSignInController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASCSSOSignInController.swift; sourceTree = "<group>"; };
+		FC707C4225AC5DAF004CB85B /* UILabel+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UILabel+Extension.swift"; sourceTree = "<group>"; };
 		FC708EE321B92E94001BBE5B /* UIBarButtonItem+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIBarButtonItem+Extensions.swift"; sourceTree = "<group>"; };
 		FC786FB81EB8694400181D62 /* Samples */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Samples; sourceTree = "<group>"; };
 		FC786FBD1EB8771700181D62 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Intro.storyboard; sourceTree = "<group>"; };
@@ -498,6 +482,7 @@
 		FC8A137A22686B5D006D8C6E /* ASCPortalCapabilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCPortalCapabilities.swift; sourceTree = "<group>"; };
 		FC8A137C226878C0006D8C6E /* Sequence+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Sequence+Extensions.swift"; sourceTree = "<group>"; };
 		FC8A137E2268B57F006D8C6E /* URL+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "URL+Extensions.swift"; sourceTree = "<group>"; };
+		FC8A5A8C2565712700D08037 /* ASCDocumentsToolbar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASCDocumentsToolbar.swift; sourceTree = "<group>"; };
 		FC8BBC9D22BA5D6100761152 /* ASCCreatePortalStatus.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASCCreatePortalStatus.swift; sourceTree = "<group>"; };
 		FC8C69781ECC298F005B68D7 /* Date+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Date+Extension.swift"; sourceTree = "<group>"; };
 		FC8C697A1ECC2F44005B68D7 /* ASCConnectStorageOAuth2Google.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASCConnectStorageOAuth2Google.swift; sourceTree = "<group>"; };
@@ -672,6 +657,9 @@
 		FCF3AAC01EF9455100DF63BA /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/ConnectStorage.strings; sourceTree = "<group>"; };
 		FCF3AAC11EF9455100DF63BA /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/PasscodeLock.strings; sourceTree = "<group>"; };
 		FCF3AAC21EF9483100DF63BA /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		FCF501682549A9B80079518A /* EpubFile.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = EpubFile.framework; path = "../../editors-ios/build/SDK/lib/EpubFile.framework"; sourceTree = "<group>"; };
+		FCF5016A2549A9C30079518A /* Fb2File.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Fb2File.framework; path = "../../editors-ios/build/SDK/lib/Fb2File.framework"; sourceTree = "<group>"; };
+		FCF5016C2549A9CE0079518A /* HtmlFile2.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = HtmlFile2.framework; path = "../../editors-ios/build/SDK/lib/HtmlFile2.framework"; sourceTree = "<group>"; };
 		FCF67217217716FF004756A0 /* ASCNextCloudApi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCNextCloudApi.swift; sourceTree = "<group>"; };
 		FCF6721921771B21004756A0 /* ASCBaseApi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCBaseApi.swift; sourceTree = "<group>"; };
 		FCF8045B212E94A300378AFD /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/InfoPlist.strings; sourceTree = "<group>"; };
@@ -691,8 +679,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				FC53690024EB1C3D0092765B /* SpreadsheetEditor.framework in Frameworks */,
+				FCF5016B2549A9C30079518A /* Fb2File.framework in Frameworks */,
 				FC5368FF24EB1C390092765B /* PresentationEditor.framework in Frameworks */,
 				FC5368FE24EB1C330092765B /* DocumentEditor.framework in Frameworks */,
+				FCF5016D2549A9CE0079518A /* HtmlFile2.framework in Frameworks */,
 				FC5368FD24EB1C2F0092765B /* DocumentConverter.framework in Frameworks */,
 				8A01845F23A2654E0025BE85 /* DjVuFile.framework in Frameworks */,
 				8A01846923A2654F0025BE85 /* PdfReader.framework in Frameworks */,
@@ -701,7 +691,7 @@
 				8A01847023A2666C0025BE85 /* PdfWriter.framework in Frameworks */,
 				8A01846323A2654F0025BE85 /* doctrenderer.framework in Frameworks */,
 				8A01846123A2654F0025BE85 /* graphics.framework in Frameworks */,
-				8A01846523A2654F0025BE85 /* HtmlFile.framework in Frameworks */,
+				FCF501692549A9B80079518A /* EpubFile.framework in Frameworks */,
 				8A01845423A2653C0025BE85 /* UnicodeConverter.framework in Frameworks */,
 				8A01846B23A2654F0025BE85 /* kernel.framework in Frameworks */,
 				3A28005710D299F4507111B1 /* Pods_Documents_develop.framework in Frameworks */,
@@ -737,8 +727,10 @@
 				8A01846F23A2666C0025BE85 /* PdfWriter.framework */,
 				8A01845823A2654E0025BE85 /* DjVuFile.framework */,
 				8A01845A23A2654E0025BE85 /* doctrenderer.framework */,
+				FCF501682549A9B80079518A /* EpubFile.framework */,
+				FCF5016A2549A9C30079518A /* Fb2File.framework */,
 				8A01845923A2654E0025BE85 /* graphics.framework */,
-				8A01845B23A2654E0025BE85 /* HtmlFile.framework */,
+				FCF5016C2549A9CE0079518A /* HtmlFile2.framework */,
 				8A01845C23A2654E0025BE85 /* HtmlRenderer.framework */,
 				8A01845E23A2654E0025BE85 /* kernel.framework */,
 				8A01845D23A2654E0025BE85 /* PdfReader.framework */,
@@ -840,6 +832,7 @@
 				FC31B27F1E767CAB008699C3 /* ASCFileCell.swift */,
 				FC31B2821E767CC7008699C3 /* ASCLoaderCell.swift */,
 				FC9E28BE2244E88C000D315E /* ASCDocumentsEmptyView.swift */,
+				FC8A5A8C2565712700D08037 /* ASCDocumentsToolbar.swift */,
 			);
 			name = Views;
 			path = View;
@@ -867,6 +860,7 @@
 				FC28F2C71E8D217F00A8F985 /* UIControl+Extension.swift */,
 				FC37D8E821CB8FA8001A7BFD /* UIDevice+DeviceKit.swift */,
 				FC31B2861E76C09F008699C3 /* UIDevice+Extension.swift */,
+				FC707C4225AC5DAF004CB85B /* UILabel+Extension.swift */,
 				69EBD4C91EF2AB9D00D3C685 /* UINavigationController+Extension.swift */,
 				FC708EE321B92E94001BBE5B /* UIBarButtonItem+Extensions.swift */,
 				FCA7500722BB9CD500991682 /* UITableViewCell+Extensions.swift */,
@@ -1288,6 +1282,7 @@
 				8A69B5A32497626300152BDE /* ASCLogIntercepter.swift */,
 				8A69B5A52497626E00152BDE /* ASCDebugManager.swift */,
 				8A69B5D3249794A600152BDE /* ASCLogger.swift */,
+				FC12ACF12567CF5E00FF1CBB /* ASCAnalytics.swift */,
 			);
 			path = Business;
 			sourceTree = "<group>";
@@ -1488,12 +1483,12 @@
 				FCFDAA8A1E48A10C007A240C /* Frameworks */,
 				FCFDAA8B1E48A10C007A240C /* Resources */,
 				FC1C808B2530AA9E0048BD4C /* Copy Bundle Resources */,
-				FC7B37D71E929B5F009C41AD /* Write application version into preference */,
 				FCC471031F56A2DF00373597 /* Increment Build Number */,
 				FC7DA57E1EF2962A0011092A /* Upload symbols to Firebase Crashlytics */,
 				B2C286EB0ED4274049CA74C0 /* [CP] Embed Pods Frameworks */,
 				4921F648B20E34C53A6ED3AA /* [CP] Copy Pods Resources */,
 				8A4CF68C22E8B23E00C76506 /* CopyFiles */,
+				FC14101A2588FA380090CF53 /* Embed Frameworks Manual */,
 			);
 			buildRules = (
 			);
@@ -1707,9 +1702,18 @@
 				"${BUILT_PRODUCTS_DIR}/FacebookLogin/FacebookLogin.framework",
 				"${BUILT_PRODUCTS_DIR}/FileKit/FileKit.framework",
 				"${BUILT_PRODUCTS_DIR}/FilesProvider/FilesProvider.framework",
+				"${BUILT_PRODUCTS_DIR}/FirebaseABTesting/FirebaseABTesting.framework",
+				"${BUILT_PRODUCTS_DIR}/FirebaseCore/FirebaseCore.framework",
+				"${BUILT_PRODUCTS_DIR}/FirebaseCoreDiagnostics/FirebaseCoreDiagnostics.framework",
+				"${BUILT_PRODUCTS_DIR}/FirebaseCrashlytics/FirebaseCrashlytics.framework",
+				"${BUILT_PRODUCTS_DIR}/FirebaseInstallations/FirebaseInstallations.framework",
+				"${BUILT_PRODUCTS_DIR}/FirebaseInstanceID/FirebaseInstanceID.framework",
+				"${BUILT_PRODUCTS_DIR}/FirebaseMessaging/FirebaseMessaging.framework",
+				"${BUILT_PRODUCTS_DIR}/FirebaseRemoteConfig/FirebaseRemoteConfig.framework",
 				"${BUILT_PRODUCTS_DIR}/GTMAppAuth/GTMAppAuth.framework",
 				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
 				"${BUILT_PRODUCTS_DIR}/GoogleAPIClientForREST/GoogleAPIClientForREST.framework",
+				"${BUILT_PRODUCTS_DIR}/GoogleDataTransport/GoogleDataTransport.framework",
 				"${BUILT_PRODUCTS_DIR}/GoogleUtilities/GoogleUtilities.framework",
 				"${BUILT_PRODUCTS_DIR}/IQKeyboardManagerSwift/IQKeyboardManagerSwift.framework",
 				"${BUILT_PRODUCTS_DIR}/KeychainSwift/KeychainSwift.framework",
@@ -1720,7 +1724,6 @@
 				"${BUILT_PRODUCTS_DIR}/ObjectMapper/ObjectMapper.framework",
 				"${BUILT_PRODUCTS_DIR}/PhoneNumberKit/PhoneNumberKit.framework",
 				"${BUILT_PRODUCTS_DIR}/PromisesObjC/FBLPromises.framework",
-				"${BUILT_PRODUCTS_DIR}/Protobuf/Protobuf.framework",
 				"${BUILT_PRODUCTS_DIR}/SDWebImage/SDWebImage.framework",
 				"${BUILT_PRODUCTS_DIR}/Siren/Siren.framework",
 				"${BUILT_PRODUCTS_DIR}/SkyFloatingLabelTextField/SkyFloatingLabelTextField.framework",
@@ -1743,9 +1746,18 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FacebookLogin.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FileKit.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FilesProvider.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FirebaseABTesting.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FirebaseCore.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FirebaseCoreDiagnostics.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FirebaseCrashlytics.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FirebaseInstallations.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FirebaseInstanceID.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FirebaseMessaging.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FirebaseRemoteConfig.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMAppAuth.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleAPIClientForREST.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleDataTransport.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleUtilities.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/IQKeyboardManagerSwift.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/KeychainSwift.framework",
@@ -1756,7 +1768,6 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ObjectMapper.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/PhoneNumberKit.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBLPromises.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Protobuf.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SDWebImage.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Siren.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SkyFloatingLabelTextField.framework",
@@ -1771,6 +1782,24 @@
 			shellPath = /bin/sh;
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Documents-develop/Pods-Documents-develop-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
+		};
+		FC14101A2588FA380090CF53 /* Embed Frameworks Manual */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = "Embed Frameworks Manual";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "set -e\nset -u\nset -o pipefail\n\nfunction on_error {\n  echo \"$(realpath -mq \"${0}\"):$1: error: Unexpected failure\"\n}\ntrap 'on_error $LINENO' ERR\n\nif [ -z ${FRAMEWORKS_FOLDER_PATH+x} ]; then\n  # If FRAMEWORKS_FOLDER_PATH is not set, then there's nowhere for us to copy\n  # frameworks to, so exit 0 (signalling the script phase was successful).\n  exit 0\nfi\n\necho \"mkdir -p ${CONFIGURATION_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}\"\nmkdir -p \"${CONFIGURATION_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}\"\n\nCOCOAPODS_PARALLEL_CODE_SIGN=\"${COCOAPODS_PARALLEL_CODE_SIGN:-false}\"\nSWIFT_STDLIB_PATH=\"${DT_TOOLCHAIN_DIR}/usr/lib/swift/${PLATFORM_NAME}\"\n\n# Used as a return value for each invocation of `strip_invalid_archs` function.\nSTRIP_BINARY_RETVAL=0\n\n# This protects against multiple targets copying the same framework dependency at the same time. The solution\n# was originally proposed here: https://lists.samba.org/archive/rsync/2008-February/020158.html\nRSYNC_PROTECT_TMP_FILES=(--filter \"P .*.??????\")\n\n# Copies and strips a vendored framework\ninstall_framework()\n{\n  local framework=\"$1\"\n\n  local destination=\"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}\"\n\n  if [ -L \"${framework}\" ]; then\n    echo \"Symlinked...\"\n    framework=\"$(readlink \"${source}\")\"\n  fi\n\n  # Use filter instead of exclude so missing patterns don't throw errors.\n  echo \"rsync --delete -av \"${RSYNC_PROTECT_TMP_FILES[@]}\" --filter \\\"- CVS/\\\" --filter \\\"- .svn/\\\" --filter \\\"- .git/\\\" --filter \\\"- .hg/\\\" --filter \\\"- Headers\\\" --filter \\\"- PrivateHeaders\\\" --filter \\\"- Modules\\\" \\\"${framework}\\\" \\\"${destination}\\\"\"\n  rsync --delete -av \"${RSYNC_PROTECT_TMP_FILES[@]}\" --filter \"- CVS/\" --filter \"- .svn/\" --filter \"- .git/\" --filter \"- .hg/\" --filter \"- Headers\" --filter \"- PrivateHeaders\" --filter \"- Modules\" \"${framework}\" \"${destination}\"\n\n  local basename\n  basename=\"$(basename -s .framework \"$1\")\"\n  binary=\"${destination}/${basename}.framework/${basename}\"\n\n  if ! [ -r \"$binary\" ]; then\n    binary=\"${destination}/${basename}\"\n  elif [ -L \"${binary}\" ]; then\n    echo \"Destination binary is symlinked...\"\n    dirname=\"$(dirname \"${binary}\")\"\n    binary=\"${dirname}/$(readlink \"${binary}\")\"\n  fi\n\n  # Strip invalid architectures so \"fat\" simulator / device frameworks work on device\n  if [[ \"$(file \"$binary\")\" == *\"dynamically linked shared library\"* ]]; then\n    strip_invalid_archs \"$binary\"\n  fi\n\n  # Resign the code if required by the build settings to avoid unstable apps\n  code_sign_if_enabled \"${destination}/$(basename \"$1\")\"\n\n  # Embed linked Swift runtime libraries. No longer necessary as of Xcode 7.\n  if [ \"${XCODE_VERSION_MAJOR}\" -lt 7 ]; then\n    local swift_runtime_libs\n    swift_runtime_libs=$(xcrun otool -LX \"$binary\" | grep --color=never @rpath/libswift | sed -E s/@rpath\\\\/\\(.+dylib\\).*/\\\\1/g | uniq -u)\n    for lib in $swift_runtime_libs; do\n      echo \"rsync -auv \\\"${SWIFT_STDLIB_PATH}/${lib}\\\" \\\"${destination}\\\"\"\n      rsync -auv \"${SWIFT_STDLIB_PATH}/${lib}\" \"${destination}\"\n      code_sign_if_enabled \"${destination}/${lib}\"\n    done\n  fi\n}\n\n# Copies and strips a vendored dSYM\ninstall_dsym() {\n  local source=\"$1\"\n  if [ -r \"$source\" ]; then\n    # Copy the dSYM into a the targets temp dir.\n    echo \"rsync --delete -av \"${RSYNC_PROTECT_TMP_FILES[@]}\" --filter \\\"- CVS/\\\" --filter \\\"- .svn/\\\" --filter \\\"- .git/\\\" --filter \\\"- .hg/\\\" --filter \\\"- Headers\\\" --filter \\\"- PrivateHeaders\\\" --filter \\\"- Modules\\\" \\\"${source}\\\" \\\"${DERIVED_FILES_DIR}\\\"\"\n    rsync --delete -av \"${RSYNC_PROTECT_TMP_FILES[@]}\" --filter \"- CVS/\" --filter \"- .svn/\" --filter \"- .git/\" --filter \"- .hg/\" --filter \"- Headers\" --filter \"- PrivateHeaders\" --filter \"- Modules\" \"${source}\" \"${DERIVED_FILES_DIR}\"\n\n    local basename\n    basename=\"$(basename -s .framework.dSYM \"$source\")\"\n    binary=\"${DERIVED_FILES_DIR}/${basename}.framework.dSYM/Contents/Resources/DWARF/${basename}\"\n\n    # Strip invalid architectures so \"fat\" simulator / device frameworks work on device\n    if [[ \"$(file \"$binary\")\" == *\"Mach-O \"*\"dSYM companion\"* ]]; then\n      strip_invalid_archs \"$binary\"\n    fi\n\n    if [[ $STRIP_BINARY_RETVAL == 1 ]]; then\n      # Move the stripped file into its final destination.\n      echo \"rsync --delete -av \"${RSYNC_PROTECT_TMP_FILES[@]}\" --filter \\\"- CVS/\\\" --filter \\\"- .svn/\\\" --filter \\\"- .git/\\\" --filter \\\"- .hg/\\\" --filter \\\"- Headers\\\" --filter \\\"- PrivateHeaders\\\" --filter \\\"- Modules\\\" \\\"${DERIVED_FILES_DIR}/${basename}.framework.dSYM\\\" \\\"${DWARF_DSYM_FOLDER_PATH}\\\"\"\n      rsync --delete -av \"${RSYNC_PROTECT_TMP_FILES[@]}\" --filter \"- CVS/\" --filter \"- .svn/\" --filter \"- .git/\" --filter \"- .hg/\" --filter \"- Headers\" --filter \"- PrivateHeaders\" --filter \"- Modules\" \"${DERIVED_FILES_DIR}/${basename}.framework.dSYM\" \"${DWARF_DSYM_FOLDER_PATH}\"\n    else\n      # The dSYM was not stripped at all, in this case touch a fake folder so the input/output paths from Xcode do not reexecute this script because the file is missing.\n      touch \"${DWARF_DSYM_FOLDER_PATH}/${basename}.framework.dSYM\"\n    fi\n  fi\n}\n\n# Copies the bcsymbolmap files of a vendored framework\ninstall_bcsymbolmap() {\n    local bcsymbolmap_path=\"$1\"\n    local destination=\"${BUILT_PRODUCTS_DIR}\"\n    echo \"rsync --delete -av \"${RSYNC_PROTECT_TMP_FILES[@]}\" --filter \"- CVS/\" --filter \"- .svn/\" --filter \"- .git/\" --filter \"- .hg/\" --filter \"- Headers\" --filter \"- PrivateHeaders\" --filter \"- Modules\" \"${bcsymbolmap_path}\" \"${destination}\"\"\n    rsync --delete -av \"${RSYNC_PROTECT_TMP_FILES[@]}\" --filter \"- CVS/\" --filter \"- .svn/\" --filter \"- .git/\" --filter \"- .hg/\" --filter \"- Headers\" --filter \"- PrivateHeaders\" --filter \"- Modules\" \"${bcsymbolmap_path}\" \"${destination}\"\n}\n\n# Signs a framework with the provided identity\ncode_sign_if_enabled() {\n  if [ -n \"${EXPANDED_CODE_SIGN_IDENTITY:-}\" -a \"${CODE_SIGNING_REQUIRED:-}\" != \"NO\" -a \"${CODE_SIGNING_ALLOWED}\" != \"NO\" ]; then\n    # Use the current code_sign_identity\n    echo \"Code Signing $1 with Identity ${EXPANDED_CODE_SIGN_IDENTITY_NAME}\"\n    local code_sign_cmd=\"/usr/bin/codesign --force --sign ${EXPANDED_CODE_SIGN_IDENTITY} ${OTHER_CODE_SIGN_FLAGS:-} --preserve-metadata=identifier,entitlements '$1'\"\n\n    if [ \"${COCOAPODS_PARALLEL_CODE_SIGN}\" == \"true\" ]; then\n      code_sign_cmd=\"$code_sign_cmd &\"\n    fi\n    echo \"$code_sign_cmd\"\n    eval \"$code_sign_cmd\"\n  fi\n}\n\n# Strip invalid architectures\nstrip_invalid_archs() {\n  binary=\"$1\"\n  # Get architectures for current target binary\n  binary_archs=\"$(lipo -info \"$binary\" | rev | cut -d ':' -f1 | awk '{$1=$1;print}' | rev)\"\n  # Intersect them with the architectures we are building for\n  intersected_archs=\"$(echo ${ARCHS[@]} ${binary_archs[@]} | tr ' ' '\\n' | sort | uniq -d)\"\n  # If there are no archs supported by this binary then warn the user\n  if [[ -z \"$intersected_archs\" ]]; then\n    echo \"warning: [CP] Vendored binary '$binary' contains architectures ($binary_archs) none of which match the current build architectures ($ARCHS).\"\n    STRIP_BINARY_RETVAL=0\n    return\n  fi\n  stripped=\"\"\n  for arch in $binary_archs; do\n    if ! [[ \"${ARCHS}\" == *\"$arch\"* ]]; then\n      # Strip non-valid architectures in-place\n      lipo -remove \"$arch\" -output \"$binary\" \"$binary\"\n      stripped=\"$stripped $arch\"\n    fi\n  done\n  if [[ \"$stripped\" ]]; then\n    echo \"Stripped $binary of architectures:$stripped\"\n  fi\n  STRIP_BINARY_RETVAL=1\n}\n\n\ninstall_framework \"${PROJECT_DIR}/../../editors-ios/build/SDK/lib/DjVuFile.framework\"\ninstall_framework \"${PROJECT_DIR}/../../editors-ios/build/SDK/lib/doctrenderer.framework\"\ninstall_framework \"${PROJECT_DIR}/../../editors-ios/build/SDK/lib/EpubFile.framework\"\ninstall_framework \"${PROJECT_DIR}/../../editors-ios/build/SDK/lib/Fb2File.framework\"\ninstall_framework \"${PROJECT_DIR}/../../editors-ios/build/SDK/lib/graphics.framework\"\ninstall_framework \"${PROJECT_DIR}/../../editors-ios/build/SDK/lib/HtmlFile2.framework\"\ninstall_framework \"${PROJECT_DIR}/../../editors-ios/build/SDK/lib/HtmlRenderer.framework\"\ninstall_framework \"${PROJECT_DIR}/../../editors-ios/build/SDK/lib/kernel.framework\"\ninstall_framework \"${PROJECT_DIR}/../../editors-ios/build/SDK/lib/PdfReader.framework\"\ninstall_framework \"${PROJECT_DIR}/../../editors-ios/build/SDK/lib/PdfWriter.framework\"\ninstall_framework \"${PROJECT_DIR}/../../editors-ios/build/SDK/lib/UnicodeConverter.framework\"\ninstall_framework \"${PROJECT_DIR}/../../editors-ios/build/SDK/lib/x2t.framework\"\ninstall_framework \"${PROJECT_DIR}/../../editors-ios/build/SDK/lib/XpsFile.framework\"\n";
 		};
 		FC1C808B2530AA9E0048BD4C /* Copy Bundle Resources */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -1789,20 +1818,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "ADDITIONAL_FILES=(\n    \"${PROJECT_DIR}/Documents/GoogleService-Info.plist\"\n    \"${PROJECT_DIR}/Documents/Internal.plist\"\n)\n\nfor file_path in ${ADDITIONAL_FILES[@]}; do\n    if [ -f \"${file_path}\" ]; then\n        rsync --delete -av \"${file_path}\" \"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}\"\n    fi\ndone\n";
-		};
-		FC7B37D71E929B5F009C41AD /* Write application version into preference */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "Write application version into preference";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "if [ $CONFIGURATION == Release ]; then\n\nSETTINGS_FILE_PATH=\"${SRCROOT}/Settings.bundle/Root.plist\"\nVERSION=$(/usr/libexec/PlistBuddy -c \"Print CFBundleShortVersionString\" \"${INFOPLIST_FILE}\")\nBUILD=$(/usr/libexec/PlistBuddy -c \"Print CFBundleVersion\" \"${INFOPLIST_FILE}\")\n\n/usr/libexec/PlistBuddy -c \"Set PreferenceSpecifiers:0:DefaultValue $VERSION ($BUILD)\" \"${SETTINGS_FILE_PATH}\"\n\nfi\n";
 		};
 		FC7DA57E1EF2962A0011092A /* Upload symbols to Firebase Crashlytics */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -1830,7 +1845,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "#!/bin/bash\nif [ $CONFIGURATION == Release ]; then\n\nbuildNumber=$(/usr/libexec/PlistBuddy -c \"Print CFBundleVersion\" \"$INFOPLIST_FILE\")\nbuildNumber=$(($buildNumber + 1))\n/usr/libexec/PlistBuddy -c \"Set :CFBundleVersion $buildNumber\" \"$INFOPLIST_FILE\"\n\nfi\n";
+			shellScript = "#!/bin/bash\n\nif [ $CONFIGURATION == Release ]; then\n\n# Info.plist\nbuildNumber=$(/usr/libexec/PlistBuddy -c \"Print CFBundleVersion\" \"$INFOPLIST_FILE\")\nbuildNumber=$(($buildNumber + 1))\n/usr/libexec/PlistBuddy -c \"Set :CFBundleVersion $buildNumber\" \"$INFOPLIST_FILE\"\n\n# Settings.bundle/Root.plist\nsettings_plist=\"${SRCROOT}/Settings.bundle/Root.plist\"\nversion=$(/usr/libexec/PlistBuddy -c \"Print CFBundleShortVersionString\" \"$INFOPLIST_FILE\")\n/usr/libexec/PlistBuddy -c \"Set PreferenceSpecifiers:0:DefaultValue $version ($buildNumber)\" \"$settings_plist\"\n\nfi\n\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -1846,6 +1861,7 @@
 				FCC552B61EC3196B00F645EE /* ASCCountryCodeViewController.swift in Sources */,
 				FC28F2C41E8D131800A8F985 /* ASCCreateEntity.swift in Sources */,
 				FC786FC31EB879F600181D62 /* ASCIntroViewController.swift in Sources */,
+				FC12ACF22567CF5E00FF1CBB /* ASCAnalytics.swift in Sources */,
 				FCC38BD222D379DE00F500C3 /* ASCFolderProviderType.swift in Sources */,
 				FCA7500822BB9CD500991682 /* UITableViewCell+Extensions.swift in Sources */,
 				FC1EA5D21ECF2A6D008FEE2E /* ASCSettingsViewController.swift in Sources */,
@@ -1967,6 +1983,7 @@
 				8A79BCD62080DD5C00998DA7 /* ASConverterOptionsAlert.swift in Sources */,
 				8A69B5D4249794A600152BDE /* ASCLogger.swift in Sources */,
 				FCF6721A21771B21004756A0 /* ASCBaseApi.swift in Sources */,
+				FC8A5A8D2565712700D08037 /* ASCDocumentsToolbar.swift in Sources */,
 				FC8A137B22686B5D006D8C6E /* ASCPortalCapabilities.swift in Sources */,
 				FC8C69831ECC8EA8005B68D7 /* ASCConnectStorageWebDavController.swift in Sources */,
 				FCEF9D221ED2C94300627BA5 /* PasscodeLockPresenter.swift in Sources */,
@@ -1997,6 +2014,7 @@
 				E0609CA78B7ADE534424D45E /* ASCFolder.swift in Sources */,
 				FC708EE421B92E94001BBE5B /* UIBarButtonItem+Extensions.swift in Sources */,
 				FC059D9C1E82657F00BC2F5E /* ASCIndexTransform.swift in Sources */,
+				FC707C4325AC5DAF004CB85B /* UILabel+Extension.swift in Sources */,
 				FC68399A21B808AC00251CEA /* ASCCloudsViewController.swift in Sources */,
 				FCBEA6B6203EEF96000E8695 /* ASCSDWebImageDownloaderOperation.swift in Sources */,
 				FC3AF6B9217081DB004A96FD /* ASCNextCloudProvider.swift in Sources */,

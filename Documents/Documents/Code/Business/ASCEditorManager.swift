@@ -241,7 +241,7 @@ class ASCEditorManager: NSObject, DEEditorDelegate, SEEditorDelegate, PEEditorDe
                             documentEditorNavigation.editorController.delegate = self
                             documentEditorNavigation.editorController.open(document)
                             self.openedFile = file
-                            Analytics.logEvent(ASCConstants.Analytics.Event.openEditor, parameters: [
+                            ASCAnalytics.logEvent(ASCConstants.Analytics.Event.openEditor, parameters: [
                                 "portal": ASCOnlyOfficeApi.shared.baseUrl ?? "none",
                                 "type": isDocument ? "document" : (isSpreadsheet ? "spreadsheet" : (isPresentation ? "presentation" : "unknown")),
                                 "onDevice": file.device,
@@ -286,7 +286,7 @@ class ASCEditorManager: NSObject, DEEditorDelegate, SEEditorDelegate, PEEditorDe
         guard
             let user = ASCFileManager.onlyofficeProvider?.user,
             let userId = user.userId,
-            let userName = user.userName,
+            let userName = file.createdBy?.displayName ?? user.userName,
             let firstName = user.firstName,
             let lastName = user.lastName
         else {
@@ -299,7 +299,7 @@ class ASCEditorManager: NSObject, DEEditorDelegate, SEEditorDelegate, PEEditorDe
         let documentInfo: [String: Any] = [
             "title"                 : file.title,
             "date"                  : file.created!,
-            "author"                : file.createdBy?.displayName! ?? "",
+            "author"                : file.createdBy?.displayName ?? "",
             "viewMode"              : viewMode || (!sdkCheck),
             "coauthoring"           : true,
             "docUserId"             : userId,
@@ -347,7 +347,7 @@ class ASCEditorManager: NSObject, DEEditorDelegate, SEEditorDelegate, PEEditorDe
                 documentEditorNavigation.editorController.open(document)
                 self.openedFile = file
                 self.provider = ASCFileManager.onlyofficeProvider
-                Analytics.logEvent(ASCConstants.Analytics.Event.openEditor, parameters: [
+                ASCAnalytics.logEvent(ASCConstants.Analytics.Event.openEditor, parameters: [
                     "portal": ASCOnlyOfficeApi.shared.baseUrl ?? "none",
                     "type": isDocument ? "document" : (isSpreadsheet ? "spreadsheet" : (isPresentation ? "presentation" : "unknown")),
                     "onDevice": false,
@@ -373,7 +373,11 @@ class ASCEditorManager: NSObject, DEEditorDelegate, SEEditorDelegate, PEEditorDe
 
                         self.documentPermissions = permissions.jsonString() ?? ""
 
-                        let canEdit = (permissions["edit"] as? Bool)! && !viewMode
+                        let allowEdit = (permissions["edit"] as? Bool) ?? false
+                        let allowReview = (permissions["review"] as? Bool) ?? false
+                        let allowComment = (permissions["comment"] as? Bool) ?? false
+                        
+                        let canEdit = (allowEdit || (!allowEdit && allowReview) || (!allowEdit && allowComment)) && !viewMode
                         
                         if let _ = self.documentKeyForTrack, let _ = self.documentURLForTrack {
                             handler(canEdit, nil)
@@ -458,7 +462,7 @@ class ASCEditorManager: NSObject, DEEditorDelegate, SEEditorDelegate, PEEditorDe
         var conversionDirection = ConversionDirection.CD_ERROR
 
         switch fileExtension {
-        case "docx", "doc", "rtf":
+        case "docx", "doc", "rtf", "mht", "html", "htm", "epub", "fb2":
             conversionDirection = ConversionDirection.CD_DOCX2DOCT_BIN
         case "xlsx", "xls":
             conversionDirection = ConversionDirection.CD_XSLX2XSLT_BIN
@@ -595,7 +599,7 @@ class ASCEditorManager: NSObject, DEEditorDelegate, SEEditorDelegate, PEEditorDe
         case "odp":
             conversionDirection = ConversionDirection.CD_PPTT_BIN2PPTX
             fileTo = resolvedFilePath.rawValue
-        case "doc", "rtf":
+        case "doc", "rtf", "mht", "html", "htm", "epub", "fb2":
             conversionDirection = ConversionDirection.CD_DOCT_BIN2DOCX
             fileTo = resolvedFilePath.rawValue
         case "xls":
@@ -621,7 +625,7 @@ class ASCEditorManager: NSObject, DEEditorDelegate, SEEditorDelegate, PEEditorDe
             "themesFolder"          : PEEditorViewController.themesFolder() ?? ""
         ]
         
-        if "" != password {
+        if !password.isEmpty {
             UserDefaults.standard.removeObject(forKey: ASCConstants.SettingsKeys.passwordOpenedDocument)
         }
         
@@ -1076,7 +1080,7 @@ class ASCEditorManager: NSObject, DEEditorDelegate, SEEditorDelegate, PEEditorDe
         handler?(.begin, 0, nil, &cancel)
         
         if pdf.device {
-            Analytics.logEvent(ASCConstants.Analytics.Event.openPdf, parameters: [
+            ASCAnalytics.logEvent(ASCConstants.Analytics.Event.openPdf, parameters: [
                 "portal": ASCOnlyOfficeApi.shared.baseUrl ?? "none",
                 "onDevice": !pdf.id.contains(Path.userTemporary.rawValue)
                 ]
@@ -1222,7 +1226,7 @@ class ASCEditorManager: NSObject, DEEditorDelegate, SEEditorDelegate, PEEditorDe
                     self?.cleanupEditorWindow()
                 }
 
-                Analytics.logEvent(ASCConstants.Analytics.Event.openMedia, parameters: [
+                ASCAnalytics.logEvent(ASCConstants.Analytics.Event.openMedia, parameters: [
                     "portal": ASCOnlyOfficeApi.shared.baseUrl ?? "none",
                     "onDevice": file.device
                     ]
@@ -1241,7 +1245,7 @@ class ASCEditorManager: NSObject, DEEditorDelegate, SEEditorDelegate, PEEditorDe
         handler?(.begin, 0, nil, &cancel)
         
         if file.device {
-            Analytics.logEvent(ASCConstants.Analytics.Event.openExternal, parameters: [
+            ASCAnalytics.logEvent(ASCConstants.Analytics.Event.openExternal, parameters: [
                 "portal": ASCOnlyOfficeApi.shared.baseUrl ?? "none",
                 "onDevice": !file.id.contains(Path.userTemporary.rawValue)
                 ]
@@ -1546,7 +1550,7 @@ class ASCEditorManager: NSObject, DEEditorDelegate, SEEditorDelegate, PEEditorDe
                             } else {
                                 
                                 let owner = ASCUser()
-                                owner.displayName = UIDevice.pad ? "iPad" : "iPhone"
+                                owner.displayName = UIDevice.displayName
                                 
                                 let file = ASCFile()
                                 file.id = filePath.rawValue
@@ -1828,7 +1832,7 @@ class ASCEditorManager: NSObject, DEEditorDelegate, SEEditorDelegate, PEEditorDe
                             } else {
                                 
                                 let owner = ASCUser()
-                                owner.displayName = UIDevice.pad ? "iPad" : "iPhone"
+                                owner.displayName = UIDevice.displayName
                                 
                                 let file = ASCFile()
                                 file.id = filePath.rawValue
@@ -2117,7 +2121,7 @@ class ASCEditorManager: NSObject, DEEditorDelegate, SEEditorDelegate, PEEditorDe
                             } else {
                                 
                                 let owner = ASCUser()
-                                owner.displayName = UIDevice.pad ? "iPad" : "iPhone"
+                                owner.displayName = UIDevice.displayName
                                 
                                 let file = ASCFile()
                                 file.id = filePath.rawValue
@@ -2263,6 +2267,7 @@ class ASCEditorManager: NSObject, DEEditorDelegate, SEEditorDelegate, PEEditorDe
     // MARK: - Utils
     
     func checkSDKVersion() -> Bool {
+        return true;
         if let version = UserDefaults.standard.value(forKey: ASCConstants.SettingsKeys.sdkVersion) as? String {
             let webSDK = version.components(separatedBy: ".")
             let localSDK = localSDKVersion()
@@ -2348,8 +2353,8 @@ class ASCEditorManager: NSObject, DEEditorDelegate, SEEditorDelegate, PEEditorDe
         }
 
         let createAction = UIAlertAction(title: ASCLocalization.Common.ok) { action in
-            if let textField = alertController.textFields?.first,
-                let password = textField.text?.trim(),
+            if  let textField = alertController.textFields?.first,
+                let password = textField.text,
                 password.length > 0
             {
                 handler(password)
@@ -2367,7 +2372,7 @@ class ASCEditorManager: NSObject, DEEditorDelegate, SEEditorDelegate, PEEditorDe
             textField.isSecureTextEntry = true
 
             textField.add(for: .editingChanged, {
-                createAction.isEnabled = (textField.text?.trim().length)! > 0
+                createAction.isEnabled = (textField.text?.length)! > 0
             })
 
             delay(seconds: 0.2) {

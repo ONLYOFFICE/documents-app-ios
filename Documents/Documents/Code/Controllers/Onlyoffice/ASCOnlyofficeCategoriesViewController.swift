@@ -35,6 +35,7 @@ class ASCOnlyofficeCategoriesViewController: UITableViewController {
 
         if UIDevice.pad,let documentsNC = navigationController as? ASCBaseNavigationController {
             documentsNC.hasShadow = true
+            documentsNC.setToolbarHidden(true, animated: false)
         }
 
         clearsSelectionOnViewWillAppear = UIDevice.phone
@@ -58,6 +59,9 @@ class ASCOnlyofficeCategoriesViewController: UITableViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
 
+        navigationController?.navigationBar.prefersLargeTitles = true
+        navigationItem.largeTitleDisplayMode = .always
+        
         title = ASCConstants.Name.appNameShort
         navigationItem.backBarButtonItem?.title = ASCConstants.Name.appNameShort
         navigationItem.title = ASCConstants.Name.appNameShort
@@ -68,6 +72,10 @@ class ASCOnlyofficeCategoriesViewController: UITableViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
+        
+        navigationController?.navigationBar.prefersLargeTitles = true
+        navigationItem.largeTitleDisplayMode = .always
+        
         fetchUpdateUserInfo()
     }
 
@@ -290,7 +298,7 @@ class ASCOnlyofficeCategoriesViewController: UITableViewController {
             documentsVC.title = category.title
 
             documentsVC.navigationItem.leftBarButtonItem = splitVC.displayModeButtonItem
-            documentsVC.navigationItem.leftItemsSupplementBackButton = true
+            documentsVC.navigationItem.leftItemsSupplementBackButton = UIDevice.pad
 
             if categories.count < 1 {
                 loadCategories()
@@ -317,6 +325,7 @@ extension ASCOnlyofficeCategoriesViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if let cell = tableView.dequeueReusableCell(withIdentifier: ASCOnlyofficeCategoryCell.identifier, for: indexPath) as? ASCOnlyofficeCategoryCell {
             cell.category = categories[indexPath.row]
+            cell.accessoryType = (UIDevice.phone || ASCViewControllerManager.shared.currentSizeClass == .compact) ? .disclosureIndicator : .none
             return cell
         }
 

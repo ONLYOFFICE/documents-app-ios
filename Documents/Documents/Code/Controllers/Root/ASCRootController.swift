@@ -104,7 +104,7 @@ class ASCRootController: UITabBarController {
 
                 if  let splitVC = selectedViewController as? ASCDeviceSplitViewController,
                     let categoryNC = splitVC.primaryViewController as? ASCBaseNavigationController,
-                    let categoryVC = categoryNC.topViewController as? ASCDeviceCategoryViewController
+                    let categoryVC = categoryNC.topViewController as? ASCDeviceCategoryViewController ?? categoryNC.viewControllers.first as? ASCDeviceCategoryViewController
                 {
                     if let folder = folder {
                         isFirstOpenDeviceCategory = true
@@ -300,7 +300,7 @@ class ASCRootController: UITabBarController {
                                 }
 
                                 let owner = ASCUser()
-                                owner.displayName = UIDevice.pad ? "iPad" : "iPhone"
+                                owner.displayName = UIDevice.displayName
 
                                 let file = ASCFile()
                                 file.id = newFilePath.rawValue

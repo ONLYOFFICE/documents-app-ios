@@ -43,7 +43,7 @@ extension UIDevice {
     }
 
     static var device: Device {
-        return Device()
+        return Device.current
     }
 
     static var allowEditor: Bool {
@@ -51,5 +51,9 @@ extension UIDevice {
             .iPhone4, .iPhone4s, .iPad2, .iPad3
         ]
         return !device.isOneOf(allUnsupportedDevicesForEdit)
+    }
+    
+    static var displayName: String {
+        return UIDevice.current.name
     }
 }

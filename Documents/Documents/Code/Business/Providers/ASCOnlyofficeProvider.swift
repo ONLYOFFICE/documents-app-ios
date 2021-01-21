@@ -379,6 +379,33 @@ class ASCOnlyofficeProvider: ASCBaseFileProvider & ASCSortableFileProvider {
             }
         })
     }
+    
+    func favorite(_ entity: ASCEntity, favorite: Bool, completeon: ASCProviderCompletionHandler?) {
+        guard let file = entity as? ASCFile else {
+            completeon?(self, nil, false, ASCProviderError(msg: NSLocalizedString("Unknown item type.", comment: "")))
+            return
+        }
+        
+        if favorite {
+            ASCOnlyOfficeApi.post(ASCOnlyOfficeApi.apiFilesFavorite, parameters: ["fileIds" : [file.id]]) { result, error, response in
+                if result as? Bool ?? false {
+                    file.isFavorite = true
+                    completeon?(self, file, true, nil)
+                } else {
+                    completeon?(self, nil, false, ASCProviderError(msg: NSLocalizedString("Set favorite failed.", comment: "")))
+                }
+            }
+        } else {
+            ASCOnlyOfficeApi.delete(ASCOnlyOfficeApi.apiFilesFavorite, parameters: ["fileIds" : [file.id]]) { result, error, response in
+                if result as? Bool ?? false {
+                    file.isFavorite = false
+                    completeon?(self, file, true, nil)
+                } else {
+                    completeon?(self, nil, false, ASCProviderError(msg: NSLocalizedString("Set favorite failed.", comment: "")))
+                }
+            }
+        }
+    }
 
     func delete(_ entities: [ASCEntity], from folder: ASCFolder, completeon: ASCProviderCompletionHandler?) {
         let isShareRoot = folder.rootFolderType == .onlyofficeShare && (folder.parentId == nil || folder.parentId == "0")
@@ -545,7 +572,7 @@ class ASCOnlyofficeProvider: ASCBaseFileProvider & ASCSortableFileProvider {
                 } else {
                     if let result = result as? [String: Any] {
                         let file = ASCFile(JSON: result)
-                        Analytics.logEvent(ASCConstants.Analytics.Event.createEntity, parameters: [
+                        ASCAnalytics.logEvent(ASCConstants.Analytics.Event.createEntity, parameters: [
                             "portal": ASCOnlyOfficeApi.shared.baseUrl ?? "none",
                             "onDevice": false,
                             "type": "file",
@@ -579,7 +606,7 @@ class ASCOnlyofficeProvider: ASCBaseFileProvider & ASCSortableFileProvider {
 
         upload(folder.id, data: data, overwrite: false, params: params) { progress, result, error, response in
             if let _ = result as? [String: Any] {
-                Analytics.logEvent(ASCConstants.Analytics.Event.createEntity, parameters: [
+                ASCAnalytics.logEvent(ASCConstants.Analytics.Event.createEntity, parameters: [
                     "portal": ASCOnlyOfficeApi.shared.baseUrl ?? "none",
                     "onDevice": false,
                     "type": "file",
@@ -603,7 +630,7 @@ class ASCOnlyofficeProvider: ASCBaseFileProvider & ASCSortableFileProvider {
                 } else {
                     if let result = result as? [String: Any] {
                         let folder = ASCFolder(JSON: result)
-                        Analytics.logEvent(ASCConstants.Analytics.Event.createEntity, parameters: [
+                        ASCAnalytics.logEvent(ASCConstants.Analytics.Event.createEntity, parameters: [
                             "portal": self?.api.baseUrl ?? "none",
                             "onDevice": false,
                             "type": "folder"
@@ -794,7 +821,7 @@ class ASCOnlyofficeProvider: ASCBaseFileProvider & ASCSortableFileProvider {
         }
 
         switch (access) {
-        case .none, .readWrite:
+        case .none, .readWrite, .review, .comment:
             return true
         default:
             return false
@@ -807,6 +834,10 @@ class ASCOnlyofficeProvider: ASCBaseFileProvider & ASCSortableFileProvider {
         let parentFolder = file?.parent ?? folder?.parent
 
         if file == nil && folder == nil {
+            return false
+        }
+        
+        if let file = file, file.isEditing {
             return false
         }
 
@@ -910,6 +941,8 @@ class ASCOnlyofficeProvider: ASCBaseFileProvider & ASCSortableFileProvider {
                 return [.delete, .restore]
             }
 
+            entityActions.insert(.favarite)
+            
             if canRead {
                 entityActions.insert([.copy, .export])
             }
@@ -1018,7 +1051,7 @@ class ASCOnlyofficeProvider: ASCBaseFileProvider & ASCSortableFileProvider {
         let endSessionLife = api.expires == nil || Date() > api.expires!
 
         var alertTitle = ASCLocalization.Error.unknownTitle
-        var alertMessage = String.localizedStringWithFormat("The %@ server is not available.", api.baseUrl ?? "")
+        var alertMessage = String.localizedStringWithFormat(NSLocalizedString("The %@ server is not available.", comment: ""), api.baseUrl ?? "")
 
         if endSessionLife {
             alertTitle = NSLocalizedString("Your session has expired", comment: "")
@@ -1079,7 +1112,7 @@ class ASCOnlyofficeProvider: ASCBaseFileProvider & ASCSortableFileProvider {
             }
         }
 
-        return String.localizedStringWithFormat("The %@ server is not available.", api.baseUrl ?? "")
+        return String.localizedStringWithFormat(NSLocalizedString("The %@ server is not available.", comment: ""), api.baseUrl ?? "")
     }
 
     func errorBanner(_ error: String?) {

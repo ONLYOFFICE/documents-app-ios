@@ -34,7 +34,7 @@ class ASCConnectStorageOAuth2Google: ASCConnectStorageOAuth2Delegate {
         
         let authRequest = "https://accounts.google.com/o/oauth2/auth?\(parameters.stringAsHttpParameters())"
         let urlRequest = URLRequest(url: URL(string: authRequest)!)
-        let  customUserAgent = "Mozilla/5.0 (iPhone; CPU iPhone OS 10_3 like Mac OS X) AppleWebKit/603.1.23 (KHTML, like Gecko) Version/10.0 Mobile/14E5239e Safari/602.1"
+        let customUserAgent = "Mozilla/5.0 (iPhone; CPU iPhone OS 10_3 like Mac OS X) AppleWebKit/603.1.23 (KHTML, like Gecko) Version/10.0 Mobile/14E5239e Safari/602.1"
         
         UserDefaults.standard.register(defaults: ["UserAgent": customUserAgent])
         

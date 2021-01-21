@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="16097.2" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -17,6 +18,19 @@
                 <rect key="frame" x="0.0" y="0.0" width="320" height="77"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="T0Z-fB-SE1">
+                        <rect key="frame" x="66" y="76" width="354" height="1"/>
+                        <color key="backgroundColor" systemColor="separatorColor"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="1" id="UeW-32-UxQ">
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="preciseConstant">
+                                        <integer key="value" value="1"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </constraint>
+                        </constraints>
+                    </view>
                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="list-format-unknown" translatesAutoresizingMaskIntoConstraints="NO" id="wmD-2M-oLc">
                         <rect key="frame" x="11" y="13.5" width="45" height="50"/>
                         <constraints>
@@ -25,21 +39,26 @@
                         </constraints>
                     </imageView>
                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="2" translatesAutoresizingMaskIntoConstraints="NO" id="IGo-bB-cRp">
-                        <rect key="frame" x="66" y="14.5" width="254" height="48.5"/>
+                        <rect key="frame" x="66" y="14.5" width="249" height="48.5"/>
                         <subviews>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="File" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Wsn-vC-syb" userLabel="Title">
+                            <stackView opaque="NO" contentMode="scaleToFill" alignment="top" spacing="2" translatesAutoresizingMaskIntoConstraints="NO" id="UC6-Nl-hZX">
                                 <rect key="frame" x="0.0" y="0.0" width="24" height="17"/>
-                                <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="14"/>
-                                <nil key="highlightedColor"/>
-                                <attributedString key="userComments">
-                                    <fragment content="Do not translate">
-                                        <attributes>
-                                            <font key="NSFont" size="11" name="HelveticaNeue"/>
-                                            <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0" allowsDefaultTighteningForTruncation="NO"/>
-                                        </attributes>
-                                    </fragment>
-                                </attributedString>
-                            </label>
+                                <subviews>
+                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="File" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Wsn-vC-syb" userLabel="Title">
+                                        <rect key="frame" x="0.0" y="0.0" width="24" height="17"/>
+                                        <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="14"/>
+                                        <nil key="highlightedColor"/>
+                                        <attributedString key="userComments">
+                                            <fragment content="Do not translate">
+                                                <attributes>
+                                                    <font key="NSFont" size="11" name="HelveticaNeue"/>
+                                                    <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0" allowsDefaultTighteningForTruncation="NO"/>
+                                                </attributes>
+                                            </fragment>
+                                        </attributedString>
+                                    </label>
+                                </subviews>
+                            </stackView>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Owner" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BRD-Rb-Syg">
                                 <rect key="frame" x="0.0" y="19" width="32.5" height="13"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="11"/>
@@ -55,7 +74,7 @@
                                 </attributedString>
                             </label>
                             <stackView opaque="NO" contentMode="scaleToFill" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="hiZ-bO-dia">
-                                <rect key="frame" x="0.0" y="34" width="56.5" height="14.5"/>
+                                <rect key="frame" x="0.0" y="34" width="55.5" height="14.5"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Date" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iGf-HE-VZA">
                                         <rect key="frame" x="0.0" y="0.0" width="23.5" height="14.5"/>
@@ -72,13 +91,13 @@
                                         </attributedString>
                                     </label>
                                     <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="|" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hfg-78-jhd">
-                                        <rect key="frame" x="27.5" y="0.0" width="4" height="14.5"/>
+                                        <rect key="frame" x="27.5" y="0.0" width="3" height="14.5"/>
                                         <fontDescription key="fontDescription" type="system" weight="light" pointSize="12"/>
                                         <color key="textColor" red="0.5568627451" green="0.5568627451" blue="0.57647058819999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Size" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nOe-Iz-YQ0">
-                                        <rect key="frame" x="35.5" y="0.0" width="21" height="14.5"/>
+                                        <rect key="frame" x="34.5" y="0.0" width="21" height="14.5"/>
                                         <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="11"/>
                                         <color key="textColor" red="0.5568627451" green="0.5568627451" blue="0.57647058819999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
@@ -100,13 +119,16 @@
                     </activityIndicatorView>
                 </subviews>
                 <constraints>
+                    <constraint firstAttribute="bottom" secondItem="T0Z-fB-SE1" secondAttribute="bottom" id="45h-1h-uEB"/>
+                    <constraint firstItem="T0Z-fB-SE1" firstAttribute="leading" secondItem="IGo-bB-cRp" secondAttribute="leading" id="8ZB-kq-B2Z"/>
                     <constraint firstItem="wmD-2M-oLc" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="-5" id="HcM-E2-1FZ"/>
+                    <constraint firstAttribute="trailing" secondItem="T0Z-fB-SE1" secondAttribute="trailing" constant="-100" id="MQp-bb-PRN"/>
                     <constraint firstItem="i1S-6f-HVh" firstAttribute="leading" secondItem="wmD-2M-oLc" secondAttribute="leading" constant="11" id="NDt-D0-tfV"/>
                     <constraint firstItem="IGo-bB-cRp" firstAttribute="leading" secondItem="wmD-2M-oLc" secondAttribute="trailing" constant="10" id="YzU-wq-v4Y"/>
                     <constraint firstItem="i1S-6f-HVh" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="ZuT-7u-Ekq"/>
                     <constraint firstItem="wmD-2M-oLc" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="cnn-Wj-BdB"/>
                     <constraint firstItem="IGo-bB-cRp" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="p5H-7C-4Nw"/>
-                    <constraint firstAttribute="trailing" secondItem="IGo-bB-cRp" secondAttribute="trailing" id="w0P-dT-FR0"/>
+                    <constraint firstAttribute="trailing" secondItem="IGo-bB-cRp" secondAttribute="trailing" constant="5" id="w0P-dT-FR0"/>
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
@@ -119,10 +141,13 @@
                 <outlet property="sizeLabel" destination="nOe-Iz-YQ0" id="lvy-vF-xbV"/>
                 <outlet property="title" destination="Wsn-vC-syb" id="OZC-pP-1tI"/>
             </connections>
-            <point key="canvasLocation" x="137.68115942028987" y="153.68303571428569"/>
+            <point key="canvasLocation" x="137.68115942028987" y="153.01339285714286"/>
         </tableViewCell>
     </objects>
     <resources>
         <image name="list-format-unknown" width="35" height="44"/>
+        <systemColor name="separatorColor">
+            <color red="0.23529411764705882" green="0.23529411764705882" blue="0.2627450980392157" alpha="0.28999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
     </resources>
 </document>

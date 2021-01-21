@@ -262,7 +262,7 @@ class ASCEntityManager: NSObject, UITextFieldDelegate {
         if isDeviceEntities {
             for entity in entities {
                 if let file = entity as? ASCFile {
-                    if fromFolder.rootFolderType == .onlyofficeTrash {
+                    if fromFolder.rootFolderType == .deviceTrash {
                         ASCLocalFileHelper.shared.removeFile(Path(file.id))
                     } else {
                         guard let filePath = ASCLocalFileHelper.shared.resolve(filePath: Path.userTrash + file.title) else {
@@ -276,7 +276,7 @@ class ASCEntityManager: NSObject, UITextFieldDelegate {
                         }
                     }
                 } else if let folder = entity as? ASCFolder {
-                    if fromFolder.rootFolderType == .onlyofficeTrash {
+                    if fromFolder.rootFolderType == .deviceTrash {
                         ASCLocalFileHelper.shared.removeDirectory(Path(folder.id))
                     } else {
                         guard let folderPath = ASCLocalFileHelper.shared.resolve(folderPath: Path.userTrash + folder.title) else {
@@ -437,6 +437,23 @@ class ASCEntityManager: NSObject, UITextFieldDelegate {
         }
     }
     
+    func favorite(for provider: ASCBaseFileProvider, entity: AnyObject?, favorite: Bool, handler: ASCEntityHandler? = nil) {
+        guard let file = entity as? ASCFile else {
+            handler?(.error, nil, NSLocalizedString("Unknown item type.", comment: ""))
+            return
+        }
+        
+        handler?(.begin, nil, nil)
+
+        provider.favorite(file, favorite: favorite) { provider, entity, success, error in
+            if !success {
+                handler?(.error, nil, error?.localizedDescription ?? NSLocalizedString("Set favorite failed.", comment: ""))
+            } else {
+                handler?(.end, entity, nil)
+            }
+        }
+    }
+    
     func download(for provider: ASCBaseFileProvider, entity: AnyObject?, handler: ASCEntityProgressHandler? = nil) {
         var cancel = false
         
@@ -468,7 +485,7 @@ class ASCEntityManager: NSObject, UITextFieldDelegate {
             } else if nil != result {
                 // Create entity info
                 let owner = ASCUser()
-                owner.displayName = UIDevice.pad ? "iPad" : "iPhone"
+                owner.displayName = UIDevice.displayName
                 
                 let file = ASCFile()
                 file.id = destination.rawValue
@@ -524,7 +541,7 @@ class ASCEntityManager: NSObject, UITextFieldDelegate {
             } else if nil != result {
                 // Create entity info
                 let owner = ASCUser()
-                owner.displayName = UIDevice.pad ? "iPad" : "iPhone"
+                owner.displayName = UIDevice.displayName
                 
                 let file = ASCFile()
                 file.id = destination.rawValue
@@ -564,7 +581,7 @@ class ASCEntityManager: NSObject, UITextFieldDelegate {
             } else {
                 // Create entity info
                 let owner = ASCUser()
-                owner.displayName = UIDevice.pad ? "iPad" : "iPhone"
+                owner.displayName = UIDevice.displayName
                 
                 let file = ASCFile()
                 file.id = filePath.rawValue

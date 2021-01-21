@@ -209,11 +209,23 @@ class ASCSettingsViewController: UITableViewController, MFMailComposeViewControl
                 "App version: \(ASCCommon.appVersion ?? "Unknown") (\(ASCCommon.appBuild ?? "Unknown"))",
                 "SDK: \(localSdkVersion)",
                 "Converter: \(DocumentLocalConverter.sdkVersion() ?? "")",
-                "Device model: \(UIDevice.platform)",
+                "Device model: \(Device.current.safeDescription)",
                 "iOS Version: \(ASCCommon.systemVersion)"
             ].joined(separator: "\n"), isHTML: false)
 
             present(composer, animated: true, completion: nil)
+        } else {
+            UIAlertController.showWarning(
+                in: self,
+                message: NSLocalizedString("Failed to send feedback by mail. Try to write your request on our forum.", comment: ""),
+                actions: [
+                    UIAlertAction(title: NSLocalizedString("Go to forum", comment: ""), handler: { action in
+                        if let url = URL(string: ASCConstants.Urls.applicationFeedbackForum), UIApplication.shared.canOpenURL(url) {
+                            UIApplication.shared.open(url, options: [:], completionHandler: nil)
+                        }
+                    })
+                ]
+            )
         }
     }
     

@@ -198,6 +198,7 @@ class ASCViewControllerManager {
         
         // Initialize WhatsNew
         let whatsNew = WhatsNew(
+            version: "6.2",
             title: NSLocalizedString("What's New", comment: ""),
             items: [
                 WhatsNew.Item(

@@ -14,20 +14,20 @@ extension UIAlertController {
         self.view.tintColor = tintColor ?? ASCConstants.Colors.brend
     }
 
-    static func showError(in viewController: UIViewController, message: String) {
+    static func showError(in viewController: UIViewController, message: String, actions: [UIAlertAction]? = nil) {
         let alertController = UIAlertController.alert(
             NSLocalizedString("Error", comment: ""),
             message: message,
-            actions: []
+            actions: actions ?? []
             ).okable()
         viewController.present(alertController, animated: true, completion: nil)
     }
     
-    static func showWarning(in viewController: UIViewController, message: String) {
+    static func showWarning(in viewController: UIViewController, message: String, actions: [UIAlertAction]? = nil) {
         let alertController = UIAlertController.alert(
             NSLocalizedString("Warning", comment: ""),
             message: message,
-            actions: []
+            actions: actions ?? []
             ).okable()
         viewController.present(alertController, animated: true, completion: nil)
     }

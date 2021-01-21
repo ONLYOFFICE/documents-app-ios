@@ -19,7 +19,14 @@ public struct ASCCommon {
     }
     
     public static var appVersion: String? {
+        if let versionMode = appVersionMode {
+            return "\(Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String ?? "")-\(versionMode)"
+        }
         return Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String
+    }
+    
+    public static var appVersionMode: String? {
+        return Bundle.main.infoDictionary?["VersionMode"] as? String
     }
     
     public static var appBuild: String? {

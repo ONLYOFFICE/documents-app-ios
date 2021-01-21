@@ -103,6 +103,70 @@ platform :ios do
 
   end
 
+  desc "Submit a new Beta Build to Apple TestFlight Develop"
+  lane :betadev do
+    # match(type: "appstore") # more information: https://codesigning.guide
+    # ensure_git_status_clean
+
+    version_number = get_info_plist_value(
+      path: "Documents/Documents/Info-Dev.plist",
+      key: "CFBundleShortVersionString"
+    )
+    build_number = get_info_plist_value(
+      path: "Documents/Documents/Info-Dev.plist",
+      key: "CFBundleVersion"
+    )
+
+    # Build
+    gym(
+      clean: true,
+      scheme: "Documents-Dev",
+      workspace: "ONLYOFFICE-Documents.xcworkspace",
+      export_xcargs: "-allowProvisioningUpdates"
+    )
+
+    # get the last commit comments from Git history
+    # and creates our changelog
+    change_log = ""
+
+    # creates a bump version commit
+    update_plist(
+      plist_path: "Documents/Documents/Info-Dev.plist",
+      block: proc do |plist|
+        plist[:CFBundleVersion] = build_number + 1
+      end
+    )
+    update_plist(
+      plist_path: "Documents/Settings.bundle/Root.plist",
+      block: proc do |plist|
+        versionInfo = plist["PreferenceSpecifiers"].find{|scheme| scheme["Key"] == "version_preference"}
+        versionInfo[:DefaultValue] = "#{version_number} (#{build_number})"
+      end
+    )
+
+    # # push changes
+    # push_to_git_remote
+
+    # # Submit to iTunes Connect
+    # pilot(
+    #   skip_waiting_for_build_processing: false
+    # )
+
+    # begin
+    #   telegram(
+    #     token: ENV['TELEGRAM_BOT_TOKEN'],
+    #     chat_id: ENV['TELEGRAM_CHAT_ID'],
+    #     parse_mode: 'Markdown',
+    #     text: ENV["TELEGRAM_DOCUMENTS_IOS_MESSAGE"] % [version_number: "#{version_number}", build_number: "#{build_number}", change_log: "#{change_log}"]
+    #   )
+    # rescue => ex
+    #   UI.error(ex)
+    # end
+
+    # clean_build_artifacts
+
+  end
+
   # You can define as many lanes as you want
 
   after_all do |lane|

@@ -44,6 +44,7 @@
 		FC1EA5D21ECF2A6D008FEE2E /* ASCSettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC1EA5D11ECF2A6D008FEE2E /* ASCSettingsViewController.swift */; };
 		FC23FC5B2043EEF0003B3AE7 /* ASCUserAvatarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC23FC5A2043EEEF003B3AE7 /* ASCUserAvatarView.swift */; };
 		FC23FC5D2044018F003B3AE7 /* Other in Resources */ = {isa = PBXBuildFile; fileRef = FC23FC5C2044018F003B3AE7 /* Other */; };
+		FC28021525B9B8C5000E9D99 /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FC28021425B9B8C5000E9D99 /* CloudKit.framework */; };
 		FC28F2C11E8CF4B900A8F985 /* UIColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC28F2C01E8CF4B900A8F985 /* UIColor+Extension.swift */; };
 		FC28F2C41E8D131800A8F985 /* ASCCreateEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC28F2C31E8D131800A8F985 /* ASCCreateEntity.swift */; };
 		FC28F2C61E8D1BB200A8F985 /* ASCEntityManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC28F2C51E8D1BB200A8F985 /* ASCEntityManager.swift */; };
@@ -534,6 +535,7 @@
 		FC1EA5D11ECF2A6D008FEE2E /* ASCSettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASCSettingsViewController.swift; sourceTree = "<group>"; };
 		FC23FC5A2043EEEF003B3AE7 /* ASCUserAvatarView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASCUserAvatarView.swift; sourceTree = "<group>"; };
 		FC23FC5C2044018F003B3AE7 /* Other */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Other; sourceTree = "<group>"; };
+		FC28021425B9B8C5000E9D99 /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = System/Library/Frameworks/CloudKit.framework; sourceTree = SDKROOT; };
 		FC28F2C01E8CF4B900A8F985 /* UIColor+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColor+Extension.swift"; sourceTree = "<group>"; };
 		FC28F2C31E8D131800A8F985 /* ASCCreateEntity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASCCreateEntity.swift; sourceTree = "<group>"; };
 		FC28F2C51E8D1BB200A8F985 /* ASCEntityManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ASCEntityManager.swift; path = Documents/Code/Business/ASCEntityManager.swift; sourceTree = SOURCE_ROOT; };
@@ -869,6 +871,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B8DD770E92DB5E79970155E7 /* (null) in Frameworks */,
+				FC28021525B9B8C5000E9D99 /* CloudKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -878,6 +881,7 @@
 		3C50733DA18F920525F5E1EB /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				FC28021425B9B8C5000E9D99 /* CloudKit.framework */,
 				223510FCC80632095899444E /* Pods_Documents_DocumentsTests.framework */,
 				C98C6D1CF16699DFAAAA3A64 /* Pods_DocumentsTests.framework */,
 				F3A33770BE2F1AE884BF6BA3 /* Pods_Documents_Dev.framework */,

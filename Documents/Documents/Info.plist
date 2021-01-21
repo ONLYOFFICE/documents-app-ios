@@ -330,5 +330,17 @@
 	</array>
 	<key>UISupportsDocumentBrowser</key>
 	<true/>
+	<key>NSUbiquitousContainers</key>
+    <dict>
+        <key>iCloud.com.onlyoffice.Documents</key>
+        <dict>
+            <key>NSUbiquitousContainerIsDocumentScopePublic</key>
+            <true/>
+            <key>NSUbiquitousContainerName</key>
+            <string>Documents by ONLYOFFICE</string>
+            <key>NSUbiquitousContainerSupportedFolderLevels</key>
+            <string>One</string>
+        </dict>
+    </dict>
 </dict>
 </plist>

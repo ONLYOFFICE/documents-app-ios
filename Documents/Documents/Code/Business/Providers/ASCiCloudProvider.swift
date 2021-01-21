@@ -12,7 +12,7 @@ import FilesProvider
 import FileKit
 import Firebase
 
-class ASCiCloudProvider: ASCBaseFileProvider & ASCSortableFileProvider {
+class ASCiCloudProvider: ASCFileProviderProtocol & ASCSortableFileProviderProtocol {
     
     // MARK: - Properties
     
@@ -88,7 +88,7 @@ class ASCiCloudProvider: ASCBaseFileProvider & ASCSortableFileProvider {
         }
     }
     
-    func copy() -> ASCBaseFileProvider {
+    func copy() -> ASCFileProviderProtocol {
         let copy = ASCiCloudProvider()
         
         copy.provider = provider
@@ -132,6 +132,21 @@ class ASCiCloudProvider: ASCBaseFileProvider & ASCSortableFileProvider {
             
             hasiCloudAccount = json["hasiCloudAccount"] as? Bool ?? false
         }
+    }
+    
+    func add(item: ASCEntity, at index: Int) {
+        items.insert(item, at: index)
+        total += 1
+    }
+    
+    func add(items: [ASCEntity], at index: Int) {
+        self.items.insert(contentsOf: items, at: index)
+        self.total += items.count
+    }
+    
+    func remove(at index: Int) {
+        items.remove(at: index)
+        total -= 1
     }
     
     /// Fetch an user information

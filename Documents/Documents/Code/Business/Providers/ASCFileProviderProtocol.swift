@@ -1,5 +1,5 @@
 //
-//  ASCBaseFileProvider.swift
+//  ASCFileProviderProtocol.swift
 //  Documents
 //
 //  Created by Alexander Yuzhin on 12/10/2018.
@@ -28,7 +28,7 @@ struct ASCEntityActions: OptionSet {
 }
 
 typealias ASCProviderUserInfoHandler = ((_ success: Bool, _ error: Error?) -> Void)
-typealias ASCProviderCompletionHandler = ((_ provider: ASCBaseFileProvider, _ result: Any?, _ success: Bool, _ error: Error?) -> Void)
+typealias ASCProviderCompletionHandler = ((_ provider: ASCFileProviderProtocol, _ result: Any?, _ success: Bool, _ error: Error?) -> Void)
 
 
 // MARK: - ASCProviderDelegate protocol
@@ -36,20 +36,20 @@ typealias ASCProviderCompletionHandler = ((_ provider: ASCBaseFileProvider, _ re
 protocol ASCProviderDelegate {
     func openProgressFile(title: String, _ progress: Float) -> ASCEditorManagerOpenHandler
     func closeProgressFile(title: String) -> ASCEditorManagerCloseHandler
-    func updateItems(provider: ASCBaseFileProvider)
+    func updateItems(provider: ASCFileProviderProtocol)
 }
 
 
 // MARK: - ASCProviderDelegate protocol optionals
 
 extension ASCProviderDelegate {
-    func updateItems(provider: ASCBaseFileProvider) {}
+    func updateItems(provider: ASCFileProviderProtocol) {}
 }
 
 
 // MARK: - ASCBaseFileProvider protocol
 
-protocol ASCBaseFileProvider {
+protocol ASCFileProviderProtocol {
     // Information
     var id: String? { get }
     var type: ASCFileProviderType { get }
@@ -65,7 +65,7 @@ protocol ASCBaseFileProvider {
     var delegate: ASCProviderDelegate? { get set }
 
     // Methods
-    func copy() -> ASCBaseFileProvider
+    func copy() -> ASCFileProviderProtocol
     func cancel()
     func reset()
     func userInfo(completeon: ASCProviderUserInfoHandler?)
@@ -73,6 +73,11 @@ protocol ASCBaseFileProvider {
     func updateSort(completeon: ASCProviderCompletionHandler?)
     func serialize() -> String?
     func deserialize(_ jsonString: String)
+    
+    // Items
+    func add(item: ASCEntity, at index: Int)
+    func add(items: [ASCEntity], at index: Int)
+    func remove(at index: Int)
 
     // Network
     func isReachable(completionHandler: @escaping (_ success: Bool, _ error: Error?) -> Void)
@@ -106,9 +111,9 @@ protocol ASCBaseFileProvider {
 }
 
 
-// MARK: - ASCBaseFileProvider protocol
+// MARK: - ASCFileProvider protocol
 
-extension ASCBaseFileProvider {
+extension ASCFileProviderProtocol {
     func cancel() {}
     func userInfo(completeon: ASCProviderUserInfoHandler?) {}
     func updateSort(completeon: ASCProviderCompletionHandler?) {}
@@ -144,7 +149,7 @@ extension ASCBaseFileProvider {
 
 // MARK: - ASCSortableFileProvider protocol
 
-protocol ASCSortableFileProvider {
+protocol ASCSortableFileProviderProtocol {
     var folder: ASCFolder? { get set }
     var fetchInfo: [String : Any?]? { get set }
 
@@ -152,7 +157,7 @@ protocol ASCSortableFileProvider {
     func sort(by info: [String: Any], folders: inout [ASCFolder], files: inout [ASCFile])
 }
 
-extension ASCSortableFileProvider {
+extension ASCSortableFileProviderProtocol {
     /// Sort records
     ///
     /// - Parameters:

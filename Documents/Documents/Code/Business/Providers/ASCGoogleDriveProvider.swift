@@ -13,7 +13,7 @@ import GTMSessionFetcher
 import FileKit
 import Firebase
 
-class ASCGoogleDriveProvider: ASCBaseFileProvider & ASCSortableFileProvider {
+class ASCGoogleDriveProvider: ASCFileProviderProtocol & ASCSortableFileProviderProtocol {
 
     // MARK: - Properties
 
@@ -123,7 +123,7 @@ class ASCGoogleDriveProvider: ASCBaseFileProvider & ASCSortableFileProvider {
         googleDriveService.authorizer = googleUser?.authentication.fetcherAuthorizer()
     }
 
-    func copy() -> ASCBaseFileProvider {
+    func copy() -> ASCFileProviderProtocol {
         let copy = ASCGoogleDriveProvider()
         
         copy.items = items
@@ -185,6 +185,21 @@ class ASCGoogleDriveProvider: ASCBaseFileProvider & ASCSortableFileProvider {
                 user = ASCUser(JSON: userJson)
             }
         }
+    }
+    
+    func add(item: ASCEntity, at index: Int) {
+        items.insert(item, at: index)
+        total += 1
+    }
+    
+    func add(items: [ASCEntity], at index: Int) {
+        self.items.insert(contentsOf: items, at: index)
+        self.total += items.count
+    }
+    
+    func remove(at index: Int) {
+        items.remove(at: index)
+        total -= 1
     }
     
     func isReachable(completionHandler: @escaping (_ success: Bool, _ error: Error?) -> Void) {

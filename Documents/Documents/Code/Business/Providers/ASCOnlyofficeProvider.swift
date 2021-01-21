@@ -11,7 +11,7 @@ import Alamofire
 import FileKit
 import Firebase
 
-class ASCOnlyofficeProvider: ASCBaseFileProvider & ASCSortableFileProvider {
+class ASCOnlyofficeProvider: ASCFileProviderProtocol & ASCSortableFileProviderProtocol {
     var id: String? {
         get {
             if
@@ -77,7 +77,7 @@ class ASCOnlyofficeProvider: ASCBaseFileProvider & ASCSortableFileProvider {
         api.token = token
     }
 
-    func copy() -> ASCBaseFileProvider {
+    func copy() -> ASCFileProviderProtocol {
         let copy = ASCOnlyofficeProvider(baseUrl: api.baseUrl ?? "", token: api.token ?? "")
         
         copy.items = items
@@ -155,6 +155,21 @@ class ASCOnlyofficeProvider: ASCBaseFileProvider & ASCSortableFileProvider {
             api.serverVersion = json["serverVersion"] as? String
             api.expires = dateTransform.transformFromJSON(json["expires"])
         }
+    }
+    
+    func add(item: ASCEntity, at index: Int) {
+        items.insert(item, at: index)
+        total += 1
+    }
+    
+    func add(items: [ASCEntity], at index: Int) {
+        self.items.insert(contentsOf: items, at: index)
+        self.total += items.count
+    }
+    
+    func remove(at index: Int) {
+        items.remove(at: index)
+        total -= 1
     }
 
     /// Fetch an user information

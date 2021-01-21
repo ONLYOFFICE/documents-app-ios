@@ -9,7 +9,7 @@
 import UIKit
 import FileKit
 
-typealias ASCTransferViewType = (provider: ASCBaseFileProvider?, folder: ASCFolder)
+typealias ASCTransferViewType = (provider: ASCFileProviderProtocol?, folder: ASCFolder)
 
 class ASCTransferViewController: UITableViewController {
     static let identifier = String(describing: ASCTransferViewController.self)
@@ -56,7 +56,7 @@ class ASCTransferViewController: UITableViewController {
 
     // MARK: - Public
 
-    var provider: ASCBaseFileProvider?
+    var provider: ASCFileProviderProtocol?
     var folder: ASCFolder? = nil {
         didSet {
             if oldValue == nil {
@@ -100,7 +100,7 @@ class ASCTransferViewController: UITableViewController {
         }
     }
 
-    private var sourceProvider: ASCBaseFileProvider? {
+    private var sourceProvider: ASCFileProviderProtocol? {
         get {
             if let navigationController = navigationController as? ASCTransferNavigationController {
                 return navigationController.sourceProvider

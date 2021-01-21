@@ -27,7 +27,7 @@ class ASCFileCell: MGSwipeTableCell {
             updateData()
         }
     }
-    var provider: ASCBaseFileProvider?
+    var provider: ASCFileProviderProtocol?
 
     fileprivate lazy var dateFormatter: DateFormatter = {
         let formatter = DateFormatter()

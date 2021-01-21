@@ -139,7 +139,7 @@ class ASCCloudsViewController: UITableViewController {
     }
 
 
-    func onConnectComplete(provider: ASCBaseFileProvider) {
+    func onConnectComplete(provider: ASCFileProviderProtocol) {
         // Reload list info
         connectProvider(provider)
         select(provider: provider)
@@ -159,7 +159,7 @@ class ASCCloudsViewController: UITableViewController {
         connectStorageVC.presentProviderConnection(by: type)
     }
 
-    func connectProvider(_ provider: ASCBaseFileProvider) {
+    func connectProvider(_ provider: ASCFileProviderProtocol) {
         updateMyClouds()
         updateLoginClouds()
 
@@ -169,7 +169,7 @@ class ASCCloudsViewController: UITableViewController {
                           animations: { self.tableView.reloadData() })
     }
 
-    func disconnectProvider(_ provider: ASCBaseFileProvider) {
+    func disconnectProvider(_ provider: ASCFileProviderProtocol) {
         if let index = connected.firstIndex(where: { $0.provider?.id == provider.id }) {
             disconnectProvider(by: index)
         }
@@ -218,7 +218,7 @@ class ASCCloudsViewController: UITableViewController {
         }
     }
 
-    func select(provider: ASCBaseFileProvider?, folder: ASCFolder? = nil, animated: Bool = false) {
+    func select(provider: ASCFileProviderProtocol?, folder: ASCFolder? = nil, animated: Bool = false) {
         // Check Reachable
 //        if let provider = provider {
 //            provider.isReachable(completionHandler: { success, error in

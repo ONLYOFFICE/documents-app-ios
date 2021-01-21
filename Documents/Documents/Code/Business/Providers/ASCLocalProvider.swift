@@ -10,7 +10,7 @@ import UIKit
 import FileKit
 import Firebase
 
-class ASCLocalProvider: ASCBaseFileProvider & ASCSortableFileProvider {
+class ASCLocalProvider: ASCFileProviderProtocol & ASCSortableFileProviderProtocol {
     var id: String? {
         get {
             return "device"
@@ -52,7 +52,7 @@ class ASCLocalProvider: ASCBaseFileProvider & ASCSortableFileProvider {
         return $0
     }(ASCFolder())
 
-    func copy() -> ASCBaseFileProvider {
+    func copy() -> ASCFileProviderProtocol {
         let copy = ASCLocalProvider()
         
         copy.items = items.map { $0 }
@@ -69,6 +69,21 @@ class ASCLocalProvider: ASCBaseFileProvider & ASCSortableFileProvider {
         items.removeAll()
     }
 
+    func add(item: ASCEntity, at index: Int) {
+        items.insert(item, at: index)
+        total += 1
+    }
+    
+    func add(items: [ASCEntity], at index: Int) {
+        self.items.insert(contentsOf: items, at: index)
+        self.total += items.count
+    }
+    
+    func remove(at index: Int) {
+        items.remove(at: index)
+        total -= 1
+    }
+    
     /// Fetch an user information
     ///
     /// - Parameter completeon: a closure with result of user or error

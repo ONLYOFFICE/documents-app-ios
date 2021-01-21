@@ -58,7 +58,7 @@ class ASCOwnCloudProvider: ASCWebDAVProvider {
         provider?.credentialType = .basic
     }
 
-    override func copy() -> ASCBaseFileProvider {
+    override func copy() -> ASCFileProviderProtocol {
         let copy = ASCOwnCloudProvider()
         
         copy.items = items

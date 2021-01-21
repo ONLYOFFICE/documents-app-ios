@@ -236,7 +236,7 @@
 		FC36D32125B5C32200412DDB /* ASCNetworkReachability.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC1AD6132175FE7000DADEE0 /* ASCNetworkReachability.swift */; };
 		FC36D32225B5C32200412DDB /* ASCOnlyofficeSplitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC8667D321C7941C0020D797 /* ASCOnlyofficeSplitViewController.swift */; };
 		FC36D32325B5C32200412DDB /* ASCFacebookSignInController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC64B2E91EE56C5500920FDD /* ASCFacebookSignInController.swift */; };
-		FC36D32425B5C32200412DDB /* ASCBaseFileProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC3AF6BA2170825B004A96FD /* ASCBaseFileProvider.swift */; };
+		FC36D32425B5C32200412DDB /* ASCFileProviderProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC3AF6BA2170825B004A96FD /* ASCFileProviderProtocol.swift */; };
 		FC36D32525B5C32200412DDB /* String+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCC9C3F91E78235800EFCA57 /* String+Extension.swift */; };
 		FC36D32625B5C32200412DDB /* ASCConnectPortalThirdPartyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC08F8721ECB2FD600988DDE /* ASCConnectPortalThirdPartyViewController.swift */; };
 		FC36D32725B5C32200412DDB /* UIDevice+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC31B2861E76C09F008699C3 /* UIDevice+Extension.swift */; };
@@ -274,7 +274,7 @@
 		FC36D34A25B5C32200412DDB /* Localizable.stringsdict in Resources */ = {isa = PBXBuildFile; fileRef = FCF916C81ED44F3A0032C135 /* Localizable.stringsdict */; };
 		FC37D8E921CB8FA8001A7BFD /* UIDevice+DeviceKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC37D8E821CB8FA8001A7BFD /* UIDevice+DeviceKit.swift */; };
 		FC3AF6B9217081DB004A96FD /* ASCNextCloudProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC3AF6B8217081DB004A96FD /* ASCNextCloudProvider.swift */; };
-		FC3AF6BB2170825B004A96FD /* ASCBaseFileProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC3AF6BA2170825B004A96FD /* ASCBaseFileProvider.swift */; };
+		FC3AF6BB2170825B004A96FD /* ASCFileProviderProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC3AF6BA2170825B004A96FD /* ASCFileProviderProtocol.swift */; };
 		FC3AF6BD21709259004A96FD /* ASCFileManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC3AF6BC21709259004A96FD /* ASCFileManager.swift */; };
 		FC407FBC2191DC76009089EB /* ASCConnectCloudViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC407FBB2191DC76009089EB /* ASCConnectCloudViewController.swift */; };
 		FC41D7FB2265B4AF00A155C2 /* ASC2FACodeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC41D7FA2265B4AF00A155C2 /* ASC2FACodeViewController.swift */; };
@@ -550,7 +550,7 @@
 		FC36D35325B5C32200412DDB /* Documents-Dev.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Documents-Dev.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		FC37D8E821CB8FA8001A7BFD /* UIDevice+DeviceKit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIDevice+DeviceKit.swift"; sourceTree = "<group>"; };
 		FC3AF6B8217081DB004A96FD /* ASCNextCloudProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCNextCloudProvider.swift; sourceTree = "<group>"; };
-		FC3AF6BA2170825B004A96FD /* ASCBaseFileProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCBaseFileProvider.swift; sourceTree = "<group>"; };
+		FC3AF6BA2170825B004A96FD /* ASCFileProviderProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCFileProviderProtocol.swift; sourceTree = "<group>"; };
 		FC3AF6BC21709259004A96FD /* ASCFileManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCFileManager.swift; sourceTree = "<group>"; };
 		FC407FBB2191DC76009089EB /* ASCConnectCloudViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCConnectCloudViewController.swift; sourceTree = "<group>"; };
 		FC41D7FA2265B4AF00A155C2 /* ASC2FACodeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASC2FACodeViewController.swift; sourceTree = "<group>"; };
@@ -947,7 +947,7 @@
 			isa = PBXGroup;
 			children = (
 				FCF69C8724E4271B0048F2CD /* ASCProviderError.swift */,
-				FC3AF6BA2170825B004A96FD /* ASCBaseFileProvider.swift */,
+				FC3AF6BA2170825B004A96FD /* ASCFileProviderProtocol.swift */,
 				FC0F01DE216F443E008D79A5 /* ASCLocalProvider.swift */,
 				FC0F01E0216F46B7008D79A5 /* ASCOnlyofficeProvider.swift */,
 				FC89C39D2368450700705DE7 /* ASCGoogleDriveProvider.swift */,
@@ -2456,7 +2456,7 @@
 				FC36D32125B5C32200412DDB /* ASCNetworkReachability.swift in Sources */,
 				FC36D32225B5C32200412DDB /* ASCOnlyofficeSplitViewController.swift in Sources */,
 				FC36D32325B5C32200412DDB /* ASCFacebookSignInController.swift in Sources */,
-				FC36D32425B5C32200412DDB /* ASCBaseFileProvider.swift in Sources */,
+				FC36D32425B5C32200412DDB /* ASCFileProviderProtocol.swift in Sources */,
 				FC36D32525B5C32200412DDB /* String+Extension.swift in Sources */,
 				FC36D32625B5C32200412DDB /* ASCConnectPortalThirdPartyViewController.swift in Sources */,
 				FC36D32725B5C32200412DDB /* UIDevice+Extension.swift in Sources */,
@@ -2688,7 +2688,7 @@
 				FC1AD6142175FE7000DADEE0 /* ASCNetworkReachability.swift in Sources */,
 				FC8667D421C7941C0020D797 /* ASCOnlyofficeSplitViewController.swift in Sources */,
 				FC64B2EB1EE56C5500920FDD /* ASCFacebookSignInController.swift in Sources */,
-				FC3AF6BB2170825B004A96FD /* ASCBaseFileProvider.swift in Sources */,
+				FC3AF6BB2170825B004A96FD /* ASCFileProviderProtocol.swift in Sources */,
 				FCC9C3FA1E78235800EFCA57 /* String+Extension.swift in Sources */,
 				FC08F8731ECB2FD600988DDE /* ASCConnectPortalThirdPartyViewController.swift in Sources */,
 				FC31B2871E76C09F008699C3 /* UIDevice+Extension.swift in Sources */,

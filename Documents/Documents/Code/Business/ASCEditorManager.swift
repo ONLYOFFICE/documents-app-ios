@@ -59,7 +59,7 @@ class ASCEditorManager: NSObject, DEEditorDelegate, SEEditorDelegate, PEEditorDe
     // MARK: - Private
 
     private var openedFile: ASCFile? = nil
-    private var provider: ASCBaseFileProvider? = nil
+    private var provider: ASCFileProviderProtocol? = nil
     private var closeHandler: ASCEditorManagerCloseHandler? = nil
     private var openHandler: ASCEditorManagerOpenHandler? = nil
     private var documentInteractionController: UIDocumentInteractionController?
@@ -780,7 +780,7 @@ class ASCEditorManager: NSObject, DEEditorDelegate, SEEditorDelegate, PEEditorDe
     
     // MARK: - Local editing online files
     
-    func editFileLocally(for provider: ASCBaseFileProvider,
+    func editFileLocally(for provider: ASCFileProviderProtocol,
                          _ file: ASCFile,
                          viewMode: Bool,
                          handler: ASCEditorManagerOpenHandler? = nil,
@@ -864,7 +864,7 @@ class ASCEditorManager: NSObject, DEEditorDelegate, SEEditorDelegate, PEEditorDe
         }
     }
     
-    func downloadAndOpenFile(for provider: ASCBaseFileProvider, _ file: ASCFile, _ viewMode: Bool, _ cancel: inout Bool) {
+    func downloadAndOpenFile(for provider: ASCFileProviderProtocol, _ file: ASCFile, _ viewMode: Bool, _ cancel: inout Bool) {
         
         ASCEntityManager.shared.downloadTemp(for: provider, entity: file) { [unowned self] status, progress, result, error, cancel in
             if status == .begin {
@@ -1094,7 +1094,7 @@ class ASCEditorManager: NSObject, DEEditorDelegate, SEEditorDelegate, PEEditorDe
         handler?(.end, 1, nil, &cancel)
     }
     
-    func browsePdfCloud(for provider: ASCBaseFileProvider, _ pdf: ASCFile, handler: ASCEditorManagerOpenHandler? = nil) {
+    func browsePdfCloud(for provider: ASCFileProviderProtocol, _ pdf: ASCFile, handler: ASCEditorManagerOpenHandler? = nil) {
         var cancel = false
         
         handler?(.begin, 0, nil, &cancel)
@@ -1126,7 +1126,7 @@ class ASCEditorManager: NSObject, DEEditorDelegate, SEEditorDelegate, PEEditorDe
         }
     }
 
-    func browseMedia(for fileProvider: ASCBaseFileProvider, _ file: ASCFile, files: [AnyObject]?) {
+    func browseMedia(for fileProvider: ASCFileProviderProtocol, _ file: ASCFile, files: [AnyObject]?) {
         openedFile = file
         provider = fileProvider
         
@@ -1258,7 +1258,7 @@ class ASCEditorManager: NSObject, DEEditorDelegate, SEEditorDelegate, PEEditorDe
         handler?(.end, 1, nil, &cancel)
     }
 
-    func browseUnknownCloud(for provider: ASCBaseFileProvider, _ file: ASCFile, inView: UIView, handler: ASCEditorManagerOpenHandler? = nil) {
+    func browseUnknownCloud(for provider: ASCFileProviderProtocol, _ file: ASCFile, inView: UIView, handler: ASCEditorManagerOpenHandler? = nil) {
         var cancel = false
         
         handler?(.begin, 0, nil, &cancel)

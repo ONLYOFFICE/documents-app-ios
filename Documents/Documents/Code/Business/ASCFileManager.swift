@@ -11,14 +11,14 @@ import KeychainSwift
 import FileKit
 
 class ASCFileManager {
-    public static var provider: ASCBaseFileProvider? {
+    public static var provider: ASCFileProviderProtocol? {
         didSet {
             storeCurrentProvider()
         }
     }
     public static var localProvider: ASCLocalProvider = ASCLocalProvider()
     public static var onlyofficeProvider: ASCOnlyofficeProvider?
-    public static var cloudProviders: [ASCBaseFileProvider] = [] {
+    public static var cloudProviders: [ASCFileProviderProtocol] = [] {
         didSet {
             observer.notify(observer)
         }
@@ -44,7 +44,7 @@ class ASCFileManager {
         }
     }
 
-    static func createProvider(by type: ASCFileProviderType) -> ASCBaseFileProvider? {
+    static func createProvider(by type: ASCFileProviderType) -> ASCFileProviderProtocol? {
         switch type {
         case .googledrive:
             return ASCGoogleDriveProvider()
@@ -67,7 +67,7 @@ class ASCFileManager {
 
     static func storeProviders() {
         var provividersInfo: [String] = []
-        var allProviders: [ASCBaseFileProvider] = cloudProviders
+        var allProviders: [ASCFileProviderProtocol] = cloudProviders
 
         if let onlyofficeProvider = onlyofficeProvider {
             allProviders.append(onlyofficeProvider)
@@ -102,7 +102,7 @@ class ASCFileManager {
                         provider.deserialize(serializedProvider)
                         onlyofficeProvider = provider
                     } else {
-                        var provider: ASCBaseFileProvider? = nil
+                        var provider: ASCFileProviderProtocol? = nil
 
                         switch type {
                         case .some(.googledrive):

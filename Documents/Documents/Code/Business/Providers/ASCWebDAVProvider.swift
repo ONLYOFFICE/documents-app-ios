@@ -11,7 +11,7 @@ import FilesProvider
 import FileKit
 import Firebase
 
-class ASCWebDAVProvider: ASCBaseFileProvider & ASCSortableFileProvider {
+class ASCWebDAVProvider: ASCFileProviderProtocol & ASCSortableFileProviderProtocol {
 
     // MARK: - Properties
 
@@ -111,7 +111,7 @@ class ASCWebDAVProvider: ASCBaseFileProvider & ASCSortableFileProvider {
         user?.department = providerUrl.host
     }
 
-    func copy() -> ASCBaseFileProvider {
+    func copy() -> ASCFileProviderProtocol {
         let copy = ASCWebDAVProvider()
         
         copy.items = items
@@ -188,6 +188,21 @@ class ASCWebDAVProvider: ASCBaseFileProvider & ASCSortableFileProvider {
                 provider?.credentialType = .basic
             }
         }
+    }
+    
+    func add(item: ASCEntity, at index: Int) {
+        items.insert(item, at: index)
+        total += 1
+    }
+    
+    func add(items: [ASCEntity], at index: Int) {
+        self.items.insert(contentsOf: items, at: index)
+        self.total += items.count
+    }
+    
+    func remove(at index: Int) {
+        items.remove(at: index)
+        total -= 1
     }
 
     func isReachable(completionHandler: @escaping (_ success: Bool, _ error: Error?) -> Void) {

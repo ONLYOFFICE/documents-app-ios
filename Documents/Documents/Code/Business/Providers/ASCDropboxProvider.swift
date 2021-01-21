@@ -11,7 +11,7 @@ import FilesProvider
 import FileKit
 import Firebase
 
-class ASCDropboxProvider: ASCBaseFileProvider & ASCSortableFileProvider {
+class ASCDropboxProvider: ASCFileProviderProtocol & ASCSortableFileProviderProtocol {
     
     // MARK: - Properties
     
@@ -90,7 +90,7 @@ class ASCDropboxProvider: ASCBaseFileProvider & ASCSortableFileProvider {
         api?.token = credential.password
     }
     
-    func copy() -> ASCBaseFileProvider {
+    func copy() -> ASCFileProviderProtocol {
         let copy = ASCDropboxProvider()
         
         copy.items = items
@@ -161,6 +161,21 @@ class ASCDropboxProvider: ASCBaseFileProvider & ASCSortableFileProvider {
                 api?.token = credential.password
             }
         }
+    }
+    
+    func add(item: ASCEntity, at index: Int) {
+        items.insert(item, at: index)
+        total += 1
+    }
+    
+    func add(items: [ASCEntity], at index: Int) {
+        self.items.insert(contentsOf: items, at: index)
+        self.total += items.count
+    }
+    
+    func remove(at index: Int) {
+        items.remove(at: index)
+        total -= 1
     }
     
     func isReachable(completionHandler: @escaping (_ success: Bool, _ error: Error?) -> Void) {

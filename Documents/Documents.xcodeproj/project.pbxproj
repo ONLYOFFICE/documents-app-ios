@@ -9,9 +9,10 @@
 /* Begin PBXBuildFile section */
 		0B1B6053CFEFEC3E29EC06D9 /* Pods_Documents_Dev.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F3A33770BE2F1AE884BF6BA3 /* Pods_Documents_Dev.framework */; };
 		69EBD4CA1EF2AB9D00D3C685 /* UINavigationController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69EBD4C91EF2AB9D00D3C685 /* UINavigationController+Extension.swift */; };
+		7E7324B635B9B2D98E80FD03 /* Pods_Documents.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1B32667722AD980849E124F1 /* Pods_Documents.framework */; };
 		8A79BCD62080DD5C00998DA7 /* ASConverterOptionsAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A79BCD52080DD5C00998DA7 /* ASConverterOptionsAlert.swift */; };
 		9AC1D42040BBA923AD7D49C2 /* Pods_DocumentsTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C98C6D1CF16699DFAAAA3A64 /* Pods_DocumentsTests.framework */; };
-		B8DD770E92DB5E79970155E7 /* (null) in Frameworks */ = {isa = PBXBuildFile; };
+		B8DD770E92DB5E79970155E7 /* BuildFile in Frameworks */ = {isa = PBXBuildFile; };
 		E0609BF41BC138CF6774A5B3 /* ASCUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = E06093EE3529CD8AE31D5519 /* ASCUser.swift */; };
 		E0609CA78B7ADE534424D45E /* ASCFolder.swift in Sources */ = {isa = PBXBuildFile; fileRef = E060976FAE7FB8D6B47A6B6A /* ASCFolder.swift */; };
 		FC050F7E1ECB1F6800FD452C /* ConnectStorage.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FC050F801ECB1F6800FD452C /* ConnectStorage.storyboard */; };
@@ -490,6 +491,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		1B32667722AD980849E124F1 /* Pods_Documents.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Documents.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		1B402BC0B41F5EA0B160A88F /* Pods-Documents-DocumentsTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Documents-DocumentsTests.release.xcconfig"; path = "../Pods/Target Support Files/Pods-Documents-DocumentsTests/Pods-Documents-DocumentsTests.release.xcconfig"; sourceTree = "<group>"; };
 		223510FCC80632095899444E /* Pods_Documents_DocumentsTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Documents_DocumentsTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		3591A05467A432968D686ECF /* Pods-DocumentsTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DocumentsTests.release.xcconfig"; path = "../Pods/Target Support Files/Pods-DocumentsTests/Pods-DocumentsTests.release.xcconfig"; sourceTree = "<group>"; };
@@ -870,8 +872,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B8DD770E92DB5E79970155E7 /* (null) in Frameworks */,
+				B8DD770E92DB5E79970155E7 /* BuildFile in Frameworks */,
 				FC28021525B9B8C5000E9D99 /* CloudKit.framework in Frameworks */,
+				7E7324B635B9B2D98E80FD03 /* Pods_Documents.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -885,6 +888,7 @@
 				223510FCC80632095899444E /* Pods_Documents_DocumentsTests.framework */,
 				C98C6D1CF16699DFAAAA3A64 /* Pods_DocumentsTests.framework */,
 				F3A33770BE2F1AE884BF6BA3 /* Pods_Documents_Dev.framework */,
+				1B32667722AD980849E124F1 /* Pods_Documents.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";

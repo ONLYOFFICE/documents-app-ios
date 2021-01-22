@@ -12,7 +12,7 @@
 		7E7324B635B9B2D98E80FD03 /* Pods_Documents.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1B32667722AD980849E124F1 /* Pods_Documents.framework */; };
 		8A79BCD62080DD5C00998DA7 /* ASConverterOptionsAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A79BCD52080DD5C00998DA7 /* ASConverterOptionsAlert.swift */; };
 		9AC1D42040BBA923AD7D49C2 /* Pods_DocumentsTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C98C6D1CF16699DFAAAA3A64 /* Pods_DocumentsTests.framework */; };
-		B8DD770E92DB5E79970155E7 /* BuildFile in Frameworks */ = {isa = PBXBuildFile; };
+		B8DD770E92DB5E79970155E7 /* (null) in Frameworks */ = {isa = PBXBuildFile; };
 		E0609BF41BC138CF6774A5B3 /* ASCUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = E06093EE3529CD8AE31D5519 /* ASCUser.swift */; };
 		E0609CA78B7ADE534424D45E /* ASCFolder.swift in Sources */ = {isa = PBXBuildFile; fileRef = E060976FAE7FB8D6B47A6B6A /* ASCFolder.swift */; };
 		FC050F7E1ECB1F6800FD452C /* ConnectStorage.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FC050F801ECB1F6800FD452C /* ConnectStorage.storyboard */; };
@@ -358,6 +358,16 @@
 		FC7CF5181EF3EFF300C0A64F /* Mappings.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC7CF5141EF3EFF300C0A64F /* Mappings.swift */; };
 		FC7CF5191EF3EFF300C0A64F /* NSString+HTMLString.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC7CF5151EF3EFF300C0A64F /* NSString+HTMLString.swift */; };
 		FC7F786B236ACBB00026E260 /* ASCConnectStorageGoogleController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC7F786A236ACBB00026E260 /* ASCConnectStorageGoogleController.swift */; };
+		FC80CA2C25BADE1E0077C2B8 /* ASCiCloudProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC066ABE252DB811007357F7 /* ASCiCloudProvider.swift */; };
+		FC80CA3025BADEF10077C2B8 /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC066AA9252DB7C5007357F7 /* Event.swift */; };
+		FC80CA3125BADEF10077C2B8 /* EventSubscription.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC066AAE252DB7C5007357F7 /* EventSubscription.swift */; };
+		FC80CA3225BADEF10077C2B8 /* ObservableProxy.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC066AAB252DB7C5007357F7 /* ObservableProxy.swift */; };
+		FC80CA3325BADEF10077C2B8 /* OwningEventReference.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC066AA8252DB7C5007357F7 /* OwningEventReference.swift */; };
+		FC80CA3425BADEF10077C2B8 /* ObservableReference.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC066AB0252DB7C5007357F7 /* ObservableReference.swift */; };
+		FC80CA3525BADEF10077C2B8 /* Observable.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC066AAD252DB7C5007357F7 /* Observable.swift */; };
+		FC80CA3625BADEF10077C2B8 /* Protocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC066AAC252DB7C5007357F7 /* Protocols.swift */; };
+		FC80CA3725BADEF10077C2B8 /* ObservableChainingProxy.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC066AAA252DB7C5007357F7 /* ObservableChainingProxy.swift */; };
+		FC80CA3825BADEF10077C2B8 /* EventReference.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC066AAF252DB7C5007357F7 /* EventReference.swift */; };
 		FC81C67D22C5041600A7D104 /* ASCCustomHighlightButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC81C67C22C5041600A7D104 /* ASCCustomHighlightButton.swift */; };
 		FC82827F21C3CC01005AF726 /* ASCDeviceSplitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC82827E21C3CC01005AF726 /* ASCDeviceSplitViewController.swift */; };
 		FC8540C41E83A582000C2436 /* ASCProgressAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC8540C31E83A582000C2436 /* ASCProgressAlert.swift */; };
@@ -872,7 +882,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B8DD770E92DB5E79970155E7 /* BuildFile in Frameworks */,
+				B8DD770E92DB5E79970155E7 /* (null) in Frameworks */,
 				FC28021525B9B8C5000E9D99 /* CloudKit.framework in Frameworks */,
 				7E7324B635B9B2D98E80FD03 /* Pods_Documents.framework in Frameworks */,
 			);
@@ -2296,6 +2306,7 @@
 				FC36D27925B5C32200412DDB /* UITableViewCell+Extensions.swift in Sources */,
 				FC36D27A25B5C32200412DDB /* ASCSettingsViewController.swift in Sources */,
 				FC36D27B25B5C32200412DDB /* ASCBaseNavigationController.swift in Sources */,
+				FC80CA3225BADEF10077C2B8 /* ObservableProxy.swift in Sources */,
 				FC36D27C25B5C32200412DDB /* ASCCloudsEmptyViewController.swift in Sources */,
 				FC36D27D25B5C32200412DDB /* ASCDeviceCategoryViewController.swift in Sources */,
 				FC36D27E25B5C32200412DDB /* ASCEntityManager.swift in Sources */,
@@ -2314,6 +2325,7 @@
 				FC36D28B25B5C32200412DDB /* Common+Extension.swift in Sources */,
 				FC36D28C25B5C32200412DDB /* ASCEntity.swift in Sources */,
 				FC36D28D25B5C32200412DDB /* ASCCreatePortalViewController.swift in Sources */,
+				FC80CA3525BADEF10077C2B8 /* Observable.swift in Sources */,
 				FC36D28E25B5C32200412DDB /* ASCConnectPortalViewController.swift in Sources */,
 				FC36D28F25B5C32200412DDB /* ASCSignInViewController.swift in Sources */,
 				FC36D29025B5C32200412DDB /* ASCPhoneNumberViewController.swift in Sources */,
@@ -2343,6 +2355,7 @@
 				FC36D2A825B5C32200412DDB /* ASCEntityItemProvider.swift in Sources */,
 				FC36D2A925B5C32200412DDB /* ASCDocumentService.swift in Sources */,
 				FC36D2AA25B5C32200412DDB /* NSString+HTMLString.swift in Sources */,
+				FC80CA3125BADEF10077C2B8 /* EventSubscription.swift in Sources */,
 				FC36D2AB25B5C32200412DDB /* ASCShareAccessViewController.swift in Sources */,
 				FC36D2AC25B5C32200412DDB /* ASCOnlyofficeCategoriesViewController.swift in Sources */,
 				FC36D2AD25B5C32200412DDB /* Sequence+Extensions.swift in Sources */,
@@ -2354,6 +2367,7 @@
 				FC36D2B325B5C32200412DDB /* NSLayoutConstraint+Extensions.swift in Sources */,
 				FC36D2B425B5C32200412DDB /* ASCSortViewController.swift in Sources */,
 				FC36D2B525B5C32200412DDB /* ASCPasscodeLockViewController.swift in Sources */,
+				FC80CA3825BADEF10077C2B8 /* EventReference.swift in Sources */,
 				FC36D2B625B5C32200412DDB /* PasscodeLock.swift in Sources */,
 				FC36D2B725B5C32200412DDB /* ASCWebDAVProvider.swift in Sources */,
 				FC36D2B825B5C32200412DDB /* ASCConnectStorageOAuth2ViewController.swift in Sources */,
@@ -2380,6 +2394,7 @@
 				FC36D2CD25B5C32200412DDB /* AppDelegate.swift in Sources */,
 				FC36D2CE25B5C32200412DDB /* ASCDebugConsoleViewController.swift in Sources */,
 				FC36D2CF25B5C32200412DDB /* PasscodeSignPlaceholderView.swift in Sources */,
+				FC80CA2C25BADE1E0077C2B8 /* ASCiCloudProvider.swift in Sources */,
 				FC36D2D025B5C32200412DDB /* ASCCreatePortalStatus.swift in Sources */,
 				FC36D2D125B5C32200412DDB /* ASCShadowRadiusView.swift in Sources */,
 				FC36D2D225B5C32200412DDB /* ASC2FACodeViewController.swift in Sources */,
@@ -2404,6 +2419,7 @@
 				FC36D2E525B5C32200412DDB /* ASCDebugNavigationController.swift in Sources */,
 				FC36D2E625B5C32200412DDB /* ASCConnectStorageWebDavController.swift in Sources */,
 				FC36D2E725B5C32200412DDB /* PasscodeLockPresenter.swift in Sources */,
+				FC80CA3025BADEF10077C2B8 /* Event.swift in Sources */,
 				FC36D2E825B5C32200412DDB /* ASCLogger.swift in Sources */,
 				FC36D2E925B5C32200412DDB /* ASCLoaderCell.swift in Sources */,
 				FC36D2EA25B5C32200412DDB /* ASCDocumentsToolbar.swift in Sources */,
@@ -2417,11 +2433,14 @@
 				FC36D2F225B5C32200412DDB /* ASCFolderCell.swift in Sources */,
 				FC36D2F325B5C32200412DDB /* ASCCloudCategoryCell.swift in Sources */,
 				FC36D2F425B5C32200412DDB /* SetPasscodeState.swift in Sources */,
+				FC80CA3425BADEF10077C2B8 /* ObservableReference.swift in Sources */,
 				FC36D2F525B5C32200412DDB /* ASCDebugManager.swift in Sources */,
 				FC36D2F625B5C32200412DDB /* ASCEntityAccess.swift in Sources */,
 				FC36D2F725B5C32200412DDB /* UPCarouselFlowLayout.swift in Sources */,
 				FC36D2F825B5C32200412DDB /* ASCUserProfileViewController.swift in Sources */,
 				FC36D2F925B5C32200412DDB /* ASCStyles.swift in Sources */,
+				FC80CA3625BADEF10077C2B8 /* Protocols.swift in Sources */,
+				FC80CA3325BADEF10077C2B8 /* OwningEventReference.swift in Sources */,
 				FC36D2FA25B5C32200412DDB /* ASCOnlyofficeProvider.swift in Sources */,
 				FC36D2FB25B5C32200412DDB /* KingfisherWrapper+Extensions.swift in Sources */,
 				FC36D2FC25B5C32200412DDB /* Date+Extension.swift in Sources */,
@@ -2436,6 +2455,7 @@
 				FC36D30525B5C32200412DDB /* ASCSDWebImageDownloaderOperation.swift in Sources */,
 				FC36D30625B5C32200412DDB /* ASCNextCloudProvider.swift in Sources */,
 				FC36D30725B5C32200412DDB /* ChangePasscodeState.swift in Sources */,
+				FC80CA3725BADEF10077C2B8 /* ObservableChainingProxy.swift in Sources */,
 				FC36D30825B5C32200412DDB /* ASCShareInfo.swift in Sources */,
 				FC36D30925B5C32200412DDB /* UILabel+Extension.swift in Sources */,
 				FC36D30A25B5C32200412DDB /* ASCConnectStorageGoogleController.swift in Sources */,

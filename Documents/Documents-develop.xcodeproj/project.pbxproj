@@ -424,6 +424,8 @@
 		FC56B5C520C017C300557C1F /* ASCStyles.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASCStyles.swift; sourceTree = "<group>"; };
 		FC56B5C920C03F3400557C1F /* ASCSortViewCellTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCSortViewCellTableViewCell.swift; sourceTree = "<group>"; };
 		FC56F4912248BC13004E3930 /* CALayer+Animate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CALayer+Animate.swift"; sourceTree = "<group>"; };
+		FC584EFB25BB4FA1001C608E /* Documents.dev.entitlements */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.entitlements; path = Documents.dev.entitlements; sourceTree = "<group>"; };
+		FC584EFC25BB4FA1001C608E /* Documents.entitlements */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.entitlements; path = Documents.entitlements; sourceTree = "<group>"; };
 		FC5E2D8C1E8A4C8B0079626B /* ASCImageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASCImageViewController.swift; sourceTree = "<group>"; };
 		FC5F47871F04E7E000F045DD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/PasscodeLockView.xib; sourceTree = "<group>"; };
 		FC5F478A1F04E7E500F045DD /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/PasscodeLockView.strings; sourceTree = "<group>"; };
@@ -517,7 +519,6 @@
 		FCA7500522BB91DE00991682 /* UIButton+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton+Extensions.swift"; sourceTree = "<group>"; };
 		FCA7500722BB9CD500991682 /* UITableViewCell+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableViewCell+Extensions.swift"; sourceTree = "<group>"; };
 		FCA7501022BBD65A00991682 /* ASCCreateEntityView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCCreateEntityView.swift; sourceTree = "<group>"; };
-		FCABC5C71EE6D6AF0062F6F4 /* Documents.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Documents.entitlements; sourceTree = "<group>"; };
 		FCADF3791EC9DA9A001CA4A9 /* NSLayoutConstraint+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSLayoutConstraint+Extensions.swift"; sourceTree = "<group>"; };
 		FCAE8B8A1E71676B004FC332 /* ASCFile.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASCFile.swift; sourceTree = "<group>"; };
 		FCAE8B8C1E717B84004FC332 /* EventManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventManager.swift; sourceTree = "<group>"; };
@@ -965,6 +966,15 @@
 				FC56B5C920C03F3400557C1F /* ASCSortViewCellTableViewCell.swift */,
 			);
 			path = Views;
+			sourceTree = "<group>";
+		};
+		FC584EFA25BB4FA1001C608E /* Entitlements */ = {
+			isa = PBXGroup;
+			children = (
+				FC584EFB25BB4FA1001C608E /* Documents.dev.entitlements */,
+				FC584EFC25BB4FA1001C608E /* Documents.entitlements */,
+			);
+			path = Entitlements;
 			sourceTree = "<group>";
 		};
 		FC5E2D8B1E8A4C220079626B /* ImagePreview */ = {
@@ -1455,10 +1465,10 @@
 		FCFDAA8F1E48A10C007A240C /* Documents */ = {
 			isa = PBXGroup;
 			children = (
-				FCABC5C71EE6D6AF0062F6F4 /* Documents.entitlements */,
 				FCCC892C1E6D864F00F5AE05 /* Storyboards */,
 				FCA5B9201E48A25C00CD2EA9 /* Code */,
 				FCC62AD01E8A8D7B00D24BE2 /* Resources */,
+				FC584EFA25BB4FA1001C608E /* Entitlements */,
 				FCFDAA901E48A10C007A240C /* AppDelegate.swift */,
 				FCFDAA991E48A10C007A240C /* LaunchScreen.storyboard */,
 				FC7B37D51E929B46009C41AD /* Settings.bundle */,
@@ -2427,7 +2437,7 @@
 			baseConfigurationReference = BEA9E68A9DE5AF9099F7F723 /* Pods-Documents-develop.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_ENTITLEMENTS = Documents/Documents.entitlements;
+				CODE_SIGN_ENTITLEMENTS = Documents/Entitlements/Documents.entitlements;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = 2WH24U26GJ;
 				ENABLE_BITCODE = NO;
@@ -2498,7 +2508,7 @@
 			baseConfigurationReference = 051F20752774A7A1DE291FB1 /* Pods-Documents-develop.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_ENTITLEMENTS = Documents/Documents.entitlements;
+				CODE_SIGN_ENTITLEMENTS = Documents/Entitlements/Documents.entitlements;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = 2WH24U26GJ;
 				ENABLE_BITCODE = NO;

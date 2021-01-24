@@ -180,6 +180,8 @@ platform :ios do
       UI.error(ex)
     end
 
+    # Reset changes
+    reset_git_repo(force: true)
     clean_build_artifacts
 
   end

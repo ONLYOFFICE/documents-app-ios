@@ -62,7 +62,7 @@ target 'Documents' do
   end
 end
 
-target 'Documents-Dev' do
+target 'Documents-Alpha' do
   workspace 'ONLYOFFICE-Documents'
   project 'Documents/Documents.xcodeproj'
   

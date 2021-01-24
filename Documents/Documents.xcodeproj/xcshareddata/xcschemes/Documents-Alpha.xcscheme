@@ -15,8 +15,8 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "FC36D26E25B5C32200412DDB"
-               BuildableName = "Documents-Dev.app"
-               BlueprintName = "Documents-Dev"
+               BuildableName = "Documents-Alpha.app"
+               BlueprintName = "Documents-Alpha"
                ReferencedContainer = "container:Documents.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -45,8 +45,8 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "FC36D26E25B5C32200412DDB"
-            BuildableName = "Documents-Dev.app"
-            BlueprintName = "Documents-Dev"
+            BuildableName = "Documents-Alpha.app"
+            BlueprintName = "Documents-Alpha"
             ReferencedContainer = "container:Documents.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
@@ -62,8 +62,8 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "FC36D26E25B5C32200412DDB"
-            BuildableName = "Documents-Dev.app"
-            BlueprintName = "Documents-Dev"
+            BuildableName = "Documents-Alpha.app"
+            BlueprintName = "Documents-Alpha"
             ReferencedContainer = "container:Documents.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>

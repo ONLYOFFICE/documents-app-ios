@@ -105,24 +105,30 @@ platform :ios do
   end
 
   desc "Submit a new Beta Build to Apple TestFlight Develop"
-  lane :beta_dev do
+  lane :alpha do
     # match(type: "appstore") # more information: https://codesigning.guide
     # ensure_git_status_clean
 
     version_number = get_info_plist_value(
-      path: "Documents/Documents/Info-Dev.plist",
+      path: "Documents/Documents/Info-Alpha.plist",
       key: "CFBundleShortVersionString"
     )
     build_number = get_info_plist_value(
-      path: "Documents/Documents/Info-Dev.plist",
+      path: "Documents/Documents/Info-Alpha.plist",
       key: "CFBundleVersion"
     )
     bumped_build_number = build_number.to_i.next.to_s
 
+    # Update app icon
+    add_badge(
+      dark: true,
+      alpha: true
+    )
+
     # Build
     gym(
       clean: true,
-      scheme: "Documents-Dev",
+      scheme: "Documents-Alpha",
       workspace: "ONLYOFFICE-Documents.xcworkspace",
       export_xcargs: "-allowProvisioningUpdates"
     )
@@ -133,7 +139,7 @@ platform :ios do
 
     # creates a bump version commit
     update_plist(
-      plist_path: "Documents/Documents/Info-Dev.plist",
+      plist_path: "Documents/Documents/Info-Alpha.plist",
       block: proc do |plist|
         plist[:CFBundleVersion] = bumped_build_number
       end
@@ -148,7 +154,7 @@ platform :ios do
 
     git_commit(
       path: [
-        "Documents/Documents/Info-Dev.plist",
+        "Documents/Documents/Info-Alpha.plist",
         "Documents/Settings.bundle/Root.plist"
       ], 
       message: "Version bumped to v#{version_number}-dev (#{bumped_build_number})"

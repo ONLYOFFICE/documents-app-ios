@@ -196,6 +196,9 @@ class ASCConstants {
     struct Feature {
         // Hide the searchbar in the navigationbar if the list of documents is empty
         static let hideSearchbarIfEmpty = false
+        
+        // Allow iCloud provider
+        static let allowiCloud = true
     }
 
     static func remoteConfigValue(forKey key: String) -> RemoteConfigValue? {

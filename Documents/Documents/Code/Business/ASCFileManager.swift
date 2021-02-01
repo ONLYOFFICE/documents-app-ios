@@ -132,8 +132,10 @@ class ASCFileManager {
             }
         }
         
-        // iCloud Setup
-        iCloudUpdate()
+        if ASCConstants.Feature.allowiCloud {
+            // iCloud Setup
+            iCloudUpdate()
+        }
 
         // Load last provider
         loadCurrentProvider()

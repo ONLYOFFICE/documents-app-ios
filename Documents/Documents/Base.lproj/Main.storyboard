@@ -154,6 +154,7 @@
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="insetGrouped" separatorStyle="default" rowHeight="66" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" id="Xrw-tq-hXE">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="1024"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <inset key="separatorInset" minX="70" minY="0.0" maxX="0.0" maxY="0.0"/>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="ASCDeviceCategoryCell" id="7sU-YA-GWq" customClass="ASCDeviceCategoryCell" customModule="Documents" customModuleProvider="target">
                                 <rect key="frame" x="16" y="55.5" width="288" height="66"/>
@@ -297,20 +298,20 @@
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <subviews>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tNw-LZ-xKd" userLabel="Avatar Shadow" customClass="ASCShadowRadiusView" customModule="Documents" customModuleProvider="target">
-                                    <rect key="frame" x="12" y="26" width="48" height="48"/>
+                                    <rect key="frame" x="28" y="26" width="48" height="48"/>
                                 </view>
                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Ezx-Px-vt0" customClass="ASCProfileAvatarView" customModule="Documents" customModuleProvider="target">
-                                    <rect key="frame" x="12" y="26" width="48" height="48"/>
+                                    <rect key="frame" x="28" y="26" width="48" height="48"/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="48" id="e8s-LK-XQ3"/>
                                         <constraint firstAttribute="width" constant="48" id="xsL-ob-dQP"/>
                                     </constraints>
                                 </imageView>
                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="OUr-zM-fp1">
-                                    <rect key="frame" x="70" y="29.5" width="232" height="41.5"/>
+                                    <rect key="frame" x="86" y="29.5" width="216" height="41.5"/>
                                     <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="9" translatesAutoresizingMaskIntoConstraints="NO" id="gTQ-Nt-RDQ">
-                                            <rect key="frame" x="0.0" y="0.0" width="232" height="20.5"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="9" translatesAutoresizingMaskIntoConstraints="NO" id="gTQ-Nt-RDQ">
+                                            <rect key="frame" x="0.0" y="0.0" width="216" height="20.5"/>
                                             <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
@@ -318,8 +319,8 @@
                                                 <fragment content="Do not translate"/>
                                             </attributedString>
                                         </label>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Address" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="7" translatesAutoresizingMaskIntoConstraints="NO" id="jRC-an-McY">
-                                            <rect key="frame" x="0.0" y="25.5" width="232" height="16"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Address" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="7" translatesAutoresizingMaskIntoConstraints="NO" id="jRC-an-McY">
+                                            <rect key="frame" x="0.0" y="25.5" width="216" height="16"/>
                                             <fontDescription key="fontDescription" style="UICTFontTextStyleFootnote"/>
                                             <color key="textColor" name="text-subtitle"/>
                                             <nil key="highlightedColor"/>
@@ -339,16 +340,16 @@
                             </subviews>
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <constraints>
-                                <constraint firstItem="Ezx-Px-vt0" firstAttribute="leading" secondItem="xhT-HI-AaR" secondAttribute="leadingMargin" constant="4" id="3JQ-fh-C7a"/>
                                 <constraint firstItem="OUr-zM-fp1" firstAttribute="centerY" secondItem="xhT-HI-AaR" secondAttribute="centerY" id="4oD-Fg-wfI"/>
+                                <constraint firstItem="Ezx-Px-vt0" firstAttribute="leading" secondItem="tNw-LZ-xKd" secondAttribute="leading" id="5cZ-9w-0Qh"/>
                                 <constraint firstItem="tNw-LZ-xKd" firstAttribute="trailing" secondItem="Ezx-Px-vt0" secondAttribute="trailing" id="Hiv-1F-FS1"/>
                                 <constraint firstItem="tNw-LZ-xKd" firstAttribute="bottom" secondItem="Ezx-Px-vt0" secondAttribute="bottom" id="PaL-3q-7n6"/>
-                                <constraint firstItem="tNw-LZ-xKd" firstAttribute="leading" secondItem="Ezx-Px-vt0" secondAttribute="leading" id="Sqx-ah-qPU"/>
                                 <constraint firstItem="A4s-VJ-end" firstAttribute="top" secondItem="xhT-HI-AaR" secondAttribute="top" id="UOz-Qa-4d1"/>
                                 <constraint firstItem="OUr-zM-fp1" firstAttribute="leading" secondItem="Ezx-Px-vt0" secondAttribute="trailing" constant="10" id="XAm-w0-Y6z"/>
                                 <constraint firstAttribute="trailing" secondItem="A4s-VJ-end" secondAttribute="trailing" id="c4c-ZA-wjs"/>
                                 <constraint firstItem="A4s-VJ-end" firstAttribute="leading" secondItem="xhT-HI-AaR" secondAttribute="leading" id="ch0-Ln-znr"/>
                                 <constraint firstAttribute="bottom" secondItem="A4s-VJ-end" secondAttribute="bottom" id="fsO-73-9Ci"/>
+                                <constraint firstItem="tNw-LZ-xKd" firstAttribute="leading" secondItem="xhT-HI-AaR" secondAttribute="leadingMargin" constant="20" id="ftU-0A-1Ps"/>
                                 <constraint firstItem="Ezx-Px-vt0" firstAttribute="centerY" secondItem="xhT-HI-AaR" secondAttribute="centerY" id="kPg-58-eK2"/>
                                 <constraint firstItem="tNw-LZ-xKd" firstAttribute="top" secondItem="Ezx-Px-vt0" secondAttribute="top" id="kb6-wZ-Zux"/>
                                 <constraint firstAttribute="trailingMargin" secondItem="OUr-zM-fp1" secondAttribute="trailing" constant="10" id="wUs-gm-JnG"/>

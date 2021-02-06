@@ -2374,6 +2374,7 @@ class ASCDocumentsViewController: UITableViewController, UIGestureRecognizerDele
             navigationController?.pushViewController(controller, animated: true)
 
             controller.provider = provider?.copy()
+            controller.provider?.reset()
             controller.folder = folder
             controller.title = folder.title
         } else if let file = tableData[indexPath.row] as? ASCFile, let provider = provider {

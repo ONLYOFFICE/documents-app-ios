@@ -1,4 +1,3 @@
-app_identifier "com.onlyoffice.Documents" # The bundle identifier of your app
-apple_id ENV["APPLE_ID"] # Your Apple email address
+app_identifier ENV["BUNDLE_ID"] # The bundle identifier of your app
 team_id ENV["TEAM_ID"] # Developer Portal Team ID
 itc_team_id ENV["ITC_TEAM_ID"] # App Store Connect Team ID

@@ -3582,7 +3582,6 @@ extension ASCDocumentsViewController: ASCProviderDelegate {
 
             if forceCancel {
                 cancel = forceCancel
-//                ASCOnlyOfficeApi.cancelAllTasks()
                 self?.provider?.cancel()
                 return
             }

@@ -141,6 +141,7 @@ class ASCOnlyOfficeApi: ASCBaseApi {
     }
 
     private var manager: Alamofire.Session = Session()
+    private var additionalManagers: [UUID : Alamofire.Session] = [:]
 
     override init () {
         super.init()
@@ -404,6 +405,9 @@ class ASCOnlyOfficeApi: ASCBaseApi {
 
             let downloadManager = ASCOnlyOfficeApi.createInternalSessionManager(timeoutInterval: 36000)
 
+            let uuid = UUID()
+            additionalManagers[uuid] = downloadManager
+            
             downloadManager.download(
                 portalUrl,
                 method: .get,
@@ -419,7 +423,7 @@ class ASCOnlyOfficeApi: ASCBaseApi {
                         processing(progress.fractionCompleted, nil, nil, nil)
                     })
                 }
-                .responseData { response in
+                .responseData { [weak self] response in
                     _ = downloadManager
                     print(response)
                     DispatchQueue.main.async(execute: {
@@ -429,6 +433,7 @@ class ASCOnlyOfficeApi: ASCBaseApi {
                         case let .failure(error):
                             processing(1.0, nil, error, response)
                         }
+                        self?.additionalManagers[uuid] = nil
                     })
             }            
         }
@@ -478,6 +483,10 @@ class ASCOnlyOfficeApi: ASCBaseApi {
             urlComponents.queryItems = queryItems
             
             if let uploadUrl = urlComponents.url {
+                
+                let uuid = UUID()
+                additionalManagers[uuid] = uploadManager
+                
                 uploadManager.upload(data, to: uploadUrl, method: method, headers: headers)
                     .uploadProgress { progress in
                         DispatchQueue.main.async(execute: {
@@ -485,7 +494,7 @@ class ASCOnlyOfficeApi: ASCBaseApi {
                             processing(progress.fractionCompleted, nil, nil, nil)
                         })
                 }
-                .responseJSON { response in
+                .responseJSON { [weak self] response in
                     DispatchQueue.main.async(execute: {
                         _ = uploadManager
                         
@@ -509,6 +518,8 @@ class ASCOnlyOfficeApi: ASCBaseApi {
                             }
                             log.error(response)
                         }
+                        
+                        self?.additionalManagers[uuid] = nil
                     })
                 }
             }
@@ -546,6 +557,13 @@ class ASCOnlyOfficeApi: ASCBaseApi {
     static public func cancelAllTasks() {
         ASCOnlyOfficeApi.shared.manager.session.getAllTasks { tasks in
             tasks.forEach { $0.cancel() }
+        }
+        
+        for (key, value) in ASCOnlyOfficeApi.shared.additionalManagers {
+            value.session.getAllTasks { tasks in
+                tasks.forEach { $0.cancel() }
+            }
+            ASCOnlyOfficeApi.shared.additionalManagers[key] = nil
         }
     }
 

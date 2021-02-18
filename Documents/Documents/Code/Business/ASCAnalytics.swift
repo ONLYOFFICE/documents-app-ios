@@ -8,6 +8,7 @@
 
 import Foundation
 import Firebase
+import FirebaseAnalytics
 
 final class ASCAnalytics {
     class func logEvent(_ event: String, parameters: [String : Any]? = nil) {

@@ -8,11 +8,15 @@
 
 import Foundation
 
-enum ASCFileStatus: Int {
-    case none               = 0x0
-    case isEditing          = 0x1
-    case isNew              = 0x2
-    case isConverting       = 0x4
-    case isOriginal         = 0x8
-    case backup             = 0x10
+struct ASCFileStatus: OptionSet {
+    let rawValue: Int
+    
+    static let none               = ASCFileStatus([])
+    static let isEditing          = ASCFileStatus(rawValue: 0x1)
+    static let isNew              = ASCFileStatus(rawValue: 0x2)
+    static let isConverting       = ASCFileStatus(rawValue: 0x4)
+    static let isOriginal         = ASCFileStatus(rawValue: 0x8)
+    static let isEditingAlone     = ASCFileStatus(rawValue: 0x10)
+    static let isFavorite         = ASCFileStatus(rawValue: 0x20)
+    static let isTemplate         = ASCFileStatus(rawValue: 0x40)
 }

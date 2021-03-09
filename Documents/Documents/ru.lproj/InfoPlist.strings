@@ -19,8 +19,9 @@
 /* Privacy - Face ID Usage Description */
 "NSFaceIDUsageDescription" = "Этому приложению требуется разрешение на использование Face ID для аутентификации с помощью технологии распознавания лиц.";
 
+/* Privacy - Photo Library Additions Usage Description */
+"NSPhotoLibraryAddUsageDescription" = "Это приложение требует доступа к библиотеке фотографий, для загрузки фотографий из библиотеке фотографий.";
+
 /* Privacy - Photo Library Usage Description */
 "NSPhotoLibraryUsageDescription" = "Это приложение требует доступа к библиотеке фотографий, для загрузки фотографий из библиотеке фотографий.";
 
-/* Privacy - Photo Library Add Usage Description */
-"NSPhotoLibraryAddUsageDescription" = "Это приложение требует доступа к библиотеке фотографий, для загрузки фотографий из библиотеке фотографий.";

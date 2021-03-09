@@ -207,7 +207,7 @@ class ASCAccountsViewController: UIViewController {
         ASCOnlyOfficeApi.cancelAllTasks()
 
         if let baseUrl = account.portal, let token = account.token {
-            var dummyOnlyofficeProvider = ASCOnlyofficeProvider()
+            let dummyOnlyofficeProvider = ASCOnlyofficeProvider()
 
             ASCOnlyOfficeApi.shared.baseUrl = baseUrl
             ASCOnlyOfficeApi.shared.token = token

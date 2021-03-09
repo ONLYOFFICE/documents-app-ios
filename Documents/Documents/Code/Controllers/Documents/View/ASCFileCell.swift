@@ -21,7 +21,6 @@ class ASCFileCell: MGSwipeTableCell {
     @IBOutlet weak var separaterLabel: UILabel!
     @IBOutlet weak var icon: UIImageView!
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
-    @IBOutlet weak var statusImageView: UIImageView!
     
     var file: ASCFile? = nil {
         didSet {
@@ -81,15 +80,24 @@ class ASCFileCell: MGSwipeTableCell {
         }
         
         /// Status info
-        statusImageView?.isHidden = true
         
         if #available(iOS 13.0, *) {
-            if fileInfo.fileStatus == .isEditing {
-                statusImageView?.isHidden = false
-                statusImageView?.image = UIImage(
+            if fileInfo.isEditing {
+                let editImage = UIImage(
                     systemName: "pencil",
-                    withConfiguration: UIImage.SymbolConfiguration(weight: .black)
-                )
+                    withConfiguration: UIImage.SymbolConfiguration(font: UIFont.systemFont(ofSize: 13, weight: .black))
+                )?.withTintColor(ASCConstants.Colors.brend, renderingMode: .alwaysOriginal) ?? UIImage()
+                
+                title?.addTrailing(image: editImage)
+            }
+            
+            if fileInfo.isFavorite {
+                let favoriteImage = UIImage(
+                    systemName: "star.fill",
+                    withConfiguration: UIImage.SymbolConfiguration(font: UIFont.systemFont(ofSize: 13, weight: .medium))
+                )?.withTintColor(ASCConstants.Colors.brend, renderingMode: .alwaysOriginal) ?? UIImage()
+                
+                title?.addTrailing(image: favoriteImage)
             }
         }
         

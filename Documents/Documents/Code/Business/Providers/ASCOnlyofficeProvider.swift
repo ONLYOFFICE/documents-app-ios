@@ -459,7 +459,7 @@ class ASCOnlyofficeProvider: ASCBaseFileProvider {
             if  let providerFolder = entities.first(where: { $0.id == cloudFolderId }) as? ASCFolder,
                 let providerId = providerFolder.providerId
             {
-                operationQueue.addOperation { [weak self] in
+                operationQueue.addOperation {
                     let semaphore = DispatchSemaphore(value: 0)
                     let thirdPartyPath = NSString(string: ASCOnlyOfficeApi.apiThirdParty).appendingPathComponent(providerId)
 

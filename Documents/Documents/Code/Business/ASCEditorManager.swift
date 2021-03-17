@@ -376,8 +376,9 @@ class ASCEditorManager: NSObject, DEEditorDelegate, SEEditorDelegate, PEEditorDe
                         let allowEdit = (permissions["edit"] as? Bool) ?? false
                         let allowReview = (permissions["review"] as? Bool) ?? false
                         let allowComment = (permissions["comment"] as? Bool) ?? false
+                        let allowFillForms = (permissions["fillForms"] as? Bool) ?? false
                         
-                        let canEdit = (allowEdit || (!allowEdit && allowReview) || (!allowEdit && allowComment)) && !viewMode
+                        let canEdit = (allowEdit || (!allowEdit && (allowReview || allowComment || allowFillForms))) && !viewMode
                         
                         if let _ = self.documentKeyForTrack, let _ = self.documentURLForTrack {
                             handler(canEdit, nil)

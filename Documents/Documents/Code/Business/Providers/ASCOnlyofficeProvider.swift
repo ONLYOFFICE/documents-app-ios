@@ -836,7 +836,7 @@ class ASCOnlyofficeProvider: ASCFileProviderProtocol & ASCSortableFileProviderPr
         }
 
         switch (access) {
-        case .none, .readWrite, .review, .comment:
+        case .none, .readWrite, .review, .comment, .fillforms:
             return true
         default:
             return false

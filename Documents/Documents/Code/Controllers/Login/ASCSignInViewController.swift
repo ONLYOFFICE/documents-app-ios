@@ -65,9 +65,13 @@ class ASCSignInViewController: UIViewController, UITextFieldDelegate {
         }
 
         let ssoUrl = capabilities?.ssoUrl ?? ""
-        let ssoLabel = capabilities?.ssoLabel ?? NSLocalizedString("Single Sign-on", comment: "")
+        var ssoLabel = capabilities?.ssoLabel ?? ""
+            
+        if ssoLabel.isEmpty {
+            ssoLabel = NSLocalizedString("Single Sign-on", comment: "")
+        }
         
-        if ssoUrl.length < 1 {
+        if ssoUrl.isEmpty {
             ssoButton?.removeFromSuperview()
         } else {
             ssoButton.setTitle(

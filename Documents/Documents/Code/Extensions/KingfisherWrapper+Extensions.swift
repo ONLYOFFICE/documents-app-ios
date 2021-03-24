@@ -19,7 +19,7 @@ extension KingfisherWrapper where Base: KFCrossPlatformImageView {
         progressBlock: DownloadProgressBlock? = nil,
         completionHandler: ((Swift.Result<RetrieveImageResult, KingfisherError>) -> Void)? = nil) -> DownloadTask?
     {
-        guard let provider = provider as? ASCBaseFileProvider else { return nil }
+        guard let provider = provider as? ASCFileProviderProtocol else { return nil }
         
         let defaultTimeout: TimeInterval = 15
         let modifier = AnyModifier { request in
@@ -34,7 +34,7 @@ extension KingfisherWrapper where Base: KFCrossPlatformImageView {
 
         var localOptions = options ?? [.transition(.fade(0.3))]
         
-        if let _ = provider as? ASCOnlyofficeProvider {
+        if provider is ASCOnlyofficeProvider {
             if let baseUrl = ASCOnlyOfficeApi.shared.baseUrl,
                 let resource = resource,
                 URL(string: baseUrl)?.host == resource.downloadURL.host

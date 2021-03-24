@@ -11,7 +11,7 @@ import Alamofire
 import FileKit
 import Firebase
 
-class ASCOnlyofficeProvider: ASCBaseFileProvider {
+class ASCOnlyofficeProvider: ASCFileProviderProtocol & ASCSortableFileProviderProtocol {
     var id: String? {
         get {
             if
@@ -61,6 +61,9 @@ class ASCOnlyofficeProvider: ASCBaseFileProvider {
 
     var delegate: ASCProviderDelegate?
     
+    internal var folder: ASCFolder?
+    internal var fetchInfo: [String : Any?]?
+    
     init() {
         reset()
         api.baseUrl = nil
@@ -74,7 +77,7 @@ class ASCOnlyofficeProvider: ASCBaseFileProvider {
         api.token = token
     }
 
-    func copy() -> ASCBaseFileProvider {
+    func copy() -> ASCFileProviderProtocol {
         let copy = ASCOnlyofficeProvider(baseUrl: api.baseUrl ?? "", token: api.token ?? "")
         
         copy.items = items
@@ -153,6 +156,21 @@ class ASCOnlyofficeProvider: ASCBaseFileProvider {
             api.expires = dateTransform.transformFromJSON(json["expires"])
         }
     }
+    
+    func add(item: ASCEntity, at index: Int) {
+        items.insert(item, at: index)
+        total += 1
+    }
+    
+    func add(items: [ASCEntity], at index: Int) {
+        self.items.insert(contentsOf: items, at: index)
+        self.total += items.count
+    }
+    
+    func remove(at index: Int) {
+        items.remove(at: index)
+        total -= 1
+    }
 
     /// Fetch an user information
     ///
@@ -226,6 +244,8 @@ class ASCOnlyofficeProvider: ASCBaseFileProvider {
     ///   - parameters: dictionary of settings for searching and sorting or any other information
     ///   - completeon: a closure with result of directory entries or error
     func fetch(for folder: ASCFolder, parameters: [String: Any?], completeon: ASCProviderCompletionHandler?) {
+        self.folder = folder
+        
         let fetch: ((_ completeon: ASCProviderCompletionHandler?) -> Void) = { [weak self] completeon in
             guard let strongSelf = self else { return }
 
@@ -243,6 +263,9 @@ class ASCOnlyofficeProvider: ASCBaseFileProvider {
             }
 
             /// Sort
+            
+            strongSelf.fetchInfo = parameters
+            
             if let sort = parameters["sort"] as? [String: Any] {
                 if let sortBy = sort["type"] as? String, sortBy.length > 0 {
                     params["sortBy"] = sortBy
@@ -326,6 +349,18 @@ class ASCOnlyofficeProvider: ASCBaseFileProvider {
                 }
             }
         }
+    }
+    
+    /// Sort records
+    ///
+    /// - Parameters:
+    ///   - completeon: a closure with result of sort entries or error
+    func updateSort(completeon: ASCProviderCompletionHandler?) {
+        if let sortInfo = fetchInfo?["sort"] as? [String : Any] {
+            sort(by: sortInfo, entities: &items)
+            total = items.count
+        }
+        completeon?(self, folder, true, nil)
     }
 
     func rename(_ entity: ASCEntity, to newName: String, completeon: ASCProviderCompletionHandler?) {
@@ -723,7 +758,7 @@ class ASCOnlyofficeProvider: ASCBaseFileProvider {
                                         handler?(.end, 1, nil, nil, &cancel)
                                     } else {
                                         Thread.sleep(forTimeInterval: 1)
-                                        checkOperation?();
+                                        checkOperation?()
                                     }
                                 } else {
                                     handler?(.error, 1, nil, NSLocalizedString("Unknown API response.", comment: ""), &cancel)
@@ -801,7 +836,7 @@ class ASCOnlyofficeProvider: ASCBaseFileProvider {
         }
 
         switch (access) {
-        case .none, .readWrite, .review, .comment:
+        case .none, .readWrite, .review, .comment, .fillforms:
             return true
         default:
             return false
@@ -829,7 +864,7 @@ class ASCOnlyofficeProvider: ASCBaseFileProvider {
             return false
         }
 
-        var access = (file != nil) ? file?.access : folder?.access;
+        var access = (file != nil) ? file?.access : folder?.access
 
         if folder != nil && folder?.id == parentFolder?.id {
             access = parentFolder?.access
@@ -872,7 +907,7 @@ class ASCOnlyofficeProvider: ASCBaseFileProvider {
             return false
         }
 
-        var access = (file != nil) ? file?.access : folder?.access;
+        var access = (file != nil) ? file?.access : folder?.access
 
         if folder != nil && folder?.id == parentFolder?.id {
             access = parentFolder?.access

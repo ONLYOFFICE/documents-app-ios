@@ -23,10 +23,10 @@ class ASCTransferNavigationController: ASCBaseNavigationController {
     static let identifier = String(describing: ASCTransferNavigationController.self)
 
     var transferType: ASCTransferType = .copy
-    var sourceProvider: ASCBaseFileProvider?
+    var sourceProvider: ASCFileProviderProtocol?
     var sourceFolder: ASCFolder?
     var sourceItems: [ASCEntity]?
-    var doneHandler: ((ASCBaseFileProvider?, ASCFolder?) -> Void)?
+    var doneHandler: ((ASCFileProviderProtocol?, ASCFolder?) -> Void)?
     
     
     override func viewDidLoad() {

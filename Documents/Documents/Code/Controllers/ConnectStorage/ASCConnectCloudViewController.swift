@@ -14,7 +14,7 @@ class ASCConnectCloudViewController: UITableViewController {
 
     // MARK: - Properies
 
-    var complation: ((ASCBaseFileProvider) -> Void)?
+    var complation: ((ASCFileProviderProtocol) -> Void)?
 
     fileprivate let providerName: ((_ type: ASCFileProviderType) -> String) = { type in
         switch type {
@@ -156,7 +156,7 @@ class ASCConnectCloudViewController: UITableViewController {
         }
     }
 
-    private func checkProvider(info: [String: Any], complation: @escaping ((_ success: Bool, _ provider: ASCBaseFileProvider?) -> Void)) {
+    private func checkProvider(info: [String: Any], complation: @escaping ((_ success: Bool, _ provider: ASCFileProviderProtocol?) -> Void)) {
         guard let providerKey = info["providerKey"] as? String,
             let provider = ASCFolderProviderType(rawValue: providerKey)
         else {
@@ -206,7 +206,7 @@ class ASCConnectCloudViewController: UITableViewController {
         }
     }
 
-    private func checkGoogleDriveProvider(info: [String: Any], complation: @escaping ((_ success: Bool, _ provider: ASCBaseFileProvider?) -> Void)) {
+    private func checkGoogleDriveProvider(info: [String: Any], complation: @escaping ((_ success: Bool, _ provider: ASCFileProviderProtocol?) -> Void)) {
         guard
             let user = info["user"] as? Data
         else {
@@ -223,7 +223,7 @@ class ASCConnectCloudViewController: UITableViewController {
         }
     }
 
-    private func checkDropboxProvider(info: [String: Any], complation: @escaping ((_ success: Bool, _ provider: ASCBaseFileProvider?) -> Void)) {
+    private func checkDropboxProvider(info: [String: Any], complation: @escaping ((_ success: Bool, _ provider: ASCFileProviderProtocol?) -> Void)) {
         guard
             let token = info["token"] as? String
         else {
@@ -241,7 +241,7 @@ class ASCConnectCloudViewController: UITableViewController {
         }
     }
     
-    private func checkNextCloudProvider(info: [String: Any], complation: @escaping ((_ success: Bool, _ provider: ASCBaseFileProvider?) -> Void)) {
+    private func checkNextCloudProvider(info: [String: Any], complation: @escaping ((_ success: Bool, _ provider: ASCFileProviderProtocol?) -> Void)) {
         guard
             let portal = info["url"] as? String,
             let login = info["login"] as? String,
@@ -262,7 +262,7 @@ class ASCConnectCloudViewController: UITableViewController {
         }
     }
 
-    private func checkOwnCloudProvider(info: [String: Any], complation: @escaping ((_ success: Bool, _ provider: ASCBaseFileProvider?) -> Void)) {
+    private func checkOwnCloudProvider(info: [String: Any], complation: @escaping ((_ success: Bool, _ provider: ASCFileProviderProtocol?) -> Void)) {
         guard
             let portal = info["url"] as? String,
             let login = info["login"] as? String,
@@ -283,7 +283,7 @@ class ASCConnectCloudViewController: UITableViewController {
         }
     }
 
-    private func checkYandexCloudProvider(info: [String: Any], complation: @escaping ((_ success: Bool, _ provider: ASCBaseFileProvider?) -> Void)) {
+    private func checkYandexCloudProvider(info: [String: Any], complation: @escaping ((_ success: Bool, _ provider: ASCFileProviderProtocol?) -> Void)) {
         guard
             let login = info["login"] as? String,
             let password = info["password"] as? String
@@ -308,7 +308,7 @@ class ASCConnectCloudViewController: UITableViewController {
         }
     }
 
-    private func checkWebDavProvider(info: [String: Any], complation: @escaping ((_ success: Bool, _ provider: ASCBaseFileProvider?) -> Void)) {
+    private func checkWebDavProvider(info: [String: Any], complation: @escaping ((_ success: Bool, _ provider: ASCFileProviderProtocol?) -> Void)) {
         guard
             let portal = info["url"] as? String,
             let login = info["login"] as? String,

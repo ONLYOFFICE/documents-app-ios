@@ -66,7 +66,7 @@ class ASCNextCloudProvider: ASCWebDAVProvider {
         api?.password = credential.password
     }
 
-    override func copy() -> ASCBaseFileProvider {
+    override func copy() -> ASCFileProviderProtocol {
         let copy = ASCNextCloudProvider()
         
         copy.items = items

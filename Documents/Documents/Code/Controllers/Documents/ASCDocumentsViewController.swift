@@ -30,7 +30,7 @@ class ASCDocumentsViewController: UITableViewController, UIGestureRecognizerDele
         }
     }
 
-    var provider: ASCBaseFileProvider? {
+    var provider: ASCFileProviderProtocol? {
         didSet {
             if var provider = provider {
                 provider.delegate = self
@@ -40,12 +40,22 @@ class ASCDocumentsViewController: UITableViewController, UIGestureRecognizerDele
     
     // MARK: - Private
 
-    private var total: Int = 0
-    private var tableData:[ASCEntity] = [] {
-        didSet {
-            tableView.reloadData()
+    private var total: Int {
+        get {
+            return provider?.total ?? 0
         }
     }
+    
+    private var tableData:[ASCEntity] {
+        get {
+            return provider?.items ?? []
+        }
+    }
+//    private var tableData:[ASCEntity] = [] {
+//        didSet {
+//            tableView.reloadData()
+//        }
+//    }
 
     private var selectedIds: Set<String> = []
     private let kPageLoadingCellTag = 7777
@@ -307,14 +317,15 @@ class ASCDocumentsViewController: UITableViewController, UIGestureRecognizerDele
     func reset() {
         ASCFileManager.reset()
 
-        total = 0
+        provider?.reset()
+//        total = 0
         folder = nil
         title = nil
         
         loadingView.removeFromSuperview()
         emptyView.removeFromSuperview()
 
-        tableData.removeAll()
+//        tableData.removeAll()
         tableView.reloadData()
     }
     
@@ -357,20 +368,28 @@ class ASCDocumentsViewController: UITableViewController, UIGestureRecognizerDele
 //    }
 
     func add(entity: Any, open: Bool = true) {
+        guard var provider = provider else { return }
+        
         if let file = entity as? ASCFile {
-            tableData.insert(file, at: 0)
-            total += 1
-
-            delay(seconds: 0.3) { [weak self] in
-                if let index = self?.tableData.firstIndex(where: { $0.id == file.id }) {
-                    if self?.featureLargeTitle ?? false {
-                        self?.searchController.searchBar.isHidden = false
+            provider.items.append(file)
+            
+            provider.updateSort { provider, currentFolder, success, error in
+//                self.total        = provider.total
+//                self.tableData    = provider.items
+                self.tableView.reloadData()
+                self.showEmptyView(self.total < 1)
+                
+                if let index = self.tableData.firstIndex(where: { $0.id == file.id }) {
+                    if ASCConstants.Feature.hideSearchbarIfEmpty {
+                        self.searchController.searchBar.isHidden = false
                     }
-                    self?.tableView.scrollToRow(at: IndexPath(row: index, section: 0), at: .middle, animated: true)
-                    self?.tableView.setNeedsLayout()
-
-                    if let newCell = self?.tableView.cellForRow(at: IndexPath(row: index, section: 0)) {
-                        self?.highlight(cell: newCell)
+                    self.tableView.scrollToRow(at: IndexPath(row: index, section: 0), at: .middle, animated: true)
+                    self.tableView.setNeedsLayout()
+                    
+                    delay(seconds: 0.3) { [weak self] in
+                        if let newCell = self?.tableView.cellForRow(at: IndexPath(row: index, section: 0)) {
+                            self?.highlight(cell: newCell)
+                        }
                     }
                 }
             }
@@ -383,22 +402,32 @@ class ASCDocumentsViewController: UITableViewController, UIGestureRecognizerDele
                 let isPresentation = fileExt == "pptx"
                 
                 if isDocument || isSpreadsheet || isPresentation {
-                    provider?.open(file: file, viewMode: false)
+                    provider.open(file: file, viewMode: false)
                 }
             }
         } else if let folder = entity as? ASCFolder {
-            tableData.insert(folder, at: 0)
-            total += 1
-
-            if featureLargeTitle {
-                searchController.searchBar.isHidden = false
-            }
-            tableView.scrollToRow(at: IndexPath(row: 0, section: 0), at: .middle, animated: true)
-            tableView.setNeedsLayout()
+            provider.items.append(folder)
             
-            delay(seconds: 0.3) { [weak self] in
-                if let newCell = self?.tableView.cellForRow(at: IndexPath(row: 0, section: 0)) {
-                    self?.highlight(cell: newCell)
+            provider.updateSort { provider, currentFolder, success, error in
+//                self.total        = provider.total
+//                self.tableData    = provider.items
+                self.tableView.reloadData()
+
+                self.showEmptyView(self.total < 1)
+                
+                if let index = self.tableData.firstIndex(where: { $0.uid == folder.uid }) {
+                    if ASCConstants.Feature.hideSearchbarIfEmpty {
+                        self.searchController.searchBar.isHidden = false
+                    }
+                    
+                    self.tableView.scrollToRow(at: IndexPath(row: index, section: 0), at: .middle, animated: true)
+                    self.tableView.setNeedsLayout()
+                    
+                    delay(seconds: 0.3) { [weak self] in
+                        if let newCell = self?.tableView.cellForRow(at: IndexPath(row: index, section: 0)) {
+                            self?.highlight(cell: newCell)
+                        }
+                    }
                 }
             }
         }
@@ -536,12 +565,18 @@ class ASCDocumentsViewController: UITableViewController, UIGestureRecognizerDele
     // MARK: - Private
 
     private func configureNavigationBar(animated: Bool = true) {
-        addBarButton = addBarButton ?? ASCStyles.createBarButton(image: UIImage(named: "nav-add"), target: self, action:#selector(onAddEntityAction))
-        sortSelectBarButton = sortSelectBarButton ?? ASCStyles.createBarButton(image: UIImage(named: "nav-more"), target: self, action:#selector(onSortSelectAction))
-        sortBarButton = sortBarButton ?? ASCStyles.createBarButton(image: UIImage(named: "nav-sort"), target: self, action: #selector(onSortAction))
-        selectBarButton = selectBarButton ?? ASCStyles.createBarButton(image: UIImage(named: "nav-select"), target: self, action: #selector(onSelectAction))
-        cancelBarButton = cancelBarButton ?? ASCStyles.createBarButton(title: NSLocalizedString("Cancel", comment: "Button title"), target: self, action: #selector(onCancelAction))
-        selectAllBarButton = selectAllBarButton ?? ASCStyles.createBarButton(title: NSLocalizedString("Select", comment: "Button title"), target: self, action: #selector(onSelectAll))
+        addBarButton = addBarButton
+            ?? ASCStyles.createBarButton(image: UIImage(named: "nav-add"), target: self, action:#selector(onAddEntityAction))
+        sortSelectBarButton = sortSelectBarButton
+            ?? ASCStyles.createBarButton(image: UIImage(named: "nav-more"), target: self, action:#selector(onSortSelectAction))
+        sortBarButton = sortBarButton
+            ?? ASCStyles.createBarButton(image: UIImage(named: "nav-sort"), target: self, action: #selector(onSortAction))
+        selectBarButton = selectBarButton
+            ?? ASCStyles.createBarButton(image: UIImage(named: "nav-select"), target: self, action: #selector(onSelectAction))
+        cancelBarButton = cancelBarButton
+            ?? ASCStyles.createBarButton(title: NSLocalizedString("Cancel", comment: "Button title"), target: self, action: #selector(onCancelAction))
+        selectAllBarButton = selectAllBarButton
+            ?? ASCStyles.createBarButton(title: NSLocalizedString("Select", comment: "Button title"), target: self, action: #selector(onSelectAll))
         
         addBarButton?.isEnabled = provider?.allowEdit(entity: folder) ?? false
         sortSelectBarButton?.isEnabled = total > 0
@@ -770,11 +805,12 @@ class ASCDocumentsViewController: UITableViewController, UIGestureRecognizerDele
             ]
         }
 
-        ASCFileManager.localProvider.fetch(for: folder, parameters: params) { [weak self] provider, folder, success, error in
+        provider?.fetch(for: folder, parameters: params) { [weak self] provider, folder, success, error in
             guard let strongSelf = self else { return }
 
-            strongSelf.total        = provider.total
-            strongSelf.tableData    = provider.items
+//            strongSelf.total        = provider.total
+//            strongSelf.tableData    = provider.items
+            strongSelf.tableView.reloadData()
 
             strongSelf.showEmptyView(strongSelf.total < 1)
 
@@ -827,8 +863,9 @@ class ASCDocumentsViewController: UITableViewController, UIGestureRecognizerDele
 
                 if success || isCanceled {
                     strongSelf.folder       = folder
-                    strongSelf.total        = provider.total
-                    strongSelf.tableData    = provider.items
+//                    strongSelf.total        = provider.total
+//                    strongSelf.tableData    = provider.items
+                    strongSelf.tableView.reloadData()
                     
                     strongSelf.showEmptyView(strongSelf.total < 1)
                 } else {
@@ -853,6 +890,10 @@ class ASCDocumentsViewController: UITableViewController, UIGestureRecognizerDele
         
         if searchController.isActive {
             searchController.isActive = false
+        }
+        
+        if ASCConstants.Feature.hideSearchbarIfEmpty {
+            searchController.searchBar.isHidden = true
         }
 
         addBarButton?.isEnabled = false // Disable create entity while loading first page
@@ -914,8 +955,10 @@ class ASCDocumentsViewController: UITableViewController, UIGestureRecognizerDele
     }
     
     private func showEmptyView(_ show: Bool) {
-        if !searchController.isActive {
-            searchController.searchBar.isHidden = show
+        if ASCConstants.Feature.hideSearchbarIfEmpty {
+            if !searchController.isActive {
+                searchController.searchBar.isHidden = show
+            }
         }
 
         if !show {
@@ -963,8 +1006,8 @@ class ASCDocumentsViewController: UITableViewController, UIGestureRecognizerDele
                 localEmptyView.frame = CGRect(
                     x: 0,
                     y: 0,
-                    width: tableView.frame.width,
-                    height: tableView.frame.height
+                    width: tableView.width,
+                    height: tableView.height
                 )
                 if let tableView = view as? UITableView {
                     tableView.backgroundView = localEmptyView
@@ -1012,8 +1055,8 @@ class ASCDocumentsViewController: UITableViewController, UIGestureRecognizerDele
         if let file = notification.object as? ASCFile {
             if let path = indexPath(by: file) {
                 
-                if let index = tableData.firstIndex(where: { ($0 as? ASCFile)?.id == file.id } ) {
-                    tableData[index] = file
+                if let index = provider?.items.firstIndex(where: { ($0 as? ASCFile)?.id == file.id } ) {
+                    provider?.items[index] = file
                 }
                 
                 tableView.beginUpdates()
@@ -2331,6 +2374,7 @@ class ASCDocumentsViewController: UITableViewController, UIGestureRecognizerDele
             navigationController?.pushViewController(controller, animated: true)
 
             controller.provider = provider?.copy()
+            controller.provider?.reset()
             controller.folder = folder
             controller.title = folder.title
         } else if let file = tableData[indexPath.row] as? ASCFile, let provider = provider {
@@ -2567,7 +2611,8 @@ class ASCDocumentsViewController: UITableViewController, UIGestureRecognizerDele
                     let folder = entity as? ASCFolder
 
                     if let indexPath = self.tableView.indexPath(for: cell), let entity: ASCEntity = file ?? folder {
-                        self.tableData[indexPath.row] = entity
+//                        self.tableData[indexPath.row] = entity
+                        self.provider?.items[indexPath.row] = entity
                         self.tableView.beginUpdates()
                         self.tableView.reloadRows(at: [indexPath], with: .none)
                         self.tableView.endUpdates()
@@ -2687,7 +2732,8 @@ class ASCDocumentsViewController: UITableViewController, UIGestureRecognizerDele
                     hud?.hide(animated: false, afterDelay: 1.3)
                     
                     if let indexPath = self.tableView.indexPath(for: cell), let file = entity as? ASCFile {
-                        self.tableData[indexPath.row] = file
+//                        self.tableData[indexPath.row] = file
+                        self.provider?.items[indexPath.row] = file
                         self.tableView.beginUpdates()
                         self.tableView.reloadRows(at: [indexPath], with: .fade)
                         self.tableView.endUpdates()
@@ -2807,8 +2853,9 @@ class ASCDocumentsViewController: UITableViewController, UIGestureRecognizerDele
                 hud?.hide(animated: false, afterDelay: 1.3)
                 
                 if let indexPath = self.tableView.indexPath(for: cell), let duplicate = result as? ASCFile {
-                    self.tableData.insert(duplicate, at: indexPath.row)
-                    self.total += 1
+//                    self.tableData.insert(duplicate, at: indexPath.row)
+//                    self.total += 1
+                    self.provider?.add(item: duplicate, at: indexPath.row)
                     self.tableView.reloadData()
                     
                     if let newCell = self.tableView.cellForRow(at: indexPath) {
@@ -3094,8 +3141,9 @@ class ASCDocumentsViewController: UITableViewController, UIGestureRecognizerDele
                 // Remove data
                 for item in entities {
                     if let indexPath = self.indexPath(by: item) {
-                        self.tableData.remove(at: indexPath.row)
-                        self.total -= 1
+//                        self.tableData.remove(at: indexPath.row)
+//                        self.total -= 1
+                        self.provider?.remove(at: indexPath.row)
                     }
                 }
 
@@ -3185,8 +3233,9 @@ class ASCDocumentsViewController: UITableViewController, UIGestureRecognizerDele
                 // Remove data
                 for item in deteteItems {
                     if let indexPath = self.indexPath(by: item) {
-                        self.tableData.remove(at: indexPath.row)
-                        self.total -= 1
+//                        self.tableData.remove(at: indexPath.row)
+//                        self.total -= 1
+                        self.provider?.remove(at: indexPath.row)
                     }
                 }
                 
@@ -3223,8 +3272,9 @@ class ASCDocumentsViewController: UITableViewController, UIGestureRecognizerDele
                 hud?.hide(animated: false, afterDelay: 1.3)
 
                 if self.isTrash(self.folder) {
-                    self.tableData.removeAll()
-                    self.total = 0
+//                    self.tableData.removeAll()
+//                    self.total = 0
+                    self.provider?.reset()
                     self.tableView.reloadData()
                 }
                 
@@ -3426,9 +3476,10 @@ extension ASCDocumentsViewController: UISearchControllerDelegate {
     func didDismissSearchController(_ searchController: UISearchController) {
         ASCOnlyOfficeApi.cancelAllTasks()
 
-        provider?.page = 0
-        total = 0
-        tableData.removeAll()
+//        provider?.page = 0
+//        total = 0
+//        tableData.removeAll()
+        provider?.reset()
         tableView.reloadData()
 
         showLoadingPage(true)
@@ -3589,7 +3640,8 @@ extension ASCDocumentsViewController: ASCProviderDelegate {
                         if let index = strongSelf.tableData.firstIndex(where: { (entity) -> Bool in
                             (entity as? ASCFile)?.id == newFile.id
                         }) {
-                            strongSelf.tableData[index] = newFile
+//                            strongSelf.tableData[index] = newFile
+                            strongSelf.provider?.items[index] = newFile
 
                             let indexPath = IndexPath(row: index, section: 0)
 
@@ -3601,8 +3653,9 @@ extension ASCDocumentsViewController: ASCProviderDelegate {
                                 strongSelf.highlight(cell: updatedCell)
                             }
                         } else {
-                            strongSelf.tableData.insert(newFile, at: 0)
-                            strongSelf.total += 1
+                            strongSelf.provider?.add(item: newFile, at: 0)
+//                            strongSelf.tableData.insert(newFile, at: 0)
+//                            strongSelf.total += 1
                             
                             let updateIndexPath = IndexPath(row: 0, section: 0)
                             strongSelf.tableView.scrollToRow(at: updateIndexPath, at: .top, animated: true)
@@ -3625,6 +3678,16 @@ extension ASCDocumentsViewController: ASCProviderDelegate {
         }
 
         return closeHandler
+    }
+    
+    func updateItems(provider: ASCFileProviderProtocol) {
+//        total = provider.total
+//        tableData = provider.items
+        tableView.reloadData()
+        
+        // TODO: Or search diff and do it animated
+        
+        showEmptyView(total < 1)
     }
 }
 
@@ -3663,7 +3726,7 @@ extension ASCDocumentsViewController: UITableViewDropDelegate {
     func tableView(_ tableView: UITableView, performDropWith coordinator: UITableViewDropCoordinator) {
         var srcFolder: ASCFolder?
         var dstFolder = folder
-        var srcProvider: ASCBaseFileProvider?
+        var srcProvider: ASCFileProviderProtocol?
         let dstProvider = provider
         var srcProviderId: String?
         var items: [ASCEntity] = []
@@ -3767,8 +3830,9 @@ extension ASCDocumentsViewController: UITableViewDropDelegate {
 
                                 // Append new items to destination controller
                                 if let newItems = newItems, dstFolder.id == strongSelf.folder?.id {
-                                    strongSelf.tableData.insert(contentsOf: newItems, at: 0)
-                                    strongSelf.total += newItems.count
+                                    strongSelf.provider?.add(items: newItems, at: 0)
+//                                    strongSelf.tableData.insert(contentsOf: newItems, at: 0)
+//                                    strongSelf.total += newItems.count
                                     strongSelf.tableView.reloadData()
 
                                     for index in 0..<newItems.count {
@@ -3785,8 +3849,9 @@ extension ASCDocumentsViewController: UITableViewDropDelegate {
                                 {
                                     for item in items {
                                         if let index = srcDocumentsVC.tableData.firstIndex(where: { $0.id == item.id }) {
-                                            srcDocumentsVC.tableData.remove(at: index)
-                                            srcDocumentsVC.total -= 1
+                                            srcDocumentsVC.provider?.remove(at: index)
+//                                            srcDocumentsVC.tableData.remove(at: index)
+//                                            srcDocumentsVC.total -= 1
                                         }
                                     }
                                     srcDocumentsVC.tableView?.reloadData()
@@ -3842,8 +3907,9 @@ extension ASCDocumentsViewController: UITableViewDropDelegate {
                                     // Remove data
                                     for item in entities {
                                         if let indexPath = strongSelf.indexPath(by: item) {
-                                            strongSelf.tableData.remove(at: indexPath.row)
-                                            strongSelf.total -= 1
+                                            strongSelf.provider?.remove(at: indexPath.row)
+//                                            strongSelf.tableData.remove(at: indexPath.row)
+//                                            strongSelf.total -= 1
                                         }
                                     }
 

@@ -13,5 +13,5 @@ class ASCCategory {
     var subtitle: String?
     var image: UIImage?
     var folder: ASCFolder?
-    var provider: ASCBaseFileProvider?
+    var provider: ASCFileProviderProtocol?
 }

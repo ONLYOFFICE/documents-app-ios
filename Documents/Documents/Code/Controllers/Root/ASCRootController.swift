@@ -95,7 +95,7 @@ class ASCRootController: UITabBarController {
         }
     }
     
-    func display(provider: ASCBaseFileProvider?, folder: ASCFolder?) {
+    func display(provider: ASCFileProviderProtocol?, folder: ASCFolder?) {
         guard let provider = provider else { return }
         
         if provider.type == .local {

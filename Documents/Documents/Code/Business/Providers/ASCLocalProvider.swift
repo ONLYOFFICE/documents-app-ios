@@ -10,7 +10,7 @@ import UIKit
 import FileKit
 import Firebase
 
-class ASCLocalProvider: ASCBaseFileProvider {
+class ASCLocalProvider: ASCFileProviderProtocol & ASCSortableFileProviderProtocol {
     var id: String? {
         get {
             return "device"
@@ -34,6 +34,9 @@ class ASCLocalProvider: ASCBaseFileProvider {
     }
 
     var delegate: ASCProviderDelegate?
+    
+    internal var folder: ASCFolder?
+    internal var fetchInfo: [String : Any?]?
 
     fileprivate lazy var deviceUser: ASCUser = {
         let owner = ASCUser()
@@ -49,10 +52,10 @@ class ASCLocalProvider: ASCBaseFileProvider {
         return $0
     }(ASCFolder())
 
-    func copy() -> ASCBaseFileProvider {
+    func copy() -> ASCFileProviderProtocol {
         let copy = ASCLocalProvider()
         
-        copy.items = items
+        copy.items = items.map { $0 }
         copy.page = page
         copy.total = total
         copy.delegate = delegate
@@ -66,6 +69,21 @@ class ASCLocalProvider: ASCBaseFileProvider {
         items.removeAll()
     }
 
+    func add(item: ASCEntity, at index: Int) {
+        items.insert(item, at: index)
+        total += 1
+    }
+    
+    func add(items: [ASCEntity], at index: Int) {
+        self.items.insert(contentsOf: items, at: index)
+        self.total += items.count
+    }
+    
+    func remove(at index: Int) {
+        items.remove(at: index)
+        total -= 1
+    }
+    
     /// Fetch an user information
     ///
     /// - Parameter completeon: a closure with result of user or error
@@ -84,6 +102,8 @@ class ASCLocalProvider: ASCBaseFileProvider {
         var files = [ASCFile]()
         let paths = ASCLocalFileHelper.shared.entityList(Path(folder.id))
 
+        self.folder = folder
+        
         for path in paths {
             let owner = ASCUser()
             owner.displayName = UIDevice.displayName
@@ -137,6 +157,8 @@ class ASCLocalProvider: ASCBaseFileProvider {
         }
 
         // Sort
+        fetchInfo = parameters
+        
         if let sortInfo = parameters["sort"] as? [String: Any] {
             sort(by: sortInfo, folders: &folders, files: &files)
         }
@@ -175,39 +197,15 @@ class ASCLocalProvider: ASCBaseFileProvider {
     /// Sort records
     ///
     /// - Parameters:
-    ///   - info: Sort information as dictinory
-    ///   - folders: Sorted folders
-    ///   - files: Sorted files
-    private func sort(by info: [String: Any], folders: inout [ASCFolder], files: inout [ASCFile]) {
-        let sortBy      = info["type"] as? String ?? "title"
-        let sortOrder   = info["order"] as? String ?? "ascending"
-
-        if sortBy == "title" {
-            folders = sortOrder == "ascending"
-                ? folders.sorted { $0.title < $1.title }
-                : folders.sorted { $0.title > $1.title }
-            files = sortOrder == "ascending"
-                ? files.sorted { $0.title < $1.title }
-                : files.sorted { $0.title > $1.title }
-        } else if sortBy == "type" {
-            files = sortOrder == "ascending"
-                ? files.sorted { $0.title.fileExtension().lowercased() < $1.title.fileExtension().lowercased() }
-                : files.sorted { $0.title.fileExtension().lowercased() > $1.title.fileExtension().lowercased() }
-        } else if sortBy == "dateandtime" {
-            let nowDate = Date()
-            folders = sortOrder == "ascending"
-                ? folders.sorted { $0.created ?? nowDate < $1.created ?? nowDate }
-                : folders.sorted { $0.created ?? nowDate > $1.created ?? nowDate }
-            files = sortOrder == "ascending"
-                ? files.sorted { $0.updated ?? nowDate < $1.updated ?? nowDate }
-                : files.sorted { $0.updated ?? nowDate > $1.updated ?? nowDate }
-        } else if sortBy == "size" {
-            files = sortOrder == "ascending"
-                ? files.sorted { $0.pureContentLength < $1.pureContentLength }
-                : files.sorted { $0.pureContentLength > $1.pureContentLength }
+    ///   - completeon: a closure with result of sort entries or error
+    func updateSort(completeon: ASCProviderCompletionHandler?) {
+        if let sortInfo = fetchInfo?["sort"] as? [String : Any] {
+            sort(by: sortInfo, entities: &items)
+            total = items.count
         }
+        completeon?(self, folder, true, nil)
     }
-
+    
     func download(_ path: String, to destinationURL: URL, processing: @escaping ASCApiProgressHandler) {
         processing(0, nil, nil, nil)
 
@@ -369,11 +367,10 @@ class ASCLocalProvider: ASCBaseFileProvider {
             // Localize empty template
             if fileExtension == "xlsx" || fileExtension == "pptx" {
                 let prefix = "empty-"
-                let avalibleLang = ["EN", "RU", "FR", "DE", "ES", "CS"]
-                var regionCode = (Locale.preferredLanguages.first ?? "EN")[0..<2].uppercased()
+                var regionCode = (Locale.preferredLanguages.first ?? ASCConstants.Locale.defaultLangCode)[0..<2].uppercased()
 
-                if !avalibleLang.contains(regionCode) {
-                    regionCode = "EN"
+                if !ASCConstants.Locale.avalibleLangCodes.contains(regionCode) {
+                    regionCode = ASCConstants.Locale.defaultLangCode
                 }
 
                 templateName = (prefix + regionCode).lowercased()
@@ -738,11 +735,3 @@ class ASCLocalProvider: ASCBaseFileProvider {
         }
     }
 }
-
-
-//extension ASCLocalProvider: NSObject, NSCopying {
-//    func copy(with zone: NSZone? = nil) -> Any {
-////        let copy = Person(firstName: firstName, lastName: lastName, age: age)
-//        return UIView()
-//    }
-//}

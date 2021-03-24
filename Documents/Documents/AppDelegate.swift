@@ -219,11 +219,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     private func subscribePromoTopic() {
         let prefix = "ios-documents-promo-"
-        let avalibleLang = ["EN", "RU", "FR", "DE", "ES", "CS"]
-        var regionCode = (Locale.preferredLanguages.first ?? "EN")[0..<2].uppercased()
+        let avalibleLang = ASCConstants.Locale.avalibleLangCodes
+        var regionCode = (Locale.preferredLanguages.first ?? ASCConstants.Locale.defaultLangCode)[0..<2].uppercased()
         
         if !avalibleLang.contains(regionCode) {
-            regionCode = "EN"
+            regionCode = ASCConstants.Locale.defaultLangCode
         }
         
         for code in avalibleLang {

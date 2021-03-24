@@ -62,6 +62,18 @@ target 'Documents' do
   end
 end
 
+target 'Documents-Alpha' do
+  workspace 'ONLYOFFICE-Documents'
+  project 'Documents/Documents.xcodeproj'
+  
+  common_pods
+  
+  pod 'DocumentConverter', :path => '../editors-ios/DocumentConverter.podspec'
+  pod 'SpreadsheetEditor', :path => '../editors-ios/SpreadsheetEditor.podspec'
+  pod 'DocumentEditor', :path => '../editors-ios/DocumentEditor.podspec'
+  pod 'PresentationEditor', :path => '../editors-ios/PresentationEditor.podspec'
+end
+
 target 'Documents-develop' do
   workspace 'ONLYOFFICE-Documents-develop'
   project 'Documents/Documents-develop.xcodeproj'

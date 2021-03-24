@@ -29,7 +29,7 @@ class ASCEntityManager: NSObject, UITextFieldDelegate {
     
     // MARK: - Public
     
-    func createFile(for provider: ASCBaseFileProvider, _ fileExtension: String, in folder: ASCFolder?, handler: ASCEntityHandler? = nil) {
+    func createFile(for provider: ASCFileProviderProtocol, _ fileExtension: String, in folder: ASCFolder?, handler: ASCEntityHandler? = nil) {
         guard let folder = folder else {
             return
         }
@@ -93,7 +93,7 @@ class ASCEntityManager: NSObject, UITextFieldDelegate {
         }
     }
     
-    func createFolder(for provider: ASCBaseFileProvider, in folder: ASCFolder?, handler: ASCEntityHandler? = nil) {
+    func createFolder(for provider: ASCFileProviderProtocol, in folder: ASCFolder?, handler: ASCEntityHandler? = nil) {
         guard let folder = folder else {
             return
         }
@@ -152,7 +152,7 @@ class ASCEntityManager: NSObject, UITextFieldDelegate {
     }
 
     func createFile(
-        for provider: ASCBaseFileProvider,
+        for provider: ASCFileProviderProtocol,
         in folder: ASCFolder?,
         data: Data,
         name: String,
@@ -198,7 +198,7 @@ class ASCEntityManager: NSObject, UITextFieldDelegate {
     }
 
     func createImage(
-        for provider: ASCBaseFileProvider,
+        for provider: ASCFileProviderProtocol,
         in folder: ASCFolder?,
         imageData: Data,
         fileExtension: String,
@@ -241,7 +241,7 @@ class ASCEntityManager: NSObject, UITextFieldDelegate {
         }
     }
     
-    func delete(for provider: ASCBaseFileProvider, entities: [AnyObject], from folder: ASCFolder, handler: ASCEntityHandler? = nil) {
+    func delete(for provider: ASCFileProviderProtocol, entities: [AnyObject], from folder: ASCFolder, handler: ASCEntityHandler? = nil) {
         let fromFolder = folder
 
         handler?(.begin, nil, nil)
@@ -306,7 +306,7 @@ class ASCEntityManager: NSObject, UITextFieldDelegate {
         }
     }
     
-    func delete(for provider: ASCBaseFileProvider, entity: AnyObject?, handler: ASCEntityHandler? = nil) {
+    func delete(for provider: ASCFileProviderProtocol, entity: AnyObject?, handler: ASCEntityHandler? = nil) {
         let file = entity as? ASCFile
         let folder = entity as? ASCFolder
 //        let parentFolder = file?.parent ?? folder?.parent
@@ -377,7 +377,7 @@ class ASCEntityManager: NSObject, UITextFieldDelegate {
         }
     }
     
-    func rename(for provider: ASCBaseFileProvider, entity: AnyObject?, handler: ASCEntityHandler? = nil) {
+    func rename(for provider: ASCFileProviderProtocol, entity: AnyObject?, handler: ASCEntityHandler? = nil) {
         let file = entity as? ASCFile
         let folder = entity as? ASCFolder
         
@@ -437,7 +437,7 @@ class ASCEntityManager: NSObject, UITextFieldDelegate {
         }
     }
     
-    func favorite(for provider: ASCBaseFileProvider, entity: AnyObject?, favorite: Bool, handler: ASCEntityHandler? = nil) {
+    func favorite(for provider: ASCFileProviderProtocol, entity: AnyObject?, favorite: Bool, handler: ASCEntityHandler? = nil) {
         guard let file = entity as? ASCFile else {
             handler?(.error, nil, NSLocalizedString("Unknown item type.", comment: ""))
             return
@@ -454,7 +454,7 @@ class ASCEntityManager: NSObject, UITextFieldDelegate {
         }
     }
     
-    func download(for provider: ASCBaseFileProvider, entity: AnyObject?, handler: ASCEntityProgressHandler? = nil) {
+    func download(for provider: ASCFileProviderProtocol, entity: AnyObject?, handler: ASCEntityProgressHandler? = nil) {
         var cancel = false
         
         guard let file = entity as? ASCFile else {
@@ -506,7 +506,7 @@ class ASCEntityManager: NSObject, UITextFieldDelegate {
         }
     }
     
-    func downloadTemp(for provider: ASCBaseFileProvider, entity: AnyObject?, handler: ASCEntityProgressHandler? = nil) {
+    func downloadTemp(for provider: ASCFileProviderProtocol, entity: AnyObject?, handler: ASCEntityProgressHandler? = nil) {
         var cancel = false
         
         guard let file = entity as? ASCFile else {
@@ -661,7 +661,7 @@ class ASCEntityManager: NSObject, UITextFieldDelegate {
         }
     }
 
-    func uploadEdit(for provider: ASCBaseFileProvider, file: ASCFile, originalFile: ASCFile, handler: ASCEntityProgressHandler? = nil) {
+    func uploadEdit(for provider: ASCFileProviderProtocol, file: ASCFile, originalFile: ASCFile, handler: ASCEntityProgressHandler? = nil) {
         var cancel = false
 
         handler?(.begin, 0, nil, nil, &cancel)
@@ -745,8 +745,8 @@ class ASCEntityManager: NSObject, UITextFieldDelegate {
         }
     }
 
-    func transfer(from: (items: [ASCEntity], provider: ASCBaseFileProvider),
-                  to: (folder: ASCFolder, provider: ASCBaseFileProvider),
+    func transfer(from: (items: [ASCEntity], provider: ASCFileProviderProtocol),
+                  to: (folder: ASCFolder, provider: ASCFileProviderProtocol),
                   move: Bool = false,
                   handler: @escaping ((_ progress: Float, _ complation: Bool, _ success: Bool, _ newItems: [ASCEntity]?, _ error: Error?, _ cancel: inout Bool) -> Void) )
     {

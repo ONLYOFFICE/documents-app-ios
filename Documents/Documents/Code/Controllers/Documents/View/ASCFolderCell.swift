@@ -81,6 +81,15 @@ class ASCFolderCell: MGSwipeTableCell {
                 break
             }
         }
+        
+        if let rootFolderType = folder?.rootFolderType {
+            switch rootFolderType {
+            case .icloudAll:
+                owner?.text = nil
+            default:
+                break
+            }
+        }
     }
 }
 

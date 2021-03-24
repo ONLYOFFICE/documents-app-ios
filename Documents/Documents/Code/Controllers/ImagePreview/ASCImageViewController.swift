@@ -19,9 +19,9 @@ class ASCImageViewController: MediaBrowser {
     }
     var dismissHandler: (() -> Void)? = nil
 
-    private var fileProvider: ASCBaseFileProvider?
+    private var fileProvider: ASCFileProviderProtocol?
 
-    convenience init(with provider: ASCBaseFileProvider) {
+    convenience init(with provider: ASCFileProviderProtocol) {
         self.init()
 
         fileProvider = provider

@@ -27,7 +27,7 @@ class ASCFileCell: MGSwipeTableCell {
             updateData()
         }
     }
-    var provider: ASCBaseFileProvider?
+    var provider: ASCFileProviderProtocol?
 
     fileprivate lazy var dateFormatter: DateFormatter = {
         let formatter = DateFormatter()
@@ -151,6 +151,15 @@ class ASCFileCell: MGSwipeTableCell {
             icon?.image = UIImage(named: "list-format-pdf")
         } else {
             icon?.image = UIImage(named: "list-format-unknown")
+        }
+        
+        if let rootFolderType = file?.parent?.rootFolderType {
+            switch rootFolderType {
+            case .icloudAll:
+                owner?.text = nil
+            default:
+                break
+            }
         }
     }
 }

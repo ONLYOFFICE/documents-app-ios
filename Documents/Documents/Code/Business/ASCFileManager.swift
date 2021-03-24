@@ -11,14 +11,18 @@ import KeychainSwift
 import FileKit
 
 class ASCFileManager {
-    public static var provider: ASCBaseFileProvider? {
+    public static var provider: ASCFileProviderProtocol? {
         didSet {
             storeCurrentProvider()
         }
     }
     public static var localProvider: ASCLocalProvider = ASCLocalProvider()
     public static var onlyofficeProvider: ASCOnlyofficeProvider?
-    public static var cloudProviders: [ASCBaseFileProvider] = []
+    public static var cloudProviders: [ASCFileProviderProtocol] = [] {
+        didSet {
+            observer.notify(observer)
+        }
+    }
 
     private static var keychain: KeychainSwift {
         get {
@@ -29,6 +33,8 @@ class ASCFileManager {
         }
     }
 
+    public static var observer = Event<Any?>()
+    
     static func reset() {
         provider?.reset()
         localProvider.reset()
@@ -38,7 +44,7 @@ class ASCFileManager {
         }
     }
 
-    static func createProvider(by type: ASCFileProviderType) -> ASCBaseFileProvider? {
+    static func createProvider(by type: ASCFileProviderType) -> ASCFileProviderProtocol? {
         switch type {
         case .googledrive:
             return ASCGoogleDriveProvider()
@@ -52,6 +58,8 @@ class ASCFileManager {
             return ASCYandexFileProvider()
         case .webdav:
             return ASCWebDAVProvider()
+        case .icloud:
+            return ASCiCloudProvider()
         default:
             return nil
         }
@@ -59,7 +67,7 @@ class ASCFileManager {
 
     static func storeProviders() {
         var provividersInfo: [String] = []
-        var allProviders: [ASCBaseFileProvider] = cloudProviders
+        var allProviders: [ASCFileProviderProtocol] = cloudProviders
 
         if let onlyofficeProvider = onlyofficeProvider {
             allProviders.append(onlyofficeProvider)
@@ -94,7 +102,7 @@ class ASCFileManager {
                         provider.deserialize(serializedProvider)
                         onlyofficeProvider = provider
                     } else {
-                        var provider: ASCBaseFileProvider? = nil
+                        var provider: ASCFileProviderProtocol? = nil
 
                         switch type {
                         case .some(.googledrive):
@@ -109,6 +117,8 @@ class ASCFileManager {
                             provider = ASCYandexFileProvider()
                         case .some(.webdav):
                             provider = ASCWebDAVProvider()
+                        case .some(.icloud):
+                            provider = ASCiCloudProvider()
                         default:
                             break
                         }
@@ -120,6 +130,11 @@ class ASCFileManager {
                     }
                 }
             }
+        }
+        
+        if ASCConstants.Feature.allowiCloud {
+            // iCloud Setup
+            iCloudUpdate()
         }
 
         // Load last provider
@@ -144,6 +159,23 @@ class ASCFileManager {
             }
         } else {
             provider = localProvider
+        }
+    }
+    
+    private static func iCloudUpdate() {
+        if let iCloudProvider = cloudProviders.first(where: { $0.type == .icloud }) as? ASCiCloudProvider {
+            iCloudProvider.initialize { success in
+                if !success, let index = cloudProviders.firstIndex(where: { $0.type == .icloud }) {
+                    cloudProviders.remove(at: index)
+                }
+            }
+        } else {
+            let iCloudProvider = ASCiCloudProvider()
+            iCloudProvider.initialize { success in
+                if success, iCloudProvider.hasiCloudAccount {
+                    cloudProviders.append(iCloudProvider)
+                }
+            }
         }
     }
 }

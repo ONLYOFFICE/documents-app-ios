@@ -1,5 +1,5 @@
 //
-//  ASCBaseFileProvider.swift
+//  ASCFileProviderProtocol.swift
 //  Documents
 //
 //  Created by Alexander Yuzhin on 12/10/2018.
@@ -28,14 +28,28 @@ struct ASCEntityActions: OptionSet {
 }
 
 typealias ASCProviderUserInfoHandler = ((_ success: Bool, _ error: Error?) -> Void)
-typealias ASCProviderCompletionHandler = ((_ provider: ASCBaseFileProvider, _ result: Any?, _ success: Bool, _ error: Error?) -> Void)
+typealias ASCProviderCompletionHandler = ((_ provider: ASCFileProviderProtocol, _ result: Any?, _ success: Bool, _ error: Error?) -> Void)
+
+
+// MARK: - ASCProviderDelegate protocol
 
 protocol ASCProviderDelegate {
     func openProgressFile(title: String, _ progress: Float) -> ASCEditorManagerOpenHandler
     func closeProgressFile(title: String) -> ASCEditorManagerCloseHandler
+    func updateItems(provider: ASCFileProviderProtocol)
 }
 
-protocol ASCBaseFileProvider {
+
+// MARK: - ASCProviderDelegate protocol optionals
+
+extension ASCProviderDelegate {
+    func updateItems(provider: ASCFileProviderProtocol) {}
+}
+
+
+// MARK: - ASCBaseFileProvider protocol
+
+protocol ASCFileProviderProtocol {
     // Information
     var id: String? { get }
     var type: ASCFileProviderType { get }
@@ -51,14 +65,19 @@ protocol ASCBaseFileProvider {
     var delegate: ASCProviderDelegate? { get set }
 
     // Methods
-    func copy() -> ASCBaseFileProvider
+    func copy() -> ASCFileProviderProtocol
     func cancel()
     func reset()
     func userInfo(completeon: ASCProviderUserInfoHandler?)
     func fetch(for folder: ASCFolder, parameters: [String: Any?], completeon: ASCProviderCompletionHandler?)
-
+    func updateSort(completeon: ASCProviderCompletionHandler?)
     func serialize() -> String?
     func deserialize(_ jsonString: String)
+    
+    // Items
+    func add(item: ASCEntity, at index: Int)
+    func add(items: [ASCEntity], at index: Int)
+    func remove(at index: Int)
 
     // Network
     func isReachable(completionHandler: @escaping (_ success: Bool, _ error: Error?) -> Void)
@@ -91,9 +110,13 @@ protocol ASCBaseFileProvider {
     func preview(file: ASCFile, files: [ASCFile]?, in view: UIView?)
 }
 
-extension ASCBaseFileProvider {
+
+// MARK: - ASCFileProvider protocol
+
+extension ASCFileProviderProtocol {
     func cancel() {}
     func userInfo(completeon: ASCProviderUserInfoHandler?) {}
+    func updateSort(completeon: ASCProviderCompletionHandler?) {}
     func serialize() -> String? { return nil }
     func deserialize(_ jsonString: String) {}
 
@@ -121,4 +144,67 @@ extension ASCBaseFileProvider {
     func actions(for entity: ASCEntity?) -> ASCEntityActions { return [] }
     func open(file: ASCFile, viewMode: Bool = false) {}
     func preview(file: ASCFile, files: [ASCFile]? = nil, in view: UIView? = nil) {}
+}
+
+
+// MARK: - ASCSortableFileProvider protocol
+
+protocol ASCSortableFileProviderProtocol {
+    var folder: ASCFolder? { get set }
+    var fetchInfo: [String : Any?]? { get set }
+
+    func sort(by info: [String: Any], entities: inout [ASCEntity])
+    func sort(by info: [String: Any], folders: inout [ASCFolder], files: inout [ASCFile])
+}
+
+extension ASCSortableFileProviderProtocol {
+    /// Sort records
+    ///
+    /// - Parameters:
+    ///   - info: Sort information as dictinory
+    ///   - folders: Sorted folders
+    ///   - files: Sorted files
+    func sort(by info: [String: Any], folders: inout [ASCFolder], files: inout [ASCFile]) {
+        let sortBy      = info["type"] as? String ?? "title"
+        let sortOrder   = info["order"] as? String ?? "ascending"
+
+        if sortBy == "title" {
+            folders = sortOrder == "ascending"
+                ? folders.sorted { $0.title < $1.title }
+                : folders.sorted { $0.title > $1.title }
+            files = sortOrder == "ascending"
+                ? files.sorted { $0.title < $1.title }
+                : files.sorted { $0.title > $1.title }
+        } else if sortBy == "type" {
+            files = sortOrder == "ascending"
+                ? files.sorted { $0.title.fileExtension().lowercased() < $1.title.fileExtension().lowercased() }
+                : files.sorted { $0.title.fileExtension().lowercased() > $1.title.fileExtension().lowercased() }
+        } else if sortBy == "dateandtime" {
+            let nowDate = Date()
+            folders = sortOrder == "ascending"
+                ? folders.sorted { $0.created ?? nowDate < $1.created ?? nowDate }
+                : folders.sorted { $0.created ?? nowDate > $1.created ?? nowDate }
+            files = sortOrder == "ascending"
+                ? files.sorted { $0.updated ?? nowDate < $1.updated ?? nowDate }
+                : files.sorted { $0.updated ?? nowDate > $1.updated ?? nowDate }
+        } else if sortBy == "size" {
+            files = sortOrder == "ascending"
+                ? files.sorted { $0.pureContentLength < $1.pureContentLength }
+                : files.sorted { $0.pureContentLength > $1.pureContentLength }
+        }
+    }
+    
+    /// Sort records
+    ///
+    /// - Parameters:
+    ///   - info: Sort information as dictinory
+    ///   - entities: Sorted entities
+    func sort(by info: [String: Any], entities: inout [ASCEntity]) {
+        var folders = entities.filter { $0 is ASCFolder } as? [ASCFolder] ?? []
+        var files = entities.filter { $0 is ASCFile } as? [ASCFile] ?? []
+        
+        sort(by: info, folders: &folders, files: &files)
+        
+        entities = folders as [ASCEntity] + files as [ASCEntity]
+    }
 }

@@ -738,7 +738,7 @@ class ASCiCloudProvider: ASCFileProviderProtocol & ASCSortableFileProviderProtoc
                                     cloudFile.displayContentLength = String.fileSizeToString(with: fileSize)
                                     cloudFile.pureContentLength = Int(fileSize)
 
-                                    Analytics.logEvent(ASCConstants.Analytics.Event.createEntity, parameters: [
+                                    ASCAnalytics.logEvent(ASCConstants.Analytics.Event.createEntity, parameters: [
                                         "portal": "icloud",
                                         "onDevice": false,
                                         "type": "file",
@@ -766,7 +766,7 @@ class ASCiCloudProvider: ASCFileProviderProtocol & ASCSortableFileProviderProtoc
         let path = (Path(folder.id) + name).rawValue
         upload(path, data: data, overwrite: false, params: nil) { progress, result, error, response in
             if let _ = result {
-                Analytics.logEvent(ASCConstants.Analytics.Event.createEntity, parameters: [
+                ASCAnalytics.logEvent(ASCConstants.Analytics.Event.createEntity, parameters: [
                     "portal": "icloud",
                     "onDevice": false,
                     "type": "file",
@@ -805,7 +805,7 @@ class ASCiCloudProvider: ASCFileProviderProtocol & ASCSortableFileProviderProtoc
                     cloudFolder.parent = folder
                     cloudFolder.parentId = folder.id
 
-                    Analytics.logEvent(ASCConstants.Analytics.Event.createEntity, parameters: [
+                    ASCAnalytics.logEvent(ASCConstants.Analytics.Event.createEntity, parameters: [
                         "portal": "icloud",
                         "onDevice": false,
                         "type": "folder"

@@ -1631,18 +1631,7 @@ class ASCDocumentsViewController: UITableViewController, UIGestureRecognizerDele
                     image: UIImage(systemName: "person.2"))
                 { [unowned self] action in
                     cell.hideSwipe(animated: true)
-
-                    let sharedVC = ASCShareViewController.instantiate(from: Storyboard.share)
-                    let sharedNavigationVC = ASCBaseNavigationController(rootASCViewController: sharedVC)
-
-                    sharedVC.entity = file
-
-                    if UIDevice.pad {
-                        sharedNavigationVC.modalPresentationStyle = .formSheet
-                    }
-
-                    sharedNavigationVC.view.tintColor = self.view.tintColor
-                    self.present(sharedNavigationVC, animated: true, completion: nil)
+                    presentShareController(in: self, entity: file)
                 }
             )
         }
@@ -1749,18 +1738,7 @@ class ASCDocumentsViewController: UITableViewController, UIGestureRecognizerDele
                     image: UIImage(systemName: "person.2"))
                 { [unowned self] action in
                     cell.hideSwipe(animated: true)
-
-                    let sharedVC = ASCShareViewController.instantiate(from: Storyboard.share)
-                    let sharedNavigationVC = ASCBaseNavigationController(rootASCViewController: sharedVC)
-
-                    sharedVC.entity = folder
-
-                    if UIDevice.pad {
-                        sharedNavigationVC.modalPresentationStyle = .formSheet
-                    }
-
-                    sharedNavigationVC.view.tintColor = self.view.tintColor
-                    self.present(sharedNavigationVC, animated: true, completion: nil)
+                    presentShareController(in: self, entity: folder)
                 }
             )
         }
@@ -2055,18 +2033,7 @@ class ASCDocumentsViewController: UITableViewController, UIGestureRecognizerDele
                     style: .default,
                     handler: { [unowned self] action in
                         cell.hideSwipe(animated: true)
-
-                        let sharedVC = ASCShareViewController.instantiate(from: Storyboard.share)
-                        let sharedNavigationVC = ASCBaseNavigationController(rootASCViewController: sharedVC)
-
-                        sharedVC.entity = file
-
-                        if UIDevice.pad {
-                            sharedNavigationVC.modalPresentationStyle = .formSheet
-                        }
-
-                        sharedNavigationVC.view.tintColor = self.view.tintColor
-                        self.present(sharedNavigationVC, animated: true, completion: nil)
+                        presentShareController(in: self, entity: file)
                 })
             )
         }
@@ -2181,18 +2148,7 @@ class ASCDocumentsViewController: UITableViewController, UIGestureRecognizerDele
                     style: .default,
                     handler: { [unowned self] action in
                         cell.hideSwipe(animated: true)
-
-                        let sharedVC = ASCShareViewController.instantiate(from: Storyboard.share)
-                        let sharedNavigationVC = ASCBaseNavigationController(rootASCViewController: sharedVC)
-
-                        sharedVC.entity = folder
-
-                        if UIDevice.pad {
-                            sharedNavigationVC.modalPresentationStyle = .formSheet
-                        }
-
-                        sharedNavigationVC.view.tintColor = self.view.tintColor
-                        self.present(sharedNavigationVC, animated: true, completion: nil)
+                        presentShareController(in: self, entity: folder)
                 })
             )
         }
@@ -2287,6 +2243,20 @@ class ASCDocumentsViewController: UITableViewController, UIGestureRecognizerDele
 
     private func isTrash(_ folder: ASCFolder?) -> Bool {
         return (folder?.rootFolderType == .onlyofficeTrash || folder?.rootFolderType == .deviceTrash)
+    }
+    
+    private func presentShareController(in parent: UIViewController, entity: ASCEntity) {
+        let sharedVC = ASCShareViewController.instantiate(from: Storyboard.share)
+        let sharedNavigationVC = ASCBaseNavigationController(rootASCViewController: sharedVC)
+
+        sharedVC.entity = entity
+
+        if UIDevice.pad {
+            sharedNavigationVC.modalPresentationStyle = .formSheet
+        }
+
+        sharedNavigationVC.view.tintColor = self.view.tintColor
+        parent.present(sharedNavigationVC, animated: true, completion: nil)
     }
 
     // MARK: - Table view data source
@@ -3688,6 +3658,17 @@ extension ASCDocumentsViewController: ASCProviderDelegate {
         // TODO: Or search diff and do it animated
         
         showEmptyView(total < 1)
+    }
+    
+    func presentShareController(provider: ASCFileProviderProtocol, entity: ASCEntity) {
+        if let keyWindow = UIApplication.shared.windows.filter({ $0.isKeyWindow }).first {
+            if var topController = keyWindow.rootViewController {
+                while let presentedViewController = topController.presentedViewController {
+                    topController = presentedViewController
+                }
+                presentShareController(in: topController, entity: entity)
+            }
+        }
     }
 }
 

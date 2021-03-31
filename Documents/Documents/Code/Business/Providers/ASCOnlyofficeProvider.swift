@@ -1164,9 +1164,31 @@ class ASCOnlyofficeProvider: ASCFileProviderProtocol & ASCSortableFileProviderPr
             let strongDelegate = delegate
             let openHandler = strongDelegate?.openProgressFile(title: NSLocalizedString("Processing", comment: "Caption of the processing") + "...", 0)
             let closeHandler = strongDelegate?.closeProgressFile(title: NSLocalizedString("Saving", comment: "Caption of the processing"))
+            let favoriteHandler: ASCEditorManagerFavoriteHandler = { editorFile, complation in
+                if let editorFile = editorFile {
+                    self.favorite(editorFile, favorite: !editorFile.isFavorite) { provider, entity, success, error in
+                        if let portalFile = entity as? ASCFile {
+                            complation(portalFile.isFavorite)
+                        } else {
+                            complation(editorFile.isFavorite)
+                        }
+                    }
+                }
+            }
+            let shareHandler: ASCEditorManagerShareHandler = { file in
+                guard let file = file else { return }
+                strongDelegate?.presentShareController(provider: self, entity: file)
+            }
 
             if ASCEditorManager.shared.checkSDKVersion() {
-                ASCEditorManager.shared.editCloud(file, viewMode: !editMode, handler: openHandler, closeHandler: closeHandler)
+                ASCEditorManager.shared.editCloud(
+                    file,
+                    viewMode: !editMode,
+                    handler: openHandler,
+                    closeHandler: closeHandler,
+                    favoriteHandler: favoriteHandler,
+                    shareHandler: shareHandler
+                )
             } else {
                 ASCEditorManager.shared.editFileLocally(for: self, file, viewMode: viewMode, handler: openHandler, closeHandler: closeHandler, lockedHandler: {
                     delay(seconds: 0.3) {

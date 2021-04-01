@@ -1742,7 +1742,7 @@ class ASCEditorManager: NSObject, DEEditorDelegate, SEEditorDelegate, PEEditorDe
             shareHandler?(file)
         }
     }
-    
+
     func documentFavorite(_ favorite: Bool, complation: DEDocumentFavoriteComplate!) {
         if let file = openedFile, let _ = favoriteHandler {
             favoriteHandler?(file) { favorite in
@@ -2042,6 +2042,21 @@ class ASCEditorManager: NSObject, DEEditorDelegate, SEEditorDelegate, PEEditorDe
         ]
     }
     
+    func spreadsheetShare(_ complation: SEDocumentShareComplate!) {
+        if let file = openedFile {
+            shareHandler?(file)
+        }
+    }
+    
+    func spreadsheetFavorite(_ favorite: Bool, complation: SEDocumentFavoriteComplate!) {
+        if let file = openedFile, let _ = favoriteHandler {
+            favoriteHandler?(file) { favorite in
+                self.openedFile?.isFavorite = favorite
+                complation(favorite)
+            }
+        }
+    }
+    
     // MARK: - PEEditorDelegate
     
     func presentationLoading(_ controller: PEEditorViewController!, progress value: CGFloat) {
@@ -2304,6 +2319,21 @@ class ASCEditorManager: NSObject, DEEditorDelegate, SEEditorDelegate, PEEditorDe
             "asc.pe.external.appname": ASCConstants.Name.appNameShort
 //            "asc.pe.external.helpurl": "http://helpcenter.onlyoffice.com/%@%@mobile-applications/documents/presentation-editor/index.aspx"
         ]
+    }
+  
+    func presentationShare(_ complation: PEDocumentShareComplate!) {
+        if let file = openedFile {
+            shareHandler?(file)
+        }
+    }
+    
+    func presentationFavorite(_ favorite: Bool, complation: PEDocumentFavoriteComplate!) {
+        if let file = openedFile, let _ = favoriteHandler {
+            favoriteHandler?(file) { favorite in
+                self.openedFile?.isFavorite = favorite
+                complation(favorite)
+            }
+        }
     }
     
     // MARK: - Utils

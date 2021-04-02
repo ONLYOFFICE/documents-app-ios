@@ -606,24 +606,9 @@ class ASCGoogleDriveProvider: ASCFileProviderProtocol & ASCSortableFileProviderP
         }
         
         let fileTitle = name + "." + fileExtension
-        
-        // Localize empty template
-        var templateName = "empty"
-        
-        // Localize empty template
-        if fileExtension == "xlsx" || fileExtension == "pptx" {
-            let prefix = "empty-"
-            var regionCode = (Locale.preferredLanguages.first ?? ASCConstants.Locale.defaultLangCode)[0..<2].uppercased()
-            
-            if !ASCConstants.Locale.avalibleLangCodes.contains(regionCode) {
-                regionCode = ASCConstants.Locale.defaultLangCode
-            }
-            
-            templateName = (prefix + regionCode).lowercased()
-        }
-        
+
         // Copy empty template to desination path
-        if let templatePath = Bundle.main.path(forResource: templateName, ofType: fileExtension, inDirectory: "Templates") {
+        if let templatePath = ASCFileManager.documentTemplatePath(with: fileExtension) {
             do {
                 let templatPath = Path(templatePath)
                 let data = try Data.read(from: Path(templatePath))

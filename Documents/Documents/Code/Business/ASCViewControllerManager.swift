@@ -239,19 +239,28 @@ class ASCViewControllerManager {
         let usersDocumentList = ASCLocalFileHelper.shared.entityList(Path.userDocuments)
         
         if usersDocumentList.count < 1, let resourcePath = Bundle.main.resourcePath {
-            let sampleFolder = Path(resourcePath) + "Samples"
+            let sampleFolder = Path(resourcePath) + "sample"
             
             ASCLocalFileHelper.shared.copy(
-                from: sampleFolder + "document.docx",
-                to: Path.userDocuments + String(format: "%@.docx", NSLocalizedString("Document Sample", comment: "Default title of sample document"))
+                from: sampleFolder + "sample.docx",
+                to: Path.userDocuments + String(
+                    format: "%@.docx",
+                    NSLocalizedString("Document Sample", comment: "Default title of sample document")
+                )
             )
             ASCLocalFileHelper.shared.copy(
-                from: sampleFolder + "spreadsheet.xlsx",
-                to: Path.userDocuments + String(format: "%@.xlsx", NSLocalizedString("Spreadsheet Sample", comment: "Default title of sample document"))
+                from: sampleFolder + "sample.xlsx",
+                to: Path.userDocuments + String(
+                    format: "%@.xlsx",
+                    NSLocalizedString("Spreadsheet Sample", comment: "Default title of sample document")
+                )
             )
             ASCLocalFileHelper.shared.copy(
-                from: sampleFolder + "presentation.pptx",
-                to: Path.userDocuments + String(format: "%@.pptx", NSLocalizedString("Presentation Sample", comment: "Default title of sample document"))
+                from: sampleFolder + "sample.pptx",
+                to: Path.userDocuments + String(
+                    format: "%@.pptx",
+                    NSLocalizedString("Presentation Sample", comment: "Default title of sample document")
+                )
             )
         }
     }

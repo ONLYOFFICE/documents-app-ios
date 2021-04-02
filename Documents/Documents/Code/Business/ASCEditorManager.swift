@@ -51,6 +51,8 @@ class ASCEditorManagerError: LocalizedError, CustomStringConvertible, CustomNSEr
 
 typealias ASCEditorManagerOpenHandler = (_ status: ASCEditorManagerStatus, _ progress: Float, _ error: Error?, _ cancel: inout Bool) -> Void
 typealias ASCEditorManagerCloseHandler = (_ status: ASCEditorManagerStatus, _ progress: Float, _ result: ASCFile?, _ error: Error?, _ cancel: inout Bool) -> Void
+typealias ASCEditorManagerFavoriteHandler = (_ file: ASCFile?, _ complation: @escaping (Bool)-> Void) -> Void
+typealias ASCEditorManagerShareHandler = (_ file: ASCFile?) -> Void
 typealias ASCEditorManagerLockedHandler = () -> Void
 
 class ASCEditorManager: NSObject, DEEditorDelegate, SEEditorDelegate, PEEditorDelegate, UITextFieldDelegate, UIDocumentInteractionControllerDelegate {
@@ -62,6 +64,8 @@ class ASCEditorManager: NSObject, DEEditorDelegate, SEEditorDelegate, PEEditorDe
     private var provider: ASCFileProviderProtocol? = nil
     private var closeHandler: ASCEditorManagerCloseHandler? = nil
     private var openHandler: ASCEditorManagerOpenHandler? = nil
+    private var favoriteHandler: ASCEditorManagerFavoriteHandler?
+    private var shareHandler: ASCEditorManagerShareHandler?
     private var documentInteractionController: UIDocumentInteractionController?
     private var documentServiceURL: String? = nil
     private var documentKeyForTrack: String? = nil
@@ -296,7 +300,7 @@ class ASCEditorManager: NSObject, DEEditorDelegate, SEEditorDelegate, PEEditorDe
         
         let sdkCheck = checkSDKVersion()
         
-        let documentInfo: [String: Any] = [
+        var documentInfo: [String: Any] = [
             "title"                 : file.title,
             "date"                  : file.created!,
             "author"                : file.createdBy?.displayName ?? "",
@@ -314,8 +318,15 @@ class ASCEditorManager: NSObject, DEEditorDelegate, SEEditorDelegate, PEEditorDe
             "file"                  : file.toJSONString()!,
             "sdkCheck"              : sdkCheck,
             "appFonts"              : editorFontsPaths,
-            "dataFontsPath"         : dataFontsPath
+            "dataFontsPath"         : dataFontsPath,
+            "supportShare"          : true
         ]
+        
+        // Enabling the Favorite function only on portals version 11 and higher
+        if let communityServerVersion = ASCOnlyOfficeApi.shared.serverVersion,
+           communityServerVersion.isVersion(greaterThanOrEqualTo: "11.0") {
+            documentInfo["favorite"] = file.isFavorite
+        }
         
         if !(viewMode || (!sdkCheck)) {
             UserDefaults.standard.set(documentInfo, forKey: ASCConstants.SettingsKeys.openedDocument)
@@ -794,6 +805,8 @@ class ASCEditorManager: NSObject, DEEditorDelegate, SEEditorDelegate, PEEditorDe
         self.openedlocallyFile = file
         self.closeHandler = nil
         self.openHandler = nil
+        self.favoriteHandler = nil
+        self.shareHandler = nil
         self.lockedHandler = lockedHandler
 
         if provider is ASCOnlyofficeProvider {
@@ -860,6 +873,8 @@ class ASCEditorManager: NSObject, DEEditorDelegate, SEEditorDelegate, PEEditorDe
             if clearHandlers {
                 self.closeHandler = nil
                 self.openHandler = nil
+                self.favoriteHandler = nil
+                self.shareHandler = nil
                 self.trackingFileStatus = 0
             }
         }
@@ -1024,10 +1039,19 @@ class ASCEditorManager: NSObject, DEEditorDelegate, SEEditorDelegate, PEEditorDe
         })
     }
 
-    func editCloud(_ file: ASCFile, viewMode: Bool = false, handler: ASCEditorManagerOpenHandler? = nil, closeHandler: ASCEditorManagerCloseHandler? = nil) {
+    func editCloud(
+        _ file: ASCFile,
+        viewMode: Bool = false,
+        handler: ASCEditorManagerOpenHandler? = nil,
+        closeHandler: ASCEditorManagerCloseHandler? = nil,
+        favoriteHandler: ASCEditorManagerFavoriteHandler? = nil,
+        shareHandler: ASCEditorManagerShareHandler? = nil
+    ) {
         var cancel = false
         
         self.closeHandler = nil
+        self.favoriteHandler = nil
+        self.shareHandler = nil
         
         func fetchAndOpen() {
             fetchDocumentInfo(file, viewMode: viewMode, handler: { (canEdit, error) in
@@ -1047,6 +1071,8 @@ class ASCEditorManager: NSObject, DEEditorDelegate, SEEditorDelegate, PEEditorDe
                     }
                     
                     self.closeHandler = closeHandler
+                    self.favoriteHandler = favoriteHandler
+                    self.shareHandler = shareHandler
                     self.openEditorInCollaboration(file: file, viewMode: !canEdit, handler: handler)
                 }
             })
@@ -1683,7 +1709,7 @@ class ASCEditorManager: NSObject, DEEditorDelegate, SEEditorDelegate, PEEditorDe
     }
 
     func documentEditorSettings(_ controller: DEEditorViewController!) -> [AnyHashable : Any]! {
-        setenv("APPLICATION_NAME",  ASCConstants.Name.appNameShort, 1)
+        setenv("APPLICATION_NAME", ASCConstants.Name.appNameShort, 1)
         setenv("COMPANY_NAME", ASCConstants.Name.copyright, 1)
 
         return [
@@ -1709,6 +1735,21 @@ class ASCEditorManager: NSObject, DEEditorDelegate, SEEditorDelegate, PEEditorDe
                 ]
             ]
         ]
+    }
+    
+    func documentShare(_ complation: DEDocumentShareComplate!) {
+        if let file = openedFile {
+            shareHandler?(file)
+        }
+    }
+
+    func documentFavorite(_ favorite: Bool, complation: DEDocumentFavoriteComplate!) {
+        if let file = openedFile, let _ = favoriteHandler {
+            favoriteHandler?(file) { favorite in
+                self.openedFile?.isFavorite = favorite
+                complation(favorite)
+            }
+        }
     }
 
     // MARK: - SEEditorDelegate
@@ -2001,6 +2042,21 @@ class ASCEditorManager: NSObject, DEEditorDelegate, SEEditorDelegate, PEEditorDe
         ]
     }
     
+    func spreadsheetShare(_ complation: SEDocumentShareComplate!) {
+        if let file = openedFile {
+            shareHandler?(file)
+        }
+    }
+    
+    func spreadsheetFavorite(_ favorite: Bool, complation: SEDocumentFavoriteComplate!) {
+        if let file = openedFile, let _ = favoriteHandler {
+            favoriteHandler?(file) { favorite in
+                self.openedFile?.isFavorite = favorite
+                complation(favorite)
+            }
+        }
+    }
+    
     // MARK: - PEEditorDelegate
     
     func presentationLoading(_ controller: PEEditorViewController!, progress value: CGFloat) {
@@ -2263,6 +2319,21 @@ class ASCEditorManager: NSObject, DEEditorDelegate, SEEditorDelegate, PEEditorDe
             "asc.pe.external.appname": ASCConstants.Name.appNameShort
 //            "asc.pe.external.helpurl": "http://helpcenter.onlyoffice.com/%@%@mobile-applications/documents/presentation-editor/index.aspx"
         ]
+    }
+  
+    func presentationShare(_ complation: PEDocumentShareComplate!) {
+        if let file = openedFile {
+            shareHandler?(file)
+        }
+    }
+    
+    func presentationFavorite(_ favorite: Bool, complation: PEDocumentFavoriteComplate!) {
+        if let file = openedFile, let _ = favoriteHandler {
+            favoriteHandler?(file) { favorite in
+                self.openedFile?.isFavorite = favorite
+                complation(favorite)
+            }
+        }
     }
     
     // MARK: - Utils

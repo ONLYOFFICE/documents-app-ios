@@ -94,7 +94,6 @@ platform :ios do
     pilot(
       app_identifier: ENV["APP_IDENTIFIER"],
       changelog: change_log,
-      app_identifier: ENV["APP_IDENTIFIER"],
       skip_waiting_for_build_processing: false
     )
 

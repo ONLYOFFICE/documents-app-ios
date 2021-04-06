@@ -66,7 +66,6 @@
 		FC28F2C41E8D131800A8F985 /* ASCCreateEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC28F2C31E8D131800A8F985 /* ASCCreateEntity.swift */; };
 		FC28F2C61E8D1BB200A8F985 /* ASCEntityManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC28F2C51E8D1BB200A8F985 /* ASCEntityManager.swift */; };
 		FC28F2C81E8D217F00A8F985 /* UIControl+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC28F2C71E8D217F00A8F985 /* UIControl+Extension.swift */; };
-		FC28F2CF1E8D48E900A8F985 /* Templates in Resources */ = {isa = PBXBuildFile; fileRef = FC28F2CE1E8D48E900A8F985 /* Templates */; };
 		FC2EEA3821BAB05F00CB85A3 /* UIViewController+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC2EEA3721BAB05F00CB85A3 /* UIViewController+Extensions.swift */; };
 		FC31B27E1E767C96008699C3 /* ASCFolderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC31B27D1E767C96008699C3 /* ASCFolderCell.swift */; };
 		FC31B2801E767CAB008699C3 /* ASCFileCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC31B27F1E767CAB008699C3 /* ASCFileCell.swift */; };
@@ -134,7 +133,6 @@
 		FC6F0CD71F542E7E002D33D9 /* ASCSSOSignInController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC6F0CD61F542E7E002D33D9 /* ASCSSOSignInController.swift */; };
 		FC707C4325AC5DAF004CB85B /* UILabel+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC707C4225AC5DAF004CB85B /* UILabel+Extension.swift */; };
 		FC708EE421B92E94001BBE5B /* UIBarButtonItem+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC708EE321B92E94001BBE5B /* UIBarButtonItem+Extensions.swift */; };
-		FC786FB91EB8694400181D62 /* Samples in Resources */ = {isa = PBXBuildFile; fileRef = FC786FB81EB8694400181D62 /* Samples */; };
 		FC786FBC1EB8771700181D62 /* Intro.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FC786FBE1EB8771700181D62 /* Intro.storyboard */; };
 		FC786FC31EB879F600181D62 /* ASCIntroViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC786FC21EB879F600181D62 /* ASCIntroViewController.swift */; };
 		FC7B37D61E929B46009C41AD /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = FC7B37D51E929B46009C41AD /* Settings.bundle */; };
@@ -208,6 +206,9 @@
 		FCC77C9E206D11B6001B7837 /* Path+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCC77C9D206D11B6001B7837 /* Path+Extension.swift */; };
 		FCC826FC1F9F4B9700744F68 /* ASCAccountsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCC826FB1F9F4B9700744F68 /* ASCAccountsManager.swift */; };
 		FCC9C3FA1E78235800EFCA57 /* String+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCC9C3F91E78235800EFCA57 /* String+Extension.swift */; };
+		FCCC4D69261B12B500ACC6F1 /* new in Resources */ = {isa = PBXBuildFile; fileRef = FCCC4D67261B12B500ACC6F1 /* new */; };
+		FCCC4D6A261B12B500ACC6F1 /* sample in Resources */ = {isa = PBXBuildFile; fileRef = FCCC4D68261B12B500ACC6F1 /* sample */; };
+		FCCC4D6F261B614B00ACC6F1 /* Array+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCCC4D6E261B614B00ACC6F1 /* Array+Extensions.swift */; };
 		FCCC527220ADB68E000BD819 /* ASCSignInController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCCC527120ADB68E000BD819 /* ASCSignInController.swift */; };
 		FCD04FCA1E7FDECF008641CD /* UIAlertController+SwiftAlertController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCD04FC91E7FDECF008641CD /* UIAlertController+SwiftAlertController.swift */; };
 		FCD33B5921C9195000D52DAF /* ASCDocumentsNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCD33B5821C9195000D52DAF /* ASCDocumentsNavigationController.swift */; };
@@ -398,7 +399,6 @@
 		FC28F2C31E8D131800A8F985 /* ASCCreateEntity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASCCreateEntity.swift; sourceTree = "<group>"; };
 		FC28F2C51E8D1BB200A8F985 /* ASCEntityManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ASCEntityManager.swift; path = Documents/Code/Business/ASCEntityManager.swift; sourceTree = SOURCE_ROOT; };
 		FC28F2C71E8D217F00A8F985 /* UIControl+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIControl+Extension.swift"; sourceTree = "<group>"; };
-		FC28F2CE1E8D48E900A8F985 /* Templates */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Templates; sourceTree = "<group>"; };
 		FC2EEA3721BAB05F00CB85A3 /* UIViewController+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extensions.swift"; sourceTree = "<group>"; };
 		FC31B27D1E767C96008699C3 /* ASCFolderCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASCFolderCell.swift; sourceTree = "<group>"; };
 		FC31B27F1E767CAB008699C3 /* ASCFileCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASCFileCell.swift; sourceTree = "<group>"; };
@@ -465,7 +465,6 @@
 		FC6F0CD61F542E7E002D33D9 /* ASCSSOSignInController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASCSSOSignInController.swift; sourceTree = "<group>"; };
 		FC707C4225AC5DAF004CB85B /* UILabel+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UILabel+Extension.swift"; sourceTree = "<group>"; };
 		FC708EE321B92E94001BBE5B /* UIBarButtonItem+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIBarButtonItem+Extensions.swift"; sourceTree = "<group>"; };
-		FC786FB81EB8694400181D62 /* Samples */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Samples; sourceTree = "<group>"; };
 		FC786FBD1EB8771700181D62 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Intro.storyboard; sourceTree = "<group>"; };
 		FC786FC01EB8771B00181D62 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Intro.strings; sourceTree = "<group>"; };
 		FC786FC21EB879F600181D62 /* ASCIntroViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASCIntroViewController.swift; sourceTree = "<group>"; };
@@ -551,6 +550,9 @@
 		FCC77C9D206D11B6001B7837 /* Path+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Path+Extension.swift"; sourceTree = "<group>"; };
 		FCC826FB1F9F4B9700744F68 /* ASCAccountsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCAccountsManager.swift; sourceTree = "<group>"; };
 		FCC9C3F91E78235800EFCA57 /* String+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+Extension.swift"; sourceTree = "<group>"; };
+		FCCC4D67261B12B500ACC6F1 /* new */ = {isa = PBXFileReference; lastKnownFileType = folder; name = new; path = "../../../../document-templates/new"; sourceTree = "<group>"; };
+		FCCC4D68261B12B500ACC6F1 /* sample */ = {isa = PBXFileReference; lastKnownFileType = folder; name = sample; path = "../../../../document-templates/sample"; sourceTree = "<group>"; };
+		FCCC4D6E261B614B00ACC6F1 /* Array+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+Extensions.swift"; sourceTree = "<group>"; };
 		FCCC527120ADB68E000BD819 /* ASCSignInController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCSignInController.swift; sourceTree = "<group>"; };
 		FCCDE6792049734000CFC653 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		FCCDE67F204973F500CFC653 /* ASCDocumentConverterTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCDocumentConverterTest.swift; sourceTree = "<group>"; };
@@ -842,6 +844,7 @@
 		FC31B2851E76C01B008699C3 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				FCCC4D6E261B614B00ACC6F1 /* Array+Extensions.swift */,
 				FC56F4912248BC13004E3930 /* CALayer+Animate.swift */,
 				FCF2761922C0D26D00984E83 /* Collection+Extensions.swift */,
 				FC8C69801ECC7B6B005B68D7 /* Common+Extension.swift */,
@@ -1301,8 +1304,8 @@
 			isa = PBXGroup;
 			children = (
 				8A8994EC23A93B6300FEF8E1 /* fonts */,
-				FC786FB81EB8694400181D62 /* Samples */,
-				FC28F2CE1E8D48E900A8F985 /* Templates */,
+				FCCC4D67261B12B500ACC6F1 /* new */,
+				FCCC4D68261B12B500ACC6F1 /* sample */,
 				FC23FC5C2044018F003B3AE7 /* Other */,
 				FCC62AE21E8AA91100D24BE2 /* MWPhotoBrowser.bundle */,
 			);
@@ -1621,12 +1624,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				FCE1F63F1EDC338100D9DE17 /* CreatePortal.storyboard in Resources */,
+				FCCC4D69261B12B500ACC6F1 /* new in Resources */,
 				FCFDAA9B1E48A10C007A240C /* LaunchScreen.storyboard in Resources */,
 				8A4E0AD123C736D000B09521 /* Documents.xcassets in Resources */,
 				FCA085EC1EEAE66C00D52EEC /* Share.storyboard in Resources */,
 				8A2EB084231FFA3700A12A4E /* ASCFolderCell.xib in Resources */,
 				FC7B37D61E929B46009C41AD /* Settings.bundle in Resources */,
 				8A278AE42499614C00B6AA30 /* Debug.storyboard in Resources */,
+				FCCC4D6A261B12B500ACC6F1 /* sample in Resources */,
 				FCEF9D1A1ED2C94300627BA5 /* PasscodeLock.strings in Resources */,
 				FCC396441ECDC6BD0016BB10 /* UserProfile.storyboard in Resources */,
 				FCF865201E4E0D1C003E47B6 /* Main.storyboard in Resources */,
@@ -1641,8 +1646,6 @@
 				FCE35DD61E9E7BC100BC2B68 /* Sort.storyboard in Resources */,
 				FCE35DDB1E9E7BCA00BC2B68 /* Transfer.storyboard in Resources */,
 				FCC3963D1ECDC6890016BB10 /* Settings.storyboard in Resources */,
-				FC786FB91EB8694400181D62 /* Samples in Resources */,
-				FC28F2CF1E8D48E900A8F985 /* Templates in Resources */,
 				FCA0AD271EBC90AC00AA53EB /* Login.storyboard in Resources */,
 				FC9E28B12244E286000D315E /* DocumentsEmptyView.xib in Resources */,
 				FCC62AE31E8AA91100D24BE2 /* MWPhotoBrowser.bundle in Resources */,
@@ -1930,6 +1933,7 @@
 				FC65B6B61EB9F23800AE73BB /* ASCDocumentService.swift in Sources */,
 				FC7CF5191EF3EFF300C0A64F /* NSString+HTMLString.swift in Sources */,
 				FCA085EB1EEAE3E900D52EEC /* ASCShareAccessViewController.swift in Sources */,
+				FCCC4D6F261B614B00ACC6F1 /* Array+Extensions.swift in Sources */,
 				FC68399221B7ED6700251CEA /* ASCOnlyofficeCategoriesViewController.swift in Sources */,
 				FC8A137D226878C0006D8C6E /* Sequence+Extensions.swift in Sources */,
 				FCEF9D371ED2D23400627BA5 /* ASCPasscodeLockPresenter.swift in Sources */,

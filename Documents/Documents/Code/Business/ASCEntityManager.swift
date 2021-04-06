@@ -759,11 +759,6 @@ class ASCEntityManager: NSObject, UITextFieldDelegate {
 
         let tempPath = Path.userTemporary + UUID().uuidString
 
-        defer {
-            // Cleanup temporary
-            ASCLocalFileHelper.shared.removeDirectory(tempPath)
-        }
-
         // Create download temporary
         ASCLocalFileHelper.shared.createDirectory(tempPath)
 
@@ -805,6 +800,9 @@ class ASCEntityManager: NSObject, UITextFieldDelegate {
                 srcProvider.cancel()
                 dstProvider.cancel()
             }
+            
+            // Cleanup temporary
+            ASCLocalFileHelper.shared.removeDirectory(tempPath)
         }
         
         let showNetworkErrorIfNeeded = {
@@ -867,6 +865,8 @@ class ASCEntityManager: NSObject, UITextFieldDelegate {
         }
 
         // Download
+        
+        var downloadErrorFiles: [ASCFile] = []
 
         operationQueue.addOperation {
             if cancel {
@@ -905,7 +905,7 @@ class ASCEntityManager: NSObject, UITextFieldDelegate {
                 downloadQueue.addOperation {
                     let semaphore = DispatchSemaphore(value: 0)
 
-                    srcProvider.download(file.viewUrl ?? "", to: URL(fileURLWithPath:localPath.rawValue)) { progress, result, error, response in
+                    srcProvider.download(file.viewUrl ?? "", to: URL(fileURLWithPath: localPath.rawValue)) { progress, result, error, response in
                         if cancel {
                             forceExit()
                             semaphore.signal()
@@ -922,6 +922,14 @@ class ASCEntityManager: NSObject, UITextFieldDelegate {
                                 if srcProvider.type != .local {
                                     showNetworkErrorIfNeeded()
                                 }
+                                
+                                if let structureIndex = structures.firstIndex(where: { $0.items.contains(where: { ($0 as? ASCFile)?.viewUrl == file.viewUrl }) }) {
+                                    if let index = structures[structureIndex].items.firstIndex(where: { ($0 as? ASCFile)?.viewUrl == file.viewUrl }) {
+                                        structures[structureIndex].items.remove(at: index)
+                                    }
+                                }
+                                
+                                downloadErrorFiles.append(file)
                             }
 
                             processedFiles = processedFiles + 1
@@ -1004,7 +1012,7 @@ class ASCEntityManager: NSObject, UITextFieldDelegate {
 
         // Upload files
 
-        var uploadErrorFiles: [String] = []
+        var uploadErrorFiles: [ASCFile] = []
         
         operationQueue.addOperation {
             if cancel {
@@ -1039,6 +1047,8 @@ class ASCEntityManager: NSObject, UITextFieldDelegate {
                             content = try dataFile.read()
                         } catch {
                             log.error("Upload file: Read local data from: \(localFilePath.rawValue)")
+                            uploadErrorFiles.append(file)
+                            continue
                         }
 
                         if let data = content {
@@ -1065,7 +1075,7 @@ class ASCEntityManager: NSObject, UITextFieldDelegate {
                                                 if dstProvider.type != .local {
                                                     showNetworkErrorIfNeeded()
                                                 }
-                                                uploadErrorFiles.append(file.title)
+                                                uploadErrorFiles.append(file)
                                             }
 
                                             if let result = result as? [String: Any] {
@@ -1096,12 +1106,17 @@ class ASCEntityManager: NSObject, UITextFieldDelegate {
             commonProgress = commonProgress + localProgress
             handler(commonProgress, false, false, nil, nil, &cancel)
             
-            if uploadErrorFiles.count > 0 {
+            let errorFiles = downloadErrorFiles + uploadErrorFiles
+            if errorFiles.count > 0 {
                 let errorMsg = move
                     ? NSLocalizedString("Failed to move: %@", comment: "")
                     : NSLocalizedString("Failed to copy: %@", comment: "")
-                handler(1, true, false, nil, ASCProviderError(msg: String(format: errorMsg, uploadErrorFiles.joined(separator: ", ").truncated(toLength: 100))), &cancel)
-                return
+                let errorFileTitles = (downloadErrorFiles + uploadErrorFiles)
+                    .map { $0.title }
+                    .withoutDuplicates()
+                    .joined(separator: ", ")
+                    .truncated(toLength: 100)
+                handler(1, true, false, nil, ASCProviderError(msg: String(format: errorMsg, errorFileTitles)), &cancel)
             }
         }
 
@@ -1124,7 +1139,11 @@ class ASCEntityManager: NSObject, UITextFieldDelegate {
                 deleteQueue.addOperation {
                     let semaphore = DispatchSemaphore(value: 0)
                     delay(seconds: 0.01, completion: {
-                        srcProvider.delete(from.items, from: srcParent, completeon: { provider, result, success, error in
+                        let errorFiles = downloadErrorFiles + uploadErrorFiles
+                        let errorFilesUids = errorFiles.map { $0.uid }
+                        let movedItems = from.items.filter { !errorFilesUids.contains($0.uid) }
+                        
+                        srcProvider.delete(movedItems, from: srcParent, completeon: { provider, result, success, error in
                             semaphore.signal()
                         })
                     })
@@ -1139,6 +1158,11 @@ class ASCEntityManager: NSObject, UITextFieldDelegate {
                 // Done
                 handler(1, true, true, appendItems, nil, &cancel)
             }
+        }
+        
+        // Cleanup temporary
+        operationQueue.addOperation {
+            ASCLocalFileHelper.shared.removeDirectory(tempPath)
         }
     }
     

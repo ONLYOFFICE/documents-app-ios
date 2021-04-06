@@ -3021,7 +3021,7 @@ class ASCDocumentsViewController: UITableViewController, UIGestureRecognizerDele
                         }
                     })
                 } else {
-                    if let srcProvider = self?.provider,
+                    if  let srcProvider = self?.provider,
                         let destProvider = destProvider,
                         let destFolder = destFolder
                     {
@@ -3090,36 +3090,32 @@ class ASCDocumentsViewController: UITableViewController, UIGestureRecognizerDele
 
             if let transferViewController = transferNavigationVC.topViewController as? ASCTransferViewController {
                 transferNavigationVC.transferType = isTrash(folder) ? .recover : (move ? .move : .copy)
-                //                    transferNavigationController.transferMode = type
+                // transferNavigationController.transferMode = type
                 transferViewController.folder = nil
             }
         }
         
-        transferViaManager(items: entities) { [unowned self] items in
+        transferViaManager(items: entities) { [unowned self] errorItems in
+            guard let provider = self.provider else { return }
+            
             if move {
                 var deteteIndexes: [IndexPath] = []
+                let errorItemIds: [String] = errorItems?.map { $0.id } ?? []
 
-                self.tableView.beginUpdates()
-
-                // Store remove indexes
                 for item in entities {
                     if let indexPath = self.indexPath(by: item) {
-                        deteteIndexes.append(indexPath)
+                        if !errorItemIds.contains(item.id) {
+                            // Store remove indexes
+                            deteteIndexes.append(indexPath)
+                            
+                            // Remove data
+                            provider.remove(at: indexPath.row)
+                        }
                     }
                 }
 
-                // Remove data
-                for item in entities {
-                    if let indexPath = self.indexPath(by: item) {
-//                        self.tableData.remove(at: indexPath.row)
-//                        self.total -= 1
-                        self.provider?.remove(at: indexPath.row)
-                    }
-                }
-
-                // Remove cells
-                self.tableView.deleteRows(at: deteteIndexes, with: .fade)
-                self.tableView.endUpdates()
+                // Update table view
+                self.tableView.reloadSections(IndexSet(integer: 0), with: .fade)
 
                 self.showEmptyView(self.total < 1)
                 self.updateNavBar()

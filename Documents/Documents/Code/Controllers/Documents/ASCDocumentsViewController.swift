@@ -520,7 +520,7 @@ class ASCDocumentsViewController: UITableViewController, UIGestureRecognizerDele
             (NSLocalizedString("Size", comment: ""),    "size",         sortType == "size")
         ]
 
-        if folder?.rootFolderType != .deviceDocuments {
+        if ![.deviceDocuments, .deviceTrash].contains(folder?.rootFolderType) {
             types.append((NSLocalizedString("Author", comment: ""), "author", sortType == "author"))
         }
 
@@ -1800,7 +1800,7 @@ class ASCDocumentsViewController: UITableViewController, UIGestureRecognizerDele
             (NSLocalizedString("Size", comment: ""),    "size",         sortType == "size")
         ]
 
-        if folder?.rootFolderType != .deviceDocuments {
+        if ![.deviceDocuments, .deviceTrash].contains(folder?.rootFolderType) {
             types.append((NSLocalizedString("Author", comment: ""), "author", sortType == "author"))
         }
 

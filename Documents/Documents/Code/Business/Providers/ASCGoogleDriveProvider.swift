@@ -188,13 +188,18 @@ class ASCGoogleDriveProvider: ASCFileProviderProtocol & ASCSortableFileProviderP
     }
     
     func add(item: ASCEntity, at index: Int) {
-        items.insert(item, at: index)
-        total += 1
+        if !items.contains(where: { $0.uid == item.uid }) {
+            items.insert(item, at: index)
+            total += 1
+        }
     }
     
     func add(items: [ASCEntity], at index: Int) {
-        self.items.insert(contentsOf: items, at: index)
-        self.total += items.count
+        let uniqItems = items.filter { (item) -> Bool in
+            return !self.items.contains(where: { $0.uid == item.uid })
+        }
+        self.items.insert(contentsOf: uniqItems, at: index)
+        self.total += uniqItems.count
     }
     
     func remove(at index: Int) {

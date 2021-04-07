@@ -51,11 +51,6 @@ class ASCDocumentsViewController: UITableViewController, UIGestureRecognizerDele
             return provider?.items ?? []
         }
     }
-//    private var tableData:[ASCEntity] = [] {
-//        didSet {
-//            tableView.reloadData()
-//        }
-//    }
 
     private var selectedIds: Set<String> = []
     private let kPageLoadingCellTag = 7777
@@ -368,14 +363,12 @@ class ASCDocumentsViewController: UITableViewController, UIGestureRecognizerDele
 //    }
 
     func add(entity: Any, open: Bool = true) {
-        guard var provider = provider else { return }
+        guard let provider = provider else { return }
         
         if let file = entity as? ASCFile {
-            provider.items.append(file)
+            provider.add(item: file, at: 0)
             
             provider.updateSort { provider, currentFolder, success, error in
-//                self.total        = provider.total
-//                self.tableData    = provider.items
                 self.tableView.reloadData()
                 self.showEmptyView(self.total < 1)
                 
@@ -406,11 +399,9 @@ class ASCDocumentsViewController: UITableViewController, UIGestureRecognizerDele
                 }
             }
         } else if let folder = entity as? ASCFolder {
-            provider.items.append(folder)
+            provider.add(item: folder, at: 0)
             
             provider.updateSort { provider, currentFolder, success, error in
-//                self.total        = provider.total
-//                self.tableData    = provider.items
                 self.tableView.reloadData()
 
                 self.showEmptyView(self.total < 1)
@@ -1059,9 +1050,7 @@ class ASCDocumentsViewController: UITableViewController, UIGestureRecognizerDele
                     provider?.items[index] = file
                 }
                 
-                tableView.beginUpdates()
-                tableView.reloadRows(at: [path], with: .none)
-                tableView.endUpdates()
+                tableView.reloadSections(IndexSet(integer: 0), with: .fade)
 
                 delay(seconds: 0.3) { [weak self] in
                     if let cell = self?.tableView.cellForRow(at: path) {
@@ -2823,8 +2812,6 @@ class ASCDocumentsViewController: UITableViewController, UIGestureRecognizerDele
                 hud?.hide(animated: false, afterDelay: 1.3)
                 
                 if let indexPath = self.tableView.indexPath(for: cell), let duplicate = result as? ASCFile {
-//                    self.tableData.insert(duplicate, at: indexPath.row)
-//                    self.total += 1
                     self.provider?.add(item: duplicate, at: indexPath.row)
                     self.tableView.reloadData()
                     
@@ -3620,9 +3607,6 @@ extension ASCDocumentsViewController: ASCProviderDelegate {
                             }
                         } else {
                             strongSelf.provider?.add(item: newFile, at: 0)
-//                            strongSelf.tableData.insert(newFile, at: 0)
-//                            strongSelf.total += 1
-                            
                             let updateIndexPath = IndexPath(row: 0, section: 0)
                             strongSelf.tableView.scrollToRow(at: updateIndexPath, at: .top, animated: true)
                             
@@ -3808,8 +3792,6 @@ extension ASCDocumentsViewController: UITableViewDropDelegate {
                                 // Append new items to destination controller
                                 if let newItems = newItems, dstFolder.id == strongSelf.folder?.id {
                                     strongSelf.provider?.add(items: newItems, at: 0)
-//                                    strongSelf.tableData.insert(contentsOf: newItems, at: 0)
-//                                    strongSelf.total += newItems.count
                                     strongSelf.tableView.reloadData()
 
                                     for index in 0..<newItems.count {
@@ -3827,8 +3809,6 @@ extension ASCDocumentsViewController: UITableViewDropDelegate {
                                     for item in items {
                                         if let index = srcDocumentsVC.tableData.firstIndex(where: { $0.id == item.id }) {
                                             srcDocumentsVC.provider?.remove(at: index)
-//                                            srcDocumentsVC.tableData.remove(at: index)
-//                                            srcDocumentsVC.total -= 1
                                         }
                                     }
                                     srcDocumentsVC.tableView?.reloadData()

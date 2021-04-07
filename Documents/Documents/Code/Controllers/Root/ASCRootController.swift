@@ -276,46 +276,48 @@ class ASCRootController: UITabBarController {
 
                     let fileTitle = url.lastPathComponent
                     let filePath = Path(url.path)
-
+                    
                     if filePath.exists {
                         self?.display(provider: ASCFileManager.localProvider, folder: nil)
-
-                        var documentsVC: ASCDocumentsViewController? = self?.topMostViewController() as? ASCDocumentsViewController
                         
-                        if documentsVC == nil {
-                            if  let splitVC = self?.topMostViewController() as? ASCDeviceSplitViewController,
-                                let documentsNC = splitVC.viewControllers.last as? ASCBaseNavigationController {
-                                documentsVC = documentsNC.topViewController as? ASCDocumentsViewController
-                            }
-                        }
-                        
-                        if  let documentsVC = documentsVC,
-                            let newFilePath = ASCLocalFileHelper.shared.resolve(filePath: Path.userDocuments + fileTitle)
-                        {
-                            if let error = ASCLocalFileHelper.shared.copy(from: filePath, to: newFilePath) {
-                                log.error("Can not import the file. \(error)")
-                            } else {
-                                if filePath.isChildOfPath(Path.userDocuments + "Inbox") {
-                                    ASCLocalFileHelper.shared.removeFile(filePath)
+                        delay(seconds: 0.2) {
+                            var documentsVC: ASCDocumentsViewController? = self?.topMostViewController() as? ASCDocumentsViewController
+                            
+                            if documentsVC == nil {
+                                if  let splitVC = self?.topMostViewController() as? ASCDeviceSplitViewController,
+                                    let documentsNC = splitVC.viewControllers.last as? ASCBaseNavigationController {
+                                    documentsVC = documentsNC.topViewController as? ASCDocumentsViewController
                                 }
-
-                                let owner = ASCUser()
-                                owner.displayName = UIDevice.displayName
-
-                                let file = ASCFile()
-                                file.id = newFilePath.rawValue
-                                file.rootFolderType = .deviceDocuments
-                                file.title = newFilePath.fileName
-                                file.created = newFilePath.creationDate
-                                file.updated = newFilePath.modificationDate
-                                file.createdBy = owner
-                                file.updatedBy = owner
-                                file.device = true
-                                file.parent = documentsVC.folder
-                                file.displayContentLength = String.fileSizeToString(with: newFilePath.fileSize ?? 0)
-                                file.pureContentLength = Int(newFilePath.fileSize ?? 0)
-
-                                documentsVC.add(entity: file)
+                            }
+                            
+                            if  let documentsVC = documentsVC,
+                                let newFilePath = ASCLocalFileHelper.shared.resolve(filePath: Path.userDocuments + fileTitle)
+                            {
+                                if let error = ASCLocalFileHelper.shared.copy(from: filePath, to: newFilePath) {
+                                    log.error("Can not import the file. \(error)")
+                                } else {
+                                    if filePath.isChildOfPath(Path.userDocuments + "Inbox") {
+                                        ASCLocalFileHelper.shared.removeFile(filePath)
+                                    }
+                                    
+                                    let owner = ASCUser()
+                                    owner.displayName = UIDevice.displayName
+                                    
+                                    let file = ASCFile()
+                                    file.id = newFilePath.rawValue
+                                    file.rootFolderType = .deviceDocuments
+                                    file.title = newFilePath.fileName
+                                    file.created = newFilePath.creationDate
+                                    file.updated = newFilePath.modificationDate
+                                    file.createdBy = owner
+                                    file.updatedBy = owner
+                                    file.device = true
+                                    file.parent = documentsVC.folder
+                                    file.displayContentLength = String.fileSizeToString(with: newFilePath.fileSize ?? 0)
+                                    file.pureContentLength = Int(newFilePath.fileSize ?? 0)
+                                    
+                                    documentsVC.add(entity: file)
+                                }
                             }
                         }
                     }

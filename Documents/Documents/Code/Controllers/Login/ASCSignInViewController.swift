@@ -274,9 +274,6 @@ class ASCSignInViewController: UIViewController, UITextFieldDelegate {
     @IBAction func onFacebookLogin(_ sender: UIButton) {
         view.endEditing(true)
         
-        let hud = MBProgressHUD.showTopMost()
-        hud?.label.text = NSLocalizedString("Logging in", comment: "Caption of the process")
-        
         facebookSignInController.signIn(controller: self) { [weak self] token, error in
             guard let strongSelf = self else { return }
 
@@ -285,6 +282,9 @@ class ASCSignInViewController: UIViewController, UITextFieldDelegate {
                     "portal": strongSelf.portal ?? "",
                     "facebookToken": accessToken
                 ]
+                
+                let hud = MBProgressHUD.showTopMost()
+                hud?.label.text = NSLocalizedString("Logging in", comment: "Caption of the process")
                 
                 ASCSignInController.shared.login(by: .facebook,
                                                  options: parameters,
@@ -299,11 +299,14 @@ class ASCSignInViewController: UIViewController, UITextFieldDelegate {
                         strongSelf.dismiss(animated: true, completion: nil)
                     } else {
                         hud?.hide(animated: true)
+                        
+                        UIAlertController.showError(
+                            in: strongSelf,
+                            message: NSLocalizedString("User authentication failed", comment: "")
+                        )
                     }
                 }
             } else {
-                hud?.hide(animated: true)
-                
                 if let _ = error {
                     UIAlertController.showError(
                         in: strongSelf,
@@ -317,9 +320,6 @@ class ASCSignInViewController: UIViewController, UITextFieldDelegate {
     @IBAction func onGoogleLogin(_ sender: UIButton) {
         view.endEditing(true)
         
-        let hud = MBProgressHUD.showTopMost()
-        hud?.label.text = NSLocalizedString("Logging in", comment: "Caption of the process")
-        
         googleSignInController.signIn(controller: self) { [weak self] token, userData, error in
             guard let strongSelf = self else { return }
 
@@ -328,6 +328,9 @@ class ASCSignInViewController: UIViewController, UITextFieldDelegate {
                     "portal": strongSelf.portal ?? "",
                     "googleToken": accessToken
                 ]
+                
+                let hud = MBProgressHUD.showTopMost()
+                hud?.label.text = NSLocalizedString("Logging in", comment: "Caption of the process")
                 
                 ASCSignInController.shared.login(by: .google,
                                                  options: parameters,
@@ -343,11 +346,14 @@ class ASCSignInViewController: UIViewController, UITextFieldDelegate {
                         strongSelf.dismiss(animated: true, completion: nil)
                     } else {
                         hud?.hide(animated: true)
+                        
+                        UIAlertController.showError(
+                            in: strongSelf,
+                            message: NSLocalizedString("User authentication failed", comment: "")
+                        )
                     }
                 }
             } else {
-                hud?.hide(animated: true)
-                
                 if let _ = error {
                     UIAlertController.showError(
                         in: strongSelf,

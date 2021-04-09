@@ -35,6 +35,7 @@ class ASCDocumentsViewController: UITableViewController, UIGestureRecognizerDele
             if var provider = provider {
                 provider.delegate = self
             }
+            configureProvider()
         }
     }
     
@@ -169,6 +170,8 @@ class ASCDocumentsViewController: UITableViewController, UIGestureRecognizerDele
         } else {
             tableView.addSubview(refreshControl)
         }
+        
+        configureProvider()
 
         UserDefaults.standard.addObserver(self, forKeyPath: ASCConstants.SettingsKeys.sortDocuments, options: [.new], context: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(updateFileInfo(_:)), name: ASCConstants.Notifications.updateFileInfo, object: nil)
@@ -555,6 +558,14 @@ class ASCDocumentsViewController: UITableViewController, UIGestureRecognizerDele
     
     // MARK: - Private
 
+    private func configureProvider() {
+        guard let provider = provider else { return }
+        
+        if provider is ASCiCloudProvider {
+            tableView.refreshControl = nil
+        }
+    }
+    
     private func configureNavigationBar(animated: Bool = true) {
         addBarButton = addBarButton
             ?? ASCStyles.createBarButton(image: UIImage(named: "nav-add"), target: self, action:#selector(onAddEntityAction))

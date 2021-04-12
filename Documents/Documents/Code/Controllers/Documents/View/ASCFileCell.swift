@@ -61,10 +61,10 @@ class ASCFileCell: MGSwipeTableCell {
         }
 
         title?.text = fileInfo.title
-        owner?.text = fileInfo.updatedBy?.displayName ?? NSLocalizedString("Unknown", comment: "Invalid entity name")
+        owner?.text = fileInfo.updatedBy?.displayName
         date?.text = (fileInfo.updated != nil)
             ? dateFormatter.string(from: fileInfo.updated!)
-            : NSLocalizedString("Unknown", comment: "Invalid entity name")
+            : nil
         
         if fileInfo.pureContentLength < 1 {
             if fileInfo.device {

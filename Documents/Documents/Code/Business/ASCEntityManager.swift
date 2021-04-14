@@ -897,8 +897,8 @@ class ASCEntityManager: NSObject, UITextFieldDelegate {
             let sizeOfCommonProgress: Float = 0.2
 
             let downloadQueue = OperationQueue()
-            //            downloadQueue.maxConcurrentOperationCount = 1
-
+            downloadQueue.maxConcurrentOperationCount = 1
+            
             for file in files {
                 let localPath = tempPath + srcAbsolutePath(file)
 

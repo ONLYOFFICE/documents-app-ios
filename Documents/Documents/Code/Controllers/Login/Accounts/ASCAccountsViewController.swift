@@ -235,6 +235,15 @@ class ASCAccountsViewController: UIViewController {
                 })
                 semaphore.wait()
             }
+            
+            // Check portal version
+            requestQueue.addOperation {
+                let semaphore = DispatchSemaphore(value: 0)
+                self.checkServersVersion(baseUrl, completion: { success, errorMessage in
+                    semaphore.signal()
+                })
+                semaphore.wait()
+            }
 
             // Check read user info
             requestQueue.addOperation {

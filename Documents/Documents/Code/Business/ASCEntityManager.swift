@@ -817,6 +817,7 @@ class ASCEntityManager: NSObject, UITextFieldDelegate {
         // Read Structure
 
         let operationQueue = OperationQueue()
+        let structureQueue = DispatchQueue(label: "asc.transfer.structures", attributes: .concurrent)
         operationQueue.maxConcurrentOperationCount = 1
 
         operationQueue.addOperation {
@@ -842,11 +843,14 @@ class ASCEntityManager: NSObject, UITextFieldDelegate {
                             // Files
                             // let files = provider.items.compactMap { $0 as? ASCFile }
 
-                            structures.append((
-                                srcFolder: folder,
-                                localFolder: nil,
-                                dstFolder: nil,
-                                items: provider.items))
+                            structureQueue.sync(flags: .barrier) {
+                                structures.append((
+                                    srcFolder: folder,
+                                    localFolder: nil,
+                                    dstFolder: nil,
+                                    items: provider.items)
+                                )
+                            }
                         }
 
                         handler(commonProgress, false, false, nil, nil, &cancel)

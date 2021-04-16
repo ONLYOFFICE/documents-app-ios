@@ -49,7 +49,7 @@ class ASCFileCell: MGSwipeTableCell {
         super.setSelected(selected, animated: animated)
 
         selectedBackgroundView = UIView()
-        selectedBackgroundView?.backgroundColor = UIColor(named: "table-cell-selected")
+        selectedBackgroundView?.backgroundColor = Asset.Colors.tableCellSelected.color
     }
 
     func updateData() {
@@ -114,14 +114,14 @@ class ASCFileCell: MGSwipeTableCell {
                 icon?.alpha = 0
                 
                 guard let provider = provider else {
-                    icon?.image = UIImage(named: "list-format-image")
+                    icon?.image = Asset.Images.listFormatImage.image
                     return
                 }
 
                 icon?.kf.setProviderImage(
                     with: provider.absoluteUrl(from: fileInfo.viewUrl),
                     for: provider,
-                    placeholder: UIImage(named: "list-format-image"),
+                    placeholder: Asset.Images.listFormatImage.image,
                     completionHandler: { [weak self] result in
                         switch result {
                         case .success(_):
@@ -137,20 +137,20 @@ class ASCFileCell: MGSwipeTableCell {
                     }
                 )
             } else {
-                icon?.image = UIImage(named: "list-format-image")
+                icon?.image = Asset.Images.listFormatImage.image
             }
         } else if ASCConstants.FileExtensions.documents.contains(fileExt) {
-            icon?.image = UIImage(named: "list-format-document")
+            icon?.image = Asset.Images.listFormatDocument.image
         } else if ASCConstants.FileExtensions.spreadsheets.contains(fileExt) {
-            icon?.image = UIImage(named: "list-format-spreadsheet")
+            icon?.image = Asset.Images.listFormatSpreadsheet.image
         } else if ASCConstants.FileExtensions.presentations.contains(fileExt) {
-            icon?.image = UIImage(named: "list-format-presentation")
+            icon?.image = Asset.Images.listFormatPresentation.image
         } else if ASCConstants.FileExtensions.videos.contains(fileExt) {
-            icon?.image = UIImage(named: "list-format-video")
+            icon?.image = Asset.Images.listFormatVideo.image
         } else if fileExt == "pdf" {
-            icon?.image = UIImage(named: "list-format-pdf")
+            icon?.image = Asset.Images.listFormatPdf.image
         } else {
-            icon?.image = UIImage(named: "list-format-unknown")
+            icon?.image = Asset.Images.listFormatUnknown.image
         }
         
         if let rootFolderType = file?.parent?.rootFolderType {

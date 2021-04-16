@@ -488,7 +488,7 @@ class ASCDocumentsViewController: UITableViewController, UIGestureRecognizerDele
             
             moreController.addAction(
                 UIAlertAction(
-                    title: NSLocalizedString("Cancel", comment: "Button title"),
+                    title: ASCLocalization.Common.cancel,
                     style: .cancel,
                     handler: nil)
             )
@@ -568,15 +568,15 @@ class ASCDocumentsViewController: UITableViewController, UIGestureRecognizerDele
     
     private func configureNavigationBar(animated: Bool = true) {
         addBarButton = addBarButton
-            ?? ASCStyles.createBarButton(image: UIImage(named: "nav-add"), target: self, action:#selector(onAddEntityAction))
+            ?? ASCStyles.createBarButton(image: Asset.Images.navAdd.image, target: self, action:#selector(onAddEntityAction))
         sortSelectBarButton = sortSelectBarButton
-            ?? ASCStyles.createBarButton(image: UIImage(named: "nav-more"), target: self, action:#selector(onSortSelectAction))
+            ?? ASCStyles.createBarButton(image: Asset.Images.navMore.image, target: self, action:#selector(onSortSelectAction))
         sortBarButton = sortBarButton
-            ?? ASCStyles.createBarButton(image: UIImage(named: "nav-sort"), target: self, action: #selector(onSortAction))
+            ?? ASCStyles.createBarButton(image: Asset.Images.navSort.image, target: self, action: #selector(onSortAction))
         selectBarButton = selectBarButton
-            ?? ASCStyles.createBarButton(image: UIImage(named: "nav-select"), target: self, action: #selector(onSelectAction))
+            ?? ASCStyles.createBarButton(image: Asset.Images.navSelect.image, target: self, action: #selector(onSelectAction))
         cancelBarButton = cancelBarButton
-            ?? ASCStyles.createBarButton(title: NSLocalizedString("Cancel", comment: "Button title"), target: self, action: #selector(onCancelAction))
+            ?? ASCStyles.createBarButton(title: ASCLocalization.Common.cancel, target: self, action: #selector(onCancelAction))
         selectAllBarButton = selectAllBarButton
             ?? ASCStyles.createBarButton(title: NSLocalizedString("Select", comment: "Button title"), target: self, action: #selector(onSelectAll))
         
@@ -660,37 +660,37 @@ class ASCDocumentsViewController: UITableViewController, UIGestureRecognizerDele
 
         // Move
         if !isTrash && (isDevice || !(isShared || isProjectRoot || isGuest)) {
-            items.append(createBarButton(UIImage(named: "bar-move")!, #selector(onMoveSelected)))
+            items.append(createBarButton(Asset.Images.barMove.image, #selector(onMoveSelected)))
             items.append(barFlexSpacer)
         }
         
         // Copy
         if !isTrash {
-            items.append(createBarButton(UIImage(named: "bar-copy")!, #selector(onCopySelected)))
+            items.append(createBarButton(Asset.Images.barCopy.image, #selector(onCopySelected)))
             items.append(barFlexSpacer)
         }
         
         // Restore
         if isTrash {
-            items.append(createBarButton(UIImage(named: "bar-recover")!, #selector(onMoveSelected)))
+            items.append(createBarButton(Asset.Images.barRecover.image, #selector(onMoveSelected)))
             items.append(barFlexSpacer)
         }
         
         // Remove from list
         if isShared {
-            items.append(createBarButton(UIImage(named: "bar-delete-link")!, #selector(onTrashSelected)))
+            items.append(createBarButton(Asset.Images.barDeleteLink.image, #selector(onTrashSelected)))
             items.append(barFlexSpacer)
         }
         
         // Remove
         if isDevice || !(isShared || isProjectRoot || isGuest) {
-            items.append(createBarButton(UIImage(named: "bar-delete")!, #selector(onTrashSelected)))
+            items.append(createBarButton(Asset.Images.barDelete.image, #selector(onTrashSelected)))
             items.append(barFlexSpacer)
         }
         
         // Remove all
         if isTrash {
-            items.append(UIBarButtonItem(image: UIImage(named: "bar-delete-all")!, style: .plain, target: self, action: #selector(onEmptyTrashSelected)))
+            items.append(UIBarButtonItem(image: Asset.Images.barDeleteAll.image, style: .plain, target: self, action: #selector(onEmptyTrashSelected)))
             items.append(barFlexSpacer)
         }
         
@@ -1182,7 +1182,7 @@ class ASCDocumentsViewController: UITableViewController, UIGestureRecognizerDele
         // Restore
         let restore = MGSwipeButton(
             title: NSLocalizedString("Restore", comment: "Button title"),
-            icon:  UIImage(named: "list-menu-restore"),
+            icon:  Asset.Images.listMenuRestore.image,
             backgroundColor: ASCConstants.Colors.grey)
         { [unowned self] (cell) -> Bool in
             self.recover(cell: cell)
@@ -1192,7 +1192,7 @@ class ASCDocumentsViewController: UITableViewController, UIGestureRecognizerDele
         // Delete
         let delete = MGSwipeButton(
             title: NSLocalizedString("Delete", comment: "Button title"),
-            icon:  UIImage(named: "list-menu-trash"),
+            icon:  Asset.Images.listMenuTrash.image,
             backgroundColor: ASCConstants.Colors.red
         )
         delete.callback = { [unowned self] (cell) -> Bool in
@@ -1230,7 +1230,7 @@ class ASCDocumentsViewController: UITableViewController, UIGestureRecognizerDele
             } else {
                 alertDelete.addAction(
                     UIAlertAction(
-                        title: NSLocalizedString("Cancel", comment: ""),
+                        title: ASCLocalization.Common.cancel,
                         style: .cancel,
                         handler: { (action) in
                             cell.hideSwipe(animated: true)
@@ -1247,7 +1247,7 @@ class ASCDocumentsViewController: UITableViewController, UIGestureRecognizerDele
         // Download
         let download = MGSwipeButton(
             title: NSLocalizedString("Download", comment: "Button title"),
-            icon:  UIImage(named: "list-menu-download"),
+            icon: Asset.Images.listMenuDownload.image,
             backgroundColor: ASCConstants.Colors.grey)
         { [unowned self] (cell) -> Bool in
             self.download(cell: cell)
@@ -1257,7 +1257,7 @@ class ASCDocumentsViewController: UITableViewController, UIGestureRecognizerDele
         // Rename
         let rename = MGSwipeButton(
         title: NSLocalizedString("Rename", comment: "Button title"),
-        icon:  UIImage(named: "list-menu-rename"),
+            icon: Asset.Images.listMenuRename.image,
         backgroundColor: ASCConstants.Colors.grey)
         { [unowned self] (cell) -> Bool in
             self.rename(cell: cell)
@@ -1267,7 +1267,7 @@ class ASCDocumentsViewController: UITableViewController, UIGestureRecognizerDele
         // Copy
         let copy = MGSwipeButton(
             title: NSLocalizedString("Copy", comment: "Button title"),
-            icon:  UIImage(named: "list-menu-copy"),
+            icon: Asset.Images.listMenuCopy.image,
             backgroundColor: ASCConstants.Colors.grey)
         { [unowned self] (cell) -> Bool in
             self.copy(cell: cell)
@@ -1277,7 +1277,7 @@ class ASCDocumentsViewController: UITableViewController, UIGestureRecognizerDele
         // More
         let more = MGSwipeButton(
             title: NSLocalizedString("More", comment: "Button title"),
-            icon:  UIImage(named: "list-menu-more"),
+            icon: Asset.Images.listMenuMore.image,
             backgroundColor: ASCConstants.Colors.lightGrey
         )
         more.callback = { [unowned self] (swipedCell) -> Bool in
@@ -1329,7 +1329,7 @@ class ASCDocumentsViewController: UITableViewController, UIGestureRecognizerDele
         // Restore
         let restore = MGSwipeButton(
             title: NSLocalizedString("Restore", comment: "Button title"),
-            icon:  UIImage(named: "list-menu-restore"),
+            icon: Asset.Images.listMenuRestore.image,
             backgroundColor: ASCConstants.Colors.grey)
         { [unowned self] (cell) -> Bool in
             self.recover(cell: cell)
@@ -1339,7 +1339,7 @@ class ASCDocumentsViewController: UITableViewController, UIGestureRecognizerDele
         // Delete
         let delete = MGSwipeButton(
             title: NSLocalizedString("Delete", comment: "Button title"),
-            icon:  UIImage(named: "list-menu-trash"),
+            icon: Asset.Images.listMenuTrash.image,
             backgroundColor: ASCConstants.Colors.red
         )
         delete.callback = { [unowned self] (cell) -> Bool in
@@ -1379,7 +1379,7 @@ class ASCDocumentsViewController: UITableViewController, UIGestureRecognizerDele
             } else {
                 alertDelete.addAction(
                     UIAlertAction(
-                        title: NSLocalizedString("Cancel", comment: ""),
+                        title: ASCLocalization.Common.cancel,
                         style: .cancel,
                         handler: { (action) in
                             cell.hideSwipe(animated: true)
@@ -1396,7 +1396,7 @@ class ASCDocumentsViewController: UITableViewController, UIGestureRecognizerDele
         // Rename
         let rename = MGSwipeButton(
             title: NSLocalizedString("Rename", comment: "Button title"),
-            icon:  UIImage(named: "list-menu-rename"),
+            icon: Asset.Images.listMenuRename.image,
             backgroundColor: ASCConstants.Colors.grey)
         { [unowned self] (cell) -> Bool in
             self.rename(cell: cell)
@@ -1406,7 +1406,7 @@ class ASCDocumentsViewController: UITableViewController, UIGestureRecognizerDele
         // Copy
         let copy = MGSwipeButton(
             title: NSLocalizedString("Copy", comment: "Button title"),
-            icon:  UIImage(named: "list-menu-copy"),
+            icon: Asset.Images.listMenuCopy.image,
             backgroundColor: ASCConstants.Colors.grey)
         { [unowned self] (cell) -> Bool in
             self.copy(cell: cell)
@@ -1416,7 +1416,7 @@ class ASCDocumentsViewController: UITableViewController, UIGestureRecognizerDele
         // More
         let more = MGSwipeButton(
             title: NSLocalizedString("More", comment: "Button title"),
-            icon:  UIImage(named: "list-menu-more"),
+            icon: Asset.Images.listMenuMore.image,
             backgroundColor: ASCConstants.Colors.lightGrey
         )
         more.callback = { [unowned self] (swipedCell) -> Bool in
@@ -2077,7 +2077,7 @@ class ASCDocumentsViewController: UITableViewController, UIGestureRecognizerDele
         if UIDevice.phone {
             actionAlertController.addAction(
                 UIAlertAction(
-                    title: NSLocalizedString("Cancel", comment: "Button title"),
+                    title: ASCLocalization.Common.cancel,
                     style: .cancel,
                     handler: { (action) in
                         cell.hideSwipe(animated: true)
@@ -2180,7 +2180,7 @@ class ASCDocumentsViewController: UITableViewController, UIGestureRecognizerDele
         if UIDevice.phone {
             actionAlertController.addAction(
                 UIAlertAction(
-                    title: NSLocalizedString("Cancel", comment: "Button title"),
+                    title: ASCLocalization.Common.cancel,
                     style: .cancel,
                     handler: { (action) in
                         cell.hideSwipe(animated: true)
@@ -2956,7 +2956,7 @@ class ASCDocumentsViewController: UITableViewController, UIGestureRecognizerDele
 
                     alertController.addAction(
                         UIAlertAction(
-                            title: NSLocalizedString("Cancel", comment: ""),
+                            title: ASCLocalization.Common.cancel,
                             style: .cancel,
                             handler: { action in
                                 complation(false, true)
@@ -3373,7 +3373,7 @@ class ASCDocumentsViewController: UITableViewController, UIGestureRecognizerDele
             if UIDevice.phone {
                 deleteController.addAction(
                     UIAlertAction(
-                        title: NSLocalizedString("Cancel", comment: ""),
+                        title: ASCLocalization.Common.cancel,
                         style: .cancel,
                         handler: nil
                     )

@@ -52,11 +52,11 @@ class ASCShareCell: UITableViewCell {
             {
                 avatar?.kf.indicatorType = .activity
                 avatar?.kf.apiSetImage(with: userAvatarUrl,
-                                       placeholder: UIImage(named: "avatar-default"))
+                                       placeholder: Asset.Images.avatarDefault.image)
             }
             title?.text = user.displayName ?? NSLocalizedString("Unknown", comment: "")
         } else if let group = shareInfo.group {
-            avatar?.image = UIImage(named: "avatar-default-group")
+            avatar?.image = Asset.Images.avatarDefaultGroup.image
             title?.text = group.name ?? NSLocalizedString("Unknown", comment: "")
         }
         

@@ -172,7 +172,7 @@ class ASCConnectPortalViewController: UIViewController, UITextFieldDelegate {
                     
                     if errorInfo == nil && useProtocols.count > 0 {
                         let alertController = UIAlertController.alert(
-                            NSLocalizedString("Error", comment: ""),
+                            ASCLocalization.Common.error,
                             message: String(format: "%@ %@", errorMessage, NSLocalizedString("Try to connect via another protocol?", comment: "")),
                             actions: [])
                             .okable() { _ in
@@ -235,7 +235,7 @@ class ASCConnectPortalViewController: UIViewController, UITextFieldDelegate {
                 strongSelf.addressField?.errorMessage = error ?? NSLocalizedString("The portal address is invalid", comment: "")
             } else if let error = error {
                 let alertController = UIAlertController(
-                    title: NSLocalizedString("Error", comment:""),
+                    title: ASCLocalization.Common.error,
                     message: error,
                     preferredStyle: .alert,
                     tintColor: nil
@@ -245,7 +245,7 @@ class ASCConnectPortalViewController: UIViewController, UITextFieldDelegate {
                     strongSelf.showSignIn()
                 }))
                 
-                alertController.addAction(UIAlertAction(title: NSLocalizedString("Cancel", comment: ""), style: .cancel, handler: { action in
+                alertController.addAction(UIAlertAction(title: ASCLocalization.Common.cancel, style: .cancel, handler: { action in
                     //
                 }))
                 

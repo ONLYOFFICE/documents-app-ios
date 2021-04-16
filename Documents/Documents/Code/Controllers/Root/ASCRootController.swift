@@ -51,10 +51,10 @@ class ASCRootController: UITabBarController {
 
             if UIDevice.pad {
                 deviceSC.tabBarItem.title = NSLocalizedString("On iPad", comment: "")
-                deviceSC.tabBarItem.image = allowFaceId ? UIImage(named: "tab-ipad-new") : UIImage(named: "tab-ipad")
+                deviceSC.tabBarItem.image = allowFaceId ? Asset.Images.tabIpadNew.image : Asset.Images.tabIpad.image
             } else {
                 deviceSC.tabBarItem.title = NSLocalizedString("On iPhone", comment: "")
-                deviceSC.tabBarItem.image = allowFaceId ? UIImage(named: "tab-iphone-x") : UIImage(named: "tab-iphone")
+                deviceSC.tabBarItem.image = allowFaceId ? Asset.Images.tabIphoneX.image : Asset.Images.tabIphone.image
             }
         }
 

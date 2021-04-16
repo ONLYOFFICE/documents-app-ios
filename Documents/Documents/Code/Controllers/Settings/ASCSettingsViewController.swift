@@ -35,7 +35,7 @@ class ASCSettingsViewController: UITableViewController, MFMailComposeViewControl
         compressImagesSwitch?.isOn = UserDefaults.standard.bool(forKey: ASCConstants.SettingsKeys.compressImage)
         previewFilesSwitch?.isOn = UserDefaults.standard.bool(forKey: ASCConstants.SettingsKeys.previewFiles)
         
-        navigationController?.view.backgroundColor = UIColor(named: "table-background")
+        navigationController?.view.backgroundColor = Asset.Colors.tableBackground.color
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -187,7 +187,7 @@ class ASCSettingsViewController: UITableViewController, MFMailComposeViewControl
                 }
             }
         }
-        let cancelAction = UIAlertAction(title: NSLocalizedString("Cancel", comment: ""), style: .cancel)
+        let cancelAction = UIAlertAction(title: ASCLocalization.Common.cancel, style: .cancel)
         
         alertController.addAction(deleteAction)
         alertController.addAction(cancelAction)

@@ -131,7 +131,7 @@ class ASCEditorManager: NSObject, DEEditorDelegate, SEEditorDelegate, PEEditorDe
         
         // Prepare to use custom fonts
         DocumentLocalConverter.prepareFonts { appFontsCache in
-            log.info("Prepare application fonts cache in: \(appFontsCache ?? "ERROR")")
+            log.info("Prepare application fonts cache in: \(appFontsCache ?? ASCLocalization.Common.error)")
             if UIDevice.allowEditor {
                 SEEditorContext.sharedInstance().fontsPaths = ASCEditorManager.shared.editorFontsPaths
                 SEEditorContext.sharedInstance().dataFontsPath = ASCEditorManager.shared.dataFontsPath

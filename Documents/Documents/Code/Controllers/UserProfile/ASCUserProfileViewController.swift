@@ -58,15 +58,15 @@ class ASCUserProfileViewController: UITableViewController {
             if let avatar = user.avatarRetina ?? user.avatar,
                 let avatarUrl = ASCOnlyOfficeApi.absoluteUrl(from: URL(string: avatar)) {
                 avatarView.kf.apiSetImage(with: avatarUrl,
-                                          placeholder: UIImage(named: "avatar-default"))
+                                          placeholder: Asset.Images.avatarDefault.image)
             } else {
-                avatarView.image = UIImage(named: "avatar-default")
+                avatarView.image = Asset.Images.avatarDefault.image
             }
         } else {
             userNameLabel.text = "-"
             portalLabel.text = "-"
             emailLabel.text = "-"
-            avatarView.image = UIImage(named: "avatar-default")
+            avatarView.image = Asset.Images.avatarDefault.image
         }
     }
     
@@ -155,7 +155,7 @@ class ASCUserProfileViewController: UITableViewController {
             if let avatar = user.avatarRetina ?? user.avatar,
                 let avatarUrl = ASCOnlyOfficeApi.absoluteUrl(from: URL(string: avatar)) {
                 avatarView?.kf.apiSetImage(with: avatarUrl,
-                                           placeholder: UIImage(named: "avatar-default"))
+                                           placeholder: Asset.Images.avatarDefault.image)
             }
         }
     }

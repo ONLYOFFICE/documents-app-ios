@@ -399,7 +399,7 @@ extension ASCAccountsViewController: UICollectionViewDataSource {
             let avatarUrl = absoluteUrl(from: URL(string: account.avatar ?? ""), for: account.portal ?? "")
 
             cell.imageView.kf.apiSetImage(with: avatarUrl,
-                                          placeholder: UIImage(named: "avatar-default"))
+                                          placeholder: Asset.Images.avatarDefault.image)
 
             return cell
         }

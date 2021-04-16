@@ -252,7 +252,7 @@ class ASCCreateEntity: NSObject, UIImagePickerControllerDelegate, UINavigationCo
 
                 }
             })
-            let cancelAction = UIAlertAction(title: NSLocalizedString("Cancel", comment: ""), style: .default, handler: nil)
+            let cancelAction = UIAlertAction(title: ASCLocalization.Common.cancel, style: .default, handler: nil)
             cameraUnavailableAlertController.addAction(settingsAction)
             cameraUnavailableAlertController.addAction(cancelAction)
             viewController.present(cameraUnavailableAlertController , animated: true, completion: nil)

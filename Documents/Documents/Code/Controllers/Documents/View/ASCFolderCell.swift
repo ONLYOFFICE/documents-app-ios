@@ -43,7 +43,7 @@ class ASCFolderCell: MGSwipeTableCell {
         super.setSelected(selected, animated: animated)
 
         selectedBackgroundView = UIView()
-        selectedBackgroundView?.backgroundColor = UIColor(named: "table-cell-selected")
+        selectedBackgroundView?.backgroundColor = Asset.Colors.tableCellSelected.color
     }
 
     func updateData() {
@@ -58,25 +58,25 @@ class ASCFolderCell: MGSwipeTableCell {
         owner?.text = folderInfo.createdBy?.displayName ?? NSLocalizedString("Unknown", comment: "Invalid entity name")
         date?.text = (folderInfo.created != nil) ? dateFormatter.string(from: folderInfo.created!) : nil
 
-        icon.image = UIImage(named: "list-folder")
+        icon.image = Asset.Images.listFolder.image
 
         if let provider = folder?.providerType {
             switch provider {
             case .boxNet:
-                icon.image = UIImage(named: "list-folder-boxnet")
+                icon.image = Asset.Images.listFolderBoxnet.image
             case .dropBox:
-                icon.image = UIImage(named: "list-folder-dropbox")
+                icon.image = Asset.Images.listFolderDropbox.image
             case .google,
                  .googleDrive:
-                icon.image = UIImage(named: "list-folder-googledrive")
+                icon.image = Asset.Images.listFolderGoogledrive.image
             case .sharePoint,
                  .skyDrive,
                  .oneDrive:
-                icon.image = UIImage(named: "list-folder-onedrive")
+                icon.image = Asset.Images.listFolderOnedrive.image
             case .webDav:
-                icon.image = UIImage(named: "list-folder-webdav")
+                icon.image = Asset.Images.listFolderWebdav.image
             case .yandex:
-                icon.image = UIImage(named: "list-folder-yandexdisk")
+                icon.image = Asset.Images.listFolderYandexdisk.image
             default:
                 break
             }

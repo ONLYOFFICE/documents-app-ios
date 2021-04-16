@@ -204,12 +204,12 @@ class ASCViewControllerManager {
                 WhatsNew.Item(
                     title: NSLocalizedString("Comments", comment: ""),
                     subtitle: NSLocalizedString("Use comments to add notes, suggestions, or questions for your collaborators. Edit, answer, resolve or delete them in process.", comment: ""),
-                    image: UIImage(named: "whatsnew-future-comments")
+                    image: Asset.Images.whatsnewFutureComments.image
                 ),
                 WhatsNew.Item(
                     title: NSLocalizedString("Reviewing", comment: ""),
                     subtitle: NSLocalizedString("Use Track Changes mode in text documents to suggest changes, accept or reject them.", comment: ""),
-                    image: UIImage(named: "whatsnew-future-review")
+                    image: Asset.Images.whatsnewFutureReview.image
                 )
             ]
         )
@@ -306,7 +306,7 @@ class ASCViewControllerManager {
 
             alertController.addAction(
                 UIAlertAction(
-                    title: NSLocalizedString("Cancel", comment: ""),
+                    title: ASCLocalization.Common.cancel,
                     style: .cancel,
                     handler: nil
                 )

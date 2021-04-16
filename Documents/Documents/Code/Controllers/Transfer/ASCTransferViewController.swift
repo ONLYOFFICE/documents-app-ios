@@ -33,22 +33,22 @@ class ASCTransferViewController: UITableViewController {
         }
     }
 
-    fileprivate let providerImageName: ((_ type: ASCFileProviderType) -> String?) = { type in
+    fileprivate let providerImage: ((_ type: ASCFileProviderType) -> UIImage?) = { type in
         switch type {
         case .googledrive:
-            return "cloud-google-drive"
+            return Asset.Images.cloudGoogleDrive.image
         case .dropbox:
-            return "cloud-dropbox"
+            return Asset.Images.cloudDropbox.image
         case .nextcloud:
-            return "cloud-nextcloud"
+            return Asset.Images.cloudNextcloud.image
         case .owncloud:
-            return "cloud-owncloud"
+            return Asset.Images.cloudOwncloud.image
         case .yandex:
-            return "cloud-yandex-disk"
+            return Asset.Images.cloudYandexDisk.image
         case .webdav:
-            return "cloud-webdav"
+            return Asset.Images.cloudWebdav.image
         case .icloud:
-            return "cloud-icloud"
+            return Asset.Images.cloudIcloud.image
         default:
             return nil
         }
@@ -349,12 +349,12 @@ class ASCTransferViewController: UITableViewController {
                 if itemInfo.folder.parent == nil {
                     var folderImage: UIImage? = nil
 
-                    if let provider = itemInfo.provider, let imageName = providerImageName(provider.type) {
-                        folderImage = UIImage(named: imageName)
+                    if let provider = itemInfo.provider {
+                        folderImage = providerImage(provider.type)
                     }
 
                     if itemInfo.folder.id == "id-onlyoffice-root" {
-                        folderImage = UIImage(named: "tab-onlyoffice")
+                        folderImage = Asset.Images.tabOnlyoffice.image
                     }
 
                     switch itemInfo.folder.rootFolderType {
@@ -362,22 +362,22 @@ class ASCTransferViewController: UITableViewController {
                         let allowFaceId = UIDevice.device.isFaceIDCapable
 
                         if UIDevice.pad {
-                            folderImage = allowFaceId ? UIImage(named: "category-ipad-new") : UIImage(named: "category-ipad")
+                            folderImage = allowFaceId ? Asset.Images.categoryIpadNew.image : Asset.Images.categoryIpad.image
                         } else {
-                            folderImage = allowFaceId ? UIImage(named: "category-iphone-new") : UIImage(named: "category-iphone")
+                            folderImage = allowFaceId ? Asset.Images.categoryIphoneNew.image : Asset.Images.categoryIphone.image
                         }
                         break
                     case .onlyofficeUser:
-                        folderImage = UIImage(named: "category-my")
+                        folderImage = Asset.Images.categoryMy.image
                         break
                     case .onlyofficeShare:
-                        folderImage = UIImage(named: "category-share")
+                        folderImage = Asset.Images.categoryShare.image
                         break
                     case .onlyofficeCommon:
-                        folderImage = UIImage(named: "category-common")
+                        folderImage = Asset.Images.categoryCommon.image
                         break
                     case .onlyofficeBunch, .onlyofficeProjects:
-                        folderImage = UIImage(named: "category-projects")
+                        folderImage = Asset.Images.categoryProjects.image
                         break
                     default:
                         break

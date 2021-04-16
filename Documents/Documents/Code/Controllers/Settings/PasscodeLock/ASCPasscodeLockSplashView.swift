@@ -13,7 +13,7 @@ class ASCPasscodeLockSplashView: UIView {
     // MARK: - Properties
     
     fileprivate lazy var logo: UIImageView = {
-        let image = UIImage(named: "passcode-lock-splash")
+        let image = Asset.Images.passcodeLockSplash.image
         let view = UIImageView(image: image)
         view.contentMode = UIView.ContentMode.center
         view.translatesAutoresizingMaskIntoConstraints = false

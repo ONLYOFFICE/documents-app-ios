@@ -255,7 +255,7 @@
 		FC36D33225B5C32200412DDB /* ASCFileCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FC301A24230D6F1F00DC25CA /* ASCFileCell.xib */; };
 		FC36D33325B5C32200412DDB /* ASCCreateEntityView.xib in Resources */ = {isa = PBXBuildFile; fileRef = FC68626622E84DDE00AD03D2 /* ASCCreateEntityView.xib */; };
 		FC36D33425B5C32200412DDB /* Debug.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FC4D0A1C2494F5EA001EF1B5 /* Debug.storyboard */; };
-		FC36D33525B5C32200412DDB /* Documents.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FCFDAA971E48A10C007A240C /* Documents.xcassets */; };
+		FC36D33525B5C32200412DDB /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FCFDAA971E48A10C007A240C /* Images.xcassets */; };
 		FC36D33625B5C32200412DDB /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = FC7B37D51E929B46009C41AD /* Settings.bundle */; };
 		FC36D33725B5C32200412DDB /* PasscodeLock.strings in Resources */ = {isa = PBXBuildFile; fileRef = FCEF9D041ED2C94300627BA5 /* PasscodeLock.strings */; };
 		FC36D33825B5C32200412DDB /* UserProfile.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FCC396461ECDC6BD0016BB10 /* UserProfile.storyboard */; };
@@ -447,6 +447,10 @@
 		FCDA61001EA0ED6800A12E16 /* ASCTransferNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCDA60FF1EA0ED6800A12E16 /* ASCTransferNavigationController.swift */; };
 		FCDB31A61E7BD46800907FC0 /* ASCViewControllerManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCDB31A51E7BD46800907FC0 /* ASCViewControllerManager.swift */; };
 		FCDB31A81E7C116E00907FC0 /* ASCConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCDB31A71E7C116E00907FC0 /* ASCConstants.swift */; };
+		FCE186222628C65F0086D21B /* Colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FCE186212628C65F0086D21B /* Colors.xcassets */; };
+		FCE186232628C65F0086D21B /* Colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FCE186212628C65F0086D21B /* Colors.xcassets */; };
+		FCE1864A2628CFE70086D21B /* Assets.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCE186492628CFE70086D21B /* Assets.swift */; };
+		FCE1864B2628CFE70086D21B /* Assets.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCE186492628CFE70086D21B /* Assets.swift */; };
 		FCE1F63F1EDC338100D9DE17 /* CreatePortal.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FCE1F6411EDC338100D9DE17 /* CreatePortal.storyboard */; };
 		FCE1F6461EDC456700D9DE17 /* ASCCreatePortalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCE1F6451EDC456700D9DE17 /* ASCCreatePortalViewController.swift */; };
 		FCE35DD61E9E7BC100BC2B68 /* Sort.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FCE35DD81E9E7BC100BC2B68 /* Sort.storyboard */; };
@@ -488,7 +492,7 @@
 		FCF916CA1ED44F3A0032C135 /* Localizable.stringsdict in Resources */ = {isa = PBXBuildFile; fileRef = FCF916C81ED44F3A0032C135 /* Localizable.stringsdict */; };
 		FCFB36071EDF0AB00001597E /* ASCBanner.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCFB36061EDF0AB00001597E /* ASCBanner.swift */; };
 		FCFDAA911E48A10C007A240C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCFDAA901E48A10C007A240C /* AppDelegate.swift */; };
-		FCFDAA981E48A10C007A240C /* Documents.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FCFDAA971E48A10C007A240C /* Documents.xcassets */; };
+		FCFDAA981E48A10C007A240C /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FCFDAA971E48A10C007A240C /* Images.xcassets */; };
 		FCFDAA9B1E48A10C007A240C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FCFDAA991E48A10C007A240C /* LaunchScreen.storyboard */; };
 /* End PBXBuildFile section */
 
@@ -750,6 +754,8 @@
 		FCDA60FF1EA0ED6800A12E16 /* ASCTransferNavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASCTransferNavigationController.swift; sourceTree = "<group>"; };
 		FCDB31A51E7BD46800907FC0 /* ASCViewControllerManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASCViewControllerManager.swift; sourceTree = "<group>"; };
 		FCDB31A71E7C116E00907FC0 /* ASCConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASCConstants.swift; sourceTree = "<group>"; };
+		FCE186212628C65F0086D21B /* Colors.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Colors.xcassets; sourceTree = "<group>"; };
+		FCE186492628CFE70086D21B /* Assets.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Assets.swift; sourceTree = "<group>"; };
 		FCE1F6401EDC338100D9DE17 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/CreatePortal.storyboard; sourceTree = "<group>"; };
 		FCE1F6431EDC33C900D9DE17 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/CreatePortal.strings; sourceTree = "<group>"; };
 		FCE1F6451EDC456700D9DE17 /* ASCCreatePortalViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASCCreatePortalViewController.swift; sourceTree = "<group>"; };
@@ -862,7 +868,7 @@
 		FCFB36061EDF0AB00001597E /* ASCBanner.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASCBanner.swift; sourceTree = "<group>"; };
 		FCFDAA8D1E48A10C007A240C /* Documents.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Documents.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FCFDAA901E48A10C007A240C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		FCFDAA971E48A10C007A240C /* Documents.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Documents.xcassets; sourceTree = "<group>"; };
+		FCFDAA971E48A10C007A240C /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		FCFDAA9A1E48A10C007A240C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		FF1B246C8E6383E9C844D7A7 /* Pods-DocumentsTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DocumentsTests.debug.xcconfig"; path = "../Pods/Target Support Files/Pods-DocumentsTests/Pods-DocumentsTests.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -1350,6 +1356,7 @@
 				FC31B2881E76C168008699C3 /* Controllers */,
 				FC31B2851E76C01B008699C3 /* Extensions */,
 				FCEF9D021ED2C94300627BA5 /* Vendor */,
+				FCE186482628CFE70086D21B /* Generated */,
 				FC65B6B91EBA0AAF00AE73BB /* Bridge */,
 			);
 			path = Code;
@@ -1453,6 +1460,8 @@
 		FCC62AD01E8A8D7B00D24BE2 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				FCFDAA971E48A10C007A240C /* Images.xcassets */,
+				FCE186212628C65F0086D21B /* Colors.xcassets */,
 				FC0C1CF323A8E11F0067894D /* fonts */,
 				FC156CF426170A660015835A /* new */,
 				FC156CEE261708A00015835A /* sample */,
@@ -1503,6 +1512,14 @@
 				FCF8045A212E94A300378AFD /* InfoPlist.strings */,
 			);
 			path = DocumentsTests;
+			sourceTree = "<group>";
+		};
+		FCE186482628CFE70086D21B /* Generated */ = {
+			isa = PBXGroup;
+			children = (
+				FCE186492628CFE70086D21B /* Assets.swift */,
+			);
+			path = Generated;
 			sourceTree = "<group>";
 		};
 		FCE1F6441EDC454A00D9DE17 /* CreatePortal */ = {
@@ -1631,7 +1648,6 @@
 				FC584ED925BB4F40001C608E /* Entitlements */,
 				FCFDAA901E48A10C007A240C /* AppDelegate.swift */,
 				FC7B37D51E929B46009C41AD /* Settings.bundle */,
-				FCFDAA971E48A10C007A240C /* Documents.xcassets */,
 				FCC62ADF1E8AA1F800D24BE2 /* InfoPlist.strings */,
 				FCC62ADA1E8AA1F700D24BE2 /* Localizable.strings */,
 				FCF916C81ED44F3A0032C135 /* Localizable.stringsdict */,
@@ -1690,6 +1706,7 @@
 			buildConfigurationList = FCFDAA9F1E48A10C007A240C /* Build configuration list for PBXNativeTarget "Documents" */;
 			buildPhases = (
 				EA743117C604D6C921D4BCD0 /* [CP] Check Pods Manifest.lock */,
+				FCE1861D2628C51F0086D21B /* SwiftGen */,
 				FCFDAA891E48A10C007A240C /* Sources */,
 				FCFDAA8A1E48A10C007A240C /* Frameworks */,
 				FCFDAA8B1E48A10C007A240C /* Resources */,
@@ -1784,7 +1801,7 @@
 				FC36D33225B5C32200412DDB /* ASCFileCell.xib in Resources */,
 				FC36D33325B5C32200412DDB /* ASCCreateEntityView.xib in Resources */,
 				FC36D33425B5C32200412DDB /* Debug.storyboard in Resources */,
-				FC36D33525B5C32200412DDB /* Documents.xcassets in Resources */,
+				FC36D33525B5C32200412DDB /* Images.xcassets in Resources */,
 				FC156CF0261708A00015835A /* sample in Resources */,
 				FC36D33625B5C32200412DDB /* Settings.bundle in Resources */,
 				FC36D33725B5C32200412DDB /* PasscodeLock.strings in Resources */,
@@ -1792,6 +1809,7 @@
 				FC36D33925B5C32200412DDB /* fonts in Resources */,
 				FC36D33A25B5C32200412DDB /* Main.storyboard in Resources */,
 				FC36D33B25B5C32200412DDB /* PasscodeLockView.xib in Resources */,
+				FCE186232628C65F0086D21B /* Colors.xcassets in Resources */,
 				FC156CF626170A660015835A /* new in Resources */,
 				FC36D33C25B5C32200412DDB /* ASCLoaderCell.xib in Resources */,
 				FC36D33D25B5C32200412DDB /* Intro.storyboard in Resources */,
@@ -1830,7 +1848,7 @@
 				FC301A26230D6F1F00DC25CA /* ASCFileCell.xib in Resources */,
 				FC68626422E84DDE00AD03D2 /* ASCCreateEntityView.xib in Resources */,
 				FC4D0A1D2494F5EA001EF1B5 /* Debug.storyboard in Resources */,
-				FCFDAA981E48A10C007A240C /* Documents.xcassets in Resources */,
+				FCFDAA981E48A10C007A240C /* Images.xcassets in Resources */,
 				FC156CEF261708A00015835A /* sample in Resources */,
 				FC7B37D61E929B46009C41AD /* Settings.bundle in Resources */,
 				FCEF9D1A1ED2C94300627BA5 /* PasscodeLock.strings in Resources */,
@@ -1838,6 +1856,7 @@
 				FC0C1CF423A8E11F0067894D /* fonts in Resources */,
 				FCF865201E4E0D1C003E47B6 /* Main.storyboard in Resources */,
 				FC5F47861F04E7E000F045DD /* PasscodeLockView.xib in Resources */,
+				FCE186222628C65F0086D21B /* Colors.xcassets in Resources */,
 				FC156CF526170A660015835A /* new in Resources */,
 				FC301A2A230D70B500DC25CA /* ASCLoaderCell.xib in Resources */,
 				FC786FBC1EB8771700181D62 /* Intro.storyboard in Resources */,
@@ -2306,6 +2325,24 @@
 			shellPath = /bin/sh;
 			shellScript = "#!/bin/bash\n\nif [ $CONFIGURATION == Release ]; then\n\n# Info.plist\nbuildNumber=$(/usr/libexec/PlistBuddy -c \"Print CFBundleVersion\" \"$INFOPLIST_FILE\")\nbuildNumber=$(($buildNumber + 1))\n/usr/libexec/PlistBuddy -c \"Set :CFBundleVersion $buildNumber\" \"$INFOPLIST_FILE\"\n\n# Settings.bundle/Root.plist\nsettings_plist=\"${SRCROOT}/Settings.bundle/Root.plist\"\nversion=$(/usr/libexec/PlistBuddy -c \"Print CFBundleShortVersionString\" \"$INFOPLIST_FILE\")\n/usr/libexec/PlistBuddy -c \"Set PreferenceSpecifiers:0:DefaultValue $version ($buildNumber)\" \"$settings_plist\"\n\nfi\n";
 		};
+		FCE1861D2628C51F0086D21B /* SwiftGen */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = SwiftGen;
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "if [[ -f \"${PODS_ROOT}/SwiftGen/bin/swiftgen\" ]]; then\n  \"${PODS_ROOT}/SwiftGen/bin/swiftgen\"\nelse\n  echo \"warning: SwiftGen is not installed. Run 'pod install --repo-update' to install it.\"\nfi\n";
+		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -2501,6 +2538,7 @@
 				FC36D31F25B5C32200412DDB /* ASCShareViewController.swift in Sources */,
 				FC36D32025B5C32200412DDB /* ASCSMSCodeViewController.swift in Sources */,
 				FC36D32125B5C32200412DDB /* ASCNetworkReachability.swift in Sources */,
+				FCE1864B2628CFE70086D21B /* Assets.swift in Sources */,
 				FC36D32225B5C32200412DDB /* ASCOnlyofficeSplitViewController.swift in Sources */,
 				FC36D32325B5C32200412DDB /* ASCFacebookSignInController.swift in Sources */,
 				FC36D32425B5C32200412DDB /* ASCFileProviderProtocol.swift in Sources */,
@@ -2735,6 +2773,7 @@
 				FC872B281EC44925001636CB /* ASCSMSCodeViewController.swift in Sources */,
 				FC1AD6142175FE7000DADEE0 /* ASCNetworkReachability.swift in Sources */,
 				FC8667D421C7941C0020D797 /* ASCOnlyofficeSplitViewController.swift in Sources */,
+				FCE1864A2628CFE70086D21B /* Assets.swift in Sources */,
 				FC64B2EB1EE56C5500920FDD /* ASCFacebookSignInController.swift in Sources */,
 				FC3AF6BB2170825B004A96FD /* ASCFileProviderProtocol.swift in Sources */,
 				FCC9C3FA1E78235800EFCA57 /* String+Extension.swift in Sources */,

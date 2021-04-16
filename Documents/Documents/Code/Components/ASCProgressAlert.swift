@@ -26,7 +26,7 @@ class ASCProgressAlert {
         // Init alert view
         actionController = UIAlertController(title: title, message: message, preferredStyle: .alert)
         
-        let cancelAction = UIAlertAction(title: NSLocalizedString("Cancel", comment: ""), style: .default) { (action) in
+        let cancelAction = UIAlertAction(title: ASCLocalization.Common.cancel, style: .default) { (action) in
             self.cleanupAlertWindow()
             handler(true)
         }

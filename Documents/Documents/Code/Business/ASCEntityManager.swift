@@ -43,7 +43,7 @@ class ASCEntityManager: NSObject, UITextFieldDelegate {
         }
         
         let alertController = UIAlertController(title: fileName, message: nil, preferredStyle: .alert)
-        let cancelAction = UIAlertAction(title: NSLocalizedString("Cancel", comment: ""), style: .cancel) { (action) in
+        let cancelAction = UIAlertAction(title: ASCLocalization.Common.cancel, style: .cancel) { (action) in
             if let textField = alertController.textFields?.first {
                 textField.selectedTextRange = nil
             }
@@ -101,7 +101,7 @@ class ASCEntityManager: NSObject, UITextFieldDelegate {
         let folderName = NSLocalizedString("New Folder", comment: "")
         
         let alertController = UIAlertController(title: NSLocalizedString("New Folder", comment: ""), message: nil, preferredStyle: .alert)
-        let cancelAction = UIAlertAction(title: NSLocalizedString("Cancel", comment: ""), style: .cancel) { (action) in
+        let cancelAction = UIAlertAction(title: ASCLocalization.Common.cancel, style: .cancel) { (action) in
             if let textField = alertController.textFields?.first {
                 textField.selectedTextRange = nil
             }
@@ -388,7 +388,7 @@ class ASCEntityManager: NSObject, UITextFieldDelegate {
         
         let entityTitle = file?.title ?? folder?.title
         let alertController = UIAlertController(title: NSLocalizedString("Rename", comment: ""), message: nil, preferredStyle: .alert)
-        let cancelAction = UIAlertAction(title: NSLocalizedString("Cancel", comment: ""), style: .cancel) { (action) in
+        let cancelAction = UIAlertAction(title: ASCLocalization.Common.cancel, style: .cancel) { (action) in
             if let textField = alertController.textFields?.first {
                 textField.selectedTextRange = nil
             }

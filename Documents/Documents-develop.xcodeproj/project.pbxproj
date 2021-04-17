@@ -1512,6 +1512,7 @@
 			buildConfigurationList = FCFDAA9F1E48A10C007A240C /* Build configuration list for PBXNativeTarget "Documents-develop" */;
 			buildPhases = (
 				69263A1271D24203D49EDD81 /* [CP] Check Pods Manifest.lock */,
+				FCCB1946262ACA20007517BB /* SwiftGen */,
 				FCFDAA891E48A10C007A240C /* Sources */,
 				FCFDAA8A1E48A10C007A240C /* Frameworks */,
 				FCFDAA8B1E48A10C007A240C /* Resources */,
@@ -1880,6 +1881,24 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "#!/bin/bash\n\nif [ $CONFIGURATION == Release ]; then\n\n# Info.plist\nbuildNumber=$(/usr/libexec/PlistBuddy -c \"Print CFBundleVersion\" \"$INFOPLIST_FILE\")\nbuildNumber=$(($buildNumber + 1))\n/usr/libexec/PlistBuddy -c \"Set :CFBundleVersion $buildNumber\" \"$INFOPLIST_FILE\"\n\n# Settings.bundle/Root.plist\nsettings_plist=\"${SRCROOT}/Settings.bundle/Root.plist\"\nversion=$(/usr/libexec/PlistBuddy -c \"Print CFBundleShortVersionString\" \"$INFOPLIST_FILE\")\n/usr/libexec/PlistBuddy -c \"Set PreferenceSpecifiers:0:DefaultValue $version ($buildNumber)\" \"$settings_plist\"\n\nfi\n\n";
+		};
+		FCCB1946262ACA20007517BB /* SwiftGen */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = SwiftGen;
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "if [[ -f \"${PODS_ROOT}/SwiftGen/bin/swiftgen\" ]]; then\n  \"${PODS_ROOT}/SwiftGen/bin/swiftgen\"\nelse\n  echo \"warning: SwiftGen is not installed. Run 'pod install --repo-update' to install it.\"\nfi\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 

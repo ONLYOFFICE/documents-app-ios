@@ -422,77 +422,34 @@ class ASCConnectCloudViewController: UITableViewController {
     // MARK: - Navigation
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "dropboxSegue" {
-            if let viewController = segue.destination as? ASCConnectStorageOAuth2ViewController {
-                viewController.complation = authComplation(info:)
-                let dropboxController = ASCConnectStorageOAuth2Dropbox()
-                viewController.delegate = dropboxController
-                viewController.title = "Dropbox"
-            }
-        } else if segue.identifier == "googleSegue" {
-            if let viewController = segue.destination as? ASCConnectStorageOAuth2ViewController {
-                viewController.complation = authComplation(info:)
-                let googleController = ASCConnectStorageOAuth2Google()
-                viewController.delegate = googleController
-                viewController.title = "Google Drive"
-            }
-        } else if segue.identifier == "onedriveSegue" {
-            if let viewController = segue.destination as? ASCConnectStorageOAuth2ViewController {
-                viewController.complation = authComplation(info:)
-                let onedriveController = ASCConnectStorageOAuth2OneDrive()
-                viewController.delegate = onedriveController
-                viewController.title = "OneDrive"
-            }
-        } else if segue.identifier == "boxSegue" {
-            if let viewController = segue.destination as? ASCConnectStorageOAuth2ViewController {
-                viewController.complation = authComplation(info:)
-                let boxController = ASCConnectStorageOAuth2Box()
-                viewController.delegate = boxController
-                viewController.title = "Box"
-            }
-        } else if segue.identifier == "yandexSegue" {
-            if let viewController = segue.destination as? ASCConnectStorageWebDavController {
-                viewController.complation = authComplation(info:)
-                viewController.title = providerName(.yandex)
-                viewController.provider = .yandex
-                viewController.needServer = false
-                viewController.logo = providerImage(.yandex)
-            }
-        } else if segue.identifier == "onedriveBusinessSegue" {
-            if let viewController = segue.destination as? ASCConnectStorageWebDavController {
-                viewController.complation = authComplation(info:)
-                viewController.title = "OneDrive for Business"
-                viewController.provider = .sharePoint
-                viewController.logo = Asset.Images.logoOnedriveproLarge.image
-            }
-        } else if segue.identifier == "nextcloudSegue" {
+        guard let identifier = segue.identifier else { return }
+        
+        let connectStorageSegue = StoryboardSegue.ConnectStorage(rawValue: identifier)
+        
+        switch connectStorageSegue {
+        case .nextcloudSegue:
             if let viewController = segue.destination as? ASCConnectStorageWebDavController {
                 viewController.complation = authComplation(info:)
                 viewController.title = providerName(.nextcloud)
                 viewController.provider = .nextCloud
                 viewController.logo = providerImage(.nextcloud)
             }
-        } else if segue.identifier == "owncloudSegue" {
+        case .owncloudSegue:
             if let viewController = segue.destination as? ASCConnectStorageWebDavController {
                 viewController.complation = authComplation(info:)
                 viewController.title = providerName(.owncloud)
                 viewController.provider = .ownCloud
                 viewController.logo = providerImage(.owncloud)
             }
-        } else if segue.identifier == "sharepointSegue" {
-            if let viewController = segue.destination as? ASCConnectStorageWebDavController {
-                viewController.complation = authComplation(info:)
-                viewController.title = "SharePoint"
-                viewController.provider = .sharePoint
-                viewController.logo = Asset.Images.logoSharepointLarge.image
-            }
-        } else if segue.identifier == "webdavSegue" {
+        case .webdavSegue:
             if let viewController = segue.destination as? ASCConnectStorageWebDavController {
                 viewController.complation = authComplation(info:)
                 viewController.title = providerName(.webdav)
                 viewController.provider = .webDav
                 viewController.logo = providerImage(.webdav)
             }
+        case .none:
+            break
         }
     }
 

@@ -451,6 +451,10 @@
 		FCE186232628C65F0086D21B /* Colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FCE186212628C65F0086D21B /* Colors.xcassets */; };
 		FCE1864A2628CFE70086D21B /* Assets.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCE186492628CFE70086D21B /* Assets.swift */; };
 		FCE1864B2628CFE70086D21B /* Assets.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCE186492628CFE70086D21B /* Assets.swift */; };
+		FCE18669262AB4AB0086D21B /* Segues.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCE18667262AB4AB0086D21B /* Segues.swift */; };
+		FCE1866A262AB4AB0086D21B /* Segues.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCE18667262AB4AB0086D21B /* Segues.swift */; };
+		FCE1866B262AB4AB0086D21B /* Scenes.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCE18668262AB4AB0086D21B /* Scenes.swift */; };
+		FCE1866C262AB4AB0086D21B /* Scenes.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCE18668262AB4AB0086D21B /* Scenes.swift */; };
 		FCE1F63F1EDC338100D9DE17 /* CreatePortal.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FCE1F6411EDC338100D9DE17 /* CreatePortal.storyboard */; };
 		FCE1F6461EDC456700D9DE17 /* ASCCreatePortalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCE1F6451EDC456700D9DE17 /* ASCCreatePortalViewController.swift */; };
 		FCE35DD61E9E7BC100BC2B68 /* Sort.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FCE35DD81E9E7BC100BC2B68 /* Sort.storyboard */; };
@@ -756,6 +760,8 @@
 		FCDB31A71E7C116E00907FC0 /* ASCConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASCConstants.swift; sourceTree = "<group>"; };
 		FCE186212628C65F0086D21B /* Colors.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Colors.xcassets; sourceTree = "<group>"; };
 		FCE186492628CFE70086D21B /* Assets.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Assets.swift; sourceTree = "<group>"; };
+		FCE18667262AB4AB0086D21B /* Segues.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Segues.swift; sourceTree = "<group>"; };
+		FCE18668262AB4AB0086D21B /* Scenes.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Scenes.swift; sourceTree = "<group>"; };
 		FCE1F6401EDC338100D9DE17 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/CreatePortal.storyboard; sourceTree = "<group>"; };
 		FCE1F6431EDC33C900D9DE17 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/CreatePortal.strings; sourceTree = "<group>"; };
 		FCE1F6451EDC456700D9DE17 /* ASCCreatePortalViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASCCreatePortalViewController.swift; sourceTree = "<group>"; };
@@ -1518,6 +1524,8 @@
 			isa = PBXGroup;
 			children = (
 				FCE186492628CFE70086D21B /* Assets.swift */,
+				FCE18668262AB4AB0086D21B /* Scenes.swift */,
+				FCE18667262AB4AB0086D21B /* Segues.swift */,
 			);
 			path = Generated;
 			sourceTree = "<group>";
@@ -2422,6 +2430,7 @@
 				FC36D2B225B5C32200412DDB /* MGSwipeButton+Extensions.swift in Sources */,
 				FC36D2B325B5C32200412DDB /* NSLayoutConstraint+Extensions.swift in Sources */,
 				FC36D2B425B5C32200412DDB /* ASCSortViewController.swift in Sources */,
+				FCE1866C262AB4AB0086D21B /* Scenes.swift in Sources */,
 				FC36D2B525B5C32200412DDB /* ASCPasscodeLockViewController.swift in Sources */,
 				FC80CA3825BADEF10077C2B8 /* EventReference.swift in Sources */,
 				FC36D2B625B5C32200412DDB /* PasscodeLock.swift in Sources */,
@@ -2477,6 +2486,7 @@
 				FC36D2E725B5C32200412DDB /* PasscodeLockPresenter.swift in Sources */,
 				FC80CA3025BADEF10077C2B8 /* Event.swift in Sources */,
 				FC36D2E825B5C32200412DDB /* ASCLogger.swift in Sources */,
+				FCE1866A262AB4AB0086D21B /* Segues.swift in Sources */,
 				FC36D2E925B5C32200412DDB /* ASCLoaderCell.swift in Sources */,
 				FC36D2EA25B5C32200412DDB /* ASCDocumentsToolbar.swift in Sources */,
 				FC36D2EB25B5C32200412DDB /* ASCEditorManager.swift in Sources */,
@@ -2657,6 +2667,7 @@
 				FCADF37A1EC9DA9A001CA4A9 /* NSLayoutConstraint+Extensions.swift in Sources */,
 				FC1755971E9CAFDB00D73D8E /* ASCSortViewController.swift in Sources */,
 				FCEF9D2E1ED2D0DC00627BA5 /* ASCPasscodeLockViewController.swift in Sources */,
+				FCE1866B262AB4AB0086D21B /* Scenes.swift in Sources */,
 				FCEF9D201ED2C94300627BA5 /* PasscodeLock.swift in Sources */,
 				FC0F01E3216F4EA7008D79A5 /* ASCWebDAVProvider.swift in Sources */,
 				FC08F8751ECB399900988DDE /* ASCConnectStorageOAuth2ViewController.swift in Sources */,
@@ -2712,6 +2723,7 @@
 				FCEF9D221ED2C94300627BA5 /* PasscodeLockPresenter.swift in Sources */,
 				FC0946B0249776D4005D54E6 /* ASCLogger.swift in Sources */,
 				FC301A29230D70B500DC25CA /* ASCLoaderCell.swift in Sources */,
+				FCE18669262AB4AB0086D21B /* Segues.swift in Sources */,
 				FCA0E5342542EF98008DDE78 /* ASCDocumentsToolbar.swift in Sources */,
 				FCA4D5AA1E79728800ADD842 /* ASCEditorManager.swift in Sources */,
 				FCA10114218348B70018867F /* ASCCategory.swift in Sources */,

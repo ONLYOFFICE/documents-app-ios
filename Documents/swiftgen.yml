@@ -5,3 +5,13 @@ xcassets:
   outputs:
     templateName: swift5
     output: Documents/Code/Generated/Assets.swift
+
+ib:
+  inputs:
+    - Documents/Base.lproj
+    - Documents/Debug.storyboard
+  outputs:
+    - templateName: scenes-swift5
+      output: Documents/Code/Generated/Scenes.swift
+    - templateName: segues-swift5
+      output: Documents/Code/Generated/Segues.swift

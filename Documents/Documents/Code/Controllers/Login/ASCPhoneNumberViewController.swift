@@ -82,7 +82,7 @@ class ASCPhoneNumberViewController: UIViewController, UITextFieldDelegate {
     
     func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
         if textField == countryCodeField {
-            performSegue(withIdentifier: "sequeShowCountry", sender: countryCodeField)
+            perform(segue: StoryboardSegue.Login.sequeShowCountry, sender: countryCodeField)
             return false
         }
         

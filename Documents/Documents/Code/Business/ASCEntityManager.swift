@@ -822,11 +822,12 @@ class ASCEntityManager: NSObject, UITextFieldDelegate {
 
         operationQueue.addOperation {
             let readQueue = OperationQueue()
-
+            let srcProviderCopy = srcProvider.copy()
+            
             func read(folder: ASCFolder, level: Int = 0) {
                 readQueue.addOperation {
                     let semaphore = DispatchSemaphore(value: 0)
-                    srcProvider.fetch(for: folder, parameters: params) { provider, result, success, error in
+                    srcProviderCopy.fetch(for: folder, parameters: params) { provider, result, success, error in
                         if cancel {
                             forceExit()
                             semaphore.signal()

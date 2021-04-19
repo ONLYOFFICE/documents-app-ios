@@ -42,15 +42,11 @@ class ASCDocumentsViewController: UITableViewController, UIGestureRecognizerDele
     // MARK: - Private
 
     private var total: Int {
-        get {
-            return provider?.total ?? 0
-        }
+        return provider?.total ?? 0
     }
     
     private var tableData:[ASCEntity] {
-        get {
-            return provider?.items ?? []
-        }
+        return provider?.items ?? []
     }
 
     private var selectedIds: Set<String> = []

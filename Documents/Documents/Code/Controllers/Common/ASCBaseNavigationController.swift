@@ -55,4 +55,14 @@ class ASCBaseNavigationController: UINavigationController {
     override var preferredInterfaceOrientationForPresentation: UIInterfaceOrientation {
         return topViewController?.preferredInterfaceOrientationForPresentation ?? super.preferredInterfaceOrientationForPresentation
     }
+    
+    // MARK: - Methods for change style status bar
+    
+    override open var childForStatusBarStyle: UIViewController? {
+        return topViewController
+    }
+    
+    override open var childForStatusBarHidden: UIViewController? {
+        return topViewController
+    }
 }

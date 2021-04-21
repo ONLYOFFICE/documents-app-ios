@@ -165,7 +165,7 @@
 		FC9749951EE04A1E00D00DDB /* ASCConnectPortalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC9749941EE04A1E00D00DDB /* ASCConnectPortalViewController.swift */; };
 		FC9749971EE04FB300D00DDB /* ASCSignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC9749961EE04FB300D00DDB /* ASCSignInViewController.swift */; };
 		FC99FAF1226460F2000F1464 /* ASC2FAViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC99FAF0226460F2000F1464 /* ASC2FAViewController.swift */; };
-		FC9E28B12244E286000D315E /* DocumentsEmptyView.xib in Resources */ = {isa = PBXBuildFile; fileRef = FC9E28B32244E286000D315E /* DocumentsEmptyView.xib */; };
+		FC9E28B12244E286000D315E /* ASCDocumentsEmptyView.xib in Resources */ = {isa = PBXBuildFile; fileRef = FC9E28B32244E286000D315E /* ASCDocumentsEmptyView.xib */; };
 		FC9E28BF2244E88C000D315E /* ASCDocumentsEmptyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC9E28BE2244E88C000D315E /* ASCDocumentsEmptyView.swift */; };
 		FCA085EB1EEAE3E900D52EEC /* ASCShareAccessViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCA085EA1EEAE3E900D52EEC /* ASCShareAccessViewController.swift */; };
 		FCA085EC1EEAE66C00D52EEC /* Share.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FCA085EE1EEAE66C00D52EEC /* Share.storyboard */; };
@@ -254,6 +254,8 @@
 		FCF5016D2549A9CE0079518A /* HtmlFile2.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FCF5016C2549A9CE0079518A /* HtmlFile2.framework */; };
 		FCF67218217716FF004756A0 /* ASCNextCloudApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCF67217217716FF004756A0 /* ASCNextCloudApi.swift */; };
 		FCF6721A21771B21004756A0 /* ASCBaseApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCF6721921771B21004756A0 /* ASCBaseApi.swift */; };
+		FCF694942630152E00808644 /* ASCNavigator.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCF694932630152E00808644 /* ASCNavigator.swift */; };
+		FCF69496263025BF00808644 /* ASCBaseTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCF69495263025BF00808644 /* ASCBaseTableViewController.swift */; };
 		FCF865201E4E0D1C003E47B6 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FCF8651C1E4E0D1C003E47B6 /* Main.storyboard */; };
 		FCF916CA1ED44F3A0032C135 /* Localizable.stringsdict in Resources */ = {isa = PBXBuildFile; fileRef = FCF916C81ED44F3A0032C135 /* Localizable.stringsdict */; };
 		FCFB36071EDF0AB00001597E /* ASCBanner.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCFB36061EDF0AB00001597E /* ASCBanner.swift */; };
@@ -502,12 +504,12 @@
 		FC9749941EE04A1E00D00DDB /* ASCConnectPortalViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASCConnectPortalViewController.swift; sourceTree = "<group>"; };
 		FC9749961EE04FB300D00DDB /* ASCSignInViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASCSignInViewController.swift; sourceTree = "<group>"; };
 		FC99FAF0226460F2000F1464 /* ASC2FAViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASC2FAViewController.swift; sourceTree = "<group>"; };
-		FC9E28B22244E286000D315E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/DocumentsEmptyView.xib; sourceTree = "<group>"; };
-		FC9E28B52244E28B000D315E /* cs */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = cs; path = cs.lproj/DocumentsEmptyView.strings; sourceTree = "<group>"; };
-		FC9E28B72244E28D000D315E /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/DocumentsEmptyView.strings; sourceTree = "<group>"; };
-		FC9E28B92244E290000D315E /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/DocumentsEmptyView.strings; sourceTree = "<group>"; };
-		FC9E28BB2244E292000D315E /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/DocumentsEmptyView.strings; sourceTree = "<group>"; };
-		FC9E28BD2244E294000D315E /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/DocumentsEmptyView.strings; sourceTree = "<group>"; };
+		FC9E28B22244E286000D315E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/ASCDocumentsEmptyView.xib; sourceTree = "<group>"; };
+		FC9E28B52244E28B000D315E /* cs */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = cs; path = cs.lproj/ASCDocumentsEmptyView.strings; sourceTree = "<group>"; };
+		FC9E28B72244E28D000D315E /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/ASCDocumentsEmptyView.strings; sourceTree = "<group>"; };
+		FC9E28B92244E290000D315E /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/ASCDocumentsEmptyView.strings; sourceTree = "<group>"; };
+		FC9E28BB2244E292000D315E /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/ASCDocumentsEmptyView.strings; sourceTree = "<group>"; };
+		FC9E28BD2244E294000D315E /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/ASCDocumentsEmptyView.strings; sourceTree = "<group>"; };
 		FC9E28BE2244E88C000D315E /* ASCDocumentsEmptyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCDocumentsEmptyView.swift; sourceTree = "<group>"; };
 		FCA085EA1EEAE3E900D52EEC /* ASCShareAccessViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASCShareAccessViewController.swift; sourceTree = "<group>"; };
 		FCA085ED1EEAE66C00D52EEC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Share.storyboard; sourceTree = "<group>"; };
@@ -673,6 +675,8 @@
 		FCF5016C2549A9CE0079518A /* HtmlFile2.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = HtmlFile2.framework; path = "../../editors-ios/build/SDK/lib/HtmlFile2.framework"; sourceTree = "<group>"; };
 		FCF67217217716FF004756A0 /* ASCNextCloudApi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCNextCloudApi.swift; sourceTree = "<group>"; };
 		FCF6721921771B21004756A0 /* ASCBaseApi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCBaseApi.swift; sourceTree = "<group>"; };
+		FCF694932630152E00808644 /* ASCNavigator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCNavigator.swift; sourceTree = "<group>"; };
+		FCF69495263025BF00808644 /* ASCBaseTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCBaseTableViewController.swift; sourceTree = "<group>"; };
 		FCF8045B212E94A300378AFD /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		FCF8045E212EA38A00378AFD /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Localizable.strings; sourceTree = "<group>"; };
 		FCF8651D1E4E0D1C003E47B6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -810,8 +814,10 @@
 		FC1EA5C91ECECB77008FEE2E /* Common */ = {
 			isa = PBXGroup;
 			children = (
-				FC1EA5CA1ECECBC3008FEE2E /* ASCBaseNavigationController.swift */,
+				FCF694932630152E00808644 /* ASCNavigator.swift */,
 				FC1EA5CC1ECED0A0008FEE2E /* ASCBaseViewController.swift */,
+				FCF69495263025BF00808644 /* ASCBaseTableViewController.swift */,
+				FC1EA5CA1ECECBC3008FEE2E /* ASCBaseNavigationController.swift */,
 				FCB8A39621C29D4900CF74FA /* ASCBaseSplitViewController.swift */,
 			);
 			path = Common;
@@ -842,6 +848,7 @@
 				FC31B27D1E767C96008699C3 /* ASCFolderCell.swift */,
 				FC31B27F1E767CAB008699C3 /* ASCFileCell.swift */,
 				FC31B2821E767CC7008699C3 /* ASCLoaderCell.swift */,
+				FC9E28B32244E286000D315E /* ASCDocumentsEmptyView.xib */,
 				FC9E28BE2244E88C000D315E /* ASCDocumentsEmptyView.swift */,
 				FC8A5A8C2565712700D08037 /* ASCDocumentsToolbar.swift */,
 			);
@@ -1355,7 +1362,6 @@
 				FCC396461ECDC6BD0016BB10 /* UserProfile.storyboard */,
 				FCE1F6411EDC338100D9DE17 /* CreatePortal.storyboard */,
 				FCA085EE1EEAE66C00D52EEC /* Share.storyboard */,
-				FC9E28B32244E286000D315E /* DocumentsEmptyView.xib */,
 				8A278AE32499614C00B6AA30 /* Debug.storyboard */,
 			);
 			name = Storyboards;
@@ -1669,7 +1675,7 @@
 				FCE35DDB1E9E7BCA00BC2B68 /* Transfer.storyboard in Resources */,
 				FCC3963D1ECDC6890016BB10 /* Settings.storyboard in Resources */,
 				FCA0AD271EBC90AC00AA53EB /* Login.storyboard in Resources */,
-				FC9E28B12244E286000D315E /* DocumentsEmptyView.xib in Resources */,
+				FC9E28B12244E286000D315E /* ASCDocumentsEmptyView.xib in Resources */,
 				FCC62AE31E8AA91100D24BE2 /* MWPhotoBrowser.bundle in Resources */,
 				8AE79E7F22E8B1A6004E76CF /* ASCCreateEntityView.xib in Resources */,
 				FCF916CA1ED44F3A0032C135 /* Localizable.stringsdict in Resources */,
@@ -1993,6 +1999,7 @@
 				FC31B2801E767CAB008699C3 /* ASCFileCell.swift in Sources */,
 				FC0F01E3216F4EA7008D79A5 /* ASCWebDAVProvider.swift in Sources */,
 				FC08F8751ECB399900988DDE /* ASCConnectStorageOAuth2ViewController.swift in Sources */,
+				FCF69496263025BF00808644 /* ASCBaseTableViewController.swift in Sources */,
 				FC41D7FD2265B72E00A155C2 /* UIStoryboard+Extensions.swift in Sources */,
 				FCEF9D1F1ED2C94300627BA5 /* EnterPasscodeState.swift in Sources */,
 				FC3AF6BD21709259004A96FD /* ASCFileManager.swift in Sources */,
@@ -2008,6 +2015,7 @@
 				FC7CF5171EF3EFF300C0A64F /* HTMLString.swift in Sources */,
 				FC67072E252DC4A600DFD268 /* Protocols.swift in Sources */,
 				FC41D7FF2265CFA600A155C2 /* UITextField+Extensions.swift in Sources */,
+				FCF694942630152E00808644 /* ASCNavigator.swift in Sources */,
 				FCDB31A81E7C116E00907FC0 /* ASCConstants.swift in Sources */,
 				FC8540C41E83A582000C2436 /* ASCProgressAlert.swift in Sources */,
 				FC86503A1ED3232B00C73AEF /* ASCAboutViewController.swift in Sources */,
@@ -2183,7 +2191,7 @@
 			name = Intro.storyboard;
 			sourceTree = "<group>";
 		};
-		FC9E28B32244E286000D315E /* DocumentsEmptyView.xib */ = {
+		FC9E28B32244E286000D315E /* ASCDocumentsEmptyView.xib */ = {
 			isa = PBXVariantGroup;
 			children = (
 				FC9E28B22244E286000D315E /* Base */,
@@ -2193,7 +2201,7 @@
 				FC9E28BB2244E292000D315E /* fr */,
 				FC9E28BD2244E294000D315E /* ru */,
 			);
-			name = DocumentsEmptyView.xib;
+			name = ASCDocumentsEmptyView.xib;
 			sourceTree = "<group>";
 		};
 		FCA085EE1EEAE66C00D52EEC /* Share.storyboard */ = {

@@ -8,14 +8,19 @@
 
 import UIKit
 
-class ASCSortViewController: UITableViewController {
+class ASCSortViewController: ASCBaseTableViewController {
     static let identifier = String(describing: ASCSortViewController.self)
+    
+    class override var storyboard: Storyboard { return Storyboard.sort }
 
+    public typealias ASCSortTypes = (description: String, name: String, active: Bool)
+    public typealias ASCSortComplation = (_ name: String, _ ascending: Bool) -> Void
+    
     // MARK: - Properties
 
-    var types: [(String, String, Bool)] = []
+    var types: [ASCSortTypes] = []
     var ascending = false
-    var onDone: ((String, Bool) -> Void)?
+    var onDone: ASCSortComplation?
 
     // MARK: - Outlets
 

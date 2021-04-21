@@ -10,7 +10,14 @@ import UIKit
 
 enum Destination {
     
+    // MARK: - Documents
+    
     case sort(types: [ASCSortViewController.ASCSortTypes], ascending: Bool, complation: ASCSortViewController.ASCSortComplation?)
+    
+    // MARK: - Login
+    
+    case onlyofficeConnectPortal
+    case onlyofficeSignIn(portal: String?)
     
 }
 
@@ -40,6 +47,8 @@ class ASCNavigator {
                 let navigationVC = UINavigationController(rootASCViewController: sortViewController)
                 navigationController?.present(navigationVC, animated: true, completion: nil)
             }
+        case .onlyofficeConnectPortal:
+            navigationController?.viewControllers = [viewController]
         default:
             navigationController?.pushViewController(viewController, animated: true)
         }
@@ -51,6 +60,12 @@ class ASCNavigator {
         switch destination {
         case .sort:
             return ASCSortViewController.instance()
+        case .onlyofficeConnectPortal:
+            return ASCConnectPortalViewController.instance()
+        case .onlyofficeSignIn(let portal):
+            let signinViewController = ASCSignInViewController.instance()
+            signinViewController.portal = portal
+            return signinViewController
         }
     }
     

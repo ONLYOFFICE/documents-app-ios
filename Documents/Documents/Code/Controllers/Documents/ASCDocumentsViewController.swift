@@ -88,6 +88,10 @@ class ASCDocumentsViewController: UITableViewController, UIGestureRecognizerDele
         $0.backgroundColor = .lightGray
         return $0
     }(UIView())
+    private lazy var uiRefreshControl: UIRefreshControl = {
+        $0.addTarget(self, action: #selector(refresh), for: UIControl.Event.valueChanged)
+        return $0
+    }(UIRefreshControl())
     private var searchTask: DispatchWorkItem?
     private var searchValue: String?
     
@@ -155,18 +159,6 @@ class ASCDocumentsViewController: UITableViewController, UIGestureRecognizerDele
         tableView.tableFooterView = UIView()
 
         configureNavigationBar(animated: false)
-
-        // Init Refresh control
-        let refreshControl = UIRefreshControl()
-        refreshControl.addTarget(self, action: #selector(refresh(_:)), for: UIControl.Event.valueChanged)
-        
-        // Add to Table View
-        if #available(iOS 10.0, *) {
-            tableView.refreshControl = refreshControl
-        } else {
-            tableView.addSubview(refreshControl)
-        }
-        
         configureProvider()
 
         UserDefaults.standard.addObserver(self, forKeyPath: ASCConstants.SettingsKeys.sortDocuments, options: [.new], context: nil)
@@ -176,19 +168,12 @@ class ASCDocumentsViewController: UITableViewController, UIGestureRecognizerDele
         NotificationCenter.default.addObserver(self, selector: #selector(onOpenLocalFileByUrl(_:)), name: ASCConstants.Notifications.openLocalFileByUrl, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(onAppDidBecomeActive(_:)), name: ASCConstants.Notifications.appDidBecomeActive, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(onReloadData(_:)), name: ASCConstants.Notifications.reloadData, object: nil)
-       
-//        // Long press
-//        let longPressGesture = UILongPressGestureRecognizer(target: self, action: #selector(handleLongPress))
-//        longPressGesture.minimumPressDuration = 0.8
-//        longPressGesture.delegate = self
-//        tableView.addGestureRecognizer(longPressGesture)
 
         // Drag Drop support
         if #available(iOS 11.0, *) {
             tableView.dragDelegate = self
             tableView.dropDelegate = self
             tableView.dragInteractionEnabled = true
-            
             tableView.separatorStyle = .none
         }
         
@@ -233,6 +218,12 @@ class ASCDocumentsViewController: UITableViewController, UIGestureRecognizerDele
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
+        
+        if #available(iOS 10.0, *) {
+            tableView.refreshControl = uiRefreshControl
+        } else {
+            tableView.addSubview(uiRefreshControl)
+        }
         
         checkUnsuccessfullyOpenedFile()
 
@@ -287,10 +278,6 @@ class ASCDocumentsViewController: UITableViewController, UIGestureRecognizerDele
 
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
-        
-//        if let _refreshControl = refreshControl, let headerView = tableView.tableHeaderView {
-//            _refreshControl.superview?.sendSubview(toBack: _refreshControl)
-//        }
     }
 
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
@@ -312,14 +299,12 @@ class ASCDocumentsViewController: UITableViewController, UIGestureRecognizerDele
         ASCFileManager.reset()
 
         provider?.reset()
-//        total = 0
         folder = nil
         title = nil
         
         loadingView.removeFromSuperview()
         emptyView.removeFromSuperview()
 
-//        tableData.removeAll()
         tableView.reloadData()
     }
     

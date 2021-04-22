@@ -431,6 +431,10 @@ class ASCDocumentsViewController: ASCBaseTableViewController, UIGestureRecognize
     
     @objc func onAddEntityAction() {
         guard let provider = provider else { return }
+        view.isUserInteractionEnabled = false
+        delay(seconds: 0.1) {
+            self.view.isUserInteractionEnabled = true
+        }
         ASCCreateEntity().showCreateController(for: provider, in: self, sender: addBarButton)
     }
     
@@ -518,7 +522,9 @@ class ASCDocumentsViewController: ASCBaseTableViewController, UIGestureRecognize
     }
     
     @objc func onSelectAction() {
-        setEditMode(true)
+        if view.isUserInteractionEnabled {
+            setEditMode(true)
+        }
     }
     
     // MARK: - Private

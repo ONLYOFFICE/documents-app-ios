@@ -429,12 +429,16 @@ class ASCDocumentsViewController: ASCBaseTableViewController, UIGestureRecognize
         }
     }
     
-    @objc func onAddEntityAction() {
-        guard let provider = provider else { return }
+    fileprivate func flashBlockInteration() {
         view.isUserInteractionEnabled = false
-        delay(seconds: 0.1) {
+        delay(seconds: 0.2) {
             self.view.isUserInteractionEnabled = true
         }
+    }
+    
+    @objc func onAddEntityAction() {
+        guard let provider = provider else { return }
+        flashBlockInteration()
         ASCCreateEntity().showCreateController(for: provider, in: self, sender: addBarButton)
     }
     
@@ -522,9 +526,9 @@ class ASCDocumentsViewController: ASCBaseTableViewController, UIGestureRecognize
     }
     
     @objc func onSelectAction() {
-        if view.isUserInteractionEnabled {
-            setEditMode(true)
-        }
+        guard view.isUserInteractionEnabled else { return }
+        setEditMode(true)
+        flashBlockInteration()
     }
     
     // MARK: - Private
@@ -1143,7 +1147,8 @@ class ASCDocumentsViewController: ASCBaseTableViewController, UIGestureRecognize
     private func fileMenu(cell: ASCFileCell) -> [MGSwipeButton]? {
         guard
             let file = cell.file,
-            let provider = provider
+            let provider = provider,
+            view.isUserInteractionEnabled
         else {
             return nil
         }
@@ -1167,6 +1172,8 @@ class ASCDocumentsViewController: ASCBaseTableViewController, UIGestureRecognize
             backgroundColor: ASCConstants.Colors.red
         )
         delete.callback = { [unowned self] (cell) -> Bool in
+            guard view.isUserInteractionEnabled else { return true }
+            
             var title: String? = nil
             let isTrash = self.isTrash(self.folder)
 
@@ -1198,6 +1205,7 @@ class ASCDocumentsViewController: ASCBaseTableViewController, UIGestureRecognize
                 alertDelete.popoverPresentationController?.sourceView = delete
                 alertDelete.popoverPresentationController?.sourceRect = delete.bounds
                 alertDelete.popoverPresentationController?.permittedArrowDirections = [.up, .down]
+                flashBlockInteration()
             } else {
                 alertDelete.addAction(
                     UIAlertAction(
@@ -1252,12 +1260,15 @@ class ASCDocumentsViewController: ASCBaseTableViewController, UIGestureRecognize
             backgroundColor: ASCConstants.Colors.lightGrey
         )
         more.callback = { [unowned self] (swipedCell) -> Bool in
+            guard view.isUserInteractionEnabled else { return true }
+            
             if let moreAlertController = self.fileActionMenu(cell: cell) {
                 if UIDevice.pad {
                     moreAlertController.modalPresentationStyle = .popover
                     moreAlertController.popoverPresentationController?.sourceView = more
                     moreAlertController.popoverPresentationController?.sourceRect = more.bounds
                     moreAlertController.popoverPresentationController?.permittedArrowDirections = [.up, .down]
+                    flashBlockInteration()
                 }
 
                 moreAlertController.view.tintColor = self.view.tintColor
@@ -1290,7 +1301,8 @@ class ASCDocumentsViewController: ASCBaseTableViewController, UIGestureRecognize
     private func folderMenu(cell: ASCFolderCell) -> [MGSwipeButton]? {
         guard
             let folder = cell.folder,
-            let provider = provider
+            let provider = provider,
+            view.isUserInteractionEnabled
         else {
             return nil
         }
@@ -1314,6 +1326,8 @@ class ASCDocumentsViewController: ASCBaseTableViewController, UIGestureRecognize
             backgroundColor: ASCConstants.Colors.red
         )
         delete.callback = { [unowned self] (cell) -> Bool in
+            guard view.isUserInteractionEnabled else { return true }
+            
             var title: String? = nil
             let isTrash = self.isTrash(self.folder)
 
@@ -1347,6 +1361,7 @@ class ASCDocumentsViewController: ASCBaseTableViewController, UIGestureRecognize
                 alertDelete.popoverPresentationController?.sourceView = delete
                 alertDelete.popoverPresentationController?.sourceRect = delete.bounds
                 alertDelete.popoverPresentationController?.permittedArrowDirections = [.up, .down]
+                flashBlockInteration()
             } else {
                 alertDelete.addAction(
                     UIAlertAction(
@@ -1391,12 +1406,15 @@ class ASCDocumentsViewController: ASCBaseTableViewController, UIGestureRecognize
             backgroundColor: ASCConstants.Colors.lightGrey
         )
         more.callback = { [unowned self] (swipedCell) -> Bool in
+            guard view.isUserInteractionEnabled else { return true }
+            
             if let moreAlertController = self.folderActionMenu(cell: cell) {
                 if UIDevice.pad {
                     moreAlertController.modalPresentationStyle = .popover
                     moreAlertController.popoverPresentationController?.sourceView = more
                     moreAlertController.popoverPresentationController?.sourceRect = more.bounds
                     moreAlertController.popoverPresentationController?.permittedArrowDirections = [.up, .down]
+                    flashBlockInteration()
                 }
                 
                 moreAlertController.view.tintColor = self.view.tintColor
@@ -1874,7 +1892,8 @@ class ASCDocumentsViewController: ASCBaseTableViewController, UIGestureRecognize
     private func fileActionMenu(cell: ASCFileCell) -> UIAlertController? {
         guard
             let file = cell.file,
-            let provider = provider
+            let provider = provider,
+            view.isUserInteractionEnabled
         else {
             return nil
         }
@@ -2062,7 +2081,8 @@ class ASCDocumentsViewController: ASCBaseTableViewController, UIGestureRecognize
     private func folderActionMenu(cell: ASCFolderCell) -> UIAlertController? {
         guard
             let folder = cell.folder,
-            let provider = provider
+            let provider = provider,
+            view.isUserInteractionEnabled
         else {
             return nil
         }
@@ -3310,6 +3330,8 @@ class ASCDocumentsViewController: ASCBaseTableViewController, UIGestureRecognize
     }
     
     @objc func onTrashSelected(_ sender: Any) {
+        guard view.isUserInteractionEnabled else { return }
+        
         if selectedIds.count > 0 {
             let selectetItems = tableData.filter{ selectedIds.contains($0.uid) }
             let folderCount = selectetItems.filter{ $0 is ASCFolder }.count
@@ -3353,7 +3375,7 @@ class ASCDocumentsViewController: ASCBaseTableViewController, UIGestureRecognize
                 deleteController.modalPresentationStyle = .popover
                 deleteController.popoverPresentationController?.sourceView = button
                 deleteController.popoverPresentationController?.sourceRect = button.bounds
-            
+                flashBlockInteration()
             }
 
             present(deleteController, animated: true, completion: nil)

@@ -94,7 +94,7 @@ class ASCViewControllerManager {
                 rootController?.display(provider: ASCFileManager.localProvider, folder: nil)
                 showIntro()
             } else {
-//                showWhatsNew()
+                showWhatsNew()
             }
         }
 
@@ -166,7 +166,8 @@ class ASCViewControllerManager {
         var configuration = WhatsNewViewController.Configuration()
         configuration.completionButton.title = NSLocalizedString("Get started", comment: "")
         configuration.completionButton.backgroundColor = ASCConstants.Colors.brend
-        configuration.itemsView.titleFont = .systemFont(ofSize: 17, weight: .bold)
+        configuration.itemsView.titleFont = .systemFont(ofSize: 17, weight: .semibold)
+        configuration.itemsView.subtitleFont = .systemFont(ofSize: 15)
         configuration.itemsView.autoTintImage = false
         
         if #available(iOS 13.0, *) {
@@ -174,6 +175,10 @@ class ASCViewControllerManager {
         } else {
             configuration.itemsView.subtitleColor = .darkGray
         }
+
+        /// Increase TitleView Insets
+        configuration.titleView.insets.top = 60
+        configuration.titleView.insets.bottom = 30
         
         /// Adjusts Insets for iPad
         configuration.padAdjustment = { configuration in
@@ -198,30 +203,30 @@ class ASCViewControllerManager {
         
         // Initialize WhatsNew
         let whatsNew = WhatsNew(
-            version: "6.2",
+            version: WhatsNew.Version(stringLiteral: ASCCommon.appVersion ?? "1.0"),
             title: NSLocalizedString("What's New", comment: ""),
             items: [
                 WhatsNew.Item(
-                    title: NSLocalizedString("Comments", comment: ""),
-                    subtitle: NSLocalizedString("Use comments to add notes, suggestions, or questions for your collaborators. Edit, answer, resolve or delete them in process.", comment: ""),
-                    image: Asset.Images.whatsnewFutureComments.image
+                    title: NSLocalizedString("iCloud Drive access", comment: ""),
+                    subtitle: NSLocalizedString("View and edit files in iCloud directly from the app. Access your storage from the Clouds tab.", comment: ""),
+                    image: Asset.Images.whatsnewFutureIcloudDrive.image
                 ),
                 WhatsNew.Item(
-                    title: NSLocalizedString("Reviewing", comment: ""),
-                    subtitle: NSLocalizedString("Use Track Changes mode in text documents to suggest changes, accept or reject them.", comment: ""),
-                    image: Asset.Images.whatsnewFutureReview.image
+                    title: NSLocalizedString("Adding to Favorites", comment: ""),
+                    subtitle: NSLocalizedString("Add files to Favorites for quick access directly from the editor.", comment: ""),
+                    image: Asset.Images.whatsnewFutureFavourite.image
+                ),
+                WhatsNew.Item(
+                    title: NSLocalizedString("Quick sharing", comment: ""),
+                    subtitle: NSLocalizedString("Share files and manage access rights without leaving the editor.", comment: ""),
+                    image: Asset.Images.whatsnewFutureShare.image
                 )
             ]
         )
 
-//        let keyValueVersionStore = KeyValueWhatsNewVersionStore(
-//            keyValueable: UserDefaults.standard
-//        )
-
         let whatsNewViewController: WhatsNewViewController? = WhatsNewViewController(
             whatsNew: whatsNew,
             configuration: configuration
-//            versionStore: keyValueVersionStore
         )
 
         delay(seconds: 0.2) { [weak self] in

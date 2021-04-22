@@ -2,7 +2,7 @@
 <xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="1.2" xsi:schemaLocation="urn:oasis:names:tc:xliff:document:1.2 http://docs.oasis-open.org/xliff/v1.2/os/xliff-core-1.2-strict.xsd">
   <file original="Documents/Base.lproj/ConnectStorage.storyboard" source-language="en" target-language="en" datatype="plaintext">
     <header>
-      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="12.3" build-num="12C33"/>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="12.4" build-num="12D4e"/>
     </header>
     <body>
       <trans-unit id="1hg-GO-WNq.text" xml:space="preserve">
@@ -59,7 +59,7 @@
   </file>
   <file original="Documents/Base.lproj/CreatePortal.storyboard" source-language="en" target-language="en" datatype="plaintext">
     <header>
-      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="12.3" build-num="12C33"/>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="12.4" build-num="12D4e"/>
     </header>
     <body>
       <trans-unit id="BMv-HP-hD2.normalTitle" xml:space="preserve">
@@ -132,7 +132,7 @@ start using your office</target>
   </file>
   <file original="Documents/Base.lproj/DocumentsEmptyView.xib" source-language="en" target-language="en" datatype="plaintext">
     <header>
-      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="12.3" build-num="12C33"/>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="12.4" build-num="12D4e"/>
     </header>
     <body>
       <trans-unit id="1kl-l7-AtV.text" xml:space="preserve">
@@ -154,7 +154,7 @@ start using your office</target>
   </file>
   <file original="Documents/Base.lproj/Intro.storyboard" source-language="en" target-language="en" datatype="plaintext">
     <header>
-      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="12.3" build-num="12C33"/>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="12.4" build-num="12D4e"/>
     </header>
     <body>
       <trans-unit id="De8-tD-APT.text" xml:space="preserve">
@@ -176,7 +176,7 @@ start using your office</target>
   </file>
   <file original="Documents/Base.lproj/Localizable.stringsdict" source-language="en" target-language="en" datatype="plaintext">
     <header>
-      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="12.3" build-num="12C33"/>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="12.4" build-num="12D4e"/>
     </header>
     <body>
       <trans-unit id="/%lu File selected:dict/NSStringLocalizedFormatKey:dict/:string" xml:space="preserve">
@@ -308,7 +308,7 @@ start using your office</target>
   </file>
   <file original="Documents/Base.lproj/Login.storyboard" source-language="en" target-language="en" datatype="plaintext">
     <header>
-      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="12.3" build-num="12C33"/>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="12.4" build-num="12D4e"/>
     </header>
     <body>
       <trans-unit id="0X2-Xg-z5B.text" xml:space="preserve">
@@ -554,7 +554,7 @@ Authentication</target>
   </file>
   <file original="Documents/Base.lproj/Main.storyboard" source-language="en" target-language="en" datatype="plaintext">
     <header>
-      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="12.3" build-num="12C33"/>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="12.4" build-num="12D4e"/>
     </header>
     <body>
       <trans-unit id="0Hf-aP-smp.text" xml:space="preserve">
@@ -706,7 +706,7 @@ Authentication</target>
   </file>
   <file original="Documents/Base.lproj/Settings.storyboard" source-language="en" target-language="en" datatype="plaintext">
     <header>
-      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="12.3" build-num="12C33"/>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="12.4" build-num="12D4e"/>
     </header>
     <body>
       <trans-unit id="0DJ-uV-iju.title" xml:space="preserve">
@@ -837,7 +837,7 @@ Note: if you forget the passcode, you'll need to delete and reinstall the app. A
   </file>
   <file original="Documents/Base.lproj/Share.storyboard" source-language="en" target-language="en" datatype="plaintext">
     <header>
-      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="12.3" build-num="12C33"/>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="12.4" build-num="12D4e"/>
     </header>
     <body>
       <trans-unit id="9Wg-zE-nZA.segmentTitles[0]" xml:space="preserve">
@@ -929,7 +929,7 @@ Note: if you forget the passcode, you'll need to delete and reinstall the app. A
   </file>
   <file original="Documents/Base.lproj/Sort.storyboard" source-language="en" target-language="en" datatype="plaintext">
     <header>
-      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="12.3" build-num="12C33"/>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="12.4" build-num="12D4e"/>
     </header>
     <body>
       <trans-unit id="HjM-la-pDc.text" xml:space="preserve">
@@ -956,7 +956,7 @@ Note: if you forget the passcode, you'll need to delete and reinstall the app. A
   </file>
   <file original="Documents/Base.lproj/Transfer.storyboard" source-language="en" target-language="en" datatype="plaintext">
     <header>
-      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="12.3" build-num="12C33"/>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="12.4" build-num="12D4e"/>
     </header>
     <body>
       <trans-unit id="9YY-0H-nww.text" xml:space="preserve">
@@ -993,7 +993,7 @@ Note: if you forget the passcode, you'll need to delete and reinstall the app. A
   </file>
   <file original="Documents/Base.lproj/UserProfile.storyboard" source-language="en" target-language="en" datatype="plaintext">
     <header>
-      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="12.3" build-num="12C33"/>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="12.4" build-num="12D4e"/>
     </header>
     <body>
       <trans-unit id="1S2-Q7-5vL.text" xml:space="preserve">
@@ -1035,7 +1035,7 @@ Note: if you forget the passcode, you'll need to delete and reinstall the app. A
   </file>
   <file original="Documents/Code/Controllers/CreateEntity/Views/Base.lproj/ASCCreateEntityView.xib" source-language="en" target-language="en" datatype="plaintext">
     <header>
-      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="12.3" build-num="12C33"/>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="12.4" build-num="12D4e"/>
     </header>
     <body>
       <trans-unit id="0TH-k4-z5u.normalTitle" xml:space="preserve">
@@ -1067,7 +1067,7 @@ Note: if you forget the passcode, you'll need to delete and reinstall the app. A
   </file>
   <file original="Documents/Code/Vendor/PasscodeLock/Base.lproj/PasscodeLock.strings" source-language="en" target-language="en" datatype="plaintext">
     <header>
-      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="12.3" build-num="12C33"/>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="12.4" build-num="12D4e"/>
     </header>
     <body>
       <trans-unit id="PasscodeLockChangeDescription" xml:space="preserve">
@@ -1139,7 +1139,7 @@ Note: if you forget the passcode, you'll need to delete and reinstall the app. A
   </file>
   <file original="Documents/Code/Vendor/PasscodeLock/Views/Base.lproj/PasscodeLockView.xib" source-language="en" target-language="en" datatype="plaintext">
     <header>
-      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="12.3" build-num="12C33"/>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="12.4" build-num="12D4e"/>
     </header>
     <body>
       <trans-unit id="0CR-0R-0Nr.normalTitle" xml:space="preserve">
@@ -1221,12 +1221,12 @@ Note: if you forget the passcode, you'll need to delete and reinstall the app. A
   </file>
   <file original="Documents/en.lproj/InfoPlist.strings" source-language="en" target-language="en" datatype="plaintext">
     <header>
-      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="12.3" build-num="12C33"/>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="12.4" build-num="12D4e"/>
     </header>
     <body>
       <trans-unit id="CFBundleName" xml:space="preserve">
-        <source>Documents</source>
-        <target>Documents</target>
+        <source>Documents-Alpha</source>
+        <target>Documents-Alpha</target>
         <note>Bundle name</note>
       </trans-unit>
       <trans-unit id="NSCameraUsageDescription" xml:space="preserve">
@@ -1238,6 +1238,11 @@ Note: if you forget the passcode, you'll need to delete and reinstall the app. A
         <source>This app requires Face ID permission to authenticate using Face recognition.</source>
         <target>This app requires Face ID permission to authenticate using Face recognition.</target>
         <note>Privacy - Face ID Usage Description</note>
+      </trans-unit>
+      <trans-unit id="NSLocalNetworkUsageDescription" xml:space="preserve">
+        <source>Network access required</source>
+        <target>Network access required</target>
+        <note>Privacy - Local Network Usage Description</note>
       </trans-unit>
       <trans-unit id="NSPhotoLibraryAddUsageDescription" xml:space="preserve">
         <source>This app requires access to the photo library, so that you can upload your photos in the app.</source>
@@ -1268,7 +1273,7 @@ Note: if you forget the passcode, you'll need to delete and reinstall the app. A
   </file>
   <file original="Documents/en.lproj/Localizable.strings" source-language="en" target-language="en" datatype="plaintext">
     <header>
-      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="12.3" build-num="12C33"/>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="12.4" build-num="12D4e"/>
     </header>
     <body>
       <trans-unit id="%i of %i" xml:space="preserve">
@@ -1329,6 +1334,16 @@ Note: if you forget the passcode, you'll need to delete and reinstall the app. A
       <trans-unit id="Account name is not valid" xml:space="preserve">
         <source>Account name is not valid</source>
         <target>Account name is not valid</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Add files to Favorites for quick access directly from the editor." xml:space="preserve">
+        <source>Add files to Favorites for quick access directly from the editor.</source>
+        <target>Add files to Favorites for quick access directly from the editor.</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Adding to Favorites" xml:space="preserve">
+        <source>Adding to Favorites</source>
+        <target>Adding to Favorites</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Address is empty" xml:space="preserve">
@@ -1399,7 +1414,7 @@ Note: if you forget the passcode, you'll need to delete and reinstall the app. A
       <trans-unit id="Cancel" xml:space="preserve">
         <source>Cancel</source>
         <target>Cancel</target>
-        <note>Button title</note>
+        <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Check your internet connection" xml:space="preserve">
         <source>Check your internet connection</source>
@@ -1455,11 +1470,6 @@ Note: if you forget the passcode, you'll need to delete and reinstall the app. A
         <source>Collaborate with your team</source>
         <target>Collaborate with your team</target>
         <note>Introduction Step Five - Title</note>
-      </trans-unit>
-      <trans-unit id="Comments" xml:space="preserve">
-        <source>Comments</source>
-        <target>Comments</target>
-        <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Common Documents" xml:space="preserve">
         <source>Common Documents</source>
@@ -2398,6 +2408,11 @@ others which use WebDAV protocol.</target>
         <target>Protected File</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
+      <trans-unit id="Quick sharing" xml:space="preserve">
+        <source>Quick sharing</source>
+        <target>Quick sharing</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
       <trans-unit id="Read Only" xml:space="preserve">
         <source>Read Only</source>
         <target>Read Only</target>
@@ -2468,11 +2483,6 @@ others which use WebDAV protocol.</target>
         <target>Review</target>
         <note>Share status</note>
       </trans-unit>
-      <trans-unit id="Reviewing" xml:space="preserve">
-        <source>Reviewing</source>
-        <target>Reviewing</target>
-        <note>No comment provided by engineer.</note>
-      </trans-unit>
       <trans-unit id="SKIP" xml:space="preserve">
         <source>SKIP</source>
         <target>SKIP</target>
@@ -2537,6 +2547,11 @@ others which use WebDAV protocol.</target>
         <source>Share</source>
         <target>Share</target>
         <note>Button title</note>
+      </trans-unit>
+      <trans-unit id="Share files and manage access rights without leaving the editor." xml:space="preserve">
+        <source>Share files and manage access rights without leaving the editor.</source>
+        <target>Share files and manage access rights without leaving the editor.</target>
+        <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="SharePoint directory" xml:space="preserve">
         <source>SharePoint directory</source>
@@ -2838,16 +2853,6 @@ others which use WebDAV protocol.</target>
         <target>Use Touch ID</target>
         <note>Button title</note>
       </trans-unit>
-      <trans-unit id="Use Track Changes mode in text documents to suggest changes, accept or reject them." xml:space="preserve">
-        <source>Use Track Changes mode in text documents to suggest changes, accept or reject them.</source>
-        <target>Use Track Changes mode in text documents to suggest changes, accept or reject them.</target>
-        <note>No comment provided by engineer.</note>
-      </trans-unit>
-      <trans-unit id="Use comments to add notes, suggestions, or questions for your collaborators. Edit, answer, resolve or delete them in process." xml:space="preserve">
-        <source>Use comments to add notes, suggestions, or questions for your collaborators. Edit, answer, resolve or delete them in process.</source>
-        <target>Use comments to add notes, suggestions, or questions for your collaborators. Edit, answer, resolve or delete them in process.</target>
-        <note>No comment provided by engineer.</note>
-      </trans-unit>
       <trans-unit id="User authentication failed" xml:space="preserve">
         <source>User authentication failed</source>
         <target>User authentication failed</target>
@@ -2876,6 +2881,11 @@ others which use WebDAV protocol.</target>
       <trans-unit id="Version" xml:space="preserve">
         <source>Version</source>
         <target>Version</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="View and edit files in iCloud directly from the app. Access your storage from the Clouds tab." xml:space="preserve">
+        <source>View and edit files in iCloud directly from the app. Access your storage from the Clouds tab.</source>
+        <target>View and edit files in iCloud directly from the app. Access your storage from the Clouds tab.</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Warning" xml:space="preserve">
@@ -3039,6 +3049,21 @@ then accessed from any other device.</target>
         <target>Server Error</target>
         <note>Unknown Server Error</note>
       </trans-unit>
+      <trans-unit id="iCloud" xml:space="preserve">
+        <source>iCloud</source>
+        <target>iCloud</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="iCloud Drive" xml:space="preserve">
+        <source>iCloud Drive</source>
+        <target>iCloud Drive</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="iCloud Drive access" xml:space="preserve">
+        <source>iCloud Drive access</source>
+        <target>iCloud Drive access</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
       <trans-unit id="none" xml:space="preserve">
         <source>none</source>
         <target>none</target>
@@ -3085,7 +3110,7 @@ then accessed from any other device.</target>
   </file>
   <file original="Settings.bundle/en.lproj/Root.strings" source-language="en" target-language="en" datatype="plaintext">
     <header>
-      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="12.3" build-num="12C33"/>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="12.4" build-num="12D4e"/>
     </header>
     <body>
       <trans-unit id="Acknowledgements" xml:space="preserve">

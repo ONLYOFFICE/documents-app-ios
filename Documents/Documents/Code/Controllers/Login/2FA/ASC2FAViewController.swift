@@ -8,8 +8,10 @@
 
 import UIKit
 
-class ASC2FAViewController: UIViewController {
+class ASC2FAViewController: ASCBaseViewController {
     static let identifier = String(describing: ASC2FAViewController.self)
+    
+    class override var storyboard: Storyboard { return Storyboard.login }
 
     // MARK: - Properties
 

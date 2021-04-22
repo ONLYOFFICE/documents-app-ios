@@ -1,14 +1,14 @@
 //
-//  ASCBaseViewController.swift
-//  Documents
+//  ASCBaseTableViewController.swift
+//  Documents-develop
 //
-//  Created by Alexander Yuzhin on 5/19/17.
-//  Copyright © 2017 Ascensio System SIA. All rights reserved.
+//  Created by Alexander Yuzhin on 21.04.2021.
+//  Copyright © 2021 Ascensio System SIA. All rights reserved.
 //
 
 import UIKit
 
-class ASCBaseViewController: UIViewController {
+class ASCBaseTableViewController: UITableViewController {
 
     // MARK: - Properties
     

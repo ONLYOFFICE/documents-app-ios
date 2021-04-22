@@ -12,8 +12,10 @@ import IQKeyboardManagerSwift
 import Alamofire
 import MBProgressHUD
 
-class ASCConnectPortalViewController: UIViewController, UITextFieldDelegate {
+class ASCConnectPortalViewController: ASCBaseViewController {
 
+    class override var storyboard: Storyboard { return Storyboard.login }
+    
     // MARK: - Properties
     
     @IBOutlet weak var createPortalButton: UIButton!
@@ -195,23 +197,7 @@ class ASCConnectPortalViewController: UIViewController, UITextFieldDelegate {
     }
     
     private func showSignIn() {
-        let signinViewController = ASCSignInViewController.instantiate(from: Storyboard.login)
-        signinViewController.portal = addressField?.text?.trim()
-        navigationController?.pushViewController(signinViewController, animated: true)
-    }
-    
-    // MARK: - UITextField Delegate
-    
-    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        onContinue(textField)
-        return true
-    }
-    
-    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
-        if let floatingLabelTextField = textField as? SkyFloatingLabelTextField {
-            floatingLabelTextField.errorMessage = ""
-        }
-        return true
+        navigator.navigate(to: .onlyofficeSignIn(portal: addressField?.text?.trim()))
     }
     
     // MARK: - Actions
@@ -259,4 +245,22 @@ class ASCConnectPortalViewController: UIViewController, UITextFieldDelegate {
     }
     
 
+}
+
+// MARK: - UITextField Delegate
+
+extension ASCConnectPortalViewController : UITextFieldDelegate {
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        onContinue(textField)
+        return true
+    }
+    
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        if let floatingLabelTextField = textField as? SkyFloatingLabelTextField {
+            floatingLabelTextField.errorMessage = ""
+        }
+        return true
+    }
+    
 }

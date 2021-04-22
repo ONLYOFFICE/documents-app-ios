@@ -10,8 +10,10 @@ import UIKit
 import MBProgressHUD
 import Firebase
 
-class ASCAccountsViewController: UIViewController {
+class ASCAccountsViewController: ASCBaseViewController {
 
+    // MARK: - Outlets
+    
     @IBOutlet weak var accountsCollectionView: UICollectionView!
     @IBOutlet weak var displayNameLabel: UILabel!
     @IBOutlet weak var portalLabel: UILabel!
@@ -19,6 +21,8 @@ class ASCAccountsViewController: UIViewController {
     @IBOutlet weak var continueButton: UIButton!
     @IBOutlet weak var accountInfoTopConstraint: NSLayoutConstraint!
 
+    // MARK: - Lifecycle
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -151,8 +155,7 @@ class ASCAccountsViewController: UIViewController {
     
     private func switchVCSingle() {
         if ASCAccountsManager.shared.accounts.count < 1 {
-            let connectPortalVC = ASCConnectPortalViewController.instantiate(from: Storyboard.login)
-            navigationController?.viewControllers = [connectPortalVC]
+            navigator.navigate(to: .onlyofficeConnectPortal)
         }
     }
 

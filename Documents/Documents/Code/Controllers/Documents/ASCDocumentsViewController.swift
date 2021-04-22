@@ -16,7 +16,7 @@ import SwiftRater
 import SpreadsheetEditor
 import SwiftMessages
 
-class ASCDocumentsViewController: UITableViewController, UIGestureRecognizerDelegate {
+class ASCDocumentsViewController: ASCBaseTableViewController, UIGestureRecognizerDelegate {
 
     static let identifier = String(describing: ASCDocumentsViewController.self)
 
@@ -115,8 +115,8 @@ class ASCDocumentsViewController: UITableViewController, UIGestureRecognizerDele
     @IBOutlet weak var retryButton: UIButton!
     @IBOutlet weak var errorSubtitleLabel: UILabel!
 
-    private lazy var emptyView: ASCDocumentsEmptyView = {
-        let view = $0
+    private lazy var emptyView: ASCDocumentsEmptyView? = {
+        guard let view = UIView.loadFromNib(named: String(describing: ASCDocumentsEmptyView.self)) as? ASCDocumentsEmptyView else { return nil }
 
         view.onAction = { [weak self] in
             guard
@@ -129,23 +129,22 @@ class ASCDocumentsViewController: UITableViewController, UIGestureRecognizerDele
             view.actionButton.isHidden = !provider.allowEdit(entity: folder)
         }
         return view
-    }(UIView.loadFromNib(named: "DocumentsEmptyView") as! ASCDocumentsEmptyView)
+    }()
 
-    private lazy var errorView: ASCDocumentsEmptyView = {
-        let view = $0
+    private lazy var errorView: ASCDocumentsEmptyView? = {
+        guard let view = UIView.loadFromNib(named: String(describing: ASCDocumentsEmptyView.self)) as? ASCDocumentsEmptyView else { return nil }
+        
         view.onAction = { [weak self] in
             guard let strongSelf = self else { return }
             strongSelf.onErrorRetry(view.actionButton)
         }
         return view
-    }(UIView.loadFromNib(named: "DocumentsEmptyView") as! ASCDocumentsEmptyView)
+    }()
 
-    private lazy var searchEmptyView: ASCDocumentsEmptyView = {
-        $0.onAction = {
-            log.info("searchEmptyView2")
-        }
-        return $0
-    }(UIView.loadFromNib(named: "DocumentsEmptyView") as! ASCDocumentsEmptyView)
+    private lazy var searchEmptyView: ASCDocumentsEmptyView? = {
+        guard let view = UIView.loadFromNib(named: String(describing: ASCDocumentsEmptyView.self)) as? ASCDocumentsEmptyView else { return nil }
+        return view
+    }()
 
     
     // MARK: - Lifecycle Methods
@@ -303,7 +302,7 @@ class ASCDocumentsViewController: UITableViewController, UIGestureRecognizerDele
         title = nil
         
         loadingView.removeFromSuperview()
-        emptyView.removeFromSuperview()
+        emptyView?.removeFromSuperview()
 
         tableView.reloadData()
     }
@@ -483,10 +482,15 @@ class ASCDocumentsViewController: UITableViewController, UIGestureRecognizerDele
     }
     
     @objc func onSortAction() {
-        let sortVC = ASCSortViewController.instantiate(from: Storyboard.sort)
         var sortType = "dateandtime"
         var sortAscending = false
-
+        var types: [(String, String, Bool)] = [
+            (NSLocalizedString("Date", comment: ""),    "dateandtime",  sortType == "dateandtime"),
+            (NSLocalizedString("Title", comment: ""),   "title",        sortType == "title"),
+            (NSLocalizedString("Type", comment: ""),    "type",         sortType == "type"),
+            (NSLocalizedString("Size", comment: ""),    "size",         sortType == "size")
+        ]
+        
         if let sortInfo = UserDefaults.standard.value(forKey: ASCConstants.SettingsKeys.sortDocuments) as? [String: Any] {
             if let sortBy = sortInfo["type"] as? String, sortBy.length > 0 {
                 sortType = sortBy
@@ -497,20 +501,11 @@ class ASCDocumentsViewController: UITableViewController, UIGestureRecognizerDele
             }
         }
 
-        var types: [(String, String, Bool)] = [
-            (NSLocalizedString("Date", comment: ""),    "dateandtime",  sortType == "dateandtime"),
-            (NSLocalizedString("Title", comment: ""),   "title",        sortType == "title"),
-            (NSLocalizedString("Type", comment: ""),    "type",         sortType == "type"),
-            (NSLocalizedString("Size", comment: ""),    "size",         sortType == "size")
-        ]
-
         if ![.deviceDocuments, .deviceTrash].contains(folder?.rootFolderType) {
             types.append((NSLocalizedString("Author", comment: ""), "author", sortType == "author"))
         }
-
-        sortVC.types = types
-        sortVC.ascending = sortAscending
-        sortVC.onDone = { type, ascending in
+        
+        navigator.navigate(to: .sort(types: types, ascending: sortAscending, complation: { type, ascending in
             if (sortType != type) || (ascending != sortAscending) {
                 let sortInfo = [
                     "type": type,
@@ -519,18 +514,7 @@ class ASCDocumentsViewController: UITableViewController, UIGestureRecognizerDele
 
                 UserDefaults.standard.set(sortInfo, forKey: ASCConstants.SettingsKeys.sortDocuments)
             }
-        }
-
-        let navigationVC = UINavigationController(rootASCViewController: sortVC)
-
-        //            if UIDevice.pad, let view = sortBarButton?.customView {
-        //                navigationVC.modalPresentationStyle = .popover
-        //                navigationVC.preferredContentSize = CGSize(width: 350, height: 380)
-        //                navigationVC.popoverPresentationController?.sourceView = view
-        //                navigationVC.popoverPresentationController?.sourceRect = view.bounds
-        //            }
-
-        present(navigationVC, animated: true, completion: nil)
+        }))
     }
     
     @objc func onSelectAction() {
@@ -891,7 +875,7 @@ class ASCDocumentsViewController: UITableViewController, UIGestureRecognizerDele
                 if success {
                     strongSelf.showEmptyView(strongSelf.total < 1)
                 } else {
-                    if strongSelf.errorView.superview == nil {
+                    if strongSelf.errorView?.superview == nil {
                         strongSelf.showErrorView(true)
                     }
                 }
@@ -945,8 +929,8 @@ class ASCDocumentsViewController: UITableViewController, UIGestureRecognizerDele
         }
 
         if !show {
-            emptyView.removeFromSuperview()
-            searchEmptyView.removeFromSuperview()
+            emptyView?.removeFromSuperview()
+            searchEmptyView?.removeFromSuperview()
 
             if let tableView = view as? UITableView {
                 tableView.backgroundView = nil
@@ -968,25 +952,25 @@ class ASCDocumentsViewController: UITableViewController, UIGestureRecognizerDele
             }
 
             if searchController.isActive {
-                localEmptyView.type = .search
+                localEmptyView?.type = .search
             } else {
                 if let folder = folder, let provider = provider {
                     if folder.rootFolderType == .deviceTrash || folder.rootFolderType == .onlyofficeTrash {
-                        localEmptyView.type = .trash
+                        localEmptyView?.type = .trash
                     } else if provider.type == .local {
-                        localEmptyView.type = .local
+                        localEmptyView?.type = .local
                     } else {
-                        localEmptyView.type = .cloud
+                        localEmptyView?.type = .cloud
 
                         if !(provider.allowEdit(entity: folder)) {
-                            localEmptyView.type = .cloudNoPermissions
+                            localEmptyView?.type = .cloudNoPermissions
                         }
                     }
                 }
             }
 
-            if localEmptyView.superview == nil {
-                localEmptyView.frame = CGRect(
+            if localEmptyView?.superview == nil {
+                localEmptyView?.frame = CGRect(
                     x: 0,
                     y: 0,
                     width: tableView.width,
@@ -1001,7 +985,7 @@ class ASCDocumentsViewController: UITableViewController, UIGestureRecognizerDele
 
     private func showErrorView(_ show: Bool, _ error: Error? = nil) {
         if !show {
-            errorView.removeFromSuperview()
+            errorView?.removeFromSuperview()
 
             if let tableView = view as? UITableView {
                 tableView.backgroundView = nil
@@ -1011,17 +995,17 @@ class ASCDocumentsViewController: UITableViewController, UIGestureRecognizerDele
             showEmptyView(false)
 
             if !ASCNetworkReachability.shared.isReachable {
-                errorView.type = .networkError
+                errorView?.type = .networkError
             } else {
-                errorView.type = .error
+                errorView?.type = .error
             }
 
             if let error = error {
-                errorView.subtitleLabel?.text = "\(errorView.subtitleLabel?.text ?? "") (\(error.localizedDescription))"
+                errorView?.subtitleLabel?.text = "\(errorView?.subtitleLabel?.text ?? "") (\(error.localizedDescription))"
             }
 
-            if errorView.superview == nil {
-                errorView.frame = CGRect(
+            if errorView?.superview == nil {
+                errorView?.frame = CGRect(
                     x: 0,
                     y: 0,
                     width: tableView.frame.width,
@@ -1142,7 +1126,7 @@ class ASCDocumentsViewController: UITableViewController, UIGestureRecognizerDele
     }
     
     private func updateNavBar() {
-        let hasError = errorView.superview != nil
+        let hasError = errorView?.superview != nil
 
         addBarButton?.isEnabled = !hasError && provider?.allowEdit(entity: folder) ?? false
         sortSelectBarButton?.isEnabled = !hasError && total > 0
@@ -2256,7 +2240,7 @@ class ASCDocumentsViewController: UITableViewController, UIGestureRecognizerDele
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if tableData.count > 0 {
-            emptyView.removeFromSuperview()
+            emptyView?.removeFromSuperview()
             
             if indexPath.row < tableData.count {
                 if let folder = tableData[indexPath.row] as? ASCFolder {

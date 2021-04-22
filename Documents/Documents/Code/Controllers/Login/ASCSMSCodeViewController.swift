@@ -10,7 +10,9 @@ import UIKit
 import MBProgressHUD
 import IQKeyboardManagerSwift
 
-class ASCSMSCodeViewController: UIViewController {
+class ASCSMSCodeViewController: ASCBaseViewController {
+    
+    class override var storyboard: Storyboard { return Storyboard.login }
 
     // MARK: - Properties
     

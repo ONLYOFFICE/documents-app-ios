@@ -12,16 +12,21 @@ import SkyFloatingLabelTextField
 import IQKeyboardManagerSwift
 import MBProgressHUD
 
-class ASCSignInViewController: UIViewController, UITextFieldDelegate {
+class ASCSignInViewController: ASCBaseViewController {
     static let identifier = String(describing: ASCSignInViewController.self)
+    
+    class override var storyboard: Storyboard { return Storyboard.login }
 
     // MARK: - Properties
+    
     var portal: String?
     var email: String?
     var renewal: Bool = false
 
     private let facebookSignInController = ASCFacebookSignInController()
     private let googleSignInController = ASCGoogleSignInController()
+    
+    // MARK: - Outlets
     
     @IBOutlet weak var emailField: SkyFloatingLabelTextField!
     @IBOutlet weak var passwordField: SkyFloatingLabelTextField!
@@ -175,31 +180,6 @@ class ASCSignInViewController: UIViewController, UITextFieldDelegate {
             return false
         }
         
-        return true
-    }
-
-    // MARK: - Text Field Delegate
-    
-    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        let nextTag = textField.tag + 1
-        
-        if let nextResponder = textField.superview?.viewWithTag(nextTag) {
-            nextResponder.becomeFirstResponder()
-        } else {
-            onEmailLogin(textField)            
-            return true
-        }
-        
-        return false
-    }
-    
-    func textField(_ textField: UITextField,
-                   shouldChangeCharactersIn range: NSRange,
-                   replacementString string: String) -> Bool
-    {
-        if let floatingLabelTextField = textField as? SkyFloatingLabelTextField {
-            floatingLabelTextField.errorMessage = ""
-        }
         return true
     }
     
@@ -486,4 +466,33 @@ class ASCSignInViewController: UIViewController, UITextFieldDelegate {
             })
         }
     }
+}
+
+// MARK: - Text Field Delegate
+
+extension ASCSignInViewController: UITextFieldDelegate {
+
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        let nextTag = textField.tag + 1
+        
+        if let nextResponder = textField.superview?.viewWithTag(nextTag) {
+            nextResponder.becomeFirstResponder()
+        } else {
+            onEmailLogin(textField)
+            return true
+        }
+        
+        return false
+    }
+    
+    func textField(_ textField: UITextField,
+                   shouldChangeCharactersIn range: NSRange,
+                   replacementString string: String) -> Bool
+    {
+        if let floatingLabelTextField = textField as? SkyFloatingLabelTextField {
+            floatingLabelTextField.errorMessage = ""
+        }
+        return true
+    }
+    
 }

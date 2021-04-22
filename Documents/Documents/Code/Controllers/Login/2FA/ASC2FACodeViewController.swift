@@ -10,8 +10,10 @@ import UIKit
 import MBProgressHUD
 import IQKeyboardManagerSwift
 
-class ASC2FACodeViewController: UIViewController {
+class ASC2FACodeViewController: ASCBaseViewController {
     static let identifier = String(describing: ASC2FACodeViewController.self)
+    
+    class override var storyboard: Storyboard { return Storyboard.login }
 
     // MARK: - Properties
 
@@ -21,6 +23,8 @@ class ASC2FACodeViewController: UIViewController {
 
     private let codeLength: Int = 6
 
+    // MARK: - Outlets
+    
     @IBOutlet weak var codeField: UITextField!
     @IBOutlet weak var helpLabel: UILabel!
 

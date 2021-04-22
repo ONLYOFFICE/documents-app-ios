@@ -21,7 +21,7 @@ enum Destination {
     
 }
 
-class ASCNavigator {
+final class ASCNavigator {
     
     // MARK: - Properties
     
@@ -35,7 +35,8 @@ class ASCNavigator {
     
     // MARK: - Public
     
-    func navigate(to destination: Destination) {
+    @discardableResult
+    func navigate(to destination: Destination) -> UIViewController? {
         let viewController = makeViewController(for: destination)
         
         switch destination {
@@ -52,6 +53,8 @@ class ASCNavigator {
         default:
             navigationController?.pushViewController(viewController, animated: true)
         }
+        
+        return viewController
     }
     
     // MARK: - Private

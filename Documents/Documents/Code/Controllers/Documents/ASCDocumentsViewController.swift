@@ -431,8 +431,10 @@ class ASCDocumentsViewController: ASCBaseTableViewController, UIGestureRecognize
     
     fileprivate func flashBlockInteration() {
         view.isUserInteractionEnabled = false
+        ASCViewControllerManager.shared.rootController?.isUserInteractionEnabled = false
         delay(seconds: 0.2) {
             self.view.isUserInteractionEnabled = true
+            ASCViewControllerManager.shared.rootController?.isUserInteractionEnabled = true
         }
     }
     

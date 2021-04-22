@@ -18,6 +18,13 @@ class ASCRootController: UITabBarController {
     private var isFirstOpenDeviceCategory = false
     private var isFirstOpenOnlyofficeCategory = false
     private var isFirstOpenCloudCategory = false
+    
+    var isUserInteractionEnabled: Bool = true {
+        didSet {
+            tabBar.isUserInteractionEnabled = isUserInteractionEnabled
+            print("tabBar.isUserInteractionEnabled - \(isUserInteractionEnabled)")
+        }
+    }
 
     // MARK: - Lifecycle Methods
 
@@ -366,6 +373,8 @@ extension ASCRootController: UITabBarControllerDelegate {
     }
 
     func tabBarController(_ tabBarController: UITabBarController, shouldSelect viewController: UIViewController) -> Bool {
+        guard tabBar.isUserInteractionEnabled else { return false }
+        
         if let viewController = viewController as? ASCBaseSplitViewController {
             if selectedViewController == viewController {
                 if UIDevice.phone {

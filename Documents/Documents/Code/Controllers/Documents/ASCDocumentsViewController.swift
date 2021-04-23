@@ -563,8 +563,13 @@ class ASCDocumentsViewController: UITableViewController, UIGestureRecognizerDele
     }
     
     private func configureNavigationBar(animated: Bool = true) {
-        addBarButton = addBarButton
-            ?? ASCStyles.createBarButton(image: Asset.Images.navAdd.image, target: self, action:#selector(onAddEntityAction))
+        let showAddButton = provider?.allowEdit(entity: folder) ?? false
+        
+        if showAddButton {
+            addBarButton = addBarButton
+                ?? ASCStyles.createBarButton(image: Asset.Images.navAdd.image, target: self, action:#selector(onAddEntityAction))
+        }
+        
         sortSelectBarButton = sortSelectBarButton
             ?? ASCStyles.createBarButton(image: Asset.Images.navMore.image, target: self, action:#selector(onSortSelectAction))
         sortBarButton = sortBarButton
@@ -576,7 +581,6 @@ class ASCDocumentsViewController: UITableViewController, UIGestureRecognizerDele
         selectAllBarButton = selectAllBarButton
             ?? ASCStyles.createBarButton(title: NSLocalizedString("Select", comment: "Button title"), target: self, action: #selector(onSelectAll))
         
-        addBarButton?.isEnabled = provider?.allowEdit(entity: folder) ?? false
         sortSelectBarButton?.isEnabled = total > 0
         sortBarButton?.isEnabled = total > 0
         selectBarButton?.isEnabled = total > 0

@@ -268,9 +268,6 @@ class ASCOnlyofficeCategoriesViewController: UITableViewController {
 
             documentsVC.navigationItem.leftBarButtonItem = splitVC.displayModeButtonItem
             documentsVC.navigationItem.leftItemsSupplementBackButton = UIDevice.pad
-
-            documentsVC.addBarButton?.isEnabled = false
-            //documentsVC.addBarButton?
             
             let selectRowFunc = { [self] in
                 if let index = categories.firstIndex(where: { $0.folder?.rootFolderType == documentsVC.folder?.rootFolderType }) {

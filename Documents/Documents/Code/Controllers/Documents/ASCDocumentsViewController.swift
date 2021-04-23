@@ -598,12 +598,20 @@ class ASCDocumentsViewController: UITableViewController, UIGestureRecognizerDele
             navigationItem.setRightBarButtonItems([cancelBarButton!], animated: animated)
         } else {
             navigationItem.setLeftBarButtonItems(nil, animated: animated)
-            navigationItem.setRightBarButtonItems(
-                UIDevice.phone
-                    ? [ASCStyles.barFixedSpace, addBarButton!, sortSelectBarButton!]
-                    : [ASCStyles.barFixedSpace, addBarButton!, sortBarButton!, selectBarButton!],
-                animated: animated
-            )
+            var rightBarBtnItems = [ASCStyles.barFixedSpace]
+            if let addBarBtn = addBarButton {
+                rightBarBtnItems.append(addBarBtn)
+            }
+            if UIDevice.phone {
+                if let sortSelectBarBtn = sortSelectBarButton {
+                    rightBarBtnItems.append(sortSelectBarBtn)
+                }
+            } else {
+                if let sortBarBtn = sortBarButton {
+                    rightBarBtnItems.append(sortBarBtn)
+                }
+            }
+            navigationItem.setRightBarButtonItems(rightBarBtnItems, animated: animated)
         }
 
         if #available(iOS 11.0, *), featureLargeTitle {

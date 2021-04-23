@@ -828,6 +828,14 @@ class ASCOnlyofficeProvider: ASCFileProviderProtocol & ASCSortableFileProviderPr
             if isRoot(folder: folder) && folder.rootFolderType == .onlyofficeTrash {
                 return false
             }
+            
+            if isRoot(folder: folder) && folder.rootFolderType == .onlyofficeFavorites {
+                return false
+            }
+            
+            if isRoot(folder: folder) && folder.rootFolderType == .onlyofficeRecent {
+                return false
+            }
 
             if isRoot(folder: folder) && (folder.rootFolderType == .onlyofficeProjects || folder.rootFolderType == .onlyofficeBunch) {
                 return false

@@ -3479,7 +3479,7 @@ extension ASCDocumentsViewController: UISearchResultsUpdating {
         var searchText: String?
         
         if searchController.isActive {
-            if let search = searchController.searchBar.text?.trim().lowercased(), search.count > 0 {
+            if let search = searchController.searchBar.text?.trimmed.lowercased(), search.count > 0 {
                 searchText = search
             }
         }

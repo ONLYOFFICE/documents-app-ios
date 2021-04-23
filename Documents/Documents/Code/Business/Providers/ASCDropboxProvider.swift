@@ -263,7 +263,7 @@ class ASCDropboxProvider: ASCFileProviderProtocol & ASCSortableFileProviderProto
             // Search
             if
                 let search = parameters["search"] as? [String: Any],
-                let text = (search["text"] as? String)?.trim(),
+                let text = (search["text"] as? String)?.trimmed,
                 text.length > 0
             {
                 query = NSPredicate(format: "(name BEGINSWITH[c] %@)", text.lowercased())

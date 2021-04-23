@@ -38,7 +38,7 @@ class ASC2FACodeViewController: ASCBaseViewController {
         }
 
         codeField?.delegate = self
-        codeField?.underline(color: ASCConstants.Colors.brend)
+        codeField?.underline(color: Asset.Colors.brend.color)
         codeField?.addTarget(self, action: #selector(textFieldDidChange(_:)), for: .editingChanged)
 
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(tapFunction))
@@ -146,7 +146,7 @@ extension ASC2FACodeViewController: UITextFieldDelegate {
 
     @objc func textFieldDidChange(_ textField: UITextField) {
         if textField == codeField, let fieldText = textField.text {
-            let code = fieldText.trim().substring(to: codeLength)
+            let code = fieldText.trimmed.substring(to: codeLength)
 
             if code.length == codeLength {
                 login(with: code)

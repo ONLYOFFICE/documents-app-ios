@@ -121,7 +121,7 @@ class ASCConnectPortalViewController: ASCBaseViewController {
     }
     
     private func validatePortal(validation: @escaping (Bool, String?, [String: Any]?)->()) {
-        guard let portalUrl = addressField?.text?.trim() else {
+        guard let portalUrl = addressField?.text?.trimmed else {
             validation(false, NSLocalizedString("Address is empty", comment: ""), nil)
             return
         }
@@ -197,7 +197,7 @@ class ASCConnectPortalViewController: ASCBaseViewController {
     }
     
     private func showSignIn() {
-        navigator.navigate(to: .onlyofficeSignIn(portal: addressField?.text?.trim()))
+        navigator.navigate(to: .onlyofficeSignIn(portal: addressField?.text?.trimmed))
     }
     
     // MARK: - Actions

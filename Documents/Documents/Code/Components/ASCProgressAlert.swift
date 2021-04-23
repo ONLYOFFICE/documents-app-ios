@@ -35,7 +35,7 @@ class ASCProgressAlert {
         // Init progress view
         progress = 0.01
         
-        actionController?.view.tintColor = ASCConstants.Colors.brend
+        actionController?.view.tintColor = Asset.Colors.brend.color
 
         progressView = UIProgressView(progressViewStyle: .bar)
         progressView?.translatesAutoresizingMaskIntoConstraints = false

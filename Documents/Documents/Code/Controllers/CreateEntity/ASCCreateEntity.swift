@@ -56,7 +56,7 @@ class ASCCreateEntity: NSObject, UIImagePickerControllerDelegate, UINavigationCo
             }
 
             if let contentView = createEntityView.subviews.first {
-                (contentView as? CornerRoundingView)?.cornerRadius = 0
+//                (contentView as? CornerRoundingView)?.cornerRadius = 0
 
                 for constraint in contentView.superview?.constraints ?? [] {
                     if  let _ = constraint.firstItem as? ASCCreateEntityView ?? constraint.firstItem as? CornerRoundingView,

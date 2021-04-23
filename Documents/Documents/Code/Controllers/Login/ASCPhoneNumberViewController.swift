@@ -86,7 +86,7 @@ class ASCPhoneNumberViewController: ASCBaseViewController {
         var isValidNumber = false
         var phoneNumber: PhoneNumber!
 
-        if  let stringCode = codeField.text?.trim().replacingOccurrences(of: "+", with: ""),
+        if  let stringCode = codeField.text?.trimmed.replacingOccurrences(of: "+", with: ""),
             let intCode = UInt64(stringCode),
             let regionCode = phoneNumberKit.mainCountry(forCode: intCode)
         {
@@ -158,7 +158,7 @@ extension ASCPhoneNumberViewController : UITextFieldDelegate {
     
     @objc func textFieldDidChange(_ textField: UITextField) {
         if textField == codeField {
-            if let stringCode = textField.text?.trim().replacingOccurrences(of: "+", with: ""), let intCode = UInt64(stringCode) {
+            if let stringCode = textField.text?.trimmed.replacingOccurrences(of: "+", with: ""), let intCode = UInt64(stringCode) {
                 if let regionCode = phoneNumberKit.mainCountry(forCode: intCode) {
                     if let countryName = Locale.current.localizedString(forRegionCode: regionCode) {
                         countryCodeField.text = countryName

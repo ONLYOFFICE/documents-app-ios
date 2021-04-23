@@ -264,7 +264,7 @@ class ASCOnlyofficeProvider: ASCFileProviderProtocol & ASCSortableFileProviderPr
             if let search = parameters["search"] as? [String: Any] {
                 params["filterBy"] = "title"
                 params["filterOp"] = "contains"
-                params["filterValue"] = (search["text"] as? String ?? "").trim()
+                params["filterValue"] = (search["text"] as? String ?? "").trimmed
             }
 
             /// Sort

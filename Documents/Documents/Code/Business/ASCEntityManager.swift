@@ -79,7 +79,7 @@ class ASCEntityManager: NSObject, UITextFieldDelegate {
             textField.text = fileName
             
             textField.add(for: .editingChanged, {
-                createAction.isEnabled = (textField.text?.trim().length)! > 0
+                createAction.isEnabled = (textField.text?.trimmed.length)! > 0
             })
             
             delay(seconds: 0.2) {
@@ -88,7 +88,7 @@ class ASCEntityManager: NSObject, UITextFieldDelegate {
         }
         
         if let topVC = ASCViewControllerManager.shared.topViewController {
-            alertController.view.tintColor = ASCConstants.Colors.brend
+            alertController.view.tintColor = Asset.Colors.brend.color
             topVC.present(alertController, animated: true, completion: nil)
         }
     }
@@ -137,7 +137,7 @@ class ASCEntityManager: NSObject, UITextFieldDelegate {
             textField.text = folderName
             
             textField.add(for: .editingChanged, {
-                createAction.isEnabled = (textField.text?.trim().length)! > 0
+                createAction.isEnabled = (textField.text?.trimmed.length)! > 0
             })
             
             delay(seconds: 0.2) {
@@ -146,7 +146,7 @@ class ASCEntityManager: NSObject, UITextFieldDelegate {
         }
         
         if let topVC = ASCViewControllerManager.shared.topViewController {
-            alertController.view.tintColor = ASCConstants.Colors.brend
+            alertController.view.tintColor = Asset.Colors.brend.color
             topVC.present(alertController, animated: true, completion: nil)
         }
     }
@@ -423,7 +423,7 @@ class ASCEntityManager: NSObject, UITextFieldDelegate {
             textField.text = entityTitle?.fileName()
             
             textField.add(for: .editingChanged, {
-                renameAction.isEnabled = (textField.text?.trim().length)! > 0
+                renameAction.isEnabled = (textField.text?.trimmed.length)! > 0
             })
             
             delay(seconds: 0.2) {
@@ -432,7 +432,7 @@ class ASCEntityManager: NSObject, UITextFieldDelegate {
         }
         
         if let topVC = ASCViewControllerManager.shared.topViewController {
-            alertController.view.tintColor = ASCConstants.Colors.brend
+            alertController.view.tintColor = Asset.Colors.brend.color
             topVC.present(alertController, animated: true, completion: nil)
         }
     }

@@ -182,8 +182,8 @@ class ASCOnlyofficeCategoriesViewController: UITableViewController {
                 avatarView?.kf.apiSetImage(with: avatarUrl,
                                            placeholder: Asset.Images.avatarDefault.image)
 
-                accountName?.text = user.displayName?.trim()
-                accountPortal?.text = onlyofficeProvider.api.baseUrl?.trim()
+                accountName?.text = user.displayName?.trimmed
+                accountPortal?.text = onlyofficeProvider.api.baseUrl?.trimmed
             } else {
                 hasInfo = false
 

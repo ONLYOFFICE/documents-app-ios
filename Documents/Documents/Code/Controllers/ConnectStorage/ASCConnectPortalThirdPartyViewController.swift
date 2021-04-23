@@ -147,7 +147,7 @@ class ASCConnectPortalThirdPartyViewController: UITableViewController {
                 
                 textField.selectedTextRange = nil
                 
-                if var folderTitle = textField.text?.trim() {
+                if var folderTitle = textField.text?.trimmed {
                     if folderTitle.length < 1 {
                         folderTitle = folderName
                     }
@@ -166,7 +166,7 @@ class ASCConnectPortalThirdPartyViewController: UITableViewController {
                 textField.text = folderName
                 
                 textField.add(for: .editingChanged, {
-                    connectAction.isEnabled = (textField.text?.trim().length)! > 0
+                    connectAction.isEnabled = (textField.text?.trimmed.length)! > 0
                 })
                 
                 delay(seconds: 0.2) {

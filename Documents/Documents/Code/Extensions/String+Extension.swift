@@ -26,6 +26,18 @@ extension String {
         return range(of: regex, options: .regularExpression, range: nil, locale: nil) != nil
     }
     
+    /// String with no spaces or new lines in beginning and end.
+    ///
+    ///     "   hello  \n".trimmed -> "hello"
+    ///
+    var trimmed: String {
+        return self.trimmingCharacters(in: .whitespacesAndNewlines)
+    }
+    
+    var dateFromISO8601: Date? {
+        return Date.iso8601Formatter.date(from: self)
+    }
+    
     subscript (i: Int) -> String {
         return self[i ..< i + 1]
     }
@@ -108,20 +120,12 @@ extension String {
         }
     }
     
-    var dateFromISO8601: Date? {
-        return Date.iso8601Formatter.date(from: self)
-    }
-    
     func fileName() -> String {
         return ((self as NSString).deletingPathExtension as NSString).lastPathComponent
     }
     
     func fileExtension() -> String {
         return (self as NSString).pathExtension
-    }
-    
-    func trim() -> String {
-        return self.trimmingCharacters(in: .whitespacesAndNewlines)
     }
 
     /// Verify if string matches the regex pattern.
@@ -202,7 +206,7 @@ extension String {
     ///
     var validPathName: String {
         return self
-            .trim()
+            .trimmed
             .components(separatedBy: CharacterSet(charactersIn: String.invalidTitleChars))
             .filter({ $0.count > 0 })
             .joined(separator: "-")

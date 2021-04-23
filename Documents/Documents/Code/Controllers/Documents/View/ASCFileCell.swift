@@ -86,7 +86,7 @@ class ASCFileCell: MGSwipeTableCell {
                 let editImage = UIImage(
                     systemName: "pencil",
                     withConfiguration: UIImage.SymbolConfiguration(font: UIFont.systemFont(ofSize: 13, weight: .black))
-                )?.withTintColor(ASCConstants.Colors.brend, renderingMode: .alwaysOriginal) ?? UIImage()
+                )?.withTintColor(Asset.Colors.brend.color, renderingMode: .alwaysOriginal) ?? UIImage()
                 
                 title?.addTrailing(image: editImage)
             }
@@ -95,7 +95,7 @@ class ASCFileCell: MGSwipeTableCell {
                 let favoriteImage = UIImage(
                     systemName: "star.fill",
                     withConfiguration: UIImage.SymbolConfiguration(font: UIFont.systemFont(ofSize: 13, weight: .medium))
-                )?.withTintColor(ASCConstants.Colors.brend, renderingMode: .alwaysOriginal) ?? UIImage()
+                )?.withTintColor(Asset.Colors.brend.color, renderingMode: .alwaysOriginal) ?? UIImage()
                 
                 title?.addTrailing(image: favoriteImage)
             }

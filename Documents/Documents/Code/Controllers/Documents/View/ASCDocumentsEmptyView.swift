@@ -26,7 +26,7 @@ class ASCDocumentsEmptyView: UIView {
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var subtitleLabel: UILabel!
-    @IBOutlet weak var actionButton: UIButton!
+    @IBOutlet weak var actionButton: ASCButtonStyle!
     @IBOutlet weak var centerYConstraint: NSLayoutConstraint!
 
     private lazy var effectGroup: UIMotionEffectGroup = {
@@ -58,14 +58,17 @@ class ASCDocumentsEmptyView: UIView {
             // UIView appear
 
             isUserInteractionEnabled = true
-            actionButton?.backgroundColor = ASCConstants.Colors.brendAction
-            actionButton?.layer.cornerRadius = 5
-
-            actionButton?.layer.shadowOpacity = 1
-            actionButton?.layer.shadowColor = UIColor.lightGray.cgColor
-            actionButton?.layer.shadowOffset = CGSize(width: 0, height: 1)
-//            actionButton?.layer.shouldRasterize = true
-            actionButton?.layer.shadowRadius = 1
+            
+            actionButton.styleType = .action
+//
+//            actionButton?.backgroundColor = ASCConstants.Colors.brendAction
+//            actionButton?.layer.cornerRadius = 5
+//
+//            actionButton?.layer.shadowOpacity = 1
+//            actionButton?.layer.shadowColor = UIColor.lightGray.cgColor
+//            actionButton?.layer.shadowOffset = CGSize(width: 0, height: 1)
+////            actionButton?.layer.shouldRasterize = true
+//            actionButton?.layer.shadowRadius = 1
 
             actionButton?.setTitleColor(.white, for: .normal)
             actionButton?.addTarget(self, action: #selector(onActionButton), for: .touchUpInside)

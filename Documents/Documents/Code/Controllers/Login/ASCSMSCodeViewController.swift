@@ -150,7 +150,7 @@ extension ASCSMSCodeViewController: UITextFieldDelegate {
     
     @objc func textFieldDidChange(_ textField: UITextField) {
         if textField == codeField, let fieldText = textField.text {
-            let code = fieldText.trim().substring(to: codeLength)
+            let code = fieldText.trimmed.substring(to: codeLength)
             
             if code.length == codeLength {
                 login(with: code)

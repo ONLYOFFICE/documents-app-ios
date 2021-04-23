@@ -58,7 +58,7 @@ class ASC2FAPageController: UIViewController {
             secretField?.text = secret.split(by: 4).joined(separator: " ")
         }
 
-        secretField?.underline(color: ASCConstants.Colors.brend)
+        secretField?.underline(color: Asset.Colors.brend.color)
     }
 
     override func didReceiveMemoryWarning() {

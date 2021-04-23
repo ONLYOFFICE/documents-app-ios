@@ -200,11 +200,11 @@ class ASCSignInViewController: ASCBaseViewController {
     }
     
     @IBAction func onEmailLogin(_ sender: Any) {
-        guard let portal = ASCOnlyOfficeApi.shared.baseUrl ?? portal?.trim() else {
+        guard let portal = ASCOnlyOfficeApi.shared.baseUrl ?? portal?.trimmed else {
             return
         }
         
-        guard let email = emailField?.text?.trim() else {
+        guard let email = emailField?.text?.trimmed else {
             return
         }
 
@@ -218,7 +218,7 @@ class ASCSignInViewController: ASCBaseViewController {
             }
         }
         
-        guard let password = passwordField?.text?.trim(), valid(password: password) else {
+        guard let password = passwordField?.text?.trimmed, valid(password: password) else {
             return
         }
         

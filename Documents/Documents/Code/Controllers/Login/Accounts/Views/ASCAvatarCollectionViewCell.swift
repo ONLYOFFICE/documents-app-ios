@@ -19,7 +19,7 @@ class ASCAvatarCollectionViewCell: UICollectionViewCell {
         
         self.layer.cornerRadius = max(frame.size.width, frame.size.height) / 2
         self.layer.borderWidth = 5
-        self.layer.borderColor = ASCConstants.Colors.brend.cgColor
+        self.layer.borderColor = Asset.Colors.brend.color.cgColor
 
         addObserver(self, forKeyPath: "alpha", options: .new, context: &observerContext)
     }
@@ -35,6 +35,6 @@ class ASCAvatarCollectionViewCell: UICollectionViewCell {
         }
 
         layer.borderWidth = alpha * 5
-        layer.borderColor = ASCConstants.Colors.brend.saturate(alpha).cgColor
+        layer.borderColor = Asset.Colors.brend.color.saturate(alpha).cgColor
     }
 }

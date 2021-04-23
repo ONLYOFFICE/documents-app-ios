@@ -491,6 +491,14 @@
 		FCF694B52631C10400808644 /* ASCNavigator.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCF694B12631C10400808644 /* ASCNavigator.swift */; };
 		FCF694C02631C3AB00808644 /* ASCDocumentsEmptyView.xib in Resources */ = {isa = PBXBuildFile; fileRef = FCF694BF2631C3AA00808644 /* ASCDocumentsEmptyView.xib */; };
 		FCF694C12631C3AB00808644 /* ASCDocumentsEmptyView.xib in Resources */ = {isa = PBXBuildFile; fileRef = FCF694BF2631C3AA00808644 /* ASCDocumentsEmptyView.xib */; };
+		FCF694C92632C9A600808644 /* ASCButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCF694C82632C9A600808644 /* ASCButtonStyle.swift */; };
+		FCF6957D2632DBF600808644 /* ASCTextStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCF6957C2632DBF600808644 /* ASCTextStyle.swift */; };
+		FCF6957E2632DBF600808644 /* ASCTextStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCF6957C2632DBF600808644 /* ASCTextStyle.swift */; };
+		FCF695872632E3A300808644 /* UILabel+Style.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCF695862632E3A300808644 /* UILabel+Style.swift */; };
+		FCF695882632E3A300808644 /* UILabel+Style.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCF695862632E3A300808644 /* UILabel+Style.swift */; };
+		FCF695902632E3D500808644 /* UIButton+Style.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCF6958F2632E3D500808644 /* UIButton+Style.swift */; };
+		FCF695912632E3D500808644 /* UIButton+Style.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCF6958F2632E3D500808644 /* UIButton+Style.swift */; };
+		FCF695CF2632FAC500808644 /* ASCButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCF694C82632C9A600808644 /* ASCButtonStyle.swift */; };
 		FCF69C8824E4271B0048F2CD /* ASCProviderError.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCF69C8724E4271B0048F2CD /* ASCProviderError.swift */; };
 		FCF8045C212E94A300378AFD /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = FCF8045A212E94A300378AFD /* InfoPlist.strings */; };
 		FCF8045F212EA38A00378AFD /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = FCF8045D212EA38A00378AFD /* Localizable.strings */; };
@@ -863,6 +871,10 @@
 		FCF694B02631C10400808644 /* ASCBaseTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASCBaseTableViewController.swift; sourceTree = "<group>"; };
 		FCF694B12631C10400808644 /* ASCNavigator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASCNavigator.swift; sourceTree = "<group>"; };
 		FCF694BF2631C3AA00808644 /* ASCDocumentsEmptyView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ASCDocumentsEmptyView.xib; sourceTree = "<group>"; };
+		FCF694C82632C9A600808644 /* ASCButtonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCButtonStyle.swift; sourceTree = "<group>"; };
+		FCF6957C2632DBF600808644 /* ASCTextStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCTextStyle.swift; sourceTree = "<group>"; };
+		FCF695862632E3A300808644 /* UILabel+Style.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UILabel+Style.swift"; sourceTree = "<group>"; };
+		FCF6958F2632E3D500808644 /* UIButton+Style.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton+Style.swift"; sourceTree = "<group>"; };
 		FCF69C8724E4271B0048F2CD /* ASCProviderError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCProviderError.swift; sourceTree = "<group>"; };
 		FCF8045B212E94A300378AFD /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		FCF8045E212EA38A00378AFD /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Localizable.strings; sourceTree = "<group>"; };
@@ -1323,6 +1335,7 @@
 		FC8540C21E83A56A000C2436 /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				FCF6957B2632DBCF00808644 /* Style */,
 				FCFB36061EDF0AB00001597E /* ASCBanner.swift */,
 				8A79BCD52080DD5C00998DA7 /* ASConverterOptionsAlert.swift */,
 				FC8540C31E83A582000C2436 /* ASCProgressAlert.swift */,
@@ -1618,6 +1631,25 @@
 				FCF3AA8A1EF91A1B00DF63BA /* ASCTransferViewCell.swift */,
 			);
 			path = Views;
+			sourceTree = "<group>";
+		};
+		FCF6957B2632DBCF00808644 /* Style */ = {
+			isa = PBXGroup;
+			children = (
+				FCF695852632E37E00808644 /* Extensions */,
+				FCF694C82632C9A600808644 /* ASCButtonStyle.swift */,
+				FCF6957C2632DBF600808644 /* ASCTextStyle.swift */,
+			);
+			path = Style;
+			sourceTree = "<group>";
+		};
+		FCF695852632E37E00808644 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				FCF695862632E3A300808644 /* UILabel+Style.swift */,
+				FCF6958F2632E3D500808644 /* UIButton+Style.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 		FCF8472722CB39ED00ABC3B4 /* Views */ = {
@@ -2387,6 +2419,7 @@
 				FC36D27525B5C32200412DDB /* ASCCreateEntity.swift in Sources */,
 				FC36D27625B5C32200412DDB /* ASCFileCell.swift in Sources */,
 				FC36D27725B5C32200412DDB /* ASCAnalytics.swift in Sources */,
+				FCF695882632E3A300808644 /* UILabel+Style.swift in Sources */,
 				FC36D27825B5C32200412DDB /* ASCIntroViewController.swift in Sources */,
 				FC36D27925B5C32200412DDB /* UITableViewCell+Extensions.swift in Sources */,
 				FC36D27A25B5C32200412DDB /* ASCSettingsViewController.swift in Sources */,
@@ -2409,8 +2442,10 @@
 				FC36D28A25B5C32200412DDB /* ASCOnlyOfficeApi.swift in Sources */,
 				FC36D28B25B5C32200412DDB /* Common+Extension.swift in Sources */,
 				FC36D28C25B5C32200412DDB /* ASCEntity.swift in Sources */,
+				FCF695CF2632FAC500808644 /* ASCButtonStyle.swift in Sources */,
 				FC36D28D25B5C32200412DDB /* ASCCreatePortalViewController.swift in Sources */,
 				FC80CA3525BADEF10077C2B8 /* Observable.swift in Sources */,
+				FCF695912632E3D500808644 /* UIButton+Style.swift in Sources */,
 				FC36D28E25B5C32200412DDB /* ASCConnectPortalViewController.swift in Sources */,
 				FC36D28F25B5C32200412DDB /* ASCSignInViewController.swift in Sources */,
 				FC36D29025B5C32200412DDB /* ASCPhoneNumberViewController.swift in Sources */,
@@ -2421,6 +2456,7 @@
 				FC36D29525B5C32200412DDB /* Mappings.swift in Sources */,
 				FC36D29625B5C32200412DDB /* ASCRootController.swift in Sources */,
 				FC36D29725B5C32200412DDB /* ASCProfileAvatarView.swift in Sources */,
+				FCF6957E2632DBF600808644 /* ASCTextStyle.swift in Sources */,
 				FC36D29825B5C32200412DDB /* UIDevice+DeviceKit.swift in Sources */,
 				FC36D29925B5C32200412DDB /* ASCImageViewController.swift in Sources */,
 				FC36D29A25B5C32200412DDB /* ASCFileStatus.swift in Sources */,
@@ -2640,8 +2676,10 @@
 				FC41D8042265D8DA00A155C2 /* ASCShareAccess.swift in Sources */,
 				FC56B5CA20C03F3400557C1F /* ASCSortViewCellTableViewCell.swift in Sources */,
 				FC64B2EC1EE56C5500920FDD /* ASCGoogleSignInController.swift in Sources */,
+				FCF694C92632C9A600808644 /* ASCButtonStyle.swift in Sources */,
 				FC41D80A2265DA5E00A155C2 /* ASCFolderType.swift in Sources */,
 				FCF69C8824E4271B0048F2CD /* ASCProviderError.swift in Sources */,
+				FCF695902632E3D500808644 /* UIButton+Style.swift in Sources */,
 				FC68398D21B7DFCE00251CEA /* ASCOnlyofficeNavigationController.swift in Sources */,
 				FCEF9D1B1ED2C94300627BA5 /* Functions.swift in Sources */,
 				FC066AB1252DB7C5007357F7 /* OwningEventReference.swift in Sources */,
@@ -2755,6 +2793,7 @@
 				FC68399821B7EF3200251CEA /* ASCOnlyofficeCategoryCell.swift in Sources */,
 				FCF694B22631C10400808644 /* ASCBaseTableViewController.swift in Sources */,
 				FC08F8771ECB402000988DDE /* ASCConnectStorageOAuth2Dropbox.swift in Sources */,
+				FCF6957D2632DBF600808644 /* ASCTextStyle.swift in Sources */,
 				E0609BF41BC138CF6774A5B3 /* ASCUser.swift in Sources */,
 				FCEF9D231ED2C94300627BA5 /* PasscodeLockViewController.swift in Sources */,
 				FC301A21230D6D4600DC25CA /* ASCFolderCell.swift in Sources */,
@@ -2812,6 +2851,7 @@
 				FC8667D421C7941C0020D797 /* ASCOnlyofficeSplitViewController.swift in Sources */,
 				FCE1864A2628CFE70086D21B /* Assets.swift in Sources */,
 				FC64B2EB1EE56C5500920FDD /* ASCFacebookSignInController.swift in Sources */,
+				FCF695872632E3A300808644 /* UILabel+Style.swift in Sources */,
 				FC3AF6BB2170825B004A96FD /* ASCFileProviderProtocol.swift in Sources */,
 				FCC9C3FA1E78235800EFCA57 /* String+Extension.swift in Sources */,
 				FC08F8731ECB2FD600988DDE /* ASCConnectPortalThirdPartyViewController.swift in Sources */,

@@ -61,7 +61,7 @@ class ASCViewControllerManager {
         ASCConstants.RemoteSettingsKeys.setupDefaults()
 
         // Setup global tintColor
-        UIApplication.shared.delegate?.window??.tintColor = ASCConstants.Colors.brend
+        UIApplication.shared.delegate?.window??.tintColor = Asset.Colors.brend.color
 
         // Read stored providers
         ASCFileManager.loadProviders()
@@ -165,7 +165,7 @@ class ASCViewControllerManager {
         // Initialize default Configuration
         var configuration = WhatsNewViewController.Configuration()
         configuration.completionButton.title = NSLocalizedString("Get started", comment: "")
-        configuration.completionButton.backgroundColor = ASCConstants.Colors.brend
+        configuration.completionButton.backgroundColor = Asset.Colors.brend.color
         configuration.itemsView.titleFont = .systemFont(ofSize: 17, weight: .semibold)
         configuration.itemsView.subtitleFont = .systemFont(ofSize: 15)
         configuration.itemsView.autoTintImage = false

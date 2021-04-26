@@ -493,6 +493,8 @@ class ASCDocumentsViewController: UITableViewController, UIGestureRecognizerDele
         }
     }
     
+    
+    
     @objc func onCancelAction() {
         setEditMode(false)
     }
@@ -563,15 +565,11 @@ class ASCDocumentsViewController: UITableViewController, UIGestureRecognizerDele
     }
     
     private func configureNavigationBar(animated: Bool = true) {
-        let showAddButton = provider?.allowEdit(entity: folder) ?? false
-        
-        if showAddButton {
-            addBarButton = addBarButton
-                ?? ASCStyles.createBarButton(image: Asset.Images.navAdd.image, target: self, action:#selector(onAddEntityAction))
-        }
-        
+
+        addBarButton = addBarButton
+            ?? createAddBarButton()
         sortSelectBarButton = sortSelectBarButton
-            ?? ASCStyles.createBarButton(image: Asset.Images.navMore.image, target: self, action:#selector(onSortSelectAction))
+            ?? createSortSelectBarButton()
         sortBarButton = sortBarButton
             ?? ASCStyles.createBarButton(image: Asset.Images.navSort.image, target: self, action: #selector(onSortAction))
         selectBarButton = selectBarButton
@@ -622,6 +620,27 @@ class ASCDocumentsViewController: UITableViewController, UIGestureRecognizerDele
             navigationController?.navigationBar.prefersLargeTitles = true
             navigationItem.largeTitleDisplayMode = .automatic
         }
+    }
+    
+    private func createAddBarButton() -> UIBarButtonItem? {
+        let showAddButton = provider?.allowEdit(entity: folder) ?? false
+        
+        guard showAddButton else { return nil }
+        
+        return ASCStyles.createBarButton(image: Asset.Images.navAdd.image, target: self, action:#selector(onAddEntityAction))
+    }
+    
+    private func createSortSelectBarButton() -> UIBarButtonItem {
+        let categoryIsRecent: Bool = {
+            guard let onlyOfficeProvider = provider as? ASCOnlyofficeProvider else { return false }
+            return onlyOfficeProvider.category?.folder?.rootFolderType == .onlyofficeRecent
+        }()
+        
+        guard categoryIsRecent else {
+            return ASCStyles.createBarButton(image: Asset.Images.navMore.image, target: self, action: #selector(onSortSelectAction))
+        }
+        
+        return ASCStyles.createBarButton(title: NSLocalizedString("Select", comment: "Navigation bar button title"), target: self, action: #selector(onSelectAction))
     }
     
     private func configureToolBar() {

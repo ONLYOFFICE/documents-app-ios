@@ -82,7 +82,7 @@ class ASCEntityManager: NSObject, UITextFieldDelegate {
                 createAction.isEnabled = (textField.text?.trimmed.length)! > 0
             })
             
-            delay(seconds: 0.2) {
+            delay(seconds: 0.3) {
                 textField.selectAll(nil)
             }
         }
@@ -140,7 +140,7 @@ class ASCEntityManager: NSObject, UITextFieldDelegate {
                 createAction.isEnabled = (textField.text?.trimmed.length)! > 0
             })
             
-            delay(seconds: 0.2) {
+            delay(seconds: 0.3) {
                 textField.selectAll(nil)
             }
         }
@@ -426,7 +426,7 @@ class ASCEntityManager: NSObject, UITextFieldDelegate {
                 renameAction.isEnabled = (textField.text?.trimmed.length)! > 0
             })
             
-            delay(seconds: 0.2) {
+            delay(seconds: 0.3) {
                 textField.selectAll(nil)
             }
         }

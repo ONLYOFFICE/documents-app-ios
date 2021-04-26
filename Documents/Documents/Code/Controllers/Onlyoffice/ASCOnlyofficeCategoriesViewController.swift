@@ -261,8 +261,11 @@ class ASCOnlyofficeCategoriesViewController: UITableViewController {
             }
 
             splitVC.hideMasterController()
-
-            documentsVC.provider = ASCFileManager.onlyofficeProvider?.copy()
+            
+            
+            let onlyOfficeProvider = ASCFileManager.onlyofficeProvider?.copy() as? ASCOnlyofficeProvider
+            onlyOfficeProvider?.category = category
+            documentsVC.provider = onlyOfficeProvider
             documentsVC.folder = category.folder
             documentsVC.title = category.title
 

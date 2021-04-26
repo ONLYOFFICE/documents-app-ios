@@ -14,9 +14,12 @@ class ASCOnlyofficeCategory: ASCCategory {
     
     convenience init(folder: ASCFolder) {
         self.init()
-        self.title = folder.title
-        self.image = Self.image(of: folder.rootFolderType)
         self.folder = folder
+        self.title = folder.title.isEmpty
+            ? Self.title(of: folder.rootFolderType)
+            : folder.title
+        self.image = Self.image(of: folder.rootFolderType)
+        self.folder?.id = Self.id(of: folder.rootFolderType)
         self.sortWeight = Self.sortWeight(of: folder.rootFolderType)
     }
     
@@ -79,6 +82,27 @@ class ASCOnlyofficeCategory: ASCCategory {
         }
     }
     
+    static func id(of type: ASCFolderType) -> String {
+        switch type {
+        case .onlyofficeUser:
+            return ASCOnlyOfficeApi.apiFolderMy
+        case .onlyofficeShare:
+            return ASCOnlyOfficeApi.apiFolderShare
+        case .onlyofficeFavorites:
+            return ASCOnlyOfficeApi.apiFolderFavorites
+        case .onlyofficeRecent:
+            return ASCOnlyOfficeApi.apiFolderRecent
+        case .onlyofficeCommon:
+            return ASCOnlyOfficeApi.apiFolderCommon
+        case .onlyofficeProjects:
+            return ASCOnlyOfficeApi.apiFolderProjects
+        case .onlyofficeTrash:
+            return ASCOnlyOfficeApi.apiFolderTrash
+        default:
+            return ""
+        }
+    }
+    
     static func allowToMoveAndCopy(of type: ASCFolderType) -> Bool {
         switch type {
         case .onlyofficeUser:
@@ -100,39 +124,22 @@ class ASCOnlyofficeCategory: ASCCategory {
 
     static func folder(of type: ASCFolderType) -> ASCFolder? {
         switch type {
-        case .onlyofficeUser:
+        case .onlyofficeUser,
+             .onlyofficeShare,
+             .onlyofficeCommon,
+             .onlyofficeProjects,
+             .onlyofficeTrash:
             return {
-                $0.title = ASCOnlyofficeCategory.title(of: .onlyofficeUser)
-                $0.rootFolderType = .onlyofficeUser
-                $0.id = ASCOnlyOfficeApi.apiFolderMy
+                $0.title = Self.title(of: type)
+                $0.rootFolderType = type
+                $0.id = Self.id(of: type)
                 return $0
             }(ASCFolder())
-        case .onlyofficeShare:
+        case .onlyofficeBunch:
             return {
-                $0.title = ASCOnlyofficeCategory.title(of: .onlyofficeShare)
-                $0.rootFolderType = .onlyofficeShare
-                $0.id = ASCOnlyOfficeApi.apiFolderShare
-                return $0
-            }(ASCFolder())
-        case .onlyofficeCommon:
-            return {
-                $0.title = ASCOnlyofficeCategory.title(of: .onlyofficeCommon)
-                $0.rootFolderType = .onlyofficeCommon
-                $0.id = ASCOnlyOfficeApi.apiFolderCommon
-                return $0
-            }(ASCFolder())
-        case .onlyofficeBunch, .onlyofficeProjects:
-            return {
-                $0.title = ASCOnlyofficeCategory.title(of: .onlyofficeProjects)
+                $0.title = Self.title(of: .onlyofficeProjects)
                 $0.rootFolderType = .onlyofficeProjects
-                $0.id = ASCOnlyOfficeApi.apiFolderProjects
-                return $0
-            }(ASCFolder())
-        case .onlyofficeTrash:
-            return {
-                $0.title = ASCOnlyofficeCategory.title(of: .onlyofficeTrash)
-                $0.rootFolderType = .onlyofficeTrash
-                $0.id = ASCOnlyOfficeApi.apiFolderTrash
+                $0.id = Self.id(of: .onlyofficeProjects)
                 return $0
             }(ASCFolder())
         default:

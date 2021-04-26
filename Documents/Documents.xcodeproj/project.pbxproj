@@ -499,6 +499,8 @@
 		FCF695902632E3D500808644 /* UIButton+Style.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCF6958F2632E3D500808644 /* UIButton+Style.swift */; };
 		FCF695912632E3D500808644 /* UIButton+Style.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCF6958F2632E3D500808644 /* UIButton+Style.swift */; };
 		FCF695CF2632FAC500808644 /* ASCButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCF694C82632C9A600808644 /* ASCButtonStyle.swift */; };
+		FCF696282636FFB600808644 /* ASCIntroPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCF696272636FFB600808644 /* ASCIntroPage.swift */; };
+		FCF696292636FFB600808644 /* ASCIntroPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCF696272636FFB600808644 /* ASCIntroPage.swift */; };
 		FCF69C8824E4271B0048F2CD /* ASCProviderError.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCF69C8724E4271B0048F2CD /* ASCProviderError.swift */; };
 		FCF8045C212E94A300378AFD /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = FCF8045A212E94A300378AFD /* InfoPlist.strings */; };
 		FCF8045F212EA38A00378AFD /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = FCF8045D212EA38A00378AFD /* Localizable.strings */; };
@@ -875,6 +877,7 @@
 		FCF6957C2632DBF600808644 /* ASCTextStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCTextStyle.swift; sourceTree = "<group>"; };
 		FCF695862632E3A300808644 /* UILabel+Style.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UILabel+Style.swift"; sourceTree = "<group>"; };
 		FCF6958F2632E3D500808644 /* UIButton+Style.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton+Style.swift"; sourceTree = "<group>"; };
+		FCF696272636FFB600808644 /* ASCIntroPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCIntroPage.swift; sourceTree = "<group>"; };
 		FCF69C8724E4271B0048F2CD /* ASCProviderError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCProviderError.swift; sourceTree = "<group>"; };
 		FCF8045B212E94A300378AFD /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		FCF8045E212EA38A00378AFD /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Localizable.strings; sourceTree = "<group>"; };
@@ -1307,6 +1310,7 @@
 		FC786FC11EB879C900181D62 /* Intro */ = {
 			isa = PBXGroup;
 			children = (
+				FCF696262636FF9200808644 /* Model */,
 				FC786FC21EB879F600181D62 /* ASCIntroViewController.swift */,
 				FCB839651EB8948D0065EC25 /* ASCIntroPageController.swift */,
 			);
@@ -1650,6 +1654,14 @@
 				FCF6958F2632E3D500808644 /* UIButton+Style.swift */,
 			);
 			path = Extensions;
+			sourceTree = "<group>";
+		};
+		FCF696262636FF9200808644 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				FCF696272636FFB600808644 /* ASCIntroPage.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 		FCF8472722CB39ED00ABC3B4 /* Views */ = {
@@ -2548,6 +2560,7 @@
 				FC36D2E925B5C32200412DDB /* ASCLoaderCell.swift in Sources */,
 				FC36D2EA25B5C32200412DDB /* ASCDocumentsToolbar.swift in Sources */,
 				FC36D2EB25B5C32200412DDB /* ASCEditorManager.swift in Sources */,
+				FCF696292636FFB600808644 /* ASCIntroPage.swift in Sources */,
 				FC36D2EC25B5C32200412DDB /* ASCCategory.swift in Sources */,
 				FC36D2ED25B5C32200412DDB /* PasscodeLockType.swift in Sources */,
 				FCF694B32631C10400808644 /* ASCBaseTableViewController.swift in Sources */,
@@ -2791,6 +2804,7 @@
 				FCA10114218348B70018867F /* ASCCategory.swift in Sources */,
 				FCEF9D261ED2C94300627BA5 /* PasscodeLockType.swift in Sources */,
 				FC68399821B7EF3200251CEA /* ASCOnlyofficeCategoryCell.swift in Sources */,
+				FCF696282636FFB600808644 /* ASCIntroPage.swift in Sources */,
 				FCF694B22631C10400808644 /* ASCBaseTableViewController.swift in Sources */,
 				FC08F8771ECB402000988DDE /* ASCConnectStorageOAuth2Dropbox.swift in Sources */,
 				FCF6957D2632DBF600808644 /* ASCTextStyle.swift in Sources */,

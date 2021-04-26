@@ -260,6 +260,7 @@
 		FCF696222632FF3E00808644 /* ASCButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCF6961E2632FF3E00808644 /* ASCButtonStyle.swift */; };
 		FCF696232632FF3E00808644 /* ASCTextStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCF6961F2632FF3E00808644 /* ASCTextStyle.swift */; };
 		FCF696252632FFD400808644 /* ASCDocumentsEmptyView.xib in Resources */ = {isa = PBXBuildFile; fileRef = FCF696242632FFD400808644 /* ASCDocumentsEmptyView.xib */; };
+		FCF6963C2637143E00808644 /* ASCIntroPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCF6963B2637143E00808644 /* ASCIntroPage.swift */; };
 		FCF865201E4E0D1C003E47B6 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FCF8651C1E4E0D1C003E47B6 /* Main.storyboard */; };
 		FCF916CA1ED44F3A0032C135 /* Localizable.stringsdict in Resources */ = {isa = PBXBuildFile; fileRef = FCF916C81ED44F3A0032C135 /* Localizable.stringsdict */; };
 		FCFB36071EDF0AB00001597E /* ASCBanner.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCFB36061EDF0AB00001597E /* ASCBanner.swift */; };
@@ -680,6 +681,7 @@
 		FCF6961E2632FF3E00808644 /* ASCButtonStyle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASCButtonStyle.swift; sourceTree = "<group>"; };
 		FCF6961F2632FF3E00808644 /* ASCTextStyle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASCTextStyle.swift; sourceTree = "<group>"; };
 		FCF696242632FFD400808644 /* ASCDocumentsEmptyView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ASCDocumentsEmptyView.xib; sourceTree = "<group>"; };
+		FCF6963B2637143E00808644 /* ASCIntroPage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASCIntroPage.swift; sourceTree = "<group>"; };
 		FCF8045B212E94A300378AFD /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		FCF8045E212EA38A00378AFD /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Localizable.strings; sourceTree = "<group>"; };
 		FCF8651D1E4E0D1C003E47B6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -1140,6 +1142,7 @@
 		FC786FC11EB879C900181D62 /* Intro */ = {
 			isa = PBXGroup;
 			children = (
+				FCF6963A2637143E00808644 /* Model */,
 				FC786FC21EB879F600181D62 /* ASCIntroViewController.swift */,
 				FCB839651EB8948D0065EC25 /* ASCIntroPageController.swift */,
 			);
@@ -1488,6 +1491,14 @@
 				FCF6961D2632FF3E00808644 /* UILabel+Style.swift */,
 			);
 			path = Extensions;
+			sourceTree = "<group>";
+		};
+		FCF6963A2637143E00808644 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				FCF6963B2637143E00808644 /* ASCIntroPage.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 		FCFDAA841E48A10C007A240C = {
@@ -2073,6 +2084,7 @@
 				FC9E28BF2244E88C000D315E /* ASCDocumentsEmptyView.swift in Sources */,
 				8A79BCD62080DD5C00998DA7 /* ASConverterOptionsAlert.swift in Sources */,
 				8A69B5D4249794A600152BDE /* ASCLogger.swift in Sources */,
+				FCF6963C2637143E00808644 /* ASCIntroPage.swift in Sources */,
 				FCF6721A21771B21004756A0 /* ASCBaseApi.swift in Sources */,
 				FC8A5A8D2565712700D08037 /* ASCDocumentsToolbar.swift in Sources */,
 				FC8A137B22686B5D006D8C6E /* ASCPortalCapabilities.swift in Sources */,

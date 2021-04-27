@@ -26,7 +26,7 @@ class ASCDocumentsEmptyView: UIView {
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var subtitleLabel: UILabel!
-    @IBOutlet weak var actionButton: UIButton!
+    @IBOutlet weak var actionButton: ASCButtonStyle!
     @IBOutlet weak var centerYConstraint: NSLayoutConstraint!
 
     private lazy var effectGroup: UIMotionEffectGroup = {
@@ -58,14 +58,17 @@ class ASCDocumentsEmptyView: UIView {
             // UIView appear
 
             isUserInteractionEnabled = true
-            actionButton?.backgroundColor = ASCConstants.Colors.brendAction
-            actionButton?.layer.cornerRadius = 5
-
-            actionButton?.layer.shadowOpacity = 1
-            actionButton?.layer.shadowColor = UIColor.lightGray.cgColor
-            actionButton?.layer.shadowOffset = CGSize(width: 0, height: 1)
-//            actionButton?.layer.shouldRasterize = true
-            actionButton?.layer.shadowRadius = 1
+            
+            actionButton.styleType = .action
+//
+//            actionButton?.backgroundColor = ASCConstants.Colors.brendAction
+//            actionButton?.layer.cornerRadius = 5
+//
+//            actionButton?.layer.shadowOpacity = 1
+//            actionButton?.layer.shadowColor = UIColor.lightGray.cgColor
+//            actionButton?.layer.shadowOffset = CGSize(width: 0, height: 1)
+////            actionButton?.layer.shouldRasterize = true
+//            actionButton?.layer.shadowRadius = 1
 
             actionButton?.setTitleColor(.white, for: .normal)
             actionButton?.addTarget(self, action: #selector(onActionButton), for: .touchUpInside)
@@ -110,38 +113,38 @@ class ASCDocumentsEmptyView: UIView {
         centerYConstraint?.constant = 0
         switch type {
         case .local, .cloud:
-            imageView?.image = UIImage(named: "empty-folder")
+            imageView?.image = Asset.Images.emptyFolder.image
             titleLabel?.text = NSLocalizedString("This folder is empty", comment: "")
             subtitleLabel?.text = NSLocalizedString("Create new documents, spreadsheets or presentations. Create new folders to organize your files.", comment: "")
             actionButton?.setTitle(NSLocalizedString("Create", comment: ""), for: .normal)
         case .trash:
-            imageView?.image = UIImage(named: "empty-trash")
+            imageView?.image = Asset.Images.emptyTrash.image
             titleLabel?.text = NSLocalizedString("The trash is empty", comment: "")
             subtitleLabel?.text = NSLocalizedString("The deleted files go to the trash. You can either restore or delete them forever.", comment: "")
             actionButton?.removeFromSuperview()
         case .cloudNoPermissions:
-            imageView?.image = UIImage(named: "empty-folder")
+            imageView?.image = Asset.Images.emptyFolder.image
             titleLabel?.text = NSLocalizedString("This folder is empty", comment: "")
             subtitleLabel?.text = NSLocalizedString("You have read-only access to this folder. You cannot create files or folders here.", comment: "")
             actionButton?.removeFromSuperview()
         case .search:
             centerYConstraint?.constant = -150
-            imageView?.image = UIImage(named: "empty-search-result")
+            imageView?.image = Asset.Images.emptySearchResult.image
             titleLabel?.text = NSLocalizedString("No search result", comment: "")
             subtitleLabel?.text = NSLocalizedString("No results matching your search could be found. Please try another phrase.", comment: "")
             actionButton?.removeFromSuperview()
         case .error:
-            imageView?.image = UIImage(named: "empty-common-error")
+            imageView?.image = Asset.Images.emptyCommonError.image
             titleLabel?.text = NSLocalizedString("Oops!", comment: "")
             subtitleLabel?.text = NSLocalizedString("An unexpected error has occurred. Please try again later. Sorry for inconvenience.", comment: "")
             actionButton?.setTitle(NSLocalizedString("Try again", comment: ""), for: .normal)
         case .networkError:
-            imageView?.image = UIImage(named: "empty-no-connection")
+            imageView?.image = Asset.Images.emptyNoConnection.image
             titleLabel?.text = NSLocalizedString("No connection", comment: "")
             subtitleLabel?.text = NSLocalizedString("No network connection can be found. Please check the connection and reload the page.", comment: "")
             actionButton?.setTitle(NSLocalizedString("Reload", comment: ""), for: .normal)
         default:
-            imageView?.image = UIImage(named: "empty-folder")
+            imageView?.image = Asset.Images.emptyFolder.image
             titleLabel?.text = NSLocalizedString("This folder is empty", comment: "")
             subtitleLabel?.text = NSLocalizedString("Create new documents, spreadsheets or presentations. Create new folders to organize your files.", comment: "")
             actionButton?.removeFromSuperview()

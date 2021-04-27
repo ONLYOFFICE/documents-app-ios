@@ -202,7 +202,7 @@ class ASCSignInController {
                     } else {
                         if let topViewController = UIApplication.topViewController() {
                             let alertController = UIAlertController.alert(
-                                NSLocalizedString("Error", comment: ""),
+                                ASCLocalization.Common.error,
                                 message: String.localizedStringWithFormat(NSLocalizedString("The %@ server is not available.", comment: ""), baseUrl),
                                 actions: []
                                 ).okable()
@@ -225,7 +225,7 @@ class ASCSignInController {
                     if errorInfo == nil && useProtocols.count > 0 {
                         if let topViewController = UIApplication.topViewController() {
                             let alertController = UIAlertController.alert(
-                                NSLocalizedString("Error", comment: ""),
+                                ASCLocalization.Common.error,
                                 message: String(format: "%@ %@", errorMessage, NSLocalizedString("Try to connect via another protocol?", comment: "")),
                                 actions: [])
                                 .okable() { _ in
@@ -242,7 +242,7 @@ class ASCSignInController {
                     } else {
                         if let topViewController = UIApplication.topViewController() {
                             let alertController = UIAlertController.alert(
-                                NSLocalizedString("Error", comment: ""),
+                                ASCLocalization.Common.error,
                                 message: errorMessage,
                                 actions: [])
                                 .okable() { _ in

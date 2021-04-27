@@ -162,6 +162,33 @@ class ASCFileManager {
         }
     }
     
+    class func documentTemplatePath(
+        with fileExtension: String,
+        languageCode: String = Locale.current.languageCode ?? "en",
+        regionCode: String = Locale.current.regionCode ?? "US"
+    ) -> String? {
+        let resourcePath = Path(Bundle.main.resourcePath ?? "")
+        let preferredLanguage = "\(languageCode)-\(regionCode)"
+        let templateDirectoryRoot = "new"
+        let templateFileName = "new.\(fileExtension)"
+        let templateDirectoryList = (resourcePath + templateDirectoryRoot).find() { $0.fileName }
+
+        let templateDirectory =
+            templateDirectoryList.first { $0 == preferredLanguage } ?? // [language designator]-[region designator]
+            templateDirectoryList.first { $0[safe: 0..<2] == preferredLanguage[safe: 0..<2] } ?? // [language designator]
+            "en-US"
+        
+        let templatePath = resourcePath + templateDirectoryRoot + templateDirectory + templateFileName
+        
+        if templatePath.exists {
+            return templatePath.standardRawValue
+        }
+        
+        return nil
+    }
+    
+    // MARK: - Internal
+    
     private static func iCloudUpdate() {
         if let iCloudProvider = cloudProviders.first(where: { $0.type == .icloud }) as? ASCiCloudProvider {
             iCloudProvider.initialize { success in

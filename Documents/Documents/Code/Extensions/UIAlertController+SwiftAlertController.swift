@@ -68,7 +68,7 @@ extension UIAlertController {
         ) -> UIAlertController {
 
         let alertController =  UIAlertController(title: name, message: message, preferredStyle: .alert)
-        alertController.view.tintColor = tintColor ?? ASCConstants.Colors.brend
+        alertController.view.tintColor = tintColor ?? Asset.Colors.brend.color
 
         actions.forEach(alertController.addAction)
 

@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait" appearance="dark"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="iN0-l3-epB" customClass="ASCDocumentsEmptyView" customModule="Documents" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="lQv-mi-qjS">
+                    <rect key="frame" x="37.5" y="191.5" width="300" height="284.5"/>
+                    <subviews>
+                        <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="empty-folder" translatesAutoresizingMaskIntoConstraints="NO" id="Znj-MW-3Mc">
+                            <rect key="frame" x="0.0" y="0.0" width="300" height="200"/>
+                        </imageView>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BKA-Ab-Xnn">
+                            <rect key="frame" x="0.0" y="220" width="300" height="26.5"/>
+                            <fontDescription key="fontDescription" style="UICTFontTextStyleTitle2"/>
+                            <nil key="highlightedColor"/>
+                            <attributedString key="userComments">
+                                <fragment content="Do not translate"/>
+                            </attributedString>
+                        </label>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Subtitle" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1kl-l7-AtV">
+                            <rect key="frame" x="0.0" y="266.5" width="300" height="18"/>
+                            <fontDescription key="fontDescription" style="UICTFontTextStyleSubhead"/>
+                            <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <nil key="highlightedColor"/>
+                            <attributedString key="userComments">
+                                <fragment content="Do not translate"/>
+                            </attributedString>
+                        </label>
+                    </subviews>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="300" id="AYt-68-Nuc"/>
+                    </constraints>
+                </stackView>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="peL-fi-QtV" customClass="ASCButtonStyle" customModule="Documents" customModuleProvider="target">
+                    <rect key="frame" x="112.5" y="506" width="150" height="40"/>
+                    <constraints>
+                        <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="150" id="27X-x0-s3h"/>
+                        <constraint firstAttribute="height" constant="40" id="UNO-PH-P17"/>
+                    </constraints>
+                    <inset key="contentEdgeInsets" minX="30" minY="0.0" maxX="30" maxY="0.0"/>
+                    <state key="normal" title="Button"/>
+                    <attributedString key="userComments">
+                        <fragment content="Do not translate"/>
+                    </attributedString>
+                </button>
+            </subviews>
+            <constraints>
+                <constraint firstItem="peL-fi-QtV" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="IK8-4L-4wo"/>
+                <constraint firstItem="lQv-mi-qjS" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="Pgx-1H-bjI"/>
+                <constraint firstItem="peL-fi-QtV" firstAttribute="top" secondItem="lQv-mi-qjS" secondAttribute="bottom" constant="30" id="UbW-tr-wUP"/>
+                <constraint firstItem="lQv-mi-qjS" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="vxS-Hd-Dnz"/>
+            </constraints>
+            <connections>
+                <outlet property="actionButton" destination="peL-fi-QtV" id="ltM-Je-yok"/>
+                <outlet property="centerYConstraint" destination="vxS-Hd-Dnz" id="vsf-eh-cv5"/>
+                <outlet property="imageView" destination="Znj-MW-3Mc" id="Abu-sE-uUY"/>
+                <outlet property="subtitleLabel" destination="1kl-l7-AtV" id="Xlj-1b-u1e"/>
+                <outlet property="titleLabel" destination="BKA-Ab-Xnn" id="oq8-WL-ifZ"/>
+            </connections>
+            <point key="canvasLocation" x="140" y="148"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="empty-folder" width="200" height="200"/>
+    </resources>
+</document>

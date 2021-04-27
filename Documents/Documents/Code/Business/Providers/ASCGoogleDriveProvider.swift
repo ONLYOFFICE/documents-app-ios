@@ -188,13 +188,18 @@ class ASCGoogleDriveProvider: ASCFileProviderProtocol & ASCSortableFileProviderP
     }
     
     func add(item: ASCEntity, at index: Int) {
-        items.insert(item, at: index)
-        total += 1
+        if !items.contains(where: { $0.uid == item.uid }) {
+            items.insert(item, at: index)
+            total += 1
+        }
     }
     
     func add(items: [ASCEntity], at index: Int) {
-        self.items.insert(contentsOf: items, at: index)
-        self.total += items.count
+        let uniqItems = items.filter { (item) -> Bool in
+            return !self.items.contains(where: { $0.uid == item.uid })
+        }
+        self.items.insert(contentsOf: uniqItems, at: index)
+        self.total += uniqItems.count
     }
     
     func remove(at index: Int) {
@@ -275,7 +280,7 @@ class ASCGoogleDriveProvider: ASCFileProviderProtocol & ASCSortableFileProviderP
             // Search
             if
                 let search = parameters["search"] as? [String: Any],
-                let text = (search["text"] as? String)?.trim(),
+                let text = (search["text"] as? String)?.trimmed,
                 text.length > 0
             {
                 queryParams += " and name contains '\(text.lowercased())'"
@@ -606,24 +611,9 @@ class ASCGoogleDriveProvider: ASCFileProviderProtocol & ASCSortableFileProviderP
         }
         
         let fileTitle = name + "." + fileExtension
-        
-        // Localize empty template
-        var templateName = "empty"
-        
-        // Localize empty template
-        if fileExtension == "xlsx" || fileExtension == "pptx" {
-            let prefix = "empty-"
-            var regionCode = (Locale.preferredLanguages.first ?? ASCConstants.Locale.defaultLangCode)[0..<2].uppercased()
-            
-            if !ASCConstants.Locale.avalibleLangCodes.contains(regionCode) {
-                regionCode = ASCConstants.Locale.defaultLangCode
-            }
-            
-            templateName = (prefix + regionCode).lowercased()
-        }
-        
+
         // Copy empty template to desination path
-        if let templatePath = Bundle.main.path(forResource: templateName, ofType: fileExtension, inDirectory: "Templates") {
+        if let templatePath = ASCFileManager.documentTemplatePath(with: fileExtension) {
             do {
                 let templatPath = Path(templatePath)
                 let data = try Data.read(from: Path(templatePath))

@@ -49,21 +49,21 @@ class ASCCreateEntityView: MessageView {
             }
 
             documentButton.set(
-                image: UIImage(named: "create-document"),
+                image: Asset.Images.createDocument.image,
                 title: NSLocalizedString("Document", comment: ""),
                 titlePosition: .bottom,
                 additionalSpacing: 20,
                 state: .normal)
 
             spreadsheetButton.set(
-                image: UIImage(named: "create-spreadsheet"),
+                image: Asset.Images.createSpreadsheet.image,
                 title: NSLocalizedString("Spreadsheet", comment: ""),
                 titlePosition: .bottom,
                 additionalSpacing: 20,
                 state: .normal)
 
             presentationButton.set(
-                image: UIImage(named: "create-presentation"),
+                image: Asset.Images.createPresentation.image,
                 title: NSLocalizedString("Presentation", comment: ""),
                 titlePosition: .bottom,
                 additionalSpacing: 20,

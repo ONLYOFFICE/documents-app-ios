@@ -103,12 +103,12 @@ class ASCConnectStorageWebDavController: UITableViewController, UITextFieldDeleg
         
         var params: [String: String] = [
             "providerKey": provider.rawValue,
-            "login": loginField.text?.trim() ?? "",
+            "login": loginField.text?.trimmed ?? "",
             "password": passwordField?.text ?? ""
         ]
         
         if needServer {
-            var serverUrl = serverField?.text?.trim() ?? ""
+            var serverUrl = serverField?.text?.trimmed ?? ""
             
             if serverUrl.count > 0, !serverUrl.matches(pattern: "^https?://") {
                 serverUrl = serverUrl.withPrefix("https://")

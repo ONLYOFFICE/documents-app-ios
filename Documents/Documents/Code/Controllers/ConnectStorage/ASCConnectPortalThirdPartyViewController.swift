@@ -128,7 +128,7 @@ class ASCConnectPortalThirdPartyViewController: UITableViewController {
                 tintColor: nil
             )
             let cancelAction = UIAlertAction(
-                title: NSLocalizedString("Cancel", comment: ""),
+                title: ASCLocalization.Common.cancel,
                 style: .cancel,
                 handler:
             { action in
@@ -147,7 +147,7 @@ class ASCConnectPortalThirdPartyViewController: UITableViewController {
                 
                 textField.selectedTextRange = nil
                 
-                if var folderTitle = textField.text?.trim() {
+                if var folderTitle = textField.text?.trimmed {
                     if folderTitle.length < 1 {
                         folderTitle = folderName
                     }
@@ -166,7 +166,7 @@ class ASCConnectPortalThirdPartyViewController: UITableViewController {
                 textField.text = folderName
                 
                 textField.add(for: .editingChanged, {
-                    connectAction.isEnabled = (textField.text?.trim().length)! > 0
+                    connectAction.isEnabled = (textField.text?.trimmed.length)! > 0
                 })
                 
                 delay(seconds: 0.2) {
@@ -295,8 +295,8 @@ class ASCConnectPortalThirdPartyViewController: UITableViewController {
             webDavVC.title = NSLocalizedString("Yandex Disk", comment: "")
             webDavVC.provider = .yandex
             webDavVC.logo = (Locale.preferredLanguages.first?.lowercased().contains("ru") ?? false)
-                ? UIImage(named: "logo-yandexdisk-ru-large")
-                : UIImage(named: "logo-yandexdisk-large")
+                ? Asset.Images.logoYandexdiskRuLarge.image
+                : Asset.Images.logoYandexdiskLarge.image
             webDavVC.needServer = false
             viewController = webDavVC
 
@@ -305,7 +305,7 @@ class ASCConnectPortalThirdPartyViewController: UITableViewController {
             webDavVC.complation = authComplation(info:)
             webDavVC.title = NSLocalizedString("OneDrive for Business", comment: "")
             webDavVC.provider = .sharePoint
-            webDavVC.logo = UIImage(named: "logo-onedrivepro-large")
+            webDavVC.logo = Asset.Images.logoOnedriveproLarge.image
             viewController = webDavVC
 
         case .nextCloud:
@@ -313,7 +313,7 @@ class ASCConnectPortalThirdPartyViewController: UITableViewController {
             webDavVC.complation = authComplation(info:)
             webDavVC.title = "Nextcloud"
             webDavVC.provider = .webDav
-            webDavVC.logo = UIImage(named: "logo-nextcloud-large")
+            webDavVC.logo = Asset.Images.logoNextcloudLarge.image
             viewController = webDavVC
 
         case .ownCloud:
@@ -321,7 +321,7 @@ class ASCConnectPortalThirdPartyViewController: UITableViewController {
             webDavVC.complation = authComplation(info:)
             webDavVC.title = "ownCloud"
             webDavVC.provider = .webDav
-            webDavVC.logo = UIImage(named: "logo-owncloud-large")
+            webDavVC.logo = Asset.Images.logoOwncloudLarge.image
             viewController = webDavVC
 
         case .webDav:
@@ -329,7 +329,7 @@ class ASCConnectPortalThirdPartyViewController: UITableViewController {
             webDavVC.complation = authComplation(info:)
             webDavVC.title = "WebDAV"
             webDavVC.provider = .webDav
-            webDavVC.logo = UIImage(named: "logo-webdav-large")
+            webDavVC.logo = Asset.Images.logoWebdavLarge.image
             viewController = webDavVC
             
         default:

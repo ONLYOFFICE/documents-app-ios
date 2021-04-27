@@ -30,3 +30,11 @@ class ASCEntity: Mappable {
         id <- (map["id"], ASCIndexTransform())
     }
 }
+
+extension ASCEntity : Equatable {
+    
+    static func ==(lhs: ASCEntity, rhs: ASCEntity) -> Bool {
+        return lhs.uid == rhs.uid
+    }
+    
+}

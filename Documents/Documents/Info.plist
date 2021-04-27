@@ -233,7 +233,7 @@
 		</dict>
 	</array>
 	<key>CFBundleVersion</key>
-	<string>654</string>
+	<string>661</string>
 	<key>FacebookDisplayName</key>
 	<string>Login on ONLYOFFICE</string>
 	<key>ITSAppUsesNonExemptEncryption</key>
@@ -270,6 +270,18 @@
 	<string>This app requires access to the photo library, so that you can upload your photos in the app.</string>
 	<key>NSPhotoLibraryUsageDescription</key>
 	<string>This app requires access to the photo library, so that you can upload your photos in the app.</string>
+	<key>NSUbiquitousContainers</key>
+	<dict>
+		<key>iCloud.com.onlyoffice.Documents</key>
+		<dict>
+			<key>NSUbiquitousContainerIsDocumentScopePublic</key>
+			<true/>
+			<key>NSUbiquitousContainerName</key>
+			<string>Documents by ONLYOFFICE</string>
+			<key>NSUbiquitousContainerSupportedFolderLevels</key>
+			<string>One</string>
+		</dict>
+	</dict>
 	<key>UIApplicationShortcutItems</key>
 	<array>
 		<dict>
@@ -330,17 +342,5 @@
 	</array>
 	<key>UISupportsDocumentBrowser</key>
 	<true/>
-	<key>NSUbiquitousContainers</key>
-    <dict>
-        <key>iCloud.com.onlyoffice.Documents</key>
-        <dict>
-            <key>NSUbiquitousContainerIsDocumentScopePublic</key>
-            <true/>
-            <key>NSUbiquitousContainerName</key>
-            <string>Documents by ONLYOFFICE</string>
-            <key>NSUbiquitousContainerSupportedFolderLevels</key>
-            <string>One</string>
-        </dict>
-    </dict>
 </dict>
 </plist>

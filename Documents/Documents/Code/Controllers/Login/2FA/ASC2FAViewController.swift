@@ -8,8 +8,10 @@
 
 import UIKit
 
-class ASC2FAViewController: UIViewController {
+class ASC2FAViewController: ASCBaseViewController {
     static let identifier = String(describing: ASC2FAViewController.self)
+    
+    class override var storyboard: Storyboard { return Storyboard.login }
 
     // MARK: - Properties
 
@@ -126,7 +128,7 @@ class ASC2FAViewController: UIViewController {
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "embedPageController" {
+        if segue.identifier == StoryboardSegue.Login.embedPageController.rawValue {
             pageViewController = segue.destination as? UIPageViewController
         }
     }

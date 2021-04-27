@@ -148,6 +148,11 @@ class ASCDocumentsViewController: UITableViewController, UIGestureRecognizerDele
         return onlyOfficeProvider.category?.folder?.rootFolderType == .onlyofficeRecent
     }()
     
+    private lazy var categoryIsFavorite: Bool = {
+        guard let onlyOfficeProvider = provider as? ASCOnlyofficeProvider else { return false }
+        return onlyOfficeProvider.category?.folder?.rootFolderType == .onlyofficeFavorites
+    }()
+    
     // MARK: - Lifecycle Methods
     
     override func viewDidLoad() {
@@ -2739,11 +2744,17 @@ class ASCDocumentsViewController: UITableViewController, UIGestureRecognizerDele
                     hud?.hide(animated: false, afterDelay: 1.3)
                     
                     if let indexPath = self.tableView.indexPath(for: cell), let file = entity as? ASCFile {
-//                        self.tableData[indexPath.row] = file
-                        self.provider?.items[indexPath.row] = file
-                        self.tableView.beginUpdates()
-                        self.tableView.reloadRows(at: [indexPath], with: .fade)
-                        self.tableView.endUpdates()
+                        if categoryIsFavorite {
+                            self.provider?.remove(at: indexPath.row)
+                            self.tableView.beginUpdates()
+                            self.tableView.deleteRows(at: [indexPath], with: .fade)
+                            self.tableView.endUpdates()
+                        } else {
+                            self.provider?.items[indexPath.row] = file
+                            self.tableView.beginUpdates()
+                            self.tableView.reloadRows(at: [indexPath], with: .fade)
+                            self.tableView.endUpdates()
+                        }
                     }
                 } else {
                     hud?.hide(animated: false)

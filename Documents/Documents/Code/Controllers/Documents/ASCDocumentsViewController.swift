@@ -3268,7 +3268,10 @@ class ASCDocumentsViewController: ASCBaseTableViewController, UIGestureRecognize
         }
 
         updateSelectedInfo()
+        
         tableView.reloadSections([0], with: .fade)
+        
+        events.trigger(eventName: "item:didSelect")
     }
     
     // MARK: - Actions

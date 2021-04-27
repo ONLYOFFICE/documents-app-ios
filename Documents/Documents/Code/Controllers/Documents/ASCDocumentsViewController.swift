@@ -143,6 +143,10 @@ class ASCDocumentsViewController: UITableViewController, UIGestureRecognizerDele
         return $0
     }(UIView.loadFromNib(named: "DocumentsEmptyView") as! ASCDocumentsEmptyView)
 
+    private lazy var categoryIsRecent: Bool = {
+        guard let onlyOfficeProvider = provider as? ASCOnlyofficeProvider else { return false }
+        return onlyOfficeProvider.category?.folder?.rootFolderType == .onlyofficeRecent
+    }()
     
     // MARK: - Lifecycle Methods
     
@@ -571,7 +575,7 @@ class ASCDocumentsViewController: UITableViewController, UIGestureRecognizerDele
         sortSelectBarButton = sortSelectBarButton
             ?? createSortSelectBarButton()
         sortBarButton = sortBarButton
-            ?? ASCStyles.createBarButton(image: Asset.Images.navSort.image, target: self, action: #selector(onSortAction))
+            ?? createSortBarButton()
         selectBarButton = selectBarButton
             ?? ASCStyles.createBarButton(image: Asset.Images.navSelect.image, target: self, action: #selector(onSelectAction))
         cancelBarButton = cancelBarButton
@@ -612,6 +616,9 @@ class ASCDocumentsViewController: UITableViewController, UIGestureRecognizerDele
                 if let sortBarBtn = sortBarButton {
                     rightBarBtnItems.append(sortBarBtn)
                 }
+                if let selectBarBtn = selectBarButton {
+                    rightBarBtnItems.append(selectBarBtn)
+                }
             }
             navigationItem.setRightBarButtonItems(rightBarBtnItems, animated: animated)
         }
@@ -631,11 +638,6 @@ class ASCDocumentsViewController: UITableViewController, UIGestureRecognizerDele
     }
     
     private func createSortSelectBarButton() -> UIBarButtonItem {
-        let categoryIsRecent: Bool = {
-            guard let onlyOfficeProvider = provider as? ASCOnlyofficeProvider else { return false }
-            return onlyOfficeProvider.category?.folder?.rootFolderType == .onlyofficeRecent
-        }()
-        
         guard categoryIsRecent else {
             return ASCStyles.createBarButton(image: Asset.Images.navMore.image, target: self, action: #selector(onSortSelectAction))
         }
@@ -643,6 +645,14 @@ class ASCDocumentsViewController: UITableViewController, UIGestureRecognizerDele
         return ASCStyles.createBarButton(title: NSLocalizedString("Select", comment: "Navigation bar button title"), target: self, action: #selector(onSelectAction))
     }
     
+    private func createSortBarButton() -> UIBarButtonItem? {
+        guard !categoryIsRecent else {
+            return nil
+        }
+        
+        return ASCStyles.createBarButton(image: Asset.Images.navSort.image, target: self, action: #selector(onSortAction))
+    }
+
     private func configureToolBar() {
         guard let folder = folder else {
             return

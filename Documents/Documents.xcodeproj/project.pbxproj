@@ -491,6 +491,10 @@
 		FCF3AA8B1EF91A1B00DF63BA /* ASCTransferViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCF3AA8A1EF91A1B00DF63BA /* ASCTransferViewCell.swift */; };
 		FCF67218217716FF004756A0 /* ASCNextCloudApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCF67217217716FF004756A0 /* ASCNextCloudApi.swift */; };
 		FCF6721A21771B21004756A0 /* ASCBaseApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCF6721921771B21004756A0 /* ASCBaseApi.swift */; };
+		FCF6966626384C2700808644 /* ASCOnlyofficeAppBasedCategoriesProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D9820002631A8D900144B57 /* ASCOnlyofficeAppBasedCategoriesProvider.swift */; };
+		FCF6966A26384C3000808644 /* ASCOnlyofficeCategoriesProviderFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DE6D6C32631BE03001B825B /* ASCOnlyofficeCategoriesProviderFactory.swift */; };
+		FCF6966B26384C3300808644 /* ASCOnlyofficeAPICategoriesProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DE6D6BB2631AEE1001B825B /* ASCOnlyofficeAPICategoriesProvider.swift */; };
+		FCF6966F26384C3900808644 /* ASCOnlyofficeCategoriesProviderProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D981FF22631A6AF00144B57 /* ASCOnlyofficeCategoriesProviderProtocol.swift */; };
 		FCF69C8824E4271B0048F2CD /* ASCProviderError.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCF69C8724E4271B0048F2CD /* ASCProviderError.swift */; };
 		FCF8045C212E94A300378AFD /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = FCF8045A212E94A300378AFD /* InfoPlist.strings */; };
 		FCF8045F212EA38A00378AFD /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = FCF8045D212EA38A00378AFD /* Localizable.strings */; };
@@ -2433,6 +2437,7 @@
 				FC36D28125B5C32200412DDB /* URL+Extensions.swift in Sources */,
 				FC36D28225B5C32200412DDB /* ASCCloudsNavigationController.swift in Sources */,
 				FC36D28325B5C32200412DDB /* ASCShareAccess.swift in Sources */,
+				FCF6966F26384C3900808644 /* ASCOnlyofficeCategoriesProviderProtocol.swift in Sources */,
 				FC36D28425B5C32200412DDB /* ASCSortViewCellTableViewCell.swift in Sources */,
 				FC36D28525B5C32200412DDB /* ASCGoogleSignInController.swift in Sources */,
 				FC36D28625B5C32200412DDB /* ASCFolderType.swift in Sources */,
@@ -2463,6 +2468,7 @@
 				FC36D29E25B5C32200412DDB /* ASCConnectStorageOAuth2Google.swift in Sources */,
 				FC36D29F25B5C32200412DDB /* ASCDateTransform.swift in Sources */,
 				FC36D2A025B5C32200412DDB /* ASCOnDeviceNavigationController.swift in Sources */,
+				FCF6966B26384C3300808644 /* ASCOnlyofficeAPICategoriesProvider.swift in Sources */,
 				FC36D2A125B5C32200412DDB /* ASCLocalFileHelper.swift in Sources */,
 				FC36D2A225B5C32200412DDB /* ASCSSOSignInController.swift in Sources */,
 				FC36D2A325B5C32200412DDB /* UIControl+Extension.swift in Sources */,
@@ -2502,6 +2508,7 @@
 				FC36D2C125B5C32200412DDB /* ASCFloatingLabelTextField.swift in Sources */,
 				FC36D2C225B5C32200412DDB /* ASCTransferViewCell.swift in Sources */,
 				FC36D2C325B5C32200412DDB /* ASCFile.swift in Sources */,
+				FCF6966626384C2700808644 /* ASCOnlyofficeAppBasedCategoriesProvider.swift in Sources */,
 				FC36D2C425B5C32200412DDB /* HTMLString.swift in Sources */,
 				FC36D2C525B5C32200412DDB /* UITextField+Extensions.swift in Sources */,
 				FC36D2C625B5C32200412DDB /* ASCConstants.swift in Sources */,
@@ -2559,6 +2566,7 @@
 				FC36D2F625B5C32200412DDB /* ASCEntityAccess.swift in Sources */,
 				FC36D2F725B5C32200412DDB /* UPCarouselFlowLayout.swift in Sources */,
 				FC36D2F825B5C32200412DDB /* ASCUserProfileViewController.swift in Sources */,
+				FCF6966A26384C3000808644 /* ASCOnlyofficeCategoriesProviderFactory.swift in Sources */,
 				FC36D2F925B5C32200412DDB /* ASCStyles.swift in Sources */,
 				FC80CA3625BADEF10077C2B8 /* Protocols.swift in Sources */,
 				FC80CA3325BADEF10077C2B8 /* OwningEventReference.swift in Sources */,

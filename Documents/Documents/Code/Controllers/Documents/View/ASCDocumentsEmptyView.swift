@@ -60,6 +60,7 @@ class ASCDocumentsEmptyView: UIView {
             isUserInteractionEnabled = true
             
             actionButton?.styleType = .action
+            actionButton?.setTitleColor(.white, for: .normal)
             actionButton?.addTarget(self, action: #selector(onActionButton), for: .touchUpInside)
             actionButton?.addTarget(self, action: #selector(onButtonTouchDown), for: .touchDown)
             actionButton?.addTarget(self, action: #selector(onButtonTouchUpOutside), for: .touchUpOutside)

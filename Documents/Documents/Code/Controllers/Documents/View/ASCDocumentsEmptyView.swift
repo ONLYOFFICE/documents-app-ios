@@ -59,18 +59,7 @@ class ASCDocumentsEmptyView: UIView {
 
             isUserInteractionEnabled = true
             
-            actionButton.styleType = .action
-//
-//            actionButton?.backgroundColor = ASCConstants.Colors.brendAction
-//            actionButton?.layer.cornerRadius = 5
-//
-//            actionButton?.layer.shadowOpacity = 1
-//            actionButton?.layer.shadowColor = UIColor.lightGray.cgColor
-//            actionButton?.layer.shadowOffset = CGSize(width: 0, height: 1)
-////            actionButton?.layer.shouldRasterize = true
-//            actionButton?.layer.shadowRadius = 1
-
-            actionButton?.setTitleColor(.white, for: .normal)
+            actionButton?.styleType = .action
             actionButton?.addTarget(self, action: #selector(onActionButton), for: .touchUpInside)
             actionButton?.addTarget(self, action: #selector(onButtonTouchDown), for: .touchDown)
             actionButton?.addTarget(self, action: #selector(onButtonTouchUpOutside), for: .touchUpOutside)

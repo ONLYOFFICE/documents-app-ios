@@ -501,6 +501,8 @@
 		FCF695CF2632FAC500808644 /* ASCButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCF694C82632C9A600808644 /* ASCButtonStyle.swift */; };
 		FCF696282636FFB600808644 /* ASCIntroPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCF696272636FFB600808644 /* ASCIntroPage.swift */; };
 		FCF696292636FFB600808644 /* ASCIntroPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCF696272636FFB600808644 /* ASCIntroPage.swift */; };
+		FCF696412637E73000808644 /* ASCDocumentSortType.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCF696402637E73000808644 /* ASCDocumentSortType.swift */; };
+		FCF696422637E73000808644 /* ASCDocumentSortType.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCF696402637E73000808644 /* ASCDocumentSortType.swift */; };
 		FCF69C8824E4271B0048F2CD /* ASCProviderError.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCF69C8724E4271B0048F2CD /* ASCProviderError.swift */; };
 		FCF8045C212E94A300378AFD /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = FCF8045A212E94A300378AFD /* InfoPlist.strings */; };
 		FCF8045F212EA38A00378AFD /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = FCF8045D212EA38A00378AFD /* Localizable.strings */; };
@@ -878,6 +880,7 @@
 		FCF695862632E3A300808644 /* UILabel+Style.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UILabel+Style.swift"; sourceTree = "<group>"; };
 		FCF6958F2632E3D500808644 /* UIButton+Style.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton+Style.swift"; sourceTree = "<group>"; };
 		FCF696272636FFB600808644 /* ASCIntroPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCIntroPage.swift; sourceTree = "<group>"; };
+		FCF696402637E73000808644 /* ASCDocumentSortType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCDocumentSortType.swift; sourceTree = "<group>"; };
 		FCF69C8724E4271B0048F2CD /* ASCProviderError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCProviderError.swift; sourceTree = "<group>"; };
 		FCF8045B212E94A300378AFD /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		FCF8045E212EA38A00378AFD /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Localizable.strings; sourceTree = "<group>"; };
@@ -1236,6 +1239,7 @@
 			isa = PBXGroup;
 			children = (
 				FC65B17F21F9AF5300AD5114 /* ASCEntityItemProvider.swift */,
+				FCF696402637E73000808644 /* ASCDocumentSortType.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -2571,6 +2575,7 @@
 				FC36D2F225B5C32200412DDB /* ASCFolderCell.swift in Sources */,
 				FC36D2F325B5C32200412DDB /* ASCCloudCategoryCell.swift in Sources */,
 				FC36D2F425B5C32200412DDB /* SetPasscodeState.swift in Sources */,
+				FCF696422637E73000808644 /* ASCDocumentSortType.swift in Sources */,
 				FC80CA3425BADEF10077C2B8 /* ObservableReference.swift in Sources */,
 				FC36D2F525B5C32200412DDB /* ASCDebugManager.swift in Sources */,
 				FC36D2F625B5C32200412DDB /* ASCEntityAccess.swift in Sources */,
@@ -2815,6 +2820,7 @@
 				FCEF9D211ED2C94300627BA5 /* SetPasscodeState.swift in Sources */,
 				FC4D0A2D24950503001EF1B5 /* ASCDebugManager.swift in Sources */,
 				FC066AB9252DB7C5007357F7 /* ObservableReference.swift in Sources */,
+				FCF696412637E73000808644 /* ASCDocumentSortType.swift in Sources */,
 				FC41D8082265D9DD00A155C2 /* ASCEntityAccess.swift in Sources */,
 				FC6106F71F9E28EE002A25C8 /* UPCarouselFlowLayout.swift in Sources */,
 				FCC3964B1ECDD9A10016BB10 /* ASCUserProfileViewController.swift in Sources */,

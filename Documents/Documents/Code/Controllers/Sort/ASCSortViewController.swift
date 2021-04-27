@@ -13,12 +13,11 @@ class ASCSortViewController: ASCBaseTableViewController {
     
     class override var storyboard: Storyboard { return Storyboard.sort }
 
-    public typealias ASCSortTypes = (description: String, name: String, active: Bool)
-    public typealias ASCSortComplation = (_ name: String, _ ascending: Bool) -> Void
+    public typealias ASCSortComplation = (_ type: ASCDocumentSortType, _ ascending: Bool) -> Void
     
     // MARK: - Properties
 
-    var types: [ASCSortTypes] = []
+    var types: [ASCDocumentSortStateType] = []
     var ascending = false
     var onDone: ASCSortComplation?
 
@@ -53,8 +52,8 @@ class ASCSortViewController: ASCBaseTableViewController {
     // MARK: - Action
 
     @IBAction func onDone(_ sender: UIBarButtonItem) {
-        if let option = types.first(where: { $0.2 }) {
-            onDone?(option.1, ascending)
+        if let option = types.first(where: { $0.active }) {
+            onDone?(option.type, ascending)
         }
 
         if let parentViewController = parent {
@@ -95,9 +94,8 @@ extension ASCSortViewController {
 
         if indexPath.section == 0 {
             if let sortTypeCell = tableView.dequeueReusableCell(withIdentifier: sortType) as? ASCSortViewCell {
-                sortTypeCell.textLabel?.text = types[indexPath.row].0
-                sortTypeCell.accessoryType = types[indexPath.row].2 ? .checkmark : .none
-
+                sortTypeCell.textLabel?.text = types[indexPath.row].type.description
+                sortTypeCell.accessoryType = types[indexPath.row].active ? .checkmark : .none
                 return sortTypeCell
             }
         } else if indexPath.section == 1 {
@@ -106,7 +104,6 @@ extension ASCSortViewController {
                 sortOrderCell.onAscendingChange = { [weak self] ascending in
                     self?.ascending = ascending
                 }
-
                 return sortOrderCell
             }
         }
@@ -116,10 +113,10 @@ extension ASCSortViewController {
 
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         for (index, option) in types.enumerated() {
-            types[index] = (option.0, option.1, false)
+            types[index] = (type: option.type, active: false)
 
             if index == indexPath.row {
-                types[index] = (option.0, option.1, true)
+                types[index] = (type: option.type, active: true)
             }
         }
 

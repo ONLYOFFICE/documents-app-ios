@@ -12,7 +12,7 @@ enum Destination {
     
     // MARK: - Documents
     
-    case sort(types: [ASCSortViewController.ASCSortTypes], ascending: Bool, complation: ASCSortViewController.ASCSortComplation?)
+    case sort(types: [ASCDocumentSortStateType], ascending: Bool, complation: ASCSortViewController.ASCSortComplation?)
     
     // MARK: - Login
     

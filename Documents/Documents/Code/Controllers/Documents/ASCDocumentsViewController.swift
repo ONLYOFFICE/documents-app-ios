@@ -103,6 +103,9 @@ class ASCDocumentsViewController: ASCBaseTableViewController, UIGestureRecognize
     
     // Features
     private let featureLargeTitle = true
+    
+    // Sort
+    private lazy var deaultsSortTypes: [ASCDocumentSortType] = [.dateandtime, .az, .type, .size]
 
     
     // MARK: - Outlets
@@ -492,33 +495,28 @@ class ASCDocumentsViewController: ASCBaseTableViewController, UIGestureRecognize
     }
     
     @objc func onSortAction() {
-        var sortType = "dateandtime"
+        var sortType: ASCDocumentSortType = .dateandtime
         var sortAscending = false
-        var types: [(String, String, Bool)] = [
-            (NSLocalizedString("Date", comment: ""),    "dateandtime",  sortType == "dateandtime"),
-            (NSLocalizedString("Title", comment: ""),   "title",        sortType == "title"),
-            (NSLocalizedString("Type", comment: ""),    "type",         sortType == "type"),
-            (NSLocalizedString("Size", comment: ""),    "size",         sortType == "size")
-        ]
+        var sortStates: [ASCDocumentSortStateType] = deaultsSortTypes.map { ($0, $0 == sortType) }
         
         if let sortInfo = UserDefaults.standard.value(forKey: ASCConstants.SettingsKeys.sortDocuments) as? [String: Any] {
-            if let sortBy = sortInfo["type"] as? String, sortBy.length > 0 {
-                sortType = sortBy
+            if let sortBy = sortInfo["type"] as? String, !sortBy.isEmpty {
+                sortType = ASCDocumentSortType(sortBy)
             }
 
-            if let sortOrder = sortInfo["order"] as? String, sortOrder.length > 0 {
+            if let sortOrder = sortInfo["order"] as? String, !sortOrder.isEmpty {
                 sortAscending = sortOrder == "ascending"
             }
         }
 
         if ![.deviceDocuments, .deviceTrash].contains(folder?.rootFolderType) {
-            types.append((NSLocalizedString("Author", comment: ""), "author", sortType == "author"))
+            sortStates.append((.author, sortType == .author))
         }
         
-        navigator.navigate(to: .sort(types: types, ascending: sortAscending, complation: { type, ascending in
+        navigator.navigate(to: .sort(types: sortStates, ascending: sortAscending, complation: { type, ascending in
             if (sortType != type) || (ascending != sortAscending) {
                 let sortInfo = [
-                    "type": type,
+                    "type": type.rawValue,
                     "order": ascending ? "ascending" : "descending"
                 ]
 
@@ -766,11 +764,11 @@ class ASCDocumentsViewController: ASCBaseTableViewController, UIGestureRecognize
         if let sortInfo = UserDefaults.standard.value(forKey: ASCConstants.SettingsKeys.sortDocuments) as? [String: Any] {
             var sortParams: [String: Any] = [:]
 
-            if let sortBy = sortInfo["type"] as? String, sortBy.length > 0 {
+            if let sortBy = sortInfo["type"] as? String, !sortBy.isEmpty {
                 sortParams["type"] = sortBy
             }
 
-            if let sortOrder = sortInfo["order"] as? String, sortOrder.length > 0 {
+            if let sortOrder = sortInfo["order"] as? String, !sortOrder.isEmpty {
                 sortParams["order"] = sortOrder
             }
 
@@ -817,11 +815,11 @@ class ASCDocumentsViewController: ASCBaseTableViewController, UIGestureRecognize
             if let sortInfo = UserDefaults.standard.value(forKey: ASCConstants.SettingsKeys.sortDocuments) as? [String: Any] {
                 var sortParams: [String: Any] = [:]
 
-                if let sortBy = sortInfo["type"] as? String, sortBy.length > 0 {
+                if let sortBy = sortInfo["type"] as? String, !sortBy.isEmpty {
                     sortParams["type"] = sortBy
                 }
 
-                if let sortOrder = sortInfo["order"] as? String, sortOrder.length > 0 {
+                if let sortOrder = sortInfo["order"] as? String, !sortOrder.isEmpty {
                     sortParams["order"] = sortOrder
                 }
 
@@ -1782,44 +1780,39 @@ class ASCDocumentsViewController: ASCBaseTableViewController, UIGestureRecognize
             }
         )
         
-        var sortType = "dateandtime"
+        var sortType: ASCDocumentSortType = .dateandtime
         var sortAscending = false
 
         if let sortInfo = UserDefaults.standard.value(forKey: ASCConstants.SettingsKeys.sortDocuments) as? [String: Any] {
-            if let sortBy = sortInfo["type"] as? String, sortBy.length > 0 {
-                sortType = sortBy
+            if let sortBy = sortInfo["type"] as? String, !sortBy.isEmpty {
+                sortType = ASCDocumentSortType(sortBy)
             }
 
-            if let sortOrder = sortInfo["order"] as? String, sortOrder.length > 0 {
+            if let sortOrder = sortInfo["order"] as? String, !sortOrder.isEmpty {
                 sortAscending = sortOrder == "ascending"
             }
         }
 
-        var types: [(String, String, Bool)] = [
-            (NSLocalizedString("Date", comment: ""),    "dateandtime",  sortType == "dateandtime"),
-            (NSLocalizedString("Title", comment: ""),   "title",        sortType == "title"),
-            (NSLocalizedString("Type", comment: ""),    "type",         sortType == "type"),
-            (NSLocalizedString("Size", comment: ""),    "size",         sortType == "size")
-        ]
-
+        var sortStates: [ASCDocumentSortStateType] = deaultsSortTypes.map { ($0, $0 == sortType) }
+        
         if ![.deviceDocuments, .deviceTrash].contains(folder?.rootFolderType) {
-            types.append((NSLocalizedString("Author", comment: ""), "author", sortType == "author"))
+            sortStates.append((.author, sortType == .author))
         }
 
-        for type in types {
+        for sort in sortStates {
             sortActions.append(
                 UIAction(
-                    title: type.0,
-                    image: type.2 ? (sortAscending ? UIImage(systemName: "chevron.up") : UIImage(systemName: "chevron.down")) : nil,
-                    state: type.2 ? .on : .off)
+                    title: sort.type.description,
+                    image: sort.active ? (sortAscending ? UIImage(systemName: "chevron.up") : UIImage(systemName: "chevron.down")) : nil,
+                    state: sort.active ? .on : .off)
                 { [weak self] action in
                     var sortInfo = [
-                        "type": sortType,
+                        "type": sortType.rawValue,
                         "order": sortAscending ? "ascending" : "descending"
                     ]
                     
-                    if sortType != type.1 {
-                        sortInfo["type"] = type.1
+                    if sortType != sort.type {
+                        sortInfo["type"] = sort.type.rawValue
                     } else {
                         sortAscending = !sortAscending
                         sortInfo["order"] = sortAscending ? "ascending" : "descending"

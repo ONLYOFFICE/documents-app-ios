@@ -163,13 +163,24 @@ class ASCDocumentsViewController: ASCBaseTableViewController, UIGestureRecognize
         configureNavigationBar(animated: false)
         configureProvider()
 
+        let addObserver: (Notification.Name, Selector) -> Void = { name, selector in
+            NotificationCenter.default.addObserver(
+                self,
+                selector: selector,
+                name: name,
+                object: nil
+            )
+        }
+
+        addObserver(ASCConstants.Notifications.updateFileInfo, #selector(updateFileInfo(_:)))
+        addObserver(ASCConstants.Notifications.networkStatusChanged, #selector(networkStatusChanged(_:)))
+        addObserver(ASCConstants.Notifications.updateSizeClass, #selector(onUpdateSizeClass(_:)))
+        addObserver(ASCConstants.Notifications.openLocalFileByUrl, #selector(onOpenLocalFileByUrl(_:)))
+        addObserver(ASCConstants.Notifications.appDidBecomeActive, #selector(onAppDidBecomeActive(_:)))
+        addObserver(ASCConstants.Notifications.reloadData, #selector(onReloadData(_:)))
+        addObserver(UIApplication.willResignActiveNotification, #selector(onAppMovedToBackground))
+        
         UserDefaults.standard.addObserver(self, forKeyPath: ASCConstants.SettingsKeys.sortDocuments, options: [.new], context: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(updateFileInfo(_:)), name: ASCConstants.Notifications.updateFileInfo, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(networkStatusChanged(_:)), name: ASCConstants.Notifications.networkStatusChanged, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(onUpdateSizeClass(_:)), name: ASCConstants.Notifications.updateSizeClass, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(onOpenLocalFileByUrl(_:)), name: ASCConstants.Notifications.openLocalFileByUrl, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(onAppDidBecomeActive(_:)), name: ASCConstants.Notifications.appDidBecomeActive, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(onReloadData(_:)), name: ASCConstants.Notifications.reloadData, object: nil)
 
         // Drag Drop support
         if #available(iOS 11.0, *) {
@@ -1133,6 +1144,10 @@ class ASCDocumentsViewController: ASCBaseTableViewController, UIGestureRecognize
     
     @objc func onReloadData(_ notification: Notification) {
         tableView.reloadData()
+    }
+    
+    @objc func onAppMovedToBackground() {
+        setEditMode(false)
     }
     
     private func updateNavBar() {

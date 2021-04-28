@@ -22,7 +22,6 @@ class ASCRootController: UITabBarController {
     var isUserInteractionEnabled: Bool = true {
         didSet {
             tabBar.isUserInteractionEnabled = isUserInteractionEnabled
-            print("tabBar.isUserInteractionEnabled - \(isUserInteractionEnabled)")
         }
     }
 

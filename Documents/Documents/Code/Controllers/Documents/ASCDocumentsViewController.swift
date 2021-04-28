@@ -239,6 +239,7 @@ class ASCDocumentsViewController: ASCBaseTableViewController, UIGestureRecognize
         }
         
         checkUnsuccessfullyOpenedFile()
+        configureProvider()
 
         // Update current provider if needed
         if let provider = provider, provider.id != ASCFileManager.provider?.id {

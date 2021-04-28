@@ -1147,7 +1147,9 @@ class ASCDocumentsViewController: ASCBaseTableViewController, UIGestureRecognize
     }
     
     @objc func onAppMovedToBackground() {
-        setEditMode(false)
+        if !(UIDevice.phone || ASCViewControllerManager.shared.currentSizeClass == .compact) {
+            setEditMode(false)
+        }
     }
     
     private func updateNavBar() {

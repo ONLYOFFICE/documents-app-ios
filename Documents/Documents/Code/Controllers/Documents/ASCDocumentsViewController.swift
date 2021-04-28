@@ -2449,6 +2449,8 @@ class ASCDocumentsViewController: ASCBaseTableViewController, UIGestureRecognize
         if allowOpen {
             provider?.delegate = self
             provider?.open(file: file, viewMode: viewMode)
+
+            searchController.isActive = false
         } else if let index = tableData.firstIndex(where: { $0.id == file.id }) {
             let cell = tableView.cellForRow(at: IndexPath(row: index, section: 0))
             provider?.delegate = self
@@ -3626,6 +3628,10 @@ extension ASCDocumentsViewController: ASCProviderDelegate {
                             }
                         } else {
                             strongSelf.provider?.add(item: newFile, at: 0)
+                            strongSelf.tableView.reloadData()
+                            strongSelf.showEmptyView(strongSelf.total < 1)
+                            strongSelf.updateNavBar()
+                            
                             let updateIndexPath = IndexPath(row: 0, section: 0)
                             strongSelf.tableView.scrollToRow(at: updateIndexPath, at: .top, animated: true)
                             

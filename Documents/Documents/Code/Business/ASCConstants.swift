@@ -38,6 +38,7 @@ class ASCConstants {
         static let appStoreGoogleAuth       = "https://itunes.apple.com/app/id388497605"
         static let help2authByApp           = "https://helpcenter.onlyoffice.com/guides/two-factor-authentication.aspx#step4"
         static let documentServiceDomain    = ASCConstants.internalConstants["UrlsDocumentServiceDomain"] as? String ?? ""
+        static let forgotPassword           = "api/2.0/people/password/json"
     }
     
     struct SettingsKeys {

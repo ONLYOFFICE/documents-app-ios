@@ -11,8 +11,11 @@
 		69EBD4CA1EF2AB9D00D3C685 /* UINavigationController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69EBD4C91EF2AB9D00D3C685 /* UINavigationController+Extension.swift */; };
 		7E7324B635B9B2D98E80FD03 /* Pods_Documents.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1B32667722AD980849E124F1 /* Pods_Documents.framework */; };
 		8A79BCD62080DD5C00998DA7 /* ASConverterOptionsAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A79BCD52080DD5C00998DA7 /* ASConverterOptionsAlert.swift */; };
+		97810DAC2636FA5B00BCA0EE /* ASCPasswordRecoveryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97810DAB2636FA5B00BCA0EE /* ASCPasswordRecoveryViewController.swift */; };
+		979579862639663F00D0BE9B /* ASCResponsePassword.swift in Sources */ = {isa = PBXBuildFile; fileRef = 979579852639663F00D0BE9B /* ASCResponsePassword.swift */; };
+		9795798B2639AD4700D0BE9B /* ASCEmailSentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9795798A2639AD4700D0BE9B /* ASCEmailSentViewController.swift */; };
 		9AC1D42040BBA923AD7D49C2 /* Pods_DocumentsTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C98C6D1CF16699DFAAAA3A64 /* Pods_DocumentsTests.framework */; };
-		B8DD770E92DB5E79970155E7 /* BuildFile in Frameworks */ = {isa = PBXBuildFile; };
+		B8DD770E92DB5E79970155E7 /* (null) in Frameworks */ = {isa = PBXBuildFile; };
 		E0609BF41BC138CF6774A5B3 /* ASCUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = E06093EE3529CD8AE31D5519 /* ASCUser.swift */; };
 		E0609CA78B7ADE534424D45E /* ASCFolder.swift in Sources */ = {isa = PBXBuildFile; fileRef = E060976FAE7FB8D6B47A6B6A /* ASCFolder.swift */; };
 		FC050F7E1ECB1F6800FD452C /* ConnectStorage.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FC050F801ECB1F6800FD452C /* ConnectStorage.storyboard */; };
@@ -512,6 +515,9 @@
 		776605EDCAB83C1E517628AF /* Pods-Documents-DocumentsTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Documents-DocumentsTests.debug.xcconfig"; path = "../Pods/Target Support Files/Pods-Documents-DocumentsTests/Pods-Documents-DocumentsTests.debug.xcconfig"; sourceTree = "<group>"; };
 		8A79BCD52080DD5C00998DA7 /* ASConverterOptionsAlert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASConverterOptionsAlert.swift; sourceTree = "<group>"; };
 		92C4B2EE0CEF31DA5A45CD1A /* Pods_Documents_Alpha.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Documents_Alpha.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		97810DAB2636FA5B00BCA0EE /* ASCPasswordRecoveryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCPasswordRecoveryViewController.swift; sourceTree = "<group>"; };
+		979579852639663F00D0BE9B /* ASCResponsePassword.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCResponsePassword.swift; sourceTree = "<group>"; };
+		9795798A2639AD4700D0BE9B /* ASCEmailSentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCEmailSentViewController.swift; sourceTree = "<group>"; };
 		B7CE7D158863590DD1A006AC /* Pods-Documents.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Documents.release.xcconfig"; path = "../Pods/Target Support Files/Pods-Documents/Pods-Documents.release.xcconfig"; sourceTree = "<group>"; };
 		C98C6D1CF16699DFAAAA3A64 /* Pods_DocumentsTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DocumentsTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D896FEA0D07E5E4FE956EF60 /* Pods-Documents-Alpha.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Documents-Alpha.debug.xcconfig"; path = "../Pods/Target Support Files/Pods-Documents-Alpha/Pods-Documents-Alpha.debug.xcconfig"; sourceTree = "<group>"; };
@@ -885,7 +891,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B8DD770E92DB5E79970155E7 /* BuildFile in Frameworks */,
+				B8DD770E92DB5E79970155E7 /* (null) in Frameworks */,
 				FC28021525B9B8C5000E9D99 /* CloudKit.framework in Frameworks */,
 				7E7324B635B9B2D98E80FD03 /* Pods_Documents.framework in Frameworks */,
 			);
@@ -1384,6 +1390,7 @@
 				FC9161D91EE949420031B6DB /* ASCShareInfo.swift */,
 				FC6106FE1F9E3502002A25C8 /* ASCAccount.swift */,
 				FC8A137A22686B5D006D8C6E /* ASCPortalCapabilities.swift */,
+				979579852639663F00D0BE9B /* ASCResponsePassword.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -1415,6 +1422,8 @@
 				FC872B271EC44925001636CB /* ASCSMSCodeViewController.swift */,
 				FCC552B51EC3196B00F645EE /* ASCCountryCodeViewController.swift */,
 				FC9749941EE04A1E00D00DDB /* ASCConnectPortalViewController.swift */,
+				97810DAB2636FA5B00BCA0EE /* ASCPasswordRecoveryViewController.swift */,
+				9795798A2639AD4700D0BE9B /* ASCEmailSentViewController.swift */,
 			);
 			path = Login;
 			sourceTree = "<group>";
@@ -2583,6 +2592,7 @@
 				FC7CF5181EF3EFF300C0A64F /* Mappings.swift in Sources */,
 				FC68398721B7DC0D00251CEA /* ASCRootController.swift in Sources */,
 				FCF2761C22C0E8E500984E83 /* ASCProfileAvatarView.swift in Sources */,
+				979579862639663F00D0BE9B /* ASCResponsePassword.swift in Sources */,
 				FC37D8E921CB8FA8001A7BFD /* UIDevice+DeviceKit.swift in Sources */,
 				FC5E2D8D1E8A4C8B0079626B /* ASCImageViewController.swift in Sources */,
 				FC41D8062265D99C00A155C2 /* ASCFileStatus.swift in Sources */,
@@ -2727,6 +2737,7 @@
 				FC0F01DF216F443E008D79A5 /* ASCLocalProvider.swift in Sources */,
 				FCC64B221EE7F983003A49F7 /* ASCShareViewController.swift in Sources */,
 				FC872B281EC44925001636CB /* ASCSMSCodeViewController.swift in Sources */,
+				97810DAC2636FA5B00BCA0EE /* ASCPasswordRecoveryViewController.swift in Sources */,
 				FC1AD6142175FE7000DADEE0 /* ASCNetworkReachability.swift in Sources */,
 				FC8667D421C7941C0020D797 /* ASCOnlyofficeSplitViewController.swift in Sources */,
 				FC64B2EB1EE56C5500920FDD /* ASCFacebookSignInController.swift in Sources */,
@@ -2734,6 +2745,7 @@
 				FCC9C3FA1E78235800EFCA57 /* String+Extension.swift in Sources */,
 				FC08F8731ECB2FD600988DDE /* ASCConnectPortalThirdPartyViewController.swift in Sources */,
 				FC31B2871E76C09F008699C3 /* UIDevice+Extension.swift in Sources */,
+				9795798B2639AD4700D0BE9B /* ASCEmailSentViewController.swift in Sources */,
 				FC066ABF252DB812007357F7 /* ASCiCloudProvider.swift in Sources */,
 				FC60A6441E9F5FB2000598C2 /* ASCTransferViewController.swift in Sources */,
 				FCA7500622BB91DE00991682 /* UIButton+Extensions.swift in Sources */,

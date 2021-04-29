@@ -54,6 +54,7 @@ extension ASCOnlyOfficeApi {
     static public let apiFilesFavorite          = "api/\(version)/files/favorites"
     static public let apiUsers                  = "api/\(version)/people"
     static public let apiGroups                 = "api/\(version)/group"
+    static public let apiForgotPassword         = "api/\(version)/people/password"
 }
 
 enum ASCOnlyOfficeError: String {
@@ -266,11 +267,12 @@ class ASCOnlyOfficeApi: ASCBaseApi {
         }
         
         let url = "\(baseUrl)/\(encodePath).json"
+        let headers = HTTPHeaders([HTTPHeader(name: "Content-Type", value: "application/json"), HTTPHeader(name: "Accept", value: "application/json")])
 
         clearCookies(for: URL(string: url))
 
         ASCOnlyOfficeApi.shared.manager
-            .request(url, method: .post, parameters: parameters, encoding: encoding, headers: nil)
+            .request(url, method: .post, parameters: parameters, encoding: encoding, headers: headers)
             .validate()
             .validate(contentType: ["application/json"])
             .responseJSON { response in

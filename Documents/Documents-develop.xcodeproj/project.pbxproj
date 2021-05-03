@@ -38,7 +38,6 @@
 		8ADB2DE1234369BE0009FD4E /* MGSwipeButton+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ADB2DE0234369BE0009FD4E /* MGSwipeButton+Extensions.swift */; };
 		8AE79E7F22E8B1A6004E76CF /* ASCCreateEntityView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8AE79E7D22E8B1A6004E76CF /* ASCCreateEntityView.xib */; };
 		8AF0B3662360B28900383610 /* ASCDropboxProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AF0B3652360B28900383610 /* ASCDropboxProvider.swift */; };
-		8AF0B3682360B6DB00383610 /* ASCDropboxApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AF0B3672360B6DB00383610 /* ASCDropboxApi.swift */; };
 		8AFBA30B23E872750052F6E9 /* ASCCustomHighlightButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AFBA30A23E872750052F6E9 /* ASCCustomHighlightButton.swift */; };
 		8AFBA30D23E8727D0052F6E9 /* ASCFloatingLabelTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AFBA30C23E8727D0052F6E9 /* ASCFloatingLabelTextField.swift */; };
 		E0609BF41BC138CF6774A5B3 /* ASCUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = E06093EE3529CD8AE31D5519 /* ASCUser.swift */; };
@@ -100,6 +99,14 @@
 		FC5D040B263AE28400D9DBCF /* Endpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC5D040A263AE28400D9DBCF /* Endpoint.swift */; };
 		FC5D040D263AEDCD00D9DBCF /* NetworkingClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC5D040C263AEDCD00D9DBCF /* NetworkingClient.swift */; };
 		FC5D040F263AF06400D9DBCF /* NetworkingError.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC5D040E263AF06400D9DBCF /* NetworkingError.swift */; };
+		FC5D0411263BE43A00D9DBCF /* NetworkingServerError.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC5D0410263BE43A00D9DBCF /* NetworkingServerError.swift */; };
+		FC5D0414263BE8F300D9DBCF /* DropboxApiClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC5D0413263BE8F300D9DBCF /* DropboxApiClient.swift */; };
+		FC5D0416263BECB600D9DBCF /* DropboxEndpoints.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC5D0415263BECB600D9DBCF /* DropboxEndpoints.swift */; };
+		FC5D0437263C2BF800D9DBCF /* DropboxAccount.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC5D0436263C2BF800D9DBCF /* DropboxAccount.swift */; };
+		FC5D043A263C3EF300D9DBCF /* NextcloudApiClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC5D0439263C3EF300D9DBCF /* NextcloudApiClient.swift */; };
+		FC5D043C263C438400D9DBCF /* NextcloudEndpoints.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC5D043B263C438400D9DBCF /* NextcloudEndpoints.swift */; };
+		FC5D043F263C444500D9DBCF /* NextcloudStorageStats.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC5D043E263C444500D9DBCF /* NextcloudStorageStats.swift */; };
+		FC5D0441263FE0E700D9DBCF /* NextcloudDataResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC5D0440263FE0E700D9DBCF /* NextcloudDataResult.swift */; };
 		FC5E2D8D1E8A4C8B0079626B /* ASCImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC5E2D8C1E8A4C8B0079626B /* ASCImageViewController.swift */; };
 		FC5F47861F04E7E000F045DD /* PasscodeLockView.xib in Resources */ = {isa = PBXBuildFile; fileRef = FC5F47881F04E7E000F045DD /* PasscodeLockView.xib */; };
 		FC60A6441E9F5FB2000598C2 /* ASCTransferViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC60A6431E9F5FB2000598C2 /* ASCTransferViewController.swift */; };
@@ -254,7 +261,6 @@
 		FCF501692549A9B80079518A /* EpubFile.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FCF501682549A9B80079518A /* EpubFile.framework */; };
 		FCF5016B2549A9C30079518A /* Fb2File.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FCF5016A2549A9C30079518A /* Fb2File.framework */; };
 		FCF5016D2549A9CE0079518A /* HtmlFile2.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FCF5016C2549A9CE0079518A /* HtmlFile2.framework */; };
-		FCF67218217716FF004756A0 /* ASCNextCloudApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCF67217217716FF004756A0 /* ASCNextCloudApi.swift */; };
 		FCF6721A21771B21004756A0 /* ASCBaseApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCF6721921771B21004756A0 /* ASCBaseApi.swift */; };
 		FCF694942630152E00808644 /* ASCNavigator.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCF694932630152E00808644 /* ASCNavigator.swift */; };
 		FCF69496263025BF00808644 /* ASCBaseTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCF69495263025BF00808644 /* ASCBaseTableViewController.swift */; };
@@ -383,7 +389,6 @@
 		8AE79DB322E8AB40004E76CF /* DocumentConverter.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = DocumentConverter.xcodeproj; path = "../../editors-ios/DocumentConverter/DocumentConverter.xcodeproj"; sourceTree = "<group>"; };
 		8AE79E7E22E8B1A6004E76CF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/ASCCreateEntityView.xib; sourceTree = "<group>"; };
 		8AF0B3652360B28900383610 /* ASCDropboxProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASCDropboxProvider.swift; sourceTree = "<group>"; };
-		8AF0B3672360B6DB00383610 /* ASCDropboxApi.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASCDropboxApi.swift; sourceTree = "<group>"; };
 		8AFBA30A23E872750052F6E9 /* ASCCustomHighlightButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASCCustomHighlightButton.swift; sourceTree = "<group>"; };
 		8AFBA30C23E8727D0052F6E9 /* ASCFloatingLabelTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASCFloatingLabelTextField.swift; sourceTree = "<group>"; };
 		B8240F9FF6E2BAE3B0B4E416 /* Pods_Documents_develop.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Documents_develop.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -442,6 +447,14 @@
 		FC5D040A263AE28400D9DBCF /* Endpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Endpoint.swift; sourceTree = "<group>"; };
 		FC5D040C263AEDCD00D9DBCF /* NetworkingClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkingClient.swift; sourceTree = "<group>"; };
 		FC5D040E263AF06400D9DBCF /* NetworkingError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkingError.swift; sourceTree = "<group>"; };
+		FC5D0410263BE43A00D9DBCF /* NetworkingServerError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkingServerError.swift; sourceTree = "<group>"; };
+		FC5D0413263BE8F300D9DBCF /* DropboxApiClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DropboxApiClient.swift; sourceTree = "<group>"; };
+		FC5D0415263BECB600D9DBCF /* DropboxEndpoints.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DropboxEndpoints.swift; sourceTree = "<group>"; };
+		FC5D0436263C2BF800D9DBCF /* DropboxAccount.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DropboxAccount.swift; sourceTree = "<group>"; };
+		FC5D0439263C3EF300D9DBCF /* NextcloudApiClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NextcloudApiClient.swift; sourceTree = "<group>"; };
+		FC5D043B263C438400D9DBCF /* NextcloudEndpoints.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NextcloudEndpoints.swift; sourceTree = "<group>"; };
+		FC5D043E263C444500D9DBCF /* NextcloudStorageStats.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NextcloudStorageStats.swift; sourceTree = "<group>"; };
+		FC5D0440263FE0E700D9DBCF /* NextcloudDataResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NextcloudDataResult.swift; sourceTree = "<group>"; };
 		FC5E2D8C1E8A4C8B0079626B /* ASCImageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASCImageViewController.swift; sourceTree = "<group>"; };
 		FC5F47871F04E7E000F045DD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/PasscodeLockView.xib; sourceTree = "<group>"; };
 		FC5F478A1F04E7E500F045DD /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/PasscodeLockView.strings; sourceTree = "<group>"; };
@@ -679,7 +692,6 @@
 		FCF501682549A9B80079518A /* EpubFile.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = EpubFile.framework; path = "../../editors-ios/build/SDK/lib/EpubFile.framework"; sourceTree = "<group>"; };
 		FCF5016A2549A9C30079518A /* Fb2File.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Fb2File.framework; path = "../../editors-ios/build/SDK/lib/Fb2File.framework"; sourceTree = "<group>"; };
 		FCF5016C2549A9CE0079518A /* HtmlFile2.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = HtmlFile2.framework; path = "../../editors-ios/build/SDK/lib/HtmlFile2.framework"; sourceTree = "<group>"; };
-		FCF67217217716FF004756A0 /* ASCNextCloudApi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCNextCloudApi.swift; sourceTree = "<group>"; };
 		FCF6721921771B21004756A0 /* ASCBaseApi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCBaseApi.swift; sourceTree = "<group>"; };
 		FCF694932630152E00808644 /* ASCNavigator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCNavigator.swift; sourceTree = "<group>"; };
 		FCF69495263025BF00808644 /* ASCBaseTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCBaseTableViewController.swift; sourceTree = "<group>"; };
@@ -953,8 +965,6 @@
 			children = (
 				FCF6721921771B21004756A0 /* ASCBaseApi.swift */,
 				FC4BA5DE1E69B4FF006DEBCA /* ASCOnlyOfficeApi.swift */,
-				FCF67217217716FF004756A0 /* ASCNextCloudApi.swift */,
-				8AF0B3672360B6DB00383610 /* ASCDropboxApi.swift */,
 			);
 			path = Api;
 			sourceTree = "<group>";
@@ -1011,11 +1021,51 @@
 		FC5D0409263AE01D00D9DBCF /* Networking */ = {
 			isa = PBXGroup;
 			children = (
+				FC5D0438263C3EC000D9DBCF /* Nextcloud */,
+				FC5D0412263BE8B700D9DBCF /* Dropbox */,
 				FC5D040A263AE28400D9DBCF /* Endpoint.swift */,
 				FC5D040E263AF06400D9DBCF /* NetworkingError.swift */,
 				FC5D040C263AEDCD00D9DBCF /* NetworkingClient.swift */,
+				FC5D0410263BE43A00D9DBCF /* NetworkingServerError.swift */,
 			);
 			path = Networking;
+			sourceTree = "<group>";
+		};
+		FC5D0412263BE8B700D9DBCF /* Dropbox */ = {
+			isa = PBXGroup;
+			children = (
+				FC5D0435263C2BD800D9DBCF /* Model */,
+				FC5D0413263BE8F300D9DBCF /* DropboxApiClient.swift */,
+				FC5D0415263BECB600D9DBCF /* DropboxEndpoints.swift */,
+			);
+			path = Dropbox;
+			sourceTree = "<group>";
+		};
+		FC5D0435263C2BD800D9DBCF /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				FC5D0436263C2BF800D9DBCF /* DropboxAccount.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		FC5D0438263C3EC000D9DBCF /* Nextcloud */ = {
+			isa = PBXGroup;
+			children = (
+				FC5D043D263C442C00D9DBCF /* Model */,
+				FC5D0439263C3EF300D9DBCF /* NextcloudApiClient.swift */,
+				FC5D043B263C438400D9DBCF /* NextcloudEndpoints.swift */,
+			);
+			path = Nextcloud;
+			sourceTree = "<group>";
+		};
+		FC5D043D263C442C00D9DBCF /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				FC5D043E263C444500D9DBCF /* NextcloudStorageStats.swift */,
+				FC5D0440263FE0E700D9DBCF /* NextcloudDataResult.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 		FC5E2D8B1E8A4C220079626B /* ImagePreview */ = {
@@ -1824,6 +1874,7 @@
 				"${BUILT_PRODUCTS_DIR}/SkyFloatingLabelTextField/SkyFloatingLabelTextField.framework",
 				"${BUILT_PRODUCTS_DIR}/SwiftMessages/SwiftMessages.framework",
 				"${BUILT_PRODUCTS_DIR}/SwiftRater/SwiftRater.framework",
+				"${BUILT_PRODUCTS_DIR}/SwiftyJSON/SwiftyJSON.framework",
 				"${BUILT_PRODUCTS_DIR}/SwiftyXMLParser/SwiftyXMLParser.framework",
 				"${BUILT_PRODUCTS_DIR}/UICircularProgressRing/UICircularProgressRing.framework",
 				"${BUILT_PRODUCTS_DIR}/WhatsNewKit/WhatsNewKit.framework",
@@ -1868,6 +1919,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SkyFloatingLabelTextField.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftMessages.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftRater.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyJSON.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyXMLParser.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/UICircularProgressRing.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/WhatsNewKit.framework",
@@ -1996,6 +2048,7 @@
 				FC5D040F263AF06400D9DBCF /* NetworkingError.swift in Sources */,
 				FC68398D21B7DFCE00251CEA /* ASCOnlyofficeNavigationController.swift in Sources */,
 				FCEF9D1B1ED2C94300627BA5 /* Functions.swift in Sources */,
+				FC5D0437263C2BF800D9DBCF /* DropboxAccount.swift in Sources */,
 				FC4BA5DF1E69B4FF006DEBCA /* ASCOnlyOfficeApi.swift in Sources */,
 				FC53691024EB21040092765B /* ASCProviderError.swift in Sources */,
 				8A01844E23A261900025BE85 /* ASCGoogleDriveProvider.swift in Sources */,
@@ -2036,10 +2089,12 @@
 				FCC826FC1F9F4B9700744F68 /* ASCAccountsManager.swift in Sources */,
 				FC059D9A1E8259F100BC2F5E /* Dictionary+Extension.swift in Sources */,
 				FCA5B9291E48A2B500CD2EA9 /* ASCDocumentsViewController.swift in Sources */,
+				FC5D0441263FE0E700D9DBCF /* NextcloudDataResult.swift in Sources */,
 				FC65B18021F9AF5300AD5114 /* ASCEntityItemProvider.swift in Sources */,
 				FC65B6B61EB9F23800AE73BB /* ASCDocumentService.swift in Sources */,
 				FC7CF5191EF3EFF300C0A64F /* NSString+HTMLString.swift in Sources */,
 				FCA085EB1EEAE3E900D52EEC /* ASCShareAccessViewController.swift in Sources */,
+				FC5D043A263C3EF300D9DBCF /* NextcloudApiClient.swift in Sources */,
 				FCCC4D6F261B614B00ACC6F1 /* Array+Extensions.swift in Sources */,
 				FC68399221B7ED6700251CEA /* ASCOnlyofficeCategoriesViewController.swift in Sources */,
 				FC8A137D226878C0006D8C6E /* Sequence+Extensions.swift in Sources */,
@@ -2058,6 +2113,7 @@
 				FCEF9D201ED2C94300627BA5 /* PasscodeLock.swift in Sources */,
 				FC31B2801E767CAB008699C3 /* ASCFileCell.swift in Sources */,
 				FC0F01E3216F4EA7008D79A5 /* ASCWebDAVProvider.swift in Sources */,
+				FC5D0411263BE43A00D9DBCF /* NetworkingServerError.swift in Sources */,
 				FC08F8751ECB399900988DDE /* ASCConnectStorageOAuth2ViewController.swift in Sources */,
 				FCF69496263025BF00808644 /* ASCBaseTableViewController.swift in Sources */,
 				FC41D7FD2265B72E00A155C2 /* UIStoryboard+Extensions.swift in Sources */,
@@ -2068,9 +2124,9 @@
 				FCFB36071EDF0AB00001597E /* ASCBanner.swift in Sources */,
 				FCEF9D391ED2D34400627BA5 /* ASCPasscodeLockSplashView.swift in Sources */,
 				FCD04FCA1E7FDECF008641CD /* UIAlertController+SwiftAlertController.swift in Sources */,
-				FCF67218217716FF004756A0 /* ASCNextCloudApi.swift in Sources */,
 				FCEA68232264733A0055926A /* ASC2FAPageController.swift in Sources */,
 				FCF3AA8B1EF91A1B00DF63BA /* ASCTransferViewCell.swift in Sources */,
+				FC5D043C263C438400D9DBCF /* NextcloudEndpoints.swift in Sources */,
 				FCAE8B8B1E71676B004FC332 /* ASCFile.swift in Sources */,
 				FC7CF5171EF3EFF300C0A64F /* HTMLString.swift in Sources */,
 				FC67072E252DC4A600DFD268 /* Protocols.swift in Sources */,
@@ -2101,7 +2157,6 @@
 				FCCC527220ADB68E000BD819 /* ASCSignInController.swift in Sources */,
 				FCB6E1811EE83A1A003C9348 /* ASCShareItemsViewController.swift in Sources */,
 				FC8C697D1ECC6163005B68D7 /* ASCConnectStorageOAuth2OneDrive.swift in Sources */,
-				8AF0B3682360B6DB00383610 /* ASCDropboxApi.swift in Sources */,
 				FCC3E9BE214006B1001B216C /* ASCLocalization.swift in Sources */,
 				FCDB31A61E7BD46800907FC0 /* ASCViewControllerManager.swift in Sources */,
 				FC9E28BF2244E88C000D315E /* ASCDocumentsEmptyView.swift in Sources */,
@@ -2117,6 +2172,7 @@
 				8A01844A23A261540025BE85 /* ASCConnectPortalThirdPartyViewController.swift in Sources */,
 				FC31B27E1E767C96008699C3 /* ASCFolderCell.swift in Sources */,
 				FCA10114218348B70018867F /* ASCCategory.swift in Sources */,
+				FC5D0414263BE8F300D9DBCF /* DropboxApiClient.swift in Sources */,
 				FCEF9D261ED2C94300627BA5 /* PasscodeLockType.swift in Sources */,
 				FCF696512637FD0F00808644 /* ASCDocumentSortType.swift in Sources */,
 				8A69B5A62497626E00152BDE /* ASCDebugManager.swift in Sources */,
@@ -2142,6 +2198,7 @@
 				FC708EE421B92E94001BBE5B /* UIBarButtonItem+Extensions.swift in Sources */,
 				FC059D9C1E82657F00BC2F5E /* ASCIndexTransform.swift in Sources */,
 				FC707C4325AC5DAF004CB85B /* UILabel+Extension.swift in Sources */,
+				FC5D043F263C444500D9DBCF /* NextcloudStorageStats.swift in Sources */,
 				FC68399A21B808AC00251CEA /* ASCCloudsViewController.swift in Sources */,
 				FCBEA6B6203EEF96000E8695 /* ASCSDWebImageDownloaderOperation.swift in Sources */,
 				FC3AF6B9217081DB004A96FD /* ASCNextCloudProvider.swift in Sources */,
@@ -2172,6 +2229,7 @@
 				FC1AD6142175FE7000DADEE0 /* ASCNetworkReachability.swift in Sources */,
 				FC8667D421C7941C0020D797 /* ASCOnlyofficeSplitViewController.swift in Sources */,
 				FC64B2EB1EE56C5500920FDD /* ASCFacebookSignInController.swift in Sources */,
+				FC5D0416263BECB600D9DBCF /* DropboxEndpoints.swift in Sources */,
 				FCC9C3FA1E78235800EFCA57 /* String+Extension.swift in Sources */,
 				FC31B2871E76C09F008699C3 /* UIDevice+Extension.swift in Sources */,
 				FC60A6441E9F5FB2000598C2 /* ASCTransferViewController.swift in Sources */,

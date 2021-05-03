@@ -13,5 +13,5 @@ enum NetworkingError: Error {
     case invalidData
     case invalidContext
     case statusCode(Int)
-//    case apiError(message: NetworkingServerError)
+    case apiError(message: NetworkingServerError)
 }

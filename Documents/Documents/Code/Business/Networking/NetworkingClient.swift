@@ -9,21 +9,35 @@
 import Alamofire
 import ObjectMapper
 
-class NetworkingService: NSObject {
+class ServerTrustPolicyManager: ServerTrustManager {
+
+    override func serverTrustEvaluator(forHost host: String) throws -> ServerTrustEvaluating? {
+        return DisabledTrustEvaluator()
+    }
+
+}
+
+class NetworkingClient: NSObject {
     
     // MARK: - Properties
     
     public var baseURL: URL?
-    public var token: String?
+    public var token: String? {
+        didSet {
+            if let baseURLString = baseURL?.absoluteString {
+                configure(url: baseURLString, token: token)
+            }
+        }
+    }
     
     // MARK: - Internal Properties
     
-    private var manager = Alamofire.Session()
+    internal var manager = Alamofire.Session()
     private let queue = DispatchQueue(label: "asc.networking.client.\(String(describing: type(of: self)))")
     
     private lazy var configuration: URLSessionConfiguration = {
-        $0.timeoutIntervalForRequest = 60 * 3
-        $0.timeoutIntervalForResource = 60 * 3
+        $0.timeoutIntervalForRequest = 30
+        $0.timeoutIntervalForResource = 30
         return $0
     } (URLSessionConfiguration.default)
     
@@ -35,7 +49,7 @@ class NetworkingService: NSObject {
         super.init()
     }
     
-    public func configure(url: String) {
+    public func configure(url: String, token: String? = nil) {
         self.baseURL = URL(string: url)
         self.manager = Alamofire.Session(
             configuration: self.configuration,
@@ -77,7 +91,7 @@ class NetworkingService: NSObject {
             url,
             method: endpoint.method,
             parameters: (params.count == 0) ? nil : params,
-            encoding: JSONEncoding.default,
+            encoding: endpoint.parameterEncoding ?? JSONEncoding.default,
             headers: self.headers)
             .validate()
             .responseData(queue: self.queue) { response in
@@ -171,7 +185,7 @@ class NetworkingService: NSObject {
     }
 }
 
-extension NetworkingService: URLSessionDelegate {
+extension NetworkingClient: URLSessionDelegate {
     
     func urlSession(_ session: URLSession,
                     didReceive challenge: URLAuthenticationChallenge,
@@ -180,3 +194,25 @@ extension NetworkingService: URLSessionDelegate {
                           URLCredential(trust: challenge.protectionSpace.serverTrust!))
     }
 }
+//
+//extension NetworkingClient {
+//
+//    class func request<Response>(
+//        endpoint: Endpoint<Response>,
+//        parameters: Parameters? = nil,
+//        encoding: ParameterEncoding? = nil,
+//        _ completion: ((_ result: Response?, _ error: NetworkingError?) -> Void)? = nil) {
+//
+//        NetworkingClient.shared.request(endpoint, parameters, encoding, completion)
+//    }
+//
+//    class func request<Response>(
+//        endpoint: Endpoint<Response>,
+//        parameters: Parameters? = nil,
+//        encoding: ParameterEncoding? = nil,
+//        apply: ((_ data: MultipartFormData) -> Void)? = nil,
+//        _ completion: ((_ result: Response?, _ error: NetworkingError?) -> Void)? = nil) {
+//
+//        NetworkingClient.shared.request(endpoint, parameters, apply, completion)
+//    }
+//}

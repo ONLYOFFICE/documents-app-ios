@@ -167,32 +167,34 @@ extension ASCSortableFileProviderProtocol {
     ///   - folders: Sorted folders
     ///   - files: Sorted files
     func sort(by info: [String: Any], folders: inout [ASCFolder], files: inout [ASCFile]) {
-        let sortBy      = info["type"] as? String ?? "title"
+        let sortBy      = ASCDocumentSortType(info["type"] as? String ?? "az")
         let sortOrder   = info["order"] as? String ?? "ascending"
+        let ascending   = sortOrder == "ascending"
 
-        if sortBy == "title" {
-            folders = sortOrder == "ascending"
-                ? folders.sorted { $0.title < $1.title }
-                : folders.sorted { $0.title > $1.title }
-            files = sortOrder == "ascending"
-                ? files.sorted { $0.title < $1.title }
-                : files.sorted { $0.title > $1.title }
-        } else if sortBy == "type" {
-            files = sortOrder == "ascending"
+        switch sortBy {
+        case .type:
+            files = ascending
                 ? files.sorted { $0.title.fileExtension().lowercased() < $1.title.fileExtension().lowercased() }
                 : files.sorted { $0.title.fileExtension().lowercased() > $1.title.fileExtension().lowercased() }
-        } else if sortBy == "dateandtime" {
+        case .dateandtime:
             let nowDate = Date()
-            folders = sortOrder == "ascending"
+            folders = ascending
                 ? folders.sorted { $0.created ?? nowDate < $1.created ?? nowDate }
                 : folders.sorted { $0.created ?? nowDate > $1.created ?? nowDate }
-            files = sortOrder == "ascending"
+            files = ascending
                 ? files.sorted { $0.updated ?? nowDate < $1.updated ?? nowDate }
                 : files.sorted { $0.updated ?? nowDate > $1.updated ?? nowDate }
-        } else if sortBy == "size" {
-            files = sortOrder == "ascending"
+        case .size:
+            files = ascending
                 ? files.sorted { $0.pureContentLength < $1.pureContentLength }
                 : files.sorted { $0.pureContentLength > $1.pureContentLength }
+        default:
+            folders = ascending
+                ? folders.sorted { $0.title < $1.title }
+                : folders.sorted { $0.title > $1.title }
+            files = ascending
+                ? files.sorted { $0.title < $1.title }
+                : files.sorted { $0.title > $1.title }
         }
     }
     

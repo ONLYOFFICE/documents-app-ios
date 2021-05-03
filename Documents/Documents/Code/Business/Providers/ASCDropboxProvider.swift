@@ -60,7 +60,7 @@ class ASCDropboxProvider: ASCFileProviderProtocol & ASCSortableFileProviderProto
     }
     var delegate: ASCProviderDelegate?
 
-    private var api: ASCDropboxApi?
+    private var apiClient: DropboxApiClient?
     internal var provider: DropboxFileProvider?
     
     internal var folder: ASCFolder?
@@ -80,14 +80,14 @@ class ASCDropboxProvider: ASCFileProviderProtocol & ASCSortableFileProviderProto
     
     init() {
         provider = nil
-        api = nil
+        apiClient = nil
     }
     
     init(credential: URLCredential) {
         provider = DropboxFileProvider(credential: credential)
         
-        api = ASCDropboxApi()
-        api?.token = credential.password
+        apiClient = DropboxApiClient()
+        apiClient?.token = credential.password
     }
     
     func copy() -> ASCFileProviderProtocol {
@@ -111,7 +111,7 @@ class ASCDropboxProvider: ASCFileProviderProtocol & ASCSortableFileProviderProto
     }
     
     func cancel() {
-        api?.cancelAllTasks()
+        apiClient?.cancelAll()
         
         operationProcess?.cancel()
         operationProcess = nil
@@ -156,9 +156,9 @@ class ASCDropboxProvider: ASCFileProviderProtocol & ASCSortableFileProviderProto
             if let token = json["token"] as? String {
                 let credential = URLCredential(user: ASCConstants.Clouds.Dropbox.clientId, password: token, persistence: .forSession)
                 provider = DropboxFileProvider(credential: credential)
-                
-                api = ASCDropboxApi()
-                api?.token = credential.password
+
+                apiClient = DropboxApiClient()
+                apiClient?.token = credential.password
             }
         }
     }
@@ -209,25 +209,29 @@ class ASCDropboxProvider: ASCFileProviderProtocol & ASCSortableFileProviderProto
     /// Fetch an user information
     ///
     /// - Parameter completeon: a closure with result of user or error
-    func userInfo(completeon: ASCProviderUserInfoHandler?) {
-        api?.post(ASCDropboxApi.apiCurrentAccount) { [weak self] results, error, response in
-            guard let strongSelf = self else { return }
-            
-            if
-                error == nil,
-                let result = results as? [String: Any]
-            {
-                strongSelf.user = ASCUser()
-                strongSelf.user?.userId = result["account_id"] as? String
-                strongSelf.user?.displayName = (result["name"] as? [String: Any])?["display_name"] as? String
-                strongSelf.user?.department = "Dropbox"
-                
-                ASCFileManager.storeProviders()
-                
-                completeon?(true, nil)
-            } else {
-                completeon?(false, nil)
+    func userInfo(completeon: ASCProviderUserInfoHandler?) {       
+        apiClient?.request(DropboxAPI.Endpoints.currentAccount) { [weak self] response, error in
+            guard let strongSelf = self else {
+                completeon?(false, error)
+                return
             }
+            
+            guard let account = response else {
+                completeon?(false, error)
+                if let error = error {
+                    log.debug(error)
+                }
+                return
+            }
+            
+            strongSelf.user = ASCUser()
+            strongSelf.user?.userId = account.id
+            strongSelf.user?.displayName = account.displayName
+            strongSelf.user?.department = "Dropbox"
+            
+            ASCFileManager.storeProviders()
+            
+            completeon?(true, nil)
         }
     }
     

@@ -12,7 +12,7 @@ import Alamofire
 extension ASCOneDriveApi {
     static private let version = "v1.0"
     
-    static public let apiBaseUrl = "https://graph.microsoft.com/\(version)"
+    static public let apiBaseUrl = "https://graph.microsoft.com/\(version)/me"
     
     // Api paths
     static public let apiCurrentAccount = "users"
@@ -81,6 +81,42 @@ class ASCOneDriveApi: ASCBaseApi {
 
         manager
             .request(url, method: .post, parameters: parameters, encoding: encoding)
+            .validate()
+            .validate(contentType: ["application/json"])
+            .responseJSON { response in
+                DispatchQueue.main.async(execute: {
+                    switch response.result {
+                    case .success(let responseJson):
+                        if let responseJson = responseJson as? [String: Any] {
+                            completion(responseJson, nil, response)
+                            return
+                        }
+
+                        completion(nil, nil, response)
+                    case .failure(let error):
+                        completion(nil, error, response)
+                        log.error(response)
+                    }
+                })
+        }
+    }
+    
+    func get(_ path: String,
+                           parameters: Parameters? = nil,
+                           encoding: ParameterEncoding = URLEncoding.default,
+                           completion: @escaping ASCApiCompletionHandler) {
+        guard let encodePath = path.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) else {
+            log.error("Encoding path")
+            completion(nil, nil, nil)
+            return
+        }
+
+        let url = "\(baseUrl)\(encodePath)"
+        
+        ASCBaseApi.clearCookies(for: URL(string: baseUrl))
+
+        manager
+            .request(url, method: .get, parameters: parameters, encoding: encoding)
             .validate()
             .validate(contentType: ["application/json"])
             .responseJSON { response in

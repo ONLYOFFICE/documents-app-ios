@@ -34,6 +34,7 @@ class ASCOneDriveProvider {
     init(credential: URLCredential) {
         provider = ASCOneDriveFileProvider(credential: credential)
         api = ASCOneDriveApi()
+        api?.token = credential.password
     }
 }
 
@@ -76,7 +77,6 @@ extension ASCOneDriveProvider: ASCFileProviderProtocol {
                 let credential = provider.credential,
                 let token = credential.password
             else { return nil }
-            print("---!", token, "!--")
             return "Bearer \(token)"
         }
     }
@@ -116,15 +116,64 @@ extension ASCOneDriveProvider: ASCFileProviderProtocol {
     }
     
     func userInfo(completeon: ASCProviderUserInfoHandler?) {
-        if let completeon = completeon {
-            completeon(true, nil)
-        }
+        api?.get("", completion: { [weak self] (json, error, response) in
+            guard let self = self, error == nil, let json = json as? [String: Any] else {
+                completeon?(false, error)
+                return
+            }
+            
+            let user = ASCUser(JSON: json)
+            user?.department = "OneDrive"
+            self.user = user
+            
+            ASCFileManager.storeProviders()
+            
+            completeon?(true, nil)
+        })
     }
     
     func cancel() {}
     func updateSort(completeon: ASCProviderCompletionHandler?) {}
-    func serialize() -> String? { return nil }
-    func deserialize(_ jsonString: String) {}
+    
+    func serialize() -> String? {
+        var info: [String: Any] = [
+            "type": type.rawValue
+        ]
+
+        if let token = provider?.credential?.password {
+            info += ["token": token]
+        }
+        
+        if let user = user {
+            info += ["user": user.toJSON()]
+        } else {
+            let user = ASCUser()
+            user.userId = provider?.credential?.user
+            user.displayName = user.userId
+            info += ["user": user.toJSON()]
+        }
+
+        if let id = id {
+            info += ["id": id]
+        }
+
+        return info.jsonString()
+    }
+    
+    func deserialize(_ jsonString: String) {
+        if let json = jsonString.toDictionary() {
+            if let userJson = json["user"] as? [String: Any] {
+                user = ASCUser(JSON: userJson)
+            }
+            
+            if let token = json["token"] as? String {
+                let credential = URLCredential(user: ASCConstants.Clouds.OneDrive.clientId, password: token, persistence: .forSession)
+                provider = ASCOneDriveFileProvider(credential: credential)
+                api = ASCOneDriveApi()
+                api?.token = credential.password
+            }
+        }
+    }
     
     func isReachable(completionHandler: @escaping (_ success: Bool, _ error: Error?) -> Void) {
         guard let provider = provider else {

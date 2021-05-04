@@ -25,7 +25,7 @@ class ASCConnectStorageOAuth2OneDrive: ASCConnectStorageOAuth2Delegate {
     func viewDidLoad(controller: ASCConnectStorageOAuth2ViewController) {
         let parameters: [String: String] = [
             "response_type" : controller.responseType == .code ? "code" : "token",
-            "scope"         : "files.read.all files.readwrite.all",
+            "scope"         : "User.Read files.readwrite.all",
             "client_id"     : clientId ?? "",
             "redirect_uri"  : redirectUrl ?? ""
         ]

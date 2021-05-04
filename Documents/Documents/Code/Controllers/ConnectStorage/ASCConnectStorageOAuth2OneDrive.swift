@@ -24,17 +24,16 @@ class ASCConnectStorageOAuth2OneDrive: ASCConnectStorageOAuth2Delegate {
     
     func viewDidLoad(controller: ASCConnectStorageOAuth2ViewController) {
         let parameters: [String: String] = [
-            "response_type" : "code",
-            "scope"         : "wl.signin wl.skydrive_update wl.offline_access",
+            "response_type" : controller.responseType == .code ? "code" : "token",
+            "scope"         : "files.read.all files.readwrite.all",
             "client_id"     : clientId ?? "",
             "redirect_uri"  : redirectUrl ?? ""
         ]
         
-        let authRequest = "https://login.live.com/oauth20_authorize.srf?\(parameters.stringAsHttpParameters())"
+        let authRequest = "https://login.microsoftonline.com/common/oauth2/v2.0/authorize?\(parameters.stringAsHttpParameters())"
         let urlRequest = URLRequest(url: URL(string: authRequest)!)
         
         UserDefaults.standard.register(defaults: ["UserAgent": "Mozilla/5.0 (iPhone; CPU iPhone OS 10_3 like Mac OS X) AppleWebKit/603.1.23 (KHTML, like Gecko) Version/10.0 Mobile/14E5239e Safari/602.1"])
-        
         controller.load(request: urlRequest)
     }
     
@@ -53,15 +52,31 @@ class ASCConnectStorageOAuth2OneDrive: ASCConnectStorageOAuth2Delegate {
             }
             return false
         }
-        
-        if let code = controller.getQueryStringParameter(url: request, param: "code") {
-            controller.complation?([
-                "providerKey": ASCFolderProviderType.oneDrive.rawValue,
-                "token": code
-            ])
-            return false
+        if let redirectUrl = redirectUrl, request.contains(redirectUrl) {
+            if controller.responseType == .code {
+                if let code = controller.getQueryStringParameter(url: request, param: "code") {
+                    controller.complation?([
+                        "providerKey": ASCFolderProviderType.oneDrive.rawValue,
+                        "token": code
+                    ])
+                    return false
+                }
+            } else {
+                var correctRequest = request
+                
+                if request.contains(redirectUrl + "#") {
+                    correctRequest = request.replacingOccurrences(of: redirectUrl + "#", with: redirectUrl + "?")
+                }
+
+                if let token = controller.getQueryStringParameter(url: correctRequest, param: "access_token") {
+                    controller.complation?([
+                        "providerKey": ASCFolderProviderType.oneDrive.rawValue,
+                        "token": token
+                    ])
+                    return false
+                }
+            }
         }
-        
         return true
     }
     

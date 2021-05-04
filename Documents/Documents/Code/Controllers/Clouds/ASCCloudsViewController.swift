@@ -31,6 +31,8 @@ class ASCCloudsViewController: UITableViewController {
             return NSLocalizedString("WebDAV", comment: "")
         case .icloud:
             return NSLocalizedString("iCloud", comment: "")
+        case .onedrive:
+            return NSLocalizedString("OneDrive", comment: "")
         default:
             return NSLocalizedString("Unknown", comment: "")
         }
@@ -52,6 +54,8 @@ class ASCCloudsViewController: UITableViewController {
             return Asset.Images.cloudWebdav.image
         case .icloud:
             return Asset.Images.cloudIcloud.image
+        case .onedrive:
+            return Asset.Images.cloudOnedrive.image
         default:
             return nil
         }

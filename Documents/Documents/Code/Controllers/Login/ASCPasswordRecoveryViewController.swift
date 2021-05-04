@@ -19,9 +19,13 @@ class ASCPasswordRecoveryViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var sendButton: UIButton!
     
     private let portal: String? = nil
+    private var responseText: String? = nil
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        sendButton.isUserInteractionEnabled = false
+        emailTextField.delegate = self
     }
     
     private func valid(email: String) -> Bool {
@@ -43,7 +47,7 @@ class ASCPasswordRecoveryViewController: UIViewController, UITextFieldDelegate {
         return true
     }
     
-    private func presentEmailSentVC() {
+    private func presentEmailSentVC(responseText: String) {
         
         let storyBoard: UIStoryboard = UIStoryboard(name: "Login", bundle: nil)
         guard let emailSentVC = storyBoard.instantiateViewController(withIdentifier: "ASCEmailSentViewController") as? ASCEmailSentViewController else { return }
@@ -67,22 +71,30 @@ class ASCPasswordRecoveryViewController: UIViewController, UITextFieldDelegate {
         view.endEditing(true)
         
         let parameters: Parameters = [
-            "portal": portal,
-            "userName": email
+            "email": email,
+            "portal": portal
         ]
         
         let hud = MBProgressHUD.showTopMost()
-        hud?.label.text = NSLocalizedString("Logging in", comment: "Caption of the process")
-        ASCSignInController.shared.forgotPassword(options: parameters) { result in
+        hud?.label.text = NSLocalizedString("Sending instructions", comment: "Caption of the process")
+        ASCPasswordRecoveryController.shared.forgotPassword(options: parameters)
+            { [weak self] result in
             switch result {
-            case .success:
+            case .success(let response):
                 hud?.setSuccessState()
                 hud?.hide(animated: true, afterDelay: 2)
-                presentEmailSentVC()
+                
+                self?.presentEmailSentVC(responseText: response.response)
             case .failure(let error):
+                log.error(error)
                 hud?.hide(animated: true)
-                print(error)
             }
         }
+    }
+
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+            sendButton.isUserInteractionEnabled = true
+            sendButton.isEnabled = true
+            sendButton.backgroundColor = UIColor(hex: "#3880BE")
     }
 }

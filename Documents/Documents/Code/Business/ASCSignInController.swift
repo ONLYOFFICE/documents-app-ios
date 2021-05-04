@@ -71,28 +71,6 @@ class ASCSignInController {
     }
 
     // MARK: - Public
-    
-    func forgotPassword(options: Parameters, completion: (Result<ASCResponsePassword, Error>) -> Void ) {
-        guard let portalUrl = options["portal"] as? String else {
-            return
-        }
-        
-        let api        = ASCOnlyOfficeApi.shared
-        let apiRequest = ASCOnlyOfficeApi.apiForgotPassword
-        
-        let baseUrl = portalUrl
-        api.baseUrl = baseUrl
-                
-        ASCOnlyOfficeApi.post(apiRequest, parameters: options) { (results, error, request) in
-            if (results != nil) {
-                
-            } else if (error != nil) {
-                
-            } else if (request != nil) {
-                
-            }
-        }
-    }
 
     func login(by type: ASCLoginType, options: Parameters, completion: ASCSignInComplateHandler? = nil) {
         guard var portalUrl = options["portal"] as? String else {

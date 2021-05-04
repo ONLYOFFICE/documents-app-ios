@@ -267,12 +267,11 @@ class ASCOnlyOfficeApi: ASCBaseApi {
         }
         
         let url = "\(baseUrl)/\(encodePath).json"
-        let headers = HTTPHeaders([HTTPHeader(name: "Content-Type", value: "application/json"), HTTPHeader(name: "Accept", value: "application/json")])
 
         clearCookies(for: URL(string: url))
 
         ASCOnlyOfficeApi.shared.manager
-            .request(url, method: .post, parameters: parameters, encoding: encoding, headers: headers)
+            .request(url, method: .post, parameters: parameters, encoding: encoding, headers: nil)
             .validate()
             .validate(contentType: ["application/json"])
             .responseJSON { response in

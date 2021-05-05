@@ -12,21 +12,30 @@ import MBProgressHUD
 import Alamofire
 import IQKeyboardManagerSwift
 
-class ASCPasswordRecoveryViewController: UIViewController, UITextFieldDelegate {
+class ASCPasswordRecoveryViewController: ASCBaseViewController {
+    
+    class override var storyboard: Storyboard { return Storyboard.login }
+    
+    // MARK: - Outlets
     
     @IBOutlet weak var recoveryTitle: UILabel!
     @IBOutlet weak var instruction: UILabel!
     @IBOutlet weak var emailTextField: SkyFloatingLabelTextField!
-    @IBOutlet weak var sendButton: UIButton!
+    @IBOutlet weak var sendButton: ASCButtonStyle!
+    
+    // MARK: - Properties
     
     private let portal: String? = nil
     private var responseText: String? = nil
     
+    // MARK: - Lifecycle Methods
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        sendButton.isUserInteractionEnabled = false
-        emailTextField.delegate = self
+        sendButton?.styleType = .default
+        sendButton?.isEnabled = false
+        emailTextField?.addTarget(self, action: #selector(emailTextFieldChanged), for: .editingChanged)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -35,39 +44,53 @@ class ASCPasswordRecoveryViewController: UIViewController, UITextFieldDelegate {
         IQKeyboardManager.shared.keyboardDistanceFromTextField = 124.0
     }
     
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        
+        IQKeyboardManager.shared.enable = false
+        IQKeyboardManager.shared.enableAutoToolbar = false
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        emailTextField?.becomeFirstResponder()
+    }
+    
     private func valid(email: String) -> Bool {
         if email.length < 1 {
             emailTextField?.errorMessage = NSLocalizedString("Email is empty", comment: "")
             emailTextField?.shake()
             return false
         }
-        
-        let emailRegEx = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,}"
-        let emailTest = NSPredicate(format:"SELF MATCHES %@", emailRegEx)
-        
-        if !emailTest.evaluate(with: email) {
+
+        if !email.isValidOnlyofficeEmail {
             emailTextField?.errorMessage = NSLocalizedString("Email is not valid", comment: "")
             emailTextField?.shake()
             return false
         }
-        
+
         return true
     }
     
     private func presentEmailSentVC(responseText: String) {
-        
-        let storyBoard: UIStoryboard = UIStoryboard(name: "Login", bundle: nil)
-        guard let emailSentVC = storyBoard.instantiateViewController(withIdentifier: "ASCEmailSentViewController") as? ASCEmailSentViewController else { return }
-        emailSentVC.email = emailTextField?.text?.trim()
+        let emailSentVC = ASCEmailSentViewController.instance()
+        emailSentVC.email = emailTextField?.text?.trimmed
         navigationController?.show(emailSentVC, sender: self)
     }
     
+    @objc
+    private func emailTextFieldChanged(_ sender: UITextField) {
+        guard let text = sender.text else { return }
+        sendButton?.isEnabled = !text.isEmpty
+    }
+    
+    // MARK: - Actions
+    
     @IBAction func onSendButton(_ sender: Any) {
-        guard let portal = ASCOnlyOfficeApi.shared.baseUrl ?? portal?.trim() else {
+        guard let portal = ASCOnlyOfficeApi.shared.baseUrl?.trimmed else {
             return
         }
         
-        guard let email = emailTextField?.text?.trim() else {
+        guard let email = emailTextField?.text?.trimmed else {
             return
         }
         
@@ -83,9 +106,9 @@ class ASCPasswordRecoveryViewController: UIViewController, UITextFieldDelegate {
         ]
         
         let hud = MBProgressHUD.showTopMost()
-        hud?.label.text = NSLocalizedString("Sending instructions", comment: "Caption of the process")
-        ASCPasswordRecoveryController.shared.forgotPassword(portalUrl: portal,options: parameters)
-            { [weak self] result in
+        hud?.label.text = NSLocalizedString("Sending", comment: "Caption of the process")
+        
+        ASCPasswordRecoveryController.shared.forgotPassword(portalUrl: portal,options: parameters) { [weak self] result in
             switch result {
             case .success(let response):
                 hud?.setSuccessState()
@@ -97,11 +120,5 @@ class ASCPasswordRecoveryViewController: UIViewController, UITextFieldDelegate {
                 hud?.hide(animated: true)
             }
         }
-    }
-
-    func textFieldDidBeginEditing(_ textField: UITextField) {
-            sendButton.isUserInteractionEnabled = true
-            sendButton.isEnabled = true
-            sendButton.backgroundColor = UIColor(hex: "#3880BE")
     }
 }

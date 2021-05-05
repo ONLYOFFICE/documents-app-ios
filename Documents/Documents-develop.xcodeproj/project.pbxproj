@@ -224,6 +224,12 @@
 		FCE35DD61E9E7BC100BC2B68 /* Sort.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FCE35DD81E9E7BC100BC2B68 /* Sort.storyboard */; };
 		FCE35DDB1E9E7BCA00BC2B68 /* Transfer.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FCE35DDD1E9E7BCA00BC2B68 /* Transfer.storyboard */; };
 		FCEA68232264733A0055926A /* ASC2FAPageController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCEA68222264733A0055926A /* ASC2FAPageController.swift */; };
+		FCECDDC926430978006CD7B9 /* ASCEmailSentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCECDDC726430978006CD7B9 /* ASCEmailSentViewController.swift */; };
+		FCECDDCA26430978006CD7B9 /* ASCPasswordRecoveryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCECDDC826430978006CD7B9 /* ASCPasswordRecoveryViewController.swift */; };
+		FCECDDD426430A18006CD7B9 /* UIFont+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCECDDD326430A18006CD7B9 /* UIFont+Extensions.swift */; };
+		FCECDDD626430A35006CD7B9 /* NSAttributedString+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCECDDD526430A35006CD7B9 /* NSAttributedString+Extensions.swift */; };
+		FCECDDD826430B00006CD7B9 /* ASCPasswordRecoveryController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCECDDD726430B00006CD7B9 /* ASCPasswordRecoveryController.swift */; };
+		FCECDDDD26430B79006CD7B9 /* ASCResponsePassword.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCECDDDC26430B79006CD7B9 /* ASCResponsePassword.swift */; };
 		FCEF9D1A1ED2C94300627BA5 /* PasscodeLock.strings in Resources */ = {isa = PBXBuildFile; fileRef = FCEF9D041ED2C94300627BA5 /* PasscodeLock.strings */; };
 		FCEF9D1B1ED2C94300627BA5 /* Functions.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCEF9D061ED2C94300627BA5 /* Functions.swift */; };
 		FCEF9D1D1ED2C94300627BA5 /* ChangePasscodeState.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCEF9D091ED2C94300627BA5 /* ChangePasscodeState.swift */; };
@@ -597,6 +603,12 @@
 		FCE35DDC1E9E7BCA00BC2B68 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Transfer.storyboard; sourceTree = "<group>"; };
 		FCE35DDF1E9E7BCB00BC2B68 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Transfer.strings; sourceTree = "<group>"; };
 		FCEA68222264733A0055926A /* ASC2FAPageController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASC2FAPageController.swift; sourceTree = "<group>"; };
+		FCECDDC726430978006CD7B9 /* ASCEmailSentViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASCEmailSentViewController.swift; sourceTree = "<group>"; };
+		FCECDDC826430978006CD7B9 /* ASCPasswordRecoveryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASCPasswordRecoveryViewController.swift; sourceTree = "<group>"; };
+		FCECDDD326430A18006CD7B9 /* UIFont+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIFont+Extensions.swift"; sourceTree = "<group>"; };
+		FCECDDD526430A35006CD7B9 /* NSAttributedString+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSAttributedString+Extensions.swift"; sourceTree = "<group>"; };
+		FCECDDD726430B00006CD7B9 /* ASCPasswordRecoveryController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASCPasswordRecoveryController.swift; sourceTree = "<group>"; };
+		FCECDDDC26430B79006CD7B9 /* ASCResponsePassword.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASCResponsePassword.swift; sourceTree = "<group>"; };
 		FCEF9D061ED2C94300627BA5 /* Functions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Functions.swift; sourceTree = "<group>"; };
 		FCEF9D071ED2C94300627BA5 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		FCEF9D091ED2C94300627BA5 /* ChangePasscodeState.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChangePasscodeState.swift; sourceTree = "<group>"; };
@@ -875,6 +887,7 @@
 				FC8C69781ECC298F005B68D7 /* Date+Extension.swift */,
 				8A85263B24479E0600F3B331 /* KingfisherWrapper+Extensions.swift */,
 				FCB1BEC21E8E5E55004C7967 /* MBProgressHUD+Extension.swift */,
+				FCECDDD526430A35006CD7B9 /* NSAttributedString+Extensions.swift */,
 				FCADF3791EC9DA9A001CA4A9 /* NSLayoutConstraint+Extensions.swift */,
 				FCC77C9D206D11B6001B7837 /* Path+Extension.swift */,
 				FC8A137C226878C0006D8C6E /* Sequence+Extensions.swift */,
@@ -886,6 +899,7 @@
 				FC28F2C71E8D217F00A8F985 /* UIControl+Extension.swift */,
 				FC37D8E821CB8FA8001A7BFD /* UIDevice+DeviceKit.swift */,
 				FC31B2861E76C09F008699C3 /* UIDevice+Extension.swift */,
+				FCECDDD326430A18006CD7B9 /* UIFont+Extensions.swift */,
 				FC707C4225AC5DAF004CB85B /* UILabel+Extension.swift */,
 				69EBD4C91EF2AB9D00D3C685 /* UINavigationController+Extension.swift */,
 				FC708EE321B92E94001BBE5B /* UIBarButtonItem+Extensions.swift */,
@@ -1290,6 +1304,7 @@
 				FC6106F81F9E2948002A25C8 /* Accounts */,
 				FC64B2E81EE56C5500920FDD /* Social */,
 				FC99FAEF22645F1D000F1464 /* 2FA */,
+				FCECDDCB26430982006CD7B9 /* PasswordRecover */,
 				FC9749961EE04FB300D00DDB /* ASCSignInViewController.swift */,
 				FCC552B31EC2F96600F645EE /* ASCPhoneNumberViewController.swift */,
 				FC872B271EC44925001636CB /* ASCSMSCodeViewController.swift */,
@@ -1397,6 +1412,25 @@
 			name = CreatePortal;
 			path = Documents/Code/Controllers/CreatePortal;
 			sourceTree = SOURCE_ROOT;
+		};
+		FCECDDCB26430982006CD7B9 /* PasswordRecover */ = {
+			isa = PBXGroup;
+			children = (
+				FCECDDDE26430BA5006CD7B9 /* Model */,
+				FCECDDC726430978006CD7B9 /* ASCEmailSentViewController.swift */,
+				FCECDDD726430B00006CD7B9 /* ASCPasswordRecoveryController.swift */,
+				FCECDDC826430978006CD7B9 /* ASCPasswordRecoveryViewController.swift */,
+			);
+			path = PasswordRecover;
+			sourceTree = "<group>";
+		};
+		FCECDDDE26430BA5006CD7B9 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				FCECDDDC26430B79006CD7B9 /* ASCResponsePassword.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
 		};
 		FCEF9D021ED2C94300627BA5 /* Vendor */ = {
 			isa = PBXGroup;
@@ -1956,6 +1990,7 @@
 				FCEF9D251ED2C94300627BA5 /* PasscodeLockStateType.swift in Sources */,
 				FCC552B61EC3196B00F645EE /* ASCCountryCodeViewController.swift in Sources */,
 				FC28F2C41E8D131800A8F985 /* ASCCreateEntity.swift in Sources */,
+				FCECDDCA26430978006CD7B9 /* ASCPasswordRecoveryViewController.swift in Sources */,
 				FC786FC31EB879F600181D62 /* ASCIntroViewController.swift in Sources */,
 				FC12ACF22567CF5E00FF1CBB /* ASCAnalytics.swift in Sources */,
 				FCF696212632FF3E00808644 /* UILabel+Style.swift in Sources */,
@@ -2026,6 +2061,7 @@
 				FCEF9D371ED2D23400627BA5 /* ASCPasscodeLockPresenter.swift in Sources */,
 				FC28F2C11E8CF4B900A8F985 /* UIColor+Extension.swift in Sources */,
 				FC066B16252DC3CE007357F7 /* ASCiCloudProvider.swift in Sources */,
+				FCECDDD426430A18006CD7B9 /* UIFont+Extensions.swift in Sources */,
 				FCC38BD422D37A2A00F500C3 /* UISplitViewController+Extensions.swift in Sources */,
 				FC67072C252DC4A600DFD268 /* ObservableChainingProxy.swift in Sources */,
 				FCA6946B2057ED9900ED8D8E /* Data+Extension.swift in Sources */,
@@ -2050,6 +2086,7 @@
 				FCD04FCA1E7FDECF008641CD /* UIAlertController+SwiftAlertController.swift in Sources */,
 				FCF67218217716FF004756A0 /* ASCNextCloudApi.swift in Sources */,
 				FCEA68232264733A0055926A /* ASC2FAPageController.swift in Sources */,
+				FCECDDC926430978006CD7B9 /* ASCEmailSentViewController.swift in Sources */,
 				FCF3AA8B1EF91A1B00DF63BA /* ASCTransferViewCell.swift in Sources */,
 				FCAE8B8B1E71676B004FC332 /* ASCFile.swift in Sources */,
 				FC7CF5171EF3EFF300C0A64F /* HTMLString.swift in Sources */,
@@ -2144,6 +2181,7 @@
 				FCB839661EB8948D0065EC25 /* ASCIntroPageController.swift in Sources */,
 				FC8C697F1ECC6755005B68D7 /* ASCConnectStorageOAuth2Box.swift in Sources */,
 				FC2EEA3821BAB05F00CB85A3 /* UIViewController+Extensions.swift in Sources */,
+				FCECDDDD26430B79006CD7B9 /* ASCResponsePassword.swift in Sources */,
 				FCB1BEC11E8E4368004C7967 /* UIAlertController+Extension.swift in Sources */,
 				FC0F01DF216F443E008D79A5 /* ASCLocalProvider.swift in Sources */,
 				FCC64B221EE7F983003A49F7 /* ASCShareViewController.swift in Sources */,
@@ -2154,8 +2192,10 @@
 				FC64B2EB1EE56C5500920FDD /* ASCFacebookSignInController.swift in Sources */,
 				FCC9C3FA1E78235800EFCA57 /* String+Extension.swift in Sources */,
 				FC31B2871E76C09F008699C3 /* UIDevice+Extension.swift in Sources */,
+				FCECDDD826430B00006CD7B9 /* ASCPasswordRecoveryController.swift in Sources */,
 				FC60A6441E9F5FB2000598C2 /* ASCTransferViewController.swift in Sources */,
 				FCA7500622BB91DE00991682 /* UIButton+Extensions.swift in Sources */,
+				FCECDDD626430A35006CD7B9 /* NSAttributedString+Extensions.swift in Sources */,
 				FC670730252DC4A600DFD268 /* EventSubscription.swift in Sources */,
 				FCB8A39521C2881100CF74FA /* ASCDeviceCategoryCell.swift in Sources */,
 			);

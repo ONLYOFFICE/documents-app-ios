@@ -16,7 +16,6 @@ import FirebaseMessaging
 import CoreSpotlight
 import CoreServices
 import Siren
-import IQKeyboardManagerSwift
 #if DEBUG
 import Bagel
 #endif

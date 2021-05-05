@@ -41,4 +41,16 @@ class ASCBaseViewController: UIViewController {
     public class func instance() -> Self {
         return instantiate(from: storyboard)
     }
+    
+    // MARK: - Helpers
+    
+    func popControllers(_ count: Int = 1) {
+        let shift = count + 1
+        if let viewControllers = self.navigationController?.viewControllers {
+            guard viewControllers.count < shift else {
+                self.navigationController?.popToViewController(viewControllers[viewControllers.count - shift], animated: true)
+                return
+            }
+        }
+    }
 }

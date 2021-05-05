@@ -120,6 +120,10 @@ class ASCOnlyOfficeApi: ASCBaseApi {
         didSet {
             if token != oldValue {
                 initManager()
+                
+                if let baseUrl = baseUrl {
+                    fetchServerVersion(baseUrl, completion: nil)
+                }
             }
         }
     }
@@ -171,7 +175,7 @@ class ASCOnlyOfficeApi: ASCBaseApi {
         _ = NSLocalizedString("Invalid URL: The format ot the URL could not be determined", comment: "Error message")
     }
 
-    public func fetchServerVersion(_ path: String, completion: @escaping ASCApiCompletionHandler) {
+    public func fetchServerVersion(_ path: String, completion: ASCApiCompletionHandler?) {
         let url = "\(path)/\(ASCOnlyOfficeApi.apiServersVersion).json"
         ASCOnlyOfficeApi.shared.manager
             .request(url, method: .get, parameters: nil, encoding: URLEncoding.default, headers: nil)
@@ -185,14 +189,14 @@ class ASCOnlyOfficeApi: ASCBaseApi {
                             if let result = responseJson["response"] as? [String: Any] {
                                 if let communityServer = result["communityServer"] as? String {
                                     ASCOnlyOfficeApi.shared.serverVersion = communityServer
-                                    completion(result, nil, response)
+                                    completion?(result, nil, response)
                                 }
                                 return
                             }
                         }
-                        completion(nil, nil, response)
+                        completion?(nil, nil, response)
                     case .failure(let error):
-                        completion(nil, error, response)
+                        completion?(nil, error, response)
                         log.error(response)
                     }
                 })

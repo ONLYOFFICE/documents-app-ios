@@ -172,8 +172,6 @@ class ASCConstants {
     }
     
     struct Colors {
-        static var brend        : UIColor { return UIColor(hex: "#2d6bb0") }
-        static var brendAction  : UIColor { return UIColor(hex: "#007bff") }
         static var red          : UIColor { if #available(iOS 13.0, *) { return  UIColor.systemRed   } else { return UIColor(hex: "#ff3b30") } }
         static var darkerGrey   : UIColor { if #available(iOS 13.0, *) { return  UIColor.systemGray  } else { return UIColor(hex: "#424245") } }
         static var darkGrey     : UIColor { if #available(iOS 13.0, *) { return  UIColor.systemGray2 } else { return UIColor(hex: "#555555") } }

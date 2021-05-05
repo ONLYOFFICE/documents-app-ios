@@ -11,33 +11,40 @@ import UIKit
 class ASCIntroPageController: UIViewController {
     static let identifier = String(describing: ASCIntroPageController.self)
 
+    // MARK: - Outlets
+    
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var infoLabel: UILabel!
     @IBOutlet weak var imageHeightConstarin: NSLayoutConstraint!
     
-    var pageImage: UIImage?
-    var pageTitle: String?
-    var pageInfo: String?
+    
+    // MARK: - Properties
+    
+    var page: ASCIntroPage? {
+        didSet {
+            updateView()
+        }
+    }
+    
+    
+    // MARK: - Lifecycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        if let image = pageImage {
-            imageView?.image = image
-        }
-        
-        if let title = pageTitle {
-            titleLabel?.text = title
-        }
-        
-        if let info = pageInfo {
-            infoLabel?.text = info
-        }
+        updateView()
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
+    }
+    
+    private func updateView() {
+        guard let page = page else { return }
+        
+        imageView?.image = page.image
+        titleLabel?.text = page.title
+        infoLabel?.text = page.subtitle
     }
 
 }

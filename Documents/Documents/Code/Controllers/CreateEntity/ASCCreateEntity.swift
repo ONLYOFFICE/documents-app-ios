@@ -56,7 +56,7 @@ class ASCCreateEntity: NSObject, UIImagePickerControllerDelegate, UINavigationCo
             }
 
             if let contentView = createEntityView.subviews.first {
-                (contentView as? CornerRoundingView)?.cornerRadius = 0
+//                (contentView as? CornerRoundingView)?.cornerRadius = 0
 
                 for constraint in contentView.superview?.constraints ?? [] {
                     if  let _ = constraint.firstItem as? ASCCreateEntityView ?? constraint.firstItem as? CornerRoundingView,
@@ -252,7 +252,7 @@ class ASCCreateEntity: NSObject, UIImagePickerControllerDelegate, UINavigationCo
 
                 }
             })
-            let cancelAction = UIAlertAction(title: NSLocalizedString("Cancel", comment: ""), style: .default, handler: nil)
+            let cancelAction = UIAlertAction(title: ASCLocalization.Common.cancel, style: .default, handler: nil)
             cameraUnavailableAlertController.addAction(settingsAction)
             cameraUnavailableAlertController.addAction(cancelAction)
             viewController.present(cameraUnavailableAlertController , animated: true, completion: nil)

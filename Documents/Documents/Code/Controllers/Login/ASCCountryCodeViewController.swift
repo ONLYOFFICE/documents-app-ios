@@ -90,7 +90,7 @@ class ASCCountryCodeViewController: UITableViewController, UISearchControllerDel
         literals.removeAll()
 
         if searchController.isActive {
-            if let searchText = searchController.searchBar.text?.trim().lowercased(), searchText.length > 0 {
+            if let searchText = searchController.searchBar.text?.trimmed.lowercased(), searchText.length > 0 {
                 search = searchText
             }
         }

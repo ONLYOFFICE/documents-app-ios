@@ -36,24 +36,24 @@ class ASCCloudsViewController: UITableViewController {
         }
     }
 
-    fileprivate let providerImageName: ((_ type: ASCFileProviderType) -> String) = { type in
+    fileprivate let providerImage: ((_ type: ASCFileProviderType) -> UIImage?) = { type in
         switch type {
         case .googledrive:
-            return "cloud-google-drive"
+            return Asset.Images.cloudGoogleDrive.image
         case .dropbox:
-            return "cloud-dropbox"
+            return Asset.Images.cloudDropbox.image
         case .nextcloud:
-            return "cloud-nextcloud"
+            return Asset.Images.cloudNextcloud.image
         case .owncloud:
-            return "cloud-owncloud"
+            return Asset.Images.cloudOwncloud.image
         case .yandex:
-            return "cloud-yandex-disk"
+            return Asset.Images.cloudYandexDisk.image
         case .webdav:
-            return "cloud-webdav"
+            return Asset.Images.cloudWebdav.image
         case .icloud:
-            return "cloud-icloud"
+            return Asset.Images.cloudIcloud.image
         default:
-            return ""
+            return nil
         }
     }
 
@@ -112,7 +112,7 @@ class ASCCloudsViewController: UITableViewController {
             connected.append({
                 $0.title = provider.user?.displayName ?? provider.user?.userId
                 $0.subtitle = provider.user?.department
-                $0.image = UIImage(named: providerImageName(provider.type))
+                $0.image = providerImage(provider.type)
                 $0.provider = provider
                 $0.folder = provider.rootFolder
                 return $0
@@ -127,7 +127,7 @@ class ASCCloudsViewController: UITableViewController {
             if !connected.contains(where: { $0.provider?.type == type }) {
                 login.append({
                     $0.title = providerName(type)
-                    $0.image = UIImage(named: providerImageName(type))
+                    $0.image = providerImage(type)
                     $0.provider = ASCFileManager.createProvider(by: type)
                     return $0
                 }(ASCCategory()))

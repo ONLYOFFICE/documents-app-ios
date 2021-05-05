@@ -19,7 +19,7 @@ class ASCBaseNavigationController: UINavigationController {
                     view.clipsToBounds = false
 
                     let localShadowView = UIView(frame: CGRect(x: view.frame.width - 0.5, y: 0, width: 0.5, height: view.frame.height))
-                    localShadowView.backgroundColor = UIColor(named: "table-cell-separator")
+                    localShadowView.backgroundColor = Asset.Colors.tableCellSeparator.color
                     localShadowView.autoresizingMask = [.flexibleLeftMargin, .flexibleHeight]
                     view.addSubview(localShadowView)
 
@@ -54,5 +54,15 @@ class ASCBaseNavigationController: UINavigationController {
     
     override var preferredInterfaceOrientationForPresentation: UIInterfaceOrientation {
         return topViewController?.preferredInterfaceOrientationForPresentation ?? super.preferredInterfaceOrientationForPresentation
+    }
+    
+    // MARK: - Methods for change style status bar
+    
+    override open var childForStatusBarStyle: UIViewController? {
+        return topViewController
+    }
+    
+    override open var childForStatusBarHidden: UIViewController? {
+        return topViewController
     }
 }

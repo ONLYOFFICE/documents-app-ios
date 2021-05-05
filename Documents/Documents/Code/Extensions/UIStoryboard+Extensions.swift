@@ -50,16 +50,37 @@ extension UIStoryboard {
 /// to use it.
 ///
 enum Storyboard: String {
-    case launchScreen = "LaunchScreen"
-    case main = "Main"
-    case login = "Login"
-    case sort = "Sort"
-    case transfer = "Transfer"
-    case intro = "Intro"
-    case connectStorage = "ConnectStorage"
-    case settings = "Settings"
-    case userProfile = "UserProfile"
-    case createPortal = "CreatePortal"
-    case share = "Share"
-    case debug = "Debug"
+    case launchScreen, main, login, sort, transfer, intro, connectStorage,
+         settings, userProfile, createPortal, share, debug
+    
+    var rawValue: String {
+        get {
+            switch self {
+            case .launchScreen:
+                return StoryboardScene.LaunchScreen.storyboardName
+            case .main:
+                return StoryboardScene.Main.storyboardName
+            case .login:
+                return StoryboardScene.Login.storyboardName
+            case .sort:
+                return StoryboardScene.Sort.storyboardName
+            case .transfer:
+                return StoryboardScene.Transfer.storyboardName
+            case .intro:
+                return StoryboardScene.Intro.storyboardName
+            case .connectStorage:
+                return StoryboardScene.ConnectStorage.storyboardName
+            case .settings:
+                return StoryboardScene.Settings.storyboardName
+            case .userProfile:
+                return StoryboardScene.UserProfile.storyboardName
+            case .createPortal:
+                return StoryboardScene.CreatePortal.storyboardName
+            case .share:
+                return StoryboardScene.Share.storyboardName
+            case .debug:
+                return StoryboardScene.Debug.storyboardName
+            }
+        }
+    }
 }

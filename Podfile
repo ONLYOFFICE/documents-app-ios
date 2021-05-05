@@ -5,35 +5,55 @@ platform :ios, '11.0'
 use_frameworks!
 
 def common_pods
-  pod 'Bagel', :configurations => ['Debug']
-  pod 'FilesProvider', :git => 'https://github.com/ayuzhin/FileProvider.git'
-  pod 'MediaBrowser', :git => 'https://github.com/ayuzhin/MediaBrowser.git'
-  pod 'SkyFloatingLabelTextField', :git => 'https://github.com/Skyscanner/SkyFloatingLabelTextField.git'
+
+  # Networking
+
   pod 'Alamofire'
-  pod 'ObjectMapper'
-  pod 'FileKit'
-  pod 'SwiftyXMLParser'
-  pod 'MBProgressHUD'
+  pod 'Bagel', :configurations => ['Debug']
   pod 'SDWebImage'
-  pod 'SwiftRater'
-  pod 'Siren'
-  pod 'WhatsNewKit'
-  pod 'PhoneNumberKit'
   pod 'Kingfisher'
-  pod 'IQKeyboardManagerSwift'
+
+  # Social
+
   pod 'FacebookCore'
   pod 'FacebookLogin'
   pod 'GoogleSignIn'
   pod 'GoogleAPIClientForREST/Drive'
+
+  # Firebase
+
   pod 'Firebase'
   pod 'FirebaseInstanceID'
   pod 'Firebase/RemoteConfig'
   pod 'Firebase/Messaging'
   pod 'Firebase/Analytics'
   pod 'Firebase/Crashlytics'
-  pod 'KeychainSwift'
-  pod 'MGSwipeTableCell'
+
+  # Data
+
+  pod 'ObjectMapper'
+  pod 'SwiftyXMLParser'
+
+  # UI
+
+  pod 'SkyFloatingLabelTextField', :git => 'https://github.com/Skyscanner/SkyFloatingLabelTextField.git'
+  pod 'MBProgressHUD'
+  pod 'MediaBrowser', :git => 'https://github.com/ayuzhin/MediaBrowser.git'
+  pod 'SwiftRater'
+  pod 'Siren'
+  pod 'WhatsNewKit'
+  pod 'PhoneNumberKit'
   pod 'SwiftMessages'
+  pod 'MGSwipeTableCell'
+
+  # Utils
+
+  pod 'FilesProvider', :git => 'https://github.com/ayuzhin/FileProvider.git'
+  pod 'FileKit'
+  pod 'IQKeyboardManagerSwift'
+  pod 'KeychainSwift'
+  pod 'SwiftGen', '~> 6.4.0'
+
 end
 
 class ::Pod::Generator::Acknowledgements

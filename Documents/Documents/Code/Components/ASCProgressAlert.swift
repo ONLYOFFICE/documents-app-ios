@@ -26,7 +26,7 @@ class ASCProgressAlert {
         // Init alert view
         actionController = UIAlertController(title: title, message: message, preferredStyle: .alert)
         
-        let cancelAction = UIAlertAction(title: NSLocalizedString("Cancel", comment: ""), style: .default) { (action) in
+        let cancelAction = UIAlertAction(title: ASCLocalization.Common.cancel, style: .default) { (action) in
             self.cleanupAlertWindow()
             handler(true)
         }
@@ -35,7 +35,7 @@ class ASCProgressAlert {
         // Init progress view
         progress = 0.01
         
-        actionController?.view.tintColor = ASCConstants.Colors.brend
+        actionController?.view.tintColor = Asset.Colors.brend.color
 
         progressView = UIProgressView(progressViewStyle: .bar)
         progressView?.translatesAutoresizingMaskIntoConstraints = false

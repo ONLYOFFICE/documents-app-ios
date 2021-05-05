@@ -128,13 +128,13 @@ extension ASCSSOSignInController: WKNavigationDelegate {
         log.error(error)
         
         let alertController = UIAlertController(
-            title: NSLocalizedString("Error", comment:""),
+            title: ASCLocalization.Common.error,
             message: error.localizedDescription,
             preferredStyle: .alert,
             tintColor: nil
         )
         
-        alertController.addAction(UIAlertAction(title: "OK", style: .default, handler: { [weak self] action in
+        alertController.addAction(UIAlertAction(title: ASCLocalization.Common.ok, style: .default, handler: { [weak self] action in
             self?.dismiss(animated: true, completion: nil)
         }))
         

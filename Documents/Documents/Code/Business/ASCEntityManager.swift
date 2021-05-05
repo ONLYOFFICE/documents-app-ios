@@ -43,7 +43,7 @@ class ASCEntityManager: NSObject, UITextFieldDelegate {
         }
         
         let alertController = UIAlertController(title: fileName, message: nil, preferredStyle: .alert)
-        let cancelAction = UIAlertAction(title: NSLocalizedString("Cancel", comment: ""), style: .cancel) { (action) in
+        let cancelAction = UIAlertAction(title: ASCLocalization.Common.cancel, style: .cancel) { (action) in
             if let textField = alertController.textFields?.first {
                 textField.selectedTextRange = nil
             }
@@ -79,16 +79,16 @@ class ASCEntityManager: NSObject, UITextFieldDelegate {
             textField.text = fileName
             
             textField.add(for: .editingChanged, {
-                createAction.isEnabled = (textField.text?.trim().length)! > 0
+                createAction.isEnabled = (textField.text?.trimmed.length)! > 0
             })
             
-            delay(seconds: 0.2) {
+            delay(seconds: 0.3) {
                 textField.selectAll(nil)
             }
         }
         
         if let topVC = ASCViewControllerManager.shared.topViewController {
-            alertController.view.tintColor = ASCConstants.Colors.brend
+            alertController.view.tintColor = Asset.Colors.brend.color
             topVC.present(alertController, animated: true, completion: nil)
         }
     }
@@ -101,7 +101,7 @@ class ASCEntityManager: NSObject, UITextFieldDelegate {
         let folderName = NSLocalizedString("New Folder", comment: "")
         
         let alertController = UIAlertController(title: NSLocalizedString("New Folder", comment: ""), message: nil, preferredStyle: .alert)
-        let cancelAction = UIAlertAction(title: NSLocalizedString("Cancel", comment: ""), style: .cancel) { (action) in
+        let cancelAction = UIAlertAction(title: ASCLocalization.Common.cancel, style: .cancel) { (action) in
             if let textField = alertController.textFields?.first {
                 textField.selectedTextRange = nil
             }
@@ -137,16 +137,16 @@ class ASCEntityManager: NSObject, UITextFieldDelegate {
             textField.text = folderName
             
             textField.add(for: .editingChanged, {
-                createAction.isEnabled = (textField.text?.trim().length)! > 0
+                createAction.isEnabled = (textField.text?.trimmed.length)! > 0
             })
             
-            delay(seconds: 0.2) {
+            delay(seconds: 0.3) {
                 textField.selectAll(nil)
             }
         }
         
         if let topVC = ASCViewControllerManager.shared.topViewController {
-            alertController.view.tintColor = ASCConstants.Colors.brend
+            alertController.view.tintColor = Asset.Colors.brend.color
             topVC.present(alertController, animated: true, completion: nil)
         }
     }
@@ -388,7 +388,7 @@ class ASCEntityManager: NSObject, UITextFieldDelegate {
         
         let entityTitle = file?.title ?? folder?.title
         let alertController = UIAlertController(title: NSLocalizedString("Rename", comment: ""), message: nil, preferredStyle: .alert)
-        let cancelAction = UIAlertAction(title: NSLocalizedString("Cancel", comment: ""), style: .cancel) { (action) in
+        let cancelAction = UIAlertAction(title: ASCLocalization.Common.cancel, style: .cancel) { (action) in
             if let textField = alertController.textFields?.first {
                 textField.selectedTextRange = nil
             }
@@ -423,16 +423,16 @@ class ASCEntityManager: NSObject, UITextFieldDelegate {
             textField.text = entityTitle?.fileName()
             
             textField.add(for: .editingChanged, {
-                renameAction.isEnabled = (textField.text?.trim().length)! > 0
+                renameAction.isEnabled = (textField.text?.trimmed.length)! > 0
             })
             
-            delay(seconds: 0.2) {
+            delay(seconds: 0.3) {
                 textField.selectAll(nil)
             }
         }
         
         if let topVC = ASCViewControllerManager.shared.topViewController {
-            alertController.view.tintColor = ASCConstants.Colors.brend
+            alertController.view.tintColor = Asset.Colors.brend.color
             topVC.present(alertController, animated: true, completion: nil)
         }
     }
@@ -759,11 +759,6 @@ class ASCEntityManager: NSObject, UITextFieldDelegate {
 
         let tempPath = Path.userTemporary + UUID().uuidString
 
-        defer {
-            // Cleanup temporary
-            ASCLocalFileHelper.shared.removeDirectory(tempPath)
-        }
-
         // Create download temporary
         ASCLocalFileHelper.shared.createDirectory(tempPath)
 
@@ -805,6 +800,9 @@ class ASCEntityManager: NSObject, UITextFieldDelegate {
                 srcProvider.cancel()
                 dstProvider.cancel()
             }
+            
+            // Cleanup temporary
+            ASCLocalFileHelper.shared.removeDirectory(tempPath)
         }
         
         let showNetworkErrorIfNeeded = {
@@ -819,15 +817,17 @@ class ASCEntityManager: NSObject, UITextFieldDelegate {
         // Read Structure
 
         let operationQueue = OperationQueue()
+        let structureQueue = DispatchQueue(label: "asc.transfer.structures", attributes: .concurrent)
         operationQueue.maxConcurrentOperationCount = 1
 
         operationQueue.addOperation {
             let readQueue = OperationQueue()
-
+            let srcProviderCopy = srcProvider.copy()
+            
             func read(folder: ASCFolder, level: Int = 0) {
                 readQueue.addOperation {
                     let semaphore = DispatchSemaphore(value: 0)
-                    srcProvider.fetch(for: folder, parameters: params) { provider, result, success, error in
+                    srcProviderCopy.fetch(for: folder, parameters: params) { provider, result, success, error in
                         if cancel {
                             forceExit()
                             semaphore.signal()
@@ -844,11 +844,14 @@ class ASCEntityManager: NSObject, UITextFieldDelegate {
                             // Files
                             // let files = provider.items.compactMap { $0 as? ASCFile }
 
-                            structures.append((
-                                srcFolder: folder,
-                                localFolder: nil,
-                                dstFolder: nil,
-                                items: provider.items))
+                            structureQueue.sync(flags: .barrier) {
+                                structures.append((
+                                    srcFolder: folder,
+                                    localFolder: nil,
+                                    dstFolder: nil,
+                                    items: provider.items)
+                                )
+                            }
                         }
 
                         handler(commonProgress, false, false, nil, nil, &cancel)
@@ -867,6 +870,8 @@ class ASCEntityManager: NSObject, UITextFieldDelegate {
         }
 
         // Download
+        
+        var downloadErrorFiles: [ASCFile] = []
 
         operationQueue.addOperation {
             if cancel {
@@ -897,15 +902,15 @@ class ASCEntityManager: NSObject, UITextFieldDelegate {
             let sizeOfCommonProgress: Float = 0.2
 
             let downloadQueue = OperationQueue()
-            //            downloadQueue.maxConcurrentOperationCount = 1
-
+            downloadQueue.maxConcurrentOperationCount = 1
+            
             for file in files {
                 let localPath = tempPath + srcAbsolutePath(file)
 
                 downloadQueue.addOperation {
                     let semaphore = DispatchSemaphore(value: 0)
 
-                    srcProvider.download(file.viewUrl ?? "", to: URL(fileURLWithPath:localPath.rawValue)) { progress, result, error, response in
+                    srcProvider.download(file.viewUrl ?? "", to: URL(fileURLWithPath: localPath.rawValue)) { progress, result, error, response in
                         if cancel {
                             forceExit()
                             semaphore.signal()
@@ -922,6 +927,14 @@ class ASCEntityManager: NSObject, UITextFieldDelegate {
                                 if srcProvider.type != .local {
                                     showNetworkErrorIfNeeded()
                                 }
+                                
+                                if let structureIndex = structures.firstIndex(where: { $0.items.contains(where: { ($0 as? ASCFile)?.viewUrl == file.viewUrl }) }) {
+                                    if let index = structures[structureIndex].items.firstIndex(where: { ($0 as? ASCFile)?.viewUrl == file.viewUrl }) {
+                                        structures[structureIndex].items.remove(at: index)
+                                    }
+                                }
+                                
+                                downloadErrorFiles.append(file)
                             }
 
                             processedFiles = processedFiles + 1
@@ -1004,7 +1017,7 @@ class ASCEntityManager: NSObject, UITextFieldDelegate {
 
         // Upload files
 
-        var uploadErrorFiles: [String] = []
+        var uploadErrorFiles: [ASCFile] = []
         
         operationQueue.addOperation {
             if cancel {
@@ -1039,6 +1052,8 @@ class ASCEntityManager: NSObject, UITextFieldDelegate {
                             content = try dataFile.read()
                         } catch {
                             log.error("Upload file: Read local data from: \(localFilePath.rawValue)")
+                            uploadErrorFiles.append(file)
+                            continue
                         }
 
                         if let data = content {
@@ -1065,7 +1080,7 @@ class ASCEntityManager: NSObject, UITextFieldDelegate {
                                                 if dstProvider.type != .local {
                                                     showNetworkErrorIfNeeded()
                                                 }
-                                                uploadErrorFiles.append(file.title)
+                                                uploadErrorFiles.append(file)
                                             }
 
                                             if let result = result as? [String: Any] {
@@ -1096,12 +1111,17 @@ class ASCEntityManager: NSObject, UITextFieldDelegate {
             commonProgress = commonProgress + localProgress
             handler(commonProgress, false, false, nil, nil, &cancel)
             
-            if uploadErrorFiles.count > 0 {
+            let errorFiles = downloadErrorFiles + uploadErrorFiles
+            if errorFiles.count > 0 {
                 let errorMsg = move
                     ? NSLocalizedString("Failed to move: %@", comment: "")
                     : NSLocalizedString("Failed to copy: %@", comment: "")
-                handler(1, true, false, nil, ASCProviderError(msg: String(format: errorMsg, uploadErrorFiles.joined(separator: ", ").truncated(toLength: 100))), &cancel)
-                return
+                let errorFileTitles = (downloadErrorFiles + uploadErrorFiles)
+                    .map { $0.title }
+                    .withoutDuplicates()
+                    .joined(separator: ", ")
+                    .truncated(toLength: 100)
+                handler(1, true, false, nil, ASCProviderError(msg: String(format: errorMsg, errorFileTitles)), &cancel)
             }
         }
 
@@ -1124,7 +1144,11 @@ class ASCEntityManager: NSObject, UITextFieldDelegate {
                 deleteQueue.addOperation {
                     let semaphore = DispatchSemaphore(value: 0)
                     delay(seconds: 0.01, completion: {
-                        srcProvider.delete(from.items, from: srcParent, completeon: { provider, result, success, error in
+                        let errorFiles = downloadErrorFiles + uploadErrorFiles
+                        let errorFilesUids = errorFiles.map { $0.uid }
+                        let movedItems = from.items.filter { !errorFilesUids.contains($0.uid) }
+                        
+                        srcProvider.delete(movedItems, from: srcParent, completeon: { provider, result, success, error in
                             semaphore.signal()
                         })
                     })
@@ -1139,6 +1163,11 @@ class ASCEntityManager: NSObject, UITextFieldDelegate {
                 // Done
                 handler(1, true, true, appendItems, nil, &cancel)
             }
+        }
+        
+        // Cleanup temporary
+        operationQueue.addOperation {
+            ASCLocalFileHelper.shared.removeDirectory(tempPath)
         }
     }
     

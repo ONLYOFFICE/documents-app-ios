@@ -10,8 +10,10 @@ import UIKit
 import MBProgressHUD
 import IQKeyboardManagerSwift
 
-class ASC2FACodeViewController: UIViewController {
+class ASC2FACodeViewController: ASCBaseViewController {
     static let identifier = String(describing: ASC2FACodeViewController.self)
+    
+    class override var storyboard: Storyboard { return Storyboard.login }
 
     // MARK: - Properties
 
@@ -21,6 +23,8 @@ class ASC2FACodeViewController: UIViewController {
 
     private let codeLength: Int = 6
 
+    // MARK: - Outlets
+    
     @IBOutlet weak var codeField: UITextField!
     @IBOutlet weak var helpLabel: UILabel!
 
@@ -34,7 +38,7 @@ class ASC2FACodeViewController: UIViewController {
         }
 
         codeField?.delegate = self
-        codeField?.underline(color: ASCConstants.Colors.brend)
+        codeField?.underline(color: Asset.Colors.brend.color)
         codeField?.addTarget(self, action: #selector(textFieldDidChange(_:)), for: .editingChanged)
 
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(tapFunction))
@@ -142,7 +146,7 @@ extension ASC2FACodeViewController: UITextFieldDelegate {
 
     @objc func textFieldDidChange(_ textField: UITextField) {
         if textField == codeField, let fieldText = textField.text {
-            let code = fieldText.trim().substring(to: codeLength)
+            let code = fieldText.trimmed.substring(to: codeLength)
 
             if code.length == codeLength {
                 login(with: code)

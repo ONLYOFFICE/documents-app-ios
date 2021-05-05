@@ -18,9 +18,9 @@ class ASCDeviceCategoryViewController: UITableViewController {
         var image: UIImage?
 
         if UIDevice.pad {
-            image = allowFaceId ? UIImage(named: "category-ipad-new") : UIImage(named: "category-ipad")
+            image = allowFaceId ? Asset.Images.categoryIpadNew.image : Asset.Images.categoryIpad.image
         } else {
-            image = allowFaceId ? UIImage(named: "category-iphone-new") : UIImage(named: "category-iphone")
+            image = allowFaceId ? Asset.Images.categoryIphoneNew.image : Asset.Images.categoryIphone.image
         }
 
         $0.title = NSLocalizedString("Documents", comment: "Category title")
@@ -32,7 +32,7 @@ class ASCDeviceCategoryViewController: UITableViewController {
 
     var deviceTrashCategory: ASCCategory = {
         $0.title = NSLocalizedString("Trash", comment: "Category title")
-        $0.image = UIImage(named: "category-trash")
+        $0.image = Asset.Images.categoryTrash.image
         $0.provider = ASCFileManager.localProvider
         $0.folder = {
             $0.title = NSLocalizedString("Trash", comment: "Category title")

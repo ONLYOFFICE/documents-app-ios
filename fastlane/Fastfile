@@ -40,9 +40,9 @@ platform :ios do
     # match(type: "appstore") # more information: https://codesigning.guide
     # ensure_git_status_clean
 
-    version_number = get_version_number(
-      xcodeproj: "Documents/Documents.xcodeproj",
-      configuration: "Release"
+    version_number = get_info_plist_value(
+      path: "Documents/Documents/Info.plist",
+      key: "CFBundleShortVersionString"
     )
     build_number = get_info_plist_value(
       path: "Documents/Documents/Info.plist", 
@@ -94,7 +94,6 @@ platform :ios do
     pilot(
       app_identifier: ENV["APP_IDENTIFIER"],
       changelog: change_log,
-      app_identifier: ENV["APP_IDENTIFIER"],
       skip_waiting_for_build_processing: false
     )
 

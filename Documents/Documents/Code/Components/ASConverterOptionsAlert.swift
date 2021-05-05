@@ -77,8 +77,8 @@ class ASCConverterOptionsAlert: NSObject, UIPickerViewDataSource, UIPickerViewDe
         alert?.isModalInPopover = true
         alert?.preferredContentSize = preferredContentSize
         alert?.setValue(viewController, forKey: "contentViewController")
-        alert?.addAction(UIAlertAction(title: NSLocalizedString("Cancel", comment: ""), style: .cancel, handler: nil))
-        alert?.addAction(UIAlertAction(title: NSLocalizedString("OK", comment: ""), style: .default, handler: { action in
+        alert?.addAction(UIAlertAction(title: ASCLocalization.Common.cancel, style: .cancel, handler: nil))
+        alert?.addAction(UIAlertAction(title: ASCLocalization.Common.ok, style: .default, handler: { action in
             handler(picker.selectedRow(inComponent: 0), self.isOnlyCodePages ? 0 : picker.selectedRow(inComponent: 1))
         }))
 

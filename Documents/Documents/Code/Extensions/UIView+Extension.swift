@@ -155,6 +155,27 @@ extension UIView {
             }
         }
     }
+    
+    func dropShadow(
+        color: UIColor,
+        opacity: Float = 0.5,
+        offSet: CGSize,
+        radius: CGFloat = 1,
+        scale: Bool = true,
+        spread: CGFloat = 0)
+    {
+        layer.masksToBounds = false
+        layer.shadowColor = color.cgColor
+        layer.shadowOpacity = opacity
+        layer.shadowOffset = offSet
+        layer.shadowRadius = radius
+
+        let rect = bounds.insetBy(dx: -spread, dy: -spread)
+        layer.shadowPath = UIBezierPath(rect: rect).cgPath
+        
+        layer.shouldRasterize = true
+        layer.rasterizationScale = scale ? UIScreen.main.scale : 1
+    }
 
     /// Load view from nib.
     ///

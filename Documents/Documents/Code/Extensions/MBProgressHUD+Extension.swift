@@ -24,10 +24,8 @@ extension MBProgressHUD {
     }
     
     func setSuccessState(title: String? = nil) {
-        if let hudImage = UIImage(named: "hud-checkmark") {
-            mode = .customView
-            customView = UIImageView(image: hudImage)
-            label.text = title ?? NSLocalizedString("Done", comment: "Operation completed")
-        }
+        mode = .customView
+        customView = UIImageView(image: Asset.Images.hudCheckmark.image)
+        label.text = title ?? NSLocalizedString("Done", comment: "Operation completed")
     }
 }

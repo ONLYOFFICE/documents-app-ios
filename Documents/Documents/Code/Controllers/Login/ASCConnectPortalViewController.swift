@@ -12,8 +12,10 @@ import IQKeyboardManagerSwift
 import Alamofire
 import MBProgressHUD
 
-class ASCConnectPortalViewController: UIViewController, UITextFieldDelegate {
+class ASCConnectPortalViewController: ASCBaseViewController {
 
+    class override var storyboard: Storyboard { return Storyboard.login }
+    
     // MARK: - Properties
     
     @IBOutlet weak var createPortalButton: UIButton!
@@ -119,7 +121,7 @@ class ASCConnectPortalViewController: UIViewController, UITextFieldDelegate {
     }
     
     private func validatePortal(validation: @escaping (Bool, String?, [String: Any]?)->()) {
-        guard let portalUrl = addressField?.text?.trim() else {
+        guard let portalUrl = addressField?.text?.trimmed else {
             validation(false, NSLocalizedString("Address is empty", comment: ""), nil)
             return
         }
@@ -172,7 +174,7 @@ class ASCConnectPortalViewController: UIViewController, UITextFieldDelegate {
                     
                     if errorInfo == nil && useProtocols.count > 0 {
                         let alertController = UIAlertController.alert(
-                            NSLocalizedString("Error", comment: ""),
+                            ASCLocalization.Common.error,
                             message: String(format: "%@ %@", errorMessage, NSLocalizedString("Try to connect via another protocol?", comment: "")),
                             actions: [])
                             .okable() { _ in
@@ -195,23 +197,7 @@ class ASCConnectPortalViewController: UIViewController, UITextFieldDelegate {
     }
     
     private func showSignIn() {
-        let signinViewController = ASCSignInViewController.instantiate(from: Storyboard.login)
-        signinViewController.portal = addressField?.text?.trim()
-        navigationController?.pushViewController(signinViewController, animated: true)
-    }
-    
-    // MARK: - UITextField Delegate
-    
-    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        onContinue(textField)
-        return true
-    }
-    
-    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
-        if let floatingLabelTextField = textField as? SkyFloatingLabelTextField {
-            floatingLabelTextField.errorMessage = ""
-        }
-        return true
+        navigator.navigate(to: .onlyofficeSignIn(portal: addressField?.text?.trimmed))
     }
     
     // MARK: - Actions
@@ -235,7 +221,7 @@ class ASCConnectPortalViewController: UIViewController, UITextFieldDelegate {
                 strongSelf.addressField?.errorMessage = error ?? NSLocalizedString("The portal address is invalid", comment: "")
             } else if let error = error {
                 let alertController = UIAlertController(
-                    title: NSLocalizedString("Error", comment:""),
+                    title: ASCLocalization.Common.error,
                     message: error,
                     preferredStyle: .alert,
                     tintColor: nil
@@ -245,7 +231,7 @@ class ASCConnectPortalViewController: UIViewController, UITextFieldDelegate {
                     strongSelf.showSignIn()
                 }))
                 
-                alertController.addAction(UIAlertAction(title: NSLocalizedString("Cancel", comment: ""), style: .cancel, handler: { action in
+                alertController.addAction(UIAlertAction(title: ASCLocalization.Common.cancel, style: .cancel, handler: { action in
                     //
                 }))
                 
@@ -259,4 +245,22 @@ class ASCConnectPortalViewController: UIViewController, UITextFieldDelegate {
     }
     
 
+}
+
+// MARK: - UITextField Delegate
+
+extension ASCConnectPortalViewController : UITextFieldDelegate {
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        onContinue(textField)
+        return true
+    }
+    
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        if let floatingLabelTextField = textField as? SkyFloatingLabelTextField {
+            floatingLabelTextField.errorMessage = ""
+        }
+        return true
+    }
+    
 }

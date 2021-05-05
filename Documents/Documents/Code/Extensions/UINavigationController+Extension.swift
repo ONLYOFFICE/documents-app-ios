@@ -13,7 +13,7 @@ extension UINavigationController {
     convenience init(rootASCViewController: UIViewController) {
         self.init(rootViewController: rootASCViewController)
 
-        view.tintColor = ASCConstants.Colors.brend
+        view.tintColor = Asset.Colors.brend.color
 
         if #available(iOS 11.0, *) {
             navigationBar.prefersLargeTitles = true

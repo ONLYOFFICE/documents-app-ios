@@ -11,7 +11,7 @@ import UIKit
 extension UIAlertController {
     convenience init(title: String?, message: String?, preferredStyle: UIAlertController.Style, tintColor: UIColor?) {
         self.init(title: title, message: message, preferredStyle: preferredStyle)
-        self.view.tintColor = tintColor ?? ASCConstants.Colors.brend
+        self.view.tintColor = tintColor ?? Asset.Colors.brend.color
     }
 
     static func showError(in viewController: UIViewController, message: String, actions: [UIAlertAction]? = nil) {

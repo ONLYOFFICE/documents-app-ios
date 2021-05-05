@@ -282,7 +282,7 @@ class ASCShareItemsViewController: UIViewController, UITableViewDelegate, UITabl
     
     public func updateSearchResults(for searchController: UISearchController) {
         if searchController.isActive {
-            if let searchText = searchController.searchBar.text?.trim().lowercased(), searchText.length > 0 {
+            if let searchText = searchController.searchBar.text?.trimmed.lowercased(), searchText.length > 0 {
                 if showUsers {
                     tableData = users.filter() { info in
                         let displayName = info.0.user?.displayName

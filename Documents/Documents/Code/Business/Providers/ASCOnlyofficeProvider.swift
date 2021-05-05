@@ -158,13 +158,18 @@ class ASCOnlyofficeProvider: ASCFileProviderProtocol & ASCSortableFileProviderPr
     }
     
     func add(item: ASCEntity, at index: Int) {
-        items.insert(item, at: index)
-        total += 1
+        if !items.contains(where: { $0.uid == item.uid }) {
+            items.insert(item, at: index)
+            total += 1
+        }
     }
     
     func add(items: [ASCEntity], at index: Int) {
-        self.items.insert(contentsOf: items, at: index)
-        self.total += items.count
+        let uniqItems = items.filter { (item) -> Bool in
+            return !self.items.contains(where: { $0.uid == item.uid })
+        }
+        self.items.insert(contentsOf: uniqItems, at: index)
+        self.total += uniqItems.count
     }
     
     func remove(at index: Int) {
@@ -259,7 +264,7 @@ class ASCOnlyofficeProvider: ASCFileProviderProtocol & ASCSortableFileProviderPr
             if let search = parameters["search"] as? [String: Any] {
                 params["filterBy"] = "title"
                 params["filterOp"] = "contains"
-                params["filterValue"] = (search["text"] as? String ?? "").trim()
+                params["filterValue"] = (search["text"] as? String ?? "").trimmed
             }
 
             /// Sort
@@ -885,7 +890,7 @@ class ASCOnlyofficeProvider: ASCFileProviderProtocol & ASCSortableFileProviderPr
 
         let isProjectRoot = isRoot(folder: parentFolder) && (parentFolder?.rootFolderType == .onlyofficeBunch || parentFolder?.rootFolderType == .onlyofficeProjects)
 
-        return (access == .none
+        return (access == ASCEntityAccess.none
             || ((file != nil ? file?.rootFolderType == .onlyofficeCommon : folder?.rootFolderType == .onlyofficeCommon) && user.isAdmin)
             || (!isProjectRoot && (file != nil ? user.userId == file?.createdBy?.userId : user.userId == folder?.createdBy?.userId)))
     }
@@ -1164,9 +1169,31 @@ class ASCOnlyofficeProvider: ASCFileProviderProtocol & ASCSortableFileProviderPr
             let strongDelegate = delegate
             let openHandler = strongDelegate?.openProgressFile(title: NSLocalizedString("Processing", comment: "Caption of the processing") + "...", 0)
             let closeHandler = strongDelegate?.closeProgressFile(title: NSLocalizedString("Saving", comment: "Caption of the processing"))
+            let favoriteHandler: ASCEditorManagerFavoriteHandler = { editorFile, complation in
+                if let editorFile = editorFile {
+                    self.favorite(editorFile, favorite: !editorFile.isFavorite) { provider, entity, success, error in
+                        if let portalFile = entity as? ASCFile {
+                            complation(portalFile.isFavorite)
+                        } else {
+                            complation(editorFile.isFavorite)
+                        }
+                    }
+                }
+            }
+            let shareHandler: ASCEditorManagerShareHandler = { file in
+                guard let file = file else { return }
+                strongDelegate?.presentShareController(provider: self, entity: file)
+            }
 
             if ASCEditorManager.shared.checkSDKVersion() {
-                ASCEditorManager.shared.editCloud(file, viewMode: !editMode, handler: openHandler, closeHandler: closeHandler)
+                ASCEditorManager.shared.editCloud(
+                    file,
+                    viewMode: !editMode,
+                    handler: openHandler,
+                    closeHandler: closeHandler,
+                    favoriteHandler: favoriteHandler,
+                    shareHandler: shareHandler
+                )
             } else {
                 ASCEditorManager.shared.editFileLocally(for: self, file, viewMode: viewMode, handler: openHandler, closeHandler: closeHandler, lockedHandler: {
                     delay(seconds: 0.3) {

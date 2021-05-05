@@ -16,6 +16,7 @@ import FirebaseMessaging
 import CoreSpotlight
 import CoreServices
 import Siren
+import IQKeyboardManagerSwift
 #if DEBUG
 import Bagel
 #endif
@@ -68,6 +69,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Check Update
         configureAppUpdater()
         
+        // Scroll text fields when keyboard appears
+        configureIQKeyboardManager()
+
         application.unregisterForRemoteNotifications()
         
         if #available(iOS 10.0, *) {
@@ -264,6 +268,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                                                  showAlertAfterCurrentVersionHasBeenReleasedForDays: 1)
 
         siren.wail()
+    }
+    
+    private func configureIQKeyboardManager() {
+        IQKeyboardManager.shared.keyboardDistanceFromTextField = 124.0
+        IQKeyboardManager.shared.enabledDistanceHandlingClasses.append(ASCPasswordRecoveryViewController.self)
+        IQKeyboardManager.shared.enabledToolbarClasses.append(ASCPasswordRecoveryViewController.self)
     }
 }
 

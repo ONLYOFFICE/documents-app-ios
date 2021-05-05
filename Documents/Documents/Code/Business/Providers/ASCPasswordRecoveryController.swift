@@ -15,11 +15,12 @@ class ASCPasswordRecoveryController {
     
     // MARK: - Public
     
-    func forgotPassword(options: Parameters, completion: @escaping ((Result<ASCResponsePassword, Error>) -> Void)) {
+    func forgotPassword(portalUrl: String, options: Parameters, completion: @escaping ((Result<ASCResponsePassword, Error>) -> Void)) {
+
         let api        = ASCOnlyOfficeApi.shared
         let apiRequest = ASCOnlyOfficeApi.apiForgotPassword
         
-        api.baseUrl = "https://nct.onlyoffice.com"
+        api.baseUrl = portalUrl
         
         ASCOnlyOfficeApi.post(apiRequest, parameters: options) { (results, error, request) in
             if let results = results as? String {

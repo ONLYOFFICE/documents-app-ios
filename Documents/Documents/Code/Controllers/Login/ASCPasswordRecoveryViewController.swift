@@ -77,7 +77,7 @@ class ASCPasswordRecoveryViewController: UIViewController, UITextFieldDelegate {
         
         let hud = MBProgressHUD.showTopMost()
         hud?.label.text = NSLocalizedString("Sending instructions", comment: "Caption of the process")
-        ASCPasswordRecoveryController.shared.forgotPassword(options: parameters)
+        ASCPasswordRecoveryController.shared.forgotPassword(portalUrl: portal,options: parameters)
             { [weak self] result in
             switch result {
             case .success(let response):

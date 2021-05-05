@@ -224,19 +224,16 @@ class ASCSignInViewController: ASCBaseViewController {
         
         view.endEditing(true)
         
-        let parameters: Parameters = [
-            "portal": portal,
-            "userName": email,
-            "password": password
-        ]
+        let authRequest = OnlyofficeAuthRequest()
+        authRequest.provider = .email
+        authRequest.portal = portal
+        authRequest.userName = email
+        authRequest.password = password
         
         let hud = MBProgressHUD.showTopMost()
         hud?.label.text = NSLocalizedString("Logging in", comment: "Caption of the process")
         
-        ASCSignInController.shared.login(by: .email,
-                                         options: parameters,
-                                         in: navigationController)
-        { [weak self] success in
+        ASCSignInController.shared.login(by: authRequest, in: navigationController) { [weak self] success in
             if success {
                 hud?.setSuccessState()
                 hud?.hide(animated: true, afterDelay: 2)
@@ -258,18 +255,15 @@ class ASCSignInViewController: ASCBaseViewController {
             guard let strongSelf = self else { return }
 
             if let accessToken = token {
-                let parameters: Parameters = [
-                    "portal": strongSelf.portal ?? "",
-                    "facebookToken": accessToken
-                ]
+                let authRequest = OnlyofficeAuthRequest()
+                authRequest.provider = .facebook
+                authRequest.portal = strongSelf.portal
+                authRequest.facebookToken = accessToken
                 
                 let hud = MBProgressHUD.showTopMost()
                 hud?.label.text = NSLocalizedString("Logging in", comment: "Caption of the process")
                 
-                ASCSignInController.shared.login(by: .facebook,
-                                                 options: parameters,
-                                                 in: strongSelf.navigationController)
-                { success in
+                ASCSignInController.shared.login(by: authRequest, in: strongSelf.navigationController) { success in
                     if success {
                         hud?.setSuccessState()
                         hud?.hide(animated: true, afterDelay: 2)
@@ -304,18 +298,15 @@ class ASCSignInViewController: ASCBaseViewController {
             guard let strongSelf = self else { return }
 
             if let accessToken = token {
-                let parameters: Parameters = [
-                    "portal": strongSelf.portal ?? "",
-                    "googleToken": accessToken
-                ]
+                let authRequest = OnlyofficeAuthRequest()
+                authRequest.provider = .google
+                authRequest.portal = strongSelf.portal
+                authRequest.facebookToken = accessToken
                 
                 let hud = MBProgressHUD.showTopMost()
                 hud?.label.text = NSLocalizedString("Logging in", comment: "Caption of the process")
                 
-                ASCSignInController.shared.login(by: .google,
-                                                 options: parameters,
-                                                 in: strongSelf.navigationController)
-                { success in
+                ASCSignInController.shared.login(by: authRequest, in: strongSelf.navigationController) { success in
                     if success {
                         hud?.setSuccessState()
                         hud?.hide(animated: true, afterDelay: 2)

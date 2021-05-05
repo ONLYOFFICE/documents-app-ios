@@ -64,6 +64,16 @@
 		FC28F2C41E8D131800A8F985 /* ASCCreateEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC28F2C31E8D131800A8F985 /* ASCCreateEntity.swift */; };
 		FC28F2C61E8D1BB200A8F985 /* ASCEntityManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC28F2C51E8D1BB200A8F985 /* ASCEntityManager.swift */; };
 		FC28F2C81E8D217F00A8F985 /* UIControl+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC28F2C71E8D217F00A8F985 /* UIControl+Extension.swift */; };
+		FC2B0CBB2640305700969DB9 /* OnlyofficeApiClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC2B0CBA2640305700969DB9 /* OnlyofficeApiClient.swift */; };
+		FC2B0CBD264031BE00969DB9 /* KingfisherWrapper+Onlyoffice.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC2B0CBC264031BE00969DB9 /* KingfisherWrapper+Onlyoffice.swift */; };
+		FC2B0CC22640518500969DB9 /* OnlyofficeEndpoints.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC2B0CC12640518500969DB9 /* OnlyofficeEndpoints.swift */; };
+		FC2B0CC42640524F00969DB9 /* OnlyofficeVersion.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC2B0CC32640524F00969DB9 /* OnlyofficeVersion.swift */; };
+		FC2B0CC62641251C00969DB9 /* OnlyofficeDataResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC2B0CC52641251C00969DB9 /* OnlyofficeDataResult.swift */; };
+		FC2B0CC8264146C100969DB9 /* OnlyofficeAuthRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC2B0CC7264146C100969DB9 /* OnlyofficeAuthRequest.swift */; };
+		FC2B0CCA264149E200969DB9 /* OnlyofficeAuth.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC2B0CC9264149E200969DB9 /* OnlyofficeAuth.swift */; };
+		FC2B0CCD264158B400969DB9 /* OnlyofficeApplicationType.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC2B0CCC264158B400969DB9 /* OnlyofficeApplicationType.swift */; };
+		FC2B0CCF2642C6F400969DB9 /* NextcloudServerError.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC2B0CCE2642C6F400969DB9 /* NextcloudServerError.swift */; };
+		FC2B0CD12642C79800969DB9 /* OnlyofficeServerError.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC2B0CD02642C79800969DB9 /* OnlyofficeServerError.swift */; };
 		FC2EEA3821BAB05F00CB85A3 /* UIViewController+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC2EEA3721BAB05F00CB85A3 /* UIViewController+Extensions.swift */; };
 		FC31B27E1E767C96008699C3 /* ASCFolderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC31B27D1E767C96008699C3 /* ASCFolderCell.swift */; };
 		FC31B2801E767CAB008699C3 /* ASCFileCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC31B27F1E767CAB008699C3 /* ASCFileCell.swift */; };
@@ -156,7 +166,7 @@
 		FC8667D421C7941C0020D797 /* ASCOnlyofficeSplitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC8667D321C7941C0020D797 /* ASCOnlyofficeSplitViewController.swift */; };
 		FC8667D621C799160020D797 /* ASCCloudsSplitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC8667D521C799160020D797 /* ASCCloudsSplitViewController.swift */; };
 		FC872B281EC44925001636CB /* ASCSMSCodeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC872B271EC44925001636CB /* ASCSMSCodeViewController.swift */; };
-		FC8A137B22686B5D006D8C6E /* ASCPortalCapabilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC8A137A22686B5D006D8C6E /* ASCPortalCapabilities.swift */; };
+		FC8A137B22686B5D006D8C6E /* OnlyofficeCapabilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC8A137A22686B5D006D8C6E /* OnlyofficeCapabilities.swift */; };
 		FC8A137D226878C0006D8C6E /* Sequence+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC8A137C226878C0006D8C6E /* Sequence+Extensions.swift */; };
 		FC8A137F2268B57F006D8C6E /* URL+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC8A137E2268B57F006D8C6E /* URL+Extensions.swift */; };
 		FC8A5A8D2565712700D08037 /* ASCDocumentsToolbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC8A5A8C2565712700D08037 /* ASCDocumentsToolbar.swift */; };
@@ -418,6 +428,16 @@
 		FC28F2C31E8D131800A8F985 /* ASCCreateEntity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASCCreateEntity.swift; sourceTree = "<group>"; };
 		FC28F2C51E8D1BB200A8F985 /* ASCEntityManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ASCEntityManager.swift; path = Documents/Code/Business/ASCEntityManager.swift; sourceTree = SOURCE_ROOT; };
 		FC28F2C71E8D217F00A8F985 /* UIControl+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIControl+Extension.swift"; sourceTree = "<group>"; };
+		FC2B0CBA2640305700969DB9 /* OnlyofficeApiClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnlyofficeApiClient.swift; sourceTree = "<group>"; };
+		FC2B0CBC264031BE00969DB9 /* KingfisherWrapper+Onlyoffice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "KingfisherWrapper+Onlyoffice.swift"; sourceTree = "<group>"; };
+		FC2B0CC12640518500969DB9 /* OnlyofficeEndpoints.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnlyofficeEndpoints.swift; sourceTree = "<group>"; };
+		FC2B0CC32640524F00969DB9 /* OnlyofficeVersion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnlyofficeVersion.swift; sourceTree = "<group>"; };
+		FC2B0CC52641251C00969DB9 /* OnlyofficeDataResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnlyofficeDataResult.swift; sourceTree = "<group>"; };
+		FC2B0CC7264146C100969DB9 /* OnlyofficeAuthRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnlyofficeAuthRequest.swift; sourceTree = "<group>"; };
+		FC2B0CC9264149E200969DB9 /* OnlyofficeAuth.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnlyofficeAuth.swift; sourceTree = "<group>"; };
+		FC2B0CCC264158B400969DB9 /* OnlyofficeApplicationType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnlyofficeApplicationType.swift; sourceTree = "<group>"; };
+		FC2B0CCE2642C6F400969DB9 /* NextcloudServerError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NextcloudServerError.swift; sourceTree = "<group>"; };
+		FC2B0CD02642C79800969DB9 /* OnlyofficeServerError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnlyofficeServerError.swift; sourceTree = "<group>"; };
 		FC2EEA3721BAB05F00CB85A3 /* UIViewController+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extensions.swift"; sourceTree = "<group>"; };
 		FC31B27D1E767C96008699C3 /* ASCFolderCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASCFolderCell.swift; sourceTree = "<group>"; };
 		FC31B27F1E767CAB008699C3 /* ASCFileCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASCFileCell.swift; sourceTree = "<group>"; };
@@ -510,7 +530,7 @@
 		FC8667D321C7941C0020D797 /* ASCOnlyofficeSplitViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCOnlyofficeSplitViewController.swift; sourceTree = "<group>"; };
 		FC8667D521C799160020D797 /* ASCCloudsSplitViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCCloudsSplitViewController.swift; sourceTree = "<group>"; };
 		FC872B271EC44925001636CB /* ASCSMSCodeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASCSMSCodeViewController.swift; sourceTree = "<group>"; };
-		FC8A137A22686B5D006D8C6E /* ASCPortalCapabilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCPortalCapabilities.swift; sourceTree = "<group>"; };
+		FC8A137A22686B5D006D8C6E /* OnlyofficeCapabilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnlyofficeCapabilities.swift; sourceTree = "<group>"; };
 		FC8A137C226878C0006D8C6E /* Sequence+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Sequence+Extensions.swift"; sourceTree = "<group>"; };
 		FC8A137E2268B57F006D8C6E /* URL+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "URL+Extensions.swift"; sourceTree = "<group>"; };
 		FC8A5A8C2565712700D08037 /* ASCDocumentsToolbar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASCDocumentsToolbar.swift; sourceTree = "<group>"; };
@@ -867,6 +887,39 @@
 			path = CreateEntity;
 			sourceTree = "<group>";
 		};
+		FC2B0CB92640302A00969DB9 /* Onlyoffice */ = {
+			isa = PBXGroup;
+			children = (
+				FC2B0CCB2641589200969DB9 /* Enum */,
+				FC2B0CBE26404E7200969DB9 /* Model */,
+				FC2B0CBA2640305700969DB9 /* OnlyofficeApiClient.swift */,
+				FC2B0CC12640518500969DB9 /* OnlyofficeEndpoints.swift */,
+				FC2B0CD02642C79800969DB9 /* OnlyofficeServerError.swift */,
+				FC2B0CBC264031BE00969DB9 /* KingfisherWrapper+Onlyoffice.swift */,
+			);
+			path = Onlyoffice;
+			sourceTree = "<group>";
+		};
+		FC2B0CBE26404E7200969DB9 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				FC2B0CC52641251C00969DB9 /* OnlyofficeDataResult.swift */,
+				FC8A137A22686B5D006D8C6E /* OnlyofficeCapabilities.swift */,
+				FC2B0CC32640524F00969DB9 /* OnlyofficeVersion.swift */,
+				FC2B0CC7264146C100969DB9 /* OnlyofficeAuthRequest.swift */,
+				FC2B0CC9264149E200969DB9 /* OnlyofficeAuth.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		FC2B0CCB2641589200969DB9 /* Enum */ = {
+			isa = PBXGroup;
+			children = (
+				FC2B0CCC264158B400969DB9 /* OnlyofficeApplicationType.swift */,
+			);
+			path = Enum;
+			sourceTree = "<group>";
+		};
 		FC31B27A1E76796E008699C3 /* Views */ = {
 			isa = PBXGroup;
 			children = (
@@ -1021,11 +1074,12 @@
 		FC5D0409263AE01D00D9DBCF /* Networking */ = {
 			isa = PBXGroup;
 			children = (
-				FC5D0438263C3EC000D9DBCF /* Nextcloud */,
+				FC2B0CB92640302A00969DB9 /* Onlyoffice */,
 				FC5D0412263BE8B700D9DBCF /* Dropbox */,
+				FC5D0438263C3EC000D9DBCF /* Nextcloud */,
 				FC5D040A263AE28400D9DBCF /* Endpoint.swift */,
-				FC5D040E263AF06400D9DBCF /* NetworkingError.swift */,
 				FC5D040C263AEDCD00D9DBCF /* NetworkingClient.swift */,
+				FC5D040E263AF06400D9DBCF /* NetworkingError.swift */,
 				FC5D0410263BE43A00D9DBCF /* NetworkingServerError.swift */,
 			);
 			path = Networking;
@@ -1055,6 +1109,7 @@
 				FC5D043D263C442C00D9DBCF /* Model */,
 				FC5D0439263C3EF300D9DBCF /* NextcloudApiClient.swift */,
 				FC5D043B263C438400D9DBCF /* NextcloudEndpoints.swift */,
+				FC2B0CCE2642C6F400969DB9 /* NextcloudServerError.swift */,
 			);
 			path = Nextcloud;
 			sourceTree = "<group>";
@@ -1321,7 +1376,6 @@
 				FC9161DB1EE965970031B6DB /* ASCGroup.swift */,
 				FC9161D91EE949420031B6DB /* ASCShareInfo.swift */,
 				FC6106FE1F9E3502002A25C8 /* ASCAccount.swift */,
-				FC8A137A22686B5D006D8C6E /* ASCPortalCapabilities.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -1386,8 +1440,8 @@
 				FC1AD6132175FE7000DADEE0 /* ASCNetworkReachability.swift */,
 				FCAE8B8C1E717B84004FC332 /* EventManager.swift */,
 				8A69B5A32497626300152BDE /* ASCLogIntercepter.swift */,
-				8A69B5A52497626E00152BDE /* ASCDebugManager.swift */,
 				8A69B5D3249794A600152BDE /* ASCLogger.swift */,
+				8A69B5A52497626E00152BDE /* ASCDebugManager.swift */,
 				FC12ACF12567CF5E00FF1CBB /* ASCAnalytics.swift */,
 			);
 			path = Business;
@@ -2031,6 +2085,7 @@
 				FCC38BD222D379DE00F500C3 /* ASCFolderProviderType.swift in Sources */,
 				FCA7500822BB9CD500991682 /* UITableViewCell+Extensions.swift in Sources */,
 				FC1EA5D21ECF2A6D008FEE2E /* ASCSettingsViewController.swift in Sources */,
+				FC2B0CC62641251C00969DB9 /* OnlyofficeDataResult.swift in Sources */,
 				FC1EA5CB1ECECBC3008FEE2E /* ASCBaseNavigationController.swift in Sources */,
 				FCD33B5B21C93C2B00D52DAF /* ASCCloudsEmptyViewController.swift in Sources */,
 				FCB8A39221C27EE000CF74FA /* ASCDeviceCategoryViewController.swift in Sources */,
@@ -2065,12 +2120,14 @@
 				FC6106FA1F9E2ED6002A25C8 /* ASCAccountsViewController.swift in Sources */,
 				FC7CF5181EF3EFF300C0A64F /* Mappings.swift in Sources */,
 				FC68398721B7DC0D00251CEA /* ASCRootController.swift in Sources */,
+				FC2B0CCA264149E200969DB9 /* OnlyofficeAuth.swift in Sources */,
 				FCF2761C22C0E8E500984E83 /* ASCProfileAvatarView.swift in Sources */,
 				FC37D8E921CB8FA8001A7BFD /* UIDevice+DeviceKit.swift in Sources */,
 				FC5E2D8D1E8A4C8B0079626B /* ASCImageViewController.swift in Sources */,
 				8A69B5B7249762DE00152BDE /* ASCDebugConsoleViewController.swift in Sources */,
 				FC41D8062265D99C00A155C2 /* ASCFileStatus.swift in Sources */,
 				FCEF9D331ED2D18500627BA5 /* ASCPasscodeLockConfiguration.swift in Sources */,
+				FC2B0CD12642C79800969DB9 /* OnlyofficeServerError.swift in Sources */,
 				FCEF9D241ED2C94300627BA5 /* PasscodeLockConfigurationType.swift in Sources */,
 				FC9161DC1EE965970031B6DB /* ASCGroup.swift in Sources */,
 				FC8C697B1ECC2F44005B68D7 /* ASCConnectStorageOAuth2Google.swift in Sources */,
@@ -2088,6 +2145,7 @@
 				FC6106FF1F9E3502002A25C8 /* ASCAccount.swift in Sources */,
 				FCC826FC1F9F4B9700744F68 /* ASCAccountsManager.swift in Sources */,
 				FC059D9A1E8259F100BC2F5E /* Dictionary+Extension.swift in Sources */,
+				FC2B0CC42640524F00969DB9 /* OnlyofficeVersion.swift in Sources */,
 				FCA5B9291E48A2B500CD2EA9 /* ASCDocumentsViewController.swift in Sources */,
 				FC5D0441263FE0E700D9DBCF /* NextcloudDataResult.swift in Sources */,
 				FC65B18021F9AF5300AD5114 /* ASCEntityItemProvider.swift in Sources */,
@@ -2101,9 +2159,11 @@
 				FCEF9D371ED2D23400627BA5 /* ASCPasscodeLockPresenter.swift in Sources */,
 				FC28F2C11E8CF4B900A8F985 /* UIColor+Extension.swift in Sources */,
 				FC066B16252DC3CE007357F7 /* ASCiCloudProvider.swift in Sources */,
+				FC2B0CBD264031BE00969DB9 /* KingfisherWrapper+Onlyoffice.swift in Sources */,
 				FCC38BD422D37A2A00F500C3 /* UISplitViewController+Extensions.swift in Sources */,
 				FC67072C252DC4A600DFD268 /* ObservableChainingProxy.swift in Sources */,
 				FCA6946B2057ED9900ED8D8E /* Data+Extension.swift in Sources */,
+				FC2B0CC8264146C100969DB9 /* OnlyofficeAuthRequest.swift in Sources */,
 				FCDA61001EA0ED6800A12E16 /* ASCTransferNavigationController.swift in Sources */,
 				FCADF37A1EC9DA9A001CA4A9 /* NSLayoutConstraint+Extensions.swift in Sources */,
 				FC1755971E9CAFDB00D73D8E /* ASCSortViewController.swift in Sources */,
@@ -2116,6 +2176,7 @@
 				FC5D0411263BE43A00D9DBCF /* NetworkingServerError.swift in Sources */,
 				FC08F8751ECB399900988DDE /* ASCConnectStorageOAuth2ViewController.swift in Sources */,
 				FCF69496263025BF00808644 /* ASCBaseTableViewController.swift in Sources */,
+				FC2B0CCF2642C6F400969DB9 /* NextcloudServerError.swift in Sources */,
 				FC41D7FD2265B72E00A155C2 /* UIStoryboard+Extensions.swift in Sources */,
 				FCEF9D1F1ED2C94300627BA5 /* EnterPasscodeState.swift in Sources */,
 				FC3AF6BD21709259004A96FD /* ASCFileManager.swift in Sources */,
@@ -2126,6 +2187,7 @@
 				FCD04FCA1E7FDECF008641CD /* UIAlertController+SwiftAlertController.swift in Sources */,
 				FCEA68232264733A0055926A /* ASC2FAPageController.swift in Sources */,
 				FCF3AA8B1EF91A1B00DF63BA /* ASCTransferViewCell.swift in Sources */,
+				FC2B0CBB2640305700969DB9 /* OnlyofficeApiClient.swift in Sources */,
 				FC5D043C263C438400D9DBCF /* NextcloudEndpoints.swift in Sources */,
 				FCAE8B8B1E71676B004FC332 /* ASCFile.swift in Sources */,
 				FC7CF5171EF3EFF300C0A64F /* HTMLString.swift in Sources */,
@@ -2165,7 +2227,7 @@
 				FCF6963C2637143E00808644 /* ASCIntroPage.swift in Sources */,
 				FCF6721A21771B21004756A0 /* ASCBaseApi.swift in Sources */,
 				FC8A5A8D2565712700D08037 /* ASCDocumentsToolbar.swift in Sources */,
-				FC8A137B22686B5D006D8C6E /* ASCPortalCapabilities.swift in Sources */,
+				FC8A137B22686B5D006D8C6E /* OnlyofficeCapabilities.swift in Sources */,
 				FC8C69831ECC8EA8005B68D7 /* ASCConnectStorageWebDavController.swift in Sources */,
 				FCEF9D221ED2C94300627BA5 /* PasscodeLockPresenter.swift in Sources */,
 				FCA4D5AA1E79728800ADD842 /* ASCEditorManager.swift in Sources */,
@@ -2195,12 +2257,14 @@
 				FCEF9D351ED2D1D600627BA5 /* ASCUserDefaultsPasscodeRepository.swift in Sources */,
 				FC43E70F2195B5FC002AAA32 /* ASCYandexFileProvider.swift in Sources */,
 				E0609CA78B7ADE534424D45E /* ASCFolder.swift in Sources */,
+				FC2B0CC22640518500969DB9 /* OnlyofficeEndpoints.swift in Sources */,
 				FC708EE421B92E94001BBE5B /* UIBarButtonItem+Extensions.swift in Sources */,
 				FC059D9C1E82657F00BC2F5E /* ASCIndexTransform.swift in Sources */,
 				FC707C4325AC5DAF004CB85B /* UILabel+Extension.swift in Sources */,
 				FC5D043F263C444500D9DBCF /* NextcloudStorageStats.swift in Sources */,
 				FC68399A21B808AC00251CEA /* ASCCloudsViewController.swift in Sources */,
 				FCBEA6B6203EEF96000E8695 /* ASCSDWebImageDownloaderOperation.swift in Sources */,
+				FC2B0CCD264158B400969DB9 /* OnlyofficeApplicationType.swift in Sources */,
 				FC3AF6B9217081DB004A96FD /* ASCNextCloudProvider.swift in Sources */,
 				FCEF9D1D1ED2C94300627BA5 /* ChangePasscodeState.swift in Sources */,
 				FC9161DA1EE949420031B6DB /* ASCShareInfo.swift in Sources */,

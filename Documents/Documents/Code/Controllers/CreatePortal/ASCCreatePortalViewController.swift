@@ -429,14 +429,13 @@ class ASCCreatePortalViewController: UIViewController, UITextFieldDelegate {
         let hud = MBProgressHUD.showTopMost()
         hud?.label.text = NSLocalizedString("Logging in", comment: "Caption of the process")
 
-        let parameters: Parameters = [
-            "portal": baseUrl,
-            "provider": "email",
-            "userName": login,
-            "password": password
-        ]
-
-        ASCSignInController.shared.login(by: .email, options: parameters, in: navigationController) { [weak self] success in
+        let authRequest = OnlyofficeAuthRequest()
+        authRequest.provider = .email
+        authRequest.portal = baseUrl
+        authRequest.userName = login
+        authRequest.password = password
+        
+        ASCSignInController.shared.login(by: authRequest, in: navigationController) { [weak self] success in
             if success {
                 hud?.setSuccessState()
                 hud?.hide(animated: true, afterDelay: 2)
@@ -472,7 +471,7 @@ class ASCCreatePortalViewController: UIViewController, UITextFieldDelegate {
         if let nextResponder = textField.superview?.viewWithTag(nextTag) {
             nextResponder.becomeFirstResponder()
         } else {
-            if restorationIdentifier == "createPortalStepOneController" {
+            if restorationIdentifier == StoryboardScene.CreatePortal.createPortalStepOneController.identifier {
                 showNextStep()
             } else {
                 createPortal()

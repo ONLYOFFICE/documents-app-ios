@@ -8,7 +8,7 @@
 
 import Foundation
 import Alamofire
-import Kingfisher
+//import Kingfisher
 
 extension ASCOnlyOfficeApi {
     // Api version
@@ -134,7 +134,7 @@ class ASCOnlyOfficeApi: ASCBaseApi {
     }
     public var expires: Date?
     public var serverVersion: String?
-    public var capabilities: ASCPortalCapabilities?
+    public var capabilities: OnlyofficeCapabilities?
     public var isHttp2: Bool {
         get {
             if let communityServerVersion = ASCOnlyOfficeApi.shared.serverVersion {
@@ -600,44 +600,44 @@ class ASCOnlyOfficeApi: ASCBaseApi {
     }
 }
 
-extension KingfisherWrapper where Base: KFCrossPlatformImageView {
-
-    @discardableResult
-    public func apiSetImage(
-        with resource: Resource?,
-        placeholder: Placeholder? = nil,
-        options: KingfisherOptionsInfo? = nil,
-        progressBlock: DownloadProgressBlock? = nil,
-        completionHandler: ((Swift.Result<RetrieveImageResult, KingfisherError>) -> Void)? = nil) -> DownloadTask?
-    {
-        let modifier = AnyModifier { request in
-            var apiRequest = request
-
-            if ASCOnlyOfficeApi.shared.isHttp2 {
-                apiRequest.setValue("Bearer \(ASCOnlyOfficeApi.shared.token ?? "")", forHTTPHeaderField: "Authorization")
-            } else {
-                apiRequest.setValue(ASCOnlyOfficeApi.shared.token, forHTTPHeaderField: "Authorization")
-            }
-
-            return apiRequest
-        }
-
-        var localOptions = options ?? [.transition(.fade(0.2))]
-
-        // TODO: Hotfix by Linnic. Remove after resolve of conflict between SAAS and Enterprise versions
-        if let baseUrl = ASCOnlyOfficeApi.shared.baseUrl,
-            let resource = resource,
-            URL(string: baseUrl)?.host == resource.downloadURL.host
-        {
-            localOptions.append(.requestModifier(modifier))
-        }
-
-        return setImage(
-            with: resource,
-            placeholder: placeholder,
-            options: localOptions,
-            progressBlock: progressBlock,
-            completionHandler: completionHandler
-        )
-    }
-}
+//extension KingfisherWrapper where Base: KFCrossPlatformImageView {
+//
+//    @discardableResult
+//    public func apiSetImage(
+//        with resource: Resource?,
+//        placeholder: Placeholder? = nil,
+//        options: KingfisherOptionsInfo? = nil,
+//        progressBlock: DownloadProgressBlock? = nil,
+//        completionHandler: ((Swift.Result<RetrieveImageResult, KingfisherError>) -> Void)? = nil) -> DownloadTask?
+//    {
+//        let modifier = AnyModifier { request in
+//            var apiRequest = request
+//
+//            if ASCOnlyOfficeApi.shared.isHttp2 {
+//                apiRequest.setValue("Bearer \(ASCOnlyOfficeApi.shared.token ?? "")", forHTTPHeaderField: "Authorization")
+//            } else {
+//                apiRequest.setValue(ASCOnlyOfficeApi.shared.token, forHTTPHeaderField: "Authorization")
+//            }
+//
+//            return apiRequest
+//        }
+//
+//        var localOptions = options ?? [.transition(.fade(0.2))]
+//
+//        // TODO: Hotfix by Linnic. Remove after resolve of conflict between SAAS and Enterprise versions
+//        if let baseUrl = ASCOnlyOfficeApi.shared.baseUrl,
+//            let resource = resource,
+//            URL(string: baseUrl)?.host == resource.downloadURL.host
+//        {
+//            localOptions.append(.requestModifier(modifier))
+//        }
+//
+//        return setImage(
+//            with: resource,
+//            placeholder: placeholder,
+//            options: localOptions,
+//            progressBlock: progressBlock,
+//            completionHandler: completionHandler
+//        )
+//    }
+//}

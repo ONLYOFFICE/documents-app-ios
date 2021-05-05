@@ -1,5 +1,5 @@
 //
-//  ASCPortalCapabilities.swift
+//  OnlyofficeCapabilities.swift
 //  Documents
 //
 //  Created by Alexander Yuzhin on 18/04/2019.
@@ -9,7 +9,7 @@
 import UIKit
 import ObjectMapper
 
-class ASCPortalCapabilities: Mappable {
+class OnlyofficeCapabilities: Mappable {
     var ldapEnabled: Bool = false
     var ssoLabel: String = ""
     var ssoUrl: String = ""

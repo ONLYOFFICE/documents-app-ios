@@ -1,6 +1,6 @@
 //
 //  NextcloudApiClient.swift
-//  Documents-develop
+//  Documents
 //
 //  Created by Alexander Yuzhin on 30.04.2021.
 //  Copyright © 2021 Ascensio System SIA. All rights reserved.
@@ -90,7 +90,7 @@ class NextcloudApiClient: NetworkingClient {
             do {
                 let json = try JSON(data: data)
                 if let errorString = json["message"].string {
-                    return .apiError(message: NetworkingServerError(rawValue: errorString))
+                    return .apiError(error: NextcloudServerError(rawValue: errorString))
                 }
             } catch (let error) {
                 log.debug(error)

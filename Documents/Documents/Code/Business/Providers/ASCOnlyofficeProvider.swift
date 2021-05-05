@@ -64,6 +64,8 @@ class ASCOnlyofficeProvider: ASCFileProviderProtocol & ASCSortableFileProviderPr
     internal var folder: ASCFolder?
     internal var fetchInfo: [String : Any?]?
     
+    var apiClient: OnlyofficeApiClient?
+    
     init() {
         reset()
         api.baseUrl = nil
@@ -75,6 +77,8 @@ class ASCOnlyofficeProvider: ASCFileProviderProtocol & ASCSortableFileProviderPr
     init(baseUrl: String, token: String) {
         api.baseUrl = baseUrl
         api.token = token
+        
+        apiClient = OnlyofficeApiClient(url: baseUrl, token: token)
     }
 
     func copy() -> ASCFileProviderProtocol {
@@ -145,7 +149,7 @@ class ASCOnlyofficeProvider: ASCFileProviderProtocol & ASCSortableFileProviderPr
             }
 
             if let capabilitiesJson = json["capabilities"] as? [String: Any] {
-                api.capabilities = ASCPortalCapabilities(JSON: capabilitiesJson)
+                api.capabilities = OnlyofficeCapabilities(JSON: capabilitiesJson)
             }
 
             let dateTransform = ASCDateTransform()

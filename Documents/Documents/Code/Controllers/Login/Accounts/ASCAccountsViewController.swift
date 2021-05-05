@@ -177,7 +177,7 @@ class ASCAccountsViewController: ASCBaseViewController {
                 ASCOnlyOfficeApi.shared.baseUrl = nil
                 completion(false, error.localizedDescription)
             } else if let results = results as? [String: Any] {
-                ASCOnlyOfficeApi.shared.capabilities = ASCPortalCapabilities(JSON: results)
+                ASCOnlyOfficeApi.shared.capabilities = OnlyofficeCapabilities(JSON: results)
                 completion(true, nil)
             } else {
                 ASCOnlyOfficeApi.shared.baseUrl = nil

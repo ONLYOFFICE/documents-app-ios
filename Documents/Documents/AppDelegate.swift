@@ -68,9 +68,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
         // Check Update
         configureAppUpdater()
-        
-        // Scroll text fields when keyboard appears
-        configureIQKeyboardManager()
 
         application.unregisterForRemoteNotifications()
         
@@ -268,12 +265,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                                                  showAlertAfterCurrentVersionHasBeenReleasedForDays: 1)
 
         siren.wail()
-    }
-    
-    private func configureIQKeyboardManager() {
-        IQKeyboardManager.shared.keyboardDistanceFromTextField = 124.0
-        IQKeyboardManager.shared.enabledDistanceHandlingClasses.append(ASCPasswordRecoveryViewController.self)
-        IQKeyboardManager.shared.enabledToolbarClasses.append(ASCPasswordRecoveryViewController.self)
     }
 }
 

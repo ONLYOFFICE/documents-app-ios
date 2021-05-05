@@ -655,16 +655,16 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="g1P-fZ-Zfo">
-                                <rect key="frame" x="-111" y="155.5" width="597" height="75.5"/>
+                                <rect key="frame" x="33.5" y="155.5" width="308.5" height="91"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="Password recovery" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bLE-8U-AOX">
-                                        <rect key="frame" x="0.0" y="0.0" width="597" height="20.5"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="308.5" height="20.5"/>
                                         <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Mbh-dU-7po">
-                                        <rect key="frame" x="0.0" y="28.5" width="597" height="47"/>
+                                        <rect key="frame" x="0.0" y="28.5" width="308.5" height="62.5"/>
                                         <string key="text">Пожалуйста, введите адрес электронной почты,
 указанный при регистрации на портале. 
 Инструкции для восстановления пароля будут отправлены на этот адрес электронной почты.</string>
@@ -675,7 +675,7 @@
                                 </subviews>
                             </stackView>
                             <textField opaque="NO" clipsSubviews="YES" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="B73-lW-13R" customClass="SkyFloatingLabelTextField" customModule="SkyFloatingLabelTextField">
-                                <rect key="frame" x="16" y="288" width="343" height="60"/>
+                                <rect key="frame" x="16" y="303.5" width="343" height="60"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="60" id="xZv-ik-oxr"/>
                                 </constraints>
@@ -702,7 +702,7 @@
                                 </connections>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0iu-aX-QhV">
-                                <rect key="frame" x="16" y="412" width="343" height="44"/>
+                                <rect key="frame" x="16" y="427.5" width="343" height="44"/>
                                 <color key="backgroundColor" red="0.75294117650000003" green="0.75294117650000003" blue="0.76078431369999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="44" id="tVm-XD-iSe"/>
@@ -733,12 +733,12 @@
                             <constraint firstItem="g1P-fZ-Zfo" firstAttribute="centerX" secondItem="Zpt-6g-0fj" secondAttribute="centerX" id="FvB-5z-Mst"/>
                             <constraint firstAttribute="trailing" relation="lessThanOrEqual" secondItem="B73-lW-13R" secondAttribute="trailing" constant="16" id="H5S-TX-7Ms"/>
                             <constraint firstItem="0iu-aX-QhV" firstAttribute="top" secondItem="B73-lW-13R" secondAttribute="bottom" constant="64" id="MGy-uc-oli"/>
-                            <constraint firstItem="g1P-fZ-Zfo" firstAttribute="leading" relation="lessThanOrEqual" secondItem="Zpt-6g-0fj" secondAttribute="leading" constant="33" id="aqh-fR-F93"/>
+                            <constraint firstItem="g1P-fZ-Zfo" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="Zpt-6g-0fj" secondAttribute="leading" constant="33" id="aqh-fR-F93"/>
                             <constraint firstAttribute="trailing" secondItem="0iu-aX-QhV" secondAttribute="trailing" constant="16" id="kKa-Z8-E9v"/>
                             <constraint firstItem="B73-lW-13R" firstAttribute="leading" relation="lessThanOrEqual" secondItem="Zpt-6g-0fj" secondAttribute="leading" constant="16" id="koB-TM-eiz"/>
                             <constraint firstItem="g1P-fZ-Zfo" firstAttribute="top" secondItem="GcV-zf-Cts" secondAttribute="bottom" constant="155.5" id="l16-33-QuF"/>
                             <constraint firstItem="0iu-aX-QhV" firstAttribute="leading" secondItem="Zpt-6g-0fj" secondAttribute="leading" constant="16" id="vYA-Sa-53N"/>
-                            <constraint firstAttribute="trailing" relation="lessThanOrEqual" secondItem="g1P-fZ-Zfo" secondAttribute="trailing" constant="33" id="ywG-Tf-T87"/>
+                            <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="g1P-fZ-Zfo" secondAttribute="trailing" constant="33" id="ywG-Tf-T87"/>
                         </constraints>
                     </view>
                     <connections>

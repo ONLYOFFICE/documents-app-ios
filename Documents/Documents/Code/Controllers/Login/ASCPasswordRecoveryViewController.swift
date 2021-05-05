@@ -10,6 +10,7 @@ import UIKit
 import SkyFloatingLabelTextField
 import MBProgressHUD
 import Alamofire
+import IQKeyboardManagerSwift
 
 class ASCPasswordRecoveryViewController: UIViewController, UITextFieldDelegate {
     
@@ -26,6 +27,12 @@ class ASCPasswordRecoveryViewController: UIViewController, UITextFieldDelegate {
         
         sendButton.isUserInteractionEnabled = false
         emailTextField.delegate = self
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        IQKeyboardManager.shared.enable = true
+        IQKeyboardManager.shared.enableAutoToolbar = true
+        IQKeyboardManager.shared.keyboardDistanceFromTextField = 124.0
     }
     
     private func valid(email: String) -> Bool {

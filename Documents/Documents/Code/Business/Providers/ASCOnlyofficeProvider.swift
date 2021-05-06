@@ -12,6 +12,9 @@ import FileKit
 import Firebase
 
 class ASCOnlyofficeProvider: ASCFileProviderProtocol & ASCSortableFileProviderProtocol {
+    
+    var category: ASCCategory?
+    
     var id: String? {
         get {
             if
@@ -828,6 +831,14 @@ class ASCOnlyofficeProvider: ASCFileProviderProtocol & ASCSortableFileProviderPr
             if isRoot(folder: folder) && folder.rootFolderType == .onlyofficeTrash {
                 return false
             }
+            
+            if isRoot(folder: folder) && folder.rootFolderType == .onlyofficeFavorites {
+                return false
+            }
+            
+            if isRoot(folder: folder) && folder.rootFolderType == .onlyofficeRecent {
+                return false
+            }
 
             if isRoot(folder: folder) && (folder.rootFolderType == .onlyofficeProjects || folder.rootFolderType == .onlyofficeBunch) {
                 return false
@@ -888,6 +899,14 @@ class ASCOnlyofficeProvider: ASCFileProviderProtocol & ASCSortableFileProviderPr
             return false
         }
 
+        if category?.folder?.rootFolderType == .onlyofficeFavorites {
+            return false
+        }
+        
+        if category?.folder?.rootFolderType == .onlyofficeRecent {
+            return false
+        }
+        
         let isProjectRoot = isRoot(folder: parentFolder) && (parentFolder?.rootFolderType == .onlyofficeBunch || parentFolder?.rootFolderType == .onlyofficeProjects)
 
         return (access == ASCEntityAccess.none
@@ -956,6 +975,9 @@ class ASCOnlyofficeProvider: ASCFileProviderProtocol & ASCSortableFileProviderPr
                 ASCConstants.FileExtensions.presentations.contains(fileExtension) ||
                 ASCConstants.FileExtensions.images.contains(fileExtension) ||
                 fileExtension == "pdf"
+            
+            let isFavoriteCategory = category?.folder?.rootFolderType == .onlyofficeFavorites
+            let isRecentCategory   = category?.folder?.rootFolderType == .onlyofficeRecent
 
             if isTrash {
                 return [.delete, .restore]
@@ -991,7 +1013,7 @@ class ASCOnlyofficeProvider: ASCFileProviderProtocol & ASCSortableFileProviderPr
                 entityActions.insert(.share)
             }
 
-            if canEdit && !isShared && !(file.parent?.isThirdParty ?? false) {
+            if canEdit && !isShared && !isFavoriteCategory && !isRecentCategory && !(file.parent?.isThirdParty ?? false) {
                 entityActions.insert(.duplicate)
             }
 

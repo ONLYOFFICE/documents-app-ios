@@ -15,6 +15,7 @@ enum ASCTextStyle {
     
     case bodyFontWhite
     case subheadFontWhite
+    case subheadBold
 
     // MARK: - signature
     
@@ -30,6 +31,13 @@ enum ASCTextStyle {
             
         case .subheadFontWhite:
             return (UIFont.preferredFont(forTextStyle: .subheadline), .white, 1)
+            
+        case .subheadBold:
+            if #available(iOS 13.0, *) {
+                return (UIFont.preferredFont(forTextStyle: .subheadline).bold(), .label, 1)
+            } else {
+                return (UIFont.preferredFont(forTextStyle: .subheadline).bold(), .black, 1)
+            }
             
         // MARK: - signature
         

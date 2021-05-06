@@ -161,10 +161,7 @@ class ASCSignInViewController: ASCBaseViewController {
             return false
         }
         
-        let emailRegEx = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,}"
-        let emailTest = NSPredicate(format:"SELF MATCHES %@", emailRegEx)
-        
-        if !emailTest.evaluate(with: email) {
+        if !email.isValidOnlyofficeEmail {
             emailField?.errorMessage = NSLocalizedString("Email is not valid", comment: "")
             emailField?.shake()
             return false
@@ -186,17 +183,20 @@ class ASCSignInViewController: ASCBaseViewController {
     // MARK: - Actions
     
     @IBAction func onForgotPassword(_ sender: Any) {
-        if var portal = portal {
-            if !portal.matches(pattern: "^https?://") {
-                portal = "https://\(portal)"
-            }
-            
-            if let portalUrl = URL(string: String(format: ASCConstants.Urls.apiForgetPassword, portal)),
-                UIApplication.shared.canOpenURL(portalUrl)
-            {
-                UIApplication.shared.open(portalUrl, options: [:], completionHandler: nil)
-            }
-        }
+        let storyBoard: UIStoryboard = UIStoryboard(name: "Login", bundle: nil)
+        let recoverPassVC = storyBoard.instantiateViewController(withIdentifier: "ASCPasswordRecoveryViewController") as! ASCPasswordRecoveryViewController
+        navigationController?.pushViewController(recoverPassVC, animated: true)
+//                if var portal = portal {
+//                    if !portal.matches(pattern: "^https?://") {
+//                        portal = "https://\(portal)"
+//                    }
+//
+//                    if let portalUrl = URL(string: String(format: ASCConstants.Urls.apiForgetPassword, portal)),
+//                        UIApplication.shared.canOpenURL(portalUrl)
+//                    {
+//                        UIApplication.shared.open(portalUrl, options: [:], completionHandler: nil)
+//                    }
+//                }
     }
     
     @IBAction func onEmailLogin(_ sender: Any) {

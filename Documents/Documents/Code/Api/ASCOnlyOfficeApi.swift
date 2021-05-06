@@ -54,6 +54,7 @@ extension ASCOnlyOfficeApi {
     static public let apiFilesFavorite          = "api/\(version)/files/favorites"
     static public let apiUsers                  = "api/\(version)/people"
     static public let apiGroups                 = "api/\(version)/group"
+    static public let apiForgotPassword         = "api/\(version)/people/password"
 }
 
 enum ASCOnlyOfficeError: String {

@@ -63,7 +63,7 @@ extension ASCOneDriveProvider: ASCFileProviderProtocol {
             return {
                 $0.title = NSLocalizedString("OneDrive", comment: "")
                 $0.rootFolderType = .onedriveAll
-                $0.id = "/"
+                $0.id = ""
                 return $0
             }(ASCFolder())
         }
@@ -83,7 +83,7 @@ extension ASCOneDriveProvider: ASCFileProviderProtocol {
 
     
     func copy() -> ASCFileProviderProtocol {
-        let copy = ASCDropboxProvider()
+        let copy = ASCOneDriveProvider()
         
         copy.items = items
         copy.page = page
@@ -96,11 +96,135 @@ extension ASCOneDriveProvider: ASCFileProviderProtocol {
     }
     
     func reset() {
-        
+        cancel()
+
+        page = 0
+        total = 0
+        items.removeAll()
     }
     
     func fetch(for folder: ASCFolder, parameters: [String : Any?], completeon: ASCProviderCompletionHandler?) {
+        guard let provider = provider else {
+            completeon?(self, folder, false, nil)
+            return
+        }
+
+        self.folder = folder
         
+        let fetch: ((_ completeon: ASCProviderCompletionHandler?) -> Void) = { [weak self] completeon in
+
+            ASCBaseApi.clearCookies(for: provider.baseURL)
+
+            provider.contentsOfDirectory(path: folder.id)
+            { [weak self] objects, error in
+                DispatchQueue.main.async(execute: { [weak self] in
+                    guard let strongSelf = self else { return }
+
+                    if let error = error {
+                        completeon?(strongSelf, folder, false, error)
+                        return
+                    }
+
+                    if strongSelf.page == 0 {
+                        strongSelf.items.removeAll()
+                    }
+
+                    var files: [ASCFile] = []
+                    var folders: [ASCFolder] = []
+
+                    folders = objects
+                        .filter { $0.isDirectory && !$0.isSymLink && !$0.isHidden }
+                        .map {
+                            let cloudFolder = ASCFolder()
+                            if let oneDriveItem = $0 as? OneDriveFileObject, let id = oneDriveItem.id {
+                                cloudFolder.id = "id:\(id)"
+                            } else {
+                                cloudFolder.id = $0.path
+                            }
+                            cloudFolder.rootFolderType = .onedriveAll
+                            cloudFolder.title = $0.name
+                            cloudFolder.created = $0.creationDate ?? $0.modifiedDate
+                            cloudFolder.updated = $0.modifiedDate
+                            cloudFolder.createdBy = strongSelf.user
+                            cloudFolder.updatedBy = strongSelf.user
+                            cloudFolder.parent = folder
+                            cloudFolder.parentId = folder.id
+
+                            return cloudFolder
+                    }
+
+                    files = objects
+                        .filter { !$0.isDirectory && !$0.isSymLink && !$0.isHidden }
+                        .map {
+                            let fileSize: UInt64 = ($0.size < 0) ? 0 : UInt64($0.size)
+                            let cloudFile = ASCFile()
+                            cloudFile.id = $0.path
+                            cloudFile.rootFolderType = .dropboxAll
+                            cloudFile.title = $0.name
+                            cloudFile.created = $0.creationDate ?? $0.modifiedDate
+                            cloudFile.updated = $0.modifiedDate
+                            cloudFile.createdBy = strongSelf.user
+                            cloudFile.updatedBy = strongSelf.user
+                            cloudFile.parent = folder
+                            cloudFile.viewUrl = $0.path
+                            cloudFile.displayContentLength = String.fileSizeToString(with: fileSize)
+                            cloudFile.pureContentLength = Int(fileSize)
+
+                            return cloudFile
+                    }
+
+                    let mediaFiles = files.filter { file in
+                        let fileExt = file.title.fileExtension().lowercased()
+                        return ASCConstants.FileExtensions.images.contains(fileExt) || ASCConstants.FileExtensions.videos.contains(fileExt)
+                    }
+                    
+                    if mediaFiles.count > 0 {
+                        let getLinkQueue = OperationQueue()
+                        
+                        for file in mediaFiles {
+                            getLinkQueue.addOperation {
+                                let semaphore = DispatchSemaphore(value: 0)
+
+                                provider.publicLink(to: file.id) { link, fileObj, expiration, error in
+                                    if let viewUrl = link?.absoluteString {
+                                        files.first(where: { $0.id == file.id })?.viewUrl = viewUrl
+                                    }
+                                    semaphore.signal()
+                                }
+                                semaphore.wait()
+                            }
+                        }
+                        
+                        getLinkQueue.waitUntilAllOperationsAreFinished()
+                    }
+                    
+                    // Sort
+                    strongSelf.fetchInfo = parameters
+                    
+                    if let sortInfo = parameters["sort"] as? [String: Any] {
+                        self?.sort(by: sortInfo, folders: &folders, files: &files)
+                    }
+
+                    strongSelf.items = folders as [ASCEntity] + files as [ASCEntity]
+                    strongSelf.total = strongSelf.items.count
+
+                    completeon?(strongSelf, folder, true, nil)
+                })
+            }
+        }
+
+        if let _ = user {
+            fetch(completeon)
+        } else {
+            userInfo { [weak self] success, error in
+                if success {
+                    fetch(completeon)
+                } else {
+                    guard let strongSelf = self else { return }
+                    completeon?(strongSelf, folder, false, error)
+                }
+            }
+        }
     }
     
     func add(item: ASCEntity, at index: Int) {
@@ -132,7 +256,10 @@ extension ASCOneDriveProvider: ASCFileProviderProtocol {
         })
     }
     
-    func cancel() {}
+    func cancel() {
+        api?.cancelAllTasks()
+    }
+    
     func updateSort(completeon: ASCProviderCompletionHandler?) {}
     
     func serialize() -> String? {
@@ -197,6 +324,7 @@ extension ASCOneDriveProvider: ASCFileProviderProtocol {
             }
         })
     }
+    
     func absoluteUrl(from string: String?) -> URL? { return URL(string: string ?? "") }
     func errorMessage(by errorObject: Any) -> String  { return "" }
     func handleNetworkError(_ error: Error?) -> Bool { return false }

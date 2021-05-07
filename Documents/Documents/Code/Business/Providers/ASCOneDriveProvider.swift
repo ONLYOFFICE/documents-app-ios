@@ -26,6 +26,12 @@ class ASCOneDriveProvider {
 
     private var provider: OneDriveFileProvider?
     
+    fileprivate var operationHendlers: [(
+        uid: String,
+        provider: FileProviderBasic,
+        progress: Progress,
+        delegate: FileProviderDelegate)] = []
+    
     init() {
         provider = nil
         api = nil
@@ -158,15 +164,20 @@ extension ASCOneDriveProvider: ASCFileProviderProtocol {
                         .map {
                             let fileSize: UInt64 = ($0.size < 0) ? 0 : UInt64($0.size)
                             let cloudFile = ASCFile()
-                            cloudFile.id = $0.path
-                            cloudFile.rootFolderType = .dropboxAll
+                            if let oneDriveItem = $0 as? OneDriveFileObject, let id = oneDriveItem.id {
+                                cloudFile.id = id
+                                cloudFile.viewUrl = "id:\(id)"
+                            } else {
+                                cloudFile.id = $0.path
+                                cloudFile.viewUrl = $0.path
+                            }
+                            cloudFile.rootFolderType = .onedriveAll
                             cloudFile.title = $0.name
                             cloudFile.created = $0.creationDate ?? $0.modifiedDate
                             cloudFile.updated = $0.modifiedDate
                             cloudFile.createdBy = strongSelf.user
                             cloudFile.updatedBy = strongSelf.user
                             cloudFile.parent = folder
-                            cloudFile.viewUrl = $0.path
                             cloudFile.displayContentLength = String.fileSizeToString(with: fileSize)
                             cloudFile.pureContentLength = Int(fileSize)
 
@@ -330,7 +341,77 @@ extension ASCOneDriveProvider: ASCFileProviderProtocol {
     func handleNetworkError(_ error: Error?) -> Bool { return false }
     func modifyImageDownloader(request: URLRequest) -> URLRequest { return request }
     func modify(_ path: String, data: Data, params: [String: Any]?, processing: @escaping ASCApiProgressHandler) {}
-    func download(_ path: String, to: URL, processing: @escaping ASCApiProgressHandler) {}
+    
+    func download(_ path: String, to destinationURL: URL, processing: @escaping ASCApiProgressHandler) {
+        guard let provider = provider as? ASCOneDriveFileProvider else {
+            processing(0, nil, nil, nil)
+            return
+        }
+
+        var downloadProgress: Progress?
+        
+        if let localProvider = provider.copy() as? OneDriveFileProvider {
+            let handlerUid = UUID().uuidString
+            let operationDelegate = ASCOneDriveProviderDelegate()
+            let cleanupHendler: (String) -> Void = { [weak self] uid in
+                if let processIndex = self?.operationHendlers.firstIndex(where: { $0.uid == uid }) {
+                    self?.operationHendlers.remove(at: processIndex)
+                }
+            }
+            
+            operationDelegate.onSucceed = { fileProvider, operation in
+                DispatchQueue.main.async {
+                    processing(1.0, destinationURL, nil, nil)
+                }
+                cleanupHendler(handlerUid)
+            }
+            operationDelegate.onFailed = { fileProvider, operation, error in
+                DispatchQueue.main.async {
+                    processing(1.0, nil, error, nil)
+                }
+                cleanupHendler(handlerUid)
+            }
+            operationDelegate.onProgress = { fileProvider, operation, progress in
+                DispatchQueue.main.async {
+                    processing(Double(progress), nil, nil, nil)
+                }
+            }
+            
+            localProvider.delegate = operationDelegate
+            
+            do {
+                if FileManager.default.fileExists(atPath: destinationURL.path) {
+                    try FileManager.default.removeItem(at: destinationURL)
+                }
+            } catch {
+                log.error(error)
+                processing(1.0, nil, error, nil)
+                return
+            }
+            
+            downloadProgress = localProvider.copyItem(path: path, toLocalURL: destinationURL, completionHandler: { error in
+                if let error = error {
+                    log.error(error.localizedDescription)
+                    
+                    DispatchQueue.main.async {
+                        processing(1.0, nil, error, nil)
+                    }
+                    cleanupHendler(handlerUid)
+                }
+            })
+            
+            if let localProgress = downloadProgress {
+                operationHendlers.append((
+                    uid: handlerUid,
+                    provider: localProvider,
+                    progress: localProgress,
+                    delegate: operationDelegate))
+            }
+        } else {
+            processing(0, nil, nil, nil)
+        }
+    }
+    
     func upload(_ path: String, data: Data, overwrite: Bool, params: [String: Any]?, processing: @escaping ASCApiProgressHandler) {}
     func rename(_ entity: ASCEntity, to newName: String, completeon: ASCProviderCompletionHandler?) {}
     func favorite(_ entity: ASCEntity, favorite: Bool, completeon: ASCProviderCompletionHandler?) {}
@@ -342,12 +423,45 @@ extension ASCOneDriveProvider: ASCFileProviderProtocol {
     func chechTransfer(items: [ASCEntity], to folder: ASCFolder, handler: ASCEntityHandler?) { handler?(.end, nil, nil) }
     func transfer(items: [ASCEntity], to folder: ASCFolder, move: Bool, overwrite: Bool, handler: ASCEntityProgressHandler?) { var cancel = false; handler?(.end, 1, nil, nil, &cancel) }
 
-    func allowRead(entity: AnyObject?) -> Bool { return false }
+    func allowRead(entity: AnyObject?) -> Bool { return true }
     func allowEdit(entity: AnyObject?) -> Bool { return false }
     func allowDelete(entity: AnyObject?) -> Bool { return false }
     func actions(for entity: ASCEntity?) -> ASCEntityActions { return [] }
-    func open(file: ASCFile, viewMode: Bool = false) {}
-    func preview(file: ASCFile, files: [ASCFile]? = nil, in view: UIView? = nil) {}
+    
+    func open(file: ASCFile, viewMode: Bool = false) {
+        let title           = file.title
+        let fileExt         = title.fileExtension().lowercased()
+        let allowOpen       = ASCConstants.FileExtensions.allowEdit.contains(fileExt)
+
+        if allowOpen {
+            let editMode = !viewMode && UIDevice.allowEditor
+            let openHandler = delegate?.openProgressFile(title: NSLocalizedString("Processing", comment: "Caption of the processing") + "...", 0)
+            let closeHandler = delegate?.closeProgressFile(title: NSLocalizedString("Saving", comment: "Caption of the processing"))
+
+            ASCEditorManager.shared.editFileLocally(for: self, file, viewMode: !editMode, handler: openHandler, closeHandler: closeHandler)
+        }
+    }
+    
+    func preview(file: ASCFile, files: [ASCFile]? = nil, in view: UIView? = nil) {
+        let title           = file.title
+        let fileExt         = title.fileExtension().lowercased()
+        let isPdf           = fileExt == "pdf"
+        let isImage         = ASCConstants.FileExtensions.images.contains(fileExt)
+        let isVideo         = ASCConstants.FileExtensions.videos.contains(fileExt)
+
+        if isPdf {
+            let openHandler = delegate?.openProgressFile(title: NSLocalizedString("Downloading", comment: "Caption of the processing") + "...", 0.15)
+            ASCEditorManager.shared.browsePdfCloud(for: self, file, handler: openHandler)
+        } else if isImage || isVideo {
+            file.viewUrl = provider?.url(of: file.viewUrl ?? "", modifier: "content").absoluteString ?? file.viewUrl
+            ASCEditorManager.shared.browseMedia(for: self, file, files: files)
+        } else {
+            if let view = view {
+                let openHandler = delegate?.openProgressFile(title: NSLocalizedString("Downloading", comment: "Caption of the processing") + "...", 0.15)
+                ASCEditorManager.shared.browseUnknownCloud(for: self, file, inView: view, handler: openHandler)
+            }
+        }
+    }
     
 }
 
@@ -376,7 +490,12 @@ extension ASCOneDriveProvider: ASCSortableFileProviderProtocol {
 
 // MARK: - FileProviderDelegate
 
-extension ASCOneDriveProvider: FileProviderDelegate {
+class ASCOneDriveProviderDelegate: FileProviderDelegate {
+    // MARK: - FileProviderDelegate variables
+    var onSucceed:((_ fileProvider: FileProviderOperations, _ operation: FileOperationType) -> Void)?
+    var onFailed:((_ fileProvider: FileProviderOperations, _ operation: FileOperationType, _ error: Error) -> Void)?
+    var onProgress:((_ fileProvider: FileProviderOperations, _ operation: FileOperationType, _ progress: Float) -> Void)?
+  
 
     func fileproviderSucceed(_ fileProvider: FileProviderOperations, operation: FileOperationType) {
         log.info("\(String(describing: fileProvider)): \(operation) - Success")

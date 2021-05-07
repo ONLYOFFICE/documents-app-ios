@@ -10,6 +10,20 @@ import Foundation
 import FilesProvider
 
 class ASCOneDriveFileProvider: OneDriveFileProvider {
+    
+    open override func copy(with zone: NSZone? = nil) -> Any {
+        var serverURL = self.baseURL
+        if serverURL?.lastPathComponent == OneDriveFileProvider.graphVersion {
+            serverURL?.deleteLastPathComponent()
+        }
+        let copy = OneDriveFileProvider(credential: self.credential, serverURL: serverURL, route: self.route, cache: self.cache)
+        copy.delegate = self.delegate
+        copy.fileOperationDelegate = self.fileOperationDelegate
+        copy.useCache = self.useCache
+        copy.validatingCache = self.validatingCache
+        return copy
+    }
+    
     open override func isReachable(completionHandler: @escaping (_ success: Bool, _ error: Error?) -> Void) {
         var request = URLRequest(url: url(of: ""))
         request.httpMethod = "Get"

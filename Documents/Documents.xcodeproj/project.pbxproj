@@ -1804,6 +1804,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = FC36D35025B5C32200412DDB /* Build configuration list for PBXNativeTarget "Documents-Alpha" */;
 			buildPhases = (
+				FC1CA5A226451F61001CC5CA /* Check dependencies and try checkout */,
 				FC36D26F25B5C32200412DDB /* [CP] Check Pods Manifest.lock */,
 				FCCB1945262ACA06007517BB /* SwiftGen */,
 				FC36D27025B5C32200412DDB /* Sources */,
@@ -1847,6 +1848,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = FCFDAA9F1E48A10C007A240C /* Build configuration list for PBXNativeTarget "Documents" */;
 			buildPhases = (
+				FC1CA5A326452823001CC5CA /* Check dependencies and try checkout */,
 				EA743117C604D6C921D4BCD0 /* [CP] Check Pods Manifest.lock */,
 				FCE1861D2628C51F0086D21B /* SwiftGen */,
 				FCFDAA891E48A10C007A240C /* Sources */,
@@ -2225,6 +2227,44 @@
 			shellScript = "ADDITIONAL_FILES=(\n    \"${PROJECT_DIR}/Documents/GoogleService-Info.plist\"\n    \"${PROJECT_DIR}/Documents/Internal.plist\"\n)\n\nfor file_path in ${ADDITIONAL_FILES[@]}; do\n    if [ -f \"${file_path}\" ]; then\n        rsync --delete -av \"${file_path}\" \"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}\"\n    fi\ndone\n";
 			showEnvVarsInLog = 0;
 		};
+		FC1CA5A226451F61001CC5CA /* Check dependencies and try checkout */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = "Check dependencies and try checkout";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\nROOT_DIR=${PROJECT_DIR}/../..\n\necho\necho \"========================================\"\necho \"Check dependencies and try checkout\"\necho \"========================================\"\n\nCHECK_REPOS_NAMES=(\n    \"core-ext\"\n    \"editors-ios\"\n    \"document-templates\"\n)\n\nfor repo_name in ${CHECK_REPOS_NAMES[@]}; do\n    repo_path=${ROOT_DIR}/${repo_name}\n    if [[ ! -d ${repo_path} ]]; then\n        echo \"WARNING: The repository ${repo_name} is not exist\"\n        git clone https://github.com/ONLYOFFICE/${repo_name}.git ${ROOT_DIR}/${repo_name}\n    else\n        echo \"OK: ${repo_path} exist\"\n    fi\ndone\n\necho \"Done\"\n";
+			showEnvVarsInLog = 0;
+		};
+		FC1CA5A326452823001CC5CA /* Check dependencies and try checkout */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = "Check dependencies and try checkout";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\nROOT_DIR=${PROJECT_DIR}/../..\n\necho\necho \"========================================\"\necho \"Check dependencies and try checkout\"\necho \"========================================\"\n\nCHECK_REPOS_NAMES=(\n    \"core-ext\"\n    \"editors-ios\"\n    \"document-templates\"\n)\n\nfor repo_name in ${CHECK_REPOS_NAMES[@]}; do\n    repo_path=${ROOT_DIR}/${repo_name}\n    if [[ ! -d ${repo_path} ]]; then\n        echo \"WARNING: The repository ${repo_name} is not exist\"\n        git clone https://github.com/ONLYOFFICE/${repo_name}.git ${ROOT_DIR}/${repo_name}\n    else\n        echo \"OK: ${repo_path} exist\"\n    fi\ndone\n\necho \"Done\"\n";
+			showEnvVarsInLog = 0;
+		};
 		FC36D26F25B5C32200412DDB /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -2485,6 +2525,7 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "if [[ -f \"${PODS_ROOT}/SwiftGen/bin/swiftgen\" ]]; then\n  \"${PODS_ROOT}/SwiftGen/bin/swiftgen\"\nelse\n  echo \"warning: SwiftGen is not installed. Run 'pod install --repo-update' to install it.\"\nfi\n";
+			showEnvVarsInLog = 0;
 		};
 		FCE1861D2628C51F0086D21B /* SwiftGen */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -2503,6 +2544,7 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "if [[ -f \"${PODS_ROOT}/SwiftGen/bin/swiftgen\" ]]; then\n  \"${PODS_ROOT}/SwiftGen/bin/swiftgen\"\nelse\n  echo \"warning: SwiftGen is not installed. Run 'pod install --repo-update' to install it.\"\nfi\n";
+			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
 

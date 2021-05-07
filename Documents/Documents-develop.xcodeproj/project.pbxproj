@@ -56,6 +56,10 @@
 		FC12ACF22567CF5E00FF1CBB /* ASCAnalytics.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC12ACF12567CF5E00FF1CBB /* ASCAnalytics.swift */; };
 		FC1755971E9CAFDB00D73D8E /* ASCSortViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC1755961E9CAFDB00D73D8E /* ASCSortViewController.swift */; };
 		FC1AD6142175FE7000DADEE0 /* ASCNetworkReachability.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC1AD6132175FE7000DADEE0 /* ASCNetworkReachability.swift */; };
+		FC1CA5B6264529E1001CC5CA /* ASCOnlyofficeAppBasedCategoriesProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC1CA5B0264529E1001CC5CA /* ASCOnlyofficeAppBasedCategoriesProvider.swift */; };
+		FC1CA5B7264529E1001CC5CA /* ASCOnlyofficeAPICategoriesProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC1CA5B1264529E1001CC5CA /* ASCOnlyofficeAPICategoriesProvider.swift */; };
+		FC1CA5B8264529E1001CC5CA /* ASCOnlyofficeCategoriesProviderProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC1CA5B3264529E1001CC5CA /* ASCOnlyofficeCategoriesProviderProtocol.swift */; };
+		FC1CA5B9264529E1001CC5CA /* ASCOnlyofficeCategoriesProviderFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC1CA5B5264529E1001CC5CA /* ASCOnlyofficeCategoriesProviderFactory.swift */; };
 		FC1EA5CB1ECECBC3008FEE2E /* ASCBaseNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC1EA5CA1ECECBC3008FEE2E /* ASCBaseNavigationController.swift */; };
 		FC1EA5CD1ECED0A0008FEE2E /* ASCBaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC1EA5CC1ECED0A0008FEE2E /* ASCBaseViewController.swift */; };
 		FC1EA5D21ECF2A6D008FEE2E /* ASCSettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC1EA5D11ECF2A6D008FEE2E /* ASCSettingsViewController.swift */; };
@@ -407,6 +411,10 @@
 		FC12ACF12567CF5E00FF1CBB /* ASCAnalytics.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCAnalytics.swift; sourceTree = "<group>"; };
 		FC1755961E9CAFDB00D73D8E /* ASCSortViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASCSortViewController.swift; sourceTree = "<group>"; };
 		FC1AD6132175FE7000DADEE0 /* ASCNetworkReachability.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCNetworkReachability.swift; sourceTree = "<group>"; };
+		FC1CA5B0264529E1001CC5CA /* ASCOnlyofficeAppBasedCategoriesProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASCOnlyofficeAppBasedCategoriesProvider.swift; sourceTree = "<group>"; };
+		FC1CA5B1264529E1001CC5CA /* ASCOnlyofficeAPICategoriesProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASCOnlyofficeAPICategoriesProvider.swift; sourceTree = "<group>"; };
+		FC1CA5B3264529E1001CC5CA /* ASCOnlyofficeCategoriesProviderProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASCOnlyofficeCategoriesProviderProtocol.swift; sourceTree = "<group>"; };
+		FC1CA5B5264529E1001CC5CA /* ASCOnlyofficeCategoriesProviderFactory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASCOnlyofficeCategoriesProviderFactory.swift; sourceTree = "<group>"; };
 		FC1EA5CA1ECECBC3008FEE2E /* ASCBaseNavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASCBaseNavigationController.swift; sourceTree = "<group>"; };
 		FC1EA5CC1ECED0A0008FEE2E /* ASCBaseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASCBaseViewController.swift; sourceTree = "<group>"; };
 		FC1EA5D11ECF2A6D008FEE2E /* ASCSettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASCSettingsViewController.swift; sourceTree = "<group>"; };
@@ -801,6 +809,7 @@
 		FC0F01DD216F43FF008D79A5 /* Providers */ = {
 			isa = PBXGroup;
 			children = (
+				FC1CA5AF264529E1001CC5CA /* OnlyofficeCategories */,
 				FC53690F24EB21040092765B /* ASCProviderError.swift */,
 				FC6A691025C83C1D007F1FD6 /* ASCFileProviderProtocol.swift */,
 				FC0F01DE216F443E008D79A5 /* ASCLocalProvider.swift */,
@@ -823,6 +832,33 @@
 				FC1755961E9CAFDB00D73D8E /* ASCSortViewController.swift */,
 			);
 			path = Sort;
+			sourceTree = "<group>";
+		};
+		FC1CA5AF264529E1001CC5CA /* OnlyofficeCategories */ = {
+			isa = PBXGroup;
+			children = (
+				FC1CA5B0264529E1001CC5CA /* ASCOnlyofficeAppBasedCategoriesProvider.swift */,
+				FC1CA5B1264529E1001CC5CA /* ASCOnlyofficeAPICategoriesProvider.swift */,
+				FC1CA5B2264529E1001CC5CA /* Protocols */,
+				FC1CA5B4264529E1001CC5CA /* Factory */,
+			);
+			path = OnlyofficeCategories;
+			sourceTree = "<group>";
+		};
+		FC1CA5B2264529E1001CC5CA /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				FC1CA5B3264529E1001CC5CA /* ASCOnlyofficeCategoriesProviderProtocol.swift */,
+			);
+			path = Protocols;
+			sourceTree = "<group>";
+		};
+		FC1CA5B4264529E1001CC5CA /* Factory */ = {
+			isa = PBXGroup;
+			children = (
+				FC1CA5B5264529E1001CC5CA /* ASCOnlyofficeCategoriesProviderFactory.swift */,
+			);
+			path = Factory;
 			sourceTree = "<group>";
 		};
 		FC1EA5C91ECECB77008FEE2E /* Common */ = {
@@ -1582,6 +1618,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = FCFDAA9F1E48A10C007A240C /* Build configuration list for PBXNativeTarget "Documents-develop" */;
 			buildPhases = (
+				FC1CA5AE2645294F001CC5CA /* Check dependencies and try checkout */,
 				69263A1271D24203D49EDD81 /* [CP] Check Pods Manifest.lock */,
 				FCCB1946262ACA20007517BB /* SwiftGen */,
 				FCFDAA891E48A10C007A240C /* Sources */,
@@ -1925,6 +1962,25 @@
 			shellPath = /bin/sh;
 			shellScript = "ADDITIONAL_FILES=(\n    \"${PROJECT_DIR}/Documents/GoogleService-Info.plist\"\n    \"${PROJECT_DIR}/Documents/Internal.plist\"\n)\n\nfor file_path in ${ADDITIONAL_FILES[@]}; do\n    if [ -f \"${file_path}\" ]; then\n        rsync --delete -av \"${file_path}\" \"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}\"\n    fi\ndone\n";
 		};
+		FC1CA5AE2645294F001CC5CA /* Check dependencies and try checkout */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = "Check dependencies and try checkout";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\nROOT_DIR=${PROJECT_DIR}/../..\n\necho\necho \"========================================\"\necho \"Check dependencies and try checkout\"\necho \"========================================\"\n\nCHECK_REPOS_NAMES=(\n    \"core-ext\"\n    \"editors-ios\"\n    \"document-templates\"\n)\n\nfor repo_name in ${CHECK_REPOS_NAMES[@]}; do\n    repo_path=${ROOT_DIR}/${repo_name}\n    if [[ ! -d ${repo_path} ]]; then\n        echo \"WARNING: The repository ${repo_name} is not exist\"\n        git clone https://github.com/ONLYOFFICE/${repo_name}.git ${ROOT_DIR}/${repo_name}\n    else\n        echo \"OK: ${repo_path} exist\"\n    fi\ndone\n\necho \"Done\"\n\n";
+			showEnvVarsInLog = 0;
+		};
 		FC7DA57E1EF2962A0011092A /* Upload symbols to Firebase Crashlytics */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -2059,6 +2115,7 @@
 				FCC38BD422D37A2A00F500C3 /* UISplitViewController+Extensions.swift in Sources */,
 				FC67072C252DC4A600DFD268 /* ObservableChainingProxy.swift in Sources */,
 				FCA6946B2057ED9900ED8D8E /* Data+Extension.swift in Sources */,
+				FC1CA5B9264529E1001CC5CA /* ASCOnlyofficeCategoriesProviderFactory.swift in Sources */,
 				FCDA61001EA0ED6800A12E16 /* ASCTransferNavigationController.swift in Sources */,
 				FCADF37A1EC9DA9A001CA4A9 /* NSLayoutConstraint+Extensions.swift in Sources */,
 				FC1755971E9CAFDB00D73D8E /* ASCSortViewController.swift in Sources */,
@@ -2070,6 +2127,8 @@
 				FC0F01E3216F4EA7008D79A5 /* ASCWebDAVProvider.swift in Sources */,
 				FC08F8751ECB399900988DDE /* ASCConnectStorageOAuth2ViewController.swift in Sources */,
 				FCF69496263025BF00808644 /* ASCBaseTableViewController.swift in Sources */,
+				FC1CA5B6264529E1001CC5CA /* ASCOnlyofficeAppBasedCategoriesProvider.swift in Sources */,
+				FC1CA5B8264529E1001CC5CA /* ASCOnlyofficeCategoriesProviderProtocol.swift in Sources */,
 				FC41D7FD2265B72E00A155C2 /* UIStoryboard+Extensions.swift in Sources */,
 				FCEF9D1F1ED2C94300627BA5 /* EnterPasscodeState.swift in Sources */,
 				FC3AF6BD21709259004A96FD /* ASCFileManager.swift in Sources */,
@@ -2108,6 +2167,7 @@
 				FCF696232632FF3E00808644 /* ASCTextStyle.swift in Sources */,
 				FC67072D252DC4A600DFD268 /* ObservableProxy.swift in Sources */,
 				8ADB2DE1234369BE0009FD4E /* MGSwipeButton+Extensions.swift in Sources */,
+				FC1CA5B7264529E1001CC5CA /* ASCOnlyofficeAPICategoriesProvider.swift in Sources */,
 				FC41D80C2265DA8700A155C2 /* ASCFilterType.swift in Sources */,
 				FCCC527220ADB68E000BD819 /* ASCSignInController.swift in Sources */,
 				FCB6E1811EE83A1A003C9348 /* ASCShareItemsViewController.swift in Sources */,

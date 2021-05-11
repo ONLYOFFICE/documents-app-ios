@@ -15,8 +15,8 @@ class ASCOnlyofficeProvider: ASCFileProviderProtocol & ASCSortableFileProviderPr
     var id: String? {
         get {
             if
-                let baseUrl = api.baseUrl,
-                let token = api.token
+                let baseUrl = apiLegacy.baseUrl,
+                let token = apiLegacy.token
             {
                 return (baseUrl + token).md5
             }
@@ -49,11 +49,11 @@ class ASCOnlyofficeProvider: ASCFileProviderProtocol & ASCSortableFileProviderPr
     var user: ASCUser? = nil
     var authorization: String? {
         get {
-            return api.isHttp2 ? "Bearer \(api.token ?? "")" : api.token
+            return apiLegacy.isHttp2 ? "Bearer \(apiLegacy.token ?? "")" : apiLegacy.token
         }
     }
 
-    var api: ASCOnlyOfficeApi {
+    var apiLegacy: ASCOnlyOfficeApi {
         get {
             return ASCOnlyOfficeApi.shared
         }
@@ -68,21 +68,28 @@ class ASCOnlyofficeProvider: ASCFileProviderProtocol & ASCSortableFileProviderPr
     
     init() {
         reset()
-        api.baseUrl = nil
-        api.token = nil
-        api.serverVersion = nil
-        api.capabilities = nil
+        apiLegacy.baseUrl = nil
+        apiLegacy.token = nil
+        apiLegacy.serverVersion = nil
+        apiLegacy.capabilities = nil
+        
+        apiClient = OnlyofficeApiClient()
     }
 
     init(baseUrl: String, token: String) {
-        api.baseUrl = baseUrl
-        api.token = token
+        reset()
+        
+        apiLegacy.baseUrl = baseUrl
+        apiLegacy.token = token
         
         apiClient = OnlyofficeApiClient(url: baseUrl, token: token)
     }
 
     func copy() -> ASCFileProviderProtocol {
-        let copy = ASCOnlyofficeProvider(baseUrl: api.baseUrl ?? "", token: api.token ?? "")
+        let baseUrl = apiLegacy.baseUrl ?? ""
+        let token = apiLegacy.token ?? ""
+        
+        let copy = ASCOnlyofficeProvider(baseUrl: baseUrl, token: token)
         
         copy.items = items
         copy.page = page
@@ -103,6 +110,7 @@ class ASCOnlyofficeProvider: ASCFileProviderProtocol & ASCSortableFileProviderPr
 
     func cancel() {
         ASCOnlyOfficeApi.cancelAllTasks()
+        apiClient?.cancelAll()
     }
 
     func serialize() -> String? {
@@ -110,24 +118,24 @@ class ASCOnlyofficeProvider: ASCFileProviderProtocol & ASCSortableFileProviderPr
             "type": type.rawValue
         ]
 
-        if let baseUrl = api.baseUrl {
+        if let baseUrl = apiLegacy.baseUrl {
             info += ["baseUrl": baseUrl]
         }
 
-        if let token = api.token {
+        if let token = apiLegacy.token {
             info += ["token": token]
         }
 
-        if let serverVersion = api.serverVersion {
+        if let serverVersion = apiLegacy.serverVersion {
             info += ["serverVersion": serverVersion]
         }
 
-        if let expires = api.expires {
+        if let expires = apiLegacy.expires {
             let dateTransform = ASCDateTransform()
             info += ["expires": dateTransform.transformToJSON(expires) ?? ""]
         }
 
-        if let capabilities = api.capabilities {
+        if let capabilities = apiLegacy.capabilities {
             info += ["capabilities": capabilities.toJSON()]
         }
 
@@ -149,15 +157,21 @@ class ASCOnlyofficeProvider: ASCFileProviderProtocol & ASCSortableFileProviderPr
             }
 
             if let capabilitiesJson = json["capabilities"] as? [String: Any] {
-                api.capabilities = OnlyofficeCapabilities(JSON: capabilitiesJson)
+                apiLegacy.capabilities = OnlyofficeCapabilities(JSON: capabilitiesJson)
+                apiClient?.capabilities = OnlyofficeCapabilities(JSON: capabilitiesJson)
             }
 
             let dateTransform = ASCDateTransform()
 
-            api.baseUrl = json["baseUrl"] as? String
-            api.token = json["token"] as? String
-            api.serverVersion = json["serverVersion"] as? String
-            api.expires = dateTransform.transformFromJSON(json["expires"])
+            apiLegacy.baseUrl = json["baseUrl"] as? String
+            apiLegacy.token = json["token"] as? String
+            apiLegacy.serverVersion = json["serverVersion"] as? String
+            apiLegacy.expires = dateTransform.transformFromJSON(json["expires"])
+            
+            apiClient?.baseURL = URL(string: json["baseUrl"] as? String ?? "")
+            apiClient?.token = json["token"] as? String
+            apiClient?.serverVersion = json["serverVersion"] as? String
+            apiClient?.expires = dateTransform.transformFromJSON(json["expires"])
         }
     }
     
@@ -185,50 +199,46 @@ class ASCOnlyofficeProvider: ASCFileProviderProtocol & ASCSortableFileProviderPr
     ///
     /// - Parameter completeon: a closure with result of user or error
     func userInfo(completeon: ASCProviderUserInfoHandler?) {
-        ASCOnlyOfficeApi.get(ASCOnlyOfficeApi.apiPeopleSelf, parameters: nil) { [weak self] results, error, response in
-            if let results = results as? [String: Any], error == nil {
-                guard let strongSelf = self else { return }
-
-                let postUpdate = {
-                    NotificationCenter.default.post(name: ASCConstants.Notifications.userInfoOnlyofficeUpdate, object: nil)
-                    ASCFileManager.storeProviders()
+        guard let apiClient = apiClient else {
+            fatalError("OnlyofficeApiClient is not defined")
+        }
+        
+        // Fire update notification
+        let postUpdate = {
+            NotificationCenter.default.post(name: ASCConstants.Notifications.userInfoOnlyofficeUpdate, object: nil)
+            ASCFileManager.storeProviders()
+        }
+        
+        // Fetch photo of user
+        let fetchPhoto: (ASCUser) -> Void = { [weak self] user in
+            self?.apiClient?.request(OnlyofficeAPI.Endpoints.User.photo(of: user)) { [weak self] response, error in
+                defer {
+                    postUpdate()
+                    completeon?(true, nil)
                 }
                 
-                if let user = ASCUser(JSON: results) {
-                    strongSelf.user = user
-                    
-                    if let userId = user.userId {
-                        ASCOnlyOfficeApi.get(String(format: ASCOnlyOfficeApi.apiPeoplePhoto, userId)) { [weak self] results, error, response in
-                            defer {
-                                postUpdate()
-                                completeon?(true, nil)
-                            }
-                            
-                            guard let strongSelf = self else { return }
-                            
-                            if let results = results as? [String: Any], error == nil {
-                                strongSelf.user?.avatarRetina = results["retina"] as? String
-                            }
-                        }
-                    } else {
-                        postUpdate()
-                        completeon?(true, nil)
-                    }
+                if let photo = response?.result {
+                    self?.user?.avatarRetina = photo.retina
                 } else {
-                    completeon?(false, nil)
+                    postUpdate()
+                    completeon?(true, error)
                 }
+            }
+        }
+        
+        // Fetch user
+        apiClient.request(OnlyofficeAPI.Endpoints.User.me) { [weak self] response, error in
+            if let user = response?.result {
+                self?.user = user
+                fetchPhoto(user)
             } else {
-                if let response = response {
-                    completeon?(false, error ?? ASCProviderError(msg: ASCOnlyOfficeApi.errorMessage(by: response)))
-                } else {
-                    completeon?(false, error)
-                }
+                completeon?(false, error)
             }
         }
     }
 
     func isReachable(completionHandler: @escaping (_ success: Bool, _ error: Error?) -> Void) {
-        completionHandler(ASCNetworkReachability.shared.isReachable && api.active, nil)
+        completionHandler(ASCNetworkReachability.shared.isReachable && apiLegacy.active, nil)
     }
 
     /// Allow the redirection with a modified request
@@ -239,7 +249,7 @@ class ASCOnlyofficeProvider: ASCFileProviderProtocol & ASCSortableFileProviderPr
         var modifyRequest = request
 
         // TODO: Hotfix by Linnic. Remove after resolve of conflict between SAAS and Enterprise versions
-        if let baseUrl = api.baseUrl, URL(string: baseUrl)?.host == request.url?.host {
+        if let baseUrl = apiLegacy.baseUrl, URL(string: baseUrl)?.host == request.url?.host {
             modifyRequest.setValue(authorization, forHTTPHeaderField: "Authorization")
         }
 
@@ -254,6 +264,10 @@ class ASCOnlyofficeProvider: ASCFileProviderProtocol & ASCSortableFileProviderPr
     ///   - completeon: a closure with result of directory entries or error
     func fetch(for folder: ASCFolder, parameters: [String: Any?], completeon: ASCProviderCompletionHandler?) {
         self.folder = folder
+        
+        guard let apiClient = apiClient else {
+            fatalError("OnlyofficeApiClient is not defined")
+        }
         
         let fetch: ((_ completeon: ASCProviderCompletionHandler?) -> Void) = { [weak self] completeon in
             guard let strongSelf = self else { return }
@@ -290,52 +304,35 @@ class ASCOnlyofficeProvider: ASCFileProviderProtocol & ASCSortableFileProviderPr
                 params["filterType"] = filter
             }
 
-            ASCOnlyOfficeApi.get(ASCOnlyOfficeApi.apiFilesPath + folder.id, parameters: params) { [weak self] (results, error, response) in
-                guard let strongSelf = self else { return }
-
+            apiClient.request(OnlyofficeAPI.Endpoints.path(of: folder), params) { [weak self] response, error in
+                guard let strongSelf = self else {
+                    completeon?(strongSelf, folder, false, error)
+                    return
+                }
+                
                 var currentFolder = folder
-
-                if let results = results as? [String: Any] {
-                    strongSelf.total = results["total"] as! Int
-
-                    if let current = results["current"] as? [String: Any] {
-                        currentFolder = ASCFolder(JSON: current) ?? folder
-                    }
-
-                    let readEntities: ((_ key: String) -> [ASCEntity]) = { key in
-                        var entities: [ASCEntity] = []
-                        let isFolder = key == "folders"
-
-                        if let responseEntities = results[key] as? [[String: Any]] {
-                            for entity in responseEntities {
-                                if isFolder {
-                                    if let folder = ASCFolder(JSON: entity) {
-                                        folder.parent = currentFolder
-                                        entities.append(folder)
-                                    }
-                                } else {
-                                    if let file = ASCFile(JSON: entity) {
-                                        file.parent = currentFolder
-                                        entities.append(file)
-                                    }
-                                }
-                            }
-                        }
-
-                        return entities
+                
+                if let path = response?.result {
+                    strongSelf.total = path.total
+                    
+                    if let current = path.current {
+                        currentFolder = current
                     }
 
                     if strongSelf.page == 0 {
                         strongSelf.items.removeAll()
                     }
 
-                    var entities: [ASCEntity] = []
-
-                    // Load folder
-                    entities += readEntities("folders")
-
-                    // Load files
-                    entities += readEntities("files")
+                    let entities: [ASCEntity] = (path.folders + path.files).map { entitie in
+                        if let folder = entitie as? ASCFolder {
+                            folder.parent = currentFolder
+                            return folder
+                        } else if let file = entitie as? ASCFile {
+                            file.parent = currentFolder
+                            return file
+                        }
+                        return entitie
+                    }
 
                     strongSelf.items += entities
 
@@ -373,46 +370,45 @@ class ASCOnlyofficeProvider: ASCFileProviderProtocol & ASCSortableFileProviderPr
     }
 
     func rename(_ entity: ASCEntity, to newName: String, completeon: ASCProviderCompletionHandler?) {
-        let file = entity as? ASCFile
-        let folder = entity as? ASCFolder
-
-        if file == nil && folder == nil {
-            completeon?(self, nil, false, ASCProviderError(msg: NSLocalizedString("Unknown item type.", comment: "")))
-            return
+        guard let apiClient = apiClient else {
+            fatalError("OnlyofficeApiClient is not defined")
         }
-
-        let fileExtension = file?.title.fileExtension() ?? ""
-        let requestPath = String(format: (file != nil ? ASCOnlyOfficeApi.apiFileId : ASCOnlyOfficeApi.apiFolderId), (file != nil ? file?.id : folder?.id) ?? "")
-        let newTitle = file != nil ? (fileExtension.length < 1 ? newName : String(format:"%@.%@", newName, fileExtension)) : newName
-
-        ASCOnlyOfficeApi.put(requestPath, parameters: ["title": newTitle], completion: { (result, error, response) in
-            if error != nil {
-                completeon?(self, nil, false, ASCProviderError(msg: ASCOnlyOfficeApi.errorMessage(by: response!)))
-            } else {
-                if let result = result as? [String: Any] {
-                    if file != nil, let file = ASCFile(JSON: result) {
-                        completeon?(self, file, true, nil)
-                    } else if folder != nil, let folder = ASCFolder(JSON: result) {
-                        completeon?(self, folder, true, nil)
-                    } else {
-                        completeon?(self, nil, false, ASCProviderError(msg: NSLocalizedString("Rename failed.", comment: "")))
-                    }
+        
+        if  let file = entity as? ASCFile {
+            let fileExtension = file.title.fileExtension()
+            let newTitle = fileExtension.isEmpty ? newName : String(format:"%@.%@", newName, fileExtension)
+            
+            apiClient.request(OnlyofficeAPI.Endpoints.update(file: file), ["title": newTitle]) { response, error in
+                if let file = response?.result {
+                    completeon?(self, file, true, nil)
                 } else {
                     completeon?(self, nil, false, ASCProviderError(msg: NSLocalizedString("Rename failed.", comment: "")))
                 }
             }
-        })
+        } else if let folder = entity as? ASCFolder {
+            apiClient.request(OnlyofficeAPI.Endpoints.update(folder: folder), ["title": newName]) { response, error in
+                if let folder = response?.result {
+                    completeon?(self, folder, true, nil)
+                } else {
+                    completeon?(self, nil, false, ASCProviderError(msg: NSLocalizedString("Rename failed.", comment: "")))
+                }
+            }
+        }
     }
     
     func favorite(_ entity: ASCEntity, favorite: Bool, completeon: ASCProviderCompletionHandler?) {
+        guard let apiClient = apiClient else {
+            fatalError("OnlyofficeApiClient is not defined")
+        }
+        
         guard let file = entity as? ASCFile else {
             completeon?(self, nil, false, ASCProviderError(msg: NSLocalizedString("Unknown item type.", comment: "")))
             return
         }
         
         if favorite {
-            ASCOnlyOfficeApi.post(ASCOnlyOfficeApi.apiFilesFavorite, parameters: ["fileIds" : [file.id]]) { result, error, response in
-                if result as? Bool ?? false {
+            apiClient.request(OnlyofficeAPI.Endpoints.addFavorite, ["fileIds" : [file.id]]) { response, error in
+                if response?.result ?? false {
                     file.isFavorite = true
                     completeon?(self, file, true, nil)
                 } else {
@@ -420,8 +416,8 @@ class ASCOnlyofficeProvider: ASCFileProviderProtocol & ASCSortableFileProviderPr
                 }
             }
         } else {
-            ASCOnlyOfficeApi.delete(ASCOnlyOfficeApi.apiFilesFavorite, parameters: ["fileIds" : [file.id]]) { result, error, response in
-                if result as? Bool ?? false {
+            apiClient.request(OnlyofficeAPI.Endpoints.removeFavorite, ["fileIds" : [file.id]]) { response, error in
+                if response?.result ?? false {
                     file.isFavorite = false
                     completeon?(self, file, true, nil)
                 } else {
@@ -534,7 +530,7 @@ class ASCOnlyofficeProvider: ASCFileProviderProtocol & ASCSortableFileProviderPr
     }
 
     func download(_ path: String, to: URL, processing: @escaping ASCApiProgressHandler) {
-        api.download(path, to: to, processing: processing)
+        apiLegacy.download(path, to: to, processing: processing)
     }
 
     func modify(_ path: String, data: Data, params: [String: Any]?, processing: @escaping ASCApiProgressHandler) {
@@ -544,7 +540,7 @@ class ASCOnlyofficeProvider: ASCFileProviderProtocol & ASCSortableFileProviderPr
 
         uploadParams.removeAll(keys: ["mime"])
 
-        api.upload(
+        apiLegacy.upload(
             uploadPath,
             data: data,
             parameters: uploadParams,
@@ -572,7 +568,7 @@ class ASCOnlyofficeProvider: ASCFileProviderProtocol & ASCSortableFileProviderPr
             ]
         }
 
-        api.upload(
+        apiLegacy.upload(
             String(format: ASCOnlyOfficeApi.apiInsertFile, path),
             data: data,
             parameters: uploadParams,
@@ -655,7 +651,7 @@ class ASCOnlyofficeProvider: ASCFileProviderProtocol & ASCSortableFileProviderPr
                     if let result = result as? [String: Any] {
                         let folder = ASCFolder(JSON: result)
                         ASCAnalytics.logEvent(ASCConstants.Analytics.Event.createEntity, parameters: [
-                            "portal": self?.api.baseUrl ?? "none",
+                            "portal": self?.apiLegacy.baseUrl ?? "none",
                             "onDevice": false,
                             "type": "folder"
                             ]
@@ -944,9 +940,9 @@ class ASCOnlyofficeProvider: ASCFileProviderProtocol & ASCSortableFileProviderPr
     private func actions(for file: ASCFile?) -> ASCEntityActions {
         var entityActions: ASCEntityActions = []
 
-        if let file = file, api.active {
+        if let file = file, apiLegacy.active {
             let fileExtension   = file.title.fileExtension().lowercased()
-            let isPersonal      = (api.baseUrl?.contains(ASCConstants.Urls.portalPersonal)) ?? false
+            let isPersonal      = (apiLegacy.baseUrl?.contains(ASCConstants.Urls.portalPersonal)) ?? false
             let canRead         = allowRead(entity: file)
             let canEdit         = allowEdit(entity: file)
             let canDelete       = allowDelete(entity: file)
@@ -1007,8 +1003,8 @@ class ASCOnlyofficeProvider: ASCFileProviderProtocol & ASCSortableFileProviderPr
     private func actions(for folder: ASCFolder?) -> ASCEntityActions {
         var entityActions: ASCEntityActions = []
 
-        if let folder = folder, api.active {
-            let isPersonal      = (api.baseUrl?.contains(ASCConstants.Urls.portalPersonal)) ?? false
+        if let folder = folder, apiLegacy.active {
+            let isPersonal      = (apiLegacy.baseUrl?.contains(ASCConstants.Urls.portalPersonal)) ?? false
             let canRead         = allowRead(entity: folder)
             let canEdit         = allowEdit(entity: folder)
             let canDelete       = allowDelete(entity: folder)
@@ -1072,10 +1068,10 @@ class ASCOnlyofficeProvider: ASCFileProviderProtocol & ASCSortableFileProviderPr
     ///
     /// - Parameter error: Error
     func handleNetworkError(_ error: Error?) -> Bool {
-        let endSessionLife = api.expires == nil || Date() > api.expires!
+        let endSessionLife = apiLegacy.expires == nil || Date() > apiLegacy.expires!
 
         var alertTitle = ASCLocalization.Error.unknownTitle
-        var alertMessage = String.localizedStringWithFormat(NSLocalizedString("The %@ server is not available.", comment: ""), api.baseUrl ?? "")
+        var alertMessage = String.localizedStringWithFormat(NSLocalizedString("The %@ server is not available.", comment: ""), apiLegacy.baseUrl ?? "")
 
         if endSessionLife {
             alertTitle = NSLocalizedString("Your session has expired", comment: "")
@@ -1104,7 +1100,7 @@ class ASCOnlyofficeProvider: ASCFileProviderProtocol & ASCSortableFileProviderPr
                     title: NSLocalizedString("Renewal", comment: ""),
                     style: .cancel,
                     handler: { [weak self] action in
-                        let currentAccout = ASCAccountsManager.shared.get(by: self?.api.baseUrl ?? "", email: self?.user?.email ?? "")
+                        let currentAccout = ASCAccountsManager.shared.get(by: self?.apiLegacy.baseUrl ?? "", email: self?.user?.email ?? "")
                         ASCUserProfileViewController.logout(renewAccount: currentAccout)
                 })
             )
@@ -1136,7 +1132,7 @@ class ASCOnlyofficeProvider: ASCFileProviderProtocol & ASCSortableFileProviderPr
             }
         }
 
-        return String.localizedStringWithFormat(NSLocalizedString("The %@ server is not available.", comment: ""), api.baseUrl ?? "")
+        return String.localizedStringWithFormat(NSLocalizedString("The %@ server is not available.", comment: ""), apiLegacy.baseUrl ?? "")
     }
 
     func errorBanner(_ error: String?) {

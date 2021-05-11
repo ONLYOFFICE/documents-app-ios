@@ -55,6 +55,8 @@
 		FC12ACF22567CF5E00FF1CBB /* ASCAnalytics.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC12ACF12567CF5E00FF1CBB /* ASCAnalytics.swift */; };
 		FC1755971E9CAFDB00D73D8E /* ASCSortViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC1755961E9CAFDB00D73D8E /* ASCSortViewController.swift */; };
 		FC1AD6142175FE7000DADEE0 /* ASCNetworkReachability.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC1AD6132175FE7000DADEE0 /* ASCNetworkReachability.swift */; };
+		FC1CA5D9264AC55B001CC5CA /* OnlyofficeUserPhoto.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC1CA5D8264AC55B001CC5CA /* OnlyofficeUserPhoto.swift */; };
+		FC1CA5DB264ADD10001CC5CA /* OnlyofficePath.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC1CA5DA264ADD10001CC5CA /* OnlyofficePath.swift */; };
 		FC1EA5CB1ECECBC3008FEE2E /* ASCBaseNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC1EA5CA1ECECBC3008FEE2E /* ASCBaseNavigationController.swift */; };
 		FC1EA5CD1ECED0A0008FEE2E /* ASCBaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC1EA5CC1ECED0A0008FEE2E /* ASCBaseViewController.swift */; };
 		FC1EA5D21ECF2A6D008FEE2E /* ASCSettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC1EA5D11ECF2A6D008FEE2E /* ASCSettingsViewController.swift */; };
@@ -419,6 +421,8 @@
 		FC12ACF12567CF5E00FF1CBB /* ASCAnalytics.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCAnalytics.swift; sourceTree = "<group>"; };
 		FC1755961E9CAFDB00D73D8E /* ASCSortViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASCSortViewController.swift; sourceTree = "<group>"; };
 		FC1AD6132175FE7000DADEE0 /* ASCNetworkReachability.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCNetworkReachability.swift; sourceTree = "<group>"; };
+		FC1CA5D8264AC55B001CC5CA /* OnlyofficeUserPhoto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnlyofficeUserPhoto.swift; sourceTree = "<group>"; };
+		FC1CA5DA264ADD10001CC5CA /* OnlyofficePath.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnlyofficePath.swift; sourceTree = "<group>"; };
 		FC1EA5CA1ECECBC3008FEE2E /* ASCBaseNavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASCBaseNavigationController.swift; sourceTree = "<group>"; };
 		FC1EA5CC1ECED0A0008FEE2E /* ASCBaseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASCBaseViewController.swift; sourceTree = "<group>"; };
 		FC1EA5D11ECF2A6D008FEE2E /* ASCSettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASCSettingsViewController.swift; sourceTree = "<group>"; };
@@ -908,6 +912,8 @@
 				FC2B0CC32640524F00969DB9 /* OnlyofficeVersion.swift */,
 				FC2B0CC7264146C100969DB9 /* OnlyofficeAuthRequest.swift */,
 				FC2B0CC9264149E200969DB9 /* OnlyofficeAuth.swift */,
+				FC1CA5D8264AC55B001CC5CA /* OnlyofficeUserPhoto.swift */,
+				FC1CA5DA264ADD10001CC5CA /* OnlyofficePath.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -2081,6 +2087,7 @@
 				FC28F2C41E8D131800A8F985 /* ASCCreateEntity.swift in Sources */,
 				FC786FC31EB879F600181D62 /* ASCIntroViewController.swift in Sources */,
 				FC12ACF22567CF5E00FF1CBB /* ASCAnalytics.swift in Sources */,
+				FC1CA5DB264ADD10001CC5CA /* OnlyofficePath.swift in Sources */,
 				FCF696212632FF3E00808644 /* UILabel+Style.swift in Sources */,
 				FCC38BD222D379DE00F500C3 /* ASCFolderProviderType.swift in Sources */,
 				FCA7500822BB9CD500991682 /* UITableViewCell+Extensions.swift in Sources */,
@@ -2240,6 +2247,7 @@
 				8A69B5A62497626E00152BDE /* ASCDebugManager.swift in Sources */,
 				8A69B5A42497626300152BDE /* ASCLogIntercepter.swift in Sources */,
 				FC68399821B7EF3200251CEA /* ASCOnlyofficeCategoryCell.swift in Sources */,
+				FC1CA5D9264AC55B001CC5CA /* OnlyofficeUserPhoto.swift in Sources */,
 				FC08F8771ECB402000988DDE /* ASCConnectStorageOAuth2Dropbox.swift in Sources */,
 				8AF0B3662360B28900383610 /* ASCDropboxProvider.swift in Sources */,
 				8A01844B23A261540025BE85 /* ASCConnectCloudViewController.swift in Sources */,

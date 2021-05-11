@@ -149,7 +149,7 @@ class ASCUserProfileViewController: UITableViewController {
     @objc func updateUserUnfo(_ notification: Notification) {
         if let user = ASCFileManager.onlyofficeProvider?.user {
             userNameLabel?.text = user.displayName
-            portalLabel?.text = ASCFileManager.onlyofficeProvider?.api.baseUrl
+            portalLabel?.text = ASCFileManager.onlyofficeProvider?.apiLegacy.baseUrl
             emailLabel?.text = user.email
 
             if let avatar = user.avatarRetina ?? user.avatar,

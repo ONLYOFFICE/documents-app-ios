@@ -194,13 +194,12 @@ extension NetworkingClient: URLSessionDelegate {
                           URLCredential(trust: challenge.protectionSpace.serverTrust!))
     }
 }
-//
+
 //extension NetworkingClient {
 //
 //    class func request<Response>(
 //        endpoint: Endpoint<Response>,
 //        parameters: Parameters? = nil,
-//        encoding: ParameterEncoding? = nil,
 //        _ completion: ((_ result: Response?, _ error: NetworkingError?) -> Void)? = nil) {
 //
 //        NetworkingClient.shared.request(endpoint, parameters, encoding, completion)
@@ -209,7 +208,6 @@ extension NetworkingClient: URLSessionDelegate {
 //    class func request<Response>(
 //        endpoint: Endpoint<Response>,
 //        parameters: Parameters? = nil,
-//        encoding: ParameterEncoding? = nil,
 //        apply: ((_ data: MultipartFormData) -> Void)? = nil,
 //        _ completion: ((_ result: Response?, _ error: NetworkingError?) -> Void)? = nil) {
 //

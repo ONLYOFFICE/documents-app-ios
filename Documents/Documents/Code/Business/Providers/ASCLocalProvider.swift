@@ -645,7 +645,7 @@ class ASCLocalProvider: ASCFileProviderProtocol & ASCSortableFileProviderProtoco
                 entityActions.insert(.edit)
             }
 
-            if (ASCFileManager.onlyofficeProvider?.api.active ?? false) && !isTrash {
+            if (ASCFileManager.onlyofficeProvider?.apiLegacy.active ?? false) && !isTrash {
                 entityActions.insert(.upload)
             }
         }

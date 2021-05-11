@@ -71,8 +71,8 @@ class ASCAccountsManager {
         if
             let user = ASCFileManager.onlyofficeProvider?.user,
             let provider = ASCFileManager.onlyofficeProvider,
-            let portal = provider.api.baseUrl,
-            let token = provider.api.token
+            let portal = provider.apiLegacy.baseUrl,
+            let token = provider.apiLegacy.token
         {
             let dateTransform = ASCDateTransform()
             if let account = ASCAccount(JSON: [
@@ -81,7 +81,7 @@ class ASCAccountsManager {
                 "avatar": user.avatarRetina ?? user.avatar ?? "",
                 "portal": portal,
                 "token": token,
-                "expires": dateTransform.transformToJSON(provider.api.expires) ?? ""
+                "expires": dateTransform.transformToJSON(provider.apiLegacy.expires) ?? ""
                 ])
             {
                 add(account)

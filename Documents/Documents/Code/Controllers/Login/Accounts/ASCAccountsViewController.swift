@@ -210,10 +210,11 @@ class ASCAccountsViewController: ASCBaseViewController {
         ASCOnlyOfficeApi.cancelAllTasks()
 
         if let baseUrl = account.portal, let token = account.token {
-            let dummyOnlyofficeProvider = ASCOnlyofficeProvider()
-
-            ASCOnlyOfficeApi.shared.baseUrl = baseUrl
-            ASCOnlyOfficeApi.shared.token = token
+            let dummyOnlyofficeProvider = ASCOnlyofficeProvider(baseUrl: baseUrl, token: token)
+//
+//            ASCOnlyOfficeApi.shared.baseUrl = baseUrl
+//            ASCOnlyOfficeApi.shared.token = token
+            
 
             let hud = MBProgressHUD.showTopMost()
 

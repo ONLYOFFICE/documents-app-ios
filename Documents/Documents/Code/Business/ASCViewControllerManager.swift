@@ -287,7 +287,7 @@ class ASCViewControllerManager {
 
         let onlyofficeProvider = ASCFileManager.onlyofficeProvider
         
-        if nil == onlyofficeProvider || portal != onlyofficeProvider?.api.baseUrl || email != onlyofficeProvider?.user?.email {
+        if nil == onlyofficeProvider || portal != onlyofficeProvider?.apiLegacy.baseUrl || email != onlyofficeProvider?.user?.email {
             openFileInfo = nil
 
             let account = ASCAccountsManager.shared.get(by: portal, email: email)

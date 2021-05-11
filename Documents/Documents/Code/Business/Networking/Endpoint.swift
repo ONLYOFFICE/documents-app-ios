@@ -14,19 +14,16 @@ class Endpoint<Response> {
     
     let method: HTTPMethod
     let path: String
-    let parameters: Parameters?
     let parameterEncoding: ParameterEncoding?
     let decode: (Data) throws -> Response?
     
     init(path: String,
          method: HTTPMethod = .get,
-         parameters: Parameters? = nil,
          parameterEncoding: ParameterEncoding? = nil,
          decode: @escaping (Data) throws -> Response?) {
         
         self.method = method
         self.path = path
-        self.parameters = parameters
         self.parameterEncoding = parameterEncoding
         self.decode = decode
     }
@@ -34,17 +31,28 @@ class Endpoint<Response> {
 
 
 extension Endpoint {
+
+    static func make(
+        _ path: String,
+        _ method: HTTPMethod = .get,
+        _ parameterEncoding: ParameterEncoding? = nil) -> Endpoint<Bool>
+    {
+        return Endpoint<Bool>(
+            path: path,
+            method: method,
+            parameterEncoding: parameterEncoding) { data in
+            return String(data: data, encoding: .utf8).flatMap(Bool.init)
+        }
+    }
     
     static func make(
         _ path: String,
         _ method: HTTPMethod = .get,
-        _ parameters: Parameters? = nil,
         _ parameterEncoding: ParameterEncoding? = nil) -> Endpoint<String>
     {
         return Endpoint<String>(
             path: path,
             method: method,
-            parameters: parameters,
             parameterEncoding: parameterEncoding,
             decode: { (data: Data) -> String? in
                 return String(data: data, encoding: .utf8)
@@ -54,13 +62,11 @@ extension Endpoint {
     static func make(
         _ path: String,
         _ method: HTTPMethod = .get,
-        _ parameters: Parameters? = nil,
         _ parameterEncoding: ParameterEncoding? = nil) -> Endpoint<Parameters>
     {
         return Endpoint<Parameters>(
             path: path,
             method: method,
-            parameters: parameters,
             parameterEncoding: parameterEncoding,
             decode: { (data: Data) -> Parameters? in
                 do {
@@ -79,13 +85,11 @@ extension Endpoint {
     static func make<Response:BaseMappable>(
         _ path: String,
         _ method: HTTPMethod = .get,
-        _ parameters: Parameters? = nil,
         _ parameterEncoding: ParameterEncoding? = nil) -> Endpoint<Response>
     {
         return Endpoint<Response>(
             path: path,
             method: method,
-            parameters: parameters,
             parameterEncoding: parameterEncoding,
             decode: { (data: Data) -> Response? in
                 
@@ -107,13 +111,11 @@ extension Endpoint {
     static func make<Response:BaseMappable>(
         _ path: String,
         _ method: HTTPMethod = .get,
-        _ parameters: Parameters? = nil,
         _ parameterEncoding: ParameterEncoding? = nil) -> Endpoint<[Response]>
     {
         return Endpoint<[Response]>(
             path: path,
             method: method,
-            parameters: parameters,
             parameterEncoding: parameterEncoding,
             decode: { (data: Data) -> [Response]? in
                 

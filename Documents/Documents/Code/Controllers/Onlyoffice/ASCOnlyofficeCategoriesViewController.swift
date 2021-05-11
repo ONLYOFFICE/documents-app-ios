@@ -101,7 +101,7 @@ class ASCOnlyofficeCategoriesViewController: UITableViewController {
         if let onlyoffice = ASCFileManager.onlyofficeProvider, let user = onlyoffice.user {
             categories = []
 
-            let isPersonal = onlyoffice.api.baseUrl?.contains(ASCConstants.Urls.portalPersonal) ?? false
+            let isPersonal = onlyoffice.apiLegacy.baseUrl?.contains(ASCConstants.Urls.portalPersonal) ?? false
             let allowMy = !user.isVisitor
             let allowShare = !isPersonal
             let allowCommon = !isPersonal
@@ -183,7 +183,7 @@ class ASCOnlyofficeCategoriesViewController: UITableViewController {
                                            placeholder: Asset.Images.avatarDefault.image)
 
                 accountName?.text = user.displayName?.trimmed
-                accountPortal?.text = onlyofficeProvider.api.baseUrl?.trimmed
+                accountPortal?.text = onlyofficeProvider.apiLegacy.baseUrl?.trimmed
             } else {
                 hasInfo = false
 

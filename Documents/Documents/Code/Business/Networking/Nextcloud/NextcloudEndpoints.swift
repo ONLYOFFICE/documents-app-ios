@@ -16,7 +16,7 @@ class NextcloudAPI {
     }
 
     struct Endpoints {
-        static let currentAccount: Endpoint<NextcloudDataResult<NextcloudStorageStats>> = Endpoint<NextcloudDataResult<NextcloudStorageStats>>.make(Path.storageStats, .get, nil, URLEncoding.default)
+        static let currentAccount: Endpoint<NextcloudDataResult<NextcloudStorageStats>> = Endpoint<NextcloudDataResult<NextcloudStorageStats>>.make(Path.storageStats, .get, URLEncoding.default)
     }
 
 }

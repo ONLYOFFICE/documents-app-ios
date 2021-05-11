@@ -105,7 +105,7 @@ extension ASCImageViewController: MediaBrowserDelegate {
 
         if let onlyofficeProvider = provider as? ASCOnlyofficeProvider {
             // TODO: Hotfix by Linnic. Remove after resolve of conflict between SAAS and Enterprise versions
-            if let baseUrl = onlyofficeProvider.api.baseUrl, URL(string: baseUrl)?.host == url?.host {
+            if let baseUrl = onlyofficeProvider.apiLegacy.baseUrl, URL(string: baseUrl)?.host == url?.host {
                 return onlyofficeProvider.authorization
             }
         } else {

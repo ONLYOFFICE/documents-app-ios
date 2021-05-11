@@ -27,3 +27,23 @@ class OnlyofficeDataResult<T: Mappable>: Mappable {
         result      <- map["response"]
     }
 }
+
+class OnlyofficeDataSingleResult<T>: Mappable {
+
+    var result: T? = nil
+    var count: Int?
+    var status: Int?
+    var statusCode: Int?
+
+
+    required convenience init?(map: Map) {
+        self.init()
+    }
+
+    func mapping(map: Map) {
+        count       <- map["count"]
+        status      <- map["status"]
+        statusCode  <- map["statusCode"]
+        result      <- map["response"]
+    }
+}

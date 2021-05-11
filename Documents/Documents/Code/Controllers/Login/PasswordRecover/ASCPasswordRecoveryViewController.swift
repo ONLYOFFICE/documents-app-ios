@@ -33,12 +33,17 @@ class ASCPasswordRecoveryViewController: ASCBaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        isAddHideKeyboardHandler = true
+        
         sendButton?.styleType = .default
+        sendButton?.tag = ASCBaseViewController.actionTag
         sendButton?.isEnabled = false
         emailTextField?.addTarget(self, action: #selector(emailTextFieldChanged), for: .editingChanged)
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
         IQKeyboardManager.shared.enable = true
         IQKeyboardManager.shared.enableAutoToolbar = true
         IQKeyboardManager.shared.keyboardDistanceFromTextField = 124.0
@@ -52,6 +57,8 @@ class ASCPasswordRecoveryViewController: ASCBaseViewController {
     }
     
     override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
         emailTextField?.becomeFirstResponder()
     }
     
@@ -72,9 +79,8 @@ class ASCPasswordRecoveryViewController: ASCBaseViewController {
     }
     
     private func presentEmailSentVC(responseText: String) {
-        let emailSentVC = ASCEmailSentViewController.instance()
-        emailSentVC.email = emailTextField?.text?.trimmed
-        navigationController?.show(emailSentVC, sender: self)
+        guard let email = emailTextField?.text?.trimmed else { return }
+        navigator.navigate(to: .recoveryPasswordConfirmed(email: email))
     }
     
     @objc
@@ -97,8 +103,6 @@ class ASCPasswordRecoveryViewController: ASCBaseViewController {
         if !valid(email: email) {
             return
         }
-        
-        view.endEditing(true)
         
         let parameters: Parameters = [
             "email": email,

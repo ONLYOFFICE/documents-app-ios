@@ -19,6 +19,11 @@ enum Destination {
     case onlyofficeConnectPortal
     case onlyofficeSignIn(portal: String?)
     
+    // MARK: - Password recovery
+    
+    case recoveryPasswordByEmail
+    case recoveryPasswordConfirmed(email: String)
+    
 }
 
 final class ASCNavigator {
@@ -69,6 +74,12 @@ final class ASCNavigator {
             let signinViewController = ASCSignInViewController.instance()
             signinViewController.portal = portal
             return signinViewController
+        case .recoveryPasswordConfirmed(let email):
+            let controller = ASCEmailSentViewController.instance()
+            controller.email = email
+            return controller
+        case .recoveryPasswordByEmail:
+            return ASCPasswordRecoveryViewController.instance()
         }
     }
     

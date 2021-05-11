@@ -655,7 +655,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="g1P-fZ-Zfo">
-                                <rect key="frame" x="55" y="199.66666666666666" width="280" height="74.666666666666657"/>
+                                <rect key="frame" x="55" y="209.33333333333334" width="280" height="74.666666666666657"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="Password recovery" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bLE-8U-AOX">
                                         <rect key="frame" x="0.0" y="0.0" width="280" height="20.333333333333332"/>
@@ -664,7 +664,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Mbh-dU-7po">
-                                        <rect key="frame" x="0.0" y="28.333333333333346" width="280" height="46.333333333333343"/>
+                                        <rect key="frame" x="0.0" y="28.333333333333318" width="280" height="46.333333333333343"/>
                                         <string key="text">Please enter the email you used while registering on the portal. The password recovery instructions will be send to that email address.</string>
                                         <fontDescription key="fontDescription" style="UICTFontTextStyleSubhead"/>
                                         <nil key="textColor"/>
@@ -708,7 +708,7 @@
                                             <constraint firstAttribute="height" constant="67" id="E6Q-05-XGS"/>
                                         </constraints>
                                     </view>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ePY-rM-AOE" customClass="ASCButtonStyle" customModule="Documents" customModuleProvider="target">
+                                    <button opaque="NO" tag="100" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ePY-rM-AOE" customClass="ASCButtonStyle" customModule="Documents" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="111" width="280" height="48"/>
                                         <color key="backgroundColor" red="0.1764705882" green="0.41960784309999999" blue="0.69019607839999997" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
@@ -743,17 +743,16 @@
                             <constraint firstItem="g1P-fZ-Zfo" firstAttribute="centerX" secondItem="Zpt-6g-0fj" secondAttribute="centerX" id="7Qe-Cw-4FK"/>
                             <constraint firstItem="Vs7-Sx-tUz" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="Zpt-6g-0fj" secondAttribute="leading" constant="20" id="9Bi-24-mzC"/>
                             <constraint firstItem="eOA-qv-b5U" firstAttribute="width" secondItem="g1P-fZ-Zfo" secondAttribute="width" id="9U1-g4-h6i"/>
+                            <constraint firstItem="Vs7-Sx-tUz" firstAttribute="top" secondItem="g1P-fZ-Zfo" secondAttribute="bottom" constant="50" id="PFm-wu-PVg"/>
                             <constraint firstItem="ePY-rM-AOE" firstAttribute="width" secondItem="g1P-fZ-Zfo" secondAttribute="width" id="QCr-BQ-eLT"/>
                             <constraint firstItem="g1P-fZ-Zfo" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="Zpt-6g-0fj" secondAttribute="leading" constant="20" id="aqh-fR-F93"/>
                             <constraint firstItem="Vs7-Sx-tUz" firstAttribute="centerX" secondItem="Zpt-6g-0fj" secondAttribute="centerX" id="kom-qc-HqL"/>
-                            <constraint firstItem="g1P-fZ-Zfo" firstAttribute="top" secondItem="GcV-zf-Cts" secondAttribute="bottom" constant="155.5" id="l16-33-QuF"/>
                             <constraint firstItem="Vs7-Sx-tUz" firstAttribute="top" secondItem="Zpt-6g-0fj" secondAttribute="topMargin" constant="290" id="naJ-Sh-8l4"/>
                             <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="Vs7-Sx-tUz" secondAttribute="trailing" constant="20" id="quS-Cg-wHV"/>
                             <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="g1P-fZ-Zfo" secondAttribute="trailing" constant="20" id="ywG-Tf-T87"/>
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="IQLayoutGuideConstraint" destination="l16-33-QuF" id="Bhm-jJ-A1Y"/>
                         <outlet property="emailTextField" destination="lTc-Mg-8ay" id="Q5c-aY-3e2"/>
                         <outlet property="instruction" destination="Mbh-dU-7po" id="eAJ-m9-4Fr"/>
                         <outlet property="recoveryTitle" destination="bLE-8U-AOX" id="QEj-Jk-bNi"/>
@@ -1573,7 +1572,7 @@ been sent to this email address.</string>
         <image name="signin-facebook" width="50" height="50"/>
         <image name="signin-google" width="50" height="50"/>
         <namedColor name="table-background">
-            <color red="0.94499999284744263" green="0.94499999284744263" blue="0.96899998188018799" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.94509803921568625" green="0.94509803921568625" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="view-background">
             <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

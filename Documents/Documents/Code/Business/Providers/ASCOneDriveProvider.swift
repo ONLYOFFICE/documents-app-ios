@@ -8,6 +8,7 @@
 
 import Foundation
 import FilesProvider
+import FileKit
 
 class ASCOneDriveProvider {
     // MARK: - ASCFileProviderProtocol variables
@@ -16,11 +17,6 @@ class ASCOneDriveProvider {
     var items: [ASCEntity] = []
     var page: Int = 0
     var total: Int = 0
-    
-    // MARK: - FileProviderDelegate variables
-    var onSucceed:((_ fileProvider: FileProviderOperations, _ operation: FileOperationType) -> Void)?
-    var onFailed:((_ fileProvider: FileProviderOperations, _ operation: FileOperationType, _ error: Error) -> Void)?
-    var onProgress:((_ fileProvider: FileProviderOperations, _ operation: FileOperationType, _ progress: Float) -> Void)?
     
     private var api: ASCOneDriveApi?
 
@@ -31,6 +27,10 @@ class ASCOneDriveProvider {
         provider: FileProviderBasic,
         progress: Progress,
         delegate: FileProviderDelegate)] = []
+    
+    private var operationProcess: Progress?
+    
+    private let errorProviderUndefined = NSLocalizedString("Unknown file provider", comment: "")
     
     init() {
         provider = nil
@@ -239,15 +239,23 @@ extension ASCOneDriveProvider: ASCFileProviderProtocol {
     }
     
     func add(item: ASCEntity, at index: Int) {
-        
+        if !items.contains(where: { $0.uid == item.uid }) {
+            items.insert(item, at: index)
+            total += 1
+        }
     }
     
     func add(items: [ASCEntity], at index: Int) {
-        
+        let uniqItems = items.filter { (item) -> Bool in
+            return !self.items.contains(where: { $0.uid == item.uid })
+        }
+        self.items.insert(contentsOf: uniqItems, at: index)
+        self.total += uniqItems.count
     }
     
     func remove(at index: Int) {
-        
+        items.remove(at: index)
+        total -= 1
     }
     
     func userInfo(completeon: ASCProviderUserInfoHandler?) {
@@ -419,14 +427,131 @@ extension ASCOneDriveProvider: ASCFileProviderProtocol {
     func createDocument(_ name: String, fileExtension: String, in folder: ASCFolder, completeon: ASCProviderCompletionHandler?) {}
     func createImage(_ name: String, in folder: ASCFolder, data: Data, params: [String: Any]?, processing: @escaping ASCApiProgressHandler) {}
     func createFile(_ name: String, in folder: ASCFolder, data: Data, params: [String: Any]?, processing: @escaping ASCApiProgressHandler) {}
-    func createFolder(_ name: String, in folder: ASCFolder, params: [String: Any]?, completeon: ASCProviderCompletionHandler?) {}
+    func createFolder(_ name: String, in folder: ASCFolder, params: [String: Any]?, completeon: ASCProviderCompletionHandler?) {
+        guard let provider = provider else {
+            completeon?(self, nil, false, ASCProviderError(msg: errorProviderUndefined))
+            return
+        }
+        
+        provider.create(folder: name, at: folder.id) { [weak self] error in
+            DispatchQueue.main.async(execute: { [weak self] in
+                guard let strongSelf = self else { return }
+                
+                if let error = error {
+                    completeon?(strongSelf, nil, false, error)
+                } else {
+                    let path = (Path(folder.id) + name).rawValue
+                    let nowDate = Date()
+
+                    let cloudFolder = ASCFolder()
+                    cloudFolder.id = path
+                    cloudFolder.rootFolderType = .onedriveAll
+                    cloudFolder.title = name
+                    cloudFolder.created = nowDate
+                    cloudFolder.updated = nowDate
+                    cloudFolder.createdBy = strongSelf.user
+                    cloudFolder.updatedBy = strongSelf.user
+                    cloudFolder.parent = folder
+                    cloudFolder.parentId = folder.id
+
+                    ASCAnalytics.logEvent(ASCConstants.Analytics.Event.createEntity, parameters: [
+                        "portal": provider.baseURL?.absoluteString ?? "none",
+                        "onDevice": false,
+                        "type": "folder"
+                        ]
+                    )
+
+                    completeon?(strongSelf, cloudFolder, true, nil)
+                }
+            })
+        }
+    }
+    
     func chechTransfer(items: [ASCEntity], to folder: ASCFolder, handler: ASCEntityHandler?) { handler?(.end, nil, nil) }
     func transfer(items: [ASCEntity], to folder: ASCFolder, move: Bool, overwrite: Bool, handler: ASCEntityProgressHandler?) { var cancel = false; handler?(.end, 1, nil, nil, &cancel) }
 
     func allowRead(entity: AnyObject?) -> Bool { return true }
-    func allowEdit(entity: AnyObject?) -> Bool { return false }
-    func allowDelete(entity: AnyObject?) -> Bool { return false }
-    func actions(for entity: ASCEntity?) -> ASCEntityActions { return [] }
+    func allowEdit(entity: AnyObject?) -> Bool { return true }
+    func allowDelete(entity: AnyObject?) -> Bool { return true }
+    
+    func actions(for entity: ASCEntity?) -> ASCEntityActions {
+        var entityActions: ASCEntityActions = []
+
+        if let file = entity as? ASCFile {
+            entityActions = actions(for: file)
+        } else if let folder = entity as? ASCFolder {
+            entityActions = actions(for: folder)
+        }
+
+        return entityActions
+    }
+    
+    private func actions(for file: ASCFile?) -> ASCEntityActions {
+        var entityActions: ASCEntityActions = []
+
+        if let file = file {
+            let fileExtension   = file.title.fileExtension().lowercased()
+            let canRead         = allowRead(entity: file)
+            let canEdit         = allowEdit(entity: file)
+            let canDelete       = allowDelete(entity: file)
+            let canOpenEditor   = ASCConstants.FileExtensions.documents.contains(fileExtension) ||
+                                  ASCConstants.FileExtensions.spreadsheets.contains(fileExtension) ||
+                                  ASCConstants.FileExtensions.presentations.contains(fileExtension)
+            let canPreview      = canOpenEditor ||
+                                  ASCConstants.FileExtensions.images.contains(fileExtension) ||
+                                  fileExtension == "pdf"
+
+            if canRead {
+                entityActions.insert([.copy, .export])
+            }
+
+            if canDelete {
+                entityActions.insert([.delete, .move])
+            }
+
+            if canEdit {
+                entityActions.insert(.rename)
+            }
+
+            if canPreview {
+                entityActions.insert(.open)
+            }
+
+            if canEdit && canOpenEditor && UIDevice.allowEditor {
+                entityActions.insert(.edit)
+            }
+        }
+
+        return entityActions
+    }
+
+    private func actions(for folder: ASCFolder?) -> ASCEntityActions {
+        var entityActions: ASCEntityActions = []
+
+        if let folder = folder {
+            let canRead         = allowRead(entity: folder)
+            let canEdit         = allowEdit(entity: folder)
+            let canDelete       = allowDelete(entity: folder)
+
+            if canEdit {
+                entityActions.insert(.rename)
+            }
+
+            if canRead {
+                entityActions.insert(.copy)
+            }
+
+            if canEdit && canDelete {
+                entityActions.insert(.move)
+            }
+
+            if canDelete {
+                entityActions.insert(.delete)
+            }
+        }
+
+        return entityActions
+    }
     
     func open(file: ASCFile, viewMode: Bool = false) {
         let title           = file.title

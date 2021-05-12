@@ -78,7 +78,9 @@ class ASCCloudsViewController: UITableViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
 
-        ASCViewControllerManager.shared.rootController?.tabBar.isHidden = false
+        if ASCViewControllerManager.shared.rootController?.isEditing == true {
+            ASCViewControllerManager.shared.rootController?.tabBar.isHidden = true
+        }
     }
     
     override func viewDidAppear(_ animated: Bool) {

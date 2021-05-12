@@ -66,7 +66,9 @@ class ASCOnlyofficeCategoriesViewController: UITableViewController {
         navigationItem.backBarButtonItem?.title = ASCConstants.Name.appNameShort
         navigationItem.title = ASCConstants.Name.appNameShort
 
-        ASCViewControllerManager.shared.rootController?.tabBar.isHidden = false
+        if ASCViewControllerManager.shared.rootController?.isEditing == true {
+            ASCViewControllerManager.shared.rootController?.tabBar.isHidden = true
+        }
         updateLargeTitlesSize()
     }
     

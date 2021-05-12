@@ -42,6 +42,29 @@ class ASCOneDriveProvider {
         api = ASCOneDriveApi()
         api?.token = credential.password
     }
+    
+    private func makeCloudFile(from file: FileObject) -> ASCFile {
+        let fileSize: UInt64 = (file.size < 0) ? 0 : UInt64(file.size)
+        let cloudFile = ASCFile()
+        if let oneDriveItem = file as? OneDriveFileObject, let id = oneDriveItem.id {
+            cloudFile.id = id
+            cloudFile.viewUrl = "id:\(id)"
+        } else {
+            cloudFile.id = file.path
+            cloudFile.viewUrl = file.path
+        }
+        cloudFile.rootFolderType = .onedriveAll
+        cloudFile.title = file.name
+        cloudFile.created = file.creationDate ?? file.modifiedDate
+        cloudFile.updated = file.modifiedDate
+        cloudFile.createdBy = self.user
+        cloudFile.updatedBy = self.user
+        cloudFile.parent = folder
+        cloudFile.displayContentLength = String.fileSizeToString(with: fileSize)
+        cloudFile.pureContentLength = Int(fileSize)
+
+        return cloudFile
+    }
 }
 
 // MARK: - ASCFileProviderProtocol
@@ -124,15 +147,15 @@ extension ASCOneDriveProvider: ASCFileProviderProtocol {
             provider.contentsOfDirectory(path: folder.id)
             { [weak self] objects, error in
                 DispatchQueue.main.async(execute: { [weak self] in
-                    guard let strongSelf = self else { return }
+                    guard let self = self else { return }
 
                     if let error = error {
-                        completeon?(strongSelf, folder, false, error)
+                        completeon?(self, folder, false, error)
                         return
                     }
 
-                    if strongSelf.page == 0 {
-                        strongSelf.items.removeAll()
+                    if self.page == 0 {
+                        self.items.removeAll()
                     }
 
                     var files: [ASCFile] = []
@@ -151,8 +174,8 @@ extension ASCOneDriveProvider: ASCFileProviderProtocol {
                             cloudFolder.title = $0.name
                             cloudFolder.created = $0.creationDate ?? $0.modifiedDate
                             cloudFolder.updated = $0.modifiedDate
-                            cloudFolder.createdBy = strongSelf.user
-                            cloudFolder.updatedBy = strongSelf.user
+                            cloudFolder.createdBy = self.user
+                            cloudFolder.updatedBy = self.user
                             cloudFolder.parent = folder
                             cloudFolder.parentId = folder.id
 
@@ -161,28 +184,7 @@ extension ASCOneDriveProvider: ASCFileProviderProtocol {
 
                     files = objects
                         .filter { !$0.isDirectory && !$0.isSymLink && !$0.isHidden }
-                        .map {
-                            let fileSize: UInt64 = ($0.size < 0) ? 0 : UInt64($0.size)
-                            let cloudFile = ASCFile()
-                            if let oneDriveItem = $0 as? OneDriveFileObject, let id = oneDriveItem.id {
-                                cloudFile.id = id
-                                cloudFile.viewUrl = "id:\(id)"
-                            } else {
-                                cloudFile.id = $0.path
-                                cloudFile.viewUrl = $0.path
-                            }
-                            cloudFile.rootFolderType = .onedriveAll
-                            cloudFile.title = $0.name
-                            cloudFile.created = $0.creationDate ?? $0.modifiedDate
-                            cloudFile.updated = $0.modifiedDate
-                            cloudFile.createdBy = strongSelf.user
-                            cloudFile.updatedBy = strongSelf.user
-                            cloudFile.parent = folder
-                            cloudFile.displayContentLength = String.fileSizeToString(with: fileSize)
-                            cloudFile.pureContentLength = Int(fileSize)
-
-                            return cloudFile
-                    }
+                        .map { return self.makeCloudFile(from: $0) }
 
                     let mediaFiles = files.filter { file in
                         let fileExt = file.title.fileExtension().lowercased()
@@ -210,16 +212,16 @@ extension ASCOneDriveProvider: ASCFileProviderProtocol {
                     }
                     
                     // Sort
-                    strongSelf.fetchInfo = parameters
+                    self.fetchInfo = parameters
                     
                     if let sortInfo = parameters["sort"] as? [String: Any] {
-                        self?.sort(by: sortInfo, folders: &folders, files: &files)
+                        self.sort(by: sortInfo, folders: &folders, files: &files)
                     }
 
-                    strongSelf.items = folders as [ASCEntity] + files as [ASCEntity]
-                    strongSelf.total = strongSelf.items.count
+                    self.items = folders as [ASCEntity] + files as [ASCEntity]
+                    self.total = self.items.count
 
-                    completeon?(strongSelf, folder, true, nil)
+                    completeon?(self, folder, true, nil)
                 })
             }
         }
@@ -420,13 +422,179 @@ extension ASCOneDriveProvider: ASCFileProviderProtocol {
         }
     }
     
-    func upload(_ path: String, data: Data, overwrite: Bool, params: [String: Any]?, processing: @escaping ASCApiProgressHandler) {}
+    func upload(_ path: String, data: Data, overwrite: Bool, params: [String: Any]?, processing: @escaping ASCApiProgressHandler) {
+        guard let provider = provider else {
+            processing(0, nil, nil, nil)
+            return
+        }
+        
+        var dstPath = path
+        
+        if let fileName = params?["title"] as? String {
+            dstPath = (dstPath as NSString).appendingPathComponent(fileName)
+        }
+        
+        let dummyFilePath = Path.userTemporary + UUID().uuidString
+        
+        do {
+            try data.write(to: dummyFilePath, atomically: true)
+        } catch(let error) {
+            processing(1, nil, error, nil)
+            return
+        }
+        
+        var localProgress: Float = 0
+        var uploadProgress: Progress?
+        
+        if let localProvider = provider.copy() as? OneDriveFileProvider {
+            let handlerUid = UUID().uuidString
+            let operationDelegate = ASCOneDriveProviderDelegate()
+            
+            let cleanupHendler: (String) -> Void = { [weak self] uid in
+                if let processIndex = self?.operationHendlers.firstIndex(where: { $0.uid == uid }) {
+                    self?.operationHendlers.remove(at: processIndex)
+                }
+            }
+            
+            operationDelegate.onSucceed = { fileProvider, operation in
+                fileProvider.attributesOfItem(path: dstPath, completionHandler: { fileObject, error in
+                    DispatchQueue.main.async(execute: { [weak self] in
+                        if let error = error {
+                            processing(1.0, nil, error, nil)
+                        } else if let fileObject = fileObject {
+                            
+                            let parent = ASCFolder()
+                            if let oneDriveItem = fileObject as? OneDriveFileObject, let id = oneDriveItem.id {
+                                parent.id = "id:\(id)"
+                            } else {
+                                parent.id = path
+                            }
+                            parent.title = (path as NSString).lastPathComponent
+                            
+                            let cloudFile = self?.makeCloudFile(from: fileObject)
+                            
+                            processing(1.0, cloudFile, nil, nil)
+                        } else {
+                            processing(1.0, nil, nil, nil)
+                        }
+                        ASCLocalFileHelper.shared.removeFile(dummyFilePath)
+                        cleanupHendler(handlerUid)
+                    })
+                })
+            }
+            operationDelegate.onFailed = { fileProvider, operation, error in
+                DispatchQueue.main.async {
+                    processing(1.0, nil, error, nil)
+                }
+                ASCLocalFileHelper.shared.removeFile(dummyFilePath)
+                cleanupHendler(handlerUid)
+            }
+            operationDelegate.onProgress = { fileProvider, operation, progress in
+                localProgress = max(localProgress, progress)
+                processing(Double(localProgress), nil, nil, nil)
+            }
+            
+            localProvider.delegate = operationDelegate
+            
+            uploadProgress = localProvider.copyItem(localFile: dummyFilePath.url, to: dstPath) { error in
+                if let error = error {
+                    log.error(error.localizedDescription)
+                    
+                    DispatchQueue.main.async {
+                        processing(1.0, nil, error, nil)
+                    }
+                    ASCLocalFileHelper.shared.removeFile(dummyFilePath)
+                    cleanupHendler(handlerUid)
+                }
+            }
+            
+            if let localProgress = uploadProgress {
+                operationHendlers.append((
+                    uid: handlerUid,
+                    provider: localProvider,
+                    progress: localProgress,
+                    delegate: operationDelegate))
+            }
+        } else {
+            processing(0, nil, nil, nil)
+        }
+    }
+    
     func rename(_ entity: ASCEntity, to newName: String, completeon: ASCProviderCompletionHandler?) {}
     func favorite(_ entity: ASCEntity, favorite: Bool, completeon: ASCProviderCompletionHandler?) {}
     func delete(_ entities: [ASCEntity], from folder: ASCFolder, completeon: ASCProviderCompletionHandler?) {}
-    func createDocument(_ name: String, fileExtension: String, in folder: ASCFolder, completeon: ASCProviderCompletionHandler?) {}
-    func createImage(_ name: String, in folder: ASCFolder, data: Data, params: [String: Any]?, processing: @escaping ASCApiProgressHandler) {}
-    func createFile(_ name: String, in folder: ASCFolder, data: Data, params: [String: Any]?, processing: @escaping ASCApiProgressHandler) {}
+    
+    func createDocument(_ name: String, fileExtension: String, in folder: ASCFolder, completeon: ASCProviderCompletionHandler?) {
+        guard let provider = provider else {
+            completeon?(self, nil, false, ASCProviderError(msg: errorProviderUndefined))
+            return
+        }
+        
+        let fileTitle = name + "." + fileExtension
+        
+        // Copy empty template to desination path
+        if let templatePath = ASCFileManager.documentTemplatePath(with: fileExtension) {
+            let localUrl = Path(templatePath).url
+            
+            let remotePath = folder.id.contains("id:") ? "\(folder.id):/\(fileTitle):/" : (Path(folder.id) + fileTitle).rawValue
+            
+            operationProcess = provider.copyItem(localFile: localUrl, to: remotePath) { [weak self] error in
+                DispatchQueue.main.async(execute: { [weak self] in
+                    guard let self = self else { return }
+                    if let error = error {
+                        log.error(error.localizedDescription)
+                        completeon?(self, nil, false, ASCProviderError(error))
+                    } else {
+                        provider.attributesOfItem(path: remotePath, completionHandler: { [weak self] fileObject, error in
+                            DispatchQueue.main.async(execute: { [weak self] in
+                                guard let self = self else { return }
+                                
+                                if let error = error {
+                                    completeon?(self, nil, false, ASCProviderError(error))
+                                } else if let fileObject = fileObject {
+                                    
+                                    let cloudFile = self.makeCloudFile(from: fileObject)
+                                    
+                                    ASCAnalytics.logEvent(ASCConstants.Analytics.Event.createEntity, parameters: [
+                                        "portal": self.provider?.baseURL?.absoluteString ?? "none",
+                                        "onDevice": false,
+                                        "type": "file",
+                                        "fileExt": cloudFile.title.fileExtension().lowercased()
+                                        ]
+                                    )
+                                    
+                                    completeon?(self, cloudFile, true, nil)
+                                } else {
+                                    completeon?(self, nil, false, nil)
+                                }
+                            })
+                        })
+                    }
+                })
+            }
+        }
+    }
+    
+    func createImage(_ name: String, in folder: ASCFolder, data: Data, params: [String: Any]?, processing: @escaping ASCApiProgressHandler) {
+        createFile(name, in: folder, data: data, params: params, processing: processing)
+    }
+    
+    func createFile(_ name: String, in folder: ASCFolder, data: Data, params: [String: Any]?, processing: @escaping ASCApiProgressHandler) {
+        let path = folder.id.contains("id:") ? "\(folder.id):/\(name):/" : (Path(folder.id) + name).rawValue
+        upload(path, data: data, overwrite: false, params: nil) { [weak self] progress, result, error, response in
+            if let _ = result {
+                ASCAnalytics.logEvent(ASCConstants.Analytics.Event.createEntity, parameters: [
+                    "portal": self?.provider?.baseURL?.absoluteString ?? "none",
+                    "onDevice": false,
+                    "type": "file",
+                    "fileExt": name.fileExtension()
+                    ]
+                )
+            }
+            processing(progress, result, error, response)
+        }
+    }
+    
     func createFolder(_ name: String, in folder: ASCFolder, params: [String: Any]?, completeon: ASCProviderCompletionHandler?) {
         guard let provider = provider else {
             completeon?(self, nil, false, ASCProviderError(msg: errorProviderUndefined))

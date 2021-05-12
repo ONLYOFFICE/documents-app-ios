@@ -211,7 +211,7 @@ class ASCOnlyofficeProvider: ASCFileProviderProtocol & ASCSortableFileProviderPr
         
         // Fetch photo of user
         let fetchPhoto: (ASCUser) -> Void = { [weak self] user in
-            self?.apiClient?.request(OnlyofficeAPI.Endpoints.User.photo(of: user)) { [weak self] response, error in
+            self?.apiClient?.request(OnlyofficeAPI.Endpoints.People.photo(of: user)) { [weak self] response, error in
                 defer {
                     postUpdate()
                     completeon?(true, nil)
@@ -227,7 +227,7 @@ class ASCOnlyofficeProvider: ASCFileProviderProtocol & ASCSortableFileProviderPr
         }
         
         // Fetch user
-        apiClient.request(OnlyofficeAPI.Endpoints.User.me) { [weak self] response, error in
+        apiClient.request(OnlyofficeAPI.Endpoints.People.me) { [weak self] response, error in
             if let user = response?.result {
                 self?.user = user
                 fetchPhoto(user)
@@ -304,7 +304,7 @@ class ASCOnlyofficeProvider: ASCFileProviderProtocol & ASCSortableFileProviderPr
                 params["filterType"] = filter
             }
 
-            apiClient.request(OnlyofficeAPI.Endpoints.path(of: folder), params) { [weak self] response, error in
+            apiClient.request(OnlyofficeAPI.Endpoints.Folders.path(of: folder), params) { [weak self] response, error in
                 guard let strongSelf = self else {
                     completeon?(strongSelf, folder, false, error)
                     return
@@ -378,7 +378,7 @@ class ASCOnlyofficeProvider: ASCFileProviderProtocol & ASCSortableFileProviderPr
             let fileExtension = file.title.fileExtension()
             let newTitle = fileExtension.isEmpty ? newName : String(format:"%@.%@", newName, fileExtension)
             
-            apiClient.request(OnlyofficeAPI.Endpoints.update(file: file), ["title": newTitle]) { response, error in
+            apiClient.request(OnlyofficeAPI.Endpoints.Files.update(file: file), ["title": newTitle]) { response, error in
                 if let file = response?.result {
                     completeon?(self, file, true, nil)
                 } else {
@@ -386,7 +386,7 @@ class ASCOnlyofficeProvider: ASCFileProviderProtocol & ASCSortableFileProviderPr
                 }
             }
         } else if let folder = entity as? ASCFolder {
-            apiClient.request(OnlyofficeAPI.Endpoints.update(folder: folder), ["title": newName]) { response, error in
+            apiClient.request(OnlyofficeAPI.Endpoints.Folders.update(folder: folder), ["title": newName]) { response, error in
                 if let folder = response?.result {
                     completeon?(self, folder, true, nil)
                 } else {
@@ -407,7 +407,7 @@ class ASCOnlyofficeProvider: ASCFileProviderProtocol & ASCSortableFileProviderPr
         }
         
         if favorite {
-            apiClient.request(OnlyofficeAPI.Endpoints.addFavorite, ["fileIds" : [file.id]]) { response, error in
+            apiClient.request(OnlyofficeAPI.Endpoints.Files.addFavorite, ["fileIds" : [file.id]]) { response, error in
                 if response?.result ?? false {
                     file.isFavorite = true
                     completeon?(self, file, true, nil)
@@ -416,7 +416,7 @@ class ASCOnlyofficeProvider: ASCFileProviderProtocol & ASCSortableFileProviderPr
                 }
             }
         } else {
-            apiClient.request(OnlyofficeAPI.Endpoints.removeFavorite, ["fileIds" : [file.id]]) { response, error in
+            apiClient.request(OnlyofficeAPI.Endpoints.Files.removeFavorite, ["fileIds" : [file.id]]) { response, error in
                 if response?.result ?? false {
                     file.isFavorite = false
                     completeon?(self, file, true, nil)
@@ -428,6 +428,10 @@ class ASCOnlyofficeProvider: ASCFileProviderProtocol & ASCSortableFileProviderPr
     }
 
     func delete(_ entities: [ASCEntity], from folder: ASCFolder, completeon: ASCProviderCompletionHandler?) {
+        guard let apiClient = apiClient else {
+            fatalError("OnlyofficeApiClient is not defined")
+        }
+        
         let isShareRoot = folder.rootFolderType == .onlyofficeShare && (folder.parentId == nil || folder.parentId == "0")
         var folderIds: [String] = []
         var cloudFolderIds: [String] = []
@@ -468,27 +472,31 @@ class ASCOnlyofficeProvider: ASCFileProviderProtocol & ASCSortableFileProviderPr
                 let semaphore = DispatchSemaphore(value: 0)
 
                 if isShareRoot {
-                    ASCOnlyOfficeApi.delete(ASCOnlyOfficeApi.apiBatchShare, parameters: parameters, completion: { (results, error, response) in
+                    apiClient.request(OnlyofficeAPI.Endpoints.Sharing.removeSharingRights) { response, error in
                         defer { semaphore.signal() }
-
-                        if error != nil {
-                            lastError = ASCProviderError(msg: ASCOnlyOfficeApi.errorMessage(by: response!))
-                        } else {
+                        
+                        if response?.result ?? false {
                             resultItems += entities.filter { folderIds.contains($0.id) }
                             resultItems += entities.filter { fileIds.contains($0.id) }
+                        } else {
+                            lastError = ASCProviderError(
+                                msg: error?.localized ?? NSLocalizedString("Unable disconnect third party", comment: "")
+                            )
                         }
-                    })
+                    }
                 } else {
-                    ASCOnlyOfficeApi.put(ASCOnlyOfficeApi.apiBatchDelete, parameters: parameters, completion: { (results, error, response) in
+                    apiClient.request(OnlyofficeAPI.Endpoints.Operations.removeEntities, parameters) { response, error in
                         defer { semaphore.signal() }
-
-                        if error != nil {
-                            lastError = ASCProviderError(msg: ASCOnlyOfficeApi.errorMessage(by: response!))
-                        } else {
+                        
+                        if (response?.result?.count ?? 0) > 0 {
                             resultItems += entities.filter { folderIds.contains($0.id) }
                             resultItems += entities.filter { fileIds.contains($0.id) }
+                        } else {
+                            lastError = ASCProviderError(
+                                msg: error?.localized ?? NSLocalizedString("Unable delete items", comment: "")
+                            )
                         }
-                    })
+                    }
                 }
                 semaphore.wait()
             }
@@ -501,19 +509,35 @@ class ASCOnlyofficeProvider: ASCFileProviderProtocol & ASCSortableFileProviderPr
             {
                 operationQueue.addOperation {
                     let semaphore = DispatchSemaphore(value: 0)
-                    let thirdPartyPath = NSString(string: ASCOnlyOfficeApi.apiThirdParty).appendingPathComponent(providerId)
 
-                    ASCOnlyOfficeApi.delete(thirdPartyPath, completion: { result, error, response in
-                        defer { semaphore.signal() }
-
-                        if let _ = error {
-                            lastError = ASCProviderError(msg: ASCOnlyOfficeApi.errorMessage(by: response!))
-                        } else if let result = result as? String {
-                            let folder = ASCFolder()
-                            folder.id = result
-                            resultItems.append(folder)
+                    if isShareRoot {
+                        apiClient.request(OnlyofficeAPI.Endpoints.Sharing.removeSharingRights) { response, error in
+                            defer { semaphore.signal() }
+                            
+                            if response?.result ?? false {
+                                resultItems += entities.filter { folderIds.contains($0.id) }
+                                resultItems += entities.filter { fileIds.contains($0.id) }
+                            } else {
+                                lastError = ASCProviderError(
+                                    msg:error?.localized ?? NSLocalizedString("Unable disconnect third party", comment: "")
+                                )
+                            }
                         }
-                    })
+                    } else {
+                        apiClient.request(OnlyofficeAPI.Endpoints.ThirdPartyIntegration.remove(providerId: providerId)) { response, error in
+                            defer { semaphore.signal() }
+                            
+                            if let folderId = response?.result {
+                                let folder = ASCFolder()
+                                folder.id = folderId
+                                resultItems.append(folder)
+                            } else {
+                                lastError = ASCProviderError(
+                                    msg:error?.localized ?? NSLocalizedString("Unable disconnect third party", comment: "")
+                                )
+                            }
+                        }
+                    }
                     semaphore.wait()
                 }
             }

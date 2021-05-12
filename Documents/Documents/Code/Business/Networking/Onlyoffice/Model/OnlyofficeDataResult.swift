@@ -39,7 +39,28 @@ class OnlyofficeDataSingleResult<T>: Mappable {
     required convenience init?(map: Map) {
         self.init()
     }
+    
 
+    func mapping(map: Map) {
+        count       <- map["count"]
+        status      <- map["status"]
+        statusCode  <- map["statusCode"]
+        result      <- map["response"]
+    }
+}
+
+
+class OnlyofficeDataArrayResult<T>: Mappable {
+    
+    var result: [T]? = nil
+    var count: Int?
+    var status: Int?
+    var statusCode: Int?
+    
+    required convenience init?(map: Map) {
+        self.init()
+    }
+    
     func mapping(map: Map) {
         count       <- map["count"]
         status      <- map["status"]

@@ -28,6 +28,9 @@ class OnlyofficeAPI {
         static public let file                   = "api/\(version)/files/file/%@"
         static public let folder                 = "api/\(version)/files/folder/%@"
         static public let favorite               = "api/\(version)/files/favorites"
+        static public let filesShare             = "api/\(version)/files/share"
+        static public let fileopsDelete          = "api/\(version)/files/fileops/delete"
+        static public let thirdParty             = "api/\(version)/files/thirdparty"
     }
 
     struct Endpoints {
@@ -49,31 +52,57 @@ class OnlyofficeAPI {
             static let sendPhone: Endpoint<Parameters> = Endpoint<Parameters>.make(Path.authenticationPhone, .post)
         }
         
-        // MARK: User
+        // MARK: People
         
-        struct User {
+        struct People {
             static let me: Endpoint<OnlyofficeDataResult<ASCUser>> = Endpoint<OnlyofficeDataResult<ASCUser>>.make(Path.peopleSelf)
             static func photo(of user: ASCUser) -> Endpoint<OnlyofficeDataResult<OnlyofficeUserPhoto>> {
                 return Endpoint<OnlyofficeDataResult<OnlyofficeUserPhoto>>.make(String(format: Path.peoplePhoto, user.userId ?? ""))
             }
         }
         
-        // MARK: Enities
+        // MARK: Folders
         
-        static func path(of folder: ASCFolder) -> Endpoint<OnlyofficeDataResult<OnlyofficePath>> {
-            return Endpoint<OnlyofficeDataResult<OnlyofficePath>>.make(Path.files + folder.id, .get, URLEncoding.default)
+        struct Folders {
+            static func path(of folder: ASCFolder) -> Endpoint<OnlyofficeDataResult<OnlyofficePath>> {
+                return Endpoint<OnlyofficeDataResult<OnlyofficePath>>.make(Path.files + folder.id, .get, URLEncoding.default)
+            }
+            
+            static func update(folder: ASCFolder) -> Endpoint<OnlyofficeDataResult<ASCFolder>> {
+                return Endpoint<OnlyofficeDataResult<ASCFolder>>.make(String(format: Path.folder, folder.id), .put)
+            }
         }
         
-        static func update(file: ASCFile) -> Endpoint<OnlyofficeDataResult<ASCFile>> {
-            return Endpoint<OnlyofficeDataResult<ASCFile>>.make(String(format: Path.file, file.id), .put)
+        // MARK: Files
+        
+        struct Files {
+            static func update(file: ASCFile) -> Endpoint<OnlyofficeDataResult<ASCFile>> {
+                return Endpoint<OnlyofficeDataResult<ASCFile>>.make(String(format: Path.file, file.id), .put)
+            }
+
+            static let addFavorite: Endpoint<OnlyofficeDataSingleResult<Bool>> = Endpoint<OnlyofficeDataSingleResult<Bool>>.make(Path.favorite, .post)
+            static let removeFavorite: Endpoint<OnlyofficeDataSingleResult<Bool>> = Endpoint<OnlyofficeDataSingleResult<Bool>>.make(Path.favorite, .delete)
         }
         
-        static func update(folder: ASCFolder) -> Endpoint<OnlyofficeDataResult<ASCFolder>> {
-            return Endpoint<OnlyofficeDataResult<ASCFolder>>.make(String(format: Path.folder, folder.id), .put)
+        // MARK: Sharing
+        
+        struct Sharing {
+            static let removeSharingRights: Endpoint<OnlyofficeDataSingleResult<Bool>> = Endpoint<OnlyofficeDataSingleResult<Bool>>.make(Path.filesShare, .delete)
         }
         
-        static let addFavorite: Endpoint<OnlyofficeDataSingleResult<Bool>> = Endpoint<OnlyofficeDataSingleResult<Bool>>.make(Path.favorite, .post)
-        static let removeFavorite: Endpoint<OnlyofficeDataSingleResult<Bool>> = Endpoint<OnlyofficeDataSingleResult<Bool>>.make(Path.favorite, .delete)
+        // MARK: Operations
+        
+        struct Operations {
+            static let removeEntities: Endpoint<OnlyofficeDataArrayResult<Parameters>> = Endpoint<OnlyofficeDataArrayResult<Parameters>>.make(Path.fileopsDelete, .put)
+        }
+        
+        // MARK: Third-Party Integration
+        
+        struct ThirdPartyIntegration {
+            static func remove(providerId: String) -> Endpoint<OnlyofficeDataSingleResult<String>> {
+                return Endpoint<OnlyofficeDataSingleResult<String>>.make(Path.thirdParty.appendingPathComponent(providerId), .delete)
+            }
+        }
         
         // MARK: Settings
         

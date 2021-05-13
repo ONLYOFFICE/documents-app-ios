@@ -346,8 +346,6 @@
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
-	<key>UISupportsDocumentBrowser</key>
-	<true/>
 	<key>VersionMode</key>
 	<string>$(VERSION_MODE)</string>
 </dict>

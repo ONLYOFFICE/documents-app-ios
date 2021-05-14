@@ -281,6 +281,7 @@ class ASCOnlyofficeCategoriesViewController: UITableViewController {
             if categories.count < 1 {
                 loadCategories {
                     selectRowFunc()
+                    self.tableView.reloadData()
                 }
             } else {
                 selectRowFunc()

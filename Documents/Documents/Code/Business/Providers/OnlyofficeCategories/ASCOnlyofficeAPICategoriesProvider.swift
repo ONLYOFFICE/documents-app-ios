@@ -32,11 +32,11 @@ class ASCOnlyofficeAPICategoriesProvider: ASCOnlyofficeCategoriesProviderProtoco
                         }
                     }
                     categories.sort { $0.sortWeight < $1.sortWeight }
-                    categoriesCurrentlyLoading = false
                 }
                 DispatchQueue.main.async {
                     completion(categories)
                 }
+                categoriesCurrentlyLoading = false
             }
         }
     }

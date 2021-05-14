@@ -521,8 +521,44 @@ extension ASCOneDriveProvider: ASCFileProviderProtocol {
     }
     
     func rename(_ entity: ASCEntity, to newName: String, completeon: ASCProviderCompletionHandler?) {}
+    
     func favorite(_ entity: ASCEntity, favorite: Bool, completeon: ASCProviderCompletionHandler?) {}
-    func delete(_ entities: [ASCEntity], from folder: ASCFolder, completeon: ASCProviderCompletionHandler?) {}
+    
+    func delete(_ entities: [ASCEntity], from folder: ASCFolder, completeon: ASCProviderCompletionHandler?) {
+        guard let provider = provider else {
+            completeon?(self, nil, false, ASCProviderError(msg: errorProviderUndefined))
+            return
+        }
+        
+        var lastError: Error?
+        var results: [ASCEntity] = []
+        
+        let operationQueue = OperationQueue()
+        operationQueue.maxConcurrentOperationCount = 1
+        
+        for entity in entities {
+            operationQueue.addOperation {
+                let semaphore = DispatchSemaphore(value: 0)
+                provider.removeItem(path: "id:\(entity.id)", completionHandler: { error in
+                    if let error = error {
+                        lastError = error
+                    } else {
+                        results.append(entity)
+                    }
+                    semaphore.signal()
+                })
+                semaphore.wait()
+            }
+        }
+        
+        operationQueue.addOperation { [weak self] in
+            guard let self = self else { return }
+            
+            DispatchQueue.main.async(execute: {
+                completeon?(self, results, results.count > 0, lastError)
+            })
+        }
+    }
     
     func createDocument(_ name: String, fileExtension: String, in folder: ASCFolder, completeon: ASCProviderCompletionHandler?) {
         guard let provider = provider else {

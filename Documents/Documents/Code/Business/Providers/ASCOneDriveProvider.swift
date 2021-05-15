@@ -10,7 +10,12 @@ import Foundation
 import FilesProvider
 import FileKit
 
-class ASCOneDriveProvider {
+class ASCOneDriveProvider: ASCSortableFileProviderProtocol {
+    
+    // MARK: - ASCSortableFileProviderProtocol variables
+    internal var folder: ASCFolder?
+    internal var fetchInfo: [String : Any?]?
+    
     // MARK: - ASCFileProviderProtocol variables
     var delegate: ASCProviderDelegate?
     var user: ASCUser?
@@ -21,6 +26,7 @@ class ASCOneDriveProvider {
     private var api: ASCOneDriveApi?
 
     private var provider: OneDriveFileProvider?
+    fileprivate lazy var providerOperationDelegate = ASCOneDriveProviderDelegate()
     
     fileprivate var operationHendlers: [(
         uid: String,
@@ -47,7 +53,7 @@ class ASCOneDriveProvider {
         let fileSize: UInt64 = (file.size < 0) ? 0 : UInt64(file.size)
         let cloudFile = ASCFile()
         if let oneDriveItem = file as? OneDriveFileObject, let id = oneDriveItem.id {
-            cloudFile.id = id
+            cloudFile.id = "id:\(id)"
             cloudFile.viewUrl = "id:\(id)"
         } else {
             cloudFile.id = file.path
@@ -281,7 +287,13 @@ extension ASCOneDriveProvider: ASCFileProviderProtocol {
         api?.cancelAllTasks()
     }
     
-    func updateSort(completeon: ASCProviderCompletionHandler?) {}
+    func updateSort(completeon: ASCProviderCompletionHandler?) {
+        if let sortInfo = fetchInfo?["sort"] as? [String : Any] {
+            sort(by: sortInfo, entities: &items)
+            total = items.count
+        }
+        completeon?(self, folder, true, nil)
+    }
     
     func serialize() -> String? {
         var info: [String: Any] = [
@@ -350,7 +362,52 @@ extension ASCOneDriveProvider: ASCFileProviderProtocol {
     func errorMessage(by errorObject: Any) -> String  { return "" }
     func handleNetworkError(_ error: Error?) -> Bool { return false }
     func modifyImageDownloader(request: URLRequest) -> URLRequest { return request }
-    func modify(_ path: String, data: Data, params: [String: Any]?, processing: @escaping ASCApiProgressHandler) {}
+    
+    func modify(_ path: String, data: Data, params: [String: Any]?, processing: @escaping ASCApiProgressHandler) {
+        guard let provider = provider else {
+            processing(0, nil, nil, nil)
+            return
+        }
+        
+        providerOperationDelegate.onSucceed = { [weak self] fileProvider, operation in
+            self?.operationProcess = nil
+            
+            fileProvider.attributesOfItem(path: path, completionHandler: { fileObject, error in
+                DispatchQueue.main.async(execute: { [weak self] in
+                    if let error = error {
+                        processing(1.0, nil, error, nil)
+                    } else if let fileObject = fileObject {
+                        
+                        let cloudFile = self?.makeCloudFile(from: fileObject)
+                        
+                        processing(1.0, cloudFile, nil, nil)
+                    } else {
+                        processing(1.0, nil, nil, nil)
+                    }
+                })
+            })
+        }
+        providerOperationDelegate.onFailed = { [weak self] fileProvider, operation, error in
+            self?.operationProcess = nil
+            DispatchQueue.main.async {
+                processing(1.0, nil, error, nil)
+            }
+        }
+        providerOperationDelegate.onProgress = { fileProvider, operation, progress in
+            DispatchQueue.main.async {
+                processing(Double(progress), nil, nil, nil)
+            }
+        }
+        
+        provider.delegate = providerOperationDelegate
+        
+        operationProcess = provider.writeContents(path: path, contents: data, overwrite: true) { error in
+            log.error(error?.localizedDescription ?? "")
+            DispatchQueue.main.async {
+                processing(1.0, nil, error, nil)
+            }
+        }
+    }
     
     func download(_ path: String, to destinationURL: URL, processing: @escaping ASCApiProgressHandler) {
         guard let provider = provider as? ASCOneDriveFileProvider else {
@@ -463,14 +520,6 @@ extension ASCOneDriveProvider: ASCFileProviderProtocol {
                             processing(1.0, nil, error, nil)
                         } else if let fileObject = fileObject {
                             
-                            let parent = ASCFolder()
-                            if let oneDriveItem = fileObject as? OneDriveFileObject, let id = oneDriveItem.id {
-                                parent.id = "id:\(id)"
-                            } else {
-                                parent.id = path
-                            }
-                            parent.title = (path as NSString).lastPathComponent
-                            
                             let cloudFile = self?.makeCloudFile(from: fileObject)
                             
                             processing(1.0, cloudFile, nil, nil)
@@ -539,7 +588,7 @@ extension ASCOneDriveProvider: ASCFileProviderProtocol {
         for entity in entities {
             operationQueue.addOperation {
                 let semaphore = DispatchSemaphore(value: 0)
-                provider.removeItem(path: "id:\(entity.id)", completionHandler: { error in
+                provider.removeItem(path: entity.id, completionHandler: { error in
                     if let error = error {
                         lastError = error
                     } else {
@@ -789,29 +838,6 @@ extension ASCOneDriveProvider: ASCFileProviderProtocol {
                 let openHandler = delegate?.openProgressFile(title: NSLocalizedString("Downloading", comment: "Caption of the processing") + "...", 0.15)
                 ASCEditorManager.shared.browseUnknownCloud(for: self, file, inView: view, handler: openHandler)
             }
-        }
-    }
-    
-}
-
-// MARK: - ASCSortableFileProviderProtocol
-
-extension ASCOneDriveProvider: ASCSortableFileProviderProtocol {
-    var folder: ASCFolder? {
-        get {
-            return nil
-        }
-        set {
-            
-        }
-    }
-    
-    var fetchInfo: [String : Any?]? {
-        get {
-            return nil
-        }
-        set {
-            
         }
     }
     

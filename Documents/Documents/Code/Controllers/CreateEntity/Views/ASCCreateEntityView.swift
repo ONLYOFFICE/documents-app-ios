@@ -18,7 +18,8 @@ class ASCCreateEntityView: MessageView {
     @IBOutlet weak var presentationButton: UIButton!
     @IBOutlet weak var otherStackView: UIStackView!
     @IBOutlet weak var cloudButtonContainerView: UIView!
-
+    @IBOutlet weak var topConstraints: NSLayoutConstraint!
+    
     var onCreate: ((String) -> Void)?
     var allowConnectClouds: Bool = true {
         didSet {
@@ -36,9 +37,9 @@ class ASCCreateEntityView: MessageView {
         } else {
             // UIView appear
 
-//            [documentButton, spreadsheetButton, presentationButton].forEach { button in
-//                button?.layer.cornerRadius = 10
-//            }
+            [documentButton, spreadsheetButton, presentationButton].forEach { button in
+                button?.layer.cornerRadius = 10
+            }
             
             if UIDevice.phone || ASCViewControllerManager.shared.currentSizeClass == .compact {
                 if #available(iOS 13.0, *) {

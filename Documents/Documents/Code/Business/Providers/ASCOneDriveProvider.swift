@@ -25,7 +25,7 @@ class ASCOneDriveProvider: ASCSortableFileProviderProtocol {
     
     private var api: ASCOneDriveApi?
 
-    private var provider: OneDriveFileProvider?
+    private var provider: ASCOneDriveFileProvider?
     fileprivate lazy var providerOperationDelegate = ASCOneDriveProviderDelegate()
     
     fileprivate var operationHendlers: [(
@@ -372,7 +372,7 @@ extension ASCOneDriveProvider: ASCFileProviderProtocol {
         providerOperationDelegate.onSucceed = { [weak self] fileProvider, operation in
             self?.operationProcess = nil
             
-            fileProvider.attributesOfItem(path: path, completionHandler: { fileObject, error in
+            fileProvider.attributesOfItem(path: "id:\(path)", completionHandler: { fileObject, error in
                 DispatchQueue.main.async(execute: { [weak self] in
                     if let error = error {
                         processing(1.0, nil, error, nil)
@@ -401,7 +401,7 @@ extension ASCOneDriveProvider: ASCFileProviderProtocol {
         
         provider.delegate = providerOperationDelegate
         
-        operationProcess = provider.writeContents(path: path, contents: data, overwrite: true) { error in
+        operationProcess = provider.writeContents(path: "id:\(path)", contents: data, overwrite: true) { error in
             log.error(error?.localizedDescription ?? "")
             DispatchQueue.main.async {
                 processing(1.0, nil, error, nil)
@@ -410,7 +410,7 @@ extension ASCOneDriveProvider: ASCFileProviderProtocol {
     }
     
     func download(_ path: String, to destinationURL: URL, processing: @escaping ASCApiProgressHandler) {
-        guard let provider = provider as? ASCOneDriveFileProvider else {
+        guard let provider = provider else {
             processing(0, nil, nil, nil)
             return
         }
@@ -588,7 +588,7 @@ extension ASCOneDriveProvider: ASCFileProviderProtocol {
         for entity in entities {
             operationQueue.addOperation {
                 let semaphore = DispatchSemaphore(value: 0)
-                provider.removeItem(path: entity.id, completionHandler: { error in
+                provider.removeItem(path: "id:\(entity.id)", completionHandler: { error in
                     if let error = error {
                         lastError = error
                     } else {
@@ -720,8 +720,106 @@ extension ASCOneDriveProvider: ASCFileProviderProtocol {
         }
     }
     
-    func chechTransfer(items: [ASCEntity], to folder: ASCFolder, handler: ASCEntityHandler?) { handler?(.end, nil, nil) }
-    func transfer(items: [ASCEntity], to folder: ASCFolder, move: Bool, overwrite: Bool, handler: ASCEntityProgressHandler?) { var cancel = false; handler?(.end, 1, nil, nil, &cancel) }
+    func chechTransfer(items: [ASCEntity], to folder: ASCFolder, handler: ASCEntityHandler?) {
+        guard let provider = provider else {
+            handler?(.error, nil, ASCProviderError(msg: errorProviderUndefined).localizedDescription)
+            return
+        }
+        
+        var conflictItems: [Any] = []
+        
+        handler?(.begin, nil, nil)
+        
+        let operationQueue = OperationQueue()
+        operationQueue.maxConcurrentOperationCount = 1
+        
+        for entity in items {
+            operationQueue.addOperation {
+                let semaphore = DispatchSemaphore(value: 0)
+                let file = entity as? ASCFile
+                provider.attributesOfItem(folderId: folder.id, fileName: file?.title ?? entity.id, completionHandler: { object, error in
+                    if error == nil, object != nil {
+                        conflictItems.append(entity)
+                    }
+                    semaphore.signal()
+                })
+                semaphore.wait()
+            }
+        }
+        
+        operationQueue.addOperation {
+            DispatchQueue.main.async(execute: {
+                handler?(.end, conflictItems, nil)
+            })
+        }
+    }
+    
+    func transfer(items: [ASCEntity], to folder: ASCFolder, move: Bool, overwrite: Bool, handler: ASCEntityProgressHandler?) {
+        var cancel = false
+        
+        guard let provider = provider else {
+            handler?(.end, 1, nil, ASCProviderError(msg: errorProviderUndefined).localizedDescription, &cancel)
+            return
+        }
+        
+        handler?(.begin, 0, nil, nil, &cancel)
+        
+        var lastError: Error?
+        var results: [ASCEntity] = []
+        
+        let operationQueue = OperationQueue()
+        operationQueue.maxConcurrentOperationCount = 1
+        
+        for (index, entity) in items.enumerated() {
+            operationQueue.addOperation {
+                if cancel {
+                    DispatchQueue.main.async(execute: {
+                        handler?(.end, 1, results, lastError?.localizedDescription, &cancel)
+                    })
+                    return
+                }
+                
+                let semaphore = DispatchSemaphore(value: 0)
+                
+                if move {
+                    _ = provider.moveItem(path: entity.id, to: folder.id, overwrite: overwrite, completionHandler: { error in
+                        if let error = error {
+                            lastError = error
+                        } else {
+                            results.append(entity)
+                        }
+                        DispatchQueue.main.async(execute: {
+                            handler?(.progress, Float(index) / Float(items.count), entity, error?.localizedDescription, &cancel)
+                        })
+                        semaphore.signal()
+                    })
+                } else {
+                    _ = provider.copyItem(path: entity.id, to: folder.id, overwrite: overwrite, completionHandler: { error in
+                        if let error = error {
+                            lastError = error
+                        } else {
+                            results.append(entity)
+                        }
+                        DispatchQueue.main.async(execute: {
+                            handler?(.progress, Float(index + 1) / Float(items.count), entity, error?.localizedDescription, &cancel)
+                        })
+                        semaphore.signal()
+                    })
+                }
+                semaphore.wait()
+            }
+        }
+        
+        operationQueue.addOperation {
+            DispatchQueue.main.async(execute: {
+                if items.count == results.count {
+                    handler?(.end, 1, results, nil, &cancel)
+                } else {
+                    handler?(.end, 1, results, lastError?.localizedDescription, &cancel)
+                }
+            })
+        }
+    }
 
     func allowRead(entity: AnyObject?) -> Bool { return true }
     func allowEdit(entity: AnyObject?) -> Bool { return true }

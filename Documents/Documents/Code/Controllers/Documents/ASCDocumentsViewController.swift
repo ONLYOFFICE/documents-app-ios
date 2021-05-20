@@ -3013,8 +3013,9 @@ class ASCDocumentsViewController: ASCBaseTableViewController, UIGestureRecognize
                     else { return }
 
                 let isTrash = strongSelf.isTrash(folder)
+                let isInsideTransfer = (strongSelf.provider?.id == provider.id) && !(strongSelf.provider is ASCGoogleDriveProvider)
 
-                if strongSelf.provider?.id == provider.id {
+                if isInsideTransfer {
                     strongSelf.insideCheckTransfer(items: items, to: folder, move: move, complation: { overwride, cancel in
                         if cancel {
                             completion?(nil)
@@ -3777,8 +3778,9 @@ extension ASCDocumentsViewController: UITableViewDropDelegate {
             let dstFolder = dstFolder
         {
             let move = srcProvider.allowDelete(entity: items.first)
-
-            if srcProvider.id != dstProvider.id {
+            let isInsideTransfer = (srcProvider.id == dstProvider.id) && !(srcProvider is ASCGoogleDriveProvider)
+            
+            if !isInsideTransfer {
                 var forceCancel = false
 
                 let transferAlert = ASCProgressAlert(

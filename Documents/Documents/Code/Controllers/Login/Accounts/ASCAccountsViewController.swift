@@ -269,6 +269,7 @@ class ASCAccountsViewController: ASCBaseViewController {
                 DispatchQueue.main.async { [weak self] in
                     guard let strongSelf = self else {
                         ASCOnlyOfficeApi.reset()
+                        hud?.hide(animated: true)
                         completion()
                         return
                     }

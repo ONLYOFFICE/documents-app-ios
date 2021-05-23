@@ -33,6 +33,10 @@ class ASCAccountsViewController: ASCBaseViewController {
         
         setupLayout()
         currentPage = 0
+        
+        self.view.subviews
+                .filter { $0 is UIButton }
+                .forEach { $0.isExclusiveTouch = true }
     }
     
     deinit {

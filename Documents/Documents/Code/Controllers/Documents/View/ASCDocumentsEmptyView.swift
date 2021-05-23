@@ -59,7 +59,7 @@ class ASCDocumentsEmptyView: UIView {
 
             isUserInteractionEnabled = true
             
-            actionButton.styleType = .action
+            actionButton?.styleType = .action
 //
 //            actionButton?.backgroundColor = ASCConstants.Colors.brendAction
 //            actionButton?.layer.cornerRadius = 5

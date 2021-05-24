@@ -418,6 +418,7 @@ extension ASCCloudsViewController {
 
         if indexPath.section == 0 {
             category = connected.count > 0 ? connected[indexPath.row] : login[indexPath.row]
+            tableView.cellForRow(at: indexPath)?.debounce(delay: 0.5)
         } else if indexPath.section == 1 {
             category = login[indexPath.row]
         }

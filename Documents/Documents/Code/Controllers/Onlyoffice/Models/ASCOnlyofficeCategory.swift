@@ -146,4 +146,76 @@ class ASCOnlyofficeCategory: ASCCategory {
             return nil
         }
     }
+    
+    // MARK: - Codable requires
+    override init() {
+        super.init()
+    }
+
+    required init(from decoder: Decoder) throws {
+        super.init()
+        try decode(from: decoder)
+    }
+}
+
+// MARK: - Codable realization
+extension ASCOnlyofficeCategory: Codable {
+    enum CodingKeys: String, CodingKey {
+        case title
+        case folderId
+        case rootFolderTypeRaw
+        case subtitle
+        case sort
+    }
+    
+    func encode(to encoder: Encoder) throws {
+        var container = encoder.container(keyedBy: CodingKeys.self)
+        
+        if let title = title {
+            try container.encode(title, forKey: .title)
+        }
+        if let folderId = self.folder?.id {
+            try container.encode(folderId, forKey: .folderId)
+        }
+        if let rootFolderType = folder?.rootFolderType {
+            try container.encode(rootFolderType.rawValue, forKey: .rootFolderTypeRaw)
+        }
+        if let subtitle = subtitle {
+            try container.encode(subtitle, forKey: .subtitle)
+        }
+        try container.encode(sortWeight, forKey: .sort)
+    }
+    
+    func decode(from decoder: Decoder) throws {
+        let values = try decoder.container(keyedBy: CodingKeys.self)
+        
+        title = try? values.decode(String.self, forKey: .title)
+        subtitle = try? values.decode(String.self, forKey: .subtitle)
+        sortWeight = try values.decode(Int.self, forKey: .sort)
+        
+        guard let rootFolderTypeRaw = try? values.decode(Int.self, forKey: .rootFolderTypeRaw),
+              let rootFolderType = ASCFolderType(rawValue: rootFolderTypeRaw),
+              let folderId = try? values.decode(String.self, forKey: .folderId)
+        else {
+            return
+        }
+        
+        let folder = ASCFolder()
+        folder.id = folderId
+        folder.rootFolderType = rootFolderType
+        folder.title = title ?? Self.title(of: rootFolderType)
+        image = Self.image(of: rootFolderType)
+        self.folder = folder
+    }
+}
+
+// MARK: - Equatable
+extension ASCOnlyofficeCategory: Equatable {
+    static func == (lhs: ASCOnlyofficeCategory, rhs: ASCOnlyofficeCategory) -> Bool {
+        return lhs.folder?.id == rhs.folder?.id
+            && lhs.folder?.rootFolderType == rhs.folder?.rootFolderType
+            && lhs.title == rhs.title
+            && lhs.subtitle == rhs.subtitle
+            && lhs.provider?.id == rhs.provider?.id
+    }
 }

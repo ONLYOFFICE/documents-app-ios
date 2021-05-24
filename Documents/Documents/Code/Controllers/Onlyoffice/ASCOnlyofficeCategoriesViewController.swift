@@ -17,6 +17,11 @@ class ASCOnlyofficeCategoriesViewController: UITableViewController {
     @IBOutlet weak var accountName: UILabel!
     @IBOutlet weak var accountPortal: UILabel!
 
+    private var currentlySelectedFolderType: ASCFolderType?
+    private let activityIndicator = UIActivityIndicatorView()
+    private var account: ASCAccount?
+    private let cacheManager: ASCOnlyofficeCacheCategoriesProvider = ASCOnlyofficeUserDefaultsCacheCategoriesProvider()
+    
     private lazy var categoriesProviderFactory = ASCOnlyofficeCategoriesProviderFactory()
     private var categoriesCurrentlyLoading: Bool {
         get {
@@ -24,19 +29,49 @@ class ASCOnlyofficeCategoriesViewController: UITableViewController {
         }
     }
     
-    private var categories: [ASCOnlyofficeCategory] = []
+    private var cachedCategories: [ASCOnlyofficeCategory] {
+        didSet {
+            if !cachedCategories.isEmpty {
+                hideActivityIndicator()
+            }
+        }
+    }
+    
+    private var loadedCategories: [ASCOnlyofficeCategory] {
+        didSet {
+            if !loadedCategories.isEmpty {
+                hideActivityIndicator()
+            }
+            if needUpdateCategoriesCache {
+                updateCategoriesCache()
+            }
+        }
+    }
+    
+    private var categories: [ASCOnlyofficeCategory] {
+        get {
+            loadedCategories.isEmpty ? cachedCategories : loadedCategories
+        }
+    }
 
+    private var needUpdateCategoriesCache: Bool {
+        guard !loadedCategories.isEmpty else { return false }
+        return cachedCategories != loadedCategories
+    }
+    
     private var needReloadTableViewDataWhenViewLoaded = false
 
     // MARK: - Lifecycle Methods
-
     required init?(coder aDecoder: NSCoder) {
+        cachedCategories = []
+        loadedCategories = []
+        
         super.init(coder: aDecoder)
-
+        
         needReloadTableViewDataWhenViewLoaded = true
         loadCategories { [self] in
             if viewIfLoaded != nil {
-                tableView.reloadData()
+                updateTableView()
             } else {
                 needReloadTableViewDataWhenViewLoaded = true
             }
@@ -59,14 +94,14 @@ class ASCOnlyofficeCategoriesViewController: UITableViewController {
         NotificationCenter.default.addObserver(self, selector: #selector(onOnlyofficeLogInCompleted(_:)), name: ASCConstants.Notifications.loginOnlyofficeCompleted, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(onOnlyofficeLogoutCompleted(_:)), name: ASCConstants.Notifications.logoutOnlyofficeCompleted, object: nil)
 
-        if categories.count < 1, !categoriesCurrentlyLoading {
+        if loadedCategories.isEmpty, !categoriesCurrentlyLoading {
             loadCategories {
-                self.tableView.reloadData()
+                self.updateTableView()
             }
         }
         
         if needReloadTableViewDataWhenViewLoaded {
-            tableView.reloadData()
+            updateTableView()
         }
 
         updateUserInfo()
@@ -89,6 +124,10 @@ class ASCOnlyofficeCategoriesViewController: UITableViewController {
 
         ASCViewControllerManager.shared.rootController?.tabBar.isHidden = false
         updateLargeTitlesSize()
+
+        if categories.isEmpty {
+            showActivityIndicator()
+        }
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -98,6 +137,31 @@ class ASCOnlyofficeCategoriesViewController: UITableViewController {
         navigationItem.largeTitleDisplayMode = .always
         
         fetchUpdateUserInfo()
+    }
+    
+    // MARK: - Categories activity indicator
+    private func showActivityIndicator() {
+        DispatchQueue.main.async { [weak self] in
+            guard let self = self else { return }
+            self.activityIndicator.translatesAutoresizingMaskIntoConstraints = false
+            
+            self.view.addSubview(self.activityIndicator)
+            
+            let tableHeaderHeigh = self.tableView.tableHeaderView?.height ?? 0
+            
+            self.activityIndicator.centerYAnchor.constraint(equalTo: self.view.centerYAnchor,
+                                                            constant: -tableHeaderHeigh - self.activityIndicator.height).isActive = true
+            self.activityIndicator.anchorCenterXToSuperview()
+            self.activityIndicator.startAnimating()
+        }
+    }
+    
+    private func hideActivityIndicator() {
+        DispatchQueue.main.async { [weak self] in
+            guard let self = self else { return }
+            self.activityIndicator.stopAnimating()
+            self.activityIndicator.removeFromSuperview()
+        }
     }
 
     func entrypointCategory() -> ASCOnlyofficeCategory {        
@@ -115,13 +179,6 @@ class ASCOnlyofficeCategoriesViewController: UITableViewController {
             return $0
         }(ASCOnlyofficeCategory())
     }
-
-    func loadCategories(completion: @escaping () -> Void) {
-        categoriesProviderFactory.get().loadCategories { [self] categories in
-            self.categories = categories
-            completion()
-        }
-    }
     
     private func fetchUpdateUserInfo() {
         if let onlyofficeProvider = ASCFileManager.onlyofficeProvider?.copy() as? ASCOnlyofficeProvider {
@@ -136,6 +193,7 @@ class ASCOnlyofficeCategoriesViewController: UITableViewController {
         }
     }
 
+    // MARK: - Evenet handlers
     @objc func updateUserInfo() {
         var hasInfo = false
 
@@ -149,7 +207,17 @@ class ASCOnlyofficeCategoriesViewController: UITableViewController {
                                            placeholder: Asset.Images.avatarDefault.image)
 
                 accountName?.text = user.displayName?.trimmed
-                accountPortal?.text = onlyofficeProvider.api.baseUrl?.trimmed
+                
+                let accountPortal = onlyofficeProvider.api.baseUrl?.trimmed
+                self.accountPortal?.text = accountPortal
+                
+                if let accountEmail = user.email,
+                   let accountPortalUnwraped = accountPortal,
+                   let account = ASCAccount(JSON: ["email": accountEmail, "portal": accountPortalUnwraped])
+                {
+                    self.account = account
+                    loadCachedCategories(provider: onlyofficeProvider)
+                }
             } else {
                 hasInfo = false
 
@@ -180,9 +248,9 @@ class ASCOnlyofficeCategoriesViewController: UITableViewController {
 
     @objc func onOnlyofficeLogInCompleted(_ notification: Notification) {
         loadCategories { [self] in
-            self.tableView?.reloadData()
+            updateTableView()
             
-            if categories.count > 0 {
+            if categories.count > 0, currentlySelectedFolderType == nil {
                 tableView?.selectRow(at: IndexPath(row: 0, section: 0), animated: false, scrollPosition: .none)
             }
         }
@@ -191,10 +259,50 @@ class ASCOnlyofficeCategoriesViewController: UITableViewController {
 
     @objc func onOnlyofficeLogoutCompleted(_ notification: Notification) {
         loadCategories {
-            self.tableView?.reloadData()
+            self.updateTableView()
         }
         
         updateUserInfo()
+    }
+    
+    // MARK: - Categories loading
+    func loadCategories(completion: @escaping () -> Void) {
+        categoriesProviderFactory.get().loadCategories { [self] categories in
+            self.loadedCategories =  categories
+            completion()
+        }
+    }
+    
+    private func loadCachedCategories(provider: ASCFileProviderProtocol) {
+        guard categories.isEmpty, let account = account else {
+            return
+        }
+        
+        DispatchQueue.global(qos: .userInteractive).async { [weak self] in
+            guard let self = self else { return }
+            let cachedCategories = self.cacheManager.getCategories(for: account)
+            
+            if self.categories.isEmpty, !cachedCategories.isEmpty {
+                self.cachedCategories = cachedCategories
+                DispatchQueue.main.async {
+                    self.updateTableView()
+                }
+            }
+        }
+    }
+    
+    private func updateCategoriesCache() {
+        if !loadedCategories.isEmpty,
+           cachedCategories != loadedCategories,
+           let account = self.account
+        {
+            DispatchQueue.global(qos: .background).async {
+                let error = self.cacheManager.save(for: account, categories: self.categories)
+                if error == nil {
+                    self.cachedCategories = self.loadedCategories
+                }
+            }
+        }
     }
 
     // MARK: - Actions
@@ -235,6 +343,13 @@ class ASCOnlyofficeCategoriesViewController: UITableViewController {
             }
         }
     }
+    
+    private func updateTableView() {
+        tableView.reloadData()
+        selectCurrentlyRow()
+    }
+    
+    // MARK: - Select row
 
     func select(category: ASCCategory, animated: Bool = false) {
         guard let splitVC = splitViewController else {
@@ -262,7 +377,6 @@ class ASCOnlyofficeCategoriesViewController: UITableViewController {
 
             splitVC.hideMasterController()
             
-            
             let onlyOfficeProvider = ASCFileManager.onlyofficeProvider?.copy() as? ASCOnlyofficeProvider
             onlyOfficeProvider?.category = category
             documentsVC.provider = onlyOfficeProvider
@@ -272,20 +386,28 @@ class ASCOnlyofficeCategoriesViewController: UITableViewController {
             documentsVC.navigationItem.leftBarButtonItem = splitVC.displayModeButtonItem
             documentsVC.navigationItem.leftItemsSupplementBackButton = UIDevice.pad
             
-            let selectRowFunc = { [self] in
-                if let index = categories.firstIndex(where: { $0.folder?.rootFolderType == documentsVC.folder?.rootFolderType }) {
-                    tableView.selectRow(at: IndexPath(row: index, section: 0), animated: false, scrollPosition: .none)
-                }
-            }
-            
-            if categories.count < 1 {
+            if loadedCategories.count < 1 {
+                currentlySelectedFolderType = documentsVC.folder?.rootFolderType
                 loadCategories {
-                    selectRowFunc()
                     self.tableView.reloadData()
+                    self.selectRow(with: documentsVC.folder?.rootFolderType)
                 }
             } else {
-                selectRowFunc()
+                selectRow(with: documentsVC.folder?.rootFolderType)
             }
+        }
+    }
+    
+    func selectCurrentlyRow() {
+        if let folderType = currentlySelectedFolderType {
+            selectRow(with: folderType)
+        }
+    }
+    
+    func selectRow(with folderType: ASCFolderType?) {
+        if let index = categories.firstIndex(where: { $0.folder?.rootFolderType == folderType }) {
+            tableView.selectRow(at: IndexPath(row: index, section: 0), animated: false, scrollPosition: .none)
+            self.currentlySelectedFolderType = folderType
         }
     }
 }

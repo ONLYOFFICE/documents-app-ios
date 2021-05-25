@@ -119,6 +119,10 @@ class ASCOneDriveFileProvider: OneDriveFileProvider {
     }
     
     override func moveItem(path: String, to toPath: String, overwrite: Bool, completionHandler: SimpleCompletionHandler) -> Progress? {
+        return self.moveItem(path: path, to: toPath, overwrite: overwrite, requestData: [:], completionHandler: completionHandler)
+    }
+    
+    func moveItem(path: String, to toPath: String, overwrite: Bool,  requestData: [String: Any], completionHandler: SimpleCompletionHandler) -> Progress? {
         let url = super.url(of: path, modifier: "")
         
         var request = URLRequest(url: url)
@@ -127,11 +131,11 @@ class ASCOneDriveFileProvider: OneDriveFileProvider {
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
         request.setValue(authentication: self.credential, with: .oAuth2)
         
-        var requestData: [String: Any] = [
-            "parentReference" : [
-                "id" : toPath.removingPrefix("id:")
-            ]
-        ]
+        var requestData = requestData
+        
+        if !toPath.isEmpty {
+            requestData["parentReference"] = ["id" : toPath.removingPrefix("id:")]
+        }
         if overwrite {
             requestData["@microsoft.graph.conflictBehavior"] = "replace"
         }

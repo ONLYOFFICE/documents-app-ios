@@ -569,7 +569,57 @@ extension ASCOneDriveProvider: ASCFileProviderProtocol {
         }
     }
     
-    func rename(_ entity: ASCEntity, to newName: String, completeon: ASCProviderCompletionHandler?) {}
+    func rename(_ entity: ASCEntity, to newName: String, completeon: ASCProviderCompletionHandler?) {
+        guard let provider = provider else {
+            completeon?(self, nil, false, ASCProviderError(msg: errorProviderUndefined))
+            return
+        }
+        
+        let file = entity as? ASCFile
+        let folder = entity as? ASCFolder
+        
+        if file == nil && folder == nil {
+            completeon?(self, nil, false, ASCProviderError(msg: NSLocalizedString("Unknown item type.", comment: "")))
+            return
+        }
+        
+        var entityId: String = ""
+        var entityName: String = ""
+        
+        let entityTitle = file?.title ?? folder?.title
+        
+        if let file = file {
+            let fileExtension = entityTitle?.fileExtension() ?? ""
+            entityId = file.id
+            entityName = newName + (fileExtension.length < 1 ? "" : ("." + fileExtension))
+        } else if let folder = folder {
+            entityId = folder.id
+            entityName = newName
+        }
+        
+        _ = provider.moveItem(path: entityId, to: "", overwrite: false, requestData: ["name": entityName]) { [weak self] error in
+            DispatchQueue.main.async(execute: { [weak self] in
+                guard let self = self else { return }
+                
+                guard error == nil else {
+                    completeon?(self, nil, false, ASCProviderError(error!))
+                    return
+                }
+                
+                if let file = file {
+                    file.title = entityName
+                    
+                    completeon?(self, file, true, nil)
+                } else if let folder = folder {
+                    folder.title = entityName
+                    
+                    completeon?(self, folder, true, nil)
+                } else {
+                    completeon?(self, nil, false, ASCProviderError(msg: NSLocalizedString("Unknown item type.", comment: "")))
+                }
+            })
+        }
+    }
     
     func favorite(_ entity: ASCEntity, favorite: Bool, completeon: ASCProviderCompletionHandler?) {}
     

@@ -18,6 +18,7 @@ enum Destination {
     
     case onlyofficeConnectPortal
     case onlyofficeSignIn(portal: String?)
+    case countryPhoneCodes
     
 }
 
@@ -69,6 +70,8 @@ final class ASCNavigator {
             let signinViewController = ASCSignInViewController.instance()
             signinViewController.portal = portal
             return signinViewController
+        case .countryPhoneCodes:
+            return ASCCountryCodeViewController.instance()
         }
     }
     

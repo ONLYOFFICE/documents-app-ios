@@ -22,7 +22,9 @@ class ASCOnlyofficeCategoriesProviderFactory {
             guard communityServerVersion.isVersion(greaterThanOrEqualTo: "11.5") else {
                 return provider
             }
-            provider = ASCOnlyofficeAPICategoriesProvider()
+            provider = ASCOnlyofficeCategoriesProviderFilterProxy(
+                categoriesProvider: ASCOnlyofficeAPICategoriesProvider(),
+                filter: { $0.folder?.rootFolderType != .unknown })
             return provider
         }
         

@@ -666,46 +666,70 @@ extension ASCOneDriveProvider: ASCFileProviderProtocol {
         }
         
         let fileTitle = name + "." + fileExtension
-        
-        // Copy empty template to desination path
-        if let templatePath = ASCFileManager.documentTemplatePath(with: fileExtension) {
-            let localUrl = Path(templatePath).url
-            
-            let remotePath = folder.id.contains("id:") ? "\(folder.id):/\(fileTitle):/" : (Path(folder.id) + fileTitle).rawValue
-            
-            operationProcess = provider.copyItem(localFile: localUrl, to: remotePath) { [weak self] error in
-                DispatchQueue.main.async(execute: { [weak self] in
-                    guard let self = self else { return }
-                    if let error = error {
-                        log.error(error.localizedDescription)
-                        completeon?(self, nil, false, ASCProviderError(error))
-                    } else {
-                        provider.attributesOfItem(path: remotePath, completionHandler: { [weak self] fileObject, error in
-                            DispatchQueue.main.async(execute: { [weak self] in
-                                guard let self = self else { return }
-                                
-                                if let error = error {
-                                    completeon?(self, nil, false, ASCProviderError(error))
-                                } else if let fileObject = fileObject {
-                                    
-                                    let cloudFile = self.makeCloudFile(from: fileObject)
-                                    
-                                    ASCAnalytics.logEvent(ASCConstants.Analytics.Event.createEntity, parameters: [
-                                        "portal": self.provider?.baseURL?.absoluteString ?? "none",
-                                        "onDevice": false,
-                                        "type": "file",
-                                        "fileExt": cloudFile.title.fileExtension().lowercased()
-                                        ]
-                                    )
-                                    
-                                    completeon?(self, cloudFile, true, nil)
-                                } else {
-                                    completeon?(self, nil, false, nil)
-                                }
-                            })
+        let file = ASCFile()
+        file.title = fileTitle
+        chechTransfer(items: [file], to: folder) { [self] (status, items, message) in
+            switch status {
+            case .end:
+                if let items = items as? [ASCEntity] {
+                    guard items.isEmpty else {
+                        log.error(status, items, message ?? "")
+                        completeon?(self, nil, false, nil)
+                        return
+                    }
+                }
+                
+                if let templatePath = ASCFileManager.documentTemplatePath(with: fileExtension) {
+                    let localUrl = Path(templatePath).url
+
+                    let remotePath = folder.id.contains("id:") ? "\(folder.id):/\(fileTitle):/" : (Path(folder.id) + fileTitle).rawValue
+
+                    operationProcess = provider.copyItem(localFile: localUrl, to: remotePath) { [weak self] error in
+                        if error != nil {
+                            guard let self = self else { return }
+                            log.error(error!.localizedDescription)
+                            completeon?(self, nil, false, ASCProviderError(error!))
+                        }
+                        DispatchQueue.main.async(execute: { [weak self] in
+                            guard let self = self else { return }
+                            if let error = error {
+                                log.error(error.localizedDescription)
+                                completeon?(self, nil, false, ASCProviderError(error))
+                            } else {
+                                provider.attributesOfItem(path: remotePath, completionHandler: { [weak self] fileObject, error in
+                                    DispatchQueue.main.async(execute: { [weak self] in
+                                        guard let self = self else { return }
+
+                                        if let error = error {
+                                            log.debug(error)
+                                            completeon?(self, nil, false, ASCProviderError(error))
+                                        } else if let fileObject = fileObject {
+
+                                            let cloudFile = self.makeCloudFile(from: fileObject)
+
+                                            ASCAnalytics.logEvent(ASCConstants.Analytics.Event.createEntity, parameters: [
+                                                "portal": self.provider?.baseURL?.absoluteString ?? "none",
+                                                "onDevice": false,
+                                                "type": "file",
+                                                "fileExt": cloudFile.title.fileExtension().lowercased()
+                                                ]
+                                            )
+
+                                            completeon?(self, cloudFile, true, nil)
+                                        } else {
+                                            log.debug("couldn't get a file")
+                                            completeon?(self, nil, false, nil)
+                                        }
+                                    })
+                                })
+                            }
                         })
                     }
-                })
+                }
+            case .error:
+                completeon?(self, nil, false, ASCProviderError(msg: message ?? ""))
+            default:
+                log.info(status, items ?? "", message ?? "")
             }
         }
     }

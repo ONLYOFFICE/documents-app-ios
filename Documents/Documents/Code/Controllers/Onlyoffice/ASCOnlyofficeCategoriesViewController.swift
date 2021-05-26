@@ -386,11 +386,12 @@ class ASCOnlyofficeCategoriesViewController: UITableViewController {
             documentsVC.navigationItem.leftBarButtonItem = splitVC.displayModeButtonItem
             documentsVC.navigationItem.leftItemsSupplementBackButton = UIDevice.pad
             
-            if loadedCategories.count < 1 {
+            if loadedCategories.isEmpty {
                 currentlySelectedFolderType = documentsVC.folder?.rootFolderType
-                loadCategories {
-                    self.tableView.reloadData()
-                    self.selectRow(with: documentsVC.folder?.rootFolderType)
+                if !categoriesCurrentlyLoading {
+                    loadCategories {
+                        self.updateTableView()
+                    }
                 }
             } else {
                 selectRow(with: documentsVC.folder?.rootFolderType)
@@ -406,7 +407,9 @@ class ASCOnlyofficeCategoriesViewController: UITableViewController {
     
     func selectRow(with folderType: ASCFolderType?) {
         if let index = categories.firstIndex(where: { $0.folder?.rootFolderType == folderType }) {
-            tableView.selectRow(at: IndexPath(row: index, section: 0), animated: false, scrollPosition: .none)
+            if UIDevice.pad {
+                tableView.selectRow(at: IndexPath(row: index, section: 0), animated: false, scrollPosition: .none)
+            }
             self.currentlySelectedFolderType = folderType
         }
     }

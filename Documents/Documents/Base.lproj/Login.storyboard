@@ -1492,11 +1492,8 @@ Authentication</string>
                         <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AqB-m0-2UQ">
-                                <rect key="frame" x="55" y="225.66666666666666" width="280" height="62.333333333333343"/>
-                                <string key="text">If a user with the 
-email exists, the password change instruction has
-been sent to this email address.</string>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="251" text="If a user with the email exists, the password change instruction has been sent to this email address." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AqB-m0-2UQ">
+                                <rect key="frame" x="55" y="347.66666666666669" width="280" height="46.333333333333314"/>
                                 <fontDescription key="fontDescription" style="UICTFontTextStyleSubhead"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -1525,15 +1522,20 @@ been sent to this email address.</string>
                                     <action selector="backToLogin:" destination="n6Q-7Q-QvC" eventType="touchUpInside" id="42r-PC-aoG"/>
                                 </connections>
                             </button>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="mail-notification" translatesAutoresizingMaskIntoConstraints="NO" id="pmm-RX-Ggj">
+                                <rect key="frame" x="95" y="127.66666666666669" width="200" height="200"/>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" name="view-background"/>
                         <constraints>
-                            <constraint firstItem="AqB-m0-2UQ" firstAttribute="top" secondItem="WMb-YQ-kN2" secondAttribute="bottom" constant="181.5" id="13J-M1-ejo"/>
                             <constraint firstItem="AqB-m0-2UQ" firstAttribute="centerX" secondItem="SbA-X0-ch6" secondAttribute="centerX" id="7MB-Hw-Thc"/>
                             <constraint firstItem="OHG-hv-GGj" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="SbA-X0-ch6" secondAttribute="leading" constant="20" id="CNA-5M-1pL"/>
                             <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="OHG-hv-GGj" secondAttribute="trailing" constant="20" id="DrZ-oR-Zyw"/>
                             <constraint firstItem="OHG-hv-GGj" firstAttribute="top" secondItem="WMb-YQ-kN2" secondAttribute="bottom" constant="400" id="EQI-Va-utt"/>
+                            <constraint firstItem="AqB-m0-2UQ" firstAttribute="top" secondItem="pmm-RX-Ggj" secondAttribute="bottom" constant="20" id="Grm-5K-qr9"/>
+                            <constraint firstItem="pmm-RX-Ggj" firstAttribute="centerX" secondItem="SbA-X0-ch6" secondAttribute="centerX" id="Kud-Zc-r7z"/>
                             <constraint firstItem="OHG-hv-GGj" firstAttribute="centerX" secondItem="SbA-X0-ch6" secondAttribute="centerX" id="VXV-QI-QRR"/>
+                            <constraint firstItem="OHG-hv-GGj" firstAttribute="top" secondItem="AqB-m0-2UQ" secondAttribute="bottom" constant="50" id="ZhF-J1-kJ9"/>
                             <constraint firstItem="OHG-hv-GGj" firstAttribute="width" secondItem="AqB-m0-2UQ" secondAttribute="width" id="a8j-RI-Zle"/>
                         </constraints>
                     </view>
@@ -1569,10 +1571,11 @@ been sent to this email address.</string>
         <image name="2fa-step-secret" width="267" height="259"/>
         <image name="bar-delete" width="30" height="30"/>
         <image name="category-logo" width="50" height="50"/>
+        <image name="mail-notification" width="200" height="200"/>
         <image name="signin-facebook" width="50" height="50"/>
         <image name="signin-google" width="50" height="50"/>
         <namedColor name="table-background">
-            <color red="0.94509803921568625" green="0.94509803921568625" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.94499999284744263" green="0.94499999284744263" blue="0.96899998188018799" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="view-background">
             <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

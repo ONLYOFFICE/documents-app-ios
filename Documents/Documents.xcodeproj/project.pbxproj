@@ -412,6 +412,7 @@
 		FCA4D5AA1E79728800ADD842 /* ASCEditorManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCA4D5A91E79728800ADD842 /* ASCEditorManager.swift */; };
 		FCA55B62265CD252004807C5 /* ASCOnlyofficeUserDefaultsCacheCategoriesProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D5DB0392658097E006B4757 /* ASCOnlyofficeUserDefaultsCacheCategoriesProvider.swift */; };
 		FCA55B63265CD25B004807C5 /* ASCOnlyofficeCacheCategoriesProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D5DB0342658086B006B4757 /* ASCOnlyofficeCacheCategoriesProvider.swift */; };
+		FCA55B78265FD104004807C5 /* ASCOnlyofficeCategoriesProviderFilterProxy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D12D35D265E467900C8C519 /* ASCOnlyofficeCategoriesProviderFilterProxy.swift */; };
 		FCA5B9291E48A2B500CD2EA9 /* ASCDocumentsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCA5B9281E48A2B500CD2EA9 /* ASCDocumentsViewController.swift */; };
 		FCA6946B2057ED9900ED8D8E /* Data+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCA6946A2057ED9800ED8D8E /* Data+Extension.swift */; };
 		FCA7500622BB91DE00991682 /* UIButton+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCA7500522BB91DE00991682 /* UIButton+Extensions.swift */; };
@@ -2784,6 +2785,7 @@
 				FC36D30C25B5C32200412DDB /* ASCOwnCloudProvider.swift in Sources */,
 				FC36D30D25B5C32200412DDB /* ASC2FAViewController.swift in Sources */,
 				FC36D30E25B5C32200412DDB /* ASCFileProviderType.swift in Sources */,
+				FCA55B78265FD104004807C5 /* ASCOnlyofficeCategoriesProviderFilterProxy.swift in Sources */,
 				FC36D30F25B5C32200412DDB /* ASCLogIntercepter.swift in Sources */,
 				FC36D31025B5C32200412DDB /* ASCDeviceSplitViewController.swift in Sources */,
 				FC36D31125B5C32200412DDB /* ASCCreateEntityView.swift in Sources */,

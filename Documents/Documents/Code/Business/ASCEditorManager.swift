@@ -2397,8 +2397,8 @@ class ASCEditorManager: NSObject, DEEditorDelegate, SEEditorDelegate, PEEditorDe
                     }
 
                     if let documentsVC = documentsVC {
-                        let openHandler = documentsVC.openProgressFile(title: NSLocalizedString("Processing", comment: "Caption of the processing") + "...", 0.15)
-                        let closeHandler = documentsVC.closeProgressFile(title: NSLocalizedString("Saving", comment: "Caption of the processing"))
+                        let openHandler = documentsVC.openProgress(file: file, title: NSLocalizedString("Processing", comment: "Caption of the processing") + "...", 0.15)
+                        let closeHandler = documentsVC.closeProgress(file: file, title: NSLocalizedString("Saving", comment: "Caption of the processing"))
 
                         strongSelf.openedFilePassword = password
                         strongSelf.editLocal(file, viewMode: strongSelf.openedFileInViewMode, openHandler: openHandler, closeHandler: closeHandler)
@@ -2474,8 +2474,8 @@ class ASCEditorManager: NSObject, DEEditorDelegate, SEEditorDelegate, PEEditorDe
                 }
 
                 if let documentsVC = documentsVC {
-                    let openHandler = documentsVC.openProgressFile(title: NSLocalizedString("Processing", comment: "Caption of the processing") + "...", 0.15)
-                    let closeHandler = documentsVC.closeProgressFile(title: NSLocalizedString("Saving", comment: "Caption of the processing"))
+                    let openHandler = documentsVC.openProgress(file: file, title: NSLocalizedString("Processing", comment: "Caption of the processing") + "...", 0.15)
+                    let closeHandler = documentsVC.closeProgress(file: file, title: NSLocalizedString("Saving", comment: "Caption of the processing"))
 
                     strongSelf.encoding = encoding
                     strongSelf.delimiter = delimiter + 1

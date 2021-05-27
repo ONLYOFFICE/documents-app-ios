@@ -34,8 +34,8 @@ typealias ASCProviderCompletionHandler = ((_ provider: ASCFileProviderProtocol, 
 // MARK: - ASCProviderDelegate protocol
 
 protocol ASCProviderDelegate {
-    func openProgressFile(title: String, _ progress: Float) -> ASCEditorManagerOpenHandler
-    func closeProgressFile(title: String) -> ASCEditorManagerCloseHandler
+    func openProgress(file: ASCFile, title: String, _ progress: Float) -> ASCEditorManagerOpenHandler
+    func closeProgress(file: ASCFile, title: String) -> ASCEditorManagerCloseHandler
     func updateItems(provider: ASCFileProviderProtocol)
     func presentShareController(provider: ASCFileProviderProtocol, entity: ASCEntity)
 }

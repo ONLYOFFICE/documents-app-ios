@@ -2502,7 +2502,8 @@ class ASCDocumentsViewController: ASCBaseTableViewController, UIGestureRecognize
                 // Force reset open recover version
                 UserDefaults.standard.removeObject(forKey: ASCConstants.SettingsKeys.openedDocumentModifity)
               
-                let closeHandler = closeProgressFile(
+                let closeHandler = closeProgress(
+                    file: file, 
                     title: NSLocalizedString("Saving", comment: "Caption of the processing")
                 )
                 
@@ -3573,7 +3574,8 @@ extension ASCDocumentsViewController: MGSwipeTableCellDelegate {
 // MARK: - ASCProvider Delegate
 
 extension ASCDocumentsViewController: ASCProviderDelegate {
-    func openProgressFile(title: String, _ progress: Float) -> ASCEditorManagerOpenHandler {
+    
+    func openProgress(file: ASCFile, title: String, _ progress: Float) -> ASCEditorManagerOpenHandler {
         var forceCancel = false
         let openingAlert = ASCProgressAlert(title: title, message: nil, handler: { cancel in
             forceCancel = cancel
@@ -3610,9 +3612,10 @@ extension ASCDocumentsViewController: ASCProviderDelegate {
         return openHandler
     }
 
-    func closeProgressFile(title: String) -> ASCEditorManagerCloseHandler {
+    func closeProgress(file: ASCFile, title: String) -> ASCEditorManagerCloseHandler {
         var hud: MBProgressHUD? = nil
 
+        let originalFile = file
         let closeHandler: ASCEditorManagerCloseHandler = { [weak self] status, progress, file, error, cancel in
             log.info("Close file progress. Status: \(status), progress: \(progress), error: \(String(describing: error))")
 
@@ -3645,7 +3648,8 @@ extension ASCDocumentsViewController: ASCProviderDelegate {
                 let updateFileInfo = {
                     if let newFile = file {
                         if let index = strongSelf.tableData.firstIndex(where: { (entity) -> Bool in
-                            (entity as? ASCFile)?.id == newFile.id
+                            guard let file = entity as? ASCFile else { return false }
+                            return file.id == newFile.id || file.id == originalFile.id
                         }) {
 //                            strongSelf.tableData[index] = newFile
                             strongSelf.provider?.items[index] = newFile

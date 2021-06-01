@@ -918,7 +918,7 @@ class ASCEntityManager: NSObject, UITextFieldDelegate {
                         }
 
                         let normalizeCurrentProgress = sizeOfCommonProgress / Float(files.count) * Float(progress)
-                        handler(commonProgress + localProgress + normalizeCurrentProgress, false, false, nil, nil, &cancel)
+                         handler(commonProgress + localProgress + normalizeCurrentProgress, false, false, nil, nil, &cancel)
 
                         if nil != error || nil != result {
                             if let error = error {
@@ -1148,7 +1148,7 @@ class ASCEntityManager: NSObject, UITextFieldDelegate {
                         let errorFilesUids = errorFiles.map { $0.uid }
                         let movedItems = from.items.filter { !errorFilesUids.contains($0.uid) }
                         
-                        srcProvider.delete(movedItems, from: srcParent, completeon: { provider, result, success, error in
+                        srcProvider.delete(movedItems, from: srcParent, move: move, completeon: { provider, result, success, error in
                             semaphore.signal()
                         })
                     })

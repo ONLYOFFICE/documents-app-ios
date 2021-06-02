@@ -134,7 +134,9 @@ class ASCOneDriveFileProvider: OneDriveFileProvider {
         var requestData = requestData
         
         if !toPath.isEmpty {
-            requestData["parentReference"] = ["id" : toPath.removingPrefix("id:")]
+            requestData["parentReference"] = toPath.hasPrefix("id")
+                ? ["id"  : toPath.removingPrefix("id:")]
+                : ["path": toPath]
         }
         if overwrite {
             requestData["@microsoft.graph.conflictBehavior"] = "replace"
@@ -159,11 +161,12 @@ class ASCOneDriveFileProvider: OneDriveFileProvider {
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
         request.setValue(authentication: self.credential, with: .oAuth2)
         
-        var requestData: [String: Any] = [
-            "parentReference" : [
-                "id" : toPath.removingPrefix("id:")
-            ]
-        ]
+        var requestData: [String: Any] = [:]
+
+        requestData["parentReference"] = toPath.hasPrefix("id")
+            ? ["id"  : toPath.removingPrefix("id:")]
+            : ["path": toPath]
+            
         if overwrite {
             requestData["@microsoft.graph.conflictBehavior"] = "replace"
         }

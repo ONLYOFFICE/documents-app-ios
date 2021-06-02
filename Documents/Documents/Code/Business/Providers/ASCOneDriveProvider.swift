@@ -843,7 +843,7 @@ extension ASCOneDriveProvider: ASCFileProviderProtocol {
         
         let operationQueue = OperationQueue()
         operationQueue.maxConcurrentOperationCount = 1
-        
+        let destPath = folder.id.isEmpty ? "/drive/root:" : folder.id
         for (index, entity) in items.enumerated() {
             operationQueue.addOperation {
                 if cancel {
@@ -856,7 +856,7 @@ extension ASCOneDriveProvider: ASCFileProviderProtocol {
                 let semaphore = DispatchSemaphore(value: 0)
                 
                 if move {
-                    _ = provider.moveItem(path: entity.id, to: folder.id, overwrite: overwrite, completionHandler: { error in
+                    _ = provider.moveItem(path: entity.id, to: destPath, overwrite: overwrite, completionHandler: { error in
                         if let error = error {
                             lastError = error
                         } else {
@@ -868,7 +868,7 @@ extension ASCOneDriveProvider: ASCFileProviderProtocol {
                         semaphore.signal()
                     })
                 } else {
-                    _ = provider.copyItem(path: entity.id, to: folder.id, overwrite: overwrite, completionHandler: { error in
+                    _ = provider.copyItem(path: entity.id, to: destPath, overwrite: overwrite, completionHandler: { error in
                         if let error = error {
                             lastError = error
                         } else {

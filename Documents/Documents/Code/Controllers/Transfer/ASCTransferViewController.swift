@@ -49,6 +49,8 @@ class ASCTransferViewController: UITableViewController {
             return Asset.Images.cloudWebdav.image
         case .icloud:
             return Asset.Images.cloudIcloud.image
+        case .onedrive:
+            return Asset.Images.cloudOnedrive.image
         default:
             return nil
         }

@@ -162,7 +162,8 @@ class ASCDocumentsViewController: ASCBaseTableViewController, UIGestureRecognize
 
         configureNavigationBar(animated: false)
         configureProvider()
-
+        configureSwipeGesture()
+        
         let addObserver: (Notification.Name, Selector) -> Void = { name, selector in
             NotificationCenter.default.addObserver(
                 self,
@@ -227,6 +228,14 @@ class ASCDocumentsViewController: ASCBaseTableViewController, UIGestureRecognize
 
         ASCViewControllerManager.shared.rootController?.tabBar.isHidden = tableView.isEditing
         updateLargeTitlesSize()
+        
+        if folder?.parent == nil {
+            splitViewController?.presentsWithGesture = true
+            let gesture = view.gestureRecognizers?.filter { $0.name == "swipeRight" }
+            gesture?.first?.isEnabled = false
+        } else {
+            splitViewController?.presentsWithGesture = false
+        }
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -541,6 +550,12 @@ class ASCDocumentsViewController: ASCBaseTableViewController, UIGestureRecognize
         guard view.isUserInteractionEnabled else { return }
         setEditMode(true)
         flashBlockInteration()
+    }
+    
+    @objc func popViewController(gesture: UISwipeGestureRecognizer) -> Void {
+        if gesture.direction == .right {
+        navigationController?.popViewController(animated: true)
+       }
     }
     
     // MARK: - Private
@@ -2261,6 +2276,13 @@ class ASCDocumentsViewController: ASCBaseTableViewController, UIGestureRecognize
 
         sharedNavigationVC.view.tintColor = self.view.tintColor
         parent.present(sharedNavigationVC, animated: true, completion: nil)
+    }
+    
+    private func configureSwipeGesture() {
+        let swipeToPreviousFolder = UISwipeGestureRecognizer(target: self, action: #selector(popViewController))
+        swipeToPreviousFolder.direction = .right
+        swipeToPreviousFolder.name = "swipeRight"
+        self.view.addGestureRecognizer(swipeToPreviousFolder)
     }
 
     // MARK: - Table view data source

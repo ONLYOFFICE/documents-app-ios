@@ -180,6 +180,9 @@ class ASCSettingsViewController: UITableViewController, MFMailComposeViewControl
                     SDImageCache.shared.clearMemory()
                     SDImageCache.shared.clearDisk()
                     
+                    // Clear categories
+                    ASCOnlyofficeUserDefaultsCacheCategoriesProvider().clearCache()
+                    
                     hud.setSuccessState()
                     hud.hide(animated: true, afterDelay: 2)
                     

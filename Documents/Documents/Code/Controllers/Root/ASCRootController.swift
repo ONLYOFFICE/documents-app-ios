@@ -145,11 +145,7 @@ class ASCRootController: UITabBarController {
                     isFirstOpenOnlyofficeCategory = true
                     
                     if let folder = folder {
-                        let category: ASCOnlyofficeCategory = {
-                            $0.title = ASCOnlyofficeCategory.title(of: folder.rootFolderType)
-                            $0.folder = ASCOnlyofficeCategory.folder(of: folder.rootFolderType)
-                            return $0
-                        }(ASCOnlyofficeCategory())
+                        let category = ASCOnlyofficeCategory(folder: folder)
 
                         /// Display root folder of category
                         categoryVC.select(category: category)

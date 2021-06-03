@@ -26,6 +26,18 @@ extension String {
         return range(of: regex, options: .regularExpression, range: nil, locale: nil) != nil
     }
     
+    /// String with no spaces or new lines in beginning and end.
+    ///
+    ///     "   hello  \n".trimmed -> "hello"
+    ///
+    var trimmed: String {
+        return self.trimmingCharacters(in: .whitespacesAndNewlines)
+    }
+    
+    var dateFromISO8601: Date? {
+        return Date.iso8601Formatter.date(from: self)
+    }
+    
     subscript (i: Int) -> String {
         return self[i ..< i + 1]
     }
@@ -44,6 +56,37 @@ extension String {
         let start = index(startIndex, offsetBy: range.lowerBound)
         let end = index(start, offsetBy: range.upperBound - range.lowerBound)
         return String(self[start ..< end])
+    }
+    
+    /// Safely subscript string with index.
+    ///
+    ///        "Hello World!"[safe: 3] -> "l"
+    ///        "Hello World!"[safe: 20] -> nil
+    ///
+    /// - Parameter index: index.
+    subscript(safe index: Int) -> Character? {
+        guard index >= 0, index < count else { return nil }
+        return self[self.index(startIndex, offsetBy: index)]
+    }
+
+    /// Safely subscript string within a given range.
+    ///
+    ///        "Hello World!"[safe: 6..<11] -> "World"
+    ///        "Hello World!"[safe: 21..<110] -> nil
+    ///
+    ///        "Hello World!"[safe: 6...11] -> "World!"
+    ///        "Hello World!"[safe: 21...110] -> nil
+    ///
+    /// - Parameter range: Range expression.
+    subscript<R>(safe range: R) -> String? where R: RangeExpression, R.Bound == Int {
+        let range = range.relative(to: Int.min..<Int.max)
+        guard range.lowerBound >= 0,
+            let lowerIndex = index(startIndex, offsetBy: range.lowerBound, limitedBy: endIndex),
+            let upperIndex = index(startIndex, offsetBy: range.upperBound, limitedBy: endIndex) else {
+            return nil
+        }
+
+        return String(self[lowerIndex..<upperIndex])
     }
     
     static func fileSizeToString(with size: UInt64) -> String {
@@ -77,20 +120,12 @@ extension String {
         }
     }
     
-    var dateFromISO8601: Date? {
-        return Date.iso8601Formatter.date(from: self)
-    }
-    
     func fileName() -> String {
         return ((self as NSString).deletingPathExtension as NSString).lastPathComponent
     }
     
     func fileExtension() -> String {
         return (self as NSString).pathExtension
-    }
-    
-    func trim() -> String {
-        return self.trimmingCharacters(in: .whitespacesAndNewlines)
     }
 
     /// Verify if string matches the regex pattern.
@@ -171,7 +206,7 @@ extension String {
     ///
     var validPathName: String {
         return self
-            .trim()
+            .trimmed
             .components(separatedBy: CharacterSet(charactersIn: String.invalidTitleChars))
             .filter({ $0.count > 0 })
             .joined(separator: "-")

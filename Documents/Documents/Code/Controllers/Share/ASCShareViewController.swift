@@ -214,7 +214,7 @@ class ASCShareViewController: UIViewController, UITableViewDelegate, UITableView
         ]
         let sharesParams = sharesToParams(shares: [
             [
-                "ShareTo": itemId,
+                "ShareTo": itemId ?? "",
                 "Access": ASCShareAccess.none.rawValue
             ]
         ])
@@ -300,7 +300,7 @@ class ASCShareViewController: UIViewController, UITableViewDelegate, UITableView
     // MARK: - Navigation
     
     override func shouldPerformSegue(withIdentifier identifier: String, sender: Any?) -> Bool {
-        if identifier == "segueAccessShare" {
+        if identifier == StoryboardSegue.Share.segueAccessShare.rawValue {
             if let sharedCell = sender as? ASCShareCell, sharedCell.share?.locked ?? true {
                 return false
             }
@@ -310,25 +310,12 @@ class ASCShareViewController: UIViewController, UITableViewDelegate, UITableView
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "segueAddShare" {
-            if let sharedItemsController = segue.destination as? ASCShareItemsViewController {
-                sharedItemsController.existUsers = users
-                sharedItemsController.existGroups = groups
-                sharedItemsController.showUsers = showUsers
-                sharedItemsController.allowReview = allowReview
-                sharedItemsController.callback = { shares in
-                    if self.showUsers {
-                        self.users += shares
-                    } else {
-                        self.groups += shares
-                    }
-                    
-                    self.modifed = true
-                    self.tableView.reloadData()
-                    self.displayEmptyViewIfNeed()
-                }
-            }
-        } else if segue.identifier == "segueAccessShare" {
+        guard let identifier = segue.identifier else { return }
+        
+        let shareSegue = StoryboardSegue.Share(rawValue: identifier)
+        
+        switch shareSegue {
+        case .segueAccessShare:
             if let sharedAccessController = segue.destination as? ASCShareAccessViewController {
                 sharedAccessController.allowReview = allowReview
                 
@@ -351,7 +338,26 @@ class ASCShareViewController: UIViewController, UITableViewDelegate, UITableView
                     }
                 }
             }
-        }
-        
+        case .segueAddShare:
+            if let sharedItemsController = segue.destination as? ASCShareItemsViewController {
+                sharedItemsController.existUsers = users
+                sharedItemsController.existGroups = groups
+                sharedItemsController.showUsers = showUsers
+                sharedItemsController.allowReview = allowReview
+                sharedItemsController.callback = { shares in
+                    if self.showUsers {
+                        self.users += shares
+                    } else {
+                        self.groups += shares
+                    }
+                    
+                    self.modifed = true
+                    self.tableView.reloadData()
+                    self.displayEmptyViewIfNeed()
+                }
+            }
+        case .none:
+            break
+        }        
      }
 }

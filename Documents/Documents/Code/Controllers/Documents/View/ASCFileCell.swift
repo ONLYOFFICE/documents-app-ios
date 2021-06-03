@@ -27,7 +27,7 @@ class ASCFileCell: MGSwipeTableCell {
             updateData()
         }
     }
-    var provider: ASCBaseFileProvider?
+    var provider: ASCFileProviderProtocol?
 
     fileprivate lazy var dateFormatter: DateFormatter = {
         let formatter = DateFormatter()
@@ -49,7 +49,7 @@ class ASCFileCell: MGSwipeTableCell {
         super.setSelected(selected, animated: animated)
 
         selectedBackgroundView = UIView()
-        selectedBackgroundView?.backgroundColor = UIColor(named: "table-cell-selected")
+        selectedBackgroundView?.backgroundColor = Asset.Colors.tableCellSelected.color
     }
 
     func updateData() {
@@ -61,10 +61,10 @@ class ASCFileCell: MGSwipeTableCell {
         }
 
         title?.text = fileInfo.title
-        owner?.text = fileInfo.updatedBy?.displayName ?? NSLocalizedString("Unknown", comment: "Invalid entity name")
+        owner?.text = fileInfo.updatedBy?.displayName
         date?.text = (fileInfo.updated != nil)
             ? dateFormatter.string(from: fileInfo.updated!)
-            : NSLocalizedString("Unknown", comment: "Invalid entity name")
+            : nil
         
         if fileInfo.pureContentLength < 1 {
             if fileInfo.device {
@@ -86,7 +86,7 @@ class ASCFileCell: MGSwipeTableCell {
                 let editImage = UIImage(
                     systemName: "pencil",
                     withConfiguration: UIImage.SymbolConfiguration(font: UIFont.systemFont(ofSize: 13, weight: .black))
-                )?.withTintColor(ASCConstants.Colors.brend, renderingMode: .alwaysOriginal) ?? UIImage()
+                )?.withTintColor(Asset.Colors.brend.color, renderingMode: .alwaysOriginal) ?? UIImage()
                 
                 title?.addTrailing(image: editImage)
             }
@@ -95,7 +95,7 @@ class ASCFileCell: MGSwipeTableCell {
                 let favoriteImage = UIImage(
                     systemName: "star.fill",
                     withConfiguration: UIImage.SymbolConfiguration(font: UIFont.systemFont(ofSize: 13, weight: .medium))
-                )?.withTintColor(ASCConstants.Colors.brend, renderingMode: .alwaysOriginal) ?? UIImage()
+                )?.withTintColor(Asset.Colors.brend.color, renderingMode: .alwaysOriginal) ?? UIImage()
                 
                 title?.addTrailing(image: favoriteImage)
             }
@@ -114,14 +114,14 @@ class ASCFileCell: MGSwipeTableCell {
                 icon?.alpha = 0
                 
                 guard let provider = provider else {
-                    icon?.image = UIImage(named: "list-format-image")
+                    icon?.image = Asset.Images.listFormatImage.image
                     return
                 }
 
                 icon?.kf.setProviderImage(
                     with: provider.absoluteUrl(from: fileInfo.viewUrl),
                     for: provider,
-                    placeholder: UIImage(named: "list-format-image"),
+                    placeholder: Asset.Images.listFormatImage.image,
                     completionHandler: { [weak self] result in
                         switch result {
                         case .success(_):
@@ -137,20 +137,29 @@ class ASCFileCell: MGSwipeTableCell {
                     }
                 )
             } else {
-                icon?.image = UIImage(named: "list-format-image")
+                icon?.image = Asset.Images.listFormatImage.image
             }
         } else if ASCConstants.FileExtensions.documents.contains(fileExt) {
-            icon?.image = UIImage(named: "list-format-document")
+            icon?.image = Asset.Images.listFormatDocument.image
         } else if ASCConstants.FileExtensions.spreadsheets.contains(fileExt) {
-            icon?.image = UIImage(named: "list-format-spreadsheet")
+            icon?.image = Asset.Images.listFormatSpreadsheet.image
         } else if ASCConstants.FileExtensions.presentations.contains(fileExt) {
-            icon?.image = UIImage(named: "list-format-presentation")
+            icon?.image = Asset.Images.listFormatPresentation.image
         } else if ASCConstants.FileExtensions.videos.contains(fileExt) {
-            icon?.image = UIImage(named: "list-format-video")
+            icon?.image = Asset.Images.listFormatVideo.image
         } else if fileExt == "pdf" {
-            icon?.image = UIImage(named: "list-format-pdf")
+            icon?.image = Asset.Images.listFormatPdf.image
         } else {
-            icon?.image = UIImage(named: "list-format-unknown")
+            icon?.image = Asset.Images.listFormatUnknown.image
+        }
+        
+        if let rootFolderType = file?.parent?.rootFolderType {
+            switch rootFolderType {
+            case .icloudAll:
+                owner?.text = nil
+            default:
+                break
+            }
         }
     }
 }

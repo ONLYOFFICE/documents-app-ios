@@ -172,8 +172,6 @@ class ASCConstants {
     }
     
     struct Colors {
-        static var brend        : UIColor { return UIColor(hex: "#2d6bb0") }
-        static var brendAction  : UIColor { return UIColor(hex: "#007bff") }
         static var red          : UIColor { if #available(iOS 13.0, *) { return  UIColor.systemRed   } else { return UIColor(hex: "#ff3b30") } }
         static var darkerGrey   : UIColor { if #available(iOS 13.0, *) { return  UIColor.systemGray  } else { return UIColor(hex: "#424245") } }
         static var darkGrey     : UIColor { if #available(iOS 13.0, *) { return  UIColor.systemGray2 } else { return UIColor(hex: "#555555") } }
@@ -186,6 +184,19 @@ class ASCConstants {
         static let domainPromo          = "promo"
         static let domainDocuments      = "documents"
         static let promoKeywords        = ["ONLYOFFICE"]
+    }
+    
+    struct Locale {
+        static let defaultLangCode = "EN"
+        static let avalibleLangCodes = ["EN", "RU", "FR", "DE", "ES", "CS"]
+    }
+    
+    struct Feature {
+        // Hide the searchbar in the navigationbar if the list of documents is empty
+        static let hideSearchbarIfEmpty = false
+        
+        // Allow iCloud provider
+        static let allowiCloud = true
     }
 
     static func remoteConfigValue(forKey key: String) -> RemoteConfigValue? {

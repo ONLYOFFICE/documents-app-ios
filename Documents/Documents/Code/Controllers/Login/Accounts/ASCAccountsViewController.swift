@@ -10,8 +10,10 @@ import UIKit
 import MBProgressHUD
 import Firebase
 
-class ASCAccountsViewController: UIViewController {
+class ASCAccountsViewController: ASCBaseViewController {
 
+    // MARK: - Outlets
+    
     @IBOutlet weak var accountsCollectionView: UICollectionView!
     @IBOutlet weak var displayNameLabel: UILabel!
     @IBOutlet weak var portalLabel: UILabel!
@@ -19,6 +21,8 @@ class ASCAccountsViewController: UIViewController {
     @IBOutlet weak var continueButton: UIButton!
     @IBOutlet weak var accountInfoTopConstraint: NSLayoutConstraint!
 
+    // MARK: - Lifecycle
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -29,6 +33,10 @@ class ASCAccountsViewController: UIViewController {
         
         setupLayout()
         currentPage = 0
+        
+        self.view.subviews
+                .filter { $0 is UIButton }
+                .forEach { $0.isExclusiveTouch = true }
     }
     
     deinit {
@@ -151,8 +159,7 @@ class ASCAccountsViewController: UIViewController {
     
     private func switchVCSingle() {
         if ASCAccountsManager.shared.accounts.count < 1 {
-            let connectPortalVC = ASCConnectPortalViewController.instantiate(from: Storyboard.login)
-            navigationController?.viewControllers = [connectPortalVC]
+            navigator.navigate(to: .onlyofficeConnectPortal)
         }
     }
 
@@ -235,6 +242,15 @@ class ASCAccountsViewController: UIViewController {
                 })
                 semaphore.wait()
             }
+            
+            // Check portal version
+            requestQueue.addOperation {
+                let semaphore = DispatchSemaphore(value: 0)
+                self.checkServersVersion(baseUrl, completion: { success, errorMessage in
+                    semaphore.signal()
+                })
+                semaphore.wait()
+            }
 
             // Check read user info
             requestQueue.addOperation {
@@ -257,6 +273,7 @@ class ASCAccountsViewController: UIViewController {
                 DispatchQueue.main.async { [weak self] in
                     guard let strongSelf = self else {
                         ASCOnlyOfficeApi.reset()
+                        hud?.hide(animated: true)
                         completion()
                         return
                     }
@@ -390,7 +407,7 @@ extension ASCAccountsViewController: UICollectionViewDataSource {
             let avatarUrl = absoluteUrl(from: URL(string: account.avatar ?? ""), for: account.portal ?? "")
 
             cell.imageView.kf.apiSetImage(with: avatarUrl,
-                                          placeholder: UIImage(named: "avatar-default"))
+                                          placeholder: Asset.Images.avatarDefault.image)
 
             return cell
         }

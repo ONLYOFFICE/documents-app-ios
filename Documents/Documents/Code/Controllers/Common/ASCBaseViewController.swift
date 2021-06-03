@@ -10,6 +10,10 @@ import UIKit
 
 class ASCBaseViewController: UIViewController {
 
+    // MARK: - Properties
+    
+    lazy var navigator = ASCNavigator(navigationController: navigationController)
+    
     // MARK: - Lifecycle Methods
     
     override func viewDidLoad() {
@@ -26,5 +30,15 @@ class ASCBaseViewController: UIViewController {
     
     override var preferredInterfaceOrientationForPresentation: UIInterfaceOrientation {
         return super.preferredInterfaceOrientationForPresentation
+    }
+    
+    // MARK: - Create
+    
+    public class var storyboard: Storyboard {
+        fatalError("Storyboard not defined:\(String(describing: self))")
+    }
+    
+    public class func instance() -> Self {
+        return instantiate(from: storyboard)
     }
 }

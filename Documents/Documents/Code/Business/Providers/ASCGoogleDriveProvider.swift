@@ -13,7 +13,7 @@ import GTMSessionFetcher
 import FileKit
 import Firebase
 
-class ASCGoogleDriveProvider: ASCBaseFileProvider {
+class ASCGoogleDriveProvider: ASCFileProviderProtocol & ASCSortableFileProviderProtocol {
 
     // MARK: - Properties
 
@@ -55,6 +55,9 @@ class ASCGoogleDriveProvider: ASCBaseFileProvider {
         }
     }
     var delegate: ASCProviderDelegate?
+
+    internal var folder: ASCFolder?
+    internal var fetchInfo: [String : Any?]?
 
     private let googleDriveService = GTLRDriveService()
     private var googleUser: GIDGoogleUser?
@@ -120,7 +123,7 @@ class ASCGoogleDriveProvider: ASCBaseFileProvider {
         googleDriveService.authorizer = googleUser?.authentication.fetcherAuthorizer()
     }
 
-    func copy() -> ASCBaseFileProvider {
+    func copy() -> ASCFileProviderProtocol {
         let copy = ASCGoogleDriveProvider()
         
         copy.items = items
@@ -184,6 +187,26 @@ class ASCGoogleDriveProvider: ASCBaseFileProvider {
         }
     }
     
+    func add(item: ASCEntity, at index: Int) {
+        if !items.contains(where: { $0.uid == item.uid }) {
+            items.insert(item, at: index)
+            total += 1
+        }
+    }
+    
+    func add(items: [ASCEntity], at index: Int) {
+        let uniqItems = items.filter { (item) -> Bool in
+            return !self.items.contains(where: { $0.uid == item.uid })
+        }
+        self.items.insert(contentsOf: uniqItems, at: index)
+        self.total += uniqItems.count
+    }
+    
+    func remove(at index: Int) {
+        items.remove(at: index)
+        total -= 1
+    }
+    
     func isReachable(completionHandler: @escaping (_ success: Bool, _ error: Error?) -> Void) {
         DispatchQueue.main.async(execute: { [weak self] in
             self?.userInfo { success, error in
@@ -213,37 +236,13 @@ class ASCGoogleDriveProvider: ASCBaseFileProvider {
     /// Sort records
     ///
     /// - Parameters:
-    ///   - info: Sort information as dictinory
-    ///   - folders: Sorted folders
-    ///   - files: Sorted files
-    private func sort(by info: [String: Any], folders: inout [ASCFolder], files: inout [ASCFile]) {
-        let sortBy      = info["type"] as? String ?? "title"
-        let sortOrder   = info["order"] as? String ?? "ascending"
-
-        if sortBy == "title" {
-            folders = sortOrder == "ascending"
-                ? folders.sorted { $0.title < $1.title }
-                : folders.sorted { $0.title > $1.title }
-            files = sortOrder == "ascending"
-                ? files.sorted { $0.title < $1.title }
-                : files.sorted { $0.title > $1.title }
-        } else if sortBy == "type" {
-            files = sortOrder == "ascending"
-                ? files.sorted { $0.title.fileExtension().lowercased() < $1.title.fileExtension().lowercased() }
-                : files.sorted { $0.title.fileExtension().lowercased() > $1.title.fileExtension().lowercased() }
-        } else if sortBy == "dateandtime" {
-            let nowDate = Date()
-            folders = sortOrder == "ascending"
-                ? folders.sorted { $0.created ?? nowDate < $1.created ?? nowDate }
-                : folders.sorted { $0.created ?? nowDate > $1.created ?? nowDate }
-            files = sortOrder == "ascending"
-                ? files.sorted { $0.updated ?? nowDate < $1.updated ?? nowDate }
-                : files.sorted { $0.updated ?? nowDate > $1.updated ?? nowDate }
-        } else if sortBy == "size" {
-            files = sortOrder == "ascending"
-                ? files.sorted { $0.pureContentLength < $1.pureContentLength }
-                : files.sorted { $0.pureContentLength > $1.pureContentLength }
+    ///   - completeon: a closure with result of sort entries or error
+    func updateSort(completeon: ASCProviderCompletionHandler?) {
+        if let sortInfo = fetchInfo?["sort"] as? [String : Any] {
+            sort(by: sortInfo, entities: &items)
+            total = items.count
         }
+        completeon?(self, folder, true, nil)
     }
 
     /// Fetch an Array of 'ASCEntity's identifying the directory entries via asynchronous completion handler.
@@ -257,6 +256,8 @@ class ASCGoogleDriveProvider: ASCBaseFileProvider {
             completeon?(self, folder, false, nil)
             return
         }
+        
+        self.folder = folder
         
         let fetch: ((_ completeon: ASCProviderCompletionHandler?) -> Void) = { [weak self] completeon in
             guard let strongSelf = self else { return }
@@ -279,7 +280,7 @@ class ASCGoogleDriveProvider: ASCBaseFileProvider {
             // Search
             if
                 let search = parameters["search"] as? [String: Any],
-                let text = (search["text"] as? String)?.trim(),
+                let text = (search["text"] as? String)?.trimmed,
                 text.length > 0
             {
                 queryParams += " and name contains '\(text.lowercased())'"
@@ -344,6 +345,8 @@ class ASCGoogleDriveProvider: ASCBaseFileProvider {
                     }
                     
                     // Sort
+                    strongSelf.fetchInfo = parameters
+                    
                     if let sortInfo = parameters["sort"] as? [String: Any] {
                         self?.sort(by: sortInfo, folders: &folders, files: &files)
                     }
@@ -608,25 +611,9 @@ class ASCGoogleDriveProvider: ASCBaseFileProvider {
         }
         
         let fileTitle = name + "." + fileExtension
-        
-        // Localize empty template
-        var templateName = "empty"
-        
-        // Localize empty template
-        if fileExtension == "xlsx" || fileExtension == "pptx" {
-            let prefix = "empty-"
-            let avalibleLang = ["EN", "RU", "FR", "DE", "ES", "CS"]
-            var regionCode = (Locale.preferredLanguages.first ?? "EN")[0..<2].uppercased()
-            
-            if !avalibleLang.contains(regionCode) {
-                regionCode = "EN"
-            }
-            
-            templateName = (prefix + regionCode).lowercased()
-        }
-        
+
         // Copy empty template to desination path
-        if let templatePath = Bundle.main.path(forResource: templateName, ofType: fileExtension, inDirectory: "Templates") {
+        if let templatePath = ASCFileManager.documentTemplatePath(with: fileExtension) {
             do {
                 let templatPath = Path(templatePath)
                 let data = try Data.read(from: Path(templatePath))
@@ -813,7 +800,7 @@ class ASCGoogleDriveProvider: ASCBaseFileProvider {
     ///   - entity: The file or folder object
     ///   - folder: The source folder
     ///   - completeon: a closure with result of operation or error
-    func delete(_ entities: [ASCEntity], from folder: ASCFolder, completeon: ASCProviderCompletionHandler?) {
+    func delete(_ entities: [ASCEntity], from folder: ASCFolder, move: Bool?, completeon: ASCProviderCompletionHandler?) {
         guard let _ = googleUser else {
             completeon?(self, nil, false, ASCProviderError(msg: ErrorType.userUndefined.description))
             return

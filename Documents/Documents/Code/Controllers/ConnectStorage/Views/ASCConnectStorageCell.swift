@@ -45,30 +45,32 @@ class ASCConnectStorageCell: UITableViewCell {
 
         switch type {
         case .boxNet:
-            logoImageView?.image = UIImage(named: "logo-boxnet-large")
+            logoImageView?.image = Asset.Images.logoBoxnetLarge.image
         case .dropBox:
-            logoImageView?.image = UIImage(named: "logo-dropbox-large")
+            logoImageView?.image = Asset.Images.logoDropboxLarge.image
         case .google,
              .googleDrive:
-            logoImageView?.image = UIImage(named: "logo-googledrive-large")
+            logoImageView?.image = Asset.Images.logoGoogledriveLarge.image
         case .sharePoint:
-            logoImageView?.image = UIImage(named: "logo-onedrivepro-large")
+            logoImageView?.image = Asset.Images.logoOnedriveproLarge.image
         case .skyDrive,
              .oneDrive:
-            logoImageView?.image = UIImage(named: "logo-onedrive-large")
+            logoImageView?.image = Asset.Images.logoOnedriveLarge.image
         case .webDav:
             logoImageView?.image = nil
             captionLabel?.text = NSLocalizedString("Other", comment: "")
         case .yandex:
             if Locale.preferredLanguages.first?.lowercased().contains("ru") ?? false {
-                logoImageView?.image = UIImage(named: "logo-yandexdisk-ru-large")
+                logoImageView?.image = Asset.Images.logoYandexdiskRuLarge.image
             } else {
-                logoImageView?.image = UIImage(named: "logo-yandexdisk-large")
+                logoImageView?.image = Asset.Images.logoYandexdiskLarge.image
             }
         case .nextCloud:
-            logoImageView?.image = UIImage(named: "logo-nextcloud-large")
+            logoImageView?.image = Asset.Images.logoNextcloudLarge.image
         case .ownCloud:
-            logoImageView?.image = UIImage(named: "logo-owncloud-large")
+            logoImageView?.image = Asset.Images.logoOwncloudLarge.image
+        case .iCloud:
+            logoImageView?.image = UIImage(named: "logo-icloud-large") // TODO: check!
         }
     }
     

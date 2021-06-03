@@ -10,8 +10,10 @@ import UIKit
 import PhoneNumberKit
 import MBProgressHUD
 
-class ASCPhoneNumberViewController: UIViewController, UITextFieldDelegate {
+class ASCPhoneNumberViewController: ASCBaseViewController {
 
+    class override var storyboard: Storyboard { return Storyboard.login }
+    
     // MARK: - Properties
 
     @IBOutlet weak var topConstraint: NSLayoutConstraint!
@@ -53,7 +55,6 @@ class ASCPhoneNumberViewController: UIViewController, UITextFieldDelegate {
         }
         
         codeField.addTarget(self, action: #selector(textFieldDidChange(_:)), for: .editingChanged)
-
     }
 
     override func didReceiveMemoryWarning() {
@@ -78,55 +79,13 @@ class ASCPhoneNumberViewController: UIViewController, UITextFieldDelegate {
         return UIDevice.phone ? .portrait : super.preferredInterfaceOrientationForPresentation
     }
     
-    // MARK: - UITextField Delegate
-    
-    func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
-        if textField == countryCodeField {
-            performSegue(withIdentifier: "sequeShowCountry", sender: countryCodeField)
-            return false
-        }
-        
-        return true
-    }
-    
-    @objc func textFieldDidChange(_ textField: UITextField) {
-        if textField == codeField {
-            if let stringCode = textField.text?.trim().replacingOccurrences(of: "+", with: ""), let intCode = UInt64(stringCode) {
-                if let regionCode = phoneNumberKit.mainCountry(forCode: intCode) {
-                    if let countryName = Locale.current.localizedString(forRegionCode: regionCode) {
-                        countryCodeField.text = countryName
-                        return
-                    }
-                }
-            }
-            countryCodeField.text = NSLocalizedString("Invalid Country Code", comment: "")
-        }
-    }
-    
-    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
-        if textField == codeField {
-            guard let text = textField.text else { return true }
-            let newLength = text.count + string.count - range.length
-            
-            var allowedCharacters = CharacterSet.decimalDigits
-            allowedCharacters.insert(charactersIn: "+")
-            allowedCharacters = allowedCharacters.inverted
-            let compSepByCharInSet = string.components(separatedBy: allowedCharacters)
-            let numberFiltered = compSepByCharInSet.joined(separator: "")
-            
-            return newLength <= 4 && string == numberFiltered
-        }
-        
-        return true
-    }
-    
     // MARK: - Actions
     
     @IBAction func onDone(_ sender: UIBarButtonItem) {
         var isValidNumber = false
         var phoneNumber: PhoneNumber!
 
-        if  let stringCode = codeField.text?.trim().replacingOccurrences(of: "+", with: ""),
+        if  let stringCode = codeField.text?.trimmed.replacingOccurrences(of: "+", with: ""),
             let intCode = UInt64(stringCode),
             let regionCode = phoneNumberKit.mainCountry(forCode: intCode)
         {
@@ -169,16 +128,59 @@ class ASCPhoneNumberViewController: UIViewController, UITextFieldDelegate {
     }
     
     
-    // MARK: - Navigation
-    
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "sequeShowCountry" {
-            if let countryCodeController = segue.destination as? ASCCountryCodeViewController {
-                countryCodeController.selectCountry = { (country, code) in
-                    self.countryCodeField.text = country
-                    self.codeField.text = "+\(code)"
-                }
+    private func presentCountryCodes() {
+        if let countryCodeVC = navigator.navigate(to: .countryPhoneCodes) as? ASCCountryCodeViewController {
+            countryCodeVC.selectCountry = { country, code in
+                self.countryCodeField.text = country
+                self.codeField.text = "+\(code)"
             }
         }
     }
+    
+    @objc
+    func textFieldDidChange(_ textField: UITextField) {
+        if textField == codeField {
+            if let stringCode = textField.text?.trimmed.replacingOccurrences(of: "+", with: ""), let intCode = UInt64(stringCode) {
+                if let regionCode = phoneNumberKit.mainCountry(forCode: intCode) {
+                    if let countryName = Locale.current.localizedString(forRegionCode: regionCode) {
+                        countryCodeField.text = countryName
+                        return
+                    }
+                }
+            }
+            countryCodeField.text = NSLocalizedString("Invalid Country Code", comment: "")
+        }
+    }
+
+}
+
+// MARK: - UITextField Delegate
+
+extension ASCPhoneNumberViewController : UITextFieldDelegate {
+    
+    func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
+        if textField == countryCodeField {
+            presentCountryCodes()
+            return false
+        }
+        return true
+    }
+    
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        if textField == codeField {
+            guard let text = textField.text else { return true }
+            let newLength = text.count + string.count - range.length
+            
+            var allowedCharacters = CharacterSet.decimalDigits
+            allowedCharacters.insert(charactersIn: "+")
+            allowedCharacters = allowedCharacters.inverted
+            let compSepByCharInSet = string.components(separatedBy: allowedCharacters)
+            let numberFiltered = compSepByCharInSet.joined(separator: "")
+            
+            return newLength <= 4 && string == numberFiltered
+        }
+        
+        return true
+    }
+    
 }

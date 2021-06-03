@@ -167,19 +167,19 @@ class ASCCreatePortalViewController: UIViewController, UITextFieldDelegate {
     private func showNextStep() {
         IQKeyboardManager.shared.resignFirstResponder()
 
-        let isInfoPortal = portalField?.typedText.trim().contains(infoPortalSuffix) ?? false
+        let isInfoPortal = portalField?.typedText.trimmed.contains(infoPortalSuffix) ?? false
 
         guard
             let portal = portalField?
                 .typedText
-                .trim()
+                .trimmed
                 .replacingOccurrences(of: infoPortalSuffix, with: ""),
             valid(portal: portal)
         else {
             return
         }
         
-        guard let firstName = firstNameField?.text?.trim(), firstName.length > 0 else {
+        guard let firstName = firstNameField?.text?.trimmed, firstName.length > 0 else {
             firstNameField?.errorMessage = NSLocalizedString("Name is empty", comment: "")
             firstNameField?.shake()
             return
@@ -191,7 +191,7 @@ class ASCCreatePortalViewController: UIViewController, UITextFieldDelegate {
             return
         }
         
-        guard let lastName = lastNameField?.text?.trim(), lastName.length > 0 else {
+        guard let lastName = lastNameField?.text?.trimmed, lastName.length > 0 else {
             lastNameField?.errorMessage = NSLocalizedString("Last name is empty", comment: "")
             lastNameField?.shake()
             return
@@ -203,7 +203,7 @@ class ASCCreatePortalViewController: UIViewController, UITextFieldDelegate {
             return
         }
         
-        guard let email = emailField?.text?.trim(), valid(email: email) else {
+        guard let email = emailField?.text?.trimmed, valid(email: email) else {
             emailField?.shake()
             return
         }
@@ -286,13 +286,13 @@ class ASCCreatePortalViewController: UIViewController, UITextFieldDelegate {
     private func createPortal() {
         IQKeyboardManager.shared.resignFirstResponder()
         
-        guard let passwordOne = passwordOneField?.text?.trim(), valid(password: passwordOne) else {
+        guard let passwordOne = passwordOneField?.text?.trimmed, valid(password: passwordOne) else {
             passwordOneField?.errorMessage = NSLocalizedString("Password is empty", comment: "")
             passwordOneField?.shake()
             return
         }
         
-        guard let passwordTwo = passwordTwoField?.text?.trim(), valid(password: passwordTwo) else {
+        guard let passwordTwo = passwordTwoField?.text?.trimmed, valid(password: passwordTwo) else {
             passwordTwoField?.errorMessage = NSLocalizedString("Password is empty", comment: "")
             passwordTwoField?.shake()
             return
@@ -417,7 +417,7 @@ class ASCCreatePortalViewController: UIViewController, UITextFieldDelegate {
             return
         }
 
-        guard let password = passwordOneField?.text?.trim() else {
+        guard let password = passwordOneField?.text?.trimmed else {
             return
         }
 

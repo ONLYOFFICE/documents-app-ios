@@ -12,6 +12,8 @@ class ASCCloudsViewController: UITableViewController {
 
     private var connected: [ASCCategory] = []
     private var login: [ASCCategory] = []
+    
+    private var cloudsSubscription: EventSubscription<Any?>?
 
     fileprivate let providerName: ((_ type: ASCFileProviderType) -> String) = { type in
         switch type {
@@ -27,27 +29,31 @@ class ASCCloudsViewController: UITableViewController {
             return NSLocalizedString("Yandex Disk", comment: "")
         case .webdav:
             return NSLocalizedString("WebDAV", comment: "")
+        case .icloud:
+            return NSLocalizedString("iCloud", comment: "")
         default:
             return NSLocalizedString("Unknown", comment: "")
         }
     }
 
-    fileprivate let providerImageName: ((_ type: ASCFileProviderType) -> String) = { type in
+    fileprivate let providerImage: ((_ type: ASCFileProviderType) -> UIImage?) = { type in
         switch type {
         case .googledrive:
-            return "cloud-google-drive"
+            return Asset.Images.cloudGoogleDrive.image
         case .dropbox:
-            return "cloud-dropbox"
+            return Asset.Images.cloudDropbox.image
         case .nextcloud:
-            return "cloud-nextcloud"
+            return Asset.Images.cloudNextcloud.image
         case .owncloud:
-            return "cloud-owncloud"
+            return Asset.Images.cloudOwncloud.image
         case .yandex:
-            return "cloud-yandex-disk"
+            return Asset.Images.cloudYandexDisk.image
         case .webdav:
-            return "cloud-webdav"
+            return Asset.Images.cloudWebdav.image
+        case .icloud:
+            return Asset.Images.cloudIcloud.image
         default:
-            return ""
+            return nil
         }
     }
 
@@ -72,7 +78,9 @@ class ASCCloudsViewController: UITableViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
 
-        ASCViewControllerManager.shared.rootController?.tabBar.isHidden = false
+        if ASCViewControllerManager.shared.rootController?.isEditing == true {
+            ASCViewControllerManager.shared.rootController?.tabBar.isHidden = true
+        }
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -82,9 +90,19 @@ class ASCCloudsViewController: UITableViewController {
         navigationItem.largeTitleDisplayMode = .always
     }
 
+    deinit {
+        if let subscription = cloudsSubscription {
+            ASCFileManager.observer.remove(subscription)
+        }
+    }
+
     func loadData() {
         updateMyClouds()
         updateLoginClouds()
+        
+        cloudsSubscription = ASCFileManager.observer.add(owner: self) { [weak self] objects in
+            self?.tableView?.reloadData()
+        }
 
         tableView?.reloadData()
     }
@@ -96,7 +114,7 @@ class ASCCloudsViewController: UITableViewController {
             connected.append({
                 $0.title = provider.user?.displayName ?? provider.user?.userId
                 $0.subtitle = provider.user?.department
-                $0.image = UIImage(named: providerImageName(provider.type))
+                $0.image = providerImage(provider.type)
                 $0.provider = provider
                 $0.folder = provider.rootFolder
                 return $0
@@ -111,7 +129,7 @@ class ASCCloudsViewController: UITableViewController {
             if !connected.contains(where: { $0.provider?.type == type }) {
                 login.append({
                     $0.title = providerName(type)
-                    $0.image = UIImage(named: providerImageName(type))
+                    $0.image = providerImage(type)
                     $0.provider = ASCFileManager.createProvider(by: type)
                     return $0
                 }(ASCCategory()))
@@ -123,7 +141,7 @@ class ASCCloudsViewController: UITableViewController {
     }
 
 
-    func onConnectComplete(provider: ASCBaseFileProvider) {
+    func onConnectComplete(provider: ASCFileProviderProtocol) {
         // Reload list info
         connectProvider(provider)
         select(provider: provider)
@@ -143,7 +161,7 @@ class ASCCloudsViewController: UITableViewController {
         connectStorageVC.presentProviderConnection(by: type)
     }
 
-    func connectProvider(_ provider: ASCBaseFileProvider) {
+    func connectProvider(_ provider: ASCFileProviderProtocol) {
         updateMyClouds()
         updateLoginClouds()
 
@@ -153,7 +171,7 @@ class ASCCloudsViewController: UITableViewController {
                           animations: { self.tableView.reloadData() })
     }
 
-    func disconnectProvider(_ provider: ASCBaseFileProvider) {
+    func disconnectProvider(_ provider: ASCFileProviderProtocol) {
         if let index = connected.firstIndex(where: { $0.provider?.id == provider.id }) {
             disconnectProvider(by: index)
         }
@@ -202,7 +220,7 @@ class ASCCloudsViewController: UITableViewController {
         }
     }
 
-    func select(provider: ASCBaseFileProvider?, folder: ASCFolder? = nil, animated: Bool = false) {
+    func select(provider: ASCFileProviderProtocol?, folder: ASCFolder? = nil, animated: Bool = false) {
         // Check Reachable
 //        if let provider = provider {
 //            provider.isReachable(completionHandler: { success, error in
@@ -400,6 +418,7 @@ extension ASCCloudsViewController {
 
         if indexPath.section == 0 {
             category = connected.count > 0 ? connected[indexPath.row] : login[indexPath.row]
+            tableView.cellForRow(at: indexPath)?.debounce(delay: 0.5)
         } else if indexPath.section == 1 {
             category = login[indexPath.row]
         }

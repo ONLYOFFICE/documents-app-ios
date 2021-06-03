@@ -66,7 +66,9 @@ class ASCOnlyofficeCategoriesViewController: UITableViewController {
         navigationItem.backBarButtonItem?.title = ASCConstants.Name.appNameShort
         navigationItem.title = ASCConstants.Name.appNameShort
 
-        ASCViewControllerManager.shared.rootController?.tabBar.isHidden = false
+        if ASCViewControllerManager.shared.rootController?.isEditing == true {
+            ASCViewControllerManager.shared.rootController?.tabBar.isHidden = true
+        }
         updateLargeTitlesSize()
     }
     
@@ -111,7 +113,7 @@ class ASCOnlyofficeCategoriesViewController: UITableViewController {
             if allowMy {
                 categories.append({
                     $0.title = ASCOnlyofficeCategory.title(of: .onlyofficeUser)
-                    $0.image = UIImage(named: "category-my")
+                    $0.image = Asset.Images.categoryMy.image
                     $0.folder = ASCOnlyofficeCategory.folder(of: .onlyofficeUser)
                     return $0
                 }(ASCOnlyofficeCategory()))
@@ -121,7 +123,7 @@ class ASCOnlyofficeCategoriesViewController: UITableViewController {
             if allowShare {
                 categories.append({
                     $0.title = ASCOnlyofficeCategory.title(of: .onlyofficeShare)
-                    $0.image = UIImage(named: "category-share")
+                    $0.image = Asset.Images.categoryShare.image
                     $0.folder = ASCOnlyofficeCategory.folder(of: .onlyofficeShare)
                     return $0
                     }(ASCOnlyofficeCategory()))
@@ -131,7 +133,7 @@ class ASCOnlyofficeCategoriesViewController: UITableViewController {
             if allowCommon {
                 categories.append({
                     $0.title = ASCOnlyofficeCategory.title(of: .onlyofficeCommon)
-                    $0.image = UIImage(named: "category-common")
+                    $0.image = Asset.Images.categoryCommon.image
                     $0.folder = ASCOnlyofficeCategory.folder(of: .onlyofficeCommon)
                     return $0
                     }(ASCOnlyofficeCategory()))
@@ -141,7 +143,7 @@ class ASCOnlyofficeCategoriesViewController: UITableViewController {
             if allowProjects {
                 categories.append({
                     $0.title = ASCOnlyofficeCategory.title(of: .onlyofficeProjects)
-                    $0.image = UIImage(named: "category-projects")
+                    $0.image = Asset.Images.categoryProjects.image
                     $0.folder = ASCOnlyofficeCategory.folder(of: .onlyofficeProjects)
                     return $0
                     }(ASCOnlyofficeCategory()))
@@ -150,7 +152,7 @@ class ASCOnlyofficeCategoriesViewController: UITableViewController {
             // Trash Category
             categories.append({
                 $0.title = ASCOnlyofficeCategory.title(of: .onlyofficeTrash)
-                $0.image = UIImage(named: "category-trash")
+                $0.image = Asset.Images.categoryTrash.image
                 $0.folder = ASCOnlyofficeCategory.folder(of: .onlyofficeTrash)
                 return $0
                 }(ASCOnlyofficeCategory()))
@@ -180,14 +182,14 @@ class ASCOnlyofficeCategoriesViewController: UITableViewController {
                 let avatarUrl = onlyofficeProvider.absoluteUrl(from: user.avatarRetina ?? user.avatar)
 
                 avatarView?.kf.apiSetImage(with: avatarUrl,
-                                           placeholder: UIImage(named: "avatar-default"))
+                                           placeholder: Asset.Images.avatarDefault.image)
 
-                accountName?.text = user.displayName?.trim()
-                accountPortal?.text = onlyofficeProvider.api.baseUrl?.trim()
+                accountName?.text = user.displayName?.trimmed
+                accountPortal?.text = onlyofficeProvider.api.baseUrl?.trimmed
             } else {
                 hasInfo = false
 
-                avatarView?.image = UIImage(named: "avatar-default")
+                avatarView?.image = Asset.Images.avatarDefault.image
                 accountName?.text = "-"
                 accountPortal?.text = "-"
 
@@ -203,7 +205,7 @@ class ASCOnlyofficeCategoriesViewController: UITableViewController {
         } else {
             hasInfo = false
 
-            avatarView?.image = UIImage(named: "avatar-default")
+            avatarView?.image = Asset.Images.avatarDefault.image
             accountName?.text = "-"
             accountPortal?.text = "-"
         }

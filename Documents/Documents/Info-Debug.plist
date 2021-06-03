@@ -198,7 +198,7 @@
 	<key>CFBundlePackageType</key>
 	<string>APPL</string>
 	<key>CFBundleShortVersionString</key>
-	<string>6.4</string>
+	<string>6.5</string>
 	<key>CFBundleURLTypes</key>
 	<array>
 		<dict>
@@ -276,6 +276,18 @@
 	<string>This app requires access to the photo library, so that you can upload your photos in the app.</string>
 	<key>NSPhotoLibraryUsageDescription</key>
 	<string>This app requires access to the photo library, so that you can upload your photos in the app.</string>
+	<key>NSUbiquitousContainers</key>
+	<dict>
+		<key>iCloud.com.onlyoffice.Documents</key>
+		<dict>
+			<key>NSUbiquitousContainerIsDocumentScopePublic</key>
+			<true/>
+			<key>NSUbiquitousContainerName</key>
+			<string>Documents by ONLYOFFICE</string>
+			<key>NSUbiquitousContainerSupportedFolderLevels</key>
+			<string>One</string>
+		</dict>
+	</dict>
 	<key>UIApplicationShortcutItems</key>
 	<array>
 		<dict>
@@ -334,7 +346,7 @@
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
-	<key>UISupportsDocumentBrowser</key>
+	<key>LSSupportsOpeningDocumentsInPlace</key>
 	<true/>
 </dict>
 </plist>

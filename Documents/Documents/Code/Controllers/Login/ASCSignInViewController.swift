@@ -12,16 +12,21 @@ import SkyFloatingLabelTextField
 import IQKeyboardManagerSwift
 import MBProgressHUD
 
-class ASCSignInViewController: UIViewController, UITextFieldDelegate {
+class ASCSignInViewController: ASCBaseViewController {
     static let identifier = String(describing: ASCSignInViewController.self)
+    
+    class override var storyboard: Storyboard { return Storyboard.login }
 
     // MARK: - Properties
+    
     var portal: String?
     var email: String?
     var renewal: Bool = false
 
     private let facebookSignInController = ASCFacebookSignInController()
     private let googleSignInController = ASCGoogleSignInController()
+    
+    // MARK: - Outlets
     
     @IBOutlet weak var emailField: SkyFloatingLabelTextField!
     @IBOutlet weak var passwordField: SkyFloatingLabelTextField!
@@ -65,9 +70,13 @@ class ASCSignInViewController: UIViewController, UITextFieldDelegate {
         }
 
         let ssoUrl = capabilities?.ssoUrl ?? ""
-        let ssoLabel = capabilities?.ssoLabel ?? NSLocalizedString("Single Sign-on", comment: "")
+        var ssoLabel = capabilities?.ssoLabel ?? ""
+            
+        if ssoLabel.isEmpty {
+            ssoLabel = NSLocalizedString("Single Sign-on", comment: "")
+        }
         
-        if ssoUrl.length < 1 {
+        if ssoUrl.isEmpty {
             ssoButton?.removeFromSuperview()
         } else {
             ssoButton.setTitle(
@@ -173,31 +182,6 @@ class ASCSignInViewController: UIViewController, UITextFieldDelegate {
         
         return true
     }
-
-    // MARK: - Text Field Delegate
-    
-    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        let nextTag = textField.tag + 1
-        
-        if let nextResponder = textField.superview?.viewWithTag(nextTag) {
-            nextResponder.becomeFirstResponder()
-        } else {
-            onEmailLogin(textField)            
-            return true
-        }
-        
-        return false
-    }
-    
-    func textField(_ textField: UITextField,
-                   shouldChangeCharactersIn range: NSRange,
-                   replacementString string: String) -> Bool
-    {
-        if let floatingLabelTextField = textField as? SkyFloatingLabelTextField {
-            floatingLabelTextField.errorMessage = ""
-        }
-        return true
-    }
     
     // MARK: - Actions
     
@@ -216,11 +200,11 @@ class ASCSignInViewController: UIViewController, UITextFieldDelegate {
     }
     
     @IBAction func onEmailLogin(_ sender: Any) {
-        guard let portal = ASCOnlyOfficeApi.shared.baseUrl ?? portal?.trim() else {
+        guard let portal = ASCOnlyOfficeApi.shared.baseUrl ?? portal?.trimmed else {
             return
         }
         
-        guard let email = emailField?.text?.trim() else {
+        guard let email = emailField?.text?.trimmed else {
             return
         }
 
@@ -234,7 +218,7 @@ class ASCSignInViewController: UIViewController, UITextFieldDelegate {
             }
         }
         
-        guard let password = passwordField?.text?.trim(), valid(password: password) else {
+        guard let password = passwordField?.text?.trimmed, valid(password: password) else {
             return
         }
         
@@ -270,9 +254,6 @@ class ASCSignInViewController: UIViewController, UITextFieldDelegate {
     @IBAction func onFacebookLogin(_ sender: UIButton) {
         view.endEditing(true)
         
-        let hud = MBProgressHUD.showTopMost()
-        hud?.label.text = NSLocalizedString("Logging in", comment: "Caption of the process")
-        
         facebookSignInController.signIn(controller: self) { [weak self] token, error in
             guard let strongSelf = self else { return }
 
@@ -281,6 +262,9 @@ class ASCSignInViewController: UIViewController, UITextFieldDelegate {
                     "portal": strongSelf.portal ?? "",
                     "facebookToken": accessToken
                 ]
+                
+                let hud = MBProgressHUD.showTopMost()
+                hud?.label.text = NSLocalizedString("Logging in", comment: "Caption of the process")
                 
                 ASCSignInController.shared.login(by: .facebook,
                                                  options: parameters,
@@ -295,11 +279,14 @@ class ASCSignInViewController: UIViewController, UITextFieldDelegate {
                         strongSelf.dismiss(animated: true, completion: nil)
                     } else {
                         hud?.hide(animated: true)
+                        
+                        UIAlertController.showError(
+                            in: strongSelf,
+                            message: NSLocalizedString("User authentication failed", comment: "")
+                        )
                     }
                 }
             } else {
-                hud?.hide(animated: true)
-                
                 if let _ = error {
                     UIAlertController.showError(
                         in: strongSelf,
@@ -313,9 +300,6 @@ class ASCSignInViewController: UIViewController, UITextFieldDelegate {
     @IBAction func onGoogleLogin(_ sender: UIButton) {
         view.endEditing(true)
         
-        let hud = MBProgressHUD.showTopMost()
-        hud?.label.text = NSLocalizedString("Logging in", comment: "Caption of the process")
-        
         googleSignInController.signIn(controller: self) { [weak self] token, userData, error in
             guard let strongSelf = self else { return }
 
@@ -324,6 +308,9 @@ class ASCSignInViewController: UIViewController, UITextFieldDelegate {
                     "portal": strongSelf.portal ?? "",
                     "googleToken": accessToken
                 ]
+                
+                let hud = MBProgressHUD.showTopMost()
+                hud?.label.text = NSLocalizedString("Logging in", comment: "Caption of the process")
                 
                 ASCSignInController.shared.login(by: .google,
                                                  options: parameters,
@@ -339,11 +326,14 @@ class ASCSignInViewController: UIViewController, UITextFieldDelegate {
                         strongSelf.dismiss(animated: true, completion: nil)
                     } else {
                         hud?.hide(animated: true)
+                        
+                        UIAlertController.showError(
+                            in: strongSelf,
+                            message: NSLocalizedString("User authentication failed", comment: "")
+                        )
                     }
                 }
             } else {
-                hud?.hide(animated: true)
-                
                 if let _ = error {
                     UIAlertController.showError(
                         in: strongSelf,
@@ -476,4 +466,33 @@ class ASCSignInViewController: UIViewController, UITextFieldDelegate {
             })
         }
     }
+}
+
+// MARK: - Text Field Delegate
+
+extension ASCSignInViewController: UITextFieldDelegate {
+
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        let nextTag = textField.tag + 1
+        
+        if let nextResponder = textField.superview?.viewWithTag(nextTag) {
+            nextResponder.becomeFirstResponder()
+        } else {
+            onEmailLogin(textField)
+            return true
+        }
+        
+        return false
+    }
+    
+    func textField(_ textField: UITextField,
+                   shouldChangeCharactersIn range: NSRange,
+                   replacementString string: String) -> Bool
+    {
+        if let floatingLabelTextField = textField as? SkyFloatingLabelTextField {
+            floatingLabelTextField.errorMessage = ""
+        }
+        return true
+    }
+    
 }

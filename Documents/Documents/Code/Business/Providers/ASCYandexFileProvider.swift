@@ -38,7 +38,7 @@ class ASCYandexFileProvider: ASCWebDAVProvider {
         provider?.credentialType = .basic
     }
 
-    override func copy() -> ASCBaseFileProvider {
+    override func copy() -> ASCFileProviderProtocol {
         let copy = ASCYandexFileProvider()
         
         copy.items = items

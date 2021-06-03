@@ -17,11 +17,11 @@ class ASCCreateEntity: NSObject, UIImagePickerControllerDelegate, UINavigationCo
 
     // MARK: - Properties
 
-    private var provider: ASCBaseFileProvider?
+    private var provider: ASCFileProviderProtocol?
 
     // MARK: - Lifecycle Methods
 
-    func showCreateController(for provider: ASCBaseFileProvider, in viewController: ASCDocumentsViewController, sender: Any? = nil) {
+    func showCreateController(for provider: ASCFileProviderProtocol, in viewController: ASCDocumentsViewController, sender: Any? = nil) {
         self.provider = provider
 
         let createEntityView: ASCCreateEntityView!
@@ -56,7 +56,7 @@ class ASCCreateEntity: NSObject, UIImagePickerControllerDelegate, UINavigationCo
             }
 
             if let contentView = createEntityView.subviews.first {
-                (contentView as? CornerRoundingView)?.cornerRadius = 0
+//                (contentView as? CornerRoundingView)?.cornerRadius = 0
 
                 for constraint in contentView.superview?.constraints ?? [] {
                     if  let _ = constraint.firstItem as? ASCCreateEntityView ?? constraint.firstItem as? CornerRoundingView,
@@ -65,6 +65,8 @@ class ASCCreateEntity: NSObject, UIImagePickerControllerDelegate, UINavigationCo
                         constraint.constant = 0
                     }
                 }
+                
+                createEntityView.topConstraints.constant = 20
             }
 
             let createController = UIViewController()
@@ -126,7 +128,7 @@ class ASCCreateEntity: NSObject, UIImagePickerControllerDelegate, UINavigationCo
         }
     }
 
-    func createFile(_ fileExtension: String, for provider: ASCBaseFileProvider?, in viewController: ASCDocumentsViewController) {
+    func createFile(_ fileExtension: String, for provider: ASCFileProviderProtocol?, in viewController: ASCDocumentsViewController) {
         guard let provider = provider else { return }
         self.provider = provider
 
@@ -252,7 +254,7 @@ class ASCCreateEntity: NSObject, UIImagePickerControllerDelegate, UINavigationCo
 
                 }
             })
-            let cancelAction = UIAlertAction(title: NSLocalizedString("Cancel", comment: ""), style: .default, handler: nil)
+            let cancelAction = UIAlertAction(title: ASCLocalization.Common.cancel, style: .default, handler: nil)
             cameraUnavailableAlertController.addAction(settingsAction)
             cameraUnavailableAlertController.addAction(cancelAction)
             viewController.present(cameraUnavailableAlertController , animated: true, completion: nil)
@@ -289,7 +291,7 @@ class ASCCreateEntity: NSObject, UIImagePickerControllerDelegate, UINavigationCo
 class ASCCreateEntityDocumentDelegate: NSObject, UIDocumentPickerDelegate {
     public static let shared = ASCCreateEntityDocumentDelegate()
     var documentsViewController: ASCDocumentsViewController? = nil
-    var provider: ASCBaseFileProvider?
+    var provider: ASCFileProviderProtocol?
 
     func documentPicker(_ controller: UIDocumentPickerViewController, didPickDocumentAt url: URL) {
         _ = url.startAccessingSecurityScopedResource()
@@ -374,7 +376,7 @@ class ASCCreateEntityDocumentDelegate: NSObject, UIDocumentPickerDelegate {
 class ASCCreateEntityImageDelegate: NSObject, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     public static let shared = ASCCreateEntityImageDelegate()
     var documentsViewController: ASCDocumentsViewController? = nil
-    var provider: ASCBaseFileProvider?
+    var provider: ASCFileProviderProtocol?
     
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
         picker.dismiss(animated: true, completion: nil)

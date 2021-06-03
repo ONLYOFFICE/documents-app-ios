@@ -20,4 +20,5 @@ enum ASCFolderProviderType: String, CaseIterable {
     case yandex         = "Yandex"
     case nextCloud      = "NextCloud"
     case ownCloud       = "ownCloud"
+    case iCloud         = "iCloud"
 }

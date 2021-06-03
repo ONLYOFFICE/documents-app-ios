@@ -507,7 +507,7 @@ class ASCDocumentsViewController: ASCBaseTableViewController, UIGestureRecognize
     }
     
     @objc func onSortAction() {
-        var sortType: ASCDocumentSortType = .dateandtime
+        var sortType: ASCDocumentSortType = .unknown
         var sortAscending = false
         var sortStates: [ASCDocumentSortStateType] = deaultsSortTypes.map { ($0, $0 == sortType) }
         

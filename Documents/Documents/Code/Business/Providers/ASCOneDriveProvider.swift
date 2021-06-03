@@ -285,6 +285,14 @@ extension ASCOneDriveProvider: ASCFileProviderProtocol {
     
     func cancel() {
         api?.cancelAllTasks()
+        
+        operationProcess?.cancel()
+        operationProcess = nil
+        
+        operationHendlers.forEach { handler in
+            handler.progress.cancel()
+        }
+        operationHendlers.removeAll()
     }
     
     func updateSort(completeon: ASCProviderCompletionHandler?) {

@@ -267,12 +267,12 @@ class ASCCloudsViewController: UITableViewController {
 
                 splitVC.hideMasterController()
 
-                documentsVC.provider = provider
-
                 // Open root folder if needed
                 if folder.id == rootFolder.id {
+                    documentsVC.provider = provider
                     documentsVC.folder = folder
                 } else {
+                    documentsVC.provider = provider.copy()
                     documentsVC.folder = rootFolder
 
                     let newDocumentsVC = ASCDocumentsViewController.instantiate(from: Storyboard.main)

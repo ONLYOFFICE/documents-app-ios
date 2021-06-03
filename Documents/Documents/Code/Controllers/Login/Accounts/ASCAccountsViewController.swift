@@ -33,6 +33,10 @@ class ASCAccountsViewController: ASCBaseViewController {
         
         setupLayout()
         currentPage = 0
+        
+        self.view.subviews
+                .filter { $0 is UIButton }
+                .forEach { $0.isExclusiveTouch = true }
     }
     
     deinit {
@@ -269,6 +273,7 @@ class ASCAccountsViewController: ASCBaseViewController {
                 DispatchQueue.main.async { [weak self] in
                     guard let strongSelf = self else {
                         ASCOnlyOfficeApi.reset()
+                        hud?.hide(animated: true)
                         completion()
                         return
                     }

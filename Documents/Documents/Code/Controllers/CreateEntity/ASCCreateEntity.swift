@@ -65,6 +65,8 @@ class ASCCreateEntity: NSObject, UIImagePickerControllerDelegate, UINavigationCo
                         constraint.constant = 0
                     }
                 }
+                
+                createEntityView.topConstraints.constant = 20
             }
 
             let createController = UIViewController()

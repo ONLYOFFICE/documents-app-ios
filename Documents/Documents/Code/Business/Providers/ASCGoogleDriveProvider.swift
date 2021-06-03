@@ -800,7 +800,7 @@ class ASCGoogleDriveProvider: ASCFileProviderProtocol & ASCSortableFileProviderP
     ///   - entity: The file or folder object
     ///   - folder: The source folder
     ///   - completeon: a closure with result of operation or error
-    func delete(_ entities: [ASCEntity], from folder: ASCFolder, completeon: ASCProviderCompletionHandler?) {
+    func delete(_ entities: [ASCEntity], from folder: ASCFolder, move: Bool?, completeon: ASCProviderCompletionHandler?) {
         guard let _ = googleUser else {
             completeon?(self, nil, false, ASCProviderError(msg: ErrorType.userUndefined.description))
             return

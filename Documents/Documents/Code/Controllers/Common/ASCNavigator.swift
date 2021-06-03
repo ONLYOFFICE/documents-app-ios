@@ -18,6 +18,7 @@ enum Destination {
     
     case onlyofficeConnectPortal
     case onlyofficeSignIn(portal: String?)
+    case countryPhoneCodes
     
     // MARK: - Password recovery
     
@@ -74,6 +75,8 @@ final class ASCNavigator {
             let signinViewController = ASCSignInViewController.instance()
             signinViewController.portal = portal
             return signinViewController
+        case .countryPhoneCodes:
+            return ASCCountryCodeViewController.instance()
         case .recoveryPasswordConfirmed(let email):
             let controller = ASCEmailSentViewController.instance()
             controller.email = email

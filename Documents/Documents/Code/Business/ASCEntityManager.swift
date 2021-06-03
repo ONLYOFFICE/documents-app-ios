@@ -918,7 +918,7 @@ class ASCEntityManager: NSObject, UITextFieldDelegate {
                         }
 
                         let normalizeCurrentProgress = sizeOfCommonProgress / Float(files.count) * Float(progress)
-                        handler(commonProgress + localProgress + normalizeCurrentProgress, false, false, nil, nil, &cancel)
+                         handler(commonProgress + localProgress + normalizeCurrentProgress, false, false, nil, nil, &cancel)
 
                         if nil != error || nil != result {
                             if let error = error {
@@ -1148,7 +1148,7 @@ class ASCEntityManager: NSObject, UITextFieldDelegate {
                         let errorFilesUids = errorFiles.map { $0.uid }
                         let movedItems = from.items.filter { !errorFilesUids.contains($0.uid) }
                         
-                        srcProvider.delete(movedItems, from: srcParent, completeon: { provider, result, success, error in
+                        srcProvider.delete(movedItems, from: srcParent, move: move, completeon: { provider, result, success, error in
                             semaphore.signal()
                         })
                     })
@@ -1179,24 +1179,16 @@ class ASCEntityManager: NSObject, UITextFieldDelegate {
                 return false
             }
         }
-        
-        if let nsString = textField.text as NSString? {
-            var newString = nsString.replacingCharacters(in: range, with: string)
-            let newStringLenght = newString.length
-            
-            if newStringLenght < 1 {
-                return true
-            }
-            
-            newString = newString.trimmingCharacters(in: CharacterSet(charactersIn: String.invalidTitleChars))
-            
-            if newStringLenght != newString.length {
+  
+        guard let textFieldText = textField.text,
+            let rangeOfTextToReplace = Range(range, in: textFieldText) else {
                 return false
-            }
-            
-            return newString.length < ASCEntityManager.maxTitle
         }
         
-        return false
+        let substringToReplace = textFieldText[rangeOfTextToReplace]
+        let count = textFieldText.count - substringToReplace.count + string.count
+        let validReplaceText = nil == string.rangeOfCharacter(from: CharacterSet(charactersIn: String.invalidTitleChars))
+        
+        return count <= ASCEntityManager.maxTitle && validReplaceText
     }
 }

@@ -442,8 +442,9 @@ class ASCConnectCloudViewController: UITableViewController {
             let oauth2VC = ASCConnectStorageOAuth2ViewController.instantiate(from: Storyboard.connectStorage)
             let onedriveController = ASCConnectStorageOAuth2OneDrive()
             onedriveController.clientId = ASCConstants.Clouds.OneDrive.clientId
+            onedriveController.clientSecret = ASCConstants.Clouds.OneDrive.clientSecret
             onedriveController.redirectUrl = ASCConstants.Clouds.OneDrive.redirectUri
-            oauth2VC.responseType = .token
+            oauth2VC.responseType = .code
             oauth2VC.complation = authComplation(info:)
             oauth2VC.delegate = onedriveController
             oauth2VC.title = "OneDrive"

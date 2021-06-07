@@ -164,6 +164,7 @@ class ASCConstants {
         
         struct OneDrive {
             static let clientId: String     = ASCConstants.internalConstants["OneDriveClientId"] as? String ?? ""
+            static let clientSecret: String = ASCConstants.internalConstants["OneDriveClientSecret"] as? String ?? ""
             static let redirectUri: String  = ASCConstants.internalConstants["OneDriveRedirectUrl"] as? String ?? ""
         }
         

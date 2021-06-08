@@ -508,6 +508,9 @@
 		FCEF9D351ED2D1D600627BA5 /* ASCUserDefaultsPasscodeRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCEF9D341ED2D1D600627BA5 /* ASCUserDefaultsPasscodeRepository.swift */; };
 		FCEF9D371ED2D23400627BA5 /* ASCPasscodeLockPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCEF9D361ED2D23400627BA5 /* ASCPasscodeLockPresenter.swift */; };
 		FCEF9D391ED2D34400627BA5 /* ASCPasscodeLockSplashView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCEF9D381ED2D34400627BA5 /* ASCPasscodeLockSplashView.swift */; };
+		FCEFE185266F490F00B367AE /* ASCLoadedDocumentViewControllerByProviderAndFolderFinder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D1A2E272660F99800D0335B /* ASCLoadedDocumentViewControllerByProviderAndFolderFinder.swift */; };
+		FCEFE186266F491300B367AE /* ASCLoadedVCFinderModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D1A2E392660FF7F00D0335B /* ASCLoadedVCFinderModels.swift */; };
+		FCEFE187266F491700B367AE /* ASCLoadedViewControllerFinderProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D1A2E312660FE6E00D0335B /* ASCLoadedViewControllerFinderProtocol.swift */; };
 		FCF2761A22C0D26D00984E83 /* Collection+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCF2761922C0D26D00984E83 /* Collection+Extensions.swift */; };
 		FCF2761C22C0E8E500984E83 /* ASCProfileAvatarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCF2761B22C0E8E500984E83 /* ASCProfileAvatarView.swift */; };
 		FCF2761E22C0FA5E00984E83 /* ASCShadowRadiusView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCF2761D22C0FA5E00984E83 /* ASCShadowRadiusView.swift */; };
@@ -2684,6 +2687,7 @@
 				FC36D29025B5C32200412DDB /* ASCPhoneNumberViewController.swift in Sources */,
 				FCECDDD0264309D7006CD7B9 /* ASCPasswordRecoveryViewController.swift in Sources */,
 				FC36D29125B5C32200412DDB /* ASCConnectStorageCell.swift in Sources */,
+				FCEFE185266F490F00B367AE /* ASCLoadedDocumentViewControllerByProviderAndFolderFinder.swift in Sources */,
 				FC36D29225B5C32200412DDB /* UINavigationController+Extension.swift in Sources */,
 				FCA55B63265CD25B004807C5 /* ASCOnlyofficeCacheCategoriesProvider.swift in Sources */,
 				FC36D29325B5C32200412DDB /* ASCBaseSplitViewController.swift in Sources */,
@@ -2740,6 +2744,7 @@
 				FC36D2BF25B5C32200412DDB /* ASCNextCloudApi.swift in Sources */,
 				FC36D2C025B5C32200412DDB /* ASC2FAPageController.swift in Sources */,
 				FC36D2C125B5C32200412DDB /* ASCFloatingLabelTextField.swift in Sources */,
+				FCEFE186266F491300B367AE /* ASCLoadedVCFinderModels.swift in Sources */,
 				FC36D2C225B5C32200412DDB /* ASCTransferViewCell.swift in Sources */,
 				FC36D2C325B5C32200412DDB /* ASCFile.swift in Sources */,
 				FCF6966626384C2700808644 /* ASCOnlyofficeAppBasedCategoriesProvider.swift in Sources */,
@@ -2815,6 +2820,7 @@
 				FC36D2FD25B5C32200412DDB /* ASCConnectCloudViewController.swift in Sources */,
 				FC36D2FE25B5C32200412DDB /* ASCShareCell.swift in Sources */,
 				FC36D2FF25B5C32200412DDB /* ASCUserDefaultsPasscodeRepository.swift in Sources */,
+				FCEFE187266F491700B367AE /* ASCLoadedViewControllerFinderProtocol.swift in Sources */,
 				FC36D30025B5C32200412DDB /* ASCYandexFileProvider.swift in Sources */,
 				FC36D30125B5C32200412DDB /* ASCFolder.swift in Sources */,
 				FC36D30225B5C32200412DDB /* UIBarButtonItem+Extensions.swift in Sources */,

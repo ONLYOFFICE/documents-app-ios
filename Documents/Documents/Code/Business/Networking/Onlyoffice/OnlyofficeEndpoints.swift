@@ -31,6 +31,8 @@ class OnlyofficeAPI {
         static public let filesShare             = "api/\(version)/files/share"
         static public let fileopsDelete          = "api/\(version)/files/fileops/delete"
         static public let thirdParty             = "api/\(version)/files/thirdparty"
+        static public let insertFile             = "api/\(version)/files/%@/insert"
+        static public let uploadFile             = "api/\(version)/files/%@/upload"
     }
 
     struct Endpoints {
@@ -101,6 +103,17 @@ class OnlyofficeAPI {
         struct ThirdPartyIntegration {
             static func remove(providerId: String) -> Endpoint<OnlyofficeDataSingleResult<String>> {
                 return Endpoint<OnlyofficeDataSingleResult<String>>.make(Path.thirdParty.appendingPathComponent(providerId), .delete)
+            }
+        }
+        
+        // MARK: Uploads
+        
+        struct Uploads {
+            static func upload(in path: String) -> Endpoint<OnlyofficeDataResult<ASCFile>> {
+                return Endpoint<OnlyofficeDataResult<ASCFile>>.make(String(format: Path.uploadFile, path), .post)
+            }
+            static func insert(in path: String) -> Endpoint<OnlyofficeDataResult<ASCFile>> {
+                return Endpoint<OnlyofficeDataResult<ASCFile>>.make(String(format: Path.insertFile, path), .post, URLEncoding.default)
             }
         }
         

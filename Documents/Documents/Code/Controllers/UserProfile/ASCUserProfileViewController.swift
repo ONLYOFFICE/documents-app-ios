@@ -110,6 +110,7 @@ class ASCUserProfileViewController: UITableViewController {
 
         // Cleanup auth info
         ASCOnlyOfficeApi.reset()
+        OnlyofficeApiClient.reset()
 
         UserDefaults.standard.removeObject(forKey: ASCConstants.SettingsKeys.collaborationService)
 

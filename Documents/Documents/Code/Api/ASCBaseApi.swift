@@ -9,7 +9,8 @@
 import UIKit
 import Alamofire
 
-typealias NetworkCompletionHandler = (_ result: Any?, _ error: Error?) -> Void
+typealias NetworkCompletionHandler = (_ result: Any?, _ error: NetworkingError?) -> Void
+typealias NetworkProgressHandler = (_ result: Any?, _ progress: Double, _ error: NetworkingError?) -> Void
 
 typealias ASCApiCompletionHandler = (_ result: Any?, _ error: Error?, _ response: Any?) -> Void
 typealias ASCApiProgressHandler = (_ progress: Double, _ result: Any?, _ error: Error?, _ response: Any?) -> Void

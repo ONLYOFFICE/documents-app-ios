@@ -270,6 +270,7 @@ class ASCAccountsViewController: ASCBaseViewController {
                 DispatchQueue.main.async { [weak self] in
                     guard let strongSelf = self else {
                         ASCOnlyOfficeApi.reset()
+                        OnlyofficeApiClient.reset()
                         completion()
                         return
                     }
@@ -371,6 +372,7 @@ class ASCAccountsViewController: ASCBaseViewController {
 
         // Cleanup auth info
         ASCOnlyOfficeApi.reset()
+        OnlyofficeApiClient.reset()
 
         // Cleanup ONLYOFFICE provider
         ASCFileManager.onlyofficeProvider?.reset()

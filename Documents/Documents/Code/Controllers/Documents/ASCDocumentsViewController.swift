@@ -3176,7 +3176,7 @@ class ASCDocumentsViewController: ASCBaseTableViewController, UIGestureRecognize
                     hud?.hide(animated: false, afterDelay: 1.3)
                     hud = nil
                     
-                    let deletedItems = items.filter { provider.allowDelete(entity: $0) }
+                    let deletedItems = items.filter { provider.allowDelete(entity: $0) || (($0 as? ASCFolder)?.isThirdParty ?? false) }
                     completion?(deletedItems)
                 }
             }

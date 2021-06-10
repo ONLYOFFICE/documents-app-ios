@@ -24,7 +24,7 @@ class NetworkingClient: NSObject {
     public var baseURL: URL?
     public var token: String? {
         didSet {
-            if let baseURLString = baseURL?.absoluteString {
+            if token != oldValue, let baseURLString = baseURL?.absoluteString {
                 configure(url: baseURLString, token: token)
             }
         }
@@ -123,10 +123,10 @@ class NetworkingClient: NSObject {
         _ endpoint: Endpoint<Response>,
         _ parameters: Parameters? = nil,
         _ apply: ((_ data: MultipartFormData) -> Void)? = nil,
-        _ completion: ((_ result: Response?, _ error: NetworkingError?) -> Void)? = nil) {
+        _ completion: ((_ result: Response?, _ progress: Double, _ error: NetworkingError?) -> Void)? = nil) {
         
         guard let url = self.url(path: endpoint.path) else {
-            completion?(nil, .invalidUrl)
+            completion?(nil, 1, .invalidUrl)
             return
         }
         
@@ -142,26 +142,68 @@ class NetworkingClient: NSObject {
         }, to: url,
         method: endpoint.method,
         headers: self.headers)
+        .uploadProgress{ progress in
+            log.debug("Upload Progress: \(progress.fractionCompleted)")
+            DispatchQueue.main.async {
+                completion?(nil, progress.fractionCompleted, nil)
+            }
+        }
         .responseData(queue: self.queue) { response in
             switch response.result {
             case .success(let value):
                 do {
                     let result = try endpoint.decode(value)
                     DispatchQueue.main.async {
-                        completion?(result, nil)
+                        completion?(result,1,  nil)
                     }
                 } catch {
                     DispatchQueue.main.async {
-                        completion?(nil, .invalidData)
+                        completion?(nil, 1, .invalidData)
                     }
                 }
                 break
             case .failure(let error):
                 let err = self.parseError(response.data, error)
                 DispatchQueue.main.async {
-                    completion?(nil, err)
+                    completion?(nil, 1, err)
                 }
                 break
+            }
+        }
+    }
+    
+    func download (
+        _ path: String,
+        _ to: URL,
+        _ completion: ((_ result: Any?, _ progress: Double, _ error: NetworkingError?) -> Void)? = nil) {
+        
+        guard let url = self.url(path: path) else {
+            completion?(nil, 1, .invalidUrl)
+            return
+        }
+        
+        let destination: DownloadRequest.Destination = { _, _ in
+            return (to, [.removePreviousFile, .createIntermediateDirectories])
+        }
+        
+        self.manager.download(url, to: destination)
+        .downloadProgress { progress in
+            log.debug("Download Progress: \(progress.fractionCompleted)")
+            DispatchQueue.main.async {
+                completion?(nil, progress.fractionCompleted, nil)
+            }
+        }
+        .responseData { response in
+            switch response.result {
+            case .success(let data):
+                DispatchQueue.main.async {
+                    completion?(data, 1, nil)
+                }
+            case .failure(let error):
+                let err = self.parseError(response.value, error)
+                DispatchQueue.main.async {
+                    completion?(nil, 1, err)
+                }
             }
         }
     }
@@ -195,8 +237,18 @@ extension NetworkingClient: URLSessionDelegate {
     }
 }
 
-//extension NetworkingClient {
-//
+extension NetworkingClient {
+
+    class func clearCookies(for url: URL?) {
+        let cookieStorage = HTTPCookieStorage.shared
+
+        if let url = url, let cookies = cookieStorage.cookies(for: url) {
+            for cookie in cookies {
+                cookieStorage.deleteCookie(cookie)
+            }
+        }
+    }
+    
 //    class func request<Response>(
 //        endpoint: Endpoint<Response>,
 //        parameters: Parameters? = nil,
@@ -213,4 +265,4 @@ extension NetworkingClient: URLSessionDelegate {
 //
 //        NetworkingClient.shared.request(endpoint, parameters, apply, completion)
 //    }
-//}
+}

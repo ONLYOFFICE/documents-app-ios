@@ -38,8 +38,7 @@ class OnlyofficeApiClient: NetworkingClient {
     
     override public var token: String? {
         didSet {
-            if let baseURLString = baseURL?.absoluteString {
-                configure(url: baseURLString, token: token)
+            if token != oldValue {
                 fetchServerVersion(completion: nil)
             }
         }
@@ -54,11 +53,13 @@ class OnlyofficeApiClient: NetworkingClient {
         return serverVersion?.isVersion(greaterThanOrEqualTo: "10.0") ?? false
     }
     
+    private let queue = DispatchQueue(label: "asc.networking.client.\(String(describing: type(of: self)))")
+    
     // MARK: - Lifecycle
     
     public override init() {
         super.init()
-        configure()
+//        configure()
     }
     
     convenience init(url: String, token: String) {
@@ -111,10 +112,130 @@ class OnlyofficeApiClient: NetworkingClient {
         OnlyofficeApiClient.shared.capabilities = nil
     }
     
+    func download(
+        _ path: String,
+        _ to: URL,
+        _ processing: @escaping NetworkProgressHandler) {
+        
+        guard let url = self.url(path: path) else {
+            processing(nil, 1, .invalidUrl)
+            return
+        }
+        
+        let destination: DownloadRequest.Destination = { _, _ in
+            return (to, [.removePreviousFile, .createIntermediateDirectories])
+        }
+
+        var headers: HTTPHeaders?
+        
+        if baseURL?.host == url.host, let token = token {
+            headers = [
+                "Authorization": isHttp2 ? "Bearer \(token)" : token
+            ]
+        }
+        
+        self.manager.download(
+            url,
+            headers: headers,
+            to: destination
+        )
+        .downloadProgress(queue: self.queue) { progress in
+            log.debug("Download Progress: \(progress.fractionCompleted)")
+            DispatchQueue.main.async(execute: {
+                processing(nil, progress.fractionCompleted, nil)
+            })
+        }
+        .responseData(queue: self.queue) { response in
+            switch response.result {
+            case .success(let data):
+                DispatchQueue.main.async {
+                    processing(data, 1, nil)
+                }
+            case .failure(let error):
+                let err = self.parseError(response.value, error)
+                DispatchQueue.main.async {
+                    processing(nil, 1, err)
+                }
+            }
+        }
+    }
+    
+    func upload<Response>(
+        _ endpoint: Endpoint<Response>,
+        _ data: Data,
+        _ parameters: Parameters? = nil,
+        _ mime: String? = nil,
+        _ processing: @escaping ((_ result: Response?, _ progress: Double, _ error: NetworkingError?) -> Void)) {
+        
+        guard let url = self.url(path: endpoint.path) else {
+            processing(nil, 1, .invalidUrl)
+            return
+        }
+
+//        ASCBaseApi.clearCookies(for: url)
+
+        var headers: HTTPHeaders = [
+            "Content-Length": String(data.count)
+        ]
+
+        if let mime = mime {
+            headers["Content-Type"] = mime
+        }
+        
+        let excludeParamKeys = ["mime"]
+        
+        if var urlComponents = URLComponents(string: url.absoluteString) {
+            var queryItems = urlComponents.queryItems ?? []
+            for (key, value) in parameters ?? [:] {
+                if excludeParamKeys.contains(key) { continue }
+                if let stringValue = value as? String {
+                    queryItems.append(URLQueryItem(name: key, value: stringValue))
+                }
+            }
+            urlComponents.queryItems = queryItems
+            
+            if let uploadUrl = urlComponents.url {
+                
+                self.manager.upload(
+                    data,
+                    to: uploadUrl,
+                    method: endpoint.method,
+                    headers: headers)
+                    .uploadProgress(queue: self.queue) { progress in
+                        log.debug("Upload Progress: \(progress.fractionCompleted)")
+                        DispatchQueue.main.async {
+                            processing(nil, progress.fractionCompleted, nil)
+                        }
+                    }
+                    .validate(statusCode: 200..<300)
+                    .responseData(queue: self.queue) { response in
+                        switch response.result {
+                        case .success(let value):
+                            do {
+                                let result = try endpoint.decode(value)
+                                DispatchQueue.main.async {
+                                    processing(result, 1, nil)
+                                }
+                            } catch {
+                                DispatchQueue.main.async {
+                                    processing(nil, 1, .invalidData)
+                                }
+                            }
+                        case .failure(let error):
+                            let err = self.parseError(response.data, error)
+                            DispatchQueue.main.async {
+                                processing(nil, 1, err)
+                            }
+                        }
+                    }
+            }
+        }
+    }
+    
     // MARK: - Private
     
     private func fetchServerVersion(completion: NetworkCompletionHandler?) {
-        request(OnlyofficeAPI.Endpoints.serversVersion) { [weak self] response, error in
+        OnlyofficeApiClient.shared.request(OnlyofficeAPI.Endpoints.serversVersion) { [weak self] response, error in
             defer { completion?(response?.result, error) }
             
             if let error = error {
@@ -138,6 +259,7 @@ extension OnlyofficeApiClient {
         _ parameters: Parameters? = nil,
         _ completion: ((_ result: Response?, _ error: NetworkingError?) -> Void)? = nil) {
         
+        NetworkingClient.clearCookies(for: OnlyofficeApiClient.shared.url(path: endpoint.path))
         OnlyofficeApiClient.shared.request(endpoint, parameters, completion)
     }
     
@@ -145,8 +267,9 @@ extension OnlyofficeApiClient {
         _ endpoint: Endpoint<Response>,
         _ parameters: Parameters? = nil,
         _ apply: ((_ data: MultipartFormData) -> Void)? = nil,
-        _ completion: ((_ result: Response?, _ error: NetworkingError?) -> Void)? = nil) {
+        _ completion: ((_ result: Response?, _ progress: Double, _ error: NetworkingError?) -> Void)? = nil) {
         
+        NetworkingClient.clearCookies(for: OnlyofficeApiClient.shared.url(path: endpoint.path))
         OnlyofficeApiClient.shared.request(endpoint, parameters, apply, completion)
     }
 }

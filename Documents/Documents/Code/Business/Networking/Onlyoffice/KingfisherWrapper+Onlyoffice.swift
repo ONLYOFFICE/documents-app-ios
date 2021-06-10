@@ -18,13 +18,15 @@ extension KingfisherWrapper where Base: KFCrossPlatformImageView {
         progressBlock: DownloadProgressBlock? = nil,
         completionHandler: ((Swift.Result<RetrieveImageResult, KingfisherError>) -> Void)? = nil) -> DownloadTask?
     {
+        guard let apiClient = ASCFileManager.onlyofficeProvider?.apiClient else { return nil }
+        
         let modifier = AnyModifier { request in
             var apiRequest = request
 
-            if ASCOnlyOfficeApi.shared.isHttp2 {
-                apiRequest.setValue("Bearer \(ASCOnlyOfficeApi.shared.token ?? "")", forHTTPHeaderField: "Authorization")
+            if apiClient.isHttp2 {
+                apiRequest.setValue("Bearer \(apiClient.token ?? "")", forHTTPHeaderField: "Authorization")
             } else {
-                apiRequest.setValue(ASCOnlyOfficeApi.shared.token, forHTTPHeaderField: "Authorization")
+                apiRequest.setValue(apiClient.token, forHTTPHeaderField: "Authorization")
             }
 
             return apiRequest

@@ -214,7 +214,7 @@ class ASCShareViewController: UIViewController, UITableViewDelegate, UITableView
         ]
         let sharesParams = sharesToParams(shares: [
             [
-                "ShareTo": itemId,
+                "ShareTo": itemId ?? "",
                 "Access": ASCShareAccess.none.rawValue
             ]
         ])

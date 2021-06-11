@@ -55,7 +55,6 @@ class ASCPhoneNumberViewController: ASCBaseViewController {
         }
         
         codeField.addTarget(self, action: #selector(textFieldDidChange(_:)), for: .editingChanged)
-
     }
 
     override func didReceiveMemoryWarning() {
@@ -129,34 +128,17 @@ class ASCPhoneNumberViewController: ASCBaseViewController {
     }
     
     
-    // MARK: - Navigation
-    
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == StoryboardSegue.Login.sequeShowCountry.rawValue {
-            if let countryCodeController = segue.destination as? ASCCountryCodeViewController {
-                countryCodeController.selectCountry = { (country, code) in
-                    self.countryCodeField.text = country
-                    self.codeField.text = "+\(code)"
-                }
+    private func presentCountryCodes() {
+        if let countryCodeVC = navigator.navigate(to: .countryPhoneCodes) as? ASCCountryCodeViewController {
+            countryCodeVC.selectCountry = { country, code in
+                self.countryCodeField.text = country
+                self.codeField.text = "+\(code)"
             }
         }
     }
-}
-
-// MARK: - UITextField Delegate
-
-extension ASCPhoneNumberViewController : UITextFieldDelegate {
     
-    func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
-        if textField == countryCodeField {
-            perform(segue: StoryboardSegue.Login.sequeShowCountry, sender: countryCodeField)
-            return false
-        }
-        
-        return true
-    }
-    
-    @objc func textFieldDidChange(_ textField: UITextField) {
+    @objc
+    func textFieldDidChange(_ textField: UITextField) {
         if textField == codeField {
             if let stringCode = textField.text?.trimmed.replacingOccurrences(of: "+", with: ""), let intCode = UInt64(stringCode) {
                 if let regionCode = phoneNumberKit.mainCountry(forCode: intCode) {
@@ -168,6 +150,20 @@ extension ASCPhoneNumberViewController : UITextFieldDelegate {
             }
             countryCodeField.text = NSLocalizedString("Invalid Country Code", comment: "")
         }
+    }
+
+}
+
+// MARK: - UITextField Delegate
+
+extension ASCPhoneNumberViewController : UITextFieldDelegate {
+    
+    func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
+        if textField == countryCodeField {
+            presentCountryCodes()
+            return false
+        }
+        return true
     }
     
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {

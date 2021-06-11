@@ -41,11 +41,11 @@ platform :ios do
     # ensure_git_status_clean
 
     version_number = get_info_plist_value(
-      path: "Documents/Documents/Info.plist",
+      path: "Documents/Documents/Documents.plist",
       key: "CFBundleShortVersionString"
     )
     build_number = get_info_plist_value(
-      path: "Documents/Documents/Info.plist", 
+      path: "Documents/Documents/Documents.plist", 
       key: "CFBundleVersion"
     )
 
@@ -118,19 +118,18 @@ platform :ios do
     # ensure_git_status_clean
 
     version_number = get_info_plist_value(
-      path: "Documents/Documents/Info-Alpha.plist",
+      path: "Documents/Documents/Documents.alpha.plist",
       key: "CFBundleShortVersionString"
     )
     build_number = get_info_plist_value(
-      path: "Documents/Documents/Info-Alpha.plist",
+      path: "Documents/Documents/Documents.alpha.plist",
       key: "CFBundleVersion"
     )
     bumped_build_number = build_number.to_i.next.to_s
 
     # Update app icon
     add_badge(
-      dark: true,
-      alpha: true
+      custom: "fastlane/badge-test.png"
     )
 
     # Build
@@ -147,7 +146,7 @@ platform :ios do
 
     # creates a bump version commit
     update_plist(
-      plist_path: "Documents/Documents/Info-Alpha.plist",
+      plist_path: "Documents/Documents/Documents.alpha.plist",
       block: proc do |plist|
         plist[:CFBundleVersion] = bumped_build_number
       end
@@ -162,7 +161,7 @@ platform :ios do
 
     git_commit(
       path: [
-        "Documents/Documents/Info-Alpha.plist",
+        "Documents/Documents/Documents.alpha.plist",
         "Documents/Settings.bundle/Root.plist"
       ], 
       message: "Version bumped to v#{version_number}-dev (#{build_number})"

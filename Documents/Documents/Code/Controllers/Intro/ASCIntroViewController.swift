@@ -48,7 +48,7 @@ class ASCIntroViewController: UIViewController {
         /// 5
         ASCIntroPage(
             title: NSLocalizedString("Collaborate with your team", comment: "Introduction Step Five - Title"),
-            subtitle: String.localizedStringWithFormat(NSLocalizedString("In online mode, use real-time co-editing features of %@ to work on documents together with your portal members, share documents and create common storage folders.", comment: "Introduction Step Five - Description")),
+            subtitle: String.localizedStringWithFormat(NSLocalizedString("In online mode, use real-time co-editing features of %@ to work on documents together with your portal members, share documents and create common storage folders.", comment: "Introduction Step Five - Description"), ASCConstants.Name.appNameShort),
             image: Asset.Images.introStepFive.image
         )
     ]

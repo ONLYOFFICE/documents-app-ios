@@ -321,12 +321,12 @@ class ASCLocalProvider: ASCFileProviderProtocol & ASCSortableFileProviderProtoco
         }
     }
 
-    func delete(_ entities: [ASCEntity], from folder: ASCFolder, completeon: ASCProviderCompletionHandler?) {
+    func delete(_ entities: [ASCEntity], from folder: ASCFolder, move: Bool?, completeon: ASCProviderCompletionHandler?) {
         let fromFolder = folder
 
         for entity in entities {
             if let file = entity as? ASCFile {
-                if fromFolder.rootFolderType == .deviceTrash {
+                if fromFolder.rootFolderType == .deviceTrash || (move != nil) {
                     ASCLocalFileHelper.shared.removeFile(Path(file.id))
                 } else {
                     guard let filePath = ASCLocalFileHelper.shared.resolve(filePath: Path.userTrash + file.title) else {
@@ -700,8 +700,8 @@ class ASCLocalProvider: ASCFileProviderProtocol & ASCSortableFileProviderProtoco
 
         if allowOpen {
             let editMode = !viewMode && UIDevice.allowEditor
-            let openHandler = delegate?.openProgressFile(title: NSLocalizedString("Processing", comment: "Caption of the processing") + "...", 0.15)
-            let closeHandler = delegate?.closeProgressFile(title: NSLocalizedString("Saving", comment: "Caption of the processing"))
+            let openHandler = delegate?.openProgress(file: file, title: NSLocalizedString("Processing", comment: "Caption of the processing") + "...", 0.15)
+            let closeHandler = delegate?.closeProgress(file: file, title: NSLocalizedString("Saving", comment: "Caption of the processing"))
 
             ASCEditorManager.shared.editLocal(file, viewMode: !editMode, openHandler: openHandler, closeHandler: closeHandler)
         }

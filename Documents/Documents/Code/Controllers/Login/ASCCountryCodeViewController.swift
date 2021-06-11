@@ -9,7 +9,9 @@
 import UIKit
 import PhoneNumberKit
 
-class ASCCountryCodeViewController: UITableViewController, UISearchControllerDelegate, UISearchResultsUpdating {
+class ASCCountryCodeViewController: ASCBaseTableViewController {
+    class override var storyboard: Storyboard { return Storyboard.login }
+    
     // MARK: - Properties
     
     var selectCountry: ((String, UInt64) -> Void)? = nil
@@ -57,6 +59,9 @@ class ASCCountryCodeViewController: UITableViewController, UISearchControllerDel
 
         // Prepare data
         fillData()
+        
+        navigationItem.searchController = searchController
+        searchController.searchBar.backgroundColor = view.backgroundColor
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -64,7 +69,7 @@ class ASCCountryCodeViewController: UITableViewController, UISearchControllerDel
         
         navigationController?.navigationBar.setBackgroundImage(nil, for: .default)
         navigationController?.navigationBar.isTranslucent = true
-        navigationController?.navigationBar.shadowImage = nil
+        navigationController?.navigationBar.shadowImage = UIImage()
     }
     
     override func didReceiveMemoryWarning() {
@@ -130,9 +135,12 @@ class ASCCountryCodeViewController: UITableViewController, UISearchControllerDel
         
         literals = literals.sorted(by: <)
     }
+}
 
-    // MARK: - Table view data source
+// MARK: - Table view data source
 
+extension ASCCountryCodeViewController {
+    
     override func numberOfSections(in tableView: UITableView) -> Int {
         return literals.count
     }
@@ -184,8 +192,11 @@ class ASCCountryCodeViewController: UITableViewController, UISearchControllerDel
         return indexes
     }
     
-    // MARK: - UISearchController Delegate
+}
     
+// MARK: - UISearchController Delegate
+
+extension ASCCountryCodeViewController : UISearchControllerDelegate {
     func didPresentSearchController(_ searchController: UISearchController) {
         if #available(iOS 11.0, *) {
             //
@@ -211,8 +222,12 @@ class ASCCountryCodeViewController: UITableViewController, UISearchControllerDel
     }
     
     func willDismissSearchController(_ searchController: UISearchController) {
-        searchSeparator.alpha = 0
-        searchBackground.alpha = 0
+        if #available(iOS 11.0, *) {
+            //
+        } else {
+            searchSeparator.alpha = 0
+            searchBackground.alpha = 0
+        }
     }
     
     func didDismissSearchController(_ searchController: UISearchController) {
@@ -220,7 +235,12 @@ class ASCCountryCodeViewController: UITableViewController, UISearchControllerDel
         tableView.reloadData()
     }
     
-    // MARK: - UISearchResults Updating
+}
+
+
+// MARK: - UISearchResults Updating
+
+extension ASCCountryCodeViewController : UISearchResultsUpdating {
     
     func updateSearchResults(for searchController: UISearchController) {
         fillData()

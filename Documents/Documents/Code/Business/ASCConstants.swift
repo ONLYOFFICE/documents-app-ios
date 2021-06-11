@@ -243,6 +243,9 @@ class ASCConstants {
         return [:]
     }
 
+    struct CacheKeys {
+        static let onlyofficeCategoriesPrefix = "onlyoffice_categories"
+    }
 }
 
 

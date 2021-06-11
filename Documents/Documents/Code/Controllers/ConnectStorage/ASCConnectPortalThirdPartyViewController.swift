@@ -47,7 +47,7 @@ class ASCConnectPortalThirdPartyViewController: UITableViewController {
         tableView.addSubview(activity)
         activity.anchorCenterSuperview()
 
-        ASCOnlyOfficeApi.get(ASCOnlyOfficeApi.apiThirdPartyCapabilities) { [weak self] (result, error, response) in
+        ASCOnlyOfficeApi.get(ASCOnlyOfficeApi.apiThirdPartyCapabilities) { [weak self] result, error in
             guard let strongSelf = self else { return }
 
             activity.removeFromSuperview()
@@ -188,14 +188,15 @@ class ASCConnectPortalThirdPartyViewController: UITableViewController {
         let hud = MBProgressHUD.showTopMost()
         hud?.label.text = NSLocalizedString("Creating", comment: "Caption of the process")
         
-        ASCOnlyOfficeApi.post(ASCOnlyOfficeApi.apiThirdParty, parameters: params) { (result, error, response) in
-            if error != nil {
+        ASCOnlyOfficeApi.post(ASCOnlyOfficeApi.apiThirdParty, parameters: params) { result, error in
+            if let error = error {
+                log.error(error)
                 hud?.hide(animated: true)
+                
                 UIAlertController.showError(
                     in: rootVC.topMostViewController(),
-                    message: ASCOnlyOfficeApi.errorMessage(by: response!)
+                    message: error.localizedDescription
                 )
-                log.error(error!)
             } else {
                 if let folderInfo = result as? [String: Any] {
                     hud?.setSuccessState()
@@ -227,7 +228,7 @@ class ASCConnectPortalThirdPartyViewController: UITableViewController {
                     hud?.hide(animated: true)
                     UIAlertController.showError(
                         in: rootVC.topMostViewController(),
-                        message: ASCOnlyOfficeApi.errorMessage(by: response!)
+                        message: NSLocalizedString("Failed to connect folder.", comment: "")
                     )
                 }
             }

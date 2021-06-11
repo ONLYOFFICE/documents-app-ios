@@ -112,7 +112,7 @@ class ASCShareItemsViewController: UIViewController, UITableViewDelegate, UITabl
         users.removeAll()
         groups.removeAll()
         
-        ASCOnlyOfficeApi.get(showUsers ? ASCOnlyOfficeApi.apiUsers : ASCOnlyOfficeApi.apiGroups) { (results, error, response) in
+        ASCOnlyOfficeApi.get(showUsers ? ASCOnlyOfficeApi.apiUsers : ASCOnlyOfficeApi.apiGroups) { results, error in
             self.showLoadingView(false)
             
             if let results = results as? [[String: Any]] {

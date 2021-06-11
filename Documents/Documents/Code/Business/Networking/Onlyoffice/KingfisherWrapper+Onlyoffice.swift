@@ -35,7 +35,7 @@ extension KingfisherWrapper where Base: KFCrossPlatformImageView {
         var localOptions = options ?? [.transition(.fade(0.2))]
 
         // TODO: Hotfix by Linnic. Remove after resolve of conflict between SAAS and Enterprise versions
-        if let baseUrl = ASCOnlyOfficeApi.shared.baseUrl,
+        if let baseUrl = apiClient.baseURL?.absoluteString,
             let resource = resource,
             URL(string: baseUrl)?.host == resource.downloadURL.host
         {

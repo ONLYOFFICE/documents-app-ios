@@ -174,7 +174,7 @@ class ASCOnlyOfficeApi: ASCBaseApi {
         _ = NSLocalizedString("Invalid URL: The format ot the URL could not be determined", comment: "Error message")
     }
 
-    public func fetchServerVersion(_ path: String, completion: ASCApiCompletionHandler?) {
+    public func fetchServerVersion(_ path: String, completion: NetworkCompletionHandler?) {
         let url = "\(path)/\(ASCOnlyOfficeApi.apiServersVersion).json"
         ASCOnlyOfficeApi.shared.manager
             .request(url, method: .get, parameters: nil, encoding: URLEncoding.default, headers: nil)
@@ -188,14 +188,14 @@ class ASCOnlyOfficeApi: ASCBaseApi {
                             if let result = responseJson["response"] as? [String: Any] {
                                 if let communityServer = result["communityServer"] as? String {
                                     ASCOnlyOfficeApi.shared.serverVersion = communityServer
-                                    completion?(result, nil, response)
+                                    completion?(result, nil)
                                 }
                                 return
                             }
                         }
-                        completion?(nil, nil, response)
+                        completion?(nil, nil)
                     case .failure(let error):
-                        completion?(nil, error, response)
+                        completion?(nil, error)
                         log.error(response)
                     }
                 })
@@ -212,16 +212,16 @@ class ASCOnlyOfficeApi: ASCBaseApi {
     static public func get(_ path: String,
                            parameters: Parameters? = nil,
                            encoding: ParameterEncoding = URLEncoding.default,
-                           completion: @escaping ASCApiCompletionHandler) {
+                           completion: @escaping NetworkCompletionHandler) {
         guard let baseUrl = ASCOnlyOfficeApi.shared.baseUrl else {
             log.error("ASCApi no baseUrl")
-            completion(nil, nil, nil)
+            completion(nil, nil)
             return
         }
         
         guard let encodePath = path.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) else {
             log.error("Encoding path")
-            completion(nil, nil, nil)
+            completion(nil, nil)
             return
         }
 
@@ -239,14 +239,14 @@ class ASCOnlyOfficeApi: ASCBaseApi {
                     case .success(let responseJson):
                         if let responseJson = responseJson as? [String: Any] {
                             if let result = responseJson["response"] {
-                                completion(result, nil, response)
+                                completion(result, nil)
                                 return
                             }
                         }
 
-                        completion(nil, nil, response)
+                        completion(nil, nil)
                     case .failure(let error):
-                        completion(nil, error, response)
+                        completion(nil, error)
                         log.error(response)
                     }
                 })
@@ -256,16 +256,16 @@ class ASCOnlyOfficeApi: ASCBaseApi {
     static public func post(_ path: String,
                             parameters: Parameters? = nil,
                             encoding: ParameterEncoding = URLEncoding.default,
-                            completion: @escaping ASCApiCompletionHandler) {
+                            completion: @escaping NetworkCompletionHandler) {
         guard let baseUrl = ASCOnlyOfficeApi.shared.baseUrl else {
             log.error("ASCApi no baseUrl")
-            completion(nil, nil, nil)
+            completion(nil, nil)
             return
         }
         
         guard let encodePath = path.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) else {
             log.error("Encoding path")
-            completion(nil, nil, nil)
+            completion(nil, nil)
             return
         }
         
@@ -283,14 +283,14 @@ class ASCOnlyOfficeApi: ASCBaseApi {
                     case .success(let responseJson):
                         if let responseJson = responseJson as? [String: Any] {
                             if let result = responseJson["response"] {
-                                completion(result, nil, response)
+                                completion(result, nil)
                                 return
                             }
                         }
                         
-                        completion(nil, nil, response)
+                        completion(nil, nil)
                     case .failure(let error):
-                        completion(nil, error, response)
+                        completion(nil, error)
                         log.error(response)
                     }
                 })
@@ -300,16 +300,16 @@ class ASCOnlyOfficeApi: ASCBaseApi {
     static public func put(_ path: String,
                            parameters: Parameters? = nil,
                            encoding: ParameterEncoding = URLEncoding.default,
-                           completion: @escaping ASCApiCompletionHandler) {
+                           completion: @escaping NetworkCompletionHandler) {
         guard let baseUrl = ASCOnlyOfficeApi.shared.baseUrl else {
             log.error("ASCApi no baseUrl")
-            completion(nil, nil, nil)
+            completion(nil, nil)
             return
         }
         
         guard let encodePath = path.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) else {
             log.error("Encoding path")
-            completion(nil, nil, nil)
+            completion(nil, nil)
             return
         }
         
@@ -327,14 +327,14 @@ class ASCOnlyOfficeApi: ASCBaseApi {
                     case .success(let responseJson):
                         if let responseJson = responseJson as? [String: Any] {
                             if let result = responseJson["response"] {
-                                completion(result, nil, response)
+                                completion(result, nil)
                                 return
                             }
                         }
                         
-                        completion(nil, nil, response)
+                        completion(nil, nil)
                     case .failure(let error):
-                        completion(nil, error, response)
+                        completion(nil, error)
                         log.error(response)
                     }
                 })
@@ -344,16 +344,16 @@ class ASCOnlyOfficeApi: ASCBaseApi {
     static public func delete(_ path: String,
                               parameters: Parameters? = nil,
                               encoding: ParameterEncoding = URLEncoding.default,
-                              completion: @escaping ASCApiCompletionHandler) {
+                              completion: @escaping NetworkCompletionHandler) {
         guard let baseUrl = ASCOnlyOfficeApi.shared.baseUrl else {
             log.error("ASCApi no baseUrl")
-            completion(nil, nil, nil)
+            completion(nil, nil)
             return
         }
         
         guard let encodePath = path.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) else {
             log.error("Encoding path")
-            completion(nil, nil, nil)
+            completion(nil, nil)
             return
         }
         
@@ -371,24 +371,24 @@ class ASCOnlyOfficeApi: ASCBaseApi {
                     case .success(let responseJson):
                         if let responseJson = responseJson as? [String: Any] {
                             if let result = responseJson["response"] {
-                                completion(result, nil, response)
+                                completion(result, nil)
                                 return
                             }
                         }
                         
-                        completion(nil, nil, response)
+                        completion(nil, nil)
                     case .failure(let error):
-                        completion(nil, error, response)
+                        completion(nil, error)
                         log.error(response)
                     }
                 })
         }
     }
     
-    func download(_ path: String, to: URL, processing: @escaping ASCApiProgressHandler) {
+    func download(_ path: String, to: URL, processing: @escaping NetworkProgressHandler) {
         guard let _ = ASCOnlyOfficeApi.shared.baseUrl else {
             log.error("ASCApi no baseUrl")
-            processing(0, nil, nil, nil)
+            processing(nil, 0, nil)
             return
         }
         
@@ -424,7 +424,7 @@ class ASCOnlyOfficeApi: ASCBaseApi {
                 .downloadProgress { progress in
                     log.debug(progress.fractionCompleted)
                     DispatchQueue.main.async(execute: {
-                        processing(progress.fractionCompleted, nil, nil, nil)
+                        processing(nil, progress.fractionCompleted, nil)
                     })
                 }
                 .responseData { [weak self] response in
@@ -433,9 +433,9 @@ class ASCOnlyOfficeApi: ASCBaseApi {
                     DispatchQueue.main.async(execute: {
                         switch response.result {
                         case .success:
-                            processing(1.0, response.value, response.error, response)
+                            processing(response.value, 1.0, response.error)
                         case let .failure(error):
-                            processing(1.0, nil, error, response)
+                            processing(nil, 1.0, error)
                         }
                         self?.additionalManagers[uuid] = nil
                     })
@@ -448,10 +448,10 @@ class ASCOnlyOfficeApi: ASCBaseApi {
                 parameters: Parameters? = nil,
                 method: HTTPMethod = .post,
                 mime: String? = nil,
-                processing: @escaping ASCApiProgressHandler) {
+                processing: @escaping NetworkProgressHandler) {
         guard let baseUrl = ASCOnlyOfficeApi.shared.baseUrl else {
             log.error("ASCApi no baseUrl")
-            processing(0, nil, nil, nil)
+            processing(nil, 0, nil)
             return
         }
         
@@ -460,7 +460,7 @@ class ASCOnlyOfficeApi: ASCBaseApi {
             let portalUrl = URL(string: "\(baseUrl)/\(encodePath).json")
         else {
             log.error("Encoding path")
-            processing(0, nil, nil, nil)
+            processing(nil, 0, nil)
             return
         }
 
@@ -495,7 +495,7 @@ class ASCOnlyOfficeApi: ASCBaseApi {
                     .uploadProgress { progress in
                         DispatchQueue.main.async(execute: {
                             commonProgress = progress.fractionCompleted
-                            processing(progress.fractionCompleted, nil, nil, nil)
+                            processing(nil, progress.fractionCompleted, nil)
                         })
                 }
                 .responseJSON { [weak self] response in
@@ -506,19 +506,19 @@ class ASCOnlyOfficeApi: ASCBaseApi {
                         case .success(let responseJson):
                             if let responseJson = responseJson as? [String: Any] {
                                 if let result = responseJson["response"] {
-                                    processing(1.0, result, nil, response)
+                                    processing(result, 1.0, nil)
                                     return
                                 }
                             }
                             
-                            processing(1.0, nil, response.error, response)
+                            processing(nil, 1.0, response.error)
                         case .failure(let error):
                             if response.response?.statusCode == 401 {
-                                processing(1.0, nil, error, response)
+                                processing(nil, 1.0, error)
                                 return
                             }
                             if commonProgress <= 0.01 {
-                                processing(1.0, nil, error, response)
+                                processing(nil, 1.0, error)
                             }
                             log.error(response)
                         }

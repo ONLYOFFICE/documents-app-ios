@@ -911,7 +911,11 @@ class ASCDocumentsViewController: ASCBaseTableViewController, UIGestureRecognize
                 strongSelf.highlight(entity: strongSelf.highlightEntity)
                 
                 // Check network
-                if !success && strongSelf.folder?.rootFolderType != .deviceDocuments && !ASCNetworkReachability.shared.isReachable && ASCOnlyOfficeApi.shared.token != nil {
+                if !success &&
+                    strongSelf.folder?.rootFolderType != .deviceDocuments &&
+                    !ASCNetworkReachability.shared.isReachable &&
+                    ASCOnlyOfficeApi.shared.token != nil
+                {
                     ASCBanner.shared.showError(
                         title: NSLocalizedString("No network", comment: ""),
                         message: NSLocalizedString("Check your internet connection", comment: "")
@@ -2747,7 +2751,7 @@ class ASCDocumentsViewController: ASCBaseTableViewController, UIGestureRecognize
             
             let destinationPath = Path.userTemporary + file.title
             
-            provider?.download(file.viewUrl ?? "", to: URL(fileURLWithPath:destinationPath.rawValue)) { [weak self] progress, result, error, response in
+            provider?.download(file.viewUrl ?? "", to: URL(fileURLWithPath:destinationPath.rawValue)) { [weak self] result, progress, error in
                 openingAlert.progress = Float(progress)
                 
                 if forceCancel {

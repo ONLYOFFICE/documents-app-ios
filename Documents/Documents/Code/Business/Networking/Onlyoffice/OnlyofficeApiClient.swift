@@ -20,7 +20,7 @@ class OnlyofficeTokenAdapter: RequestAdapter {
     func adapt(_ urlRequest: URLRequest, for session: Session, completion: @escaping (Result<URLRequest, Error>) -> Void) {
         var urlRequest = urlRequest
         
-        if ASCOnlyOfficeApi.shared.isHttp2 {
+        if OnlyofficeApiClient.shared.isHttp2 {
             urlRequest.headers.update(.authorization(bearerToken: accessToken))
         } else {
             urlRequest.headers.update(.authorization(accessToken)) // Legacy portals
@@ -118,7 +118,7 @@ class OnlyofficeApiClient: NetworkingClient {
         _ processing: @escaping NetworkProgressHandler) {
         
         guard let url = self.url(path: path) else {
-            processing(nil, 1, .invalidUrl)
+            processing(nil, 1, NetworkingError.invalidUrl)
             return
         }
         
@@ -271,5 +271,16 @@ extension OnlyofficeApiClient {
         
         NetworkingClient.clearCookies(for: OnlyofficeApiClient.shared.url(path: endpoint.path))
         OnlyofficeApiClient.shared.request(endpoint, parameters, apply, completion)
+    }
+    
+    class func absoluteUrl(from url: URL?) -> URL? {
+        if let url = url {
+            if let _ = url.host {
+                return url
+            } else {
+                return URL(string: (OnlyofficeApiClient.shared.baseURL?.absoluteString ?? "") + url.absoluteString)
+            }
+        }
+        return nil
     }
 }

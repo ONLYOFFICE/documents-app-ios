@@ -172,7 +172,7 @@ class ASCAccountsViewController: ASCBaseViewController {
 
     private func checkPortalExist(_ portal: String, completion: @escaping (Bool, String?) -> Void) {
         ASCOnlyOfficeApi.shared.baseUrl = portal
-        ASCOnlyOfficeApi.get(ASCOnlyOfficeApi.apiCapabilities) { results, error, response in
+        ASCOnlyOfficeApi.get(ASCOnlyOfficeApi.apiCapabilities) { results, error in
             if let error = error {
                 ASCOnlyOfficeApi.shared.baseUrl = nil
                 completion(false, error.localizedDescription)
@@ -188,7 +188,7 @@ class ASCAccountsViewController: ASCBaseViewController {
 
     private func checkServersVersion(_ portal: String, completion: @escaping (Bool, String?) -> Void) {
         ASCOnlyOfficeApi.shared.baseUrl = portal
-        ASCOnlyOfficeApi.get(ASCOnlyOfficeApi.apiServersVersion) { results, error, response in
+        ASCOnlyOfficeApi.get(ASCOnlyOfficeApi.apiServersVersion) { results, error in
             if let versions = results as? [String: Any] {
                 if let communityServer = versions["communityServer"] as? String {
                     ASCOnlyOfficeApi.shared.serverVersion = communityServer
@@ -300,7 +300,7 @@ class ASCAccountsViewController: ASCBaseViewController {
                         NotificationCenter.default.post(name: ASCConstants.Notifications.loginOnlyofficeCompleted, object: nil)
 
                         // Registration device into the portal
-                        ASCOnlyOfficeApi.post(ASCOnlyOfficeApi.apiDeviceRegistration, parameters: ["type": 2], completion: { (_, _, _) in
+                        ASCOnlyOfficeApi.post(ASCOnlyOfficeApi.apiDeviceRegistration, parameters: ["type": 2], completion: { (_, _) in
                             // 2 - IOSDocuments
                         })
 

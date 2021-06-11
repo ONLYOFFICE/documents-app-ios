@@ -343,7 +343,7 @@ class ASCViewControllerManager {
         // Read full folder info
         if !isRootFolder {
             requestGroup.enter()
-            ASCOnlyOfficeApi.get(String(format: ASCOnlyOfficeApi.apiFolderId, folder.id), completion: { result, error, response in
+            ASCOnlyOfficeApi.get(String(format: ASCOnlyOfficeApi.apiFolderId, folder.id), completion: { result, error in
                 if let result = result as? [String: Any],
                     let resultFolder = ASCFolder(JSON: result) {
                     folder = resultFolder
@@ -356,7 +356,7 @@ class ASCViewControllerManager {
 
         // Read full file info
         requestGroup.enter()
-        ASCOnlyOfficeApi.get(String(format: ASCOnlyOfficeApi.apiFileId, file.id), completion: { result, error, response in
+        ASCOnlyOfficeApi.get(String(format: ASCOnlyOfficeApi.apiFileId, file.id), completion: { result, error in
             if let result = result as? [String: Any],
                 let resultFile = ASCFile(JSON: result) {
                 file = resultFile

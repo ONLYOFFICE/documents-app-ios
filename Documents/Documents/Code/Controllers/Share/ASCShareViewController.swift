@@ -63,7 +63,7 @@ class ASCShareViewController: UIViewController, UITableViewDelegate, UITableView
         }
         
         if let apiRequest = request {
-            ASCOnlyOfficeApi.get(apiRequest) { (results, error, response) in
+            ASCOnlyOfficeApi.get(apiRequest) { results, error in
                 self.showLoadingView(false)
                 
                 if let results = results as? [[String: Any]] {
@@ -173,13 +173,16 @@ class ASCShareViewController: UIViewController, UITableViewDelegate, UITableView
         let hud = MBProgressHUD.showTopMost()
         hud?.label.text = NSLocalizedString("Sharing", comment: "Caption of the process")
         
-        ASCOnlyOfficeApi.put(request, parameters: baseParams + sharesParams) { [weak self] (results, error, response) in
+        ASCOnlyOfficeApi.put(request, parameters: baseParams + sharesParams) { [weak self] results, error in
             if let _ = results as? [[String: Any]] {
                 hud?.setSuccessState()
                 hud?.hide(animated: true, afterDelay: 1)
-            } else if let response = response, let strongSelf = self {
+            } else {
                 hud?.hide(animated: false)
-                UIAlertController.showError(in: strongSelf, message: ASCOnlyOfficeApi.errorMessage(by: response))
+                
+                if let strongSelf = self, let error = error {
+                    UIAlertController.showError(in: strongSelf, message: error.localizedDescription)
+                }
             }
         }
     }
@@ -221,7 +224,7 @@ class ASCShareViewController: UIViewController, UITableViewDelegate, UITableView
         
         modifed = true
         
-        ASCOnlyOfficeApi.put(request, parameters: baseParams + sharesParams) { (results, error, response) in
+        ASCOnlyOfficeApi.put(request, parameters: baseParams + sharesParams) { results, error in
             if let _ = results as? [[String: Any]] {
                 //
             }

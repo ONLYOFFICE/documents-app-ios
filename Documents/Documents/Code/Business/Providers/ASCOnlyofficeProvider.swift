@@ -545,37 +545,17 @@ class ASCOnlyofficeProvider: ASCFileProviderProtocol & ASCSortableFileProviderPr
         apiClient.download(path, to, processing)
     }
 
-    func modify(_ path: String, data: Data, params: [String: Any]?, processing: @escaping ASCApiProgressHandler) {
-        let uploadPath = String(format: ASCOnlyOfficeApi.apiSaveEditing, path)
+    func modify(_ path: String, data: Data, params: [String: Any]?, processing: @escaping NetworkProgressHandler) {
+        let file = ASCFile()
+        file.id = path
+        
         var uploadParams = params ?? [:]
         let mime = uploadParams["mime"] as? String
 
         uploadParams.removeAll(keys: ["mime"])
-
-        apiLegacy.upload(
-            uploadPath,
-            data: data,
-            parameters: uploadParams,
-            method: .put,
-            mime: mime,
-            processing: { (progress, result, error, response) in
-                var file: ASCFile?
-                if let result = result as? [String: Any] {
-                    file = ASCFile(JSON: result)
-                }
-                processing(progress, file, error, response)
-        }
-        )
-    }
-
-    func upload(
-        _ path: String,
-        data: Data,
-        overwrite: Bool,
-        params: [String: Any]?,
-        processing: @escaping ASCApiProgressHandler) {
-        upload(path, data: data, overwrite: overwrite, params: params) { response, progress, error in
-            processing(progress, response, error, nil)
+        
+        apiClient.upload(OnlyofficeAPI.Endpoints.Files.saveEditing(file: file), data, uploadParams, mime) { response, progress, error in
+            processing(response?.result, progress, error)
         }
     }
         
@@ -623,31 +603,31 @@ class ASCOnlyofficeProvider: ASCFileProviderProtocol & ASCSortableFileProviderPr
     func createDocument(_ name: String, fileExtension: String, in folder: ASCFolder, completeon: ASCProviderCompletionHandler?) {
         let fileTitle = name + "." + fileExtension
 
-        ASCOnlyOfficeApi.post(
-            String(format: ASCOnlyOfficeApi.apiCreateFile, folder.id),
-            parameters: ["title": fileTitle],
-            completion: { result, error, response in
-                if error != nil {
-                    completeon?(self, nil, false, ASCProviderError(msg: ASCOnlyOfficeApi.errorMessage(by: response!)))
-                } else {
-                    if let result = result as? [String: Any] {
-                        let file = ASCFile(JSON: result)
-                        ASCAnalytics.logEvent(ASCConstants.Analytics.Event.createEntity, parameters: [
-                            "portal": ASCOnlyOfficeApi.shared.baseUrl ?? "none",
-                            "onDevice": false,
-                            "type": "file",
-                            "fileExt": file?.title.fileExtension().lowercased() ?? "none"
-                            ]
-                        )
-                        completeon?(self, file, true, nil)
-                    } else {
-                        completeon?(self, nil, false, nil)
-                    }
-                }
-        })
+        apiClient.request(OnlyofficeAPI.Endpoints.Files.create(in: folder), ["title": fileTitle]) { result, error in
+            if let error = error {
+                completeon?(self, nil, false, error)
+            } else if let file = result?.result {
+                ASCAnalytics.logEvent(ASCConstants.Analytics.Event.createEntity, parameters: [
+                    "portal": OnlyofficeApiClient.shared.baseURL?.absoluteString ?? "none",
+                    "onDevice": false,
+                    "type": "file",
+                    "fileExt": file.title.fileExtension().lowercased()
+                    ]
+                )
+                completeon?(self, file, true, nil)
+            } else {
+                completeon?(self, nil, false, NetworkingError.invalidData)
+            }
+        }
     }
 
-    func createImage(_ name: String, in folder: ASCFolder, data: Data, params: [String: Any]?, processing: @escaping ASCApiProgressHandler) {
+    func createImage(
+        _ name: String,
+        in folder: ASCFolder,
+        data: Data,
+        params: [String: Any]?,
+        processing: @escaping NetworkProgressHandler)
+    {
         var params = params ?? [:]
 
         params += [
@@ -657,57 +637,62 @@ class ASCOnlyofficeProvider: ASCFileProviderProtocol & ASCSortableFileProviderPr
         createFile(name, in: folder, data: data, params: params, processing: processing)
     }
 
-    func createFile(_ name: String, in folder: ASCFolder, data: Data, params: [String: Any]?, processing: @escaping ASCApiProgressHandler) {
+    func createFile(
+        _ name: String,
+        in folder: ASCFolder,
+        data: Data,
+        params: [String: Any]?,
+        processing: @escaping NetworkProgressHandler)
+    {
         var params = params ?? [:]
 
         params += [
             "title": name
         ]
 
-        upload(folder.id, data: data, overwrite: false, params: params) { progress, result, error, response in
+        upload(folder.id, data: data, overwrite: false, params: params) { result, progress, error in
             if let _ = result as? ASCFile {
                 ASCAnalytics.logEvent(ASCConstants.Analytics.Event.createEntity, parameters: [
-                    "portal": ASCOnlyOfficeApi.shared.baseUrl ?? "none",
+                    "portal": OnlyofficeApiClient.shared.baseURL ?? "none",
                     "onDevice": false,
                     "type": "file",
                     "fileExt": name.fileExtension()
                     ]
                 )
             }
-            processing(progress, result, error, response)
+            processing(result, progress, error)
         }
     }
 
-    func createFolder(_ name: String, in folder: ASCFolder, params: [String: Any]?, completeon: ASCProviderCompletionHandler?) {
-        ASCOnlyOfficeApi.post(
-            String(format: ASCOnlyOfficeApi.apiCreateFolder, folder.id),
-            parameters: ["title": name],
-            completion: { [weak self] result, error, response in
-                guard let strongSelf = self else { return }
-
-                if error != nil {
-                    completeon?(strongSelf, nil, false, ASCProviderError(msg: ASCOnlyOfficeApi.errorMessage(by: response!)))
-                } else {
-                    if let result = result as? [String: Any] {
-                        let folder = ASCFolder(JSON: result)
-                        ASCAnalytics.logEvent(ASCConstants.Analytics.Event.createEntity, parameters: [
-                            "portal": self?.apiLegacy.baseUrl ?? "none",
-                            "onDevice": false,
-                            "type": "folder"
-                            ]
-                        )
-                        completeon?(strongSelf, folder, true, nil)
-                    } else {
-                        completeon?(strongSelf, nil, false, ASCProviderError(msg: ASCOnlyOfficeApi.errorMessage(by: response!)))
-                    }
-                }
+    func createFolder(
+        _ name: String,
+        in folder: ASCFolder,
+        params: [String: Any]?,
+        completeon: ASCProviderCompletionHandler?)
+    {
+        apiClient.request(OnlyofficeAPI.Endpoints.Folders.create(in: folder), ["title": name]) { result, error in
+            if let error = error {
+                completeon?(self, nil, false, error)
+            } else if let folder = result?.result {
+                ASCAnalytics.logEvent(ASCConstants.Analytics.Event.createEntity, parameters: [
+                    "portal": OnlyofficeApiClient.shared.baseURL?.absoluteString ?? "none",
+                    "onDevice": false,
+                    "type": "folder"
+                    ]
+                )
+                completeon?(self, folder, true, nil)
+            } else {
+                completeon?(self, nil, false, NetworkingError.invalidData)
+//                completeon?(self, nil, false, ASCProviderError(NetworkingError.invalidData))
             }
-        )
+        }
     }
 
-    func chechTransfer(items: [ASCEntity], to folder: ASCFolder, handler: ASCEntityHandler? = nil) {
-        var conflictItems: [Any] = []
-
+    func chechTransfer(
+        items: [ASCEntity],
+        to folder: ASCFolder,
+        handler: ASCEntityHandler? = nil)
+    {
         handler?(.begin, nil, nil)
 
         var folderIds: [String] = []
@@ -733,27 +718,24 @@ class ASCOnlyofficeProvider: ASCFileProviderProtocol & ASCSortableFileProviderPr
             parameters["fileIds"] = fileIds
         }
 
-        ASCOnlyOfficeApi.get(ASCOnlyOfficeApi.apiBatchMove, parameters: parameters) { (result, error, response) in
-            if error != nil {
-                handler?(.error, nil, ASCOnlyOfficeApi.errorMessage(by: response!))
+        apiClient.request(OnlyofficeAPI.Endpoints.Operations.check, parameters) { result, error in
+            if let error = error {
+                handler?(.error, nil, error.localized)
+            } else if let files = result?.result {
+                handler?(.end, files, nil)
             } else {
-                if let result = result as? [[String: Any]] {
-                    // Return files only
-                    for entity in result {
-                        if let file = ASCFile(JSON: entity) {
-                            conflictItems.append(file)
-                        }
-                    }
-
-                    handler?(.end, conflictItems, nil)
-                } else {
-                    handler?(.end, nil, nil)
-                }
+                handler?(.error, nil, NetworkingError.invalidData.localized)
             }
         }
     }
 
-    func transfer(items: [ASCEntity], to folder: ASCFolder, move: Bool, overwrite: Bool, handler: ASCEntityProgressHandler?) {
+    func transfer(
+        items: [ASCEntity],
+        to folder: ASCFolder,
+        move: Bool,
+        overwrite: Bool,
+        handler: ASCEntityProgressHandler?)
+    {
         var cancel = false
 
         handler?(.begin, 0, nil, nil, &cancel)
@@ -782,33 +764,24 @@ class ASCOnlyofficeProvider: ASCFileProviderProtocol & ASCSortableFileProviderPr
             parameters["fileIds"] = fileIds
         }
 
-        ASCOnlyOfficeApi.put(move ? ASCOnlyOfficeApi.apiBatchMove : ASCOnlyOfficeApi.apiBatchCopy, parameters: parameters) { (result, error, response) in
-            if error != nil {
-                handler?(.error, 1, nil, ASCOnlyOfficeApi.errorMessage(by: response!), &cancel)
+        apiClient.request(move ? OnlyofficeAPI.Endpoints.Operations.move : OnlyofficeAPI.Endpoints.Operations.copy, parameters) { [weak apiClient] result, error in
+            if let error = error {
+                handler?(.error, 1, nil, error.localized, &cancel)
             } else {
                 var checkOperation: (()->Void)?
                 checkOperation = {
-                    ASCOnlyOfficeApi.get(ASCOnlyOfficeApi.apiFileOperations) { (result, error, response) in
-                        if error != nil {
-                            handler?(.error, 1, nil, ASCOnlyOfficeApi.errorMessage(by: response!), &cancel)
-                        } else {
-                            if let result = result as? [Any], let entityFromResponse = result.first as? [String: Any] {
-                                if let progressResponse = entityFromResponse["progress"] as? Int {
-                                    handler?(.progress, Float(progressResponse) / 100.0, nil, ASCOnlyOfficeApi.errorMessage(by: response!), &cancel)
-
-                                    if progressResponse >= 100 {
-                                        //                                            if let files = entityFromResponse["files"] as? [[String: Any]], files.count > 1, let file = ASCFile(JSON: files[1]) {
-                                        //                                                handler?(.end, 1, file, nil, &cancel)
-                                        //                                            }
-                                        handler?(.end, 1, nil, nil, &cancel)
-                                    } else {
-                                        Thread.sleep(forTimeInterval: 1)
-                                        checkOperation?()
-                                    }
-                                } else {
-                                    handler?(.error, 1, nil, NSLocalizedString("Unknown API response.", comment: ""), &cancel)
-                                }
+                    apiClient?.request(OnlyofficeAPI.Endpoints.Operations.list) { result, error in
+                        if let error = error {
+                            handler?(.error, 1, nil, error.localized, &cancel)
+                        } else if let operation = result?.result?.first, let progress = operation.progress {
+                            if progress >= 100 {
+                                handler?(.end, 1, nil, nil, &cancel)
+                            } else {
+                                Thread.sleep(forTimeInterval: 1)
+                                checkOperation?()
                             }
+                        } else {
+                            handler?(.error, 1, nil, NetworkingError.invalidData.localized, &cancel)
                         }
                     }
                 }
@@ -1087,7 +1060,7 @@ class ASCOnlyofficeProvider: ASCFileProviderProtocol & ASCSortableFileProviderPr
     // MARK: - Helpers
 
     func absoluteUrl(from string: String?) -> URL? {
-        return ASCOnlyOfficeApi.absoluteUrl(from: URL(string: string ?? ""))
+        return OnlyofficeApiClient.absoluteUrl(from: URL(string: string ?? ""))
     }
 
     private func errorInfo(by response: Any) -> [String: Any]? {

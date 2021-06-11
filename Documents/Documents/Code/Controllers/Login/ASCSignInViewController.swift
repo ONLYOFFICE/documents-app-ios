@@ -373,7 +373,7 @@ class ASCSignInViewController: ASCBaseViewController {
                     requestQueue.addOperation {
                         if nil == lastErrorMsg {
                             let semaphore = DispatchSemaphore(value: 0)
-                            ASCOnlyOfficeApi.get(ASCOnlyOfficeApi.apiServersVersion) { results, error, response in
+                            ASCOnlyOfficeApi.get(ASCOnlyOfficeApi.apiServersVersion) { results, error in
                                 defer { semaphore.signal() }
                                 
                                 if let versions = results as? [String: Any] {
@@ -433,7 +433,7 @@ class ASCSignInViewController: ASCBaseViewController {
                                 hud?.hide(animated: true, afterDelay: 1)
                                 
                                 // Registration device into the portal
-                                ASCOnlyOfficeApi.post(ASCOnlyOfficeApi.apiDeviceRegistration, parameters: ["type": 2], completion: { (_, _, _) in
+                                ASCOnlyOfficeApi.post(ASCOnlyOfficeApi.apiDeviceRegistration, parameters: ["type": 2], completion: { (_, _) in
                                     // 2 - IOSDocuments
                                 })
                                 

@@ -373,7 +373,7 @@ class ASCEditorManager: NSObject, DEEditorDelegate, SEEditorDelegate, PEEditorDe
     }
     
     private func fetchDocumentInfo(_ file: ASCFile, viewMode: Bool = false, handler: @escaping (Bool, Error?) -> Void) {
-        ASCOnlyOfficeApi.get(String(format: ASCOnlyOfficeApi.apiOpenEditFile, file.id), parameters: nil) { (results, error, response) in
+        ASCOnlyOfficeApi.get(String(format: ASCOnlyOfficeApi.apiOpenEditFile, file.id), parameters: nil) { results, error in
             if let results = results as? [String: Any] {
                 if let document = results["document"] as? [String: Any] {
                     self.documentKeyForTrack = document["key"] as? String
@@ -397,7 +397,7 @@ class ASCEditorManager: NSObject, DEEditorDelegate, SEEditorDelegate, PEEditorDe
                         }
                     }
                 }
-                handler(false,  ASCEditorManagerError(msg: NSLocalizedString("Failed to get file information from the server.", comment: "")))
+                handler(false, ASCEditorManagerError(msg: NSLocalizedString("Failed to get file information from the server.", comment: "")))
             } else {
                 handler(false, error)
             }
@@ -405,7 +405,7 @@ class ASCEditorManager: NSObject, DEEditorDelegate, SEEditorDelegate, PEEditorDe
     }
     
     public func fetchDocumentService(_ handler: @escaping (String?, String?, Error?) -> Void) {
-        ASCOnlyOfficeApi.get(ASCOnlyOfficeApi.apiDocumentService, parameters: ["version": "true"], completion: { (results, error, response) in
+        ASCOnlyOfficeApi.get(ASCOnlyOfficeApi.apiDocumentService, parameters: ["version": "true"], completion: { results, error in
 
             let removePath = "/web-apps/apps/api/documents/api.js"
 
@@ -858,7 +858,7 @@ class ASCEditorManager: NSObject, DEEditorDelegate, SEEditorDelegate, PEEditorDe
             if let file = self.openedlocallyFile {
                 if let key = documentKeyForTrack {
                     ASCOnlyOfficeApi.get(String(format: ASCOnlyOfficeApi.apiFileTrackEdit, file.id),
-                               parameters: ["docKeyForTrack": key, "isFinish": "true"]) { (results, error, response) in
+                               parameters: ["docKeyForTrack": key, "isFinish": "true"]) { results, error in
                                 if let error = error {
                                     log.error(error)
                                 }
@@ -917,7 +917,7 @@ class ASCEditorManager: NSObject, DEEditorDelegate, SEEditorDelegate, PEEditorDe
             if trackingReadyForLocking == trackingFileStatus {
                 
                 ASCOnlyOfficeApi.get(String(format: ASCOnlyOfficeApi.apiFileTrackEdit, file.id),
-                           parameters: ["docKeyForTrack": key]) { (results, error, response) in
+                           parameters: ["docKeyForTrack": key]) { results, error in
                             
                             if let error = error {
                                 self.openHandler?(.error, 1, error, &cancel)
@@ -926,22 +926,23 @@ class ASCEditorManager: NSObject, DEEditorDelegate, SEEditorDelegate, PEEditorDe
             } else {
                 
                 ASCOnlyOfficeApi.post(String(format: ASCOnlyOfficeApi.apiFileStartEdit, file.id),
-                            parameters: ["editingAlone": "true"]) { (results, error, response) in
+                            parameters: ["editingAlone": "true"]) { results, error in
                                 
                                 log.info("apiFileStartEdit")
                                 
                                 if let error = error {
-                                    if let errorInfo = ASCOnlyOfficeApi.errorInfo(by: response!) {
-                                        if let status = errorInfo["status"] as? Int,
-                                            let code = errorInfo["statusCode"] as? Int {
-                                            if status == 1 && code == 403 {
-                                                self.openHandler?(.end, 1, nil, &cancel)
-                                                self.stopLocallyEditing(false)
-                                                self.lockedHandler?()
-                                                return
-                                            }
-                                        }
-                                    }
+                                    // TODO: read response
+//                                    if let errorInfo = ASCOnlyOfficeApi.errorInfo(by: response!) {
+//                                        if let status = errorInfo["status"] as? Int,
+//                                            let code = errorInfo["statusCode"] as? Int {
+//                                            if status == 1 && code == 403 {
+//                                                self.openHandler?(.end, 1, nil, &cancel)
+//                                                self.stopLocallyEditing(false)
+//                                                self.lockedHandler?()
+//                                                return
+//                                            }
+//                                        }
+//                                    }
                                     
                                     self.openHandler?(.error, 1, error, &cancel)
                                     self.stopLocallyEditing(false)
@@ -1128,7 +1129,7 @@ class ASCEditorManager: NSObject, DEEditorDelegate, SEEditorDelegate, PEEditorDe
         
         if let viewUrl = pdf.viewUrl {
             let destination = Path.userTemporary + Path(pdf.title)
-            provider.download(viewUrl, to: URL(fileURLWithPath:destination.rawValue)) { progress, result, error, response in
+            provider.download(viewUrl, to: URL(fileURLWithPath:destination.rawValue)) { result, progress, error in
                 if cancel {
                     provider.cancel()
                     handler?(.end, 1, nil, &cancel)
@@ -1292,7 +1293,7 @@ class ASCEditorManager: NSObject, DEEditorDelegate, SEEditorDelegate, PEEditorDe
         
         if let viewUrl = file.viewUrl {
             let destination = Path.userTemporary + Path(file.title)
-            provider.download(viewUrl, to: URL(fileURLWithPath:destination.rawValue)) { progress, result, error, response in
+            provider.download(viewUrl, to: URL(fileURLWithPath:destination.rawValue)) { result, progress, error in
                 if cancel {
                     handler?(.end, 1, nil, &cancel)
                     return
@@ -1462,7 +1463,7 @@ class ASCEditorManager: NSObject, DEEditorDelegate, SEEditorDelegate, PEEditorDe
         log.info("DEEditorDelegate:documentLoading \(value)")
         
         if let file = openedFile, !file.device {
-            ASCOnlyOfficeApi.post(String(format: ASCOnlyOfficeApi.apiFileStartEdit, file.id)) { (results, error, response) in
+            ASCOnlyOfficeApi.post(String(format: ASCOnlyOfficeApi.apiFileStartEdit, file.id)) { results, error in
                 if let error = error {
                     log.error(error)
                 }
@@ -1647,7 +1648,7 @@ class ASCEditorManager: NSObject, DEEditorDelegate, SEEditorDelegate, PEEditorDe
                     UserDefaults.standard.removeObject(forKey: ASCConstants.SettingsKeys.openedDocument)
                     UserDefaults.standard.removeObject(forKey: ASCConstants.SettingsKeys.passwordOpenedDocument)
                     
-                    ASCOnlyOfficeApi.get(String(format: ASCOnlyOfficeApi.apiFileId, file.id)) { (results, error, response) in
+                    ASCOnlyOfficeApi.get(String(format: ASCOnlyOfficeApi.apiFileId, file.id)) { results, error in
                         if let results = results as? [String: Any] {
                             if let newFile = ASCFile(JSON: results) {
                                 closeHandler(.end, 1, newFile, nil, &cancel)
@@ -1758,7 +1759,7 @@ class ASCEditorManager: NSObject, DEEditorDelegate, SEEditorDelegate, PEEditorDe
         log.info("SEEditorDelegate:documentLoading \(value)")
         
         if let file = openedFile, !file.device {
-            ASCOnlyOfficeApi.post(String(format: ASCOnlyOfficeApi.apiFileStartEdit, file.id)) { (results, error, response) in
+            ASCOnlyOfficeApi.post(String(format: ASCOnlyOfficeApi.apiFileStartEdit, file.id)) { results, error in
                 if let error = error {
                     log.error(error)
                 }
@@ -1946,7 +1947,7 @@ class ASCEditorManager: NSObject, DEEditorDelegate, SEEditorDelegate, PEEditorDe
                     UserDefaults.standard.removeObject(forKey: ASCConstants.SettingsKeys.openedDocument)
                     ASCLocalFileHelper.shared.removeDirectory(Path.userAutosavedInformation + file.title)
                     
-                    ASCOnlyOfficeApi.get(String(format: ASCOnlyOfficeApi.apiFileId, file.id)) { (results, error, response) in
+                    ASCOnlyOfficeApi.get(String(format: ASCOnlyOfficeApi.apiFileId, file.id)) { results, error in
                         if let results = results as? [String: Any] {
                             if let newFile = ASCFile(JSON: results) {
                                 closeHandler(.end, 1, newFile, nil, &cancel)
@@ -2063,7 +2064,7 @@ class ASCEditorManager: NSObject, DEEditorDelegate, SEEditorDelegate, PEEditorDe
         log.info("PEEditorDelegate:documentLoading \(value)")
         
         if let file = openedFile, !file.device {
-            ASCOnlyOfficeApi.post(String(format: ASCOnlyOfficeApi.apiFileStartEdit, file.id)) { (results, error, response) in
+            ASCOnlyOfficeApi.post(String(format: ASCOnlyOfficeApi.apiFileStartEdit, file.id)) { results, error in
                 if let error = error {
                     log.error(error)
                 }
@@ -2250,7 +2251,7 @@ class ASCEditorManager: NSObject, DEEditorDelegate, SEEditorDelegate, PEEditorDe
                     UserDefaults.standard.removeObject(forKey: ASCConstants.SettingsKeys.openedDocument)
                     ASCLocalFileHelper.shared.removeDirectory(Path.userAutosavedInformation + file.title)
                     
-                    ASCOnlyOfficeApi.get(String(format: ASCOnlyOfficeApi.apiFileId, file.id)) { (results, error, response) in
+                    ASCOnlyOfficeApi.get(String(format: ASCOnlyOfficeApi.apiFileId, file.id)) { results, error in
                         if let results = results as? [String: Any] {
                             if let newFile = ASCFile(JSON: results) {
                                 closeHandler(.end, 1, newFile, nil, &cancel)

@@ -29,10 +29,17 @@ class OnlyofficeAPI {
         static public let folder                 = "api/\(version)/files/folder/%@"
         static public let favorite               = "api/\(version)/files/favorites"
         static public let filesShare             = "api/\(version)/files/share"
-        static public let fileopsDelete          = "api/\(version)/files/fileops/delete"
+        static public let operations             = "api/\(version)/files/fileops"
+        static public let operationCopy          = "api/\(version)/files/fileops/copy"
+        static public let operationMove          = "api/\(version)/files/fileops/move"
+        static public let operationDelete        = "api/\(version)/files/fileops/delete"
         static public let thirdParty             = "api/\(version)/files/thirdparty"
         static public let insertFile             = "api/\(version)/files/%@/insert"
         static public let uploadFile             = "api/\(version)/files/%@/upload"
+        static public let saveEditing            = "api/\(version)/files/file/%@/saveediting"
+        static public let createFile             = "api/\(version)/files/%@/file"
+        static public let createFolder           = "api/\(version)/files/folder/%@"
+        
     }
 
     struct Endpoints {
@@ -69,9 +76,11 @@ class OnlyofficeAPI {
             static func path(of folder: ASCFolder) -> Endpoint<OnlyofficeDataResult<OnlyofficePath>> {
                 return Endpoint<OnlyofficeDataResult<OnlyofficePath>>.make(Path.files + folder.id, .get, URLEncoding.default)
             }
-            
             static func update(folder: ASCFolder) -> Endpoint<OnlyofficeDataResult<ASCFolder>> {
                 return Endpoint<OnlyofficeDataResult<ASCFolder>>.make(String(format: Path.folder, folder.id), .put)
+            }
+            static func create(in folder: ASCFolder) -> Endpoint<OnlyofficeDataResult<ASCFolder>> {
+                return Endpoint<OnlyofficeDataResult<ASCFolder>>.make(String(format: Path.createFolder, folder.id), .post)
             }
         }
         
@@ -81,7 +90,12 @@ class OnlyofficeAPI {
             static func update(file: ASCFile) -> Endpoint<OnlyofficeDataResult<ASCFile>> {
                 return Endpoint<OnlyofficeDataResult<ASCFile>>.make(String(format: Path.file, file.id), .put)
             }
-
+            static func saveEditing(file: ASCFile) -> Endpoint<OnlyofficeDataResult<ASCFile>> {
+                return Endpoint<OnlyofficeDataResult<ASCFile>>.make(String(format: Path.saveEditing, file.id), .put)
+            }
+            static func create(in folder: ASCFolder) -> Endpoint<OnlyofficeDataResult<ASCFile>> {
+                return Endpoint<OnlyofficeDataResult<ASCFile>>.make(String(format: Path.createFile, folder.id), .post)
+            }
             static let addFavorite: Endpoint<OnlyofficeDataSingleResult<Bool>> = Endpoint<OnlyofficeDataSingleResult<Bool>>.make(Path.favorite, .post)
             static let removeFavorite: Endpoint<OnlyofficeDataSingleResult<Bool>> = Endpoint<OnlyofficeDataSingleResult<Bool>>.make(Path.favorite, .delete)
         }
@@ -95,7 +109,12 @@ class OnlyofficeAPI {
         // MARK: Operations
         
         struct Operations {
-            static let removeEntities: Endpoint<OnlyofficeDataArrayResult<Parameters>> = Endpoint<OnlyofficeDataArrayResult<Parameters>>.make(Path.fileopsDelete, .put)
+            static let removeEntities: Endpoint<OnlyofficeDataArrayResult<Parameters>> = Endpoint<OnlyofficeDataArrayResult<Parameters>>.make(Path.operationDelete, .put)
+            static let check: Endpoint<OnlyofficeDataArrayResult<ASCFile>> = Endpoint<OnlyofficeDataArrayResult<OnlyofficeFileOperation>>.make(Path.operationMove)
+            static let copy: Endpoint<OnlyofficeDataSingleResult<OnlyofficeFileOperation>> = Endpoint<OnlyofficeDataSingleResult<OnlyofficeFileOperation>>.make(Path.operationCopy, .put)
+            static let move: Endpoint<OnlyofficeDataSingleResult<OnlyofficeFileOperation>> = Endpoint<OnlyofficeDataSingleResult<OnlyofficeFileOperation>>.make(Path.operationMove, .put)
+            static let list: Endpoint<OnlyofficeDataArrayResult<OnlyofficeFileOperation>> = Endpoint<OnlyofficeDataArrayResult<OnlyofficeFileOperation>>.make(Path.operations)
+
         }
         
         // MARK: Third-Party Integration

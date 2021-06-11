@@ -15,6 +15,7 @@ enum NetworkingError: Error {
     case invalidData
     case statusCode(Int)
     case apiError(error: NetworkingServerError)
+    case unknown(error: Error?)
     
     var localized : String {
         switch self {
@@ -30,6 +31,8 @@ enum NetworkingError: Error {
             return String(format: NSLocalizedString("Error code: %ld", comment: ""), code)
         case .apiError(let error):
             return error.localized
+        case .unknown(let error):
+            return error?.localizedDescription ?? NSLocalizedString("Unknown error", comment: "")
         }
     }
 }

@@ -429,9 +429,9 @@ class ASCiCloudProvider: ASCFileProviderProtocol & ASCSortableFileProviderProtoc
         return provider.url(of: path)
     }
     
-    func download(_ path: String, to destinationURL: URL, processing: @escaping ASCApiProgressHandler) {
+    func download(_ path: String, to destinationURL: URL, processing: @escaping NetworkProgressHandler) {
         guard let provider = provider else {
-            processing(0, nil, nil, nil)
+            processing(nil, 0, nil)
             return
         }
 
@@ -439,7 +439,7 @@ class ASCiCloudProvider: ASCFileProviderProtocol & ASCSortableFileProviderProtoc
 
         DispatchQueue.global().async { [weak self] in
             guard let strongSelf = self else {
-                processing(0, nil, nil, nil)
+                processing(nil, 0, nil)
                 return
             }
             
@@ -454,19 +454,19 @@ class ASCiCloudProvider: ASCFileProviderProtocol & ASCSortableFileProviderProtoc
                 
                 operationDelegate.onSucceed = { fileProvider, operation in
                     DispatchQueue.main.async {
-                        processing(1.0, destinationURL, nil, nil)
+                        processing(destinationURL, 1.0, nil)
                     }
                     cleanupHendler(handlerUid)
                 }
                 operationDelegate.onFailed = { fileProvider, operation, error in
                     DispatchQueue.main.async {
-                        processing(1.0, nil, error, nil)
+                        processing(nil, 1.0, error)
                     }
                     cleanupHendler(handlerUid)
                 }
                 operationDelegate.onProgress = { fileProvider, operation, progress in
                     DispatchQueue.main.async {
-                        processing(Double(progress), nil, nil, nil)
+                        processing(nil, Double(progress), nil)
                     }
                 }
                 
@@ -478,7 +478,7 @@ class ASCiCloudProvider: ASCFileProviderProtocol & ASCSortableFileProviderProtoc
                     }
                 } catch {
                     log.error(error)
-                    processing(1.0, nil, error, nil)
+                    processing(nil, 1.0, error)
                     return
                 }
                 
@@ -487,7 +487,7 @@ class ASCiCloudProvider: ASCFileProviderProtocol & ASCSortableFileProviderProtoc
                         log.error(error.localizedDescription)
                         
                         DispatchQueue.main.async {
-                            processing(1.0, nil, error, nil)
+                            processing(nil, 1.0, error)
                         }
                         cleanupHendler(handlerUid)
                     }
@@ -502,15 +502,15 @@ class ASCiCloudProvider: ASCFileProviderProtocol & ASCSortableFileProviderProtoc
                 }
             } else {
                 DispatchQueue.main.async {
-                    processing(0, nil, nil, nil)
+                    processing(nil, 0, nil)
                 }
             }
         }
     }
     
-    func modify(_ path: String, data: Data, params: [String: Any]?, processing: @escaping ASCApiProgressHandler) {
+    func modify(_ path: String, data: Data, params: [String: Any]?, processing: @escaping NetworkProgressHandler) {
         guard let provider = provider else {
-            processing(0, nil, nil, nil)
+            processing(nil, 0, nil)
             return
         }
 
@@ -520,7 +520,7 @@ class ASCiCloudProvider: ASCFileProviderProtocol & ASCSortableFileProviderProtoc
             self?.attributesOfItem(path: path, completionHandler: { fileObject, error in
                 DispatchQueue.main.async(execute: { [weak self] in
                     if let error = error {
-                        processing(1.0, nil, error, nil)
+                        processing(nil, 1.0, error)
                     } else if let fileObject = fileObject {
                         let fileSize: UInt64 = (fileObject.size < 0) ? 0 : UInt64(fileObject.size)
 
@@ -541,9 +541,9 @@ class ASCiCloudProvider: ASCFileProviderProtocol & ASCSortableFileProviderProtoc
                         cloudFile.displayContentLength = String.fileSizeToString(with: fileSize)
                         cloudFile.pureContentLength = Int(fileSize)
 
-                        processing(1.0, cloudFile, nil, nil)
+                        processing(cloudFile, 1.0, nil)
                     } else {
-                        processing(1.0, nil, nil, nil)
+                        processing(nil, 1.0, nil)
                     }
                 })
             })
@@ -551,12 +551,12 @@ class ASCiCloudProvider: ASCFileProviderProtocol & ASCSortableFileProviderProtoc
         providerOperationDelegate.onFailed = { [weak self] fileProvider, operation, error in
             self?.operationProcess = nil
             DispatchQueue.main.async {
-                processing(1.0, nil, error, nil)
+                processing(nil, 1.0, error)
             }
         }
         providerOperationDelegate.onProgress = { fileProvider, operation, progress in
             DispatchQueue.main.async {
-                processing(Double(progress), nil, nil, nil)
+                processing(nil, Double(progress), nil)
             }
         }
 
@@ -565,14 +565,14 @@ class ASCiCloudProvider: ASCFileProviderProtocol & ASCSortableFileProviderProtoc
         operationProcess = provider.writeContents(path: path, contents: data, overwrite: true) { error in
             log.error(error?.localizedDescription ?? "")
             DispatchQueue.main.async {
-                processing(1.0, nil, error, nil)
+                processing(nil, 1.0, error)
             }
         }
     }
 
-    func upload(_ path: String, data: Data, overwrite: Bool, params: [String: Any]?, processing: @escaping ASCApiProgressHandler) {
+    func upload(_ path: String, data: Data, overwrite: Bool, params: [String: Any]?, processing: @escaping NetworkProgressHandler) {
         guard let provider = provider else {
-            processing(0, nil, nil, nil)
+            processing(nil, 0, nil)
             return
         }
 
@@ -587,7 +587,7 @@ class ASCiCloudProvider: ASCFileProviderProtocol & ASCSortableFileProviderProtoc
         do {
             try data.write(to: dummyFilePath, atomically: true)
         } catch(let error) {
-            processing(1, nil, error, nil)
+            processing(nil, 1, error)
             return
         }
 
@@ -597,7 +597,7 @@ class ASCiCloudProvider: ASCFileProviderProtocol & ASCSortableFileProviderProtoc
         DispatchQueue.global().async { [weak self] in
             guard let strongSelf = self else {
                 DispatchQueue.main.async {
-                    processing(0, nil, nil, nil)
+                    processing(nil, 0, nil)
                 }
                 return
             }
@@ -616,7 +616,7 @@ class ASCiCloudProvider: ASCFileProviderProtocol & ASCSortableFileProviderProtoc
                     self?.attributesOfItem(path: dstPath, completionHandler: { fileObject, error in
                         DispatchQueue.main.async(execute: { [weak self] in
                             if let error = error {
-                                processing(1.0, nil, error, nil)
+                                processing(nil, 1.0, error)
                             } else if let fileObject = fileObject {
                                 let fileSize: UInt64 = (fileObject.size < 0) ? 0 : UInt64(fileObject.size)
                                 
@@ -637,9 +637,9 @@ class ASCiCloudProvider: ASCFileProviderProtocol & ASCSortableFileProviderProtoc
                                 cloudFile.displayContentLength = String.fileSizeToString(with: fileSize)
                                 cloudFile.pureContentLength = Int(fileSize)
                                 
-                                processing(1.0, cloudFile, nil, nil)
+                                processing(cloudFile, 1.0, nil)
                             } else {
-                                processing(1.0, nil, nil, nil)
+                                processing(nil, 1.0, nil)
                             }
                             ASCLocalFileHelper.shared.removeFile(dummyFilePath)
                             cleanupHendler(handlerUid)
@@ -648,14 +648,14 @@ class ASCiCloudProvider: ASCFileProviderProtocol & ASCSortableFileProviderProtoc
                 }
                 operationDelegate.onFailed = { fileProvider, operation, error in
                     DispatchQueue.main.async {
-                        processing(1.0, nil, error, nil)
+                        processing(nil, 1.0, error)
                     }
                     ASCLocalFileHelper.shared.removeFile(dummyFilePath)
                     cleanupHendler(handlerUid)
                 }
                 operationDelegate.onProgress = { fileProvider, operation, progress in
                     localProgress = max(localProgress, progress)
-                    processing(Double(localProgress), nil, nil, nil)
+                    processing(nil, Double(localProgress), nil)
                 }
                 
                 localProvider.delegate = operationDelegate
@@ -665,7 +665,7 @@ class ASCiCloudProvider: ASCFileProviderProtocol & ASCSortableFileProviderProtoc
                         log.error(error.localizedDescription)
                         
                         DispatchQueue.main.async {
-                            processing(1.0, nil, error, nil)
+                            processing(nil, 1.0, error)
                         }
                         ASCLocalFileHelper.shared.removeFile(dummyFilePath)
                         cleanupHendler(handlerUid)
@@ -681,7 +681,7 @@ class ASCiCloudProvider: ASCFileProviderProtocol & ASCSortableFileProviderProtoc
                 }
             } else {
                 DispatchQueue.main.async {
-                    processing(0, nil, nil, nil)
+                    processing(nil, 0, nil)
                 }
             }
         }
@@ -748,13 +748,13 @@ class ASCiCloudProvider: ASCFileProviderProtocol & ASCSortableFileProviderProtoc
         }
     }
 
-    func createImage(_ name: String, in folder: ASCFolder, data: Data, params: [String: Any]?, processing: @escaping ASCApiProgressHandler) {
+    func createImage(_ name: String, in folder: ASCFolder, data: Data, params: [String: Any]?, processing: @escaping NetworkProgressHandler) {
         createFile(name, in: folder, data: data, params: params, processing: processing)
     }
 
-    func createFile(_ name: String, in folder: ASCFolder, data: Data, params: [String: Any]?, processing: @escaping ASCApiProgressHandler) {
+    func createFile(_ name: String, in folder: ASCFolder, data: Data, params: [String: Any]?, processing: @escaping NetworkProgressHandler) {
         let path = (Path(folder.id) + name).rawValue
-        upload(path, data: data, overwrite: false, params: nil) { progress, result, error, response in
+        upload(path, data: data, overwrite: false, params: nil) { result, progress, error in
             if let _ = result {
                 ASCAnalytics.logEvent(ASCConstants.Analytics.Event.createEntity, parameters: [
                     "portal": "icloud",
@@ -764,7 +764,7 @@ class ASCiCloudProvider: ASCFileProviderProtocol & ASCSortableFileProviderProtoc
                     ]
                 )
             }
-            processing(progress, result, error, response)
+            processing(result, progress, error)
         }
     }
 

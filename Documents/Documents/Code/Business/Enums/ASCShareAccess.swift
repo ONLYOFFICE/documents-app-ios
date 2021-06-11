@@ -8,7 +8,7 @@
 
 import Foundation
 
-enum ASCShareAccess: Int {
+enum ASCShareAccess: Int, CaseIterable {
     case none   = 0
     case full   = 1
     case read   = 2
@@ -28,6 +28,23 @@ enum ASCShareAccess: Int {
         case 4: self = .varies
         case 5: self = .review
         default: self = .none
+        }
+    }
+    
+    func title() -> String {
+        switch self {
+        case .none:
+            return NSLocalizedString("None", comment: "Share status")
+        case .full:
+            return NSLocalizedString("Full Access", comment: "Share status")
+        case .read:
+            return NSLocalizedString("Read Only", comment: "Share status")
+        case .deny:
+            return NSLocalizedString("Deny Access", comment: "Share status")
+        case .varies:
+            return NSLocalizedString("Varies", comment: "Share status")
+        case .review:
+            return NSLocalizedString("Review", comment: "Share status")
         }
     }
 }

@@ -918,7 +918,7 @@ class ASCEntityManager: NSObject, UITextFieldDelegate {
                         }
 
                         let normalizeCurrentProgress = sizeOfCommonProgress / Float(files.count) * Float(progress)
-                         handler(commonProgress + localProgress + normalizeCurrentProgress, false, false, nil, nil, &cancel)
+                        handler(commonProgress + localProgress + normalizeCurrentProgress, false, false, nil, nil, &cancel)
 
                         if nil != error || nil != result {
                             if let error = error {

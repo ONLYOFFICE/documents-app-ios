@@ -19,4 +19,5 @@ enum ASCFileProviderType: String, CaseIterable {
     case dropbox        = "ASCFileProviderTypeDropbox"
     case googledrive    = "ASCFileProviderTypeGoogleDrive"
     case icloud         = "ASCFileProviderTypeiCloud"
+    case onedrive       = "ASCFileProviderTypeOneDrive"
 }

@@ -295,7 +295,7 @@ class ASCEntityManager: NSObject, UITextFieldDelegate {
             handler?(.end, entities, nil)
         } else {
             if let entities = entities as? [ASCEntity] {
-                provider.delete(entities, from: folder) { provider, results, success, error in
+                provider.delete(entities, from: folder, move: false) { provider, results, success, error in
                     if let error = error {
                         handler?(.error, results, ASCProviderError(error).localizedDescription)
                     } else {
@@ -918,7 +918,7 @@ class ASCEntityManager: NSObject, UITextFieldDelegate {
                         }
 
                         let normalizeCurrentProgress = sizeOfCommonProgress / Float(files.count) * Float(progress)
-                         handler(commonProgress + localProgress + normalizeCurrentProgress, false, false, nil, nil, &cancel)
+                        handler(commonProgress + localProgress + normalizeCurrentProgress, false, false, nil, nil, &cancel)
 
                         if nil != error || nil != result {
                             if let error = error {

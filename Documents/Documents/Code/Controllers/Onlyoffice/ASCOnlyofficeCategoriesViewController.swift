@@ -17,15 +17,65 @@ class ASCOnlyofficeCategoriesViewController: UITableViewController {
     @IBOutlet weak var accountName: UILabel!
     @IBOutlet weak var accountPortal: UILabel!
 
+    private var currentlySelectedFolderType: ASCFolderType?
+    private let activityIndicator = UIActivityIndicatorView()
+    private var account: ASCAccount?
+    private let cacheManager: ASCOnlyofficeCacheCategoriesProvider = ASCOnlyofficeUserDefaultsCacheCategoriesProvider()
+    
+    private lazy var categoriesProviderFactory = ASCOnlyofficeCategoriesProviderFactory()
+    private var categoriesCurrentlyLoading: Bool {
+        get {
+            return self.categoriesProviderFactory.get().categoriesCurrentlyLoading
+        }
+    }
+    
+    private var cachedCategories: [ASCOnlyofficeCategory] {
+        didSet {
+            if !cachedCategories.isEmpty {
+                hideActivityIndicator()
+            }
+        }
+    }
+    
+    private var loadedCategories: [ASCOnlyofficeCategory] {
+        didSet {
+            if !loadedCategories.isEmpty {
+                hideActivityIndicator()
+            }
+            if needUpdateCategoriesCache {
+                updateCategoriesCache()
+            }
+        }
+    }
+    
+    private var categories: [ASCOnlyofficeCategory] {
+        get {
+            loadedCategories.isEmpty ? cachedCategories : loadedCategories
+        }
+    }
 
-    private var categories: [ASCOnlyofficeCategory] = []
+    private var needUpdateCategoriesCache: Bool {
+        guard !loadedCategories.isEmpty else { return false }
+        return cachedCategories != loadedCategories
+    }
+    
+    private var needReloadTableViewDataWhenViewLoaded = false
 
     // MARK: - Lifecycle Methods
-
     required init?(coder aDecoder: NSCoder) {
+        cachedCategories = []
+        loadedCategories = []
+        
         super.init(coder: aDecoder)
-
-        loadCategories()
+        
+        needReloadTableViewDataWhenViewLoaded = true
+        loadCategories { [self] in
+            if viewIfLoaded != nil {
+                updateTableView()
+            } else {
+                needReloadTableViewDataWhenViewLoaded = true
+            }
+        }
     }
 
     override func viewDidLoad() {
@@ -44,8 +94,14 @@ class ASCOnlyofficeCategoriesViewController: UITableViewController {
         NotificationCenter.default.addObserver(self, selector: #selector(onOnlyofficeLogInCompleted(_:)), name: ASCConstants.Notifications.loginOnlyofficeCompleted, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(onOnlyofficeLogoutCompleted(_:)), name: ASCConstants.Notifications.logoutOnlyofficeCompleted, object: nil)
 
-        if categories.count < 1 {
-            loadCategories()
+        if loadedCategories.isEmpty, !categoriesCurrentlyLoading {
+            loadCategories {
+                self.updateTableView()
+            }
+        }
+        
+        if needReloadTableViewDataWhenViewLoaded {
+            updateTableView()
         }
 
         updateUserInfo()
@@ -70,6 +126,10 @@ class ASCOnlyofficeCategoriesViewController: UITableViewController {
             ASCViewControllerManager.shared.rootController?.tabBar.isHidden = true
         }
         updateLargeTitlesSize()
+
+        if categories.isEmpty {
+            showActivityIndicator()
+        }
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -79,6 +139,31 @@ class ASCOnlyofficeCategoriesViewController: UITableViewController {
         navigationItem.largeTitleDisplayMode = .always
         
         fetchUpdateUserInfo()
+    }
+    
+    // MARK: - Categories activity indicator
+    private func showActivityIndicator() {
+        DispatchQueue.main.async { [weak self] in
+            guard let self = self else { return }
+            self.activityIndicator.translatesAutoresizingMaskIntoConstraints = false
+            
+            self.view.addSubview(self.activityIndicator)
+            
+            let tableHeaderHeigh = self.tableView.tableHeaderView?.height ?? 0
+            
+            self.activityIndicator.centerYAnchor.constraint(equalTo: self.view.centerYAnchor,
+                                                            constant: -tableHeaderHeigh - self.activityIndicator.height).isActive = true
+            self.activityIndicator.anchorCenterXToSuperview()
+            self.activityIndicator.startAnimating()
+        }
+    }
+    
+    private func hideActivityIndicator() {
+        DispatchQueue.main.async { [weak self] in
+            guard let self = self else { return }
+            self.activityIndicator.stopAnimating()
+            self.activityIndicator.removeFromSuperview()
+        }
     }
 
     func entrypointCategory() -> ASCOnlyofficeCategory {        
@@ -96,68 +181,6 @@ class ASCOnlyofficeCategoriesViewController: UITableViewController {
             return $0
         }(ASCOnlyofficeCategory())
     }
-
-    func loadCategories() {
-        categories = []
-
-        if let onlyoffice = ASCFileManager.onlyofficeProvider, let user = onlyoffice.user {
-            categories = []
-
-            let isPersonal = onlyoffice.api.baseUrl?.contains(ASCConstants.Urls.portalPersonal) ?? false
-            let allowMy = !user.isVisitor
-            let allowShare = !isPersonal
-            let allowCommon = !isPersonal
-            let allowProjects = !(user.isVisitor || isPersonal)
-
-            // My Documents
-            if allowMy {
-                categories.append({
-                    $0.title = ASCOnlyofficeCategory.title(of: .onlyofficeUser)
-                    $0.image = Asset.Images.categoryMy.image
-                    $0.folder = ASCOnlyofficeCategory.folder(of: .onlyofficeUser)
-                    return $0
-                }(ASCOnlyofficeCategory()))
-            }
-
-            // Shared with Me Category
-            if allowShare {
-                categories.append({
-                    $0.title = ASCOnlyofficeCategory.title(of: .onlyofficeShare)
-                    $0.image = Asset.Images.categoryShare.image
-                    $0.folder = ASCOnlyofficeCategory.folder(of: .onlyofficeShare)
-                    return $0
-                    }(ASCOnlyofficeCategory()))
-            }
-
-            // Common Documents Category
-            if allowCommon {
-                categories.append({
-                    $0.title = ASCOnlyofficeCategory.title(of: .onlyofficeCommon)
-                    $0.image = Asset.Images.categoryCommon.image
-                    $0.folder = ASCOnlyofficeCategory.folder(of: .onlyofficeCommon)
-                    return $0
-                    }(ASCOnlyofficeCategory()))
-            }
-
-            // Project Documents Category
-            if allowProjects {
-                categories.append({
-                    $0.title = ASCOnlyofficeCategory.title(of: .onlyofficeProjects)
-                    $0.image = Asset.Images.categoryProjects.image
-                    $0.folder = ASCOnlyofficeCategory.folder(of: .onlyofficeProjects)
-                    return $0
-                    }(ASCOnlyofficeCategory()))
-            }
-
-            // Trash Category
-            categories.append({
-                $0.title = ASCOnlyofficeCategory.title(of: .onlyofficeTrash)
-                $0.image = Asset.Images.categoryTrash.image
-                $0.folder = ASCOnlyofficeCategory.folder(of: .onlyofficeTrash)
-                return $0
-                }(ASCOnlyofficeCategory()))
-        }
-    }
     
     private func fetchUpdateUserInfo() {
         if let onlyofficeProvider = ASCFileManager.onlyofficeProvider?.copy() as? ASCOnlyofficeProvider {
@@ -172,6 +195,7 @@ class ASCOnlyofficeCategoriesViewController: UITableViewController {
         }
     }
 
+    // MARK: - Evenet handlers
     @objc func updateUserInfo() {
         var hasInfo = false
 
@@ -185,7 +209,17 @@ class ASCOnlyofficeCategoriesViewController: UITableViewController {
                                            placeholder: Asset.Images.avatarDefault.image)
 
                 accountName?.text = user.displayName?.trimmed
-                accountPortal?.text = onlyofficeProvider.api.baseUrl?.trimmed
+                
+                let accountPortal = onlyofficeProvider.api.baseUrl?.trimmed
+                self.accountPortal?.text = accountPortal
+                
+                if let accountEmail = user.email,
+                   let accountPortalUnwraped = accountPortal,
+                   let account = ASCAccount(JSON: ["email": accountEmail, "portal": accountPortalUnwraped])
+                {
+                    self.account = account
+                    loadCachedCategories(provider: onlyofficeProvider)
+                }
             } else {
                 hasInfo = false
 
@@ -215,20 +249,62 @@ class ASCOnlyofficeCategoriesViewController: UITableViewController {
     }
 
     @objc func onOnlyofficeLogInCompleted(_ notification: Notification) {
-        loadCategories()
-        updateUserInfo()
-        
-        tableView?.reloadData()
-
-        if categories.count > 0 {
-            tableView?.selectRow(at: IndexPath(row: 0, section: 0), animated: false, scrollPosition: .none)
+        loadCategories { [self] in
+            updateTableView()
+            
+            if categories.count > 0, currentlySelectedFolderType == nil {
+                tableView?.selectRow(at: IndexPath(row: 0, section: 0), animated: false, scrollPosition: .none)
+            }
         }
+        updateUserInfo()
     }
 
     @objc func onOnlyofficeLogoutCompleted(_ notification: Notification) {
-        loadCategories()
+        loadCategories {
+            self.updateTableView()
+        }
+        
         updateUserInfo()
-        tableView?.reloadData()
+    }
+    
+    // MARK: - Categories loading
+    func loadCategories(completion: @escaping () -> Void) {
+        categoriesProviderFactory.get().loadCategories { [self] categories in
+            self.loadedCategories =  categories
+            completion()
+        }
+    }
+    
+    private func loadCachedCategories(provider: ASCFileProviderProtocol) {
+        guard categories.isEmpty, let account = account else {
+            return
+        }
+        
+        DispatchQueue.global(qos: .userInteractive).async { [weak self] in
+            guard let self = self else { return }
+            let cachedCategories = self.cacheManager.getCategories(for: account)
+            
+            if self.categories.isEmpty, !cachedCategories.isEmpty {
+                self.cachedCategories = cachedCategories
+                DispatchQueue.main.async {
+                    self.updateTableView()
+                }
+            }
+        }
+    }
+    
+    private func updateCategoriesCache() {
+        if !loadedCategories.isEmpty,
+           cachedCategories != loadedCategories,
+           let account = self.account
+        {
+            DispatchQueue.global(qos: .background).async {
+                let error = self.cacheManager.save(for: account, categories: self.categories)
+                if error == nil {
+                    self.cachedCategories = self.loadedCategories
+                }
+            }
+        }
     }
 
     // MARK: - Actions
@@ -269,12 +345,20 @@ class ASCOnlyofficeCategoriesViewController: UITableViewController {
             }
         }
     }
+    
+    private func updateTableView() {
+        tableView.reloadData()
+        selectCurrentlyRow()
+    }
+    
+    // MARK: - Select row
 
     func select(category: ASCCategory, animated: Bool = false) {
-        if  let splitVC = splitViewController,
-            let documentsNC = ASCDocumentsNavigationController.instantiate(from: Storyboard.main) as? ASCDocumentsNavigationController,
-            let documentsVC = documentsNC.topViewController as? ASCDocumentsViewController
-        {
+        guard let splitVC = splitViewController else {
+            return
+        }
+        let documentsNC = ASCDocumentsNavigationController.instantiate(from: Storyboard.main)
+        if let documentsVC = documentsNC.topViewController as? ASCDocumentsViewController {
             // Pop to root
             if  let primaryViewController = (splitVC as? ASCBaseSplitViewController)?.primaryViewController,
                 let documentsNavigationVC = primaryViewController as? ASCOnlyofficeNavigationController,
@@ -294,21 +378,41 @@ class ASCOnlyofficeCategoriesViewController: UITableViewController {
             }
 
             splitVC.hideMasterController()
-
-            documentsVC.provider = ASCFileManager.onlyofficeProvider?.copy()
+            
+            let onlyOfficeProvider = ASCFileManager.onlyofficeProvider?.copy() as? ASCOnlyofficeProvider
+            onlyOfficeProvider?.category = category
+            documentsVC.provider = onlyOfficeProvider
             documentsVC.folder = category.folder
             documentsVC.title = category.title
 
             documentsVC.navigationItem.leftBarButtonItem = splitVC.displayModeButtonItem
             documentsVC.navigationItem.leftItemsSupplementBackButton = UIDevice.pad
-
-            if categories.count < 1 {
-                loadCategories()
+            
+            if loadedCategories.isEmpty {
+                currentlySelectedFolderType = documentsVC.folder?.rootFolderType
+                if !categoriesCurrentlyLoading {
+                    loadCategories {
+                        self.updateTableView()
+                    }
+                }
+            } else {
+                selectRow(with: documentsVC.folder?.rootFolderType)
             }
-
-            if let index = categories.firstIndex(where: { $0.folder?.rootFolderType == documentsVC.folder?.rootFolderType }) {
+        }
+    }
+    
+    func selectCurrentlyRow() {
+        if let folderType = currentlySelectedFolderType {
+            selectRow(with: folderType)
+        }
+    }
+    
+    func selectRow(with folderType: ASCFolderType?) {
+        if let index = categories.firstIndex(where: { $0.folder?.rootFolderType == folderType }) {
+            if UIDevice.pad {
                 tableView.selectRow(at: IndexPath(row: index, section: 0), animated: false, scrollPosition: .none)
             }
+            self.currentlySelectedFolderType = folderType
         }
     }
 }

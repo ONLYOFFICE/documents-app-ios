@@ -106,7 +106,7 @@ class ASCDocumentsViewController: ASCBaseTableViewController, UIGestureRecognize
     private let featureLargeTitle = true
     
     // Sort
-    private lazy var deaultsSortTypes: [ASCDocumentSortType] = [.dateandtime, .az, .type, .size]
+    private lazy var defaultsSortTypes: [ASCDocumentSortType] = [.dateandtime, .az, .type, .size]
 
     
     // MARK: - Outlets
@@ -172,7 +172,8 @@ class ASCDocumentsViewController: ASCBaseTableViewController, UIGestureRecognize
 
         configureNavigationBar(animated: false)
         configureProvider()
-
+        configureSwipeGesture()
+        
         let addObserver: (Notification.Name, Selector) -> Void = { name, selector in
             NotificationCenter.default.addObserver(
                 self,
@@ -237,6 +238,14 @@ class ASCDocumentsViewController: ASCBaseTableViewController, UIGestureRecognize
 
         ASCViewControllerManager.shared.rootController?.tabBar.isHidden = tableView.isEditing
         updateLargeTitlesSize()
+        
+        if folder?.parent == nil {
+            splitViewController?.presentsWithGesture = true
+            let gesture = view.gestureRecognizers?.filter { $0.name == "swipeRight" }
+            gesture?.first?.isEnabled = false
+        } else {
+            splitViewController?.presentsWithGesture = false
+        }
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -521,11 +530,12 @@ class ASCDocumentsViewController: ASCBaseTableViewController, UIGestureRecognize
     @objc func onSortAction() {
         var sortType: ASCDocumentSortType = .dateandtime
         var sortAscending = false
-        var sortStates: [ASCDocumentSortStateType] = deaultsSortTypes.map { ($0, $0 == sortType) }
+        var sortStates: [ASCDocumentSortStateType] = defaultsSortTypes.map { ($0, $0 == sortType) }
         
         if let sortInfo = UserDefaults.standard.value(forKey: ASCConstants.SettingsKeys.sortDocuments) as? [String: Any] {
             if let sortBy = sortInfo["type"] as? String, !sortBy.isEmpty {
                 sortType = ASCDocumentSortType(sortBy)
+                sortStates = defaultsSortTypes.map { ($0, $0 == sortType) }
             }
 
             if let sortOrder = sortInfo["order"] as? String, !sortOrder.isEmpty {
@@ -553,6 +563,12 @@ class ASCDocumentsViewController: ASCBaseTableViewController, UIGestureRecognize
         guard view.isUserInteractionEnabled else { return }
         setEditMode(true)
         flashBlockInteration()
+    }
+    
+    @objc func popViewController(gesture: UISwipeGestureRecognizer) -> Void {
+        if gesture.direction == .right {
+        navigationController?.popViewController(animated: true)
+       }
     }
     
     // MARK: - Private
@@ -1858,7 +1874,7 @@ class ASCDocumentsViewController: ASCBaseTableViewController, UIGestureRecognize
             }
         }
 
-        var sortStates: [ASCDocumentSortStateType] = deaultsSortTypes.map { ($0, $0 == sortType) }
+        var sortStates: [ASCDocumentSortStateType] = defaultsSortTypes.map { ($0, $0 == sortType) }
         
         if ![.deviceDocuments, .deviceTrash].contains(folder?.rootFolderType) {
             sortStates.append((.author, sortType == .author))
@@ -2308,6 +2324,13 @@ class ASCDocumentsViewController: ASCBaseTableViewController, UIGestureRecognize
 
         sharedNavigationVC.view.tintColor = self.view.tintColor
         parent.present(sharedNavigationVC, animated: true, completion: nil)
+    }
+    
+    private func configureSwipeGesture() {
+        let swipeToPreviousFolder = UISwipeGestureRecognizer(target: self, action: #selector(popViewController))
+        swipeToPreviousFolder.direction = .right
+        swipeToPreviousFolder.name = "swipeRight"
+        self.view.addGestureRecognizer(swipeToPreviousFolder)
     }
 
     // MARK: - Table view data source

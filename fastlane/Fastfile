@@ -129,8 +129,7 @@ platform :ios do
 
     # Update app icon
     add_badge(
-      dark: true,
-      alpha: true
+      custom: "fastlane/badge-test.png"
     )
 
     # Build

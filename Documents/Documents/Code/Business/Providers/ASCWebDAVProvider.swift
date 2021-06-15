@@ -1053,8 +1053,8 @@ class ASCWebDAVProvider: ASCFileProviderProtocol & ASCSortableFileProviderProtoc
 
         if allowOpen {
             let editMode = !viewMode && UIDevice.allowEditor
-            let openHandler = delegate?.openProgressFile(title: NSLocalizedString("Processing", comment: "Caption of the processing") + "...", 0)
-            let closeHandler = delegate?.closeProgressFile(title: NSLocalizedString("Saving", comment: "Caption of the processing"))
+            let openHandler = delegate?.openProgress(file: file, title: NSLocalizedString("Processing", comment: "Caption of the processing") + "...", 0)
+            let closeHandler = delegate?.closeProgress(file: file, title: NSLocalizedString("Saving", comment: "Caption of the processing"))
 
             ASCEditorManager.shared.editFileLocally(for: self, file, viewMode: !editMode, handler: openHandler, closeHandler: closeHandler)
         }
@@ -1068,13 +1068,13 @@ class ASCWebDAVProvider: ASCFileProviderProtocol & ASCSortableFileProviderProtoc
         let isVideo         = ASCConstants.FileExtensions.videos.contains(fileExt)
 
         if isPdf {
-            let openHandler = delegate?.openProgressFile(title: NSLocalizedString("Downloading", comment: "Caption of the processing") + "...", 0.15)
+            let openHandler = delegate?.openProgress(file: file, title: NSLocalizedString("Downloading", comment: "Caption of the processing") + "...", 0.15)
             ASCEditorManager.shared.browsePdfCloud(for: self, file, handler: openHandler)
         } else if isImage || isVideo {
             ASCEditorManager.shared.browseMedia(for: self, file, files: files)
         } else {
             if let view = view {
-                let openHandler = delegate?.openProgressFile(title: NSLocalizedString("Downloading", comment: "Caption of the processing") + "...", 0.15)
+                let openHandler = delegate?.openProgress(file: file, title: NSLocalizedString("Downloading", comment: "Caption of the processing") + "...", 0.15)
                 ASCEditorManager.shared.browseUnknownCloud(for: self, file, inView: view, handler: openHandler)
             }
         }

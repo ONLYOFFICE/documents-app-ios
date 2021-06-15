@@ -12,6 +12,9 @@ import FileKit
 import Firebase
 
 class ASCOnlyofficeProvider: ASCFileProviderProtocol & ASCSortableFileProviderProtocol {
+    
+    var category: ASCCategory?
+    
     var id: String? {
         get {
             if
@@ -828,6 +831,14 @@ class ASCOnlyofficeProvider: ASCFileProviderProtocol & ASCSortableFileProviderPr
             if isRoot(folder: folder) && folder.rootFolderType == .onlyofficeTrash {
                 return false
             }
+            
+            if isRoot(folder: folder) && folder.rootFolderType == .onlyofficeFavorites {
+                return false
+            }
+            
+            if isRoot(folder: folder) && folder.rootFolderType == .onlyofficeRecent {
+                return false
+            }
 
             if isRoot(folder: folder) && (folder.rootFolderType == .onlyofficeProjects || folder.rootFolderType == .onlyofficeBunch) {
                 return false
@@ -888,6 +899,14 @@ class ASCOnlyofficeProvider: ASCFileProviderProtocol & ASCSortableFileProviderPr
             return false
         }
 
+        if category?.folder?.rootFolderType == .onlyofficeFavorites {
+            return false
+        }
+        
+        if category?.folder?.rootFolderType == .onlyofficeRecent {
+            return false
+        }
+        
         let isProjectRoot = isRoot(folder: parentFolder) && (parentFolder?.rootFolderType == .onlyofficeBunch || parentFolder?.rootFolderType == .onlyofficeProjects)
 
         return (access == ASCEntityAccess.none
@@ -956,6 +975,9 @@ class ASCOnlyofficeProvider: ASCFileProviderProtocol & ASCSortableFileProviderPr
                 ASCConstants.FileExtensions.presentations.contains(fileExtension) ||
                 ASCConstants.FileExtensions.images.contains(fileExtension) ||
                 fileExtension == "pdf"
+            
+            let isFavoriteCategory = category?.folder?.rootFolderType == .onlyofficeFavorites
+            let isRecentCategory   = category?.folder?.rootFolderType == .onlyofficeRecent
 
             if isTrash {
                 return [.delete, .restore]
@@ -991,7 +1013,7 @@ class ASCOnlyofficeProvider: ASCFileProviderProtocol & ASCSortableFileProviderPr
                 entityActions.insert(.share)
             }
 
-            if canEdit && !isShared && !(file.parent?.isThirdParty ?? false) {
+            if canEdit && !isShared && !isFavoriteCategory && !isRecentCategory && !(file.parent?.isThirdParty ?? false) {
                 entityActions.insert(.duplicate)
             }
 
@@ -1167,8 +1189,8 @@ class ASCOnlyofficeProvider: ASCFileProviderProtocol & ASCSortableFileProviderPr
         if allowOpen {
             let editMode = !viewMode && UIDevice.allowEditor
             let strongDelegate = delegate
-            let openHandler = strongDelegate?.openProgressFile(title: NSLocalizedString("Processing", comment: "Caption of the processing") + "...", 0)
-            let closeHandler = strongDelegate?.closeProgressFile(title: NSLocalizedString("Saving", comment: "Caption of the processing"))
+            let openHandler = strongDelegate?.openProgress(file: file, title: NSLocalizedString("Processing", comment: "Caption of the processing") + "...", 0)
+            let closeHandler = strongDelegate?.closeProgress(file: file, title: NSLocalizedString("Saving", comment: "Caption of the processing"))
             let favoriteHandler: ASCEditorManagerFavoriteHandler = { editorFile, complation in
                 if let editorFile = editorFile {
                     self.favorite(editorFile, favorite: !editorFile.isFavorite) { provider, entity, success, error in
@@ -1214,8 +1236,8 @@ class ASCOnlyofficeProvider: ASCFileProviderProtocol & ASCSortableFileProviderPr
                             message: message,
                             actions: [])
                             .okable() { _ in
-                                let openHandler = strongDelegate?.openProgressFile(title: NSLocalizedString("Processing", comment: "Caption of the processing") + "...", 0)
-                                let closeHandler = strongDelegate?.closeProgressFile(title: NSLocalizedString("Saving", comment: "Caption of the processing"))
+                                let openHandler = strongDelegate?.openProgress(file: file, title: NSLocalizedString("Processing", comment: "Caption of the processing") + "...", 0)
+                                let closeHandler = strongDelegate?.closeProgress(file: file, title: NSLocalizedString("Saving", comment: "Caption of the processing"))
 
                                 ASCEditorManager.shared.editFileLocally(for: self, file, viewMode: true, handler: openHandler, closeHandler: closeHandler)
                             }
@@ -1242,7 +1264,7 @@ class ASCOnlyofficeProvider: ASCFileProviderProtocol & ASCSortableFileProviderPr
             ASCConstants.FileExtensions.presentations.contains(fileExt)
 
         if isPdf {
-            let openHandler = delegate?.openProgressFile(title: NSLocalizedString("Downloading", comment: "Caption of the processing") + "...", 0.15)
+            let openHandler = delegate?.openProgress(file: file, title: NSLocalizedString("Downloading", comment: "Caption of the processing") + "...", 0.15)
             ASCEditorManager.shared.browsePdfCloud(for: self, file, handler: openHandler)
         } else if isImage || isVideo {
             ASCEditorManager.shared.browseMedia(for: self, file, files: files)
@@ -1250,7 +1272,7 @@ class ASCOnlyofficeProvider: ASCFileProviderProtocol & ASCSortableFileProviderPr
             // TODO: !!! Convert me
         } else {
             if let view = view {
-                let openHandler = delegate?.openProgressFile(title: NSLocalizedString("Downloading", comment: "Caption of the processing") + "...", 0.15)
+                let openHandler = delegate?.openProgress(file: file, title: NSLocalizedString("Downloading", comment: "Caption of the processing") + "...", 0.15)
                 ASCEditorManager.shared.browseUnknownCloud(for: self, file, inView: view, handler: openHandler)
             }
         }

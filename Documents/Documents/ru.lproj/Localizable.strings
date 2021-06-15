@@ -431,6 +431,9 @@
 /* No comment provided by engineer. */
 "iCloud Drive access" = "Работа с iCloud Drive";
 
+/* Email sent instructions */
+"If a user with the mail %@ exists, then an instruction to change the password was sent to this address." = "Если пользователь с почтой %@ существует, то на этот адрес была отправлена инструкция по смене пароля.";
+
 /* No comment provided by engineer. */
 "Images" = "Изображения";
 
@@ -509,6 +512,9 @@
 
 /* No comment provided by engineer. */
 "Needs additional params." = "Нужны дополнительные параметры.";
+
+/* No comment provided by engineer. */
+"New" = "Новый";
 
 /* No comment provided by engineer. */
 "New Document" = "Новый документ";
@@ -749,6 +755,9 @@
 
 /* No comment provided by engineer. */
 "Selected: %ld" = "Выбрано: %ld";
+
+/* Caption of the process */
+"Sending" = "Отправка";
 
 /* No comment provided by engineer. */
 "Set favorite failed." = "Не удалось изменить отметку Избранное";

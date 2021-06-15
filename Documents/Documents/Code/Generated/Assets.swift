@@ -88,6 +88,7 @@ internal enum Asset {
     internal static let emptySearchResult = ImageAsset(name: "empty-search-result")
     internal static let emptyTrash = ImageAsset(name: "empty-trash")
     internal static let hudCheckmark = ImageAsset(name: "hud-checkmark")
+    internal static let mailNotification = ImageAsset(name: "mail-notification")
     internal static let introStepFive = ImageAsset(name: "intro-step-five")
     internal static let introStepFour = ImageAsset(name: "intro-step-four")
     internal static let introStepOne = ImageAsset(name: "intro-step-one")

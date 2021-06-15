@@ -32,6 +32,8 @@
 the authentication codes"; ObjectID = "B8R-KD-Lml"; */
 "B8R-KD-Lml.text" = "Настройте приложение для генерации
 кодов аутентификации.";
+/* Class = "UILabel"; text = "Password recovery"; ObjectID = "bLE-8U-AOX"; */
+"bLE-8U-AOX.text" = "Восстановление пароля";
 
 /* Class = "UILabel"; text = "Haven't received the code?"; ObjectID = "cb0-ic-tPA"; */
 "cb0-ic-tPA.text" = "Не получили код?";
@@ -47,6 +49,9 @@ the authentication codes"; ObjectID = "B8R-KD-Lml"; */
 
 /* Class = "UILabel"; text = "Two-Factor\nAuthentication"; ObjectID = "Eb4-3w-0Jf"; */
 "Eb4-3w-0Jf.text" = "Двухфакторная\nаутентификация";
+
+/* Class = "UIButton"; normalTitle = "Send"; ObjectID = "ePY-rM-AOE"; */
+"ePY-rM-AOE.normalTitle" = "Отправить";
 
 /* Class = "UILabel"; text = "Address"; ObjectID = "Fso-pj-304"; */
 "Fso-pj-304.text" = "Адрес";
@@ -75,6 +80,8 @@ the Google Authenticator application"; ObjectID = "K5M-Of-QAk"; */
 application"; ObjectID = "LwV-Os-V4m"; */
 "LwV-Os-V4m.text" = "Запустите приложение
 Google Authenticator";
+/* Class = "UILabel"; text = "Please enter the email you used while registering on the portal. The password recovery instructions will be send to that email address."; ObjectID = "Mbh-dU-7po"; */
+"Mbh-dU-7po.text" = "Пожалуйста, введите адрес электронной почты, указанный при регистрации на портале. Инструкции для восстановления пароля будут отправлены на этот адрес электронной почты.";
 
 /* Class = "UILabel"; text = "Enter a phone number that can be used to verify your identity"; ObjectID = "MNA-z2-ITx"; */
 "MNA-z2-ITx.text" = "Введите номер телефона, по которому можно подтвердить вашу личность";
@@ -84,6 +91,9 @@ Google Authenticator";
 
 /* Class = "UINavigationItem"; title = "Country"; ObjectID = "NBg-dA-b3o"; */
 "NBg-dA-b3o.title" = "Страна";
+
+/* Class = "UIButton"; normalTitle = "Back to login"; ObjectID = "OHG-hv-GGj"; */
+"OHG-hv-GGj.normalTitle" = "Вернуться на экран входа";
 
 /* Class = "UITextField"; placeholder = "Code"; ObjectID = "OnI-QD-xeI"; */
 "OnI-QD-xeI.placeholder" = "Код";

@@ -67,7 +67,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
         // Check Update
         configureAppUpdater()
-        
+
         application.unregisterForRemoteNotifications()
         
         if #available(iOS 10.0, *) {

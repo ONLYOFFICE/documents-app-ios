@@ -2035,7 +2035,7 @@ class ASCEditorManager: NSObject, DEEditorDelegate, SEEditorDelegate, PEEditorDe
                     "display": String(format: NSLocalizedString("A1 (59,4%@ x 84,1%@)", comment: "Format info"), shortCm, shortCm)
                 ],[
                     "width": 841,
-                    "height": 1189,
+                    "height": 1189, 
                     "display": String(format: NSLocalizedString("A0 (84,1%@ x 119,9%@)", comment: "Format info"), shortCm, shortCm)
                 ]
             ]
@@ -2070,7 +2070,7 @@ class ASCEditorManager: NSObject, DEEditorDelegate, SEEditorDelegate, PEEditorDe
             }
         }
     }
-    
+
     func presentationWorkCompleted(_ controller: PEEditorViewController!, document: PEDocument!) {
         log.info("PEEditorDelegate:documentWorkCompleted")
         

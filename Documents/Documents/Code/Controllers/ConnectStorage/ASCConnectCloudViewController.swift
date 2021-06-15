@@ -424,31 +424,38 @@ class ASCConnectCloudViewController: UITableViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         guard let identifier = segue.identifier else { return }
         
-        let connectStorageSegue = StoryboardSegue.ConnectStorage(rawValue: identifier)
+//        let connectStorageSegue = StoryboardSegue.ConnectStorage(rawValue: identifier)
         
-        switch connectStorageSegue {
-        case .nextcloudSegue:
+        switch identifier {
+        case "nextcloudSegue":
             if let viewController = segue.destination as? ASCConnectStorageWebDavController {
                 viewController.complation = authComplation(info:)
                 viewController.title = providerName(.nextcloud)
                 viewController.provider = .nextCloud
                 viewController.logo = providerImage(.nextcloud)
             }
-        case .owncloudSegue:
+        case "owncloudSegue":
             if let viewController = segue.destination as? ASCConnectStorageWebDavController {
                 viewController.complation = authComplation(info:)
                 viewController.title = providerName(.owncloud)
                 viewController.provider = .ownCloud
                 viewController.logo = providerImage(.owncloud)
             }
-        case .webdavSegue:
+        case "webdavSegue":
             if let viewController = segue.destination as? ASCConnectStorageWebDavController {
                 viewController.complation = authComplation(info:)
                 viewController.title = providerName(.webdav)
                 viewController.provider = .webDav
                 viewController.logo = providerImage(.webdav)
             }
-        case .none:
+        case "yandexSegue":
+            if let viewController = segue.destination as? ASCConnectStorageWebDavController {
+                viewController.complation = authComplation(info:)
+                viewController.title = providerName(.yandex)
+                viewController.provider = .yandex
+                viewController.logo = providerImage(.yandex)
+            }
+        default:
             break
         }
     }

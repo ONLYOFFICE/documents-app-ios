@@ -321,12 +321,12 @@ class ASCLocalProvider: ASCFileProviderProtocol & ASCSortableFileProviderProtoco
         }
     }
 
-    func delete(_ entities: [ASCEntity], from folder: ASCFolder, completeon: ASCProviderCompletionHandler?) {
+    func delete(_ entities: [ASCEntity], from folder: ASCFolder, move: Bool?, completeon: ASCProviderCompletionHandler?) {
         let fromFolder = folder
 
         for entity in entities {
             if let file = entity as? ASCFile {
-                if fromFolder.rootFolderType == .deviceTrash {
+                if fromFolder.rootFolderType == .deviceTrash || (move != nil) {
                     ASCLocalFileHelper.shared.removeFile(Path(file.id))
                 } else {
                     guard let filePath = ASCLocalFileHelper.shared.resolve(filePath: Path.userTrash + file.title) else {

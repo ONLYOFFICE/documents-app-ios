@@ -173,13 +173,24 @@ class ASCDocumentsViewController: ASCBaseTableViewController, UIGestureRecognize
         configureNavigationBar(animated: false)
         configureProvider()
 
+        let addObserver: (Notification.Name, Selector) -> Void = { name, selector in
+            NotificationCenter.default.addObserver(
+                self,
+                selector: selector,
+                name: name,
+                object: nil
+            )
+        }
+
+        addObserver(ASCConstants.Notifications.updateFileInfo, #selector(updateFileInfo(_:)))
+        addObserver(ASCConstants.Notifications.networkStatusChanged, #selector(networkStatusChanged(_:)))
+        addObserver(ASCConstants.Notifications.updateSizeClass, #selector(onUpdateSizeClass(_:)))
+        addObserver(ASCConstants.Notifications.openLocalFileByUrl, #selector(onOpenLocalFileByUrl(_:)))
+        addObserver(ASCConstants.Notifications.appDidBecomeActive, #selector(onAppDidBecomeActive(_:)))
+        addObserver(ASCConstants.Notifications.reloadData, #selector(onReloadData(_:)))
+        addObserver(UIApplication.willResignActiveNotification, #selector(onAppMovedToBackground))
+        
         UserDefaults.standard.addObserver(self, forKeyPath: ASCConstants.SettingsKeys.sortDocuments, options: [.new], context: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(updateFileInfo(_:)), name: ASCConstants.Notifications.updateFileInfo, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(networkStatusChanged(_:)), name: ASCConstants.Notifications.networkStatusChanged, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(onUpdateSizeClass(_:)), name: ASCConstants.Notifications.updateSizeClass, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(onOpenLocalFileByUrl(_:)), name: ASCConstants.Notifications.openLocalFileByUrl, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(onAppDidBecomeActive(_:)), name: ASCConstants.Notifications.appDidBecomeActive, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(onReloadData(_:)), name: ASCConstants.Notifications.reloadData, object: nil)
 
         // Drag Drop support
         if #available(iOS 11.0, *) {
@@ -238,6 +249,7 @@ class ASCDocumentsViewController: ASCBaseTableViewController, UIGestureRecognize
         }
         
         checkUnsuccessfullyOpenedFile()
+        configureProvider()
 
         // Update current provider if needed
         if let provider = provider, provider.id != ASCFileManager.provider?.id {
@@ -1180,6 +1192,12 @@ class ASCDocumentsViewController: ASCBaseTableViewController, UIGestureRecognize
     
     @objc func onReloadData(_ notification: Notification) {
         tableView.reloadData()
+    }
+    
+    @objc func onAppMovedToBackground() {
+        if !(UIDevice.phone || ASCViewControllerManager.shared.currentSizeClass == .compact) {
+            setEditMode(false)
+        }
     }
     
     private func updateNavBar() {
@@ -2479,6 +2497,8 @@ class ASCDocumentsViewController: ASCBaseTableViewController, UIGestureRecognize
         if allowOpen {
             provider?.delegate = self
             provider?.open(file: file, viewMode: viewMode)
+
+            searchController.isActive = false
         } else if let index = tableData.firstIndex(where: { $0.id == file.id }) {
             let cell = tableView.cellForRow(at: IndexPath(row: index, section: 0))
             provider?.delegate = self
@@ -3047,8 +3067,9 @@ class ASCDocumentsViewController: ASCBaseTableViewController, UIGestureRecognize
                     else { return }
 
                 let isTrash = strongSelf.isTrash(folder)
+                let isInsideTransfer = (strongSelf.provider?.id == provider.id) && !(strongSelf.provider is ASCGoogleDriveProvider)
 
-                if strongSelf.provider?.id == provider.id {
+                if isInsideTransfer {
                     strongSelf.insideCheckTransfer(items: items, to: folder, move: move, complation: { overwride, cancel in
                         if cancel {
                             completion?(nil)
@@ -3719,6 +3740,10 @@ extension ASCDocumentsViewController: ASCProviderDelegate {
                             }
                         } else {
                             strongSelf.provider?.add(item: newFile, at: 0)
+                            strongSelf.tableView.reloadData()
+                            strongSelf.showEmptyView(strongSelf.total < 1)
+                            strongSelf.updateNavBar()
+                            
                             let updateIndexPath = IndexPath(row: 0, section: 0)
                             strongSelf.tableView.scrollToRow(at: updateIndexPath, at: .top, animated: true)
                             
@@ -3863,8 +3888,9 @@ extension ASCDocumentsViewController: UITableViewDropDelegate {
             let dstFolder = dstFolder
         {
             let move = srcProvider.allowDelete(entity: items.first)
-
-            if srcProvider.id != dstProvider.id {
+            let isInsideTransfer = (srcProvider.id == dstProvider.id) && !(srcProvider is ASCGoogleDriveProvider)
+            
+            if !isInsideTransfer {
                 var forceCancel = false
 
                 let transferAlert = ASCProgressAlert(

@@ -165,7 +165,7 @@ platform :ios do
         "Documents/Documents/Documents.alpha.plist",
         "Documents/Settings.bundle/Root.plist"
       ], 
-      message: "Version bumped to v#{version_number}-dev (#{bumped_build_number})"
+      message: "Version bumped to v#{version_number}-dev (#{build_number})"
     )
 
     # push changes

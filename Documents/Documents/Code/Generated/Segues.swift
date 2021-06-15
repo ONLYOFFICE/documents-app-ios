@@ -22,7 +22,6 @@ internal enum StoryboardSegue {
   }
   internal enum Login: String, SegueType {
     case embedPageController
-    case sequeShowCountry
   }
   internal enum Share: String, SegueType {
     case segueAccessShare

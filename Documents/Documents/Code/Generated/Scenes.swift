@@ -74,6 +74,8 @@ internal enum StoryboardScene {
 
     internal static let ascConnectPortalViewController = SceneType<Documents.ASCConnectPortalViewController>(storyboard: Login.self, identifier: "ASCConnectPortalViewController")
 
+    internal static let ascCountryCodeViewController = SceneType<Documents.ASCCountryCodeViewController>(storyboard: Login.self, identifier: "ASCCountryCodeViewController")
+
     internal static let ascEmailSentViewController = SceneType<Documents.ASCEmailSentViewController>(storyboard: Login.self, identifier: "ASCEmailSentViewController")
 
     internal static let ascPasswordRecoveryViewController = SceneType<Documents.ASCPasswordRecoveryViewController>(storyboard: Login.self, identifier: "ASCPasswordRecoveryViewController")

@@ -233,7 +233,7 @@
 		</dict>
 	</array>
 	<key>CFBundleVersion</key>
-	<string>661</string>
+	<string>674</string>
 	<key>FacebookDisplayName</key>
 	<string>Login on ONLYOFFICE</string>
 	<key>ITSAppUsesNonExemptEncryption</key>
@@ -256,6 +256,8 @@
 		<string>otpauth</string>
 	</array>
 	<key>LSRequiresIPhoneOS</key>
+	<true/>
+	<key>LSSupportsOpeningDocumentsInPlace</key>
 	<true/>
 	<key>NSAppTransportSecurity</key>
 	<dict>
@@ -340,7 +342,5 @@
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
-	<key>UISupportsDocumentBrowser</key>
-	<true/>
 </dict>
 </plist>

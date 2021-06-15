@@ -26,4 +26,13 @@ extension UITableViewCell {
 
         return cell
     }
+        
+    @objc func debounce(delay: Double) {
+        self.isUserInteractionEnabled = false
+        
+        let deadline = DispatchTime.now() + delay
+        DispatchQueue.main.asyncAfter(deadline: deadline) {
+            self.isUserInteractionEnabled = true
+        }
+    }
 }

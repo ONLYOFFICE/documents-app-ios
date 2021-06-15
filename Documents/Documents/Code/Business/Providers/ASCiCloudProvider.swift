@@ -862,7 +862,7 @@ class ASCiCloudProvider: ASCFileProviderProtocol & ASCSortableFileProviderProtoc
         }
     }
     
-    func delete(_ entities: [ASCEntity], from folder: ASCFolder, completeon: ASCProviderCompletionHandler?) {
+    func delete(_ entities: [ASCEntity], from folder: ASCFolder, move: Bool?, completeon: ASCProviderCompletionHandler?) {
         guard let provider = provider else {
             completeon?(self, nil, false, ASCProviderError(msg: errorProviderUndefined))
             return

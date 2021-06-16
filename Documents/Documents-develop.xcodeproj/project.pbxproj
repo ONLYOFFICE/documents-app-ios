@@ -56,13 +56,22 @@
 		FC12ACF22567CF5E00FF1CBB /* ASCAnalytics.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC12ACF12567CF5E00FF1CBB /* ASCAnalytics.swift */; };
 		FC1755971E9CAFDB00D73D8E /* ASCSortViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC1755961E9CAFDB00D73D8E /* ASCSortViewController.swift */; };
 		FC1AD6142175FE7000DADEE0 /* ASCNetworkReachability.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC1AD6132175FE7000DADEE0 /* ASCNetworkReachability.swift */; };
-		FC1CA5B6264529E1001CC5CA /* ASCOnlyofficeAppBasedCategoriesProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC1CA5B0264529E1001CC5CA /* ASCOnlyofficeAppBasedCategoriesProvider.swift */; };
-		FC1CA5B7264529E1001CC5CA /* ASCOnlyofficeAPICategoriesProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC1CA5B1264529E1001CC5CA /* ASCOnlyofficeAPICategoriesProvider.swift */; };
-		FC1CA5B8264529E1001CC5CA /* ASCOnlyofficeCategoriesProviderProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC1CA5B3264529E1001CC5CA /* ASCOnlyofficeCategoriesProviderProtocol.swift */; };
-		FC1CA5B9264529E1001CC5CA /* ASCOnlyofficeCategoriesProviderFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC1CA5B5264529E1001CC5CA /* ASCOnlyofficeCategoriesProviderFactory.swift */; };
 		FC1EA5CB1ECECBC3008FEE2E /* ASCBaseNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC1EA5CA1ECECBC3008FEE2E /* ASCBaseNavigationController.swift */; };
 		FC1EA5CD1ECED0A0008FEE2E /* ASCBaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC1EA5CC1ECED0A0008FEE2E /* ASCBaseViewController.swift */; };
 		FC1EA5D21ECF2A6D008FEE2E /* ASCSettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC1EA5D11ECF2A6D008FEE2E /* ASCSettingsViewController.swift */; };
+		FC23997D267A2D9600B82EAC /* ASCLoadedVCFinderModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC239979267A2D9600B82EAC /* ASCLoadedVCFinderModels.swift */; };
+		FC23997E267A2D9600B82EAC /* ASCLoadedDocumentViewControllerByProviderAndFolderFinder.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC23997A267A2D9600B82EAC /* ASCLoadedDocumentViewControllerByProviderAndFolderFinder.swift */; };
+		FC23997F267A2D9600B82EAC /* ASCLoadedViewControllerFinderProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC23997C267A2D9600B82EAC /* ASCLoadedViewControllerFinderProtocol.swift */; };
+		FC239982267A2E0F00B82EAC /* ASCOneDriveFileProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC239980267A2E0F00B82EAC /* ASCOneDriveFileProvider.swift */; };
+		FC239983267A2E0F00B82EAC /* ASCOneDriveProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC239981267A2E0F00B82EAC /* ASCOneDriveProvider.swift */; };
+		FC23998F267A2F3300B82EAC /* ASCOnlyofficeAppBasedCategoriesProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC239985267A2F3300B82EAC /* ASCOnlyofficeAppBasedCategoriesProvider.swift */; };
+		FC239990267A2F3300B82EAC /* ASCOnlyofficeAPICategoriesProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC239986267A2F3300B82EAC /* ASCOnlyofficeAPICategoriesProvider.swift */; };
+		FC239991267A2F3300B82EAC /* ASCOnlyofficeCategoriesProviderFilterProxy.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC239988267A2F3300B82EAC /* ASCOnlyofficeCategoriesProviderFilterProxy.swift */; };
+		FC239992267A2F3300B82EAC /* ASCOnlyofficeUserDefaultsCacheCategoriesProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC239989267A2F3300B82EAC /* ASCOnlyofficeUserDefaultsCacheCategoriesProvider.swift */; };
+		FC239993267A2F3300B82EAC /* ASCOnlyofficeCacheCategoriesProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC23998B267A2F3300B82EAC /* ASCOnlyofficeCacheCategoriesProvider.swift */; };
+		FC239994267A2F3300B82EAC /* ASCOnlyofficeCategoriesProviderProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC23998C267A2F3300B82EAC /* ASCOnlyofficeCategoriesProviderProtocol.swift */; };
+		FC239995267A2F3300B82EAC /* ASCOnlyofficeCategoriesProviderFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC23998E267A2F3300B82EAC /* ASCOnlyofficeCategoriesProviderFactory.swift */; };
+		FC239997267A2FA000B82EAC /* ASCOneDriveApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC239996267A2FA000B82EAC /* ASCOneDriveApi.swift */; };
 		FC23FC5B2043EEF0003B3AE7 /* ASCUserAvatarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC23FC5A2043EEEF003B3AE7 /* ASCUserAvatarView.swift */; };
 		FC23FC5D2044018F003B3AE7 /* Other in Resources */ = {isa = PBXBuildFile; fileRef = FC23FC5C2044018F003B3AE7 /* Other */; };
 		FC28F2C11E8CF4B900A8F985 /* UIColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC28F2C01E8CF4B900A8F985 /* UIColor+Extension.swift */; };
@@ -411,13 +420,22 @@
 		FC12ACF12567CF5E00FF1CBB /* ASCAnalytics.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCAnalytics.swift; sourceTree = "<group>"; };
 		FC1755961E9CAFDB00D73D8E /* ASCSortViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASCSortViewController.swift; sourceTree = "<group>"; };
 		FC1AD6132175FE7000DADEE0 /* ASCNetworkReachability.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCNetworkReachability.swift; sourceTree = "<group>"; };
-		FC1CA5B0264529E1001CC5CA /* ASCOnlyofficeAppBasedCategoriesProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASCOnlyofficeAppBasedCategoriesProvider.swift; sourceTree = "<group>"; };
-		FC1CA5B1264529E1001CC5CA /* ASCOnlyofficeAPICategoriesProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASCOnlyofficeAPICategoriesProvider.swift; sourceTree = "<group>"; };
-		FC1CA5B3264529E1001CC5CA /* ASCOnlyofficeCategoriesProviderProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASCOnlyofficeCategoriesProviderProtocol.swift; sourceTree = "<group>"; };
-		FC1CA5B5264529E1001CC5CA /* ASCOnlyofficeCategoriesProviderFactory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASCOnlyofficeCategoriesProviderFactory.swift; sourceTree = "<group>"; };
 		FC1EA5CA1ECECBC3008FEE2E /* ASCBaseNavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASCBaseNavigationController.swift; sourceTree = "<group>"; };
 		FC1EA5CC1ECED0A0008FEE2E /* ASCBaseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASCBaseViewController.swift; sourceTree = "<group>"; };
 		FC1EA5D11ECF2A6D008FEE2E /* ASCSettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASCSettingsViewController.swift; sourceTree = "<group>"; };
+		FC239979267A2D9600B82EAC /* ASCLoadedVCFinderModels.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASCLoadedVCFinderModels.swift; sourceTree = "<group>"; };
+		FC23997A267A2D9600B82EAC /* ASCLoadedDocumentViewControllerByProviderAndFolderFinder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASCLoadedDocumentViewControllerByProviderAndFolderFinder.swift; sourceTree = "<group>"; };
+		FC23997C267A2D9600B82EAC /* ASCLoadedViewControllerFinderProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASCLoadedViewControllerFinderProtocol.swift; sourceTree = "<group>"; };
+		FC239980267A2E0F00B82EAC /* ASCOneDriveFileProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASCOneDriveFileProvider.swift; sourceTree = "<group>"; };
+		FC239981267A2E0F00B82EAC /* ASCOneDriveProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASCOneDriveProvider.swift; sourceTree = "<group>"; };
+		FC239985267A2F3300B82EAC /* ASCOnlyofficeAppBasedCategoriesProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASCOnlyofficeAppBasedCategoriesProvider.swift; sourceTree = "<group>"; };
+		FC239986267A2F3300B82EAC /* ASCOnlyofficeAPICategoriesProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASCOnlyofficeAPICategoriesProvider.swift; sourceTree = "<group>"; };
+		FC239988267A2F3300B82EAC /* ASCOnlyofficeCategoriesProviderFilterProxy.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASCOnlyofficeCategoriesProviderFilterProxy.swift; sourceTree = "<group>"; };
+		FC239989267A2F3300B82EAC /* ASCOnlyofficeUserDefaultsCacheCategoriesProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASCOnlyofficeUserDefaultsCacheCategoriesProvider.swift; sourceTree = "<group>"; };
+		FC23998B267A2F3300B82EAC /* ASCOnlyofficeCacheCategoriesProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASCOnlyofficeCacheCategoriesProvider.swift; sourceTree = "<group>"; };
+		FC23998C267A2F3300B82EAC /* ASCOnlyofficeCategoriesProviderProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASCOnlyofficeCategoriesProviderProtocol.swift; sourceTree = "<group>"; };
+		FC23998E267A2F3300B82EAC /* ASCOnlyofficeCategoriesProviderFactory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASCOnlyofficeCategoriesProviderFactory.swift; sourceTree = "<group>"; };
+		FC239996267A2FA000B82EAC /* ASCOneDriveApi.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASCOneDriveApi.swift; sourceTree = "<group>"; };
 		FC23FC5A2043EEEF003B3AE7 /* ASCUserAvatarView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASCUserAvatarView.swift; sourceTree = "<group>"; };
 		FC23FC5C2044018F003B3AE7 /* Other */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Other; sourceTree = "<group>"; };
 		FC28F2C01E8CF4B900A8F985 /* UIColor+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColor+Extension.swift"; sourceTree = "<group>"; };
@@ -809,7 +827,7 @@
 		FC0F01DD216F43FF008D79A5 /* Providers */ = {
 			isa = PBXGroup;
 			children = (
-				FC1CA5AF264529E1001CC5CA /* OnlyofficeCategories */,
+				FC239984267A2F3300B82EAC /* OnlyofficeCategories */,
 				FC53690F24EB21040092765B /* ASCProviderError.swift */,
 				FC6A691025C83C1D007F1FD6 /* ASCFileProviderProtocol.swift */,
 				FC0F01DE216F443E008D79A5 /* ASCLocalProvider.swift */,
@@ -821,6 +839,8 @@
 				FC6839A121B81B1D00251CEA /* ASCOwnCloudProvider.swift */,
 				8AF0B3652360B28900383610 /* ASCDropboxProvider.swift */,
 				8A01844D23A261900025BE85 /* ASCGoogleDriveProvider.swift */,
+				FC239980267A2E0F00B82EAC /* ASCOneDriveFileProvider.swift */,
+				FC239981267A2E0F00B82EAC /* ASCOneDriveProvider.swift */,
 			);
 			path = Providers;
 			sourceTree = "<group>";
@@ -832,33 +852,6 @@
 				FC1755961E9CAFDB00D73D8E /* ASCSortViewController.swift */,
 			);
 			path = Sort;
-			sourceTree = "<group>";
-		};
-		FC1CA5AF264529E1001CC5CA /* OnlyofficeCategories */ = {
-			isa = PBXGroup;
-			children = (
-				FC1CA5B0264529E1001CC5CA /* ASCOnlyofficeAppBasedCategoriesProvider.swift */,
-				FC1CA5B1264529E1001CC5CA /* ASCOnlyofficeAPICategoriesProvider.swift */,
-				FC1CA5B2264529E1001CC5CA /* Protocols */,
-				FC1CA5B4264529E1001CC5CA /* Factory */,
-			);
-			path = OnlyofficeCategories;
-			sourceTree = "<group>";
-		};
-		FC1CA5B2264529E1001CC5CA /* Protocols */ = {
-			isa = PBXGroup;
-			children = (
-				FC1CA5B3264529E1001CC5CA /* ASCOnlyofficeCategoriesProviderProtocol.swift */,
-			);
-			path = Protocols;
-			sourceTree = "<group>";
-		};
-		FC1CA5B4264529E1001CC5CA /* Factory */ = {
-			isa = PBXGroup;
-			children = (
-				FC1CA5B5264529E1001CC5CA /* ASCOnlyofficeCategoriesProviderFactory.swift */,
-			);
-			path = Factory;
 			sourceTree = "<group>";
 		};
 		FC1EA5C91ECECB77008FEE2E /* Common */ = {
@@ -881,6 +874,71 @@
 				FC8650391ED3232B00C73AEF /* ASCAboutViewController.swift */,
 			);
 			path = Settings;
+			sourceTree = "<group>";
+		};
+		FC239977267A2D9600B82EAC /* LoadedViewControllersFinders */ = {
+			isa = PBXGroup;
+			children = (
+				FC239978267A2D9600B82EAC /* Models */,
+				FC23997A267A2D9600B82EAC /* ASCLoadedDocumentViewControllerByProviderAndFolderFinder.swift */,
+				FC23997B267A2D9600B82EAC /* Protocols */,
+			);
+			name = LoadedViewControllersFinders;
+			path = Documents/Code/Business/LoadedViewControllersFinders;
+			sourceTree = SOURCE_ROOT;
+		};
+		FC239978267A2D9600B82EAC /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				FC239979267A2D9600B82EAC /* ASCLoadedVCFinderModels.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		FC23997B267A2D9600B82EAC /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				FC23997C267A2D9600B82EAC /* ASCLoadedViewControllerFinderProtocol.swift */,
+			);
+			path = Protocols;
+			sourceTree = "<group>";
+		};
+		FC239984267A2F3300B82EAC /* OnlyofficeCategories */ = {
+			isa = PBXGroup;
+			children = (
+				FC239985267A2F3300B82EAC /* ASCOnlyofficeAppBasedCategoriesProvider.swift */,
+				FC239986267A2F3300B82EAC /* ASCOnlyofficeAPICategoriesProvider.swift */,
+				FC239989267A2F3300B82EAC /* ASCOnlyofficeUserDefaultsCacheCategoriesProvider.swift */,
+				FC239987267A2F3300B82EAC /* Proxy */,
+				FC23998A267A2F3300B82EAC /* Protocols */,
+				FC23998D267A2F3300B82EAC /* Factory */,
+			);
+			path = OnlyofficeCategories;
+			sourceTree = "<group>";
+		};
+		FC239987267A2F3300B82EAC /* Proxy */ = {
+			isa = PBXGroup;
+			children = (
+				FC239988267A2F3300B82EAC /* ASCOnlyofficeCategoriesProviderFilterProxy.swift */,
+			);
+			path = Proxy;
+			sourceTree = "<group>";
+		};
+		FC23998A267A2F3300B82EAC /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				FC23998B267A2F3300B82EAC /* ASCOnlyofficeCacheCategoriesProvider.swift */,
+				FC23998C267A2F3300B82EAC /* ASCOnlyofficeCategoriesProviderProtocol.swift */,
+			);
+			path = Protocols;
+			sourceTree = "<group>";
+		};
+		FC23998D267A2F3300B82EAC /* Factory */ = {
+			isa = PBXGroup;
+			children = (
+				FC23998E267A2F3300B82EAC /* ASCOnlyofficeCategoriesProviderFactory.swift */,
+			);
+			path = Factory;
 			sourceTree = "<group>";
 		};
 		FC28F2C21E8D12BE00A8F985 /* CreateEntity */ = {
@@ -992,6 +1050,7 @@
 			children = (
 				FCF6721921771B21004756A0 /* ASCBaseApi.swift */,
 				FC4BA5DE1E69B4FF006DEBCA /* ASCOnlyOfficeApi.swift */,
+				FC239996267A2FA000B82EAC /* ASCOneDriveApi.swift */,
 				FCF67217217716FF004756A0 /* ASCNextCloudApi.swift */,
 				8AF0B3672360B6DB00383610 /* ASCDropboxApi.swift */,
 			);
@@ -1350,6 +1409,7 @@
 			children = (
 				FC41D8002265D6C900A155C2 /* Enums */,
 				FC0F01DD216F43FF008D79A5 /* Providers */,
+				FC239977267A2D9600B82EAC /* LoadedViewControllersFinders */,
 				FCDB31A71E7C116E00907FC0 /* ASCConstants.swift */,
 				FC56B5C520C017C300557C1F /* ASCStyles.swift */,
 				FCC3E9BD214006B1001B216C /* ASCLocalization.swift */,
@@ -2036,10 +2096,12 @@
 				FCAE8B8D1E717B84004FC332 /* EventManager.swift in Sources */,
 				FC7CF5101EF3E76F00C0A64F /* ASCStringTransform.swift in Sources */,
 				FCEF9D251ED2C94300627BA5 /* PasscodeLockStateType.swift in Sources */,
+				FC239982267A2E0F00B82EAC /* ASCOneDriveFileProvider.swift in Sources */,
 				FCC552B61EC3196B00F645EE /* ASCCountryCodeViewController.swift in Sources */,
 				FC28F2C41E8D131800A8F985 /* ASCCreateEntity.swift in Sources */,
 				FCECDDCA26430978006CD7B9 /* ASCPasswordRecoveryViewController.swift in Sources */,
 				FC786FC31EB879F600181D62 /* ASCIntroViewController.swift in Sources */,
+				FC23997F267A2D9600B82EAC /* ASCLoadedViewControllerFinderProtocol.swift in Sources */,
 				FC12ACF22567CF5E00FF1CBB /* ASCAnalytics.swift in Sources */,
 				FCF696212632FF3E00808644 /* UILabel+Style.swift in Sources */,
 				FCC38BD222D379DE00F500C3 /* ASCFolderProviderType.swift in Sources */,
@@ -2077,6 +2139,7 @@
 				FC7CF5181EF3EFF300C0A64F /* Mappings.swift in Sources */,
 				FC68398721B7DC0D00251CEA /* ASCRootController.swift in Sources */,
 				FCF2761C22C0E8E500984E83 /* ASCProfileAvatarView.swift in Sources */,
+				FC239993267A2F3300B82EAC /* ASCOnlyofficeCacheCategoriesProvider.swift in Sources */,
 				FC37D8E921CB8FA8001A7BFD /* UIDevice+DeviceKit.swift in Sources */,
 				FC5E2D8D1E8A4C8B0079626B /* ASCImageViewController.swift in Sources */,
 				8A69B5B7249762DE00152BDE /* ASCDebugConsoleViewController.swift in Sources */,
@@ -2099,6 +2162,7 @@
 				FCC826FC1F9F4B9700744F68 /* ASCAccountsManager.swift in Sources */,
 				FC059D9A1E8259F100BC2F5E /* Dictionary+Extension.swift in Sources */,
 				FCA5B9291E48A2B500CD2EA9 /* ASCDocumentsViewController.swift in Sources */,
+				FC239990267A2F3300B82EAC /* ASCOnlyofficeAPICategoriesProvider.swift in Sources */,
 				FC65B18021F9AF5300AD5114 /* ASCEntityItemProvider.swift in Sources */,
 				FC65B6B61EB9F23800AE73BB /* ASCDocumentService.swift in Sources */,
 				FC7CF5191EF3EFF300C0A64F /* NSString+HTMLString.swift in Sources */,
@@ -2113,7 +2177,7 @@
 				FCC38BD422D37A2A00F500C3 /* UISplitViewController+Extensions.swift in Sources */,
 				FC67072C252DC4A600DFD268 /* ObservableChainingProxy.swift in Sources */,
 				FCA6946B2057ED9900ED8D8E /* Data+Extension.swift in Sources */,
-				FC1CA5B9264529E1001CC5CA /* ASCOnlyofficeCategoriesProviderFactory.swift in Sources */,
+				FC239997267A2FA000B82EAC /* ASCOneDriveApi.swift in Sources */,
 				FCDA61001EA0ED6800A12E16 /* ASCTransferNavigationController.swift in Sources */,
 				FCADF37A1EC9DA9A001CA4A9 /* NSLayoutConstraint+Extensions.swift in Sources */,
 				FC1755971E9CAFDB00D73D8E /* ASCSortViewController.swift in Sources */,
@@ -2123,16 +2187,18 @@
 				FCEF9D201ED2C94300627BA5 /* PasscodeLock.swift in Sources */,
 				FC31B2801E767CAB008699C3 /* ASCFileCell.swift in Sources */,
 				FC0F01E3216F4EA7008D79A5 /* ASCWebDAVProvider.swift in Sources */,
+				FC23997D267A2D9600B82EAC /* ASCLoadedVCFinderModels.swift in Sources */,
+				FC239983267A2E0F00B82EAC /* ASCOneDriveProvider.swift in Sources */,
 				FC08F8751ECB399900988DDE /* ASCConnectStorageOAuth2ViewController.swift in Sources */,
 				FCF69496263025BF00808644 /* ASCBaseTableViewController.swift in Sources */,
-				FC1CA5B6264529E1001CC5CA /* ASCOnlyofficeAppBasedCategoriesProvider.swift in Sources */,
-				FC1CA5B8264529E1001CC5CA /* ASCOnlyofficeCategoriesProviderProtocol.swift in Sources */,
 				FC41D7FD2265B72E00A155C2 /* UIStoryboard+Extensions.swift in Sources */,
 				FCEF9D1F1ED2C94300627BA5 /* EnterPasscodeState.swift in Sources */,
+				FC239991267A2F3300B82EAC /* ASCOnlyofficeCategoriesProviderFilterProxy.swift in Sources */,
 				FC3AF6BD21709259004A96FD /* ASCFileManager.swift in Sources */,
 				8A01844923A261540025BE85 /* ASCConnectStorageGoogleController.swift in Sources */,
 				8AFBA30D23E8727D0052F6E9 /* ASCFloatingLabelTextField.swift in Sources */,
 				FCFB36071EDF0AB00001597E /* ASCBanner.swift in Sources */,
+				FC239995267A2F3300B82EAC /* ASCOnlyofficeCategoriesProviderFactory.swift in Sources */,
 				FCEF9D391ED2D34400627BA5 /* ASCPasscodeLockSplashView.swift in Sources */,
 				FCD04FCA1E7FDECF008641CD /* UIAlertController+SwiftAlertController.swift in Sources */,
 				FCF67218217716FF004756A0 /* ASCNextCloudApi.swift in Sources */,
@@ -2151,6 +2217,7 @@
 				FC56F4922248BC14004E3930 /* CALayer+Animate.swift in Sources */,
 				FCD33B5921C9195000D52DAF /* ASCDocumentsNavigationController.swift in Sources */,
 				FCCB193A262AC68F007517BB /* Segues.swift in Sources */,
+				FC23997E267A2D9600B82EAC /* ASCLoadedDocumentViewControllerByProviderAndFolderFinder.swift in Sources */,
 				FCFDAA911E48A10C007A240C /* AppDelegate.swift in Sources */,
 				FCEF9D2A1ED2C94300627BA5 /* PasscodeSignPlaceholderView.swift in Sources */,
 				FC8BBC9E22BA5D6200761152 /* ASCCreatePortalStatus.swift in Sources */,
@@ -2165,7 +2232,6 @@
 				FCF696232632FF3E00808644 /* ASCTextStyle.swift in Sources */,
 				FC67072D252DC4A600DFD268 /* ObservableProxy.swift in Sources */,
 				8ADB2DE1234369BE0009FD4E /* MGSwipeButton+Extensions.swift in Sources */,
-				FC1CA5B7264529E1001CC5CA /* ASCOnlyofficeAPICategoriesProvider.swift in Sources */,
 				FC41D80C2265DA8700A155C2 /* ASCFilterType.swift in Sources */,
 				FCCC527220ADB68E000BD819 /* ASCSignInController.swift in Sources */,
 				FCB6E1811EE83A1A003C9348 /* ASCShareItemsViewController.swift in Sources */,
@@ -2193,6 +2259,7 @@
 				FC68399821B7EF3200251CEA /* ASCOnlyofficeCategoryCell.swift in Sources */,
 				FC08F8771ECB402000988DDE /* ASCConnectStorageOAuth2Dropbox.swift in Sources */,
 				8AF0B3662360B28900383610 /* ASCDropboxProvider.swift in Sources */,
+				FC23998F267A2F3300B82EAC /* ASCOnlyofficeAppBasedCategoriesProvider.swift in Sources */,
 				8A01844B23A261540025BE85 /* ASCConnectCloudViewController.swift in Sources */,
 				E0609BF41BC138CF6774A5B3 /* ASCUser.swift in Sources */,
 				FCEF9D231ED2C94300627BA5 /* PasscodeLockViewController.swift in Sources */,
@@ -2212,7 +2279,9 @@
 				FC059D9C1E82657F00BC2F5E /* ASCIndexTransform.swift in Sources */,
 				FC707C4325AC5DAF004CB85B /* UILabel+Extension.swift in Sources */,
 				FC68399A21B808AC00251CEA /* ASCCloudsViewController.swift in Sources */,
+				FC239994267A2F3300B82EAC /* ASCOnlyofficeCategoriesProviderProtocol.swift in Sources */,
 				FCBEA6B6203EEF96000E8695 /* ASCSDWebImageDownloaderOperation.swift in Sources */,
+				FC239992267A2F3300B82EAC /* ASCOnlyofficeUserDefaultsCacheCategoriesProvider.swift in Sources */,
 				FC3AF6B9217081DB004A96FD /* ASCNextCloudProvider.swift in Sources */,
 				FCEF9D1D1ED2C94300627BA5 /* ChangePasscodeState.swift in Sources */,
 				FC9161DA1EE949420031B6DB /* ASCShareInfo.swift in Sources */,

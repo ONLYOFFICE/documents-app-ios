@@ -28,6 +28,13 @@ extension KingfisherWrapper where Base: KFCrossPlatformImageView {
             
             if let authorization = provider.authorization {
                 apiRequest.setValue(authorization, forHTTPHeaderField: "Authorization")
+                
+                if provider is ASCOnlyofficeProvider {
+                    let token = authorization.replacingOccurrences(of: "Bearer ", with: "")
+                    var cookies = apiRequest.value(forHTTPHeaderField: "Cookie") ?? ""
+                    cookies.append("\(cookies.isEmpty ? "" : ";")asc_auth_key=\(token)")
+                    apiRequest.setValue(cookies, forHTTPHeaderField: "Cookie")
+                }
             }
             return apiRequest
         }

@@ -70,7 +70,7 @@
 		FC2B0CBD264031BE00969DB9 /* KingfisherWrapper+Onlyoffice.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC2B0CBC264031BE00969DB9 /* KingfisherWrapper+Onlyoffice.swift */; };
 		FC2B0CC22640518500969DB9 /* OnlyofficeEndpoints.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC2B0CC12640518500969DB9 /* OnlyofficeEndpoints.swift */; };
 		FC2B0CC42640524F00969DB9 /* OnlyofficeVersion.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC2B0CC32640524F00969DB9 /* OnlyofficeVersion.swift */; };
-		FC2B0CC62641251C00969DB9 /* OnlyofficeDataResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC2B0CC52641251C00969DB9 /* OnlyofficeDataResult.swift */; };
+		FC2B0CC62641251C00969DB9 /* OnlyofficeResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC2B0CC52641251C00969DB9 /* OnlyofficeResponse.swift */; };
 		FC2B0CC8264146C100969DB9 /* OnlyofficeAuthRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC2B0CC7264146C100969DB9 /* OnlyofficeAuthRequest.swift */; };
 		FC2B0CCA264149E200969DB9 /* OnlyofficeAuth.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC2B0CC9264149E200969DB9 /* OnlyofficeAuth.swift */; };
 		FC2B0CCD264158B400969DB9 /* OnlyofficeApplicationType.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC2B0CCC264158B400969DB9 /* OnlyofficeApplicationType.swift */; };
@@ -437,7 +437,7 @@
 		FC2B0CBC264031BE00969DB9 /* KingfisherWrapper+Onlyoffice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "KingfisherWrapper+Onlyoffice.swift"; sourceTree = "<group>"; };
 		FC2B0CC12640518500969DB9 /* OnlyofficeEndpoints.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnlyofficeEndpoints.swift; sourceTree = "<group>"; };
 		FC2B0CC32640524F00969DB9 /* OnlyofficeVersion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnlyofficeVersion.swift; sourceTree = "<group>"; };
-		FC2B0CC52641251C00969DB9 /* OnlyofficeDataResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnlyofficeDataResult.swift; sourceTree = "<group>"; };
+		FC2B0CC52641251C00969DB9 /* OnlyofficeResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnlyofficeResponse.swift; sourceTree = "<group>"; };
 		FC2B0CC7264146C100969DB9 /* OnlyofficeAuthRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnlyofficeAuthRequest.swift; sourceTree = "<group>"; };
 		FC2B0CC9264149E200969DB9 /* OnlyofficeAuth.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnlyofficeAuth.swift; sourceTree = "<group>"; };
 		FC2B0CCC264158B400969DB9 /* OnlyofficeApplicationType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnlyofficeApplicationType.swift; sourceTree = "<group>"; };
@@ -909,7 +909,7 @@
 		FC2B0CBE26404E7200969DB9 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				FC2B0CC52641251C00969DB9 /* OnlyofficeDataResult.swift */,
+				FC2B0CC52641251C00969DB9 /* OnlyofficeResponse.swift */,
 				FC8A137A22686B5D006D8C6E /* OnlyofficeCapabilities.swift */,
 				FC2B0CC32640524F00969DB9 /* OnlyofficeVersion.swift */,
 				FC2B0CC7264146C100969DB9 /* OnlyofficeAuthRequest.swift */,
@@ -2095,7 +2095,7 @@
 				FCC38BD222D379DE00F500C3 /* ASCFolderProviderType.swift in Sources */,
 				FCA7500822BB9CD500991682 /* UITableViewCell+Extensions.swift in Sources */,
 				FC1EA5D21ECF2A6D008FEE2E /* ASCSettingsViewController.swift in Sources */,
-				FC2B0CC62641251C00969DB9 /* OnlyofficeDataResult.swift in Sources */,
+				FC2B0CC62641251C00969DB9 /* OnlyofficeResponse.swift in Sources */,
 				FC1EA5CB1ECECBC3008FEE2E /* ASCBaseNavigationController.swift in Sources */,
 				FCD33B5B21C93C2B00D52DAF /* ASCCloudsEmptyViewController.swift in Sources */,
 				FCB8A39221C27EE000CF74FA /* ASCDeviceCategoryViewController.swift in Sources */,

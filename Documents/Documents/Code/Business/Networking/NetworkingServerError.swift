@@ -8,6 +8,6 @@
 
 import Foundation
 
-protocol NetworkingServerError: Error {
-    var localized: String { get }
+protocol NetworkingServerError: LocalizedError {
+
 }

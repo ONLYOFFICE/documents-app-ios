@@ -8,7 +8,7 @@
 
 import Foundation
 
-enum NetworkingError: Error {
+enum NetworkingError: LocalizedError {
     case cancelled
     case noInternet
     case invalidUrl
@@ -17,7 +17,7 @@ enum NetworkingError: Error {
     case apiError(error: NetworkingServerError)
     case unknown(error: Error?)
     
-    var localized : String {
+    public var errorDescription: String? {
         switch self {
         case .cancelled:
             return NSLocalizedString("Request canceled", comment: "")
@@ -30,7 +30,7 @@ enum NetworkingError: Error {
         case .statusCode(let code):
             return String(format: NSLocalizedString("Error code: %ld", comment: ""), code)
         case .apiError(let error):
-            return error.localized
+            return error.localizedDescription
         case .unknown(let error):
             return error?.localizedDescription ?? NSLocalizedString("Unknown error", comment: "")
         }

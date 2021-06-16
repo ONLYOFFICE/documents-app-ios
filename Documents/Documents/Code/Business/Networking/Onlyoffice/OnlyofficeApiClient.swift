@@ -117,7 +117,7 @@ class OnlyofficeApiClient: NetworkingClient {
         _ to: URL,
         _ processing: @escaping NetworkProgressHandler) {
         
-        guard let url = self.url(path: path) else {
+        guard let url = OnlyofficeApiClient.absoluteUrl(from: URL(string: path)) else {
             processing(nil, 1, NetworkingError.invalidUrl)
             return
         }

@@ -111,8 +111,16 @@ class NetworkingClient: NSObject {
                     break
                 case .failure(let error):
                     let err = self.parseError(response.data, error)
+                    var result: Response? = nil
+                    
+                    if let value = response.data {
+                        do {
+                            result = try endpoint.decode(value)
+                        } catch { }
+                    }
+                    
                     DispatchQueue.main.async {
-                        completion?(nil, err)
+                        completion?(result, err)
                     }
                     break
                 }

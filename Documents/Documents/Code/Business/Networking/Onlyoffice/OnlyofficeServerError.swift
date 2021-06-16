@@ -28,7 +28,7 @@ enum OnlyofficeServerError: NetworkingServerError {
         }
     }
 
-    var localized: String {
+    public var errorDescription: String? {
         switch self {
         case .unauthorized:
             return NSLocalizedString("User authentication failed", comment: "")

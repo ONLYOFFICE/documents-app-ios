@@ -102,7 +102,7 @@ class ASCSMSCodeViewController: ASCBaseViewController {
             hud?.hide(animated: true)
             
             if let error = error {
-                UIAlertController.showError(in: self, message: error.localized)
+                UIAlertController.showError(in: self, message: error.localizedDescription)
                 log.error(error)
             }
         }

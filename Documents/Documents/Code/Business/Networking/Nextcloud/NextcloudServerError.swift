@@ -18,7 +18,7 @@ enum NextcloudServerError: NetworkingServerError {
         }
     }
 
-    var localized: String {
+    public var errorDescription: String? {
         switch self {
         case .undefined(let message):
             return message ?? NSLocalizedString("Something went wrong, try again", comment: "")

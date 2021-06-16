@@ -116,7 +116,7 @@ class ASCPhoneNumberViewController: ASCBaseViewController {
                 guard let strongSelf = self else { return }
 
                 if let error = error {
-                    UIAlertController.showError(in: strongSelf, message: error.localized)
+                    UIAlertController.showError(in: strongSelf, message: error.localizedDescription)
                     log.error(error)
                 } else {
                     if let navigationController = strongSelf.navigationController {

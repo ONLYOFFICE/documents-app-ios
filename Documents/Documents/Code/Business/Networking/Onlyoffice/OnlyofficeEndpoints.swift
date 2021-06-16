@@ -24,7 +24,7 @@ class OnlyofficeAPI {
         static public let deviceRegistration     = "api/\(version)/portal/mobile/registration"
         static public let peopleSelf             = "api/\(version)/people/@self"
         static public let peoplePhoto            = "api/\(version)/people/%@/photo"
-        static public let files                  = "api/\(version)/files/"
+        static public let files                  = "api/\(version)/files/%@"
         static public let file                   = "api/\(version)/files/file/%@"
         static public let folder                 = "api/\(version)/files/folder/%@"
         static public let favorite               = "api/\(version)/files/favorites"
@@ -33,12 +33,16 @@ class OnlyofficeAPI {
         static public let operationCopy          = "api/\(version)/files/fileops/copy"
         static public let operationMove          = "api/\(version)/files/fileops/move"
         static public let operationDelete        = "api/\(version)/files/fileops/delete"
+        static public let emptyTrash             = "api/\(version)/files/fileops/emptytrash"
         static public let thirdParty             = "api/\(version)/files/thirdparty"
         static public let insertFile             = "api/\(version)/files/%@/insert"
         static public let uploadFile             = "api/\(version)/files/%@/upload"
-        static public let saveEditing            = "api/\(version)/files/file/%@/saveediting"
         static public let createFile             = "api/\(version)/files/%@/file"
-        static public let createFolder           = "api/\(version)/files/folder/%@"
+        static public let openEditFile           = "api/\(version)/files/file/%@/openedit"
+        static public let saveEditing            = "api/\(version)/files/file/%@/saveediting"
+        static public let startEdit              = "api/\(version)/files/file/%@/startedit"
+        static public let trackEdit              = "api/\(version)/files/file/%@/trackeditfile"
+        static public let documentService        = "api/\(version)/files/docservice"
         
     }
 
@@ -47,14 +51,14 @@ class OnlyofficeAPI {
         // MARK: Authentication
         
         struct Auth {
-            static func authentication(with code: String? = nil) -> Endpoint<OnlyofficeDataResult<OnlyofficeAuth>> {
+            static func authentication(with code: String? = nil) -> Endpoint<OnlyofficeResponse<OnlyofficeAuth>> {
                 var path = Path.authentication
                 
                 if let code = code {
                     path = "\(Path.authentication)/\(code)"
                 }
                 
-                return Endpoint<OnlyofficeDataResult<OnlyofficeAuth>>.make(path, .post)
+                return Endpoint<OnlyofficeResponse<OnlyofficeAuth>>.make(path, .post)
             }
             static let deviceRegistration: Endpoint<Parameters> = Endpoint<Parameters>.make(Path.deviceRegistration, .post)
             static let sendCode: Endpoint<Parameters> = Endpoint<Parameters>.make(Path.authenticationCode, .post)
@@ -64,82 +68,105 @@ class OnlyofficeAPI {
         // MARK: People
         
         struct People {
-            static let me: Endpoint<OnlyofficeDataResult<ASCUser>> = Endpoint<OnlyofficeDataResult<ASCUser>>.make(Path.peopleSelf)
-            static func photo(of user: ASCUser) -> Endpoint<OnlyofficeDataResult<OnlyofficeUserPhoto>> {
-                return Endpoint<OnlyofficeDataResult<OnlyofficeUserPhoto>>.make(String(format: Path.peoplePhoto, user.userId ?? ""))
+            static let me: Endpoint<OnlyofficeResponse<ASCUser>> = Endpoint<OnlyofficeResponse<ASCUser>>.make(Path.peopleSelf)
+            static func photo(of user: ASCUser) -> Endpoint<OnlyofficeResponse<OnlyofficeUserPhoto>> {
+                return Endpoint<OnlyofficeResponse<OnlyofficeUserPhoto>>.make(String(format: Path.peoplePhoto, user.userId ?? ""))
             }
         }
         
         // MARK: Folders
         
         struct Folders {
-            static func path(of folder: ASCFolder) -> Endpoint<OnlyofficeDataResult<OnlyofficePath>> {
-                return Endpoint<OnlyofficeDataResult<OnlyofficePath>>.make(Path.files + folder.id, .get, URLEncoding.default)
+            static func path(of folder: ASCFolder) -> Endpoint<OnlyofficeResponse<OnlyofficePath>> {
+                return Endpoint<OnlyofficeResponse<OnlyofficePath>>.make(String(format: Path.files, folder.id), .get, URLEncoding.default)
             }
-            static func update(folder: ASCFolder) -> Endpoint<OnlyofficeDataResult<ASCFolder>> {
-                return Endpoint<OnlyofficeDataResult<ASCFolder>>.make(String(format: Path.folder, folder.id), .put)
+            static func update(folder: ASCFolder) -> Endpoint<OnlyofficeResponse<ASCFolder>> {
+                return Endpoint<OnlyofficeResponse<ASCFolder>>.make(String(format: Path.folder, folder.id), .put)
             }
-            static func create(in folder: ASCFolder) -> Endpoint<OnlyofficeDataResult<ASCFolder>> {
-                return Endpoint<OnlyofficeDataResult<ASCFolder>>.make(String(format: Path.createFolder, folder.id), .post)
+            static func create(in folder: ASCFolder) -> Endpoint<OnlyofficeResponse<ASCFolder>> {
+                return Endpoint<OnlyofficeResponse<ASCFolder>>.make(String(format: Path.folder, folder.id), .post)
+            }
+            static func delete(folder: ASCFolder) -> Endpoint<OnlyofficeResponse<ASCFolder>> {
+                return Endpoint<OnlyofficeResponse<ASCFolder>>.make(String(format: Path.folder, folder.id), .delete)
             }
         }
         
         // MARK: Files
         
         struct Files {
-            static func update(file: ASCFile) -> Endpoint<OnlyofficeDataResult<ASCFile>> {
-                return Endpoint<OnlyofficeDataResult<ASCFile>>.make(String(format: Path.file, file.id), .put)
+            static func info(file: ASCFile) -> Endpoint<OnlyofficeResponse<ASCFile>> {
+                return Endpoint<OnlyofficeResponse<ASCFile>>.make(String(format: Path.file, file.id))
             }
-            static func saveEditing(file: ASCFile) -> Endpoint<OnlyofficeDataResult<ASCFile>> {
-                return Endpoint<OnlyofficeDataResult<ASCFile>>.make(String(format: Path.saveEditing, file.id), .put)
+            static func update(file: ASCFile) -> Endpoint<OnlyofficeResponse<ASCFile>> {
+                return Endpoint<OnlyofficeResponse<ASCFile>>.make(String(format: Path.file, file.id), .put)
             }
-            static func create(in folder: ASCFolder) -> Endpoint<OnlyofficeDataResult<ASCFile>> {
-                return Endpoint<OnlyofficeDataResult<ASCFile>>.make(String(format: Path.createFile, folder.id), .post)
+            static func saveEditing(file: ASCFile) -> Endpoint<OnlyofficeResponse<ASCFile>> {
+                return Endpoint<OnlyofficeResponse<ASCFile>>.make(String(format: Path.saveEditing, file.id), .put)
             }
-            static let addFavorite: Endpoint<OnlyofficeDataSingleResult<Bool>> = Endpoint<OnlyofficeDataSingleResult<Bool>>.make(Path.favorite, .post)
-            static let removeFavorite: Endpoint<OnlyofficeDataSingleResult<Bool>> = Endpoint<OnlyofficeDataSingleResult<Bool>>.make(Path.favorite, .delete)
+            static func create(in folder: ASCFolder) -> Endpoint<OnlyofficeResponse<ASCFile>> {
+                return Endpoint<OnlyofficeResponse<ASCFile>>.make(String(format: Path.createFile, folder.id), .post)
+            }
+            static func delete(file: ASCFile) -> Endpoint<OnlyofficeResponse<ASCFile>> {
+                return Endpoint<OnlyofficeResponse<ASCFile>>.make(String(format: Path.file, file.id), .delete)
+            }
+            static func openEdit(file: ASCFile) -> Endpoint<OnlyofficeResponseType<Parameters>> {
+                return Endpoint<OnlyofficeResponseType<Parameters>>.make(String(format: Path.openEditFile, file.id))
+            }
+            static func startEdit(file: ASCFile) -> Endpoint<OnlyofficeResponseType<String>> {
+                return Endpoint<OnlyofficeResponseType<String>>.make(String(format: Path.startEdit, file.id), .post, URLEncoding.default)
+            }
+            static func trackEdit(file: ASCFile) -> Endpoint<OnlyofficeResponseType<Parameters>> {
+                return Endpoint<OnlyofficeResponseType<Parameters>>.make(String(format: Path.trackEdit, file.id), .get, URLEncoding.default)
+            }
+            static let addFavorite: Endpoint<OnlyofficeResponseType<Bool>> = Endpoint<OnlyofficeResponseType<Bool>>.make(Path.favorite, .post)
+            static let removeFavorite: Endpoint<OnlyofficeResponseType<Bool>> = Endpoint<OnlyofficeResponseType<Bool>>.make(Path.favorite, .delete)
         }
         
         // MARK: Sharing
         
         struct Sharing {
-            static let removeSharingRights: Endpoint<OnlyofficeDataSingleResult<Bool>> = Endpoint<OnlyofficeDataSingleResult<Bool>>.make(Path.filesShare, .delete)
+            static let removeSharingRights: Endpoint<OnlyofficeResponseType<Bool>> = Endpoint<OnlyofficeResponseType<Bool>>.make(Path.filesShare, .delete)
         }
         
         // MARK: Operations
         
         struct Operations {
-            static let removeEntities: Endpoint<OnlyofficeDataArrayResult<Parameters>> = Endpoint<OnlyofficeDataArrayResult<Parameters>>.make(Path.operationDelete, .put)
-            static let check: Endpoint<OnlyofficeDataArrayResult<ASCFile>> = Endpoint<OnlyofficeDataArrayResult<OnlyofficeFileOperation>>.make(Path.operationMove)
-            static let copy: Endpoint<OnlyofficeDataSingleResult<OnlyofficeFileOperation>> = Endpoint<OnlyofficeDataSingleResult<OnlyofficeFileOperation>>.make(Path.operationCopy, .put)
-            static let move: Endpoint<OnlyofficeDataSingleResult<OnlyofficeFileOperation>> = Endpoint<OnlyofficeDataSingleResult<OnlyofficeFileOperation>>.make(Path.operationMove, .put)
-            static let list: Endpoint<OnlyofficeDataArrayResult<OnlyofficeFileOperation>> = Endpoint<OnlyofficeDataArrayResult<OnlyofficeFileOperation>>.make(Path.operations)
+            static let removeEntities: Endpoint<OnlyofficeResponseArrayType<Parameters>> = Endpoint<OnlyofficeResponseArrayType<Parameters>>.make(Path.operationDelete, .put)
+            static let emptyTrash: Endpoint<OnlyofficeResponseType<Parameters>> = Endpoint<OnlyofficeResponseType<Parameters>>.make(Path.emptyTrash, .put)
+            static let check: Endpoint<OnlyofficeResponseArray<ASCFile>> = Endpoint<OnlyofficeResponseArray<OnlyofficeFileOperation>>.make(Path.operationMove)
+            static let copy: Endpoint<OnlyofficeResponse<OnlyofficeFileOperation>> = Endpoint<OnlyofficeResponse<OnlyofficeFileOperation>>.make(Path.operationCopy, .put)
+            static let move: Endpoint<OnlyofficeResponse<OnlyofficeFileOperation>> = Endpoint<OnlyofficeResponse<OnlyofficeFileOperation>>.make(Path.operationMove, .put)
+            static let list: Endpoint<OnlyofficeResponseArray<OnlyofficeFileOperation>> = Endpoint<OnlyofficeResponseArray<OnlyofficeFileOperation>>.make(Path.operations)
 
+            
         }
         
         // MARK: Third-Party Integration
         
         struct ThirdPartyIntegration {
-            static func remove(providerId: String) -> Endpoint<OnlyofficeDataSingleResult<String>> {
-                return Endpoint<OnlyofficeDataSingleResult<String>>.make(Path.thirdParty.appendingPathComponent(providerId), .delete)
+            static func remove(providerId: String) -> Endpoint<OnlyofficeResponseType<String>> {
+                return Endpoint<OnlyofficeResponseType<String>>.make(Path.thirdParty.appendingPathComponent(providerId), .delete)
             }
         }
         
         // MARK: Uploads
         
         struct Uploads {
-            static func upload(in path: String) -> Endpoint<OnlyofficeDataResult<ASCFile>> {
-                return Endpoint<OnlyofficeDataResult<ASCFile>>.make(String(format: Path.uploadFile, path), .post)
+            static func upload(in path: String) -> Endpoint<OnlyofficeResponse<ASCFile>> {
+                return Endpoint<OnlyofficeResponse<ASCFile>>.make(String(format: Path.uploadFile, path), .post)
             }
-            static func insert(in path: String) -> Endpoint<OnlyofficeDataResult<ASCFile>> {
-                return Endpoint<OnlyofficeDataResult<ASCFile>>.make(String(format: Path.insertFile, path), .post, URLEncoding.default)
+            static func insert(in path: String) -> Endpoint<OnlyofficeResponse<ASCFile>> {
+                return Endpoint<OnlyofficeResponse<ASCFile>>.make(String(format: Path.insertFile, path), .post, URLEncoding.default)
             }
         }
         
         // MARK: Settings
         
-        static let serversVersion: Endpoint<OnlyofficeDataResult<OnlyofficeVersion>> = Endpoint<OnlyofficeDataResult<OnlyofficeVersion>>.make(Path.serversVersion)
-        static let serverCapabilities: Endpoint<OnlyofficeDataResult<OnlyofficeCapabilities>> = Endpoint<OnlyofficeDataResult<OnlyofficeCapabilities>>.make(Path.capabilities)
+        struct Settings {
+            static let documentService: Endpoint<OnlyofficeResponseType<Any>> = Endpoint<OnlyofficeResponseType<Any>>.make(Path.documentService, .get, URLEncoding.default)
+        }
+        static let serversVersion: Endpoint<OnlyofficeResponse<OnlyofficeVersion>> = Endpoint<OnlyofficeResponse<OnlyofficeVersion>>.make(Path.serversVersion)
+        static let serverCapabilities: Endpoint<OnlyofficeResponse<OnlyofficeCapabilities>> = Endpoint<OnlyofficeResponse<OnlyofficeCapabilities>>.make(Path.capabilities)
     }
 
 }

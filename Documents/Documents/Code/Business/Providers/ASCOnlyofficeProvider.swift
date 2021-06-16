@@ -468,7 +468,7 @@ class ASCOnlyofficeProvider: ASCFileProviderProtocol & ASCSortableFileProviderPr
                             resultItems += entities.filter { fileIds.contains($0.id) }
                         } else {
                             lastError = ASCProviderError(
-                                msg: error?.localized ?? NSLocalizedString("Unable disconnect third party", comment: "")
+                                msg: error?.localizedDescription ?? NSLocalizedString("Unable disconnect third party", comment: "")
                             )
                         }
                     }
@@ -481,7 +481,7 @@ class ASCOnlyofficeProvider: ASCFileProviderProtocol & ASCSortableFileProviderPr
                             resultItems += entities.filter { fileIds.contains($0.id) }
                         } else {
                             lastError = ASCProviderError(
-                                msg: error?.localized ?? NSLocalizedString("Unable delete items", comment: "")
+                                msg: error?.localizedDescription ?? NSLocalizedString("Unable delete items", comment: "")
                             )
                         }
                     }
@@ -507,7 +507,7 @@ class ASCOnlyofficeProvider: ASCFileProviderProtocol & ASCSortableFileProviderPr
                                 resultItems += entities.filter { fileIds.contains($0.id) }
                             } else {
                                 lastError = ASCProviderError(
-                                    msg:error?.localized ?? NSLocalizedString("Unable disconnect third party", comment: "")
+                                    msg:error?.localizedDescription ?? NSLocalizedString("Unable disconnect third party", comment: "")
                                 )
                             }
                         }
@@ -521,7 +521,7 @@ class ASCOnlyofficeProvider: ASCFileProviderProtocol & ASCSortableFileProviderPr
                                 resultItems.append(folder)
                             } else {
                                 lastError = ASCProviderError(
-                                    msg:error?.localized ?? NSLocalizedString("Unable disconnect third party", comment: "")
+                                    msg:error?.localizedDescription ?? NSLocalizedString("Unable disconnect third party", comment: "")
                                 )
                             }
                         }
@@ -541,6 +541,12 @@ class ASCOnlyofficeProvider: ASCFileProviderProtocol & ASCSortableFileProviderPr
         }
     }
 
+    func emptyTrash(completeon: ASCProviderCompletionHandler?) {
+        apiClient.request(OnlyofficeAPI.Endpoints.Operations.emptyTrash) { result, error in
+            completeon?(self, nil, error == nil, error)
+        }
+    }
+    
     func download(_ path: String, to: URL, processing: @escaping NetworkProgressHandler) {
         apiClient.download(path, to, processing)
     }
@@ -653,7 +659,7 @@ class ASCOnlyofficeProvider: ASCFileProviderProtocol & ASCSortableFileProviderPr
         upload(folder.id, data: data, overwrite: false, params: params) { result, progress, error in
             if let _ = result as? ASCFile {
                 ASCAnalytics.logEvent(ASCConstants.Analytics.Event.createEntity, parameters: [
-                    "portal": OnlyofficeApiClient.shared.baseURL ?? "none",
+                    "portal": OnlyofficeApiClient.shared.baseURL?.absoluteString ?? "none",
                     "onDevice": false,
                     "type": "file",
                     "fileExt": name.fileExtension()
@@ -720,11 +726,11 @@ class ASCOnlyofficeProvider: ASCFileProviderProtocol & ASCSortableFileProviderPr
 
         apiClient.request(OnlyofficeAPI.Endpoints.Operations.check, parameters) { result, error in
             if let error = error {
-                handler?(.error, nil, error.localized)
+                handler?(.error, nil, error.localizedDescription)
             } else if let files = result?.result {
                 handler?(.end, files, nil)
             } else {
-                handler?(.error, nil, NetworkingError.invalidData.localized)
+                handler?(.error, nil, NetworkingError.invalidData.localizedDescription)
             }
         }
     }
@@ -766,13 +772,13 @@ class ASCOnlyofficeProvider: ASCFileProviderProtocol & ASCSortableFileProviderPr
 
         apiClient.request(move ? OnlyofficeAPI.Endpoints.Operations.move : OnlyofficeAPI.Endpoints.Operations.copy, parameters) { [weak apiClient] result, error in
             if let error = error {
-                handler?(.error, 1, nil, error.localized, &cancel)
+                handler?(.error, 1, nil, error.localizedDescription, &cancel)
             } else {
                 var checkOperation: (()->Void)?
                 checkOperation = {
                     apiClient?.request(OnlyofficeAPI.Endpoints.Operations.list) { result, error in
                         if let error = error {
-                            handler?(.error, 1, nil, error.localized, &cancel)
+                            handler?(.error, 1, nil, error.localizedDescription, &cancel)
                         } else if let operation = result?.result?.first, let progress = operation.progress {
                             if progress >= 100 {
                                 handler?(.end, 1, nil, nil, &cancel)
@@ -781,7 +787,7 @@ class ASCOnlyofficeProvider: ASCFileProviderProtocol & ASCSortableFileProviderPr
                                 checkOperation?()
                             }
                         } else {
-                            handler?(.error, 1, nil, NetworkingError.invalidData.localized, &cancel)
+                            handler?(.error, 1, nil, NetworkingError.invalidData.localizedDescription, &cancel)
                         }
                     }
                 }

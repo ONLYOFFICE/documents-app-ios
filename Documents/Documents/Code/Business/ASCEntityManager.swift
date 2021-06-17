@@ -637,29 +637,6 @@ class ASCEntityManager: NSObject, UITextFieldDelegate {
             }
         }
     }
-    
-    func emptyTrash(handler: ASCEntityProgressHandler? = nil) {
-        var cancel = false
-        handler?(.begin, 0, nil, nil, &cancel)
-        
-        // Empty local trash
-        let trashItems = ASCLocalFileHelper.shared.entityList(Path.userTrash)
-        
-        for item in trashItems {
-            ASCLocalFileHelper.shared.removeFile(item)
-        }
-        
-        handler?(.progress, 0.5, nil, nil, &cancel)
-        
-        // Empty cloud trash
-        ASCOnlyOfficeApi.put(ASCOnlyOfficeApi.apiEmptyTrash) { (result, error, response) in
-            if error != nil {
-                handler?(.error, 1, nil, ASCOnlyOfficeApi.errorMessage(by: response!), &cancel)
-            } else {
-                handler?(.end, 1, nil, nil, &cancel)
-            }
-        }
-    }
 
     func uploadEdit(for provider: ASCFileProviderProtocol, file: ASCFile, originalFile: ASCFile, handler: ASCEntityProgressHandler? = nil) {
         var cancel = false

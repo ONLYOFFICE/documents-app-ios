@@ -3352,29 +3352,25 @@ class ASCDocumentsViewController: ASCBaseTableViewController, UIGestureRecognize
     }
     
     func emptyTrash() {
-        var hud: MBProgressHUD? = nil
+        guard let provider = provider else { return }
         
-        ASCEntityManager.shared.emptyTrash() { [unowned self] (status, progress, result, error, cancel) in
-            if status == .begin {
-                hud = MBProgressHUD.showTopMost()
-                hud?.mode = .annularDeterminate
-                hud?.progress = 0
-                hud?.label.text = NSLocalizedString("Cleanup", comment: "Caption of the processing")
-            } else if status == .progress {
-                hud?.progress = progress
-            } else if status == .error {
+        let hud = MBProgressHUD.showTopMost()
+        hud?.mode = .annularDeterminate
+        hud?.progress = 0
+        hud?.label.text = NSLocalizedString("Cleanup", comment: "Caption of the processing")
+        
+        provider.emptyTrash(completeon: { [unowned self] provider, result, success, error in
+            if let error = error {
                 hud?.hide(animated: true)
                 UIAlertController.showError(
                     in: self,
-                    message: error ?? NSLocalizedString("Could not empty trash.", comment: "")
+                    message: error.localizedDescription
                 )
-            } else if status == .end {
+            } else {
                 hud?.setSuccessState()
                 hud?.hide(animated: false, afterDelay: 1.3)
 
                 if self.isTrash(self.folder) {
-//                    self.tableData.removeAll()
-//                    self.total = 0
                     self.provider?.reset()
                     self.tableView.reloadData()
                 }
@@ -3383,7 +3379,7 @@ class ASCDocumentsViewController: ASCBaseTableViewController, UIGestureRecognize
                 self.updateNavBar()
                 self.setEditMode(false)
             }
-        }
+        })
     }
 
     private func selectAllItems<T>(type: T.Type, extensions:[String]? = nil) {

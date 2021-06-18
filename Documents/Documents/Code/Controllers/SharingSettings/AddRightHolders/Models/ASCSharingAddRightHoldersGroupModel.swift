@@ -8,7 +8,7 @@
 
 import UIKit
 
-struct ASCSharingAddRightHoldersGroupModel {
+struct ASCSharingAddRightHoldersGroupModel: ASCNamedProtocol {
     var image: UIImage
     var name: String
     var isSelected: Bool = false

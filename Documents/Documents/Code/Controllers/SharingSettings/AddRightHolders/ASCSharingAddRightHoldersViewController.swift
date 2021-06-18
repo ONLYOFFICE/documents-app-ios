@@ -10,8 +10,32 @@ import UIKit
 
 class ASCSharingAddRightHoldersViewController: UIViewController {
     
+    var defaultSelectedTable: RightHoldersTableType = .users
+    
+    private let searchController = UISearchController(searchResultsController: nil)
+    private var isSearchBarEmpty: Bool {
+        guard let text = searchController.searchBar.text else {
+            return false
+        }
+        return text.isEmpty
+    }
+    
     private lazy var usersTableViewDataSourceAndDelegate = ASCSharingAddRightHoldersTableViewDataSourceAndDelegate<ASCSharingAddRightHoldersUserTableViewCell>(models: self.usersModels)
     private lazy var groupsTableViewDataSourceAndDelegate = ASCSharingAddRightHoldersTableViewDataSourceAndDelegate<ASCSharingAddRightHoldersGroupTableViewCell>(models: self.groupsModels)
+    
+    private lazy var tablesSegmentedControl: UISegmentedControl = {
+        var items: [String] = RightHoldersTableType.allCases.map({ $0.getTitle() })
+        let control = UISegmentedControl(items: items)
+        control.selectedSegmentIndex = defaultSelectedTable.rawValue
+        control.addTarget(self, action: #selector(tablesSegmentedControlDidChanged), for: .valueChanged)
+        return control
+    }()
+    
+    private lazy var tablesSegmentedControlView: UIView = {
+        let view = UIView()
+        view.backgroundColor = getNavigationBarColor()
+        return view
+    }()
     
     private lazy var usersTableView: UITableView = {
         let tableView = UITableView()
@@ -67,32 +91,212 @@ class ASCSharingAddRightHoldersViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        configureNavigationBar()
+        configureSegmentedControl()
+        configureTables()
     }
     
+    private func configureNavigationBar() {
+        navigationItem.largeTitleDisplayMode = .never
+        searchController.searchResultsUpdater = self
+        searchController.obscuresBackgroundDuringPresentation  = false
+        searchController.searchBar.placeholder = NSLocalizedString("Search", comment: "")
+        navigationItem.hidesSearchBarWhenScrolling = false
+        navigationItem.searchController = searchController
+        guard let navigationController = navigationController else {
+            return
+        }
+        navigationController.navigationBar.isTranslucent = false
+        navigationController.navigationBar.barStyle = .default
+        navigationController.navigationBar.layer.borderWidth = 0
+        navigationController.navigationBar.barTintColor = getNavigationBarColor()
+        navigationController.navigationBar.shadowImage = UIImage()
+        navigationController.navigationBar.backIndicatorImage = nil
+        navigationController.navigationBar.backItem?.title = NSLocalizedString("Cancle", comment: "")
+        navigationController.navigationBar.topItem?.title = NSLocalizedString("Shared access", comment: "")
+    }
+    
+    func configureSegmentedControl() {
+        tablesSegmentedControlView.translatesAutoresizingMaskIntoConstraints = false
+        tablesSegmentedControl.translatesAutoresizingMaskIntoConstraints = false
+        
+        tablesSegmentedControlView.addSubview(tablesSegmentedControl)
+        view.addSubview(tablesSegmentedControlView)
+        NSLayoutConstraint.activate([
+            tablesSegmentedControlView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
+            tablesSegmentedControlView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
+            tablesSegmentedControlView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
+            tablesSegmentedControlView.heightAnchor.constraint(equalToConstant: 40),
+            
+            tablesSegmentedControl.leadingAnchor.constraint(equalTo: tablesSegmentedControlView.leadingAnchor, constant: 16),
+            tablesSegmentedControl.trailingAnchor.constraint(equalTo: tablesSegmentedControlView.trailingAnchor, constant: -16),
+            tablesSegmentedControl.topAnchor.constraint(equalTo: tablesSegmentedControlView.topAnchor),
+            tablesSegmentedControl.heightAnchor.constraint(equalToConstant: 32)
+        ])
+    }
+    
+    func configureTables() {
+        configureGeneralsParams(forTableViews: RightHoldersTableType.allCases.map({ getTable(byRightHoldersTableType: $0 )}))
+        
+        usersTableView.register(usersTableViewDataSourceAndDelegate.type, forCellReuseIdentifier: usersTableViewDataSourceAndDelegate.type.reuseId)
+        groupsTableView.register(groupsTableViewDataSourceAndDelegate.type, forCellReuseIdentifier: groupsTableViewDataSourceAndDelegate.type.reuseId)
+    }
+    
+    func configureGeneralsParams(forTableViews tableViews: [UITableView]) {
+        for tableView in tableViews {
+            tableView.tableFooterView = UIView()
+            tableView.backgroundColor = Asset.Colors.tableBackground.color
+            tableView.sectionFooterHeight = 0
+            tableView.setEditing(true, animated: false)
+            tableView.allowsSelectionDuringEditing = true
+            tableView.translatesAutoresizingMaskIntoConstraints = false
+            tableView.allowsMultipleSelectionDuringEditing = true
+        }
+        showTable(tableType: defaultSelectedTable)
+    }
+    
+    private func showTable(tableType: RightHoldersTableType) {
+        let tableView = getTable(byRightHoldersTableType: tableType)
+        view.addSubview(tableView)
+        NSLayoutConstraint.activate([
+            tableView.topAnchor.constraint(equalTo: tablesSegmentedControlView.bottomAnchor),
+            tableView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
+            tableView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
+            tableView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor)
+        ])
+        RightHoldersTableType.allCases.filter({ $0 != tableType }).forEach { type in
+            getTable(byRightHoldersTableType: type).removeFromSuperview()
+        }
+    }
+    
+    private func getNavigationBarColor() -> UIColor {
+        if #available(iOS 13.0, *) {
+            return .secondarySystemBackground
+        } else {
+            return .Light.secondarySystemBackground
+        }
+    }
+    
+    private func getTable(byRightHoldersTableType rightHoldersTableType: RightHoldersTableType) -> UITableView {
+        switch rightHoldersTableType {
+        case .users: return usersTableView
+        case .groups: return groupsTableView
+        }
+    }
+    
+    @objc func tablesSegmentedControlDidChanged() {
+        guard let tableType = RightHoldersTableType(rawValue: tablesSegmentedControl.selectedSegmentIndex) else {
+            fatalError("Couldn't find a table type for segment control index: \(tablesSegmentedControl.selectedSegmentIndex)")
+        }
+        showTable(tableType: tableType)
+    }
+}
+
+// MARK: - Describe uses tables in enum
+extension ASCSharingAddRightHoldersViewController {
+    enum RightHoldersTableType: Int, CaseIterable {
+        case users
+        case groups
+        
+        func getTitle() -> String {
+            switch self {
+            case .users:
+                return NSLocalizedString("Users", comment: "")
+            case .groups:
+                return NSLocalizedString("Groups", comment: "")
+            }
+        }
+    }
+}
+
+// MARK: - UI Search results updating
+extension ASCSharingAddRightHoldersViewController: UISearchResultsUpdating {
+    func updateSearchResults(for searchController: UISearchController) {
+        guard let searchText = searchController.searchBar.text else { return }
+        
+    }
 }
 
 // MARK: - Users and Groupd TableView data source and delegate
 extension ASCSharingAddRightHoldersViewController {
     class ASCSharingAddRightHoldersTableViewDataSourceAndDelegate<T: UITableViewCell & ASCReusedIdentifierProtocol & ASCViewModelSetter>:
-        NSObject, UITableViewDataSource, UITableViewDelegate {
+        NSObject, UITableViewDataSource, UITableViewDelegate where T.ViewModel: ASCNamedProtocol {
         
-        var models: [T.ViewModel]
+        let type = T.self
+        var rowHeight: CGFloat = 60
         
-        init(models: [T.ViewModel]) {
-            self.models = models
+        private var groupedModels: [Section] = []
+        
+        init(models: [T.ViewModel] = []) {
+            super.init()
+            setModels(models: models)
+        }
+        
+        func setModels(models: [T.ViewModel]) {
+            groupedModels = models
+                .sorted(by: { $0.name < $1.name })
+                .reduce([], { result, model in
+                    guard let firstLetter = model.name.first else { return result }
+                    guard let section = result.last else {
+                        let section =  Section(index: firstLetter, models: [model])
+                        return [section]
+                    }
+                    guard section.index == firstLetter else {
+                        var result = result
+                        result.append(Section(index: firstLetter, models: [model]))
+                        return result
+                    }
+                    
+                    section.models.append(model)
+                    
+                    return result
+                })
+        }
+        
+        func numberOfSections(in tableView: UITableView) -> Int {
+            groupedModels.count
         }
         
         func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-            models.count
+            groupedModels[section].models.count
         }
         
         func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
             guard var cell = tableView.dequeueReusableCell(withIdentifier: T.reuseId) as? T else {
                 fatalError("Couldn't cast cell to \(T.self)")
             }
-            let viewModel = models[indexPath.row]
+            let viewModel = groupedModels[indexPath.section].models[indexPath.row]
             cell.viewModel = viewModel
             return cell
+        }
+        
+        func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+            rowHeight
+        }
+        
+        func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCell.EditingStyle {
+            .none
+        }
+        
+        func sectionIndexTitles(for tableView: UITableView) -> [String]? {
+            groupedModels.map({ "\($0.index)" })
+        }
+        
+        func tableView(_ tableView: UITableView,
+                       sectionForSectionIndexTitle title: String,
+                       at index: Int) -> Int {
+            return index
+        }
+        
+        class Section {
+            var index: Character
+            var models: [T.ViewModel]
+            
+            init(index: Character, models: [T.ViewModel]) {
+                self.index = index
+                self.models = models
+            }
         }
     }
 }

@@ -34,6 +34,7 @@
 		1DAAFF4C2679480900023F39 /* ASCSharingAddRightHoldersUserTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DAAFF4B2679480900023F39 /* ASCSharingAddRightHoldersUserTableViewCell.swift */; };
 		1DAAFF4E26794B5900023F39 /* ASCSharingAddRightHoldersGroupModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DAAFF4D26794B5900023F39 /* ASCSharingAddRightHoldersGroupModel.swift */; };
 		1DAAFF5126794BB000023F39 /* ASCSharingAddRightHoldersGroupTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DAAFF5026794BB000023F39 /* ASCSharingAddRightHoldersGroupTableViewCell.swift */; };
+		1DAC5661267B3B850078F95E /* ASCNamedProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DAC5660267B3B840078F95E /* ASCNamedProtocol.swift */; };
 		1DBE283E2670AEC70051D7AD /* ASCSharingOptionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DBE283D2670AEC70051D7AD /* ASCSharingOptionsViewController.swift */; };
 		1DE6D6BC2631AEE1001B825B /* ASCOnlyofficeAPICategoriesProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DE6D6BB2631AEE1001B825B /* ASCOnlyofficeAPICategoriesProvider.swift */; };
 		1DE6D6C42631BE03001B825B /* ASCOnlyofficeCategoriesProviderFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DE6D6C32631BE03001B825B /* ASCOnlyofficeCategoriesProviderFactory.swift */; };
@@ -607,6 +608,7 @@
 		1DAAFF4B2679480900023F39 /* ASCSharingAddRightHoldersUserTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCSharingAddRightHoldersUserTableViewCell.swift; sourceTree = "<group>"; };
 		1DAAFF4D26794B5900023F39 /* ASCSharingAddRightHoldersGroupModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCSharingAddRightHoldersGroupModel.swift; sourceTree = "<group>"; };
 		1DAAFF5026794BB000023F39 /* ASCSharingAddRightHoldersGroupTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCSharingAddRightHoldersGroupTableViewCell.swift; sourceTree = "<group>"; };
+		1DAC5660267B3B840078F95E /* ASCNamedProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCNamedProtocol.swift; sourceTree = "<group>"; };
 		1DBE283D2670AEC70051D7AD /* ASCSharingOptionsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCSharingOptionsViewController.swift; sourceTree = "<group>"; };
 		1DE6D6BB2631AEE1001B825B /* ASCOnlyofficeAPICategoriesProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCOnlyofficeAPICategoriesProvider.swift; sourceTree = "<group>"; };
 		1DE6D6C32631BE03001B825B /* ASCOnlyofficeCategoriesProviderFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCOnlyofficeCategoriesProviderFactory.swift; sourceTree = "<group>"; };
@@ -1155,6 +1157,7 @@
 			children = (
 				1D9B80832673F5D70020B5ED /* ASCReusedIdentifierProtocol.swift */,
 				1DAAFF482679063700023F39 /* ASCViewModelSetter.swift */,
+				1DAC5660267B3B840078F95E /* ASCNamedProtocol.swift */,
 			);
 			path = Protocols;
 			sourceTree = "<group>";
@@ -3193,6 +3196,7 @@
 				FCD317522642EA8700A08299 /* NSAttributedString+Extensions.swift in Sources */,
 				FCA10114218348B70018867F /* ASCCategory.swift in Sources */,
 				FCEF9D261ED2C94300627BA5 /* PasscodeLockType.swift in Sources */,
+				1DAC5661267B3B850078F95E /* ASCNamedProtocol.swift in Sources */,
 				1D863F1A26725BC7000BAC3C /* ASCSharingOptionsRightHolderViewModel.swift in Sources */,
 				FC68399821B7EF3200251CEA /* ASCOnlyofficeCategoryCell.swift in Sources */,
 				FCF696282636FFB600808644 /* ASCIntroPage.swift in Sources */,

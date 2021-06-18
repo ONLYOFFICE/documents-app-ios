@@ -147,3 +147,9 @@ public extension UIColor {
                        alpha: alpha)
     }
 }
+
+extension UIColor {
+    struct Light {
+        static var secondarySystemBackground = UIColor(hex: "#f2f2f7ff")
+    }
+}

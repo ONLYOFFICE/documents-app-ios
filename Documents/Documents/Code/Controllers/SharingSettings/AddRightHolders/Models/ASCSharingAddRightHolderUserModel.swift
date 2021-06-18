@@ -8,7 +8,7 @@
 
 import UIKit
 
-struct ASCSharingAddRightHolderUserModel {
+struct ASCSharingAddRightHolderUserModel: ASCNamedProtocol {
     var image: UIImage
     var name: String
     var type: String

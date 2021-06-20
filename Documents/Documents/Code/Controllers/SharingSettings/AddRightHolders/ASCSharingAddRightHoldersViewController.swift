@@ -12,6 +12,8 @@ class ASCSharingAddRightHoldersViewController: UIViewController {
     
     var defaultSelectedTable: RightHoldersTableType = .users
     
+    let defaultAccess: ASCShareAccess = .read
+    
     private let searchController = UISearchController(searchResultsController: nil)
     private var isSearchBarEmpty: Bool {
         guard let text = searchController.searchBar.text else {
@@ -51,6 +53,24 @@ class ASCSharingAddRightHoldersViewController: UIViewController {
         return tableView
     }()
     
+    private lazy var accessBarBtnItem: UIBarButtonItem = makeAccessBarBtn(title: defaultAccess.title(), image: defaultAccess.image())
+    
+    @available(iOS 14.0, *)
+    private lazy var accessBarBtnMenu: UIMenu = {
+        let menuItems = ASCShareAccess.allCases
+            .filter({ $0 != .none })
+            .map({ UIAction(title: $0.title(), image: $0.image(), handler: onAccessMenuSelectAction(action:)) })
+        return UIMenu(title: "", children: menuItems)
+    }()
+    
+    private lazy var nextBarBtnItem: UIBarButtonItem = {
+        let nextBtn = ASCButtonStyle()
+        nextBtn.layer.cornerRadius = 12
+        nextBtn.setTitle(NSLocalizedString("Next", comment: "").uppercased(), for: .normal)
+        nextBtn.contentEdgeInsets = UIEdgeInsets(top: 3, left: 15, bottom: 3, right: 15)
+        return UIBarButtonItem(customView: nextBtn)
+    }()
+    
     var usersModels: [ASCSharingAddRightHolderUserModel] = [
         ASCSharingAddRightHolderUserModel(image: Asset.Images.avatarDefault.image, name: "Abel – Abe, Abie;", type: "Manager"),
         ASCSharingAddRightHolderUserModel(image: Asset.Images.avatarDefault.image, name: "Abner – Ab, Abbie;", type: "Manager", isSelected: true),
@@ -88,13 +108,18 @@ class ASCSharingAddRightHoldersViewController: UIViewController {
         ASCSharingAddRightHoldersGroupModel(image: Asset.Images.avatarDefaultGroup.image, name: "Admins", isSelected: false),
         ASCSharingAddRightHoldersGroupModel(image: Asset.Images.avatarDefaultGroup.image, name: "Disigners", isSelected: false)
     ]
+    
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        view.backgroundColor = .white
+        
         configureNavigationBar()
         configureSegmentedControl()
         configureTables()
+        configureToolBar()
     }
     
     private func configureNavigationBar() {
@@ -154,6 +179,80 @@ class ASCSharingAddRightHoldersViewController: UIViewController {
             tableView.allowsMultipleSelectionDuringEditing = true
         }
         showTable(tableType: defaultSelectedTable)
+    }
+    
+    private func configureToolBar() {
+        self.navigationController?.isToolbarHidden = false
+        
+        let spaceItem = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
+        
+        self.toolbarItems = [accessBarBtnItem, spaceItem, nextBarBtnItem]
+    }
+    
+    private func makeAccessBarBtn(title: String, image: UIImage?) -> UIBarButtonItem  {
+        let barBtn = UIButton(type: .system)
+        barBtn.setTitle(title, for: .normal)
+        barBtn.setImage(image, for: .normal)
+        barBtn.contentEdgeInsets = .init(top: 0, left: 0, bottom: 0, right: 8)
+        barBtn.titleEdgeInsets = .init(top: 0, left: 0, bottom: 0, right: -barBtn.contentEdgeInsets.right)
+        barBtn.titleLabel?.font = .systemFont(ofSize: 17)
+        let barBtnItem = UIBarButtonItem(customView: barBtn)
+        barBtnItem.target = self
+        if #available(iOS 14, *) {
+            barBtn.showsMenuAsPrimaryAction = true
+            barBtn.menu = accessBarBtnMenu
+            barBtnItem.action = #selector(onAccessMenuSelectAction(action:))
+        } else {
+            barBtn.addTarget(self, action: #selector(showAccessSheet), for: .touchUpInside)
+        }
+        
+        return barBtnItem
+    }
+    
+    
+    @available(iOS 13.0, *)
+    @objc func onAccessMenuSelectAction(action: UIAction) {
+        if var toolbarItems = toolbarItems {
+            toolbarItems.removeFirst()
+            toolbarItems.insert(makeAccessBarBtn(title: action.title, image: action.image), at: 0)
+            self.toolbarItems = toolbarItems
+        }
+    }
+    
+    @objc func showAccessSheet() {
+        let accessController = UIAlertController(
+            title: NSLocalizedString("Selecting access rights", comment: ""),
+            message: nil,
+            preferredStyle: .actionSheet,
+            tintColor: nil
+        )
+        
+        ASCShareAccess.allCases
+            .filter({ $0 != .none })
+            .forEach({ access in
+                accessController.addAction(UIAlertAction(
+                                            title: access.title(),
+                                            style: access == .deny ? .destructive : .default,
+                                            handler: { [unowned self] _ in self.onAccessSheetSelectAction(shareAccessRaw: access.rawValue) }))
+            })
+        
+        accessController.addAction(
+            UIAlertAction(
+                title: ASCLocalization.Common.cancel,
+                style: .cancel,
+                handler: nil)
+        )
+        
+        present(accessController, animated: true, completion: nil)
+    }
+    
+    @objc func onAccessSheetSelectAction(shareAccessRaw: Int) {
+        guard let access = ASCShareAccess(rawValue: shareAccessRaw) else { return }
+        if var toolbarItems = toolbarItems {
+            toolbarItems.removeFirst()
+            toolbarItems.insert(makeAccessBarBtn(title: access.title(), image: access.image()), at: 0)
+            self.toolbarItems = toolbarItems
+        }
     }
     
     private func showTable(tableType: RightHoldersTableType) {

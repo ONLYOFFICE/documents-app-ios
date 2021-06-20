@@ -6,15 +6,15 @@
 //  Copyright © 2019 Ascensio System SIA. All rights reserved.
 //
 
-import Foundation
+import UIKit
 
 enum ASCShareAccess: Int, CaseIterable {
     case none   = 0
     case full   = 1
-    case read   = 2
-    case deny   = 3
-    case varies = 4
-    case review = 5
+    case review = 2
+    case varies = 3
+    case read   = 4
+    case deny   = 5
 
     init() {
         self = .none
@@ -23,10 +23,10 @@ enum ASCShareAccess: Int, CaseIterable {
     init(_ type: Int) {
         switch type {
         case 1: self = .full
-        case 2: self = .read
-        case 3: self = .deny
-        case 4: self = .varies
-        case 5: self = .review
+        case 2: self = .review
+        case 3: self = .varies
+        case 4: self = .read
+        case 5: self = .deny
         default: self = .none
         }
     }
@@ -46,5 +46,25 @@ enum ASCShareAccess: Int, CaseIterable {
         case .review:
             return NSLocalizedString("Review", comment: "Share status")
         }
+    }
+    
+    func image() -> UIImage? {
+        if #available(iOS 13, *) {
+            switch self {
+            case .none:
+                return nil
+            case .full:
+                return UIImage(systemName: "doc.plaintext") // MARK: - TODO change
+            case .read:
+                return UIImage(systemName: "eye")
+            case .deny:
+                return UIImage(systemName: "eye.slash")
+            case .varies:
+                return UIImage(systemName: "text.bubble")
+            case .review:
+                return UIImage(systemName: "text.bubble")
+            }
+        }
+        return nil
     }
 }

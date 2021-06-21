@@ -115,7 +115,7 @@ class ASCSignInController {
                         if let auth = response?.result {
                             if let token = auth.token, !token.isEmpty {
                                 // Set API token
-                                api.configure(url: baseUrl, token: token)
+                                api.token = token
                                 
                                 // Set API access expires
                                 let dateTransform = ASCDateTransform()

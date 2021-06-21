@@ -35,14 +35,7 @@ class OnlyofficeApiClient: NetworkingClient {
     public static let shared = OnlyofficeApiClient()
     
     // MARK: - Properties
-    
-    override public var token: String? {
-        didSet {
-            if token != oldValue, let _ = token {
-                fetchServerVersion(completion: nil)
-            }
-        }
-    }
+
     public var expires: Date?
     public var serverVersion: String?
     public var capabilities: OnlyofficeCapabilities?
@@ -59,21 +52,15 @@ class OnlyofficeApiClient: NetworkingClient {
     
     public override init() {
         super.init()
-//        configure()
     }
     
     convenience init(url: String, token: String) {
         self.init()
         configure(url: url, token: token)
-        fetchServerVersion(completion: nil)
     }
     
     override public func configure(url: String? = nil, token: String? = nil) {
-        guard
-            let url = url,
-            token != self.token
-        else { return }
-        
+        // Initialize session manager
         let configuration = URLSessionConfiguration.default
         configuration.timeoutIntervalForRequest = 30 // seconds
         configuration.timeoutIntervalForResource = 30
@@ -87,8 +74,8 @@ class OnlyofficeApiClient: NetworkingClient {
             serverTrustManager: ServerTrustPolicyManager(evaluators: [:])
         )
         
-        self.baseURL = URL(string: url)
-        self.token = token
+        // Fetch server version
+        fetchServerVersion(completion: nil)
     }
     
     override func parseError(_ data: Data?, _ error: AFError? = nil) -> NetworkingError {

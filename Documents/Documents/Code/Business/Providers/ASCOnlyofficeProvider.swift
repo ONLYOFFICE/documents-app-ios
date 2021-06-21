@@ -76,7 +76,8 @@ class ASCOnlyofficeProvider: ASCFileProviderProtocol & ASCSortableFileProviderPr
         
         reset()
         
-        apiClient.configure(url: baseUrl, token: token)
+        apiClient.baseURL = URL(string: baseUrl)
+        apiClient.token = token
     }
 
     func copy() -> ASCFileProviderProtocol {

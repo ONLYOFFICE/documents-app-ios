@@ -369,7 +369,8 @@ class ASCSignInViewController: ASCBaseViewController {
                                 hud?.label.text = NSLocalizedString("Logging in", comment: "Caption of the process")
                                 
                                 // Set api
-                                api.configure(url: api.baseURL?.absoluteString, token: token)
+                                api.baseURL = api.baseURL
+                                api.token = token
                                 api.expires = Date().adding(.year, value: 100)
                             }
                         })

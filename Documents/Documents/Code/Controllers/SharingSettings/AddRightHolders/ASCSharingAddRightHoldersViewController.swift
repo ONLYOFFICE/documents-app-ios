@@ -13,6 +13,10 @@ class ASCSharingAddRightHoldersViewController: UIViewController {
     var defaultSelectedTable: RightHoldersTableType = .users
     
     let defaultAccess: ASCShareAccess = .read
+    lazy var selectedAccess: ASCShareAccess = self.defaultAccess
+    
+    var activeTableConstraintToViewTop: NSLayoutConstraint?
+    var activeTableConstraintToTableSegment: NSLayoutConstraint?
     
     private let searchController = UISearchController(searchResultsController: nil)
     private var isSearchBarEmpty: Bool {
@@ -56,12 +60,17 @@ class ASCSharingAddRightHoldersViewController: UIViewController {
     private lazy var accessBarBtnItem: UIBarButtonItem = makeAccessBarBtn(title: defaultAccess.title(), image: defaultAccess.image())
     
     @available(iOS 14.0, *)
-    private lazy var accessBarBtnMenu: UIMenu = {
+    private var accessBarBtnMenu: UIMenu {
         let menuItems = ASCShareAccess.allCases
             .filter({ $0 != .none })
-            .map({ UIAction(title: $0.title(), image: $0.image(), handler: onAccessMenuSelectAction(action:)) })
+            .map({ access in
+                UIAction(title: access.title(),
+                         image: access.image(),
+                         state: access == self.selectedAccess ? .on : .off,
+                         handler: { [access] action in self.onAccessMenuSelectAction(action: action, shareAccessRaw: access.rawValue) })
+            })
         return UIMenu(title: "", children: menuItems)
-    }()
+    }
     
     private lazy var nextBarBtnItem: UIBarButtonItem = {
         let nextBtn = ASCButtonStyle()
@@ -70,6 +79,18 @@ class ASCSharingAddRightHoldersViewController: UIViewController {
         nextBtn.contentEdgeInsets = UIEdgeInsets(top: 3, left: 15, bottom: 3, right: 15)
         return UIBarButtonItem(customView: nextBtn)
     }()
+    
+    private lazy var darkeingView: UIView = {
+        let view = UIView()
+        view.backgroundColor = .black
+        view.alpha = 0.25
+        view.translatesAutoresizingMaskIntoConstraints = false
+        return view
+    }()
+    
+    private var isDarken: Bool {
+        darkeingView.superview != nil
+    }
     
     var usersModels: [ASCSharingAddRightHolderUserModel] = [
         ASCSharingAddRightHolderUserModel(image: Asset.Images.avatarDefault.image, name: "Abel – Abe, Abie;", type: "Manager"),
@@ -109,8 +130,6 @@ class ASCSharingAddRightHoldersViewController: UIViewController {
         ASCSharingAddRightHoldersGroupModel(image: Asset.Images.avatarDefaultGroup.image, name: "Disigners", isSelected: false)
     ]
     
-    
-
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -125,6 +144,7 @@ class ASCSharingAddRightHoldersViewController: UIViewController {
     private func configureNavigationBar() {
         navigationItem.largeTitleDisplayMode = .never
         searchController.searchResultsUpdater = self
+        searchController.delegate = self
         searchController.obscuresBackgroundDuringPresentation  = false
         searchController.searchBar.placeholder = NSLocalizedString("Search", comment: "")
         navigationItem.hidesSearchBarWhenScrolling = false
@@ -201,7 +221,6 @@ class ASCSharingAddRightHoldersViewController: UIViewController {
         if #available(iOS 14, *) {
             barBtn.showsMenuAsPrimaryAction = true
             barBtn.menu = accessBarBtnMenu
-            barBtnItem.action = #selector(onAccessMenuSelectAction(action:))
         } else {
             barBtn.addTarget(self, action: #selector(showAccessSheet), for: .touchUpInside)
         }
@@ -210,13 +229,9 @@ class ASCSharingAddRightHoldersViewController: UIViewController {
     }
     
     
-    @available(iOS 13.0, *)
-    @objc func onAccessMenuSelectAction(action: UIAction) {
-        if var toolbarItems = toolbarItems {
-            toolbarItems.removeFirst()
-            toolbarItems.insert(makeAccessBarBtn(title: action.title, image: action.image), at: 0)
-            self.toolbarItems = toolbarItems
-        }
+    @available(iOS 14.0, *)
+    @objc func onAccessMenuSelectAction(action: UIAction, shareAccessRaw: Int) {
+        onAccessSheetSelectAction(shareAccessRaw: shareAccessRaw)
     }
     
     @objc func showAccessSheet() {
@@ -248,6 +263,7 @@ class ASCSharingAddRightHoldersViewController: UIViewController {
     
     @objc func onAccessSheetSelectAction(shareAccessRaw: Int) {
         guard let access = ASCShareAccess(rawValue: shareAccessRaw) else { return }
+        self.selectedAccess = access
         if var toolbarItems = toolbarItems {
             toolbarItems.removeFirst()
             toolbarItems.insert(makeAccessBarBtn(title: access.title(), image: access.image()), at: 0)
@@ -258,8 +274,10 @@ class ASCSharingAddRightHoldersViewController: UIViewController {
     private func showTable(tableType: RightHoldersTableType) {
         let tableView = getTable(byRightHoldersTableType: tableType)
         view.addSubview(tableView)
+        activeTableConstraintToViewTop = tableView.topAnchor.constraint(equalTo:  view.safeAreaLayoutGuide.topAnchor)
+        activeTableConstraintToTableSegment = tableView.topAnchor.constraint(equalTo: tablesSegmentedControlView.bottomAnchor)
         NSLayoutConstraint.activate([
-            tableView.topAnchor.constraint(equalTo: tablesSegmentedControlView.bottomAnchor),
+            activeTableConstraintToTableSegment!,
             tableView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
             tableView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
             tableView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor)
@@ -290,6 +308,16 @@ class ASCSharingAddRightHoldersViewController: UIViewController {
         }
         showTable(tableType: tableType)
     }
+    
+    private func darkenScreen() {
+        view.addSubview(darkeingView)
+        NSLayoutConstraint.activate([
+            darkeingView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
+            darkeingView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
+            darkeingView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
+            darkeingView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor)
+        ])
+    }
 }
 
 // MARK: - Describe uses tables in enum
@@ -310,10 +338,23 @@ extension ASCSharingAddRightHoldersViewController {
 }
 
 // MARK: - UI Search results updating
-extension ASCSharingAddRightHoldersViewController: UISearchResultsUpdating {
+extension ASCSharingAddRightHoldersViewController: UISearchControllerDelegate, UISearchResultsUpdating {
     func updateSearchResults(for searchController: UISearchController) {
         guard let searchText = searchController.searchBar.text else { return }
-        
+    }
+    
+    func willPresentSearchController(_ searchController: UISearchController) {
+        darkenScreen()
+        tablesSegmentedControl.isHidden = true
+        activeTableConstraintToTableSegment?.isActive = false
+        activeTableConstraintToViewTop?.isActive = true
+    }
+
+    func willDismissSearchController(_ searchController: UISearchController) {
+        tablesSegmentedControl.isHidden = false
+        activeTableConstraintToTableSegment?.isActive = true
+        activeTableConstraintToViewTop?.isActive = false
+        darkeingView.removeFromSuperview()
     }
 }
 
@@ -324,6 +365,8 @@ extension ASCSharingAddRightHoldersViewController {
         
         let type = T.self
         var rowHeight: CGFloat = 60
+        
+        private(set) var selectedRows: [IndexPath] = []
         
         private var groupedModels: [Section] = []
         
@@ -368,6 +411,14 @@ extension ASCSharingAddRightHoldersViewController {
             let viewModel = groupedModels[indexPath.section].models[indexPath.row]
             cell.viewModel = viewModel
             return cell
+        }
+        
+        func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+            selectedRows.append(indexPath)
+        }
+        
+        func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
+            selectedRows.removeAll(indexPath)
         }
         
         func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {

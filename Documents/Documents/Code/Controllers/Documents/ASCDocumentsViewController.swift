@@ -914,7 +914,7 @@ class ASCDocumentsViewController: ASCBaseTableViewController, UIGestureRecognize
                 if !success &&
                     strongSelf.folder?.rootFolderType != .deviceDocuments &&
                     !ASCNetworkReachability.shared.isReachable &&
-                    ASCOnlyOfficeApi.shared.token != nil
+                    OnlyofficeApiClient.shared.token != nil
                 {
                     ASCBanner.shared.showError(
                         title: NSLocalizedString("No network", comment: ""),
@@ -3449,11 +3449,8 @@ extension ASCDocumentsViewController: UISearchControllerDelegate {
     }
 
     func didDismissSearchController(_ searchController: UISearchController) {
-        ASCOnlyOfficeApi.cancelAllTasks()
-
-//        provider?.page = 0
-//        total = 0
-//        tableData.removeAll()
+        OnlyofficeApiClient.shared.cancelAll()
+        
         provider?.reset()
         tableView.reloadData()
 

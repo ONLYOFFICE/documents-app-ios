@@ -18,15 +18,15 @@ extension KingfisherWrapper where Base: KFCrossPlatformImageView {
         progressBlock: DownloadProgressBlock? = nil,
         completionHandler: ((Swift.Result<RetrieveImageResult, KingfisherError>) -> Void)? = nil) -> DownloadTask?
     {
-        guard let apiClient = ASCFileManager.onlyofficeProvider?.apiClient else { return nil }
+//        guard let apiClient = ASCFileManager.onlyofficeProvider?.apiClient else { return nil }
         
         let modifier = AnyModifier { request in
             var apiRequest = request
 
-            if apiClient.isHttp2 {
-                apiRequest.setValue("Bearer \(apiClient.token ?? "")", forHTTPHeaderField: "Authorization")
+            if OnlyofficeApiClient.shared.isHttp2 {
+                apiRequest.setValue("Bearer \(OnlyofficeApiClient.shared.token ?? "")", forHTTPHeaderField: "Authorization")
             } else {
-                apiRequest.setValue(apiClient.token, forHTTPHeaderField: "Authorization")
+                apiRequest.setValue(OnlyofficeApiClient.shared.token, forHTTPHeaderField: "Authorization")
             }
 
             return apiRequest
@@ -35,7 +35,7 @@ extension KingfisherWrapper where Base: KFCrossPlatformImageView {
         var localOptions = options ?? [.transition(.fade(0.2))]
 
         // TODO: Hotfix by Linnic. Remove after resolve of conflict between SAAS and Enterprise versions
-        if let baseUrl = apiClient.baseURL?.absoluteString,
+        if let baseUrl = OnlyofficeApiClient.shared.baseURL?.absoluteString,
             let resource = resource,
             URL(string: baseUrl)?.host == resource.downloadURL.host
         {

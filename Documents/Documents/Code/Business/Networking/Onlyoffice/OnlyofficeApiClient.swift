@@ -38,7 +38,7 @@ class OnlyofficeApiClient: NetworkingClient {
     
     override public var token: String? {
         didSet {
-            if token != oldValue {
+            if token != oldValue, let _ = token {
                 fetchServerVersion(completion: nil)
             }
         }
@@ -69,9 +69,10 @@ class OnlyofficeApiClient: NetworkingClient {
     }
     
     override public func configure(url: String? = nil, token: String? = nil) {
-        if let url = url {
-            baseURL = URL(string: url)
-        }
+        guard
+            let url = url,
+            token != self.token
+        else { return }
         
         let configuration = URLSessionConfiguration.default
         configuration.timeoutIntervalForRequest = 30 // seconds
@@ -85,10 +86,29 @@ class OnlyofficeApiClient: NetworkingClient {
             interceptor: Interceptor(adapters: [adapter]),
             serverTrustManager: ServerTrustPolicyManager(evaluators: [:])
         )
+        
+        self.baseURL = URL(string: url)
+        self.token = token
     }
     
     override func parseError(_ data: Data?, _ error: AFError? = nil) -> NetworkingError {
-        let error = super.parseError(data, error)
+        let networkingError = super.parseError(data, error)
+
+        if let error = error {
+            switch error {
+            case .responseValidationFailed(let reason):
+                switch reason {
+                case .unacceptableStatusCode(let code):
+                    if code == 401 {
+                        return .apiError(error: OnlyofficeServerError.unauthorized)
+                    }
+                default:
+                    break
+                }
+            default:
+                break
+            }
+        }
         
         if let data = data {
             do {
@@ -102,7 +122,7 @@ class OnlyofficeApiClient: NetworkingClient {
             }
         }
         
-        return error
+        return networkingError
     }
     
     class func reset() {
@@ -235,7 +255,7 @@ class OnlyofficeApiClient: NetworkingClient {
     // MARK: - Private
     
     private func fetchServerVersion(completion: NetworkCompletionHandler?) {
-        OnlyofficeApiClient.shared.request(OnlyofficeAPI.Endpoints.serversVersion) { [weak self] response, error in
+        OnlyofficeApiClient.shared.request(OnlyofficeAPI.Endpoints.Settings.versions) { [weak self] response, error in
             defer { completion?(response?.result, error) }
             
             if let error = error {

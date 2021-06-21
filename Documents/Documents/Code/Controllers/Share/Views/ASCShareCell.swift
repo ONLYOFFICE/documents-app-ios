@@ -17,7 +17,7 @@ class ASCShareCell: UITableViewCell {
     @IBOutlet weak var title: UILabel!
     @IBOutlet weak var access: UILabel!
     
-    var share: ASCShareInfo? = nil {
+    var share: OnlyofficeShare? = nil {
         didSet {
             updateData()
         }
@@ -48,7 +48,7 @@ class ASCShareCell: UITableViewCell {
         
         if let user = shareInfo.user {
             if let userAvatar = user.avatarRetina ?? user.avatar,
-               let userAvatarUrl = ASCOnlyOfficeApi.absoluteUrl(from: URL(string: userAvatar))
+               let userAvatarUrl = OnlyofficeApiClient.absoluteUrl(from: URL(string: userAvatar))
             {
                 avatar?.kf.indicatorType = .activity
                 avatar?.kf.apiSetImage(with: userAvatarUrl,

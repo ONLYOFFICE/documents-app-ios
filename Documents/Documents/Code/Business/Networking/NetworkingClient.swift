@@ -9,6 +9,9 @@
 import Alamofire
 import ObjectMapper
 
+typealias NetworkCompletionHandler = (_ result: Any?, _ error: Error?) -> Void
+typealias NetworkProgressHandler = (_ result: Any?, _ progress: Double, _ error: Error?) -> Void
+
 class ServerTrustPolicyManager: ServerTrustManager {
 
     override func serverTrustEvaluator(forHost host: String) throws -> ServerTrustEvaluating? {
@@ -217,13 +220,16 @@ class NetworkingClient: NSObject {
     }
     
     func parseError(_ data: Data?, _ error: AFError? = nil) -> NetworkingError {
-        // TODO: check errors
-
         if let error = error {
-            if case .sessionTaskFailed(let sessionError) = error, let urlError = sessionError as? URLError {
-                if urlError.code  == URLError.Code.notConnectedToInternet {
-                    return .noInternet
+            switch error {
+            case .sessionTaskFailed(let error):
+                if let urlError = error as? URLError {
+                    if urlError.code  == URLError.Code.notConnectedToInternet {
+                        return .noInternet
+                    }
                 }
+            default:
+                break
             }
         }
         

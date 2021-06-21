@@ -15,8 +15,8 @@ class ASCOnlyofficeProvider: ASCFileProviderProtocol & ASCSortableFileProviderPr
     var id: String? {
         get {
             if
-                let baseUrl = apiLegacy.baseUrl,
-                let token = apiLegacy.token
+                let baseUrl = apiClient.baseURL?.absoluteString,
+                let token = apiClient.token
             {
                 return (baseUrl + token).md5
             }
@@ -35,7 +35,7 @@ class ASCOnlyofficeProvider: ASCFileProviderProtocol & ASCSortableFileProviderPr
             return {
                 $0.title = ASCOnlyofficeCategory.title(of: .onlyofficeUser)
                 $0.rootFolderType = .onlyofficeUser
-                $0.id = ASCOnlyOfficeApi.apiFolderMy
+                $0.id = OnlyofficeAPI.Path.Forlder.my
                 return $0
             }(ASCFolder())
         }
@@ -49,13 +49,7 @@ class ASCOnlyofficeProvider: ASCFileProviderProtocol & ASCSortableFileProviderPr
     var user: ASCUser? = nil
     var authorization: String? {
         get {
-            return apiLegacy.isHttp2 ? "Bearer \(apiLegacy.token ?? "")" : apiLegacy.token
-        }
-    }
-
-    var apiLegacy: ASCOnlyOfficeApi {
-        get {
-            return ASCOnlyOfficeApi.shared
+            return apiClient.isHttp2 ? "Bearer \(apiClient.token ?? "")" : apiClient.token
         }
     }
 
@@ -72,30 +66,22 @@ class ASCOnlyofficeProvider: ASCFileProviderProtocol & ASCSortableFileProviderPr
     
     init() {
         reset()
-        apiLegacy.baseUrl = nil
-        apiLegacy.token = nil
-        apiLegacy.serverVersion = nil
-        apiLegacy.capabilities = nil
-        
         OnlyofficeApiClient.reset()
     }
 
     init(baseUrl: String, token: String) {
         guard
-            apiLegacy.baseUrl != baseUrl || apiLegacy.token != token
+            apiClient.baseURL?.absoluteString != baseUrl || apiClient.token != token
         else { return }
         
         reset()
-        
-        apiLegacy.baseUrl = baseUrl
-        apiLegacy.token = token
         
         apiClient.configure(url: baseUrl, token: token)
     }
 
     func copy() -> ASCFileProviderProtocol {
-        let baseUrl = apiLegacy.baseUrl ?? ""
-        let token = apiLegacy.token ?? ""
+        let baseUrl = apiClient.baseURL?.absoluteString ?? ""
+        let token = apiClient.token ?? ""
         
         let copy = ASCOnlyofficeProvider(baseUrl: baseUrl, token: token)
         
@@ -117,7 +103,6 @@ class ASCOnlyofficeProvider: ASCFileProviderProtocol & ASCSortableFileProviderPr
     }
 
     func cancel() {
-        ASCOnlyOfficeApi.cancelAllTasks()
         apiClient.cancelAll()
     }
 
@@ -126,24 +111,24 @@ class ASCOnlyofficeProvider: ASCFileProviderProtocol & ASCSortableFileProviderPr
             "type": type.rawValue
         ]
 
-        if let baseUrl = apiLegacy.baseUrl {
+        if let baseUrl = apiClient.baseURL?.absoluteString {
             info += ["baseUrl": baseUrl]
         }
 
-        if let token = apiLegacy.token {
+        if let token = apiClient.token {
             info += ["token": token]
         }
 
-        if let serverVersion = apiLegacy.serverVersion {
+        if let serverVersion = apiClient.serverVersion {
             info += ["serverVersion": serverVersion]
         }
 
-        if let expires = apiLegacy.expires {
+        if let expires = apiClient.expires {
             let dateTransform = ASCDateTransform()
             info += ["expires": dateTransform.transformToJSON(expires) ?? ""]
         }
 
-        if let capabilities = apiLegacy.capabilities {
+        if let capabilities = apiClient.capabilities {
             info += ["capabilities": capabilities.toJSON()]
         }
 
@@ -165,16 +150,10 @@ class ASCOnlyofficeProvider: ASCFileProviderProtocol & ASCSortableFileProviderPr
             }
 
             if let capabilitiesJson = json["capabilities"] as? [String: Any] {
-                apiLegacy.capabilities = OnlyofficeCapabilities(JSON: capabilitiesJson)
                 apiClient.capabilities = OnlyofficeCapabilities(JSON: capabilitiesJson)
             }
 
             let dateTransform = ASCDateTransform()
-
-            apiLegacy.baseUrl = json["baseUrl"] as? String
-            apiLegacy.token = json["token"] as? String
-            apiLegacy.serverVersion = json["serverVersion"] as? String
-            apiLegacy.expires = dateTransform.transformFromJSON(json["expires"])
             
             apiClient.baseURL = URL(string: json["baseUrl"] as? String ?? "")
             apiClient.token = json["token"] as? String
@@ -242,7 +221,7 @@ class ASCOnlyofficeProvider: ASCFileProviderProtocol & ASCSortableFileProviderPr
     }
 
     func isReachable(completionHandler: @escaping (_ success: Bool, _ error: Error?) -> Void) {
-        completionHandler(ASCNetworkReachability.shared.isReachable && apiLegacy.active, nil)
+        completionHandler(ASCNetworkReachability.shared.isReachable && apiClient.active, nil)
     }
 
     /// Allow the redirection with a modified request
@@ -253,7 +232,7 @@ class ASCOnlyofficeProvider: ASCFileProviderProtocol & ASCSortableFileProviderPr
         var modifyRequest = request
 
         // TODO: Hotfix by Linnic. Remove after resolve of conflict between SAAS and Enterprise versions
-        if let baseUrl = apiLegacy.baseUrl, URL(string: baseUrl)?.host == request.url?.host {
+        if let baseUrl = apiClient.baseURL?.absoluteString, URL(string: baseUrl)?.host == request.url?.host {
             modifyRequest.setValue(authorization, forHTTPHeaderField: "Authorization")
         }
 
@@ -959,9 +938,9 @@ class ASCOnlyofficeProvider: ASCFileProviderProtocol & ASCSortableFileProviderPr
     private func actions(for file: ASCFile?) -> ASCEntityActions {
         var entityActions: ASCEntityActions = []
 
-        if let file = file, apiLegacy.active {
+        if let file = file, apiClient.active {
             let fileExtension   = file.title.fileExtension().lowercased()
-            let isPersonal      = (apiLegacy.baseUrl?.contains(ASCConstants.Urls.portalPersonal)) ?? false
+            let isPersonal      = (apiClient.baseURL?.absoluteString.contains(ASCConstants.Urls.portalPersonal)) ?? false
             let canRead         = allowRead(entity: file)
             let canEdit         = allowEdit(entity: file)
             let canDelete       = allowDelete(entity: file)
@@ -1022,8 +1001,8 @@ class ASCOnlyofficeProvider: ASCFileProviderProtocol & ASCSortableFileProviderPr
     private func actions(for folder: ASCFolder?) -> ASCEntityActions {
         var entityActions: ASCEntityActions = []
 
-        if let folder = folder, apiLegacy.active {
-            let isPersonal      = (apiLegacy.baseUrl?.contains(ASCConstants.Urls.portalPersonal)) ?? false
+        if let folder = folder, apiClient.active {
+            let isPersonal      = (apiClient.baseURL?.absoluteString.contains(ASCConstants.Urls.portalPersonal)) ?? false
             let canRead         = allowRead(entity: folder)
             let canEdit         = allowEdit(entity: folder)
             let canDelete       = allowDelete(entity: folder)
@@ -1087,10 +1066,10 @@ class ASCOnlyofficeProvider: ASCFileProviderProtocol & ASCSortableFileProviderPr
     ///
     /// - Parameter error: Error
     func handleNetworkError(_ error: Error?) -> Bool {
-        let endSessionLife = apiLegacy.expires == nil || Date() > apiLegacy.expires!
+        let endSessionLife = apiClient.expires == nil || Date() > apiClient.expires!
 
         var alertTitle = ASCLocalization.Error.unknownTitle
-        var alertMessage = String.localizedStringWithFormat(NSLocalizedString("The %@ server is not available.", comment: ""), apiLegacy.baseUrl ?? "")
+        var alertMessage = String.localizedStringWithFormat(NSLocalizedString("The %@ server is not available.", comment: ""), apiClient.baseURL?.absoluteString ?? "")
 
         if endSessionLife {
             alertTitle = NSLocalizedString("Your session has expired", comment: "")
@@ -1119,7 +1098,7 @@ class ASCOnlyofficeProvider: ASCFileProviderProtocol & ASCSortableFileProviderPr
                     title: NSLocalizedString("Renewal", comment: ""),
                     style: .cancel,
                     handler: { [weak self] action in
-                        let currentAccout = ASCAccountsManager.shared.get(by: self?.apiLegacy.baseUrl ?? "", email: self?.user?.email ?? "")
+                        let currentAccout = ASCAccountsManager.shared.get(by: self?.apiClient.baseURL?.absoluteString ?? "", email: self?.user?.email ?? "")
                         ASCUserProfileViewController.logout(renewAccount: currentAccout)
                 })
             )
@@ -1151,29 +1130,39 @@ class ASCOnlyofficeProvider: ASCFileProviderProtocol & ASCSortableFileProviderPr
             }
         }
 
-        return String.localizedStringWithFormat(NSLocalizedString("The %@ server is not available.", comment: ""), apiLegacy.baseUrl ?? "")
+        return String.localizedStringWithFormat(NSLocalizedString("The %@ server is not available.", comment: ""), apiClient.baseURL?.absoluteString ?? "")
     }
 
-    func errorBanner(_ error: String?) {
-        if let localError = error {
-            switch ASCOnlyOfficeError(rawValue: localError) {
-            case .paymentRequired:
-                ASCBanner.shared.showError(
-                    title: ASCLocalization.Error.paymentRequiredTitle,
-                    message: ASCLocalization.Error.paymentRequiredMsg
-                )
-            case .forbidden:
-                ASCBanner.shared.showError(
-                    title: ASCLocalization.Error.forbiddenTitle,
-                    message: ASCLocalization.Error.forbiddenMsg
-                )
+    func errorBanner(_ error: Error?) {
+        var title = ASCLocalization.Error.unknownTitle
+        var message = error?.localizedDescription ?? ""
+        
+        if let error = error as? NetworkingError {
+            message = error.localizedDescription
+            
+            switch error {
+            case .apiError(let error):
+                if let onlyofficeError = error as? OnlyofficeServerError {
+                    switch onlyofficeError {
+                    case .paymentRequired:
+                        title = ASCLocalization.Error.paymentRequiredTitle
+                        message = ASCLocalization.Error.paymentRequiredMsg
+                    case.forbidden:
+                        title = ASCLocalization.Error.forbiddenTitle
+                        message = ASCLocalization.Error.forbiddenMsg
+                    default:
+                        message = error.localizedDescription
+                    }
+                }
             default:
-                ASCBanner.shared.showError(
-                    title: ASCLocalization.Error.unknownTitle,
-                    message: localError
-                )
+                break
             }
         }
+        
+        ASCBanner.shared.showError(
+            title: title,
+            message: message
+        )
     }
 
     // MARK: - Open file

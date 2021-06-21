@@ -273,7 +273,7 @@ class ASCDropboxProvider: ASCFileProviderProtocol & ASCSortableFileProviderProto
                 query = NSPredicate(format: "(name BEGINSWITH[c] %@)", text.lowercased())
             }
 
-            ASCBaseApi.clearCookies(for: provider.baseURL)
+            NetworkingClient.clearCookies(for: provider.baseURL)
 
             provider.searchFiles(
                 path: folder.id,

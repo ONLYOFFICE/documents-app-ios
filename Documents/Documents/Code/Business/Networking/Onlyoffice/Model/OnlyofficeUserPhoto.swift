@@ -31,10 +31,3 @@ class OnlyofficeUserPhoto: Mappable {
         small       <- map["small"]
     }
 }
-
-//big: "/storage/userPhotos/root/28db9c8d-ec03-4d83-b16a-2b5171642f00_size_82-82.png"
-//max: "/storage/userPhotos/root/28db9c8d-ec03-4d83-b16a-2b5171642f00_size_200-200.png"
-//medium: "/storage/userPhotos/root/28db9c8d-ec03-4d83-b16a-2b5171642f00_size_48-48.png"
-//original: "/storage/userPhotos/root/28db9c8d-ec03-4d83-b16a-2b5171642f00_orig_200-200.png"
-//retina: "/storage/userPhotos/root/28db9c8d-ec03-4d83-b16a-2b5171642f00_size_360-360.png"
-//small: "/stora

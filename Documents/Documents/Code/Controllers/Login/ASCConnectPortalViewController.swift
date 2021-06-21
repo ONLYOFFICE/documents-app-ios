@@ -155,15 +155,12 @@ class ASCConnectPortalViewController: ASCBaseViewController {
             // Setup API manager
             api.baseURL = URL(string: baseUrl)
             
-            OnlyofficeApiClient.request(OnlyofficeAPI.Endpoints.serverCapabilities) { [weak self] response, error in
+            OnlyofficeApiClient.request(OnlyofficeAPI.Endpoints.Settings.capabilities) { [weak self] response, error in
                 guard let strongSelf = self else { return }
                 
                 if let capabilities = response?.result {
                     // Setup portal capabilities
                     api.capabilities = capabilities
-
-                    // Legacy
-                    ASCOnlyOfficeApi.shared.capabilities = capabilities
                     
                     validation(true, nil, capabilities)
                 } else {

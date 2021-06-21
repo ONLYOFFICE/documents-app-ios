@@ -421,10 +421,10 @@ class ASCCreatePortalViewController: UIViewController, UITextFieldDelegate {
             return
         }
 
-        let api = ASCOnlyOfficeApi.shared
+        let api = OnlyofficeApiClient.shared
         let baseUrl = "https://" + address
 
-        api.baseUrl = baseUrl
+        api.baseURL = URL(string: baseUrl)
 
         let hud = MBProgressHUD.showTopMost()
         hud?.label.text = NSLocalizedString("Logging in", comment: "Caption of the process")

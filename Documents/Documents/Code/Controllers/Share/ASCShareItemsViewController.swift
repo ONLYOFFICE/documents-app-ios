@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ASCShareItemsViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UISearchControllerDelegate, UISearchResultsUpdating {
+class ASCShareItemsViewController: UIViewController {
 
     // MARK: - Properties
     
@@ -19,9 +19,9 @@ class ASCShareItemsViewController: UIViewController, UITableViewDelegate, UITabl
     @IBOutlet var emptyView: UIView!
     @IBOutlet var loadingView: UIView!
     
-    private var users: [(ASCShareInfo, Bool)] = []
-    private var groups: [(ASCShareInfo, Bool)] = []
-    private var tableData: [(ASCShareInfo, Bool)] = []
+    private var users: [(OnlyofficeShare, Bool)] = []
+    private var groups: [(OnlyofficeShare, Bool)] = []
+    private var tableData: [(OnlyofficeShare, Bool)] = []
     private var access: ASCShareAccess = .read
     
     var showUsers: Bool = true {
@@ -30,9 +30,9 @@ class ASCShareItemsViewController: UIViewController, UITableViewDelegate, UITabl
         }
     }
     var allowReview: Bool = false
-    var existUsers: [ASCShareInfo] = []
-    var existGroups: [ASCShareInfo] = []
-    var callback: (([ASCShareInfo]) -> ())? = nil
+    var existUsers: [OnlyofficeShare] = []
+    var existGroups: [OnlyofficeShare] = []
+    var callback: (([OnlyofficeShare]) -> ())? = nil
     
     // Search
     private var searchController: UISearchController!
@@ -64,12 +64,12 @@ class ASCShareItemsViewController: UIViewController, UITableViewDelegate, UITabl
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
         
-        var result: [ASCShareInfo] = []
+        var result: [OnlyofficeShare] = []
         
         result = (showUsers ? users : groups)
             .map({ (share, selected) in
                 if selected {
-                    var localShare = share
+                    let localShare = share
                     localShare.access = self.access
                     localShare.locked = false
                     return localShare
@@ -112,35 +112,42 @@ class ASCShareItemsViewController: UIViewController, UITableViewDelegate, UITabl
         users.removeAll()
         groups.removeAll()
         
-        ASCOnlyOfficeApi.get(showUsers ? ASCOnlyOfficeApi.apiUsers : ASCOnlyOfficeApi.apiGroups) { results, error in
-            self.showLoadingView(false)
-            
-            if let results = results as? [[String: Any]] {
-                self.users.removeAll()
-                self.groups.removeAll()
+        if showUsers {
+            OnlyofficeApiClient.request(OnlyofficeAPI.Endpoints.People.all) { [unowned self] response, error in
+                self.showLoadingView(false)
                 
-                if self.showUsers {
-                    for item in results {
-                        if let user = ASCUser(JSON: item) {
-                            var share = ASCShareInfo()
-                            share.user = user
-                            share.locked = true
-                            self.users.append((share, false))
-                        }
-                    }
-                } else {
-                    for item in results {
-                        if let group = ASCGroup(JSON: item) {
-                            var share = ASCShareInfo()
-                            share.group = group
-                            share.locked = true
-                            self.groups.append((share, false))
-                        }
+                if let error = error {
+                    log.error(error)
+                } else if let users = response?.result {
+                    self.users = users.map { user in
+                        let share = OnlyofficeShare()
+                        share.sharedTo = user.toJSON()
+                        share.locked = true
+                        
+                        return (share, false)
                     }
                 }
+                
+                self.prepareData()
             }
-            
-            self.prepareData()
+        } else {
+            OnlyofficeApiClient.request(OnlyofficeAPI.Endpoints.People.groups) { [unowned self] response, error in
+                self.showLoadingView(false)
+                
+                if let error = error {
+                    log.error(error)
+                } else if let groups = response?.result {
+                    self.groups = groups.map { group in
+                        let share = OnlyofficeShare()
+                        share.sharedTo = group.toJSON()
+                        share.locked = true
+                        
+                        return (share, false)
+                    }
+                }
+                
+                self.prepareData()
+            }
         }
     }
     
@@ -205,12 +212,38 @@ class ASCShareItemsViewController: UIViewController, UITableViewDelegate, UITabl
             emptyView.removeFromSuperview()
         }
     }
+    
+    // MARK: - Actions
+    
+    @IBAction func onTypeChange(_ sender: UISegmentedControl) {
+        switch sender.selectedSegmentIndex {
+        case 0:
+            access = .full; break
+        case 1:
+            access = .read; break
+        case 2:
+            access = .deny; break
+        case 3:
+            access = .review; break
+        default:
+            access = .read
+        }
+    }
+}
+    
+// MARK: - Table view data source
 
-    // MARK: - Table view data source
+extension ASCShareItemsViewController : UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return tableData.count
     }
+    
+}
+
+// MARK: - Table view data delegate
+
+extension ASCShareItemsViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if let cell = tableView.dequeueReusableCell(withIdentifier: "ShareItemCell", for: indexPath) as? ASCShareCell {
@@ -277,8 +310,11 @@ class ASCShareItemsViewController: UIViewController, UITableViewDelegate, UITabl
             }
         }
     }
+}
 
-    // MARK: - UISearchResults Updating
+// MARK: - UISearchResults Updating
+
+extension ASCShareItemsViewController: UISearchResultsUpdating {
     
     public func updateSearchResults(for searchController: UISearchController) {
         if searchController.isActive {
@@ -302,8 +338,11 @@ class ASCShareItemsViewController: UIViewController, UITableViewDelegate, UITabl
         tableView.reloadData()
         showEmptyView(tableData.count < 1)
     }
-    
-    // MARK: - UISearchController Delegate
+}
+
+// MARK: - UISearchController Delegate
+
+extension ASCShareItemsViewController: UISearchControllerDelegate {
     
     func willPresentSearchController(_ searchController: UISearchController) {
         categoryTopConstarint.constant = -categoryBackgroundView.frame.height
@@ -348,23 +387,4 @@ class ASCShareItemsViewController: UIViewController, UITableViewDelegate, UITabl
             self.view.layoutIfNeeded()
         }
     }
-    
-    // MARK: - Actions
-    
-    @IBAction func onTypeChange(_ sender: UISegmentedControl) {
-        switch sender.selectedSegmentIndex {
-        case 0:
-            access = .full; break
-        case 1:
-            access = .read; break
-        case 2:
-            access = .deny; break
-        case 3:
-            access = .review; break
-        default:
-            access = .read
-        }
-    }
-    
-
 }

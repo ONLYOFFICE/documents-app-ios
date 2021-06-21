@@ -115,16 +115,11 @@ class ASCSignInController {
                         if let auth = response?.result {
                             if let token = auth.token, !token.isEmpty {
                                 // Set API token
-                                api.token = token
+                                api.configure(url: baseUrl, token: token)
                                 
                                 // Set API access expires
                                 let dateTransform = ASCDateTransform()
                                 api.expires = dateTransform.transformFromJSON(auth.expires)
-                                
-                                // Support legacy
-                                ASCOnlyOfficeApi.shared.baseUrl = api.baseURL?.absoluteString
-                                ASCOnlyOfficeApi.shared.token = token
-                                ASCOnlyOfficeApi.shared.expires = api.expires
                             } else if auth.sms ?? false {
                                 if let hud = MBProgressHUD.currentHUD {
                                     hud.hide(animated: false)
@@ -161,7 +156,7 @@ class ASCSignInController {
                 if nil == lastError, let token = api.token {
                     let semaphore = DispatchSemaphore(value: 0)
                     DispatchQueue.main.async {
-                        OnlyofficeApiClient.request(OnlyofficeAPI.Endpoints.serversVersion) { response, error in
+                        OnlyofficeApiClient.request(OnlyofficeAPI.Endpoints.Settings.versions) { response, error in
                             defer { semaphore.signal() }
                             
                             if let error = error {
@@ -172,9 +167,6 @@ class ASCSignInController {
                             
                             if let communityVersion = response?.result?.community {
                                 api.serverVersion = communityVersion
-                                
-                                // Support legacy
-                                ASCOnlyOfficeApi.shared.serverVersion = communityVersion
                                 
                                 // Init ONLYOFFICE provider
                                 ASCFileManager.onlyofficeProvider = ASCOnlyofficeProvider(baseUrl: baseUrl, token: token)
@@ -242,7 +234,7 @@ class ASCSignInController {
                         log.error(error)
                     }
                     
-                    if nil == api.token {
+//                    if nil == api.token {
                         let defaultErrorMessage = String(format: NSLocalizedString("The %@ server is not available.", comment: ""), OnlyofficeApiClient.shared.baseURL?.absoluteString ?? "")
                         
                         if lastError == nil && useProtocols.count > 0 {
@@ -266,7 +258,7 @@ class ASCSignInController {
                             if let topViewController = UIApplication.topViewController() {
                                 let alertController = UIAlertController.alert(
                                     ASCLocalization.Common.error,
-                                    message: defaultErrorMessage,
+                                    message: lastError?.localizedDescription ?? defaultErrorMessage,
                                     actions: [])
                                     .okable() { _ in
                                         completion?(false)
@@ -278,201 +270,12 @@ class ASCSignInController {
                             }
                         }
                     }
-                }
+//                }
             }
         }
         
         tryLogin?()
     }
-    
-//    func login(by type: ASCLoginType, options: Parameters, completion: ASCSignInComplateHandler? = nil) {
-//        guard var portalUrl = options["portal"] as? String else {
-//            completion?(false)
-//            return
-//        }
-//
-//        let api             = ASCOnlyOfficeApi.shared
-//        let email           = options["userName"] as? String
-//        let password        = options["password"] as? String
-//        let facebookToken   = options["facebookToken"] as? String
-//        let googleToken     = options["googleToken"] as? String
-//        let accessToken     = options["accessToken"] as? String
-//
-//        var apiRequest      = ASCOnlyOfficeApi.apiAuthentication
-//        var apiOptions: [String: Any] = [:]
-//
-//        portalUrl = portalUrl.lowercased()
-//
-//        if type == .facebook {
-//            apiOptions["provider"] = type
-//            apiOptions["accessToken"] = facebookToken ?? accessToken
-//        } else if type == .google {
-//            apiOptions["provider"]  = type
-//            apiOptions["accessToken"] = googleToken ?? accessToken
-//        } else {
-//            apiOptions["provider"] = type
-//            apiOptions["userName"] = email
-//            apiOptions["password"] = password
-//        }
-//
-//        apiOptions["portal"] = portalUrl
-//
-//        if let code = options["code"] as? String {
-//            apiRequest = apiRequest + "/" + code
-//            apiOptions["code"] = code
-//        }
-//
-//        var useProtocols = [String]()
-//
-//        if !portalUrl.matches(pattern: "^https?://") {
-//            useProtocols += ["https://", "http://"]
-//        }
-//
-//        func internalLogin() {
-//            var baseUrl = portalUrl
-//
-//            if let portalProtocol = useProtocols.first {
-//                baseUrl = portalProtocol + portalUrl
-//                useProtocols.removeFirst()
-//            }
-//
-//            // Setup API manager
-//            api.baseUrl = baseUrl
-//
-//            ASCOnlyOfficeApi.post(apiRequest, parameters: apiOptions) { [weak self] (results, error, response) in
-//                if let results = results as? [String: Any] {
-//                    if let token = results["token"] as? String, token != "" {
-//                        // Set API token
-//                        api.token = token
-//
-//                        // Set API access expires
-//                        let dateTransform = ASCDateTransform()
-//                        api.expires = dateTransform.transformFromJSON(results["expires"])
-//
-//                        // Get server version
-//                        ASCOnlyOfficeApi.get(ASCOnlyOfficeApi.apiServersVersion) { results, error, response in
-//                            if let versions = results as? [String: Any] {
-//                                if let communityServer = versions["communityServer"] as? String {
-//                                    ASCOnlyOfficeApi.shared.serverVersion = communityServer
-//                                }
-//                            }
-//
-//                            // Init ONLYOFFICE provider
-//                            ASCFileManager.onlyofficeProvider = ASCOnlyofficeProvider(baseUrl: baseUrl, token: token)
-//                            ASCFileManager.provider = ASCFileManager.onlyofficeProvider
-//                            ASCFileManager.storeProviders()
-//
-//                            // Fetch user info
-//                            if let onlyofficeProvider = ASCFileManager.onlyofficeProvider?.copy() as? ASCOnlyofficeProvider {
-//                                onlyofficeProvider.userInfo { success, error in
-//                                    if success {
-//                                        ASCFileManager.onlyofficeProvider?.user = onlyofficeProvider.user
-//
-//                                        completion?(true)
-//
-//                                        // Registration device into the portal
-//                                        ASCOnlyOfficeApi.post(ASCOnlyOfficeApi.apiDeviceRegistration, parameters: ["type": 2], completion: { (_, _, _) in
-//                                            // 2 - IOSDocuments
-//                                        })
-//
-//                                        if let portal = apiOptions["portal"], let provider = apiOptions["provider"] {
-//                                            ASCAnalytics.logEvent(ASCConstants.Analytics.Event.loginPortal, parameters: [
-//                                                "portal": portal,
-//                                                "provider": provider
-//                                                ]
-//                                            )
-//                                        }
-//
-//                                        ASCEditorManager.shared.fetchDocumentService { _,_,_  in }
-//                                    } else {
-//                                        completion?(false)
-//                                    }
-//                                }
-//                            }
-//                        }
-//                    } else if results["sms"] as? Bool ?? false {
-//                        if let hud = MBProgressHUD.currentHUD {
-//                            hud.hide(animated: false)
-//                        }
-//
-//                        if let phoneNoise = results["phoneNoise"] as? String {
-//                            apiOptions["phoneNoise"] = phoneNoise
-//                            self?.presentSmsCodeViewController(options: apiOptions, completion: completion)
-//                        } else {
-//                            self?.presentPhoneNumberViewController(options: apiOptions, completion: completion)
-//                        }
-//                    } else if results["tfa"] as? Bool ?? false {
-//                        if let hud = MBProgressHUD.currentHUD {
-//                            hud.hide(animated: false)
-//                        }
-//
-//                        if let tfaKey = results["tfaKey"] as? String {
-//                            apiOptions["tfaKey"] = tfaKey
-//                            self?.presentTfaSetupViewController(options: apiOptions, completion: completion)
-//                        } else {
-//                            self?.presentTfaCodeViewController(options: apiOptions, completion: completion)
-//                        }
-//                    } else {
-//                        if let topViewController = UIApplication.topViewController() {
-//                            let alertController = UIAlertController.alert(
-//                                ASCLocalization.Common.error,
-//                                message: String.localizedStringWithFormat(NSLocalizedString("The %@ server is not available.", comment: ""), baseUrl),
-//                                actions: []
-//                                ).okable()
-//
-//                            topViewController.present(alertController, animated: true, completion: nil)
-//                        }
-//
-//                        completion?(false)
-//                    }
-//                } else {
-//                    let errorInfo = ASCOnlyOfficeApi.errorInfo(by: response!)
-//                    let errorMessage = ASCOnlyOfficeApi.errorMessage(by: response!)
-//
-//                    log.error(errorMessage)
-//
-//                    if let hud = MBProgressHUD.currentHUD {
-//                        hud.hide(animated: false)
-//                    }
-//
-//                    if errorInfo == nil && useProtocols.count > 0 {
-//                        if let topViewController = UIApplication.topViewController() {
-//                            let alertController = UIAlertController.alert(
-//                                ASCLocalization.Common.error,
-//                                message: String(format: "%@ %@", errorMessage, NSLocalizedString("Try to connect via another protocol?", comment: "")),
-//                                actions: [])
-//                                .okable() { _ in
-//                                    internalLogin()
-//                                }
-//                                .cancelable() { _ in
-//                                    completion?(false)
-//                            }
-//
-//                            topViewController.present(alertController, animated: true, completion: nil)
-//                        } else {
-//                            completion?(false)
-//                        }
-//                    } else {
-//                        if let topViewController = UIApplication.topViewController() {
-//                            let alertController = UIAlertController.alert(
-//                                ASCLocalization.Common.error,
-//                                message: errorMessage,
-//                                actions: [])
-//                                .okable() { _ in
-//                                    completion?(false)
-//                            }
-//
-//                            topViewController.present(alertController, animated: true, completion: nil)
-//                        } else {
-//                            completion?(false)
-//                        }
-//                    }
-//                }
-//            }
-//        }
-//
-//        internalLogin()
-//    }
     
     func login(by request: OnlyofficeAuthRequest, in navigationController: UINavigationController?, completion: ASCSignInComplateHandler? = nil) {
         self.navigationController = navigationController

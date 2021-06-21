@@ -274,7 +274,7 @@ class ASCWebDAVProvider: ASCFileProviderProtocol & ASCSortableFileProviderProtoc
                 query = NSPredicate(format: "(name CONTAINS[cd] %@)", text.lowercased())
             }
 
-            ASCBaseApi.clearCookies(for: provider.baseURL)
+            NetworkingClient.clearCookies(for: provider.baseURL)
 
             provider.searchFiles(
                 path: folder.id,

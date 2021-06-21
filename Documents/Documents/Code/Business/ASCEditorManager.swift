@@ -1166,7 +1166,7 @@ class ASCEditorManager: NSObject, DEEditorDelegate, SEEditorDelegate, PEEditorDe
         let accessToken: (_ url: URL?) -> String? = { url in
             if let onlyofficeProvider = fileProvider as? ASCOnlyofficeProvider {
                 // TODO: Hotfix by Linnic. Remove after resolve of conflict between SAAS and Enterprise versions
-                if let baseUrl = onlyofficeProvider.apiLegacy.baseUrl, URL(string: baseUrl)?.host == url?.host {
+                if onlyofficeProvider.apiClient.baseURL?.host == url?.host {
                     return onlyofficeProvider.authorization
                 }
             }

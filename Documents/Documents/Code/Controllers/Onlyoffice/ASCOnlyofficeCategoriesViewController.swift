@@ -101,7 +101,7 @@ class ASCOnlyofficeCategoriesViewController: UITableViewController {
         if let onlyoffice = ASCFileManager.onlyofficeProvider, let user = onlyoffice.user {
             categories = []
 
-            let isPersonal = onlyoffice.apiLegacy.baseUrl?.contains(ASCConstants.Urls.portalPersonal) ?? false
+            let isPersonal = onlyoffice.apiClient.baseURL?.absoluteString.contains(ASCConstants.Urls.portalPersonal) ?? false
             let allowMy = !user.isVisitor
             let allowShare = !isPersonal
             let allowCommon = !isPersonal
@@ -160,8 +160,8 @@ class ASCOnlyofficeCategoriesViewController: UITableViewController {
     private func fetchUpdateUserInfo() {
         if let onlyofficeProvider = ASCFileManager.onlyofficeProvider?.copy() as? ASCOnlyofficeProvider {
             onlyofficeProvider.userInfo { [weak self] success, error in
-                if let localError = error?.localizedDescription {
-                    onlyofficeProvider.errorBanner(localError)
+                if let error = error {
+                    onlyofficeProvider.errorBanner(error)
                 } else if success {
                     ASCFileManager.onlyofficeProvider?.user = onlyofficeProvider.user
                     self?.updateUserInfo()
@@ -183,7 +183,7 @@ class ASCOnlyofficeCategoriesViewController: UITableViewController {
                                            placeholder: Asset.Images.avatarDefault.image)
 
                 accountName?.text = user.displayName?.trimmed
-                accountPortal?.text = onlyofficeProvider.apiLegacy.baseUrl?.trimmed
+                accountPortal?.text = onlyofficeProvider.apiClient.baseURL?.absoluteString.trimmed
             } else {
                 hasInfo = false
 
@@ -192,8 +192,8 @@ class ASCOnlyofficeCategoriesViewController: UITableViewController {
                 accountPortal?.text = "-"
 
                 onlyofficeProvider.userInfo { [weak self] success, error in
-                    if let localError = error?.localizedDescription {
-                        onlyofficeProvider.errorBanner(localError)
+                    if let error = error {
+                        onlyofficeProvider.errorBanner(error)
                     } else if success {
                         ASCFileManager.onlyofficeProvider?.user = onlyofficeProvider.user
                         self?.updateUserInfo()

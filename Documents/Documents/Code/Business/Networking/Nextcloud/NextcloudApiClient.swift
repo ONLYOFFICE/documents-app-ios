@@ -55,33 +55,9 @@ class NextcloudApiClient: NetworkingClient {
         manager = Session(
             configuration: configuration,
             interceptor: Interceptor(adapters: [adapter]),
-            serverTrustManager: ASCServerTrustPolicyManager(evaluators: [:])
+            serverTrustManager: ServerTrustPolicyManager(evaluators: [:])
         )
     }
-    
-//    private func errorInfo(by response: Any) -> [String: Any]? {
-//        if let response = response as? AFDataResponse<Any> {
-//            if let data = response.data {
-//                do {
-//                    return try JSONSerialization.jsonObject(with: data, options: .allowFragments) as? [String: Any]
-//                } catch {
-//                    log.error(error)
-//                }
-//            }
-//        }
-//
-//        return nil
-//    }
-//
-//    func errorMessage(by response: Any) -> String {
-//        if let errorInfo = errorInfo(by: response) {
-//            if let error = errorInfo["error"] as? [String: Any], let message = error["message"] as? String {
-//                return message
-//            }
-//        }
-//
-//        return String.localizedStringWithFormat(NSLocalizedString("The %@ server is not available.", comment: ""), baseUrl ?? "")
-//    }
     
     override func parseError(_ data: Data?, _ error: AFError? = nil) -> NetworkingError {
         let error = super.parseError(data, error)

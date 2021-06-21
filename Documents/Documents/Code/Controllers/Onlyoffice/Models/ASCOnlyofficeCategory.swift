@@ -32,35 +32,35 @@ class ASCOnlyofficeCategory: ASCCategory {
             return {
                 $0.title = ASCOnlyofficeCategory.title(of: .onlyofficeUser)
                 $0.rootFolderType = .onlyofficeUser
-                $0.id = ASCOnlyOfficeApi.apiFolderMy
+                $0.id = OnlyofficeAPI.Path.Forlder.my
                 return $0
             }(ASCFolder())
         case .onlyofficeShare:
             return {
                 $0.title = ASCOnlyofficeCategory.title(of: .onlyofficeShare)
                 $0.rootFolderType = .onlyofficeShare
-                $0.id = ASCOnlyOfficeApi.apiFolderShare
+                $0.id = OnlyofficeAPI.Path.Forlder.share
                 return $0
             }(ASCFolder())
         case .onlyofficeCommon:
             return {
                 $0.title = ASCOnlyofficeCategory.title(of: .onlyofficeCommon)
                 $0.rootFolderType = .onlyofficeCommon
-                $0.id = ASCOnlyOfficeApi.apiFolderCommon
+                $0.id = OnlyofficeAPI.Path.Forlder.common
                 return $0
             }(ASCFolder())
         case .onlyofficeBunch, .onlyofficeProjects:
             return {
                 $0.title = ASCOnlyofficeCategory.title(of: .onlyofficeProjects)
                 $0.rootFolderType = .onlyofficeProjects
-                $0.id = ASCOnlyOfficeApi.apiFolderProjects
+                $0.id = OnlyofficeAPI.Path.Forlder.projects
                 return $0
             }(ASCFolder())
         case .onlyofficeTrash:
             return {
                 $0.title = ASCOnlyofficeCategory.title(of: .onlyofficeTrash)
                 $0.rootFolderType = .onlyofficeTrash
-                $0.id = ASCOnlyOfficeApi.apiFolderTrash
+                $0.id = OnlyofficeAPI.Path.Forlder.trash
                 return $0
             }(ASCFolder())
         default:

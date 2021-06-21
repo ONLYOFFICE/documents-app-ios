@@ -222,7 +222,7 @@ class ASCTransferViewController: UITableViewController {
                 let folderCloudMy = ASCOnlyofficeCategory.folder(of: .onlyofficeUser) ?? ASCFolder()
                 let folderCloudCommon = ASCOnlyofficeCategory.folder(of: .onlyofficeCommon) ?? ASCFolder()
                 let folderCloudProjects = ASCOnlyofficeCategory.folder(of: .onlyofficeProjects) ?? ASCFolder()
-                let isPersonal = (ASCFileManager.provider as? ASCOnlyofficeProvider)?.apiLegacy.baseUrl?.contains(ASCConstants.Urls.portalPersonal) ?? false
+                let isPersonal = (ASCFileManager.provider as? ASCOnlyofficeProvider)?.apiClient.baseURL?.absoluteString.contains(ASCConstants.Urls.portalPersonal) ?? false
 
                 let categorFolders: [ASCFolder] = isPersonal
                     ? [folderCloudMy]

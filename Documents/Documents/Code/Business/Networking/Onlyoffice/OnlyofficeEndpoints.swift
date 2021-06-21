@@ -35,6 +35,7 @@ class OnlyofficeAPI {
         static public let operationDelete        = "api/\(version)/files/fileops/delete"
         static public let emptyTrash             = "api/\(version)/files/fileops/emptytrash"
         static public let thirdParty             = "api/\(version)/files/thirdparty"
+        static public let thirdPartyCapabilities = "api/\(version)/files/thirdparty/capabilities"
         static public let insertFile             = "api/\(version)/files/%@/insert"
         static public let uploadFile             = "api/\(version)/files/%@/upload"
         static public let createFile             = "api/\(version)/files/%@/file"
@@ -43,7 +44,21 @@ class OnlyofficeAPI {
         static public let startEdit              = "api/\(version)/files/file/%@/startedit"
         static public let trackEdit              = "api/\(version)/files/file/%@/trackeditfile"
         static public let documentService        = "api/\(version)/files/docservice"
+        static public let people                 = "api/\(version)/people"
+        static public let groups                 = "api/\(version)/group"
+        static public let shareFile              = "api/\(version)/files/file/%@/share"
+        static public let shareFolder            = "api/\(version)/files/folder/%@/share"
         
+        struct Forlder {
+            static public let root      = "@root"
+            static public let my        = "@my"
+            static public let share     = "@share"
+            static public let common    = "@common"
+            static public let projects  = "@projects"
+            static public let trash     = "@trash"
+            static public let favorites = "@favorites"
+            static public let recent    = "@recent"
+        }
     }
 
     struct Endpoints {
@@ -69,6 +84,8 @@ class OnlyofficeAPI {
         
         struct People {
             static let me: Endpoint<OnlyofficeResponse<ASCUser>> = Endpoint<OnlyofficeResponse<ASCUser>>.make(Path.peopleSelf)
+            static let all: Endpoint<OnlyofficeResponseArray<ASCUser>> = Endpoint<OnlyofficeResponseArray<ASCUser>>.make(Path.people)
+            static let groups: Endpoint<OnlyofficeResponseArray<ASCGroup>> = Endpoint<OnlyofficeResponseArray<ASCGroup>>.make(Path.groups)
             static func photo(of user: ASCUser) -> Endpoint<OnlyofficeResponse<OnlyofficeUserPhoto>> {
                 return Endpoint<OnlyofficeResponse<OnlyofficeUserPhoto>>.make(String(format: Path.peoplePhoto, user.userId ?? ""))
             }
@@ -79,6 +96,9 @@ class OnlyofficeAPI {
         struct Folders {
             static func path(of folder: ASCFolder) -> Endpoint<OnlyofficeResponse<OnlyofficePath>> {
                 return Endpoint<OnlyofficeResponse<OnlyofficePath>>.make(String(format: Path.files, folder.id), .get, URLEncoding.default)
+            }
+            static func info(folder: ASCFolder) -> Endpoint<OnlyofficeResponse<ASCFolder>> {
+                return Endpoint<OnlyofficeResponse<ASCFolder>>.make(String(format: Path.folder, folder.id))
             }
             static func update(folder: ASCFolder) -> Endpoint<OnlyofficeResponse<ASCFolder>> {
                 return Endpoint<OnlyofficeResponse<ASCFolder>>.make(String(format: Path.folder, folder.id), .put)
@@ -126,6 +146,12 @@ class OnlyofficeAPI {
         
         struct Sharing {
             static let removeSharingRights: Endpoint<OnlyofficeResponseType<Bool>> = Endpoint<OnlyofficeResponseType<Bool>>.make(Path.filesShare, .delete)
+            static func file(file: ASCFile) -> Endpoint<OnlyofficeResponseArray<OnlyofficeShare>> {
+                return Endpoint<OnlyofficeResponseArray<OnlyofficeShare>>.make(String(format: Path.shareFile, file.id), .put)
+            }
+            static func folder(folder: ASCFolder) -> Endpoint<OnlyofficeResponseArray<OnlyofficeShare>> {
+                return Endpoint<OnlyofficeResponseArray<OnlyofficeShare>>.make(String(format: Path.shareFolder, folder.id), .put)
+            }
         }
         
         // MARK: Operations
@@ -137,8 +163,6 @@ class OnlyofficeAPI {
             static let copy: Endpoint<OnlyofficeResponse<OnlyofficeFileOperation>> = Endpoint<OnlyofficeResponse<OnlyofficeFileOperation>>.make(Path.operationCopy, .put)
             static let move: Endpoint<OnlyofficeResponse<OnlyofficeFileOperation>> = Endpoint<OnlyofficeResponse<OnlyofficeFileOperation>>.make(Path.operationMove, .put)
             static let list: Endpoint<OnlyofficeResponseArray<OnlyofficeFileOperation>> = Endpoint<OnlyofficeResponseArray<OnlyofficeFileOperation>>.make(Path.operations)
-
-            
         }
         
         // MARK: Third-Party Integration
@@ -147,6 +171,8 @@ class OnlyofficeAPI {
             static func remove(providerId: String) -> Endpoint<OnlyofficeResponseType<String>> {
                 return Endpoint<OnlyofficeResponseType<String>>.make(Path.thirdParty.appendingPathComponent(providerId), .delete)
             }
+            static let capabilities: Endpoint<OnlyofficeResponseType<[[String]]>> = Endpoint<OnlyofficeResponseType<[[String]]>>.make(Path.thirdPartyCapabilities)
+            static let connect: Endpoint<OnlyofficeResponse<ASCFolder>> = Endpoint<OnlyofficeResponse<ASCFolder>>.make(Path.thirdParty, .post)
         }
         
         // MARK: Uploads
@@ -164,9 +190,9 @@ class OnlyofficeAPI {
         
         struct Settings {
             static let documentService: Endpoint<OnlyofficeResponseType<Any>> = Endpoint<OnlyofficeResponseType<Any>>.make(Path.documentService, .get, URLEncoding.default)
+            static let versions: Endpoint<OnlyofficeResponse<OnlyofficeVersion>> = Endpoint<OnlyofficeResponse<OnlyofficeVersion>>.make(Path.serversVersion)
+            static let capabilities: Endpoint<OnlyofficeResponse<OnlyofficeCapabilities>> = Endpoint<OnlyofficeResponse<OnlyofficeCapabilities>>.make(Path.capabilities)
         }
-        static let serversVersion: Endpoint<OnlyofficeResponse<OnlyofficeVersion>> = Endpoint<OnlyofficeResponse<OnlyofficeVersion>>.make(Path.serversVersion)
-        static let serverCapabilities: Endpoint<OnlyofficeResponse<OnlyofficeCapabilities>> = Endpoint<OnlyofficeResponse<OnlyofficeCapabilities>>.make(Path.capabilities)
     }
 
 }

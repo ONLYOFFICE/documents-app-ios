@@ -15,8 +15,8 @@ class ASCShareViewController: UIViewController, UITableViewDelegate, UITableView
     // MARK: - Properties
     
     var entity: Any? = nil
-    var users: [ASCShareInfo] = []
-    var groups: [ASCShareInfo] = []
+    var users: [OnlyofficeShare] = []
+    var groups: [OnlyofficeShare] = []
     var showUsers: Bool = true {
         didSet {
             updateData()
@@ -53,55 +53,29 @@ class ASCShareViewController: UIViewController, UITableViewDelegate, UITableView
     }
 
     func loadShareInfo() {
-        var request: String? = nil
-        
-        if let file = entity as? ASCFile {
-            request = String(format: ASCOnlyOfficeApi.apiShareFile, file.id)
-            allowReview = file.title.fileExtension().lowercased() == "docx"
-        } else if let folder = entity as? ASCFolder {
-            request = String(format: ASCOnlyOfficeApi.apiShareFolder, folder.id)
+        let requestHandler: (OnlyofficeResponseArray<OnlyofficeShare>?, Error?) -> Void = { response, error in
+            self.showLoadingView(false)
+            
+            if let sharedItems = response?.result {
+                self.users.removeAll()
+                self.groups.removeAll()
+                
+                self.users = sharedItems.filter { $0.user != nil }
+                self.groups = sharedItems.filter { $0.group != nil }
+            }
+            
+            self.updateData()
         }
         
-        if let apiRequest = request {
-            ASCOnlyOfficeApi.get(apiRequest) { results, error in
-                self.showLoadingView(false)
-                
-                if let results = results as? [[String: Any]] {
-                    self.users.removeAll()
-                    self.groups.removeAll()
-                    
-                    for item in results {
-                        var sharedItem = ASCShareInfo()
-                        
-                        sharedItem.access = ASCShareAccess(item["access"] as? Int ?? 0)
-                        sharedItem.locked = item["isLocked"] as? Bool ?? false
-                        sharedItem.owner = item["isOwner"] as? Bool ?? false
-                        sharedItem.shareLink = item["sharedItem"] as? String
-                    
-                        // Link for portal users
-                        if let _ = sharedItem.shareLink {
-                            continue
-                        }
-                        
-                        if let sharedTo = item["sharedTo"] as? [String: Any] {
-                            if let _ = sharedTo["userName"] {
-                                // User
-                                sharedItem.user = ASCUser(JSON: sharedTo)
-                            } else if let _ = sharedTo["name"] {
-                                // Group
-                                sharedItem.group = ASCGroup(JSON: sharedTo)
-                            }
-                        }
-                        
-                        if let _ = sharedItem.user {
-                            self.users.append(sharedItem)
-                        } else if let _ = sharedItem.group {
-                            self.groups.append(sharedItem)
-                        }
-                    }
-                }
-                
-                self.updateData()
+        if let file = entity as? ASCFile {
+            allowReview = file.title.fileExtension().lowercased() == "docx"
+            
+            OnlyofficeApiClient.request(OnlyofficeAPI.Endpoints.Sharing.file(file: file)) { response, error in
+                requestHandler(response, error)
+            }
+        } else if let folder = entity as? ASCFolder {
+            OnlyofficeApiClient.request(OnlyofficeAPI.Endpoints.Sharing.folder(folder: folder)) { response, error in
+                requestHandler(response, error)
             }
         }
     }
@@ -147,42 +121,37 @@ class ASCShareViewController: UIViewController, UITableViewDelegate, UITableView
     // MARK: - Private
     
     private func applyShare() {
-        var shares: [[String: Any]] = []
-        var request: String!
-        
-        if let file = entity as? ASCFile {
-            request = String(format: ASCOnlyOfficeApi.apiShareFile, file.id)
-        } else if let folder = entity as? ASCFolder {
-            request = String(format: ASCOnlyOfficeApi.apiShareFolder, folder.id)
+        let share = OnlyofficeShareRequest()
+        share.notify = false
+        share.share = (showUsers ? users : groups).map {
+            OnlyofficeShareItemRequest(
+                shareTo: (showUsers ? $0.user?.userId : $0.group?.id) ?? "",
+                access: $0.access
+            )
         }
-        
-        for share in showUsers ? users : groups {
-            if let itemId = showUsers ? share.user?.userId : share.group?.id {
-                shares.append([
-                    "ShareTo": itemId,
-                    "Access": share.access.rawValue
-                    ])
-            }
-        }
-        
-        let baseParams: Parameters = [
-            "notify": "false"
-        ]
-        let sharesParams = sharesToParams(shares: shares)
         
         let hud = MBProgressHUD.showTopMost()
         hud?.label.text = NSLocalizedString("Sharing", comment: "Caption of the process")
         
-        ASCOnlyOfficeApi.put(request, parameters: baseParams + sharesParams) { [weak self] results, error in
-            if let _ = results as? [[String: Any]] {
+        let requestHandler: (UIViewController?, Error?) -> Void = { viewController, error in
+            if let error = error {
+                hud?.hide(animated: false)
+                if let viewController = viewController {
+                    UIAlertController.showError(in: viewController, message: error.localizedDescription)
+                }
+            } else {
                 hud?.setSuccessState()
                 hud?.hide(animated: true, afterDelay: 1)
-            } else {
-                hud?.hide(animated: false)
-                
-                if let strongSelf = self, let error = error {
-                    UIAlertController.showError(in: strongSelf, message: error.localizedDescription)
-                }
+            }
+        }
+        
+        if let file = entity as? ASCFile {
+            OnlyofficeApiClient.request(OnlyofficeAPI.Endpoints.Sharing.file(file: file), share.toJSON()) { [weak self] response, error in
+                requestHandler(self, error)
+            }
+        } else if let folder = entity as? ASCFolder {
+            OnlyofficeApiClient.request(OnlyofficeAPI.Endpoints.Sharing.folder(folder: folder), share.toJSON()) { [weak self] response, error in
+                requestHandler(self, error)
             }
         }
     }
@@ -190,14 +159,7 @@ class ASCShareViewController: UIViewController, UITableViewDelegate, UITableView
     private func removeShare(at indexPath: IndexPath) {
         let index = indexPath.row
         var itemId: String!
-        var request: String!
-        
-        if let file = entity as? ASCFile {
-            request = String(format: ASCOnlyOfficeApi.apiShareFile, file.id)
-        } else if let folder = entity as? ASCFolder {
-            request = String(format: ASCOnlyOfficeApi.apiShareFolder, folder.id)
-        }
-        
+
         if showUsers {
             itemId = users[index].user?.userId ?? ""
             users.remove(at: index)
@@ -212,43 +174,25 @@ class ASCShareViewController: UIViewController, UITableViewDelegate, UITableView
         
         displayEmptyViewIfNeed()
         
-        let baseParams: Parameters = [
-            "notify": "false"
-        ]
-        let sharesParams = sharesToParams(shares: [
-            [
-                "ShareTo": itemId,
-                "Access": ASCShareAccess.none.rawValue
-            ]
-        ])
+        let share = OnlyofficeShareRequest()
+        share.notify = false
+        share.share = [OnlyofficeShareItemRequest(shareTo: itemId ?? "", access: .none)]
         
         modifed = true
         
-        ASCOnlyOfficeApi.put(request, parameters: baseParams + sharesParams) { results, error in
-            if let _ = results as? [[String: Any]] {
-                //
+        if let file = entity as? ASCFile {
+            OnlyofficeApiClient.request(OnlyofficeAPI.Endpoints.Sharing.file(file: file), share.toJSON()) { response, error in
+                if let error = error {
+                    log.error(error)
+                }
+            }
+        } else if let folder = entity as? ASCFolder {
+            OnlyofficeApiClient.request(OnlyofficeAPI.Endpoints.Sharing.folder(folder: folder), share.toJSON()) { response, error in
+                if let error = error {
+                    log.error(error)
+                }
             }
         }
-    }
-    
-//    private func createShareQuery(from shares: [[String: Any]]) -> String {
-//        return shares.enumerated().map { (index, dictinory) in
-//            return dictinory.map { element in
-//                return "share[\(index)].\(element.key)=\(element.value)"
-//            }.joined(separator: "&")
-//        }.joined(separator: "&")
-//    }
-    
-    private func sharesToParams(shares: [[String: Any]]) -> [String: Any] {
-        var params: [String: Any] = [:]
-        
-        for (index, dictinory) in shares.enumerated() {
-            for (key, value) in dictinory {
-                params["share[\(index)].\(key)"] = value
-            }
-        }
-
-        return params
     }
     
     private func showLoadingView(_ show: Bool) {

@@ -135,10 +135,38 @@ class ASCSharingAddRightHoldersViewController: UIViewController {
         
         view.backgroundColor = .white
         
+        notificationsReister()
         configureNavigationBar()
         configureSegmentedControl()
         configureTables()
         configureToolBar()
+    }
+    
+    // MARK: - Deinit
+    deinit {
+        NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillHideNotification, object: nil)
+    }
+    
+    private func notificationsReister() {
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(sender:)), name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide(sender:)), name: UIResponder.keyboardWillHideNotification, object: nil)
+    }
+    
+    @objc func keyboardWillShow(sender: NSNotification) {
+        guard let keyboardFrame = getKeyboardFrame(bySenderNotification: sender) else { return }
+        
+    }
+    
+    @objc func keyboardWillHide(sender: NSNotification) {
+        guard let keyboardFrame = getKeyboardFrame(bySenderNotification: sender) else { return }
+        
+    }
+    
+    private func getKeyboardFrame(bySenderNotification sender: NSNotification) -> CGRect? {
+        guard let userInfo = sender.userInfo else { return nil }
+        guard let keyboardSize = userInfo[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue else { return nil}
+        return keyboardSize.cgRectValue
     }
     
     private func configureNavigationBar() {
@@ -318,6 +346,33 @@ class ASCSharingAddRightHoldersViewController: UIViewController {
             darkeingView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor)
         ])
     }
+    
+    private func hideTablesSegmentedControl() {
+        UIView.animate(withDuration: 0.4, animations: {
+            self.tablesSegmentedControl.alpha = 0
+        }) { (finished) in
+            self.tablesSegmentedControl.isHidden = true
+        }
+        
+        UIView.animate(withDuration: 0.4) {
+            self.activeTableConstraintToTableSegment?.isActive = false
+            self.activeTableConstraintToViewTop?.isActive = true
+            self.view.layoutIfNeeded()
+        }
+    }
+    
+    private func showTablesSegmentedControl() {
+        self.tablesSegmentedControl.isHidden = false
+        UIView.animate(withDuration: 0.4, animations: {
+            self.tablesSegmentedControl.alpha = 1
+        })
+        
+        UIView.animate(withDuration: 0.4) {
+            self.activeTableConstraintToTableSegment?.isActive = true
+            self.activeTableConstraintToViewTop?.isActive = false
+            self.view.layoutIfNeeded()
+        }
+    }
 }
 
 // MARK: - Describe uses tables in enum
@@ -344,17 +399,15 @@ extension ASCSharingAddRightHoldersViewController: UISearchControllerDelegate, U
     }
     
     func willPresentSearchController(_ searchController: UISearchController) {
-        darkenScreen()
-        tablesSegmentedControl.isHidden = true
-        activeTableConstraintToTableSegment?.isActive = false
-        activeTableConstraintToViewTop?.isActive = true
+        DispatchQueue.main.async {
+            self.darkenScreen()
+        }
+        hideTablesSegmentedControl()
     }
 
     func willDismissSearchController(_ searchController: UISearchController) {
-        tablesSegmentedControl.isHidden = false
-        activeTableConstraintToTableSegment?.isActive = true
-        activeTableConstraintToViewTop?.isActive = false
-        darkeingView.removeFromSuperview()
+        self.darkeingView.removeFromSuperview()
+        showTablesSegmentedControl()
     }
 }
 

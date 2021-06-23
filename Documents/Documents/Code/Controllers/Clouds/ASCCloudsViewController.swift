@@ -31,6 +31,8 @@ class ASCCloudsViewController: UITableViewController {
             return NSLocalizedString("WebDAV", comment: "")
         case .icloud:
             return NSLocalizedString("iCloud", comment: "")
+        case .onedrive:
+            return NSLocalizedString("OneDrive", comment: "")
         default:
             return NSLocalizedString("Unknown", comment: "")
         }
@@ -52,6 +54,8 @@ class ASCCloudsViewController: UITableViewController {
             return Asset.Images.cloudWebdav.image
         case .icloud:
             return Asset.Images.cloudIcloud.image
+        case .onedrive:
+            return Asset.Images.cloudOnedrive.image
         default:
             return nil
         }
@@ -78,7 +82,9 @@ class ASCCloudsViewController: UITableViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
 
-        ASCViewControllerManager.shared.rootController?.tabBar.isHidden = false
+        if ASCViewControllerManager.shared.rootController?.isEditing == true {
+            ASCViewControllerManager.shared.rootController?.tabBar.isHidden = true
+        }
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -263,12 +269,12 @@ class ASCCloudsViewController: UITableViewController {
 
                 splitVC.hideMasterController()
 
-                documentsVC.provider = provider
-
                 // Open root folder if needed
                 if folder.id == rootFolder.id {
+                    documentsVC.provider = provider
                     documentsVC.folder = folder
                 } else {
+                    documentsVC.provider = provider.copy()
                     documentsVC.folder = rootFolder
 
                     let newDocumentsVC = ASCDocumentsViewController.instantiate(from: Storyboard.main)
@@ -416,6 +422,7 @@ extension ASCCloudsViewController {
 
         if indexPath.section == 0 {
             category = connected.count > 0 ? connected[indexPath.row] : login[indexPath.row]
+            tableView.cellForRow(at: indexPath)?.debounce(delay: 0.5)
         } else if indexPath.section == 1 {
             category = login[indexPath.row]
         }

@@ -17,9 +17,11 @@ enum ASCFolderType: Int {
     case onlyofficeUser         = 5
     case onlyofficeShare        = 6
     case onlyofficeProjects     = 8
+    case onlyofficeFavorites    = 10
+    case onlyofficeRecent       = 11
 
-    case deviceDocuments        = 9
-    case deviceTrash            = 10
+    case deviceDocuments        = 50
+    case deviceTrash            = 51
 
     case nextcloudAll           = 101
     case owncloudAll            = 102
@@ -28,4 +30,5 @@ enum ASCFolderType: Int {
     case dropboxAll             = 105
     case googledriveAll         = 106
     case icloudAll              = 107
+    case onedriveAll            = 108
 }

@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="15702" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_0" orientation="portrait" appearance="dark"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15704"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -30,7 +31,7 @@
                                                     <rect key="frame" x="0.0" y="0.0" width="98.5" height="110"/>
                                                     <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="13"/>
                                                     <state key="normal" image="create-document">
-                                                        <color key="titleColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                        <color key="titleColor" systemColor="labelColor"/>
                                                     </state>
                                                     <state key="highlighted">
                                                         <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -53,7 +54,7 @@
                                                     <rect key="frame" x="118.5" y="0.0" width="99" height="110"/>
                                                     <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="13"/>
                                                     <state key="normal" image="create-spreadsheet">
-                                                        <color key="titleColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                        <color key="titleColor" systemColor="labelColor"/>
                                                     </state>
                                                     <state key="highlighted">
                                                         <color key="titleColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -76,7 +77,7 @@
                                                     <rect key="frame" x="237.5" y="0.0" width="98.5" height="110"/>
                                                     <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="13"/>
                                                     <state key="normal" image="create-presentation">
-                                                        <color key="titleColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                        <color key="titleColor" systemColor="labelColor"/>
                                                     </state>
                                                     <state key="highlighted">
                                                         <color key="titleColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -146,7 +147,7 @@
                                                             <inset key="titleEdgeInsets" minX="50" minY="0.0" maxX="0.0" maxY="0.0"/>
                                                             <inset key="imageEdgeInsets" minX="30" minY="0.0" maxX="0.0" maxY="0.0"/>
                                                             <state key="normal" title="New Folder" image="create-new-folder">
-                                                                <color key="titleColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                                <color key="titleColor" systemColor="labelColor"/>
                                                             </state>
                                                             <userDefinedRuntimeAttributes>
                                                                 <userDefinedRuntimeAttribute type="color" keyPath="selectedCustomColor">
@@ -196,7 +197,7 @@
                                                             <inset key="titleEdgeInsets" minX="50" minY="0.0" maxX="0.0" maxY="0.0"/>
                                                             <inset key="imageEdgeInsets" minX="30" minY="0.0" maxX="0.0" maxY="0.0"/>
                                                             <state key="normal" title="Import File" image="create-upload-file">
-                                                                <color key="titleColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                                <color key="titleColor" systemColor="labelColor"/>
                                                             </state>
                                                             <userDefinedRuntimeAttributes>
                                                                 <userDefinedRuntimeAttribute type="color" keyPath="selectedCustomColor">
@@ -245,7 +246,7 @@
                                                             <inset key="titleEdgeInsets" minX="50" minY="0.0" maxX="0.0" maxY="0.0"/>
                                                             <inset key="imageEdgeInsets" minX="30" minY="0.0" maxX="0.0" maxY="0.0"/>
                                                             <state key="normal" title="Import Image" image="create-upload-image">
-                                                                <color key="titleColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                                <color key="titleColor" systemColor="labelColor"/>
                                                             </state>
                                                             <userDefinedRuntimeAttributes>
                                                                 <userDefinedRuntimeAttribute type="color" keyPath="selectedCustomColor">
@@ -294,7 +295,7 @@
                                                             <inset key="titleEdgeInsets" minX="50" minY="0.0" maxX="0.0" maxY="0.0"/>
                                                             <inset key="imageEdgeInsets" minX="30" minY="0.0" maxX="0.0" maxY="0.0"/>
                                                             <state key="normal" title="Take a picture" image="create-camera">
-                                                                <color key="titleColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                                <color key="titleColor" systemColor="labelColor"/>
                                                             </state>
                                                             <userDefinedRuntimeAttributes>
                                                                 <userDefinedRuntimeAttribute type="color" keyPath="selectedCustomColor">
@@ -343,7 +344,7 @@
                                                             <inset key="titleEdgeInsets" minX="50" minY="0.0" maxX="0.0" maxY="0.0"/>
                                                             <inset key="imageEdgeInsets" minX="30" minY="0.0" maxX="0.0" maxY="0.0"/>
                                                             <state key="normal" title="Connect Storage" image="create-cloud">
-                                                                <color key="titleColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                                <color key="titleColor" systemColor="labelColor"/>
                                                             </state>
                                                             <userDefinedRuntimeAttributes>
                                                                 <userDefinedRuntimeAttribute type="color" keyPath="selectedCustomColor">
@@ -420,24 +421,28 @@
                 <outlet property="otherStackView" destination="rke-rv-igQ" id="q4u-h9-MWW"/>
                 <outlet property="presentationButton" destination="3nP-oV-aqs" id="0bH-UT-Ijg"/>
                 <outlet property="spreadsheetButton" destination="0NK-is-8vA" id="nln-HJ-J4F"/>
+                <outlet property="topConstraints" destination="cCu-mR-XhH" id="3VF-gK-dvk"/>
             </connections>
             <point key="canvasLocation" x="153.75" y="681.86619718309862"/>
         </view>
     </objects>
     <resources>
-        <image name="create-camera" width="24" height="24"/>
-        <image name="create-cloud" width="25" height="24.5"/>
+        <image name="create-camera" width="30" height="30"/>
+        <image name="create-cloud" width="30" height="30"/>
         <image name="create-document" width="60" height="60"/>
-        <image name="create-new-folder" width="24" height="24"/>
+        <image name="create-new-folder" width="30" height="30"/>
         <image name="create-presentation" width="60" height="60"/>
         <image name="create-spreadsheet" width="60" height="60"/>
-        <image name="create-upload-file" width="24" height="24"/>
-        <image name="create-upload-image" width="24" height="18"/>
+        <image name="create-upload-file" width="30" height="30"/>
+        <image name="create-upload-image" width="30" height="30"/>
         <namedColor name="table-cell-selected">
-            <color red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.94900000095367432" green="0.94900000095367432" blue="0.96899998188018799" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="table-cell-separator">
-            <color red="0.77600002288818359" green="0.77600002288818359" blue="0.7839999794960022" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.77600002288818359" green="0.77600002288818359" blue="0.78400003910064697" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
+        <systemColor name="labelColor">
+            <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
     </resources>
 </document>

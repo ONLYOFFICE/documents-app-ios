@@ -9,6 +9,20 @@
 import UIKit
 
 class ASCOnlyofficeCategory: ASCCategory {
+    
+    var sortWeight = 500
+    
+    convenience init(folder: ASCFolder) {
+        self.init()
+        self.folder = folder
+        self.title = folder.title.isEmpty
+            ? Self.title(of: folder.rootFolderType)
+            : folder.title
+        self.image = Self.image(of: folder.rootFolderType)
+        self.folder?.id = Self.id(of: folder.rootFolderType)
+        self.sortWeight = Self.sortWeight(of: folder.rootFolderType)
+    }
+    
     static func title(of type: ASCFolderType) -> String {
         switch type {
         case .onlyofficeUser:
@@ -25,46 +39,183 @@ class ASCOnlyofficeCategory: ASCCategory {
             return ""
         }
     }
+    
+    static func image(of type: ASCFolderType) -> UIImage? {
+        switch type {
+        case .onlyofficeCommon:
+            return Asset.Images.categoryCommon.image
+        case .onlyofficeTrash:
+            return Asset.Images.categoryTrash.image
+        case .onlyofficeUser:
+            return Asset.Images.categoryMy.image
+        case .onlyofficeShare:
+            return Asset.Images.categoryShare.image
+        case .onlyofficeProjects:
+            return Asset.Images.categoryProjects.image
+        case .onlyofficeFavorites:
+            return Asset.Images.categoryFavorites.image
+        case .onlyofficeRecent:
+            return Asset.Images.categoryRecent.image
+        default:
+            return nil
+        }
+    }
+    
+    static func sortWeight(of type: ASCFolderType) -> Int {
+        switch type {
+        case .onlyofficeUser:
+            return 10
+        case .onlyofficeShare:
+            return 20
+        case .onlyofficeFavorites:
+            return 30
+        case .onlyofficeRecent:
+            return 40
+        case .onlyofficeCommon:
+            return 60
+        case .onlyofficeProjects:
+            return 70
+        case .onlyofficeTrash:
+            return 80
+        default:
+            return 500
+        }
+    }
+    
+    static func id(of type: ASCFolderType) -> String {
+        switch type {
+        case .onlyofficeUser:
+            return OnlyofficeAPI.Path.Forlder.my
+        case .onlyofficeShare:
+            return OnlyofficeAPI.Path.Forlder.share
+        case .onlyofficeFavorites:
+            return OnlyofficeAPI.Path.Forlder.favorites
+        case .onlyofficeRecent:
+            return OnlyofficeAPI.Path.Forlder.recent
+        case .onlyofficeCommon:
+            return OnlyofficeAPI.Path.Forlder.common
+        case .onlyofficeProjects:
+            return OnlyofficeAPI.Path.Forlder.projects
+        case .onlyofficeTrash:
+            return OnlyofficeAPI.Path.Forlder.trash
+        default:
+            return ""
+        }
+    }
+    
+    static func allowToMoveAndCopy(of type: ASCFolderType) -> Bool {
+        switch type {
+        case .onlyofficeUser:
+            return true
+        case .onlyofficeShare:
+            return true
+        case .onlyofficeCommon:
+            return true
+        case .onlyofficeProjects:
+            return true
+        default:
+            return false
+        }
+    }
+    
+    static func allowToMoveAndCopy(category: ASCOnlyofficeCategory) -> Bool {
+        allowToMoveAndCopy(of: category.folder?.rootFolderType ?? . unknown)
+    }
 
     static func folder(of type: ASCFolderType) -> ASCFolder? {
         switch type {
-        case .onlyofficeUser:
+        case .onlyofficeUser,
+             .onlyofficeShare,
+             .onlyofficeCommon,
+             .onlyofficeProjects,
+             .onlyofficeTrash:
             return {
-                $0.title = ASCOnlyofficeCategory.title(of: .onlyofficeUser)
-                $0.rootFolderType = .onlyofficeUser
-                $0.id = OnlyofficeAPI.Path.Forlder.my
+                $0.title = Self.title(of: type)
+                $0.rootFolderType = type
+                $0.id = Self.id(of: type)
                 return $0
             }(ASCFolder())
-        case .onlyofficeShare:
+        case .onlyofficeBunch:
             return {
-                $0.title = ASCOnlyofficeCategory.title(of: .onlyofficeShare)
-                $0.rootFolderType = .onlyofficeShare
-                $0.id = OnlyofficeAPI.Path.Forlder.share
-                return $0
-            }(ASCFolder())
-        case .onlyofficeCommon:
-            return {
-                $0.title = ASCOnlyofficeCategory.title(of: .onlyofficeCommon)
-                $0.rootFolderType = .onlyofficeCommon
-                $0.id = OnlyofficeAPI.Path.Forlder.common
-                return $0
-            }(ASCFolder())
-        case .onlyofficeBunch, .onlyofficeProjects:
-            return {
-                $0.title = ASCOnlyofficeCategory.title(of: .onlyofficeProjects)
+                $0.title = Self.title(of: .onlyofficeProjects)
                 $0.rootFolderType = .onlyofficeProjects
-                $0.id = OnlyofficeAPI.Path.Forlder.projects
-                return $0
-            }(ASCFolder())
-        case .onlyofficeTrash:
-            return {
-                $0.title = ASCOnlyofficeCategory.title(of: .onlyofficeTrash)
-                $0.rootFolderType = .onlyofficeTrash
-                $0.id = OnlyofficeAPI.Path.Forlder.trash
+                $0.id = Self.id(of: .onlyofficeProjects)
                 return $0
             }(ASCFolder())
         default:
             return nil
         }
+    }
+    
+    // MARK: - Codable requires
+    override init() {
+        super.init()
+    }
+
+    required init(from decoder: Decoder) throws {
+        super.init()
+        try decode(from: decoder)
+    }
+}
+
+// MARK: - Codable realization
+extension ASCOnlyofficeCategory: Codable {
+    enum CodingKeys: String, CodingKey {
+        case title
+        case folderId
+        case rootFolderTypeRaw
+        case subtitle
+        case sort
+    }
+    
+    func encode(to encoder: Encoder) throws {
+        var container = encoder.container(keyedBy: CodingKeys.self)
+        
+        if let title = title {
+            try container.encode(title, forKey: .title)
+        }
+        if let folderId = self.folder?.id {
+            try container.encode(folderId, forKey: .folderId)
+        }
+        if let rootFolderType = folder?.rootFolderType {
+            try container.encode(rootFolderType.rawValue, forKey: .rootFolderTypeRaw)
+        }
+        if let subtitle = subtitle {
+            try container.encode(subtitle, forKey: .subtitle)
+        }
+        try container.encode(sortWeight, forKey: .sort)
+    }
+    
+    func decode(from decoder: Decoder) throws {
+        let values = try decoder.container(keyedBy: CodingKeys.self)
+        
+        title = try? values.decode(String.self, forKey: .title)
+        subtitle = try? values.decode(String.self, forKey: .subtitle)
+        sortWeight = try values.decode(Int.self, forKey: .sort)
+        
+        guard let rootFolderTypeRaw = try? values.decode(Int.self, forKey: .rootFolderTypeRaw),
+              let rootFolderType = ASCFolderType(rawValue: rootFolderTypeRaw),
+              let folderId = try? values.decode(String.self, forKey: .folderId)
+        else {
+            return
+        }
+        
+        let folder = ASCFolder()
+        folder.id = folderId
+        folder.rootFolderType = rootFolderType
+        folder.title = title ?? Self.title(of: rootFolderType)
+        image = Self.image(of: rootFolderType)
+        self.folder = folder
+    }
+}
+
+// MARK: - Equatable
+extension ASCOnlyofficeCategory: Equatable {
+    static func == (lhs: ASCOnlyofficeCategory, rhs: ASCOnlyofficeCategory) -> Bool {
+        return lhs.folder?.id == rhs.folder?.id
+            && lhs.folder?.rootFolderType == rhs.folder?.rootFolderType
+            && lhs.title == rhs.title
+            && lhs.subtitle == rhs.subtitle
+            && lhs.provider?.id == rhs.provider?.id
     }
 }

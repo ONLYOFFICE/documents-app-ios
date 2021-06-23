@@ -13,6 +13,8 @@ typealias ASCTransferViewType = (provider: ASCFileProviderProtocol?, folder: ASC
 
 class ASCTransferViewController: UITableViewController {
     static let identifier = String(describing: ASCTransferViewController.self)
+    
+    fileprivate let idOnlyofficeRoot = "id-onlyoffice-root"
 
     fileprivate let providerName: ((_ type: ASCFileProviderType) -> String) = { type in
         switch type {
@@ -49,10 +51,14 @@ class ASCTransferViewController: UITableViewController {
             return Asset.Images.cloudWebdav.image
         case .icloud:
             return Asset.Images.cloudIcloud.image
+        case .onedrive:
+            return Asset.Images.cloudOnedrive.image
         default:
             return nil
         }
     }
+    
+    private lazy var onlyofficeCategoryProviderFactory = ASCOnlyofficeCategoriesProviderFactory()
 
     // MARK: - Public
 
@@ -178,7 +184,7 @@ class ASCTransferViewController: UITableViewController {
         if let onlyofficeProvider = ASCFileManager.onlyofficeProvider?.copy() {
             let folderOnlyoffice = ASCFolder()
             folderOnlyoffice.title = ASCConstants.Name.appNameShort
-            folderOnlyoffice.id = "id-onlyoffice-root"
+            folderOnlyoffice.id = self.idOnlyofficeRoot
             tableData.append((provider: onlyofficeProvider, folder: folderOnlyoffice))
         }
 
@@ -217,48 +223,46 @@ class ASCTransferViewController: UITableViewController {
 
         if let provider = provider, let folder = folder {
             if  provider.id == ASCFileManager.onlyofficeProvider?.id,
-                folder.id == "id-onlyoffice-root"
+                folder.id == self.idOnlyofficeRoot
             {
-                let folderCloudMy = ASCOnlyofficeCategory.folder(of: .onlyofficeUser) ?? ASCFolder()
-                let folderCloudCommon = ASCOnlyofficeCategory.folder(of: .onlyofficeCommon) ?? ASCFolder()
-                let folderCloudProjects = ASCOnlyofficeCategory.folder(of: .onlyofficeProjects) ?? ASCFolder()
-                let isPersonal = (ASCFileManager.provider as? ASCOnlyofficeProvider)?.apiClient.baseURL?.absoluteString.contains(ASCConstants.Urls.portalPersonal) ?? false
+                let categoryProvider = onlyofficeCategoryProviderFactory.get()
+                categoryProvider.loadCategories { categories in
+                    let categorFolders: [ASCFolder] = categories
+                        .filter { ASCOnlyofficeCategory.allowToMoveAndCopy(category: $0) }
+                        .compactMap { $0.folder }
+                    
+                    var tableData: [ASCTransferViewType] = []
 
-                let categorFolders: [ASCFolder] = isPersonal
-                    ? [folderCloudMy]
-                    : [folderCloudMy, folderCloudCommon, folderCloudProjects]
+                    let fetchQueue = OperationQueue()
+                    fetchQueue.maxConcurrentOperationCount = 1
 
-                var tableData: [ASCTransferViewType] = []
-
-                let fetchQueue = OperationQueue()
-                fetchQueue.maxConcurrentOperationCount = 1
-
-                for folder in categorFolders {
-                    fetchQueue.addOperation {
-                        let semaphore = DispatchSemaphore(value: 0)
-                        let params: [String: Any] = [
-                            "count"        : 1,
-                            "filterType"   : ASCFilterType.foldersOnly.rawValue
-                        ]
-                        provider.fetch(for: folder, parameters: params) { provider, result, success, error in
-                            if success, let folder = result as? ASCFolder {
-                                tableData.append(ASCTransferViewType(provider: provider, folder: folder))
-                            }
-
-                            if folder.id == categorFolders.last?.id {
-                                DispatchQueue.main.async {
-                                    self.tableData = tableData
-                                    completeon?(true)
+                    for folder in categorFolders {
+                        fetchQueue.addOperation {
+                            let semaphore = DispatchSemaphore(value: 0)
+                            let params: [String: Any] = [
+                                "count"        : 1,
+                                "filterType"   : ASCFilterType.foldersOnly.rawValue
+                            ]
+                            provider.fetch(for: folder, parameters: params) { provider, result, success, error in
+                                if success, let folder = result as? ASCFolder {
+                                    tableData.append(ASCTransferViewType(provider: provider, folder: folder))
                                 }
+
+                                if folder.id == categorFolders.last?.id {
+                                    DispatchQueue.main.async {
+                                        self.tableData = tableData
+                                        completeon?(true)
+                                    }
+                                }
+
+                                semaphore.signal()
                             }
-
-                            semaphore.signal()
+                            semaphore.wait()
                         }
-                        semaphore.wait()
                     }
-                }
 
-                self.actionButton?.isEnabled = false
+                    self.actionButton?.isEnabled = false
+                }
             } else {
                 let params: [String: Any] = [
                     "count"        : 1000,
@@ -353,7 +357,7 @@ class ASCTransferViewController: UITableViewController {
                         folderImage = providerImage(provider.type)
                     }
 
-                    if itemInfo.folder.id == "id-onlyoffice-root" {
+                    if itemInfo.folder.id == self.idOnlyofficeRoot {
                         folderImage = Asset.Images.tabOnlyoffice.image
                     }
 

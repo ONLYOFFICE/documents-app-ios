@@ -77,7 +77,9 @@ class ASCDeviceCategoryViewController: UITableViewController {
         navigationController?.navigationBar.prefersLargeTitles = true
         navigationItem.largeTitleDisplayMode = .always
         
-        ASCViewControllerManager.shared.rootController?.tabBar.isHidden = false
+        if ASCViewControllerManager.shared.rootController?.isEditing == true {
+            ASCViewControllerManager.shared.rootController?.tabBar.isHidden = true
+        }
         updateLargeTitlesSize()
     }
     

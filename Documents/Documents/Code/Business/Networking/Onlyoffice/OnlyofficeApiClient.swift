@@ -60,6 +60,8 @@ class OnlyofficeApiClient: NetworkingClient {
     }
     
     override public func configure(url: String? = nil, token: String? = nil) {
+        baseURL = URL(string: url ?? "")
+        
         // Initialize session manager
         let configuration = URLSessionConfiguration.default
         configuration.timeoutIntervalForRequest = 30 // seconds

@@ -48,6 +48,7 @@ class OnlyofficeAPI {
         static public let groups                 = "api/\(version)/group"
         static public let shareFile              = "api/\(version)/files/file/%@/share"
         static public let shareFolder            = "api/\(version)/files/folder/%@/share"
+        static public let forgotPassword         = "api/\(version)/people/password"
         
         struct Forlder {
             static public let root      = "@root"
@@ -94,6 +95,7 @@ class OnlyofficeAPI {
         // MARK: Folders
         
         struct Folders {
+            static let roots: Endpoint<OnlyofficeResponseArray<ASCFolder>> = Endpoint<OnlyofficeResponseArray<ASCFolder>>.make(String(format: Path.files, Path.Forlder.root))
             static func path(of folder: ASCFolder) -> Endpoint<OnlyofficeResponse<OnlyofficePath>> {
                 return Endpoint<OnlyofficeResponse<OnlyofficePath>>.make(String(format: Path.files, folder.id), .get, URLEncoding.default)
             }
@@ -192,6 +194,7 @@ class OnlyofficeAPI {
             static let documentService: Endpoint<OnlyofficeResponseType<Any>> = Endpoint<OnlyofficeResponseType<Any>>.make(Path.documentService, .get, URLEncoding.default)
             static let versions: Endpoint<OnlyofficeResponse<OnlyofficeVersion>> = Endpoint<OnlyofficeResponse<OnlyofficeVersion>>.make(Path.serversVersion)
             static let capabilities: Endpoint<OnlyofficeResponse<OnlyofficeCapabilities>> = Endpoint<OnlyofficeResponse<OnlyofficeCapabilities>>.make(Path.capabilities)
+            static let forgotPassword: Endpoint<OnlyofficeResponseType<String>> = Endpoint<OnlyofficeResponseType<String>>.make(Path.forgotPassword, .post)
         }
     }
 

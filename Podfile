@@ -23,7 +23,6 @@ def common_pods
   # Firebase
 
   pod 'Firebase'
-  pod 'FirebaseInstanceID'
   pod 'Firebase/RemoteConfig'
   pod 'Firebase/Messaging'
   pod 'Firebase/Analytics'

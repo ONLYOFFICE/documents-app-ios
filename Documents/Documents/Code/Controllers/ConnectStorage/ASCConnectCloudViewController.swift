@@ -26,6 +26,8 @@ class ASCConnectCloudViewController: UITableViewController {
             return NSLocalizedString("Yandex Disk", comment: "")
         case .webdav:
             return NSLocalizedString("WebDAV", comment: "")
+        case .onedrive:
+            return NSLocalizedString("OneDrive", comment: "")
         default:
             return NSLocalizedString("Unknown", comment: "")
         }
@@ -45,6 +47,8 @@ class ASCConnectCloudViewController: UITableViewController {
             }
         case .webdav:
             return Asset.Images.logoWebdavLarge.image
+        case .onedrive:
+            return Asset.Images.logoOnedriveLarge.image
         default:
             return nil
         }
@@ -60,6 +64,8 @@ class ASCConnectCloudViewController: UITableViewController {
             return .yandexAll
         case .webdav:
             return .webdavAll
+        case .onedrive:
+            return .onedriveAll
         default:
             return .unknown
         }
@@ -73,6 +79,8 @@ class ASCConnectCloudViewController: UITableViewController {
             return "ownCloud"
         case .yandex:
             return NSLocalizedString("Yandex Disk", comment: "")
+        case .onedrive:
+            return "OneDrive"
         default:
             return NSLocalizedString("All Files", comment: "")
         }
@@ -198,6 +206,12 @@ class ASCConnectCloudViewController: UITableViewController {
         case .webDav:
             checkWebDavProvider(info: info) { success, provider in
                 hud?.hide(animated: true)
+                complation(success, provider)
+            }
+        case .oneDrive:
+            checkOneDriveProvider(info: info) { [weak self] success, provider in
+                hud?.hide(animated: true)
+                self?.tableView.reloadData()
                 complation(success, provider)
             }
         default:
@@ -343,6 +357,24 @@ class ASCConnectCloudViewController: UITableViewController {
             })
         }
     }
+    
+    private func checkOneDriveProvider(info: [String: Any], complation: @escaping ((_ success: Bool, _ provider: ASCFileProviderProtocol?) -> Void)) {
+        guard
+            let token = info["token"] as? String
+        else {
+            complation(false, nil)
+            return
+        }
+        
+        let credential = URLCredential(user: ASCConstants.Clouds.OneDrive.clientId, password: token, persistence: .forSession)
+        let onedriveCloudProvider = ASCOneDriveProvider(credential: credential)
+        
+        onedriveCloudProvider.isReachable { success, error in
+            DispatchQueue.main.async(execute: {
+                complation(success, success ? onedriveCloudProvider : nil)
+            })
+        }
+    }
 
     func presentProviderConnection(by type: ASCFileProviderType, animated: Bool = false) {
         var connectionVC: UIViewController?
@@ -406,6 +438,23 @@ class ASCConnectCloudViewController: UITableViewController {
                 viewController.provider = .webDav
                 viewController.logo = providerImage(type)
             }
+        case .onedrive:
+            let oauth2VC = ASCConnectStorageOAuth2ViewController.instantiate(from: Storyboard.connectStorage)
+            let onedriveController = ASCConnectStorageOAuth2OneDrive()
+            onedriveController.clientId = ASCConstants.Clouds.OneDrive.clientId
+            onedriveController.clientSecret = ASCConstants.Clouds.OneDrive.clientSecret
+            onedriveController.redirectUrl = ASCConstants.Clouds.OneDrive.redirectUri
+            onedriveController.authUrlVersion = .v2
+            oauth2VC.responseType = .code
+            oauth2VC.complation = authComplation(info:)
+            oauth2VC.delegate = onedriveController
+            oauth2VC.title = "OneDrive"
+            
+            if animated {
+                navigationController?.pushViewController(oauth2VC, animated: animated)
+            } else {
+                connectionVC = oauth2VC
+            }
         default:
             break
         }
@@ -424,31 +473,38 @@ class ASCConnectCloudViewController: UITableViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         guard let identifier = segue.identifier else { return }
         
-        let connectStorageSegue = StoryboardSegue.ConnectStorage(rawValue: identifier)
+//        let connectStorageSegue = StoryboardSegue.ConnectStorage(rawValue: identifier)
         
-        switch connectStorageSegue {
-        case .nextcloudSegue:
+        switch identifier {
+        case "nextcloudSegue":
             if let viewController = segue.destination as? ASCConnectStorageWebDavController {
                 viewController.complation = authComplation(info:)
                 viewController.title = providerName(.nextcloud)
                 viewController.provider = .nextCloud
                 viewController.logo = providerImage(.nextcloud)
             }
-        case .owncloudSegue:
+        case "owncloudSegue":
             if let viewController = segue.destination as? ASCConnectStorageWebDavController {
                 viewController.complation = authComplation(info:)
                 viewController.title = providerName(.owncloud)
                 viewController.provider = .ownCloud
                 viewController.logo = providerImage(.owncloud)
             }
-        case .webdavSegue:
+        case "webdavSegue":
             if let viewController = segue.destination as? ASCConnectStorageWebDavController {
                 viewController.complation = authComplation(info:)
                 viewController.title = providerName(.webdav)
                 viewController.provider = .webDav
                 viewController.logo = providerImage(.webdav)
             }
-        case .none:
+        case "yandexSegue":
+            if let viewController = segue.destination as? ASCConnectStorageWebDavController {
+                viewController.complation = authComplation(info:)
+                viewController.title = providerName(.yandex)
+                viewController.provider = .yandex
+                viewController.logo = providerImage(.yandex)
+            }
+        default:
             break
         }
     }

@@ -31,7 +31,7 @@ class ASCSignInViewController: ASCBaseViewController {
     @IBOutlet weak var emailField: SkyFloatingLabelTextField!
     @IBOutlet weak var passwordField: SkyFloatingLabelTextField!
     @IBOutlet weak var addressLabel: UILabel!
-    @IBOutlet weak var ssoButton: UIButton!
+    @IBOutlet weak var ssoButton: ASCButtonStyle!
     @IBOutlet weak var forgotButton: UIButton!
     @IBOutlet weak var facebookButton: UIButton!
     @IBOutlet weak var googleButton: UIButton!
@@ -45,6 +45,8 @@ class ASCSignInViewController: ASCBaseViewController {
         addressLabel?.text = portal
         emailField?.text = email
 
+        ssoButton?.styleType = .bordered
+        
         let capabilities = ASCOnlyOfficeApi.shared.capabilities
 
         if capabilities?.ldapEnabled ?? false {

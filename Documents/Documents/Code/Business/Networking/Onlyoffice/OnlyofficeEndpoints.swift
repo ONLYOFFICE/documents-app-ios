@@ -95,7 +95,7 @@ class OnlyofficeAPI {
         // MARK: Folders
         
         struct Folders {
-            static let roots: Endpoint<OnlyofficeResponseArray<ASCFolder>> = Endpoint<OnlyofficeResponseArray<ASCFolder>>.make(String(format: Path.files, Path.Forlder.root))
+            static let roots: Endpoint<OnlyofficeResponseArray<OnlyofficePath>> = Endpoint<OnlyofficeResponseArray<OnlyofficePath>>.make(String(format: Path.files, Path.Forlder.root))
             static func path(of folder: ASCFolder) -> Endpoint<OnlyofficeResponse<OnlyofficePath>> {
                 return Endpoint<OnlyofficeResponse<OnlyofficePath>>.make(String(format: Path.files, folder.id), .get, URLEncoding.default)
             }

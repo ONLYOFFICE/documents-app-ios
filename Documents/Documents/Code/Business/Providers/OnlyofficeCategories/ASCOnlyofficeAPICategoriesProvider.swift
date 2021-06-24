@@ -21,9 +21,12 @@ class ASCOnlyofficeAPICategoriesProvider: ASCOnlyofficeCategoriesProviderProtoco
         categoriesCurrentlyLoading = true
         DispatchQueue.global(qos: .userInteractive).async {
             OnlyofficeApiClient.request(OnlyofficeAPI.Endpoints.Folders.roots) { [self] response, error in
-                if let folders = response?.result {
-                    for folder in folders {
-                        categories.append(ASCOnlyofficeCategory(folder: folder))
+                if let paths = response?.result {
+                    categories = paths.compactMap { path in
+                        if let current = path.current {
+                            return ASCOnlyofficeCategory(folder: current)
+                        }
+                        return nil
                     }
                     categories.sort { $0.sortWeight < $1.sortWeight }
                 }

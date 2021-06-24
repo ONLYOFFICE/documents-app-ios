@@ -28,6 +28,7 @@ class ASCSharingAddRightHoldersViewController: UIViewController {
     
     private lazy var usersTableViewDataSourceAndDelegate = ASCSharingAddRightHoldersTableViewDataSourceAndDelegate<ASCSharingAddRightHoldersUserTableViewCell>(models: self.usersModels)
     private lazy var groupsTableViewDataSourceAndDelegate = ASCSharingAddRightHoldersTableViewDataSourceAndDelegate<ASCSharingAddRightHoldersGroupTableViewCell>(models: self.groupsModels)
+    private lazy var searchResultsTableViewDataSourceAndDelegate = ASCSharingAddRightHoldersSearchResultsTableViewDataSourceAndDelegate(tables: [ .users: usersTableView, .groups: groupsTableView])
     
     private lazy var tablesSegmentedControl: UISegmentedControl = {
         var items: [String] = RightHoldersTableType.allCases.map({ $0.getTitle() })
@@ -50,14 +51,30 @@ class ASCSharingAddRightHoldersViewController: UIViewController {
         return tableView
     }()
     
-    private lazy var groupsTableView: UITableView = {
+    
+    private lazy var searchResultsTable: UITableView = {
         let tableView = UITableView()
+        tableView.dataSource = searchResultsTableViewDataSourceAndDelegate
+        tableView.delegate = searchResultsTableViewDataSourceAndDelegate
+        return tableView
+    }()
+    
+    private lazy var groupsTableView: UITableView = {
+        let tableView = UITableView(frame: CGRect(), style: .grouped)
         tableView.dataSource = groupsTableViewDataSourceAndDelegate
         tableView.delegate = groupsTableViewDataSourceAndDelegate
         return tableView
     }()
     
     private lazy var accessBarBtnItem: UIBarButtonItem = makeAccessBarBtn(title: defaultAccess.title(), image: defaultAccess.image())
+    
+    private lazy var keyboardToolbar: UIToolbar = {
+        let bar = UIToolbar()
+        let spaceItem = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
+        bar.items = [makeAccessBarBtn(title: self.selectedAccess.title(), image: self.selectedAccess.image()), spaceItem, makeNextBarBtn()]
+        bar.sizeToFit()
+        return bar
+    }()
     
     @available(iOS 14.0, *)
     private var accessBarBtnMenu: UIMenu {
@@ -72,13 +89,7 @@ class ASCSharingAddRightHoldersViewController: UIViewController {
         return UIMenu(title: "", children: menuItems)
     }
     
-    private lazy var nextBarBtnItem: UIBarButtonItem = {
-        let nextBtn = ASCButtonStyle()
-        nextBtn.layer.cornerRadius = 12
-        nextBtn.setTitle(NSLocalizedString("Next", comment: "").uppercased(), for: .normal)
-        nextBtn.contentEdgeInsets = UIEdgeInsets(top: 3, left: 15, bottom: 3, right: 15)
-        return UIBarButtonItem(customView: nextBtn)
-    }()
+    private lazy var nextBarBtnItem: UIBarButtonItem = makeNextBarBtn()
     
     private lazy var darkeingView: UIView = {
         let view = UIView()
@@ -91,6 +102,8 @@ class ASCSharingAddRightHoldersViewController: UIViewController {
     private var isDarken: Bool {
         darkeingView.superview != nil
     }
+    
+    private var dispalayingKeyboardFrame: CGRect?
     
     var usersModels: [ASCSharingAddRightHolderUserModel] = [
         ASCSharingAddRightHolderUserModel(image: Asset.Images.avatarDefault.image, name: "Abel – Abe, Abie;", type: "Manager"),
@@ -155,12 +168,11 @@ class ASCSharingAddRightHoldersViewController: UIViewController {
     
     @objc func keyboardWillShow(sender: NSNotification) {
         guard let keyboardFrame = getKeyboardFrame(bySenderNotification: sender) else { return }
-        
+        dispalayingKeyboardFrame = keyboardFrame
     }
     
     @objc func keyboardWillHide(sender: NSNotification) {
-        guard let keyboardFrame = getKeyboardFrame(bySenderNotification: sender) else { return }
-        
+        dispalayingKeyboardFrame = nil
     }
     
     private func getKeyboardFrame(bySenderNotification sender: NSNotification) -> CGRect? {
@@ -210,7 +222,9 @@ class ASCSharingAddRightHoldersViewController: UIViewController {
     }
     
     func configureTables() {
-        configureGeneralsParams(forTableViews: RightHoldersTableType.allCases.map({ getTable(byRightHoldersTableType: $0 )}))
+        let tables = RightHoldersTableType.allCases.map({ getTable(byRightHoldersTableType: $0 )}) + [searchResultsTable]
+        configureGeneralsParams(forTableViews: tables)
+        searchResultsTable.backgroundColor = .white
         
         usersTableView.register(usersTableViewDataSourceAndDelegate.type, forCellReuseIdentifier: usersTableViewDataSourceAndDelegate.type.reuseId)
         groupsTableView.register(groupsTableViewDataSourceAndDelegate.type, forCellReuseIdentifier: groupsTableViewDataSourceAndDelegate.type.reuseId)
@@ -235,6 +249,8 @@ class ASCSharingAddRightHoldersViewController: UIViewController {
         let spaceItem = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
         
         self.toolbarItems = [accessBarBtnItem, spaceItem, nextBarBtnItem]
+
+        searchController.searchBar.inputAccessoryView = keyboardToolbar
     }
     
     private func makeAccessBarBtn(title: String, image: UIImage?) -> UIBarButtonItem  {
@@ -254,6 +270,14 @@ class ASCSharingAddRightHoldersViewController: UIViewController {
         }
         
         return barBtnItem
+    }
+    
+    private func makeNextBarBtn() -> UIBarButtonItem {
+        let nextBtn = ASCButtonStyle()
+        nextBtn.layer.cornerRadius = 12
+        nextBtn.setTitle(NSLocalizedString("Next", comment: "").uppercased(), for: .normal)
+        nextBtn.contentEdgeInsets = UIEdgeInsets(top: 3, left: 15, bottom: 3, right: 15)
+        return UIBarButtonItem(customView: nextBtn)
     }
     
     
@@ -297,6 +321,12 @@ class ASCSharingAddRightHoldersViewController: UIViewController {
             toolbarItems.insert(makeAccessBarBtn(title: access.title(), image: access.image()), at: 0)
             self.toolbarItems = toolbarItems
         }
+        
+        if var keyboardToolbarItems = keyboardToolbar.items {
+            keyboardToolbarItems.removeFirst()
+            keyboardToolbarItems.insert(makeAccessBarBtn(title: access.title(), image: access.image()), at: 0)
+            keyboardToolbar.items = keyboardToolbarItems
+        }
     }
     
     private func showTable(tableType: RightHoldersTableType) {
@@ -305,7 +335,7 @@ class ASCSharingAddRightHoldersViewController: UIViewController {
         activeTableConstraintToViewTop = tableView.topAnchor.constraint(equalTo:  view.safeAreaLayoutGuide.topAnchor)
         activeTableConstraintToTableSegment = tableView.topAnchor.constraint(equalTo: tablesSegmentedControlView.bottomAnchor)
         NSLayoutConstraint.activate([
-            activeTableConstraintToTableSegment!,
+            tablesSegmentedControlView.isHidden ? activeTableConstraintToViewTop! : activeTableConstraintToTableSegment!,
             tableView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
             tableView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
             tableView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor)
@@ -313,6 +343,19 @@ class ASCSharingAddRightHoldersViewController: UIViewController {
         RightHoldersTableType.allCases.filter({ $0 != tableType }).forEach { type in
             getTable(byRightHoldersTableType: type).removeFromSuperview()
         }
+    }
+    
+    private func showSearchResultTable() {
+        view.addSubview(searchResultsTable)
+        
+        let keyboradHeigh = (dispalayingKeyboardFrame?.height ?? 0)
+        
+        NSLayoutConstraint.activate([
+            searchResultsTable.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
+            searchResultsTable.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
+            searchResultsTable.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
+            searchResultsTable.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -keyboradHeigh)
+        ])
     }
     
     private func getNavigationBarColor() -> UIColor {
@@ -330,11 +373,21 @@ class ASCSharingAddRightHoldersViewController: UIViewController {
         }
     }
     
+    private func getSelectedTableView() -> UITableView {
+        let type = getSelectedTableType()
+        return getTable(byRightHoldersTableType: type)
+    }
+    
     @objc func tablesSegmentedControlDidChanged() {
+        let tableType = getSelectedTableType()
+        showTable(tableType: tableType)
+    }
+    
+    private func getSelectedTableType() -> RightHoldersTableType {
         guard let tableType = RightHoldersTableType(rawValue: tablesSegmentedControl.selectedSegmentIndex) else {
             fatalError("Couldn't find a table type for segment control index: \(tablesSegmentedControl.selectedSegmentIndex)")
         }
-        showTable(tableType: tableType)
+        return tableType
     }
     
     private func darkenScreen() {
@@ -396,6 +449,27 @@ extension ASCSharingAddRightHoldersViewController {
 extension ASCSharingAddRightHoldersViewController: UISearchControllerDelegate, UISearchResultsUpdating {
     func updateSearchResults(for searchController: UISearchController) {
         guard let searchText = searchController.searchBar.text else { return }
+        
+        guard !searchText.isEmpty else {
+            groupsTableViewDataSourceAndDelegate.setModels(models: groupsModels)
+            groupsTableView.reloadData()
+            usersTableViewDataSourceAndDelegate.setModels(models: usersModels)
+            usersTableView.reloadData()
+            searchResultsTable.reloadData()
+            return
+        }
+        
+        groupsTableViewDataSourceAndDelegate.setModels(models: groupsModels.filter({ $0.name.contains(searchText) }))
+        groupsTableView.reloadData()
+        usersTableViewDataSourceAndDelegate.setModels(models: usersModels.filter({ $0.name.contains(searchText) }))
+        usersTableView.reloadData()
+        
+        if searchResultsTable.superview == nil {
+            getSelectedTableView().removeFromSuperview()
+            darkeingView.removeFromSuperview()
+            showSearchResultTable()
+        }
+        searchResultsTable.reloadData()
     }
     
     func willPresentSearchController(_ searchController: UISearchController) {
@@ -407,7 +481,17 @@ extension ASCSharingAddRightHoldersViewController: UISearchControllerDelegate, U
 
     func willDismissSearchController(_ searchController: UISearchController) {
         self.darkeingView.removeFromSuperview()
+        
+        self.groupsTableViewDataSourceAndDelegate.setModels(models: groupsModels)
+        self.usersTableViewDataSourceAndDelegate.setModels(models: usersModels)
+        
+        if getSelectedTableView().superview == nil {
+            showTable(tableType: self.getSelectedTableType())
+        }
+        
         showTablesSegmentedControl()
+
+        searchResultsTable.removeFromSuperview()
     }
 }
 
@@ -500,6 +584,71 @@ extension ASCSharingAddRightHoldersViewController {
                 self.index = index
                 self.models = models
             }
+        }
+    }
+}
+
+// MARK: - Search table view datasource and delegate
+extension ASCSharingAddRightHoldersViewController {
+    class ASCSharingAddRightHoldersSearchResultsTableViewDataSourceAndDelegate: NSObject, UITableViewDataSource, UITableViewDelegate {
+        
+        let tables:  [RightHoldersTableType: UITableView]
+        
+        init(tables: [RightHoldersTableType: UITableView]) {
+            self.tables = tables
+        }
+        
+        func numberOfSections(in tableView: UITableView) -> Int {
+            tables.count
+        }
+        
+        func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+            let tableKey = Array(tables.keys)[section]
+            guard let table = tables[tableKey] else { fatalError("couldn't find table by key \(tableKey)") }
+            
+            var count = 0
+            for tableSection in 0..<table.numberOfSections {
+                count += table.numberOfRows(inSection: tableSection)
+            }
+            
+            return count
+        }
+        
+        func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+            let tableKey = Array(tables.keys)[indexPath.section]
+            guard let table = tables[tableKey] else { fatalError("couldn't find table by key \(tableKey)") }
+            return findCell(inTable: table, byRowIndex: indexPath.row)
+        }
+        
+        func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+            let tableKey = Array(tables.keys)[section]
+            return tableKey.getTitle()
+        }
+        
+        func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+            60
+        }
+        
+        private func findCell(inTable table: UITableView, byRowIndex rowIndex: Int) -> UITableViewCell {
+            var rowCounter = 0
+            for section in 0..<table.numberOfSections {
+                for row in 0..<table.numberOfRows(inSection: section) {
+                    if rowCounter == rowIndex {
+                        
+                        guard let cell = table.dataSource?.tableView(table, cellForRowAt: IndexPath(row: row, section: section)) else { return UITableViewCell() }
+                        return cell
+                    }
+                    rowCounter += 1
+                }
+            }
+            fatalError("Couldn't find the cell")
+        }
+        
+        func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+            let header = UITableViewHeaderFooterView()
+            header.textLabel?.text = self.tableView(tableView, titleForHeaderInSection: section) ?? "" + " -"
+            header.contentView.backgroundColor = .white
+            return header
         }
     }
 }

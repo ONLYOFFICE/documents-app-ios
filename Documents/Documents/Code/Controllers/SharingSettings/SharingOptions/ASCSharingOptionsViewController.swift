@@ -27,20 +27,20 @@ class ASCSharingOptionsViewController: ASCBaseTableViewController {
         }
     }
     
-    private var rightsHoldersDataProvider: [ASCSharingOptionsRightHolderViewModel] {
+    private var rightsHoldersDataProvider: [ASCSharingRightHolderViewModel] {
         return [
-            ASCSharingOptionsRightHolderViewModel(avatar: Asset.Images.whatsnewFutureShare.image, name: "Pavel Chernyshev Pavel Chernyshev Pavel Chernyshev Pavel Chernyshev Pavel Chernyshev", isOwner: true, rightHolder: .manager, documetAccess: .full, accessEditable: false),
-            ASCSharingOptionsRightHolderViewModel(avatar: Asset.Images.whatsnewFutureFavourite.image, name: "Dimitry Dmittrov", isOwner: false, rightHolder: .designer, documetAccess: .read, accessEditable: true),
-            ASCSharingOptionsRightHolderViewModel(avatar: Asset.Images.whatsnewFutureIcloudDrive.image, name: "Admins", isOwner: true, rightHolder: .group, documetAccess: .review, accessEditable: true),
+            ASCSharingRightHolderViewModel(avatar: Asset.Images.whatsnewFutureShare.image, name: "Pavel Chernyshev Pavel Chernyshev Pavel Chernyshev Pavel Chernyshev Pavel Chernyshev", isOwner: true, rightHolderType: .manager, access: .init(documetAccess: .full, accessEditable: false)),
+            ASCSharingRightHolderViewModel(avatar: Asset.Images.whatsnewFutureFavourite.image, name: "Dimitry Dmittrov", isOwner: false, rightHolderType: .designer, access: .init(documetAccess: .read, accessEditable: true)),
+            ASCSharingRightHolderViewModel(avatar: Asset.Images.whatsnewFutureIcloudDrive.image, name: "Admins", isOwner: true, rightHolderType: nil, access: .init(documetAccess: .review, accessEditable: true)),
         ]
     }
     
-    private var importantRightHolders: [ASCSharingOptionsRightHolderViewModel] {
+    private var importantRightHolders: [ASCSharingRightHolderViewModel] {
         return [rightsHoldersDataProvider[0]]
     }
     
-    private var otherRightHolders: [ASCSharingOptionsRightHolderViewModel] {
-        var result: [ASCSharingOptionsRightHolderViewModel] = []
+    private var otherRightHolders: [ASCSharingRightHolderViewModel] {
+        var result: [ASCSharingRightHolderViewModel] = []
         for model in rightsHoldersDataProvider[1...] {
             result.append(model)
         }
@@ -104,8 +104,8 @@ class ASCSharingOptionsViewController: ASCBaseTableViewController {
                            forCellReuseIdentifier: ASCAccessRowTableViewCell.reuseId)
         tableView.register(ASCCopyLinkTableViewCell.self,
                            forCellReuseIdentifier: ASCCopyLinkTableViewCell.reuseId)
-        tableView.register(ASCSharingOptionsRightHolderTableViewCell.self,
-                           forCellReuseIdentifier: ASCSharingOptionsRightHolderTableViewCell.reuseId)
+        tableView.register(ASCSharingRightHolderTableViewCell.self,
+                           forCellReuseIdentifier: ASCSharingRightHolderTableViewCell.reuseId)
     }
 
 }
@@ -141,11 +141,11 @@ extension ASCSharingOptionsViewController {
                 return cell
             }
         case .importantRightHolders:
-             let cell: ASCSharingOptionsRightHolderTableViewCell = getCell()
+             let cell: ASCSharingRightHolderTableViewCell = getCell()
              cell.viewModel = importantRightHolders[indexPath.row]
              return cell
          case .otherRightHolders:
-            let cell: ASCSharingOptionsRightHolderTableViewCell = getCell()
+            let cell: ASCSharingRightHolderTableViewCell = getCell()
             cell.viewModel = otherRightHolders[indexPath.row]
             return cell
         }

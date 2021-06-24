@@ -26,8 +26,8 @@ class ASCSharingAddRightHoldersViewController: UIViewController {
         return text.isEmpty
     }
     
-    private lazy var usersTableViewDataSourceAndDelegate = ASCSharingAddRightHoldersTableViewDataSourceAndDelegate<ASCSharingAddRightHoldersUserTableViewCell>(models: self.usersModels)
-    private lazy var groupsTableViewDataSourceAndDelegate = ASCSharingAddRightHoldersTableViewDataSourceAndDelegate<ASCSharingAddRightHoldersGroupTableViewCell>(models: self.groupsModels)
+    private lazy var usersTableViewDataSourceAndDelegate = ASCSharingAddRightHoldersTableViewDataSourceAndDelegate<ASCSharingRightHolderTableViewCell>(models: self.usersModels)
+    private lazy var groupsTableViewDataSourceAndDelegate = ASCSharingAddRightHoldersTableViewDataSourceAndDelegate<ASCSharingRightHolderTableViewCell>(models: self.groupsModels)
     private lazy var searchResultsTableViewDataSourceAndDelegate = ASCSharingAddRightHoldersSearchResultsTableViewDataSourceAndDelegate(tables: [ .users: usersTableView, .groups: groupsTableView])
     
     private lazy var tablesSegmentedControl: UISegmentedControl = {
@@ -51,18 +51,17 @@ class ASCSharingAddRightHoldersViewController: UIViewController {
         return tableView
     }()
     
+    private lazy var groupsTableView: UITableView = {
+        let tableView = UITableView()
+        tableView.dataSource = groupsTableViewDataSourceAndDelegate
+        tableView.delegate = groupsTableViewDataSourceAndDelegate
+        return tableView
+    }()
     
     private lazy var searchResultsTable: UITableView = {
         let tableView = UITableView()
         tableView.dataSource = searchResultsTableViewDataSourceAndDelegate
         tableView.delegate = searchResultsTableViewDataSourceAndDelegate
-        return tableView
-    }()
-    
-    private lazy var groupsTableView: UITableView = {
-        let tableView = UITableView(frame: CGRect(), style: .grouped)
-        tableView.dataSource = groupsTableViewDataSourceAndDelegate
-        tableView.delegate = groupsTableViewDataSourceAndDelegate
         return tableView
     }()
     
@@ -105,42 +104,42 @@ class ASCSharingAddRightHoldersViewController: UIViewController {
     
     private var dispalayingKeyboardFrame: CGRect?
     
-    var usersModels: [ASCSharingAddRightHolderUserModel] = [
-        ASCSharingAddRightHolderUserModel(image: Asset.Images.avatarDefault.image, name: "Abel – Abe, Abie;", type: "Manager"),
-        ASCSharingAddRightHolderUserModel(image: Asset.Images.avatarDefault.image, name: "Abner – Ab, Abbie;", type: "Manager", isSelected: true),
-        ASCSharingAddRightHolderUserModel(image: Asset.Images.avatarDefault.image, name: "Abraham, Abram – Abe, Abie, Bram;", type: "Manager"),
-        ASCSharingAddRightHolderUserModel(image: Asset.Images.avatarDefault.image, name: "Adam – Ad, Addie, Addy, Ade;", type: "Manager"),
-        ASCSharingAddRightHolderUserModel(image: Asset.Images.avatarDefault.image, name: "Benjamin – Ben, Bennie, Benny, Benjy Benjie;", type: "Manager"),
-        ASCSharingAddRightHolderUserModel(image: Asset.Images.avatarDefault.image, name: "Bennet, Bennett – Ben, Bennie, Benny;", type: "Manager"),
-        ASCSharingAddRightHolderUserModel(image: Asset.Images.avatarDefault.image, name: "Bernard, Barnard – Bernie, Berney, Barney, Barnie", type: "Manager"),
-        ASCSharingAddRightHolderUserModel(image: Asset.Images.avatarDefault.image, name: "Christopher Kit, Kester, Kristof, Toph,", type: "Manager"),
-        ASCSharingAddRightHolderUserModel(image: Asset.Images.avatarDefault.image, name: "Clarence – Clare, Clair;", type: "Manager", isSelected: true),
-        ASCSharingAddRightHolderUserModel(image: Asset.Images.avatarDefault.image, name: "Clare, Clair;", type: "Manager"),
-        ASCSharingAddRightHolderUserModel(image: Asset.Images.avatarDefault.image, name: "Clark, Clarke;", type: "Manager"),
-        ASCSharingAddRightHolderUserModel(image: Asset.Images.avatarDefault.image, name: "Claude, Claud;", type: "Manager"),
-        ASCSharingAddRightHolderUserModel(image: Asset.Images.avatarDefault.image, name: "Donald – Don, Donnie, Donny", type: "Manager"),
-        ASCSharingAddRightHolderUserModel(image: Asset.Images.avatarDefault.image, name: "Donovan – Don, Donnie, Donny;", type: "Manager"),
-        ASCSharingAddRightHolderUserModel(image: Asset.Images.avatarDefault.image, name: "Dorian;", type: "Manager"),
-        ASCSharingAddRightHolderUserModel(image: Asset.Images.avatarDefault.image, name: "Dougls, Douglass – Doug;", type: "Manager"),
-        ASCSharingAddRightHolderUserModel(image: Asset.Images.avatarDefault.image, name: "Doyle;", type: "Manager"),
-        ASCSharingAddRightHolderUserModel(image: Asset.Images.avatarDefault.image, name: "Drew (see Andrew);", type: "Manager"),
-        ASCSharingAddRightHolderUserModel(image: Asset.Images.avatarDefault.image, name: "Elliot, Elliott – El;", type: "Manager"),
-        ASCSharingAddRightHolderUserModel(image: Asset.Images.avatarDefault.image, name: "Ellis – El;", type: "Manager"),
-        ASCSharingAddRightHolderUserModel(image: Asset.Images.avatarDefault.image, name: "Elmer – El;", type: "Manager"),
-        ASCSharingAddRightHolderUserModel(image: Asset.Images.avatarDefault.image, name: "Elton, Alton – El, Al;", type: "Manager"),
-        ASCSharingAddRightHolderUserModel(image: Asset.Images.avatarDefault.image, name: "Elvin, Elwin, Elwyn – El, Vin, Vinny, Win;", type: "Manager"),
-        ASCSharingAddRightHolderUserModel(image: Asset.Images.avatarDefault.image, name: "Elvis – El;", type: "Manager"),
-        ASCSharingAddRightHolderUserModel(image: Asset.Images.avatarDefault.image, name: "Herman – Manny, Mannie;", type: "Manager"),
-        ASCSharingAddRightHolderUserModel(image: Asset.Images.avatarDefault.image, name: "Hilary, Hillary – Hill, Hillie, Hilly;", type: "Manager"),
-        ASCSharingAddRightHolderUserModel(image: Asset.Images.avatarDefault.image, name: "Homer;", type: "Manager"),
-        ASCSharingAddRightHolderUserModel(image: Asset.Images.avatarDefault.image, name: "Horace, Horatio;", type: "Manager"),
-        ASCSharingAddRightHolderUserModel(image: Asset.Images.avatarDefault.image, name: "Howard – Howie;", type: "Manager"),
-        ASCSharingAddRightHolderUserModel(image: Asset.Images.avatarDefault.image, name: "Hubert – Hugh, Bert, Bertie", type: "Manager")
+    var usersModels: [ASCSharingRightHolderViewModel] = [
+        ASCSharingRightHolderViewModel(avatar: Asset.Images.avatarDefault.image, name: "Abel – Abe, Abie;", rightHolderType: .manager),
+        ASCSharingRightHolderViewModel(avatar: Asset.Images.avatarDefault.image, name: "Abner – Ab, Abbie;", rightHolderType: .manager),
+        ASCSharingRightHolderViewModel(avatar: Asset.Images.avatarDefault.image, name: "Abraham, Abram – Abe, Abie, Bram;", rightHolderType: .manager),
+        ASCSharingRightHolderViewModel(avatar: Asset.Images.avatarDefault.image, name: "Adam – Ad, Addie, Addy, Ade;", rightHolderType: .manager),
+        ASCSharingRightHolderViewModel(avatar: Asset.Images.avatarDefault.image, name: "Benjamin – Ben, Bennie, Benny, Benjy Benjie;", rightHolderType: .manager),
+        ASCSharingRightHolderViewModel(avatar: Asset.Images.avatarDefault.image, name: "Bennet, Bennett – Ben, Bennie, Benny;", rightHolderType: .manager),
+        ASCSharingRightHolderViewModel(avatar: Asset.Images.avatarDefault.image, name: "Bernard, Barnard – Bernie, Berney, Barney, Barnie", rightHolderType: .manager),
+        ASCSharingRightHolderViewModel(avatar: Asset.Images.avatarDefault.image, name: "Christopher Kit, Kester, Kristof, Toph,", rightHolderType: .manager),
+        ASCSharingRightHolderViewModel(avatar: Asset.Images.avatarDefault.image, name: "Clarence – Clare, Clair;", rightHolderType: .manager),
+        ASCSharingRightHolderViewModel(avatar: Asset.Images.avatarDefault.image, name: "Clare, Clair;", rightHolderType: .manager),
+        ASCSharingRightHolderViewModel(avatar: Asset.Images.avatarDefault.image, name: "Clark, Clarke;", rightHolderType: .manager),
+        ASCSharingRightHolderViewModel(avatar: Asset.Images.avatarDefault.image, name: "Claude, Claud;", rightHolderType: .manager),
+        ASCSharingRightHolderViewModel(avatar: Asset.Images.avatarDefault.image, name: "Donald – Don, Donnie, Donny", rightHolderType: .manager),
+        ASCSharingRightHolderViewModel(avatar: Asset.Images.avatarDefault.image, name: "Donovan – Don, Donnie, Donny;", rightHolderType: .manager),
+        ASCSharingRightHolderViewModel(avatar: Asset.Images.avatarDefault.image, name: "Dorian;", rightHolderType: .manager),
+        ASCSharingRightHolderViewModel(avatar: Asset.Images.avatarDefault.image, name: "Dougls, Douglass – Doug;", rightHolderType: .manager),
+        ASCSharingRightHolderViewModel(avatar: Asset.Images.avatarDefault.image, name: "Doyle;", rightHolderType: .manager),
+        ASCSharingRightHolderViewModel(avatar: Asset.Images.avatarDefault.image, name: "Drew (see Andrew);", rightHolderType: .manager),
+        ASCSharingRightHolderViewModel(avatar: Asset.Images.avatarDefault.image, name: "Elliot, Elliott – El;", rightHolderType: .manager),
+        ASCSharingRightHolderViewModel(avatar: Asset.Images.avatarDefault.image, name: "Ellis – El;", rightHolderType: .manager),
+        ASCSharingRightHolderViewModel(avatar: Asset.Images.avatarDefault.image, name: "Elmer – El;", rightHolderType: .manager),
+        ASCSharingRightHolderViewModel(avatar: Asset.Images.avatarDefault.image, name: "Elton, Alton – El, Al;", rightHolderType: .manager),
+        ASCSharingRightHolderViewModel(avatar: Asset.Images.avatarDefault.image, name: "Elvin, Elwin, Elwyn – El, Vin, Vinny, Win;", rightHolderType: .manager),
+        ASCSharingRightHolderViewModel(avatar: Asset.Images.avatarDefault.image, name: "Elvis – El;", rightHolderType: .manager),
+        ASCSharingRightHolderViewModel(avatar: Asset.Images.avatarDefault.image, name: "Herman – Manny, Mannie;", rightHolderType: .manager),
+        ASCSharingRightHolderViewModel(avatar: Asset.Images.avatarDefault.image, name: "Hilary, Hillary – Hill, Hillie, Hilly;", rightHolderType: .manager),
+        ASCSharingRightHolderViewModel(avatar: Asset.Images.avatarDefault.image, name: "Homer;", rightHolderType: .manager),
+        ASCSharingRightHolderViewModel(avatar: Asset.Images.avatarDefault.image, name: "Horace, Horatio;", rightHolderType: .manager),
+        ASCSharingRightHolderViewModel(avatar: Asset.Images.avatarDefault.image, name: "Howard – Howie;", rightHolderType: .manager),
+        ASCSharingRightHolderViewModel(avatar: Asset.Images.avatarDefault.image, name: "Hubert – Hugh, Bert, Bertie", rightHolderType: .manager),
     ]
     
-    var groupsModels: [ASCSharingAddRightHoldersGroupModel] = [
-        ASCSharingAddRightHoldersGroupModel(image: Asset.Images.avatarDefaultGroup.image, name: "Admins", isSelected: false),
-        ASCSharingAddRightHoldersGroupModel(image: Asset.Images.avatarDefaultGroup.image, name: "Disigners", isSelected: false)
+    var groupsModels: [ASCSharingRightHolderViewModel] = [
+        ASCSharingRightHolderViewModel(avatar: Asset.Images.avatarDefaultGroup.image, name: "Admins"),
+        ASCSharingRightHolderViewModel(avatar: Asset.Images.avatarDefaultGroup.image, name: "Disigners")
     ]
     
     override func viewDidLoad() {
@@ -153,6 +152,8 @@ class ASCSharingAddRightHoldersViewController: UIViewController {
         configureSegmentedControl()
         configureTables()
         configureToolBar()
+        
+        showTable(tableType: defaultSelectedTable)
     }
     
     // MARK: - Deinit
@@ -240,7 +241,6 @@ class ASCSharingAddRightHoldersViewController: UIViewController {
             tableView.translatesAutoresizingMaskIntoConstraints = false
             tableView.allowsMultipleSelectionDuringEditing = true
         }
-        showTable(tableType: defaultSelectedTable)
     }
     
     private func configureToolBar() {
@@ -459,9 +459,9 @@ extension ASCSharingAddRightHoldersViewController: UISearchControllerDelegate, U
             return
         }
         
-        groupsTableViewDataSourceAndDelegate.setModels(models: groupsModels.filter({ $0.name.contains(searchText) }))
+        groupsTableViewDataSourceAndDelegate.setModels(models: groupsModels.filter({ $0.name.lowercased().contains(searchText.lowercased()) }))
         groupsTableView.reloadData()
-        usersTableViewDataSourceAndDelegate.setModels(models: usersModels.filter({ $0.name.contains(searchText) }))
+        usersTableViewDataSourceAndDelegate.setModels(models: usersModels.filter({ $0.name.lowercased().contains(searchText.lowercased()) }))
         usersTableView.reloadData()
         
         if searchResultsTable.superview == nil {

@@ -646,7 +646,7 @@ extension ASCSharingAddRightHoldersViewController {
         
         func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
             let header = UITableViewHeaderFooterView()
-            header.textLabel?.text = self.tableView(tableView, titleForHeaderInSection: section) ?? "" + " -"
+            header.textLabel?.text = self.tableView(tableView, titleForHeaderInSection: section) ?? ""
             header.contentView.backgroundColor = .white
             return header
         }

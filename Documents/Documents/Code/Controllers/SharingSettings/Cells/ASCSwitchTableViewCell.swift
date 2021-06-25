@@ -31,6 +31,7 @@ class ASCSwitchTableViewCell: UITableViewCell, ASCReusedIdentifierProtocol {
         
         title.text = viewModel.title
         uiSwitch.isOn = viewModel.isActive
+        uiSwitch.onTintColor = Asset.Colors.brend.color
         uiSwitch.addTarget(self, action: #selector(switchChanged), for: UIControl.Event.valueChanged)
         
         title.translatesAutoresizingMaskIntoConstraints = false

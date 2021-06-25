@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ASCSharingOptionsAccessViewController: ASCBaseTableViewController {
+class ASCSharingSettingsAccessViewController: ASCBaseTableViewController {
     var reuseCellId = "basicStyle"
     
     var currentlyAccess: ASCShareAccess? = .read
@@ -16,6 +16,11 @@ class ASCSharingOptionsAccessViewController: ASCBaseTableViewController {
     var accessList: [ASCShareAccess] = ASCShareAccess.allCases.filter({ $0 != .none })
     
     var heightForSectionHeader: CGFloat = 38
+    
+    var nvigationBarTitle: String = NSLocalizedString("Sharing settings", comment: "")
+    var largeTitleDisplayMode:  UINavigationItem.LargeTitleDisplayMode = .never
+    var headerText: String = NSLocalizedString("Access by external link", comment: "")
+    var footerText: String = NSLocalizedString("Документ будет доступен для просмотра неавторизированными пользователями, перешедшими по внещней ссылке.", comment: "")
     
     override init(style: UITableView.Style = .grouped) {
         super.init(style: style)
@@ -31,10 +36,10 @@ class ASCSharingOptionsAccessViewController: ASCBaseTableViewController {
     }
     
     private func configureNavigationBar() {
-        navigationItem.largeTitleDisplayMode = .never
+        navigationItem.largeTitleDisplayMode = largeTitleDisplayMode
         navigationController?.navigationBar.backIndicatorImage = UIImage()
         navigationController?.navigationBar.backIndicatorTransitionMaskImage = UIImage()
-        navigationController?.navigationBar.topItem?.title = NSLocalizedString("Sharing settings", comment: "")
+        navigationController?.navigationBar.topItem?.title = nvigationBarTitle
     }
     
     private func configureTableView() {
@@ -45,7 +50,7 @@ class ASCSharingOptionsAccessViewController: ASCBaseTableViewController {
 }
 
 // MARK: - TableView data source and delegate
-extension ASCSharingOptionsAccessViewController {
+extension ASCSharingSettingsAccessViewController {
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         accessList.count
@@ -69,11 +74,11 @@ extension ASCSharingOptionsAccessViewController {
     }
     
     override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        NSLocalizedString("Access by external link", comment: "")
+        headerText
     }
     
     override func tableView(_ tableView: UITableView, titleForFooterInSection section: Int) -> String? {
-        NSLocalizedString("Документ будет доступен для просмотра неавторизированными пользователями, перешедшими по внещней ссылке.", comment: "")
+        footerText
     }
     
     override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {

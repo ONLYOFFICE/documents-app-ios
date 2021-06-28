@@ -8,7 +8,17 @@
 
 import UIKit
 
+protocol ASCSharingOptionsDisplayLogic: AnyObject {
+    func displayRightHolders(viewModel: ASCSharingOptions.Model.ViewModel.ViewModelData)
+}
+
 class ASCSharingOptionsViewController: ASCBaseTableViewController {
+    
+    var entity: ASCEntity?
+    
+    var interactor: ASCSharingOptionsBusinessLogic?
+    var router: (NSObjectProtocol & ASCSharingOptionsRoutingLogic)?
+    var viewConfigurator: ASCSharingView?
     
     var externalLink: String = "" {
         didSet {
@@ -27,87 +37,65 @@ class ASCSharingOptionsViewController: ASCBaseTableViewController {
         }
     }
     
-    private var rightsHoldersDataProvider: [ASCSharingRightHolderViewModel] {
-        return [
-            ASCSharingRightHolderViewModel(avatar: Asset.Images.whatsnewFutureShare.image, name: "Pavel Chernyshev Pavel Chernyshev Pavel Chernyshev Pavel Chernyshev Pavel Chernyshev", isOwner: true, rightHolderType: .manager, access: .init(documetAccess: .full, accessEditable: false)),
-            ASCSharingRightHolderViewModel(avatar: Asset.Images.whatsnewFutureFavourite.image, name: "Dimitry Dmittrov", isOwner: false, rightHolderType: .designer, access: .init(documetAccess: .read, accessEditable: true)),
-            ASCSharingRightHolderViewModel(avatar: Asset.Images.whatsnewFutureIcloudDrive.image, name: "Admins", isOwner: true, rightHolderType: nil, access: .init(documetAccess: .review, accessEditable: true)),
-        ]
-    }
-    
-    private var importantRightHolders: [ASCSharingRightHolderViewModel] {
-        return [rightsHoldersDataProvider[0]]
-    }
-    
-    private var otherRightHolders: [ASCSharingRightHolderViewModel] {
-        var result: [ASCSharingRightHolderViewModel] = []
-        for model in rightsHoldersDataProvider[1...] {
-            result.append(model)
-        }
-        return result
-    }
-    
-    private lazy var linkBarButtonItem: UIBarButtonItem = {
-        var icon: UIImage?
-        if #available(iOS 13.0, *) {
-            icon = UIImage(systemName: "link")
-        } else {
-            icon = Asset.Images.barCopy.image // MARK: - todo replace the image
-        }
-        return UIBarButtonItem(image: icon, style: .plain, target: nil, action: nil)
-    }()
-    
-    private lazy var addRightsBarButtonItem: UIBarButtonItem = {
-        var icon: UIImage?
-        if #available(iOS 13.0, *) {
-            icon = UIImage(systemName: "person.crop.circle.fill.badge.plus")
-        } else {
-            icon = Asset.Images.navAdd.image // MARK: - todo replace the image
-        }
-        return UIBarButtonItem(image: icon, style: .plain, target: nil, action: nil)
-    }()
+    private var importantRightHolders: [ASCSharingRightHolderViewModel] = []
+    private var otherRightHolders: [ASCSharingRightHolderViewModel] = []
     
     override init(style: UITableView.Style = .grouped) {
         super.init(style: style)
+        setup()
     }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
+    // MARK: View lifecycle
+    
     override func viewDidLoad() {
-        configureNavigationBar()
-        configureTableView()
-    }
-    
-    private func configureNavigationBar() {
-        navigationItem.largeTitleDisplayMode = .never
-        navigationController?.navigationBar.backIndicatorImage = UIImage()
-        navigationController?.navigationBar.backIndicatorTransitionMaskImage = UIImage()
-        navigationController?.navigationBar.backItem?.backButtonTitle = NSLocalizedString("Done", comment: "")
-        navigationController?.navigationBar.topItem?.title = NSLocalizedString("Sharing settings", comment: "")
-
-        navigationController?.navigationBar.topItem?.rightBarButtonItems = [
-            addRightsBarButtonItem,
-            linkBarButtonItem
-        ]
-    }
-    
-    private func configureTableView() {
-        tableView.tableFooterView = UIView()
-        tableView.backgroundColor = Asset.Colors.tableBackground.color
-        tableView.sectionFooterHeight = 0
+        super.viewDidLoad()
+        let viewConfigurator = ASCSharingView(delegate: self)
+        viewConfigurator.configureNavigationBar(navigationController)
+        viewConfigurator.configureTableView(tableView)
+        self.viewConfigurator = viewConfigurator
         
-        tableView.register(ASCSwitchTableViewCell.self,
-                           forCellReuseIdentifier: ASCSwitchTableViewCell.reuseId)
-        tableView.register(ASCAccessRowTableViewCell.self,
-                           forCellReuseIdentifier: ASCAccessRowTableViewCell.reuseId)
-        tableView.register(ASCCopyLinkTableViewCell.self,
-                           forCellReuseIdentifier: ASCCopyLinkTableViewCell.reuseId)
-        tableView.register(ASCSharingRightHolderTableViewCell.self,
-                           forCellReuseIdentifier: ASCSharingRightHolderTableViewCell.reuseId)
+        interactor?.makeRequest(request: .loadRightHolders(entity: entity))
     }
 
+    // MARK: Setup
+    
+    private func setup() {
+        let viewController        = self
+        let interactor            = ASCSharingOptionsInteractor()
+        let presenter             = ASCSharingOptionsPresenter()
+        let router                = ASCSharingOptionsRouter()
+        viewController.interactor = interactor
+        viewController.router     = router
+        interactor.presenter      = presenter
+        presenter.viewController  = viewController
+        router.viewController     = viewController
+    }
+}
+
+// MARK: - Sharing oprions display logic
+extension ASCSharingOptionsViewController: ASCSharingOptionsDisplayLogic {
+    func displayRightHolders(viewModel: ASCSharingOptions.Model.ViewModel.ViewModelData) {
+        switch viewModel {
+        case .displayRightHolders(importantRightHolders: let importantRightHolders, otherRightHolders: let otherRightHolders):
+            self.importantRightHolders = importantRightHolders
+            self.otherRightHolders = otherRightHolders
+            tableView.reloadData()
+        }
+    }
+}
+// MARK: - Routing
+extension ASCSharingOptionsViewController: ASCSharingViewDelegate {
+    func onLinkBarButtonTap() {
+        
+    }
+    
+    func onAddRightsBarButtonTap() {
+        
+    }
 }
 
 // MARK: - TableView data source and delegate

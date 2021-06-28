@@ -2313,7 +2313,9 @@ class ASCDocumentsViewController: ASCBaseTableViewController, UIGestureRecognize
     }
     
     private func presentShareController(in parent: UIViewController, entity: ASCEntity) {
-        let sharedVC = ASCShareViewController.instantiate(from: Storyboard.share)
+        //let sharedVC = ASCShareViewController.instantiate(from: Storyboard.share)
+        // MARK: - TODO DI Container
+        let sharedVC = ASCSharingOptionsViewController(style: .grouped)
         let sharedNavigationVC = ASCBaseNavigationController(rootASCViewController: sharedVC)
 
         sharedVC.entity = entity

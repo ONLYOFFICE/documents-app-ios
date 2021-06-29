@@ -18,32 +18,46 @@ class ASCSharingOptionsPresenter: ASCSharingOptionsPresentationLogic {
     func presentData(response: ASCSharingOptions.Model.Response.ResponseType) {
         switch response {
         
-        case .presentRightHolders(sharedInfoItems: let sharedInfoItems):
-            let rightHolders: [ASCSharingRightHolderViewModel] = sharedInfoItems.map({ sharedInfo  in
+        case .presentRightHolders(sharedInfoItems: let sharedInfoItems, currentUser: let currentUser):
+            
+            let isImportant: (ASCShareInfo) -> Bool = { shareInfo in
+                var isShareInfoUserIsCurrenUser = false
+                if let shareInfoUserId = shareInfo.user?.userId,
+                   let currentUserId = currentUser?.userId
+                {
+                    isShareInfoUserIsCurrenUser = shareInfoUserId == currentUserId
+                }
+                return shareInfo.owner || isShareInfoUserIsCurrenUser
+            }
+            
+            var imprtantRightHolders: [ASCSharingRightHolderViewModel] = []
+            var otherRightHolders: [ASCSharingRightHolderViewModel] = []
+            
+            sharedInfoItems.forEach({ sharedInfo  in
                 var name = ""
-                var type: ASCSharingRightHolderViewModel.RightHolderType = .manager
-                var image: UIImage? = nil // MARK: - TODO
                 if let user = sharedInfo.user {
-                    name = user.userName ?? ""
+                    name = user.displayName ?? ""
                 } else if let group = sharedInfo.group {
                     name = group.name ?? ""
-                    type = .group
                 }
                 
-                // MARK: - TODO make shure is any no owner editable ?
-                let access = ASCSharingRightHolderViewModel.Access(documetAccess: sharedInfo.access, accessEditable: !sharedInfo.owner)
+                let access = ASCSharingRightHolderViewModel.Access(documetAccess: sharedInfo.access,
+                                                                   accessEditable: !sharedInfo.locked && !sharedInfo.owner)
                 
-                return ASCSharingRightHolderViewModel(avatar: UIImage(),
+                let avatarUrl: String? = sharedInfo.user?.avatarRetina ?? sharedInfo.user?.avatar
+                
+                let viewModel = ASCSharingRightHolderViewModel(avatarUrl: avatarUrl,
                                                name: name,
+                                               department: sharedInfo.user?.department,
                                                isOwner: sharedInfo.owner,
-                                               rightHolderType: type,
                                                access: access)
+                if isImportant(sharedInfo) {
+                    imprtantRightHolders.append(viewModel)
+                } else {
+                    otherRightHolders.append(viewModel)
+                }
             })
-            
-            // MARK: - TODO add current user to impornant array
-            let imprtantRightHolders = rightHolders.filter({ $0.isOwner })
-            let otherRightHolders = rightHolders.filter({ !$0.isOwner })
-            
+
             viewController?.displayRightHolders(viewModel: .displayRightHolders(importantRightHolders: imprtantRightHolders,
                                                                                 otherRightHolders: otherRightHolders))
         }

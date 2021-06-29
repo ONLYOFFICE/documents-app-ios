@@ -13,60 +13,71 @@ protocol ASCSharingOptionsBusinessLogic {
 }
 
 protocol ASCSharingOptionsDataStore {
+    var currentUser: ASCUser? { get }
     var sharedInfoItems: [ASCShareInfo] { get }
 }
 
 class ASCSharingOptionsInteractor: ASCSharingOptionsBusinessLogic, ASCSharingOptionsDataStore {
     
     var presenter: ASCSharingOptionsPresentationLogic?
+    
+    var currentUser: ASCUser?
     var sharedInfoItems: [ASCShareInfo] = []
     
     func makeRequest(request: ASCSharingOptions.Model.Request.RequestType) {
         switch request {
-        
         case .loadRightHolders(entity: let entity):
-            guard let entity = entity else {
-                presenter?.presentData(response: .presentRightHolders(sharedInfoItems: []))
-                return
-            }
-            
-            guard let apiRequest = makeApiRequest(entity: entity) else {
-                presenter?.presentData(response: .presentRightHolders(sharedInfoItems: []))
-                return
-            }
+            loadCurrentUser()
+            loadSharedInfoItems(entity: entity)
+        }
+    }
+    
+    private func loadCurrentUser() {
+        currentUser = ASCFileManager.onlyofficeProvider?.user
+    }
+    
+    private func loadSharedInfoItems(entity: ASCEntity?) {
+        guard let entity = entity else {
+            presenter?.presentData(response: .presentRightHolders(sharedInfoItems: [], currentUser: currentUser))
+            return
+        }
+        
+        guard let apiRequest = makeApiRequest(entity: entity) else {
+            presenter?.presentData(response: .presentRightHolders(sharedInfoItems: [], currentUser: currentUser))
+            return
+        }
 
-            ASCOnlyOfficeApi.get(apiRequest) { (results, error, response) in
-                
-                if let results = results as? [[String: Any]] {
+        ASCOnlyOfficeApi.get(apiRequest) { (results, error, response) in
+            print(results)
+            if let results = results as? [[String: Any]] {
+
+                for item in results {
+                    var sharedItem = ASCShareInfo()
                     
-                    for item in results {
-                        var sharedItem = ASCShareInfo()
+                    sharedItem.access = ASCShareAccess(item["access"] as? Int ?? 0)
+                    sharedItem.locked = item["isLocked"] as? Bool ?? false
+                    sharedItem.owner = item["isOwner"] as? Bool ?? false
+
+                    if let sharedTo = item["sharedTo"] as? [String: Any] {
                         
-                        sharedItem.access = ASCShareAccess(item["access"] as? Int ?? 0)
-                        sharedItem.locked = item["isLocked"] as? Bool ?? false
-                        sharedItem.owner = item["isOwner"] as? Bool ?? false
-                        sharedItem.shareLink = item["sharedItem"] as? String
-                    
                         // Link for portal users
+                        sharedItem.shareLink = sharedTo["shareLink"] as? String
                         if let _ = sharedItem.shareLink {
                             continue
                         }
                         
-                        if let sharedTo = item["sharedTo"] as? [String: Any] {
-                            if let _ = sharedTo["userName"] {
-                                // User
-                                sharedItem.user = ASCUser(JSON: sharedTo)
-                            } else if let _ = sharedTo["name"] {
-                                // Group
-                                sharedItem.group = ASCGroup(JSON: sharedTo)
-                            }
+                        if let _ = sharedTo["userName"] {
+                            sharedItem.user = ASCUser(JSON: sharedTo)
+                            self.sharedInfoItems.append(sharedItem)
+                        } else if let _ = sharedTo["name"] {
+                            sharedItem.group = ASCGroup(JSON: sharedTo)
+                            self.sharedInfoItems.append(sharedItem)
                         }
-                        self.sharedInfoItems.append(sharedItem)
                     }
                 }
-                self.presenter?.presentData(response: .presentRightHolders(sharedInfoItems: self.sharedInfoItems))
-                
             }
+            self.presenter?.presentData(response: .presentRightHolders(sharedInfoItems: self.sharedInfoItems, currentUser: self.currentUser))
+            
         }
     }
     

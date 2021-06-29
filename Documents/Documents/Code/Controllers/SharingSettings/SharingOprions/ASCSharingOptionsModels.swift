@@ -18,7 +18,8 @@ enum ASCSharingOptions {
         }
         struct Response {
             enum ResponseType {
-                case presentRightHolders(sharedInfoItems: [ASCShareInfo])
+                case presentRightHolders(sharedInfoItems: [ASCShareInfo],
+                                         currentUser: ASCUser?)
             }
         }
         struct ViewModel {

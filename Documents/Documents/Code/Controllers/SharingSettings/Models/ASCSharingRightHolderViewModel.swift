@@ -11,11 +11,8 @@ import UIKit
 struct ASCSharingRightHolderViewModel: ASCNamedProtocol {
     
     enum RightHolderType: String {
-        case manager
-        case designer
+        case user
         case group
-        
-        // MARK: - todo add lang description
     }
     
     struct Access {
@@ -23,8 +20,9 @@ struct ASCSharingRightHolderViewModel: ASCNamedProtocol {
         var accessEditable: Bool
     }
     
-    var avatar: UIImage
+    var avatarUrl: String?
     var name: String
+    var department: String?
     var isOwner: Bool = false
     var rightHolderType: RightHolderType?
     var access: Access?

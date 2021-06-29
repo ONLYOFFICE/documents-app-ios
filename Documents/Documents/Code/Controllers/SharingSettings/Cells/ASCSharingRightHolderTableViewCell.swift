@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Kingfisher
 
 class ASCSharingRightHolderTableViewCell: UITableViewCell, ASCReusedIdentifierProtocol, ASCViewModelSetter {
     static var reuseId: String = "SharingRightHolderCell"
@@ -65,15 +66,28 @@ class ASCSharingRightHolderTableViewCell: UITableViewCell, ASCReusedIdentifierPr
         separatorInset.left = defaultLineLeftSpacing
         selectionStyle = .none
         
-        avatar.image = viewModel.avatar
+        if let avatarUrlStr = viewModel.avatarUrl,
+           let avatarUrl = ASCOnlyOfficeApi.absoluteUrl(from: URL(string: avatarUrlStr))
+        {
+            avatar.kf.indicatorType = .activity
+            avatar.kf.apiSetImage(with: avatarUrl,
+                                  placeholder: Asset.Images.avatarDefault.image)
+        } else if viewModel.rightHolderType == .group {
+            avatar.image = Asset.Images.avatarDefaultGroup.image
+        } else {
+            avatar.image = Asset.Images.avatarDefault.image
+        }
+        
         title.text = viewModel.name
-        if let rightHolderType = viewModel.rightHolderType {
-            subtitle.text = rightHolderType.rawValue
+        if let department = viewModel.department {
+            subtitle.text = department
         }
         
         let access = viewModel.access
-        if access != nil {
+        if access != nil && !viewModel.isOwner {
             accessLabel.text = access?.documetAccess.title()
+        } else if viewModel.isOwner {
+            accessLabel.text = NSLocalizedString("Owner", comment: "Table cell right holder acces text")
         }
         
         if viewModel.access?.accessEditable ?? false {

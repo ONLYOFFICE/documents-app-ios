@@ -24,14 +24,14 @@ class ASCSharingSettingsVerifyRightHolders: ASCBaseTableViewController {
     }
     
     private var usersModels = [
-        ASCSharingRightHolderViewModel(avatar: Asset.Images.whatsnewFutureShare.image, name: "Pavel Chernyshev Pavel Chernyshev Pavel Chernyshev Pavel Chernyshev Pavel Chernyshev", isOwner: true, rightHolderType: .manager, access: .init(documetAccess: .full, accessEditable: false)),
-        ASCSharingRightHolderViewModel(avatar: Asset.Images.whatsnewFutureFavourite.image, name: "Dimitry Dmittrov", isOwner: false, rightHolderType: .designer, access: .init(documetAccess: .read, accessEditable: true)),
-        ASCSharingRightHolderViewModel(avatar: Asset.Images.whatsnewFutureIcloudDrive.image, name: "Admins", isOwner: true, rightHolderType: nil, access: .init(documetAccess: .review, accessEditable: true)),
+        ASCSharingRightHolderViewModel(avatarUrl: nil, name: "Pavel Chernyshev Pavel Chernyshev Pavel Chernyshev Pavel Chernyshev Pavel Chernyshev", department: "manager", isOwner: true, access: .init(documetAccess: .full, accessEditable: false)),
+        ASCSharingRightHolderViewModel(avatarUrl: nil, name: "Dimitry Dmittrov", department: "manager", isOwner: false, access: .init(documetAccess: .read, accessEditable: true)),
+        ASCSharingRightHolderViewModel(avatarUrl: nil, name: "Admins",  department: "manager", isOwner: true, access: .init(documetAccess: .review, accessEditable: true)),
     ]
     
     var groupsModels = [
-        ASCSharingRightHolderViewModel(avatar: Asset.Images.avatarDefaultGroup.image, name: "Admins", access: .init(documetAccess: .read, accessEditable: true)),
-        ASCSharingRightHolderViewModel(avatar: Asset.Images.avatarDefaultGroup.image, name: "Disigners", access: .init(documetAccess: .read, accessEditable: true))
+        ASCSharingRightHolderViewModel(avatarUrl: nil, name: "Admins", access: .init(documetAccess: .read, accessEditable: true)),
+        ASCSharingRightHolderViewModel(avatarUrl: nil, name: "Disigners", access: .init(documetAccess: .read, accessEditable: true))
     ]
     
     override init(style: UITableView.Style = .grouped) {

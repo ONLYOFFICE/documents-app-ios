@@ -2317,9 +2317,6 @@ class ASCDocumentsViewController: ASCBaseTableViewController, UIGestureRecognize
     private func presentShareController(in parent: UIViewController, entity: ASCEntity) {
         //let sharedVC = ASCShareViewController.instantiate(from: Storyboard.share)
         
-        sharedVC.setup()
-        sharedVC.entity = entity
-        
         let sharedNavigationVC = ASCBaseNavigationController(rootASCViewController: sharedVC)
 
         if UIDevice.pad {
@@ -2329,7 +2326,8 @@ class ASCDocumentsViewController: ASCBaseTableViewController, UIGestureRecognize
         sharedNavigationVC.view.tintColor = self.view.tintColor
         
         parent.present(sharedNavigationVC, animated: true, completion: nil)
-        
+        sharedVC.setup()
+        sharedVC.entity = entity
         sharedVC.requestToLoadRightHolders()
     }
     

@@ -15,12 +15,26 @@ typealias ASCFacebookSignInHandler = (_ token: String?, _ error: Error?) -> Void
 class ASCFacebookSignInController {
     // MARK: - Properties
     
+    private static var initializedSdk: Bool = false
+    
     private var signInHandler: ASCFacebookSignInHandler?
     private var presentedController: UIViewController?
     
     // MARK: - Public
     
     func signIn(controller: UIViewController, handler: @escaping ASCFacebookSignInHandler) {
+        // Initialize facebook sdk if needed
+        if !ASCFacebookSignInController.initializedSdk,
+           let appDelegate = UIApplication.shared.delegate as? AppDelegate
+        {
+            // Initialize Facebook SDK
+            Settings.appID = ASCConstants.Clouds.Facebook.appId
+            ApplicationDelegate.shared.application(UIApplication.shared, didFinishLaunchingWithOptions: appDelegate.launchOptions)
+            
+            ASCFacebookSignInController.initializedSdk = true
+        }
+        
+        // Sign in
         presentedController = controller
         signInHandler = handler
         

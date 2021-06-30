@@ -14,6 +14,7 @@ enum ASCSharingOptions {
         struct Request {
             enum RequestType {
                 case loadRightHolders(entity: ASCEntity?)
+                case clearData
             }
         }
         struct Response {

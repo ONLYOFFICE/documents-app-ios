@@ -40,9 +40,10 @@ class ASCSharingOptionsViewController: ASCBaseTableViewController {
     private var importantRightHolders: [ASCSharingRightHolderViewModel] = []
     private var otherRightHolders: [ASCSharingRightHolderViewModel] = []
     
+    fileprivate var isModuleConfigurated = false
+    
     override init(style: UITableView.Style = .grouped) {
         super.init(style: style)
-        setup()
     }
     
     required init?(coder: NSCoder) {
@@ -57,22 +58,34 @@ class ASCSharingOptionsViewController: ASCBaseTableViewController {
         viewConfigurator.configureNavigationBar(navigationController)
         viewConfigurator.configureTableView(tableView)
         self.viewConfigurator = viewConfigurator
-        
-        interactor?.makeRequest(request: .loadRightHolders(entity: entity))
     }
 
     // MARK: Setup
+    public func setup() {
+        if !isModuleConfigurated {
+            let viewController        = self
+            let interactor            = ASCSharingOptionsInteractor()
+            let presenter             = ASCSharingOptionsPresenter()
+            let router                = ASCSharingOptionsRouter()
+            viewController.interactor = interactor
+            viewController.router     = router
+            interactor.presenter      = presenter
+            presenter.viewController  = viewController
+            router.viewController     = viewController
+            isModuleConfigurated      = true
+        } else {
+            importantRightHolders.removeAll()
+            otherRightHolders.removeAll()
+            interactor?.makeRequest(request: .clearData)
+            if isViewLoaded {
+                tableView.reloadData()
+            }
+        }
+    }
     
-    private func setup() {
-        let viewController        = self
-        let interactor            = ASCSharingOptionsInteractor()
-        let presenter             = ASCSharingOptionsPresenter()
-        let router                = ASCSharingOptionsRouter()
-        viewController.interactor = interactor
-        viewController.router     = router
-        interactor.presenter      = presenter
-        presenter.viewController  = viewController
-        router.viewController     = viewController
+    // MARK: - Requests
+    public func requestToLoadRightHolders() {
+        interactor?.makeRequest(request: .loadRightHolders(entity: entity))
     }
 }
 

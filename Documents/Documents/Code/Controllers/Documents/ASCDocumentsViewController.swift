@@ -160,6 +160,8 @@ class ASCDocumentsViewController: ASCBaseTableViewController, UIGestureRecognize
         return onlyOfficeProvider.category?.folder?.rootFolderType == .onlyofficeFavorites
     }()
     
+    private lazy var sharedVC = ASCSharingOptionsViewController(style: .grouped)
+    
     // MARK: - Lifecycle Methods
     
     override func viewDidLoad() {
@@ -2314,18 +2316,21 @@ class ASCDocumentsViewController: ASCBaseTableViewController, UIGestureRecognize
     
     private func presentShareController(in parent: UIViewController, entity: ASCEntity) {
         //let sharedVC = ASCShareViewController.instantiate(from: Storyboard.share)
-        // MARK: - TODO DI Container
-        let sharedVC = ASCSharingOptionsViewController(style: .grouped)
-        let sharedNavigationVC = ASCBaseNavigationController(rootASCViewController: sharedVC)
-
+        
+        sharedVC.setup()
         sharedVC.entity = entity
+        
+        let sharedNavigationVC = ASCBaseNavigationController(rootASCViewController: sharedVC)
 
         if UIDevice.pad {
             sharedNavigationVC.modalPresentationStyle = .formSheet
         }
 
         sharedNavigationVC.view.tintColor = self.view.tintColor
+        
         parent.present(sharedNavigationVC, animated: true, completion: nil)
+        
+        sharedVC.requestToLoadRightHolders()
     }
     
     private func configureSwipeGesture() {

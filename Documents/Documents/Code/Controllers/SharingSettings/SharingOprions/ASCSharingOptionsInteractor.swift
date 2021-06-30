@@ -29,6 +29,9 @@ class ASCSharingOptionsInteractor: ASCSharingOptionsBusinessLogic, ASCSharingOpt
         case .loadRightHolders(entity: let entity):
             loadCurrentUser()
             loadSharedInfoItems(entity: entity)
+        case .clearData:
+            currentUser = nil
+            sharedInfoItems = []
         }
     }
     

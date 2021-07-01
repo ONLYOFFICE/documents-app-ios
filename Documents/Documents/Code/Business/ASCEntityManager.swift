@@ -79,7 +79,7 @@ class ASCEntityManager: NSObject, UITextFieldDelegate {
             textField.text = fileName
             
             textField.add(for: .editingChanged, {
-                createAction.isEnabled = (textField.text?.trimmed.length)! > 0
+                createAction.isEnabled = !((textField.text ?? "").trimmed.isEmpty)
             })
             
             delay(seconds: 0.3) {
@@ -137,7 +137,10 @@ class ASCEntityManager: NSObject, UITextFieldDelegate {
             textField.text = folderName
             
             textField.add(for: .editingChanged, {
-                createAction.isEnabled = (textField.text?.trimmed.length)! > 0
+                let name = (textField.text ?? "").trimmed
+                let isEnabled = !name.isEmpty && !(name == "." || name == "..")
+                
+                createAction.isEnabled = isEnabled
             })
             
             delay(seconds: 0.3) {
@@ -430,7 +433,14 @@ class ASCEntityManager: NSObject, UITextFieldDelegate {
             textField.text = entityTitle?.fileName()
             
             textField.add(for: .editingChanged, {
-                renameAction.isEnabled = (textField.text?.trimmed.length)! > 0
+                let name = (textField.text ?? "").trimmed
+                var isEnabled = !name.isEmpty
+                
+                if entity is ASCFolder, name == "." || name == ".." {
+                    isEnabled = false
+                }
+                
+                renameAction.isEnabled = isEnabled
             })
             
             delay(seconds: 0.3) {

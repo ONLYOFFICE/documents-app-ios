@@ -34,6 +34,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
+        self.launchOptions = launchOptions
         
         if ASCCommon.isUnitTesting {
             return true
@@ -48,10 +49,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         ASCStyles.initialize
         _ = passcodeLockPresenter
         _ = ASCAccountsManager.shared
-                
-        // Facebook login
-        Settings.appID = ASCConstants.Clouds.Facebook.appId
-        ApplicationDelegate.shared.application(application, didFinishLaunchingWithOptions: launchOptions)
         
         // Use Firebase library to configure APIs
         FirebaseApp.configure()
@@ -313,3 +310,13 @@ extension AppDelegate : MessagingDelegate {
     }
 }
 
+extension AppDelegate {
+    private struct Holder {
+        static var launchOptions: [UIApplication.LaunchOptionsKey: Any]?
+    }
+    
+    var launchOptions: [UIApplication.LaunchOptionsKey: Any]? {
+        get { return Holder.launchOptions }
+        set { Holder.launchOptions = newValue }
+    }
+}

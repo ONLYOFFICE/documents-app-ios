@@ -126,7 +126,10 @@ class ASCConnectCloudViewController: UITableViewController {
                     presentProviderConnection(by: providerType)
                 case .dropbox:
                     presentProviderConnection(by: providerType, animated: true)
+                case .onedrive:
+                    presentProviderConnection(by: providerType, animated: true)
                 default:
+                    tableView.deselectRow(at: indexPath, animated: true)
                     break
                 }
             }

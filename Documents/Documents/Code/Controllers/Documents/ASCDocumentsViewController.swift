@@ -1715,7 +1715,7 @@ class ASCDocumentsViewController: ASCBaseTableViewController, UIGestureRecognize
         if actions.contains(.export) {
             bottomActions.append(
                 UIAction(
-                    title: NSLocalizedString("Share", comment: "Button title"),
+                    title: NSLocalizedString("Export", comment: "Button title"),
                     image: UIImage(systemName: "square.and.arrow.up"))
                 { [unowned self] action in
                     cell.hideSwipe(animated: true)
@@ -2111,7 +2111,7 @@ class ASCDocumentsViewController: ASCBaseTableViewController, UIGestureRecognize
         if actions.contains(.export) {
             actionAlertController.addAction(
                 UIAlertAction(
-                    title: NSLocalizedString("Share", comment: "Button title"),
+                    title: NSLocalizedString("Export", comment: "Button title"),
                     style: .default,
                     handler: { [unowned self] action in
                         cell.hideSwipe(animated: true)

@@ -166,7 +166,7 @@ class ASCConnectPortalThirdPartyViewController: UITableViewController {
                 textField.text = folderName
                 
                 textField.add(for: .editingChanged, {
-                    connectAction.isEnabled = (textField.text?.trimmed.length)! > 0
+                    connectAction.isEnabled = !((textField.text ?? "").trimmed.isEmpty)
                 })
                 
                 delay(seconds: 0.2) {

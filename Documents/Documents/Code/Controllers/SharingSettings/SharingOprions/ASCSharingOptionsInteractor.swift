@@ -51,7 +51,6 @@ class ASCSharingOptionsInteractor: ASCSharingOptionsBusinessLogic, ASCSharingOpt
         }
 
         ASCOnlyOfficeApi.get(apiRequest) { (results, error, response) in
-            print(results)
             if let results = results as? [[String: Any]] {
 
                 for item in results {

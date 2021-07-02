@@ -14,11 +14,7 @@ protocol ASCSharingOptionsDisplayLogic: AnyObject {
 
 class ASCSharingOptionsViewController: ASCBaseTableViewController {
     
-    var entity: ASCEntity? {
-        didSet {
-            tableView.reloadData()
-        }
-    }
+    private(set) var entity: ASCEntity?
     
     var interactor: ASCSharingOptionsBusinessLogic?
     var router: (NSObjectProtocol & ASCSharingOptionsRoutingLogic)?
@@ -35,9 +31,9 @@ class ASCSharingOptionsViewController: ASCBaseTableViewController {
             return
         }
         if activating {
-             self.externalLink = "https://test.portal.com"
+            self.externalLink = "https://test.portal.com"
         } else {
-             self.externalLink = ""
+            self.externalLink = ""
         }
     }
     
@@ -45,6 +41,8 @@ class ASCSharingOptionsViewController: ASCBaseTableViewController {
     private var otherRightHolders: [ASCSharingRightHolderViewModel] = []
     
     fileprivate var isModuleConfigurated = false
+    
+    private lazy var accessViewController = ASCSharingSettingsAccessViewController()
     
     override init(style: UITableView.Style = .grouped) {
         super.init(style: style)
@@ -63,9 +61,10 @@ class ASCSharingOptionsViewController: ASCBaseTableViewController {
         viewConfigurator.configureTableView(tableView)
         self.viewConfigurator = viewConfigurator
     }
-
+    
     // MARK: Setup
-    public func setup() {
+    public func setup(entity: ASCEntity) {
+        self.entity = entity
         if !isModuleConfigurated {
             let viewController        = self
             let interactor            = ASCSharingOptionsInteractor()
@@ -132,17 +131,17 @@ extension ASCSharingOptionsViewController {
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if isSharingViaExternalLinkPossible() {
-            guard let section = SharingOptionsSection(rawValue: indexPath.section) else { fatalError("couldn't get SharingOptionsSection") }
+            let section = getSharingOptionsSection(sectionRawValue: indexPath.section)
             switch section {
-                case .externalLink: return externalLinkCell(cellForRowAt: indexPath)
-                case .importantRightHolders: return importantRightHoldersCell(cellForRowAt: indexPath)
-                case .otherRightHolders: return otherRightHoldersCell(cellForRowAt: indexPath)
+            case .externalLink: return externalLinkCell(cellForRowAt: indexPath)
+            case .importantRightHolders: return importantRightHoldersCell(cellForRowAt: indexPath)
+            case .otherRightHolders: return otherRightHoldersCell(cellForRowAt: indexPath)
             }
         } else {
-            guard let section = SharingFolderOprinosSection(rawValue: indexPath.section) else { fatalError("couldn't get SharingFolderOprinosSection") }
+            let section = getSharingFolderOprinosSection(sectionRawValue: indexPath.row)
             switch section {
-                case .importantRightHolders: return importantRightHoldersCell(cellForRowAt: indexPath)
-                case .otherRightHolders: return otherRightHoldersCell(cellForRowAt: indexPath)
+            case .importantRightHolders: return importantRightHoldersCell(cellForRowAt: indexPath)
+            case .otherRightHolders: return otherRightHoldersCell(cellForRowAt: indexPath)
             }
         }
     }
@@ -175,24 +174,24 @@ extension ASCSharingOptionsViewController {
     }
     
     private func otherRightHoldersCell(cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-       let cell: ASCSharingRightHolderTableViewCell = getCell()
-       cell.viewModel = otherRightHolders[indexPath.row]
-       return cell
+        let cell: ASCSharingRightHolderTableViewCell = getCell()
+        cell.viewModel = otherRightHolders[indexPath.row]
+        return cell
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if isSharingViaExternalLinkPossible() {
-            guard let section = SharingOptionsSection(rawValue: section) else { fatalError("couldn't get SharingOptionsSection") }
+            let section = getSharingOptionsSection(sectionRawValue: section)
             switch section {
-                case .externalLink: return externalLink.isEmpty ? 1 : 3
-                case .importantRightHolders: return importantRightHolders.count
-                case .otherRightHolders: return otherRightHolders.count
+            case .externalLink: return externalLink.isEmpty ? 1 : 3
+            case .importantRightHolders: return importantRightHolders.count
+            case .otherRightHolders: return otherRightHolders.count
             }
         } else {
-            guard let section = SharingFolderOprinosSection(rawValue: section) else { fatalError("couldn't get SharingFolderOprinosSection") }
+            let section = getSharingFolderOprinosSection(sectionRawValue: section)
             switch section {
-                case .importantRightHolders: return importantRightHolders.count
-                case .otherRightHolders: return otherRightHolders.count
+            case .importantRightHolders: return importantRightHolders.count
+            case .otherRightHolders: return otherRightHolders.count
             }
         }
     }
@@ -211,27 +210,73 @@ extension ASCSharingOptionsViewController {
         return section.heightForSectionHeader()
     }
     
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        var viewModel: ASCSharingRightHolderViewModel?
+        if isSharingViaExternalLinkPossible() {
+            let section = getSharingOptionsSection(sectionRawValue: indexPath.section)
+            switch section {
+            case .externalLink:
+                if indexPath.row == ExternalLinkRow.accessInfo.rawValue {
+                    viewConfigurator?.configureForLink(accessViewController: accessViewController, access: .read) // MARK: - TODO change fix .read
+                    self.navigationController?.pushViewController(accessViewController, animated: true)
+                }
+            case .importantRightHolders: viewModel = importantRightHolders[indexPath.row]
+            case .otherRightHolders: viewModel = otherRightHolders[indexPath.row]
+            }
+        } else {
+            let section = getSharingFolderOprinosSection(sectionRawValue: indexPath.row)
+            switch section {
+            case .importantRightHolders: viewModel = importantRightHolders[indexPath.row]
+            case .otherRightHolders: viewModel = otherRightHolders[indexPath.row]
+            }
+        }
+        
+        guard let unwrapedViewModel = viewModel else { return }
+        
+        viewConfigurator?.configureForUser(accessViewController: accessViewController,
+                                           userName: unwrapedViewModel.name,
+                                           access: unwrapedViewModel.access?.documetAccess ?? .none)
+        accessViewController.selectAccessDelegate = { [weak self] access in
+            
+        }
+        self.navigationController?.pushViewController(accessViewController, animated: true)
+        
+    }
+    
     private func getCell<T: UITableViewCell & ASCReusedIdentifierProtocol>() -> T {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: T.reuseId) as? T else {
             fatalError("couldn't cast cell to \(T.self)")
         }
         return cell
     }
+
+    
+    private func isLink(by indexPath: IndexPath) {
+        
+    }
     
     private func getSection(sectionRawValue: Int) -> ASCSharingOptionsSectionProtocol {
         if isSharingViaExternalLinkPossible() {
-            guard let section = SharingOptionsSection(rawValue: sectionRawValue) else { fatalError("couldn't get SharingOptionsSection") }
-            return section
+            return getSharingOptionsSection(sectionRawValue: sectionRawValue)
         } else {
-            guard let section = SharingFolderOprinosSection(rawValue: sectionRawValue) else { fatalError("couldn't get SharingFolderOprinosSection") }
-            return section
+            return getSharingFolderOprinosSection(sectionRawValue: sectionRawValue)
         }
+    }
+    
+    private func getSharingOptionsSection(sectionRawValue: Int) -> SharingOptionsSection {
+        guard let section = SharingOptionsSection(rawValue: sectionRawValue) else { fatalError("couldn't get SharingOptionsSection") }
+        return section
+    }
+    
+    private func getSharingFolderOprinosSection(sectionRawValue: Int) -> SharingFolderOprinosSection {
+        guard let section = SharingFolderOprinosSection(rawValue: sectionRawValue) else { fatalError("couldn't get SharingFolderOprinosSection") }
+        return section
     }
 }
 
 // MARK: - Sections
 extension ASCSharingOptionsViewController {
-
+    
     enum ExternalLinkRow: Int, CaseIterable {
         case accessSwitch
         case accessInfo
@@ -244,7 +289,7 @@ extension ASCSharingOptionsViewController {
             case .link: return ""
             }
         }
-
+        
     }
     
     enum SharingOptionsSection: Int, CaseIterable, ASCSharingOptionsSectionProtocol {

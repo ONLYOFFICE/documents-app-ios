@@ -37,6 +37,11 @@ class ASCSharingView {
         return UIBarButtonItem(image: icon, style: .plain, target: self, action: #selector(onAddRightsBarButtonTap))
     }()
     
+    private lazy var loadingTableActivityIndicator: UIActivityIndicatorView = {
+        let indicator = UIActivityIndicatorView()
+        return indicator
+    }()
+    
     convenience init(delegate: ASCSharingViewDelegate?) {
         self.init()
         
@@ -69,6 +74,24 @@ class ASCSharingView {
                            forCellReuseIdentifier: ASCCopyLinkTableViewCell.reuseId)
         tableView.register(ASCSharingRightHolderTableViewCell.self,
                            forCellReuseIdentifier: ASCSharingRightHolderTableViewCell.reuseId)
+    }
+    
+    public func configureForUser(accessViewController: ASCSharingSettingsAccessViewController, userName: String, access: ASCShareAccess) {
+        accessViewController.largeTitleDisplayMode = .automatic
+        accessViewController.title = userName
+        accessViewController.currentlyAccess = access
+        accessViewController.headerText = NSLocalizedString("Access settings", comment: "")
+        accessViewController.footerText = NSLocalizedString("Unauthorized users will not be able to view the document.", comment: "")
+        accessViewController.tableView.reloadData()
+    }
+    
+    public func configureForLink(accessViewController: ASCSharingSettingsAccessViewController, access: ASCShareAccess) {
+        accessViewController.largeTitleDisplayMode = .never
+        accessViewController.title = NSLocalizedString("Sharing settings", comment: "")
+        accessViewController.currentlyAccess = access
+        accessViewController.headerText = NSLocalizedString("Access by external link", comment: "")
+        accessViewController.footerText = NSLocalizedString("The document will be available for viewing by unauthorized users who click on an external link.", comment: "")
+        accessViewController.tableView.reloadData()
     }
     
     @objc func onLinkBarButtonTap() {

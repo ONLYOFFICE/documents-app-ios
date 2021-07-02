@@ -8,22 +8,12 @@
 
 import UIKit
 
-struct ASCSharingRightHolderViewModel: ASCNamedProtocol {
-    
-    enum RightHolderType: String {
-        case user
-        case group
-    }
-    
-    struct Access {
-        var documetAccess: ASCShareAccess
-        var accessEditable: Bool
-    }
-    
+struct ASCSharingRightHolderViewModel: ASCNamedProtocol, ASCSharingRightHolderViewModelProtocol, Identifiable {
+    var id: String
     var avatarUrl: String?
     var name: String
     var department: String?
     var isOwner: Bool = false
-    var rightHolderType: RightHolderType?
-    var access: Access?
+    var rightHolderType: ASCSharingRightHolderType?
+    var access: ASCSharingRightHolderViewModelAccess?
 }

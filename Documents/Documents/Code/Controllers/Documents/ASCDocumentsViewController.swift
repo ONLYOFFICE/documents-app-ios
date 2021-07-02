@@ -2326,8 +2326,7 @@ class ASCDocumentsViewController: ASCBaseTableViewController, UIGestureRecognize
         sharedNavigationVC.view.tintColor = self.view.tintColor
         
         parent.present(sharedNavigationVC, animated: true, completion: nil)
-        sharedVC.setup()
-        sharedVC.entity = entity
+        sharedVC.setup(entity: entity)
         sharedVC.requestToLoadRightHolders()
     }
     

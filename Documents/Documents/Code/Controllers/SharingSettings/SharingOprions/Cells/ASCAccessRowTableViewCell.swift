@@ -32,7 +32,6 @@ class ASCAccessRowTableViewCell: UITableViewCell, ASCReusedIdentifierProtocol {
             return
         }
         
-        selectionStyle = .none
         accessoryType = .disclosureIndicator
         
         title.text = viewModel.title

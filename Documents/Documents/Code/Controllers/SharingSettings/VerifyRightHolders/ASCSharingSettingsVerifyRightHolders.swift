@@ -24,14 +24,14 @@ class ASCSharingSettingsVerifyRightHolders: ASCBaseTableViewController {
     }
     
     private var usersModels = [
-        ASCSharingRightHolderViewModel(avatarUrl: nil, name: "Pavel Chernyshev Pavel Chernyshev Pavel Chernyshev Pavel Chernyshev Pavel Chernyshev", department: "manager", isOwner: true, access: .init(documetAccess: .full, accessEditable: false)),
-        ASCSharingRightHolderViewModel(avatarUrl: nil, name: "Dimitry Dmittrov", department: "manager", isOwner: false, access: .init(documetAccess: .read, accessEditable: true)),
-        ASCSharingRightHolderViewModel(avatarUrl: nil, name: "Admins",  department: "manager", isOwner: true, access: .init(documetAccess: .review, accessEditable: true)),
+        ASCSharingRightHolderViewModel(id: "", avatarUrl: nil, name: "Pavel Chernyshev Pavel Chernyshev Pavel Chernyshev Pavel Chernyshev Pavel Chernyshev", department: "manager", isOwner: true, access: .init(documetAccess: .full, accessEditable: false)),
+        ASCSharingRightHolderViewModel(id: "", avatarUrl: nil, name: "Dimitry Dmittrov", department: "manager", isOwner: false, access: .init(documetAccess: .read, accessEditable: true)),
+        ASCSharingRightHolderViewModel(id: "", avatarUrl: nil, name: "Admins",  department: "manager", isOwner: true, access: .init(documetAccess: .review, accessEditable: true)),
     ]
     
     var groupsModels = [
-        ASCSharingRightHolderViewModel(avatarUrl: nil, name: "Admins", access: .init(documetAccess: .read, accessEditable: true)),
-        ASCSharingRightHolderViewModel(avatarUrl: nil, name: "Disigners", access: .init(documetAccess: .read, accessEditable: true))
+        ASCSharingRightHolderViewModel(id: "", avatarUrl: nil, name: "Admins", access: .init(documetAccess: .read, accessEditable: true)),
+        ASCSharingRightHolderViewModel(id: "", avatarUrl: nil, name: "Disigners", access: .init(documetAccess: .read, accessEditable: true))
     ]
     
     override init(style: UITableView.Style = .grouped) {

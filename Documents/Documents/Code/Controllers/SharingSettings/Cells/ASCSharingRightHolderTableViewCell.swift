@@ -63,8 +63,13 @@ class ASCSharingRightHolderTableViewCell: UITableViewCell, ASCReusedIdentifierPr
             return
         }
         
+        if let access = viewModel.access, access.accessEditable {
+            selectionStyle = .default
+        } else {
+            selectionStyle = .none
+        }
+        
         separatorInset.left = defaultLineLeftSpacing
-        selectionStyle = .none
         
         if let avatarUrlStr = viewModel.avatarUrl,
            let avatarUrl = ASCOnlyOfficeApi.absoluteUrl(from: URL(string: avatarUrlStr))

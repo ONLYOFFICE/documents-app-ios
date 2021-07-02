@@ -11,16 +11,17 @@ import UIKit
 class ASCSharingSettingsAccessViewController: ASCBaseTableViewController {
     var reuseCellId = "basicStyle"
     
+    var selectAccessDelegate: ((ASCShareAccess) -> Void)?
+    
     var currentlyAccess: ASCShareAccess? = .read
     
     var accessList: [ASCShareAccess] = ASCShareAccess.allCases.filter({ $0 != .none })
     
     var heightForSectionHeader: CGFloat = 38
     
-    var nvigationBarTitle: String = NSLocalizedString("Sharing settings", comment: "")
-    var largeTitleDisplayMode:  UINavigationItem.LargeTitleDisplayMode = .never
-    var headerText: String = NSLocalizedString("Access by external link", comment: "")
-    var footerText: String = NSLocalizedString("Документ будет доступен для просмотра неавторизированными пользователями, перешедшими по внещней ссылке.", comment: "")
+    var largeTitleDisplayMode:  UINavigationItem.LargeTitleDisplayMode = .automatic
+    var headerText: String = NSLocalizedString("Access settings", comment: "")
+    var footerText: String = NSLocalizedString("Unauthorized users will not be able to view the document.", comment: "")
     
     override init(style: UITableView.Style = .grouped) {
         super.init(style: style)
@@ -39,7 +40,9 @@ class ASCSharingSettingsAccessViewController: ASCBaseTableViewController {
         navigationItem.largeTitleDisplayMode = largeTitleDisplayMode
         navigationController?.navigationBar.backIndicatorImage = UIImage()
         navigationController?.navigationBar.backIndicatorTransitionMaskImage = UIImage()
-        navigationController?.navigationBar.topItem?.title = nvigationBarTitle
+        navigationController?.navigationItem.setHidesBackButton(true, animated: false)
+        navigationItem.leftBarButtonItem = nil;
+        navigationItem.hidesBackButton = true
     }
     
     private func configureTableView() {
@@ -68,9 +71,16 @@ extension ASCSharingSettingsAccessViewController {
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let access = accessList[indexPath.row]
-        currentlyAccess = currentlyAccess != access ? access : nil
-        
-        tableView.reloadData()
+        if currentlyAccess != access {
+            currentlyAccess = access
+            tableView.reloadData()
+            self.selectAccessDelegate?(access)
+            if let navigationController = self.navigationController {
+                navigationController.popViewController(animated: true)
+            } else {
+                self.dismiss(animated: true)
+            }
+        }
     }
     
     override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {

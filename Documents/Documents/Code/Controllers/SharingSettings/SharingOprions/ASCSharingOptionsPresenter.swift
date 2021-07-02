@@ -35,26 +35,31 @@ class ASCSharingOptionsPresenter: ASCSharingOptionsPresentationLogic {
             
             sharedInfoItems.forEach({ sharedInfo  in
                 var name = ""
+                var id: String?
+                var avatarUrl: String?
                 if let user = sharedInfo.user {
+                    id = user.userId
                     name = user.displayName ?? ""
+                    avatarUrl = sharedInfo.user?.avatarRetina ?? sharedInfo.user?.avatar
                 } else if let group = sharedInfo.group {
+                    id = group.id
                     name = group.name ?? ""
                 }
                 
-                let access = ASCSharingRightHolderViewModel.Access(documetAccess: sharedInfo.access,
+                let access = ASCSharingRightHolderViewModelAccess(documetAccess: sharedInfo.access,
                                                                    accessEditable: !sharedInfo.locked && !sharedInfo.owner)
-                
-                let avatarUrl: String? = sharedInfo.user?.avatarRetina ?? sharedInfo.user?.avatar
-                
-                let viewModel = ASCSharingRightHolderViewModel(avatarUrl: avatarUrl,
-                                               name: name,
-                                               department: sharedInfo.user?.department,
-                                               isOwner: sharedInfo.owner,
-                                               access: access)
-                if isImportant(sharedInfo) {
-                    imprtantRightHolders.append(viewModel)
-                } else {
-                    otherRightHolders.append(viewModel)
+                if let unwrapedId = id {
+                    let viewModel = ASCSharingRightHolderViewModel(id: unwrapedId,
+                                                                   avatarUrl: avatarUrl,
+                                                                   name: name,
+                                                                   department: sharedInfo.user?.department,
+                                                                   isOwner: sharedInfo.owner,
+                                                                   access: access)
+                    if isImportant(sharedInfo) {
+                        imprtantRightHolders.append(viewModel)
+                    } else {
+                        otherRightHolders.append(viewModel)
+                    }
                 }
             })
 

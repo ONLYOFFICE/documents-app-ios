@@ -1097,52 +1097,25 @@ class ASCOnlyofficeProvider: ASCFileProviderProtocol & ASCSortableFileProviderPr
         if endSessionLife {
             alertTitle = NSLocalizedString("Your session has expired", comment: "")
             alertMessage = NSLocalizedString("Please re-login to renew your session.", comment: "")
-        }
-
-        let alertError = UIAlertController(
-            title: alertTitle,
-            message: alertMessage,
-            preferredStyle: .alert,
-            tintColor: nil
-        )
-
-        alertError.addAction(
-            UIAlertAction(
-                title: NSLocalizedString("Logout", comment: ""),
-                style: .destructive,
-                handler: { action in
-                    ASCUserProfileViewController.logout()
-            })
-        )
-
-        if endSessionLife {
-            alertError.addAction(
-                UIAlertAction(
-                    title: NSLocalizedString("Renewal", comment: ""),
-                    style: .cancel,
-                    handler: { [weak self] action in
-                        let currentAccout = ASCAccountsManager.shared.get(by: self?.apiClient.baseURL?.absoluteString ?? "", email: self?.user?.email ?? "")
-                        ASCUserProfileViewController.logout(renewAccount: currentAccout)
-                })
-            )
-        } else {
-            alertError.addAction(
-                UIAlertAction(
-                    title: NSLocalizedString("Try Again", comment: ""),
-                    style: .cancel,
-                    handler: nil
-                )
-            )
-        }
-
-        if endSessionLife {
-            if let topVC = UIApplication.topViewController() {
-                if !(topVC is UIAlertController) {
-                    topVC.present(alertError, animated: true, completion: nil)
+            errorFeedback(title: alertTitle, message: alertMessage)
+        } else if let error = error as? NetworkingError {
+            switch error {
+            case .apiError(let error):
+                if let error = error as? OnlyofficeServerError {
+                    switch error {
+                    case .unauthorized:
+                        errorFeedback(title: error.localizedDescription, message: NSLocalizedString("Please re-login to renew your session.", comment: ""))
+                    case .unknown(let message):
+                        errorFeedback(title: alertTitle, message: message ?? alertMessage, allowRenew: false)
+                    default:
+                        errorFeedback(title: alertTitle, message: error.localizedDescription, allowRenew: false)
+                    }
                 }
+            default:
+                errorFeedback(title: alertTitle, message: error.localizedDescription, allowRenew: false)
             }
         }
-
+        
         return true
     }
 
@@ -1186,6 +1159,51 @@ class ASCOnlyofficeProvider: ASCFileProviderProtocol & ASCSortableFileProviderPr
             title: title,
             message: message
         )
+    }
+    
+    func errorFeedback(title: String, message: String, allowRenew: Bool = true) {
+        let alertError = UIAlertController(
+            title: title,
+            message: message,
+            preferredStyle: .alert,
+            tintColor: nil
+        )
+
+        alertError.addAction(
+            UIAlertAction(
+                title: NSLocalizedString("Logout", comment: ""),
+                style: .destructive,
+                handler: { action in
+                    ASCUserProfileViewController.logout()
+            })
+        )
+
+        if allowRenew {
+            alertError.addAction(
+                UIAlertAction(
+                    title: NSLocalizedString("Renewal", comment: ""),
+                    style: .cancel,
+                    handler: { [weak self] action in
+                        let currentAccout = ASCAccountsManager.shared.get(by: self?.apiClient.baseURL?.absoluteString ?? "", email: self?.user?.email ?? "")
+                        ASCUserProfileViewController.logout(renewAccount: currentAccout)
+                })
+            )
+        } else {
+            alertError.addAction(
+                UIAlertAction(
+                    title: NSLocalizedString("Try Again", comment: ""),
+                    style: .cancel,
+                    handler: nil
+                )
+            )
+        }
+
+        // TODO: Check if onlyoffice provider in front
+        if let topVC = UIApplication.topViewController() {
+            if !(topVC is UIAlertController) {
+                topVC.present(alertError, animated: true, completion: nil)
+            }
+        }
     }
 
     // MARK: - Open file

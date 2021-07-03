@@ -37,13 +37,16 @@ class ASCSharingOptionsPresenter: ASCSharingOptionsPresentationLogic {
                 var name = ""
                 var id: String?
                 var avatarUrl: String?
+                var rightHolderType: ASCSharingRightHolderType?
                 if let user = sharedInfo.user {
                     id = user.userId
                     name = user.displayName ?? ""
                     avatarUrl = sharedInfo.user?.avatarRetina ?? sharedInfo.user?.avatar
+                    rightHolderType = .user
                 } else if let group = sharedInfo.group {
                     id = group.id
                     name = group.name ?? ""
+                    rightHolderType = .group
                 }
                 
                 let access = ASCSharingRightHolderViewModelAccess(documetAccess: sharedInfo.access,
@@ -54,6 +57,7 @@ class ASCSharingOptionsPresenter: ASCSharingOptionsPresentationLogic {
                                                                    name: name,
                                                                    department: sharedInfo.user?.department,
                                                                    isOwner: sharedInfo.owner,
+                                                                   rightHolderType: rightHolderType ?? .user,
                                                                    access: access)
                     if isImportant(sharedInfo) {
                         imprtantRightHolders.append(viewModel)
@@ -63,8 +67,10 @@ class ASCSharingOptionsPresenter: ASCSharingOptionsPresentationLogic {
                 }
             })
 
-            viewController?.displayRightHolders(viewModel: .displayRightHolders(importantRightHolders: imprtantRightHolders,
+            viewController?.display(viewModel: .displayRightHolders(importantRightHolders: imprtantRightHolders,
                                                                                 otherRightHolders: otherRightHolders))
+        case .presentChangeRightHolderAccess(rightHolder: let rightHolder, error: let error):
+            viewController?.display(viewModel: .displayChangeRightHolderAccess(rightHolder: rightHolder, error: error))
         }
     }
     

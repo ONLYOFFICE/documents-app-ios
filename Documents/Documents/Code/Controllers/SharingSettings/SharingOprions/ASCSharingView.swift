@@ -37,10 +37,7 @@ class ASCSharingView {
         return UIBarButtonItem(image: icon, style: .plain, target: self, action: #selector(onAddRightsBarButtonTap))
     }()
     
-    private lazy var loadingTableActivityIndicator: UIActivityIndicatorView = {
-        let indicator = UIActivityIndicatorView()
-        return indicator
-    }()
+    public lazy var loadingTableActivityIndicator = UIActivityIndicatorView()
     
     convenience init(delegate: ASCSharingViewDelegate?) {
         self.init()
@@ -92,6 +89,19 @@ class ASCSharingView {
         accessViewController.headerText = NSLocalizedString("Access by external link", comment: "")
         accessViewController.footerText = NSLocalizedString("The document will be available for viewing by unauthorized users who click on an external link.", comment: "")
         accessViewController.tableView.reloadData()
+    }
+    
+    public func showTableLoadingActivityIndicator(tableView: UITableView) {
+        loadingTableActivityIndicator.translatesAutoresizingMaskIntoConstraints = false
+        loadingTableActivityIndicator.startAnimating()
+        tableView.addSubview(loadingTableActivityIndicator)
+        loadingTableActivityIndicator.centerYAnchor.constraint(equalTo: tableView.centerYAnchor).isActive = true
+        loadingTableActivityIndicator.centerXAnchor.constraint(equalTo: tableView.centerXAnchor).isActive = true
+    }
+    
+    public func hideTableLoadingActivityIndicator() {
+        loadingTableActivityIndicator.stopAnimating()
+        loadingTableActivityIndicator.removeFromSuperview()
     }
     
     @objc func onLinkBarButtonTap() {

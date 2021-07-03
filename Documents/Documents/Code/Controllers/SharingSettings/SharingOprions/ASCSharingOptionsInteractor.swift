@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import Alamofire
+import MBProgressHUD
 
 protocol ASCSharingOptionsBusinessLogic {
     func makeRequest(request: ASCSharingOptions.Model.Request.RequestType)
@@ -29,9 +31,12 @@ class ASCSharingOptionsInteractor: ASCSharingOptionsBusinessLogic, ASCSharingOpt
         case .loadRightHolders(entity: let entity):
             loadCurrentUser()
             loadSharedInfoItems(entity: entity)
+        case .changeRightHolderAccess(entity: let entity, rightHolder: let rightHolder, access: let access):
+            changeRightHolderAccess(entity: entity, rightHolder: rightHolder, access: access)
         case .clearData:
             currentUser = nil
             sharedInfoItems = []
+
         }
     }
     
@@ -81,6 +86,50 @@ class ASCSharingOptionsInteractor: ASCSharingOptionsBusinessLogic, ASCSharingOpt
             self.presenter?.presentData(response: .presentRightHolders(sharedInfoItems: self.sharedInfoItems, currentUser: self.currentUser))
             
         }
+    }
+    
+    private func changeRightHolderAccess(entity: ASCEntity, rightHolder: ASCSharingRightHolderViewModel, access: ASCShareAccess) {
+        var shares: [[String: Any]] = []
+        var request: String!
+        
+        if let file = entity as? ASCFile {
+            request = String(format: ASCOnlyOfficeApi.apiShareFile, file.id)
+        } else if let folder = entity as? ASCFolder {
+            request = String(format: ASCOnlyOfficeApi.apiShareFolder, folder.id)
+        }
+        
+        shares.append([
+            "ShareTo": rightHolder.id,
+            "Access": access.rawValue
+        ])
+        
+        let baseParams: Parameters = [
+            "notify": "false"
+        ]
+        let sharesParams = sharesToParams(shares: shares)
+        
+        ASCOnlyOfficeApi.put(request, parameters: baseParams + sharesParams) { [weak self] (results, error, response) in
+            if let _ = results as? [[String: Any]] {
+                var changingRightHolder = rightHolder
+                changingRightHolder.access?.documetAccess = access
+                self?.presenter?.presentData(response: .presentChangeRightHolderAccess(rightHolder: changingRightHolder, error: nil))
+            } else if let response = response {
+                let errorMessage = ASCOnlyOfficeApi.errorMessage(by: response)
+                self?.presenter?.presentData(response: .presentChangeRightHolderAccess(rightHolder: rightHolder, error: errorMessage))
+            }
+        }
+    }
+    
+    private func sharesToParams(shares: [[String: Any]]) -> [String: Any] {
+        var params: [String: Any] = [:]
+        
+        for (index, dictinory) in shares.enumerated() {
+            for (key, value) in dictinory {
+                params["share[\(index)].\(key)"] = value
+            }
+        }
+
+        return params
     }
     
     private func makeApiRequest(entity: ASCEntity) -> String? {

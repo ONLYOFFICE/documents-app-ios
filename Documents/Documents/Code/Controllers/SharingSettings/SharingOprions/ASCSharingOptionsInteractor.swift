@@ -21,22 +21,30 @@ protocol ASCSharingOptionsDataStore {
 
 class ASCSharingOptionsInteractor: ASCSharingOptionsBusinessLogic, ASCSharingOptionsDataStore {
     
-    var presenter: ASCSharingOptionsPresentationLogic?
+    // MARK: - Workers
+    let entityLinkMaker: ASCEntityLinkMakerProtocol
     
+    // MARK: - ASCSharingOptionsDataStore properties
     var currentUser: ASCUser?
     var sharedInfoItems: [ASCShareInfo] = []
+    
+    // MARK: - ASCSharingOptionsBusinessLogic
+    var presenter: ASCSharingOptionsPresentationLogic?
+    
+    init(entityLinkMaker: ASCEntityLinkMakerProtocol) {
+        self.entityLinkMaker = entityLinkMaker
+    }
     
     func makeRequest(request: ASCSharingOptions.Model.Request.RequestType) {
         switch request {
         case .loadRightHolders(entity: let entity):
             loadCurrentUser()
-            loadSharedInfoItems(entity: entity)
+            loadRightHolders(entity: entity)
         case .changeRightHolderAccess(entity: let entity, rightHolder: let rightHolder, access: let access):
             changeRightHolderAccess(entity: entity, rightHolder: rightHolder, access: access)
         case .clearData:
             currentUser = nil
             sharedInfoItems = []
-
         }
     }
     

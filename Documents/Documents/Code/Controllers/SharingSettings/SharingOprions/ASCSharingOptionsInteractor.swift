@@ -37,11 +37,11 @@ class ASCSharingOptionsInteractor: ASCSharingOptionsBusinessLogic, ASCSharingOpt
     
     func makeRequest(request: ASCSharingOptions.Model.Request.RequestType) {
         switch request {
-        case .loadRightHolders(entity: let entity):
+        case .loadRightHolders(loadRightHoldersRequest: let loadRightHoldersRequest):
             loadCurrentUser()
-            loadRightHolders(entity: entity)
-        case .changeRightHolderAccess(entity: let entity, rightHolder: let rightHolder, access: let access):
-            changeRightHolderAccess(entity: entity, rightHolder: rightHolder, access: access)
+            loadRightHolders(loadRightHoldersRequest: loadRightHoldersRequest)
+        case .changeRightHolderAccess(changeRightHolderAccessRequest: let changeRightHolderAccessRequest):
+            changeRightHolderAccess(changeRightHolderAccessRequest: changeRightHolderAccessRequest)
         case .clearData:
             currentUser = nil
             sharedInfoItems = []
@@ -52,20 +52,32 @@ class ASCSharingOptionsInteractor: ASCSharingOptionsBusinessLogic, ASCSharingOpt
         currentUser = ASCFileManager.onlyofficeProvider?.user
     }
     
-    private func loadSharedInfoItems(entity: ASCEntity?) {
-        guard let entity = entity else {
-            presenter?.presentData(response: .presentRightHolders(sharedInfoItems: [], currentUser: currentUser))
+    private func loadRightHolders(loadRightHoldersRequest: ASCSharingOptions.Model.Request.LoadRightHoldersRequest) {
+
+        
+        guard let entity = loadRightHoldersRequest.entity
+        else {
+            presenter?.presentData(response: .presentRightHolders(.init(sharedInfoItems: [],
+                                                                        currentUser: currentUser,
+                                                                        internalLink: nil,
+                                                                        externalLink: nil)))
             return
         }
         
-        guard let apiRequest = makeApiRequest(entity: entity) else {
-            presenter?.presentData(response: .presentRightHolders(sharedInfoItems: [], currentUser: currentUser))
+        let internalLink = entityLinkMaker.make(entity: entity)
+        
+        guard let apiRequest = makeApiRequest(entity: entity)
+        else {
+            presenter?.presentData(response: .presentRightHolders(.init(sharedInfoItems: [],
+                                                                        currentUser: currentUser,
+                                                                        internalLink: internalLink,
+                                                                        externalLink: nil)))
             return
         }
 
         ASCOnlyOfficeApi.get(apiRequest) { (results, error, response) in
+            var exteralLink: ASCSharingOprionsExternalLink?
             if let results = results as? [[String: Any]] {
-
                 for item in results {
                     var sharedItem = ASCShareInfo()
                     
@@ -75,30 +87,38 @@ class ASCSharingOptionsInteractor: ASCSharingOptionsBusinessLogic, ASCSharingOpt
 
                     if let sharedTo = item["sharedTo"] as? [String: Any] {
                         
-                        // Link for portal users
-                        sharedItem.shareLink = sharedTo["shareLink"] as? String
-                        if let _ = sharedItem.shareLink {
+                        // External link
+                        let shareLink = sharedTo["shareLink"] as? String
+                        let shareId = sharedTo["id"] as? String
+                        if shareLink != nil && shareId != nil {
+                            exteralLink = .init(id: shareId!, link: shareLink!, isLocked: sharedItem.locked, access: sharedItem.access)
                             continue
                         }
                         
                         if let _ = sharedTo["userName"] {
                             sharedItem.user = ASCUser(JSON: sharedTo)
-                            self.sharedInfoItems.append(sharedItem)
                         } else if let _ = sharedTo["name"] {
                             sharedItem.group = ASCGroup(JSON: sharedTo)
-                            self.sharedInfoItems.append(sharedItem)
                         }
+                        self.sharedInfoItems.append(sharedItem)
                     }
                 }
             }
-            self.presenter?.presentData(response: .presentRightHolders(sharedInfoItems: self.sharedInfoItems, currentUser: self.currentUser))
             
+            self.presenter?.presentData(response: .presentRightHolders(.init(sharedInfoItems: self.sharedInfoItems,
+                                                                             currentUser: self.currentUser,
+                                                                             internalLink: internalLink,
+                                                                             externalLink: exteralLink)))
         }
     }
     
-    private func changeRightHolderAccess(entity: ASCEntity, rightHolder: ASCSharingRightHolderViewModel, access: ASCShareAccess) {
+    private func changeRightHolderAccess(changeRightHolderAccessRequest: ASCSharingOptions.Model.Request.ChangeRightHolderAccessRequest) {
         var shares: [[String: Any]] = []
         var request: String!
+        
+        let entity = changeRightHolderAccessRequest.entity
+        var rightHolder = changeRightHolderAccessRequest.rightHolder
+        let access = changeRightHolderAccessRequest.access
         
         if let file = entity as? ASCFile {
             request = String(format: ASCOnlyOfficeApi.apiShareFile, file.id)
@@ -118,12 +138,11 @@ class ASCSharingOptionsInteractor: ASCSharingOptionsBusinessLogic, ASCSharingOpt
         
         ASCOnlyOfficeApi.put(request, parameters: baseParams + sharesParams) { [weak self] (results, error, response) in
             if let _ = results as? [[String: Any]] {
-                var changingRightHolder = rightHolder
-                changingRightHolder.access?.documetAccess = access
-                self?.presenter?.presentData(response: .presentChangeRightHolderAccess(rightHolder: changingRightHolder, error: nil))
+                rightHolder.access = access
+                self?.presenter?.presentData(response: .presentChangeRightHolderAccess(.init(rightHolder: rightHolder, error: nil)))
             } else if let response = response {
                 let errorMessage = ASCOnlyOfficeApi.errorMessage(by: response)
-                self?.presenter?.presentData(response: .presentChangeRightHolderAccess(rightHolder: rightHolder, error: errorMessage))
+                self?.presenter?.presentData(response: .presentChangeRightHolderAccess(.init(rightHolder: rightHolder, error: errorMessage)))
             }
         }
     }

@@ -15,25 +15,58 @@ enum ASCSharingOptions {
     enum Model {
         struct Request {
             enum RequestType {
-                case loadRightHolders(entity: ASCEntity?)
-                case changeRightHolderAccess(entity: ASCEntity, rightHolder: ASCSharingRightHolderViewModel, access: ASCShareAccess)
+                case loadRightHolders(_ request: LoadRightHoldersRequest)
+                case changeRightHolderAccess(_ request: ChangeRightHolderAccessRequest)
                 case clearData
             }
+            
+            struct LoadRightHoldersRequest {
+                var entity: ASCEntity?
+            }
+            
+            struct ChangeRightHolderAccessRequest {
+                var entity: ASCEntity
+                var rightHolder: ASCSharingRightHolder
+                var access: ASCShareAccess
+            }
+            
         }
         struct Response {
             enum ResponseType {
-                case presentRightHolders(sharedInfoItems: [ASCShareInfo],
-                                         currentUser: ASCUser?)
-                case presentChangeRightHolderAccess(rightHolder: ASCSharingRightHolderViewModel, error: ErrorMessage?)
+                case presentRightHolders(_ response: RightHoldersResponse)
+                case presentChangeRightHolderAccess(_ response: ChangeRightHolderAccessResponse)
             }
+            
+            struct RightHoldersResponse {
+                var sharedInfoItems: [ASCShareInfo]
+                var currentUser: ASCUser?
+                var internalLink: String?
+                var externalLink: ASCSharingOprionsExternalLink?
+            }
+            
+            struct ChangeRightHolderAccessResponse {
+                var rightHolder: ASCSharingRightHolder
+                var error: ErrorMessage?
+            }
+            
         }
         struct ViewModel {
             enum ViewModelData {
-                case displayRightHolders(importantRightHolders: [ASCSharingRightHolderViewModel],
-                                         otherRightHolders: [ASCSharingRightHolderViewModel])
-                case displayChangeRightHolderAccess(rightHolder: ASCSharingRightHolderViewModel, error: ErrorMessage?)
+                case displayRightHolders(_ viewModel: RightHoldersViewModel)
+                case displayChangeRightHolderAccess(_ viewModel: ChangeRightHolderAccessViewModel)
+            }
+            
+            struct RightHoldersViewModel {
+                var internalLink: String?
+                var externalLink: ASCSharingOprionsExternalLink?
+                var importantRightHolders: [ASCSharingRightHolderViewModel]
+                var otherRightHolders: [ASCSharingRightHolderViewModel]
+            }
+            
+            struct ChangeRightHolderAccessViewModel {
+                var rightHolder: ASCSharingRightHolder
+                var error: ErrorMessage?
             }
         }
     }
-    
 }

@@ -23,21 +23,14 @@ class ASCSharingOptionsViewController: ASCBaseTableViewController {
     var hud: MBProgressHUD?
     var rightHolderCurrentlyLoading = false
     
-    var externalLink: String = "" {
-        didSet {
-            tableView.reloadSections(IndexSet(arrayLiteral: SharingOptionsSection.externalLink.rawValue), with: .automatic)
-        }
-    }
+    private var internalLink: String?
+    private var externalLink: ASCSharingOprionsExternalLink?
+    private var isSwitchActive: Bool { (externalLink != nil) && (externalLink!.access != .deny) && (externalLink!.access != .none) }
+    private var accessProviderFactory = ASCSharingSettingsAccessProviderFactory()
     
     private lazy var externalLinkSwitchHandler: (Bool) -> Void = { [weak self] activating in
-        guard let self = self else {
-            return
-        }
-        if activating {
-            self.externalLink = "https://test.portal.com"
-        } else {
-            self.externalLink = ""
-        }
+        guard let self = self else { return }
+        self.onLinkSwitchTapped(activating: activating)
     }
     
     private var importantRightHolders: [ASCSharingRightHolderViewModel] = []
@@ -97,40 +90,59 @@ class ASCSharingOptionsViewController: ASCBaseTableViewController {
         return true
     }
     
+    // MARK: - Button actions
+    
+    func onLinkSwitchTapped(activating: Bool) {
+        guard let entity = self.entity, let externalLink = self.externalLink else {
+            return
+        }
+        let rightHolder = ASCSharingRightHolder(id: externalLink.id, type: .link, access: externalLink.access, isOwner: false)
+        var settingAccess: ASCShareAccess = .deny
+        if activating {
+            settingAccess = .read
+        }
+        self.interactor?.makeRequest(request: .changeRightHolderAccess(.init(entity: entity, rightHolder: rightHolder, access: settingAccess)))
+    }
+
     // MARK: - Requests
     public func requestToLoadRightHolders() {
         rightHolderCurrentlyLoading = true
         viewConfigurator?.showTableLoadingActivityIndicator(tableView: tableView)
-        self.interactor?.makeRequest(request: .loadRightHolders(entity: self.entity))
+        self.interactor?.makeRequest(request: .loadRightHolders(.init(entity: entity)))
     }
     
-    private func requestToChangeRightHolderAccess(rightHolder: ASCSharingRightHolderViewModel, access: ASCShareAccess) {
+    private func requestToChangeRightHolderAccess(rightHolder: ASCSharingRightHolder, access: ASCShareAccess) {
         guard let entity = entity else {
             return
         }
         hud = MBProgressHUD.showTopMost()
         hud?.label.text = NSLocalizedString("Sharing", comment: "Caption of the process")
-        interactor?.makeRequest(request: .changeRightHolderAccess(entity: entity, rightHolder: rightHolder, access: access))
+        DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
+            
+            self.interactor?.makeRequest(request: .changeRightHolderAccess(.init(entity: entity, rightHolder: rightHolder, access: access)))
+        }
     }
 }
 
-// MARK: - Sharing oprions display logic
+// MARK: - Display logic
 extension ASCSharingOptionsViewController: ASCSharingOptionsDisplayLogic {
     func display(viewModel: ASCSharingOptions.Model.ViewModel.ViewModelData) {
         switch viewModel {
-        case .displayRightHolders(importantRightHolders: let importantRightHolders, otherRightHolders: let otherRightHolders):
-            self.importantRightHolders = importantRightHolders
-            self.otherRightHolders = otherRightHolders
+        case .displayRightHolders(viewModel: let viewModel):
+            internalLink = viewModel.internalLink
+            externalLink = viewModel.externalLink
+            self.importantRightHolders = viewModel.importantRightHolders
+            self.otherRightHolders = viewModel.otherRightHolders
             viewConfigurator?.hideTableLoadingActivityIndicator()
             rightHolderCurrentlyLoading = false
             tableView.reloadData()
-        case .displayChangeRightHolderAccess(rightHolder: let rightHolder, error: let error):
-            if error == nil {
+        case .displayChangeRightHolderAccess(viewModel: let viewModel):
+            if viewModel.error == nil {
                 hud?.setSuccessState()
                 hud?.hide(animated: true, afterDelay: 1)
                 hud = nil
-                updateAndReloadRightHolderCell(by: rightHolder)
-            } else if let errorMessage = error {
+                updateAndReloadRightHolderCell(by: viewModel.rightHolder)
+            } else if let errorMessage = viewModel.error {
                 hud?.hide(animated: false)
                 hud = nil
                 UIAlertController.showError(in: self, message: errorMessage)
@@ -139,16 +151,19 @@ extension ASCSharingOptionsViewController: ASCSharingOptionsDisplayLogic {
         }
     }
     
-    private func updateAndReloadRightHolderCell(by rightHolder: ASCSharingRightHolderViewModel) {
-        if let indexOfImportant = importantRightHolders.firstIndex(where: { $0.id == rightHolder.id }) {
-            importantRightHolders[indexOfImportant] = rightHolder
+    private func updateAndReloadRightHolderCell(by rightHolder: ASCSharingRightHolder) {
+        if rightHolder.type == .link {
+            self.externalLink?.access = rightHolder.access
+            tableView.reloadSections(IndexSet(arrayLiteral: SharingOptionsSection.externalLink.rawValue), with: .automatic)
+        } else if let indexOfImportant = importantRightHolders.firstIndex(where: { $0.id == rightHolder.id }) {
+            importantRightHolders[indexOfImportant].access?.documetAccess = rightHolder.access
             let sectionIndex = isSharingViaExternalLinkPossible()
                 ? SharingOptionsSection.importantRightHolders.rawValue
                 : SharingFolderOprinosSection.importantRightHolders.rawValue
             tableView.reloadRows(at: [IndexPath(row: indexOfImportant, section: sectionIndex)], with: .automatic)
             
         } else if let indexOfOther = otherRightHolders.firstIndex(where: { $0.id == rightHolder.id }) {
-            otherRightHolders[indexOfOther] = rightHolder
+            otherRightHolders[indexOfOther].access?.documetAccess = rightHolder.access
             let sectionIndex = isSharingViaExternalLinkPossible()
                 ? SharingOptionsSection.otherRightHolders.rawValue
                 : SharingFolderOprinosSection.otherRightHolders.rawValue
@@ -156,10 +171,16 @@ extension ASCSharingOptionsViewController: ASCSharingOptionsDisplayLogic {
         }
     }
 }
-// MARK: - Routing
+// MARK: - ASCSharingViewDelegate
 extension ASCSharingOptionsViewController: ASCSharingViewDelegate {
     func onLinkBarButtonTap() {
-        
+        if let link = self.internalLink {
+            UIPasteboard.general.string = link
+            hud = MBProgressHUD.showTopMost()
+            hud?.setSuccessState(title: NSLocalizedString("Link copied to the clipboard", comment: ""))
+            hud?.hide(animated: true, afterDelay: 1)
+            hud = nil
+        }
     }
     
     func onAddRightsBarButtonTap() {
@@ -202,15 +223,15 @@ extension ASCSharingOptionsViewController {
         switch externalLinkRow {
         case .accessSwitch:
             let cell: ASCSwitchTableViewCell = getCell()
-            cell.viewModel = ASCSwitchRowViewModel(title: externalLinkRow.title(), isActive: !externalLink.isEmpty, toggleHandler: externalLinkSwitchHandler)
+            cell.viewModel = ASCSwitchRowViewModel(title: externalLinkRow.title(), isActive: isSwitchActive, toggleHandler: externalLinkSwitchHandler)
             return cell
         case .accessInfo:
             let cell: ASCAccessRowTableViewCell = getCell()
-            cell.viewModel = ASCAccessRowViewModel(title: externalLinkRow.title(), access: .read)
+            cell.viewModel = ASCAccessRowViewModel(title: externalLinkRow.title(), access: externalLink?.access ?? .none)
             return cell
         case .link:
             let cell: ASCCopyLinkTableViewCell = getCell()
-            cell.link = externalLink
+            cell.link = externalLink?.link
             return cell
         }
     }
@@ -231,7 +252,7 @@ extension ASCSharingOptionsViewController {
         if isSharingViaExternalLinkPossible() {
             let section = getSharingOptionsSection(sectionRawValue: section)
             switch section {
-            case .externalLink: return externalLink.isEmpty ? 1 : 3
+            case .externalLink: return isSwitchActive ? 3 : 1
             case .importantRightHolders: return importantRightHolders.count
             case .otherRightHolders: return otherRightHolders.count
             }
@@ -265,11 +286,23 @@ extension ASCSharingOptionsViewController {
             switch section {
             case .externalLink:
                 if indexPath.row == ExternalLinkRow.accessInfo.rawValue {
-                    viewConfigurator?.configureForLink(accessViewController: accessViewController, access: .read) // MARK: - TODO change fix .read
+                    guard let externalLink = externalLink else { return }
+                    let accessProvider = accessProviderFactory.get(entity: entity ?? ASCEntity(), isAccessExternal: true)
+                    viewConfigurator?.configureForLink(accessViewController: accessViewController, access: externalLink.access, provider: accessProvider)
                     accessViewController.selectAccessDelegate = { [weak self] access in
-                        
+                        guard let self = self, let entity = self.entity else { return }
+                        let rightHolder = ASCSharingRightHolder(id: externalLink.id, type: .link, access: externalLink.access, isOwner: false)
+                        self.interactor?.makeRequest(request: .changeRightHolderAccess(.init(entity: entity, rightHolder: rightHolder, access: access)))
                     }
                     self.navigationController?.pushViewController(accessViewController, animated: true)
+                } else if indexPath.row == ExternalLinkRow.link.rawValue {
+                    if let link = self.externalLink?.link {
+                        UIPasteboard.general.string = link
+                        hud = MBProgressHUD.showTopMost()
+                        hud?.setSuccessState(title: NSLocalizedString("The link for external access is copied to the clipboard", comment: ""))
+                        hud?.hide(animated: true, afterDelay: 1.3)
+                        hud = nil
+                    }
                 }
             case .importantRightHolders: viewModel = importantRightHolders[indexPath.row]
             case .otherRightHolders: viewModel = otherRightHolders[indexPath.row]
@@ -289,11 +322,22 @@ extension ASCSharingOptionsViewController {
             return
         }
         
+        let accessProvider = accessProviderFactory.get(entity: entity ?? ASCEntity(), isAccessExternal: false)
         viewConfigurator?.configureForUser(accessViewController: accessViewController,
                                            userName: unwrapedViewModel.name,
-                                           access: unwrapedViewModel.access?.documetAccess ?? .none)
+                                           access: unwrapedViewModel.access?.documetAccess ?? .none,
+                                           provider: accessProvider)
         accessViewController.selectAccessDelegate = { [weak self] access in
-            self?.requestToChangeRightHolderAccess(rightHolder: unwrapedViewModel, access: access)
+            guard let rightHolderType = unwrapedViewModel.rightHolderType,
+                  let rightHolderAccess = unwrapedViewModel.access?.documetAccess
+            else {
+                return
+            }
+            let rightHolder = ASCSharingRightHolder(id: unwrapedViewModel.id,
+                                                    type: rightHolderType,
+                                                    access: rightHolderAccess,
+                                                    isOwner: unwrapedViewModel.isOwner)
+            self?.requestToChangeRightHolderAccess(rightHolder: rightHolder, access: access)
         }
         self.navigationController?.pushViewController(accessViewController, animated: true)
         

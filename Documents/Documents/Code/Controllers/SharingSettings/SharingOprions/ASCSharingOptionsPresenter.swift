@@ -18,8 +18,9 @@ class ASCSharingOptionsPresenter: ASCSharingOptionsPresentationLogic {
     func presentData(response: ASCSharingOptions.Model.Response.ResponseType) {
         switch response {
         
-        case .presentRightHolders(sharedInfoItems: let sharedInfoItems, currentUser: let currentUser):
-            
+        case .presentRightHolders(rightHoldersResponse: let rightHoldersResponse):
+            let sharedInfoItems = rightHoldersResponse.sharedInfoItems
+            let currentUser = rightHoldersResponse.currentUser
             let isImportant: (ASCShareInfo) -> Bool = { shareInfo in
                 var isShareInfoUserIsCurrenUser = false
                 if let shareInfoUserId = shareInfo.user?.userId,
@@ -66,11 +67,13 @@ class ASCSharingOptionsPresenter: ASCSharingOptionsPresentationLogic {
                     }
                 }
             })
-
-            viewController?.display(viewModel: .displayRightHolders(importantRightHolders: imprtantRightHolders,
-                                                                                otherRightHolders: otherRightHolders))
-        case .presentChangeRightHolderAccess(rightHolder: let rightHolder, error: let error):
-            viewController?.display(viewModel: .displayChangeRightHolderAccess(rightHolder: rightHolder, error: error))
+            viewController?.display(viewModel: .displayRightHolders(.init(internalLink: rightHoldersResponse.internalLink,
+                                                                          externalLink: rightHoldersResponse.externalLink,
+                                                                          importantRightHolders: imprtantRightHolders,
+                                                                          otherRightHolders: otherRightHolders)))
+        case .presentChangeRightHolderAccess(changeRightHolderResponse: let changeRightHolderResponse):
+            viewController?.display(viewModel: .displayChangeRightHolderAccess(.init(rightHolder: changeRightHolderResponse.rightHolder,
+                                                                                     error: changeRightHolderResponse.error)))
         }
     }
     

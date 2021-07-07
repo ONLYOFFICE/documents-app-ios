@@ -53,10 +53,9 @@ class ASCCopyLinkTableViewCell: UITableViewCell, ASCReusedIdentifierProtocol {
         copyImageView.anchorCenterYToSuperview()
         
         NSLayoutConstraint.activate([
+            copyImageView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -hSpacing),
             title.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: hSpacing),
-            title.trailingAnchor.constraint(equalTo: title.trailingAnchor, constant: -hSpacing),
-            
-            copyImageView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -hSpacing)
+            title.trailingAnchor.constraint(equalTo: copyImageView.trailingAnchor, constant: -hSpacing)
         ])
     }
 }

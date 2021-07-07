@@ -73,7 +73,8 @@ class ASCSharingView {
                            forCellReuseIdentifier: ASCSharingRightHolderTableViewCell.reuseId)
     }
     
-    public func configureForUser(accessViewController: ASCSharingSettingsAccessViewController, userName: String, access: ASCShareAccess) {
+    public func configureForUser(accessViewController: ASCSharingSettingsAccessViewController, userName: String, access: ASCShareAccess, provider: ASCSharingSettingsAccessProvider) {
+        accessViewController.accessProvider = provider
         accessViewController.largeTitleDisplayMode = .automatic
         accessViewController.title = userName
         accessViewController.currentlyAccess = access
@@ -82,7 +83,8 @@ class ASCSharingView {
         accessViewController.tableView.reloadData()
     }
     
-    public func configureForLink(accessViewController: ASCSharingSettingsAccessViewController, access: ASCShareAccess) {
+    public func configureForLink(accessViewController: ASCSharingSettingsAccessViewController, access: ASCShareAccess, provider: ASCSharingSettingsAccessProvider) {
+        accessViewController.accessProvider = provider
         accessViewController.largeTitleDisplayMode = .never
         accessViewController.title = NSLocalizedString("Sharing settings", comment: "")
         accessViewController.currentlyAccess = access

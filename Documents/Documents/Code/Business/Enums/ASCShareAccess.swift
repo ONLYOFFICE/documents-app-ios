@@ -9,12 +9,15 @@
 import UIKit
 
 enum ASCShareAccess: Int, CaseIterable {
-    case none   = 0
-    case full   = 1
-    case review = 2
-    case varies = 3
-    case read   = 4
-    case deny   = 5
+    case none       = 0
+    case full       = 1
+    case read       = 2
+    case deny       = 3
+    case varies     = 4
+    case review     = 5
+    case comment    = 6
+    case fillForms  = 7
+    case userFilter = 8
 
     init() {
         self = .none
@@ -23,11 +26,28 @@ enum ASCShareAccess: Int, CaseIterable {
     init(_ type: Int) {
         switch type {
         case 1: self = .full
-        case 2: self = .review
-        case 3: self = .varies
-        case 4: self = .read
-        case 5: self = .deny
+        case 2: self = .read
+        case 3: self = .deny
+        case 4: self = .varies
+        case 5: self = .review
+        case 6: self = .comment
+        case 7: self = .fillForms
+        case 8: self = .userFilter
         default: self = .none
+        }
+    }
+    
+    func getSortWeight() -> Int {
+        switch self {
+        case .none:       return 5
+        case .full:       return 10
+        case .varies:     return 20
+        case .review:     return 30
+        case .comment:    return 40
+        case .read:       return 50
+        case .fillForms:  return 60
+        case .userFilter: return 70
+        case .deny:       return 80
         }
     }
     
@@ -45,6 +65,12 @@ enum ASCShareAccess: Int, CaseIterable {
             return NSLocalizedString("Varies", comment: "Share status")
         case .review:
             return NSLocalizedString("Review", comment: "Share status")
+        case .comment:
+            return NSLocalizedString("Comment", comment: "Share status")
+        case .fillForms:
+            return NSLocalizedString("Form filling", comment: "Share status")
+        case .userFilter:
+            return NSLocalizedString("Custom filter", comment: "Share status")
         }
     }
     
@@ -54,15 +80,21 @@ enum ASCShareAccess: Int, CaseIterable {
             case .none:
                 return nil
             case .full:
-                return UIImage(systemName: "doc.plaintext") // MARK: - TODO change
+                return Asset.Images.menuFullAccess.image
             case .read:
-                return UIImage(systemName: "eye")
+                return Asset.Images.menuViewOnly.image
             case .deny:
-                return UIImage(systemName: "eye.slash")
+                return Asset.Images.menuDenyAccess.image
             case .varies:
-                return UIImage(systemName: "text.bubble")
+                return nil // MARK: - TODO
             case .review:
-                return UIImage(systemName: "text.bubble")
+                return Asset.Images.menuReview.image
+            case .comment:
+                return Asset.Images.menuComment.image
+            case .fillForms:
+                return Asset.Images.menuFormFilling.image
+            case .userFilter:
+                return Asset.Images.menuCustomFilter.image
             }
         }
         return nil

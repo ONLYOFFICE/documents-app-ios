@@ -82,6 +82,8 @@ class ASCShareCell: UITableViewCell {
             case .review:
                 access?.text = NSLocalizedString("Review", comment: "Share status")
                 break
+            default:
+                access?.text = ""
             }
         }
         

@@ -14,14 +14,22 @@ class ASCSharingSettingsAccessViewController: ASCBaseTableViewController {
     var selectAccessDelegate: ((ASCShareAccess) -> Void)?
     
     var currentlyAccess: ASCShareAccess? = .read
-    
-    var accessList: [ASCShareAccess] = ASCShareAccess.allCases.filter({ $0 != .none })
+    var accessProvider: ASCSharingSettingsAccessProvider = ASCSharingSettingsAccessDefaultProvider() {
+        didSet {
+            accessList = accessProvider.get().sorted(by: { $0.getSortWeight() < $1.getSortWeight() })
+            if isViewLoaded {
+                tableView.reloadData()
+            }
+        }
+    }
     
     var heightForSectionHeader: CGFloat = 38
     
     var largeTitleDisplayMode:  UINavigationItem.LargeTitleDisplayMode = .automatic
     var headerText: String = NSLocalizedString("Access settings", comment: "")
     var footerText: String = NSLocalizedString("Unauthorized users will not be able to view the document.", comment: "")
+    
+    private var accessList: [ASCShareAccess] = []
     
     override init(style: UITableView.Style = .grouped) {
         super.init(style: style)

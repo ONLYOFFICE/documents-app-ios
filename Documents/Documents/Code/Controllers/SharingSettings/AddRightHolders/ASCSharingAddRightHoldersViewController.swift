@@ -1,14 +1,21 @@
 //
-//  ASCAddRightHoldersViewController.swift
+//  ASCSharingAddRightHoldersViewController.swift
 //  Documents
 //
-//  Created by Pavel Chernyshev on 15.06.2021.
-//  Copyright © 2021 Ascensio System SIA. All rights reserved.
+//  Created by Павел Чернышев on 09.07.2021.
+//  Copyright (c) 2021 Ascensio System SIA. All rights reserved.
 //
 
 import UIKit
 
-class ASCSharingAddRightHoldersViewController: UIViewController {
+protocol ASCSharingAddRightHoldersDisplayLogic: AnyObject {
+    func displayData(viewModelType: ASCSharingAddRightHolders.Model.ViewModel.ViewModelData)
+}
+
+class ASCSharingAddRightHoldersViewController: UIViewController, ASCSharingAddRightHoldersDisplayLogic {
+    
+    var interactor: ASCSharingAddRightHoldersBusinessLogic?
+    var router: (NSObjectProtocol & ASCSharingAddRightHoldersRoutingLogic)?
     
     var sharingAddRightHoldersView: ASCSharingAddRightHoldersView?
     var defaultSelectedTable: RightHoldersTableType = .users
@@ -73,6 +80,38 @@ class ASCSharingAddRightHoldersViewController: UIViewController {
         ASCSharingRightHolderViewModel(id: "", avatarUrl: nil, name: "Disigners")
     ]
     
+    // MARK: Object lifecycle
+    
+    override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
+        super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
+        setup()
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+        setup()
+    }
+    
+    // MARK: Setup
+    
+    private func setup() {
+        let viewController        = self
+        let interactor            = ASCSharingAddRightHoldersInteractor()
+        let presenter             = ASCSharingAddRightHoldersPresenter()
+        let router                = ASCSharingAddRightHoldersRouter()
+        viewController.interactor = interactor
+        viewController.router     = router
+        interactor.presenter      = presenter
+        presenter.viewController  = viewController
+        router.viewController     = viewController
+    }
+    
+    // MARK: Routing
+    
+    
+    
+    // MARK: View lifecycle
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -96,8 +135,10 @@ class ASCSharingAddRightHoldersViewController: UIViewController {
         sharingAddRightHoldersView?.groupsTableView.register(groupsTableViewDataSourceAndDelegate.type, forCellReuseIdentifier: groupsTableViewDataSourceAndDelegate.type.reuseId)
         
         sharingAddRightHoldersView?.showTable(tableType: defaultSelectedTable)
+        
+        interactor?.makeRequest(requestType: .loadUsers)
     }
-
+    
     private func getSelectedTableView() -> UITableView {
         let type = getSelectedTableType()
         return sharingAddRightHoldersView?.getTableView(byRightHoldersTableType: type) ?? UITableView()
@@ -110,6 +151,18 @@ class ASCSharingAddRightHoldersViewController: UIViewController {
         }
         return tableType
     }
+    
+    func displayData(viewModelType: ASCSharingAddRightHolders.Model.ViewModel.ViewModelData) {
+        switch viewModelType {
+        case .displayUsers(viewModel: let viewModel):
+            self.usersModels = viewModel.users
+            usersTableViewDataSourceAndDelegate.setModels(models: viewModel.users)
+            sharingAddRightHoldersView?.usersTableView.reloadData()
+        case .displayGroups(_):
+            return
+        }
+    }
+    
 }
 
 // MARK: - View Delegate
@@ -179,7 +232,7 @@ extension ASCSharingAddRightHoldersViewController: UISearchControllerDelegate, U
         }
         sharingAddRightHoldersView?.hideTablesSegmentedControl()
     }
-
+    
     func willDismissSearchController(_ searchController: UISearchController) {
         sharingAddRightHoldersView?.removeDarkenFromScreen()
         
@@ -191,7 +244,7 @@ extension ASCSharingAddRightHoldersViewController: UISearchControllerDelegate, U
         }
         
         sharingAddRightHoldersView?.showTablesSegmentedControl()
-
+        
         sharingAddRightHoldersView?.searchResultsTable.removeFromSuperview()
     }
 }

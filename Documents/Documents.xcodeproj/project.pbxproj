@@ -25,6 +25,11 @@
 		1D14AAE426976E19009E48AD /* ASCSharingAddRightHoldersView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D14AAE326976E18009E48AD /* ASCSharingAddRightHoldersView.swift */; };
 		1D14AAE62698D56E009E48AD /* ASCSharingAddRightHoldersTableViewDataSourceAndDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D14AAE52698D56D009E48AD /* ASCSharingAddRightHoldersTableViewDataSourceAndDelegate.swift */; };
 		1D14AAE92698D612009E48AD /* ASCSharingAddRightHoldersSearchResultsTableViewDataSourceAndDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D14AAE82698D612009E48AD /* ASCSharingAddRightHoldersSearchResultsTableViewDataSourceAndDelegate.swift */; };
+		1D14AAF12698E85A009E48AD /* ASCSharingAddRightHoldersPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D14AAEA2698E85A009E48AD /* ASCSharingAddRightHoldersPresenter.swift */; };
+		1D14AAF32698E85A009E48AD /* ASCSharingAddRightHoldersRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D14AAEC2698E85A009E48AD /* ASCSharingAddRightHoldersRouter.swift */; };
+		1D14AAF42698E85A009E48AD /* ASCSharingAddRightHoldersModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D14AAED2698E85A009E48AD /* ASCSharingAddRightHoldersModels.swift */; };
+		1D14AAF52698E85A009E48AD /* ASCSharingAddRightHoldersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D14AAEE2698E85A009E48AD /* ASCSharingAddRightHoldersViewController.swift */; };
+		1D14AAF62698E85A009E48AD /* ASCSharingAddRightHoldersInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D14AAEF2698E85A009E48AD /* ASCSharingAddRightHoldersInteractor.swift */; };
 		1D1A2E1F2660F93600D0335B /* ASCLoadedViewControllerByProviderAndFolderFinderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D1A2E1E2660F93600D0335B /* ASCLoadedViewControllerByProviderAndFolderFinderTests.swift */; };
 		1D1A2E282660F99800D0335B /* ASCLoadedDocumentViewControllerByProviderAndFolderFinder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D1A2E272660F99800D0335B /* ASCLoadedDocumentViewControllerByProviderAndFolderFinder.swift */; };
 		1D1A2E322660FE6E00D0335B /* ASCLoadedViewControllerFinderProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D1A2E312660FE6E00D0335B /* ASCLoadedViewControllerFinderProtocol.swift */; };
@@ -53,7 +58,6 @@
 		1D9B8094267400670020B5ED /* ASCAccessRowViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D9B8093267400670020B5ED /* ASCAccessRowViewModel.swift */; };
 		1D9B8099267403650020B5ED /* ASCCopyLinkTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D9B8098267403650020B5ED /* ASCCopyLinkTableViewCell.swift */; };
 		1DAAFF3C2678992800023F39 /* ASCSharingSettingsAccessViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DAAFF3B2678992800023F39 /* ASCSharingSettingsAccessViewController.swift */; };
-		1DAAFF402678E47600023F39 /* ASCSharingAddRightHoldersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DAAFF3F2678E47600023F39 /* ASCSharingAddRightHoldersViewController.swift */; };
 		1DAAFF492679063700023F39 /* ASCViewModelSetter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DAAFF482679063700023F39 /* ASCViewModelSetter.swift */; };
 		1DAC5661267B3B850078F95E /* ASCNamedProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DAC5660267B3B840078F95E /* ASCNamedProtocol.swift */; };
 		1DBE283E2670AEC70051D7AD /* ASCSharingOptionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DBE283D2670AEC70051D7AD /* ASCSharingOptionsViewController.swift */; };
@@ -623,6 +627,11 @@
 		1D14AAE326976E18009E48AD /* ASCSharingAddRightHoldersView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCSharingAddRightHoldersView.swift; sourceTree = "<group>"; };
 		1D14AAE52698D56D009E48AD /* ASCSharingAddRightHoldersTableViewDataSourceAndDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCSharingAddRightHoldersTableViewDataSourceAndDelegate.swift; sourceTree = "<group>"; };
 		1D14AAE82698D612009E48AD /* ASCSharingAddRightHoldersSearchResultsTableViewDataSourceAndDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCSharingAddRightHoldersSearchResultsTableViewDataSourceAndDelegate.swift; sourceTree = "<group>"; };
+		1D14AAEA2698E85A009E48AD /* ASCSharingAddRightHoldersPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCSharingAddRightHoldersPresenter.swift; sourceTree = "<group>"; };
+		1D14AAEC2698E85A009E48AD /* ASCSharingAddRightHoldersRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCSharingAddRightHoldersRouter.swift; sourceTree = "<group>"; };
+		1D14AAED2698E85A009E48AD /* ASCSharingAddRightHoldersModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCSharingAddRightHoldersModels.swift; sourceTree = "<group>"; };
+		1D14AAEE2698E85A009E48AD /* ASCSharingAddRightHoldersViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCSharingAddRightHoldersViewController.swift; sourceTree = "<group>"; };
+		1D14AAEF2698E85A009E48AD /* ASCSharingAddRightHoldersInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCSharingAddRightHoldersInteractor.swift; sourceTree = "<group>"; };
 		1D1A2E1E2660F93600D0335B /* ASCLoadedViewControllerByProviderAndFolderFinderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCLoadedViewControllerByProviderAndFolderFinderTests.swift; sourceTree = "<group>"; };
 		1D1A2E272660F99800D0335B /* ASCLoadedDocumentViewControllerByProviderAndFolderFinder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCLoadedDocumentViewControllerByProviderAndFolderFinder.swift; sourceTree = "<group>"; };
 		1D1A2E312660FE6E00D0335B /* ASCLoadedViewControllerFinderProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCLoadedViewControllerFinderProtocol.swift; sourceTree = "<group>"; };
@@ -650,7 +659,6 @@
 		1D9B8093267400670020B5ED /* ASCAccessRowViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCAccessRowViewModel.swift; sourceTree = "<group>"; };
 		1D9B8098267403650020B5ED /* ASCCopyLinkTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCCopyLinkTableViewCell.swift; sourceTree = "<group>"; };
 		1DAAFF3B2678992800023F39 /* ASCSharingSettingsAccessViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCSharingSettingsAccessViewController.swift; sourceTree = "<group>"; };
-		1DAAFF3F2678E47600023F39 /* ASCSharingAddRightHoldersViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCSharingAddRightHoldersViewController.swift; sourceTree = "<group>"; };
 		1DAAFF482679063700023F39 /* ASCViewModelSetter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCViewModelSetter.swift; sourceTree = "<group>"; };
 		1DAC5660267B3B840078F95E /* ASCNamedProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCNamedProtocol.swift; sourceTree = "<group>"; };
 		1DBE283D2670AEC70051D7AD /* ASCSharingOptionsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCSharingOptionsViewController.swift; sourceTree = "<group>"; };
@@ -1325,7 +1333,11 @@
 			children = (
 				1D14AAE72698D5EC009E48AD /* DataSourceAndDelegates */,
 				1D14AAE326976E18009E48AD /* ASCSharingAddRightHoldersView.swift */,
-				1DAAFF3F2678E47600023F39 /* ASCSharingAddRightHoldersViewController.swift */,
+				1D14AAEE2698E85A009E48AD /* ASCSharingAddRightHoldersViewController.swift */,
+				1D14AAEF2698E85A009E48AD /* ASCSharingAddRightHoldersInteractor.swift */,
+				1D14AAEA2698E85A009E48AD /* ASCSharingAddRightHoldersPresenter.swift */,
+				1D14AAEC2698E85A009E48AD /* ASCSharingAddRightHoldersRouter.swift */,
+				1D14AAED2698E85A009E48AD /* ASCSharingAddRightHoldersModels.swift */,
 			);
 			path = AddRightHolders;
 			sourceTree = "<group>";
@@ -3301,6 +3313,7 @@
 				FC8C697B1ECC2F44005B68D7 /* ASCConnectStorageOAuth2Google.swift in Sources */,
 				1D4C674F2685D0C3000F2284 /* ASCTextViewTableViewCell.swift in Sources */,
 				FC059D981E82584400BC2F5E /* ASCDateTransform.swift in Sources */,
+				1D14AAF32698E85A009E48AD /* ASCSharingAddRightHoldersRouter.swift in Sources */,
 				1DE6D6BC2631AEE1001B825B /* ASCOnlyofficeAPICategoriesProvider.swift in Sources */,
 				FC68398A21B7DF0C00251CEA /* ASCOnDeviceNavigationController.swift in Sources */,
 				FCC39FEA1E6ECB3400DECB8D /* ASCLocalFileHelper.swift in Sources */,
@@ -3390,6 +3403,7 @@
 				FCF6721A21771B21004756A0 /* ASCBaseApi.swift in Sources */,
 				FCC8FD92235DC5A100E59DC7 /* ASCDropboxApi.swift in Sources */,
 				FC8A137B22686B5D006D8C6E /* ASCPortalCapabilities.swift in Sources */,
+				1D14AAF42698E85A009E48AD /* ASCSharingAddRightHoldersModels.swift in Sources */,
 				FC4D0A202494F7C9001EF1B5 /* ASCDebugNavigationController.swift in Sources */,
 				FC8C69831ECC8EA8005B68D7 /* ASCConnectStorageWebDavController.swift in Sources */,
 				FCEF9D221ED2C94300627BA5 /* PasscodeLockPresenter.swift in Sources */,
@@ -3429,6 +3443,7 @@
 				FC56B5C620C017C300557C1F /* ASCStyles.swift in Sources */,
 				FC0F01E1216F46B7008D79A5 /* ASCOnlyofficeProvider.swift in Sources */,
 				1DE6D6C42631BE03001B825B /* ASCOnlyofficeCategoriesProviderFactory.swift in Sources */,
+				1D14AAF12698E85A009E48AD /* ASCSharingAddRightHoldersPresenter.swift in Sources */,
 				FC795596243E1A3A00CDD9FC /* KingfisherWrapper+Extensions.swift in Sources */,
 				FC8C69791ECC2990005B68D7 /* Date+Extension.swift in Sources */,
 				FC407FBC2191DC76009089EB /* ASCConnectCloudViewController.swift in Sources */,
@@ -3440,6 +3455,7 @@
 				FC059D9C1E82657F00BC2F5E /* ASCIndexTransform.swift in Sources */,
 				FC066AB5252DB7C5007357F7 /* Protocols.swift in Sources */,
 				FC68399A21B808AC00251CEA /* ASCCloudsViewController.swift in Sources */,
+				1D14AAF62698E85A009E48AD /* ASCSharingAddRightHoldersInteractor.swift in Sources */,
 				FCD317562642ECB700A08299 /* UIFont+Extensions.swift in Sources */,
 				FCBEA6B6203EEF96000E8695 /* ASCSDWebImageDownloaderOperation.swift in Sources */,
 				1D9820012631A8D900144B57 /* ASCOnlyofficeAppBasedCategoriesProvider.swift in Sources */,
@@ -3463,6 +3479,7 @@
 				FCB1BEC31E8E5E55004C7967 /* MBProgressHUD+Extension.swift in Sources */,
 				FC066AB4252DB7C5007357F7 /* ObservableProxy.swift in Sources */,
 				FC41D8022265D6EF00A155C2 /* ASCLoginType.swift in Sources */,
+				1D14AAF52698E85A009E48AD /* ASCSharingAddRightHoldersViewController.swift in Sources */,
 				FC68399621B7EF1000251CEA /* ASCOnlyofficeCategory.swift in Sources */,
 				FC9150F21EC35D850076A855 /* UIView+Extension.swift in Sources */,
 				FC066AB2252DB7C5007357F7 /* Event.swift in Sources */,
@@ -3478,7 +3495,6 @@
 				FCC64B221EE7F983003A49F7 /* ASCShareViewController.swift in Sources */,
 				FC872B281EC44925001636CB /* ASCSMSCodeViewController.swift in Sources */,
 				FC1AD6142175FE7000DADEE0 /* ASCNetworkReachability.swift in Sources */,
-				1DAAFF402678E47600023F39 /* ASCSharingAddRightHoldersViewController.swift in Sources */,
 				FC8667D421C7941C0020D797 /* ASCOnlyofficeSplitViewController.swift in Sources */,
 				1D863F1F2673DEFF000BAC3C /* ASCSwitchTableViewCell.swift in Sources */,
 				FCE1864A2628CFE70086D21B /* Assets.swift in Sources */,

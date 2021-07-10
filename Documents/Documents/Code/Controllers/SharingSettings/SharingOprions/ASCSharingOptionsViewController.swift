@@ -122,6 +122,11 @@ class ASCSharingOptionsViewController: ASCBaseTableViewController {
             self.interactor?.makeRequest(request: .changeRightHolderAccess(.init(entity: entity, rightHolder: rightHolder, access: access)))
         }
     }
+    
+    // MARK: - Routing
+    func onAddRightsBarButtonTap() {
+        router?.routeToAddRightHoldersViewController(segue: nil)
+    }
 }
 
 // MARK: - Display logic
@@ -181,10 +186,6 @@ extension ASCSharingOptionsViewController: ASCSharingViewDelegate {
             hud?.hide(animated: true, afterDelay: 1)
             hud = nil
         }
-    }
-    
-    func onAddRightsBarButtonTap() {
-        
     }
 }
 

@@ -18,41 +18,51 @@ class ASCSharingAddRightHoldersPresenter: ASCSharingAddRightHoldersPresentationL
     func presentData(responseType: ASCSharingAddRightHolders.Model.Response.ResponseType) {
         switch responseType {
         case .presentUsers(response: let response):
-            var viewModels: [ASCSharingRightHolderViewModel] = []
+            var viewModels: [(ASCSharingRightHolderViewModel, IsSelected)] = []
             let users = response.users.sorted(by: { $0.userName ?? "" < $1.userName ?? "" })
-            let usersIdsSet = Set(response.sharedEntities.map({ $0.user?.userId }).compactMap({ $0 }))
-            var sharedIndexes: [Int] = []
+            let usersIdsSet: Set<String> = Set(response.sharedEntities.map({ $0.user?.userId ?? nil }).compactMap({ $0 }))
             for user in users {
-                viewModels.append(ASCSharingRightHolderViewModel(
-                                    id: user.userId ?? "",
-                                    avatarUrl: user.avatar,
-                                    name: user.userName ?? "",
-                                    department: user.department,
-                                    isOwner: false,
-                                    rightHolderType: .user,
-                                    access: nil))
+                var isSelected = false
+                
                 if let id = user.userId, usersIdsSet.contains(id) {
-                    sharedIndexes.append(users.count - 1)
+                    isSelected = true
                 }
+                
+                let viewModel = ASCSharingRightHolderViewModel(
+                    id: user.userId ?? "",
+                    avatarUrl: user.avatar,
+                    name: user.userName ?? "",
+                    department: user.department,
+                    isOwner: false,
+                    rightHolderType: .user,
+                    access: nil)
+                
+                viewModels.append((viewModel, isSelected))
+                
             }
-            viewController?.displayData(viewModelType: .displayUsers(.init(users: viewModels, selectedIndexes: sharedIndexes)))
+            viewController?.displayData(viewModelType: .displayUsers(.init(users: viewModels)))
         case .presentGroups(response: let response):
-            var viewModels: [ASCSharingRightHolderViewModel] = []
+            var viewModels: [(ASCSharingRightHolderViewModel, IsSelected)] = []
             let groups = response.groups.sorted(by: { $0.name ?? "" < $1.name ?? "" })
             let groupIdsSet = Set(response.sharedEntities.map({ $0.group?.id }).compactMap({ $0 }))
-            var sharedIndexes: [Int] = []
             for group in groups {
-                viewModels.append(ASCSharingRightHolderViewModel(
-                                    id: group.id ?? "",
-                                    name: group.name ?? "",
-                                    isOwner: false,
-                                    rightHolderType: .group,
-                                    access: nil))
+                var isSelected = false
+                
                 if let id = group.id, groupIdsSet.contains(id) {
-                    sharedIndexes.append(groups.count - 1)
+                    isSelected = true
                 }
+                
+                let viewModel = ASCSharingRightHolderViewModel(
+                    id: group.id ?? "",
+                    name: group.name ?? "",
+                    isOwner: false,
+                    rightHolderType: .group,
+                    access: nil)
+                
+                viewModels.append((viewModel, isSelected))
+
             }
-            viewController?.displayData(viewModelType: .displayGroups(.init(groups: viewModels, selectedIndexes: sharedIndexes)))
+            viewController?.displayData(viewModelType: .displayGroups(.init(groups: viewModels)))
         }
     }
     

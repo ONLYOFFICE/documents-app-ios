@@ -28,7 +28,10 @@ class ASCSharingOptionsRouter: NSObject, ASCSharingOptionsRoutingLogic, ASCShari
     
     // MARK: Routing
     func routeToAddRightHoldersViewController(segue: UIStoryboardSegue?) {
-        if addRightHoldersViewController == nil {
+        var isDestinationAlreadyInit = false
+        if addRightHoldersViewController != nil {
+            isDestinationAlreadyInit = true
+        } else {
             addRightHoldersViewController = ASCSharingAddRightHoldersViewController()
         }
         guard
@@ -40,7 +43,9 @@ class ASCSharingOptionsRouter: NSObject, ASCSharingOptionsRoutingLogic, ASCShari
 
         passDataToAddRightHoldersViewController(source: sourceDataStore, destination: &destinationDataStore)
         navigateToAddRightHoldersViewController(source: viewController, destination: destinationViewController)
-        
+        if isDestinationAlreadyInit {
+            destinationViewController.loadData()
+        }
     }
     
     private func navigateToAddRightHoldersViewController(source: ASCSharingOptionsViewController, destination: ASCSharingAddRightHoldersViewController) {

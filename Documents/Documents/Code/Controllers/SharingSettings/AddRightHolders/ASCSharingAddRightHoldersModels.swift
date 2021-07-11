@@ -8,6 +8,7 @@
 
 import UIKit
 
+typealias IsSelected = Bool
 enum ASCSharingAddRightHolders {
     
     enum Model {
@@ -40,13 +41,11 @@ enum ASCSharingAddRightHolders {
             }
             
             struct UsersViewModel {
-                var users: [ASCSharingRightHolderViewModel]
-                var selectedIndexes: [Int]
+                var users: [(ASCSharingRightHolderViewModel, IsSelected)]
             }
             
             struct GroupsViewModel {
-                var groups: [ASCSharingRightHolderViewModel]
-                var selectedIndexes: [Int]
+                var groups: [(ASCSharingRightHolderViewModel, IsSelected)]
             }
         }
     }

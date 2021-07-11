@@ -18,37 +18,26 @@ class ASCSharingAddRightHoldersTableViewDataSourceAndDelegate<T: UITableViewCell
     
     private var groupedModels: [Section] = []
     
-    init(models: [T.ViewModel] = []) {
+    init(models: [(T.ViewModel, IsSelected)] = []) {
         super.init()
-        set(models: models, selectedIndexes: [])
+        set(models: models)
     }
     
-    func set(models: [T.ViewModel], selectedIndexes: [Int]) {
-        var currentIndex = -1
+    func set(models: [(T.ViewModel, IsSelected)]) {
         groupedModels = models
             .reduce([], { result, model in
-                guard let firstLetter = model.name.first else { return result }
-                currentIndex += 1
+                guard let firstLetter = model.0.name.first else { return result }
                 guard let section = result.last else {
                     let section =  Section(index: firstLetter, models: [model])
-                    if selectedIndexes.contains(currentIndex) {
-                        selectedRows.append(IndexPath(row: 0, section: 0))
-                    }
                     return [section]
                 }
                 guard section.index == firstLetter else {
                     var result = result
                     result.append(Section(index: firstLetter, models: [model]))
-                    if selectedIndexes.contains(currentIndex) {
-                        selectedRows.append(IndexPath(row: 0, section: result.count - 1))
-                    }
                     return result
                 }
                 
                 section.models.append(model)
-                if selectedIndexes.contains(currentIndex) {
-                    selectedRows.append(IndexPath(row: section.models.count - 1, section: result.count - 1))
-                }
                 return result
             })
     }
@@ -65,20 +54,25 @@ class ASCSharingAddRightHoldersTableViewDataSourceAndDelegate<T: UITableViewCell
         guard var cell = tableView.dequeueReusableCell(withIdentifier: T.reuseId) as? T else {
             fatalError("Couldn't cast cell to \(T.self)")
         }
-        if selectedRows.contains(indexPath) {
+        let viewModel = groupedModels[indexPath.section].models[indexPath.row]
+        if viewModel.1 {
             cell.isSelected = true
         }
-        let viewModel = groupedModels[indexPath.section].models[indexPath.row]
-        cell.viewModel = viewModel
+        cell.viewModel = viewModel.0
+        cell.selectionStyle = .default
         return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        selectedRows.append(indexPath)
+        var viewModel = groupedModels[indexPath.section].models[indexPath.row]
+        viewModel.1 = true
+        groupedModels[indexPath.section].models[indexPath.row] = viewModel
     }
     
     func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
-        selectedRows.removeAll(indexPath)
+        var viewModel = groupedModels[indexPath.section].models[indexPath.row]
+        viewModel.1 = false
+        groupedModels[indexPath.section].models[indexPath.row] = viewModel
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -87,6 +81,10 @@ class ASCSharingAddRightHoldersTableViewDataSourceAndDelegate<T: UITableViewCell
     
     func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCell.EditingStyle {
         .none
+    }
+    
+    func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
+        rowHeight
     }
     
     func sectionIndexTitles(for tableView: UITableView) -> [String]? {
@@ -101,9 +99,9 @@ class ASCSharingAddRightHoldersTableViewDataSourceAndDelegate<T: UITableViewCell
     
     class Section {
         var index: Character
-        var models: [T.ViewModel]
+        var models: [(T.ViewModel, IsSelected)]
         
-        init(index: Character, models: [T.ViewModel]) {
+        init(index: Character, models: [(T.ViewModel, IsSelected)]) {
             self.index = index
             self.models = models
         }

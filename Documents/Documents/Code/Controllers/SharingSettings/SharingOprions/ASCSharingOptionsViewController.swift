@@ -17,8 +17,8 @@ class ASCSharingOptionsViewController: ASCBaseTableViewController {
     
     private(set) var entity: ASCEntity?
     
-    var interactor: ASCSharingOptionsBusinessLogic?
-    var router: (NSObjectProtocol & ASCSharingOptionsRoutingLogic)?
+    var interactor: (ASCSharingOptionsBusinessLogic & ASCSharingOptionsDataStore)?
+    var router: (NSObjectProtocol & ASCSharingOptionsRoutingLogic & ASCSharingOptionsDataPassing)?
     var viewConfigurator: ASCSharingView?
     var hud: MBProgressHUD?
     var rightHolderCurrentlyLoading = false
@@ -74,6 +74,7 @@ class ASCSharingOptionsViewController: ASCBaseTableViewController {
             interactor.presenter      = presenter
             presenter.viewController  = viewController
             router.viewController     = viewController
+            router.dataStore          = interactor
             isModuleConfigurated      = true
         } else {
             importantRightHolders.removeAll()

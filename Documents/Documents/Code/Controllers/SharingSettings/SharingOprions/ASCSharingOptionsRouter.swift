@@ -32,11 +32,14 @@ class ASCSharingOptionsRouter: NSObject, ASCSharingOptionsRoutingLogic, ASCShari
             addRightHoldersViewController = ASCSharingAddRightHoldersViewController()
         }
         guard
-            let addRightHoldersViewController = addRightHoldersViewController,
-            let viewController = viewController
+            let destinationViewController = addRightHoldersViewController,
+            let viewController = viewController,
+            let sourceDataStore = dataStore,
+            var destinationDataStore = destinationViewController.router?.dataStore
         else { return }
-        
-        navigateToAddRightHoldersViewController(source: viewController, destination: addRightHoldersViewController)
+
+        passDataToAddRightHoldersViewController(source: sourceDataStore, destination: &destinationDataStore)
+        navigateToAddRightHoldersViewController(source: viewController, destination: destinationViewController)
         
     }
     
@@ -44,8 +47,8 @@ class ASCSharingOptionsRouter: NSObject, ASCSharingOptionsRoutingLogic, ASCShari
         source.navigationController?.pushViewController(destination, animated: true)
     }
     
-    private func paddDataToAddRightHoldersViewController(source: ASCSharingOptionsDataStore, destination: ASCSharingAddRightHoldersDataStore) {
-        
+    private func passDataToAddRightHoldersViewController(source: ASCSharingOptionsDataStore, destination: inout ASCSharingAddRightHoldersDataStore) {
+        destination.sharedInfoItems = source.sharedInfoItems
     }
     
 }

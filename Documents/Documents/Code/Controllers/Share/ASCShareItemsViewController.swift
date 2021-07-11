@@ -134,6 +134,7 @@ class ASCShareItemsViewController: UIViewController, UITableViewDelegate, UITabl
                             var share = ASCShareInfo()
                             share.group = group
                             share.locked = true
+                            
                             self.groups.append((share, false))
                         }
                     }

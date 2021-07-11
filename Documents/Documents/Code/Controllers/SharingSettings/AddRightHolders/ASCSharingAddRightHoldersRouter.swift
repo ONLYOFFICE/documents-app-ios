@@ -12,7 +12,15 @@ protocol ASCSharingAddRightHoldersRoutingLogic {
     
 }
 
-class ASCSharingAddRightHoldersRouter: NSObject, ASCSharingAddRightHoldersRoutingLogic {
+protocol ASCSharingAddRightHoldersDataPassing
+{
+    var dataStore: ASCSharingAddRightHoldersDataStore? { get }
+}
+
+
+class ASCSharingAddRightHoldersRouter: NSObject, ASCSharingAddRightHoldersRoutingLogic, ASCSharingAddRightHoldersDataPassing {
+    
+    var dataStore: ASCSharingAddRightHoldersDataStore?
     
     weak var viewController: ASCSharingAddRightHoldersViewController?
     

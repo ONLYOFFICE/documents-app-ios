@@ -20,26 +20,35 @@ class ASCSharingAddRightHoldersTableViewDataSourceAndDelegate<T: UITableViewCell
     
     init(models: [T.ViewModel] = []) {
         super.init()
-        setModels(models: models)
+        set(models: models, selectedIndexes: [])
     }
     
-    func setModels(models: [T.ViewModel]) {
+    func set(models: [T.ViewModel], selectedIndexes: [Int]) {
+        var currentIndex = -1
         groupedModels = models
-            .sorted(by: { $0.name < $1.name })
             .reduce([], { result, model in
                 guard let firstLetter = model.name.first else { return result }
+                currentIndex += 1
                 guard let section = result.last else {
                     let section =  Section(index: firstLetter, models: [model])
+                    if selectedIndexes.contains(currentIndex) {
+                        selectedRows.append(IndexPath(row: 0, section: 0))
+                    }
                     return [section]
                 }
                 guard section.index == firstLetter else {
                     var result = result
                     result.append(Section(index: firstLetter, models: [model]))
+                    if selectedIndexes.contains(currentIndex) {
+                        selectedRows.append(IndexPath(row: 0, section: result.count - 1))
+                    }
                     return result
                 }
                 
                 section.models.append(model)
-                
+                if selectedIndexes.contains(currentIndex) {
+                    selectedRows.append(IndexPath(row: section.models.count - 1, section: result.count - 1))
+                }
                 return result
             })
     }
@@ -55,6 +64,9 @@ class ASCSharingAddRightHoldersTableViewDataSourceAndDelegate<T: UITableViewCell
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard var cell = tableView.dequeueReusableCell(withIdentifier: T.reuseId) as? T else {
             fatalError("Couldn't cast cell to \(T.self)")
+        }
+        if selectedRows.contains(indexPath) {
+            cell.isSelected = true
         }
         let viewModel = groupedModels[indexPath.section].models[indexPath.row]
         cell.viewModel = viewModel

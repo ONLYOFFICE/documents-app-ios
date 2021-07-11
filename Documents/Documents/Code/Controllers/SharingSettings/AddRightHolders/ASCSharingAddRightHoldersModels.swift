@@ -25,10 +25,12 @@ enum ASCSharingAddRightHolders {
             
             struct UsersResponse {
                 var users: [ASCUser]
+                var sharedEntities: [ASCShareInfo]
             }
             
             struct GroupsResponse {
-                var users: [ASCGroup]
+                var groups: [ASCGroup]
+                var sharedEntities: [ASCShareInfo]
             }
         }
         struct ViewModel {
@@ -39,10 +41,12 @@ enum ASCSharingAddRightHolders {
             
             struct UsersViewModel {
                 var users: [ASCSharingRightHolderViewModel]
+                var selectedIndexes: [Int]
             }
             
             struct GroupsViewModel {
                 var groups: [ASCSharingRightHolderViewModel]
+                var selectedIndexes: [Int]
             }
         }
     }

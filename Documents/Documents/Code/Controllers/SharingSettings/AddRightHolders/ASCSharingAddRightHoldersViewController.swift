@@ -15,7 +15,7 @@ protocol ASCSharingAddRightHoldersDisplayLogic: AnyObject {
 class ASCSharingAddRightHoldersViewController: UIViewController, ASCSharingAddRightHoldersDisplayLogic {
     
     var interactor: ASCSharingAddRightHoldersBusinessLogic?
-    var router: (NSObjectProtocol & ASCSharingAddRightHoldersRoutingLogic)?
+    var router: (NSObjectProtocol & ASCSharingAddRightHoldersRoutingLogic & ASCSharingAddRightHoldersDataPassing)?
     
     var sharingAddRightHoldersView: ASCSharingAddRightHoldersView?
     var defaultSelectedTable: RightHoldersTableType = .users
@@ -42,43 +42,9 @@ class ASCSharingAddRightHoldersViewController: UIViewController, ASCSharingAddRi
         return ASCSharingAddRightHoldersSearchResultsTableViewDataSourceAndDelegate(tables: [ .users: usersTableView, .groups: groupsTableView])
     }()
     
-    var usersModels: [ASCSharingRightHolderViewModel] = [
-        ASCSharingRightHolderViewModel(id: "", avatarUrl: nil, name: "Abel – Abe, Abie;", rightHolderType: .user),
-        ASCSharingRightHolderViewModel(id: "", avatarUrl: nil, name: "Abner – Ab, Abbie;", rightHolderType: .user),
-        ASCSharingRightHolderViewModel(id: "", avatarUrl: nil, name: "Abraham, Abram – Abe, Abie, Bram;", rightHolderType: .user),
-        ASCSharingRightHolderViewModel(id: "", avatarUrl: nil, name: "Adam – Ad, Addie, Addy, Ade;", rightHolderType: .user),
-        ASCSharingRightHolderViewModel(id: "", avatarUrl: nil, name: "Benjamin – Ben, Bennie, Benny, Benjy Benjie;", rightHolderType: .user),
-        ASCSharingRightHolderViewModel(id: "", avatarUrl: nil, name: "Bennet, Bennett – Ben, Bennie, Benny;", rightHolderType: .user),
-        ASCSharingRightHolderViewModel(id: "", avatarUrl: nil, name: "Bernard, Barnard – Bernie, Berney, Barney, Barnie", rightHolderType: .user),
-        ASCSharingRightHolderViewModel(id: "", avatarUrl: nil, name: "Christopher Kit, Kester, Kristof, Toph,", rightHolderType: .user),
-        ASCSharingRightHolderViewModel(id: "", avatarUrl: nil, name: "Clarence – Clare, Clair;", rightHolderType: .user),
-        ASCSharingRightHolderViewModel(id: "", avatarUrl: nil, name: "Clare, Clair;", rightHolderType: .user),
-        ASCSharingRightHolderViewModel(id: "", avatarUrl: nil, name: "Clark, Clarke;", rightHolderType: .user),
-        ASCSharingRightHolderViewModel(id: "", avatarUrl: nil, name: "Claude, Claud;", rightHolderType: .user),
-        ASCSharingRightHolderViewModel(id: "", avatarUrl: nil, name: "Donald – Don, Donnie, Donny", rightHolderType: .user),
-        ASCSharingRightHolderViewModel(id: "", avatarUrl: nil, name: "Donovan – Don, Donnie, Donny;", rightHolderType: .user),
-        ASCSharingRightHolderViewModel(id: "", avatarUrl: nil, name: "Dorian;", rightHolderType: .user),
-        ASCSharingRightHolderViewModel(id: "", avatarUrl: nil, name: "Dougls, Douglass – Doug;", rightHolderType: .user),
-        ASCSharingRightHolderViewModel(id: "", avatarUrl: nil, name: "Doyle;", rightHolderType: .user),
-        ASCSharingRightHolderViewModel(id: "", avatarUrl: nil, name: "Drew (see Andrew);", rightHolderType: .user),
-        ASCSharingRightHolderViewModel(id: "", avatarUrl: nil, name: "Elliot, Elliott – El;", rightHolderType: .user),
-        ASCSharingRightHolderViewModel(id: "", avatarUrl: nil, name: "Ellis – El;", rightHolderType: .user),
-        ASCSharingRightHolderViewModel(id: "", avatarUrl: nil, name: "Elmer – El;", rightHolderType: .user),
-        ASCSharingRightHolderViewModel(id: "", avatarUrl: nil, name: "Elton, Alton – El, Al;", rightHolderType: .user),
-        ASCSharingRightHolderViewModel(id: "", avatarUrl: nil, name: "Elvin, Elwin, Elwyn – El, Vin, Vinny, Win;", rightHolderType: .user),
-        ASCSharingRightHolderViewModel(id: "", avatarUrl: nil, name: "Elvis – El;", rightHolderType: .user),
-        ASCSharingRightHolderViewModel(id: "", avatarUrl: nil, name: "Herman – Manny, Mannie;", rightHolderType: .user),
-        ASCSharingRightHolderViewModel(id: "", avatarUrl: nil, name: "Hilary, Hillary – Hill, Hillie, Hilly;", rightHolderType: .user),
-        ASCSharingRightHolderViewModel(id: "", avatarUrl: nil, name: "Homer;", rightHolderType: .user),
-        ASCSharingRightHolderViewModel(id: "", avatarUrl: nil, name: "Horace, Horatio;", rightHolderType: .user),
-        ASCSharingRightHolderViewModel(id: "", avatarUrl: nil, name: "Howard – Howie;", rightHolderType: .user),
-        ASCSharingRightHolderViewModel(id: "", avatarUrl: nil, name: "Hubert – Hugh, Bert, Bertie", rightHolderType: .user),
-    ]
+    var usersModels: [ASCSharingRightHolderViewModel] = []
     
-    var groupsModels: [ASCSharingRightHolderViewModel] = [
-        ASCSharingRightHolderViewModel(id: "", avatarUrl: nil, name: "Admins"),
-        ASCSharingRightHolderViewModel(id: "", avatarUrl: nil, name: "Disigners")
-    ]
+    var groupsModels: [ASCSharingRightHolderViewModel] = []
     
     // MARK: Object lifecycle
     
@@ -104,6 +70,7 @@ class ASCSharingAddRightHoldersViewController: UIViewController, ASCSharingAddRi
         interactor.presenter      = presenter
         presenter.viewController  = viewController
         router.viewController     = viewController
+        router.dataStore          = interactor
     }
     
     // MARK: Routing
@@ -137,6 +104,7 @@ class ASCSharingAddRightHoldersViewController: UIViewController, ASCSharingAddRi
         sharingAddRightHoldersView?.showTable(tableType: defaultSelectedTable)
         
         interactor?.makeRequest(requestType: .loadUsers)
+        interactor?.makeRequest(requestType: .loadGroups)
     }
     
     private func getSelectedTableView() -> UITableView {
@@ -152,14 +120,18 @@ class ASCSharingAddRightHoldersViewController: UIViewController, ASCSharingAddRi
         return tableType
     }
     
+    // MARK: - Display logic
+    
     func displayData(viewModelType: ASCSharingAddRightHolders.Model.ViewModel.ViewModelData) {
         switch viewModelType {
         case .displayUsers(viewModel: let viewModel):
             self.usersModels = viewModel.users
-            usersTableViewDataSourceAndDelegate.setModels(models: viewModel.users)
+            usersTableViewDataSourceAndDelegate.set(models: viewModel.users, selectedIndexes: viewModel.selectedIndexes)
             sharingAddRightHoldersView?.usersTableView.reloadData()
-        case .displayGroups(_):
-            return
+        case .displayGroups(viewModel: let viewModel):
+            self.groupsModels = viewModel.groups
+            groupsTableViewDataSourceAndDelegate.set(models: groupsModels, selectedIndexes: viewModel.selectedIndexes)
+            sharingAddRightHoldersView?.groupsTableView.reloadData()
         }
     }
     
@@ -205,17 +177,17 @@ extension ASCSharingAddRightHoldersViewController: UISearchControllerDelegate, U
         guard let searchText = searchController.searchBar.text else { return }
         
         guard !searchText.isEmpty else {
-            groupsTableViewDataSourceAndDelegate.setModels(models: groupsModels)
+            groupsTableViewDataSourceAndDelegate.set(models: groupsModels, selectedIndexes: [])// MARK: - TODO
             sharingAddRightHoldersView?.groupsTableView.reloadData()
-            usersTableViewDataSourceAndDelegate.setModels(models: usersModels)
+            usersTableViewDataSourceAndDelegate.set(models: usersModels, selectedIndexes: [])// MARK: - TODO
             sharingAddRightHoldersView?.usersTableView.reloadData()
             sharingAddRightHoldersView?.searchResultsTable.reloadData()
             return
         }
         
-        groupsTableViewDataSourceAndDelegate.setModels(models: groupsModels.filter({ $0.name.lowercased().contains(searchText.lowercased()) }))
+        groupsTableViewDataSourceAndDelegate.set(models: groupsModels.filter({ $0.name.lowercased().contains(searchText.lowercased()) }), selectedIndexes: [])// MARK: - TODO
         sharingAddRightHoldersView?.groupsTableView.reloadData()
-        usersTableViewDataSourceAndDelegate.setModels(models: usersModels.filter({ $0.name.lowercased().contains(searchText.lowercased()) }))
+        usersTableViewDataSourceAndDelegate.set(models: usersModels.filter({ $0.name.lowercased().contains(searchText.lowercased()) }), selectedIndexes: [])// MARK: - TODO
         sharingAddRightHoldersView?.usersTableView.reloadData()
         
         if sharingAddRightHoldersView?.searchResultsTable.superview == nil {
@@ -236,8 +208,8 @@ extension ASCSharingAddRightHoldersViewController: UISearchControllerDelegate, U
     func willDismissSearchController(_ searchController: UISearchController) {
         sharingAddRightHoldersView?.removeDarkenFromScreen()
         
-        groupsTableViewDataSourceAndDelegate.setModels(models: groupsModels)
-        usersTableViewDataSourceAndDelegate.setModels(models: usersModels)
+        groupsTableViewDataSourceAndDelegate.set(models: groupsModels, selectedIndexes: [])// MARK: - TODO
+        usersTableViewDataSourceAndDelegate.set(models: usersModels, selectedIndexes: [])// MARK: - TODO
         
         if getSelectedTableView().superview == nil {
             sharingAddRightHoldersView?.showTable(tableType: self.getSelectedTableType())

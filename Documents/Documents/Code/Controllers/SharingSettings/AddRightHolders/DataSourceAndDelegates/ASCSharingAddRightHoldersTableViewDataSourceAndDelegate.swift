@@ -57,9 +57,15 @@ class ASCSharingAddRightHoldersTableViewDataSourceAndDelegate<T: UITableViewCell
         let viewModel = groupedModels[indexPath.section].models[indexPath.row]
         
         cell.viewModel = viewModel.model
-        cell.isSelected = viewModel.selected
         
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        let viewModel = groupedModels[indexPath.section].models[indexPath.row]
+        if viewModel.selected {
+            cell.isSelected = viewModel.selected
+        }
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {

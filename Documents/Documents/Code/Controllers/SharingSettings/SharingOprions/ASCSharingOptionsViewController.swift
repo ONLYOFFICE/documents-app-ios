@@ -26,7 +26,7 @@ class ASCSharingOptionsViewController: ASCBaseTableViewController {
     private var internalLink: String?
     private var externalLink: ASCSharingOprionsExternalLink?
     private var isSwitchActive: Bool { (externalLink != nil) && (externalLink!.access != .deny) && (externalLink!.access != .none) }
-    private var accessProviderFactory = ASCSharingSettingsAccessProviderFactory()
+    private(set) var accessProviderFactory = ASCSharingSettingsAccessProviderFactory()
     
     private lazy var externalLinkSwitchHandler: (Bool) -> Void = { [weak self] activating in
         guard let self = self else { return }

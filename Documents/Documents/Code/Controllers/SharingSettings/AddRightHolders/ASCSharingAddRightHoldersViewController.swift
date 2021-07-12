@@ -21,6 +21,11 @@ class ASCSharingAddRightHoldersViewController: UIViewController, ASCSharingAddRi
     var defaultSelectedTable: RightHoldersTableType = .users
     
     let defaultAccess: ASCShareAccess = .read
+    var accessProvider: ASCSharingSettingsAccessProvider = ASCSharingSettingsAccessDefaultProvider() {
+        didSet {
+            sharingAddRightHoldersView?.updateToolbars()
+        }
+    }
     lazy var selectedAccess: ASCShareAccess = self.defaultAccess
     
     private var isSearchBarEmpty: Bool {
@@ -42,9 +47,24 @@ class ASCSharingAddRightHoldersViewController: UIViewController, ASCSharingAddRi
         return ASCSharingAddRightHoldersSearchResultsTableViewDataSourceAndDelegate(tables: [ .users: usersTableView, .groups: groupsTableView])
     }()
     
-    var usersModels: [(ASCSharingRightHolderViewModel, IsSelected)] = []
+    private var usersModels: [(ASCSharingRightHolderViewModel, IsSelected)] = []
+    private var groupsModels: [(ASCSharingRightHolderViewModel, IsSelected)] = []
     
-    var groupsModels: [(ASCSharingRightHolderViewModel, IsSelected)] = []
+    private lazy var onCellTapped: (ASCSharingRightHolderViewModel, IsSelected) -> Void = { [weak self] model, isSelected in
+        guard let self = self else { return }
+        
+        if let userModelIndex = self.usersModels.firstIndex(where: { (userModel, selected) in userModel.id == model.id }) {
+            self.usersModels[userModelIndex].1 = isSelected
+        } else if let groupModelIndex = self.groupsModels.firstIndex(where: { (groupModel, selected) in groupModel.id == model.id }) {
+            self.groupsModels[groupModelIndex].1 = isSelected
+        }
+        
+        if isSelected {
+            self.interactor?.makeRequest(requestType: .selectViewModel(.init(viewModel: model, access: self.getCurrentAccess())))
+        } else {
+            self.interactor?.makeRequest(requestType: .deselectViewModel(.init(viewModel: model)))
+        }
+    }
     
     // MARK: Object lifecycle
     
@@ -91,6 +111,9 @@ class ASCSharingAddRightHoldersViewController: UIViewController, ASCSharingAddRi
         sharingAddRightHoldersView?.delegate = self
         sharingAddRightHoldersView?.load()
         
+        usersTableViewDataSourceAndDelegate.onCellTapped = onCellTapped
+        usersTableViewDataSourceAndDelegate.onCellTapped = onCellTapped
+        
         sharingAddRightHoldersView?.usersTableView.dataSource = usersTableViewDataSourceAndDelegate
         sharingAddRightHoldersView?.usersTableView.delegate = usersTableViewDataSourceAndDelegate
         sharingAddRightHoldersView?.groupsTableView.dataSource = groupsTableViewDataSourceAndDelegate
@@ -104,6 +127,18 @@ class ASCSharingAddRightHoldersViewController: UIViewController, ASCSharingAddRi
         sharingAddRightHoldersView?.showTable(tableType: defaultSelectedTable)
         
         loadData()
+    }
+    
+    func reset() {
+        selectedAccess = defaultAccess
+        usersModels = []
+        groupsModels = []
+        usersTableViewDataSourceAndDelegate.set(models: [])
+        groupsTableViewDataSourceAndDelegate.set(models: [])
+        
+        sharingAddRightHoldersView?.reset()
+        
+        interactor?.makeRequest(requestType: .clear)
     }
     
     private func getSelectedTableView() -> UITableView {
@@ -145,7 +180,7 @@ class ASCSharingAddRightHoldersViewController: UIViewController, ASCSharingAddRi
 // MARK: - View Delegate
 extension ASCSharingAddRightHoldersViewController: ASCSharingAddRightHoldersViewDelegate {
     func getAccessList() -> ([ASCShareAccess]) {
-        return ASCSharingSettingsAccessDefaultProvider().get() // MARK: - TODO
+        return accessProvider.get()
     }
     
     func getCurrentAccess() -> ASCShareAccess {
@@ -183,16 +218,16 @@ extension ASCSharingAddRightHoldersViewController: UISearchControllerDelegate, U
         
         guard !searchText.isEmpty else {
             groupsTableViewDataSourceAndDelegate.set(models: groupsModels)
-            sharingAddRightHoldersView?.groupsTableView.reloadData()
             usersTableViewDataSourceAndDelegate.set(models: usersModels)
+            sharingAddRightHoldersView?.groupsTableView.reloadData()
             sharingAddRightHoldersView?.usersTableView.reloadData()
             sharingAddRightHoldersView?.searchResultsTable.reloadData()
             return
         }
         
         groupsTableViewDataSourceAndDelegate.set(models: groupsModels.filter({ $0.0.name.lowercased().contains(searchText.lowercased()) }))
-        sharingAddRightHoldersView?.groupsTableView.reloadData()
         usersTableViewDataSourceAndDelegate.set(models: usersModels.filter({ $0.0.name.lowercased().contains(searchText.lowercased()) }))
+        sharingAddRightHoldersView?.groupsTableView.reloadData()
         sharingAddRightHoldersView?.usersTableView.reloadData()
         
         if sharingAddRightHoldersView?.searchResultsTable.superview == nil {
@@ -215,6 +250,9 @@ extension ASCSharingAddRightHoldersViewController: UISearchControllerDelegate, U
         
         groupsTableViewDataSourceAndDelegate.set(models: groupsModels)
         usersTableViewDataSourceAndDelegate.set(models: usersModels)
+        
+        sharingAddRightHoldersView?.groupsTableView.reloadData()
+        sharingAddRightHoldersView?.usersTableView.reloadData()
         
         if getSelectedTableView().superview == nil {
             sharingAddRightHoldersView?.showTable(tableType: self.getSelectedTableType())

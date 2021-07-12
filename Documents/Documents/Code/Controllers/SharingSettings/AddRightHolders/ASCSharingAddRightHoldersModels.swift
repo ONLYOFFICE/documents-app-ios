@@ -16,6 +16,18 @@ enum ASCSharingAddRightHolders {
             enum RequestType {
                 case loadUsers
                 case loadGroups
+                case selectViewModel(_ request: ViewModelSelectedRequest)
+                case deselectViewModel(_ request: ViewModelDeselectedRequest)
+                case clear
+            }
+            
+            struct ViewModelSelectedRequest {
+                let viewModel: ASCSharingRightHolderViewModel
+                let access: ASCShareAccess
+            }
+            
+            struct ViewModelDeselectedRequest {
+                let viewModel: ASCSharingRightHolderViewModel
             }
         }
         struct Response {

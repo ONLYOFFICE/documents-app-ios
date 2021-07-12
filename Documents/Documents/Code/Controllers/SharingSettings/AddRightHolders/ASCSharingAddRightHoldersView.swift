@@ -123,6 +123,18 @@ class ASCSharingAddRightHoldersView {
         configureTables()
         configureToolBar()
     }
+    
+    func reset() {
+        usersTableView.reloadData()
+        groupsTableView.reloadData()
+        searchResultsTable.reloadData()
+        searchController.searchBar.text = nil
+        searchController.isActive = false
+        searchController.dismiss(animated: false)
+        tablesSegmentedControl.selectedSegmentIndex = defaultSelectedTable.rawValue
+        showTable(tableType: defaultSelectedTable)
+        removeDarkenFromScreen()
+    }
 }
 
 // MARK: - @OBJC func delegate
@@ -201,7 +213,7 @@ extension ASCSharingAddRightHoldersView {
 
 // MARK: - Segmented control methods
 extension ASCSharingAddRightHoldersView {
-    func configureSegmentedControl() {
+    private func configureSegmentedControl() {
         tablesSegmentedControlView.translatesAutoresizingMaskIntoConstraints = false
         tablesSegmentedControl.translatesAutoresizingMaskIntoConstraints = false
         
@@ -251,13 +263,13 @@ extension ASCSharingAddRightHoldersView {
 // MARK: - Table views methods
 extension ASCSharingAddRightHoldersView {
     
-    func configureTables() {
+    private func configureTables() {
         let tables = RightHoldersTableType.allCases.map({ getTableView(byRightHoldersTableType: $0 )}) + [searchResultsTable]
         configureGeneralsParams(forTableViews: tables)
         searchResultsTable.backgroundColor = .white
     }
     
-    func configureGeneralsParams(forTableViews tableViews: [UITableView]) {
+    private func configureGeneralsParams(forTableViews tableViews: [UITableView]) {
         for tableView in tableViews {
             tableView.tableFooterView = UIView()
             tableView.backgroundColor = Asset.Colors.tableBackground.color
@@ -325,7 +337,7 @@ extension ASCSharingAddRightHoldersView {
 // MARK: - Toolbar methods
 extension ASCSharingAddRightHoldersView {
     
-    private func configureToolBar() {
+    func configureToolBar() {
         self.navigationController?.isToolbarHidden = false
         delegate?.onUpdateToolbarItems(makeToolbarItems())
         searchController.searchBar.inputAccessoryView = keyboardToolbar
@@ -365,7 +377,7 @@ extension ASCSharingAddRightHoldersView {
         return UIBarButtonItem(customView: nextBtn)
     }
     
-    private func updateToolbars() {
+    public func updateToolbars() {
         delegate?.onUpdateToolbarItems(makeToolbarItems())
         keyboardToolbar.items = makeToolbarItems()
     }

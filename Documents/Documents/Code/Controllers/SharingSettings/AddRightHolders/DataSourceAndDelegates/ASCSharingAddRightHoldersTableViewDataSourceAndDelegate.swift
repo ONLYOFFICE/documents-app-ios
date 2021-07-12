@@ -13,8 +13,7 @@ class ASCSharingAddRightHoldersTableViewDataSourceAndDelegate<T: UITableViewCell
     
     let type = T.self
     var rowHeight: CGFloat = 60
-    
-    private(set) var selectedRows: [IndexPath] = []
+    var onCellTapped: ((T.ViewModel, IsSelected) -> Void)?
     
     private var groupedModels: [Section] = []
     
@@ -26,7 +25,7 @@ class ASCSharingAddRightHoldersTableViewDataSourceAndDelegate<T: UITableViewCell
     func set(models: [(T.ViewModel, IsSelected)]) {
         groupedModels = models
             .reduce([], { result, model in
-                guard let firstLetter = model.0.name.first else { return result }
+                guard let firstLetter = model.0.name.uppercased().first else { return result }
                 guard let section = result.last else {
                     let section =  Section(index: firstLetter, models: [model])
                     return [section]
@@ -40,6 +39,14 @@ class ASCSharingAddRightHoldersTableViewDataSourceAndDelegate<T: UITableViewCell
                 section.models.append(model)
                 return result
             })
+    }
+    
+    func getModels() -> [(T.ViewModel, IsSelected)] {
+        groupedModels.reduce([]) { result, section in
+            var result = result
+            result.append(contentsOf: section.models)
+            return result
+        }
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -57,27 +64,31 @@ class ASCSharingAddRightHoldersTableViewDataSourceAndDelegate<T: UITableViewCell
         let viewModel = groupedModels[indexPath.section].models[indexPath.row]
         
         cell.viewModel = viewModel.model
+        cell.isSelected = viewModel.selected
         
         return cell
     }
     
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
         let viewModel = groupedModels[indexPath.section].models[indexPath.row]
+        cell.setSelected(viewModel.selected, animated: false)
         if viewModel.selected {
-            cell.isSelected = viewModel.selected
+            tableView.selectRow(at: indexPath, animated: false, scrollPosition: .none)
         }
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         var viewModel = groupedModels[indexPath.section].models[indexPath.row]
-        viewModel.1 = true
+        viewModel.selected = true
         groupedModels[indexPath.section].models[indexPath.row] = viewModel
+        onCellTapped?(viewModel.model, viewModel.selected)
     }
     
     func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
         var viewModel = groupedModels[indexPath.section].models[indexPath.row]
-        viewModel.1 = false
+        viewModel.selected = false
         groupedModels[indexPath.section].models[indexPath.row] = viewModel
+        onCellTapped?(viewModel.model, viewModel.selected)
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {

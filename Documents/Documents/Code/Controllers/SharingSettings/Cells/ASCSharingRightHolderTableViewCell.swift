@@ -14,6 +14,7 @@ class ASCSharingRightHolderTableViewCell: UITableViewCell, ASCReusedIdentifierPr
     
     var viewModel: ASCSharingRightHolderViewModel? {
         didSet {
+            clear()
             configureContent()
         }
     }
@@ -50,23 +51,17 @@ class ASCSharingRightHolderTableViewCell: UITableViewCell, ASCReusedIdentifierPr
         return label
     }()
     
-    private lazy var vStack: UIStackView = {
-        let stack = UIStackView()
-        stack.axis = .vertical
-        stack.alignment = .leading
-        stack.spacing = 4
-        return stack
-    }()
+    private lazy var vStack: UIStackView = makeVStack()
     
     func configureContent() {
         guard let viewModel = viewModel else {
             return
         }
         
-        if let access = viewModel.access, access.accessEditable {
-            selectionStyle = .default
-        } else {
+        if let access = viewModel.access, !access.accessEditable {
             selectionStyle = .none
+        } else {
+            selectionStyle = .default
         }
         
         separatorInset.left = defaultLineLeftSpacing
@@ -97,6 +92,8 @@ class ASCSharingRightHolderTableViewCell: UITableViewCell, ASCReusedIdentifierPr
         
         if viewModel.access?.accessEditable ?? false {
             self.accessoryType = .disclosureIndicator
+        } else {
+            self.accessoryType = .none
         }
 
         avatar.translatesAutoresizingMaskIntoConstraints = false
@@ -129,5 +126,22 @@ class ASCSharingRightHolderTableViewCell: UITableViewCell, ASCReusedIdentifierPr
             vStack.centerYAnchor.constraint(equalTo: contentView.centerYAnchor)
         ])
         
+    }
+    
+    func clear() {
+        avatar.image = nil
+        title.text = nil
+        subtitle.text = nil
+        accessLabel.text = nil
+        vStack = makeVStack()
+        selectionStyle = .default
+    }
+    
+    func makeVStack() -> UIStackView {
+        let stack = UIStackView()
+        stack.axis = .vertical
+        stack.alignment = .leading
+        stack.spacing = 4
+        return stack
     }
 }

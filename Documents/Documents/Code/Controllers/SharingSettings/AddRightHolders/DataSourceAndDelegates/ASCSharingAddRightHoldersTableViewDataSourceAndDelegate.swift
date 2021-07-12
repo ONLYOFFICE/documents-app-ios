@@ -55,11 +55,10 @@ class ASCSharingAddRightHoldersTableViewDataSourceAndDelegate<T: UITableViewCell
             fatalError("Couldn't cast cell to \(T.self)")
         }
         let viewModel = groupedModels[indexPath.section].models[indexPath.row]
-        if viewModel.1 {
-            cell.isSelected = true
-        }
-        cell.viewModel = viewModel.0
-        cell.selectionStyle = .default
+        
+        cell.viewModel = viewModel.model
+        cell.isSelected = viewModel.selected
+        
         return cell
     }
     
@@ -99,7 +98,7 @@ class ASCSharingAddRightHoldersTableViewDataSourceAndDelegate<T: UITableViewCell
     
     class Section {
         var index: Character
-        var models: [(T.ViewModel, IsSelected)]
+        var models: [(model: T.ViewModel, selected: IsSelected)]
         
         init(index: Character, models: [(T.ViewModel, IsSelected)]) {
             self.index = index

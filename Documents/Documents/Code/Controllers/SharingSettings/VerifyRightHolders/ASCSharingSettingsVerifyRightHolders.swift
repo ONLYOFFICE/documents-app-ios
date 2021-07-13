@@ -10,6 +10,8 @@ import UIKit
 
 class ASCSharingSettingsVerifyRightHolders: ASCBaseTableViewController {
     
+    private var verifyRightHoldersView: ASCSharingSettingsVerifyRightHoldersView?
+    
     private var needToNotify = false {
         didSet {
             tableView.reloadSections(IndexSet(arrayLiteral: Section.notify.rawValue), with: .automatic)
@@ -23,7 +25,7 @@ class ASCSharingSettingsVerifyRightHolders: ASCBaseTableViewController {
         self.needToNotify = activating
     }
     
-    private var usersModels = [
+    var usersModels = [
         ASCSharingRightHolderViewModel(id: "", avatarUrl: nil, name: "Pavel Chernyshev Pavel Chernyshev Pavel Chernyshev Pavel Chernyshev Pavel Chernyshev", department: "manager", isOwner: true, access: .init(documetAccess: .full, accessEditable: false)),
         ASCSharingRightHolderViewModel(id: "", avatarUrl: nil, name: "Dimitry Dmittrov", department: "manager", isOwner: false, access: .init(documetAccess: .read, accessEditable: true)),
         ASCSharingRightHolderViewModel(id: "", avatarUrl: nil, name: "Admins",  department: "manager", isOwner: true, access: .init(documetAccess: .review, accessEditable: true)),
@@ -43,24 +45,18 @@ class ASCSharingSettingsVerifyRightHolders: ASCBaseTableViewController {
     }
     
     override func viewDidLoad() {
-        configureNavigationBar()
-        configureTableView()
+       load()
     }
     
-    private func configureNavigationBar() {
-        navigationItem.largeTitleDisplayMode = .never
-        navigationController?.navigationBar.backItem?.backButtonTitle = NSLocalizedString("Back", comment: "")
-        navigationController?.navigationBar.topItem?.rightBarButtonItem?.title = NSLocalizedString("Done", comment: "")
-        navigationController?.navigationBar.topItem?.title = NSLocalizedString("Sharing settings", comment: "")
+    func reset() {
+        verifyRightHoldersView?.reset()
     }
     
-    private func configureTableView() {
-        tableView.tableFooterView = UIView()
-        tableView.backgroundColor = Asset.Colors.tableBackground.color
-        tableView.sectionFooterHeight = 0
-        tableView.sectionHeaderHeight = 0
-        
-        tableView.tableHeaderView = UIView()
+    func load() {
+        verifyRightHoldersView = ASCSharingSettingsVerifyRightHoldersView(view: view, tableView: tableView)
+        verifyRightHoldersView?.navigationController = navigationController
+        verifyRightHoldersView?.navigationItem = navigationItem
+        verifyRightHoldersView?.configure()
         
         tableView.register(ASCSwitchTableViewCell.self,
                            forCellReuseIdentifier: ASCSwitchTableViewCell.reuseId)
@@ -95,7 +91,6 @@ extension ASCSharingSettingsVerifyRightHolders {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let section = getSection(sectionRawValue: indexPath.section)
 
-        
         switch section {
         case .notify:
             guard let notifyRow = Section.Notify(rawValue: indexPath.row) else {
@@ -116,7 +111,7 @@ extension ASCSharingSettingsVerifyRightHolders {
              let cell: ASCSharingRightHolderTableViewCell = getCell()
              cell.viewModel = usersModels[indexPath.row]
              return cell
-         case .groups:
+        case .groups:
             let cell: ASCSharingRightHolderTableViewCell = getCell()
             cell.viewModel = groupsModels[indexPath.row]
             return cell

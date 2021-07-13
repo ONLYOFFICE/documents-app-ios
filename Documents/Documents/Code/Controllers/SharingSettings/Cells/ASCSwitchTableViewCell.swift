@@ -20,7 +20,7 @@ class ASCSwitchTableViewCell: UITableViewCell, ASCReusedIdentifierProtocol {
     
     private var hSpacing: CGFloat = 16
     private lazy var title = UILabel()
-    private lazy var uiSwitch = UISwitch()
+    private(set) lazy var uiSwitch = UISwitch()
     
     func configureContent() {
         guard let viewModel = viewModel else {

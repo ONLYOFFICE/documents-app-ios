@@ -59,6 +59,8 @@
 		1D9B8099267403650020B5ED /* ASCCopyLinkTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D9B8098267403650020B5ED /* ASCCopyLinkTableViewCell.swift */; };
 		1DA5E666269DA2E8005F59E1 /* ASCSharingAddRightHoldersRAMDataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DA5E665269DA2E8005F59E1 /* ASCSharingAddRightHoldersRAMDataStore.swift */; };
 		1DA5E669269DBABC005F59E1 /* ASCSharingAddRightHoldersDataStoreTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DA5E668269DBABC005F59E1 /* ASCSharingAddRightHoldersDataStoreTests.swift */; };
+		1DA5E66B269E10DF005F59E1 /* ASCSharingSettingsVerifyRightHoldersView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DA5E66A269E10DF005F59E1 /* ASCSharingSettingsVerifyRightHoldersView.swift */; };
+		1DA5E670269E2293005F59E1 /* ASCASCSharingSettingsVerifyRightHoldersTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DA5E66F269E2293005F59E1 /* ASCASCSharingSettingsVerifyRightHoldersTests.swift */; };
 		1DAAFF3C2678992800023F39 /* ASCSharingSettingsAccessViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DAAFF3B2678992800023F39 /* ASCSharingSettingsAccessViewController.swift */; };
 		1DAAFF492679063700023F39 /* ASCViewModelSetter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DAAFF482679063700023F39 /* ASCViewModelSetter.swift */; };
 		1DAC5661267B3B850078F95E /* ASCNamedProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DAC5660267B3B840078F95E /* ASCNamedProtocol.swift */; };
@@ -662,6 +664,8 @@
 		1D9B8098267403650020B5ED /* ASCCopyLinkTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCCopyLinkTableViewCell.swift; sourceTree = "<group>"; };
 		1DA5E665269DA2E8005F59E1 /* ASCSharingAddRightHoldersRAMDataStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCSharingAddRightHoldersRAMDataStore.swift; sourceTree = "<group>"; };
 		1DA5E668269DBABC005F59E1 /* ASCSharingAddRightHoldersDataStoreTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCSharingAddRightHoldersDataStoreTests.swift; sourceTree = "<group>"; };
+		1DA5E66A269E10DF005F59E1 /* ASCSharingSettingsVerifyRightHoldersView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCSharingSettingsVerifyRightHoldersView.swift; sourceTree = "<group>"; };
+		1DA5E66F269E2293005F59E1 /* ASCASCSharingSettingsVerifyRightHoldersTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCASCSharingSettingsVerifyRightHoldersTests.swift; sourceTree = "<group>"; };
 		1DAAFF3B2678992800023F39 /* ASCSharingSettingsAccessViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCSharingSettingsAccessViewController.swift; sourceTree = "<group>"; };
 		1DAAFF482679063700023F39 /* ASCViewModelSetter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCViewModelSetter.swift; sourceTree = "<group>"; };
 		1DAC5660267B3B840078F95E /* ASCNamedProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCNamedProtocol.swift; sourceTree = "<group>"; };
@@ -1199,6 +1203,7 @@
 		1D4C6744268500C2000F2284 /* VerifyRightHolders */ = {
 			isa = PBXGroup;
 			children = (
+				1DA5E66C269E1E9D005F59E1 /* View */,
 				1D4C674B2685CE05000F2284 /* Models */,
 				1D4C67492685CD88000F2284 /* Cells */,
 				1D4C674526850171000F2284 /* ASCSharingSettingsVerifyRightHolders.swift */,
@@ -1332,6 +1337,30 @@
 			path = AddRightHolders;
 			sourceTree = "<group>";
 		};
+		1DA5E66C269E1E9D005F59E1 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				1DA5E66A269E10DF005F59E1 /* ASCSharingSettingsVerifyRightHoldersView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		1DA5E66D269E1EAA005F59E1 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				1D14AAE326976E18009E48AD /* ASCSharingAddRightHoldersView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		1DA5E66E269E2234005F59E1 /* VerifyRightHolders */ = {
+			isa = PBXGroup;
+			children = (
+				1DA5E66F269E2293005F59E1 /* ASCASCSharingSettingsVerifyRightHoldersTests.swift */,
+			);
+			path = VerifyRightHolders;
+			sourceTree = "<group>";
+		};
 		1DAAFF3A267898BB00023F39 /* Access */ = {
 			isa = PBXGroup;
 			children = (
@@ -1343,8 +1372,8 @@
 		1DAAFF3E2678DF9B00023F39 /* AddRightHolders */ = {
 			isa = PBXGroup;
 			children = (
+				1DA5E66D269E1EAA005F59E1 /* View */,
 				1D14AAE72698D5EC009E48AD /* DataSourceAndDelegates */,
-				1D14AAE326976E18009E48AD /* ASCSharingAddRightHoldersView.swift */,
 				1D14AAEE2698E85A009E48AD /* ASCSharingAddRightHoldersViewController.swift */,
 				1D14AAEF2698E85A009E48AD /* ASCSharingAddRightHoldersInteractor.swift */,
 				1D14AAEA2698E85A009E48AD /* ASCSharingAddRightHoldersPresenter.swift */,
@@ -1393,6 +1422,7 @@
 			children = (
 				1DCCEC08268DBD7B00692167 /* SharingOptions */,
 				1DA5E667269DBA04005F59E1 /* AddRightHolders */,
+				1DA5E66E269E2234005F59E1 /* VerifyRightHolders */,
 			);
 			path = SharingSettings;
 			sourceTree = "<group>";
@@ -3237,6 +3267,7 @@
 				FC4D864C20C50AE00047B871 /* UIColor+Extension.swift in Sources */,
 				1D5DB04F265850B3006B4757 /* ASCOnlyofficeUserDefaultsCacheCategoriesProviderTests.swift in Sources */,
 				1D1A2E46266103AE00D0335B /* ASCLoadedViewControllerFinderProtocolTests.swift in Sources */,
+				1DA5E670269E2293005F59E1 /* ASCASCSharingSettingsVerifyRightHoldersTests.swift in Sources */,
 				1DA5E669269DBABC005F59E1 /* ASCSharingAddRightHoldersDataStoreTests.swift in Sources */,
 				FC4D864A20C50AE00047B871 /* UIAlertController+Extension.swift in Sources */,
 				FC4D864D20C50AE00047B871 /* UIControl+Extension.swift in Sources */,
@@ -3502,6 +3533,7 @@
 				FC7CF5161EF3EFF300C0A64F /* Deprecated.swift in Sources */,
 				FC1EA5CD1ECED0A0008FEE2E /* ASCBaseViewController.swift in Sources */,
 				FCB839661EB8948D0065EC25 /* ASCIntroPageController.swift in Sources */,
+				1DA5E66B269E10DF005F59E1 /* ASCSharingSettingsVerifyRightHoldersView.swift in Sources */,
 				FC81C67D22C5041600A7D104 /* ASCCustomHighlightButton.swift in Sources */,
 				FC8C697F1ECC6755005B68D7 /* ASCConnectStorageOAuth2Box.swift in Sources */,
 				FC2EEA3821BAB05F00CB85A3 /* UIViewController+Extensions.swift in Sources */,

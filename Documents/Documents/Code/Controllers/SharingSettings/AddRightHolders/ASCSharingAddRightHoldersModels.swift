@@ -18,22 +18,22 @@ enum ASCSharingAddRightHolders {
                 case loadGroups
                 case selectViewModel(_ request: ViewModelSelectedRequest)
                 case deselectViewModel(_ request: ViewModelDeselectedRequest)
-                case clear
             }
             
             struct ViewModelSelectedRequest {
-                let viewModel: ASCSharingRightHolderViewModel
+                let selectedViewModel: ASCSharingRightHolderViewModel
                 let access: ASCShareAccess
             }
             
             struct ViewModelDeselectedRequest {
-                let viewModel: ASCSharingRightHolderViewModel
+                let deselectedViewModel: ASCSharingRightHolderViewModel
             }
         }
         struct Response {
             enum ResponseType {
                 case presentUsers(_ response: UsersResponse)
                 case presentGroups(_ response: GroupsResponse)
+                case presentSelected(_ response: SelectedReponse)
             }
             
             struct UsersResponse {
@@ -45,11 +45,18 @@ enum ASCSharingAddRightHolders {
                 var groups: [ASCGroup]
                 var sharedEntities: [ASCShareInfo]
             }
+            
+            struct SelectedReponse {
+                var selectedModel: ASCSharingRightHolderViewModel
+                var isSelect: Bool
+                var type: RightHoldersTableType
+            }
         }
         struct ViewModel {
             enum ViewModelData {
                 case displayUsers(_ viewModel: UsersViewModel)
                 case displayGroups(_ viewModel: GroupsViewModel)
+                case displaySelected(_ viewModel: SelectedViewModel)
             }
             
             struct UsersViewModel {
@@ -58,6 +65,12 @@ enum ASCSharingAddRightHolders {
             
             struct GroupsViewModel {
                 var groups: [(ASCSharingRightHolderViewModel, IsSelected)]
+            }
+            
+            struct SelectedViewModel {
+                var selectedModel: ASCSharingRightHolderViewModel
+                var isSelect: Bool
+                var type: RightHoldersTableType
             }
         }
     }

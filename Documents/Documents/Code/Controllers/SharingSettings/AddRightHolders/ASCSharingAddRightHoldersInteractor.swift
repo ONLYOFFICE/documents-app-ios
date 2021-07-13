@@ -12,24 +12,9 @@ protocol ASCSharingAddRightHoldersBusinessLogic {
     func makeRequest(requestType: ASCSharingAddRightHolders.Model.Request.RequestType)
 }
 
-protocol ASCSharingAddRightHoldersDataStore {
-    var sharedInfoItems: [ASCShareInfo] { get set }
-    var itemsForSharingAdd: [ASCShareInfo] { get }
-    var itemsForSharingRemove: [ASCShareInfo] { get }
+class ASCSharingAddRightHoldersInteractor: ASCSharingAddRightHoldersBusinessLogic {
     
-    var users: [ASCUser] { get }
-    var groups: [ASCGroup] { get }
-}
-
-class ASCSharingAddRightHoldersInteractor: ASCSharingAddRightHoldersBusinessLogic, ASCSharingAddRightHoldersDataStore {
-    
-    var sharedInfoItems: [ASCShareInfo] = []
-    var itemsForSharingAdd: [ASCShareInfo] = []
-    var itemsForSharingRemove: [ASCShareInfo] = []
-    
-    var users: [ASCUser] = []
-    var groups: [ASCGroup] = []
-    
+    var dataStore: ASCSharingAddRightHoldersDataStore?
     var presenter: ASCSharingAddRightHoldersPresentationLogic?
     
     func makeRequest(requestType: ASCSharingAddRightHolders.Model.Request.RequestType) {
@@ -43,8 +28,9 @@ class ASCSharingAddRightHoldersInteractor: ASCSharingAddRightHoldersBusinessLogi
                             users.append(user)
                         }
                     }
-                    self.users = users
-                    self.presenter?.presentData(responseType: .presentUsers(.init(users: users, sharedEntities: self.sharedInfoItems)))
+                    self.dataStore?.users = users
+                    let sharedInfoItems = self.dataStore?.sharedInfoItems ?? []
+                    self.presenter?.presentData(responseType: .presentUsers(.init(users: users, sharedEntities: sharedInfoItems)))
                 }
             }
         case .loadGroups: return
@@ -56,77 +42,51 @@ class ASCSharingAddRightHoldersInteractor: ASCSharingAddRightHoldersBusinessLogi
                             groups.append(group)
                         }
                     }
-                    self.groups = groups
-                    self.presenter?.presentData(responseType: .presentGroups(.init(groups: groups, sharedEntities: self.sharedInfoItems)))
+                    self.dataStore?.groups = groups
+                    let sharedInfoItems = self.dataStore?.sharedInfoItems ?? []
+                    self.presenter?.presentData(responseType: .presentGroups(.init(groups: groups, sharedEntities: sharedInfoItems)))
                 }
             }
         case .selectViewModel(request: let request):
-            let model = request.viewModel
-            let itemForSharingRemove = findSharedInfo(byId: model.id, in: itemsForSharingRemove)
-            
-            guard itemForSharingRemove == nil else {
-                remove(shareInfo: itemForSharingRemove!, from: &itemsForSharingRemove)
-                return
+            if let shareInfo = makeShareInfo(model: request.selectedViewModel, access: request.access) {
+                dataStore?.add(shareInfo: shareInfo)
             }
-            
-            switch model.rightHolderType {
-            case .user:
-                if let user = users.first(where: { $0.userId == model.id }) {
-                    let shareInfo = ASCShareInfo(access: request.access, user: user)
-                    itemsForSharingAdd.append(shareInfo)
-                }
-            case .group:
-                if let group = groups.first(where: { $0.id == model.id }) {
-                    let shareInfo = ASCShareInfo(access: request.access, group: group)
-                    itemsForSharingAdd.append(shareInfo)
-                }
-            default: return
+            if let type = defineType(byId: request.selectedViewModel.id) {
+                presenter?.presentData(responseType: .presentSelected(.init(selectedModel: request.selectedViewModel, isSelect: true, type: type)))
             }
         case .deselectViewModel(request: let request):
-            let model = request.viewModel
-            let sharedInfoItem = findSharedInfo(byId: model.id, in: sharedInfoItems)
-            
-            guard sharedInfoItem == nil else {
-                itemsForSharingRemove.append(sharedInfoItem!)
-                return
+            if let shareInfo = makeShareInfo(model: request.deselectedViewModel, access: .none) {
+                dataStore?.remove(shareInfo: shareInfo)
             }
-            
-            switch model.rightHolderType {
-            case .user:
-                itemsForSharingAdd.removeAll { shareInfo in
-                    shareInfo.user?.userId == model.id
-                }
-            case .group:
-                itemsForSharingAdd.removeAll { shareInfo in
-                    shareInfo.group?.id == model.id
-                }
-            default: return
+            if let type = defineType(byId: request.deselectedViewModel.id) {
+                presenter?.presentData(responseType: .presentSelected(.init(selectedModel: request.deselectedViewModel, isSelect: false, type: type)))
             }
-        case .clear:
-            sharedInfoItems = []
-            itemsForSharingAdd = []
-            itemsForSharingRemove = []
-            users = []
-            groups = []
         }
     }
     
-    private func findSharedInfo(byId id: String, in store: [ASCShareInfo]) -> ASCShareInfo? {
-        var sharedInfo: ASCShareInfo?
-        
-        for item in store {
-            if item.user?.userId == id || item.group?.id == id {
-                sharedInfo = item
-                break
+    private func makeShareInfo(model: ASCSharingRightHolderViewModel, access: ASCShareAccess) -> ASCShareInfo? {
+        guard let dataStore = dataStore else { return nil }
+        switch model.rightHolderType {
+        case .user:
+            if let user = dataStore.users.first(where: { $0.userId == model.id }) {
+                return ASCShareInfo(access: access, user: user)
             }
+        case .group:
+            if let group = dataStore.groups.first(where: { $0.id == model.id }) {
+                return ASCShareInfo(access: access, group: group)
+            }
+        default: return nil
         }
-        
-        return sharedInfo
+        return nil
     }
     
-    private func remove(shareInfo: ASCShareInfo, from store: inout [ASCShareInfo]) {
-        store.removeAll { item in
-            item.user?.userId == shareInfo.user?.userId || item.group?.id == shareInfo.group?.id
+    private func defineType(byId id: String) -> RightHoldersTableType? {
+        guard let dataStore = dataStore else { return nil }
+        if let _ = dataStore.users.firstIndex(where: { $0.userId == id }) {
+            return .users
+        } else if let _ = dataStore.groups.firstIndex(where: { $0.id == id }) {
+            return .groups
         }
+        return nil
     }
 }

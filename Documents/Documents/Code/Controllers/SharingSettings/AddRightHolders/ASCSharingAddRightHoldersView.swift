@@ -183,7 +183,7 @@ extension ASCSharingAddRightHoldersView {
 
 // MARK: - Navigation bar methods
 extension ASCSharingAddRightHoldersView {
-    private func configureNavigationBar() {
+    func configureNavigationBar() {
         navigationItem.largeTitleDisplayMode = .never
         searchController.obscuresBackgroundDuringPresentation  = false
         searchController.searchBar.placeholder = NSLocalizedString("Search", comment: "")

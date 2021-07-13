@@ -63,6 +63,10 @@ class ASCSharingAddRightHoldersPresenter: ASCSharingAddRightHoldersPresentationL
 
             }
             viewController?.displayData(viewModelType: .displayGroups(.init(groups: viewModels)))
+        case .presentSelected(response: let response):
+            viewController?.displayData(viewModelType: .displaySelected(.init(selectedModel: response.selectedModel,
+                                                                              isSelect: response.isSelect,
+                                                                              type: response.type)))
         }
     }
     

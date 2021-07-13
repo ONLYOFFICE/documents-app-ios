@@ -16,6 +16,7 @@ class ASCSharingAddRightHoldersViewController: UIViewController, ASCSharingAddRi
     
     var interactor: ASCSharingAddRightHoldersBusinessLogic?
     var router: (NSObjectProtocol & ASCSharingAddRightHoldersRoutingLogic & ASCSharingAddRightHoldersDataPassing)?
+    var dataStore: ASCSharingAddRightHoldersRAMDataStore?
     
     var sharingAddRightHoldersView: ASCSharingAddRightHoldersView?
     var defaultSelectedTable: RightHoldersTableType = .users
@@ -52,18 +53,7 @@ class ASCSharingAddRightHoldersViewController: UIViewController, ASCSharingAddRi
     
     private lazy var onCellTapped: (ASCSharingRightHolderViewModel, IsSelected) -> Void = { [weak self] model, isSelected in
         guard let self = self else { return }
-        
-        if let userModelIndex = self.usersModels.firstIndex(where: { (userModel, selected) in userModel.id == model.id }) {
-            self.usersModels[userModelIndex].1 = isSelected
-        } else if let groupModelIndex = self.groupsModels.firstIndex(where: { (groupModel, selected) in groupModel.id == model.id }) {
-            self.groupsModels[groupModelIndex].1 = isSelected
-        }
-        
-        if isSelected {
-            self.interactor?.makeRequest(requestType: .selectViewModel(.init(viewModel: model, access: self.getCurrentAccess())))
-        } else {
-            self.interactor?.makeRequest(requestType: .deselectViewModel(.init(viewModel: model)))
-        }
+        self.selectedRow(model: model, isSelected: isSelected)
     }
     
     // MARK: Object lifecycle
@@ -85,12 +75,15 @@ class ASCSharingAddRightHoldersViewController: UIViewController, ASCSharingAddRi
         let interactor            = ASCSharingAddRightHoldersInteractor()
         let presenter             = ASCSharingAddRightHoldersPresenter()
         let router                = ASCSharingAddRightHoldersRouter()
+        let dataStore             = ASCSharingAddRightHoldersRAMDataStore()
         viewController.interactor = interactor
         viewController.router     = router
+        viewController.dataStore  = dataStore
         interactor.presenter      = presenter
+        interactor.dataStore      = dataStore
         presenter.viewController  = viewController
         router.viewController     = viewController
-        router.dataStore          = interactor
+        router.dataStore          = dataStore
     }
     
     // MARK: Routing
@@ -138,7 +131,7 @@ class ASCSharingAddRightHoldersViewController: UIViewController, ASCSharingAddRi
         
         sharingAddRightHoldersView?.reset()
         
-        interactor?.makeRequest(requestType: .clear)
+        dataStore?.clear()
     }
     
     private func getSelectedTableView() -> UITableView {
@@ -154,10 +147,27 @@ class ASCSharingAddRightHoldersViewController: UIViewController, ASCSharingAddRi
         return tableType
     }
     
+    /// when the screen is reused
+    func start() {
+        sharingAddRightHoldersView?.navigationItem = navigationItem
+        sharingAddRightHoldersView?.navigationController = navigationController
+        sharingAddRightHoldersView?.configureNavigationBar()
+        sharingAddRightHoldersView?.configureToolBar()
+        loadData()
+    }
+    
     // MARK: - Requests
     func loadData() {
         interactor?.makeRequest(requestType: .loadUsers)
         interactor?.makeRequest(requestType: .loadGroups)
+    }
+    
+    func selectedRow(model: ASCSharingRightHolderViewModel, isSelected: IsSelected) {
+        if isSelected {
+            self.interactor?.makeRequest(requestType: .selectViewModel(.init(selectedViewModel: model, access: self.getCurrentAccess())))
+        } else {
+            self.interactor?.makeRequest(requestType: .deselectViewModel(.init(deselectedViewModel: model)))
+        }
     }
     
     // MARK: - Display logic
@@ -172,6 +182,17 @@ class ASCSharingAddRightHoldersViewController: UIViewController, ASCSharingAddRi
             self.groupsModels = viewModel.groups
             groupsTableViewDataSourceAndDelegate.set(models: groupsModels)
             sharingAddRightHoldersView?.groupsTableView.reloadData()
+        case .displaySelected(viewModel: let viewModel):
+            switch viewModel.type {
+            case .users:
+                if let index = usersModels.firstIndex(where: { $0.0.id == viewModel.selectedModel.id }) {
+                    usersModels[index].1 = viewModel.isSelect
+                }
+            case .groups:
+                if let index = groupsModels.firstIndex(where: { $0.0.id == viewModel.selectedModel.id }) {
+                    groupsModels[index].1 = viewModel.isSelect
+                }
+            }
         }
     }
     

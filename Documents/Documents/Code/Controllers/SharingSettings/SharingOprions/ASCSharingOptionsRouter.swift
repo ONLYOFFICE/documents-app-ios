@@ -60,14 +60,12 @@ class ASCSharingOptionsRouter: NSObject, ASCSharingOptionsRoutingLogic, ASCShari
         navigationVC.view.tintColor = source.view.tintColor
         
         source.present(navigationVC, animated: true, completion: nil)
-        
-        //source.navigationController?.pushViewController(destination, animated: true)
-        
     }
     
     private func passDataToAddRightHoldersViewController(source: ASCSharingOptionsDataStore, destination: inout ASCSharingAddRightHoldersDataStore) {
         destination.sharedInfoItems = source.sharedInfoItems
         destination.currentUser = source.currentUser
+        destination.entity = source.entity
     }
     
 }

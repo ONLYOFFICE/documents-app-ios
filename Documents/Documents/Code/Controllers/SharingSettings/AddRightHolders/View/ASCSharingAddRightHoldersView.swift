@@ -19,6 +19,7 @@ protocol ASCSharingAddRightHoldersViewDelegate: AnyObject {
     func onAccessMenuSelectAction(action: UIAction, shareAccessRaw: Int)
     func onAccessSheetSelectAction(shareAccessRaw: Int)
     func onUpdateToolbarItems(_ items: [UIBarButtonItem]?)
+    func onNextButtonTapped()
     
     func present(sheetAccessController: UIViewController)
 }
@@ -177,6 +178,10 @@ extension ASCSharingAddRightHoldersView {
         )
         
         delegate?.present(sheetAccessController: accessController)
+    }
+    
+    @objc func onNextButtonTapped() {
+        delegate?.onNextButtonTapped()
     }
 }
 
@@ -374,6 +379,7 @@ extension ASCSharingAddRightHoldersView {
         nextBtn.layer.cornerRadius = 12
         nextBtn.setTitle(NSLocalizedString("Next", comment: "").uppercased(), for: .normal)
         nextBtn.contentEdgeInsets = UIEdgeInsets(top: 3, left: 15, bottom: 3, right: 15)
+        nextBtn.addTarget(self, action: #selector(onNextButtonTapped), for: .touchUpInside)
         return UIBarButtonItem(customView: nextBtn)
     }
     

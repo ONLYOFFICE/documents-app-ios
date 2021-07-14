@@ -35,6 +35,7 @@ class ASCSharingSettingsVerifyRightHoldersView {
         navigationController?.navigationBar.backItem?.backButtonTitle = NSLocalizedString("Back", comment: "")
         navigationController?.navigationBar.topItem?.rightBarButtonItem?.title = NSLocalizedString("Done", comment: "")
         navigationController?.navigationBar.topItem?.title = NSLocalizedString("Sharing settings", comment: "")
+        navigationController?.isToolbarHidden = true
     }
     
     private func configureTableView() {

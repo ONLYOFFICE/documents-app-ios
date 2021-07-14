@@ -66,7 +66,7 @@ class ASCSharingOptionsViewController: ASCBaseTableViewController {
         self.entity = entity
         if !isModuleConfigurated {
             let viewController        = self
-            let interactor            = ASCSharingOptionsInteractor(entityLinkMaker: ASCOnlyofficeFileInternalLinkMaker())
+            let interactor            = ASCSharingOptionsInteractor(entityLinkMaker: ASCOnlyofficeFileInternalLinkMaker(), entity: entity)
             let presenter             = ASCSharingOptionsPresenter()
             let router                = ASCSharingOptionsRouter()
             viewController.interactor = interactor

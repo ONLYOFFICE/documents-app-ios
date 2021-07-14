@@ -11,13 +11,13 @@ import XCTest
 
 class ASCSharingSettingsVerifyRightHoldersTests: XCTestCase {
     
-    typealias VerifySection = ASCSharingSettingsVerifyRightHolders.Section
+    typealias VerifySection = ASCSharingSettingsVerifyRightHoldersViewController.Section
     
-    var sut: ASCSharingSettingsVerifyRightHolders!
+    var sut: ASCSharingSettingsVerifyRightHoldersViewController!
     var tableView: UITableView!
 
     override func setUpWithError() throws {
-        sut = ASCSharingSettingsVerifyRightHolders()
+        sut = ASCSharingSettingsVerifyRightHoldersViewController()
         tableView = MockTableView.mockTableView(withDataSource: sut, andWithDelegate: sut)
         sut.tableView = tableView
         sut.loadViewIfNeeded()

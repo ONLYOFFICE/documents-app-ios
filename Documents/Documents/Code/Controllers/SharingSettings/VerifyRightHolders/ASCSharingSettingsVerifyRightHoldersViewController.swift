@@ -1,14 +1,21 @@
 //
-//  ASCSharingSettingsVerifyRightHolders.swift
+//  ASCSharingSettingsVerifyRightHoldersViewController.swift
 //  Documents
 //
-//  Created by Pavel Chernyshev on 24.06.2021.
-//  Copyright © 2021 Ascensio System SIA. All rights reserved.
+//  Created by Pavel Chernyshev on 14.07.2021.
+//  Copyright (c) 2021 Ascensio System SIA. All rights reserved.
 //
 
 import UIKit
 
-class ASCSharingSettingsVerifyRightHolders: ASCBaseTableViewController {
+protocol ASCSharingSettingsVerifyRightHoldersDisplayLogic: AnyObject {
+    func displayData(viewModelType: ASCSharingSettingsVerifyRightHolders.Model.ViewModel.ViewModelData)
+}
+
+class ASCSharingSettingsVerifyRightHoldersViewController: ASCBaseTableViewController, ASCSharingSettingsVerifyRightHoldersDisplayLogic {
+    
+    var interactor: ASCSharingSettingsVerifyRightHoldersBusinessLogic?
+    var router: (NSObjectProtocol & ASCSharingSettingsVerifyRightHoldersRoutingLogic & ASCSharingSettingsVerifyRightHoldersDataPassing)?
     
     private var verifyRightHoldersView: ASCSharingSettingsVerifyRightHoldersView?
     
@@ -25,27 +32,43 @@ class ASCSharingSettingsVerifyRightHolders: ASCBaseTableViewController {
         self.needToNotify = activating
     }
     
-    var usersModels = [
-        ASCSharingRightHolderViewModel(id: "", avatarUrl: nil, name: "Pavel Chernyshev Pavel Chernyshev Pavel Chernyshev Pavel Chernyshev Pavel Chernyshev", department: "manager", isOwner: true, access: .init(documetAccess: .full, accessEditable: false)),
-        ASCSharingRightHolderViewModel(id: "", avatarUrl: nil, name: "Dimitry Dmittrov", department: "manager", isOwner: false, access: .init(documetAccess: .read, accessEditable: true)),
-        ASCSharingRightHolderViewModel(id: "", avatarUrl: nil, name: "Admins",  department: "manager", isOwner: true, access: .init(documetAccess: .review, accessEditable: true)),
-    ]
+    var usersModels: [ASCSharingRightHolderViewModel] = []
     
-    var groupsModels = [
-        ASCSharingRightHolderViewModel(id: "", avatarUrl: nil, name: "Admins", access: .init(documetAccess: .read, accessEditable: true)),
-        ASCSharingRightHolderViewModel(id: "", avatarUrl: nil, name: "Disigners", access: .init(documetAccess: .read, accessEditable: true))
-    ]
+    var groupsModels: [ASCSharingRightHolderViewModel] = []
     
+    // MARK: Object lifecycle
     override init(style: UITableView.Style = .grouped) {
         super.init(style: style)
+        setup()
     }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
+    // MARK: Setup
+    
+    private func setup() {
+        let viewController        = self
+        let interactor            = ASCSharingSettingsVerifyRightHoldersInteractor()
+        let presenter             = ASCSharingSettingsVerifyRightHoldersPresenter()
+        let router                = ASCSharingSettingsVerifyRightHoldersRouter()
+        viewController.interactor = interactor
+        viewController.router     = router
+        interactor.presenter      = presenter
+        presenter.viewController  = viewController
+        router.viewController     = viewController
+        router.dataStore          = interactor
+    }
+    
+    // MARK: Routing
+    
+    
+    
+    // MARK: View lifecycle
     override func viewDidLoad() {
-       load()
+        super.viewDidLoad()
+        load()
     }
     
     func reset() {
@@ -64,12 +87,33 @@ class ASCSharingSettingsVerifyRightHolders: ASCBaseTableViewController {
                            forCellReuseIdentifier: ASCTextViewTableViewCell.reuseId)
         tableView.register(ASCSharingRightHolderTableViewCell.self,
                            forCellReuseIdentifier: ASCSharingRightHolderTableViewCell.reuseId)
+        
+        loadShareItems()
+    }
+    
+    // MARK: - Requests
+    func loadShareItems() {
+        interactor?.makeRequest(requestType: .loadShareItems)
+    }
+    
+    // MARK: - Display
+    func displayData(viewModelType: ASCSharingSettingsVerifyRightHolders.Model.ViewModel.ViewModelData) {
+        switch viewModelType {
+        case .displayShareItems(viewMode: let viewModel):
+            self.usersModels = viewModel.users
+            self.groupsModels = viewModel.groups
+            tableView.reloadData()
+        case .displayAccessProvider(_):
+            return
+        case .displayShareSettings(_):
+            return
+        }
     }
     
 }
 
 // MARK: - Table view Data source & Delegate
-extension ASCSharingSettingsVerifyRightHolders {
+extension ASCSharingSettingsVerifyRightHoldersViewController {
     
     override func numberOfSections(in tableView: UITableView) -> Int {
         Section.allCases.count
@@ -153,7 +197,7 @@ extension ASCSharingSettingsVerifyRightHolders {
 }
 
 // MARK: - Sections
-extension ASCSharingSettingsVerifyRightHolders {
+extension ASCSharingSettingsVerifyRightHoldersViewController {
     
     enum Section: Int, CaseIterable {
         case notify

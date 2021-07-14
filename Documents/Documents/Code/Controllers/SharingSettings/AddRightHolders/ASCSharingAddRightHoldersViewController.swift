@@ -86,10 +86,6 @@ class ASCSharingAddRightHoldersViewController: UIViewController, ASCSharingAddRi
         router.dataStore          = dataStore
     }
     
-    // MARK: Routing
-    
-    
-    
     // MARK: View lifecycle
     
     override func viewDidLoad() {
@@ -120,6 +116,10 @@ class ASCSharingAddRightHoldersViewController: UIViewController, ASCSharingAddRi
         sharingAddRightHoldersView?.showTable(tableType: defaultSelectedTable)
         
         loadData()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        navigationController?.isToolbarHidden = false
     }
     
     func reset() {
@@ -196,6 +196,10 @@ class ASCSharingAddRightHoldersViewController: UIViewController, ASCSharingAddRi
         }
     }
     
+    // MARK: Routing
+    private func routeToVerifyRightHolders() {
+        router?.routeToVerifyRightHoldersViewController(segue: nil)
+    }
 }
 
 // MARK: - View Delegate
@@ -229,6 +233,10 @@ extension ASCSharingAddRightHoldersViewController: ASCSharingAddRightHoldersView
     
     func present(sheetAccessController: UIViewController) {
         present(sheetAccessController, animated: true, completion: nil)
+    }
+    
+    func onNextButtonTapped() {
+        routeToVerifyRightHolders()
     }
 }
 

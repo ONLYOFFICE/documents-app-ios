@@ -15,24 +15,26 @@ protocol ASCSharingOptionsBusinessLogic {
 }
 
 protocol ASCSharingOptionsDataStore {
+    var entity: ASCEntity? { get }
     var currentUser: ASCUser? { get }
     var sharedInfoItems: [ASCShareInfo] { get }
 }
 
 class ASCSharingOptionsInteractor: ASCSharingOptionsBusinessLogic, ASCSharingOptionsDataStore {
-    
     // MARK: - Workers
     let entityLinkMaker: ASCEntityLinkMakerProtocol
     
     // MARK: - ASCSharingOptionsDataStore properties
+    var entity: ASCEntity?
     var currentUser: ASCUser?
     var sharedInfoItems: [ASCShareInfo] = []
     
     // MARK: - ASCSharingOptionsBusinessLogic
     var presenter: ASCSharingOptionsPresentationLogic?
     
-    init(entityLinkMaker: ASCEntityLinkMakerProtocol) {
+    init(entityLinkMaker: ASCEntityLinkMakerProtocol, entity: ASCEntity) {
         self.entityLinkMaker = entityLinkMaker
+        self.entity = entity
     }
     
     func makeRequest(request: ASCSharingOptions.Model.Request.RequestType) {

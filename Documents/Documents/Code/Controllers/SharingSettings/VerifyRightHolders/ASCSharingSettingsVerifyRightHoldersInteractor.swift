@@ -55,9 +55,25 @@ class ASCSharingSettingsVerifyRightHoldersInteractor: ASCSharingSettingsVerifyRi
             let items = sharedItemWithoutRemoveItems + itemsForSharingAdd
             presenter?.presentData(responseType: .presentShareItems(.init(items: items)))
         case .loadAccessProvider:
-            return
+            presenter?.presentData(responseType: .presentAccessProvider(accessProvider))
         case .applyShareSettings:
             return
+        case .accessChange(request: let request):
+            var model = request.model
+            var successUpdate = false
+            if let index = sharedInfoItems.firstIndex(where: { $0.user?.userId == model.id || $0.group?.id == model.id }) {
+                sharedInfoItems[index].access = request.newAccess
+                successUpdate = true
+            } else if let index = itemsForSharingAdd.firstIndex(where: { $0.user?.userId == model.id || $0.group?.id == model.id }) {
+                itemsForSharingAdd[index].access = request.newAccess
+                successUpdate = true
+            }
+            
+            if successUpdate {
+                model.access?.entityAccess = request.newAccess
+            }
+            
+            presenter?.presentData(responseType: .presentAccessChange(.init(model: model, errorMessage: successUpdate ? nil : NSLocalizedString("Somethin wrong", comment: ""))))
         }
     }
 }

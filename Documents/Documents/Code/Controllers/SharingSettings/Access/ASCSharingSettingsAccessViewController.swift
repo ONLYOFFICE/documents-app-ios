@@ -11,23 +11,27 @@ import UIKit
 class ASCSharingSettingsAccessViewController: ASCBaseTableViewController {
     var reuseCellId = "basicStyle"
     
-    var selectAccessDelegate: ((ASCShareAccess) -> Void)?
-    
-    var currentlyAccess: ASCShareAccess? = .read
-    var accessProvider: ASCSharingSettingsAccessProvider = ASCSharingSettingsAccessDefaultProvider() {
+    var viewModel: ASCSharingSettingsAccessViewModel? {
         didSet {
+            guard let viewModel = viewModel else { return }
+            
+            self.title = viewModel.title
+            
+            if isViewLoaded {
+                configureNavigationBar()
+            }
+            
+            guard let accessProvider = viewModel.accessProvider else { return }
+            
             accessList = accessProvider.get().sorted(by: { $0.getSortWeight() < $1.getSortWeight() })
+            
             if isViewLoaded {
                 tableView.reloadData()
             }
         }
     }
-    
+
     var heightForSectionHeader: CGFloat = 38
-    
-    var largeTitleDisplayMode:  UINavigationItem.LargeTitleDisplayMode = .automatic
-    var headerText: String = NSLocalizedString("Access settings", comment: "")
-    var footerText: String = NSLocalizedString("Unauthorized users will not be able to view the document.", comment: "")
     
     private var accessList: [ASCShareAccess] = []
     
@@ -45,7 +49,7 @@ class ASCSharingSettingsAccessViewController: ASCBaseTableViewController {
     }
     
     private func configureNavigationBar() {
-        navigationItem.largeTitleDisplayMode = largeTitleDisplayMode
+        navigationItem.largeTitleDisplayMode = viewModel?.largeTitleDisplayMode ?? .automatic
         navigationController?.navigationBar.backIndicatorImage = UIImage()
         navigationController?.navigationBar.backIndicatorTransitionMaskImage = UIImage()
         navigationController?.navigationItem.setHidesBackButton(true, animated: false)
@@ -72,17 +76,17 @@ extension ASCSharingSettingsAccessViewController {
         let cell = tableView.dequeueReusableCell(withIdentifier: reuseCellId, for: indexPath)
         let access = accessList[indexPath.row]
         cell.textLabel?.text = access.title()
-        cell.accessoryType = access == currentlyAccess ? .checkmark : .none
+        cell.accessoryType = access == viewModel?.currentlyAccess ? .checkmark : .none
         cell.selectionStyle = .none
         return cell
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let access = accessList[indexPath.row]
-        if currentlyAccess != access {
-            currentlyAccess = access
+        if viewModel?.currentlyAccess != access {
+            viewModel?.currentlyAccess = access
             tableView.reloadData()
-            self.selectAccessDelegate?(access)
+            self.viewModel?.selectAccessDelegate?(access)
             if let navigationController = self.navigationController {
                 navigationController.popViewController(animated: true)
             } else {
@@ -92,11 +96,11 @@ extension ASCSharingSettingsAccessViewController {
     }
     
     override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        headerText
+        viewModel?.headerText
     }
     
     override func tableView(_ tableView: UITableView, titleForFooterInSection section: Int) -> String? {
-        footerText
+        viewModel?.footerText
     }
     
     override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {

@@ -9,7 +9,7 @@
 import UIKit
 
 protocol ASCSharingSettingsVerifyRightHoldersRoutingLogic {
-    
+    func routeToAccessViewController(viewModel: ASCSharingSettingsAccessViewModel, segue: UIStoryboardSegue?)
 }
 
 protocol ASCSharingSettingsVerifyRightHoldersDataPassing
@@ -18,9 +18,34 @@ protocol ASCSharingSettingsVerifyRightHoldersDataPassing
 }
 
 class ASCSharingSettingsVerifyRightHoldersRouter: NSObject, ASCSharingSettingsVerifyRightHoldersRoutingLogic, ASCSharingSettingsVerifyRightHoldersDataPassing {
-    
+
     weak var viewController: ASCSharingSettingsVerifyRightHoldersViewController?
     var dataStore: ASCSharingSettingsVerifyRightHoldersDataStore?
-    // MARK: Routing
+
+    var accessViewController: ASCSharingSettingsAccessViewController?
     
+    // MARK: Routing
+    func routeToAccessViewController(viewModel: ASCSharingSettingsAccessViewModel, segue: UIStoryboardSegue?) {
+        let isDestinationAlreadyInit = accessViewController != nil
+        
+        if !isDestinationAlreadyInit {
+            accessViewController = ASCSharingSettingsAccessViewController()
+        }
+        guard
+            let destinationViewController = accessViewController,
+            let viewController = viewController,
+            let destinationDataStore = accessViewController
+        else { return }
+        
+        passDataToAddRightHoldersViewController(viewModel: viewModel, destination: destinationDataStore)
+        navigateToAddRightHoldersViewController(source: viewController, destination: destinationViewController)
+    }
+    
+    private func navigateToAddRightHoldersViewController(source: ASCSharingSettingsVerifyRightHoldersViewController, destination: ASCSharingSettingsAccessViewController) {
+        source.navigationController?.pushViewController(destination, animated: true)
+    }
+    
+    private func passDataToAddRightHoldersViewController(viewModel: ASCSharingSettingsAccessViewModel, destination: ASCSharingSettingsAccessViewController) {
+        destination.viewModel = viewModel
+    }
 }

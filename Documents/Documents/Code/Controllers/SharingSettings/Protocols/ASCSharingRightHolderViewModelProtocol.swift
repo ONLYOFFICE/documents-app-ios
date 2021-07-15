@@ -24,6 +24,6 @@ enum ASCSharingRightHolderType: String {
 }
 
 struct ASCSharingRightHolderViewModelAccess {
-    var documetAccess: ASCShareAccess
+    var entityAccess: ASCShareAccess
     var accessEditable: Bool
 }

@@ -16,6 +16,12 @@ enum ASCSharingSettingsVerifyRightHolders {
                 case loadShareItems
                 case loadAccessProvider
                 case applyShareSettings
+                case accessChange(_ request: AccessChangeRequest)
+            }
+            
+            struct AccessChangeRequest {
+                var model: ASCSharingRightHolderViewModel
+                var newAccess: ASCShareAccess
             }
         }
         struct Response {
@@ -23,6 +29,7 @@ enum ASCSharingSettingsVerifyRightHolders {
                 case presentShareItems(_ response: ShareSettingsResponse)
                 case presentAccessProvider(_ provider: ASCSharingSettingsAccessProvider)
                 case presentShareSettings(_ response: ShareSettingsResponse)
+                case presentAccessChange(_ response: AccessChangeResponse)
             }
             
             struct ShareSettingsResponse {
@@ -32,12 +39,18 @@ enum ASCSharingSettingsVerifyRightHolders {
             struct ShareItemsResponse {
                 
             }
+            
+            struct AccessChangeResponse {
+                var model: ASCSharingRightHolderViewModel
+                var errorMessage: ErrorMessage?
+            }
         }
         struct ViewModel {
             enum ViewModelData {
                 case displayShareItems(_ viewModel: ShareItemsViewModel)
                 case displayAccessProvider(_ provider: ASCSharingSettingsAccessProvider)
-                case displayShareSettings(_ viewModel: ShareSettingsViewModel)
+                case displayApplyShareSettings(_ viewModel: ShareSettingsViewModel)
+                case displayAccessChange(_ viewModel: AccessChangeViewModel)
             }
             
             struct ShareItemsViewModel {
@@ -47,6 +60,11 @@ enum ASCSharingSettingsVerifyRightHolders {
             
             struct ShareSettingsViewModel {
                 
+            }
+            
+            struct AccessChangeViewModel {
+                var model: ASCSharingRightHolderViewModel
+                var errorMessage: ErrorMessage?
             }
         }
     }

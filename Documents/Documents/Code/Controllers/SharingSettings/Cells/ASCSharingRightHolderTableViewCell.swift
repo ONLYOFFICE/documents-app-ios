@@ -85,7 +85,7 @@ class ASCSharingRightHolderTableViewCell: UITableViewCell, ASCReusedIdentifierPr
         
         let access = viewModel.access
         if access != nil && !viewModel.isOwner {
-            accessLabel.text = access?.documetAccess.title()
+            accessLabel.text = access?.entityAccess.title()
         } else if viewModel.isOwner {
             accessLabel.text = NSLocalizedString("Owner", comment: "Table cell right holder acces text")
         }

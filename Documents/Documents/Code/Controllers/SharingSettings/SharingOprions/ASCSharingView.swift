@@ -73,24 +73,27 @@ class ASCSharingView {
                            forCellReuseIdentifier: ASCSharingRightHolderTableViewCell.reuseId)
     }
     
-    public func configureForUser(accessViewController: ASCSharingSettingsAccessViewController, userName: String, access: ASCShareAccess, provider: ASCSharingSettingsAccessProvider) {
-        accessViewController.accessProvider = provider
-        accessViewController.largeTitleDisplayMode = .automatic
-        accessViewController.title = userName
-        accessViewController.currentlyAccess = access
-        accessViewController.headerText = NSLocalizedString("Access settings", comment: "")
-        accessViewController.footerText = NSLocalizedString("Unauthorized users will not be able to view the document.", comment: "")
-        accessViewController.tableView.reloadData()
+    public func configureForUser(accessViewController: ASCSharingSettingsAccessViewController, userName: String, access: ASCShareAccess, provider: ASCSharingSettingsAccessProvider, selectAccessDelegate: ((ASCShareAccess) -> Void)?) {
+        let viewModel = ASCSharingSettingsAccessViewModel(title: userName,
+                                                          currentlyAccess: access,
+                                                          accessProvider: provider,
+                                                          largeTitleDisplayMode: .automatic,
+                                                          headerText: NSLocalizedString("Access settings", comment: ""),
+                                                          footerText: NSLocalizedString("Unauthorized users will not be able to view the document.", comment: ""),
+                                                          selectAccessDelegate: selectAccessDelegate)
+        accessViewController.viewModel = viewModel
     }
     
-    public func configureForLink(accessViewController: ASCSharingSettingsAccessViewController, access: ASCShareAccess, provider: ASCSharingSettingsAccessProvider) {
-        accessViewController.accessProvider = provider
-        accessViewController.largeTitleDisplayMode = .never
-        accessViewController.title = NSLocalizedString("Sharing settings", comment: "")
-        accessViewController.currentlyAccess = access
-        accessViewController.headerText = NSLocalizedString("Access by external link", comment: "")
-        accessViewController.footerText = NSLocalizedString("The document will be available for viewing by unauthorized users who click on an external link.", comment: "")
-        accessViewController.tableView.reloadData()
+    public func configureForLink(accessViewController: ASCSharingSettingsAccessViewController, access: ASCShareAccess, provider: ASCSharingSettingsAccessProvider,
+        selectAccessDelegate: ((ASCShareAccess) -> Void)?) {
+        let viewModel = ASCSharingSettingsAccessViewModel(title: NSLocalizedString("Sharing settings", comment: ""),
+                                                          currentlyAccess: access,
+                                                          accessProvider: provider,
+                                                          largeTitleDisplayMode: .never,
+                                                          headerText: NSLocalizedString("Access by external link", comment: ""),
+                                                          footerText: NSLocalizedString("The document will be available for viewing by unauthorized users who click on an external link.", comment: ""),
+                                                          selectAccessDelegate: selectAccessDelegate)
+        accessViewController.viewModel = viewModel
     }
     
     public func showTableLoadingActivityIndicator(tableView: UITableView) {

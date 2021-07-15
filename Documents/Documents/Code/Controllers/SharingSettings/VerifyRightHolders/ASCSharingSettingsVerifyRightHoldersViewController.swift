@@ -33,8 +33,10 @@ class ASCSharingSettingsVerifyRightHoldersViewController: ASCBaseTableViewContro
     }
     
     var usersModels: [ASCSharingRightHolderViewModel] = []
-    
     var groupsModels: [ASCSharingRightHolderViewModel] = []
+    
+    private lazy var accessViewController = ASCSharingSettingsAccessViewController()
+    private lazy var accessProvider: ASCSharingSettingsAccessProvider = ASCSharingSettingsAccessDefaultProvider()
     
     // MARK: Object lifecycle
     override init(style: UITableView.Style = .grouped) {
@@ -61,10 +63,6 @@ class ASCSharingSettingsVerifyRightHoldersViewController: ASCBaseTableViewContro
         router.dataStore          = interactor
     }
     
-    // MARK: Routing
-    
-    
-    
     // MARK: View lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -89,11 +87,21 @@ class ASCSharingSettingsVerifyRightHoldersViewController: ASCBaseTableViewContro
                            forCellReuseIdentifier: ASCSharingRightHolderTableViewCell.reuseId)
         
         loadShareItems()
+        loadAccessProvider()
+
     }
     
     // MARK: - Requests
     func loadShareItems() {
         interactor?.makeRequest(requestType: .loadShareItems)
+    }
+    
+    func loadAccessProvider() {
+        interactor?.makeRequest(requestType: .loadAccessProvider)
+    }
+    
+    func change(access: ASCShareAccess, forViewModel viewModel: ASCSharingRightHolderViewModel) {
+        interactor?.makeRequest(requestType: .accessChange(.init(model: viewModel, newAccess: access)))
     }
     
     // MARK: - Display
@@ -103,13 +111,29 @@ class ASCSharingSettingsVerifyRightHoldersViewController: ASCBaseTableViewContro
             self.usersModels = viewModel.users
             self.groupsModels = viewModel.groups
             tableView.reloadData()
-        case .displayAccessProvider(_):
+        case .displayAccessProvider(provider: let provider):
+            self.accessProvider = provider
+        case .displayApplyShareSettings(_):
             return
-        case .displayShareSettings(_):
-            return
+        case .displayAccessChange(viewModel: let viewModel):
+            guard viewModel.errorMessage == nil else {
+                log.error(viewModel.errorMessage!)
+                return
+            }
+            if let index = usersModels.firstIndex(where: { $0.id == viewModel.model.id}) {
+                usersModels[index] = viewModel.model
+                tableView.reloadRows(at: [IndexPath(row: index, section: Section.users.rawValue)], with: .automatic)
+            } else if let index = groupsModels.firstIndex(where: { $0.id == viewModel.model.id }) {
+                groupsModels[index] = viewModel.model
+                tableView.reloadRows(at: [IndexPath(row: index, section: Section.groups.rawValue)], with: .automatic)
+            }
         }
     }
     
+    // MARK: Routing
+    func routeToAccessViewController(accessViewModel: ASCSharingSettingsAccessViewModel) {
+        router?.routeToAccessViewController(viewModel: accessViewModel, segue: nil)
+    }
 }
 
 // MARK: - Table view Data source & Delegate
@@ -159,6 +183,29 @@ extension ASCSharingSettingsVerifyRightHoldersViewController {
             let cell: ASCSharingRightHolderTableViewCell = getCell()
             cell.viewModel = groupsModels[indexPath.row]
             return cell
+        }
+    }
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let section = getSection(sectionRawValue: indexPath.section)
+        
+        switch section {
+        case .notify: return
+        case .users, .groups:
+            let rightHolderViewModel = section == .users
+                ? usersModels[indexPath.row]
+                : groupsModels[indexPath.row]
+            guard rightHolderViewModel.access?.accessEditable == true else { return }
+            let accessViewModel = ASCSharingSettingsAccessViewModel(
+                title: rightHolderViewModel.name,
+                currentlyAccess: rightHolderViewModel.access?.entityAccess ?? .read,
+                accessProvider: accessProvider,
+                largeTitleDisplayMode: .automatic
+            ) { [weak self] access in
+                self?.change(access: access, forViewModel: rightHolderViewModel)
+            }
+            
+            routeToAccessViewController(accessViewModel: accessViewModel)
         }
     }
 

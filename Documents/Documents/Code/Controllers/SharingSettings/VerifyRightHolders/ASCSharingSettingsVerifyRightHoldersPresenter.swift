@@ -38,7 +38,7 @@ class ASCSharingSettingsVerifyRightHoldersPresenter: ASCSharingSettingsVerifyRig
                     rightHolderType = .group
                 }
                 
-                let access = ASCSharingRightHolderViewModelAccess(documetAccess: sharedInfo.access,
+                let access = ASCSharingRightHolderViewModelAccess(entityAccess: sharedInfo.access,
                                                                    accessEditable: !sharedInfo.locked && !sharedInfo.owner)
                 if let unwrapedId = id {
                     let viewModel = ASCSharingRightHolderViewModel(id: unwrapedId,
@@ -61,10 +61,12 @@ class ASCSharingSettingsVerifyRightHoldersPresenter: ASCSharingSettingsVerifyRig
             
             viewController?.displayData(viewModelType: .displayShareItems(.init(users: users, groups: groups)))
             
-        case .presentAccessProvider(_):
-            return
+        case .presentAccessProvider(provider: let provider):
+            viewController?.displayData(viewModelType: .displayAccessProvider(provider))
         case .presentShareSettings(_):
             return
+        case .presentAccessChange(response: let response):
+            viewController?.displayData(viewModelType: .displayAccessChange(.init(model: response.model, errorMessage: response.errorMessage)))
         }
     }
 }

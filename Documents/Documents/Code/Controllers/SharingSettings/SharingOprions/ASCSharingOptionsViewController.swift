@@ -162,14 +162,14 @@ extension ASCSharingOptionsViewController: ASCSharingOptionsDisplayLogic {
             self.externalLink?.access = rightHolder.access
             tableView.reloadSections(IndexSet(arrayLiteral: SharingOptionsSection.externalLink.rawValue), with: .automatic)
         } else if let indexOfImportant = importantRightHolders.firstIndex(where: { $0.id == rightHolder.id }) {
-            importantRightHolders[indexOfImportant].access?.documetAccess = rightHolder.access
+            importantRightHolders[indexOfImportant].access?.entityAccess = rightHolder.access
             let sectionIndex = isSharingViaExternalLinkPossible()
                 ? SharingOptionsSection.importantRightHolders.rawValue
                 : SharingFolderOprinosSection.importantRightHolders.rawValue
             tableView.reloadRows(at: [IndexPath(row: indexOfImportant, section: sectionIndex)], with: .automatic)
             
         } else if let indexOfOther = otherRightHolders.firstIndex(where: { $0.id == rightHolder.id }) {
-            otherRightHolders[indexOfOther].access?.documetAccess = rightHolder.access
+            otherRightHolders[indexOfOther].access?.entityAccess = rightHolder.access
             let sectionIndex = isSharingViaExternalLinkPossible()
                 ? SharingOptionsSection.otherRightHolders.rawValue
                 : SharingFolderOprinosSection.otherRightHolders.rawValue
@@ -290,8 +290,11 @@ extension ASCSharingOptionsViewController {
                 if indexPath.row == ExternalLinkRow.accessInfo.rawValue {
                     guard let externalLink = externalLink else { return }
                     let accessProvider = accessProviderFactory.get(entity: entity ?? ASCEntity(), isAccessExternal: true)
-                    viewConfigurator?.configureForLink(accessViewController: accessViewController, access: externalLink.access, provider: accessProvider)
-                    accessViewController.selectAccessDelegate = { [weak self] access in
+                    viewConfigurator?.configureForLink(
+                        accessViewController: accessViewController,
+                        access: externalLink.access,
+                        provider: accessProvider
+                    ) { [weak self] access in
                         guard let self = self, let entity = self.entity else { return }
                         let rightHolder = ASCSharingRightHolder(id: externalLink.id, type: .link, access: externalLink.access, isOwner: false)
                         self.interactor?.makeRequest(request: .changeRightHolderAccess(.init(entity: entity, rightHolder: rightHolder, access: access)))
@@ -325,13 +328,14 @@ extension ASCSharingOptionsViewController {
         }
         
         let accessProvider = accessProviderFactory.get(entity: entity ?? ASCEntity(), isAccessExternal: false)
-        viewConfigurator?.configureForUser(accessViewController: accessViewController,
-                                           userName: unwrapedViewModel.name,
-                                           access: unwrapedViewModel.access?.documetAccess ?? .none,
-                                           provider: accessProvider)
-        accessViewController.selectAccessDelegate = { [weak self] access in
+        viewConfigurator?.configureForUser(
+            accessViewController: accessViewController,
+            userName: unwrapedViewModel.name,
+            access: unwrapedViewModel.access?.entityAccess ?? .none,
+            provider: accessProvider
+        ) { [weak self] access in
             guard let rightHolderType = unwrapedViewModel.rightHolderType,
-                  let rightHolderAccess = unwrapedViewModel.access?.documetAccess
+                  let rightHolderAccess = unwrapedViewModel.access?.entityAccess
             else {
                 return
             }

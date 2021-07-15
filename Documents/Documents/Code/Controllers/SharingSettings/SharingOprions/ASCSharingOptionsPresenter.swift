@@ -50,7 +50,7 @@ class ASCSharingOptionsPresenter: ASCSharingOptionsPresentationLogic {
                     rightHolderType = .group
                 }
                 
-                let access = ASCSharingRightHolderViewModelAccess(documetAccess: sharedInfo.access,
+                let access = ASCSharingRightHolderViewModelAccess(entityAccess: sharedInfo.access,
                                                                    accessEditable: !sharedInfo.locked && !sharedInfo.owner)
                 if let unwrapedId = id {
                     let viewModel = ASCSharingRightHolderViewModel(id: unwrapedId,

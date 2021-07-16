@@ -9,12 +9,21 @@
 import Foundation
 import UIKit
 
+protocol ASCSharingSettingsVerifyRightHoldersViewDelegate: AnyObject {
+    func onDoneBarBtnTapped()
+}
+
 class ASCSharingSettingsVerifyRightHoldersView {
     
     weak var view: UIView!
     weak var tableView: UITableView!
     weak var navigationController: UINavigationController?
     weak var navigationItem: UINavigationItem?
+    weak var delegate: ASCSharingSettingsVerifyRightHoldersViewDelegate?
+    
+    private lazy var doneBarBtn: UIBarButtonItem = {
+        return UIBarButtonItem(title: NSLocalizedString("Done", comment: ""),style: .plain, target: self, action: #selector(onDoneBarBtnTapped))
+    }()
     
     init(view: UIView, tableView: UITableView) {
         self.view = view
@@ -32,10 +41,8 @@ class ASCSharingSettingsVerifyRightHoldersView {
     
     private func configureNavigationBar() {
         navigationItem?.largeTitleDisplayMode = .never
-        navigationController?.navigationBar.backItem?.backButtonTitle = NSLocalizedString("Back", comment: "")
-        navigationController?.navigationBar.topItem?.rightBarButtonItem?.title = NSLocalizedString("Done", comment: "")
-        navigationController?.navigationBar.topItem?.title = NSLocalizedString("Sharing settings", comment: "")
         navigationController?.isToolbarHidden = true
+        navigationItem?.rightBarButtonItem = doneBarBtn
     }
     
     private func configureTableView() {
@@ -44,5 +51,12 @@ class ASCSharingSettingsVerifyRightHoldersView {
         tableView.sectionFooterHeight = 0
         tableView.sectionHeaderHeight = 0
         tableView.tableHeaderView = UIView()
+    }
+}
+
+//MARK: - Functions for delegate
+extension ASCSharingSettingsVerifyRightHoldersView {
+    @objc func onDoneBarBtnTapped() {
+        delegate?.onDoneBarBtnTapped()
     }
 }

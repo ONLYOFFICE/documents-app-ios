@@ -109,6 +109,7 @@ class ASCSharingAddRightHoldersDataStoreTests: XCTestCase {
         XCTAssertTrue(sut.itemsForSharingAdd.count == 0)
         XCTAssertTrue(sut.itemsForSharingRemove.count == 1)
         XCTAssertEqual(sut.itemsForSharingRemove.first?.user?.userId, "Foo")
+        XCTAssertEqual(sut.itemsForSharingRemove.first?.access, ASCShareAccess.none)
     }
     
     func testWhenWeCallRemoveFuncWithItemExistInItemsForAddThenRemoveFromThere() {

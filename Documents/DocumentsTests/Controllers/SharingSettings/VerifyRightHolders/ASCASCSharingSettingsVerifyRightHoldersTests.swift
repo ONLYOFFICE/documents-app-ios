@@ -80,7 +80,7 @@ class ASCSharingSettingsVerifyRightHoldersTests: XCTestCase {
     }
     
     func testCellForUsersSectionIsASCSharingRightHolderTableViewCell() {
-        let user = ASCSharingRightHolderViewModel(id: "", avatarUrl: nil, name: "Foo", department: "manager", isOwner: true, access: .init(documetAccess: .full, accessEditable: false))
+        let user = ASCSharingRightHolderViewModel(id: "", avatarUrl: nil, name: "Foo", department: "manager", isOwner: true, access: .init(entityAccess: .full, accessEditable: false))
         sut.usersModels = [user]
         
         let rowIndexPath = IndexPath(row: 0, section: VerifySection.users.rawValue)
@@ -92,7 +92,7 @@ class ASCSharingSettingsVerifyRightHoldersTests: XCTestCase {
     
     func testCellForGroupsSectionIsASCSharingRightHolderTableViewCell() {
         sut.usersModels = []
-        let group = ASCSharingRightHolderViewModel(id: "", avatarUrl: nil, name: "Bar", access: .init(documetAccess: .read, accessEditable: true))
+        let group = ASCSharingRightHolderViewModel(id: "", avatarUrl: nil, name: "Bar", access: .init(entityAccess: .read, accessEditable: true))
         sut.groupsModels = [group]
         
         let rowIndexPath = IndexPath(row: 0, section: 2)

@@ -11,6 +11,7 @@ import Foundation
 protocol ASCSharingAddRightHoldersDataStore {
     var currentUser: ASCUser? { get set }
     var entity: ASCEntity? { get set }
+    var doneComplerion: () -> Void { get set }
     
     var sharedInfoItems: [ASCShareInfo] { get set }
     var itemsForSharingAdd: [ASCShareInfo] { get }
@@ -25,8 +26,10 @@ protocol ASCSharingAddRightHoldersDataStore {
 }
 
 class ASCSharingAddRightHoldersRAMDataStore: ASCSharingAddRightHoldersDataStore {
+    
     var entity: ASCEntity?
     var currentUser: ASCUser?
+    var doneComplerion: () -> Void = {}
     
     var sharedInfoItems: [ASCShareInfo] = []
     private(set) var itemsForSharingAdd: [ASCShareInfo] = []
@@ -56,10 +59,11 @@ class ASCSharingAddRightHoldersRAMDataStore: ASCSharingAddRightHoldersDataStore 
             remove(shareInfo: shareInfo, from: &itemsForSharingAdd)
         }
         
-        guard let sharedInfoItem = findShareInfo(byShareInfo: shareInfo, in: sharedInfoItems) else {
+        guard var sharedInfoItem = findShareInfo(byShareInfo: shareInfo, in: sharedInfoItems) else {
             return
         }
         
+        sharedInfoItem.access = .none
         itemsForSharingRemove.append(sharedInfoItem)
     }
     

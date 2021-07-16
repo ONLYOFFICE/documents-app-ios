@@ -56,13 +56,10 @@ class ASCSharingOptionsInteractor: ASCSharingOptionsBusinessLogic, ASCSharingOpt
     
     private func loadRightHolders(loadRightHoldersRequest: ASCSharingOptions.Model.Request.LoadRightHoldersRequest) {
 
-        
         guard let entity = loadRightHoldersRequest.entity
         else {
-            presenter?.presentData(response: .presentRightHolders(.init(sharedInfoItems: [],
-                                                                        currentUser: currentUser,
-                                                                        internalLink: nil,
-                                                                        externalLink: nil)))
+            presenter?.presentData(response: .presentRightHolders(
+                                    .init(sharedInfoItems: [], currentUser: currentUser, internalLink: nil, externalLink: nil)))
             return
         }
         
@@ -70,16 +67,15 @@ class ASCSharingOptionsInteractor: ASCSharingOptionsBusinessLogic, ASCSharingOpt
         
         guard let apiRequest = makeApiRequest(entity: entity)
         else {
-            presenter?.presentData(response: .presentRightHolders(.init(sharedInfoItems: [],
-                                                                        currentUser: currentUser,
-                                                                        internalLink: internalLink,
-                                                                        externalLink: nil)))
+            presenter?.presentData(response: .presentRightHolders(
+                                    .init(sharedInfoItems: [], currentUser: currentUser, internalLink: internalLink, externalLink: nil)))
             return
         }
 
         ASCOnlyOfficeApi.get(apiRequest) { (results, error, response) in
             var exteralLink: ASCSharingOprionsExternalLink?
             if let results = results as? [[String: Any]] {
+                self.sharedInfoItems = []
                 for item in results {
                     var sharedItem = ASCShareInfo()
                     
@@ -89,7 +85,7 @@ class ASCSharingOptionsInteractor: ASCSharingOptionsBusinessLogic, ASCSharingOpt
 
                     if let sharedTo = item["sharedTo"] as? [String: Any] {
                         
-                        // External link
+                        /// External link
                         let shareLink = sharedTo["shareLink"] as? String
                         let shareId = sharedTo["id"] as? String
                         if shareLink != nil && shareId != nil {

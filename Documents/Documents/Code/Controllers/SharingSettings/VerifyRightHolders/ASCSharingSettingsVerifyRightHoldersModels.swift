@@ -15,10 +15,15 @@ enum ASCSharingSettingsVerifyRightHolders {
             enum RequestType {
                 case loadShareItems
                 case loadAccessProvider
-                case applyShareSettings
+                case applyShareSettings(_ request: ApplyShareSettingsRequest)
                 case accessChange(_ request: AccessChangeRequest)
             }
             
+            struct ApplyShareSettingsRequest {
+                var notify: Bool
+                var notifyMessage: String?
+            }
+        
             struct AccessChangeRequest {
                 var model: ASCSharingRightHolderViewModel
                 var newAccess: ASCShareAccess
@@ -26,18 +31,18 @@ enum ASCSharingSettingsVerifyRightHolders {
         }
         struct Response {
             enum ResponseType {
-                case presentShareItems(_ response: ShareSettingsResponse)
+                case presentShareItems(_ response: ShareItemsResponse)
                 case presentAccessProvider(_ provider: ASCSharingSettingsAccessProvider)
-                case presentShareSettings(_ response: ShareSettingsResponse)
+                case presentApplyingShareSettings(_ response: ApplyingShareSettingsResponse)
                 case presentAccessChange(_ response: AccessChangeResponse)
             }
             
-            struct ShareSettingsResponse {
+            struct ShareItemsResponse {
                 var items: [ASCShareInfo]
             }
             
-            struct ShareItemsResponse {
-                
+            struct ApplyingShareSettingsResponse {
+                var error: ErrorMessage?
             }
             
             struct AccessChangeResponse {
@@ -49,7 +54,7 @@ enum ASCSharingSettingsVerifyRightHolders {
             enum ViewModelData {
                 case displayShareItems(_ viewModel: ShareItemsViewModel)
                 case displayAccessProvider(_ provider: ASCSharingSettingsAccessProvider)
-                case displayApplyShareSettings(_ viewModel: ShareSettingsViewModel)
+                case displayApplyShareSettings(_ viewModel: ApplyingShareSettingsViewModel)
                 case displayAccessChange(_ viewModel: AccessChangeViewModel)
             }
             
@@ -58,8 +63,8 @@ enum ASCSharingSettingsVerifyRightHolders {
                 var groups: [ASCSharingRightHolderViewModel]
             }
             
-            struct ShareSettingsViewModel {
-                
+            struct ApplyingShareSettingsViewModel {
+                var error: ErrorMessage?
             }
             
             struct AccessChangeViewModel {

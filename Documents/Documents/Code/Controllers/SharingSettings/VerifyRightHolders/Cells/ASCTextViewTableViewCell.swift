@@ -48,6 +48,12 @@ class ASCTextViewTableViewCell: UITableViewCell, ASCReusedIdentifierProtocol, AS
         ])
     }
 
+    func getText() -> String {
+        guard textView.text != placeHolderText else {
+            return ""
+        }
+        return textView.text
+    }
 }
 
 // MARK: - UITextViewDelegate for Placeholder

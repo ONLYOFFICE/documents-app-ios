@@ -28,10 +28,14 @@ class ASCSharingAddRightHoldersPresenter: ASCSharingAddRightHoldersPresentationL
                     isSelected = true
                 }
                 
+                let firstName = user.firstName ?? ""
+                let lastName = user.lastName ?? ""
+                let fullName = "\(firstName) \(lastName)".trimmed
+                
                 let viewModel = ASCSharingRightHolderViewModel(
                     id: user.userId ?? "",
                     avatarUrl: user.avatar,
-                    name: user.userName ?? "",
+                    name: fullName,
                     department: user.department,
                     isOwner: false,
                     rightHolderType: .user,

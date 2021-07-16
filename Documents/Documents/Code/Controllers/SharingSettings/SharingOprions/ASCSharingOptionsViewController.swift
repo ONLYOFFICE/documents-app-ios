@@ -118,10 +118,7 @@ class ASCSharingOptionsViewController: ASCBaseTableViewController {
         }
         hud = MBProgressHUD.showTopMost()
         hud?.label.text = NSLocalizedString("Sharing", comment: "Caption of the process")
-        DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
-            
-            self.interactor?.makeRequest(request: .changeRightHolderAccess(.init(entity: entity, rightHolder: rightHolder, access: access)))
-        }
+        self.interactor?.makeRequest(request: .changeRightHolderAccess(.init(entity: entity, rightHolder: rightHolder, access: access)))
     }
     
     // MARK: - Routing
@@ -153,7 +150,6 @@ extension ASCSharingOptionsViewController: ASCSharingOptionsDisplayLogic {
                 hud = nil
                 UIAlertController.showError(in: self, message: errorMessage)
             }
-            
         }
     }
     

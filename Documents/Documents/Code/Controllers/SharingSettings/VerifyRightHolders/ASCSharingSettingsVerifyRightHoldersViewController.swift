@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import MBProgressHUD
 
 protocol ASCSharingSettingsVerifyRightHoldersDisplayLogic: AnyObject {
     func displayData(viewModelType: ASCSharingSettingsVerifyRightHolders.Model.ViewModel.ViewModelData)
@@ -37,6 +38,8 @@ class ASCSharingSettingsVerifyRightHoldersViewController: ASCBaseTableViewContro
     
     private lazy var accessViewController = ASCSharingSettingsAccessViewController()
     private lazy var accessProvider: ASCSharingSettingsAccessProvider = ASCSharingSettingsAccessDefaultProvider()
+    private var currentlyApplying: Bool = false
+    private var hud: MBProgressHUD?
     
     // MARK: Object lifecycle
     override init(style: UITableView.Style = .grouped) {
@@ -70,13 +73,16 @@ class ASCSharingSettingsVerifyRightHoldersViewController: ASCBaseTableViewContro
     }
     
     func reset() {
+        needToNotify = false
         verifyRightHoldersView?.reset()
     }
     
     func load() {
+        title = NSLocalizedString("Sharing settings", comment: "")
         verifyRightHoldersView = ASCSharingSettingsVerifyRightHoldersView(view: view, tableView: tableView)
         verifyRightHoldersView?.navigationController = navigationController
         verifyRightHoldersView?.navigationItem = navigationItem
+        verifyRightHoldersView?.delegate = self
         verifyRightHoldersView?.configure()
         
         tableView.register(ASCSwitchTableViewCell.self,
@@ -88,7 +94,6 @@ class ASCSharingSettingsVerifyRightHoldersViewController: ASCBaseTableViewContro
         
         loadShareItems()
         loadAccessProvider()
-
     }
     
     // MARK: - Requests
@@ -104,6 +109,20 @@ class ASCSharingSettingsVerifyRightHoldersViewController: ASCBaseTableViewContro
         interactor?.makeRequest(requestType: .accessChange(.init(model: viewModel, newAccess: access)))
     }
     
+    func apply() {
+        if !currentlyApplying {
+            currentlyApplying = true
+            hud = MBProgressHUD.showTopMost()
+            hud?.label.text = NSLocalizedString("Applying", comment: "Caption of the process")
+            var notifyMessage: String?
+            let notifyCellIndexPath = IndexPath(row: Section.Notify.message.rawValue, section: Section.notify.rawValue)
+            if needToNotify, let cell = tableView.cellForRow(at: notifyCellIndexPath) as? ASCTextViewTableViewCell {
+                notifyMessage = cell.getText()
+            }
+            self.interactor?.makeRequest(requestType: .applyShareSettings(.init(notify: needToNotify, notifyMessage: notifyMessage)))
+        }
+    }
+    
     // MARK: - Display
     func displayData(viewModelType: ASCSharingSettingsVerifyRightHolders.Model.ViewModel.ViewModelData) {
         switch viewModelType {
@@ -113,8 +132,21 @@ class ASCSharingSettingsVerifyRightHoldersViewController: ASCBaseTableViewContro
             tableView.reloadData()
         case .displayAccessProvider(provider: let provider):
             self.accessProvider = provider
-        case .displayApplyShareSettings(_):
-            return
+        case .displayApplyShareSettings(viewModel: let viewModel):
+            currentlyApplying = false
+            if viewModel.error == nil {
+                hud?.setSuccessState()
+                let delay: TimeInterval = 0.65
+                hud?.hide(animated: true, afterDelay: delay)
+                hud = nil
+                DispatchQueue.main.asyncAfter(deadline: .now() + delay) {
+                    self.routeToSharingOptions()
+                }
+            } else if let errorMessage = viewModel.error {
+                hud?.hide(animated: false)
+                hud = nil
+                UIAlertController.showError(in: self, message: errorMessage)
+            }
         case .displayAccessChange(viewModel: let viewModel):
             guard viewModel.errorMessage == nil else {
                 log.error(viewModel.errorMessage!)
@@ -133,6 +165,17 @@ class ASCSharingSettingsVerifyRightHoldersViewController: ASCBaseTableViewContro
     // MARK: Routing
     func routeToAccessViewController(accessViewModel: ASCSharingSettingsAccessViewModel) {
         router?.routeToAccessViewController(viewModel: accessViewModel, segue: nil)
+    }
+    
+    func routeToSharingOptions() {
+        self.navigationController?.dismiss(animated: true)
+    }
+}
+
+// MARK: - View Delegate
+extension ASCSharingSettingsVerifyRightHoldersViewController: ASCSharingSettingsVerifyRightHoldersViewDelegate {
+    func onDoneBarBtnTapped() {
+        apply()
     }
 }
 
@@ -291,5 +334,4 @@ extension ASCSharingSettingsVerifyRightHoldersViewController {
             }
         }
     }
-    
 }

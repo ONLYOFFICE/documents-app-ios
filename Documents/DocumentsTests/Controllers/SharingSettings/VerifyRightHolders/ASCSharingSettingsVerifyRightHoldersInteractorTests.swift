@@ -16,7 +16,7 @@ class ASCSharingSettingsVerifyRightHoldersInteractorTests: XCTestCase {
     var presenter: PresenterMock!
 
     override func setUpWithError() throws {
-        sut = ASCSharingSettingsVerifyRightHoldersInteractor()
+        sut = ASCSharingSettingsVerifyRightHoldersInteractor(apiWorker: SharingSettingAPIWorkerMock())
         presenter = PresenterMock()
         sut.presenter = presenter
     }
@@ -265,5 +265,13 @@ extension ASCSharingSettingsVerifyRightHoldersInteractorTests {
                 accessChangeResponse = response
             }
         }
+    }
+    
+    class SharingSettingAPIWorkerMock: ASCShareSettingsAPIWorkerProtocol {
+        func convertToParams(shareItems: [ASCShareInfo]) -> [String : Any] { [:] }
+        
+        func convertToParams(items: [(rightHolderId: String, access: ASCShareAccess)]) -> [String : Any] { [:] }
+        
+        func makeApiRequest(entity: ASCEntity) -> String? { nil }
     }
 }

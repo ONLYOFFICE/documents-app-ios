@@ -46,6 +46,9 @@
 		1D5DB0352658086C006B4757 /* ASCOnlyofficeCacheCategoriesProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D5DB0342658086B006B4757 /* ASCOnlyofficeCacheCategoriesProvider.swift */; };
 		1D5DB03A2658097E006B4757 /* ASCOnlyofficeUserDefaultsCacheCategoriesProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D5DB0392658097E006B4757 /* ASCOnlyofficeUserDefaultsCacheCategoriesProvider.swift */; };
 		1D5DB04F265850B3006B4757 /* ASCOnlyofficeUserDefaultsCacheCategoriesProviderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D5DB04E265850B3006B4757 /* ASCOnlyofficeUserDefaultsCacheCategoriesProviderTests.swift */; };
+		1D71107826A5A78100E00421 /* ASCShareSettingsAPIWorkerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D71107726A5A78100E00421 /* ASCShareSettingsAPIWorkerProtocol.swift */; };
+		1D71107A26A5A93000E00421 /* ASCShareSettingsAPIWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D71107926A5A93000E00421 /* ASCShareSettingsAPIWorker.swift */; };
+		1D71107D26A5A9A000E00421 /* ASCShareSettingsAPIWorkerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D71107C26A5A9A000E00421 /* ASCShareSettingsAPIWorkerTests.swift */; };
 		1D863F1126722FB3000BAC3C /* ASCSharingRightHolderTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D863F1026722FB3000BAC3C /* ASCSharingRightHolderTableViewCell.swift */; };
 		1D863F1A26725BC7000BAC3C /* ASCSharingRightHolderViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D863F1926725BC6000BAC3C /* ASCSharingRightHolderViewModel.swift */; };
 		1D863F1F2673DEFF000BAC3C /* ASCSwitchTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D863F1E2673DEFE000BAC3C /* ASCSwitchTableViewCell.swift */; };
@@ -657,6 +660,9 @@
 		1D5DB0342658086B006B4757 /* ASCOnlyofficeCacheCategoriesProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCOnlyofficeCacheCategoriesProvider.swift; sourceTree = "<group>"; };
 		1D5DB0392658097E006B4757 /* ASCOnlyofficeUserDefaultsCacheCategoriesProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCOnlyofficeUserDefaultsCacheCategoriesProvider.swift; sourceTree = "<group>"; };
 		1D5DB04E265850B3006B4757 /* ASCOnlyofficeUserDefaultsCacheCategoriesProviderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCOnlyofficeUserDefaultsCacheCategoriesProviderTests.swift; sourceTree = "<group>"; };
+		1D71107726A5A78100E00421 /* ASCShareSettingsAPIWorkerProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCShareSettingsAPIWorkerProtocol.swift; sourceTree = "<group>"; };
+		1D71107926A5A93000E00421 /* ASCShareSettingsAPIWorker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCShareSettingsAPIWorker.swift; sourceTree = "<group>"; };
+		1D71107C26A5A9A000E00421 /* ASCShareSettingsAPIWorkerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCShareSettingsAPIWorkerTests.swift; sourceTree = "<group>"; };
 		1D863F1026722FB3000BAC3C /* ASCSharingRightHolderTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCSharingRightHolderTableViewCell.swift; sourceTree = "<group>"; };
 		1D863F1926725BC6000BAC3C /* ASCSharingRightHolderViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCSharingRightHolderViewModel.swift; sourceTree = "<group>"; };
 		1D863F1E2673DEFE000BAC3C /* ASCSwitchTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCSwitchTableViewCell.swift; sourceTree = "<group>"; };
@@ -1305,6 +1311,30 @@
 			path = OnlyofficeCategories;
 			sourceTree = "<group>";
 		};
+		1D71107526A5A6BB00E00421 /* Workers */ = {
+			isa = PBXGroup;
+			children = (
+				1D71107926A5A93000E00421 /* ASCShareSettingsAPIWorker.swift */,
+			);
+			path = Workers;
+			sourceTree = "<group>";
+		};
+		1D71107626A5A6D800E00421 /* Workers */ = {
+			isa = PBXGroup;
+			children = (
+				1D71107726A5A78100E00421 /* ASCShareSettingsAPIWorkerProtocol.swift */,
+			);
+			path = Workers;
+			sourceTree = "<group>";
+		};
+		1D71107B26A5A95A00E00421 /* Workers */ = {
+			isa = PBXGroup;
+			children = (
+				1D71107C26A5A9A000E00421 /* ASCShareSettingsAPIWorkerTests.swift */,
+			);
+			path = Workers;
+			sourceTree = "<group>";
+		};
 		1D863F0F26722F1A000BAC3C /* Cells */ = {
 			isa = PBXGroup;
 			children = (
@@ -1405,6 +1435,7 @@
 		1DAAFF472679060B00023F39 /* Protocols */ = {
 			isa = PBXGroup;
 			children = (
+				1D71107626A5A6D800E00421 /* Workers */,
 				1D9B80832673F5D70020B5ED /* ASCReusedIdentifierProtocol.swift */,
 				1DAAFF482679063700023F39 /* ASCViewModelSetter.swift */,
 				1DAC5660267B3B840078F95E /* ASCNamedProtocol.swift */,
@@ -1417,6 +1448,7 @@
 			isa = PBXGroup;
 			children = (
 				1DAAFF472679060B00023F39 /* Protocols */,
+				1D71107526A5A6BB00E00421 /* Workers */,
 				1D4C674826850585000F2284 /* Models */,
 				1D4C674726850523000F2284 /* Cells */,
 				1D4C6752268A0574000F2284 /* SharingOprions */,
@@ -1438,6 +1470,7 @@
 		1DCCEC07268DBD6C00692167 /* SharingSettings */ = {
 			isa = PBXGroup;
 			children = (
+				1D71107B26A5A95A00E00421 /* Workers */,
 				1DCCEC08268DBD7B00692167 /* SharingOptions */,
 				1DA5E667269DBA04005F59E1 /* AddRightHolders */,
 				1DA5E66E269E2234005F59E1 /* VerifyRightHolders */,
@@ -3303,6 +3336,7 @@
 				FCD31F4524BDF2E200774ACD /* ASCLogger.swift in Sources */,
 				1DCCEC0A268DBD9C00692167 /* ASCSharingOptionsViewControllerTest.swift in Sources */,
 				FC4D864920C50AE00047B871 /* Path+Extension.swift in Sources */,
+				1D71107D26A5A9A000E00421 /* ASCShareSettingsAPIWorkerTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3317,6 +3351,7 @@
 				FCEF9D251ED2C94300627BA5 /* PasscodeLockStateType.swift in Sources */,
 				FCC552B61EC3196B00F645EE /* ASCCountryCodeViewController.swift in Sources */,
 				1D1A2E282660F99800D0335B /* ASCLoadedDocumentViewControllerByProviderAndFolderFinder.swift in Sources */,
+				1D71107826A5A78100E00421 /* ASCShareSettingsAPIWorkerProtocol.swift in Sources */,
 				FC28F2C41E8D131800A8F985 /* ASCCreateEntity.swift in Sources */,
 				FC301A25230D6F1F00DC25CA /* ASCFileCell.swift in Sources */,
 				FC12ACF42567D1C300FF1CBB /* ASCAnalytics.swift in Sources */,
@@ -3376,6 +3411,7 @@
 				1D981FF32631A6AF00144B57 /* ASCOnlyofficeCategoriesProviderProtocol.swift in Sources */,
 				FCEF9D241ED2C94300627BA5 /* PasscodeLockConfigurationType.swift in Sources */,
 				1DAAFF3C2678992800023F39 /* ASCSharingSettingsAccessViewController.swift in Sources */,
+				1D71107A26A5A93000E00421 /* ASCShareSettingsAPIWorker.swift in Sources */,
 				FC9161DC1EE965970031B6DB /* ASCGroup.swift in Sources */,
 				FC8C697B1ECC2F44005B68D7 /* ASCConnectStorageOAuth2Google.swift in Sources */,
 				1D4C674F2685D0C3000F2284 /* ASCTextViewTableViewCell.swift in Sources */,

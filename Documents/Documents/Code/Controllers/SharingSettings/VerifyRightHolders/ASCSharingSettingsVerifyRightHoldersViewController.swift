@@ -55,7 +55,7 @@ class ASCSharingSettingsVerifyRightHoldersViewController: ASCBaseTableViewContro
     
     private func setup() {
         let viewController        = self
-        let interactor            = ASCSharingSettingsVerifyRightHoldersInteractor()
+        let interactor            = ASCSharingSettingsVerifyRightHoldersInteractor(apiWorker: ASCShareSettingsAPIWorker())
         let presenter             = ASCSharingSettingsVerifyRightHoldersPresenter()
         let router                = ASCSharingSettingsVerifyRightHoldersRouter()
         viewController.interactor = interactor

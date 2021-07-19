@@ -33,10 +33,12 @@ class ASCSharingOptionsInteractor: ASCSharingOptionsBusinessLogic, ASCSharingOpt
     
     // MARK: - ASCSharingOptionsBusinessLogic
     var presenter: ASCSharingOptionsPresentationLogic?
+    let apiWorker: ASCShareSettingsAPIWorkerProtocol
     
-    init(entityLinkMaker: ASCEntityLinkMakerProtocol, entity: ASCEntity) {
+    init(entityLinkMaker: ASCEntityLinkMakerProtocol, entity: ASCEntity, apiWorker: ASCShareSettingsAPIWorkerProtocol) {
         self.entityLinkMaker = entityLinkMaker
         self.entity = entity
+        self.apiWorker = apiWorker
     }
     
     func makeRequest(request: ASCSharingOptions.Model.Request.RequestType) {
@@ -67,7 +69,7 @@ class ASCSharingOptionsInteractor: ASCSharingOptionsBusinessLogic, ASCSharingOpt
         
         let internalLink = entityLinkMaker.make(entity: entity)
         
-        guard let apiRequest = makeApiRequest(entity: entity)
+        guard let apiRequest = apiWorker.makeApiRequest(entity: entity)
         else {
             presenter?.presentData(response: .presentRightHolders(
                                     .init(sharedInfoItems: [], currentUser: currentUser, internalLink: internalLink, externalLink: nil)))
@@ -116,28 +118,16 @@ class ASCSharingOptionsInteractor: ASCSharingOptionsBusinessLogic, ASCSharingOpt
     }
     
     private func changeRightHolderAccess(changeRightHolderAccessRequest: ASCSharingOptions.Model.Request.ChangeRightHolderAccessRequest) {
-        var shares: [[String: Any]] = []
-        var request: String!
         
         let entity = changeRightHolderAccessRequest.entity
         var rightHolder = changeRightHolderAccessRequest.rightHolder
         let access = changeRightHolderAccessRequest.access
         
-        if let file = entity as? ASCFile {
-            request = String(format: ASCOnlyOfficeApi.apiShareFile, file.id)
-        } else if let folder = entity as? ASCFolder {
-            request = String(format: ASCOnlyOfficeApi.apiShareFolder, folder.id)
-        }
+        guard let request = apiWorker.makeApiRequest(entity: entity) else { return }
         
-        shares.append([
-            "ShareTo": rightHolder.id,
-            "Access": access.rawValue
-        ])
+        let baseParams: Parameters = ["notify": "false"]
         
-        let baseParams: Parameters = [
-            "notify": "false"
-        ]
-        let sharesParams = sharesToParams(shares: shares)
+        let sharesParams = apiWorker.convertToParams(items: [(rightHolder.id, access)])
         
         ASCOnlyOfficeApi.put(request, parameters: baseParams + sharesParams) { [weak self] (results, error, response) in
             if let _ = results as? [[String: Any]] {
@@ -149,29 +139,4 @@ class ASCSharingOptionsInteractor: ASCSharingOptionsBusinessLogic, ASCSharingOpt
             }
         }
     }
-    
-    private func sharesToParams(shares: [[String: Any]]) -> [String: Any] {
-        var params: [String: Any] = [:]
-        
-        for (index, dictinory) in shares.enumerated() {
-            for (key, value) in dictinory {
-                params["share[\(index)].\(key)"] = value
-            }
-        }
-
-        return params
-    }
-    
-    private func makeApiRequest(entity: ASCEntity) -> String? {
-        var request: String? = nil
-        
-        if let file = entity as? ASCFile {
-            request = String(format: ASCOnlyOfficeApi.apiShareFile, file.id)
-        } else if let folder = entity as? ASCFolder {
-            request = String(format: ASCOnlyOfficeApi.apiShareFolder, folder.id)
-        }
-        
-        return request
-    }
-    
 }

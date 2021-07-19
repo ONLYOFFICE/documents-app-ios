@@ -65,7 +65,13 @@ class ASCSharingAddRightHoldersSearchResultsTableViewDataSourceAndDelegate: NSOb
     
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         let tableKey = Array(tables.keys)[section]
-        return tableKey.getTitle()
+        let numberOfRows = self.tableView(tableView, numberOfRowsInSection: section)
+        return numberOfRows > 0 ? tableKey.getTitle() : nil
+    }
+    
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        let numberOfRows = self.tableView(tableView, numberOfRowsInSection: section)
+        return numberOfRows > 0 ? 38 : CGFloat.zero
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {

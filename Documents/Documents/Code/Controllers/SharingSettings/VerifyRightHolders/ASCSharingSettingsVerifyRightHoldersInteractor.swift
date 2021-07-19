@@ -25,7 +25,7 @@ protocol ASCSharingSettingsVerifyRightHoldersDataStore {
 
 class ASCSharingSettingsVerifyRightHoldersInteractor: ASCSharingSettingsVerifyRightHoldersBusinessLogic, ASCSharingSettingsVerifyRightHoldersDataStore {
     
-    // MARK: - Data sourct vars
+    // MARK: - Data source vars
     var entity: ASCEntity? {
         didSet {
             guard let entity = entity else { return }
@@ -48,6 +48,11 @@ class ASCSharingSettingsVerifyRightHoldersInteractor: ASCSharingSettingsVerifyRi
     private var accessProvider: ASCSharingSettingsAccessProvider = ASCSharingSettingsAccessDefaultProvider()
     
     var presenter: ASCSharingSettingsVerifyRightHoldersPresentationLogic?
+    let apiWorker: ASCShareSettingsAPIWorkerProtocol
+    
+    init(apiWorker: ASCShareSettingsAPIWorkerProtocol) {
+        self.apiWorker = apiWorker
+    }
     
     func makeRequest(requestType: ASCSharingSettingsVerifyRightHolders.Model.Request.RequestType) {
         switch requestType {
@@ -74,22 +79,11 @@ class ASCSharingSettingsVerifyRightHoldersInteractor: ASCSharingSettingsVerifyRi
                 presenter?.presentData(responseType: .presentApplyingShareSettings(.init(error: NSLocalizedString("Something wrong", comment: ""))))
                 return
             }
-            let itemsForRequest = (itemsForSharingAdd + itemsForSharingRemove).filter({ !$0.locked })
             
-            var shares: [[String: Any]] = []
-            guard let apiRequest: String = makeApiRequest(entity: entity) else {
+            guard let apiRequest: String = apiWorker.makeApiRequest(entity: entity) else {
                 log.error("Couldn't make an api request on entity")
                 presenter?.presentData(responseType: .presentApplyingShareSettings(.init(error: NSLocalizedString("Something wrong", comment: ""))))
                 return
-            }
-            
-            for share in itemsForRequest {
-                if let itemId = share.user?.userId ?? share.group?.id {
-                    shares.append([
-                        "ShareTo": itemId,
-                        "Access": share.access.rawValue
-                    ])
-                }
             }
             
             let baseParams: Parameters = [
@@ -97,7 +91,8 @@ class ASCSharingSettingsVerifyRightHoldersInteractor: ASCSharingSettingsVerifyRi
                 "sharingMessage": request.notifyMessage ?? ""
             ]
             
-            let sharesParams = sharesToParams(shares: shares)
+            let itemsForRequest = (itemsForSharingAdd + itemsForSharingRemove).filter({ !$0.locked })
+            let sharesParams = apiWorker.convertToParams(shareItems: itemsForRequest)
             
             ASCOnlyOfficeApi.put(apiRequest, parameters: baseParams + sharesParams) { [weak self] (results, error, response) in
                 if let _ = results as? [[String: Any]] {
@@ -152,30 +147,6 @@ class ASCSharingSettingsVerifyRightHoldersInteractor: ASCSharingSettingsVerifyRi
             
             presenter?.presentData(responseType: .presentAccessChange(.init(model: model, errorMessage: successUpdate ? nil : NSLocalizedString("Somethin wrong", comment: ""))))
         }
-    }
-    
-    
-    private func makeApiRequest(entity: ASCEntity) -> String? {
-        var request: String? = nil
-        
-        if let file = entity as? ASCFile {
-            request = String(format: ASCOnlyOfficeApi.apiShareFile, file.id)
-        } else if let folder = entity as? ASCFolder {
-            request = String(format: ASCOnlyOfficeApi.apiShareFolder, folder.id)
-        }
-        
-        return request
-    }
-    
-    private func sharesToParams(shares: [[String: Any]]) -> [String: Any] {
-        var params: [String: Any] = [:]
-        
-        for (index, dictinory) in shares.enumerated() {
-            for (key, value) in dictinory {
-                params["share[\(index)].\(key)"] = value
-            }
-        }
-        return params
     }
     
     private func isItemAlreadyShared(itemId id: String) -> Bool {

@@ -11,7 +11,6 @@ import UIKit
 typealias RightHoldersTableType = ASCSharingAddRightHoldersViewController.RightHoldersTableType
 
 protocol ASCSharingAddRightHoldersViewDelegate: AnyObject {
-    func tablesSegmentedControlDidChanged()
     func getAccessList() -> ([ASCShareAccess])
     func getCurrentAccess() -> ASCShareAccess
     
@@ -33,25 +32,6 @@ class ASCSharingAddRightHoldersView {
     var defaultSelectedTable: RightHoldersTableType = .users
     
     let searchController = UISearchController(searchResultsController: nil)
-    
-    // MARK: - Segmented control props
-    private lazy var tablesSegmentedControlView: UIView = {
-        let view = UIView()
-        view.backgroundColor = getNavigationBarColor()
-        return view
-    }()
-
-    private(set) lazy var tablesSegmentedControl: UISegmentedControl = {
-        var items: [String] = RightHoldersTableType.allCases.map({ $0.getTitle() })
-        let control = UISegmentedControl(items: items)
-        control.selectedSegmentIndex = defaultSelectedTable.rawValue
-        control.addTarget(self, action: #selector(tablesSegmentedControlDidChanged), for: .valueChanged)
-        return control
-    }()
-    
-    // MARK: - Table views properties
-    var activeTableConstraintToViewTop: NSLayoutConstraint?
-    var activeTableConstraintToTableSegment: NSLayoutConstraint?
     
     lazy var usersTableView = UITableView()
     lazy var groupsTableView = UITableView()
@@ -100,13 +80,15 @@ class ASCSharingAddRightHoldersView {
         navigationItem: UINavigationItem,
         navigationController: UINavigationController?,
         searchControllerDelegate: UISearchControllerDelegate,
-        searchResultsUpdating: UISearchResultsUpdating
+        searchResultsUpdating: UISearchResultsUpdating,
+        searchBarDelegate: UISearchBarDelegate
     ) {
         self.view = view
         self.navigationController = navigationController
         self.navigationItem = navigationItem
         searchController.delegate = searchControllerDelegate
         searchController.searchResultsUpdater = searchResultsUpdating
+        searchController.searchBar.delegate = searchBarDelegate
     }
     
     // MARK: - Deinit
@@ -132,18 +114,13 @@ class ASCSharingAddRightHoldersView {
         searchController.searchBar.text = nil
         searchController.isActive = false
         searchController.dismiss(animated: false)
-        tablesSegmentedControl.selectedSegmentIndex = defaultSelectedTable.rawValue
         showTable(tableType: defaultSelectedTable)
         removeDarkenFromScreen()
     }
 }
 
 // MARK: - @OBJC func delegate
-extension ASCSharingAddRightHoldersView {
-    @objc func tablesSegmentedControlDidChanged() {
-        delegate?.tablesSegmentedControlDidChanged()
-    }
-    
+extension ASCSharingAddRightHoldersView {    
     @available(iOS 14.0, *)
     @objc func onAccessMenuSelectAction(action: UIAction, shareAccessRaw: Int) {
         delegate?.onAccessMenuSelectAction(action: action, shareAccessRaw: shareAccessRaw)
@@ -197,13 +174,12 @@ extension ASCSharingAddRightHoldersView {
         guard let navigationController = navigationController else {
             return
         }
-        navigationController.navigationBar.isTranslucent = false
         navigationController.navigationBar.barStyle = .default
         navigationController.navigationBar.layer.borderWidth = 0
         navigationController.navigationBar.barTintColor = getNavigationBarColor()
         navigationController.navigationBar.shadowImage = UIImage()
         navigationController.navigationBar.backIndicatorImage = nil
-        navigationController.navigationBar.backItem?.title = NSLocalizedString("Cancle", comment: "")
+        navigationController.navigationBar.backItem?.title = NSLocalizedString("Cancel", comment: "")
         navigationController.navigationBar.topItem?.title = NSLocalizedString("Shared access", comment: "")
     }
       
@@ -219,48 +195,23 @@ extension ASCSharingAddRightHoldersView {
 // MARK: - Segmented control methods
 extension ASCSharingAddRightHoldersView {
     private func configureSegmentedControl() {
-        tablesSegmentedControlView.translatesAutoresizingMaskIntoConstraints = false
-        tablesSegmentedControl.translatesAutoresizingMaskIntoConstraints = false
-        
-        tablesSegmentedControlView.addSubview(tablesSegmentedControl)
-        view.addSubview(tablesSegmentedControlView)
-        NSLayoutConstraint.activate([
-            tablesSegmentedControlView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
-            tablesSegmentedControlView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
-            tablesSegmentedControlView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
-            tablesSegmentedControlView.heightAnchor.constraint(equalToConstant: 40),
-            
-            tablesSegmentedControl.leadingAnchor.constraint(equalTo: tablesSegmentedControlView.leadingAnchor, constant: 16),
-            tablesSegmentedControl.trailingAnchor.constraint(equalTo: tablesSegmentedControlView.trailingAnchor, constant: -16),
-            tablesSegmentedControl.topAnchor.constraint(equalTo: tablesSegmentedControlView.topAnchor),
-            tablesSegmentedControl.heightAnchor.constraint(equalToConstant: 32)
-        ])
+        searchController.searchBar.showsScopeBar = true
+        searchController.searchBar.scopeButtonTitles = RightHoldersTableType.allCases.map({ $0.getTitle() })
     }
         
     func showTablesSegmentedControl() {
-        tablesSegmentedControl.isHidden = false
-        UIView.animate(withDuration: 0.4, animations: {
-            self.tablesSegmentedControl.alpha = 1
-        })
-        
-        UIView.animate(withDuration: 0.4) {
-            self.activeTableConstraintToTableSegment?.isActive = true
-            self.activeTableConstraintToViewTop?.isActive = false
-            self.view.layoutIfNeeded()
+        if #available(iOS 13.0, *) {
+            searchController.searchBar.setShowsScope(true, animated: true)
+        } else {
+            self.searchController.searchBar.showsScopeBar = true
         }
     }
     
     func hideTablesSegmentedControl() {
-        UIView.animate(withDuration: 0.4, animations: {
-            self.tablesSegmentedControl.alpha = 0
-        }) { (finished) in
-            self.tablesSegmentedControl.isHidden = true
-        }
-        
-        UIView.animate(withDuration: 0.4) {
-            self.activeTableConstraintToTableSegment?.isActive = false
-            self.activeTableConstraintToViewTop?.isActive = true
-            self.view.layoutIfNeeded()
+        if #available(iOS 13.0, *) {
+            self.searchController.searchBar.setShowsScope(false, animated: true)
+        } else {
+            self.searchController.searchBar.showsScopeBar = false
         }
     }
 }
@@ -289,13 +240,7 @@ extension ASCSharingAddRightHoldersView {
     func showTable(tableType: RightHoldersTableType) {
         let tableView = getTableView(byRightHoldersTableType: tableType)
         view.addSubview(tableView)
-        activeTableConstraintToViewTop = tableView.topAnchor.constraint(equalTo:  view.safeAreaLayoutGuide.topAnchor)
-        activeTableConstraintToTableSegment = tableView.topAnchor.constraint(equalTo: tablesSegmentedControlView.bottomAnchor)
-        NSLayoutConstraint.activate([tablesSegmentedControlView.isHidden ? activeTableConstraintToViewTop! : activeTableConstraintToTableSegment!,
-            tableView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
-            tableView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
-            tableView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor)
-        ])
+        tableView.fillToSuperview()
         RightHoldersTableType.allCases.filter({ $0 != tableType }).forEach { type in
             getTableView(byRightHoldersTableType: type).removeFromSuperview()
         }

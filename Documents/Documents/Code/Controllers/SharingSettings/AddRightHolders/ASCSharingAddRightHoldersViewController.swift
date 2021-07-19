@@ -96,7 +96,8 @@ class ASCSharingAddRightHoldersViewController: UIViewController, ASCSharingAddRi
             navigationItem: navigationItem,
             navigationController: navigationController,
             searchControllerDelegate: self,
-            searchResultsUpdating: self)
+            searchResultsUpdating: self,
+            searchBarDelegate: self)
         sharingAddRightHoldersView?.delegate = self
         sharingAddRightHoldersView?.load()
         
@@ -140,8 +141,8 @@ class ASCSharingAddRightHoldersViewController: UIViewController, ASCSharingAddRi
     }
     
     private func getSelectedTableType() -> RightHoldersTableType {
-        guard let sharingAddRightHoldersView = sharingAddRightHoldersView, let tableType = RightHoldersTableType(rawValue: sharingAddRightHoldersView.tablesSegmentedControl.selectedSegmentIndex) else {
-            let segmentedControlIndex = sharingAddRightHoldersView?.tablesSegmentedControl.selectedSegmentIndex ?? -1
+        guard let sharingAddRightHoldersView = sharingAddRightHoldersView, let tableType = RightHoldersTableType(rawValue: sharingAddRightHoldersView.searchController.searchBar.selectedScopeButtonIndex) else {
+            let segmentedControlIndex = sharingAddRightHoldersView?.searchController.searchBar.selectedScopeButtonIndex ?? -1
             fatalError("Couldn't find a table type for segment control index: \(segmentedControlIndex)")
         }
         return tableType
@@ -212,11 +213,6 @@ extension ASCSharingAddRightHoldersViewController: ASCSharingAddRightHoldersView
         return selectedAccess
     }
     
-    func tablesSegmentedControlDidChanged() {
-        let tableType = getSelectedTableType()
-        sharingAddRightHoldersView?.showTable(tableType: tableType)
-    }
-    
     @available(iOS 14.0, *)
     func onAccessMenuSelectAction(action: UIAction, shareAccessRaw: Int) {
         onAccessSheetSelectAction(shareAccessRaw: shareAccessRaw)
@@ -241,7 +237,7 @@ extension ASCSharingAddRightHoldersViewController: ASCSharingAddRightHoldersView
 }
 
 // MARK: - UI Search results updating
-extension ASCSharingAddRightHoldersViewController: UISearchControllerDelegate, UISearchResultsUpdating {
+extension ASCSharingAddRightHoldersViewController: UISearchControllerDelegate, UISearchResultsUpdating, UISearchBarDelegate {
     func updateSearchResults(for searchController: UISearchController) {
         guard let searchText = searchController.searchBar.text else { return }
         
@@ -290,6 +286,11 @@ extension ASCSharingAddRightHoldersViewController: UISearchControllerDelegate, U
         sharingAddRightHoldersView?.showTablesSegmentedControl()
         
         sharingAddRightHoldersView?.searchResultsTable.removeFromSuperview()
+    }
+    
+    func searchBar(_ searchBar: UISearchBar, selectedScopeButtonIndexDidChange selectedScope: Int) {
+        guard let tableType = RightHoldersTableType(rawValue: selectedScope) else { return }
+        sharingAddRightHoldersView?.showTable(tableType: tableType)
     }
 }
 

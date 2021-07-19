@@ -265,12 +265,14 @@ extension ASCSharingSettingsVerifyRightHoldersViewController {
     }
     
     override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        return getSection(sectionRawValue: section).title()
+        let hasRows = self.tableView(tableView, numberOfRowsInSection: section) > 0
+        return hasRows ? getSection(sectionRawValue: section).title() : nil
     }
 
     override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        let hasRows = self.tableView(tableView, numberOfRowsInSection: section) > 0
         let section = getSection(sectionRawValue: section)
-        return section.heightForSectionHeader()
+        return hasRows ? section.heightForSectionHeader() : CGFloat.zero
     }
     
     private func getCell<T: UITableViewCell & ASCReusedIdentifierProtocol>() -> T {

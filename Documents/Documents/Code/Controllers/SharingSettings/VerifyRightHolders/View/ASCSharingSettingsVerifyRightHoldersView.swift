@@ -22,7 +22,7 @@ class ASCSharingSettingsVerifyRightHoldersView {
     weak var delegate: ASCSharingSettingsVerifyRightHoldersViewDelegate?
     
     private lazy var doneBarBtn: UIBarButtonItem = {
-        return UIBarButtonItem(title: NSLocalizedString("Done", comment: ""),style: .plain, target: self, action: #selector(onDoneBarBtnTapped))
+        return UIBarButtonItem(title: NSLocalizedString("Done", comment: ""),style: .done, target: self, action: #selector(onDoneBarBtnTapped))
     }()
     
     init(view: UIView, tableView: UITableView) {

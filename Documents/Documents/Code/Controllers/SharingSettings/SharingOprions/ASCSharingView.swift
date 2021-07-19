@@ -11,11 +11,16 @@ import UIKit
 protocol ASCSharingViewDelegate: AnyObject {
     func onLinkBarButtonTap()
     func onAddRightsBarButtonTap()
+    func onDoneBarBtnTapped()
 }
 
 class ASCSharingView {
     
     private weak var delegate: ASCSharingViewDelegate?
+    
+    private lazy var doneBarBtn: UIBarButtonItem = {
+        return UIBarButtonItem(title: NSLocalizedString("Done", comment: ""),style: .done, target: self, action: #selector(onDoneBarBtnTapped))
+    }()
 
     private lazy var linkBarButtonItem: UIBarButtonItem = {
         var icon: UIImage?
@@ -47,12 +52,12 @@ class ASCSharingView {
 
     public func configureNavigationBar(_ navigationController: UINavigationController?) {
         navigationController?.navigationItem.largeTitleDisplayMode = .never
-        navigationController?.navigationBar.backIndicatorImage = UIImage()
-        navigationController?.navigationBar.backIndicatorTransitionMaskImage = UIImage()
-        navigationController?.navigationBar.backItem?.backButtonTitle = NSLocalizedString("Done", comment: "")
-        navigationController?.navigationBar.topItem?.title = NSLocalizedString("Sharing settings", comment: "")
-
-        navigationController?.navigationBar.topItem?.rightBarButtonItems = [
+    }
+    
+    public func configureNavigationItem(_ navigationItem: UINavigationItem) {
+        navigationItem.leftBarButtonItem = doneBarBtn
+        navigationItem.title = NSLocalizedString("Sharing settings", comment: "")
+        navigationItem.rightBarButtonItems = [
             addRightsBarButtonItem,
             linkBarButtonItem
         ]
@@ -115,5 +120,9 @@ class ASCSharingView {
     
     @objc func onAddRightsBarButtonTap() {
         self.delegate?.onAddRightsBarButtonTap()
+    }
+    
+    @objc func onDoneBarBtnTapped() {
+        self.delegate?.onDoneBarBtnTapped()
     }
 }

@@ -50,11 +50,6 @@ class ASCSharingSettingsAccessViewController: ASCBaseTableViewController {
     
     private func configureNavigationBar() {
         navigationItem.largeTitleDisplayMode = viewModel?.largeTitleDisplayMode ?? .automatic
-        navigationController?.navigationBar.backIndicatorImage = UIImage()
-        navigationController?.navigationBar.backIndicatorTransitionMaskImage = UIImage()
-        navigationController?.navigationItem.setHidesBackButton(true, animated: false)
-        navigationItem.leftBarButtonItem = nil;
-        navigationItem.hidesBackButton = true
     }
     
     private func configureTableView() {

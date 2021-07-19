@@ -55,7 +55,9 @@ class ASCSharingOptionsViewController: ASCBaseTableViewController {
         let viewConfigurator = ASCSharingView(delegate: self)
         self.viewConfigurator = viewConfigurator
         viewConfigurator.configureNavigationBar(navigationController)
+        viewConfigurator.configureNavigationItem(navigationItem)
         viewConfigurator.configureTableView(tableView)
+        
         if rightHolderCurrentlyLoading && !viewConfigurator.loadingTableActivityIndicator.isAnimating {
             viewConfigurator.showTableLoadingActivityIndicator(tableView: tableView)
         }
@@ -181,10 +183,15 @@ extension ASCSharingOptionsViewController: ASCSharingViewDelegate {
         if let link = self.internalLink {
             UIPasteboard.general.string = link
             hud = MBProgressHUD.showTopMost()
+            hud?.label.numberOfLines = 0
             hud?.setSuccessState(title: NSLocalizedString("Link copied to the clipboard", comment: ""))
             hud?.hide(animated: true, afterDelay: 1)
             hud = nil
         }
+    }
+    
+    func onDoneBarBtnTapped() {
+        navigationController?.dismiss(animated: true)
     }
 }
 
@@ -302,6 +309,7 @@ extension ASCSharingOptionsViewController {
                     if let link = self.externalLink?.link {
                         UIPasteboard.general.string = link
                         hud = MBProgressHUD.showTopMost()
+                        hud?.label.numberOfLines = 0
                         hud?.setSuccessState(title: NSLocalizedString("The link for external access is copied to the clipboard", comment: ""))
                         hud?.hide(animated: true, afterDelay: 1.3)
                         hud = nil

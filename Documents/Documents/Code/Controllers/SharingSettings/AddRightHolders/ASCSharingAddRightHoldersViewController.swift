@@ -234,6 +234,10 @@ extension ASCSharingAddRightHoldersViewController: ASCSharingAddRightHoldersView
     func onNextButtonTapped() {
         routeToVerifyRightHolders()
     }
+    
+    func onCancelBurronTapped() {
+        navigationController?.dismiss(animated: true)
+    }
 }
 
 // MARK: - UI Search results updating

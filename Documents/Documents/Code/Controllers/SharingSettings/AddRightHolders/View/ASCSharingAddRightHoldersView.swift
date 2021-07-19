@@ -19,6 +19,7 @@ protocol ASCSharingAddRightHoldersViewDelegate: AnyObject {
     func onAccessSheetSelectAction(shareAccessRaw: Int)
     func onUpdateToolbarItems(_ items: [UIBarButtonItem]?)
     func onNextButtonTapped()
+    func onCancelBurronTapped()
     
     func present(sheetAccessController: UIViewController)
 }
@@ -36,6 +37,11 @@ class ASCSharingAddRightHoldersView {
     lazy var usersTableView = UITableView()
     lazy var groupsTableView = UITableView()
     lazy var searchResultsTable = UITableView()
+    
+    // MARK: - Navigation bar props
+    private lazy var cancelBarBtn: UIBarButtonItem = {
+        UIBarButtonItem(title: NSLocalizedString("Cancel", comment: ""), style: .plain, target: self, action: #selector(onCancelButtonTapped))
+    }()
     
     // MARK: - Darken screen props
     private lazy var darkeingView: UIView = {
@@ -160,6 +166,10 @@ extension ASCSharingAddRightHoldersView {
     @objc func onNextButtonTapped() {
         delegate?.onNextButtonTapped()
     }
+    
+    @objc func onCancelButtonTapped() {
+        delegate?.onCancelBurronTapped()
+    }
 }
 
 
@@ -171,6 +181,7 @@ extension ASCSharingAddRightHoldersView {
         searchController.searchBar.placeholder = NSLocalizedString("Search", comment: "")
         navigationItem.hidesSearchBarWhenScrolling = false
         navigationItem.searchController = searchController
+        navigationItem.leftBarButtonItem = cancelBarBtn
         guard let navigationController = navigationController else {
             return
         }
@@ -178,8 +189,6 @@ extension ASCSharingAddRightHoldersView {
         navigationController.navigationBar.layer.borderWidth = 0
         navigationController.navigationBar.barTintColor = getNavigationBarColor()
         navigationController.navigationBar.shadowImage = UIImage()
-        navigationController.navigationBar.backIndicatorImage = nil
-        navigationController.navigationBar.backItem?.title = NSLocalizedString("Cancel", comment: "")
         navigationController.navigationBar.topItem?.title = NSLocalizedString("Shared access", comment: "")
     }
       
@@ -249,13 +258,17 @@ extension ASCSharingAddRightHoldersView {
     func showSearchResultTable() {
         view.addSubview(searchResultsTable)
         
+        var bottomOffset: CGFloat = 0
         let keyboradHeigh = (dispalayingKeyboardFrame?.height ?? 0)
+        if UIDevice.phone {
+            bottomOffset = keyboradHeigh
+        }
         
         NSLayoutConstraint.activate([
             searchResultsTable.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
             searchResultsTable.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
             searchResultsTable.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
-            searchResultsTable.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -keyboradHeigh)
+            searchResultsTable.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -bottomOffset)
         ])
     }
     
@@ -290,7 +303,9 @@ extension ASCSharingAddRightHoldersView {
     func configureToolBar() {
         self.navigationController?.isToolbarHidden = false
         delegate?.onUpdateToolbarItems(makeToolbarItems())
-        searchController.searchBar.inputAccessoryView = keyboardToolbar
+        if UIDevice.phone {
+            searchController.searchBar.inputAccessoryView = keyboardToolbar
+        }
     }
     
     private func makeToolbarItems() -> [UIBarButtonItem] {
@@ -307,6 +322,7 @@ extension ASCSharingAddRightHoldersView {
         barBtn.contentEdgeInsets = .init(top: 0, left: 0, bottom: 0, right: 8)
         barBtn.titleEdgeInsets = .init(top: 0, left: 0, bottom: 0, right: -barBtn.contentEdgeInsets.right)
         barBtn.titleLabel?.font = .systemFont(ofSize: 17)
+        barBtn.tintColor = Asset.Colors.brend.color
         let barBtnItem = UIBarButtonItem(customView: barBtn)
         barBtnItem.target = self
         if #available(iOS 14, *) {
@@ -330,7 +346,9 @@ extension ASCSharingAddRightHoldersView {
     
     public func updateToolbars() {
         delegate?.onUpdateToolbarItems(makeToolbarItems())
-        keyboardToolbar.items = makeToolbarItems()
+        if UIDevice.phone {
+            keyboardToolbar.items = makeToolbarItems()
+        }
     }
 }
 
@@ -345,10 +363,16 @@ extension ASCSharingAddRightHoldersView {
     @objc func keyboardWillShow(sender: NSNotification) {
         guard let keyboardFrame = getKeyboardFrame(bySenderNotification: sender) else { return }
         dispalayingKeyboardFrame = keyboardFrame
+        if UIDevice.phone {
+            self.navigationController?.isToolbarHidden = true
+        }
     }
     
     @objc func keyboardWillHide(sender: NSNotification) {
         dispalayingKeyboardFrame = nil
+        if UIDevice.phone {
+            self.navigationController?.isToolbarHidden = false
+        }
     }
     
     private func getKeyboardFrame(bySenderNotification sender: NSNotification) -> CGRect? {

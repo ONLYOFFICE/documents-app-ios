@@ -106,6 +106,8 @@ class ASC2FACodeViewController: ASCBaseViewController {
 
         if let provider = options["provider"] as? String {
             type = ASCLoginType(provider)
+        } else if let provider = options["provider"] as? ASCLoginType {
+            type = provider
         }
 
         let hud = MBProgressHUD.showTopMost()

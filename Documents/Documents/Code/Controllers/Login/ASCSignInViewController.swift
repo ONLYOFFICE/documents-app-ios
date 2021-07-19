@@ -436,7 +436,7 @@ class ASCSignInViewController: ASCBaseViewController {
                                 if let portal = ASCOnlyOfficeApi.shared.baseUrl?.lowercased() {
                                     ASCAnalytics.logEvent(ASCConstants.Analytics.Event.loginPortal, parameters: [
                                         "portal": portal,
-                                        "provider": ASCLoginType.sso
+                                        "provider": ASCLoginType.sso.rawValue
                                     ])
                                 }
                                 

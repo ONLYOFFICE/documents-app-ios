@@ -53,6 +53,10 @@ class ASCButtonStyle: UIButton {
                     self.backgroundColor = self.isEnabled
                         ? self.backgroundColor
                         : .lightGray
+                    self.titleLabel?.textAlignment = .center
+                    self.titleLabel?.transform = self.isHighlighted
+                        ? CGAffineTransform(scaleX: 0.92, y: 0.92)
+                        : .identity
                 }, completion:nil)
             }
         }

@@ -69,6 +69,7 @@ class ASCSharingOptionsRouter: NSObject, ASCSharingOptionsRoutingLogic, ASCShari
         destination.currentUser = source.currentUser
         destination.entity = source.entity
         destination.doneComplerion = doneCompletion
+        destination.entityOwner = source.entityOwner
     }
     
 }

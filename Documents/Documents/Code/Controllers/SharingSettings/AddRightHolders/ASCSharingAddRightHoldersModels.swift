@@ -39,6 +39,8 @@ enum ASCSharingAddRightHolders {
             struct UsersResponse {
                 var users: [ASCUser]
                 var sharedEntities: [ASCShareInfo]
+                var entityOwner: ASCUser?
+                var currentUser: ASCUser?
             }
             
             struct GroupsResponse {

@@ -21,7 +21,18 @@ class ASCSharingAddRightHoldersPresenter: ASCSharingAddRightHoldersPresentationL
             var viewModels: [(ASCSharingRightHolderViewModel, IsSelected)] = []
             let users = response.users.sorted(by: { $0.userName ?? "" < $1.userName ?? "" })
             let usersIdsSet: Set<String> = Set(response.sharedEntities.map({ $0.user?.userId ?? nil }).compactMap({ $0 }))
+            
+            let currentUserId = response.currentUser?.userId
+            let entityOwnerUserId = response.entityOwner?.userId
+            
             for user in users {
+                let isCurrentUser = currentUserId != nil && currentUserId == user.userId
+                let isEnityOwner = entityOwnerUserId != nil && entityOwnerUserId == user.userId
+                
+                if isCurrentUser || isEnityOwner {
+                    continue
+                }
+                
                 var isSelected = false
                 
                 if let id = user.userId, usersIdsSet.contains(id) {

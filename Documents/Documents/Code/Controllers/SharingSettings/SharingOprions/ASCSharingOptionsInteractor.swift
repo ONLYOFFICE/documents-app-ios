@@ -16,6 +16,7 @@ protocol ASCSharingOptionsBusinessLogic {
 
 protocol ASCSharingOptionsDataStore {
     var entity: ASCEntity? { get }
+    var entityOwner: ASCUser? { get }
     var currentUser: ASCUser? { get }
     var sharedInfoItems: [ASCShareInfo] { get }
 }
@@ -26,6 +27,7 @@ class ASCSharingOptionsInteractor: ASCSharingOptionsBusinessLogic, ASCSharingOpt
     
     // MARK: - ASCSharingOptionsDataStore properties
     var entity: ASCEntity?
+    var entityOwner: ASCUser?
     var currentUser: ASCUser?
     var sharedInfoItems: [ASCShareInfo] = []
     
@@ -95,6 +97,9 @@ class ASCSharingOptionsInteractor: ASCSharingOptionsBusinessLogic, ASCSharingOpt
                         
                         if let _ = sharedTo["userName"] {
                             sharedItem.user = ASCUser(JSON: sharedTo)
+                            if sharedItem.owner {
+                                self.entityOwner = sharedItem.user
+                            }
                         } else if let _ = sharedTo["name"] {
                             sharedItem.group = ASCGroup(JSON: sharedTo)
                         }

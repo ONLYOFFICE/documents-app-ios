@@ -140,7 +140,7 @@ class ASCSharingSettingsVerifyRightHoldersInteractor: ASCSharingSettingsVerifyRi
                     sharedItem.access = request.newAccess
                     itemsForSharedAccessChange.append(sharedItem)
                 }
-                
+                successUpdate = true
             } else if let index = getItemIndex(byId: model.id, in: itemsForSharingAdd) {
                 itemsForSharingAdd[index].access = request.newAccess
                 successUpdate = true

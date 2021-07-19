@@ -9,8 +9,9 @@
 import Foundation
 
 protocol ASCSharingAddRightHoldersDataStore {
-    var currentUser: ASCUser? { get set }
     var entity: ASCEntity? { get set }
+    var entityOwner: ASCUser? { get set }
+    var currentUser: ASCUser? { get set }
     var doneComplerion: () -> Void { get set }
     
     var sharedInfoItems: [ASCShareInfo] { get set }
@@ -28,6 +29,7 @@ protocol ASCSharingAddRightHoldersDataStore {
 class ASCSharingAddRightHoldersRAMDataStore: ASCSharingAddRightHoldersDataStore {
     
     var entity: ASCEntity?
+    var entityOwner: ASCUser?
     var currentUser: ASCUser?
     var doneComplerion: () -> Void = {}
     

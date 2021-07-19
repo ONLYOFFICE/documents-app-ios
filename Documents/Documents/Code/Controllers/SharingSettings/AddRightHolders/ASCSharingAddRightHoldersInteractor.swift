@@ -30,7 +30,10 @@ class ASCSharingAddRightHoldersInteractor: ASCSharingAddRightHoldersBusinessLogi
                     }
                     self.dataStore?.users = users
                     let sharedInfoItems = self.dataStore?.sharedInfoItems ?? []
-                    self.presenter?.presentData(responseType: .presentUsers(.init(users: users, sharedEntities: sharedInfoItems)))
+                    self.presenter?.presentData(responseType: .presentUsers(.init(users: users,
+                                                                                  sharedEntities: sharedInfoItems,
+                                                                                  entityOwner: self.dataStore?.entityOwner,
+                                                                                  currentUser: self.dataStore?.currentUser)))
                 }
             }
         case .loadGroups: return

@@ -24,6 +24,7 @@ internal enum Asset {
   internal enum Colors {
     internal static let action = ColorAsset(name: "action")
     internal static let brend = ColorAsset(name: "brend")
+    internal static let debug = ColorAsset(name: "debug")
     internal static let grayLight = ColorAsset(name: "gray-light")
     internal static let tableBackground = ColorAsset(name: "table-background")
     internal static let tableCategoryBackground = ColorAsset(name: "table-category-background")

@@ -72,6 +72,7 @@ class ASCEditorManager: NSObject, DEEditorDelegate, SEEditorDelegate, PEEditorDe
     private var documentURLForTrack: String? = nil
     private var documentToken: String? = nil
     private var documentPermissions: String? = nil
+    private var documentCommonConfig: String? = nil
     private var editorWindow: UIWindow? = nil
     private let converterKey = ASCConstants.Keys.converterKey
     private let trackingReadyForLocking = 10000
@@ -154,7 +155,7 @@ class ASCEditorManager: NSObject, DEEditorDelegate, SEEditorDelegate, PEEditorDe
             editorWindow?.windowLevel = min(topWindow.windowLevel + 1, UIWindow.Level.statusBar - 10)
         }
         
-        editorWindow?.makeKeyAndVisible()        
+        editorWindow?.makeKeyAndVisible()
         
         return editorWindow
     }
@@ -315,6 +316,7 @@ class ASCEditorManager: NSObject, DEEditorDelegate, SEEditorDelegate, PEEditorDe
             "docService"            : self.documentServiceURL ?? "",
             "documentToken"         : self.documentToken ?? "",
             "documentPermissions"   : self.documentPermissions ?? "",
+            "documentCommonConfig"  : self.documentCommonConfig ?? "",
             "file"                  : file.toJSONString()!,
             "sdkCheck"              : sdkCheck,
             "appFonts"              : editorFontsPaths,
@@ -375,6 +377,8 @@ class ASCEditorManager: NSObject, DEEditorDelegate, SEEditorDelegate, PEEditorDe
     private func fetchDocumentInfo(_ file: ASCFile, viewMode: Bool = false, handler: @escaping (Bool, Error?) -> Void) {
         ASCOnlyOfficeApi.get(String(format: ASCOnlyOfficeApi.apiOpenEditFile, file.id), parameters: nil) { (results, error, response) in
             if let results = results as? [String: Any] {
+                self.documentCommonConfig = results.jsonString();
+                
                 if let document = results["document"] as? [String: Any] {
                     self.documentKeyForTrack = document["key"] as? String
                     self.documentURLForTrack = document["url"] as? String
@@ -2035,7 +2039,7 @@ class ASCEditorManager: NSObject, DEEditorDelegate, SEEditorDelegate, PEEditorDe
                     "display": String(format: NSLocalizedString("A1 (59,4%@ x 84,1%@)", comment: "Format info"), shortCm, shortCm)
                 ],[
                     "width": 841,
-                    "height": 1189, 
+                    "height": 1189,
                     "display": String(format: NSLocalizedString("A0 (84,1%@ x 119,9%@)", comment: "Format info"), shortCm, shortCm)
                 ]
             ]

@@ -51,6 +51,8 @@ class ASCSharingOptionsInteractor: ASCSharingOptionsBusinessLogic, ASCSharingOpt
         case .clearData:
             currentUser = nil
             sharedInfoItems = []
+        case .removeRightHolderAccess(removeRightHolderRequest: let removeRightHolderRequest):
+            removeRightHolderAccess(removeRightHolderAccessRequest: removeRightHolderRequest)
         }
     }
     
@@ -136,6 +138,38 @@ class ASCSharingOptionsInteractor: ASCSharingOptionsBusinessLogic, ASCSharingOpt
             } else if let response = response {
                 let errorMessage = ASCOnlyOfficeApi.errorMessage(by: response)
                 self?.presenter?.presentData(response: .presentChangeRightHolderAccess(.init(rightHolder: rightHolder, error: errorMessage)))
+            }
+        }
+    }
+    
+    private func removeRightHolderAccess(removeRightHolderAccessRequest: ASCSharingOptions.Model.Request.RemoveRightHolderAccessRequest) {
+
+        let entity = removeRightHolderAccessRequest.entity
+        let rightHolder = removeRightHolderAccessRequest.rightHolder
+        
+        guard let request = apiWorker.makeApiRequest(entity: entity) else { return }
+        
+        let baseParams: Parameters = ["notify": "false"]
+        
+        let sharesParams = apiWorker.convertToParams(items: [(rightHolder.id, .none)])
+        guard let sharedItemIndex = sharedInfoItems.firstIndex(where: { $0.user?.userId == rightHolder.id || $0.group?.id == rightHolder.id }) else { return }
+        let sharedItem = sharedInfoItems[sharedItemIndex]
+        
+        guard !sharedItem.locked else { return }
+        
+        ASCOnlyOfficeApi.put(request, parameters: baseParams + sharesParams) { [weak self] (results, error, response) in
+            if let _ = results as? [[String: Any]] {
+                self?.sharedInfoItems.remove(at: sharedItemIndex)
+                self?.presenter?.presentData(response: .presentRemoveRightHolderAccess(.init(indexPath: removeRightHolderAccessRequest.indexPath,
+                                                                                             rightHolder: rightHolder,
+                                                                                             rightHolderShareInfo: sharedItem,
+                                                                                             error: nil)))
+            } else if let response = response {
+                let errorMessage = ASCOnlyOfficeApi.errorMessage(by: response)
+                self?.presenter?.presentData(response: .presentRemoveRightHolderAccess(.init(indexPath: removeRightHolderAccessRequest.indexPath,
+                                                                                             rightHolder: rightHolder,
+                                                                                             rightHolderShareInfo: sharedItem,
+                                                                                             error: errorMessage)))
             }
         }
     }

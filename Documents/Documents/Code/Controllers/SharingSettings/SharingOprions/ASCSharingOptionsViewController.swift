@@ -125,6 +125,24 @@ class ASCSharingOptionsViewController: ASCBaseTableViewController {
         self.interactor?.makeRequest(request: .changeRightHolderAccess(.init(entity: entity, rightHolder: rightHolder, access: access)))
     }
     
+    private func requestToRemoveRightHolderAccess(rightHolder: ASCSharingRightHolder, byIndexPath indexPath: IndexPath) {
+        guard let entity = entity else {
+            return
+        }
+        
+        if let indexOfImportant = importantRightHolders.firstIndex(where: { $0.id == rightHolder.id }) {
+            importantRightHolders.remove(at: indexOfImportant)
+        } else if let indexOfOther = otherRightHolders.firstIndex(where: { $0.id == rightHolder.id }) {
+            otherRightHolders.remove(at: indexOfOther)
+        }
+        
+        tableView.deleteRows(at: [indexPath], with: .fade)
+        
+        hud = MBProgressHUD.showTopMost()
+        hud?.label.text = NSLocalizedString("Removing", comment: "Caption of the process")
+        self.interactor?.makeRequest(request: .removeRightHolderAccess(.init(entity: entity, indexPath: indexPath, rightHolder: rightHolder)))
+    }
+    
     // MARK: - Routing
     func onAddRightsBarButtonTap() {
         router?.routeToAddRightHoldersViewController(segue: nil)
@@ -154,8 +172,39 @@ extension ASCSharingOptionsViewController: ASCSharingOptionsDisplayLogic {
                 hud = nil
                 UIAlertController.showError(in: self, message: errorMessage)
             }
+        case .displayRemoveRightHolderAccess(viewModel: let viewModel):
+            if viewModel.error == nil {
+                hud?.setSuccessState()
+                hud?.hide(animated: true, afterDelay: 1)
+                hud = nil
+            } else if let errorMessage = viewModel.error {
+                hud?.hide(animated: false)
+                hud = nil
+                UIAlertController.showError(in: self, message: errorMessage)
+                /// restore viewModel
+                guard let rightHolderViewModel = viewModel.rightHolderViewModel else { return }
+                
+                if isSharingViaExternalLinkPossible() {
+                    switch SharingOptionsSection(rawValue: viewModel.indexPath.section) {
+                    case .importantRightHolders: importantRightHolders.insert(rightHolderViewModel, at: viewModel.indexPath.row)
+                    case .otherRightHolders: otherRightHolders.insert(rightHolderViewModel, at: viewModel.indexPath.row)
+                    default: return
+                    }
+                    
+                    tableView.insertRows(at: [viewModel.indexPath], with: .left)
+                } else {
+                    switch SharingFolderOprinosSection(rawValue: viewModel.indexPath.section) {
+                    case .importantRightHolders: importantRightHolders.insert(rightHolderViewModel, at: viewModel.indexPath.row)
+                    case .otherRightHolders: otherRightHolders.insert(rightHolderViewModel, at: viewModel.indexPath.row)
+                    default: return
+                    }
+                    
+                    tableView.insertRows(at: [viewModel.indexPath], with: .left)
+                }
+            }
         }
     }
+    
     
     private func updateAndReloadRightHolderCell(by rightHolder: ASCSharingRightHolder) {
         if rightHolder.type == .link {
@@ -340,19 +389,66 @@ extension ASCSharingOptionsViewController {
             access: unwrapedViewModel.access?.entityAccess ?? .none,
             provider: accessProvider
         ) { [weak self] access in
-            guard let rightHolderType = unwrapedViewModel.rightHolderType,
-                  let rightHolderAccess = unwrapedViewModel.access?.entityAccess
-            else {
-                return
-            }
-            let rightHolder = ASCSharingRightHolder(id: unwrapedViewModel.id,
-                                                    type: rightHolderType,
-                                                    access: rightHolderAccess,
-                                                    isOwner: unwrapedViewModel.isOwner)
+            guard let rightHolder = self?.makeRightHolder(formViewModel: unwrapedViewModel) else { return }
             self?.requestToChangeRightHolderAccess(rightHolder: rightHolder, access: access)
         }
         self.navigationController?.pushViewController(accessViewController, animated: true)
         
+    }
+    
+    override func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+        guard canCellBeDeleted(indexPath: indexPath) else { return nil }
+        guard let viewModel = getRightHolderViewModel(by: indexPath),
+              let rightHolder = makeRightHolder(formViewModel: viewModel)
+        else { return nil }
+        return UISwipeActionsConfiguration(actions: [.init(style: .destructive, title: NSLocalizedString("Delete", comment: ""), handler: { action, view, completion in
+            self.requestToRemoveRightHolderAccess(rightHolder: rightHolder, byIndexPath: indexPath)
+            completion(true)
+        })])
+    }
+
+    // MARK: - Support table view methods
+    
+    private func makeRightHolder(formViewModel viewModel: ASCSharingRightHolderViewModel) -> ASCSharingRightHolder? {
+        guard let rightHolderType = viewModel.rightHolderType,
+              let rightHolderAccess = viewModel.access?.entityAccess
+        else {
+            return nil
+        }
+        return ASCSharingRightHolder(id: viewModel.id,
+                                     type: rightHolderType,
+                                     access: rightHolderAccess,
+                                     isOwner: viewModel.isOwner)
+    }
+    
+    private func canCellBeDeleted(indexPath: IndexPath) -> Bool {
+        if let viewModel = getRightHolderViewModel(by: indexPath),
+           let access = viewModel.access,
+           access.accessEditable
+        {
+            return true
+        }
+        return false
+
+    }
+    
+    private func getRightHolderViewModel(by indexPath: IndexPath) -> ASCSharingRightHolderViewModel? {
+        var viewModel: ASCSharingRightHolderViewModel?
+        if isSharingViaExternalLinkPossible() {
+            let section = getSharingOptionsSection(sectionRawValue: indexPath.section)
+            switch section {
+            case .externalLink: viewModel = nil
+            case .importantRightHolders: viewModel = importantRightHolders[indexPath.row]
+            case .otherRightHolders: viewModel = otherRightHolders[indexPath.row]
+            }
+        } else {
+            let section = getSharingFolderOprinosSection(sectionRawValue: indexPath.row)
+            switch section {
+            case .importantRightHolders: viewModel = importantRightHolders[indexPath.row]
+            case .otherRightHolders: viewModel = otherRightHolders[indexPath.row]
+            }
+        }
+        return viewModel
     }
     
     private func getCell<T: UITableViewCell & ASCReusedIdentifierProtocol>() -> T {

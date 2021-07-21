@@ -120,7 +120,9 @@ class ASCSharingAddRightHoldersViewController: UIViewController, ASCSharingAddRi
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        navigationController?.isToolbarHidden = false
+        if !(sharingAddRightHoldersView?.searchController.isActive ?? false) {
+            navigationController?.isToolbarHidden = false
+        }
     }
     
     func reset() {
@@ -268,6 +270,9 @@ extension ASCSharingAddRightHoldersViewController: UISearchControllerDelegate, U
     }
     
     func willPresentSearchController(_ searchController: UISearchController) {
+        if UIDevice.phone {
+            navigationController?.isToolbarHidden = true
+        }
         DispatchQueue.main.async {
             self.sharingAddRightHoldersView?.darkenScreen()
         }
@@ -275,6 +280,9 @@ extension ASCSharingAddRightHoldersViewController: UISearchControllerDelegate, U
     }
     
     func willDismissSearchController(_ searchController: UISearchController) {
+        if UIDevice.phone {
+            navigationController?.isToolbarHidden = false
+        }
         sharingAddRightHoldersView?.removeDarkenFromScreen()
         
         groupsTableViewDataSourceAndDelegate.set(models: groupsModels)
@@ -290,6 +298,12 @@ extension ASCSharingAddRightHoldersViewController: UISearchControllerDelegate, U
         sharingAddRightHoldersView?.showTablesSegmentedControl()
         
         sharingAddRightHoldersView?.searchResultsTable.removeFromSuperview()
+    }
+    
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        if UIDevice.phone {
+            navigationController?.isToolbarHidden = false
+        }
     }
     
     func searchBar(_ searchBar: UISearchBar, selectedScopeButtonIndexDidChange selectedScope: Int) {

@@ -111,7 +111,7 @@ class ASCSharingSettingsVerifyRightHoldersInteractor: ASCSharingSettingsVerifyRi
         case .accessChange(request: let request):
             var model = request.model
             var successUpdate = false
-            
+            // MARK: - TODO use update func
             guard model.access?.accessEditable == true else {
                 presenter?.presentData(responseType: .presentAccessChange(.init(model: model, errorMessage: NSLocalizedString("Couldn't change access", comment: "sharing settings"))))
                 return
@@ -146,7 +146,50 @@ class ASCSharingSettingsVerifyRightHoldersInteractor: ASCSharingSettingsVerifyRi
             }
             
             presenter?.presentData(responseType: .presentAccessChange(.init(model: model, errorMessage: successUpdate ? nil : NSLocalizedString("Somethin wrong", comment: ""))))
+        case .accessRemove(request: let request):
+            let successUpdate = update(access: .none, forModel: request.model)
+            let errorMessage = successUpdate ? nil : NSLocalizedString("Somethin wrong", comment: "")
+            presenter?.presentData(responseType: .presentAccessRemove(.init(indexPath: request.indexPath, errorMessage: errorMessage)))
         }
+    }
+    
+    private func update(access: ASCShareAccess, forModel model: ASCSharingRightHolderViewModel) -> Bool {
+        if isItemAlreadyShared(itemId: model.id),
+           var sharedItem = getItem(byId: model.id, in: sharedInfoItems)
+        {
+            /// If the access has changed to the original - remove from itemsForShringChange
+            guard sharedItem.access != access else {
+                let _ = deleteIfExistShareItem(byId: model.id, from: &itemsForSharedAccessChange)
+                return true
+            }
+            
+            /// change if exist otherwise add
+            if let changingSharedItemIndex = getItemIndex(byId: model.id, in: itemsForSharedAccessChange) {
+                if access == .none {
+                    itemsForSharedAccessChange.remove(at: changingSharedItemIndex)
+                } else {
+                    itemsForSharedAccessChange[changingSharedItemIndex].access = access
+                }
+            } else if access != .none {
+                sharedItem.access = access
+                itemsForSharedAccessChange.append(sharedItem)
+            }
+            
+            if access == .none {
+                sharedItem.access = access
+                itemsForSharingRemove.append(sharedItem)
+            }
+            
+            return true
+        } else if let index = getItemIndex(byId: model.id, in: itemsForSharingAdd) {
+            if access == .none {
+                itemsForSharingAdd.remove(at: index)
+            } else {
+                itemsForSharingAdd[index].access = access
+            }
+            return true
+        }
+        return false
     }
     
     private func isItemAlreadyShared(itemId id: String) -> Bool {

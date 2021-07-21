@@ -122,6 +122,7 @@ class ASCSharingAddRightHoldersView {
         searchController.dismiss(animated: false)
         showTable(tableType: defaultSelectedTable)
         removeDarkenFromScreen()
+        navigationController?.isToolbarHidden = false
     }
 }
 
@@ -363,16 +364,10 @@ extension ASCSharingAddRightHoldersView {
     @objc func keyboardWillShow(sender: NSNotification) {
         guard let keyboardFrame = getKeyboardFrame(bySenderNotification: sender) else { return }
         dispalayingKeyboardFrame = keyboardFrame
-        if UIDevice.phone {
-            self.navigationController?.isToolbarHidden = true
-        }
     }
     
     @objc func keyboardWillHide(sender: NSNotification) {
         dispalayingKeyboardFrame = nil
-        if UIDevice.phone {
-            self.navigationController?.isToolbarHidden = false
-        }
     }
     
     private func getKeyboardFrame(bySenderNotification sender: NSNotification) -> CGRect? {

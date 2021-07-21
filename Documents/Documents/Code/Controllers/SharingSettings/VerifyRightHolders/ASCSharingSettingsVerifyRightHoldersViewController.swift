@@ -109,6 +109,11 @@ class ASCSharingSettingsVerifyRightHoldersViewController: ASCBaseTableViewContro
         interactor?.makeRequest(requestType: .accessChange(.init(model: viewModel, newAccess: access)))
     }
     
+    func delete(accessForRightHolderByIndexPath indexPath: IndexPath) {
+        guard let viewModel = getViewModel(byIndexPath: indexPath) else { return }
+        interactor?.makeRequest(requestType: .accessRemove(.init(model: viewModel, indexPath: indexPath)))
+    }
+    
     func apply() {
         if !currentlyApplying {
             currentlyApplying = true
@@ -159,6 +164,18 @@ class ASCSharingSettingsVerifyRightHoldersViewController: ASCBaseTableViewContro
                 groupsModels[index] = viewModel.model
                 tableView.reloadRows(at: [IndexPath(row: index, section: Section.groups.rawValue)], with: .automatic)
             }
+        case .displayAccessRemove(viewModel: let viewModel):
+            guard viewModel.errorMessage == nil else {
+                log.error(viewModel.errorMessage!)
+                return
+            }
+            let section = getSection(sectionRawValue: viewModel.indexPath.section)
+            switch section {
+            case .users: usersModels.remove(at: viewModel.indexPath.row)
+            case .groups: groupsModels.remove(at: viewModel.indexPath.row)
+            default: return
+            }
+            tableView.deleteRows(at: [viewModel.indexPath], with: .fade)
         }
     }
     
@@ -273,6 +290,37 @@ extension ASCSharingSettingsVerifyRightHoldersViewController {
         let hasRows = self.tableView(tableView, numberOfRowsInSection: section) > 0
         let section = getSection(sectionRawValue: section)
         return hasRows ? section.heightForSectionHeader() : CGFloat.zero
+    }
+    
+    
+    override func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+        guard canCellBeDeleted(indexPath: indexPath) else { return nil }
+        
+        return UISwipeActionsConfiguration(actions: [.init(style: .destructive, title: NSLocalizedString("Delete", comment: ""), handler: { action, view, completion in
+            self.delete(accessForRightHolderByIndexPath: indexPath)
+            completion(true)
+        })])
+    }
+    
+    // MARK: - Support table view methods
+    
+    private func canCellBeDeleted(indexPath: IndexPath) -> Bool {
+        guard let viewModel = getViewModel(byIndexPath: indexPath) else {
+            return false
+        }
+        return viewModel.access?.accessEditable ?? false
+    }
+    
+    private func getViewModel(byIndexPath indexPath: IndexPath) -> ASCSharingRightHolderViewModel? {
+        let section = getSection(sectionRawValue: indexPath.section)
+        switch section {
+        case .users, .groups:
+            let rightHolderViewModel = section == .users
+                ? usersModels[indexPath.row]
+                : groupsModels[indexPath.row]
+            return rightHolderViewModel
+        default: return nil
+        }
     }
     
     private func getCell<T: UITableViewCell & ASCReusedIdentifierProtocol>() -> T {

@@ -35,31 +35,7 @@ class ASCSharingOptionsPresenter: ASCSharingOptionsPresentationLogic {
             var otherRightHolders: [ASCSharingRightHolderViewModel] = []
             
             sharedInfoItems.forEach({ sharedInfo  in
-                var name = ""
-                var id: String?
-                var avatarUrl: String?
-                var rightHolderType: ASCSharingRightHolderType?
-                if let user = sharedInfo.user {
-                    id = user.userId
-                    name = user.displayName ?? ""
-                    avatarUrl = sharedInfo.user?.avatarRetina ?? sharedInfo.user?.avatar
-                    rightHolderType = .user
-                } else if let group = sharedInfo.group {
-                    id = group.id
-                    name = group.name ?? ""
-                    rightHolderType = .group
-                }
-                
-                let access = ASCSharingRightHolderViewModelAccess(entityAccess: sharedInfo.access,
-                                                                   accessEditable: !sharedInfo.locked && !sharedInfo.owner)
-                if let unwrapedId = id {
-                    let viewModel = ASCSharingRightHolderViewModel(id: unwrapedId,
-                                                                   avatarUrl: avatarUrl,
-                                                                   name: name,
-                                                                   department: sharedInfo.user?.department,
-                                                                   isOwner: sharedInfo.owner,
-                                                                   rightHolderType: rightHolderType ?? .user,
-                                                                   access: access)
+                if let viewModel = makeRightHolderViewModel(fromShareInfo: sharedInfo) {
                     if isImportant(sharedInfo) {
                         imprtantRightHolders.append(viewModel)
                     } else {
@@ -74,7 +50,45 @@ class ASCSharingOptionsPresenter: ASCSharingOptionsPresentationLogic {
         case .presentChangeRightHolderAccess(changeRightHolderResponse: let changeRightHolderResponse):
             viewController?.display(viewModel: .displayChangeRightHolderAccess(.init(rightHolder: changeRightHolderResponse.rightHolder,
                                                                                      error: changeRightHolderResponse.error)))
+        case .presentRemoveRightHolderAccess(removeRightHolderResponse: let removeRightHolderResponse):
+            if removeRightHolderResponse.error == nil {
+                viewController?.display(viewModel: .displayRemoveRightHolderAccess(.init(indexPath: removeRightHolderResponse.indexPath, rightHolderViewModel: nil, error: nil)))
+            } else {
+                let rightHolderViewModel = makeRightHolderViewModel(fromShareInfo: removeRightHolderResponse.rightHolderShareInfo)
+                viewController?.display(viewModel: .displayRemoveRightHolderAccess(.init(indexPath: removeRightHolderResponse.indexPath,
+                                                                                         rightHolderViewModel: rightHolderViewModel,
+                                                                                         error: removeRightHolderResponse.error)))
+            }
+            
         }
+    }
+    
+    private func makeRightHolderViewModel(fromShareInfo sharedInfo: ASCShareInfo) -> ASCSharingRightHolderViewModel? {
+        var name = ""
+        var id: String?
+        var avatarUrl: String?
+        var rightHolderType: ASCSharingRightHolderType?
+        if let user = sharedInfo.user {
+            id = user.userId
+            name = user.displayName ?? ""
+            avatarUrl = sharedInfo.user?.avatarRetina ?? sharedInfo.user?.avatar
+            rightHolderType = .user
+        } else if let group = sharedInfo.group {
+            id = group.id
+            name = group.name ?? ""
+            rightHolderType = .group
+        }
+        
+        let access = ASCSharingRightHolderViewModelAccess(entityAccess: sharedInfo.access,
+                                                           accessEditable: !sharedInfo.locked && !sharedInfo.owner)
+        guard let unwrapedId = id else { return nil }
+        return ASCSharingRightHolderViewModel(id: unwrapedId,
+                                                       avatarUrl: avatarUrl,
+                                                       name: name,
+                                                       department: sharedInfo.user?.department,
+                                                       isOwner: sharedInfo.owner,
+                                                       rightHolderType: rightHolderType ?? .user,
+                                                       access: access)
     }
     
 }

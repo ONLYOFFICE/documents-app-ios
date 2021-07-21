@@ -67,6 +67,8 @@ class ASCSharingSettingsVerifyRightHoldersPresenter: ASCSharingSettingsVerifyRig
             viewController?.displayData(viewModelType: .displayApplyShareSettings(.init(error: response.error)))
         case .presentAccessChange(response: let response):
             viewController?.displayData(viewModelType: .displayAccessChange(.init(model: response.model, errorMessage: response.errorMessage)))
+        case .presentAccessRemove(response: let response):
+            viewController?.displayData(viewModelType: .displayAccessRemove(.init(indexPath: response.indexPath, errorMessage: response.errorMessage)))
         }
     }
 }

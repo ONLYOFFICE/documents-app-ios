@@ -110,36 +110,7 @@ class ASCSharingSettingsVerifyRightHoldersInteractor: ASCSharingSettingsVerifyRi
             
         case .accessChange(request: let request):
             var model = request.model
-            var successUpdate = false
-            // MARK: - TODO use update func
-            guard model.access?.accessEditable == true else {
-                presenter?.presentData(responseType: .presentAccessChange(.init(model: model, errorMessage: NSLocalizedString("Couldn't change access", comment: "sharing settings"))))
-                return
-            }
-            
-            if isItemAlreadyShared(itemId: model.id),
-               var sharedItem = getItem(byId: model.id, in: sharedInfoItems)
-            {
-                /// If the access has changed to the original - remove from itemsForShringChange
-                guard sharedItem.access != request.newAccess else {
-                    let _ = deleteIfExistShareItem(byId: model.id, from: &itemsForSharedAccessChange)
-                    model.access?.entityAccess = request.newAccess
-                    presenter?.presentData(responseType: .presentAccessChange(.init(model: model, errorMessage: nil)))
-                    return
-                }
-                
-                /// change if exist otherwise add
-                if let changingSharedItemIndex = getItemIndex(byId: model.id, in: itemsForSharedAccessChange) {
-                    itemsForSharedAccessChange[changingSharedItemIndex].access = request.newAccess
-                } else {
-                    sharedItem.access = request.newAccess
-                    itemsForSharedAccessChange.append(sharedItem)
-                }
-                successUpdate = true
-            } else if let index = getItemIndex(byId: model.id, in: itemsForSharingAdd) {
-                itemsForSharingAdd[index].access = request.newAccess
-                successUpdate = true
-            }
+            let successUpdate = update(access: request.newAccess, byModel: model)
             
             if successUpdate {
                 model.access?.entityAccess = request.newAccess
@@ -147,13 +118,17 @@ class ASCSharingSettingsVerifyRightHoldersInteractor: ASCSharingSettingsVerifyRi
             
             presenter?.presentData(responseType: .presentAccessChange(.init(model: model, errorMessage: successUpdate ? nil : NSLocalizedString("Somethin wrong", comment: ""))))
         case .accessRemove(request: let request):
-            let successUpdate = update(access: .none, forModel: request.model)
+            let successUpdate = update(access: .none, byModel: request.model)
             let errorMessage = successUpdate ? nil : NSLocalizedString("Somethin wrong", comment: "")
             presenter?.presentData(responseType: .presentAccessRemove(.init(indexPath: request.indexPath, errorMessage: errorMessage)))
         }
     }
     
-    private func update(access: ASCShareAccess, forModel model: ASCSharingRightHolderViewModel) -> Bool {
+    private func update(access: ASCShareAccess, byModel model: ASCSharingRightHolderViewModel) -> Bool {
+        guard model.access?.accessEditable == true else {
+            return false
+        }
+        
         if isItemAlreadyShared(itemId: model.id),
            var sharedItem = getItem(byId: model.id, in: sharedInfoItems)
         {

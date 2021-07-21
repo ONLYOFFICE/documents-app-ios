@@ -136,6 +136,41 @@ class ASCSharingSettingsVerifyRightHoldersInteractorTests: XCTestCase {
         XCTAssertEqual(sut.itemsForSharingRemove[0].user?.userId, "Foo")
     }
     
+    
+    // MARK: - Access delete func tests
+    func testWhenWeHaveSharedItemAndRemoveAccessThenSharedItemCopyAddsToItemsForRemoving() {
+        let userShareInfo = makeUserShareInfo(withId: "Foo", andAceess: .read)
+        let model = makeModel(withId: "Foo", andAccess: .read)
+        
+        sut.sharedInfoItems = [userShareInfo]
+        sut.makeRequest(requestType: .accessRemove(.init(model: model, indexPath: IndexPath(row: 0, section: 0))))
+        
+        XCTAssertTrue(sut.sharedInfoItems.count == 1)
+        XCTAssertTrue(sut.itemsForSharedAccessChange.count == 0)
+        XCTAssertTrue(sut.itemsForSharingAdd.count == 0)
+        XCTAssertTrue(sut.itemsForSharingRemove.count == 1)
+        
+        XCTAssertEqual(sut.sharedInfoItems[0].access, .read)
+        XCTAssertEqual(sut.itemsForSharingRemove[0].access, .none)
+        XCTAssertEqual(sut.itemsForSharingRemove[0].user?.userId, "Foo")
+        XCTAssertEqual(sut.sharedInfoItems[0].user?.userId, "Foo")
+    }
+    
+    func testWhenWeHaveItemInItemsForAddAndWeRemoveAceessThenAccessWillRemoveFromItemsForAdd() {
+        let originAccess: ASCShareAccess = .read
+        let userShareInfo = makeUserShareInfo(withId: "Foo", andAceess: originAccess)
+        let model = makeModel(withId: "Foo", andAccess: originAccess)
+        
+        sut.itemsForSharingAdd = [userShareInfo]
+        sut.makeRequest(requestType: .accessRemove(.init(model: model, indexPath: IndexPath(row: 0, section: 0))))
+        
+        XCTAssertTrue(sut.sharedInfoItems.count == 0)
+        XCTAssertTrue(sut.itemsForSharedAccessChange.count == 0)
+        XCTAssertTrue(sut.itemsForSharingAdd.count == 0)
+        XCTAssertTrue(sut.itemsForSharingRemove.count == 0)
+    
+    }
+    
     // MARK: - load share items func tests
     func testWhenWeHaveSharedItemThenWeWillShowIt() {
         let originAccess: ASCShareAccess = .read
@@ -252,6 +287,7 @@ extension ASCSharingSettingsVerifyRightHoldersInteractorTests {
         var accessProvider: ASCSharingSettingsAccessProvider?
         var applyinShareSettingsRespons: Response.ApplyingShareSettingsResponse?
         var accessChangeResponse: Response.AccessChangeResponse?
+        var accessRemoveResponse: Response.AccessRemoveResponse?
         
         func presentData(responseType: ASCSharingSettingsVerifyRightHolders.Model.Response.ResponseType) {
             switch responseType {
@@ -263,6 +299,8 @@ extension ASCSharingSettingsVerifyRightHoldersInteractorTests {
                 applyinShareSettingsRespons = response
             case .presentAccessChange(response: let response):
                 accessChangeResponse = response
+            case .presentAccessRemove(response: let response):
+                accessRemoveResponse = response
             }
         }
     }

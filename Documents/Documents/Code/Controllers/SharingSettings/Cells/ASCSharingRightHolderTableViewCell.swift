@@ -110,9 +110,11 @@ class ASCSharingRightHolderTableViewCell: UITableViewCell, ASCReusedIdentifierPr
         
         vStack.addArrangedSubview(title)
         vStack.addArrangedSubview(subtitle)
+        
+        let isAccessEditable = viewModel.access?.accessEditable ?? false
 
         NSLayoutConstraint.activate([
-            accessLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: viewModel.access?.accessEditable ?? false ? -10 : -18),
+            accessLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: isAccessEditable ? -10 : -18),
             accessLabel.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
             
             avatar.heightAnchor.constraint(equalToConstant: avatar.height),
@@ -129,6 +131,12 @@ class ASCSharingRightHolderTableViewCell: UITableViewCell, ASCReusedIdentifierPr
     }
     
     func clear() {
+        avatar.removeFromSuperview()
+        accessLabel.removeFromSuperview()
+        title.removeFromSuperview()
+        subtitle.removeFromSuperview()
+        vStack.removeFromSuperview()
+        
         avatar.image = nil
         title.text = nil
         subtitle.text = nil

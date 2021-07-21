@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import MBProgressHUD
 
 protocol ASCSharingAddRightHoldersDisplayLogic: AnyObject {
     func displayData(viewModelType: ASCSharingAddRightHolders.Model.ViewModel.ViewModelData)
@@ -21,6 +22,23 @@ class ASCSharingAddRightHoldersViewController: UIViewController, ASCSharingAddRi
     var sharingAddRightHoldersView: ASCSharingAddRightHoldersView?
     var defaultSelectedTable: RightHoldersTableType = .users
     
+    var hud: MBProgressHUD?
+    var usersCurrentlyLoading = false {
+        didSet {
+            if oldValue == true && !usersCurrentlyLoading && getSelectedTableType() == .users {
+                stopLoadingHud()
+            }
+        }
+    }
+    
+    var groupsCurrentlyLoading = false {
+        didSet {
+            if oldValue == true && !groupsCurrentlyLoading && getSelectedTableType() == .groups {
+                stopLoadingHud()
+            }
+        }
+    }
+    
     let defaultAccess: ASCShareAccess = .read
     var accessProvider: ASCSharingSettingsAccessProvider = ASCSharingSettingsAccessDefaultProvider() {
         didSet {
@@ -28,6 +46,12 @@ class ASCSharingAddRightHoldersViewController: UIViewController, ASCSharingAddRi
         }
     }
     lazy var selectedAccess: ASCShareAccess = self.defaultAccess
+    var countOfSelectedRows: Int {
+        (usersModels + groupsModels).reduce(0) { result, selectedModel in
+            guard selectedModel.isSelected else { return result }
+            return result + 1
+        }
+    }
     
     private var isSearchBarEmpty: Bool {
         guard let text = sharingAddRightHoldersView?.searchController.searchBar.text else {
@@ -48,8 +72,8 @@ class ASCSharingAddRightHoldersViewController: UIViewController, ASCSharingAddRi
         return ASCSharingAddRightHoldersSearchResultsTableViewDataSourceAndDelegate(tables: [ .users: usersTableView, .groups: groupsTableView])
     }()
     
-    private var usersModels: [(ASCSharingRightHolderViewModel, IsSelected)] = []
-    private var groupsModels: [(ASCSharingRightHolderViewModel, IsSelected)] = []
+    private var usersModels: [(model: ASCSharingRightHolderViewModel, isSelected: IsSelected)] = []
+    private var groupsModels: [(model: ASCSharingRightHolderViewModel, isSelected: IsSelected)] = []
     
     private lazy var onCellTapped: (ASCSharingRightHolderViewModel, IsSelected) -> Void = { [weak self] model, isSelected in
         guard let self = self else { return }
@@ -102,7 +126,7 @@ class ASCSharingAddRightHoldersViewController: UIViewController, ASCSharingAddRi
         sharingAddRightHoldersView?.load()
         
         usersTableViewDataSourceAndDelegate.onCellTapped = onCellTapped
-        usersTableViewDataSourceAndDelegate.onCellTapped = onCellTapped
+        groupsTableViewDataSourceAndDelegate.onCellTapped = onCellTapped
         
         sharingAddRightHoldersView?.usersTableView.dataSource = usersTableViewDataSourceAndDelegate
         sharingAddRightHoldersView?.usersTableView.delegate = usersTableViewDataSourceAndDelegate
@@ -126,6 +150,8 @@ class ASCSharingAddRightHoldersViewController: UIViewController, ASCSharingAddRi
     }
     
     func reset() {
+        usersCurrentlyLoading = false
+        groupsCurrentlyLoading = false
         selectedAccess = defaultAccess
         usersModels = []
         groupsModels = []
@@ -161,8 +187,21 @@ class ASCSharingAddRightHoldersViewController: UIViewController, ASCSharingAddRi
     
     // MARK: - Requests
     func loadData() {
-        interactor?.makeRequest(requestType: .loadUsers)
-        interactor?.makeRequest(requestType: .loadGroups)
+        if !usersCurrentlyLoading {
+            if getSelectedTableType() == .users {
+                runLoadingHud()
+            }
+            usersCurrentlyLoading = true
+            interactor?.makeRequest(requestType: .loadUsers)
+        }
+        
+        if !groupsCurrentlyLoading {
+            if getSelectedTableType() == .groups {
+                runLoadingHud()
+            }
+            groupsCurrentlyLoading = true
+            interactor?.makeRequest(requestType: .loadGroups)
+        }
     }
     
     func selectedRow(model: ASCSharingRightHolderViewModel, isSelected: IsSelected) {
@@ -181,10 +220,12 @@ class ASCSharingAddRightHoldersViewController: UIViewController, ASCSharingAddRi
             self.usersModels = viewModel.users
             usersTableViewDataSourceAndDelegate.set(models: viewModel.users)
             sharingAddRightHoldersView?.usersTableView.reloadData()
+            usersCurrentlyLoading = false
         case .displayGroups(viewModel: let viewModel):
             self.groupsModels = viewModel.groups
             groupsTableViewDataSourceAndDelegate.set(models: groupsModels)
             sharingAddRightHoldersView?.groupsTableView.reloadData()
+            groupsCurrentlyLoading = false
         case .displaySelected(viewModel: let viewModel):
             switch viewModel.type {
             case .users:
@@ -197,6 +238,18 @@ class ASCSharingAddRightHoldersViewController: UIViewController, ASCSharingAddRi
                 }
             }
         }
+        
+        sharingAddRightHoldersView?.updateTitle(withSelectedCount: countOfSelectedRows)
+    }
+    
+    private func runLoadingHud() {
+        hud = MBProgressHUD.showTopMost()
+        hud?.label.text = NSLocalizedString("Loading", comment: "Caption of the process")
+    }
+    
+    private func stopLoadingHud() {
+        hud?.hide(animated: false)
+        hud = nil
     }
     
     // MARK: Routing
@@ -240,6 +293,27 @@ extension ASCSharingAddRightHoldersViewController: ASCSharingAddRightHoldersView
     func onCancelBurronTapped() {
         navigationController?.dismiss(animated: true)
     }
+    
+    func onSelectAllButtonTapped() {
+        guard let sharingAddRightHoldersView = sharingAddRightHoldersView else {
+            return
+        }
+        
+        selectAllRows(in: sharingAddRightHoldersView.usersTableView)
+        selectAllRows(in: sharingAddRightHoldersView.groupsTableView)
+    }
+    
+    private func selectAllRows(in tableView: UITableView) {
+        for section in 0..<tableView.numberOfSections {
+            for row in 0..<tableView.numberOfRows(inSection: section) {
+                let indexPath = IndexPath(row: row, section: section)
+                _ = tableView.delegate?.tableView?(tableView, willSelectRowAt: indexPath)
+                tableView.selectRow(at: indexPath, animated: false, scrollPosition: .none)
+                tableView.delegate?.tableView?(tableView, didSelectRowAt: indexPath)
+            }
+        }
+    }
+
 }
 
 // MARK: - UI Search results updating
@@ -256,8 +330,12 @@ extension ASCSharingAddRightHoldersViewController: UISearchControllerDelegate, U
             return
         }
         
-        groupsTableViewDataSourceAndDelegate.set(models: groupsModels.filter({ $0.0.name.lowercased().contains(searchText.lowercased()) }))
-        usersTableViewDataSourceAndDelegate.set(models: usersModels.filter({ $0.0.name.lowercased().contains(searchText.lowercased()) }))
+        let foundGroupsModels = groupsModels.filter({ $0.0.name.lowercased().contains(searchText.lowercased()) })
+        let foundUsersModels = usersModels.filter({ $0.0.name.lowercased().contains(searchText.lowercased()) })
+        
+        groupsTableViewDataSourceAndDelegate.set(models: foundGroupsModels)
+        usersTableViewDataSourceAndDelegate.set(models: foundUsersModels)
+        
         sharingAddRightHoldersView?.groupsTableView.reloadData()
         sharingAddRightHoldersView?.usersTableView.reloadData()
         
@@ -267,6 +345,12 @@ extension ASCSharingAddRightHoldersViewController: UISearchControllerDelegate, U
             sharingAddRightHoldersView?.showSearchResultTable()
         }
         sharingAddRightHoldersView?.searchResultsTable.reloadData()
+        
+        if foundUsersModels.isEmpty && foundGroupsModels.isEmpty {
+            sharingAddRightHoldersView?.showEmptyView(true)
+        } else {
+            sharingAddRightHoldersView?.showEmptyView(false)
+        }
     }
     
     func willPresentSearchController(_ searchController: UISearchController) {
@@ -309,6 +393,12 @@ extension ASCSharingAddRightHoldersViewController: UISearchControllerDelegate, U
     func searchBar(_ searchBar: UISearchBar, selectedScopeButtonIndexDidChange selectedScope: Int) {
         guard let tableType = RightHoldersTableType(rawValue: selectedScope) else { return }
         sharingAddRightHoldersView?.showTable(tableType: tableType)
+        switch tableType {
+        case .users:
+            usersCurrentlyLoading ? runLoadingHud() : stopLoadingHud()
+        case .groups:
+            groupsCurrentlyLoading ? runLoadingHud() : stopLoadingHud()
+        }
     }
 }
 

@@ -41,7 +41,7 @@ class ASCSharingAddRightHoldersPresenter: ASCSharingAddRightHoldersPresentationL
                 
                 let firstName = user.firstName ?? ""
                 let lastName = user.lastName ?? ""
-                let fullName = "\(firstName) \(lastName)".trimmed
+                let fullName = "\(lastName) \(firstName)".trimmed
                 
                 let viewModel = ASCSharingRightHolderViewModel(
                     id: user.userId ?? "",

@@ -20,6 +20,7 @@ protocol ASCSharingAddRightHoldersViewDelegate: AnyObject {
     func onUpdateToolbarItems(_ items: [UIBarButtonItem]?)
     func onNextButtonTapped()
     func onCancelBurronTapped()
+    func onSelectAllButtonTapped()
     
     func present(sheetAccessController: UIViewController)
 }
@@ -32,15 +33,25 @@ class ASCSharingAddRightHoldersView {
     
     var defaultSelectedTable: RightHoldersTableType = .users
     
-    let searchController = UISearchController(searchResultsController: nil)
+    private(set) var searchController = UISearchController(searchResultsController: nil)
+    var searchControllerDelegate: UISearchControllerDelegate!
+    var searchResultsUpdating: UISearchResultsUpdating!
+    var searchBarDelegate: UISearchBarDelegate!
     
     lazy var usersTableView = UITableView()
     lazy var groupsTableView = UITableView()
     lazy var searchResultsTable = UITableView()
     
     // MARK: - Navigation bar props
+    let title = NSLocalizedString("Shared access", comment: "")
+    let baseSubtitlePart = NSLocalizedString("selected", comment: "Count of seclected rows: count + selected")
+    
     private lazy var cancelBarBtn: UIBarButtonItem = {
         UIBarButtonItem(title: NSLocalizedString("Cancel", comment: ""), style: .plain, target: self, action: #selector(onCancelButtonTapped))
+    }()
+    
+    private lazy var selectAllBarBtn: UIBarButtonItem = {
+        UIBarButtonItem(title: NSLocalizedString("Select all", comment: ""), style: .plain, target: self, action: #selector(onSelectAllButtonTapped))
     }()
     
     // MARK: - Darken screen props
@@ -55,6 +66,15 @@ class ASCSharingAddRightHoldersView {
     private var isDarken: Bool {
         darkeingView.superview != nil
     }
+    
+    // MARK: - Empty view props
+    private lazy var emptyView: ASCDocumentsEmptyView? = {
+        guard let view = UIView.loadFromNib(named: String(describing: ASCDocumentsEmptyView.self)) as? ASCDocumentsEmptyView else { return nil }
+        view.actionButton.removeFromSuperview()
+        view.titleLabel.text = NSLocalizedString("No search results", comment: "")
+        view.subtitleLabel.text = nil
+        return view
+    }()
     
     // MARK: - Toolbar props
     @available(iOS 14.0, *)
@@ -92,9 +112,9 @@ class ASCSharingAddRightHoldersView {
         self.view = view
         self.navigationController = navigationController
         self.navigationItem = navigationItem
-        searchController.delegate = searchControllerDelegate
-        searchController.searchResultsUpdater = searchResultsUpdating
-        searchController.searchBar.delegate = searchBarDelegate
+        self.searchControllerDelegate = searchControllerDelegate
+        self.searchResultsUpdating = searchResultsUpdating
+        self.searchBarDelegate = searchBarDelegate
     }
     
     // MARK: - Deinit
@@ -105,10 +125,8 @@ class ASCSharingAddRightHoldersView {
     
     func load() {
         view?.backgroundColor = .white
-        
         notificationsRegister()
         configureNavigationBar()
-        configureSegmentedControl()
         configureTables()
         configureToolBar()
     }
@@ -117,12 +135,39 @@ class ASCSharingAddRightHoldersView {
         usersTableView.reloadData()
         groupsTableView.reloadData()
         searchResultsTable.reloadData()
-        searchController.searchBar.text = nil
-        searchController.isActive = false
         searchController.dismiss(animated: false)
+        searchController.isActive = false
+        searchController.searchBar.text = nil
+        searchController.delegate = nil
+        searchController.searchBar.delegate = nil
+        searchController.searchResultsUpdater = nil
+        searchController = UISearchController(searchResultsController: nil)
+        navigationItem.searchController = nil
+        
         showTable(tableType: defaultSelectedTable)
         removeDarkenFromScreen()
         navigationController?.isToolbarHidden = false
+        updateTitle(withSelectedCount: 0)
+        
+    }
+    
+    func updateTitle(withSelectedCount selected: Int) {
+        navigationItem.setTitle(title, subtitle: "\(selected) \(baseSubtitlePart)")
+    }
+    
+    public func showEmptyView(_ show: Bool) {
+        guard let emptyView = emptyView else {
+            return
+        }
+        if show {
+            searchResultsTable.addSubview(emptyView)
+            
+            emptyView.translatesAutoresizingMaskIntoConstraints = false
+            emptyView.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+            emptyView.centerYAnchor.constraint(equalTo: view.topAnchor, constant: 150).isActive = true
+        } else {
+            emptyView.removeFromSuperview()
+        }
     }
 }
 
@@ -171,18 +216,21 @@ extension ASCSharingAddRightHoldersView {
     @objc func onCancelButtonTapped() {
         delegate?.onCancelBurronTapped()
     }
+    
+    @objc func onSelectAllButtonTapped() {
+        delegate?.onSelectAllButtonTapped()
+    }
 }
-
 
 // MARK: - Navigation bar methods
 extension ASCSharingAddRightHoldersView {
     func configureNavigationBar() {
+        configureSearchController()
+        updateTitle(withSelectedCount: 0)
         navigationItem.largeTitleDisplayMode = .never
-        searchController.obscuresBackgroundDuringPresentation  = false
-        searchController.searchBar.placeholder = NSLocalizedString("Search", comment: "")
         navigationItem.hidesSearchBarWhenScrolling = false
-        navigationItem.searchController = searchController
         navigationItem.leftBarButtonItem = cancelBarBtn
+        navigationItem.rightBarButtonItem = selectAllBarBtn
         guard let navigationController = navigationController else {
             return
         }
@@ -190,7 +238,6 @@ extension ASCSharingAddRightHoldersView {
         navigationController.navigationBar.layer.borderWidth = 0
         navigationController.navigationBar.barTintColor = getNavigationBarColor()
         navigationController.navigationBar.shadowImage = UIImage()
-        navigationController.navigationBar.topItem?.title = NSLocalizedString("Shared access", comment: "")
     }
       
     private func getNavigationBarColor() -> UIColor {
@@ -200,14 +247,24 @@ extension ASCSharingAddRightHoldersView {
             return .Light.secondarySystemBackground
         }
     }
+    
+    private func configureSearchController() {
+        searchController.delegate = searchControllerDelegate
+        searchController.searchResultsUpdater = searchResultsUpdating
+        searchController.searchBar.delegate = searchBarDelegate
+        searchController.obscuresBackgroundDuringPresentation  = false
+        searchController.searchBar.placeholder = NSLocalizedString("Search", comment: "")
+        searchController.searchBar.showsScopeBar = true
+        searchController.searchBar.scopeButtonTitles = RightHoldersTableType.allCases.map({ $0.getTitle() })
+        if UIDevice.phone {
+            searchController.searchBar.inputAccessoryView = keyboardToolbar
+        }
+        navigationItem.searchController = searchController
+    }
 }
 
 // MARK: - Segmented control methods
 extension ASCSharingAddRightHoldersView {
-    private func configureSegmentedControl() {
-        searchController.searchBar.showsScopeBar = true
-        searchController.searchBar.scopeButtonTitles = RightHoldersTableType.allCases.map({ $0.getTitle() })
-    }
         
     func showTablesSegmentedControl() {
         if #available(iOS 13.0, *) {
@@ -304,9 +361,6 @@ extension ASCSharingAddRightHoldersView {
     func configureToolBar() {
         self.navigationController?.isToolbarHidden = false
         delegate?.onUpdateToolbarItems(makeToolbarItems())
-        if UIDevice.phone {
-            searchController.searchBar.inputAccessoryView = keyboardToolbar
-        }
     }
     
     private func makeToolbarItems() -> [UIBarButtonItem] {

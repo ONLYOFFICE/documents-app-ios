@@ -31,4 +31,5 @@ enum ASCFolderType: Int {
     case googledriveAll         = 106
     case icloudAll              = 107
     case onedriveAll            = 108
+    case kdriveAll              = 109
 }

@@ -62,6 +62,8 @@ class ASCFileManager {
             return ASCiCloudProvider()
         case .onedrive:
             return ASCOneDriveProvider()
+        case .kdrive:
+            return ASCKdriveFileProvider()
         default:
             return nil
         }
@@ -123,6 +125,8 @@ class ASCFileManager {
                             provider = ASCiCloudProvider()
                         case .some(.onedrive):
                             provider = ASCOneDriveProvider()
+                        case .some(.kdrive):
+                            provider = ASCKdriveFileProvider()
                         default:
                             break
                         }

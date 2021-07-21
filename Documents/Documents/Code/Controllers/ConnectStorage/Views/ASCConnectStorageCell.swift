@@ -69,6 +69,8 @@ class ASCConnectStorageCell: UITableViewCell {
             logoImageView?.image = Asset.Images.logoNextcloudLarge.image
         case .ownCloud:
             logoImageView?.image = Asset.Images.logoOwncloudLarge.image
+        case .kDrive:
+            logoImageView?.image = UIImage(color: .red, size: CGSize(width: 150, height: 50))
         case .iCloud:
             logoImageView?.image = UIImage(named: "logo-icloud-large") // TODO: check!
         }

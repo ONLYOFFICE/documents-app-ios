@@ -358,6 +358,17 @@ class ASCLocalProvider: ASCFileProviderProtocol & ASCSortableFileProviderProtoco
 
         completeon?(self, entities, true, nil)
     }
+    
+    func emptyTrash(completeon: ASCProviderCompletionHandler?) {
+        // Empty local trash
+        let trashItems = ASCLocalFileHelper.shared.entityList(Path.userTrash)
+        
+        for item in trashItems {
+            ASCLocalFileHelper.shared.removeFile(item)
+        }
+        
+        completeon?(self, nil, true, nil)
+    }
 
     func createDocument(_ name: String, fileExtension: String, in folder: ASCFolder, completeon: ASCProviderCompletionHandler?) {
         if folder.device || folder.rootFolderType == .deviceDocuments {

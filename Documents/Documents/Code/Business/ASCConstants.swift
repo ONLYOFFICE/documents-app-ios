@@ -150,16 +150,22 @@ class ASCConstants {
     }
 
     struct Clouds {
-        static let defaultConnectFolderProviders: [ASCFolderProviderType]   = [.sharePoint, .nextCloud, .ownCloud, .webDav] // default portal storage set
-        static let defaultConnectCloudProviders: [ASCFileProviderType]      = [.nextcloud, .owncloud, .googledrive, .dropbox, .webdav] // external clouds set
+        static let defaultConnectFolderProviders: [ASCFolderProviderType]   = [.sharePoint, .nextCloud, .ownCloud, .kDrive, .webDav] // default portal storage set
+        static let defaultConnectCloudProviders: [ASCFileProviderType]      = [.nextcloud, .owncloud, .googledrive, .dropbox, .onedrive, .kdrive, .webdav] // external clouds set
         static let preferredOrderCloudProviders: [ASCFolderProviderType]    = [
             .nextCloud, .ownCloud, .google, .googleDrive, .dropBox, .skyDrive,
-            .oneDrive, .sharePoint, .boxNet, .yandex, .webDav
+            .oneDrive, .sharePoint, .boxNet, .yandex, .kDrive, .webDav
         ]
         
         struct Dropbox {
             static let clientId: String     = ASCConstants.internalConstants["DropboxClientId"] as? String ?? ""
-            static let redirectUri: String  = "https://service.onlyoffice.com/oauth2.aspx"
+            static let redirectUri: String  = ASCConstants.internalConstants["DropboxRedirectUrl"] as? String ?? ""
+        }
+        
+        struct OneDrive {
+            static let clientId: String     = ASCConstants.internalConstants["OneDriveClientId"] as? String ?? ""
+            static let clientSecret: String = ASCConstants.internalConstants["OneDriveClientSecret"] as? String ?? ""
+            static let redirectUri: String  = ASCConstants.internalConstants["OneDriveRedirectUrl"] as? String ?? ""
         }
         
         struct Facebook {

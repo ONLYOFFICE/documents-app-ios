@@ -114,7 +114,9 @@ class ASCViewControllerManager {
             let url = URLComponents(string: url.absoluteString)
         else { return false }
 
-        if "openfile" == url.host {
+        let path = url.path.replacingOccurrences(of: "://", with: "")
+        
+        if "openfile" == path {
             if let data = url.queryItems?.first(where: { $0.name == "data" })?.value {
                 // Decode data
                 if let urlDecode = Data(base64URLEncoded: data) {
@@ -287,7 +289,10 @@ class ASCViewControllerManager {
 
         let onlyofficeProvider = ASCFileManager.onlyofficeProvider
         
-        if nil == onlyofficeProvider || portal != onlyofficeProvider?.api.baseUrl || email != onlyofficeProvider?.user?.email {
+        if nil == onlyofficeProvider ||
+            !(onlyofficeProvider?.api.baseUrl ?? "").contains(portal) ||
+            email != onlyofficeProvider?.user?.email
+        {
             openFileInfo = nil
 
             let account = ASCAccountsManager.shared.get(by: portal, email: email)

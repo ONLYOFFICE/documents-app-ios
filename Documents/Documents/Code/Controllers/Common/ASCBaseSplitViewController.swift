@@ -10,6 +10,8 @@ import UIKit
 
 class ASCBaseSplitViewController: UISplitViewController {
 
+    // MARK: - Properties
+    
     var primaryViewController: UIViewController? {
         return viewControllers.first
     }
@@ -20,6 +22,8 @@ class ASCBaseSplitViewController: UISplitViewController {
 
     private var isDidAppear: Bool = false
 
+    // MARK: - Lifecycle Methods
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -40,6 +44,16 @@ class ASCBaseSplitViewController: UISplitViewController {
     override func viewDidAppear(_ animated: Bool) {
         isDidAppear = true
         super.viewDidAppear(animated)
+    }
+    
+    // MARK: - UI
+
+    override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
+        if #available(iOS 13.0, *) {
+            view.backgroundColor = traitCollection.userInterfaceStyle == .dark ? .black : .white
+        } else {
+            view.backgroundColor = .white
+        }
     }
 }
 

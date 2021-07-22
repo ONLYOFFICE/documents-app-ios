@@ -531,6 +531,17 @@ class ASCOnlyofficeProvider: ASCFileProviderProtocol & ASCSortableFileProviderPr
             })
         }
     }
+    
+    func emptyTrash(completeon: ASCProviderCompletionHandler?) {
+        // Empty cloud trash
+        ASCOnlyOfficeApi.put(ASCOnlyOfficeApi.apiEmptyTrash) { (result, error, response) in
+            if let error = error {
+                completeon?(self, nil, false, error)
+            } else {
+                completeon?(self, nil, true, nil)
+            }
+        }
+    }
 
     func download(_ path: String, to: URL, processing: @escaping ASCApiProgressHandler) {
         api.download(path, to: to, processing: processing)

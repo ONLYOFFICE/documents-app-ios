@@ -28,6 +28,8 @@ class ASCTransferViewController: UITableViewController {
             return NSLocalizedString("ownCloud", comment: "")
         case .yandex:
             return NSLocalizedString("Yandex Disk", comment: "")
+        case .kdrive:
+            return NSLocalizedString("kDrive", comment: "")
         case .webdav:
             return NSLocalizedString("WebDAV", comment: "")
         default:
@@ -47,10 +49,14 @@ class ASCTransferViewController: UITableViewController {
             return Asset.Images.cloudOwncloud.image
         case .yandex:
             return Asset.Images.cloudYandexDisk.image
+        case .kdrive:
+            return Asset.Images.cloudKdrive.image
         case .webdav:
             return Asset.Images.cloudWebdav.image
         case .icloud:
             return Asset.Images.cloudIcloud.image
+        case .onedrive:
+            return Asset.Images.cloudOnedrive.image
         default:
             return nil
         }

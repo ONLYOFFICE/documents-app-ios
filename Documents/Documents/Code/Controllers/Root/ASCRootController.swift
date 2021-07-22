@@ -217,15 +217,12 @@ class ASCRootController: UITabBarController {
                 if let rootVC = ASCViewControllerManager.shared.rootController {
                     rootVC.display(provider: ASCFileManager.localProvider, folder: nil)
 
-                    if  let splitVC = rootVC.topMostViewController() as? ASCDeviceSplitViewController,
-                        let documentsNC = splitVC.viewControllers.last as? ASCBaseNavigationController,
-                        let documentsVC = documentsNC.topViewController as? ASCDocumentsViewController,
-                        let provider = documentsVC.provider
-                    {
-                        delay(seconds: 0.3, completion: {
+                    delay(seconds: 0.3, completion: {
+                        if  let documentsVC = rootVC.topMostViewController() as? ASCDocumentsViewController,
+                            let provider = documentsVC.provider {
                             ASCCreateEntity().createFile(fileExtension, for: provider, in: documentsVC)
-                        })
-                    }
+                        }
+                    })
                 }
             }
 

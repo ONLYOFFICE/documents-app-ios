@@ -203,9 +203,6 @@
 "Could not duplicate the file." = "Невозможно скопировать файл.";
 
 /* No comment provided by engineer. */
-"Could not empty trash." = "Невозможно очистить корзину.";
-
-/* No comment provided by engineer. */
 "Could not export the file." = "Невозможно экспортировать файл.";
 
 /* No comment provided by engineer. */
@@ -355,6 +352,9 @@
 
 /* Unknown Server Error */
 "error.errorServerTitle" = "Ошибка сервера";
+
+/* Button title */
+"Export" = "Экспорт";
 
 /* No comment provided by engineer. */
 "Failed online conversion service." = "Ошибка службы онлайн-конвертации";
@@ -732,7 +732,8 @@
 /* Caption of the processing */
 "Saving" = "Сохранение";
 
-/* Button title */
+/* Button title
+   Navigation bar button title */
 "Select" = "Выбрать";
 
 /* No comment provided by engineer. */
@@ -764,9 +765,6 @@
 
 /* No comment provided by engineer. */
 "Settings" = "Настройки";
-
-/* Button title */
-"Share" = "Поделиться";
 
 /* No comment provided by engineer. */
 "Share files and manage access rights without leaving the editor." = "Делитесь файлами и управляйте правами доступа не выходя из редактора.";

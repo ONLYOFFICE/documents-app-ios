@@ -431,7 +431,7 @@ class ASCCreatePortalViewController: UIViewController, UITextFieldDelegate {
 
         let parameters: Parameters = [
             "portal": baseUrl,
-            "provider": "email",
+            "provider": ASCLoginType.email,
             "userName": login,
             "password": password
         ]

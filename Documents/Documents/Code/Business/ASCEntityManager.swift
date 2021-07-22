@@ -79,7 +79,7 @@ class ASCEntityManager: NSObject, UITextFieldDelegate {
             textField.text = fileName
             
             textField.add(for: .editingChanged, {
-                createAction.isEnabled = (textField.text?.trimmed.length)! > 0
+                createAction.isEnabled = !((textField.text ?? "").trimmed.isEmpty)
             })
             
             delay(seconds: 0.3) {
@@ -137,7 +137,10 @@ class ASCEntityManager: NSObject, UITextFieldDelegate {
             textField.text = folderName
             
             textField.add(for: .editingChanged, {
-                createAction.isEnabled = (textField.text?.trimmed.length)! > 0
+                let name = (textField.text ?? "").trimmed
+                let isEnabled = !name.isEmpty && !(name == "." || name == "..")
+                
+                createAction.isEnabled = isEnabled
             })
             
             delay(seconds: 0.3) {
@@ -295,7 +298,7 @@ class ASCEntityManager: NSObject, UITextFieldDelegate {
             handler?(.end, entities, nil)
         } else {
             if let entities = entities as? [ASCEntity] {
-                provider.delete(entities, from: folder) { provider, results, success, error in
+                provider.delete(entities, from: folder, move: false) { provider, results, success, error in
                     if let error = error {
                         handler?(.error, results, ASCProviderError(error).localizedDescription)
                     } else {
@@ -423,7 +426,14 @@ class ASCEntityManager: NSObject, UITextFieldDelegate {
             textField.text = entityTitle?.fileName()
             
             textField.add(for: .editingChanged, {
-                renameAction.isEnabled = (textField.text?.trimmed.length)! > 0
+                let name = (textField.text ?? "").trimmed
+                var isEnabled = !name.isEmpty
+                
+                if entity is ASCFolder, name == "." || name == ".." {
+                    isEnabled = false
+                }
+                
+                renameAction.isEnabled = isEnabled
             })
             
             delay(seconds: 0.3) {
@@ -634,29 +644,6 @@ class ASCEntityManager: NSObject, UITextFieldDelegate {
                     }
                     checkOperation()
                 }
-            }
-        }
-    }
-    
-    func emptyTrash(handler: ASCEntityProgressHandler? = nil) {
-        var cancel = false
-        handler?(.begin, 0, nil, nil, &cancel)
-        
-        // Empty local trash
-        let trashItems = ASCLocalFileHelper.shared.entityList(Path.userTrash)
-        
-        for item in trashItems {
-            ASCLocalFileHelper.shared.removeFile(item)
-        }
-        
-        handler?(.progress, 0.5, nil, nil, &cancel)
-        
-        // Empty cloud trash
-        ASCOnlyOfficeApi.put(ASCOnlyOfficeApi.apiEmptyTrash) { (result, error, response) in
-            if error != nil {
-                handler?(.error, 1, nil, ASCOnlyOfficeApi.errorMessage(by: response!), &cancel)
-            } else {
-                handler?(.end, 1, nil, nil, &cancel)
             }
         }
     }
@@ -918,7 +905,7 @@ class ASCEntityManager: NSObject, UITextFieldDelegate {
                         }
 
                         let normalizeCurrentProgress = sizeOfCommonProgress / Float(files.count) * Float(progress)
-                         handler(commonProgress + localProgress + normalizeCurrentProgress, false, false, nil, nil, &cancel)
+                        handler(commonProgress + localProgress + normalizeCurrentProgress, false, false, nil, nil, &cancel)
 
                         if nil != error || nil != result {
                             if let error = error {

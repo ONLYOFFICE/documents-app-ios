@@ -238,8 +238,8 @@
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="78"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo-webdav-large" translatesAutoresizingMaskIntoConstraints="NO" id="ncP-MJ-Yd9">
-                                                    <rect key="frame" x="115.5" y="14" width="144" height="50"/>
+                                                <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo-kdrive-large" translatesAutoresizingMaskIntoConstraints="NO" id="ncP-MJ-Yd9">
+                                                    <rect key="frame" x="116.5" y="14" width="142" height="50"/>
                                                 </imageView>
                                             </subviews>
                                             <constraints>
@@ -476,6 +476,7 @@
         <image name="cloud-append" width="36" height="36"/>
         <image name="logo-dropbox-large" width="136" height="50"/>
         <image name="logo-googledrive-large" width="163" height="50"/>
+        <image name="logo-kdrive-large" width="142" height="50"/>
         <image name="logo-nextcloud-large" width="92" height="50"/>
         <image name="logo-onedrive-large" width="154" height="50"/>
         <image name="logo-owncloud-large" width="100" height="50"/>

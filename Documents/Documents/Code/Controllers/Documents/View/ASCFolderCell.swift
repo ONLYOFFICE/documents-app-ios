@@ -78,7 +78,7 @@ class ASCFolderCell: MGSwipeTableCell {
             case .yandex:
                 icon.image = Asset.Images.listFolderYandexdisk.image
             case .kDrive:
-                icon.image = UIImage(color: .red, size: CGSize(width: 50, height: 50))
+                icon.image = Asset.Images.listFolderWebdav.image
             default:
                 break
             }

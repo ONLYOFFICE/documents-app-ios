@@ -50,7 +50,7 @@ class ASCTransferViewController: UITableViewController {
         case .yandex:
             return Asset.Images.cloudYandexDisk.image
         case .kdrive:
-            return UIImage(color: .red, size: CGSize(width: 50, height: 50))
+            return Asset.Images.cloudKdrive.image
         case .webdav:
             return Asset.Images.cloudWebdav.image
         case .icloud:

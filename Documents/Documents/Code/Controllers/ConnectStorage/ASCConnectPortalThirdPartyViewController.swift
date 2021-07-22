@@ -331,7 +331,7 @@ class ASCConnectPortalThirdPartyViewController: UITableViewController {
             kDriveVC.complation = authComplation(info:)
             kDriveVC.title = "kDrive"
             kDriveVC.provider = .kDrive
-            kDriveVC.logo = UIImage(color: .red, size: CGSize(width: 150, height: 50))
+            kDriveVC.logo = Asset.Images.logoKdriveLarge.image
             kDriveVC.needServer = false
             viewController = kDriveVC
 

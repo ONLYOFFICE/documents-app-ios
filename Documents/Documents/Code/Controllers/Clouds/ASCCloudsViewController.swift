@@ -59,7 +59,7 @@ class ASCCloudsViewController: UITableViewController {
         case .onedrive:
             return Asset.Images.cloudOnedrive.image
         case .kdrive:
-            return UIImage(color: .red, size: CGSize(width: 50, height: 50))
+            return Asset.Images.cloudKdrive.image
         default:
             return nil
         }

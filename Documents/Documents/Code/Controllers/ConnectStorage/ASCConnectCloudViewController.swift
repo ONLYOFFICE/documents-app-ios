@@ -52,7 +52,7 @@ class ASCConnectCloudViewController: UITableViewController {
         case .onedrive:
             return Asset.Images.logoOnedriveLarge.image
         case .kdrive:
-            return UIImage(color: .red, size: CGSize(width: 150, height: 50))
+            return Asset.Images.logoKdriveLarge.image
         default:
             return nil
         }

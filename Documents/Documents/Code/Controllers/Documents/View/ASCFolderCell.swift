@@ -78,7 +78,7 @@ class ASCFolderCell: MGSwipeTableCell {
             case .yandex:
                 icon.image = Asset.Images.listFolderYandexdisk.image
             case .kDrive:
-                icon.image = Asset.Images.listFolderWebdav.image
+                icon.image = Asset.Images.listFolderKdrive.image
             default:
                 break
             }

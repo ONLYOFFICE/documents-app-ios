@@ -99,6 +99,7 @@ internal enum Asset {
     internal static let listFolderBoxnet = ImageAsset(name: "list-folder-boxnet")
     internal static let listFolderDropbox = ImageAsset(name: "list-folder-dropbox")
     internal static let listFolderGoogledrive = ImageAsset(name: "list-folder-googledrive")
+    internal static let listFolderKdrive = ImageAsset(name: "list-folder-kdrive")
     internal static let listFolderNextcloud = ImageAsset(name: "list-folder-nextcloud")
     internal static let listFolderOnedrive = ImageAsset(name: "list-folder-onedrive")
     internal static let listFolderOwncloud = ImageAsset(name: "list-folder-owncloud")

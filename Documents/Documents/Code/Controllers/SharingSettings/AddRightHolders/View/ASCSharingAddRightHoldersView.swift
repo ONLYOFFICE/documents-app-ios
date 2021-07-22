@@ -71,6 +71,7 @@ class ASCSharingAddRightHoldersView {
     private lazy var emptyView: ASCDocumentsEmptyView? = {
         guard let view = UIView.loadFromNib(named: String(describing: ASCDocumentsEmptyView.self)) as? ASCDocumentsEmptyView else { return nil }
         view.actionButton.removeFromSuperview()
+        view.imageView.image = ImageAsset(name: "empty-search-result").image
         view.titleLabel.text = NSLocalizedString("No search results", comment: "")
         view.subtitleLabel.text = nil
         return view
@@ -91,7 +92,8 @@ class ASCSharingAddRightHoldersView {
     }
     
     private lazy var keyboardToolbar: UIToolbar = {
-        let bar = UIToolbar()
+        let bar = UIToolbar(frame: CGRect(x: 0, y: 0, width: view.width, height: 44))
+        bar.translatesAutoresizingMaskIntoConstraints = true
         bar.items = makeToolbarItems()
         bar.sizeToFit()
         return bar

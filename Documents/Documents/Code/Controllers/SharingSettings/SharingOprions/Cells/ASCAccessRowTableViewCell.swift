@@ -48,7 +48,7 @@ class ASCAccessRowTableViewCell: UITableViewCell, ASCReusedIdentifierProtocol {
         
         NSLayoutConstraint.activate([
             title.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: hSpacing),
-            title.trailingAnchor.constraint(equalTo: title.trailingAnchor, constant: -hSpacing),
+            title.trailingAnchor.constraint(equalTo: access.leadingAnchor, constant: -hSpacing),
             
             access.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -12)
         ])

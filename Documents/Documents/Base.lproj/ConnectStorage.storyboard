@@ -231,8 +231,28 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="qr5-Ji-isI">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="h5j-NS-D58">
                                         <rect key="frame" x="0.0" y="408" width="375" height="78"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="h5j-NS-D58" id="aC8-hQ-gBr">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="78"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo-kdrive-large" translatesAutoresizingMaskIntoConstraints="NO" id="ncP-MJ-Yd9">
+                                                    <rect key="frame" x="116.5" y="14" width="142" height="50"/>
+                                                </imageView>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="ncP-MJ-Yd9" firstAttribute="centerX" secondItem="aC8-hQ-gBr" secondAttribute="centerX" id="9cQ-bT-Adv"/>
+                                                <constraint firstItem="ncP-MJ-Yd9" firstAttribute="centerY" secondItem="aC8-hQ-gBr" secondAttribute="centerY" id="mVO-S5-gAf"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <segue destination="1Tk-tU-uCs" kind="show" identifier="kdriveSegue" id="kew-Ww-ZfA"/>
+                                        </connections>
+                                    </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="qr5-Ji-isI">
+                                        <rect key="frame" x="0.0" y="486" width="375" height="78"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="qr5-Ji-isI" id="3Th-QI-auA">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="78"/>
@@ -449,13 +469,14 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="9GI-J3-AuB"/>
+        <segue reference="kew-Ww-ZfA"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" red="0.1764705882" green="0.41960784309999999" blue="0.69019607839999997" alpha="1" colorSpace="calibratedRGB"/>
     <resources>
         <image name="cloud-append" width="36" height="36"/>
         <image name="logo-dropbox-large" width="136" height="50"/>
         <image name="logo-googledrive-large" width="163" height="50"/>
+        <image name="logo-kdrive-large" width="142" height="50"/>
         <image name="logo-nextcloud-large" width="92" height="50"/>
         <image name="logo-onedrive-large" width="154" height="50"/>
         <image name="logo-owncloud-large" width="100" height="50"/>

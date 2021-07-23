@@ -81,7 +81,14 @@ class ASCSharingAddRightHoldersSearchResultsTableViewDataSourceAndDelegate: NSOb
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let header = UITableViewHeaderFooterView()
         header.textLabel?.text = self.tableView(tableView, titleForHeaderInSection: section) ?? ""
-        header.contentView.backgroundColor = .white
+        var backgroundColor: UIColor = .white
+        
+        if #available(iOS 12.0, *) {
+            if header.traitCollection.userInterfaceStyle == .dark {
+                backgroundColor = .black
+            }
+        }
+        header.contentView.backgroundColor = backgroundColor
         return header
     }
     

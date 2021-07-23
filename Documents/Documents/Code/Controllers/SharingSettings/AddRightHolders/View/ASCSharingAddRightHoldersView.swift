@@ -291,7 +291,15 @@ extension ASCSharingAddRightHoldersView {
     private func configureTables() {
         let tables = RightHoldersTableType.allCases.map({ getTableView(byRightHoldersTableType: $0 )}) + [searchResultsTable]
         configureGeneralsParams(forTableViews: tables)
-        searchResultsTable.backgroundColor = .white
+        var backgroundColor: UIColor = .white
+        
+        if #available(iOS 12.0, *) {
+            if searchResultsTable.traitCollection.userInterfaceStyle == .dark {
+                backgroundColor = .black
+            }
+        }
+        
+        searchResultsTable.backgroundColor =  backgroundColor
     }
     
     private func configureGeneralsParams(forTableViews tableViews: [UITableView]) {

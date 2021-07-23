@@ -56,6 +56,12 @@ class ASCBaseNavigationController: UINavigationController {
         return topViewController?.preferredInterfaceOrientationForPresentation ?? super.preferredInterfaceOrientationForPresentation
     }
     
+    // MARK: - UI
+
+    override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
+        shadowView?.backgroundColor = Asset.Colors.tableCellSeparator.color
+    }
+    
     // MARK: - Methods for change style status bar
     
     override open var childForStatusBarStyle: UIViewController? {

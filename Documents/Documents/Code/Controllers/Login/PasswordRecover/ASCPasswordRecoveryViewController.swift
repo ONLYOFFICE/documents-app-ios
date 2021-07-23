@@ -37,8 +37,6 @@ class ASCPasswordRecoveryViewController: ASCBaseViewController {
         
         sendButton?.styleType = .default
         sendButton?.tag = ASCBaseViewController.actionTag
-        sendButton?.isEnabled = false
-        emailTextField?.addTarget(self, action: #selector(emailTextFieldChanged), for: .editingChanged)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -83,24 +81,18 @@ class ASCPasswordRecoveryViewController: ASCBaseViewController {
         navigator.navigate(to: .recoveryPasswordConfirmed(email: email))
     }
     
-    @objc
-    private func emailTextFieldChanged(_ sender: UITextField) {
-        guard let text = sender.text else { return }
-        sendButton?.isEnabled = !text.isEmpty
-    }
-    
     // MARK: - Actions
     
     @IBAction func onSendButton(_ sender: Any) {
+        let email = emailTextField?.text?.trimmed ?? ""
+        
+        guard valid(email: email) else {
+            return
+        }
+        
         guard let portal = OnlyofficeApiClient.shared.baseURL?.absoluteString.trimmed else {
-            return
-        }
-        
-        guard let email = emailTextField?.text?.trimmed else {
-            return
-        }
-        
-        if !valid(email: email) {
+            emailTextField?.errorMessage = NSLocalizedString("The portal is not available", comment: "")
+            emailTextField?.shake()
             return
         }
         
@@ -112,7 +104,7 @@ class ASCPasswordRecoveryViewController: ASCBaseViewController {
         let hud = MBProgressHUD.showTopMost()
         hud?.label.text = NSLocalizedString("Sending", comment: "Caption of the process")
         
-        ASCPasswordRecoveryController.shared.forgotPassword(portalUrl: portal,options: parameters) { [weak self] result in
+        ASCPasswordRecoveryController.shared.forgotPassword(portalUrl: portal, options: parameters) { [weak self] result in
             switch result {
             case .success(let response):
                 hud?.setSuccessState()

@@ -33,6 +33,8 @@ class ASCCloudsViewController: UITableViewController {
             return NSLocalizedString("iCloud", comment: "")
         case .onedrive:
             return NSLocalizedString("OneDrive", comment: "")
+        case .kdrive:
+            return NSLocalizedString("kDrive", comment: "")
         default:
             return NSLocalizedString("Unknown", comment: "")
         }
@@ -56,6 +58,8 @@ class ASCCloudsViewController: UITableViewController {
             return Asset.Images.cloudIcloud.image
         case .onedrive:
             return Asset.Images.cloudOnedrive.image
+        case .kdrive:
+            return Asset.Images.cloudKdrive.image
         default:
             return nil
         }

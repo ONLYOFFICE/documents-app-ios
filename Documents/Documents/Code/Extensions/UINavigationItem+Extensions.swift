@@ -14,9 +14,11 @@ extension UINavigationItem {
     func setTitle(_ title: String, subtitle: String) {
         let titleLabel = UILabel()
         let appearance = UINavigationBar.appearance()
-        var color: UIColor = .black
-        if #available(iOS 12.0, *) {
-            color = titleLabel.traitCollection.userInterfaceStyle == .dark ? .white : .black
+        var color: UIColor = .white
+        if #available(iOS 13.0, *) {
+            color = .label
+        } else {
+            color = .white
         }
         
         let textColor = appearance.titleTextAttributes?[NSAttributedString.Key.foregroundColor] as? UIColor ?? color

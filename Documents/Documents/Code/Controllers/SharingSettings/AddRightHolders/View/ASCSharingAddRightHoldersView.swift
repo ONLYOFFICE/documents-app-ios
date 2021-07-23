@@ -42,6 +42,11 @@ class ASCSharingAddRightHoldersView {
     lazy var groupsTableView = UITableView()
     lazy var searchResultsTable = UITableView()
     
+    // MARK: - Activity indicators
+    
+    public lazy var loadingUsersTableActivityIndicator = UIActivityIndicatorView()
+    public lazy var loadingGroupsTableActivityIndicator = UIActivityIndicatorView()
+    
     // MARK: - Navigation bar props
     let title = NSLocalizedString("Shared access", comment: "")
     let baseSubtitlePart = NSLocalizedString("selected", comment: "Count of seclected rows: count + selected")
@@ -126,7 +131,11 @@ class ASCSharingAddRightHoldersView {
     }
     
     func load() {
-        view?.backgroundColor = .white
+        if #available(iOS 13.0, *) {
+            view?.backgroundColor = .systemBackground
+        } else {
+            view?.backgroundColor = .white
+        }
         notificationsRegister()
         configureNavigationBar()
         configureTables()
@@ -291,7 +300,12 @@ extension ASCSharingAddRightHoldersView {
     private func configureTables() {
         let tables = RightHoldersTableType.allCases.map({ getTableView(byRightHoldersTableType: $0 )}) + [searchResultsTable]
         configureGeneralsParams(forTableViews: tables)
-        searchResultsTable.backgroundColor = .white
+        
+        if #available(iOS 13.0, *) {
+            searchResultsTable.backgroundColor = .systemBackground
+        } else {
+            searchResultsTable.backgroundColor = .white
+        }
     }
     
     private func configureGeneralsParams(forTableViews tableViews: [UITableView]) {
@@ -433,3 +447,34 @@ extension ASCSharingAddRightHoldersView {
     }
 }
 
+// MARK: - Activity indicators funcs
+extension ASCSharingAddRightHoldersView {
+    
+    public func runUsersLoadingAnimation() {
+        showTableLoadingActivityIndicator(tableView: usersTableView, activityIndicator: loadingUsersTableActivityIndicator)
+    }
+    
+    public func stopUsersLoadingAnimation() {
+        hideTableLoadingActivityIndicator(activityIndicator: loadingUsersTableActivityIndicator)
+    }
+    
+    public func runGroupsLoadingAnimation() {
+        showTableLoadingActivityIndicator(tableView: groupsTableView, activityIndicator: loadingGroupsTableActivityIndicator)
+    }
+    
+    public func stopGroupsLoadingAnimation() {
+        hideTableLoadingActivityIndicator(activityIndicator: loadingGroupsTableActivityIndicator)
+    }
+    
+    private func showTableLoadingActivityIndicator(tableView: UITableView, activityIndicator loadingTableActivityIndicator: UIActivityIndicatorView) {
+        loadingTableActivityIndicator.translatesAutoresizingMaskIntoConstraints = false
+        loadingTableActivityIndicator.startAnimating()
+        tableView.addSubview(loadingTableActivityIndicator)
+        loadingTableActivityIndicator.anchorCenterSuperview()
+    }
+    
+    private func hideTableLoadingActivityIndicator(activityIndicator loadingTableActivityIndicator: UIActivityIndicatorView) {
+        loadingTableActivityIndicator.stopAnimating()
+        loadingTableActivityIndicator.removeFromSuperview()
+    }
+}

@@ -115,6 +115,15 @@ class ASCSharingAddRightHoldersViewController: UIViewController, ASCSharingAddRi
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        var backgroundColor: UIColor = .white
+        
+        if #available(iOS 12.0, *) {
+            if view.traitCollection.userInterfaceStyle == .dark {
+                backgroundColor = .black
+            }
+        }
+        view.backgroundColor = backgroundColor
+        
         sharingAddRightHoldersView = ASCSharingAddRightHoldersView(
             view: view,
             navigationItem: navigationItem,

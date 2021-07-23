@@ -218,7 +218,7 @@
 			<string>google</string>
 			<key>CFBundleURLSchemes</key>
 			<array>
-				<string>com.googleusercontent.apps.948651087073-h0es4qujrv0vrvvre0gbetbv3iat1b8e</string>
+				<string>com.googleusercontent.apps.948651087073-1d26djj24nd2p91a8c2ntejnm12jfqah</string>
 			</array>
 		</dict>
 		<dict>
@@ -233,7 +233,7 @@
 		</dict>
 	</array>
 	<key>CFBundleVersion</key>
-	<string>673</string>
+	<string>682</string>
 	<key>FacebookDisplayName</key>
 	<string>Login on ONLYOFFICE</string>
 	<key>ITSAppUsesNonExemptEncryption</key>

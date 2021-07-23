@@ -42,6 +42,11 @@ class ASCSharingAddRightHoldersView {
     lazy var groupsTableView = UITableView()
     lazy var searchResultsTable = UITableView()
     
+    // MARK: - Activity indicators
+    
+    public lazy var loadingUsersTableActivityIndicator = UIActivityIndicatorView()
+    public lazy var loadingGroupsTableActivityIndicator = UIActivityIndicatorView()
+    
     // MARK: - Navigation bar props
     let title = NSLocalizedString("Shared access", comment: "")
     let baseSubtitlePart = NSLocalizedString("selected", comment: "Count of seclected rows: count + selected")
@@ -441,3 +446,34 @@ extension ASCSharingAddRightHoldersView {
     }
 }
 
+// MARK: - Activity indicators funcs
+extension ASCSharingAddRightHoldersView {
+    
+    public func runUsersLoadingAnimation() {
+        showTableLoadingActivityIndicator(tableView: usersTableView, activityIndicator: loadingUsersTableActivityIndicator)
+    }
+    
+    public func stopUsersLoadingAnimation() {
+        hideTableLoadingActivityIndicator(activityIndicator: loadingUsersTableActivityIndicator)
+    }
+    
+    public func runGroupsLoadingAnimation() {
+        showTableLoadingActivityIndicator(tableView: groupsTableView, activityIndicator: loadingGroupsTableActivityIndicator)
+    }
+    
+    public func stopGroupsLoadingAnimation() {
+        hideTableLoadingActivityIndicator(activityIndicator: loadingGroupsTableActivityIndicator)
+    }
+    
+    private func showTableLoadingActivityIndicator(tableView: UITableView, activityIndicator loadingTableActivityIndicator: UIActivityIndicatorView) {
+        loadingTableActivityIndicator.translatesAutoresizingMaskIntoConstraints = false
+        loadingTableActivityIndicator.startAnimating()
+        tableView.addSubview(loadingTableActivityIndicator)
+        loadingTableActivityIndicator.anchorCenterSuperview()
+    }
+    
+    private func hideTableLoadingActivityIndicator(activityIndicator loadingTableActivityIndicator: UIActivityIndicatorView) {
+        loadingTableActivityIndicator.stopAnimating()
+        loadingTableActivityIndicator.removeFromSuperview()
+    }
+}

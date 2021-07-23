@@ -105,8 +105,7 @@ class ASCSharingView {
         loadingTableActivityIndicator.translatesAutoresizingMaskIntoConstraints = false
         loadingTableActivityIndicator.startAnimating()
         tableView.addSubview(loadingTableActivityIndicator)
-        loadingTableActivityIndicator.centerYAnchor.constraint(equalTo: tableView.centerYAnchor).isActive = true
-        loadingTableActivityIndicator.centerXAnchor.constraint(equalTo: tableView.centerXAnchor).isActive = true
+        loadingTableActivityIndicator.anchorCenterSuperview()
     }
     
     public func hideTableLoadingActivityIndicator() {

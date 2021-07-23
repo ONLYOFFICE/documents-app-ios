@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import MBProgressHUD
 
 protocol ASCSharingAddRightHoldersDisplayLogic: AnyObject {
     func displayData(viewModelType: ASCSharingAddRightHolders.Model.ViewModel.ViewModelData)
@@ -22,19 +21,22 @@ class ASCSharingAddRightHoldersViewController: UIViewController, ASCSharingAddRi
     var sharingAddRightHoldersView: ASCSharingAddRightHoldersView?
     var defaultSelectedTable: RightHoldersTableType = .users
     
-    var hud: MBProgressHUD?
     var usersCurrentlyLoading = false {
         didSet {
-            if oldValue == true && !usersCurrentlyLoading && getSelectedTableType() == .users {
-                stopLoadingHud()
+            if usersCurrentlyLoading {
+                sharingAddRightHoldersView?.runUsersLoadingAnimation()
+            } else {
+                sharingAddRightHoldersView?.stopUsersLoadingAnimation()
             }
         }
     }
     
     var groupsCurrentlyLoading = false {
         didSet {
-            if oldValue == true && !groupsCurrentlyLoading && getSelectedTableType() == .groups {
-                stopLoadingHud()
+            if groupsCurrentlyLoading {
+                sharingAddRightHoldersView?.runGroupsLoadingAnimation()
+            } else {
+                sharingAddRightHoldersView?.stopGroupsLoadingAnimation()
             }
         }
     }
@@ -197,17 +199,11 @@ class ASCSharingAddRightHoldersViewController: UIViewController, ASCSharingAddRi
     // MARK: - Requests
     func loadData() {
         if !usersCurrentlyLoading {
-            if getSelectedTableType() == .users {
-                runLoadingHud()
-            }
             usersCurrentlyLoading = true
             interactor?.makeRequest(requestType: .loadUsers)
         }
         
         if !groupsCurrentlyLoading {
-            if getSelectedTableType() == .groups {
-                runLoadingHud()
-            }
             groupsCurrentlyLoading = true
             interactor?.makeRequest(requestType: .loadGroups)
         }
@@ -249,16 +245,6 @@ class ASCSharingAddRightHoldersViewController: UIViewController, ASCSharingAddRi
         }
         
         sharingAddRightHoldersView?.updateTitle(withSelectedCount: countOfSelectedRows)
-    }
-    
-    private func runLoadingHud() {
-        hud = MBProgressHUD.showTopMost()
-        hud?.label.text = NSLocalizedString("Loading", comment: "Caption of the process")
-    }
-    
-    private func stopLoadingHud() {
-        hud?.hide(animated: false)
-        hud = nil
     }
     
     // MARK: Routing
@@ -403,12 +389,6 @@ extension ASCSharingAddRightHoldersViewController: UISearchControllerDelegate, U
     func searchBar(_ searchBar: UISearchBar, selectedScopeButtonIndexDidChange selectedScope: Int) {
         guard let tableType = RightHoldersTableType(rawValue: selectedScope) else { return }
         sharingAddRightHoldersView?.showTable(tableType: tableType)
-        switch tableType {
-        case .users:
-            usersCurrentlyLoading ? runLoadingHud() : stopLoadingHud()
-        case .groups:
-            groupsCurrentlyLoading ? runLoadingHud() : stopLoadingHud()
-        }
     }
 }
 

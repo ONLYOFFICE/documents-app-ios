@@ -126,7 +126,11 @@ class ASCSharingAddRightHoldersView {
     }
     
     func load() {
-        view?.backgroundColor = .white
+        if #available(iOS 13.0, *) {
+            view?.backgroundColor = .systemBackground
+        } else {
+            view?.backgroundColor = .white
+        }
         notificationsRegister()
         configureNavigationBar()
         configureTables()
@@ -291,15 +295,12 @@ extension ASCSharingAddRightHoldersView {
     private func configureTables() {
         let tables = RightHoldersTableType.allCases.map({ getTableView(byRightHoldersTableType: $0 )}) + [searchResultsTable]
         configureGeneralsParams(forTableViews: tables)
-        var backgroundColor: UIColor = .white
         
-        if #available(iOS 12.0, *) {
-            if searchResultsTable.traitCollection.userInterfaceStyle == .dark {
-                backgroundColor = .black
-            }
+        if #available(iOS 13.0, *) {
+            searchResultsTable.backgroundColor = .systemBackground
+        } else {
+            searchResultsTable.backgroundColor = .white
         }
-        
-        searchResultsTable.backgroundColor =  backgroundColor
     }
     
     private func configureGeneralsParams(forTableViews tableViews: [UITableView]) {

@@ -21,6 +21,7 @@ protocol ASCSharingAddRightHoldersViewDelegate: AnyObject {
     func onNextButtonTapped()
     func onCancelBurronTapped()
     func onSelectAllButtonTapped()
+    func onDeselectAllButtonTapped()
     
     func present(sheetAccessController: UIViewController)
 }
@@ -58,6 +59,10 @@ class ASCSharingAddRightHoldersView {
         UIBarButtonItem(title: NSLocalizedString("Select all", comment: ""), style: .plain, target: self, action: #selector(onSelectAllButtonTapped))
     }()
     
+    private lazy var deselectAllBarBtn: UIBarButtonItem = {
+        UIBarButtonItem(title: NSLocalizedString("Deselect all", comment: ""), style: .plain, target: self, action: #selector(onDeselectAllButtonTapped))
+    }()
+    
     // MARK: - Darken screen props
     private lazy var darkeingView: UIView = {
         let view = UIView()
@@ -74,10 +79,7 @@ class ASCSharingAddRightHoldersView {
     // MARK: - Empty view props
     private lazy var emptyView: ASCDocumentsEmptyView? = {
         guard let view = UIView.loadFromNib(named: String(describing: ASCDocumentsEmptyView.self)) as? ASCDocumentsEmptyView else { return nil }
-        view.actionButton.removeFromSuperview()
-        view.imageView.image = ImageAsset(name: "empty-search-result").image
-        view.titleLabel.text = NSLocalizedString("No search results", comment: "")
-        view.subtitleLabel.text = nil
+        view.type = .search
         return view
     }()
     
@@ -172,20 +174,6 @@ class ASCSharingAddRightHoldersView {
         }
     }
     
-    public func showEmptyView(_ show: Bool) {
-        guard let emptyView = emptyView else {
-            return
-        }
-        if show {
-            searchResultsTable.addSubview(emptyView)
-            
-            emptyView.translatesAutoresizingMaskIntoConstraints = false
-            emptyView.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
-            emptyView.centerYAnchor.constraint(equalTo: view.topAnchor, constant: 150).isActive = true
-        } else {
-            emptyView.removeFromSuperview()
-        }
-    }
 }
 
 // MARK: - @OBJC func delegate
@@ -237,6 +225,10 @@ extension ASCSharingAddRightHoldersView {
     @objc func onSelectAllButtonTapped() {
         delegate?.onSelectAllButtonTapped()
     }
+    
+    @objc func onDeselectAllButtonTapped() {
+        delegate?.onDeselectAllButtonTapped()
+    }
 }
 
 // MARK: - Navigation bar methods
@@ -247,7 +239,6 @@ extension ASCSharingAddRightHoldersView {
         navigationItem.largeTitleDisplayMode = .never
         navigationItem.hidesSearchBarWhenScrolling = false
         navigationItem.leftBarButtonItem = cancelBarBtn
-        navigationItem.rightBarButtonItem = selectAllBarBtn
         guard let navigationController = navigationController else {
             return
         }
@@ -255,6 +246,14 @@ extension ASCSharingAddRightHoldersView {
         navigationController.navigationBar.layer.borderWidth = 0
         navigationController.navigationBar.barTintColor = getNavigationBarColor()
         navigationController.navigationBar.shadowImage = UIImage()
+    }
+    
+    func showSelectBarBtn() {
+        navigationItem.rightBarButtonItem = selectAllBarBtn
+    }
+    
+    func showDeselectBarBtn() {
+        navigationItem.rightBarButtonItem = deselectAllBarBtn
     }
       
     private func getNavigationBarColor() -> UIColor {
@@ -377,6 +376,26 @@ extension ASCSharingAddRightHoldersView {
     }
 }
 
+// MARK: - Empty view methods
+extension ASCSharingAddRightHoldersView {
+    public func showEmptyView(_ show: Bool) {
+        guard let emptyView = emptyView else {
+            return
+        }
+        if show {
+            if UIDevice.phone {
+                emptyView.frame = searchResultsTable.frame.offsetBy(dx: 0, dy: 75)
+            } else {
+                emptyView.frame = searchResultsTable.frame
+            }
+            
+            searchResultsTable.addSubview(emptyView)
+        } else {
+            emptyView.removeFromSuperview()
+        }
+    }
+}
+
 // MARK: - Toolbar methods
 extension ASCSharingAddRightHoldersView {
     
@@ -414,9 +433,10 @@ extension ASCSharingAddRightHoldersView {
     
     private func makeNextBarBtn() -> UIBarButtonItem {
         let nextBtn = ASCButtonStyle()
-        nextBtn.layer.cornerRadius = 13
+        nextBtn.layer.cornerRadius = 14
         nextBtn.setTitle(NSLocalizedString("Next", comment: "").uppercased(), for: .normal)
-        nextBtn.contentEdgeInsets = UIEdgeInsets(top: 3, left: 15, bottom: 3, right: 15)
+        nextBtn.titleLabel?.font = UIFont.systemFont(ofSize: 17, weight: .semibold)
+        nextBtn.contentEdgeInsets = UIEdgeInsets(top: 2, left: 15, bottom: 2, right: 15)
         nextBtn.addTarget(self, action: #selector(onNextButtonTapped), for: .touchUpInside)
         return UIBarButtonItem(customView: nextBtn)
     }

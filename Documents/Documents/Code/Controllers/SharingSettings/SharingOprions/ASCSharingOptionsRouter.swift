@@ -44,7 +44,7 @@ class ASCSharingOptionsRouter: NSObject, ASCSharingOptionsRoutingLogic, ASCShari
         
         destinationViewController.accessProvider = viewController.accessProviderFactory.get(entity: viewController.entity ?? ASCEntity(), isAccessExternal: false)
         passDataToAddRightHoldersViewController(source: sourceDataStore, destination: &destinationDataStore) { [weak viewController] in
-            viewController?.requestToLoadRightHolders()
+            viewController?.navigationController?.dismiss(animated: true)
         }
         navigateToAddRightHoldersViewController(source: viewController, destination: destinationViewController)
         if isDestinationAlreadyInit {

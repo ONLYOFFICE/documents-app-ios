@@ -10,6 +10,7 @@ import UIKit
 
 protocol ASCSharingSettingsVerifyRightHoldersRoutingLogic {
     func routeToAccessViewController(viewModel: ASCSharingSettingsAccessViewModel, segue: UIStoryboardSegue?)
+    func routeToParentWithDoneCopmletion(segue: UIStoryboardSegue?)
 }
 
 protocol ASCSharingSettingsVerifyRightHoldersDataPassing
@@ -47,5 +48,11 @@ class ASCSharingSettingsVerifyRightHoldersRouter: NSObject, ASCSharingSettingsVe
     
     private func passDataToAddRightHoldersViewController(viewModel: ASCSharingSettingsAccessViewModel, destination: ASCSharingSettingsAccessViewController) {
         destination.viewModel = viewModel
+    }
+    
+    func routeToParentWithDoneCopmletion(segue: UIStoryboardSegue?) {
+        viewController?.navigationController?.dismiss(animated: false, completion: {
+            self.dataStore?.doneComplerion()
+        })
     }
 }

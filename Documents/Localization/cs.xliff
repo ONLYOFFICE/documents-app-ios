@@ -1391,6 +1391,10 @@ Poznámka: Pokud zapomenete přístupový kód, budete muset aplikaci smazat a p
       <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="12.5.1" build-num="12E507"/>
     </header>
     <body>
+      <trans-unit id="%d selected" xml:space="preserve">
+        <source>%d selected</source>
+        <note>Count of seclected rows: count + selected</note>
+      </trans-unit>
       <trans-unit id="%i of %i" xml:space="preserve">
         <source>%1$i of %2$i</source>
         <target>%1$i z %2$i</target>
@@ -3284,10 +3288,6 @@ Vytvořené soubory mohou být později nahrány do online portálu. Poté k nim
         <source>photos</source>
         <target>fotky</target>
         <note>Used in the context: '3 photos'</note>
-      </trans-unit>
-      <trans-unit id="selected" xml:space="preserve">
-        <source>selected</source>
-        <note>Count of seclected rows: count + selected</note>
       </trans-unit>
       <trans-unit id="© Ascensio System SIA %d" xml:space="preserve">
         <source>© Ascensio System SIA %d</source>

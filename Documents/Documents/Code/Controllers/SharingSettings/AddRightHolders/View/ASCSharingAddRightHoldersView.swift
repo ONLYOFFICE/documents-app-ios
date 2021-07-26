@@ -162,10 +162,14 @@ class ASCSharingAddRightHoldersView {
     }
     
     func updateTitle(withSelectedCount selected: Int) {
-        navigationItem.setTitle(title,
-                                subtitle: String.localizedStringWithFormat(
-                                    NSLocalizedString("%d selected", comment:"Count of seclected rows: count + selected"), selected)
-        )
+        if selected < 1 {
+            navigationItem.setTitle(title, subtitle: nil)
+        } else {
+            navigationItem.setTitle(title,
+                                    subtitle: String.localizedStringWithFormat(
+                                        NSLocalizedString("%d selected", comment:"Count of seclected rows: count + selected"), selected)
+            )
+        }
     }
     
     public func showEmptyView(_ show: Bool) {

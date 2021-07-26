@@ -11,7 +11,7 @@ import UIKit
 
 extension UINavigationItem {
     
-    func setTitle(_ title: String, subtitle: String) {
+    func setTitle(_ title: String, subtitle: String?) {
         let titleLabel = UILabel()
         let appearance = UINavigationBar.appearance()
         var color: UIColor = .white
@@ -32,7 +32,7 @@ extension UINavigationItem {
         subtitleLabel.font = .preferredFont(forTextStyle: UIFont.TextStyle.subheadline)
         subtitleLabel.textColor = textColor.withAlphaComponent(0.60)
         
-        let stackView = UIStackView(arrangedSubviews: [titleLabel, subtitleLabel])
+        let stackView = UIStackView(arrangedSubviews: [titleLabel] + ((subtitle != nil) ? [subtitleLabel] : []))
         stackView.distribution = .equalCentering
         stackView.alignment = .center
         stackView.axis = .vertical

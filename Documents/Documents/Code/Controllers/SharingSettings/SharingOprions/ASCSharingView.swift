@@ -32,6 +32,7 @@ class ASCSharingView {
         return UIBarButtonItem(image: icon, style: .plain, target: self, action: #selector(onLinkBarButtonTap))
     }()
     
+    private var navBarHeigh: CGFloat = 0
     private lazy var addRightsBarButtonItem: UIBarButtonItem = {
         var icon: UIImage?
         if #available(iOS 13.0, *) {
@@ -52,6 +53,7 @@ class ASCSharingView {
 
     public func configureNavigationBar(_ navigationController: UINavigationController?) {
         navigationController?.navigationItem.largeTitleDisplayMode = .never
+        navBarHeigh = navigationController?.navigationBar.height ?? 0
     }
     
     public func configureNavigationItem(_ navigationItem: UINavigationItem) {
@@ -102,10 +104,12 @@ class ASCSharingView {
     }
     
     public func showTableLoadingActivityIndicator(tableView: UITableView) {
+        let centerYOffset = navBarHeigh
         loadingTableActivityIndicator.translatesAutoresizingMaskIntoConstraints = false
         loadingTableActivityIndicator.startAnimating()
         tableView.addSubview(loadingTableActivityIndicator)
-        loadingTableActivityIndicator.anchorCenterSuperview()
+        loadingTableActivityIndicator.anchorCenterXToSuperview()
+        loadingTableActivityIndicator.centerYAnchor.constraint(equalTo: tableView.centerYAnchor, constant: -centerYOffset).isActive = true
     }
     
     public func hideTableLoadingActivityIndicator() {

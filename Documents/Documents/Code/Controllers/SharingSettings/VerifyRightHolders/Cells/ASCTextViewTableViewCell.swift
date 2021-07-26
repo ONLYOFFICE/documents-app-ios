@@ -29,6 +29,7 @@ class ASCTextViewTableViewCell: UITableViewCell, ASCReusedIdentifierProtocol, AS
 
         textView.delegate = self
         textView.font = UIFont.systemFont(ofSize: 17)
+        textView.backgroundColor = contentView.backgroundColor
         placeHolderText = viewModel.placeholder ?? ""
         if let viewModelText = viewModel.text, !viewModelText.isEmpty {
             textView.text = viewModelText

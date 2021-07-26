@@ -1364,6 +1364,18 @@ Hinweis: Wenn Sie das Kennwort vergessen haben, müssen Sie die App löschen und
         <target>A6 (10,5%1$@ x 14,8%2$@)</target>
         <note>Format info</note>
       </trans-unit>
+      <trans-unit id="Access by external link" xml:space="preserve">
+        <source>Access by external link</source>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Access rights" xml:space="preserve">
+        <source>Access rights</source>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Access settings" xml:space="preserve">
+        <source>Access settings</source>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
       <trans-unit id="Account name is empty" xml:space="preserve">
         <source>Account name is empty</source>
         <target>Der Kontoname ist leer</target>
@@ -1377,6 +1389,10 @@ Hinweis: Wenn Sie das Kennwort vergessen haben, müssen Sie die App löschen und
       <trans-unit id="Add files to Favorites for quick access directly from the editor." xml:space="preserve">
         <source>Add files to Favorites for quick access directly from the editor.</source>
         <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Add message" xml:space="preserve">
+        <source>Add message</source>
+        <note>Sharing settings add notification message</note>
       </trans-unit>
       <trans-unit id="Adding to Favorites" xml:space="preserve">
         <source>Adding to Favorites</source>
@@ -1397,10 +1413,18 @@ Hinweis: Wenn Sie das Kennwort vergessen haben, müssen Sie die App löschen und
         <target>Alle Dateien</target>
         <note>Category title</note>
       </trans-unit>
+      <trans-unit id="Allow access via external link" xml:space="preserve">
+        <source>Allow access via external link</source>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
       <trans-unit id="An unexpected error has occurred. Please try again later. Sorry for inconvenience." xml:space="preserve">
         <source>An unexpected error has occurred. Please try again later. Sorry for inconvenience.</source>
         <target>Es ist ein unerwarteter Fehler aufgetreten. Bitte versuchen Sie es später noch einmal. Bitte entschuldigen Sie die Unannehmlichkeiten.</target>
         <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Applying" xml:space="preserve">
+        <source>Applying</source>
+        <note>Caption of the process</note>
       </trans-unit>
       <trans-unit id="Are you sure you want to delete the account %@ from this device?" xml:space="preserve">
         <source>Are you sure you want to delete the account %@ from this device?</source>
@@ -1506,6 +1530,10 @@ Hinweis: Wenn Sie das Kennwort vergessen haben, müssen Sie die App löschen und
         <source>Collaborate with your team</source>
         <target>Arbeiten Sie mit Ihren Teammitgliedern zusammen</target>
         <note>Introduction Step Five - Title</note>
+      </trans-unit>
+      <trans-unit id="Comment" xml:space="preserve">
+        <source>Comment</source>
+        <note>Share status</note>
       </trans-unit>
       <trans-unit id="Common Documents" xml:space="preserve">
         <source>Common Documents</source>
@@ -1709,6 +1737,10 @@ die das WebDAV-Protokoll verwenden.</target>
         <source>Creating</source>
         <target>Wird erstellt</target>
         <note>Caption of the process</note>
+      </trans-unit>
+      <trans-unit id="Custom filter" xml:space="preserve">
+        <source>Custom filter</source>
+        <note>Share status</note>
       </trans-unit>
       <trans-unit id="Date" xml:space="preserve">
         <source>Date</source>
@@ -1978,6 +2010,10 @@ die das WebDAV-Protokoll verwenden.</target>
         <target>Ordner</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
+      <trans-unit id="Form filling" xml:space="preserve">
+        <source>Form filling</source>
+        <note>Share status</note>
+      </trans-unit>
       <trans-unit id="Full Access" xml:space="preserve">
         <source>Full Access</source>
         <target>Vollständiger Zugriff</target>
@@ -2062,6 +2098,11 @@ die das WebDAV-Protokoll verwenden.</target>
       </trans-unit>
       <trans-unit id="Last name is incorrect" xml:space="preserve">
         <source>Last name is incorrect</source>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Link copied&#10;to the clipboard" xml:space="preserve">
+        <source>Link copied
+to the clipboard</source>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Logging in" xml:space="preserve">
@@ -2218,6 +2259,10 @@ die das WebDAV-Protokoll verwenden.</target>
         <target>Keine Suchergebnisse</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
+      <trans-unit id="No search results" xml:space="preserve">
+        <source>No search results</source>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
       <trans-unit id="None" xml:space="preserve">
         <source>None</source>
         <target>Keine</target>
@@ -2228,6 +2273,10 @@ die das WebDAV-Protokoll verwenden.</target>
         <source>Note: removal from your account can not be undone.</source>
         <target>Hinweis: Das Löschen aus Ihrem Konto kann nicht rückgängig gemacht werden.</target>
         <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Notify by Email" xml:space="preserve">
+        <source>Notify by Email</source>
+        <note>Sharing settings switcher</note>
       </trans-unit>
       <trans-unit id="OK" xml:space="preserve">
         <source>OK</source>
@@ -2311,7 +2360,7 @@ die das WebDAV-Protokoll verwenden.</target>
       <trans-unit id="Owner" xml:space="preserve">
         <source>Owner</source>
         <target>Besitzer</target>
-        <note>No comment provided by engineer.</note>
+        <note>Table cell right holder acces text</note>
       </trans-unit>
       <trans-unit id="Password" xml:space="preserve">
         <source>Password</source>
@@ -2466,6 +2515,10 @@ die das WebDAV-Protokoll verwenden.</target>
         <source>Remove from Favorites</source>
         <note>Button title</note>
       </trans-unit>
+      <trans-unit id="Removing" xml:space="preserve">
+        <source>Removing</source>
+        <note>Caption of the process</note>
+      </trans-unit>
       <trans-unit id="Rename" xml:space="preserve">
         <source>Rename</source>
         <target>Umbenennen</target>
@@ -2516,6 +2569,10 @@ die das WebDAV-Protokoll verwenden.</target>
         <target>Wird gespeichert</target>
         <note>Caption of the processing</note>
       </trans-unit>
+      <trans-unit id="Search" xml:space="preserve">
+        <source>Search</source>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
       <trans-unit id="Select" xml:space="preserve">
         <source>Select</source>
         <target>Auswählen</target>
@@ -2525,6 +2582,10 @@ die das WebDAV-Protokoll verwenden.</target>
       <trans-unit id="Select Photos" xml:space="preserve">
         <source>Select Photos</source>
         <target>Fotos auswählen</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Select all" xml:space="preserve">
+        <source>Select all</source>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Select another cloud to connect to Nextcloud, ownCloud and others are supported." xml:space="preserve">
@@ -2557,6 +2618,10 @@ die das WebDAV-Protokoll verwenden.</target>
         <target>Ausgewählt: %ld</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
+      <trans-unit id="Selecting access rights" xml:space="preserve">
+        <source>Selecting access rights</source>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
       <trans-unit id="Sending" xml:space="preserve">
         <source>Sending</source>
         <note>Caption of the process</note>
@@ -2579,6 +2644,10 @@ die das WebDAV-Protokoll verwenden.</target>
         <target>SharePoint-Verzeichnis</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
+      <trans-unit id="Shared access" xml:space="preserve">
+        <source>Shared access</source>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
       <trans-unit id="Shared with Me" xml:space="preserve">
         <source>Shared with Me</source>
         <target>Für mich freigegeben</target>
@@ -2592,6 +2661,10 @@ die das WebDAV-Protokoll verwenden.</target>
       <trans-unit id="Sharing Settings" xml:space="preserve">
         <source>Sharing Settings</source>
         <note>Button title</note>
+      </trans-unit>
+      <trans-unit id="Sharing settings" xml:space="preserve">
+        <source>Sharing settings</source>
+        <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Single Sign-on" xml:space="preserve">
         <source>Single Sign-on</source>
@@ -2612,6 +2685,14 @@ die das WebDAV-Protokoll verwenden.</target>
         <source>Slide %1$i of %2$i</source>
         <target>Folie %1$i von %2$i</target>
         <note>Presentation Viewer</note>
+      </trans-unit>
+      <trans-unit id="Somethin wrong" xml:space="preserve">
+        <source>Somethin wrong</source>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Something wrong" xml:space="preserve">
+        <source>Something wrong</source>
+        <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Sort" xml:space="preserve">
         <source>Sort</source>
@@ -2672,6 +2753,10 @@ die das WebDAV-Protokoll verwenden.</target>
         <target>Die gelöschten Dateien werden in den Papierkorb verschoben. Sie können diese wiederherstellen oder unwiederruflich löschen.</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
+      <trans-unit id="The document will be available for viewing by unauthorized users who click on an external link." xml:space="preserve">
+        <source>The document will be available for viewing by unauthorized users who click on an external link.</source>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
       <trans-unit id="The file in the Trash can not be viewed." xml:space="preserve">
         <source>The file in the Trash can not be viewed.</source>
         <target>Die Datei im Papierkorb kann nicht angezeigt werden.</target>
@@ -2692,6 +2777,12 @@ die das WebDAV-Protokoll verwenden.</target>
         <target>Das Element mit dem Namen '%1$@' existiert schon im Ordner '%2$@'.</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
+      <trans-unit id="The link for external&#10;access is copied&#10;to the clipboard" xml:space="preserve">
+        <source>The link for external
+access is copied
+to the clipboard</source>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
       <trans-unit id="The parameters are incorrect." xml:space="preserve">
         <source>The parameters are incorrect.</source>
         <note>No comment provided by engineer.</note>
@@ -2703,6 +2794,10 @@ die das WebDAV-Protokoll verwenden.</target>
       <trans-unit id="The portal address is invalid" xml:space="preserve">
         <source>The portal address is invalid</source>
         <target>Die Portalsdresse ist ungültig</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="The portal is not available" xml:space="preserve">
+        <source>The portal is not available</source>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="The portal name must be between 6 and 50 characters long" xml:space="preserve">
@@ -2808,6 +2903,10 @@ die das WebDAV-Protokoll verwenden.</target>
       <trans-unit id="Unable to get information about the user." xml:space="preserve">
         <source>Unable to get information about the user.</source>
         <target>Es ist nicht möglich Informationen über den Benutzer abzurufen.</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Unauthorized users will not be able to view the document." xml:space="preserve">
+        <source>Unauthorized users will not be able to view the document.</source>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Unexpected response from the service." xml:space="preserve">
@@ -3077,6 +3176,14 @@ dann von jedem anderen Gerät aus abgerufen werden.</target>
         <source>iCloud Drive access</source>
         <note>No comment provided by engineer.</note>
       </trans-unit>
+      <trans-unit id="kDrive" xml:space="preserve">
+        <source>kDrive</source>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="kDrive directory" xml:space="preserve">
+        <source>kDrive directory</source>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
       <trans-unit id="none" xml:space="preserve">
         <source>none</source>
         <target>keine</target>
@@ -3103,6 +3210,10 @@ dann von jedem anderen Gerät aus abgerufen werden.</target>
         <source>photos</source>
         <target>Fotos</target>
         <note>Used in the context: '3 photos'</note>
+      </trans-unit>
+      <trans-unit id="selected" xml:space="preserve">
+        <source>selected</source>
+        <note>Count of seclected rows: count + selected</note>
       </trans-unit>
       <trans-unit id="© Ascensio System SIA %d" xml:space="preserve">
         <source>© Ascensio System SIA %d</source>

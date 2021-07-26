@@ -65,6 +65,7 @@ class ASCSharingAddRightHoldersTableViewDataSourceAndDelegate<T: UITableViewCell
         
         cell.viewModel = viewModel.model
         cell.isSelected = viewModel.selected
+        cell.selectedBackgroundView = UIView()
         
         return cell
     }

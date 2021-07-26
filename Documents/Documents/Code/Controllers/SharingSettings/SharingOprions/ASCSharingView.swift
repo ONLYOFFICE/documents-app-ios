@@ -19,7 +19,7 @@ class ASCSharingView {
     private weak var delegate: ASCSharingViewDelegate?
     
     private lazy var doneBarBtn: UIBarButtonItem = {
-        return UIBarButtonItem(title: NSLocalizedString("Done", comment: ""),style: .done, target: self, action: #selector(onDoneBarBtnTapped))
+        return UIBarButtonItem(title: NSLocalizedString("Close", comment: ""),style: .done, target: self, action: #selector(onDoneBarBtnTapped))
     }()
 
     private lazy var linkBarButtonItem: UIBarButtonItem = {

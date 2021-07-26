@@ -97,7 +97,6 @@ class ASCSharingSettingsVerifyRightHoldersInteractor: ASCSharingSettingsVerifyRi
             ASCOnlyOfficeApi.put(apiRequest, parameters: baseParams + sharesParams) { [weak self] (results, error, response) in
                 if let _ = results as? [[String: Any]] {
                     self?.presenter?.presentData(responseType: .presentApplyingShareSettings(.init()))
-                    self?.doneComplerion()
                 } else if let response = response, let self = self {
                     let errorMessage = ASCOnlyOfficeApi.errorMessage(by: response)
                     log.error(errorMessage)

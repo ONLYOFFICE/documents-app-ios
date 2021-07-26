@@ -145,7 +145,7 @@ class ASCSharingSettingsVerifyRightHoldersViewController: ASCBaseTableViewContro
                 hud?.hide(animated: true, afterDelay: delay)
                 hud = nil
                 DispatchQueue.main.asyncAfter(deadline: .now() + delay) {
-                    self.routeToSharingOptions()
+                    self.routeToParent()
                 }
             } else if let errorMessage = viewModel.error {
                 hud?.hide(animated: false)
@@ -184,8 +184,8 @@ class ASCSharingSettingsVerifyRightHoldersViewController: ASCBaseTableViewContro
         router?.routeToAccessViewController(viewModel: accessViewModel, segue: nil)
     }
     
-    func routeToSharingOptions() {
-        self.navigationController?.dismiss(animated: true)
+    func routeToParent() {
+        router?.routeToParentWithDoneCopmletion(segue: nil)
     }
 }
 

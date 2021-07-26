@@ -165,7 +165,7 @@ class ASCSharingAddRightHoldersViewController: UIViewController, ASCSharingAddRi
         groupsModels = []
         usersTableViewDataSourceAndDelegate.set(models: [])
         groupsTableViewDataSourceAndDelegate.set(models: [])
-        
+        updateSelectDeleselectAllBarBtn()
         sharingAddRightHoldersView?.reset()
         
         dataStore?.clear()
@@ -242,6 +242,17 @@ class ASCSharingAddRightHoldersViewController: UIViewController, ASCSharingAddRi
         }
         
         sharingAddRightHoldersView?.updateTitle(withSelectedCount: countOfSelectedRows)
+        if !usersCurrentlyLoading && !groupsCurrentlyLoading {
+            updateSelectDeleselectAllBarBtn()
+        }
+    }
+    
+    func updateSelectDeleselectAllBarBtn() {
+        if countOfSelectedRows == usersModels.count + groupsModels.count {
+            sharingAddRightHoldersView?.showDeselectBarBtn()
+        } else {
+            sharingAddRightHoldersView?.showSelectBarBtn()
+        }
     }
     
     // MARK: Routing
@@ -291,19 +302,38 @@ extension ASCSharingAddRightHoldersViewController: ASCSharingAddRightHoldersView
             return
         }
         
-        selectAllRows(in: sharingAddRightHoldersView.usersTableView)
-        selectAllRows(in: sharingAddRightHoldersView.groupsTableView)
+        forEachRow(in: sharingAddRightHoldersView.usersTableView, applyAction: selectAction(in:by:))
+        forEachRow(in: sharingAddRightHoldersView.groupsTableView, applyAction: selectAction(in:by:))
     }
     
-    private func selectAllRows(in tableView: UITableView) {
+    func onDeselectAllButtonTapped() {
+        guard let sharingAddRightHoldersView = sharingAddRightHoldersView else {
+            return
+        }
+        
+        forEachRow(in: sharingAddRightHoldersView.usersTableView, applyAction: deselectAction(in:by:))
+        forEachRow(in: sharingAddRightHoldersView.groupsTableView, applyAction: deselectAction(in:by:))
+    }
+    
+    private func forEachRow(in tableView: UITableView, applyAction action: (UITableView, IndexPath) -> Void) {
         for section in 0..<tableView.numberOfSections {
             for row in 0..<tableView.numberOfRows(inSection: section) {
                 let indexPath = IndexPath(row: row, section: section)
-                _ = tableView.delegate?.tableView?(tableView, willSelectRowAt: indexPath)
-                tableView.selectRow(at: indexPath, animated: false, scrollPosition: .none)
-                tableView.delegate?.tableView?(tableView, didSelectRowAt: indexPath)
+                action(tableView, indexPath)
             }
         }
+    }
+    
+    private func selectAction(in tableView: UITableView, by indexPath: IndexPath) {
+        _ = tableView.delegate?.tableView?(tableView, willSelectRowAt: indexPath)
+        tableView.selectRow(at: indexPath, animated: false, scrollPosition: .none)
+        tableView.delegate?.tableView?(tableView, didSelectRowAt: indexPath)
+    }
+    
+    private func deselectAction(in tableView: UITableView, by indexPath: IndexPath) {
+        _ = tableView.delegate?.tableView?(tableView, willDeselectRowAt: indexPath)
+        tableView.deselectRow(at: indexPath, animated: false)
+        tableView.delegate?.tableView?(tableView, didDeselectRowAt: indexPath)
     }
 
 }

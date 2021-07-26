@@ -1376,6 +1376,21 @@ Note: if you forget the passcode, you'll need to delete and reinstall the app. A
         <target>A6 (10,5%1$@ x 14,8%2$@)</target>
         <note>Format info</note>
       </trans-unit>
+      <trans-unit id="Access by external link" xml:space="preserve">
+        <source>Access by external link</source>
+        <target>Access by external link</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Access rights" xml:space="preserve">
+        <source>Access rights</source>
+        <target>Access rights</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Access settings" xml:space="preserve">
+        <source>Access settings</source>
+        <target>Access settings</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
       <trans-unit id="Account name is empty" xml:space="preserve">
         <source>Account name is empty</source>
         <target>Account name is empty</target>
@@ -1390,6 +1405,11 @@ Note: if you forget the passcode, you'll need to delete and reinstall the app. A
         <source>Add files to Favorites for quick access directly from the editor.</source>
         <target>Add files to Favorites for quick access directly from the editor.</target>
         <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Add message" xml:space="preserve">
+        <source>Add message</source>
+        <target>Add message</target>
+        <note>Sharing settings add notification message</note>
       </trans-unit>
       <trans-unit id="Adding to Favorites" xml:space="preserve">
         <source>Adding to Favorites</source>
@@ -1411,10 +1431,20 @@ Note: if you forget the passcode, you'll need to delete and reinstall the app. A
         <target>All Files</target>
         <note>Category title</note>
       </trans-unit>
+      <trans-unit id="Allow access via external link" xml:space="preserve">
+        <source>Allow access via external link</source>
+        <target>Allow access via external link</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
       <trans-unit id="An unexpected error has occurred. Please try again later. Sorry for inconvenience." xml:space="preserve">
         <source>An unexpected error has occurred. Please try again later. Sorry for inconvenience.</source>
         <target>An unexpected error has occurred. Please try again later. Sorry for inconvenience.</target>
         <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Applying" xml:space="preserve">
+        <source>Applying</source>
+        <target>Applying</target>
+        <note>Caption of the process</note>
       </trans-unit>
       <trans-unit id="Are you sure you want to delete the account %@ from this device?" xml:space="preserve">
         <source>Are you sure you want to delete the account %@ from this device?</source>
@@ -1520,6 +1550,11 @@ Note: if you forget the passcode, you'll need to delete and reinstall the app. A
         <source>Collaborate with your team</source>
         <target>Collaborate with your team</target>
         <note>Introduction Step Five - Title</note>
+      </trans-unit>
+      <trans-unit id="Comment" xml:space="preserve">
+        <source>Comment</source>
+        <target>Comment</target>
+        <note>Share status</note>
       </trans-unit>
       <trans-unit id="Common Documents" xml:space="preserve">
         <source>Common Documents</source>
@@ -1734,6 +1769,11 @@ others which use WebDAV protocol.</target>
         <source>Creating</source>
         <target>Creating</target>
         <note>Caption of the process</note>
+      </trans-unit>
+      <trans-unit id="Custom filter" xml:space="preserve">
+        <source>Custom filter</source>
+        <target>Custom filter</target>
+        <note>Share status</note>
       </trans-unit>
       <trans-unit id="Date" xml:space="preserve">
         <source>Date</source>
@@ -2011,6 +2051,11 @@ others which use WebDAV protocol.</target>
         <target>Folders</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
+      <trans-unit id="Form filling" xml:space="preserve">
+        <source>Form filling</source>
+        <target>Form filling</target>
+        <note>Share status</note>
+      </trans-unit>
       <trans-unit id="Full Access" xml:space="preserve">
         <source>Full Access</source>
         <target>Full Access</target>
@@ -2099,6 +2144,13 @@ others which use WebDAV protocol.</target>
       <trans-unit id="Last name is incorrect" xml:space="preserve">
         <source>Last name is incorrect</source>
         <target>Last name is incorrect</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Link copied&#10;to the clipboard" xml:space="preserve">
+        <source>Link copied
+to the clipboard</source>
+        <target>Link copied
+to the clipboard</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Logging in" xml:space="preserve">
@@ -2257,6 +2309,11 @@ others which use WebDAV protocol.</target>
         <target>No search result</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
+      <trans-unit id="No search results" xml:space="preserve">
+        <source>No search results</source>
+        <target>No search results</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
       <trans-unit id="None" xml:space="preserve">
         <source>None</source>
         <target>None</target>
@@ -2267,6 +2324,11 @@ others which use WebDAV protocol.</target>
         <source>Note: removal from your account can not be undone.</source>
         <target>Note: removal from your account can not be undone.</target>
         <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Notify by Email" xml:space="preserve">
+        <source>Notify by Email</source>
+        <target>Notify by Email</target>
+        <note>Sharing settings switcher</note>
       </trans-unit>
       <trans-unit id="OK" xml:space="preserve">
         <source>OK</source>
@@ -2351,7 +2413,7 @@ others which use WebDAV protocol.</target>
       <trans-unit id="Owner" xml:space="preserve">
         <source>Owner</source>
         <target>Owner</target>
-        <note>No comment provided by engineer.</note>
+        <note>Table cell right holder acces text</note>
       </trans-unit>
       <trans-unit id="Password" xml:space="preserve">
         <source>Password</source>
@@ -2508,6 +2570,11 @@ others which use WebDAV protocol.</target>
         <target>Remove from Favorites</target>
         <note>Button title</note>
       </trans-unit>
+      <trans-unit id="Removing" xml:space="preserve">
+        <source>Removing</source>
+        <target>Removing</target>
+        <note>Caption of the process</note>
+      </trans-unit>
       <trans-unit id="Rename" xml:space="preserve">
         <source>Rename</source>
         <target>Rename</target>
@@ -2558,6 +2625,11 @@ others which use WebDAV protocol.</target>
         <target>Saving</target>
         <note>Caption of the processing</note>
       </trans-unit>
+      <trans-unit id="Search" xml:space="preserve">
+        <source>Search</source>
+        <target>Search</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
       <trans-unit id="Select" xml:space="preserve">
         <source>Select</source>
         <target>Select</target>
@@ -2567,6 +2639,11 @@ others which use WebDAV protocol.</target>
       <trans-unit id="Select Photos" xml:space="preserve">
         <source>Select Photos</source>
         <target>Select Photos</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Select all" xml:space="preserve">
+        <source>Select all</source>
+        <target>Select all</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Select another cloud to connect to Nextcloud, ownCloud and others are supported." xml:space="preserve">
@@ -2599,6 +2676,11 @@ others which use WebDAV protocol.</target>
         <target>Selected: %ld</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
+      <trans-unit id="Selecting access rights" xml:space="preserve">
+        <source>Selecting access rights</source>
+        <target>Selecting access rights</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
       <trans-unit id="Sending" xml:space="preserve">
         <source>Sending</source>
         <target>Sending</target>
@@ -2624,6 +2706,11 @@ others which use WebDAV protocol.</target>
         <target>SharePoint directory</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
+      <trans-unit id="Shared access" xml:space="preserve">
+        <source>Shared access</source>
+        <target>Shared access</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
       <trans-unit id="Shared with Me" xml:space="preserve">
         <source>Shared with Me</source>
         <target>Shared with Me</target>
@@ -2638,6 +2725,11 @@ others which use WebDAV protocol.</target>
         <source>Sharing Settings</source>
         <target>Sharing Settings</target>
         <note>Button title</note>
+      </trans-unit>
+      <trans-unit id="Sharing settings" xml:space="preserve">
+        <source>Sharing settings</source>
+        <target>Sharing settings</target>
+        <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Single Sign-on" xml:space="preserve">
         <source>Single Sign-on</source>
@@ -2658,6 +2750,16 @@ others which use WebDAV protocol.</target>
         <source>Slide %1$i of %2$i</source>
         <target>Slide %1$i of %2$i</target>
         <note>Presentation Viewer</note>
+      </trans-unit>
+      <trans-unit id="Somethin wrong" xml:space="preserve">
+        <source>Somethin wrong</source>
+        <target>Somethin wrong</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Something wrong" xml:space="preserve">
+        <source>Something wrong</source>
+        <target>Something wrong</target>
+        <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Sort" xml:space="preserve">
         <source>Sort</source>
@@ -2719,6 +2821,11 @@ others which use WebDAV protocol.</target>
         <target>The deleted files go to the trash. You can either restore or delete them forever.</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
+      <trans-unit id="The document will be available for viewing by unauthorized users who click on an external link." xml:space="preserve">
+        <source>The document will be available for viewing by unauthorized users who click on an external link.</source>
+        <target>The document will be available for viewing by unauthorized users who click on an external link.</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
       <trans-unit id="The file in the Trash can not be viewed." xml:space="preserve">
         <source>The file in the Trash can not be viewed.</source>
         <target>The file in the Trash can not be viewed.</target>
@@ -2739,6 +2846,15 @@ others which use WebDAV protocol.</target>
         <target>The item with the name '%1$@' already exists in the folder '%2$@'.</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
+      <trans-unit id="The link for external&#10;access is copied&#10;to the clipboard" xml:space="preserve">
+        <source>The link for external
+access is copied
+to the clipboard</source>
+        <target>The link for external
+access is copied
+to the clipboard</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
       <trans-unit id="The parameters are incorrect." xml:space="preserve">
         <source>The parameters are incorrect.</source>
         <target>The parameters are incorrect.</target>
@@ -2752,6 +2868,11 @@ others which use WebDAV protocol.</target>
       <trans-unit id="The portal address is invalid" xml:space="preserve">
         <source>The portal address is invalid</source>
         <target>The portal address is invalid</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="The portal is not available" xml:space="preserve">
+        <source>The portal is not available</source>
+        <target>The portal is not available</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="The portal name must be between 6 and 50 characters long" xml:space="preserve">
@@ -2857,6 +2978,11 @@ others which use WebDAV protocol.</target>
       <trans-unit id="Unable to get information about the user." xml:space="preserve">
         <source>Unable to get information about the user.</source>
         <target>Unable to get information about the user.</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Unauthorized users will not be able to view the document." xml:space="preserve">
+        <source>Unauthorized users will not be able to view the document.</source>
+        <target>Unauthorized users will not be able to view the document.</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Unexpected response from the service." xml:space="preserve">
@@ -3130,6 +3256,16 @@ then accessed from any other device.</target>
         <target>iCloud Drive access</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
+      <trans-unit id="kDrive" xml:space="preserve">
+        <source>kDrive</source>
+        <target>kDrive</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="kDrive directory" xml:space="preserve">
+        <source>kDrive directory</source>
+        <target>kDrive directory</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
       <trans-unit id="none" xml:space="preserve">
         <source>none</source>
         <target>none</target>
@@ -3156,6 +3292,11 @@ then accessed from any other device.</target>
         <source>photos</source>
         <target>photos</target>
         <note>Used in the context: '3 photos'</note>
+      </trans-unit>
+      <trans-unit id="selected" xml:space="preserve">
+        <source>selected</source>
+        <target>selected</target>
+        <note>Count of seclected rows: count + selected</note>
       </trans-unit>
       <trans-unit id="© Ascensio System SIA %d" xml:space="preserve">
         <source>© Ascensio System SIA %d</source>

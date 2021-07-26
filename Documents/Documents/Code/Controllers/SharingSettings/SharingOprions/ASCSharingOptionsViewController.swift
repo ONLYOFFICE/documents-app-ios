@@ -233,7 +233,7 @@ extension ASCSharingOptionsViewController: ASCSharingViewDelegate {
             UIPasteboard.general.string = link
             hud = MBProgressHUD.showTopMost()
             hud?.label.numberOfLines = 0
-            hud?.setSuccessState(title: NSLocalizedString("Link copied to the clipboard", comment: ""))
+            hud?.setSuccessState(title: NSLocalizedString("Link copied\nto the clipboard", comment: ""))
             hud?.hide(animated: true, afterDelay: 1)
             hud = nil
         }
@@ -359,7 +359,7 @@ extension ASCSharingOptionsViewController {
                         UIPasteboard.general.string = link
                         hud = MBProgressHUD.showTopMost()
                         hud?.label.numberOfLines = 0
-                        hud?.setSuccessState(title: NSLocalizedString("The link for external access is copied to the clipboard", comment: ""))
+                        hud?.setSuccessState(title: NSLocalizedString("The link for external\naccess is copied\nto the clipboard", comment: ""))
                         hud?.hide(animated: true, afterDelay: 1.3)
                         hud = nil
                     }

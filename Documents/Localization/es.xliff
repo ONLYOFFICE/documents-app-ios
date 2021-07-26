@@ -1359,6 +1359,18 @@ Nota: Si Usted olvida el código de acceso, necesitará eliminar e instalar la a
         <target>A6 (10,5%1$@ x 14,8%2$@)</target>
         <note>Format info</note>
       </trans-unit>
+      <trans-unit id="Access by external link" xml:space="preserve">
+        <source>Access by external link</source>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Access rights" xml:space="preserve">
+        <source>Access rights</source>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Access settings" xml:space="preserve">
+        <source>Access settings</source>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
       <trans-unit id="Account name is empty" xml:space="preserve">
         <source>Account name is empty</source>
         <target>Nombre de cuenta está vacío</target>
@@ -1372,6 +1384,10 @@ Nota: Si Usted olvida el código de acceso, necesitará eliminar e instalar la a
       <trans-unit id="Add files to Favorites for quick access directly from the editor." xml:space="preserve">
         <source>Add files to Favorites for quick access directly from the editor.</source>
         <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Add message" xml:space="preserve">
+        <source>Add message</source>
+        <note>Sharing settings add notification message</note>
       </trans-unit>
       <trans-unit id="Adding to Favorites" xml:space="preserve">
         <source>Adding to Favorites</source>
@@ -1392,10 +1408,18 @@ Nota: Si Usted olvida el código de acceso, necesitará eliminar e instalar la a
         <target>Todos los archivos</target>
         <note>Category title</note>
       </trans-unit>
+      <trans-unit id="Allow access via external link" xml:space="preserve">
+        <source>Allow access via external link</source>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
       <trans-unit id="An unexpected error has occurred. Please try again later. Sorry for inconvenience." xml:space="preserve">
         <source>An unexpected error has occurred. Please try again later. Sorry for inconvenience.</source>
         <target>Se ha producido un error inesperado. Inténtelo de nuevo más tarde. Disculpe las molestias.</target>
         <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Applying" xml:space="preserve">
+        <source>Applying</source>
+        <note>Caption of the process</note>
       </trans-unit>
       <trans-unit id="Are you sure you want to delete the account %@ from this device?" xml:space="preserve">
         <source>Are you sure you want to delete the account %@ from this device?</source>
@@ -1501,6 +1525,10 @@ Nota: Si Usted olvida el código de acceso, necesitará eliminar e instalar la a
         <source>Collaborate with your team</source>
         <target>Colaborar con su equipo</target>
         <note>Introduction Step Five - Title</note>
+      </trans-unit>
+      <trans-unit id="Comment" xml:space="preserve">
+        <source>Comment</source>
+        <note>Share status</note>
       </trans-unit>
       <trans-unit id="Common Documents" xml:space="preserve">
         <source>Common Documents</source>
@@ -1704,6 +1732,10 @@ otros que utilizan el protocolo WebDAV.</target>
         <source>Creating</source>
         <target>Creando</target>
         <note>Caption of the process</note>
+      </trans-unit>
+      <trans-unit id="Custom filter" xml:space="preserve">
+        <source>Custom filter</source>
+        <note>Share status</note>
       </trans-unit>
       <trans-unit id="Date" xml:space="preserve">
         <source>Date</source>
@@ -1973,6 +2005,10 @@ otros que utilizan el protocolo WebDAV.</target>
         <target>Carpetas</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
+      <trans-unit id="Form filling" xml:space="preserve">
+        <source>Form filling</source>
+        <note>Share status</note>
+      </trans-unit>
       <trans-unit id="Full Access" xml:space="preserve">
         <source>Full Access</source>
         <target>Acceso completo</target>
@@ -2057,6 +2093,11 @@ otros que utilizan el protocolo WebDAV.</target>
       </trans-unit>
       <trans-unit id="Last name is incorrect" xml:space="preserve">
         <source>Last name is incorrect</source>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Link copied&#10;to the clipboard" xml:space="preserve">
+        <source>Link copied
+to the clipboard</source>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Logging in" xml:space="preserve">
@@ -2213,6 +2254,10 @@ otros que utilizan el protocolo WebDAV.</target>
         <target>No hay resultados de búsqueda</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
+      <trans-unit id="No search results" xml:space="preserve">
+        <source>No search results</source>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
       <trans-unit id="None" xml:space="preserve">
         <source>None</source>
         <target>Ninguno</target>
@@ -2223,6 +2268,10 @@ otros que utilizan el protocolo WebDAV.</target>
         <source>Note: removal from your account can not be undone.</source>
         <target>Nota: eliminación de su cuenta no se puede deshacer.</target>
         <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Notify by Email" xml:space="preserve">
+        <source>Notify by Email</source>
+        <note>Sharing settings switcher</note>
       </trans-unit>
       <trans-unit id="OK" xml:space="preserve">
         <source>OK</source>
@@ -2306,7 +2355,7 @@ otros que utilizan el protocolo WebDAV.</target>
       <trans-unit id="Owner" xml:space="preserve">
         <source>Owner</source>
         <target>Propietario</target>
-        <note>No comment provided by engineer.</note>
+        <note>Table cell right holder acces text</note>
       </trans-unit>
       <trans-unit id="Password" xml:space="preserve">
         <source>Password</source>
@@ -2455,6 +2504,10 @@ Si el problema persiste, póngase en contacto con nosotros y mencione este códi
         <source>Remove from Favorites</source>
         <note>Button title</note>
       </trans-unit>
+      <trans-unit id="Removing" xml:space="preserve">
+        <source>Removing</source>
+        <note>Caption of the process</note>
+      </trans-unit>
       <trans-unit id="Rename" xml:space="preserve">
         <source>Rename</source>
         <target>Renombrar</target>
@@ -2505,6 +2558,10 @@ Si el problema persiste, póngase en contacto con nosotros y mencione este códi
         <target>Guardando</target>
         <note>Caption of the processing</note>
       </trans-unit>
+      <trans-unit id="Search" xml:space="preserve">
+        <source>Search</source>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
       <trans-unit id="Select" xml:space="preserve">
         <source>Select</source>
         <target>Seleccionar </target>
@@ -2514,6 +2571,10 @@ Si el problema persiste, póngase en contacto con nosotros y mencione este códi
       <trans-unit id="Select Photos" xml:space="preserve">
         <source>Select Photos</source>
         <target>Seleccionar fotos</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Select all" xml:space="preserve">
+        <source>Select all</source>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Select another cloud to connect to Nextcloud, ownCloud and others are supported." xml:space="preserve">
@@ -2546,6 +2607,10 @@ Si el problema persiste, póngase en contacto con nosotros y mencione este códi
         <target>Seleccionado: %ld</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
+      <trans-unit id="Selecting access rights" xml:space="preserve">
+        <source>Selecting access rights</source>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
       <trans-unit id="Sending" xml:space="preserve">
         <source>Sending</source>
         <note>Caption of the process</note>
@@ -2568,6 +2633,10 @@ Si el problema persiste, póngase en contacto con nosotros y mencione este códi
         <target>Directorio de SharePoint</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
+      <trans-unit id="Shared access" xml:space="preserve">
+        <source>Shared access</source>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
       <trans-unit id="Shared with Me" xml:space="preserve">
         <source>Shared with Me</source>
         <target>Compartido para mi</target>
@@ -2581,6 +2650,10 @@ Si el problema persiste, póngase en contacto con nosotros y mencione este códi
       <trans-unit id="Sharing Settings" xml:space="preserve">
         <source>Sharing Settings</source>
         <note>Button title</note>
+      </trans-unit>
+      <trans-unit id="Sharing settings" xml:space="preserve">
+        <source>Sharing settings</source>
+        <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Single Sign-on" xml:space="preserve">
         <source>Single Sign-on</source>
@@ -2601,6 +2674,14 @@ Si el problema persiste, póngase en contacto con nosotros y mencione este códi
         <source>Slide %1$i of %2$i</source>
         <target>Diapositiva %1$i de %2$i</target>
         <note>Presentation Viewer</note>
+      </trans-unit>
+      <trans-unit id="Somethin wrong" xml:space="preserve">
+        <source>Somethin wrong</source>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Something wrong" xml:space="preserve">
+        <source>Something wrong</source>
+        <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Sort" xml:space="preserve">
         <source>Sort</source>
@@ -2661,6 +2742,10 @@ Si el problema persiste, póngase en contacto con nosotros y mencione este códi
         <target>Los archivos eliminados serán enviados a la papelera. Puede restaurarlos o eliminarlos para siempre.</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
+      <trans-unit id="The document will be available for viewing by unauthorized users who click on an external link." xml:space="preserve">
+        <source>The document will be available for viewing by unauthorized users who click on an external link.</source>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
       <trans-unit id="The file in the Trash can not be viewed." xml:space="preserve">
         <source>The file in the Trash can not be viewed.</source>
         <target>No se puede visualizar el archivo en la Basura.</target>
@@ -2681,6 +2766,12 @@ Si el problema persiste, póngase en contacto con nosotros y mencione este códi
         <target>El objeto con el nombre '%1$@' ya existe en la carpeta '%2$@'.</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
+      <trans-unit id="The link for external&#10;access is copied&#10;to the clipboard" xml:space="preserve">
+        <source>The link for external
+access is copied
+to the clipboard</source>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
       <trans-unit id="The parameters are incorrect." xml:space="preserve">
         <source>The parameters are incorrect.</source>
         <note>No comment provided by engineer.</note>
@@ -2692,6 +2783,10 @@ Si el problema persiste, póngase en contacto con nosotros y mencione este códi
       <trans-unit id="The portal address is invalid" xml:space="preserve">
         <source>The portal address is invalid</source>
         <target>La dirección de portal es inválida</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="The portal is not available" xml:space="preserve">
+        <source>The portal is not available</source>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="The portal name must be between 6 and 50 characters long" xml:space="preserve">
@@ -2797,6 +2892,10 @@ Si el problema persiste, póngase en contacto con nosotros y mencione este códi
       <trans-unit id="Unable to get information about the user." xml:space="preserve">
         <source>Unable to get information about the user.</source>
         <target>Incapaz de obtener información sobre el usuario.</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Unauthorized users will not be able to view the document." xml:space="preserve">
+        <source>Unauthorized users will not be able to view the document.</source>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Unexpected response from the service." xml:space="preserve">
@@ -3065,6 +3164,14 @@ Los archivos creados se puede cargar al portal en línea más tarde y luego acce
         <source>iCloud Drive access</source>
         <note>No comment provided by engineer.</note>
       </trans-unit>
+      <trans-unit id="kDrive" xml:space="preserve">
+        <source>kDrive</source>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="kDrive directory" xml:space="preserve">
+        <source>kDrive directory</source>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
       <trans-unit id="none" xml:space="preserve">
         <source>none</source>
         <target>ninguno</target>
@@ -3091,6 +3198,10 @@ Los archivos creados se puede cargar al portal en línea más tarde y luego acce
         <source>photos</source>
         <target>fotos</target>
         <note>Used in the context: '3 photos'</note>
+      </trans-unit>
+      <trans-unit id="selected" xml:space="preserve">
+        <source>selected</source>
+        <note>Count of seclected rows: count + selected</note>
       </trans-unit>
       <trans-unit id="© Ascensio System SIA %d" xml:space="preserve">
         <source>© Ascensio System SIA %d</source>

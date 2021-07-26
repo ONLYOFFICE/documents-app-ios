@@ -49,7 +49,6 @@ class ASCSharingAddRightHoldersView {
     
     // MARK: - Navigation bar props
     let title = NSLocalizedString("Shared access", comment: "")
-    let baseSubtitlePart = NSLocalizedString("selected", comment: "Count of seclected rows: count + selected")
     
     private lazy var cancelBarBtn: UIBarButtonItem = {
         UIBarButtonItem(title: NSLocalizedString("Cancel", comment: ""), style: .plain, target: self, action: #selector(onCancelButtonTapped))
@@ -163,7 +162,10 @@ class ASCSharingAddRightHoldersView {
     }
     
     func updateTitle(withSelectedCount selected: Int) {
-        navigationItem.setTitle(title, subtitle: "\(selected) \(baseSubtitlePart)")
+        navigationItem.setTitle(title,
+                                subtitle: String.localizedStringWithFormat(
+                                    NSLocalizedString("%d selected", comment:"Count of seclected rows: count + selected"), selected)
+        )
     }
     
     public func showEmptyView(_ show: Bool) {
@@ -408,7 +410,7 @@ extension ASCSharingAddRightHoldersView {
     
     private func makeNextBarBtn() -> UIBarButtonItem {
         let nextBtn = ASCButtonStyle()
-        nextBtn.layer.cornerRadius = 12
+        nextBtn.layer.cornerRadius = 13
         nextBtn.setTitle(NSLocalizedString("Next", comment: "").uppercased(), for: .normal)
         nextBtn.contentEdgeInsets = UIEdgeInsets(top: 3, left: 15, bottom: 3, right: 15)
         nextBtn.addTarget(self, action: #selector(onNextButtonTapped), for: .touchUpInside)

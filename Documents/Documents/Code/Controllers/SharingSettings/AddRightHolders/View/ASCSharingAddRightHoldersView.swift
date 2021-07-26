@@ -473,10 +473,12 @@ extension ASCSharingAddRightHoldersView {
     }
     
     private func showTableLoadingActivityIndicator(tableView: UITableView, activityIndicator loadingTableActivityIndicator: UIActivityIndicatorView) {
+        let centerYOffset = (navigationController?.navigationBar.height ?? 0) + searchController.searchBar.height
         loadingTableActivityIndicator.translatesAutoresizingMaskIntoConstraints = false
         loadingTableActivityIndicator.startAnimating()
         tableView.addSubview(loadingTableActivityIndicator)
-        loadingTableActivityIndicator.anchorCenterSuperview()
+        loadingTableActivityIndicator.anchorCenterXToSuperview()
+        loadingTableActivityIndicator.centerYAnchor.constraint(equalTo: tableView.centerYAnchor, constant: -centerYOffset).isActive = true
     }
     
     private func hideTableLoadingActivityIndicator(activityIndicator loadingTableActivityIndicator: UIActivityIndicatorView) {

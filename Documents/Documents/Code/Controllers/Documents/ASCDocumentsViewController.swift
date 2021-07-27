@@ -506,7 +506,7 @@ class ASCDocumentsViewController: ASCBaseTableViewController, UIGestureRecognize
                     title: NSLocalizedString("Sort", comment: "Button title"),
                     style: .default,
                     handler: { [unowned self] (action) in
-                        self.onSortAction()
+                        self.onSortAction(sender)
                     })
             )
             
@@ -527,36 +527,43 @@ class ASCDocumentsViewController: ASCBaseTableViewController, UIGestureRecognize
         setEditMode(false)
     }
     
-    @objc func onSortAction() {
-        var sortType: ASCDocumentSortType = .dateandtime
-        var sortAscending = false
-        var sortStates: [ASCDocumentSortStateType] = defaultsSortTypes.map { ($0, $0 == sortType) }
-        
-        if let sortInfo = UserDefaults.standard.value(forKey: ASCConstants.SettingsKeys.sortDocuments) as? [String: Any] {
-            if let sortBy = sortInfo["type"] as? String, !sortBy.isEmpty {
-                sortType = ASCDocumentSortType(sortBy)
-                sortStates = defaultsSortTypes.map { ($0, $0 == sortType) }
+    @objc func onSortAction(_ sender: Any) {
+        if #available(iOS 14.0, *) {
+            if let button = sender as? UIButton {
+                button.showsMenuAsPrimaryAction = true
+                button.menu = sortSelectMenu(for: button)
             }
-
-            if let sortOrder = sortInfo["order"] as? String, !sortOrder.isEmpty {
-                sortAscending = sortOrder == "ascending"
+        } else {
+            var sortType: ASCDocumentSortType = .dateandtime
+            var sortAscending = false
+            var sortStates: [ASCDocumentSortStateType] = defaultsSortTypes.map { ($0, $0 == sortType) }
+            
+            if let sortInfo = UserDefaults.standard.value(forKey: ASCConstants.SettingsKeys.sortDocuments) as? [String: Any] {
+                if let sortBy = sortInfo["type"] as? String, !sortBy.isEmpty {
+                    sortType = ASCDocumentSortType(sortBy)
+                    sortStates = defaultsSortTypes.map { ($0, $0 == sortType) }
+                }
+                
+                if let sortOrder = sortInfo["order"] as? String, !sortOrder.isEmpty {
+                    sortAscending = sortOrder == "ascending"
+                }
             }
+            
+            if ![.deviceDocuments, .deviceTrash].contains(folder?.rootFolderType) {
+                sortStates.append((.author, sortType == .author))
+            }
+            
+            navigator.navigate(to: .sort(types: sortStates, ascending: sortAscending, complation: { type, ascending in
+                if (sortType != type) || (ascending != sortAscending) {
+                    let sortInfo = [
+                        "type": type.rawValue,
+                        "order": ascending ? "ascending" : "descending"
+                    ]
+                    
+                    UserDefaults.standard.set(sortInfo, forKey: ASCConstants.SettingsKeys.sortDocuments)
+                }
+            }))
         }
-
-        if ![.deviceDocuments, .deviceTrash].contains(folder?.rootFolderType) {
-            sortStates.append((.author, sortType == .author))
-        }
-        
-        navigator.navigate(to: .sort(types: sortStates, ascending: sortAscending, complation: { type, ascending in
-            if (sortType != type) || (ascending != sortAscending) {
-                let sortInfo = [
-                    "type": type.rawValue,
-                    "order": ascending ? "ascending" : "descending"
-                ]
-
-                UserDefaults.standard.set(sortInfo, forKey: ASCConstants.SettingsKeys.sortDocuments)
-            }
-        }))
     }
     
     @objc func onSelectAction() {

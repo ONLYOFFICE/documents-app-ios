@@ -45,7 +45,7 @@ enum ASCSharingSettingsVerifyRightHolders {
             }
             
             struct ShareItemsResponse {
-                var items: [ASCShareInfo]
+                var items: [OnlyofficeShare]
             }
             
             struct ApplyingShareSettingsResponse {

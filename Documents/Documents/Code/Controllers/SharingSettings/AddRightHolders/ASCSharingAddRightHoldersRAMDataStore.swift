@@ -14,14 +14,14 @@ protocol ASCSharingAddRightHoldersDataStore {
     var currentUser: ASCUser? { get set }
     var doneComplerion: () -> Void { get set }
     
-    var sharedInfoItems: [ASCShareInfo] { get set }
-    var itemsForSharingAdd: [ASCShareInfo] { get }
-    var itemsForSharingRemove: [ASCShareInfo] { get }
+    var sharedInfoItems: [OnlyofficeShare] { get set }
+    var itemsForSharingAdd: [OnlyofficeShare] { get }
+    var itemsForSharingRemove: [OnlyofficeShare] { get }
     var users: [ASCUser] { get set }
     var groups: [ASCGroup] { get set }
     
-    func add(shareInfo: ASCShareInfo)
-    func remove(shareInfo: ASCShareInfo)
+    func add(shareInfo: OnlyofficeShare)
+    func remove(shareInfo: OnlyofficeShare)
     
     func clear()
 }
@@ -33,15 +33,15 @@ class ASCSharingAddRightHoldersRAMDataStore: ASCSharingAddRightHoldersDataStore 
     var currentUser: ASCUser?
     var doneComplerion: () -> Void = {}
     
-    var sharedInfoItems: [ASCShareInfo] = []
-    private(set) var itemsForSharingAdd: [ASCShareInfo] = []
-    private(set) var itemsForSharingRemove: [ASCShareInfo] = []
+    var sharedInfoItems: [OnlyofficeShare] = []
+    private(set) var itemsForSharingAdd: [OnlyofficeShare] = []
+    private(set) var itemsForSharingRemove: [OnlyofficeShare] = []
     
     var users: [ASCUser] = []
     var groups: [ASCGroup] = []
     
     /// add to itemsForSharingAdd if do not exist in sharedInfoItems and remove from itemsForSharingRemove if exist there
-    func add(shareInfo: ASCShareInfo) {
+    func add(shareInfo: OnlyofficeShare) {
         
         if findShareInfo(byShareInfo: shareInfo, in: itemsForSharingRemove) != nil {
             remove(shareInfo: shareInfo, from: &itemsForSharingRemove)
@@ -55,7 +55,7 @@ class ASCSharingAddRightHoldersRAMDataStore: ASCSharingAddRightHoldersDataStore 
     }
     
     /// add to itemsForSharingRemove if exist in itemsForSharingAdd  and remove from itemsForSharingAdd if exist there
-    func remove(shareInfo: ASCShareInfo) {
+    func remove(shareInfo: OnlyofficeShare) {
         
         if findShareInfo(byShareInfo: shareInfo, in: itemsForSharingAdd) != nil {
             remove(shareInfo: shareInfo, from: &itemsForSharingAdd)
@@ -77,8 +77,8 @@ class ASCSharingAddRightHoldersRAMDataStore: ASCSharingAddRightHoldersDataStore 
         groups = []
     }
     
-    private func findShareInfo(byShareInfo shareInfo: ASCShareInfo, in store: [ASCShareInfo]) -> ASCShareInfo? {
-        var sharedInfo: ASCShareInfo?
+    private func findShareInfo(byShareInfo shareInfo: OnlyofficeShare, in store: [OnlyofficeShare]) -> OnlyofficeShare? {
+        var sharedInfo: OnlyofficeShare?
         
         guard let entityId: String = shareInfo.user?.userId ?? shareInfo.group?.id else { return nil }
         
@@ -92,7 +92,7 @@ class ASCSharingAddRightHoldersRAMDataStore: ASCSharingAddRightHoldersDataStore 
         return sharedInfo
     }
     
-    private func remove(shareInfo: ASCShareInfo, from store: inout [ASCShareInfo]) {
+    private func remove(shareInfo: OnlyofficeShare, from store: inout [OnlyofficeShare]) {
         guard let entityId: String = shareInfo.user?.userId ?? shareInfo.group?.id else { return }
         
         store.removeAll { item in

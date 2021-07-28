@@ -18,7 +18,7 @@ protocol ASCSharingOptionsDataStore {
     var entity: ASCEntity? { get }
     var entityOwner: ASCUser? { get }
     var currentUser: ASCUser? { get }
-    var sharedInfoItems: [ASCShareInfo] { get }
+    var sharedInfoItems: [OnlyofficeShare] { get }
 }
 
 class ASCSharingOptionsInteractor: ASCSharingOptionsBusinessLogic, ASCSharingOptionsDataStore {
@@ -29,7 +29,7 @@ class ASCSharingOptionsInteractor: ASCSharingOptionsBusinessLogic, ASCSharingOpt
     var entity: ASCEntity?
     var entityOwner: ASCUser?
     var currentUser: ASCUser?
-    var sharedInfoItems: [ASCShareInfo] = []
+    var sharedInfoItems: [OnlyofficeShare] = []
     
     // MARK: - ASCSharingOptionsBusinessLogic
     var presenter: ASCSharingOptionsPresentationLogic?
@@ -77,39 +77,18 @@ class ASCSharingOptionsInteractor: ASCSharingOptionsBusinessLogic, ASCSharingOpt
                                     .init(sharedInfoItems: [], currentUser: currentUser, internalLink: internalLink, externalLink: nil)))
             return
         }
-
-        ASCOnlyOfficeApi.get(apiRequest) { (results, error, response) in
+        
+        OnlyofficeApiClient.request(apiRequest) { response, error in
             var exteralLink: ASCSharingOprionsExternalLink?
-            if let results = results as? [[String: Any]] {
-                self.sharedInfoItems = []
-                for item in results {
-                    var sharedItem = ASCShareInfo()
-                    
-                    sharedItem.access = ASCShareAccess(item["access"] as? Int ?? 0)
-                    sharedItem.locked = item["isLocked"] as? Bool ?? false
-                    sharedItem.owner = item["isOwner"] as? Bool ?? false
-
-                    if let sharedTo = item["sharedTo"] as? [String: Any] {
-                        
-                        /// External link
-                        let shareLink = sharedTo["shareLink"] as? String
-                        let shareId = sharedTo["id"] as? String
-                        if shareLink != nil && shareId != nil {
-                            exteralLink = .init(id: shareId!, link: shareLink!, isLocked: sharedItem.locked, access: sharedItem.access)
-                            continue
-                        }
-                        
-                        if let _ = sharedTo["userName"] {
-                            sharedItem.user = ASCUser(JSON: sharedTo)
-                            if sharedItem.owner {
-                                self.entityOwner = sharedItem.user
-                            }
-                        } else if let _ = sharedTo["name"] {
-                            sharedItem.group = ASCGroup(JSON: sharedTo)
-                        }
-                        self.sharedInfoItems.append(sharedItem)
-                    }
+            if let sharedItems = response?.result {
+                self.sharedInfoItems = sharedItems.filter({ $0.user != nil || $0.group != nil})
+                if let linkItem = sharedItems.first(where: { $0.link != nil }),
+                   let link = linkItem.link,
+                   let shareId = linkItem.sharedTo?["id"] as? String
+                {
+                    exteralLink = .init(id: shareId, link: link, isLocked: linkItem.locked, access: linkItem.access)
                 }
+                
             }
             
             self.presenter?.presentData(response: .presentRightHolders(.init(sharedInfoItems: self.sharedInfoItems,
@@ -117,6 +96,7 @@ class ASCSharingOptionsInteractor: ASCSharingOptionsBusinessLogic, ASCSharingOpt
                                                                              internalLink: internalLink,
                                                                              externalLink: exteralLink)))
         }
+
     }
     
     private func changeRightHolderAccess(changeRightHolderAccessRequest: ASCSharingOptions.Model.Request.ChangeRightHolderAccessRequest) {
@@ -127,16 +107,16 @@ class ASCSharingOptionsInteractor: ASCSharingOptionsBusinessLogic, ASCSharingOpt
         
         guard let request = apiWorker.makeApiRequest(entity: entity) else { return }
         
-        let baseParams: Parameters = ["notify": "false"]
+        let shareRequestModel = OnlyofficeShareRequestModel()
+        shareRequestModel.notify = false
+        shareRequestModel.share = apiWorker.convertToParams(items: [(rightHolder.id, access)])
         
-        let sharesParams = apiWorker.convertToParams(items: [(rightHolder.id, access)])
-        
-        ASCOnlyOfficeApi.put(request, parameters: baseParams + sharesParams) { [weak self] (results, error, response) in
-            if let _ = results as? [[String: Any]] {
+        OnlyofficeApiClient.request(request, shareRequestModel.toJSON()) { [weak self] _, error in
+            if error == nil {
                 rightHolder.access = access
                 self?.presenter?.presentData(response: .presentChangeRightHolderAccess(.init(rightHolder: rightHolder, error: nil)))
-            } else if let response = response {
-                let errorMessage = ASCOnlyOfficeApi.errorMessage(by: response)
+            } else {
+                let errorMessage = error?.localizedDescription
                 self?.presenter?.presentData(response: .presentChangeRightHolderAccess(.init(rightHolder: rightHolder, error: errorMessage)))
             }
         }
@@ -147,25 +127,24 @@ class ASCSharingOptionsInteractor: ASCSharingOptionsBusinessLogic, ASCSharingOpt
         let entity = removeRightHolderAccessRequest.entity
         let rightHolder = removeRightHolderAccessRequest.rightHolder
         
-        guard let request = apiWorker.makeApiRequest(entity: entity) else { return }
-        
-        let baseParams: Parameters = ["notify": "false"]
-        
-        let sharesParams = apiWorker.convertToParams(items: [(rightHolder.id, .none)])
         guard let sharedItemIndex = sharedInfoItems.firstIndex(where: { $0.user?.userId == rightHolder.id || $0.group?.id == rightHolder.id }) else { return }
         let sharedItem = sharedInfoItems[sharedItemIndex]
-        
         guard !sharedItem.locked else { return }
         
-        ASCOnlyOfficeApi.put(request, parameters: baseParams + sharesParams) { [weak self] (results, error, response) in
-            if let _ = results as? [[String: Any]] {
+        guard let request = apiWorker.makeApiRequest(entity: entity) else { return }
+        let shareRequestModel = OnlyofficeShareRequestModel()
+        shareRequestModel.notify = false
+        shareRequestModel.share = apiWorker.convertToParams(items: [(rightHolder.id, .none)])
+        
+        OnlyofficeApiClient.request(request, shareRequestModel.toJSON()) { [weak self] _, error in
+            if error == nil {
                 self?.sharedInfoItems.remove(at: sharedItemIndex)
                 self?.presenter?.presentData(response: .presentRemoveRightHolderAccess(.init(indexPath: removeRightHolderAccessRequest.indexPath,
                                                                                              rightHolder: rightHolder,
                                                                                              rightHolderShareInfo: sharedItem,
                                                                                              error: nil)))
-            } else if let response = response {
-                let errorMessage = ASCOnlyOfficeApi.errorMessage(by: response)
+            } else  {
+                let errorMessage = error?.localizedDescription
                 self?.presenter?.presentData(response: .presentRemoveRightHolderAccess(.init(indexPath: removeRightHolderAccessRequest.indexPath,
                                                                                              rightHolder: rightHolder,
                                                                                              rightHolderShareInfo: sharedItem,

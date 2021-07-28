@@ -68,7 +68,7 @@ class ASCSharingRightHolderTableViewCell: UITableViewCell, ASCReusedIdentifierPr
         
         if let avatarUrlStr = viewModel.avatarUrl,
            !avatarUrlStr.contains("/skins/default/images/default_user_photo_size_"),
-           let avatarUrl = ASCOnlyOfficeApi.absoluteUrl(from: URL(string: avatarUrlStr))
+           let avatarUrl = OnlyofficeApiClient.absoluteUrl(from: URL(string: avatarUrlStr))
         {
             avatar.kf.indicatorType = .activity
             avatar.kf.apiSetImage(with: avatarUrl,

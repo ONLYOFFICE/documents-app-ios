@@ -9,13 +9,19 @@
 import Foundation
 import ObjectMapper
 
-class OnlyofficeShare: Mappable {
+struct OnlyofficeShare: Mappable {
+    
     var access: ASCShareAccess = .none
     var sharedTo: [String : Any]?
     var locked: Bool = false
     var owner: Bool = false
     
+    private var innerUser: ASCUser?
+    private var innerGroup: ASCGroup?
+    
     var user: ASCUser? {
+        guard innerUser == nil else { return innerUser }
+        
         guard
             let sharedTo = sharedTo,
             link == nil,                 // Mark if not link
@@ -26,6 +32,8 @@ class OnlyofficeShare: Mappable {
     }
     
     var group: ASCGroup? {
+        guard innerGroup == nil else { return innerGroup }
+        
         guard
             let sharedTo = sharedTo,
             link == nil,                // Mark if not link
@@ -43,15 +51,29 @@ class OnlyofficeShare: Mappable {
         return sharedTo["shareLink"] as? String
     }
     
-    init() {
-        //
+    private mutating func setInnerUser(user: ASCUser) {
+        
     }
     
-    required init?(map: Map) {
-        //
+    init(access: ASCShareAccess, user: ASCUser) {
+        self.access = access
+        self.innerUser = user
+    }
+    
+    init(access: ASCShareAccess, group: ASCGroup) {
+        self.access = access
+        self.innerGroup = group
+    }
+    
+    init() {
+        
+    }
+    
+    init?(map: Map) {
+        
     }
 
-    func mapping(map: Map) {
+    mutating func mapping(map: Map) {
         access      <- (map["access"], EnumTransform())
         sharedTo    <- map["sharedTo"]
         locked      <- map["isLocked"]

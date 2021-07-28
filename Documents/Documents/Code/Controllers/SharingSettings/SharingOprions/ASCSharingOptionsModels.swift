@@ -46,7 +46,7 @@ enum ASCSharingOptions {
             }
             
             struct RightHoldersResponse {
-                var sharedInfoItems: [ASCShareInfo]
+                var sharedInfoItems: [OnlyofficeShare]
                 var currentUser: ASCUser?
                 var internalLink: String?
                 var externalLink: ASCSharingOprionsExternalLink?
@@ -60,7 +60,7 @@ enum ASCSharingOptions {
             struct RemoveRightHolderAccessResponse {
                 var indexPath: IndexPath
                 var rightHolder: ASCSharingRightHolder
-                var rightHolderShareInfo: ASCShareInfo
+                var rightHolderShareInfo: OnlyofficeShare
                 var error: ErrorMessage?
             }
             

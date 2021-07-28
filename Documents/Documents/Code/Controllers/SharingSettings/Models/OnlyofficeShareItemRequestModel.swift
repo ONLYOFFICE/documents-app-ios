@@ -5,11 +5,10 @@
 //  Created by Alexander Yuzhin on 17.06.2021.
 //  Copyright © 2021 Ascensio System SIA. All rights reserved.
 //
-
 import Foundation
 import ObjectMapper
 
-class OnlyofficeShareItemRequest: Mappable {
+class OnlyofficeShareItemRequestModel: Mappable {
     var shareTo: String?
     var access: ASCShareAccess = .none
     
@@ -31,10 +30,10 @@ class OnlyofficeShareItemRequest: Mappable {
     }
 }
     
-class OnlyofficeShareRequest: Mappable {
+class OnlyofficeShareRequestModel: Mappable {
     var notify: Bool = false
     var sharingMessage: String?
-    var share: [OnlyofficeShareItemRequest]?
+    var share: [OnlyofficeShareItemRequestModel]?
     
     init() { }
     

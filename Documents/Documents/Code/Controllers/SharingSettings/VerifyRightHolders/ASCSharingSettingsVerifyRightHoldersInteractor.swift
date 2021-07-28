@@ -17,10 +17,12 @@ protocol ASCSharingSettingsVerifyRightHoldersDataStore {
     var entity: ASCEntity? { get set }
     var doneComplerion: () -> Void { get set }
     
-    var sharedInfoItems: [ASCShareInfo] { get set }
-    var itemsForSharingAdd: [ASCShareInfo] { get set }
-    var itemsForSharingRemove: [ASCShareInfo] { get set }
-    var itemsForSharedAccessChange: [ASCShareInfo] { get }
+    var sharedInfoItems: [OnlyofficeShare] { get set }
+    var itemsForSharingAdd: [OnlyofficeShare] { get set }
+    var itemsForSharingRemove: [OnlyofficeShare] { get set }
+    var itemsForSharedAccessChange: [OnlyofficeShare] { get }
+    
+    func clearData() -> Void
 }
 
 class ASCSharingSettingsVerifyRightHoldersInteractor: ASCSharingSettingsVerifyRightHoldersBusinessLogic, ASCSharingSettingsVerifyRightHoldersDataStore {
@@ -35,14 +37,14 @@ class ASCSharingSettingsVerifyRightHoldersInteractor: ASCSharingSettingsVerifyRi
     var doneComplerion: () -> Void = {}
     
     
-    var sharedInfoItems: [ASCShareInfo] = []
-    var itemsForSharingAdd: [ASCShareInfo] = []
+    var sharedInfoItems: [OnlyofficeShare] = []
+    var itemsForSharingAdd: [OnlyofficeShare] = []
     
     /// property for remove shared items
-    var itemsForSharingRemove: [ASCShareInfo] = []
+    var itemsForSharingRemove: [OnlyofficeShare] = []
     
     /// property for changing access in shared items
-    private(set) var itemsForSharedAccessChange: [ASCShareInfo] = []
+    private(set) var itemsForSharedAccessChange: [OnlyofficeShare] = []
     
     // MARK: - other vars
     private var accessProvider: ASCSharingSettingsAccessProvider = ASCSharingSettingsAccessDefaultProvider()
@@ -52,6 +54,15 @@ class ASCSharingSettingsVerifyRightHoldersInteractor: ASCSharingSettingsVerifyRi
     
     init(apiWorker: ASCShareSettingsAPIWorkerProtocol) {
         self.apiWorker = apiWorker
+    }
+    
+    func clearData() {
+        entity = nil
+        doneComplerion = {}
+        sharedInfoItems = []
+        itemsForSharingAdd = []
+        itemsForSharingRemove = []
+        itemsForSharedAccessChange = []
     }
     
     func makeRequest(requestType: ASCSharingSettingsVerifyRightHolders.Model.Request.RequestType) {
@@ -80,33 +91,27 @@ class ASCSharingSettingsVerifyRightHoldersInteractor: ASCSharingSettingsVerifyRi
                 return
             }
             
-            guard let apiRequest: String = apiWorker.makeApiRequest(entity: entity) else {
+            guard let apiRequest = apiWorker.makeApiRequest(entity: entity) else {
                 log.error("Couldn't make an api request on entity")
                 presenter?.presentData(responseType: .presentApplyingShareSettings(.init(error: NSLocalizedString("Something wrong", comment: ""))))
                 return
             }
             
-            let baseParams: Parameters = [
-                "notify": request.notify ? "true" : "false",
-                "sharingMessage": request.notifyMessage ?? ""
-            ]
+            let itemsForRequest = (itemsForSharingAdd + itemsForSharingRemove + itemsForSharedAccessChange).filter({ !$0.locked })
+            let shareRequestModel = OnlyofficeShareRequestModel()
+            shareRequestModel.notify = request.notify ? true : false
+            shareRequestModel.sharingMessage = request.notifyMessage ?? ""
+            shareRequestModel.share = apiWorker.convertToParams(shareItems: itemsForRequest)
             
-            let itemsForRequest = (itemsForSharingAdd + itemsForSharingRemove).filter({ !$0.locked })
-            let sharesParams = apiWorker.convertToParams(shareItems: itemsForRequest)
-            
-            ASCOnlyOfficeApi.put(apiRequest, parameters: baseParams + sharesParams) { [weak self] (results, error, response) in
-                if let _ = results as? [[String: Any]] {
+            OnlyofficeApiClient.request(apiRequest, shareRequestModel.toJSON()) { [weak self] _, error in
+                if error == nil {
                     self?.presenter?.presentData(responseType: .presentApplyingShareSettings(.init()))
-                } else if let response = response, let self = self {
-                    let errorMessage = ASCOnlyOfficeApi.errorMessage(by: response)
-                    log.error(errorMessage)
-                    self.presenter?.presentData(responseType: .presentApplyingShareSettings(.init(error: errorMessage)))
                 } else {
-                    log.error("unexpected conditional branching")
-                    self?.presenter?.presentData(responseType: .presentApplyingShareSettings(.init(error: NSLocalizedString("Something wrong", comment: ""))))
+                    let errorMessage = error?.localizedDescription
+                    log.error(errorMessage ?? "")
+                    self?.presenter?.presentData(responseType: .presentApplyingShareSettings(.init(error: errorMessage)))
                 }
             }
-            
         case .accessChange(request: let request):
             var model = request.model
             let successUpdate = update(access: request.newAccess, byModel: model)
@@ -170,19 +175,19 @@ class ASCSharingSettingsVerifyRightHoldersInteractor: ASCSharingSettingsVerifyRi
         return getItemIndex(byId: id, in: sharedInfoItems) != nil
     }
     
-    private func deleteIfExistShareItem(byId id: String, from items: inout [ASCShareInfo]) -> Bool {
+    private func deleteIfExistShareItem(byId id: String, from items: inout [OnlyofficeShare]) -> Bool {
         if let index = getItemIndex(byId: id, in: items) {
             items.remove(at: index)
         }
         return false
     }
     
-    private func getItem(byId id: String, in items: [ASCShareInfo]) -> ASCShareInfo? {
+    private func getItem(byId id: String, in items: [OnlyofficeShare]) -> OnlyofficeShare? {
         guard let index = getItemIndex(byId: id, in: items) else { return nil }
         return items[index]
     }
     
-    private func getItemIndex(byId id: String, in items: [ASCShareInfo]) -> Int? {
+    private func getItemIndex(byId id: String, in items: [OnlyofficeShare]) -> Int? {
         items.firstIndex(where: { $0.user?.userId == id || $0.group?.id == id })
     }
 }

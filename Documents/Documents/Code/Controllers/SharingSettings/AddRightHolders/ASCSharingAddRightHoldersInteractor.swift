@@ -20,14 +20,12 @@ class ASCSharingAddRightHoldersInteractor: ASCSharingAddRightHoldersBusinessLogi
     func makeRequest(requestType: ASCSharingAddRightHolders.Model.Request.RequestType) {
         switch requestType {
         case .loadUsers:
-            ASCOnlyOfficeApi.get(ASCOnlyOfficeApi.apiUsers) { (results, error, response) in
-                if let results = results as? [[String: Any]] {
-                    var users: [ASCUser] = []
-                    for item in results {
-                        if let user = ASCUser(JSON: item) {
-                            users.append(user)
-                        }
-                    }
+            OnlyofficeApiClient.request(OnlyofficeAPI.Endpoints.People.all) { [unowned self] response, error in
+                
+                if let error = error {
+                    log.error(error)
+                } else if let users = response?.result {
+                    self.dataStore?.users = users
                     self.dataStore?.users = users
                     let sharedInfoItems = self.dataStore?.sharedInfoItems ?? []
                     self.presenter?.presentData(responseType: .presentUsers(.init(users: users,
@@ -37,18 +35,15 @@ class ASCSharingAddRightHoldersInteractor: ASCSharingAddRightHoldersBusinessLogi
                 }
             }
         case .loadGroups: return
-            ASCOnlyOfficeApi.get(ASCOnlyOfficeApi.apiGroups) { (results, error, response) in
-                if let results = results as? [[String: Any]] {
-                    var groups: [ASCGroup] = []
-                    for item in results {
-                        if let group = ASCGroup(JSON: item) {
-                            groups.append(group)
-                        }
-                    }
+            OnlyofficeApiClient.request(OnlyofficeAPI.Endpoints.People.groups) { [unowned self] response, error in
+                if let error = error {
+                    log.error(error)
+                } else if let groups = response?.result {
                     self.dataStore?.groups = groups
                     let sharedInfoItems = self.dataStore?.sharedInfoItems ?? []
                     self.presenter?.presentData(responseType: .presentGroups(.init(groups: groups, sharedEntities: sharedInfoItems)))
                 }
+                
             }
         case .selectViewModel(request: let request):
             if let shareInfo = makeShareInfo(model: request.selectedViewModel, access: request.access) {
@@ -67,16 +62,16 @@ class ASCSharingAddRightHoldersInteractor: ASCSharingAddRightHoldersBusinessLogi
         }
     }
     
-    private func makeShareInfo(model: ASCSharingRightHolderViewModel, access: ASCShareAccess) -> ASCShareInfo? {
+    private func makeShareInfo(model: ASCSharingRightHolderViewModel, access: ASCShareAccess) -> OnlyofficeShare? {
         guard let dataStore = dataStore else { return nil }
         switch model.rightHolderType {
         case .user:
             if let user = dataStore.users.first(where: { $0.userId == model.id }) {
-                return ASCShareInfo(access: access, user: user)
+                return OnlyofficeShare(access: access, user: user)
             }
         case .group:
             if let group = dataStore.groups.first(where: { $0.id == model.id }) {
-                return ASCShareInfo(access: access, group: group)
+                return OnlyofficeShare(access: access, group: group)
             }
         default: return nil
         }

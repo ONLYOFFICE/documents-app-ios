@@ -21,7 +21,7 @@ class ASCSharingOptionsPresenter: ASCSharingOptionsPresentationLogic {
         case .presentRightHolders(rightHoldersResponse: let rightHoldersResponse):
             let sharedInfoItems = rightHoldersResponse.sharedInfoItems
             let currentUser = rightHoldersResponse.currentUser
-            let isImportant: (ASCShareInfo) -> Bool = { shareInfo in
+            let isImportant: (OnlyofficeShare) -> Bool = { shareInfo in
                 var isShareInfoUserIsCurrenUser = false
                 if let shareInfoUserId = shareInfo.user?.userId,
                    let currentUserId = currentUser?.userId
@@ -63,7 +63,7 @@ class ASCSharingOptionsPresenter: ASCSharingOptionsPresentationLogic {
         }
     }
     
-    private func makeRightHolderViewModel(fromShareInfo sharedInfo: ASCShareInfo) -> ASCSharingRightHolderViewModel? {
+    private func makeRightHolderViewModel(fromShareInfo sharedInfo: OnlyofficeShare) -> ASCSharingRightHolderViewModel? {
         var name = ""
         var id: String?
         var avatarUrl: String?

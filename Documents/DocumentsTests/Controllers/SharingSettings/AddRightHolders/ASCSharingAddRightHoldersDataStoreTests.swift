@@ -14,8 +14,8 @@ class ASCSharingAddRightHoldersDataStoreTests: XCTestCase {
 
     var sut: ASCSharingAddRightHoldersRAMDataStore!
     
-    var userShareInfo: ASCShareInfo!
-    var groupShareInfo: ASCShareInfo!
+    var userShareInfo: OnlyofficeShare!
+    var groupShareInfo: OnlyofficeShare!
     
     override func setUpWithError() throws {
         sut = ASCSharingAddRightHoldersRAMDataStore()
@@ -31,7 +31,7 @@ class ASCSharingAddRightHoldersDataStoreTests: XCTestCase {
 
     // MARK: - test add function
     func testWhenAddShareInfroIntoEmptySUTWillAddToSharingIntemsToAdd() {
-        sut.add(shareInfo: ASCShareInfo())
+        sut.add(shareInfo: OnlyofficeShare())
         
         XCTAssertNil(sut.currentUser)
         XCTAssertTrue(sut.users.count == 0)
@@ -88,7 +88,7 @@ class ASCSharingAddRightHoldersDataStoreTests: XCTestCase {
     
     // MARK: - test remove function
     func testWhenWeCallRemoveFunctionOnEmptySUTThenNothingChanges() {
-        sut.remove(shareInfo: ASCShareInfo())
+        sut.remove(shareInfo: OnlyofficeShare())
         
         XCTAssertNil(sut.currentUser)
         XCTAssertTrue(sut.users.count == 0)
@@ -126,16 +126,16 @@ class ASCSharingAddRightHoldersDataStoreTests: XCTestCase {
     }
 
     // MARK: - Help functions
-    func makeUserShareInfo(withId id: String) -> ASCShareInfo {
+    func makeUserShareInfo(withId id: String) -> OnlyofficeShare {
         let user = ASCUser()
         user.userId = id
-        return ASCShareInfo(user: user)
+        return OnlyofficeShare(access: .none, user: user)
     }
     
-    func makeGroupShareInfo(withId id: String) -> ASCShareInfo {
+    func makeGroupShareInfo(withId id: String) -> OnlyofficeShare {
         let group = ASCGroup()
         group.id = id
-        return ASCShareInfo(group: group)
+        return OnlyofficeShare(access: .none, group: group)
     }
 
 }

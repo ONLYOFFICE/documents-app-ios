@@ -9,7 +9,7 @@
 import Foundation
 
 protocol ASCShareSettingsAPIWorkerProtocol {
-    func convertToParams(shareItems: [ASCShareInfo]) -> [String: Any]
-    func convertToParams(items: [(rightHolderId: String, access: ASCShareAccess)]) -> [String: Any]
-    func makeApiRequest(entity: ASCEntity) -> String?
+    func convertToParams(shareItems: [OnlyofficeShare]) -> [OnlyofficeShareItemRequestModel]
+    func convertToParams(items: [(rightHolderId: String, access: ASCShareAccess)]) -> [OnlyofficeShareItemRequestModel]
+    func makeApiRequest(entity: ASCEntity) -> Endpoint<OnlyofficeResponseArray<OnlyofficeShare>>?
 }

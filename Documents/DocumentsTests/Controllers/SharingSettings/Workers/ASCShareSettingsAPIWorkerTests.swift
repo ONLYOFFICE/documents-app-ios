@@ -29,7 +29,7 @@ class ASCShareSettingsAPIWorkerTests: XCTestCase {
         let request = sut.makeApiRequest(entity: file)
         
         XCTAssertNotNil(request)
-        XCTAssertTrue(request?.contains(file.id) ?? false)
+        XCTAssertTrue(request?.path.contains(file.id) ?? false)
     }
     
     func testWhenMakeApiRequestOnFolderGetsAString() {
@@ -39,7 +39,7 @@ class ASCShareSettingsAPIWorkerTests: XCTestCase {
         let request = sut.makeApiRequest(entity: folder)
         
         XCTAssertNotNil(request)
-        XCTAssertTrue(request?.contains(folder.id) ?? false)
+        XCTAssertTrue(request?.path.contains(folder.id) ?? false)
     }
     
     func testWhenMakeApiRequestOnEntityGetsNothing() {
@@ -57,17 +57,11 @@ class ASCShareSettingsAPIWorkerTests: XCTestCase {
         let access: ASCShareAccess = .read
         let shareInfo = makeUserShareInfo(withId: id, andAceess: access)
         
-        let expected: [String: Any] = [
-            "share[0].ShareTo": id,
-            "share[0].Access": access.rawValue
-        ]
-        
         let result = sut.convertToParams(shareItems: [shareInfo])
         
-        XCTAssertNotNil(result["share[0].ShareTo"])
-        XCTAssertTrue(result["share[0].ShareTo"] as? String? == expected["share[0].ShareTo"] as? String)
-        XCTAssertNotNil(result["share[0].Access"])
-        XCTAssertTrue(result["share[0].Access"] as? Int? == expected["share[0].Access"] as? Int)
+        XCTAssertTrue(result.count == 1)
+        XCTAssertTrue(result[0].shareTo == id)
+        XCTAssertTrue(result[0].access == .read)
     }
     
     
@@ -80,30 +74,18 @@ class ASCShareSettingsAPIWorkerTests: XCTestCase {
         let folderAccess: ASCShareAccess = .comment
         let folderShareInfo = makeUserShareInfo(withId: folderId, andAceess: folderAccess)
         
-        let expected: [String: Any] = [
-            "share[0].ShareTo": userId,
-            "share[0].Access": userAccess.rawValue,
-            "share[1].ShareTo": folderId,
-            "share[1].Access": folderAccess.rawValue
-        ]
-        
         let result = sut.convertToParams(shareItems: [userShareInfo, folderShareInfo])
         
-        XCTAssertNotNil(result["share[0].ShareTo"])
-        XCTAssertNotNil(result["share[0].Access"])
+        XCTAssertTrue(result.count == 2)
+        XCTAssertTrue(result[0].shareTo == userId)
+        XCTAssertTrue(result[0].access == userAccess)
+        XCTAssertTrue(result[1].shareTo == folderId)
+        XCTAssertTrue(result[1].access == folderAccess)
         
-        XCTAssertTrue(result["share[0].ShareTo"] as? String? == expected["share[0].ShareTo"] as? String)
-        XCTAssertTrue(result["share[0].Access"] as? Int? == expected["share[0].Access"] as? Int)
-        
-        XCTAssertNotNil(result["share[1].ShareTo"])
-        XCTAssertNotNil(result["share[1].Access"])
-        
-        XCTAssertTrue(result["share[1].ShareTo"] as? String? == expected["share[1].ShareTo"] as? String)
-        XCTAssertTrue(result["share[1].Access"] as? Int? == expected["share[1].Access"] as? Int)
     }
     
     func testConvertShareInfoWithouUserAndGroupToParamsReturnsEmpty() {
-        let shareInfo = ASCShareInfo()
+        let shareInfo = OnlyofficeShare()
         
         let result = sut.convertToParams(shareItems: [shareInfo])
         
@@ -116,38 +98,25 @@ class ASCShareSettingsAPIWorkerTests: XCTestCase {
         let foo: (rightHolderId: String, access: ASCShareAccess) = ("Foo", ASCShareAccess.read)
         let bar: (rightHolderId: String, access: ASCShareAccess) = ("Bar", ASCShareAccess.deny)
         
-        let expected: [String: Any] = [
-            "share[0].ShareTo": foo.rightHolderId,
-            "share[0].Access": foo.access.rawValue,
-            "share[1].ShareTo": bar.rightHolderId,
-            "share[1].Access": bar.access.rawValue
-        ]
-        
         let result = sut.convertToParams(items: [foo, bar])
         
-        XCTAssertNotNil(result["share[0].ShareTo"])
-        XCTAssertNotNil(result["share[0].Access"])
-        
-        XCTAssertTrue(result["share[0].ShareTo"] as? String? == expected["share[0].ShareTo"] as? String)
-        XCTAssertTrue(result["share[0].Access"] as? Int? == expected["share[0].Access"] as? Int)
-        
-        XCTAssertNotNil(result["share[1].ShareTo"])
-        XCTAssertNotNil(result["share[1].Access"])
-        
-        XCTAssertTrue(result["share[1].ShareTo"] as? String? == expected["share[1].ShareTo"] as? String)
-        XCTAssertTrue(result["share[1].Access"] as? Int? == expected["share[1].Access"] as? Int)
+        XCTAssertTrue(result.count == 2)
+        XCTAssertTrue(result[0].shareTo == foo.rightHolderId)
+        XCTAssertTrue(result[0].access == foo.access)
+        XCTAssertTrue(result[1].shareTo == bar.rightHolderId)
+        XCTAssertTrue(result[1].access == bar.access)
     }
     
     // MARK: - Help functions
-    func makeUserShareInfo(withId id: String, andAceess access: ASCShareAccess) -> ASCShareInfo {
+    func makeUserShareInfo(withId id: String, andAceess access: ASCShareAccess) -> OnlyofficeShare {
         let user = ASCUser()
         user.userId = id
-        return ASCShareInfo(access: access, user: user)
+        return OnlyofficeShare(access: access, user: user)
     }
     
-    func makeGroupShareInfo(withId id: String, andAceess access: ASCShareAccess) -> ASCShareInfo {
+    func makeGroupShareInfo(withId id: String, andAceess access: ASCShareAccess) -> OnlyofficeShare {
         let group = ASCGroup()
         group.id = id
-        return ASCShareInfo(access: access, group: group)
+        return OnlyofficeShare(access: access, group: group)
     }
 }

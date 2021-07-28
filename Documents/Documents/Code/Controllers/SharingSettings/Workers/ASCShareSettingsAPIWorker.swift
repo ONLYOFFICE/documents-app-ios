@@ -9,50 +9,33 @@
 import Foundation
 
 class ASCShareSettingsAPIWorker: ASCShareSettingsAPIWorkerProtocol {
-    func convertToParams(shareItems: [ASCShareInfo]) -> [String : Any] {
-        var shares: [[String: Any]] = []
+    func convertToParams(shareItems: [OnlyofficeShare]) -> [OnlyofficeShareItemRequestModel] {
+        var shares: [OnlyofficeShareItemRequestModel] = []
         
         for share in shareItems {
             if let itemId = share.user?.userId ?? share.group?.id {
-                shares.append([
-                    "ShareTo": itemId,
-                    "Access": share.access.rawValue
-                ])
+                shares.append(OnlyofficeShareItemRequestModel(shareTo: itemId, access: share.access))
             }
         }
         
-        return sharesToParams(shares: shares)
+        return shares
     }
     
-    func convertToParams(items: [(rightHolderId: String, access: ASCShareAccess)]) -> [String: Any] {
-        var shares: [[String: Any]] = []
+    func convertToParams(items: [(rightHolderId: String, access: ASCShareAccess)]) -> [OnlyofficeShareItemRequestModel] {
+        var shares: [OnlyofficeShareItemRequestModel] = []
         for item in items {
-            shares.append([
-                "ShareTo": item.rightHolderId,
-                "Access": item.access.rawValue
-            ])
+            shares.append(OnlyofficeShareItemRequestModel(shareTo: item.rightHolderId, access: item.access))
         }
-        return sharesToParams(shares: shares)
+        return shares
     }
     
-    private func sharesToParams(shares: [[String: Any]]) -> [String: Any] {
-        var params: [String: Any] = [:]
-        
-        for (index, dictinory) in shares.enumerated() {
-            for (key, value) in dictinory {
-                params["share[\(index)].\(key)"] = value
-            }
-        }
-        return params
-    }
-    
-    func makeApiRequest(entity: ASCEntity) -> String? {
-        var request: String? = nil
+    func makeApiRequest(entity: ASCEntity) -> Endpoint<OnlyofficeResponseArray<OnlyofficeShare>>? {
+        var request: Endpoint<OnlyofficeResponseArray<OnlyofficeShare>>? = nil
         
         if let file = entity as? ASCFile {
-            request = String(format: ASCOnlyOfficeApi.apiShareFile, file.id)
+            request = OnlyofficeAPI.Endpoints.Sharing.file(file: file)
         } else if let folder = entity as? ASCFolder {
-            request = String(format: ASCOnlyOfficeApi.apiShareFolder, folder.id)
+            request = OnlyofficeAPI.Endpoints.Sharing.folder(folder: folder)
         }
         
         return request

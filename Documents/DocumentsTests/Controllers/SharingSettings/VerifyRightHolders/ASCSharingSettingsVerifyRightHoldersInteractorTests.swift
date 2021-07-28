@@ -261,21 +261,34 @@ class ASCSharingSettingsVerifyRightHoldersInteractorTests: XCTestCase {
         XCTAssertEqual(presenter.shareItemsResponse?.items[0].group?.id, "Bar")
     }
     
+    
+    func testHelpMakeUserShareInfo() {
+        let share = makeUserShareInfo(withId: "Foo", andAceess: .read)
+        XCTAssertEqual(share.user?.userId, "Foo")
+        XCTAssertEqual(share.access, .read)
+    }
+    
+    func testHelpMakeGroupShareInfo() {
+        let share = makeGroupShareInfo(withId: "Foo", andAceess: .comment)
+        XCTAssertEqual(share.group?.id, "Foo")
+        XCTAssertEqual(share.access, .comment)
+    }
+    
     // MARK: - Help functions
     func makeModel(withId id: String, andAccess access: ASCShareAccess) -> ASCSharingRightHolderViewModel {
         ASCSharingRightHolderViewModel(id: id, name: "", access: .init(entityAccess: access, accessEditable: true))
     }
     
-    func makeUserShareInfo(withId id: String, andAceess access: ASCShareAccess) -> ASCShareInfo {
+    func makeUserShareInfo(withId id: String, andAceess access: ASCShareAccess) -> OnlyofficeShare {
         let user = ASCUser()
         user.userId = id
-        return ASCShareInfo(access: access, user: user)
+        return OnlyofficeShare(access: access, user: user)
     }
     
-    func makeGroupShareInfo(withId id: String, andAceess access: ASCShareAccess) -> ASCShareInfo {
+    func makeGroupShareInfo(withId id: String, andAceess access: ASCShareAccess) -> OnlyofficeShare {
         let group = ASCGroup()
         group.id = id
-        return ASCShareInfo(access: access, group: group)
+        return OnlyofficeShare(access: access, group: group)
     }
 }
 
@@ -306,10 +319,10 @@ extension ASCSharingSettingsVerifyRightHoldersInteractorTests {
     }
     
     class SharingSettingAPIWorkerMock: ASCShareSettingsAPIWorkerProtocol {
-        func convertToParams(shareItems: [ASCShareInfo]) -> [String : Any] { [:] }
+        func convertToParams(shareItems: [OnlyofficeShare]) -> [OnlyofficeShareItemRequestModel] { [] }
         
-        func convertToParams(items: [(rightHolderId: String, access: ASCShareAccess)]) -> [String : Any] { [:] }
+        func convertToParams(items: [(rightHolderId: String, access: ASCShareAccess)]) -> [OnlyofficeShareItemRequestModel] { [] }
         
-        func makeApiRequest(entity: ASCEntity) -> String? { nil }
+        func makeApiRequest(entity: ASCEntity) -> Endpoint<OnlyofficeResponseArray<OnlyofficeShare>>? { nil }
     }
 }

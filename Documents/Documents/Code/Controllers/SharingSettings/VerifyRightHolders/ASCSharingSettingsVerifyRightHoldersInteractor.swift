@@ -21,6 +21,8 @@ protocol ASCSharingSettingsVerifyRightHoldersDataStore {
     var itemsForSharingAdd: [ASCShareInfo] { get set }
     var itemsForSharingRemove: [ASCShareInfo] { get set }
     var itemsForSharedAccessChange: [ASCShareInfo] { get }
+    
+    func clearData() -> Void
 }
 
 class ASCSharingSettingsVerifyRightHoldersInteractor: ASCSharingSettingsVerifyRightHoldersBusinessLogic, ASCSharingSettingsVerifyRightHoldersDataStore {
@@ -52,6 +54,15 @@ class ASCSharingSettingsVerifyRightHoldersInteractor: ASCSharingSettingsVerifyRi
     
     init(apiWorker: ASCShareSettingsAPIWorkerProtocol) {
         self.apiWorker = apiWorker
+    }
+    
+    func clearData() {
+        entity = nil
+        doneComplerion = {}
+        sharedInfoItems = []
+        itemsForSharingAdd = []
+        itemsForSharingRemove = []
+        itemsForSharedAccessChange = []
     }
     
     func makeRequest(requestType: ASCSharingSettingsVerifyRightHolders.Model.Request.RequestType) {
@@ -91,7 +102,7 @@ class ASCSharingSettingsVerifyRightHoldersInteractor: ASCSharingSettingsVerifyRi
                 "sharingMessage": request.notifyMessage ?? ""
             ]
             
-            let itemsForRequest = (itemsForSharingAdd + itemsForSharingRemove).filter({ !$0.locked })
+            let itemsForRequest = (itemsForSharingAdd + itemsForSharingRemove + itemsForSharedAccessChange).filter({ !$0.locked })
             let sharesParams = apiWorker.convertToParams(shareItems: itemsForRequest)
             
             ASCOnlyOfficeApi.put(apiRequest, parameters: baseParams + sharesParams) { [weak self] (results, error, response) in

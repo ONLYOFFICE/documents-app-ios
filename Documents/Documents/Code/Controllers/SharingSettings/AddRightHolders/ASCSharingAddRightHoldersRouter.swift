@@ -53,6 +53,7 @@ class ASCSharingAddRightHoldersRouter: NSObject, ASCSharingAddRightHoldersRoutin
     }
     
     private func passDataToAddRightHoldersViewController(source: ASCSharingAddRightHoldersDataStore, destination: inout ASCSharingSettingsVerifyRightHoldersDataStore) {
+        destination.clearData()
         destination.sharedInfoItems = source.sharedInfoItems
         destination.itemsForSharingAdd = source.itemsForSharingAdd
         destination.itemsForSharingRemove = source.itemsForSharingRemove

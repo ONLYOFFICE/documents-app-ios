@@ -114,9 +114,9 @@ class ASCViewControllerManager {
             let url = URLComponents(string: url.absoluteString)
         else { return false }
 
-        let path = url.path.replacingOccurrences(of: "://", with: "")
+//        let path = url.path.replacingOccurrences(of: "://", with: "")
         
-        if "openfile" == path {
+        if "openfile" == url.host {
             if let data = url.queryItems?.first(where: { $0.name == "data" })?.value {
                 // Decode data
                 if let urlDecode = Data(base64URLEncoded: data) {

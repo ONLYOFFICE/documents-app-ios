@@ -453,6 +453,9 @@
 "Kb" = "Кб";
 
 /* No comment provided by engineer. */
+"kDrive directory" = "Папка kDrive";
+
+/* No comment provided by engineer. */
 "Last name is empty" = "Фамилия пуста";
 
 /* No comment provided by engineer. */
@@ -839,6 +842,9 @@
 "The file will be irretrievably deleted. This action is irreversible." = "Файл будет безвозвратно удален. Это действие нельзя отменить.";
 
 /* No comment provided by engineer. */
+"The folder in the Trash can not be opened." = "Невозможно открыть папку, находящийся в корзине.";
+
+/* No comment provided by engineer. */
 "The folder will be irretrievably deleted. This action is irreversible." = "Папка будет безвозвратно удалена. Это действие нельзя отменить.";
 
 /* No comment provided by engineer. */
@@ -852,6 +858,9 @@
 
 /* No comment provided by engineer. */
 "The portal address is invalid" = "Некорректный адрес портала";
+
+/* No comment provided by engineer. */
+"The portal is not available" = "Портал недоступен";
 
 /* No comment provided by engineer. */
 "The portal name must be between 6 and 50 characters long" = "Имя портала должно быть длиной от 6 до 50 символов";

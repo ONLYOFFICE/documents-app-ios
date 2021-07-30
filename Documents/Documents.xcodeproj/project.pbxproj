@@ -681,6 +681,13 @@
 		FC56F4912248BC13004E3930 /* CALayer+Animate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CALayer+Animate.swift"; sourceTree = "<group>"; };
 		FC584EDD25BB4F5D001C608E /* Documents.dev.entitlements */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.entitlements; path = Documents.dev.entitlements; sourceTree = "<group>"; };
 		FC584EDE25BB4F5D001C608E /* Documents.entitlements */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.entitlements; path = Documents.entitlements; sourceTree = "<group>"; };
+		FC5CE53B26B437B70066901E /* fr.xliff */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = fr.xliff; sourceTree = "<group>"; };
+		FC5CE53C26B437B70066901E /* ru.xliff */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = ru.xliff; sourceTree = "<group>"; };
+		FC5CE53D26B437B70066901E /* cs.xliff */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = cs.xliff; sourceTree = "<group>"; };
+		FC5CE53E26B437B70066901E /* bg.xliff */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = bg.xliff; sourceTree = "<group>"; };
+		FC5CE53F26B437B70066901E /* es.xliff */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = es.xliff; sourceTree = "<group>"; };
+		FC5CE54026B437B70066901E /* de.xliff */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = de.xliff; sourceTree = "<group>"; };
+		FC5CE54126B437B70066901E /* en.xliff */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = en.xliff; sourceTree = "<group>"; };
 		FC5E2D8C1E8A4C8B0079626B /* ASCImageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASCImageViewController.swift; sourceTree = "<group>"; };
 		FC5F47871F04E7E000F045DD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/PasscodeLockView.xib; sourceTree = "<group>"; };
 		FC5F478A1F04E7E500F045DD /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/PasscodeLockView.strings; sourceTree = "<group>"; };
@@ -1366,6 +1373,20 @@
 			path = Entitlements;
 			sourceTree = "<group>";
 		};
+		FC5CE53A26B437B70066901E /* Localization */ = {
+			isa = PBXGroup;
+			children = (
+				FC5CE53B26B437B70066901E /* fr.xliff */,
+				FC5CE53C26B437B70066901E /* ru.xliff */,
+				FC5CE53D26B437B70066901E /* cs.xliff */,
+				FC5CE53E26B437B70066901E /* bg.xliff */,
+				FC5CE53F26B437B70066901E /* es.xliff */,
+				FC5CE54026B437B70066901E /* de.xliff */,
+				FC5CE54126B437B70066901E /* en.xliff */,
+			);
+			path = Localization;
+			sourceTree = "<group>";
+		};
 		FC5E2D8B1E8A4C220079626B /* ImagePreview */ = {
 			isa = PBXGroup;
 			children = (
@@ -1879,6 +1900,7 @@
 			children = (
 				FCFDAA8F1E48A10C007A240C /* Documents */,
 				FCCDE6762049734000CFC653 /* DocumentsTests */,
+				FC5CE53A26B437B70066901E /* Localization */,
 				FCFDAA8E1E48A10C007A240C /* Products */,
 				8DAE80D35B150AEE2BBFA722 /* Pods */,
 				3C50733DA18F920525F5E1EB /* Frameworks */,

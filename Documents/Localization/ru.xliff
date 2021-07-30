@@ -2786,6 +2786,11 @@ others which use WebDAV protocol.</source>
         <target>Файл будет безвозвратно удален. Это действие нельзя отменить.</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
+      <trans-unit id="The folder in the Trash can not be opened." xml:space="preserve">
+        <source>The folder in the Trash can not be opened.</source>
+        <target>Невозможно открыть папку, находящийся в корзине.</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
       <trans-unit id="The folder will be irretrievably deleted. This action is irreversible." xml:space="preserve">
         <source>The folder will be irretrievably deleted. This action is irreversible.</source>
         <target>Папка будет безвозвратно удалена. Это действие нельзя отменить.</target>
@@ -2809,6 +2814,11 @@ others which use WebDAV protocol.</source>
       <trans-unit id="The portal address is invalid" xml:space="preserve">
         <source>The portal address is invalid</source>
         <target>Некорректный адрес портала</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="The portal is not available" xml:space="preserve">
+        <source>The portal is not available</source>
+        <target>Портал недоступен</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="The portal name must be between 6 and 50 characters long" xml:space="preserve">
@@ -3182,6 +3192,15 @@ then accessed from any other device.</source>
       <trans-unit id="iCloud Drive access" xml:space="preserve">
         <source>iCloud Drive access</source>
         <target>Работа с iCloud Drive</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="kDrive" xml:space="preserve">
+        <source>kDrive</source>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="kDrive directory" xml:space="preserve">
+        <source>kDrive directory</source>
+        <target>Папка kDrive</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="none" xml:space="preserve">

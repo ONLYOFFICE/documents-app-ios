@@ -1668,6 +1668,20 @@ class ASCDocumentsViewController: ASCBaseTableViewController, UIGestureRecognize
                 middleActions.append(move)
             }
         }
+
+        /// Restore action
+        
+        if actions.contains(.restore) {
+            middleActions.append(
+                UIAction(
+                    title: NSLocalizedString("Restore", comment: "Button title"),
+                    image: UIImage(systemName: "arrow.2.circlepath"))
+                { [unowned self] action in
+                    cell.hideSwipe(animated: true)
+                    self.recover(cell: cell)
+                }
+            )
+        }
         
         /// Delete action
 
@@ -1820,6 +1834,19 @@ class ASCDocumentsViewController: ASCBaseTableViewController, UIGestureRecognize
             )
         }
 
+        /// Restore action
+        
+        if actions.contains(.restore) {
+            rootActions.append(
+                UIAction(
+                    title: NSLocalizedString("Restore", comment: "Button title"),
+                    image: UIImage(systemName: "arrow.2.circlepath"))
+                { [unowned self] action in
+                    cell.hideSwipe(animated: true)
+                    self.recover(cell: cell)
+                }
+            )
+        }
 
         /// Delete action
 
@@ -2418,6 +2445,10 @@ class ASCDocumentsViewController: ASCBaseTableViewController, UIGestureRecognize
         
         if let folder = tableData[indexPath.row] as? ASCFolder {
             if isTrash(folder) {
+                UIAlertController.showWarning(
+                    in: self,
+                    message: NSLocalizedString("The folder in the Trash can not be opened.", comment: "")
+                )
                 return
             }
             

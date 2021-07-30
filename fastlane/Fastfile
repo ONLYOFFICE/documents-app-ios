@@ -24,6 +24,15 @@ platform :ios do
     "#{version_number} (#{build_number})"
   end
 
+  desc "Refresh dSYMs"
+  lane :refresh_dsyms do
+    download_dsyms(
+      wait_for_dsym_processing: true
+    )
+    upload_symbols_to_crashlytics
+    clean_build_artifacts
+  end
+
   desc "Runs all the tests"
   lane :test do
     scan(

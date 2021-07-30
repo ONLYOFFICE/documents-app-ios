@@ -2454,13 +2454,15 @@
 			files = (
 			);
 			inputPaths = (
+				"${DWARF_DSYM_FOLDER_PATH}/${DWARF_DSYM_FILE_NAME}/Contents/Resources/DWARF/${TARGET_NAME}",
+				"$(SRCROOT)/$(BUILT_PRODUCTS_DIR)/$(INFOPLIST_PATH)",
 			);
 			name = "Upload symbols to Firebase Crashlytics";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "# Replace this with the GOOGLE_APP_ID from your GoogleService-Info.plist file\nGOOGLE_APP_ID=1:948651087073:ios:277570ec4910ec3baa93a0\n\nif [ \"${CONFIGURATION}\" = \"Release\" ]; then\n    \"${PODS_ROOT}/FirebaseCrashlytics/run\"\n    find \"${BUILT_PRODUCTS_DIR}\" -name \"*.dSYM\" | xargs -I \\{\\} \"${PODS_ROOT}/FirebaseCrashlytics/upload-symbols\" -gsp \"${PROJECT_DIR}/Documents/Services/GoogleService-Info-prod.plist\" -p ios \\{\\}\nelse\n    echo \"Skip Uploading\"\nfi\n";
+			shellScript = "# Replace this with the GOOGLE_APP_ID from your GoogleService-Info.plist file\nGOOGLE_APP_ID=1:948651087073:ios:277570ec4910ec3baa93a0\n\nif [ $CONFIGURATION == Release ]; then\n    \"${PODS_ROOT}/FirebaseCrashlytics/run\"\nelse\n    echo \"Skip Uploading\"\nfi\n";
 		};
 		FC36D34F25B5C32200412DDB /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -2598,13 +2600,15 @@
 			files = (
 			);
 			inputPaths = (
+				"${DWARF_DSYM_FOLDER_PATH}/${DWARF_DSYM_FILE_NAME}/Contents/Resources/DWARF/${TARGET_NAME}",
+				"$(SRCROOT)/$(BUILT_PRODUCTS_DIR)/$(INFOPLIST_PATH)",
 			);
 			name = "Upload symbols to Firebase Crashlytics";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "# Replace this with the GOOGLE_APP_ID from your GoogleService-Info.plist file\nGOOGLE_APP_ID=1:948651087073:ios:b88d8cb9f0125cff\n\nif [ \"${CONFIGURATION}\" = \"Release\" ]; then\n    \"${PODS_ROOT}/FirebaseCrashlytics/run\"\n    find \"${BUILT_PRODUCTS_DIR}\" -name \"*.dSYM\" | xargs -I \\{\\} \"${PODS_ROOT}/FirebaseCrashlytics/upload-symbols\" -gsp \"${PROJECT_DIR}/Documents/Services/GoogleService-Info-prod.plist\" -p ios \\{\\}\nelse\n    echo \"Skip Uploading\"\nfi\n";
+			shellScript = "# Replace this with the GOOGLE_APP_ID from your GoogleService-Info.plist file\nGOOGLE_APP_ID=1:948651087073:ios:b88d8cb9f0125cff\n\nif [ $CONFIGURATION == Release ]; then\n    \"${PODS_ROOT}/FirebaseCrashlytics/run\"\nelse\n    echo \"Skip Uploading\"\nfi\n";
 		};
 		FCC471031F56A2DF00373597 /* Increment Build Number */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -3442,6 +3446,7 @@
 				CODE_SIGN_ENTITLEMENTS = Documents/Entitlements/Documents.dev.entitlements;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CURRENT_PROJECT_VERSION = 650;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = 2WH24U26GJ;
 				ENABLE_BITCODE = YES;
 				INFOPLIST_FILE = Documents/Documents.alpha.plist;
@@ -3645,6 +3650,7 @@
 				CODE_SIGN_ENTITLEMENTS = Documents/Entitlements/Documents.entitlements;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CURRENT_PROJECT_VERSION = 600;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = 2WH24U26GJ;
 				ENABLE_BITCODE = YES;
 				INFOPLIST_FILE = Documents/Documents.dev.plist;

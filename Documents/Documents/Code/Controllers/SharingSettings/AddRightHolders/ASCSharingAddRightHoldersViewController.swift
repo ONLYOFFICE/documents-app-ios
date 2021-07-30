@@ -82,6 +82,8 @@ class ASCSharingAddRightHoldersViewController: UIViewController, ASCSharingAddRi
         self.selectedRow(model: model, isSelected: isSelected)
     }
     
+    var defaultPresentingViewSize = CGSize(width: 540, height: 620)
+    
     // MARK: Object lifecycle
     
     override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
@@ -117,12 +119,6 @@ class ASCSharingAddRightHoldersViewController: UIViewController, ASCSharingAddRi
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        if #available(iOS 13.0, *) {
-            view.backgroundColor = .systemBackground
-        } else {
-            view.backgroundColor = .white
-        }
-        
         sharingAddRightHoldersView = ASCSharingAddRightHoldersView(
             view: view,
             navigationItem: navigationItem,
@@ -149,12 +145,26 @@ class ASCSharingAddRightHoldersViewController: UIViewController, ASCSharingAddRi
         sharingAddRightHoldersView?.showTable(tableType: defaultSelectedTable)
         
         loadData()
+        
+        if UIDevice.pad, let presentingViewSize = presentingViewController?.view.size {
+            
+            let navBarHeight = navigationController?.navigationBar.height ?? 0
+            let toolbarHeigh = navigationController?.toolbar.height ?? 0
+
+            defaultPresentingViewSize = CGSize(width: presentingViewSize.width, height: presentingViewSize.height - toolbarHeigh - navBarHeight)
+        }
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         if !(sharingAddRightHoldersView?.searchController.isActive ?? false) {
             navigationController?.isToolbarHidden = false
         }
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        preferredContentSize = CGSize()
     }
     
     func reset() {
@@ -313,6 +323,34 @@ extension ASCSharingAddRightHoldersViewController: ASCSharingAddRightHoldersView
         
         forEachRow(in: sharingAddRightHoldersView.usersTableView, applyAction: deselectAction(in:by:))
         forEachRow(in: sharingAddRightHoldersView.groupsTableView, applyAction: deselectAction(in:by:))
+    }
+    
+    func onKeyboardShow(keyboardSize: CGRect) {
+        if UIDevice.pad {
+            let modalHeigh = presentingViewController?.view.size.height ?? defaultPresentingViewSize.height
+            let freeSpace = UIScreen.main.bounds.height - modalHeigh - 150
+            if keyboardSize.height > freeSpace {
+                let differance = keyboardSize.height - freeSpace
+                let newHeight = defaultPresentingViewSize.height - differance
+                log.info("new modal height", newHeight)
+                let preferredContentSize = CGSize(width: defaultPresentingViewSize.width, height: newHeight)
+                //super.preferredContentSize = preferredContentSize
+                navigationController?.preferredContentSize = preferredContentSize
+                self.preferredContentSize = preferredContentSize
+            }
+        }
+    }
+    
+    func onKeyboardHide() {
+        let didPreferredContentSizeChange = self.preferredContentSize.height > 0
+            || self.preferredContentSize.width > 0
+        if UIDevice.pad && didPreferredContentSizeChange {
+            let preferredContentSize = CGSize(width: 0,
+                                              height: 0)
+            navigationController?.preferredContentSize = preferredContentSize
+            //super.preferredContentSize = preferredContentSize
+            self.preferredContentSize = preferredContentSize
+        }
     }
     
     private func forEachRow(in tableView: UITableView, applyAction action: (UITableView, IndexPath) -> Void) {

@@ -78,6 +78,8 @@ class ASCSharingView {
                            forCellReuseIdentifier: ASCCopyLinkTableViewCell.reuseId)
         tableView.register(ASCSharingRightHolderTableViewCell.self,
                            forCellReuseIdentifier: ASCSharingRightHolderTableViewCell.reuseId)
+        tableView.register(ASCCentredLabelHeaderFooterView.self,
+                           forHeaderFooterViewReuseIdentifier: ASCCentredLabelHeaderFooterView.reuseId)
     }
     
     public func configureForUser(accessViewController: ASCSharingSettingsAccessViewController, userName: String, access: ASCShareAccess, provider: ASCSharingSettingsAccessProvider, selectAccessDelegate: ((ASCShareAccess) -> Void)?) {

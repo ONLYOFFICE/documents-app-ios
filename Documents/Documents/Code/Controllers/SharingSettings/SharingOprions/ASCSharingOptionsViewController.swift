@@ -321,8 +321,31 @@ extension ASCSharingOptionsViewController {
         }
     }
     
+    override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        return UITableViewHeaderFooterView()
+    }
+    
     override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         return getSection(sectionRawValue: section).title().uppercased()
+    }
+    
+    override func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
+        guard needToShowFooterNotice(tableView, viewForFooterInSection: section),
+              let view = tableView.dequeueReusableHeaderFooterView(withIdentifier:
+                                                                    ASCCentredLabelHeaderFooterView.reuseId) as? ASCCentredLabelHeaderFooterView
+        else {
+            return nil
+        }
+        
+        view.centredTextLabel.text = NSLocalizedString("Add users or groups and give them to \n read, review or edit documents.", comment: "")
+        return view
+    }
+    
+    override func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+        guard needToShowFooterNotice(tableView, viewForFooterInSection: section) else {
+            return CGFloat.zero
+        }
+        return 80
     }
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -408,6 +431,12 @@ extension ASCSharingOptionsViewController {
     }
 
     // MARK: - Support table view methods
+    
+    private func needToShowFooterNotice(_ tableView: UITableView, viewForFooterInSection section: Int) -> Bool {
+        let isLastSection = section == (numberOfSections(in: tableView) - 1)
+        let isSectionEmpty = self.tableView(tableView, numberOfRowsInSection: section) == 0
+        return !rightHolderCurrentlyLoading && isLastSection && isSectionEmpty
+    }
     
     private func makeRightHolder(formViewModel viewModel: ASCSharingRightHolderViewModel) -> ASCSharingRightHolder? {
         guard let rightHolderType = viewModel.rightHolderType,
@@ -502,7 +531,7 @@ extension ASCSharingOptionsViewController {
         
         func title() -> String {
             switch self {
-            case .externalLink: return NSLocalizedString("Access by external link", comment: "")
+            case .externalLink: return ""
             case .importantRightHolders: return NSLocalizedString("Access settings", comment: "")
             case .otherRightHolders: return ""
             }
@@ -517,8 +546,9 @@ extension ASCSharingOptionsViewController {
         
         func heightForSectionHeader() -> CGFloat {
             switch self {
-            case .externalLink, .importantRightHolders: return 38
-            case .otherRightHolders: return 16
+            case .externalLink: return 18
+            case .importantRightHolders: return 38
+            case .otherRightHolders: return 18
             }
         }
     }

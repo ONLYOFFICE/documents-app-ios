@@ -22,6 +22,8 @@ protocol ASCSharingAddRightHoldersViewDelegate: AnyObject {
     func onCancelBurronTapped()
     func onSelectAllButtonTapped()
     func onDeselectAllButtonTapped()
+    func onKeyboardShow(keyboardSize: CGRect)
+    func onKeyboardHide()
     
     func present(sheetAccessController: UIViewController)
 }
@@ -67,7 +69,7 @@ class ASCSharingAddRightHoldersView {
     private lazy var darkeingView: UIView = {
         let view = UIView()
         view.backgroundColor = .black
-        view.alpha = 0.25
+        view.alpha = 0.2
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
@@ -459,11 +461,13 @@ extension ASCSharingAddRightHoldersView {
     
     @objc func keyboardWillShow(sender: NSNotification) {
         guard let keyboardFrame = getKeyboardFrame(bySenderNotification: sender) else { return }
+        delegate?.onKeyboardShow(keyboardSize: keyboardFrame)
         dispalayingKeyboardFrame = keyboardFrame
     }
     
     @objc func keyboardWillHide(sender: NSNotification) {
         dispalayingKeyboardFrame = nil
+        delegate?.onKeyboardHide()
     }
     
     private func getKeyboardFrame(bySenderNotification sender: NSNotification) -> CGRect? {

@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1D128F9C26B3285300603B0F /* ASCCentredLabelHeaderFooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D128F9B26B3285300603B0F /* ASCCentredLabelHeaderFooterView.swift */; };
+		1D128F9D26B3285300603B0F /* ASCCentredLabelHeaderFooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D128F9B26B3285300603B0F /* ASCCentredLabelHeaderFooterView.swift */; };
 		1D12D35E265E467900C8C519 /* ASCOnlyofficeCategoriesProviderFilterProxy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D12D35D265E467900C8C519 /* ASCOnlyofficeCategoriesProviderFilterProxy.swift */; };
 		1D14AABF268E0B62009E48AD /* ASCSharingRightHolderViewModelProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D14AABE268E0B62009E48AD /* ASCSharingRightHolderViewModelProtocol.swift */; };
 		1D14AAC12694EFE4009E48AD /* ASCEntityLinkMakerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D14AAC02694EFE4009E48AD /* ASCEntityLinkMakerProtocol.swift */; };
@@ -684,6 +686,7 @@
 /* Begin PBXFileReference section */
 		1B32667722AD980849E124F1 /* Pods_Documents.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Documents.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		1B402BC0B41F5EA0B160A88F /* Pods-Documents-DocumentsTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Documents-DocumentsTests.release.xcconfig"; path = "../Pods/Target Support Files/Pods-Documents-DocumentsTests/Pods-Documents-DocumentsTests.release.xcconfig"; sourceTree = "<group>"; };
+		1D128F9B26B3285300603B0F /* ASCCentredLabelHeaderFooterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCCentredLabelHeaderFooterView.swift; sourceTree = "<group>"; };
 		1D12D35D265E467900C8C519 /* ASCOnlyofficeCategoriesProviderFilterProxy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCOnlyofficeCategoriesProviderFilterProxy.swift; sourceTree = "<group>"; };
 		1D14AABE268E0B62009E48AD /* ASCSharingRightHolderViewModelProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCSharingRightHolderViewModelProtocol.swift; sourceTree = "<group>"; };
 		1D14AAC02694EFE4009E48AD /* ASCEntityLinkMakerProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCEntityLinkMakerProtocol.swift; sourceTree = "<group>"; };
@@ -1164,6 +1167,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1D128F9A26B3277100603B0F /* TableHeadersAndFooters */ = {
+			isa = PBXGroup;
+			children = (
+				1D128F9B26B3285300603B0F /* ASCCentredLabelHeaderFooterView.swift */,
+			);
+			path = TableHeadersAndFooters;
+			sourceTree = "<group>";
+		};
 		1D12D35C265E45F200C8C519 /* Proxy */ = {
 			isa = PBXGroup;
 			children = (
@@ -1343,6 +1354,7 @@
 				1D14AAC22694F01D009E48AD /* Workers */,
 				1D863F1526724985000BAC3C /* Models */,
 				1D863F0F26722F1A000BAC3C /* Cells */,
+				1D128F9A26B3277100603B0F /* TableHeadersAndFooters */,
 				1D4C677C268A3297000F2284 /* ASCSharingView.swift */,
 				1DBE283D2670AEC70051D7AD /* ASCSharingOptionsViewController.swift */,
 				1D4C6773268A2573000F2284 /* ASCSharingOptionsInteractor.swift */,
@@ -3247,6 +3259,7 @@
 				FC36D2B225B5C32200412DDB /* MGSwipeButton+Extensions.swift in Sources */,
 				FC36D2B325B5C32200412DDB /* NSLayoutConstraint+Extensions.swift in Sources */,
 				FC36D2B425B5C32200412DDB /* ASCSortViewController.swift in Sources */,
+				1D128F9D26B3285300603B0F /* ASCCentredLabelHeaderFooterView.swift in Sources */,
 				1D49E29B26A9BD340024AC7A /* ASCSharingOptionsSectionProtocol.swift in Sources */,
 				1D49E2A226A9BD5E0024AC7A /* ASCShareSettingsAPIWorker.swift in Sources */,
 				FCE1866C262AB4AB0086D21B /* Scenes.swift in Sources */,
@@ -3575,6 +3588,7 @@
 				FCDA61001EA0ED6800A12E16 /* ASCTransferNavigationController.swift in Sources */,
 				FCAE74F5233B859B005CC32C /* MGSwipeButton+Extensions.swift in Sources */,
 				FCADF37A1EC9DA9A001CA4A9 /* NSLayoutConstraint+Extensions.swift in Sources */,
+				1D128F9C26B3285300603B0F /* ASCCentredLabelHeaderFooterView.swift in Sources */,
 				FC1755971E9CAFDB00D73D8E /* ASCSortViewController.swift in Sources */,
 				FCEF9D2E1ED2D0DC00627BA5 /* ASCPasscodeLockViewController.swift in Sources */,
 				FCE1866B262AB4AB0086D21B /* Scenes.swift in Sources */,

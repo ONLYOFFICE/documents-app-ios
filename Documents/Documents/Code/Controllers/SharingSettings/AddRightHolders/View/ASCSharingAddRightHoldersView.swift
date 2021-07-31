@@ -22,8 +22,6 @@ protocol ASCSharingAddRightHoldersViewDelegate: AnyObject {
     func onCancelBurronTapped()
     func onSelectAllButtonTapped()
     func onDeselectAllButtonTapped()
-    func onKeyboardShow(keyboardSize: CGRect)
-    func onKeyboardHide()
     
     func present(sheetAccessController: UIViewController)
 }
@@ -85,6 +83,10 @@ class ASCSharingAddRightHoldersView {
         return view
     }()
     
+    // MARK: - Modal size props
+    
+    var defaultPresentingViewSize = CGSize(width: 540, height: 620)
+    
     // MARK: - Toolbar props
     @available(iOS 14.0, *)
     private var accessBarBtnMenu: UIMenu {
@@ -143,9 +145,11 @@ class ASCSharingAddRightHoldersView {
         configureNavigationBar()
         configureTables()
         configureToolBar()
+        saveCurrentPreferredSizeAsDefault()
     }
     
     func reset() {
+        resetModalSize()
         usersTableView.reloadData()
         groupsTableView.reloadData()
         searchResultsTable.reloadData()
@@ -252,6 +256,12 @@ extension ASCSharingAddRightHoldersView {
     
     func showSelectBarBtn() {
         navigationItem.rightBarButtonItem = selectAllBarBtn
+    }
+    
+    func clearSearchBar() {
+        searchController.dismiss(animated: false)
+        searchController.isActive = false
+        searchController.searchBar.text = nil
     }
     
     func showDeselectBarBtn() {
@@ -385,10 +395,18 @@ extension ASCSharingAddRightHoldersView {
             return
         }
         if show {
+            emptyView.frame = searchResultsTable.frame
+            
+            if UIDevice.pad && view.height < 400 {
+                print(view.height)
+                emptyView.imageView.image = nil
+                emptyView.frame = searchResultsTable.frame.offsetBy(dx: 0, dy: view.height / 2 - 100)
+            } else if emptyView.imageView.image == nil {
+                emptyView.type = .search
+            }
+            
             if UIDevice.phone {
                 emptyView.frame = searchResultsTable.frame.offsetBy(dx: 0, dy: 75)
-            } else {
-                emptyView.frame = searchResultsTable.frame
             }
             
             searchResultsTable.addSubview(emptyView)
@@ -461,19 +479,61 @@ extension ASCSharingAddRightHoldersView {
     
     @objc func keyboardWillShow(sender: NSNotification) {
         guard let keyboardFrame = getKeyboardFrame(bySenderNotification: sender) else { return }
-        delegate?.onKeyboardShow(keyboardSize: keyboardFrame)
+        changeModalHeightIfNeeded(keyboardSize: keyboardFrame)
         dispalayingKeyboardFrame = keyboardFrame
     }
     
     @objc func keyboardWillHide(sender: NSNotification) {
         dispalayingKeyboardFrame = nil
-        delegate?.onKeyboardHide()
+        resetModalSizeIfNeeded()
     }
     
     private func getKeyboardFrame(bySenderNotification sender: NSNotification) -> CGRect? {
         guard let userInfo = sender.userInfo else { return nil }
         guard let keyboardSize = userInfo[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue else { return nil}
         return keyboardSize.cgRectValue
+    }
+}
+
+// MARK: - Modal size funcs
+extension ASCSharingAddRightHoldersView {
+    func saveCurrentPreferredSizeAsDefault() {
+        if UIDevice.pad, let presentingViewSize = navigationController?.presentingViewController?.view.size {
+            
+            let navBarHeight = navigationController?.navigationBar.height ?? 0
+            let toolbarHeigh = navigationController?.toolbar.height ?? 0
+
+            defaultPresentingViewSize = CGSize(width: presentingViewSize.width, height: presentingViewSize.height - toolbarHeigh - navBarHeight)
+        }
+    }
+    
+    func changeModalHeightIfNeeded(keyboardSize: CGRect) {
+        if UIDevice.pad && keyboardSize.height > 100 {
+            let modalHeigh = navigationController?.presentingViewController?.view.size.height ?? defaultPresentingViewSize.height
+            var freeSpace = UIScreen.main.bounds.height - modalHeigh - 150
+            if freeSpace < 0 {
+                freeSpace = 0
+            }
+            if keyboardSize.height > freeSpace {
+                let differance = keyboardSize.height - freeSpace
+                let newHeight = defaultPresentingViewSize.height - differance
+                log.info("new modal height", newHeight)
+                let preferredContentSize = CGSize(width: defaultPresentingViewSize.width, height: newHeight)
+                navigationController?.preferredContentSize = preferredContentSize
+            }
+        }
+    }
+    
+    func resetModalSizeIfNeeded() {
+        let didPreferredContentSizeChange = navigationController?.preferredContentSize.height ?? 0 > 0
+            || navigationController?.preferredContentSize.width ?? 0 > 0
+        if UIDevice.pad && didPreferredContentSizeChange {
+            resetModalSize()
+        }
+    }
+    
+    func resetModalSize() {
+        navigationController?.preferredContentSize = CGSize(width: 0, height: 0)
     }
 }
 

@@ -43,9 +43,7 @@ class ASCSharingOptionsRouter: NSObject, ASCSharingOptionsRoutingLogic, ASCShari
         else { return }
         
         destinationViewController.accessProvider = viewController.accessProviderFactory.get(entity: viewController.entity ?? ASCEntity(), isAccessExternal: false)
-        passDataToAddRightHoldersViewController(source: sourceDataStore, destination: &destinationDataStore) { [weak viewController] in
-            viewController?.navigationController?.dismiss(animated: true)
-        }
+        passDataToAddRightHoldersViewController(source: sourceDataStore, destination: &destinationDataStore) { }
         navigateToAddRightHoldersViewController(source: viewController, destination: destinationViewController)
         if isDestinationAlreadyInit {
             destinationViewController.start()
@@ -53,15 +51,8 @@ class ASCSharingOptionsRouter: NSObject, ASCSharingOptionsRoutingLogic, ASCShari
     }
     
     private func navigateToAddRightHoldersViewController(source: ASCSharingOptionsViewController, destination: ASCSharingAddRightHoldersViewController) {
-        let navigationVC = ASCBaseNavigationController(rootASCViewController: destination)
-
-        if UIDevice.pad {
-            navigationVC.modalPresentationStyle = .formSheet
-        }
-
-        navigationVC.view.tintColor = source.view.tintColor
         
-        source.present(navigationVC, animated: true, completion: nil)
+        source.navigationController?.pushViewController(destination, animated: true)
     }
     
     private func passDataToAddRightHoldersViewController(source: ASCSharingOptionsDataStore,  destination: inout ASCSharingAddRightHoldersDataStore, doneCompletion: @escaping () -> Void) {

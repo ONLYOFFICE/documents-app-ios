@@ -62,6 +62,12 @@ class ASCSharingAddRightHoldersViewController: UIViewController, ASCSharingAddRi
         return text.isEmpty
     }
     
+    private var isSelectionRightHoldersChanged: Bool {
+        guard let dataStore = router?.dataStore else { return false }
+        
+        return !dataStore.itemsForSharingAdd.isEmpty || !dataStore.itemsForSharingRemove.isEmpty
+    }
+    
     private lazy var usersTableViewDataSourceAndDelegate = ASCSharingAddRightHoldersTableViewDataSourceAndDelegate<ASCSharingRightHolderTableViewCell>(models: self.usersModels)
     private lazy var groupsTableViewDataSourceAndDelegate = ASCSharingAddRightHoldersTableViewDataSourceAndDelegate<ASCSharingRightHolderTableViewCell>(models: self.groupsModels)
     
@@ -117,12 +123,6 @@ class ASCSharingAddRightHoldersViewController: UIViewController, ASCSharingAddRi
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        if #available(iOS 13.0, *) {
-            view.backgroundColor = .systemBackground
-        } else {
-            view.backgroundColor = .white
-        }
-        
         sharingAddRightHoldersView = ASCSharingAddRightHoldersView(
             view: view,
             navigationItem: navigationItem,
@@ -130,6 +130,7 @@ class ASCSharingAddRightHoldersViewController: UIViewController, ASCSharingAddRi
             searchControllerDelegate: self,
             searchResultsUpdating: self,
             searchBarDelegate: self)
+        sharingAddRightHoldersView?.viewController = self
         sharingAddRightHoldersView?.delegate = self
         sharingAddRightHoldersView?.load()
         
@@ -152,8 +153,36 @@ class ASCSharingAddRightHoldersViewController: UIViewController, ASCSharingAddRi
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        if !(sharingAddRightHoldersView?.searchController.isActive ?? false) {
+        super.viewWillAppear(animated)
+        if UIDevice.pad || !(sharingAddRightHoldersView?.searchController.isActive ?? false) {
+            if let keyboardFrame = sharingAddRightHoldersView?.dispalayingKeyboardFrame {
+                sharingAddRightHoldersView?.changeModalHeightIfNeeded(keyboardSize: keyboardFrame)
+            }
             navigationController?.isToolbarHidden = false
+        }
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        if UIDevice.pad || !(sharingAddRightHoldersView?.searchController.isActive ?? false) {
+            navigationController?.isToolbarHidden = false
+        }
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        if UIDevice.pad {
+            sharingAddRightHoldersView?.resetModalSize()
+            sharingAddRightHoldersView?.reloadEmptyViewIfNeeded()
+        }
+        navigationController?.isToolbarHidden = true
+    }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        navigationController?.isToolbarHidden = true
+        if UIDevice.pad {
+            sharingAddRightHoldersView?.resetModalSize()
         }
     }
     
@@ -241,6 +270,7 @@ class ASCSharingAddRightHoldersViewController: UIViewController, ASCSharingAddRi
             }
         }
         
+        updateNextBarBtnIfNeeded()
         sharingAddRightHoldersView?.updateTitle(withSelectedCount: countOfSelectedRows)
         if !usersCurrentlyLoading && !groupsCurrentlyLoading {
             updateSelectDeleselectAllBarBtn()
@@ -248,10 +278,16 @@ class ASCSharingAddRightHoldersViewController: UIViewController, ASCSharingAddRi
     }
     
     func updateSelectDeleselectAllBarBtn() {
-        if countOfSelectedRows == usersModels.count + groupsModels.count {
+        if countOfSelectedRows > 0 && (countOfSelectedRows == usersModels.count + groupsModels.count) {
             sharingAddRightHoldersView?.showDeselectBarBtn()
         } else {
             sharingAddRightHoldersView?.showSelectBarBtn()
+        }
+    }
+    
+    func updateNextBarBtnIfNeeded() {
+        if sharingAddRightHoldersView?.isNextBarBtnEnabled != isSelectionRightHoldersChanged {
+            sharingAddRightHoldersView?.isNextBarBtnEnabled.toggle()
         }
     }
     
@@ -290,11 +326,8 @@ extension ASCSharingAddRightHoldersViewController: ASCSharingAddRightHoldersView
     }
     
     func onNextButtonTapped() {
+        navigationController?.isToolbarHidden = true
         routeToVerifyRightHolders()
-    }
-    
-    func onCancelBurronTapped() {
-        navigationController?.dismiss(animated: true)
     }
     
     func onSelectAllButtonTapped() {

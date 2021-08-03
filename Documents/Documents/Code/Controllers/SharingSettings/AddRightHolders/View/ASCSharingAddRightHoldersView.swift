@@ -19,7 +19,6 @@ protocol ASCSharingAddRightHoldersViewDelegate: AnyObject {
     func onAccessSheetSelectAction(shareAccessRaw: Int)
     func onUpdateToolbarItems(_ items: [UIBarButtonItem]?)
     func onNextButtonTapped()
-    func onCancelBurronTapped()
     func onSelectAllButtonTapped()
     func onDeselectAllButtonTapped()
     
@@ -28,6 +27,7 @@ protocol ASCSharingAddRightHoldersViewDelegate: AnyObject {
 
 class ASCSharingAddRightHoldersView {
     weak var view: UIView!
+    weak var viewController: UIViewController?
     weak var navigationController: UINavigationController?
     weak var navigationItem: UINavigationItem!
     weak var delegate: ASCSharingAddRightHoldersViewDelegate?
@@ -51,10 +51,6 @@ class ASCSharingAddRightHoldersView {
     // MARK: - Navigation bar props
     let title = NSLocalizedString("Shared access", comment: "")
     
-    private lazy var cancelBarBtn: UIBarButtonItem = {
-        UIBarButtonItem(title: NSLocalizedString("Cancel", comment: ""), style: .plain, target: self, action: #selector(onCancelButtonTapped))
-    }()
-    
     private lazy var selectAllBarBtn: UIBarButtonItem = {
         UIBarButtonItem(title: NSLocalizedString("Select all", comment: ""), style: .plain, target: self, action: #selector(onSelectAllButtonTapped))
     }()
@@ -67,7 +63,7 @@ class ASCSharingAddRightHoldersView {
     private lazy var darkeingView: UIView = {
         let view = UIView()
         view.backgroundColor = .black
-        view.alpha = 0.25
+        view.alpha = 0.2
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
@@ -83,7 +79,17 @@ class ASCSharingAddRightHoldersView {
         return view
     }()
     
+    // MARK: - Modal size props
+    
+    var defaultPresentingViewSize = CGSize(width: 540, height: 620)
+    
     // MARK: - Toolbar props
+    var isNextBarBtnEnabled = false {
+        didSet {
+            updateToolbars()
+        }
+    }
+    
     @available(iOS 14.0, *)
     private var accessBarBtnMenu: UIMenu {
         let accessList = delegate?.getAccessList() ?? []
@@ -141,9 +147,11 @@ class ASCSharingAddRightHoldersView {
         configureNavigationBar()
         configureTables()
         configureToolBar()
+        saveCurrentPreferredSizeAsDefault()
     }
     
     func reset() {
+        resetModalSize()
         usersTableView.reloadData()
         groupsTableView.reloadData()
         searchResultsTable.reloadData()
@@ -218,10 +226,6 @@ extension ASCSharingAddRightHoldersView {
         delegate?.onNextButtonTapped()
     }
     
-    @objc func onCancelButtonTapped() {
-        delegate?.onCancelBurronTapped()
-    }
-    
     @objc func onSelectAllButtonTapped() {
         delegate?.onSelectAllButtonTapped()
     }
@@ -238,7 +242,6 @@ extension ASCSharingAddRightHoldersView {
         updateTitle(withSelectedCount: 0)
         navigationItem.largeTitleDisplayMode = .never
         navigationItem.hidesSearchBarWhenScrolling = false
-        navigationItem.leftBarButtonItem = cancelBarBtn
         guard let navigationController = navigationController else {
             return
         }
@@ -250,6 +253,12 @@ extension ASCSharingAddRightHoldersView {
     
     func showSelectBarBtn() {
         navigationItem.rightBarButtonItem = selectAllBarBtn
+    }
+    
+    func clearSearchBar() {
+        searchController.dismiss(animated: false)
+        searchController.isActive = false
+        searchController.searchBar.text = nil
     }
     
     func showDeselectBarBtn() {
@@ -383,15 +392,33 @@ extension ASCSharingAddRightHoldersView {
             return
         }
         if show {
+            emptyView.removeFromSuperview()
+            emptyView.frame = searchResultsTable.frame
+            
+            if UIDevice.pad,
+               let preferedContentHeight = viewController?.preferredContentSize.height,
+               preferedContentHeight > 0,
+               preferedContentHeight < 500
+            {
+                emptyView.imageView.image = nil
+                emptyView.frame = searchResultsTable.frame.offsetBy(dx: 0, dy: preferedContentHeight / 2 - 100)
+            } else if emptyView.imageView.image == nil {
+                emptyView.type = .search
+            }
+            
             if UIDevice.phone {
                 emptyView.frame = searchResultsTable.frame.offsetBy(dx: 0, dy: 75)
-            } else {
-                emptyView.frame = searchResultsTable.frame
             }
             
             searchResultsTable.addSubview(emptyView)
         } else {
             emptyView.removeFromSuperview()
+        }
+    }
+
+    func reloadEmptyViewIfNeeded() {
+        if emptyView?.superview != nil {
+            showEmptyView(true)
         }
     }
 }
@@ -438,7 +465,12 @@ extension ASCSharingAddRightHoldersView {
         nextBtn.titleLabel?.font = UIFont.systemFont(ofSize: 17, weight: .semibold)
         nextBtn.contentEdgeInsets = UIEdgeInsets(top: 2, left: 15, bottom: 2, right: 15)
         nextBtn.addTarget(self, action: #selector(onNextButtonTapped), for: .touchUpInside)
-        return UIBarButtonItem(customView: nextBtn)
+        nextBtn.isEnabled = isNextBarBtnEnabled
+        nextBtn.enableMode = isNextBarBtnEnabled ? .enabled : .disabled
+    
+        let barItem = UIBarButtonItem(customView: nextBtn)
+        barItem.isEnabled = isNextBarBtnEnabled
+        return barItem
     }
     
     public func updateToolbars() {
@@ -454,22 +486,97 @@ extension ASCSharingAddRightHoldersView {
     
     private func notificationsRegister() {
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(sender:)), name: UIResponder.keyboardWillShowNotification, object: nil)
+        
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide(sender:)), name: UIResponder.keyboardWillHideNotification, object: nil)
     }
     
     @objc func keyboardWillShow(sender: NSNotification) {
         guard let keyboardFrame = getKeyboardFrame(bySenderNotification: sender) else { return }
         dispalayingKeyboardFrame = keyboardFrame
+        if UIDevice.pad {
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
+                self.changeModalHeightIfNeeded(keyboardSize: keyboardFrame)
+                self.reloadEmptyViewIfNeeded()
+            }
+        }
     }
     
     @objc func keyboardWillHide(sender: NSNotification) {
         dispalayingKeyboardFrame = nil
+        if UIDevice.pad {
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
+                self.resetModalSizeIfNeeded()
+            }
+        }
     }
     
     private func getKeyboardFrame(bySenderNotification sender: NSNotification) -> CGRect? {
         guard let userInfo = sender.userInfo else { return nil }
         guard let keyboardSize = userInfo[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue else { return nil}
         return keyboardSize.cgRectValue
+    }
+}
+
+// MARK: - Modal size funcs
+extension ASCSharingAddRightHoldersView {
+    func saveCurrentPreferredSizeAsDefault() {
+        if UIDevice.pad, let presentingViewSize = navigationController?.viewControllers[0].view.size {
+
+            let navBarHeight = navigationController?.navigationBar.height ?? 0
+            let toolbarHeigh = navigationController?.toolbar.height ?? 0
+
+            defaultPresentingViewSize = CGSize(width: presentingViewSize.width, height: presentingViewSize.height - toolbarHeigh - navBarHeight)
+        }
+    }
+    
+    func changeModalHeightIfNeeded(keyboardSize: CGRect) {
+        if UIDevice.pad {
+            let presentingViewHeight =  navigationController?.presentingViewController?.view.size.height ?? 0
+            
+            let modalHeigh = presentingViewHeight > 0 && presentingViewHeight < UIScreen.main.bounds.height
+                ? presentingViewHeight
+                : defaultPresentingViewSize.height
+            
+            let spaceAroundModalHeight: CGFloat = 150
+            var freeSpace = UIScreen.main.bounds.height - modalHeigh - spaceAroundModalHeight
+            
+            if freeSpace < 0 {
+                freeSpace = 0
+            }
+            
+            if keyboardSize.height > freeSpace {
+                let differance = keyboardSize.height - freeSpace
+                let minModalHeight: CGFloat = 150
+                var newModelHeight = defaultPresentingViewSize.height - differance
+                
+                if newModelHeight < minModalHeight {
+                    newModelHeight = minModalHeight
+                }
+                
+                let preferredContentSize = CGSize(width: defaultPresentingViewSize.width, height: newModelHeight)
+                
+                log.info("new model size", preferredContentSize)
+                
+                self.navigationController?.preferredContentSize = preferredContentSize
+                self.viewController?.preferredContentSize = preferredContentSize
+            } else {
+                log.info("new model size is default")
+                resetModalSizeIfNeeded()
+            }
+        }
+    }
+    
+    func resetModalSizeIfNeeded() {
+        let didPreferredContentSizeChange = navigationController?.preferredContentSize.height ?? 0 > 0
+            || navigationController?.preferredContentSize.width ?? 0 > 0
+        if UIDevice.pad && didPreferredContentSizeChange {
+            self.resetModalSize()
+        }
+    }
+    
+    func resetModalSize() {
+        navigationController?.preferredContentSize = CGSize(width: 0, height: 0)
+        self.viewController?.preferredContentSize = CGSize(width: 0, height: 0)
     }
 }
 
@@ -493,7 +600,10 @@ extension ASCSharingAddRightHoldersView {
     }
     
     private func showTableLoadingActivityIndicator(tableView: UITableView, activityIndicator loadingTableActivityIndicator: UIActivityIndicatorView) {
-        let centerYOffset = (navigationController?.navigationBar.height ?? 0) + searchController.searchBar.height
+        let navBarHeight = navigationController?.navigationBar.height ?? 0
+        let searchBarHeight = searchController.searchBar.height
+        let centerYOffset = (navBarHeight + searchBarHeight) / 2
+        
         loadingTableActivityIndicator.translatesAutoresizingMaskIntoConstraints = false
         loadingTableActivityIndicator.startAnimating()
         tableView.addSubview(loadingTableActivityIndicator)

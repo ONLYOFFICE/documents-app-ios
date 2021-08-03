@@ -42,17 +42,18 @@ class ASCSharingAddRightHoldersRouter: NSObject, ASCSharingAddRightHoldersRoutin
         else { return }
         
         passDataToAddRightHoldersViewController(source: sourceDataStore, destination: &destinationDataStore)
-        navigateToAddRightHoldersViewController(source: viewController, destination: destinationViewController)
+        navigateToVerifyRightHoldersViewController(source: viewController, destination: destinationViewController)
         if isDestinationAlreadyInit {
             destinationViewController.load()
         }
     }
     
-    private func navigateToAddRightHoldersViewController(source: ASCSharingAddRightHoldersViewController, destination: ASCSharingSettingsVerifyRightHoldersViewController) {
+    private func navigateToVerifyRightHoldersViewController(source: ASCSharingAddRightHoldersViewController, destination: ASCSharingSettingsVerifyRightHoldersViewController) {
         source.navigationController?.pushViewController(destination, animated: true)
     }
     
     private func passDataToAddRightHoldersViewController(source: ASCSharingAddRightHoldersDataStore, destination: inout ASCSharingSettingsVerifyRightHoldersDataStore) {
+        
         destination.clearData()
         destination.sharedInfoItems = source.sharedInfoItems
         destination.itemsForSharingAdd = source.itemsForSharingAdd

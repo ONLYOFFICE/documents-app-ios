@@ -51,7 +51,7 @@ class ASCSharingSettingsVerifyRightHoldersRouter: NSObject, ASCSharingSettingsVe
     }
     
     func routeToParentWithDoneCopmletion(segue: UIStoryboardSegue?) {
-        viewController?.navigationController?.dismiss(animated: false, completion: {
+        viewController?.navigationController?.dismiss(animated: true, completion: {
             self.dataStore?.doneComplerion()
             self.dataStore?.clearData()
         })

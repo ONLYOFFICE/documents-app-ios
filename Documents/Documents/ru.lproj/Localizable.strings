@@ -1,3 +1,6 @@
+/* Count of seclected rows: count + selected */
+"%d selected" = "Выбрано %d";
+
 /* Presentation Viewer */
 "%i of %i" = "%1$i из %2$i";
 
@@ -32,6 +35,15 @@
 "A6 (10,5%@ x 14,8%@)" = "A6 (10,5%1$@ x 14,8%2$@)";
 
 /* No comment provided by engineer. */
+"Access by external link" = "Доступ по внешней ссылке";
+
+/* No comment provided by engineer. */
+"Access rights" = "Права доступа";
+
+/* No comment provided by engineer. */
+"Access settings" = "Настройки доступа";
+
+/* No comment provided by engineer. */
 "Account name is empty" = "Имя учетной записи не заполнено";
 
 /* No comment provided by engineer. */
@@ -39,6 +51,12 @@
 
 /* No comment provided by engineer. */
 "Add files to Favorites for quick access directly from the editor." = "Добавляйте документы для быстрого доступа в Избранное прямо из редактора.";
+
+/* Sharing settings add notification message */
+"Add message" = "Добавить сообщение";
+
+/* No comment provided by engineer. */
+"Add users or groups and give them to \n read, review or edit documents." = "Добавьте пользователей или группы и\nпредоставьте им права на чтение, рецензирование\n или редактирование документов.";
 
 /* No comment provided by engineer. */
 "Adding to Favorites" = "Добавление в Избранное";
@@ -53,7 +71,13 @@
 "All Files" = "Все файлы";
 
 /* No comment provided by engineer. */
+"Allow access via external link" = "Разрешить доступ по внешней ссылке";
+
+/* No comment provided by engineer. */
 "An unexpected error has occurred. Please try again later. Sorry for inconvenience." = "Произошла непредвиденная ошибка. Повторите попытку позже. Извините за неудобство.";
+
+/* Caption of the process */
+"Applying" = "Применение";
 
 /* No comment provided by engineer. */
 "Are you sure you want to delete the account %@ from this device?" = "Вы действительно хотите удалить аккаунт %@ с этого устройства?";
@@ -124,6 +148,9 @@
 /* Introduction Step Five - Title */
 "Collaborate with your team" = "Совместная работа с командой";
 
+/* Share status */
+"Comment" = "Комментирование";
+
 /* Category title */
 "Common Documents" = "Общие документы";
 
@@ -175,11 +202,35 @@
 /* Caption of the processing */
 "Copying" = "Копирование";
 
+/* Description of file operation error */
+"Could not change file attrubutes" = "Не удалось изменить атрибуты файла";
+
+/* Description of file operation error */
+"Could not change the directory" = "Не удалось изменить каталог";
+
 /* No comment provided by engineer. */
 "Could not convert file to export." = "Невозможно преобразовать файл для экспорта.";
 
+/* Description of file operation error */
+"Could not copy file" = "Не удалось скопировать файл";
+
 /* No comment provided by engineer. */
 "Could not copy." = "Невозможно скопировать.";
+
+/* Description of file operation error */
+"Could not create a directory" = "Не удалось создать каталог";
+
+/* Description of file operation error */
+"Could not create a hard link" = "Не удалось создать жесткую ссылку";
+
+/* Description of file operation error */
+"Could not create file" = "Не удалось создать файл";
+
+/* Description of file operation error */
+"Could not create symlink from" = "Не удалось создать символическую ссылку из";
+
+/* Description of file operation error */
+"Could not delete file" = "Не удалось удалить файл";
 
 /* No comment provided by engineer. */
 "Could not delete the file." = "Невозможно удалить файл.";
@@ -205,6 +256,9 @@
 /* No comment provided by engineer. */
 "Could not export the file." = "Невозможно экспортировать файл.";
 
+/* Description of file operation error */
+"Could not move file" = "Не удалось переместить файл";
+
 /* No comment provided by engineer. */
 "Could not open editor." = "Невозможно открыть редактор.";
 
@@ -217,8 +271,14 @@
 /* No comment provided by engineer. */
 "Could not read data from the file." = "Невозможно прочитать данные из файла.";
 
+/* Description of file operation error */
+"Could not read from file" = "Невозможно прочитать из файла.";
+
 /* No comment provided by engineer. */
 "Could not save the file." = "Невозможно сохранить файл.";
+
+/* Description of file operation error */
+"Could not write to file" = "Не удалось записать в файл";
 
 /* No comment provided by engineer. */
 "Couldn't open file" = "Не удалось открыть файл";
@@ -234,6 +294,9 @@
 
 /* Caption of the process */
 "Creating" = "Создание";
+
+/* Share status */
+"Custom filter" = "Пользовательский фильтр";
 
 /* No comment provided by engineer. */
 "Date" = "Дата";
@@ -267,6 +330,9 @@
 
 /* Share status */
 "Deny Access" = "Запретить доступ";
+
+/* No comment provided by engineer. */
+"Deselect all" = "Снять выделение";
 
 /* Button title */
 "Disconnect third party" = "Отсоединить сторонние сервисы";
@@ -366,6 +432,9 @@
 "Failed to check the name of the portal" = "Ошибка при проверке имени портала";
 
 /* No comment provided by engineer. */
+"Failed to copy: %@" = "Не удалось скопировать: %@";
+
+/* No comment provided by engineer. */
 "Failed to get file information from the server." = "Ошибка при получении информации о файле с сервера.";
 
 /* No comment provided by engineer. */
@@ -376,6 +445,9 @@
 
 /* No comment provided by engineer. */
 "Failed to get the address of the document server." = "Ошибка получения адреса сервера документов.";
+
+/* No comment provided by engineer. */
+"Failed to move: %@" = "Не удалось переместить: %@";
 
 /* No comment provided by engineer. */
 "Failed to send feedback by mail. Try to write your request on our forum." = "Не удалось отправить отзыв по почте. Попробуйте написать свой запрос на нашем форуме.";
@@ -389,6 +461,12 @@
 /* No comment provided by engineer. */
 "Failure to download result from conversion online service." = "Ошибка скачивания полученного файла из службы онлайн-конвертации.";
 
+/* Description of file operation error */
+"File already exists" = "Файл уже существует";
+
+/* Description of file operation error */
+"File does not exist" = "Файл не существует";
+
 /* No comment provided by engineer. */
 "Files" = "Файлы";
 
@@ -400,6 +478,9 @@
 
 /* No comment provided by engineer. */
 "Folders" = "Папки";
+
+/* Share status */
+"Form filling" = "Заполнение форм";
 
 /* Share status */
 "Full Access" = "Полный доступ";
@@ -453,10 +534,16 @@
 "Kb" = "Кб";
 
 /* No comment provided by engineer. */
+"kDrive directory" = "Папка kDrive";
+
+/* No comment provided by engineer. */
 "Last name is empty" = "Фамилия пуста";
 
 /* No comment provided by engineer. */
 "Last name is incorrect" = "Некорректное поле Фамилия";
+
+/* No comment provided by engineer. */
+"Link copied\nto the clipboard" = "Ссылка скопирована\nв буфер обмена";
 
 /* Caption of the process */
 "Logging in" = "Выполняется вход";
@@ -564,6 +651,9 @@
 /* No comment provided by engineer. */
 "Note: removal from your account can not be undone." = "Внимание: удаление из Вашего аккаунта будет нельзя отменить.";
 
+/* Sharing settings switcher */
+"Notify by Email" = "Отправить оповещение";
+
 /* Used in the context: 'Showing 1 of 3 items' */
 "of" = "из";
 
@@ -615,7 +705,7 @@
 /* No comment provided by engineer. */
 "ownCloud" = "ownCloud";
 
-/* No comment provided by engineer. */
+/* Table cell right holder acces text */
 "Owner" = "Владелец";
 
 /* No comment provided by engineer. */
@@ -705,6 +795,9 @@
 /* Button title */
 "Remove from Favorites" = "Удалить из избранного";
 
+/* Caption of the process */
+"Removing" = "Удаление";
+
 /* Button title */
 "Rename" = "Переименовать";
 
@@ -732,9 +825,15 @@
 /* Caption of the processing */
 "Saving" = "Сохранение";
 
+/* No comment provided by engineer. */
+"Search" = "Поиск";
+
 /* Button title
    Navigation bar button title */
 "Select" = "Выбрать";
+
+/* No comment provided by engineer. */
+"Select all" = "Выбрать все";
 
 /* No comment provided by engineer. */
 "Select another cloud to connect to Nextcloud, ownCloud and others are supported." = "Выберите другое облако для подключения к Nextcloud, ownCloud и другим поддерживаемым сервисам.";
@@ -757,6 +856,9 @@
 /* No comment provided by engineer. */
 "Selected: %ld" = "Выбрано: %ld";
 
+/* No comment provided by engineer. */
+"Selecting access rights" = "Выбор прав доступа";
+
 /* Caption of the process */
 "Sending" = "Отправка";
 
@@ -769,6 +871,9 @@
 /* No comment provided by engineer. */
 "Share files and manage access rights without leaving the editor." = "Делитесь файлами и управляйте правами доступа не выходя из редактора.";
 
+/* No comment provided by engineer. */
+"Shared access" = "Общий доступ";
+
 /* Category title */
 "Shared with Me" = "Доступно для меня";
 
@@ -777,6 +882,9 @@
 
 /* Caption of the process */
 "Sharing" = "Предоставление досупа";
+
+/* No comment provided by engineer. */
+"Sharing settings" = "Совместный доступ";
 
 /* Button title */
 "Sharing Settings" = "Совместный доступ";
@@ -795,6 +903,9 @@
 
 /* Presentation Viewer */
 "Slide %i of %i" = "Слайд %1$i из %2$i";
+
+/* No comment provided by engineer. */
+"Something wrong" = "Что-то не так";
 
 /* Button title */
 "Sort" = "Сортировать";
@@ -833,6 +944,9 @@
 "The deleted files go to the trash. You can either restore or delete them forever." = "Удаленные файлы попадают в корзину. Вы можете восстановить их или окончательно удалить.";
 
 /* No comment provided by engineer. */
+"The document will be available for viewing by unauthorized users who click on an external link." = "Документ будет доступен для просмотра неавторизованным пользователям, которые перейдут по внешней ссылке.";
+
+/* No comment provided by engineer. */
 "The file in the Trash can not be viewed." = "Невозможно просмотреть файл, находящийся в корзине.";
 
 /* No comment provided by engineer. */
@@ -845,6 +959,9 @@
 "The item with the name '%@' already exists in the folder '%@'." = "Файл с именем '%1$@' уже существует в папке '%2$@'";
 
 /* No comment provided by engineer. */
+"The link for external\naccess is copied\nto the clipboard" = "Ссылка для внешнего\nдоступа скопирована\nв буфер обмена";
+
+/* No comment provided by engineer. */
 "The parameters are incorrect." = "Некорректные параметры";
 
 /* No comment provided by engineer. */
@@ -852,6 +969,9 @@
 
 /* No comment provided by engineer. */
 "The portal address is invalid" = "Некорректный адрес портала";
+
+/* No comment provided by engineer. */
+"The portal is not available" = "Портал недоступен";
 
 /* No comment provided by engineer. */
 "The portal name must be between 6 and 50 characters long" = "Имя портала должно быть длиной от 6 до 50 символов";
@@ -915,6 +1035,9 @@
 
 /* No comment provided by engineer. */
 "Unable to get information about the user." = "Ошибка получения информации о пользователе.";
+
+/* No comment provided by engineer. */
+"Unauthorized users will not be able to view the document." = "Неавторизованные пользователи не смогут просматривать документ.";
 
 /* No comment provided by engineer. */
 "Unexpected response from the service." = "Неожиданный ответ от службы.";

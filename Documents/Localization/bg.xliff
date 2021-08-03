@@ -157,6 +157,21 @@ start using your office</source>
       <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="12.5.1" build-num="12E507"/>
     </header>
     <body>
+      <trans-unit id="/%d selected:dict/NSStringLocalizedFormatKey:dict/:string" xml:space="preserve">
+        <source>%#@items@</source>
+        <target>%#@items@</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="/%d selected:dict/items:dict/one:dict/:string" xml:space="preserve">
+        <source>%d selected</source>
+        <target>%d selected</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="/%d selected:dict/items:dict/other:dict/:string" xml:space="preserve">
+        <source>%d selected</source>
+        <target>%d selected</target>
+        <note/>
+      </trans-unit>
       <trans-unit id="/%lu File selected:dict/NSStringLocalizedFormatKey:dict/:string" xml:space="preserve">
         <source>%#@files@</source>
         <target>%#@files@</target>
@@ -1395,6 +1410,11 @@ Note: if you forget the passcode, you'll need to delete and reinstall the app. A
         <source>Add message</source>
         <note>Sharing settings add notification message</note>
       </trans-unit>
+      <trans-unit id="Add users or groups and give them to &#10; read, review or edit documents." xml:space="preserve">
+        <source>Add users or groups and give them to 
+ read, review or edit documents.</source>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
       <trans-unit id="Adding to Favorites" xml:space="preserve">
         <source>Adding to Favorites</source>
         <note>No comment provided by engineer.</note>
@@ -1795,6 +1815,10 @@ others which use WebDAV protocol.</source>
         <source>Deny Access</source>
         <target>Отказвам достъп</target>
         <note>Share status</note>
+      </trans-unit>
+      <trans-unit id="Deselect all" xml:space="preserve">
+        <source>Deselect all</source>
+        <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Disconnect third party" xml:space="preserve">
         <source>Disconnect third party</source>
@@ -2256,10 +2280,6 @@ to the clipboard</source>
       <trans-unit id="No search result" xml:space="preserve">
         <source>No search result</source>
         <target>Няма резултат от търсенето</target>
-        <note>No comment provided by engineer.</note>
-      </trans-unit>
-      <trans-unit id="No search results" xml:space="preserve">
-        <source>No search results</source>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="None" xml:space="preserve">

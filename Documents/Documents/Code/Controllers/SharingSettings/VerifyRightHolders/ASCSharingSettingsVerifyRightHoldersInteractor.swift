@@ -126,10 +126,10 @@ class ASCSharingSettingsVerifyRightHoldersInteractor: ASCSharingSettingsVerifyRi
                 model.access?.entityAccess = request.newAccess
             }
             
-            presenter?.presentData(responseType: .presentAccessChange(.init(model: model, errorMessage: successUpdate ? nil : NSLocalizedString("Somethin wrong", comment: ""))))
+            presenter?.presentData(responseType: .presentAccessChange(.init(model: model, errorMessage: successUpdate ? nil : NSLocalizedString("Something wrong", comment: ""))))
         case .accessRemove(request: let request):
             let successUpdate = update(access: .none, byModel: request.model)
-            let errorMessage = successUpdate ? nil : NSLocalizedString("Somethin wrong", comment: "")
+            let errorMessage = successUpdate ? nil : NSLocalizedString("Something wrong", comment: "")
             presenter?.presentData(responseType: .presentAccessRemove(.init(indexPath: request.indexPath, errorMessage: errorMessage)))
         }
     }

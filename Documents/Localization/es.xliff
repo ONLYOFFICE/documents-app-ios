@@ -2183,6 +2183,10 @@ otros que utilizan el protocolo WebDAV.</target>
         <target>Nextcloud</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
+      <trans-unit id="Nextcloud directory" xml:space="preserve">
+        <source>Nextcloud directory</source>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
       <trans-unit id="No connection" xml:space="preserve">
         <source>No connection</source>
         <target>Sin conexión</target>
@@ -3096,6 +3100,10 @@ Los archivos creados se puede cargar al portal en línea más tarde y luego acce
       <trans-unit id="ownCloud" xml:space="preserve">
         <source>ownCloud</source>
         <target>ownCloud</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="ownCloud directory" xml:space="preserve">
+        <source>ownCloud directory</source>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="photo" xml:space="preserve">

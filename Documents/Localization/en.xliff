@@ -2227,6 +2227,11 @@ others which use WebDAV protocol.</target>
         <target>Nextcloud</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
+      <trans-unit id="Nextcloud directory" xml:space="preserve">
+        <source>Nextcloud directory</source>
+        <target>Nextcloud directory</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
       <trans-unit id="No connection" xml:space="preserve">
         <source>No connection</source>
         <target>No connection</target>
@@ -3165,6 +3170,11 @@ then accessed from any other device.</target>
       <trans-unit id="ownCloud" xml:space="preserve">
         <source>ownCloud</source>
         <target>ownCloud</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="ownCloud directory" xml:space="preserve">
+        <source>ownCloud directory</source>
+        <target>ownCloud directory</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="photo" xml:space="preserve">

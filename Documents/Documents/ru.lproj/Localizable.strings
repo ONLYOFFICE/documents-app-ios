@@ -538,6 +538,9 @@
 "Nextcloud" = "Nextcloud";
 
 /* No comment provided by engineer. */
+"Nextcloud directory" = "Папка Nextcloud";
+
+/* No comment provided by engineer. */
 "No connection" = "Нет подключения";
 
 /* No comment provided by engineer. */
@@ -617,6 +620,9 @@
 
 /* No comment provided by engineer. */
 "ownCloud" = "ownCloud";
+
+/* No comment provided by engineer. */
+"ownCloud directory" = "Папка ownCloud";
 
 /* No comment provided by engineer. */
 "Owner" = "Владелец";

@@ -357,8 +357,8 @@ extension ASCSharingOptionsViewController {
             - (navigationController?.navigationBar.height ?? 0)
             - view.safeAreaInsets.bottom
             - 20.0 // Magic number. For prevent display scroll bar on presenting the view controller
-        
-        return emptySpaceHeight
+
+        return emptySpaceHeight > 0 ? emptySpaceHeight : tableView.footerView(forSection: section)?.frame.height ?? 0
     }
 
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {

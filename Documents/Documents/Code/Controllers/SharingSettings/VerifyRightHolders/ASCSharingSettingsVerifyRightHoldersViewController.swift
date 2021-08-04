@@ -260,6 +260,7 @@ extension ASCSharingSettingsVerifyRightHoldersViewController {
                 title: rightHolderViewModel.name,
                 currentlyAccess: rightHolderViewModel.access?.entityAccess ?? .read,
                 accessProvider: accessProvider,
+                accessNoteProvider: ASCSharingSettingsAccessNotesProvidersFactory().get(accessType: .userOrGroup),
                 largeTitleDisplayMode: .automatic
             ) { [weak self] access in
                 self?.change(access: access, forViewModel: rightHolderViewModel)

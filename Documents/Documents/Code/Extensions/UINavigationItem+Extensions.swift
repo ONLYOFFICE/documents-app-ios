@@ -29,7 +29,7 @@ extension UINavigationItem {
         
         let subtitleLabel = UILabel()
         subtitleLabel.text = subtitle
-        subtitleLabel.font = .preferredFont(forTextStyle: UIFont.TextStyle.subheadline)
+        subtitleLabel.font = .preferredFont(forTextStyle: UIFont.TextStyle.footnote)
         subtitleLabel.textColor = textColor.withAlphaComponent(0.60)
         
         let stackView = UIStackView(arrangedSubviews: [titleLabel] + ((subtitle != nil) ? [subtitleLabel] : []))

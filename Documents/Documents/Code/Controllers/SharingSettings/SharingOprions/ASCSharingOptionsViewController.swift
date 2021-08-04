@@ -331,8 +331,8 @@ extension ASCSharingOptionsViewController {
     
     override func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
         guard needToShowFooterNotice(tableView, viewForFooterInSection: section),
-              let view = tableView.dequeueReusableHeaderFooterView(withIdentifier:
-                                                                    ASCCentredLabelHeaderFooterView.reuseId) as? ASCCentredLabelHeaderFooterView
+              let view = tableView.dequeueReusableHeaderFooterView(
+                withIdentifier: ASCCentredLabelHeaderFooterView.reuseId) as? ASCCentredLabelHeaderFooterView
         else {
             return nil
         }
@@ -341,21 +341,29 @@ extension ASCSharingOptionsViewController {
         return view
     }
     
+    override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        let section = getSection(sectionRawValue: section)
+        return section.heightForSectionHeader()
+    }
+    
     override func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
         guard needToShowFooterNotice(tableView, viewForFooterInSection: section) else {
             return CGFloat.zero
         }
-        return 80
+        
+        // Calculate empty space of table bottom
+        let emptySpaceHeight = tableView.frame.size.height
+            - tableView.contentSize.height
+            - (navigationController?.navigationBar.height ?? 0)
+            - view.safeAreaInsets.bottom
+            - 20.0 // Magic number. For prevent display scroll bar on presenting the view controller
+        
+        return emptySpaceHeight
     }
-    
+
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         let section = getSection(sectionRawValue: indexPath.section)
         return section.heightForRow()
-    }
-    
-    override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        let section = getSection(sectionRawValue: section)
-        return section.heightForSectionHeader()
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {

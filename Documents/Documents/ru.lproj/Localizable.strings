@@ -20,7 +20,28 @@
 "© Ascensio System SIA %d" = "© Ascensio System SIA %d";
 
 /* No comment provided by engineer. */
+"Сould not download file." = "Не удалось скачать файл.";
+
+/* No comment provided by engineer. */
+"Сould not upload file." = "Не удалось загрузить файл.";
+
+/* No comment provided by engineer. */
 "A file with a similar name already exists in the document directory on the device." = "Файл с таким именем уже существует в папке с документами на этом устройстве.";
+
+/* No comment provided by engineer. */
+"A user or group will be able only to view the document and add comments, as well as manage them." = "Пользователь или группа смогут только просматривать документ и добавлять комментарии, а также управлять ими.";
+
+/* No comment provided by engineer. */
+"A user or group will be able only to view the document and fill in the forms inserted into the document." = "Пользователь или группа смогут только просматривать документ и заполнять формы, вставленные в документ.";
+
+/* No comment provided by engineer. */
+"A user or group will be able only to view the document." = "Пользователь или группа смогут только просматривать документ.";
+
+/* No comment provided by engineer. */
+"A user or group will be able to view and change the document without actually editing it, but all the changes made by a reviewer will be recorded and shown to the file owner (or a person who has full access to the file) so that he/she will be able to accept or reject them." = "Пользователь или группа смогут просматривать и изменять документ, фактически не редактируя его, но все изменения, внесенные рецензентом, будут записаны и показаны владельцу файла (или лицу, имеющему полный доступ к файлу), чтобы он мог принять или отклонить их.";
+
+/* No comment provided by engineer. */
+"A user or group will be able to view and edit the document as well as to share this document." = "Пользователь или группа смогут просматривать и редактировать документ, а также обмениваться этим документом.";
 
 /* Format info */
 "A0 (84,1%@ x 119,9%@)" = "A0 (84,1%1$@ x 119,9%2$@)";
@@ -640,8 +661,7 @@
 "No search result" = "Не найдено";
 
 /* Invalid entity date
-   Invalid entity owner
-   No information */
+   Invalid entity owner */
 "none" = "нет";
 
 /* If the cache is empty
@@ -944,9 +964,6 @@
 "The deleted files go to the trash. You can either restore or delete them forever." = "Удаленные файлы попадают в корзину. Вы можете восстановить их или окончательно удалить.";
 
 /* No comment provided by engineer. */
-"The document will be available for viewing by unauthorized users who click on an external link." = "Документ будет доступен для просмотра неавторизованным пользователям, которые перейдут по внешней ссылке.";
-
-/* No comment provided by engineer. */
 "The file in the Trash can not be viewed." = "Невозможно просмотреть файл, находящийся в корзине.";
 
 /* No comment provided by engineer. */
@@ -1037,7 +1054,22 @@
 "Unable to get information about the user." = "Ошибка получения информации о пользователе.";
 
 /* No comment provided by engineer. */
-"Unauthorized users will not be able to view the document." = "Неавторизованные пользователи не смогут просматривать документ.";
+"Unauthorized users will be able only to view the document and add comments, as well as manage them." = "Неавторизованные пользователи смогут только просматривать документ и добавлять комментарии, а также управлять ими.";
+
+/* No comment provided by engineer. */
+"Unauthorized users will be able only to view the document and fill in the forms inserted into the document." = "Неавторизованные пользователи смогут только просматривать документ и заполнять формы, вставленные в документ.";
+
+/* No comment provided by engineer. */
+"Unauthorized users will be able only to view the document." = "Неавторизованные пользователи смогут только просматривать документ.";
+
+/* No comment provided by engineer. */
+"Unauthorized users will be able to view and change the document without actually editing it, but all the changes made by a reviewer will be recorded and shown to the file owner (or a person who has full access to the file) so that he/she will be able to accept or reject them." = "Неавторизованные пользователи смогут просматривать и изменять документ, фактически не редактируя его, но все изменения, внесенные рецензентом, будут записаны и показаны владельцу файла (или лицу, имеющему полный доступ к файлу), чтобы он мог принять или отклонить их.";
+
+/* No comment provided by engineer. */
+"Unauthorized users will be able to view and edit the document as well as to share this document." = "Неавторизованные пользователи смогут просматривать и редактировать документ, а также обмениваться этим документом.";
+
+/* No comment provided by engineer. */
+"Unauthorized users will not have access to the document." = "Неавторизованные пользователи не будут иметь доступа к документу.";
 
 /* No comment provided by engineer. */
 "Unexpected response from the service." = "Неожиданный ответ от службы.";
@@ -1152,10 +1184,4 @@
 
 /* Data units */
 "Zero bytes" = "Ноль байт";
-
-/* No comment provided by engineer. */
-"Сould not download file." = "Не удалось скачать файл.";
-
-/* No comment provided by engineer. */
-"Сould not upload file." = "Не удалось загрузить файл.";
 

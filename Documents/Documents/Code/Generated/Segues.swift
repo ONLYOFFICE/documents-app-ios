@@ -24,10 +24,6 @@ internal enum StoryboardSegue {
   internal enum Login: String, SegueType {
     case embedPageController
   }
-  internal enum Share: String, SegueType {
-    case segueAccessShare
-    case segueAddShare
-  }
 }
 // swiftlint:enable explicit_type_interface identifier_name line_length type_body_length type_name
 

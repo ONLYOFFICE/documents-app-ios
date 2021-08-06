@@ -12,9 +12,9 @@ struct ASCSharingSettingsAccessViewModel {
     var title: String?
     var currentlyAccess: ASCShareAccess? = .read
     var accessProvider: ASCSharingSettingsAccessProvider?
+    var accessNoteProvider: ASCSharingSettingsAccessNotesProviderProtocol?
     var largeTitleDisplayMode:  UINavigationItem.LargeTitleDisplayMode = .automatic
     var headerText: String = NSLocalizedString("Access settings", comment: "")
-    var footerText: String = NSLocalizedString("Unauthorized users will not be able to view the document.", comment: "")
     
     var selectAccessDelegate: ((ASCShareAccess) -> Void)?
 }

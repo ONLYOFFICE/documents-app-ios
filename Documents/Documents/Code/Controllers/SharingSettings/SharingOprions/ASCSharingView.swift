@@ -86,9 +86,9 @@ class ASCSharingView {
         let viewModel = ASCSharingSettingsAccessViewModel(title: userName,
                                                           currentlyAccess: access,
                                                           accessProvider: provider,
+                                                          accessNoteProvider: ASCSharingSettingsAccessNotesProvidersFactory().get(accessType: .userOrGroup),
                                                           largeTitleDisplayMode: .automatic,
                                                           headerText: NSLocalizedString("Access settings", comment: ""),
-                                                          footerText: NSLocalizedString("Unauthorized users will not be able to view the document.", comment: ""),
                                                           selectAccessDelegate: selectAccessDelegate)
         accessViewController.viewModel = viewModel
     }
@@ -98,9 +98,9 @@ class ASCSharingView {
         let viewModel = ASCSharingSettingsAccessViewModel(title: NSLocalizedString("Sharing settings", comment: ""),
                                                           currentlyAccess: access,
                                                           accessProvider: provider,
+                                                          accessNoteProvider: ASCSharingSettingsAccessNotesProvidersFactory().get(accessType: .externalLink),
                                                           largeTitleDisplayMode: .never,
                                                           headerText: NSLocalizedString("Access by external link", comment: ""),
-                                                          footerText: NSLocalizedString("The document will be available for viewing by unauthorized users who click on an external link.", comment: ""),
                                                           selectAccessDelegate: selectAccessDelegate)
         accessViewController.viewModel = viewModel
     }

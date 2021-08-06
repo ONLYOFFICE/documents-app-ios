@@ -13,6 +13,7 @@ enum Destination {
     // MARK: - Documents
     
     case sort(types: [ASCDocumentSortStateType], ascending: Bool, complation: ASCSortViewController.ASCSortComplation?)
+    case shareSettings(entity: ASCEntity)
     
     // MARK: - Login
     
@@ -54,6 +55,18 @@ final class ASCNavigator {
                 let navigationVC = UINavigationController(rootASCViewController: sortViewController)
                 navigationController?.present(navigationVC, animated: true, completion: nil)
             }
+        case .shareSettings(let entity):
+            if let sharedViewController = viewController as? ASCSharingOptionsViewController {
+                let sharedNavigationVC = ASCBaseNavigationController(rootASCViewController: sharedViewController)
+                
+                if UIDevice.pad {
+                    sharedNavigationVC.modalPresentationStyle = .formSheet
+                }
+
+                navigationController?.present(sharedNavigationVC, animated: true, completion: nil)
+                sharedViewController.setup(entity: entity)
+                sharedViewController.requestToLoadRightHolders()
+            }
         case .onlyofficeConnectPortal:
             navigationController?.viewControllers = [viewController]
         default:
@@ -69,6 +82,8 @@ final class ASCNavigator {
         switch destination {
         case .sort:
             return ASCSortViewController.instance()
+        case .shareSettings(let entity):
+            return ASCSharingOptionsViewController(style: .grouped)
         case .onlyofficeConnectPortal:
             return ASCConnectPortalViewController.instance()
         case .onlyofficeSignIn(let portal):

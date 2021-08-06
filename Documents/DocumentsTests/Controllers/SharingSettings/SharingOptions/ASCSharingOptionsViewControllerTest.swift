@@ -37,11 +37,11 @@ class ASCSharingOptionsViewControllerTest: XCTestCase {
         XCTAssertEqual(sut.numberOfSections(in: tableView), 3)
     }
     
-    func testWhenFileEntityThenFirstAndSecondSectionTitlesFillAndThirdIsEmpty() {
+    func testWhenFileEntityThenFirstAndSecondSectionTitlesOnlySecondNotEmpty() {
         sut.setup(entity: ASCFile())
         sut.loadViewIfNeeded()
         
-        XCTAssertTrue(!(sut.tableView(tableView, titleForHeaderInSection: 0)?.isEmpty ?? false))
+        XCTAssertTrue((sut.tableView(tableView, titleForHeaderInSection: 0)?.isEmpty ?? false))
         XCTAssertTrue(!(sut.tableView(tableView, titleForHeaderInSection: 1)?.isEmpty ?? false))
         XCTAssertTrue((sut.tableView(tableView, titleForHeaderInSection: 2)?.isEmpty ?? false))
     }

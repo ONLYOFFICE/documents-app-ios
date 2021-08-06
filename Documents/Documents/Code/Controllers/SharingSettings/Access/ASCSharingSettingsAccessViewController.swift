@@ -95,7 +95,8 @@ extension ASCSharingSettingsAccessViewController {
     }
     
     override func tableView(_ tableView: UITableView, titleForFooterInSection section: Int) -> String? {
-        viewModel?.footerText
+        guard let access = viewModel?.currentlyAccess else { return nil }
+        return viewModel?.accessNoteProvider?.get(for: access)
     }
     
     override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {

@@ -1707,7 +1707,7 @@ class ASCDocumentsViewController: ASCBaseTableViewController, UIGestureRecognize
                     image: UIImage(systemName: "person.2"))
                 { [unowned self] action in
                     cell.hideSwipe(animated: true)
-                    presentShareController(in: self, entity: file)
+                    navigator.navigate(to: .shareSettings(entity: file))
                 }
             )
         }
@@ -1814,7 +1814,7 @@ class ASCDocumentsViewController: ASCBaseTableViewController, UIGestureRecognize
                     image: UIImage(systemName: "person.2"))
                 { [unowned self] action in
                     cell.hideSwipe(animated: true)
-                    presentShareController(in: self, entity: folder)
+                    navigator.navigate(to: .shareSettings(entity: folder))
                 }
             )
         }
@@ -2105,7 +2105,7 @@ class ASCDocumentsViewController: ASCBaseTableViewController, UIGestureRecognize
                     style: .default,
                     handler: { [unowned self] action in
                         cell.hideSwipe(animated: true)
-                        presentShareController(in: self, entity: file)
+                        navigator.navigate(to: .shareSettings(entity: file))
                 })
             )
         }
@@ -2221,7 +2221,7 @@ class ASCDocumentsViewController: ASCBaseTableViewController, UIGestureRecognize
                     style: .default,
                     handler: { [unowned self] action in
                         cell.hideSwipe(animated: true)
-                        presentShareController(in: self, entity: folder)
+                        navigator.navigate(to: .shareSettings(entity: folder))
                 })
             )
         }
@@ -2316,22 +2316,6 @@ class ASCDocumentsViewController: ASCBaseTableViewController, UIGestureRecognize
 
     private func isTrash(_ folder: ASCFolder?) -> Bool {
         return (folder?.rootFolderType == .onlyofficeTrash || folder?.rootFolderType == .deviceTrash)
-    }
-    
-    private func presentShareController(in parent: UIViewController, entity: ASCEntity) {
-        //let sharedVC = ASCShareViewController.instantiate(from: Storyboard.share)
-        
-        let sharedNavigationVC = ASCBaseNavigationController(rootASCViewController: sharedVC)
-
-        if UIDevice.pad {
-            sharedNavigationVC.modalPresentationStyle = .formSheet
-        }
-
-        sharedNavigationVC.view.tintColor = self.view.tintColor
-        
-        parent.present(sharedNavigationVC, animated: true, completion: nil)
-        sharedVC.setup(entity: entity)
-        sharedVC.requestToLoadRightHolders()
     }
     
     private func configureSwipeGesture() {
@@ -3799,17 +3783,6 @@ extension ASCDocumentsViewController: ASCProviderDelegate {
         // TODO: Or search diff and do it animated
         
         showEmptyView(total < 1)
-    }
-    
-    func presentShareController(provider: ASCFileProviderProtocol, entity: ASCEntity) {
-        if let keyWindow = UIApplication.shared.windows.filter({ $0.isKeyWindow }).first {
-            if var topController = keyWindow.rootViewController {
-                while let presentedViewController = topController.presentedViewController {
-                    topController = presentedViewController
-                }
-                presentShareController(in: topController, entity: entity)
-            }
-        }
     }
 }
 

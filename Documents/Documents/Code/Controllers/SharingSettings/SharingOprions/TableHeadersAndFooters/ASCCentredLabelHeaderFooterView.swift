@@ -12,7 +12,12 @@ class ASCCentredLabelHeaderFooterView: UITableViewHeaderFooterView, ASCReusedIde
     
     static var reuseId: String = "ASCCentredLabelHeaderFooterView"
     
-    let centredTextLabel = UILabel()
+    lazy var centredTextLabel: UILabel = {
+        $0.textStyle = .placeholderRegular
+        $0.textAlignment = .center
+        $0.numberOfLines = 0
+        return $0
+    }(UILabel())
 
     override init(reuseIdentifier: String?) {
         super.init(reuseIdentifier: reuseIdentifier)
@@ -24,10 +29,7 @@ class ASCCentredLabelHeaderFooterView: UITableViewHeaderFooterView, ASCReusedIde
     }
     
     func configureContents() {
-        centredTextLabel.textAlignment = .center
-        centredTextLabel.numberOfLines = 0
         centredTextLabel.translatesAutoresizingMaskIntoConstraints = false
-        centredTextLabel.textColor = .lightGray
 
         contentView.addSubview(centredTextLabel)
         NSLayoutConstraint.activate([

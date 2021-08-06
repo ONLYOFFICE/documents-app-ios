@@ -105,7 +105,7 @@ class ASCSharingSettingsVerifyRightHoldersInteractor: ASCSharingSettingsVerifyRi
             let itemsForRequest = (itemsForSharingAdd + itemsForSharingRemove + itemsForSharedAccessChange).filter({ !$0.locked })
             let sharesParams = apiWorker.convertToParams(shareItems: itemsForRequest)
             
-            ASCOnlyOfficeApi.put(apiRequest, parameters: baseParams + sharesParams) { [weak self] (results, error, response) in
+            ASCOnlyOfficeApi.put(apiRequest, parameters: baseParams + sharesParams, encoding: ShareSortedParamsForXWWWFormUrlencoded()) { [weak self] (results, error, response) in
                 if let _ = results as? [[String: Any]] {
                     self?.presenter?.presentData(responseType: .presentApplyingShareSettings(.init()))
                 } else if let response = response, let self = self {
@@ -195,5 +195,35 @@ class ASCSharingSettingsVerifyRightHoldersInteractor: ASCSharingSettingsVerifyRi
     
     private func getItemIndex(byId id: String, in items: [ASCShareInfo]) -> Int? {
         items.firstIndex(where: { $0.user?.userId == id || $0.group?.id == id })
+    }
+}
+
+extension ASCSharingSettingsVerifyRightHoldersInteractor {
+    class ShareSortedParamsForXWWWFormUrlencoded: ParameterEncoding {
+        func encode(_ urlRequest: URLRequestConvertible, with parameters: Parameters?) throws -> URLRequest {
+            var resultStr = ""
+            if let parameters = parameters {
+                let getNum: (String) -> Int? = { str in
+                    if let range = str.range(of: "[0-9]+", options: .regularExpression) {
+                        return Int(str[range])
+                    }
+                    return nil
+                }
+                
+                let sortedKeys = Array(parameters.keys).sorted(by: {
+                    guard let firstIndex = getNum($0), let secondIndex = getNum($1) else { return true}
+                    return firstIndex < secondIndex
+                })
+                
+                for k in sortedKeys {
+                    let v = parameters[k]
+                    resultStr.append("\(k.addingPercentEncoding(withAllowedCharacters: .alphanumerics) ?? "")=\(v ?? "")&")
+                }
+            }
+            var request = try urlRequest.asURLRequest()
+            request.httpBody = (resultStr).data(using: .utf8)
+            request.addValue("application/x-www-form-urlencoded; charset=utf-8", forHTTPHeaderField: "Content-Type")
+            return request
+        }
     }
 }

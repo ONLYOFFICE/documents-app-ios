@@ -19,28 +19,97 @@ extension ASCOneDriveApi {
     static public let apiTemporaryLink = "drive"
 }
 
-class ASCOneDriveTokenAdapter: RequestAdapter {
-    private let accessToken: String
+struct ASCOneDriveOAuthCredential: AuthenticationCredential {
+    let accessToken: String
+    let refreshToken: String
+    let expiration: Date
+
+    var requiresRefresh: Bool {
+        return expiration < Date()
+    }
+}
+
+class ASCOneDriveRequestInterceptor: RequestInterceptor {
+    enum ASCOneDriveRequestInterceptorError: Error {
+        case unauthtorized
+    }
+
+    private weak var api: ASCOneDriveApi?
     
-    init(accessToken: String) {
-        self.accessToken = accessToken
+    init(api: ASCOneDriveApi?) {
+        self.api = api
     }
     
     func adapt(_ urlRequest: URLRequest, for session: Session, completion: @escaping (Result<URLRequest, Error>) -> Void) {
+        guard let credential = api?.credential else {
+            completion(.failure(ASCOneDriveRequestInterceptorError.unauthtorized));
+            return
+        }
+        
         var urlRequest = urlRequest
-        urlRequest.headers.update(.authorization(bearerToken: accessToken))
+        urlRequest.headers.update(.authorization(bearerToken: credential.accessToken))
         completion(.success(urlRequest))
+    }
+    
+    func retry(_ request: Request, for session: Session, dueTo error: Error, completion: @escaping (RetryResult) -> Void) {
+        guard let response = request.task?.response as? HTTPURLResponse, response.statusCode == 401 else {
+            /// The request did not fail due to a 401 Unauthorized response.
+            /// Return the original error and don't retry the request.
+            return completion(.doNotRetryWithError(error))
+        }
+        
+        refreshToken { [weak self] result in
+            guard let self = self else { return }
+            
+            switch result {
+            case .success(let credential):
+                self.api?.credential = credential
+                self.api?.onRefreshToken?(credential)
+                /// After updating the token we can safely retry the original request.
+                completion(.retry)
+            case .failure(let error):
+                completion(.doNotRetryWithError(error))
+            }
+        }
+    }
+    
+    private func refreshToken(completion: @escaping (Result<ASCOneDriveOAuthCredential, Error>) -> Void) {
+        guard let refreshToken = api?.credential?.refreshToken else {
+            completion(.failure(ASCOneDriveRequestInterceptorError.unauthtorized))
+            return
+        }
+        
+        let onedriveController = ASCConnectStorageOAuth2OneDrive()
+        onedriveController.clientId = ASCConstants.Clouds.OneDrive.clientId
+        onedriveController.redirectUrl = ASCConstants.Clouds.OneDrive.redirectUri
+        onedriveController.clientSecret = ASCConstants.Clouds.OneDrive.clientSecret
+        
+        onedriveController.accessToken(with: refreshToken) { result in
+            switch result {
+            case .success(let model):
+                let credential = ASCOneDriveOAuthCredential(
+                    accessToken: model.access_token,
+                    refreshToken: model.refresh_token,
+                    expiration: Date().adding(.second, value: model.expires_in)
+                )
+                completion(.success(credential))
+            case .failure(let error):
+                completion(.failure(error))
+            }
+        }
     }
 }
 
 class ASCOneDriveApi: ASCBaseApi {
     public let baseUrl: String = apiBaseUrl
     
-    public var token: String? = nil {
+    public var credential: ASCOneDriveOAuthCredential? {
         didSet {
             initManager()
         }
     }
+    
+    public var onRefreshToken: ((ASCOneDriveOAuthCredential) -> Void)?
     
     private var manager: Alamofire.Session = Session()
     
@@ -55,11 +124,11 @@ class ASCOneDriveApi: ASCBaseApi {
         configuration.timeoutIntervalForResource = 30
         configuration.headers = .default
         
-        let adapter = ASCOneDriveTokenAdapter(accessToken: token ?? "")
+        let interceptor = ASCOneDriveRequestInterceptor(api: self)
         
         manager = Session(
             configuration: configuration,
-            interceptor: Interceptor(adapters: [adapter]),
+            interceptor: interceptor,
             serverTrustManager: ASCServerTrustPolicyManager(evaluators: [:])
         )
     }

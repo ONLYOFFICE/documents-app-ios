@@ -43,10 +43,17 @@ class ASCOneDriveProvider: ASCSortableFileProviderProtocol {
         api = nil
     }
     
-    init(credential: URLCredential) {
-        provider = ASCOneDriveFileProvider(credential: credential)
+    init(urlCredential: URLCredential, oAuthCredential: ASCOneDriveOAuthCredential) {
+        provider = ASCOneDriveFileProvider(credential: urlCredential)
         api = ASCOneDriveApi()
-        api?.token = credential.password
+        api?.credential = oAuthCredential
+        api?.onRefreshToken = { [weak self] credential in
+            self?.provider?.credential = URLCredential(
+                user: ASCConstants.Clouds.Dropbox.clientId,
+                password: credential.accessToken,
+                persistence: .forSession
+            )
+        }
     }
     
     private func makeCloudFile(from file: FileObject) -> ASCFile {
@@ -232,9 +239,7 @@ extension ASCOneDriveProvider: ASCFileProviderProtocol {
             }
         }
 
-        if let _ = user {
-            fetch(completeon)
-        } else {
+        if user == nil || api?.credential?.requiresRefresh ?? false {
             userInfo { [weak self] success, error in
                 if success {
                     fetch(completeon)
@@ -243,6 +248,8 @@ extension ASCOneDriveProvider: ASCFileProviderProtocol {
                     completeon?(strongSelf, folder, false, error)
                 }
             }
+        } else {
+            fetch(completeon)
         }
     }
     
@@ -307,9 +314,11 @@ extension ASCOneDriveProvider: ASCFileProviderProtocol {
         var info: [String: Any] = [
             "type": type.rawValue
         ]
-
-        if let token = provider?.credential?.password {
-            info += ["token": token]
+        
+        if let authCredential = api?.credential {
+            info += ["accessToken": authCredential.accessToken]
+            info += ["refreshToken": authCredential.refreshToken]
+            info += ["expiration": authCredential.expiration.timeIntervalSinceNow]
         }
         
         if let user = user {
@@ -334,11 +343,32 @@ extension ASCOneDriveProvider: ASCFileProviderProtocol {
                 user = ASCUser(JSON: userJson)
             }
             
-            if let token = json["token"] as? String {
-                let credential = URLCredential(user: ASCConstants.Clouds.OneDrive.clientId, password: token, persistence: .forSession)
-                provider = ASCOneDriveFileProvider(credential: credential)
+            if let accessToken = json["accessToken"] as? String,
+               let refreshToken = json["refreshToken"] as? String,
+               let expiration = json["expiration"] as? Double
+            {
+                let oAuthCredential = ASCOneDriveOAuthCredential(
+                    accessToken: accessToken,
+                    refreshToken: refreshToken,
+                    expiration: Date(timeIntervalSinceNow: expiration)
+                )
+                let urlCredential = URLCredential(
+                    user: ASCConstants.Clouds.Dropbox.clientId,
+                    password: oAuthCredential.accessToken,
+                    persistence: .forSession
+                )
+                
+                provider = ASCOneDriveFileProvider(credential: urlCredential)
+                
                 api = ASCOneDriveApi()
-                api?.token = credential.password
+                api?.credential = oAuthCredential
+                api?.onRefreshToken = { [weak self] credential in
+                    self?.provider?.credential = URLCredential(
+                        user: ASCConstants.Clouds.Dropbox.clientId,
+                        password: credential.accessToken,
+                        persistence: .forSession
+                    )
+                }
             }
         }
     }

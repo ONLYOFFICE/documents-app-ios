@@ -318,7 +318,7 @@ extension ASCOneDriveProvider: ASCFileProviderProtocol {
         if let authCredential = api?.credential {
             info += ["accessToken": authCredential.accessToken]
             info += ["refreshToken": authCredential.refreshToken]
-            info += ["expiration": authCredential.expiration.timeIntervalSinceNow]
+            info += ["expiration": authCredential.expiration.timeIntervalSince1970]
         }
         
         if let user = user {
@@ -350,7 +350,7 @@ extension ASCOneDriveProvider: ASCFileProviderProtocol {
                 let oAuthCredential = ASCOneDriveOAuthCredential(
                     accessToken: accessToken,
                     refreshToken: refreshToken,
-                    expiration: Date(timeIntervalSinceNow: expiration)
+                    expiration: Date(timeIntervalSince1970: expiration)
                 )
                 let urlCredential = URLCredential(
                     user: ASCConstants.Clouds.Dropbox.clientId,

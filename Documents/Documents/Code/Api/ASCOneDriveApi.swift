@@ -105,7 +105,9 @@ class ASCOneDriveApi: ASCBaseApi {
     
     public var credential: ASCOneDriveOAuthCredential? {
         didSet {
-            initManager()
+            if oldValue == nil {
+                initManager()
+            }
         }
     }
     

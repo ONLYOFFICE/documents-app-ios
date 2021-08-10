@@ -28,6 +28,8 @@ class ASCConnectCloudViewController: UITableViewController {
             return NSLocalizedString("WebDAV", comment: "")
         case .onedrive:
             return NSLocalizedString("OneDrive", comment: "")
+        case .kdrive:
+            return NSLocalizedString("kDrive", comment: "")
         default:
             return NSLocalizedString("Unknown", comment: "")
         }
@@ -49,6 +51,8 @@ class ASCConnectCloudViewController: UITableViewController {
             return Asset.Images.logoWebdavLarge.image
         case .onedrive:
             return Asset.Images.logoOnedriveLarge.image
+        case .kdrive:
+            return Asset.Images.logoKdriveLarge.image
         default:
             return nil
         }
@@ -66,6 +70,8 @@ class ASCConnectCloudViewController: UITableViewController {
             return .webdavAll
         case .onedrive:
             return .onedriveAll
+        case .kdrive:
+            return .kdriveAll
         default:
             return .unknown
         }
@@ -81,6 +87,8 @@ class ASCConnectCloudViewController: UITableViewController {
             return NSLocalizedString("Yandex Disk", comment: "")
         case .onedrive:
             return "OneDrive"
+        case .kdrive:
+            return "kDrive"
         default:
             return NSLocalizedString("All Files", comment: "")
         }
@@ -88,7 +96,7 @@ class ASCConnectCloudViewController: UITableViewController {
 
     fileprivate let providerRootFolderPath: ((_ type: ASCFileProviderType) -> String) = { type in
         switch type {
-        case .nextcloud, .owncloud, .yandex, .webdav:
+        case .nextcloud, .owncloud, .yandex, .webdav, .kdrive:
             return "/"
         default:
             return ""
@@ -126,7 +134,10 @@ class ASCConnectCloudViewController: UITableViewController {
                     presentProviderConnection(by: providerType)
                 case .dropbox:
                     presentProviderConnection(by: providerType, animated: true)
+                case .onedrive:
+                    presentProviderConnection(by: providerType, animated: true)
                 default:
+                    tableView.deselectRow(at: indexPath, animated: true)
                     break
                 }
             }
@@ -214,13 +225,21 @@ class ASCConnectCloudViewController: UITableViewController {
                 self?.tableView.reloadData()
                 complation(success, provider)
             }
+        case .kDrive:
+            checkKdriveProvider(info: info) { success, provider in
+                hud?.hide(animated: true)
+                complation(success, provider)
+            }
         default:
             hud?.hide(animated: false)
             complation(false, nil)
         }
     }
 
-    private func checkGoogleDriveProvider(info: [String: Any], complation: @escaping ((_ success: Bool, _ provider: ASCFileProviderProtocol?) -> Void)) {
+    private func checkGoogleDriveProvider(
+        info: [String: Any],
+        complation: @escaping ((_ success: Bool, _ provider: ASCFileProviderProtocol?) -> Void))
+    {
         guard
             let user = info["user"] as? Data
         else {
@@ -237,7 +256,10 @@ class ASCConnectCloudViewController: UITableViewController {
         }
     }
 
-    private func checkDropboxProvider(info: [String: Any], complation: @escaping ((_ success: Bool, _ provider: ASCFileProviderProtocol?) -> Void)) {
+    private func checkDropboxProvider(
+        info: [String: Any],
+        complation: @escaping ((_ success: Bool, _ provider: ASCFileProviderProtocol?) -> Void))
+    {
         guard
             let token = info["token"] as? String
         else {
@@ -255,7 +277,10 @@ class ASCConnectCloudViewController: UITableViewController {
         }
     }
     
-    private func checkNextCloudProvider(info: [String: Any], complation: @escaping ((_ success: Bool, _ provider: ASCFileProviderProtocol?) -> Void)) {
+    private func checkNextCloudProvider(
+        info: [String: Any],
+        complation: @escaping ((_ success: Bool, _ provider: ASCFileProviderProtocol?) -> Void))
+    {
         guard
             let portal = info["url"] as? String,
             let login = info["login"] as? String,
@@ -276,7 +301,10 @@ class ASCConnectCloudViewController: UITableViewController {
         }
     }
 
-    private func checkOwnCloudProvider(info: [String: Any], complation: @escaping ((_ success: Bool, _ provider: ASCFileProviderProtocol?) -> Void)) {
+    private func checkOwnCloudProvider(
+        info: [String: Any],
+        complation: @escaping ((_ success: Bool, _ provider: ASCFileProviderProtocol?) -> Void))
+    {
         guard
             let portal = info["url"] as? String,
             let login = info["login"] as? String,
@@ -297,7 +325,10 @@ class ASCConnectCloudViewController: UITableViewController {
         }
     }
 
-    private func checkYandexCloudProvider(info: [String: Any], complation: @escaping ((_ success: Bool, _ provider: ASCFileProviderProtocol?) -> Void)) {
+    private func checkYandexCloudProvider(
+        info: [String: Any],
+        complation: @escaping ((_ success: Bool, _ provider: ASCFileProviderProtocol?) -> Void))
+    {
         guard
             let login = info["login"] as? String,
             let password = info["password"] as? String
@@ -318,6 +349,34 @@ class ASCConnectCloudViewController: UITableViewController {
         yandexCloudProvider.fetch(for: rootFolder, parameters: [:]) { provider, folder, success, error in
             DispatchQueue.main.async(execute: {
                 complation(success, success ? yandexCloudProvider : nil)
+            })
+        }
+    }
+    
+    private func checkKdriveProvider(
+        info: [String: Any],
+        complation: @escaping ((_ success: Bool, _ provider: ASCFileProviderProtocol?) -> Void))
+    {
+        guard
+            let login = info["login"] as? String,
+            let password = info["password"] as? String
+        else {
+            complation(false, nil)
+            return
+        }
+
+        let credential = URLCredential(user: login, password: password, persistence: .permanent)
+        let kDriveCloudProvider = ASCKdriveFileProvider(credential: credential)
+        let rootFolder: ASCFolder = {
+            $0.title = NSLocalizedString("All Files", comment: "Category title")
+            $0.rootFolderType = .kdriveAll
+            $0.id = providerRootFolderPath(kDriveCloudProvider.type)
+            return $0
+        }(ASCFolder())
+
+        kDriveCloudProvider.fetch(for: rootFolder, parameters: [:]) { provider, folder, success, error in
+            DispatchQueue.main.async(execute: {
+                complation(success, success ? kDriveCloudProvider : nil)
             })
         }
     }
@@ -358,16 +417,22 @@ class ASCConnectCloudViewController: UITableViewController {
         }
     }
     
-    private func checkOneDriveProvider(info: [String: Any], complation: @escaping ((_ success: Bool, _ provider: ASCFileProviderProtocol?) -> Void)) {
+    private func checkOneDriveProvider(
+        info: [String: Any],
+        complation: @escaping ((_ success: Bool, _ provider: ASCFileProviderProtocol?) -> Void))
+    {
         guard
-            let token = info["token"] as? String
+            let accessToken = info["token"] as? String,
+            let refreshToken = info["refresh_token"] as? String,
+            let expiration = info["expires_in"] as? Double
         else {
             complation(false, nil)
             return
         }
         
-        let credential = URLCredential(user: ASCConstants.Clouds.OneDrive.clientId, password: token, persistence: .forSession)
-        let onedriveCloudProvider = ASCOneDriveProvider(credential: credential)
+        let urlCredential = URLCredential(user: ASCConstants.Clouds.OneDrive.clientId, password: accessToken, persistence: .forSession)
+        let oAuthCredential = OneDriveOAuthCredential(accessToken: accessToken, refreshToken: refreshToken, expiration: Date(timeIntervalSince1970: expiration))
+        let onedriveCloudProvider = ASCOneDriveProvider(urlCredential: urlCredential, oAuthCredential: oAuthCredential)
         
         onedriveCloudProvider.isReachable { success, error in
             DispatchQueue.main.async(execute: {
@@ -455,6 +520,15 @@ class ASCConnectCloudViewController: UITableViewController {
             } else {
                 connectionVC = oauth2VC
             }
+        case .kdrive:
+            connectionVC = ASCConnectStorageWebDavController.instantiate(from: Storyboard.connectStorage)
+            if let viewController = connectionVC as? ASCConnectStorageWebDavController {
+                viewController.complation = authComplation(info:)
+                viewController.title = providerName(type)
+                viewController.provider = .kDrive
+                viewController.needServer = false
+                viewController.logo = providerImage(type)
+            }
         default:
             break
         }
@@ -503,6 +577,15 @@ class ASCConnectCloudViewController: UITableViewController {
                 viewController.title = providerName(.yandex)
                 viewController.provider = .yandex
                 viewController.logo = providerImage(.yandex)
+                viewController.needServer = false
+            }
+        case "kdriveSegue":
+            if let viewController = segue.destination as? ASCConnectStorageWebDavController {
+                viewController.complation = authComplation(info:)
+                viewController.title = providerName(.kdrive)
+                viewController.provider = .kDrive
+                viewController.logo = providerImage(.kdrive)
+                viewController.needServer = false
             }
         default:
             break

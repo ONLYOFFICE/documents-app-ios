@@ -8,7 +8,7 @@
 
 import UIKit
 
-protocol ASCLogInterceptorDelegate: class {
+protocol ASCLogInterceptorDelegate: AnyObject {
     func log(message: String)
 }
 

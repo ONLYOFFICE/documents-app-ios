@@ -51,7 +51,7 @@ extension UIStoryboard {
 ///
 enum Storyboard: String {
     case launchScreen, main, login, sort, transfer, intro, connectStorage,
-         settings, userProfile, createPortal, share, debug
+         settings, userProfile, createPortal, debug
     
     var rawValue: String {
         get {
@@ -76,8 +76,6 @@ enum Storyboard: String {
                 return StoryboardScene.UserProfile.storyboardName
             case .createPortal:
                 return StoryboardScene.CreatePortal.storyboardName
-            case .share:
-                return StoryboardScene.Share.storyboardName
             case .debug:
                 return StoryboardScene.Debug.storyboardName
             }

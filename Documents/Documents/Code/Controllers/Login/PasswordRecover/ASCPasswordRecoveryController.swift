@@ -17,14 +17,12 @@ class ASCPasswordRecoveryController {
     
     func forgotPassword(portalUrl: String, options: Parameters, completion: @escaping ((Result<ASCResponsePassword, Error>) -> Void)) {
 
-        let api        = ASCOnlyOfficeApi.shared
-        let apiRequest = ASCOnlyOfficeApi.apiForgotPassword
+        let networkClient = OnlyofficeApiClient()
         
-        api.baseUrl = portalUrl
-        
-        ASCOnlyOfficeApi.post(apiRequest, parameters: options) { (results, error, request) in
-            if let results = results as? String {
-                completion(.success(ASCResponsePassword(response: results)))
+        networkClient.configure(url: portalUrl)
+        networkClient.request(OnlyofficeAPI.Endpoints.Settings.forgotPassword, options) { response, error in
+            if let result = response?.result {
+                completion(.success(ASCResponsePassword(response: result)))
             }
             if let error = error {
                 completion(.failure(error))

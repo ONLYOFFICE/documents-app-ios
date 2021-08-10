@@ -9,6 +9,7 @@
 import UIKit
 import FilesProvider
 import FileKit
+import Alamofire
 
 class ASCNextCloudProvider: ASCWebDAVProvider {
 
@@ -31,7 +32,7 @@ class ASCNextCloudProvider: ASCWebDAVProvider {
         }
     }
 
-    private var api: ASCNextCloudApi?
+    private var apiClient: NextcloudApiClient?
     private let webdavEndpoint = "/remote.php/dav/files"
     private let endpointPath = "/remote.php/dav/files/%@"
 
@@ -39,7 +40,7 @@ class ASCNextCloudProvider: ASCWebDAVProvider {
 
     override init() {
         super.init()
-        api = nil
+        apiClient = nil
     }
 
     override init(baseURL: URL, credential: URLCredential) {
@@ -60,10 +61,16 @@ class ASCNextCloudProvider: ASCWebDAVProvider {
         super.init(baseURL: providerUrl, credential: credential)
         provider?.credentialType = .basic
 
-        api = ASCNextCloudApi()
-        api?.baseUrl = ((providerUrl.scheme != nil) ? "\(providerUrl.scheme!)://" : "") + "\(providerUrl.host ?? "")"
-        api?.user = credential.user
-        api?.password = credential.password
+        if let user = credential.user, let password = credential.password {
+            apiClient = NextcloudApiClient(
+                url: ((providerUrl.scheme != nil) ? "\(providerUrl.scheme!)://" : "") + "\(providerUrl.host ?? "")",
+                user: user,
+                password: password
+            )
+            userInfo { success, error in
+                log.debug("Nexcloud fetch storagestats", success, error ?? "")
+            }
+        }
     }
 
     override func copy() -> ASCFileProviderProtocol {
@@ -80,7 +87,7 @@ class ASCNextCloudProvider: ASCWebDAVProvider {
     
     override func cancel() {
         super.cancel()
-        api?.cancelAllTasks()
+        apiClient?.cancelAll()
     }
 
     override func deserialize(_ jsonString: String) {
@@ -105,12 +112,12 @@ class ASCNextCloudProvider: ASCWebDAVProvider {
 
                 provider = WebDAVFileProvider(baseURL: providerUrl, credential: credential)
                 provider?.credentialType = .basic
-
-                api = ASCNextCloudApi()
-
-                api?.baseUrl = ((providerUrl.scheme != nil) ? "\(providerUrl.scheme!)://" : "") + "\(providerUrl.host ?? "")"
-                api?.user = credential.user
-                api?.password = credential.password
+                
+                apiClient = NextcloudApiClient(
+                    url: ((providerUrl.scheme != nil) ? "\(providerUrl.scheme!)://" : "") + "\(providerUrl.host ?? "")",
+                    user: userId,
+                    password: password
+                )
             }
         }
     }
@@ -119,30 +126,31 @@ class ASCNextCloudProvider: ASCWebDAVProvider {
     ///
     /// - Parameter completeon: a closure with result of user or error
     override func userInfo(completeon: ASCProviderUserInfoHandler?) {
-        guard let api = api else { return }
+        guard let apiClient = apiClient else { return }
 
         let params = [
             "dir": "/"
         ]
-        api.get(ASCNextCloudApi.apiStorageStats, parameters: params) { [weak self] results, error, response in
-            guard let strongSelf = self else { return }
-            if
-                error == nil,
-                let results = results as? [String: Any],
-                let data = results["data"] as? [String: Any]
-            {
-                strongSelf.user = ASCUser()
-                strongSelf.user?.userId = data["owner"] as? String
-                strongSelf.user?.displayName = data["ownerDisplayName"] as? String
 
-                completeon?(true, nil)
-            } else {
-                if let localResponse = response {
-                    completeon?(false, ASCProviderError(msg: api.errorMessage(by: localResponse)))
-                } else {
-                    completeon?(false, nil)
-                }
+        apiClient.request(NextcloudAPI.Endpoints.currentAccount, params) { [weak self] response, error in
+            guard let strongSelf = self else {
+                completeon?(false, nil)
+                return
             }
+            
+            guard let account = response?.result else {
+                completeon?(false, error)
+                if let error = error {
+                    log.debug(error)
+                }
+                return
+            }
+            
+            strongSelf.user = ASCUser()
+            strongSelf.user?.userId = account.owner
+            strongSelf.user?.displayName = account.ownerDisplayName
+
+            completeon?(true, nil)
         }
     }
 

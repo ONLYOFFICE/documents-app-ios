@@ -157,6 +157,31 @@ začněte používat vaší kancelář</target>
       <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="12.5" build-num="12E262"/>
     </header>
     <body>
+      <trans-unit id="/%d selected:dict/NSStringLocalizedFormatKey:dict/:string" xml:space="preserve">
+        <source>%#@items@</source>
+        <target>%#@items@</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="/%d selected:dict/items:dict/few:dict/:string" xml:space="preserve">
+        <source>%d selected</source>
+        <target>%d selected</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="/%d selected:dict/items:dict/many:dict/:string" xml:space="preserve">
+        <source>%d selected</source>
+        <target>%d selected</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="/%d selected:dict/items:dict/one:dict/:string" xml:space="preserve">
+        <source>%d selected</source>
+        <target>%d selected</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="/%d selected:dict/items:dict/other:dict/:string" xml:space="preserve">
+        <source>%d selected</source>
+        <target>%d selected</target>
+        <note/>
+      </trans-unit>
       <trans-unit id="/%lu File selected:dict/NSStringLocalizedFormatKey:dict/:string" xml:space="preserve">
         <source>%#@files@</source>
         <target>%#@files@</target>
@@ -415,10 +440,8 @@ začněte používat vaší kancelář</target>
         <note>Class = "UILabel"; text = "Account"; ObjectID = "AkN-p0-Mzy";</note>
       </trans-unit>
       <trans-unit id="AqB-m0-2UQ.text" xml:space="preserve">
-        <source>If a user with the 
-email exists, the password change instruction has
-been sent to this email address.</source>
-        <note>Class = "UILabel"; text = "If a user with the \nemail exists, the password change instruction has\nbeen sent to this email address."; ObjectID = "AqB-m0-2UQ"; Note = "Do not translate";</note>
+        <source>If a user with the email exists, the password change instruction has been sent to this email address.</source>
+        <note>Class = "UILabel"; text = "If a user with the email exists, the password change instruction has been sent to this email address."; ObjectID = "AqB-m0-2UQ"; Note = "Do not translate";</note>
       </trans-unit>
       <trans-unit id="AqJ-b9-XQV.normalTitle" xml:space="preserve">
         <source>Continue</source>
@@ -426,9 +449,9 @@ been sent to this email address.</source>
         <note>Class = "UIButton"; normalTitle = "Continue"; ObjectID = "AqJ-b9-XQV";</note>
       </trans-unit>
       <trans-unit id="B8R-KD-Lml.text" xml:space="preserve">
-        <source>Set up an application to generate the authentication codes</source>
+        <source>Set up an application to generate the authentication codes</source>
         <target>Nastavit aplikaci pro vytváření kódů pro ověřování se</target>
-        <note>Class = "UILabel"; text = "Set up an application to generate the authentication codes"; ObjectID = "B8R-KD-Lml";</note>
+        <note>Class = "UILabel"; text = "Set up an application to generate the authentication codes"; ObjectID = "B8R-KD-Lml";</note>
       </trans-unit>
       <trans-unit id="DK4-QO-Jde.text" xml:space="preserve">
         <source>Two-Factor
@@ -465,14 +488,14 @@ ověření</target>
         <note>Class = "UILabel"; text = "Select an account to sign in"; ObjectID = "Gkv-tP-6EM";</note>
       </trans-unit>
       <trans-unit id="K5M-Of-QAk.text" xml:space="preserve">
-        <source>Copy the key and paste it to the Google Authenticator application</source>
+        <source>Copy the key and paste it to the Google Authenticator application</source>
         <target>Zkopírujte klíč a vložte ho do aplikace Google Authenticator</target>
-        <note>Class = "UILabel"; text = "Copy the key and paste it to the Google Authenticator application"; ObjectID = "K5M-Of-QAk";</note>
+        <note>Class = "UILabel"; text = "Copy the key and paste it to the Google Authenticator application"; ObjectID = "K5M-Of-QAk";</note>
       </trans-unit>
       <trans-unit id="LwV-Os-V4m.text" xml:space="preserve">
-        <source>Launch Google Authenticator application</source>
+        <source>Launch Google Authenticator application</source>
         <target>Spustit aplikaci Google Authenticator</target>
-        <note>Class = "UILabel"; text = "Launch Google Authenticator application"; ObjectID = "LwV-Os-V4m";</note>
+        <note>Class = "UILabel"; text = "Launch Google Authenticator application"; ObjectID = "LwV-Os-V4m";</note>
       </trans-unit>
       <trans-unit id="MNA-z2-ITx.text" xml:space="preserve">
         <source>Enter a phone number that can be used to verify your identity</source>
@@ -508,9 +531,9 @@ ověření</target>
         <note>Class = "UIButton"; normalTitle = "Sign in"; ObjectID = "QAn-vu-xMR";</note>
       </trans-unit>
       <trans-unit id="R2F-fc-11j.text" xml:space="preserve">
-        <source>Run the application and tap the new account icon</source>
+        <source>Run the application and tap the new account icon</source>
         <target>Spusťte aplikaci a ťukněte na ikonu pro nový účet</target>
-        <note>Class = "UILabel"; text = "Run the application and tap the new account icon"; ObjectID = "R2F-fc-11j";</note>
+        <note>Class = "UILabel"; text = "Run the application and tap the new account icon"; ObjectID = "R2F-fc-11j";</note>
       </trans-unit>
       <trans-unit id="RDr-pH-MKV.normalTitle" xml:space="preserve">
         <source>Open</source>
@@ -518,9 +541,9 @@ ověření</target>
         <note>Class = "UIButton"; normalTitle = "Open"; ObjectID = "RDr-pH-MKV";</note>
       </trans-unit>
       <trans-unit id="SH2-Fd-5Ze.text" xml:space="preserve">
-        <source>Open authentication app and copy code from there</source>
+        <source>Open authentication app and copy code from there</source>
         <target>Otevřete aplikaci pro ověření a zkopírujte z ní kód</target>
-        <note>Class = "UILabel"; text = "Open authentication app and copy code from there"; ObjectID = "SH2-Fd-5Ze";</note>
+        <note>Class = "UILabel"; text = "Open authentication app and copy code from there"; ObjectID = "SH2-Fd-5Ze";</note>
       </trans-unit>
       <trans-unit id="W8Q-CO-c0L.text" xml:space="preserve">
         <source>We have sent you an SMS with a code to the number %@</source>
@@ -606,9 +629,9 @@ ověření</target>
         <note>Class = "UIBarButtonItem"; title = "Next"; ObjectID = "twm-cB-W69";</note>
       </trans-unit>
       <trans-unit id="vgV-fF-jOl.text" xml:space="preserve">
-        <source>Copy the code generated by Google Authenticator application and insert it to the input field</source>
+        <source>Copy the code generated by Google Authenticator application and insert it to the input field</source>
         <target>Zkopírujte kód vygenerovaný aplikací Google Authenticator a vložte jej do pole pro vložení</target>
-        <note>Class = "UILabel"; text = "Copy the code generated by Google Authenticator application and insert it to the input field"; ObjectID = "vgV-fF-jOl";</note>
+        <note>Class = "UILabel"; text = "Copy the code generated by Google Authenticator application and insert it to the input field"; ObjectID = "vgV-fF-jOl";</note>
       </trans-unit>
       <trans-unit id="vlQ-jV-iFo.text" xml:space="preserve">
         <source>Please set up an application to generate the codes for the portal access (e.g. Google Authenticator) to continue the work at the portal</source>
@@ -912,98 +935,6 @@ Poznámka: Pokud zapomenete přístupový kód, budete muset aplikaci smazat a p
         <source>Support</source>
         <target>Podpora</target>
         <note>Class = "UILabel"; text = "Support"; ObjectID = "raN-Fz-DnL";</note>
-      </trans-unit>
-    </body>
-  </file>
-  <file original="Documents/Base.lproj/Share.storyboard" source-language="en" target-language="cs" datatype="plaintext">
-    <header>
-      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="12.5" build-num="12E262"/>
-    </header>
-    <body>
-      <trans-unit id="9Wg-zE-nZA.segmentTitles[0]" xml:space="preserve">
-        <source>Users</source>
-        <target>Uživatelé</target>
-        <note>Class = "UISegmentedControl"; 9Wg-zE-nZA.segmentTitles[0] = "Users"; ObjectID = "9Wg-zE-nZA";</note>
-      </trans-unit>
-      <trans-unit id="9Wg-zE-nZA.segmentTitles[1]" xml:space="preserve">
-        <source>Groups</source>
-        <target>Skupiny</target>
-        <note>Class = "UISegmentedControl"; 9Wg-zE-nZA.segmentTitles[1] = "Groups"; ObjectID = "9Wg-zE-nZA";</note>
-      </trans-unit>
-      <trans-unit id="75q-CN-6uI.text" xml:space="preserve">
-        <source>No available records</source>
-        <target>Žádné dostupné záznamy</target>
-        <note>Class = "UILabel"; text = "No available records"; ObjectID = "75q-CN-6uI";</note>
-      </trans-unit>
-      <trans-unit id="HLh-xV-DgI.headerTitle" xml:space="preserve">
-        <source>Access</source>
-        <target>Přístup</target>
-        <note>Class = "UITableViewSection"; headerTitle = "Access"; ObjectID = "HLh-xV-DgI";</note>
-      </trans-unit>
-      <trans-unit id="ZE7-40-yeL.text" xml:space="preserve">
-        <source>Label</source>
-        <target>Štítek</target>
-        <note>Class = "UILabel"; text = "Label"; ObjectID = "ZE7-40-yeL"; Note = "Do not translate";</note>
-      </trans-unit>
-      <trans-unit id="ZW9-Zh-W3r.segmentTitles[0]" xml:space="preserve">
-        <source>Full Access</source>
-        <target>Plný přístup</target>
-        <note>Class = "UISegmentedControl"; ZW9-Zh-W3r.segmentTitles[0] = "Full Access"; ObjectID = "ZW9-Zh-W3r";</note>
-      </trans-unit>
-      <trans-unit id="ZW9-Zh-W3r.segmentTitles[1]" xml:space="preserve">
-        <source>Read Only</source>
-        <target>Pouze pro čtení</target>
-        <note>Class = "UISegmentedControl"; ZW9-Zh-W3r.segmentTitles[1] = "Read Only"; ObjectID = "ZW9-Zh-W3r";</note>
-      </trans-unit>
-      <trans-unit id="ZW9-Zh-W3r.segmentTitles[2]" xml:space="preserve">
-        <source>Deny Access</source>
-        <target>Zamítnout přístup</target>
-        <note>Class = "UISegmentedControl"; ZW9-Zh-W3r.segmentTitles[2] = "Deny Access"; ObjectID = "ZW9-Zh-W3r";</note>
-      </trans-unit>
-      <trans-unit id="bHR-n3-evx.text" xml:space="preserve">
-        <source>User Name</source>
-        <target>Uživatelské jméno</target>
-        <note>Class = "UILabel"; text = "User Name"; ObjectID = "bHR-n3-evx"; Note = "Do not translate";</note>
-      </trans-unit>
-      <trans-unit id="c9E-27-xIy.text" xml:space="preserve">
-        <source>Deny Access</source>
-        <target>Zamítnout přístup</target>
-        <note>Class = "UILabel"; text = "Deny Access"; ObjectID = "c9E-27-xIy";</note>
-      </trans-unit>
-      <trans-unit id="cmV-9P-RqY.text" xml:space="preserve">
-        <source>Review</source>
-        <target>Revize</target>
-        <note>Class = "UILabel"; text = "Review"; ObjectID = "cmV-9P-RqY";</note>
-      </trans-unit>
-      <trans-unit id="kAs-JV-Zff.text" xml:space="preserve">
-        <source>Add users or groups and give them permissions to read, review or edit the documents.</source>
-        <target>Přidávejte uživatele nebo skupiny a dejte jim oprávnění ke čtení, prohlížení nebo úpravě dokumentů.</target>
-        <note>Class = "UILabel"; text = "Add users or groups and give them permissions to read, review or edit the documents."; ObjectID = "kAs-JV-Zff";</note>
-      </trans-unit>
-      <trans-unit id="noV-Xw-dnb.text" xml:space="preserve">
-        <source>Read Only</source>
-        <target>Pouze pro čtení</target>
-        <note>Class = "UILabel"; text = "Read Only"; ObjectID = "noV-Xw-dnb";</note>
-      </trans-unit>
-      <trans-unit id="v5j-Jm-YE4.text" xml:space="preserve">
-        <source>Access</source>
-        <target>Přístup</target>
-        <note>Class = "UILabel"; text = "Access"; ObjectID = "v5j-Jm-YE4"; Note = "Do not translate";</note>
-      </trans-unit>
-      <trans-unit id="xY8-if-2h2.title" xml:space="preserve">
-        <source>Sharing Settings</source>
-        <target>Sdílet</target>
-        <note>Class = "UINavigationItem"; title = "Sharing Settings"; ObjectID = "xY8-if-2h2";</note>
-      </trans-unit>
-      <trans-unit id="xae-c9-kdf.title" xml:space="preserve">
-        <source>Users</source>
-        <target>Uživatelé</target>
-        <note>Class = "UINavigationItem"; title = "Users"; ObjectID = "xae-c9-kdf";</note>
-      </trans-unit>
-      <trans-unit id="zUl-mf-gTQ.text" xml:space="preserve">
-        <source>Full Access</source>
-        <target>Plný přístup</target>
-        <note>Class = "UILabel"; text = "Full Access"; ObjectID = "zUl-mf-gTQ";</note>
       </trans-unit>
     </body>
   </file>
@@ -1393,6 +1324,10 @@ Poznámka: Pokud zapomenete přístupový kód, budete muset aplikaci smazat a p
       <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="12.5" build-num="12E262"/>
     </header>
     <body>
+      <trans-unit id="%d selected" xml:space="preserve">
+        <source>%d selected</source>
+        <note>Count of seclected rows: count + selected</note>
+      </trans-unit>
       <trans-unit id="%i of %i" xml:space="preserve">
         <source>%1$i of %2$i</source>
         <target>%1$i z %2$i</target>
@@ -1423,6 +1358,26 @@ Poznámka: Pokud zapomenete přístupový kód, budete muset aplikaci smazat a p
         <target>Soubor s podobným názvem již existuje v adresáři dokumentů v zařízení.</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
+      <trans-unit id="A user or group will be able only to view the document and add comments, as well as manage them." xml:space="preserve">
+        <source>A user or group will be able only to view the document and add comments, as well as manage them.</source>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="A user or group will be able only to view the document and fill in the forms inserted into the document." xml:space="preserve">
+        <source>A user or group will be able only to view the document and fill in the forms inserted into the document.</source>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="A user or group will be able only to view the document." xml:space="preserve">
+        <source>A user or group will be able only to view the document.</source>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="A user or group will be able to view and change the document without actually editing it, but all the changes made by a reviewer will be recorded and shown to the file owner (or a person who has full access to the file) so that he/she will be able to accept or reject them." xml:space="preserve">
+        <source>A user or group will be able to view and change the document without actually editing it, but all the changes made by a reviewer will be recorded and shown to the file owner (or a person who has full access to the file) so that he/she will be able to accept or reject them.</source>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="A user or group will be able to view and edit the document as well as to share this document." xml:space="preserve">
+        <source>A user or group will be able to view and edit the document as well as to share this document.</source>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
       <trans-unit id="A0 (84,1%@ x 119,9%@)" xml:space="preserve">
         <source>A0 (84,1%1$@ x 119,9%2$@)</source>
         <target>A0 (84,1%1$@ x 119,9%2$@)</target>
@@ -1443,6 +1398,18 @@ Poznámka: Pokud zapomenete přístupový kód, budete muset aplikaci smazat a p
         <target>A6 (10,5%1$@ x 14,8%2$@)</target>
         <note>Format info</note>
       </trans-unit>
+      <trans-unit id="Access by external link" xml:space="preserve">
+        <source>Access by external link</source>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Access rights" xml:space="preserve">
+        <source>Access rights</source>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Access settings" xml:space="preserve">
+        <source>Access settings</source>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
       <trans-unit id="Account name is empty" xml:space="preserve">
         <source>Account name is empty</source>
         <target>Název účtu je prázdný</target>
@@ -1455,6 +1422,15 @@ Poznámka: Pokud zapomenete přístupový kód, budete muset aplikaci smazat a p
       </trans-unit>
       <trans-unit id="Add files to Favorites for quick access directly from the editor." xml:space="preserve">
         <source>Add files to Favorites for quick access directly from the editor.</source>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Add message" xml:space="preserve">
+        <source>Add message</source>
+        <note>Sharing settings add notification message</note>
+      </trans-unit>
+      <trans-unit id="Add users or groups and give them to &#10; read, review or edit documents." xml:space="preserve">
+        <source>Add users or groups and give them to 
+ read, review or edit documents.</source>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Adding to Favorites" xml:space="preserve">
@@ -1476,10 +1452,18 @@ Poznámka: Pokud zapomenete přístupový kód, budete muset aplikaci smazat a p
         <target>Všechny soubory</target>
         <note>Category title</note>
       </trans-unit>
+      <trans-unit id="Allow access via external link" xml:space="preserve">
+        <source>Allow access via external link</source>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
       <trans-unit id="An unexpected error has occurred. Please try again later. Sorry for inconvenience." xml:space="preserve">
         <source>An unexpected error has occurred. Please try again later. Sorry for inconvenience.</source>
         <target>Došlo k neočekávané chybě. Prosím zkuste to znovu později. Omlouváme se za nepříjemnosti.</target>
         <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Applying" xml:space="preserve">
+        <source>Applying</source>
+        <note>Caption of the process</note>
       </trans-unit>
       <trans-unit id="Are you sure you want to delete the account %@ from this device?" xml:space="preserve">
         <source>Are you sure you want to delete the account %@ from this device?</source>
@@ -1585,6 +1569,10 @@ Poznámka: Pokud zapomenete přístupový kód, budete muset aplikaci smazat a p
         <source>Collaborate with your team</source>
         <target>Spolupracujte s vaším týmem</target>
         <note>Introduction Step Five - Title</note>
+      </trans-unit>
+      <trans-unit id="Comment" xml:space="preserve">
+        <source>Comment</source>
+        <note>Share status</note>
       </trans-unit>
       <trans-unit id="Common Documents" xml:space="preserve">
         <source>Common Documents</source>
@@ -1722,11 +1710,6 @@ jiné, které používají protokol WebDAV.</target>
         <target>Soubor se nepodařilo duplikovat.</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
-      <trans-unit id="Could not empty trash." xml:space="preserve">
-        <source>Could not empty trash.</source>
-        <target>Nelze vyprázdnit koš.</target>
-        <note>No comment provided by engineer.</note>
-      </trans-unit>
       <trans-unit id="Could not export the file." xml:space="preserve">
         <source>Could not export the file.</source>
         <target>Soubor se nepodařilo odeslat.</target>
@@ -1794,6 +1777,10 @@ jiné, které používají protokol WebDAV.</target>
         <target>Vytváření</target>
         <note>Caption of the process</note>
       </trans-unit>
+      <trans-unit id="Custom filter" xml:space="preserve">
+        <source>Custom filter</source>
+        <note>Share status</note>
+      </trans-unit>
       <trans-unit id="Date" xml:space="preserve">
         <source>Date</source>
         <target>Datum</target>
@@ -1848,6 +1835,10 @@ jiné, které používají protokol WebDAV.</target>
         <source>Deny Access</source>
         <target>Zamítnout přístup</target>
         <note>Share status</note>
+      </trans-unit>
+      <trans-unit id="Deselect all" xml:space="preserve">
+        <source>Deselect all</source>
+        <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Disconnect third party" xml:space="preserve">
         <source>Disconnect third party</source>
@@ -1969,6 +1960,10 @@ jiné, které používají protokol WebDAV.</target>
         <target>Chyba</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
+      <trans-unit id="Export" xml:space="preserve">
+        <source>Export</source>
+        <note>Button title</note>
+      </trans-unit>
       <trans-unit id="Failed online conversion service." xml:space="preserve">
         <source>Failed online conversion service.</source>
         <target>Služba online konverze se nezdařila.</target>
@@ -2058,6 +2053,10 @@ jiné, které používají protokol WebDAV.</target>
         <target>Složky</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
+      <trans-unit id="Form filling" xml:space="preserve">
+        <source>Form filling</source>
+        <note>Share status</note>
+      </trans-unit>
       <trans-unit id="Full Access" xml:space="preserve">
         <source>Full Access</source>
         <target>Plný přístup</target>
@@ -2142,6 +2141,11 @@ jiné, které používají protokol WebDAV.</target>
       </trans-unit>
       <trans-unit id="Last name is incorrect" xml:space="preserve">
         <source>Last name is incorrect</source>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Link copied&#10;to the clipboard" xml:space="preserve">
+        <source>Link copied
+to the clipboard</source>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Logging in" xml:space="preserve">
@@ -2268,6 +2272,10 @@ jiné, které používají protokol WebDAV.</target>
         <target>Nextcloud</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
+      <trans-unit id="Nextcloud directory" xml:space="preserve">
+        <source>Nextcloud directory</source>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
       <trans-unit id="No connection" xml:space="preserve">
         <source>No connection</source>
         <target>Bez připojení</target>
@@ -2309,6 +2317,10 @@ jiné, které používají protokol WebDAV.</target>
         <target>Poznámka: odstranění ze svého účtu nelze vrátit zpět.</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
+      <trans-unit id="Notify by Email" xml:space="preserve">
+        <source>Notify by Email</source>
+        <note>Sharing settings switcher</note>
+      </trans-unit>
       <trans-unit id="OK" xml:space="preserve">
         <source>OK</source>
         <target>OK</target>
@@ -2337,6 +2349,10 @@ jiné, které používají protokol WebDAV.</target>
       <trans-unit id="Once you enter the password and open the file, the current password to the file will be reset" xml:space="preserve">
         <source>Once you enter the password and open the file, the current password to the file will be reset</source>
         <target>Jakmile zadáte heslo a soubor otevřete, stávající heslo k souboru bude resetováno</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="OneDrive" xml:space="preserve">
+        <source>OneDrive</source>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="OneDrive directory" xml:space="preserve">
@@ -2387,7 +2403,7 @@ jiné, které používají protokol WebDAV.</target>
       <trans-unit id="Owner" xml:space="preserve">
         <source>Owner</source>
         <target>Majitel</target>
-        <note>No comment provided by engineer.</note>
+        <note>Table cell right holder acces text</note>
       </trans-unit>
       <trans-unit id="Password" xml:space="preserve">
         <source>Password</source>
@@ -2540,6 +2556,10 @@ jiné, které používají protokol WebDAV.</target>
         <source>Remove from Favorites</source>
         <note>Button title</note>
       </trans-unit>
+      <trans-unit id="Removing" xml:space="preserve">
+        <source>Removing</source>
+        <note>Caption of the process</note>
+      </trans-unit>
       <trans-unit id="Rename" xml:space="preserve">
         <source>Rename</source>
         <target>Přejmenovat</target>
@@ -2590,14 +2610,23 @@ jiné, které používají protokol WebDAV.</target>
         <target>Uložení</target>
         <note>Caption of the processing</note>
       </trans-unit>
+      <trans-unit id="Search" xml:space="preserve">
+        <source>Search</source>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
       <trans-unit id="Select" xml:space="preserve">
         <source>Select</source>
         <target>Vybrat</target>
-        <note>Button title</note>
+        <note>Button title
+   Navigation bar button title</note>
       </trans-unit>
       <trans-unit id="Select Photos" xml:space="preserve">
         <source>Select Photos</source>
         <target>Vybrat fotky</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Select all" xml:space="preserve">
+        <source>Select all</source>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Select another cloud to connect to Nextcloud, ownCloud and others are supported." xml:space="preserve">
@@ -2630,6 +2659,10 @@ jiné, které používají protokol WebDAV.</target>
         <target>Vybráno: %ld</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
+      <trans-unit id="Selecting access rights" xml:space="preserve">
+        <source>Selecting access rights</source>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
       <trans-unit id="Sending" xml:space="preserve">
         <source>Sending</source>
         <note>Caption of the process</note>
@@ -2643,11 +2676,6 @@ jiné, které používají protokol WebDAV.</target>
         <target>Nastavení</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
-      <trans-unit id="Share" xml:space="preserve">
-        <source>Share</source>
-        <target>Sdílet</target>
-        <note>Button title</note>
-      </trans-unit>
       <trans-unit id="Share files and manage access rights without leaving the editor." xml:space="preserve">
         <source>Share files and manage access rights without leaving the editor.</source>
         <note>No comment provided by engineer.</note>
@@ -2655,6 +2683,10 @@ jiné, které používají protokol WebDAV.</target>
       <trans-unit id="SharePoint directory" xml:space="preserve">
         <source>SharePoint directory</source>
         <target>Adresář SharePoint</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Shared access" xml:space="preserve">
+        <source>Shared access</source>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Shared with Me" xml:space="preserve">
@@ -2670,6 +2702,10 @@ jiné, které používají protokol WebDAV.</target>
       <trans-unit id="Sharing Settings" xml:space="preserve">
         <source>Sharing Settings</source>
         <note>Button title</note>
+      </trans-unit>
+      <trans-unit id="Sharing settings" xml:space="preserve">
+        <source>Sharing settings</source>
+        <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Single Sign-on" xml:space="preserve">
         <source>Single Sign-on</source>
@@ -2690,6 +2726,10 @@ jiné, které používají protokol WebDAV.</target>
         <source>Slide %1$i of %2$i</source>
         <target>Snímek %1$i z %2$i</target>
         <note>Presentation Viewer</note>
+      </trans-unit>
+      <trans-unit id="Something wrong" xml:space="preserve">
+        <source>Something wrong</source>
+        <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Sort" xml:space="preserve">
         <source>Sort</source>
@@ -2760,6 +2800,10 @@ jiné, které používají protokol WebDAV.</target>
         <target>Soubor bude nenávratně smazán. Tato akce je nevratná.</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
+      <trans-unit id="The folder in the Trash can not be opened." xml:space="preserve">
+        <source>The folder in the Trash can not be opened.</source>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
       <trans-unit id="The folder will be irretrievably deleted. This action is irreversible." xml:space="preserve">
         <source>The folder will be irretrievably deleted. This action is irreversible.</source>
         <target>Složka bude nenávratně smazána. Tato akce je nevratná.</target>
@@ -2768,6 +2812,12 @@ jiné, které používají protokol WebDAV.</target>
       <trans-unit id="The item with the name '%@' already exists in the folder '%@'." xml:space="preserve">
         <source>The item with the name '%1$@' already exists in the folder '%2$@'.</source>
         <target>Položka s názvem '% 1 $ @' již existuje ve složce '% 2 $ @'</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="The link for external&#10;access is copied&#10;to the clipboard" xml:space="preserve">
+        <source>The link for external
+access is copied
+to the clipboard</source>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="The parameters are incorrect." xml:space="preserve">
@@ -2781,6 +2831,10 @@ jiné, které používají protokol WebDAV.</target>
       <trans-unit id="The portal address is invalid" xml:space="preserve">
         <source>The portal address is invalid</source>
         <target>Adresa portálu je neplatná</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="The portal is not available" xml:space="preserve">
+        <source>The portal is not available</source>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="The portal name must be between 6 and 50 characters long" xml:space="preserve">
@@ -2816,6 +2870,10 @@ jiné, které používají protokol WebDAV.</target>
       <trans-unit id="This operation will free up space on your device by deleting temporary files. Your offline files and personal data won't be removed." xml:space="preserve">
         <source>This operation will free up space on your device by deleting temporary files. Your offline files and personal data won't be removed.</source>
         <target>Tato operace uvolní místo v zařízení odstraněním dočasných souborů. Vaše offline soubory a osobní údaje nebudou odstraněny.</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="This option is used to block access previously granted to a user or group." xml:space="preserve">
+        <source>This option is used to block access previously granted to a user or group.</source>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="This presentation is being edited. Do you want open %@ to view only?" xml:space="preserve">
@@ -2886,6 +2944,30 @@ jiné, které používají protokol WebDAV.</target>
       <trans-unit id="Unable to get information about the user." xml:space="preserve">
         <source>Unable to get information about the user.</source>
         <target>Nelze získat informace o uživateli.</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Unauthorized users will be able only to view the document and add comments, as well as manage them." xml:space="preserve">
+        <source>Unauthorized users will be able only to view the document and add comments, as well as manage them.</source>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Unauthorized users will be able only to view the document and fill in the forms inserted into the document." xml:space="preserve">
+        <source>Unauthorized users will be able only to view the document and fill in the forms inserted into the document.</source>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Unauthorized users will be able only to view the document." xml:space="preserve">
+        <source>Unauthorized users will be able only to view the document.</source>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Unauthorized users will be able to view and change the document without actually editing it, but all the changes made by a reviewer will be recorded and shown to the file owner (or a person who has full access to the file) so that he/she will be able to accept or reject them." xml:space="preserve">
+        <source>Unauthorized users will be able to view and change the document without actually editing it, but all the changes made by a reviewer will be recorded and shown to the file owner (or a person who has full access to the file) so that he/she will be able to accept or reject them.</source>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Unauthorized users will be able to view and edit the document as well as to share this document." xml:space="preserve">
+        <source>Unauthorized users will be able to view and edit the document as well as to share this document.</source>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Unauthorized users will not have access to the document." xml:space="preserve">
+        <source>Unauthorized users will not have access to the document.</source>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Unexpected response from the service." xml:space="preserve">
@@ -3154,12 +3236,19 @@ Vytvořené soubory mohou být později nahrány do online portálu. Poté k nim
         <source>iCloud Drive access</source>
         <note>No comment provided by engineer.</note>
       </trans-unit>
+      <trans-unit id="kDrive" xml:space="preserve">
+        <source>kDrive</source>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="kDrive directory" xml:space="preserve">
+        <source>kDrive directory</source>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
       <trans-unit id="none" xml:space="preserve">
         <source>none</source>
         <target>žádný</target>
         <note>Invalid entity date
-   Invalid entity owner
-   No information</note>
+   Invalid entity owner</note>
       </trans-unit>
       <trans-unit id="of" xml:space="preserve">
         <source>of</source>
@@ -3169,6 +3258,10 @@ Vytvořené soubory mohou být později nahrány do online portálu. Poté k nim
       <trans-unit id="ownCloud" xml:space="preserve">
         <source>ownCloud</source>
         <target>ownCloud</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="ownCloud directory" xml:space="preserve">
+        <source>ownCloud directory</source>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="photo" xml:space="preserve">

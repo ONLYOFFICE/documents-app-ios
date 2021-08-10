@@ -175,29 +175,33 @@ class ASCAccountsViewController: ASCBaseViewController {
     }
 
     private func checkPortalExist(_ portal: String, completion: @escaping (Bool, String?) -> Void) {
-        ASCOnlyOfficeApi.shared.baseUrl = portal
-        ASCOnlyOfficeApi.get(ASCOnlyOfficeApi.apiCapabilities) { results, error, response in
+        OnlyofficeApiClient.shared.baseURL = URL(string: portal)
+        OnlyofficeApiClient.request(OnlyofficeAPI.Endpoints.Settings.capabilities) { response, error in
             if let error = error {
-                ASCOnlyOfficeApi.shared.baseUrl = nil
+                log.error(error)
+                OnlyofficeApiClient.shared.baseURL = nil
                 completion(false, error.localizedDescription)
-            } else if let results = results as? [String: Any] {
-                ASCOnlyOfficeApi.shared.capabilities = ASCPortalCapabilities(JSON: results)
+            } else if let capabilities = response?.result {
+                OnlyofficeApiClient.shared.capabilities = capabilities
                 completion(true, nil)
             } else {
-                ASCOnlyOfficeApi.shared.baseUrl = nil
+                OnlyofficeApiClient.shared.baseURL = nil
                 completion(false, NSLocalizedString("Failed to check portal availability.", comment: ""))
             }
         }
     }
 
     private func checkServersVersion(_ portal: String, completion: @escaping (Bool, String?) -> Void) {
-        ASCOnlyOfficeApi.shared.baseUrl = portal
-        ASCOnlyOfficeApi.get(ASCOnlyOfficeApi.apiServersVersion) { results, error, response in
-            if let versions = results as? [String: Any] {
-                if let communityServer = versions["communityServer"] as? String {
-                    ASCOnlyOfficeApi.shared.serverVersion = communityServer
-                }
+        OnlyofficeApiClient.shared.baseURL = URL(string: portal)
+        OnlyofficeApiClient.request(OnlyofficeAPI.Endpoints.Settings.versions) { response, error in
+            if let error = error {
+                log.error(error)
             }
+            
+            if let communityVersion = response?.result?.community {
+                OnlyofficeApiClient.shared.serverVersion = communityVersion
+            }
+            
             completion(true, nil)
         }
     }
@@ -211,13 +215,10 @@ class ASCAccountsViewController: ASCBaseViewController {
     }
 
     func login(by account: ASCAccount, completion: @escaping () -> Void) {
-        ASCOnlyOfficeApi.cancelAllTasks()
+        OnlyofficeApiClient.shared.cancelAll()
 
         if let baseUrl = account.portal, let token = account.token {
-            let dummyOnlyofficeProvider = ASCOnlyofficeProvider()
-
-            ASCOnlyOfficeApi.shared.baseUrl = baseUrl
-            ASCOnlyOfficeApi.shared.token = token
+            let dummyOnlyofficeProvider = ASCOnlyofficeProvider(baseUrl: baseUrl, token: token)
 
             let hud = MBProgressHUD.showTopMost()
 
@@ -272,7 +273,7 @@ class ASCAccountsViewController: ASCBaseViewController {
 
                 DispatchQueue.main.async { [weak self] in
                     guard let strongSelf = self else {
-                        ASCOnlyOfficeApi.reset()
+                        OnlyofficeApiClient.reset()
                         hud?.hide(animated: true)
                         completion()
                         return
@@ -303,9 +304,10 @@ class ASCAccountsViewController: ASCBaseViewController {
                         NotificationCenter.default.post(name: ASCConstants.Notifications.loginOnlyofficeCompleted, object: nil)
 
                         // Registration device into the portal
-                        ASCOnlyOfficeApi.post(ASCOnlyOfficeApi.apiDeviceRegistration, parameters: ["type": 2], completion: { (_, _, _) in
-                            // 2 - IOSDocuments
-                        })
+                        OnlyofficeApiClient.request(
+                            OnlyofficeAPI.Endpoints.Auth.deviceRegistration,
+                            ["type": OnlyofficeApplicationType.documents.rawValue]
+                        )
 
                         ASCAnalytics.logEvent(ASCConstants.Analytics.Event.switchAccount, parameters: [
                             "portal": baseUrl
@@ -371,10 +373,10 @@ class ASCAccountsViewController: ASCBaseViewController {
     }
     
     @IBAction func onClose(_ sender: UIBarButtonItem) {
-        ASCOnlyOfficeApi.cancelAllTasks()
+        OnlyofficeApiClient.shared.cancelAll()
 
         // Cleanup auth info
-        ASCOnlyOfficeApi.reset()
+        OnlyofficeApiClient.reset()
 
         // Cleanup ONLYOFFICE provider
         ASCFileManager.onlyofficeProvider?.reset()

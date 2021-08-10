@@ -506,7 +506,7 @@ class ASCDocumentsViewController: ASCBaseTableViewController, UIGestureRecognize
                     title: NSLocalizedString("Sort", comment: "Button title"),
                     style: .default,
                     handler: { [unowned self] (action) in
-                        self.onSortAction()
+                        self.onSortAction(sender)
                     })
             )
             
@@ -527,36 +527,43 @@ class ASCDocumentsViewController: ASCBaseTableViewController, UIGestureRecognize
         setEditMode(false)
     }
     
-    @objc func onSortAction() {
-        var sortType: ASCDocumentSortType = .dateandtime
-        var sortAscending = false
-        var sortStates: [ASCDocumentSortStateType] = defaultsSortTypes.map { ($0, $0 == sortType) }
-        
-        if let sortInfo = UserDefaults.standard.value(forKey: ASCConstants.SettingsKeys.sortDocuments) as? [String: Any] {
-            if let sortBy = sortInfo["type"] as? String, !sortBy.isEmpty {
-                sortType = ASCDocumentSortType(sortBy)
-                sortStates = defaultsSortTypes.map { ($0, $0 == sortType) }
+    @objc func onSortAction(_ sender: Any) {
+        if #available(iOS 14.0, *) {
+            if let button = sender as? UIButton {
+                button.showsMenuAsPrimaryAction = true
+                button.menu = sortSelectMenu(for: button)
             }
-
-            if let sortOrder = sortInfo["order"] as? String, !sortOrder.isEmpty {
-                sortAscending = sortOrder == "ascending"
+        } else {
+            var sortType: ASCDocumentSortType = .dateandtime
+            var sortAscending = false
+            var sortStates: [ASCDocumentSortStateType] = defaultsSortTypes.map { ($0, $0 == sortType) }
+            
+            if let sortInfo = UserDefaults.standard.value(forKey: ASCConstants.SettingsKeys.sortDocuments) as? [String: Any] {
+                if let sortBy = sortInfo["type"] as? String, !sortBy.isEmpty {
+                    sortType = ASCDocumentSortType(sortBy)
+                    sortStates = defaultsSortTypes.map { ($0, $0 == sortType) }
+                }
+                
+                if let sortOrder = sortInfo["order"] as? String, !sortOrder.isEmpty {
+                    sortAscending = sortOrder == "ascending"
+                }
             }
+            
+            if ![.deviceDocuments, .deviceTrash].contains(folder?.rootFolderType) {
+                sortStates.append((.author, sortType == .author))
+            }
+            
+            navigator.navigate(to: .sort(types: sortStates, ascending: sortAscending, complation: { type, ascending in
+                if (sortType != type) || (ascending != sortAscending) {
+                    let sortInfo = [
+                        "type": type.rawValue,
+                        "order": ascending ? "ascending" : "descending"
+                    ]
+                    
+                    UserDefaults.standard.set(sortInfo, forKey: ASCConstants.SettingsKeys.sortDocuments)
+                }
+            }))
         }
-
-        if ![.deviceDocuments, .deviceTrash].contains(folder?.rootFolderType) {
-            sortStates.append((.author, sortType == .author))
-        }
-        
-        navigator.navigate(to: .sort(types: sortStates, ascending: sortAscending, complation: { type, ascending in
-            if (sortType != type) || (ascending != sortAscending) {
-                let sortInfo = [
-                    "type": type.rawValue,
-                    "order": ascending ? "ascending" : "descending"
-                ]
-
-                UserDefaults.standard.set(sortInfo, forKey: ASCConstants.SettingsKeys.sortDocuments)
-            }
-        }))
     }
     
     @objc func onSelectAction() {
@@ -974,7 +981,11 @@ class ASCDocumentsViewController: ASCBaseTableViewController, UIGestureRecognize
                 strongSelf.highlight(entity: strongSelf.highlightEntity)
                 
                 // Check network
-                if !success && strongSelf.folder?.rootFolderType != .deviceDocuments && !ASCNetworkReachability.shared.isReachable && ASCOnlyOfficeApi.shared.token != nil {
+                if !success &&
+                    strongSelf.folder?.rootFolderType != .deviceDocuments &&
+                    !ASCNetworkReachability.shared.isReachable &&
+                    OnlyofficeApiClient.shared.token != nil
+                {
                     ASCBanner.shared.showError(
                         title: NSLocalizedString("No network", comment: ""),
                         message: NSLocalizedString("Check your internet connection", comment: "")
@@ -1661,6 +1672,20 @@ class ASCDocumentsViewController: ASCBaseTableViewController, UIGestureRecognize
                 middleActions.append(move)
             }
         }
+
+        /// Restore action
+        
+        if actions.contains(.restore) {
+            middleActions.append(
+                UIAction(
+                    title: NSLocalizedString("Restore", comment: "Button title"),
+                    image: UIImage(systemName: "arrow.2.circlepath"))
+                { [unowned self] action in
+                    cell.hideSwipe(animated: true)
+                    self.recover(cell: cell)
+                }
+            )
+        }
         
         /// Delete action
 
@@ -1701,7 +1726,7 @@ class ASCDocumentsViewController: ASCBaseTableViewController, UIGestureRecognize
                     image: UIImage(systemName: "person.2"))
                 { [unowned self] action in
                     cell.hideSwipe(animated: true)
-                    presentShareController(in: self, entity: file)
+                    navigator.navigate(to: .shareSettings(entity: file))
                 }
             )
         }
@@ -1711,7 +1736,7 @@ class ASCDocumentsViewController: ASCBaseTableViewController, UIGestureRecognize
         if actions.contains(.export) {
             bottomActions.append(
                 UIAction(
-                    title: NSLocalizedString("Share", comment: "Button title"),
+                    title: NSLocalizedString("Export", comment: "Button title"),
                     image: UIImage(systemName: "square.and.arrow.up"))
                 { [unowned self] action in
                     cell.hideSwipe(animated: true)
@@ -1808,11 +1833,24 @@ class ASCDocumentsViewController: ASCBaseTableViewController, UIGestureRecognize
                     image: UIImage(systemName: "person.2"))
                 { [unowned self] action in
                     cell.hideSwipe(animated: true)
-                    presentShareController(in: self, entity: folder)
+                    navigator.navigate(to: .shareSettings(entity: folder))
                 }
             )
         }
 
+        /// Restore action
+        
+        if actions.contains(.restore) {
+            rootActions.append(
+                UIAction(
+                    title: NSLocalizedString("Restore", comment: "Button title"),
+                    image: UIImage(systemName: "arrow.2.circlepath"))
+                { [unowned self] action in
+                    cell.hideSwipe(animated: true)
+                    self.recover(cell: cell)
+                }
+            )
+        }
 
         /// Delete action
 
@@ -2099,7 +2137,7 @@ class ASCDocumentsViewController: ASCBaseTableViewController, UIGestureRecognize
                     style: .default,
                     handler: { [unowned self] action in
                         cell.hideSwipe(animated: true)
-                        presentShareController(in: self, entity: file)
+                        navigator.navigate(to: .shareSettings(entity: file))
                 })
             )
         }
@@ -2107,7 +2145,7 @@ class ASCDocumentsViewController: ASCBaseTableViewController, UIGestureRecognize
         if actions.contains(.export) {
             actionAlertController.addAction(
                 UIAlertAction(
-                    title: NSLocalizedString("Share", comment: "Button title"),
+                    title: NSLocalizedString("Export", comment: "Button title"),
                     style: .default,
                     handler: { [unowned self] action in
                         cell.hideSwipe(animated: true)
@@ -2215,7 +2253,7 @@ class ASCDocumentsViewController: ASCBaseTableViewController, UIGestureRecognize
                     style: .default,
                     handler: { [unowned self] action in
                         cell.hideSwipe(animated: true)
-                        presentShareController(in: self, entity: folder)
+                        navigator.navigate(to: .shareSettings(entity: folder))
                 })
             )
         }
@@ -2312,20 +2350,6 @@ class ASCDocumentsViewController: ASCBaseTableViewController, UIGestureRecognize
         return (folder?.rootFolderType == .onlyofficeTrash || folder?.rootFolderType == .deviceTrash)
     }
     
-    private func presentShareController(in parent: UIViewController, entity: ASCEntity) {
-        let sharedVC = ASCShareViewController.instantiate(from: Storyboard.share)
-        let sharedNavigationVC = ASCBaseNavigationController(rootASCViewController: sharedVC)
-
-        sharedVC.entity = entity
-
-        if UIDevice.pad {
-            sharedNavigationVC.modalPresentationStyle = .formSheet
-        }
-
-        sharedNavigationVC.view.tintColor = self.view.tintColor
-        parent.present(sharedNavigationVC, animated: true, completion: nil)
-    }
-    
     private func configureSwipeGesture() {
         let swipeToPreviousFolder = UISwipeGestureRecognizer(target: self, action: #selector(popViewController))
         swipeToPreviousFolder.direction = .right
@@ -2411,6 +2435,10 @@ class ASCDocumentsViewController: ASCBaseTableViewController, UIGestureRecognize
         
         if let folder = tableData[indexPath.row] as? ASCFolder {
             if isTrash(folder) {
+                UIAlertController.showWarning(
+                    in: self,
+                    message: NSLocalizedString("The folder in the Trash can not be opened.", comment: "")
+                )
                 return
             }
             
@@ -2824,7 +2852,7 @@ class ASCDocumentsViewController: ASCBaseTableViewController, UIGestureRecognize
             
             let destinationPath = Path.userTemporary + file.title
             
-            provider?.download(file.viewUrl ?? "", to: URL(fileURLWithPath:destinationPath.rawValue)) { [weak self] progress, result, error, response in
+            provider?.download(file.viewUrl ?? "", to: URL(fileURLWithPath:destinationPath.rawValue)) { [weak self] result, progress, error in
                 openingAlert.progress = Float(progress)
                 
                 if forceCancel {
@@ -3307,7 +3335,7 @@ class ASCDocumentsViewController: ASCBaseTableViewController, UIGestureRecognize
                     hud?.hide(animated: false, afterDelay: 1.3)
                     hud = nil
                     
-                    let deletedItems = items.filter { provider.allowDelete(entity: $0) }
+                    let deletedItems = items.filter { provider.allowDelete(entity: $0) || (($0 as? ASCFolder)?.isThirdParty ?? false) }
                     completion?(deletedItems)
                 }
             }
@@ -3352,29 +3380,25 @@ class ASCDocumentsViewController: ASCBaseTableViewController, UIGestureRecognize
     }
     
     func emptyTrash() {
-        var hud: MBProgressHUD? = nil
+        guard let provider = provider else { return }
         
-        ASCEntityManager.shared.emptyTrash() { [unowned self] (status, progress, result, error, cancel) in
-            if status == .begin {
-                hud = MBProgressHUD.showTopMost()
-                hud?.mode = .annularDeterminate
-                hud?.progress = 0
-                hud?.label.text = NSLocalizedString("Cleanup", comment: "Caption of the processing")
-            } else if status == .progress {
-                hud?.progress = progress
-            } else if status == .error {
+        let hud = MBProgressHUD.showTopMost()
+        hud?.mode = .annularDeterminate
+        hud?.progress = 0
+        hud?.label.text = NSLocalizedString("Cleanup", comment: "Caption of the processing")
+        
+        provider.emptyTrash(completeon: { [unowned self] provider, result, success, error in
+            if let error = error {
                 hud?.hide(animated: true)
                 UIAlertController.showError(
                     in: self,
-                    message: error ?? NSLocalizedString("Could not empty trash.", comment: "")
+                    message: error.localizedDescription
                 )
-            } else if status == .end {
+            } else {
                 hud?.setSuccessState()
                 hud?.hide(animated: false, afterDelay: 1.3)
 
                 if self.isTrash(self.folder) {
-//                    self.tableData.removeAll()
-//                    self.total = 0
                     self.provider?.reset()
                     self.tableView.reloadData()
                 }
@@ -3383,7 +3407,7 @@ class ASCDocumentsViewController: ASCBaseTableViewController, UIGestureRecognize
                 self.updateNavBar()
                 self.setEditMode(false)
             }
-        }
+        })
     }
 
     private func selectAllItems<T>(type: T.Type, extensions:[String]? = nil) {
@@ -3580,11 +3604,8 @@ extension ASCDocumentsViewController: UISearchControllerDelegate {
     }
 
     func didDismissSearchController(_ searchController: UISearchController) {
-        ASCOnlyOfficeApi.cancelAllTasks()
-
-//        provider?.page = 0
-//        total = 0
-//        tableData.removeAll()
+        OnlyofficeApiClient.shared.cancelAll()
+        
         provider?.reset()
         tableView.reloadData()
 
@@ -3798,17 +3819,6 @@ extension ASCDocumentsViewController: ASCProviderDelegate {
         // TODO: Or search diff and do it animated
         
         showEmptyView(total < 1)
-    }
-    
-    func presentShareController(provider: ASCFileProviderProtocol, entity: ASCEntity) {
-        if let keyWindow = UIApplication.shared.windows.filter({ $0.isKeyWindow }).first {
-            if var topController = keyWindow.rootViewController {
-                while let presentedViewController = topController.presentedViewController {
-                    topController = presentedViewController
-                }
-                presentShareController(in: topController, entity: entity)
-            }
-        }
     }
 }
 

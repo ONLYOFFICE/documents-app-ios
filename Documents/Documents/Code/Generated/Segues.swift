@@ -13,6 +13,7 @@ import UIKit
 // swiftlint:disable explicit_type_interface identifier_name line_length type_body_length type_name
 internal enum StoryboardSegue {
   internal enum ConnectStorage: String, SegueType {
+    case kdriveSegue
     case nextcloudSegue
     case owncloudSegue
     case webdavSegue
@@ -22,10 +23,6 @@ internal enum StoryboardSegue {
   }
   internal enum Login: String, SegueType {
     case embedPageController
-  }
-  internal enum Share: String, SegueType {
-    case segueAccessShare
-    case segueAddShare
   }
 }
 // swiftlint:enable explicit_type_interface identifier_name line_length type_body_length type_name

@@ -79,7 +79,7 @@ class ASCEntityManager: NSObject, UITextFieldDelegate {
             textField.text = fileName
             
             textField.add(for: .editingChanged, {
-                createAction.isEnabled = (textField.text?.trimmed.length)! > 0
+                createAction.isEnabled = !((textField.text ?? "").trimmed.isEmpty)
             })
             
             delay(seconds: 0.3) {
@@ -137,7 +137,10 @@ class ASCEntityManager: NSObject, UITextFieldDelegate {
             textField.text = folderName
             
             textField.add(for: .editingChanged, {
-                createAction.isEnabled = (textField.text?.trimmed.length)! > 0
+                let name = (textField.text ?? "").trimmed
+                let isEnabled = !name.isEmpty && !(name == "." || name == "..")
+                
+                createAction.isEnabled = isEnabled
             })
             
             delay(seconds: 0.3) {
@@ -177,13 +180,9 @@ class ASCEntityManager: NSObject, UITextFieldDelegate {
             params["mime"] = mimetype as String
         }
 
-        provider.createFile(name, in: folder, data: data, params: params) { (progress, result, error, response) in
+        provider.createFile(name, in: folder, data: data, params: params) { result, progress, error in
             if let error = error {
-                if let response = response {
-                    handler?(.error, Float(progress), nil, provider.errorMessage(by: response), &cancel)
-                } else {
-                    handler?(.error, Float(progress), nil, ASCProviderError(error).localizedDescription, &cancel)
-                }
+                handler?(.error, Float(progress), nil, ASCProviderError(error).localizedDescription, &cancel)
             } else {
                 if let result = result as? [String: Any] {
                     let file = ASCFile(JSON: result)
@@ -221,13 +220,9 @@ class ASCEntityManager: NSObject, UITextFieldDelegate {
 
         handler?(.begin, 0, nil, nil, &cancel)
 
-        provider.createImage(fileTitle, in: folder, data: imageData, params: nil) { (progress, result, error, response) in
+        provider.createImage(fileTitle, in: folder, data: imageData, params: nil) { result, progress, error in
             if let error = error {
-                if let response = response {
-                    handler?(.error, Float(progress), nil, provider.errorMessage(by: response), &cancel)
-                } else {
-                    handler?(.error, Float(progress), nil, ASCProviderError(error).localizedDescription, &cancel)
-                }
+                handler?(.error, Float(progress), nil, ASCProviderError(error).localizedDescription, &cancel)
             } else {
                 if let result = result as? [String: Any] {
                     let file = ASCFile(JSON: result)
@@ -355,25 +350,40 @@ class ASCEntityManager: NSObject, UITextFieldDelegate {
             }
         } else {
             let isShareEntity = (file?.rootFolderType == .onlyofficeShare) || (folder?.rootFolderType == .onlyofficeShare)
-            var requestPath = String(format: (file != nil ? ASCOnlyOfficeApi.apiFileId : ASCOnlyOfficeApi.apiFolderId), (file != nil ? file?.id : folder?.id) ?? "")
-            var parameters: [String: Any]? = nil
 
             if isShareEntity {
-                requestPath = ASCOnlyOfficeApi.apiBatchShare
-                parameters = file != nil ? ["fileIds" : [file?.id]] : ["folderIds": [folder?.id]]
-            }
-            
-            ASCOnlyOfficeApi.delete(requestPath, parameters: parameters, completion: { (result, error, response) in
-                if error != nil {
-                    handler?(.error, nil, ASCOnlyOfficeApi.errorMessage(by: response!))
-                } else {
-                    if result != nil {
+                let parameters = file != nil ? ["fileIds" : [file?.id]] : ["folderIds": [folder?.id]]
+                
+                OnlyofficeApiClient.shared.request(OnlyofficeAPI.Endpoints.Sharing.removeSharingRights, parameters) { result, error in
+                    if let error = error {
+                        handler?(.error, nil, error.localizedDescription)
+                    } else if let _ = result {
                         handler?(.end, entity, nil)
                     } else {
                         handler?(.end, nil, nil)
                     }
                 }
-            })
+            } else if let file = file {
+                OnlyofficeApiClient.shared.request(OnlyofficeAPI.Endpoints.Files.delete(file: file)) { result, error in
+                    if let error = error {
+                        handler?(.error, nil, error.localizedDescription)
+                    } else if let _ = result {
+                        handler?(.end, entity, nil)
+                    } else {
+                        handler?(.end, nil, nil)
+                    }
+                }
+            } else if let folder = folder {
+                OnlyofficeApiClient.shared.request(OnlyofficeAPI.Endpoints.Folders.delete(folder: folder)) { result, error in
+                    if let error = error {
+                        handler?(.error, nil, error.localizedDescription)
+                    } else if let _ = result {
+                        handler?(.end, entity, nil)
+                    } else {
+                        handler?(.end, nil, nil)
+                    }
+                }
+            }
         }
     }
     
@@ -423,7 +433,14 @@ class ASCEntityManager: NSObject, UITextFieldDelegate {
             textField.text = entityTitle?.fileName()
             
             textField.add(for: .editingChanged, {
-                renameAction.isEnabled = (textField.text?.trimmed.length)! > 0
+                let name = (textField.text ?? "").trimmed
+                var isEnabled = !name.isEmpty
+                
+                if entity is ASCFolder, name == "." || name == ".." {
+                    isEnabled = false
+                }
+                
+                renameAction.isEnabled = isEnabled
             })
             
             delay(seconds: 0.3) {
@@ -472,7 +489,7 @@ class ASCEntityManager: NSObject, UITextFieldDelegate {
         
         handler?(.begin, 0, nil, nil, &cancel)
         
-        provider.download(file.viewUrl ?? "", to: URL(fileURLWithPath:destination.rawValue)) { (progress, result, error, response) in
+        provider.download(file.viewUrl ?? "", to: URL(fileURLWithPath:destination.rawValue)) { result, progress, error in
             if cancel {
                 ASCLocalFileHelper.shared.removeFile(destination)
                 handler?(.end, 1, nil, nil, &cancel)
@@ -526,18 +543,14 @@ class ASCEntityManager: NSObject, UITextFieldDelegate {
         
         handler?(.begin, 0, nil, nil, &cancel)
         
-        provider.download(file.viewUrl ?? "", to: URL(fileURLWithPath:destination.rawValue)) { progress, result, error, response in
+        provider.download(file.viewUrl ?? "", to: URL(fileURLWithPath:destination.rawValue)) { result, progress, error in
             if cancel {
                 handler?(.end, 1, nil, nil, &cancel)
                 return
             }
             
-            if nil != error {
-                if let response = response {
-                    handler?(.error, Float(progress), nil, ASCOnlyOfficeApi.errorMessage(by: response), &cancel)
-                } else {
-                    handler?(.error, Float(progress), nil, NSLocalizedString("Could not download object.", comment: ""), &cancel)
-                }
+            if let _ = error {
+                handler?(.error, Float(progress), nil, NSLocalizedString("Could not download object.", comment: ""), &cancel)
             } else if nil != result {
                 // Create entity info
                 let owner = ASCUser()
@@ -604,59 +617,29 @@ class ASCEntityManager: NSObject, UITextFieldDelegate {
                 "conflictResolveType": 2
             ]
             
-            ASCOnlyOfficeApi.put(ASCOnlyOfficeApi.apiBatchCopy, parameters: parameters) { (result, error, response) in
-                if error != nil {
-                    handler?(.error, 1, nil, ASCOnlyOfficeApi.errorMessage(by: response!), &cancel)
+            OnlyofficeApiClient.shared.request(OnlyofficeAPI.Endpoints.Operations.copy, parameters) { result, error in
+                if let error = error {
+                    handler?(.error, 1, nil, error.localizedDescription, &cancel)
                 } else {
-                    func checkOperation() {
-                        ASCOnlyOfficeApi.get(ASCOnlyOfficeApi.apiFileOperations) { (result, error, response) in
-                            if error != nil {
-                                handler?(.error, 1, nil, ASCOnlyOfficeApi.errorMessage(by: response!), &cancel)
-                            } else {
-                                if let result = result as? [Any], let entityFromResponse = result.first as? [String: Any] {
-                                    if let progressResponse = entityFromResponse["progress"] as? Int {
-                                        handler?(.progress, Float(progressResponse) / 100.0, nil, ASCOnlyOfficeApi.errorMessage(by: response!), &cancel)
-                                        
-                                        if progressResponse >= 100 {
-                                            if let files = entityFromResponse["files"] as? [[String: Any]], files.count > 1, let file = ASCFile(JSON: files[1]) {
-                                                handler?(.end, 1, file, nil, &cancel)
-                                            }
-                                        } else {
-                                            Thread.sleep(forTimeInterval: 1)
-                                            checkOperation();
-                                        }
-                                    } else {
-                                        handler?(.error, 1, nil, NSLocalizedString("Unknown API response.", comment: ""), &cancel)
-                                    }
+                    var checkOperation: (()->Void)?
+                    checkOperation = {
+                        OnlyofficeApiClient.shared.request(OnlyofficeAPI.Endpoints.Operations.list) { result, error in
+                            if let error = error {
+                                handler?(.error, 1, nil, error.localizedDescription, &cancel)
+                            } else if let operation = result?.result?.first, let progress = operation.progress {
+                                if progress >= 100 {
+                                    handler?(.end, 1, operation.files.first, nil, &cancel)
+                                } else {
+                                    Thread.sleep(forTimeInterval: 1)
+                                    checkOperation?()
                                 }
+                            } else {
+                                handler?(.error, 1, nil, NetworkingError.invalidData.localizedDescription, &cancel)
                             }
                         }
                     }
-                    checkOperation()
+                    checkOperation?()
                 }
-            }
-        }
-    }
-    
-    func emptyTrash(handler: ASCEntityProgressHandler? = nil) {
-        var cancel = false
-        handler?(.begin, 0, nil, nil, &cancel)
-        
-        // Empty local trash
-        let trashItems = ASCLocalFileHelper.shared.entityList(Path.userTrash)
-        
-        for item in trashItems {
-            ASCLocalFileHelper.shared.removeFile(item)
-        }
-        
-        handler?(.progress, 0.5, nil, nil, &cancel)
-        
-        // Empty cloud trash
-        ASCOnlyOfficeApi.put(ASCOnlyOfficeApi.apiEmptyTrash) { (result, error, response) in
-            if error != nil {
-                handler?(.error, 1, nil, ASCOnlyOfficeApi.errorMessage(by: response!), &cancel)
-            } else {
-                handler?(.end, 1, nil, nil, &cancel)
             }
         }
     }
@@ -689,13 +672,9 @@ class ASCEntityManager: NSObject, UITextFieldDelegate {
             // Modify exist file
             let path = originalFile.id
 
-            provider.modify(path, data: data, params: params) { progress, result, error, response in
-                if error != nil {
-                    if let response = response {
-                        handler?(.error, Float(progress), nil, provider.errorMessage(by: response), &cancel)
-                    } else {
-                        handler?(.error, Float(progress), nil, NSLocalizedString("The server is not available.", comment: ""), &cancel)
-                    }
+            provider.modify(path, data: data, params: params) { result, progress, error in
+                if let _ = error {
+                    handler?(.error, Float(progress), nil, NSLocalizedString("The server is not available.", comment: ""), &cancel)
                 } else {
                     if let file = result as? ASCFile {
                         handler?(.end, 1, file, nil, &cancel)
@@ -716,15 +695,11 @@ class ASCEntityManager: NSObject, UITextFieldDelegate {
                             overwrite: true,
                             params: params,
                             processing:
-                { progress, result, error, response in
+                { result, progress, error in
                     if nil != error || nil != result {
                         if let error = error {
                             log.error("Upload file \(file.title) - \(error.localizedDescription)")
-                            if let response = response {
-                                handler?(.error, Float(progress), nil, provider.errorMessage(by: response), &cancel)
-                            } else {
-                                handler?(.error, Float(progress), nil, NSLocalizedString("The server is not available.", comment: ""), &cancel)
-                            }
+                            handler?(.error, Float(progress), nil, NSLocalizedString("The server is not available.", comment: ""), &cancel)
                         }
 
                         if let result = result as? [String: Any] {
@@ -910,7 +885,7 @@ class ASCEntityManager: NSObject, UITextFieldDelegate {
                 downloadQueue.addOperation {
                     let semaphore = DispatchSemaphore(value: 0)
 
-                    srcProvider.download(file.viewUrl ?? "", to: URL(fileURLWithPath: localPath.rawValue)) { progress, result, error, response in
+                    srcProvider.download(file.viewUrl ?? "", to: URL(fileURLWithPath: localPath.rawValue)) { result, progress, error in
                         if cancel {
                             forceExit()
                             semaphore.signal()
@@ -1064,7 +1039,7 @@ class ASCEntityManager: NSObject, UITextFieldDelegate {
                                                    overwrite: true,
                                                    params: params,
                                                    processing:
-                                    { progress, result, error, response in
+                                    { result, progress, error in
                                         if cancel {
                                             forceExit()
                                             semaphore.signal()

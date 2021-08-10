@@ -21,4 +21,8 @@ extension UIFont {
     func italic() -> UIFont {
         return withTraits(traits: .traitItalic)
     }
+    
+    func with(weight: UIFont.Weight) -> UIFont {
+        return UIFont.systemFont(ofSize: pointSize, weight: weight)
+    }
 }

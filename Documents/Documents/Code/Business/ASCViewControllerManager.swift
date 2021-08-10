@@ -114,6 +114,8 @@ class ASCViewControllerManager {
             let url = URLComponents(string: url.absoluteString)
         else { return false }
 
+//        let path = url.path.replacingOccurrences(of: "://", with: "")
+        
         if "openfile" == url.host {
             if let data = url.queryItems?.first(where: { $0.name == "data" })?.value {
                 // Decode data
@@ -287,7 +289,10 @@ class ASCViewControllerManager {
 
         let onlyofficeProvider = ASCFileManager.onlyofficeProvider
         
-        if nil == onlyofficeProvider || portal != onlyofficeProvider?.api.baseUrl || email != onlyofficeProvider?.user?.email {
+        if nil == onlyofficeProvider ||
+            !(onlyofficeProvider?.apiClient.baseURL?.absoluteString ?? "").contains(portal) ||
+            email != onlyofficeProvider?.user?.email
+        {
             openFileInfo = nil
 
             let account = ASCAccountsManager.shared.get(by: portal, email: email)
@@ -343,28 +348,28 @@ class ASCViewControllerManager {
         // Read full folder info
         if !isRootFolder {
             requestGroup.enter()
-            ASCOnlyOfficeApi.get(String(format: ASCOnlyOfficeApi.apiFolderId, folder.id), completion: { result, error, response in
-                if let result = result as? [String: Any],
-                    let resultFolder = ASCFolder(JSON: result) {
+            OnlyofficeApiClient.request(OnlyofficeAPI.Endpoints.Folders.info(folder: folder)) { response, error in
+                defer { requestGroup.leave() }
+                
+                if let resultFolder = response?.result {
                     folder = resultFolder
                 } else {
                     folder.id = ""
                 }
-                requestGroup.leave()
-            })
+            }
         }
 
         // Read full file info
         requestGroup.enter()
-        ASCOnlyOfficeApi.get(String(format: ASCOnlyOfficeApi.apiFileId, file.id), completion: { result, error, response in
-            if let result = result as? [String: Any],
-                let resultFile = ASCFile(JSON: result) {
+        OnlyofficeApiClient.request(OnlyofficeAPI.Endpoints.Files.info(file: file)) { response, error in
+            defer { requestGroup.leave() }
+            
+            if let resultFile = response?.result {
                 file = resultFile
             } else {
                 file.id = ""
             }
-            requestGroup.leave()
-        })
+        }
 
         DispatchQueue.global(qos: .background).async {
             requestGroup.wait()

@@ -2,7 +2,7 @@
 //  ASCOnlyofficeCategoriesProviderFactory.swift
 //  Documents
 //
-//  Created by Павел Чернышев on 22.04.2021.
+//  Created by Pavel Chernyshev on 22.04.2021.
 //  Copyright © 2021 Ascensio System SIA. All rights reserved.
 //
 
@@ -15,7 +15,7 @@ class ASCOnlyofficeCategoriesProviderFactory {
     
     func get() -> ASCOnlyofficeCategoriesProviderProtocol {
         guard isServerVersionEstablished else {
-            guard let communityServerVersion = ASCOnlyOfficeApi.shared.serverVersion else {
+            guard let communityServerVersion = OnlyofficeApiClient.shared.serverVersion else {
                 return provider
             }
             isServerVersionEstablished = true

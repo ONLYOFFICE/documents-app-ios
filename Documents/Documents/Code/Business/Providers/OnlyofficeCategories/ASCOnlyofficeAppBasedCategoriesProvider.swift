@@ -2,7 +2,7 @@
 //  ASCOnlyofficeAppBasedCategoriesProvider.swift
 //  Documents
 //
-//  Created by Павел Чернышев on 22.04.2021.
+//  Created by Pavel Chernyshev on 22.04.2021.
 //  Copyright © 2021 Ascensio System SIA. All rights reserved.
 //
 
@@ -18,7 +18,7 @@ class ASCOnlyofficeAppBasedCategoriesProvider: ASCOnlyofficeCategoriesProviderPr
             
             var categories: [ASCOnlyofficeCategory] = []
 
-            let isPersonal = onlyoffice.api.baseUrl?.contains(ASCConstants.Urls.portalPersonal) ?? false
+            let isPersonal = onlyoffice.apiClient.baseURL?.absoluteString.contains(ASCConstants.Urls.portalPersonal) ?? false
             let allowMy = !user.isVisitor
             let allowShare = !isPersonal
             let allowCommon = !isPersonal

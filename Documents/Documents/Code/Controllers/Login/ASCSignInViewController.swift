@@ -46,8 +46,8 @@ class ASCSignInViewController: ASCBaseViewController {
         emailField?.text = email
 
         ssoButton?.styleType = .bordered
-        
-        let capabilities = ASCOnlyOfficeApi.shared.capabilities
+
+        let capabilities = OnlyofficeApiClient.shared.capabilities
 
         if capabilities?.ldapEnabled ?? false {
             emailField?.placeholder = NSLocalizedString("Login", comment: "")
@@ -189,7 +189,7 @@ class ASCSignInViewController: ASCBaseViewController {
     }
     
     @IBAction func onEmailLogin(_ sender: Any) {
-        guard let portal = ASCOnlyOfficeApi.shared.baseUrl ?? portal?.trimmed else {
+        guard let portal = OnlyofficeApiClient.shared.baseURL?.absoluteString ?? portal?.trimmed else {
             return
         }
         
@@ -197,7 +197,7 @@ class ASCSignInViewController: ASCBaseViewController {
             return
         }
 
-        if ASCOnlyOfficeApi.shared.capabilities?.ldapEnabled ?? false {
+        if OnlyofficeApiClient.shared.capabilities?.ldapEnabled ?? false {
             if !valid(login: email) {
                 return
             }
@@ -213,19 +213,16 @@ class ASCSignInViewController: ASCBaseViewController {
         
         view.endEditing(true)
         
-        let parameters: Parameters = [
-            "portal": portal,
-            "userName": email,
-            "password": password
-        ]
+        let authRequest = OnlyofficeAuthRequest()
+        authRequest.provider = .email
+        authRequest.portal = portal
+        authRequest.userName = email
+        authRequest.password = password
         
         let hud = MBProgressHUD.showTopMost()
         hud?.label.text = NSLocalizedString("Logging in", comment: "Caption of the process")
         
-        ASCSignInController.shared.login(by: .email,
-                                         options: parameters,
-                                         in: navigationController)
-        { [weak self] success in
+        ASCSignInController.shared.login(by: authRequest, in: navigationController) { [weak self] success in
             if success {
                 hud?.setSuccessState()
                 hud?.hide(animated: true, afterDelay: 2)
@@ -247,18 +244,15 @@ class ASCSignInViewController: ASCBaseViewController {
             guard let strongSelf = self else { return }
 
             if let accessToken = token {
-                let parameters: Parameters = [
-                    "portal": strongSelf.portal ?? "",
-                    "facebookToken": accessToken
-                ]
+                let authRequest = OnlyofficeAuthRequest()
+                authRequest.provider = .facebook
+                authRequest.portal = strongSelf.portal
+                authRequest.facebookToken = accessToken
                 
                 let hud = MBProgressHUD.showTopMost()
                 hud?.label.text = NSLocalizedString("Logging in", comment: "Caption of the process")
                 
-                ASCSignInController.shared.login(by: .facebook,
-                                                 options: parameters,
-                                                 in: strongSelf.navigationController)
-                { success in
+                ASCSignInController.shared.login(by: authRequest, in: strongSelf.navigationController) { success in
                     if success {
                         hud?.setSuccessState()
                         hud?.hide(animated: true, afterDelay: 2)
@@ -293,18 +287,15 @@ class ASCSignInViewController: ASCBaseViewController {
             guard let strongSelf = self else { return }
 
             if let accessToken = token {
-                let parameters: Parameters = [
-                    "portal": strongSelf.portal ?? "",
-                    "googleToken": accessToken
-                ]
+                let authRequest = OnlyofficeAuthRequest()
+                authRequest.provider = .google
+                authRequest.portal = strongSelf.portal
+                authRequest.facebookToken = accessToken
                 
                 let hud = MBProgressHUD.showTopMost()
                 hud?.label.text = NSLocalizedString("Logging in", comment: "Caption of the process")
                 
-                ASCSignInController.shared.login(by: .google,
-                                                 options: parameters,
-                                                 in: strongSelf.navigationController)
-                { success in
+                ASCSignInController.shared.login(by: authRequest, in: strongSelf.navigationController) { success in
                     if success {
                         hud?.setSuccessState()
                         hud?.hide(animated: true, afterDelay: 2)
@@ -336,124 +327,140 @@ class ASCSignInViewController: ASCBaseViewController {
     @IBAction func onSSOLogin(_ sender: UIButton) {
         view.endEditing(true)
         
-        if let ssoNavigationController = storyboard?.instantiateViewController(withIdentifier: "ASCSSOSignInNavigationController") as? UINavigationController {
-            present(ssoNavigationController, animated: true, completion: { [weak self] in
-                if let ssoViewController = ssoNavigationController.topViewController as? ASCSSOSignInController {
-                    let requestQueue = OperationQueue()
-                    requestQueue.maxConcurrentOperationCount = 1
-
-                    var lastErrorMsg: String?
-                    var hud: MBProgressHUD?
+        let ssoNavigationController = StoryboardScene.Login.ascssoSignInNavigationController.instantiate()
+        
+        present(ssoNavigationController, animated: true, completion: { [weak self] in
+            if let ssoViewController = ssoNavigationController.topViewController as? ASCSSOSignInController {
+                let api = OnlyofficeApiClient.shared
+                
+                let requestQueue = OperationQueue()
+                requestQueue.maxConcurrentOperationCount = 1
+                
+                var lastError: Error?
+                var hud: MBProgressHUD?
+                
+                // Sign in with SSO
+                requestQueue.addOperation {
+                    let semaphore = DispatchSemaphore(value: 0)
+                    DispatchQueue.main.async {
+                        ssoViewController.signIn(ssoUrl: api.capabilities?.ssoUrl ?? "", handler: { token, error in
+                            defer { semaphore.signal() }
+                            
+                            if let error = error {
+                                lastError = NetworkingError.apiError(
+                                    error: OnlyofficeServerError.unknown(
+                                        message: String(
+                                            format: NSLocalizedString("Please retry. \n\n If the problem persists contact us and mention this error code: SSO - %@", comment: ""), error.localizedDescription)
+                                    )
+                                )
+                            } else if let token = token, token.length > 0 {
+                                hud = MBProgressHUD.showTopMost()
+                                hud?.label.text = NSLocalizedString("Logging in", comment: "Caption of the process")
+                                
+                                // Set api
+                                api.baseURL = api.baseURL
+                                api.token = token
+                                api.expires = Date().adding(.year, value: 100)
+                            }
+                        })
+                    }
                     
-                    // Sign in with SSO
-                    requestQueue.addOperation {
+                    semaphore.wait()
+                }
+                
+                // Get server version
+                requestQueue.addOperation {
+                    if nil == lastError,
+                       let token = api.token,
+                       let baseUrl = api.baseURL?.absoluteString
+                    {
                         let semaphore = DispatchSemaphore(value: 0)
                         DispatchQueue.main.async {
-                            ssoViewController.signIn(ssoUrl: ASCOnlyOfficeApi.shared.capabilities?.ssoUrl ?? "", handler: { token, error in
+                            OnlyofficeApiClient.request(OnlyofficeAPI.Endpoints.Settings.versions) { response, error in
                                 defer { semaphore.signal() }
                                 
                                 if let error = error {
-                                    lastErrorMsg = String(format: NSLocalizedString("Please retry. \n\n If the problem persists contact us and mention this error code: SSO - %@", comment: ""), error.localizedDescription)
-                                } else if let token = token, token.length > 0 {
-                                    hud = MBProgressHUD.showTopMost()
-                                    hud?.label.text = NSLocalizedString("Logging in", comment: "Caption of the process")
+                                    lastError = error
+                                    log.error(error)
+                                    return
+                                }
+                                
+                                if let communityVersion = response?.result?.community {
+                                    api.serverVersion = communityVersion
                                     
-                                    ASCOnlyOfficeApi.shared.token = token
-                                    ASCOnlyOfficeApi.shared.expires = Date().adding(.year, value: 100)
-                                }
-                            })
-                        }
-                        
-                        semaphore.wait()
-                    }
-                    
-                    // Get server version
-                    requestQueue.addOperation {
-                        if nil == lastErrorMsg {
-                            let semaphore = DispatchSemaphore(value: 0)
-                            ASCOnlyOfficeApi.get(ASCOnlyOfficeApi.apiServersVersion) { results, error, response in
-                                defer { semaphore.signal() }
-                                
-                                if let versions = results as? [String: Any] {
-                                    if let communityServer = versions["communityServer"] as? String {
-                                        ASCOnlyOfficeApi.shared.serverVersion = communityServer
-                                    }
-                                }
-                                
-                                // Init ONLYOFFICE provider
-                                if let baseUrl = ASCOnlyOfficeApi.shared.baseUrl, let token = ASCOnlyOfficeApi.shared.token {
+                                    // Init ONLYOFFICE provider
                                     ASCFileManager.onlyofficeProvider = ASCOnlyofficeProvider(baseUrl: baseUrl, token: token)
                                     ASCFileManager.provider = ASCFileManager.onlyofficeProvider
                                     ASCFileManager.storeProviders()
                                 }
                             }
-                            
-                            semaphore.wait()
                         }
+                        semaphore.wait()
                     }
-                    
-                    // Fetch user info
-                    requestQueue.addOperation {
-                        if nil == lastErrorMsg {
-                            let semaphore = DispatchSemaphore(value: 0)
-                            if let onlyofficeProvider = ASCFileManager.onlyofficeProvider?.copy() as? ASCOnlyofficeProvider {
-                                onlyofficeProvider.userInfo { success, error in
-                                    defer { semaphore.signal() }
-                                    
-                                    if success {
-                                        ASCFileManager.onlyofficeProvider?.user = onlyofficeProvider.user
-                                    } else {
-                                        lastErrorMsg = NSLocalizedString("User authentication failed", comment: "")
-                                    }
+                }
+                
+                // Fetch user info
+                requestQueue.addOperation {
+                    if nil == lastError {
+                        let semaphore = DispatchSemaphore(value: 0)
+                        if let onlyofficeProvider = ASCFileManager.onlyofficeProvider?.copy() as? ASCOnlyofficeProvider {
+                            onlyofficeProvider.userInfo { success, error in
+                                defer { semaphore.signal() }
+                                
+                                if success {
+                                    ASCFileManager.onlyofficeProvider?.user = onlyofficeProvider.user
+                                } else {
+                                    lastError = NetworkingError.apiError(error: OnlyofficeServerError.unauthorized)
                                 }
                             }
-                            semaphore.wait()
                         }
+                        semaphore.wait()
                     }
+                }
+                
+                DispatchQueue.global(qos: .background).async { [weak self] in
+                    requestQueue.waitUntilAllOperationsAreFinished()
                     
-                    DispatchQueue.global(qos: .background).async { [weak self] in
-                        requestQueue.waitUntilAllOperationsAreFinished()
-
-                        DispatchQueue.main.async { [weak self] in
-                            guard let strongSelf = self else {
-                                return
+                    DispatchQueue.main.async { [weak self] in
+                        guard let strongSelf = self else {
+                            return
+                        }
+                        
+                        if let error = lastError {
+                            hud?.hide(animated: false)
+                            
+                            UIAlertController.showError(
+                                in: strongSelf.parent ?? strongSelf,
+                                message: error.localizedDescription
+                            )
+                        } else {
+                            hud?.setSuccessState()
+                            hud?.hide(animated: true, afterDelay: 1)
+                            
+                            OnlyofficeApiClient.request(
+                                OnlyofficeAPI.Endpoints.Auth.deviceRegistration,
+                                ["type": OnlyofficeApplicationType.documents.rawValue]
+                            )
+                            
+                            // Analytics
+                            if let portal = OnlyofficeApiClient.shared.baseURL?.absoluteURL {
+                                ASCAnalytics.logEvent(ASCConstants.Analytics.Event.loginPortal, parameters: [
+                                    "portal": portal,
+                                    "provider": ASCLoginType.sso.rawValue
+                                ])
                             }
                             
-                            if let lastErrorMsg = lastErrorMsg {
-                                hud?.hide(animated: false)
-                                
-                                UIAlertController.showError(
-                                    in: strongSelf.parent ?? strongSelf,
-                                    message: lastErrorMsg
-                                )
-                            } else {
-                                hud?.setSuccessState()
-                                hud?.hide(animated: true, afterDelay: 1)
-                                
-                                // Registration device into the portal
-                                ASCOnlyOfficeApi.post(ASCOnlyOfficeApi.apiDeviceRegistration, parameters: ["type": 2], completion: { (_, _, _) in
-                                    // 2 - IOSDocuments
-                                })
-                                
-                                if let portal = ASCOnlyOfficeApi.shared.baseUrl?.lowercased() {
-                                    ASCAnalytics.logEvent(ASCConstants.Analytics.Event.loginPortal, parameters: [
-                                        "portal": portal,
-                                        "provider": ASCLoginType.sso
-                                    ])
-                                }
-                                
-                                ASCEditorManager.shared.fetchDocumentService { _,_,_  in }
-                                
-                                // Notify
-                                NotificationCenter.default.post(name: ASCConstants.Notifications.loginOnlyofficeCompleted, object: nil)
-                                
-                                strongSelf.dismiss(animated: true, completion: nil)
-                            }
+                            ASCEditorManager.shared.fetchDocumentService { _,_,_  in }
+                            
+                            // Notify
+                            NotificationCenter.default.post(name: ASCConstants.Notifications.loginOnlyofficeCompleted, object: nil)
+                            
+                            strongSelf.dismiss(animated: true, completion: nil)
                         }
                     }
                 }
-            })
-        }
+            }
+        })
     }
 }
 

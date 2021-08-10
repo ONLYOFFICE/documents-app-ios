@@ -150,11 +150,11 @@ class ASCConstants {
     }
 
     struct Clouds {
-        static let defaultConnectFolderProviders: [ASCFolderProviderType]   = [.sharePoint, .nextCloud, .ownCloud, .webDav] // default portal storage set
-        static let defaultConnectCloudProviders: [ASCFileProviderType]      = [.nextcloud, .owncloud, .googledrive, .dropbox, .webdav, .onedrive] // external clouds set
+        static let defaultConnectFolderProviders: [ASCFolderProviderType]   = [.sharePoint, .nextCloud, .ownCloud, .kDrive, .webDav] // default portal storage set
+        static let defaultConnectCloudProviders: [ASCFileProviderType]      = [.nextcloud, .owncloud, .googledrive, .dropbox, .onedrive, .kdrive, .webdav] // external clouds set
         static let preferredOrderCloudProviders: [ASCFolderProviderType]    = [
             .nextCloud, .ownCloud, .google, .googleDrive, .dropBox, .skyDrive,
-            .oneDrive, .sharePoint, .boxNet, .yandex, .webDav
+            .oneDrive, .sharePoint, .boxNet, .yandex, .kDrive, .webDav
         ]
         
         struct Dropbox {

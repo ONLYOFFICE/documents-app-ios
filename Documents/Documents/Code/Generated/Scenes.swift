@@ -106,13 +106,6 @@ internal enum StoryboardScene {
 
     internal static let initialScene = InitialSceneType<Documents.ASCBaseNavigationController>(storyboard: Settings.self)
   }
-  internal enum Share: StoryboardType {
-    internal static let storyboardName = "Share"
-
-    internal static let initialScene = InitialSceneType<Documents.ASCBaseNavigationController>(storyboard: Share.self)
-
-    internal static let ascShareViewController = SceneType<Documents.ASCShareViewController>(storyboard: Share.self, identifier: "ASCShareViewController")
-  }
   internal enum Sort: StoryboardType {
     internal static let storyboardName = "Sort"
 

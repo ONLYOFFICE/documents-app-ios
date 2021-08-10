@@ -28,6 +28,13 @@ extension KingfisherWrapper where Base: KFCrossPlatformImageView {
             
             if let authorization = provider.authorization {
                 apiRequest.setValue(authorization, forHTTPHeaderField: "Authorization")
+                
+                if provider is ASCOnlyofficeProvider {
+                    let token = authorization.replacingOccurrences(of: "Bearer ", with: "")
+                    var cookies = apiRequest.value(forHTTPHeaderField: "Cookie") ?? ""
+                    cookies.append("\(cookies.isEmpty ? "" : ";")asc_auth_key=\(token)")
+                    apiRequest.setValue(cookies, forHTTPHeaderField: "Cookie")
+                }
             }
             return apiRequest
         }
@@ -35,9 +42,9 @@ extension KingfisherWrapper where Base: KFCrossPlatformImageView {
         var localOptions = options ?? [.transition(.fade(0.3))]
         
         if provider is ASCOnlyofficeProvider {
-            if let baseUrl = ASCOnlyOfficeApi.shared.baseUrl,
+            if  let baseUrl = OnlyofficeApiClient.shared.baseURL,
                 let resource = resource,
-                URL(string: baseUrl)?.host == resource.downloadURL.host
+                baseUrl.host == resource.downloadURL.host
             {
                 localOptions.append(.requestModifier(modifier))
             } else {

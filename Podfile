@@ -32,6 +32,7 @@ def common_pods
 
   pod 'ObjectMapper'
   pod 'SwiftyXMLParser'
+  pod 'SwiftyJSON'
 
   # UI
 

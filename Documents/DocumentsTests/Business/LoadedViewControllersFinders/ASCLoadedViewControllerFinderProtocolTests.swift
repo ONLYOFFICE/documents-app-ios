@@ -2,7 +2,7 @@
 //  ASCLoadedViewControllerFinderProtocolTests.swift
 //  DocumentsTests
 //
-//  Created by Павел Чернышев on 28.05.2021.
+//  Created by Pavel Chernyshevon 28.05.2021.
 //  Copyright © 2021 Ascensio System SIA. All rights reserved.
 //
 

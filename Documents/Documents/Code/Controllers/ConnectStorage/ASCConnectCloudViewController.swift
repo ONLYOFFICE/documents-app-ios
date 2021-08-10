@@ -422,14 +422,17 @@ class ASCConnectCloudViewController: UITableViewController {
         complation: @escaping ((_ success: Bool, _ provider: ASCFileProviderProtocol?) -> Void))
     {
         guard
-            let token = info["token"] as? String
+            let accessToken = info["token"] as? String,
+            let refreshToken = info["refresh_token"] as? String,
+            let expiration = info["expires_in"] as? Double
         else {
             complation(false, nil)
             return
         }
         
-        let credential = URLCredential(user: ASCConstants.Clouds.OneDrive.clientId, password: token, persistence: .forSession)
-        let onedriveCloudProvider = ASCOneDriveProvider(credential: credential)
+        let urlCredential = URLCredential(user: ASCConstants.Clouds.OneDrive.clientId, password: accessToken, persistence: .forSession)
+        let oAuthCredential = OneDriveOAuthCredential(accessToken: accessToken, refreshToken: refreshToken, expiration: Date(timeIntervalSince1970: expiration))
+        let onedriveCloudProvider = ASCOneDriveProvider(urlCredential: urlCredential, oAuthCredential: oAuthCredential)
         
         onedriveCloudProvider.isReachable { success, error in
             DispatchQueue.main.async(execute: {

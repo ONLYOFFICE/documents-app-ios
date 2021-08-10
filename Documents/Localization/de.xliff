@@ -2185,6 +2185,10 @@ to the clipboard</source>
         <target>Nextcloud</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
+      <trans-unit id="Nextcloud directory" xml:space="preserve">
+        <source>Nextcloud directory</source>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
       <trans-unit id="No connection" xml:space="preserve">
         <source>No connection</source>
         <target>Keine Verbindung</target>
@@ -2711,6 +2715,10 @@ to the clipboard</source>
         <target>Die Datei wird unwiderruflich gelöscht. Diese Aktion ist nicht umkehrbar.</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
+      <trans-unit id="The folder in the Trash can not be opened." xml:space="preserve">
+        <source>The folder in the Trash can not be opened.</source>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
       <trans-unit id="The folder will be irretrievably deleted. This action is irreversible." xml:space="preserve">
         <source>The folder will be irretrievably deleted. This action is irreversible.</source>
         <target>Der Ordner wird unwiderruflich gelöscht. Diese Aktion ist nicht umkehrbar.</target>
@@ -3166,6 +3174,10 @@ dann von jedem anderen Gerät aus abgerufen werden.</target>
       <trans-unit id="ownCloud" xml:space="preserve">
         <source>ownCloud</source>
         <target>ownCloud</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="ownCloud directory" xml:space="preserve">
+        <source>ownCloud directory</source>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="photo" xml:space="preserve">

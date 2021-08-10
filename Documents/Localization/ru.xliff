@@ -2328,6 +2328,11 @@ to the clipboard</source>
         <target>Nextcloud</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
+      <trans-unit id="Nextcloud directory" xml:space="preserve">
+        <source>Nextcloud directory</source>
+        <target>Папка Nextcloud</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
       <trans-unit id="No connection" xml:space="preserve">
         <source>No connection</source>
         <target>Нет подключения</target>
@@ -2869,6 +2874,11 @@ to the clipboard</source>
         <target>Файл будет безвозвратно удален. Это действие нельзя отменить.</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
+      <trans-unit id="The folder in the Trash can not be opened." xml:space="preserve">
+        <source>The folder in the Trash can not be opened.</source>
+        <target>Невозможно открыть папку, находящийся в корзине.</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
       <trans-unit id="The folder will be irretrievably deleted. This action is irreversible." xml:space="preserve">
         <source>The folder will be irretrievably deleted. This action is irreversible.</source>
         <target>Папка будет безвозвратно удалена. Это действие нельзя отменить.</target>
@@ -3338,6 +3348,11 @@ then accessed from any other device.</source>
       <trans-unit id="ownCloud" xml:space="preserve">
         <source>ownCloud</source>
         <target>ownCloud</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="ownCloud directory" xml:space="preserve">
+        <source>ownCloud directory</source>
+        <target>Папка ownCloud</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="photo" xml:space="preserve">

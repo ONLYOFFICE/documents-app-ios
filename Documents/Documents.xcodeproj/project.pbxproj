@@ -38,13 +38,13 @@
 		1D1A2E3A2660FF7F00D0335B /* ASCLoadedVCFinderModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D1A2E392660FF7F00D0335B /* ASCLoadedVCFinderModels.swift */; };
 		1D1A2E412661018100D0335B /* Assets.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCE186492628CFE70086D21B /* Assets.swift */; };
 		1D1A2E46266103AE00D0335B /* ASCLoadedViewControllerFinderProtocolTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D1A2E45266103AE00D0335B /* ASCLoadedViewControllerFinderProtocolTests.swift */; };
-		1D35FCC726B1B350000929B0 /* OnlyofficeShareItemRequestModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D35FCC626B1B34F000929B0 /* OnlyofficeShareItemRequestModel.swift */; };
-		1D35FCC826B1CDF7000929B0 /* OnlyofficeShareItemRequestModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D35FCC626B1B34F000929B0 /* OnlyofficeShareItemRequestModel.swift */; };
 		1D2E3B8A26BB290700BEBE9D /* ASCSharingSettingsAccessNotesProviderProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D2E3B8926BB290700BEBE9D /* ASCSharingSettingsAccessNotesProviderProtocol.swift */; };
 		1D2E3B8D26BB29DA00BEBE9D /* ASCSharingSettingsAccessForExternalLinkNotesProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D2E3B8C26BB29DA00BEBE9D /* ASCSharingSettingsAccessForExternalLinkNotesProvider.swift */; };
 		1D2E3B8F26BB2A7400BEBE9D /* ASCSharingSettingsAccessForUserOrGroupNotesProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D2E3B8E26BB2A7400BEBE9D /* ASCSharingSettingsAccessForUserOrGroupNotesProvider.swift */; };
 		1D2E3B9226BB2AE800BEBE9D /* ASCSharingSettingsAccessNotesProvidersFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D2E3B9126BB2AE800BEBE9D /* ASCSharingSettingsAccessNotesProvidersFactory.swift */; };
 		1D2E3B9526BB338D00BEBE9D /* ASCSharingSettingsAccessViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D2E3B9426BB338D00BEBE9D /* ASCSharingSettingsAccessViewControllerTests.swift */; };
+		1D35FCC726B1B350000929B0 /* OnlyofficeShareItemRequestModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D35FCC626B1B34F000929B0 /* OnlyofficeShareItemRequestModel.swift */; };
+		1D35FCC826B1CDF7000929B0 /* OnlyofficeShareItemRequestModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D35FCC626B1B34F000929B0 /* OnlyofficeShareItemRequestModel.swift */; };
 		1D49E29026A9BCCE0024AC7A /* ASCSharingOptionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DBE283D2670AEC70051D7AD /* ASCSharingOptionsViewController.swift */; };
 		1D49E29126A9BCEE0024AC7A /* ASCSharingOptionsInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D4C6773268A2573000F2284 /* ASCSharingOptionsInteractor.swift */; };
 		1D49E29226A9BCF90024AC7A /* ASCSharingOptionsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D4C676E268A2573000F2284 /* ASCSharingOptionsPresenter.swift */; };
@@ -652,6 +652,10 @@
 		FCECDDEE2643DD1B006CD7B9 /* Documents.plist in Resources */ = {isa = PBXBuildFile; fileRef = FCF3AAC21EF9483100DF63BA /* Documents.plist */; };
 		FCECDDF12643DF1B006CD7B9 /* Documents-InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = FCECDDEF2643DF1A006CD7B9 /* Documents-InfoPlist.strings */; };
 		FCED8F4E23E8355500EC1DAC /* ASCFloatingLabelTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCED8F4D23E8355500EC1DAC /* ASCFloatingLabelTextField.swift */; };
+		FCEF851B26C29A0E00173DDF /* OneDriveOAuthCredential.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCEF851A26C29A0E00173DDF /* OneDriveOAuthCredential.swift */; };
+		FCEF851C26C29A0E00173DDF /* OneDriveOAuthCredential.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCEF851A26C29A0E00173DDF /* OneDriveOAuthCredential.swift */; };
+		FCEF851E26C29A3100173DDF /* OnedriveTokenAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCEF851D26C29A3100173DDF /* OnedriveTokenAdapter.swift */; };
+		FCEF851F26C29A3100173DDF /* OnedriveTokenAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCEF851D26C29A3100173DDF /* OnedriveTokenAdapter.swift */; };
 		FCEF9D1A1ED2C94300627BA5 /* PasscodeLock.strings in Resources */ = {isa = PBXBuildFile; fileRef = FCEF9D041ED2C94300627BA5 /* PasscodeLock.strings */; };
 		FCEF9D1B1ED2C94300627BA5 /* Functions.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCEF9D061ED2C94300627BA5 /* Functions.swift */; };
 		FCEF9D1D1ED2C94300627BA5 /* ChangePasscodeState.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCEF9D091ED2C94300627BA5 /* ChangePasscodeState.swift */; };
@@ -758,12 +762,12 @@
 		1D1A2E312660FE6E00D0335B /* ASCLoadedViewControllerFinderProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCLoadedViewControllerFinderProtocol.swift; sourceTree = "<group>"; };
 		1D1A2E392660FF7F00D0335B /* ASCLoadedVCFinderModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCLoadedVCFinderModels.swift; sourceTree = "<group>"; };
 		1D1A2E45266103AE00D0335B /* ASCLoadedViewControllerFinderProtocolTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCLoadedViewControllerFinderProtocolTests.swift; sourceTree = "<group>"; };
-		1D35FCC626B1B34F000929B0 /* OnlyofficeShareItemRequestModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnlyofficeShareItemRequestModel.swift; sourceTree = "<group>"; };
 		1D2E3B8926BB290700BEBE9D /* ASCSharingSettingsAccessNotesProviderProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCSharingSettingsAccessNotesProviderProtocol.swift; sourceTree = "<group>"; };
 		1D2E3B8C26BB29DA00BEBE9D /* ASCSharingSettingsAccessForExternalLinkNotesProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCSharingSettingsAccessForExternalLinkNotesProvider.swift; sourceTree = "<group>"; };
 		1D2E3B8E26BB2A7400BEBE9D /* ASCSharingSettingsAccessForUserOrGroupNotesProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCSharingSettingsAccessForUserOrGroupNotesProvider.swift; sourceTree = "<group>"; };
 		1D2E3B9126BB2AE800BEBE9D /* ASCSharingSettingsAccessNotesProvidersFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCSharingSettingsAccessNotesProvidersFactory.swift; sourceTree = "<group>"; };
 		1D2E3B9426BB338D00BEBE9D /* ASCSharingSettingsAccessViewControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCSharingSettingsAccessViewControllerTests.swift; sourceTree = "<group>"; };
+		1D35FCC626B1B34F000929B0 /* OnlyofficeShareItemRequestModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnlyofficeShareItemRequestModel.swift; sourceTree = "<group>"; };
 		1D4C674C2685D043000F2284 /* ASCTextFieldCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCTextFieldCellViewModel.swift; sourceTree = "<group>"; };
 		1D4C674E2685D0C3000F2284 /* ASCTextViewTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCTextViewTableViewCell.swift; sourceTree = "<group>"; };
 		1D4C676E268A2573000F2284 /* ASCSharingOptionsPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCSharingOptionsPresenter.swift; sourceTree = "<group>"; };
@@ -898,6 +902,13 @@
 		FC56F4912248BC13004E3930 /* CALayer+Animate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CALayer+Animate.swift"; sourceTree = "<group>"; };
 		FC584EDD25BB4F5D001C608E /* Documents.dev.entitlements */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.entitlements; path = Documents.dev.entitlements; sourceTree = "<group>"; };
 		FC584EDE25BB4F5D001C608E /* Documents.entitlements */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.entitlements; path = Documents.entitlements; sourceTree = "<group>"; };
+		FC5CE53B26B437B70066901E /* fr.xliff */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = fr.xliff; sourceTree = "<group>"; };
+		FC5CE53C26B437B70066901E /* ru.xliff */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = ru.xliff; sourceTree = "<group>"; };
+		FC5CE53D26B437B70066901E /* cs.xliff */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = cs.xliff; sourceTree = "<group>"; };
+		FC5CE53E26B437B70066901E /* bg.xliff */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = bg.xliff; sourceTree = "<group>"; };
+		FC5CE53F26B437B70066901E /* es.xliff */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = es.xliff; sourceTree = "<group>"; };
+		FC5CE54026B437B70066901E /* de.xliff */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = de.xliff; sourceTree = "<group>"; };
+		FC5CE54126B437B70066901E /* en.xliff */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = en.xliff; sourceTree = "<group>"; };
 		FC5E2D8C1E8A4C8B0079626B /* ASCImageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASCImageViewController.swift; sourceTree = "<group>"; };
 		FC5F47871F04E7E000F045DD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/PasscodeLockView.xib; sourceTree = "<group>"; };
 		FC5F478A1F04E7E500F045DD /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/PasscodeLockView.strings; sourceTree = "<group>"; };
@@ -1023,13 +1034,6 @@
 		FCB8A39121C27EE000CF74FA /* ASCDeviceCategoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCDeviceCategoryViewController.swift; sourceTree = "<group>"; };
 		FCB8A39421C2881100CF74FA /* ASCDeviceCategoryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCDeviceCategoryCell.swift; sourceTree = "<group>"; };
 		FCB8A39621C29D4900CF74FA /* ASCBaseSplitViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCBaseSplitViewController.swift; sourceTree = "<group>"; };
-		FCBE9F5226B99F3600458469 /* fr.xliff */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = fr.xliff; sourceTree = "<group>"; };
-		FCBE9F5326B99F3600458469 /* ru.xliff */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = ru.xliff; sourceTree = "<group>"; };
-		FCBE9F5426B99F3600458469 /* cs.xliff */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = cs.xliff; sourceTree = "<group>"; };
-		FCBE9F5526B99F3600458469 /* bg.xliff */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = bg.xliff; sourceTree = "<group>"; };
-		FCBE9F5626B99F3600458469 /* es.xliff */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = es.xliff; sourceTree = "<group>"; };
-		FCBE9F5726B99F3600458469 /* de.xliff */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = de.xliff; sourceTree = "<group>"; };
-		FCBE9F5826B99F3600458469 /* en.xliff */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = en.xliff; sourceTree = "<group>"; };
 		FCBEA6B5203EEF96000E8695 /* ASCSDWebImageDownloaderOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCSDWebImageDownloaderOperation.swift; sourceTree = "<group>"; };
 		FCC3963E1ECDC6890016BB10 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Settings.storyboard; sourceTree = "<group>"; };
 		FCC396411ECDC68C0016BB10 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Settings.strings; sourceTree = "<group>"; };
@@ -1098,6 +1102,8 @@
 		FCECDDF52643DF2B006CD7B9 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = "de.lproj/Documents-InfoPlist.strings"; sourceTree = "<group>"; };
 		FCECDDF62643DF2E006CD7B9 /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = "es.lproj/Documents-InfoPlist.strings"; sourceTree = "<group>"; };
 		FCED8F4D23E8355500EC1DAC /* ASCFloatingLabelTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCFloatingLabelTextField.swift; sourceTree = "<group>"; };
+		FCEF851A26C29A0E00173DDF /* OneDriveOAuthCredential.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OneDriveOAuthCredential.swift; sourceTree = "<group>"; };
+		FCEF851D26C29A3100173DDF /* OnedriveTokenAdapter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnedriveTokenAdapter.swift; sourceTree = "<group>"; };
 		FCEF9D061ED2C94300627BA5 /* Functions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Functions.swift; sourceTree = "<group>"; };
 		FCEF9D071ED2C94300627BA5 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		FCEF9D091ED2C94300627BA5 /* ChangePasscodeState.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChangePasscodeState.swift; sourceTree = "<group>"; };
@@ -1957,6 +1963,20 @@
 			path = Entitlements;
 			sourceTree = "<group>";
 		};
+		FC5CE53A26B437B70066901E /* Localization */ = {
+			isa = PBXGroup;
+			children = (
+				FC5CE53B26B437B70066901E /* fr.xliff */,
+				FC5CE53C26B437B70066901E /* ru.xliff */,
+				FC5CE53D26B437B70066901E /* cs.xliff */,
+				FC5CE53E26B437B70066901E /* bg.xliff */,
+				FC5CE53F26B437B70066901E /* es.xliff */,
+				FC5CE54026B437B70066901E /* de.xliff */,
+				FC5CE54126B437B70066901E /* en.xliff */,
+			);
+			path = Localization;
+			sourceTree = "<group>";
+		};
 		FC5E2D8B1E8A4C220079626B /* ImagePreview */ = {
 			isa = PBXGroup;
 			children = (
@@ -2116,8 +2136,10 @@
 		FC68524C26837B7300D830EC /* Onedrive */ = {
 			isa = PBXGroup;
 			children = (
+				FCEF851A26C29A0E00173DDF /* OneDriveOAuthCredential.swift */,
 				FC68524D26837B7300D830EC /* OnedriveApiClient.swift */,
 				FC68524E26837B7300D830EC /* OnedriveEndpoints.swift */,
+				FCEF851D26C29A3100173DDF /* OnedriveTokenAdapter.swift */,
 			);
 			path = Onedrive;
 			sourceTree = "<group>";
@@ -2298,20 +2320,6 @@
 				FCB8A39421C2881100CF74FA /* ASCDeviceCategoryCell.swift */,
 			);
 			path = Views;
-			sourceTree = "<group>";
-		};
-		FCBE9F5126B99F3600458469 /* Localization */ = {
-			isa = PBXGroup;
-			children = (
-				FCBE9F5226B99F3600458469 /* fr.xliff */,
-				FCBE9F5326B99F3600458469 /* ru.xliff */,
-				FCBE9F5426B99F3600458469 /* cs.xliff */,
-				FCBE9F5526B99F3600458469 /* bg.xliff */,
-				FCBE9F5626B99F3600458469 /* es.xliff */,
-				FCBE9F5726B99F3600458469 /* de.xliff */,
-				FCBE9F5826B99F3600458469 /* en.xliff */,
-			);
-			path = Localization;
 			sourceTree = "<group>";
 		};
 		FCC396491ECDD9660016BB10 /* UserProfile */ = {
@@ -2570,7 +2578,7 @@
 			children = (
 				FCFDAA8F1E48A10C007A240C /* Documents */,
 				FCCDE6762049734000CFC653 /* DocumentsTests */,
-				FCBE9F5126B99F3600458469 /* Localization */,
+				FC5CE53A26B437B70066901E /* Localization */,
 				FCFDAA8E1E48A10C007A240C /* Products */,
 				8DAE80D35B150AEE2BBFA722 /* Pods */,
 				3C50733DA18F920525F5E1EB /* Frameworks */,
@@ -3146,13 +3154,15 @@
 			files = (
 			);
 			inputPaths = (
+				"${DWARF_DSYM_FOLDER_PATH}/${DWARF_DSYM_FILE_NAME}/Contents/Resources/DWARF/${TARGET_NAME}",
+				"$(SRCROOT)/$(BUILT_PRODUCTS_DIR)/$(INFOPLIST_PATH)",
 			);
 			name = "Upload symbols to Firebase Crashlytics";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "# Replace this with the GOOGLE_APP_ID from your GoogleService-Info.plist file\nGOOGLE_APP_ID=1:948651087073:ios:277570ec4910ec3baa93a0\n\nif [ \"${CONFIGURATION}\" = \"Release\" ]; then\n    \"${PODS_ROOT}/FirebaseCrashlytics/run\"\n    find \"${BUILT_PRODUCTS_DIR}\" -name \"*.dSYM\" | xargs -I \\{\\} \"${PODS_ROOT}/FirebaseCrashlytics/upload-symbols\" -gsp \"${PROJECT_DIR}/Documents/Services/GoogleService-Info-prod.plist\" -p ios \\{\\}\nelse\n    echo \"Skip Uploading\"\nfi\n";
+			shellScript = "# Replace this with the GOOGLE_APP_ID from your GoogleService-Info.plist file\nGOOGLE_APP_ID=1:948651087073:ios:277570ec4910ec3baa93a0\n\nif [ $CONFIGURATION == Release ]; then\n    \"${PODS_ROOT}/FirebaseCrashlytics/run\"\nelse\n    echo \"Skip Uploading\"\nfi\n";
 		};
 		FC36D34F25B5C32200412DDB /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -3292,13 +3302,15 @@
 			files = (
 			);
 			inputPaths = (
+				"${DWARF_DSYM_FOLDER_PATH}/${DWARF_DSYM_FILE_NAME}/Contents/Resources/DWARF/${TARGET_NAME}",
+				"$(SRCROOT)/$(BUILT_PRODUCTS_DIR)/$(INFOPLIST_PATH)",
 			);
 			name = "Upload symbols to Firebase Crashlytics";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "# Replace this with the GOOGLE_APP_ID from your GoogleService-Info.plist file\nGOOGLE_APP_ID=1:948651087073:ios:b88d8cb9f0125cff\n\nif [ \"${CONFIGURATION}\" = \"Release\" ]; then\n    \"${PODS_ROOT}/FirebaseCrashlytics/run\"\n    find \"${BUILT_PRODUCTS_DIR}\" -name \"*.dSYM\" | xargs -I \\{\\} \"${PODS_ROOT}/FirebaseCrashlytics/upload-symbols\" -gsp \"${PROJECT_DIR}/Documents/Services/GoogleService-Info-prod.plist\" -p ios \\{\\}\nelse\n    echo \"Skip Uploading\"\nfi\n";
+			shellScript = "# Replace this with the GOOGLE_APP_ID from your GoogleService-Info.plist file\nGOOGLE_APP_ID=1:948651087073:ios:b88d8cb9f0125cff\n\nif [ $CONFIGURATION == Release ]; then\n    \"${PODS_ROOT}/FirebaseCrashlytics/run\"\nelse\n    echo \"Skip Uploading\"\nfi\n";
 		};
 		FCC471031F56A2DF00373597 /* Increment Build Number */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -3414,6 +3426,7 @@
 				FC36D28E25B5C32200412DDB /* ASCConnectPortalViewController.swift in Sources */,
 				1D49E2B526A9BDC70024AC7A /* ASCTextViewTableViewCell.swift in Sources */,
 				FC36D28F25B5C32200412DDB /* ASCSignInViewController.swift in Sources */,
+				FCEF851F26C29A3100173DDF /* OnedriveTokenAdapter.swift in Sources */,
 				FC36D29025B5C32200412DDB /* ASCPhoneNumberViewController.swift in Sources */,
 				FCECDDD0264309D7006CD7B9 /* ASCPasswordRecoveryViewController.swift in Sources */,
 				FC36D29125B5C32200412DDB /* ASCConnectStorageCell.swift in Sources */,
@@ -3519,6 +3532,7 @@
 				FC36D2CD25B5C32200412DDB /* AppDelegate.swift in Sources */,
 				FC36D2CE25B5C32200412DDB /* ASCDebugConsoleViewController.swift in Sources */,
 				FC36D2CF25B5C32200412DDB /* PasscodeSignPlaceholderView.swift in Sources */,
+				FCEF851C26C29A0E00173DDF /* OneDriveOAuthCredential.swift in Sources */,
 				FC80CA2C25BADE1E0077C2B8 /* ASCiCloudProvider.swift in Sources */,
 				FC36D2D025B5C32200412DDB /* ASCCreatePortalStatus.swift in Sources */,
 				FC36D2D125B5C32200412DDB /* ASCShadowRadiusView.swift in Sources */,
@@ -3766,6 +3780,7 @@
 				FC9749971EE04FB300D00DDB /* ASCSignInViewController.swift in Sources */,
 				FCC552B41EC2F96600F645EE /* ASCPhoneNumberViewController.swift in Sources */,
 				FCF8472A22CB3E1800ABC3B4 /* ASCConnectStorageCell.swift in Sources */,
+				FCEF851E26C29A3100173DDF /* OnedriveTokenAdapter.swift in Sources */,
 				1DBE283E2670AEC70051D7AD /* ASCSharingOptionsViewController.swift in Sources */,
 				69EBD4CA1EF2AB9D00D3C685 /* UINavigationController+Extension.swift in Sources */,
 				1DA5E666269DA2E8005F59E1 /* ASCSharingAddRightHoldersRAMDataStore.swift in Sources */,
@@ -3871,6 +3886,7 @@
 				FCF2761E22C0FA5E00984E83 /* ASCShadowRadiusView.swift in Sources */,
 				FC68527126837B7300D830EC /* NextcloudStorageStats.swift in Sources */,
 				FC41D7FB2265B4AF00A155C2 /* ASC2FACodeViewController.swift in Sources */,
+				FCEF851B26C29A0E00173DDF /* OneDriveOAuthCredential.swift in Sources */,
 				1D71107F26A8217400E00421 /* UINavigationItem+Extensions.swift in Sources */,
 				FCEF9D271ED2C94300627BA5 /* PasscodeRepositoryType.swift in Sources */,
 				FC8667D621C799160020D797 /* ASCCloudsSplitViewController.swift in Sources */,
@@ -4278,6 +4294,7 @@
 				CODE_SIGN_ENTITLEMENTS = Documents/Entitlements/Documents.dev.entitlements;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CURRENT_PROJECT_VERSION = 650;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = 2WH24U26GJ;
 				ENABLE_BITCODE = YES;
 				INFOPLIST_FILE = Documents/Documents.alpha.plist;
@@ -4481,6 +4498,7 @@
 				CODE_SIGN_ENTITLEMENTS = Documents/Entitlements/Documents.entitlements;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CURRENT_PROJECT_VERSION = 600;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = 2WH24U26GJ;
 				ENABLE_BITCODE = YES;
 				INFOPLIST_FILE = Documents/Documents.dev.plist;

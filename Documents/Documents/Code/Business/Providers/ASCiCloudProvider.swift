@@ -693,10 +693,11 @@ class ASCiCloudProvider: ASCFileProviderProtocol & ASCSortableFileProviderProtoc
             return
         }
 
-        let fileTitle = name + "." + fileExtension
+        let fileTitle = resolve(fileTitle: name + "." + fileExtension, for: items.filter { $0 is ASCFile } as? [ASCFile] ?? [])
+            ?? name + "." + fileExtension
 
         // Copy empty template to desination path
-        if let templatePath = ASCFileManager.documentTemplatePath(with: fileExtension) {
+        if  let templatePath = ASCFileManager.documentTemplatePath(with: fileExtension) {
             let localUrl = Path(templatePath).url
             let remotePath = (Path(folder.id) + fileTitle).rawValue
 
@@ -753,7 +754,9 @@ class ASCiCloudProvider: ASCFileProviderProtocol & ASCSortableFileProviderProtoc
     }
 
     func createFile(_ name: String, in folder: ASCFolder, data: Data, params: [String: Any]?, processing: @escaping NetworkProgressHandler) {
-        let path = (Path(folder.id) + name).rawValue
+        let fileTitle = resolve(fileTitle: name, for: items.filter { $0 is ASCFile } as? [ASCFile] ?? []) ?? name
+        let path = (Path(folder.id) + fileTitle).rawValue
+        
         upload(path, data: data, overwrite: false, params: nil) { result, progress, error in
             if let _ = result {
                 ASCAnalytics.logEvent(ASCConstants.Analytics.Event.createEntity, parameters: [
@@ -774,7 +777,10 @@ class ASCiCloudProvider: ASCFileProviderProtocol & ASCSortableFileProviderProtoc
             return
         }
         
-        provider.create(folder: name, at: folder.id) { [weak self] error in
+        let folderTitle = resolve(folderTitle: name, for: items.filter { $0 is ASCFolder } as? [ASCFolder] ?? [])
+            ?? name
+
+        provider.create(folder: folderTitle, at: folder.id) { [weak self] error in
             DispatchQueue.main.async(execute: { [weak self] in
                 guard let strongSelf = self else { return }
                 
@@ -1129,6 +1135,52 @@ class ASCiCloudProvider: ASCFileProviderProtocol & ASCSortableFileProviderProtoc
                 ASCEditorManager.shared.browseUnknownCloud(for: self, file, inView: view, handler: openHandler)
             }
         }
+    }
+    
+    // MARK: - Helpers
+    
+    private func resolve(fileTitle: String, for files: [ASCFile]) -> String? {
+        let fileName = fileTitle.fileName()
+        let fileExtension = fileTitle.fileExtension()
+        let conflict: (String) -> Bool = { title in
+           return files.contains(where: { $0.title == title } )
+        }
+        
+        var resolveTitle = fileTitle
+        
+        // Add postfix if file exist
+        if conflict(resolveTitle) {
+            for index in 2...100 {
+                resolveTitle = (fileName + "-\(index)." + fileExtension)
+                
+                if !conflict(resolveTitle) {
+                    return resolveTitle
+                }
+            }
+        }
+        
+        return conflict(resolveTitle) ? nil : resolveTitle
+    }
+    
+    private func resolve(folderTitle: String, for folders: [ASCFolder]) -> String? {
+        let conflict: (String) -> Bool = { title in
+           return folders.contains(where: { $0.title == title } )
+        }
+        
+        var resolveTitle = folderTitle
+        
+        // Add postfix if folder exist
+        if conflict(resolveTitle) {
+            for index in 2...100 {
+                resolveTitle = folderTitle + "-\(index)"
+                
+                if !conflict(resolveTitle) {
+                    return resolveTitle
+                }
+            }
+        }
+        
+        return conflict(resolveTitle) ? nil : resolveTitle
     }
     
     // MARK: - File watcher

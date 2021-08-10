@@ -9,22 +9,18 @@
 import Foundation
 import Alamofire
 
-class OnedriveTokenAdapter: RequestAdapter {
-    private let accessToken: String
-    
-    init(accessToken: String) {
-        self.accessToken = accessToken
-    }
-    
-    func adapt(_ urlRequest: URLRequest, for session: Session, completion: @escaping (Result<URLRequest, Error>) -> Void) {
-        var urlRequest = urlRequest
-        urlRequest.headers.update(.authorization(bearerToken: accessToken))
-        completion(.success(urlRequest))
-    }
-}
-
 class OnedriveApiClient: NetworkingClient {
     
+    public var credential: OneDriveOAuthCredential? {
+        didSet {
+            if oldValue == nil {
+                configure(url: baseURL?.absoluteString ?? "", token: credential?.accessToken)
+            }
+        }
+    }
+    
+    public var onRefreshToken: ((OneDriveOAuthCredential) -> Void)?
+
     public override init() {
         super.init()
         baseURL = URL(string: "https://graph.microsoft.com/v1.0/")
@@ -36,11 +32,11 @@ class OnedriveApiClient: NetworkingClient {
         configuration.timeoutIntervalForResource = 30
         configuration.headers = .default
         
-        let adapter = OnedriveTokenAdapter(accessToken: token ?? "")
+        let interceptor = OneDriveRequestInterceptor(api: self)
         
-        self.manager = Session(
+        manager = Session(
             configuration: configuration,
-            interceptor: Interceptor(adapters: [adapter]),
+            interceptor: interceptor,
             serverTrustManager: ServerTrustPolicyManager(evaluators: [:])
         )
     }

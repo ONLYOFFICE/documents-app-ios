@@ -33,7 +33,7 @@ class ASCDeviceCategoryViewController: UITableViewController {
     var deviceTrashCategory: ASCCategory = {
         $0.title = NSLocalizedString("Trash", comment: "Category title")
         $0.image = Asset.Images.categoryTrash.image
-        $0.provider = ASCFileManager.localProvider
+        $0.provider = ASCFileManager.localProvider.copy()
         $0.folder = {
             $0.title = NSLocalizedString("Trash", comment: "Category title")
             $0.rootFolderType = .deviceTrash

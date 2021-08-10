@@ -99,7 +99,8 @@ class ASCConnectStorageOAuth2OneDrive: ASCConnectStorageOAuth2Delegate {
                                 controller.complation?([
                                     "providerKey": ASCFolderProviderType.oneDrive.rawValue,
                                     "token": model.access_token,
-                                    "refresh_token": model.refresh_token
+                                    "refresh_token": model.refresh_token,
+                                    "expires_in": model.expires_in
                                 ])
                             case .failure(let error):
                                 log.error(error)
@@ -126,6 +127,34 @@ class ASCConnectStorageOAuth2OneDrive: ASCConnectStorageOAuth2Delegate {
             }
         }
         return true
+    }
+    
+    func accessToken(with refreshToken: String, complation: @escaping (Result<AuthByCodeResponseModel, Error>) -> Void) {
+        let parameters: Parameters = [
+            "client_id": clientId ?? "",
+            "redirect_uri": redirectUrl ?? "",
+            "client_secret": clientSecret ?? "",
+            "refresh_token": refreshToken,
+            "grant_type": "refresh_token"
+        ]
+        
+        let httpHeaders = HTTPHeaders(["Content-Type": "application/x-www-form-urlencoded"])
+        
+        AF.request(
+            tokenUrl,
+            method: .post,
+            parameters: parameters,
+            encoding: URLEncoding.httpBody,
+            headers: httpHeaders
+        ).responseDecodable(of: AuthByCodeResponseModel.self) { response in
+            switch response.result {
+            case .success(let model):
+                complation(.success(model))
+            case .failure(let error):
+                log.error(error)
+                complation(.failure(error))
+            }
+        }
     }
 }
 

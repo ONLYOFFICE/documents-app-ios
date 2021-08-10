@@ -643,6 +643,9 @@
 "Nextcloud" = "Nextcloud";
 
 /* No comment provided by engineer. */
+"Nextcloud directory" = "Папка Nextcloud";
+
+/* No comment provided by engineer. */
 "No connection" = "Нет подключения";
 
 /* No comment provided by engineer. */
@@ -725,7 +728,10 @@
 /* No comment provided by engineer. */
 "ownCloud" = "ownCloud";
 
-/* Table cell right holder acces text */
+/* No comment provided by engineer. */
+"ownCloud directory" = "Папка ownCloud";
+
+/* No comment provided by engineer. */
 "Owner" = "Владелец";
 
 /* No comment provided by engineer. */
@@ -968,6 +974,9 @@
 
 /* No comment provided by engineer. */
 "The file will be irretrievably deleted. This action is irreversible." = "Файл будет безвозвратно удален. Это действие нельзя отменить.";
+
+/* No comment provided by engineer. */
+"The folder in the Trash can not be opened." = "Невозможно открыть папку, находящийся в корзине.";
 
 /* No comment provided by engineer. */
 "The folder will be irretrievably deleted. This action is irreversible." = "Папка будет безвозвратно удалена. Это действие нельзя отменить.";

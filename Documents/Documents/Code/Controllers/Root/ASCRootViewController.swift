@@ -1,5 +1,5 @@
 //
-//  ASCRootController.swift
+//  ASCRootViewController.swift
 //  Documents
 //
 //  Created by Alexander Yuzhin on 05/12/2018.
@@ -9,9 +9,11 @@
 import UIKit
 import FileKit
 
-class ASCRootController: UITabBarController {
+class ASCRootViewController: ASCBaseTabBarController {
 
     // MARK: - Properties
+    
+    class override var storyboard: Storyboard { return Storyboard.main }
     
     var currentSizeClass: UIUserInterfaceSizeClass = .compact
     
@@ -27,6 +29,10 @@ class ASCRootController: UITabBarController {
 
     // MARK: - Lifecycle Methods
 
+    deinit {
+        NotificationCenter.default.removeObserver(self)
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -44,12 +50,13 @@ class ASCRootController: UITabBarController {
         ASCViewControllerManager.shared.rootController = self
 
         // Registry events
-        NotificationCenter.default.addObserver(self, selector: #selector(checkShortcutLaunch), name: ASCConstants.Notifications.shortcutLaunch, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(checkPushInfo), name: ASCConstants.Notifications.pushInfo, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(checkImportLaunch), name: ASCConstants.Notifications.importFileLaunch, object: nil)
-//        NotificationCenter.default.addObserver(self, selector: #selector(onOnlyofficeLoginCompleted(_:)), name: ASCConstants.Notifications.loginOnlyofficeCompleted, object: nil)
-//        NotificationCenter.default.addObserver(self, selector: #selector(onOnlyofficeLogoutCompleted(_:)), name: ASCConstants.Notifications.logoutOnlyofficeCompleted, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(networkStatusChanged), name: ASCConstants.Notifications.networkStatusChanged, object: nil)
+        let center = NotificationCenter.default
+        center.addObserver(self, selector: #selector(checkShortcutLaunch), name: ASCConstants.Notifications.shortcutLaunch, object: nil)
+        center.addObserver(self, selector: #selector(checkPushInfo), name: ASCConstants.Notifications.pushInfo, object: nil)
+        center.addObserver(self, selector: #selector(checkImportLaunch), name: ASCConstants.Notifications.importFileLaunch, object: nil)
+//        center.addObserver(self, selector: #selector(onOnlyofficeLoginCompleted(_:)), name: ASCConstants.Notifications.loginOnlyofficeCompleted, object: nil)
+//        center.addObserver(self, selector: #selector(onOnlyofficeLogoutCompleted(_:)), name: ASCConstants.Notifications.logoutOnlyofficeCompleted, object: nil)
+        center.addObserver(self, selector: #selector(networkStatusChanged), name: ASCConstants.Notifications.networkStatusChanged, object: nil)
 
         // Setup tabBarItem
         if let deviceSC = viewControllers?.first(where: { $0 is ASCDeviceSplitViewController }) {
@@ -69,10 +76,12 @@ class ASCRootController: UITabBarController {
         }
         
         update(traitCollection: traitCollection)
+        
+        checkNotifications()
     }
-
-    deinit {
-        NotificationCenter.default.removeObserver(self)
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
     }
 
     override var supportedInterfaceOrientations : UIInterfaceOrientationMask {
@@ -96,9 +105,7 @@ class ASCRootController: UITabBarController {
     }
 
     private func displaySplash() {
-        if let splashVC = storyboard?.instantiateViewController(withIdentifier: "ASCSplashViewController") {
-            UIApplication.shared.windows.last?.rootViewController = splashVC
-        }
+        UIApplication.shared.windows.last?.rootViewController = StoryboardScene.Main.ascSplashViewController.instantiate()
     }
     
     func display(provider: ASCFileProviderProtocol?, folder: ASCFolder?) {
@@ -358,7 +365,7 @@ class ASCRootController: UITabBarController {
 
 // MARK: - UITabBarController Delegate
 
-extension ASCRootController: UITabBarControllerDelegate {
+extension ASCRootViewController: UITabBarControllerDelegate {
 
     func tabBarController(_ tabBarController: UITabBarController, didSelect viewController: UIViewController) {
 //        print("tabBarController didSelect")

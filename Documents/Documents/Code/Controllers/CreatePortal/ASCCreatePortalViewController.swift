@@ -12,17 +12,20 @@ import MBProgressHUD
 import Alamofire
 import SkyFloatingLabelTextField
 import Firebase
+import PhoneNumberKit
 
-class ASCCreatePortalViewController: UIViewController, UITextFieldDelegate {
+class ASCCreatePortalViewController: ASCBaseViewController {
 
     // MARK: - Properties
     var portal: String?
     var firstName: String?
     var lastName: String?
     var email: String?
+    var phone: String?
     var isInfoPortal = false
 
     fileprivate let infoPortalSuffix = ".teamlab.info"
+    fileprivate let phoneNumberKit = PhoneNumberKit()
     
     @IBOutlet weak var portalField: ParkedTextField!
     @IBOutlet weak var firstNameField: SkyFloatingLabelTextField!
@@ -30,6 +33,8 @@ class ASCCreatePortalViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var emailField: SkyFloatingLabelTextField!
     @IBOutlet weak var passwordOneField: SkyFloatingLabelTextField!
     @IBOutlet weak var passwordTwoField: SkyFloatingLabelTextField!
+    @IBOutlet weak var phoneCodeField: UITextField!
+    @IBOutlet weak var phoneNumberField: PhoneNumberTextField!
     @IBOutlet weak var termsLabel: UILabel!
     @IBOutlet weak var topConstraint: NSLayoutConstraint!
     
@@ -47,14 +52,28 @@ class ASCCreatePortalViewController: UIViewController, UITextFieldDelegate {
         termsLabel?.addGestureRecognizer(tapGesture)
         
         for field in [portalField, firstNameField, lastNameField, emailField, passwordOneField, passwordTwoField] {
-            field?.titleFont = UIFont.systemFont(ofSize: 12)
+            field?.titleFont = ASCTextStyle.underlinePlaceholderField.font
             field?.lineHeight = UIDevice.screenPixel
             field?.selectedLineHeight = UIDevice.screenPixel * 2
             field?.titleFormatter = { $0.uppercased() }
             field?.placeholder = field?.placeholder?.uppercased()
-            field?.placeholderFont = UIFont.systemFont(ofSize: 12)
+            field?.placeholderFont = ASCTextStyle.underlinePlaceholderField.font
         }
         
+        for field in [phoneCodeField, phoneNumberField] {
+            field?.placeholder = field?.placeholder?.uppercased()
+            field?.textStyle = .underlineField
+            field?.placeholderTextStyle = .underlinePlaceholderField
+            field?.delegate = self
+            field?.underline(color: Asset.Colors.grayLight.color)
+        }
+        
+        if let countryCode = Locale.current.regionCode {
+            if let code = phoneNumberKit.countryCode(for: countryCode) {
+                phoneCodeField?.text = "+\(code)"
+            }
+        }
+
         if UIDevice.pad {
             topConstraint?.constant = 100
         }
@@ -75,6 +94,8 @@ class ASCCreatePortalViewController: UIViewController, UITextFieldDelegate {
         IQKeyboardManager.shared.enableAutoToolbar = true
         IQKeyboardManager.shared.shouldShowToolbarPlaceholder = false
         IQKeyboardManager.shared.shouldToolbarUsesTextFieldTintColor = true
+        IQKeyboardManager.shared.toolbarPreviousNextAllowedClasses = [UIStackView.self, UIView.self]
+
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -169,6 +190,8 @@ class ASCCreatePortalViewController: UIViewController, UITextFieldDelegate {
 
         let isInfoPortal = portalField?.typedText.trimmed.contains(infoPortalSuffix) ?? false
 
+        // Validate form
+        
         guard
             let portal = portalField?
                 .typedText
@@ -208,6 +231,38 @@ class ASCCreatePortalViewController: UIViewController, UITextFieldDelegate {
             return
         }
         
+        
+        // Validate phone number
+        
+        var isValidNumber = false
+        var phoneNumber: PhoneNumber!
+
+        if  let phoneCodeText = phoneCodeField.text?.trimmed,
+            let phonenumberText = phoneNumberField.text?.trimmed,
+            let stringCode = phoneCodeField.text?.trimmed.replacingOccurrences(of: "+", with: ""),
+            let intCode = UInt64(stringCode),
+            let regionCode = phoneNumberKit.mainCountry(forCode: intCode)
+        {
+            do {
+                phoneNumber = try phoneNumberKit.parse("\(phoneCodeText)\(phonenumberText)", withRegion: regionCode)
+                isValidNumber = true
+            } catch let error {
+                log.error(error)
+                isValidNumber = false
+            }
+        }
+        
+        guard isValidNumber else {
+            phoneCodeField?.shake()
+            phoneNumberField?.shake()
+            return
+        }
+            
+        let phoneNumberE164 = phoneNumberKit.format(phoneNumber, toType: .e164)
+        
+        
+        // Validate portal name
+        
         let hud = MBProgressHUD.showTopMost()
         hud?.label.text = NSLocalizedString("Validation", comment: "Caption of the process")
         
@@ -240,6 +295,7 @@ class ASCCreatePortalViewController: UIViewController, UITextFieldDelegate {
                                     portalViewController.firstName = firstName
                                     portalViewController.lastName = lastName
                                     portalViewController.email = email
+                                    portalViewController.phone = phoneNumberE164
                                     portalViewController.isInfoPortal = isInfoPortal
 
                                     self.navigationController?.pushViewController(portalViewController, animated: true)
@@ -304,23 +360,14 @@ class ASCCreatePortalViewController: UIViewController, UITextFieldDelegate {
             return
         }
         
-        guard let firstName = firstName else {
-            return
-        }
-        
-        guard let lastName = lastName else {
-            return
-        }
-        
-        guard let email = email else {
-            return
-        }
-        
-        guard let language = Locale.preferredLanguages.first else {
-            return
-        }
-        
-        guard let portalName = portal else {
+        guard
+            let firstName = firstName ,
+            let lastName = lastName,
+            let email = email,
+            let language = Locale.preferredLanguages.first,
+            let portalName = portal,
+            let phone = phone
+        else {
             return
         }
         
@@ -333,7 +380,7 @@ class ASCCreatePortalViewController: UIViewController, UITextFieldDelegate {
             "firstName"      : firstName,
             "lastName"       : lastName,
             "email"          : email,
-            "phone"          : "",
+            "phone"          : phone,
             "portalName"     : portalName,
             "partnerId"      : "",
             "industry"       : 0,
@@ -453,6 +500,14 @@ class ASCCreatePortalViewController: UIViewController, UITextFieldDelegate {
         UIAlertController.showError(in: self, message: message)
     }
     
+    private func presentCountryCodes() {
+        if let countryCodeVC = navigator.navigate(to: .countryPhoneCodes) as? ASCCountryCodeViewController {
+            countryCodeVC.selectCountry = { country, code in
+                self.phoneCodeField.text = "+\(code)"
+            }
+        }
+    }
+    
     // MARK: - Actions
     
     @IBAction func onFinalStep(_ sender: UIButton) {
@@ -463,21 +518,53 @@ class ASCCreatePortalViewController: UIViewController, UITextFieldDelegate {
         createPortal()
     }
     
-    // MARK: - Text Field Delegate
+}
+    
+// MARK: - Text Field Delegate
+extension ASCCreatePortalViewController: UITextFieldDelegate {
+    
+    func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
+        if textField == phoneCodeField {
+            presentCountryCodes()
+            return false
+        }
+        return true
+    }
+    
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        if textField == phoneNumberField {
+            for field in [phoneCodeField, phoneNumberField] {
+                field?.underline(color: Asset.Colors.brend.color, weight: UIDevice.screenPixel * 2)
+            }
+        }
+    }
+    
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        if textField == phoneNumberField {
+            for field in [phoneCodeField, phoneNumberField] {
+                field?.underline(color: Asset.Colors.grayLight.color)
+            }
+        }
+    }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        let nextTag = textField.tag + 1
+        let isRegistryForm = restorationIdentifier == StoryboardScene.CreatePortal.createPortalStepOneController.identifier
+        let orderViews: [UIView?] = isRegistryForm
+            ? [portalField, firstNameField, lastNameField, emailField, phoneNumberField]
+            : [passwordOneField, passwordTwoField]
         
-        if let nextResponder = textField.superview?.viewWithTag(nextTag) {
-            nextResponder.becomeFirstResponder()
+        if let fieldIndex = orderViews.firstIndex(where: { $0 == textField }),
+           let nextField = orderViews[safe: fieldIndex + 1] {
+            nextField?.becomeFirstResponder()
         } else {
-            if restorationIdentifier == StoryboardScene.CreatePortal.createPortalStepOneController.identifier {
+            if isRegistryForm {
                 showNextStep()
             } else {
                 createPortal()
             }
             return true
-        }        
+        }
+
         return false
     }
     

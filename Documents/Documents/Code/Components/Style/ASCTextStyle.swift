@@ -18,6 +18,9 @@ enum ASCTextStyle {
     case subheadFontWhite
     case subheadBold
     case placeholderRegular
+    
+    case underlineField
+    case underlinePlaceholderField
 
     // MARK: - signature
     
@@ -50,6 +53,16 @@ enum ASCTextStyle {
             } else {
                 return (UIFont.preferredFont(forTextStyle: .footnote), .lightGray, 1)
             }
+            
+        case .underlineField:
+            if #available(iOS 13.0, *) {
+                return (UIFont.systemFont(ofSize: 14), .label, 1)
+            } else {
+                return (UIFont.systemFont(ofSize: 14), .black, 1)
+            }
+        
+        case .underlinePlaceholderField:
+            return (UIFont.systemFont(ofSize: 12), .lightGray, 1)
             
         // MARK: - signature
         

@@ -13,6 +13,19 @@ import FirebaseCore
 typealias ASCGoogleSignInHandler = (_ token: String?, _ userData: Data?, _ error: Error?) -> Void
 
 class ASCGoogleSignInController: NSObject {
+    // MARK: - Errors
+    
+    enum ASCGoogleSignInError: LocalizedError {
+        case clientId
+        
+        public var errorDescription: String? {
+            switch self {
+            case .clientId:
+                return NSLocalizedString("No client IDs of application", comment: "")
+            }
+        }
+    }
+        
     // MARK: - Properties
     
     private var signInHandler: ASCGoogleSignInHandler?
@@ -20,41 +33,32 @@ class ASCGoogleSignInController: NSObject {
     // MARK: - Public
     
     func signIn(controller: UIViewController, scopes: [String]? = nil, handler: @escaping ASCGoogleSignInHandler) {
-        if let googleSignIn = GIDSignIn.sharedInstance() {
-
-            signInHandler = handler
-
-            googleSignIn.presentingViewController = controller
-            googleSignIn.clientID = FirebaseApp.app()?.options.clientID
-            googleSignIn.scopes = scopes ?? ["email", "profile"]
-            googleSignIn.shouldFetchBasicProfile = true
-            googleSignIn.delegate = self
-            
-            // Logout
-            signOut()
-            
-            // Login
-            googleSignIn.signIn()
+        signInHandler = handler
+        
+        guard let clientId = FirebaseApp.app()?.options.clientID else {
+            signInHandler?(nil, nil, ASCGoogleSignInError.clientId)
+            return
+        }
+        
+        let googleSignIn = GIDSignIn.sharedInstance
+        
+        // Logout
+        signOut()
+        
+        // Login
+        let signInConfig = GIDConfiguration(clientID: clientId)
+        googleSignIn.signIn(with: signInConfig, presenting: controller) { [weak self] user, error in
+            guard let user = user else {
+                self?.signInHandler?(nil, nil, error)
+                return
+            }
+            // TODO: Check user.grantedScopes or GIDSignIn.sharedInstance.addScopes
+            self?.signInHandler?(user.authentication.accessToken, NSKeyedArchiver.archivedData(withRootObject: user), nil)
         }
     }
     
     func signOut() {
-        if let googleSignIn = GIDSignIn.sharedInstance() {
-            googleSignIn.signOut()
-            googleSignIn.disconnect()
-        }
-    }
-}
-
-// MARK: - GoogleSignIn Delegate
-
-extension ASCGoogleSignInController: GIDSignInDelegate {
-
-    func sign(_ signIn: GIDSignIn!, didSignInFor user: GIDGoogleUser!, withError error: Error!) {
-        if error == nil, let user = user {
-            signInHandler?(user.authentication.accessToken, NSKeyedArchiver.archivedData(withRootObject: user), nil)
-        } else {
-            signInHandler?(nil, nil, error)
-        }
+        GIDSignIn.sharedInstance.signOut()
+        GIDSignIn.sharedInstance.disconnect()
     }
 }

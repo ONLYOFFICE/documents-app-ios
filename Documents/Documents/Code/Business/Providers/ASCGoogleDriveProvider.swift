@@ -46,12 +46,8 @@ class ASCGoogleDriveProvider: ASCFileProviderProtocol & ASCSortableFileProviderP
     var total: Int = 0
     var authorization: String? {
         get {
-            guard
-                let googleUser = googleUser,
-                let token = googleUser.authentication.accessToken
-            else { return nil }
-
-            return "Bearer \(token)"
+            guard let googleUser = googleUser else { return nil }
+            return "Bearer \(googleUser.authentication.accessToken)"
         }
     }
     var delegate: ASCProviderDelegate?
@@ -227,8 +223,8 @@ class ASCGoogleDriveProvider: ASCFileProviderProtocol & ASCSortableFileProviderP
         
         user = ASCUser()
         user?.userId = googleUser.userID
-        user?.displayName = googleUser.profile.name
-        user?.department = googleUser.profile.email
+        user?.displayName = googleUser.profile?.name
+        user?.department = googleUser.profile?.email
         
         completeon?(true, nil)
     }
@@ -275,7 +271,9 @@ class ASCGoogleDriveProvider: ASCFileProviderProtocol & ASCSortableFileProviderP
             queryParams += "'\(folder.id)' in parents and trashed = false"
             
             // Only owned items
-            queryParams += " and '\(googleUser.profile!.email!)' in owners"
+            if let email = googleUser.profile?.email {
+                queryParams += " and '\(email)' in owners"
+            }
             
             // Search
             if

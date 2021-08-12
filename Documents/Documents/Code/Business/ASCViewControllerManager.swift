@@ -26,7 +26,7 @@ class ASCViewControllerManager {
         }
     }
 
-    var rootController: ASCRootController? = nil {
+    var rootController: ASCRootViewController? = nil {
         didSet {
             if oldValue == nil {
                 initializeControllers()

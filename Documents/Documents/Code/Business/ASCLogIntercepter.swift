@@ -15,6 +15,8 @@ protocol ASCLogInterceptorDelegate: AnyObject {
 class ASCLogIntercepter {
     public static let shared = ASCLogIntercepter()
     
+    // MARK: - Properties
+    
     private var inputPipe: Pipe?
     private var outputPipe: Pipe?
     private let queue = DispatchQueue(label: "asc.log.interceptor.queue", qos: .default, attributes: .concurrent)
@@ -29,6 +31,8 @@ class ASCLogIntercepter {
             return nil
         }
     }
+    
+    // MARK: - Lifecycle Methods
     
     public func start() {
         if let logUrl = logUrl {

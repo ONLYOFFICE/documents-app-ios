@@ -9,7 +9,7 @@ def common_pods
   # Networking
 
   pod 'Alamofire'
-  pod 'Bagel', :configurations => ['Debug']
+  pod 'atlantis-proxyman', :configurations => ['Debug']
   pod 'SDWebImage'
   pod 'Kingfisher'
 

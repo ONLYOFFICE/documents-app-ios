@@ -231,7 +231,7 @@
 		FC36D29325B5C32200412DDB /* ASCBaseSplitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCB8A39621C29D4900CF74FA /* ASCBaseSplitViewController.swift */; };
 		FC36D29425B5C32200412DDB /* ASCAccountsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC6106F91F9E2ED6002A25C8 /* ASCAccountsViewController.swift */; };
 		FC36D29525B5C32200412DDB /* Mappings.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC7CF5141EF3EFF300C0A64F /* Mappings.swift */; };
-		FC36D29625B5C32200412DDB /* ASCRootController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC68398621B7DC0D00251CEA /* ASCRootController.swift */; };
+		FC36D29625B5C32200412DDB /* ASCRootViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC68398621B7DC0D00251CEA /* ASCRootViewController.swift */; };
 		FC36D29725B5C32200412DDB /* ASCProfileAvatarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCF2761B22C0E8E500984E83 /* ASCProfileAvatarView.swift */; };
 		FC36D29825B5C32200412DDB /* UIDevice+DeviceKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC37D8E821CB8FA8001A7BFD /* UIDevice+DeviceKit.swift */; };
 		FC36D29925B5C32200412DDB /* ASCImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC5E2D8C1E8A4C8B0079626B /* ASCImageViewController.swift */; };
@@ -284,7 +284,6 @@
 		FC36D2CA25B5C32200412DDB /* CALayer+Animate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC56F4912248BC13004E3930 /* CALayer+Animate.swift */; };
 		FC36D2CB25B5C32200412DDB /* ASCDocumentsNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCD33B5821C9195000D52DAF /* ASCDocumentsNavigationController.swift */; };
 		FC36D2CC25B5C32200412DDB /* UISplitViewController+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCA3A41A22C3671200D0E57E /* UISplitViewController+Extensions.swift */; };
-		FC36D2CD25B5C32200412DDB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCFDAA901E48A10C007A240C /* AppDelegate.swift */; };
 		FC36D2CE25B5C32200412DDB /* ASCDebugConsoleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC4D0A212494F807001EF1B5 /* ASCDebugConsoleViewController.swift */; };
 		FC36D2CF25B5C32200412DDB /* PasscodeSignPlaceholderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCEF9D191ED2C94300627BA5 /* PasscodeSignPlaceholderView.swift */; };
 		FC36D2D025B5C32200412DDB /* ASCCreatePortalStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC8BBC9D22BA5D6100761152 /* ASCCreatePortalStatus.swift */; };
@@ -450,7 +449,7 @@
 		FC64B2EC1EE56C5500920FDD /* ASCGoogleSignInController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC64B2EA1EE56C5500920FDD /* ASCGoogleSignInController.swift */; };
 		FC65B18021F9AF5300AD5114 /* ASCEntityItemProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC65B17F21F9AF5300AD5114 /* ASCEntityItemProvider.swift */; };
 		FC65B6B61EB9F23800AE73BB /* ASCDocumentService.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC65B6B51EB9F23800AE73BB /* ASCDocumentService.swift */; };
-		FC68398721B7DC0D00251CEA /* ASCRootController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC68398621B7DC0D00251CEA /* ASCRootController.swift */; };
+		FC68398721B7DC0D00251CEA /* ASCRootViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC68398621B7DC0D00251CEA /* ASCRootViewController.swift */; };
 		FC68398A21B7DF0C00251CEA /* ASCOnDeviceNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC68398921B7DF0C00251CEA /* ASCOnDeviceNavigationController.swift */; };
 		FC68398D21B7DFCE00251CEA /* ASCOnlyofficeNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC68398C21B7DFCE00251CEA /* ASCOnlyofficeNavigationController.swift */; };
 		FC68399021B7E01E00251CEA /* ASCCloudsNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC68398F21B7E01E00251CEA /* ASCCloudsNavigationController.swift */; };
@@ -656,6 +655,16 @@
 		FCEF851C26C29A0E00173DDF /* OneDriveOAuthCredential.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCEF851A26C29A0E00173DDF /* OneDriveOAuthCredential.swift */; };
 		FCEF851E26C29A3100173DDF /* OnedriveTokenAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCEF851D26C29A3100173DDF /* OnedriveTokenAdapter.swift */; };
 		FCEF851F26C29A3100173DDF /* OnedriveTokenAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCEF851D26C29A3100173DDF /* OnedriveTokenAdapter.swift */; };
+		FCEF853626C3E3CF00173DDF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCEF853526C3E3CF00173DDF /* AppDelegate.swift */; };
+		FCEF853726C3E3CF00173DDF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCEF853526C3E3CF00173DDF /* AppDelegate.swift */; };
+		FCEF853C26C3E43000173DDF /* AppDelegate+Notifications.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCEF853B26C3E43000173DDF /* AppDelegate+Notifications.swift */; };
+		FCEF853D26C3E43000173DDF /* AppDelegate+Notifications.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCEF853B26C3E43000173DDF /* AppDelegate+Notifications.swift */; };
+		FCEF853F26C3EFD500173DDF /* AppDelegate+Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCEF853E26C3EFD500173DDF /* AppDelegate+Helpers.swift */; };
+		FCEF854026C3EFD500173DDF /* AppDelegate+Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCEF853E26C3EFD500173DDF /* AppDelegate+Helpers.swift */; };
+		FCEF855726C405FB00173DDF /* ASCBaseTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCEF855626C405FB00173DDF /* ASCBaseTabBarController.swift */; };
+		FCEF855826C405FB00173DDF /* ASCBaseTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCEF855626C405FB00173DDF /* ASCBaseTabBarController.swift */; };
+		FCEF856C26C52E5F00173DDF /* UITextField+Style.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCEF856B26C52E5F00173DDF /* UITextField+Style.swift */; };
+		FCEF856D26C52E5F00173DDF /* UITextField+Style.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCEF856B26C52E5F00173DDF /* UITextField+Style.swift */; };
 		FCEF9D1A1ED2C94300627BA5 /* PasscodeLock.strings in Resources */ = {isa = PBXBuildFile; fileRef = FCEF9D041ED2C94300627BA5 /* PasscodeLock.strings */; };
 		FCEF9D1B1ED2C94300627BA5 /* Functions.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCEF9D061ED2C94300627BA5 /* Functions.swift */; };
 		FCEF9D1D1ED2C94300627BA5 /* ChangePasscodeState.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCEF9D091ED2C94300627BA5 /* ChangePasscodeState.swift */; };
@@ -715,7 +724,6 @@
 		FCF865201E4E0D1C003E47B6 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FCF8651C1E4E0D1C003E47B6 /* Main.storyboard */; };
 		FCF916CA1ED44F3A0032C135 /* Localizable.stringsdict in Resources */ = {isa = PBXBuildFile; fileRef = FCF916C81ED44F3A0032C135 /* Localizable.stringsdict */; };
 		FCFB36071EDF0AB00001597E /* ASCBanner.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCFB36061EDF0AB00001597E /* ASCBanner.swift */; };
-		FCFDAA911E48A10C007A240C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCFDAA901E48A10C007A240C /* AppDelegate.swift */; };
 		FCFDAA981E48A10C007A240C /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FCFDAA971E48A10C007A240C /* Images.xcassets */; };
 		FCFDAA9B1E48A10C007A240C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FCFDAA991E48A10C007A240C /* LaunchScreen.storyboard */; };
 /* End PBXBuildFile section */
@@ -925,7 +933,7 @@
 		FC65B17F21F9AF5300AD5114 /* ASCEntityItemProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCEntityItemProvider.swift; sourceTree = "<group>"; };
 		FC65B6B51EB9F23800AE73BB /* ASCDocumentService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASCDocumentService.swift; sourceTree = "<group>"; };
 		FC65B6BA1EBA0AEB00AE73BB /* Documents-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Documents-Bridging-Header.h"; sourceTree = "<group>"; };
-		FC68398621B7DC0D00251CEA /* ASCRootController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCRootController.swift; sourceTree = "<group>"; };
+		FC68398621B7DC0D00251CEA /* ASCRootViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCRootViewController.swift; sourceTree = "<group>"; };
 		FC68398921B7DF0C00251CEA /* ASCOnDeviceNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCOnDeviceNavigationController.swift; sourceTree = "<group>"; };
 		FC68398C21B7DFCE00251CEA /* ASCOnlyofficeNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCOnlyofficeNavigationController.swift; sourceTree = "<group>"; };
 		FC68398F21B7E01E00251CEA /* ASCCloudsNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCCloudsNavigationController.swift; sourceTree = "<group>"; };
@@ -1104,6 +1112,11 @@
 		FCED8F4D23E8355500EC1DAC /* ASCFloatingLabelTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCFloatingLabelTextField.swift; sourceTree = "<group>"; };
 		FCEF851A26C29A0E00173DDF /* OneDriveOAuthCredential.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OneDriveOAuthCredential.swift; sourceTree = "<group>"; };
 		FCEF851D26C29A3100173DDF /* OnedriveTokenAdapter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnedriveTokenAdapter.swift; sourceTree = "<group>"; };
+		FCEF853526C3E3CF00173DDF /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		FCEF853B26C3E43000173DDF /* AppDelegate+Notifications.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AppDelegate+Notifications.swift"; sourceTree = "<group>"; };
+		FCEF853E26C3EFD500173DDF /* AppDelegate+Helpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AppDelegate+Helpers.swift"; sourceTree = "<group>"; };
+		FCEF855626C405FB00173DDF /* ASCBaseTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCBaseTabBarController.swift; sourceTree = "<group>"; };
+		FCEF856B26C52E5F00173DDF /* UITextField+Style.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextField+Style.swift"; sourceTree = "<group>"; };
 		FCEF9D061ED2C94300627BA5 /* Functions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Functions.swift; sourceTree = "<group>"; };
 		FCEF9D071ED2C94300627BA5 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		FCEF9D091ED2C94300627BA5 /* ChangePasscodeState.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChangePasscodeState.swift; sourceTree = "<group>"; };
@@ -1204,7 +1217,6 @@
 		FCF916CB1ED44F430032C135 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.stringsdict; name = ru; path = ru.lproj/Localizable.stringsdict; sourceTree = "<group>"; };
 		FCFB36061EDF0AB00001597E /* ASCBanner.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASCBanner.swift; sourceTree = "<group>"; };
 		FCFDAA8D1E48A10C007A240C /* Documents.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Documents.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		FCFDAA901E48A10C007A240C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		FCFDAA971E48A10C007A240C /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		FCFDAA9A1E48A10C007A240C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		FF1B246C8E6383E9C844D7A7 /* Pods-DocumentsTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DocumentsTests.debug.xcconfig"; path = "../Pods/Target Support Files/Pods-DocumentsTests/Pods-DocumentsTests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -1812,6 +1824,7 @@
 				FCF694B12631C10400808644 /* ASCNavigator.swift */,
 				FC1EA5CC1ECED0A0008FEE2E /* ASCBaseViewController.swift */,
 				FCF694B02631C10400808644 /* ASCBaseTableViewController.swift */,
+				FCEF855626C405FB00173DDF /* ASCBaseTabBarController.swift */,
 				FC1EA5CA1ECECBC3008FEE2E /* ASCBaseNavigationController.swift */,
 				FCB8A39621C29D4900CF74FA /* ASCBaseSplitViewController.swift */,
 			);
@@ -2231,7 +2244,7 @@
 		FC844391215E604000526974 /* Root */ = {
 			isa = PBXGroup;
 			children = (
-				FC68398621B7DC0D00251CEA /* ASCRootController.swift */,
+				FC68398621B7DC0D00251CEA /* ASCRootViewController.swift */,
 			);
 			path = Root;
 			sourceTree = "<group>";
@@ -2459,6 +2472,16 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
+		FCEF853426C3E3CF00173DDF /* Delegate */ = {
+			isa = PBXGroup;
+			children = (
+				FCEF853526C3E3CF00173DDF /* AppDelegate.swift */,
+				FCEF853B26C3E43000173DDF /* AppDelegate+Notifications.swift */,
+				FCEF853E26C3EFD500173DDF /* AppDelegate+Helpers.swift */,
+			);
+			path = Delegate;
+			sourceTree = "<group>";
+		};
 		FCEF9D021ED2C94300627BA5 /* Vendor */ = {
 			isa = PBXGroup;
 			children = (
@@ -2553,6 +2576,7 @@
 			children = (
 				FCF695862632E3A300808644 /* UILabel+Style.swift */,
 				FCF6958F2632E3D500808644 /* UIButton+Style.swift */,
+				FCEF856B26C52E5F00173DDF /* UITextField+Style.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -2602,7 +2626,7 @@
 				FCA5B9201E48A25C00CD2EA9 /* Code */,
 				FCC62AD01E8A8D7B00D24BE2 /* Resources */,
 				FC584ED925BB4F40001C608E /* Entitlements */,
-				FCFDAA901E48A10C007A240C /* AppDelegate.swift */,
+				FCEF853426C3E3CF00173DDF /* Delegate */,
 				FC7B37D51E929B46009C41AD /* Settings.bundle */,
 				FCC62ADA1E8AA1F700D24BE2 /* Localizable.strings */,
 				FCF916C81ED44F3A0032C135 /* Localizable.stringsdict */,
@@ -2627,7 +2651,6 @@
 				FC36D32B25B5C32200412DDB /* Frameworks */,
 				FC36D32D25B5C32200412DDB /* Resources */,
 				FC36D34B25B5C32200412DDB /* Copy Bundle Resources */,
-				FC36D34C25B5C32200412DDB /* [CP] Copy Pods Resources */,
 				FC36D34D25B5C32200412DDB /* Increment Build Number */,
 				FC36D34E25B5C32200412DDB /* Upload symbols to Firebase Crashlytics */,
 				FC36D34F25B5C32200412DDB /* [CP] Embed Pods Frameworks */,
@@ -2671,7 +2694,6 @@
 				FCFDAA8A1E48A10C007A240C /* Frameworks */,
 				FCFDAA8B1E48A10C007A240C /* Resources */,
 				FC1C80022530567D0048BD4C /* Copy Bundle Resources */,
-				383A6F0B46F33FEAE7BED239 /* [CP] Copy Pods Resources */,
 				FCC471031F56A2DF00373597 /* Increment Build Number */,
 				FC7DA57E1EF2962A0011092A /* Upload symbols to Firebase Crashlytics */,
 				850C054BE08063D7E150E102 /* [CP] Embed Pods Frameworks */,
@@ -2836,24 +2858,6 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		383A6F0B46F33FEAE7BED239 /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Documents/Pods-Documents-resources.sh",
-				"${PODS_ROOT}/GoogleSignIn/Resources/GoogleSignIn.bundle",
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/GoogleSignIn.bundle",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Documents/Pods-Documents-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
 		6B22C386DC179A97FD71C5A9 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -2881,8 +2885,6 @@
 				"${PODS_ROOT}/Target Support Files/Pods-Documents/Pods-Documents-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
 				"${BUILT_PRODUCTS_DIR}/AppAuth/AppAuth.framework",
-				"${BUILT_PRODUCTS_DIR}/Bagel/Bagel.framework",
-				"${BUILT_PRODUCTS_DIR}/CocoaAsyncSocket/CocoaAsyncSocket.framework",
 				"${PODS_ROOT}/../../editors-ios/build/SDK/lib/DjVuFile.framework",
 				"${PODS_ROOT}/../../editors-ios/build/SDK/lib/doctrenderer.framework",
 				"${PODS_ROOT}/../../editors-ios/build/SDK/lib/EpubFile.framework",
@@ -2915,6 +2917,7 @@
 				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
 				"${BUILT_PRODUCTS_DIR}/GoogleAPIClientForREST/GoogleAPIClientForREST.framework",
 				"${BUILT_PRODUCTS_DIR}/GoogleDataTransport/GoogleDataTransport.framework",
+				"${BUILT_PRODUCTS_DIR}/GoogleSignIn/GoogleSignIn.framework",
 				"${BUILT_PRODUCTS_DIR}/GoogleUtilities/GoogleUtilities.framework",
 				"${BUILT_PRODUCTS_DIR}/IQKeyboardManagerSwift/IQKeyboardManagerSwift.framework",
 				"${BUILT_PRODUCTS_DIR}/KeychainSwift/KeychainSwift.framework",
@@ -2936,14 +2939,13 @@
 				"${BUILT_PRODUCTS_DIR}/SwiftyXMLParser/SwiftyXMLParser.framework",
 				"${BUILT_PRODUCTS_DIR}/UICircularProgressRing/UICircularProgressRing.framework",
 				"${BUILT_PRODUCTS_DIR}/WhatsNewKit/WhatsNewKit.framework",
+				"${BUILT_PRODUCTS_DIR}/atlantis-proxyman/Atlantis.framework",
 				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AppAuth.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Bagel.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/CocoaAsyncSocket.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/DjVuFile.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/doctrenderer.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/EpubFile.framework",
@@ -2976,6 +2978,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleAPIClientForREST.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleDataTransport.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleSignIn.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleUtilities.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/IQKeyboardManagerSwift.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/KeychainSwift.framework",
@@ -2997,6 +3000,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyXMLParser.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/UICircularProgressRing.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/WhatsNewKit.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Atlantis.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -3116,24 +3120,6 @@
 			shellScript = "# Copy resources\nADDITIONAL_FILES=(\n    \"${PROJECT_DIR}/Documents/Internal.plist\"\n)\n\nfor file_path in ${ADDITIONAL_FILES[@]}; do\n    if [ -f \"${file_path}\" ]; then\n        rsync --delete -av \"${file_path}\" \"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}\"\n    fi\ndone\n\n# Copy GoogleService plist\ncp -r \"${PROJECT_DIR}/Documents/Services/GoogleService-Info-dev.plist\" \"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/GoogleService-Info.plist\"\n";
 			showEnvVarsInLog = 0;
 		};
-		FC36D34C25B5C32200412DDB /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Documents-Alpha/Pods-Documents-Alpha-resources.sh",
-				"${PODS_ROOT}/GoogleSignIn/Resources/GoogleSignIn.bundle",
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/GoogleSignIn.bundle",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Documents-Alpha/Pods-Documents-Alpha-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
 		FC36D34D25B5C32200412DDB /* Increment Build Number */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -3173,8 +3159,6 @@
 				"${PODS_ROOT}/Target Support Files/Pods-Documents-Alpha/Pods-Documents-Alpha-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
 				"${BUILT_PRODUCTS_DIR}/AppAuth/AppAuth.framework",
-				"${BUILT_PRODUCTS_DIR}/Bagel/Bagel.framework",
-				"${BUILT_PRODUCTS_DIR}/CocoaAsyncSocket/CocoaAsyncSocket.framework",
 				"${PODS_ROOT}/../../editors-ios/build/SDK/lib/DjVuFile.framework",
 				"${PODS_ROOT}/../../editors-ios/build/SDK/lib/doctrenderer.framework",
 				"${PODS_ROOT}/../../editors-ios/build/SDK/lib/EpubFile.framework",
@@ -3207,6 +3191,7 @@
 				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
 				"${BUILT_PRODUCTS_DIR}/GoogleAPIClientForREST/GoogleAPIClientForREST.framework",
 				"${BUILT_PRODUCTS_DIR}/GoogleDataTransport/GoogleDataTransport.framework",
+				"${BUILT_PRODUCTS_DIR}/GoogleSignIn/GoogleSignIn.framework",
 				"${BUILT_PRODUCTS_DIR}/GoogleUtilities/GoogleUtilities.framework",
 				"${BUILT_PRODUCTS_DIR}/IQKeyboardManagerSwift/IQKeyboardManagerSwift.framework",
 				"${BUILT_PRODUCTS_DIR}/KeychainSwift/KeychainSwift.framework",
@@ -3228,14 +3213,13 @@
 				"${BUILT_PRODUCTS_DIR}/SwiftyXMLParser/SwiftyXMLParser.framework",
 				"${BUILT_PRODUCTS_DIR}/UICircularProgressRing/UICircularProgressRing.framework",
 				"${BUILT_PRODUCTS_DIR}/WhatsNewKit/WhatsNewKit.framework",
+				"${BUILT_PRODUCTS_DIR}/atlantis-proxyman/Atlantis.framework",
 				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AppAuth.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Bagel.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/CocoaAsyncSocket.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/DjVuFile.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/doctrenderer.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/EpubFile.framework",
@@ -3268,6 +3252,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleAPIClientForREST.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleDataTransport.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleSignIn.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleUtilities.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/IQKeyboardManagerSwift.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/KeychainSwift.framework",
@@ -3289,6 +3274,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyXMLParser.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/UICircularProgressRing.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/WhatsNewKit.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Atlantis.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -3437,10 +3423,11 @@
 				FC68526C26837B7300D830EC /* NextcloudApiClient.swift in Sources */,
 				FC36D29325B5C32200412DDB /* ASCBaseSplitViewController.swift in Sources */,
 				FC36D29425B5C32200412DDB /* ASCAccountsViewController.swift in Sources */,
+				FCEF853726C3E3CF00173DDF /* AppDelegate.swift in Sources */,
 				1D49E2BA26A9BDD90024AC7A /* ASCSharingSettingsVerifyRightHoldersModels.swift in Sources */,
 				1D49E2AA26A9BD8F0024AC7A /* ASCSharingAddRightHoldersView.swift in Sources */,
 				FC36D29525B5C32200412DDB /* Mappings.swift in Sources */,
-				FC36D29625B5C32200412DDB /* ASCRootController.swift in Sources */,
+				FC36D29625B5C32200412DDB /* ASCRootViewController.swift in Sources */,
 				FC36D29725B5C32200412DDB /* ASCProfileAvatarView.swift in Sources */,
 				FCF6957E2632DBF600808644 /* ASCTextStyle.swift in Sources */,
 				FC36D29825B5C32200412DDB /* UIDevice+DeviceKit.swift in Sources */,
@@ -3491,6 +3478,7 @@
 				1D49E29B26A9BD340024AC7A /* ASCSharingOptionsSectionProtocol.swift in Sources */,
 				1D49E2A226A9BD5E0024AC7A /* ASCShareSettingsAPIWorker.swift in Sources */,
 				FCE1866C262AB4AB0086D21B /* Scenes.swift in Sources */,
+				FCEF854026C3EFD500173DDF /* AppDelegate+Helpers.swift in Sources */,
 				FC36D2B525B5C32200412DDB /* ASCPasscodeLockViewController.swift in Sources */,
 				FC80CA3825BADEF10077C2B8 /* EventReference.swift in Sources */,
 				FC36D2B625B5C32200412DDB /* PasscodeLock.swift in Sources */,
@@ -3501,6 +3489,7 @@
 				FCECDDD2264309D7006CD7B9 /* ASCEmailSentViewController.swift in Sources */,
 				1D49E2B426A9BDC20024AC7A /* ASCTextFieldCellViewModel.swift in Sources */,
 				1D49E2B826A9BDD10024AC7A /* ASCSharingSettingsVerifyRightHoldersPresenter.swift in Sources */,
+				FCEF855826C405FB00173DDF /* ASCBaseTabBarController.swift in Sources */,
 				FC36D2B925B5C32200412DDB /* UIStoryboard+Extensions.swift in Sources */,
 				1D49E2BD26A9BE190024AC7A /* ASCSharingSettingsAccessProviderFactory.swift in Sources */,
 				FC36D2BA25B5C32200412DDB /* EnterPasscodeState.swift in Sources */,
@@ -3529,7 +3518,6 @@
 				1D49E29A26A9BD2C0024AC7A /* ASCOnlyofficeFileInternalLinkMaker.swift in Sources */,
 				FC36D2CC25B5C32200412DDB /* UISplitViewController+Extensions.swift in Sources */,
 				FC68527226837B7300D830EC /* NextcloudStorageStats.swift in Sources */,
-				FC36D2CD25B5C32200412DDB /* AppDelegate.swift in Sources */,
 				FC36D2CE25B5C32200412DDB /* ASCDebugConsoleViewController.swift in Sources */,
 				FC36D2CF25B5C32200412DDB /* PasscodeSignPlaceholderView.swift in Sources */,
 				FCEF851C26C29A0E00173DDF /* OneDriveOAuthCredential.swift in Sources */,
@@ -3558,6 +3546,7 @@
 				FC36D2DF25B5C32200412DDB /* ASCDocumentsEmptyView.swift in Sources */,
 				FC36D2E025B5C32200412DDB /* ASConverterOptionsAlert.swift in Sources */,
 				FCD317572642ECB700A08299 /* UIFont+Extensions.swift in Sources */,
+				FCEF853D26C3E43000173DDF /* AppDelegate+Notifications.swift in Sources */,
 				1D35FCC826B1CDF7000929B0 /* OnlyofficeShareItemRequestModel.swift in Sources */,
 				FC36D2E125B5C32200412DDB /* ASCGoogleDriveProvider.swift in Sources */,
 				1D49E2AF26A9BDA90024AC7A /* ASCSharingAddRightHoldersPresenter.swift in Sources */,
@@ -3644,6 +3633,7 @@
 				FC36D31025B5C32200412DDB /* ASCDeviceSplitViewController.swift in Sources */,
 				1D49E29926A9BD250024AC7A /* ASCSharingOprionsExternalLink.swift in Sources */,
 				1D49E29426A9BD020024AC7A /* ASCSharingOptionsModels.swift in Sources */,
+				FCEF856D26C52E5F00173DDF /* UITextField+Style.swift in Sources */,
 				FC36D31125B5C32200412DDB /* ASCCreateEntityView.swift in Sources */,
 				FC36D31225B5C32200412DDB /* ASCDropboxProvider.swift in Sources */,
 				FC36D31325B5C32200412DDB /* MBProgressHUD+Extension.swift in Sources */,
@@ -3789,8 +3779,9 @@
 				FCECDDCF264309D7006CD7B9 /* ASCPasswordRecoveryViewController.swift in Sources */,
 				FC7CF5181EF3EFF300C0A64F /* Mappings.swift in Sources */,
 				FC68526B26837B7300D830EC /* NextcloudApiClient.swift in Sources */,
-				FC68398721B7DC0D00251CEA /* ASCRootController.swift in Sources */,
+				FC68398721B7DC0D00251CEA /* ASCRootViewController.swift in Sources */,
 				FCF2761C22C0E8E500984E83 /* ASCProfileAvatarView.swift in Sources */,
+				FCEF853626C3E3CF00173DDF /* AppDelegate.swift in Sources */,
 				1D14AAD426962D7C009E48AD /* ASCSharingSettingsAccessDocumentProvider.swift in Sources */,
 				FC37D8E921CB8FA8001A7BFD /* UIDevice+DeviceKit.swift in Sources */,
 				FC5E2D8D1E8A4C8B0079626B /* ASCImageViewController.swift in Sources */,
@@ -3845,6 +3836,7 @@
 				FCE1866B262AB4AB0086D21B /* Scenes.swift in Sources */,
 				FC68526D26837B7300D830EC /* NextcloudEndpoints.swift in Sources */,
 				FCEF9D201ED2C94300627BA5 /* PasscodeLock.swift in Sources */,
+				FCEF853F26C3EFD500173DDF /* AppDelegate+Helpers.swift in Sources */,
 				1D4C674D2685D043000F2284 /* ASCTextFieldCellViewModel.swift in Sources */,
 				1D14AAE92698D612009E48AD /* ASCSharingAddRightHoldersSearchResultsTableViewDataSourceAndDelegate.swift in Sources */,
 				FC0F01E3216F4EA7008D79A5 /* ASCWebDAVProvider.swift in Sources */,
@@ -3855,6 +3847,7 @@
 				FC3AF6BD21709259004A96FD /* ASCFileManager.swift in Sources */,
 				FC68527326837B7300D830EC /* NetworkingError.swift in Sources */,
 				FC68527B26837B7300D830EC /* KingfisherWrapper+Onlyoffice.swift in Sources */,
+				FCEF855726C405FB00173DDF /* ASCBaseTabBarController.swift in Sources */,
 				FCFB36071EDF0AB00001597E /* ASCBanner.swift in Sources */,
 				FCEF9D391ED2D34400627BA5 /* ASCPasscodeLockSplashView.swift in Sources */,
 				FCD04FCA1E7FDECF008641CD /* UIAlertController+SwiftAlertController.swift in Sources */,
@@ -3877,7 +3870,6 @@
 				FC56F4922248BC14004E3930 /* CALayer+Animate.swift in Sources */,
 				FCD33B5921C9195000D52DAF /* ASCDocumentsNavigationController.swift in Sources */,
 				FCA3A41B22C3671200D0E57E /* UISplitViewController+Extensions.swift in Sources */,
-				FCFDAA911E48A10C007A240C /* AppDelegate.swift in Sources */,
 				FC4D0A222494F807001EF1B5 /* ASCDebugConsoleViewController.swift in Sources */,
 				FC066AB6252DB7C5007357F7 /* Observable.swift in Sources */,
 				1D4C677A268A2573000F2284 /* ASCSharingOptionsInteractor.swift in Sources */,
@@ -3912,6 +3904,7 @@
 				FC68528B26837B7300D830EC /* OnlyofficeShare.swift in Sources */,
 				1D14AAF42698E85A009E48AD /* ASCSharingAddRightHoldersModels.swift in Sources */,
 				FC4D0A202494F7C9001EF1B5 /* ASCDebugNavigationController.swift in Sources */,
+				FCEF853C26C3E43000173DDF /* AppDelegate+Notifications.swift in Sources */,
 				FC68526F26837B7300D830EC /* NextcloudDataResult.swift in Sources */,
 				FC8C69831ECC8EA8005B68D7 /* ASCConnectStorageWebDavController.swift in Sources */,
 				FCEF9D221ED2C94300627BA5 /* PasscodeLockPresenter.swift in Sources */,
@@ -3998,6 +3991,7 @@
 				FCB1BEC31E8E5E55004C7967 /* MBProgressHUD+Extension.swift in Sources */,
 				FC066AB4252DB7C5007357F7 /* ObservableProxy.swift in Sources */,
 				FC41D8022265D6EF00A155C2 /* ASCLoginType.swift in Sources */,
+				FCEF856C26C52E5F00173DDF /* UITextField+Style.swift in Sources */,
 				1D14AAF52698E85A009E48AD /* ASCSharingAddRightHoldersViewController.swift in Sources */,
 				FC68399621B7EF1000251CEA /* ASCOnlyofficeCategory.swift in Sources */,
 				FC9150F21EC35D850076A855 /* UIView+Extension.swift in Sources */,

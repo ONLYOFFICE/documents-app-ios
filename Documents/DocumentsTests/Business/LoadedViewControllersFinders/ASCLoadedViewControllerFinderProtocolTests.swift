@@ -23,7 +23,7 @@ class ASCLoadedViewControllerFinderProtocolTests: XCTestCase {
     }
 
     func testSetRootVCWhenGetRootVCWeGetTheSameRootVC() {
-        let vc = ASCRootController()
+        let vc = ASCRootViewController()
         
         UIApplication.shared.windows.first?.rootViewController = vc
     

@@ -15,7 +15,7 @@ public extension NSAttributedString {
     ///
     /// - Parameter attributes: Dictionary of attributes
     /// - Returns: NSAttributedString with applied attributes
-    fileprivate func applying(attributes: [NSAttributedString.Key: Any]) -> NSAttributedString {
+    func applying(attributes: [NSAttributedString.Key: Any]) -> NSAttributedString {
         let copy = NSMutableAttributedString(attributedString: self)
         let range = (string as NSString).range(of: string)
         copy.addAttributes(attributes, range: range)
@@ -63,5 +63,50 @@ public extension NSAttributedString {
         let pattern = "\\Q\(target)\\E"
 
         return applying(attributes: attributes, toRangesMatching: pattern)
+    }
+}
+
+// MARK: - Operators
+public extension NSAttributedString {
+    /// Add a NSAttributedString to another NSAttributedString.
+    ///
+    /// - Parameters:
+    ///   - lhs: NSAttributedString to add to.
+    ///   - rhs: NSAttributedString to add.
+    static func += (lhs: inout NSAttributedString, rhs: NSAttributedString) {
+        let string = NSMutableAttributedString(attributedString: lhs)
+        string.append(rhs)
+        lhs = string
+    }
+
+    /// Add a NSAttributedString to another NSAttributedString and return a new NSAttributedString instance.
+    ///
+    /// - Parameters:
+    ///   - lhs: NSAttributedString to add.
+    ///   - rhs: NSAttributedString to add.
+    /// - Returns: New instance with added NSAttributedString.
+    static func + (lhs: NSAttributedString, rhs: NSAttributedString) -> NSAttributedString {
+        let string = NSMutableAttributedString(attributedString: lhs)
+        string.append(rhs)
+        return NSAttributedString(attributedString: string)
+    }
+
+    /// Add a NSAttributedString to another NSAttributedString.
+    ///
+    /// - Parameters:
+    ///   - lhs: NSAttributedString to add to.
+    ///   - rhs: String to add.
+    static func += (lhs: inout NSAttributedString, rhs: String) {
+        lhs += NSAttributedString(string: rhs)
+    }
+
+    /// Add a NSAttributedString to another NSAttributedString and return a new NSAttributedString instance.
+    ///
+    /// - Parameters:
+    ///   - lhs: NSAttributedString to add.
+    ///   - rhs: String to add.
+    /// - Returns: New instance with added NSAttributedString.
+    static func + (lhs: NSAttributedString, rhs: String) -> NSAttributedString {
+        return lhs + NSAttributedString(string: rhs)
     }
 }

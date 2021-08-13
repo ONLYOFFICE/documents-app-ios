@@ -154,16 +154,18 @@ web office</string>
                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="eBo-SW-0X0">
                                         <rect key="frame" x="0.0" y="215.99999999999997" width="280" height="44.000000000000028"/>
                                         <subviews>
-                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" textAlignment="center" minimumFontSize="9" translatesAutoresizingMaskIntoConstraints="NO" id="eEc-iO-iXK">
-                                                <rect key="frame" x="0.0" y="0.0" width="60" height="44"/>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SZG-z0-C6T" customClass="ASCButtonStyle" customModule="Documents" customModuleProvider="target">
+                                                <rect key="frame" x="0.0" y="0.0" width="58" height="44"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="width" constant="60" id="QWH-Qd-rD5"/>
+                                                    <constraint firstAttribute="width" constant="58" id="6Lq-eK-mW3"/>
                                                 </constraints>
-                                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                                                <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
-                                            </textField>
+                                                <state key="normal" title="🇱🇻"/>
+                                                <connections>
+                                                    <action selector="onCountryButton:" destination="K4J-kB-2V5" eventType="touchUpInside" id="9A2-h3-Ja0"/>
+                                                </connections>
+                                            </button>
                                             <textField opaque="NO" clipsSubviews="YES" tag="6" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" placeholder="Your phone number" minimumFontSize="9" translatesAutoresizingMaskIntoConstraints="NO" id="kgQ-EP-Qap" customClass="PhoneNumberTextField" customModule="PhoneNumberKit">
-                                                <rect key="frame" x="70" y="0.0" width="210" height="44"/>
+                                                <rect key="frame" x="68" y="0.0" width="212" height="44"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                 <textInputTraits key="textInputTraits" keyboardType="numberPad" returnKeyType="continue"/>
                                             </textField>
@@ -195,7 +197,6 @@ web office</string>
                                     </button>
                                 </subviews>
                                 <constraints>
-                                    <constraint firstItem="eEc-iO-iXK" firstAttribute="height" secondItem="TP3-h7-Hq1" secondAttribute="height" id="70j-2Q-NxC"/>
                                     <constraint firstItem="iLP-xJ-pU3" firstAttribute="height" secondItem="TP3-h7-Hq1" secondAttribute="height" id="BcP-et-GR2"/>
                                     <constraint firstAttribute="width" relation="lessThanOrEqual" constant="400" id="Bye-WT-cjS"/>
                                     <constraint firstItem="Gg7-cC-egl" firstAttribute="height" secondItem="TP3-h7-Hq1" secondAttribute="height" id="OXI-ku-AY2"/>
@@ -236,10 +237,10 @@ web office</string>
                     </view>
                     <navigationItem key="navigationItem" id="B74-Kh-AIG"/>
                     <connections>
+                        <outlet property="countryButton" destination="SZG-z0-C6T" id="Shh-Gk-Yn9"/>
                         <outlet property="emailField" destination="WWd-Za-CPd" id="XcB-sF-c9P"/>
                         <outlet property="firstNameField" destination="TP3-h7-Hq1" id="Rbm-tB-R78"/>
                         <outlet property="lastNameField" destination="iLP-xJ-pU3" id="dko-Pc-kvo"/>
-                        <outlet property="phoneCodeField" destination="eEc-iO-iXK" id="qms-Lg-CTq"/>
                         <outlet property="phoneNumberField" destination="kgQ-EP-Qap" id="PKn-N7-1hE"/>
                         <outlet property="portalField" destination="Gg7-cC-egl" id="Fa6-8u-GY5"/>
                         <outlet property="topConstraint" destination="kbE-LJ-BD6" id="DHm-Rh-F3v"/>
@@ -390,9 +391,6 @@ Terms of service</string>
         </scene>
     </scenes>
     <designables>
-        <designable name="Gg7-cC-egl">
-            <size key="intrinsicContentSize" width="32" height="34"/>
-        </designable>
         <designable name="TP3-h7-Hq1">
             <size key="intrinsicContentSize" width="98" height="34"/>
         </designable>

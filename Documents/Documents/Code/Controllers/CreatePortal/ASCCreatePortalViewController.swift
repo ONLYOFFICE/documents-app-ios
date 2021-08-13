@@ -27,13 +27,18 @@ class ASCCreatePortalViewController: ASCBaseViewController {
     fileprivate let infoPortalSuffix = ".teamlab.info"
     fileprivate let phoneNumberKit = PhoneNumberKit()
     
+    fileprivate lazy var phoneCodeLabel: UILabel = {
+        $0.textStyle = .underlineField
+        return $0
+    }(UILabel())
+    
     @IBOutlet weak var portalField: ParkedTextField!
     @IBOutlet weak var firstNameField: SkyFloatingLabelTextField!
     @IBOutlet weak var lastNameField: SkyFloatingLabelTextField!
     @IBOutlet weak var emailField: SkyFloatingLabelTextField!
     @IBOutlet weak var passwordOneField: SkyFloatingLabelTextField!
     @IBOutlet weak var passwordTwoField: SkyFloatingLabelTextField!
-    @IBOutlet weak var phoneCodeField: UITextField!
+    @IBOutlet weak var countryButton: ASCButtonStyle!
     @IBOutlet weak var phoneNumberField: PhoneNumberTextField!
     @IBOutlet weak var termsLabel: UILabel!
     @IBOutlet weak var topConstraint: NSLayoutConstraint!
@@ -60,7 +65,7 @@ class ASCCreatePortalViewController: ASCBaseViewController {
             field?.placeholderFont = ASCTextStyle.underlinePlaceholderField.font
         }
         
-        for field in [phoneCodeField, phoneNumberField] {
+        for field in [phoneNumberField] {
             field?.placeholder = field?.placeholder?.uppercased()
             field?.textStyle = .underlineField
             field?.placeholderTextStyle = .underlinePlaceholderField
@@ -69,8 +74,13 @@ class ASCCreatePortalViewController: ASCBaseViewController {
         }
         
         if let countryCode = Locale.current.regionCode {
+            countryButton?.styleType = .gray
+            countryButton?.setAttributedTitle(flagTitleButton(by: countryCode), for: .normal)
+
             if let code = phoneNumberKit.countryCode(for: countryCode) {
-                phoneCodeField?.text = "+\(code)"
+                phoneCodeLabel.text = "+\(code) "
+                phoneNumberField?.leftView = phoneCodeLabel
+                phoneNumberField?.leftViewMode = .always
             }
         }
 
@@ -135,6 +145,33 @@ class ASCCreatePortalViewController: ASCBaseViewController {
     
     // MARK: - Private
 
+    private func flag(by countryCode: String) -> String {
+        let flagBase = UnicodeScalar("🇦").value - UnicodeScalar("A").value
+        return countryCode
+            .uppercased()
+            .unicodeScalars
+            .compactMap { UnicodeScalar(flagBase + $0.value)?.description }
+            .joined()
+    }
+    
+    private func flagTitleButton(by countryCode: String) -> NSAttributedString {
+        var defaultColor: UIColor = .black
+        
+        if #available(iOS 13.0, *) {
+            defaultColor = .label
+        }
+        
+        return NSAttributedString(string: flag(by: countryCode))
+            .applying(attributes: [.font: UIFont.systemFont(ofSize: 20)])
+            +
+            NSAttributedString(string: "  ▼")
+            .applying(attributes: [
+                .font: UIFont.systemFont(ofSize: 8),
+                .baselineOffset: 4
+            ])
+            .colored(with: defaultColor)
+    }
+    
     private func valid(portal: String) -> Bool {
         if portal.length < 1 {
             portalField?.errorMessage = NSLocalizedString("Account name is empty", comment: "")
@@ -237,9 +274,9 @@ class ASCCreatePortalViewController: ASCBaseViewController {
         var isValidNumber = false
         var phoneNumber: PhoneNumber!
 
-        if  let phoneCodeText = phoneCodeField.text?.trimmed,
+        if  let phoneCodeText = phoneCodeLabel.text?.trimmed,
             let phonenumberText = phoneNumberField.text?.trimmed,
-            let stringCode = phoneCodeField.text?.trimmed.replacingOccurrences(of: "+", with: ""),
+            let stringCode = phoneCodeLabel.text?.trimmed.replacingOccurrences(of: "+", with: ""),
             let intCode = UInt64(stringCode),
             let regionCode = phoneNumberKit.mainCountry(forCode: intCode)
         {
@@ -253,7 +290,7 @@ class ASCCreatePortalViewController: ASCBaseViewController {
         }
         
         guard isValidNumber else {
-            phoneCodeField?.shake()
+            countryButton?.shake()
             phoneNumberField?.shake()
             return
         }
@@ -502,8 +539,12 @@ class ASCCreatePortalViewController: ASCBaseViewController {
     
     private func presentCountryCodes() {
         if let countryCodeVC = navigator.navigate(to: .countryPhoneCodes) as? ASCCountryCodeViewController {
-            countryCodeVC.selectCountry = { country, code in
-                self.phoneCodeField.text = "+\(code)"
+            countryCodeVC.selectCountry = { [weak self] country, code, region in
+                guard let self = self else { return }
+                self.countryButton?.setAttributedTitle(self.flagTitleButton(by: region), for: .normal)
+                self.phoneCodeLabel.text = "+\(code) "
+                self.phoneNumberField.leftView = nil
+                self.phoneNumberField.leftView = self.phoneCodeLabel
             }
         }
     }
@@ -518,32 +559,23 @@ class ASCCreatePortalViewController: ASCBaseViewController {
         createPortal()
     }
     
+    @IBAction func onCountryButton(_ sender: UIButton) {
+        presentCountryCodes()
+    }
 }
     
 // MARK: - Text Field Delegate
 extension ASCCreatePortalViewController: UITextFieldDelegate {
     
-    func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
-        if textField == phoneCodeField {
-            presentCountryCodes()
-            return false
-        }
-        return true
-    }
-    
     func textFieldDidBeginEditing(_ textField: UITextField) {
         if textField == phoneNumberField {
-            for field in [phoneCodeField, phoneNumberField] {
-                field?.underline(color: Asset.Colors.brend.color, weight: UIDevice.screenPixel * 2)
-            }
+            textField.underline(color: Asset.Colors.brend.color, weight: UIDevice.screenPixel * 2)
         }
     }
     
     func textFieldDidEndEditing(_ textField: UITextField) {
         if textField == phoneNumberField {
-            for field in [phoneCodeField, phoneNumberField] {
-                field?.underline(color: Asset.Colors.grayLight.color)
-            }
+            textField.underline(color: Asset.Colors.grayLight.color)
         }
     }
     

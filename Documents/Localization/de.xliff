@@ -1364,6 +1364,10 @@ Hinweis: Wenn Sie das Kennwort vergessen haben, müssen Sie die App löschen und
         <target>A6 (10,5%1$@ x 14,8%2$@)</target>
         <note>Format info</note>
       </trans-unit>
+      <trans-unit id="Access files in Favorites and Recents on ONLYOFFICE portal from the app" xml:space="preserve">
+        <source>Access files in Favorites and Recents on ONLYOFFICE portal from the app</source>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
       <trans-unit id="Account name is empty" xml:space="preserve">
         <source>Account name is empty</source>
         <target>Der Kontoname ist leer</target>
@@ -1372,14 +1376,6 @@ Hinweis: Wenn Sie das Kennwort vergessen haben, müssen Sie die App löschen und
       <trans-unit id="Account name is not valid" xml:space="preserve">
         <source>Account name is not valid</source>
         <target>Der Kontoname ist ungültig</target>
-        <note>No comment provided by engineer.</note>
-      </trans-unit>
-      <trans-unit id="Add files to Favorites for quick access directly from the editor." xml:space="preserve">
-        <source>Add files to Favorites for quick access directly from the editor.</source>
-        <note>No comment provided by engineer.</note>
-      </trans-unit>
-      <trans-unit id="Adding to Favorites" xml:space="preserve">
-        <source>Adding to Favorites</source>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Address is empty" xml:space="preserve">
@@ -1951,6 +1947,10 @@ die das WebDAV-Protokoll verwenden.</target>
         <target>Fehler beim Herunterladen der Ergebnisse vom Konvertierungs-Onlinedienst.</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
+      <trans-unit id="Favorites and Recents" xml:space="preserve">
+        <source>Favorites and Recents</source>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
       <trans-unit id="File already exists" xml:space="preserve">
         <source>File already exists</source>
         <note>Description of file operation error</note>
@@ -2267,6 +2267,10 @@ die das WebDAV-Protokoll verwenden.</target>
         <source>OneDrive</source>
         <note>No comment provided by engineer.</note>
       </trans-unit>
+      <trans-unit id="OneDrive and kDrive access" xml:space="preserve">
+        <source>OneDrive and kDrive access</source>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
       <trans-unit id="OneDrive directory" xml:space="preserve">
         <source>OneDrive directory</source>
         <target>OneDrive-Verzeichnis</target>
@@ -2437,10 +2441,6 @@ die das WebDAV-Protokoll verwenden.</target>
         <target>Geschützte Datei</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
-      <trans-unit id="Quick sharing" xml:space="preserve">
-        <source>Quick sharing</source>
-        <note>No comment provided by engineer.</note>
-      </trans-unit>
       <trans-unit id="Read Only" xml:space="preserve">
         <source>Read Only</source>
         <target>Schreibgeschützt</target>
@@ -2572,10 +2572,6 @@ die das WebDAV-Protokoll verwenden.</target>
       <trans-unit id="Settings" xml:space="preserve">
         <source>Settings</source>
         <target>Einstellungen</target>
-        <note>No comment provided by engineer.</note>
-      </trans-unit>
-      <trans-unit id="Share files and manage access rights without leaving the editor." xml:space="preserve">
-        <source>Share files and manage access rights without leaving the editor.</source>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="SharePoint directory" xml:space="preserve">
@@ -2912,8 +2908,8 @@ die das WebDAV-Protokoll verwenden.</target>
         <target>Version</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
-      <trans-unit id="View and edit files in iCloud directly from the app. Access your storage from the Clouds tab." xml:space="preserve">
-        <source>View and edit files in iCloud directly from the app. Access your storage from the Clouds tab.</source>
+      <trans-unit id="View and edit files in OneDrive and kDrive directly from the app. Access your storages from the Clouds tab." xml:space="preserve">
+        <source>View and edit files in OneDrive and kDrive directly from the app. Access your storages from the Clouds tab.</source>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Warning" xml:space="preserve">
@@ -3083,10 +3079,6 @@ dann von jedem anderen Gerät aus abgerufen werden.</target>
       </trans-unit>
       <trans-unit id="iCloud Drive" xml:space="preserve">
         <source>iCloud Drive</source>
-        <note>No comment provided by engineer.</note>
-      </trans-unit>
-      <trans-unit id="iCloud Drive access" xml:space="preserve">
-        <source>iCloud Drive access</source>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="kDrive" xml:space="preserve">

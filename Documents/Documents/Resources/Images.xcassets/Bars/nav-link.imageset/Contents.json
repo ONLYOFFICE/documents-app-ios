@@ -2,11 +2,11 @@
     "images" : [
         {
             "idiom" : "universal",
-            "filename" : "whatsnew-future-share-light.pdf"
+            "filename" : "nav-link-light.pdf"
         },
         {
             "idiom" : "universal",
-            "filename" : "whatsnew-future-share-dark.pdf",
+            "filename" : "nav-link-dark.pdf",
             "appearances" : [
                 {
                     "appearance" : "luminosity",

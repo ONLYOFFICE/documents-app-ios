@@ -2,11 +2,11 @@
     "images" : [
         {
             "idiom" : "universal",
-            "filename" : "whatsnew-future-icloud-drive-light.pdf"
+            "filename" : "menu-comment-light.pdf"
         },
         {
             "idiom" : "universal",
-            "filename" : "whatsnew-future-icloud-drive-dark.pdf",
+            "filename" : "menu-comment-dark.pdf",
             "appearances" : [
                 {
                     "appearance" : "luminosity",

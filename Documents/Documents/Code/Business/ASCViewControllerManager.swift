@@ -10,7 +10,6 @@ import UIKit
 import SwiftRater
 import FileKit
 import MBProgressHUD
-import WhatsNewKit
 
 class ASCViewControllerManager {
     public static let shared = ASCViewControllerManager()
@@ -83,24 +82,22 @@ class ASCViewControllerManager {
         
         ASCEditorManager.shared.fetchDocumentService { _,_,_  in }
         
-        // Check if first launch        
-        let storeAppVersion = UserDefaults.standard.string(forKey: ASCConstants.SettingsKeys.appVersion)
-        
-        if let appVersion = ASCCommon.appVersion, storeAppVersion != appVersion {
-            UserDefaults.standard.set(appVersion, forKey: ASCConstants.SettingsKeys.appVersion)
+        if let _ = UserDefaults.standard.string(forKey: ASCConstants.SettingsKeys.appVersion) {
+            /// Display whats new if needed
             
-            if storeAppVersion == nil {
-                prepareContent()
-                rootController?.display(provider: ASCFileManager.localProvider, folder: nil)
-                showIntro()
-            } else {
-                showWhatsNew()
-            }
+            WhatsNewService.show()
+        } else {
+            /// Firsh launch of the app
+            
+            UserDefaults.standard.set(ASCCommon.appVersion, forKey: ASCConstants.SettingsKeys.appVersion)
+            prepareContent()
+            rootController?.display(provider: ASCFileManager.localProvider, folder: nil)
+            showIntro()
         }
 
         configureRater()
 
-        // Open file from outside
+        /// Open file from outside
         if let info = openFileInfo {
             routeOpenFile(info: info)
             openFileInfo = nil
@@ -159,85 +156,6 @@ class ASCViewControllerManager {
                 }
 
                 topVC.present(introController, animated: true, completion: nil)
-            }
-        }
-    }
-
-    private func showWhatsNew() {
-        // Initialize default Configuration
-        var configuration = WhatsNewViewController.Configuration()
-        configuration.completionButton.title = NSLocalizedString("Get started", comment: "")
-        configuration.completionButton.backgroundColor = Asset.Colors.brend.color
-        configuration.itemsView.titleFont = .systemFont(ofSize: 17, weight: .semibold)
-        configuration.itemsView.subtitleFont = .systemFont(ofSize: 15)
-        configuration.itemsView.autoTintImage = false
-        
-        if #available(iOS 13.0, *) {
-            configuration.itemsView.subtitleColor = .secondaryLabel
-        } else {
-            configuration.itemsView.subtitleColor = .darkGray
-        }
-
-        /// Increase TitleView Insets
-        configuration.titleView.insets.top = 60
-        configuration.titleView.insets.bottom = 30
-        
-        /// Adjusts Insets for iPad
-        configuration.padAdjustment = { configuration in
-            /// Increase TitleView Insets
-            configuration.titleView.insets.top = 80
-            configuration.titleView.insets.left = 40
-            configuration.titleView.insets.right = 40
-            configuration.titleView.insets.bottom = 50
-            
-            /// Increase ItemsView Insets
-            configuration.itemsView.insets.top = 10
-            configuration.itemsView.insets.left = 80
-            configuration.itemsView.insets.right = 80
-            configuration.itemsView.insets.bottom = 20
-            
-            /// Increase CompletionButton Insets
-            configuration.completionButton.insets.top = 40
-            configuration.completionButton.insets.left = 80
-            configuration.completionButton.insets.right = 80
-            configuration.completionButton.insets.bottom = 40
-        }
-        
-        // Initialize WhatsNew
-        let whatsNew = WhatsNew(
-            version: WhatsNew.Version(stringLiteral: ASCCommon.appVersion ?? "1.0"),
-            title: NSLocalizedString("What's New", comment: ""),
-            items: [
-                WhatsNew.Item(
-                    title: NSLocalizedString("iCloud Drive access", comment: ""),
-                    subtitle: NSLocalizedString("View and edit files in iCloud directly from the app. Access your storage from the Clouds tab.", comment: ""),
-                    image: Asset.Images.whatsnewFutureIcloudDrive.image
-                ),
-                WhatsNew.Item(
-                    title: NSLocalizedString("Adding to Favorites", comment: ""),
-                    subtitle: NSLocalizedString("Add files to Favorites for quick access directly from the editor.", comment: ""),
-                    image: Asset.Images.whatsnewFutureFavourite.image
-                ),
-                WhatsNew.Item(
-                    title: NSLocalizedString("Quick sharing", comment: ""),
-                    subtitle: NSLocalizedString("Share files and manage access rights without leaving the editor.", comment: ""),
-                    image: Asset.Images.whatsnewFutureShare.image
-                )
-            ]
-        )
-
-        let whatsNewViewController: WhatsNewViewController? = WhatsNewViewController(
-            whatsNew: whatsNew,
-            configuration: configuration
-        )
-
-        delay(seconds: 0.2) { [weak self] in
-            if let topVC = self?.rootController?.topMostViewController() {
-                if UIDevice.pad {
-                    whatsNewViewController?.modalPresentationStyle = .formSheet
-                    whatsNewViewController?.preferredContentSize = ASCConstants.Size.defaultPreferredContentSize
-                }
-                whatsNewViewController?.present(on: topVC)
             }
         }
     }

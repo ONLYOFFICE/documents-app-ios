@@ -2,11 +2,11 @@
     "images" : [
         {
             "idiom" : "universal",
-            "filename" : "whatsnew-future-favourite-light.pdf"
+            "filename" : "whatsnew-future-onlyoffice-light.pdf"
         },
         {
             "idiom" : "universal",
-            "filename" : "whatsnew-future-favourite-dark.pdf",
+            "filename" : "whatsnew-future-onlyoffice-dark.pdf",
             "appearances" : [
                 {
                     "appearance" : "luminosity",

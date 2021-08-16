@@ -209,15 +209,8 @@ extension ASCOneDriveProvider: ASCFileProviderProtocol {
                         
                         for file in mediaFiles {
                             getLinkQueue.addOperation {
-                                let semaphore = DispatchSemaphore(value: 0)
-
-                                provider.publicLink(to: file.id) { link, fileObj, expiration, error in
-                                    if let viewUrl = link?.absoluteString {
-                                        files.first(where: { $0.id == file.id })?.viewUrl = viewUrl
-                                    }
-                                    semaphore.signal()
-                                }
-                                semaphore.wait()
+                                files.first(where: { $0.id == file.id })?.viewUrl =
+                                    provider.url(of: file.viewUrl ?? "", modifier: "content").absoluteString
                             }
                         }
                         
@@ -1041,7 +1034,6 @@ extension ASCOneDriveProvider: ASCFileProviderProtocol {
             let openHandler = delegate?.openProgress(file: file, title: NSLocalizedString("Downloading", comment: "Caption of the processing") + "...", 0.15)
             ASCEditorManager.shared.browsePdfCloud(for: self, file, handler: openHandler)
         } else if isImage || isVideo {
-            file.viewUrl = provider?.url(of: file.viewUrl ?? "", modifier: "content").absoluteString ?? file.viewUrl
             ASCEditorManager.shared.browseMedia(for: self, file, files: files)
         } else {
             if let view = view {

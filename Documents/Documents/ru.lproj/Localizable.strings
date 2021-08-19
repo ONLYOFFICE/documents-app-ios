@@ -20,12 +20,6 @@
 "© Ascensio System SIA %d" = "© Ascensio System SIA %d";
 
 /* No comment provided by engineer. */
-"Сould not download file." = "Не удалось скачать файл.";
-
-/* No comment provided by engineer. */
-"Сould not upload file." = "Не удалось загрузить файл.";
-
-/* No comment provided by engineer. */
 "A file with a similar name already exists in the document directory on the device." = "Файл с таким именем уже существует в папке с документами на этом устройстве.";
 
 /* No comment provided by engineer. */
@@ -111,6 +105,9 @@
 
 /* No comment provided by engineer. */
 "Box directory" = "Папка Box";
+
+/* No comment provided by engineer. */
+"By creating the portal you agree with our Terms of service" = "Создавая портал, вы соглашаетесь с нашими Условиями использования";
 
 /* Data units */
 "bytes" = "байт";
@@ -428,6 +425,9 @@
 /* No comment provided by engineer. */
 "Error" = "Ошибка";
 
+/* No comment provided by engineer. */
+"Error code: %ld" = "Код ошибки: %ld";
+
 /* Access is Forbidden message */
 "error.errorForbiddenMsg" = "Обратитесь к администратору портала для доступа к ресурсу.";
 
@@ -451,6 +451,9 @@
 
 /* No comment provided by engineer. */
 "Failed to check the name of the portal" = "Ошибка при проверке имени портала";
+
+/* No comment provided by engineer. */
+"Failed to connect folder." = "Не удалось подключить папку.";
 
 /* No comment provided by engineer. */
 "Failed to copy: %@" = "Не удалось скопировать: %@";
@@ -548,8 +551,11 @@
 /* No comment provided by engineer. */
 "Invalid Country Code" = "Некорректный код страны";
 
-/* Error message */
-"Invalid URL: The format ot the URL could not be determined" = "Недопустимый URL-адрес: Не удалось определить формат URL-адреса";
+/* No comment provided by engineer. */
+"Invalid Data" = "Неверные данные";
+
+/* No comment provided by engineer. */
+"Invalid Url" = "Неверный URL";
 
 /* Data units */
 "Kb" = "Кб";
@@ -646,10 +652,16 @@
 "Nextcloud directory" = "Папка Nextcloud";
 
 /* No comment provided by engineer. */
+"No client IDs of application" = "Нет идентификаторов приложения";
+
+/* No comment provided by engineer. */
 "No connection" = "Нет подключения";
 
 /* No comment provided by engineer. */
 "No information about the user profile." = "Нет информации о профиле пользователя";
+
+/* No comment provided by engineer. */
+"No Internet connection" = "Нет соединения с интернетом";
 
 /* No comment provided by engineer. */
 "No network" = "Нет сети";
@@ -731,7 +743,7 @@
 /* No comment provided by engineer. */
 "ownCloud directory" = "Папка ownCloud";
 
-/* No comment provided by engineer. */
+/* Table cell right holder acces text */
 "Owner" = "Владелец";
 
 /* No comment provided by engineer. */
@@ -745,6 +757,12 @@
 
 /* Data units */
 "Pb" = "Пб";
+
+/* No comment provided by engineer. */
+"Phone" = "Телефон";
+
+/* No comment provided by engineer. */
+"Phone is incorrect" = "Телефон неверный";
 
 /* Used in the context: '1 photo' */
 "photo" = "фото";
@@ -839,6 +857,9 @@
 /* No comment provided by engineer. */
 "Renewal" = "Возобновить";
 
+/* No comment provided by engineer. */
+"Request canceled" = "Запрос отменен";
+
 /* Button title */
 "Restore" = "Восстановить";
 
@@ -931,6 +952,9 @@
 "Slide %i of %i" = "Слайд %1$i из %2$i";
 
 /* No comment provided by engineer. */
+"Something went wrong, try again" = "Что-то пошло не так, попробуйте еще раз";
+
+/* No comment provided by engineer. */
 "Something wrong" = "Что-то не так";
 
 /* Button title */
@@ -956,6 +980,9 @@
 
 /* Data units */
 "Tb" = "Тб";
+
+/* Part of phrases - By creating the portal you agree with our Terms of service */
+"Terms of service" = "Условиями использования";
 
 /* Notification title */
 "Text copied" = "Текст скопирован";
@@ -1057,6 +1084,12 @@
 "Type" = "Тип";
 
 /* No comment provided by engineer. */
+"Unable delete items" = "Невозможно удалить элементы";
+
+/* No comment provided by engineer. */
+"Unable disconnect third party" = "Невозможно отключить";
+
+/* No comment provided by engineer. */
 "Unable to get information about the portal" = "Ошибка получения информации о портале";
 
 /* No comment provided by engineer. */
@@ -1087,7 +1120,7 @@
 "Unknown" = "Неизвестно";
 
 /* No comment provided by engineer. */
-"Unknown API response." = "Неизвестный ответ API.";
+"Unknown error" = "Неизвестная ошибка";
 
 /* No comment provided by engineer. */
 "Unknown file provider" = "Неизвестный поставщик файла";
@@ -1116,8 +1149,11 @@
 /* Button title */
 "Use Touch ID" = "Использовать Touch ID";
 
-/* Error message */
+/* No comment provided by engineer. */
 "User authentication failed" = "Не удалось выполнить проверку подлинности пользователя";
+
+/* No comment provided by engineer. */
+"User authentication required" = "Требуется аутентификация пользователя";
 
 /* No comment provided by engineer. */
 "User undefined" = "Пользователь не авторизован";
@@ -1193,4 +1229,10 @@
 
 /* Data units */
 "Zero bytes" = "Ноль байт";
+
+/* No comment provided by engineer. */
+"Сould not download file." = "Не удалось скачать файл.";
+
+/* No comment provided by engineer. */
+"Сould not upload file." = "Не удалось загрузить файл.";
 

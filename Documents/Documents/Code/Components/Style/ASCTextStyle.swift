@@ -13,9 +13,14 @@ enum ASCTextStyle {
     
     // MARK: - Buttons
     
+    case title1
+    
     case bodyFontWhite
     case semibodyWhite
     case subheadFontWhite
+    
+    case subhead
+    case subheadLight
     case subheadBold
     case placeholderRegular
     
@@ -31,11 +36,32 @@ enum ASCTextStyle {
         
         // MARK: - Buttons
 
+        case .title1:
+            if #available(iOS 13.0, *) {
+                return (UIFont.preferredFont(forTextStyle: .title1), .label, 1)
+            } else {
+                return (UIFont.preferredFont(forTextStyle: .title1), .black, 1)
+            }
+            
         case .bodyFontWhite:
             return (UIFont.preferredFont(forTextStyle: .body), .white, 1)
         
         case .semibodyWhite:
             return (UIFont.preferredFont(forTextStyle: .body).with(weight: .semibold), .white, 1)
+            
+        case .subhead:
+            if #available(iOS 13.0, *) {
+                return (UIFont.preferredFont(forTextStyle: .subheadline), .label, 1)
+            } else {
+                return (UIFont.preferredFont(forTextStyle: .subheadline), .black, 1)
+            }
+            
+        case .subheadLight:
+            if #available(iOS 13.0, *) {
+                return (UIFont.preferredFont(forTextStyle: .subheadline), .secondaryLabel, 1)
+            } else {
+                return (UIFont.preferredFont(forTextStyle: .subheadline), .lightGray, 1)
+            }
             
         case .subheadFontWhite:
             return (UIFont.preferredFont(forTextStyle: .subheadline), .white, 1)

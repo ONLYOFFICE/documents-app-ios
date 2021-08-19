@@ -162,6 +162,8 @@
 		FC066AB8252DB7C5007357F7 /* EventReference.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC066AAF252DB7C5007357F7 /* EventReference.swift */; };
 		FC066AB9252DB7C5007357F7 /* ObservableReference.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC066AB0252DB7C5007357F7 /* ObservableReference.swift */; };
 		FC066ABF252DB812007357F7 /* ASCiCloudProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC066ABE252DB811007357F7 /* ASCiCloudProvider.swift */; };
+		FC07073E26CEA6AB003E2077 /* UITapGestureRecognizer+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC07073D26CEA6AB003E2077 /* UITapGestureRecognizer+Extensions.swift */; };
+		FC07073F26CEA6AC003E2077 /* UITapGestureRecognizer+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC07073D26CEA6AB003E2077 /* UITapGestureRecognizer+Extensions.swift */; };
 		FC08F8731ECB2FD600988DDE /* ASCConnectPortalThirdPartyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC08F8721ECB2FD600988DDE /* ASCConnectPortalThirdPartyViewController.swift */; };
 		FC08F8751ECB399900988DDE /* ASCConnectStorageOAuth2ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC08F8741ECB399900988DDE /* ASCConnectStorageOAuth2ViewController.swift */; };
 		FC08F8771ECB402000988DDE /* ASCConnectStorageOAuth2Dropbox.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC08F8761ECB402000988DDE /* ASCConnectStorageOAuth2Dropbox.swift */; };
@@ -851,6 +853,7 @@
 		FC066AAF252DB7C5007357F7 /* EventReference.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventReference.swift; sourceTree = "<group>"; };
 		FC066AB0252DB7C5007357F7 /* ObservableReference.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ObservableReference.swift; sourceTree = "<group>"; };
 		FC066ABE252DB811007357F7 /* ASCiCloudProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASCiCloudProvider.swift; sourceTree = "<group>"; };
+		FC07073D26CEA6AB003E2077 /* UITapGestureRecognizer+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITapGestureRecognizer+Extensions.swift"; sourceTree = "<group>"; };
 		FC08F8721ECB2FD600988DDE /* ASCConnectPortalThirdPartyViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASCConnectPortalThirdPartyViewController.swift; sourceTree = "<group>"; };
 		FC08F8741ECB399900988DDE /* ASCConnectStorageOAuth2ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASCConnectStorageOAuth2ViewController.swift; sourceTree = "<group>"; };
 		FC08F8761ECB402000988DDE /* ASCConnectStorageOAuth2Dropbox.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASCConnectStorageOAuth2Dropbox.swift; sourceTree = "<group>"; };
@@ -1898,6 +1901,7 @@
 				69EBD4C91EF2AB9D00D3C685 /* UINavigationController+Extension.swift */,
 				1D71107E26A8217300E00421 /* UINavigationItem+Extensions.swift */,
 				FCA7500722BB9CD500991682 /* UITableViewCell+Extensions.swift */,
+				FC07073D26CEA6AB003E2077 /* UITapGestureRecognizer+Extensions.swift */,
 				FC41D7FE2265CFA600A155C2 /* UITextField+Extensions.swift */,
 				FCA3A41A22C3671200D0E57E /* UISplitViewController+Extensions.swift */,
 				FC41D7FC2265B72E00A155C2 /* UIStoryboard+Extensions.swift */,
@@ -3444,6 +3448,7 @@
 				FC36D29F25B5C32200412DDB /* ASCDateTransform.swift in Sources */,
 				FC36D2A025B5C32200412DDB /* ASCOnDeviceNavigationController.swift in Sources */,
 				FCF6966B26384C3300808644 /* ASCOnlyofficeAPICategoriesProvider.swift in Sources */,
+				FC07073F26CEA6AC003E2077 /* UITapGestureRecognizer+Extensions.swift in Sources */,
 				FC36D2A125B5C32200412DDB /* ASCLocalFileHelper.swift in Sources */,
 				FC36D2A225B5C32200412DDB /* ASCSSOSignInController.swift in Sources */,
 				FC36D2A325B5C32200412DDB /* UIControl+Extension.swift in Sources */,
@@ -3802,6 +3807,7 @@
 				1DE6D6BC2631AEE1001B825B /* ASCOnlyofficeAPICategoriesProvider.swift in Sources */,
 				FC68398A21B7DF0C00251CEA /* ASCOnDeviceNavigationController.swift in Sources */,
 				FCC39FEA1E6ECB3400DECB8D /* ASCLocalFileHelper.swift in Sources */,
+				FC07073E26CEA6AB003E2077 /* UITapGestureRecognizer+Extensions.swift in Sources */,
 				FC6F0CD71F542E7E002D33D9 /* ASCSSOSignInController.swift in Sources */,
 				1D4C6775268A2573000F2284 /* ASCSharingOptionsPresenter.swift in Sources */,
 				FC28F2C81E8D217F00A8F985 /* UIControl+Extension.swift in Sources */,

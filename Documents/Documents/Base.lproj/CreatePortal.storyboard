@@ -164,11 +164,22 @@ web office</string>
                                                     <action selector="onCountryButton:" destination="K4J-kB-2V5" eventType="touchUpInside" id="9A2-h3-Ja0"/>
                                                 </connections>
                                             </button>
-                                            <textField opaque="NO" clipsSubviews="YES" tag="6" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" placeholder="Your phone number" minimumFontSize="9" translatesAutoresizingMaskIntoConstraints="NO" id="kgQ-EP-Qap" customClass="PhoneNumberTextField" customModule="PhoneNumberKit">
+                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="ZfF-HH-LjN">
                                                 <rect key="frame" x="68" y="0.0" width="212" height="44"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                                                <textInputTraits key="textInputTraits" keyboardType="numberPad" returnKeyType="continue"/>
-                                            </textField>
+                                                <subviews>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="amC-Ph-cGL">
+                                                        <rect key="frame" x="0.0" y="0.0" width="212" height="14.333333333333334"/>
+                                                        <fontDescription key="fontDescription" style="UICTFontTextStyleSubhead"/>
+                                                        <nil key="textColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <textField opaque="NO" clipsSubviews="YES" tag="6" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" placeholder="Your phone number" minimumFontSize="9" translatesAutoresizingMaskIntoConstraints="NO" id="kgQ-EP-Qap" customClass="PhoneNumberTextField" customModule="PhoneNumberKit">
+                                                        <rect key="frame" x="0.0" y="14.333333333333373" width="212" height="29.666666666666671"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                                        <textInputTraits key="textInputTraits" keyboardType="numberPad" returnKeyType="continue"/>
+                                                    </textField>
+                                                </subviews>
+                                            </stackView>
                                         </subviews>
                                     </stackView>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="I6u-Mg-yWA">
@@ -197,11 +208,12 @@ web office</string>
                                     </button>
                                 </subviews>
                                 <constraints>
+                                    <constraint firstItem="ZfF-HH-LjN" firstAttribute="height" secondItem="TP3-h7-Hq1" secondAttribute="height" id="5gk-gr-PF5"/>
                                     <constraint firstItem="iLP-xJ-pU3" firstAttribute="height" secondItem="TP3-h7-Hq1" secondAttribute="height" id="BcP-et-GR2"/>
                                     <constraint firstAttribute="width" relation="lessThanOrEqual" constant="400" id="Bye-WT-cjS"/>
+                                    <constraint firstItem="SZG-z0-C6T" firstAttribute="height" secondItem="TP3-h7-Hq1" secondAttribute="height" id="OQr-cO-CeB"/>
                                     <constraint firstItem="Gg7-cC-egl" firstAttribute="height" secondItem="TP3-h7-Hq1" secondAttribute="height" id="OXI-ku-AY2"/>
                                     <constraint firstItem="WWd-Za-CPd" firstAttribute="height" secondItem="TP3-h7-Hq1" secondAttribute="height" id="aE2-oH-ppk"/>
-                                    <constraint firstItem="kgQ-EP-Qap" firstAttribute="height" secondItem="TP3-h7-Hq1" secondAttribute="height" id="yuo-i4-XOj"/>
                                 </constraints>
                             </stackView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="After the registration a mail with your portal registration details will be sent to your email address." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qwT-Pr-auo">
@@ -237,12 +249,17 @@ web office</string>
                     </view>
                     <navigationItem key="navigationItem" id="B74-Kh-AIG"/>
                     <connections>
+                        <outlet property="actionButton" destination="BMv-HP-hD2" id="YRX-oM-fry"/>
                         <outlet property="countryButton" destination="SZG-z0-C6T" id="Shh-Gk-Yn9"/>
                         <outlet property="emailField" destination="WWd-Za-CPd" id="XcB-sF-c9P"/>
                         <outlet property="firstNameField" destination="TP3-h7-Hq1" id="Rbm-tB-R78"/>
+                        <outlet property="footnoteLabel" destination="qwT-Pr-auo" id="Kfy-IR-VQw"/>
                         <outlet property="lastNameField" destination="iLP-xJ-pU3" id="dko-Pc-kvo"/>
                         <outlet property="phoneNumberField" destination="kgQ-EP-Qap" id="PKn-N7-1hE"/>
+                        <outlet property="phoneTitleLabel" destination="amC-Ph-cGL" id="vph-By-8D5"/>
                         <outlet property="portalField" destination="Gg7-cC-egl" id="Fa6-8u-GY5"/>
+                        <outlet property="subtitleLabel" destination="FZg-vj-AVJ" id="8My-Re-gFB"/>
+                        <outlet property="titleLabel" destination="huj-vr-CgZ" id="76M-xh-vPs"/>
                         <outlet property="topConstraint" destination="kbE-LJ-BD6" id="DHm-Rh-F3v"/>
                     </connections>
                 </viewController>
@@ -379,9 +396,11 @@ Terms of service</string>
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="actionButton" destination="d4S-7C-Csx" id="85N-jF-lvM"/>
                         <outlet property="passwordOneField" destination="to9-RR-YBV" id="271-km-LZA"/>
                         <outlet property="passwordTwoField" destination="Zgx-q8-jRP" id="NWh-by-LRJ"/>
                         <outlet property="termsLabel" destination="cHX-qo-kcu" id="eKV-8l-7YF"/>
+                        <outlet property="titleLabel" destination="qKc-e7-uTl" id="Yd4-Ix-wuF"/>
                         <outlet property="topConstraint" destination="bFh-bJ-wnM" id="wPD-fo-Efz"/>
                     </connections>
                 </viewController>

@@ -32,6 +32,8 @@ class ASCCreatePortalViewController: ASCBaseViewController {
         return $0
     }(UILabel())
     
+    @IBOutlet weak var titleLabel: UILabel!
+    @IBOutlet weak var subtitleLabel: UILabel!
     @IBOutlet weak var portalField: ParkedTextField!
     @IBOutlet weak var firstNameField: SkyFloatingLabelTextField!
     @IBOutlet weak var lastNameField: SkyFloatingLabelTextField!
@@ -40,21 +42,27 @@ class ASCCreatePortalViewController: ASCBaseViewController {
     @IBOutlet weak var passwordTwoField: SkyFloatingLabelTextField!
     @IBOutlet weak var countryButton: ASCButtonStyle!
     @IBOutlet weak var phoneNumberField: PhoneNumberTextField!
+    @IBOutlet weak var footnoteLabel: UILabel!
     @IBOutlet weak var termsLabel: UILabel!
+    @IBOutlet weak var phoneTitleLabel: UILabel!
     @IBOutlet weak var topConstraint: NSLayoutConstraint!
+    @IBOutlet weak var actionButton: ASCButtonStyle!
     
     // MARK: - Lifecycle Methods
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        // Configure title
+
+        titleLabel?.textStyle = .title1
+        subtitleLabel?.textStyle = .subhead
+        
+        // Configure fields of form
+        
         portalField?.parkedText = "." + domain(by: Locale.current.regionCode ?? "US")
         portalField?.selectedTitle = NSLocalizedString("Portal Address", comment: "")
         portalField?.title = NSLocalizedString("Portal Address", comment: "")
-        
-        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(tapTerms))
-        termsLabel?.isUserInteractionEnabled = true
-        termsLabel?.addGestureRecognizer(tapGesture)
         
         for field in [portalField, firstNameField, lastNameField, emailField, passwordOneField, passwordTwoField] {
             field?.titleFont = ASCTextStyle.underlinePlaceholderField.font
@@ -73,17 +81,41 @@ class ASCCreatePortalViewController: ASCBaseViewController {
             field?.underline(color: Asset.Colors.grayLight.color)
         }
         
-        if let countryCode = Locale.current.regionCode {
+        // Configure phone field
+        
+        phoneTitleLabel?.text = NSLocalizedString("Phone", comment: "").uppercased()
+        phoneTitleLabel?.font = portalField?.titleFont
+        phoneTitleLabel?.textColor = portalField?.titleColor
+        
+        if let region = Locale.current.regionCode {
             countryButton?.styleType = .gray
-            countryButton?.setAttributedTitle(flagTitleButton(by: countryCode), for: .normal)
+            countryButton?.setAttributedTitle(flagTitleButton(by: region), for: .normal)
 
-            if let code = phoneNumberKit.countryCode(for: countryCode) {
+            if let code = phoneNumberKit.countryCode(for: region) {
                 phoneCodeLabel.text = "+\(code) "
                 phoneNumberField?.leftView = phoneCodeLabel
                 phoneNumberField?.leftViewMode = .always
+                phoneNumberField?.placeholder = phonePlaceholder(for: region)
             }
         }
+        
+        // Configure terms and footnote label
+        
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(tapTerms))
+        termsLabel?.textStyle = .subheadLight
+        termsLabel?.attributedText = NSAttributedString(string: NSLocalizedString("By creating the portal you agree with our Terms of service", comment: ""))
+            .applying(attributes: [.foregroundColor: Asset.Colors.brend.color], toRangesMatching: NSLocalizedString("Terms of service", comment: ""))
+        termsLabel?.isUserInteractionEnabled = true
+        termsLabel?.addGestureRecognizer(tapGesture)
+        
+        footnoteLabel?.textStyle = .subheadLight
 
+        // Configure action button
+        
+        actionButton?.styleType = .default
+        
+        // Configure constarin
+        
         if UIDevice.pad {
             topConstraint?.constant = 100
         }
@@ -131,16 +163,19 @@ class ASCCreatePortalViewController: ASCBaseViewController {
         view.endEditing(true)
     }
     
-    @objc func tapTerms(sender: UITapGestureRecognizer) {
-        termsLabel?.alpha = 0.5
-        
-        UIView.animate(withDuration: 0.6) {
-            self.termsLabel?.alpha = 1
+    @objc func tapTerms(_ recognizer: UITapGestureRecognizer) {
+        guard let text = termsLabel?.attributedText?.string else {
+            return
         }
         
-        if let url = URL(string: ASCConstants.Urls.legalTerms), UIApplication.shared.canOpenURL(url) {
+        if  let range = text.range(of: NSLocalizedString("Terms of service", comment: "Part of phrases - By creating the portal you agree with our Terms of service")),
+            recognizer.didTapAttributedTextInLabel(label: termsLabel, inRange: NSRange(range, in: text)),
+            let url = URL(string: ASCConstants.Urls.legalTerms),
+            UIApplication.shared.canOpenURL(url)
+        {
             UIApplication.shared.open(url, options: [:], completionHandler: nil)
         }
+        
     }
     
     // MARK: - Private
@@ -152,6 +187,13 @@ class ASCCreatePortalViewController: ASCBaseViewController {
             .unicodeScalars
             .compactMap { UnicodeScalar(flagBase + $0.value)?.description }
             .joined()
+    }
+    
+    private func phonePlaceholder(for region: String) -> String? {
+        return ""
+        return phoneNumberKit
+            .getFormattedExampleNumber(forCountry: region, ofType: .mobile, withFormat: .international, withPrefix: false)?
+            .replacingOccurrences(of: "\\d", with: "0", options: .regularExpression)
     }
     
     private func flagTitleButton(by countryCode: String) -> NSAttributedString {
@@ -290,6 +332,9 @@ class ASCCreatePortalViewController: ASCBaseViewController {
         }
         
         guard isValidNumber else {
+            phoneTitleLabel?.text = NSLocalizedString("Phone is incorrect", comment: "").uppercased()
+            phoneTitleLabel?.textColor = portalField?.errorLabel.textColor
+            phoneTitleLabel?.shake()
             countryButton?.shake()
             phoneNumberField?.shake()
             return
@@ -543,8 +588,9 @@ class ASCCreatePortalViewController: ASCBaseViewController {
                 guard let self = self else { return }
                 self.countryButton?.setAttributedTitle(self.flagTitleButton(by: region), for: .normal)
                 self.phoneCodeLabel.text = "+\(code) "
-                self.phoneNumberField.leftView = nil
-                self.phoneNumberField.leftView = self.phoneCodeLabel
+                self.phoneNumberField?.leftView = nil
+                self.phoneNumberField?.leftView = self.phoneCodeLabel
+                self.phoneNumberField?.placeholder = self.phonePlaceholder(for: region)
             }
         }
     }
@@ -570,12 +616,15 @@ extension ASCCreatePortalViewController: UITextFieldDelegate {
     func textFieldDidBeginEditing(_ textField: UITextField) {
         if textField == phoneNumberField {
             textField.underline(color: Asset.Colors.brend.color, weight: UIDevice.screenPixel * 2)
+            phoneTitleLabel?.textColor = portalField?.tintColor
+            phoneTitleLabel?.text = NSLocalizedString("Phone", comment: "").uppercased()
         }
     }
     
     func textFieldDidEndEditing(_ textField: UITextField) {
         if textField == phoneNumberField {
             textField.underline(color: Asset.Colors.grayLight.color)
+            phoneTitleLabel?.textColor = portalField?.titleColor
         }
     }
     
@@ -604,6 +653,11 @@ extension ASCCreatePortalViewController: UITextFieldDelegate {
         if let floatingLabelTextField = textField as? SkyFloatingLabelTextField {
             floatingLabelTextField.errorMessage = ""
         }
+        
+        if textField == phoneNumberField {
+            phoneTitleLabel?.textColor = portalField?.tintColor
+        }
+        
         return true
     }
 }

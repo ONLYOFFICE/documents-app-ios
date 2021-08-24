@@ -697,7 +697,7 @@ extension ASCOneDriveProvider: ASCFileProviderProtocol {
         }
         
         let pathFoundCompletion: (String?, Error?) -> Void = { path, error in
-            guard error == nil, let parentFolderPath = path
+            guard error == nil, let folderPath = path
             else {
                 completionHandler(baseName)
                 return
@@ -709,7 +709,7 @@ extension ASCOneDriveProvider: ASCFileProviderProtocol {
             var triesCount = 0;
             repeat {
                 let semaphore = DispatchSemaphore(value: 0)
-                let filePath = parentFolderPath.appendingPathComponent(checkingName)
+                let filePath = folderPath.appendingPathComponent(checkingName)
                 provider.attributesOfItem(path: filePath) { fileObject, error in
                     if fileObject == nil || error != nil {
                         isCurrentNameUnic = true
@@ -894,7 +894,7 @@ extension ASCOneDriveProvider: ASCFileProviderProtocol {
         let operationQueue = OperationQueue()
         operationQueue.maxConcurrentOperationCount = 1
         
-        provider.pathOfItem(withId: folder.id) { path, error in
+        let pathFoundCompletion: (String?, Error?) -> Void = { path, error in
             for entity in items {
                 operationQueue.addOperation {
                     let semaphore = DispatchSemaphore(value: 0)
@@ -924,6 +924,12 @@ extension ASCOneDriveProvider: ASCFileProviderProtocol {
                     handler?(.end, conflictItems, nil)
                 })
             }
+        }
+        
+        if folder.id.isEmpty {
+            pathFoundCompletion("/", nil)
+        } else {
+            provider.pathOfItem(withId: folder.id, completionHandler: pathFoundCompletion)
         }
     }
     

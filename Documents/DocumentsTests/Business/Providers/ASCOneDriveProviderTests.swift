@@ -24,11 +24,6 @@ class ASCOneDriveProviderTests: XCTestCase {
        sut = nil
     }
 
-    func testExample() throws {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
-    }
-
     // MARK: - findUnicName func tests
     func testFindUnicNameWhenBaseNameIsUnicThenReturnsBaseName() throws {
         let folder = ASCFolder()
@@ -113,8 +108,151 @@ class ASCOneDriveProviderTests: XCTestCase {
             XCTAssertEqual(name, "Foo 4")
         }
     }
+    
+    // MARK: - rename func tests
+    func testWhenRenameFileInEmptyDirThenRenamed() {
+        let entity = ASCFile()
+        entity.title = "Foo.docx"
+        entity.id = ""
+        sut.provider = ASCOneDriveFileProviderMock()
+        let expect = expectation(description: "renaming file")
+        sut.rename(entity, to: "Bar") { sut, entity, success, error in
+            XCTAssertNil(error)
+            XCTAssertTrue(success)
+            
+            guard let entity = entity as? ASCFile else {
+                XCTFail("Couldn't cust entity to file")
+                return
+            }
+            XCTAssertEqual(entity.title, "Bar.docx")
+            expect.fulfill()
+        }
+        waitForExpectations(timeout: 1)
+    }
+    
+    func testWhenRenameFileInFolderWithExistNameThanFailure() {
+        let entity = ASCFile()
+        entity.title = "Foo.docx"
+        entity.id = "1"
+        let mockProvider = ASCOneDriveFileProviderMock()
+        mockProvider.pathsOfItemsIds["1"] = "/1/Foo.docx"
+        mockProvider.existingPaths = [
+            "/1/Bar.docx",
+        ]
+        sut.provider = mockProvider
+        let expect = expectation(description: "renaming file")
+        sut.rename(entity, to: "Bar") { sut, entity, success, error in
+            XCTAssertNotNil(error)
+            XCTAssertFalse(success)
+            
+            guard let entity = entity as? ASCFile else {
+                XCTFail("Couldn't cust entity to file")
+                return
+            }
+            XCTAssertEqual(entity.title, "Foo.docx")
+            expect.fulfill()
+        }
+        waitForExpectations(timeout: 1)
+    }
+    
+    func testWhenRenameFileInRootFolderWithExistNameThanFailure() {
+        let entity = ASCFile()
+        entity.title = "Foo.docx"
+        entity.id = "1"
+        
+        let mockProvider = ASCOneDriveFileProviderMock()
+        mockProvider.pathsOfItemsIds["1"] = "/Foo.docx"
+        mockProvider.existingPaths = [
+            "/Bar.docx",
+        ]
+        sut.provider = mockProvider
+        let expect = expectation(description: "renaming file")
+        sut.rename(entity, to: "Bar") { sut, entity, success, error in
+            XCTAssertNotNil(error)
+            XCTAssertFalse(success)
+            
+            guard let entity = entity as? ASCFile else {
+                XCTFail("Couldn't cust entity to file")
+                return
+            }
+            XCTAssertEqual(entity.title, "Foo.docx")
+            expect.fulfill()
+        }
+        waitForExpectations(timeout: 1)
+    }
+    
+    func testWhenRenameFolderInEmptyDirThenRenamed() {
+        let entity = ASCFolder()
+        entity.title = "Foo"
+        entity.id = ""
+        sut.provider = ASCOneDriveFileProviderMock()
+        
+        let expect = expectation(description: "renaming folder")
+        sut.rename(entity, to: "Bar") { sut, entity, success, error in
+            XCTAssertNil(error)
+            XCTAssertTrue(success)
+            
+            guard let entity = entity as? ASCFolder else {
+                XCTFail("Couldn't cust entity to folder")
+                return
+            }
+            XCTAssertEqual(entity.title, "Bar")
+            expect.fulfill()
+        }
+        waitForExpectations(timeout: 1)
+    }
+    
+    func testWhenRenameFolderInFolderWithExistNameThanFailure() {
+        let entity = ASCFolder()
+        entity.title = "Foo"
+        entity.id = "1"
+        let mockProvider = ASCOneDriveFileProviderMock()
+        mockProvider.pathsOfItemsIds["1"] = "/1/Foo"
+        mockProvider.existingPaths = [
+            "/1/Bar",
+        ]
+        sut.provider = mockProvider
+        let expect = expectation(description: "renaming folder")
+        sut.rename(entity, to: "Bar") { sut, entity, success, error in
+            XCTAssertNotNil(error)
+            XCTAssertFalse(success)
+            
+            guard let entity = entity as? ASCFolder else {
+                XCTFail("Couldn't cust entity to folder")
+                return
+            }
+            XCTAssertEqual(entity.title, "Foo")
+            expect.fulfill()
+        }
+        waitForExpectations(timeout: 1)
+    }
+    
+    func testWhenRenameFolderInRootFolderWithExistNameThanFailure() {
+        let entity = ASCFolder()
+        entity.title = "Foo"
+        entity.id = ""
+        let mockProvider = ASCOneDriveFileProviderMock()
+        mockProvider.existingPaths = [
+            "/Bar",
+        ]
+        sut.provider = mockProvider
+        let expect = expectation(description: "renaming folder")
+        sut.rename(entity, to: "Bar") { sut, entity, success, error in
+            XCTAssertNotNil(error)
+            XCTAssertFalse(success)
+            
+            guard let entity = entity as? ASCFolder else {
+                XCTFail("Couldn't cust entity to folder")
+                return
+            }
+            XCTAssertEqual(entity.title, "Foo")
+            expect.fulfill()
+        }
+        waitForExpectations(timeout: 1)
+    }
 }
 
+// MARK: - Extensions
 extension ASCOneDriveProviderTests {
     class ASCOneDriveFileProviderMock: ASCOneDriveFileProvider {
         typealias Path = String
@@ -141,6 +279,16 @@ extension ASCOneDriveProviderTests {
             } else {
                 completionHandler(nil, nil)
             }
+        }
+        
+        override func moveItem(path: String, to toPath: String, overwrite: Bool, completionHandler: SimpleCompletionHandler) -> Progress? {
+            completionHandler?(nil)
+            return nil
+        }
+        
+        override func moveItem(path: String, to toPath: String, overwrite: Bool, requestData: [String : Any], completionHandler: SimpleCompletionHandler) -> Progress? {
+            completionHandler?(nil)
+            return nil
         }
         
         init() {

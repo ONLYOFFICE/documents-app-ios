@@ -628,27 +628,68 @@ extension ASCOneDriveProvider: ASCFileProviderProtocol {
             entityName = newName
         }
         
-        _ = provider.moveItem(path: entityId, to: "", overwrite: false, requestData: ["name": entityName]) { [weak self] error in
-            DispatchQueue.main.async(execute: { [weak self] in
-                guard let self = self else { return }
-                
+        let moveItemFunc = {
+            log.info("moving")
+            _ = provider.moveItem(path: entityId, to: "", overwrite: false, requestData: ["name": entityName]) { [weak self] error in
+                DispatchQueue.main.async(execute: { [weak self] in
+                    guard let self = self else { return }
+                    
+                    guard error == nil else {
+                        completeon?(self, nil, false, ASCProviderError(error!))
+                        return
+                    }
+                    
+                    if let file = file {
+                        file.title = entityName
+                        
+                        completeon?(self, file, true, nil)
+                    } else if let folder = folder {
+                        folder.title = entityName
+                        
+                        completeon?(self, folder, true, nil)
+                    } else {
+                        completeon?(self, nil, false, ASCProviderError(msg: NSLocalizedString("Unknown item type.", comment: "")))
+                    }
+                })
+            }
+        }
+        
+        let entityPathDefineCompletion: (String?, Error?) -> Void = { path, error in
+            guard let path = path, !path.isEmpty, error == nil else {
+                if error != nil {
+                    log.error(error!.localizedDescription)
+                }
+                moveItemFunc()
+                return
+            }
+            
+            let fullPath = path.deletingLastPathComponent.appendingPathComponent(entityName)
+            
+            log.info("Getting item attributes by path: \(fullPath)")
+            provider.attributesOfItem(path: fullPath) { entityObject, error in
                 guard error == nil else {
-                    completeon?(self, nil, false, ASCProviderError(error!))
+                    log.error(error!.localizedDescription)
+                    moveItemFunc()
                     return
                 }
                 
-                if let file = file {
-                    file.title = entityName
-                    
-                    completeon?(self, file, true, nil)
-                } else if let folder = folder {
-                    folder.title = entityName
-                    
-                    completeon?(self, folder, true, nil)
-                } else {
-                    completeon?(self, nil, false, ASCProviderError(msg: NSLocalizedString("Unknown item type.", comment: "")))
+                guard entityObject == nil else {
+                    DispatchQueue.main.async {
+                        completeon?(self, entity, false, ASCProviderError(msg: NSLocalizedString("Rename failed. An object with such a similar name exists.", comment: "")))
+                    }
+                    return
                 }
-            })
+                
+                log.info("Attributes not found. Can move.")
+                moveItemFunc()
+            }
+        }
+        
+        log.info("Definding path")
+        if let folder = entity as? ASCFolder, folder.id.isEmpty {
+            entityPathDefineCompletion("/".appendingPathComponent(folder.title), nil)
+        } else {
+            provider.pathOfItem(withId: entityId, completionHandler: entityPathDefineCompletion)
         }
     }
     

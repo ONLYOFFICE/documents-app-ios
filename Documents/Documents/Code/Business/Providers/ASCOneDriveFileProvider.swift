@@ -41,6 +41,44 @@ class ASCOneDriveFileProvider: OneDriveFileProvider {
         task.resume()
     }
     
+    func pathOfItem(withId itemId: String, completionHandler: @escaping (_ path: String?, _ error: Error?) -> Void) {
+        let components = URLComponents(url: url(of: itemId), resolvingAgainstBaseURL: false)
+        guard let url = components?.url else {
+            completionHandler(nil, URLError(.badURL))
+            return
+        }
+        var request = URLRequest(url: url)
+                                          
+        request.httpMethod = "GET"
+        request.setValue(authentication: self.credential, with: .oAuth2)
+        
+        let task = session.dataTask(with: request, completionHandler: { (data, response, error) in
+            var serverError: FileProviderOneDriveError?
+            if let response = response as? HTTPURLResponse, response.statusCode >= 400 {
+                let code = FileProviderHTTPErrorCode(rawValue: response.statusCode)
+                serverError = code.flatMap { FileProviderOneDriveError(code: $0, path: url.absoluteString, serverDescription: error?.localizedDescription) }
+                completionHandler(nil, serverError)
+                return
+            }
+            
+            guard let json = self.deserializeJSON(data: data) else {
+                let err = URLError(.badServerResponse, userInfo: ["reason": "deserialization faild"])
+                completionHandler(nil, err)
+                return
+            }
+
+            if let name = json["name"] as? String,
+               let _ = json["id"] as? String,
+               let parentReference = json["parentReference"] as? [String: Any],
+               let parentPath = parentReference["path"] as? String
+            {
+                completionHandler(parentPath.appendingPathComponent(name).removingPrefix("/drive/root:"), nil)
+            } else {
+                completionHandler(nil, error)
+            }
+        })
+        task.resume()
+    }
     
     /**
      Returns a `FileObject` containing the attributes of the item (file, directory, symlink, etc.) at the path in question via asynchronous completion handler.

@@ -25,6 +25,7 @@
 		1DE6D6BC2631AEE1001B825B /* ASCOnlyofficeAPICategoriesProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DE6D6BB2631AEE1001B825B /* ASCOnlyofficeAPICategoriesProvider.swift */; };
 		1DE6D6C42631BE03001B825B /* ASCOnlyofficeCategoriesProviderFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DE6D6C32631BE03001B825B /* ASCOnlyofficeCategoriesProviderFactory.swift */; };
 		1DF505242641867300B78496 /* ASCOneDriveFileProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DF505232641867300B78496 /* ASCOneDriveFileProvider.swift */; };
+		1DF6E0A926D5323B00FB42CE /* ASCOneDriveProviderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DF6E0A826D5323A00FB42CE /* ASCOneDriveProviderTests.swift */; };
 		667548327089FF37AB5BACBB /* Pods_Documents_Alpha.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 92C4B2EE0CEF31DA5A45CD1A /* Pods_Documents_Alpha.framework */; };
 		69EBD4CA1EF2AB9D00D3C685 /* UINavigationController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69EBD4C91EF2AB9D00D3C685 /* UINavigationController+Extension.swift */; };
 		7E7324B635B9B2D98E80FD03 /* Pods_Documents.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1B32667722AD980849E124F1 /* Pods_Documents.framework */; };
@@ -593,6 +594,7 @@
 		1DE6D6BB2631AEE1001B825B /* ASCOnlyofficeAPICategoriesProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCOnlyofficeAPICategoriesProvider.swift; sourceTree = "<group>"; };
 		1DE6D6C32631BE03001B825B /* ASCOnlyofficeCategoriesProviderFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCOnlyofficeCategoriesProviderFactory.swift; sourceTree = "<group>"; };
 		1DF505232641867300B78496 /* ASCOneDriveFileProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCOneDriveFileProvider.swift; sourceTree = "<group>"; };
+		1DF6E0A826D5323A00FB42CE /* ASCOneDriveProviderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCOneDriveProviderTests.swift; sourceTree = "<group>"; };
 		223510FCC80632095899444E /* Pods_Documents_DocumentsTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Documents_DocumentsTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		3591A05467A432968D686ECF /* Pods-DocumentsTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DocumentsTests.release.xcconfig"; path = "../Pods/Target Support Files/Pods-DocumentsTests/Pods-DocumentsTests.release.xcconfig"; sourceTree = "<group>"; };
 		3BF384B26A0BED3EFC4A3889 /* Pods-Documents-Dev.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Documents-Dev.release.xcconfig"; path = "../Pods/Target Support Files/Pods-Documents-Dev/Pods-Documents-Dev.release.xcconfig"; sourceTree = "<group>"; };
@@ -1063,6 +1065,7 @@
 			isa = PBXGroup;
 			children = (
 				1D5DB04726584E37006B4757 /* OnlyofficeCategories */,
+				1DF6E0A826D5323A00FB42CE /* ASCOneDriveProviderTests.swift */,
 			);
 			path = Providers;
 			sourceTree = "<group>";
@@ -1166,8 +1169,8 @@
 				FCF8472722CB39ED00ABC3B4 /* Views */,
 				FC407FBB2191DC76009089EB /* ASCConnectCloudViewController.swift */,
 				FC08F8721ECB2FD600988DDE /* ASCConnectPortalThirdPartyViewController.swift */,
-				FC7F786A236ACBB00026E260 /* ASCConnectStorageGoogleController.swift */,
 				FC8C69821ECC8EA8005B68D7 /* ASCConnectStorageWebDavController.swift */,
+				FC7F786A236ACBB00026E260 /* ASCConnectStorageGoogleController.swift */,
 				FC08F8741ECB399900988DDE /* ASCConnectStorageOAuth2ViewController.swift */,
 				FC08F8761ECB402000988DDE /* ASCConnectStorageOAuth2Dropbox.swift */,
 				FC8C697A1ECC2F44005B68D7 /* ASCConnectStorageOAuth2Google.swift */,
@@ -2958,6 +2961,7 @@
 				1D1A2E1F2660F93600D0335B /* ASCLoadedViewControllerByProviderAndFolderFinderTests.swift in Sources */,
 				FC77846C24756CC2005ED631 /* ASCFolderProviderType.swift in Sources */,
 				FCD31F4524BDF2E200774ACD /* ASCLogger.swift in Sources */,
+				1DF6E0A926D5323B00FB42CE /* ASCOneDriveProviderTests.swift in Sources */,
 				FC4D864920C50AE00047B871 /* Path+Extension.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

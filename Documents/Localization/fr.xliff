@@ -413,6 +413,7 @@ Authentication</source>
       </trans-unit>
       <trans-unit id="OHG-hv-GGj.normalTitle" xml:space="preserve">
         <source>Back to login</source>
+        <target state="translated">Retour connexion</target>
         <note>Class = "UIButton"; normalTitle = "Back to login"; ObjectID = "OHG-hv-GGj";</note>
       </trans-unit>
       <trans-unit id="OnI-QD-xeI.placeholder" xml:space="preserve">
@@ -481,6 +482,7 @@ Authentication</source>
       </trans-unit>
       <trans-unit id="ePY-rM-AOE.normalTitle" xml:space="preserve">
         <source>Send</source>
+        <target state="translated">Envoyer</target>
         <note>Class = "UIButton"; normalTitle = "Send"; ObjectID = "ePY-rM-AOE";</note>
       </trans-unit>
       <trans-unit id="gzc-cW-NPT.title" xml:space="preserve">
@@ -1270,6 +1272,7 @@ Remarque: si vous avez oublié le mot de passe, vous avez besoin de supprimer et
     <body>
       <trans-unit id="CFBundleName" xml:space="preserve">
         <source>Documents-Alpha</source>
+        <target state="translated">Documents-Alpha</target>
         <note>Bundle name</note>
       </trans-unit>
       <trans-unit id="NSCameraUsageDescription" xml:space="preserve">
@@ -1282,6 +1285,7 @@ Remarque: si vous avez oublié le mot de passe, vous avez besoin de supprimer et
       </trans-unit>
       <trans-unit id="NSLocalNetworkUsageDescription" xml:space="preserve">
         <source>Network access required</source>
+        <target state="translated">Accès réseau requis</target>
         <note>Privacy - Local Network Usage Description</note>
       </trans-unit>
       <trans-unit id="NSPhotoLibraryAddUsageDescription" xml:space="preserve">
@@ -1363,6 +1367,7 @@ Remarque: si vous avez oublié le mot de passe, vous avez besoin de supprimer et
       </trans-unit>
       <trans-unit id="Access files in Favorites and Recents on ONLYOFFICE portal from the app" xml:space="preserve">
         <source>Access files in Favorites and Recents on ONLYOFFICE portal from the app</source>
+        <target state="translated">Accédez aux fichiers marqués Favoris et Récents sur le portail ONLYOFFICE depuis l’application.</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Account name is empty" xml:space="preserve">
@@ -1412,7 +1417,7 @@ Remarque: si vous avez oublié le mot de passe, vous avez besoin de supprimer et
       </trans-unit>
       <trans-unit id="Box directory" xml:space="preserve">
         <source>Box directory</source>
-        <target>Répertoire</target>
+        <target state="translated">Répertoire Box</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Camera Unavailable" xml:space="preserve">
@@ -1841,6 +1846,7 @@ d'autres via le protocole WebDAV.</target>
       </trans-unit>
       <trans-unit id="Email is incorrect." xml:space="preserve">
         <source>Email is incorrect.</source>
+        <target state="translated">L’e-mail est incorrect.</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Email is not valid" xml:space="preserve">
@@ -1880,6 +1886,7 @@ d'autres via le protocole WebDAV.</target>
       </trans-unit>
       <trans-unit id="Export" xml:space="preserve">
         <source>Export</source>
+        <target state="translated">Exportation</target>
         <note>Button title</note>
       </trans-unit>
       <trans-unit id="Failed online conversion service." xml:space="preserve">
@@ -1946,14 +1953,17 @@ d'autres via le protocole WebDAV.</target>
       </trans-unit>
       <trans-unit id="Favorites and Recents" xml:space="preserve">
         <source>Favorites and Recents</source>
+        <target state="translated">Le fichier existe déjà</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="File already exists" xml:space="preserve">
         <source>File already exists</source>
+        <target state="translated">Le fichier existe déjà</target>
         <note>Description of file operation error</note>
       </trans-unit>
       <trans-unit id="File does not exist" xml:space="preserve">
         <source>File does not exist</source>
+        <target state="translated">Fichier ne existe pas</target>
         <note>Description of file operation error</note>
       </trans-unit>
       <trans-unit id="Files" xml:space="preserve">
@@ -1963,6 +1973,7 @@ d'autres via le protocole WebDAV.</target>
       </trans-unit>
       <trans-unit id="First name is incorrect" xml:space="preserve">
         <source>First name is incorrect</source>
+        <target state="translated">Le prénom est incorrect</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Folder title" xml:space="preserve">
@@ -2002,6 +2013,7 @@ d'autres via le protocole WebDAV.</target>
       </trans-unit>
       <trans-unit id="Go to forum" xml:space="preserve">
         <source>Go to forum</source>
+        <target state="translated">Aller sur le forum</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Google Drive" xml:space="preserve">
@@ -2055,10 +2067,12 @@ d'autres via le protocole WebDAV.</target>
       </trans-unit>
       <trans-unit id="Last name is empty" xml:space="preserve">
         <source>Last name is empty</source>
+        <target state="translated">Le nom de famille est vide</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Last name is incorrect" xml:space="preserve">
         <source>Last name is incorrect</source>
+        <target state="translated">Le nom de famille est incorrect</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Logging in" xml:space="preserve">
@@ -2089,6 +2103,7 @@ d'autres via le protocole WebDAV.</target>
       </trans-unit>
       <trans-unit id="Mark as favorite" xml:space="preserve">
         <source>Mark as favorite</source>
+        <target state="translated">Marquer comme favori</target>
         <note>Button title</note>
       </trans-unit>
       <trans-unit id="Mb" xml:space="preserve">
@@ -2153,6 +2168,7 @@ d'autres via le protocole WebDAV.</target>
       </trans-unit>
       <trans-unit id="New" xml:space="preserve">
         <source>New</source>
+        <target state="translated">Nouveau</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="New Document" xml:space="preserve">
@@ -2187,6 +2203,7 @@ d'autres via le protocole WebDAV.</target>
       </trans-unit>
       <trans-unit id="Nextcloud directory" xml:space="preserve">
         <source>Nextcloud directory</source>
+        <target state="translated">Répertoire Nextcloud</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="No connection" xml:space="preserve">
@@ -2262,10 +2279,12 @@ d'autres via le protocole WebDAV.</target>
       </trans-unit>
       <trans-unit id="OneDrive" xml:space="preserve">
         <source>OneDrive</source>
+        <target state="translated">OneDrive</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="OneDrive and kDrive access" xml:space="preserve">
         <source>OneDrive and kDrive access</source>
+        <target state="translated">Retirer des favoris</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="OneDrive directory" xml:space="preserve">
@@ -2465,6 +2484,7 @@ d'autres via le protocole WebDAV.</target>
       </trans-unit>
       <trans-unit id="Remove from Favorites" xml:space="preserve">
         <source>Remove from Favorites</source>
+        <target state="translated">Retirer des favoris</target>
         <note>Button title</note>
       </trans-unit>
       <trans-unit id="Rename" xml:space="preserve">
@@ -2560,10 +2580,12 @@ d'autres via le protocole WebDAV.</target>
       </trans-unit>
       <trans-unit id="Sending" xml:space="preserve">
         <source>Sending</source>
+        <target state="translated">Envoi en cours</target>
         <note>Caption of the process</note>
       </trans-unit>
       <trans-unit id="Set favorite failed." xml:space="preserve">
         <source>Set favorite failed.</source>
+        <target state="translated">Échec de la définition du favori.</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Settings" xml:space="preserve">
@@ -2588,6 +2610,7 @@ d'autres via le protocole WebDAV.</target>
       </trans-unit>
       <trans-unit id="Sharing Settings" xml:space="preserve">
         <source>Sharing Settings</source>
+        <target state="translated">Paramètres de partage</target>
         <note>Button title</note>
       </trans-unit>
       <trans-unit id="Single Sign-on" xml:space="preserve">
@@ -2657,6 +2680,7 @@ d'autres via le protocole WebDAV.</target>
       </trans-unit>
       <trans-unit id="The %@ server is not available." xml:space="preserve">
         <source>The %@ server is not available.</source>
+        <target state="translated">Le serveur %@ n’est pas disponible.</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="The account name must be between 6 and 50 characters long" xml:space="preserve">
@@ -2681,6 +2705,7 @@ d'autres via le protocole WebDAV.</target>
       </trans-unit>
       <trans-unit id="The folder in the Trash can not be opened." xml:space="preserve">
         <source>The folder in the Trash can not be opened.</source>
+        <target state="translated">Le dossier dans la corbeille ne peut pas être ouvert.</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="The folder will be irretrievably deleted. This action is irreversible." xml:space="preserve">
@@ -2695,10 +2720,12 @@ d'autres via le protocole WebDAV.</target>
       </trans-unit>
       <trans-unit id="The parameters are incorrect." xml:space="preserve">
         <source>The parameters are incorrect.</source>
+        <target state="translated">Les paramètres sont incorrects.</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="The password is incorrect. It must contain 8 characters" xml:space="preserve">
         <source>The password is incorrect. It must contain 8 characters</source>
+        <target state="translated">Le mot de passe est incorrect. Il doit contenir 8 caractères</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="The portal address is invalid" xml:space="preserve">
@@ -2708,6 +2735,7 @@ d'autres via le protocole WebDAV.</target>
       </trans-unit>
       <trans-unit id="The portal is not available" xml:space="preserve">
         <source>The portal is not available</source>
+        <target state="translated">Le portail n’est pas disponible</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="The portal name must be between 6 and 50 characters long" xml:space="preserve">
@@ -2907,6 +2935,7 @@ d'autres via le protocole WebDAV.</target>
       </trans-unit>
       <trans-unit id="View and edit files in OneDrive and kDrive directly from the app. Access your storages from the Clouds tab." xml:space="preserve">
         <source>View and edit files in OneDrive and kDrive directly from the app. Access your storages from the Clouds tab.</source>
+        <target state="translated">Affichez et modifiez des fichiers stockés dans OneDrive et kDrive directement dans l’application. Accédez à vos espaces de stockage via l’onglet Cloud.</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Warning" xml:space="preserve">
@@ -3071,18 +3100,22 @@ Les fichiers créés peuvent ensuite être chargés sur le portail en ligne et s
       </trans-unit>
       <trans-unit id="iCloud" xml:space="preserve">
         <source>iCloud</source>
+        <target state="translated">iCloud</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="iCloud Drive" xml:space="preserve">
         <source>iCloud Drive</source>
+        <target state="translated">iCloud Drive</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="kDrive" xml:space="preserve">
         <source>kDrive</source>
+        <target state="translated">kDrive</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="kDrive directory" xml:space="preserve">
         <source>kDrive directory</source>
+        <target state="translated">Répertoire kDrive</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="none" xml:space="preserve">
@@ -3104,6 +3137,7 @@ Les fichiers créés peuvent ensuite être chargés sur le portail en ligne et s
       </trans-unit>
       <trans-unit id="ownCloud directory" xml:space="preserve">
         <source>ownCloud directory</source>
+        <target state="translated">Répertoire ownCloud</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="photo" xml:space="preserve">

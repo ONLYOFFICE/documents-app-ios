@@ -32,6 +32,9 @@
 "A6 (10,5%@ x 14,8%@)" = "A6 (10,5%1$@ x 14,8%2$@)";
 
 /* No comment provided by engineer. */
+"Access files in Favorites and Recents on ONLYOFFICE portal from the app" = "Acceda a los archivos almacenados en las carpetas Favoritos y Recientes del portal de ONLYOFFICE desde la aplicación.";
+
+/* No comment provided by engineer. */
 "Account name is empty" = "Nombre de cuenta está vacío";
 
 /* No comment provided by engineer. */
@@ -79,7 +82,7 @@
 /* No comment provided by engineer. */
 "Can not duplicate the file." = "No se puede duplicar el archivo.";
 
-/* Button title */
+/* No comment provided by engineer. */
 "Cancel" = "Cerrar";
 
 /* No comment provided by engineer. */
@@ -195,9 +198,6 @@
 
 /* No comment provided by engineer. */
 "Could not duplicate the file." = "No se puede duplicar el archivo.";
-
-/* No comment provided by engineer. */
-"Could not empty trash." = "No se puede vaciar basura.";
 
 /* No comment provided by engineer. */
 "Could not export the file." = "No se puede exportar el archivo.";
@@ -378,6 +378,9 @@
 "Failure to download result from conversion online service." = "Fallo al descargar el resultado del servicio de conversión en línea.";
 
 /* No comment provided by engineer. */
+"Favorites and Recents" = "Favoritos y Recientes";
+
+/* No comment provided by engineer. */
 "Files" = "Archivos";
 
 /* No comment provided by engineer. */
@@ -544,6 +547,9 @@
 "Once you enter the password and open the file, the current password to the file will be reset" = "Una vez que introduzca la contraseña y abra el archivo, se restablecerá la contraseña actual del archivo";
 
 /* No comment provided by engineer. */
+"OneDrive and kDrive access" = "Acceso a OneDrive y kDrive";
+
+/* No comment provided by engineer. */
 "OneDrive directory" = "Directorio de OneDrive";
 
 /* No comment provided by engineer. */
@@ -560,9 +566,6 @@
 
 /* No comment provided by engineer. */
 "Open Document" = "Abrir Documento";
-
-/* Button title */
-"Open In" = "Abrir en";
 
 /* Caption of the processing */
 "Opening" = "Abriendo";
@@ -690,13 +693,11 @@
 /* Share status */
 "Review" = "Revisar";
 
-/* No comment provided by engineer. */
-"Reviewing" = "Revisión";
-
 /* Caption of the processing */
 "Saving" = "Guardando";
 
-/* Button title */
+/* Button title
+   Navigation bar button title */
 "Select" = "Seleccionar ";
 
 /* No comment provided by engineer. */
@@ -722,9 +723,6 @@
 
 /* No comment provided by engineer. */
 "Settings" = "Ajustes";
-
-/* Button title */
-"Share" = "Compartir";
 
 /* Category title */
 "Shared with Me" = "Compartido para mi";
@@ -794,9 +792,6 @@
 
 /* No comment provided by engineer. */
 "The item with the name '%@' already exists in the folder '%@'." = "El objeto con el nombre '%1$@' ya existe en la carpeta '%2$@'.";
-
-/* No comment provided by engineer. */
-"The password is incorrect. It must contain 6 characters" = "La contraseña no es correcta. Debe contener 6 caracteres";
 
 /* No comment provided by engineer. */
 "The portal address is invalid" = "La dirección de portal es inválida";
@@ -894,17 +889,11 @@
 /* Caption of the process */
 "Uploading" = "Cargando";
 
-/* No comment provided by engineer. */
-"Use comments to add notes, suggestions, or questions for your collaborators. Edit, answer, resolve or delete them in process." = "Utilice comentarios para añadir notas, sugerencias o preguntas para sus colaboradores. Edite, responda, resuelva o elimínelos en el proceso.";
-
 /* Button title */
 "Use Face ID" = "Use Face ID";
 
 /* Button title */
 "Use Touch ID" = "Use Touch ID";
-
-/* No comment provided by engineer. */
-"Use Track Changes mode in text documents to suggest changes, accept or reject them." = "Utilice el Modo de Control de Cambios en los documentos de texto para sugerir cambios, aceptarlos o rechazarlos";
 
 /* Error message */
 "User authentication failed" = "Error de autenticación de usuario";
@@ -923,6 +912,9 @@
 
 /* No comment provided by engineer. */
 "Version" = "Versión";
+
+/* No comment provided by engineer. */
+"View and edit files in OneDrive and kDrive directly from the app. Access your storages from the Clouds tab." = "Visualice y edite archivos en OneDrive y kDrive directamente desde la aplicación. Acceda a sus almacenamientos desde la pestaña Nubes.";
 
 /* No comment provided by engineer. */
 "Warning" = "Aviso";

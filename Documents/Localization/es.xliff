@@ -1361,6 +1361,7 @@ Nota: Si Usted olvida el código de acceso, necesitará eliminar e instalar la a
       </trans-unit>
       <trans-unit id="Access files in Favorites and Recents on ONLYOFFICE portal from the app" xml:space="preserve">
         <source>Access files in Favorites and Recents on ONLYOFFICE portal from the app</source>
+        <target state="translated">Acceda a los archivos almacenados en las carpetas Favoritos y Recientes del portal de ONLYOFFICE desde la aplicación.</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Account name is empty" xml:space="preserve">
@@ -1944,6 +1945,7 @@ otros que utilizan el protocolo WebDAV.</target>
       </trans-unit>
       <trans-unit id="Favorites and Recents" xml:space="preserve">
         <source>Favorites and Recents</source>
+        <target state="translated">Favoritos y Recientes</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="File already exists" xml:space="preserve">
@@ -2264,6 +2266,7 @@ otros que utilizan el protocolo WebDAV.</target>
       </trans-unit>
       <trans-unit id="OneDrive and kDrive access" xml:space="preserve">
         <source>OneDrive and kDrive access</source>
+        <target state="translated">Acceso a OneDrive y kDrive</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="OneDrive directory" xml:space="preserve">
@@ -2899,6 +2902,7 @@ Si el problema persiste, póngase en contacto con nosotros y mencione este códi
       </trans-unit>
       <trans-unit id="View and edit files in OneDrive and kDrive directly from the app. Access your storages from the Clouds tab." xml:space="preserve">
         <source>View and edit files in OneDrive and kDrive directly from the app. Access your storages from the Clouds tab.</source>
+        <target state="translated">Visualice y edite archivos en OneDrive y kDrive directamente desde la aplicación. Acceda a sus almacenamientos desde la pestaña Nubes.</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Warning" xml:space="preserve">

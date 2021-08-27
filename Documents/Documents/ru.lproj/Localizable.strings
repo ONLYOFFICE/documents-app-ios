@@ -172,11 +172,35 @@
 /* Caption of the processing */
 "Copying" = "Копирование";
 
+/* Description of file operation error */
+"Could not change file attrubutes" = "Не удалось изменить атрибуты файла";
+
+/* Description of file operation error */
+"Could not change the directory" = "Не удалось изменить директорию";
+
 /* No comment provided by engineer. */
 "Could not convert file to export." = "Невозможно преобразовать файл для экспорта.";
 
+/* Description of file operation error */
+"Could not copy file" = "Не удалось скопировать файл";
+
 /* No comment provided by engineer. */
 "Could not copy." = "Невозможно скопировать.";
+
+/* Description of file operation error */
+"Could not create a directory" = "Не удалось создать каталог";
+
+/* Description of file operation error */
+"Could not create a hard link" = "Не удалось создать жесткую ссылку";
+
+/* Description of file operation error */
+"Could not create file" = "Не удалось создать файл";
+
+/* Description of file operation error */
+"Could not create symlink from" = "Не удалось создать символическую ссылку из";
+
+/* Description of file operation error */
+"Could not delete file" = "Не удалось удалить файл";
 
 /* No comment provided by engineer. */
 "Could not delete the file." = "Невозможно удалить файл.";
@@ -202,6 +226,9 @@
 /* No comment provided by engineer. */
 "Could not export the file." = "Невозможно экспортировать файл.";
 
+/* Description of file operation error */
+"Could not move file" = "Не удалось переместить файл";
+
 /* No comment provided by engineer. */
 "Could not open editor." = "Невозможно открыть редактор.";
 
@@ -214,8 +241,14 @@
 /* No comment provided by engineer. */
 "Could not read data from the file." = "Невозможно прочитать данные из файла.";
 
+/* Description of file operation error */
+"Could not read from file" = "Не удалось прочитать из файла";
+
 /* No comment provided by engineer. */
 "Could not save the file." = "Невозможно сохранить файл.";
+
+/* Description of file operation error */
+"Could not write to file" = "Не удалось записать в файл";
 
 /* No comment provided by engineer. */
 "Couldn't open file" = "Не удалось открыть файл";
@@ -363,6 +396,9 @@
 "Failed to check the name of the portal" = "Ошибка при проверке имени портала";
 
 /* No comment provided by engineer. */
+"Failed to copy: %@" = "Не удалось скопировать: %@";
+
+/* No comment provided by engineer. */
 "Failed to get file information from the server." = "Ошибка при получении информации о файле с сервера.";
 
 /* No comment provided by engineer. */
@@ -373,6 +409,9 @@
 
 /* No comment provided by engineer. */
 "Failed to get the address of the document server." = "Ошибка получения адреса сервера документов.";
+
+/* No comment provided by engineer. */
+"Failed to move: %@" = "Не удалось переместить: %@";
 
 /* No comment provided by engineer. */
 "Failed to send feedback by mail. Try to write your request on our forum." = "Не удалось отправить отзыв по почте. Попробуйте написать свой запрос на нашем форуме.";
@@ -388,6 +427,12 @@
 
 /* No comment provided by engineer. */
 "Favorites and Recents" = "Разделы Избранное и Последние";
+
+/* Description of file operation error */
+"File already exists" = "Файл уже существует";
+
+/* Description of file operation error */
+"File does not exist" = "Файл не существует";
 
 /* No comment provided by engineer. */
 "Files" = "Файлы";
@@ -428,6 +473,12 @@
 /* No comment provided by engineer. */
 "Groups" = "Группы";
 
+/* No comment provided by engineer. */
+"iCloud" = "iCloud";
+
+/* No comment provided by engineer. */
+"iCloud Drive" = "iCloud Drive";
+
 /* Email sent instructions */
 "If a user with the mail %@ exists, then an instruction to change the password was sent to this address." = "Если пользователь с почтой %@ существует, то на этот адрес была отправлена инструкция по смене пароля.";
 
@@ -448,6 +499,9 @@
 
 /* Data units */
 "Kb" = "Кб";
+
+/* No comment provided by engineer. */
+"kDrive" = "kDrive";
 
 /* No comment provided by engineer. */
 "kDrive directory" = "Папка kDrive";
@@ -581,6 +635,9 @@
 
 /* No comment provided by engineer. */
 "Once you enter the password and open the file, the current password to the file will be reset" = "Как только вы введете пароль и откроете файл, текущий пароль к файлу будет сброшен";
+
+/* No comment provided by engineer. */
+"OneDrive" = "OneDrive";
 
 /* No comment provided by engineer. */
 "OneDrive and kDrive access" = "Работа в OneDrive и kDrive";

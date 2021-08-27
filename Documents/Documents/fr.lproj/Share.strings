@@ -31,7 +31,7 @@
 /* Class = "UINavigationItem"; title = "Users"; ObjectID = "xae-c9-kdf"; */
 "xae-c9-kdf.title" = "Utilisateurs";
 
-/* Class = "UINavigationItem"; title = "Share"; ObjectID = "xY8-if-2h2"; */
+/* Class = "UINavigationItem"; title = "Sharing Settings"; ObjectID = "xY8-if-2h2"; */
 "xY8-if-2h2.title" = "Partager";
 
 /* Class = "UILabel"; text = "Label"; ObjectID = "ZE7-40-yeL"; Note = "Do not translate"; */

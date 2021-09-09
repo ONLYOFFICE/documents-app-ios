@@ -108,13 +108,13 @@ class ASCViewControllerManager {
 //        print("sourceApplication: \(options[UIApplicationOpenURLOptionsKey.sourceApplication] as? String ?? "")")
 //        print("annotation: \(options[UIApplicationOpenURLOptionsKey.annotation] as? String ?? "")")
         guard
-            let url = URLComponents(string: url.absoluteString)
+            let urlComponents = URLComponents(string: url.absoluteString)
         else { return false }
 
 //        let path = url.path.replacingOccurrences(of: "://", with: "")
         
-        if "openfile" == url.host {
-            if let data = url.queryItems?.first(where: { $0.name == "data" })?.value {
+        if "openfile" == urlComponents.host {
+            if let data = urlComponents.queryItems?.first(where: { $0.name == "data" })?.value {
                 // Decode data
                 if let urlDecode = Data(base64URLEncoded: data) {
                     do {
@@ -126,6 +126,22 @@ class ASCViewControllerManager {
                         log.error(error.localizedDescription)
                     }
                 }
+            }
+        } else if url.isFileURL {
+            if let sourceApplication = options[.sourceApplication] as? String, "com.apple.DocumentsApp" == sourceApplication {
+                openFileInfo = ["url": url]
+                return true
+            } else if url.absoluteString.contains(ASCFileManager.localProvider.rootFolder.id) {
+                // Local file of the application
+                openFileInfo = ["url": url]
+                return true
+            } else if FileManager.default.isUbiquitousItem(at: url) {
+                // iCloud file
+                openFileInfo = ["url": url]
+            } else {
+                // Local file of external application
+                UserDefaults.standard.set(url, forKey: ASCConstants.SettingsKeys.importFile)
+                NotificationCenter.default.post(name: ASCConstants.Notifications.importFileLaunch, object: nil)
             }
         }
 
@@ -191,6 +207,184 @@ class ASCViewControllerManager {
     }
 
     private func routeOpenFile(info: [String : Any]) {
+        if let url = info["url"] as? URL {
+            if FileManager.default.isUbiquitousItem(at: url) {
+                // iCloud file
+                routeOpeniCloudFile(info: info)
+            } else if url.absoluteString.contains(ASCFileManager.localProvider.rootFolder.id) {
+                if url.absoluteString.contains(ASCFileManager.localProvider.rootFolder.id.appendingPathComponent("Inbox")) {
+                    // Import file
+                    routeOpenLocalFile(info: info)
+                } else {
+                    // Local file
+                    routeOpenLocalFile(info: info, needImport: false)
+                }
+            }
+        } else {
+            // Portal
+            routeOpenPortalFile(info: info)
+        }
+    }
+    
+    private func routeOpenLocalFile(info: [String : Any], needImport: Bool = true) {
+        guard
+            let url = info["url"] as? URL,
+            url.isFileURL,
+            !FileManager.default.isUbiquitousItem(at: url)
+        else { return }
+        
+        /// Reset open info
+        openFileInfo = nil
+        
+        /// Hide introdaction screen
+        if let introViewController = ASCViewControllerManager.shared.rootController?.topMostViewController() as? ASCIntroViewController {
+            introViewController.dismiss(animated: true, completion: nil)
+        }
+        
+        /// Prevent open if open editor
+        if ASCEditorManager.shared.isOpenedFile, let topVC = ASCViewControllerManager.shared.rootController?.topMostViewController() {
+            UIAlertController.showWarning(
+                in: topVC,
+                message: NSLocalizedString("To open a new document, you must exit the current document.", comment: "")
+            )
+            return
+        }
+        
+        if needImport {
+            /// Navigate and open
+            ASCViewControllerManager.shared.rootController?.display(provider: ASCFileManager.localProvider, folder: nil)
+
+            delay(seconds: 0.1) {
+                if let documentVC = ASCViewControllerManager.shared.rootController?.topMostViewController() as? ASCDocumentsViewController {
+                    let fileTitle = url.lastPathComponent
+                    let filePath = Path(url.path)
+
+                    if let newFilePath = ASCLocalFileHelper.shared.resolve(filePath: Path.userDocuments + fileTitle)
+                    {
+                        if let error = ASCLocalFileHelper.shared.copy(from: filePath, to: newFilePath) {
+                            log.error("Can not import the file. \(error)")
+                        } else {
+                            // Cleanup inbox
+                            ASCLocalFileHelper.shared.removeDirectory(Path.userDocuments + "Inbox")
+
+                            let owner = ASCUser()
+                            owner.displayName = UIDevice.displayName
+
+                            let file = ASCFile()
+                            file.id = newFilePath.rawValue
+                            file.rootFolderType = .deviceDocuments
+                            file.title = newFilePath.fileName
+                            file.created = newFilePath.creationDate
+                            file.updated = newFilePath.modificationDate
+                            file.createdBy = owner
+                            file.updatedBy = owner
+                            file.device = true
+                            file.parent = documentVC.folder
+                            file.displayContentLength = String.fileSizeToString(with: newFilePath.fileSize ?? 0)
+                            file.pureContentLength = Int(newFilePath.fileSize ?? 0)
+
+                            documentVC.add(entity: file, open: true)
+                        }
+                    }
+                }
+            }
+        } else {
+            guard
+                let url = URL(string: url.absoluteString.replacingOccurrences(of: "file:///private/var/", with: "file:///var/", options: .anchored)),
+                let path = Path(url: url)
+            else { return }
+            
+            let owner = ASCUser()
+            owner.displayName = UIDevice.displayName
+            
+            let folder = ASCFolder()
+            folder.id = path.parent.rawValue
+            folder.title = path.parent.fileName
+            folder.parentId = Path.userDocuments.rawValue
+            folder.device = true
+            
+            let file = ASCFile()
+            file.id = path.rawValue
+            file.rootFolderType = .deviceDocuments
+            file.title = path.fileName
+            file.created = path.creationDate
+            file.updated = path.creationDate
+            file.createdBy = owner
+            file.updatedBy = owner
+            file.parent = folder
+            file.viewUrl = path.rawValue
+            file.displayContentLength = String.fileSizeToString(with: path.fileSize ?? 0)
+            file.pureContentLength = Int(path.fileSize ?? 0)
+            file.device = true
+            
+            ASCViewControllerManager.shared.rootController?.display(provider: ASCFileManager.localProvider, folder: folder)
+            
+            delay(seconds: 0.1) {
+                if let documentVC = ASCViewControllerManager.shared.rootController?.topMostViewController() as? ASCDocumentsViewController {
+                    documentVC.open(file: file)
+                }
+            }
+            
+        }
+    }
+    
+    private func routeOpeniCloudFile(info: [String : Any]) {
+        guard
+            let url = info["url"] as? URL,
+            url.isFileURL,
+            FileManager.default.isUbiquitousItem(at: url)
+        else { return }
+        
+        guard
+            let iCloudProvider = ASCFileManager.cloudProviders.first(where:  { $0 is ASCiCloudProvider }) as? ASCiCloudProvider,
+            let relativePath = iCloudProvider.relativePathOf(url: url)
+        else { return }
+        
+        /// Reset open info
+        openFileInfo = nil
+        
+        /// Hide introdaction screen
+        if let introViewController = ASCViewControllerManager.shared.rootController?.topMostViewController() as? ASCIntroViewController {
+            introViewController.dismiss(animated: true, completion: nil)
+        }
+        
+        /// Prevent open if open editor
+        if ASCEditorManager.shared.isOpenedFile, let topVC = ASCViewControllerManager.shared.rootController?.topMostViewController() {
+            UIAlertController.showWarning(
+                in: topVC,
+                message: NSLocalizedString("To open a new document, you must exit the current document.", comment: "")
+            )
+            return
+        }
+        
+        /// Navigate and open
+        var folder = iCloudProvider.rootFolder
+        
+        if !relativePath.deletingLastPathComponent.isEmpty {
+            folder = ASCFolder()
+            folder.id = relativePath.deletingLastPathComponent
+            folder.title = folder.id.lastPathComponent
+        }
+        
+        let file = ASCFile()
+        file.id = relativePath
+        file.rootFolderType = .icloudAll
+        file.title = relativePath.lastPathComponent
+        file.createdBy = iCloudProvider.user
+        file.updatedBy = iCloudProvider.user
+        file.parent = folder
+        file.viewUrl = relativePath
+        
+        ASCViewControllerManager.shared.rootController?.display(provider: iCloudProvider, folder: folder)
+        
+        delay(seconds: 0.1) {
+            if let documentVC = ASCViewControllerManager.shared.rootController?.topMostViewController() as? ASCDocumentsViewController {
+                documentVC.open(file: file)
+            }
+        }
+    }
+    
+    private func routeOpenPortalFile(info: [String : Any]) {
         guard
             let portal = info["portal"] as? String,
             let email = info["email"] as? String,

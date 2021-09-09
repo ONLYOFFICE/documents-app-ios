@@ -429,6 +429,10 @@ class ASCiCloudProvider: ASCFileProviderProtocol & ASCSortableFileProviderProtoc
         return provider.url(of: path)
     }
     
+    func relativePathOf(url: URL) -> String? {
+        return provider?.relativePathOf(url: url)
+    }
+    
     func download(_ path: String, to destinationURL: URL, processing: @escaping ASCApiProgressHandler) {
         guard let provider = provider else {
             processing(0, nil, nil, nil)

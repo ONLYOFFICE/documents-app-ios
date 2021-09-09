@@ -127,7 +127,6 @@ class ASCConstants {
         static let networkStatusChanged         = Notification.Name("ASCEventNetworkStatusChanged")
         static let updateFileInfo               = Notification.Name("ASCEventUpdateFileInfo")
         static let updateSizeClass              = Notification.Name("ASCEventUpdateSizeClass")
-        static let openLocalFileByUrl           = Notification.Name("ASCEventOpenLocalFileByUrl")
         static let appDidBecomeActive           = Notification.Name("ASCEventAppDidBecomeActive")
         static let pushInfo                     = Notification.Name("ASCEventPushInfo")
         static let reloadData                   = Notification.Name("ASCEventReloadData")

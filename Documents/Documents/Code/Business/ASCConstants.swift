@@ -53,7 +53,6 @@ class ASCConstants {
         static let forceCreateNewPresentation   = "asc-shortcut-new-presentation"
         static let openedDocument               = "asc-opened-document"
         static let openedDocumentModifity       = "asc-opened-document-modifity"
-        static let importFile                   = "asc-import-file"
         static let pushAllow                    = "asc-push-allow"
         static let pushDeviceToken              = "asc-push-device-token"
         static let pushFCMToken                 = "asc-push-fcm-token"
@@ -123,7 +122,6 @@ class ASCConstants {
         static let logoutOnlyofficeCompleted    = Notification.Name("ASCEventOnlyofficeLogOutCompleted")
         static let userInfoOnlyofficeUpdate     = Notification.Name("ASCEventUserInfoOnlyofficeUpdate")
         static let shortcutLaunch               = Notification.Name("ASCEventShortcutLaunch")
-        static let importFileLaunch             = Notification.Name("ASCEventImportFileLaunch")
         static let networkStatusChanged         = Notification.Name("ASCEventNetworkStatusChanged")
         static let updateFileInfo               = Notification.Name("ASCEventUpdateFileInfo")
         static let updateSizeClass              = Notification.Name("ASCEventUpdateSizeClass")

@@ -336,6 +336,7 @@ und schön können Sie loslegen</target>
       </trans-unit>
       <trans-unit id="AqB-m0-2UQ.text" xml:space="preserve">
         <source>If a user with the email exists, the password change instruction has been sent to this email address.</source>
+        <target state="translated">Wenn eine solche E-Mail existiert, wurden die Anweisungen zum Ändern des Passworts daran verschickt.</target>
         <note>Class = "UILabel"; text = "If a user with the email exists, the password change instruction has been sent to this email address."; ObjectID = "AqB-m0-2UQ"; Note = "Do not translate";</note>
       </trans-unit>
       <trans-unit id="AqJ-b9-XQV.normalTitle" xml:space="preserve">
@@ -404,6 +405,7 @@ Authentication</source>
       </trans-unit>
       <trans-unit id="Mbh-dU-7po.text" xml:space="preserve">
         <source>Please enter the email you used while registering on the portal. The password recovery instructions will be send to that email address.</source>
+        <target state="translated">Bitte geben Sie die E-Mail-Adresse ein, die Sie bei der Registrierung auf dem Portal verwendet haben. Die Anweisungen zur Passwortwiederherstellung werden an diese E-Mail-Adresse gesendet.</target>
         <note>Class = "UILabel"; text = "Please enter the email you used while registering on the portal. The password recovery instructions will be send to that email address."; ObjectID = "Mbh-dU-7po";</note>
       </trans-unit>
       <trans-unit id="NBg-dA-b3o.title" xml:space="preserve">
@@ -1245,6 +1247,7 @@ Hinweis: Wenn Sie das Kennwort vergessen haben, müssen Sie die App löschen und
       </trans-unit>
       <trans-unit id="NSPhotoLibraryAddUsageDescription" xml:space="preserve">
         <source>This app requires access to the photo library, so that you can upload your photos in the app.</source>
+        <target state="translated">Diese App benötigt Zugriff auf die Fotobibliothek, damit Sie Ihre Fotos in die App hochladen können.</target>
         <note>Privacy - Photo Library Additions Usage Description</note>
       </trans-unit>
       <trans-unit id="NSPhotoLibraryUsageDescription" xml:space="preserve">
@@ -1281,10 +1284,12 @@ Hinweis: Wenn Sie das Kennwort vergessen haben, müssen Sie die App löschen und
       </trans-unit>
       <trans-unit id="NSCameraUsageDescription" xml:space="preserve">
         <source>This app requires access to the camera, so that you can take photo and upload it in the app.</source>
+        <target state="translated">Diese App benötigt Zugriff auf die Kamera, damit Sie ein Foto aufnehmen und in die App hochladen können.</target>
         <note>Privacy - Camera Usage Description</note>
       </trans-unit>
       <trans-unit id="NSFaceIDUsageDescription" xml:space="preserve">
         <source>This app requires Face ID permission to authenticate using Face recognition.</source>
+        <target state="translated">Diese App benötigt die Face ID-Berechtigung, um sich mit der Gesichtserkennung zu authentifizieren.</target>
         <note>Privacy - Face ID Usage Description</note>
       </trans-unit>
       <trans-unit id="NSLocalNetworkUsageDescription" xml:space="preserve">
@@ -1294,23 +1299,27 @@ Hinweis: Wenn Sie das Kennwort vergessen haben, müssen Sie die App löschen und
       </trans-unit>
       <trans-unit id="NSPhotoLibraryAddUsageDescription" xml:space="preserve">
         <source>This app requires access to the photo library, so that you can upload your photos in the app.</source>
+        <target state="translated">Diese App benötigt Zugriff auf die Fotobibliothek, damit Sie Ihre Fotos in die App hochladen können.</target>
         <note>Privacy - Photo Library Additions Usage Description</note>
       </trans-unit>
       <trans-unit id="NSPhotoLibraryUsageDescription" xml:space="preserve">
         <source>This app requires access to the photo library, so that you can upload your photos in the app.</source>
+        <target state="translated">Diese App benötigt Zugriff auf die Fotobibliothek, damit Sie Ihre Fotos in die App hochladen können.</target>
         <note>Privacy - Photo Library Usage Description</note>
       </trans-unit>
       <trans-unit id="New Document" xml:space="preserve">
         <source>New Document</source>
+        <target state="translated">Neues Dokument</target>
         <note/>
       </trans-unit>
       <trans-unit id="New Presentation" xml:space="preserve">
         <source>New Presentation</source>
+        <target state="translated">Neue Präsentation</target>
         <note/>
       </trans-unit>
       <trans-unit id="New Spreadsheet" xml:space="preserve">
         <source>New Spreadsheet</source>
-        <target state="needs-translation"/>
+        <target state="translated">Neue Tabellenkalkulation</target>
         <note/>
       </trans-unit>
     </body>
@@ -1571,10 +1580,12 @@ die das WebDAV-Protokoll verwenden.</target>
       </trans-unit>
       <trans-unit id="Could not change file attrubutes" xml:space="preserve">
         <source>Could not change file attrubutes</source>
+        <target state="translated">Dateiattribute können nicht geändert werden</target>
         <note>Description of file operation error</note>
       </trans-unit>
       <trans-unit id="Could not change the directory" xml:space="preserve">
         <source>Could not change the directory</source>
+        <target state="translated">Ordner kann nicht geändert werden</target>
         <note>Description of file operation error</note>
       </trans-unit>
       <trans-unit id="Could not convert file to export." xml:space="preserve">
@@ -1584,6 +1595,7 @@ die das WebDAV-Protokoll verwenden.</target>
       </trans-unit>
       <trans-unit id="Could not copy file" xml:space="preserve">
         <source>Could not copy file</source>
+        <target state="translated">Datei kann nicht kopiert werden</target>
         <note>Description of file operation error</note>
       </trans-unit>
       <trans-unit id="Could not copy." xml:space="preserve">
@@ -1593,22 +1605,27 @@ die das WebDAV-Protokoll verwenden.</target>
       </trans-unit>
       <trans-unit id="Could not create a directory" xml:space="preserve">
         <source>Could not create a directory</source>
+        <target state="translated">Ordner kann nicht erstellt werden</target>
         <note>Description of file operation error</note>
       </trans-unit>
       <trans-unit id="Could not create a hard link" xml:space="preserve">
         <source>Could not create a hard link</source>
+        <target state="translated">Harter Link kann nicht erstellt werden</target>
         <note>Description of file operation error</note>
       </trans-unit>
       <trans-unit id="Could not create file" xml:space="preserve">
         <source>Could not create file</source>
+        <target state="translated">Datei kann nicht erstellt werden</target>
         <note>Description of file operation error</note>
       </trans-unit>
       <trans-unit id="Could not create symlink from" xml:space="preserve">
         <source>Could not create symlink from</source>
+        <target state="translated">Symbolischer Link kann daraus nicht erstellt werden:</target>
         <note>Description of file operation error</note>
       </trans-unit>
       <trans-unit id="Could not delete file" xml:space="preserve">
         <source>Could not delete file</source>
+        <target state="translated">Datei kann nicht gelöscht werden</target>
         <note>Description of file operation error</note>
       </trans-unit>
       <trans-unit id="Could not delete the file." xml:space="preserve">
@@ -1653,6 +1670,7 @@ die das WebDAV-Protokoll verwenden.</target>
       </trans-unit>
       <trans-unit id="Could not move file" xml:space="preserve">
         <source>Could not move file</source>
+        <target state="translated">Datei kann nicht verschoben werden</target>
         <note>Description of file operation error</note>
       </trans-unit>
       <trans-unit id="Could not open editor." xml:space="preserve">
@@ -1677,6 +1695,7 @@ die das WebDAV-Protokoll verwenden.</target>
       </trans-unit>
       <trans-unit id="Could not read from file" xml:space="preserve">
         <source>Could not read from file</source>
+        <target state="translated">Lesen aus Datei unmöglich</target>
         <note>Description of file operation error</note>
       </trans-unit>
       <trans-unit id="Could not save the file." xml:space="preserve">
@@ -1686,6 +1705,7 @@ die das WebDAV-Protokoll verwenden.</target>
       </trans-unit>
       <trans-unit id="Could not write to file" xml:space="preserve">
         <source>Could not write to file</source>
+        <target state="translated">Schreiben an Datei unmöglich</target>
         <note>Description of file operation error</note>
       </trans-unit>
       <trans-unit id="Couldn't open file" xml:space="preserve">
@@ -1911,6 +1931,7 @@ die das WebDAV-Protokoll verwenden.</target>
       </trans-unit>
       <trans-unit id="Failed to copy: %@" xml:space="preserve">
         <source>Failed to copy: %@</source>
+        <target state="translated">Kopieren fehlgeschlagen: %@</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Failed to get file information from the server." xml:space="preserve">
@@ -1935,11 +1956,12 @@ die das WebDAV-Protokoll verwenden.</target>
       </trans-unit>
       <trans-unit id="Failed to move: %@" xml:space="preserve">
         <source>Failed to move: %@</source>
-        <target state="needs-translation"/>
+        <target state="translated">Verschieben fehlgeschlagen: %@</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Failed to send feedback by mail. Try to write your request on our forum." xml:space="preserve">
         <source>Failed to send feedback by mail. Try to write your request on our forum.</source>
+        <target state="translated">Absenden per E-Mail fehlgeschlagen. Bitte richten Sie eine Forum-Anfrage ein.</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Failed upload source file to conversion online service." xml:space="preserve">
@@ -2039,6 +2061,7 @@ die das WebDAV-Protokoll verwenden.</target>
       </trans-unit>
       <trans-unit id="If a user with the mail %@ exists, then an instruction to change the password was sent to this address." xml:space="preserve">
         <source>If a user with the mail %@ exists, then an instruction to change the password was sent to this address.</source>
+        <target state="translated">Wenn es einen Benutzer mit der E-Mail %@ gibt, wurden die Anweisungen zum Ändern des Passworts an diese E-Mail-Adresse verschickt.</target>
         <note>Email sent instructions</note>
       </trans-unit>
       <trans-unit id="Images" xml:space="preserve">

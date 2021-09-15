@@ -147,7 +147,7 @@ start using your office</source>
       </trans-unit>
       <trans-unit id="KAF-Bt-8qi.text" xml:space="preserve">
         <source>App Onboarding Design</source>
-        <target>App Onboarding Design</target>
+        <target state="translated">Дизайн за Вграждане в Приложение</target>
         <note>Class = "UILabel"; text = "App Onboarding Design"; ObjectID = "KAF-Bt-8qi"; Note = "Do not translate";</note>
       </trans-unit>
     </body>
@@ -336,6 +336,7 @@ start using your office</source>
       </trans-unit>
       <trans-unit id="AqB-m0-2UQ.text" xml:space="preserve">
         <source>If a user with the email exists, the password change instruction has been sent to this email address.</source>
+        <target state="translated">Ако съществува потребител с този имейл, инструкции за смяна на паролата ще бъдат изпратени на този имейл адрес.</target>
         <note>Class = "UILabel"; text = "If a user with the email exists, the password change instruction has been sent to this email address."; ObjectID = "AqB-m0-2UQ"; Note = "Do not translate";</note>
       </trans-unit>
       <trans-unit id="AqJ-b9-XQV.normalTitle" xml:space="preserve">
@@ -404,6 +405,7 @@ Authentication</source>
       </trans-unit>
       <trans-unit id="Mbh-dU-7po.text" xml:space="preserve">
         <source>Please enter the email you used while registering on the portal. The password recovery instructions will be send to that email address.</source>
+        <target state="translated">Молим да въведете имейла, използван при регистрацията в портала. Инструкциите за възстановяване на паролата ще бъдат изпратени на този имейл адрес.</target>
         <note>Class = "UILabel"; text = "Please enter the email you used while registering on the portal. The password recovery instructions will be send to that email address."; ObjectID = "Mbh-dU-7po";</note>
       </trans-unit>
       <trans-unit id="NBg-dA-b3o.title" xml:space="preserve">
@@ -413,6 +415,7 @@ Authentication</source>
       </trans-unit>
       <trans-unit id="OHG-hv-GGj.normalTitle" xml:space="preserve">
         <source>Back to login</source>
+        <target state="translated">Обратно към вписване</target>
         <note>Class = "UIButton"; normalTitle = "Back to login"; ObjectID = "OHG-hv-GGj";</note>
       </trans-unit>
       <trans-unit id="OnI-QD-xeI.placeholder" xml:space="preserve">
@@ -462,6 +465,7 @@ Authentication</source>
       </trans-unit>
       <trans-unit id="bLE-8U-AOX.text" xml:space="preserve">
         <source>Password recovery</source>
+        <target state="translated">Възстановяване на паролата</target>
         <note>Class = "UILabel"; text = "Password recovery"; ObjectID = "bLE-8U-AOX";</note>
       </trans-unit>
       <trans-unit id="cBn-x1-r5A.text" xml:space="preserve">
@@ -481,6 +485,7 @@ Authentication</source>
       </trans-unit>
       <trans-unit id="ePY-rM-AOE.normalTitle" xml:space="preserve">
         <source>Send</source>
+        <target state="translated">Изпрати</target>
         <note>Class = "UIButton"; normalTitle = "Send"; ObjectID = "ePY-rM-AOE";</note>
       </trans-unit>
       <trans-unit id="gzc-cW-NPT.title" xml:space="preserve">
@@ -1239,6 +1244,7 @@ Note: if you forget the passcode, you'll need to delete and reinstall the app. A
       </trans-unit>
       <trans-unit id="NSPhotoLibraryAddUsageDescription" xml:space="preserve">
         <source>This app requires access to the photo library, so that you can upload your photos in the app.</source>
+        <target state="translated">Това приложение изисква достъп до галерията със снимки, за да можете да качвате Вашите снимки в приложението.</target>
         <note>Privacy - Photo Library Additions Usage Description</note>
       </trans-unit>
       <trans-unit id="NSPhotoLibraryUsageDescription" xml:space="preserve">
@@ -1270,38 +1276,47 @@ Note: if you forget the passcode, you'll need to delete and reinstall the app. A
     <body>
       <trans-unit id="CFBundleName" xml:space="preserve">
         <source>Documents-Alpha</source>
+        <target state="translated">Alpha Документи</target>
         <note>Bundle name</note>
       </trans-unit>
       <trans-unit id="NSCameraUsageDescription" xml:space="preserve">
         <source>This app requires access to the camera, so that you can take photo and upload it in the app.</source>
+        <target state="translated">Това приложение изисква достъп до камерата, за да можете да заснемете снимка и да я качите в приложението.</target>
         <note>Privacy - Camera Usage Description</note>
       </trans-unit>
       <trans-unit id="NSFaceIDUsageDescription" xml:space="preserve">
         <source>This app requires Face ID permission to authenticate using Face recognition.</source>
+        <target state="translated">Това приложение изисква позволение за удостоверяване с Лицев Идентификатор, използващ Лицево разпознаване.</target>
         <note>Privacy - Face ID Usage Description</note>
       </trans-unit>
       <trans-unit id="NSLocalNetworkUsageDescription" xml:space="preserve">
         <source>Network access required</source>
+        <target state="translated">Изисква се достъп до мрежата</target>
         <note>Privacy - Local Network Usage Description</note>
       </trans-unit>
       <trans-unit id="NSPhotoLibraryAddUsageDescription" xml:space="preserve">
         <source>This app requires access to the photo library, so that you can upload your photos in the app.</source>
+        <target state="translated">Това приложение изисква достъп до галерията със снимки, за да можете да качвате Вашите снимки в приложението.</target>
         <note>Privacy - Photo Library Additions Usage Description</note>
       </trans-unit>
       <trans-unit id="NSPhotoLibraryUsageDescription" xml:space="preserve">
         <source>This app requires access to the photo library, so that you can upload your photos in the app.</source>
+        <target state="translated">Това приложение изисква достъп до галерията със снимки, за да можете да качвате Вашите снимки в приложението.</target>
         <note>Privacy - Photo Library Usage Description</note>
       </trans-unit>
       <trans-unit id="New Document" xml:space="preserve">
         <source>New Document</source>
+        <target state="translated">Нов Документ</target>
         <note/>
       </trans-unit>
       <trans-unit id="New Presentation" xml:space="preserve">
         <source>New Presentation</source>
+        <target state="translated">Нова Презентация</target>
         <note/>
       </trans-unit>
       <trans-unit id="New Spreadsheet" xml:space="preserve">
         <source>New Spreadsheet</source>
+        <target state="translated">Нова Таблица</target>
         <note/>
       </trans-unit>
     </body>
@@ -1363,6 +1378,7 @@ Note: if you forget the passcode, you'll need to delete and reinstall the app. A
       </trans-unit>
       <trans-unit id="Access files in Favorites and Recents on ONLYOFFICE portal from the app" xml:space="preserve">
         <source>Access files in Favorites and Recents on ONLYOFFICE portal from the app</source>
+        <target state="translated">Достъп до файловете в Любими и Скорошни в портала ONLYOFFICE от приложението</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Account name is empty" xml:space="preserve">
@@ -1392,7 +1408,7 @@ Note: if you forget the passcode, you'll need to delete and reinstall the app. A
       </trans-unit>
       <trans-unit id="An unexpected error has occurred. Please try again later. Sorry for inconvenience." xml:space="preserve">
         <source>An unexpected error has occurred. Please try again later. Sorry for inconvenience.</source>
-        <target>An unexpected error has occurred. Please try again later. Sorry for inconvenience.</target>
+        <target state="translated">Появи се неочаквана грешка. Молим да опитате отново по-късно. Извиняваме се за неудобството.</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Are you sure you want to delete the account %@ from this device?" xml:space="preserve">
@@ -1559,10 +1575,12 @@ others which use WebDAV protocol.</source>
       </trans-unit>
       <trans-unit id="Could not change file attrubutes" xml:space="preserve">
         <source>Could not change file attrubutes</source>
+        <target state="translated">Атрибутите на файла не могат да бъдат променени</target>
         <note>Description of file operation error</note>
       </trans-unit>
       <trans-unit id="Could not change the directory" xml:space="preserve">
         <source>Could not change the directory</source>
+        <target state="translated">Директорията не може да бъде сменена</target>
         <note>Description of file operation error</note>
       </trans-unit>
       <trans-unit id="Could not convert file to export." xml:space="preserve">
@@ -1572,6 +1590,7 @@ others which use WebDAV protocol.</source>
       </trans-unit>
       <trans-unit id="Could not copy file" xml:space="preserve">
         <source>Could not copy file</source>
+        <target state="translated">Файлът не може да бъде копиран</target>
         <note>Description of file operation error</note>
       </trans-unit>
       <trans-unit id="Could not copy." xml:space="preserve">
@@ -1581,22 +1600,27 @@ others which use WebDAV protocol.</source>
       </trans-unit>
       <trans-unit id="Could not create a directory" xml:space="preserve">
         <source>Could not create a directory</source>
+        <target state="translated">Не може да бъде създадена директория</target>
         <note>Description of file operation error</note>
       </trans-unit>
       <trans-unit id="Could not create a hard link" xml:space="preserve">
         <source>Could not create a hard link</source>
+        <target state="translated">Не може да сбъде създадена твърда връзка</target>
         <note>Description of file operation error</note>
       </trans-unit>
       <trans-unit id="Could not create file" xml:space="preserve">
         <source>Could not create file</source>
+        <target state="translated">Не може да бъде създаден файл</target>
         <note>Description of file operation error</note>
       </trans-unit>
       <trans-unit id="Could not create symlink from" xml:space="preserve">
         <source>Could not create symlink from</source>
+        <target state="translated">Не може да бъде създаден symlink от</target>
         <note>Description of file operation error</note>
       </trans-unit>
       <trans-unit id="Could not delete file" xml:space="preserve">
         <source>Could not delete file</source>
+        <target state="translated">Файлът не може да бъде изтрит</target>
         <note>Description of file operation error</note>
       </trans-unit>
       <trans-unit id="Could not delete the file." xml:space="preserve">
@@ -1641,6 +1665,7 @@ others which use WebDAV protocol.</source>
       </trans-unit>
       <trans-unit id="Could not move file" xml:space="preserve">
         <source>Could not move file</source>
+        <target state="translated">Файлът не може да бъде преместен</target>
         <note>Description of file operation error</note>
       </trans-unit>
       <trans-unit id="Could not open editor." xml:space="preserve">
@@ -1665,6 +1690,7 @@ others which use WebDAV protocol.</source>
       </trans-unit>
       <trans-unit id="Could not read from file" xml:space="preserve">
         <source>Could not read from file</source>
+        <target state="translated">Файлът не може да бъде прочетен</target>
         <note>Description of file operation error</note>
       </trans-unit>
       <trans-unit id="Could not save the file." xml:space="preserve">
@@ -1674,11 +1700,12 @@ others which use WebDAV protocol.</source>
       </trans-unit>
       <trans-unit id="Could not write to file" xml:space="preserve">
         <source>Could not write to file</source>
+        <target state="translated">Върху файлът не може да се пише</target>
         <note>Description of file operation error</note>
       </trans-unit>
       <trans-unit id="Couldn't open file" xml:space="preserve">
         <source>Couldn't open file</source>
-        <target>Couldn't open file</target>
+        <target state="translated">Файлът не можа да се отвори.</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Create" xml:space="preserve">
@@ -1693,7 +1720,7 @@ others which use WebDAV protocol.</source>
       </trans-unit>
       <trans-unit id="Create new documents, spreadsheets or presentations. Create new folders to organize your files." xml:space="preserve">
         <source>Create new documents, spreadsheets or presentations. Create new folders to organize your files.</source>
-        <target>Create new documents, spreadsheets or presentations. Create new folders to organize your files.</target>
+        <target state="translated">Създавайте нови документи, таблици или презентации. Създайте нови папки, за да организирате файловете си.</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Creating" xml:space="preserve">
@@ -1839,6 +1866,7 @@ others which use WebDAV protocol.</source>
       </trans-unit>
       <trans-unit id="Email is incorrect." xml:space="preserve">
         <source>Email is incorrect.</source>
+        <target state="translated">Имейлът е неправилен.</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Email is not valid" xml:space="preserve">
@@ -1878,6 +1906,7 @@ others which use WebDAV protocol.</source>
       </trans-unit>
       <trans-unit id="Export" xml:space="preserve">
         <source>Export</source>
+        <target state="translated">Изнеси</target>
         <note>Button title</note>
       </trans-unit>
       <trans-unit id="Failed online conversion service." xml:space="preserve">
@@ -1897,6 +1926,7 @@ others which use WebDAV protocol.</source>
       </trans-unit>
       <trans-unit id="Failed to copy: %@" xml:space="preserve">
         <source>Failed to copy: %@</source>
+        <target state="translated">Неуспешно копиране: %@</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Failed to get file information from the server." xml:space="preserve">
@@ -1921,10 +1951,12 @@ others which use WebDAV protocol.</source>
       </trans-unit>
       <trans-unit id="Failed to move: %@" xml:space="preserve">
         <source>Failed to move: %@</source>
+        <target state="translated">Неуспешно преместване: %@</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Failed to send feedback by mail. Try to write your request on our forum." xml:space="preserve">
         <source>Failed to send feedback by mail. Try to write your request on our forum.</source>
+        <target state="translated">Неуспешно изпращане на обратна връзка по пощата. Опитайте да напишете заявката си в нашия форум</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Failed upload source file to conversion online service." xml:space="preserve">
@@ -1944,14 +1976,17 @@ others which use WebDAV protocol.</source>
       </trans-unit>
       <trans-unit id="Favorites and Recents" xml:space="preserve">
         <source>Favorites and Recents</source>
+        <target state="translated">Любими и Скорошни</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="File already exists" xml:space="preserve">
         <source>File already exists</source>
+        <target state="translated">Файлът вече съществува</target>
         <note>Description of file operation error</note>
       </trans-unit>
       <trans-unit id="File does not exist" xml:space="preserve">
         <source>File does not exist</source>
+        <target state="translated">Файлът не съществува</target>
         <note>Description of file operation error</note>
       </trans-unit>
       <trans-unit id="Files" xml:space="preserve">
@@ -1961,6 +1996,7 @@ others which use WebDAV protocol.</source>
       </trans-unit>
       <trans-unit id="First name is incorrect" xml:space="preserve">
         <source>First name is incorrect</source>
+        <target state="translated">Първото име е неправилно</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Folder title" xml:space="preserve">
@@ -2000,6 +2036,7 @@ others which use WebDAV protocol.</source>
       </trans-unit>
       <trans-unit id="Go to forum" xml:space="preserve">
         <source>Go to forum</source>
+        <target state="translated">Отиди във форум</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Google Drive" xml:space="preserve">
@@ -2019,6 +2056,7 @@ others which use WebDAV protocol.</source>
       </trans-unit>
       <trans-unit id="If a user with the mail %@ exists, then an instruction to change the password was sent to this address." xml:space="preserve">
         <source>If a user with the mail %@ exists, then an instruction to change the password was sent to this address.</source>
+        <target state="translated">Ако потребител с имейл %@ съществува, инструкции за смяна на паролата ще бъдат изпратени на този имейл адрес.</target>
         <note>Email sent instructions</note>
       </trans-unit>
       <trans-unit id="Images" xml:space="preserve">
@@ -2043,7 +2081,7 @@ others which use WebDAV protocol.</source>
       </trans-unit>
       <trans-unit id="Invalid URL: The format ot the URL could not be determined" xml:space="preserve">
         <source>Invalid URL: The format ot the URL could not be determined</source>
-        <target>Invalid URL: The format ot the URL could not be determined</target>
+        <target state="translated">Невалиден URL: Форматът на URL не може да бъде определен</target>
         <note>Error message</note>
       </trans-unit>
       <trans-unit id="Kb" xml:space="preserve">
@@ -2053,10 +2091,12 @@ others which use WebDAV protocol.</source>
       </trans-unit>
       <trans-unit id="Last name is empty" xml:space="preserve">
         <source>Last name is empty</source>
+        <target state="translated">Фамилията е празна</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Last name is incorrect" xml:space="preserve">
         <source>Last name is incorrect</source>
+        <target state="translated">Фамилията е неправилна</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Logging in" xml:space="preserve">
@@ -2087,6 +2127,7 @@ others which use WebDAV protocol.</source>
       </trans-unit>
       <trans-unit id="Mark as favorite" xml:space="preserve">
         <source>Mark as favorite</source>
+        <target state="translated">Маркирай като любимо</target>
         <note>Button title</note>
       </trans-unit>
       <trans-unit id="Mb" xml:space="preserve">
@@ -2151,6 +2192,7 @@ others which use WebDAV protocol.</source>
       </trans-unit>
       <trans-unit id="New" xml:space="preserve">
         <source>New</source>
+        <target state="translated">Нов</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="New Document" xml:space="preserve">
@@ -2185,6 +2227,7 @@ others which use WebDAV protocol.</source>
       </trans-unit>
       <trans-unit id="Nextcloud directory" xml:space="preserve">
         <source>Nextcloud directory</source>
+        <target state="translated">Nextcloud директория</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="No connection" xml:space="preserve">
@@ -2204,12 +2247,12 @@ others which use WebDAV protocol.</source>
       </trans-unit>
       <trans-unit id="No network connection can be found. Please check the connection and reload the page." xml:space="preserve">
         <source>No network connection can be found. Please check the connection and reload the page.</source>
-        <target>No network connection can be found. Please check the connection and reload the page.</target>
+        <target state="translated">Не може да бъде открита връзка с мрежата. Молим да проверите връзката си и да презаредите страницата.</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="No results matching your search could be found. Please try another phrase." xml:space="preserve">
         <source>No results matching your search could be found. Please try another phrase.</source>
-        <target>No results matching your search could be found. Please try another phrase.</target>
+        <target state="translated">Не са открити резултати, отговарящи на търсенето Ви. Молим да опитате с друга фраза.</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="No search result" xml:space="preserve">
@@ -2260,10 +2303,12 @@ others which use WebDAV protocol.</source>
       </trans-unit>
       <trans-unit id="OneDrive" xml:space="preserve">
         <source>OneDrive</source>
+        <target state="translated">OneDrive</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="OneDrive and kDrive access" xml:space="preserve">
         <source>OneDrive and kDrive access</source>
+        <target state="translated">Достъп до OneDrive и kDrive</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="OneDrive directory" xml:space="preserve">
@@ -2398,12 +2443,12 @@ others which use WebDAV protocol.</source>
       </trans-unit>
       <trans-unit id="Portal is unavailable." xml:space="preserve">
         <source>Portal is unavailable.</source>
-        <target>Portal is unavailable.</target>
+        <target state="translated">Порталът не е наличен.</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Presentation" xml:space="preserve">
         <source>Presentation</source>
-        <target>Presentation</target>
+        <target state="translated">Презентация</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Presentation Sample" xml:space="preserve">
@@ -2463,6 +2508,7 @@ others which use WebDAV protocol.</source>
       </trans-unit>
       <trans-unit id="Remove from Favorites" xml:space="preserve">
         <source>Remove from Favorites</source>
+        <target state="translated">Премахни от Любими</target>
         <note>Button title</note>
       </trans-unit>
       <trans-unit id="Rename" xml:space="preserve">
@@ -2558,10 +2604,12 @@ others which use WebDAV protocol.</source>
       </trans-unit>
       <trans-unit id="Sending" xml:space="preserve">
         <source>Sending</source>
+        <target state="translated">Изпращане</target>
         <note>Caption of the process</note>
       </trans-unit>
       <trans-unit id="Set favorite failed." xml:space="preserve">
         <source>Set favorite failed.</source>
+        <target state="translated">Задаването на фаворит не беше успешно.</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Settings" xml:space="preserve">
@@ -2586,6 +2634,7 @@ others which use WebDAV protocol.</source>
       </trans-unit>
       <trans-unit id="Sharing Settings" xml:space="preserve">
         <source>Sharing Settings</source>
+        <target state="translated">Споделяне на Настройки</target>
         <note>Button title</note>
       </trans-unit>
       <trans-unit id="Single Sign-on" xml:space="preserve">
@@ -2650,11 +2699,12 @@ others which use WebDAV protocol.</source>
       </trans-unit>
       <trans-unit id="Text copied" xml:space="preserve">
         <source>Text copied</source>
-        <target>Text copied</target>
+        <target state="translated">Текстът е копиран</target>
         <note>Notification title</note>
       </trans-unit>
       <trans-unit id="The %@ server is not available." xml:space="preserve">
         <source>The %@ server is not available.</source>
+        <target state="translated">Сървърът %@ не е наличен.</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="The account name must be between 6 and 50 characters long" xml:space="preserve">
@@ -2664,7 +2714,7 @@ others which use WebDAV protocol.</source>
       </trans-unit>
       <trans-unit id="The deleted files go to the trash. You can either restore or delete them forever." xml:space="preserve">
         <source>The deleted files go to the trash. You can either restore or delete them forever.</source>
-        <target>The deleted files go to the trash. You can either restore or delete them forever.</target>
+        <target state="translated">Изтритите файлове отиват в кошчето. Можете или да ги възстановите, или да ги изтриете завинаги.</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="The file in the Trash can not be viewed." xml:space="preserve">
@@ -2679,6 +2729,7 @@ others which use WebDAV protocol.</source>
       </trans-unit>
       <trans-unit id="The folder in the Trash can not be opened." xml:space="preserve">
         <source>The folder in the Trash can not be opened.</source>
+        <target state="translated">Папката в КОшчето не може да бъде отворена.</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="The folder will be irretrievably deleted. This action is irreversible." xml:space="preserve">
@@ -2693,10 +2744,12 @@ others which use WebDAV protocol.</source>
       </trans-unit>
       <trans-unit id="The parameters are incorrect." xml:space="preserve">
         <source>The parameters are incorrect.</source>
+        <target state="translated">Параметрите не са правилни.</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="The password is incorrect. It must contain 8 characters" xml:space="preserve">
         <source>The password is incorrect. It must contain 8 characters</source>
+        <target state="translated">Паролата е неправилна. Трябва да съдържа 8 символа.</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="The portal address is invalid" xml:space="preserve">
@@ -2706,6 +2759,7 @@ others which use WebDAV protocol.</source>
       </trans-unit>
       <trans-unit id="The portal is not available" xml:space="preserve">
         <source>The portal is not available</source>
+        <target state="translated">Порталът не е наличен</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="The portal name must be between 6 and 50 characters long" xml:space="preserve">
@@ -2730,7 +2784,7 @@ others which use WebDAV protocol.</source>
       </trans-unit>
       <trans-unit id="This document is being edited. Do you want open %@ to view only?" xml:space="preserve">
         <source>This document is being edited. Do you want open %@ to view only?</source>
-        <target>This document is being edited. Do you want open %@ to view only?</target>
+        <target state="translated">Този документ се редактира. Искате ли да отворите %@ само за преглеждане?</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="This folder is empty" xml:space="preserve">
@@ -2740,17 +2794,17 @@ others which use WebDAV protocol.</source>
       </trans-unit>
       <trans-unit id="This operation will free up space on your device by deleting temporary files. Your offline files and personal data won't be removed." xml:space="preserve">
         <source>This operation will free up space on your device by deleting temporary files. Your offline files and personal data won't be removed.</source>
-        <target>This operation will free up space on your device by deleting temporary files. Your offline files and personal data won't be removed.</target>
+        <target state="translated">Тази операция ще освободи място в устройството Ви чрез изтриване на временни файлове. Вашите офлайн файлове и лични данни няма да бъдат премахнати.</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="This presentation is being edited. Do you want open %@ to view only?" xml:space="preserve">
         <source>This presentation is being edited. Do you want open %@ to view only?</source>
-        <target>This presentation is being edited. Do you want open %@ to view only?</target>
+        <target state="translated">Тази презентация се редактира. Искате ли да отворите %@ само за преглеждане?</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="This spreadsheet is being edited. Do you want open %@ to view only?" xml:space="preserve">
         <source>This spreadsheet is being edited. Do you want open %@ to view only?</source>
-        <target>This spreadsheet is being edited. Do you want open %@ to view only?</target>
+        <target state="translated">Тази таблица се редактира. Искате ли да отворите %@ само за преглеждане?</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Title" xml:space="preserve">
@@ -2905,6 +2959,7 @@ others which use WebDAV protocol.</source>
       </trans-unit>
       <trans-unit id="View and edit files in OneDrive and kDrive directly from the app. Access your storages from the Clouds tab." xml:space="preserve">
         <source>View and edit files in OneDrive and kDrive directly from the app. Access your storages from the Clouds tab.</source>
+        <target state="translated">Преглеждайте и редактирайте файловете в OneDrive и kDrive директно от приложението. Ще имате достъп до складовете си от лентата Clouds.</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Warning" xml:space="preserve">
@@ -2935,8 +2990,8 @@ others which use WebDAV protocol.</source>
       <trans-unit id="Welcome to %@ mobile editing suite!&#10;Swipe to learn more about the app." xml:space="preserve">
         <source>Welcome to %@ mobile editing suite!
 Swipe to learn more about the app.</source>
-        <target>Welcome to %@ mobile editing suite!
-Swipe to learn more about the app.</target>
+        <target state="translated">Добре дошли в %@ мобилен пакет за редактиране!
+Плъзнете, за да научите повече за приложението.</target>
         <note>Introduction Step One - Description</note>
       </trans-unit>
       <trans-unit id="What's New" xml:space="preserve">
@@ -2989,7 +3044,7 @@ then accessed from any other device.</source>
       </trans-unit>
       <trans-unit id="You have read-only access to this folder. You cannot create files or folders here." xml:space="preserve">
         <source>You have read-only access to this folder. You cannot create files or folders here.</source>
-        <target>You have read-only access to this folder. You cannot create files or folders here.</target>
+        <target state="translated">Имате достъп само за четене до тази папка. Не можете да създавате файлове или папки тук.</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Your session has expired" xml:space="preserve">
@@ -3069,18 +3124,22 @@ then accessed from any other device.</source>
       </trans-unit>
       <trans-unit id="iCloud" xml:space="preserve">
         <source>iCloud</source>
+        <target state="translated">iCloud</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="iCloud Drive" xml:space="preserve">
         <source>iCloud Drive</source>
+        <target state="translated">iCloud Drive</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="kDrive" xml:space="preserve">
         <source>kDrive</source>
+        <target state="translated">kDrive</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="kDrive directory" xml:space="preserve">
         <source>kDrive directory</source>
+        <target state="translated">kDrive директория</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="none" xml:space="preserve">
@@ -3102,6 +3161,7 @@ then accessed from any other device.</source>
       </trans-unit>
       <trans-unit id="ownCloud directory" xml:space="preserve">
         <source>ownCloud directory</source>
+        <target state="translated">ownCloud директория</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="photo" xml:space="preserve">

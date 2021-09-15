@@ -172,11 +172,35 @@
 /* Caption of the processing */
 "Copying" = "Es wird kopiert";
 
+/* Description of file operation error */
+"Could not change file attrubutes" = "Dateiattribute können nicht geändert werden";
+
+/* Description of file operation error */
+"Could not change the directory" = "Ordner kann nicht geändert werden";
+
 /* No comment provided by engineer. */
 "Could not convert file to export." = "Konvertierung der Datei zum Exportieren ist fehlgeschlagen.";
 
+/* Description of file operation error */
+"Could not copy file" = "Datei kann nicht kopiert werden";
+
 /* No comment provided by engineer. */
 "Could not copy." = "Kopieren fehlgeschlagen.";
+
+/* Description of file operation error */
+"Could not create a directory" = "Ordner kann nicht erstellt werden";
+
+/* Description of file operation error */
+"Could not create a hard link" = "Harter Link kann nicht erstellt werden";
+
+/* Description of file operation error */
+"Could not create file" = "Datei kann nicht erstellt werden";
+
+/* Description of file operation error */
+"Could not create symlink from" = "Symbolischer Link kann daraus nicht erstellt werden:";
+
+/* Description of file operation error */
+"Could not delete file" = "Datei kann nicht gelöscht werden";
 
 /* No comment provided by engineer. */
 "Could not delete the file." = "Die Datei konnte nicht gelöscht werden.";
@@ -202,6 +226,9 @@
 /* No comment provided by engineer. */
 "Could not export the file." = "Die Datei konnte nicht exportiert werden.";
 
+/* Description of file operation error */
+"Could not move file" = "Datei kann nicht verschoben werden";
+
 /* No comment provided by engineer. */
 "Could not open editor." = "Der Editor konnte nicht geöffnet werden.";
 
@@ -214,8 +241,14 @@
 /* No comment provided by engineer. */
 "Could not read data from the file." = "Die Daten aus der Datei konnten nicht gelesen werden.";
 
+/* Description of file operation error */
+"Could not read from file" = "Lesen aus Datei unmöglich";
+
 /* No comment provided by engineer. */
 "Could not save the file." = "Die Datei konnte nicht gespeichert werden.";
+
+/* Description of file operation error */
+"Could not write to file" = "Schreiben an Datei unmöglich";
 
 /* No comment provided by engineer. */
 "Couldn't open file" = "Die Datei konnte nicht geöffnet werden";
@@ -363,6 +396,9 @@
 "Failed to check the name of the portal" = "Der Name des Portals konnte nicht überprüft werden";
 
 /* No comment provided by engineer. */
+"Failed to copy: %@" = "Kopieren fehlgeschlagen: %@";
+
+/* No comment provided by engineer. */
 "Failed to get file information from the server." = "Fehler beim Abrufen von Dateiinformationen vom Server:";
 
 /* No comment provided by engineer. */
@@ -375,7 +411,10 @@
 "Failed to get the address of the document server." = "Fehler beim Abrufen der Adresse des Dokumentenservers.";
 
 /* No comment provided by engineer. */
-"Failed to move: %@" = "";
+"Failed to move: %@" = "Verschieben fehlgeschlagen: %@";
+
+/* No comment provided by engineer. */
+"Failed to send feedback by mail. Try to write your request on our forum." = "Absenden per E-Mail fehlgeschlagen. Bitte richten Sie eine Forum-Anfrage ein.";
 
 /* No comment provided by engineer. */
 "Failed upload source file to conversion online service." = "Fehler beim Hochladen der Quelldatei zum Konvertierungs-Onlinedienst.";
@@ -439,6 +478,9 @@
 
 /* No comment provided by engineer. */
 "iCloud Drive" = "iCloud Drive";
+
+/* Email sent instructions */
+"If a user with the mail %@ exists, then an instruction to change the password was sent to this address." = "Wenn es einen Benutzer mit der E-Mail %@ gibt, wurden die Anweisungen zum Ändern des Passworts an diese E-Mail-Adresse verschickt.";
 
 /* No comment provided by engineer. */
 "Images" = "Bilder";

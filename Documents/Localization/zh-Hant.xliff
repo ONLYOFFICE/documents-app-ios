@@ -1,53 +1,53 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="1.2" xsi:schemaLocation="urn:oasis:names:tc:xliff:document:1.2 http://docs.oasis-open.org/xliff/v1.2/os/xliff-core-1.2-strict.xsd">
-  <file original="Documents/Base.lproj/ConnectStorage.storyboard" source-language="en" target-language="cs" datatype="plaintext">
+  <file original="Documents/Base.lproj/ConnectStorage.storyboard" source-language="en" target-language="zh-Hant" datatype="plaintext">
     <header>
-      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="12.5.1" build-num="12E507"/>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="12.0.1" build-num="12A7300"/>
     </header>
     <body>
       <trans-unit id="1hg-GO-WNq.text" xml:space="preserve">
         <source>Next</source>
-        <target>Další</target>
+        <target>Next</target>
         <note>Class = "UILabel"; text = "Next"; ObjectID = "1hg-GO-WNq";</note>
       </trans-unit>
       <trans-unit id="2MJ-bj-ZpN.placeholder" xml:space="preserve">
         <source>Required</source>
-        <target>Požadováno</target>
+        <target>Required</target>
         <note>Class = "UITextField"; placeholder = "Required"; ObjectID = "2MJ-bj-ZpN";</note>
       </trans-unit>
       <trans-unit id="7Kx-Sr-sD2.title" xml:space="preserve">
         <source>Connect Cloud</source>
-        <target>Připojit cloud</target>
+        <target>Connect Cloud</target>
         <note>Class = "UINavigationItem"; title = "Connect Cloud"; ObjectID = "7Kx-Sr-sD2";</note>
       </trans-unit>
       <trans-unit id="8QU-S0-L4O.text" xml:space="preserve">
         <source>Login</source>
-        <target>Přihlásit se</target>
+        <target>Login</target>
         <note>Class = "UILabel"; text = "Login"; ObjectID = "8QU-S0-L4O";</note>
       </trans-unit>
       <trans-unit id="KNc-kE-PIF.title" xml:space="preserve">
         <source>Connect Storage</source>
-        <target>Připojit úložiště</target>
+        <target>Connect Storage</target>
         <note>Class = "UINavigationItem"; title = "Connect Storage"; ObjectID = "KNc-kE-PIF";</note>
       </trans-unit>
       <trans-unit id="fGf-yk-zsE.text" xml:space="preserve">
         <source>Password</source>
-        <target>Heslo</target>
+        <target>Password</target>
         <note>Class = "UILabel"; text = "Password"; ObjectID = "fGf-yk-zsE";</note>
       </trans-unit>
       <trans-unit id="gp7-l6-arn.placeholder" xml:space="preserve">
         <source>Required</source>
-        <target>Požadováno</target>
+        <target>Required</target>
         <note>Class = "UITextField"; placeholder = "Required"; ObjectID = "gp7-l6-arn";</note>
       </trans-unit>
       <trans-unit id="muA-mV-bS6.footerTitle" xml:space="preserve">
         <source>You can connect the following accounts to the ONLYOFFICE™ Documents.</source>
-        <target>Do ONLYOFFICE™ Documents můžete připojit následující účty.</target>
+        <target>You can connect the following accounts to the ONLYOFFICE™ Documents.</target>
         <note>Class = "UITableViewSection"; footerTitle = "You can connect the following accounts to the ONLYOFFICE™ Documents."; ObjectID = "muA-mV-bS6";</note>
       </trans-unit>
       <trans-unit id="njA-lI-fvY.placeholder" xml:space="preserve">
         <source>example.com</source>
-        <target>priklad.com</target>
+        <target>example.com</target>
         <note>Class = "UITextField"; placeholder = "example.com"; ObjectID = "njA-lI-fvY";</note>
       </trans-unit>
       <trans-unit id="q9H-LF-Uc2.text" xml:space="preserve">
@@ -57,104 +57,126 @@
       </trans-unit>
     </body>
   </file>
-  <file original="Documents/Base.lproj/CreatePortal.storyboard" source-language="en" target-language="cs" datatype="plaintext">
+  <file original="Documents/Base.lproj/CreatePortal.storyboard" source-language="en" target-language="zh-Hant" datatype="plaintext">
     <header>
-      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="12.5.1" build-num="12E507"/>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="12.0.1" build-num="12A7300"/>
     </header>
     <body>
       <trans-unit id="BMv-HP-hD2.normalTitle" xml:space="preserve">
         <source>Continue</source>
-        <target>Pokračovat</target>
+        <target>Continue</target>
         <note>Class = "UIButton"; normalTitle = "Continue"; ObjectID = "BMv-HP-hD2";</note>
       </trans-unit>
       <trans-unit id="FZg-vj-AVJ.text" xml:space="preserve">
         <source>Make use of 30 days trial for free</source>
-        <target>Využijte 30 denní trial verze zdarma</target>
+        <target>Make use of 30 days trial for free</target>
         <note>Class = "UILabel"; text = "Make use of 30 days trial for free"; ObjectID = "FZg-vj-AVJ";</note>
       </trans-unit>
       <trans-unit id="TP3-h7-Hq1.placeholder" xml:space="preserve">
         <source>First Name</source>
-        <target>Jméno</target>
+        <target>First Name</target>
         <note>Class = "UITextField"; placeholder = "First Name"; ObjectID = "TP3-h7-Hq1";</note>
       </trans-unit>
       <trans-unit id="WWd-Za-CPd.placeholder" xml:space="preserve">
         <source>Email Address</source>
-        <target>E-mailová adresa</target>
+        <target>Email Address</target>
         <note>Class = "UITextField"; placeholder = "Email Address"; ObjectID = "WWd-Za-CPd";</note>
       </trans-unit>
       <trans-unit id="Zgx-q8-jRP.placeholder" xml:space="preserve">
         <source>Repeat Password</source>
-        <target>Zopakovat heslo</target>
+        <target>Repeat Password</target>
         <note>Class = "UITextField"; placeholder = "Repeat Password"; ObjectID = "Zgx-q8-jRP";</note>
       </trans-unit>
       <trans-unit id="cHX-qo-kcu.text" xml:space="preserve">
         <source>By creating the portal you agree with our
 Terms of service</source>
-        <target>Vytvořením portálu souhlasíte s našimi
-Podmínkami služby</target>
+        <target>By creating the portal you agree with our
+Terms of service</target>
         <note>Class = "UILabel"; text = "By creating the portal you agree with our\nTerms of service"; ObjectID = "cHX-qo-kcu";</note>
       </trans-unit>
       <trans-unit id="d4S-7C-Csx.normalTitle" xml:space="preserve">
         <source>Create portal</source>
-        <target>Vytvořit portál</target>
+        <target>Create portal</target>
         <note>Class = "UIButton"; normalTitle = "Create portal"; ObjectID = "d4S-7C-Csx";</note>
       </trans-unit>
       <trans-unit id="huj-vr-CgZ.text" xml:space="preserve">
         <source>Create your own
 web office</source>
-        <target>Vytvořte si vlastní
-webovou kancelář</target>
+        <target>Create your own
+web office</target>
         <note>Class = "UILabel"; text = "Create your own\nweb office"; ObjectID = "huj-vr-CgZ";</note>
       </trans-unit>
       <trans-unit id="iLP-xJ-pU3.placeholder" xml:space="preserve">
         <source>Last Name</source>
-        <target>Příjmení</target>
+        <target>Last Name</target>
         <note>Class = "UITextField"; placeholder = "Last Name"; ObjectID = "iLP-xJ-pU3";</note>
       </trans-unit>
       <trans-unit id="qKc-e7-uTl.text" xml:space="preserve">
         <source>Choose a password and
 start using your office</source>
-        <target>Zvolte si heslo a
-začněte používat vaší kancelář</target>
+        <target>Choose a password and
+start using your office</target>
         <note>Class = "UILabel"; text = "Choose a password and\nstart using your office"; ObjectID = "qKc-e7-uTl";</note>
       </trans-unit>
       <trans-unit id="qwT-Pr-auo.text" xml:space="preserve">
         <source>After the registration a mail with your portal registration details will be sent to your email address.</source>
-        <target>Po registraci obdržíte na vaší e-mailovou adresu mail s registračními detaily.</target>
+        <target>After the registration a mail with your portal registration details will be sent to your email address.</target>
         <note>Class = "UILabel"; text = "After the registration a mail with your portal registration details will be sent to your email address."; ObjectID = "qwT-Pr-auo";</note>
       </trans-unit>
       <trans-unit id="to9-RR-YBV.placeholder" xml:space="preserve">
         <source>Password</source>
-        <target>Heslo</target>
+        <target>Password</target>
         <note>Class = "UITextField"; placeholder = "Password"; ObjectID = "to9-RR-YBV";</note>
       </trans-unit>
     </body>
   </file>
-  <file original="Documents/Base.lproj/Intro.storyboard" source-language="en" target-language="cs" datatype="plaintext">
+  <file original="Documents/Base.lproj/DocumentsEmptyView.xib" source-language="en" target-language="zh-Hant" datatype="plaintext">
     <header>
-      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="12.5.1" build-num="12E507"/>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="12.0.1" build-num="12A7300"/>
+    </header>
+    <body>
+      <trans-unit id="1kl-l7-AtV.text" xml:space="preserve">
+        <source>Subtitle</source>
+        <target>Subtitle</target>
+        <note>Class = "UILabel"; text = "Subtitle"; ObjectID = "1kl-l7-AtV"; Note = "Do not translate";</note>
+      </trans-unit>
+      <trans-unit id="BKA-Ab-Xnn.text" xml:space="preserve">
+        <source>Title</source>
+        <target>Title</target>
+        <note>Class = "UILabel"; text = "Title"; ObjectID = "BKA-Ab-Xnn"; Note = "Do not translate";</note>
+      </trans-unit>
+      <trans-unit id="peL-fi-QtV.normalTitle" xml:space="preserve">
+        <source>Button</source>
+        <target>Button</target>
+        <note>Class = "UIButton"; normalTitle = "Button"; ObjectID = "peL-fi-QtV"; Note = "Do not translate";</note>
+      </trans-unit>
+    </body>
+  </file>
+  <file original="Documents/Base.lproj/Intro.storyboard" source-language="en" target-language="zh-Hant" datatype="plaintext">
+    <header>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="12.0.1" build-num="12A7300"/>
     </header>
     <body>
       <trans-unit id="De8-tD-APT.text" xml:space="preserve">
         <source>Here at DESIGN, we sometimes talk about web design, and we’re always talking about print design, but one thing we don’t often write about are mobile design interfaces. </source>
-        <target>Tady v DESIGNu někdy mluvíme o web designu. Skoro vždy mluvíme o print (tisk) designu, ale jedna věc, o které často nemluvíme, je design mobilních rozhraní.</target>
+        <target>Here at DESIGN, we sometimes talk about web design, and we’re always talking about print design, but one thing we don’t often write about are mobile design interfaces. </target>
         <note>Class = "UILabel"; text = "Here at DESIGN, we sometimes talk about web design, and we’re always talking about print design, but one thing we don’t often write about are mobile design interfaces. "; ObjectID = "De8-tD-APT"; Note = "Do not translate";</note>
       </trans-unit>
       <trans-unit id="JV9-d9-sJs.normalTitle" xml:space="preserve">
         <source>SKIP</source>
-        <target>PŘESKOČIT</target>
+        <target>SKIP</target>
         <note>Class = "UIButton"; normalTitle = "SKIP"; ObjectID = "JV9-d9-sJs";</note>
       </trans-unit>
       <trans-unit id="KAF-Bt-8qi.text" xml:space="preserve">
         <source>App Onboarding Design</source>
-        <target state="translated">Návrh začlenění aplikace</target>
+        <target>App Onboarding Design</target>
         <note>Class = "UILabel"; text = "App Onboarding Design"; ObjectID = "KAF-Bt-8qi"; Note = "Do not translate";</note>
       </trans-unit>
     </body>
   </file>
-  <file original="Documents/Base.lproj/Localizable.stringsdict" source-language="en" target-language="cs" datatype="plaintext">
+  <file original="Documents/Base.lproj/Localizable.stringsdict" source-language="en" target-language="zh-Hant" datatype="plaintext">
     <header>
-      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="12.5.1" build-num="12E507"/>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="12.0.1" build-num="12A7300"/>
     </header>
     <body>
       <trans-unit id="/%lu File selected:dict/NSStringLocalizedFormatKey:dict/:string" xml:space="preserve">
@@ -162,24 +184,9 @@ začněte používat vaší kancelář</target>
         <target>%#@files@</target>
         <note/>
       </trans-unit>
-      <trans-unit id="/%lu File selected:dict/files:dict/few:dict/:string" xml:space="preserve">
-        <source>%lu Files selected</source>
-        <target>%lu vybraných souborů</target>
-        <note/>
-      </trans-unit>
-      <trans-unit id="/%lu File selected:dict/files:dict/many:dict/:string" xml:space="preserve">
-        <source>%lu Files selected</source>
-        <target>%lu vybraných souborů</target>
-        <note/>
-      </trans-unit>
-      <trans-unit id="/%lu File selected:dict/files:dict/one:dict/:string" xml:space="preserve">
-        <source>%lu File selected</source>
-        <target>%lu vybraných souborů</target>
-        <note/>
-      </trans-unit>
       <trans-unit id="/%lu File selected:dict/files:dict/other:dict/:string" xml:space="preserve">
         <source>%lu Files selected</source>
-        <target>%lu vybraných souborů</target>
+        <target>%lu Files selected</target>
         <note/>
       </trans-unit>
       <trans-unit id="/%lu Folder and %lu File selected:dict/NSStringLocalizedFormatKey:dict/:string" xml:space="preserve">
@@ -187,44 +194,14 @@ začněte používat vaší kancelář</target>
         <target>%1$#@lu_folders@</target>
         <note/>
       </trans-unit>
-      <trans-unit id="/%lu Folder and %lu File selected:dict/lu_files:dict/few:dict/:string" xml:space="preserve">
-        <source>and %lu Files selected</source>
-        <target>a %lu vybraných souborů</target>
-        <note/>
-      </trans-unit>
-      <trans-unit id="/%lu Folder and %lu File selected:dict/lu_files:dict/many:dict/:string" xml:space="preserve">
-        <source>and %lu Files selected</source>
-        <target>a %lu vybraných souborů</target>
-        <note/>
-      </trans-unit>
-      <trans-unit id="/%lu Folder and %lu File selected:dict/lu_files:dict/one:dict/:string" xml:space="preserve">
-        <source>and %lu File selected</source>
-        <target>a %lu vybraných souborů</target>
-        <note/>
-      </trans-unit>
       <trans-unit id="/%lu Folder and %lu File selected:dict/lu_files:dict/other:dict/:string" xml:space="preserve">
         <source>and %lu Files selected</source>
-        <target>a %lu vybraných souborů</target>
-        <note/>
-      </trans-unit>
-      <trans-unit id="/%lu Folder and %lu File selected:dict/lu_folders:dict/few:dict/:string" xml:space="preserve">
-        <source>%lu Folders %2$#@lu_files@</source>
-        <target>%lu složek %2$#@lu_files@</target>
-        <note/>
-      </trans-unit>
-      <trans-unit id="/%lu Folder and %lu File selected:dict/lu_folders:dict/many:dict/:string" xml:space="preserve">
-        <source>%lu Folders %2$#@lu_files@</source>
-        <target>%lu složek %2$#@lu_files@</target>
-        <note/>
-      </trans-unit>
-      <trans-unit id="/%lu Folder and %lu File selected:dict/lu_folders:dict/one:dict/:string" xml:space="preserve">
-        <source>%lu Folder %2$#@lu_files@</source>
-        <target>%lu složek %2$#@lu_files@</target>
+        <target>and %lu Files selected</target>
         <note/>
       </trans-unit>
       <trans-unit id="/%lu Folder and %lu File selected:dict/lu_folders:dict/other:dict/:string" xml:space="preserve">
         <source>%lu Folders %2$#@lu_files@</source>
-        <target>%lu složek %2$#@lu_files@</target>
+        <target>%lu Folders %2$#@lu_files@</target>
         <note/>
       </trans-unit>
       <trans-unit id="/%lu Folder and %lu File selected:dict/lu_folders:dict/zero:dict/:string" xml:space="preserve">
@@ -237,24 +214,9 @@ začněte používat vaší kancelář</target>
         <target>%#@folders@</target>
         <note/>
       </trans-unit>
-      <trans-unit id="/%lu Folder selected:dict/folders:dict/few:dict/:string" xml:space="preserve">
-        <source>%lu Folders selected</source>
-        <target>%lu složek vybráno</target>
-        <note/>
-      </trans-unit>
-      <trans-unit id="/%lu Folder selected:dict/folders:dict/many:dict/:string" xml:space="preserve">
-        <source>%lu Folders selected</source>
-        <target>%lu složek vybráno</target>
-        <note/>
-      </trans-unit>
-      <trans-unit id="/%lu Folder selected:dict/folders:dict/one:dict/:string" xml:space="preserve">
-        <source>%lu Folder selected</source>
-        <target>%lu složek vybráno</target>
-        <note/>
-      </trans-unit>
       <trans-unit id="/%lu Folder selected:dict/folders:dict/other:dict/:string" xml:space="preserve">
         <source>%lu Folders selected</source>
-        <target>%lu složek vybráno</target>
+        <target>%lu Folders selected</target>
         <note/>
       </trans-unit>
       <trans-unit id="/Delete %lu File:dict/NSStringLocalizedFormatKey:dict/:string" xml:space="preserve">
@@ -262,24 +224,9 @@ začněte používat vaší kancelář</target>
         <target>%#@files@</target>
         <note/>
       </trans-unit>
-      <trans-unit id="/Delete %lu File:dict/files:dict/few:dict/:string" xml:space="preserve">
-        <source>Delete %lu Files</source>
-        <target>Vymazat %lu soubor</target>
-        <note/>
-      </trans-unit>
-      <trans-unit id="/Delete %lu File:dict/files:dict/many:dict/:string" xml:space="preserve">
-        <source>Delete %lu Files</source>
-        <target>Vymazat %lu soubor</target>
-        <note/>
-      </trans-unit>
-      <trans-unit id="/Delete %lu File:dict/files:dict/one:dict/:string" xml:space="preserve">
-        <source>Delete %lu File</source>
-        <target>Vymazat %lu soubor</target>
-        <note/>
-      </trans-unit>
       <trans-unit id="/Delete %lu File:dict/files:dict/other:dict/:string" xml:space="preserve">
         <source>Delete %lu Files</source>
-        <target>Vymazat %lu soubor</target>
+        <target>Delete %lu Files</target>
         <note/>
       </trans-unit>
       <trans-unit id="/Delete %lu Folder and %lu File:dict/NSStringLocalizedFormatKey:dict/:string" xml:space="preserve">
@@ -287,24 +234,9 @@ začněte používat vaší kancelář</target>
         <target>%1$#@lu_folders@</target>
         <note/>
       </trans-unit>
-      <trans-unit id="/Delete %lu Folder and %lu File:dict/lu_files:dict/few:dict/:string" xml:space="preserve">
-        <source>and %lu Files</source>
-        <target>a %lu souborů</target>
-        <note/>
-      </trans-unit>
-      <trans-unit id="/Delete %lu Folder and %lu File:dict/lu_files:dict/many:dict/:string" xml:space="preserve">
-        <source>and %lu Files</source>
-        <target>a %lu souborů</target>
-        <note/>
-      </trans-unit>
-      <trans-unit id="/Delete %lu Folder and %lu File:dict/lu_files:dict/one:dict/:string" xml:space="preserve">
-        <source>and %lu File</source>
-        <target>a %lu souborů</target>
-        <note/>
-      </trans-unit>
       <trans-unit id="/Delete %lu Folder and %lu File:dict/lu_files:dict/other:dict/:string" xml:space="preserve">
         <source>and %lu Files</source>
-        <target>a %lu souborů</target>
+        <target>and %lu Files</target>
         <note/>
       </trans-unit>
       <trans-unit id="/Delete %lu Folder and %lu File:dict/lu_files:dict/zero:dict/:string" xml:space="preserve">
@@ -312,29 +244,14 @@ začněte používat vaší kancelář</target>
         <target>__Source_text_is_empty__Translate_Or_Leave_this_text_as_is_if_target_text_is_also_empty__(/Delete %lu Folder and %lu File:dict/lu_files:dict/zero:dict/:string)</target>
         <note/>
       </trans-unit>
-      <trans-unit id="/Delete %lu Folder and %lu File:dict/lu_folders:dict/few:dict/:string" xml:space="preserve">
-        <source>Delete %lu Folders %2$#@lu_files@</source>
-        <target>Vymazat %lu složek %2$#@lu_files@</target>
-        <note/>
-      </trans-unit>
-      <trans-unit id="/Delete %lu Folder and %lu File:dict/lu_folders:dict/many:dict/:string" xml:space="preserve">
-        <source>Delete %lu Folders %2$#@lu_files@</source>
-        <target>Vymazat %lu složek %2$#@lu_files@</target>
-        <note/>
-      </trans-unit>
-      <trans-unit id="/Delete %lu Folder and %lu File:dict/lu_folders:dict/one:dict/:string" xml:space="preserve">
-        <source>Delete %lu Folder %2$#@lu_files@</source>
-        <target>Vymazat %lu složku %2$#@lu_files@</target>
-        <note/>
-      </trans-unit>
       <trans-unit id="/Delete %lu Folder and %lu File:dict/lu_folders:dict/other:dict/:string" xml:space="preserve">
         <source>Delete %lu Folders %2$#@lu_files@</source>
-        <target>Vymazat %lu složek %2$#@lu_files@</target>
+        <target>Delete %lu Folders %2$#@lu_files@</target>
         <note/>
       </trans-unit>
       <trans-unit id="/Delete %lu Folder and %lu File:dict/lu_folders:dict/zero:dict/:string" xml:space="preserve">
         <source>Delete %2$#@lu_files@</source>
-        <target>Vymazat %2$#@lu_files@</target>
+        <target>Delete %2$#@lu_files@</target>
         <note/>
       </trans-unit>
       <trans-unit id="/Delete %lu Folder:dict/NSStringLocalizedFormatKey:dict/:string" xml:space="preserve">
@@ -342,46 +259,31 @@ začněte používat vaší kancelář</target>
         <target>%#@folders@</target>
         <note/>
       </trans-unit>
-      <trans-unit id="/Delete %lu Folder:dict/folders:dict/few:dict/:string" xml:space="preserve">
-        <source>Delete %lu Folders</source>
-        <target>Vymazat %lu složku</target>
-        <note/>
-      </trans-unit>
-      <trans-unit id="/Delete %lu Folder:dict/folders:dict/many:dict/:string" xml:space="preserve">
-        <source>Delete %lu Folders</source>
-        <target>Vymazat %lu složku</target>
-        <note/>
-      </trans-unit>
-      <trans-unit id="/Delete %lu Folder:dict/folders:dict/one:dict/:string" xml:space="preserve">
-        <source>Delete %lu Folder</source>
-        <target>Vymazat %lu složku</target>
-        <note/>
-      </trans-unit>
       <trans-unit id="/Delete %lu Folder:dict/folders:dict/other:dict/:string" xml:space="preserve">
         <source>Delete %lu Folders</source>
-        <target>Vymazat %lu složku</target>
+        <target>Delete %lu Folders</target>
         <note/>
       </trans-unit>
     </body>
   </file>
-  <file original="Documents/Base.lproj/Login.storyboard" source-language="en" target-language="cs" datatype="plaintext">
+  <file original="Documents/Base.lproj/Login.storyboard" source-language="en" target-language="zh-Hant" datatype="plaintext">
     <header>
-      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="12.5.1" build-num="12E507"/>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="12.0.1" build-num="12A7300"/>
     </header>
     <body>
       <trans-unit id="0X2-Xg-z5B.text" xml:space="preserve">
         <source>Title</source>
-        <target>Název</target>
+        <target>Title</target>
         <note>Class = "UILabel"; text = "Title"; ObjectID = "0X2-Xg-z5B";</note>
       </trans-unit>
       <trans-unit id="00r-ek-IVa.text" xml:space="preserve">
         <source>Copy the code</source>
-        <target>Zkopírovat kód</target>
+        <target>Copy the code</target>
         <note>Class = "UILabel"; text = "Copy the code"; ObjectID = "00r-ek-IVa";</note>
       </trans-unit>
       <trans-unit id="3oc-kQ-msr.text" xml:space="preserve">
         <source>Country Code</source>
-        <target>Kód země</target>
+        <target>Country Code</target>
         <note>Class = "UITextField"; text = "Country Code"; ObjectID = "3oc-kQ-msr";</note>
       </trans-unit>
       <trans-unit id="6Zd-HN-8wS.text" xml:space="preserve">
@@ -396,231 +298,206 @@ začněte používat vaší kancelář</target>
       </trans-unit>
       <trans-unit id="51s-1D-raN.normalTitle" xml:space="preserve">
         <source>Login by</source>
-        <target>Přihlášení</target>
+        <target>Login by</target>
         <note>Class = "UIButton"; normalTitle = "Login by"; ObjectID = "51s-1D-raN";</note>
       </trans-unit>
       <trans-unit id="76Y-EB-F07.text" xml:space="preserve">
         <source>Phone Number</source>
-        <target>Telefonní číslo</target>
+        <target>Phone Number</target>
         <note>Class = "UILabel"; text = "Phone Number"; ObjectID = "76Y-EB-F07";</note>
       </trans-unit>
       <trans-unit id="78r-Ca-NKv.normalTitle" xml:space="preserve">
         <source>Forgot?</source>
-        <target>Zapomněli?</target>
+        <target>Forgot?</target>
         <note>Class = "UIButton"; normalTitle = "Forgot?"; ObjectID = "78r-Ca-NKv";</note>
       </trans-unit>
       <trans-unit id="AkN-p0-Mzy.text" xml:space="preserve">
         <source>Account</source>
-        <target>Účet</target>
+        <target>Account</target>
         <note>Class = "UILabel"; text = "Account"; ObjectID = "AkN-p0-Mzy";</note>
-      </trans-unit>
-      <trans-unit id="AqB-m0-2UQ.text" xml:space="preserve">
-        <source>If a user with the email exists, the password change instruction has been sent to this email address.</source>
-        <target state="translated">Pokud existuje uživatel s tímto e-mailem, byl na tuto e-mailovou adresu odeslán pokyn ke změně hesla.</target>
-        <note>Class = "UILabel"; text = "If a user with the email exists, the password change instruction has been sent to this email address."; ObjectID = "AqB-m0-2UQ"; Note = "Do not translate";</note>
       </trans-unit>
       <trans-unit id="AqJ-b9-XQV.normalTitle" xml:space="preserve">
         <source>Continue</source>
-        <target>Pokračovat</target>
+        <target>Continue</target>
         <note>Class = "UIButton"; normalTitle = "Continue"; ObjectID = "AqJ-b9-XQV";</note>
       </trans-unit>
       <trans-unit id="B8R-KD-Lml.text" xml:space="preserve">
-        <source>Set up an application to generate the authentication codes</source>
-        <target>Nastavit aplikaci pro vytváření kódů pro ověřování se</target>
-        <note>Class = "UILabel"; text = "Set up an application to generate the authentication codes"; ObjectID = "B8R-KD-Lml";</note>
+        <source>Set up an application to generate the authentication codes</source>
+        <target>Set up an application to generate the authentication codes</target>
+        <note>Class = "UILabel"; text = "Set up an application to generate the authentication codes"; ObjectID = "B8R-KD-Lml";</note>
       </trans-unit>
       <trans-unit id="DK4-QO-Jde.text" xml:space="preserve">
         <source>Two-Factor
 Authentication</source>
-        <target>Dvoufázové 
-ověření</target>
+        <target>Two-Factor
+Authentication</target>
         <note>Class = "UILabel"; text = "Two-Factor\nAuthentication"; ObjectID = "DK4-QO-Jde";</note>
       </trans-unit>
       <trans-unit id="Eb4-3w-0Jf.text" xml:space="preserve">
         <source>Two-Factor
 Authentication</source>
-        <target>Dvoufázové 
-ověření</target>
+        <target>Two-Factor
+Authentication</target>
         <note>Class = "UILabel"; text = "Two-Factor\nAuthentication"; ObjectID = "Eb4-3w-0Jf";</note>
       </trans-unit>
       <trans-unit id="Fso-pj-304.text" xml:space="preserve">
         <source>Address</source>
-        <target>Adresa</target>
+        <target>Address</target>
         <note>Class = "UILabel"; text = "Address"; ObjectID = "Fso-pj-304";</note>
       </trans-unit>
       <trans-unit id="G99-FE-uk4.normalTitle" xml:space="preserve">
         <source>Create cloud</source>
-        <target>Vytvořit cloud</target>
+        <target>Create cloud</target>
         <note>Class = "UIButton"; normalTitle = "Create cloud"; ObjectID = "G99-FE-uk4";</note>
       </trans-unit>
       <trans-unit id="GFx-Ry-9GC.text" xml:space="preserve">
         <source>Connect to your ONLYOFFICE cloud to store files online and collaborate on documents in real time</source>
-        <target>Připojte se ke cloudu ONLYOFFICE, ukládejte soubory online a spolupracujte na dokumentech v reálném čase</target>
+        <target>Connect to your ONLYOFFICE cloud to store files online and collaborate on documents in real time</target>
         <note>Class = "UILabel"; text = "Connect to your ONLYOFFICE cloud to store files online and collaborate on documents in real time"; ObjectID = "GFx-Ry-9GC";</note>
       </trans-unit>
       <trans-unit id="Gkv-tP-6EM.text" xml:space="preserve">
         <source>Select an account to sign in</source>
-        <target>Vyberte účet pro přihlášení</target>
+        <target>Select an account to sign in</target>
         <note>Class = "UILabel"; text = "Select an account to sign in"; ObjectID = "Gkv-tP-6EM";</note>
       </trans-unit>
       <trans-unit id="K5M-Of-QAk.text" xml:space="preserve">
-        <source>Copy the key and paste it to the Google Authenticator application</source>
-        <target>Zkopírujte klíč a vložte ho do aplikace Google Authenticator</target>
-        <note>Class = "UILabel"; text = "Copy the key and paste it to the Google Authenticator application"; ObjectID = "K5M-Of-QAk";</note>
+        <source>Copy the key and paste it to the Google Authenticator application</source>
+        <target>Copy the key and paste it to the Google Authenticator application</target>
+        <note>Class = "UILabel"; text = "Copy the key and paste it to the Google Authenticator application"; ObjectID = "K5M-Of-QAk";</note>
       </trans-unit>
       <trans-unit id="LwV-Os-V4m.text" xml:space="preserve">
-        <source>Launch Google Authenticator application</source>
-        <target>Spustit aplikaci Google Authenticator</target>
-        <note>Class = "UILabel"; text = "Launch Google Authenticator application"; ObjectID = "LwV-Os-V4m";</note>
+        <source>Launch Google Authenticator application</source>
+        <target>Launch Google Authenticator application</target>
+        <note>Class = "UILabel"; text = "Launch Google Authenticator application"; ObjectID = "LwV-Os-V4m";</note>
       </trans-unit>
       <trans-unit id="MNA-z2-ITx.text" xml:space="preserve">
         <source>Enter a phone number that can be used to verify your identity</source>
-        <target>Zadejte telefonní číslo, které lze použít k ověření totožnosti</target>
+        <target>Enter a phone number that can be used to verify your identity</target>
         <note>Class = "UILabel"; text = "Enter a phone number that can be used to verify your identity"; ObjectID = "MNA-z2-ITx";</note>
       </trans-unit>
       <trans-unit id="MUG-TG-NlP.title" xml:space="preserve">
         <source>Back</source>
-        <target>Zpět</target>
+        <target>Back</target>
         <note>Class = "UIBarButtonItem"; title = "Back"; ObjectID = "MUG-TG-NlP";</note>
-      </trans-unit>
-      <trans-unit id="Mbh-dU-7po.text" xml:space="preserve">
-        <source>Please enter the email you used while registering on the portal. The password recovery instructions will be send to that email address.</source>
-        <target state="translated">Zadejte e-mail, který jste použili při registraci na portálu. Na tuto e-mailovou adresu budou zaslány pokyny k obnovení hesla.</target>
-        <note>Class = "UILabel"; text = "Please enter the email you used while registering on the portal. The password recovery instructions will be send to that email address."; ObjectID = "Mbh-dU-7po";</note>
       </trans-unit>
       <trans-unit id="NBg-dA-b3o.title" xml:space="preserve">
         <source>Country</source>
-        <target>Země</target>
+        <target>Country</target>
         <note>Class = "UINavigationItem"; title = "Country"; ObjectID = "NBg-dA-b3o";</note>
-      </trans-unit>
-      <trans-unit id="OHG-hv-GGj.normalTitle" xml:space="preserve">
-        <source>Back to login</source>
-        <target state="translated">Zpět na přihlášení</target>
-        <note>Class = "UIButton"; normalTitle = "Back to login"; ObjectID = "OHG-hv-GGj";</note>
       </trans-unit>
       <trans-unit id="OnI-QD-xeI.placeholder" xml:space="preserve">
         <source>Code</source>
-        <target>Kód</target>
+        <target>Code</target>
         <note>Class = "UITextField"; placeholder = "Code"; ObjectID = "OnI-QD-xeI";</note>
       </trans-unit>
       <trans-unit id="QAn-vu-xMR.normalTitle" xml:space="preserve">
         <source>Sign in</source>
-        <target>Zapsat se</target>
+        <target>Sign in</target>
         <note>Class = "UIButton"; normalTitle = "Sign in"; ObjectID = "QAn-vu-xMR";</note>
       </trans-unit>
       <trans-unit id="R2F-fc-11j.text" xml:space="preserve">
-        <source>Run the application and tap the new account icon</source>
-        <target>Spusťte aplikaci a ťukněte na ikonu pro nový účet</target>
-        <note>Class = "UILabel"; text = "Run the application and tap the new account icon"; ObjectID = "R2F-fc-11j";</note>
+        <source>Run the application and tap the new account icon</source>
+        <target>Run the application and tap the new account icon</target>
+        <note>Class = "UILabel"; text = "Run the application and tap the new account icon"; ObjectID = "R2F-fc-11j";</note>
       </trans-unit>
       <trans-unit id="RDr-pH-MKV.normalTitle" xml:space="preserve">
         <source>Open</source>
-        <target>Otevřít</target>
+        <target>Open</target>
         <note>Class = "UIButton"; normalTitle = "Open"; ObjectID = "RDr-pH-MKV";</note>
       </trans-unit>
       <trans-unit id="SH2-Fd-5Ze.text" xml:space="preserve">
-        <source>Open authentication app and copy code from there</source>
-        <target state="translated">Otevřete aplikaci pro ověření&#11;a zkopírujte z ní kód</target>
-        <note>Class = "UILabel"; text = "Open authentication app and copy code from there"; ObjectID = "SH2-Fd-5Ze";</note>
+        <source>Open authentication app and copy code from there</source>
+        <target>Open authentication app and copy code from there</target>
+        <note>Class = "UILabel"; text = "Open authentication app and copy code from there"; ObjectID = "SH2-Fd-5Ze";</note>
       </trans-unit>
       <trans-unit id="W8Q-CO-c0L.text" xml:space="preserve">
         <source>We have sent you an SMS with a code to the number %@</source>
-        <target>Poslali jsme vám na číslo SMS zprávu s kódem %@</target>
+        <target>We have sent you an SMS with a code to the number %@</target>
         <note>Class = "UILabel"; text = "We have sent you an SMS with a code to the number %@"; ObjectID = "W8Q-CO-c0L";</note>
       </trans-unit>
       <trans-unit id="WuZ-wI-3aH.text" xml:space="preserve">
         <source>Add a secret key</source>
-        <target>Zadejte tajný klíč</target>
+        <target>Add a secret key</target>
         <note>Class = "UILabel"; text = "Add a secret key"; ObjectID = "WuZ-wI-3aH";</note>
       </trans-unit>
       <trans-unit id="XsM-aD-o1I.text" xml:space="preserve">
         <source>Connection to cloud</source>
-        <target>Připojení ke cloudu</target>
+        <target>Connection to cloud</target>
         <note>Class = "UILabel"; text = "Connection to cloud"; ObjectID = "XsM-aD-o1I";</note>
       </trans-unit>
       <trans-unit id="ZWV-Q1-HY9.placeholder" xml:space="preserve">
         <source>Code</source>
-        <target>Kód</target>
+        <target>Code</target>
         <note>Class = "UITextField"; placeholder = "Code"; ObjectID = "ZWV-Q1-HY9";</note>
-      </trans-unit>
-      <trans-unit id="bLE-8U-AOX.text" xml:space="preserve">
-        <source>Password recovery</source>
-        <target state="translated">Obnovení hesla</target>
-        <note>Class = "UILabel"; text = "Password recovery"; ObjectID = "bLE-8U-AOX";</note>
       </trans-unit>
       <trans-unit id="cBn-x1-r5A.text" xml:space="preserve">
         <source>Portal</source>
-        <target>Portál</target>
+        <target>Portal</target>
         <note>Class = "UILabel"; text = "Portal"; ObjectID = "cBn-x1-r5A";</note>
       </trans-unit>
       <trans-unit id="cb0-ic-tPA.text" xml:space="preserve">
         <source>Haven't received the code?</source>
-        <target>Neobdrželi jste kód?</target>
+        <target>Haven't received the code?</target>
         <note>Class = "UILabel"; text = "Haven't received the code?"; ObjectID = "cb0-ic-tPA";</note>
       </trans-unit>
       <trans-unit id="e1X-0t-hcs.normalTitle" xml:space="preserve">
         <source>Next</source>
-        <target>Další</target>
+        <target>Next</target>
         <note>Class = "UIButton"; normalTitle = "Next"; ObjectID = "e1X-0t-hcs"; Note = "Do not translate";</note>
-      </trans-unit>
-      <trans-unit id="ePY-rM-AOE.normalTitle" xml:space="preserve">
-        <source>Send</source>
-        <target state="translated">Odeslat</target>
-        <note>Class = "UIButton"; normalTitle = "Send"; ObjectID = "ePY-rM-AOE";</note>
       </trans-unit>
       <trans-unit id="gzc-cW-NPT.title" xml:space="preserve">
         <source>Accounts</source>
-        <target>Účty</target>
+        <target>Accounts</target>
         <note>Class = "UINavigationItem"; title = "Accounts"; ObjectID = "gzc-cW-NPT";</note>
       </trans-unit>
       <trans-unit id="hRN-W6-nA0.title" xml:space="preserve">
         <source>SSO Login</source>
-        <target>SSO přihlášení</target>
+        <target>SSO Login</target>
         <note>Class = "UINavigationItem"; title = "SSO Login"; ObjectID = "hRN-W6-nA0";</note>
       </trans-unit>
       <trans-unit id="peP-Hz-Lai.normalTitle" xml:space="preserve">
         <source>Select another account</source>
-        <target>Vyberte jiný účet</target>
+        <target>Select another account</target>
         <note>Class = "UIButton"; normalTitle = "Select another account"; ObjectID = "peP-Hz-Lai";</note>
       </trans-unit>
       <trans-unit id="qEs-UQ-wWd.placeholder" xml:space="preserve">
         <source>Code</source>
-        <target>Kód</target>
+        <target>Code</target>
         <note>Class = "UITextField"; placeholder = "Code"; ObjectID = "qEs-UQ-wWd";</note>
       </trans-unit>
       <trans-unit id="szM-hs-ncG.text" xml:space="preserve">
         <source>Login via</source>
-        <target>Přihlásit přes</target>
+        <target>Login via</target>
         <note>Class = "UILabel"; text = "Login via"; ObjectID = "szM-hs-ncG";</note>
       </trans-unit>
       <trans-unit id="tnK-je-flS.placeholder" xml:space="preserve">
         <source>Secret</source>
-        <target>Tajný</target>
+        <target>Secret</target>
         <note>Class = "UITextField"; placeholder = "Secret"; ObjectID = "tnK-je-flS";</note>
       </trans-unit>
       <trans-unit id="ttx-IC-XrN.text" xml:space="preserve">
         <source>Get more information</source>
-        <target>Získejte více informací</target>
+        <target>Get more information</target>
         <note>Class = "UILabel"; text = "Get more information"; ObjectID = "ttx-IC-XrN";</note>
       </trans-unit>
       <trans-unit id="twm-cB-W69.title" xml:space="preserve">
         <source>Next</source>
-        <target>Další</target>
+        <target>Next</target>
         <note>Class = "UIBarButtonItem"; title = "Next"; ObjectID = "twm-cB-W69";</note>
       </trans-unit>
       <trans-unit id="vgV-fF-jOl.text" xml:space="preserve">
-        <source>Copy the code generated by Google Authenticator application and insert it to the input field</source>
-        <target state="translated">Zkopírujte kód vygenerovaný&#11;aplikací Google Authenticator&#11;a vložte jej do pole pro vložení</target>
-        <note>Class = "UILabel"; text = "Copy the code generated by Google Authenticator application and insert it to the input field"; ObjectID = "vgV-fF-jOl";</note>
+        <source>Copy the code generated by Google Authenticator application and insert it to the input field</source>
+        <target>Copy the code generated by Google Authenticator application and insert it to the input field</target>
+        <note>Class = "UILabel"; text = "Copy the code generated by Google Authenticator application and insert it to the input field"; ObjectID = "vgV-fF-jOl";</note>
       </trans-unit>
       <trans-unit id="vlQ-jV-iFo.text" xml:space="preserve">
         <source>Please set up an application to generate the codes for the portal access (e.g. Google Authenticator) to continue the work at the portal</source>
-        <target>Nastavte aplikaci pro generování kódů pro přístup k portálu (např. Google Authenticator), abyste mohli pokračovat v práci na portálu</target>
+        <target>Please set up an application to generate the codes for the portal access (e.g. Google Authenticator) to continue the work at the portal</target>
         <note>Class = "UILabel"; text = "Please set up an application to generate the codes for the portal access (e.g. Google Authenticator) to continue the work at the portal"; ObjectID = "vlQ-jV-iFo";</note>
       </trans-unit>
       <trans-unit id="w2U-Ci-R7v.placeholder" xml:space="preserve">
         <source>Your phone number</source>
-        <target>Vaše telefonní číslo</target>
+        <target>Your phone number</target>
         <note>Class = "UITextField"; placeholder = "Your phone number"; ObjectID = "w2U-Ci-R7v";</note>
       </trans-unit>
       <trans-unit id="x6G-qW-5Pq.text" xml:space="preserve">
@@ -630,79 +507,79 @@ ověření</target>
       </trans-unit>
       <trans-unit id="yjY-PY-41s.normalTitle" xml:space="preserve">
         <source>Continue</source>
-        <target>Pokračujte</target>
+        <target>Continue</target>
         <note>Class = "UIButton"; normalTitle = "Continue"; ObjectID = "yjY-PY-41s";</note>
       </trans-unit>
     </body>
   </file>
-  <file original="Documents/Base.lproj/Main.storyboard" source-language="en" target-language="cs" datatype="plaintext">
+  <file original="Documents/Base.lproj/Main.storyboard" source-language="en" target-language="zh-Hant" datatype="plaintext">
     <header>
-      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="12.5.1" build-num="12E507"/>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="12.0.1" build-num="12A7300"/>
     </header>
     <body>
       <trans-unit id="0Hf-aP-smp.text" xml:space="preserve">
         <source>Connect to Cloud</source>
-        <target>Připojte se k cloudu</target>
+        <target>Connect to Cloud</target>
         <note>Class = "UILabel"; text = "Connect to Cloud"; ObjectID = "0Hf-aP-smp";</note>
       </trans-unit>
       <trans-unit id="6qd-Sb-ejT.title" xml:space="preserve">
         <source>Clouds</source>
-        <target>Cloudy</target>
+        <target>Clouds</target>
         <note>Class = "UITabBarItem"; title = "Clouds"; ObjectID = "6qd-Sb-ejT";</note>
       </trans-unit>
       <trans-unit id="9bV-HI-h8F.title" xml:space="preserve">
         <source>Clouds</source>
-        <target>Cloudy</target>
+        <target>Clouds</target>
         <note>Class = "UIBarButtonItem"; title = "Clouds"; ObjectID = "9bV-HI-h8F";</note>
       </trans-unit>
       <trans-unit id="EbX-7l-0KP.text" xml:space="preserve">
         <source>Name</source>
-        <target>Název</target>
+        <target>Name</target>
         <note>Class = "UILabel"; text = "Name"; ObjectID = "EbX-7l-0KP"; Note = "Do not translate";</note>
       </trans-unit>
       <trans-unit id="FAC-qi-qFR.text" xml:space="preserve">
         <source>Category</source>
-        <target>Kategorie</target>
+        <target>Category</target>
         <note>Class = "UILabel"; text = "Category"; ObjectID = "FAC-qi-qFR"; Note = "Do not translate";</note>
       </trans-unit>
       <trans-unit id="FkK-jc-e1U.text" xml:space="preserve">
         <source>Other Cloud</source>
-        <target>Jiný cloud</target>
+        <target>Other Cloud</target>
         <note>Class = "UILabel"; text = "Other Cloud"; ObjectID = "FkK-jc-e1U";</note>
       </trans-unit>
       <trans-unit id="GcW-AI-d08.text" xml:space="preserve">
         <source>Category</source>
-        <target>Kategorie</target>
+        <target>Category</target>
         <note>Class = "UILabel"; text = "Category"; ObjectID = "GcW-AI-d08"; Note = "Do not translate";</note>
       </trans-unit>
       <trans-unit id="Jg5-fy-5tz.text" xml:space="preserve">
         <source>Address</source>
-        <target>Adresa</target>
+        <target>Address</target>
         <note>Class = "UILabel"; text = "Address"; ObjectID = "Jg5-fy-5tz"; Note = "Do not translate";</note>
       </trans-unit>
       <trans-unit id="Kfl-YE-c7u.title" xml:space="preserve">
         <source>On iPad</source>
-        <target>V iPadu</target>
+        <target>On iPad</target>
         <note>Class = "UITableViewController"; title = "On iPad"; ObjectID = "Kfl-YE-c7u";</note>
       </trans-unit>
       <trans-unit id="Ksc-pZ-Sdz.title" xml:space="preserve">
         <source>Settings</source>
-        <target>Nastavení</target>
+        <target>Settings</target>
         <note>Class = "UITabBarItem"; title = "Settings"; ObjectID = "Ksc-pZ-Sdz";</note>
       </trans-unit>
       <trans-unit id="Lg6-aq-s31.title" xml:space="preserve">
         <source>Clouds</source>
-        <target>Cloudy</target>
+        <target>Clouds</target>
         <note>Class = "UINavigationItem"; title = "Clouds"; ObjectID = "Lg6-aq-s31";</note>
       </trans-unit>
       <trans-unit id="Mcf-gv-2zL.text" xml:space="preserve">
         <source>Loading...</source>
-        <target>Načítání...</target>
+        <target>Loading...</target>
         <note>Class = "UILabel"; text = "Loading..."; ObjectID = "Mcf-gv-2zL";</note>
       </trans-unit>
       <trans-unit id="WIL-sg-dk2.title" xml:space="preserve">
         <source>Choose Cloud</source>
-        <target>Zvolte Cloud</target>
+        <target>Choose Cloud</target>
         <note>Class = "UINavigationItem"; title = "Choose Cloud"; ObjectID = "WIL-sg-dk2";</note>
       </trans-unit>
       <trans-unit id="WLM-Ff-ccz.title" xml:space="preserve">
@@ -712,12 +589,12 @@ ověření</target>
       </trans-unit>
       <trans-unit id="WM5-Ng-sRj.title" xml:space="preserve">
         <source>Clouds</source>
-        <target>Cloudy</target>
+        <target>Clouds</target>
         <note>Class = "UINavigationController"; title = "Clouds"; ObjectID = "WM5-Ng-sRj";</note>
       </trans-unit>
       <trans-unit id="WQV-WX-BW2.text" xml:space="preserve">
         <source>Select another cloud to connect to Nextcloud, ownCloud and others are supported.</source>
-        <target>Zvolte další cloud pro připojení k Nextcloud, ownCloud a další jsou podporovány.</target>
+        <target>Select another cloud to connect to Nextcloud, ownCloud and others are supported.</target>
         <note>Class = "UILabel"; text = "Select another cloud to connect to Nextcloud, ownCloud and others are supported."; ObjectID = "WQV-WX-BW2";</note>
       </trans-unit>
       <trans-unit id="cGA-Zo-QiU.title" xml:space="preserve">
@@ -727,27 +604,27 @@ ověření</target>
       </trans-unit>
       <trans-unit id="d8B-af-U9v.title" xml:space="preserve">
         <source>On iPad</source>
-        <target>V iPadu</target>
+        <target>On iPad</target>
         <note>Class = "UITabBarItem"; title = "On iPad"; ObjectID = "d8B-af-U9v";</note>
       </trans-unit>
       <trans-unit id="gTQ-Nt-RDQ.text" xml:space="preserve">
         <source>Name</source>
-        <target>Název</target>
+        <target>Name</target>
         <note>Class = "UILabel"; text = "Name"; ObjectID = "gTQ-Nt-RDQ"; Note = "Do not translate";</note>
       </trans-unit>
       <trans-unit id="gvd-UQ-EFI.title" xml:space="preserve">
         <source>On iPad</source>
-        <target>V iPadu</target>
+        <target>On iPad</target>
         <note>Class = "UINavigationController"; title = "On iPad"; ObjectID = "gvd-UQ-EFI";</note>
       </trans-unit>
       <trans-unit id="iQZ-4u-7mL.title" xml:space="preserve">
         <source>Documents</source>
-        <target>Dokumenty</target>
+        <target>Documents</target>
         <note>Class = "UINavigationItem"; title = "Documents"; ObjectID = "iQZ-4u-7mL";</note>
       </trans-unit>
       <trans-unit id="jRC-an-McY.text" xml:space="preserve">
         <source>Address</source>
-        <target>Adresa</target>
+        <target>Address</target>
         <note>Class = "UILabel"; text = "Address"; ObjectID = "jRC-an-McY"; Note = "Do not translate";</note>
       </trans-unit>
       <trans-unit id="nQn-Gz-R0Z.title" xml:space="preserve">
@@ -762,7 +639,7 @@ ověření</target>
       </trans-unit>
       <trans-unit id="pM4-zR-Xil.title" xml:space="preserve">
         <source>Choose Cloud</source>
-        <target>Zvolte Cloud</target>
+        <target>Choose Cloud</target>
         <note>Class = "UIViewController"; title = "Choose Cloud"; ObjectID = "pM4-zR-Xil";</note>
       </trans-unit>
       <trans-unit id="rZi-T5-tyI.title" xml:space="preserve">
@@ -772,128 +649,128 @@ ověření</target>
       </trans-unit>
       <trans-unit id="s1a-WZ-ro9.text" xml:space="preserve">
         <source>Name</source>
-        <target>Název</target>
+        <target>Name</target>
         <note>Class = "UILabel"; text = "Name"; ObjectID = "s1a-WZ-ro9"; Note = "Do not translate";</note>
       </trans-unit>
       <trans-unit id="w18-Ta-54p.title" xml:space="preserve">
         <source>On iPad</source>
-        <target>V iPadu</target>
+        <target>On iPad</target>
         <note>Class = "UINavigationItem"; title = "On iPad"; ObjectID = "w18-Ta-54p";</note>
       </trans-unit>
       <trans-unit id="wcS-gn-5AV.title" xml:space="preserve">
         <source>Clouds</source>
-        <target>Cloudy</target>
+        <target>Clouds</target>
         <note>Class = "UITabBarItem"; title = "Clouds"; ObjectID = "wcS-gn-5AV";</note>
       </trans-unit>
     </body>
   </file>
-  <file original="Documents/Base.lproj/Settings.storyboard" source-language="en" target-language="cs" datatype="plaintext">
+  <file original="Documents/Base.lproj/Settings.storyboard" source-language="en" target-language="zh-Hant" datatype="plaintext">
     <header>
-      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="12.5.1" build-num="12E507"/>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="12.0.1" build-num="12A7300"/>
     </header>
     <body>
       <trans-unit id="0DJ-uV-iju.title" xml:space="preserve">
         <source>About</source>
-        <target>O</target>
+        <target>About</target>
         <note>Class = "UINavigationItem"; title = "About"; ObjectID = "0DJ-uV-iju";</note>
       </trans-unit>
       <trans-unit id="1kc-cf-XDc.text" xml:space="preserve">
         <source>None</source>
-        <target>Žádný</target>
+        <target>None</target>
         <note>Class = "UILabel"; text = "None"; ObjectID = "1kc-cf-XDc";</note>
       </trans-unit>
       <trans-unit id="4oc-1P-wMA.headerTitle" xml:space="preserve">
         <source>Security</source>
-        <target>Zabezpečení</target>
+        <target>Security</target>
         <note>Class = "UITableViewSection"; headerTitle = "Security"; ObjectID = "4oc-1P-wMA";</note>
       </trans-unit>
       <trans-unit id="7gT-v5-3eH.title" xml:space="preserve">
         <source>Passcode Lock</source>
-        <target>Zámek na přístupový kód</target>
+        <target>Passcode Lock</target>
         <note>Class = "UINavigationItem"; title = "Passcode Lock"; ObjectID = "7gT-v5-3eH";</note>
       </trans-unit>
       <trans-unit id="8Qq-uc-rWT.footerTitle" xml:space="preserve">
         <source>Request a password when the application starts.
 
 Note: if you forget the passcode, you'll need to delete and reinstall the app. All local documents will be lost.</source>
-        <target>Požadovat heslo při spuštění aplikace.
+        <target>Request a password when the application starts.
 
-Poznámka: Pokud zapomenete přístupový kód, budete muset aplikaci smazat a přeinstalovat. Všechny místní dokumenty budou ztraceny.</target>
+Note: if you forget the passcode, you'll need to delete and reinstall the app. All local documents will be lost.</target>
         <note>Class = "UITableViewSection"; footerTitle = "Request a password when the application starts.\n\nNote: if you forget the passcode, you'll need to delete and reinstall the app. All local documents will be lost."; ObjectID = "8Qq-uc-rWT";</note>
       </trans-unit>
       <trans-unit id="13m-jH-9Vu.text" xml:space="preserve">
         <source>Version</source>
-        <target>Verze</target>
+        <target>Version</target>
         <note>Class = "UILabel"; text = "Version"; ObjectID = "13m-jH-9Vu";</note>
       </trans-unit>
       <trans-unit id="19F-CC-u2R.text" xml:space="preserve">
         <source>Compress Images</source>
-        <target>Komprimovat obrázky</target>
+        <target>Compress Images</target>
         <note>Class = "UILabel"; text = "Compress Images"; ObjectID = "19F-CC-u2R";</note>
       </trans-unit>
       <trans-unit id="Bmt-tc-yd7.headerTitle" xml:space="preserve">
         <source>Storage</source>
-        <target>Úložiště</target>
+        <target>Storage</target>
         <note>Class = "UITableViewSection"; headerTitle = "Storage"; ObjectID = "Bmt-tc-yd7";</note>
       </trans-unit>
       <trans-unit id="CUM-1F-5Be.text" xml:space="preserve">
         <source>Rate App</source>
-        <target>Ohodnoťte aplikaci</target>
+        <target>Rate App</target>
         <note>Class = "UILabel"; text = "Rate App"; ObjectID = "CUM-1F-5Be";</note>
       </trans-unit>
       <trans-unit id="ESd-H3-Pfh.headerTitle" xml:space="preserve">
         <source>Information</source>
-        <target>Informace</target>
+        <target>Information</target>
         <note>Class = "UITableViewSection"; headerTitle = "Information"; ObjectID = "ESd-H3-Pfh";</note>
       </trans-unit>
       <trans-unit id="GqQ-Bv-Deg.text" xml:space="preserve">
         <source>Tell a Friend</source>
-        <target>Povědět kamarádovi</target>
+        <target>Tell a Friend</target>
         <note>Class = "UILabel"; text = "Tell a Friend"; ObjectID = "GqQ-Bv-Deg";</note>
       </trans-unit>
       <trans-unit id="IS2-tT-Q4G.text" xml:space="preserve">
         <source>About</source>
-        <target>O ONLYOFFICE</target>
+        <target>About</target>
         <note>Class = "UILabel"; text = "About"; ObjectID = "IS2-tT-Q4G";</note>
       </trans-unit>
       <trans-unit id="MZJ-3d-460.title" xml:space="preserve">
         <source>Settings</source>
-        <target>Nastavení</target>
+        <target>Settings</target>
         <note>Class = "UITabBarItem"; title = "Settings"; ObjectID = "MZJ-3d-460";</note>
       </trans-unit>
       <trans-unit id="NGC-k1-Jm9.text" xml:space="preserve">
         <source>Introduction Tour</source>
-        <target>Úvodní prohlídka</target>
+        <target>Introduction Tour</target>
         <note>Class = "UILabel"; text = "Introduction Tour"; ObjectID = "NGC-k1-Jm9";</note>
       </trans-unit>
       <trans-unit id="OKJ-3w-yJd.title" xml:space="preserve">
         <source>Settings</source>
-        <target>Nastavení</target>
+        <target>Settings</target>
         <note>Class = "UINavigationItem"; title = "Settings"; ObjectID = "OKJ-3w-yJd";</note>
       </trans-unit>
       <trans-unit id="PDj-N7-sjJ.text" xml:space="preserve">
         <source>User agreement</source>
-        <target>Smlouva s uživatelem</target>
+        <target>User agreement</target>
         <note>Class = "UILabel"; text = "User agreement"; ObjectID = "PDj-N7-sjJ";</note>
       </trans-unit>
       <trans-unit id="RuR-k5-kRu.text" xml:space="preserve">
         <source>Change Passcode</source>
-        <target>Změnit přístupový kód</target>
+        <target>Change Passcode</target>
         <note>Class = "UILabel"; text = "Change Passcode"; ObjectID = "RuR-k5-kRu";</note>
       </trans-unit>
       <trans-unit id="W0F-l2-98t.text" xml:space="preserve">
         <source>Files Preview</source>
-        <target>Náhled souborů</target>
+        <target>Files Preview</target>
         <note>Class = "UILabel"; text = "Files Preview"; ObjectID = "W0F-l2-98t";</note>
       </trans-unit>
       <trans-unit id="XYC-Zw-fk6.text" xml:space="preserve">
         <source>Turn Passcode On</source>
-        <target>Zapnout přístupový kód</target>
+        <target>Turn Passcode On</target>
         <note>Class = "UILabel"; text = "Turn Passcode On"; ObjectID = "XYC-Zw-fk6";</note>
       </trans-unit>
       <trans-unit id="YfE-Pr-7QU.text" xml:space="preserve">
         <source>Unlock with Touch ID</source>
-        <target>Odemknout pomocí Touch ID</target>
+        <target>Unlock with Touch ID</target>
         <note>Class = "UILabel"; text = "Unlock with Touch ID"; ObjectID = "YfE-Pr-7QU";</note>
       </trans-unit>
       <trans-unit id="aV0-Ch-4Py.text" xml:space="preserve">
@@ -903,7 +780,7 @@ Poznámka: Pokud zapomenete přístupový kód, budete muset aplikaci smazat a p
       </trans-unit>
       <trans-unit id="i2P-F4-EhP.text" xml:space="preserve">
         <source>Passcode Lock</source>
-        <target>Zámek na přístupový kód</target>
+        <target>Passcode Lock</target>
         <note>Class = "UILabel"; text = "Passcode Lock"; ObjectID = "i2P-F4-EhP";</note>
       </trans-unit>
       <trans-unit id="lEo-YM-MnB.text" xml:space="preserve">
@@ -913,175 +790,175 @@ Poznámka: Pokud zapomenete přístupový kód, budete muset aplikaci smazat a p
       </trans-unit>
       <trans-unit id="raN-Fz-DnL.text" xml:space="preserve">
         <source>Support</source>
-        <target>Podpora</target>
+        <target>Support</target>
         <note>Class = "UILabel"; text = "Support"; ObjectID = "raN-Fz-DnL";</note>
       </trans-unit>
     </body>
   </file>
-  <file original="Documents/Base.lproj/Share.storyboard" source-language="en" target-language="cs" datatype="plaintext">
+  <file original="Documents/Base.lproj/Share.storyboard" source-language="en" target-language="zh-Hant" datatype="plaintext">
     <header>
-      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="12.5.1" build-num="12E507"/>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="12.0.1" build-num="12A7300"/>
     </header>
     <body>
       <trans-unit id="9Wg-zE-nZA.segmentTitles[0]" xml:space="preserve">
         <source>Users</source>
-        <target>Uživatelé</target>
+        <target>Users</target>
         <note>Class = "UISegmentedControl"; 9Wg-zE-nZA.segmentTitles[0] = "Users"; ObjectID = "9Wg-zE-nZA";</note>
       </trans-unit>
       <trans-unit id="9Wg-zE-nZA.segmentTitles[1]" xml:space="preserve">
         <source>Groups</source>
-        <target>Skupiny</target>
+        <target>Groups</target>
         <note>Class = "UISegmentedControl"; 9Wg-zE-nZA.segmentTitles[1] = "Groups"; ObjectID = "9Wg-zE-nZA";</note>
       </trans-unit>
       <trans-unit id="75q-CN-6uI.text" xml:space="preserve">
         <source>No available records</source>
-        <target>Žádné dostupné záznamy</target>
+        <target>No available records</target>
         <note>Class = "UILabel"; text = "No available records"; ObjectID = "75q-CN-6uI";</note>
       </trans-unit>
       <trans-unit id="HLh-xV-DgI.headerTitle" xml:space="preserve">
         <source>Access</source>
-        <target>Přístup</target>
+        <target>Access</target>
         <note>Class = "UITableViewSection"; headerTitle = "Access"; ObjectID = "HLh-xV-DgI";</note>
       </trans-unit>
       <trans-unit id="ZE7-40-yeL.text" xml:space="preserve">
         <source>Label</source>
-        <target>Štítek</target>
+        <target>Label</target>
         <note>Class = "UILabel"; text = "Label"; ObjectID = "ZE7-40-yeL"; Note = "Do not translate";</note>
       </trans-unit>
       <trans-unit id="ZW9-Zh-W3r.segmentTitles[0]" xml:space="preserve">
         <source>Full Access</source>
-        <target>Plný přístup</target>
+        <target>Full Access</target>
         <note>Class = "UISegmentedControl"; ZW9-Zh-W3r.segmentTitles[0] = "Full Access"; ObjectID = "ZW9-Zh-W3r";</note>
       </trans-unit>
       <trans-unit id="ZW9-Zh-W3r.segmentTitles[1]" xml:space="preserve">
         <source>Read Only</source>
-        <target>Pouze pro čtení</target>
+        <target>Read Only</target>
         <note>Class = "UISegmentedControl"; ZW9-Zh-W3r.segmentTitles[1] = "Read Only"; ObjectID = "ZW9-Zh-W3r";</note>
       </trans-unit>
       <trans-unit id="ZW9-Zh-W3r.segmentTitles[2]" xml:space="preserve">
         <source>Deny Access</source>
-        <target>Zamítnout přístup</target>
+        <target>Deny Access</target>
         <note>Class = "UISegmentedControl"; ZW9-Zh-W3r.segmentTitles[2] = "Deny Access"; ObjectID = "ZW9-Zh-W3r";</note>
       </trans-unit>
       <trans-unit id="bHR-n3-evx.text" xml:space="preserve">
         <source>User Name</source>
-        <target>Uživatelské jméno</target>
+        <target>User Name</target>
         <note>Class = "UILabel"; text = "User Name"; ObjectID = "bHR-n3-evx"; Note = "Do not translate";</note>
       </trans-unit>
       <trans-unit id="c9E-27-xIy.text" xml:space="preserve">
         <source>Deny Access</source>
-        <target>Zamítnout přístup</target>
+        <target>Deny Access</target>
         <note>Class = "UILabel"; text = "Deny Access"; ObjectID = "c9E-27-xIy";</note>
       </trans-unit>
       <trans-unit id="cmV-9P-RqY.text" xml:space="preserve">
         <source>Review</source>
-        <target>Revize</target>
+        <target>Review</target>
         <note>Class = "UILabel"; text = "Review"; ObjectID = "cmV-9P-RqY";</note>
       </trans-unit>
       <trans-unit id="kAs-JV-Zff.text" xml:space="preserve">
         <source>Add users or groups and give them permissions to read, review or edit the documents.</source>
-        <target>Přidávejte uživatele nebo skupiny a dejte jim oprávnění ke čtení, prohlížení nebo úpravě dokumentů.</target>
+        <target>Add users or groups and give them permissions to read, review or edit the documents.</target>
         <note>Class = "UILabel"; text = "Add users or groups and give them permissions to read, review or edit the documents."; ObjectID = "kAs-JV-Zff";</note>
       </trans-unit>
       <trans-unit id="noV-Xw-dnb.text" xml:space="preserve">
         <source>Read Only</source>
-        <target>Pouze pro čtení</target>
+        <target>Read Only</target>
         <note>Class = "UILabel"; text = "Read Only"; ObjectID = "noV-Xw-dnb";</note>
       </trans-unit>
       <trans-unit id="v5j-Jm-YE4.text" xml:space="preserve">
         <source>Access</source>
-        <target>Přístup</target>
+        <target>Access</target>
         <note>Class = "UILabel"; text = "Access"; ObjectID = "v5j-Jm-YE4"; Note = "Do not translate";</note>
       </trans-unit>
       <trans-unit id="xY8-if-2h2.title" xml:space="preserve">
-        <source>Sharing Settings</source>
-        <target>Sdílet</target>
-        <note>Class = "UINavigationItem"; title = "Sharing Settings"; ObjectID = "xY8-if-2h2";</note>
+        <source>Share</source>
+        <target>Share</target>
+        <note>Class = "UINavigationItem"; title = "Share"; ObjectID = "xY8-if-2h2";</note>
       </trans-unit>
       <trans-unit id="xae-c9-kdf.title" xml:space="preserve">
         <source>Users</source>
-        <target>Uživatelé</target>
+        <target>Users</target>
         <note>Class = "UINavigationItem"; title = "Users"; ObjectID = "xae-c9-kdf";</note>
       </trans-unit>
       <trans-unit id="zUl-mf-gTQ.text" xml:space="preserve">
         <source>Full Access</source>
-        <target>Plný přístup</target>
+        <target>Full Access</target>
         <note>Class = "UILabel"; text = "Full Access"; ObjectID = "zUl-mf-gTQ";</note>
       </trans-unit>
     </body>
   </file>
-  <file original="Documents/Base.lproj/Sort.storyboard" source-language="en" target-language="cs" datatype="plaintext">
+  <file original="Documents/Base.lproj/Sort.storyboard" source-language="en" target-language="zh-Hant" datatype="plaintext">
     <header>
-      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="12.5.1" build-num="12E507"/>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="12.0.1" build-num="12A7300"/>
     </header>
     <body>
       <trans-unit id="HjM-la-pDc.text" xml:space="preserve">
         <source>Ascending</source>
-        <target>Vzestupně</target>
+        <target>Ascending</target>
         <note>Class = "UILabel"; text = "Ascending"; ObjectID = "HjM-la-pDc";</note>
       </trans-unit>
       <trans-unit id="VLB-h5-1fu.text" xml:space="preserve">
         <source>Sort by</source>
-        <target>Seřadit podle</target>
+        <target>Sort by</target>
         <note>Class = "UILabel"; text = "Sort by"; ObjectID = "VLB-h5-1fu";</note>
       </trans-unit>
       <trans-unit id="hSK-XM-USz.title" xml:space="preserve">
         <source>Sort</source>
-        <target>Třídit</target>
+        <target>Sort</target>
         <note>Class = "UINavigationItem"; title = "Sort"; ObjectID = "hSK-XM-USz"; Note = "View Title";</note>
       </trans-unit>
       <trans-unit id="yAy-Q3-Av8.title" xml:space="preserve">
         <source>Sort</source>
-        <target>Třídit</target>
+        <target>Sort</target>
         <note>Class = "UITableViewController"; title = "Sort"; ObjectID = "yAy-Q3-Av8";</note>
       </trans-unit>
     </body>
   </file>
-  <file original="Documents/Base.lproj/Transfer.storyboard" source-language="en" target-language="cs" datatype="plaintext">
+  <file original="Documents/Base.lproj/Transfer.storyboard" source-language="en" target-language="zh-Hant" datatype="plaintext">
     <header>
-      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="12.5.1" build-num="12E507"/>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="12.0.1" build-num="12A7300"/>
     </header>
     <body>
       <trans-unit id="9YY-0H-nww.text" xml:space="preserve">
         <source>Loading...</source>
-        <target>Načítání...</target>
+        <target>Loading...</target>
         <note>Class = "UILabel"; text = "Loading..."; ObjectID = "9YY-0H-nww";</note>
       </trans-unit>
       <trans-unit id="POc-L2-pZq.text" xml:space="preserve">
         <source>No subfolders</source>
-        <target>Žádné podsložky</target>
+        <target>No subfolders</target>
         <note>Class = "UILabel"; text = "No subfolders"; ObjectID = "POc-L2-pZq";</note>
       </trans-unit>
       <trans-unit id="fep-T1-W9m.title" xml:space="preserve">
         <source>Copy here</source>
-        <target>Kopírovat zde</target>
+        <target>Copy here</target>
         <note>Class = "UIBarButtonItem"; title = "Copy here"; ObjectID = "fep-T1-W9m";</note>
       </trans-unit>
       <trans-unit id="lcP-TZ-iV7.text" xml:space="preserve">
         <source>Folder</source>
-        <target>Složka</target>
+        <target>Folder</target>
         <note>Class = "UILabel"; text = "Folder"; ObjectID = "lcP-TZ-iV7";</note>
       </trans-unit>
       <trans-unit id="xZh-ES-1Gb.prompt" xml:space="preserve">
         <source>Move items to the selected folder</source>
-        <target>Přesunout položky do vybrané složky</target>
+        <target>Move items to the selected folder</target>
         <note>Class = "UINavigationItem"; prompt = "Move items to the selected folder"; ObjectID = "xZh-ES-1Gb";</note>
       </trans-unit>
       <trans-unit id="xZh-ES-1Gb.title" xml:space="preserve">
         <source>Root Folders</source>
-        <target>Kořenové adresáře</target>
+        <target>Root Folders</target>
         <note>Class = "UINavigationItem"; title = "Root Folders"; ObjectID = "xZh-ES-1Gb";</note>
       </trans-unit>
     </body>
   </file>
-  <file original="Documents/Base.lproj/UserProfile.storyboard" source-language="en" target-language="cs" datatype="plaintext">
+  <file original="Documents/Base.lproj/UserProfile.storyboard" source-language="en" target-language="zh-Hant" datatype="plaintext">
     <header>
-      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="12.5.1" build-num="12E507"/>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="12.0.1" build-num="12A7300"/>
     </header>
     <body>
       <trans-unit id="1S2-Q7-5vL.text" xml:space="preserve">
         <source>Logout</source>
-        <target>Odhlásit se</target>
+        <target>Logout</target>
         <note>Class = "UILabel"; text = "Logout"; ObjectID = "1S2-Q7-5vL";</note>
       </trans-unit>
       <trans-unit id="9Yi-42-22H.text" xml:space="preserve">
@@ -1091,22 +968,22 @@ Poznámka: Pokud zapomenete přístupový kód, budete muset aplikaci smazat a p
       </trans-unit>
       <trans-unit id="BXA-IE-d8z.title" xml:space="preserve">
         <source>Account</source>
-        <target>Účet</target>
+        <target>Account</target>
         <note>Class = "UINavigationItem"; title = "Account"; ObjectID = "BXA-IE-d8z";</note>
       </trans-unit>
       <trans-unit id="HaW-jI-GJW.text" xml:space="preserve">
         <source>Email</source>
-        <target>E-mail</target>
+        <target>Email</target>
         <note>Class = "UILabel"; text = "Email"; ObjectID = "HaW-jI-GJW";</note>
       </trans-unit>
       <trans-unit id="KZx-zY-eVz.text" xml:space="preserve">
         <source>Portal</source>
-        <target>Portál</target>
+        <target>Portal</target>
         <note>Class = "UILabel"; text = "Portal"; ObjectID = "KZx-zY-eVz";</note>
       </trans-unit>
       <trans-unit id="Yw3-6O-7aD.text" xml:space="preserve">
         <source>Me</source>
-        <target>Mě</target>
+        <target>Me</target>
         <note>Class = "UILabel"; text = "Me"; ObjectID = "Yw3-6O-7aD"; Note = "Do not translate";</note>
       </trans-unit>
       <trans-unit id="osE-70-cXT.text" xml:space="preserve">
@@ -1116,113 +993,113 @@ Poznámka: Pokud zapomenete přístupový kód, budete muset aplikaci smazat a p
       </trans-unit>
     </body>
   </file>
-  <file original="Documents/Code/Controllers/CreateEntity/Views/Base.lproj/ASCCreateEntityView.xib" source-language="en" target-language="cs" datatype="plaintext">
+  <file original="Documents/Code/Controllers/CreateEntity/Views/Base.lproj/ASCCreateEntityView.xib" source-language="en" target-language="zh-Hant" datatype="plaintext">
     <header>
-      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="12.5.1" build-num="12E507"/>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="12.0.1" build-num="12A7300"/>
     </header>
     <body>
       <trans-unit id="0TH-k4-z5u.normalTitle" xml:space="preserve">
         <source>New Folder</source>
-        <target>Nová složka</target>
+        <target>New Folder</target>
         <note>Class = "UIButton"; normalTitle = "New Folder"; ObjectID = "0TH-k4-z5u";</note>
       </trans-unit>
       <trans-unit id="2aV-hB-7Nt.normalTitle" xml:space="preserve">
         <source>Take a picture</source>
-        <target>Vyfotit</target>
+        <target>Take a picture</target>
         <note>Class = "UIButton"; normalTitle = "Take a picture"; ObjectID = "2aV-hB-7Nt";</note>
       </trans-unit>
       <trans-unit id="IU2-I1-b4Q.normalTitle" xml:space="preserve">
         <source>Import Image</source>
-        <target state="translated">Importovat obrázek</target>
+        <target>Import Image</target>
         <note>Class = "UIButton"; normalTitle = "Import Image"; ObjectID = "IU2-I1-b4Q";</note>
       </trans-unit>
       <trans-unit id="wdt-5y-x9j.normalTitle" xml:space="preserve">
         <source>Import File</source>
-        <target state="translated">Importovat soubor</target>
+        <target>Import File</target>
         <note>Class = "UIButton"; normalTitle = "Import File"; ObjectID = "wdt-5y-x9j";</note>
       </trans-unit>
       <trans-unit id="ziC-q7-ky6.normalTitle" xml:space="preserve">
         <source>Connect Storage</source>
-        <target>Připojit úložiště</target>
+        <target>Connect Storage</target>
         <note>Class = "UIButton"; normalTitle = "Connect Storage"; ObjectID = "ziC-q7-ky6";</note>
       </trans-unit>
     </body>
   </file>
-  <file original="Documents/Code/Vendor/PasscodeLock/Base.lproj/PasscodeLock.strings" source-language="en" target-language="cs" datatype="plaintext">
+  <file original="Documents/Code/Vendor/PasscodeLock/Base.lproj/PasscodeLock.strings" source-language="en" target-language="zh-Hant" datatype="plaintext">
     <header>
-      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="12.5.1" build-num="12E507"/>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="12.0.1" build-num="12A7300"/>
     </header>
     <body>
       <trans-unit id="PasscodeLockChangeDescription" xml:space="preserve">
         <source>Enter your old passcode.</source>
-        <target>Zadejte svůj starý přístupový kód</target>
+        <target>Enter your old passcode.</target>
         <note/>
       </trans-unit>
       <trans-unit id="PasscodeLockChangeTitle" xml:space="preserve">
         <source>Enter Old Passcode</source>
-        <target>Zadat starý přístupový kód</target>
+        <target>Enter Old Passcode</target>
         <note>Change Passcode State</note>
       </trans-unit>
       <trans-unit id="PasscodeLockConfirmDescription" xml:space="preserve">
         <source>Enter the passcode again.</source>
-        <target>Zadejte přístupový kód znovu.</target>
+        <target>Enter the passcode again.</target>
         <note/>
       </trans-unit>
       <trans-unit id="PasscodeLockConfirmTitle" xml:space="preserve">
         <source>Confirm Passcode</source>
-        <target>Potvrďte přístupový kód</target>
+        <target>Confirm Passcode</target>
         <note>Confirm Passcode State</note>
       </trans-unit>
       <trans-unit id="PasscodeLockEnterDescription" xml:space="preserve">
         <source>Enter your passcode to proceed.</source>
-        <target>Zadejte přístupový kód a pokračujte.</target>
+        <target>Enter your passcode to proceed.</target>
         <note/>
       </trans-unit>
       <trans-unit id="PasscodeLockEnterTitle" xml:space="preserve">
         <source>Enter Passcode</source>
-        <target>Zadejte přístupový kód</target>
+        <target>Enter Passcode</target>
         <note>Enter Passcode State</note>
       </trans-unit>
       <trans-unit id="PasscodeLockFaceIDButton" xml:space="preserve">
         <source>Enter Passcode</source>
-        <target>Zadejte přístupový kód</target>
+        <target>Enter Passcode</target>
         <note/>
       </trans-unit>
       <trans-unit id="PasscodeLockMismatchDescription" xml:space="preserve">
         <source>Passcodes didn't match.</source>
-        <target>Přístupové kódy se neshodují.</target>
+        <target>Passcodes didn't match.</target>
         <note/>
       </trans-unit>
       <trans-unit id="PasscodeLockMismatchTitle" xml:space="preserve">
         <source>Try again</source>
-        <target>Zkuste znovu</target>
+        <target>Try again</target>
         <note>Passcode Mismatch State</note>
       </trans-unit>
       <trans-unit id="PasscodeLockSetDescription" xml:space="preserve">
         <source>Choose your passcode.</source>
-        <target>Zvolte přístupový kód.</target>
+        <target>Choose your passcode.</target>
         <note/>
       </trans-unit>
       <trans-unit id="PasscodeLockSetTitle" xml:space="preserve">
         <source>Enter a Passcode</source>
-        <target>Zadejte přístupový kód</target>
+        <target>Enter a Passcode</target>
         <note>Set Passcode State</note>
       </trans-unit>
       <trans-unit id="PasscodeLockTouchIDButton" xml:space="preserve">
         <source>Enter Passcode</source>
-        <target>Zadejte přístupový kód</target>
+        <target>Enter Passcode</target>
         <note>Touch ID Fallback Button</note>
       </trans-unit>
       <trans-unit id="PasscodeLockTouchIDReason" xml:space="preserve">
         <source>Authentication required to proceed</source>
-        <target>Pro pokračování je třeba autorizace</target>
+        <target>Authentication required to proceed</target>
         <note>Touch ID Reason</note>
       </trans-unit>
     </body>
   </file>
-  <file original="Documents/Code/Vendor/PasscodeLock/Views/Base.lproj/PasscodeLockView.xib" source-language="en" target-language="cs" datatype="plaintext">
+  <file original="Documents/Code/Vendor/PasscodeLock/Views/Base.lproj/PasscodeLockView.xib" source-language="en" target-language="zh-Hant" datatype="plaintext">
     <header>
-      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="12.5.1" build-num="12E507"/>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="12.0.1" build-num="12A7300"/>
     </header>
     <body>
       <trans-unit id="0CR-0R-0Nr.normalTitle" xml:space="preserve">
@@ -1232,12 +1109,12 @@ Poznámka: Pokud zapomenete přístupový kód, budete muset aplikaci smazat a p
       </trans-unit>
       <trans-unit id="0Ph-dj-v7R.normalTitle" xml:space="preserve">
         <source>Use TouchID</source>
-        <target>Použít TouchID</target>
+        <target>Use TouchID</target>
         <note>Class = "UIButton"; normalTitle = "Use TouchID"; ObjectID = "0Ph-dj-v7R";</note>
       </trans-unit>
       <trans-unit id="1wK-Ol-7mm.text" xml:space="preserve">
         <source>Title</source>
-        <target>Název</target>
+        <target>Title</target>
         <note>Class = "UILabel"; text = "Title"; ObjectID = "1wK-Ol-7mm"; Note = "Do not translate";</note>
       </trans-unit>
       <trans-unit id="C9Z-3u-ohd.normalTitle" xml:space="preserve">
@@ -1257,12 +1134,12 @@ Poznámka: Pokud zapomenete přístupový kód, budete muset aplikaci smazat a p
       </trans-unit>
       <trans-unit id="H78-kl-y6L.normalTitle" xml:space="preserve">
         <source>Delete</source>
-        <target>Smazat</target>
+        <target>Delete</target>
         <note>Class = "UIButton"; normalTitle = "Delete"; ObjectID = "H78-kl-y6L";</note>
       </trans-unit>
       <trans-unit id="HbT-GO-CPk.text" xml:space="preserve">
         <source>Description</source>
-        <target>Popis</target>
+        <target>Description</target>
         <note>Class = "UILabel"; text = "Description"; ObjectID = "HbT-GO-CPk"; Note = "Do not translate";</note>
       </trans-unit>
       <trans-unit id="PbJ-Y8-MMf.normalTitle" xml:space="preserve">
@@ -1292,7 +1169,7 @@ Poznámka: Pokud zapomenete přístupový kód, budete muset aplikaci smazat a p
       </trans-unit>
       <trans-unit id="etg-x7-Mx1.normalTitle" xml:space="preserve">
         <source>Cancel</source>
-        <target>Zrušit</target>
+        <target>Cancel</target>
         <note>Class = "UIButton"; normalTitle = "Cancel"; ObjectID = "etg-x7-Mx1";</note>
       </trans-unit>
       <trans-unit id="pLy-90-g1a.normalTitle" xml:space="preserve">
@@ -1302,138 +1179,74 @@ Poznámka: Pokud zapomenete přístupový kód, budete muset aplikaci smazat a p
       </trans-unit>
     </body>
   </file>
-  <file original="Documents/en.lproj/Documents-InfoPlist.strings" source-language="en" target-language="cs" datatype="plaintext">
+  <file original="Documents/en.lproj/InfoPlist.strings" source-language="en" target-language="zh-Hant" datatype="plaintext">
     <header>
-      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="12.5.1" build-num="12E507"/>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="12.0.1" build-num="12A7300"/>
     </header>
     <body>
       <trans-unit id="CFBundleName" xml:space="preserve">
         <source>Documents</source>
-        <target>Dokumenty</target>
         <note>Bundle name</note>
       </trans-unit>
       <trans-unit id="NSCameraUsageDescription" xml:space="preserve">
         <source>This app requires access to the camera, so that you can take photo and upload it in the app.</source>
-        <target>Tato aplikace vyžaduje přístup k fotoaparátu, abyste mohli pořizovat fotografie.</target>
         <note>Privacy - Camera Usage Description</note>
       </trans-unit>
       <trans-unit id="NSFaceIDUsageDescription" xml:space="preserve">
         <source>This app requires Face ID permission to authenticate using Face recognition.</source>
-        <target>Tato aplikace vyžaduje oprávnění k identifikaci obličeje, aby se ověřila pomocí funkce Face ID.</target>
         <note>Privacy - Face ID Usage Description</note>
-      </trans-unit>
-      <trans-unit id="NSPhotoLibraryAddUsageDescription" xml:space="preserve">
-        <source>This app requires access to the photo library, so that you can upload your photos in the app.</source>
-        <target state="translated">Tato aplikace vyžaduje přístup ke knihovně fotografií, abyste mohli v aplikaci nahrát fotografie.</target>
-        <note>Privacy - Photo Library Additions Usage Description</note>
       </trans-unit>
       <trans-unit id="NSPhotoLibraryUsageDescription" xml:space="preserve">
         <source>This app requires access to the photo library, so that you can upload your photos in the app.</source>
-        <target>Tato aplikace vyžaduje přístup do knihovny fotografií, takže můžete v aplikaci nahrát fotografie.</target>
         <note>Privacy - Photo Library Usage Description</note>
       </trans-unit>
       <trans-unit id="New Document" xml:space="preserve">
         <source>New Document</source>
-        <target>Nový dokument</target>
         <note/>
       </trans-unit>
       <trans-unit id="New Presentation" xml:space="preserve">
         <source>New Presentation</source>
-        <target>Nová prezentace</target>
         <note/>
       </trans-unit>
       <trans-unit id="New Spreadsheet" xml:space="preserve">
         <source>New Spreadsheet</source>
-        <target>Nová tabulka</target>
         <note/>
       </trans-unit>
     </body>
   </file>
-  <file original="Documents/en.lproj/Documents.alpha-InfoPlist.strings" datatype="plaintext" source-language="en" target-language="cs">
+  <file original="Documents/en.lproj/Localizable.strings" source-language="en" target-language="zh-Hant" datatype="plaintext">
     <header>
-      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="12.5.1" build-num="12E507"/>
-    </header>
-    <body>
-      <trans-unit id="CFBundleName" xml:space="preserve">
-        <source>Documents-Alpha</source>
-        <target state="translated">Dokumenty-Alfa</target>
-        <note>Bundle name</note>
-      </trans-unit>
-      <trans-unit id="NSCameraUsageDescription" xml:space="preserve">
-        <source>This app requires access to the camera, so that you can take photo and upload it in the app.</source>
-        <target state="translated">Tato aplikace vyžaduje přístup k fotoaparátu, abyste mohli pořídit fotografii a nahrát ji do aplikace.</target>
-        <note>Privacy - Camera Usage Description</note>
-      </trans-unit>
-      <trans-unit id="NSFaceIDUsageDescription" xml:space="preserve">
-        <source>This app requires Face ID permission to authenticate using Face recognition.</source>
-        <target state="translated">Tato aplikace vyžaduje oprávnění Face ID, aby se mohla ověřit pomocí rozpoznávání obličeje.</target>
-        <note>Privacy - Face ID Usage Description</note>
-      </trans-unit>
-      <trans-unit id="NSLocalNetworkUsageDescription" xml:space="preserve">
-        <source>Network access required</source>
-        <target state="translated">Vyžaduje se přístup k síti</target>
-        <note>Privacy - Local Network Usage Description</note>
-      </trans-unit>
-      <trans-unit id="NSPhotoLibraryAddUsageDescription" xml:space="preserve">
-        <source>This app requires access to the photo library, so that you can upload your photos in the app.</source>
-        <target state="translated">Tato aplikace vyžaduje přístup ke knihovně fotografií, abyste mohli v aplikaci nahrát fotografie.</target>
-        <note>Privacy - Photo Library Additions Usage Description</note>
-      </trans-unit>
-      <trans-unit id="NSPhotoLibraryUsageDescription" xml:space="preserve">
-        <source>This app requires access to the photo library, so that you can upload your photos in the app.</source>
-        <target state="translated">Tato aplikace vyžaduje přístup ke knihovně fotografií, abyste mohli v aplikaci nahrát fotografie.</target>
-        <note>Privacy - Photo Library Usage Description</note>
-      </trans-unit>
-      <trans-unit id="New Document" xml:space="preserve">
-        <source>New Document</source>
-        <target state="translated">Nový dokument</target>
-        <note/>
-      </trans-unit>
-      <trans-unit id="New Presentation" xml:space="preserve">
-        <source>New Presentation</source>
-        <target state="translated">Nová prezentace</target>
-        <note/>
-      </trans-unit>
-      <trans-unit id="New Spreadsheet" xml:space="preserve">
-        <source>New Spreadsheet</source>
-        <target state="translated">Nová tabulka</target>
-        <note/>
-      </trans-unit>
-    </body>
-  </file>
-  <file original="Documents/en.lproj/Localizable.strings" source-language="en" target-language="cs" datatype="plaintext">
-    <header>
-      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="12.5.1" build-num="12E507"/>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="12.0.1" build-num="12A7300"/>
     </header>
     <body>
       <trans-unit id="%i of %i" xml:space="preserve">
         <source>%1$i of %2$i</source>
-        <target>%1$i z %2$i</target>
+        <target>%1$i из %2$i</target>
         <note>Presentation Viewer</note>
       </trans-unit>
       <trans-unit id="%lu File selected" xml:space="preserve">
         <source>%lu File selected</source>
-        <target>%lu vybraných souborů</target>
+        <target>%lu Файлов выбрано</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="%lu Folder and %lu File selected" xml:space="preserve">
         <source>%1$lu Folder and %2$lu File selected</source>
-        <target>%1$lu složek a %2$lu souborů vybráno</target>
+        <target>%1$lu Папок и %2$lu файлов выбрано</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="%lu Folder selected" xml:space="preserve">
         <source>%lu Folder selected</source>
-        <target>%lu složek vybráno</target>
+        <target>%lu папок выбрано</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="%lu items with the same name already exist in the folder '%@'. Overwrite the items?" xml:space="preserve">
         <source>%1$lu items with the same name already exist in the folder '%2$@'. Overwrite the items?</source>
-        <target>%1$lu položek se stejným názvem již ve složce existuj '%2$@'. Přepsat položky?</target>
+        <target>%1$lu файлов с одинаковым именем находятся в папке '%2$@'. Перезаписать эти файлы?</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="A file with a similar name already exists in the document directory on the device." xml:space="preserve">
         <source>A file with a similar name already exists in the document directory on the device.</source>
-        <target>Soubor s podobným názvem již existuje v adresáři dokumentů v zařízení.</target>
+        <target>Файл с таким именем уже существует в папке с документами на этом устройстве.</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="A0 (84,1%@ x 119,9%@)" xml:space="preserve">
@@ -1456,449 +1269,443 @@ Poznámka: Pokud zapomenete přístupový kód, budete muset aplikaci smazat a p
         <target>A6 (10,5%1$@ x 14,8%2$@)</target>
         <note>Format info</note>
       </trans-unit>
-      <trans-unit id="Access files in Favorites and Recents on ONLYOFFICE portal from the app" xml:space="preserve">
-        <source>Access files in Favorites and Recents on ONLYOFFICE portal from the app</source>
-        <target state="translated">Přístup k souborům v Oblíbených položkách a Opakovaných položkách na portálu ONLYOFFICE z aplikace</target>
-        <note>No comment provided by engineer.</note>
-      </trans-unit>
       <trans-unit id="Account name is empty" xml:space="preserve">
         <source>Account name is empty</source>
-        <target>Název účtu je prázdný</target>
+        <target>Имя учетной записи не заполнено</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Account name is not valid" xml:space="preserve">
         <source>Account name is not valid</source>
-        <target>Název účtu není platný</target>
+        <target>Имя учетной записи некорректное</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Address is empty" xml:space="preserve">
         <source>Address is empty</source>
-        <target>Adresa je prázdná</target>
+        <target>Адрес не заполнен</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="All" xml:space="preserve">
         <source>All</source>
-        <target>Vše</target>
+        <target>Все</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="All Files" xml:space="preserve">
         <source>All Files</source>
-        <target>Všechny soubory</target>
+        <target>Все файлы</target>
         <note>Category title</note>
       </trans-unit>
       <trans-unit id="An unexpected error has occurred. Please try again later. Sorry for inconvenience." xml:space="preserve">
         <source>An unexpected error has occurred. Please try again later. Sorry for inconvenience.</source>
-        <target>Došlo k neočekávané chybě. Prosím zkuste to znovu později. Omlouváme se za nepříjemnosti.</target>
+        <target>Произошла непредвиденная ошибка. Повторите попытку позже. Извините за неудобство.</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Are you sure you want to delete the account %@ from this device?" xml:space="preserve">
         <source>Are you sure you want to delete the account %@ from this device?</source>
-        <target>Opravdu chcete smazat účet account %@ z tohoto zařízení?</target>
+        <target>Вы действительно хотите удалить аккаунт %@ с этого устройства?</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Are you sure you want to leave this account?" xml:space="preserve">
         <source>Are you sure you want to leave this account?</source>
-        <target>Opravdu chcete tento účet opustit?</target>
+        <target>Вы уверены, что хотите выйти из этой учетной записи?</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Author" xml:space="preserve">
         <source>Author</source>
-        <target>Autor</target>
+        <target>Автору</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Box directory" xml:space="preserve">
         <source>Box directory</source>
-        <target>Adresář schránky</target>
+        <target>Папка Box</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Camera Unavailable" xml:space="preserve">
         <source>Camera Unavailable</source>
-        <target>Kamera není dostupná</target>
+        <target>Камера недоступна</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Can not create file in the folder." xml:space="preserve">
         <source>Can not create file in the folder.</source>
-        <target>Nelze vytvořit soubor v této složce.</target>
+        <target>Не удалось создать файл в папке.</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Can not create file with this name." xml:space="preserve">
         <source>Can not create file with this name.</source>
-        <target>Nelze vytvořit soubor s tímto názvem.</target>
+        <target>Невозможно создать файл с таким именем.</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Can not create folder with this name." xml:space="preserve">
         <source>Can not create folder with this name.</source>
-        <target>Nelze vytvořit složku s tímto názvem.</target>
+        <target>Невозможно создать папку с таким именем.</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Can not duplicate the file." xml:space="preserve">
         <source>Can not duplicate the file.</source>
-        <target>Soubor nelze duplikovat.</target>
+        <target>Невозможно скопировать файл.</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Cancel" xml:space="preserve">
         <source>Cancel</source>
-        <target>Zrušit</target>
-        <note>No comment provided by engineer.</note>
+        <target>Отмена</target>
+        <note>Button title</note>
       </trans-unit>
       <trans-unit id="Check your internet connection" xml:space="preserve">
         <source>Check your internet connection</source>
-        <target>Zkontrolujte vaše připojení k internetu</target>
+        <target>Проверить интернет-соединение</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Choose CSV Options" xml:space="preserve">
         <source>Choose CSV Options</source>
-        <target>Vyberte možnost CSV</target>
+        <target>Выберите опции CSV</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Choose Code Page" xml:space="preserve">
         <source>Choose Code Page</source>
-        <target>Zvolte stránku kódu</target>
+        <target>Выберите кодировку</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Cleanup" xml:space="preserve">
         <source>Cleanup</source>
-        <target>Vyštění</target>
+        <target>Очистка</target>
         <note>Caption of the processing</note>
       </trans-unit>
       <trans-unit id="Clear Cache" xml:space="preserve">
         <source>Clear Cache</source>
-        <target>Vyčistit cache</target>
+        <target>Очистить кэш</target>
         <note>Button title</note>
       </trans-unit>
       <trans-unit id="Clear Cache?" xml:space="preserve">
         <source>Clear Cache?</source>
-        <target>Vyčistit cache?</target>
+        <target>Очистить кэш?</target>
         <note>Button title</note>
       </trans-unit>
       <trans-unit id="Clearing" xml:space="preserve">
         <source>Clearing</source>
-        <target>Čištění</target>
+        <target>Очистка</target>
         <note>Caption of the processing</note>
       </trans-unit>
       <trans-unit id="Close" xml:space="preserve">
         <source>Close</source>
-        <target>Zavřít</target>
+        <target>Закрыть</target>
         <note>Close view</note>
       </trans-unit>
       <trans-unit id="Close the document before opening a new one." xml:space="preserve">
         <source>Close the document before opening a new one.</source>
-        <target>Před otevřením nového dokumentu dokument zavřete.</target>
+        <target>Закройте документ, прежде чем открывать новый.</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Cloud directory" xml:space="preserve">
         <source>Cloud directory</source>
-        <target>Adresář Cloud</target>
+        <target>Облачная папка</target>
         <note>Default external storage name</note>
       </trans-unit>
       <trans-unit id="Collaborate with your team" xml:space="preserve">
         <source>Collaborate with your team</source>
-        <target>Spolupracujte s vaším týmem</target>
+        <target>Совместная работа с командой</target>
         <note>Introduction Step Five - Title</note>
+      </trans-unit>
+      <trans-unit id="Comments" xml:space="preserve">
+        <source>Comments</source>
+        <target>Комментарии</target>
+        <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Common Documents" xml:space="preserve">
         <source>Common Documents</source>
-        <target>Společné dokumenty</target>
+        <target>Общие документы</target>
         <note>Category title</note>
       </trans-unit>
       <trans-unit id="Connect" xml:space="preserve">
         <source>Connect</source>
-        <target>Připojit</target>
+        <target>Подключить</target>
         <note>Button title</note>
       </trans-unit>
       <trans-unit id="Connect Clouds" xml:space="preserve">
         <source>Connect Clouds</source>
-        <target>Připojit cloud</target>
+        <target>Подключить облака</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Connect third-party storage&#10;like Nextcloud, ownCloud, Yandex Disk and&#10;others which use WebDAV protocol." xml:space="preserve">
         <source>Connect third-party storage
 like Nextcloud, ownCloud, Yandex Disk and
 others which use WebDAV protocol.</source>
-        <target>Připojte úložiště třetích stran
-jako Nextcloud, ownCloud, Yandex Disk a
-jiné, které používají protokol WebDAV.</target>
+        <target>Подключите стороннее хранилище,
+такое как Nextcloud, ownCloud, Яндекс.Диск, и
+другие, использующие протокол WebDAV.</target>
         <note>Introduction Step Three - Description</note>
       </trans-unit>
       <trans-unit id="Connect to your %@ cloud to store files online and collaborate on documents in real time" xml:space="preserve">
         <source>Connect to your %@ cloud to store files online and collaborate on documents in real time</source>
-        <target>Připojte se ke cloudu %@, ukládejte soubory online a spolupracujte na dokumentech v reálném čase</target>
+        <target>Подключитесь к своему облаку %@, чтобы хранить файлы онлайн и работать над документами совместно в режиме реального времени</target>
         <note>Footer text</note>
       </trans-unit>
       <trans-unit id="Connecting" xml:space="preserve">
         <source>Connecting</source>
-        <target>Připojování</target>
+        <target>Подключение</target>
         <note>Caption of the process</note>
       </trans-unit>
       <trans-unit id="Continue anyway" xml:space="preserve">
         <source>Continue anyway</source>
-        <target>Přesto pokračovat</target>
+        <target>Продолжить все равно</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Converter" xml:space="preserve">
         <source>Converter</source>
-        <target>Konvertor</target>
+        <target>Конвертер</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Copy" xml:space="preserve">
         <source>Copy</source>
-        <target>Kopírovat</target>
+        <target>Скопировать</target>
         <note>Button title</note>
       </trans-unit>
       <trans-unit id="Copy here" xml:space="preserve">
         <source>Copy here</source>
-        <target>Zkopírovat zde</target>
+        <target>Скопировать сюда</target>
         <note>Button title</note>
       </trans-unit>
       <trans-unit id="Copying" xml:space="preserve">
         <source>Copying</source>
-        <target>Kopírování</target>
+        <target>Копирование</target>
         <note>Caption of the processing</note>
       </trans-unit>
       <trans-unit id="Could not change file attrubutes" xml:space="preserve">
         <source>Could not change file attrubutes</source>
-        <target state="translated">Nelze změnit atributy souboru</target>
         <note>Description of file operation error</note>
       </trans-unit>
       <trans-unit id="Could not change the directory" xml:space="preserve">
         <source>Could not change the directory</source>
-        <target state="translated">Nepodařilo se změnit adresář</target>
         <note>Description of file operation error</note>
       </trans-unit>
       <trans-unit id="Could not convert file to export." xml:space="preserve">
         <source>Could not convert file to export.</source>
-        <target>Nelze konvertovat soubor k odeslání</target>
+        <target>Невозможно преобразовать файл для экспорта.</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Could not copy file" xml:space="preserve">
         <source>Could not copy file</source>
-        <target state="translated">Nepodařilo se zkopírovat soubor</target>
         <note>Description of file operation error</note>
       </trans-unit>
       <trans-unit id="Could not copy." xml:space="preserve">
         <source>Could not copy.</source>
-        <target>Nelze kopírovat.</target>
+        <target>Невозможно скопировать.</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Could not create a directory" xml:space="preserve">
         <source>Could not create a directory</source>
-        <target state="translated">Nelze vytvořit adresář</target>
         <note>Description of file operation error</note>
       </trans-unit>
       <trans-unit id="Could not create a hard link" xml:space="preserve">
         <source>Could not create a hard link</source>
-        <target state="translated">Nelze vytvořit pevný odkaz</target>
         <note>Description of file operation error</note>
       </trans-unit>
       <trans-unit id="Could not create file" xml:space="preserve">
         <source>Could not create file</source>
-        <target state="translated">Nelze vytvořit soubor</target>
         <note>Description of file operation error</note>
       </trans-unit>
       <trans-unit id="Could not create symlink from" xml:space="preserve">
         <source>Could not create symlink from</source>
-        <target state="translated">Nelze vytvořit symlink z</target>
         <note>Description of file operation error</note>
       </trans-unit>
       <trans-unit id="Could not delete file" xml:space="preserve">
         <source>Could not delete file</source>
-        <target state="translated">Nelze odstranit soubor</target>
         <note>Description of file operation error</note>
       </trans-unit>
       <trans-unit id="Could not delete the file." xml:space="preserve">
         <source>Could not delete the file.</source>
-        <target>Soubor se nepodařilo odstranit.</target>
+        <target>Невозможно удалить файл.</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Could not delete the folder." xml:space="preserve">
         <source>Could not delete the folder.</source>
-        <target>Složku se nepodařilo vymazat.</target>
+        <target>Невозможно удалить папку.</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Could not delete." xml:space="preserve">
         <source>Could not delete.</source>
-        <target>Nelze odstranit.</target>
+        <target>Невозможно удалить.</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Could not download file." xml:space="preserve">
         <source>Could not download file.</source>
-        <target>Soubor se nepodařilo stáhnout.</target>
+        <target>Невозможно скачать файл.</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Could not download object." xml:space="preserve">
         <source>Could not download object.</source>
-        <target>Objekt se nepodařilo stáhnout.</target>
+        <target>Невозможно скачать объект.</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Could not download the file." xml:space="preserve">
         <source>Could not download the file.</source>
-        <target>Soubor se nepodařilo stáhnout.</target>
+        <target>Невозможно скачать файл.</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Could not duplicate the file." xml:space="preserve">
         <source>Could not duplicate the file.</source>
-        <target>Soubor se nepodařilo duplikovat.</target>
+        <target>Невозможно скопировать файл.</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Could not empty trash." xml:space="preserve">
+        <source>Could not empty trash.</source>
+        <target>Невозможно очистить корзину.</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Could not export the file." xml:space="preserve">
         <source>Could not export the file.</source>
-        <target>Soubor se nepodařilo odeslat.</target>
+        <target>Невозможно экспортировать файл.</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Could not move file" xml:space="preserve">
         <source>Could not move file</source>
-        <target state="translated">Nelze přesunout soubor</target>
         <note>Description of file operation error</note>
       </trans-unit>
       <trans-unit id="Could not open editor." xml:space="preserve">
         <source>Could not open editor.</source>
-        <target>Editor se nepodařilo otevřít.</target>
+        <target>Невозможно открыть редактор.</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Could not open file." xml:space="preserve">
         <source>Could not open file.</source>
-        <target>Soubor se nepodařilo otevřít.</target>
+        <target>Невозможно открыть файл.</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Could not read data from file." xml:space="preserve">
         <source>Could not read data from file.</source>
-        <target>Nelze přečíst data ze souboru.</target>
+        <target>Невозможно прочитать данные из файла.</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Could not read data from the file." xml:space="preserve">
         <source>Could not read data from the file.</source>
-        <target>Nelze přečíst data ze souboru.</target>
+        <target>Невозможно прочитать данные из файла.</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Could not read from file" xml:space="preserve">
         <source>Could not read from file</source>
-        <target state="translated">Nelze číst ze souboru</target>
         <note>Description of file operation error</note>
       </trans-unit>
       <trans-unit id="Could not save the file." xml:space="preserve">
         <source>Could not save the file.</source>
-        <target>Soubor se nepodařilo uložit</target>
+        <target>Невозможно сохранить файл.</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Could not write to file" xml:space="preserve">
         <source>Could not write to file</source>
-        <target state="translated">Nelze zapisovat do souboru</target>
         <note>Description of file operation error</note>
       </trans-unit>
       <trans-unit id="Couldn't open file" xml:space="preserve">
         <source>Couldn't open file</source>
-        <target>Nebylo možné otevřít lokální soubor v adresářové struktuře.</target>
+        <target>Не удалось открыть файл</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Create" xml:space="preserve">
         <source>Create</source>
-        <target>Vytvořit</target>
+        <target>Создать</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Create and edit documents with our comprehensive toolbar: work with complex objects in text documents, perform extensive calculations in spreadsheets, create stunning presentations and view PDF files with no formatting loss." xml:space="preserve">
         <source>Create and edit documents with our comprehensive toolbar: work with complex objects in text documents, perform extensive calculations in spreadsheets, create stunning presentations and view PDF files with no formatting loss.</source>
-        <target>Vytvářejte a upravujte dokumenty pomocí našeho komplexního panelu nástrojů: pracujte složitými objekty v textových dokumentech a proveďte rozsáhlé výpočty v tabulkách. Prohlížejte prezentace a soubory. Prohlédnout PDF bez ztráty formátování.</target>
+        <target>Создавайте и редактируйте документы с помощью панели инструментов: работайте со сложными объектами в текстовых документах, выполняйте объемные вычисления в электронных таблицах, создавать потрясающие презентации и просматривайте файлы PDF без потери форматирования.</target>
         <note>Introduction Step Two - Description</note>
       </trans-unit>
       <trans-unit id="Create new documents, spreadsheets or presentations. Create new folders to organize your files." xml:space="preserve">
         <source>Create new documents, spreadsheets or presentations. Create new folders to organize your files.</source>
-        <target>Vytvářejte nové dokumenty, tabulky nebo prezentace. Vytvořte nové složky pro uspořádání souborů.</target>
+        <target>Создавайте новые документы, таблицы или презентации. Создавайте новый папки, чтобы упорядочивать файлы.</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Creating" xml:space="preserve">
         <source>Creating</source>
-        <target>Vytváření</target>
+        <target>Создание</target>
         <note>Caption of the process</note>
       </trans-unit>
       <trans-unit id="Date" xml:space="preserve">
         <source>Date</source>
-        <target>Datum</target>
+        <target>Дате</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Delete" xml:space="preserve">
         <source>Delete</source>
-        <target>Vymazat</target>
+        <target>Удалить</target>
         <note>Button title</note>
       </trans-unit>
       <trans-unit id="Delete %lu File" xml:space="preserve">
         <source>Delete %lu File</source>
-        <target>Vymazat %lu soubor</target>
+        <target>Удалить %lu файлов</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Delete %lu Folder" xml:space="preserve">
         <source>Delete %lu Folder</source>
-        <target>Vymazat %lu složku</target>
+        <target>Удалить %lu папок</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Delete %lu Folder and %lu File" xml:space="preserve">
         <source>Delete %1$lu Folder and %2$lu File</source>
-        <target>Vymazat %1$lu složku a %2$lu soubor</target>
+        <target>Удалить %1$lu папок и %2$lu файлов</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Delete File" xml:space="preserve">
         <source>Delete File</source>
-        <target>Vymazat soubor</target>
+        <target>Удалить файл</target>
         <note>Button title</note>
       </trans-unit>
       <trans-unit id="Delete Folder" xml:space="preserve">
         <source>Delete Folder</source>
-        <target>Vymazat složku</target>
+        <target>Удалить папку</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Delete account" xml:space="preserve">
         <source>Delete account</source>
-        <target>Smazat účet </target>
+        <target>Удалить аккаунт</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Deleting" xml:space="preserve">
         <source>Deleting</source>
-        <target>Smazání</target>
+        <target>Удаление</target>
         <note>Caption of the processing</note>
       </trans-unit>
       <trans-unit id="Delimiter" xml:space="preserve">
         <source>Delimiter</source>
-        <target>Oddělovač</target>
+        <target>Разделитель</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Deny Access" xml:space="preserve">
         <source>Deny Access</source>
-        <target>Zamítnout přístup</target>
+        <target>Запретить доступ</target>
         <note>Share status</note>
       </trans-unit>
       <trans-unit id="Disconnect third party" xml:space="preserve">
         <source>Disconnect third party</source>
-        <target>Odpojit třetí stranu</target>
+        <target>Отсоединить сторонние сервисы</target>
         <note>Button title</note>
       </trans-unit>
       <trans-unit id="Document" xml:space="preserve">
         <source>Document</source>
-        <target>Dokument</target>
+        <target>Документ</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Document Sample" xml:space="preserve">
         <source>Document Sample</source>
-        <target>Vzorek dokumentu</target>
+        <target>Образец документа</target>
         <note>Default title of sample document</note>
       </trans-unit>
       <trans-unit id="Documents" xml:space="preserve">
         <source>Documents</source>
-        <target>Dokumenty</target>
+        <target>Документы</target>
         <note>Category title</note>
       </trans-unit>
       <trans-unit id="Done" xml:space="preserve">
         <source>Done</source>
-        <target>Hotovo</target>
+        <target>Готово</target>
         <note>Button title
    Operation completed</note>
       </trans-unit>
       <trans-unit id="Download" xml:space="preserve">
         <source>Download</source>
-        <target>Stáhnout</target>
+        <target>Скачать</target>
         <note>Button title</note>
       </trans-unit>
       <trans-unit id="Downloading" xml:space="preserve">
         <source>Downloading</source>
-        <target>Stahování</target>
+        <target>Скачивание</target>
         <note>Caption of the processing</note>
       </trans-unit>
       <trans-unit id="Dropbox" xml:space="preserve">
@@ -1908,398 +1715,339 @@ jiné, které používají protokol WebDAV.</target>
       </trans-unit>
       <trans-unit id="Dropbox directory" xml:space="preserve">
         <source>Dropbox directory</source>
-        <target>Adresář Dropbox</target>
+        <target>Папка Dropbox</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Duplicate" xml:space="preserve">
         <source>Duplicate</source>
-        <target>Duplikovat</target>
+        <target>Создать копию</target>
         <note>Button title</note>
       </trans-unit>
       <trans-unit id="Duplication" xml:space="preserve">
         <source>Duplication</source>
-        <target>Duplikace</target>
+        <target>Дублирование</target>
         <note>Caption of the processing</note>
       </trans-unit>
       <trans-unit id="Eb" xml:space="preserve">
         <source>Eb</source>
-        <target>Eb</target>
+        <target>Эб</target>
         <note>Data units</note>
       </trans-unit>
       <trans-unit id="Edit" xml:space="preserve">
         <source>Edit</source>
-        <target>Upravit</target>
+        <target>Редактировать</target>
         <note>Button title</note>
       </trans-unit>
       <trans-unit id="Edit documents locally" xml:space="preserve">
         <source>Edit documents locally</source>
-        <target>Upravujte dokumenty lokálně</target>
+        <target>Редактировать документ локально</target>
         <note>Introduction Step Four - Title</note>
       </trans-unit>
       <trans-unit id="Email" xml:space="preserve">
         <source>Email</source>
-        <target>E-mail</target>
+        <target>Email</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Email is empty" xml:space="preserve">
         <source>Email is empty</source>
-        <target>E-mail je prázdný</target>
-        <note>No comment provided by engineer.</note>
-      </trans-unit>
-      <trans-unit id="Email is incorrect." xml:space="preserve">
-        <source>Email is incorrect.</source>
-        <target state="translated">Email je chybný.</target>
+        <target>Поле Email не заполнено</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Email is not valid" xml:space="preserve">
         <source>Email is not valid</source>
-        <target>E-mail je neplatný</target>
+        <target>Email не корректный</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Empty file." xml:space="preserve">
         <source>Empty file.</source>
-        <target>Prázdný soubor</target>
+        <target>Пустой файл.</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Empty name." xml:space="preserve">
         <source>Empty name.</source>
-        <target>Prázdný název.</target>
+        <target>Пустое имя.</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Encoding" xml:space="preserve">
         <source>Encoding</source>
-        <target>Kódování</target>
+        <target>Кодировка</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="End Slide Show" xml:space="preserve">
         <source>End Slide Show</source>
-        <target>Ukončit prezentaci</target>
+        <target>Завершить</target>
         <note>Presentation Viewer</note>
       </trans-unit>
       <trans-unit id="Enter Portal Address" xml:space="preserve">
         <source>Enter Portal Address</source>
-        <target>Zadejte adresu portálu</target>
+        <target>Введите адрес портала</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Error" xml:space="preserve">
         <source>Error</source>
-        <target>Chyba</target>
+        <target>Ошибка</target>
         <note>No comment provided by engineer.</note>
-      </trans-unit>
-      <trans-unit id="Export" xml:space="preserve">
-        <source>Export</source>
-        <target state="translated">Exportovat</target>
-        <note>Button title</note>
       </trans-unit>
       <trans-unit id="Failed online conversion service." xml:space="preserve">
         <source>Failed online conversion service.</source>
-        <target>Služba online konverze se nezdařila.</target>
+        <target>Ошибка службы онлайн-конвертации</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Failed to check portal availability." xml:space="preserve">
         <source>Failed to check portal availability.</source>
-        <target>Nepodařilo se zkontrolovat dostupnost portálu.</target>
+        <target>Не удалось проверить доступность портала.</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Failed to check the name of the portal" xml:space="preserve">
         <source>Failed to check the name of the portal</source>
-        <target>Nepodařilo se zkontrolovat název portálu</target>
+        <target>Ошибка при проверке имени портала</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Failed to copy: %@" xml:space="preserve">
         <source>Failed to copy: %@</source>
-        <target state="translated">Nepodařilo se zkopírovat: %@</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Failed to get file information from the server." xml:space="preserve">
         <source>Failed to get file information from the server.</source>
-        <target>Nepodařilo se získat informace o souboru ze serveru.</target>
+        <target>Ошибка при получении информации о файле с сервера.</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Failed to get file list." xml:space="preserve">
         <source>Failed to get file list.</source>
-        <target>Seznam souborů se nepodařilo získat.</target>
+        <target>Не удалось получить список файлов.</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Failed to get information about the file." xml:space="preserve">
         <source>Failed to get information about the file.</source>
-        <target>Nelze získat informace o uživateli.</target>
+        <target>Ошибка при получении информации о файле.</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Failed to get the address of the document server." xml:space="preserve">
         <source>Failed to get the address of the document server.</source>
-        <target>Nepodařilo se získat adresu serveru dokumentů.</target>
+        <target>Ошибка получения адреса сервера документов.</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Failed to move: %@" xml:space="preserve">
         <source>Failed to move: %@</source>
-        <target state="translated">Nepodařilo se přesunout: %@</target>
-        <note>No comment provided by engineer.</note>
-      </trans-unit>
-      <trans-unit id="Failed to send feedback by mail. Try to write your request on our forum." xml:space="preserve">
-        <source>Failed to send feedback by mail. Try to write your request on our forum.</source>
-        <target state="translated">Nepodařilo se odeslat zpětnou vazbu poštou. Zkuste napsat svůj požadavek na naše fórum.</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Failed upload source file to conversion online service." xml:space="preserve">
         <source>Failed upload source file to conversion online service.</source>
-        <target>Nepodařilo se odeslat zdrojový soubor do služby online konverze.</target>
+        <target>Ошибка загрузки исходного файла в службу онлайн-конвертации.</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Failure to download file from portal." xml:space="preserve">
         <source>Failure to download file from portal.</source>
-        <target>Stahování souboru z portálu selhalo</target>
+        <target>Ошибка скачивания файла с портала.</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Failure to download result from conversion online service." xml:space="preserve">
         <source>Failure to download result from conversion online service.</source>
-        <target>Stahování výsledku ze služby online konverze selhalo</target>
-        <note>No comment provided by engineer.</note>
-      </trans-unit>
-      <trans-unit id="Favorites and Recents" xml:space="preserve">
-        <source>Favorites and Recents</source>
-        <target state="translated">Oblíbené položky a novinky</target>
+        <target>Ошибка скачивания полученного файла из службы онлайн-конвертации.</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="File already exists" xml:space="preserve">
         <source>File already exists</source>
-        <target state="translated">Soubor již existuje</target>
         <note>Description of file operation error</note>
       </trans-unit>
       <trans-unit id="File does not exist" xml:space="preserve">
         <source>File does not exist</source>
-        <target state="translated">Soubor neexistuje</target>
         <note>Description of file operation error</note>
       </trans-unit>
       <trans-unit id="Files" xml:space="preserve">
         <source>Files</source>
-        <target>Soubory</target>
-        <note>No comment provided by engineer.</note>
-      </trans-unit>
-      <trans-unit id="First name is incorrect" xml:space="preserve">
-        <source>First name is incorrect</source>
-        <target state="translated">Křestní jméno je nesprávné</target>
+        <target>Файлы</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Folder title" xml:space="preserve">
         <source>Folder title</source>
-        <target>Název složky</target>
+        <target>Название папки</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Folders" xml:space="preserve">
         <source>Folders</source>
-        <target>Složky</target>
+        <target>Папки</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Full Access" xml:space="preserve">
         <source>Full Access</source>
-        <target>Plný přístup</target>
+        <target>Полный доступ</target>
         <note>Share status</note>
       </trans-unit>
       <trans-unit id="GET STARTED!" xml:space="preserve">
         <source>GET STARTED!</source>
-        <target>ZAČÍT!</target>
+        <target>НАЧАТЬ!</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Gb" xml:space="preserve">
         <source>Gb</source>
-        <target>Gb</target>
+        <target>Гб</target>
         <note>Data units</note>
       </trans-unit>
       <trans-unit id="Get started" xml:space="preserve">
         <source>Get started</source>
-        <target>Začít</target>
+        <target>Начать</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Getting started" xml:space="preserve">
         <source>Getting started</source>
-        <target>Začínáme</target>
+        <target>Начало работы</target>
         <note>Introduction Step One - Title</note>
-      </trans-unit>
-      <trans-unit id="Go to forum" xml:space="preserve">
-        <source>Go to forum</source>
-        <target state="translated">Přejít na fórum</target>
-        <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Google Drive" xml:space="preserve">
         <source>Google Drive</source>
-        <target>Google Drive</target>
+        <target>Google Диск</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Google directory" xml:space="preserve">
         <source>Google directory</source>
-        <target>Adresář Google</target>
+        <target>Папка Google</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Groups" xml:space="preserve">
         <source>Groups</source>
-        <target>Skupiny</target>
+        <target>Группы</target>
         <note>No comment provided by engineer.</note>
-      </trans-unit>
-      <trans-unit id="If a user with the mail %@ exists, then an instruction to change the password was sent to this address." xml:space="preserve">
-        <source>If a user with the mail %@ exists, then an instruction to change the password was sent to this address.</source>
-        <target state="translated">Pokud existuje uživatel s e-mailovou adresou %@, byl na tuto adresu odeslán pokyn ke změně hesla.</target>
-        <note>Email sent instructions</note>
       </trans-unit>
       <trans-unit id="Images" xml:space="preserve">
         <source>Images</source>
-        <target>Obrázky</target>
+        <target>Изображения</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="In online mode, use real-time co-editing features of %@ to work on documents together with your portal members, share documents and create common storage folders." xml:space="preserve">
         <source>In online mode, use real-time co-editing features of %@ to work on documents together with your portal members, share documents and create common storage folders.</source>
-        <target>V režimu online můžete v nástrojích %@ společně se členy portálu pracovat na dokumentech, sdílet je a vytvářet složky pro ukládání souborů.</target>
+        <target>В онлайн-режиме используйте функции совместного редактирования в режиме реального времени %@, чтобы работать над документами вместе с участниками портала, делиться документами и создавать общие папки для хранения.</target>
         <note>Introduction Step Five - Description</note>
       </trans-unit>
       <trans-unit id="Incorrect portal address" xml:space="preserve">
         <source>Incorrect portal address</source>
-        <target>Nesprávná adresa portálu</target>
+        <target>Неверный адрес портала</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Invalid Country Code" xml:space="preserve">
         <source>Invalid Country Code</source>
-        <target>Neplatný kód země</target>
+        <target>Некорректный код страны</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Invalid URL: The format ot the URL could not be determined" xml:space="preserve">
         <source>Invalid URL: The format ot the URL could not be determined</source>
-        <target>Neplatná URL: Nelze určit formát adresy URL</target>
+        <target>Недопустимый URL-адрес: Не удалось определить формат URL-адреса</target>
         <note>Error message</note>
       </trans-unit>
       <trans-unit id="Kb" xml:space="preserve">
         <source>Kb</source>
-        <target>Kb</target>
+        <target>Кб</target>
         <note>Data units</note>
-      </trans-unit>
-      <trans-unit id="Last name is empty" xml:space="preserve">
-        <source>Last name is empty</source>
-        <target state="translated">Příjmení je prázdné</target>
-        <note>No comment provided by engineer.</note>
-      </trans-unit>
-      <trans-unit id="Last name is incorrect" xml:space="preserve">
-        <source>Last name is incorrect</source>
-        <target state="translated">Příjmení je nesprávné</target>
-        <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Logging in" xml:space="preserve">
         <source>Logging in</source>
-        <target>Přihlášení v</target>
+        <target>Выполняется вход</target>
         <note>Caption of the process</note>
       </trans-unit>
       <trans-unit id="Login" xml:space="preserve">
         <source>Login</source>
-        <target>Přihlášení</target>
+        <target>Логин</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Login by %@" xml:space="preserve">
         <source>Login by %@</source>
-        <target>Přihlášení uživatele %@</target>
+        <target>Вход через %@</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Login is empty" xml:space="preserve">
         <source>Login is empty</source>
-        <target>Přihlášení je prázdné</target>
+        <target>Пустой логин</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Logout" xml:space="preserve">
         <source>Logout</source>
-        <target>Odhlášení</target>
+        <target>Выход</target>
         <note>Button title
    Caption of the process</note>
       </trans-unit>
-      <trans-unit id="Mark as favorite" xml:space="preserve">
-        <source>Mark as favorite</source>
-        <target state="translated">Označit jako oblíbené</target>
-        <note>Button title</note>
-      </trans-unit>
       <trans-unit id="Mb" xml:space="preserve">
         <source>Mb</source>
-        <target>Mb</target>
+        <target>Мб</target>
         <note>Data units</note>
       </trans-unit>
       <trans-unit id="Me" xml:space="preserve">
         <source>Me</source>
-        <target>Já</target>
+        <target>Я</target>
         <note>If current user name is not set</note>
       </trans-unit>
       <trans-unit id="More" xml:space="preserve">
         <source>More</source>
-        <target>Více</target>
+        <target>Еще</target>
         <note>Button title</note>
       </trans-unit>
       <trans-unit id="Move" xml:space="preserve">
         <source>Move</source>
-        <target>Přesunout</target>
+        <target>Переместить</target>
         <note>Button title</note>
       </trans-unit>
       <trans-unit id="Move here" xml:space="preserve">
         <source>Move here</source>
-        <target>Přesunout zde</target>
+        <target>Переместить сюда</target>
         <note>Button title</note>
       </trans-unit>
       <trans-unit id="Move or Copy" xml:space="preserve">
         <source>Move or Copy</source>
-        <target>Přemístit nebo kopírovat</target>
+        <target>Переместить или скопировать</target>
         <note>Button title</note>
       </trans-unit>
       <trans-unit id="Moving" xml:space="preserve">
         <source>Moving</source>
-        <target>Přesouvání</target>
+        <target>Перемещение</target>
         <note>Caption of the processing</note>
       </trans-unit>
       <trans-unit id="My Clouds" xml:space="preserve">
         <source>My Clouds</source>
-        <target>Moje cloudy</target>
+        <target>Мои облака</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="My Documents" xml:space="preserve">
         <source>My Documents</source>
-        <target>Moje Dokumenty</target>
+        <target>Мои документы</target>
         <note>Category title</note>
       </trans-unit>
       <trans-unit id="My Drive" xml:space="preserve">
         <source>My Drive</source>
-        <target>My Drive</target>
+        <target>Мои диск</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Name is empty" xml:space="preserve">
         <source>Name is empty</source>
-        <target>Název je prázdný</target>
+        <target>Имя не заполнено</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Needs additional params." xml:space="preserve">
         <source>Needs additional params.</source>
-        <target>Jsou zapotřebí další parametry.</target>
-        <note>No comment provided by engineer.</note>
-      </trans-unit>
-      <trans-unit id="New" xml:space="preserve">
-        <source>New</source>
-        <target state="translated">Nový</target>
+        <target>Нужны дополнительные параметры.</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="New Document" xml:space="preserve">
         <source>New Document</source>
-        <target>Nový dokument</target>
+        <target>Новый документ</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="New Folder" xml:space="preserve">
         <source>New Folder</source>
-        <target>Nová složka</target>
+        <target>Новая папка</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="New Presentation" xml:space="preserve">
         <source>New Presentation</source>
-        <target>Nová prezentace</target>
+        <target>Новая презентация</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="New Spreadsheet" xml:space="preserve">
         <source>New Spreadsheet</source>
-        <target>Nová tabulka</target>
+        <target>Новая таблица</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Next" xml:space="preserve">
         <source>Next</source>
-        <target>Další</target>
+        <target>Далее</target>
         <note>Next step</note>
       </trans-unit>
       <trans-unit id="Nextcloud" xml:space="preserve">
@@ -2307,55 +2055,50 @@ jiné, které používají protokol WebDAV.</target>
         <target>Nextcloud</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
-      <trans-unit id="Nextcloud directory" xml:space="preserve">
-        <source>Nextcloud directory</source>
-        <target state="translated">Adresář Nextcloud</target>
-        <note>No comment provided by engineer.</note>
-      </trans-unit>
       <trans-unit id="No connection" xml:space="preserve">
         <source>No connection</source>
-        <target>Bez připojení</target>
+        <target>Нет подключения</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="No information about the user profile." xml:space="preserve">
         <source>No information about the user profile.</source>
-        <target>Žádné informace o profilu uživatele.</target>
+        <target>Нет информации о профиле пользователя</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="No network" xml:space="preserve">
         <source>No network</source>
-        <target>Žádná síť</target>
+        <target>Нет сети</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="No network connection can be found. Please check the connection and reload the page." xml:space="preserve">
         <source>No network connection can be found. Please check the connection and reload the page.</source>
-        <target>Nelze nalézt žádné síťové připojení. Zkontrolujte připojení a načtěte stránku znovu.</target>
+        <target>Сетевых подключений не обнаружено. Проверьте подключение и обновите страницу.</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="No results matching your search could be found. Please try another phrase." xml:space="preserve">
         <source>No results matching your search could be found. Please try another phrase.</source>
-        <target>Nebyly nalezeny žádné výsledky odpovídající vašemu vyhledávání. Zkuste prosím jinou frázi.</target>
+        <target>Результаты, соответствующие условиям поиска, не найдены. Попробуйте ввести другую фразу.</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="No search result" xml:space="preserve">
         <source>No search result</source>
-        <target>Žádné výsledky vyhledávání</target>
+        <target>Не найдено</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="None" xml:space="preserve">
         <source>None</source>
-        <target>Žádný</target>
+        <target>Нет</target>
         <note>If the cache is empty
    Share status</note>
       </trans-unit>
       <trans-unit id="Note: removal from your account can not be undone." xml:space="preserve">
         <source>Note: removal from your account can not be undone.</source>
-        <target>Poznámka: odstranění ze svého účtu nelze vrátit zpět.</target>
+        <target>Внимание: удаление из Вашего аккаунта будет нельзя отменить.</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="OK" xml:space="preserve">
         <source>OK</source>
-        <target>OK</target>
+        <target>ОК</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="ONLYOFFICE" xml:space="preserve">
@@ -2365,696 +2108,667 @@ jiné, které používají protokol WebDAV.</target>
       </trans-unit>
       <trans-unit id="ONLYOFFICE Documents" xml:space="preserve">
         <source>ONLYOFFICE Documents</source>
-        <target>ONLYOFFICE Documents</target>
+        <target>ONLYOFFICE Документы</target>
         <note>Full App Name</note>
       </trans-unit>
       <trans-unit id="On iPad" xml:space="preserve">
         <source>On iPad</source>
-        <target>V iPadu</target>
+        <target>На iPad</target>
         <note>Category title</note>
       </trans-unit>
       <trans-unit id="On iPhone" xml:space="preserve">
         <source>On iPhone</source>
-        <target>V iPhonu</target>
+        <target>На iPhone</target>
         <note>Category title</note>
       </trans-unit>
       <trans-unit id="Once you enter the password and open the file, the current password to the file will be reset" xml:space="preserve">
         <source>Once you enter the password and open the file, the current password to the file will be reset</source>
-        <target>Jakmile zadáte heslo a soubor otevřete, stávající heslo k souboru bude resetováno</target>
-        <note>No comment provided by engineer.</note>
-      </trans-unit>
-      <trans-unit id="OneDrive" xml:space="preserve">
-        <source>OneDrive</source>
-        <target state="translated">OneDrive</target>
-        <note>No comment provided by engineer.</note>
-      </trans-unit>
-      <trans-unit id="OneDrive and kDrive access" xml:space="preserve">
-        <source>OneDrive and kDrive access</source>
-        <target state="translated">Přístup k OneDrive a kDrive</target>
+        <target>Как только вы введете пароль и откроете файл, текущий пароль к файлу будет сброшен</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="OneDrive directory" xml:space="preserve">
         <source>OneDrive directory</source>
-        <target>Adresář OneDrive</target>
+        <target>Папка OneDrive</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="OneDrive for Business" xml:space="preserve">
         <source>OneDrive for Business</source>
-        <target>OneDrive for Business</target>
+        <target>OneDrive для бизнеса</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Oops!" xml:space="preserve">
         <source>Oops!</source>
-        <target>Jejda!</target>
+        <target>Ошибка!</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Open Document" xml:space="preserve">
         <source>Open Document</source>
-        <target state="translated">Otevřít dokument</target>
+        <target>Открыть документ</target>
         <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Open In" xml:space="preserve">
+        <source>Open In</source>
+        <target>Открыть в</target>
+        <note>Button title</note>
       </trans-unit>
       <trans-unit id="Opening" xml:space="preserve">
         <source>Opening</source>
-        <target>Úvod</target>
+        <target>Открытие</target>
         <note>Caption of the processing</note>
       </trans-unit>
       <trans-unit id="Order" xml:space="preserve">
         <source>Order</source>
-        <target>Příkaz</target>
+        <target>Очередность</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Other" xml:space="preserve">
         <source>Other</source>
-        <target>Jiné</target>
+        <target>Другое</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Overwrite" xml:space="preserve">
         <source>Overwrite</source>
-        <target>Přepsat</target>
+        <target>Перезаписать</target>
         <note>Button title</note>
       </trans-unit>
       <trans-unit id="Overwrite confirmation" xml:space="preserve">
         <source>Overwrite confirmation</source>
-        <target>Přepsat potvrzení</target>
+        <target>Подтверждение перезаписи</target>
         <note>Button title</note>
       </trans-unit>
       <trans-unit id="Owner" xml:space="preserve">
         <source>Owner</source>
-        <target>Majitel</target>
+        <target>Владелец</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Password" xml:space="preserve">
         <source>Password</source>
-        <target>Heslo</target>
+        <target>Пароль</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Password is empty" xml:space="preserve">
         <source>Password is empty</source>
-        <target>Heslo je prázdné</target>
+        <target>Пароль не заполнен</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Passwords do not match" xml:space="preserve">
         <source>Passwords do not match</source>
-        <target>Hesla se neshodují</target>
+        <target>Пароли не совпадают</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Pb" xml:space="preserve">
         <source>Pb</source>
-        <target>Pb</target>
+        <target>Пб</target>
         <note>Data units</note>
       </trans-unit>
       <trans-unit id="Please go to Settings and enable the camera for this app to use this feature." xml:space="preserve">
         <source>Please go to Settings and enable the camera for this app to use this feature.</source>
-        <target>Přejděte do části Nastavení a povolte, aby tato aplikace využívala kameru. </target>
+        <target>Перейдите в Настройки и включите камеру для этого приложения, чтобы использовать эту функцию.</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Please re-login to renew your session." xml:space="preserve">
         <source>Please re-login to renew your session.</source>
-        <target>Pro obnovení relace se prosím znovu přihlaste.</target>
+        <target>Пожалуйста, войдите в аккаунт заново, чтобы обновить сессию.</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Please retry. &#10;&#10; If the problem persists contact us and mention this error code: Box - %@" xml:space="preserve">
         <source>Please retry. 
 
  If the problem persists contact us and mention this error code: Box - %@</source>
-        <target>Pokud problém přetrvává, kontaktujte nás a uveďte tento kód chyby: Box - %@ </target>
+        <target>Попробуйте ещё раз.
+
+Если проблема повторяется, напишите нам и назовите код ошибки: Box - %@</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Please retry. &#10;&#10; If the problem persists contact us and mention this error code: Dropbox - %@" xml:space="preserve">
         <source>Please retry. 
 
  If the problem persists contact us and mention this error code: Dropbox - %@</source>
-        <target>Zkuste to prosím znovu.
+        <target>Попробуйте ещё раз.
 
- Pokud problém přetrvává, kontaktujte nás a zmiňte tento kód chyby: Dropbox -% @</target>
+Если проблема повторяется, напишите нам и назовите код ошибки: Dropbox - %@</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Please retry. &#10;&#10; If the problem persists contact us and mention this error code: Google - %@" xml:space="preserve">
         <source>Please retry. 
 
  If the problem persists contact us and mention this error code: Google - %@</source>
-        <target>Zkuste to prosím znovu.
+        <target>Попробуйте ещё раз.
 
- Pokud problém přetrvává, kontaktujte nás a zmiňte tento kód chyby: Google - %@</target>
+Если проблема повторяется, напишите нам и назовите код ошибки: Google - %@</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Please retry. &#10;&#10; If the problem persists contact us and mention this error code: OneDrive - %@" xml:space="preserve">
         <source>Please retry. 
 
  If the problem persists contact us and mention this error code: OneDrive - %@</source>
-        <target>Zkuste to prosím znovu.
+        <target>Попробуйте ещё раз.
 
- Pokud problém přetrvává, kontaktujte nás a zmiňte tento kód chyby: OneDrive - %@</target>
+Если проблема повторяется, напишите нам и назовите код ошибки: OneDrive - %@</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Please retry. &#10;&#10; If the problem persists contact us and mention this error code: SSO - %@" xml:space="preserve">
         <source>Please retry. 
 
  If the problem persists contact us and mention this error code: SSO - %@</source>
-        <target>Zkuste to prosím znovu.
+        <target>Попробуйте ещё раз.
 
- Pokud problém přetrvává, kontaktujte nás a zmiňte tento kód chyby: SSO - %@</target>
+Если проблема повторяется, напишите нам и назовите код ошибки: SSO - %@</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Portal Address" xml:space="preserve">
         <source>Portal Address</source>
-        <target>Adresa portálu</target>
+        <target>Адрес портала</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Portal is unavailable." xml:space="preserve">
         <source>Portal is unavailable.</source>
-        <target>Portál není k dispozici.</target>
+        <target>Портал недоступен</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Presentation" xml:space="preserve">
         <source>Presentation</source>
-        <target>Prezentace</target>
+        <target>Презентация</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Presentation Sample" xml:space="preserve">
         <source>Presentation Sample</source>
-        <target>Vzorek prezentace</target>
+        <target>Образец презентации</target>
         <note>Default title of sample document</note>
       </trans-unit>
       <trans-unit id="Presentations" xml:space="preserve">
         <source>Presentations</source>
-        <target>Prezentace</target>
+        <target>Презентации</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Preview" xml:space="preserve">
         <source>Preview</source>
-        <target>Náhled</target>
+        <target>Просмотр</target>
         <note>Button title</note>
       </trans-unit>
       <trans-unit id="Processing" xml:space="preserve">
         <source>Processing</source>
-        <target>Zpracování</target>
+        <target>Обработка</target>
         <note>Caption of the processing</note>
       </trans-unit>
       <trans-unit id="Project Documents" xml:space="preserve">
         <source>Project Documents</source>
-        <target>Projektové dokumenty</target>
+        <target>Документы проектов</target>
         <note>Category title</note>
       </trans-unit>
       <trans-unit id="Protected File" xml:space="preserve">
         <source>Protected File</source>
-        <target>Chráněný soubor</target>
+        <target>Защищенный файл</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Read Only" xml:space="preserve">
         <source>Read Only</source>
-        <target>Pouze pro čtení</target>
+        <target>Только чтение</target>
         <note>Share status</note>
       </trans-unit>
       <trans-unit id="Recover here" xml:space="preserve">
         <source>Recover here</source>
-        <target>Obnovit zde</target>
+        <target>Восстановить сюда</target>
         <note>Button title</note>
       </trans-unit>
       <trans-unit id="Recovery" xml:space="preserve">
         <source>Recovery</source>
-        <target>Obnova</target>
+        <target>Восстановление</target>
         <note>Caption of the processing</note>
       </trans-unit>
       <trans-unit id="Registration" xml:space="preserve">
         <source>Registration</source>
-        <target>Registrace</target>
+        <target>Регистрация</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Reload" xml:space="preserve">
         <source>Reload</source>
-        <target>Nahrát znovu</target>
+        <target>Перезагрузить</target>
         <note>No comment provided by engineer.</note>
-      </trans-unit>
-      <trans-unit id="Remove from Favorites" xml:space="preserve">
-        <source>Remove from Favorites</source>
-        <target state="translated">Odstranění z oblíbených položek</target>
-        <note>Button title</note>
       </trans-unit>
       <trans-unit id="Rename" xml:space="preserve">
         <source>Rename</source>
-        <target>Přejmenovat</target>
+        <target>Переименовать</target>
         <note>Button title</note>
       </trans-unit>
       <trans-unit id="Rename failed." xml:space="preserve">
         <source>Rename failed.</source>
-        <target>Přejmenování se nezdařilo</target>
+        <target>Ошибка переименования</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Rename failed. An object with such a similar name exists." xml:space="preserve">
         <source>Rename failed. An object with such a similar name exists.</source>
-        <target>Přejmenování se nezdařilo. Objekt s podobným názvem již existuje.</target>
+        <target>Ошибка переименования. Объект с таким именем уже существует.</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Renaming" xml:space="preserve">
         <source>Renaming</source>
-        <target>Přejmenování</target>
+        <target>Переименование</target>
         <note>Caption of the processing</note>
       </trans-unit>
       <trans-unit id="Renewal" xml:space="preserve">
         <source>Renewal</source>
-        <target>Obnovení</target>
+        <target>Возобновить</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Restore" xml:space="preserve">
         <source>Restore</source>
-        <target>Obnovit</target>
+        <target>Восстановить</target>
         <note>Button title</note>
       </trans-unit>
       <trans-unit id="Restoring" xml:space="preserve">
         <source>Restoring</source>
-        <target>Obnovení</target>
+        <target>Восстановление</target>
         <note>Caption of the processing</note>
       </trans-unit>
       <trans-unit id="Review" xml:space="preserve">
         <source>Review</source>
-        <target>Prohlédnout</target>
+        <target>Рецензирование</target>
         <note>Share status</note>
+      </trans-unit>
+      <trans-unit id="Reviewing" xml:space="preserve">
+        <source>Reviewing</source>
+        <target>Рецензирование</target>
+        <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="SKIP" xml:space="preserve">
         <source>SKIP</source>
-        <target>PŘESKOČIT</target>
+        <target>ПРОПУСТИТЬ</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Saving" xml:space="preserve">
         <source>Saving</source>
-        <target>Uložení</target>
+        <target>Сохранение</target>
         <note>Caption of the processing</note>
       </trans-unit>
       <trans-unit id="Select" xml:space="preserve">
         <source>Select</source>
-        <target>Vybrat</target>
-        <note>Button title
-   Navigation bar button title</note>
+        <target>Выбрать</target>
+        <note>Button title</note>
       </trans-unit>
       <trans-unit id="Select Photos" xml:space="preserve">
         <source>Select Photos</source>
-        <target>Vybrat fotky</target>
+        <target>Выбрать фото</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Select another cloud to connect to Nextcloud, ownCloud and others are supported." xml:space="preserve">
         <source>Select another cloud to connect to Nextcloud, ownCloud and others are supported.</source>
-        <target>Zvolte další cloud pro připojení k Nextcloud, ownCloud a další jsou podporovány.</target>
+        <target>Выберите другое облако для подключения к Nextcloud, ownCloud и другим поддерживаемым сервисам.</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Select the folder to copy the items" xml:space="preserve">
         <source>Select the folder to copy the items</source>
-        <target>Vyberte složku pro zkopírování položek</target>
+        <target>Выберите папку для копирования элементов</target>
         <note>One line. Max 50 charasters</note>
       </trans-unit>
       <trans-unit id="Select the folder to move the items" xml:space="preserve">
         <source>Select the folder to move the items</source>
-        <target>Vyberte složku pro zkopírování položek</target>
+        <target>Выберите папку для перемещения элементов</target>
         <note>One line. Max 50 charasters</note>
       </trans-unit>
       <trans-unit id="Select the folder to recover the items" xml:space="preserve">
         <source>Select the folder to recover the items</source>
-        <target>Vyberte složku pro obnovení položek</target>
+        <target>Выберите папку для восстановления элементов</target>
         <note>One line. Max 50 charasters</note>
       </trans-unit>
       <trans-unit id="Selected provider is not available" xml:space="preserve">
         <source>Selected provider is not available</source>
-        <target>Vybraný poskytovatel není dostupný</target>
+        <target>Выбранный провайдер недоступен</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Selected: %ld" xml:space="preserve">
         <source>Selected: %ld</source>
-        <target>Vybráno: %ld</target>
-        <note>No comment provided by engineer.</note>
-      </trans-unit>
-      <trans-unit id="Sending" xml:space="preserve">
-        <source>Sending</source>
-        <target state="translated">Odesílání</target>
-        <note>Caption of the process</note>
-      </trans-unit>
-      <trans-unit id="Set favorite failed." xml:space="preserve">
-        <source>Set favorite failed.</source>
-        <target state="translated">Nastavení oblíbených se nezdařilo.</target>
+        <target>Выбрано: %ld</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Settings" xml:space="preserve">
         <source>Settings</source>
-        <target>Nastavení</target>
+        <target>Настройки</target>
         <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Share" xml:space="preserve">
+        <source>Share</source>
+        <target>Поделиться</target>
+        <note>Button title</note>
       </trans-unit>
       <trans-unit id="SharePoint directory" xml:space="preserve">
         <source>SharePoint directory</source>
-        <target>Adresář SharePoint</target>
+        <target>Папка SharePoint</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Shared with Me" xml:space="preserve">
         <source>Shared with Me</source>
-        <target>Sdíleno se mnou</target>
+        <target>Доступно для меня</target>
         <note>Category title</note>
       </trans-unit>
       <trans-unit id="Sharing" xml:space="preserve">
         <source>Sharing</source>
-        <target>Sdílení</target>
+        <target>Предоставление досупа</target>
         <note>Caption of the process</note>
-      </trans-unit>
-      <trans-unit id="Sharing Settings" xml:space="preserve">
-        <source>Sharing Settings</source>
-        <target state="translated">Nastavení sdílení</target>
-        <note>Button title</note>
       </trans-unit>
       <trans-unit id="Single Sign-on" xml:space="preserve">
         <source>Single Sign-on</source>
-        <target>Jednorázové přihlášení</target>
+        <target>Единая точка входа</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Size" xml:space="preserve">
         <source>Size</source>
-        <target>Velikost</target>
+        <target>Размеру</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Skip" xml:space="preserve">
         <source>Skip</source>
-        <target>Přeskočit</target>
+        <target>Пропустить</target>
         <note>Button title</note>
       </trans-unit>
       <trans-unit id="Slide %i of %i" xml:space="preserve">
         <source>Slide %1$i of %2$i</source>
-        <target>Snímek %1$i z %2$i</target>
+        <target>Слайд %1$i из %2$i</target>
         <note>Presentation Viewer</note>
       </trans-unit>
       <trans-unit id="Sort" xml:space="preserve">
         <source>Sort</source>
-        <target>Seřadit</target>
+        <target>Сортировать</target>
         <note>Button title</note>
       </trans-unit>
       <trans-unit id="Space" xml:space="preserve">
         <source>Space</source>
-        <target>Mezerník</target>
+        <target>Пробел</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Spreadsheet" xml:space="preserve">
         <source>Spreadsheet</source>
-        <target>Tabulka</target>
+        <target>Таблица</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Spreadsheet Sample" xml:space="preserve">
         <source>Spreadsheet Sample</source>
-        <target>Vzorek tabulky</target>
+        <target>Образец таблицы</target>
         <note>Default title of sample document</note>
       </trans-unit>
       <trans-unit id="Spreadsheets" xml:space="preserve">
         <source>Spreadsheets</source>
-        <target>Tabulky</target>
+        <target>Таблицы</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Switch" xml:space="preserve">
         <source>Switch</source>
-        <target>Přepnutí</target>
+        <target>Переключить</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Tab" xml:space="preserve">
         <source>Tab</source>
-        <target>Tabulátor</target>
+        <target>Табуляция</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Tb" xml:space="preserve">
         <source>Tb</source>
-        <target>Tb</target>
+        <target>Тб</target>
         <note>Data units</note>
       </trans-unit>
       <trans-unit id="Text copied" xml:space="preserve">
         <source>Text copied</source>
-        <target state="translated">Text zkopírován</target>
+        <target>Текст скопирован</target>
         <note>Notification title</note>
-      </trans-unit>
-      <trans-unit id="The %@ server is not available." xml:space="preserve">
-        <source>The %@ server is not available.</source>
-        <target state="translated">Server %@ není k dispozici.</target>
-        <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="The account name must be between 6 and 50 characters long" xml:space="preserve">
         <source>The account name must be between 6 and 50 characters long</source>
-        <target>Název účtu musí mít délku od 6 do 50 znaků</target>
+        <target>Имя учетной записи должно быть от 6 до 50 символов</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="The deleted files go to the trash. You can either restore or delete them forever." xml:space="preserve">
         <source>The deleted files go to the trash. You can either restore or delete them forever.</source>
-        <target>Smazané soubory jsou přesunuty do koše. Můžete je obnovit nebo navždy smazat.</target>
+        <target>Удаленные файлы попадают в корзину. Вы можете восстановить их или окончательно удалить.</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="The file in the Trash can not be viewed." xml:space="preserve">
         <source>The file in the Trash can not be viewed.</source>
-        <target>Soubor v koši nelze zobrazit.</target>
+        <target>Невозможно просмотреть файл, находящийся в корзине.</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="The file will be irretrievably deleted. This action is irreversible." xml:space="preserve">
         <source>The file will be irretrievably deleted. This action is irreversible.</source>
-        <target>Soubor bude nenávratně smazán. Tato akce je nevratná.</target>
-        <note>No comment provided by engineer.</note>
-      </trans-unit>
-      <trans-unit id="The folder in the Trash can not be opened." xml:space="preserve">
-        <source>The folder in the Trash can not be opened.</source>
-        <target state="translated">Složku v koši nelze otevřít.</target>
+        <target>Файл будет безвозвратно удален. Это действие нельзя отменить.</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="The folder will be irretrievably deleted. This action is irreversible." xml:space="preserve">
         <source>The folder will be irretrievably deleted. This action is irreversible.</source>
-        <target>Složka bude nenávratně smazána. Tato akce je nevratná.</target>
+        <target>Папка будет безвозвратно удалена. Это действие нельзя отменить.</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="The item with the name '%@' already exists in the folder '%@'." xml:space="preserve">
         <source>The item with the name '%1$@' already exists in the folder '%2$@'.</source>
-        <target>Položka s názvem '% 1 $ @' již existuje ve složce '% 2 $ @'</target>
+        <target>Файл с именем '%1$@' уже существует в папке '%2$@'</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
-      <trans-unit id="The parameters are incorrect." xml:space="preserve">
-        <source>The parameters are incorrect.</source>
-        <target state="translated">Jsou zadány nesprávné parametry.</target>
-        <note>No comment provided by engineer.</note>
-      </trans-unit>
-      <trans-unit id="The password is incorrect. It must contain 8 characters" xml:space="preserve">
-        <source>The password is incorrect. It must contain 8 characters</source>
-        <target state="translated">Heslo je nesprávné. Musí obsahovat 8 znaků</target>
+      <trans-unit id="The password is incorrect. It must contain 6 characters" xml:space="preserve">
+        <source>The password is incorrect. It must contain 6 characters</source>
+        <target>Некорректный пароль. Он должен содержать не менее 6 символов.</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="The portal address is invalid" xml:space="preserve">
         <source>The portal address is invalid</source>
-        <target>Adresa portálu je neplatná</target>
-        <note>No comment provided by engineer.</note>
-      </trans-unit>
-      <trans-unit id="The portal is not available" xml:space="preserve">
-        <source>The portal is not available</source>
-        <target state="translated">Portál není dostupný</target>
+        <target>Некорректный адрес портала</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="The portal name must be between 6 and 50 characters long" xml:space="preserve">
         <source>The portal name must be between 6 and 50 characters long</source>
-        <target>Název portálu musí mít délku od 6 do 50 znaků</target>
+        <target>Имя портала должно быть длиной от 6 до 50 символов</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="The server is not available." xml:space="preserve">
         <source>The server is not available.</source>
-        <target>Server není dostupný.</target>
+        <target>Сервер недоступен.</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="The trash is empty" xml:space="preserve">
         <source>The trash is empty</source>
-        <target>Koš je prázdný</target>
+        <target>Корзина пуста</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Third-party storage" xml:space="preserve">
         <source>Third-party storage</source>
-        <target>Úložiště třetí strany</target>
+        <target>Стороннее хранилище</target>
         <note>Introduction Step Three - Title</note>
       </trans-unit>
       <trans-unit id="This document is being edited. Do you want open %@ to view only?" xml:space="preserve">
         <source>This document is being edited. Do you want open %@ to view only?</source>
-        <target>Dokument je aktuálně upravován. Chcete otevřít %@ pouze k prohlížení?</target>
+        <target>Этот документ редактируется. Вы хотите открыть %@ только на просмотр?</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="This folder is empty" xml:space="preserve">
         <source>This folder is empty</source>
-        <target>Složka je prázdná</target>
+        <target>Эта папка пуста</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="This operation will free up space on your device by deleting temporary files. Your offline files and personal data won't be removed." xml:space="preserve">
         <source>This operation will free up space on your device by deleting temporary files. Your offline files and personal data won't be removed.</source>
-        <target>Tato operace uvolní místo v zařízení odstraněním dočasných souborů. Vaše offline soubory a osobní údaje nebudou odstraněny.</target>
+        <target>Эта операция освободит место на устройстве за счет удаления временных файлов. Автономные файлы и персональные данные не будут удалены.</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="This presentation is being edited. Do you want open %@ to view only?" xml:space="preserve">
         <source>This presentation is being edited. Do you want open %@ to view only?</source>
-        <target>Tato prezentace je aktuálně upravována. Chcete otevřít %@ pouze k prohlížení?</target>
+        <target>Эта презентация редактируется. Вы хотите открыть %@ только на просмотр?</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="This spreadsheet is being edited. Do you want open %@ to view only?" xml:space="preserve">
         <source>This spreadsheet is being edited. Do you want open %@ to view only?</source>
-        <target>Tato tabulka je aktuálně upravována. Chcete otevřít %@ pouze k prohlížení?</target>
+        <target>Эта таблица редактируется. Вы хотите открыть %@ только на просмотр?</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Title" xml:space="preserve">
         <source>Title</source>
-        <target>Název</target>
+        <target>Названию</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="To open a document, you must go to portal %@ under your account." xml:space="preserve">
         <source>To open a document, you must go to portal %@ under your account.</source>
-        <target>Chcete-li otevřít dokument, přihlaste se ke svému účtu a přejděte na portál% @.</target>
+        <target>Чтобы открыть документ, вы должны перейти на портал %@ под своей учетной записью.</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="To open a new document, you must exit the current document." xml:space="preserve">
         <source>To open a new document, you must exit the current document.</source>
-        <target>Pokud chcete otevřít nový dokument, musíte opustit aktuální dokument.</target>
+        <target>Чтобы открыть новый документ, вы должны выйти из текущего документа.</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Trash" xml:space="preserve">
         <source>Trash</source>
-        <target>Koš</target>
+        <target>Корзина</target>
         <note>Category title</note>
       </trans-unit>
       <trans-unit id="Try Again" xml:space="preserve">
         <source>Try Again</source>
-        <target>Zkuste znovu</target>
+        <target>Повторить</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Try again" xml:space="preserve">
         <source>Try again</source>
-        <target>Zkuste znovu</target>
+        <target>Повторить</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Try to connect via another protocol?" xml:space="preserve">
         <source>Try to connect via another protocol?</source>
-        <target>Zkuste se připojit přes jiný protokol?</target>
+        <target>Попытаться соединиться с использованием другого протокола?</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Turn Passcode Off" xml:space="preserve">
         <source>Turn Passcode Off</source>
-        <target>Vypnout přístupový kód</target>
+        <target>Отключить код доступа</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Turn Passcode On" xml:space="preserve">
         <source>Turn Passcode On</source>
-        <target>Zapnout přístupový kód</target>
+        <target>Включить код доступа</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Type" xml:space="preserve">
         <source>Type</source>
-        <target>Typ</target>
+        <target>Типу</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Unable to get information about the portal" xml:space="preserve">
         <source>Unable to get information about the portal</source>
-        <target>Nelze získat informace o portálu</target>
+        <target>Ошибка получения информации о портале</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Unable to get information about the user." xml:space="preserve">
         <source>Unable to get information about the user.</source>
-        <target>Nelze získat informace o uživateli.</target>
+        <target>Ошибка получения информации о пользователе.</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Unexpected response from the service." xml:space="preserve">
         <source>Unexpected response from the service.</source>
-        <target>Neočekávaná odezva ze služby.</target>
+        <target>Неожиданный ответ от службы.</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Unknown" xml:space="preserve">
         <source>Unknown</source>
-        <target>Neznámý</target>
+        <target>Неизвестно</target>
         <note>Invalid entity name</note>
       </trans-unit>
       <trans-unit id="Unknown API response." xml:space="preserve">
         <source>Unknown API response.</source>
-        <target>Neznámá odpověď API.</target>
+        <target>Неизвестный ответ API.</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Unknown file provider" xml:space="preserve">
         <source>Unknown file provider</source>
-        <target>Neznámý poskytovatel souboru</target>
+        <target>Неизвестный поставщик файла</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Unknown item type." xml:space="preserve">
         <source>Unknown item type.</source>
-        <target>Neznámý typ položky.</target>
+        <target>Неизвестный тип файла.</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Unlock with Face ID" xml:space="preserve">
         <source>Unlock with Face ID</source>
-        <target>Odemknout pomocí obličeje</target>
+        <target>Разблокировать с помощью Face ID</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Unlock with Touch ID" xml:space="preserve">
         <source>Unlock with Touch ID</source>
-        <target>Odemknout pomocí otisku</target>
+        <target>Разблокировать с помощью Touch ID</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Unsupported format." xml:space="preserve">
         <source>Unsupported format.</source>
-        <target>Nepodporovaný formát.</target>
+        <target>Неподдерживаемый формат.</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Upload" xml:space="preserve">
         <source>Upload</source>
-        <target>Nahrát</target>
+        <target>Загрузить</target>
         <note>Button title</note>
       </trans-unit>
       <trans-unit id="Uploading" xml:space="preserve">
         <source>Uploading</source>
-        <target>Nahrávání</target>
+        <target>Загрузка</target>
         <note>Caption of the process</note>
       </trans-unit>
       <trans-unit id="Use Face ID" xml:space="preserve">
         <source>Use Face ID</source>
-        <target>Použít odemykání pomocí obličeje</target>
+        <target>Использовать Face ID</target>
         <note>Button title</note>
       </trans-unit>
       <trans-unit id="Use Touch ID" xml:space="preserve">
         <source>Use Touch ID</source>
-        <target>Použít odemykání pomocí otisku</target>
+        <target>Использовать Touch ID</target>
         <note>Button title</note>
+      </trans-unit>
+      <trans-unit id="Use Track Changes mode in text documents to suggest changes, accept or reject them." xml:space="preserve">
+        <source>Use Track Changes mode in text documents to suggest changes, accept or reject them.</source>
+        <target>Используйте режим отслеживания изменений в текстовых документах, чтобы предложить изменения, принять или отклонить их.</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Use comments to add notes, suggestions, or questions for your collaborators. Edit, answer, resolve or delete them in process." xml:space="preserve">
+        <source>Use comments to add notes, suggestions, or questions for your collaborators. Edit, answer, resolve or delete them in process.</source>
+        <target>Используйте комментарии, чтобы добавить примечания, предложения или вопросы для участников совместной работы. Редактируйте, отвечайте, помечайте решенными или удаляйте комментарии в ходе работы.</target>
+        <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="User authentication failed" xml:space="preserve">
         <source>User authentication failed</source>
-        <target>Ověření uživatele selhalo</target>
+        <target>Не удалось выполнить проверку подлинности пользователя</target>
         <note>Error message</note>
       </trans-unit>
       <trans-unit id="User undefined" xml:space="preserve">
         <source>User undefined</source>
-        <target>Uživatel není definován</target>
+        <target>Пользователь не авторизован</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Users" xml:space="preserve">
         <source>Users</source>
-        <target>Uživatelé</target>
+        <target>Пользователи</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Validation" xml:space="preserve">
         <source>Validation</source>
-        <target>Validace</target>
+        <target>Проверка</target>
         <note>Caption of the process</note>
       </trans-unit>
       <trans-unit id="Varies" xml:space="preserve">
         <source>Varies</source>
-        <target>Liší se</target>
+        <target>Различается</target>
         <note>Share status</note>
       </trans-unit>
       <trans-unit id="Version" xml:space="preserve">
         <source>Version</source>
-        <target>Verze</target>
-        <note>No comment provided by engineer.</note>
-      </trans-unit>
-      <trans-unit id="View and edit files in OneDrive and kDrive directly from the app. Access your storages from the Clouds tab." xml:space="preserve">
-        <source>View and edit files in OneDrive and kDrive directly from the app. Access your storages from the Clouds tab.</source>
-        <target state="translated">Zobrazení a úpravy souborů ve službě OneDrive a kDrive přímo z aplikace. Přístup k úložištím získáte na kartě Clouds.</target>
+        <target>Версия</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Warning" xml:space="preserve">
         <source>Warning</source>
-        <target>Varování</target>
+        <target>Предупреждение</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="We are sorry, this portal name is already taken" xml:space="preserve">
         <source>We are sorry, this portal name is already taken</source>
-        <target>Je nám líto, ale název portálu již obsazený</target>
+        <target>К сожалению, это имя портала уже занято</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="We have sent you an SMS with a code to the number %@" xml:space="preserve">
         <source>We have sent you an SMS with a code to the number %@</source>
-        <target>Poslali jsme vám SMS s kódem na číslo% @</target>
+        <target>Мы отправили вам СМС с кодом на номер %@</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="WebDAV" xml:space="preserve">
@@ -3064,174 +2778,154 @@ jiné, které používají protokol WebDAV.</target>
       </trans-unit>
       <trans-unit id="WebDAV directory" xml:space="preserve">
         <source>WebDAV directory</source>
-        <target>Adresář WebDAV</target>
+        <target>Папка WebDAV</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Welcome to %@ mobile editing suite!&#10;Swipe to learn more about the app." xml:space="preserve">
         <source>Welcome to %@ mobile editing suite!
 Swipe to learn more about the app.</source>
-        <target>Vítejte v sadě pro mobilní editaci % @!
-Přetáhněte prstem a zjistěte více o aplikaci.</target>
+        <target>Добро пожаловать в мобильный редактор %@!
+Проведите пальцем для дополнительной информации о приложении.</target>
         <note>Introduction Step One - Description</note>
       </trans-unit>
       <trans-unit id="What's New" xml:space="preserve">
         <source>What's New</source>
-        <target>Novinky</target>
+        <target>Новые возможности</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Work with documents offline.&#10;Created files can later be uploaded to online portal and&#10;then accessed from any other device." xml:space="preserve">
         <source>Work with documents offline.
 Created files can later be uploaded to online portal and
 then accessed from any other device.</source>
-        <target>Pracujte s dokumenty offline.
-Vytvořené soubory mohou být později nahrány do online portálu. Poté k nim lze přistoupit z jakéhokoli jiného zařízení.</target>
+        <target>Работайте с документами без интернета.
+Созданные файлы можно загрузить позднее на портал и получить доступ к ним с любого устройства.</target>
         <note>Introduction Step Four - Description</note>
       </trans-unit>
       <trans-unit id="Work with office files" xml:space="preserve">
         <source>Work with office files</source>
-        <target>Pracujte s kancelářskými soubory</target>
+        <target>Работайте с файлами документов</target>
         <note>Introduction Step Two - Title</note>
       </trans-unit>
       <trans-unit id="Wrong login or password." xml:space="preserve">
         <source>Wrong login or password.</source>
-        <target>Špatný login nebo heslo.</target>
+        <target>Неверный логин или пароль.</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Yandex Disk" xml:space="preserve">
         <source>Yandex Disk</source>
-        <target>Yandex Disk</target>
+        <target>Яндекс.Диск</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Yandex directory" xml:space="preserve">
         <source>Yandex directory</source>
-        <target>Adresář Yandex</target>
+        <target>Папка Яндекс</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Yb" xml:space="preserve">
         <source>Yb</source>
-        <target>Yb</target>
+        <target>Иб</target>
         <note>Data units</note>
       </trans-unit>
       <trans-unit id="You can connect the following accounts to the %@." xml:space="preserve">
         <source>You can connect the following accounts to the %@.</source>
-        <target>Do %@ můžete připojit následující účty.</target>
+        <target>К %@ можно подключить следующие аккаунты.</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="You can connect the following accounts to the %@. They will be displayed in 'My Documents' folder and you will be able to edit and save them right on the portal all in one place." xml:space="preserve">
         <source>You can connect the following accounts to the %@. They will be displayed in 'My Documents' folder and you will be able to edit and save them right on the portal all in one place.</source>
-        <target>Do %@ můžete připojit následující účty. Zobrazí se ve složce "Moje Dokumenty" a budete je moci upravovat a ukládat přímo na portálu, všechny na jednom místě.</target>
+        <target>К %@ можно подключить следующие аккаунты. Они будут отображаться в папке 'Мои документы', и вы сможете редактировать и сохранять их прямо на портале в едином пространстве.</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="You have read-only access to this folder. You cannot create files or folders here." xml:space="preserve">
         <source>You have read-only access to this folder. You cannot create files or folders here.</source>
-        <target>Do tohoto adresáře máte přístup pouze ke čtení. Zde nemůžete vytvářet soubory ani adresáře.</target>
+        <target>К этой папке у вас есть доступ только на чтение. Вы не можете создавать в ней файлы или папки.</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Your session has expired" xml:space="preserve">
         <source>Your session has expired</source>
-        <target>Vaše relace vypršela</target>
+        <target>Время сессии истекло</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Zb" xml:space="preserve">
         <source>Zb</source>
-        <target>Zb</target>
+        <target>Зб</target>
         <note>Data units</note>
       </trans-unit>
       <trans-unit id="Zero bytes" xml:space="preserve">
         <source>Zero bytes</source>
-        <target>Nulové bajty</target>
+        <target>Ноль байт</target>
         <note>Data units</note>
       </trans-unit>
       <trans-unit id="bytes" xml:space="preserve">
         <source>bytes</source>
-        <target>bajty</target>
+        <target>байт</target>
         <note>Data units</note>
       </trans-unit>
       <trans-unit id="cm" xml:space="preserve">
         <source>cm</source>
-        <target>cm</target>
+        <target>см</target>
         <note>Cut from centimeters</note>
       </trans-unit>
       <trans-unit id="common.cancel" xml:space="preserve">
         <source>Cancel</source>
-        <target>Zrušit</target>
+        <target>Отмена</target>
         <note>Cancel</note>
       </trans-unit>
       <trans-unit id="common.error" xml:space="preserve">
         <source>Error</source>
-        <target>Chyba</target>
+        <target>Ошибка</target>
         <note>Error</note>
       </trans-unit>
       <trans-unit id="common.me" xml:space="preserve">
         <source>Me</source>
-        <target>Já</target>
+        <target>Я</target>
         <note>Myself</note>
       </trans-unit>
       <trans-unit id="common.ok" xml:space="preserve">
         <source>OK</source>
-        <target>OK</target>
+        <target>ОК</target>
         <note>OK</note>
       </trans-unit>
       <trans-unit id="common.paymentRequiredMsg" xml:space="preserve">
         <source>The paid period is over</source>
-        <target>Placené období je u konce</target>
+        <target>Оплаченный период закончился</target>
         <note>Payment required message</note>
       </trans-unit>
       <trans-unit id="common.paymentRequiredTitle" xml:space="preserve">
         <source>Payment required</source>
-        <target>Je požadována platba</target>
+        <target>Требуется оплата портала</target>
         <note>Payment required title</note>
       </trans-unit>
       <trans-unit id="error.errorForbiddenMsg" xml:space="preserve">
         <source>Contact the portal administrator for access to the resource.</source>
-        <target>Chcete-li získat přístup k modulu Projekty, obraťte se na správce portálu.</target>
+        <target>Обратитесь к администратору портала для доступа к ресурсу.</target>
         <note>Access is Forbidden message</note>
       </trans-unit>
       <trans-unit id="error.errorForbiddenTitle" xml:space="preserve">
         <source>Access is Forbidden</source>
-        <target>Přístup k modulu Projekty je zakázán</target>
+        <target>Доступ запрещен</target>
         <note>Access is Forbidden title</note>
       </trans-unit>
       <trans-unit id="error.errorNotFoundMsg" xml:space="preserve">
         <source>The resource can not be found</source>
-        <target>Zdroj nebyl nalezen</target>
+        <target>Ресурс не найден</target>
         <note>The resource can not be found Title</note>
       </trans-unit>
       <trans-unit id="error.errorServerTitle" xml:space="preserve">
         <source>Server Error</source>
-        <target>Chyba serveru</target>
+        <target>Ошибка сервера</target>
         <note>Unknown Server Error</note>
-      </trans-unit>
-      <trans-unit id="iCloud" xml:space="preserve">
-        <source>iCloud</source>
-        <target state="translated">iCloud</target>
-        <note>No comment provided by engineer.</note>
-      </trans-unit>
-      <trans-unit id="iCloud Drive" xml:space="preserve">
-        <source>iCloud Drive</source>
-        <target state="translated">Jednotka iCloud</target>
-        <note>No comment provided by engineer.</note>
-      </trans-unit>
-      <trans-unit id="kDrive" xml:space="preserve">
-        <source>kDrive</source>
-        <target state="translated">kDrive</target>
-        <note>No comment provided by engineer.</note>
-      </trans-unit>
-      <trans-unit id="kDrive directory" xml:space="preserve">
-        <source>kDrive directory</source>
-        <target state="translated">Adresář kDrive</target>
-        <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="none" xml:space="preserve">
         <source>none</source>
-        <target>žádný</target>
+        <target>нет</target>
         <note>Invalid entity date
    Invalid entity owner
    No information</note>
       </trans-unit>
       <trans-unit id="of" xml:space="preserve">
         <source>of</source>
-        <target>z</target>
+        <target>из</target>
         <note>Used in the context: 'Showing 1 of 3 items'</note>
       </trans-unit>
       <trans-unit id="ownCloud" xml:space="preserve">
@@ -3239,19 +2933,14 @@ Vytvořené soubory mohou být později nahrány do online portálu. Poté k nim
         <target>ownCloud</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
-      <trans-unit id="ownCloud directory" xml:space="preserve">
-        <source>ownCloud directory</source>
-        <target state="translated">Adresář ownCloud</target>
-        <note>No comment provided by engineer.</note>
-      </trans-unit>
       <trans-unit id="photo" xml:space="preserve">
         <source>photo</source>
-        <target>fotka</target>
+        <target>фото</target>
         <note>Used in the context: '1 photo'</note>
       </trans-unit>
       <trans-unit id="photos" xml:space="preserve">
         <source>photos</source>
-        <target>fotky</target>
+        <target>фото</target>
         <note>Used in the context: '3 photos'</note>
       </trans-unit>
       <trans-unit id="© Ascensio System SIA %d" xml:space="preserve">
@@ -3261,49 +2950,43 @@ Vytvořené soubory mohou být později nahrány do online portálu. Poté k nim
       </trans-unit>
       <trans-unit id="Сould not download file." xml:space="preserve">
         <source>Сould not download file.</source>
-        <target>Nelze stáhnout soubor.</target>
+        <target>Не удалось скачать файл.</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Сould not upload file." xml:space="preserve">
         <source>Сould not upload file.</source>
-        <target>Nelze nahrát soubor.</target>
+        <target>Не удалось загрузить файл.</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
     </body>
   </file>
-  <file original="Settings.bundle/en.lproj/Root.strings" source-language="en" target-language="cs" datatype="plaintext">
+  <file original="Settings.bundle/en.lproj/Root.strings" datatype="plaintext" source-language="en" target-language="zh-Hant">
     <header>
-      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="12.5.1" build-num="12E507"/>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="12.0.1" build-num="12A7300"/>
     </header>
     <body>
       <trans-unit id="Acknowledgements" xml:space="preserve">
         <source>Acknowledgements</source>
-        <target>Poděkování</target>
         <note/>
       </trans-unit>
       <trans-unit id="Enabled" xml:space="preserve">
         <source>Enabled</source>
-        <target>Povoleno</target>
         <note/>
       </trans-unit>
       <trans-unit id="Group" xml:space="preserve">
         <source>Group</source>
-        <target>Skupina</target>
         <note>A single strings file, whose title is specified in your preferences schema. The strings files provide the localized content to display to the user for each of your preferences.</note>
       </trans-unit>
       <trans-unit id="Name" xml:space="preserve">
         <source>Name</source>
-        <target>Jméno</target>
         <note/>
       </trans-unit>
       <trans-unit id="Version" xml:space="preserve">
         <source>Version</source>
-        <target>Verze</target>
         <note/>
       </trans-unit>
       <trans-unit id="none given" xml:space="preserve">
         <source>none given</source>
-        <target>nezadáno</target>
         <note/>
       </trans-unit>
     </body>

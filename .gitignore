@@ -12,8 +12,6 @@ Thumbs.db
 *.ipa
 
 Pods
-Podfile.lock
-Gemfile.lock
 fastlane/report.xml
 fastlane/test_output
 fastlane/Preview.html

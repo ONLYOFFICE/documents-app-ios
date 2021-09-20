@@ -1,0 +1,1014 @@
+/* Presentation Viewer */
+"%i of %i" = "%1$i di %2$i";
+
+/* No comment provided by engineer. */
+"%lu File selected" = "%lu file selezionati";
+
+/* No comment provided by engineer. */
+"%lu Folder and %lu File selected" = "%1$lu Cartelle e %2$lu File selezionati";
+
+/* No comment provided by engineer. */
+"%lu Folder selected" = "%1$lu Cartelle selezionati";
+
+/* No comment provided by engineer. */
+"%lu items with the same name already exist in the folder '%@'. Overwrite the items?" = "%1$lu elementi con lo stesso nome esistono già nella cartella '%2$@'. Sovrascrivere gli elementi?";
+
+/* No comment provided by engineer. */
+"© Ascensio System SIA %d" = "© Ascensio System SIA %d";
+
+/* No comment provided by engineer. */
+"A file with a similar name already exists in the document directory on the device." = "Un file con un nome simile esiste già nella directory dei documenti sul dispositivo.";
+
+/* Format info */
+"A0 (84,1%@ x 119,9%@)" = "A0 (84,1%1$@ x 119,9%2$@)";
+
+/* Format info */
+"A1 (59,4%@ x 84,1%@)" = "A1 (59,4%1$@ x 84,1%2$@)";
+
+/* Format info */
+"A2 (42%@ x 59,4%@)" = "A2 (42%1$@ x 59,4%2$@)";
+
+/* Format info */
+"A6 (10,5%@ x 14,8%@)" = "A6 (10,5%1$@ x 14,8%2$@)";
+
+/* No comment provided by engineer. */
+"Account name is empty" = "Nome account vuoto";
+
+/* No comment provided by engineer. */
+"Account name is not valid" = "Nome account non valido";
+
+/* No comment provided by engineer. */
+"Address is empty" = "L'indirizzo è vuoto";
+
+/* No comment provided by engineer. */
+"All" = "Tutto";
+
+/* Category title */
+"All Files" = "Tutti i file";
+
+/* No comment provided by engineer. */
+"An unexpected error has occurred. Please try again later. Sorry for inconvenience." = "Si è verificato un errore imprevisto. Ti preghiamo di riprovare più tardi. Ci scusiamo per l'inconveniente.";
+
+/* No comment provided by engineer. */
+"Are you sure you want to delete the account %@ from this device?" = "Sei sicuro che vuoi eliminare l'account %@ da questo dispositivo?";
+
+/* No comment provided by engineer. */
+"Are you sure you want to leave this account?" = "Sei sicuro di voler lasciare questo account?";
+
+/* No comment provided by engineer. */
+"Author" = "Autore";
+
+/* No comment provided by engineer. */
+"Box directory" = "Cartella di Box";
+
+/* Data units */
+"bytes" = "byte";
+
+/* No comment provided by engineer. */
+"Camera Unavailable" = "Fotocamera non disponibile";
+
+/* No comment provided by engineer. */
+"Can not create file in the folder." = "Impossibile creare il file nella cartella.";
+
+/* No comment provided by engineer. */
+"Can not create file with this name." = "Impossibile creare il file con questo nome.";
+
+/* No comment provided by engineer. */
+"Can not create folder with this name." = "Impossibile creare la cartella con questo nome.";
+
+/* No comment provided by engineer. */
+"Can not duplicate the file." = "Impossibile duplicare il file.";
+
+/* No comment provided by engineer. */
+"Cancel" = "Eliminare";
+
+/* No comment provided by engineer. */
+"Check your internet connection" = "Controlla la tua connessione Internet";
+
+/* No comment provided by engineer. */
+"Choose Code Page" = "Scegli il codice della pagina";
+
+/* No comment provided by engineer. */
+"Choose CSV Options" = "Scegli opzioni CSV";
+
+/* Caption of the processing */
+"Cleanup" = "Pulizia";
+
+/* Button title */
+"Clear Cache" = "Pulire cache";
+
+/* Button title */
+"Clear Cache?" = "Eliminare cache?";
+
+/* Caption of the processing */
+"Clearing" = "Pulizia";
+
+/* Close view */
+"Close" = "Chiudere";
+
+/* No comment provided by engineer. */
+"Close the document before opening a new one." = "Chiudi il documento prima di aprirne uno nuovo.";
+
+/* Default external storage name */
+"Cloud directory" = "Cartella del Cloud";
+
+/* Cut from centimeters */
+"cm" = "cm";
+
+/* Introduction Step Five - Title */
+"Collaborate with your team" = "Collabora con il tuo team";
+
+/* Category title */
+"Common Documents" = "Documenti comuni";
+
+/* Cancel */
+"common.cancel" = "Eliminare";
+
+/* Error */
+"common.error" = "Errore";
+
+/* Myself */
+"common.me" = "Me";
+
+/* OK */
+"common.ok" = "ОК";
+
+/* Payment required message */
+"common.paymentRequiredMsg" = "Il periodo pagato è terminato";
+
+/* Payment required title */
+"common.paymentRequiredTitle" = "Pagamento richiesto";
+
+/* Button title */
+"Connect" = "Connettere";
+
+/* No comment provided by engineer. */
+"Connect Clouds" = "Connettere i cloud";
+
+/* Introduction Step Three - Description */
+"Connect third-party storage\nlike Nextcloud, ownCloud, Yandex Disk and\nothers which use WebDAV protocol." = "Connettere uno spazio di archiviazione esterno\ncome Nextcloud, ownCloud, Yandex Disk e\naltri che utilizzano il protocollo WebDAV.";
+
+/* Footer text */
+"Connect to your %@ cloud to store files online and collaborate on documents in real time" = "Connettiti al tuo cloud %@ per archiviare i file online e collaborare ai documenti in tempo reale";
+
+/* Caption of the process */
+"Connecting" = "Connessione";
+
+/* No comment provided by engineer. */
+"Continue anyway" = "Continuare comunque";
+
+/* No comment provided by engineer. */
+"Converter" = "Convertitore";
+
+/* Button title */
+"Copy" = "Copia";
+
+/* Button title */
+"Copy here" = "Copia qui";
+
+/* Caption of the processing */
+"Copying" = "Copiatura";
+
+/* Description of file operation error */
+"Could not change file attrubutes" = "Impossibile cambiare gli attributi del file";
+
+/* Description of file operation error */
+"Could not change the directory" = "Impossibile cambiare la cartella";
+
+/* No comment provided by engineer. */
+"Could not convert file to export." = "Impossibile convertire il file da esportare.";
+
+/* Description of file operation error */
+"Could not copy file" = "Impossibile copiare il file";
+
+/* No comment provided by engineer. */
+"Could not copy." = "Impossibile copiare.";
+
+/* Description of file operation error */
+"Could not create a directory" = "Impossibile creare la cartella";
+
+/* Description of file operation error */
+"Could not create a hard link" = "Impossibile creare un collegamento fisico";
+
+/* Description of file operation error */
+"Could not create file" = "Impossibile creare un file";
+
+/* Description of file operation error */
+"Could not create symlink from" = "Impossibile creare i collegamenti simbolici";
+
+/* Description of file operation error */
+"Could not delete file" = "Impossibile eliminare file";
+
+/* No comment provided by engineer. */
+"Could not delete the file." = "Impossibile eliminare il file.";
+
+/* No comment provided by engineer. */
+"Could not delete the folder." = "Impossibile eliminare la cartella.";
+
+/* No comment provided by engineer. */
+"Could not delete." = "Impossibile eliminare.";
+
+/* No comment provided by engineer. */
+"Could not download file." = "Impossibile scaricare il file.";
+
+/* No comment provided by engineer. */
+"Could not download object." = "Impossibile scaricare l'oggetto.";
+
+/* No comment provided by engineer. */
+"Could not download the file." = "Impossibile scaricare il file.";
+
+/* No comment provided by engineer. */
+"Could not duplicate the file." = "Impossibile duplicare il file.";
+
+/* No comment provided by engineer. */
+"Could not export the file." = "Impossibile esportare il file.";
+
+/* Description of file operation error */
+"Could not move file" = "Impossibile spostare file";
+
+/* No comment provided by engineer. */
+"Could not open editor." = "Impossibile aprire l'editor.";
+
+/* No comment provided by engineer. */
+"Could not open file." = "Impossibile aprire il file.";
+
+/* No comment provided by engineer. */
+"Could not read data from file." = "Impossibile leggere i dati dal file.";
+
+/* No comment provided by engineer. */
+"Could not read data from the file." = "Impossibile leggere i dati dal file.";
+
+/* Description of file operation error */
+"Could not read from file" = "Impossibile leggere dal file";
+
+/* No comment provided by engineer. */
+"Could not save the file." = "Impossibile salvare il file.";
+
+/* Description of file operation error */
+"Could not write to file" = "Impossibile salvare nel file";
+
+/* No comment provided by engineer. */
+"Couldn't open file" = "Impossibile aprire il file";
+
+/* No comment provided by engineer. */
+"Create" = "Creare";
+
+/* Introduction Step Two - Description */
+"Create and edit documents with our comprehensive toolbar: work with complex objects in text documents, perform extensive calculations in spreadsheets, create stunning presentations and view PDF files with no formatting loss." = "Crea e modifica i documenti con la nostra barra degli strumenti completa: lavora con oggetti complessi in documenti di testo, esegui calcoli estesi in fogli di calcolo, crea presentazioni straordinarie e visualizza i file PDF senza alcuna perdita di formattazione.";
+
+/* No comment provided by engineer. */
+"Create new documents, spreadsheets or presentations. Create new folders to organize your files." = "Crea nuovi documenti, fogli di calcolo o presentazioni. Crea nuove cartelle per organizzare i tuoi file.";
+
+/* Caption of the process */
+"Creating" = "Creazione";
+
+/* No comment provided by engineer. */
+"Date" = "Data";
+
+/* Button title */
+"Delete" = "Eliminare";
+
+/* No comment provided by engineer. */
+"Delete %lu File" = "Eliminare %lu file";
+
+/* No comment provided by engineer. */
+"Delete %lu Folder" = "Eliminare %lu cartella";
+
+/* No comment provided by engineer. */
+"Delete %lu Folder and %lu File" = "Eliminare %1$lu cartella e %2$lu file";
+
+/* No comment provided by engineer. */
+"Delete account" = "Eliminare account";
+
+/* Button title */
+"Delete File" = "Eliminare file";
+
+/* No comment provided by engineer. */
+"Delete Folder" = "Eliminare cartella";
+
+/* Caption of the processing */
+"Deleting" = "Eliminazione";
+
+/* No comment provided by engineer. */
+"Delimiter" = "Delimitatore";
+
+/* Share status */
+"Deny Access" = "Negare accesso";
+
+/* Button title */
+"Disconnect third party" = "Disconnettere i servizi di terze parti";
+
+/* No comment provided by engineer. */
+"Document" = "Documento";
+
+/* Default title of sample document */
+"Document Sample" = "Esempio di documento";
+
+/* Category title */
+"Documents" = "Documenti";
+
+/* Button title
+   Operation completed */
+"Done" = "Fatto";
+
+/* Button title */
+"Download" = "Scaricare";
+
+/* Caption of the processing */
+"Downloading" = "Scaricamento";
+
+/* No comment provided by engineer. */
+"Dropbox" = "Dropbox";
+
+/* No comment provided by engineer. */
+"Dropbox directory" = "Cartella di Dropbox";
+
+/* Button title */
+"Duplicate" = "Duplicare";
+
+/* Caption of the processing */
+"Duplication" = "Duplicazione";
+
+/* Data units */
+"Eb" = "Eb";
+
+/* Button title */
+"Edit" = "Modificare";
+
+/* Introduction Step Four - Title */
+"Edit documents locally" = "Modificare i documenti a livello locale";
+
+/* No comment provided by engineer. */
+"Email" = "Email";
+
+/* No comment provided by engineer. */
+"Email is empty" = "Campo Email vuoto";
+
+/* No comment provided by engineer. */
+"Email is not valid" = "Email non valida";
+
+/* No comment provided by engineer. */
+"Empty file." = "File vuoto.";
+
+/* No comment provided by engineer. */
+"Empty name." = "Nome vuoto.";
+
+/* No comment provided by engineer. */
+"Encoding" = "Codifica";
+
+/* Presentation Viewer */
+"End Slide Show" = "Termina presentazione";
+
+/* No comment provided by engineer. */
+"Enter Portal Address" = "Inserire l'indirizzo del portale";
+
+/* No comment provided by engineer. */
+"Error" = "Errore";
+
+/* Access is Forbidden message */
+"error.errorForbiddenMsg" = "Contatta l'amministratore del portale per l'accesso alla risorsa.";
+
+/* Access is Forbidden title */
+"error.errorForbiddenTitle" = "L'accesso è proibito";
+
+/* The resource can not be found Title */
+"error.errorNotFoundMsg" = "La risorsa non può essere trovata";
+
+/* Unknown Server Error */
+"error.errorServerTitle" = "Errore del server";
+
+/* No comment provided by engineer. */
+"Failed online conversion service." = "Servizio di conversione online è fallito.";
+
+/* No comment provided by engineer. */
+"Failed to check portal availability." = "Impossibile verificare la disponibilità del portale.";
+
+/* No comment provided by engineer. */
+"Failed to check the name of the portal" = "Impossibile verificare il nome del portale";
+
+/* No comment provided by engineer. */
+"Failed to copy: %@" = "Impossibile copiare: %@";
+
+/* No comment provided by engineer. */
+"Failed to get file information from the server." = "Impossibile ottenere informazioni sul file dal server.";
+
+/* No comment provided by engineer. */
+"Failed to get file list." = "Impossibile ottenere la lista dei file.";
+
+/* No comment provided by engineer. */
+"Failed to get information about the file." = "Impossibile ottenere informazioni sul file.";
+
+/* No comment provided by engineer. */
+"Failed to get the address of the document server." = "Impossibile ottenere l'indirizzo del server di documenti.";
+
+/* No comment provided by engineer. */
+"Failed to move: %@" = "Impossibile spostare: %@";
+
+/* No comment provided by engineer. */
+"Failed upload source file to conversion online service." = "Impossibile caricare il file sorgente al servizio di conversione online.";
+
+/* No comment provided by engineer. */
+"Failure to download file from portal." = "Impossibile scaricare il file dal portale.";
+
+/* No comment provided by engineer. */
+"Failure to download result from conversion online service." = "Impossibile scaricare il risultato dal servizio di conversione online.";
+
+/* Description of file operation error */
+"File already exists" = "Il file esiste già";
+
+/* Description of file operation error */
+"File does not exist" = "Il file non esiste";
+
+/* No comment provided by engineer. */
+"Files" = "File";
+
+/* No comment provided by engineer. */
+"Folder title" = "Nome cartella";
+
+/* No comment provided by engineer. */
+"Folders" = "Cartelle";
+
+/* Share status */
+"Full Access" = "Accesso completo";
+
+/* Data units */
+"Gb" = "Gb";
+
+/* No comment provided by engineer. */
+"Get started" = "Inizia";
+
+/* No comment provided by engineer. */
+"GET STARTED!" = "INIZIA!";
+
+/* Introduction Step One - Title */
+"Getting started" = "Per iniziare";
+
+/* No comment provided by engineer. */
+"Google directory" = "Cartella di Google";
+
+/* No comment provided by engineer. */
+"Google Drive" = "Google Drive";
+
+/* No comment provided by engineer. */
+"Groups" = "Gruppi";
+
+/* No comment provided by engineer. */
+"Images" = "Immagini";
+
+/* Introduction Step Five - Description */
+"In online mode, use real-time co-editing features of %@ to work on documents together with your portal members, share documents and create common storage folders." = "In modalità online, utilizza le funzionalità di co-editing in tempo reale di %@ per lavorare sui documenti insieme ai membri del tuo portale, condividere documenti e creare cartelle di archiviazione condivise.";
+
+/* No comment provided by engineer. */
+"Incorrect portal address" = "Indirizzo del portale non corretto";
+
+/* No comment provided by engineer. */
+"Invalid Country Code" = "Codice del paese non valido";
+
+/* Error message */
+"Invalid URL: The format ot the URL could not be determined" = "URL non valido: Non è stato possibile determinare il formato dell'URL";
+
+/* Data units */
+"Kb" = "Kb";
+
+/* Caption of the process */
+"Logging in" = "Accesso in corso";
+
+/* No comment provided by engineer. */
+"Login" = "Accesso";
+
+/* No comment provided by engineer. */
+"Login by %@" = "Accedere tramite %@";
+
+/* No comment provided by engineer. */
+"Login is empty" = "Accesso vuoto";
+
+/* Button title
+   Caption of the process */
+"Logout" = "Logout";
+
+/* Data units */
+"Mb" = "Mb";
+
+/* If current user name is not set */
+"Me" = "Me";
+
+/* Button title */
+"More" = "Altro";
+
+/* Button title */
+"Move" = "Spostare";
+
+/* Button title */
+"Move here" = "Spostare qui";
+
+/* Button title */
+"Move or Copy" = "Spostare o copiare";
+
+/* Caption of the processing */
+"Moving" = "Spostamento";
+
+/* No comment provided by engineer. */
+"My Clouds" = "I miei cloud";
+
+/* Category title */
+"My Documents" = "I miei documenti";
+
+/* No comment provided by engineer. */
+"My Drive" = "My Drive";
+
+/* No comment provided by engineer. */
+"Name is empty" = "Il nome è vuoto";
+
+/* No comment provided by engineer. */
+"Needs additional params." = "Richiede i parametri aggiuntivi.";
+
+/* No comment provided by engineer. */
+"New Document" = "Nuovo documento";
+
+/* No comment provided by engineer. */
+"New Folder" = "Nuova cartella";
+
+/* No comment provided by engineer. */
+"New Presentation" = "Nuova presentazione";
+
+/* No comment provided by engineer. */
+"New Spreadsheet" = "Nuovo foglio di calcolo";
+
+/* Next step */
+"Next" = "Successivo";
+
+/* No comment provided by engineer. */
+"Nextcloud" = "Nextcloud";
+
+/* No comment provided by engineer. */
+"No connection" = "Nessuna connessione";
+
+/* No comment provided by engineer. */
+"No information about the user profile." = "Nessuna informazione sul profilo utente.";
+
+/* No comment provided by engineer. */
+"No network" = "Nessuna rete";
+
+/* No comment provided by engineer. */
+"No network connection can be found. Please check the connection and reload the page." = "Non è possibile rilevare una connessione di rete. Controlla la connessione e ricarica la pagina.";
+
+/* No comment provided by engineer. */
+"No results matching your search could be found. Please try another phrase." = "Non sono stati trovati risultati corrispondenti alla tua ricerca. Prova con un'altra frase.";
+
+/* No comment provided by engineer. */
+"No search result" = "Nessun risultato di ricerca";
+
+/* Invalid entity date
+   Invalid entity owner
+   No information */
+"none" = "nessuno";
+
+/* If the cache is empty
+   Share status */
+"None" = "Nessuno";
+
+/* No comment provided by engineer. */
+"Note: removal from your account can not be undone." = "Nota: la rimozione dal tuo account non può essere annullata.";
+
+/* Used in the context: 'Showing 1 of 3 items' */
+"of" = "di";
+
+/* No comment provided by engineer. */
+"OK" = "ОК";
+
+/* Category title */
+"On iPad" = "Su iPad";
+
+/* Category title */
+"On iPhone" = "Su iPhone";
+
+/* No comment provided by engineer. */
+"Once you enter the password and open the file, the current password to the file will be reset" = "Una volta inserita la password e aperto il file, la password corrente del file verrà reimpostata";
+
+/* No comment provided by engineer. */
+"OneDrive directory" = "Cartella di OneDrive";
+
+/* No comment provided by engineer. */
+"OneDrive for Business" = "OneDrive for Business";
+
+/* Short App Name */
+"ONLYOFFICE" = "ONLYOFFICE";
+
+/* Full App Name */
+"ONLYOFFICE Documents" = "ONLYOFFICE Documents";
+
+/* No comment provided by engineer. */
+"Oops!" = "Ops!";
+
+/* No comment provided by engineer. */
+"Open Document" = "Aprire documento";
+
+/* Caption of the processing */
+"Opening" = "Apertura";
+
+/* No comment provided by engineer. */
+"Order" = "Ordinare";
+
+/* No comment provided by engineer. */
+"Other" = "Altro";
+
+/* Button title */
+"Overwrite" = "Sostituire";
+
+/* Button title */
+"Overwrite confirmation" = "Confermare la sostituzione";
+
+/* No comment provided by engineer. */
+"ownCloud" = "ownCloud";
+
+/* No comment provided by engineer. */
+"Owner" = "Proprietario";
+
+/* No comment provided by engineer. */
+"Password" = "Password";
+
+/* No comment provided by engineer. */
+"Password is empty" = "La password è vuota";
+
+/* No comment provided by engineer. */
+"Passwords do not match" = "Le password non corrispondono";
+
+/* Data units */
+"Pb" = "Pb";
+
+/* Used in the context: '1 photo' */
+"photo" = "foto";
+
+/* Used in the context: '3 photos' */
+"photos" = "foto";
+
+/* No comment provided by engineer. */
+"Please go to Settings and enable the camera for this app to use this feature." = "Per utilizzare questa funzione, vai su Impostazioni e attiva la fotocamera per quest'applicazione per poter utilizzarla.";
+
+/* No comment provided by engineer. */
+"Please re-login to renew your session." = "Accedi nuovamente per aggiornare la tua sessione.";
+
+/* No comment provided by engineer. */
+"Please retry. \n\n If the problem persists contact us and mention this error code: Box - %@" = "Riprova. \n\nSe il problema persiste, contattaci menzionando questo codice di errore: Box - %@";
+
+/* No comment provided by engineer. */
+"Please retry. \n\n If the problem persists contact us and mention this error code: Dropbox - %@" = "Riprova. \n\nSe il problema persiste, contattaci menzionando questo codice di errore: Dropbox - %@";
+
+/* No comment provided by engineer. */
+"Please retry. \n\n If the problem persists contact us and mention this error code: Google - %@" = "Riprova.\n\nSe il problema persiste, contattaci menzionando questo codice di errore: Google - %@";
+
+/* No comment provided by engineer. */
+"Please retry. \n\n If the problem persists contact us and mention this error code: OneDrive - %@" = "Riprova.\n\nSe il problema persiste, contattaci menzionando questo codice di errore: OneDrive - %@";
+
+/* No comment provided by engineer. */
+"Please retry. \n\n If the problem persists contact us and mention this error code: SSO - %@" = "Riprova.\n\t\t\nSe il problema persiste, contattaci menzionando questo codice di errore: SSO - %@";
+
+/* No comment provided by engineer. */
+"Portal Address" = "Indirizzo del portale";
+
+/* No comment provided by engineer. */
+"Portal is unavailable." = "Il portale non è disponibile.";
+
+/* No comment provided by engineer. */
+"Presentation" = "Presentazione";
+
+/* Default title of sample document */
+"Presentation Sample" = "Esempio di presentazione";
+
+/* No comment provided by engineer. */
+"Presentations" = "Presentazioni";
+
+/* Button title */
+"Preview" = "Anteprima";
+
+/* Caption of the processing */
+"Processing" = "Elaborazione";
+
+/* Category title */
+"Project Documents" = "Documenti del progetto";
+
+/* No comment provided by engineer. */
+"Protected File" = "File protetto";
+
+/* Share status */
+"Read Only" = "Sola lettura";
+
+/* Button title */
+"Recover here" = "Recuperare qui";
+
+/* Caption of the processing */
+"Recovery" = "Recupero";
+
+/* No comment provided by engineer. */
+"Registration" = "Registrazione";
+
+/* No comment provided by engineer. */
+"Reload" = "Ricaricare";
+
+/* Button title */
+"Rename" = "Rinominare";
+
+/* No comment provided by engineer. */
+"Rename failed." = "Impossibile rinominare.";
+
+/* No comment provided by engineer. */
+"Rename failed. An object with such a similar name exists." = "Impossibile rinominare. Esiste già un oggetto con lo stesso nome.";
+
+/* Caption of the processing */
+"Renaming" = "Ridenominazione";
+
+/* No comment provided by engineer. */
+"Renewal" = "Rinnovo";
+
+/* Button title */
+"Restore" = "Recuperare";
+
+/* Caption of the processing */
+"Restoring" = "Recupero";
+
+/* Share status */
+"Review" = "Revisione";
+
+/* Caption of the processing */
+"Saving" = "Salvataggio";
+
+/* Button title
+   Navigation bar button title */
+"Select" = "Selezionare";
+
+/* No comment provided by engineer. */
+"Select another cloud to connect to Nextcloud, ownCloud and others are supported." = "Seleziona un altro cloud per connettersi a Nextcloud; sono supportati ownCloud e altri.";
+
+/* No comment provided by engineer. */
+"Select Photos" = "Selezionare foto";
+
+/* One line. Max 50 charasters */
+"Select the folder to copy the items" = "Selezionare la cartella per copiare gli elementi";
+
+/* One line. Max 50 charasters */
+"Select the folder to move the items" = "Selezionare la cartella per spostare gli elementi";
+
+/* One line. Max 50 charasters */
+"Select the folder to recover the items" = "Selezionare la cartella per recuperare gli elementi";
+
+/* No comment provided by engineer. */
+"Selected provider is not available" = "Il provider selezionato non è disponibile";
+
+/* No comment provided by engineer. */
+"Selected: %ld" = "Selezionato: %ld";
+
+/* No comment provided by engineer. */
+"Settings" = "Impostazioni";
+
+/* Category title */
+"Shared with Me" = "Condivisi con me";
+
+/* No comment provided by engineer. */
+"SharePoint directory" = "Cartella di SharePoint";
+
+/* Caption of the process */
+"Sharing" = "Condivisione";
+
+/* No comment provided by engineer. */
+"Single Sign-on" = "Single Sign-on";
+
+/* No comment provided by engineer. */
+"Size" = "Dimensione";
+
+/* Button title */
+"Skip" = "Saltare";
+
+/* No comment provided by engineer. */
+"SKIP" = "Saltare";
+
+/* Presentation Viewer */
+"Slide %i of %i" = "Diapositiva %1$i di %2$i";
+
+/* Button title */
+"Sort" = "Ordinare";
+
+/* No comment provided by engineer. */
+"Space" = "Spazio";
+
+/* No comment provided by engineer. */
+"Spreadsheet" = "Foglio di calcolo";
+
+/* Default title of sample document */
+"Spreadsheet Sample" = "Esempio di foglio di calcolo";
+
+/* No comment provided by engineer. */
+"Spreadsheets" = "Fogli di calcolo";
+
+/* No comment provided by engineer. */
+"Switch" = "Cambiare";
+
+/* No comment provided by engineer. */
+"Tab" = "Tabulazione";
+
+/* Data units */
+"Tb" = "Tb";
+
+/* Notification title */
+"Text copied" = "Testo copiato";
+
+/* No comment provided by engineer. */
+"The account name must be between 6 and 50 characters long" = "Il nome dell'account deve avere una lunghezza compresa tra 6 e 50 caratteri";
+
+/* No comment provided by engineer. */
+"The deleted files go to the trash. You can either restore or delete them forever." = "I file eliminati vanno nel cestino. È possibile ripristinarli o eliminarli definitivamente.";
+
+/* No comment provided by engineer. */
+"The file in the Trash can not be viewed." = "Il file nel Cestino non può essere visualizzato.";
+
+/* No comment provided by engineer. */
+"The file will be irretrievably deleted. This action is irreversible." = "Il file sarà irrimediabilmente eliminato. Quest'azione è irreversibile.";
+
+/* No comment provided by engineer. */
+"The folder will be irretrievably deleted. This action is irreversible." = "La cartella sarà irrimediabilmente eliminata. Quest'azione è irreversibile.";
+
+/* No comment provided by engineer. */
+"The item with the name '%@' already exists in the folder '%@'." = "L'elemento con il nome '%1$@' già esiste nella cartella '%2$@'.";
+
+/* No comment provided by engineer. */
+"The portal address is invalid" = "L'indirizzo del portale non è valido";
+
+/* No comment provided by engineer. */
+"The portal name must be between 6 and 50 characters long" = "Il nome del portale deve avere una lunghezza compresa tra 6 e 50 caratteri";
+
+/* No comment provided by engineer. */
+"The server is not available." = "Il server non è disponibile.";
+
+/* No comment provided by engineer. */
+"The trash is empty" = "Il cestino è vuoto";
+
+/* Introduction Step Three - Title */
+"Third-party storage" = "Spazio di archiviazione di terze parti";
+
+/* No comment provided by engineer. */
+"This document is being edited. Do you want open %@ to view only?" = "Questo documento è in corso di elaborazione. Vuoi aprire %@ in sola lettura?";
+
+/* No comment provided by engineer. */
+"This folder is empty" = "Questa cartella è vuota";
+
+/* No comment provided by engineer. */
+"This operation will free up space on your device by deleting temporary files. Your offline files and personal data won't be removed." = "Quest'operazione libererà spazio sul dispositivo eliminando i file temporanei. I tuoi dati personali e file offline non saranno rimossi.";
+
+/* No comment provided by engineer. */
+"This presentation is being edited. Do you want open %@ to view only?" = "Questa presentazione è in corso di elaborazione. Vuoi aprire %@ in sola lettura?";
+
+/* No comment provided by engineer. */
+"This spreadsheet is being edited. Do you want open %@ to view only?" = "Questo foglio di calcolo è in corso di elaborazione. Vuoi aprire %@ in sola lettura?";
+
+/* No comment provided by engineer. */
+"Title" = "Titolo";
+
+/* No comment provided by engineer. */
+"To open a document, you must go to portal %@ under your account." = "Per aprire un documento, devi accedere il portale %@ con il tuo account.";
+
+/* No comment provided by engineer. */
+"To open a new document, you must exit the current document." = "Per aprire un nuovo documento, bisogna uscire dal documento corrente.";
+
+/* Category title */
+"Trash" = "Cestino";
+
+/* No comment provided by engineer. */
+"Try again" = "Riprovare";
+
+/* No comment provided by engineer. */
+"Try Again" = "Riprovare";
+
+/* No comment provided by engineer. */
+"Try to connect via another protocol?" = "Provare a connettersi tramite un altro protocollo?";
+
+/* No comment provided by engineer. */
+"Turn Passcode Off" = "Disattivare il codice di accesso";
+
+/* No comment provided by engineer. */
+"Turn Passcode On" = "Attivare il codice di accesso";
+
+/* No comment provided by engineer. */
+"Type" = "Tipo";
+
+/* No comment provided by engineer. */
+"Unable to get information about the portal" = "Impossibile ottenere informazioni sul portale";
+
+/* No comment provided by engineer. */
+"Unable to get information about the user." = "Impossibile ottenere informazioni sull'utente.";
+
+/* No comment provided by engineer. */
+"Unexpected response from the service." = "Risposta inaspettata del servizio.";
+
+/* Invalid entity name */
+"Unknown" = "Sconosciuto";
+
+/* No comment provided by engineer. */
+"Unknown API response." = "Risposta di API sconosciuta.";
+
+/* No comment provided by engineer. */
+"Unknown file provider" = "Provider di file sconosciuto";
+
+/* No comment provided by engineer. */
+"Unknown item type." = "Tipo di elemento sconosciuto.";
+
+/* No comment provided by engineer. */
+"Unlock with Face ID" = "Sbloccare con Face ID";
+
+/* No comment provided by engineer. */
+"Unlock with Touch ID" = "Sbloccare con Touch ID";
+
+/* No comment provided by engineer. */
+"Unsupported format." = "Formato non supportato.";
+
+/* Button title */
+"Upload" = "Caricare";
+
+/* Caption of the process */
+"Uploading" = "Caricamento";
+
+/* Button title */
+"Use Face ID" = "Utilizzare Face ID";
+
+/* Button title */
+"Use Touch ID" = "Utilizzare Touch ID";
+
+/* Error message */
+"User authentication failed" = "Impossibile autenticare l'utente";
+
+/* No comment provided by engineer. */
+"User undefined" = "Utente indefinito";
+
+/* No comment provided by engineer. */
+"Users" = "Utenti";
+
+/* Caption of the process */
+"Validation" = "Validazione";
+
+/* Share status */
+"Varies" = "Variabili";
+
+/* No comment provided by engineer. */
+"Version" = "Versione";
+
+/* No comment provided by engineer. */
+"Warning" = "Avvertimento";
+
+/* No comment provided by engineer. */
+"We are sorry, this portal name is already taken" = "Siamo spiacenti, questo nome del portale è già in uso";
+
+/* No comment provided by engineer. */
+"We have sent you an SMS with a code to the number %@" = "Ti abbiamo inviato un SMS con un codice al numero %@";
+
+/* No comment provided by engineer. */
+"WebDAV" = "WebDAV";
+
+/* No comment provided by engineer. */
+"WebDAV directory" = "Cartella di WebDAV";
+
+/* Introduction Step One - Description */
+"Welcome to %@ mobile editing suite!\nSwipe to learn more about the app." = "Benvenuto alla suite mobile %@!\nScorri per saperne di più.";
+
+/* No comment provided by engineer. */
+"What's New" = "Novità";
+
+/* Introduction Step Four - Description */
+"Work with documents offline.\nCreated files can later be uploaded to online portal and\nthen accessed from any other device." = "Lavora con i documenti offline.\nI file creati si può caricare sul portale online e\npoi accedergli da qualsiasi dispositivo.";
+
+/* Introduction Step Two - Title */
+"Work with office files" = "Lavora con i file Office";
+
+/* No comment provided by engineer. */
+"Wrong login or password." = "Nome utente o password errati.";
+
+/* No comment provided by engineer. */
+"Yandex directory" = "Cartella di Yandex Disk";
+
+/* No comment provided by engineer. */
+"Yandex Disk" = "Yandex Disk";
+
+/* Data units */
+"Yb" = "Yb";
+
+/* No comment provided by engineer. */
+"You can connect the following accounts to the %@." = "È possibile collegare i seguenti account a %@.";
+
+/* No comment provided by engineer. */
+"You can connect the following accounts to the %@. They will be displayed in 'My Documents' folder and you will be able to edit and save them right on the portal all in one place." = "È possibile collegare i seguenti account a %@. Saranno visualizzati nella cartella \"I miei documenti\" e potrai modificarli e salvarli direttamente sul portale in un unico posto.";
+
+/* No comment provided by engineer. */
+"You have read-only access to this folder. You cannot create files or folders here." = "Hai accesso a questa cartella in sola lettura. Non è possibile creare file o cartelle qui.";
+
+/* No comment provided by engineer. */
+"Your session has expired" = "La tua sessione è scaduta";
+
+/* Data units */
+"Zb" = "Zb";
+
+/* Data units */
+"Zero bytes" = "Zero byte";
+
+/* No comment provided by engineer. */
+"Сould not download file." = "Impossibile scaricare il file.";
+
+/* No comment provided by engineer. */
+"Сould not upload file." = "Impossibile caricare il file.";
+

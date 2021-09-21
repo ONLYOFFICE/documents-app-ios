@@ -116,6 +116,7 @@
 		1D8DF02F2639B6B10054B2F9 /* ASCOneDriveProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D8DF02E2639B6B10054B2F9 /* ASCOneDriveProvider.swift */; };
 		1D981FF32631A6AF00144B57 /* ASCOnlyofficeCategoriesProviderProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D981FF22631A6AF00144B57 /* ASCOnlyofficeCategoriesProviderProtocol.swift */; };
 		1D9820012631A8D900144B57 /* ASCOnlyofficeAppBasedCategoriesProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D9820002631A8D900144B57 /* ASCOnlyofficeAppBasedCategoriesProvider.swift */; };
+		1D9B7FEA26FA5A0000D06E9B /* ASCSharingOprionsInteractorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D9B7FE926FA5A0000D06E9B /* ASCSharingOprionsInteractorTests.swift */; };
 		1D9B807E2673EBEC0020B5ED /* ASCSwitchRowViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D9B807D2673EBEC0020B5ED /* ASCSwitchRowViewModel.swift */; };
 		1D9B80842673F5D70020B5ED /* ASCReusedIdentifierProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D9B80832673F5D70020B5ED /* ASCReusedIdentifierProtocol.swift */; };
 		1D9B808F2674001D0020B5ED /* ASCAccessRowTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D9B808E2674001C0020B5ED /* ASCAccessRowTableViewCell.swift */; };
@@ -788,6 +789,7 @@
 		1D8DF02E2639B6B10054B2F9 /* ASCOneDriveProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCOneDriveProvider.swift; sourceTree = "<group>"; };
 		1D981FF22631A6AF00144B57 /* ASCOnlyofficeCategoriesProviderProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCOnlyofficeCategoriesProviderProtocol.swift; sourceTree = "<group>"; };
 		1D9820002631A8D900144B57 /* ASCOnlyofficeAppBasedCategoriesProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCOnlyofficeAppBasedCategoriesProvider.swift; sourceTree = "<group>"; };
+		1D9B7FE926FA5A0000D06E9B /* ASCSharingOprionsInteractorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCSharingOprionsInteractorTests.swift; sourceTree = "<group>"; };
 		1D9B807D2673EBEC0020B5ED /* ASCSwitchRowViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCSwitchRowViewModel.swift; sourceTree = "<group>"; };
 		1D9B80832673F5D70020B5ED /* ASCReusedIdentifierProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCReusedIdentifierProtocol.swift; sourceTree = "<group>"; };
 		1D9B808E2674001C0020B5ED /* ASCAccessRowTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCAccessRowTableViewCell.swift; sourceTree = "<group>"; };
@@ -1680,6 +1682,7 @@
 			children = (
 				1D14AAC52694F0AF009E48AD /* Workers */,
 				1DCCEC09268DBD9C00692167 /* ASCSharingOptionsViewControllerTest.swift */,
+				1D9B7FE926FA5A0000D06E9B /* ASCSharingOprionsInteractorTests.swift */,
 			);
 			path = SharingOptions;
 			sourceTree = "<group>";
@@ -2909,6 +2912,7 @@
 				"${BUILT_PRODUCTS_DIR}/FirebaseCoreDiagnostics/FirebaseCoreDiagnostics.framework",
 				"${BUILT_PRODUCTS_DIR}/FirebaseCrashlytics/FirebaseCrashlytics.framework",
 				"${BUILT_PRODUCTS_DIR}/FirebaseInstallations/FirebaseInstallations.framework",
+				"${BUILT_PRODUCTS_DIR}/FirebaseInstanceID/FirebaseInstanceID.framework",
 				"${BUILT_PRODUCTS_DIR}/FirebaseMessaging/FirebaseMessaging.framework",
 				"${BUILT_PRODUCTS_DIR}/FirebaseRemoteConfig/FirebaseRemoteConfig.framework",
 				"${BUILT_PRODUCTS_DIR}/GTMAppAuth/GTMAppAuth.framework",
@@ -2970,6 +2974,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FirebaseCoreDiagnostics.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FirebaseCrashlytics.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FirebaseInstallations.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FirebaseInstanceID.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FirebaseMessaging.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FirebaseRemoteConfig.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMAppAuth.framework",
@@ -3201,6 +3206,7 @@
 				"${BUILT_PRODUCTS_DIR}/FirebaseCoreDiagnostics/FirebaseCoreDiagnostics.framework",
 				"${BUILT_PRODUCTS_DIR}/FirebaseCrashlytics/FirebaseCrashlytics.framework",
 				"${BUILT_PRODUCTS_DIR}/FirebaseInstallations/FirebaseInstallations.framework",
+				"${BUILT_PRODUCTS_DIR}/FirebaseInstanceID/FirebaseInstanceID.framework",
 				"${BUILT_PRODUCTS_DIR}/FirebaseMessaging/FirebaseMessaging.framework",
 				"${BUILT_PRODUCTS_DIR}/FirebaseRemoteConfig/FirebaseRemoteConfig.framework",
 				"${BUILT_PRODUCTS_DIR}/GTMAppAuth/GTMAppAuth.framework",
@@ -3262,6 +3268,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FirebaseCoreDiagnostics.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FirebaseCrashlytics.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FirebaseInstallations.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FirebaseInstanceID.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FirebaseMessaging.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FirebaseRemoteConfig.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMAppAuth.framework",
@@ -3713,6 +3720,7 @@
 				FC4D864520C50AE00047B871 /* Date+Extension.swift in Sources */,
 				1D1A2E1F2660F93600D0335B /* ASCLoadedViewControllerByProviderAndFolderFinderTests.swift in Sources */,
 				FC77846C24756CC2005ED631 /* ASCFolderProviderType.swift in Sources */,
+				1D9B7FEA26FA5A0000D06E9B /* ASCSharingOprionsInteractorTests.swift in Sources */,
 				FCD31F4524BDF2E200774ACD /* ASCLogger.swift in Sources */,
 				1DCCEC0A268DBD9C00692167 /* ASCSharingOptionsViewControllerTest.swift in Sources */,
 				FC4D864920C50AE00047B871 /* Path+Extension.swift in Sources */,

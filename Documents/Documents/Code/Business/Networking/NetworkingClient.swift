@@ -20,7 +20,20 @@ class ServerTrustPolicyManager: ServerTrustManager {
 
 }
 
-class NetworkingClient: NSObject {
+protocol NetworkingRequestingProtocol {
+    func request<Response> (
+        _ endpoint: Endpoint<Response>,
+        _ parameters: Parameters?,
+        _ completion: ((_ result: Response?, _ error: NetworkingError?) -> Void)?)
+    
+    func request<Response> (
+        _ endpoint: Endpoint<Response>,
+        _ parameters: Parameters?,
+        _ apply: ((_ data: MultipartFormData) -> Void)?,
+        _ completion: ((_ result: Response?, _ progress: Double, _ error: NetworkingError?) -> Void)?)
+}
+
+class NetworkingClient: NSObject, NetworkingRequestingProtocol {
     
     // MARK: - Properties
     

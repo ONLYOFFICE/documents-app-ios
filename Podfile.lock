@@ -190,9 +190,9 @@ PODS:
   - SkyFloatingLabelTextField (4.0.0)
   - SpreadsheetEditor (6.6.0)
   - SwiftGen (6.4.0)
-  - SwiftMessages (9.0.2):
-    - SwiftMessages/App (= 9.0.2)
-  - SwiftMessages/App (9.0.2)
+  - SwiftMessages (9.0.4):
+    - SwiftMessages/App (= 9.0.4)
+  - SwiftMessages/App (9.0.4)
   - SwiftRater (1.8.0)
   - SwiftyXMLParser (5.3.0)
   - UICircularProgressRing (8.0.0)
@@ -228,7 +228,7 @@ DEPENDENCIES:
   - SkyFloatingLabelTextField (from `https://github.com/Skyscanner/SkyFloatingLabelTextField.git`)
   - SpreadsheetEditor (from `../editors-ios/SpreadsheetEditor.podspec`)
   - SwiftGen (~> 6.4.0)
-  - SwiftMessages
+  - SwiftMessages (= 9.0.4)
   - SwiftRater
   - SwiftyXMLParser
   - WhatsNewKit
@@ -350,12 +350,12 @@ SPEC CHECKSUMS:
   SkyFloatingLabelTextField: 79ddc40e4ad59707fedbb48d605417aee48bb78a
   SpreadsheetEditor: 8ebf8145317fce8f18fb291964e693025343548f
   SwiftGen: 67860cc7c3cfc2ed25b9b74cfd55495fc89f9108
-  SwiftMessages: 77b847d1405f99046ffbd0d856bc7d73e6892686
+  SwiftMessages: 082ed63613a49fa8e749cd6000bb0a8b9bbc736f
   SwiftRater: 6094fa6e9b3866ff8beca0a871b4b5f9ab896a6d
   SwiftyXMLParser: 0985085180f1ee01916cd9b5c1a4f0a8f493c084
   UICircularProgressRing: 19927375b2b21b5fa5fd9582f15ccdef9659da16
   WhatsNewKit: c87028c4059dccd113495422801914cc53f6aab0
 
-PODFILE CHECKSUM: 1b63d19b2ee45ad8e6481215600a953cfda4ed24
+PODFILE CHECKSUM: a83f823e35a6373ab11808f0c7b64cfd968e1ffe
 
-COCOAPODS: 1.10.0
+COCOAPODS: 1.11.2

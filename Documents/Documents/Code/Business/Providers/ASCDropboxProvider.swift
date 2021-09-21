@@ -677,10 +677,10 @@ class ASCDropboxProvider: ASCFileProviderProtocol & ASCSortableFileProviderProto
                                     cloudFile.pureContentLength = Int(fileSize)
                                     
                                     ASCAnalytics.logEvent(ASCConstants.Analytics.Event.createEntity, parameters: [
-                                        "portal": strongSelf.provider?.baseURL?.absoluteString ?? "none",
-                                        "onDevice": false,
-                                        "type": "file",
-                                        "fileExt": cloudFile.title.fileExtension().lowercased()
+                                        ASCAnalytics.Event.Key.portal: strongSelf.provider?.baseURL?.absoluteString ?? ASCAnalytics.Event.Value.none,
+                                        ASCAnalytics.Event.Key.onDevice: false,
+                                        ASCAnalytics.Event.Key.type: ASCAnalytics.Event.Value.file,
+                                        ASCAnalytics.Event.Key.fileExt: cloudFile.title.fileExtension().lowercased()
                                         ]
                                     )
                                     
@@ -705,10 +705,10 @@ class ASCDropboxProvider: ASCFileProviderProtocol & ASCSortableFileProviderProto
         upload(path, data: data, overwrite: false, params: nil) { [weak self] progress, result, error, response in
             if let _ = result {
                 ASCAnalytics.logEvent(ASCConstants.Analytics.Event.createEntity, parameters: [
-                    "portal": self?.provider?.baseURL?.absoluteString ?? "none",
-                    "onDevice": false,
-                    "type": "file",
-                    "fileExt": name.fileExtension()
+                    ASCAnalytics.Event.Key.portal: self?.provider?.baseURL?.absoluteString ?? ASCAnalytics.Event.Value.none,
+                    ASCAnalytics.Event.Key.onDevice: false,
+                    ASCAnalytics.Event.Key.type: ASCAnalytics.Event.Value.file,
+                    ASCAnalytics.Event.Key.fileExt: name.fileExtension()
                     ]
                 )
             }
@@ -744,9 +744,9 @@ class ASCDropboxProvider: ASCFileProviderProtocol & ASCSortableFileProviderProto
                     cloudFolder.parentId = folder.id
 
                     ASCAnalytics.logEvent(ASCConstants.Analytics.Event.createEntity, parameters: [
-                        "portal": provider.baseURL?.absoluteString ?? "none",
-                        "onDevice": false,
-                        "type": "folder"
+                        ASCAnalytics.Event.Key.portal: provider.baseURL?.absoluteString ?? ASCAnalytics.Event.Value.none,
+                        ASCAnalytics.Event.Key.onDevice: false,
+                        ASCAnalytics.Event.Key.type: ASCAnalytics.Event.Value.folder
                         ]
                     )
 

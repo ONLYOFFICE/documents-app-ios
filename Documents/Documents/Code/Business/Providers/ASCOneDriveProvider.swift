@@ -832,10 +832,10 @@ extension ASCOneDriveProvider: ASCFileProviderProtocol {
                                                 let cloudFile = self.makeCloudFile(from: fileObject)
 
                                                 ASCAnalytics.logEvent(ASCConstants.Analytics.Event.createEntity, parameters: [
-                                                    "portal": self.provider?.baseURL?.absoluteString ?? "none",
-                                                    "onDevice": false,
-                                                    "type": "file",
-                                                    "fileExt": cloudFile.title.fileExtension().lowercased()
+                                                    ASCAnalytics.Event.Key.portal: self.provider?.baseURL?.absoluteString ?? ASCAnalytics.Event.Value.none,
+                                                    ASCAnalytics.Event.Key.onDevice: false,
+                                                    ASCAnalytics.Event.Key.type: ASCAnalytics.Event.Value.file,
+                                                    ASCAnalytics.Event.Key.fileExt: cloudFile.title.fileExtension().lowercased()
                                                     ]
                                                 )
 
@@ -868,10 +868,10 @@ extension ASCOneDriveProvider: ASCFileProviderProtocol {
         upload(path, data: data, overwrite: false, params: nil) { [weak self] progress, result, error, response in
             if let _ = result {
                 ASCAnalytics.logEvent(ASCConstants.Analytics.Event.createEntity, parameters: [
-                    "portal": self?.provider?.baseURL?.absoluteString ?? "none",
-                    "onDevice": false,
-                    "type": "file",
-                    "fileExt": name.fileExtension()
+                    ASCAnalytics.Event.Key.portal: self?.provider?.baseURL?.absoluteString ?? ASCAnalytics.Event.Value.none,
+                    ASCAnalytics.Event.Key.onDevice: false,
+                    ASCAnalytics.Event.Key.type: ASCAnalytics.Event.Value.file,
+                    ASCAnalytics.Event.Key.fileExt: name.fileExtension()
                     ]
                 )
             }
@@ -909,9 +909,9 @@ extension ASCOneDriveProvider: ASCFileProviderProtocol {
                     cloudFolder.parentId = folder.id
 
                     ASCAnalytics.logEvent(ASCConstants.Analytics.Event.createEntity, parameters: [
-                        "portal": provider.baseURL?.absoluteString ?? "none",
-                        "onDevice": false,
-                        "type": "folder"
+                        ASCAnalytics.Event.Key.portal: provider.baseURL?.absoluteString ?? ASCAnalytics.Event.Value.none,
+                        ASCAnalytics.Event.Key.onDevice: false,
+                        ASCAnalytics.Event.Key.type: ASCAnalytics.Event.Value.folder
                         ]
                     )
 

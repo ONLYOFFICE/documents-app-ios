@@ -607,10 +607,10 @@ class ASCOnlyofficeProvider: ASCFileProviderProtocol & ASCSortableFileProviderPr
                     if let result = result as? [String: Any] {
                         let file = ASCFile(JSON: result)
                         ASCAnalytics.logEvent(ASCConstants.Analytics.Event.createEntity, parameters: [
-                            "portal": ASCOnlyOfficeApi.shared.baseUrl ?? "none",
-                            "onDevice": false,
-                            "type": "file",
-                            "fileExt": file?.title.fileExtension().lowercased() ?? "none"
+                            ASCAnalytics.Event.Key.portal: ASCOnlyOfficeApi.shared.baseUrl ?? ASCAnalytics.Event.Value.none,
+                            ASCAnalytics.Event.Key.onDevice: false,
+                            ASCAnalytics.Event.Key.type: ASCAnalytics.Event.Value.file,
+                            ASCAnalytics.Event.Key.fileExt: file?.title.fileExtension().lowercased() ?? ASCAnalytics.Event.Value.none
                             ]
                         )
                         completeon?(self, file, true, nil)
@@ -641,10 +641,10 @@ class ASCOnlyofficeProvider: ASCFileProviderProtocol & ASCSortableFileProviderPr
         upload(folder.id, data: data, overwrite: false, params: params) { progress, result, error, response in
             if let _ = result as? [String: Any] {
                 ASCAnalytics.logEvent(ASCConstants.Analytics.Event.createEntity, parameters: [
-                    "portal": ASCOnlyOfficeApi.shared.baseUrl ?? "none",
-                    "onDevice": false,
-                    "type": "file",
-                    "fileExt": name.fileExtension()
+                    ASCAnalytics.Event.Key.portal: ASCOnlyOfficeApi.shared.baseUrl ?? ASCAnalytics.Event.Value.none,
+                    ASCAnalytics.Event.Key.onDevice: false,
+                    ASCAnalytics.Event.Key.type: ASCAnalytics.Event.Value.file,
+                    ASCAnalytics.Event.Key.fileExt: name.fileExtension()
                     ]
                 )
             }
@@ -665,9 +665,9 @@ class ASCOnlyofficeProvider: ASCFileProviderProtocol & ASCSortableFileProviderPr
                     if let result = result as? [String: Any] {
                         let folder = ASCFolder(JSON: result)
                         ASCAnalytics.logEvent(ASCConstants.Analytics.Event.createEntity, parameters: [
-                            "portal": self?.api.baseUrl ?? "none",
-                            "onDevice": false,
-                            "type": "folder"
+                            ASCAnalytics.Event.Key.portal: self?.api.baseUrl ?? ASCAnalytics.Event.Value.none,
+                            ASCAnalytics.Event.Key.onDevice: false,
+                            ASCAnalytics.Event.Key.type: ASCAnalytics.Event.Value.folder
                             ]
                         )
                         completeon?(strongSelf, folder, true, nil)

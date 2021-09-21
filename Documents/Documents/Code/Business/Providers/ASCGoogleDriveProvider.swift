@@ -632,10 +632,10 @@ class ASCGoogleDriveProvider: ASCFileProviderProtocol & ASCSortableFileProviderP
                         completeon?(strongSelf, nil, false, ASCProviderError(error))
                     } else if let file = result as? ASCFile {
                         ASCAnalytics.logEvent(ASCConstants.Analytics.Event.createEntity, parameters: [
-                            "portal": "Direct - Google Drive",
-                            "onDevice": false,
-                            "type": "file",
-                            "fileExt": file.title.fileExtension().lowercased()
+                            ASCAnalytics.Event.Key.portal: "Direct - Google Drive",
+                            ASCAnalytics.Event.Key.onDevice: false,
+                            ASCAnalytics.Event.Key.type: ASCAnalytics.Event.Value.file,
+                            ASCAnalytics.Event.Key.fileExt: file.title.fileExtension().lowercased()
                             ]
                         )
                         
@@ -676,10 +676,10 @@ class ASCGoogleDriveProvider: ASCFileProviderProtocol & ASCSortableFileProviderP
         upload(folder.id, data: data, overwrite: false, params: params) { progress, result, error, response in
             if let _ = result {
                 ASCAnalytics.logEvent(ASCConstants.Analytics.Event.createEntity, parameters: [
-                    "portal": "Direct - Google Drive",
-                    "onDevice": false,
-                    "type": "file",
-                    "fileExt": name.fileExtension()
+                    ASCAnalytics.Event.Key.portal: "Direct - Google Drive",
+                    ASCAnalytics.Event.Key.onDevice: false,
+                    ASCAnalytics.Event.Key.type: ASCAnalytics.Event.Value.file,
+                    ASCAnalytics.Event.Key.fileExt: name.fileExtension()
                     ]
                 )
             }
@@ -737,9 +737,9 @@ class ASCGoogleDriveProvider: ASCFileProviderProtocol & ASCSortableFileProviderP
                 cloudFolder.parentId = parent.id
                 
                 ASCAnalytics.logEvent(ASCConstants.Analytics.Event.createEntity, parameters: [
-                    "portal": "Direct - Google Drive",
-                    "onDevice": false,
-                    "type": "folder"
+                    ASCAnalytics.Event.Key.portal: "Direct - Google Drive",
+                    ASCAnalytics.Event.Key.onDevice: false,
+                    ASCAnalytics.Event.Key.type: ASCAnalytics.Event.Value.folder
                     ]
                 )
                 

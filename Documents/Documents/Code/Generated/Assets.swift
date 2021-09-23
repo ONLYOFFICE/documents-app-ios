@@ -92,6 +92,7 @@ internal enum Asset {
     internal static let emptySearchResult = ImageAsset(name: "empty-search-result")
     internal static let emptyTrash = ImageAsset(name: "empty-trash")
     internal static let hudCheckmark = ImageAsset(name: "hud-checkmark")
+    internal static let hudCross = ImageAsset(name: "hud-cross")
     internal static let mailNotification = ImageAsset(name: "mail-notification")
     internal static let introStepFive = ImageAsset(name: "intro-step-five")
     internal static let introStepFour = ImageAsset(name: "intro-step-four")
@@ -167,9 +168,8 @@ internal enum Asset {
     internal static let tabOnlyoffice = ImageAsset(name: "tab-onlyoffice")
     internal static let tabSettingsSelected = ImageAsset(name: "tab-settings-selected")
     internal static let tabSettings = ImageAsset(name: "tab-settings")
-    internal static let whatsnewFutureFavourite = ImageAsset(name: "whatsnew-future-favourite")
-    internal static let whatsnewFutureIcloudDrive = ImageAsset(name: "whatsnew-future-icloud-drive")
-    internal static let whatsnewFutureShare = ImageAsset(name: "whatsnew-future-share")
+    internal static let whatsnewFutureClouds = ImageAsset(name: "whatsnew-future-clouds")
+    internal static let whatsnewFutureOnlyoffice = ImageAsset(name: "whatsnew-future-onlyoffice")
   }
 }
 // swiftlint:enable identifier_name line_length nesting type_body_length type_name

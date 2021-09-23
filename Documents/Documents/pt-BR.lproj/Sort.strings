@@ -1,0 +1,12 @@
+/* Class = "UILabel"; text = "Ascending"; ObjectID = "HjM-la-pDc"; */
+"HjM-la-pDc.text" = "Ascendente";
+
+/* Class = "UINavigationItem"; title = "Sort"; ObjectID = "hSK-XM-USz"; Note = "View Title"; */
+"hSK-XM-USz.title" = "Ordenar por";
+
+/* Class = "UILabel"; text = "Sort by"; ObjectID = "VLB-h5-1fu"; */
+"VLB-h5-1fu.text" = "Ordenar por";
+
+/* Class = "UITableViewController"; title = "Sort"; ObjectID = "yAy-Q3-Av8"; */
+"yAy-Q3-Av8.title" = "Ordenar por";
+

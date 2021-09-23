@@ -483,7 +483,7 @@ class ASCCreatePortalViewController: ASCBaseViewController {
                         if let responseJson = responseJson as? [String: Any] {
                             if let tenant = responseJson["tenant"] as? [String: Any], let domain = tenant["domain"] as? String {
                                 ASCAnalytics.logEvent(ASCConstants.Analytics.Event.createPortal, parameters: [
-                                    "portal": domain,
+                                    ASCAnalytics.Event.Key.portal: domain,
                                     "email": email
                                     ]
                                 )

@@ -19,6 +19,9 @@
 /* Privacy - Face ID Usage Description */
 "NSFaceIDUsageDescription" = "Für die Authentifizierung mit Gesichtserkennung benötigt diese App die Berechtigung zur Gesichtserkennung.";
 
+/* Privacy - Photo Library Additions Usage Description */
+"NSPhotoLibraryAddUsageDescription" = "Diese App benötigt Zugriff auf die Fotobibliothek, damit Sie Ihre Fotos in die App hochladen können.";
+
 /* Privacy - Photo Library Usage Description */
 "NSPhotoLibraryUsageDescription" = "Diese App benötigt Zugriff auf die Foto-Bibliothek, damit Sie Ihre Fotos in die App hochladen können.";
 

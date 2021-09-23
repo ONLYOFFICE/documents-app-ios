@@ -263,7 +263,7 @@ extension ASCSharingOptionsViewController {
             case .otherRightHolders: return otherRightHoldersCell(cellForRowAt: indexPath)
             }
         } else {
-            let section = getSharingFolderOprinosSection(sectionRawValue: indexPath.row)
+            let section = getSharingFolderOprinosSection(sectionRawValue: indexPath.section)
             switch section {
             case .importantRightHolders: return importantRightHoldersCell(cellForRowAt: indexPath)
             case .otherRightHolders: return otherRightHoldersCell(cellForRowAt: indexPath)
@@ -479,7 +479,7 @@ extension ASCSharingOptionsViewController {
             case .otherRightHolders: viewModel = otherRightHolders[indexPath.row]
             }
         } else {
-            let section = getSharingFolderOprinosSection(sectionRawValue: indexPath.row)
+            let section = getSharingFolderOprinosSection(sectionRawValue: indexPath.section)
             switch section {
             case .importantRightHolders: viewModel = importantRightHolders[indexPath.row]
             case .otherRightHolders: viewModel = otherRightHolders[indexPath.row]

@@ -209,15 +209,8 @@ extension ASCOneDriveProvider: ASCFileProviderProtocol {
                         
                         for file in mediaFiles {
                             getLinkQueue.addOperation {
-                                let semaphore = DispatchSemaphore(value: 0)
-
-                                provider.publicLink(to: file.id) { link, fileObj, expiration, error in
-                                    if let viewUrl = link?.absoluteString {
-                                        files.first(where: { $0.id == file.id })?.viewUrl = viewUrl
-                                    }
-                                    semaphore.signal()
-                                }
-                                semaphore.wait()
+                                files.first(where: { $0.id == file.id })?.viewUrl =
+                                    provider.url(of: file.viewUrl ?? "", modifier: "content").absoluteString
                             }
                         }
                         
@@ -637,27 +630,68 @@ extension ASCOneDriveProvider: ASCFileProviderProtocol {
             entityName = newName
         }
         
-        _ = provider.moveItem(path: entityId, to: "", overwrite: false, requestData: ["name": entityName]) { [weak self] error in
-            DispatchQueue.main.async(execute: { [weak self] in
-                guard let self = self else { return }
-                
+        let moveItemFunc = {
+            log.info("moving")
+            _ = provider.moveItem(path: entityId, to: "", overwrite: false, requestData: ["name": entityName]) { [weak self] error in
+                DispatchQueue.main.async(execute: { [weak self] in
+                    guard let self = self else { return }
+                    
+                    guard error == nil else {
+                        completeon?(self, nil, false, ASCProviderError(error!))
+                        return
+                    }
+                    
+                    if let file = file {
+                        file.title = entityName
+                        
+                        completeon?(self, file, true, nil)
+                    } else if let folder = folder {
+                        folder.title = entityName
+                        
+                        completeon?(self, folder, true, nil)
+                    } else {
+                        completeon?(self, nil, false, ASCProviderError(msg: NSLocalizedString("Unknown item type.", comment: "")))
+                    }
+                })
+            }
+        }
+        
+        let entityPathDefineCompletion: (String?, Error?) -> Void = { path, error in
+            guard let path = path, !path.isEmpty, error == nil else {
+                if error != nil {
+                    log.error(error!.localizedDescription)
+                }
+                moveItemFunc()
+                return
+            }
+            
+            let fullPath = path.deletingLastPathComponent.appendingPathComponent(entityName)
+            
+            log.info("Getting item attributes by path: \(fullPath)")
+            provider.attributesOfItem(path: fullPath) { entityObject, error in
                 guard error == nil else {
-                    completeon?(self, nil, false, ASCProviderError(error!))
+                    log.error(error!.localizedDescription)
+                    moveItemFunc()
                     return
                 }
                 
-                if let file = file {
-                    file.title = entityName
-                    
-                    completeon?(self, file, true, nil)
-                } else if let folder = folder {
-                    folder.title = entityName
-                    
-                    completeon?(self, folder, true, nil)
-                } else {
-                    completeon?(self, nil, false, ASCProviderError(msg: NSLocalizedString("Unknown item type.", comment: "")))
+                guard entityObject == nil else {
+                    DispatchQueue.main.async {
+                        completeon?(self, entity, false, ASCProviderError(msg: NSLocalizedString("Rename failed. An object with such a similar name exists.", comment: "")))
+                    }
+                    return
                 }
-            })
+                
+                log.info("Attributes not found. Can move.")
+                moveItemFunc()
+            }
+        }
+        
+        log.info("Definding path")
+        if let folder = entity as? ASCFolder, folder.id.isEmpty {
+            entityPathDefineCompletion("/".appendingPathComponent(folder.title), nil)
+        } else {
+            provider.pathOfItem(withId: entityId, completionHandler: entityPathDefineCompletion)
         }
     }
     
@@ -699,6 +733,56 @@ extension ASCOneDriveProvider: ASCFileProviderProtocol {
         }
     }
     
+    func findUnicName(baseName: String, inFolder folder: ASCFolder, completionHandler: @escaping (String) -> Void) {
+        guard let provider = provider else {
+            completionHandler(baseName)
+            return
+        }
+        
+        let pathFoundCompletion: (String?, Error?) -> Void = { path, error in
+            guard error == nil, let folderPath = path
+            else {
+                completionHandler(baseName)
+                return
+            }
+            
+            var checkingName = baseName
+            var isCurrentNameUnic = false
+            
+            var triesCount = 0;
+            repeat {
+                let semaphore = DispatchSemaphore(value: 0)
+                let filePath = folderPath.appendingPathComponent(checkingName)
+                provider.attributesOfItem(path: filePath) { fileObject, error in
+                    if fileObject == nil || error != nil {
+                        isCurrentNameUnic = true
+                    } else {
+                        triesCount += 1
+                        
+                        let fullItemName = baseName
+                        let itemExtension = fullItemName.pathExtension
+                        if !itemExtension.isEmpty {
+                            let itemName = fullItemName.deletingPathExtension
+                            checkingName = "\(itemName) \(triesCount).\(itemExtension)"
+                        } else {
+                            checkingName = "\(baseName) \(triesCount)"
+                        }
+                        
+                    }
+                    semaphore.signal()
+                }
+                semaphore.wait()
+            } while (!isCurrentNameUnic);
+            completionHandler(checkingName)
+        }
+        
+        if folder.id.isEmpty {
+            pathFoundCompletion("/", nil)
+        } else {
+            provider.pathOfItem(withId: folder.id, completionHandler: pathFoundCompletion)
+        }
+    }
+    
     func createDocument(_ name: String, fileExtension: String, in folder: ASCFolder, completeon: ASCProviderCompletionHandler?) {
         guard let provider = provider else {
             completeon?(self, nil, false, ASCProviderError(msg: errorProviderUndefined))
@@ -706,70 +790,73 @@ extension ASCOneDriveProvider: ASCFileProviderProtocol {
         }
         
         let fileTitle = name + "." + fileExtension
-        let file = ASCFile()
-        file.title = fileTitle
-        chechTransfer(items: [file], to: folder) { [self] (status, items, message) in
-            switch status {
-            case .end:
-                if let items = items as? [ASCEntity] {
-                    guard items.isEmpty else {
-                        log.error(status, items, message ?? "")
-                        completeon?(self, nil, false, nil)
-                        return
-                    }
-                }
-                
-                if let templatePath = ASCFileManager.documentTemplatePath(with: fileExtension) {
-                    let localUrl = Path(templatePath).url
-
-                    let remotePath = folder.id.contains("id:") ? "\(folder.id):/\(fileTitle):/" : (Path(folder.id) + fileTitle).rawValue
-
-                    operationProcess = provider.copyItem(localFile: localUrl, to: remotePath) { [weak self] error in
-                        if error != nil {
-                            guard let self = self else { return }
-                            log.error(error!.localizedDescription)
-                            completeon?(self, nil, false, ASCProviderError(error!))
+        
+        findUnicName(baseName: fileTitle, inFolder: folder) { fileTitle in
+            let file = ASCFile()
+            file.title = fileTitle
+            self.chechTransfer(items: [file], to: folder) { [self] (status, items, message) in
+                switch status {
+                case .end:
+                    if let items = items as? [ASCEntity] {
+                        guard items.isEmpty else {
+                            log.error(status, items, message ?? "")
+                            completeon?(self, nil, false, nil)
+                            return
                         }
-                        DispatchQueue.main.async(execute: { [weak self] in
-                            guard let self = self else { return }
-                            if let error = error {
-                                log.error(error.localizedDescription)
-                                completeon?(self, nil, false, ASCProviderError(error))
-                            } else {
-                                provider.attributesOfItem(path: remotePath, completionHandler: { [weak self] fileObject, error in
-                                    DispatchQueue.main.async(execute: { [weak self] in
-                                        guard let self = self else { return }
-
-                                        if let error = error {
-                                            log.debug(error)
-                                            completeon?(self, nil, false, ASCProviderError(error))
-                                        } else if let fileObject = fileObject {
-
-                                            let cloudFile = self.makeCloudFile(from: fileObject)
-
-                                            ASCAnalytics.logEvent(ASCConstants.Analytics.Event.createEntity, parameters: [
-                                                "portal": self.provider?.baseURL?.absoluteString ?? "none",
-                                                "onDevice": false,
-                                                "type": "file",
-                                                "fileExt": cloudFile.title.fileExtension().lowercased()
-                                                ]
-                                            )
-
-                                            completeon?(self, cloudFile, true, nil)
-                                        } else {
-                                            log.debug("couldn't get a file")
-                                            completeon?(self, nil, false, nil)
-                                        }
-                                    })
-                                })
-                            }
-                        })
                     }
+                    
+                    if let templatePath = ASCFileManager.documentTemplatePath(with: fileExtension) {
+                        let localUrl = Path(templatePath).url
+
+                        let remotePath = folder.id.contains("id:") ? "\(folder.id):/\(fileTitle):/" : (Path(folder.id) + fileTitle).rawValue
+
+                        operationProcess = provider.copyItem(localFile: localUrl, to: remotePath) { [weak self] error in
+                            if error != nil {
+                                guard let self = self else { return }
+                                log.error(error!.localizedDescription)
+                                completeon?(self, nil, false, ASCProviderError(error!))
+                            }
+                            DispatchQueue.main.async(execute: { [weak self] in
+                                guard let self = self else { return }
+                                if let error = error {
+                                    log.error(error.localizedDescription)
+                                    completeon?(self, nil, false, ASCProviderError(error))
+                                } else {
+                                    provider.attributesOfItem(path: remotePath, completionHandler: { [weak self] fileObject, error in
+                                        DispatchQueue.main.async(execute: { [weak self] in
+                                            guard let self = self else { return }
+
+                                            if let error = error {
+                                                log.debug(error)
+                                                completeon?(self, nil, false, ASCProviderError(error))
+                                            } else if let fileObject = fileObject {
+
+                                                let cloudFile = self.makeCloudFile(from: fileObject)
+
+                                                ASCAnalytics.logEvent(ASCConstants.Analytics.Event.createEntity, parameters: [
+                                                    ASCAnalytics.Event.Key.portal: self.provider?.baseURL?.absoluteString ?? ASCAnalytics.Event.Value.none,
+                                                    ASCAnalytics.Event.Key.onDevice: false,
+                                                    ASCAnalytics.Event.Key.type: ASCAnalytics.Event.Value.file,
+                                                    ASCAnalytics.Event.Key.fileExt: cloudFile.title.fileExtension().lowercased()
+                                                    ]
+                                                )
+
+                                                completeon?(self, cloudFile, true, nil)
+                                            } else {
+                                                log.debug("couldn't get a file")
+                                                completeon?(self, nil, false, nil)
+                                            }
+                                        })
+                                    })
+                                }
+                            })
+                        }
+                    }
+                case .error:
+                    completeon?(self, nil, false, ASCProviderError(msg: message ?? ""))
+                default:
+                    log.info(status, items ?? "", message ?? "")
                 }
-            case .error:
-                completeon?(self, nil, false, ASCProviderError(msg: message ?? ""))
-            default:
-                log.info(status, items ?? "", message ?? "")
             }
         }
     }
@@ -784,10 +871,10 @@ extension ASCOneDriveProvider: ASCFileProviderProtocol {
         upload(path, data: data, overwrite: false, params: nil) { [weak self] result, progress, error in
             if let _ = result {
                 ASCAnalytics.logEvent(ASCConstants.Analytics.Event.createEntity, parameters: [
-                    "portal": self?.provider?.baseURL?.absoluteString ?? "none",
-                    "onDevice": false,
-                    "type": "file",
-                    "fileExt": name.fileExtension()
+                    ASCAnalytics.Event.Key.portal: self?.provider?.baseURL?.absoluteString ?? ASCAnalytics.Event.Value.none,
+                    ASCAnalytics.Event.Key.onDevice: false,
+                    ASCAnalytics.Event.Key.type: ASCAnalytics.Event.Value.file,
+                    ASCAnalytics.Event.Key.fileExt: name.fileExtension()
                     ]
                 )
             }
@@ -800,6 +887,8 @@ extension ASCOneDriveProvider: ASCFileProviderProtocol {
             completeon?(self, nil, false, ASCProviderError(msg: errorProviderUndefined))
             return
         }
+        
+        findUnicName(baseName: name, inFolder: folder) { name in
         
         provider.create(folder: name, at: folder.id) { [weak self] error in
             DispatchQueue.main.async(execute: { [weak self] in
@@ -823,15 +912,16 @@ extension ASCOneDriveProvider: ASCFileProviderProtocol {
                     cloudFolder.parentId = folder.id
 
                     ASCAnalytics.logEvent(ASCConstants.Analytics.Event.createEntity, parameters: [
-                        "portal": provider.baseURL?.absoluteString ?? "none",
-                        "onDevice": false,
-                        "type": "folder"
+                        ASCAnalytics.Event.Key.portal: provider.baseURL?.absoluteString ?? ASCAnalytics.Event.Value.none,
+                        ASCAnalytics.Event.Key.onDevice: false,
+                        ASCAnalytics.Event.Key.type: ASCAnalytics.Event.Value.folder
                         ]
                     )
 
                     completeon?(strongSelf, cloudFolder, true, nil)
                 }
             })
+        }
         }
     }
     
@@ -848,24 +938,42 @@ extension ASCOneDriveProvider: ASCFileProviderProtocol {
         let operationQueue = OperationQueue()
         operationQueue.maxConcurrentOperationCount = 1
         
-        for entity in items {
-            operationQueue.addOperation {
-                let semaphore = DispatchSemaphore(value: 0)
-                let file = entity as? ASCFile
-                provider.attributesOfItem(folderId: folder.id, fileName: file?.title ?? entity.id, completionHandler: { object, error in
-                    if error == nil, object != nil {
-                        conflictItems.append(entity)
+        let pathFoundCompletion: (String?, Error?) -> Void = { path, error in
+            for entity in items {
+                operationQueue.addOperation {
+                    let semaphore = DispatchSemaphore(value: 0)
+                    let file = entity as? ASCFile
+                    let fileName = file?.title ?? entity.id
+                    let completionHandler: (FileObject?, Error?) -> Void = { object, error in
+                        if error == nil, object != nil {
+                            conflictItems.append(entity)
+                        }
+                        semaphore.signal()
                     }
-                    semaphore.signal()
+                    
+                    if let folderPath = path, error == nil {
+                        log.info("Getting attributes by path \(folderPath.appendingPathComponent(fileName))")
+                        provider.attributesOfItem(path:  folderPath.appendingPathComponent(fileName), completionHandler: completionHandler)
+                    } else {
+                        log.error(error ?? "Path wasn't taken")
+                        log.info("Getting attributes by folder id and file name")
+                        provider.attributesOfItem(folderId: folder.id, fileName: fileName, completionHandler: completionHandler)
+                    }
+                    semaphore.wait()
+                }
+            }
+            
+            operationQueue.addOperation {
+                DispatchQueue.main.async(execute: {
+                    handler?(.end, conflictItems, nil)
                 })
-                semaphore.wait()
             }
         }
         
-        operationQueue.addOperation {
-            DispatchQueue.main.async(execute: {
-                handler?(.end, conflictItems, nil)
-            })
+        if folder.id.isEmpty {
+            pathFoundCompletion("/", nil)
+        } else {
+            provider.pathOfItem(withId: folder.id, completionHandler: pathFoundCompletion)
         }
     }
     
@@ -1044,7 +1152,6 @@ extension ASCOneDriveProvider: ASCFileProviderProtocol {
             let openHandler = delegate?.openProgress(file: file, title: NSLocalizedString("Downloading", comment: "Caption of the processing") + "...", 0.15)
             ASCEditorManager.shared.browsePdfCloud(for: self, file, handler: openHandler)
         } else if isImage || isVideo {
-            file.viewUrl = provider?.url(of: file.viewUrl ?? "", modifier: "content").absoluteString ?? file.viewUrl
             ASCEditorManager.shared.browseMedia(for: self, file, files: files)
         } else {
             if let view = view {

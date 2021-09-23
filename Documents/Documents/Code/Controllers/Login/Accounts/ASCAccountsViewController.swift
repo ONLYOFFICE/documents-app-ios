@@ -310,7 +310,7 @@ class ASCAccountsViewController: ASCBaseViewController {
                         )
 
                         ASCAnalytics.logEvent(ASCConstants.Analytics.Event.switchAccount, parameters: [
-                            "portal": baseUrl
+                            ASCAnalytics.Event.Key.portal: baseUrl
                             ]
                         )
 

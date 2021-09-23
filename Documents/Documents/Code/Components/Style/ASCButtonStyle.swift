@@ -132,7 +132,7 @@ class ASCButtonStyle: UIButton {
         switch styleType {
         case .action:
             backgroundColor = Asset.Colors.action.color
-            titleLabel?.textStyle = ASCTextStyle.subheadFontWhite
+            titleLabel?.textStyle = ASCTextStyle.subheadWhite
             titleLabel?.adjustsFontForContentSizeCategory = true
             layer.cornerRadius = 8
             layer.shadowOpacity = 1
@@ -144,14 +144,14 @@ class ASCButtonStyle: UIButton {
             backgroundColor = .clear
             layer.borderWidth = 1
             layer.borderColor = UIColor.gray.cgColor
-            titleLabel?.textStyle = ASCTextStyle.bodyFontWhite
+            titleLabel?.textStyle = ASCTextStyle.bodyWhite
             titleLabel?.textColor = .gray
             layerCornerRadius = 8.0
         case .gray:
             layerCornerRadius = 8.0
         default:
             backgroundColor = Asset.Colors.brend.color
-            titleLabel?.textStyle = ASCTextStyle.bodyFontWhite
+            titleLabel?.textStyle = ASCTextStyle.bodyWhite
             titleLabel?.adjustsFontForContentSizeCategory = true
             layerCornerRadius = 8.0
         }

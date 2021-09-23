@@ -141,6 +141,7 @@
 		1DE6D6BC2631AEE1001B825B /* ASCOnlyofficeAPICategoriesProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DE6D6BB2631AEE1001B825B /* ASCOnlyofficeAPICategoriesProvider.swift */; };
 		1DE6D6C42631BE03001B825B /* ASCOnlyofficeCategoriesProviderFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DE6D6C32631BE03001B825B /* ASCOnlyofficeCategoriesProviderFactory.swift */; };
 		1DF505242641867300B78496 /* ASCOneDriveFileProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DF505232641867300B78496 /* ASCOneDriveFileProvider.swift */; };
+		1DF6E0A926D5323B00FB42CE /* ASCOneDriveProviderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DF6E0A826D5323A00FB42CE /* ASCOneDriveProviderTests.swift */; };
 		667548327089FF37AB5BACBB /* Pods_Documents_Alpha.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 92C4B2EE0CEF31DA5A45CD1A /* Pods_Documents_Alpha.framework */; };
 		69EBD4CA1EF2AB9D00D3C685 /* UINavigationController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69EBD4C91EF2AB9D00D3C685 /* UINavigationController+Extension.swift */; };
 		7E7324B635B9B2D98E80FD03 /* Pods_Documents.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1B32667722AD980849E124F1 /* Pods_Documents.framework */; };
@@ -667,6 +668,8 @@
 		FCEF855826C405FB00173DDF /* ASCBaseTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCEF855626C405FB00173DDF /* ASCBaseTabBarController.swift */; };
 		FCEF856C26C52E5F00173DDF /* UITextField+Style.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCEF856B26C52E5F00173DDF /* UITextField+Style.swift */; };
 		FCEF856D26C52E5F00173DDF /* UITextField+Style.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCEF856B26C52E5F00173DDF /* UITextField+Style.swift */; };
+		FCEF856F26C64B7A00173DDF /* WhatsNewService.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCEF856E26C64B7A00173DDF /* WhatsNewService.swift */; };
+		FCEF857026C64B7A00173DDF /* WhatsNewService.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCEF856E26C64B7A00173DDF /* WhatsNewService.swift */; };
 		FCEF9D1A1ED2C94300627BA5 /* PasscodeLock.strings in Resources */ = {isa = PBXBuildFile; fileRef = FCEF9D041ED2C94300627BA5 /* PasscodeLock.strings */; };
 		FCEF9D1B1ED2C94300627BA5 /* Functions.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCEF9D061ED2C94300627BA5 /* Functions.swift */; };
 		FCEF9D1D1ED2C94300627BA5 /* ChangePasscodeState.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCEF9D091ED2C94300627BA5 /* ChangePasscodeState.swift */; };
@@ -823,6 +826,7 @@
 		1DE6D6BB2631AEE1001B825B /* ASCOnlyofficeAPICategoriesProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCOnlyofficeAPICategoriesProvider.swift; sourceTree = "<group>"; };
 		1DE6D6C32631BE03001B825B /* ASCOnlyofficeCategoriesProviderFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCOnlyofficeCategoriesProviderFactory.swift; sourceTree = "<group>"; };
 		1DF505232641867300B78496 /* ASCOneDriveFileProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCOneDriveFileProvider.swift; sourceTree = "<group>"; };
+		1DF6E0A826D5323A00FB42CE /* ASCOneDriveProviderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCOneDriveProviderTests.swift; sourceTree = "<group>"; };
 		223510FCC80632095899444E /* Pods_Documents_DocumentsTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Documents_DocumentsTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		3591A05467A432968D686ECF /* Pods-DocumentsTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DocumentsTests.release.xcconfig"; path = "../Pods/Target Support Files/Pods-DocumentsTests/Pods-DocumentsTests.release.xcconfig"; sourceTree = "<group>"; };
 		3BF384B26A0BED3EFC4A3889 /* Pods-Documents-Dev.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Documents-Dev.release.xcconfig"; path = "../Pods/Target Support Files/Pods-Documents-Dev/Pods-Documents-Dev.release.xcconfig"; sourceTree = "<group>"; };
@@ -1100,6 +1104,42 @@
 		FCE35DDA1E9E7BC500BC2B68 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Sort.strings; sourceTree = "<group>"; };
 		FCE35DDC1E9E7BCA00BC2B68 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Transfer.storyboard; sourceTree = "<group>"; };
 		FCE35DDF1E9E7BCB00BC2B68 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Transfer.strings; sourceTree = "<group>"; };
+		FCE6246126F8749F00EFAE7C /* it */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = it; path = it.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
+		FCE6246226F8749F00EFAE7C /* it */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = it; path = it.lproj/Main.strings; sourceTree = "<group>"; };
+		FCE6246326F8749F00EFAE7C /* it */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = it; path = it.lproj/Login.strings; sourceTree = "<group>"; };
+		FCE6246426F874A000EFAE7C /* it */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = it; path = it.lproj/Sort.strings; sourceTree = "<group>"; };
+		FCE6246526F874A000EFAE7C /* it */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = it; path = it.lproj/Transfer.strings; sourceTree = "<group>"; };
+		FCE6246626F874A000EFAE7C /* it */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = it; path = it.lproj/Intro.strings; sourceTree = "<group>"; };
+		FCE6246726F874A000EFAE7C /* it */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = it; path = it.lproj/ConnectStorage.strings; sourceTree = "<group>"; };
+		FCE6246826F874A000EFAE7C /* it */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = it; path = it.lproj/Settings.strings; sourceTree = "<group>"; };
+		FCE6246926F874A000EFAE7C /* it */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = it; path = it.lproj/UserProfile.strings; sourceTree = "<group>"; };
+		FCE6246A26F874A000EFAE7C /* it */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = it; path = it.lproj/CreatePortal.strings; sourceTree = "<group>"; };
+		FCE6246C26F874A100EFAE7C /* it */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = it; path = it.lproj/Localizable.strings; sourceTree = "<group>"; };
+		FCE6246D26F874A100EFAE7C /* it */ = {isa = PBXFileReference; lastKnownFileType = text.plist.stringsdict; name = it; path = it.lproj/Localizable.stringsdict; sourceTree = "<group>"; };
+		FCE6246E26F874A200EFAE7C /* it */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = it; path = "it.lproj/Documents-InfoPlist.strings"; sourceTree = "<group>"; };
+		FCE6246F26F874A200EFAE7C /* it */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = it; path = it.lproj/ASCCreateEntityView.strings; sourceTree = "<group>"; };
+		FCE6247026F874A200EFAE7C /* it */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = it; path = it.lproj/PasscodeLockView.strings; sourceTree = "<group>"; };
+		FCE6247126F874A200EFAE7C /* it */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = it; path = it.lproj/PasscodeLock.strings; sourceTree = "<group>"; };
+		FCE6247226F874A200EFAE7C /* it */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = it; path = it.lproj/Localizable.strings; sourceTree = "<group>"; };
+		FCE6247326F874A300EFAE7C /* it */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = it; path = it.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		FCE6247426F874B200EFAE7C /* pt-BR */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "pt-BR"; path = "pt-BR.lproj/LaunchScreen.strings"; sourceTree = "<group>"; };
+		FCE6247526F874B200EFAE7C /* pt-BR */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "pt-BR"; path = "pt-BR.lproj/Main.strings"; sourceTree = "<group>"; };
+		FCE6247626F874B200EFAE7C /* pt-BR */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "pt-BR"; path = "pt-BR.lproj/Login.strings"; sourceTree = "<group>"; };
+		FCE6247726F874B200EFAE7C /* pt-BR */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "pt-BR"; path = "pt-BR.lproj/Sort.strings"; sourceTree = "<group>"; };
+		FCE6247826F874B200EFAE7C /* pt-BR */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "pt-BR"; path = "pt-BR.lproj/Transfer.strings"; sourceTree = "<group>"; };
+		FCE6247926F874B200EFAE7C /* pt-BR */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "pt-BR"; path = "pt-BR.lproj/Intro.strings"; sourceTree = "<group>"; };
+		FCE6247A26F874B200EFAE7C /* pt-BR */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "pt-BR"; path = "pt-BR.lproj/ConnectStorage.strings"; sourceTree = "<group>"; };
+		FCE6247B26F874B300EFAE7C /* pt-BR */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "pt-BR"; path = "pt-BR.lproj/Settings.strings"; sourceTree = "<group>"; };
+		FCE6247C26F874B300EFAE7C /* pt-BR */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "pt-BR"; path = "pt-BR.lproj/UserProfile.strings"; sourceTree = "<group>"; };
+		FCE6247D26F874B300EFAE7C /* pt-BR */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "pt-BR"; path = "pt-BR.lproj/CreatePortal.strings"; sourceTree = "<group>"; };
+		FCE6247F26F874B300EFAE7C /* pt-BR */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "pt-BR"; path = "pt-BR.lproj/ASCCreateEntityView.strings"; sourceTree = "<group>"; };
+		FCE6248026F874B300EFAE7C /* pt-BR */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "pt-BR"; path = "pt-BR.lproj/PasscodeLockView.strings"; sourceTree = "<group>"; };
+		FCE6248126F874B300EFAE7C /* pt-BR */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "pt-BR"; path = "pt-BR.lproj/PasscodeLock.strings"; sourceTree = "<group>"; };
+		FCE6248226F874B300EFAE7C /* pt-BR */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "pt-BR"; path = "pt-BR.lproj/Localizable.strings"; sourceTree = "<group>"; };
+		FCE6248326F874B300EFAE7C /* pt-BR */ = {isa = PBXFileReference; lastKnownFileType = text.plist.stringsdict; name = "pt-BR"; path = "pt-BR.lproj/Localizable.stringsdict"; sourceTree = "<group>"; };
+		FCE6248426F874B400EFAE7C /* pt-BR */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "pt-BR"; path = "pt-BR.lproj/Documents-InfoPlist.strings"; sourceTree = "<group>"; };
+		FCE6248526F874B400EFAE7C /* pt-BR */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "pt-BR"; path = "pt-BR.lproj/Localizable.strings"; sourceTree = "<group>"; };
+		FCE6248626F874B400EFAE7C /* pt-BR */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "pt-BR"; path = "pt-BR.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
 		FCEA68222264733A0055926A /* ASC2FAPageController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASC2FAPageController.swift; sourceTree = "<group>"; };
 		FCECDDCD264309D7006CD7B9 /* ASCPasswordRecoveryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASCPasswordRecoveryViewController.swift; sourceTree = "<group>"; };
 		FCECDDCE264309D7006CD7B9 /* ASCEmailSentViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASCEmailSentViewController.swift; sourceTree = "<group>"; };
@@ -1120,6 +1160,7 @@
 		FCEF853E26C3EFD500173DDF /* AppDelegate+Helpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AppDelegate+Helpers.swift"; sourceTree = "<group>"; };
 		FCEF855626C405FB00173DDF /* ASCBaseTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCBaseTabBarController.swift; sourceTree = "<group>"; };
 		FCEF856B26C52E5F00173DDF /* UITextField+Style.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextField+Style.swift"; sourceTree = "<group>"; };
+		FCEF856E26C64B7A00173DDF /* WhatsNewService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhatsNewService.swift; sourceTree = "<group>"; };
 		FCEF9D061ED2C94300627BA5 /* Functions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Functions.swift; sourceTree = "<group>"; };
 		FCEF9D071ED2C94300627BA5 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		FCEF9D091ED2C94300627BA5 /* ChangePasscodeState.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChangePasscodeState.swift; sourceTree = "<group>"; };
@@ -1510,6 +1551,7 @@
 			children = (
 				1D14AADF26964A99009E48AD /* SharingSettingsAccess */,
 				1D5DB04726584E37006B4757 /* OnlyofficeCategories */,
+				1DF6E0A826D5323A00FB42CE /* ASCOneDriveProviderTests.swift */,
 			);
 			path = Providers;
 			sourceTree = "<group>";
@@ -1777,8 +1819,8 @@
 				FCF8472722CB39ED00ABC3B4 /* Views */,
 				FC407FBB2191DC76009089EB /* ASCConnectCloudViewController.swift */,
 				FC08F8721ECB2FD600988DDE /* ASCConnectPortalThirdPartyViewController.swift */,
-				FC7F786A236ACBB00026E260 /* ASCConnectStorageGoogleController.swift */,
 				FC8C69821ECC8EA8005B68D7 /* ASCConnectStorageWebDavController.swift */,
+				FC7F786A236ACBB00026E260 /* ASCConnectStorageGoogleController.swift */,
 				FC08F8741ECB399900988DDE /* ASCConnectStorageOAuth2ViewController.swift */,
 				FC08F8761ECB402000988DDE /* ASCConnectStorageOAuth2Dropbox.swift */,
 				FC8C697A1ECC2F44005B68D7 /* ASCConnectStorageOAuth2Google.swift */,
@@ -2388,6 +2430,7 @@
 				FC4D0A2C24950503001EF1B5 /* ASCDebugManager.swift */,
 				FC0946AF249776D4005D54E6 /* ASCLogger.swift */,
 				FC12ACF32567D1C200FF1CBB /* ASCAnalytics.swift */,
+				FCEF856E26C64B7A00173DDF /* WhatsNewService.swift */,
 			);
 			path = Business;
 			sourceTree = "<group>";
@@ -2762,6 +2805,8 @@
 				es,
 				cs,
 				bg,
+				it,
+				"pt-BR",
 			);
 			mainGroup = FCFDAA841E48A10C007A240C;
 			productRefGroup = FCFDAA8E1E48A10C007A240C /* Products */;
@@ -3472,6 +3517,7 @@
 				FC36D2AF25B5C32200412DDB /* UIColor+Extension.swift in Sources */,
 				FC470967261E529C006FFF90 /* Array+Extensions.swift in Sources */,
 				FC36D2B025B5C32200412DDB /* Data+Extension.swift in Sources */,
+				FCEF857026C64B7A00173DDF /* WhatsNewService.swift in Sources */,
 				FC36D2B125B5C32200412DDB /* ASCTransferNavigationController.swift in Sources */,
 				1D49E2B226A9BDB60024AC7A /* ASCSharingAddRightHoldersRAMDataStore.swift in Sources */,
 				FC36D2B225B5C32200412DDB /* MGSwipeButton+Extensions.swift in Sources */,
@@ -3709,6 +3755,7 @@
 				1D1A2E1F2660F93600D0335B /* ASCLoadedViewControllerByProviderAndFolderFinderTests.swift in Sources */,
 				FC77846C24756CC2005ED631 /* ASCFolderProviderType.swift in Sources */,
 				FCD31F4524BDF2E200774ACD /* ASCLogger.swift in Sources */,
+				1DF6E0A926D5323B00FB42CE /* ASCOneDriveProviderTests.swift in Sources */,
 				1DCCEC0A268DBD9C00692167 /* ASCSharingOptionsViewControllerTest.swift in Sources */,
 				FC4D864920C50AE00047B871 /* Path+Extension.swift in Sources */,
 				1D2E3B9526BB338D00BEBE9D /* ASCSharingSettingsAccessViewControllerTests.swift in Sources */,
@@ -3835,6 +3882,7 @@
 				1D2E3B8D26BB29DA00BEBE9D /* ASCSharingSettingsAccessForExternalLinkNotesProvider.swift in Sources */,
 				FCAE74F5233B859B005CC32C /* MGSwipeButton+Extensions.swift in Sources */,
 				FCADF37A1EC9DA9A001CA4A9 /* NSLayoutConstraint+Extensions.swift in Sources */,
+				FCEF856F26C64B7A00173DDF /* WhatsNewService.swift in Sources */,
 				1D128F9C26B3285300603B0F /* ASCCentredLabelHeaderFooterView.swift in Sources */,
 				FC1755971E9CAFDB00D73D8E /* ASCSortViewController.swift in Sources */,
 				FCEF9D2E1ED2D0DC00627BA5 /* ASCPasscodeLockViewController.swift in Sources */,
@@ -4054,6 +4102,8 @@
 				FCF3AAC01EF9455100DF63BA /* es */,
 				FCD1DA6D1FAC764D00F67625 /* cs */,
 				FCF3B47522CA2FF100BBCD94 /* bg */,
+				FCE6246726F874A000EFAE7C /* it */,
+				FCE6247A26F874B200EFAE7C /* pt-BR */,
 			);
 			name = ConnectStorage.storyboard;
 			sourceTree = "<group>";
@@ -4068,6 +4118,8 @@
 				FC5F47901F04E7E900F045DD /* es */,
 				FCD1DA721FAC764D00F67625 /* cs */,
 				FCF3B47B22CA2FF300BBCD94 /* bg */,
+				FCE6247026F874A200EFAE7C /* it */,
+				FCE6248026F874B300EFAE7C /* pt-BR */,
 			);
 			name = PasscodeLockView.xib;
 			sourceTree = "<group>";
@@ -4083,6 +4135,8 @@
 				FC68627022E84E0000AD03D2 /* fr */,
 				FC68627222E84E1500AD03D2 /* ru */,
 				FC68627422E84E1800AD03D2 /* en */,
+				FCE6246F26F874A200EFAE7C /* it */,
+				FCE6247F26F874B300EFAE7C /* pt-BR */,
 			);
 			name = ASCCreateEntityView.xib;
 			sourceTree = "<group>";
@@ -4097,6 +4151,8 @@
 				FCF3AABF1EF9455100DF63BA /* es */,
 				FCD1DA6C1FAC764D00F67625 /* cs */,
 				FCF3B47422CA2FF100BBCD94 /* bg */,
+				FCE6246626F874A000EFAE7C /* it */,
+				FCE6247926F874B200EFAE7C /* pt-BR */,
 			);
 			name = Intro.storyboard;
 			sourceTree = "<group>";
@@ -4111,6 +4167,8 @@
 				FCF3AABC1EF9455100DF63BA /* es */,
 				FCD1DA691FAC764D00F67625 /* cs */,
 				FCF3B47122CA2FEF00BBCD94 /* bg */,
+				FCE6246326F8749F00EFAE7C /* it */,
+				FCE6247626F874B200EFAE7C /* pt-BR */,
 			);
 			name = Login.storyboard;
 			sourceTree = "<group>";
@@ -4125,6 +4183,8 @@
 				FCF3AAB11EF9455100DF63BA /* es */,
 				FCD1DA6E1FAC764D00F67625 /* cs */,
 				FCF3B47622CA2FF100BBCD94 /* bg */,
+				FCE6246826F874A000EFAE7C /* it */,
+				FCE6247B26F874B300EFAE7C /* pt-BR */,
 			);
 			name = Settings.storyboard;
 			sourceTree = "<group>";
@@ -4139,6 +4199,8 @@
 				FCF3AAB21EF9455100DF63BA /* es */,
 				FCD1DA6F1FAC764D00F67625 /* cs */,
 				FCF3B47722CA2FF200BBCD94 /* bg */,
+				FCE6246926F874A000EFAE7C /* it */,
+				FCE6247C26F874B300EFAE7C /* pt-BR */,
 			);
 			name = UserProfile.storyboard;
 			sourceTree = "<group>";
@@ -4152,6 +4214,8 @@
 				FCF3AAB71EF9455100DF63BA /* es */,
 				FCD1DA651FAC764C00F67625 /* cs */,
 				FCF3B47F22CA2FF500BBCD94 /* bg */,
+				FCE6246C26F874A100EFAE7C /* it */,
+				FCE6248226F874B300EFAE7C /* pt-BR */,
 			);
 			name = Localizable.strings;
 			sourceTree = "<group>";
@@ -4166,6 +4230,8 @@
 				FCF3AAB31EF9455100DF63BA /* es */,
 				FCD1DA701FAC764D00F67625 /* cs */,
 				FCF3B47822CA2FF200BBCD94 /* bg */,
+				FCE6246A26F874A000EFAE7C /* it */,
+				FCE6247D26F874B300EFAE7C /* pt-BR */,
 			);
 			name = CreatePortal.storyboard;
 			sourceTree = "<group>";
@@ -4180,6 +4246,8 @@
 				FCF3AABD1EF9455100DF63BA /* es */,
 				FCD1DA6A1FAC764D00F67625 /* cs */,
 				FCF3B47222CA2FF000BBCD94 /* bg */,
+				FCE6246426F874A000EFAE7C /* it */,
+				FCE6247726F874B200EFAE7C /* pt-BR */,
 			);
 			name = Sort.storyboard;
 			sourceTree = "<group>";
@@ -4194,6 +4262,8 @@
 				FCF3AABE1EF9455100DF63BA /* es */,
 				FCD1DA6B1FAC764D00F67625 /* cs */,
 				FCF3B47322CA2FF100BBCD94 /* bg */,
+				FCE6246526F874A000EFAE7C /* it */,
+				FCE6247826F874B200EFAE7C /* pt-BR */,
 			);
 			name = Transfer.storyboard;
 			sourceTree = "<group>";
@@ -4207,6 +4277,8 @@
 				FCECDDF42643DF28006CD7B9 /* fr */,
 				FCECDDF52643DF2B006CD7B9 /* de */,
 				FCECDDF62643DF2E006CD7B9 /* es */,
+				FCE6246E26F874A200EFAE7C /* it */,
+				FCE6248426F874B400EFAE7C /* pt-BR */,
 			);
 			name = "Documents-InfoPlist.strings";
 			sourceTree = "<group>";
@@ -4221,6 +4293,8 @@
 				FCF3AAC11EF9455100DF63BA /* es */,
 				FCD1DA741FAC764D00F67625 /* cs */,
 				FCF3B47D22CA2FF400BBCD94 /* bg */,
+				FCE6247126F874A200EFAE7C /* it */,
+				FCE6248126F874B300EFAE7C /* pt-BR */,
 			);
 			name = PasscodeLock.strings;
 			sourceTree = "<group>";
@@ -4229,6 +4303,8 @@
 			isa = PBXVariantGroup;
 			children = (
 				FCF8045B212E94A300378AFD /* ru */,
+				FCE6247326F874A300EFAE7C /* it */,
+				FCE6248626F874B400EFAE7C /* pt-BR */,
 			);
 			name = InfoPlist.strings;
 			sourceTree = "<group>";
@@ -4237,6 +4313,8 @@
 			isa = PBXVariantGroup;
 			children = (
 				FCF8045E212EA38A00378AFD /* ru */,
+				FCE6247226F874A200EFAE7C /* it */,
+				FCE6248526F874B400EFAE7C /* pt-BR */,
 			);
 			name = Localizable.strings;
 			sourceTree = "<group>";
@@ -4251,6 +4329,8 @@
 				FCF3AABA1EF9455100DF63BA /* es */,
 				FCD1DA671FAC764D00F67625 /* cs */,
 				FCF3B47022CA2FEF00BBCD94 /* bg */,
+				FCE6246226F8749F00EFAE7C /* it */,
+				FCE6247526F874B200EFAE7C /* pt-BR */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";
@@ -4265,6 +4345,8 @@
 				FCF3AAB81EF9455100DF63BA /* es */,
 				FCD1DA661FAC764D00F67625 /* cs */,
 				FCF3B48022CA2FF500BBCD94 /* bg */,
+				FCE6246D26F874A100EFAE7C /* it */,
+				FCE6248326F874B300EFAE7C /* pt-BR */,
 			);
 			name = Localizable.stringsdict;
 			sourceTree = "<group>";
@@ -4279,6 +4361,8 @@
 				FCF3AAB51EF9455100DF63BA /* es */,
 				FCD1DA731FAC764D00F67625 /* cs */,
 				FCF3B47C22CA2FF400BBCD94 /* bg */,
+				FCE6246126F8749F00EFAE7C /* it */,
+				FCE6247426F874B200EFAE7C /* pt-BR */,
 			);
 			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
@@ -4293,14 +4377,12 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = Documents/Entitlements/Documents.dev.entitlements;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				CURRENT_PROJECT_VERSION = 650;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = 2WH24U26GJ;
 				ENABLE_BITCODE = YES;
 				INFOPLIST_FILE = Documents/Documents.alpha.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				MARKETING_VERSION = 6.5;
 				PRODUCT_BUNDLE_IDENTIFIER = com.onlyoffice.Documents.dev;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
@@ -4319,13 +4401,11 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = Documents/Entitlements/Documents.dev.entitlements;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				CURRENT_PROJECT_VERSION = 650;
 				DEVELOPMENT_TEAM = 2WH24U26GJ;
 				ENABLE_BITCODE = YES;
 				INFOPLIST_FILE = Documents/Documents.alpha.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				MARKETING_VERSION = 6.5;
 				PRODUCT_BUNDLE_IDENTIFIER = com.onlyoffice.Documents.dev;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "Documents/Code/Bridge/Documents-Bridging-Header.h";
@@ -4497,14 +4577,12 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = Documents/Entitlements/Documents.entitlements;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				CURRENT_PROJECT_VERSION = 600;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = 2WH24U26GJ;
 				ENABLE_BITCODE = YES;
 				INFOPLIST_FILE = Documents/Documents.dev.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				MARKETING_VERSION = 6.3;
 				PRODUCT_BUNDLE_IDENTIFIER = com.onlyoffice.Documents;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
@@ -4522,13 +4600,11 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = Documents/Entitlements/Documents.entitlements;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				CURRENT_PROJECT_VERSION = 600;
 				DEVELOPMENT_TEAM = 2WH24U26GJ;
 				ENABLE_BITCODE = YES;
 				INFOPLIST_FILE = Documents/Documents.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				MARKETING_VERSION = 6.3;
 				PRODUCT_BUNDLE_IDENTIFIER = com.onlyoffice.Documents;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "Documents/Code/Bridge/Documents-Bridging-Header.h";

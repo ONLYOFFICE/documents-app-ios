@@ -50,13 +50,11 @@ class ASCRootViewController: ASCBaseTabBarController {
         ASCViewControllerManager.shared.rootController = self
 
         // Registry events
-        let center = NotificationCenter.default
-        center.addObserver(self, selector: #selector(checkShortcutLaunch), name: ASCConstants.Notifications.shortcutLaunch, object: nil)
-        center.addObserver(self, selector: #selector(checkPushInfo), name: ASCConstants.Notifications.pushInfo, object: nil)
-        center.addObserver(self, selector: #selector(checkImportLaunch), name: ASCConstants.Notifications.importFileLaunch, object: nil)
-//        center.addObserver(self, selector: #selector(onOnlyofficeLoginCompleted(_:)), name: ASCConstants.Notifications.loginOnlyofficeCompleted, object: nil)
-//        center.addObserver(self, selector: #selector(onOnlyofficeLogoutCompleted(_:)), name: ASCConstants.Notifications.logoutOnlyofficeCompleted, object: nil)
-        center.addObserver(self, selector: #selector(networkStatusChanged), name: ASCConstants.Notifications.networkStatusChanged, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(checkShortcutLaunch), name: ASCConstants.Notifications.shortcutLaunch, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(checkPushInfo), name: ASCConstants.Notifications.pushInfo, object: nil)
+//        NotificationCenter.default.addObserver(self, selector: #selector(onOnlyofficeLoginCompleted(_:)), name: ASCConstants.Notifications.loginOnlyofficeCompleted, object: nil)
+//        NotificationCenter.default.addObserver(self, selector: #selector(onOnlyofficeLogoutCompleted(_:)), name: ASCConstants.Notifications.logoutOnlyofficeCompleted, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(networkStatusChanged), name: ASCConstants.Notifications.networkStatusChanged, object: nil)
 
         // Setup tabBarItem
         if let deviceSC = viewControllers?.first(where: { $0 is ASCDeviceSplitViewController }) {
@@ -108,72 +106,98 @@ class ASCRootViewController: ASCBaseTabBarController {
         UIApplication.shared.windows.last?.rootViewController = StoryboardScene.Main.ascSplashViewController.instantiate()
     }
     
+    private func navigateLocalProvider(to folder: ASCFolder?) {
+        if let index = viewControllers?.firstIndex(where: { $0 is ASCDeviceSplitViewController }) {
+            selectedIndex = index
+
+            if  let splitVC = selectedViewController as? ASCDeviceSplitViewController,
+                let categoryNC = splitVC.primaryViewController as? ASCBaseNavigationController,
+                let categoryVC = categoryNC.topViewController as? ASCDeviceCategoryViewController ?? categoryNC.viewControllers.first as? ASCDeviceCategoryViewController
+            {
+                if let folder = folder {
+                    isFirstOpenDeviceCategory = true
+                    
+                    if folder.rootFolderType == .deviceTrash {
+                        categoryVC.select(category: categoryVC.deviceTrashCategory)
+                    } else {
+                        categoryVC.select(category: categoryVC.deviceDocumentsCategory)
+
+                        if folder.parentId != nil {
+                            delay(seconds: 0.01) {
+                                if let documentsNC = splitVC.detailViewController as? ASCBaseNavigationController {
+                                    let documentsVC = ASCDocumentsViewController.instantiate(from: Storyboard.main)
+                                    documentsVC.provider = ASCFileManager.localProvider.copy()
+                                    documentsVC.folder = folder
+                                    documentsNC.pushViewController(documentsVC, animated: false)
+                                }
+                            }
+                        }
+                    }
+                } else {
+                    categoryVC.select(category: categoryVC.deviceDocumentsCategory)
+                }
+            }
+        }
+    }
+    
+    private func navigateOnlyofficeProvider(to folder: ASCFolder?) {
+        if let index = viewControllers?.firstIndex(where: { $0 is ASCOnlyofficeSplitViewController }) {
+            selectedIndex = index
+
+            if  let splitVC = selectedViewController as? ASCOnlyofficeSplitViewController,
+                let categoryNC = splitVC.primaryViewController as? ASCBaseNavigationController,
+                let categoryVC = categoryNC.viewControllers.first(where: { $0 is ASCOnlyofficeCategoriesViewController }) as? ASCOnlyofficeCategoriesViewController
+            {
+                isFirstOpenOnlyofficeCategory = true
+                
+                if let folder = folder {
+                    let category = ASCOnlyofficeCategory(folder: folder)
+
+                    /// Display root folder of category
+                    categoryVC.select(category: category)
+
+                    /// Display stored folder if needed
+                    delay(seconds: 0.01) {
+                        if !(ASCFileManager.onlyofficeProvider?.isRoot(folder: folder) ?? false) {
+                            if  let documentsNC = splitVC.detailViewController as? ASCBaseNavigationController ?? splitVC.primaryViewController as? ASCBaseNavigationController
+                            {
+                                let documentsVC = ASCDocumentsViewController.instantiate(from: Storyboard.main)
+                                documentsNC.pushViewController(documentsVC, animated: false)
+                                documentsVC.provider = ASCFileManager.onlyofficeProvider
+                                documentsVC.folder = folder
+                            }
+                        }
+                    }
+                } else {
+                    categoryVC.select(category: categoryVC.entrypointCategory())
+                }
+            }
+        }
+    }
+    
+    private func navigateiCloudProvider(to folder: ASCFolder?) {
+        if let index = viewControllers?.firstIndex(where: { $0 is ASCCloudsSplitViewController }) {
+            selectedIndex = index
+
+            if let splitVC = selectedViewController as? ASCCloudsSplitViewController,
+                let categoryVC = splitVC.primaryViewController?.topMostViewController() as? ASCCloudsViewController
+            {
+                isFirstOpenCloudCategory = true
+                let cloudProvider = ASCFileManager.cloudProviders.first(where: { $0 is ASCiCloudProvider })
+                categoryVC.select(provider: cloudProvider, folder: folder ?? cloudProvider?.rootFolder)
+            }
+        }
+    }
+    
     func display(provider: ASCFileProviderProtocol?, folder: ASCFolder?) {
         guard let provider = provider else { return }
         
         if provider.type == .local {
-            if let index = viewControllers?.firstIndex(where: { $0 is ASCDeviceSplitViewController }) {
-                selectedIndex = index
-
-                if  let splitVC = selectedViewController as? ASCDeviceSplitViewController,
-                    let categoryNC = splitVC.primaryViewController as? ASCBaseNavigationController,
-                    let categoryVC = categoryNC.topViewController as? ASCDeviceCategoryViewController ?? categoryNC.viewControllers.first as? ASCDeviceCategoryViewController
-                {
-                    if let folder = folder {
-                        isFirstOpenDeviceCategory = true
-                        
-                        if folder.rootFolderType == .deviceTrash {
-                            categoryVC.select(category: categoryVC.deviceTrashCategory)
-                        } else {
-                            categoryVC.select(category: categoryVC.deviceDocumentsCategory)
-
-                            if folder.parentId != nil {
-                                if let documentsNC = splitVC.detailViewController as? ASCBaseNavigationController {
-                                    let documentsVC = ASCDocumentsViewController.instantiate(from: Storyboard.main)
-                                    documentsVC.provider = ASCFileManager.localProvider
-                                    documentsVC.folder = folder
-                                    documentsNC.pushViewController(documentsVC, animated: false)
-                                }
-                            }
-                        }
-                    } else {
-                        categoryVC.select(category: categoryVC.deviceDocumentsCategory)
-                    }
-                }
-            }
+            navigateLocalProvider(to: folder)
         } else if provider.type == .onlyoffice {
-            if let index = viewControllers?.firstIndex(where: { $0 is ASCOnlyofficeSplitViewController }) {
-                selectedIndex = index
-
-                if  let splitVC = selectedViewController as? ASCOnlyofficeSplitViewController,
-                    let categoryNC = splitVC.primaryViewController as? ASCBaseNavigationController,
-                    let categoryVC = categoryNC.viewControllers.first(where: { $0 is ASCOnlyofficeCategoriesViewController }) as? ASCOnlyofficeCategoriesViewController
-                {
-                    isFirstOpenOnlyofficeCategory = true
-                    
-                    if let folder = folder {
-                        let category = ASCOnlyofficeCategory(folder: folder)
-
-                        /// Display root folder of category
-                        categoryVC.select(category: category)
-
-                        /// Display stored folder if needed
-                        delay(seconds: 0.01) {
-                            if !(ASCFileManager.onlyofficeProvider?.isRoot(folder: folder) ?? false) {
-                                if  let documentsNC = splitVC.detailViewController as? ASCBaseNavigationController ?? splitVC.primaryViewController as? ASCBaseNavigationController
-                                {
-                                    let documentsVC = ASCDocumentsViewController.instantiate(from: Storyboard.main)
-                                    documentsNC.pushViewController(documentsVC, animated: false)
-                                    documentsVC.provider = ASCFileManager.onlyofficeProvider
-                                    documentsVC.folder = folder
-                                }
-                            }
-                        }
-                    } else {
-                        categoryVC.select(category: categoryVC.entrypointCategory())
-                    }
-                }
-            }
+            navigateOnlyofficeProvider(to: folder)
+        } else if provider.type == .icloud {
+            navigateiCloudProvider(to: folder)
         } else {
             if let index = viewControllers?.firstIndex(where: { $0 is ASCCloudsSplitViewController }) {
                 selectedIndex = index
@@ -270,73 +294,6 @@ class ASCRootViewController: ASCBaseTabBarController {
                 }
             } else {
                 handlePushInfo()
-            }
-        }
-    }
-
-    @objc func checkImportLaunch() {
-        if let appDelegate = UIApplication.shared.delegate as? AppDelegate {
-            let importFile: () -> Void = { [weak self] in
-                if let url = UserDefaults.standard.url(forKey: ASCConstants.SettingsKeys.importFile) {
-                    UserDefaults.standard.removeObject(forKey: ASCConstants.SettingsKeys.importFile)
-
-                    let fileTitle = url.lastPathComponent
-                    let filePath = Path(url.path)
-                    
-                    if filePath.exists {
-                        self?.display(provider: ASCFileManager.localProvider, folder: nil)
-                        
-                        delay(seconds: 0.2) {
-                            var documentsVC: ASCDocumentsViewController? = self?.topMostViewController() as? ASCDocumentsViewController
-                            
-                            if documentsVC == nil {
-                                if  let splitVC = self?.topMostViewController() as? ASCDeviceSplitViewController,
-                                    let documentsNC = splitVC.viewControllers.last as? ASCBaseNavigationController {
-                                    documentsVC = documentsNC.topViewController as? ASCDocumentsViewController
-                                }
-                            }
-                            
-                            if  let documentsVC = documentsVC,
-                                let newFilePath = ASCLocalFileHelper.shared.resolve(filePath: Path.userDocuments + fileTitle)
-                            {
-                                if let error = ASCLocalFileHelper.shared.copy(from: filePath, to: newFilePath) {
-                                    log.error("Can not import the file. \(error)")
-                                } else {
-                                    if filePath.isChildOfPath(Path.userDocuments + "Inbox") {
-                                        ASCLocalFileHelper.shared.removeFile(filePath)
-                                    }
-                                    
-                                    let owner = ASCUser()
-                                    owner.displayName = UIDevice.displayName
-                                    
-                                    let file = ASCFile()
-                                    file.id = newFilePath.rawValue
-                                    file.rootFolderType = .deviceDocuments
-                                    file.title = newFilePath.fileName
-                                    file.created = newFilePath.creationDate
-                                    file.updated = newFilePath.modificationDate
-                                    file.createdBy = owner
-                                    file.updatedBy = owner
-                                    file.device = true
-                                    file.parent = documentsVC.folder
-                                    file.displayContentLength = String.fileSizeToString(with: newFilePath.fileSize ?? 0)
-                                    file.pureContentLength = Int(newFilePath.fileSize ?? 0)
-                                    
-                                    documentsVC.add(entity: file)
-                                }
-                            }
-                        }
-                    }
-                }
-            }
-
-            if appDelegate.passcodeLockPresenter.isPasscodePresented {
-                appDelegate.passcodeLockPresenter.passcodeLockVC.dismissCompletionCallback = {
-                    appDelegate.passcodeLockPresenter.dismissPasscodeLock()
-                    importFile()
-                }
-            } else {
-                importFile()
             }
         }
     }

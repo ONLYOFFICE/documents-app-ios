@@ -52,6 +52,7 @@
 		FC0F01DF216F443E008D79A5 /* ASCLocalProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC0F01DE216F443E008D79A5 /* ASCLocalProvider.swift */; };
 		FC0F01E1216F46B7008D79A5 /* ASCOnlyofficeProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC0F01E0216F46B7008D79A5 /* ASCOnlyofficeProvider.swift */; };
 		FC0F01E3216F4EA7008D79A5 /* ASCWebDAVProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC0F01E2216F4EA7008D79A5 /* ASCWebDAVProvider.swift */; };
+		FC124FAC26CCED2200778FC9 /* WhatsNewService.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC124FAB26CCED2200778FC9 /* WhatsNewService.swift */; };
 		FC12ACF22567CF5E00FF1CBB /* ASCAnalytics.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC12ACF12567CF5E00FF1CBB /* ASCAnalytics.swift */; };
 		FC1755971E9CAFDB00D73D8E /* ASCSortViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC1755961E9CAFDB00D73D8E /* ASCSortViewController.swift */; };
 		FC1AD6142175FE7000DADEE0 /* ASCNetworkReachability.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC1AD6132175FE7000DADEE0 /* ASCNetworkReachability.swift */; };
@@ -442,6 +443,7 @@
 		FC0F01DE216F443E008D79A5 /* ASCLocalProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCLocalProvider.swift; sourceTree = "<group>"; };
 		FC0F01E0216F46B7008D79A5 /* ASCOnlyofficeProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCOnlyofficeProvider.swift; sourceTree = "<group>"; };
 		FC0F01E2216F4EA7008D79A5 /* ASCWebDAVProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCWebDAVProvider.swift; sourceTree = "<group>"; };
+		FC124FAB26CCED2200778FC9 /* WhatsNewService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WhatsNewService.swift; sourceTree = "<group>"; };
 		FC12ACF12567CF5E00FF1CBB /* ASCAnalytics.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCAnalytics.swift; sourceTree = "<group>"; };
 		FC1755961E9CAFDB00D73D8E /* ASCSortViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASCSortViewController.swift; sourceTree = "<group>"; };
 		FC1AD6132175FE7000DADEE0 /* ASCNetworkReachability.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCNetworkReachability.swift; sourceTree = "<group>"; };
@@ -1547,6 +1549,7 @@
 				8A69B5D3249794A600152BDE /* ASCLogger.swift */,
 				8A69B5A52497626E00152BDE /* ASCDebugManager.swift */,
 				FC12ACF12567CF5E00FF1CBB /* ASCAnalytics.swift */,
+				FC124FAB26CCED2200778FC9 /* WhatsNewService.swift */,
 			);
 			path = Business;
 			sourceTree = "<group>";
@@ -2351,6 +2354,7 @@
 				FC68399221B7ED6700251CEA /* ASCOnlyofficeCategoriesViewController.swift in Sources */,
 				FC8A137D226878C0006D8C6E /* Sequence+Extensions.swift in Sources */,
 				FCEF9D371ED2D23400627BA5 /* ASCPasscodeLockPresenter.swift in Sources */,
+				FC124FAC26CCED2200778FC9 /* WhatsNewService.swift in Sources */,
 				FC28F2C11E8CF4B900A8F985 /* UIColor+Extension.swift in Sources */,
 				FC066B16252DC3CE007357F7 /* ASCiCloudProvider.swift in Sources */,
 				FC2B0CBD264031BE00969DB9 /* KingfisherWrapper+Onlyoffice.swift in Sources */,

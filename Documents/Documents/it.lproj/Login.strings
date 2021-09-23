@@ -1,0 +1,123 @@
+/* Class = "UILabel"; text = "Copy the code"; ObjectID = "00r-ek-IVa"; */
+"00r-ek-IVa.text" = "Copia il codice";
+
+/* Class = "UILabel"; text = "Title"; ObjectID = "0X2-Xg-z5B"; */
+"0X2-Xg-z5B.text" = "Titolo";
+
+/* Class = "UITextField"; text = "Country Code"; ObjectID = "3oc-kQ-msr"; */
+"3oc-kQ-msr.text" = "Prefisso internazionale";
+
+/* Class = "UILabel"; text = "-"; ObjectID = "6Zd-HN-8wS"; */
+"6Zd-HN-8wS.text" = "-";
+
+/* Class = "UILabel"; text = "Detail"; ObjectID = "18Q-Kh-0cC"; */
+"18Q-Kh-0cC.text" = "Dettaglio";
+
+/* Class = "UIButton"; normalTitle = "Login by"; ObjectID = "51s-1D-raN"; */
+"51s-1D-raN.normalTitle" = "Accedere tramite";
+
+/* Class = "UILabel"; text = "Phone Number"; ObjectID = "76Y-EB-F07"; */
+"76Y-EB-F07.text" = "Telefono";
+
+/* Class = "UIButton"; normalTitle = "Forgot?"; ObjectID = "78r-Ca-NKv"; */
+"78r-Ca-NKv.normalTitle" = "Dimenticato?";
+
+/* Class = "UILabel"; text = "Account"; ObjectID = "AkN-p0-Mzy"; */
+"AkN-p0-Mzy.text" = "Account";
+
+/* Class = "UIButton"; normalTitle = "Continue"; ObjectID = "AqJ-b9-XQV"; */
+"AqJ-b9-XQV.normalTitle" = "Continuare";
+
+/* Class = "UILabel"; text = "Haven't received the code?"; ObjectID = "cb0-ic-tPA"; */
+"cb0-ic-tPA.text" = "Non hai ricevuto il codice?";
+
+/* Class = "UILabel"; text = "Portal"; ObjectID = "cBn-x1-r5A"; */
+"cBn-x1-r5A.text" = "Portale";
+
+/* Class = "UILabel"; text = "Two-Factor\nAuthentication"; ObjectID = "DK4-QO-Jde"; */
+"DK4-QO-Jde.text" = "Autenticazione\na due fattori";
+
+/* Class = "UIButton"; normalTitle = "Next"; ObjectID = "e1X-0t-hcs"; Note = "Do not translate"; */
+"e1X-0t-hcs.normalTitle" = "Successivo";
+
+/* Class = "UILabel"; text = "Two-Factor\nAuthentication"; ObjectID = "Eb4-3w-0Jf"; */
+"Eb4-3w-0Jf.text" = "Autenticazione\na due fattori";
+
+/* Class = "UILabel"; text = "Address"; ObjectID = "Fso-pj-304"; */
+"Fso-pj-304.text" = "Indirizzo";
+
+/* Class = "UIButton"; normalTitle = "Create cloud"; ObjectID = "G99-FE-uk4"; */
+"G99-FE-uk4.normalTitle" = "Creare cloud";
+
+/* Class = "UILabel"; text = "Connect to your ONLYOFFICE cloud to store files online and collaborate on documents in real time"; ObjectID = "GFx-Ry-9GC"; */
+"GFx-Ry-9GC.text" = "Connettiti al tuo cloud ONLYOFFICE per archiviare i file online e collaborare ai documenti in tempo reale";
+
+/* Class = "UILabel"; text = "Select an account to sign in"; ObjectID = "Gkv-tP-6EM"; */
+"Gkv-tP-6EM.text" = "Selezionare un account per accedere";
+
+/* Class = "UINavigationItem"; title = "Accounts"; ObjectID = "gzc-cW-NPT"; */
+"gzc-cW-NPT.title" = "Account";
+
+/* Class = "UINavigationItem"; title = "SSO Login"; ObjectID = "hRN-W6-nA0"; */
+"hRN-W6-nA0.title" = "Accesso SSO";
+
+/* Class = "UILabel"; text = "Enter a phone number that can be used to verify your identity"; ObjectID = "MNA-z2-ITx"; */
+"MNA-z2-ITx.text" = "Inserisci un numero di telefono che possa essere utilizzato per verificare la tua identità";
+
+/* Class = "UIBarButtonItem"; title = "Back"; ObjectID = "MUG-TG-NlP"; */
+"MUG-TG-NlP.title" = "Indietro";
+
+/* Class = "UINavigationItem"; title = "Country"; ObjectID = "NBg-dA-b3o"; */
+"NBg-dA-b3o.title" = "Paese";
+
+/* Class = "UITextField"; placeholder = "Code"; ObjectID = "OnI-QD-xeI"; */
+"OnI-QD-xeI.placeholder" = "Codice";
+
+/* Class = "UIButton"; normalTitle = "Select another account"; ObjectID = "peP-Hz-Lai"; */
+"peP-Hz-Lai.normalTitle" = "Selezionare un altro account";
+
+/* Class = "UIButton"; normalTitle = "Sign in"; ObjectID = "QAn-vu-xMR"; */
+"QAn-vu-xMR.normalTitle" = "Accedere";
+
+/* Class = "UITextField"; placeholder = "Code"; ObjectID = "qEs-UQ-wWd"; */
+"qEs-UQ-wWd.placeholder" = "Codice";
+
+/* Class = "UIButton"; normalTitle = "Open"; ObjectID = "RDr-pH-MKV"; */
+"RDr-pH-MKV.normalTitle" = "Aprire";
+
+/* Class = "UILabel"; text = "Login via"; ObjectID = "szM-hs-ncG"; */
+"szM-hs-ncG.text" = "Accedere tramite";
+
+/* Class = "UITextField"; placeholder = "Secret"; ObjectID = "tnK-je-flS"; */
+"tnK-je-flS.placeholder" = "Segreto";
+
+/* Class = "UILabel"; text = "Get more information"; ObjectID = "ttx-IC-XrN"; */
+"ttx-IC-XrN.text" = "Ulteriori informazioni";
+
+/* Class = "UIBarButtonItem"; title = "Next"; ObjectID = "twm-cB-W69"; */
+"twm-cB-W69.title" = "Successivo";
+
+/* Class = "UILabel"; text = "Please set up an application to generate the codes for the portal access (e.g. Google Authenticator) to continue the work at the portal"; ObjectID = "vlQ-jV-iFo"; */
+"vlQ-jV-iFo.text" = "Configura un'applicazione per generare i codici di accesso al portale (ad esempio Google Authenticator) per continuare il lavoro sul portale";
+
+/* Class = "UITextField"; placeholder = "Your phone number"; ObjectID = "w2U-Ci-R7v"; */
+"w2U-Ci-R7v.placeholder" = "Il tuo numero di telefono";
+
+/* Class = "UILabel"; text = "We have sent you an SMS with a code to the number %@"; ObjectID = "W8Q-CO-c0L"; */
+"W8Q-CO-c0L.text" = "Ti abbiamo inviato un SMS con un codice al numero %@";
+
+/* Class = "UILabel"; text = "Add a secret key"; ObjectID = "WuZ-wI-3aH"; */
+"WuZ-wI-3aH.text" = "Aggiungi una chiave segreta";
+
+/* Class = "UITextField"; text = "+"; ObjectID = "x6G-qW-5Pq"; */
+"x6G-qW-5Pq.text" = "+";
+
+/* Class = "UILabel"; text = "Connection to cloud"; ObjectID = "XsM-aD-o1I"; */
+"XsM-aD-o1I.text" = "Connessione al cloud";
+
+/* Class = "UIButton"; normalTitle = "Continue"; ObjectID = "yjY-PY-41s"; */
+"yjY-PY-41s.normalTitle" = "Continuare";
+
+/* Class = "UITextField"; placeholder = "Code"; ObjectID = "ZWV-Q1-HY9"; */
+"ZWV-Q1-HY9.placeholder" = "Codice";
+

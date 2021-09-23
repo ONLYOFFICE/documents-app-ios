@@ -358,6 +358,17 @@ class ASCLocalProvider: ASCFileProviderProtocol & ASCSortableFileProviderProtoco
 
         completeon?(self, entities, true, nil)
     }
+    
+    func emptyTrash(completeon: ASCProviderCompletionHandler?) {
+        // Empty local trash
+        let trashItems = ASCLocalFileHelper.shared.entityList(Path.userTrash)
+        
+        for item in trashItems {
+            ASCLocalFileHelper.shared.removeFile(item)
+        }
+        
+        completeon?(self, nil, true, nil)
+    }
 
     func createDocument(_ name: String, fileExtension: String, in folder: ASCFolder, completeon: ASCProviderCompletionHandler?) {
         if folder.device || folder.rootFolderType == .deviceDocuments {
@@ -393,10 +404,10 @@ class ASCLocalProvider: ASCFileProviderProtocol & ASCSortableFileProviderProtoco
                 file.pureContentLength = Int(filePath.fileSize ?? 0)
 
                 ASCAnalytics.logEvent(ASCConstants.Analytics.Event.createEntity, parameters: [
-                    "portal": "none",
-                    "onDevice": true,
-                    "type": "file",
-                    "fileExt": file.title.fileExtension().lowercased()
+                    ASCAnalytics.Event.Key.portal: ASCAnalytics.Event.Value.none,
+                    ASCAnalytics.Event.Key.onDevice: true,
+                    ASCAnalytics.Event.Key.type: ASCAnalytics.Event.Value.file,
+                    ASCAnalytics.Event.Key.fileExt: file.title.fileExtension().lowercased()
                     ]
                 )
 
@@ -441,10 +452,10 @@ class ASCLocalProvider: ASCFileProviderProtocol & ASCSortableFileProviderProtoco
             file.pureContentLength = Int(filePath.fileSize ?? 0)
 
             ASCAnalytics.logEvent(ASCConstants.Analytics.Event.createEntity, parameters: [
-                "portal": ASCOnlyOfficeApi.shared.baseUrl ?? "none",
-                "onDevice": true,
-                "type": "file",
-                "fileExt": file.title.fileExtension()
+                ASCAnalytics.Event.Key.portal: ASCOnlyOfficeApi.shared.baseUrl ?? ASCAnalytics.Event.Value.none,
+                ASCAnalytics.Event.Key.onDevice: true,
+                ASCAnalytics.Event.Key.type: ASCAnalytics.Event.Value.file,
+                ASCAnalytics.Event.Key.fileExt: file.title.fileExtension()
                 ]
             )
 
@@ -483,9 +494,9 @@ class ASCLocalProvider: ASCFileProviderProtocol & ASCSortableFileProviderProtoco
                 newFolder.device = true
 
                 ASCAnalytics.logEvent(ASCConstants.Analytics.Event.createEntity, parameters: [
-                    "portal": "none",
-                    "onDevice": true,
-                    "type": "folder"
+                    ASCAnalytics.Event.Key.portal: ASCAnalytics.Event.Value.none,
+                    ASCAnalytics.Event.Key.onDevice: true,
+                    ASCAnalytics.Event.Key.type: ASCAnalytics.Event.Value.folder
                     ]
                 )
 
@@ -700,8 +711,8 @@ class ASCLocalProvider: ASCFileProviderProtocol & ASCSortableFileProviderProtoco
 
         if allowOpen {
             let editMode = !viewMode && UIDevice.allowEditor
-            let openHandler = delegate?.openProgressFile(title: NSLocalizedString("Processing", comment: "Caption of the processing") + "...", 0.15)
-            let closeHandler = delegate?.closeProgressFile(title: NSLocalizedString("Saving", comment: "Caption of the processing"))
+            let openHandler = delegate?.openProgress(file: file, title: NSLocalizedString("Processing", comment: "Caption of the processing") + "...", 0.15)
+            let closeHandler = delegate?.closeProgress(file: file, title: NSLocalizedString("Saving", comment: "Caption of the processing"))
 
             ASCEditorManager.shared.editLocal(file, viewMode: !editMode, openHandler: openHandler, closeHandler: closeHandler)
         }

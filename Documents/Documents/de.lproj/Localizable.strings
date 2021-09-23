@@ -32,6 +32,9 @@
 "A6 (10,5%@ x 14,8%@)" = "A6 (10,5%1$@ x 14,8%2$@)";
 
 /* No comment provided by engineer. */
+"Access files in Favorites and Recents on ONLYOFFICE portal from the app" = "Greifen Sie von der App aus auf die Dateien in Ordern ‘Favoriten’ und ‘Zuletzt verwendet’ im ONLYOFFICE-Portal zu.";
+
+/* No comment provided by engineer. */
 "Account name is empty" = "Der Kontoname ist leer";
 
 /* No comment provided by engineer. */
@@ -59,7 +62,7 @@
 "Author" = "Autor";
 
 /* No comment provided by engineer. */
-"Box directory" = "Verzeichnis";
+"Box directory" = "Box-Verzeichnis";
 
 /* Data units */
 "bytes" = "Bytes";
@@ -79,7 +82,7 @@
 /* No comment provided by engineer. */
 "Can not duplicate the file." = "Es ist nicht möglich die Datei zu duplizieren.";
 
-/* Button title */
+/* No comment provided by engineer. */
 "Cancel" = "Abbrechen";
 
 /* No comment provided by engineer. */
@@ -117,9 +120,6 @@
 
 /* Introduction Step Five - Title */
 "Collaborate with your team" = "Arbeiten Sie mit Ihren Teammitgliedern zusammen";
-
-/* No comment provided by engineer. */
-"Comments" = "Kommentare";
 
 /* Category title */
 "Common Documents" = "Gemeinsame Dokumente";
@@ -172,11 +172,35 @@
 /* Caption of the processing */
 "Copying" = "Es wird kopiert";
 
+/* Description of file operation error */
+"Could not change file attrubutes" = "Dateiattribute können nicht geändert werden";
+
+/* Description of file operation error */
+"Could not change the directory" = "Ordner kann nicht geändert werden";
+
 /* No comment provided by engineer. */
 "Could not convert file to export." = "Konvertierung der Datei zum Exportieren ist fehlgeschlagen.";
 
+/* Description of file operation error */
+"Could not copy file" = "Datei kann nicht kopiert werden";
+
 /* No comment provided by engineer. */
 "Could not copy." = "Kopieren fehlgeschlagen.";
+
+/* Description of file operation error */
+"Could not create a directory" = "Ordner kann nicht erstellt werden";
+
+/* Description of file operation error */
+"Could not create a hard link" = "Harter Link kann nicht erstellt werden";
+
+/* Description of file operation error */
+"Could not create file" = "Datei kann nicht erstellt werden";
+
+/* Description of file operation error */
+"Could not create symlink from" = "Symbolischer Link kann daraus nicht erstellt werden:";
+
+/* Description of file operation error */
+"Could not delete file" = "Datei kann nicht gelöscht werden";
 
 /* No comment provided by engineer. */
 "Could not delete the file." = "Die Datei konnte nicht gelöscht werden.";
@@ -200,10 +224,10 @@
 "Could not duplicate the file." = "Die Datei konnte nicht dupliziert werden.";
 
 /* No comment provided by engineer. */
-"Could not empty trash." = "Der Papierkorb konnte nicht geleert werden.";
-
-/* No comment provided by engineer. */
 "Could not export the file." = "Die Datei konnte nicht exportiert werden.";
+
+/* Description of file operation error */
+"Could not move file" = "Datei kann nicht verschoben werden";
 
 /* No comment provided by engineer. */
 "Could not open editor." = "Der Editor konnte nicht geöffnet werden.";
@@ -217,8 +241,14 @@
 /* No comment provided by engineer. */
 "Could not read data from the file." = "Die Daten aus der Datei konnten nicht gelesen werden.";
 
+/* Description of file operation error */
+"Could not read from file" = "Lesen aus Datei unmöglich";
+
 /* No comment provided by engineer. */
 "Could not save the file." = "Die Datei konnte nicht gespeichert werden.";
+
+/* Description of file operation error */
+"Could not write to file" = "Schreiben an Datei unmöglich";
 
 /* No comment provided by engineer. */
 "Couldn't open file" = "Die Datei konnte nicht geöffnet werden";
@@ -318,6 +348,9 @@
 "Email is empty" = "Das Feld E-Mail ist leer";
 
 /* No comment provided by engineer. */
+"Email is incorrect." = "E-Mail ist falsch.";
+
+/* No comment provided by engineer. */
 "Email is not valid" = "Die E-Mail-Adresse ist nicht gültig";
 
 /* No comment provided by engineer. */
@@ -350,6 +383,9 @@
 /* Unknown Server Error */
 "error.errorServerTitle" = "Serverfehler";
 
+/* Button title */
+"Export" = "Export";
+
 /* No comment provided by engineer. */
 "Failed online conversion service." = "Online-Konvertierung ist fehlgeschlagen.";
 
@@ -358,6 +394,9 @@
 
 /* No comment provided by engineer. */
 "Failed to check the name of the portal" = "Der Name des Portals konnte nicht überprüft werden";
+
+/* No comment provided by engineer. */
+"Failed to copy: %@" = "Kopieren fehlgeschlagen: %@";
 
 /* No comment provided by engineer. */
 "Failed to get file information from the server." = "Fehler beim Abrufen von Dateiinformationen vom Server:";
@@ -372,6 +411,12 @@
 "Failed to get the address of the document server." = "Fehler beim Abrufen der Adresse des Dokumentenservers.";
 
 /* No comment provided by engineer. */
+"Failed to move: %@" = "Verschieben fehlgeschlagen: %@";
+
+/* No comment provided by engineer. */
+"Failed to send feedback by mail. Try to write your request on our forum." = "Absenden per E-Mail fehlgeschlagen. Bitte richten Sie eine Forum-Anfrage ein.";
+
+/* No comment provided by engineer. */
 "Failed upload source file to conversion online service." = "Fehler beim Hochladen der Quelldatei zum Konvertierungs-Onlinedienst.";
 
 /* No comment provided by engineer. */
@@ -381,7 +426,19 @@
 "Failure to download result from conversion online service." = "Fehler beim Herunterladen der Ergebnisse vom Konvertierungs-Onlinedienst.";
 
 /* No comment provided by engineer. */
+"Favorites and Recents" = "Favoriten und zuletzt verwendete Dateien";
+
+/* Description of file operation error */
+"File already exists" = "Die Datei existiert bereits";
+
+/* Description of file operation error */
+"File does not exist" = "Die Datei existiert nicht";
+
+/* No comment provided by engineer. */
 "Files" = "Dateien";
+
+/* No comment provided by engineer. */
+"First name is incorrect" = "Vorname ist falsch";
 
 /* No comment provided by engineer. */
 "Folder title" = "Ordnertitel";
@@ -405,6 +462,9 @@
 "Getting started" = "Erste Schritte";
 
 /* No comment provided by engineer. */
+"Go to forum" = "Zum Forum gehen";
+
+/* No comment provided by engineer. */
 "Google directory" = "Google-Verzeichnis";
 
 /* No comment provided by engineer. */
@@ -412,6 +472,15 @@
 
 /* No comment provided by engineer. */
 "Groups" = "Gruppen";
+
+/* No comment provided by engineer. */
+"iCloud" = "iCloud";
+
+/* No comment provided by engineer. */
+"iCloud Drive" = "iCloud Drive";
+
+/* Email sent instructions */
+"If a user with the mail %@ exists, then an instruction to change the password was sent to this address." = "Wenn es einen Benutzer mit der E-Mail %@ gibt, wurden die Anweisungen zum Ändern des Passworts an diese E-Mail-Adresse verschickt.";
 
 /* No comment provided by engineer. */
 "Images" = "Bilder";
@@ -431,6 +500,18 @@
 /* Data units */
 "Kb" = "Kb";
 
+/* No comment provided by engineer. */
+"kDrive" = "kDrive";
+
+/* No comment provided by engineer. */
+"kDrive directory" = "kDrive-Verzeichnis";
+
+/* No comment provided by engineer. */
+"Last name is empty" = "Nachname ist leer";
+
+/* No comment provided by engineer. */
+"Last name is incorrect" = "Nachname ist falsch";
+
 /* Caption of the process */
 "Logging in" = "Anmeldung";
 
@@ -446,6 +527,9 @@
 /* Button title
    Caption of the process */
 "Logout" = "Abmelden";
+
+/* Button title */
+"Mark as favorite" = "Als Favorit markieren";
 
 /* Data units */
 "Mb" = "Mb";
@@ -484,6 +568,9 @@
 "Needs additional params." = "Zusätzliche Parameter erforderlich.";
 
 /* No comment provided by engineer. */
+"New" = "Neu";
+
+/* No comment provided by engineer. */
 "New Document" = "Neues Dokument";
 
 /* No comment provided by engineer. */
@@ -500,6 +587,9 @@
 
 /* No comment provided by engineer. */
 "Nextcloud" = "Nextcloud";
+
+/* No comment provided by engineer. */
+"Nextcloud directory" = "Nextcloud-Verzeichnis";
 
 /* No comment provided by engineer. */
 "No connection" = "Keine Verbindung";
@@ -547,6 +637,12 @@
 "Once you enter the password and open the file, the current password to the file will be reset" = "Sobald Sie das Passwort eingegeben und die Datei geöffnet haben, wird das aktuelle Passwort für die Datei zurückgesetzt.";
 
 /* No comment provided by engineer. */
+"OneDrive" = "OneDrive";
+
+/* No comment provided by engineer. */
+"OneDrive and kDrive access" = "Von Favoriten entfernen";
+
+/* No comment provided by engineer. */
 "OneDrive directory" = "OneDrive-Verzeichnis";
 
 /* No comment provided by engineer. */
@@ -563,9 +659,6 @@
 
 /* No comment provided by engineer. */
 "Open Document" = "Dokument öffnen";
-
-/* Button title */
-"Open In" = "Öffnen in";
 
 /* Caption of the processing */
 "Opening" = "Wird geöffnet";
@@ -584,6 +677,9 @@
 
 /* No comment provided by engineer. */
 "ownCloud" = "ownCloud";
+
+/* No comment provided by engineer. */
+"ownCloud directory" = "ownCloud-Verzeichnis";
 
 /* No comment provided by engineer. */
 "Owner" = "Besitzer";
@@ -670,6 +766,9 @@
 "Reload" = "Neu laden";
 
 /* Button title */
+"Remove from Favorites" = "Von Favoriten entfernen";
+
+/* Button title */
 "Rename" = "Umbenennen";
 
 /* No comment provided by engineer. */
@@ -693,13 +792,11 @@
 /* Share status */
 "Review" = "Überprüfen";
 
-/* No comment provided by engineer. */
-"Reviewing" = "Überprüfung";
-
 /* Caption of the processing */
 "Saving" = "Wird gespeichert";
 
-/* Button title */
+/* Button title
+   Navigation bar button title */
 "Select" = "Auswählen";
 
 /* No comment provided by engineer. */
@@ -723,11 +820,14 @@
 /* No comment provided by engineer. */
 "Selected: %ld" = "Ausgewählt: %ld";
 
+/* Caption of the process */
+"Sending" = "Senden";
+
+/* No comment provided by engineer. */
+"Set favorite failed." = "Favorit setzen fehlgeschlagen.";
+
 /* No comment provided by engineer. */
 "Settings" = "Einstellungen";
-
-/* Button title */
-"Share" = "Freigeben";
 
 /* Category title */
 "Shared with Me" = "Für mich freigegeben";
@@ -737,6 +837,9 @@
 
 /* Caption of the process */
 "Sharing" = "Teilen";
+
+/* Button title */
+"Sharing Settings" = "Einstellungen teilen";
 
 /* No comment provided by engineer. */
 "Single Sign-on" = "Einmalige Anmeldung";
@@ -781,6 +884,9 @@
 "Text copied" = "Text kopiert";
 
 /* No comment provided by engineer. */
+"The %@ server is not available." = "Der %@ Server ist nicht verfügbar.";
+
+/* No comment provided by engineer. */
 "The account name must be between 6 and 50 characters long" = "Der Kontoname muss zwischen 6 und 50 Zeichen lang sein";
 
 /* No comment provided by engineer. */
@@ -793,16 +899,25 @@
 "The file will be irretrievably deleted. This action is irreversible." = "Die Datei wird unwiderruflich gelöscht. Diese Aktion ist nicht umkehrbar.";
 
 /* No comment provided by engineer. */
+"The folder in the Trash can not be opened." = "Der Ordner im Papierkorb kann nicht geöffnet werden.";
+
+/* No comment provided by engineer. */
 "The folder will be irretrievably deleted. This action is irreversible." = "Der Ordner wird unwiderruflich gelöscht. Diese Aktion ist nicht umkehrbar.";
 
 /* No comment provided by engineer. */
 "The item with the name '%@' already exists in the folder '%@'." = "Das Element mit dem Namen '%1$@' existiert schon im Ordner '%2$@'.";
 
 /* No comment provided by engineer. */
-"The password is incorrect. It must contain 6 characters" = "Das Kennwort ist falsch. Es muss 6 Zeichen enthalten";
+"The parameters are incorrect." = "Die Parameter sind falsch.";
+
+/* No comment provided by engineer. */
+"The password is incorrect. It must contain 8 characters" = "Das Passwort ist inkorrekt. Es muss 8 Zeichen enthalten";
 
 /* No comment provided by engineer. */
 "The portal address is invalid" = "Die Portalsdresse ist ungültig";
+
+/* No comment provided by engineer. */
+"The portal is not available" = "Das Portal ist nicht verfügbar";
 
 /* No comment provided by engineer. */
 "The portal name must be between 6 and 50 characters long" = "Der Name des Portals muss zwischen 6 und 50 Zeichen lang sein";
@@ -897,17 +1012,11 @@
 /* Caption of the process */
 "Uploading" = "Wird hochgeladen";
 
-/* No comment provided by engineer. */
-"Use comments to add notes, suggestions, or questions for your collaborators. Edit, answer, resolve or delete them in process." = "Nutzen Sie Kommentare, um Notizen hinzuzufügen, Vorschläge zu machen oder Fragen an Ihre Kollegen zu stellen.Bearbeiten, beantworten, auflösen oder löschen Sie diese bei der Bearbeitung.";
-
 /* Button title */
 "Use Face ID" = "Face-ID verwenden";
 
 /* Button title */
 "Use Touch ID" = "Touch-ID verwenden";
-
-/* No comment provided by engineer. */
-"Use Track Changes mode in text documents to suggest changes, accept or reject them." = "Nutzen Sie Nachverfolgen von Änderungen in Textdokumenten, um Änderungen vorzuschlagen, anzunehmen oder abzulehnen.";
 
 /* Error message */
 "User authentication failed" = "Benutzerauthentifizierung fehlgeschlagen";
@@ -926,6 +1035,9 @@
 
 /* No comment provided by engineer. */
 "Version" = "Version";
+
+/* No comment provided by engineer. */
+"View and edit files in OneDrive and kDrive directly from the app. Access your storages from the Clouds tab." = "Öffnen und bearbeiten Sie Dateien in OneDrive und kDrive direkt in der App. Greifen Sie über die Registerkarte ‘Clouds’ auf Ihre Speicher zu";
 
 /* No comment provided by engineer. */
 "Warning" = "Warnung";

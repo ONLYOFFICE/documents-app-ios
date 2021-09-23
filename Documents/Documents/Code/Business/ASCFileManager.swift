@@ -60,6 +60,10 @@ class ASCFileManager {
             return ASCWebDAVProvider()
         case .icloud:
             return ASCiCloudProvider()
+        case .onedrive:
+            return ASCOneDriveProvider()
+        case .kdrive:
+            return ASCKdriveFileProvider()
         default:
             return nil
         }
@@ -119,6 +123,10 @@ class ASCFileManager {
                             provider = ASCWebDAVProvider()
                         case .some(.icloud):
                             provider = ASCiCloudProvider()
+                        case .some(.onedrive):
+                            provider = ASCOneDriveProvider()
+                        case .some(.kdrive):
+                            provider = ASCKdriveFileProvider()
                         default:
                             break
                         }

@@ -32,16 +32,13 @@
 "A6 (10,5%@ x 14,8%@)" = "A6 (10,5%1$@ x 14,8%2$@)";
 
 /* No comment provided by engineer. */
+"Access files in Favorites and Recents on ONLYOFFICE portal from the app" = "Теперь у вас есть доступ к разделам Избранное и Последние на портале ONLYOFFICE из мобильного приложения";
+
+/* No comment provided by engineer. */
 "Account name is empty" = "Имя учетной записи не заполнено";
 
 /* No comment provided by engineer. */
 "Account name is not valid" = "Имя учетной записи некорректное";
-
-/* No comment provided by engineer. */
-"Add files to Favorites for quick access directly from the editor." = "Добавляйте документы для быстрого доступа в Избранное прямо из редактора.";
-
-/* No comment provided by engineer. */
-"Adding to Favorites" = "Добавление в Избранное";
 
 /* No comment provided by engineer. */
 "Address is empty" = "Адрес не заполнен";
@@ -175,11 +172,35 @@
 /* Caption of the processing */
 "Copying" = "Копирование";
 
+/* Description of file operation error */
+"Could not change file attrubutes" = "Не удалось изменить атрибуты файла";
+
+/* Description of file operation error */
+"Could not change the directory" = "Не удалось изменить директорию";
+
 /* No comment provided by engineer. */
 "Could not convert file to export." = "Невозможно преобразовать файл для экспорта.";
 
+/* Description of file operation error */
+"Could not copy file" = "Не удалось скопировать файл";
+
 /* No comment provided by engineer. */
 "Could not copy." = "Невозможно скопировать.";
+
+/* Description of file operation error */
+"Could not create a directory" = "Не удалось создать каталог";
+
+/* Description of file operation error */
+"Could not create a hard link" = "Не удалось создать жесткую ссылку";
+
+/* Description of file operation error */
+"Could not create file" = "Не удалось создать файл";
+
+/* Description of file operation error */
+"Could not create symlink from" = "Не удалось создать символическую ссылку из";
+
+/* Description of file operation error */
+"Could not delete file" = "Не удалось удалить файл";
 
 /* No comment provided by engineer. */
 "Could not delete the file." = "Невозможно удалить файл.";
@@ -203,10 +224,10 @@
 "Could not duplicate the file." = "Невозможно скопировать файл.";
 
 /* No comment provided by engineer. */
-"Could not empty trash." = "Невозможно очистить корзину.";
-
-/* No comment provided by engineer. */
 "Could not export the file." = "Невозможно экспортировать файл.";
+
+/* Description of file operation error */
+"Could not move file" = "Не удалось переместить файл";
 
 /* No comment provided by engineer. */
 "Could not open editor." = "Невозможно открыть редактор.";
@@ -220,8 +241,14 @@
 /* No comment provided by engineer. */
 "Could not read data from the file." = "Невозможно прочитать данные из файла.";
 
+/* Description of file operation error */
+"Could not read from file" = "Не удалось прочитать из файла";
+
 /* No comment provided by engineer. */
 "Could not save the file." = "Невозможно сохранить файл.";
+
+/* Description of file operation error */
+"Could not write to file" = "Не удалось записать в файл";
 
 /* No comment provided by engineer. */
 "Couldn't open file" = "Не удалось открыть файл";
@@ -356,6 +383,9 @@
 /* Unknown Server Error */
 "error.errorServerTitle" = "Ошибка сервера";
 
+/* Button title */
+"Export" = "Экспорт";
+
 /* No comment provided by engineer. */
 "Failed online conversion service." = "Ошибка службы онлайн-конвертации";
 
@@ -364,6 +394,9 @@
 
 /* No comment provided by engineer. */
 "Failed to check the name of the portal" = "Ошибка при проверке имени портала";
+
+/* No comment provided by engineer. */
+"Failed to copy: %@" = "Не удалось скопировать: %@";
 
 /* No comment provided by engineer. */
 "Failed to get file information from the server." = "Ошибка при получении информации о файле с сервера.";
@@ -378,6 +411,9 @@
 "Failed to get the address of the document server." = "Ошибка получения адреса сервера документов.";
 
 /* No comment provided by engineer. */
+"Failed to move: %@" = "Не удалось переместить: %@";
+
+/* No comment provided by engineer. */
 "Failed to send feedback by mail. Try to write your request on our forum." = "Не удалось отправить отзыв по почте. Попробуйте написать свой запрос на нашем форуме.";
 
 /* No comment provided by engineer. */
@@ -388,6 +424,15 @@
 
 /* No comment provided by engineer. */
 "Failure to download result from conversion online service." = "Ошибка скачивания полученного файла из службы онлайн-конвертации.";
+
+/* No comment provided by engineer. */
+"Favorites and Recents" = "Разделы Избранное и Последние";
+
+/* Description of file operation error */
+"File already exists" = "Файл уже существует";
+
+/* Description of file operation error */
+"File does not exist" = "Файл не существует";
 
 /* No comment provided by engineer. */
 "Files" = "Файлы";
@@ -429,7 +474,13 @@
 "Groups" = "Группы";
 
 /* No comment provided by engineer. */
-"iCloud Drive access" = "Работа с iCloud Drive";
+"iCloud" = "iCloud";
+
+/* No comment provided by engineer. */
+"iCloud Drive" = "iCloud Drive";
+
+/* Email sent instructions */
+"If a user with the mail %@ exists, then an instruction to change the password was sent to this address." = "Если пользователь с почтой %@ существует, то на этот адрес была отправлена инструкция по смене пароля.";
 
 /* No comment provided by engineer. */
 "Images" = "Изображения";
@@ -448,6 +499,12 @@
 
 /* Data units */
 "Kb" = "Кб";
+
+/* No comment provided by engineer. */
+"kDrive" = "kDrive";
+
+/* No comment provided by engineer. */
+"kDrive directory" = "Папка kDrive";
 
 /* No comment provided by engineer. */
 "Last name is empty" = "Фамилия пуста";
@@ -511,6 +568,9 @@
 "Needs additional params." = "Нужны дополнительные параметры.";
 
 /* No comment provided by engineer. */
+"New" = "Новый";
+
+/* No comment provided by engineer. */
 "New Document" = "Новый документ";
 
 /* No comment provided by engineer. */
@@ -527,6 +587,9 @@
 
 /* No comment provided by engineer. */
 "Nextcloud" = "Nextcloud";
+
+/* No comment provided by engineer. */
+"Nextcloud directory" = "Папка Nextcloud";
 
 /* No comment provided by engineer. */
 "No connection" = "Нет подключения";
@@ -574,6 +637,12 @@
 "Once you enter the password and open the file, the current password to the file will be reset" = "Как только вы введете пароль и откроете файл, текущий пароль к файлу будет сброшен";
 
 /* No comment provided by engineer. */
+"OneDrive" = "OneDrive";
+
+/* No comment provided by engineer. */
+"OneDrive and kDrive access" = "Работа в OneDrive и kDrive";
+
+/* No comment provided by engineer. */
 "OneDrive directory" = "Папка OneDrive";
 
 /* No comment provided by engineer. */
@@ -608,6 +677,9 @@
 
 /* No comment provided by engineer. */
 "ownCloud" = "ownCloud";
+
+/* No comment provided by engineer. */
+"ownCloud directory" = "Папка ownCloud";
 
 /* No comment provided by engineer. */
 "Owner" = "Владелец";
@@ -678,9 +750,6 @@
 /* No comment provided by engineer. */
 "Protected File" = "Защищенный файл";
 
-/* No comment provided by engineer. */
-"Quick sharing" = "Мгновенный шаринг";
-
 /* Share status */
 "Read Only" = "Только чтение";
 
@@ -726,7 +795,8 @@
 /* Caption of the processing */
 "Saving" = "Сохранение";
 
-/* Button title */
+/* Button title
+   Navigation bar button title */
 "Select" = "Выбрать";
 
 /* No comment provided by engineer. */
@@ -750,17 +820,14 @@
 /* No comment provided by engineer. */
 "Selected: %ld" = "Выбрано: %ld";
 
+/* Caption of the process */
+"Sending" = "Отправка";
+
 /* No comment provided by engineer. */
 "Set favorite failed." = "Не удалось изменить отметку Избранное";
 
 /* No comment provided by engineer. */
 "Settings" = "Настройки";
-
-/* Button title */
-"Share" = "Поделиться";
-
-/* No comment provided by engineer. */
-"Share files and manage access rights without leaving the editor." = "Делитесь файлами и управляйте правами доступа не выходя из редактора.";
 
 /* Category title */
 "Shared with Me" = "Доступно для меня";
@@ -832,6 +899,9 @@
 "The file will be irretrievably deleted. This action is irreversible." = "Файл будет безвозвратно удален. Это действие нельзя отменить.";
 
 /* No comment provided by engineer. */
+"The folder in the Trash can not be opened." = "Невозможно открыть папку, находящийся в корзине.";
+
+/* No comment provided by engineer. */
 "The folder will be irretrievably deleted. This action is irreversible." = "Папка будет безвозвратно удалена. Это действие нельзя отменить.";
 
 /* No comment provided by engineer. */
@@ -845,6 +915,9 @@
 
 /* No comment provided by engineer. */
 "The portal address is invalid" = "Некорректный адрес портала";
+
+/* No comment provided by engineer. */
+"The portal is not available" = "Портал недоступен";
 
 /* No comment provided by engineer. */
 "The portal name must be between 6 and 50 characters long" = "Имя портала должно быть длиной от 6 до 50 символов";
@@ -964,7 +1037,7 @@
 "Version" = "Версия";
 
 /* No comment provided by engineer. */
-"View and edit files in iCloud directly from the app. Access your storage from the Clouds tab." = "Просматривайте и редактируйте файлы из iCloud. Ваше хранилище доступно во вкладке Облака.";
+"View and edit files in OneDrive and kDrive directly from the app. Access your storages from the Clouds tab." = "Просматривайте и редактируйте файлы из OneDrive и kDrive. Все хранилища доступны во вкладке Облака";
 
 /* No comment provided by engineer. */
 "Warning" = "Предупреждение";

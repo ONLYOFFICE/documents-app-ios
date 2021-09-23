@@ -162,10 +162,10 @@ class ASCSignInController {
                                             // 2 - IOSDocuments
                                         })
 
-                                        if let portal = apiOptions["portal"], let provider = apiOptions["provider"] {
+                                        if let portal = apiOptions["portal"], let provider = apiOptions["provider"] as? ASCLoginType {
                                             ASCAnalytics.logEvent(ASCConstants.Analytics.Event.loginPortal, parameters: [
-                                                "portal": portal,
-                                                "provider": provider
+                                                ASCAnalytics.Event.Key.portal: portal,
+                                                ASCAnalytics.Event.Key.provider: provider.rawValue
                                                 ]
                                             )
                                         }

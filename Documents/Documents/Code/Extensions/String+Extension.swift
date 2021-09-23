@@ -26,6 +26,17 @@ extension String {
         return range(of: regex, options: .regularExpression, range: nil, locale: nil) != nil
     }
     
+    /// Check if string is valid email format for ONLYOFFICE portals.
+    ///
+    /// - Note: Note that this property does not validate the email address against an email server. It merely attempts to determine whether its format is suitable for an email address.
+    ///
+    ///        "john@doe.com".isValidOnlyofficeEmail -> true
+    ///
+    var isValidOnlyofficeEmail: Bool {
+        let regex = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,}"
+        return range(of: regex, options: .regularExpression, range: nil, locale: nil) != nil
+    }
+    
     /// String with no spaces or new lines in beginning and end.
     ///
     ///     "   hello  \n".trimmed -> "hello"

@@ -41,6 +41,7 @@ class ASCDocumentsViewController: ASCBaseTableViewController, UIGestureRecognize
     
     // MARK: - Private
 
+    private lazy var loadedDocumentsViewControllerFinder: ASCLoadedViewControllerFinderProtocol = ASCLoadedDocumentViewControllerByProviderAndFolderFinder()
     private var total: Int {
         return provider?.total ?? 0
     }
@@ -105,7 +106,7 @@ class ASCDocumentsViewController: ASCBaseTableViewController, UIGestureRecognize
     private let featureLargeTitle = true
     
     // Sort
-    private lazy var deaultsSortTypes: [ASCDocumentSortType] = [.dateandtime, .az, .type, .size]
+    private lazy var defaultsSortTypes: [ASCDocumentSortType] = [.dateandtime, .az, .type, .size]
 
     
     // MARK: - Outlets
@@ -149,6 +150,15 @@ class ASCDocumentsViewController: ASCBaseTableViewController, UIGestureRecognize
         return view
     }()
 
+    private lazy var categoryIsRecent: Bool = {
+        guard let onlyOfficeProvider = provider as? ASCOnlyofficeProvider else { return false }
+        return onlyOfficeProvider.category?.folder?.rootFolderType == .onlyofficeRecent
+    }()
+    
+    private lazy var categoryIsFavorite: Bool = {
+        guard let onlyOfficeProvider = provider as? ASCOnlyofficeProvider else { return false }
+        return onlyOfficeProvider.category?.folder?.rootFolderType == .onlyofficeFavorites
+    }()
     
     // MARK: - Lifecycle Methods
     
@@ -162,7 +172,8 @@ class ASCDocumentsViewController: ASCBaseTableViewController, UIGestureRecognize
 
         configureNavigationBar(animated: false)
         configureProvider()
-
+        configureSwipeGesture()
+        
         let addObserver: (Notification.Name, Selector) -> Void = { name, selector in
             NotificationCenter.default.addObserver(
                 self,
@@ -175,7 +186,6 @@ class ASCDocumentsViewController: ASCBaseTableViewController, UIGestureRecognize
         addObserver(ASCConstants.Notifications.updateFileInfo, #selector(updateFileInfo(_:)))
         addObserver(ASCConstants.Notifications.networkStatusChanged, #selector(networkStatusChanged(_:)))
         addObserver(ASCConstants.Notifications.updateSizeClass, #selector(onUpdateSizeClass(_:)))
-        addObserver(ASCConstants.Notifications.openLocalFileByUrl, #selector(onOpenLocalFileByUrl(_:)))
         addObserver(ASCConstants.Notifications.appDidBecomeActive, #selector(onAppDidBecomeActive(_:)))
         addObserver(ASCConstants.Notifications.reloadData, #selector(onReloadData(_:)))
         addObserver(UIApplication.willResignActiveNotification, #selector(onAppMovedToBackground))
@@ -227,6 +237,14 @@ class ASCDocumentsViewController: ASCBaseTableViewController, UIGestureRecognize
 
         ASCViewControllerManager.shared.rootController?.tabBar.isHidden = tableView.isEditing
         updateLargeTitlesSize()
+        
+        if folder?.parent == nil {
+            splitViewController?.presentsWithGesture = true
+            let gesture = view.gestureRecognizers?.filter { $0.name == "swipeRight" }
+            gesture?.first?.isEnabled = false
+        } else {
+            splitViewController?.presentsWithGesture = false
+        }
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -487,7 +505,7 @@ class ASCDocumentsViewController: ASCBaseTableViewController, UIGestureRecognize
                     title: NSLocalizedString("Sort", comment: "Button title"),
                     style: .default,
                     handler: { [unowned self] (action) in
-                        self.onSortAction()
+                        self.onSortAction(sender)
                     })
             )
             
@@ -502,45 +520,61 @@ class ASCDocumentsViewController: ASCBaseTableViewController, UIGestureRecognize
         }
     }
     
+    
+    
     @objc func onCancelAction() {
         setEditMode(false)
     }
     
-    @objc func onSortAction() {
-        var sortType: ASCDocumentSortType = .dateandtime
-        var sortAscending = false
-        var sortStates: [ASCDocumentSortStateType] = deaultsSortTypes.map { ($0, $0 == sortType) }
-        
-        if let sortInfo = UserDefaults.standard.value(forKey: ASCConstants.SettingsKeys.sortDocuments) as? [String: Any] {
-            if let sortBy = sortInfo["type"] as? String, !sortBy.isEmpty {
-                sortType = ASCDocumentSortType(sortBy)
+    @objc func onSortAction(_ sender: Any) {
+        if #available(iOS 14.0, *) {
+            if let button = sender as? UIButton {
+                button.showsMenuAsPrimaryAction = true
+                button.menu = sortSelectMenu(for: button)
             }
-
-            if let sortOrder = sortInfo["order"] as? String, !sortOrder.isEmpty {
-                sortAscending = sortOrder == "ascending"
+        } else {
+            var sortType: ASCDocumentSortType = .dateandtime
+            var sortAscending = false
+            var sortStates: [ASCDocumentSortStateType] = defaultsSortTypes.map { ($0, $0 == sortType) }
+            
+            if let sortInfo = UserDefaults.standard.value(forKey: ASCConstants.SettingsKeys.sortDocuments) as? [String: Any] {
+                if let sortBy = sortInfo["type"] as? String, !sortBy.isEmpty {
+                    sortType = ASCDocumentSortType(sortBy)
+                    sortStates = defaultsSortTypes.map { ($0, $0 == sortType) }
+                }
+                
+                if let sortOrder = sortInfo["order"] as? String, !sortOrder.isEmpty {
+                    sortAscending = sortOrder == "ascending"
+                }
             }
+            
+            if ![.deviceDocuments, .deviceTrash].contains(folder?.rootFolderType) {
+                sortStates.append((.author, sortType == .author))
+            }
+            
+            navigator.navigate(to: .sort(types: sortStates, ascending: sortAscending, complation: { type, ascending in
+                if (sortType != type) || (ascending != sortAscending) {
+                    let sortInfo = [
+                        "type": type.rawValue,
+                        "order": ascending ? "ascending" : "descending"
+                    ]
+                    
+                    UserDefaults.standard.set(sortInfo, forKey: ASCConstants.SettingsKeys.sortDocuments)
+                }
+            }))
         }
-
-        if ![.deviceDocuments, .deviceTrash].contains(folder?.rootFolderType) {
-            sortStates.append((.author, sortType == .author))
-        }
-        
-        navigator.navigate(to: .sort(types: sortStates, ascending: sortAscending, complation: { type, ascending in
-            if (sortType != type) || (ascending != sortAscending) {
-                let sortInfo = [
-                    "type": type.rawValue,
-                    "order": ascending ? "ascending" : "descending"
-                ]
-
-                UserDefaults.standard.set(sortInfo, forKey: ASCConstants.SettingsKeys.sortDocuments)
-            }
-        }))
     }
     
     @objc func onSelectAction() {
         guard view.isUserInteractionEnabled else { return }
         setEditMode(true)
         flashBlockInteration()
+    }
+    
+    @objc func popViewController(gesture: UISwipeGestureRecognizer) -> Void {
+        if gesture.direction == .right {
+        navigationController?.popViewController(animated: true)
+       }
     }
     
     // MARK: - Private
@@ -554,12 +588,13 @@ class ASCDocumentsViewController: ASCBaseTableViewController, UIGestureRecognize
     }
     
     private func configureNavigationBar(animated: Bool = true) {
+
         addBarButton = addBarButton
-            ?? ASCStyles.createBarButton(image: Asset.Images.navAdd.image, target: self, action:#selector(onAddEntityAction))
+            ?? createAddBarButton()
         sortSelectBarButton = sortSelectBarButton
-            ?? ASCStyles.createBarButton(image: Asset.Images.navMore.image, target: self, action:#selector(onSortSelectAction))
+            ?? createSortSelectBarButton()
         sortBarButton = sortBarButton
-            ?? ASCStyles.createBarButton(image: Asset.Images.navSort.image, target: self, action: #selector(onSortAction))
+            ?? createSortBarButton()
         selectBarButton = selectBarButton
             ?? ASCStyles.createBarButton(image: Asset.Images.navSelect.image, target: self, action: #selector(onSelectAction))
         cancelBarButton = cancelBarButton
@@ -567,7 +602,6 @@ class ASCDocumentsViewController: ASCBaseTableViewController, UIGestureRecognize
         selectAllBarButton = selectAllBarButton
             ?? ASCStyles.createBarButton(title: NSLocalizedString("Select", comment: "Button title"), target: self, action: #selector(onSelectAll))
         
-        addBarButton?.isEnabled = provider?.allowEdit(entity: folder) ?? false
         sortSelectBarButton?.isEnabled = total > 0
         sortBarButton?.isEnabled = total > 0
         selectBarButton?.isEnabled = total > 0
@@ -589,12 +623,23 @@ class ASCDocumentsViewController: ASCBaseTableViewController, UIGestureRecognize
             navigationItem.setRightBarButtonItems([cancelBarButton!], animated: animated)
         } else {
             navigationItem.setLeftBarButtonItems(nil, animated: animated)
-            navigationItem.setRightBarButtonItems(
-                UIDevice.phone
-                    ? [ASCStyles.barFixedSpace, addBarButton!, sortSelectBarButton!]
-                    : [ASCStyles.barFixedSpace, addBarButton!, sortBarButton!, selectBarButton!],
-                animated: animated
-            )
+            var rightBarBtnItems = [ASCStyles.barFixedSpace]
+            if let addBarBtn = addBarButton {
+                rightBarBtnItems.append(addBarBtn)
+            }
+            if UIDevice.phone {
+                if let sortSelectBarBtn = sortSelectBarButton {
+                    rightBarBtnItems.append(sortSelectBarBtn)
+                }
+            } else {
+                if let sortBarBtn = sortBarButton {
+                    rightBarBtnItems.append(sortBarBtn)
+                }
+                if let selectBarBtn = selectBarButton {
+                    rightBarBtnItems.append(selectBarBtn)
+                }
+            }
+            navigationItem.setRightBarButtonItems(rightBarBtnItems, animated: animated)
         }
 
         if #available(iOS 11.0, *), featureLargeTitle {
@@ -603,6 +648,30 @@ class ASCDocumentsViewController: ASCBaseTableViewController, UIGestureRecognize
         }
     }
     
+    private func createAddBarButton() -> UIBarButtonItem? {
+        let showAddButton = provider?.allowEdit(entity: folder) ?? false
+        
+        guard showAddButton else { return nil }
+        
+        return ASCStyles.createBarButton(image: Asset.Images.navAdd.image, target: self, action:#selector(onAddEntityAction))
+    }
+    
+    private func createSortSelectBarButton() -> UIBarButtonItem {
+        guard categoryIsRecent else {
+            return ASCStyles.createBarButton(image: Asset.Images.navMore.image, target: self, action: #selector(onSortSelectAction))
+        }
+        
+        return ASCStyles.createBarButton(title: NSLocalizedString("Select", comment: "Navigation bar button title"), target: self, action: #selector(onSelectAction))
+    }
+    
+    private func createSortBarButton() -> UIBarButtonItem? {
+        guard !categoryIsRecent else {
+            return nil
+        }
+        
+        return ASCStyles.createBarButton(image: Asset.Images.navSort.image, target: self, action: #selector(onSortAction))
+    }
+
     private func configureToolBar() {
         guard let folder = folder else {
             return
@@ -1083,56 +1152,6 @@ class ASCDocumentsViewController: ASCBaseTableViewController, UIGestureRecognize
 
     }
     
-    @objc func onOpenLocalFileByUrl(_ notification: Notification) {
-        guard
-            let folder = folder,
-            let userInfo = notification.userInfo,
-            let url = userInfo["url"] as? URL
-        else {
-            return
-        }
-        
-        if !folder.device {
-            ASCViewControllerManager.shared.rootController?.display(provider: ASCFileManager.localProvider, folder: nil)
-        }
-
-        let fileTitle = url.lastPathComponent
-        let filePath = Path(url.path)
-
-        if  let splitVC = ASCViewControllerManager.shared.rootController?.topMostViewController() as? ASCDeviceSplitViewController,
-            let documentsNC = splitVC.viewControllers.last as? ASCBaseNavigationController,
-            let documentsVC = documentsNC.topViewController as? ASCDocumentsViewController,
-            let newFilePath = ASCLocalFileHelper.shared.resolve(filePath: Path.userDocuments + fileTitle)
-        {
-            if let error = ASCLocalFileHelper.shared.copy(from: filePath, to: newFilePath) {
-                log.error("Can not import the file. \(error)")
-            } else {
-                if filePath.isChildOfPath(Path.userDocuments + "Inbox") {
-                    ASCLocalFileHelper.shared.removeFile(filePath)
-                }
-
-                let owner = ASCUser()
-                owner.displayName = UIDevice.displayName
-
-                let file = ASCFile()
-                file.id = newFilePath.rawValue
-                file.rootFolderType = .deviceDocuments
-                file.title = newFilePath.fileName
-                file.created = newFilePath.creationDate
-                file.updated = newFilePath.modificationDate
-                file.createdBy = owner
-                file.updatedBy = owner
-                file.device = true
-                file.parent = documentsVC.folder
-                file.displayContentLength = String.fileSizeToString(with: newFilePath.fileSize ?? 0)
-                file.pureContentLength = Int(newFilePath.fileSize ?? 0)
-
-                documentsVC.add(entity: file)
-                documentsVC.open(file: file)
-            }
-        }
-    }
-    
     @objc func onAppDidBecomeActive(_ notification: Notification) {
         guard let folder = folder else {
             return
@@ -1598,6 +1617,20 @@ class ASCDocumentsViewController: ASCBaseTableViewController, UIGestureRecognize
                 middleActions.append(move)
             }
         }
+
+        /// Restore action
+        
+        if actions.contains(.restore) {
+            middleActions.append(
+                UIAction(
+                    title: NSLocalizedString("Restore", comment: "Button title"),
+                    image: UIImage(systemName: "arrow.2.circlepath"))
+                { [unowned self] action in
+                    cell.hideSwipe(animated: true)
+                    self.recover(cell: cell)
+                }
+            )
+        }
         
         /// Delete action
 
@@ -1648,7 +1681,7 @@ class ASCDocumentsViewController: ASCBaseTableViewController, UIGestureRecognize
         if actions.contains(.export) {
             bottomActions.append(
                 UIAction(
-                    title: NSLocalizedString("Share", comment: "Button title"),
+                    title: NSLocalizedString("Export", comment: "Button title"),
                     image: UIImage(systemName: "square.and.arrow.up"))
                 { [unowned self] action in
                     cell.hideSwipe(animated: true)
@@ -1750,6 +1783,19 @@ class ASCDocumentsViewController: ASCBaseTableViewController, UIGestureRecognize
             )
         }
 
+        /// Restore action
+        
+        if actions.contains(.restore) {
+            rootActions.append(
+                UIAction(
+                    title: NSLocalizedString("Restore", comment: "Button title"),
+                    image: UIImage(systemName: "arrow.2.circlepath"))
+                { [unowned self] action in
+                    cell.hideSwipe(animated: true)
+                    self.recover(cell: cell)
+                }
+            )
+        }
 
         /// Delete action
 
@@ -1811,7 +1857,7 @@ class ASCDocumentsViewController: ASCBaseTableViewController, UIGestureRecognize
             }
         }
 
-        var sortStates: [ASCDocumentSortStateType] = deaultsSortTypes.map { ($0, $0 == sortType) }
+        var sortStates: [ASCDocumentSortStateType] = defaultsSortTypes.map { ($0, $0 == sortType) }
         
         if ![.deviceDocuments, .deviceTrash].contains(folder?.rootFolderType) {
             sortStates.append((.author, sortType == .author))
@@ -2044,7 +2090,7 @@ class ASCDocumentsViewController: ASCBaseTableViewController, UIGestureRecognize
         if actions.contains(.export) {
             actionAlertController.addAction(
                 UIAlertAction(
-                    title: NSLocalizedString("Share", comment: "Button title"),
+                    title: NSLocalizedString("Export", comment: "Button title"),
                     style: .default,
                     handler: { [unowned self] action in
                         cell.hideSwipe(animated: true)
@@ -2262,6 +2308,13 @@ class ASCDocumentsViewController: ASCBaseTableViewController, UIGestureRecognize
         sharedNavigationVC.view.tintColor = self.view.tintColor
         parent.present(sharedNavigationVC, animated: true, completion: nil)
     }
+    
+    private func configureSwipeGesture() {
+        let swipeToPreviousFolder = UISwipeGestureRecognizer(target: self, action: #selector(popViewController))
+        swipeToPreviousFolder.direction = .right
+        swipeToPreviousFolder.name = "swipeRight"
+        self.view.addGestureRecognizer(swipeToPreviousFolder)
+    }
 
     // MARK: - Table view data source
 
@@ -2341,6 +2394,10 @@ class ASCDocumentsViewController: ASCBaseTableViewController, UIGestureRecognize
         
         if let folder = tableData[indexPath.row] as? ASCFolder {
             if isTrash(folder) {
+                UIAlertController.showWarning(
+                    in: self,
+                    message: NSLocalizedString("The folder in the Trash can not be opened.", comment: "")
+                )
                 return
             }
             
@@ -2476,7 +2533,8 @@ class ASCDocumentsViewController: ASCBaseTableViewController, UIGestureRecognize
                 // Force reset open recover version
                 UserDefaults.standard.removeObject(forKey: ASCConstants.SettingsKeys.openedDocumentModifity)
               
-                let closeHandler = closeProgressFile(
+                let closeHandler = closeProgress(
+                    file: file, 
                     title: NSLocalizedString("Saving", comment: "Caption of the processing")
                 )
                 
@@ -2708,11 +2766,17 @@ class ASCDocumentsViewController: ASCBaseTableViewController, UIGestureRecognize
                     hud?.hide(animated: false, afterDelay: 1.3)
                     
                     if let indexPath = self.tableView.indexPath(for: cell), let file = entity as? ASCFile {
-//                        self.tableData[indexPath.row] = file
-                        self.provider?.items[indexPath.row] = file
-                        self.tableView.beginUpdates()
-                        self.tableView.reloadRows(at: [indexPath], with: .fade)
-                        self.tableView.endUpdates()
+                        if categoryIsFavorite {
+                            self.provider?.remove(at: indexPath.row)
+                            self.tableView.beginUpdates()
+                            self.tableView.deleteRows(at: [indexPath], with: .fade)
+                            self.tableView.endUpdates()
+                        } else {
+                            self.provider?.items[indexPath.row] = file
+                            self.tableView.beginUpdates()
+                            self.tableView.reloadRows(at: [indexPath], with: .fade)
+                            self.tableView.endUpdates()
+                        }
                     }
                 } else {
                     hud?.hide(animated: false)
@@ -3022,6 +3086,19 @@ class ASCDocumentsViewController: ASCBaseTableViewController, UIGestureRecognize
                         } else {
                             strongSelf.insideTransfer(items: items, to: folder, move: move, overwride: overwride, completion: { entities in
                                 completion?(entities)
+                                guard let transfers = entities else {
+                                    completion?(nil)
+                                    return
+                                }
+                                
+                                if move {
+                                    transferNavigationVC.sourceProvider?.items.removeAll(transfers)
+                                    strongSelf.tableView.reloadData()
+                                }
+                                
+                                if let destVC = getLoadedViewController(byFolderId: folder.id, andProviderId: provider.id) {
+                                    destVC.loadFirstPage()
+                                }
                             })
                         }
                     })
@@ -3057,12 +3134,21 @@ class ASCDocumentsViewController: ASCBaseTableViewController, UIGestureRecognize
                                     cancel = forceCancel
                                 }
 
-                                DispatchQueue.main.async {
+                                DispatchQueue.main.async { [items, newItems] in
                                     if complate {
                                         transferAlert.hide()
 
                                         if success {
                                             completion?(nil)
+                                            
+                                            if !items.isEmpty, let destVC = getLoadedViewController(byFolderId: destFolder.id, andProviderId: destProvider.id) {
+                                                
+                                                if let transfers = newItems, items.count == transfers.count {
+                                                    insert(transferedItems: transfers, toLoadedViewController: destVC)
+                                                } else {
+                                                    destVC.loadFirstPage()
+                                                }
+                                            }
                                         } else {
                                             completion?(items)
                                         }
@@ -3128,6 +3214,37 @@ class ASCDocumentsViewController: ASCBaseTableViewController, UIGestureRecognize
 
             self.setEditMode(false)
         }
+        
+        func insert(transferedItems items: [ASCEntity], toLoadedViewController viewController: ASCDocumentsViewController)
+        {
+            guard !items.isEmpty, let provider = viewController.provider else { return }
+            
+            provider.add(items: items, at: 0)
+            provider.updateSort(completeon: { _, _, _, _ in
+                viewController.tableView.reloadData()
+            })
+            
+            viewController.showEmptyView(viewController.total < 1)
+            viewController.showErrorView(false)
+            viewController.updateNavBar()
+        }
+        
+        func getLoadedViewController(byFolderId folderId: String?, andProviderId providerId: String?) -> ASCDocumentsViewController? {
+            guard let folderId = folderId, !folderId.isEmpty,
+                  let providerId = providerId, !providerId.isEmpty
+            else {
+                return nil
+            }
+            
+            let request = ASCLoadedVCFinderModels.DocumentsVC.Request(folderId: folderId, providerId: providerId)
+            let response = self.loadedDocumentsViewControllerFinder.find(requestModel: request)
+            
+            guard let destinationVC = response.viewController else {
+                return nil
+            }
+            
+            return destinationVC
+        }
     }
     
     func delete(indexes: Set<String>) {
@@ -3177,7 +3294,7 @@ class ASCDocumentsViewController: ASCBaseTableViewController, UIGestureRecognize
                     hud?.hide(animated: false, afterDelay: 1.3)
                     hud = nil
                     
-                    let deletedItems = items.filter { provider.allowDelete(entity: $0) }
+                    let deletedItems = items.filter { provider.allowDelete(entity: $0) || ($0 as? ASCFolder)?.isThirdParty ?? false }
                     completion?(deletedItems)
                 }
             }
@@ -3222,29 +3339,25 @@ class ASCDocumentsViewController: ASCBaseTableViewController, UIGestureRecognize
     }
     
     func emptyTrash() {
-        var hud: MBProgressHUD? = nil
+        guard let provider = provider else { return }
         
-        ASCEntityManager.shared.emptyTrash() { [unowned self] (status, progress, result, error, cancel) in
-            if status == .begin {
-                hud = MBProgressHUD.showTopMost()
-                hud?.mode = .annularDeterminate
-                hud?.progress = 0
-                hud?.label.text = NSLocalizedString("Cleanup", comment: "Caption of the processing")
-            } else if status == .progress {
-                hud?.progress = progress
-            } else if status == .error {
+        let hud = MBProgressHUD.showTopMost()
+        hud?.mode = .annularDeterminate
+        hud?.progress = 0
+        hud?.label.text = NSLocalizedString("Cleanup", comment: "Caption of the processing")
+        
+        provider.emptyTrash(completeon: { [unowned self] provider, result, success, error in
+            if let error = error {
                 hud?.hide(animated: true)
                 UIAlertController.showError(
                     in: self,
-                    message: error ?? NSLocalizedString("Could not empty trash.", comment: "")
+                    message: error.localizedDescription
                 )
-            } else if status == .end {
+            } else {
                 hud?.setSuccessState()
                 hud?.hide(animated: false, afterDelay: 1.3)
 
                 if self.isTrash(self.folder) {
-//                    self.tableData.removeAll()
-//                    self.total = 0
                     self.provider?.reset()
                     self.tableView.reloadData()
                 }
@@ -3253,7 +3366,7 @@ class ASCDocumentsViewController: ASCBaseTableViewController, UIGestureRecognize
                 self.updateNavBar()
                 self.setEditMode(false)
             }
-        }
+        })
     }
 
     private func selectAllItems<T>(type: T.Type, extensions:[String]? = nil) {
@@ -3542,7 +3655,8 @@ extension ASCDocumentsViewController: MGSwipeTableCellDelegate {
 // MARK: - ASCProvider Delegate
 
 extension ASCDocumentsViewController: ASCProviderDelegate {
-    func openProgressFile(title: String, _ progress: Float) -> ASCEditorManagerOpenHandler {
+    
+    func openProgress(file: ASCFile, title: String, _ progress: Float) -> ASCEditorManagerOpenHandler {
         var forceCancel = false
         let openingAlert = ASCProgressAlert(title: title, message: nil, handler: { cancel in
             forceCancel = cancel
@@ -3579,9 +3693,10 @@ extension ASCDocumentsViewController: ASCProviderDelegate {
         return openHandler
     }
 
-    func closeProgressFile(title: String) -> ASCEditorManagerCloseHandler {
+    func closeProgress(file: ASCFile, title: String) -> ASCEditorManagerCloseHandler {
         var hud: MBProgressHUD? = nil
 
+        let originalFile = file
         let closeHandler: ASCEditorManagerCloseHandler = { [weak self] status, progress, file, error, cancel in
             log.info("Close file progress. Status: \(status), progress: \(progress), error: \(String(describing: error))")
 
@@ -3614,7 +3729,8 @@ extension ASCDocumentsViewController: ASCProviderDelegate {
                 let updateFileInfo = {
                     if let newFile = file {
                         if let index = strongSelf.tableData.firstIndex(where: { (entity) -> Bool in
-                            (entity as? ASCFile)?.id == newFile.id
+                            guard let file = entity as? ASCFile else { return false }
+                            return file.id == newFile.id || file.id == originalFile.id
                         }) {
 //                            strongSelf.tableData[index] = newFile
                             strongSelf.provider?.items[index] = newFile

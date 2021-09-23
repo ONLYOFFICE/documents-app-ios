@@ -25,11 +25,14 @@ extension ASCOnlyOfficeApi {
     static public let apiDocumentService        = "api/\(version)/files/docservice"
     static public let apiServersVersion         = "api/\(version)/settings/version/build"
     static public let apiFilesPath              = "api/\(version)/files/"
+    static public let apiFolderRoot             = "@root"
     static public let apiFolderMy               = "@my"
     static public let apiFolderShare            = "@share"
     static public let apiFolderCommon           = "@common"
     static public let apiFolderProjects         = "@projects"
     static public let apiFolderTrash            = "@trash"
+    static public let apiFolderFavorites        = "@favorites"
+    static public let apiFolderRecent           = "@recent"
     static public let apiOpenEditFile           = "api/\(version)/files/file/%@/openedit"
     static public let apiCreateFile             = "api/\(version)/files/%@/file"
     static public let apiCreateFolder           = "api/\(version)/files/folder/%@"
@@ -54,6 +57,7 @@ extension ASCOnlyOfficeApi {
     static public let apiFilesFavorite          = "api/\(version)/files/favorites"
     static public let apiUsers                  = "api/\(version)/people"
     static public let apiGroups                 = "api/\(version)/group"
+    static public let apiForgotPassword         = "api/\(version)/people/password"
 }
 
 enum ASCOnlyOfficeError: String {

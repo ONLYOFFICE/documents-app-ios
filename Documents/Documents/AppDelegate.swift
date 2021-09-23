@@ -34,6 +34,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
+        self.launchOptions = launchOptions
         
         if ASCCommon.isUnitTesting {
             return true
@@ -48,10 +49,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         ASCStyles.initialize
         _ = passcodeLockPresenter
         _ = ASCAccountsManager.shared
-                
-        // Facebook login
-        Settings.appID = ASCConstants.Clouds.Facebook.appId
-        ApplicationDelegate.shared.application(application, didFinishLaunchingWithOptions: launchOptions)
         
         // Use Firebase library to configure APIs
         FirebaseApp.configure()
@@ -67,7 +64,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
         // Check Update
         configureAppUpdater()
-        
+
         application.unregisterForRemoteNotifications()
         
         if #available(iOS 10.0, *) {
@@ -181,12 +178,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
         
         if url.isFileURL {
-            if let sourceApplication = options[.sourceApplication] as? String, "com.apple.DocumentsApp" == sourceApplication {
-                NotificationCenter.default.post(name: ASCConstants.Notifications.openLocalFileByUrl, object: nil, userInfo: ["url": url])
-            } else {
-                UserDefaults.standard.set(url, forKey: ASCConstants.SettingsKeys.importFile)
-                NotificationCenter.default.post(name: ASCConstants.Notifications.importFileLaunch, object: nil)
-            }
+            return ASCViewControllerManager.shared.route(by: url, options: options)
         }
      
         return false
@@ -313,3 +305,13 @@ extension AppDelegate : MessagingDelegate {
     }
 }
 
+extension AppDelegate {
+    private struct Holder {
+        static var launchOptions: [UIApplication.LaunchOptionsKey: Any]?
+    }
+    
+    var launchOptions: [UIApplication.LaunchOptionsKey: Any]? {
+        get { return Holder.launchOptions }
+        set { Holder.launchOptions = newValue }
+    }
+}

@@ -5,7 +5,8 @@ cd $BASE_DIR
 
 SECRETS=(
     "../../fastlane/.env.secret"
-    "../../Documents/Documents/GoogleService-Info.plist"
+    "../../Documents/Documents/Services/GoogleService-Info-dev.plist"
+    "../../Documents/Documents/Services/GoogleService-Info-prod.plist"
     "../../Documents/Documents/Internal.plist"
     "../../Documents/Keys/api-project-948651087073-firebase-crashreporting-0ashu-f1015e074c.json"
 )

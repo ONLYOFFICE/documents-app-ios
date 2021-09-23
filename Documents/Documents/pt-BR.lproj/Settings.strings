@@ -1,0 +1,72 @@
+/* Class = "UINavigationItem"; title = "About"; ObjectID = "0DJ-uV-iju"; */
+"0DJ-uV-iju.title" = "Sobre";
+
+/* Class = "UILabel"; text = "None"; ObjectID = "1kc-cf-XDc"; */
+"1kc-cf-XDc.text" = "Nenhum";
+
+/* Class = "UITableViewSection"; headerTitle = "Security"; ObjectID = "4oc-1P-wMA"; */
+"4oc-1P-wMA.headerTitle" = "Segurança";
+
+/* Class = "UINavigationItem"; title = "Passcode Lock"; ObjectID = "7gT-v5-3eH"; */
+"7gT-v5-3eH.title" = "Bloqueio por código de acesso";
+
+/* Class = "UITableViewSection"; footerTitle = "Request a password when the application starts.\n\nNote: if you forget the passcode, you'll need to delete and reinstall the app. All local documents will be lost."; ObjectID = "8Qq-uc-rWT"; */
+"8Qq-uc-rWT.footerTitle" = "Solicite uma senha quando o aplicativo for iniciado.\n\nObservação: se você se esquecer do código de acesso, será necessário excluir e reinstalar o aplicativo. Todos os documentos locais serão perdidos.";
+
+/* Class = "UILabel"; text = "Version"; ObjectID = "13m-jH-9Vu"; */
+"13m-jH-9Vu.text" = "Versão";
+
+/* Class = "UILabel"; text = "Compress Images"; ObjectID = "19F-CC-u2R"; */
+"19F-CC-u2R.text" = "Compactar imagens";
+
+/* Class = "UILabel"; text = "Cache"; ObjectID = "aV0-Ch-4Py"; */
+"aV0-Ch-4Py.text" = "Cache";
+
+/* Class = "UITableViewSection"; headerTitle = "Storage"; ObjectID = "Bmt-tc-yd7"; */
+"Bmt-tc-yd7.headerTitle" = "Armazenamento";
+
+/* Class = "UILabel"; text = "Rate App"; ObjectID = "CUM-1F-5Be"; */
+"CUM-1F-5Be.text" = "Classificar aplicativo";
+
+/* Class = "UITableViewSection"; headerTitle = "Information"; ObjectID = "ESd-H3-Pfh"; */
+"ESd-H3-Pfh.headerTitle" = "Informações";
+
+/* Class = "UILabel"; text = "Tell a Friend"; ObjectID = "GqQ-Bv-Deg"; */
+"GqQ-Bv-Deg.text" = "Diga a um amigo";
+
+/* Class = "UILabel"; text = "Passcode Lock"; ObjectID = "i2P-F4-EhP"; */
+"i2P-F4-EhP.text" = "Bloqueio por código de acesso";
+
+/* Class = "UILabel"; text = "About"; ObjectID = "IS2-tT-Q4G"; */
+"IS2-tT-Q4G.text" = "Sobre";
+
+/* Class = "UILabel"; text = "© Ascensio System SIA"; ObjectID = "lEo-YM-MnB"; */
+"lEo-YM-MnB.text" = "© Ascensio System SIA";
+
+/* Class = "UITabBarItem"; title = "Settings"; ObjectID = "MZJ-3d-460"; */
+"MZJ-3d-460.title" = "Configurações";
+
+/* Class = "UILabel"; text = "Introduction Tour"; ObjectID = "NGC-k1-Jm9"; */
+"NGC-k1-Jm9.text" = "Tour de introdução";
+
+/* Class = "UINavigationItem"; title = "Settings"; ObjectID = "OKJ-3w-yJd"; */
+"OKJ-3w-yJd.title" = "Configurações";
+
+/* Class = "UILabel"; text = "User agreement"; ObjectID = "PDj-N7-sjJ"; */
+"PDj-N7-sjJ.text" = "Termo de acordo do usuário";
+
+/* Class = "UILabel"; text = "Support"; ObjectID = "raN-Fz-DnL"; */
+"raN-Fz-DnL.text" = "Suporte";
+
+/* Class = "UILabel"; text = "Change Passcode"; ObjectID = "RuR-k5-kRu"; */
+"RuR-k5-kRu.text" = "Alterar código de acesso";
+
+/* Class = "UILabel"; text = "Files Preview"; ObjectID = "W0F-l2-98t"; */
+"W0F-l2-98t.text" = "Visualização de arquivos";
+
+/* Class = "UILabel"; text = "Turn Passcode On"; ObjectID = "XYC-Zw-fk6"; */
+"XYC-Zw-fk6.text" = "Ativar código de acesso";
+
+/* Class = "UILabel"; text = "Unlock with Touch ID"; ObjectID = "YfE-Pr-7QU"; */
+"YfE-Pr-7QU.text" = "Desbloquear com Touch ID";
+

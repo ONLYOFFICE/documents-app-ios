@@ -1,0 +1,39 @@
+/* (No Comment) */
+"PasscodeLockChangeDescription" = "Digite seu código de acesso antigo.";
+
+/* Change Passcode State */
+"PasscodeLockChangeTitle" = "Digite o código de acesso antigo";
+
+/* (No Comment) */
+"PasscodeLockConfirmDescription" = "Digite o código de acesso novamente.";
+
+/* Confirm Passcode State */
+"PasscodeLockConfirmTitle" = "Confirme o código de acesso";
+
+/* (No Comment) */
+"PasscodeLockEnterDescription" = "Digite seu código de acesso para continuar.";
+
+/* Enter Passcode State */
+"PasscodeLockEnterTitle" = "Digite o código de acesso";
+
+/* (No Comment) */
+"PasscodeLockFaceIDButton" = "Digite o código de acesso";
+
+/* (No Comment) */
+"PasscodeLockMismatchDescription" = "Os códigos de acesso não coincidem.";
+
+/* Passcode Mismatch State */
+"PasscodeLockMismatchTitle" = "Tente novamente";
+
+/* (No Comment) */
+"PasscodeLockSetDescription" = "Escolha seu código de acesso.";
+
+/* Set Passcode State */
+"PasscodeLockSetTitle" = "Digite um código de acesso";
+
+/* Touch ID Fallback Button */
+"PasscodeLockTouchIDButton" = "Digite o código de acesso";
+
+/* Touch ID Reason */
+"PasscodeLockTouchIDReason" = "Autenticação necessária para prosseguir";
+

@@ -2,7 +2,7 @@
 <xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="1.2" xsi:schemaLocation="urn:oasis:names:tc:xliff:document:1.2 http://docs.oasis-open.org/xliff/v1.2/os/xliff-core-1.2-strict.xsd">
   <file original="Documents/Base.lproj/ConnectStorage.storyboard" source-language="en" target-language="cs" datatype="plaintext">
     <header>
-      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="12.4" build-num="12D4e"/>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="12.5.1" build-num="12E507"/>
     </header>
     <body>
       <trans-unit id="1hg-GO-WNq.text" xml:space="preserve">
@@ -59,7 +59,7 @@
   </file>
   <file original="Documents/Base.lproj/CreatePortal.storyboard" source-language="en" target-language="cs" datatype="plaintext">
     <header>
-      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="12.4" build-num="12D4e"/>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="12.5.1" build-num="12E507"/>
     </header>
     <body>
       <trans-unit id="BMv-HP-hD2.normalTitle" xml:space="preserve">
@@ -130,31 +130,9 @@ začněte používat vaší kancelář</target>
       </trans-unit>
     </body>
   </file>
-  <file original="Documents/Base.lproj/DocumentsEmptyView.xib" source-language="en" target-language="cs" datatype="plaintext">
-    <header>
-      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="12.4" build-num="12D4e"/>
-    </header>
-    <body>
-      <trans-unit id="1kl-l7-AtV.text" xml:space="preserve">
-        <source>Subtitle</source>
-        <target>Podtitulek</target>
-        <note>Class = "UILabel"; text = "Subtitle"; ObjectID = "1kl-l7-AtV"; Note = "Do not translate";</note>
-      </trans-unit>
-      <trans-unit id="BKA-Ab-Xnn.text" xml:space="preserve">
-        <source>Title</source>
-        <target>Nadpis</target>
-        <note>Class = "UILabel"; text = "Title"; ObjectID = "BKA-Ab-Xnn"; Note = "Do not translate";</note>
-      </trans-unit>
-      <trans-unit id="peL-fi-QtV.normalTitle" xml:space="preserve">
-        <source>Button</source>
-        <target>Tlačítko</target>
-        <note>Class = "UIButton"; normalTitle = "Button"; ObjectID = "peL-fi-QtV"; Note = "Do not translate";</note>
-      </trans-unit>
-    </body>
-  </file>
   <file original="Documents/Base.lproj/Intro.storyboard" source-language="en" target-language="cs" datatype="plaintext">
     <header>
-      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="12.4" build-num="12D4e"/>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="12.5.1" build-num="12E507"/>
     </header>
     <body>
       <trans-unit id="De8-tD-APT.text" xml:space="preserve">
@@ -169,14 +147,14 @@ začněte používat vaší kancelář</target>
       </trans-unit>
       <trans-unit id="KAF-Bt-8qi.text" xml:space="preserve">
         <source>App Onboarding Design</source>
-        <target>App Onboarding Design </target>
+        <target state="translated">Návrh začlenění aplikace</target>
         <note>Class = "UILabel"; text = "App Onboarding Design"; ObjectID = "KAF-Bt-8qi"; Note = "Do not translate";</note>
       </trans-unit>
     </body>
   </file>
   <file original="Documents/Base.lproj/Localizable.stringsdict" source-language="en" target-language="cs" datatype="plaintext">
     <header>
-      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="12.4" build-num="12D4e"/>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="12.5.1" build-num="12E507"/>
     </header>
     <body>
       <trans-unit id="/%lu File selected:dict/NSStringLocalizedFormatKey:dict/:string" xml:space="preserve">
@@ -388,7 +366,7 @@ začněte používat vaší kancelář</target>
   </file>
   <file original="Documents/Base.lproj/Login.storyboard" source-language="en" target-language="cs" datatype="plaintext">
     <header>
-      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="12.4" build-num="12D4e"/>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="12.5.1" build-num="12E507"/>
     </header>
     <body>
       <trans-unit id="0X2-Xg-z5B.text" xml:space="preserve">
@@ -436,15 +414,20 @@ začněte používat vaší kancelář</target>
         <target>Účet</target>
         <note>Class = "UILabel"; text = "Account"; ObjectID = "AkN-p0-Mzy";</note>
       </trans-unit>
+      <trans-unit id="AqB-m0-2UQ.text" xml:space="preserve">
+        <source>If a user with the email exists, the password change instruction has been sent to this email address.</source>
+        <target state="translated">Pokud existuje uživatel s tímto e-mailem, byl na tuto e-mailovou adresu odeslán pokyn ke změně hesla.</target>
+        <note>Class = "UILabel"; text = "If a user with the email exists, the password change instruction has been sent to this email address."; ObjectID = "AqB-m0-2UQ"; Note = "Do not translate";</note>
+      </trans-unit>
       <trans-unit id="AqJ-b9-XQV.normalTitle" xml:space="preserve">
         <source>Continue</source>
         <target>Pokračovat</target>
         <note>Class = "UIButton"; normalTitle = "Continue"; ObjectID = "AqJ-b9-XQV";</note>
       </trans-unit>
       <trans-unit id="B8R-KD-Lml.text" xml:space="preserve">
-        <source>Set up an application to generate the authentication codes</source>
+        <source>Set up an application to generate the authentication codes</source>
         <target>Nastavit aplikaci pro vytváření kódů pro ověřování se</target>
-        <note>Class = "UILabel"; text = "Set up an application to generate the authentication codes"; ObjectID = "B8R-KD-Lml";</note>
+        <note>Class = "UILabel"; text = "Set up an application to generate the authentication codes"; ObjectID = "B8R-KD-Lml";</note>
       </trans-unit>
       <trans-unit id="DK4-QO-Jde.text" xml:space="preserve">
         <source>Two-Factor
@@ -481,14 +464,14 @@ ověření</target>
         <note>Class = "UILabel"; text = "Select an account to sign in"; ObjectID = "Gkv-tP-6EM";</note>
       </trans-unit>
       <trans-unit id="K5M-Of-QAk.text" xml:space="preserve">
-        <source>Copy the key and paste it to the Google Authenticator application</source>
+        <source>Copy the key and paste it to the Google Authenticator application</source>
         <target>Zkopírujte klíč a vložte ho do aplikace Google Authenticator</target>
-        <note>Class = "UILabel"; text = "Copy the key and paste it to the Google Authenticator application"; ObjectID = "K5M-Of-QAk";</note>
+        <note>Class = "UILabel"; text = "Copy the key and paste it to the Google Authenticator application"; ObjectID = "K5M-Of-QAk";</note>
       </trans-unit>
       <trans-unit id="LwV-Os-V4m.text" xml:space="preserve">
-        <source>Launch Google Authenticator application</source>
+        <source>Launch Google Authenticator application</source>
         <target>Spustit aplikaci Google Authenticator</target>
-        <note>Class = "UILabel"; text = "Launch Google Authenticator application"; ObjectID = "LwV-Os-V4m";</note>
+        <note>Class = "UILabel"; text = "Launch Google Authenticator application"; ObjectID = "LwV-Os-V4m";</note>
       </trans-unit>
       <trans-unit id="MNA-z2-ITx.text" xml:space="preserve">
         <source>Enter a phone number that can be used to verify your identity</source>
@@ -500,10 +483,20 @@ ověření</target>
         <target>Zpět</target>
         <note>Class = "UIBarButtonItem"; title = "Back"; ObjectID = "MUG-TG-NlP";</note>
       </trans-unit>
+      <trans-unit id="Mbh-dU-7po.text" xml:space="preserve">
+        <source>Please enter the email you used while registering on the portal. The password recovery instructions will be send to that email address.</source>
+        <target state="translated">Zadejte e-mail, který jste použili při registraci na portálu. Na tuto e-mailovou adresu budou zaslány pokyny k obnovení hesla.</target>
+        <note>Class = "UILabel"; text = "Please enter the email you used while registering on the portal. The password recovery instructions will be send to that email address."; ObjectID = "Mbh-dU-7po";</note>
+      </trans-unit>
       <trans-unit id="NBg-dA-b3o.title" xml:space="preserve">
         <source>Country</source>
         <target>Země</target>
         <note>Class = "UINavigationItem"; title = "Country"; ObjectID = "NBg-dA-b3o";</note>
+      </trans-unit>
+      <trans-unit id="OHG-hv-GGj.normalTitle" xml:space="preserve">
+        <source>Back to login</source>
+        <target state="translated">Zpět na přihlášení</target>
+        <note>Class = "UIButton"; normalTitle = "Back to login"; ObjectID = "OHG-hv-GGj";</note>
       </trans-unit>
       <trans-unit id="OnI-QD-xeI.placeholder" xml:space="preserve">
         <source>Code</source>
@@ -516,9 +509,9 @@ ověření</target>
         <note>Class = "UIButton"; normalTitle = "Sign in"; ObjectID = "QAn-vu-xMR";</note>
       </trans-unit>
       <trans-unit id="R2F-fc-11j.text" xml:space="preserve">
-        <source>Run the application and tap the new account icon</source>
+        <source>Run the application and tap the new account icon</source>
         <target>Spusťte aplikaci a ťukněte na ikonu pro nový účet</target>
-        <note>Class = "UILabel"; text = "Run the application and tap the new account icon"; ObjectID = "R2F-fc-11j";</note>
+        <note>Class = "UILabel"; text = "Run the application and tap the new account icon"; ObjectID = "R2F-fc-11j";</note>
       </trans-unit>
       <trans-unit id="RDr-pH-MKV.normalTitle" xml:space="preserve">
         <source>Open</source>
@@ -526,9 +519,9 @@ ověření</target>
         <note>Class = "UIButton"; normalTitle = "Open"; ObjectID = "RDr-pH-MKV";</note>
       </trans-unit>
       <trans-unit id="SH2-Fd-5Ze.text" xml:space="preserve">
-        <source>Open authentication app and copy code from there</source>
-        <target>Otevřete aplikaci pro ověření a zkopírujte z ní kód</target>
-        <note>Class = "UILabel"; text = "Open authentication app and copy code from there"; ObjectID = "SH2-Fd-5Ze";</note>
+        <source>Open authentication app and copy code from there</source>
+        <target state="translated">Otevřete aplikaci pro ověření&#11;a zkopírujte z ní kód</target>
+        <note>Class = "UILabel"; text = "Open authentication app and copy code from there"; ObjectID = "SH2-Fd-5Ze";</note>
       </trans-unit>
       <trans-unit id="W8Q-CO-c0L.text" xml:space="preserve">
         <source>We have sent you an SMS with a code to the number %@</source>
@@ -550,6 +543,11 @@ ověření</target>
         <target>Kód</target>
         <note>Class = "UITextField"; placeholder = "Code"; ObjectID = "ZWV-Q1-HY9";</note>
       </trans-unit>
+      <trans-unit id="bLE-8U-AOX.text" xml:space="preserve">
+        <source>Password recovery</source>
+        <target state="translated">Obnovení hesla</target>
+        <note>Class = "UILabel"; text = "Password recovery"; ObjectID = "bLE-8U-AOX";</note>
+      </trans-unit>
       <trans-unit id="cBn-x1-r5A.text" xml:space="preserve">
         <source>Portal</source>
         <target>Portál</target>
@@ -564,6 +562,11 @@ ověření</target>
         <source>Next</source>
         <target>Další</target>
         <note>Class = "UIButton"; normalTitle = "Next"; ObjectID = "e1X-0t-hcs"; Note = "Do not translate";</note>
+      </trans-unit>
+      <trans-unit id="ePY-rM-AOE.normalTitle" xml:space="preserve">
+        <source>Send</source>
+        <target state="translated">Odeslat</target>
+        <note>Class = "UIButton"; normalTitle = "Send"; ObjectID = "ePY-rM-AOE";</note>
       </trans-unit>
       <trans-unit id="gzc-cW-NPT.title" xml:space="preserve">
         <source>Accounts</source>
@@ -606,9 +609,9 @@ ověření</target>
         <note>Class = "UIBarButtonItem"; title = "Next"; ObjectID = "twm-cB-W69";</note>
       </trans-unit>
       <trans-unit id="vgV-fF-jOl.text" xml:space="preserve">
-        <source>Copy the code generated by Google Authenticator application and insert it to the input field</source>
-        <target>Zkopírujte kód vygenerovaný aplikací Google Authenticator a vložte jej do pole pro vložení</target>
-        <note>Class = "UILabel"; text = "Copy the code generated by Google Authenticator application and insert it to the input field"; ObjectID = "vgV-fF-jOl";</note>
+        <source>Copy the code generated by Google Authenticator application and insert it to the input field</source>
+        <target state="translated">Zkopírujte kód vygenerovaný&#11;aplikací Google Authenticator&#11;a vložte jej do pole pro vložení</target>
+        <note>Class = "UILabel"; text = "Copy the code generated by Google Authenticator application and insert it to the input field"; ObjectID = "vgV-fF-jOl";</note>
       </trans-unit>
       <trans-unit id="vlQ-jV-iFo.text" xml:space="preserve">
         <source>Please set up an application to generate the codes for the portal access (e.g. Google Authenticator) to continue the work at the portal</source>
@@ -634,7 +637,7 @@ ověření</target>
   </file>
   <file original="Documents/Base.lproj/Main.storyboard" source-language="en" target-language="cs" datatype="plaintext">
     <header>
-      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="12.4" build-num="12D4e"/>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="12.5.1" build-num="12E507"/>
     </header>
     <body>
       <trans-unit id="0Hf-aP-smp.text" xml:space="preserve">
@@ -786,7 +789,7 @@ ověření</target>
   </file>
   <file original="Documents/Base.lproj/Settings.storyboard" source-language="en" target-language="cs" datatype="plaintext">
     <header>
-      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="12.4" build-num="12D4e"/>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="12.5.1" build-num="12E507"/>
     </header>
     <body>
       <trans-unit id="0DJ-uV-iju.title" xml:space="preserve">
@@ -917,7 +920,7 @@ Poznámka: Pokud zapomenete přístupový kód, budete muset aplikaci smazat a p
   </file>
   <file original="Documents/Base.lproj/Share.storyboard" source-language="en" target-language="cs" datatype="plaintext">
     <header>
-      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="12.4" build-num="12D4e"/>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="12.5.1" build-num="12E507"/>
     </header>
     <body>
       <trans-unit id="9Wg-zE-nZA.segmentTitles[0]" xml:space="preserve">
@@ -1009,7 +1012,7 @@ Poznámka: Pokud zapomenete přístupový kód, budete muset aplikaci smazat a p
   </file>
   <file original="Documents/Base.lproj/Sort.storyboard" source-language="en" target-language="cs" datatype="plaintext">
     <header>
-      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="12.4" build-num="12D4e"/>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="12.5.1" build-num="12E507"/>
     </header>
     <body>
       <trans-unit id="HjM-la-pDc.text" xml:space="preserve">
@@ -1036,7 +1039,7 @@ Poznámka: Pokud zapomenete přístupový kód, budete muset aplikaci smazat a p
   </file>
   <file original="Documents/Base.lproj/Transfer.storyboard" source-language="en" target-language="cs" datatype="plaintext">
     <header>
-      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="12.4" build-num="12D4e"/>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="12.5.1" build-num="12E507"/>
     </header>
     <body>
       <trans-unit id="9YY-0H-nww.text" xml:space="preserve">
@@ -1073,7 +1076,7 @@ Poznámka: Pokud zapomenete přístupový kód, budete muset aplikaci smazat a p
   </file>
   <file original="Documents/Base.lproj/UserProfile.storyboard" source-language="en" target-language="cs" datatype="plaintext">
     <header>
-      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="12.4" build-num="12D4e"/>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="12.5.1" build-num="12E507"/>
     </header>
     <body>
       <trans-unit id="1S2-Q7-5vL.text" xml:space="preserve">
@@ -1115,7 +1118,7 @@ Poznámka: Pokud zapomenete přístupový kód, budete muset aplikaci smazat a p
   </file>
   <file original="Documents/Code/Controllers/CreateEntity/Views/Base.lproj/ASCCreateEntityView.xib" source-language="en" target-language="cs" datatype="plaintext">
     <header>
-      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="12.4" build-num="12D4e"/>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="12.5.1" build-num="12E507"/>
     </header>
     <body>
       <trans-unit id="0TH-k4-z5u.normalTitle" xml:space="preserve">
@@ -1130,12 +1133,12 @@ Poznámka: Pokud zapomenete přístupový kód, budete muset aplikaci smazat a p
       </trans-unit>
       <trans-unit id="IU2-I1-b4Q.normalTitle" xml:space="preserve">
         <source>Import Image</source>
-        <target>Import Image</target>
+        <target state="translated">Importovat obrázek</target>
         <note>Class = "UIButton"; normalTitle = "Import Image"; ObjectID = "IU2-I1-b4Q";</note>
       </trans-unit>
       <trans-unit id="wdt-5y-x9j.normalTitle" xml:space="preserve">
         <source>Import File</source>
-        <target>Import File</target>
+        <target state="translated">Importovat soubor</target>
         <note>Class = "UIButton"; normalTitle = "Import File"; ObjectID = "wdt-5y-x9j";</note>
       </trans-unit>
       <trans-unit id="ziC-q7-ky6.normalTitle" xml:space="preserve">
@@ -1147,7 +1150,7 @@ Poznámka: Pokud zapomenete přístupový kód, budete muset aplikaci smazat a p
   </file>
   <file original="Documents/Code/Vendor/PasscodeLock/Base.lproj/PasscodeLock.strings" source-language="en" target-language="cs" datatype="plaintext">
     <header>
-      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="12.4" build-num="12D4e"/>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="12.5.1" build-num="12E507"/>
     </header>
     <body>
       <trans-unit id="PasscodeLockChangeDescription" xml:space="preserve">
@@ -1219,7 +1222,7 @@ Poznámka: Pokud zapomenete přístupový kód, budete muset aplikaci smazat a p
   </file>
   <file original="Documents/Code/Vendor/PasscodeLock/Views/Base.lproj/PasscodeLockView.xib" source-language="en" target-language="cs" datatype="plaintext">
     <header>
-      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="12.4" build-num="12D4e"/>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="12.5.1" build-num="12E507"/>
     </header>
     <body>
       <trans-unit id="0CR-0R-0Nr.normalTitle" xml:space="preserve">
@@ -1299,13 +1302,13 @@ Poznámka: Pokud zapomenete přístupový kód, budete muset aplikaci smazat a p
       </trans-unit>
     </body>
   </file>
-  <file original="Documents/en.lproj/InfoPlist.strings" source-language="en" target-language="cs" datatype="plaintext">
+  <file original="Documents/en.lproj/Documents-InfoPlist.strings" source-language="en" target-language="cs" datatype="plaintext">
     <header>
-      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="12.4" build-num="12D4e"/>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="12.5.1" build-num="12E507"/>
     </header>
     <body>
       <trans-unit id="CFBundleName" xml:space="preserve">
-        <source>Documents-Alpha</source>
+        <source>Documents</source>
         <target>Dokumenty</target>
         <note>Bundle name</note>
       </trans-unit>
@@ -1319,12 +1322,9 @@ Poznámka: Pokud zapomenete přístupový kód, budete muset aplikaci smazat a p
         <target>Tato aplikace vyžaduje oprávnění k identifikaci obličeje, aby se ověřila pomocí funkce Face ID.</target>
         <note>Privacy - Face ID Usage Description</note>
       </trans-unit>
-      <trans-unit id="NSLocalNetworkUsageDescription" xml:space="preserve">
-        <source>Network access required</source>
-        <note>Privacy - Local Network Usage Description</note>
-      </trans-unit>
       <trans-unit id="NSPhotoLibraryAddUsageDescription" xml:space="preserve">
         <source>This app requires access to the photo library, so that you can upload your photos in the app.</source>
+        <target state="translated">Tato aplikace vyžaduje přístup ke knihovně fotografií, abyste mohli v aplikaci nahrát fotografie.</target>
         <note>Privacy - Photo Library Additions Usage Description</note>
       </trans-unit>
       <trans-unit id="NSPhotoLibraryUsageDescription" xml:space="preserve">
@@ -1349,9 +1349,61 @@ Poznámka: Pokud zapomenete přístupový kód, budete muset aplikaci smazat a p
       </trans-unit>
     </body>
   </file>
+  <file original="Documents/en.lproj/Documents.alpha-InfoPlist.strings" datatype="plaintext" source-language="en" target-language="cs">
+    <header>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="12.5.1" build-num="12E507"/>
+    </header>
+    <body>
+      <trans-unit id="CFBundleName" xml:space="preserve">
+        <source>Documents-Alpha</source>
+        <target state="translated">Dokumenty-Alfa</target>
+        <note>Bundle name</note>
+      </trans-unit>
+      <trans-unit id="NSCameraUsageDescription" xml:space="preserve">
+        <source>This app requires access to the camera, so that you can take photo and upload it in the app.</source>
+        <target state="translated">Tato aplikace vyžaduje přístup k fotoaparátu, abyste mohli pořídit fotografii a nahrát ji do aplikace.</target>
+        <note>Privacy - Camera Usage Description</note>
+      </trans-unit>
+      <trans-unit id="NSFaceIDUsageDescription" xml:space="preserve">
+        <source>This app requires Face ID permission to authenticate using Face recognition.</source>
+        <target state="translated">Tato aplikace vyžaduje oprávnění Face ID, aby se mohla ověřit pomocí rozpoznávání obličeje.</target>
+        <note>Privacy - Face ID Usage Description</note>
+      </trans-unit>
+      <trans-unit id="NSLocalNetworkUsageDescription" xml:space="preserve">
+        <source>Network access required</source>
+        <target state="translated">Vyžaduje se přístup k síti</target>
+        <note>Privacy - Local Network Usage Description</note>
+      </trans-unit>
+      <trans-unit id="NSPhotoLibraryAddUsageDescription" xml:space="preserve">
+        <source>This app requires access to the photo library, so that you can upload your photos in the app.</source>
+        <target state="translated">Tato aplikace vyžaduje přístup ke knihovně fotografií, abyste mohli v aplikaci nahrát fotografie.</target>
+        <note>Privacy - Photo Library Additions Usage Description</note>
+      </trans-unit>
+      <trans-unit id="NSPhotoLibraryUsageDescription" xml:space="preserve">
+        <source>This app requires access to the photo library, so that you can upload your photos in the app.</source>
+        <target state="translated">Tato aplikace vyžaduje přístup ke knihovně fotografií, abyste mohli v aplikaci nahrát fotografie.</target>
+        <note>Privacy - Photo Library Usage Description</note>
+      </trans-unit>
+      <trans-unit id="New Document" xml:space="preserve">
+        <source>New Document</source>
+        <target state="translated">Nový dokument</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="New Presentation" xml:space="preserve">
+        <source>New Presentation</source>
+        <target state="translated">Nová prezentace</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="New Spreadsheet" xml:space="preserve">
+        <source>New Spreadsheet</source>
+        <target state="translated">Nová tabulka</target>
+        <note/>
+      </trans-unit>
+    </body>
+  </file>
   <file original="Documents/en.lproj/Localizable.strings" source-language="en" target-language="cs" datatype="plaintext">
     <header>
-      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="12.4" build-num="12D4e"/>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="12.5.1" build-num="12E507"/>
     </header>
     <body>
       <trans-unit id="%i of %i" xml:space="preserve">
@@ -1404,6 +1456,11 @@ Poznámka: Pokud zapomenete přístupový kód, budete muset aplikaci smazat a p
         <target>A6 (10,5%1$@ x 14,8%2$@)</target>
         <note>Format info</note>
       </trans-unit>
+      <trans-unit id="Access files in Favorites and Recents on ONLYOFFICE portal from the app" xml:space="preserve">
+        <source>Access files in Favorites and Recents on ONLYOFFICE portal from the app</source>
+        <target state="translated">Přístup k souborům v Oblíbených položkách a Opakovaných položkách na portálu ONLYOFFICE z aplikace</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
       <trans-unit id="Account name is empty" xml:space="preserve">
         <source>Account name is empty</source>
         <target>Název účtu je prázdný</target>
@@ -1412,14 +1469,6 @@ Poznámka: Pokud zapomenete přístupový kód, budete muset aplikaci smazat a p
       <trans-unit id="Account name is not valid" xml:space="preserve">
         <source>Account name is not valid</source>
         <target>Název účtu není platný</target>
-        <note>No comment provided by engineer.</note>
-      </trans-unit>
-      <trans-unit id="Add files to Favorites for quick access directly from the editor." xml:space="preserve">
-        <source>Add files to Favorites for quick access directly from the editor.</source>
-        <note>No comment provided by engineer.</note>
-      </trans-unit>
-      <trans-unit id="Adding to Favorites" xml:space="preserve">
-        <source>Adding to Favorites</source>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Address is empty" xml:space="preserve">
@@ -1608,10 +1657,12 @@ jiné, které používají protokol WebDAV.</target>
       </trans-unit>
       <trans-unit id="Could not change file attrubutes" xml:space="preserve">
         <source>Could not change file attrubutes</source>
+        <target state="translated">Nelze změnit atributy souboru</target>
         <note>Description of file operation error</note>
       </trans-unit>
       <trans-unit id="Could not change the directory" xml:space="preserve">
         <source>Could not change the directory</source>
+        <target state="translated">Nepodařilo se změnit adresář</target>
         <note>Description of file operation error</note>
       </trans-unit>
       <trans-unit id="Could not convert file to export." xml:space="preserve">
@@ -1621,6 +1672,7 @@ jiné, které používají protokol WebDAV.</target>
       </trans-unit>
       <trans-unit id="Could not copy file" xml:space="preserve">
         <source>Could not copy file</source>
+        <target state="translated">Nepodařilo se zkopírovat soubor</target>
         <note>Description of file operation error</note>
       </trans-unit>
       <trans-unit id="Could not copy." xml:space="preserve">
@@ -1630,22 +1682,27 @@ jiné, které používají protokol WebDAV.</target>
       </trans-unit>
       <trans-unit id="Could not create a directory" xml:space="preserve">
         <source>Could not create a directory</source>
+        <target state="translated">Nelze vytvořit adresář</target>
         <note>Description of file operation error</note>
       </trans-unit>
       <trans-unit id="Could not create a hard link" xml:space="preserve">
         <source>Could not create a hard link</source>
+        <target state="translated">Nelze vytvořit pevný odkaz</target>
         <note>Description of file operation error</note>
       </trans-unit>
       <trans-unit id="Could not create file" xml:space="preserve">
         <source>Could not create file</source>
+        <target state="translated">Nelze vytvořit soubor</target>
         <note>Description of file operation error</note>
       </trans-unit>
       <trans-unit id="Could not create symlink from" xml:space="preserve">
         <source>Could not create symlink from</source>
+        <target state="translated">Nelze vytvořit symlink z</target>
         <note>Description of file operation error</note>
       </trans-unit>
       <trans-unit id="Could not delete file" xml:space="preserve">
         <source>Could not delete file</source>
+        <target state="translated">Nelze odstranit soubor</target>
         <note>Description of file operation error</note>
       </trans-unit>
       <trans-unit id="Could not delete the file." xml:space="preserve">
@@ -1683,11 +1740,6 @@ jiné, které používají protokol WebDAV.</target>
         <target>Soubor se nepodařilo duplikovat.</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
-      <trans-unit id="Could not empty trash." xml:space="preserve">
-        <source>Could not empty trash.</source>
-        <target>Nelze vyprázdnit koš.</target>
-        <note>No comment provided by engineer.</note>
-      </trans-unit>
       <trans-unit id="Could not export the file." xml:space="preserve">
         <source>Could not export the file.</source>
         <target>Soubor se nepodařilo odeslat.</target>
@@ -1695,6 +1747,7 @@ jiné, které používají protokol WebDAV.</target>
       </trans-unit>
       <trans-unit id="Could not move file" xml:space="preserve">
         <source>Could not move file</source>
+        <target state="translated">Nelze přesunout soubor</target>
         <note>Description of file operation error</note>
       </trans-unit>
       <trans-unit id="Could not open editor." xml:space="preserve">
@@ -1719,6 +1772,7 @@ jiné, které používají protokol WebDAV.</target>
       </trans-unit>
       <trans-unit id="Could not read from file" xml:space="preserve">
         <source>Could not read from file</source>
+        <target state="translated">Nelze číst ze souboru</target>
         <note>Description of file operation error</note>
       </trans-unit>
       <trans-unit id="Could not save the file." xml:space="preserve">
@@ -1728,6 +1782,7 @@ jiné, které používají protokol WebDAV.</target>
       </trans-unit>
       <trans-unit id="Could not write to file" xml:space="preserve">
         <source>Could not write to file</source>
+        <target state="translated">Nelze zapisovat do souboru</target>
         <note>Description of file operation error</note>
       </trans-unit>
       <trans-unit id="Couldn't open file" xml:space="preserve">
@@ -1893,6 +1948,7 @@ jiné, které používají protokol WebDAV.</target>
       </trans-unit>
       <trans-unit id="Email is incorrect." xml:space="preserve">
         <source>Email is incorrect.</source>
+        <target state="translated">Email je chybný.</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Email is not valid" xml:space="preserve">
@@ -1930,6 +1986,11 @@ jiné, které používají protokol WebDAV.</target>
         <target>Chyba</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
+      <trans-unit id="Export" xml:space="preserve">
+        <source>Export</source>
+        <target state="translated">Exportovat</target>
+        <note>Button title</note>
+      </trans-unit>
       <trans-unit id="Failed online conversion service." xml:space="preserve">
         <source>Failed online conversion service.</source>
         <target>Služba online konverze se nezdařila.</target>
@@ -1947,6 +2008,7 @@ jiné, které používají protokol WebDAV.</target>
       </trans-unit>
       <trans-unit id="Failed to copy: %@" xml:space="preserve">
         <source>Failed to copy: %@</source>
+        <target state="translated">Nepodařilo se zkopírovat: %@</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Failed to get file information from the server." xml:space="preserve">
@@ -1971,10 +2033,12 @@ jiné, které používají protokol WebDAV.</target>
       </trans-unit>
       <trans-unit id="Failed to move: %@" xml:space="preserve">
         <source>Failed to move: %@</source>
+        <target state="translated">Nepodařilo se přesunout: %@</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Failed to send feedback by mail. Try to write your request on our forum." xml:space="preserve">
         <source>Failed to send feedback by mail. Try to write your request on our forum.</source>
+        <target state="translated">Nepodařilo se odeslat zpětnou vazbu poštou. Zkuste napsat svůj požadavek na naše fórum.</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Failed upload source file to conversion online service." xml:space="preserve">
@@ -1992,12 +2056,19 @@ jiné, které používají protokol WebDAV.</target>
         <target>Stahování výsledku ze služby online konverze selhalo</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
+      <trans-unit id="Favorites and Recents" xml:space="preserve">
+        <source>Favorites and Recents</source>
+        <target state="translated">Oblíbené položky a novinky</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
       <trans-unit id="File already exists" xml:space="preserve">
         <source>File already exists</source>
+        <target state="translated">Soubor již existuje</target>
         <note>Description of file operation error</note>
       </trans-unit>
       <trans-unit id="File does not exist" xml:space="preserve">
         <source>File does not exist</source>
+        <target state="translated">Soubor neexistuje</target>
         <note>Description of file operation error</note>
       </trans-unit>
       <trans-unit id="Files" xml:space="preserve">
@@ -2007,6 +2078,7 @@ jiné, které používají protokol WebDAV.</target>
       </trans-unit>
       <trans-unit id="First name is incorrect" xml:space="preserve">
         <source>First name is incorrect</source>
+        <target state="translated">Křestní jméno je nesprávné</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Folder title" xml:space="preserve">
@@ -2046,6 +2118,7 @@ jiné, které používají protokol WebDAV.</target>
       </trans-unit>
       <trans-unit id="Go to forum" xml:space="preserve">
         <source>Go to forum</source>
+        <target state="translated">Přejít na fórum</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Google Drive" xml:space="preserve">
@@ -2062,6 +2135,11 @@ jiné, které používají protokol WebDAV.</target>
         <source>Groups</source>
         <target>Skupiny</target>
         <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="If a user with the mail %@ exists, then an instruction to change the password was sent to this address." xml:space="preserve">
+        <source>If a user with the mail %@ exists, then an instruction to change the password was sent to this address.</source>
+        <target state="translated">Pokud existuje uživatel s e-mailovou adresou %@, byl na tuto adresu odeslán pokyn ke změně hesla.</target>
+        <note>Email sent instructions</note>
       </trans-unit>
       <trans-unit id="Images" xml:space="preserve">
         <source>Images</source>
@@ -2095,10 +2173,12 @@ jiné, které používají protokol WebDAV.</target>
       </trans-unit>
       <trans-unit id="Last name is empty" xml:space="preserve">
         <source>Last name is empty</source>
+        <target state="translated">Příjmení je prázdné</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Last name is incorrect" xml:space="preserve">
         <source>Last name is incorrect</source>
+        <target state="translated">Příjmení je nesprávné</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Logging in" xml:space="preserve">
@@ -2129,6 +2209,7 @@ jiné, které používají protokol WebDAV.</target>
       </trans-unit>
       <trans-unit id="Mark as favorite" xml:space="preserve">
         <source>Mark as favorite</source>
+        <target state="translated">Označit jako oblíbené</target>
         <note>Button title</note>
       </trans-unit>
       <trans-unit id="Mb" xml:space="preserve">
@@ -2191,6 +2272,11 @@ jiné, které používají protokol WebDAV.</target>
         <target>Jsou zapotřebí další parametry.</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
+      <trans-unit id="New" xml:space="preserve">
+        <source>New</source>
+        <target state="translated">Nový</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
       <trans-unit id="New Document" xml:space="preserve">
         <source>New Document</source>
         <target>Nový dokument</target>
@@ -2219,6 +2305,11 @@ jiné, které používají protokol WebDAV.</target>
       <trans-unit id="Nextcloud" xml:space="preserve">
         <source>Nextcloud</source>
         <target>Nextcloud</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Nextcloud directory" xml:space="preserve">
+        <source>Nextcloud directory</source>
+        <target state="translated">Adresář Nextcloud</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="No connection" xml:space="preserve">
@@ -2292,6 +2383,16 @@ jiné, které používají protokol WebDAV.</target>
         <target>Jakmile zadáte heslo a soubor otevřete, stávající heslo k souboru bude resetováno</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
+      <trans-unit id="OneDrive" xml:space="preserve">
+        <source>OneDrive</source>
+        <target state="translated">OneDrive</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="OneDrive and kDrive access" xml:space="preserve">
+        <source>OneDrive and kDrive access</source>
+        <target state="translated">Přístup k OneDrive a kDrive</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
       <trans-unit id="OneDrive directory" xml:space="preserve">
         <source>OneDrive directory</source>
         <target>Adresář OneDrive</target>
@@ -2309,7 +2410,7 @@ jiné, které používají protokol WebDAV.</target>
       </trans-unit>
       <trans-unit id="Open Document" xml:space="preserve">
         <source>Open Document</source>
-        <target>Open dokument</target>
+        <target state="translated">Otevřít dokument</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Opening" xml:space="preserve">
@@ -2460,10 +2561,6 @@ jiné, které používají protokol WebDAV.</target>
         <target>Chráněný soubor</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
-      <trans-unit id="Quick sharing" xml:space="preserve">
-        <source>Quick sharing</source>
-        <note>No comment provided by engineer.</note>
-      </trans-unit>
       <trans-unit id="Read Only" xml:space="preserve">
         <source>Read Only</source>
         <target>Pouze pro čtení</target>
@@ -2491,6 +2588,7 @@ jiné, které používají protokol WebDAV.</target>
       </trans-unit>
       <trans-unit id="Remove from Favorites" xml:space="preserve">
         <source>Remove from Favorites</source>
+        <target state="translated">Odstranění z oblíbených položek</target>
         <note>Button title</note>
       </trans-unit>
       <trans-unit id="Rename" xml:space="preserve">
@@ -2546,7 +2644,8 @@ jiné, které používají protokol WebDAV.</target>
       <trans-unit id="Select" xml:space="preserve">
         <source>Select</source>
         <target>Vybrat</target>
-        <note>Button title</note>
+        <note>Button title
+   Navigation bar button title</note>
       </trans-unit>
       <trans-unit id="Select Photos" xml:space="preserve">
         <source>Select Photos</source>
@@ -2583,22 +2682,19 @@ jiné, které používají protokol WebDAV.</target>
         <target>Vybráno: %ld</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
+      <trans-unit id="Sending" xml:space="preserve">
+        <source>Sending</source>
+        <target state="translated">Odesílání</target>
+        <note>Caption of the process</note>
+      </trans-unit>
       <trans-unit id="Set favorite failed." xml:space="preserve">
         <source>Set favorite failed.</source>
+        <target state="translated">Nastavení oblíbených se nezdařilo.</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Settings" xml:space="preserve">
         <source>Settings</source>
         <target>Nastavení</target>
-        <note>No comment provided by engineer.</note>
-      </trans-unit>
-      <trans-unit id="Share" xml:space="preserve">
-        <source>Share</source>
-        <target>Sdílet</target>
-        <note>Button title</note>
-      </trans-unit>
-      <trans-unit id="Share files and manage access rights without leaving the editor." xml:space="preserve">
-        <source>Share files and manage access rights without leaving the editor.</source>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="SharePoint directory" xml:space="preserve">
@@ -2618,6 +2714,7 @@ jiné, které používají protokol WebDAV.</target>
       </trans-unit>
       <trans-unit id="Sharing Settings" xml:space="preserve">
         <source>Sharing Settings</source>
+        <target state="translated">Nastavení sdílení</target>
         <note>Button title</note>
       </trans-unit>
       <trans-unit id="Single Sign-on" xml:space="preserve">
@@ -2682,11 +2779,12 @@ jiné, které používají protokol WebDAV.</target>
       </trans-unit>
       <trans-unit id="Text copied" xml:space="preserve">
         <source>Text copied</source>
-        <target>Text copied</target>
+        <target state="translated">Text zkopírován</target>
         <note>Notification title</note>
       </trans-unit>
       <trans-unit id="The %@ server is not available." xml:space="preserve">
         <source>The %@ server is not available.</source>
+        <target state="translated">Server %@ není k dispozici.</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="The account name must be between 6 and 50 characters long" xml:space="preserve">
@@ -2709,6 +2807,11 @@ jiné, které používají protokol WebDAV.</target>
         <target>Soubor bude nenávratně smazán. Tato akce je nevratná.</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
+      <trans-unit id="The folder in the Trash can not be opened." xml:space="preserve">
+        <source>The folder in the Trash can not be opened.</source>
+        <target state="translated">Složku v koši nelze otevřít.</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
       <trans-unit id="The folder will be irretrievably deleted. This action is irreversible." xml:space="preserve">
         <source>The folder will be irretrievably deleted. This action is irreversible.</source>
         <target>Složka bude nenávratně smazána. Tato akce je nevratná.</target>
@@ -2721,15 +2824,22 @@ jiné, které používají protokol WebDAV.</target>
       </trans-unit>
       <trans-unit id="The parameters are incorrect." xml:space="preserve">
         <source>The parameters are incorrect.</source>
+        <target state="translated">Jsou zadány nesprávné parametry.</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="The password is incorrect. It must contain 8 characters" xml:space="preserve">
         <source>The password is incorrect. It must contain 8 characters</source>
+        <target state="translated">Heslo je nesprávné. Musí obsahovat 8 znaků</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="The portal address is invalid" xml:space="preserve">
         <source>The portal address is invalid</source>
         <target>Adresa portálu je neplatná</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="The portal is not available" xml:space="preserve">
+        <source>The portal is not available</source>
+        <target state="translated">Portál není dostupný</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="The portal name must be between 6 and 50 characters long" xml:space="preserve">
@@ -2927,8 +3037,9 @@ jiné, které používají protokol WebDAV.</target>
         <target>Verze</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
-      <trans-unit id="View and edit files in iCloud directly from the app. Access your storage from the Clouds tab." xml:space="preserve">
-        <source>View and edit files in iCloud directly from the app. Access your storage from the Clouds tab.</source>
+      <trans-unit id="View and edit files in OneDrive and kDrive directly from the app. Access your storages from the Clouds tab." xml:space="preserve">
+        <source>View and edit files in OneDrive and kDrive directly from the app. Access your storages from the Clouds tab.</source>
+        <target state="translated">Zobrazení a úpravy souborů ve službě OneDrive a kDrive přímo z aplikace. Přístup k úložištím získáte na kartě Clouds.</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Warning" xml:space="preserve">
@@ -3093,14 +3204,22 @@ Vytvořené soubory mohou být později nahrány do online portálu. Poté k nim
       </trans-unit>
       <trans-unit id="iCloud" xml:space="preserve">
         <source>iCloud</source>
+        <target state="translated">iCloud</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="iCloud Drive" xml:space="preserve">
         <source>iCloud Drive</source>
+        <target state="translated">Jednotka iCloud</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
-      <trans-unit id="iCloud Drive access" xml:space="preserve">
-        <source>iCloud Drive access</source>
+      <trans-unit id="kDrive" xml:space="preserve">
+        <source>kDrive</source>
+        <target state="translated">kDrive</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="kDrive directory" xml:space="preserve">
+        <source>kDrive directory</source>
+        <target state="translated">Adresář kDrive</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="none" xml:space="preserve">
@@ -3118,6 +3237,11 @@ Vytvořené soubory mohou být později nahrány do online portálu. Poté k nim
       <trans-unit id="ownCloud" xml:space="preserve">
         <source>ownCloud</source>
         <target>ownCloud</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="ownCloud directory" xml:space="preserve">
+        <source>ownCloud directory</source>
+        <target state="translated">Adresář ownCloud</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="photo" xml:space="preserve">
@@ -3149,7 +3273,7 @@ Vytvořené soubory mohou být později nahrány do online portálu. Poté k nim
   </file>
   <file original="Settings.bundle/en.lproj/Root.strings" source-language="en" target-language="cs" datatype="plaintext">
     <header>
-      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="12.4" build-num="12D4e"/>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="12.5.1" build-num="12E507"/>
     </header>
     <body>
       <trans-unit id="Acknowledgements" xml:space="preserve">

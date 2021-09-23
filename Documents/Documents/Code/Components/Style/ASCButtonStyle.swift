@@ -53,6 +53,10 @@ class ASCButtonStyle: UIButton {
                     self.backgroundColor = self.isEnabled
                         ? self.backgroundColor
                         : .lightGray
+                    self.titleLabel?.textAlignment = .center
+                    self.titleLabel?.transform = self.isHighlighted
+                        ? CGAffineTransform(scaleX: 0.92, y: 0.92)
+                        : .identity
                 }, completion:nil)
             }
         }
@@ -87,7 +91,7 @@ class ASCButtonStyle: UIButton {
         switch styleType {
         case .action:
             backgroundColor = Asset.Colors.action.color
-            titleLabel?.textStyle = ASCTextStyle.subheadFontWhite
+            titleLabel?.textStyle = ASCTextStyle.subheadWhite
             titleLabel?.adjustsFontForContentSizeCategory = true
             layer.cornerRadius = 8
             layer.shadowOpacity = 1
@@ -98,7 +102,7 @@ class ASCButtonStyle: UIButton {
             
         default:
             backgroundColor = Asset.Colors.brend.color
-            titleLabel?.textStyle = ASCTextStyle.bodyFontWhite
+            titleLabel?.textStyle = ASCTextStyle.bodyWhite
             titleLabel?.adjustsFontForContentSizeCategory = true
             layerCornerRadius = 8.0
         }

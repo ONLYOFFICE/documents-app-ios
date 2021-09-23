@@ -21,4 +21,5 @@ enum ASCFolderProviderType: String, CaseIterable {
     case nextCloud      = "NextCloud"
     case ownCloud       = "ownCloud"
     case iCloud         = "iCloud"
+    case kDrive         = "kDrive"
 }

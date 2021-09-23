@@ -113,6 +113,12 @@ class ASCConnectPortalThirdPartyViewController: UITableViewController {
                 folderName = NSLocalizedString("SharePoint directory", comment: "")
             case .yandex:
                 folderName = NSLocalizedString("Yandex directory", comment: "")
+            case .nextCloud:
+                folderName = NSLocalizedString("Nextcloud directory", comment: "")
+            case .ownCloud:
+                folderName = NSLocalizedString("ownCloud directory", comment: "")
+            case .kDrive:
+                folderName = NSLocalizedString("kDrive directory", comment: "")
             case .webDav:
                 folderName = NSLocalizedString("WebDAV directory", comment: "")
             default:
@@ -166,7 +172,7 @@ class ASCConnectPortalThirdPartyViewController: UITableViewController {
                 textField.text = folderName
                 
                 textField.add(for: .editingChanged, {
-                    connectAction.isEnabled = (textField.text?.trimmed.length)! > 0
+                    connectAction.isEnabled = !((textField.text ?? "").trimmed.isEmpty)
                 })
                 
                 delay(seconds: 0.2) {
@@ -312,7 +318,7 @@ class ASCConnectPortalThirdPartyViewController: UITableViewController {
             let webDavVC = ASCConnectStorageWebDavController.instantiate(from: Storyboard.connectStorage)
             webDavVC.complation = authComplation(info:)
             webDavVC.title = "Nextcloud"
-            webDavVC.provider = .webDav
+            webDavVC.provider = .nextCloud
             webDavVC.logo = Asset.Images.logoNextcloudLarge.image
             viewController = webDavVC
 
@@ -320,9 +326,18 @@ class ASCConnectPortalThirdPartyViewController: UITableViewController {
             let webDavVC = ASCConnectStorageWebDavController.instantiate(from: Storyboard.connectStorage)
             webDavVC.complation = authComplation(info:)
             webDavVC.title = "ownCloud"
-            webDavVC.provider = .webDav
+            webDavVC.provider = .ownCloud
             webDavVC.logo = Asset.Images.logoOwncloudLarge.image
             viewController = webDavVC
+
+        case .kDrive:
+            let kDriveVC = ASCConnectStorageWebDavController.instantiate(from: Storyboard.connectStorage)
+            kDriveVC.complation = authComplation(info:)
+            kDriveVC.title = "kDrive"
+            kDriveVC.provider = .kDrive
+            kDriveVC.logo = Asset.Images.logoKdriveLarge.image
+            kDriveVC.needServer = false
+            viewController = kDriveVC
 
         case .webDav:
             let webDavVC = ASCConnectStorageWebDavController.instantiate(from: Storyboard.connectStorage)

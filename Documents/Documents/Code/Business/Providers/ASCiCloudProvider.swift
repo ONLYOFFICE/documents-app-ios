@@ -429,6 +429,10 @@ class ASCiCloudProvider: ASCFileProviderProtocol & ASCSortableFileProviderProtoc
         return provider.url(of: path)
     }
     
+    func relativePathOf(url: URL) -> String? {
+        return provider?.relativePathOf(url: url)
+    }
+    
     func download(_ path: String, to destinationURL: URL, processing: @escaping ASCApiProgressHandler) {
         guard let provider = provider else {
             processing(0, nil, nil, nil)
@@ -693,10 +697,11 @@ class ASCiCloudProvider: ASCFileProviderProtocol & ASCSortableFileProviderProtoc
             return
         }
 
-        let fileTitle = name + "." + fileExtension
+        let fileTitle = resolve(fileTitle: name + "." + fileExtension, for: items.filter { $0 is ASCFile } as? [ASCFile] ?? [])
+            ?? name + "." + fileExtension
 
         // Copy empty template to desination path
-        if let templatePath = ASCFileManager.documentTemplatePath(with: fileExtension) {
+        if  let templatePath = ASCFileManager.documentTemplatePath(with: fileExtension) {
             let localUrl = Path(templatePath).url
             let remotePath = (Path(folder.id) + fileTitle).rawValue
 
@@ -729,10 +734,10 @@ class ASCiCloudProvider: ASCFileProviderProtocol & ASCSortableFileProviderProtoc
                                     cloudFile.pureContentLength = Int(fileSize)
 
                                     ASCAnalytics.logEvent(ASCConstants.Analytics.Event.createEntity, parameters: [
-                                        "portal": "icloud",
-                                        "onDevice": false,
-                                        "type": "file",
-                                        "fileExt": cloudFile.title.fileExtension().lowercased()
+                                        ASCAnalytics.Event.Key.portal: "icloud",
+                                        ASCAnalytics.Event.Key.onDevice: false,
+                                        ASCAnalytics.Event.Key.type: ASCAnalytics.Event.Value.file,
+                                        ASCAnalytics.Event.Key.fileExt: cloudFile.title.fileExtension().lowercased()
                                         ]
                                     )
 
@@ -753,14 +758,16 @@ class ASCiCloudProvider: ASCFileProviderProtocol & ASCSortableFileProviderProtoc
     }
 
     func createFile(_ name: String, in folder: ASCFolder, data: Data, params: [String: Any]?, processing: @escaping ASCApiProgressHandler) {
-        let path = (Path(folder.id) + name).rawValue
+        let fileTitle = resolve(fileTitle: name, for: items.filter { $0 is ASCFile } as? [ASCFile] ?? []) ?? name
+        let path = (Path(folder.id) + fileTitle).rawValue
+        
         upload(path, data: data, overwrite: false, params: nil) { progress, result, error, response in
             if let _ = result {
                 ASCAnalytics.logEvent(ASCConstants.Analytics.Event.createEntity, parameters: [
-                    "portal": "icloud",
-                    "onDevice": false,
-                    "type": "file",
-                    "fileExt": name.fileExtension()
+                    ASCAnalytics.Event.Key.portal: "icloud",
+                    ASCAnalytics.Event.Key.onDevice: false,
+                    ASCAnalytics.Event.Key.type: ASCAnalytics.Event.Value.file,
+                    ASCAnalytics.Event.Key.fileExt: name.fileExtension()
                     ]
                 )
             }
@@ -774,7 +781,10 @@ class ASCiCloudProvider: ASCFileProviderProtocol & ASCSortableFileProviderProtoc
             return
         }
         
-        provider.create(folder: name, at: folder.id) { [weak self] error in
+        let folderTitle = resolve(folderTitle: name, for: items.filter { $0 is ASCFolder } as? [ASCFolder] ?? [])
+            ?? name
+
+        provider.create(folder: folderTitle, at: folder.id) { [weak self] error in
             DispatchQueue.main.async(execute: { [weak self] in
                 guard let strongSelf = self else { return }
                 
@@ -796,9 +806,9 @@ class ASCiCloudProvider: ASCFileProviderProtocol & ASCSortableFileProviderProtoc
                     cloudFolder.parentId = folder.id
 
                     ASCAnalytics.logEvent(ASCConstants.Analytics.Event.createEntity, parameters: [
-                        "portal": "icloud",
-                        "onDevice": false,
-                        "type": "folder"
+                        ASCAnalytics.Event.Key.portal: "icloud",
+                        ASCAnalytics.Event.Key.onDevice: false,
+                        ASCAnalytics.Event.Key.type: ASCAnalytics.Event.Value.folder
                         ]
                     )
 
@@ -1104,8 +1114,8 @@ class ASCiCloudProvider: ASCFileProviderProtocol & ASCSortableFileProviderProtoc
 
         if allowOpen {
             let editMode = !viewMode && UIDevice.allowEditor
-            let openHandler = delegate?.openProgressFile(title: NSLocalizedString("Processing", comment: "Caption of the processing") + "...", 0)
-            let closeHandler = delegate?.closeProgressFile(title: NSLocalizedString("Saving", comment: "Caption of the processing"))
+            let openHandler = delegate?.openProgress(file: file, title: NSLocalizedString("Processing", comment: "Caption of the processing") + "...", 0)
+            let closeHandler = delegate?.closeProgress(file: file, title: NSLocalizedString("Saving", comment: "Caption of the processing"))
 
             ASCEditorManager.shared.editFileLocally(for: self, file, viewMode: !editMode, handler: openHandler, closeHandler: closeHandler)
         }
@@ -1119,16 +1129,62 @@ class ASCiCloudProvider: ASCFileProviderProtocol & ASCSortableFileProviderProtoc
         let isVideo         = ASCConstants.FileExtensions.videos.contains(fileExt)
 
         if isPdf {
-            let openHandler = delegate?.openProgressFile(title: NSLocalizedString("Downloading", comment: "Caption of the processing") + "...", 0.15)
+            let openHandler = delegate?.openProgress(file: file, title: NSLocalizedString("Downloading", comment: "Caption of the processing") + "...", 0.15)
             ASCEditorManager.shared.browsePdfCloud(for: self, file, handler: openHandler)
         } else if isImage || isVideo {
             ASCEditorManager.shared.browseMedia(for: self, file, files: files)
         } else {
             if let view = view {
-                let openHandler = delegate?.openProgressFile(title: NSLocalizedString("Downloading", comment: "Caption of the processing") + "...", 0.15)
+                let openHandler = delegate?.openProgress(file: file, title: NSLocalizedString("Downloading", comment: "Caption of the processing") + "...", 0.15)
                 ASCEditorManager.shared.browseUnknownCloud(for: self, file, inView: view, handler: openHandler)
             }
         }
+    }
+    
+    // MARK: - Helpers
+    
+    private func resolve(fileTitle: String, for files: [ASCFile]) -> String? {
+        let fileName = fileTitle.fileName()
+        let fileExtension = fileTitle.fileExtension()
+        let conflict: (String) -> Bool = { title in
+           return files.contains(where: { $0.title == title } )
+        }
+        
+        var resolveTitle = fileTitle
+        
+        // Add postfix if file exist
+        if conflict(resolveTitle) {
+            for index in 2...100 {
+                resolveTitle = (fileName + "-\(index)." + fileExtension)
+                
+                if !conflict(resolveTitle) {
+                    return resolveTitle
+                }
+            }
+        }
+        
+        return conflict(resolveTitle) ? nil : resolveTitle
+    }
+    
+    private func resolve(folderTitle: String, for folders: [ASCFolder]) -> String? {
+        let conflict: (String) -> Bool = { title in
+           return folders.contains(where: { $0.title == title } )
+        }
+        
+        var resolveTitle = folderTitle
+        
+        // Add postfix if folder exist
+        if conflict(resolveTitle) {
+            for index in 2...100 {
+                resolveTitle = folderTitle + "-\(index)"
+                
+                if !conflict(resolveTitle) {
+                    return resolveTitle
+                }
+            }
+        }
+        
+        return conflict(resolveTitle) ? nil : resolveTitle
     }
     
     // MARK: - File watcher

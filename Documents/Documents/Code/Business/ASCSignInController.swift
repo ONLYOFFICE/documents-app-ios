@@ -201,8 +201,8 @@ class ASCSignInController {
                                     // Analytics
                                     if let portal = request.portal {
                                         ASCAnalytics.logEvent(ASCConstants.Analytics.Event.loginPortal, parameters: [
-                                            "portal": portal,
-                                            "provider": request.provider.rawValue
+                                            ASCAnalytics.Event.Key.portal: portal,
+                                            ASCAnalytics.Event.Key.provider: request.provider.rawValue
                                         ])
                                     }
                                     

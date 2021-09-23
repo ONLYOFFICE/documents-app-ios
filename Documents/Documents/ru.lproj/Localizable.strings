@@ -56,6 +56,9 @@
 "A6 (10,5%@ x 14,8%@)" = "A6 (10,5%1$@ x 14,8%2$@)";
 
 /* No comment provided by engineer. */
+"Access files in Favorites and Recents on ONLYOFFICE portal from the app" = "Теперь у вас есть доступ к разделам Избранное и Последние на портале ONLYOFFICE из мобильного приложения";
+
+/* No comment provided by engineer. */
 "Access by external link" = "Доступ по внешней ссылке";
 
 /* No comment provided by engineer. */
@@ -489,6 +492,15 @@
 "File does not exist" = "Файл не существует";
 
 /* No comment provided by engineer. */
+"Favorites and Recents" = "Разделы Избранное и Последние";
+
+/* Description of file operation error */
+"File already exists" = "Файл уже существует";
+
+/* Description of file operation error */
+"File does not exist" = "Файл не существует";
+
+/* No comment provided by engineer. */
 "Files" = "Файлы";
 
 /* No comment provided by engineer. */
@@ -531,7 +543,10 @@
 "Groups" = "Группы";
 
 /* No comment provided by engineer. */
-"iCloud Drive access" = "Работа с iCloud Drive";
+"iCloud" = "iCloud";
+
+/* No comment provided by engineer. */
+"iCloud Drive" = "iCloud Drive";
 
 /* Email sent instructions */
 "If a user with the mail %@ exists, then an instruction to change the password was sent to this address." = "Если пользователь с почтой %@ существует, то на этот адрес была отправлена инструкция по смене пароля.";
@@ -553,6 +568,9 @@
 
 /* Data units */
 "Kb" = "Кб";
+
+/* No comment provided by engineer. */
+"kDrive" = "kDrive";
 
 /* No comment provided by engineer. */
 "kDrive directory" = "Папка kDrive";
@@ -693,6 +711,12 @@
 "Once you enter the password and open the file, the current password to the file will be reset" = "Как только вы введете пароль и откроете файл, текущий пароль к файлу будет сброшен";
 
 /* No comment provided by engineer. */
+"OneDrive" = "OneDrive";
+
+/* No comment provided by engineer. */
+"OneDrive and kDrive access" = "Работа в OneDrive и kDrive";
+
+/* No comment provided by engineer. */
 "OneDrive directory" = "Папка OneDrive";
 
 /* No comment provided by engineer. */
@@ -799,9 +823,6 @@
 
 /* No comment provided by engineer. */
 "Protected File" = "Защищенный файл";
-
-/* No comment provided by engineer. */
-"Quick sharing" = "Мгновенный шаринг";
 
 /* Share status */
 "Read Only" = "Только чтение";
@@ -1135,7 +1156,7 @@
 "Version" = "Версия";
 
 /* No comment provided by engineer. */
-"View and edit files in iCloud directly from the app. Access your storage from the Clouds tab." = "Просматривайте и редактируйте файлы из iCloud. Ваше хранилище доступно во вкладке Облака.";
+"View and edit files in OneDrive and kDrive directly from the app. Access your storages from the Clouds tab." = "Просматривайте и редактируйте файлы из OneDrive и kDrive. Все хранилища доступны во вкладке Облака";
 
 /* No comment provided by engineer. */
 "Warning" = "Предупреждение";

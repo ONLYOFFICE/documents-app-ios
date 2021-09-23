@@ -186,7 +186,6 @@ class ASCDocumentsViewController: ASCBaseTableViewController, UIGestureRecognize
         addObserver(ASCConstants.Notifications.updateFileInfo, #selector(updateFileInfo(_:)))
         addObserver(ASCConstants.Notifications.networkStatusChanged, #selector(networkStatusChanged(_:)))
         addObserver(ASCConstants.Notifications.updateSizeClass, #selector(onUpdateSizeClass(_:)))
-        addObserver(ASCConstants.Notifications.openLocalFileByUrl, #selector(onOpenLocalFileByUrl(_:)))
         addObserver(ASCConstants.Notifications.appDidBecomeActive, #selector(onAppDidBecomeActive(_:)))
         addObserver(ASCConstants.Notifications.reloadData, #selector(onReloadData(_:)))
         addObserver(UIApplication.willResignActiveNotification, #selector(onAppMovedToBackground))
@@ -1155,56 +1154,6 @@ class ASCDocumentsViewController: ASCBaseTableViewController, UIGestureRecognize
         searchController.searchBar.resignFirstResponder()
         searchController.isActive = false
 
-    }
-    
-    @objc func onOpenLocalFileByUrl(_ notification: Notification) {
-        guard
-            let folder = folder,
-            let userInfo = notification.userInfo,
-            let url = userInfo["url"] as? URL
-        else {
-            return
-        }
-        
-        if !folder.device {
-            ASCViewControllerManager.shared.rootController?.display(provider: ASCFileManager.localProvider, folder: nil)
-        }
-
-        let fileTitle = url.lastPathComponent
-        let filePath = Path(url.path)
-
-        if  let splitVC = ASCViewControllerManager.shared.rootController?.topMostViewController() as? ASCDeviceSplitViewController,
-            let documentsNC = splitVC.viewControllers.last as? ASCBaseNavigationController,
-            let documentsVC = documentsNC.topViewController as? ASCDocumentsViewController,
-            let newFilePath = ASCLocalFileHelper.shared.resolve(filePath: Path.userDocuments + fileTitle)
-        {
-            if let error = ASCLocalFileHelper.shared.copy(from: filePath, to: newFilePath) {
-                log.error("Can not import the file. \(error)")
-            } else {
-                if filePath.isChildOfPath(Path.userDocuments + "Inbox") {
-                    ASCLocalFileHelper.shared.removeFile(filePath)
-                }
-
-                let owner = ASCUser()
-                owner.displayName = UIDevice.displayName
-
-                let file = ASCFile()
-                file.id = newFilePath.rawValue
-                file.rootFolderType = .deviceDocuments
-                file.title = newFilePath.fileName
-                file.created = newFilePath.creationDate
-                file.updated = newFilePath.modificationDate
-                file.createdBy = owner
-                file.updatedBy = owner
-                file.device = true
-                file.parent = documentsVC.folder
-                file.displayContentLength = String.fileSizeToString(with: newFilePath.fileSize ?? 0)
-                file.pureContentLength = Int(newFilePath.fileSize ?? 0)
-
-                documentsVC.add(entity: file)
-                documentsVC.open(file: file)
-            }
-        }
     }
     
     @objc func onAppDidBecomeActive(_ notification: Notification) {

@@ -445,8 +445,8 @@ class ASCSignInViewController: ASCBaseViewController {
                             // Analytics
                             if let portal = OnlyofficeApiClient.shared.baseURL?.absoluteURL {
                                 ASCAnalytics.logEvent(ASCConstants.Analytics.Event.loginPortal, parameters: [
-                                    "portal": portal,
-                                    "provider": ASCLoginType.sso.rawValue
+                                    ASCAnalytics.Event.Key.portal: portal,
+                                    ASCAnalytics.Event.Key.provider: ASCLoginType.sso.rawValue
                                 ])
                             }
                             

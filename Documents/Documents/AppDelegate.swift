@@ -178,12 +178,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
         
         if url.isFileURL {
-            if let sourceApplication = options[.sourceApplication] as? String, "com.apple.DocumentsApp" == sourceApplication {
-                NotificationCenter.default.post(name: ASCConstants.Notifications.openLocalFileByUrl, object: nil, userInfo: ["url": url])
-            } else {
-                UserDefaults.standard.set(url, forKey: ASCConstants.SettingsKeys.importFile)
-                NotificationCenter.default.post(name: ASCConstants.Notifications.importFileLaunch, object: nil)
-            }
+            return ASCViewControllerManager.shared.route(by: url, options: options)
         }
      
         return false

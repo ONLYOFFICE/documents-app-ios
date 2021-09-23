@@ -13,11 +13,19 @@ enum ASCTextStyle {
     
     // MARK: - Buttons
     
-    case bodyFontWhite
+    case largeTitleBold
+    
+    case title3Bold
+
+    case body
+    case bodyWhite
     case semibodyWhite
-    case subheadFontWhite
+    
+    case subhead
+    case subheadWhite
     case subheadBold
     case placeholderRegular
+
 
     // MARK: - signature
     
@@ -28,13 +36,37 @@ enum ASCTextStyle {
         
         // MARK: - Buttons
 
-        case .bodyFontWhite:
+        case .body:
+            if #available(iOS 13.0, *) {
+                return (UIFont.preferredFont(forTextStyle: .body), .label, 1)
+            } else {
+                return (UIFont.preferredFont(forTextStyle: .body), .black, 1)
+            }
+            
+        case .bodyWhite:
             return (UIFont.preferredFont(forTextStyle: .body), .white, 1)
         
         case .semibodyWhite:
             return (UIFont.preferredFont(forTextStyle: .body).with(weight: .semibold), .white, 1)
             
-        case .subheadFontWhite:
+            
+            
+        case .title3Bold:
+            if #available(iOS 13.0, *) {
+                return (UIFont.preferredFont(forTextStyle: .title3).bold(), .label, 1)
+            } else {
+                return (UIFont.preferredFont(forTextStyle: .title3).bold(), .black, 1)
+            }
+            
+            
+        case .subhead:
+            if #available(iOS 13.0, *) {
+                return (UIFont.preferredFont(forTextStyle: .subheadline), .label, 1)
+            } else {
+                return (UIFont.preferredFont(forTextStyle: .subheadline), .black, 1)
+            }
+            
+        case .subheadWhite:
             return (UIFont.preferredFont(forTextStyle: .subheadline), .white, 1)
             
         case .subheadBold:
@@ -43,6 +75,14 @@ enum ASCTextStyle {
             } else {
                 return (UIFont.preferredFont(forTextStyle: .subheadline).bold(), .black, 1)
             }
+            
+        case .largeTitleBold:
+            if #available(iOS 13.0, *) {
+                return (UIFont.systemFont(ofSize: 34).bold(), .label, 1)
+            } else {
+                return (UIFont.systemFont(ofSize: 34).bold(), .black, 1)
+            }
+            
             
         case .placeholderRegular:
             if #available(iOS 13.0, *) {

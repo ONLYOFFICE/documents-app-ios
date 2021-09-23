@@ -597,10 +597,10 @@ class ASCOnlyofficeProvider: ASCFileProviderProtocol & ASCSortableFileProviderPr
                 completeon?(self, nil, false, error)
             } else if let file = result?.result {
                 ASCAnalytics.logEvent(ASCConstants.Analytics.Event.createEntity, parameters: [
-                    "portal": OnlyofficeApiClient.shared.baseURL?.absoluteString ?? "none",
-                    "onDevice": false,
-                    "type": "file",
-                    "fileExt": file.title.fileExtension().lowercased()
+                    ASCAnalytics.Event.Key.portal: OnlyofficeApiClient.shared.baseURL?.absoluteString ?? ASCAnalytics.Event.Value.none,
+                    ASCAnalytics.Event.Key.onDevice: false,
+                    ASCAnalytics.Event.Key.type: ASCAnalytics.Event.Value.file,
+                    ASCAnalytics.Event.Key.fileExt: file.title.fileExtension().lowercased()
                     ]
                 )
                 completeon?(self, file, true, nil)
@@ -642,10 +642,10 @@ class ASCOnlyofficeProvider: ASCFileProviderProtocol & ASCSortableFileProviderPr
         upload(folder.id, data: data, overwrite: false, params: params) { result, progress, error in
             if let _ = result as? ASCFile {
                 ASCAnalytics.logEvent(ASCConstants.Analytics.Event.createEntity, parameters: [
-                    "portal": OnlyofficeApiClient.shared.baseURL?.absoluteString ?? "none",
-                    "onDevice": false,
-                    "type": "file",
-                    "fileExt": name.fileExtension()
+                    ASCAnalytics.Event.Key.portal: OnlyofficeApiClient.shared.baseURL?.absoluteString ?? ASCAnalytics.Event.Value.none,
+                    ASCAnalytics.Event.Key.onDevice: false,
+                    ASCAnalytics.Event.Key.type: ASCAnalytics.Event.Value.file,
+                    ASCAnalytics.Event.Key.fileExt: name.fileExtension()
                     ]
                 )
             }
@@ -664,9 +664,9 @@ class ASCOnlyofficeProvider: ASCFileProviderProtocol & ASCSortableFileProviderPr
                 completeon?(self, nil, false, error)
             } else if let folder = result?.result {
                 ASCAnalytics.logEvent(ASCConstants.Analytics.Event.createEntity, parameters: [
-                    "portal": OnlyofficeApiClient.shared.baseURL?.absoluteString ?? "none",
-                    "onDevice": false,
-                    "type": "folder"
+                    ASCAnalytics.Event.Key.portal: OnlyofficeApiClient.shared.baseURL?.absoluteString ?? ASCAnalytics.Event.Value.none,
+                    ASCAnalytics.Event.Key.onDevice: false,
+                    ASCAnalytics.Event.Key.type: ASCAnalytics.Event.Value.folder
                     ]
                 )
                 completeon?(self, folder, true, nil)

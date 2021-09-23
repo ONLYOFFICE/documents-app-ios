@@ -43,7 +43,7 @@ def common_pods
   pod 'Siren'
   pod 'WhatsNewKit'
   pod 'PhoneNumberKit'
-  pod 'SwiftMessages'
+  pod 'SwiftMessages', '9.0.4'
   pod 'MGSwipeTableCell'
 
   # Utils

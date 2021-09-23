@@ -662,10 +662,10 @@ class ASCWebDAVProvider: ASCFileProviderProtocol & ASCSortableFileProviderProtoc
                                     cloudFile.pureContentLength = Int(fileSize)
 
                                     ASCAnalytics.logEvent(ASCConstants.Analytics.Event.createEntity, parameters: [
-                                        "portal": strongSelf.provider?.baseURL?.absoluteString ?? "none",
-                                        "onDevice": false,
-                                        "type": "file",
-                                        "fileExt": cloudFile.title.fileExtension().lowercased()
+                                        ASCAnalytics.Event.Key.portal: strongSelf.provider?.baseURL?.absoluteString ?? ASCAnalytics.Event.Value.none,
+                                        ASCAnalytics.Event.Key.onDevice: false,
+                                        ASCAnalytics.Event.Key.type: ASCAnalytics.Event.Value.file,
+                                        ASCAnalytics.Event.Key.fileExt: cloudFile.title.fileExtension().lowercased()
                                         ]
                                     )
 
@@ -690,10 +690,10 @@ class ASCWebDAVProvider: ASCFileProviderProtocol & ASCSortableFileProviderProtoc
         upload(path, data: data, overwrite: false, params: nil) { [weak self] result, progress, error in
             if let _ = result {
                 ASCAnalytics.logEvent(ASCConstants.Analytics.Event.createEntity, parameters: [
-                    "portal": self?.provider?.baseURL?.absoluteString ?? "none",
-                    "onDevice": false,
-                    "type": "file",
-                    "fileExt": name.fileExtension()
+                    ASCAnalytics.Event.Key.portal: self?.provider?.baseURL?.absoluteString ?? ASCAnalytics.Event.Value.none,
+                    ASCAnalytics.Event.Key.onDevice: false,
+                    ASCAnalytics.Event.Key.type: ASCAnalytics.Event.Value.file,
+                    ASCAnalytics.Event.Key.fileExt: name.fileExtension()
                     ]
                 )
             }
@@ -731,9 +731,9 @@ class ASCWebDAVProvider: ASCFileProviderProtocol & ASCSortableFileProviderProtoc
                     cloudFolder.parentId = folder.id
 
                     ASCAnalytics.logEvent(ASCConstants.Analytics.Event.createEntity, parameters: [
-                        "portal": provider.baseURL?.absoluteString ?? "none",
-                        "onDevice": false,
-                        "type": "folder"
+                        ASCAnalytics.Event.Key.portal: provider.baseURL?.absoluteString ?? ASCAnalytics.Event.Value.none,
+                        ASCAnalytics.Event.Key.onDevice: false,
+                        ASCAnalytics.Event.Key.type: ASCAnalytics.Event.Value.folder
                         ]
                     )
 

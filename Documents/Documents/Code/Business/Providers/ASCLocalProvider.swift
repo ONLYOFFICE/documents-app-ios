@@ -404,10 +404,10 @@ class ASCLocalProvider: ASCFileProviderProtocol & ASCSortableFileProviderProtoco
                 file.pureContentLength = Int(filePath.fileSize ?? 0)
 
                 ASCAnalytics.logEvent(ASCConstants.Analytics.Event.createEntity, parameters: [
-                    "portal": "none",
-                    "onDevice": true,
-                    "type": "file",
-                    "fileExt": file.title.fileExtension().lowercased()
+                    ASCAnalytics.Event.Key.portal: ASCAnalytics.Event.Value.none,
+                    ASCAnalytics.Event.Key.onDevice: true,
+                    ASCAnalytics.Event.Key.type: ASCAnalytics.Event.Value.file,
+                    ASCAnalytics.Event.Key.fileExt: file.title.fileExtension().lowercased()
                     ]
                 )
 
@@ -452,10 +452,10 @@ class ASCLocalProvider: ASCFileProviderProtocol & ASCSortableFileProviderProtoco
             file.pureContentLength = Int(filePath.fileSize ?? 0)
 
             ASCAnalytics.logEvent(ASCConstants.Analytics.Event.createEntity, parameters: [
-                "portal": "none",
-                "onDevice": true,
-                "type": "file",
-                "fileExt": file.title.fileExtension()
+                ASCAnalytics.Event.Key.portal: ASCAnalytics.Event.Value.none,
+                ASCAnalytics.Event.Key.onDevice: true,
+                ASCAnalytics.Event.Key.type: ASCAnalytics.Event.Value.file,
+                ASCAnalytics.Event.Key.fileExt: file.title.fileExtension()
                 ]
             )
 
@@ -494,9 +494,9 @@ class ASCLocalProvider: ASCFileProviderProtocol & ASCSortableFileProviderProtoco
                 newFolder.device = true
 
                 ASCAnalytics.logEvent(ASCConstants.Analytics.Event.createEntity, parameters: [
-                    "portal": "none",
-                    "onDevice": true,
-                    "type": "folder"
+                    ASCAnalytics.Event.Key.portal: ASCAnalytics.Event.Value.none,
+                    ASCAnalytics.Event.Key.onDevice: true,
+                    ASCAnalytics.Event.Key.type: ASCAnalytics.Event.Value.folder
                     ]
                 )
 

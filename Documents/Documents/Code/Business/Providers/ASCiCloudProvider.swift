@@ -429,6 +429,10 @@ class ASCiCloudProvider: ASCFileProviderProtocol & ASCSortableFileProviderProtoc
         return provider.url(of: path)
     }
     
+    func relativePathOf(url: URL) -> String? {
+        return provider?.relativePathOf(url: url)
+    }
+    
     func download(_ path: String, to destinationURL: URL, processing: @escaping NetworkProgressHandler) {
         guard let provider = provider else {
             processing(nil, 0, nil)
@@ -730,10 +734,10 @@ class ASCiCloudProvider: ASCFileProviderProtocol & ASCSortableFileProviderProtoc
                                     cloudFile.pureContentLength = Int(fileSize)
 
                                     ASCAnalytics.logEvent(ASCConstants.Analytics.Event.createEntity, parameters: [
-                                        "portal": "icloud",
-                                        "onDevice": false,
-                                        "type": "file",
-                                        "fileExt": cloudFile.title.fileExtension().lowercased()
+                                        ASCAnalytics.Event.Key.portal: "icloud",
+                                        ASCAnalytics.Event.Key.onDevice: false,
+                                        ASCAnalytics.Event.Key.type: ASCAnalytics.Event.Value.file,
+                                        ASCAnalytics.Event.Key.fileExt: cloudFile.title.fileExtension().lowercased()
                                         ]
                                     )
 
@@ -760,10 +764,10 @@ class ASCiCloudProvider: ASCFileProviderProtocol & ASCSortableFileProviderProtoc
         upload(path, data: data, overwrite: false, params: nil) { result, progress, error in
             if let _ = result {
                 ASCAnalytics.logEvent(ASCConstants.Analytics.Event.createEntity, parameters: [
-                    "portal": "icloud",
-                    "onDevice": false,
-                    "type": "file",
-                    "fileExt": name.fileExtension()
+                    ASCAnalytics.Event.Key.portal: "icloud",
+                    ASCAnalytics.Event.Key.onDevice: false,
+                    ASCAnalytics.Event.Key.type: ASCAnalytics.Event.Value.file,
+                    ASCAnalytics.Event.Key.fileExt: name.fileExtension()
                     ]
                 )
             }
@@ -802,9 +806,9 @@ class ASCiCloudProvider: ASCFileProviderProtocol & ASCSortableFileProviderProtoc
                     cloudFolder.parentId = folder.id
 
                     ASCAnalytics.logEvent(ASCConstants.Analytics.Event.createEntity, parameters: [
-                        "portal": "icloud",
-                        "onDevice": false,
-                        "type": "folder"
+                        ASCAnalytics.Event.Key.portal: "icloud",
+                        ASCAnalytics.Event.Key.onDevice: false,
+                        ASCAnalytics.Event.Key.type: ASCAnalytics.Event.Value.folder
                         ]
                     )
 

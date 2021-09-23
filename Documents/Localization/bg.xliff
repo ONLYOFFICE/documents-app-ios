@@ -72,6 +72,10 @@
         <target>Използвайте безплатно 30-дневен опит</target>
         <note>Class = "UILabel"; text = "Make use of 30 days trial for free"; ObjectID = "FZg-vj-AVJ";</note>
       </trans-unit>
+      <trans-unit id="SZG-z0-C6T.normalTitle" xml:space="preserve">
+        <source>🇱🇻</source>
+        <note>Class = "UIButton"; normalTitle = "🇱🇻"; ObjectID = "SZG-z0-C6T";</note>
+      </trans-unit>
       <trans-unit id="TP3-h7-Hq1.placeholder" xml:space="preserve">
         <source>First Name</source>
         <target>Първо име</target>
@@ -86,6 +90,10 @@
         <source>Repeat Password</source>
         <target>Повтори паролата</target>
         <note>Class = "UITextField"; placeholder = "Repeat Password"; ObjectID = "Zgx-q8-jRP";</note>
+      </trans-unit>
+      <trans-unit id="amC-Ph-cGL.text" xml:space="preserve">
+        <source>Label</source>
+        <note>Class = "UILabel"; text = "Label"; ObjectID = "amC-Ph-cGL";</note>
       </trans-unit>
       <trans-unit id="cHX-qo-kcu.text" xml:space="preserve">
         <source>By creating the portal you agree with our
@@ -110,6 +118,10 @@ web office</source>
         <source>Last Name</source>
         <target>Фамилия</target>
         <note>Class = "UITextField"; placeholder = "Last Name"; ObjectID = "iLP-xJ-pU3";</note>
+      </trans-unit>
+      <trans-unit id="kgQ-EP-Qap.placeholder" xml:space="preserve">
+        <source>Your phone number</source>
+        <note>Class = "UITextField"; placeholder = "Your phone number"; ObjectID = "kgQ-EP-Qap";</note>
       </trans-unit>
       <trans-unit id="qKc-e7-uTl.text" xml:space="preserve">
         <source>Choose a password and
@@ -1431,6 +1443,10 @@ Note: if you forget the passcode, you'll need to delete and reinstall the app. A
         <target>Поле за директория</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
+      <trans-unit id="By creating the portal you agree with our Terms of service" xml:space="preserve">
+        <source>By creating the portal you agree with our Terms of service</source>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
       <trans-unit id="Camera Unavailable" xml:space="preserve">
         <source>Camera Unavailable</source>
         <target>Камерата е недостъпна</target>
@@ -1904,6 +1920,10 @@ others which use WebDAV protocol.</source>
         <target>Грешка</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
+      <trans-unit id="Error code: %ld" xml:space="preserve">
+        <source>Error code: %ld</source>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
       <trans-unit id="Export" xml:space="preserve">
         <source>Export</source>
         <target state="translated">Изнеси</target>
@@ -1922,6 +1942,10 @@ others which use WebDAV protocol.</source>
       <trans-unit id="Failed to check the name of the portal" xml:space="preserve">
         <source>Failed to check the name of the portal</source>
         <target>Проверката на името на портала не е успешна</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Failed to connect folder." xml:space="preserve">
+        <source>Failed to connect folder.</source>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Failed to copy: %@" xml:space="preserve">
@@ -2079,6 +2103,13 @@ others which use WebDAV protocol.</source>
         <target>Невалиден код на държавата</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
+      <trans-unit id="Invalid Data" xml:space="preserve">
+        <source>Invalid Data</source>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Invalid Url" xml:space="preserve">
+        <source>Invalid Url</source>
+        <note>No comment provided by engineer.</note>
       <trans-unit id="Invalid URL: The format ot the URL could not be determined" xml:space="preserve">
         <source>Invalid URL: The format ot the URL could not be determined</source>
         <target state="translated">Невалиден URL: Форматът на URL не може да бъде определен</target>
@@ -2228,6 +2259,14 @@ others which use WebDAV protocol.</source>
       <trans-unit id="Nextcloud directory" xml:space="preserve">
         <source>Nextcloud directory</source>
         <target state="translated">Nextcloud директория</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="No Internet connection" xml:space="preserve">
+        <source>No Internet connection</source>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="No client IDs of application" xml:space="preserve">
+        <source>No client IDs of application</source>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="No connection" xml:space="preserve">
@@ -2380,6 +2419,14 @@ others which use WebDAV protocol.</source>
         <source>Pb</source>
         <target>Пб</target>
         <note>Data units</note>
+      </trans-unit>
+      <trans-unit id="Phone" xml:space="preserve">
+        <source>Phone</source>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Phone is incorrect" xml:space="preserve">
+        <source>Phone is incorrect</source>
+        <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Please go to Settings and enable the camera for this app to use this feature." xml:space="preserve">
         <source>Please go to Settings and enable the camera for this app to use this feature.</source>
@@ -2536,6 +2583,10 @@ others which use WebDAV protocol.</source>
         <target>Подновяване</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
+      <trans-unit id="Request canceled" xml:space="preserve">
+        <source>Request canceled</source>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
       <trans-unit id="Restore" xml:space="preserve">
         <source>Restore</source>
         <target>Възстанови</target>
@@ -2657,6 +2708,14 @@ others which use WebDAV protocol.</source>
         <target>Слайд %1$i от %2$i</target>
         <note>Presentation Viewer</note>
       </trans-unit>
+      <trans-unit id="Something went wrong, try again" xml:space="preserve">
+        <source>Something went wrong, try again</source>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Something wrong" xml:space="preserve">
+        <source>Something wrong</source>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
       <trans-unit id="Sort" xml:space="preserve">
         <source>Sort</source>
         <target>Вид</target>
@@ -2696,6 +2755,10 @@ others which use WebDAV protocol.</source>
         <source>Tb</source>
         <target>Тб</target>
         <note>Data units</note>
+      </trans-unit>
+      <trans-unit id="Terms of service" xml:space="preserve">
+        <source>Terms of service</source>
+        <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Text copied" xml:space="preserve">
         <source>Text copied</source>
@@ -2857,6 +2920,14 @@ others which use WebDAV protocol.</source>
         <target>Тип</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
+      <trans-unit id="Unable delete items" xml:space="preserve">
+        <source>Unable delete items</source>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Unable disconnect third party" xml:space="preserve">
+        <source>Unable disconnect third party</source>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
       <trans-unit id="Unable to get information about the portal" xml:space="preserve">
         <source>Unable to get information about the portal</source>
         <target>Не може да се получи информация за портала</target>
@@ -2877,9 +2948,8 @@ others which use WebDAV protocol.</source>
         <target>Неизвестен</target>
         <note>Invalid entity name</note>
       </trans-unit>
-      <trans-unit id="Unknown API response." xml:space="preserve">
-        <source>Unknown API response.</source>
-        <target>Неизвестен отговор на API.</target>
+      <trans-unit id="Unknown error" xml:space="preserve">
+        <source>Unknown error</source>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Unknown file provider" xml:space="preserve">
@@ -2930,7 +3000,11 @@ others which use WebDAV protocol.</source>
       <trans-unit id="User authentication failed" xml:space="preserve">
         <source>User authentication failed</source>
         <target>Неуспешна идентификация</target>
-        <note>Error message</note>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="User authentication required" xml:space="preserve">
+        <source>User authentication required</source>
+        <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="User undefined" xml:space="preserve">
         <source>User undefined</source>

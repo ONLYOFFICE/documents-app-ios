@@ -91,13 +91,13 @@ internal enum StoryboardScene {
   internal enum Main: StoryboardType {
     internal static let storyboardName = "Main"
 
-    internal static let initialScene = InitialSceneType<Documents.ASCRootController>(storyboard: Main.self)
-
     internal static let ascCloudsEmptyViewController = SceneType<Documents.ASCCloudsEmptyViewController>(storyboard: Main.self, identifier: "ASCCloudsEmptyViewController")
 
     internal static let ascDocumentsNavigationController = SceneType<Documents.ASCDocumentsNavigationController>(storyboard: Main.self, identifier: "ASCDocumentsNavigationController")
 
     internal static let ascDocumentsViewController = SceneType<Documents.ASCDocumentsViewController>(storyboard: Main.self, identifier: "ASCDocumentsViewController")
+
+    internal static let ascRootViewController = SceneType<Documents.ASCRootViewController>(storyboard: Main.self, identifier: "ASCRootViewController")
 
     internal static let ascSplashViewController = SceneType<UIKit.UIViewController>(storyboard: Main.self, identifier: "ASCSplashViewController")
   }

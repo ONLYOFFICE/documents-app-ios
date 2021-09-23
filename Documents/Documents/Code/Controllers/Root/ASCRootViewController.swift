@@ -1,5 +1,5 @@
 //
-//  ASCRootController.swift
+//  ASCRootViewController.swift
 //  Documents
 //
 //  Created by Alexander Yuzhin on 05/12/2018.
@@ -9,9 +9,11 @@
 import UIKit
 import FileKit
 
-class ASCRootController: UITabBarController {
+class ASCRootViewController: ASCBaseTabBarController {
 
     // MARK: - Properties
+    
+    class override var storyboard: Storyboard { return Storyboard.main }
     
     var currentSizeClass: UIUserInterfaceSizeClass = .compact
     
@@ -27,6 +29,10 @@ class ASCRootController: UITabBarController {
 
     // MARK: - Lifecycle Methods
 
+    deinit {
+        NotificationCenter.default.removeObserver(self)
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -68,10 +74,12 @@ class ASCRootController: UITabBarController {
         }
         
         update(traitCollection: traitCollection)
+        
+        checkNotifications()
     }
-
-    deinit {
-        NotificationCenter.default.removeObserver(self)
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
     }
 
     override var supportedInterfaceOrientations : UIInterfaceOrientationMask {
@@ -95,9 +103,7 @@ class ASCRootController: UITabBarController {
     }
 
     private func displaySplash() {
-        if let splashVC = storyboard?.instantiateViewController(withIdentifier: "ASCSplashViewController") {
-            UIApplication.shared.windows.last?.rootViewController = splashVC
-        }
+        UIApplication.shared.windows.last?.rootViewController = StoryboardScene.Main.ascSplashViewController.instantiate()
     }
     
     private func navigateLocalProvider(to folder: ASCFolder?) {
@@ -316,7 +322,7 @@ class ASCRootController: UITabBarController {
 
 // MARK: - UITabBarController Delegate
 
-extension ASCRootController: UITabBarControllerDelegate {
+extension ASCRootViewController: UITabBarControllerDelegate {
 
     func tabBarController(_ tabBarController: UITabBarController, didSelect viewController: UIViewController) {
 //        print("tabBarController didSelect")

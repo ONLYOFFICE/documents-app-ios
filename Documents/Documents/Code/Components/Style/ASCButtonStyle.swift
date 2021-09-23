@@ -9,7 +9,7 @@
 import UIKit
 
 enum ASCButtonStyleType: Int {
-    case `default`, action, bordered
+    case `default`, action, bordered, gray
 }
 
 class ASCButtonStyle: UIButton {
@@ -58,6 +58,26 @@ class ASCButtonStyle: UIButton {
                         : .lightGray
                 }, completion:nil)
                 setTitleColorForAllStates(.gray)
+            case .gray:
+                UIView.animate(withDuration: 0.2, delay: 0.0, options:[], animations: {
+                    if #available(iOS 13.0, *) {
+                        self.backgroundColor = self.isHighlighted
+                            ? .tertiarySystemFill.lighten()
+                            : .tertiarySystemFill
+                    } else {
+                        self.backgroundColor = self.isHighlighted
+                            ? .lightGray.lighten(by: 0.5).lighten()
+                            : .lightGray.lighten(by: 0.5)
+                    }
+                    self.backgroundColor = self.isEnabled
+                        ? self.backgroundColor
+                        : .lightGray
+                }, completion:nil)
+                if #available(iOS 13.0, *) {
+                    setTitleColorForAllStates(.label)
+                } else {
+                    setTitleColorForAllStates(.black)
+                }
             default:
                 UIView.animate(withDuration: 0.2, delay: 0.0, options:[], animations: {
                     self.backgroundColor = self.isHighlighted
@@ -82,6 +102,12 @@ class ASCButtonStyle: UIButton {
                 backgroundColor = isEnabled ? Asset.Colors.action.color : Asset.Colors.grayLight.color
             case .bordered:
                 backgroundColor = isEnabled ? .clear : .lightGray.lighten()
+            case .gray:
+                if #available(iOS 13.0, *) {
+                    backgroundColor = isEnabled ? .tertiarySystemFill : .tertiarySystemFill.lighten()
+                } else {
+                    backgroundColor = isEnabled ? .lightGray.lighten(by: 0.5) : .lightGray.lighten(by: 0.7)
+                }
             default:
                 backgroundColor = isEnabled ? Asset.Colors.brend.color : Asset.Colors.grayLight.color
             }
@@ -120,6 +146,8 @@ class ASCButtonStyle: UIButton {
             layer.borderColor = UIColor.gray.cgColor
             titleLabel?.textStyle = ASCTextStyle.bodyWhite
             titleLabel?.textColor = .gray
+            layerCornerRadius = 8.0
+        case .gray:
             layerCornerRadius = 8.0
         default:
             backgroundColor = Asset.Colors.brend.color

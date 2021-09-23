@@ -34,11 +34,13 @@ class ASCSharingOptionsInteractor: ASCSharingOptionsBusinessLogic, ASCSharingOpt
     // MARK: - ASCSharingOptionsBusinessLogic
     var presenter: ASCSharingOptionsPresentationLogic?
     let apiWorker: ASCShareSettingsAPIWorkerProtocol
+    var networkingRequestManager: NetworkingRequestingProtocol
     
-    init(entityLinkMaker: ASCEntityLinkMakerProtocol, entity: ASCEntity, apiWorker: ASCShareSettingsAPIWorkerProtocol) {
+    init(entityLinkMaker: ASCEntityLinkMakerProtocol, entity: ASCEntity, apiWorker: ASCShareSettingsAPIWorkerProtocol, networkingRequestManager: NetworkingRequestingProtocol) {
         self.entityLinkMaker = entityLinkMaker
         self.entity = entity
         self.apiWorker = apiWorker
+        self.networkingRequestManager = networkingRequestManager
     }
     
     func makeRequest(request: ASCSharingOptions.Model.Request.RequestType) {
@@ -78,7 +80,7 @@ class ASCSharingOptionsInteractor: ASCSharingOptionsBusinessLogic, ASCSharingOpt
             return
         }
         
-        OnlyofficeApiClient.request(apiRequest) { response, error in
+        networkingRequestManager.request(apiRequest, nil) { response, error in
             var exteralLink: ASCSharingOprionsExternalLink?
             if let sharedItems = response?.result {
                 self.sharedInfoItems = sharedItems.filter({ $0.user != nil || $0.group != nil})
@@ -110,10 +112,12 @@ class ASCSharingOptionsInteractor: ASCSharingOptionsBusinessLogic, ASCSharingOpt
         let shareRequestModel = OnlyofficeShareRequestModel()
         shareRequestModel.notify = false
         shareRequestModel.share = apiWorker.convertToParams(items: [(rightHolder.id, access)])
-        
-        OnlyofficeApiClient.request(request, shareRequestModel.toJSON()) { [weak self] _, error in
+        networkingRequestManager.request(request, shareRequestModel.toJSON()) { [weak self] _, error in
             if error == nil {
                 rightHolder.access = access
+                if let index = self?.sharedInfoItems.firstIndex(where: { $0.user?.userId == rightHolder.id || $0.group?.id == rightHolder.id }) {
+                    self?.sharedInfoItems[index].access = access
+                }
                 self?.presenter?.presentData(response: .presentChangeRightHolderAccess(.init(rightHolder: rightHolder, error: nil)))
             } else {
                 let errorMessage = error?.localizedDescription
@@ -136,7 +140,7 @@ class ASCSharingOptionsInteractor: ASCSharingOptionsBusinessLogic, ASCSharingOpt
         shareRequestModel.notify = false
         shareRequestModel.share = apiWorker.convertToParams(items: [(rightHolder.id, .none)])
         
-        OnlyofficeApiClient.request(request, shareRequestModel.toJSON()) { [weak self] _, error in
+        networkingRequestManager.request(request, shareRequestModel.toJSON()) { [weak self] _, error in
             if error == nil {
                 self?.sharedInfoItems.remove(at: sharedItemIndex)
                 self?.presenter?.presentData(response: .presentRemoveRightHolderAccess(.init(indexPath: removeRightHolderAccessRequest.indexPath,

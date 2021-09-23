@@ -90,7 +90,7 @@ class ASCPasswordRecoveryViewController: ASCBaseViewController {
             return
         }
         
-        guard let portal = ASCOnlyOfficeApi.shared.baseUrl?.trimmed else {
+        guard let portal = OnlyofficeApiClient.shared.baseURL?.absoluteString.trimmed else {
             emailTextField?.errorMessage = NSLocalizedString("The portal is not available", comment: "")
             emailTextField?.shake()
             return
@@ -114,6 +114,13 @@ class ASCPasswordRecoveryViewController: ASCBaseViewController {
             case .failure(let error):
                 log.error(error)
                 hud?.hide(animated: true)
+                
+                if let controller = self {
+                    UIAlertController.showError(
+                        in: controller,
+                        message: error.localizedDescription
+                    )
+                }
             }
         }
     }

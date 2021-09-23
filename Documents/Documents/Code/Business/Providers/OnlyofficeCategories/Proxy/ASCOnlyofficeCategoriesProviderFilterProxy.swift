@@ -2,7 +2,7 @@
 //  ASCOnlyofficeCategoriesProviderFilterProxy.swift
 //  Documents
 //
-//  Created by Павел Чернышев on 26.05.2021.
+//  Created by Pavel Chernyshev on 26.05.2021.
 //  Copyright © 2021 Ascensio System SIA. All rights reserved.
 //
 

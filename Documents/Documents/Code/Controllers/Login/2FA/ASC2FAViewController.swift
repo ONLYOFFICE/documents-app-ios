@@ -15,7 +15,7 @@ class ASC2FAViewController: ASCBaseViewController {
 
     // MARK: - Properties
 
-    var options: [String: Any] = [:]
+    var request: OnlyofficeAuthRequest?
     var completeon: ASCSignInComplateHandler?
 
     @IBOutlet weak var pageControl: UIPageControl!
@@ -87,10 +87,10 @@ class ASC2FAViewController: ASCBaseViewController {
             for (index, identifier) in pagesIdentifiers.enumerated() {
                 if let page = storyboard?.instantiateViewController(withIdentifier: identifier) {
                     if let pageVC = page as? ASC2FAPageController {
-                        pageVC.secret = options["tfaKey"] as? String
-                        pageVC.options = options
+                        pageVC.secret = request?.tfaKey
+                        pageVC.request = request
                     } else if let codeVC = page as? ASC2FACodeViewController {
-                        codeVC.options = options
+                        codeVC.request = request
                         codeVC.completeon = completeon
                     }
                     page.view.tag = index

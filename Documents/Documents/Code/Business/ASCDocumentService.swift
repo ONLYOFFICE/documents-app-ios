@@ -185,7 +185,10 @@ class ASCDocumentService {
     func convertationCloud(_ file: ASCFile, fromFormat: String, toFormat: String, handler: ASCDocumentServiceHandler?) {
         var cancel = false
         
-        guard let _ = ASCOnlyOfficeApi.shared.baseUrl, let viewUrl = file.viewUrl else {
+        guard
+            OnlyofficeApiClient.shared.active,
+            let viewUrl = file.viewUrl
+        else {
             processHandler?(.end, 0, nil, nil, &cancel)
             return
         }
@@ -205,7 +208,7 @@ class ASCDocumentService {
             return (destinationUrl, [.removePreviousFile, .createIntermediateDirectories])
         }
 
-        if let downloadUrl = ASCOnlyOfficeApi.absoluteUrl(from: URL(string: viewUrl)) {
+        if let downloadUrl = OnlyofficeApiClient.absoluteUrl(from: URL(string: viewUrl)) {
             let request = AF.download(downloadUrl, to: destination)
             
             request

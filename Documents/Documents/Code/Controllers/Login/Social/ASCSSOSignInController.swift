@@ -86,7 +86,11 @@ class ASCSSOSignInController: UIViewController {
 
 extension ASCSSOSignInController: WKNavigationDelegate {
 
-    func webView(_ webView: WKWebView, decidePolicyFor navigationAction: WKNavigationAction, decisionHandler: @escaping (WKNavigationActionPolicy) -> Void) {
+    func webView(
+        _ webView: WKWebView,
+        decidePolicyFor navigationAction: WKNavigationAction,
+        decisionHandler: @escaping (WKNavigationActionPolicy) -> Void)
+    {
         log.info("webview url = \(navigationAction.request)")
         
         guard
@@ -119,12 +123,19 @@ extension ASCSSOSignInController: WKNavigationDelegate {
         decisionHandler(.allow)
     }
 
-    func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
+    func webView(
+        _ webView: WKWebView,
+        didFinish navigation: WKNavigation!)
+    {
         activityIndicator?.stopAnimating()
         activityIndicator?.isHidden = true
     }
     
-    func webView(_ webView: WKWebView, didFail navigation: WKNavigation!, withError error: Error) {
+    func webView(
+        _ webView: WKWebView,
+        didFail navigation: WKNavigation!,
+        withError error: Error)
+    {
         log.error(error)
         
         let alertController = UIAlertController(
@@ -134,10 +145,30 @@ extension ASCSSOSignInController: WKNavigationDelegate {
             tintColor: nil
         )
         
-        alertController.addAction(UIAlertAction(title: ASCLocalization.Common.ok, style: .default, handler: { [weak self] action in
-            self?.dismiss(animated: true, completion: nil)
-        }))
+        alertController.addAction(
+            UIAlertAction(
+                title: ASCLocalization.Common.ok,
+                style: .default,
+                handler: { [weak self] action in
+                    self?.dismiss(animated: true, completion: nil)
+                }
+            )
+        )
         
         present(alertController, animated: true, completion: nil)
+    }
+    
+    func webView(
+        _ webView: WKWebView,
+        didReceive challenge: URLAuthenticationChallenge,
+        completionHandler: @escaping (URLSession.AuthChallengeDisposition, URLCredential?) -> Void)
+    {
+        guard let serverTrust = challenge.protectionSpace.serverTrust else {
+            completionHandler(.cancelAuthenticationChallenge, nil)
+            return
+        }
+        let exceptions = SecTrustCopyExceptions(serverTrust)
+        SecTrustSetExceptions(serverTrust, exceptions)
+        completionHandler(.useCredential, URLCredential(trust: serverTrust));
     }
 }

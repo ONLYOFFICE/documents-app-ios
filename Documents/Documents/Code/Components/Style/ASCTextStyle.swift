@@ -19,10 +19,12 @@ enum ASCTextStyle {
 
     case body
     case bodyWhite
+    case semibodyWhite
     
     case subhead
     case subheadWhite
     case subheadBold
+    case placeholderRegular
 
 
     // MARK: - signature
@@ -43,6 +45,9 @@ enum ASCTextStyle {
             
         case .bodyWhite:
             return (UIFont.preferredFont(forTextStyle: .body), .white, 1)
+        
+        case .semibodyWhite:
+            return (UIFont.preferredFont(forTextStyle: .body).with(weight: .semibold), .white, 1)
             
             
             
@@ -78,6 +83,13 @@ enum ASCTextStyle {
                 return (UIFont.systemFont(ofSize: 34).bold(), .black, 1)
             }
             
+            
+        case .placeholderRegular:
+            if #available(iOS 13.0, *) {
+                return (UIFont.preferredFont(forTextStyle: .footnote), .placeholderText, 1)
+            } else {
+                return (UIFont.preferredFont(forTextStyle: .footnote), .lightGray, 1)
+            }
             
         // MARK: - signature
         

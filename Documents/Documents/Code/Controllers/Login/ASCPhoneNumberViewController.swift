@@ -21,7 +21,7 @@ class ASCPhoneNumberViewController: ASCBaseViewController {
     @IBOutlet weak var codeField: UITextField!
     @IBOutlet weak var numberField: PhoneNumberTextField!
 
-    var options: [String: Any] = [:]
+    var request: OnlyofficeAuthRequest?
     var completeon: ASCSignInComplateHandler?
 
     private let phoneNumberKit = PhoneNumberKit()
@@ -82,6 +82,8 @@ class ASCPhoneNumberViewController: ASCBaseViewController {
     // MARK: - Actions
     
     @IBAction func onDone(_ sender: UIBarButtonItem) {
+        guard let request = request else { return }
+        
         var isValidNumber = false
         var phoneNumber: PhoneNumber!
 
@@ -102,22 +104,22 @@ class ASCPhoneNumberViewController: ASCBaseViewController {
             let phoneNumberE164   = phoneNumberKit.format(phoneNumber, toType: .e164)
             let phoneNumberNormal = phoneNumberKit.format(phoneNumber, toType: .national)
             
-            options["phoneNoise"]  = phoneNumberNormal
-            options["mobilePhone"] = phoneNumberE164
+            request.phoneNoise  = phoneNumberNormal
+            request.mobilePhone = phoneNumberE164
             
             let hud = MBProgressHUD.showTopMost()
             
-            ASCOnlyOfficeApi.post(ASCOnlyOfficeApi.apiAuthenticationPhone, parameters: options) { [weak self] (results, error, response) in
+            OnlyofficeApiClient.request(OnlyofficeAPI.Endpoints.Auth.sendPhone, request.toJSON()) { [weak self] response, error in
                 hud?.hide(animated: true)
 
                 guard let strongSelf = self else { return }
 
-                if error != nil {
-                    UIAlertController.showError(in: strongSelf, message: ASCOnlyOfficeApi.errorMessage(by: response!))
-                    log.error(error!)
+                if let error = error {
+                    UIAlertController.showError(in: strongSelf, message: error.localizedDescription)
+                    log.error(error)
                 } else {
                     if let navigationController = strongSelf.navigationController {
-                        ASCSignInController.shared.presentSmsCode(in: navigationController, options: strongSelf.options, completion: strongSelf.completeon)
+                        ASCSignInController.shared.presentSmsCode(in: navigationController, request: request, completion: strongSelf.completeon)
                     }
                 }
             }

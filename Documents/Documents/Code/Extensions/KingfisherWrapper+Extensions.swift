@@ -42,9 +42,9 @@ extension KingfisherWrapper where Base: KFCrossPlatformImageView {
         var localOptions = options ?? [.transition(.fade(0.3))]
         
         if provider is ASCOnlyofficeProvider {
-            if let baseUrl = ASCOnlyOfficeApi.shared.baseUrl,
+            if  let baseUrl = OnlyofficeApiClient.shared.baseURL,
                 let resource = resource,
-                URL(string: baseUrl)?.host == resource.downloadURL.host
+                baseUrl.host == resource.downloadURL.host
             {
                 localOptions.append(.requestModifier(modifier))
             } else {

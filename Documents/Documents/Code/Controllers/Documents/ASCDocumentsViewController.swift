@@ -980,7 +980,11 @@ class ASCDocumentsViewController: ASCBaseTableViewController, UIGestureRecognize
                 strongSelf.highlight(entity: strongSelf.highlightEntity)
                 
                 // Check network
-                if !success && strongSelf.folder?.rootFolderType != .deviceDocuments && !ASCNetworkReachability.shared.isReachable && ASCOnlyOfficeApi.shared.token != nil {
+                if !success &&
+                    strongSelf.folder?.rootFolderType != .deviceDocuments &&
+                    !ASCNetworkReachability.shared.isReachable &&
+                    OnlyofficeApiClient.shared.token != nil
+                {
                     ASCBanner.shared.showError(
                         title: NSLocalizedString("No network", comment: ""),
                         message: NSLocalizedString("Check your internet connection", comment: "")
@@ -1671,7 +1675,7 @@ class ASCDocumentsViewController: ASCBaseTableViewController, UIGestureRecognize
                     image: UIImage(systemName: "person.2"))
                 { [unowned self] action in
                     cell.hideSwipe(animated: true)
-                    presentShareController(in: self, entity: file)
+                    navigator.navigate(to: .shareSettings(entity: file))
                 }
             )
         }
@@ -1778,7 +1782,7 @@ class ASCDocumentsViewController: ASCBaseTableViewController, UIGestureRecognize
                     image: UIImage(systemName: "person.2"))
                 { [unowned self] action in
                     cell.hideSwipe(animated: true)
-                    presentShareController(in: self, entity: folder)
+                    navigator.navigate(to: .shareSettings(entity: folder))
                 }
             )
         }
@@ -2082,7 +2086,7 @@ class ASCDocumentsViewController: ASCBaseTableViewController, UIGestureRecognize
                     style: .default,
                     handler: { [unowned self] action in
                         cell.hideSwipe(animated: true)
-                        presentShareController(in: self, entity: file)
+                        navigator.navigate(to: .shareSettings(entity: file))
                 })
             )
         }
@@ -2198,7 +2202,7 @@ class ASCDocumentsViewController: ASCBaseTableViewController, UIGestureRecognize
                     style: .default,
                     handler: { [unowned self] action in
                         cell.hideSwipe(animated: true)
-                        presentShareController(in: self, entity: folder)
+                        navigator.navigate(to: .shareSettings(entity: folder))
                 })
             )
         }
@@ -2293,20 +2297,6 @@ class ASCDocumentsViewController: ASCBaseTableViewController, UIGestureRecognize
 
     private func isTrash(_ folder: ASCFolder?) -> Bool {
         return (folder?.rootFolderType == .onlyofficeTrash || folder?.rootFolderType == .deviceTrash)
-    }
-    
-    private func presentShareController(in parent: UIViewController, entity: ASCEntity) {
-        let sharedVC = ASCShareViewController.instantiate(from: Storyboard.share)
-        let sharedNavigationVC = ASCBaseNavigationController(rootASCViewController: sharedVC)
-
-        sharedVC.entity = entity
-
-        if UIDevice.pad {
-            sharedNavigationVC.modalPresentationStyle = .formSheet
-        }
-
-        sharedNavigationVC.view.tintColor = self.view.tintColor
-        parent.present(sharedNavigationVC, animated: true, completion: nil)
     }
     
     private func configureSwipeGesture() {
@@ -2811,7 +2801,7 @@ class ASCDocumentsViewController: ASCBaseTableViewController, UIGestureRecognize
             
             let destinationPath = Path.userTemporary + file.title
             
-            provider?.download(file.viewUrl ?? "", to: URL(fileURLWithPath:destinationPath.rawValue)) { [weak self] progress, result, error, response in
+            provider?.download(file.viewUrl ?? "", to: URL(fileURLWithPath:destinationPath.rawValue)) { [weak self] result, progress, error in
                 openingAlert.progress = Float(progress)
                 
                 if forceCancel {
@@ -3294,7 +3284,7 @@ class ASCDocumentsViewController: ASCBaseTableViewController, UIGestureRecognize
                     hud?.hide(animated: false, afterDelay: 1.3)
                     hud = nil
                     
-                    let deletedItems = items.filter { provider.allowDelete(entity: $0) || ($0 as? ASCFolder)?.isThirdParty ?? false }
+                    let deletedItems = items.filter { provider.allowDelete(entity: $0) || (($0 as? ASCFolder)?.isThirdParty ?? false) }
                     completion?(deletedItems)
                 }
             }
@@ -3563,11 +3553,8 @@ extension ASCDocumentsViewController: UISearchControllerDelegate {
     }
 
     func didDismissSearchController(_ searchController: UISearchController) {
-        ASCOnlyOfficeApi.cancelAllTasks()
-
-//        provider?.page = 0
-//        total = 0
-//        tableData.removeAll()
+        OnlyofficeApiClient.shared.cancelAll()
+        
         provider?.reset()
         tableView.reloadData()
 
@@ -3781,17 +3768,6 @@ extension ASCDocumentsViewController: ASCProviderDelegate {
         // TODO: Or search diff and do it animated
         
         showEmptyView(total < 1)
-    }
-    
-    func presentShareController(provider: ASCFileProviderProtocol, entity: ASCEntity) {
-        if let keyWindow = UIApplication.shared.windows.filter({ $0.isKeyWindow }).first {
-            if var topController = keyWindow.rootViewController {
-                while let presentedViewController = topController.presentedViewController {
-                    topController = presentedViewController
-                }
-                presentShareController(in: topController, entity: entity)
-            }
-        }
     }
 }
 

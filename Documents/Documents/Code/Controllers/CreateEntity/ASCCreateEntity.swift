@@ -28,7 +28,7 @@ class ASCCreateEntity: NSObject, UIImagePickerControllerDelegate, UINavigationCo
 
         do {
             createEntityView = try SwiftMessages.viewFromNib()
-            createEntityView.allowConnectClouds = (provider as? ASCOnlyofficeProvider)?.api.active ?? false
+            createEntityView.allowConnectClouds = (provider as? ASCOnlyofficeProvider)?.apiClient.active ?? false
         } catch {
             log.error("File: \(#file), Function: \(#function), Line: \(#line) - Could not load xib of ASCCreateEntityView")
             return
@@ -333,7 +333,7 @@ class ASCCreateEntityDocumentDelegate: NSObject, UIDocumentPickerDelegate {
 
                                 if forceCancel {
                                     cancel = forceCancel
-                                    ASCOnlyOfficeApi.cancelAllTasks()
+                                    OnlyofficeApiClient.shared.cancelAll()
                                     return
                                 }
                             } else if status == .error {
@@ -420,7 +420,7 @@ class ASCCreateEntityImageDelegate: NSObject, UIImagePickerControllerDelegate, U
 
                         if forceCancel {
                             cancel = forceCancel
-                            ASCOnlyOfficeApi.cancelAllTasks()
+                            OnlyofficeApiClient.shared.cancelAll()
                             return
                         }
                     } else if status == .error {

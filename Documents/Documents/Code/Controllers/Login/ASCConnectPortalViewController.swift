@@ -120,7 +120,7 @@ class ASCConnectPortalViewController: ASCBaseViewController {
         return nil
     }
     
-    private func validatePortal(validation: @escaping (Bool, String?, [String: Any]?)->()) {
+    private func validatePortal(validation: @escaping (Bool, String?, OnlyofficeCapabilities?)->()) {
         guard let portalUrl = addressField?.text?.trimmed else {
             validation(false, NSLocalizedString("Address is empty", comment: ""), nil)
             return
@@ -131,7 +131,7 @@ class ASCConnectPortalViewController: ASCBaseViewController {
             return
         }
 
-        let api = ASCOnlyOfficeApi.shared
+        let api = OnlyofficeApiClient.shared
 
         // Cleanup portal capabilities
         api.capabilities = nil
@@ -142,7 +142,9 @@ class ASCConnectPortalViewController: ASCBaseViewController {
             useProtocols += ["https://", "http://"]
         }
         
-        func checkPortal() {
+        var checkPortal: (() -> Void)?
+        
+        checkPortal = {
             var baseUrl = portalUrl
             
             if let portalProtocol = useProtocols.first {
@@ -151,49 +153,45 @@ class ASCConnectPortalViewController: ASCBaseViewController {
             }
             
             // Setup API manager
-            api.baseUrl = baseUrl
+            api.baseURL = URL(string: baseUrl)
             
-            ASCOnlyOfficeApi.get(ASCOnlyOfficeApi.apiCapabilities) { [weak self] results, error, response in
+            OnlyofficeApiClient.request(OnlyofficeAPI.Endpoints.Settings.capabilities) { [weak self] response, error in
                 guard let strongSelf = self else { return }
                 
-                if let results = results as? [String: Any] {
+                if let capabilities = response?.result {
                     // Setup portal capabilities
-                    api.capabilities = ASCPortalCapabilities(JSON: results)
-
-                    validation(true, nil, results)
-                } else {
-                    var errorInfo: [String: Any]?
-                    var errorMessage = NSLocalizedString("Failed to check portal availability.", comment: "")
-
-                    if let response = response {
-                        errorInfo = ASCOnlyOfficeApi.errorInfo(by: response)
-                        errorMessage = ASCOnlyOfficeApi.errorMessage(by: response)
-                    }
-
-                    log.error(errorMessage)
+                    api.capabilities = capabilities
                     
-                    if errorInfo == nil && useProtocols.count > 0 {
+                    validation(true, nil, capabilities)
+                } else {
+                    let errorMessage = NSLocalizedString("Failed to check portal availability.", comment: "")
+                    
+                    if let error = error {
+                        log.error(error)
+                    }
+                        
+                    if useProtocols.count > 0 {
                         let alertController = UIAlertController.alert(
                             ASCLocalization.Common.error,
                             message: String(format: "%@ %@", errorMessage, NSLocalizedString("Try to connect via another protocol?", comment: "")),
                             actions: [])
                             .okable() { _ in
-                                checkPortal()
+                                checkPortal?()
                             }
                             .cancelable() { _ in
                                 validation(false, nil, nil)
-                        }
+                            }
                         
                         strongSelf.present(alertController, animated: true, completion: nil)
                     } else {
-                        api.baseUrl = nil
-                        validation(true, NSLocalizedString("Failed to check portal availability.", comment: ""), nil)
+                        api.baseURL = nil
+                        validation(true, errorMessage, nil)
                     }
                 }
             }
         }
         
-        checkPortal()
+        checkPortal?()
     }
     
     private func showSignIn() {

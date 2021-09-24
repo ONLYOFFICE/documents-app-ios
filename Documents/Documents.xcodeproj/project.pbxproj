@@ -1521,7 +1521,7 @@
 			path = Models;
 			sourceTree = "<group>";
 		};
-		1D4C6752268A0574000F2284 /* SharingOprions */ = {
+		1D4C6752268A0574000F2284 /* SharingOptions */ = {
 			isa = PBXGroup;
 			children = (
 				1D9B80822673F5B20020B5ED /* Protocols */,
@@ -1536,7 +1536,7 @@
 				1D4C6770268A2573000F2284 /* ASCSharingOptionsRouter.swift */,
 				1D4C6771268A2573000F2284 /* ASCSharingOptionsModels.swift */,
 			);
-			path = SharingOprions;
+			path = SharingOptions;
 			sourceTree = "<group>";
 		};
 		1D5DB04526584DBC006B4757 /* Business */ = {
@@ -1706,7 +1706,7 @@
 				1D71107526A5A6BB00E00421 /* Workers */,
 				1D4C674826850585000F2284 /* Models */,
 				1D4C674726850523000F2284 /* Cells */,
-				1D4C6752268A0574000F2284 /* SharingOprions */,
+				1D4C6752268A0574000F2284 /* SharingOptions */,
 				1DAAFF3E2678DF9B00023F39 /* AddRightHolders */,
 				1DAAFF3A267898BB00023F39 /* Access */,
 				1D4C6744268500C2000F2284 /* VerifyRightHolders */,
@@ -2209,10 +2209,10 @@
 		FC68525026837B7300D830EC /* Onlyoffice */ = {
 			isa = PBXGroup;
 			children = (
-				FC68525126837B7300D830EC /* KingfisherWrapper+Onlyoffice.swift */,
 				FC68525226837B7300D830EC /* Enum */,
-				FC68525426837B7300D830EC /* OnlyofficeApiClient.swift */,
 				FC68525526837B7300D830EC /* Model */,
+				FC68525126837B7300D830EC /* KingfisherWrapper+Onlyoffice.swift */,
+				FC68525426837B7300D830EC /* OnlyofficeApiClient.swift */,
 				FC68526026837B7300D830EC /* OnlyofficeEndpoints.swift */,
 				FC68526126837B7300D830EC /* OnlyofficeServerError.swift */,
 			);

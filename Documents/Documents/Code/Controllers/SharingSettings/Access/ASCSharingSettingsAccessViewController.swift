@@ -54,7 +54,9 @@ class ASCSharingSettingsAccessViewController: ASCBaseTableViewController {
     
     private func configureTableView() {
         tableView.tableFooterView = UIView()
-        tableView.backgroundColor = Asset.Colors.tableBackground.color
+        if #available(iOS 15.0, *) {} else {
+            tableView.backgroundColor = Asset.Colors.tableBackground.color
+        }
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: reuseCellId)
     }
 }

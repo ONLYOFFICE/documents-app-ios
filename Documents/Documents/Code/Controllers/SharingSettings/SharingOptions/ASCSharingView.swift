@@ -67,7 +67,9 @@ class ASCSharingView {
     
     public func configureTableView(_ tableView: UITableView) {
         tableView.tableFooterView = UIView()
-        tableView.backgroundColor = Asset.Colors.tableBackground.color
+        if #available(iOS 15.0, *) {} else {
+            tableView.backgroundColor = Asset.Colors.tableBackground.color
+        }
         tableView.sectionFooterHeight = 0
         
         tableView.register(ASCSwitchTableViewCell.self,

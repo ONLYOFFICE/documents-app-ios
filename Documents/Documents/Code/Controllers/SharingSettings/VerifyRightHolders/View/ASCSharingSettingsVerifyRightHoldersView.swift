@@ -47,7 +47,9 @@ class ASCSharingSettingsVerifyRightHoldersView {
     
     private func configureTableView() {
         tableView.tableFooterView = UIView()
-        tableView.backgroundColor = Asset.Colors.tableBackground.color
+        if #available(iOS 15.0, *) {} else {
+            tableView.backgroundColor = Asset.Colors.tableBackground.color
+        }
         tableView.sectionFooterHeight = 0
         tableView.sectionHeaderHeight = 0
         tableView.tableHeaderView = UIView()

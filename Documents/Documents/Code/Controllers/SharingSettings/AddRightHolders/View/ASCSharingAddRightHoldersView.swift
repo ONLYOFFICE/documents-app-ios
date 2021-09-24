@@ -325,7 +325,9 @@ extension ASCSharingAddRightHoldersView {
     private func configureGeneralsParams(forTableViews tableViews: [UITableView]) {
         for tableView in tableViews {
             tableView.tableFooterView = UIView()
-            tableView.backgroundColor = Asset.Colors.tableBackground.color
+            if #available(iOS 15.0, *) {} else {
+                tableView.backgroundColor = Asset.Colors.tableBackground.color
+            }
             tableView.sectionFooterHeight = 0
             tableView.setEditing(true, animated: false)
             tableView.allowsSelectionDuringEditing = true

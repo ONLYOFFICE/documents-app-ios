@@ -87,8 +87,9 @@ class ASCCreatePortalViewController: ASCBaseViewController {
         phoneTitleLabel?.font = portalField?.titleFont
         phoneTitleLabel?.textColor = portalField?.titleColor
         
+        countryButton?.styleType = .gray
+        
         if let region = Locale.current.regionCode {
-            countryButton?.styleType = .gray
             countryButton?.setAttributedTitle(flagTitleButton(by: region), for: .normal)
 
             if let code = phoneNumberKit.countryCode(for: region) {

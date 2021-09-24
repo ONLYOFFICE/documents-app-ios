@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="K4J-kB-2V5">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19162" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="K4J-kB-2V5">
     <device id="retina5_5" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19144"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -280,7 +280,7 @@ web office</string>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="qKc-e7-uTl">
-                                <rect key="frame" x="78.333333333333343" y="90" width="257.66666666666663" height="61"/>
+                                <rect key="frame" x="78" y="90" width="258" height="61"/>
                                 <string key="text">Choose a password and
 start using your office</string>
                                 <fontDescription key="fontDescription" style="UICTFontTextStyleTitle1"/>
@@ -410,20 +410,23 @@ Terms of service</string>
         </scene>
     </scenes>
     <designables>
+        <designable name="Gg7-cC-egl">
+            <size key="intrinsicContentSize" width="280" height="39.220703125"/>
+        </designable>
         <designable name="TP3-h7-Hq1">
-            <size key="intrinsicContentSize" width="98" height="34"/>
+            <size key="intrinsicContentSize" width="280" height="39.220703125"/>
         </designable>
         <designable name="WWd-Za-CPd">
-            <size key="intrinsicContentSize" width="119.33333333333333" height="34"/>
+            <size key="intrinsicContentSize" width="280" height="39.220703125"/>
         </designable>
         <designable name="Zgx-q8-jRP">
-            <size key="intrinsicContentSize" width="139.33333333333334" height="34"/>
+            <size key="intrinsicContentSize" width="280" height="39.220703125"/>
         </designable>
         <designable name="iLP-xJ-pU3">
-            <size key="intrinsicContentSize" width="97" height="34"/>
+            <size key="intrinsicContentSize" width="280" height="39.220703125"/>
         </designable>
         <designable name="to9-RR-YBV">
-            <size key="intrinsicContentSize" width="90.333333333333329" height="34"/>
+            <size key="intrinsicContentSize" width="280" height="39.220703125"/>
         </designable>
     </designables>
     <resources>

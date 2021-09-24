@@ -26,7 +26,6 @@ class ASCCountryCodeViewController: ASCBaseTableViewController {
         $0.searchResultsUpdater = self
         $0.hidesNavigationBarDuringPresentation = false
         $0.dimsBackgroundDuringPresentation = false
-        $0.searchBar.searchBarStyle = .minimal
 
         if #available(iOS 11.0, *) {
             navigationItem.searchController = $0
@@ -61,7 +60,6 @@ class ASCCountryCodeViewController: ASCBaseTableViewController {
         fillData()
         
         navigationItem.searchController = searchController
-        searchController.searchBar.backgroundColor = view.backgroundColor
     }
 
     override func viewWillAppear(_ animated: Bool) {

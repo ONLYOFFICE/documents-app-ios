@@ -26,6 +26,10 @@ class ASCLoadedViewControllerFinderProtocolTests: XCTestCase {
         let vc = ASCRootViewController()
         
         UIApplication.shared.windows.first?.rootViewController = vc
+        let window = UIWindow(frame: UIScreen.main.bounds)
+            window.rootViewController = vc
+            window.makeKeyAndVisible()
+        
     
         let gettedRootVC = sut.getRootViewController()
         

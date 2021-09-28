@@ -24,7 +24,7 @@ class ASCOneDriveProvider: ASCSortableFileProviderProtocol {
     var total: Int = 0
     
     private var apiClient: OnedriveApiClient?
-    private var provider: ASCOneDriveFileProvider?
+    public var provider: ASCOneDriveFileProvider?
     
     fileprivate lazy var providerOperationDelegate = ASCOneDriveProviderDelegate()
     

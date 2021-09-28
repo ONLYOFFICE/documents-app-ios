@@ -25,11 +25,16 @@ class ASCLoadedViewControllerByProviderAndFolderFinderTests: XCTestCase {
         tabbar.addChild(UIViewController())
         
         UIApplication.shared.windows.first?.rootViewController = tabbar
+        let window = UIWindow(frame: UIScreen.main.bounds)
+            window.rootViewController = tabbar
+            window.makeKeyAndVisible()
+        
     }
 
     override func tearDownWithError() throws {
         sut = nil
         tabbar = nil
+        UIApplication.shared.windows.first?.rootViewController = nil
     }
     
     func testDoNotSetDocumentVCAndWhenTryToFindThenNil() {
@@ -58,7 +63,11 @@ class ASCLoadedViewControllerByProviderAndFolderFinderTests: XCTestCase {
         
         let documentsViewControllers = sut.getAllASCDocumentsNavigationControllers()
         
-        XCTAssertEqual(documentsViewControllers.count, 3)
+        guard documentsViewControllers.count == 3 else {
+            XCTFail("documentsViewControllers.count \(documentsViewControllers.count) does not equal 3")
+            return
+        }
+        
         XCTAssertTrue(documentsViewControllers[0] === fistDocumentsNVC)
         XCTAssertTrue(documentsViewControllers[1] === secondDocumentsNVC)
         XCTAssertTrue(documentsViewControllers[2] === thirdDocumentsNVC)

@@ -206,6 +206,24 @@ class ASCDropboxProvider: ASCFileProviderProtocol & ASCSortableFileProviderProto
         })
     }
     
+    func isReachable(with info: [String : Any], complation: @escaping ((Bool, ASCFileProviderProtocol?) -> Void)) {
+        guard
+            let token = info["token"] as? String
+        else {
+            complation(false, nil)
+            return
+        }
+        
+        let credential = URLCredential(user: ASCConstants.Clouds.Dropbox.clientId, password: token, persistence: .forSession)
+        let dropboxCloudProvider = ASCDropboxProvider(credential: credential)
+        
+        dropboxCloudProvider.isReachable { success, error in
+            DispatchQueue.main.async(execute: {
+                complation(success, success ? dropboxCloudProvider : nil)
+            })
+        }
+    }
+    
     /// Fetch a user information
     ///
     /// - Parameter completeon: a closure with result of user or error

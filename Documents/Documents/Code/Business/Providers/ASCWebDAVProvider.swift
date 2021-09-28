@@ -229,6 +229,36 @@ class ASCWebDAVProvider: ASCFileProviderProtocol & ASCSortableFileProviderProtoc
         })
     }
 
+    func isReachable(
+        with info: [String: Any],
+        complation: @escaping ((_ success: Bool, _ provider: ASCFileProviderProtocol?) -> Void))
+    {
+        guard
+            let portal = info["url"] as? String,
+            let login = info["login"] as? String,
+            let password = info["password"] as? String,
+            let portalUrl = URL(string: portal)
+        else {
+            complation(false, nil)
+            return
+        }
+        
+        let credential = URLCredential(user: login, password: password, persistence: .permanent)
+        let webDavProvider = ASCWebDAVProvider(baseURL: portalUrl, credential: credential)
+        let rootFolder: ASCFolder = {
+            $0.title = NSLocalizedString("All Files", comment: "Category title")
+            $0.rootFolderType = .webdavAll
+            $0.id = "/"
+            return $0
+        }(ASCFolder())
+        
+        webDavProvider.fetch(for: rootFolder, parameters: [:]) { provider, folder, success, error in
+            DispatchQueue.main.async(execute: {
+                complation(success, success ? webDavProvider : nil)
+            })
+        }
+    }
+    
     /// Sort records
     ///
     /// - Parameters:

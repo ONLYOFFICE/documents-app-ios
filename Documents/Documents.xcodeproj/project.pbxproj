@@ -624,6 +624,8 @@
 		FCD2DD6D2702F70400D31BD5 /* ManagedAppConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCD2DD6B2702F70400D31BD5 /* ManagedAppConfig.swift */; };
 		FCD2DD6E2702F70400D31BD5 /* ManagedAppConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCD2DD6B2702F70400D31BD5 /* ManagedAppConfig.swift */; };
 		FCD2DD71270302B500D31BD5 /* ManagedAppConfigTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCD2DD70270302B500D31BD5 /* ManagedAppConfigTest.swift */; };
+		FCD2DD7327031DF400D31BD5 /* ASCCloudsViewController+ManagedAppConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCD2DD7227031DF400D31BD5 /* ASCCloudsViewController+ManagedAppConfig.swift */; };
+		FCD2DD7427031DF400D31BD5 /* ASCCloudsViewController+ManagedAppConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCD2DD7227031DF400D31BD5 /* ASCCloudsViewController+ManagedAppConfig.swift */; };
 		FCD317522642EA8700A08299 /* NSAttributedString+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCD317512642EA8700A08299 /* NSAttributedString+Extensions.swift */; };
 		FCD317532642EA8700A08299 /* NSAttributedString+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCD317512642EA8700A08299 /* NSAttributedString+Extensions.swift */; };
 		FCD317562642ECB700A08299 /* UIFont+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCD317552642ECB700A08299 /* UIFont+Extensions.swift */; };
@@ -1094,6 +1096,7 @@
 		FCD1DA741FAC764D00F67625 /* cs */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = cs; path = cs.lproj/PasscodeLock.strings; sourceTree = "<group>"; };
 		FCD2DD6B2702F70400D31BD5 /* ManagedAppConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManagedAppConfig.swift; sourceTree = "<group>"; };
 		FCD2DD70270302B500D31BD5 /* ManagedAppConfigTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManagedAppConfigTest.swift; sourceTree = "<group>"; };
+		FCD2DD7227031DF400D31BD5 /* ASCCloudsViewController+ManagedAppConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ASCCloudsViewController+ManagedAppConfig.swift"; sourceTree = "<group>"; };
 		FCD317512642EA8700A08299 /* NSAttributedString+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSAttributedString+Extensions.swift"; sourceTree = "<group>"; };
 		FCD317552642ECB700A08299 /* UIFont+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIFont+Extensions.swift"; sourceTree = "<group>"; };
 		FCD33B5821C9195000D52DAF /* ASCDocumentsNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCDocumentsNavigationController.swift; sourceTree = "<group>"; };
@@ -2136,6 +2139,7 @@
 				FC68399C21B80AB900251CEA /* Views */,
 				FC68398F21B7E01E00251CEA /* ASCCloudsNavigationController.swift */,
 				FC68399921B808AC00251CEA /* ASCCloudsViewController.swift */,
+				FCD2DD7227031DF400D31BD5 /* ASCCloudsViewController+ManagedAppConfig.swift */,
 				FC8667D521C799160020D797 /* ASCCloudsSplitViewController.swift */,
 				FCD33B5A21C93C2B00D52DAF /* ASCCloudsEmptyViewController.swift */,
 			);
@@ -3562,6 +3566,7 @@
 				FCEF855826C405FB00173DDF /* ASCBaseTabBarController.swift in Sources */,
 				FC36D2B925B5C32200412DDB /* UIStoryboard+Extensions.swift in Sources */,
 				1D49E2BD26A9BE190024AC7A /* ASCSharingSettingsAccessProviderFactory.swift in Sources */,
+				FCD2DD7427031DF400D31BD5 /* ASCCloudsViewController+ManagedAppConfig.swift in Sources */,
 				FC36D2BA25B5C32200412DDB /* EnterPasscodeState.swift in Sources */,
 				FC36D2BB25B5C32200412DDB /* ASCFileManager.swift in Sources */,
 				1D49E29E26A9BD450024AC7A /* ASCSharingRightHolderTableViewCell.swift in Sources */,
@@ -3927,6 +3932,7 @@
 				FCEF855726C405FB00173DDF /* ASCBaseTabBarController.swift in Sources */,
 				FCFB36071EDF0AB00001597E /* ASCBanner.swift in Sources */,
 				FCEF9D391ED2D34400627BA5 /* ASCPasscodeLockSplashView.swift in Sources */,
+				FCD2DD7327031DF400D31BD5 /* ASCCloudsViewController+ManagedAppConfig.swift in Sources */,
 				FCD04FCA1E7FDECF008641CD /* UIAlertController+SwiftAlertController.swift in Sources */,
 				FCEA68232264733A0055926A /* ASC2FAPageController.swift in Sources */,
 				FCED8F4E23E8355500EC1DAC /* ASCFloatingLabelTextField.swift in Sources */,

@@ -99,6 +99,27 @@ class ASCOwnCloudProvider: ASCWebDAVProvider {
             }
         }
     }
+    
+    override func isReachable(with info: [String : Any], complation: @escaping ((Bool, ASCFileProviderProtocol?) -> Void)) {
+        guard
+            let portal = info["url"] as? String,
+            let login = info["login"] as? String,
+            let password = info["password"] as? String,
+            let portalUrl = URL(string: portal)
+            else {
+                complation(false, nil)
+                return
+        }
+
+        let credential = URLCredential(user: login, password: password, persistence: .permanent)
+        let ownCloudProvider = ASCOwnCloudProvider(baseURL: portalUrl, credential: credential)
+
+        ownCloudProvider.isReachable { success, error in
+            DispatchQueue.main.async(execute: {
+                complation(success, success ? ownCloudProvider : nil)
+            })
+        }
+    }
 
     /// Fetch an Array of 'ASCEntity's identifying the the directory entries via asynchronous completion handler.
     ///

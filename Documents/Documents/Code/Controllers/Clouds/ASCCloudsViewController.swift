@@ -81,6 +81,9 @@ class ASCCloudsViewController: UITableViewController {
         clearsSelectionOnViewWillAppear = UIDevice.phone
         loadData()
         updateLargeTitlesSize()
+        
+        ManagedAppConfig.shared.add(observer: self)
+        ManagedAppConfig.shared.triggerHooks()
     }
 
     override func viewWillAppear(_ animated: Bool) {

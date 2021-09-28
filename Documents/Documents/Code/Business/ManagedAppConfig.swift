@@ -41,6 +41,11 @@ final class ManagedAppConfig {
     
     @objc
     private func didChangeUserDefaults() {
+        triggerHooks()
+    }
+    
+    /// Force call hooks
+    func triggerHooks() {
         if let configuration = UserDefaults.standard.dictionary(forKey: configurationKey) {
             appConfigHooks.forEach { $0()?.onApp(config: configuration) }
         }
@@ -58,9 +63,23 @@ final class ManagedAppConfig {
         return appConfigAll[key] as? T
     }
     
-    /// Feedback information that can be queried over MDM.
+    /// Rewrite configuration value from the MDM server to an app.
+    /// - Returns: Key of configuration value from the MDM server
+    func setAppConfig(_ dictionary: [String : Any]?) {
+        guard let dictionary = dictionary else {
+            provider.removeObject(forKey: configurationKey)
+            return
+        }
+        provider.set(dictionary, forKey: configurationKey)
+    }
+    
+    /// Set feedback information that can be queried over MDM.
     /// - Parameter dictionary: New values for this feedback dictionary
-    func setFeedback(_ dictionary: [String : Any]) {
+    func setFeedback(_ dictionary: [String : Any]?) {
+        guard let dictionary = dictionary else {
+            provider.removeObject(forKey: feedbackKey)
+            return
+        }
         provider.set(dictionary, forKey: feedbackKey)
     }
 

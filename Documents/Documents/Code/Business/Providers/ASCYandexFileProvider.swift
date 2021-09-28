@@ -49,6 +49,31 @@ class ASCYandexFileProvider: ASCWebDAVProvider {
         
         return copy
     }
+    
+    override func isReachable(with info: [String : Any], complation: @escaping ((Bool, ASCFileProviderProtocol?) -> Void)) {
+        guard
+            let login = info["login"] as? String,
+            let password = info["password"] as? String
+        else {
+            complation(false, nil)
+            return
+        }
+
+        let credential = URLCredential(user: login, password: password, persistence: .permanent)
+        let yandexCloudProvider = ASCYandexFileProvider(credential: credential)
+        let rootFolder: ASCFolder = {
+            $0.title = NSLocalizedString("All Files", comment: "Category title")
+            $0.rootFolderType = .yandexAll
+            $0.id = "/"
+            return $0
+        }(ASCFolder())
+
+        yandexCloudProvider.fetch(for: rootFolder, parameters: [:]) { provider, folder, success, error in
+            DispatchQueue.main.async(execute: {
+                complation(success, success ? yandexCloudProvider : nil)
+            })
+        }
+    }
 
     override func deserialize(_ jsonString: String) {
         if let json = jsonString.toDictionary() {

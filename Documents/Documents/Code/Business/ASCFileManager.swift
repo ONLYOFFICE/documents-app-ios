@@ -46,26 +46,36 @@ class ASCFileManager {
 
     static func createProvider(by type: ASCFileProviderType) -> ASCFileProviderProtocol? {
         switch type {
-        case .googledrive:
-            return ASCGoogleDriveProvider()
-        case .dropbox:
-            return ASCDropboxProvider()
-        case .nextcloud:
-            return ASCNextCloudProvider()
-        case .owncloud:
-            return ASCOwnCloudProvider()
-        case .yandex:
-            return ASCYandexFileProvider()
-        case .webdav:
-            return ASCWebDAVProvider()
-        case .icloud:
-            return ASCiCloudProvider()
-        case .onedrive:
-            return ASCOneDriveProvider()
-        case .kdrive:
-            return ASCKdriveFileProvider()
-        default:
-            return nil
+        case .unknown: return nil
+        case .local: return ASCLocalProvider()
+        case .onlyoffice: return ASCOnlyofficeProvider()
+        case .webdav: return ASCWebDAVProvider()
+        case .nextcloud: return ASCNextCloudProvider()
+        case .owncloud: return ASCOwnCloudProvider()
+        case .yandex: return ASCYandexFileProvider()
+        case .dropbox: return ASCDropboxProvider()
+        case .googledrive: return ASCGoogleDriveProvider()
+        case .icloud: return ASCiCloudProvider()
+        case .onedrive: return ASCOneDriveProvider()
+        case .kdrive: return ASCKdriveFileProvider()
+        }
+    }
+    
+    static func createProvider(by folderType: ASCFolderProviderType) -> ASCFileProviderProtocol? {
+        switch folderType {
+        case .boxNet: return nil
+        case .dropBox:return ASCDropboxProvider()
+        case .google: return ASCGoogleDriveProvider()
+        case .googleDrive: return ASCGoogleDriveProvider()
+        case .sharePoint: return nil
+        case .skyDrive: return nil
+        case .oneDrive: return ASCOneDriveProvider()
+        case .webDav: return ASCWebDAVProvider()
+        case .yandex: return ASCYandexFileProvider()
+        case .nextCloud: return ASCNextCloudProvider()
+        case .ownCloud: return ASCOwnCloudProvider()
+        case .iCloud: return ASCiCloudProvider()
+        case .kDrive: return ASCKdriveFileProvider()
         }
     }
 
@@ -98,43 +108,16 @@ class ASCFileManager {
             cloudProviders = []
 
             serializedProviders.forEach { serializedProvider in
-                if let jsonProvider = serializedProvider.toDictionary() {
-                    let type = ASCFileProviderType(rawValue: jsonProvider["type"] as? String ?? "")
-
-                    if type == .onlyoffice {
-                        let provider = ASCOnlyofficeProvider()
-                        provider.deserialize(serializedProvider)
-                        onlyofficeProvider = provider
+                if let jsonProvider = serializedProvider.toDictionary(),
+                   let type = ASCFileProviderType(rawValue: jsonProvider["type"] as? String ?? ""),
+                   let provider = ASCFileManager.createProvider(by: type)
+                {
+                    provider.deserialize(serializedProvider)
+                    
+                    if let onlyofficeProvider = provider as? ASCOnlyofficeProvider {
+                        self.onlyofficeProvider = onlyofficeProvider
                     } else {
-                        var provider: ASCFileProviderProtocol? = nil
-
-                        switch type {
-                        case .some(.googledrive):
-                            provider = ASCGoogleDriveProvider()
-                        case .some(.dropbox):
-                            provider = ASCDropboxProvider()
-                        case .some(.nextcloud):
-                            provider = ASCNextCloudProvider()
-                        case .some(.owncloud):
-                            provider = ASCOwnCloudProvider()
-                        case .some(.yandex):
-                            provider = ASCYandexFileProvider()
-                        case .some(.webdav):
-                            provider = ASCWebDAVProvider()
-                        case .some(.icloud):
-                            provider = ASCiCloudProvider()
-                        case .some(.onedrive):
-                            provider = ASCOneDriveProvider()
-                        case .some(.kdrive):
-                            provider = ASCKdriveFileProvider()
-                        default:
-                            break
-                        }
-
-                        if let provider = provider {
-                            provider.deserialize(serializedProvider)
-                            cloudProviders.append(provider)
-                        }
+                        cloudProviders.append(provider)
                     }
                 }
             }

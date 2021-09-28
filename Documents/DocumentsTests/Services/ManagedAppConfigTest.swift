@@ -29,14 +29,14 @@ class ManagedAppConfigTest: XCTestCase {
         "address": "https://webdav.example.com",
         "login": "user1",
         "password": "password1",
-        "type": "webdav"
+        "type": "ASCFileProviderTypeWebDAV"
     ]
     
     let provider2 = [
         "address": "https://webdav.example.com",
         "login": "user2",
         "password": "password2",
-        "type": "webdav"
+        "type": "ASCFileProviderTypeWebDAV"
     ]
     
     var sampleConfig1: [String : Any] = [:]

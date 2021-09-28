@@ -121,6 +121,27 @@ class ASCNextCloudProvider: ASCWebDAVProvider {
             }
         }
     }
+    
+    override func isReachable(with info: [String : Any], complation: @escaping ((Bool, ASCFileProviderProtocol?) -> Void)) {
+        guard
+            let portal = info["url"] as? String,
+            let login = info["login"] as? String,
+            let password = info["password"] as? String,
+            let portalUrl = URL(string: portal)
+        else {
+            complation(false, nil)
+            return
+        }
+
+        let credential = URLCredential(user: login, password: password, persistence: .permanent)
+        let nextCloudProvider = ASCNextCloudProvider(baseURL: portalUrl, credential: credential)
+
+        nextCloudProvider.isReachable { success, error in
+            DispatchQueue.main.async(execute: {
+                complation(success, success ? nextCloudProvider : nil) // Need to capture nextCloudProvider variable
+            })
+        }
+    }
 
     /// Fetch an user information
     ///

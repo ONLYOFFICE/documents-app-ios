@@ -620,6 +620,12 @@
 		FCCDE680204973F500CFC653 /* ASCDocumentConverterTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCCDE67F204973F500CFC653 /* ASCDocumentConverterTest.swift */; };
 		FCCDE68220497C0D00CFC653 /* documents in Resources */ = {isa = PBXBuildFile; fileRef = FCCDE68120497C0D00CFC653 /* documents */; };
 		FCD04FCA1E7FDECF008641CD /* UIAlertController+SwiftAlertController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCD04FC91E7FDECF008641CD /* UIAlertController+SwiftAlertController.swift */; };
+		FCD2DD6C2702F70400D31BD5 /* ManagedAppConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCD2DD6B2702F70400D31BD5 /* ManagedAppConfig.swift */; };
+		FCD2DD6D2702F70400D31BD5 /* ManagedAppConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCD2DD6B2702F70400D31BD5 /* ManagedAppConfig.swift */; };
+		FCD2DD6E2702F70400D31BD5 /* ManagedAppConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCD2DD6B2702F70400D31BD5 /* ManagedAppConfig.swift */; };
+		FCD2DD71270302B500D31BD5 /* ManagedAppConfigTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCD2DD70270302B500D31BD5 /* ManagedAppConfigTest.swift */; };
+		FCD2DD7327031DF400D31BD5 /* ASCCloudsViewController+ManagedAppConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCD2DD7227031DF400D31BD5 /* ASCCloudsViewController+ManagedAppConfig.swift */; };
+		FCD2DD7427031DF400D31BD5 /* ASCCloudsViewController+ManagedAppConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCD2DD7227031DF400D31BD5 /* ASCCloudsViewController+ManagedAppConfig.swift */; };
 		FCD317522642EA8700A08299 /* NSAttributedString+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCD317512642EA8700A08299 /* NSAttributedString+Extensions.swift */; };
 		FCD317532642EA8700A08299 /* NSAttributedString+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCD317512642EA8700A08299 /* NSAttributedString+Extensions.swift */; };
 		FCD317562642ECB700A08299 /* UIFont+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCD317552642ECB700A08299 /* UIFont+Extensions.swift */; };
@@ -1088,6 +1094,9 @@
 		FCD1DA721FAC764D00F67625 /* cs */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = cs; path = cs.lproj/PasscodeLockView.strings; sourceTree = "<group>"; };
 		FCD1DA731FAC764D00F67625 /* cs */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = cs; path = cs.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
 		FCD1DA741FAC764D00F67625 /* cs */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = cs; path = cs.lproj/PasscodeLock.strings; sourceTree = "<group>"; };
+		FCD2DD6B2702F70400D31BD5 /* ManagedAppConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManagedAppConfig.swift; sourceTree = "<group>"; };
+		FCD2DD70270302B500D31BD5 /* ManagedAppConfigTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManagedAppConfigTest.swift; sourceTree = "<group>"; };
+		FCD2DD7227031DF400D31BD5 /* ASCCloudsViewController+ManagedAppConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ASCCloudsViewController+ManagedAppConfig.swift"; sourceTree = "<group>"; };
 		FCD317512642EA8700A08299 /* NSAttributedString+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSAttributedString+Extensions.swift"; sourceTree = "<group>"; };
 		FCD317552642ECB700A08299 /* UIFont+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIFont+Extensions.swift"; sourceTree = "<group>"; };
 		FCD33B5821C9195000D52DAF /* ASCDocumentsNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCDocumentsNavigationController.swift; sourceTree = "<group>"; };
@@ -2130,6 +2139,7 @@
 				FC68399C21B80AB900251CEA /* Views */,
 				FC68398F21B7E01E00251CEA /* ASCCloudsNavigationController.swift */,
 				FC68399921B808AC00251CEA /* ASCCloudsViewController.swift */,
+				FCD2DD7227031DF400D31BD5 /* ASCCloudsViewController+ManagedAppConfig.swift */,
 				FC8667D521C799160020D797 /* ASCCloudsSplitViewController.swift */,
 				FCD33B5A21C93C2B00D52DAF /* ASCCloudsEmptyViewController.swift */,
 			);
@@ -2434,6 +2444,7 @@
 				FC0946AF249776D4005D54E6 /* ASCLogger.swift */,
 				FC12ACF32567D1C200FF1CBB /* ASCAnalytics.swift */,
 				FCEF856E26C64B7A00173DDF /* WhatsNewService.swift */,
+				FCD2DD6B2702F70400D31BD5 /* ManagedAppConfig.swift */,
 			);
 			path = Business;
 			sourceTree = "<group>";
@@ -2475,6 +2486,7 @@
 			children = (
 				1DCCEC06268DBD5D00692167 /* Controllers */,
 				1D5DB04526584DBC006B4757 /* Business */,
+				FCD2DD6F2703028500D31BD5 /* Services */,
 				FCCDE68120497C0D00CFC653 /* documents */,
 				FCCDE67F204973F500CFC653 /* ASCDocumentConverterTest.swift */,
 				FCCDE6792049734000CFC653 /* Info.plist */,
@@ -2482,6 +2494,14 @@
 				FCF8045A212E94A300378AFD /* InfoPlist.strings */,
 			);
 			path = DocumentsTests;
+			sourceTree = "<group>";
+		};
+		FCD2DD6F2703028500D31BD5 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				FCD2DD70270302B500D31BD5 /* ManagedAppConfigTest.swift */,
+			);
+			path = Services;
 			sourceTree = "<group>";
 		};
 		FCE186482628CFE70086D21B /* Generated */ = {
@@ -3546,6 +3566,7 @@
 				FCEF855826C405FB00173DDF /* ASCBaseTabBarController.swift in Sources */,
 				FC36D2B925B5C32200412DDB /* UIStoryboard+Extensions.swift in Sources */,
 				1D49E2BD26A9BE190024AC7A /* ASCSharingSettingsAccessProviderFactory.swift in Sources */,
+				FCD2DD7427031DF400D31BD5 /* ASCCloudsViewController+ManagedAppConfig.swift in Sources */,
 				FC36D2BA25B5C32200412DDB /* EnterPasscodeState.swift in Sources */,
 				FC36D2BB25B5C32200412DDB /* ASCFileManager.swift in Sources */,
 				1D49E29E26A9BD450024AC7A /* ASCSharingRightHolderTableViewCell.swift in Sources */,
@@ -3646,6 +3667,7 @@
 				FC36D2F725B5C32200412DDB /* UPCarouselFlowLayout.swift in Sources */,
 				FC36D2F825B5C32200412DDB /* ASCUserProfileViewController.swift in Sources */,
 				FCF6966A26384C3000808644 /* ASCOnlyofficeCategoriesProviderFactory.swift in Sources */,
+				FCD2DD6D2702F70400D31BD5 /* ManagedAppConfig.swift in Sources */,
 				FC36D2F925B5C32200412DDB /* ASCStyles.swift in Sources */,
 				FC68528A26837B7300D830EC /* OnlyofficeVersion.swift in Sources */,
 				FC80CA3625BADEF10077C2B8 /* Protocols.swift in Sources */,
@@ -3728,6 +3750,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				FCCDE680204973F500CFC653 /* ASCDocumentConverterTest.swift in Sources */,
+				FCD2DD6E2702F70400D31BD5 /* ManagedAppConfig.swift in Sources */,
 				FC56B5CB20C03F3400557C1F /* ASCSortViewCellTableViewCell.swift in Sources */,
 				FC4D864720C50AE00047B871 /* String+Extension.swift in Sources */,
 				1D14AAE226964AF2009E48AD /* ASCSharingSettingsAccessProviderFactoryTests.swift in Sources */,
@@ -3745,6 +3768,7 @@
 				1DA5E670269E2293005F59E1 /* ASCASCSharingSettingsVerifyRightHoldersTests.swift in Sources */,
 				1DC43EEC26A1EDF700373D5A /* ASCSharingSettingsVerifyRightHoldersInteractorTests.swift in Sources */,
 				1DA5E669269DBABC005F59E1 /* ASCSharingAddRightHoldersDataStoreTests.swift in Sources */,
+				FCD2DD71270302B500D31BD5 /* ManagedAppConfigTest.swift in Sources */,
 				FC4D864A20C50AE00047B871 /* UIAlertController+Extension.swift in Sources */,
 				FC4D864D20C50AE00047B871 /* UIControl+Extension.swift in Sources */,
 				FC4D864B20C50AE00047B871 /* UIAlertController+SwiftAlertController.swift in Sources */,
@@ -3908,6 +3932,7 @@
 				FCEF855726C405FB00173DDF /* ASCBaseTabBarController.swift in Sources */,
 				FCFB36071EDF0AB00001597E /* ASCBanner.swift in Sources */,
 				FCEF9D391ED2D34400627BA5 /* ASCPasscodeLockSplashView.swift in Sources */,
+				FCD2DD7327031DF400D31BD5 /* ASCCloudsViewController+ManagedAppConfig.swift in Sources */,
 				FCD04FCA1E7FDECF008641CD /* UIAlertController+SwiftAlertController.swift in Sources */,
 				FCEA68232264733A0055926A /* ASC2FAPageController.swift in Sources */,
 				FCED8F4E23E8355500EC1DAC /* ASCFloatingLabelTextField.swift in Sources */,
@@ -4008,6 +4033,7 @@
 				FCC3964B1ECDD9A10016BB10 /* ASCUserProfileViewController.swift in Sources */,
 				FC56B5C620C017C300557C1F /* ASCStyles.swift in Sources */,
 				FC0F01E1216F46B7008D79A5 /* ASCOnlyofficeProvider.swift in Sources */,
+				FCD2DD6C2702F70400D31BD5 /* ManagedAppConfig.swift in Sources */,
 				1DE6D6C42631BE03001B825B /* ASCOnlyofficeCategoriesProviderFactory.swift in Sources */,
 				1D14AAF12698E85A009E48AD /* ASCSharingAddRightHoldersPresenter.swift in Sources */,
 				FC795596243E1A3A00CDD9FC /* KingfisherWrapper+Extensions.swift in Sources */,

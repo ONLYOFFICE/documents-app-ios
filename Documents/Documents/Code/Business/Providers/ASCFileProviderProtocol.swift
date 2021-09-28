@@ -83,6 +83,7 @@ protocol ASCFileProviderProtocol {
 
     // Network
     func isReachable(completionHandler: @escaping (_ success: Bool, _ error: Error?) -> Void)
+    func isReachable(with info: [String: Any], complation: @escaping ((_ success: Bool, _ provider: ASCFileProviderProtocol?) -> Void))
     func absoluteUrl(from string: String?) -> URL?
     func errorMessage(by errorObject: Any) -> String
     func handleNetworkError(_ error: Error?) -> Bool
@@ -124,6 +125,7 @@ extension ASCFileProviderProtocol {
     func deserialize(_ jsonString: String) {}
 
     func isReachable(completionHandler: @escaping (_ success: Bool, _ error: Error?) -> Void) {}
+    func isReachable(with info: [String: Any], complation: @escaping ((_ success: Bool, _ provider: ASCFileProviderProtocol?) -> Void)) { complation(false, nil) }
     func absoluteUrl(from string: String?) -> URL? { return URL(string: string ?? "") }
     func errorMessage(by errorObject: Any) -> String  { return "" }
     func handleNetworkError(_ error: Error?) -> Bool { return false }

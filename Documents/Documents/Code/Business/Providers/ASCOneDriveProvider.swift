@@ -391,6 +391,27 @@ extension ASCOneDriveProvider: ASCFileProviderProtocol {
         })
     }
     
+    func isReachable(with info: [String : Any], complation: @escaping ((Bool, ASCFileProviderProtocol?) -> Void)) {
+        guard
+            let accessToken = info["token"] as? String,
+            let refreshToken = info["refresh_token"] as? String,
+            let expiration = info["expires_in"] as? Int
+        else {
+            complation(false, nil)
+            return
+        }
+        
+        let urlCredential = URLCredential(user: ASCConstants.Clouds.OneDrive.clientId, password: accessToken, persistence: .forSession)
+        let oAuthCredential = OneDriveOAuthCredential(accessToken: accessToken, refreshToken: refreshToken, expiration: Date().adding(.second, value: expiration))
+        let onedriveCloudProvider = ASCOneDriveProvider(urlCredential: urlCredential, oAuthCredential: oAuthCredential)
+        
+        onedriveCloudProvider.isReachable { success, error in
+            DispatchQueue.main.async(execute: {
+                complation(success, success ? onedriveCloudProvider : nil)
+            })
+        }
+    }
+    
     func absoluteUrl(from string: String?) -> URL? { return URL(string: string ?? "") }
     func errorMessage(by errorObject: Any) -> String  { return "" }
     func handleNetworkError(_ error: Error?) -> Bool { return false }

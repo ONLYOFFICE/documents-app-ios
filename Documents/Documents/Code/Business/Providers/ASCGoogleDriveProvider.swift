@@ -211,6 +211,23 @@ class ASCGoogleDriveProvider: ASCFileProviderProtocol & ASCSortableFileProviderP
         })
     }
     
+    func isReachable(with info: [String : Any], complation: @escaping ((Bool, ASCFileProviderProtocol?) -> Void)) {
+        guard
+            let user = info["user"] as? Data
+        else {
+            complation(false, nil)
+            return
+        }
+        
+        let googleDriveProvider = ASCGoogleDriveProvider(userData: user)
+
+        googleDriveProvider.isReachable { success, error in
+            DispatchQueue.main.async(execute: {
+                complation(success, success ? googleDriveProvider : nil)
+            })
+        }
+    }
+    
     /// Fetch an user information
     ///
     /// - Parameter completeon: a closure with result of user or error

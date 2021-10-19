@@ -175,6 +175,9 @@ PODS:
     - PhoneNumberKit/PhoneNumberKitCore
   - PresentationEditor (7.0.0)
   - PromisesObjC (2.0.0)
+  - ReCaptcha (1.6.0):
+    - ReCaptcha/Core (= 1.6.0)
+  - ReCaptcha/Core (1.6.0)
   - SDWebImage (5.11.1):
     - SDWebImage/Core (= 5.11.1)
   - SDWebImage/Core (5.11.1)
@@ -216,6 +219,7 @@ DEPENDENCIES:
   - ObjectMapper
   - PhoneNumberKit
   - PresentationEditor (from `../editors-ios/PresentationEditor.podspec`)
+  - ReCaptcha
   - SDWebImage
   - Siren
   - SkyFloatingLabelTextField (from `https://github.com/Skyscanner/SkyFloatingLabelTextField.git`)
@@ -262,6 +266,7 @@ SPEC REPOS:
     - ObjectMapper
     - PhoneNumberKit
     - PromisesObjC
+    - ReCaptcha
     - SDWebImage
     - Siren
     - SwiftGen
@@ -338,6 +343,7 @@ SPEC CHECKSUMS:
   PhoneNumberKit: 4ce83273551c4d2ae10b7361162f4283dd02835f
   PresentationEditor: 0ccc43a160e17d9d359f2d619e03d8635225a808
   PromisesObjC: 68159ce6952d93e17b2dfe273b8c40907db5ba58
+  ReCaptcha: d493ed256054a7b6a7eabcaf0b47ec9a8f42a16e
   SDWebImage: a7f831e1a65eb5e285e3fb046a23fcfbf08e696d
   Siren: 76ac728f4f2f4a3576c322272e94a0e37955664f
   SkyFloatingLabelTextField: 79ddc40e4ad59707fedbb48d605417aee48bb78a
@@ -350,6 +356,6 @@ SPEC CHECKSUMS:
   UICircularProgressRing: 19927375b2b21b5fa5fd9582f15ccdef9659da16
   WhatsNewKit: c87028c4059dccd113495422801914cc53f6aab0
 
-PODFILE CHECKSUM: 84372084026c050233ac546f0923a29bbafd4cf6
+PODFILE CHECKSUM: eb81a134c4a840a1245571b199fadb01c9e3c974
 
 COCOAPODS: 1.11.2

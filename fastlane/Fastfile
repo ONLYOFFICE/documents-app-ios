@@ -41,6 +41,7 @@ platform :ios do
       scheme: "Documents",
       workspace: "ONLYOFFICE-Documents.xcworkspace",
       devices: ["iPhone 11 Pro"],
+      skip_package_dependencies_resolution: true,
       clean: true
     )
   end

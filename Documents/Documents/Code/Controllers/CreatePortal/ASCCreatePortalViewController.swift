@@ -431,7 +431,9 @@ class ASCCreatePortalViewController: ASCBaseViewController {
         
         var recaptchaWebView: WKWebView?
         
+#if DEBUG
         recaptcha?.forceVisibleChallenge = true
+#endif
         recaptcha?.configureWebView { [weak self] webView in
             webView.frame = self?.view.bounds ?? CGRect.zero
             recaptchaWebView = webView

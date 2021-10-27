@@ -45,6 +45,7 @@ def common_pods
   pod 'PhoneNumberKit'
   pod 'SwiftMessages', '9.0.4'
   pod 'MGSwipeTableCell'
+  pod 'ReCaptcha'
 
   # Utils
 

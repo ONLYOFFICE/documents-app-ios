@@ -22,6 +22,7 @@ final class ASCAnalytics {
         
         struct Key {
             static let portal = "portal"
+            static let email = "email"
             static let onDevice = "onDevice"
             static let type = "type"
             static let fileExt = "fileExt"

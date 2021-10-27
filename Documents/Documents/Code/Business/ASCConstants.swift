@@ -22,6 +22,8 @@ class ASCConstants {
         static let ascDocumentServiceKey    = ASCConstants.internalConstants["KeysAscDocumentServiceKey"] as? String ?? ""
         static let ascDocumentServiceKeyId  = ASCConstants.internalConstants["KeysAscDocumentServiceKeyId"] as? String ?? ""
         static let converterKey             = ASCConstants.internalConstants["KeysConverterKey"] as? String ?? ""
+        static let recaptcha                = ASCConstants.internalConstants["ReCaptcha"] as? String ?? ""
+        static let recaptchaInfo            = ASCConstants.internalConstants["ReCaptchaInfo"] as? String ?? ""
     }
 
     struct Urls {
@@ -79,11 +81,13 @@ class ASCConstants {
     struct RemoteSettingsKeys {
         static let allowCoauthoring         = "allow_coauthoring"
         static let checkSdkFully            = "check_sdk_fully"
+        static let recaptchaForPortalRegistration = "recaptcha_for_portal_registration"
 
         static func setupDefaults() {
             let defaultValues: [String: NSObject] = [
                 allowCoauthoring: NSNumber(value: true),
-                checkSdkFully: NSNumber(value: true)
+                checkSdkFully: NSNumber(value: true),
+                recaptchaForPortalRegistration: NSNumber(value: true)
             ]
 
             RemoteConfig.remoteConfig().setDefaults(defaultValues)

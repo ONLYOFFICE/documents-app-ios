@@ -13,15 +13,13 @@ import Alamofire
 import SkyFloatingLabelTextField
 import Firebase
 import PhoneNumberKit
+import ReCaptcha
+import WebKit
 
 class ASCCreatePortalViewController: ASCBaseViewController {
 
     // MARK: - Properties
-    var portal: String?
-    var firstName: String?
-    var lastName: String?
-    var email: String?
-    var phone: String?
+    var createPortalInfo: ASCCreatePortal = ASCCreatePortal()
     var isInfoPortal = false
 
     fileprivate let infoPortalSuffix = ".teamlab.info"
@@ -273,11 +271,11 @@ class ASCCreatePortalViewController: ASCBaseViewController {
         // Validate form
         
         guard
-            let portal = portalField?
+            let portalName = portalField?
                 .typedText
                 .trimmed
                 .replacingOccurrences(of: infoPortalSuffix, with: ""),
-            valid(portal: portal)
+            valid(portal: portalName)
         else {
             return
         }
@@ -350,76 +348,110 @@ class ASCCreatePortalViewController: ASCBaseViewController {
         hud?.label.text = NSLocalizedString("Validation", comment: "Caption of the process")
         
         let baseApi = String(format: ASCConstants.Urls.apiSystemUrl, domain(by: isInfoPortal ? "DEBUG" : Locale.current.regionCode ?? "US"))
-        let requestUrl = baseApi + "/" + ASCConstants.Urls.apiValidatePortalName
         let params: Parameters = [
-            "portalName": portal
+            "portalName": portalName
         ]
         
-        AF.request(requestUrl, method: .post, parameters: params)
-            .validate()
-            .responseJSON { response in
-                DispatchQueue.main.async(execute: {
-                    hud?.hide(animated: true)
-                    
-                    switch response.result {
-                    case .success(let responseJson):
-                        if
-                            let responseJson = responseJson as? [String: Any],
-                            let message = responseJson["message"] as? String
-                        {
-                            let status = ASCCreatePortalStatus(message)
+        let portalValidation: Endpoint<Parameters> = Endpoint<Parameters>.make(ASCConstants.Urls.apiValidatePortalName, .post)
+        let client = NetworkingClient()
+        client.configure(url: baseApi)
+        client.request(portalValidation, params) { result, error in
+            DispatchQueue.main.async(execute: {
+                hud?.hide(animated: true)
+                
+                /// Failure
+
+                if let error = error {
+                    log.error(error)
+
+                    if let result = result {
+                        if let errorType = result["error"] as? String {
+                            let status = ASCCreatePortalStatus(errorType)
 
                             switch status {
-                            case .successReadyToRegister:
-                                if let portalViewController = self.storyboard?.instantiateViewController(withIdentifier: "createPortalStepTwoController") as? ASCCreatePortalViewController {
-                                    IQKeyboardManager.shared.enable = false
-
-                                    portalViewController.portal = portal
-                                    portalViewController.firstName = firstName
-                                    portalViewController.lastName = lastName
-                                    portalViewController.email = email
-                                    portalViewController.phone = phoneNumberE164
-                                    portalViewController.isInfoPortal = isInfoPortal
-
-                                    self.navigationController?.pushViewController(portalViewController, animated: true)
-                                }
-
+                            case .failureTooShortError,
+                                 .failurePortalNameExist,
+                                 .failurePortalNameIncorrect:
+                                self.showError(status.description)
                             default:
-                                self.showError(NSLocalizedString("Failed to check the name of the portal", comment: ""))
-                            }
-                        }
-                    case .failure(let error):
-                        log.error(error)
-
-                        if
-                            let data = response.data,
-                            let responseString = String(data: data, encoding: .utf8),
-                            let responseJson = responseString.toDictionary()
-                        {
-                            if let errorType = responseJson["error"] as? String {
-                                let status = ASCCreatePortalStatus(errorType)
-
-                                switch status {
-                                case .failureTooShortError,
-                                     .failurePortalNameExist,
-                                     .failurePortalNameIncorrect:
-                                    self.showError(status.description)
-                                default:
-                                    if let errorMessage = responseJson["message"] as? String {
-                                        self.showError(errorMessage)
-                                    } else {
-                                        self.showError(NSLocalizedString("Failed to check the name of the portal", comment: ""))
-                                    }
+                                if let errorMessage = result["message"] as? String {
+                                    self.showError(errorMessage)
+                                } else {
+                                    self.showError(NSLocalizedString("Failed to check the name of the portal", comment: ""))
                                 }
-                            } else {
-                                self.showError(error.localizedDescription)
                             }
                         } else {
                             self.showError(error.localizedDescription)
                         }
+                    } else {
+                        self.showError(error.localizedDescription)
                     }
-                })
+                    
+                    return
+                }
+                
+                /// Success
+                
+                if let result = result,
+                   let message = result["message"] as? String {
+                    let status = ASCCreatePortalStatus(message)
+                    
+                    switch status {
+                    case .successReadyToRegister:
+                        let portalViewController = StoryboardScene.CreatePortal.createPortalStepTwoController.instantiate()
+                        IQKeyboardManager.shared.enable = false
+                        
+                        let createPortalInfo = ASCCreatePortal()
+                        createPortalInfo.portalName = portalName
+                        createPortalInfo.firstName = firstName
+                        createPortalInfo.lastName = lastName
+                        createPortalInfo.email = email
+                        createPortalInfo.phone = phoneNumberE164
+                        portalViewController.createPortalInfo = createPortalInfo
+                        portalViewController.isInfoPortal = isInfoPortal
+                        
+                        self.navigationController?.pushViewController(portalViewController, animated: true)
+                        
+                    default:
+                        self.showError(NSLocalizedString("Failed to check the name of the portal", comment: ""))
+                    }
+                }
+            })
         }
+    }
+    
+    private func recaptcha(complation: ((String?, String?) -> Void)?) {
+        let apiKey = isInfoPortal ? ASCConstants.Keys.recaptchaInfo : ASCConstants.Keys.recaptcha
+        let domain = domain(by: isInfoPortal ? "DEBUG" : Locale.current.regionCode ?? "US")
+        
+        var recaptcha = try? ReCaptcha(
+            apiKey: apiKey,
+            baseURL: URL(string: "https://\(domain)")
+        )
+        
+        var recaptchaWebView: WKWebView?
+        
+#if DEBUG
+        recaptcha?.forceVisibleChallenge = true
+#endif
+        recaptcha?.configureWebView { [weak self] webView in
+            webView.frame = self?.view.bounds ?? CGRect.zero
+            recaptchaWebView = webView
+        }
+        
+        recaptcha?.validate(on: view, completion: { response in
+            switch response {
+            case .token(let token):
+                complation?(token, nil)
+            case .error(let error):
+                complation?(nil, error.description)
+            }
+            
+            recaptcha?.reset()
+            recaptcha?.stop()
+            recaptchaWebView?.removeFromSuperview()
+            recaptcha = nil
+        })
     }
     
     private func createPortal() {
@@ -443,65 +475,74 @@ class ASCCreatePortalViewController: ASCBaseViewController {
             return
         }
         
-        guard
-            let firstName = firstName ,
-            let lastName = lastName,
-            let email = email,
-            let language = Locale.preferredLanguages.first,
-            let portalName = portal,
-            let phone = phone
-        else {
-            return
+        createPortalInfo.partnerId = ""
+        createPortalInfo.industry = 0
+        createPortalInfo.timeZoneName = TimeZone.current.identifier
+        createPortalInfo.language = Locale.preferredLanguages.first
+        createPortalInfo.password = passwordOne
+        
+        let operationQueue = OperationQueue()
+        operationQueue.maxConcurrentOperationCount = 1
+        
+        let allowRecaptcha = ASCConstants.remoteConfigValue(forKey: ASCConstants.RemoteSettingsKeys.recaptchaForPortalRegistration)?.boolValue ?? true
+        var recaptchaToken: String?
+        var hud: MBProgressHUD?
+        
+        if allowRecaptcha {
+            operationQueue.addOperation {
+                let semaphore = DispatchSemaphore(value: 0)
+                
+                DispatchQueue.main.async(execute: {
+                    self.recaptcha { token, error in
+                        defer { semaphore.signal() }
+                        
+                        if let error = error {
+                            self.showError(error)
+                            operationQueue.cancelAllOperations()
+                        } else {
+                            recaptchaToken = token
+                        }
+                    }
+                })
+                
+                semaphore.wait()
+            }
         }
         
-        let hud = MBProgressHUD.showTopMost()
-        hud?.label.text = NSLocalizedString("Registration", comment: "")
-        
-        let baseApi = String(format: ASCConstants.Urls.apiSystemUrl, domain(by: isInfoPortal ? "DEBUG" : Locale.current.regionCode ?? "US"))
-        let requestUrl = baseApi + "/" + ASCConstants.Urls.apiRegistrationPortal
-        let params: Parameters = [
-            "firstName"      : firstName,
-            "lastName"       : lastName,
-            "email"          : email,
-            "phone"          : phone,
-            "portalName"     : portalName,
-            "partnerId"      : "",
-            "industry"       : 0,
-            "timeZoneName"   : TimeZone.current.identifier,
-            "language"       : language,
-            "password"       : passwordOne,
-            "appKey"         : ASCConstants.Keys.portalRegistration
-        ]
-        
-        AF.request(requestUrl, method: .post, parameters: params)
-            .validate()
-            .responseJSON { response in
+        operationQueue.addOperation {
+            if allowRecaptcha {
+                guard
+                    let recaptchaToken = recaptchaToken
+                else { return }
+                self.createPortalInfo.recaptchaResponse = recaptchaToken
+            } else {
+                self.createPortalInfo.appKey = ASCConstants.Keys.portalRegistration
+            }
+            
+            DispatchQueue.main.async(execute: {
+                hud = MBProgressHUD.showTopMost()
+                hud?.label.text = NSLocalizedString("Registration", comment: "")
+            })
+            
+            let semaphore = DispatchSemaphore(value: 0)
+            
+            let baseApi = String(format: ASCConstants.Urls.apiSystemUrl, self.domain(by: self.isInfoPortal ? "DEBUG" : Locale.current.regionCode ?? "US"))
+            let portalRegistration: Endpoint<Parameters> = Endpoint<Parameters>.make(ASCConstants.Urls.apiRegistrationPortal, .post)
+            let client = NetworkingClient()
+            client.configure(url: baseApi)
+            client.request(portalRegistration, self.createPortalInfo.toJSON()) { result, error in
                 DispatchQueue.main.async(execute: {
+                    defer { semaphore.signal() }
+                    
                     hud?.hide(animated: true)
                     
-                    switch response.result {
-                    case .success(let responseJson):
-                        if let responseJson = responseJson as? [String: Any] {
-                            if let tenant = responseJson["tenant"] as? [String: Any], let domain = tenant["domain"] as? String {
-                                ASCAnalytics.logEvent(ASCConstants.Analytics.Event.createPortal, parameters: [
-                                    ASCAnalytics.Event.Key.portal: domain,
-                                    "email": email
-                                    ]
-                                )
-                                self.login(address: domain)
-                            } else {
-                                self.showError(NSLocalizedString("Unable to get information about the portal", comment: ""))
-                            }
-                        }
-                    case .failure(let error):
+                    /// Failure
+
+                    if let error = error {
                         log.error(error)
 
-                        if
-                            let data = response.data,
-                            let responseString = String(data: data, encoding: .utf8),
-                            let responseJson = responseString.toDictionary()
-                        {
-                            if let errorType = responseJson["error"] as? String {
+                        if let result = result {
+                            if let errorType = result["error"] as? String {
                                 let status = ASCCreatePortalStatus(errorType)
 
                                 switch status {
@@ -509,7 +550,7 @@ class ASCCreatePortalViewController: ASCBaseViewController {
                                      .failureTooShortError:
                                     self.showError(status.description)
                                 default:
-                                    if let errorMessages = responseJson["message"] as? [String] {
+                                    if let errorMessages = result["message"] as? [String] {
                                         var messages: [String] = []
                                         
                                         for errorMessage in errorMessages {
@@ -537,13 +578,33 @@ class ASCCreatePortalViewController: ASCBaseViewController {
                         } else {
                             self.showError(error.localizedDescription)
                         }
+                        
+                        return
+                    }
+                    
+                    /// Success
+                    
+                    if let result = result {
+                        if let tenant = result["tenant"] as? [String: Any], let domain = tenant["domain"] as? String {
+                            ASCAnalytics.logEvent(ASCConstants.Analytics.Event.createPortal, parameters: [
+                                ASCAnalytics.Event.Key.portal: domain,
+                                ASCAnalytics.Event.Key.email: self.createPortalInfo.email ?? ""
+                                ]
+                            )
+                            self.login(address: domain)
+                        } else {
+                            self.showError(NSLocalizedString("Unable to get information about the portal", comment: ""))
+                        }
                     }
                 })
+            }
+            
+            semaphore.wait()
         }
     }
 
     private func login(address: String) {
-        guard let login = email else {
+        guard let login = createPortalInfo.email else {
             return
         }
 

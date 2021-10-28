@@ -899,7 +899,7 @@
 		FC301A27230D70B500DC25CA /* ASCLoaderCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCLoaderCell.swift; sourceTree = "<group>"; };
 		FC301A28230D70B500DC25CA /* ASCLoaderCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ASCLoaderCell.xib; sourceTree = "<group>"; };
 		FC31B2861E76C09F008699C3 /* UIDevice+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIDevice+Extension.swift"; sourceTree = "<group>"; };
-		FC36D35325B5C32200412DDB /* Documents test.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Documents test.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		FC36D35325B5C32200412DDB /* Documents-Alpha.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Documents-Alpha.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		FC37D8E821CB8FA8001A7BFD /* UIDevice+DeviceKit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIDevice+DeviceKit.swift"; sourceTree = "<group>"; };
 		FC3AF6B8217081DB004A96FD /* ASCNextCloudProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCNextCloudProvider.swift; sourceTree = "<group>"; };
 		FC3AF6BA2170825B004A96FD /* ASCFileProviderProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCFileProviderProtocol.swift; sourceTree = "<group>"; };
@@ -2696,7 +2696,7 @@
 			children = (
 				FCFDAA8D1E48A10C007A240C /* Documents.app */,
 				FCCDE6752049733F00CFC653 /* DocumentsTests.xctest */,
-				FC36D35325B5C32200412DDB /* Documents test.app */,
+				FC36D35325B5C32200412DDB /* Documents-Alpha.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -2743,7 +2743,7 @@
 			);
 			name = "Documents-Alpha";
 			productName = "Documents-Swift";
-			productReference = FC36D35325B5C32200412DDB /* Documents test.app */;
+			productReference = FC36D35325B5C32200412DDB /* Documents-Alpha.app */;
 			productType = "com.apple.product-type.application";
 		};
 		FCCDE6742049733F00CFC653 /* DocumentsTests */ = {
@@ -4436,7 +4436,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.onlyoffice.Documents.dev;
-				PRODUCT_NAME = "Documents test";
+				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "Documents/Code/Bridge/Documents-Bridging-Header.h";
@@ -4459,7 +4459,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.onlyoffice.Documents.dev;
-				PRODUCT_NAME = "Documents test";
+				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "Documents/Code/Bridge/Documents-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";

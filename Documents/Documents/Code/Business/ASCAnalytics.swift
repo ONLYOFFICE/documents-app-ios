@@ -36,6 +36,7 @@ final class ASCAnalytics {
             static let file = "file"
             static let folder = "folder"
             static let document = "document"
+            static let form = "form"
             static let spreadsheet = "spreadsheet"
             static let presentation = "presentation"
             static let unknown = "unknown"

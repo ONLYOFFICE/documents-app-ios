@@ -153,6 +153,14 @@ class ASCConnectCloudViewController: UITableViewController {
     // MARK: - Private
 
     private func authComplation(info: [String: Any]) {
+        if let error = info["error"] as? String {
+            UIAlertController.showError(
+                in: self,
+                message: error
+            )
+            return
+        }
+
         checkProvider(info: info) { [weak self] success, provider in
             if success, let provider = provider {
                 let isNewProvider = (ASCFileManager.cloudProviders.first(where: { $0.id == provider.id }) == nil)

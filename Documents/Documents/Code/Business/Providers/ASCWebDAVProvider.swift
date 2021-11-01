@@ -811,20 +811,15 @@ class ASCWebDAVProvider: ASCFileProviderProtocol & ASCSortableFileProviderProtoc
                 if let error = error {
                     completeon?(strongSelf, nil, false, ASCProviderError(error))
                 } else {
-//                    let now = Date()
-
                     if let file = file {
                         file.id = newPath.rawValue
                         file.title = newPath.fileName
-//                        file.created = now
-//                        file.updated = now
+                        file.viewUrl = newPath.rawValue
 
                         completeon?(strongSelf, file, true, nil)
                     } else if let folder = folder {
                         folder.id = newPath.rawValue
                         folder.title = newName
-//                        folder.created = now
-//                        folder.updated = now
 
                         completeon?(strongSelf, folder, true, nil)
                     } else {

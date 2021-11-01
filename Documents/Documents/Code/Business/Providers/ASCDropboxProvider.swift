@@ -819,6 +819,7 @@ class ASCDropboxProvider: ASCFileProviderProtocol & ASCSortableFileProviderProto
                     if let file = file {
                         file.id = newPath.rawValue
                         file.title = newPath.fileName
+                        file.viewUrl = newPath.rawValue
                         
                         completeon?(strongSelf, file, true, nil)
                     } else if let folder = folder {

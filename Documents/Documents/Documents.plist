@@ -233,15 +233,15 @@
 		</dict>
 	</array>
 	<key>CFBundleVersion</key>
-	<string>712</string>
-	<key>FacebookDisplayName</key>
-	<string>Login on ONLYOFFICE</string>
-	<key>FacebookAutoLogAppEventsEnabled</key>
-	<integer>0</integer>
+	<string>713</string>
 	<key>FacebookAdvertiserIDCollectionEnabled</key>
 	<integer>0</integer>
 	<key>FacebookAutoInitEnabled</key>
 	<integer>0</integer>
+	<key>FacebookAutoLogAppEventsEnabled</key>
+	<integer>0</integer>
+	<key>FacebookDisplayName</key>
+	<string>Login on ONLYOFFICE</string>
 	<key>ITSAppUsesNonExemptEncryption</key>
 	<false/>
 	<key>LSApplicationQueriesSchemes</key>

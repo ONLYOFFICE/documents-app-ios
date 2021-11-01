@@ -135,7 +135,7 @@ class ASCConstants {
     }
 
     struct FileExtensions {
-        static let documents                    = ["docx", "doc", "docxf", "oform", "odt", "rtf", "mht", "html", "htm", "epub", "fb2", "txt"]
+        static let documents                    = ["docx", "doc", "odt", "rtf", "mht", "html", "htm", "epub", "fb2", "txt"]
         static let spreadsheets                 = ["xlsx", "xls", "csv", "ods"]
         static let presentations                = ["pptx", "ppt", "odp"]
         static let forms                        = ["docxf", "oform"]

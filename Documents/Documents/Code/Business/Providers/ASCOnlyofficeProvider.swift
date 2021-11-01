@@ -969,7 +969,8 @@ class ASCOnlyofficeProvider: ASCFileProviderProtocol & ASCSortableFileProviderPr
             let isShared        = file.rootFolderType == .onlyofficeShare
             let isProjects      = file.rootFolderType == .onlyofficeBunch || file.rootFolderType == .onlyofficeProjects
             let canOpenEditor   = ASCConstants.FileExtensions.documents.contains(fileExtension) ||
-                ASCConstants.FileExtensions.spreadsheets.contains(fileExtension)
+                ASCConstants.FileExtensions.spreadsheets.contains(fileExtension) ||
+                ASCConstants.FileExtensions.forms.contains(fileExtension)
             let canPreview      = canOpenEditor ||
                 ASCConstants.FileExtensions.presentations.contains(fileExtension) ||
                 ASCConstants.FileExtensions.images.contains(fileExtension) ||
@@ -1288,7 +1289,8 @@ class ASCOnlyofficeProvider: ASCFileProviderProtocol & ASCSortableFileProviderPr
         let isAllowConvert  =
             ASCConstants.FileExtensions.documents.contains(fileExt) ||
             ASCConstants.FileExtensions.spreadsheets.contains(fileExt) ||
-            ASCConstants.FileExtensions.presentations.contains(fileExt)
+            ASCConstants.FileExtensions.presentations.contains(fileExt) ||
+            ASCConstants.FileExtensions.forms.contains(fileExt)
 
         if isPdf {
             let openHandler = delegate?.openProgress(file: file, title: NSLocalizedString("Downloading", comment: "Caption of the processing") + "...", 0.15)

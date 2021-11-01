@@ -147,6 +147,14 @@ class ASCFileCell: MGSwipeTableCell {
             icon?.image = Asset.Images.listFormatPresentation.image
         } else if ASCConstants.FileExtensions.videos.contains(fileExt) {
             icon?.image = Asset.Images.listFormatVideo.image
+        } else if ASCConstants.FileExtensions.forms.contains(fileExt) {
+            if fileExt == "docxf" {
+                icon?.image = Asset.Images.listFormatDocxf.image
+            } else if fileExt == "oform" {
+                icon?.image = Asset.Images.listFormatOform.image
+            } else {
+                icon?.image = Asset.Images.listFormatUnknown.image
+            }
         } else if fileExt == "pdf" {
             icon?.image = Asset.Images.listFormatPdf.image
         } else {

@@ -1017,7 +1017,8 @@ class ASCDropboxProvider: ASCFileProviderProtocol & ASCSortableFileProviderProto
             let canDelete       = allowDelete(entity: file)
             let canOpenEditor   = ASCConstants.FileExtensions.documents.contains(fileExtension) ||
                                   ASCConstants.FileExtensions.spreadsheets.contains(fileExtension) ||
-                                  ASCConstants.FileExtensions.presentations.contains(fileExtension)
+                                  ASCConstants.FileExtensions.presentations.contains(fileExtension) ||
+                                  ASCConstants.FileExtensions.forms.contains(fileExtension)
             let canPreview      = canOpenEditor ||
                                   ASCConstants.FileExtensions.images.contains(fileExtension) ||
                                   fileExtension == "pdf"

@@ -236,6 +236,12 @@
 	<string>712</string>
 	<key>FacebookDisplayName</key>
 	<string>Login on ONLYOFFICE</string>
+	<key>FacebookAutoLogAppEventsEnabled</key>
+	<integer>0</integer>
+	<key>FacebookAdvertiserIDCollectionEnabled</key>
+	<integer>0</integer>
+	<key>FacebookAutoInitEnabled</key>
+	<integer>0</integer>
 	<key>ITSAppUsesNonExemptEncryption</key>
 	<false/>
 	<key>LSApplicationQueriesSchemes</key>

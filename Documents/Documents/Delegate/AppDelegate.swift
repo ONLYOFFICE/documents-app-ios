@@ -8,8 +8,6 @@
 
 import UIKit
 import UserNotifications
-import FBSDKCoreKit
-import FBSDKLoginKit
 import GoogleSignIn
 import FirebaseCore
 import FirebaseMessaging
@@ -98,7 +96,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                    let scheme = schemes.last {
                     if let _ = url.scheme?.range(of: scheme, options: .caseInsensitive) {
                         if service == "facebook" {
-                            return ApplicationDelegate.shared.application(app, open: url, options: options)
+                            return ASCFacebookSignInController.application(app, open: url, options: options)
                         } else if service == "google" {
                             return GIDSignIn.sharedInstance.handle(url)
                         } else if service == "oodocuments" {

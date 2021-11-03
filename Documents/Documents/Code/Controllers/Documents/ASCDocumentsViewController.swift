@@ -913,7 +913,12 @@ class ASCDocumentsViewController: ASCBaseTableViewController, UIGestureRecognize
                     let folder = entity as? ASCFolder
                 else { return }
 
-                let isCanceled = (error as NSError?)?.code == NSURLErrorCancelled
+                let isCanceled: Bool = {
+                    guard let error = error as? NetworkingError, case NetworkingError.cancelled = error else {
+                        return false
+                    }
+                    return true
+                }()
 
                 if !isCanceled {
                     strongSelf.showErrorView(!success, error)

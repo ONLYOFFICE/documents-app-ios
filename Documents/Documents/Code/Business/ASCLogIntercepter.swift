@@ -38,7 +38,13 @@ class ASCLogIntercepter {
         if let logUrl = logUrl {
             /// Cleanup
             do {
-                try "".write(to: logUrl, atomically: true, encoding: .utf8)
+                let header =
+                """
+                Start logger
+                DeviceID: \(UIDevice.current.identifierForVendor?.uuidString ?? "none")
+                
+                """
+                try header.write(to: logUrl, atomically: true, encoding: .utf8)
             } catch {}
         }
         

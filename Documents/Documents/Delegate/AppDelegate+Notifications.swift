@@ -17,6 +17,9 @@ extension AppDelegate {
     
     func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable: Any],
                      fetchCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> Void) {
+        UserDefaults.standard.set(userInfo, forKey: ASCConstants.SettingsKeys.pushUserInfo)
+        NotificationCenter.default.post(name: ASCConstants.Notifications.pushInfo, object: nil)
+        
         log.debug(userInfo)
         
         completionHandler(UIBackgroundFetchResult.newData)
@@ -92,7 +95,7 @@ extension AppDelegate : MessagingDelegate {
             return
         }
         
-        print("Firebase registration token: \(fcmToken)")
+        log.info("Firebase registration token: \(fcmToken)")
         UserDefaults.standard.set(fcmToken, forKey: ASCConstants.SettingsKeys.pushFCMToken)
 
         let dataDict:[String: String] = ["token": fcmToken]

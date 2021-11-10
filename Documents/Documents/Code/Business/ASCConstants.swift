@@ -82,12 +82,16 @@ class ASCConstants {
         static let allowCoauthoring         = "allow_coauthoring"
         static let checkSdkFully            = "check_sdk_fully"
         static let recaptchaForPortalRegistration = "recaptcha_for_portal_registration"
+        static let privacyPolicyLink        = "link_privacy_policy"
+        static let termsOfServiceLink       = "link_terms_of_service"
 
         static func setupDefaults() {
-            let defaultValues: [String: NSObject] = [
+            let defaultValues: [String : NSObject] = [
                 allowCoauthoring: NSNumber(value: true),
                 checkSdkFully: NSNumber(value: true),
-                recaptchaForPortalRegistration: NSNumber(value: true)
+                recaptchaForPortalRegistration: NSNumber(value: true),
+                privacyPolicyLink: NSString(string: "https://help.onlyoffice.com/products/files/doceditor.aspx?fileid=5048502&doc=SXhWMEVzSEYxNlVVaXJJeUVtS0kyYk14YWdXTEFUQmRWL250NllHNUFGbz0_IjUwNDg1MDIi0"),
+                termsOfServiceLink: NSString(string: "https://help.onlyoffice.com/products/files/doceditor.aspx?fileid=5048471&doc=bXJ6UmJacDVnVDMxV01oMHhrUlpwaGFBcXJUUUE3VHRuTGZrRUF5a1NKVT0_IjUwNDg0NzEi0")
             ]
 
             RemoteConfig.remoteConfig().setDefaults(defaultValues)

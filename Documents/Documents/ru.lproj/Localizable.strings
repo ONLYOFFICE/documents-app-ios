@@ -50,10 +50,10 @@
 "A6 (10,5%@ x 14,8%@)" = "A6 (10,5%1$@ x 14,8%2$@)";
 
 /* No comment provided by engineer. */
-"Access files in Favorites and Recents on ONLYOFFICE portal from the app" = "Теперь у вас есть доступ к разделам Избранное и Последние на портале ONLYOFFICE из мобильного приложения";
+"Access by external link" = "Доступ по внешней ссылке";
 
 /* No comment provided by engineer. */
-"Access by external link" = "Доступ по внешней ссылке";
+"Access files in Favorites and Recents on ONLYOFFICE portal from the app" = "Теперь у вас есть доступ к разделам Избранное и Последние на портале ONLYOFFICE из мобильного приложения";
 
 /* No comment provided by engineer. */
 "Access rights" = "Права доступа";
@@ -67,17 +67,11 @@
 /* No comment provided by engineer. */
 "Account name is not valid" = "Имя учетной записи некорректное";
 
-/* No comment provided by engineer. */
-"Add files to Favorites for quick access directly from the editor." = "Добавляйте документы для быстрого доступа в Избранное прямо из редактора.";
-
 /* Sharing settings add notification message */
 "Add message" = "Добавить сообщение";
 
 /* No comment provided by engineer. */
 "Add users or groups and give them to \n read, review or edit documents." = "Добавьте пользователей или группы и\nпредоставьте им права на чтение, рецензирование\n или редактирование документов.";
-
-/* No comment provided by engineer. */
-"Adding to Favorites" = "Добавление в Избранное";
 
 /* No comment provided by engineer. */
 "Address is empty" = "Адрес не заполнен";
@@ -110,7 +104,7 @@
 "Box directory" = "Папка Box";
 
 /* No comment provided by engineer. */
-"By creating the portal you agree with our Terms of service" = "Создавая портал, вы соглашаетесь с нашими Условиями использования";
+"By creating the portal you agree with our Privacy Policy and Terms of Service" = "Создавая портал, вы соглашаетесь с нашей Политикой конфиденциальности и Условиями использования";
 
 /* Data units */
 "bytes" = "байт";
@@ -488,12 +482,6 @@
 /* No comment provided by engineer. */
 "Failure to download result from conversion online service." = "Ошибка скачивания полученного файла из службы онлайн-конвертации.";
 
-/* Description of file operation error */
-"File already exists" = "Файл уже существует";
-
-/* Description of file operation error */
-"File does not exist" = "Файл не существует";
-
 /* No comment provided by engineer. */
 "Favorites and Recents" = "Разделы Избранное и Последние";
 
@@ -833,6 +821,9 @@
 /* Button title */
 "Preview" = "Просмотр";
 
+/* Part of phrases - By creating the portal you agree with our Privacy Policy and Terms of Service */
+"Privacy Policy" = "Политикой конфиденциальности";
+
 /* Caption of the processing */
 "Processing" = "Обработка";
 
@@ -937,9 +928,6 @@
 "Settings" = "Настройки";
 
 /* No comment provided by engineer. */
-"Share files and manage access rights without leaving the editor." = "Делитесь файлами и управляйте правами доступа не выходя из редактора.";
-
-/* No comment provided by engineer. */
 "Shared access" = "Общий доступ";
 
 /* Category title */
@@ -1002,8 +990,8 @@
 /* Data units */
 "Tb" = "Тб";
 
-/* Part of phrases - By creating the portal you agree with our Terms of service */
-"Terms of service" = "Условиями использования";
+/* Part of phrases - By creating the portal you agree with our Privacy Policy and Terms of Service */
+"Terms of Service" = "Условиями использования";
 
 /* Notification title */
 "Text copied" = "Текст скопирован";
@@ -1049,6 +1037,9 @@
 
 /* No comment provided by engineer. */
 "The portal name must be between 6 and 50 characters long" = "Имя портала должно быть длиной от 6 до 50 символов";
+
+/* No comment provided by engineer. */
+"The request timed out." = "Время ожидания запроса истекло.";
 
 /* No comment provided by engineer. */
 "The server is not available." = "Сервер недоступен.";

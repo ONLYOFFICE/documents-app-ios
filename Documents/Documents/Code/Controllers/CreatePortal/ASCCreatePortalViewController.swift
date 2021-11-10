@@ -102,8 +102,9 @@ class ASCCreatePortalViewController: ASCBaseViewController {
         
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(tapTerms))
         termsLabel?.textStyle = .subheadLight
-        termsLabel?.attributedText = NSAttributedString(string: NSLocalizedString("By creating the portal you agree with our Terms of service", comment: ""))
-            .applying(attributes: [.foregroundColor: Asset.Colors.brend.color], toRangesMatching: NSLocalizedString("Terms of service", comment: ""))
+        termsLabel?.attributedText = NSAttributedString(string: NSLocalizedString("By creating the portal you agree with our Privacy Policy and Terms of Service", comment: ""))
+            .applying(attributes: [.foregroundColor: Asset.Colors.brend.color], toRangesMatching: NSLocalizedString("Privacy Policy", comment: ""))
+            .applying(attributes: [.foregroundColor: Asset.Colors.brend.color], toRangesMatching: NSLocalizedString("Terms of Service", comment: ""))
         termsLabel?.isUserInteractionEnabled = true
         termsLabel?.addGestureRecognizer(tapGesture)
         
@@ -167,9 +168,17 @@ class ASCCreatePortalViewController: ASCBaseViewController {
             return
         }
         
-        if  let range = text.range(of: NSLocalizedString("Terms of service", comment: "Part of phrases - By creating the portal you agree with our Terms of service")),
+        if  let range = text.range(of: NSLocalizedString("Terms of Service", comment: "Part of phrases - By creating the portal you agree with our Privacy Policy and Terms of Service")),
             recognizer.didTapAttributedTextInLabel(label: termsLabel, inRange: NSRange(range, in: text)),
-            let url = URL(string: ASCConstants.Urls.legalTerms),
+            let url = URL(string: ASCConstants.remoteConfigValue(forKey: ASCConstants.RemoteSettingsKeys.termsOfServiceLink)?.stringValue ?? ASCConstants.Urls.legalTerms),
+            UIApplication.shared.canOpenURL(url)
+        {
+            UIApplication.shared.open(url, options: [:], completionHandler: nil)
+        }
+        
+        if  let range = text.range(of: NSLocalizedString("Privacy Policy", comment: "Part of phrases - By creating the portal you agree with our Privacy Policy and Terms of Service")),
+            recognizer.didTapAttributedTextInLabel(label: termsLabel, inRange: NSRange(range, in: text)),
+            let url = URL(string: ASCConstants.remoteConfigValue(forKey: ASCConstants.RemoteSettingsKeys.privacyPolicyLink)?.stringValue ?? ASCConstants.Urls.legalTerms),
             UIApplication.shared.canOpenURL(url)
         {
             UIApplication.shared.open(url, options: [:], completionHandler: nil)

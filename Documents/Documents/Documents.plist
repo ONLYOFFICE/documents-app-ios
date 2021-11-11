@@ -186,6 +186,44 @@
 				<string>com.microsoft.word.mhtml</string>
 			</array>
 		</dict>
+		<dict>
+			<key>CFBundleTypeExtensions</key>
+			<array>
+				<string>oform</string>
+				<string>OFORM</string>
+			</array>
+			<key>CFBundleTypeIconFiles</key>
+			<array>
+				<string>list-format-oform</string>
+			</array>
+			<key>CFBundleTypeName</key>
+			<string>ONLYOFFICE Fill Form document (.oform)</string>
+			<key>LSHandlerRank</key>
+			<string>Owner</string>
+			<key>LSItemContentTypes</key>
+			<array>
+				<string>org.onlyoffice.oform</string>
+			</array>
+		</dict>
+		<dict>
+			<key>CFBundleTypeExtensions</key>
+			<array>
+				<string>docxf</string>
+				<string>DOCXF</string>
+			</array>
+			<key>CFBundleTypeIconFiles</key>
+			<array>
+				<string>list-format-docxf</string>
+			</array>
+			<key>CFBundleTypeName</key>
+			<string>ONLYOFFICE Edit Form document (.docxf)</string>
+			<key>LSHandlerRank</key>
+			<string>Owner</string>
+			<key>LSItemContentTypes</key>
+			<array>
+				<string>org.onlyoffice.docxf</string>
+			</array>
+		</dict>
 	</array>
 	<key>CFBundleExecutable</key>
 	<string>$(EXECUTABLE_NAME)</string>
@@ -347,6 +385,88 @@
 		<string>UIInterfaceOrientationPortraitUpsideDown</string>
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
+	</array>
+	<key>UTExportedTypeDeclarations</key>
+	<array>
+		<dict>
+			<key>UTTypeConformsTo</key>
+			<array>
+				<string>public.data</string>
+			</array>
+			<key>UTTypeDescription</key>
+			<string>ONLYOFFICE Fill Form document (.oform)</string>
+			<key>UTTypeIconFiles</key>
+			<array/>
+			<key>UTTypeIdentifier</key>
+			<string>org.onlyoffice.oform</string>
+			<key>UTTypeTagSpecification</key>
+			<dict>
+				<key>public.filename-extension</key>
+				<array>
+					<string>oform</string>
+					<string>OFORM</string>
+				</array>
+			</dict>
+		</dict>
+		<dict>
+			<key>UTTypeConformsTo</key>
+			<array>
+				<string>public.data</string>
+			</array>
+			<key>UTTypeDescription</key>
+			<string>ONLYOFFICE Edit Form document (.docxf)</string>
+			<key>UTTypeIconFiles</key>
+			<array/>
+			<key>UTTypeIdentifier</key>
+			<string>org.onlyoffice.docxf</string>
+			<key>UTTypeTagSpecification</key>
+			<dict>
+				<key>public.filename-extension</key>
+				<array>
+					<string>docxf</string>
+					<string>DOCXF</string>
+				</array>
+			</dict>
+		</dict>
+	</array>
+	<key>UTImportedTypeDeclarations</key>
+	<array>
+		<dict>
+			<key>UTTypeConformsTo</key>
+			<array>
+				<string>public.data</string>
+			</array>
+			<key>UTTypeDescription</key>
+			<string>ONLYOFFICE Fill Form document (.oform)</string>
+			<key>UTTypeIconFiles</key>
+			<array/>
+			<key>UTTypeIdentifier</key>
+			<string>org.onlyoffice.oform</string>
+			<key>UTTypeTagSpecification</key>
+			<dict>
+				<key>public.filename-extension</key>
+				<array>
+					<string>oform</string>
+					<string>OFORM</string>
+				</array>
+			</dict>
+		</dict>
+		<dict>
+			<key>UTTypeDescription</key>
+			<string>ONLYOFFICE Edit Form document (.docxf)</string>
+			<key>UTTypeIconFiles</key>
+			<array/>
+			<key>UTTypeIdentifier</key>
+			<string>org.onlyoffice.docxf</string>
+			<key>UTTypeTagSpecification</key>
+			<dict>
+				<key>public.filename-extension</key>
+				<array>
+					<string>docxf</string>
+					<string>DOCXF</string>
+				</array>
+			</dict>
+		</dict>
 	</array>
 </dict>
 </plist>

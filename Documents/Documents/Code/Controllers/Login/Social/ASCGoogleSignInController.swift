@@ -48,7 +48,6 @@ class ASCGoogleSignInController: NSObject {
         }
         
         let googleSignIn = GIDSignIn.sharedInstance
-        let googleScopes = [kGTLRAuthScopeDrive, kGTLRAuthScopeDriveAppdata, kGTLRAuthScopeDriveFile]
         var googleUser: GIDGoogleUser?
         var googleError: Error?
         
@@ -75,16 +74,19 @@ class ASCGoogleSignInController: NSObject {
         
         // Request additional scopes
         operationQueue.addOperation {
-            guard let user = googleUser else { return }
+            guard
+                let user = googleUser,
+                let requestScopes = scopes
+            else { return }
             
             // Check if already have granted scopes
-            if let grantedScopes = user.grantedScopes, grantedScopes.contains(googleScopes) {
+            if let grantedScopes = user.grantedScopes, grantedScopes.contains(requestScopes) {
                 return
             }
             
             let semaphore = DispatchSemaphore(value: 0)
             DispatchQueue.main.async {
-                googleSignIn.addScopes(googleScopes, presenting: controller) { user, error in
+                googleSignIn.addScopes(requestScopes, presenting: controller) { user, error in
                     defer { semaphore.signal() }
                     googleUser = user
                     googleError = error
@@ -109,9 +111,11 @@ class ASCGoogleSignInController: NSObject {
                 }
                 
                 // Double check if have granted scopes
-                if let grantedScopes = user.grantedScopes, !grantedScopes.contains(googleScopes) {
-                    strongSelf.signInHandler?(nil, nil, ASCGoogleSignInError.noGrantedScopes)
-                    return
+                if let requestScopes = scopes {
+                    if let grantedScopes = user.grantedScopes, !grantedScopes.contains(requestScopes) {
+                        strongSelf.signInHandler?(nil, nil, ASCGoogleSignInError.noGrantedScopes)
+                        return
+                    }
                 }
                 
                 strongSelf.signInHandler?(user.authentication.accessToken, NSKeyedArchiver.archivedData(withRootObject: user), nil)

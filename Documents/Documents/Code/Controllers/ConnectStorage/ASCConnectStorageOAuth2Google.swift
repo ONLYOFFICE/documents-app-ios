@@ -24,13 +24,12 @@ class ASCConnectStorageOAuth2Google: ASCConnectStorageOAuth2Delegate {
     // MARK: - ASCConnectStorageOAuth2 Delegate
     
     func viewDidLoad(controller: ASCConnectStorageOAuth2ViewController) {
-        let scopes = [kGTLRAuthScopeDrive, kGTLRAuthScopeDriveAppdata, kGTLRAuthScopeDriveFile].joined(separator: ", ")
         
         let parameters: [String: String] = [
             "access_type"        : "offline",
             "response_type"      : "code",
             "approval_prompt"    : "force",
-            "scope"              : scopes,
+            "scope"              : kGTLRAuthScopeDrive,
             "client_id"          : clientId ?? "",
             "redirect_uri"       : redirectUrl ?? ""
         ]

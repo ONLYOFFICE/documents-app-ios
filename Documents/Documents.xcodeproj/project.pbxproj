@@ -38,6 +38,7 @@
 		1D1A2E3A2660FF7F00D0335B /* ASCLoadedVCFinderModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D1A2E392660FF7F00D0335B /* ASCLoadedVCFinderModels.swift */; };
 		1D1A2E412661018100D0335B /* Assets.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCE186492628CFE70086D21B /* Assets.swift */; };
 		1D1A2E46266103AE00D0335B /* ASCLoadedViewControllerFinderProtocolTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D1A2E45266103AE00D0335B /* ASCLoadedViewControllerFinderProtocolTests.swift */; };
+		1D25F6A5273978E700C50691 /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FC28021425B9B8C5000E9D99 /* CloudKit.framework */; };
 		1D2E3B8A26BB290700BEBE9D /* ASCSharingSettingsAccessNotesProviderProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D2E3B8926BB290700BEBE9D /* ASCSharingSettingsAccessNotesProviderProtocol.swift */; };
 		1D2E3B8D26BB29DA00BEBE9D /* ASCSharingSettingsAccessForExternalLinkNotesProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D2E3B8C26BB29DA00BEBE9D /* ASCSharingSettingsAccessForExternalLinkNotesProvider.swift */; };
 		1D2E3B8F26BB2A7400BEBE9D /* ASCSharingSettingsAccessForUserOrGroupNotesProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D2E3B8E26BB2A7400BEBE9D /* ASCSharingSettingsAccessForUserOrGroupNotesProvider.swift */; };
@@ -110,6 +111,7 @@
 		1D71107A26A5A93000E00421 /* ASCShareSettingsAPIWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D71107926A5A93000E00421 /* ASCShareSettingsAPIWorker.swift */; };
 		1D71107D26A5A9A000E00421 /* ASCShareSettingsAPIWorkerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D71107C26A5A9A000E00421 /* ASCShareSettingsAPIWorkerTests.swift */; };
 		1D71107F26A8217400E00421 /* UINavigationItem+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D71107E26A8217300E00421 /* UINavigationItem+Extensions.swift */; };
+		1D84F975273FC2EC00C94E74 /* ASCAppleIdSignInController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D84F974273FC2EC00C94E74 /* ASCAppleIdSignInController.swift */; };
 		1D863F1126722FB3000BAC3C /* ASCSharingRightHolderTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D863F1026722FB3000BAC3C /* ASCSharingRightHolderTableViewCell.swift */; };
 		1D863F1A26725BC7000BAC3C /* ASCSharingRightHolderViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D863F1926725BC6000BAC3C /* ASCSharingRightHolderViewModel.swift */; };
 		1D863F1F2673DEFF000BAC3C /* ASCSwitchTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D863F1E2673DEFE000BAC3C /* ASCSwitchTableViewCell.swift */; };
@@ -804,6 +806,7 @@
 		1D71107926A5A93000E00421 /* ASCShareSettingsAPIWorker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCShareSettingsAPIWorker.swift; sourceTree = "<group>"; };
 		1D71107C26A5A9A000E00421 /* ASCShareSettingsAPIWorkerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCShareSettingsAPIWorkerTests.swift; sourceTree = "<group>"; };
 		1D71107E26A8217300E00421 /* UINavigationItem+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UINavigationItem+Extensions.swift"; sourceTree = "<group>"; };
+		1D84F974273FC2EC00C94E74 /* ASCAppleIdSignInController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCAppleIdSignInController.swift; sourceTree = "<group>"; };
 		1D863F1026722FB3000BAC3C /* ASCSharingRightHolderTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCSharingRightHolderTableViewCell.swift; sourceTree = "<group>"; };
 		1D863F1926725BC6000BAC3C /* ASCSharingRightHolderViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCSharingRightHolderViewModel.swift; sourceTree = "<group>"; };
 		1D863F1E2673DEFE000BAC3C /* ASCSwitchTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCSwitchTableViewCell.swift; sourceTree = "<group>"; };
@@ -1286,6 +1289,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				667548327089FF37AB5BACBB /* Pods_Documents_Alpha.framework in Frameworks */,
+				1D25F6A5273978E700C50691 /* CloudKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2100,6 +2104,7 @@
 				FC64B2E91EE56C5500920FDD /* ASCFacebookSignInController.swift */,
 				FC64B2EA1EE56C5500920FDD /* ASCGoogleSignInController.swift */,
 				FC6F0CD61F542E7E002D33D9 /* ASCSSOSignInController.swift */,
+				1D84F974273FC2EC00C94E74 /* ASCAppleIdSignInController.swift */,
 			);
 			path = Social;
 			sourceTree = "<group>";
@@ -2976,7 +2981,6 @@
 				"${PODS_ROOT}/../../editors-ios/build/SDK/lib/graphics.framework",
 				"${PODS_ROOT}/../../editors-ios/build/SDK/lib/HtmlFile2.framework",
 				"${PODS_ROOT}/../../editors-ios/build/SDK/lib/HtmlRenderer.framework",
-				"${PODS_ROOT}/../../editors-ios/build/SDK/lib/kernel_network.framework",
 				"${PODS_ROOT}/../../editors-ios/build/SDK/lib/kernel.framework",
 				"${PODS_ROOT}/../../editors-ios/build/SDK/lib/PdfReader.framework",
 				"${PODS_ROOT}/../../editors-ios/build/SDK/lib/PdfWriter.framework",
@@ -3039,7 +3043,6 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/graphics.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/HtmlFile2.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/HtmlRenderer.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/kernel_network.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/kernel.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/PdfReader.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/PdfWriter.framework",
@@ -3254,7 +3257,6 @@
 				"${PODS_ROOT}/../../editors-ios/build/SDK/lib/graphics.framework",
 				"${PODS_ROOT}/../../editors-ios/build/SDK/lib/HtmlFile2.framework",
 				"${PODS_ROOT}/../../editors-ios/build/SDK/lib/HtmlRenderer.framework",
-				"${PODS_ROOT}/../../editors-ios/build/SDK/lib/kernel_network.framework",
 				"${PODS_ROOT}/../../editors-ios/build/SDK/lib/kernel.framework",
 				"${PODS_ROOT}/../../editors-ios/build/SDK/lib/PdfReader.framework",
 				"${PODS_ROOT}/../../editors-ios/build/SDK/lib/PdfWriter.framework",
@@ -3317,7 +3319,6 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/graphics.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/HtmlFile2.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/HtmlRenderer.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/kernel_network.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/kernel.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/PdfReader.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/PdfWriter.framework",
@@ -3932,6 +3933,7 @@
 				FCAE74F5233B859B005CC32C /* MGSwipeButton+Extensions.swift in Sources */,
 				FCADF37A1EC9DA9A001CA4A9 /* NSLayoutConstraint+Extensions.swift in Sources */,
 				FCEF856F26C64B7A00173DDF /* WhatsNewService.swift in Sources */,
+				1D84F975273FC2EC00C94E74 /* ASCAppleIdSignInController.swift in Sources */,
 				1D128F9C26B3285300603B0F /* ASCCentredLabelHeaderFooterView.swift in Sources */,
 				FC1755971E9CAFDB00D73D8E /* ASCSortViewController.swift in Sources */,
 				FCEF9D2E1ED2D0DC00627BA5 /* ASCPasscodeLockViewController.swift in Sources */,
@@ -4629,6 +4631,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = Documents/Entitlements/Documents.entitlements;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = 2WH24U26GJ;
 				ENABLE_BITCODE = YES;
@@ -4652,6 +4655,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = Documents/Entitlements/Documents.entitlements;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 2WH24U26GJ;
 				ENABLE_BITCODE = YES;
 				INFOPLIST_FILE = Documents/Documents.plist;
@@ -4659,6 +4663,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.onlyoffice.Documents;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "Documents/Code/Bridge/Documents-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";

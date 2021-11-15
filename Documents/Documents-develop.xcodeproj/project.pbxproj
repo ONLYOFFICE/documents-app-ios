@@ -510,14 +510,9 @@
 		FC12ACF12567CF5E00FF1CBB /* ASCAnalytics.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCAnalytics.swift; sourceTree = "<group>"; };
 		FC1755961E9CAFDB00D73D8E /* ASCSortViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASCSortViewController.swift; sourceTree = "<group>"; };
 		FC1AD6132175FE7000DADEE0 /* ASCNetworkReachability.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCNetworkReachability.swift; sourceTree = "<group>"; };
-		FC1CA5B3264529E1001CC5CA /* ASCOnlyofficeCategoriesProviderProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASCOnlyofficeCategoriesProviderProtocol.swift; sourceTree = "<group>"; };
-		FC1CA5B5264529E1001CC5CA /* ASCOnlyofficeCategoriesProviderFactory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASCOnlyofficeCategoriesProviderFactory.swift; sourceTree = "<group>"; };
 		FC1CA5D8264AC55B001CC5CA /* OnlyofficeUserPhoto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnlyofficeUserPhoto.swift; sourceTree = "<group>"; };
 		FC1CA5DA264ADD10001CC5CA /* OnlyofficePath.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnlyofficePath.swift; sourceTree = "<group>"; };
 		FC1EA5D11ECF2A6D008FEE2E /* ASCSettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASCSettingsViewController.swift; sourceTree = "<group>"; };
-		FC239979267A2D9600B82EAC /* ASCLoadedVCFinderModels.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASCLoadedVCFinderModels.swift; sourceTree = "<group>"; };
-		FC23997A267A2D9600B82EAC /* ASCLoadedDocumentViewControllerByProviderAndFolderFinder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASCLoadedDocumentViewControllerByProviderAndFolderFinder.swift; sourceTree = "<group>"; };
-		FC23997C267A2D9600B82EAC /* ASCLoadedViewControllerFinderProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASCLoadedViewControllerFinderProtocol.swift; sourceTree = "<group>"; };
 		FC239980267A2E0F00B82EAC /* ASCOneDriveFileProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASCOneDriveFileProvider.swift; sourceTree = "<group>"; };
 		FC239981267A2E0F00B82EAC /* ASCOneDriveProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASCOneDriveProvider.swift; sourceTree = "<group>"; };
 		FC23FC5A2043EEEF003B3AE7 /* ASCUserAvatarView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASCUserAvatarView.swift; sourceTree = "<group>"; };
@@ -608,11 +603,6 @@
 		FC6839A121B81B1D00251CEA /* ASCOwnCloudProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCOwnCloudProvider.swift; sourceTree = "<group>"; };
 		FC6852162683572600D830EC /* ASCOneDriveFileProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASCOneDriveFileProvider.swift; sourceTree = "<group>"; };
 		FC6852172683572600D830EC /* ASCOneDriveProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASCOneDriveProvider.swift; sourceTree = "<group>"; };
-		FC6852212683583100D830EC /* ASCOnlyofficeCategoriesProviderFilterProxy.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASCOnlyofficeCategoriesProviderFilterProxy.swift; sourceTree = "<group>"; };
-		FC6852232683586900D830EC /* ASCOnlyofficeAPICategoriesProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASCOnlyofficeAPICategoriesProvider.swift; sourceTree = "<group>"; };
-		FC6852242683586900D830EC /* ASCOnlyofficeAppBasedCategoriesProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASCOnlyofficeAppBasedCategoriesProvider.swift; sourceTree = "<group>"; };
-		FC6852252683586A00D830EC /* ASCOnlyofficeUserDefaultsCacheCategoriesProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASCOnlyofficeUserDefaultsCacheCategoriesProvider.swift; sourceTree = "<group>"; };
-		FC685229268358B300D830EC /* ASCOnlyofficeCacheCategoriesProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASCOnlyofficeCacheCategoriesProvider.swift; sourceTree = "<group>"; };
 		FC6A691025C83C1D007F1FD6 /* ASCFileProviderProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASCFileProviderProtocol.swift; sourceTree = "<group>"; };
 		FC6DD4E51EDD59330095B16C /* ParkedTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ParkedTextField.swift; sourceTree = "<group>"; };
 		FC6F0CD61F542E7E002D33D9 /* ASCSSOSignInController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASCSSOSignInController.swift; sourceTree = "<group>"; };
@@ -1820,23 +1810,6 @@
 			path = 2FA;
 			sourceTree = "<group>";
 		};
-		FC9B4334268E00E80009A33A /* Recovered References */ = {
-			isa = PBXGroup;
-			children = (
-				FC23997C267A2D9600B82EAC /* ASCLoadedViewControllerFinderProtocol.swift */,
-				FC685229268358B300D830EC /* ASCOnlyofficeCacheCategoriesProvider.swift */,
-				FC1CA5B5264529E1001CC5CA /* ASCOnlyofficeCategoriesProviderFactory.swift */,
-				FC239979267A2D9600B82EAC /* ASCLoadedVCFinderModels.swift */,
-				FC1CA5B3264529E1001CC5CA /* ASCOnlyofficeCategoriesProviderProtocol.swift */,
-				FC6852252683586A00D830EC /* ASCOnlyofficeUserDefaultsCacheCategoriesProvider.swift */,
-				FC23997A267A2D9600B82EAC /* ASCLoadedDocumentViewControllerByProviderAndFolderFinder.swift */,
-				FC6852232683586900D830EC /* ASCOnlyofficeAPICategoriesProvider.swift */,
-				FC6852242683586900D830EC /* ASCOnlyofficeAppBasedCategoriesProvider.swift */,
-				FC6852212683583100D830EC /* ASCOnlyofficeCategoriesProviderFilterProxy.swift */,
-			);
-			name = "Recovered References";
-			sourceTree = "<group>";
-		};
 		FCA441B92680FE2900A33CB8 /* Request */ = {
 			isa = PBXGroup;
 			children = (
@@ -2229,7 +2202,6 @@
 				FCFDAA8E1E48A10C007A240C /* Products */,
 				967F0E48AC396784C203345A /* Pods */,
 				B7E3C8EC6916BB80232E66FA /* Frameworks */,
-				FC9B4334268E00E80009A33A /* Recovered References */,
 			);
 			sourceTree = "<group>";
 		};

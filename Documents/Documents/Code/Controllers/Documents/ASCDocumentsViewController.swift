@@ -2768,6 +2768,10 @@ class ASCDocumentsViewController: ASCBaseTableViewController, UIGestureRecognize
                             self.tableView.endUpdates()
                         }
                     }
+                    
+                    if (categoryIsFavorite && !favorite) {
+                        showEmptyView(total < 1)
+                    }
                 } else {
                     hud?.hide(animated: false)
                 }

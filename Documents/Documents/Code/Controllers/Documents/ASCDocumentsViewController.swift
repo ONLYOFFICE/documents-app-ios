@@ -3080,16 +3080,12 @@ class ASCDocumentsViewController: ASCBaseTableViewController, UIGestureRecognize
                             completion?(nil)
                         } else {
                             strongSelf.insideTransfer(items: items, to: folder, move: move, overwride: overwride, completion: { entities in
-                                completion?(entities)
-                                guard let transfers = entities else {
-                                    completion?(nil)
+                                guard let _ = entities else {
+                                    completion?(items)
                                     return
                                 }
                                 
-                                if move {
-                                    transferNavigationVC.sourceProvider?.items.removeAll(transfers)
-                                    strongSelf.tableView.reloadData()
-                                }
+                                completion?(nil)
                                 
                                 if let destVC = getLoadedViewController(byFolderId: folder.id, andProviderId: provider.id) {
                                     destVC.loadFirstPage()

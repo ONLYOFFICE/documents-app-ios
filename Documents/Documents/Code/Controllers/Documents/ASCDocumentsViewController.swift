@@ -3774,6 +3774,36 @@ extension ASCDocumentsViewController: ASCProviderDelegate {
         
         showEmptyView(total < 1)
     }
+    
+    func presentShareController(provider: ASCFileProviderProtocol, entity: ASCEntity) {
+        if let keyWindow = UIApplication.shared.windows.filter({ $0.isKeyWindow }).first {
+            if var topController = keyWindow.rootViewController {
+                while let presentedViewController = topController.presentedViewController {
+                    topController = presentedViewController
+                }
+                presentShareController(in: topController, entity: entity)
+            }
+        }
+    }
+    
+    
+    /// Helper function to present share screen from editors
+    /// - Parameters:
+    ///   - parent: Parent view controller
+    ///   - entity: Entity to share
+    private func presentShareController(in parent: UIViewController, entity: ASCEntity) {
+        let sharedViewController = ASCSharingOptionsViewController(style: .grouped)
+        let sharedNavigationVC = ASCBaseNavigationController(rootASCViewController: sharedViewController)
+        
+        if UIDevice.pad {
+            sharedNavigationVC.modalPresentationStyle = .formSheet
+        }
+        
+        parent.present(sharedNavigationVC, animated: true, completion: nil)
+        sharedViewController.setup(entity: entity)
+        sharedViewController.requestToLoadRightHolders()
+    }
+
 }
 
 // MARK: - UITableViewDragDelegate

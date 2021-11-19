@@ -443,7 +443,7 @@ class ASCOnlyofficeProvider: ASCFileProviderProtocol & ASCSortableFileProviderPr
                 let semaphore = DispatchSemaphore(value: 0)
 
                 if isShareRoot {
-                    self.apiClient.request(OnlyofficeAPI.Endpoints.Sharing.removeSharingRights) { response, error in
+                    self.apiClient.request(OnlyofficeAPI.Endpoints.Sharing.removeSharingRights, parameters) { response, error in
                         defer { semaphore.signal() }
                         
                         if response?.result ?? false {
@@ -904,6 +904,10 @@ class ASCOnlyofficeProvider: ASCFileProviderProtocol & ASCSortableFileProviderPr
         
         if category?.folder?.rootFolderType == .onlyofficeRecent {
             return false
+        }
+        
+        if category?.folder?.rootFolderType == .onlyofficeShare {
+            return true
         }
         
         let isProjectRoot = isRoot(folder: parentFolder) && (parentFolder?.rootFolderType == .onlyofficeBunch || parentFolder?.rootFolderType == .onlyofficeProjects)

@@ -457,15 +457,34 @@ class ASCOnlyofficeProvider: ASCFileProviderProtocol & ASCSortableFileProviderPr
                     }
                 } else {
                     self.apiClient.request(OnlyofficeAPI.Endpoints.Operations.removeEntities, parameters) { response, error in
-                        defer { semaphore.signal() }
                         
                         if (response?.result?.count ?? 0) > 0 {
-                            resultItems += entities.filter { folderIds.contains($0.id) }
-                            resultItems += entities.filter { fileIds.contains($0.id) }
+                            var checkOperation: (()->Void)?
+                            checkOperation = {
+                                self.apiClient.request(OnlyofficeAPI.Endpoints.Operations.list) {
+                                    result, error in
+                                    defer { semaphore.signal() }
+                                    if let error = error {
+                                        lastError = ASCProviderError(msg: error.localizedDescription)
+                                    } else if let operation = result?.result?.first, let progress = operation.progress {
+                                        if progress >= 100 {
+                                            resultItems += entities.filter { folderIds.contains($0.id) }
+                                            resultItems += entities.filter { fileIds.contains($0.id) }
+                                        } else {
+                                            Thread.sleep(forTimeInterval: 1)
+                                            checkOperation?()
+                                        }
+                                    } else {
+                                        lastError = ASCProviderError(msg: NetworkingError.invalidData.localizedDescription)
+                                    }
+                                }
+                            }
+                            checkOperation?()
                         } else {
                             lastError = ASCProviderError(
                                 msg: error?.localizedDescription ?? NSLocalizedString("Unable delete items", comment: "")
                             )
+                            semaphore.signal()
                         }
                     }
                 }

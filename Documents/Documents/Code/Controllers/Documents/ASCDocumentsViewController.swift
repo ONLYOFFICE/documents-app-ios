@@ -149,11 +149,6 @@ class ASCDocumentsViewController: ASCBaseTableViewController, UIGestureRecognize
         guard let view = UIView.loadFromNib(named: String(describing: ASCDocumentsEmptyView.self)) as? ASCDocumentsEmptyView else { return nil }
         return view
     }()
-
-    private lazy var categoryIsShare: Bool = {
-        guard let onlyOfficeProvider = provider as? ASCOnlyofficeProvider else { return false }
-        return onlyOfficeProvider.category?.folder?.rootFolderType == .onlyofficeShare
-    }()
     
     private lazy var categoryIsRecent: Bool = {
         guard let onlyOfficeProvider = provider as? ASCOnlyofficeProvider else { return false }
@@ -1241,13 +1236,9 @@ class ASCDocumentsViewController: ASCBaseTableViewController, UIGestureRecognize
                 tintColor: nil
             )
             
-            let deleteTitle = categoryIsShare
-            ? NSLocalizedString("Remove from list", comment: "Button title")
-            : NSLocalizedString("Delete File", comment: "Button title")
-            
             alertDelete.addAction(
                 UIAlertAction(
-                    title: deleteTitle,
+                    title: NSLocalizedString("Delete File", comment: "Button title"),
                     style: .destructive,
                     handler: { (action) in
                         cell.hideSwipe(animated: true)
@@ -1399,15 +1390,11 @@ class ASCDocumentsViewController: ASCBaseTableViewController, UIGestureRecognize
                 tintColor: nil
             )
             
-            let deleteFolderTitle = categoryIsShare
-            ? NSLocalizedString("Remove from list", comment: "")
-            : NSLocalizedString("Delete Folder", comment: "")
-            
             alertDelete.addAction(
                 UIAlertAction(
                     title: folder.isThirdParty && !(self.folder?.isThirdParty ?? false)
                         ? NSLocalizedString("Disconnect third party", comment: "")
-                        : deleteFolderTitle,
+                        : NSLocalizedString("Delete Folder", comment: ""),
                     style: .destructive,
                     handler: { (action) in
                         cell.hideSwipe(animated: true)
@@ -3478,22 +3465,12 @@ class ASCDocumentsViewController: ASCBaseTableViewController, UIGestureRecognize
             let fileCount = selectetItems.filter{ $0 is ASCFile }.count
             
             var message = NSLocalizedString("Delete", comment: "")
-            if categoryIsShare {
-                if folderCount > 0 && fileCount > 0 {
-                    message = String(format: NSLocalizedString("Remove %lu Folder and %lu File from list", comment: ""), folderCount, fileCount)
-                } else if folderCount > 0 {
-                    message = String(format: NSLocalizedString("Remove %lu Folder from list", comment: ""), folderCount)
-                } else if fileCount > 0 {
-                    message = String(format: NSLocalizedString("Remove %lu File from list", comment: ""), fileCount)
-                }
-            } else {
-                if folderCount > 0 && fileCount > 0 {
-                    message = String(format: NSLocalizedString("Delete %lu Folder and %lu File", comment: ""), folderCount, fileCount)
-                } else if folderCount > 0 {
-                    message = String(format: NSLocalizedString("Delete %lu Folder", comment: ""), folderCount)
-                } else if fileCount > 0 {
-                    message = String(format: NSLocalizedString("Delete %lu File", comment: ""), fileCount)
-                }
+            if folderCount > 0 && fileCount > 0 {
+                message = String(format: NSLocalizedString("Delete %lu Folder and %lu File", comment: ""), folderCount, fileCount)
+            } else if folderCount > 0 {
+                message = String(format: NSLocalizedString("Delete %lu Folder", comment: ""), folderCount)
+            } else if fileCount > 0 {
+                message = String(format: NSLocalizedString("Delete %lu File", comment: ""), fileCount)
             }
             
             let deleteController = UIAlertController(

@@ -3316,8 +3316,6 @@ class ASCDocumentsViewController: ASCBaseTableViewController, UIGestureRecognize
                 // Remove data
                 for item in deteteItems {
                     if let indexPath = self.indexPath(by: item) {
-//                        self.tableData.remove(at: indexPath.row)
-//                        self.total -= 1
                         self.provider?.remove(at: indexPath.row)
                     }
                 }
@@ -3765,8 +3763,6 @@ extension ASCDocumentsViewController: ASCProviderDelegate {
     }
     
     func updateItems(provider: ASCFileProviderProtocol) {
-//        total = provider.total
-//        tableData = provider.items
         tableView.reloadData()
         
         // TODO: Or search diff and do it animated
@@ -3784,7 +3780,6 @@ extension ASCDocumentsViewController: ASCProviderDelegate {
             }
         }
     }
-    
     
     /// Helper function to present share screen from editors
     /// - Parameters:
@@ -4019,8 +4014,6 @@ extension ASCDocumentsViewController: UITableViewDropDelegate {
                                     for item in entities {
                                         if let indexPath = strongSelf.indexPath(by: item) {
                                             strongSelf.provider?.remove(at: indexPath.row)
-//                                            strongSelf.tableData.remove(at: indexPath.row)
-//                                            strongSelf.total -= 1
                                         }
                                     }
 

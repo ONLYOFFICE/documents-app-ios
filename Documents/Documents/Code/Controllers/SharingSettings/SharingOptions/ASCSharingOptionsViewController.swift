@@ -23,6 +23,8 @@ class ASCSharingOptionsViewController: ASCBaseTableViewController {
     var hud: MBProgressHUD?
     var rightHolderCurrentlyLoading = false
     
+    lazy var accessToAddRightHoldersChecker: ASCAccessToAddRightHoldersCheckerProtocol = ASCAccessToAddRightHoldersCheckerByHost(host: OnlyofficeApiClient.shared.baseURL?.host)
+    
     private var internalLink: String?
     private var externalLink: ASCSharingOprionsExternalLink?
     private var isSwitchActive: Bool { (externalLink != nil) && (externalLink!.access != .deny) && (externalLink!.access != .none) }
@@ -36,7 +38,7 @@ class ASCSharingOptionsViewController: ASCBaseTableViewController {
     private var importantRightHolders: [ASCSharingRightHolderViewModel] = []
     private var otherRightHolders: [ASCSharingRightHolderViewModel] = []
     
-    fileprivate var isModuleConfigurated = false
+    private var isModuleConfigurated = false
     
     private lazy var accessViewController = ASCSharingSettingsAccessViewController()
     
@@ -55,7 +57,7 @@ class ASCSharingOptionsViewController: ASCBaseTableViewController {
         let viewConfigurator = ASCSharingView(delegate: self)
         self.viewConfigurator = viewConfigurator
         viewConfigurator.configureNavigationBar(navigationController)
-        viewConfigurator.configureNavigationItem(navigationItem)
+        viewConfigurator.configureNavigationItem(navigationItem, allowAddRightHoders: accessToAddRightHoldersChecker.checkAccessToAddRightHolders())
         viewConfigurator.configureTableView(tableView)
         
         if rightHolderCurrentlyLoading && !viewConfigurator.loadingTableActivityIndicator.isAnimating {
@@ -70,7 +72,8 @@ class ASCSharingOptionsViewController: ASCBaseTableViewController {
             let viewController        = self
             let interactor            = ASCSharingOptionsInteractor(entityLinkMaker: ASCOnlyofficeFileInternalLinkMaker(),
                                                                     entity: entity,
-                                                                    apiWorker: ASCShareSettingsAPIWorker(), networkingRequestManager: OnlyofficeApiClient.shared)
+                                                                    apiWorker: ASCShareSettingsAPIWorkerFactory().get(by: OnlyofficeApiClient.shared.baseURL?.host),
+                                                                    networkingRequestManager: OnlyofficeApiClient.shared)
             let presenter             = ASCSharingOptionsPresenter()
             let router                = ASCSharingOptionsRouter()
             viewController.interactor = interactor
@@ -202,6 +205,8 @@ extension ASCSharingOptionsViewController: ASCSharingOptionsDisplayLogic {
                     tableView.insertRows(at: [viewModel.indexPath], with: .left)
                 }
             }
+        case .displayError(let errorMessage):
+            UIAlertController.showError(in: self, message: errorMessage)
         }
     }
     
@@ -337,7 +342,9 @@ extension ASCSharingOptionsViewController {
             return nil
         }
         
-        view.centredTextLabel.text = NSLocalizedString("Add users or groups and give them to \n read, review or edit documents.", comment: "")
+        if accessToAddRightHoldersChecker.checkAccessToAddRightHolders() {
+            view.centredTextLabel.text = NSLocalizedString("Add users or groups and give them to \n read, review or edit documents.", comment: "")
+        }
         return view
     }
     

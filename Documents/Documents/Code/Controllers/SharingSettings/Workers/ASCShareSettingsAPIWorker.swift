@@ -9,26 +9,7 @@
 import Foundation
 
 class ASCShareSettingsAPIWorker: ASCShareSettingsAPIWorkerProtocol {
-    func convertToParams(shareItems: [OnlyofficeShare]) -> [OnlyofficeShareItemRequestModel] {
-        var shares: [OnlyofficeShareItemRequestModel] = []
-        
-        for share in shareItems {
-            if let itemId = share.user?.userId ?? share.group?.id {
-                shares.append(OnlyofficeShareItemRequestModel(shareTo: itemId, access: share.access))
-            }
-        }
-        
-        return shares
-    }
-    
-    func convertToParams(items: [(rightHolderId: String, access: ASCShareAccess)]) -> [OnlyofficeShareItemRequestModel] {
-        var shares: [OnlyofficeShareItemRequestModel] = []
-        for item in items {
-            shares.append(OnlyofficeShareItemRequestModel(shareTo: item.rightHolderId, access: item.access))
-        }
-        return shares
-    }
-    
+
     func makeApiRequest(entity: ASCEntity) -> Endpoint<OnlyofficeResponseArray<OnlyofficeShare>>? {
         var request: Endpoint<OnlyofficeResponseArray<OnlyofficeShare>>? = nil
         
@@ -37,7 +18,10 @@ class ASCShareSettingsAPIWorker: ASCShareSettingsAPIWorkerProtocol {
         } else if let folder = entity as? ASCFolder {
             request = OnlyofficeAPI.Endpoints.Sharing.folder(folder: folder)
         }
-        
         return request
+    }
+    
+    func convertToParams(entities: [ASCEntity]) -> [String : [ASCEntityId]]? {
+        nil
     }
 }

@@ -149,7 +149,7 @@ class ASCDocumentsViewController: ASCBaseTableViewController, UIGestureRecognize
         guard let view = UIView.loadFromNib(named: String(describing: ASCDocumentsEmptyView.self)) as? ASCDocumentsEmptyView else { return nil }
         return view
     }()
-
+    
     private lazy var categoryIsRecent: Bool = {
         guard let onlyOfficeProvider = provider as? ASCOnlyofficeProvider else { return false }
         return onlyOfficeProvider.category?.folder?.rootFolderType == .onlyofficeRecent
@@ -3465,7 +3465,6 @@ class ASCDocumentsViewController: ASCBaseTableViewController, UIGestureRecognize
             let fileCount = selectetItems.filter{ $0 is ASCFile }.count
             
             var message = NSLocalizedString("Delete", comment: "")
-            
             if folderCount > 0 && fileCount > 0 {
                 message = String(format: NSLocalizedString("Delete %lu Folder and %lu File", comment: ""), folderCount, fileCount)
             } else if folderCount > 0 {

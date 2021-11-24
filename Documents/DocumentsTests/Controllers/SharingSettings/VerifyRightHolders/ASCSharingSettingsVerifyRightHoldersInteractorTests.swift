@@ -11,7 +11,6 @@ import XCTest
 
 class ASCSharingSettingsVerifyRightHoldersInteractorTests: XCTestCase {
     
-    
     var sut: ASCSharingSettingsVerifyRightHoldersInteractor!
     var presenter: PresenterMock!
 
@@ -323,6 +322,12 @@ extension ASCSharingSettingsVerifyRightHoldersInteractorTests {
         
         func convertToParams(items: [(rightHolderId: String, access: ASCShareAccess)]) -> [OnlyofficeShareItemRequestModel] { [] }
         
+        func convertToParams(entities: [ASCEntity]) -> [String: [ASCEntityId]]? {
+            nil
+        }
+        
         func makeApiRequest(entity: ASCEntity) -> Endpoint<OnlyofficeResponseArray<OnlyofficeShare>>? { nil }
+        
+
     }
 }

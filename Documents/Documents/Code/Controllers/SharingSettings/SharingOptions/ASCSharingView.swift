@@ -38,7 +38,7 @@ class ASCSharingView {
         if #available(iOS 13.0, *) {
             icon = UIImage(systemName: "person.crop.circle.fill.badge.plus")
         } else {
-            icon = Asset.Images.navAdd.image // MARK: - todo replace the image
+            icon = Asset.Images.navAdd.image
         }
         return UIBarButtonItem(image: icon, style: .plain, target: self, action: #selector(onAddRightsBarButtonTap))
     }()
@@ -56,13 +56,17 @@ class ASCSharingView {
         navBarHeigh = navigationController?.navigationBar.height ?? 0
     }
     
-    public func configureNavigationItem(_ navigationItem: UINavigationItem) {
+    public func configureNavigationItem(_ navigationItem: UINavigationItem, allowAddRightHoders: Bool) {
         navigationItem.leftBarButtonItem = doneBarBtn
         navigationItem.title = NSLocalizedString("Sharing settings", comment: "")
-        navigationItem.rightBarButtonItems = [
-            addRightsBarButtonItem,
-            linkBarButtonItem
-        ]
+        
+        var items = [UIBarButtonItem]()
+        if allowAddRightHoders {
+            items.append(addRightsBarButtonItem)
+        }
+        items.append(linkBarButtonItem)
+        
+        navigationItem.rightBarButtonItems = items
     }
     
     public func configureTableView(_ tableView: UITableView) {

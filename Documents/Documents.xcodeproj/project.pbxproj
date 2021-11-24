@@ -141,6 +141,13 @@
 		1DCCEC0A268DBD9C00692167 /* ASCSharingOptionsViewControllerTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DCCEC09268DBD9C00692167 /* ASCSharingOptionsViewControllerTest.swift */; };
 		1DE6D6BC2631AEE1001B825B /* ASCOnlyofficeAPICategoriesProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DE6D6BB2631AEE1001B825B /* ASCOnlyofficeAPICategoriesProvider.swift */; };
 		1DE6D6C42631BE03001B825B /* ASCOnlyofficeCategoriesProviderFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DE6D6C32631BE03001B825B /* ASCOnlyofficeCategoriesProviderFactory.swift */; };
+		1DEB996F274E2C7C0071C1DB /* ASCPersonalShareSettingsAPIWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DEB996E274E2C7C0071C1DB /* ASCPersonalShareSettingsAPIWorker.swift */; };
+		1DEB9971274E2EF90071C1DB /* ASCPersonalShareSettingsAPIWorkerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DEB9970274E2EF90071C1DB /* ASCPersonalShareSettingsAPIWorkerTests.swift */; };
+		1DEB9973274E3ED10071C1DB /* ASCShareSettingsAPIWorkerFactoryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DEB9972274E3ED10071C1DB /* ASCShareSettingsAPIWorkerFactoryTests.swift */; };
+		1DEB9976274E46480071C1DB /* ASCShareSettingsAPIWorkerFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DEB9975274E46480071C1DB /* ASCShareSettingsAPIWorkerFactory.swift */; };
+		1DEB9978274E4DC80071C1DB /* ASCAccessToAddRightHoldersCheckerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DEB9977274E4DC80071C1DB /* ASCAccessToAddRightHoldersCheckerProtocol.swift */; };
+		1DEB997A274E4E6A0071C1DB /* ASCAccessToAddRightHoldersCheckerByHost.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DEB9979274E4E6A0071C1DB /* ASCAccessToAddRightHoldersCheckerByHost.swift */; };
+		1DEB997C274E4F140071C1DB /* ASCAccessToAddRightHoldersCheckerByHostTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DEB997B274E4F140071C1DB /* ASCAccessToAddRightHoldersCheckerByHostTests.swift */; };
 		1DF505242641867300B78496 /* ASCOneDriveFileProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DF505232641867300B78496 /* ASCOneDriveFileProvider.swift */; };
 		1DF6E0A926D5323B00FB42CE /* ASCOneDriveProviderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DF6E0A826D5323A00FB42CE /* ASCOneDriveProviderTests.swift */; };
 		667548327089FF37AB5BACBB /* Pods_Documents_Alpha.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 92C4B2EE0CEF31DA5A45CD1A /* Pods_Documents_Alpha.framework */; };
@@ -835,6 +842,13 @@
 		1DCCEC09268DBD9C00692167 /* ASCSharingOptionsViewControllerTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCSharingOptionsViewControllerTest.swift; sourceTree = "<group>"; };
 		1DE6D6BB2631AEE1001B825B /* ASCOnlyofficeAPICategoriesProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCOnlyofficeAPICategoriesProvider.swift; sourceTree = "<group>"; };
 		1DE6D6C32631BE03001B825B /* ASCOnlyofficeCategoriesProviderFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCOnlyofficeCategoriesProviderFactory.swift; sourceTree = "<group>"; };
+		1DEB996E274E2C7C0071C1DB /* ASCPersonalShareSettingsAPIWorker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCPersonalShareSettingsAPIWorker.swift; sourceTree = "<group>"; };
+		1DEB9970274E2EF90071C1DB /* ASCPersonalShareSettingsAPIWorkerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCPersonalShareSettingsAPIWorkerTests.swift; sourceTree = "<group>"; };
+		1DEB9972274E3ED10071C1DB /* ASCShareSettingsAPIWorkerFactoryTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCShareSettingsAPIWorkerFactoryTests.swift; sourceTree = "<group>"; };
+		1DEB9975274E46480071C1DB /* ASCShareSettingsAPIWorkerFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCShareSettingsAPIWorkerFactory.swift; sourceTree = "<group>"; };
+		1DEB9977274E4DC80071C1DB /* ASCAccessToAddRightHoldersCheckerProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCAccessToAddRightHoldersCheckerProtocol.swift; sourceTree = "<group>"; };
+		1DEB9979274E4E6A0071C1DB /* ASCAccessToAddRightHoldersCheckerByHost.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCAccessToAddRightHoldersCheckerByHost.swift; sourceTree = "<group>"; };
+		1DEB997B274E4F140071C1DB /* ASCAccessToAddRightHoldersCheckerByHostTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCAccessToAddRightHoldersCheckerByHostTests.swift; sourceTree = "<group>"; };
 		1DF505232641867300B78496 /* ASCOneDriveFileProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCOneDriveFileProvider.swift; sourceTree = "<group>"; };
 		1DF6E0A826D5323A00FB42CE /* ASCOneDriveProviderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCOneDriveProviderTests.swift; sourceTree = "<group>"; };
 		223510FCC80632095899444E /* Pods_Documents_DocumentsTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Documents_DocumentsTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -1329,6 +1343,7 @@
 			isa = PBXGroup;
 			children = (
 				1D14AAC32694F07C009E48AD /* ASCOnlyofficeFileInternalLinkMaker.swift */,
+				1DEB9979274E4E6A0071C1DB /* ASCAccessToAddRightHoldersCheckerByHost.swift */,
 			);
 			path = Workers;
 			sourceTree = "<group>";
@@ -1337,6 +1352,7 @@
 			isa = PBXGroup;
 			children = (
 				1D14AAC62694F0C4009E48AD /* ASCOnlyofficeFileInternalLinkMakerTests.swift */,
+				1DEB997B274E4F140071C1DB /* ASCAccessToAddRightHoldersCheckerByHostTests.swift */,
 			);
 			path = Workers;
 			sourceTree = "<group>";
@@ -1582,6 +1598,8 @@
 			isa = PBXGroup;
 			children = (
 				1D71107926A5A93000E00421 /* ASCShareSettingsAPIWorker.swift */,
+				1DEB996E274E2C7C0071C1DB /* ASCPersonalShareSettingsAPIWorker.swift */,
+				1DEB9975274E46480071C1DB /* ASCShareSettingsAPIWorkerFactory.swift */,
 			);
 			path = Workers;
 			sourceTree = "<group>";
@@ -1598,6 +1616,8 @@
 			isa = PBXGroup;
 			children = (
 				1D71107C26A5A9A000E00421 /* ASCShareSettingsAPIWorkerTests.swift */,
+				1DEB9970274E2EF90071C1DB /* ASCPersonalShareSettingsAPIWorkerTests.swift */,
+				1DEB9972274E3ED10071C1DB /* ASCShareSettingsAPIWorkerFactoryTests.swift */,
 			);
 			path = Workers;
 			sourceTree = "<group>";
@@ -1638,6 +1658,7 @@
 			children = (
 				1DCCEC04268CC6A600692167 /* ASCSharingOptionsSectionProtocol.swift */,
 				1D14AAC02694EFE4009E48AD /* ASCEntityLinkMakerProtocol.swift */,
+				1DEB9977274E4DC80071C1DB /* ASCAccessToAddRightHoldersCheckerProtocol.swift */,
 			);
 			path = Protocols;
 			sourceTree = "<group>";
@@ -3772,17 +3793,20 @@
 			files = (
 				FCCDE680204973F500CFC653 /* ASCDocumentConverterTest.swift in Sources */,
 				FCD2DD6E2702F70400D31BD5 /* ManagedAppConfig.swift in Sources */,
+				1DEB997C274E4F140071C1DB /* ASCAccessToAddRightHoldersCheckerByHostTests.swift in Sources */,
 				FC56B5CB20C03F3400557C1F /* ASCSortViewCellTableViewCell.swift in Sources */,
 				FC4D864720C50AE00047B871 /* String+Extension.swift in Sources */,
 				1D14AAE226964AF2009E48AD /* ASCSharingSettingsAccessProviderFactoryTests.swift in Sources */,
 				FC4D864F20C50AE00047B871 /* UINavigationController+Extension.swift in Sources */,
 				FC4D864420C50AE00047B871 /* Data+Extension.swift in Sources */,
 				FC4D864320C50AE00047B871 /* Dictionary+Extension.swift in Sources */,
+				1DEB9973274E3ED10071C1DB /* ASCShareSettingsAPIWorkerFactoryTests.swift in Sources */,
 				1D14AAC72694F0C4009E48AD /* ASCOnlyofficeFileInternalLinkMakerTests.swift in Sources */,
 				FC4D864020C50A710047B871 /* UIDevice+Extension.swift in Sources */,
 				FC4D864820C50AE00047B871 /* MBProgressHUD+Extension.swift in Sources */,
 				1D1A2E412661018100D0335B /* Assets.swift in Sources */,
 				FC4D864220C50AE00047B871 /* Common+Extension.swift in Sources */,
+				1DEB9971274E2EF90071C1DB /* ASCPersonalShareSettingsAPIWorkerTests.swift in Sources */,
 				FC4D864C20C50AE00047B871 /* UIColor+Extension.swift in Sources */,
 				1D5DB04F265850B3006B4757 /* ASCOnlyofficeUserDefaultsCacheCategoriesProviderTests.swift in Sources */,
 				1D1A2E46266103AE00D0335B /* ASCLoadedViewControllerFinderProtocolTests.swift in Sources */,
@@ -3840,6 +3864,7 @@
 				FCD33B5B21C93C2B00D52DAF /* ASCCloudsEmptyViewController.swift in Sources */,
 				FC68528726837B7300D830EC /* OnlyofficeFileOperation.swift in Sources */,
 				FCB8A39221C27EE000CF74FA /* ASCDeviceCategoryViewController.swift in Sources */,
+				1DEB997A274E4E6A0071C1DB /* ASCAccessToAddRightHoldersCheckerByHost.swift in Sources */,
 				FC28F2C61E8D1BB200A8F985 /* ASCEntityManager.swift in Sources */,
 				FCC77C9E206D11B6001B7837 /* Path+Extension.swift in Sources */,
 				FCEF9D291ED2C94300627BA5 /* PasscodeSignButton.swift in Sources */,
@@ -4065,6 +4090,7 @@
 				FCEF9D351ED2D1D600627BA5 /* ASCUserDefaultsPasscodeRepository.swift in Sources */,
 				FC43E70F2195B5FC002AAA32 /* ASCYandexFileProvider.swift in Sources */,
 				E0609CA78B7ADE534424D45E /* ASCFolder.swift in Sources */,
+				1DEB996F274E2C7C0071C1DB /* ASCPersonalShareSettingsAPIWorker.swift in Sources */,
 				1DF505242641867300B78496 /* ASCOneDriveFileProvider.swift in Sources */,
 				FC708EE421B92E94001BBE5B /* UIBarButtonItem+Extensions.swift in Sources */,
 				FC059D9C1E82657F00BC2F5E /* ASCIndexTransform.swift in Sources */,
@@ -4087,6 +4113,7 @@
 				FC6839A221B81B1D00251CEA /* ASCOwnCloudProvider.swift in Sources */,
 				FC99FAF1226460F2000F1464 /* ASC2FAViewController.swift in Sources */,
 				FC41D80E2265DADC00A155C2 /* ASCFileProviderType.swift in Sources */,
+				1DEB9976274E46480071C1DB /* ASCShareSettingsAPIWorkerFactory.swift in Sources */,
 				FC4D0A242494F8B2001EF1B5 /* ASCLogIntercepter.swift in Sources */,
 				FC82827F21C3CC01005AF726 /* ASCDeviceSplitViewController.swift in Sources */,
 				FCA7501122BBD65A00991682 /* ASCCreateEntityView.swift in Sources */,
@@ -4098,6 +4125,7 @@
 				FC066AB4252DB7C5007357F7 /* ObservableProxy.swift in Sources */,
 				FC41D8022265D6EF00A155C2 /* ASCLoginType.swift in Sources */,
 				FCEF856C26C52E5F00173DDF /* UITextField+Style.swift in Sources */,
+				1DEB9978274E4DC80071C1DB /* ASCAccessToAddRightHoldersCheckerProtocol.swift in Sources */,
 				1D14AAF52698E85A009E48AD /* ASCSharingAddRightHoldersViewController.swift in Sources */,
 				FC68399621B7EF1000251CEA /* ASCOnlyofficeCategory.swift in Sources */,
 				FC9150F21EC35D850076A855 /* UIView+Extension.swift in Sources */,

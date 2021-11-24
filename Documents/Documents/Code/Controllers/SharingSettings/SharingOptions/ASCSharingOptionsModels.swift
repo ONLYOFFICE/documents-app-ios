@@ -40,7 +40,7 @@ enum ASCSharingOptions {
         }
         struct Response {
             enum ResponseType {
-                case presentRightHolders(_ response: RightHoldersResponse)
+                case presentRightHolders(_ response: Result<RightHoldersResponse, Error>)
                 case presentChangeRightHolderAccess(_ response: ChangeRightHolderAccessResponse)
                 case presentRemoveRightHolderAccess(_ response: RemoveRightHolderAccessResponse)
             }
@@ -70,6 +70,7 @@ enum ASCSharingOptions {
                 case displayRightHolders(_ viewModel: RightHoldersViewModel)
                 case displayChangeRightHolderAccess(_ viewModel: ChangeRightHolderAccessViewModel)
                 case displayRemoveRightHolderAccess(_ viewModel: RemoveRightHolderAccessViewModel)
+                case displayError(_ message: String)
             }
             
             struct RightHoldersViewModel {

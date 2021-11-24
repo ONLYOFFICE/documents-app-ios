@@ -148,6 +148,9 @@ class OnlyofficeAPI {
         
         struct Sharing {
             static let removeSharingRights: Endpoint<OnlyofficeResponseType<Bool>> = Endpoint<OnlyofficeResponseType<Bool>>.make(Path.filesShare, .delete)
+            static func entitiesShare() -> Endpoint<OnlyofficeResponseArray<OnlyofficeShare>> {
+                Endpoint<OnlyofficeResponseArray<OnlyofficeShare>>.make(Path.filesShare, .post)
+            }
             static func file(file: ASCFile) -> Endpoint<OnlyofficeResponseArray<OnlyofficeShare>> {
                 return Endpoint<OnlyofficeResponseArray<OnlyofficeShare>>.make(String(format: Path.shareFile, file.id), .put)
             }

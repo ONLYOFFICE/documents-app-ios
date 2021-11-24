@@ -100,10 +100,10 @@ extension ASCSharingOptionsViewControllerTest {
             switch request {
             case .loadRightHolders(_):
                 presenter?.presentData(
-                    response: .presentRightHolders(.init(sharedInfoItems: sharedInfoItems,
+                    response: .presentRightHolders(.success(.init(sharedInfoItems: sharedInfoItems,
                                                          currentUser: currentUser,
                                                          internalLink: internalLink,
-                                                         externalLink: externalLink)))
+                                                         externalLink: externalLink))))
             case .changeRightHolderAccess(_):
                 fatalError("doesn't implemented")
             case .removeRightHolderAccess(_):

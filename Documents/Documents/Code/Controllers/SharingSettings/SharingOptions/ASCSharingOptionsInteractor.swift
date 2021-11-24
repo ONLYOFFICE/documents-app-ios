@@ -66,8 +66,7 @@ class ASCSharingOptionsInteractor: ASCSharingOptionsBusinessLogic, ASCSharingOpt
 
         guard let entity = loadRightHoldersRequest.entity
         else {
-            presenter?.presentData(response: .presentRightHolders(
-                                    .init(sharedInfoItems: [], currentUser: currentUser, internalLink: nil, externalLink: nil)))
+            presenter?.presentData(response: .presentRightHolders(.failure(NetworkingError.unknown(error: nil))))
             return
         }
         
@@ -75,13 +74,19 @@ class ASCSharingOptionsInteractor: ASCSharingOptionsBusinessLogic, ASCSharingOpt
         
         guard let apiRequest = apiWorker.makeApiRequest(entity: entity)
         else {
-            presenter?.presentData(response: .presentRightHolders(
-                                    .init(sharedInfoItems: [], currentUser: currentUser, internalLink: internalLink, externalLink: nil)))
+            presenter?.presentData(response: .presentRightHolders(.failure(NetworkingError.unknown(error: nil))))
             return
         }
         
-        networkingRequestManager.request(apiRequest, nil) { response, error in
+        let params = apiWorker.convertToParams(entities: [entity])
+        
+        networkingRequestManager.request(apiRequest, params) { [weak self] response, error in
+            guard let self = self else { return }
             var exteralLink: ASCSharingOprionsExternalLink?
+            guard error == nil else {
+                self.presenter?.presentData(response: .presentRightHolders(.failure(error!)))
+                return
+            }
             if let sharedItems = response?.result {
                 self.sharedInfoItems = sharedItems.filter({ $0.user != nil || $0.group != nil})
                 if let linkItem = sharedItems.first(where: { $0.link != nil }),
@@ -93,10 +98,10 @@ class ASCSharingOptionsInteractor: ASCSharingOptionsBusinessLogic, ASCSharingOpt
                 
             }
             
-            self.presenter?.presentData(response: .presentRightHolders(.init(sharedInfoItems: self.sharedInfoItems,
+            self.presenter?.presentData(response: .presentRightHolders(.success(.init(sharedInfoItems: self.sharedInfoItems,
                                                                              currentUser: self.currentUser,
                                                                              internalLink: internalLink,
-                                                                             externalLink: exteralLink)))
+                                                                             externalLink: exteralLink))))
         }
 
     }

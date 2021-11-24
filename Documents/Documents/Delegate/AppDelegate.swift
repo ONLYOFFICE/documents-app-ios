@@ -38,10 +38,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         ASCLogIntercepter.shared.start()
         ASCAccountsManager.start()
-        
-        // Initialize PasscodeLock presenter
-        initPasscodeLock()
-        
+                
         // Use Firebase library to configure APIs
         FirebaseApp.configure()
 
@@ -57,6 +54,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         self.window = UIWindow()
         self.window?.rootViewController = ASCRootViewController.instance()
         self.window?.makeKeyAndVisible()
+        
+        // Initialize PasscodeLock presenter
+        initPasscodeLock()
         
         // Check Update
         configureAppUpdater()

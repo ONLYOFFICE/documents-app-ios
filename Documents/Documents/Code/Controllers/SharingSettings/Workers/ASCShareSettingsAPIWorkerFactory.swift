@@ -9,16 +9,13 @@
 import Foundation
 
 class ASCShareSettingsAPIWorkerFactory {
-    func get(by portalHost: String?) -> ASCShareSettingsAPIWorkerProtocol {
-        let defaultAPIWorker = ASCShareSettingsAPIWorker()
-        guard let portalHost = portalHost else {
-            return defaultAPIWorker
-        }
-        
-        if portalHost == "personal.teamlab.info" {
+    
+    func get(by portalType: ASCPortalType) -> ASCShareSettingsAPIWorkerProtocol {
+        switch portalType {
+        case .personal:
             return ASCPersonalShareSettingsAPIWorker()
+        case .unknown:
+            return ASCShareSettingsAPIWorker()
         }
-        
-        return defaultAPIWorker
     }
 }

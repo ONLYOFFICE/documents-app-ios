@@ -38,6 +38,13 @@
 		1D1A2E3A2660FF7F00D0335B /* ASCLoadedVCFinderModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D1A2E392660FF7F00D0335B /* ASCLoadedVCFinderModels.swift */; };
 		1D1A2E412661018100D0335B /* Assets.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCE186492628CFE70086D21B /* Assets.swift */; };
 		1D1A2E46266103AE00D0335B /* ASCLoadedViewControllerFinderProtocolTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D1A2E45266103AE00D0335B /* ASCLoadedViewControllerFinderProtocolTests.swift */; };
+		1D29914F274FB37700A06F3B /* ASCPortalType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D29914E274FB37600A06F3B /* ASCPortalType.swift */; };
+		1D299153274FB46300A06F3B /* ASCPortalTypeDefinderProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D299152274FB46300A06F3B /* ASCPortalTypeDefinderProtocol.swift */; };
+		1D299155274FB4EE00A06F3B /* ASCPortalTypeDefinderByUrl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D299154274FB4EE00A06F3B /* ASCPortalTypeDefinderByUrl.swift */; };
+		1D299157274FB66600A06F3B /* ASCPortalTypeDefinderByCurrentConnection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D299156274FB66600A06F3B /* ASCPortalTypeDefinderByCurrentConnection.swift */; };
+		1D299159274FBF2100A06F3B /* ASCAccessToAddRightHoldersCheckerByPortalDefinder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D299158274FBF2100A06F3B /* ASCAccessToAddRightHoldersCheckerByPortalDefinder.swift */; };
+		1D29915C274FC12600A06F3B /* ASCPortalTypeDefinderByUrlTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D29915B274FC12600A06F3B /* ASCPortalTypeDefinderByUrlTests.swift */; };
+		1D29915E274FC38300A06F3B /* ASCAccessToAddRightHoldersCheckerByPortalDefinderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D29915D274FC38300A06F3B /* ASCAccessToAddRightHoldersCheckerByPortalDefinderTests.swift */; };
 		1D2E3B8A26BB290700BEBE9D /* ASCSharingSettingsAccessNotesProviderProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D2E3B8926BB290700BEBE9D /* ASCSharingSettingsAccessNotesProviderProtocol.swift */; };
 		1D2E3B8D26BB29DA00BEBE9D /* ASCSharingSettingsAccessForExternalLinkNotesProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D2E3B8C26BB29DA00BEBE9D /* ASCSharingSettingsAccessForExternalLinkNotesProvider.swift */; };
 		1D2E3B8F26BB2A7400BEBE9D /* ASCSharingSettingsAccessForUserOrGroupNotesProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D2E3B8E26BB2A7400BEBE9D /* ASCSharingSettingsAccessForUserOrGroupNotesProvider.swift */; };
@@ -146,8 +153,6 @@
 		1DEB9973274E3ED10071C1DB /* ASCShareSettingsAPIWorkerFactoryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DEB9972274E3ED10071C1DB /* ASCShareSettingsAPIWorkerFactoryTests.swift */; };
 		1DEB9976274E46480071C1DB /* ASCShareSettingsAPIWorkerFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DEB9975274E46480071C1DB /* ASCShareSettingsAPIWorkerFactory.swift */; };
 		1DEB9978274E4DC80071C1DB /* ASCAccessToAddRightHoldersCheckerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DEB9977274E4DC80071C1DB /* ASCAccessToAddRightHoldersCheckerProtocol.swift */; };
-		1DEB997A274E4E6A0071C1DB /* ASCAccessToAddRightHoldersCheckerByHost.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DEB9979274E4E6A0071C1DB /* ASCAccessToAddRightHoldersCheckerByHost.swift */; };
-		1DEB997C274E4F140071C1DB /* ASCAccessToAddRightHoldersCheckerByHostTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DEB997B274E4F140071C1DB /* ASCAccessToAddRightHoldersCheckerByHostTests.swift */; };
 		1DF505242641867300B78496 /* ASCOneDriveFileProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DF505232641867300B78496 /* ASCOneDriveFileProvider.swift */; };
 		1DF6E0A926D5323B00FB42CE /* ASCOneDriveProviderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DF6E0A826D5323A00FB42CE /* ASCOneDriveProviderTests.swift */; };
 		667548327089FF37AB5BACBB /* Pods_Documents_Alpha.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 92C4B2EE0CEF31DA5A45CD1A /* Pods_Documents_Alpha.framework */; };
@@ -791,6 +796,13 @@
 		1D1A2E312660FE6E00D0335B /* ASCLoadedViewControllerFinderProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCLoadedViewControllerFinderProtocol.swift; sourceTree = "<group>"; };
 		1D1A2E392660FF7F00D0335B /* ASCLoadedVCFinderModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCLoadedVCFinderModels.swift; sourceTree = "<group>"; };
 		1D1A2E45266103AE00D0335B /* ASCLoadedViewControllerFinderProtocolTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCLoadedViewControllerFinderProtocolTests.swift; sourceTree = "<group>"; };
+		1D29914E274FB37600A06F3B /* ASCPortalType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCPortalType.swift; sourceTree = "<group>"; };
+		1D299152274FB46300A06F3B /* ASCPortalTypeDefinderProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCPortalTypeDefinderProtocol.swift; sourceTree = "<group>"; };
+		1D299154274FB4EE00A06F3B /* ASCPortalTypeDefinderByUrl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCPortalTypeDefinderByUrl.swift; sourceTree = "<group>"; };
+		1D299156274FB66600A06F3B /* ASCPortalTypeDefinderByCurrentConnection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCPortalTypeDefinderByCurrentConnection.swift; sourceTree = "<group>"; };
+		1D299158274FBF2100A06F3B /* ASCAccessToAddRightHoldersCheckerByPortalDefinder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCAccessToAddRightHoldersCheckerByPortalDefinder.swift; sourceTree = "<group>"; };
+		1D29915B274FC12600A06F3B /* ASCPortalTypeDefinderByUrlTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCPortalTypeDefinderByUrlTests.swift; sourceTree = "<group>"; };
+		1D29915D274FC38300A06F3B /* ASCAccessToAddRightHoldersCheckerByPortalDefinderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCAccessToAddRightHoldersCheckerByPortalDefinderTests.swift; sourceTree = "<group>"; };
 		1D2E3B8926BB290700BEBE9D /* ASCSharingSettingsAccessNotesProviderProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCSharingSettingsAccessNotesProviderProtocol.swift; sourceTree = "<group>"; };
 		1D2E3B8C26BB29DA00BEBE9D /* ASCSharingSettingsAccessForExternalLinkNotesProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCSharingSettingsAccessForExternalLinkNotesProvider.swift; sourceTree = "<group>"; };
 		1D2E3B8E26BB2A7400BEBE9D /* ASCSharingSettingsAccessForUserOrGroupNotesProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCSharingSettingsAccessForUserOrGroupNotesProvider.swift; sourceTree = "<group>"; };
@@ -847,8 +859,6 @@
 		1DEB9972274E3ED10071C1DB /* ASCShareSettingsAPIWorkerFactoryTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCShareSettingsAPIWorkerFactoryTests.swift; sourceTree = "<group>"; };
 		1DEB9975274E46480071C1DB /* ASCShareSettingsAPIWorkerFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCShareSettingsAPIWorkerFactory.swift; sourceTree = "<group>"; };
 		1DEB9977274E4DC80071C1DB /* ASCAccessToAddRightHoldersCheckerProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCAccessToAddRightHoldersCheckerProtocol.swift; sourceTree = "<group>"; };
-		1DEB9979274E4E6A0071C1DB /* ASCAccessToAddRightHoldersCheckerByHost.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCAccessToAddRightHoldersCheckerByHost.swift; sourceTree = "<group>"; };
-		1DEB997B274E4F140071C1DB /* ASCAccessToAddRightHoldersCheckerByHostTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCAccessToAddRightHoldersCheckerByHostTests.swift; sourceTree = "<group>"; };
 		1DF505232641867300B78496 /* ASCOneDriveFileProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCOneDriveFileProvider.swift; sourceTree = "<group>"; };
 		1DF6E0A826D5323A00FB42CE /* ASCOneDriveProviderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCOneDriveProviderTests.swift; sourceTree = "<group>"; };
 		223510FCC80632095899444E /* Pods_Documents_DocumentsTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Documents_DocumentsTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -1343,7 +1353,7 @@
 			isa = PBXGroup;
 			children = (
 				1D14AAC32694F07C009E48AD /* ASCOnlyofficeFileInternalLinkMaker.swift */,
-				1DEB9979274E4E6A0071C1DB /* ASCAccessToAddRightHoldersCheckerByHost.swift */,
+				1D299158274FBF2100A06F3B /* ASCAccessToAddRightHoldersCheckerByPortalDefinder.swift */,
 			);
 			path = Workers;
 			sourceTree = "<group>";
@@ -1352,7 +1362,7 @@
 			isa = PBXGroup;
 			children = (
 				1D14AAC62694F0C4009E48AD /* ASCOnlyofficeFileInternalLinkMakerTests.swift */,
-				1DEB997B274E4F140071C1DB /* ASCAccessToAddRightHoldersCheckerByHostTests.swift */,
+				1D29915D274FC38300A06F3B /* ASCAccessToAddRightHoldersCheckerByPortalDefinderTests.swift */,
 			);
 			path = Workers;
 			sourceTree = "<group>";
@@ -1453,6 +1463,32 @@
 				1D1A2E392660FF7F00D0335B /* ASCLoadedVCFinderModels.swift */,
 			);
 			path = Models;
+			sourceTree = "<group>";
+		};
+		1D299150274FB3B300A06F3B /* PortalDefinders */ = {
+			isa = PBXGroup;
+			children = (
+				1D299151274FB43200A06F3B /* Protocols */,
+				1D299154274FB4EE00A06F3B /* ASCPortalTypeDefinderByUrl.swift */,
+				1D299156274FB66600A06F3B /* ASCPortalTypeDefinderByCurrentConnection.swift */,
+			);
+			path = PortalDefinders;
+			sourceTree = "<group>";
+		};
+		1D299151274FB43200A06F3B /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				1D299152274FB46300A06F3B /* ASCPortalTypeDefinderProtocol.swift */,
+			);
+			path = Protocols;
+			sourceTree = "<group>";
+		};
+		1D29915A274FC07900A06F3B /* PortalDefinders */ = {
+			isa = PBXGroup;
+			children = (
+				1D29915B274FC12600A06F3B /* ASCPortalTypeDefinderByUrlTests.swift */,
+			);
+			path = PortalDefinders;
 			sourceTree = "<group>";
 		};
 		1D2E3B8726BB289500BEBE9D /* SharingSettingsAccessNotes */ = {
@@ -1570,6 +1606,7 @@
 		1D5DB04526584DBC006B4757 /* Business */ = {
 			isa = PBXGroup;
 			children = (
+				1D29915A274FC07900A06F3B /* PortalDefinders */,
 				1D1A2E1D2660F72900D0335B /* LoadedViewControllersFinders */,
 				1D5DB04626584E30006B4757 /* Providers */,
 			);
@@ -2028,6 +2065,7 @@
 				FC41D80B2265DA8700A155C2 /* ASCFilterType.swift */,
 				FC41D80D2265DADC00A155C2 /* ASCFileProviderType.swift */,
 				FCF8472C22CB4A5400ABC3B4 /* ASCFolderProviderType.swift */,
+				1D29914E274FB37600A06F3B /* ASCPortalType.swift */,
 			);
 			path = Enums;
 			sourceTree = "<group>";
@@ -2453,6 +2491,7 @@
 		FCC39FE81E6ECB0400DECB8D /* Business */ = {
 			isa = PBXGroup;
 			children = (
+				1D299150274FB3B300A06F3B /* PortalDefinders */,
 				FC41D8002265D6C900A155C2 /* Enums */,
 				FC0F01DD216F43FF008D79A5 /* Providers */,
 				1D1A2E262660F97900D0335B /* LoadedViewControllersFinders */,
@@ -3793,7 +3832,6 @@
 			files = (
 				FCCDE680204973F500CFC653 /* ASCDocumentConverterTest.swift in Sources */,
 				FCD2DD6E2702F70400D31BD5 /* ManagedAppConfig.swift in Sources */,
-				1DEB997C274E4F140071C1DB /* ASCAccessToAddRightHoldersCheckerByHostTests.swift in Sources */,
 				FC56B5CB20C03F3400557C1F /* ASCSortViewCellTableViewCell.swift in Sources */,
 				FC4D864720C50AE00047B871 /* String+Extension.swift in Sources */,
 				1D14AAE226964AF2009E48AD /* ASCSharingSettingsAccessProviderFactoryTests.swift in Sources */,
@@ -3824,6 +3862,7 @@
 				FC4D864620C50AE00047B871 /* UIView+Extension.swift in Sources */,
 				FC77846E24756D17005ED631 /* UIDevice+DeviceKit.swift in Sources */,
 				FC4D864520C50AE00047B871 /* Date+Extension.swift in Sources */,
+				1D29915C274FC12600A06F3B /* ASCPortalTypeDefinderByUrlTests.swift in Sources */,
 				1D1A2E1F2660F93600D0335B /* ASCLoadedViewControllerByProviderAndFolderFinderTests.swift in Sources */,
 				FC77846C24756CC2005ED631 /* ASCFolderProviderType.swift in Sources */,
 				1D9B7FEA26FA5A0000D06E9B /* ASCSharingOprionsInteractorTests.swift in Sources */,
@@ -3831,6 +3870,7 @@
 				1DF6E0A926D5323B00FB42CE /* ASCOneDriveProviderTests.swift in Sources */,
 				1DCCEC0A268DBD9C00692167 /* ASCSharingOptionsViewControllerTest.swift in Sources */,
 				FC4D864920C50AE00047B871 /* Path+Extension.swift in Sources */,
+				1D29915E274FC38300A06F3B /* ASCAccessToAddRightHoldersCheckerByPortalDefinderTests.swift in Sources */,
 				1D2E3B9526BB338D00BEBE9D /* ASCSharingSettingsAccessViewControllerTests.swift in Sources */,
 				1D71107D26A5A9A000E00421 /* ASCShareSettingsAPIWorkerTests.swift in Sources */,
 			);
@@ -3864,8 +3904,8 @@
 				FCD33B5B21C93C2B00D52DAF /* ASCCloudsEmptyViewController.swift in Sources */,
 				FC68528726837B7300D830EC /* OnlyofficeFileOperation.swift in Sources */,
 				FCB8A39221C27EE000CF74FA /* ASCDeviceCategoryViewController.swift in Sources */,
-				1DEB997A274E4E6A0071C1DB /* ASCAccessToAddRightHoldersCheckerByHost.swift in Sources */,
 				FC28F2C61E8D1BB200A8F985 /* ASCEntityManager.swift in Sources */,
+				1D299155274FB4EE00A06F3B /* ASCPortalTypeDefinderByUrl.swift in Sources */,
 				FCC77C9E206D11B6001B7837 /* Path+Extension.swift in Sources */,
 				FCEF9D291ED2C94300627BA5 /* PasscodeSignButton.swift in Sources */,
 				FC68527F26837B7300D830EC /* OnlyofficeApiClient.swift in Sources */,
@@ -3882,6 +3922,7 @@
 				1D863F1126722FB3000BAC3C /* ASCSharingRightHolderTableViewCell.swift in Sources */,
 				FCF69C8824E4271B0048F2CD /* ASCProviderError.swift in Sources */,
 				FCF695902632E3D500808644 /* UIButton+Style.swift in Sources */,
+				1D29914F274FB37700A06F3B /* ASCPortalType.swift in Sources */,
 				1DAAFF492679063700023F39 /* ASCViewModelSetter.swift in Sources */,
 				FC68398D21B7DFCE00251CEA /* ASCOnlyofficeNavigationController.swift in Sources */,
 				FCEF9D1B1ED2C94300627BA5 /* Functions.swift in Sources */,
@@ -3971,6 +4012,7 @@
 				FC08F8751ECB399900988DDE /* ASCConnectStorageOAuth2ViewController.swift in Sources */,
 				FC41D7FD2265B72E00A155C2 /* UIStoryboard+Extensions.swift in Sources */,
 				1D14AADA2696403D009E48AD /* ASCSharingSettingsAccessExternalDefaultProvider.swift in Sources */,
+				1D299157274FB66600A06F3B /* ASCPortalTypeDefinderByCurrentConnection.swift in Sources */,
 				FCEF9D1F1ED2C94300627BA5 /* EnterPasscodeState.swift in Sources */,
 				FC3AF6BD21709259004A96FD /* ASCFileManager.swift in Sources */,
 				FC68527326837B7300D830EC /* NetworkingError.swift in Sources */,
@@ -4025,6 +4067,7 @@
 				FC8C697D1ECC6163005B68D7 /* ASCConnectStorageOAuth2OneDrive.swift in Sources */,
 				FC68529726837B7300D830EC /* DropboxEndpoints.swift in Sources */,
 				FCC3E9BE214006B1001B216C /* ASCLocalization.swift in Sources */,
+				1D299159274FBF2100A06F3B /* ASCAccessToAddRightHoldersCheckerByPortalDefinder.swift in Sources */,
 				FCDB31A61E7BD46800907FC0 /* ASCViewControllerManager.swift in Sources */,
 				FC9E28BF2244E88C000D315E /* ASCDocumentsEmptyView.swift in Sources */,
 				8A79BCD62080DD5C00998DA7 /* ASConverterOptionsAlert.swift in Sources */,
@@ -4091,6 +4134,7 @@
 				FC43E70F2195B5FC002AAA32 /* ASCYandexFileProvider.swift in Sources */,
 				E0609CA78B7ADE534424D45E /* ASCFolder.swift in Sources */,
 				1DEB996F274E2C7C0071C1DB /* ASCPersonalShareSettingsAPIWorker.swift in Sources */,
+				1D299153274FB46300A06F3B /* ASCPortalTypeDefinderProtocol.swift in Sources */,
 				1DF505242641867300B78496 /* ASCOneDriveFileProvider.swift in Sources */,
 				FC708EE421B92E94001BBE5B /* UIBarButtonItem+Extensions.swift in Sources */,
 				FC059D9C1E82657F00BC2F5E /* ASCIndexTransform.swift in Sources */,

@@ -27,7 +27,7 @@ class ASCConstants {
     }
 
     struct Urls {
-        static let portalPersonal           = "://personal.onlyoffice.com"
+        static let personalPortals          = ["://personal.onlyoffice.com", "://personal.teamlab.info"]
         static let apiSystemUrl             = "https://api-system.%@"
         static let apiValidatePortalName    = "api/portal/validateportalname"
         static let apiRegistrationPortal    = "api/portal/register"

@@ -24,13 +24,13 @@ class ASCShareSettingsAPIWorkerFactoryTests: XCTestCase {
         try super.tearDownWithError()
     }
 
-    func testWhenPersonalHostReturnsPersonalWorker() {
-        let worker = sut.get(by: "personal.teamlab.info")
+    func testWhenPersonalTypeReturnsPersonalWorker() {
+        let worker = sut.get(by: .personal)
         XCTAssertTrue(worker is ASCPersonalShareSettingsAPIWorker)
     }
     
-    func testWhenEmptyHostReturnsBaseShareSettingsWorker() {
-        let worker = sut.get(by: nil)
+    func testWhenEmptyUnknownPortalTypeReturnsBaseShareSettingsWorker() {
+        let worker = sut.get(by: .unknown)
         XCTAssertTrue(worker is ASCShareSettingsAPIWorker)
     }
 }

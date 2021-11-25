@@ -23,7 +23,8 @@ class ASCSharingOptionsViewController: ASCBaseTableViewController {
     var hud: MBProgressHUD?
     var rightHolderCurrentlyLoading = false
     
-    lazy var accessToAddRightHoldersChecker: ASCAccessToAddRightHoldersCheckerProtocol = ASCAccessToAddRightHoldersCheckerByHost(host: OnlyofficeApiClient.shared.baseURL?.host)
+    lazy var portalDefinder: ASCPortalTypeDefinderProtocol = ASCPortalTypeDefinderByCurrentConnection()
+    lazy var accessToAddRightHoldersChecker: ASCAccessToAddRightHoldersCheckerProtocol = ASCAccessToAddRightHoldersCheckerByPortalDefinder(portalType: portalDefinder.definePortalType())
     
     private var internalLink: String?
     private var externalLink: ASCSharingOprionsExternalLink?
@@ -72,7 +73,7 @@ class ASCSharingOptionsViewController: ASCBaseTableViewController {
             let viewController        = self
             let interactor            = ASCSharingOptionsInteractor(entityLinkMaker: ASCOnlyofficeFileInternalLinkMaker(),
                                                                     entity: entity,
-                                                                    apiWorker: ASCShareSettingsAPIWorkerFactory().get(by: OnlyofficeApiClient.shared.baseURL?.host),
+                                                                    apiWorker: ASCShareSettingsAPIWorkerFactory().get(by: portalDefinder.definePortalType()),
                                                                     networkingRequestManager: OnlyofficeApiClient.shared)
             let presenter             = ASCSharingOptionsPresenter()
             let router                = ASCSharingOptionsRouter()

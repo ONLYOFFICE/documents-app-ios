@@ -983,7 +983,6 @@ class ASCOnlyofficeProvider: ASCFileProviderProtocol & ASCSortableFileProviderPr
 
         if let file = file, apiClient.active {
             let fileExtension   = file.title.fileExtension().lowercased()
-            let isPersonal      = (apiClient.baseURL?.absoluteString.contains(ASCConstants.Urls.portalPersonal)) ?? false
             let canRead         = allowRead(entity: file)
             let canEdit         = allowEdit(entity: file)
             let canDelete       = allowDelete(entity: file)
@@ -1032,7 +1031,7 @@ class ASCOnlyofficeProvider: ASCFileProviderProtocol & ASCSortableFileProviderPr
                 entityActions.insert(.download)
             }
 
-            if canEdit && canShare && !isProjects && !isPersonal {
+            if canEdit && canShare && !isProjects {
                 entityActions.insert(.share)
             }
 
@@ -1049,7 +1048,6 @@ class ASCOnlyofficeProvider: ASCFileProviderProtocol & ASCSortableFileProviderPr
         var entityActions: ASCEntityActions = []
 
         if let folder = folder, apiClient.active {
-            let isPersonal      = (apiClient.baseURL?.absoluteString.contains(ASCConstants.Urls.portalPersonal)) ?? false
             let canRead         = allowRead(entity: folder)
             let canEdit         = allowEdit(entity: folder)
             let canDelete       = allowDelete(entity: folder)
@@ -1073,7 +1071,7 @@ class ASCOnlyofficeProvider: ASCFileProviderProtocol & ASCSortableFileProviderPr
                 entityActions.insert(.move)
             }
 
-            if canEdit && canShare && !isPersonal && !isProjects {
+            if canEdit && canShare && !isProjects {
                 entityActions.insert(.share)
             }
 

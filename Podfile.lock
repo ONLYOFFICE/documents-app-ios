@@ -316,7 +316,7 @@ SPEC CHECKSUMS:
   AppAuth: 31bcec809a638d7bd2f86ea8a52bd45f6e81e7c7
   atlantis-proxyman: 5e0d2214eb04c9646e4426c170248918c76815a9
   DocumentConverter: 7b48070109ef94c452a2facbfd7b8c0fbe0988ed
-  DocumentEditor: 3001b3844dabb72272da4a20f9d7444789110c0f
+  DocumentEditor: 5cb01ce2b0a3cf1248fe03cc4e54db49f6d72e93
   FacebookCore: ba86524b66cfa86d0f8e65d08faa8504a9f732dd
   FacebookLogin: 6cee9fd6e1fe976fe8f7eec199e27b28b14f5d63
   FBSDKCoreKit: 1d5acf7c9d7a2f92bb1a242dc60cae5b7adb91df
@@ -354,7 +354,7 @@ SPEC CHECKSUMS:
   SDWebImage: 4dc3e42d9ec0c1028b960a33ac6b637bb432207b
   Siren: 76ac728f4f2f4a3576c322272e94a0e37955664f
   SkyFloatingLabelTextField: 79ddc40e4ad59707fedbb48d605417aee48bb78a
-  SpreadsheetEditor: 2eabf14d92b796d32781ebcf7a4d0a03f4045ad5
+  SpreadsheetEditor: 576ab2f053c1949b7f48920fb5b7a19e340e312f
   SwiftGen: 67860cc7c3cfc2ed25b9b74cfd55495fc89f9108
   SwiftMessages: 082ed63613a49fa8e749cd6000bb0a8b9bbc736f
   SwiftRater: 6094fa6e9b3866ff8beca0a871b4b5f9ab896a6d

@@ -16,6 +16,9 @@ import SwiftRater
 import SpreadsheetEditor
 import SwiftMessages
 
+typealias MovedEntities = [ASCEntity]
+typealias UnmovedEntities = [ASCEntity]
+
 class ASCDocumentsViewController: ASCBaseTableViewController, UIGestureRecognizerDelegate {
 
     static let identifier = String(describing: ASCDocumentsViewController.self)
@@ -2916,7 +2919,7 @@ class ASCDocumentsViewController: ASCBaseTableViewController, UIGestureRecognize
         to folder: ASCFolder,
         move: Bool = false,
         overwride: Bool = false,
-        completion: (([ASCEntity]?) -> Void)? = nil)
+        completion: ((MovedEntities?) -> Void)? = nil)
     {
         guard let provider = provider else { return }
 
@@ -3050,7 +3053,7 @@ class ASCDocumentsViewController: ASCBaseTableViewController, UIGestureRecognize
             }
         }
 
-        func transferViaManager(items: [ASCEntity], completion: (([ASCEntity]?) -> Void)? = nil) {
+        func transferViaManager(items: [ASCEntity], completion: ((UnmovedEntities?) -> Void)? = nil) {
             if items.count < 1 {
                 completion?(nil)
                 return
@@ -3081,7 +3084,7 @@ class ASCDocumentsViewController: ASCBaseTableViewController, UIGestureRecognize
                 if isInsideTransfer {
                     strongSelf.insideCheckTransfer(items: items, to: folder, move: move, complation: { overwride, cancel in
                         if cancel {
-                            completion?(nil)
+                            completion?(items)
                         } else {
                             strongSelf.insideTransfer(items: items, to: folder, move: move, overwride: overwride, completion: { entities in
                                 guard let _ = entities else {

@@ -367,19 +367,6 @@ class ASCDocumentsViewController: ASCBaseTableViewController, UIGestureRecognize
             }
         })
     }
-    
-//    @objc func handleLongPress(longPressGesture: UILongPressGestureRecognizer) {
-//        let point = longPressGesture.location(in: tableView)
-//
-//        if let indexPath = tableView.indexPathForRow(at: point) {
-//            if (longPressGesture.state == .began) {
-//                setEditMode(true)
-//
-//                tableView.selectRow(at: indexPath, animated: false, scrollPosition: .none)
-//                tableView(tableView, didSelectRowAt: indexPath)
-//            }
-//        }
-//    }
 
     func add(entity: Any, open: Bool = true) {
         guard let provider = provider else { return }
@@ -712,11 +699,6 @@ class ASCDocumentsViewController: ASCBaseTableViewController, UIGestureRecognize
         
         var items: [UIBarButtonItem] = []
 
-        // Select
-//        items.append(ASCStyles.createBarButton(title: NSLocalizedString("Select", comment: ""), target: self, action: #selector(onSelectAll)))
-//        items.append(ASCStyles.createBarButton(image:UIImage(named: "bar-select")!, target:self, action:#selector(onSelectAll)))
-//        items.append(barFlexSpacer)
-
         // Move
         if !isTrash && (isDevice || !(isShared || isProjectRoot || isGuest)) {
             items.append(createBarButton(Asset.Images.barMove.image, #selector(onMoveSelected)))
@@ -869,8 +851,6 @@ class ASCDocumentsViewController: ASCBaseTableViewController, UIGestureRecognize
         provider?.fetch(for: folder, parameters: params) { [weak self] provider, folder, success, error in
             guard let strongSelf = self else { return }
 
-//            strongSelf.total        = provider.total
-//            strongSelf.tableData    = provider.items
             strongSelf.tableView.reloadData()
 
             strongSelf.showEmptyView(strongSelf.total < 1)
@@ -929,8 +909,6 @@ class ASCDocumentsViewController: ASCBaseTableViewController, UIGestureRecognize
 
                 if success || isCanceled {
                     strongSelf.folder       = folder
-//                    strongSelf.total        = provider.total
-//                    strongSelf.tableData    = provider.items
                     strongSelf.tableView.reloadData()
                     
                     strongSelf.showEmptyView(strongSelf.total < 1)
@@ -1017,10 +995,8 @@ class ASCDocumentsViewController: ASCBaseTableViewController, UIGestureRecognize
             loadingView.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
             loadingView.centerYAnchor.constraint(equalTo: view.centerYAnchor, constant: -80).isActive = true
             
-//            tableView.isUserInteractionEnabled = false
         } else {
             loadingView.removeFromSuperview()
-//            tableView.isUserInteractionEnabled = true
         }
     }
     
@@ -1703,10 +1679,6 @@ class ASCDocumentsViewController: ASCBaseTableViewController, UIGestureRecognize
         }
 
         if #available(iOS 14.0, *) {
-//            let selectMenu = UIMenu(title: "", options: .displayInline, children: selectActions)
-//            let sortMenu = UIMenu(title: "", options: .displayInline, children: sortActions)
-//            var menus: [UIMenuElement] = [sortMenu]
-            
             return UIMenu(title: "", options: [.displayInline], children: [
                 UIMenu(title: "", options: .displayInline, children: topActions),
                 UIMenu(title: "", options: .displayInline, children: middleActions),
@@ -2001,18 +1973,6 @@ class ASCDocumentsViewController: ASCBaseTableViewController, UIGestureRecognize
                 })
             )
         }
-        
-//        if actions.contains(.upload) {
-//            actionAlertController.addAction(
-//                UIAlertAction(
-//                    title: NSLocalizedString("Upload", comment: "Button title"),
-//                    style: .default,
-//                    handler: { [unowned self] action in
-//                        cell.hideSwipe(animated: true)
-//                        self.upload(cell: cell)
-//                })
-//            )
-//        }
 
         if actions.contains(.download) {
             actionAlertController.addAction(
@@ -2588,7 +2548,6 @@ class ASCDocumentsViewController: ASCBaseTableViewController, UIGestureRecognize
                                         closeHandler: closeHandler
                                     )
                                 } else {
-//                                    self?.editCloudFile(file, viewMode: false)
                                     self?.provider?.open(file: file, viewMode: false)
                                 }
                             })
@@ -2643,7 +2602,6 @@ class ASCDocumentsViewController: ASCBaseTableViewController, UIGestureRecognize
                     let folder = entity as? ASCFolder
 
                     if let indexPath = self.tableView.indexPath(for: cell), let entity: ASCEntity = file ?? folder {
-//                        self.tableData[indexPath.row] = entity
                         self.provider?.items[indexPath.row] = entity
                         self.tableView.beginUpdates()
                         self.tableView.reloadRows(at: [indexPath], with: .none)
@@ -2818,7 +2776,6 @@ class ASCDocumentsViewController: ASCBaseTableViewController, UIGestureRecognize
                 
                 if forceCancel {
                     self?.provider?.cancel()
-//                    ASCOnlyOfficeApi.cancelAllTasks()
                     return
                 }
 
@@ -3082,24 +3039,25 @@ class ASCDocumentsViewController: ASCBaseTableViewController, UIGestureRecognize
                 let isInsideTransfer = (strongSelf.provider?.id == provider.id) && !(strongSelf.provider is ASCGoogleDriveProvider)
 
                 if isInsideTransfer {
-                    strongSelf.insideCheckTransfer(items: items, to: folder, move: move, complation: { overwride, cancel in
-                        if cancel {
+                    strongSelf.insideCheckTransfer(items: items, to: folder, move: move) { overwride, cancel in
+                        guard !cancel else {
                             completion?(items)
-                        } else {
-                            strongSelf.insideTransfer(items: items, to: folder, move: move, overwride: overwride, completion: { entities in
-                                guard let _ = entities else {
-                                    completion?(items)
-                                    return
-                                }
-                                
-                                completion?(nil)
-                                
-                                if let destVC = getLoadedViewController(byFolderId: folder.id, andProviderId: provider.id) {
-                                    destVC.loadFirstPage()
-                                }
-                            })
+                            return
                         }
-                    })
+                        
+                        strongSelf.insideTransfer(items: items, to: folder, move: move, overwride: overwride) { movedEntities in
+                            guard movedEntities != nil else {
+                                completion?(items)
+                                return
+                            }
+                            
+                            completion?(nil)
+                            
+                            if let destVC = getLoadedViewController(byFolderId: folder.id, andProviderId: provider.id) {
+                                destVC.loadFirstPage()
+                            }
+                        }
+                    }
                 } else {
                     if  let srcProvider = self?.provider,
                         let destProvider = destProvider,
@@ -3179,7 +3137,6 @@ class ASCDocumentsViewController: ASCBaseTableViewController, UIGestureRecognize
 
             if let transferViewController = transferNavigationVC.topViewController as? ASCTransferViewController {
                 transferNavigationVC.transferType = isTrash(folder) ? .recover : (move ? .move : .copy)
-                // transferNavigationController.transferMode = type
                 transferViewController.folder = nil
             }
         }
@@ -3724,7 +3681,6 @@ extension ASCDocumentsViewController: ASCProviderDelegate {
                             guard let file = entity as? ASCFile else { return false }
                             return file.id == newFile.id || file.id == originalFile.id
                         }) {
-//                            strongSelf.tableData[index] = newFile
                             strongSelf.provider?.items[index] = newFile
 
                             let indexPath = IndexPath(row: index, section: 0)

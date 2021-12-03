@@ -38,6 +38,7 @@
 		1D1A2E3A2660FF7F00D0335B /* ASCLoadedVCFinderModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D1A2E392660FF7F00D0335B /* ASCLoadedVCFinderModels.swift */; };
 		1D1A2E412661018100D0335B /* Assets.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCE186492628CFE70086D21B /* Assets.swift */; };
 		1D1A2E46266103AE00D0335B /* ASCLoadedViewControllerFinderProtocolTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D1A2E45266103AE00D0335B /* ASCLoadedViewControllerFinderProtocolTests.swift */; };
+		1D1DB5562759023800FA0BEE /* ASCSharingSettingsAccessDocumentFormProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D1DB5552759023800FA0BEE /* ASCSharingSettingsAccessDocumentFormProvider.swift */; };
 		1D29914F274FB37700A06F3B /* ASCPortalType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D29914E274FB37600A06F3B /* ASCPortalType.swift */; };
 		1D299153274FB46300A06F3B /* ASCPortalTypeDefinderProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D299152274FB46300A06F3B /* ASCPortalTypeDefinderProtocol.swift */; };
 		1D299155274FB4EE00A06F3B /* ASCPortalTypeDefinderByUrl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D299154274FB4EE00A06F3B /* ASCPortalTypeDefinderByUrl.swift */; };
@@ -796,6 +797,7 @@
 		1D1A2E312660FE6E00D0335B /* ASCLoadedViewControllerFinderProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCLoadedViewControllerFinderProtocol.swift; sourceTree = "<group>"; };
 		1D1A2E392660FF7F00D0335B /* ASCLoadedVCFinderModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCLoadedVCFinderModels.swift; sourceTree = "<group>"; };
 		1D1A2E45266103AE00D0335B /* ASCLoadedViewControllerFinderProtocolTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCLoadedViewControllerFinderProtocolTests.swift; sourceTree = "<group>"; };
+		1D1DB5552759023800FA0BEE /* ASCSharingSettingsAccessDocumentFormProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCSharingSettingsAccessDocumentFormProvider.swift; sourceTree = "<group>"; };
 		1D29914E274FB37600A06F3B /* ASCPortalType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCPortalType.swift; sourceTree = "<group>"; };
 		1D299152274FB46300A06F3B /* ASCPortalTypeDefinderProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCPortalTypeDefinderProtocol.swift; sourceTree = "<group>"; };
 		1D299154274FB4EE00A06F3B /* ASCPortalTypeDefinderByUrl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCPortalTypeDefinderByUrl.swift; sourceTree = "<group>"; };
@@ -1393,6 +1395,7 @@
 				1D14AAD526962E6F009E48AD /* ASCSharingSettingsAccessTableProvider.swift */,
 				1D14AAD726962EE2009E48AD /* ASCSharingSettingsAccessPresentationProvider.swift */,
 				1D14AAD92696403D009E48AD /* ASCSharingSettingsAccessExternalDefaultProvider.swift */,
+				1D1DB5552759023800FA0BEE /* ASCSharingSettingsAccessDocumentFormProvider.swift */,
 			);
 			path = Providers;
 			sourceTree = "<group>";
@@ -2555,8 +2558,8 @@
 		FCCDE6762049734000CFC653 /* DocumentsTests */ = {
 			isa = PBXGroup;
 			children = (
-				1DCCEC06268DBD5D00692167 /* Controllers */,
 				1D5DB04526584DBC006B4757 /* Business */,
+				1DCCEC06268DBD5D00692167 /* Controllers */,
 				FCD2DD6F2703028500D31BD5 /* Services */,
 				FCCDE68120497C0D00CFC653 /* documents */,
 				FCCDE67F204973F500CFC653 /* ASCDocumentConverterTest.swift */,
@@ -4074,6 +4077,7 @@
 				FC68528126837B7300D830EC /* OnlyofficeUserPhoto.swift in Sources */,
 				FC89C39E2368450700705DE7 /* ASCGoogleDriveProvider.swift in Sources */,
 				FC68528B26837B7300D830EC /* OnlyofficeShare.swift in Sources */,
+				1D1DB5562759023800FA0BEE /* ASCSharingSettingsAccessDocumentFormProvider.swift in Sources */,
 				1D14AAF42698E85A009E48AD /* ASCSharingAddRightHoldersModels.swift in Sources */,
 				FC4D0A202494F7C9001EF1B5 /* ASCDebugNavigationController.swift in Sources */,
 				FCEF853C26C3E43000173DDF /* AppDelegate+Notifications.swift in Sources */,

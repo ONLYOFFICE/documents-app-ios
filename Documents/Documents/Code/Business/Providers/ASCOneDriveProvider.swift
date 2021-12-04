@@ -24,7 +24,21 @@ class ASCOneDriveProvider: ASCSortableFileProviderProtocol {
     var total: Int = 0
     
     private var apiClient: OnedriveApiClient?
-    public var provider: ASCOneDriveFileProvider?
+    public var provider: ASCOneDriveFileProvider? {
+        didSet {
+            guard let provider = provider else {
+                entityExistenceChecker = nil
+                entityUnicNameFinder = nil
+                return
+            }
+            
+            entityExistenceChecker = ASCEntityExistenceCheckerByAttributes(provider: provider)
+            entityUnicNameFinder = ASCEntityUnicNameFinder(entityExistChecker: entityExistenceChecker!)
+        }
+    }
+    
+    private var entityExistenceChecker: ASCEntityExistenceChecker?
+    private var entityUnicNameFinder: ASCUnicNameFinder?
     
     fileprivate lazy var providerOperationDelegate = ASCOneDriveProviderDelegate()
     
@@ -754,47 +768,21 @@ extension ASCOneDriveProvider: ASCFileProviderProtocol {
         }
     }
     
-    func findUnicName(baseName: String, inFolder folder: ASCFolder, completionHandler: @escaping (String) -> Void) {
-        guard let provider = provider else {
-            completionHandler(baseName)
+    func findUnicName(suggestedName: String, inFolder folder: ASCFolder, completionHandler: @escaping (String) -> Void) {
+        guard let provider = provider, let entityUnicNameFinder = entityUnicNameFinder else {
+            completionHandler(suggestedName)
             return
         }
         
         let pathFoundCompletion: (String?, Error?) -> Void = { path, error in
-            guard error == nil, let folderPath = path
-            else {
-                completionHandler(baseName)
+            guard error == nil, let folderPath = path else {
+                completionHandler(suggestedName)
                 return
             }
             
-            var checkingName = baseName
-            var isCurrentNameUnic = false
-            
-            var triesCount = 0;
-            repeat {
-                let semaphore = DispatchSemaphore(value: 0)
-                let filePath = folderPath.appendingPathComponent(checkingName)
-                provider.attributesOfItem(path: filePath) { fileObject, error in
-                    if fileObject == nil || error != nil {
-                        isCurrentNameUnic = true
-                    } else {
-                        triesCount += 1
-                        
-                        let fullItemName = baseName
-                        let itemExtension = fullItemName.pathExtension
-                        if !itemExtension.isEmpty {
-                            let itemName = fullItemName.deletingPathExtension
-                            checkingName = "\(itemName) \(triesCount).\(itemExtension)"
-                        } else {
-                            checkingName = "\(baseName) \(triesCount)"
-                        }
-                        
-                    }
-                    semaphore.signal()
-                }
-                semaphore.wait()
-            } while (!isCurrentNameUnic);
-            completionHandler(checkingName)
+            entityUnicNameFinder.find(bySuggestedName: suggestedName, atPath: folderPath) { unicName in
+                completionHandler(unicName)
+            }
         }
         
         if folder.id.isEmpty {
@@ -812,7 +800,7 @@ extension ASCOneDriveProvider: ASCFileProviderProtocol {
         
         let fileTitle = name + "." + fileExtension
         
-        findUnicName(baseName: fileTitle, inFolder: folder) { fileTitle in
+        findUnicName(suggestedName: fileTitle, inFolder: folder) { fileTitle in
             let file = ASCFile()
             file.title = fileTitle
             self.chechTransfer(items: [file], to: folder) { [self] (status, items, message) in
@@ -909,7 +897,7 @@ extension ASCOneDriveProvider: ASCFileProviderProtocol {
             return
         }
         
-        findUnicName(baseName: name, inFolder: folder) { name in
+        findUnicName(suggestedName: name, inFolder: folder) { name in
         
         provider.create(folder: name, at: folder.id) { [weak self] error in
             DispatchQueue.main.async(execute: { [weak self] in

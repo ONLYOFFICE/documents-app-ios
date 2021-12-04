@@ -10,6 +10,7 @@ import UIKit
 import FilesProvider
 import FileKit
 import Alamofire
+import DocumentEditor
 
 class ASCNextCloudProvider: ASCWebDAVProvider {
 
@@ -35,6 +36,22 @@ class ASCNextCloudProvider: ASCWebDAVProvider {
     private var apiClient: NextcloudApiClient?
     private let webdavEndpoint = "/remote.php/dav/files"
     private let endpointPath = "/remote.php/dav/files/%@"
+    
+    override var provider: WebDAVFileProvider? {
+        didSet {
+            guard let provider = provider else {
+                entityExistenceChecker = nil
+                entityUnicNameFinder = nil
+                return
+            }
+            
+            entityExistenceChecker = ASCEntityExistenceCheckerByAttributes(provider: provider)
+            entityUnicNameFinder = ASCEntityUnicNameFinder(entityExistChecker: entityExistenceChecker!)
+        }
+    }
+    
+    private var entityExistenceChecker: ASCEntityExistenceChecker?
+    private var entityUnicNameFinder: ASCUnicNameFinder?
 
     // MARK: - Lifecycle Methods
 
@@ -191,5 +208,42 @@ class ASCNextCloudProvider: ASCWebDAVProvider {
     ///   - entity: target entity
     override func allowEdit(entity: AnyObject?) -> Bool {
         return true
+    }
+    
+    override func createDocument(_ name: String, fileExtension: String, in folder: ASCFolder, completeon: ASCProviderCompletionHandler?) {
+        findUnicName(suggestedName: name.appendingPathExtension(fileExtension) ?? name, inFolder: folder) { unicName in
+            super.createDocument(unicName.removingSuffix(".\(fileExtension)"), fileExtension: fileExtension, in: folder, completeon: completeon)
+        }
+    }
+    
+    override func createImage(_ name: String, in folder: ASCFolder, data: Data, params: [String: Any]?, processing: @escaping NetworkProgressHandler) {
+        findUnicName(suggestedName: name, inFolder: folder) { unicName in
+            super.createImage(unicName, in: folder, data: data, params: params, processing: processing)
+        }
+    }
+    
+    override func createFile(_ name: String, in folder: ASCFolder, data: Data, params: [String: Any]?, processing: @escaping NetworkProgressHandler) {
+        findUnicName(suggestedName: name, inFolder: folder) { unicName in
+            super.createFile(unicName, in: folder, data: data, params: params, processing: processing)
+        }
+    }
+    
+    override func createFolder(_ name: String, in folder: ASCFolder, params: [String: Any]?, completeon: ASCProviderCompletionHandler?) {
+        findUnicName(suggestedName: name, inFolder: folder) { unicName in
+            super.createFolder(unicName, in: folder, params: params, completeon: completeon)
+        }
+    }
+    
+    func findUnicName(suggestedName: String, inFolder folder: ASCFolder, completionHandler: @escaping (String) -> Void) {
+        guard let entityUnicNameFinder = entityUnicNameFinder else {
+            completionHandler(suggestedName)
+            return
+        }
+        
+        let path = folder.id.isEmpty ? "/" : folder.id
+        
+        entityUnicNameFinder.find(bySuggestedName: suggestedName, atPath: path) { unicName in
+            completionHandler(unicName)
+        }
     }
 }

@@ -41,17 +41,17 @@ class ASCNextCloudProvider: ASCWebDAVProvider {
         didSet {
             guard let provider = provider else {
                 entityExistenceChecker = nil
-                entityUnicNameFinder = nil
+                entityUniqNameFinder = nil
                 return
             }
             
             entityExistenceChecker = ASCEntityExistenceCheckerByAttributes(provider: provider)
-            entityUnicNameFinder = ASCEntityUnicNameFinder(entityExistChecker: entityExistenceChecker!)
+            entityUniqNameFinder = ASCEntityUniqNameFinder(entityExistChecker: entityExistenceChecker!)
         }
     }
     
     private var entityExistenceChecker: ASCEntityExistenceChecker?
-    private var entityUnicNameFinder: ASCUnicNameFinder?
+    private var entityUniqNameFinder: ASCUniqNameFinder?
 
     // MARK: - Lifecycle Methods
 
@@ -211,39 +211,37 @@ class ASCNextCloudProvider: ASCWebDAVProvider {
     }
     
     override func createDocument(_ name: String, fileExtension: String, in folder: ASCFolder, completeon: ASCProviderCompletionHandler?) {
-        findUnicName(suggestedName: name.appendingPathExtension(fileExtension) ?? name, inFolder: folder) { unicName in
-            super.createDocument(unicName.removingSuffix(".\(fileExtension)"), fileExtension: fileExtension, in: folder, completeon: completeon)
+        findUniqName(suggestedName: name.appendingPathExtension(fileExtension) ?? name, inFolder: folder) { uniqName in
+            super.createDocument(uniqName.removingSuffix(".\(fileExtension)"), fileExtension: fileExtension, in: folder, completeon: completeon)
         }
     }
     
     override func createImage(_ name: String, in folder: ASCFolder, data: Data, params: [String: Any]?, processing: @escaping NetworkProgressHandler) {
-        findUnicName(suggestedName: name, inFolder: folder) { unicName in
-            super.createImage(unicName, in: folder, data: data, params: params, processing: processing)
+        findUniqName(suggestedName: name, inFolder: folder) { uniqName in
+            super.createImage(uniqName, in: folder, data: data, params: params, processing: processing)
         }
     }
     
     override func createFile(_ name: String, in folder: ASCFolder, data: Data, params: [String: Any]?, processing: @escaping NetworkProgressHandler) {
-        findUnicName(suggestedName: name, inFolder: folder) { unicName in
-            super.createFile(unicName, in: folder, data: data, params: params, processing: processing)
+        findUniqName(suggestedName: name, inFolder: folder) { uniqName in
+            super.createFile(uniqName, in: folder, data: data, params: params, processing: processing)
         }
     }
     
     override func createFolder(_ name: String, in folder: ASCFolder, params: [String: Any]?, completeon: ASCProviderCompletionHandler?) {
-        findUnicName(suggestedName: name, inFolder: folder) { unicName in
-            super.createFolder(unicName, in: folder, params: params, completeon: completeon)
+        findUniqName(suggestedName: name, inFolder: folder) { uniqName in
+            super.createFolder(uniqName, in: folder, params: params, completeon: completeon)
         }
     }
     
-    func findUnicName(suggestedName: String, inFolder folder: ASCFolder, completionHandler: @escaping (String) -> Void) {
-        guard let entityUnicNameFinder = entityUnicNameFinder else {
+    func findUniqName(suggestedName: String, inFolder folder: ASCFolder, completionHandler: @escaping (String) -> Void) {
+        guard let entityUniqNameFinder = entityUniqNameFinder else {
             completionHandler(suggestedName)
             return
         }
         
-        let path = folder.id.isEmpty ? "/" : folder.id
-        
-        entityUnicNameFinder.find(bySuggestedName: suggestedName, atPath: path) { unicName in
-            completionHandler(unicName)
+        entityUniqNameFinder.find(bySuggestedName: suggestedName, atPath: folder.id) { uniqName in
+            completionHandler(uniqName)
         }
     }
 }

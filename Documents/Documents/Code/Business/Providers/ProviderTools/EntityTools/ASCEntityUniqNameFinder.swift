@@ -1,5 +1,5 @@
 //
-//  EntityUnicNameFinder.swift
+//  EntityUniqNameFinder.swift
 //  Documents
 //
 //  Created by Pavel Chernyshev on 04.12.2021.
@@ -8,17 +8,17 @@
 
 import Foundation
 
-class ASCEntityUnicNameFinder: ASCUnicNameFinder {
+class ASCEntityUniqNameFinder: ASCUniqNameFinder {
     let entityExistChecker: ASCEntityExistenceChecker
     
     init(entityExistChecker: ASCEntityExistenceChecker) {
         self.entityExistChecker = entityExistChecker
     }
     
-    func find(bySuggestedName suggestedName: String, atPath path: String, completion: @escaping (UnicName) -> Void) {
+    func find(bySuggestedName suggestedName: String, atPath path: String, completion: @escaping (UniqName) -> Void) {
 
         var checkingName = suggestedName
-        var isCurrentNameUnic = false
+        var isCurrentNameUniq = false
         let folderPath = path
         
         var triesCount = 0;
@@ -27,7 +27,7 @@ class ASCEntityUnicNameFinder: ASCUnicNameFinder {
             let filePath = folderPath.appendingPathComponent(checkingName)
             self.entityExistChecker.isExist(entityFullName: filePath) { isExist in
                 if !isExist {
-                    isCurrentNameUnic = true
+                    isCurrentNameUniq = true
                 } else {
                     triesCount += 1
                     
@@ -44,7 +44,7 @@ class ASCEntityUnicNameFinder: ASCUnicNameFinder {
                 semaphore.signal()
             }
             semaphore.wait()
-        } while (!isCurrentNameUnic);
+        } while (!isCurrentNameUniq);
         completion(checkingName)
         
     }

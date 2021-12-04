@@ -28,17 +28,17 @@ class ASCOneDriveProvider: ASCSortableFileProviderProtocol {
         didSet {
             guard let provider = provider else {
                 entityExistenceChecker = nil
-                entityUnicNameFinder = nil
+                entityUniqNameFinder = nil
                 return
             }
             
             entityExistenceChecker = ASCEntityExistenceCheckerByAttributes(provider: provider)
-            entityUnicNameFinder = ASCEntityUnicNameFinder(entityExistChecker: entityExistenceChecker!)
+            entityUniqNameFinder = ASCEntityUniqNameFinder(entityExistChecker: entityExistenceChecker!)
         }
     }
     
     private var entityExistenceChecker: ASCEntityExistenceChecker?
-    private var entityUnicNameFinder: ASCUnicNameFinder?
+    private var entityUniqNameFinder: ASCUniqNameFinder?
     
     fileprivate lazy var providerOperationDelegate = ASCOneDriveProviderDelegate()
     
@@ -768,8 +768,8 @@ extension ASCOneDriveProvider: ASCFileProviderProtocol {
         }
     }
     
-    func findUnicName(suggestedName: String, inFolder folder: ASCFolder, completionHandler: @escaping (String) -> Void) {
-        guard let provider = provider, let entityUnicNameFinder = entityUnicNameFinder else {
+    func findUniqName(suggestedName: String, inFolder folder: ASCFolder, completionHandler: @escaping (String) -> Void) {
+        guard let provider = provider, let entityUniqNameFinder = entityUniqNameFinder else {
             completionHandler(suggestedName)
             return
         }
@@ -780,8 +780,8 @@ extension ASCOneDriveProvider: ASCFileProviderProtocol {
                 return
             }
             
-            entityUnicNameFinder.find(bySuggestedName: suggestedName, atPath: folderPath) { unicName in
-                completionHandler(unicName)
+            entityUniqNameFinder.find(bySuggestedName: suggestedName, atPath: folderPath) { uniqName in
+                completionHandler(uniqName)
             }
         }
         
@@ -800,7 +800,7 @@ extension ASCOneDriveProvider: ASCFileProviderProtocol {
         
         let fileTitle = name + "." + fileExtension
         
-        findUnicName(suggestedName: fileTitle, inFolder: folder) { fileTitle in
+        findUniqName(suggestedName: fileTitle, inFolder: folder) { fileTitle in
             let file = ASCFile()
             file.title = fileTitle
             self.chechTransfer(items: [file], to: folder) { [self] (status, items, message) in
@@ -897,7 +897,7 @@ extension ASCOneDriveProvider: ASCFileProviderProtocol {
             return
         }
         
-        findUnicName(suggestedName: name, inFolder: folder) { name in
+        findUniqName(suggestedName: name, inFolder: folder) { name in
         
         provider.create(folder: name, at: folder.id) { [weak self] error in
             DispatchQueue.main.async(execute: { [weak self] in

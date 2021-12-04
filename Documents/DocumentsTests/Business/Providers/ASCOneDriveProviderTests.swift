@@ -24,12 +24,12 @@ class ASCOneDriveProviderTests: XCTestCase {
        sut = nil
     }
 
-    // MARK: - findUnicName func tests
+    // MARK: - findUniqName func tests
     func testFindUnicNameWhenBaseNameIsUnicThenReturnsBaseName() throws {
         let folder = ASCFolder()
         folder.id = "1"
         sut.provider = ASCOneDriveFileProviderMock()
-        sut.findUnicName(suggestedName: "Foo.docx", inFolder: folder) { name in
+        sut.findUniqName(suggestedName: "Foo.docx", inFolder: folder) { name in
             XCTAssertEqual(name, "Foo.docx")
         }
     }
@@ -49,7 +49,7 @@ class ASCOneDriveProviderTests: XCTestCase {
             "/1/Foo 6.docx",
         ]
         sut.provider = mockProvider
-        sut.findUnicName(suggestedName: "Foo.docx", inFolder: folder) { name in
+        sut.findUniqName(suggestedName: "Foo.docx", inFolder: folder) { name in
             XCTAssertEqual(name, "Foo 7.docx")
         }
     }
@@ -63,7 +63,7 @@ class ASCOneDriveProviderTests: XCTestCase {
             "/Foo 1.docx",
         ]
         sut.provider = mockProvider
-        sut.findUnicName(suggestedName: "Foo.docx", inFolder: folder) { name in
+        sut.findUniqName(suggestedName: "Foo.docx", inFolder: folder) { name in
             XCTAssertEqual(name, "Foo 2.docx")
         }
     }
@@ -72,7 +72,7 @@ class ASCOneDriveProviderTests: XCTestCase {
         let folder = ASCFolder()
         folder.id = ""
         sut.provider = ASCOneDriveFileProviderMock()
-        sut.findUnicName(suggestedName: "Foo", inFolder: folder) { name in
+        sut.findUniqName(suggestedName: "Foo", inFolder: folder) { name in
             XCTAssertEqual(name, "Foo")
         }
     }
@@ -88,7 +88,7 @@ class ASCOneDriveProviderTests: XCTestCase {
             "/2/Foo 2"
         ]
         sut.provider = mockProvider
-        sut.findUnicName(suggestedName: "Foo", inFolder: folder) { name in
+        sut.findUniqName(suggestedName: "Foo", inFolder: folder) { name in
             XCTAssertEqual(name, "Foo 3")
         }
     }
@@ -104,7 +104,7 @@ class ASCOneDriveProviderTests: XCTestCase {
             "/Foo 3",
         ]
         sut.provider = mockProvider
-        sut.findUnicName(suggestedName: "Foo", inFolder: folder) { name in
+        sut.findUniqName(suggestedName: "Foo", inFolder: folder) { name in
             XCTAssertEqual(name, "Foo 4")
         }
     }

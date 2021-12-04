@@ -32,7 +32,7 @@ extension ASCNextCloudProviderTests {
     func testFindUnicNameWhenBaseNameIsUnicThenReturnsBaseName() throws {
         
         setSUTFileProveder(withExistingPaths: [])
-        sut.findUnicName(suggestedName: "Foo.docx", inFolder: makeFolder(withId: "1")) { name in
+        sut.findUniqName(suggestedName: "Foo.docx", inFolder: makeFolder(withId: "/1")) { name in
             XCTAssertEqual(name, "Foo.docx")
         }
     }
@@ -47,7 +47,7 @@ extension ASCNextCloudProviderTests {
             "/1/Foo 5.docx",
             "/1/Foo 6.docx",
         ])
-        sut.findUnicName(suggestedName: "Foo.docx", inFolder: makeFolder(withId: "1")) { name in
+        sut.findUniqName(suggestedName: "Foo.docx", inFolder: makeFolder(withId: "/1")) { name in
             XCTAssertEqual(name, "Foo 7.docx")
         }
     }
@@ -57,14 +57,14 @@ extension ASCNextCloudProviderTests {
             "/Foo.docx",
             "/Foo 1.docx",
         ])
-        sut.findUnicName(suggestedName: "Foo.docx", inFolder: makeFolder(withId: "")) { name in
+        sut.findUniqName(suggestedName: "Foo.docx", inFolder: makeFolder(withId: "/")) { name in
             XCTAssertEqual(name, "Foo 2.docx")
         }
     }
     
     func testFindUnicNameWhenDirectoryBaseNameIsUnicThenReturnsBaseName() throws {
         setSUTFileProveder(withExistingPaths: [])
-        sut.findUnicName(suggestedName: "Foo", inFolder: makeFolder(withId: "")) { name in
+        sut.findUniqName(suggestedName: "Foo", inFolder: makeFolder(withId: "/")) { name in
             XCTAssertEqual(name, "Foo")
         }
     }
@@ -75,7 +75,7 @@ extension ASCNextCloudProviderTests {
             "/2/Foo 1",
             "/2/Foo 2"
         ])
-        sut.findUnicName(suggestedName: "Foo", inFolder: makeFolder(withId: "2")) { name in
+        sut.findUniqName(suggestedName: "Foo", inFolder: makeFolder(withId: "/2")) { name in
             XCTAssertEqual(name, "Foo 3")
         }
     }
@@ -87,7 +87,7 @@ extension ASCNextCloudProviderTests {
             "/Foo 2",
             "/Foo 3",
         ])
-        sut.findUnicName(suggestedName: "Foo", inFolder: makeFolder(withId: "")) { name in
+        sut.findUniqName(suggestedName: "Foo", inFolder: makeFolder(withId: "/")) { name in
             XCTAssertEqual(name, "Foo 4")
         }
     }
@@ -124,7 +124,7 @@ extension ASCNextCloudProviderTests {
         
         override func attributesOfItem(path: String, completionHandler: @escaping (FileObject?, Error?) -> Void) {
             
-            if existingPaths.contains("/\(path)") {
+            if existingPaths.contains(path) {
                 let pathExtEmpty = path.pathExtension.isEmpty
                 let fileResourceTypeKey: URLFileResourceType = pathExtEmpty ? .directory : .regular
                 let fileObject = FileObject(allValues: [.fileResourceTypeKey: fileResourceTypeKey])

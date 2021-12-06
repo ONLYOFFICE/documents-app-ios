@@ -59,4 +59,53 @@ class ASCSharingSettingsAccessProviderFactoryTests: XCTestCase {
         XCTAssertTrue(sut.get(entity: file, isAccessExternal: true) is ASCSharingSettingsAccessPresentationProvider)
     }
     
+    func testWhenDocumentFormThenGetsNextRightReadDenyFullCommentReview() {
+        let file = ASCFile()
+        file.title = "Foo.docxf"
+        let provider = sut.get(entity: file, isAccessExternal: false)
+        let actualAccessList = provider.get()
+        let expectedAccessList: [ASCShareAccess] = [.full, .review, .comment, .read, .deny]
+        XCTAssertEqual(expectedAccessList, actualAccessList)
+    }
+    
+    func testWhenDocumentFormForTheExternalLinkThenGetsNextRightReadDenyFullCommentReview() {
+        let file = ASCFile()
+        file.title = "Foo.docxf"
+        let provider = sut.get(entity: file, isAccessExternal: true)
+        let actualAccessList = provider.get()
+        let expectedAccessList: [ASCShareAccess] = [.full, .review, .comment, .read, .deny]
+        XCTAssertEqual(expectedAccessList, actualAccessList)
+    }
+    
+    func testWhenDocumentFormThenGetsDocumntFormProvider() {
+        let file = ASCFile()
+        file.title = "Foo.docxf"
+        XCTAssertTrue(sut.get(entity: file, isAccessExternal: false) is ASCSharingSettingsAccessDocumentFormProvider)
+        XCTAssertTrue(sut.get(entity: file, isAccessExternal: true) is ASCSharingSettingsAccessDocumentFormProvider)
+    }
+    
+    func testWhenOFormThenGetsNextRightReadDenyFullCommentReview() {
+        let file = ASCFile()
+        file.title = "Foo.oform"
+        let provider = sut.get(entity: file, isAccessExternal: false)
+        let actualAccessList = provider.get()
+        let expectedAccessList: [ASCShareAccess] = [.full, .fillForms, .read, .deny]
+        XCTAssertEqual(expectedAccessList, actualAccessList)
+    }
+    
+    func testWhenOFormForTheExternalLinkThenGetsNextRightReadDenyFullCommentReview() {
+        let file = ASCFile()
+        file.title = "Foo.oform"
+        let provider = sut.get(entity: file, isAccessExternal: true)
+        let actualAccessList = provider.get()
+        let expectedAccessList: [ASCShareAccess] = [.full, .fillForms, .read, .deny]
+        XCTAssertEqual(expectedAccessList, actualAccessList)
+    }
+    
+    func testWhenOFormThenGetsDocumntFormProvider() {
+        let file = ASCFile()
+        file.title = "Foo.oform"
+        XCTAssertTrue(sut.get(entity: file, isAccessExternal: false) is ASCSharingSettingsAccessOFormProvider)
+        XCTAssertTrue(sut.get(entity: file, isAccessExternal: true) is ASCSharingSettingsAccessOFormProvider)
+    }
 }

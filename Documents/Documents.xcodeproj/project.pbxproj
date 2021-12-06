@@ -118,6 +118,11 @@
 		1D71107A26A5A93000E00421 /* ASCShareSettingsAPIWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D71107926A5A93000E00421 /* ASCShareSettingsAPIWorker.swift */; };
 		1D71107D26A5A9A000E00421 /* ASCShareSettingsAPIWorkerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D71107C26A5A9A000E00421 /* ASCShareSettingsAPIWorkerTests.swift */; };
 		1D71107F26A8217400E00421 /* UINavigationItem+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D71107E26A8217300E00421 /* UINavigationItem+Extensions.swift */; };
+		1D76B047275B746200389C61 /* ASCNextCloudProviderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D76B046275B746200389C61 /* ASCNextCloudProviderTests.swift */; };
+		1D76B04B275B921100389C61 /* ASCEntityExistenceChecker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D76B04A275B921100389C61 /* ASCEntityExistenceChecker.swift */; };
+		1D76B04E275B935400389C61 /* ASCUniqNameFinder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D76B04D275B935400389C61 /* ASCUniqNameFinder.swift */; };
+		1D76B050275B957A00389C61 /* ASCEntityUniqNameFinder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D76B04F275B957A00389C61 /* ASCEntityUniqNameFinder.swift */; };
+		1D76B052275B9DC200389C61 /* ASCEntityExistenceCheckerByAttributes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D76B051275B9DC200389C61 /* ASCEntityExistenceCheckerByAttributes.swift */; };
 		1D863F1126722FB3000BAC3C /* ASCSharingRightHolderTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D863F1026722FB3000BAC3C /* ASCSharingRightHolderTableViewCell.swift */; };
 		1D863F1A26725BC7000BAC3C /* ASCSharingRightHolderViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D863F1926725BC6000BAC3C /* ASCSharingRightHolderViewModel.swift */; };
 		1D863F1F2673DEFF000BAC3C /* ASCSwitchTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D863F1E2673DEFE000BAC3C /* ASCSwitchTableViewCell.swift */; };
@@ -825,6 +830,11 @@
 		1D71107926A5A93000E00421 /* ASCShareSettingsAPIWorker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCShareSettingsAPIWorker.swift; sourceTree = "<group>"; };
 		1D71107C26A5A9A000E00421 /* ASCShareSettingsAPIWorkerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCShareSettingsAPIWorkerTests.swift; sourceTree = "<group>"; };
 		1D71107E26A8217300E00421 /* UINavigationItem+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UINavigationItem+Extensions.swift"; sourceTree = "<group>"; };
+		1D76B046275B746200389C61 /* ASCNextCloudProviderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCNextCloudProviderTests.swift; sourceTree = "<group>"; };
+		1D76B04A275B921100389C61 /* ASCEntityExistenceChecker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCEntityExistenceChecker.swift; sourceTree = "<group>"; };
+		1D76B04D275B935400389C61 /* ASCUniqNameFinder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCUniqNameFinder.swift; sourceTree = "<group>"; };
+		1D76B04F275B957A00389C61 /* ASCEntityUniqNameFinder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCEntityUniqNameFinder.swift; sourceTree = "<group>"; };
+		1D76B051275B9DC200389C61 /* ASCEntityExistenceCheckerByAttributes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCEntityExistenceCheckerByAttributes.swift; sourceTree = "<group>"; };
 		1D863F1026722FB3000BAC3C /* ASCSharingRightHolderTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCSharingRightHolderTableViewCell.swift; sourceTree = "<group>"; };
 		1D863F1926725BC6000BAC3C /* ASCSharingRightHolderViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCSharingRightHolderViewModel.swift; sourceTree = "<group>"; };
 		1D863F1E2673DEFE000BAC3C /* ASCSwitchTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCSwitchTableViewCell.swift; sourceTree = "<group>"; };
@@ -1622,6 +1632,7 @@
 				1D14AADF26964A99009E48AD /* SharingSettingsAccess */,
 				1D5DB04726584E37006B4757 /* OnlyofficeCategories */,
 				1DF6E0A826D5323A00FB42CE /* ASCOneDriveProviderTests.swift */,
+				1D76B046275B746200389C61 /* ASCNextCloudProviderTests.swift */,
 			);
 			path = Providers;
 			sourceTree = "<group>";
@@ -1660,6 +1671,33 @@
 				1DEB9972274E3ED10071C1DB /* ASCShareSettingsAPIWorkerFactoryTests.swift */,
 			);
 			path = Workers;
+			sourceTree = "<group>";
+		};
+		1D76B048275B919300389C61 /* ProviderTools */ = {
+			isa = PBXGroup;
+			children = (
+				1D76B049275B91A400389C61 /* EntityTools */,
+			);
+			path = ProviderTools;
+			sourceTree = "<group>";
+		};
+		1D76B049275B91A400389C61 /* EntityTools */ = {
+			isa = PBXGroup;
+			children = (
+				1D76B04C275B92E800389C61 /* Protocols */,
+				1D76B04F275B957A00389C61 /* ASCEntityUniqNameFinder.swift */,
+				1D76B051275B9DC200389C61 /* ASCEntityExistenceCheckerByAttributes.swift */,
+			);
+			path = EntityTools;
+			sourceTree = "<group>";
+		};
+		1D76B04C275B92E800389C61 /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				1D76B04A275B921100389C61 /* ASCEntityExistenceChecker.swift */,
+				1D76B04D275B935400389C61 /* ASCUniqNameFinder.swift */,
+			);
+			path = Protocols;
 			sourceTree = "<group>";
 		};
 		1D863F0F26722F1A000BAC3C /* Cells */ = {
@@ -1909,6 +1947,7 @@
 		FC0F01DD216F43FF008D79A5 /* Providers */ = {
 			isa = PBXGroup;
 			children = (
+				1D76B048275B919300389C61 /* ProviderTools */,
 				1D2E3B8726BB289500BEBE9D /* SharingSettingsAccessNotes */,
 				1D14AACC26962B93009E48AD /* SharingSettingsAccess */,
 				1D981FF02631A63C00144B57 /* OnlyofficeCategories */,
@@ -3842,6 +3881,7 @@
 				FC4D864420C50AE00047B871 /* Data+Extension.swift in Sources */,
 				FC4D864320C50AE00047B871 /* Dictionary+Extension.swift in Sources */,
 				1DEB9973274E3ED10071C1DB /* ASCShareSettingsAPIWorkerFactoryTests.swift in Sources */,
+				1D76B047275B746200389C61 /* ASCNextCloudProviderTests.swift in Sources */,
 				1D14AAC72694F0C4009E48AD /* ASCOnlyofficeFileInternalLinkMakerTests.swift in Sources */,
 				FC4D864020C50A710047B871 /* UIDevice+Extension.swift in Sources */,
 				FC4D864820C50AE00047B871 /* MBProgressHUD+Extension.swift in Sources */,
@@ -3884,6 +3924,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				FCAE8B8D1E717B84004FC332 /* EventManager.swift in Sources */,
+				1D76B052275B9DC200389C61 /* ASCEntityExistenceCheckerByAttributes.swift in Sources */,
 				1DC43EEA26A0978D00373D5A /* ASCSharingSettingsAccessViewModel.swift in Sources */,
 				FCF694B42631C10400808644 /* ASCNavigator.swift in Sources */,
 				FC68529326837B7300D830EC /* OnlyofficeEndpoints.swift in Sources */,
@@ -3954,6 +3995,7 @@
 				FCEF853626C3E3CF00173DDF /* AppDelegate.swift in Sources */,
 				1D14AAD426962D7C009E48AD /* ASCSharingSettingsAccessDocumentProvider.swift in Sources */,
 				FC37D8E921CB8FA8001A7BFD /* UIDevice+DeviceKit.swift in Sources */,
+				1D76B04E275B935400389C61 /* ASCUniqNameFinder.swift in Sources */,
 				FC5E2D8D1E8A4C8B0079626B /* ASCImageViewController.swift in Sources */,
 				1D9B8099267403650020B5ED /* ASCCopyLinkTableViewCell.swift in Sources */,
 				FC41D8062265D99C00A155C2 /* ASCFileStatus.swift in Sources */,
@@ -4130,6 +4172,7 @@
 				FCD2DD6C2702F70400D31BD5 /* ManagedAppConfig.swift in Sources */,
 				1DE6D6C42631BE03001B825B /* ASCOnlyofficeCategoriesProviderFactory.swift in Sources */,
 				1D14AAF12698E85A009E48AD /* ASCSharingAddRightHoldersPresenter.swift in Sources */,
+				1D76B050275B957A00389C61 /* ASCEntityUniqNameFinder.swift in Sources */,
 				FC795596243E1A3A00CDD9FC /* KingfisherWrapper+Extensions.swift in Sources */,
 				FC8C69791ECC2990005B68D7 /* Date+Extension.swift in Sources */,
 				FC407FBC2191DC76009089EB /* ASCConnectCloudViewController.swift in Sources */,
@@ -4157,6 +4200,7 @@
 				FC707C3D25AC5691004CB85B /* UILabel+Extension.swift in Sources */,
 				1D1A2E322660FE6E00D0335B /* ASCLoadedViewControllerFinderProtocol.swift in Sources */,
 				FC7F786B236ACBB00026E260 /* ASCConnectStorageGoogleController.swift in Sources */,
+				1D76B04B275B921100389C61 /* ASCEntityExistenceChecker.swift in Sources */,
 				FC6106FD1F9E30B9002A25C8 /* ASCAvatarCollectionViewCell.swift in Sources */,
 				FC6839A221B81B1D00251CEA /* ASCOwnCloudProvider.swift in Sources */,
 				FC99FAF1226460F2000F1464 /* ASC2FAViewController.swift in Sources */,

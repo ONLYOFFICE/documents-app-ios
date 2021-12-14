@@ -1299,6 +1299,14 @@ Note: if you forget the passcode, you'll need to delete and reinstall the app. A
         <target>Новая таблица</target>
         <note/>
       </trans-unit>
+      <trans-unit id="ONLYOFFICE Edit Form document (.docxf)" xml:space="preserve">
+        <source>ONLYOFFICE Edit Form document (.docxf)</source>
+        <note/>
+      </trans-unit>
+      <trans-unit id="ONLYOFFICE Fill Form document (.oform)" xml:space="preserve">
+        <source>ONLYOFFICE Fill Form document (.oform)</source>
+        <note/>
+      </trans-unit>
     </body>
   </file>
   <file original="Documents/en.lproj/Documents.alpha-InfoPlist.strings" datatype="plaintext" source-language="en" target-language="ru">
@@ -1348,7 +1356,14 @@ Note: if you forget the passcode, you'll need to delete and reinstall the app. A
       </trans-unit>
       <trans-unit id="New Spreadsheet" xml:space="preserve">
         <source>New Spreadsheet</source>
-        <target state="translated">Новая таблица</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="ONLYOFFICE Edit Form document (.docxf)" xml:space="preserve">
+        <source>ONLYOFFICE Edit Form document (.docxf)</source>
+        <note/>
+      </trans-unit>
+      <trans-unit id="ONLYOFFICE Fill Form document (.oform)" xml:space="preserve">
+        <source>ONLYOFFICE Fill Form document (.oform)</source>
         <note/>
       </trans-unit>
     </body>
@@ -3197,11 +3212,6 @@ to the clipboard</source>
         <source>Unsupported format.</source>
         <target>Неподдерживаемый формат.</target>
         <note>No comment provided by engineer.</note>
-      </trans-unit>
-      <trans-unit id="Upload" xml:space="preserve">
-        <source>Upload</source>
-        <target>Загрузить</target>
-        <note>Button title</note>
       </trans-unit>
       <trans-unit id="Uploading" xml:space="preserve">
         <source>Uploading</source>

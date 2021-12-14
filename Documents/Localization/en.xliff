@@ -1210,6 +1210,16 @@ Note: if you forget the passcode, you'll need to delete and reinstall the app. A
         <target>New Spreadsheet</target>
         <note/>
       </trans-unit>
+      <trans-unit id="ONLYOFFICE Edit Form document (.docxf)" xml:space="preserve">
+        <source>ONLYOFFICE Edit Form document (.docxf)</source>
+        <target>ONLYOFFICE Edit Form document (.docxf)</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="ONLYOFFICE Fill Form document (.oform)" xml:space="preserve">
+        <source>ONLYOFFICE Fill Form document (.oform)</source>
+        <target>ONLYOFFICE Fill Form document (.oform)</target>
+        <note/>
+      </trans-unit>
     </body>
   </file>
   <file original="Documents/en.lproj/Documents.alpha-InfoPlist.strings" source-language="en" target-language="en" datatype="plaintext">
@@ -1260,6 +1270,16 @@ Note: if you forget the passcode, you'll need to delete and reinstall the app. A
       <trans-unit id="New Spreadsheet" xml:space="preserve">
         <source>New Spreadsheet</source>
         <target>New Spreadsheet</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="ONLYOFFICE Edit Form document (.docxf)" xml:space="preserve">
+        <source>ONLYOFFICE Edit Form document (.docxf)</source>
+        <target>ONLYOFFICE Edit Form document (.docxf)</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="ONLYOFFICE Fill Form document (.oform)" xml:space="preserve">
+        <source>ONLYOFFICE Fill Form document (.oform)</source>
+        <target>ONLYOFFICE Fill Form document (.oform)</target>
         <note/>
       </trans-unit>
     </body>
@@ -3109,11 +3129,6 @@ to the clipboard</target>
         <source>Unsupported format.</source>
         <target>Unsupported format.</target>
         <note>No comment provided by engineer.</note>
-      </trans-unit>
-      <trans-unit id="Upload" xml:space="preserve">
-        <source>Upload</source>
-        <target>Upload</target>
-        <note>Button title</note>
       </trans-unit>
       <trans-unit id="Uploading" xml:space="preserve">
         <source>Uploading</source>

@@ -964,13 +964,6 @@
 		FC56F4912248BC13004E3930 /* CALayer+Animate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CALayer+Animate.swift"; sourceTree = "<group>"; };
 		FC584EDD25BB4F5D001C608E /* Documents.dev.entitlements */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.entitlements; path = Documents.dev.entitlements; sourceTree = "<group>"; };
 		FC584EDE25BB4F5D001C608E /* Documents.entitlements */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.entitlements; path = Documents.entitlements; sourceTree = "<group>"; };
-		FC5CE53B26B437B70066901E /* fr.xliff */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = fr.xliff; sourceTree = "<group>"; };
-		FC5CE53C26B437B70066901E /* ru.xliff */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = ru.xliff; sourceTree = "<group>"; };
-		FC5CE53D26B437B70066901E /* cs.xliff */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = cs.xliff; sourceTree = "<group>"; };
-		FC5CE53E26B437B70066901E /* bg.xliff */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = bg.xliff; sourceTree = "<group>"; };
-		FC5CE53F26B437B70066901E /* es.xliff */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = es.xliff; sourceTree = "<group>"; };
-		FC5CE54026B437B70066901E /* de.xliff */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = de.xliff; sourceTree = "<group>"; };
-		FC5CE54126B437B70066901E /* en.xliff */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = en.xliff; sourceTree = "<group>"; };
 		FC5E2D8C1E8A4C8B0079626B /* ASCImageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASCImageViewController.swift; sourceTree = "<group>"; };
 		FC5F47871F04E7E000F045DD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/PasscodeLockView.xib; sourceTree = "<group>"; };
 		FC5F478A1F04E7E500F045DD /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/PasscodeLockView.strings; sourceTree = "<group>"; };
@@ -1093,6 +1086,18 @@
 		FCB1BEC01E8E4368004C7967 /* UIAlertController+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIAlertController+Extension.swift"; sourceTree = "<group>"; };
 		FCB1BEC21E8E5E55004C7967 /* MBProgressHUD+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "MBProgressHUD+Extension.swift"; sourceTree = "<group>"; };
 		FCB839651EB8948D0065EC25 /* ASCIntroPageController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASCIntroPageController.swift; sourceTree = "<group>"; };
+		FCB844542768B7B000A3F918 /* pt-BR.xliff */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = "pt-BR.xliff"; sourceTree = "<group>"; };
+		FCB844552768B7B000A3F918 /* ja.xliff */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = ja.xliff; sourceTree = "<group>"; };
+		FCB844562768B7B000A3F918 /* fr.xliff */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = fr.xliff; sourceTree = "<group>"; };
+		FCB844572768B7B000A3F918 /* bg.xliff */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = bg.xliff; sourceTree = "<group>"; };
+		FCB844582768B7B000A3F918 /* es.xliff */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = es.xliff; sourceTree = "<group>"; };
+		FCB844592768B7B000A3F918 /* en.xliff */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = en.xliff; sourceTree = "<group>"; };
+		FCB8445A2768B7B000A3F918 /* ru.xliff */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = ru.xliff; sourceTree = "<group>"; };
+		FCB8445B2768B7B000A3F918 /* cs.xliff */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = cs.xliff; sourceTree = "<group>"; };
+		FCB8445C2768B7B000A3F918 /* de.xliff */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = de.xliff; sourceTree = "<group>"; };
+		FCB8445D2768B7B000A3F918 /* zh-Hans.xliff */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = "zh-Hans.xliff"; sourceTree = "<group>"; };
+		FCB8445E2768B7B000A3F918 /* zh-Hant.xliff */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = "zh-Hant.xliff"; sourceTree = "<group>"; };
+		FCB8445F2768B7B000A3F918 /* it.xliff */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = it.xliff; sourceTree = "<group>"; };
 		FCB8A39121C27EE000CF74FA /* ASCDeviceCategoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCDeviceCategoryViewController.swift; sourceTree = "<group>"; };
 		FCB8A39421C2881100CF74FA /* ASCDeviceCategoryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCDeviceCategoryCell.swift; sourceTree = "<group>"; };
 		FCB8A39621C29D4900CF74FA /* ASCBaseSplitViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCBaseSplitViewController.swift; sourceTree = "<group>"; };
@@ -2149,13 +2154,18 @@
 		FC5CE53A26B437B70066901E /* Localization */ = {
 			isa = PBXGroup;
 			children = (
-				FC5CE53B26B437B70066901E /* fr.xliff */,
-				FC5CE53C26B437B70066901E /* ru.xliff */,
-				FC5CE53D26B437B70066901E /* cs.xliff */,
-				FC5CE53E26B437B70066901E /* bg.xliff */,
-				FC5CE53F26B437B70066901E /* es.xliff */,
-				FC5CE54026B437B70066901E /* de.xliff */,
-				FC5CE54126B437B70066901E /* en.xliff */,
+				FCB844572768B7B000A3F918 /* bg.xliff */,
+				FCB8445B2768B7B000A3F918 /* cs.xliff */,
+				FCB8445C2768B7B000A3F918 /* de.xliff */,
+				FCB844592768B7B000A3F918 /* en.xliff */,
+				FCB844582768B7B000A3F918 /* es.xliff */,
+				FCB844562768B7B000A3F918 /* fr.xliff */,
+				FCB8445F2768B7B000A3F918 /* it.xliff */,
+				FCB844552768B7B000A3F918 /* ja.xliff */,
+				FCB844542768B7B000A3F918 /* pt-BR.xliff */,
+				FCB8445A2768B7B000A3F918 /* ru.xliff */,
+				FCB8445D2768B7B000A3F918 /* zh-Hans.xliff */,
+				FCB8445E2768B7B000A3F918 /* zh-Hant.xliff */,
 			);
 			path = Localization;
 			sourceTree = "<group>";

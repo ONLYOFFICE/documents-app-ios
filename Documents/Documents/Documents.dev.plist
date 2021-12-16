@@ -196,7 +196,7 @@
 				<string>list-format-oform</string>
 			</array>
 			<key>CFBundleTypeName</key>
-			<string>ONLYOFFICE Fill Form document (.oform)</string>
+			<string>ONLYOFFICE fillable form (.oform)</string>
 			<key>LSHandlerRank</key>
 			<string>Owner</string>
 			<key>LSItemContentTypes</key>
@@ -214,7 +214,7 @@
 				<string>list-format-docxf</string>
 			</array>
 			<key>CFBundleTypeName</key>
-			<string>ONLYOFFICE Edit Form document (.docxf)</string>
+			<string>ONLYOFFICE form template (.docxf)</string>
 			<key>LSHandlerRank</key>
 			<string>Owner</string>
 			<key>LSItemContentTypes</key>

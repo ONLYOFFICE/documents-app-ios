@@ -574,38 +574,15 @@ class ASCOnlyofficeProvider: ASCFileProviderProtocol & ASCSortableFileProviderPr
         params: [String: Any]?,
         processing: @escaping NetworkProgressHandler) {
         
-        var uploadParams = params ?? [:]
-        let mime = uploadParams["mime"] as? String
-
-        uploadParams.removeAll(keys: ["mime"])
-
-        if overwrite {
-            uploadParams += [
-                "createNewIfExist": "true",
-            ]
-        }
+        let mime = params?["mime"] as? String ?? "application/octet-stream"
+        let fileName = params?["title"] as? String ?? ""
         
-//        apiClient.request(OnlyofficeAPI.Endpoints.Uploads.upload(in: path), uploadParams) { data in
-//            data.append(data, withName: "file", fileName: title, mimeType: mime)
-//        } _: { response, error in
-//            //
-//        }
-
-        apiClient.upload(OnlyofficeAPI.Endpoints.Uploads.insert(in: path), data, params, mime) { response, progress, error in
+        /// Upload method using multipart/form-data
+        apiClient.request(OnlyofficeAPI.Endpoints.Uploads.upload(in: path)) { multipartFormData in
+            multipartFormData.append(data, withName: "file", fileName: fileName, mimeType: mime)
+        } _: { response, progress, error  in
             processing(response?.result, progress, error)
         }
-
-
-//        apiLegacy.upload(
-//            String(format: ASCOnlyOfficeApi.apiInsertFile, path),
-//            data: data,
-//            parameters: uploadParams,
-//            method: .post,
-//            mime: mime,
-//            processing: { progress, result, error, response in
-//                processing(result, progress, error)
-//            }
-//        )
     }
 
     func createDocument(_ name: String, fileExtension: String, in folder: ASCFolder, completeon: ASCProviderCompletionHandler?) {

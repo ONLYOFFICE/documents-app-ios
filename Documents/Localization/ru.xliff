@@ -74,6 +74,7 @@
       </trans-unit>
       <trans-unit id="SZG-z0-C6T.normalTitle" xml:space="preserve">
         <source>🇱🇻</source>
+        <target state="translated">🇱🇻</target>
         <note>Class = "UIButton"; normalTitle = "🇱🇻"; ObjectID = "SZG-z0-C6T";</note>
       </trans-unit>
       <trans-unit id="TP3-h7-Hq1.placeholder" xml:space="preserve">
@@ -93,6 +94,7 @@
       </trans-unit>
       <trans-unit id="amC-Ph-cGL.text" xml:space="preserve">
         <source>Label</source>
+        <target state="translated">Надпись</target>
         <note>Class = "UILabel"; text = "Label"; ObjectID = "amC-Ph-cGL";</note>
       </trans-unit>
       <trans-unit id="cHX-qo-kcu.text" xml:space="preserve">
@@ -121,6 +123,7 @@ web office</source>
       </trans-unit>
       <trans-unit id="kgQ-EP-Qap.placeholder" xml:space="preserve">
         <source>Your phone number</source>
+        <target state="translated">Ваш номер телефона</target>
         <note>Class = "UITextField"; placeholder = "Your phone number"; ObjectID = "kgQ-EP-Qap";</note>
       </trans-unit>
       <trans-unit id="qKc-e7-uTl.text" xml:space="preserve">
@@ -149,7 +152,7 @@ start using your office</source>
     <body>
       <trans-unit id="De8-tD-APT.text" xml:space="preserve">
         <source>Here at DESIGN, we sometimes talk about web design, and we’re always talking about print design, but one thing we don’t often write about are mobile design interfaces. </source>
-        <target>Here at DESIGN, we sometimes talk about web design, and we’re always talking about print design, but one thing we don’t often write about are mobile design interfaces. </target>
+        <target state="translated">Под "ДИЗАЙНОМ" мы иногда понимаем веб-дизайн, всегда - полиграфический дизайн, однако редко имеем в виду мобильный дизайн интерфейсов.</target>
         <note>Class = "UILabel"; text = "Here at DESIGN, we sometimes talk about web design, and we’re always talking about print design, but one thing we don’t often write about are mobile design interfaces. "; ObjectID = "De8-tD-APT"; Note = "Do not translate";</note>
       </trans-unit>
       <trans-unit id="JV9-d9-sJs.normalTitle" xml:space="preserve">
@@ -508,8 +511,7 @@ Authentication</source>
       </trans-unit>
       <trans-unit id="LwV-Os-V4m.text" xml:space="preserve">
         <source>Launch Google Authenticator application</source>
-        <target>Запустите приложение
-Google Authenticator</target>
+        <target state="translated">Запустите приложение Google Authenticator</target>
         <note>Class = "UILabel"; text = "Launch Google Authenticator application"; ObjectID = "LwV-Os-V4m";</note>
       </trans-unit>
       <trans-unit id="MNA-z2-ITx.text" xml:space="preserve">
@@ -1189,7 +1191,7 @@ Note: if you forget the passcode, you'll need to delete and reinstall the app. A
       </trans-unit>
       <trans-unit id="1wK-Ol-7mm.text" xml:space="preserve">
         <source>Title</source>
-        <target>Title</target>
+        <target state="translated">Название</target>
         <note>Class = "UILabel"; text = "Title"; ObjectID = "1wK-Ol-7mm"; Note = "Do not translate";</note>
       </trans-unit>
       <trans-unit id="C9Z-3u-ohd.normalTitle" xml:space="preserve">
@@ -1214,7 +1216,7 @@ Note: if you forget the passcode, you'll need to delete and reinstall the app. A
       </trans-unit>
       <trans-unit id="HbT-GO-CPk.text" xml:space="preserve">
         <source>Description</source>
-        <target>Description</target>
+        <target state="translated">Описание</target>
         <note>Class = "UILabel"; text = "Description"; ObjectID = "HbT-GO-CPk"; Note = "Do not translate";</note>
       </trans-unit>
       <trans-unit id="PbJ-Y8-MMf.normalTitle" xml:space="preserve">
@@ -1299,12 +1301,14 @@ Note: if you forget the passcode, you'll need to delete and reinstall the app. A
         <target>Новая таблица</target>
         <note/>
       </trans-unit>
-      <trans-unit id="ONLYOFFICE Edit Form document (.docxf)" xml:space="preserve">
-        <source>ONLYOFFICE Edit Form document (.docxf)</source>
+      <trans-unit id="ONLYOFFICE form template (.docxf)" xml:space="preserve">
+        <source>ONLYOFFICE form template (.docxf)</source>
+        <target state="translated">Шаблон формы ONLYOFFICE (.docxf)</target>
         <note/>
       </trans-unit>
-      <trans-unit id="ONLYOFFICE Fill Form document (.oform)" xml:space="preserve">
-        <source>ONLYOFFICE Fill Form document (.oform)</source>
+      <trans-unit id="ONLYOFFICE fillable form (.oform)" xml:space="preserve">
+        <source>ONLYOFFICE fillable form (.oform)</source>
+        <target state="translated">Заполняемая форма ONLYOFFICE (.oform)</target>
         <note/>
       </trans-unit>
     </body>
@@ -1356,14 +1360,17 @@ Note: if you forget the passcode, you'll need to delete and reinstall the app. A
       </trans-unit>
       <trans-unit id="New Spreadsheet" xml:space="preserve">
         <source>New Spreadsheet</source>
+        <target state="translated">Новая таблица</target>
         <note/>
       </trans-unit>
-      <trans-unit id="ONLYOFFICE Edit Form document (.docxf)" xml:space="preserve">
-        <source>ONLYOFFICE Edit Form document (.docxf)</source>
+      <trans-unit id="ONLYOFFICE form template (.docxf)" xml:space="preserve">
+        <source>ONLYOFFICE form template (.docxf)</source>
+        <target state="translated">Шаблон формы ONLYOFFICE (.docxf)</target>
         <note/>
       </trans-unit>
-      <trans-unit id="ONLYOFFICE Fill Form document (.oform)" xml:space="preserve">
-        <source>ONLYOFFICE Fill Form document (.oform)</source>
+      <trans-unit id="ONLYOFFICE fillable form (.oform)" xml:space="preserve">
+        <source>ONLYOFFICE fillable form (.oform)</source>
+        <target state="translated">Заполняемая форма ONLYOFFICE (.oform)</target>
         <note/>
       </trans-unit>
     </body>
@@ -1488,8 +1495,8 @@ Note: if you forget the passcode, you'll need to delete and reinstall the app. A
         <target>Добавить сообщение</target>
         <note>Sharing settings add notification message</note>
       </trans-unit>
-      <trans-unit id="Add users or groups and give them to &#10; read, review or edit documents." xml:space="preserve">
-        <source>Add users or groups and give them to 
+      <trans-unit id="Add users or groups and allow them to &#10; read, review or edit documents." xml:space="preserve">
+        <source>Add users or groups and allow them to 
  read, review or edit documents.</source>
         <target>Добавьте пользователей или группы и
 предоставьте им права на чтение, рецензирование
@@ -1700,8 +1707,8 @@ others which use WebDAV protocol.</source>
         <target>Копирование</target>
         <note>Caption of the processing</note>
       </trans-unit>
-      <trans-unit id="Could not change file attrubutes" xml:space="preserve">
-        <source>Could not change file attrubutes</source>
+      <trans-unit id="Could not change file attributes" xml:space="preserve">
+        <source>Could not change file attributes</source>
         <target>Не удалось изменить атрибуты файла</target>
         <note>Description of file operation error</note>
       </trans-unit>
@@ -2391,7 +2398,7 @@ to the clipboard</source>
       </trans-unit>
       <trans-unit id="Nextcloud directory" xml:space="preserve">
         <source>Nextcloud directory</source>
-        <target>Папка Nextcloud</target>
+        <target state="translated">Каталог Nextcloud</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="No Internet connection" xml:space="preserve">
@@ -2742,6 +2749,7 @@ to the clipboard</source>
       </trans-unit>
       <trans-unit id="Request had insufficient authentication scopes" xml:space="preserve">
         <source>Request had insufficient authentication scopes</source>
+        <target state="translated">Запрос имеет недостаточные области аутентификации</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Restore" xml:space="preserve">
@@ -3061,6 +3069,7 @@ to the clipboard</source>
       </trans-unit>
       <trans-unit id="This option is used to block access previously granted to a user or group." xml:space="preserve">
         <source>This option is used to block access previously granted to a user or group.</source>
+        <target state="translated">Данная опция используется для блокировки доступа, ранее предоставленного пользователю или группе.</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="This presentation is being edited. Do you want open %@ to view only?" xml:space="preserve">
@@ -3528,7 +3537,7 @@ then accessed from any other device.</source>
       </trans-unit>
       <trans-unit id="none given" xml:space="preserve">
         <source>none given</source>
-        <target>none given</target>
+        <target state="translated">не предоставлено</target>
         <note/>
       </trans-unit>
     </body>

@@ -74,6 +74,7 @@
       </trans-unit>
       <trans-unit id="SZG-z0-C6T.normalTitle" xml:space="preserve">
         <source>🇱🇻</source>
+        <target state="translated">🇱🇻</target>
         <note>Class = "UIButton"; normalTitle = "🇱🇻"; ObjectID = "SZG-z0-C6T";</note>
       </trans-unit>
       <trans-unit id="TP3-h7-Hq1.placeholder" xml:space="preserve">
@@ -93,6 +94,7 @@
       </trans-unit>
       <trans-unit id="amC-Ph-cGL.text" xml:space="preserve">
         <source>Label</source>
+        <target state="translated">Etichetta</target>
         <note>Class = "UILabel"; text = "Label"; ObjectID = "amC-Ph-cGL";</note>
       </trans-unit>
       <trans-unit id="cHX-qo-kcu.text" xml:space="preserve">
@@ -121,6 +123,7 @@ ufficio web</target>
       </trans-unit>
       <trans-unit id="kgQ-EP-Qap.placeholder" xml:space="preserve">
         <source>Your phone number</source>
+        <target state="translated">Inserisci numero di telefono</target>
         <note>Class = "UITextField"; placeholder = "Your phone number"; ObjectID = "kgQ-EP-Qap";</note>
       </trans-unit>
       <trans-unit id="qKc-e7-uTl.text" xml:space="preserve">
@@ -171,14 +174,17 @@ inizia a usare il tuo office</target>
     <body>
       <trans-unit id="/%d selected:dict/NSStringLocalizedFormatKey:dict/:string" xml:space="preserve">
         <source>%#@items@</source>
+        <target state="translated">%#@items@</target>
         <note/>
       </trans-unit>
       <trans-unit id="/%d selected:dict/items:dict/one:dict/:string" xml:space="preserve">
         <source>%d selected</source>
+        <target state="translated">%d selezionato</target>
         <note/>
       </trans-unit>
       <trans-unit id="/%d selected:dict/items:dict/other:dict/:string" xml:space="preserve">
         <source>%d selected</source>
+        <target state="translated">%d selezionato</target>
         <note/>
       </trans-unit>
       <trans-unit id="/%lu File selected:dict/NSStringLocalizedFormatKey:dict/:string" xml:space="preserve">
@@ -360,6 +366,7 @@ inizia a usare il tuo office</target>
       </trans-unit>
       <trans-unit id="AqB-m0-2UQ.text" xml:space="preserve">
         <source>If a user with the email exists, the password change instruction has been sent to this email address.</source>
+        <target state="translated">Se esiste un utente con l'email, le istruzioni per cambiare la password sono state inviate a questo indirizzo email.</target>
         <note>Class = "UILabel"; text = "If a user with the email exists, the password change instruction has been sent to this email address."; ObjectID = "AqB-m0-2UQ"; Note = "Do not translate";</note>
       </trans-unit>
       <trans-unit id="AqJ-b9-XQV.normalTitle" xml:space="preserve">
@@ -369,6 +376,7 @@ inizia a usare il tuo office</target>
       </trans-unit>
       <trans-unit id="B8R-KD-Lml.text" xml:space="preserve">
         <source>Set up an application to generate the authentication codes</source>
+        <target state="translated">Configurare un'applicazione per generare i codici di autenticazione</target>
         <note>Class = "UILabel"; text = "Set up an application to generate the authentication codes"; ObjectID = "B8R-KD-Lml";</note>
       </trans-unit>
       <trans-unit id="DK4-QO-Jde.text" xml:space="preserve">
@@ -407,10 +415,12 @@ a due fattori</target>
       </trans-unit>
       <trans-unit id="K5M-Of-QAk.text" xml:space="preserve">
         <source>Copy the key and paste it to the Google Authenticator application</source>
+        <target state="translated">Copia la chiave e incollala nell'applicazione Google Authenticator</target>
         <note>Class = "UILabel"; text = "Copy the key and paste it to the Google Authenticator application"; ObjectID = "K5M-Of-QAk";</note>
       </trans-unit>
       <trans-unit id="LwV-Os-V4m.text" xml:space="preserve">
         <source>Launch Google Authenticator application</source>
+        <target state="translated">Avvia Google Authenticator</target>
         <note>Class = "UILabel"; text = "Launch Google Authenticator application"; ObjectID = "LwV-Os-V4m";</note>
       </trans-unit>
       <trans-unit id="MNA-z2-ITx.text" xml:space="preserve">
@@ -425,6 +435,7 @@ a due fattori</target>
       </trans-unit>
       <trans-unit id="Mbh-dU-7po.text" xml:space="preserve">
         <source>Please enter the email you used while registering on the portal. The password recovery instructions will be send to that email address.</source>
+        <target state="translated">Per favore, inserisci l'indirizzo email utilizzato per la registrazione nel portale per inviare le istruzioni per il recupero della password</target>
         <note>Class = "UILabel"; text = "Please enter the email you used while registering on the portal. The password recovery instructions will be send to that email address."; ObjectID = "Mbh-dU-7po";</note>
       </trans-unit>
       <trans-unit id="NBg-dA-b3o.title" xml:space="preserve">
@@ -434,6 +445,7 @@ a due fattori</target>
       </trans-unit>
       <trans-unit id="OHG-hv-GGj.normalTitle" xml:space="preserve">
         <source>Back to login</source>
+        <target state="translated">Tornare al login</target>
         <note>Class = "UIButton"; normalTitle = "Back to login"; ObjectID = "OHG-hv-GGj";</note>
       </trans-unit>
       <trans-unit id="OnI-QD-xeI.placeholder" xml:space="preserve">
@@ -448,6 +460,7 @@ a due fattori</target>
       </trans-unit>
       <trans-unit id="R2F-fc-11j.text" xml:space="preserve">
         <source>Run the application and tap the new account icon</source>
+        <target state="translated">Esegui l'applicazione e tocca l'icona del nuovo account</target>
         <note>Class = "UILabel"; text = "Run the application and tap the new account icon"; ObjectID = "R2F-fc-11j";</note>
       </trans-unit>
       <trans-unit id="RDr-pH-MKV.normalTitle" xml:space="preserve">
@@ -457,6 +470,7 @@ a due fattori</target>
       </trans-unit>
       <trans-unit id="SH2-Fd-5Ze.text" xml:space="preserve">
         <source>Open authentication app and copy code from there</source>
+        <target state="translated">Apri l'app di autenticazione e copia il codice da lì</target>
         <note>Class = "UILabel"; text = "Open authentication app and copy code from there"; ObjectID = "SH2-Fd-5Ze";</note>
       </trans-unit>
       <trans-unit id="W8Q-CO-c0L.text" xml:space="preserve">
@@ -481,6 +495,7 @@ a due fattori</target>
       </trans-unit>
       <trans-unit id="bLE-8U-AOX.text" xml:space="preserve">
         <source>Password recovery</source>
+        <target state="translated">Recupero della password</target>
         <note>Class = "UILabel"; text = "Password recovery"; ObjectID = "bLE-8U-AOX";</note>
       </trans-unit>
       <trans-unit id="cBn-x1-r5A.text" xml:space="preserve">
@@ -500,6 +515,7 @@ a due fattori</target>
       </trans-unit>
       <trans-unit id="ePY-rM-AOE.normalTitle" xml:space="preserve">
         <source>Send</source>
+        <target state="translated">Invia</target>
         <note>Class = "UIButton"; normalTitle = "Send"; ObjectID = "ePY-rM-AOE";</note>
       </trans-unit>
       <trans-unit id="gzc-cW-NPT.title" xml:space="preserve">
@@ -544,6 +560,7 @@ a due fattori</target>
       </trans-unit>
       <trans-unit id="vgV-fF-jOl.text" xml:space="preserve">
         <source>Copy the code generated by Google Authenticator application and insert it to the input field</source>
+        <target state="translated">Copia il codice generato dall'applicazione Google Authenticator e inseriscilo nel campo di immissione</target>
         <note>Class = "UILabel"; text = "Copy the code generated by Google Authenticator application and insert it to the input field"; ObjectID = "vgV-fF-jOl";</note>
       </trans-unit>
       <trans-unit id="vlQ-jV-iFo.text" xml:space="preserve">
@@ -836,6 +853,7 @@ Nota: se dimentichi il codice di accesso, dovrai disinstallare e reinstallare l'
       </trans-unit>
       <trans-unit id="cl6-b0-Mjh.text" xml:space="preserve">
         <source>Privacy Policy</source>
+        <target state="translated">Informativa sulla privacy</target>
         <note>Class = "UILabel"; text = "Privacy Policy"; ObjectID = "cl6-b0-Mjh";</note>
       </trans-unit>
       <trans-unit id="i2P-F4-EhP.text" xml:space="preserve">
@@ -1154,50 +1172,52 @@ Nota: se dimentichi il codice di accesso, dovrai disinstallare e reinstallare l'
     <body>
       <trans-unit id="CFBundleName" xml:space="preserve">
         <source>Documents</source>
-        <target>Документы</target>
+        <target state="translated">Documenti</target>
         <note>Bundle name</note>
       </trans-unit>
       <trans-unit id="NSCameraUsageDescription" xml:space="preserve">
         <source>This app requires access to the camera, so that you can take photo and upload it in the app.</source>
-        <target>Это приложение требует доступа к камере, чтобы иметь возможность снимать фото и загрузить его в приложение.</target>
+        <target state="translated">Questa app richiede l'accesso alla fotocamera, in modo da poter scattare una foto e caricarla nell'app.</target>
         <note>Privacy - Camera Usage Description</note>
       </trans-unit>
       <trans-unit id="NSFaceIDUsageDescription" xml:space="preserve">
         <source>This app requires Face ID permission to authenticate using Face recognition.</source>
-        <target>Этому приложению требуется разрешение на использование Face ID для аутентификации с помощью технологии распознавания лиц.</target>
+        <target state="translated">Questa app richiede l'autorizzazione Face ID per l'autenticazione tramite il riconoscimento facciale.</target>
         <note>Privacy - Face ID Usage Description</note>
       </trans-unit>
       <trans-unit id="NSPhotoLibraryAddUsageDescription" xml:space="preserve">
         <source>This app requires access to the photo library, so that you can upload your photos in the app.</source>
-        <target>Это приложение требует доступа к библиотеке фотографий, для загрузки фотографий из библиотеке фотографий.</target>
+        <target state="translated">Questa app richiede l'accesso alla libreria di foto, in modo da poter caricare le tue foto nell'app.</target>
         <note>Privacy - Photo Library Additions Usage Description</note>
       </trans-unit>
       <trans-unit id="NSPhotoLibraryUsageDescription" xml:space="preserve">
         <source>This app requires access to the photo library, so that you can upload your photos in the app.</source>
-        <target>Это приложение требует доступа к библиотеке фотографий, для загрузки фотографий из библиотеке фотографий.</target>
+        <target state="translated">Questa app richiede l'accesso alla libreria di foto, in modo da poter caricare le tue foto nell'app.</target>
         <note>Privacy - Photo Library Usage Description</note>
       </trans-unit>
       <trans-unit id="New Document" xml:space="preserve">
         <source>New Document</source>
-        <target>Новый документ</target>
+        <target state="translated">Nuovo documento</target>
         <note/>
       </trans-unit>
       <trans-unit id="New Presentation" xml:space="preserve">
         <source>New Presentation</source>
-        <target>Новая презентация</target>
+        <target state="translated">Nuova presentazione</target>
         <note/>
       </trans-unit>
       <trans-unit id="New Spreadsheet" xml:space="preserve">
         <source>New Spreadsheet</source>
-        <target>Новая таблица</target>
+        <target state="translated">Nuovo foglio di calcolo</target>
         <note/>
       </trans-unit>
-      <trans-unit id="ONLYOFFICE Edit Form document (.docxf)" xml:space="preserve">
-        <source>ONLYOFFICE Edit Form document (.docxf)</source>
+      <trans-unit id="ONLYOFFICE form template (.docxf)" xml:space="preserve">
+        <source>ONLYOFFICE form template (.docxf)</source>
+        <target state="translated">Modello di modulo ONLYOFFICE (.docxf)</target>
         <note/>
       </trans-unit>
-      <trans-unit id="ONLYOFFICE Fill Form document (.oform)" xml:space="preserve">
-        <source>ONLYOFFICE Fill Form document (.oform)</source>
+      <trans-unit id="ONLYOFFICE fillable form (.oform)" xml:space="preserve">
+        <source>ONLYOFFICE fillable form (.oform)</source>
+        <target state="translated">Modulo compilabile ONLYOFFICE (.oform)</target>
         <note/>
       </trans-unit>
     </body>
@@ -1209,46 +1229,57 @@ Nota: se dimentichi il codice di accesso, dovrai disinstallare e reinstallare l'
     <body>
       <trans-unit id="CFBundleName" xml:space="preserve">
         <source>Documents-Alpha</source>
+        <target state="translated">Documenti-Alpha</target>
         <note>Bundle name</note>
       </trans-unit>
       <trans-unit id="NSCameraUsageDescription" xml:space="preserve">
         <source>This app requires access to the camera, so that you can take photo and upload it in the app.</source>
+        <target state="translated">Questa app richiede l'accesso alla fotocamera, in modo da poter scattare una foto e caricarla nell'app.</target>
         <note>Privacy - Camera Usage Description</note>
       </trans-unit>
       <trans-unit id="NSFaceIDUsageDescription" xml:space="preserve">
         <source>This app requires Face ID permission to authenticate using Face recognition.</source>
+        <target state="translated">Questa app richiede l'autorizzazione Face ID per l'autenticazione tramite il riconoscimento facciale.</target>
         <note>Privacy - Face ID Usage Description</note>
       </trans-unit>
       <trans-unit id="NSLocalNetworkUsageDescription" xml:space="preserve">
         <source>Network access required</source>
+        <target state="translated">È richiesto l'accesso alla rete</target>
         <note>Privacy - Local Network Usage Description</note>
       </trans-unit>
       <trans-unit id="NSPhotoLibraryAddUsageDescription" xml:space="preserve">
         <source>This app requires access to the photo library, so that you can upload your photos in the app.</source>
+        <target state="translated">Questa app richiede l'accesso alla libreria di foto, in modo da poter caricare le tue foto nell'app.</target>
         <note>Privacy - Photo Library Additions Usage Description</note>
       </trans-unit>
       <trans-unit id="NSPhotoLibraryUsageDescription" xml:space="preserve">
         <source>This app requires access to the photo library, so that you can upload your photos in the app.</source>
+        <target state="translated">Questa app richiede l'accesso alla libreria di foto, in modo da poter caricare le tue foto nell'app.</target>
         <note>Privacy - Photo Library Usage Description</note>
       </trans-unit>
       <trans-unit id="New Document" xml:space="preserve">
         <source>New Document</source>
+        <target state="translated">Nuovo documento</target>
         <note/>
       </trans-unit>
       <trans-unit id="New Presentation" xml:space="preserve">
         <source>New Presentation</source>
+        <target state="translated">Nuova presentazione</target>
         <note/>
       </trans-unit>
       <trans-unit id="New Spreadsheet" xml:space="preserve">
         <source>New Spreadsheet</source>
+        <target state="translated">Nuovo foglio di calcolo</target>
         <note/>
       </trans-unit>
-      <trans-unit id="ONLYOFFICE Edit Form document (.docxf)" xml:space="preserve">
-        <source>ONLYOFFICE Edit Form document (.docxf)</source>
+      <trans-unit id="ONLYOFFICE form template (.docxf)" xml:space="preserve">
+        <source>ONLYOFFICE form template (.docxf)</source>
+        <target state="translated">Modello di modulo ONLYOFFICE (.docxf)</target>
         <note/>
       </trans-unit>
-      <trans-unit id="ONLYOFFICE Fill Form document (.oform)" xml:space="preserve">
-        <source>ONLYOFFICE Fill Form document (.oform)</source>
+      <trans-unit id="ONLYOFFICE fillable form (.oform)" xml:space="preserve">
+        <source>ONLYOFFICE fillable form (.oform)</source>
+        <target state="translated">Modulo compilabile ONLYOFFICE (.oform)</target>
         <note/>
       </trans-unit>
     </body>
@@ -1260,6 +1291,7 @@ Nota: se dimentichi il codice di accesso, dovrai disinstallare e reinstallare l'
     <body>
       <trans-unit id="%d selected" xml:space="preserve">
         <source>%d selected</source>
+        <target state="translated">%d selezionato</target>
         <note>Count of seclected rows: count + selected</note>
       </trans-unit>
       <trans-unit id="%i of %i" xml:space="preserve">
@@ -1294,22 +1326,27 @@ Nota: se dimentichi il codice di accesso, dovrai disinstallare e reinstallare l'
       </trans-unit>
       <trans-unit id="A user or group will be able only to view the document and add comments, as well as manage them." xml:space="preserve">
         <source>A user or group will be able only to view the document and add comments, as well as manage them.</source>
+        <target state="translated">Un utente o un gruppo potrà solo visualizzare il documento e aggiungere commenti, nonché gestirli.</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="A user or group will be able only to view the document and fill in the forms inserted into the document." xml:space="preserve">
         <source>A user or group will be able only to view the document and fill in the forms inserted into the document.</source>
+        <target state="translated">Un utente o un gruppo potrà solo visualizzare il documento e compilare i moduli inseriti nel documento.</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="A user or group will be able only to view the document." xml:space="preserve">
         <source>A user or group will be able only to view the document.</source>
+        <target state="translated">Un utente o un gruppo potrà solo visualizzare il documento.</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="A user or group will be able to view and change the document without actually editing it, but all the changes made by a reviewer will be recorded and shown to the file owner (or a person who has full access to the file) so that he/she will be able to accept or reject them." xml:space="preserve">
         <source>A user or group will be able to view and change the document without actually editing it, but all the changes made by a reviewer will be recorded and shown to the file owner (or a person who has full access to the file) so that he/she will be able to accept or reject them.</source>
+        <target state="translated">Un utente o un gruppo sarà in grado di visualizzare e modificare il documento senza effettivamente modificarlo, ma tutte le modifiche apportate da un revisore verranno registrate e mostrate al proprietario del file (o a una persona che ha accesso completo al file) in modo che lui/lei potrà accettarli o rifiutarli.</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="A user or group will be able to view and edit the document as well as to share this document." xml:space="preserve">
         <source>A user or group will be able to view and edit the document as well as to share this document.</source>
+        <target state="translated">Un utente o un gruppo sarà in grado di visualizzare e modificare il documento, nonché di condividere questo documento.</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="A0 (84,1%@ x 119,9%@)" xml:space="preserve">
@@ -1334,18 +1371,22 @@ Nota: se dimentichi il codice di accesso, dovrai disinstallare e reinstallare l'
       </trans-unit>
       <trans-unit id="Access by external link" xml:space="preserve">
         <source>Access by external link</source>
+        <target state="translated">Accesso tramite link esterno</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Access files in Favorites and Recents on ONLYOFFICE portal from the app" xml:space="preserve">
         <source>Access files in Favorites and Recents on ONLYOFFICE portal from the app</source>
+        <target state="translated">Accedi ai file in Preferiti e Recenti sul portale ONLYOFFICE dall'app</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Access rights" xml:space="preserve">
         <source>Access rights</source>
+        <target state="translated">Diritti di accesso</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Access settings" xml:space="preserve">
         <source>Access settings</source>
+        <target state="translated">Impostazioni di accesso</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Account name is empty" xml:space="preserve">
@@ -1360,11 +1401,14 @@ Nota: se dimentichi il codice di accesso, dovrai disinstallare e reinstallare l'
       </trans-unit>
       <trans-unit id="Add message" xml:space="preserve">
         <source>Add message</source>
+        <target state="translated">Aggiungere messaggio</target>
         <note>Sharing settings add notification message</note>
       </trans-unit>
-      <trans-unit id="Add users or groups and give them to &#10; read, review or edit documents." xml:space="preserve">
-        <source>Add users or groups and give them to 
+      <trans-unit id="Add users or groups and allow them to &#10; read, review or edit documents." xml:space="preserve">
+        <source>Add users or groups and allow them to 
  read, review or edit documents.</source>
+        <target state="translated">Aggiungi utenti o gruppi e assegna le loro 
+possibilità di leggere, rivedere o modificare i documenti.</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Address is empty" xml:space="preserve">
@@ -1384,6 +1428,7 @@ Nota: se dimentichi il codice di accesso, dovrai disinstallare e reinstallare l'
       </trans-unit>
       <trans-unit id="Allow access via external link" xml:space="preserve">
         <source>Allow access via external link</source>
+        <target state="translated">Consenti l'accesso tramite link esterno</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="An unexpected error has occurred. Please try again later. Sorry for inconvenience." xml:space="preserve">
@@ -1393,6 +1438,7 @@ Nota: se dimentichi il codice di accesso, dovrai disinstallare e reinstallare l'
       </trans-unit>
       <trans-unit id="Applying" xml:space="preserve">
         <source>Applying</source>
+        <target state="translated">Applicare</target>
         <note>Caption of the process</note>
       </trans-unit>
       <trans-unit id="Are you sure you want to delete the account %@ from this device?" xml:space="preserve">
@@ -1417,6 +1463,7 @@ Nota: se dimentichi il codice di accesso, dovrai disinstallare e reinstallare l'
       </trans-unit>
       <trans-unit id="By creating the portal you agree with our Privacy Policy and Terms of Service" xml:space="preserve">
         <source>By creating the portal you agree with our Privacy Policy and Terms of Service</source>
+        <target state="translated">Creando il portale accetti la nostra Informativa sulla privacy e i Termini di servizio</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Camera Unavailable" xml:space="preserve">
@@ -1506,6 +1553,7 @@ Nota: se dimentichi il codice di accesso, dovrai disinstallare e reinstallare l'
       </trans-unit>
       <trans-unit id="Comment" xml:space="preserve">
         <source>Comment</source>
+        <target state="translated">Commento</target>
         <note>Share status</note>
       </trans-unit>
       <trans-unit id="Common Documents" xml:space="preserve">
@@ -1567,8 +1615,8 @@ altri che utilizzano il protocollo WebDAV.</target>
         <target>Copiatura</target>
         <note>Caption of the processing</note>
       </trans-unit>
-      <trans-unit id="Could not change file attrubutes" xml:space="preserve">
-        <source>Could not change file attrubutes</source>
+      <trans-unit id="Could not change file attributes" xml:space="preserve">
+        <source>Could not change file attributes</source>
         <target>Impossibile cambiare gli attributi del file</target>
         <note>Description of file operation error</note>
       </trans-unit>
@@ -1724,6 +1772,7 @@ altri che utilizzano il protocollo WebDAV.</target>
       </trans-unit>
       <trans-unit id="Custom filter" xml:space="preserve">
         <source>Custom filter</source>
+        <target state="translated">Filtro personalizzato</target>
         <note>Share status</note>
       </trans-unit>
       <trans-unit id="Date" xml:space="preserve">
@@ -1783,6 +1832,7 @@ altri che utilizzano il protocollo WebDAV.</target>
       </trans-unit>
       <trans-unit id="Deselect all" xml:space="preserve">
         <source>Deselect all</source>
+        <target state="translated">Deseleziona tutti</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Disconnect third party" xml:space="preserve">
@@ -1868,6 +1918,7 @@ altri che utilizzano il protocollo WebDAV.</target>
       </trans-unit>
       <trans-unit id="Email is incorrect." xml:space="preserve">
         <source>Email is incorrect.</source>
+        <target state="translated">Indirizzo email non corretto</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Email is not valid" xml:space="preserve">
@@ -1907,10 +1958,12 @@ altri che utilizzano il protocollo WebDAV.</target>
       </trans-unit>
       <trans-unit id="Error code: %ld" xml:space="preserve">
         <source>Error code: %ld</source>
+        <target state="translated">Codice errore: %ld</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Export" xml:space="preserve">
         <source>Export</source>
+        <target state="translated">Esporta</target>
         <note>Button title</note>
       </trans-unit>
       <trans-unit id="Failed online conversion service." xml:space="preserve">
@@ -1930,6 +1983,7 @@ altri che utilizzano il protocollo WebDAV.</target>
       </trans-unit>
       <trans-unit id="Failed to connect folder." xml:space="preserve">
         <source>Failed to connect folder.</source>
+        <target state="translated">Impossibile connettere la cartella.</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Failed to copy: %@" xml:space="preserve">
@@ -1964,6 +2018,7 @@ altri che utilizzano il protocollo WebDAV.</target>
       </trans-unit>
       <trans-unit id="Failed to send feedback by mail. Try to write your request on our forum." xml:space="preserve">
         <source>Failed to send feedback by mail. Try to write your request on our forum.</source>
+        <target state="translated">Impossibile inviare feedback per posta. Prova a scrivere la tua richiesta sul nostro forum.</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Failed upload source file to conversion online service." xml:space="preserve">
@@ -1983,6 +2038,7 @@ altri che utilizzano il protocollo WebDAV.</target>
       </trans-unit>
       <trans-unit id="Favorites and Recents" xml:space="preserve">
         <source>Favorites and Recents</source>
+        <target state="translated">Preferiti e Recenti</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="File already exists" xml:space="preserve">
@@ -2002,11 +2058,12 @@ altri che utilizzano il protocollo WebDAV.</target>
       </trans-unit>
       <trans-unit id="First name is incorrect" xml:space="preserve">
         <source>First name is incorrect</source>
+        <target state="translated">Il nome non è corretto</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Folder title" xml:space="preserve">
         <source>Folder title</source>
-        <target>Nome cartella</target>
+        <target state="translated">Nome cartella</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Folders" xml:space="preserve">
@@ -2016,6 +2073,7 @@ altri che utilizzano il protocollo WebDAV.</target>
       </trans-unit>
       <trans-unit id="Form filling" xml:space="preserve">
         <source>Form filling</source>
+        <target state="translated">Compilare un modulo</target>
         <note>Share status</note>
       </trans-unit>
       <trans-unit id="Full Access" xml:space="preserve">
@@ -2045,6 +2103,7 @@ altri che utilizzano il protocollo WebDAV.</target>
       </trans-unit>
       <trans-unit id="Go to forum" xml:space="preserve">
         <source>Go to forum</source>
+        <target state="translated">Vai al forum</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Google Drive" xml:space="preserve">
@@ -2064,6 +2123,7 @@ altri che utilizzano il protocollo WebDAV.</target>
       </trans-unit>
       <trans-unit id="If a user with the mail %@ exists, then an instruction to change the password was sent to this address." xml:space="preserve">
         <source>If a user with the mail %@ exists, then an instruction to change the password was sent to this address.</source>
+        <target state="translated">Se esiste un utente con la posta %@, a questo indirizzo è stata inviata un'istruzione per modificare la password.</target>
         <note>Email sent instructions</note>
       </trans-unit>
       <trans-unit id="Images" xml:space="preserve">
@@ -2088,10 +2148,12 @@ altri che utilizzano il protocollo WebDAV.</target>
       </trans-unit>
       <trans-unit id="Invalid Data" xml:space="preserve">
         <source>Invalid Data</source>
+        <target state="translated">Dati non validi</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Invalid Url" xml:space="preserve">
         <source>Invalid Url</source>
+        <target state="translated">URL non valido</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Kb" xml:space="preserve">
@@ -2101,15 +2163,18 @@ altri che utilizzano il protocollo WebDAV.</target>
       </trans-unit>
       <trans-unit id="Last name is empty" xml:space="preserve">
         <source>Last name is empty</source>
+        <target state="translated">Campo Cognome vuoto</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Last name is incorrect" xml:space="preserve">
         <source>Last name is incorrect</source>
+        <target state="translated">Il cognome non è corretto</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Link copied&#10;to the clipboard" xml:space="preserve">
         <source>Link copied
 to the clipboard</source>
+        <target state="translated">Link copiato negli appunti</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Logging in" xml:space="preserve">
@@ -2140,6 +2205,7 @@ to the clipboard</source>
       </trans-unit>
       <trans-unit id="Mark as favorite" xml:space="preserve">
         <source>Mark as favorite</source>
+        <target state="translated">Segna come preferito</target>
         <note>Button title</note>
       </trans-unit>
       <trans-unit id="Mb" xml:space="preserve">
@@ -2204,6 +2270,7 @@ to the clipboard</source>
       </trans-unit>
       <trans-unit id="New" xml:space="preserve">
         <source>New</source>
+        <target state="translated">Nuovo</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="New Document" xml:space="preserve">
@@ -2238,14 +2305,17 @@ to the clipboard</source>
       </trans-unit>
       <trans-unit id="Nextcloud directory" xml:space="preserve">
         <source>Nextcloud directory</source>
+        <target state="translated">Cartella di Nextcloud</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="No Internet connection" xml:space="preserve">
         <source>No Internet connection</source>
+        <target state="translated">Nessuna connessione internet</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="No client IDs of application" xml:space="preserve">
         <source>No client IDs of application</source>
+        <target state="translated">Nessun ID cliente dell'applicazione</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="No connection" xml:space="preserve">
@@ -2291,6 +2361,7 @@ to the clipboard</source>
       </trans-unit>
       <trans-unit id="Notify by Email" xml:space="preserve">
         <source>Notify by Email</source>
+        <target state="translated">Notificare via e-mail</target>
         <note>Sharing settings switcher</note>
       </trans-unit>
       <trans-unit id="OK" xml:space="preserve">
@@ -2325,10 +2396,12 @@ to the clipboard</source>
       </trans-unit>
       <trans-unit id="OneDrive" xml:space="preserve">
         <source>OneDrive</source>
+        <target state="translated">OneDrive</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="OneDrive and kDrive access" xml:space="preserve">
         <source>OneDrive and kDrive access</source>
+        <target state="translated">Accesso a OneDrive e kDrive</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="OneDrive directory" xml:space="preserve">
@@ -2403,10 +2476,12 @@ to the clipboard</source>
       </trans-unit>
       <trans-unit id="Phone" xml:space="preserve">
         <source>Phone</source>
+        <target state="translated">Telefono</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Phone is incorrect" xml:space="preserve">
         <source>Phone is incorrect</source>
+        <target state="translated">Telefono non corretto</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Please go to Settings and enable the camera for this app to use this feature." xml:space="preserve">
@@ -2496,6 +2571,7 @@ Se il problema persiste, contattaci menzionando questo codice di errore: SSO - %
       </trans-unit>
       <trans-unit id="Privacy Policy" xml:space="preserve">
         <source>Privacy Policy</source>
+        <target state="translated">Informativa sulla privacy</target>
         <note>Part of phrases - By creating the portal you agree with our Privacy Policy and Terms of Service</note>
       </trans-unit>
       <trans-unit id="Processing" xml:space="preserve">
@@ -2540,10 +2616,12 @@ Se il problema persiste, contattaci menzionando questo codice di errore: SSO - %
       </trans-unit>
       <trans-unit id="Remove from Favorites" xml:space="preserve">
         <source>Remove from Favorites</source>
+        <target state="translated">Rimuovi dai preferiti</target>
         <note>Button title</note>
       </trans-unit>
       <trans-unit id="Removing" xml:space="preserve">
         <source>Removing</source>
+        <target state="translated">Eliminazione</target>
         <note>Caption of the process</note>
       </trans-unit>
       <trans-unit id="Rename" xml:space="preserve">
@@ -2573,10 +2651,12 @@ Se il problema persiste, contattaci menzionando questo codice di errore: SSO - %
       </trans-unit>
       <trans-unit id="Request canceled" xml:space="preserve">
         <source>Request canceled</source>
+        <target state="translated">Richiesta annullata</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Request had insufficient authentication scopes" xml:space="preserve">
         <source>Request had insufficient authentication scopes</source>
+        <target state="translated">La richiesta aveva ambiti di autenticazione insufficienti</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Restore" xml:space="preserve">
@@ -2606,6 +2686,7 @@ Se il problema persiste, contattaci menzionando questo codice di errore: SSO - %
       </trans-unit>
       <trans-unit id="Search" xml:space="preserve">
         <source>Search</source>
+        <target state="translated">Ricerca</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Select" xml:space="preserve">
@@ -2621,6 +2702,7 @@ Se il problema persiste, contattaci menzionando questo codice di errore: SSO - %
       </trans-unit>
       <trans-unit id="Select all" xml:space="preserve">
         <source>Select all</source>
+        <target state="translated">Seleziona tutto</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Select another cloud to connect to Nextcloud, ownCloud and others are supported." xml:space="preserve">
@@ -2655,14 +2737,17 @@ Se il problema persiste, contattaci menzionando questo codice di errore: SSO - %
       </trans-unit>
       <trans-unit id="Selecting access rights" xml:space="preserve">
         <source>Selecting access rights</source>
+        <target state="translated">Selezione dei diritti di accesso</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Sending" xml:space="preserve">
         <source>Sending</source>
+        <target state="translated">Invio</target>
         <note>Caption of the process</note>
       </trans-unit>
       <trans-unit id="Set favorite failed." xml:space="preserve">
         <source>Set favorite failed.</source>
+        <target state="translated">Impostazione dei preferiti non riuscita.</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Settings" xml:space="preserve">
@@ -2677,6 +2762,7 @@ Se il problema persiste, contattaci menzionando questo codice di errore: SSO - %
       </trans-unit>
       <trans-unit id="Shared access" xml:space="preserve">
         <source>Shared access</source>
+        <target state="translated">Accesso condiviso</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Shared with Me" xml:space="preserve">
@@ -2691,10 +2777,12 @@ Se il problema persiste, contattaci menzionando questo codice di errore: SSO - %
       </trans-unit>
       <trans-unit id="Sharing Settings" xml:space="preserve">
         <source>Sharing Settings</source>
+        <target state="translated">Impostazioni di condivisione</target>
         <note>Button title</note>
       </trans-unit>
       <trans-unit id="Sharing settings" xml:space="preserve">
         <source>Sharing settings</source>
+        <target state="translated">Impostazioni di condivisione</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Single Sign-on" xml:space="preserve">
@@ -2719,10 +2807,12 @@ Se il problema persiste, contattaci menzionando questo codice di errore: SSO - %
       </trans-unit>
       <trans-unit id="Something went wrong, try again" xml:space="preserve">
         <source>Something went wrong, try again</source>
+        <target state="translated">Qualcosa è andato storto, riprova</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Something wrong" xml:space="preserve">
         <source>Something wrong</source>
+        <target state="translated">Qualcosa che non va</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Sort" xml:space="preserve">
@@ -2767,6 +2857,7 @@ Se il problema persiste, contattaci menzionando questo codice di errore: SSO - %
       </trans-unit>
       <trans-unit id="Terms of Service" xml:space="preserve">
         <source>Terms of Service</source>
+        <target state="translated">Termini di servizio</target>
         <note>Part of phrases - By creating the portal you agree with our Privacy Policy and Terms of Service</note>
       </trans-unit>
       <trans-unit id="Text copied" xml:space="preserve">
@@ -2776,6 +2867,7 @@ Se il problema persiste, contattaci menzionando questo codice di errore: SSO - %
       </trans-unit>
       <trans-unit id="The %@ server is not available." xml:space="preserve">
         <source>The %@ server is not available.</source>
+        <target state="translated">Il server %@ non è disponibile.</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="The account name must be between 6 and 50 characters long" xml:space="preserve">
@@ -2800,6 +2892,7 @@ Se il problema persiste, contattaci menzionando questo codice di errore: SSO - %
       </trans-unit>
       <trans-unit id="The folder in the Trash can not be opened." xml:space="preserve">
         <source>The folder in the Trash can not be opened.</source>
+        <target state="translated">La cartella nel Cestino non può essere aperta.</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="The folder will be irretrievably deleted. This action is irreversible." xml:space="preserve">
@@ -2816,14 +2909,17 @@ Se il problema persiste, contattaci menzionando questo codice di errore: SSO - %
         <source>The link for external
 access is copied
 to the clipboard</source>
+        <target state="translated">Il link per l'accesso esterno viene copiato negli appunti</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="The parameters are incorrect." xml:space="preserve">
         <source>The parameters are incorrect.</source>
+        <target state="translated">I parametri non sono corretti.</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="The password is incorrect. It must contain 8 characters" xml:space="preserve">
         <source>The password is incorrect. It must contain 8 characters</source>
+        <target state="translated">La password non è corretta. Deve contenere 8 caratteri</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="The portal address is invalid" xml:space="preserve">
@@ -2833,6 +2929,7 @@ to the clipboard</source>
       </trans-unit>
       <trans-unit id="The portal is not available" xml:space="preserve">
         <source>The portal is not available</source>
+        <target state="translated">Il portale non è disponibile</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="The portal name must be between 6 and 50 characters long" xml:space="preserve">
@@ -2842,6 +2939,7 @@ to the clipboard</source>
       </trans-unit>
       <trans-unit id="The request timed out." xml:space="preserve">
         <source>The request timed out.</source>
+        <target state="translated">La richiesta è scaduta.</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="The server is not available." xml:space="preserve">
@@ -2876,6 +2974,7 @@ to the clipboard</source>
       </trans-unit>
       <trans-unit id="This option is used to block access previously granted to a user or group." xml:space="preserve">
         <source>This option is used to block access previously granted to a user or group.</source>
+        <target state="translated">Questa opzione viene utilizzata per bloccare l'accesso precedentemente concesso a un utente o a un gruppo.</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="This presentation is being edited. Do you want open %@ to view only?" xml:space="preserve">
@@ -2940,10 +3039,12 @@ to the clipboard</source>
       </trans-unit>
       <trans-unit id="Unable delete items" xml:space="preserve">
         <source>Unable delete items</source>
+        <target state="translated">Impossibile eliminare elementi</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Unable disconnect third party" xml:space="preserve">
         <source>Unable disconnect third party</source>
+        <target state="translated">Impossibile disconnettere terze parti</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Unable to get information about the portal" xml:space="preserve">
@@ -2958,26 +3059,32 @@ to the clipboard</source>
       </trans-unit>
       <trans-unit id="Unauthorized users will be able only to view the document and add comments, as well as manage them." xml:space="preserve">
         <source>Unauthorized users will be able only to view the document and add comments, as well as manage them.</source>
+        <target state="translated">Gli utenti non autorizzati potranno solo visualizzare il documento e aggiungere commenti, oltre che gestirli.</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Unauthorized users will be able only to view the document and fill in the forms inserted into the document." xml:space="preserve">
         <source>Unauthorized users will be able only to view the document and fill in the forms inserted into the document.</source>
+        <target state="translated">Gli utenti non autorizzati potranno solo visualizzare il documento e compilare i moduli inseriti nel documento.</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Unauthorized users will be able only to view the document." xml:space="preserve">
         <source>Unauthorized users will be able only to view the document.</source>
+        <target state="translated">Gli utenti non autorizzati potranno solo visualizzare il documento.</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Unauthorized users will be able to view and change the document without actually editing it, but all the changes made by a reviewer will be recorded and shown to the file owner (or a person who has full access to the file) so that he/she will be able to accept or reject them." xml:space="preserve">
         <source>Unauthorized users will be able to view and change the document without actually editing it, but all the changes made by a reviewer will be recorded and shown to the file owner (or a person who has full access to the file) so that he/she will be able to accept or reject them.</source>
+        <target state="translated">Gli utenti non autorizzati potranno visualizzare e modificare il documento senza effettivamente modificarlo, ma tutte le modifiche apportate da un revisore verranno registrate e mostrate al proprietario del file (o a una persona che ha accesso completo al file) in modo che lui/lei potrà accettarli o rifiutarli.</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Unauthorized users will be able to view and edit the document as well as to share this document." xml:space="preserve">
         <source>Unauthorized users will be able to view and edit the document as well as to share this document.</source>
+        <target state="translated">Gli utenti non autorizzati potranno visualizzare e modificare il documento, nonché condividere questo documento.</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Unauthorized users will not have access to the document." xml:space="preserve">
         <source>Unauthorized users will not have access to the document.</source>
+        <target state="translated">Gli utenti non autorizzati non avranno accesso al documento.</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Unexpected response from the service." xml:space="preserve">
@@ -2992,6 +3099,7 @@ to the clipboard</source>
       </trans-unit>
       <trans-unit id="Unknown error" xml:space="preserve">
         <source>Unknown error</source>
+        <target state="translated">Errore sconosciuto</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Unknown file provider" xml:space="preserve">
@@ -3041,6 +3149,7 @@ to the clipboard</source>
       </trans-unit>
       <trans-unit id="User authentication required" xml:space="preserve">
         <source>User authentication required</source>
+        <target state="translated">È richiesta l'autenticazione dell'utente</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="User undefined" xml:space="preserve">
@@ -3070,6 +3179,7 @@ to the clipboard</source>
       </trans-unit>
       <trans-unit id="View and edit files in OneDrive and kDrive directly from the app. Access your storages from the Clouds tab." xml:space="preserve">
         <source>View and edit files in OneDrive and kDrive directly from the app. Access your storages from the Clouds tab.</source>
+        <target state="translated">Visualizza e modifica i file in OneDrive e kDrive direttamente dall'app. Accedi ai tuoi archivi dalla scheda Clouds.</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Warning" xml:space="preserve">
@@ -3235,18 +3345,22 @@ poi accedergli da qualsiasi dispositivo.</target>
       </trans-unit>
       <trans-unit id="iCloud" xml:space="preserve">
         <source>iCloud</source>
+        <target state="translated">iCloud</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="iCloud Drive" xml:space="preserve">
         <source>iCloud Drive</source>
+        <target state="translated">iCloud Drive</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="kDrive" xml:space="preserve">
         <source>kDrive</source>
+        <target state="translated">kDrive</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="kDrive directory" xml:space="preserve">
         <source>kDrive directory</source>
+        <target state="translated">Cartella di kDrive</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="none" xml:space="preserve">
@@ -3267,6 +3381,7 @@ poi accedergli da qualsiasi dispositivo.</target>
       </trans-unit>
       <trans-unit id="ownCloud directory" xml:space="preserve">
         <source>ownCloud directory</source>
+        <target state="translated">Cartella di ownCloud</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="photo" xml:space="preserve">

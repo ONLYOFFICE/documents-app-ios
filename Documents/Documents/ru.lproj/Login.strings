@@ -77,7 +77,7 @@
 "K5M-Of-QAk.text" = "Скопируйте ключ и вставьте его\nв приложение Google Authenticator";
 
 /* Class = "UILabel"; text = "Launch Google Authenticator application"; ObjectID = "LwV-Os-V4m"; */
-"LwV-Os-V4m.text" = "Запустите приложение\nGoogle Authenticator";
+"LwV-Os-V4m.text" = "Запустите приложение Google Authenticator";
 
 /* Class = "UILabel"; text = "Please enter the email you used while registering on the portal. The password recovery instructions will be send to that email address."; ObjectID = "Mbh-dU-7po"; */
 "Mbh-dU-7po.text" = "Пожалуйста, введите адрес электронной почты, указанный при регистрации на портале. Инструкции для восстановления пароля будут отправлены на этот адрес электронной почты.";

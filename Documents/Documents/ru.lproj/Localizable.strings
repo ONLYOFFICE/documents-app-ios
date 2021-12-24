@@ -71,9 +71,6 @@
 "Add message" = "Добавить сообщение";
 
 /* No comment provided by engineer. */
-"Add users or groups and give them to \n read, review or edit documents." = "Добавьте пользователей или группы и\nпредоставьте им права на чтение, рецензирование\n или редактирование документов.";
-
-/* No comment provided by engineer. */
 "Address is empty" = "Адрес не заполнен";
 
 /* No comment provided by engineer. */
@@ -216,9 +213,6 @@
 
 /* Caption of the processing */
 "Copying" = "Копирование";
-
-/* Description of file operation error */
-"Could not change file attrubutes" = "Не удалось изменить атрибуты файла";
 
 /* Description of file operation error */
 "Could not change the directory" = "Не удалось изменить каталог";
@@ -655,7 +649,7 @@
 "Nextcloud" = "Nextcloud";
 
 /* No comment provided by engineer. */
-"Nextcloud directory" = "Папка Nextcloud";
+"Nextcloud directory" = "Каталог Nextcloud";
 
 /* No comment provided by engineer. */
 "No client IDs of application" = "Нет идентификаторов приложения";
@@ -872,6 +866,9 @@
 /* No comment provided by engineer. */
 "Request canceled" = "Запрос отменен";
 
+/* No comment provided by engineer. */
+"Request had insufficient authentication scopes" = "Запрос имеет недостаточные области аутентификации";
+
 /* Button title */
 "Restore" = "Восстановить";
 
@@ -1060,6 +1057,9 @@
 "This operation will free up space on your device by deleting temporary files. Your offline files and personal data won't be removed." = "Эта операция освободит место на устройстве за счет удаления временных файлов. Автономные файлы и персональные данные не будут удалены.";
 
 /* No comment provided by engineer. */
+"This option is used to block access previously granted to a user or group." = "Данная опция используется для блокировки доступа, ранее предоставленного пользователю или группе.";
+
+/* No comment provided by engineer. */
 "This presentation is being edited. Do you want open %@ to view only?" = "Эта презентация редактируется. Вы хотите открыть %@ только на просмотр?";
 
 /* No comment provided by engineer. */
@@ -1148,9 +1148,6 @@
 
 /* No comment provided by engineer. */
 "Unsupported format." = "Неподдерживаемый формат.";
-
-/* Button title */
-"Upload" = "Загрузить";
 
 /* Caption of the process */
 "Uploading" = "Загрузка";

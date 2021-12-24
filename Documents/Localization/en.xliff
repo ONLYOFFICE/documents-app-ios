@@ -1210,14 +1210,14 @@ Note: if you forget the passcode, you'll need to delete and reinstall the app. A
         <target>New Spreadsheet</target>
         <note/>
       </trans-unit>
-      <trans-unit id="ONLYOFFICE Edit Form document (.docxf)" xml:space="preserve">
-        <source>ONLYOFFICE Edit Form document (.docxf)</source>
-        <target>ONLYOFFICE Edit Form document (.docxf)</target>
+      <trans-unit id="ONLYOFFICE form template (.docxf)" xml:space="preserve">
+        <source>ONLYOFFICE form template (.docxf)</source>
+        <target>ONLYOFFICE form template (.docxf)</target>
         <note/>
       </trans-unit>
-      <trans-unit id="ONLYOFFICE Fill Form document (.oform)" xml:space="preserve">
-        <source>ONLYOFFICE Fill Form document (.oform)</source>
-        <target>ONLYOFFICE Fill Form document (.oform)</target>
+      <trans-unit id="ONLYOFFICE fillable form (.oform)" xml:space="preserve">
+        <source>ONLYOFFICE fillable form (.oform)</source>
+        <target>ONLYOFFICE fillable form (.oform)</target>
         <note/>
       </trans-unit>
     </body>
@@ -1272,14 +1272,14 @@ Note: if you forget the passcode, you'll need to delete and reinstall the app. A
         <target>New Spreadsheet</target>
         <note/>
       </trans-unit>
-      <trans-unit id="ONLYOFFICE Edit Form document (.docxf)" xml:space="preserve">
-        <source>ONLYOFFICE Edit Form document (.docxf)</source>
-        <target>ONLYOFFICE Edit Form document (.docxf)</target>
+      <trans-unit id="ONLYOFFICE form template (.docxf)" xml:space="preserve">
+        <source>ONLYOFFICE form template (.docxf)</source>
+        <target>ONLYOFFICE form template (.docxf)</target>
         <note/>
       </trans-unit>
-      <trans-unit id="ONLYOFFICE Fill Form document (.oform)" xml:space="preserve">
-        <source>ONLYOFFICE Fill Form document (.oform)</source>
-        <target>ONLYOFFICE Fill Form document (.oform)</target>
+      <trans-unit id="ONLYOFFICE fillable form (.oform)" xml:space="preserve">
+        <source>ONLYOFFICE fillable form (.oform)</source>
+        <target>ONLYOFFICE fillable form (.oform)</target>
         <note/>
       </trans-unit>
     </body>
@@ -1404,10 +1404,10 @@ Note: if you forget the passcode, you'll need to delete and reinstall the app. A
         <target>Add message</target>
         <note>Sharing settings add notification message</note>
       </trans-unit>
-      <trans-unit id="Add users or groups and give them to &#10; read, review or edit documents." xml:space="preserve">
-        <source>Add users or groups and give them to 
+      <trans-unit id="Add users or groups and allow them to &#10; read, review or edit documents." xml:space="preserve">
+        <source>Add users or groups and allow them to 
  read, review or edit documents.</source>
-        <target>Add users or groups and give them to 
+        <target>Add users or groups and allow them to 
  read, review or edit documents.</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>

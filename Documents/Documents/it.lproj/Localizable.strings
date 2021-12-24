@@ -1,3 +1,6 @@
+/* Count of seclected rows: count + selected */
+"%d selected" = "%d selezionato";
+
 /* Presentation Viewer */
 "%i of %i" = "%1$i di %2$i";
 
@@ -19,6 +22,21 @@
 /* No comment provided by engineer. */
 "A file with a similar name already exists in the document directory on the device." = "Un file con un nome simile esiste già nella directory dei documenti sul dispositivo.";
 
+/* No comment provided by engineer. */
+"A user or group will be able only to view the document and add comments, as well as manage them." = "Un utente o un gruppo potrà solo visualizzare il documento e aggiungere commenti, nonché gestirli.";
+
+/* No comment provided by engineer. */
+"A user or group will be able only to view the document and fill in the forms inserted into the document." = "Un utente o un gruppo potrà solo visualizzare il documento e compilare i moduli inseriti nel documento.";
+
+/* No comment provided by engineer. */
+"A user or group will be able only to view the document." = "Un utente o un gruppo potrà solo visualizzare il documento.";
+
+/* No comment provided by engineer. */
+"A user or group will be able to view and change the document without actually editing it, but all the changes made by a reviewer will be recorded and shown to the file owner (or a person who has full access to the file) so that he/she will be able to accept or reject them." = "Un utente o un gruppo sarà in grado di visualizzare e modificare il documento senza effettivamente modificarlo, ma tutte le modifiche apportate da un revisore verranno registrate e mostrate al proprietario del file (o a una persona che ha accesso completo al file) in modo che lui/lei potrà accettarli o rifiutarli.";
+
+/* No comment provided by engineer. */
+"A user or group will be able to view and edit the document as well as to share this document." = "Un utente o un gruppo sarà in grado di visualizzare e modificare il documento, nonché di condividere questo documento.";
+
 /* Format info */
 "A0 (84,1%@ x 119,9%@)" = "A0 (84,1%1$@ x 119,9%2$@)";
 
@@ -32,10 +50,25 @@
 "A6 (10,5%@ x 14,8%@)" = "A6 (10,5%1$@ x 14,8%2$@)";
 
 /* No comment provided by engineer. */
+"Access by external link" = "Accesso tramite link esterno";
+
+/* No comment provided by engineer. */
+"Access files in Favorites and Recents on ONLYOFFICE portal from the app" = "Accedi ai file in Preferiti e Recenti sul portale ONLYOFFICE dall'app";
+
+/* No comment provided by engineer. */
+"Access rights" = "Diritti di accesso";
+
+/* No comment provided by engineer. */
+"Access settings" = "Impostazioni di accesso";
+
+/* No comment provided by engineer. */
 "Account name is empty" = "Nome account vuoto";
 
 /* No comment provided by engineer. */
 "Account name is not valid" = "Nome account non valido";
+
+/* Sharing settings add notification message */
+"Add message" = "Aggiungere messaggio";
 
 /* No comment provided by engineer. */
 "Address is empty" = "L'indirizzo è vuoto";
@@ -47,7 +80,13 @@
 "All Files" = "Tutti i file";
 
 /* No comment provided by engineer. */
+"Allow access via external link" = "Consenti l'accesso tramite link esterno";
+
+/* No comment provided by engineer. */
 "An unexpected error has occurred. Please try again later. Sorry for inconvenience." = "Si è verificato un errore imprevisto. Ti preghiamo di riprovare più tardi. Ci scusiamo per l'inconveniente.";
+
+/* Caption of the process */
+"Applying" = "Applicare";
 
 /* No comment provided by engineer. */
 "Are you sure you want to delete the account %@ from this device?" = "Sei sicuro che vuoi eliminare l'account %@ da questo dispositivo?";
@@ -60,6 +99,9 @@
 
 /* No comment provided by engineer. */
 "Box directory" = "Cartella di Box";
+
+/* No comment provided by engineer. */
+"By creating the portal you agree with our Privacy Policy and Terms of Service" = "Creando il portale accetti la nostra Informativa sulla privacy e i Termini di servizio";
 
 /* Data units */
 "bytes" = "byte";
@@ -118,6 +160,9 @@
 /* Introduction Step Five - Title */
 "Collaborate with your team" = "Collabora con il tuo team";
 
+/* Share status */
+"Comment" = "Commento";
+
 /* Category title */
 "Common Documents" = "Documenti comuni";
 
@@ -168,9 +213,6 @@
 
 /* Caption of the processing */
 "Copying" = "Copiatura";
-
-/* Description of file operation error */
-"Could not change file attrubutes" = "Impossibile cambiare gli attributi del file";
 
 /* Description of file operation error */
 "Could not change the directory" = "Impossibile cambiare la cartella";
@@ -262,6 +304,9 @@
 /* Caption of the process */
 "Creating" = "Creazione";
 
+/* Share status */
+"Custom filter" = "Filtro personalizzato";
+
 /* No comment provided by engineer. */
 "Date" = "Data";
 
@@ -294,6 +339,9 @@
 
 /* Share status */
 "Deny Access" = "Negare accesso";
+
+/* No comment provided by engineer. */
+"Deselect all" = "Deseleziona tutti";
 
 /* Button title */
 "Disconnect third party" = "Disconnettere i servizi di terze parti";
@@ -345,6 +393,9 @@
 "Email is empty" = "Campo Email vuoto";
 
 /* No comment provided by engineer. */
+"Email is incorrect." = "Indirizzo email non corretto";
+
+/* No comment provided by engineer. */
 "Email is not valid" = "Email non valida";
 
 /* No comment provided by engineer. */
@@ -365,6 +416,9 @@
 /* No comment provided by engineer. */
 "Error" = "Errore";
 
+/* No comment provided by engineer. */
+"Error code: %ld" = "Codice errore: %ld";
+
 /* Access is Forbidden message */
 "error.errorForbiddenMsg" = "Contatta l'amministratore del portale per l'accesso alla risorsa.";
 
@@ -377,6 +431,9 @@
 /* Unknown Server Error */
 "error.errorServerTitle" = "Errore del server";
 
+/* Button title */
+"Export" = "Esporta";
+
 /* No comment provided by engineer. */
 "Failed online conversion service." = "Servizio di conversione online è fallito.";
 
@@ -385,6 +442,9 @@
 
 /* No comment provided by engineer. */
 "Failed to check the name of the portal" = "Impossibile verificare il nome del portale";
+
+/* No comment provided by engineer. */
+"Failed to connect folder." = "Impossibile connettere la cartella.";
 
 /* No comment provided by engineer. */
 "Failed to copy: %@" = "Impossibile copiare: %@";
@@ -405,6 +465,9 @@
 "Failed to move: %@" = "Impossibile spostare: %@";
 
 /* No comment provided by engineer. */
+"Failed to send feedback by mail. Try to write your request on our forum." = "Impossibile inviare feedback per posta. Prova a scrivere la tua richiesta sul nostro forum.";
+
+/* No comment provided by engineer. */
 "Failed upload source file to conversion online service." = "Impossibile caricare il file sorgente al servizio di conversione online.";
 
 /* No comment provided by engineer. */
@@ -412,6 +475,9 @@
 
 /* No comment provided by engineer. */
 "Failure to download result from conversion online service." = "Impossibile scaricare il risultato dal servizio di conversione online.";
+
+/* No comment provided by engineer. */
+"Favorites and Recents" = "Preferiti e Recenti";
 
 /* Description of file operation error */
 "File already exists" = "Il file esiste già";
@@ -423,10 +489,16 @@
 "Files" = "File";
 
 /* No comment provided by engineer. */
+"First name is incorrect" = "Il nome non è corretto";
+
+/* No comment provided by engineer. */
 "Folder title" = "Nome cartella";
 
 /* No comment provided by engineer. */
 "Folders" = "Cartelle";
+
+/* Share status */
+"Form filling" = "Compilare un modulo";
 
 /* Share status */
 "Full Access" = "Accesso completo";
@@ -444,6 +516,9 @@
 "Getting started" = "Per iniziare";
 
 /* No comment provided by engineer. */
+"Go to forum" = "Vai al forum";
+
+/* No comment provided by engineer. */
 "Google directory" = "Cartella di Google";
 
 /* No comment provided by engineer. */
@@ -451,6 +526,15 @@
 
 /* No comment provided by engineer. */
 "Groups" = "Gruppi";
+
+/* No comment provided by engineer. */
+"iCloud" = "iCloud";
+
+/* No comment provided by engineer. */
+"iCloud Drive" = "iCloud Drive";
+
+/* Email sent instructions */
+"If a user with the mail %@ exists, then an instruction to change the password was sent to this address." = "Se esiste un utente con la posta %@, a questo indirizzo è stata inviata un'istruzione per modificare la password.";
 
 /* No comment provided by engineer. */
 "Images" = "Immagini";
@@ -464,11 +548,29 @@
 /* No comment provided by engineer. */
 "Invalid Country Code" = "Codice del paese non valido";
 
-/* Error message */
-"Invalid URL: The format ot the URL could not be determined" = "URL non valido: Non è stato possibile determinare il formato dell'URL";
+/* No comment provided by engineer. */
+"Invalid Data" = "Dati non validi";
+
+/* No comment provided by engineer. */
+"Invalid Url" = "URL non valido";
 
 /* Data units */
 "Kb" = "Kb";
+
+/* No comment provided by engineer. */
+"kDrive" = "kDrive";
+
+/* No comment provided by engineer. */
+"kDrive directory" = "Cartella di kDrive";
+
+/* No comment provided by engineer. */
+"Last name is empty" = "Campo Cognome vuoto";
+
+/* No comment provided by engineer. */
+"Last name is incorrect" = "Il cognome non è corretto";
+
+/* No comment provided by engineer. */
+"Link copied\nto the clipboard" = "Link copiato negli appunti";
 
 /* Caption of the process */
 "Logging in" = "Accesso in corso";
@@ -485,6 +587,9 @@
 /* Button title
    Caption of the process */
 "Logout" = "Logout";
+
+/* Button title */
+"Mark as favorite" = "Segna come preferito";
 
 /* Data units */
 "Mb" = "Mb";
@@ -523,6 +628,9 @@
 "Needs additional params." = "Richiede i parametri aggiuntivi.";
 
 /* No comment provided by engineer. */
+"New" = "Nuovo";
+
+/* No comment provided by engineer. */
 "New Document" = "Nuovo documento";
 
 /* No comment provided by engineer. */
@@ -541,10 +649,19 @@
 "Nextcloud" = "Nextcloud";
 
 /* No comment provided by engineer. */
+"Nextcloud directory" = "Cartella di Nextcloud";
+
+/* No comment provided by engineer. */
+"No client IDs of application" = "Nessun ID cliente dell'applicazione";
+
+/* No comment provided by engineer. */
 "No connection" = "Nessuna connessione";
 
 /* No comment provided by engineer. */
 "No information about the user profile." = "Nessuna informazione sul profilo utente.";
+
+/* No comment provided by engineer. */
+"No Internet connection" = "Nessuna connessione internet";
 
 /* No comment provided by engineer. */
 "No network" = "Nessuna rete";
@@ -559,8 +676,7 @@
 "No search result" = "Nessun risultato di ricerca";
 
 /* Invalid entity date
-   Invalid entity owner
-   No information */
+   Invalid entity owner */
 "none" = "nessuno";
 
 /* If the cache is empty
@@ -569,6 +685,9 @@
 
 /* No comment provided by engineer. */
 "Note: removal from your account can not be undone." = "Nota: la rimozione dal tuo account non può essere annullata.";
+
+/* Sharing settings switcher */
+"Notify by Email" = "Notificare via e-mail";
 
 /* Used in the context: 'Showing 1 of 3 items' */
 "of" = "di";
@@ -584,6 +703,12 @@
 
 /* No comment provided by engineer. */
 "Once you enter the password and open the file, the current password to the file will be reset" = "Una volta inserita la password e aperto il file, la password corrente del file verrà reimpostata";
+
+/* No comment provided by engineer. */
+"OneDrive" = "OneDrive";
+
+/* No comment provided by engineer. */
+"OneDrive and kDrive access" = "Accesso a OneDrive e kDrive";
 
 /* No comment provided by engineer. */
 "OneDrive directory" = "Cartella di OneDrive";
@@ -622,6 +747,9 @@
 "ownCloud" = "ownCloud";
 
 /* No comment provided by engineer. */
+"ownCloud directory" = "Cartella di ownCloud";
+
+/* Table cell right holder acces text */
 "Owner" = "Proprietario";
 
 /* No comment provided by engineer. */
@@ -635,6 +763,12 @@
 
 /* Data units */
 "Pb" = "Pb";
+
+/* No comment provided by engineer. */
+"Phone" = "Telefono";
+
+/* No comment provided by engineer. */
+"Phone is incorrect" = "Telefono non corretto";
 
 /* Used in the context: '1 photo' */
 "photo" = "foto";
@@ -681,6 +815,9 @@
 /* Button title */
 "Preview" = "Anteprima";
 
+/* Part of phrases - By creating the portal you agree with our Privacy Policy and Terms of Service */
+"Privacy Policy" = "Informativa sulla privacy";
+
 /* Caption of the processing */
 "Processing" = "Elaborazione";
 
@@ -706,6 +843,12 @@
 "Reload" = "Ricaricare";
 
 /* Button title */
+"Remove from Favorites" = "Rimuovi dai preferiti";
+
+/* Caption of the process */
+"Removing" = "Eliminazione";
+
+/* Button title */
 "Rename" = "Rinominare";
 
 /* No comment provided by engineer. */
@@ -720,6 +863,12 @@
 /* No comment provided by engineer. */
 "Renewal" = "Rinnovo";
 
+/* No comment provided by engineer. */
+"Request canceled" = "Richiesta annullata";
+
+/* No comment provided by engineer. */
+"Request had insufficient authentication scopes" = "La richiesta aveva ambiti di autenticazione insufficienti";
+
 /* Button title */
 "Restore" = "Recuperare";
 
@@ -732,9 +881,15 @@
 /* Caption of the processing */
 "Saving" = "Salvataggio";
 
+/* No comment provided by engineer. */
+"Search" = "Ricerca";
+
 /* Button title
    Navigation bar button title */
 "Select" = "Selezionare";
+
+/* No comment provided by engineer. */
+"Select all" = "Seleziona tutto";
 
 /* No comment provided by engineer. */
 "Select another cloud to connect to Nextcloud, ownCloud and others are supported." = "Seleziona un altro cloud per connettersi a Nextcloud; sono supportati ownCloud e altri.";
@@ -758,7 +913,19 @@
 "Selected: %ld" = "Selezionato: %ld";
 
 /* No comment provided by engineer. */
+"Selecting access rights" = "Selezione dei diritti di accesso";
+
+/* Caption of the process */
+"Sending" = "Invio";
+
+/* No comment provided by engineer. */
+"Set favorite failed." = "Impostazione dei preferiti non riuscita.";
+
+/* No comment provided by engineer. */
 "Settings" = "Impostazioni";
+
+/* No comment provided by engineer. */
+"Shared access" = "Accesso condiviso";
 
 /* Category title */
 "Shared with Me" = "Condivisi con me";
@@ -768,6 +935,12 @@
 
 /* Caption of the process */
 "Sharing" = "Condivisione";
+
+/* No comment provided by engineer. */
+"Sharing settings" = "Impostazioni di condivisione";
+
+/* Button title */
+"Sharing Settings" = "Impostazioni di condivisione";
 
 /* No comment provided by engineer. */
 "Single Sign-on" = "Single Sign-on";
@@ -783,6 +956,12 @@
 
 /* Presentation Viewer */
 "Slide %i of %i" = "Diapositiva %1$i di %2$i";
+
+/* No comment provided by engineer. */
+"Something went wrong, try again" = "Qualcosa è andato storto, riprova";
+
+/* No comment provided by engineer. */
+"Something wrong" = "Qualcosa che non va";
 
 /* Button title */
 "Sort" = "Ordinare";
@@ -808,8 +987,14 @@
 /* Data units */
 "Tb" = "Tb";
 
+/* Part of phrases - By creating the portal you agree with our Privacy Policy and Terms of Service */
+"Terms of Service" = "Termini di servizio";
+
 /* Notification title */
 "Text copied" = "Testo copiato";
+
+/* No comment provided by engineer. */
+"The %@ server is not available." = "Il server %@ non è disponibile.";
 
 /* No comment provided by engineer. */
 "The account name must be between 6 and 50 characters long" = "Il nome dell'account deve avere una lunghezza compresa tra 6 e 50 caratteri";
@@ -824,16 +1009,34 @@
 "The file will be irretrievably deleted. This action is irreversible." = "Il file sarà irrimediabilmente eliminato. Quest'azione è irreversibile.";
 
 /* No comment provided by engineer. */
+"The folder in the Trash can not be opened." = "La cartella nel Cestino non può essere aperta.";
+
+/* No comment provided by engineer. */
 "The folder will be irretrievably deleted. This action is irreversible." = "La cartella sarà irrimediabilmente eliminata. Quest'azione è irreversibile.";
 
 /* No comment provided by engineer. */
 "The item with the name '%@' already exists in the folder '%@'." = "L'elemento con il nome '%1$@' già esiste nella cartella '%2$@'.";
 
 /* No comment provided by engineer. */
+"The link for external\naccess is copied\nto the clipboard" = "Il link per l'accesso esterno viene copiato negli appunti";
+
+/* No comment provided by engineer. */
+"The parameters are incorrect." = "I parametri non sono corretti.";
+
+/* No comment provided by engineer. */
+"The password is incorrect. It must contain 8 characters" = "La password non è corretta. Deve contenere 8 caratteri";
+
+/* No comment provided by engineer. */
 "The portal address is invalid" = "L'indirizzo del portale non è valido";
 
 /* No comment provided by engineer. */
+"The portal is not available" = "Il portale non è disponibile";
+
+/* No comment provided by engineer. */
 "The portal name must be between 6 and 50 characters long" = "Il nome del portale deve avere una lunghezza compresa tra 6 e 50 caratteri";
+
+/* No comment provided by engineer. */
+"The request timed out." = "La richiesta è scaduta.";
 
 /* No comment provided by engineer. */
 "The server is not available." = "Il server non è disponibile.";
@@ -852,6 +1055,9 @@
 
 /* No comment provided by engineer. */
 "This operation will free up space on your device by deleting temporary files. Your offline files and personal data won't be removed." = "Quest'operazione libererà spazio sul dispositivo eliminando i file temporanei. I tuoi dati personali e file offline non saranno rimossi.";
+
+/* No comment provided by engineer. */
+"This option is used to block access previously granted to a user or group." = "Questa opzione viene utilizzata per bloccare l'accesso precedentemente concesso a un utente o a un gruppo.";
 
 /* No comment provided by engineer. */
 "This presentation is being edited. Do you want open %@ to view only?" = "Questa presentazione è in corso di elaborazione. Vuoi aprire %@ in sola lettura?";
@@ -890,10 +1096,34 @@
 "Type" = "Tipo";
 
 /* No comment provided by engineer. */
+"Unable delete items" = "Impossibile eliminare elementi";
+
+/* No comment provided by engineer. */
+"Unable disconnect third party" = "Impossibile disconnettere terze parti";
+
+/* No comment provided by engineer. */
 "Unable to get information about the portal" = "Impossibile ottenere informazioni sul portale";
 
 /* No comment provided by engineer. */
 "Unable to get information about the user." = "Impossibile ottenere informazioni sull'utente.";
+
+/* No comment provided by engineer. */
+"Unauthorized users will be able only to view the document and add comments, as well as manage them." = "Gli utenti non autorizzati potranno solo visualizzare il documento e aggiungere commenti, oltre che gestirli.";
+
+/* No comment provided by engineer. */
+"Unauthorized users will be able only to view the document and fill in the forms inserted into the document." = "Gli utenti non autorizzati potranno solo visualizzare il documento e compilare i moduli inseriti nel documento.";
+
+/* No comment provided by engineer. */
+"Unauthorized users will be able only to view the document." = "Gli utenti non autorizzati potranno solo visualizzare il documento.";
+
+/* No comment provided by engineer. */
+"Unauthorized users will be able to view and change the document without actually editing it, but all the changes made by a reviewer will be recorded and shown to the file owner (or a person who has full access to the file) so that he/she will be able to accept or reject them." = "Gli utenti non autorizzati potranno visualizzare e modificare il documento senza effettivamente modificarlo, ma tutte le modifiche apportate da un revisore verranno registrate e mostrate al proprietario del file (o a una persona che ha accesso completo al file) in modo che lui/lei potrà accettarli o rifiutarli.";
+
+/* No comment provided by engineer. */
+"Unauthorized users will be able to view and edit the document as well as to share this document." = "Gli utenti non autorizzati potranno visualizzare e modificare il documento, nonché condividere questo documento.";
+
+/* No comment provided by engineer. */
+"Unauthorized users will not have access to the document." = "Gli utenti non autorizzati non avranno accesso al documento.";
 
 /* No comment provided by engineer. */
 "Unexpected response from the service." = "Risposta inaspettata del servizio.";
@@ -902,7 +1132,7 @@
 "Unknown" = "Sconosciuto";
 
 /* No comment provided by engineer. */
-"Unknown API response." = "Risposta di API sconosciuta.";
+"Unknown error" = "Errore sconosciuto";
 
 /* No comment provided by engineer. */
 "Unknown file provider" = "Provider di file sconosciuto";
@@ -919,9 +1149,6 @@
 /* No comment provided by engineer. */
 "Unsupported format." = "Formato non supportato.";
 
-/* Button title */
-"Upload" = "Caricare";
-
 /* Caption of the process */
 "Uploading" = "Caricamento";
 
@@ -931,8 +1158,11 @@
 /* Button title */
 "Use Touch ID" = "Utilizzare Touch ID";
 
-/* Error message */
+/* No comment provided by engineer. */
 "User authentication failed" = "Impossibile autenticare l'utente";
+
+/* No comment provided by engineer. */
+"User authentication required" = "È richiesta l'autenticazione dell'utente";
 
 /* No comment provided by engineer. */
 "User undefined" = "Utente indefinito";
@@ -948,6 +1178,9 @@
 
 /* No comment provided by engineer. */
 "Version" = "Versione";
+
+/* No comment provided by engineer. */
+"View and edit files in OneDrive and kDrive directly from the app. Access your storages from the Clouds tab." = "Visualizza e modifica i file in OneDrive e kDrive direttamente dall'app. Accedi ai tuoi archivi dalla scheda Clouds.";
 
 /* No comment provided by engineer. */
 "Warning" = "Avvertimento";

@@ -1,0 +1,123 @@
+/* Class = "UILabel"; text = "Copy the code"; ObjectID = "00r-ek-IVa"; */
+"00r-ek-IVa.text" = "このコードをコピー";
+
+/* Class = "UILabel"; text = "Title"; ObjectID = "0X2-Xg-z5B"; */
+"0X2-Xg-z5B.text" = "タイトル:";
+
+/* Class = "UITextField"; text = "Country Code"; ObjectID = "3oc-kQ-msr"; */
+"3oc-kQ-msr.text" = "国コード";
+
+/* Class = "UILabel"; text = "-"; ObjectID = "6Zd-HN-8wS"; */
+"6Zd-HN-8wS.text" = "-";
+
+/* Class = "UILabel"; text = "Detail"; ObjectID = "18Q-Kh-0cC"; */
+"18Q-Kh-0cC.text" = "詳細";
+
+/* Class = "UIButton"; normalTitle = "Login by"; ObjectID = "51s-1D-raN"; */
+"51s-1D-raN.normalTitle" = "がログイン";
+
+/* Class = "UILabel"; text = "Phone Number"; ObjectID = "76Y-EB-F07"; */
+"76Y-EB-F07.text" = "電話番号";
+
+/* Class = "UIButton"; normalTitle = "Forgot?"; ObjectID = "78r-Ca-NKv"; */
+"78r-Ca-NKv.normalTitle" = "お忘れですか?";
+
+/* Class = "UILabel"; text = "Account"; ObjectID = "AkN-p0-Mzy"; */
+"AkN-p0-Mzy.text" = "アカウント";
+
+/* Class = "UIButton"; normalTitle = "Continue"; ObjectID = "AqJ-b9-XQV"; */
+"AqJ-b9-XQV.normalTitle" = "続ける";
+
+/* Class = "UILabel"; text = "Haven't received the code?"; ObjectID = "cb0-ic-tPA"; */
+"cb0-ic-tPA.text" = "コードを受け取っていませんか?";
+
+/* Class = "UILabel"; text = "Portal"; ObjectID = "cBn-x1-r5A"; */
+"cBn-x1-r5A.text" = "ポータル";
+
+/* Class = "UILabel"; text = "Two-Factor\nAuthentication"; ObjectID = "DK4-QO-Jde"; */
+"DK4-QO-Jde.text" = "ニ要素\n承認";
+
+/* Class = "UIButton"; normalTitle = "Next"; ObjectID = "e1X-0t-hcs"; Note = "Do not translate"; */
+"e1X-0t-hcs.normalTitle" = "次の変更箇所";
+
+/* Class = "UILabel"; text = "Two-Factor\nAuthentication"; ObjectID = "Eb4-3w-0Jf"; */
+"Eb4-3w-0Jf.text" = "ニ要素\n承認";
+
+/* Class = "UILabel"; text = "Address"; ObjectID = "Fso-pj-304"; */
+"Fso-pj-304.text" = "住所";
+
+/* Class = "UIButton"; normalTitle = "Create cloud"; ObjectID = "G99-FE-uk4"; */
+"G99-FE-uk4.normalTitle" = "クラウドを作成";
+
+/* Class = "UILabel"; text = "Connect to your ONLYOFFICE cloud to store files online and collaborate on documents in real time"; ObjectID = "GFx-Ry-9GC"; */
+"GFx-Ry-9GC.text" = "ONLYOFFICE クラウドに接続して、オンラインでファイルを保存。リアルタイムでドキュメントを共同編集";
+
+/* Class = "UILabel"; text = "Select an account to sign in"; ObjectID = "Gkv-tP-6EM"; */
+"Gkv-tP-6EM.text" = "アカウントを選択して、サインイン";
+
+/* Class = "UINavigationItem"; title = "Accounts"; ObjectID = "gzc-cW-NPT"; */
+"gzc-cW-NPT.title" = "アカウント";
+
+/* Class = "UINavigationItem"; title = "SSO Login"; ObjectID = "hRN-W6-nA0"; */
+"hRN-W6-nA0.title" = "シングルサインオンでログイン";
+
+/* Class = "UILabel"; text = "Enter a phone number that can be used to verify your identity"; ObjectID = "MNA-z2-ITx"; */
+"MNA-z2-ITx.text" = "本人確認に使用する電話番号を入力する";
+
+/* Class = "UIBarButtonItem"; title = "Back"; ObjectID = "MUG-TG-NlP"; */
+"MUG-TG-NlP.title" = "戻る";
+
+/* Class = "UINavigationItem"; title = "Country"; ObjectID = "NBg-dA-b3o"; */
+"NBg-dA-b3o.title" = "国";
+
+/* Class = "UITextField"; placeholder = "Code"; ObjectID = "OnI-QD-xeI"; */
+"OnI-QD-xeI.placeholder" = "コード";
+
+/* Class = "UIButton"; normalTitle = "Select another account"; ObjectID = "peP-Hz-Lai"; */
+"peP-Hz-Lai.normalTitle" = "他のアカウントを選択する";
+
+/* Class = "UIButton"; normalTitle = "Sign in"; ObjectID = "QAn-vu-xMR"; */
+"QAn-vu-xMR.normalTitle" = "サインイン";
+
+/* Class = "UITextField"; placeholder = "Code"; ObjectID = "qEs-UQ-wWd"; */
+"qEs-UQ-wWd.placeholder" = "コード";
+
+/* Class = "UIButton"; normalTitle = "Open"; ObjectID = "RDr-pH-MKV"; */
+"RDr-pH-MKV.normalTitle" = "開く";
+
+/* Class = "UILabel"; text = "Login via"; ObjectID = "szM-hs-ncG"; */
+"szM-hs-ncG.text" = "経由でログイン";
+
+/* Class = "UITextField"; placeholder = "Secret"; ObjectID = "tnK-je-flS"; */
+"tnK-je-flS.placeholder" = "秘密";
+
+/* Class = "UILabel"; text = "Get more information"; ObjectID = "ttx-IC-XrN"; */
+"ttx-IC-XrN.text" = "さらに情報を取得";
+
+/* Class = "UIBarButtonItem"; title = "Next"; ObjectID = "twm-cB-W69"; */
+"twm-cB-W69.title" = "次の変更箇所";
+
+/* Class = "UILabel"; text = "Please set up an application to generate the codes for the portal access (e.g. Google Authenticator) to continue the work at the portal"; ObjectID = "vlQ-jV-iFo"; */
+"vlQ-jV-iFo.text" = "アプリを設定して、ポータルアクセス用 (たとえば、Google Authenticator) のコードを生成して、ポータルでの作業を続けます。";
+
+/* Class = "UITextField"; placeholder = "Your phone number"; ObjectID = "w2U-Ci-R7v"; */
+"w2U-Ci-R7v.placeholder" = "電話番号";
+
+/* Class = "UILabel"; text = "We have sent you an SMS with a code to the number %@"; ObjectID = "W8Q-CO-c0L"; */
+"W8Q-CO-c0L.text" = "番号 %@ にコードが記載されたショートメッセージを送信しました";
+
+/* Class = "UILabel"; text = "Add a secret key"; ObjectID = "WuZ-wI-3aH"; */
+"WuZ-wI-3aH.text" = "秘密キーを追加";
+
+/* Class = "UITextField"; text = "+"; ObjectID = "x6G-qW-5Pq"; */
+"x6G-qW-5Pq.text" = "+";
+
+/* Class = "UILabel"; text = "Connection to cloud"; ObjectID = "XsM-aD-o1I"; */
+"XsM-aD-o1I.text" = "クラウドに接続";
+
+/* Class = "UIButton"; normalTitle = "Continue"; ObjectID = "yjY-PY-41s"; */
+"yjY-PY-41s.normalTitle" = "続ける";
+
+/* Class = "UITextField"; placeholder = "Code"; ObjectID = "ZWV-Q1-HY9"; */
+"ZWV-Q1-HY9.placeholder" = "コード";
+

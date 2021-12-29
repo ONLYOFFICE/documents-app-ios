@@ -556,7 +556,15 @@ extension ASCOneDriveProvider: ASCFileProviderProtocol {
         var dstPath = path
         
         if let fileName = params?["title"] as? String {
-            dstPath = (dstPath as NSString).appendingPathComponent(fileName)
+            if !dstPath.isEmpty {
+                dstPath = (dstPath as NSString)
+                    .appending(":")
+                    .appendingPathComponent(fileName)
+                    .appending(":")
+            } else {
+                dstPath = (dstPath as NSString)
+                    .appendingPathComponent(fileName)
+            }
         }
         
         let dummyFilePath = Path.userTemporary + UUID().uuidString

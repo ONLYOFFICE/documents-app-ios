@@ -16,7 +16,8 @@ class ASCSharingSettingsAccessProviderFactory {
         "docx":  { ASCSharingSettingsAccessDocumentProvider() },
         "docxf": { ASCSharingSettingsAccessDocumentFormProvider() },
         "xlsx":  { ASCSharingSettingsAccessTableProvider() },
-        "pptx":  { ASCSharingSettingsAccessPresentationProvider() }
+        "pptx":  { ASCSharingSettingsAccessPresentationProvider() },
+        "oform": { ASCSharingSettingsAccessOFormProvider() },
     ]
     
     func get(entity: ASCEntity, isAccessExternal: Bool) -> ASCSharingSettingsAccessProvider {

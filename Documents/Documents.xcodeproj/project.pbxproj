@@ -118,6 +118,7 @@
 		1D71107A26A5A93000E00421 /* ASCShareSettingsAPIWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D71107926A5A93000E00421 /* ASCShareSettingsAPIWorker.swift */; };
 		1D71107D26A5A9A000E00421 /* ASCShareSettingsAPIWorkerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D71107C26A5A9A000E00421 /* ASCShareSettingsAPIWorkerTests.swift */; };
 		1D71107F26A8217400E00421 /* UINavigationItem+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D71107E26A8217300E00421 /* UINavigationItem+Extensions.swift */; };
+		1D76212C277DE2D70088126B /* ASCOnlyofficeCategoriesChainContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D76212B277DE2D60088126B /* ASCOnlyofficeCategoriesChainContainer.swift */; };
 		1D76B047275B746200389C61 /* ASCNextCloudProviderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D76B046275B746200389C61 /* ASCNextCloudProviderTests.swift */; };
 		1D76B04B275B921100389C61 /* ASCEntityExistenceChecker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D76B04A275B921100389C61 /* ASCEntityExistenceChecker.swift */; };
 		1D76B04E275B935400389C61 /* ASCUniqNameFinder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D76B04D275B935400389C61 /* ASCUniqNameFinder.swift */; };
@@ -832,6 +833,7 @@
 		1D71107926A5A93000E00421 /* ASCShareSettingsAPIWorker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCShareSettingsAPIWorker.swift; sourceTree = "<group>"; };
 		1D71107C26A5A9A000E00421 /* ASCShareSettingsAPIWorkerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCShareSettingsAPIWorkerTests.swift; sourceTree = "<group>"; };
 		1D71107E26A8217300E00421 /* UINavigationItem+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UINavigationItem+Extensions.swift"; sourceTree = "<group>"; };
+		1D76212B277DE2D60088126B /* ASCOnlyofficeCategoriesChainContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCOnlyofficeCategoriesChainContainer.swift; sourceTree = "<group>"; };
 		1D76B046275B746200389C61 /* ASCNextCloudProviderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCNextCloudProviderTests.swift; sourceTree = "<group>"; };
 		1D76B04A275B921100389C61 /* ASCEntityExistenceChecker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCEntityExistenceChecker.swift; sourceTree = "<group>"; };
 		1D76B04D275B935400389C61 /* ASCUniqNameFinder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCUniqNameFinder.swift; sourceTree = "<group>"; };
@@ -1713,6 +1715,14 @@
 			path = Workers;
 			sourceTree = "<group>";
 		};
+		1D76212A277DBB4B0088126B /* ChainOfResponsobility */ = {
+			isa = PBXGroup;
+			children = (
+				1D76212B277DE2D60088126B /* ASCOnlyofficeCategoriesChainContainer.swift */,
+			);
+			path = ChainOfResponsobility;
+			sourceTree = "<group>";
+		};
 		1D76B048275B919300389C61 /* ProviderTools */ = {
 			isa = PBXGroup;
 			children = (
@@ -1761,6 +1771,7 @@
 		1D981FF02631A63C00144B57 /* OnlyofficeCategories */ = {
 			isa = PBXGroup;
 			children = (
+				1D76212A277DBB4B0088126B /* ChainOfResponsobility */,
 				1DE6D6C02631BDB7001B825B /* Protocols */,
 				1DE6D6C22631BDCF001B825B /* Factory */,
 				1D12D35C265E45F200C8C519 /* Proxy */,
@@ -4004,6 +4015,7 @@
 				FC68527F26837B7300D830EC /* OnlyofficeApiClient.swift in Sources */,
 				FC8A137F2268B57F006D8C6E /* URL+Extensions.swift in Sources */,
 				FC68399021B7E01E00251CEA /* ASCCloudsNavigationController.swift in Sources */,
+				1D76212C277DE2D70088126B /* ASCOnlyofficeCategoriesChainContainer.swift in Sources */,
 				FC41D8042265D8DA00A155C2 /* ASCShareAccess.swift in Sources */,
 				FC56B5CA20C03F3400557C1F /* ASCSortViewCellTableViewCell.swift in Sources */,
 				FC68529D26837B7300D830EC /* NetworkingClient.swift in Sources */,

@@ -22,9 +22,14 @@ class ASCOnlyofficeCategoriesProviderFilterProxy: ASCOnlyofficeCategoriesProvide
         self.filter = filter
     }
     
-    func loadCategories(completion: @escaping ([ASCOnlyofficeCategory]) -> Void) {
-        categoriesProvider.loadCategories { categories in
-            completion(categories.filter(self.filter))
+    func loadCategories(completion: @escaping (Result<[ASCOnlyofficeCategory], Error>) -> Void) {
+        categoriesProvider.loadCategories { result in
+            switch result {
+            case .success(let categories):
+                completion(.success(categories.filter(self.filter)))
+            case .failure(_):
+                completion(result)
+            }
         }
     }
 }

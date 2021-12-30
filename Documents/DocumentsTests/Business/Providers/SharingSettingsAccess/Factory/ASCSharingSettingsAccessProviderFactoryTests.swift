@@ -44,6 +44,15 @@ class ASCSharingSettingsAccessProviderFactoryTests: XCTestCase {
         XCTAssertTrue(sut.get(entity: file, isAccessExternal: false) is ASCSharingSettingsAccessDocumentProvider)
         XCTAssertTrue(sut.get(entity: file, isAccessExternal: true) is ASCSharingSettingsAccessDocumentProvider)
     }
+    
+    func testWhenDocumentThenGetsNextRightsReadDenyFullCommentReview() {
+        let file = ASCFile()
+        file.title = "Foo.docx"
+        let provider = sut.get(entity: file, isAccessExternal: false)
+        let actualAccessList = provider.get()
+        let expectedAccessList: [ASCShareAccess] =  [.full, .review, .comment, .read, .deny]
+        XCTAssertEqual(expectedAccessList, actualAccessList)
+    }
 
     func testWhenTableThenGetsTableProvider() {
         let file = ASCFile()

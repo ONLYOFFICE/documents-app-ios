@@ -11,7 +11,7 @@ import Foundation
 class ASCOnlyofficeAppBasedCategoriesProvider: ASCOnlyofficeCategoriesProviderProtocol {
     var categoriesCurrentlyLoading: Bool = false
     var protalTypeDefinder: ASCPortalTypeDefinderProtocol = ASCPortalTypeDefinderByCurrentConnection()
-    func loadCategories(completion: @escaping ([ASCOnlyofficeCategory]) -> Void) {
+    func loadCategories(completion: @escaping (Result<[ASCOnlyofficeCategory], Error>) -> Void) {
         if let onlyoffice = ASCFileManager.onlyofficeProvider, let user = onlyoffice.user {
             
             categoriesCurrentlyLoading = true
@@ -73,9 +73,10 @@ class ASCOnlyofficeAppBasedCategoriesProvider: ASCOnlyofficeCategoriesProviderPr
                 }(ASCOnlyofficeCategory()))
             
             categoriesCurrentlyLoading = false
-            completion(categories)
+            completion(.success(categories))
         } else {
-            completion([])
+            categoriesCurrentlyLoading = false
+            completion(.success([]))
         }
     }
 }

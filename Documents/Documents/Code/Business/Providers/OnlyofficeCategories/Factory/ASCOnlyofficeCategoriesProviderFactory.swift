@@ -22,12 +22,23 @@ class ASCOnlyofficeCategoriesProviderFactory {
             guard communityServerVersion.isVersion(greaterThanOrEqualTo: "11.5") else {
                 return provider
             }
-            provider = ASCOnlyofficeCategoriesProviderFilterProxy(
-                categoriesProvider: ASCOnlyofficeAPICategoriesProvider(),
-                filter: { $0.folder?.rootFolderType != .unknown })
+            provider = makeAPICategoriesProvider()
             return provider
         }
         
         return provider
+    }
+    
+    private func makeAPICategoriesProvider() -> ASCOnlyofficeCategoriesProviderProtocol {
+        let apiCategoriesProvider = ASCOnlyofficeAPICategoriesProvider()
+        let filtredApiCategoriesProvider = ASCOnlyofficeCategoriesProviderFilterProxy(
+            categoriesProvider: apiCategoriesProvider,
+            filter: { $0.folder?.rootFolderType != .unknown })
+        let applicationCategoriesProvider = ASCOnlyofficeAppBasedCategoriesProvider()
+        
+        let firstTryCategoriesProvider = filtredApiCategoriesProvider
+        let nextTryCategoriesProvider = applicationCategoriesProvider
+        
+        return ASCOnlyofficeCategoriesChainContainerFailureToNext(base: firstTryCategoriesProvider, next: nextTryCategoriesProvider)
     }
 }

@@ -269,9 +269,14 @@ class ASCOnlyofficeCategoriesViewController: UITableViewController {
     
     // MARK: - Categories loading
     func loadCategories(completion: @escaping () -> Void) {
-        categoriesProviderFactory.get().loadCategories { [self] categories in
-            self.loadedCategories =  categories
-            completion()
+        categoriesProviderFactory.get().loadCategories { [self] result in
+            switch result {
+            case .success(let categories):
+                self.loadedCategories = categories
+                completion()
+            case .failure(let error):
+                UIAlertController.showError(in: self, message: error.localizedDescription)
+            }
         }
     }
     

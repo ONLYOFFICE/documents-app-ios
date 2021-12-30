@@ -77,6 +77,11 @@ platform :ios do
       merge_commit_filtering: "exclude_merges"
     )
 
+    # Read changelog file
+    change_log_file = "%system.teamcity.build.tempDir%/releasenotesfile_%teamcity.build.id%.txt"
+    if(File.exist?(change_log_file))
+      change_log = File.read(change_log_file)
+
     # creates a bump version commit 
     commit_version_bump(
         message: "Version bumped to v#{version_number}(#{build_number})",

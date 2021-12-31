@@ -47,7 +47,7 @@ platform :ios do
 
   desc "Submit a new Beta Build to Apple TestFlight"
   desc "This will also make sure the profile is up to date"
-  lane :beta do
+  lane :beta do |options|
     # match(type: "appstore") # more information: https://codesigning.guide
     # ensure_git_status_clean
 
@@ -78,7 +78,7 @@ platform :ios do
     )
 
     # Read changelog file
-    change_log_file = "%system.teamcity.build.tempDir%/releasenotesfile_%teamcity.build.id%.txt"
+    change_log_file = options[:changelog_file]
     if(File.exist?(change_log_file))
       change_log = File.read(change_log_file)
     end
@@ -130,7 +130,7 @@ platform :ios do
   end
 
   desc "Submit a new Beta Build to Apple TestFlight Develop"
-  lane :alpha do
+  lane :alpha do |options|
     # match(type: "appstore") # more information: https://codesigning.guide
     # ensure_git_status_clean
 
@@ -162,7 +162,7 @@ platform :ios do
     change_log = ""
 
     # Read changelog file
-    change_log_file = "%system.teamcity.build.tempDir%/releasenotesfile_%teamcity.build.id%.txt"
+    change_log_file = options[:changelog_file]
     if(File.exist?(change_log_file))
       change_log = File.read(change_log_file)
     end

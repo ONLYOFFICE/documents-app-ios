@@ -1,0 +1,3 @@
+[submodule "fastlane/documents-appstore"]
+	path = fastlane/documents-appstore
+	url = https://github.com/ayuzhin/documents-appstore.git

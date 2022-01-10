@@ -1403,7 +1403,7 @@ Remarque: si vous avez oublié le mot de passe, vous avez besoin de supprimer et
       <trans-unit id="Add users or groups and allow them to &#10; read, review or edit documents." xml:space="preserve">
         <source>Add users or groups and allow them to 
  read, review or edit documents.</source>
-        <target state="translated">Ajoutez des utilisateurs ou des groupes et accordez-leur
+        <target>Ajoutez des utilisateurs ou des groupes et accordez-leur
  le droit d'accès à la lecture, révision ou modification des documents.</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
@@ -1621,9 +1621,8 @@ d'autres via le protocole WebDAV.</target>
         <target>Copie en cours</target>
         <note>Caption of the processing</note>
       </trans-unit>
-      <trans-unit id="Could not change file attributes" xml:space="preserve">
-        <source>Could not change file attributes</source>
-        <target state="translated">Impossible de modifier les attributs du fichier</target>
+      <trans-unit id="Could not change file attrubutes" xml:space="preserve">
+        <source>Could not change file attrubutes</source>
         <note>Description of file operation error</note>
       </trans-unit>
       <trans-unit id="Could not change the directory" xml:space="preserve">

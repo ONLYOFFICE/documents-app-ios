@@ -1210,14 +1210,12 @@ Note: if you forget the passcode, you'll need to delete and reinstall the app. A
         <target>Нова електронна таблица</target>
         <note/>
       </trans-unit>
-      <trans-unit id="ONLYOFFICE Edit Form document (.docxf)" xml:space="preserve">
-        <source>ONLYOFFICE Edit Form document (.docxf)</source>
-        <target state="translated">ONLYOFFICE шаблон на формуляр (.docxf)</target>
+      <trans-unit id="ONLYOFFICE form template (.docxf)" xml:space="preserve">
+        <source>ONLYOFFICE form template (.docxf)</source>
         <note/>
       </trans-unit>
-      <trans-unit id="ONLYOFFICE Fill Form document (.oform)" xml:space="preserve">
-        <source>ONLYOFFICE Fill Form document (.oform)</source>
-        <target state="translated">ONLYOFFICE формуляр за попълване (.oform)</target>
+      <trans-unit id="ONLYOFFICE fillable form (.oform)" xml:space="preserve">
+        <source>ONLYOFFICE fillable form (.oform)</source>
         <note/>
       </trans-unit>
     </body>
@@ -1272,14 +1270,12 @@ Note: if you forget the passcode, you'll need to delete and reinstall the app. A
         <target>Нова електронна таблица</target>
         <note/>
       </trans-unit>
-      <trans-unit id="ONLYOFFICE Edit Form document (.docxf)" xml:space="preserve">
-        <source>ONLYOFFICE Edit Form document (.docxf)</source>
-        <target state="translated">ONLYOFFICE шаблон на формуляр (.docxf)</target>
+      <trans-unit id="ONLYOFFICE form template (.docxf)" xml:space="preserve">
+        <source>ONLYOFFICE form template (.docxf)</source>
         <note/>
       </trans-unit>
-      <trans-unit id="ONLYOFFICE Fill Form document (.oform)" xml:space="preserve">
-        <source>ONLYOFFICE Fill Form document (.oform)</source>
-        <target state="translated">ONLYOFFICE формуляр за попълване (.oform)</target>
+      <trans-unit id="ONLYOFFICE fillable form (.oform)" xml:space="preserve">
+        <source>ONLYOFFICE fillable form (.oform)</source>
         <note/>
       </trans-unit>
     </body>
@@ -1402,8 +1398,6 @@ Note: if you forget the passcode, you'll need to delete and reinstall the app. A
       <trans-unit id="Add users or groups and allow them to &#10; read, review or edit documents." xml:space="preserve">
         <source>Add users or groups and allow them to 
  read, review or edit documents.</source>
-        <target state="translated">Добавьте пользователей или группы и разрешите им
-читать, просматривать или редактировать документы.</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Address is empty" xml:space="preserve">
@@ -1616,9 +1610,8 @@ others which use WebDAV protocol.</source>
         <target>Копиране</target>
         <note>Caption of the processing</note>
       </trans-unit>
-      <trans-unit id="Could not change file attributes" xml:space="preserve">
-        <source>Could not change file attributes</source>
-        <target>Атрибутите на файла не могат да бъдат променени</target>
+      <trans-unit id="Could not change file attrubutes" xml:space="preserve">
+        <source>Could not change file attrubutes</source>
         <note>Description of file operation error</note>
       </trans-unit>
       <trans-unit id="Could not change the directory" xml:space="preserve">

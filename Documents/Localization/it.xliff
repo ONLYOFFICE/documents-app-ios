@@ -1402,7 +1402,7 @@ Nota: se dimentichi il codice di accesso, dovrai disinstallare e reinstallare l'
       <trans-unit id="Add users or groups and allow them to &#10; read, review or edit documents." xml:space="preserve">
         <source>Add users or groups and allow them to 
  read, review or edit documents.</source>
-        <target state="translated">Aggiungi utenti o gruppi e assegna le loro
+        <target>Aggiungi utenti o gruppi e assegna le loro
 possibilità di leggere, rivedere o modificare i documenti.</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
@@ -1620,9 +1620,8 @@ altri che utilizzano il protocollo WebDAV.</target>
         <target>Copiatura</target>
         <note>Caption of the processing</note>
       </trans-unit>
-      <trans-unit id="Could not change file attributes" xml:space="preserve">
-        <source>Could not change file attributes</source>
-        <target>Impossibile cambiare gli attributi del file</target>
+      <trans-unit id="Could not change file attrubutes" xml:space="preserve">
+        <source>Could not change file attrubutes</source>
         <note>Description of file operation error</note>
       </trans-unit>
       <trans-unit id="Could not change the directory" xml:space="preserve">

@@ -2,11 +2,11 @@
     "images" : [
         {
             "idiom" : "universal",
-            "filename" : "whatsnew-future-onlyoffice-light.pdf"
+            "filename" : "whatsnew-future-keyboard-light.pdf"
         },
         {
             "idiom" : "universal",
-            "filename" : "whatsnew-future-onlyoffice-dark.pdf",
+            "filename" : "whatsnew-future-keyboard-dark.pdf",
             "appearances" : [
                 {
                     "appearance" : "luminosity",

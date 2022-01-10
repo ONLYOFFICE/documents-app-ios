@@ -2,11 +2,11 @@
     "images" : [
         {
             "idiom" : "universal",
-            "filename" : "whatsnew-future-clouds-light.pdf"
+            "filename" : "whatsnew-future-form-light.pdf"
         },
         {
             "idiom" : "universal",
-            "filename" : "whatsnew-future-clouds-dark.pdf",
+            "filename" : "whatsnew-future-form-dark.pdf",
             "appearances" : [
                 {
                     "appearance" : "luminosity",

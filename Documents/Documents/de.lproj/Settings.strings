@@ -25,6 +25,9 @@
 /* Class = "UITableViewSection"; headerTitle = "Storage"; ObjectID = "Bmt-tc-yd7"; */
 "Bmt-tc-yd7.headerTitle" = "Speicher";
 
+/* Class = "UILabel"; text = "Privacy Policy"; ObjectID = "cl6-b0-Mjh"; */
+"cl6-b0-Mjh.text" = "Datenschutzerklärung";
+
 /* Class = "UILabel"; text = "Rate App"; ObjectID = "CUM-1F-5Be"; */
 "CUM-1F-5Be.text" = "App bewerten";
 
@@ -52,7 +55,7 @@
 /* Class = "UINavigationItem"; title = "Settings"; ObjectID = "OKJ-3w-yJd"; */
 "OKJ-3w-yJd.title" = "Einstellungen";
 
-/* Class = "UILabel"; text = "User agreement"; ObjectID = "PDj-N7-sjJ"; */
+/* Class = "UILabel"; text = "Terms of Service"; ObjectID = "PDj-N7-sjJ"; */
 "PDj-N7-sjJ.text" = "Nutzungsbedingungen";
 
 /* Class = "UILabel"; text = "Support"; ObjectID = "raN-Fz-DnL"; */

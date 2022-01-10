@@ -1,3 +1,6 @@
+/* Count of seclected rows: count + selected */
+"%d selected" = "%d vybráno";
+
 /* Presentation Viewer */
 "%i of %i" = "%1$i z %2$i";
 
@@ -19,6 +22,21 @@
 /* No comment provided by engineer. */
 "A file with a similar name already exists in the document directory on the device." = "Soubor s podobným názvem již existuje v adresáři dokumentů v zařízení.";
 
+/* No comment provided by engineer. */
+"A user or group will be able only to view the document and add comments, as well as manage them." = "Uživatel nebo skupina bude moci dokument pouze prohlížet, přidávat k němu komentáře a spravovat jej.";
+
+/* No comment provided by engineer. */
+"A user or group will be able only to view the document and fill in the forms inserted into the document." = "Uživatel nebo skupina bude moci dokument pouze prohlížet a vyplňovat formuláře vložené do dokumentu.";
+
+/* No comment provided by engineer. */
+"A user or group will be able only to view the document." = "Uživatel nebo skupina bude moci dokument pouze prohlížet.";
+
+/* No comment provided by engineer. */
+"A user or group will be able to view and change the document without actually editing it, but all the changes made by a reviewer will be recorded and shown to the file owner (or a person who has full access to the file) so that he/she will be able to accept or reject them." = "Uživatel nebo skupina budou moci dokument prohlížet a měnit, aniž by jej skutečně upravovali, ale všechny změny provedené recenzentem budou zaznamenány a zobrazeny vlastníkovi souboru (nebo osobě, která má plný přístup k souboru), aby je mohl přijmout nebo odmítnout.";
+
+/* No comment provided by engineer. */
+"A user or group will be able to view and edit the document as well as to share this document." = "Uživatel nebo skupina bude moci dokument prohlížet a upravovat a také tento dokument sdílet.";
+
 /* Format info */
 "A0 (84,1%@ x 119,9%@)" = "A0 (84,1%1$@ x 119,9%2$@)";
 
@@ -32,10 +50,22 @@
 "A6 (10,5%@ x 14,8%@)" = "A6 (10,5%1$@ x 14,8%2$@)";
 
 /* No comment provided by engineer. */
+"Access by external link" = "Přístup prostřednictvím externího odkazu";
+
+/* No comment provided by engineer. */
+"Access rights" = "Přístupová práva";
+
+/* No comment provided by engineer. */
+"Access settings" = "Nastavení přístupu";
+
+/* No comment provided by engineer. */
 "Account name is empty" = "Název účtu je prázdný";
 
 /* No comment provided by engineer. */
 "Account name is not valid" = "Název účtu není platný";
+
+/* Sharing settings add notification message */
+"Add message" = "Přidat zprávu";
 
 /* No comment provided by engineer. */
 "Address is empty" = "Adresa je prázdná";
@@ -47,7 +77,13 @@
 "All Files" = "Všechny soubory";
 
 /* No comment provided by engineer. */
+"Allow access via external link" = "Povolit přístup přes externí odkaz";
+
+/* No comment provided by engineer. */
 "An unexpected error has occurred. Please try again later. Sorry for inconvenience." = "Došlo k neočekávané chybě. Prosím zkuste to znovu později. Omlouváme se za nepříjemnosti.";
+
+/* Caption of the process */
+"Applying" = "Použití stránky";
 
 /* No comment provided by engineer. */
 "Are you sure you want to delete the account %@ from this device?" = "Opravdu chcete smazat účet account %@ z tohoto zařízení?";
@@ -60,6 +96,9 @@
 
 /* No comment provided by engineer. */
 "Box directory" = "Adresář schránky";
+
+/* No comment provided by engineer. */
+"By creating the portal you agree with our Privacy Policy and Terms of Service" = "Vytvořením portálu souhlasíte s našimi zásadami ochrany osobních údajů a podmínkami služby.";
 
 /* Data units */
 "bytes" = "bajty";
@@ -79,7 +118,7 @@
 /* No comment provided by engineer. */
 "Can not duplicate the file." = "Soubor nelze duplikovat.";
 
-/* Button title */
+/* No comment provided by engineer. */
 "Cancel" = "Zrušit";
 
 /* No comment provided by engineer. */
@@ -117,6 +156,9 @@
 
 /* Introduction Step Five - Title */
 "Collaborate with your team" = "Spolupracujte s vaším týmem";
+
+/* Share status */
+"Comment" = "Komentář";
 
 /* Category title */
 "Common Documents" = "Společné dokumenty";
@@ -169,11 +211,32 @@
 /* Caption of the processing */
 "Copying" = "Kopírování";
 
+/* Description of file operation error */
+"Could not change the directory" = "Nepodařilo se změnit adresář";
+
 /* No comment provided by engineer. */
 "Could not convert file to export." = "Nelze konvertovat soubor k odeslání";
 
+/* Description of file operation error */
+"Could not copy file" = "Nepodařilo se zkopírovat soubor";
+
 /* No comment provided by engineer. */
 "Could not copy." = "Nelze kopírovat.";
+
+/* Description of file operation error */
+"Could not create a directory" = "Nepodařilo se změnit adresář";
+
+/* Description of file operation error */
+"Could not create a hard link" = "Nelze vytvořit pevný odkaz";
+
+/* Description of file operation error */
+"Could not create file" = "Nelze vytvořit soubor";
+
+/* Description of file operation error */
+"Could not create symlink from" = "Nelze vytvořit symlink z";
+
+/* Description of file operation error */
+"Could not delete file" = "Nelze odstranit soubor";
 
 /* No comment provided by engineer. */
 "Could not delete the file." = "Soubor se nepodařilo odstranit.";
@@ -197,10 +260,10 @@
 "Could not duplicate the file." = "Soubor se nepodařilo duplikovat.";
 
 /* No comment provided by engineer. */
-"Could not empty trash." = "Nelze vyprázdnit koš.";
-
-/* No comment provided by engineer. */
 "Could not export the file." = "Soubor se nepodařilo odeslat.";
+
+/* Description of file operation error */
+"Could not move file" = "Nelze přesunout soubor";
 
 /* No comment provided by engineer. */
 "Could not open editor." = "Editor se nepodařilo otevřít.";
@@ -214,8 +277,14 @@
 /* No comment provided by engineer. */
 "Could not read data from the file." = "Nelze přečíst data ze souboru.";
 
+/* Description of file operation error */
+"Could not read from file" = "Nelze číst ze souboru";
+
 /* No comment provided by engineer. */
 "Could not save the file." = "Soubor se nepodařilo uložit";
+
+/* Description of file operation error */
+"Could not write to file" = "Nelze zapisovat do souboru";
 
 /* No comment provided by engineer. */
 "Couldn't open file" = "Nebylo možné otevřít lokální soubor v adresářové struktuře.";
@@ -231,6 +300,9 @@
 
 /* Caption of the process */
 "Creating" = "Vytváření";
+
+/* Share status */
+"Custom filter" = "Vlastní filtr";
 
 /* No comment provided by engineer. */
 "Date" = "Datum";
@@ -264,6 +336,9 @@
 
 /* Share status */
 "Deny Access" = "Zamítnout přístup";
+
+/* No comment provided by engineer. */
+"Deselect all" = "Odznačit vše";
 
 /* Button title */
 "Disconnect third party" = "Odpojit třetí stranu";
@@ -315,6 +390,9 @@
 "Email is empty" = "E-mail je prázdný";
 
 /* No comment provided by engineer. */
+"Email is incorrect." = "E-mail je nesprávný.";
+
+/* No comment provided by engineer. */
 "Email is not valid" = "E-mail je neplatný";
 
 /* No comment provided by engineer. */
@@ -335,6 +413,9 @@
 /* No comment provided by engineer. */
 "Error" = "Chyba";
 
+/* No comment provided by engineer. */
+"Error code: %ld" = "Kód chyby: %ld";
+
 /* Access is Forbidden message */
 "error.errorForbiddenMsg" = "Chcete-li získat přístup k modulu Projekty, obraťte se na správce portálu.";
 
@@ -347,6 +428,9 @@
 /* Unknown Server Error */
 "error.errorServerTitle" = "Chyba serveru";
 
+/* Button title */
+"Export" = "Exportovat";
+
 /* No comment provided by engineer. */
 "Failed online conversion service." = "Služba online konverze se nezdařila.";
 
@@ -355,6 +439,12 @@
 
 /* No comment provided by engineer. */
 "Failed to check the name of the portal" = "Nepodařilo se zkontrolovat název portálu";
+
+/* No comment provided by engineer. */
+"Failed to connect folder." = "Nepodařilo se připojit složku.";
+
+/* No comment provided by engineer. */
+"Failed to copy: %@" = "Nepodařilo se zkopírovat: %@";
 
 /* No comment provided by engineer. */
 "Failed to get file information from the server." = "Nepodařilo se získat informace o souboru ze serveru.";
@@ -369,6 +459,12 @@
 "Failed to get the address of the document server." = "Nepodařilo se získat adresu serveru dokumentů.";
 
 /* No comment provided by engineer. */
+"Failed to move: %@" = "Nepodařilo se přesunout: %@";
+
+/* No comment provided by engineer. */
+"Failed to send feedback by mail. Try to write your request on our forum." = "Nepodařilo se odeslat zpětnou vazbu poštou. Zkuste napsat svůj požadavek na naše fórum.";
+
+/* No comment provided by engineer. */
 "Failed upload source file to conversion online service." = "Nepodařilo se odeslat zdrojový soubor do služby online konverze.";
 
 /* No comment provided by engineer. */
@@ -377,14 +473,26 @@
 /* No comment provided by engineer. */
 "Failure to download result from conversion online service." = "Stahování výsledku ze služby online konverze selhalo";
 
+/* Description of file operation error */
+"File already exists" = "Soubor již existuje";
+
+/* Description of file operation error */
+"File does not exist" = "Soubor neexistuje";
+
 /* No comment provided by engineer. */
 "Files" = "Soubory";
+
+/* No comment provided by engineer. */
+"First name is incorrect" = "Křestní jméno je nesprávné";
 
 /* No comment provided by engineer. */
 "Folder title" = "Název složky";
 
 /* No comment provided by engineer. */
 "Folders" = "Složky";
+
+/* Share status */
+"Form filling" = "Vyplnění formuláře";
 
 /* Share status */
 "Full Access" = "Plný přístup";
@@ -402,6 +510,9 @@
 "Getting started" = "Začínáme";
 
 /* No comment provided by engineer. */
+"Go to forum" = "Přejít na fórum";
+
+/* No comment provided by engineer. */
 "Google directory" = "Adresář Google";
 
 /* No comment provided by engineer. */
@@ -409,6 +520,15 @@
 
 /* No comment provided by engineer. */
 "Groups" = "Skupiny";
+
+/* No comment provided by engineer. */
+"iCloud" = "iCloud";
+
+/* No comment provided by engineer. */
+"iCloud Drive" = "iCloud Drive";
+
+/* Email sent instructions */
+"If a user with the mail %@ exists, then an instruction to change the password was sent to this address." = "Pokud uživatel s e-mailovou adresou %@ existuje, byl na tuto adresu zaslán pokyn ke změně hesla.";
 
 /* No comment provided by engineer. */
 "Images" = "Obrázky";
@@ -422,11 +542,29 @@
 /* No comment provided by engineer. */
 "Invalid Country Code" = "Neplatný kód země";
 
-/* Error message */
-"Invalid URL: The format ot the URL could not be determined" = "Neplatná URL: Nelze určit formát adresy URL";
+/* No comment provided by engineer. */
+"Invalid Data" = "Neplatné údaje";
+
+/* No comment provided by engineer. */
+"Invalid Url" = "Neplatná URL adresa";
 
 /* Data units */
 "Kb" = "Kb";
+
+/* No comment provided by engineer. */
+"kDrive" = "kDrive";
+
+/* No comment provided by engineer. */
+"kDrive directory" = "Adresář kDrive";
+
+/* No comment provided by engineer. */
+"Last name is empty" = "Příjmení je prázdné";
+
+/* No comment provided by engineer. */
+"Last name is incorrect" = "Příjmení je nesprávné";
+
+/* No comment provided by engineer. */
+"Link copied\nto the clipboard" = "Odkaz zkopírován do schránky";
 
 /* Caption of the process */
 "Logging in" = "Přihlášení v";
@@ -443,6 +581,9 @@
 /* Button title
    Caption of the process */
 "Logout" = "Odhlášení";
+
+/* Button title */
+"Mark as favorite" = "Označit jako oblíbené";
 
 /* Data units */
 "Mb" = "Mb";
@@ -481,6 +622,9 @@
 "Needs additional params." = "Jsou zapotřebí další parametry.";
 
 /* No comment provided by engineer. */
+"New" = "Nový";
+
+/* No comment provided by engineer. */
 "New Document" = "Nový dokument";
 
 /* No comment provided by engineer. */
@@ -499,10 +643,19 @@
 "Nextcloud" = "Nextcloud";
 
 /* No comment provided by engineer. */
+"Nextcloud directory" = "Adresář Nextcloud";
+
+/* No comment provided by engineer. */
+"No client IDs of application" = "Žádné ID klienta aplikace";
+
+/* No comment provided by engineer. */
 "No connection" = "Bez připojení";
 
 /* No comment provided by engineer. */
 "No information about the user profile." = "Žádné informace o profilu uživatele.";
+
+/* No comment provided by engineer. */
+"No Internet connection" = "Žádné připojení k internetu";
 
 /* No comment provided by engineer. */
 "No network" = "Žádná síť";
@@ -517,8 +670,7 @@
 "No search result" = "Žádné výsledky vyhledávání";
 
 /* Invalid entity date
-   Invalid entity owner
-   No information */
+   Invalid entity owner */
 "none" = "žádný";
 
 /* If the cache is empty
@@ -527,6 +679,9 @@
 
 /* No comment provided by engineer. */
 "Note: removal from your account can not be undone." = "Poznámka: odstranění ze svého účtu nelze vrátit zpět.";
+
+/* Sharing settings switcher */
+"Notify by Email" = "Oznámení e-mailem";
 
 /* Used in the context: 'Showing 1 of 3 items' */
 "of" = "z";
@@ -544,10 +699,13 @@
 "Once you enter the password and open the file, the current password to the file will be reset" = "Jakmile zadáte heslo a soubor otevřete, stávající heslo k souboru bude resetováno";
 
 /* No comment provided by engineer. */
+"OneDrive" = "OneDrive";
+
+/* No comment provided by engineer. */
 "OneDrive directory" = "Adresář OneDrive";
 
 /* No comment provided by engineer. */
-"OneDrive for Business" = "OneDrive for Business";
+"OneDrive for Business" = "OneDrive pro Obchod";
 
 /* Short App Name */
 "ONLYOFFICE" = "ONLYOFFICE";
@@ -559,10 +717,7 @@
 "Oops!" = "Jejda!";
 
 /* No comment provided by engineer. */
-"Open Document" = "Open dokument";
-
-/* Button title */
-"Open In" = "Otevřít v";
+"Open Document" = "Otevřít dokument";
 
 /* Caption of the processing */
 "Opening" = "Úvod";
@@ -583,6 +738,9 @@
 "ownCloud" = "ownCloud";
 
 /* No comment provided by engineer. */
+"ownCloud directory" = "Adresář ownCloud";
+
+/* Table cell right holder acces text */
 "Owner" = "Majitel";
 
 /* No comment provided by engineer. */
@@ -596,6 +754,12 @@
 
 /* Data units */
 "Pb" = "Pb";
+
+/* No comment provided by engineer. */
+"Phone" = "Telefon";
+
+/* No comment provided by engineer. */
+"Phone is incorrect" = "Telefon je nesprávný";
 
 /* Used in the context: '1 photo' */
 "photo" = "fotka";
@@ -642,6 +806,9 @@
 /* Button title */
 "Preview" = "Náhled";
 
+/* Part of phrases - By creating the portal you agree with our Privacy Policy and Terms of Service */
+"Privacy Policy" = "Zásady ochrany soukromí";
+
 /* Caption of the processing */
 "Processing" = "Zpracování";
 
@@ -667,6 +834,12 @@
 "Reload" = "Nahrát znovu";
 
 /* Button title */
+"Remove from Favorites" = "Odstranění z oblíbených položek";
+
+/* Caption of the process */
+"Removing" = "Odstranění";
+
+/* Button title */
 "Rename" = "Přejmenovat";
 
 /* No comment provided by engineer. */
@@ -681,6 +854,12 @@
 /* No comment provided by engineer. */
 "Renewal" = "Obnovení";
 
+/* No comment provided by engineer. */
+"Request canceled" = "Požadavek zrušen";
+
+/* No comment provided by engineer. */
+"Request had insufficient authentication scopes" = "Požadavek neměl dostatečné rozsahy ověřování";
+
 /* Button title */
 "Restore" = "Obnovit";
 
@@ -693,8 +872,15 @@
 /* Caption of the processing */
 "Saving" = "Uložení";
 
-/* Button title */
+/* No comment provided by engineer. */
+"Search" = "Hledat";
+
+/* Button title
+   Navigation bar button title */
 "Select" = "Vybrat";
+
+/* No comment provided by engineer. */
+"Select all" = "Vybrat vše";
 
 /* No comment provided by engineer. */
 "Select another cloud to connect to Nextcloud, ownCloud and others are supported." = "Zvolte další cloud pro připojení k Nextcloud, ownCloud a další jsou podporovány.";
@@ -718,10 +904,19 @@
 "Selected: %ld" = "Vybráno: %ld";
 
 /* No comment provided by engineer. */
+"Selecting access rights" = "Výběr přístupových práv";
+
+/* Caption of the process */
+"Sending" = "Odesílání";
+
+/* No comment provided by engineer. */
+"Set favorite failed." = "Nastavení oblíbených se nezdařilo.";
+
+/* No comment provided by engineer. */
 "Settings" = "Nastavení";
 
-/* Button title */
-"Share" = "Sdílet";
+/* No comment provided by engineer. */
+"Shared access" = "Sdílený přístup";
 
 /* Category title */
 "Shared with Me" = "Sdíleno se mnou";
@@ -731,6 +926,12 @@
 
 /* Caption of the process */
 "Sharing" = "Sdílení";
+
+/* No comment provided by engineer. */
+"Sharing settings" = "Sdílet nastavení";
+
+/* Button title */
+"Sharing Settings" = "Sdílet nastavení";
 
 /* No comment provided by engineer. */
 "Single Sign-on" = "Jednorázové přihlášení";
@@ -746,6 +947,12 @@
 
 /* Presentation Viewer */
 "Slide %i of %i" = "Snímek %1$i z %2$i";
+
+/* No comment provided by engineer. */
+"Something went wrong, try again" = "Něco se pokazilo, zkuste to znovu";
+
+/* No comment provided by engineer. */
+"Something wrong" = "Něco se pokazilo";
 
 /* Button title */
 "Sort" = "Seřadit";
@@ -771,8 +978,14 @@
 /* Data units */
 "Tb" = "Tb";
 
+/* Part of phrases - By creating the portal you agree with our Privacy Policy and Terms of Service */
+"Terms of Service" = "Podmínky použití";
+
 /* Notification title */
 "Text copied" = "Text copied";
+
+/* No comment provided by engineer. */
+"The %@ server is not available." = "Server %@ není k dispozici.";
 
 /* No comment provided by engineer. */
 "The account name must be between 6 and 50 characters long" = "Název účtu musí mít délku od 6 do 50 znaků";
@@ -787,19 +1000,34 @@
 "The file will be irretrievably deleted. This action is irreversible." = "Soubor bude nenávratně smazán. Tato akce je nevratná.";
 
 /* No comment provided by engineer. */
+"The folder in the Trash can not be opened." = "Složku v koši nelze otevřít.";
+
+/* No comment provided by engineer. */
 "The folder will be irretrievably deleted. This action is irreversible." = "Složka bude nenávratně smazána. Tato akce je nevratná.";
 
 /* No comment provided by engineer. */
-"The item with the name '%@' already exists in the folder '%@'." = "Položka s názvem '% 1 $ @' již existuje ve složce '% 2 $ @'";
+"The item with the name '%@' already exists in the folder '%@'." = "Položka s názvem '%1$@' již existuje ve složce '%2$@'";
 
 /* No comment provided by engineer. */
-"The password is incorrect. It must contain 6 characters" = "The password is incorrect. It must contain 6 characters";
+"The link for external\naccess is copied\nto the clipboard" = "Odkaz pro externí\npřístup je zkopírován\ndo schránky";
+
+/* No comment provided by engineer. */
+"The parameters are incorrect." = "Parametry jsou nesprávné.";
+
+/* No comment provided by engineer. */
+"The password is incorrect. It must contain 8 characters" = "Heslo je nesprávné. Musí obsahovat 8 znaků";
 
 /* No comment provided by engineer. */
 "The portal address is invalid" = "Adresa portálu je neplatná";
 
 /* No comment provided by engineer. */
+"The portal is not available" = "Portál není dostupný";
+
+/* No comment provided by engineer. */
 "The portal name must be between 6 and 50 characters long" = "Název portálu musí mít délku od 6 do 50 znaků";
+
+/* No comment provided by engineer. */
+"The request timed out." = "Požadavek byl časově omezen.";
 
 /* No comment provided by engineer. */
 "The server is not available." = "Server není dostupný.";
@@ -818,6 +1046,9 @@
 
 /* No comment provided by engineer. */
 "This operation will free up space on your device by deleting temporary files. Your offline files and personal data won't be removed." = "Tato operace uvolní místo v zařízení odstraněním dočasných souborů. Vaše offline soubory a osobní údaje nebudou odstraněny.";
+
+/* No comment provided by engineer. */
+"This option is used to block access previously granted to a user or group." = "Tato možnost slouží k zablokování přístupu, který byl dříve udělen uživateli nebo skupině.";
 
 /* No comment provided by engineer. */
 "This presentation is being edited. Do you want open %@ to view only?" = "Tato prezentace je aktuálně upravována. Chcete otevřít %@ pouze k prohlížení?";
@@ -856,10 +1087,34 @@
 "Type" = "Typ";
 
 /* No comment provided by engineer. */
+"Unable delete items" = "Nelze odstranit položky";
+
+/* No comment provided by engineer. */
+"Unable disconnect third party" = "Nelze odpojit třetí stranu";
+
+/* No comment provided by engineer. */
 "Unable to get information about the portal" = "Nelze získat informace o portálu";
 
 /* No comment provided by engineer. */
 "Unable to get information about the user." = "Nelze získat informace o uživateli.";
+
+/* No comment provided by engineer. */
+"Unauthorized users will be able only to view the document and add comments, as well as manage them." = "Neoprávnění uživatelé budou moci dokument pouze prohlížet a přidávat k němu komentáře a také jej spravovat.";
+
+/* No comment provided by engineer. */
+"Unauthorized users will be able only to view the document and fill in the forms inserted into the document." = "Neoprávnění uživatelé budou moci dokument pouze prohlížet a vyplňovat formuláře vložené do dokumentu.";
+
+/* No comment provided by engineer. */
+"Unauthorized users will be able only to view the document." = "Neoprávnění uživatelé budou moci dokument pouze prohlížet.";
+
+/* No comment provided by engineer. */
+"Unauthorized users will be able to view and change the document without actually editing it, but all the changes made by a reviewer will be recorded and shown to the file owner (or a person who has full access to the file) so that he/she will be able to accept or reject them." = "Neoprávnění uživatelé budou moci dokument prohlížet a měnit, aniž by jej skutečně upravovali, ale všechny změny provedené recenzentem budou zaznamenány a zobrazeny vlastníkovi souboru (nebo osobě, která má plný přístup k souboru), aby je mohl přijmout nebo odmítnout.";
+
+/* No comment provided by engineer. */
+"Unauthorized users will be able to view and edit the document as well as to share this document." = "Neoprávnění uživatelé budou moci dokument prohlížet a upravovat a také tento dokument sdílet.";
+
+/* No comment provided by engineer. */
+"Unauthorized users will not have access to the document." = "Neoprávnění uživatelé nebudou mít k dokumentu přístup.";
 
 /* No comment provided by engineer. */
 "Unexpected response from the service." = "Neočekávaná odezva ze služby.";
@@ -868,7 +1123,7 @@
 "Unknown" = "Neznámý";
 
 /* No comment provided by engineer. */
-"Unknown API response." = "Neznámá odpověď API.";
+"Unknown error" = "Neznámá chyba";
 
 /* No comment provided by engineer. */
 "Unknown file provider" = "Neznámý poskytovatel souboru";
@@ -885,9 +1140,6 @@
 /* No comment provided by engineer. */
 "Unsupported format." = "Nepodporovaný formát.";
 
-/* Button title */
-"Upload" = "Nahrát";
-
 /* Caption of the process */
 "Uploading" = "Nahrávání";
 
@@ -897,8 +1149,11 @@
 /* Button title */
 "Use Touch ID" = "Použít odemykání pomocí otisku";
 
-/* Error message */
+/* No comment provided by engineer. */
 "User authentication failed" = "Ověření uživatele selhalo";
+
+/* No comment provided by engineer. */
+"User authentication required" = "Požadované ověření uživatele";
 
 /* No comment provided by engineer. */
 "User undefined" = "Uživatel není definován";

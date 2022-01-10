@@ -53,9 +53,6 @@
 "Access by external link" = "Accesso tramite link esterno";
 
 /* No comment provided by engineer. */
-"Access files in Favorites and Recents on ONLYOFFICE portal from the app" = "Accedi ai file in Preferiti e Recenti sul portale ONLYOFFICE dall'app";
-
-/* No comment provided by engineer. */
 "Access rights" = "Diritti di accesso";
 
 /* No comment provided by engineer. */
@@ -69,6 +66,9 @@
 
 /* Sharing settings add notification message */
 "Add message" = "Aggiungere messaggio";
+
+/* No comment provided by engineer. */
+"Add users or groups and allow them to \n read, review or edit documents." = "Aggiungi utenti o gruppi e assegna le loro\npossibilità di leggere, rivedere o modificare i documenti.";
 
 /* No comment provided by engineer. */
 "Address is empty" = "L'indirizzo è vuoto";
@@ -96,6 +96,9 @@
 
 /* No comment provided by engineer. */
 "Author" = "Autore";
+
+/* No comment provided by engineer. */
+"Better formatting" = "Formattazione migliore";
 
 /* No comment provided by engineer. */
 "Box directory" = "Cartella di Box";
@@ -141,6 +144,9 @@
 
 /* Button title */
 "Clear Cache?" = "Eliminare cache?";
+
+/* No comment provided by engineer. */
+"Clear formatting, use extended color palette, and change font with improved settings." = "Cancella la formattazione, usa la tavolozza dei colori estesa e cambia lo stile del carattere con impostazioni migliorate.";
 
 /* Caption of the processing */
 "Clearing" = "Pulizia";
@@ -435,6 +441,9 @@
 "Export" = "Esporta";
 
 /* No comment provided by engineer. */
+"External keyboards" = "Tastiere esterne";
+
+/* No comment provided by engineer. */
 "Failed online conversion service." = "Servizio di conversione online è fallito.";
 
 /* No comment provided by engineer. */
@@ -476,9 +485,6 @@
 /* No comment provided by engineer. */
 "Failure to download result from conversion online service." = "Impossibile scaricare il risultato dal servizio di conversione online.";
 
-/* No comment provided by engineer. */
-"Favorites and Recents" = "Preferiti e Recenti";
-
 /* Description of file operation error */
 "File already exists" = "Il file esiste già";
 
@@ -487,6 +493,9 @@
 
 /* No comment provided by engineer. */
 "Files" = "File";
+
+/* No comment provided by engineer. */
+"Fillable forms" = "Moduli compilabili";
 
 /* No comment provided by engineer. */
 "First name is incorrect" = "Il nome non è corretto";
@@ -706,9 +715,6 @@
 
 /* No comment provided by engineer. */
 "OneDrive" = "OneDrive";
-
-/* No comment provided by engineer. */
-"OneDrive and kDrive access" = "Accesso a OneDrive e kDrive";
 
 /* No comment provided by engineer. */
 "OneDrive directory" = "Cartella di OneDrive";
@@ -1180,7 +1186,7 @@
 "Version" = "Versione";
 
 /* No comment provided by engineer. */
-"View and edit files in OneDrive and kDrive directly from the app. Access your storages from the Clouds tab." = "Visualizza e modifica i file in OneDrive e kDrive direttamente dall'app. Accedi ai tuoi archivi dalla scheda Clouds.";
+"View and fill online forms, save them as PDF files." = "Visualizza e compila moduli online, salvali come file PDF.";
 
 /* No comment provided by engineer. */
 "Warning" = "Avvertimento";

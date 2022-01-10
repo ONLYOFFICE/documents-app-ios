@@ -1095,6 +1095,9 @@
 		FC8C697E1ECC6755005B68D7 /* ASCConnectStorageOAuth2Box.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASCConnectStorageOAuth2Box.swift; sourceTree = "<group>"; };
 		FC8C69801ECC7B6B005B68D7 /* Common+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Common+Extension.swift"; sourceTree = "<group>"; };
 		FC8C69821ECC8EA8005B68D7 /* ASCConnectStorageWebDavController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASCConnectStorageWebDavController.swift; sourceTree = "<group>"; };
+		FC90070A278C69AF00C9983C /* cs */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = cs; path = "cs.lproj/Documents.alpha-InfoPlist.strings"; sourceTree = "<group>"; };
+		FC90070B278C6A1300C9983C /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = "de.lproj/Documents.alpha-InfoPlist.strings"; sourceTree = "<group>"; };
+		FC90070C278C6A3500C9983C /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = "es.lproj/Documents.alpha-InfoPlist.strings"; sourceTree = "<group>"; };
 		FC9150F11EC35D850076A855 /* UIView+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+Extension.swift"; sourceTree = "<group>"; };
 		FC9161DB1EE965970031B6DB /* ASCGroup.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASCGroup.swift; sourceTree = "<group>"; };
 		FC92C5BA2059125E004442CC /* ASCEntity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASCEntity.swift; sourceTree = "<group>"; };
@@ -4388,6 +4391,9 @@
 				FC6E84C62775CDC900028965 /* fr */,
 				FC6E84C72775CDD300028965 /* it */,
 				FC6E84D62775CDF900028965 /* ru */,
+				FC90070A278C69AF00C9983C /* cs */,
+				FC90070B278C6A1300C9983C /* de */,
+				FC90070C278C6A3500C9983C /* es */,
 			);
 			name = "Documents.alpha-InfoPlist.strings";
 			sourceTree = "<group>";

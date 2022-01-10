@@ -1,8 +1,5 @@
 /* Bundle name */
-"CFBundleName" = "Dokumenty";
-
-/* (No Comment) */
-"CFBundleDisplayName" = "Dokumenty";
+"CFBundleName" = "Documents-Alpha";
 
 /* (No Comment) */
 "New Document" = "Nový dokument";
@@ -14,10 +11,13 @@
 "New Spreadsheet" = "Nová tabulka";
 
 /* Privacy - Camera Usage Description */
-"NSCameraUsageDescription" = "Tato aplikace vyžaduje přístup k fotoaparátu, abyste mohli pořizovat fotografie.";
+"NSCameraUsageDescription" = "Abyste z ní mohli pořizovat fotky a nahrávat je, tato aplikace vyžaduje přístup k fotoaparátu.";
 
 /* Privacy - Face ID Usage Description */
 "NSFaceIDUsageDescription" = "Tato aplikace vyžaduje oprávnění k identifikaci obličeje, aby se ověřila pomocí funkce Face ID.";
+
+/* Privacy - Local Network Usage Description */
+"NSLocalNetworkUsageDescription" = "Je vyžadován přístup k síti";
 
 /* Privacy - Photo Library Additions Usage Description */
 "NSPhotoLibraryAddUsageDescription" = "Tato aplikace vyžaduje přístup do knihovny fotografií, takže můžete v aplikaci nahrát fotografie.";

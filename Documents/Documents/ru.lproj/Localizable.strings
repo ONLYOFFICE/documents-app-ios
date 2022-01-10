@@ -53,9 +53,6 @@
 "Access by external link" = "Доступ по внешней ссылке";
 
 /* No comment provided by engineer. */
-"Access files in Favorites and Recents on ONLYOFFICE portal from the app" = "Теперь у вас есть доступ к разделам Избранное и Последние на портале ONLYOFFICE из мобильного приложения";
-
-/* No comment provided by engineer. */
 "Access rights" = "Права доступа";
 
 /* No comment provided by engineer. */
@@ -69,6 +66,9 @@
 
 /* Sharing settings add notification message */
 "Add message" = "Добавить сообщение";
+
+/* No comment provided by engineer. */
+"Add users or groups and allow them to \n read, review or edit documents." = "Добавьте пользователей или группы и дайте им\n возможность читать, просматривать или редактировать документы.";
 
 /* No comment provided by engineer. */
 "Address is empty" = "Адрес не заполнен";
@@ -96,6 +96,9 @@
 
 /* No comment provided by engineer. */
 "Author" = "Автор";
+
+/* No comment provided by engineer. */
+"Better formatting" = "Улучшенное форматирование";
 
 /* No comment provided by engineer. */
 "Box directory" = "Папка Box";
@@ -141,6 +144,9 @@
 
 /* Button title */
 "Clear Cache?" = "Очистить кэш?";
+
+/* No comment provided by engineer. */
+"Clear formatting, use extended color palette, and change font with improved settings." = "Очищайте форматирование, пользуйтесь расширенной палитрой цветов, удобно настраивайте размер шрифта.";
 
 /* Caption of the processing */
 "Clearing" = "Очистка";
@@ -213,6 +219,9 @@
 
 /* Caption of the processing */
 "Copying" = "Копирование";
+
+/* Description of file operation error */
+"Could not change file attrubutes" = "Не удалось изменить атрибуты файла";
 
 /* Description of file operation error */
 "Could not change the directory" = "Не удалось изменить каталог";
@@ -435,6 +444,9 @@
 "Export" = "Экспорт";
 
 /* No comment provided by engineer. */
+"External keyboards" = "Внешние клавиатуры";
+
+/* No comment provided by engineer. */
 "Failed online conversion service." = "Ошибка службы онлайн-конвертации";
 
 /* No comment provided by engineer. */
@@ -476,9 +488,6 @@
 /* No comment provided by engineer. */
 "Failure to download result from conversion online service." = "Ошибка скачивания полученного файла из службы онлайн-конвертации.";
 
-/* No comment provided by engineer. */
-"Favorites and Recents" = "Разделы Избранное и Последние";
-
 /* Description of file operation error */
 "File already exists" = "Файл уже существует";
 
@@ -487,6 +496,9 @@
 
 /* No comment provided by engineer. */
 "Files" = "Файлы";
+
+/* No comment provided by engineer. */
+"Fillable forms" = "Заполнение форм";
 
 /* No comment provided by engineer. */
 "First name is incorrect" = "Некорректное поле Имя";
@@ -706,9 +718,6 @@
 
 /* No comment provided by engineer. */
 "OneDrive" = "OneDrive";
-
-/* No comment provided by engineer. */
-"OneDrive and kDrive access" = "Работа в OneDrive и kDrive";
 
 /* No comment provided by engineer. */
 "OneDrive directory" = "Папка OneDrive";
@@ -1152,6 +1161,9 @@
 /* Caption of the process */
 "Uploading" = "Загрузка";
 
+/* No comment provided by engineer. */
+"Use external keyboards in ONLYOFFICE Documents with improved compatibility." = "Используйте внешние клавиатуры c приложением ONLYOFFICE Документы с улучшенной совместимостью.";
+
 /* Button title */
 "Use Face ID" = "Использовать Face ID";
 
@@ -1180,7 +1192,7 @@
 "Version" = "Версия";
 
 /* No comment provided by engineer. */
-"View and edit files in OneDrive and kDrive directly from the app. Access your storages from the Clouds tab." = "Просматривайте и редактируйте файлы из OneDrive и kDrive. Все хранилища доступны во вкладке Облака";
+"View and fill online forms, save them as PDF files." = "Открывайте и заполняйте онлайн формы, сохраняйте их в формате PDF.";
 
 /* No comment provided by engineer. */
 "Warning" = "Предупреждение";

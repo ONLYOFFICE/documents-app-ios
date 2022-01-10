@@ -53,9 +53,6 @@
 "Access by external link" = "Достъп до външен линк";
 
 /* No comment provided by engineer. */
-"Access files in Favorites and Recents on ONLYOFFICE portal from the app" = "Достъп до файловете в Любими и Скорошни в портала ONLYOFFICE от приложението";
-
-/* No comment provided by engineer. */
 "Access rights" = "Права за достъп";
 
 /* No comment provided by engineer. */
@@ -476,9 +473,6 @@
 /* No comment provided by engineer. */
 "Failure to download result from conversion online service." = "Неуспехът да изтеглите резултат от онлайн услугата за преобразуване.";
 
-/* No comment provided by engineer. */
-"Favorites and Recents" = "Любими и Скорошни";
-
 /* Description of file operation error */
 "File already exists" = "Файлът вече съществува";
 
@@ -706,9 +700,6 @@
 
 /* No comment provided by engineer. */
 "OneDrive" = "OneDrive";
-
-/* No comment provided by engineer. */
-"OneDrive and kDrive access" = "Достъп до OneDrive и kDrive";
 
 /* No comment provided by engineer. */
 "OneDrive directory" = "Директория OneDrive";
@@ -1178,9 +1169,6 @@
 
 /* No comment provided by engineer. */
 "Version" = "Версия";
-
-/* No comment provided by engineer. */
-"View and edit files in OneDrive and kDrive directly from the app. Access your storages from the Clouds tab." = "Преглеждайте и редактирайте файловете в OneDrive и kDrive директно от приложението. Ще имате достъп до складовете си от лентата Clouds.";
 
 /* No comment provided by engineer. */
 "Warning" = "Внимание";

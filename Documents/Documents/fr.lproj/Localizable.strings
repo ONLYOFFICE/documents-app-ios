@@ -53,9 +53,6 @@
 "Access by external link" = "Accès par le lien externe";
 
 /* No comment provided by engineer. */
-"Access files in Favorites and Recents on ONLYOFFICE portal from the app" = "Accédez aux fichiers marqués Favoris et Récents sur le portail ONLYOFFICE depuis l’application.";
-
-/* No comment provided by engineer. */
 "Access rights" = "Droits d'accès";
 
 /* No comment provided by engineer. */
@@ -69,6 +66,9 @@
 
 /* Sharing settings add notification message */
 "Add message" = "Ajouter un message";
+
+/* No comment provided by engineer. */
+"Add users or groups and allow them to \n read, review or edit documents." = "Ajoutez des utilisateurs ou des groupes et accordez-leur\n le droit d'accès à la lecture, révision ou modification des documents.";
 
 /* No comment provided by engineer. */
 "Address is empty" = "L'adresse est vide";
@@ -96,6 +96,9 @@
 
 /* No comment provided by engineer. */
 "Author" = "Auteur";
+
+/* No comment provided by engineer. */
+"Better formatting" = "Mise en forme améliorée";
 
 /* No comment provided by engineer. */
 "Box directory" = "Répertoire Box";
@@ -141,6 +144,9 @@
 
 /* Button title */
 "Clear Cache?" = "Vider le cache ?";
+
+/* No comment provided by engineer. */
+"Clear formatting, use extended color palette, and change font with improved settings." = "Effacez la mise en forme, utilisez une palette de couleurs étendue et modifiez les polices grâce à des paramètres améliorés.";
 
 /* Caption of the processing */
 "Clearing" = "Effacement";
@@ -435,6 +441,9 @@
 "Export" = "Exportation";
 
 /* No comment provided by engineer. */
+"External keyboards" = "Claviers externes";
+
+/* No comment provided by engineer. */
 "Failed online conversion service." = "Conversion en ligne echouée.";
 
 /* No comment provided by engineer. */
@@ -462,7 +471,7 @@
 "Failed to get the address of the document server." = "Tentative échouée d’obtenir l'adresse du serveur de documents.";
 
 /* No comment provided by engineer. */
-"Failed to move: %@" = "Échec du déplacement : %@";
+"Failed to move: %@" = "Échec du déplacement: %@";
 
 /* No comment provided by engineer. */
 "Failed to send feedback by mail. Try to write your request on our forum." = "Impossible d'envoyer un commentaire par e-mail. Essayez de laisser votre demande sur notre forum.";
@@ -476,9 +485,6 @@
 /* No comment provided by engineer. */
 "Failure to download result from conversion online service." = "L'échec du téléchargement de résultat de conversion.";
 
-/* No comment provided by engineer. */
-"Favorites and Recents" = "Favoris et Récents";
-
 /* Description of file operation error */
 "File already exists" = "Le fichier existe déjà";
 
@@ -487,6 +493,9 @@
 
 /* No comment provided by engineer. */
 "Files" = "Fichiers";
+
+/* No comment provided by engineer. */
+"Fillable forms" = "Formulaires à remplir";
 
 /* No comment provided by engineer. */
 "First name is incorrect" = "Le prénom est incorrect";
@@ -706,9 +715,6 @@
 
 /* No comment provided by engineer. */
 "OneDrive" = "OneDrive";
-
-/* No comment provided by engineer. */
-"OneDrive and kDrive access" = "Retirer des favoris";
 
 /* No comment provided by engineer. */
 "OneDrive directory" = "Répertoire OneDrive";
@@ -1152,6 +1158,9 @@
 /* Caption of the process */
 "Uploading" = "Téléchargement";
 
+/* No comment provided by engineer. */
+"Use external keyboards in ONLYOFFICE Documents with improved compatibility." = "Utilisez des claviers externes dans ONLYOFFICE Documents avec une compatibilité améliorée.";
+
 /* Button title */
 "Use Face ID" = "Utiliser Face ID (l'identifiant de visage)";
 
@@ -1180,7 +1189,7 @@
 "Version" = "Version";
 
 /* No comment provided by engineer. */
-"View and edit files in OneDrive and kDrive directly from the app. Access your storages from the Clouds tab." = "Affichez et modifiez des fichiers stockés dans OneDrive et kDrive directement dans l’application. Accédez à vos espaces de stockage via l’onglet Cloud.";
+"View and fill online forms, save them as PDF files." = "Affichez et remplissez les formulaires en ligne et enregistrez-les au format PDF.";
 
 /* No comment provided by engineer. */
 "Warning" = "Alerte";

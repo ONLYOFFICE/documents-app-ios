@@ -344,7 +344,7 @@ extension ASCSharingOptionsViewController {
         }
         
         if accessToAddRightHoldersChecker.checkAccessToAddRightHolders() {
-            view.centredTextLabel.text = NSLocalizedString("Add users or groups and give them to \n read, review or edit documents.", comment: "")
+            view.centredTextLabel.text = NSLocalizedString("Add users or groups and allow them to \n read, review or edit documents.", comment: "")
         }
         return view
     }

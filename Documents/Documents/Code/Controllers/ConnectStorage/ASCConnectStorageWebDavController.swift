@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ASCConnectStorageWebDavController: UITableViewController, UITextFieldDelegate {
+class ASCConnectStorageWebDavController: UITableViewController {
     static let identifier = String(describing: ASCConnectStorageWebDavController.self)
 
     // MARK: - Properties    
@@ -21,7 +21,11 @@ class ASCConnectStorageWebDavController: UITableViewController, UITextFieldDeleg
     @IBOutlet weak var doneLabel: UILabel!
     @IBOutlet weak var logoView: UIImageView!
     
-    var needServer: Bool = true
+    var needServer: Bool = true {
+        didSet {
+            tableView?.reloadData()
+        }
+    }
     var provider: ASCFolderProviderType = .webDav
     var logo: UIImage?
     var complation: (([String: String]) -> ())?
@@ -38,10 +42,6 @@ class ASCConnectStorageWebDavController: UITableViewController, UITextFieldDeleg
             field?.delegate = self
             field?.addTarget(self, action: #selector(textFieldDidChange(_:)), for: .editingChanged)
         }
-
-        // Hide server cell
-        serverCell?.layer.setValue(!needServer, forKey: "cellHidden")
-        serverCell?.contentView.isHidden = !needServer
 
         if logo != nil {
             logoView.image = logo
@@ -119,15 +119,24 @@ class ASCConnectStorageWebDavController: UITableViewController, UITextFieldDeleg
         
         complation?(params)
     }
+}
     
-    // MARK: - TableView Delegate
-    
-    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        let cell = super.tableView(tableView, cellForRowAt: indexPath)
-        if let isCellHidden = cell.layer.value(forKey: "cellHidden") as? Bool, isCellHidden {
-            return UIDevice.screenPixel
+// MARK: - TableView Delegate
+extension ASCConnectStorageWebDavController {
+        
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        let count = super.tableView(tableView, numberOfRowsInSection: section)
+        if section == 0, !needServer {
+            return count - 1
         }
-        return super.tableView(tableView, heightForRowAt: indexPath)
+        return count
+    }
+    
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        if indexPath.section == 0, !needServer {
+            return super.tableView(tableView, cellForRowAt: IndexPath(row: indexPath.row + 1, section: 0))
+        }
+        return super.tableView(tableView, cellForRowAt: indexPath)
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -138,8 +147,11 @@ class ASCConnectStorageWebDavController: UITableViewController, UITextFieldDeleg
             connect()
         }
     }
+}
     
-    // MARK: - UITextField Delegate
+ // MARK: - UITextField Delegate
+ 
+extension ASCConnectStorageWebDavController: UITextFieldDelegate {
     
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         if textField.isFirstResponder {

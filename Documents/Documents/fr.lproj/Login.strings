@@ -25,12 +25,17 @@
 /* Class = "UILabel"; text = "Account"; ObjectID = "AkN-p0-Mzy"; */
 "AkN-p0-Mzy.text" = "Compte";
 
+/* Class = "UILabel"; text = "If a user with the email exists, the password change instruction has been sent to this email address."; ObjectID = "AqB-m0-2UQ"; Note = "Do not translate"; */
+"AqB-m0-2UQ.text" = "Si l'utilisateur avec cet e-mail existe, l'instruction de changement de mot de passe a été envoyée à cette adresse e-mail.";
+
 /* Class = "UIButton"; normalTitle = "Continue"; ObjectID = "AqJ-b9-XQV"; */
 "AqJ-b9-XQV.normalTitle" = "Continuer";
 
 /* Class = "UILabel"; text = "Set up an application to generate the authentication codes"; ObjectID = "B8R-KD-Lml"; */
-"B8R-KD-Lml.text" = "Paramétrer l'application pour générer les codes d'authentification
-";
+"B8R-KD-Lml.text" = "Paramétrer l'application pour générer les codes d'authentification\n";
+
+/* Class = "UILabel"; text = "Password recovery"; ObjectID = "bLE-8U-AOX"; */
+"bLE-8U-AOX.text" = "Récupération de mot de passe";
 
 /* Class = "UILabel"; text = "Haven't received the code?"; ObjectID = "cb0-ic-tPA"; */
 "cb0-ic-tPA.text" = "Vous n'avez pas reçu de code ?";
@@ -73,6 +78,9 @@
 
 /* Class = "UILabel"; text = "Launch Google Authenticator application"; ObjectID = "LwV-Os-V4m"; */
 "LwV-Os-V4m.text" = "Lancez l'application Google Authenticator";
+
+/* Class = "UILabel"; text = "Please enter the email you used while registering on the portal. The password recovery instructions will be send to that email address."; ObjectID = "Mbh-dU-7po"; */
+"Mbh-dU-7po.text" = "Veuillez saisir l'adresse électronique que vous avez utilisée lors de votre inscription sur le portail. Les instructions de récupération du mot de passe seront envoyées à cette adresse.";
 
 /* Class = "UILabel"; text = "Enter a phone number that can be used to verify your identity"; ObjectID = "MNA-z2-ITx"; */
 "MNA-z2-ITx.text" = "Saisissez un numéro de téléphone qui peut être utilisé pour vérifier votre identité";

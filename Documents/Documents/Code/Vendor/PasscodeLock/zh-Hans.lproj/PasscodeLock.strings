@@ -1,0 +1,39 @@
+/* (No Comment) */
+"PasscodeLockChangeDescription" = "Enter your old passcode.";
+
+/* Change Passcode State */
+"PasscodeLockChangeTitle" = "Enter Old Passcode";
+
+/* (No Comment) */
+"PasscodeLockConfirmDescription" = "Enter the passcode again.";
+
+/* Confirm Passcode State */
+"PasscodeLockConfirmTitle" = "Confirm Passcode";
+
+/* (No Comment) */
+"PasscodeLockEnterDescription" = "Enter your passcode to proceed.";
+
+/* Enter Passcode State */
+"PasscodeLockEnterTitle" = "Enter Passcode";
+
+/* (No Comment) */
+"PasscodeLockFaceIDButton" = "Enter Passcode";
+
+/* (No Comment) */
+"PasscodeLockMismatchDescription" = "Passcodes didn't match.";
+
+/* Passcode Mismatch State */
+"PasscodeLockMismatchTitle" = "Try again";
+
+/* (No Comment) */
+"PasscodeLockSetDescription" = "Choose your passcode.";
+
+/* Set Passcode State */
+"PasscodeLockSetTitle" = "Enter a Passcode";
+
+/* Touch ID Fallback Button */
+"PasscodeLockTouchIDButton" = "Enter Passcode";
+
+/* Touch ID Reason */
+"PasscodeLockTouchIDReason" = "Authentication required to proceed";
+

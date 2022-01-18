@@ -2,7 +2,7 @@
 <xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="1.2" xsi:schemaLocation="urn:oasis:names:tc:xliff:document:1.2 http://docs.oasis-open.org/xliff/v1.2/os/xliff-core-1.2-strict.xsd">
   <file original="Documents/Base.lproj/ConnectStorage.storyboard" source-language="en" target-language="ja" datatype="plaintext">
     <header>
-      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="12.0.1" build-num="12A7300"/>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="13.2.1" build-num="13C100"/>
     </header>
     <body>
       <trans-unit id="1hg-GO-WNq.text" xml:space="preserve">
@@ -59,7 +59,7 @@
   </file>
   <file original="Documents/Base.lproj/CreatePortal.storyboard" source-language="en" target-language="ja" datatype="plaintext">
     <header>
-      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="12.0.1" build-num="12A7300"/>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="13.2.1" build-num="13C100"/>
     </header>
     <body>
       <trans-unit id="BMv-HP-hD2.normalTitle" xml:space="preserve">
@@ -71,6 +71,10 @@
         <source>Make use of 30 days trial for free</source>
         <target>30 日無料トライアルを利用</target>
         <note>Class = "UILabel"; text = "Make use of 30 days trial for free"; ObjectID = "FZg-vj-AVJ";</note>
+      </trans-unit>
+      <trans-unit id="SZG-z0-C6T.normalTitle" xml:space="preserve">
+        <source>🇱🇻</source>
+        <note>Class = "UIButton"; normalTitle = "🇱🇻"; ObjectID = "SZG-z0-C6T";</note>
       </trans-unit>
       <trans-unit id="TP3-h7-Hq1.placeholder" xml:space="preserve">
         <source>First Name</source>
@@ -86,6 +90,10 @@
         <source>Repeat Password</source>
         <target>パスワードを繰り返す</target>
         <note>Class = "UITextField"; placeholder = "Repeat Password"; ObjectID = "Zgx-q8-jRP";</note>
+      </trans-unit>
+      <trans-unit id="amC-Ph-cGL.text" xml:space="preserve">
+        <source>Label</source>
+        <note>Class = "UILabel"; text = "Label"; ObjectID = "amC-Ph-cGL";</note>
       </trans-unit>
       <trans-unit id="cHX-qo-kcu.text" xml:space="preserve">
         <source>By creating the portal you agree with our
@@ -110,6 +118,10 @@ web office</source>
         <target>名字</target>
         <note>Class = "UITextField"; placeholder = "Last Name"; ObjectID = "iLP-xJ-pU3";</note>
       </trans-unit>
+      <trans-unit id="kgQ-EP-Qap.placeholder" xml:space="preserve">
+        <source>Your phone number</source>
+        <note>Class = "UITextField"; placeholder = "Your phone number"; ObjectID = "kgQ-EP-Qap";</note>
+      </trans-unit>
       <trans-unit id="qKc-e7-uTl.text" xml:space="preserve">
         <source>Choose a password and
 start using your office</source>
@@ -129,31 +141,9 @@ start using your office</source>
       </trans-unit>
     </body>
   </file>
-  <file original="Documents/Base.lproj/DocumentsEmptyView.xib" source-language="en" target-language="ja" datatype="plaintext">
-    <header>
-      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="12.0.1" build-num="12A7300"/>
-    </header>
-    <body>
-      <trans-unit id="1kl-l7-AtV.text" xml:space="preserve">
-        <source>Subtitle</source>
-        <target>サブタイトル</target>
-        <note>Class = "UILabel"; text = "Subtitle"; ObjectID = "1kl-l7-AtV"; Note = "Do not translate";</note>
-      </trans-unit>
-      <trans-unit id="BKA-Ab-Xnn.text" xml:space="preserve">
-        <source>Title</source>
-        <target>タイトル:</target>
-        <note>Class = "UILabel"; text = "Title"; ObjectID = "BKA-Ab-Xnn"; Note = "Do not translate";</note>
-      </trans-unit>
-      <trans-unit id="peL-fi-QtV.normalTitle" xml:space="preserve">
-        <source>Button</source>
-        <target>ボタン</target>
-        <note>Class = "UIButton"; normalTitle = "Button"; ObjectID = "peL-fi-QtV"; Note = "Do not translate";</note>
-      </trans-unit>
-    </body>
-  </file>
   <file original="Documents/Base.lproj/Intro.storyboard" source-language="en" target-language="ja" datatype="plaintext">
     <header>
-      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="12.0.1" build-num="12A7300"/>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="13.2.1" build-num="13C100"/>
     </header>
     <body>
       <trans-unit id="De8-tD-APT.text" xml:space="preserve">
@@ -175,9 +165,19 @@ start using your office</source>
   </file>
   <file original="Documents/Base.lproj/Localizable.stringsdict" source-language="en" target-language="ja" datatype="plaintext">
     <header>
-      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="12.0.1" build-num="12A7300"/>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="13.2.1" build-num="13C100"/>
     </header>
     <body>
+      <trans-unit id="/%d selected:dict/NSStringLocalizedFormatKey:dict/:string" xml:space="preserve">
+        <source>%#@items@</source>
+        <target>%#@items@</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="/%d selected:dict/items:dict/other:dict/:string" xml:space="preserve">
+        <source>%d selected</source>
+        <target>%d selected</target>
+        <note/>
+      </trans-unit>
       <trans-unit id="/%lu File selected:dict/NSStringLocalizedFormatKey:dict/:string" xml:space="preserve">
         <source>%#@files@</source>
         <target>%#@files@</target>
@@ -239,8 +239,8 @@ start using your office</source>
         <note/>
       </trans-unit>
       <trans-unit id="/Delete %lu Folder and %lu File:dict/lu_files:dict/zero:dict/:string" xml:space="preserve">
-        <source>__Source_text_is_empty__Translate_Or_Leave_this_text_as_is_if_target_text_is_also_empty__(/Delete %lu Folder and %lu File:dict/lu_files:dict/zero:dict/:string)</source>
-        <target>__Source_text_is_empty__Translate_Or_Leave_this_text_as_is_if_target_text_is_also_empty__(/Delete %lu Folder and %lu File:dict/lu_files:dict/zero:dict/:string)</target>
+        <source/>
+        <target/>
         <note/>
       </trans-unit>
       <trans-unit id="/Delete %lu Folder and %lu File:dict/lu_folders:dict/other:dict/:string" xml:space="preserve">
@@ -267,7 +267,7 @@ start using your office</source>
   </file>
   <file original="Documents/Base.lproj/Login.storyboard" source-language="en" target-language="ja" datatype="plaintext">
     <header>
-      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="12.0.1" build-num="12A7300"/>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="13.2.1" build-num="13C100"/>
     </header>
     <body>
       <trans-unit id="0X2-Xg-z5B.text" xml:space="preserve">
@@ -315,15 +315,19 @@ start using your office</source>
         <target>アカウント</target>
         <note>Class = "UILabel"; text = "Account"; ObjectID = "AkN-p0-Mzy";</note>
       </trans-unit>
+      <trans-unit id="AqB-m0-2UQ.text" xml:space="preserve">
+        <source>If a user with the email exists, the password change instruction has been sent to this email address.</source>
+        <note>Class = "UILabel"; text = "If a user with the email exists, the password change instruction has been sent to this email address."; ObjectID = "AqB-m0-2UQ"; Note = "Do not translate";</note>
+      </trans-unit>
       <trans-unit id="AqJ-b9-XQV.normalTitle" xml:space="preserve">
         <source>Continue</source>
         <target>続ける</target>
         <note>Class = "UIButton"; normalTitle = "Continue"; ObjectID = "AqJ-b9-XQV";</note>
       </trans-unit>
       <trans-unit id="B8R-KD-Lml.text" xml:space="preserve">
-        <source>Set up an application to generate the authentication codes</source>
-        <target>アプリを設定して、 認証コードを生成する</target>
-        <note>Class = "UILabel"; text = "Set up an application to generate the authentication codes"; ObjectID = "B8R-KD-Lml";</note>
+        <source>Set up an application to generate the authentication codes</source>
+        <target>アプリを設定して、 認証コードを生成する</target>
+        <note>Class = "UILabel"; text = "Set up an application to generate the authentication codes"; ObjectID = "B8R-KD-Lml";</note>
       </trans-unit>
       <trans-unit id="DK4-QO-Jde.text" xml:space="preserve">
         <source>Two-Factor
@@ -360,14 +364,13 @@ Authentication</source>
         <note>Class = "UILabel"; text = "Select an account to sign in"; ObjectID = "Gkv-tP-6EM";</note>
       </trans-unit>
       <trans-unit id="K5M-Of-QAk.text" xml:space="preserve">
-        <source>Copy the key and paste it to the Google Authenticator application</source>
-        <target>このキーをコピーして、貼り付け Google Authenticator アプリ</target>
-        <note>Class = "UILabel"; text = "Copy the key and paste it to the Google Authenticator application"; ObjectID = "K5M-Of-QAk";</note>
+        <source>Copy the key and paste it to the Google Authenticator application</source>
+        <target>このキーをコピーして、貼り付け Google Authenticator アプリ</target>
+        <note>Class = "UILabel"; text = "Copy the key and paste it to the Google Authenticator application"; ObjectID = "K5M-Of-QAk";</note>
       </trans-unit>
       <trans-unit id="LwV-Os-V4m.text" xml:space="preserve">
-        <source>Launch Google Authenticator application</source>
-        <target>Google Authenticator アプリを開始する</target>
-        <note>Class = "UILabel"; text = "Launch Google Authenticator application"; ObjectID = "LwV-Os-V4m";</note>
+        <source>Launch Google Authenticator application</source>
+        <note>Class = "UILabel"; text = "Launch Google Authenticator application"; ObjectID = "LwV-Os-V4m";</note>
       </trans-unit>
       <trans-unit id="MNA-z2-ITx.text" xml:space="preserve">
         <source>Enter a phone number that can be used to verify your identity</source>
@@ -379,10 +382,18 @@ Authentication</source>
         <target>戻る</target>
         <note>Class = "UIBarButtonItem"; title = "Back"; ObjectID = "MUG-TG-NlP";</note>
       </trans-unit>
+      <trans-unit id="Mbh-dU-7po.text" xml:space="preserve">
+        <source>Please enter the email you used while registering on the portal. The password recovery instructions will be send to that email address.</source>
+        <note>Class = "UILabel"; text = "Please enter the email you used while registering on the portal. The password recovery instructions will be send to that email address."; ObjectID = "Mbh-dU-7po";</note>
+      </trans-unit>
       <trans-unit id="NBg-dA-b3o.title" xml:space="preserve">
         <source>Country</source>
         <target>国</target>
         <note>Class = "UINavigationItem"; title = "Country"; ObjectID = "NBg-dA-b3o";</note>
+      </trans-unit>
+      <trans-unit id="OHG-hv-GGj.normalTitle" xml:space="preserve">
+        <source>Back to login</source>
+        <note>Class = "UIButton"; normalTitle = "Back to login"; ObjectID = "OHG-hv-GGj";</note>
       </trans-unit>
       <trans-unit id="OnI-QD-xeI.placeholder" xml:space="preserve">
         <source>Code</source>
@@ -395,9 +406,9 @@ Authentication</source>
         <note>Class = "UIButton"; normalTitle = "Sign in"; ObjectID = "QAn-vu-xMR";</note>
       </trans-unit>
       <trans-unit id="R2F-fc-11j.text" xml:space="preserve">
-        <source>Run the application and tap the new account icon</source>
-        <target>アプリを実行して 新しいアカウントのアイコンをタップ</target>
-        <note>Class = "UILabel"; text = "Run the application and tap the new account icon"; ObjectID = "R2F-fc-11j";</note>
+        <source>Run the application and tap the new account icon</source>
+        <target>アプリを実行して 新しいアカウントのアイコンをタップ</target>
+        <note>Class = "UILabel"; text = "Run the application and tap the new account icon"; ObjectID = "R2F-fc-11j";</note>
       </trans-unit>
       <trans-unit id="RDr-pH-MKV.normalTitle" xml:space="preserve">
         <source>Open</source>
@@ -405,9 +416,9 @@ Authentication</source>
         <note>Class = "UIButton"; normalTitle = "Open"; ObjectID = "RDr-pH-MKV";</note>
       </trans-unit>
       <trans-unit id="SH2-Fd-5Ze.text" xml:space="preserve">
-        <source>Open authentication app and copy code from there</source>
-        <target>authentication アプリを開いて そこからのコードをコピー</target>
-        <note>Class = "UILabel"; text = "Open authentication app and copy code from there"; ObjectID = "SH2-Fd-5Ze";</note>
+        <source>Open authentication app and copy code from there</source>
+        <target>authentication アプリを開いて そこからのコードをコピー</target>
+        <note>Class = "UILabel"; text = "Open authentication app and copy code from there"; ObjectID = "SH2-Fd-5Ze";</note>
       </trans-unit>
       <trans-unit id="W8Q-CO-c0L.text" xml:space="preserve">
         <source>We have sent you an SMS with a code to the number %@</source>
@@ -429,6 +440,10 @@ Authentication</source>
         <target>コード</target>
         <note>Class = "UITextField"; placeholder = "Code"; ObjectID = "ZWV-Q1-HY9";</note>
       </trans-unit>
+      <trans-unit id="bLE-8U-AOX.text" xml:space="preserve">
+        <source>Password recovery</source>
+        <note>Class = "UILabel"; text = "Password recovery"; ObjectID = "bLE-8U-AOX";</note>
+      </trans-unit>
       <trans-unit id="cBn-x1-r5A.text" xml:space="preserve">
         <source>Portal</source>
         <target>ポータル</target>
@@ -443,6 +458,10 @@ Authentication</source>
         <source>Next</source>
         <target>次の変更箇所</target>
         <note>Class = "UIButton"; normalTitle = "Next"; ObjectID = "e1X-0t-hcs"; Note = "Do not translate";</note>
+      </trans-unit>
+      <trans-unit id="ePY-rM-AOE.normalTitle" xml:space="preserve">
+        <source>Send</source>
+        <note>Class = "UIButton"; normalTitle = "Send"; ObjectID = "ePY-rM-AOE";</note>
       </trans-unit>
       <trans-unit id="gzc-cW-NPT.title" xml:space="preserve">
         <source>Accounts</source>
@@ -485,9 +504,8 @@ Authentication</source>
         <note>Class = "UIBarButtonItem"; title = "Next"; ObjectID = "twm-cB-W69";</note>
       </trans-unit>
       <trans-unit id="vgV-fF-jOl.text" xml:space="preserve">
-        <source>Copy the code generated by Google Authenticator application and insert it to the input field</source>
-        <target>生成したコードをコピー Google Authenticator アプリと 入力欄に挿入</target>
-        <note>Class = "UILabel"; text = "Copy the code generated by Google Authenticator application and insert it to the input field"; ObjectID = "vgV-fF-jOl";</note>
+        <source>Copy the code generated by Google Authenticator application and insert it to the input field</source>
+        <note>Class = "UILabel"; text = "Copy the code generated by Google Authenticator application and insert it to the input field"; ObjectID = "vgV-fF-jOl";</note>
       </trans-unit>
       <trans-unit id="vlQ-jV-iFo.text" xml:space="preserve">
         <source>Please set up an application to generate the codes for the portal access (e.g. Google Authenticator) to continue the work at the portal</source>
@@ -513,7 +531,7 @@ Authentication</source>
   </file>
   <file original="Documents/Base.lproj/Main.storyboard" source-language="en" target-language="ja" datatype="plaintext">
     <header>
-      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="12.0.1" build-num="12A7300"/>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="13.2.1" build-num="13C100"/>
     </header>
     <body>
       <trans-unit id="0Hf-aP-smp.text" xml:space="preserve">
@@ -665,7 +683,7 @@ Authentication</source>
   </file>
   <file original="Documents/Base.lproj/Settings.storyboard" source-language="en" target-language="ja" datatype="plaintext">
     <header>
-      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="12.0.1" build-num="12A7300"/>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="13.2.1" build-num="13C100"/>
     </header>
     <body>
       <trans-unit id="0DJ-uV-iju.title" xml:space="preserve">
@@ -748,9 +766,8 @@ Note: if you forget the passcode, you'll need to delete and reinstall the app. A
         <note>Class = "UINavigationItem"; title = "Settings"; ObjectID = "OKJ-3w-yJd";</note>
       </trans-unit>
       <trans-unit id="PDj-N7-sjJ.text" xml:space="preserve">
-        <source>User agreement</source>
-        <target>ユーザーによるサービス利用規約の合意</target>
-        <note>Class = "UILabel"; text = "User agreement"; ObjectID = "PDj-N7-sjJ";</note>
+        <source>Terms of Service</source>
+        <note>Class = "UILabel"; text = "Terms of Service"; ObjectID = "PDj-N7-sjJ";</note>
       </trans-unit>
       <trans-unit id="RuR-k5-kRu.text" xml:space="preserve">
         <source>Change Passcode</source>
@@ -777,6 +794,10 @@ Note: if you forget the passcode, you'll need to delete and reinstall the app. A
         <target>キャッシュ</target>
         <note>Class = "UILabel"; text = "Cache"; ObjectID = "aV0-Ch-4Py";</note>
       </trans-unit>
+      <trans-unit id="cl6-b0-Mjh.text" xml:space="preserve">
+        <source>Privacy Policy</source>
+        <note>Class = "UILabel"; text = "Privacy Policy"; ObjectID = "cl6-b0-Mjh";</note>
+      </trans-unit>
       <trans-unit id="i2P-F4-EhP.text" xml:space="preserve">
         <source>Passcode Lock</source>
         <target>パスコードロック</target>
@@ -794,101 +815,9 @@ Note: if you forget the passcode, you'll need to delete and reinstall the app. A
       </trans-unit>
     </body>
   </file>
-  <file original="Documents/Base.lproj/Share.storyboard" source-language="en" target-language="ja" datatype="plaintext">
-    <header>
-      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="12.0.1" build-num="12A7300"/>
-    </header>
-    <body>
-      <trans-unit id="9Wg-zE-nZA.segmentTitles[0]" xml:space="preserve">
-        <source>Users</source>
-        <target>ユーザー</target>
-        <note>Class = "UISegmentedControl"; 9Wg-zE-nZA.segmentTitles[0] = "Users"; ObjectID = "9Wg-zE-nZA";</note>
-      </trans-unit>
-      <trans-unit id="9Wg-zE-nZA.segmentTitles[1]" xml:space="preserve">
-        <source>Groups</source>
-        <target>グループ</target>
-        <note>Class = "UISegmentedControl"; 9Wg-zE-nZA.segmentTitles[1] = "Groups"; ObjectID = "9Wg-zE-nZA";</note>
-      </trans-unit>
-      <trans-unit id="75q-CN-6uI.text" xml:space="preserve">
-        <source>No available records</source>
-        <target>レコードがありません</target>
-        <note>Class = "UILabel"; text = "No available records"; ObjectID = "75q-CN-6uI";</note>
-      </trans-unit>
-      <trans-unit id="HLh-xV-DgI.headerTitle" xml:space="preserve">
-        <source>Access</source>
-        <target>アクセス</target>
-        <note>Class = "UITableViewSection"; headerTitle = "Access"; ObjectID = "HLh-xV-DgI";</note>
-      </trans-unit>
-      <trans-unit id="ZE7-40-yeL.text" xml:space="preserve">
-        <source>Label</source>
-        <target>ラベル</target>
-        <note>Class = "UILabel"; text = "Label"; ObjectID = "ZE7-40-yeL"; Note = "Do not translate";</note>
-      </trans-unit>
-      <trans-unit id="ZW9-Zh-W3r.segmentTitles[0]" xml:space="preserve">
-        <source>Full Access</source>
-        <target>フルアクセス</target>
-        <note>Class = "UISegmentedControl"; ZW9-Zh-W3r.segmentTitles[0] = "Full Access"; ObjectID = "ZW9-Zh-W3r";</note>
-      </trans-unit>
-      <trans-unit id="ZW9-Zh-W3r.segmentTitles[1]" xml:space="preserve">
-        <source>Read Only</source>
-        <target>閲覧のみ</target>
-        <note>Class = "UISegmentedControl"; ZW9-Zh-W3r.segmentTitles[1] = "Read Only"; ObjectID = "ZW9-Zh-W3r";</note>
-      </trans-unit>
-      <trans-unit id="ZW9-Zh-W3r.segmentTitles[2]" xml:space="preserve">
-        <source>Deny Access</source>
-        <target>アクセスを拒否</target>
-        <note>Class = "UISegmentedControl"; ZW9-Zh-W3r.segmentTitles[2] = "Deny Access"; ObjectID = "ZW9-Zh-W3r";</note>
-      </trans-unit>
-      <trans-unit id="bHR-n3-evx.text" xml:space="preserve">
-        <source>User Name</source>
-        <target>ユーザー名</target>
-        <note>Class = "UILabel"; text = "User Name"; ObjectID = "bHR-n3-evx"; Note = "Do not translate";</note>
-      </trans-unit>
-      <trans-unit id="c9E-27-xIy.text" xml:space="preserve">
-        <source>Deny Access</source>
-        <target>アクセスを拒否</target>
-        <note>Class = "UILabel"; text = "Deny Access"; ObjectID = "c9E-27-xIy";</note>
-      </trans-unit>
-      <trans-unit id="cmV-9P-RqY.text" xml:space="preserve">
-        <source>Review</source>
-        <target>見直し</target>
-        <note>Class = "UILabel"; text = "Review"; ObjectID = "cmV-9P-RqY";</note>
-      </trans-unit>
-      <trans-unit id="kAs-JV-Zff.text" xml:space="preserve">
-        <source>Add users or groups and give them permissions to read, review or edit the documents.</source>
-        <target>ユーザーまたはグループを追加してからドキュメントの閲覧権限、校正権限、編集権限を付与。</target>
-        <note>Class = "UILabel"; text = "Add users or groups and give them permissions to read, review or edit the documents."; ObjectID = "kAs-JV-Zff";</note>
-      </trans-unit>
-      <trans-unit id="noV-Xw-dnb.text" xml:space="preserve">
-        <source>Read Only</source>
-        <target>閲覧のみ</target>
-        <note>Class = "UILabel"; text = "Read Only"; ObjectID = "noV-Xw-dnb";</note>
-      </trans-unit>
-      <trans-unit id="v5j-Jm-YE4.text" xml:space="preserve">
-        <source>Access</source>
-        <target>アクセス</target>
-        <note>Class = "UILabel"; text = "Access"; ObjectID = "v5j-Jm-YE4"; Note = "Do not translate";</note>
-      </trans-unit>
-      <trans-unit id="xY8-if-2h2.title" xml:space="preserve">
-        <source>Share</source>
-        <target>共有する</target>
-        <note>Class = "UINavigationItem"; title = "Share"; ObjectID = "xY8-if-2h2";</note>
-      </trans-unit>
-      <trans-unit id="xae-c9-kdf.title" xml:space="preserve">
-        <source>Users</source>
-        <target>ユーザー</target>
-        <note>Class = "UINavigationItem"; title = "Users"; ObjectID = "xae-c9-kdf";</note>
-      </trans-unit>
-      <trans-unit id="zUl-mf-gTQ.text" xml:space="preserve">
-        <source>Full Access</source>
-        <target>フルアクセス</target>
-        <note>Class = "UILabel"; text = "Full Access"; ObjectID = "zUl-mf-gTQ";</note>
-      </trans-unit>
-    </body>
-  </file>
   <file original="Documents/Base.lproj/Sort.storyboard" source-language="en" target-language="ja" datatype="plaintext">
     <header>
-      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="12.0.1" build-num="12A7300"/>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="13.2.1" build-num="13C100"/>
     </header>
     <body>
       <trans-unit id="HjM-la-pDc.text" xml:space="preserve">
@@ -915,7 +844,7 @@ Note: if you forget the passcode, you'll need to delete and reinstall the app. A
   </file>
   <file original="Documents/Base.lproj/Transfer.storyboard" source-language="en" target-language="ja" datatype="plaintext">
     <header>
-      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="12.0.1" build-num="12A7300"/>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="13.2.1" build-num="13C100"/>
     </header>
     <body>
       <trans-unit id="9YY-0H-nww.text" xml:space="preserve">
@@ -952,7 +881,7 @@ Note: if you forget the passcode, you'll need to delete and reinstall the app. A
   </file>
   <file original="Documents/Base.lproj/UserProfile.storyboard" source-language="en" target-language="ja" datatype="plaintext">
     <header>
-      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="12.0.1" build-num="12A7300"/>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="13.2.1" build-num="13C100"/>
     </header>
     <body>
       <trans-unit id="1S2-Q7-5vL.text" xml:space="preserve">
@@ -994,7 +923,7 @@ Note: if you forget the passcode, you'll need to delete and reinstall the app. A
   </file>
   <file original="Documents/Code/Controllers/CreateEntity/Views/Base.lproj/ASCCreateEntityView.xib" source-language="en" target-language="ja" datatype="plaintext">
     <header>
-      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="12.0.1" build-num="12A7300"/>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="13.2.1" build-num="13C100"/>
     </header>
     <body>
       <trans-unit id="0TH-k4-z5u.normalTitle" xml:space="preserve">
@@ -1026,7 +955,7 @@ Note: if you forget the passcode, you'll need to delete and reinstall the app. A
   </file>
   <file original="Documents/Code/Vendor/PasscodeLock/Base.lproj/PasscodeLock.strings" source-language="en" target-language="ja" datatype="plaintext">
     <header>
-      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="12.0.1" build-num="12A7300"/>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="13.2.1" build-num="13C100"/>
     </header>
     <body>
       <trans-unit id="PasscodeLockChangeDescription" xml:space="preserve">
@@ -1098,7 +1027,7 @@ Note: if you forget the passcode, you'll need to delete and reinstall the app. A
   </file>
   <file original="Documents/Code/Vendor/PasscodeLock/Views/Base.lproj/PasscodeLockView.xib" source-language="en" target-language="ja" datatype="plaintext">
     <header>
-      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="12.0.1" build-num="12A7300"/>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="13.2.1" build-num="13C100"/>
     </header>
     <body>
       <trans-unit id="0CR-0R-0Nr.normalTitle" xml:space="preserve">
@@ -1178,9 +1107,9 @@ Note: if you forget the passcode, you'll need to delete and reinstall the app. A
       </trans-unit>
     </body>
   </file>
-  <file original="Documents/en.lproj/InfoPlist.strings" source-language="en" target-language="ja" datatype="plaintext">
+  <file original="Documents/en.lproj/Documents-InfoPlist.strings" datatype="plaintext" source-language="en" target-language="ja">
     <header>
-      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="12.0.1" build-num="12A7300"/>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="13.2.1" build-num="13C100"/>
     </header>
     <body>
       <trans-unit id="CFBundleName" xml:space="preserve">
@@ -1198,9 +1127,13 @@ Note: if you forget the passcode, you'll need to delete and reinstall the app. A
         <target>このアプリで顔認識を使用して承認を行うには、顔認識権限が必要です。</target>
         <note>Privacy - Face ID Usage Description</note>
       </trans-unit>
-      <trans-unit id="NSPhotoLibraryUsageDescription" xml:space="preserve">
+      <trans-unit id="NSPhotoLibraryAddUsageDescription" xml:space="preserve">
         <source>This app requires access to the photo library, so that you can upload your photos in the app.</source>
         <target>このアプリ内で写真をアップロードできるようになるには、フォトライブラリーへのアクセスが必要です。</target>
+        <note>Privacy - Photo Library Additions Usage Description</note>
+      </trans-unit>
+      <trans-unit id="NSPhotoLibraryUsageDescription" xml:space="preserve">
+        <source>This app requires access to the photo library, so that you can upload your photos in the app.</source>
         <note>Privacy - Photo Library Usage Description</note>
       </trans-unit>
       <trans-unit id="New Document" xml:space="preserve">
@@ -1218,13 +1151,76 @@ Note: if you forget the passcode, you'll need to delete and reinstall the app. A
         <target>新規スプレッドシート</target>
         <note/>
       </trans-unit>
+      <trans-unit id="ONLYOFFICE Edit Form document (.docxf)" xml:space="preserve">
+        <source>ONLYOFFICE Edit Form document (.docxf)</source>
+        <note/>
+      </trans-unit>
+      <trans-unit id="ONLYOFFICE Fill Form document (.oform)" xml:space="preserve">
+        <source>ONLYOFFICE Fill Form document (.oform)</source>
+        <note/>
+      </trans-unit>
+    </body>
+  </file>
+  <file original="Documents/en.lproj/Documents.alpha-InfoPlist.strings" datatype="plaintext" source-language="en" target-language="ja">
+    <header>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="13.2.1" build-num="13C100"/>
+    </header>
+    <body>
+      <trans-unit id="CFBundleName" xml:space="preserve">
+        <source>Documents-Alpha</source>
+        <note>Bundle name</note>
+      </trans-unit>
+      <trans-unit id="NSCameraUsageDescription" xml:space="preserve">
+        <source>This app requires access to the camera, so that you can take photo and upload it in the app.</source>
+        <note>Privacy - Camera Usage Description</note>
+      </trans-unit>
+      <trans-unit id="NSFaceIDUsageDescription" xml:space="preserve">
+        <source>This app requires Face ID permission to authenticate using Face recognition.</source>
+        <note>Privacy - Face ID Usage Description</note>
+      </trans-unit>
+      <trans-unit id="NSLocalNetworkUsageDescription" xml:space="preserve">
+        <source>Network access required</source>
+        <note>Privacy - Local Network Usage Description</note>
+      </trans-unit>
+      <trans-unit id="NSPhotoLibraryAddUsageDescription" xml:space="preserve">
+        <source>This app requires access to the photo library, so that you can upload your photos in the app.</source>
+        <note>Privacy - Photo Library Additions Usage Description</note>
+      </trans-unit>
+      <trans-unit id="NSPhotoLibraryUsageDescription" xml:space="preserve">
+        <source>This app requires access to the photo library, so that you can upload your photos in the app.</source>
+        <note>Privacy - Photo Library Usage Description</note>
+      </trans-unit>
+      <trans-unit id="New Document" xml:space="preserve">
+        <source>New Document</source>
+        <note/>
+      </trans-unit>
+      <trans-unit id="New Presentation" xml:space="preserve">
+        <source>New Presentation</source>
+        <note/>
+      </trans-unit>
+      <trans-unit id="New Spreadsheet" xml:space="preserve">
+        <source>New Spreadsheet</source>
+        <note/>
+      </trans-unit>
+      <trans-unit id="ONLYOFFICE form template (.docxf)" xml:space="preserve">
+        <source>ONLYOFFICE form template (.docxf)</source>
+        <note/>
+      </trans-unit>
+      <trans-unit id="ONLYOFFICE fillable form (.oform)" xml:space="preserve">
+        <source>ONLYOFFICE fillable form (.oform)</source>
+        <note/>
+      </trans-unit>
     </body>
   </file>
   <file original="Documents/en.lproj/Localizable.strings" source-language="en" target-language="ja" datatype="plaintext">
     <header>
-      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="12.0.1" build-num="12A7300"/>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="13.2.1" build-num="13C100"/>
     </header>
     <body>
+      <trans-unit id="%d selected" xml:space="preserve">
+        <source>%d selected</source>
+        <note>Count of seclected rows: count + selected</note>
+      </trans-unit>
       <trans-unit id="%i of %i" xml:space="preserve">
         <source>%1$i of %2$i</source>
         <target>%2$i の %1$i </target>
@@ -1255,6 +1251,26 @@ Note: if you forget the passcode, you'll need to delete and reinstall the app. A
         <target>デバイスにはドキュメントディレクトリに類似した名前のファイルが存在します。</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
+      <trans-unit id="A user or group will be able only to view the document and add comments, as well as manage them." xml:space="preserve">
+        <source>A user or group will be able only to view the document and add comments, as well as manage them.</source>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="A user or group will be able only to view the document and fill in the forms inserted into the document." xml:space="preserve">
+        <source>A user or group will be able only to view the document and fill in the forms inserted into the document.</source>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="A user or group will be able only to view the document." xml:space="preserve">
+        <source>A user or group will be able only to view the document.</source>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="A user or group will be able to view and change the document without actually editing it, but all the changes made by a reviewer will be recorded and shown to the file owner (or a person who has full access to the file) so that he/she will be able to accept or reject them." xml:space="preserve">
+        <source>A user or group will be able to view and change the document without actually editing it, but all the changes made by a reviewer will be recorded and shown to the file owner (or a person who has full access to the file) so that he/she will be able to accept or reject them.</source>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="A user or group will be able to view and edit the document as well as to share this document." xml:space="preserve">
+        <source>A user or group will be able to view and edit the document as well as to share this document.</source>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
       <trans-unit id="A0 (84,1%@ x 119,9%@)" xml:space="preserve">
         <source>A0 (84,1%1$@ x 119,9%2$@)</source>
         <target>A0 (84,1%1$@ x 119,9%2$@)</target>
@@ -1275,6 +1291,18 @@ Note: if you forget the passcode, you'll need to delete and reinstall the app. A
         <target>A6 (10,5%1$@ x 14,8%2$@)</target>
         <note>Format info</note>
       </trans-unit>
+      <trans-unit id="Access by external link" xml:space="preserve">
+        <source>Access by external link</source>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Access rights" xml:space="preserve">
+        <source>Access rights</source>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Access settings" xml:space="preserve">
+        <source>Access settings</source>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
       <trans-unit id="Account name is empty" xml:space="preserve">
         <source>Account name is empty</source>
         <target>アカウント名が入力されていません</target>
@@ -1283,6 +1311,15 @@ Note: if you forget the passcode, you'll need to delete and reinstall the app. A
       <trans-unit id="Account name is not valid" xml:space="preserve">
         <source>Account name is not valid</source>
         <target>アカウント名は無効です</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Add message" xml:space="preserve">
+        <source>Add message</source>
+        <note>Sharing settings add notification message</note>
+      </trans-unit>
+      <trans-unit id="Add users or groups and allow them to &#10; read, review or edit documents." xml:space="preserve">
+        <source>Add users or groups and allow them to 
+ read, review or edit documents.</source>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Address is empty" xml:space="preserve">
@@ -1300,10 +1337,18 @@ Note: if you forget the passcode, you'll need to delete and reinstall the app. A
         <target>すべてのファイル</target>
         <note>Category title</note>
       </trans-unit>
+      <trans-unit id="Allow access via external link" xml:space="preserve">
+        <source>Allow access via external link</source>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
       <trans-unit id="An unexpected error has occurred. Please try again later. Sorry for inconvenience." xml:space="preserve">
         <source>An unexpected error has occurred. Please try again later. Sorry for inconvenience.</source>
         <target>エラーが発生しました。もう一度お試しください。申し訳ございません。</target>
         <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Applying" xml:space="preserve">
+        <source>Applying</source>
+        <note>Caption of the process</note>
       </trans-unit>
       <trans-unit id="Are you sure you want to delete the account %@ from this device?" xml:space="preserve">
         <source>Are you sure you want to delete the account %@ from this device?</source>
@@ -1320,9 +1365,17 @@ Note: if you forget the passcode, you'll need to delete and reinstall the app. A
         <target>著者</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
+      <trans-unit id="Better formatting" xml:space="preserve">
+        <source>Better formatting</source>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
       <trans-unit id="Box directory" xml:space="preserve">
         <source>Box directory</source>
         <target>Box ディレクトリ</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="By creating the portal you agree with our Privacy Policy and Terms of Service" xml:space="preserve">
+        <source>By creating the portal you agree with our Privacy Policy and Terms of Service</source>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Camera Unavailable" xml:space="preserve">
@@ -1353,7 +1406,7 @@ Note: if you forget the passcode, you'll need to delete and reinstall the app. A
       <trans-unit id="Cancel" xml:space="preserve">
         <source>Cancel</source>
         <target>キャンセル</target>
-        <note>Button title</note>
+        <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Check your internet connection" xml:space="preserve">
         <source>Check your internet connection</source>
@@ -1385,6 +1438,10 @@ Note: if you forget the passcode, you'll need to delete and reinstall the app. A
         <target>キャッシュをクリア?</target>
         <note>Button title</note>
       </trans-unit>
+      <trans-unit id="Clear formatting, use extended color palette, and change font with improved settings." xml:space="preserve">
+        <source>Clear formatting, use extended color palette, and change font with improved settings.</source>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
       <trans-unit id="Clearing" xml:space="preserve">
         <source>Clearing</source>
         <target>クリーン</target>
@@ -1410,10 +1467,9 @@ Note: if you forget the passcode, you'll need to delete and reinstall the app. A
         <target>チームと共同編集</target>
         <note>Introduction Step Five - Title</note>
       </trans-unit>
-      <trans-unit id="Comments" xml:space="preserve">
-        <source>Comments</source>
-        <target>コメント</target>
-        <note>No comment provided by engineer.</note>
+      <trans-unit id="Comment" xml:space="preserve">
+        <source>Comment</source>
+        <note>Share status</note>
       </trans-unit>
       <trans-unit id="Common Documents" xml:space="preserve">
         <source>Common Documents</source>
@@ -1552,11 +1608,6 @@ WebDAV プロトコールを使用する他のクラウド</target>
         <target>このファイルをコピーできませんでした。</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
-      <trans-unit id="Could not empty trash." xml:space="preserve">
-        <source>Could not empty trash.</source>
-        <target>ごみ箱を空にできませんでした。</target>
-        <note>No comment provided by engineer.</note>
-      </trans-unit>
       <trans-unit id="Could not export the file." xml:space="preserve">
         <source>Could not export the file.</source>
         <target>このファイルをエクスポートできませんでした。</target>
@@ -1624,6 +1675,10 @@ WebDAV プロトコールを使用する他のクラウド</target>
         <target>作成中</target>
         <note>Caption of the process</note>
       </trans-unit>
+      <trans-unit id="Custom filter" xml:space="preserve">
+        <source>Custom filter</source>
+        <note>Share status</note>
+      </trans-unit>
       <trans-unit id="Date" xml:space="preserve">
         <source>Date</source>
         <target>日付</target>
@@ -1678,6 +1733,10 @@ WebDAV プロトコールを使用する他のクラウド</target>
         <source>Deny Access</source>
         <target>アクセスを拒否</target>
         <note>Share status</note>
+      </trans-unit>
+      <trans-unit id="Deselect all" xml:space="preserve">
+        <source>Deselect all</source>
+        <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Disconnect third party" xml:space="preserve">
         <source>Disconnect third party</source>
@@ -1760,6 +1819,10 @@ WebDAV プロトコールを使用する他のクラウド</target>
         <target>メールが入力されていません</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
+      <trans-unit id="Email is incorrect." xml:space="preserve">
+        <source>Email is incorrect.</source>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
       <trans-unit id="Email is not valid" xml:space="preserve">
         <source>Email is not valid</source>
         <target>メールが無効です</target>
@@ -1795,6 +1858,18 @@ WebDAV プロトコールを使用する他のクラウド</target>
         <target>エラー</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
+      <trans-unit id="Error code: %ld" xml:space="preserve">
+        <source>Error code: %ld</source>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Export" xml:space="preserve">
+        <source>Export</source>
+        <note>Button title</note>
+      </trans-unit>
+      <trans-unit id="External keyboards" xml:space="preserve">
+        <source>External keyboards</source>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
       <trans-unit id="Failed online conversion service." xml:space="preserve">
         <source>Failed online conversion service.</source>
         <target>オンライン変換サービス失敗</target>
@@ -1808,6 +1883,10 @@ WebDAV プロトコールを使用する他のクラウド</target>
       <trans-unit id="Failed to check the name of the portal" xml:space="preserve">
         <source>Failed to check the name of the portal</source>
         <target>ポータルの名前を確認できませんでした</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Failed to connect folder." xml:space="preserve">
+        <source>Failed to connect folder.</source>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Failed to copy: %@" xml:space="preserve">
@@ -1838,6 +1917,10 @@ WebDAV プロトコールを使用する他のクラウド</target>
         <source>Failed to move: %@</source>
         <note>No comment provided by engineer.</note>
       </trans-unit>
+      <trans-unit id="Failed to send feedback by mail. Try to write your request on our forum." xml:space="preserve">
+        <source>Failed to send feedback by mail. Try to write your request on our forum.</source>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
       <trans-unit id="Failed upload source file to conversion online service." xml:space="preserve">
         <source>Failed upload source file to conversion online service.</source>
         <target>ソースファイルを変換オンラインサービスにアップロードできませんでした</target>
@@ -1866,6 +1949,14 @@ WebDAV プロトコールを使用する他のクラウド</target>
         <target>ファイル</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
+      <trans-unit id="Fillable forms" xml:space="preserve">
+        <source>Fillable forms</source>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="First name is incorrect" xml:space="preserve">
+        <source>First name is incorrect</source>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
       <trans-unit id="Folder title" xml:space="preserve">
         <source>Folder title</source>
         <target>フォルダーのタイトル</target>
@@ -1875,6 +1966,10 @@ WebDAV プロトコールを使用する他のクラウド</target>
         <source>Folders</source>
         <target>フォルダー</target>
         <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Form filling" xml:space="preserve">
+        <source>Form filling</source>
+        <note>Share status</note>
       </trans-unit>
       <trans-unit id="Full Access" xml:space="preserve">
         <source>Full Access</source>
@@ -1901,6 +1996,10 @@ WebDAV プロトコールを使用する他のクラウド</target>
         <target>開始方法</target>
         <note>Introduction Step One - Title</note>
       </trans-unit>
+      <trans-unit id="Go to forum" xml:space="preserve">
+        <source>Go to forum</source>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
       <trans-unit id="Google Drive" xml:space="preserve">
         <source>Google Drive</source>
         <target>Google ドライブ</target>
@@ -1915,6 +2014,10 @@ WebDAV プロトコールを使用する他のクラウド</target>
         <source>Groups</source>
         <target>グループ</target>
         <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="If a user with the mail %@ exists, then an instruction to change the password was sent to this address." xml:space="preserve">
+        <source>If a user with the mail %@ exists, then an instruction to change the password was sent to this address.</source>
+        <note>Email sent instructions</note>
       </trans-unit>
       <trans-unit id="Images" xml:space="preserve">
         <source>Images</source>
@@ -1936,15 +2039,31 @@ WebDAV プロトコールを使用する他のクラウド</target>
         <target>国コードが無効です</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
-      <trans-unit id="Invalid URL: The format ot the URL could not be determined" xml:space="preserve">
-        <source>Invalid URL: The format ot the URL could not be determined</source>
-        <target>無効な URL: この URL のフォーマットを決めることができません</target>
-        <note>Error message</note>
+      <trans-unit id="Invalid Data" xml:space="preserve">
+        <source>Invalid Data</source>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Invalid Url" xml:space="preserve">
+        <source>Invalid Url</source>
+        <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Kb" xml:space="preserve">
         <source>Kb</source>
         <target>キガバイト</target>
         <note>Data units</note>
+      </trans-unit>
+      <trans-unit id="Last name is empty" xml:space="preserve">
+        <source>Last name is empty</source>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Last name is incorrect" xml:space="preserve">
+        <source>Last name is incorrect</source>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Link copied&#10;to the clipboard" xml:space="preserve">
+        <source>Link copied
+to the clipboard</source>
+        <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Logging in" xml:space="preserve">
         <source>Logging in</source>
@@ -1971,6 +2090,10 @@ WebDAV プロトコールを使用する他のクラウド</target>
         <target>ログアウト</target>
         <note>Button title
    Caption of the process</note>
+      </trans-unit>
+      <trans-unit id="Mark as favorite" xml:space="preserve">
+        <source>Mark as favorite</source>
+        <note>Button title</note>
       </trans-unit>
       <trans-unit id="Mb" xml:space="preserve">
         <source>Mb</source>
@@ -2032,6 +2155,10 @@ WebDAV プロトコールを使用する他のクラウド</target>
         <target>追加のパラミーターが必要です。</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
+      <trans-unit id="New" xml:space="preserve">
+        <source>New</source>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
       <trans-unit id="New Document" xml:space="preserve">
         <source>New Document</source>
         <target>新規ドキュメント</target>
@@ -2060,6 +2187,18 @@ WebDAV プロトコールを使用する他のクラウド</target>
       <trans-unit id="Nextcloud" xml:space="preserve">
         <source>Nextcloud</source>
         <target>Nextcloud</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Nextcloud directory" xml:space="preserve">
+        <source>Nextcloud directory</source>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="No Internet connection" xml:space="preserve">
+        <source>No Internet connection</source>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="No client IDs of application" xml:space="preserve">
+        <source>No client IDs of application</source>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="No connection" xml:space="preserve">
@@ -2103,6 +2242,10 @@ WebDAV プロトコールを使用する他のクラウド</target>
         <target>注: アカウント空の削除は失敗することがあります。</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
+      <trans-unit id="Notify by Email" xml:space="preserve">
+        <source>Notify by Email</source>
+        <note>Sharing settings switcher</note>
+      </trans-unit>
       <trans-unit id="OK" xml:space="preserve">
         <source>OK</source>
         <target>ОК</target>
@@ -2133,6 +2276,10 @@ WebDAV プロトコールを使用する他のクラウド</target>
         <target>パスワードを入力してこのファイルを開いたら、このファイルへの現在のパスワードが再設定されます</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
+      <trans-unit id="OneDrive" xml:space="preserve">
+        <source>OneDrive</source>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
       <trans-unit id="OneDrive directory" xml:space="preserve">
         <source>OneDrive directory</source>
         <target>OneDrive ディレクトリ</target>
@@ -2152,11 +2299,6 @@ WebDAV プロトコールを使用する他のクラウド</target>
         <source>Open Document</source>
         <target>ドキュメントを開く</target>
         <note>No comment provided by engineer.</note>
-      </trans-unit>
-      <trans-unit id="Open In" xml:space="preserve">
-        <source>Open In</source>
-        <target>開く場所</target>
-        <note>Button title</note>
       </trans-unit>
       <trans-unit id="Opening" xml:space="preserve">
         <source>Opening</source>
@@ -2186,7 +2328,7 @@ WebDAV プロトコールを使用する他のクラウド</target>
       <trans-unit id="Owner" xml:space="preserve">
         <source>Owner</source>
         <target>所有者</target>
-        <note>No comment provided by engineer.</note>
+        <note>Table cell right holder acces text</note>
       </trans-unit>
       <trans-unit id="Password" xml:space="preserve">
         <source>Password</source>
@@ -2207,6 +2349,14 @@ WebDAV プロトコールを使用する他のクラウド</target>
         <source>Pb</source>
         <target>プライベートブランド</target>
         <note>Data units</note>
+      </trans-unit>
+      <trans-unit id="Phone" xml:space="preserve">
+        <source>Phone</source>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Phone is incorrect" xml:space="preserve">
+        <source>Phone is incorrect</source>
+        <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Please go to Settings and enable the camera for this app to use this feature." xml:space="preserve">
         <source>Please go to Settings and enable the camera for this app to use this feature.</source>
@@ -2293,6 +2443,10 @@ WebDAV プロトコールを使用する他のクラウド</target>
         <target>下見</target>
         <note>Button title</note>
       </trans-unit>
+      <trans-unit id="Privacy Policy" xml:space="preserve">
+        <source>Privacy Policy</source>
+        <note>Part of phrases - By creating the portal you agree with our Privacy Policy and Terms of Service</note>
+      </trans-unit>
       <trans-unit id="Processing" xml:space="preserve">
         <source>Processing</source>
         <target>処理中</target>
@@ -2333,6 +2487,14 @@ WebDAV プロトコールを使用する他のクラウド</target>
         <target>リロードする</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
+      <trans-unit id="Remove from Favorites" xml:space="preserve">
+        <source>Remove from Favorites</source>
+        <note>Button title</note>
+      </trans-unit>
+      <trans-unit id="Removing" xml:space="preserve">
+        <source>Removing</source>
+        <note>Caption of the process</note>
+      </trans-unit>
       <trans-unit id="Rename" xml:space="preserve">
         <source>Rename</source>
         <target>再度名前を付ける</target>
@@ -2358,6 +2520,14 @@ WebDAV プロトコールを使用する他のクラウド</target>
         <target>リニューアル</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
+      <trans-unit id="Request canceled" xml:space="preserve">
+        <source>Request canceled</source>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Request had insufficient authentication scopes" xml:space="preserve">
+        <source>Request had insufficient authentication scopes</source>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
       <trans-unit id="Restore" xml:space="preserve">
         <source>Restore</source>
         <target>戻す</target>
@@ -2373,11 +2543,6 @@ WebDAV プロトコールを使用する他のクラウド</target>
         <target>見直し</target>
         <note>Share status</note>
       </trans-unit>
-      <trans-unit id="Reviewing" xml:space="preserve">
-        <source>Reviewing</source>
-        <target>レビュー</target>
-        <note>No comment provided by engineer.</note>
-      </trans-unit>
       <trans-unit id="SKIP" xml:space="preserve">
         <source>SKIP</source>
         <target>［スキップ］</target>
@@ -2388,14 +2553,23 @@ WebDAV プロトコールを使用する他のクラウド</target>
         <target>保存中</target>
         <note>Caption of the processing</note>
       </trans-unit>
+      <trans-unit id="Search" xml:space="preserve">
+        <source>Search</source>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
       <trans-unit id="Select" xml:space="preserve">
         <source>Select</source>
         <target>選択</target>
-        <note>Button title</note>
+        <note>Button title
+   Navigation bar button title</note>
       </trans-unit>
       <trans-unit id="Select Photos" xml:space="preserve">
         <source>Select Photos</source>
         <target>画像を選択</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Select all" xml:space="preserve">
+        <source>Select all</source>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Select another cloud to connect to Nextcloud, ownCloud and others are supported." xml:space="preserve">
@@ -2428,19 +2602,30 @@ WebDAV プロトコールを使用する他のクラウド</target>
         <target>選択済み: %ld</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
+      <trans-unit id="Selecting access rights" xml:space="preserve">
+        <source>Selecting access rights</source>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Sending" xml:space="preserve">
+        <source>Sending</source>
+        <note>Caption of the process</note>
+      </trans-unit>
+      <trans-unit id="Set favorite failed." xml:space="preserve">
+        <source>Set favorite failed.</source>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
       <trans-unit id="Settings" xml:space="preserve">
         <source>Settings</source>
         <target>設定</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
-      <trans-unit id="Share" xml:space="preserve">
-        <source>Share</source>
-        <target>共有する</target>
-        <note>Button title</note>
-      </trans-unit>
       <trans-unit id="SharePoint directory" xml:space="preserve">
         <source>SharePoint directory</source>
         <target>SharePoint ディレクトリ</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Shared access" xml:space="preserve">
+        <source>Shared access</source>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Shared with Me" xml:space="preserve">
@@ -2452,6 +2637,14 @@ WebDAV プロトコールを使用する他のクラウド</target>
         <source>Sharing</source>
         <target>共有中</target>
         <note>Caption of the process</note>
+      </trans-unit>
+      <trans-unit id="Sharing Settings" xml:space="preserve">
+        <source>Sharing Settings</source>
+        <note>Button title</note>
+      </trans-unit>
+      <trans-unit id="Sharing settings" xml:space="preserve">
+        <source>Sharing settings</source>
+        <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Single Sign-on" xml:space="preserve">
         <source>Single Sign-on</source>
@@ -2472,6 +2665,14 @@ WebDAV プロトコールを使用する他のクラウド</target>
         <source>Slide %1$i of %2$i</source>
         <target>%2$i の %1$i スライド</target>
         <note>Presentation Viewer</note>
+      </trans-unit>
+      <trans-unit id="Something went wrong, try again" xml:space="preserve">
+        <source>Something went wrong, try again</source>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Something wrong" xml:space="preserve">
+        <source>Something wrong</source>
+        <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Sort" xml:space="preserve">
         <source>Sort</source>
@@ -2513,10 +2714,18 @@ WebDAV プロトコールを使用する他のクラウド</target>
         <target>Tb</target>
         <note>Data units</note>
       </trans-unit>
+      <trans-unit id="Terms of Service" xml:space="preserve">
+        <source>Terms of Service</source>
+        <note>Part of phrases - By creating the portal you agree with our Privacy Policy and Terms of Service</note>
+      </trans-unit>
       <trans-unit id="Text copied" xml:space="preserve">
         <source>Text copied</source>
         <target>テキストをコピーしました</target>
         <note>Notification title</note>
+      </trans-unit>
+      <trans-unit id="The %@ server is not available." xml:space="preserve">
+        <source>The %@ server is not available.</source>
+        <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="The account name must be between 6 and 50 characters long" xml:space="preserve">
         <source>The account name must be between 6 and 50 characters long</source>
@@ -2538,6 +2747,10 @@ WebDAV プロトコールを使用する他のクラウド</target>
         <target>ファイルは永久に削除されます。このアクションは取り止めできません。</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
+      <trans-unit id="The folder in the Trash can not be opened." xml:space="preserve">
+        <source>The folder in the Trash can not be opened.</source>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
       <trans-unit id="The folder will be irretrievably deleted. This action is irreversible." xml:space="preserve">
         <source>The folder will be irretrievably deleted. This action is irreversible.</source>
         <target>フォルダーは永久に削除されます。このアクションは取り止めできません。</target>
@@ -2548,9 +2761,18 @@ WebDAV プロトコールを使用する他のクラウド</target>
         <target>‘%1$@’ という名前のファイルは既にフォルダー '%2$@’ に存在します。</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
-      <trans-unit id="The password is incorrect. It must contain 6 characters" xml:space="preserve">
-        <source>The password is incorrect. It must contain 6 characters</source>
-        <target>パスワードが正しくありません。6 文字以上入力してください</target>
+      <trans-unit id="The link for external&#10;access is copied&#10;to the clipboard" xml:space="preserve">
+        <source>The link for external
+access is copied
+to the clipboard</source>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="The parameters are incorrect." xml:space="preserve">
+        <source>The parameters are incorrect.</source>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="The password is incorrect. It must contain 8 characters" xml:space="preserve">
+        <source>The password is incorrect. It must contain 8 characters</source>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="The portal address is invalid" xml:space="preserve">
@@ -2558,9 +2780,17 @@ WebDAV プロトコールを使用する他のクラウド</target>
         <target>このポータルのアドレスは無効です</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
+      <trans-unit id="The portal is not available" xml:space="preserve">
+        <source>The portal is not available</source>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
       <trans-unit id="The portal name must be between 6 and 50 characters long" xml:space="preserve">
         <source>The portal name must be between 6 and 50 characters long</source>
         <target>アカウント名は 6 字から 50 字で入力してください</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="The request timed out." xml:space="preserve">
+        <source>The request timed out.</source>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="The server is not available." xml:space="preserve">
@@ -2591,6 +2821,10 @@ WebDAV プロトコールを使用する他のクラウド</target>
       <trans-unit id="This operation will free up space on your device by deleting temporary files. Your offline files and personal data won't be removed." xml:space="preserve">
         <source>This operation will free up space on your device by deleting temporary files. Your offline files and personal data won't be removed.</source>
         <target>この操作で、一時ファイルが削除されるので、デバイスにスペースを作ることができます。オフィスファイルや個人データは削除されません。</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="This option is used to block access previously granted to a user or group." xml:space="preserve">
+        <source>This option is used to block access previously granted to a user or group.</source>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="This presentation is being edited. Do you want open %@ to view only?" xml:space="preserve">
@@ -2653,6 +2887,14 @@ WebDAV プロトコールを使用する他のクラウド</target>
         <target>タイプ</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
+      <trans-unit id="Unable delete items" xml:space="preserve">
+        <source>Unable delete items</source>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Unable disconnect third party" xml:space="preserve">
+        <source>Unable disconnect third party</source>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
       <trans-unit id="Unable to get information about the portal" xml:space="preserve">
         <source>Unable to get information about the portal</source>
         <target>このポータルについての情報を取得できません</target>
@@ -2661,6 +2903,30 @@ WebDAV プロトコールを使用する他のクラウド</target>
       <trans-unit id="Unable to get information about the user." xml:space="preserve">
         <source>Unable to get information about the user.</source>
         <target>このユーザーについての情報を取得できません</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Unauthorized users will be able only to view the document and add comments, as well as manage them." xml:space="preserve">
+        <source>Unauthorized users will be able only to view the document and add comments, as well as manage them.</source>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Unauthorized users will be able only to view the document and fill in the forms inserted into the document." xml:space="preserve">
+        <source>Unauthorized users will be able only to view the document and fill in the forms inserted into the document.</source>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Unauthorized users will be able only to view the document." xml:space="preserve">
+        <source>Unauthorized users will be able only to view the document.</source>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Unauthorized users will be able to view and change the document without actually editing it, but all the changes made by a reviewer will be recorded and shown to the file owner (or a person who has full access to the file) so that he/she will be able to accept or reject them." xml:space="preserve">
+        <source>Unauthorized users will be able to view and change the document without actually editing it, but all the changes made by a reviewer will be recorded and shown to the file owner (or a person who has full access to the file) so that he/she will be able to accept or reject them.</source>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Unauthorized users will be able to view and edit the document as well as to share this document." xml:space="preserve">
+        <source>Unauthorized users will be able to view and edit the document as well as to share this document.</source>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Unauthorized users will not have access to the document." xml:space="preserve">
+        <source>Unauthorized users will not have access to the document.</source>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Unexpected response from the service." xml:space="preserve">
@@ -2673,9 +2939,8 @@ WebDAV プロトコールを使用する他のクラウド</target>
         <target>未知の</target>
         <note>Invalid entity name</note>
       </trans-unit>
-      <trans-unit id="Unknown API response." xml:space="preserve">
-        <source>Unknown API response.</source>
-        <target>未知の API 応答</target>
+      <trans-unit id="Unknown error" xml:space="preserve">
+        <source>Unknown error</source>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Unknown file provider" xml:space="preserve">
@@ -2703,11 +2968,6 @@ WebDAV プロトコールを使用する他のクラウド</target>
         <target>サポートされていない書式</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
-      <trans-unit id="Upload" xml:space="preserve">
-        <source>Upload</source>
-        <target>アップロードする</target>
-        <note>Button title</note>
-      </trans-unit>
       <trans-unit id="Uploading" xml:space="preserve">
         <source>Uploading</source>
         <target>アップロード中</target>
@@ -2723,20 +2983,18 @@ WebDAV プロトコールを使用する他のクラウド</target>
         <target>Touch ID を使用する</target>
         <note>Button title</note>
       </trans-unit>
-      <trans-unit id="Use Track Changes mode in text documents to suggest changes, accept or reject them." xml:space="preserve">
-        <source>Use Track Changes mode in text documents to suggest changes, accept or reject them.</source>
-        <target>テキストドキュメントで変更履歴モードを使用して、変更を提案、さらに承認または拒否。</target>
-        <note>No comment provided by engineer.</note>
-      </trans-unit>
-      <trans-unit id="Use comments to add notes, suggestions, or questions for your collaborators. Edit, answer, resolve or delete them in process." xml:space="preserve">
-        <source>Use comments to add notes, suggestions, or questions for your collaborators. Edit, answer, resolve or delete them in process.</source>
-        <target>コメントを使って、共同編集者用にノート、提案、質問を追加する。処理中に編集、回答、解決または削除する</target>
+      <trans-unit id="Use external keyboards in ONLYOFFICE Documents with improved compatibility." xml:space="preserve">
+        <source>Use external keyboards in ONLYOFFICE Documents with improved compatibility.</source>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="User authentication failed" xml:space="preserve">
         <source>User authentication failed</source>
         <target>ユーザーの承認に失敗しました</target>
-        <note>Error message</note>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="User authentication required" xml:space="preserve">
+        <source>User authentication required</source>
+        <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="User undefined" xml:space="preserve">
         <source>User undefined</source>
@@ -2761,6 +3019,10 @@ WebDAV プロトコールを使用する他のクラウド</target>
       <trans-unit id="Version" xml:space="preserve">
         <source>Version</source>
         <target>バージョン</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="View and fill online forms, save them as PDF files." xml:space="preserve">
+        <source>View and fill online forms, save them as PDF files.</source>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Warning" xml:space="preserve">
@@ -2921,12 +3183,27 @@ then accessed from any other device.</source>
         <target>サーバーのエラー</target>
         <note>Unknown Server Error</note>
       </trans-unit>
+      <trans-unit id="iCloud" xml:space="preserve">
+        <source>iCloud</source>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="iCloud Drive" xml:space="preserve">
+        <source>iCloud Drive</source>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="kDrive" xml:space="preserve">
+        <source>kDrive</source>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="kDrive directory" xml:space="preserve">
+        <source>kDrive directory</source>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
       <trans-unit id="none" xml:space="preserve">
         <source>none</source>
         <target>なし</target>
         <note>Invalid entity date
-   Invalid entity owner
-   No information</note>
+   Invalid entity owner</note>
       </trans-unit>
       <trans-unit id="of" xml:space="preserve">
         <source>of</source>
@@ -2936,6 +3213,10 @@ then accessed from any other device.</source>
       <trans-unit id="ownCloud" xml:space="preserve">
         <source>ownCloud</source>
         <target>ownCloud</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="ownCloud directory" xml:space="preserve">
+        <source>ownCloud directory</source>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="photo" xml:space="preserve">
@@ -2967,7 +3248,7 @@ then accessed from any other device.</source>
   </file>
   <file original="Settings.bundle/en.lproj/Root.strings" source-language="en" target-language="ja" datatype="plaintext">
     <header>
-      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="12.0.1" build-num="12A7300"/>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="13.2.1" build-num="13C100"/>
     </header>
     <body>
       <trans-unit id="Acknowledgements" xml:space="preserve">

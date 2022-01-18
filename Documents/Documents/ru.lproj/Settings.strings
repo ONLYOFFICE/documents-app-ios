@@ -25,6 +25,9 @@
 /* Class = "UITableViewSection"; headerTitle = "Storage"; ObjectID = "Bmt-tc-yd7"; */
 "Bmt-tc-yd7.headerTitle" = "Хранилище";
 
+/* Class = "UILabel"; text = "Privacy Policy"; ObjectID = "cl6-b0-Mjh"; */
+"cl6-b0-Mjh.text" = "Политика конфиденциальности";
+
 /* Class = "UILabel"; text = "Rate App"; ObjectID = "CUM-1F-5Be"; */
 "CUM-1F-5Be.text" = "Оценить приложение";
 
@@ -52,8 +55,8 @@
 /* Class = "UINavigationItem"; title = "Settings"; ObjectID = "OKJ-3w-yJd"; */
 "OKJ-3w-yJd.title" = "Настройки";
 
-/* Class = "UILabel"; text = "User agreement"; ObjectID = "PDj-N7-sjJ"; */
-"PDj-N7-sjJ.text" = "Пользовательское соглашение";
+/* Class = "UILabel"; text = "Terms of Service"; ObjectID = "PDj-N7-sjJ"; */
+"PDj-N7-sjJ.text" = "Условия использования";
 
 /* Class = "UILabel"; text = "Support"; ObjectID = "raN-Fz-DnL"; */
 "raN-Fz-DnL.text" = "Поддержка";

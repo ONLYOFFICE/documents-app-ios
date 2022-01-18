@@ -1,0 +1,959 @@
+/* Presentation Viewer */
+"%i of %i" = "%2$i の %1$i ";
+
+/* No comment provided by engineer. */
+"%lu File selected" = "%lu ファイルが選択されました";
+
+/* No comment provided by engineer. */
+"%lu Folder and %lu File selected" = "%1$lu ファルダーと %2$lu ファイルを選択 ";
+
+/* No comment provided by engineer. */
+"%lu Folder selected" = "%lu ファルダーが選択されました";
+
+/* No comment provided by engineer. */
+"%lu items with the same name already exist in the folder '%@'. Overwrite the items?" = "同じ名前の %1$lu 個のアイテムがフォルダー '%2$@’ に存在します。このアイテムを上書きしますか?";
+
+/* No comment provided by engineer. */
+"© Ascensio System SIA %d" = "© Ascensio System SIA %d";
+
+/* No comment provided by engineer. */
+"A file with a similar name already exists in the document directory on the device." = "デバイスにはドキュメントディレクトリに類似した名前のファイルが存在します。";
+
+/* Format info */
+"A0 (84,1%@ x 119,9%@)" = "A0 (84,1%1$@ x 119,9%2$@)";
+
+/* Format info */
+"A1 (59,4%@ x 84,1%@)" = "A1 (59,4%1$@ x 84,1%2$@)";
+
+/* Format info */
+"A2 (42%@ x 59,4%@)" = "A2 (42%1$@ x 59,4%2$@)";
+
+/* Format info */
+"A6 (10,5%@ x 14,8%@)" = "A6 (10,5%1$@ x 14,8%2$@)";
+
+/* No comment provided by engineer. */
+"Account name is empty" = "アカウント名が入力されていません";
+
+/* No comment provided by engineer. */
+"Account name is not valid" = "アカウント名は無効です";
+
+/* No comment provided by engineer. */
+"Address is empty" = "住所が空白です";
+
+/* No comment provided by engineer. */
+"All" = "すべて";
+
+/* Category title */
+"All Files" = "すべてのファイル";
+
+/* No comment provided by engineer. */
+"An unexpected error has occurred. Please try again later. Sorry for inconvenience." = "エラーが発生しました。もう一度お試しください。申し訳ございません。";
+
+/* No comment provided by engineer. */
+"Are you sure you want to delete the account %@ from this device?" = "本当にデバイスからアカウンド %@ を削除しますか?";
+
+/* No comment provided by engineer. */
+"Are you sure you want to leave this account?" = "本当にこのアカウントから移動しますか?";
+
+/* No comment provided by engineer. */
+"Author" = "著者";
+
+/* No comment provided by engineer. */
+"Box directory" = "Box ディレクトリ";
+
+/* Data units */
+"bytes" = "バイト";
+
+/* No comment provided by engineer. */
+"Camera Unavailable" = "カメラが使用できます";
+
+/* No comment provided by engineer. */
+"Can not create file in the folder." = "このフォルダーにはファイルを作成できません。";
+
+/* No comment provided by engineer. */
+"Can not create file with this name." = "この名前ではファイルを作成できません。";
+
+/* No comment provided by engineer. */
+"Can not create folder with this name." = "この名前ではフォルダーを作成できません。";
+
+/* No comment provided by engineer. */
+"Can not duplicate the file." = "このファイルをコピーできません。";
+
+/* No comment provided by engineer. */
+"Cancel" = "キャンセル";
+
+/* No comment provided by engineer. */
+"Check your internet connection" = "お使いのインターネットの接続を確認";
+
+/* No comment provided by engineer. */
+"Choose Code Page" = "コードページを選択";
+
+/* No comment provided by engineer. */
+"Choose CSV Options" = "CSV オプションを選択";
+
+/* Caption of the processing */
+"Cleanup" = "クリーン";
+
+/* Button title */
+"Clear Cache" = "キャッシュをクリア";
+
+/* Button title */
+"Clear Cache?" = "キャッシュをクリア?";
+
+/* Caption of the processing */
+"Clearing" = "クリーン";
+
+/* Close view */
+"Close" = "閉じる";
+
+/* No comment provided by engineer. */
+"Close the document before opening a new one." = "このドキュメントを閉じてから、新しいドキュメントを開始する";
+
+/* Default external storage name */
+"Cloud directory" = "クラウドディレクトリ";
+
+/* Cut from centimeters */
+"cm" = "センチメートル";
+
+/* Introduction Step Five - Title */
+"Collaborate with your team" = "チームと共同編集";
+
+/* Category title */
+"Common Documents" = "通常のドキュメント";
+
+/* Cancel */
+"common.cancel" = "キャンセル";
+
+/* Error */
+"common.error" = "エラー";
+
+/* Myself */
+"common.me" = "わたし";
+
+/* OK */
+"common.ok" = "ОК";
+
+/* Payment required message */
+"common.paymentRequiredMsg" = "支払い済み期間が終了しました";
+
+/* Payment required title */
+"common.paymentRequiredTitle" = "支払いが必要です";
+
+/* Button title */
+"Connect" = "接続";
+
+/* No comment provided by engineer. */
+"Connect Clouds" = "クラウドを接続";
+
+/* Introduction Step Three - Description */
+"Connect third-party storage\nlike Nextcloud, ownCloud, Yandex Disk and\nothers which use WebDAV protocol." = "サードパーティーのストレージを接続\nNextcloud、ownCloud, Yandex Disk などのように\n及び\nWebDAV プロトコールを使用する他のクラウド";
+
+/* Footer text */
+"Connect to your %@ cloud to store files online and collaborate on documents in real time" = "%@ クラウドに接続して、オンラインでファイルを保存。リアルタイムでドキュメントを共同編集";
+
+/* Caption of the process */
+"Connecting" = "接続中";
+
+/* No comment provided by engineer. */
+"Continue anyway" = "強制的に続ける";
+
+/* No comment provided by engineer. */
+"Converter" = "コンバーター";
+
+/* Button title */
+"Copy" = "コピー";
+
+/* Button title */
+"Copy here" = "ここにコピー";
+
+/* Caption of the processing */
+"Copying" = "コピー中";
+
+/* No comment provided by engineer. */
+"Could not convert file to export." = "ファイルを転換して、エクスポートできませんでした。";
+
+/* No comment provided by engineer. */
+"Could not copy." = "コピーできませんでした。";
+
+/* No comment provided by engineer. */
+"Could not delete the file." = "このファイルを削除できませんでした。";
+
+/* No comment provided by engineer. */
+"Could not delete the folder." = "このフォルダーを削除できませんでした。";
+
+/* No comment provided by engineer. */
+"Could not delete." = "削除できませんでした。";
+
+/* No comment provided by engineer. */
+"Could not download file." = "ファイルをダウンロードできませんでした。";
+
+/* No comment provided by engineer. */
+"Could not download object." = "オブジェクトをダウンロードできませんでした。";
+
+/* No comment provided by engineer. */
+"Could not download the file." = "このファイルをダウンロードできませんでした。";
+
+/* No comment provided by engineer. */
+"Could not duplicate the file." = "このファイルをコピーできませんでした。";
+
+/* No comment provided by engineer. */
+"Could not export the file." = "このファイルをエクスポートできませんでした。";
+
+/* No comment provided by engineer. */
+"Could not open editor." = "エディターを開始できませんでした。";
+
+/* No comment provided by engineer. */
+"Could not open file." = "ファイルを開始できませんでした。";
+
+/* No comment provided by engineer. */
+"Could not read data from file." = "ファイルからデータを読み取ることができませんでした。";
+
+/* No comment provided by engineer. */
+"Could not read data from the file." = "このファイルからデータを読み取ることができませんでした。";
+
+/* No comment provided by engineer. */
+"Could not save the file." = "このファイルを保存できませんでした。";
+
+/* No comment provided by engineer. */
+"Couldn't open file" = "ファイルを開始できませんでした";
+
+/* No comment provided by engineer. */
+"Create" = "作成";
+
+/* Introduction Step Two - Description */
+"Create and edit documents with our comprehensive toolbar: work with complex objects in text documents, perform extensive calculations in spreadsheets, create stunning presentations and view PDF files with no formatting loss." = "当社の総合ツールバーでドキュメントを作成、編集: テキストドキュメントにある複雑なオブジェクトを編集。スプレッドシートで広範囲の計算を実行。美しいプレゼンテーションを作成して、書式を変更することなく PDF ファイルで閲覧。";
+
+/* No comment provided by engineer. */
+"Create new documents, spreadsheets or presentations. Create new folders to organize your files." = "新規ドキュメント、スプレッドシートまたはプレゼンテーションを作成。新規フォルダーを作成して、ファイルを整理";
+
+/* Caption of the process */
+"Creating" = "作成中";
+
+/* No comment provided by engineer. */
+"Date" = "日付";
+
+/* Button title */
+"Delete" = "削除する";
+
+/* No comment provided by engineer. */
+"Delete %lu File" = "%lu ファイルを削除する";
+
+/* No comment provided by engineer. */
+"Delete %lu Folder" = "%lu フォルダーを削除する";
+
+/* No comment provided by engineer. */
+"Delete %lu Folder and %lu File" = "%1$lu ファルダーと %2$lu ファイルを削除する";
+
+/* No comment provided by engineer. */
+"Delete account" = "アカウントを削除する";
+
+/* Button title */
+"Delete File" = "ファイルを削除する";
+
+/* No comment provided by engineer. */
+"Delete Folder" = "フォルダーを削除する";
+
+/* Caption of the processing */
+"Deleting" = "削除中";
+
+/* No comment provided by engineer. */
+"Delimiter" = "区切り文字";
+
+/* Share status */
+"Deny Access" = "アクセスを拒否";
+
+/* Button title */
+"Disconnect third party" = "サードパーティーの接続をやめる";
+
+/* No comment provided by engineer. */
+"Document" = "ドキュメント";
+
+/* Default title of sample document */
+"Document Sample" = "ドキュメントのサンプル";
+
+/* Category title */
+"Documents" = "ドキュメント";
+
+/* Button title
+   Operation completed */
+"Done" = "終了しました";
+
+/* Button title */
+"Download" = "ダウンロード";
+
+/* Caption of the processing */
+"Downloading" = "ダウンロード中";
+
+/* No comment provided by engineer. */
+"Dropbox" = "Dropbox";
+
+/* No comment provided by engineer. */
+"Dropbox directory" = "Dropbox ディレクトリ";
+
+/* Button title */
+"Duplicate" = "コピー";
+
+/* Caption of the processing */
+"Duplication" = "複製";
+
+/* Data units */
+"Eb" = "Eb";
+
+/* Button title */
+"Edit" = "編集";
+
+/* Introduction Step Four - Title */
+"Edit documents locally" = "ドキュメントをローカルで編集する";
+
+/* No comment provided by engineer. */
+"Email" = "メール";
+
+/* No comment provided by engineer. */
+"Email is empty" = "メールが入力されていません";
+
+/* No comment provided by engineer. */
+"Email is not valid" = "メールが無効です";
+
+/* No comment provided by engineer. */
+"Empty file." = "空のファイル。";
+
+/* No comment provided by engineer. */
+"Empty name." = "空の名前。";
+
+/* No comment provided by engineer. */
+"Encoding" = "符号化する";
+
+/* Presentation Viewer */
+"End Slide Show" = "スライドショーを終了する";
+
+/* No comment provided by engineer. */
+"Enter Portal Address" = "ポータルのアドレスを入力する";
+
+/* No comment provided by engineer. */
+"Error" = "エラー";
+
+/* Access is Forbidden message */
+"error.errorForbiddenMsg" = "ポータルの管理者に連絡して、このリソースにアクセスできるようにする。";
+
+/* Access is Forbidden title */
+"error.errorForbiddenTitle" = "アクセスできません";
+
+/* The resource can not be found Title */
+"error.errorNotFoundMsg" = "リソースが見つかりません";
+
+/* Unknown Server Error */
+"error.errorServerTitle" = "サーバーのエラー";
+
+/* No comment provided by engineer. */
+"Failed online conversion service." = "オンライン変換サービス失敗";
+
+/* No comment provided by engineer. */
+"Failed to check portal availability." = "ポータルの可用性を確認できませんでした。";
+
+/* No comment provided by engineer. */
+"Failed to check the name of the portal" = "ポータルの名前を確認できませんでした";
+
+/* No comment provided by engineer. */
+"Failed to get file information from the server." = "サーバーから情報を取得できませんでした。";
+
+/* No comment provided by engineer. */
+"Failed to get file list." = "ファイルリストを取得できませんでした。";
+
+/* No comment provided by engineer. */
+"Failed to get information about the file." = "このファイルについての情報を取得できませんでした。";
+
+/* No comment provided by engineer. */
+"Failed to get the address of the document server." = "このドキュメントのサーバーのアドレスを取得できませんでした。";
+
+/* No comment provided by engineer. */
+"Failed upload source file to conversion online service." = "ソースファイルを変換オンラインサービスにアップロードできませんでした";
+
+/* No comment provided by engineer. */
+"Failure to download file from portal." = "ポータルからファイルをダウンロードできませんでした。";
+
+/* No comment provided by engineer. */
+"Failure to download result from conversion online service." = "変換オンラインサービスから結果をダウンロードできませんでした。";
+
+/* No comment provided by engineer. */
+"Files" = "ファイル";
+
+/* No comment provided by engineer. */
+"Folder title" = "フォルダーのタイトル";
+
+/* No comment provided by engineer. */
+"Folders" = "フォルダー";
+
+/* Share status */
+"Full Access" = "フルアクセス";
+
+/* Data units */
+"Gb" = "ギガバイト";
+
+/* No comment provided by engineer. */
+"Get started" = "開始する";
+
+/* No comment provided by engineer. */
+"GET STARTED!" = "開始する!";
+
+/* Introduction Step One - Title */
+"Getting started" = "開始方法";
+
+/* No comment provided by engineer. */
+"Google directory" = "Google ディレクトリ";
+
+/* No comment provided by engineer. */
+"Google Drive" = "Google ドライブ";
+
+/* No comment provided by engineer. */
+"Groups" = "グループ";
+
+/* No comment provided by engineer. */
+"Images" = "イメージ";
+
+/* Introduction Step Five - Description */
+"In online mode, use real-time co-editing features of %@ to work on documents together with your portal members, share documents and create common storage folders." = "オンラインモードでは、リアルタイム共同編集機能の %@ を使用して、ポータルのメンバーと一緒にドキュメントを編集。さらにドキュメントを共有して、一般ストレージフォルダーを作成。";
+
+/* No comment provided by engineer. */
+"Incorrect portal address" = "ポータルのアドレスが正しくありません";
+
+/* No comment provided by engineer. */
+"Invalid Country Code" = "国コードが無効です";
+
+/* Data units */
+"Kb" = "キガバイト";
+
+/* Caption of the process */
+"Logging in" = "ログインしました";
+
+/* No comment provided by engineer. */
+"Login" = "ログイン";
+
+/* No comment provided by engineer. */
+"Login by %@" = "%@ がログイン";
+
+/* No comment provided by engineer. */
+"Login is empty" = "ログインが空です";
+
+/* Button title
+   Caption of the process */
+"Logout" = "ログアウト";
+
+/* Data units */
+"Mb" = "メガバイト";
+
+/* If current user name is not set */
+"Me" = "わたし";
+
+/* Button title */
+"More" = "もっと";
+
+/* Button title */
+"Move" = "移動";
+
+/* Button title */
+"Move here" = "ここに移動";
+
+/* Button title */
+"Move or Copy" = "移動またはコピー";
+
+/* Caption of the processing */
+"Moving" = "移動中";
+
+/* No comment provided by engineer. */
+"My Clouds" = "マイクラウド";
+
+/* Category title */
+"My Documents" = "マイドキュメント";
+
+/* No comment provided by engineer. */
+"My Drive" = "マイドライブ";
+
+/* No comment provided by engineer. */
+"Name is empty" = "名前が空です";
+
+/* No comment provided by engineer. */
+"Needs additional params." = "追加のパラミーターが必要です。";
+
+/* No comment provided by engineer. */
+"New Document" = "新規ドキュメント";
+
+/* No comment provided by engineer. */
+"New Folder" = "新規フォルダー";
+
+/* No comment provided by engineer. */
+"New Presentation" = "新しいプレゼンテーション";
+
+/* No comment provided by engineer. */
+"New Spreadsheet" = "新規スプレッドシート";
+
+/* Next step */
+"Next" = "次の変更箇所";
+
+/* No comment provided by engineer. */
+"Nextcloud" = "Nextcloud";
+
+/* No comment provided by engineer. */
+"No connection" = "接続がありません";
+
+/* No comment provided by engineer. */
+"No information about the user profile." = "このユーザーのプロファイルの情報がありません。";
+
+/* No comment provided by engineer. */
+"No network" = "ネットワークがありません";
+
+/* No comment provided by engineer. */
+"No network connection can be found. Please check the connection and reload the page." = "ネットワークの接続が見つかりません。接続を確認し、ページを再度読み込んでください。";
+
+/* No comment provided by engineer. */
+"No results matching your search could be found. Please try another phrase." = "検索に合う結果は見つかりませんでした。他のフレーズを試してください。";
+
+/* No comment provided by engineer. */
+"No search result" = "検索結果はありません。";
+
+/* Invalid entity date
+   Invalid entity owner */
+"none" = "なし";
+
+/* If the cache is empty
+   Share status */
+"None" = "なし";
+
+/* No comment provided by engineer. */
+"Note: removal from your account can not be undone." = "注: アカウント空の削除は失敗することがあります。";
+
+/* Used in the context: 'Showing 1 of 3 items' */
+"of" = "から";
+
+/* No comment provided by engineer. */
+"OK" = "ОК";
+
+/* Category title */
+"On iPad" = "iPad で";
+
+/* Category title */
+"On iPhone" = "iPhone で";
+
+/* No comment provided by engineer. */
+"Once you enter the password and open the file, the current password to the file will be reset" = "パスワードを入力してこのファイルを開いたら、このファイルへの現在のパスワードが再設定されます";
+
+/* No comment provided by engineer. */
+"OneDrive directory" = "OneDrive ディレクトリ";
+
+/* No comment provided by engineer. */
+"OneDrive for Business" = "業務用 OneDrive ";
+
+/* Short App Name */
+"ONLYOFFICE" = "ONLYOFFICE";
+
+/* Full App Name */
+"ONLYOFFICE Documents" = "ONLYOFFICE Documents";
+
+/* No comment provided by engineer. */
+"Oops!" = "申し訳ございません。";
+
+/* No comment provided by engineer. */
+"Open Document" = "ドキュメントを開く";
+
+/* Caption of the processing */
+"Opening" = "開始中";
+
+/* No comment provided by engineer. */
+"Order" = "命令";
+
+/* No comment provided by engineer. */
+"Other" = "他の";
+
+/* Button title */
+"Overwrite" = "上書き";
+
+/* Button title */
+"Overwrite confirmation" = "上書き確定";
+
+/* No comment provided by engineer. */
+"ownCloud" = "ownCloud";
+
+/* Table cell right holder acces text */
+"Owner" = "所有者";
+
+/* No comment provided by engineer. */
+"Password" = "パスワード";
+
+/* No comment provided by engineer. */
+"Password is empty" = "パスワードが入力されていません";
+
+/* No comment provided by engineer. */
+"Passwords do not match" = "パスワードが合いません";
+
+/* Data units */
+"Pb" = "プライベートブランド";
+
+/* Used in the context: '1 photo' */
+"photo" = "写真";
+
+/* Used in the context: '3 photos' */
+"photos" = "写真";
+
+/* No comment provided by engineer. */
+"Please go to Settings and enable the camera for this app to use this feature." = "［設定］へ移動して、このアプリ用のカメラを有効にして、この機能を使用します。";
+
+/* No comment provided by engineer. */
+"Please re-login to renew your session." = "ログインし直して、セッションをリニューします。";
+
+/* No comment provided by engineer. */
+"Please retry. \n\n If the problem persists contact us and mention this error code: Box - %@" = "もう一度お試しください。 \n\n問題が続く場合は、当社にお問い合わせになり、このエラーコード (Box - %@) を知らせてください。";
+
+/* No comment provided by engineer. */
+"Please retry. \n\n If the problem persists contact us and mention this error code: Dropbox - %@" = "もう一度お試しください。\n\n問題が続く場合は、当社にお問い合わせになり、このエラーコード (Dropbox - %@) を知らせてください。";
+
+/* No comment provided by engineer. */
+"Please retry. \n\n If the problem persists contact us and mention this error code: Google - %@" = "もう一度お試しください。\n\n問題が続く場合は、当社にお問い合わせになり、このエラーコード  (Google - %@) を知らせてください。";
+
+/* No comment provided by engineer. */
+"Please retry. \n\n If the problem persists contact us and mention this error code: OneDrive - %@" = "もう一度お試しください。\n\n問題が続く場合は、当社にお問い合わせになり、このエラーコード  (OneDrive - %) を知らせてください。";
+
+/* No comment provided by engineer. */
+"Please retry. \n\n If the problem persists contact us and mention this error code: SSO - %@" = "もう一度お試しください。\n\n問題が続く場合は、当社にお問い合わせになり、このエラーコード  (SSO - %@) を知らせてください。";
+
+/* No comment provided by engineer. */
+"Portal Address" = "ポータルのアドレス:";
+
+/* No comment provided by engineer. */
+"Portal is unavailable." = "ポータルは使用できません。";
+
+/* No comment provided by engineer. */
+"Presentation" = "プレゼンテーション";
+
+/* Default title of sample document */
+"Presentation Sample" = "プレゼンテーションのサンプル";
+
+/* No comment provided by engineer. */
+"Presentations" = "プレゼンテーション";
+
+/* Button title */
+"Preview" = "下見";
+
+/* Caption of the processing */
+"Processing" = "処理中";
+
+/* Category title */
+"Project Documents" = "プロジェクトドキュメント";
+
+/* No comment provided by engineer. */
+"Protected File" = "保護ファイル";
+
+/* Share status */
+"Read Only" = "閲覧のみ";
+
+/* Button title */
+"Recover here" = "ここで回復する";
+
+/* Caption of the processing */
+"Recovery" = "回復";
+
+/* No comment provided by engineer. */
+"Registration" = "登録";
+
+/* No comment provided by engineer. */
+"Reload" = "リロードする";
+
+/* Button title */
+"Rename" = "再度名前を付ける";
+
+/* No comment provided by engineer. */
+"Rename failed." = "名前を付け直すことができませんでした。";
+
+/* No comment provided by engineer. */
+"Rename failed. An object with such a similar name exists." = "名前を付け直すことができませんでした。類似する名前のオブジェクトが存在します。";
+
+/* Caption of the processing */
+"Renaming" = "名前を付け直しています";
+
+/* No comment provided by engineer. */
+"Renewal" = "リニューアル";
+
+/* Button title */
+"Restore" = "戻す";
+
+/* Caption of the processing */
+"Restoring" = "戻しています";
+
+/* Share status */
+"Review" = "見直し";
+
+/* Caption of the processing */
+"Saving" = "保存中";
+
+/* Button title
+   Navigation bar button title */
+"Select" = "選択";
+
+/* No comment provided by engineer. */
+"Select another cloud to connect to Nextcloud, ownCloud and others are supported." = "もう1つのクラウドを選択して、Nextcloud、ownCloud、サポートされている他のクラウドに接続";
+
+/* No comment provided by engineer. */
+"Select Photos" = "画像を選択";
+
+/* One line. Max 50 charasters */
+"Select the folder to copy the items" = "フォルダーを選択して、アイテムをコピーする";
+
+/* One line. Max 50 charasters */
+"Select the folder to move the items" = "フォルダーを選択して、アイテムを移動する";
+
+/* One line. Max 50 charasters */
+"Select the folder to recover the items" = "フォルダーを選択して、アイテムを回復する";
+
+/* No comment provided by engineer. */
+"Selected provider is not available" = "選択したプロバイダーはご利用できません";
+
+/* No comment provided by engineer. */
+"Selected: %ld" = "選択済み: %ld";
+
+/* No comment provided by engineer. */
+"Settings" = "設定";
+
+/* Category title */
+"Shared with Me" = "わたしと共有";
+
+/* No comment provided by engineer. */
+"SharePoint directory" = "SharePoint ディレクトリ";
+
+/* Caption of the process */
+"Sharing" = "共有中";
+
+/* No comment provided by engineer. */
+"Single Sign-on" = "シングルサインオン";
+
+/* No comment provided by engineer. */
+"Size" = "サイズ";
+
+/* Button title */
+"Skip" = "［スキップ］";
+
+/* No comment provided by engineer. */
+"SKIP" = "［スキップ］";
+
+/* Presentation Viewer */
+"Slide %i of %i" = "%2$i の %1$i スライド";
+
+/* Button title */
+"Sort" = "並べ替え";
+
+/* No comment provided by engineer. */
+"Space" = "間隔";
+
+/* No comment provided by engineer. */
+"Spreadsheet" = "スプレッドシート";
+
+/* Default title of sample document */
+"Spreadsheet Sample" = "スプレッドシートのサンプル";
+
+/* No comment provided by engineer. */
+"Spreadsheets" = "スプレッドシート";
+
+/* No comment provided by engineer. */
+"Switch" = "スイッチ";
+
+/* No comment provided by engineer. */
+"Tab" = "タブ";
+
+/* Data units */
+"Tb" = "Tb";
+
+/* Notification title */
+"Text copied" = "テキストをコピーしました";
+
+/* No comment provided by engineer. */
+"The account name must be between 6 and 50 characters long" = "アカウント名は 6 字から 50 字で入力してください";
+
+/* No comment provided by engineer. */
+"The deleted files go to the trash. You can either restore or delete them forever." = "削除されたファイルはごみ箱に移動します。それらを回復するか、永久に削除できます。";
+
+/* No comment provided by engineer. */
+"The file in the Trash can not be viewed." = "ごみ箱にあるファイルを閲覧することはできません。";
+
+/* No comment provided by engineer. */
+"The file will be irretrievably deleted. This action is irreversible." = "ファイルは永久に削除されます。このアクションは取り止めできません。";
+
+/* No comment provided by engineer. */
+"The folder will be irretrievably deleted. This action is irreversible." = "フォルダーは永久に削除されます。このアクションは取り止めできません。";
+
+/* No comment provided by engineer. */
+"The item with the name '%@' already exists in the folder '%@'." = "‘%1$@’ という名前のファイルは既にフォルダー '%2$@’ に存在します。";
+
+/* No comment provided by engineer. */
+"The portal address is invalid" = "このポータルのアドレスは無効です";
+
+/* No comment provided by engineer. */
+"The portal name must be between 6 and 50 characters long" = "アカウント名は 6 字から 50 字で入力してください";
+
+/* No comment provided by engineer. */
+"The server is not available." = "このサーバーは利用できません。";
+
+/* No comment provided by engineer. */
+"The trash is empty" = "ごみ箱は空です";
+
+/* Introduction Step Three - Title */
+"Third-party storage" = "サードパーティーのストレージ";
+
+/* No comment provided by engineer. */
+"This document is being edited. Do you want open %@ to view only?" = "このドキュメントは編集中です。%@ を開いて閲覧だけしますか?";
+
+/* No comment provided by engineer. */
+"This folder is empty" = "このフォルダーは空です";
+
+/* No comment provided by engineer. */
+"This operation will free up space on your device by deleting temporary files. Your offline files and personal data won't be removed." = "この操作で、一時ファイルが削除されるので、デバイスにスペースを作ることができます。オフィスファイルや個人データは削除されません。";
+
+/* No comment provided by engineer. */
+"This presentation is being edited. Do you want open %@ to view only?" = "このプレゼンテーションは編集中です。%@ を開いて閲覧だけしますか?";
+
+/* No comment provided by engineer. */
+"This spreadsheet is being edited. Do you want open %@ to view only?" = "このスプレッドシートは編集中です。%@ を開いて閲覧だけしますか?";
+
+/* No comment provided by engineer. */
+"Title" = "タイトル:";
+
+/* No comment provided by engineer. */
+"To open a document, you must go to portal %@ under your account." = "ドキュメントを開くには、専用のアカウントでポータル %@ に移動してください。";
+
+/* No comment provided by engineer. */
+"To open a new document, you must exit the current document." = "新規ドキュメントを開くには、現在のドキュメントを中止してください。";
+
+/* Category title */
+"Trash" = "ごみ箱";
+
+/* No comment provided by engineer. */
+"Try again" = "もう一度お試しください";
+
+/* No comment provided by engineer. */
+"Try Again" = "もう一度お試しください";
+
+/* No comment provided by engineer. */
+"Try to connect via another protocol?" = "他のプロトコールで接続を試しますか?";
+
+/* No comment provided by engineer. */
+"Turn Passcode Off" = "パスコードをオフにする";
+
+/* No comment provided by engineer. */
+"Turn Passcode On" = "パスコードをオンにする";
+
+/* No comment provided by engineer. */
+"Type" = "タイプ";
+
+/* No comment provided by engineer. */
+"Unable to get information about the portal" = "このポータルについての情報を取得できません";
+
+/* No comment provided by engineer. */
+"Unable to get information about the user." = "このユーザーについての情報を取得できません";
+
+/* No comment provided by engineer. */
+"Unexpected response from the service." = "サーバーからの予期せぬ応答";
+
+/* Invalid entity name */
+"Unknown" = "未知の";
+
+/* No comment provided by engineer. */
+"Unknown file provider" = "未知のファイルプロバイダー";
+
+/* No comment provided by engineer. */
+"Unknown item type." = "未知のアイテムの種類";
+
+/* No comment provided by engineer. */
+"Unlock with Face ID" = "顔認証でロックを解除";
+
+/* No comment provided by engineer. */
+"Unlock with Touch ID" = "Touch ID でロックを解除";
+
+/* No comment provided by engineer. */
+"Unsupported format." = "サポートされていない書式";
+
+/* Caption of the process */
+"Uploading" = "アップロード中";
+
+/* Button title */
+"Use Face ID" = "顔認証を使用する";
+
+/* Button title */
+"Use Touch ID" = "Touch ID を使用する";
+
+/* No comment provided by engineer. */
+"User authentication failed" = "ユーザーの承認に失敗しました";
+
+/* No comment provided by engineer. */
+"User undefined" = "ユーザーによる定義";
+
+/* No comment provided by engineer. */
+"Users" = "ユーザー";
+
+/* Caption of the process */
+"Validation" = "確認";
+
+/* Share status */
+"Varies" = "異なります";
+
+/* No comment provided by engineer. */
+"Version" = "バージョン";
+
+/* No comment provided by engineer. */
+"Warning" = "警告";
+
+/* No comment provided by engineer. */
+"We are sorry, this portal name is already taken" = "申し訳ございません。このポータル名は既に使用されています";
+
+/* No comment provided by engineer. */
+"We have sent you an SMS with a code to the number %@" = "番号 %@ にコードが記載されたショートメッセージを送信しました";
+
+/* No comment provided by engineer. */
+"WebDAV" = "WebDAV";
+
+/* No comment provided by engineer. */
+"WebDAV directory" = "WebDAV ディレクトリ";
+
+/* Introduction Step One - Description */
+"Welcome to %@ mobile editing suite!\nSwipe to learn more about the app." = "%@ モバイル編集スイートへようこそ。";
+
+/* No comment provided by engineer. */
+"What's New" = "新規機能";
+
+/* Introduction Step Four - Description */
+"Work with documents offline.\nCreated files can later be uploaded to online portal and\nthen accessed from any other device." = "ドキュメントをオフラインで編集する。作成したファイルは、後ほどオンラインポータルでアップロードされることがありますそして任意の他のデバイスからアクセスしました。";
+
+/* Introduction Step Two - Title */
+"Work with office files" = "オフラインファイルを編集する";
+
+/* No comment provided by engineer. */
+"Wrong login or password." = "間違ったログインかパスワードです。";
+
+/* No comment provided by engineer. */
+"Yandex directory" = "Yandex ディレクトリ";
+
+/* No comment provided by engineer. */
+"Yandex Disk" = "Yandex Disk";
+
+/* Data units */
+"Yb" = "Yb";
+
+/* No comment provided by engineer. */
+"You can connect the following accounts to the %@." = "次のアカウントを %@ に接続できます。";
+
+/* No comment provided by engineer. */
+"You can connect the following accounts to the %@. They will be displayed in 'My Documents' folder and you will be able to edit and save them right on the portal all in one place." = "次のアカウントを %@ に接続できます。これらのアカウントは ‘My Documents’ フォルダーで表示され、すべて一か所でポータルから編集、保存できます。’";
+
+/* No comment provided by engineer. */
+"You have read-only access to this folder. You cannot create files or folders here." = "このフォルダーへは閲覧のみ権限があります。ここでは、ファイルやフォルダーを作成できません。";
+
+/* No comment provided by engineer. */
+"Your session has expired" = "セッションが切れました";
+
+/* Data units */
+"Zb" = "Zb";
+
+/* Data units */
+"Zero bytes" = "0 バイト";
+
+/* No comment provided by engineer. */
+"Сould not download file." = "このファイルをダウンロードできませんでした。";
+
+/* No comment provided by engineer. */
+"Сould not upload file." = "ファイルをアップロードできませんでした。";
+

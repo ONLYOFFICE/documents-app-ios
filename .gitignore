@@ -15,6 +15,7 @@ Pods
 fastlane/report.xml
 fastlane/test_output
 fastlane/Preview.html
+fastlane/metadata
 fastlane/screenshots
 
 fastlane/.env.secret

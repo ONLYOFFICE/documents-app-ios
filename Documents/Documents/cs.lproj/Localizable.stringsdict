@@ -12,10 +12,14 @@
 			<string>NSStringPluralRuleType</string>
 			<key>NSStringFormatValueTypeKey</key>
 			<string>d</string>
+			<key>few</key>
+			<string>%d vybraných</string>
+			<key>many</key>
+			<string>%d vybraných</string>
 			<key>one</key>
-			<string>%d selected</string>
+			<string>%d vybraných</string>
 			<key>other</key>
-			<string>%d selected</string>
+			<string>%d vybraných</string>
 		</dict>
 	</dict>
 	<key>%lu File selected</key>

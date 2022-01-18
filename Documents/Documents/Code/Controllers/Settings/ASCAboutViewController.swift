@@ -49,10 +49,11 @@ class ASCAboutViewController: UITableViewController, UIGestureRecognizerDelegate
     
     @IBOutlet weak var versionLabel: UILabel!
     @IBOutlet weak var rateCell: UITableViewCell!
-    @IBOutlet weak var agreementCell: UITableViewCell!
     @IBOutlet weak var tellFriendCell: UITableViewCell!
     @IBOutlet weak var copyrightsLabel: UILabel!
     @IBOutlet weak var logoImageView: UIImageView!
+    @IBOutlet weak var termsOfServiceCell: UITableViewCell!
+    @IBOutlet weak var privacyPolicyCell: UITableViewCell!
     
     fileprivate var secretsTaps = 0
     fileprivate var secretsMaxTaps = 10
@@ -145,8 +146,18 @@ class ASCAboutViewController: UITableViewController, UIGestureRecognizerDelegate
             } else {
                 SwiftRater.rateApp()
             }
-        } else if cell == agreementCell {
-            UIApplication.shared.open(URL(string: ASCConstants.Urls.legalTerms)!, options: [:], completionHandler: nil)
+        } else if cell == termsOfServiceCell {
+            let termsOfServiceLink = ASCConstants.remoteConfigValue(forKey: ASCConstants.RemoteSettingsKeys.termsOfServiceLink)?.stringValue ?? ASCConstants.Urls.legalTerms
+            
+            if let url = URL(string: termsOfServiceLink) {
+                UIApplication.shared.open(url, options: [:], completionHandler: nil)
+            }
+        } else if cell == privacyPolicyCell {
+            let privacyPolicyLink = ASCConstants.remoteConfigValue(forKey: ASCConstants.RemoteSettingsKeys.privacyPolicyLink)?.stringValue ?? ASCConstants.Urls.legalTerms
+            
+            if let url = URL(string: privacyPolicyLink) {
+                UIApplication.shared.open(url, options: [:], completionHandler: nil)
+            }
         } else if cell == tellFriendCell {
             let activityController = UIActivityViewController(
                 activityItems: [

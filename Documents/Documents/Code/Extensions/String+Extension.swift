@@ -417,4 +417,7 @@ public extension String {
         return (self as NSString).appendingPathExtension(str)
     }
 
+    func contains(_ strings: [String]) -> Bool {
+        strings.contains { contains($0) }
+    }
 }

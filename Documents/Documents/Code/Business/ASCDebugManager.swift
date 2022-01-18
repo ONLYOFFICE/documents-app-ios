@@ -11,8 +11,16 @@ import UIKit
 class ASCDebugManager: NSObject {
     public static let shared = ASCDebugManager()
     
-    public var enabled: Bool = false
+    public var enabled: Bool {
+        get {
+            return UserDefaults.standard.bool(forKey: isDebugModeKey)
+        }
+        set {
+            UserDefaults.standard.set(newValue, forKey: isDebugModeKey)
+        }
+    }
     
+    fileprivate let isDebugModeKey = "asc.debug.mode"
     fileprivate var presented: Bool = false
     fileprivate var presentingViewController: UIViewController? {
         var rootViewController = UIApplication.shared.keyWindow?.rootViewController

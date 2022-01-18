@@ -13,9 +13,9 @@
 			<key>NSStringFormatValueTypeKey</key>
 			<string>d</string>
 			<key>one</key>
-			<string>%d selected</string>
+			<string>%d séléctionné</string>
 			<key>other</key>
-			<string>%d selected</string>
+			<string>%d séléctionné</string>
 		</dict>
 	</dict>
 	<key>%lu File selected</key>

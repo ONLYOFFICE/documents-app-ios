@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import GoogleAPIClientForREST
 
 class ASCConnectStorageOAuth2Google: ASCConnectStorageOAuth2Delegate {
 
@@ -23,11 +24,12 @@ class ASCConnectStorageOAuth2Google: ASCConnectStorageOAuth2Delegate {
     // MARK: - ASCConnectStorageOAuth2 Delegate
     
     func viewDidLoad(controller: ASCConnectStorageOAuth2ViewController) {
+        
         let parameters: [String: String] = [
             "access_type"        : "offline",
             "response_type"      : "code",
             "approval_prompt"    : "force",
-            "scope"              : "https://www.googleapis.com/auth/drive",
+            "scope"              : kGTLRAuthScopeDrive,
             "client_id"          : clientId ?? "",
             "redirect_uri"       : redirectUrl ?? ""
         ]

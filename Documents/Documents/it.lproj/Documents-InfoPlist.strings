@@ -1,27 +1,24 @@
 /* Bundle name */
-"CFBundleName" = "Документы";
-
-/* (No Commment) */
-"CFBundleDisplayName" = "Документы";
+"CFBundleName" = "Documenti";
 
 /* (No Comment) */
-"New Document" = "Новый документ";
+"New Document" = "Nuovo documento";
 
 /* (No Comment) */
-"New Presentation" = "Новая презентация";
+"New Presentation" = "Nuova presentazione";
 
 /* (No Comment) */
-"New Spreadsheet" = "Новая таблица";
+"New Spreadsheet" = "Nuovo foglio di calcolo";
 
 /* Privacy - Camera Usage Description */
-"NSCameraUsageDescription" = "Это приложение требует доступа к камере, чтобы иметь возможность снимать фото и загрузить его в приложение.";
+"NSCameraUsageDescription" = "Questa app richiede l'accesso alla fotocamera, in modo da poter scattare una foto e caricarla nell'app.";
 
 /* Privacy - Face ID Usage Description */
-"NSFaceIDUsageDescription" = "Этому приложению требуется разрешение на использование Face ID для аутентификации с помощью технологии распознавания лиц.";
+"NSFaceIDUsageDescription" = "Questa app richiede l'autorizzazione Face ID per l'autenticazione tramite il riconoscimento facciale.";
 
 /* Privacy - Photo Library Additions Usage Description */
-"NSPhotoLibraryAddUsageDescription" = "Это приложение требует доступа к библиотеке фотографий, для загрузки фотографий из библиотеке фотографий.";
+"NSPhotoLibraryAddUsageDescription" = "Questa app richiede l'accesso alla libreria di foto, in modo da poter caricare le tue foto nell'app.";
 
 /* Privacy - Photo Library Usage Description */
-"NSPhotoLibraryUsageDescription" = "Это приложение требует доступа к библиотеке фотографий, для загрузки фотографий из библиотеке фотографий.";
+"NSPhotoLibraryUsageDescription" = "Questa app richiede l'accesso alla libreria di foto, in modo da poter caricare le tue foto nell'app.";
 

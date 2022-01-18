@@ -15,14 +15,19 @@ final class WhatsNewService {
         class var news: [WhatsNew.Item] {
             return [
                 WhatsNew.Item(
-                    title: NSLocalizedString("OneDrive and kDrive access", comment: ""),
-                    subtitle: NSLocalizedString("View and edit files in OneDrive and kDrive directly from the app. Access your storages from the Clouds tab.", comment: ""),
-                    image: Asset.Images.whatsnewFutureClouds.image
+                    title: NSLocalizedString("Fillable forms", comment: ""),
+                    subtitle: NSLocalizedString("View and fill online forms, save them as PDF files.", comment: ""),
+                    image: Asset.Images.whatsnewFutureForm.image
                 ),
                 WhatsNew.Item(
-                    title: NSLocalizedString("Favorites and Recents", comment: ""),
-                    subtitle: NSLocalizedString("Access files in Favorites and Recents on ONLYOFFICE portal from the app", comment: ""),
-                    image: Asset.Images.whatsnewFutureOnlyoffice.image
+                    title: NSLocalizedString("Better formatting", comment: ""),
+                    subtitle: NSLocalizedString("Clear formatting, use extended color palette, and change font with improved settings.", comment: ""),
+                    image: Asset.Images.whatsnewFutureСleaFormat.image
+                ),
+                WhatsNew.Item(
+                    title: NSLocalizedString("External keyboards", comment: ""),
+                    subtitle: NSLocalizedString("Use external keyboards in ONLYOFFICE Documents with improved compatibility.", comment: ""),
+                    image: Asset.Images.whatsnewFutureKeyboard.image
                 )
             ]
         }

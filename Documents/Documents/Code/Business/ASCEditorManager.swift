@@ -173,11 +173,12 @@ class ASCEditorManager: NSObject, DEEditorDelegate, SEEditorDelegate, PEEditorDe
         let isDocument      = (["docx"] + ASCConstants.FileExtensions.editorImportDocuments).contains(fileExt)
         let isSpreadsheet   = (["xlsx"] + ASCConstants.FileExtensions.editorImportSpreadsheets).contains(fileExt)
         let isPresentation  = (["pptx"] + ASCConstants.FileExtensions.editorImportPresentations).contains(fileExt)
+        let isForm          = ASCConstants.FileExtensions.forms.contains(fileExt)
 
         var cancel = false
         var editorNavigationController: UIViewController? = nil
         
-        if isDocument {
+        if isDocument || isForm {
             editorNavigationController = DEEditorNavigationController()
         } else if isSpreadsheet {
             editorNavigationController = SEEditorNavigationController()
@@ -194,8 +195,17 @@ class ASCEditorManager: NSObject, DEEditorDelegate, SEEditorDelegate, PEEditorDe
         openedCopy = locallyEditing
         
         let password = UserDefaults.standard.object(forKey: ASCConstants.SettingsKeys.passwordOpenedDocument) as? String ?? ""
+        var documentPermissions: String?
         
-        let documentInfo = [
+        // FillForms mode
+        if isForm && fileExt == "oform" {
+            documentPermissions = [
+                "fillForms": true,
+                "onDevice" : true
+            ].jsonString()
+        }
+        
+        var documentInfo = [
             "title"             : file.title,
             "viewMode"          : viewMode,
             "date"              : file.updated ?? Date(),
@@ -209,6 +219,12 @@ class ASCEditorManager: NSObject, DEEditorDelegate, SEEditorDelegate, PEEditorDe
             "appFonts"          : editorFontsPaths,
             "dataFontsPath"     : dataFontsPath
             ] as [String : Any]
+        
+        if let documentPermissions = documentPermissions {
+            documentInfo += [
+                "documentPermissions" : documentPermissions
+            ]
+        }
         
         if false == viewMode {
             UserDefaults.standard.set(documentInfo, forKey: ASCConstants.SettingsKeys.openedDocument)
@@ -254,7 +270,10 @@ class ASCEditorManager: NSObject, DEEditorDelegate, SEEditorDelegate, PEEditorDe
                                         ? ASCAnalytics.Event.Value.spreadsheet
                                         : (isPresentation
                                             ? ASCAnalytics.Event.Value.presentation
-                                            : ASCAnalytics.Event.Value.unknown
+                                            : (isForm
+                                               ? ASCAnalytics.Event.Value.form
+                                               : ASCAnalytics.Event.Value.unknown
+                                            )
                                         )
                                     ),
                                 ASCAnalytics.Event.Key.onDevice: file.device,
@@ -277,11 +296,12 @@ class ASCEditorManager: NSObject, DEEditorDelegate, SEEditorDelegate, PEEditorDe
         let isDocument      = (["docx"] + ASCConstants.FileExtensions.editorImportDocuments).contains(fileExt)
         let isSpreadsheet   = (["xlsx"] + ASCConstants.FileExtensions.editorImportSpreadsheets).contains(fileExt)
         let isPresentation  = (["pptx"] + ASCConstants.FileExtensions.editorImportPresentations).contains(fileExt)
+        let isForm          = ASCConstants.FileExtensions.forms.contains(fileExt)
 
         var cancel = false
         var editorNavigationController: UIViewController? = nil
             
-        if isDocument {
+        if isDocument || isForm {
             editorNavigationController = DEEditorNavigationController()
         } else if isSpreadsheet {
             editorNavigationController = SEEditorNavigationController()
@@ -377,7 +397,10 @@ class ASCEditorManager: NSObject, DEEditorDelegate, SEEditorDelegate, PEEditorDe
                             ? ASCAnalytics.Event.Value.spreadsheet
                             : (isPresentation
                                 ? ASCAnalytics.Event.Value.presentation
-                                : ASCAnalytics.Event.Value.unknown
+                                : (isForm
+                                   ? ASCAnalytics.Event.Value.form
+                                   : ASCAnalytics.Event.Value.unknown
+                                )
                             )
                         ),
                     ASCAnalytics.Event.Key.onDevice: false,
@@ -495,7 +518,7 @@ class ASCEditorManager: NSObject, DEEditorDelegate, SEEditorDelegate, PEEditorDe
         var conversionDirection = ConversionDirection.CD_ERROR
 
         switch fileExtension {
-        case "docx", "doc", "rtf", "mht", "html", "htm", "epub", "fb2":
+        case "docx", "doc", "rtf", "mht", "html", "htm", "epub", "fb2", "docxf", "oform":
             conversionDirection = ConversionDirection.CD_DOCX2DOCT_BIN
         case "xlsx", "xls":
             conversionDirection = ConversionDirection.CD_XSLX2XSLT_BIN
@@ -611,7 +634,7 @@ class ASCEditorManager: NSObject, DEEditorDelegate, SEEditorDelegate, PEEditorDe
         var conversionDirection = ConversionDirection.CD_ERROR
 
         switch fileExtension {
-        case "docx":
+        case "docx", "docxf", "oform":
             conversionDirection = ConversionDirection.CD_DOCT_BIN2DOCX
         case "xlsx":
             conversionDirection = ConversionDirection.CD_XSLT_BIN2XSLX
@@ -707,7 +730,7 @@ class ASCEditorManager: NSObject, DEEditorDelegate, SEEditorDelegate, PEEditorDe
         var conversionDirection = ConversionDirection.CD_ERROR
 
         switch fileExt {
-        case "docx":
+        case "docx", "docxf", "oform":
             conversionDirection = ConversionDirection.CD_DOCT_BIN2DOCX
         case "xlsx":
             conversionDirection = ConversionDirection.CD_XSLT_BIN2XSLX

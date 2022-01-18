@@ -186,6 +186,44 @@
 				<string>com.microsoft.word.mhtml</string>
 			</array>
 		</dict>
+		<dict>
+			<key>CFBundleTypeExtensions</key>
+			<array>
+				<string>oform</string>
+				<string>OFORM</string>
+			</array>
+			<key>CFBundleTypeIconFiles</key>
+			<array>
+				<string>list-format-oform</string>
+			</array>
+			<key>CFBundleTypeName</key>
+			<string>ONLYOFFICE fillable form (.oform)</string>
+			<key>LSHandlerRank</key>
+			<string>Owner</string>
+			<key>LSItemContentTypes</key>
+			<array>
+				<string>org.onlyoffice.oform</string>
+			</array>
+		</dict>
+		<dict>
+			<key>CFBundleTypeExtensions</key>
+			<array>
+				<string>docxf</string>
+				<string>DOCXF</string>
+			</array>
+			<key>CFBundleTypeIconFiles</key>
+			<array>
+				<string>list-format-docxf</string>
+			</array>
+			<key>CFBundleTypeName</key>
+			<string>ONLYOFFICE form template (.docxf)</string>
+			<key>LSHandlerRank</key>
+			<string>Owner</string>
+			<key>LSItemContentTypes</key>
+			<array>
+				<string>org.onlyoffice.docxf</string>
+			</array>
+		</dict>
 	</array>
 	<key>CFBundleExecutable</key>
 	<string>$(EXECUTABLE_NAME)</string>
@@ -198,7 +236,7 @@
 	<key>CFBundlePackageType</key>
 	<string>APPL</string>
 	<key>CFBundleShortVersionString</key>
-	<string>6.6</string>
+	<string>7.0</string>
 	<key>CFBundleURLTypes</key>
 	<array>
 		<dict>
@@ -233,7 +271,13 @@
 		</dict>
 	</array>
 	<key>CFBundleVersion</key>
-	<string>671</string>
+	<string>688</string>
+	<key>FacebookAdvertiserIDCollectionEnabled</key>
+	<integer>0</integer>
+	<key>FacebookAutoInitEnabled</key>
+	<integer>0</integer>
+	<key>FacebookAutoLogAppEventsEnabled</key>
+	<integer>0</integer>
 	<key>FacebookDisplayName</key>
 	<string>Login on ONLYOFFICE</string>
 	<key>ITSAppUsesNonExemptEncryption</key>
@@ -266,7 +310,7 @@
 	</dict>
 	<key>NSBonjourServices</key>
 	<array>
-		<string>_Bagel._tcp</string>
+		<string>_Proxyman._tcp</string>
 	</array>
 	<key>NSCameraUsageDescription</key>
 	<string>This app requires access to the camera, so that you can take photo and upload it in the app.</string>
@@ -347,6 +391,88 @@
 		<string>UIInterfaceOrientationPortraitUpsideDown</string>
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
+	</array>
+	<key>UTExportedTypeDeclarations</key>
+	<array>
+		<dict>
+			<key>UTTypeConformsTo</key>
+			<array>
+				<string>public.data</string>
+			</array>
+			<key>UTTypeDescription</key>
+			<string>ONLYOFFICE Fill Form document (.oform)</string>
+			<key>UTTypeIconFiles</key>
+			<array/>
+			<key>UTTypeIdentifier</key>
+			<string>org.onlyoffice.oform</string>
+			<key>UTTypeTagSpecification</key>
+			<dict>
+				<key>public.filename-extension</key>
+				<array>
+					<string>oform</string>
+					<string>OFORM</string>
+				</array>
+			</dict>
+		</dict>
+		<dict>
+			<key>UTTypeConformsTo</key>
+			<array>
+				<string>public.data</string>
+			</array>
+			<key>UTTypeDescription</key>
+			<string>ONLYOFFICE form template (.docxf)</string>
+			<key>UTTypeIconFiles</key>
+			<array/>
+			<key>UTTypeIdentifier</key>
+			<string>org.onlyoffice.docxf</string>
+			<key>UTTypeTagSpecification</key>
+			<dict>
+				<key>public.filename-extension</key>
+				<array>
+					<string>docxf</string>
+					<string>DOCXF</string>
+				</array>
+			</dict>
+		</dict>
+	</array>
+	<key>UTImportedTypeDeclarations</key>
+	<array>
+		<dict>
+			<key>UTTypeConformsTo</key>
+			<array>
+				<string>public.data</string>
+			</array>
+			<key>UTTypeDescription</key>
+			<string>ONLYOFFICE fillable form (.oform)</string>
+			<key>UTTypeIconFiles</key>
+			<array/>
+			<key>UTTypeIdentifier</key>
+			<string>org.onlyoffice.oform</string>
+			<key>UTTypeTagSpecification</key>
+			<dict>
+				<key>public.filename-extension</key>
+				<array>
+					<string>oform</string>
+					<string>OFORM</string>
+				</array>
+			</dict>
+		</dict>
+		<dict>
+			<key>UTTypeDescription</key>
+			<string>ONLYOFFICE Edit Form document (.docxf)</string>
+			<key>UTTypeIconFiles</key>
+			<array/>
+			<key>UTTypeIdentifier</key>
+			<string>org.onlyoffice.docxf</string>
+			<key>UTTypeTagSpecification</key>
+			<dict>
+				<key>public.filename-extension</key>
+				<array>
+					<string>docxf</string>
+					<string>DOCXF</string>
+				</array>
+			</dict>
+		</dict>
 	</array>
 	<key>VersionMode</key>
 	<string>$(VERSION_MODE)</string>

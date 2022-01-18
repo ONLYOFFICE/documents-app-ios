@@ -64,4 +64,21 @@ class ASCFacebookSignInController {
     func signOut() {
         //
     }
+    
+    static func application(_ app: UIApplication,
+                            open url: URL,
+                            options: [UIApplication.OpenURLOptionsKey : Any] = [:]) -> Bool {
+        // Initialize facebook sdk if needed
+        if !ASCFacebookSignInController.initializedSdk,
+           let appDelegate = UIApplication.shared.delegate as? AppDelegate
+        {
+            // Initialize Facebook SDK
+            Settings.appID = ASCConstants.Clouds.Facebook.appId
+            ApplicationDelegate.shared.application(UIApplication.shared, didFinishLaunchingWithOptions: appDelegate.launchOptions)
+            
+            ASCFacebookSignInController.initializedSdk = true
+        }
+        
+        return ApplicationDelegate.shared.application(app, open: url, options: options)
+    }
 }

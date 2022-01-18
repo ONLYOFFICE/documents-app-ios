@@ -8,12 +8,14 @@
 
 import UIKit
 
-protocol ASCLogInterceptorDelegate: class {
+protocol ASCLogInterceptorDelegate: AnyObject {
     func log(message: String)
 }
 
 class ASCLogIntercepter {
     public static let shared = ASCLogIntercepter()
+    
+    // MARK: - Properties
     
     private var inputPipe: Pipe?
     private var outputPipe: Pipe?
@@ -30,11 +32,19 @@ class ASCLogIntercepter {
         }
     }
     
+    // MARK: - Lifecycle Methods
+    
     public func start() {
         if let logUrl = logUrl {
             /// Cleanup
             do {
-                try "".write(to: logUrl, atomically: true, encoding: .utf8)
+                let header =
+                """
+                Start logger
+                DeviceID: \(UIDevice.current.identifierForVendor?.uuidString ?? "none")
+                
+                """
+                try header.write(to: logUrl, atomically: true, encoding: .utf8)
             } catch {}
         }
         

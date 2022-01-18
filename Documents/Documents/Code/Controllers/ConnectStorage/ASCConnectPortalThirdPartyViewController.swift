@@ -47,7 +47,7 @@ class ASCConnectPortalThirdPartyViewController: UITableViewController {
         tableView.addSubview(activity)
         activity.anchorCenterSuperview()
 
-        ASCOnlyOfficeApi.get(ASCOnlyOfficeApi.apiThirdPartyCapabilities) { [weak self] (result, error, response) in
+        OnlyofficeApiClient.request(OnlyofficeAPI.Endpoints.ThirdPartyIntegration.capabilities) { [weak self] response, error in
             guard let strongSelf = self else { return }
 
             activity.removeFromSuperview()
@@ -55,7 +55,7 @@ class ASCConnectPortalThirdPartyViewController: UITableViewController {
 
             var localProviders: [(provider: ASCFolderProviderType, info: [String: String])] = []
 
-            if let providersInfo = result as? [[String]], providersInfo.count > 0 {
+            if let providersInfo = response?.result, providersInfo.count > 0 {
                 for providerInfo in providersInfo {
                     if let type = ASCFolderProviderType(rawValue: providerInfo.first ?? "") {
                         var info: [String: String] = [:]
@@ -194,22 +194,22 @@ class ASCConnectPortalThirdPartyViewController: UITableViewController {
         let hud = MBProgressHUD.showTopMost()
         hud?.label.text = NSLocalizedString("Creating", comment: "Caption of the process")
         
-        ASCOnlyOfficeApi.post(ASCOnlyOfficeApi.apiThirdParty, parameters: params) { (result, error, response) in
-            if error != nil {
+        OnlyofficeApiClient.request(OnlyofficeAPI.Endpoints.ThirdPartyIntegration.connect, params) { response, error in
+            if let error = error {
+                log.error(error)
                 hud?.hide(animated: true)
+                
                 UIAlertController.showError(
                     in: rootVC.topMostViewController(),
-                    message: ASCOnlyOfficeApi.errorMessage(by: response!)
+                    message: error.localizedDescription
                 )
-                log.error(error!)
             } else {
-                if let folderInfo = result as? [String: Any] {
+                if let newFolder = response?.result {
                     hud?.setSuccessState()
                     hud?.hide(animated: false, afterDelay: 1.3)
                     
                     if  let splitVC = ASCViewControllerManager.shared.topViewController as? ASCOnlyofficeSplitViewController,
                         let documentsVC = (splitVC.detailViewController ?? splitVC.primaryViewController)?.topMostViewController() as? ASCDocumentsViewController,
-                        let newFolder = ASCFolder(JSON: folderInfo),
                         let categoryFolder = documentsVC.folder,
                         categoryFolder.rootFolderType == .onlyofficeUser,
                         (categoryFolder.parentId == nil || categoryFolder.parentId == "0") // is onlyoffice root of user's folder
@@ -225,7 +225,7 @@ class ASCConnectPortalThirdPartyViewController: UITableViewController {
                             if  let splitVC = ASCViewControllerManager.shared.topViewController as? ASCOnlyofficeSplitViewController,
                                 let documentsVC = (splitVC.detailViewController ?? splitVC.primaryViewController)?.topMostViewController() as? ASCDocumentsViewController
                             {
-                                documentsVC.highlight(entity: ASCFolder(JSON: folderInfo))
+                                documentsVC.highlight(entity: newFolder)
                             }
                         }
                     }
@@ -233,7 +233,7 @@ class ASCConnectPortalThirdPartyViewController: UITableViewController {
                     hud?.hide(animated: true)
                     UIAlertController.showError(
                         in: rootVC.topMostViewController(),
-                        message: ASCOnlyOfficeApi.errorMessage(by: response!)
+                        message: NSLocalizedString("Failed to connect folder.", comment: "")
                     )
                 }
             }

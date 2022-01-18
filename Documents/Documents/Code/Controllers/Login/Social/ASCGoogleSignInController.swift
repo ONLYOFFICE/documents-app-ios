@@ -9,10 +9,30 @@
 import UIKit
 import GoogleSignIn
 import FirebaseCore
+import GoogleAPIClientForREST
 
 typealias ASCGoogleSignInHandler = (_ token: String?, _ userData: Data?, _ error: Error?) -> Void
 
 class ASCGoogleSignInController: NSObject {
+    // MARK: - Errors
+    
+    enum ASCGoogleSignInError: LocalizedError {
+        case clientId
+        case noGrantedScopes
+        case unknown(error: Error?)
+        
+        public var errorDescription: String? {
+            switch self {
+            case .clientId:
+                return NSLocalizedString("No client IDs of application", comment: "")
+            case .noGrantedScopes:
+                return NSLocalizedString("Request had insufficient authentication scopes", comment: "")
+            case .unknown(let error):
+                return error?.localizedDescription ?? NSLocalizedString("Unknown error", comment: "")
+            }
+        }
+    }
+        
     // MARK: - Properties
     
     private var signInHandler: ASCGoogleSignInHandler?
@@ -20,41 +40,91 @@ class ASCGoogleSignInController: NSObject {
     // MARK: - Public
     
     func signIn(controller: UIViewController, scopes: [String]? = nil, handler: @escaping ASCGoogleSignInHandler) {
-        if let googleSignIn = GIDSignIn.sharedInstance() {
-
-            signInHandler = handler
-
-            googleSignIn.presentingViewController = controller
-            googleSignIn.clientID = FirebaseApp.app()?.options.clientID
-            googleSignIn.scopes = scopes ?? ["email", "profile"]
-            googleSignIn.shouldFetchBasicProfile = true
-            googleSignIn.delegate = self
+        signInHandler = handler
+        
+        guard let clientId = FirebaseApp.app()?.options.clientID else {
+            signInHandler?(nil, nil, ASCGoogleSignInError.clientId)
+            return
+        }
+        
+        let googleSignIn = GIDSignIn.sharedInstance
+        var googleUser: GIDGoogleUser?
+        var googleError: Error?
+        
+        // Logout
+        signOut()
+        
+        let operationQueue = OperationQueue()
+        operationQueue.maxConcurrentOperationCount = 1
+        
+        // Base login
+        operationQueue.addOperation {
+            let semaphore = DispatchSemaphore(value: 0)
             
-            // Logout
-            signOut()
+            DispatchQueue.main.async {
+                let signInConfig = GIDConfiguration(clientID: clientId)
+                googleSignIn.signIn(with: signInConfig, presenting: controller) { user, error in
+                    defer { semaphore.signal() }
+                    googleUser = user
+                    googleError = error
+                }
+            }
+            semaphore.wait()
+        }
+        
+        // Request additional scopes
+        operationQueue.addOperation {
+            guard
+                let user = googleUser,
+                let requestScopes = scopes
+            else { return }
             
-            // Login
-            googleSignIn.signIn()
+            // Check if already have granted scopes
+            if let grantedScopes = user.grantedScopes, grantedScopes.contains(requestScopes) {
+                return
+            }
+            
+            let semaphore = DispatchSemaphore(value: 0)
+            DispatchQueue.main.async {
+                googleSignIn.addScopes(requestScopes, presenting: controller) { user, error in
+                    defer { semaphore.signal() }
+                    googleUser = user
+                    googleError = error
+                }
+            }
+            semaphore.wait()
+        }
+        
+        // Send callback result
+        operationQueue.addOperation { [weak self] in
+            DispatchQueue.main.async { [weak self] in
+                guard let strongSelf = self else { return }
+                
+                if let error = googleError {
+                    strongSelf.signInHandler?(nil, nil, error)
+                    return
+                }
+                
+                guard let user = googleUser else {
+                    strongSelf.signInHandler?(nil, nil, ASCGoogleSignInError.noGrantedScopes)
+                    return
+                }
+                
+                // Double check if have granted scopes
+                if let requestScopes = scopes {
+                    if let grantedScopes = user.grantedScopes, !grantedScopes.contains(requestScopes) {
+                        strongSelf.signInHandler?(nil, nil, ASCGoogleSignInError.noGrantedScopes)
+                        return
+                    }
+                }
+                
+                strongSelf.signInHandler?(user.authentication.accessToken, NSKeyedArchiver.archivedData(withRootObject: user), nil)
+            }
         }
     }
     
     func signOut() {
-        if let googleSignIn = GIDSignIn.sharedInstance() {
-            googleSignIn.signOut()
-            googleSignIn.disconnect()
-        }
-    }
-}
-
-// MARK: - GoogleSignIn Delegate
-
-extension ASCGoogleSignInController: GIDSignInDelegate {
-
-    func sign(_ signIn: GIDSignIn!, didSignInFor user: GIDGoogleUser!, withError error: Error!) {
-        if error == nil, let user = user {
-            signInHandler?(user.authentication.accessToken, NSKeyedArchiver.archivedData(withRootObject: user), nil)
-        } else {
-            signInHandler?(nil, nil, error)
-        }
+        GIDSignIn.sharedInstance.signOut()
+        GIDSignIn.sharedInstance.disconnect()
     }
 }

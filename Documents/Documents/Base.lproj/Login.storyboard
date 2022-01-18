@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="B0k-do-2Bx">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19455" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="B0k-do-2Bx">
     <device id="retina6_0" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19454"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -523,7 +523,7 @@
                                             <constraint firstAttribute="height" constant="10" id="1Sx-ro-y1y"/>
                                         </constraints>
                                     </view>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="51s-1D-raN">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="51s-1D-raN" customClass="ASCButtonStyle" customModule="Documents" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="206" width="280" height="48"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="48" id="COj-Sk-r6N"/>
@@ -531,17 +531,6 @@
                                         <state key="normal" title="Login by">
                                             <color key="titleColor" systemColor="scrollViewTexturedBackgroundColor"/>
                                         </state>
-                                        <userDefinedRuntimeAttributes>
-                                            <userDefinedRuntimeAttribute type="number" keyPath="layerCornerRadius">
-                                                <real key="value" value="3"/>
-                                            </userDefinedRuntimeAttribute>
-                                            <userDefinedRuntimeAttribute type="color" keyPath="layerBorderColor">
-                                                <color key="value" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                            </userDefinedRuntimeAttribute>
-                                            <userDefinedRuntimeAttribute type="number" keyPath="layerBorderWidth">
-                                                <integer key="value" value="1"/>
-                                            </userDefinedRuntimeAttribute>
-                                        </userDefinedRuntimeAttributes>
                                         <connections>
                                             <action selector="onSSOLogin:" destination="UW0-fu-TUa" eventType="touchUpInside" id="aZ5-PW-dbq"/>
                                         </connections>
@@ -867,16 +856,15 @@
         <scene sceneID="iOz-wg-h5n">
             <objects>
                 <tableViewController storyboardIdentifier="ASCCountryCodeViewController" automaticallyAdjustsScrollViewInsets="NO" id="9yb-Sq-uIU" customClass="ASCCountryCodeViewController" customModule="Documents" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="52" sectionHeaderHeight="28" sectionFooterHeight="28" id="03w-96-Sy5">
-                        <rect key="frame" x="0.0" y="0.0" width="390" height="756"/>
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" layoutMarginsFollowReadableWidth="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="insetGrouped" separatorStyle="default" rowHeight="52" sectionHeaderHeight="18" sectionFooterHeight="18" id="03w-96-Sy5">
+                        <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" name="table-background"/>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="cellCountryCode" textLabel="0X2-Xg-z5B" detailTextLabel="18Q-Kh-0cC" style="IBUITableViewCellStyleValue1" id="jwr-Jr-9Js">
-                                <rect key="frame" x="0.0" y="24.333333969116211" width="390" height="52"/>
+                                <rect key="frame" x="20" y="49" width="350" height="52"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="jwr-Jr-9Js" id="2vy-j4-K3V">
-                                    <rect key="frame" x="0.0" y="0.0" width="390" height="52"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="350" height="52"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" id="0X2-Xg-z5B">
@@ -887,7 +875,7 @@
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Detail" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" id="18Q-Kh-0cC">
-                                            <rect key="frame" x="332.66666666666669" y="18" width="37.333333333333336" height="17"/>
+                                            <rect key="frame" x="292.66666666666669" y="18" width="37.333333333333336" height="17"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                             <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
@@ -1024,12 +1012,12 @@ Authentication</string>
                                 </connections>
                             </containerView>
                             <pageControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="3" translatesAutoresizingMaskIntoConstraints="NO" id="SpX-p6-4uR">
-                                <rect key="frame" x="135" y="763.66666666666663" width="120.33333333333331" height="26.333333333333371"/>
+                                <rect key="frame" x="117.66666666666669" y="765" width="155" height="25"/>
                                 <color key="pageIndicatorTintColor" red="0.89019607840000003" green="0.89019607840000003" blue="0.8980392157" alpha="1" colorSpace="calibratedRGB"/>
                                 <color key="currentPageIndicatorTintColor" white="0.66666666669999997" alpha="1" colorSpace="calibratedWhite"/>
                             </pageControl>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="e1X-0t-hcs">
-                                <rect key="frame" x="254" y="747" width="120" height="60"/>
+                                <rect key="frame" x="254" y="747.66666666666663" width="120" height="60"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="60" id="6rY-ut-ZMh"/>
                                     <constraint firstAttribute="width" constant="120" id="uq4-MU-dhF"/>
@@ -1077,9 +1065,8 @@ Authentication</string>
                         <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Open authentication app
-and copy code from there" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SH2-Fd-5Ze">
-                                <rect key="frame" x="122" y="156" width="146" height="80"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Open authentication app and copy code from there" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SH2-Fd-5Ze">
+                                <rect key="frame" x="50.666666666666657" y="156" width="288.66666666666674" height="80"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="80" id="3rW-dj-TTx"/>
                                     <constraint firstAttribute="width" relation="lessThanOrEqual" priority="900" constant="300" id="WBI-Yk-zOO"/>
@@ -1099,10 +1086,10 @@ Authentication</string>
                                 <nil key="highlightedColor"/>
                             </label>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="y8E-dX-gpZ">
-                                <rect key="frame" x="122" y="246" width="146" height="40"/>
+                                <rect key="frame" x="50.666666666666657" y="246" width="288.66666666666674" height="40"/>
                                 <subviews>
                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" placeholder="Code" textAlignment="center" adjustsFontForContentSizeCategory="YES" minimumFontSize="9" translatesAutoresizingMaskIntoConstraints="NO" id="qEs-UQ-wWd">
-                                        <rect key="frame" x="0.0" y="0.0" width="146" height="40"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="288.66666666666669" height="40"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="40" id="8MF-Nx-zB6"/>
                                         </constraints>
@@ -1165,23 +1152,22 @@ Authentication</string>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="M4b-vr-XbN">
-                                <rect key="frame" x="21.333333333333343" y="192" width="347.66666666666663" height="420"/>
+                                <rect key="frame" x="16" y="192" width="358" height="420"/>
                                 <subviews>
                                     <imageView userInteractionEnabled="NO" contentMode="bottom" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="2fa-step-install" translatesAutoresizingMaskIntoConstraints="NO" id="4Mu-qh-9NX">
-                                        <rect key="frame" x="0.0" y="0.0" width="347.66666666666669" height="260"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="358" height="260"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="260" id="0Ih-s1-mpH"/>
                                         </constraints>
                                     </imageView>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ICl-OV-f8r">
-                                        <rect key="frame" x="0.0" y="260" width="347.66666666666669" height="20"/>
+                                        <rect key="frame" x="0.0" y="260" width="358" height="20"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="20" id="egO-I0-JiW"/>
                                         </constraints>
                                     </view>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Set up an application to generate
-the authentication codes" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="B8R-KD-Lml">
-                                        <rect key="frame" x="0.0" y="280" width="347.66666666666669" height="60"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Set up an application to generate the authentication codes" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="B8R-KD-Lml">
+                                        <rect key="frame" x="0.0" y="280" width="358" height="60"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="60" id="1Et-jB-RRJ"/>
                                         </constraints>
@@ -1190,7 +1176,7 @@ the authentication codes" textAlignment="center" lineBreakMode="tailTruncation" 
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vlQ-jV-iFo">
-                                        <rect key="frame" x="0.0" y="340" width="347.66666666666669" height="80"/>
+                                        <rect key="frame" x="0.0" y="340" width="358" height="80"/>
                                         <constraints>
                                             <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="80" id="kmn-Sc-8Eq"/>
                                         </constraints>
@@ -1270,8 +1256,7 @@ the authentication codes" textAlignment="center" lineBreakMode="tailTruncation" 
                                             <constraint firstAttribute="height" constant="20" id="2ya-fT-AwT"/>
                                         </constraints>
                                     </view>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Launch Google Authenticator
-application" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="LwV-Os-V4m">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Launch Google Authenticator application" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="LwV-Os-V4m">
                                         <rect key="frame" x="0.0" y="280" width="343" height="60"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="60" id="Hjt-M0-VLm"/>
@@ -1280,8 +1265,7 @@ application" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Run the application and
-tap the new account icon" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="R2F-fc-11j">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Run the application and tap the new account icon" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="R2F-fc-11j">
                                         <rect key="frame" x="0.0" y="340" width="343" height="80"/>
                                         <constraints>
                                             <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="80" id="kpL-uu-g2F"/>
@@ -1324,22 +1308,22 @@ tap the new account icon" textAlignment="center" lineBreakMode="tailTruncation" 
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="Fgv-mN-CrA">
-                                <rect key="frame" x="23.666666666666657" y="192" width="343" height="420"/>
+                                <rect key="frame" x="16" y="192" width="358" height="420"/>
                                 <subviews>
                                     <imageView userInteractionEnabled="NO" contentMode="bottom" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="2fa-step-secret" translatesAutoresizingMaskIntoConstraints="NO" id="xgZ-9l-vlG">
-                                        <rect key="frame" x="0.0" y="0.0" width="343" height="260"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="358" height="260"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="260" id="aWM-fB-HRA"/>
                                         </constraints>
                                     </imageView>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bA2-6O-d8c">
-                                        <rect key="frame" x="0.0" y="260" width="343" height="20"/>
+                                        <rect key="frame" x="0.0" y="260" width="358" height="20"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="20" id="rLA-lU-2d9"/>
                                         </constraints>
                                     </view>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Add a secret key" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="WuZ-wI-3aH">
-                                        <rect key="frame" x="0.0" y="280" width="343" height="60"/>
+                                        <rect key="frame" x="0.0" y="280" width="358" height="60"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="60" id="l9p-9B-DCI"/>
                                         </constraints>
@@ -1347,9 +1331,8 @@ tap the new account icon" textAlignment="center" lineBreakMode="tailTruncation" 
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Copy the key and paste it to
-the Google Authenticator application" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="K5M-Of-QAk">
-                                        <rect key="frame" x="0.0" y="340" width="343" height="80"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Copy the key and paste it to the Google Authenticator application" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="K5M-Of-QAk">
+                                        <rect key="frame" x="0.0" y="340" width="358" height="80"/>
                                         <constraints>
                                             <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="80" id="9AL-3w-mMP"/>
                                         </constraints>
@@ -1415,22 +1398,22 @@ the Google Authenticator application" textAlignment="center" lineBreakMode="tail
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="dsM-Io-UUf">
-                                <rect key="frame" x="23.666666666666657" y="192" width="343" height="420"/>
+                                <rect key="frame" x="22.666666666666657" y="192" width="344.66666666666674" height="420"/>
                                 <subviews>
                                     <imageView userInteractionEnabled="NO" contentMode="bottom" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="2fa-step-code" translatesAutoresizingMaskIntoConstraints="NO" id="lvE-eu-Fz8">
-                                        <rect key="frame" x="0.0" y="0.0" width="343" height="260"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="344.66666666666669" height="260"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="260" id="s3u-7K-xK2"/>
                                         </constraints>
                                     </imageView>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="QDk-yw-Uk0">
-                                        <rect key="frame" x="0.0" y="260" width="343" height="20"/>
+                                        <rect key="frame" x="0.0" y="260" width="344.66666666666669" height="20"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="20" id="QTY-oI-qom"/>
                                         </constraints>
                                     </view>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Copy the code" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="00r-ek-IVa">
-                                        <rect key="frame" x="0.0" y="280" width="343" height="60"/>
+                                        <rect key="frame" x="0.0" y="280" width="344.66666666666669" height="60"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="60" id="m2D-xH-uNa"/>
                                         </constraints>
@@ -1438,10 +1421,8 @@ the Google Authenticator application" textAlignment="center" lineBreakMode="tail
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Copy the code generated by
-Google Authenticator application and
-insert it to the input field" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vgV-fF-jOl">
-                                        <rect key="frame" x="0.0" y="340" width="343" height="80"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Copy the code generated by Google Authenticator application and insert it to the input field" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vgV-fF-jOl">
+                                        <rect key="frame" x="0.0" y="340" width="344.66666666666669" height="80"/>
                                         <constraints>
                                             <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="80" id="YuB-0c-47j"/>
                                         </constraints>
@@ -1555,16 +1536,16 @@ insert it to the input field" textAlignment="center" lineBreakMode="tailTruncati
     </scenes>
     <designables>
         <designable name="ciJ-Qc-kAx">
-            <size key="intrinsicContentSize" width="160.66666666666666" height="34"/>
+            <size key="intrinsicContentSize" width="280" height="39.220703125"/>
         </designable>
         <designable name="lTc-Mg-8ay">
-            <size key="intrinsicContentSize" width="62.666666666666664" height="34"/>
+            <size key="intrinsicContentSize" width="280" height="39.220703125"/>
         </designable>
         <designable name="q8z-Ru-xxV">
-            <size key="intrinsicContentSize" width="63.333333333333336" height="34"/>
+            <size key="intrinsicContentSize" width="280" height="39.220703125"/>
         </designable>
         <designable name="xUt-UA-mBW">
-            <size key="intrinsicContentSize" width="90.333333333333329" height="34"/>
+            <size key="intrinsicContentSize" width="280" height="39.220703125"/>
         </designable>
     </designables>
     <color key="tintColor" red="0.1764705882352941" green="0.41960784313725491" blue="0.69019607843137254" alpha="1" colorSpace="calibratedRGB"/>
@@ -1578,9 +1559,6 @@ insert it to the input field" textAlignment="center" lineBreakMode="tailTruncati
         <image name="mail-notification" width="200" height="200"/>
         <image name="signin-facebook" width="50" height="50"/>
         <image name="signin-google" width="50" height="50"/>
-        <namedColor name="table-background">
-            <color red="0.94509803921568625" green="0.94509803921568625" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </namedColor>
         <namedColor name="view-background">
             <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>

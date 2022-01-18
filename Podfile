@@ -9,7 +9,7 @@ def common_pods
   # Networking
 
   pod 'Alamofire'
-  pod 'Bagel', :configurations => ['Debug']
+  pod 'atlantis-proxyman', :configurations => ['Debug']
   pod 'SDWebImage'
   pod 'Kingfisher'
 
@@ -32,6 +32,7 @@ def common_pods
 
   pod 'ObjectMapper'
   pod 'SwiftyXMLParser'
+  pod 'SwiftyJSON'
 
   # UI
 
@@ -44,6 +45,7 @@ def common_pods
   pod 'PhoneNumberKit'
   pod 'SwiftMessages', '9.0.4'
   pod 'MGSwipeTableCell'
+  pod 'ReCaptcha'
 
   # Utils
 

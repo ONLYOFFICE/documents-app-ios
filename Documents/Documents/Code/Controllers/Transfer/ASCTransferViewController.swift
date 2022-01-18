@@ -230,7 +230,9 @@ class ASCTransferViewController: UITableViewController {
                 folder.id == self.idOnlyofficeRoot
             {
                 let categoryProvider = onlyofficeCategoryProviderFactory.get()
-                categoryProvider.loadCategories { categories in
+                categoryProvider.loadCategories { result in
+                    switch result {
+                    case .success(let categories):
                     let categorFolders: [ASCFolder] = categories
                         .filter { ASCOnlyofficeCategory.allowToMoveAndCopy(category: $0) }
                         .compactMap { $0.folder }
@@ -266,6 +268,9 @@ class ASCTransferViewController: UITableViewController {
                     }
 
                     self.actionButton?.isEnabled = false
+                    case .failure(let error):
+                        UIAlertController.showError(in: self, message: error.localizedDescription)
+                    }
                 }
             } else {
                 let params: [String: Any] = [

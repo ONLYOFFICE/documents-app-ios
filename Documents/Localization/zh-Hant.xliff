@@ -856,9 +856,9 @@ Note: if you forget the passcode, you'll need to delete and reinstall the app. A
         <note>Class = "UILabel"; text = "Review"; ObjectID = "cmV-9P-RqY";</note>
       </trans-unit>
       <trans-unit id="kAs-JV-Zff.text" xml:space="preserve">
-        <source>Add users or groups and give them permissions to read, review or edit the documents.</source>
-        <target>Add users or groups and give them permissions to read, review or edit the documents.</target>
-        <note>Class = "UILabel"; text = "Add users or groups and give them permissions to read, review or edit the documents."; ObjectID = "kAs-JV-Zff";</note>
+        <source>Add users or groups and allow them permissions to read, review or edit the documents.</source>
+        <target>Add users or groups and allow them permissions to read, review or edit the documents.</target>
+        <note>Class = "UILabel"; text = "Add users or groups and allow them permissions to read, review or edit the documents."; ObjectID = "kAs-JV-Zff";</note>
       </trans-unit>
       <trans-unit id="noV-Xw-dnb.text" xml:space="preserve">
         <source>Read Only</source>

@@ -14,7 +14,7 @@ class ASCCountryCodeViewController: ASCBaseTableViewController {
     
     // MARK: - Properties
     
-    var selectCountry: ((String, UInt64) -> Void)? = nil
+    var selectCountry: ((String, UInt64, String) -> Void)? = nil
     
     private let phoneNumberKit = PhoneNumberKit()
     private var countries: [String: [[String: Any]]] = [:]
@@ -61,7 +61,6 @@ class ASCCountryCodeViewController: ASCBaseTableViewController {
         fillData()
         
         navigationItem.searchController = searchController
-        searchController.searchBar.backgroundColor = view.backgroundColor
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -100,19 +99,25 @@ class ASCCountryCodeViewController: ASCBaseTableViewController {
             }
         }
         
-        for country in allCountries {
-            if let countryName = Locale.current.localizedString(forRegionCode: country), let code = phoneNumberKit.countryCode(for: country) {
+        let validCountries = allCountries.filter { $0 != "001" }
+        
+        for country in validCountries {
+            if let countryName = Locale.current.localizedString(forRegionCode: country),
+               let code = phoneNumberKit.countryCode(for: country)
+            {
                 if let searchText = search {
                     if let _ = countryName.lowercased().range(of: searchText) {
                         allCountriesSorted.append([
                             "country": countryName,
-                            "code": code
+                            "code": code,
+                            "region": country
                             ])
                     }
                 } else {
                     allCountriesSorted.append([
                         "country": countryName,
-                        "code": code
+                        "code": code,
+                        "region": country
                         ])
                 }
             }
@@ -170,10 +175,13 @@ extension ASCCountryCodeViewController {
         let literal = literals[indexPath.section]
         
         if let info = countries[literal]?[indexPath.row] {
-            selectCountry?(info["country"] as? String ?? "", info["code"] as? UInt64 ?? 0)
+            selectCountry?(
+                info["country"] as? String ?? "",
+                info["code"] as? UInt64 ?? 0,
+                info["region"] as? String ?? ""
+            )
         }
 
-        searchController.isActive = false
         self.navigationController?.popViewController(animated: true)
     }
     

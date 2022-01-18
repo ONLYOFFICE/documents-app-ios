@@ -185,8 +185,8 @@ class ASCOnlyofficeCategoriesViewController: UITableViewController {
     private func fetchUpdateUserInfo() {
         if let onlyofficeProvider = ASCFileManager.onlyofficeProvider?.copy() as? ASCOnlyofficeProvider {
             onlyofficeProvider.userInfo { [weak self] success, error in
-                if let localError = error?.localizedDescription {
-                    onlyofficeProvider.errorBanner(localError)
+                if let error = error {
+                    onlyofficeProvider.errorBanner(error)
                 } else if success {
                     ASCFileManager.onlyofficeProvider?.user = onlyofficeProvider.user
                     self?.updateUserInfo()
@@ -210,7 +210,7 @@ class ASCOnlyofficeCategoriesViewController: UITableViewController {
 
                 accountName?.text = user.displayName?.trimmed
                 
-                let accountPortal = onlyofficeProvider.api.baseUrl?.trimmed
+                let accountPortal = onlyofficeProvider.apiClient.baseURL?.absoluteString.trimmed
                 self.accountPortal?.text = accountPortal
                 
                 if let accountEmail = user.email,
@@ -228,8 +228,8 @@ class ASCOnlyofficeCategoriesViewController: UITableViewController {
                 accountPortal?.text = "-"
 
                 onlyofficeProvider.userInfo { [weak self] success, error in
-                    if let localError = error?.localizedDescription {
-                        onlyofficeProvider.errorBanner(localError)
+                    if let error = error {
+                        onlyofficeProvider.errorBanner(error)
                     } else if success {
                         ASCFileManager.onlyofficeProvider?.user = onlyofficeProvider.user
                         self?.updateUserInfo()
@@ -269,9 +269,14 @@ class ASCOnlyofficeCategoriesViewController: UITableViewController {
     
     // MARK: - Categories loading
     func loadCategories(completion: @escaping () -> Void) {
-        categoriesProviderFactory.get().loadCategories { [self] categories in
-            self.loadedCategories =  categories
-            completion()
+        categoriesProviderFactory.get().loadCategories { [self] result in
+            switch result {
+            case .success(let categories):
+                self.loadedCategories = categories
+                completion()
+            case .failure(let error):
+                UIAlertController.showError(in: self, message: error.localizedDescription)
+            }
         }
     }
     

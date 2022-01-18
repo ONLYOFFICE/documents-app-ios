@@ -67,6 +67,31 @@ class ASCKdriveFileProvider: ASCWebDAVProvider {
             }
         }
     }
+    
+    override func isReachable(with info: [String : Any], complation: @escaping ((Bool, ASCFileProviderProtocol?) -> Void)) {
+        guard
+            let login = info["login"] as? String,
+            let password = info["password"] as? String
+        else {
+            complation(false, nil)
+            return
+        }
+
+        let credential = URLCredential(user: login, password: password, persistence: .permanent)
+        let kDriveCloudProvider = ASCKdriveFileProvider(credential: credential)
+        let rootFolder: ASCFolder = {
+            $0.title = NSLocalizedString("All Files", comment: "Category title")
+            $0.rootFolderType = .kdriveAll
+            $0.id = "/"
+            return $0
+        }(ASCFolder())
+
+        kDriveCloudProvider.fetch(for: rootFolder, parameters: [:]) { provider, folder, success, error in
+            DispatchQueue.main.async(execute: {
+                complation(success, success ? kDriveCloudProvider : nil)
+            })
+        }
+    }
 
 
     /// Fetch an Array of 'ASCEntity's identifying the the directory entries via asynchronous completion handler.

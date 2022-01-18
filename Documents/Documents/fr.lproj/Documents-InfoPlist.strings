@@ -19,6 +19,9 @@
 /* Privacy - Face ID Usage Description */
 "NSFaceIDUsageDescription" = "Cette application demande un accès à Face ID pour que vous puissiez vous connecter via la reconnaissance de visage.";
 
+/* Privacy - Photo Library Additions Usage Description */
+"NSPhotoLibraryAddUsageDescription" = "Cette application demande l'accès à la Galerie photo pour que vous puissiez télécharger vos photos dans l'application.";
+
 /* Privacy - Photo Library Usage Description */
 "NSPhotoLibraryUsageDescription" = "Cette application demande l'accès à la galérie pour que vous puissiez charger vos photos dans l'application";
 

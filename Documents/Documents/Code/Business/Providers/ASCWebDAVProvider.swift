@@ -229,6 +229,36 @@ class ASCWebDAVProvider: ASCFileProviderProtocol & ASCSortableFileProviderProtoc
         })
     }
 
+    func isReachable(
+        with info: [String: Any],
+        complation: @escaping ((_ success: Bool, _ provider: ASCFileProviderProtocol?) -> Void))
+    {
+        guard
+            let portal = info["url"] as? String,
+            let login = info["login"] as? String,
+            let password = info["password"] as? String,
+            let portalUrl = URL(string: portal)
+        else {
+            complation(false, nil)
+            return
+        }
+        
+        let credential = URLCredential(user: login, password: password, persistence: .permanent)
+        let webDavProvider = ASCWebDAVProvider(baseURL: portalUrl, credential: credential)
+        let rootFolder: ASCFolder = {
+            $0.title = NSLocalizedString("All Files", comment: "Category title")
+            $0.rootFolderType = .webdavAll
+            $0.id = "/"
+            return $0
+        }(ASCFolder())
+        
+        webDavProvider.fetch(for: rootFolder, parameters: [:]) { provider, folder, success, error in
+            DispatchQueue.main.async(execute: {
+                complation(success, success ? webDavProvider : nil)
+            })
+        }
+    }
+    
     /// Sort records
     ///
     /// - Parameters:
@@ -274,7 +304,7 @@ class ASCWebDAVProvider: ASCFileProviderProtocol & ASCSortableFileProviderProtoc
                 query = NSPredicate(format: "(name CONTAINS[cd] %@)", text.lowercased())
             }
 
-            ASCBaseApi.clearCookies(for: provider.baseURL)
+            NetworkingClient.clearCookies(for: provider.baseURL)
 
             provider.searchFiles(
                 path: folder.id,
@@ -373,9 +403,9 @@ class ASCWebDAVProvider: ASCFileProviderProtocol & ASCSortableFileProviderProtoc
         return provider?.url(of: string ?? "")
     }
 
-    func download(_ path: String, to destinationURL: URL, processing: @escaping ASCApiProgressHandler) {
+    func download(_ path: String, to destinationURL: URL, processing: @escaping NetworkProgressHandler) {
         guard let provider = provider else {
-            processing(0, nil, nil, nil)
+            processing(nil, 0, nil)
             return
         }
 
@@ -395,19 +425,19 @@ class ASCWebDAVProvider: ASCFileProviderProtocol & ASCSortableFileProviderProtoc
 
             operationDelegate.onSucceed = { fileProvider, operation in
                 DispatchQueue.main.async {
-                    processing(1.0, destinationURL, nil, nil)
+                    processing(destinationURL, 1.0, nil)
                 }
                 cleanupHendler(handlerUid)
             }
             operationDelegate.onFailed = { fileProvider, operation, error in
                 DispatchQueue.main.async {
-                    processing(1.0, nil, error, nil)
+                    processing(nil, 1.0, error)
                 }
                 cleanupHendler(handlerUid)
             }
             operationDelegate.onProgress = { fileProvider, operation, progress in
                 DispatchQueue.main.async {
-                    processing(Double(progress), nil, nil, nil)
+                    processing(nil, Double(progress), nil)
                 }
             }
 
@@ -419,7 +449,7 @@ class ASCWebDAVProvider: ASCFileProviderProtocol & ASCSortableFileProviderProtoc
                 }
             } catch {
                 log.error(error)
-                processing(1.0, nil, error, nil)
+                processing(nil, 1.0, error)
                 return
             }
 
@@ -428,7 +458,7 @@ class ASCWebDAVProvider: ASCFileProviderProtocol & ASCSortableFileProviderProtoc
                     log.error(error.localizedDescription)
 
                     DispatchQueue.main.async {
-                        processing(1.0, nil, error, nil)
+                        processing(nil, 1.0, error)
                     }
                     cleanupHendler(handlerUid)
                 }
@@ -442,13 +472,13 @@ class ASCWebDAVProvider: ASCFileProviderProtocol & ASCSortableFileProviderProtoc
                     delegate: operationDelegate))
             }
         } else {
-            processing(0, nil, nil, nil)
+            processing(nil, 0, nil)
         }
     }
 
-    func modify(_ path: String, data: Data, params: [String: Any]?, processing: @escaping ASCApiProgressHandler) {
+    func modify(_ path: String, data: Data, params: [String: Any]?, processing: @escaping NetworkProgressHandler) {
         guard let provider = provider else {
-            processing(0, nil, nil, nil)
+            processing(nil, 0, nil)
             return
         }
 
@@ -460,7 +490,7 @@ class ASCWebDAVProvider: ASCFileProviderProtocol & ASCSortableFileProviderProtoc
             fileProvider.attributesOfItem(path: path, completionHandler: { fileObject, error in
                 DispatchQueue.main.async(execute: { [weak self] in
                     if let error = error {
-                        processing(1.0, nil, error, nil)
+                        processing(nil, 1.0, error)
                     } else if let fileObject = fileObject {
                         let fileSize: UInt64 = (fileObject.size < 0) ? 0 : UInt64(fileObject.size)
 
@@ -481,9 +511,9 @@ class ASCWebDAVProvider: ASCFileProviderProtocol & ASCSortableFileProviderProtoc
                         cloudFile.displayContentLength = String.fileSizeToString(with: fileSize)
                         cloudFile.pureContentLength = Int(fileSize)
 
-                        processing(1.0, cloudFile, nil, nil)
+                        processing(cloudFile, 1.0, nil)
                     } else {
-                        processing(1.0, nil, nil, nil)
+                        processing(nil, 1.0, nil)
                     }
                 })
             })
@@ -491,12 +521,12 @@ class ASCWebDAVProvider: ASCFileProviderProtocol & ASCSortableFileProviderProtoc
         providerOperationDelegate.onFailed = { [weak self] fileProvider, operation, error in
             self?.operationProcess = nil
             DispatchQueue.main.async {
-                processing(1.0, nil, error, nil)
+                processing(nil, 1.0, error)
             }
         }
         providerOperationDelegate.onProgress = { fileProvider, operation, progress in
             DispatchQueue.main.async {
-                processing(Double(progress), nil, nil, nil)
+                processing(nil, Double(progress), nil)
             }
         }
 
@@ -505,14 +535,14 @@ class ASCWebDAVProvider: ASCFileProviderProtocol & ASCSortableFileProviderProtoc
         operationProcess = provider.writeContents(path: path, contents: data, overwrite: true) { error in
             log.error(error?.localizedDescription ?? "")
             DispatchQueue.main.async {
-                processing(1.0, nil, error, nil)
+                processing(nil, 1.0, error)
             }
         }
     }
 
-    func upload(_ path: String, data: Data, overwrite: Bool, params: [String: Any]?, processing: @escaping ASCApiProgressHandler) {
+    func upload(_ path: String, data: Data, overwrite: Bool, params: [String: Any]?, processing: @escaping NetworkProgressHandler) {
         guard let provider = provider else {
-            processing(0, nil, nil, nil)
+            processing(nil, 0, nil)
             return
         }
 
@@ -529,7 +559,7 @@ class ASCWebDAVProvider: ASCFileProviderProtocol & ASCSortableFileProviderProtoc
         do {
             try data.write(to: dummyFilePath, atomically: true)
         } catch(let error) {
-            processing(1, nil, error, nil)
+            processing(nil, 1, error)
             return
         }
 
@@ -550,7 +580,7 @@ class ASCWebDAVProvider: ASCFileProviderProtocol & ASCSortableFileProviderProtoc
                 fileProvider.attributesOfItem(path: dstPath, completionHandler: { fileObject, error in
                     DispatchQueue.main.async(execute: { [weak self] in
                         if let error = error {
-                            processing(1.0, nil, error, nil)
+                            processing(nil, 1.0, error)
                         } else if let fileObject = fileObject {
                             let fileSize: UInt64 = (fileObject.size < 0) ? 0 : UInt64(fileObject.size)
 
@@ -571,9 +601,9 @@ class ASCWebDAVProvider: ASCFileProviderProtocol & ASCSortableFileProviderProtoc
                             cloudFile.displayContentLength = String.fileSizeToString(with: fileSize)
                             cloudFile.pureContentLength = Int(fileSize)
 
-                            processing(1.0, cloudFile, nil, nil)
+                            processing(cloudFile, 1.0, nil)
                         } else {
-                            processing(1.0, nil, nil, nil)
+                            processing(nil, 1.0, nil)
                         }
                         ASCLocalFileHelper.shared.removeFile(dummyFilePath)
                         cleanupHendler(handlerUid)
@@ -582,14 +612,14 @@ class ASCWebDAVProvider: ASCFileProviderProtocol & ASCSortableFileProviderProtoc
             }
             operationDelegate.onFailed = { fileProvider, operation, error in
                 DispatchQueue.main.async {
-                    processing(1.0, nil, error, nil)
+                    processing(nil, 1.0, error)
                 }
                 ASCLocalFileHelper.shared.removeFile(dummyFilePath)
                 cleanupHendler(handlerUid)
             }
             operationDelegate.onProgress = { fileProvider, operation, progress in
                 localProgress = max(localProgress, progress)
-                processing(Double(localProgress), nil, nil, nil)
+                processing(nil, Double(localProgress), nil)
             }
 
             localProvider.delegate = operationDelegate
@@ -599,7 +629,7 @@ class ASCWebDAVProvider: ASCFileProviderProtocol & ASCSortableFileProviderProtoc
                     log.error(error.localizedDescription)
 
                     DispatchQueue.main.async {
-                        processing(1.0, nil, error, nil)
+                        processing(nil, 1.0, error)
                     }
                     ASCLocalFileHelper.shared.removeFile(dummyFilePath)
                     cleanupHendler(handlerUid)
@@ -614,7 +644,7 @@ class ASCWebDAVProvider: ASCFileProviderProtocol & ASCSortableFileProviderProtoc
                     delegate: operationDelegate))
             }
         } else {
-            processing(0, nil, nil, nil)
+            processing(nil, 0, nil)
         }
     }
 
@@ -681,13 +711,13 @@ class ASCWebDAVProvider: ASCFileProviderProtocol & ASCSortableFileProviderProtoc
         }
     }
 
-    func createImage(_ name: String, in folder: ASCFolder, data: Data, params: [String: Any]?, processing: @escaping ASCApiProgressHandler) {
+    func createImage(_ name: String, in folder: ASCFolder, data: Data, params: [String: Any]?, processing: @escaping NetworkProgressHandler) {
         createFile(name, in: folder, data: data, params: params, processing: processing)
     }
 
-    func createFile(_ name: String, in folder: ASCFolder, data: Data, params: [String: Any]?, processing: @escaping ASCApiProgressHandler) {
+    func createFile(_ name: String, in folder: ASCFolder, data: Data, params: [String: Any]?, processing: @escaping NetworkProgressHandler) {
         let path = (Path(folder.id) + name).rawValue
-        upload(path, data: data, overwrite: false, params: nil) { [weak self] progress, result, error, response in
+        upload(path, data: data, overwrite: false, params: nil) { [weak self] result, progress, error in
             if let _ = result {
                 ASCAnalytics.logEvent(ASCConstants.Analytics.Event.createEntity, parameters: [
                     ASCAnalytics.Event.Key.portal: self?.provider?.baseURL?.absoluteString ?? ASCAnalytics.Event.Value.none,
@@ -697,7 +727,7 @@ class ASCWebDAVProvider: ASCFileProviderProtocol & ASCSortableFileProviderProtoc
                     ]
                 )
             }
-            processing(progress, result, error, response)
+            processing(result, progress, error)
         }
     }
 
@@ -781,20 +811,15 @@ class ASCWebDAVProvider: ASCFileProviderProtocol & ASCSortableFileProviderProtoc
                 if let error = error {
                     completeon?(strongSelf, nil, false, ASCProviderError(error))
                 } else {
-//                    let now = Date()
-
                     if let file = file {
                         file.id = newPath.rawValue
                         file.title = newPath.fileName
-//                        file.created = now
-//                        file.updated = now
+                        file.viewUrl = newPath.rawValue
 
                         completeon?(strongSelf, file, true, nil)
                     } else if let folder = folder {
                         folder.id = newPath.rawValue
                         folder.title = newName
-//                        folder.created = now
-//                        folder.updated = now
 
                         completeon?(strongSelf, folder, true, nil)
                     } else {
@@ -987,7 +1012,8 @@ class ASCWebDAVProvider: ASCFileProviderProtocol & ASCSortableFileProviderProtoc
             let canDelete       = allowDelete(entity: file)
             let canOpenEditor   = ASCConstants.FileExtensions.documents.contains(fileExtension) ||
                                   ASCConstants.FileExtensions.spreadsheets.contains(fileExtension) ||
-                                  ASCConstants.FileExtensions.presentations.contains(fileExtension)
+                                  ASCConstants.FileExtensions.presentations.contains(fileExtension) ||
+                                  ASCConstants.FileExtensions.forms.contains(fileExtension)
             let canPreview      = canOpenEditor ||
                                   ASCConstants.FileExtensions.images.contains(fileExtension) ||
                                   fileExtension == "pdf"

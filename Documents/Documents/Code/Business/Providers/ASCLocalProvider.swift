@@ -211,17 +211,17 @@ class ASCLocalProvider: ASCFileProviderProtocol & ASCSortableFileProviderProtoco
         completeon?(self, folder, true, nil)
     }
     
-    func download(_ path: String, to destinationURL: URL, processing: @escaping ASCApiProgressHandler) {
-        processing(0, nil, nil, nil)
+    func download(_ path: String, to destinationURL: URL, processing: @escaping NetworkProgressHandler) {
+        processing(nil, 0, nil)
 
         if let error = ASCLocalFileHelper.shared.copy(from: Path(path), to: Path(destinationURL.path)) {
-            processing(1, nil, error, nil)
+            processing(nil, 1, error)
         } else {
-            processing(1, Path(path), nil, nil)
+            processing(Path(path), 1, nil)
         }
     }
 
-    func upload(_ path: String, data: Data, overwrite: Bool, params: [String : Any]?, processing: @escaping ASCApiProgressHandler) {
+    func upload(_ path: String, data: Data, overwrite: Bool, params: [String : Any]?, processing: @escaping NetworkProgressHandler) {
         var dstPath = path
 
         if let fileName = params?["title"] as? String {
@@ -233,12 +233,12 @@ class ASCLocalProvider: ASCFileProviderProtocol & ASCSortableFileProviderProtoco
         do {
             try data.write(to: dummyFilePath, atomically: true)
         } catch(let error) {
-            processing(1, nil, error, nil)
+            processing(nil, 1, error)
             return
         }
 
         if let error = ASCLocalFileHelper.shared.copy(from: dummyFilePath, to: Path(dstPath)) {
-            processing(1, nil, error, nil)
+            processing(nil, 1, error)
         } else {
             let destFilePath = Path(dstPath)
             let owner = ASCUser()
@@ -264,7 +264,7 @@ class ASCLocalProvider: ASCFileProviderProtocol & ASCSortableFileProviderProtoco
             localFile.pureContentLength = Int(destFilePath.fileSize ?? 0)
             localFile.device = true
 
-            processing(1, localFile, nil, nil)
+            processing(localFile, 1, nil)
         }
 
         ASCLocalFileHelper.shared.removeFile(dummyFilePath)
@@ -420,19 +420,19 @@ class ASCLocalProvider: ASCFileProviderProtocol & ASCSortableFileProviderProtoco
         }
     }
 
-    func createImage(_ name: String, in folder: ASCFolder, data: Data, params: [String: Any]?, processing: @escaping ASCApiProgressHandler) {
+    func createImage(_ name: String, in folder: ASCFolder, data: Data, params: [String: Any]?, processing: @escaping NetworkProgressHandler) {
         createFile(name, in: folder, data: data, params: params, processing: processing)
     }
 
-    func createFile(_ name: String, in folder: ASCFolder, data: Data, params: [String: Any]?, processing: @escaping ASCApiProgressHandler) {
+    func createFile(_ name: String, in folder: ASCFolder, data: Data, params: [String: Any]?, processing: @escaping NetworkProgressHandler) {
         if folder.device || folder.rootFolderType == .deviceDocuments {
-            processing(0, nil, nil, nil)
+            processing(nil, 0, nil)
 
             let filePath = Path(folder.id) + name
             do{
                 try data.write(to: filePath, atomically: true)
             } catch(let error) {
-                processing(1, nil, error, nil)
+                processing(nil, 1, error)
                 return
             }
 
@@ -452,16 +452,16 @@ class ASCLocalProvider: ASCFileProviderProtocol & ASCSortableFileProviderProtoco
             file.pureContentLength = Int(filePath.fileSize ?? 0)
 
             ASCAnalytics.logEvent(ASCConstants.Analytics.Event.createEntity, parameters: [
-                ASCAnalytics.Event.Key.portal: ASCOnlyOfficeApi.shared.baseUrl ?? ASCAnalytics.Event.Value.none,
+                ASCAnalytics.Event.Key.portal: ASCAnalytics.Event.Value.none,
                 ASCAnalytics.Event.Key.onDevice: true,
                 ASCAnalytics.Event.Key.type: ASCAnalytics.Event.Value.file,
                 ASCAnalytics.Event.Key.fileExt: file.title.fileExtension()
                 ]
             )
 
-            processing(1, file, nil, nil)
+            processing(file, 1, nil)
         } else {
-            processing(1, nil, ASCProviderError(msg: ""), nil)
+            processing(nil, 1, ASCProviderError(msg: ""))
         }
     }
 
@@ -627,7 +627,8 @@ class ASCLocalProvider: ASCFileProviderProtocol & ASCSortableFileProviderProtoco
             let isTrash         = file.rootFolderType == .deviceTrash
             let canOpenEditor   = ASCConstants.FileExtensions.documents.contains(fileExtension) ||
                 ASCConstants.FileExtensions.spreadsheets.contains(fileExtension) ||
-                ASCConstants.FileExtensions.presentations.contains(fileExtension)
+                ASCConstants.FileExtensions.presentations.contains(fileExtension) ||
+                ASCConstants.FileExtensions.forms.contains(fileExtension)
             let canPreview      = canOpenEditor ||
                 ASCConstants.FileExtensions.images.contains(fileExtension) ||
                 fileExtension == "pdf"
@@ -656,7 +657,7 @@ class ASCLocalProvider: ASCFileProviderProtocol & ASCSortableFileProviderProtoco
                 entityActions.insert(.edit)
             }
 
-            if (ASCFileManager.onlyofficeProvider?.api.active ?? false) && !isTrash {
+            if (ASCFileManager.onlyofficeProvider?.apiClient.active ?? false) && !isTrash {
                 entityActions.insert(.upload)
             }
         }

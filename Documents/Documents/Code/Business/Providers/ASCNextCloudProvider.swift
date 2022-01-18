@@ -9,6 +9,8 @@
 import UIKit
 import FilesProvider
 import FileKit
+import Alamofire
+import DocumentEditor
 
 class ASCNextCloudProvider: ASCWebDAVProvider {
 
@@ -31,15 +33,31 @@ class ASCNextCloudProvider: ASCWebDAVProvider {
         }
     }
 
-    private var api: ASCNextCloudApi?
+    private var apiClient: NextcloudApiClient?
     private let webdavEndpoint = "/remote.php/dav/files"
     private let endpointPath = "/remote.php/dav/files/%@"
+    
+    override var provider: WebDAVFileProvider? {
+        didSet {
+            guard let provider = provider else {
+                entityExistenceChecker = nil
+                entityUniqNameFinder = nil
+                return
+            }
+            
+            entityExistenceChecker = ASCEntityExistenceCheckerByAttributes(provider: provider)
+            entityUniqNameFinder = ASCEntityUniqNameFinder(entityExistChecker: entityExistenceChecker!)
+        }
+    }
+    
+    private var entityExistenceChecker: ASCEntityExistenceChecker?
+    private var entityUniqNameFinder: ASCUniqNameFinder?
 
     // MARK: - Lifecycle Methods
 
     override init() {
         super.init()
-        api = nil
+        apiClient = nil
     }
 
     override init(baseURL: URL, credential: URLCredential) {
@@ -60,10 +78,16 @@ class ASCNextCloudProvider: ASCWebDAVProvider {
         super.init(baseURL: providerUrl, credential: credential)
         provider?.credentialType = .basic
 
-        api = ASCNextCloudApi()
-        api?.baseUrl = ((providerUrl.scheme != nil) ? "\(providerUrl.scheme!)://" : "") + "\(providerUrl.host ?? "")"
-        api?.user = credential.user
-        api?.password = credential.password
+        if let user = credential.user, let password = credential.password {
+            apiClient = NextcloudApiClient(
+                url: ((providerUrl.scheme != nil) ? "\(providerUrl.scheme!)://" : "") + "\(providerUrl.host ?? "")",
+                user: user,
+                password: password
+            )
+            userInfo { success, error in
+                log.debug("Nexcloud fetch storagestats", success, error ?? "")
+            }
+        }
     }
 
     override func copy() -> ASCFileProviderProtocol {
@@ -80,7 +104,7 @@ class ASCNextCloudProvider: ASCWebDAVProvider {
     
     override func cancel() {
         super.cancel()
-        api?.cancelAllTasks()
+        apiClient?.cancelAll()
     }
 
     override func deserialize(_ jsonString: String) {
@@ -105,13 +129,34 @@ class ASCNextCloudProvider: ASCWebDAVProvider {
 
                 provider = WebDAVFileProvider(baseURL: providerUrl, credential: credential)
                 provider?.credentialType = .basic
-
-                api = ASCNextCloudApi()
-
-                api?.baseUrl = ((providerUrl.scheme != nil) ? "\(providerUrl.scheme!)://" : "") + "\(providerUrl.host ?? "")"
-                api?.user = credential.user
-                api?.password = credential.password
+                
+                apiClient = NextcloudApiClient(
+                    url: ((providerUrl.scheme != nil) ? "\(providerUrl.scheme!)://" : "") + "\(providerUrl.host ?? "")",
+                    user: userId,
+                    password: password
+                )
             }
+        }
+    }
+    
+    override func isReachable(with info: [String : Any], complation: @escaping ((Bool, ASCFileProviderProtocol?) -> Void)) {
+        guard
+            let portal = info["url"] as? String,
+            let login = info["login"] as? String,
+            let password = info["password"] as? String,
+            let portalUrl = URL(string: portal)
+        else {
+            complation(false, nil)
+            return
+        }
+
+        let credential = URLCredential(user: login, password: password, persistence: .permanent)
+        let nextCloudProvider = ASCNextCloudProvider(baseURL: portalUrl, credential: credential)
+
+        nextCloudProvider.isReachable { success, error in
+            DispatchQueue.main.async(execute: {
+                complation(success, success ? nextCloudProvider : nil) // Need to capture nextCloudProvider variable
+            })
         }
     }
 
@@ -119,30 +164,31 @@ class ASCNextCloudProvider: ASCWebDAVProvider {
     ///
     /// - Parameter completeon: a closure with result of user or error
     override func userInfo(completeon: ASCProviderUserInfoHandler?) {
-        guard let api = api else { return }
+        guard let apiClient = apiClient else { return }
 
         let params = [
             "dir": "/"
         ]
-        api.get(ASCNextCloudApi.apiStorageStats, parameters: params) { [weak self] results, error, response in
-            guard let strongSelf = self else { return }
-            if
-                error == nil,
-                let results = results as? [String: Any],
-                let data = results["data"] as? [String: Any]
-            {
-                strongSelf.user = ASCUser()
-                strongSelf.user?.userId = data["owner"] as? String
-                strongSelf.user?.displayName = data["ownerDisplayName"] as? String
 
-                completeon?(true, nil)
-            } else {
-                if let localResponse = response {
-                    completeon?(false, ASCProviderError(msg: api.errorMessage(by: localResponse)))
-                } else {
-                    completeon?(false, nil)
-                }
+        apiClient.request(NextcloudAPI.Endpoints.currentAccount, params) { [weak self] response, error in
+            guard let strongSelf = self else {
+                completeon?(false, nil)
+                return
             }
+            
+            guard let account = response?.result else {
+                completeon?(false, error)
+                if let error = error {
+                    log.debug(error)
+                }
+                return
+            }
+            
+            strongSelf.user = ASCUser()
+            strongSelf.user?.userId = account.owner
+            strongSelf.user?.displayName = account.ownerDisplayName
+
+            completeon?(true, nil)
         }
     }
 
@@ -162,5 +208,40 @@ class ASCNextCloudProvider: ASCWebDAVProvider {
     ///   - entity: target entity
     override func allowEdit(entity: AnyObject?) -> Bool {
         return true
+    }
+    
+    override func createDocument(_ name: String, fileExtension: String, in folder: ASCFolder, completeon: ASCProviderCompletionHandler?) {
+        findUniqName(suggestedName: name.appendingPathExtension(fileExtension) ?? name, inFolder: folder) { uniqName in
+            super.createDocument(uniqName.removingSuffix(".\(fileExtension)"), fileExtension: fileExtension, in: folder, completeon: completeon)
+        }
+    }
+    
+    override func createImage(_ name: String, in folder: ASCFolder, data: Data, params: [String: Any]?, processing: @escaping NetworkProgressHandler) {
+        findUniqName(suggestedName: name, inFolder: folder) { uniqName in
+            super.createImage(uniqName, in: folder, data: data, params: params, processing: processing)
+        }
+    }
+    
+    override func createFile(_ name: String, in folder: ASCFolder, data: Data, params: [String: Any]?, processing: @escaping NetworkProgressHandler) {
+        findUniqName(suggestedName: name, inFolder: folder) { uniqName in
+            super.createFile(uniqName, in: folder, data: data, params: params, processing: processing)
+        }
+    }
+    
+    override func createFolder(_ name: String, in folder: ASCFolder, params: [String: Any]?, completeon: ASCProviderCompletionHandler?) {
+        findUniqName(suggestedName: name, inFolder: folder) { uniqName in
+            super.createFolder(uniqName, in: folder, params: params, completeon: completeon)
+        }
+    }
+    
+    func findUniqName(suggestedName: String, inFolder folder: ASCFolder, completionHandler: @escaping (String) -> Void) {
+        guard let entityUniqNameFinder = entityUniqNameFinder else {
+            completionHandler(suggestedName)
+            return
+        }
+        
+        entityUniqNameFinder.find(bySuggestedName: suggestedName, atPath: folder.id) { uniqName in
+            completionHandler(uniqName)
+        }
     }
 }

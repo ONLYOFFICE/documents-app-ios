@@ -64,26 +64,6 @@ extension UIViewController {
     }
 
     /// Top most ViewController
-//    func topMostViewController() -> UIViewController {
-//        // Handling Modal views
-//        if let presentedViewController = self.presentedViewController {
-//            return presentedViewController.topMostViewController()
-//        }
-//            // Handling UIViewController's added as subviews to some other views.
-//        else {
-//            for view in self.view.subviews {
-//                // Key property which most of us are unaware of / rarely use.
-//                if let subViewController = view.next {
-//                    if subViewController is UIViewController {
-//                        if let viewController = subViewController as? UIViewController {
-//                            return viewController.topMostViewController()
-//                        }
-//                    }
-//                }
-//            }
-//            return self
-//        }
-//    }
     func topMostViewController() -> UIViewController {
 
         if let presented = self.presentedViewController {
@@ -131,5 +111,42 @@ extension UIViewController {
 
     @objc func dismissKeyboard() {
         view.endEditing(true)
+    }
+    
+    /// Check status of notifications and registry if needed
+    public func checkNotifications() {
+        if #available(iOS 10.0, *) {
+            UNUserNotificationCenter.current().getNotificationSettings { settings in
+                let status = settings.authorizationStatus
+                
+                if status == .authorized {
+                    DispatchQueue.main.async {
+                        UIApplication.shared.registerForRemoteNotifications()
+                        log.debug("Push authorized")
+//                        log.info("Firebase registration token: \(Messaging.messaging().fcmToken ?? "")")
+                    }
+                } else if status == .denied {
+                    log.debug("Push not authorized")
+                } else if status == .notDetermined {
+                    if #available(iOS 10.0, *) {
+                        let center = UNUserNotificationCenter.current()
+                        
+                        center.requestAuthorization(options:[.badge, .alert, .sound]) { granted, error in
+                            DispatchQueue.main.async {
+                                let allow = error == nil
+                                if allow {
+                                    UIApplication.shared.registerForRemoteNotifications()
+                                }
+                                UserDefaults.standard.set(allow, forKey: ASCConstants.SettingsKeys.pushAllow)
+                            }
+                        }
+                    } else {
+                        log.debug("Push not supported")
+                    }
+                }
+            }
+        } else {
+            log.debug("Push not supported")
+        }
     }
 }

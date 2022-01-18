@@ -111,7 +111,9 @@ internal enum Asset {
     internal static let listFolderYandexdisk = ImageAsset(name: "list-folder-yandexdisk")
     internal static let listFolder = ImageAsset(name: "list-folder")
     internal static let listFormatDocument = ImageAsset(name: "list-format-document")
+    internal static let listFormatDocxf = ImageAsset(name: "list-format-docxf")
     internal static let listFormatImage = ImageAsset(name: "list-format-image")
+    internal static let listFormatOform = ImageAsset(name: "list-format-oform")
     internal static let listFormatPdf = ImageAsset(name: "list-format-pdf")
     internal static let listFormatPresentation = ImageAsset(name: "list-format-presentation")
     internal static let listFormatSpreadsheet = ImageAsset(name: "list-format-spreadsheet")
@@ -168,8 +170,9 @@ internal enum Asset {
     internal static let tabOnlyoffice = ImageAsset(name: "tab-onlyoffice")
     internal static let tabSettingsSelected = ImageAsset(name: "tab-settings-selected")
     internal static let tabSettings = ImageAsset(name: "tab-settings")
-    internal static let whatsnewFutureClouds = ImageAsset(name: "whatsnew-future-clouds")
-    internal static let whatsnewFutureOnlyoffice = ImageAsset(name: "whatsnew-future-onlyoffice")
+    internal static let whatsnewFutureForm = ImageAsset(name: "whatsnew-future-form")
+    internal static let whatsnewFutureKeyboard = ImageAsset(name: "whatsnew-future-keyboard")
+    internal static let whatsnewFutureСleaFormat = ImageAsset(name: "whatsnew-future-сleaFormat")
   }
 }
 // swiftlint:enable identifier_name line_length nesting type_body_length type_name

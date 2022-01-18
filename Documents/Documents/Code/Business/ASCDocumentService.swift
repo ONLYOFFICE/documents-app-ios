@@ -136,7 +136,7 @@ class ASCDocumentServiceKey {
 
 }
 
-
+@available(*, deprecated, message: "Online conversion service is no longer available. Use a local converter.")
 class ASCDocumentService {
     private var documentServiceDomain: String = ASCConstants.Urls.documentServiceDomain
     private var documentServiceUri: String = ""
@@ -149,12 +149,20 @@ class ASCDocumentService {
     
     // MARK: - Public
     
+    @available(*, deprecated, message: "Online conversion service is no longer available. Use a local converter.")
     init() {
         documentServiceDomain = ASCConstants.Urls.documentServiceDomain
         documentServiceUri = "https://\(documentServiceDomain)/ConvertService.ashx"
         documentUploadUri  = "https://\(documentServiceDomain)/FileUploader.ashx"
     }
     
+    /// Convert a local file through an online conversion service
+    /// - Parameters:
+    ///   - file: The file to be converted.
+    ///   - fromFormat: Input conversion format.
+    ///   - toFormat: Output conversion format.
+    ///   - handler: Online conversion handler.
+    @available(*, deprecated, message: "Online conversion service is no longer available. Use a local converter.")
     func convertationLocal(_ file: ASCFile, fromFormat: String, toFormat: String, handler: ASCDocumentServiceHandler?) {
         var cancel = false
         
@@ -182,10 +190,20 @@ class ASCDocumentService {
         }
     }
     
+    /// Convert a cloud file through an online conversion service
+    /// - Parameters:
+    ///   - file: The file to be converted.
+    ///   - fromFormat: Input conversion format.
+    ///   - toFormat: Output conversion format.
+    ///   - handler: Online conversion handler.
+    @available(*, deprecated, message: "Online conversion service is no longer available. Use a local converter.")
     func convertationCloud(_ file: ASCFile, fromFormat: String, toFormat: String, handler: ASCDocumentServiceHandler?) {
         var cancel = false
         
-        guard let _ = ASCOnlyOfficeApi.shared.baseUrl, let viewUrl = file.viewUrl else {
+        guard
+            OnlyofficeApiClient.shared.active,
+            let viewUrl = file.viewUrl
+        else {
             processHandler?(.end, 0, nil, nil, &cancel)
             return
         }
@@ -205,7 +223,7 @@ class ASCDocumentService {
             return (destinationUrl, [.removePreviousFile, .createIntermediateDirectories])
         }
 
-        if let downloadUrl = ASCOnlyOfficeApi.absoluteUrl(from: URL(string: viewUrl)) {
+        if let downloadUrl = OnlyofficeApiClient.absoluteUrl(from: URL(string: viewUrl)) {
             let request = AF.download(downloadUrl, to: destination)
             
             request

@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="K4J-kB-2V5">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19162" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="K4J-kB-2V5">
     <device id="retina5_5" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19144"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -37,7 +37,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="huj-vr-CgZ">
-                                <rect key="frame" x="109.00000000000001" y="90" width="196.33333333333337" height="67.666666666666686"/>
+                                <rect key="frame" x="119.33333333333333" y="90" width="175.33333333333337" height="61"/>
                                 <string key="text">Create your own
 web office</string>
                                 <fontDescription key="fontDescription" style="UICTFontTextStyleTitle1"/>
@@ -45,13 +45,13 @@ web office</string>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Make use of 30 days trial for free" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FZg-vj-AVJ">
-                                <rect key="frame" x="94.333333333333329" y="167.66666666666666" width="225.33333333333337" height="18"/>
+                                <rect key="frame" x="113.66666666666667" y="161" width="186.66666666666663" height="14.333333333333343"/>
                                 <fontDescription key="fontDescription" style="UICTFontTextStyleSubhead"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="3Ga-pF-XBV">
-                                <rect key="frame" x="67" y="205.66666666666663" width="280" height="306"/>
+                                <rect key="frame" x="67" y="195.33333333333337" width="280" height="360"/>
                                 <subviews>
                                     <textField opaque="NO" clipsSubviews="YES" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Gg7-cC-egl" customClass="ParkedTextField" customModule="Documents" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="0.0" width="280" height="44"/>
@@ -83,7 +83,7 @@ web office</string>
                                         </connections>
                                     </textField>
                                     <textField opaque="NO" clipsSubviews="YES" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="First Name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="TP3-h7-Hq1" customClass="SkyFloatingLabelTextField" customModule="SkyFloatingLabelTextField">
-                                        <rect key="frame" x="0.0" y="54.000000000000028" width="280" height="44"/>
+                                        <rect key="frame" x="0.0" y="54" width="280" height="44"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="44" id="lGg-yd-5uA"/>
                                         </constraints>
@@ -108,7 +108,7 @@ web office</string>
                                         </connections>
                                     </textField>
                                     <textField opaque="NO" clipsSubviews="YES" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Last Name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="iLP-xJ-pU3" customClass="SkyFloatingLabelTextField" customModule="SkyFloatingLabelTextField">
-                                        <rect key="frame" x="0.0" y="108.00000000000003" width="280" height="44"/>
+                                        <rect key="frame" x="0.0" y="107.99999999999997" width="280" height="44"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences" autocorrectionType="no" spellCheckingType="no" returnKeyType="next"/>
                                         <userDefinedRuntimeAttributes>
@@ -130,9 +130,9 @@ web office</string>
                                         </connections>
                                     </textField>
                                     <textField opaque="NO" clipsSubviews="YES" tag="4" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Email Address" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="WWd-Za-CPd" customClass="SkyFloatingLabelTextField" customModule="SkyFloatingLabelTextField">
-                                        <rect key="frame" x="0.0" y="162.00000000000003" width="280" height="44"/>
+                                        <rect key="frame" x="0.0" y="161.99999999999997" width="280" height="44"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="emailAddress" returnKeyType="continue"/>
+                                        <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="emailAddress" returnKeyType="next"/>
                                         <userDefinedRuntimeAttributes>
                                             <userDefinedRuntimeAttribute type="color" keyPath="selectedTitleColor">
                                                 <color key="value" red="0.1764705882" green="0.41960784309999999" blue="0.69019607839999997" alpha="1" colorSpace="calibratedRGB"/>
@@ -151,14 +151,45 @@ web office</string>
                                             <outlet property="delegate" destination="K4J-kB-2V5" id="maH-dE-NAs"/>
                                         </connections>
                                     </textField>
+                                    <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="eBo-SW-0X0">
+                                        <rect key="frame" x="0.0" y="215.99999999999997" width="280" height="44.000000000000028"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SZG-z0-C6T" customClass="ASCButtonStyle" customModule="Documents" customModuleProvider="target">
+                                                <rect key="frame" x="0.0" y="0.0" width="58" height="44"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="58" id="6Lq-eK-mW3"/>
+                                                </constraints>
+                                                <state key="normal" title="🇱🇻"/>
+                                                <connections>
+                                                    <action selector="onCountryButton:" destination="K4J-kB-2V5" eventType="touchUpInside" id="9A2-h3-Ja0"/>
+                                                </connections>
+                                            </button>
+                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="ZfF-HH-LjN">
+                                                <rect key="frame" x="68" y="0.0" width="212" height="44"/>
+                                                <subviews>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="amC-Ph-cGL">
+                                                        <rect key="frame" x="0.0" y="0.0" width="212" height="14.333333333333334"/>
+                                                        <fontDescription key="fontDescription" style="UICTFontTextStyleSubhead"/>
+                                                        <nil key="textColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <textField opaque="NO" clipsSubviews="YES" tag="6" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" placeholder="Your phone number" minimumFontSize="9" translatesAutoresizingMaskIntoConstraints="NO" id="kgQ-EP-Qap" customClass="PhoneNumberTextField" customModule="PhoneNumberKit">
+                                                        <rect key="frame" x="0.0" y="14.333333333333373" width="212" height="29.666666666666671"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                                        <textInputTraits key="textInputTraits" keyboardType="numberPad" returnKeyType="continue"/>
+                                                    </textField>
+                                                </subviews>
+                                            </stackView>
+                                        </subviews>
+                                    </stackView>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="I6u-Mg-yWA">
-                                        <rect key="frame" x="0.0" y="216.00000000000003" width="280" height="32"/>
+                                        <rect key="frame" x="0.0" y="270" width="280" height="32"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="32" id="GaM-vt-oQI"/>
                                         </constraints>
                                     </view>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BMv-HP-hD2" customClass="ASCButtonStyle" customModule="Documents" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="258" width="280" height="48"/>
+                                        <rect key="frame" x="0.0" y="312" width="280" height="48"/>
                                         <color key="backgroundColor" red="0.1764705882" green="0.41960784309999999" blue="0.69019607839999997" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="48" id="dOJ-Qn-X3a"/>
@@ -177,14 +208,16 @@ web office</string>
                                     </button>
                                 </subviews>
                                 <constraints>
+                                    <constraint firstItem="ZfF-HH-LjN" firstAttribute="height" secondItem="TP3-h7-Hq1" secondAttribute="height" id="5gk-gr-PF5"/>
                                     <constraint firstItem="iLP-xJ-pU3" firstAttribute="height" secondItem="TP3-h7-Hq1" secondAttribute="height" id="BcP-et-GR2"/>
                                     <constraint firstAttribute="width" relation="lessThanOrEqual" constant="400" id="Bye-WT-cjS"/>
+                                    <constraint firstItem="SZG-z0-C6T" firstAttribute="height" secondItem="TP3-h7-Hq1" secondAttribute="height" id="OQr-cO-CeB"/>
                                     <constraint firstItem="Gg7-cC-egl" firstAttribute="height" secondItem="TP3-h7-Hq1" secondAttribute="height" id="OXI-ku-AY2"/>
                                     <constraint firstItem="WWd-Za-CPd" firstAttribute="height" secondItem="TP3-h7-Hq1" secondAttribute="height" id="aE2-oH-ppk"/>
                                 </constraints>
                             </stackView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="After the registration a mail with your portal registration details will be sent to your email address." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qwT-Pr-auo">
-                                <rect key="frame" x="57" y="543.66666666666663" width="300" height="58"/>
+                                <rect key="frame" x="57" y="587.33333333333337" width="300" height="46.333333333333371"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="300" id="3bE-Yx-V6j"/>
                                 </constraints>
@@ -216,10 +249,17 @@ web office</string>
                     </view>
                     <navigationItem key="navigationItem" id="B74-Kh-AIG"/>
                     <connections>
+                        <outlet property="actionButton" destination="BMv-HP-hD2" id="YRX-oM-fry"/>
+                        <outlet property="countryButton" destination="SZG-z0-C6T" id="Shh-Gk-Yn9"/>
                         <outlet property="emailField" destination="WWd-Za-CPd" id="XcB-sF-c9P"/>
                         <outlet property="firstNameField" destination="TP3-h7-Hq1" id="Rbm-tB-R78"/>
+                        <outlet property="footnoteLabel" destination="qwT-Pr-auo" id="Kfy-IR-VQw"/>
                         <outlet property="lastNameField" destination="iLP-xJ-pU3" id="dko-Pc-kvo"/>
+                        <outlet property="phoneNumberField" destination="kgQ-EP-Qap" id="PKn-N7-1hE"/>
+                        <outlet property="phoneTitleLabel" destination="amC-Ph-cGL" id="vph-By-8D5"/>
                         <outlet property="portalField" destination="Gg7-cC-egl" id="Fa6-8u-GY5"/>
+                        <outlet property="subtitleLabel" destination="FZg-vj-AVJ" id="8My-Re-gFB"/>
+                        <outlet property="titleLabel" destination="huj-vr-CgZ" id="76M-xh-vPs"/>
                         <outlet property="topConstraint" destination="kbE-LJ-BD6" id="DHm-Rh-F3v"/>
                     </connections>
                 </viewController>
@@ -240,7 +280,7 @@ web office</string>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="qKc-e7-uTl">
-                                <rect key="frame" x="62.666666666666657" y="90" width="289" height="67.666666666666686"/>
+                                <rect key="frame" x="78" y="90" width="258" height="61"/>
                                 <string key="text">Choose a password and
 start using your office</string>
                                 <fontDescription key="fontDescription" style="UICTFontTextStyleTitle1"/>
@@ -248,7 +288,7 @@ start using your office</string>
                                 <nil key="highlightedColor"/>
                             </label>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="V9B-S5-r40">
-                                <rect key="frame" x="67" y="177.66666666666663" width="280" height="198"/>
+                                <rect key="frame" x="67" y="171" width="280" height="198"/>
                                 <subviews>
                                     <textField opaque="NO" clipsSubviews="YES" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="to9-RR-YBV" customClass="SkyFloatingLabelTextField" customModule="SkyFloatingLabelTextField">
                                         <rect key="frame" x="0.0" y="0.0" width="280" height="44"/>
@@ -298,13 +338,13 @@ start using your office</string>
                                         </connections>
                                     </textField>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VUW-jy-KyS">
-                                        <rect key="frame" x="0.0" y="108.00000000000003" width="280" height="32"/>
+                                        <rect key="frame" x="0.0" y="108" width="280" height="32"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="32" id="nVL-HL-r4d"/>
                                         </constraints>
                                     </view>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="d4S-7C-Csx" customClass="ASCButtonStyle" customModule="Documents" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="150.00000000000003" width="280" height="48"/>
+                                        <rect key="frame" x="0.0" y="150" width="280" height="48"/>
                                         <color key="backgroundColor" red="0.1764705882" green="0.41960784309999999" blue="0.69019607839999997" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="48" id="2q4-ss-0QS"/>
@@ -328,7 +368,7 @@ start using your office</string>
                                 </constraints>
                             </stackView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cHX-qo-kcu">
-                                <rect key="frame" x="67.666666666666686" y="407.66666666666669" width="279" height="38"/>
+                                <rect key="frame" x="91.666666666666671" y="401" width="230.66666666666663" height="30.333333333333314"/>
                                 <constraints>
                                     <constraint firstAttribute="width" relation="lessThanOrEqual" constant="300" id="hes-u5-HkG"/>
                                 </constraints>
@@ -356,9 +396,11 @@ Terms of service</string>
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="actionButton" destination="d4S-7C-Csx" id="85N-jF-lvM"/>
                         <outlet property="passwordOneField" destination="to9-RR-YBV" id="271-km-LZA"/>
                         <outlet property="passwordTwoField" destination="Zgx-q8-jRP" id="NWh-by-LRJ"/>
                         <outlet property="termsLabel" destination="cHX-qo-kcu" id="eKV-8l-7YF"/>
+                        <outlet property="titleLabel" destination="qKc-e7-uTl" id="Yd4-Ix-wuF"/>
                         <outlet property="topConstraint" destination="bFh-bJ-wnM" id="wPD-fo-Efz"/>
                     </connections>
                 </viewController>
@@ -369,22 +411,22 @@ Terms of service</string>
     </scenes>
     <designables>
         <designable name="Gg7-cC-egl">
-            <size key="intrinsicContentSize" width="32" height="34"/>
+            <size key="intrinsicContentSize" width="280" height="39.220703125"/>
         </designable>
         <designable name="TP3-h7-Hq1">
-            <size key="intrinsicContentSize" width="98" height="34"/>
+            <size key="intrinsicContentSize" width="280" height="39.220703125"/>
         </designable>
         <designable name="WWd-Za-CPd">
-            <size key="intrinsicContentSize" width="119.33333333333333" height="34"/>
+            <size key="intrinsicContentSize" width="280" height="39.220703125"/>
         </designable>
         <designable name="Zgx-q8-jRP">
-            <size key="intrinsicContentSize" width="139.33333333333334" height="34"/>
+            <size key="intrinsicContentSize" width="280" height="39.220703125"/>
         </designable>
         <designable name="iLP-xJ-pU3">
-            <size key="intrinsicContentSize" width="97" height="34"/>
+            <size key="intrinsicContentSize" width="280" height="39.220703125"/>
         </designable>
         <designable name="to9-RR-YBV">
-            <size key="intrinsicContentSize" width="90.333333333333329" height="34"/>
+            <size key="intrinsicContentSize" width="280" height="39.220703125"/>
         </designable>
     </designables>
     <resources>

@@ -91,13 +91,13 @@ internal enum StoryboardScene {
   internal enum Main: StoryboardType {
     internal static let storyboardName = "Main"
 
-    internal static let initialScene = InitialSceneType<Documents.ASCRootController>(storyboard: Main.self)
-
     internal static let ascCloudsEmptyViewController = SceneType<Documents.ASCCloudsEmptyViewController>(storyboard: Main.self, identifier: "ASCCloudsEmptyViewController")
 
     internal static let ascDocumentsNavigationController = SceneType<Documents.ASCDocumentsNavigationController>(storyboard: Main.self, identifier: "ASCDocumentsNavigationController")
 
     internal static let ascDocumentsViewController = SceneType<Documents.ASCDocumentsViewController>(storyboard: Main.self, identifier: "ASCDocumentsViewController")
+
+    internal static let ascRootViewController = SceneType<Documents.ASCRootViewController>(storyboard: Main.self, identifier: "ASCRootViewController")
 
     internal static let ascSplashViewController = SceneType<UIKit.UIViewController>(storyboard: Main.self, identifier: "ASCSplashViewController")
   }
@@ -105,13 +105,6 @@ internal enum StoryboardScene {
     internal static let storyboardName = "Settings"
 
     internal static let initialScene = InitialSceneType<Documents.ASCBaseNavigationController>(storyboard: Settings.self)
-  }
-  internal enum Share: StoryboardType {
-    internal static let storyboardName = "Share"
-
-    internal static let initialScene = InitialSceneType<Documents.ASCBaseNavigationController>(storyboard: Share.self)
-
-    internal static let ascShareViewController = SceneType<Documents.ASCShareViewController>(storyboard: Share.self, identifier: "ASCShareViewController")
   }
   internal enum Sort: StoryboardType {
     internal static let storyboardName = "Sort"

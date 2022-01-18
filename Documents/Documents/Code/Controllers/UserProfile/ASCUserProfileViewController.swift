@@ -46,17 +46,17 @@ class ASCUserProfileViewController: UITableViewController {
             : preferredContentSize.height
         canvasView.frame = canvasFrame
         
-        emailTitleLabel?.text = (ASCOnlyOfficeApi.shared.capabilities?.ldapEnabled ?? false)
+        emailTitleLabel?.text = (OnlyofficeApiClient.shared.capabilities?.ldapEnabled ?? false)
             ? NSLocalizedString("Login", comment: "")
             : NSLocalizedString("Email", comment: "")
         
         if let user = ASCFileManager.onlyofficeProvider?.user {
             userNameLabel.text = user.displayName
-            portalLabel.text = ASCOnlyOfficeApi.shared.baseUrl
+            portalLabel.text = OnlyofficeApiClient.shared.baseURL?.absoluteString
             emailLabel.text = user.email
             
             if let avatar = user.avatarRetina ?? user.avatar,
-                let avatarUrl = ASCOnlyOfficeApi.absoluteUrl(from: URL(string: avatar)) {
+                let avatarUrl = OnlyofficeApiClient.absoluteUrl(from: URL(string: avatar)) {
                 avatarView.kf.apiSetImage(with: avatarUrl,
                                           placeholder: Asset.Images.avatarDefault.image)
             } else {
@@ -106,10 +106,10 @@ class ASCUserProfileViewController: UITableViewController {
     }
     
     static func logout(renewAccount: ASCAccount? = nil) {
-        ASCOnlyOfficeApi.cancelAllTasks()
+        OnlyofficeApiClient.shared.cancelAll()
 
         // Cleanup auth info
-        ASCOnlyOfficeApi.reset()
+        OnlyofficeApiClient.reset()
 
         UserDefaults.standard.removeObject(forKey: ASCConstants.SettingsKeys.collaborationService)
 
@@ -149,11 +149,11 @@ class ASCUserProfileViewController: UITableViewController {
     @objc func updateUserUnfo(_ notification: Notification) {
         if let user = ASCFileManager.onlyofficeProvider?.user {
             userNameLabel?.text = user.displayName
-            portalLabel?.text = ASCFileManager.onlyofficeProvider?.api.baseUrl
+            portalLabel?.text = ASCFileManager.onlyofficeProvider?.apiClient.baseURL?.absoluteString
             emailLabel?.text = user.email
 
             if let avatar = user.avatarRetina ?? user.avatar,
-                let avatarUrl = ASCOnlyOfficeApi.absoluteUrl(from: URL(string: avatar)) {
+                let avatarUrl = OnlyofficeApiClient.absoluteUrl(from: URL(string: avatar)) {
                 avatarView?.kf.apiSetImage(with: avatarUrl,
                                            placeholder: Asset.Images.avatarDefault.image)
             }

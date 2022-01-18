@@ -15,7 +15,7 @@ class ASC2FAPageController: UIViewController {
     // MARK: - Properties
 
     var secret: String?
-    var options: [String: Any] = [:]
+    var request: OnlyofficeAuthRequest?
     var completeon: ASCSignInComplateHandler?
 
     @IBOutlet weak var secretField: UITextField!
@@ -80,11 +80,12 @@ class ASC2FAPageController: UIViewController {
         // More info:  https://github.com/google/google-authenticator/tree/master/mobile/ios
 
         guard
+            let request = request,
             let urlGoogleAuth = URL(string: ASCConstants.Urls.appStoreGoogleAuth)
         else { return }
 
-        let userName = options["userName"] as? String
-        let portal = options["portal"] as? String
+        let userName = request.userName
+        let portal = request.portal
         let appName = ASCConstants.Name.appNameShort
 
         var urlComponents = URLComponents()

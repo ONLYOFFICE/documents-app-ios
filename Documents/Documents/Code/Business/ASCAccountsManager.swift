@@ -30,23 +30,11 @@ class ASCAccountsManager {
         NotificationCenter.default.removeObserver(self)
     }
     
+    public class func start() {
+        _ = ASCAccountsManager.shared
+    }
+    
     private func loadAccounts() {
-//        for index in 0..<5 {
-//            if let account = ASCAccount(JSON:
-//                [
-//                    "email": "email \(index)",
-//                    "displayName": "name \(index)",
-//                    "avatar": "avatar  \(index)",
-//                    "portal": "apiBaseUrl  \(index)",
-//                    "token": "apiToken  \(index)"
-//                ]
-//                ) {
-//                accounts.append(account)
-//            }
-//        }
-//
-//        return
-
         keychain.accessGroup = ASCConstants.Keychain.group
         keychain.synchronizable = true
 
@@ -71,8 +59,8 @@ class ASCAccountsManager {
         if
             let user = ASCFileManager.onlyofficeProvider?.user,
             let provider = ASCFileManager.onlyofficeProvider,
-            let portal = provider.api.baseUrl,
-            let token = provider.api.token
+            let portal = provider.apiClient.baseURL?.absoluteString,
+            let token = provider.apiClient.token
         {
             let dateTransform = ASCDateTransform()
             if let account = ASCAccount(JSON: [
@@ -81,7 +69,7 @@ class ASCAccountsManager {
                 "avatar": user.avatarRetina ?? user.avatar ?? "",
                 "portal": portal,
                 "token": token,
-                "expires": dateTransform.transformToJSON(provider.api.expires) ?? ""
+                "expires": dateTransform.transformToJSON(provider.apiClient.expires) ?? ""
                 ])
             {
                 add(account)

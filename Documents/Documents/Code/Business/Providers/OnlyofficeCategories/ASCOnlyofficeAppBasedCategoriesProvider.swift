@@ -2,7 +2,7 @@
 //  ASCOnlyofficeAppBasedCategoriesProvider.swift
 //  Documents
 //
-//  Created by Павел Чернышев on 22.04.2021.
+//  Created by Pavel Chernyshev on 22.04.2021.
 //  Copyright © 2021 Ascensio System SIA. All rights reserved.
 //
 
@@ -10,17 +10,17 @@ import Foundation
 
 class ASCOnlyofficeAppBasedCategoriesProvider: ASCOnlyofficeCategoriesProviderProtocol {
     var categoriesCurrentlyLoading: Bool = false
-    
-    func loadCategories(completion: @escaping ([ASCOnlyofficeCategory]) -> Void) {
+    var protalTypeDefinder: ASCPortalTypeDefinderProtocol = ASCPortalTypeDefinderByCurrentConnection()
+    func loadCategories(completion: @escaping (Result<[ASCOnlyofficeCategory], Error>) -> Void) {
         if let onlyoffice = ASCFileManager.onlyofficeProvider, let user = onlyoffice.user {
             
             categoriesCurrentlyLoading = true
             
             var categories: [ASCOnlyofficeCategory] = []
 
-            let isPersonal = onlyoffice.api.baseUrl?.contains(ASCConstants.Urls.portalPersonal) ?? false
+            let isPersonal = protalTypeDefinder.definePortalType() == .personal
             let allowMy = !user.isVisitor
-            let allowShare = !isPersonal
+            let allowShare = true
             let allowCommon = !isPersonal
             let allowProjects = !(user.isVisitor || isPersonal)
 
@@ -73,9 +73,10 @@ class ASCOnlyofficeAppBasedCategoriesProvider: ASCOnlyofficeCategoriesProviderPr
                 }(ASCOnlyofficeCategory()))
             
             categoriesCurrentlyLoading = false
-            completion(categories)
+            completion(.success(categories))
         } else {
-            completion([])
+            categoriesCurrentlyLoading = false
+            completion(.success([]))
         }
     }
 }

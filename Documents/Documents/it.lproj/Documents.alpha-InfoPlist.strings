@@ -1,0 +1,27 @@
+/* Bundle name */
+"CFBundleName" = "Documenti-Alpha";
+
+/* (No Comment) */
+"New Document" = "Nuovo documento";
+
+/* (No Comment) */
+"New Presentation" = "Nuova presentazione";
+
+/* (No Comment) */
+"New Spreadsheet" = "Nuovo foglio di calcolo";
+
+/* Privacy - Camera Usage Description */
+"NSCameraUsageDescription" = "Questa app richiede l'accesso alla fotocamera, in modo da poter scattare una foto e caricarla nell'app.";
+
+/* Privacy - Face ID Usage Description */
+"NSFaceIDUsageDescription" = "Questa app richiede l'autorizzazione Face ID per l'autenticazione tramite il riconoscimento facciale.";
+
+/* Privacy - Local Network Usage Description */
+"NSLocalNetworkUsageDescription" = "È richiesto l'accesso alla rete";
+
+/* Privacy - Photo Library Additions Usage Description */
+"NSPhotoLibraryAddUsageDescription" = "Questa app richiede l'accesso alla libreria di foto, in modo da poter caricare le tue foto nell'app.";
+
+/* Privacy - Photo Library Usage Description */
+"NSPhotoLibraryUsageDescription" = "Questa app richiede l'accesso alla libreria di foto, in modo da poter caricare le tue foto nell'app.";
+

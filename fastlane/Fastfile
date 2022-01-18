@@ -16,7 +16,9 @@ platform :ios do
     ENV["FASTLANE_XCODEBUILD_SETTINGS_TIMEOUT"] = "60"
     ENV["FASTLANE_XCODE_LIST_TIMEOUT"] = "60"
 
-    cocoapods
+    cocoapods(
+      repo_update: true
+    )
     sh "../.github/secrets/decrypt_secret.sh"
   end
 
@@ -45,7 +47,7 @@ platform :ios do
 
   desc "Submit a new Beta Build to Apple TestFlight"
   desc "This will also make sure the profile is up to date"
-  lane :beta do
+  lane :beta do |options|
     # match(type: "appstore") # more information: https://codesigning.guide
     # ensure_git_status_clean
 
@@ -74,6 +76,12 @@ platform :ios do
       match_lightweight_tag: false,
       merge_commit_filtering: "exclude_merges"
     )
+
+    # Read changelog file
+    change_log_file = options[:changelog_file]
+    if(File.exist?(change_log_file))
+      change_log = File.read(change_log_file)
+    end
 
     # creates a bump version commit 
     commit_version_bump(
@@ -122,7 +130,7 @@ platform :ios do
   end
 
   desc "Submit a new Beta Build to Apple TestFlight Develop"
-  lane :alpha do
+  lane :alpha do |options|
     # match(type: "appstore") # more information: https://codesigning.guide
     # ensure_git_status_clean
 
@@ -152,6 +160,12 @@ platform :ios do
     # get the last commit comments from Git history
     # and creates our changelog
     change_log = ""
+
+    # Read changelog file
+    change_log_file = options[:changelog_file]
+    if(File.exist?(change_log_file))
+      change_log = File.read(change_log_file)
+    end
 
     # creates a bump version commit
     update_plist(

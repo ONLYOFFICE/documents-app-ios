@@ -25,7 +25,7 @@ class ASCViewControllerManager {
         }
     }
 
-    var rootController: ASCRootController? = nil {
+    var rootController: ASCRootViewController? = nil {
         didSet {
             if oldValue == nil {
                 initializeControllers()
@@ -430,7 +430,7 @@ class ASCViewControllerManager {
             let onlyofficeProvider = ASCFileManager.onlyofficeProvider
             
             if nil == onlyofficeProvider ||
-                !(onlyofficeProvider?.api.baseUrl ?? "").contains(portal) ||
+                !(onlyofficeProvider?.apiClient.baseURL?.absoluteString ?? "").contains(portal) ||
                 email != onlyofficeProvider?.user?.email
             {
                 self?.openFileInfo = nil
@@ -491,28 +491,28 @@ class ASCViewControllerManager {
             // Read full folder info
             if !isRootFolder {
                 requestGroup.enter()
-                ASCOnlyOfficeApi.get(String(format: ASCOnlyOfficeApi.apiFolderId, folder.id), completion: { result, error, response in
-                    if let result = result as? [String: Any],
-                       let resultFolder = ASCFolder(JSON: result) {
+                OnlyofficeApiClient.request(OnlyofficeAPI.Endpoints.Folders.info(folder: folder)) { response, error in
+                    defer { requestGroup.leave() }
+                    
+                    if let resultFolder = response?.result {
                         folder = resultFolder
                     } else {
                         folder.id = ""
                     }
-                    requestGroup.leave()
-                })
+                }
             }
             
             // Read full file info
             requestGroup.enter()
-            ASCOnlyOfficeApi.get(String(format: ASCOnlyOfficeApi.apiFileId, file.id), completion: { result, error, response in
-                if let result = result as? [String: Any],
-                   let resultFile = ASCFile(JSON: result) {
+            OnlyofficeApiClient.request(OnlyofficeAPI.Endpoints.Files.info(file: file)) { response, error in
+                defer { requestGroup.leave() }
+                
+                if let resultFile = response?.result {
                     file = resultFile
                 } else {
                     file.id = ""
                 }
-                requestGroup.leave()
-            })
+            }
             
             DispatchQueue.global(qos: .background).async {
                 requestGroup.wait()

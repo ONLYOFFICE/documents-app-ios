@@ -9,7 +9,7 @@
 import UIKit
 
 enum ASCButtonStyleType: Int {
-    case `default`, action
+    case `default`, action, bordered, gray
 }
 
 class ASCButtonStyle: UIButton {
@@ -45,6 +45,39 @@ class ASCButtonStyle: UIButton {
                         : .lightGray
                 }, completion:nil)
                 setTitleColorForAllStates(.white)
+            case .bordered:
+                UIView.animate(withDuration: 0.2, delay: 0.0, options:[], animations: {
+                    self.backgroundColor = self.isHighlighted
+                        ? .lightGray.lighten(by: 0.3)
+                        : .clear
+                    self.layer.borderColor = self.isHighlighted
+                        ? UIColor.gray.lighten(by: 0.3).cgColor
+                        : UIColor.gray.cgColor
+                    self.backgroundColor = self.isEnabled
+                        ? self.backgroundColor
+                        : .lightGray
+                }, completion:nil)
+                setTitleColorForAllStates(.gray)
+            case .gray:
+                UIView.animate(withDuration: 0.2, delay: 0.0, options:[], animations: {
+                    if #available(iOS 13.0, *) {
+                        self.backgroundColor = self.isHighlighted
+                            ? .tertiarySystemFill.lighten()
+                            : .tertiarySystemFill
+                    } else {
+                        self.backgroundColor = self.isHighlighted
+                            ? .lightGray.lighten(by: 0.5).lighten()
+                            : .lightGray.lighten(by: 0.5)
+                    }
+                    self.backgroundColor = self.isEnabled
+                        ? self.backgroundColor
+                        : .lightGray
+                }, completion:nil)
+                if #available(iOS 13.0, *) {
+                    setTitleColorForAllStates(.label)
+                } else {
+                    setTitleColorForAllStates(.black)
+                }
             default:
                 UIView.animate(withDuration: 0.2, delay: 0.0, options:[], animations: {
                     self.backgroundColor = self.isHighlighted
@@ -67,6 +100,14 @@ class ASCButtonStyle: UIButton {
             switch styleType {
             case .action:
                 backgroundColor = isEnabled ? Asset.Colors.action.color : Asset.Colors.grayLight.color
+            case .bordered:
+                backgroundColor = isEnabled ? .clear : .lightGray.lighten()
+            case .gray:
+                if #available(iOS 13.0, *) {
+                    backgroundColor = isEnabled ? .tertiarySystemFill : .tertiarySystemFill.lighten()
+                } else {
+                    backgroundColor = isEnabled ? .lightGray.lighten(by: 0.5) : .lightGray.lighten(by: 0.7)
+                }
             default:
                 backgroundColor = isEnabled ? Asset.Colors.brend.color : Asset.Colors.grayLight.color
             }
@@ -99,7 +140,15 @@ class ASCButtonStyle: UIButton {
             layer.shadowOffset = CGSize(width: 0, height: 1)
             // layer.shouldRasterize = true
             layer.shadowRadius = 1
-            
+        case .bordered:
+            backgroundColor = .clear
+            layer.borderWidth = 1
+            layer.borderColor = UIColor.gray.cgColor
+            titleLabel?.textStyle = ASCTextStyle.bodyWhite
+            titleLabel?.textColor = .gray
+            layerCornerRadius = 8.0
+        case .gray:
+            layerCornerRadius = 8.0
         default:
             backgroundColor = Asset.Colors.brend.color
             titleLabel?.textStyle = ASCTextStyle.bodyWhite

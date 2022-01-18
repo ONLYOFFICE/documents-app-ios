@@ -1,6 +1,6 @@
 //
 //  ASCAnalytics.swift
-//  Documents-develop
+//  Documents
 //
 //  Created by Alexander Yuzhin on 20.11.2020.
 //  Copyright © 2020 Ascensio System SIA. All rights reserved.
@@ -22,6 +22,7 @@ final class ASCAnalytics {
         
         struct Key {
             static let portal = "portal"
+            static let email = "email"
             static let onDevice = "onDevice"
             static let type = "type"
             static let fileExt = "fileExt"
@@ -35,6 +36,7 @@ final class ASCAnalytics {
             static let file = "file"
             static let folder = "folder"
             static let document = "document"
+            static let form = "form"
             static let spreadsheet = "spreadsheet"
             static let presentation = "presentation"
             static let unknown = "unknown"

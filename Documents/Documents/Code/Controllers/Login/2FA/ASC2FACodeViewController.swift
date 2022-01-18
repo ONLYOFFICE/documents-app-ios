@@ -18,7 +18,7 @@ class ASC2FACodeViewController: ASCBaseViewController {
     // MARK: - Properties
 
     var code: String?
-    var options: [String: Any] = [:]
+    var request: OnlyofficeAuthRequest?
     var completeon: ASCSignInComplateHandler?
 
     private let codeLength: Int = 6
@@ -101,19 +101,11 @@ class ASC2FACodeViewController: ASCBaseViewController {
         }
     }
 
-    private func loginByCode(options: [String: Any], completion: ASCSignInComplateHandler?) {
-        var type: ASCLoginType = .email
-
-        if let provider = options["provider"] as? String {
-            type = ASCLoginType(provider)
-        } else if let provider = options["provider"] as? ASCLoginType {
-            type = provider
-        }
-
+    private func loginByCode(request: OnlyofficeAuthRequest, completion: ASCSignInComplateHandler?) {
         let hud = MBProgressHUD.showTopMost()
         hud?.label.text = NSLocalizedString("Logging in", comment: "Caption of the process")
 
-        ASCSignInController.shared.login(by: type, options: options) { success in
+        ASCSignInController.shared.login(by: request) { success in
             if success {
                 hud?.setSuccessState()
                 hud?.hide(animated: true, afterDelay: 2)
@@ -125,8 +117,9 @@ class ASC2FACodeViewController: ASCBaseViewController {
     }
 
     private func login(with code: String) {
-        options["code"] = code
-        loginByCode(options: options, completion: completeon)
+        guard let request = request else { return }
+        request.code = code
+        loginByCode(request: request, completion: completeon)
     }
 }
 

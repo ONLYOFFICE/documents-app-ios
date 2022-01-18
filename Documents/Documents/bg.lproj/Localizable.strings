@@ -1,5 +1,8 @@
+/* Count of seclected rows: count + selected */
+"%d selected" = "%d избрани ";
+
 /* Presentation Viewer */
-"%i of %i" = "%1$i of %2$i";
+"%i of %i" = "%1$i на %2$i";
 
 /* No comment provided by engineer. */
 "%lu File selected" = "%lu Файлът е избран";
@@ -19,6 +22,21 @@
 /* No comment provided by engineer. */
 "A file with a similar name already exists in the document directory on the device." = "Файл с подобно име вече съществува в директорията на документа на устройството.";
 
+/* No comment provided by engineer. */
+"A user or group will be able only to view the document and add comments, as well as manage them." = "Потребител или група ще могат само да преглеждат документа и да добавят коментари, както и да ги управляват.";
+
+/* No comment provided by engineer. */
+"A user or group will be able only to view the document and fill in the forms inserted into the document." = "Потребител или група ще могат само да преглеждат документа и да попълват формулярите, вградени в него.";
+
+/* No comment provided by engineer. */
+"A user or group will be able only to view the document." = "Потребител или група ще могат само да преглеждат документа.";
+
+/* No comment provided by engineer. */
+"A user or group will be able to view and change the document without actually editing it, but all the changes made by a reviewer will be recorded and shown to the file owner (or a person who has full access to the file) so that he/she will be able to accept or reject them." = "Потребител или група ще могат само да преглеждат и променят документа без реално да го редактират, но всички направени от тях промени ще бъдат записани и показани на собственика на файла (или на човека, който има пълен достъп до файла), за да може той/тя да ги приеме или да ги отхвърли.";
+
+/* No comment provided by engineer. */
+"A user or group will be able to view and edit the document as well as to share this document." = "Потребител или група ще могат да преглеждат и редактират документа, както и да го споделят.";
+
 /* Format info */
 "A0 (84,1%@ x 119,9%@)" = "A0 (84,1%1$@ x 119,9%2$@)";
 
@@ -32,13 +50,22 @@
 "A6 (10,5%@ x 14,8%@)" = "A6 (10,5%1$@ x 14,8%2$@)";
 
 /* No comment provided by engineer. */
-"Access files in Favorites and Recents on ONLYOFFICE portal from the app" = "Достъп до файловете в Любими и Скорошни в портала ONLYOFFICE от приложението";
+"Access by external link" = "Достъп до външен линк";
+
+/* No comment provided by engineer. */
+"Access rights" = "Права за достъп";
+
+/* No comment provided by engineer. */
+"Access settings" = "Настройки за достъп";
 
 /* No comment provided by engineer. */
 "Account name is empty" = "Името на профила е празно";
 
 /* No comment provided by engineer. */
 "Account name is not valid" = "Името на профила не е валидно";
+
+/* Sharing settings add notification message */
+"Add message" = "Добавяне на съобщение";
 
 /* No comment provided by engineer. */
 "Address is empty" = "Адресът е празен";
@@ -50,7 +77,13 @@
 "All Files" = "Всички файлове";
 
 /* No comment provided by engineer. */
+"Allow access via external link" = "Позволете достъп чрез външен линк";
+
+/* No comment provided by engineer. */
 "An unexpected error has occurred. Please try again later. Sorry for inconvenience." = "Появи се неочаквана грешка. Молим да опитате отново по-късно. Извиняваме се за неудобството.";
+
+/* Caption of the process */
+"Applying" = "Прилагане";
 
 /* No comment provided by engineer. */
 "Are you sure you want to delete the account %@ from this device?" = "Наистина ли искате да изтриете профила %@ от това устройство?";
@@ -63,6 +96,9 @@
 
 /* No comment provided by engineer. */
 "Box directory" = "Поле за директория";
+
+/* No comment provided by engineer. */
+"By creating the portal you agree with our Privacy Policy and Terms of Service" = "Чрез създаването на портала се съгласявате с нашите Политика за поверителност и Условия за ползване";
 
 /* Data units */
 "bytes" = "Байта";
@@ -121,6 +157,9 @@
 /* Introduction Step Five - Title */
 "Collaborate with your team" = "Сътрудничество с екипа си";
 
+/* Share status */
+"Comment" = "Коментар";
+
 /* Category title */
 "Common Documents" = "Общи документи";
 
@@ -171,9 +210,6 @@
 
 /* Caption of the processing */
 "Copying" = "Копиране";
-
-/* Description of file operation error */
-"Could not change file attrubutes" = "Атрибутите на файла не могат да бъдат променени";
 
 /* Description of file operation error */
 "Could not change the directory" = "Директорията не може да бъде сменена";
@@ -265,6 +301,9 @@
 /* Caption of the process */
 "Creating" = "Създаване";
 
+/* Share status */
+"Custom filter" = "Персонализиран филтър";
+
 /* No comment provided by engineer. */
 "Date" = "Дата";
 
@@ -297,6 +336,9 @@
 
 /* Share status */
 "Deny Access" = "Отказвам достъп";
+
+/* No comment provided by engineer. */
+"Deselect all" = "Премахнете избора от всички";
 
 /* Button title */
 "Disconnect third party" = "Преказнете връзката с трета страна";
@@ -371,6 +413,9 @@
 /* No comment provided by engineer. */
 "Error" = "Грешка";
 
+/* No comment provided by engineer. */
+"Error code: %ld" = "Код на грешка: %1";
+
 /* Access is Forbidden message */
 "error.errorForbiddenMsg" = "Свържете се с администратора на портала за достъп до модула Проекти.";
 
@@ -394,6 +439,9 @@
 
 /* No comment provided by engineer. */
 "Failed to check the name of the portal" = "Проверката на името на портала не е успешна";
+
+/* No comment provided by engineer. */
+"Failed to connect folder." = "Неуспешно свързване с папка.";
 
 /* No comment provided by engineer. */
 "Failed to copy: %@" = "Неуспешно копиране: %@";
@@ -425,9 +473,6 @@
 /* No comment provided by engineer. */
 "Failure to download result from conversion online service." = "Неуспехът да изтеглите резултат от онлайн услугата за преобразуване.";
 
-/* No comment provided by engineer. */
-"Favorites and Recents" = "Любими и Скорошни";
-
 /* Description of file operation error */
 "File already exists" = "Файлът вече съществува";
 
@@ -445,6 +490,9 @@
 
 /* No comment provided by engineer. */
 "Folders" = "Папки";
+
+/* Share status */
+"Form filling" = "Попълване на формуляр";
 
 /* Share status */
 "Full Access" = "Пълен достъп";
@@ -494,8 +542,11 @@
 /* No comment provided by engineer. */
 "Invalid Country Code" = "Невалиден код на държавата";
 
-/* Error message */
-"Invalid URL: The format ot the URL could not be determined" = "Невалиден URL: Форматът на URL не може да бъде определен";
+/* No comment provided by engineer. */
+"Invalid Data" = "Невалидни данни";
+
+/* No comment provided by engineer. */
+"Invalid Url" = "Невалиден URL адрес";
 
 /* Data units */
 "Kb" = "Кб";
@@ -511,6 +562,9 @@
 
 /* No comment provided by engineer. */
 "Last name is incorrect" = "Фамилията е неправилна";
+
+/* No comment provided by engineer. */
+"Link copied\nto the clipboard" = "Връзката е копирана\nв клипборда";
 
 /* Caption of the process */
 "Logging in" = "Влизане в системата";
@@ -592,10 +646,16 @@
 "Nextcloud directory" = "Nextcloud директория";
 
 /* No comment provided by engineer. */
+"No client IDs of application" = "Няма клиентска идентификация на приложението";
+
+/* No comment provided by engineer. */
 "No connection" = "Няма връзка";
 
 /* No comment provided by engineer. */
 "No information about the user profile." = "Няма информация за потребителския профил.";
+
+/* No comment provided by engineer. */
+"No Internet connection" = "Няма интернет връзка";
 
 /* No comment provided by engineer. */
 "No network" = "Няма мрежа";
@@ -610,8 +670,7 @@
 "No search result" = "Няма резултат от търсенето";
 
 /* Invalid entity date
-   Invalid entity owner
-   No information */
+   Invalid entity owner */
 "none" = "няма";
 
 /* If the cache is empty
@@ -620,6 +679,9 @@
 
 /* No comment provided by engineer. */
 "Note: removal from your account can not be undone." = "Забележка: премахването от профила Ви не може да бъде отменено.";
+
+/* Sharing settings switcher */
+"Notify by Email" = "Известяване чрез имейл";
 
 /* Used in the context: 'Showing 1 of 3 items' */
 "of" = "на";
@@ -638,9 +700,6 @@
 
 /* No comment provided by engineer. */
 "OneDrive" = "OneDrive";
-
-/* No comment provided by engineer. */
-"OneDrive and kDrive access" = "Достъп до OneDrive и kDrive";
 
 /* No comment provided by engineer. */
 "OneDrive directory" = "Директория OneDrive";
@@ -681,7 +740,7 @@
 /* No comment provided by engineer. */
 "ownCloud directory" = "ownCloud директория";
 
-/* No comment provided by engineer. */
+/* Table cell right holder acces text */
 "Owner" = "Собственик";
 
 /* No comment provided by engineer. */
@@ -695,6 +754,12 @@
 
 /* Data units */
 "Pb" = "Пб";
+
+/* No comment provided by engineer. */
+"Phone" = "Телефон";
+
+/* No comment provided by engineer. */
+"Phone is incorrect" = "Телефонът е грешен";
 
 /* Used in the context: '1 photo' */
 "photo" = "снимка";
@@ -741,6 +806,9 @@
 /* Button title */
 "Preview" = "Предварителен преглед";
 
+/* Part of phrases - By creating the portal you agree with our Privacy Policy and Terms of Service */
+"Privacy Policy" = "Декларация за поверителност";
+
 /* Caption of the processing */
 "Processing" = "Обработване";
 
@@ -768,6 +836,9 @@
 /* Button title */
 "Remove from Favorites" = "Премахни от Любими";
 
+/* Caption of the process */
+"Removing" = "Премахване ";
+
 /* Button title */
 "Rename" = "Преименувам";
 
@@ -783,6 +854,12 @@
 /* No comment provided by engineer. */
 "Renewal" = "Подновяване";
 
+/* No comment provided by engineer. */
+"Request canceled" = "Заявката е отказана";
+
+/* No comment provided by engineer. */
+"Request had insufficient authentication scopes" = "Заявката имаше недостатъчни обхвати за удостоверяване";
+
 /* Button title */
 "Restore" = "Възстанови";
 
@@ -795,9 +872,15 @@
 /* Caption of the processing */
 "Saving" = "Спестяване";
 
+/* No comment provided by engineer. */
+"Search" = "Търсене";
+
 /* Button title
    Navigation bar button title */
 "Select" = "Изберете";
+
+/* No comment provided by engineer. */
+"Select all" = "Избери всички";
 
 /* No comment provided by engineer. */
 "Select another cloud to connect to Nextcloud, ownCloud and others are supported." = "Изберете друг облак, за да се свържете с Nextcloud, ownCloud и други, които се поддържат.";
@@ -820,6 +903,9 @@
 /* No comment provided by engineer. */
 "Selected: %ld" = "Избрано: %ld";
 
+/* No comment provided by engineer. */
+"Selecting access rights" = "Избиране на права за достъп";
+
 /* Caption of the process */
 "Sending" = "Изпращане";
 
@@ -829,6 +915,9 @@
 /* No comment provided by engineer. */
 "Settings" = "Настройки";
 
+/* No comment provided by engineer. */
+"Shared access" = "Споделен достъп";
+
 /* Category title */
 "Shared with Me" = "Споделено с мен";
 
@@ -837,6 +926,9 @@
 
 /* Caption of the process */
 "Sharing" = "Споделяне";
+
+/* No comment provided by engineer. */
+"Sharing settings" = "Настройки за споделяне";
 
 /* Button title */
 "Sharing Settings" = "Споделяне на Настройки";
@@ -855,6 +947,12 @@
 
 /* Presentation Viewer */
 "Slide %i of %i" = "Слайд %1$i от %2$i";
+
+/* No comment provided by engineer. */
+"Something went wrong, try again" = "Нещо се обърка, опитайте отново";
+
+/* No comment provided by engineer. */
+"Something wrong" = "Нещо се обърка";
 
 /* Button title */
 "Sort" = "Вид";
@@ -879,6 +977,9 @@
 
 /* Data units */
 "Tb" = "Тб";
+
+/* Part of phrases - By creating the portal you agree with our Privacy Policy and Terms of Service */
+"Terms of Service" = "Условия за ползване";
 
 /* Notification title */
 "Text copied" = "Текстът е копиран";
@@ -908,6 +1009,9 @@
 "The item with the name '%@' already exists in the folder '%@'." = "Елементът с името „%1$@“ вече съществува в папката „%2$@“.";
 
 /* No comment provided by engineer. */
+"The link for external\naccess is copied\nto the clipboard" = "Линкът за външен\nдостъп е копиран\nв клипборда";
+
+/* No comment provided by engineer. */
 "The parameters are incorrect." = "Параметрите не са правилни.";
 
 /* No comment provided by engineer. */
@@ -921,6 +1025,9 @@
 
 /* No comment provided by engineer. */
 "The portal name must be between 6 and 50 characters long" = "Име на портала трябва да е между 6 и 50 символа";
+
+/* No comment provided by engineer. */
+"The request timed out." = "Времето на заявката изтече.";
 
 /* No comment provided by engineer. */
 "The server is not available." = "Сървърът не е наличен.";
@@ -939,6 +1046,9 @@
 
 /* No comment provided by engineer. */
 "This operation will free up space on your device by deleting temporary files. Your offline files and personal data won't be removed." = "Тази операция ще освободи място в устройството Ви чрез изтриване на временни файлове. Вашите офлайн файлове и лични данни няма да бъдат премахнати.";
+
+/* No comment provided by engineer. */
+"This option is used to block access previously granted to a user or group." = "Опцията се използва за блокиране на достъпа, предоставен предварително на потребител или група.";
 
 /* No comment provided by engineer. */
 "This presentation is being edited. Do you want open %@ to view only?" = "Тази презентация се редактира. Искате ли да отворите %@ само за преглеждане?";
@@ -977,10 +1087,34 @@
 "Type" = "Тип";
 
 /* No comment provided by engineer. */
+"Unable delete items" = "Елементите не може да се изтрият";
+
+/* No comment provided by engineer. */
+"Unable disconnect third party" = "Връзката с трета страна не може да се прекъсне";
+
+/* No comment provided by engineer. */
 "Unable to get information about the portal" = "Не може да се получи информация за портала";
 
 /* No comment provided by engineer. */
 "Unable to get information about the user." = "Не може да се получи информация за потребителя.";
+
+/* No comment provided by engineer. */
+"Unauthorized users will be able only to view the document and add comments, as well as manage them." = "Неоторизираните потребители ще могат само да преглеждат документа и да добавят коментари, както и да ги управляват.";
+
+/* No comment provided by engineer. */
+"Unauthorized users will be able only to view the document and fill in the forms inserted into the document." = "Неоторизираните потребители ще могат само за преглеждат документа и да попълват вградените в него формуляри.";
+
+/* No comment provided by engineer. */
+"Unauthorized users will be able only to view the document." = "Неоторизираните потребители ще могат само за преглеждат документа.";
+
+/* No comment provided by engineer. */
+"Unauthorized users will be able to view and change the document without actually editing it, but all the changes made by a reviewer will be recorded and shown to the file owner (or a person who has full access to the file) so that he/she will be able to accept or reject them." = "Неоторизираните потребители ще могат само за преглеждат документа без реално да го редактират, но всички направени от тях промени ще бъдат записани и показани на собственика на файла (или на човека, който има пълен достъп до файла), за да може той/тя да ги приеме или да ги отхвърли.";
+
+/* No comment provided by engineer. */
+"Unauthorized users will be able to view and edit the document as well as to share this document." = "Неоторизираните потребители ще могат да преглеждат и да редактират документа, както и да го споделят.";
+
+/* No comment provided by engineer. */
+"Unauthorized users will not have access to the document." = "Неоторизираните потребители няма да имат достъп до документа.";
 
 /* No comment provided by engineer. */
 "Unexpected response from the service." = "Неочакван отговор от услугата.";
@@ -989,7 +1123,7 @@
 "Unknown" = "Неизвестен";
 
 /* No comment provided by engineer. */
-"Unknown API response." = "Неизвестен отговор на API.";
+"Unknown error" = "Неизвестна грешка";
 
 /* No comment provided by engineer. */
 "Unknown file provider" = "Неизвестен доставчик на файлове";
@@ -1006,9 +1140,6 @@
 /* No comment provided by engineer. */
 "Unsupported format." = "Неподдържан формат.";
 
-/* Button title */
-"Upload" = "Качи";
-
 /* Caption of the process */
 "Uploading" = "Качване";
 
@@ -1018,8 +1149,11 @@
 /* Button title */
 "Use Touch ID" = "Използвайте Touch ID";
 
-/* Error message */
+/* No comment provided by engineer. */
 "User authentication failed" = "Неуспешна идентификация";
+
+/* No comment provided by engineer. */
+"User authentication required" = "Изисква се удостоверяване на потребителя";
 
 /* No comment provided by engineer. */
 "User undefined" = "Не е определен потребител";
@@ -1035,9 +1169,6 @@
 
 /* No comment provided by engineer. */
 "Version" = "Версия";
-
-/* No comment provided by engineer. */
-"View and edit files in OneDrive and kDrive directly from the app. Access your storages from the Clouds tab." = "Преглеждайте и редактирайте файловете в OneDrive и kDrive директно от приложението. Ще имате достъп до складовете си от лентата Clouds.";
 
 /* No comment provided by engineer. */
 "Warning" = "Внимание";

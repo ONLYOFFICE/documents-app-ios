@@ -1287,8 +1287,7 @@ class ASCOnlyofficeProvider: ASCFileProviderProtocol & ASCSortableFileProviderPr
         let isAllowConvert  =
             ASCConstants.FileExtensions.documents.contains(fileExt) ||
             ASCConstants.FileExtensions.spreadsheets.contains(fileExt) ||
-            ASCConstants.FileExtensions.presentations.contains(fileExt) ||
-            ASCConstants.FileExtensions.forms.contains(fileExt)
+            ASCConstants.FileExtensions.presentations.contains(fileExt)
 
         if isPdf {
             let openHandler = delegate?.openProgress(file: file, title: NSLocalizedString("Downloading", comment: "Caption of the processing") + "...", 0.15)

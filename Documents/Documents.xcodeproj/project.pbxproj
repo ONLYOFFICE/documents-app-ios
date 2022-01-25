@@ -200,6 +200,21 @@
 		FC156CF526170A660015835A /* new in Resources */ = {isa = PBXBuildFile; fileRef = FC156CF426170A660015835A /* new */; };
 		FC156CF626170A660015835A /* new in Resources */ = {isa = PBXBuildFile; fileRef = FC156CF426170A660015835A /* new */; };
 		FC1755971E9CAFDB00D73D8E /* ASCSortViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC1755961E9CAFDB00D73D8E /* ASCSortViewController.swift */; };
+		FC1AC10C27A040D8006C1B6E /* ASCPortalTypeDefinderByCurrentConnection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D299156274FB66600A06F3B /* ASCPortalTypeDefinderByCurrentConnection.swift */; };
+		FC1AC10D27A040D8006C1B6E /* ASCPortalTypeDefinderByUrl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D299154274FB4EE00A06F3B /* ASCPortalTypeDefinderByUrl.swift */; };
+		FC1AC10E27A040DE006C1B6E /* ASCPortalType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D29914E274FB37600A06F3B /* ASCPortalType.swift */; };
+		FC1AC10F27A040E9006C1B6E /* ASCUniqNameFinder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D76B04D275B935400389C61 /* ASCUniqNameFinder.swift */; };
+		FC1AC11027A040E9006C1B6E /* ASCEntityExistenceChecker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D76B04A275B921100389C61 /* ASCEntityExistenceChecker.swift */; };
+		FC1AC11127A040EE006C1B6E /* ASCEntityExistenceCheckerByAttributes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D76B051275B9DC200389C61 /* ASCEntityExistenceCheckerByAttributes.swift */; };
+		FC1AC11227A040EE006C1B6E /* ASCEntityUniqNameFinder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D76B04F275B957A00389C61 /* ASCEntityUniqNameFinder.swift */; };
+		FC1AC11327A042B5006C1B6E /* ASCOnlyofficeCategoriesChainContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D76212B277DE2D60088126B /* ASCOnlyofficeCategoriesChainContainer.swift */; };
+		FC1AC11427A042D0006C1B6E /* ASCPersonalShareSettingsAPIWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DEB996E274E2C7C0071C1DB /* ASCPersonalShareSettingsAPIWorker.swift */; };
+		FC1AC11527A042D0006C1B6E /* ASCShareSettingsAPIWorkerFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DEB9975274E46480071C1DB /* ASCShareSettingsAPIWorkerFactory.swift */; };
+		FC1AC11627A042E0006C1B6E /* ASCAccessToAddRightHoldersCheckerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DEB9977274E4DC80071C1DB /* ASCAccessToAddRightHoldersCheckerProtocol.swift */; };
+		FC1AC11727A042E7006C1B6E /* ASCAccessToAddRightHoldersCheckerByPortalDefinder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D299158274FBF2100A06F3B /* ASCAccessToAddRightHoldersCheckerByPortalDefinder.swift */; };
+		FC1AC11827A04347006C1B6E /* ASCPortalTypeDefinderProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D299152274FB46300A06F3B /* ASCPortalTypeDefinderProtocol.swift */; };
+		FC1AC11927A043D1006C1B6E /* ASCSharingSettingsAccessDocumentFormProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D1DB5552759023800FA0BEE /* ASCSharingSettingsAccessDocumentFormProvider.swift */; };
+		FC1AC11A27A043D1006C1B6E /* ASCSharingSettingsAccessOFormProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DD2FF20275A9B2D00676010 /* ASCSharingSettingsAccessOFormProvider.swift */; };
 		FC1AD6142175FE7000DADEE0 /* ASCNetworkReachability.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC1AD6132175FE7000DADEE0 /* ASCNetworkReachability.swift */; };
 		FC1EA5CB1ECECBC3008FEE2E /* ASCBaseNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC1EA5CA1ECECBC3008FEE2E /* ASCBaseNavigationController.swift */; };
 		FC1EA5CD1ECED0A0008FEE2E /* ASCBaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC1EA5CC1ECED0A0008FEE2E /* ASCBaseViewController.swift */; };
@@ -3643,6 +3658,7 @@
 				FC68529026837B7300D830EC /* OnlyofficeAuthRequest.swift in Sources */,
 				FC80CA3225BADEF10077C2B8 /* ObservableProxy.swift in Sources */,
 				FC68528826837B7300D830EC /* OnlyofficeFileOperation.swift in Sources */,
+				FC1AC11127A040EE006C1B6E /* ASCEntityExistenceCheckerByAttributes.swift in Sources */,
 				FC36D27C25B5C32200412DDB /* ASCCloudsEmptyViewController.swift in Sources */,
 				FC36D27D25B5C32200412DDB /* ASCDeviceCategoryViewController.swift in Sources */,
 				FC36D27E25B5C32200412DDB /* ASCEntityManager.swift in Sources */,
@@ -3686,6 +3702,7 @@
 				FC36D29425B5C32200412DDB /* ASCAccountsViewController.swift in Sources */,
 				FCEF853726C3E3CF00173DDF /* AppDelegate.swift in Sources */,
 				1D49E2BA26A9BDD90024AC7A /* ASCSharingSettingsVerifyRightHoldersModels.swift in Sources */,
+				FC1AC11A27A043D1006C1B6E /* ASCSharingSettingsAccessOFormProvider.swift in Sources */,
 				1D49E2AA26A9BD8F0024AC7A /* ASCSharingAddRightHoldersView.swift in Sources */,
 				FC36D29525B5C32200412DDB /* Mappings.swift in Sources */,
 				FC36D29625B5C32200412DDB /* ASCRootViewController.swift in Sources */,
@@ -3720,11 +3737,13 @@
 				FC36D2AA25B5C32200412DDB /* NSString+HTMLString.swift in Sources */,
 				FC80CA3125BADEF10077C2B8 /* EventSubscription.swift in Sources */,
 				FC68527826837B7300D830EC /* OnedriveEndpoints.swift in Sources */,
+				FC1AC11227A040EE006C1B6E /* ASCEntityUniqNameFinder.swift in Sources */,
 				FC36D2AC25B5C32200412DDB /* ASCOnlyofficeCategoriesViewController.swift in Sources */,
 				FC36D2AD25B5C32200412DDB /* Sequence+Extensions.swift in Sources */,
 				1D49E2BF26A9BE1E0024AC7A /* ASCSharingSettingsAccessDocumentProvider.swift in Sources */,
 				FC36D2AE25B5C32200412DDB /* ASCPasscodeLockPresenter.swift in Sources */,
 				1D49E2A926A9BD8A0024AC7A /* ASCSharingSettingsAccessViewController.swift in Sources */,
+				FC1AC11327A042B5006C1B6E /* ASCOnlyofficeCategoriesChainContainer.swift in Sources */,
 				FCC34B2726BBBDEB00CE5E88 /* ASCSharingSettingsAccessNotesProviderProtocol.swift in Sources */,
 				FC36D2AF25B5C32200412DDB /* UIColor+Extension.swift in Sources */,
 				FC470967261E529C006FFF90 /* Array+Extensions.swift in Sources */,
@@ -3740,6 +3759,7 @@
 				1D128F9D26B3285300603B0F /* ASCCentredLabelHeaderFooterView.swift in Sources */,
 				1D49E29B26A9BD340024AC7A /* ASCSharingOptionsSectionProtocol.swift in Sources */,
 				1D49E2A226A9BD5E0024AC7A /* ASCShareSettingsAPIWorker.swift in Sources */,
+				FC1AC11427A042D0006C1B6E /* ASCPersonalShareSettingsAPIWorker.swift in Sources */,
 				FCE1866C262AB4AB0086D21B /* Scenes.swift in Sources */,
 				FCEF854026C3EFD500173DDF /* AppDelegate+Helpers.swift in Sources */,
 				FC36D2B525B5C32200412DDB /* ASCPasscodeLockViewController.swift in Sources */,
@@ -3751,6 +3771,7 @@
 				FC36D2B825B5C32200412DDB /* ASCConnectStorageOAuth2ViewController.swift in Sources */,
 				FCECDDD2264309D7006CD7B9 /* ASCEmailSentViewController.swift in Sources */,
 				1D49E2B426A9BDC20024AC7A /* ASCTextFieldCellViewModel.swift in Sources */,
+				FC1AC11927A043D1006C1B6E /* ASCSharingSettingsAccessDocumentFormProvider.swift in Sources */,
 				1D49E2B826A9BDD10024AC7A /* ASCSharingSettingsVerifyRightHoldersPresenter.swift in Sources */,
 				FCEF855826C405FB00173DDF /* ASCBaseTabBarController.swift in Sources */,
 				FC36D2B925B5C32200412DDB /* UIStoryboard+Extensions.swift in Sources */,
@@ -3759,8 +3780,10 @@
 				FC36D2BA25B5C32200412DDB /* EnterPasscodeState.swift in Sources */,
 				FC36D2BB25B5C32200412DDB /* ASCFileManager.swift in Sources */,
 				1D49E29E26A9BD450024AC7A /* ASCSharingRightHolderTableViewCell.swift in Sources */,
+				FC1AC10E27A040DE006C1B6E /* ASCPortalType.swift in Sources */,
 				1D49E29626A9BD110024AC7A /* ASCCopyLinkTableViewCell.swift in Sources */,
 				FC36D2BC25B5C32200412DDB /* ASCBanner.swift in Sources */,
+				FC1AC11827A04347006C1B6E /* ASCPortalTypeDefinderProtocol.swift in Sources */,
 				FC36D2BD25B5C32200412DDB /* ASCPasscodeLockSplashView.swift in Sources */,
 				FC36D2BE25B5C32200412DDB /* UIAlertController+SwiftAlertController.swift in Sources */,
 				FC36D2C025B5C32200412DDB /* ASC2FAPageController.swift in Sources */,
@@ -3780,6 +3803,7 @@
 				1D49E2AD26A9BDA30024AC7A /* ASCSharingAddRightHoldersViewController.swift in Sources */,
 				FC36D2CB25B5C32200412DDB /* ASCDocumentsNavigationController.swift in Sources */,
 				1D49E29A26A9BD2C0024AC7A /* ASCOnlyofficeFileInternalLinkMaker.swift in Sources */,
+				FC1AC10D27A040D8006C1B6E /* ASCPortalTypeDefinderByUrl.swift in Sources */,
 				FC36D2CC25B5C32200412DDB /* UISplitViewController+Extensions.swift in Sources */,
 				FC68527226837B7300D830EC /* NextcloudStorageStats.swift in Sources */,
 				FC36D2CE25B5C32200412DDB /* ASCDebugConsoleViewController.swift in Sources */,
@@ -3800,6 +3824,7 @@
 				FC68529826837B7300D830EC /* DropboxEndpoints.swift in Sources */,
 				FC36D2D825B5C32200412DDB /* ASCFilterType.swift in Sources */,
 				FC36D2D925B5C32200412DDB /* ASCSignInController.swift in Sources */,
+				FC1AC11527A042D0006C1B6E /* ASCShareSettingsAPIWorkerFactory.swift in Sources */,
 				FC36D2DB25B5C32200412DDB /* ASCFolderProviderType.swift in Sources */,
 				FC68528226837B7300D830EC /* OnlyofficeUserPhoto.swift in Sources */,
 				FC36D2DC25B5C32200412DDB /* ASCConnectStorageOAuth2OneDrive.swift in Sources */,
@@ -3825,6 +3850,7 @@
 				FC54E805271F04BE00195CFD /* ASCCreatePortal.swift in Sources */,
 				FC36D2E825B5C32200412DDB /* ASCLogger.swift in Sources */,
 				FCE1866A262AB4AB0086D21B /* Segues.swift in Sources */,
+				FC1AC10F27A040E9006C1B6E /* ASCUniqNameFinder.swift in Sources */,
 				FC36D2E925B5C32200412DDB /* ASCLoaderCell.swift in Sources */,
 				FC6852A026837B7300D830EC /* Endpoint.swift in Sources */,
 				FC36D2EA25B5C32200412DDB /* ASCDocumentsToolbar.swift in Sources */,
@@ -3853,6 +3879,7 @@
 				FC80CA3425BADEF10077C2B8 /* ObservableReference.swift in Sources */,
 				FC36D2F525B5C32200412DDB /* ASCDebugManager.swift in Sources */,
 				1D49E2AB26A9BD970024AC7A /* ASCSharingAddRightHoldersTableViewDataSourceAndDelegate.swift in Sources */,
+				FC1AC11727A042E7006C1B6E /* ASCAccessToAddRightHoldersCheckerByPortalDefinder.swift in Sources */,
 				FC36D2F625B5C32200412DDB /* ASCEntityAccess.swift in Sources */,
 				FC36D2F725B5C32200412DDB /* UPCarouselFlowLayout.swift in Sources */,
 				FC36D2F825B5C32200412DDB /* ASCUserProfileViewController.swift in Sources */,
@@ -3874,6 +3901,7 @@
 				1D49E2C126A9BE250024AC7A /* ASCSharingSettingsAccessPresentationProvider.swift in Sources */,
 				FC36D2FF25B5C32200412DDB /* ASCUserDefaultsPasscodeRepository.swift in Sources */,
 				FCEFE187266F491700B367AE /* ASCLoadedViewControllerFinderProtocol.swift in Sources */,
+				FC1AC10C27A040D8006C1B6E /* ASCPortalTypeDefinderByCurrentConnection.swift in Sources */,
 				FC36D30025B5C32200412DDB /* ASCYandexFileProvider.swift in Sources */,
 				FC36D30125B5C32200412DDB /* ASCFolder.swift in Sources */,
 				FC68529626837B7300D830EC /* OnlyofficeServerError.swift in Sources */,
@@ -3884,6 +3912,7 @@
 				1D49E2AC26A9BD9B0024AC7A /* ASCSharingAddRightHoldersSearchResultsTableViewDataSourceAndDelegate.swift in Sources */,
 				FC36D30525B5C32200412DDB /* ASCSDWebImageDownloaderOperation.swift in Sources */,
 				1D49E2BE26A9BE1B0024AC7A /* ASCSharingSettingsAccessDefaultProvider.swift in Sources */,
+				FC1AC11027A040E9006C1B6E /* ASCEntityExistenceChecker.swift in Sources */,
 				FC36D30625B5C32200412DDB /* ASCNextCloudProvider.swift in Sources */,
 				FC36D30725B5C32200412DDB /* ChangePasscodeState.swift in Sources */,
 				FC80CA3725BADEF10077C2B8 /* ObservableChainingProxy.swift in Sources */,
@@ -3932,6 +3961,7 @@
 				FC36D32825B5C32200412DDB /* ASCTransferViewController.swift in Sources */,
 				FC36D32925B5C32200412DDB /* UIButton+Extensions.swift in Sources */,
 				FC36D32A25B5C32200412DDB /* ASCDeviceCategoryCell.swift in Sources */,
+				FC1AC11627A042E0006C1B6E /* ASCAccessToAddRightHoldersCheckerProtocol.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -65,6 +65,7 @@ class ASCDocumentsEmptyView: UIView {
             actionButton?.addTarget(self, action: #selector(onButtonTouchDown), for: .touchDown)
             actionButton?.addTarget(self, action: #selector(onButtonTouchUpOutside), for: .touchUpOutside)
 
+            subtitleLabel?.numberOfLines = 8
             // Logo motion
 
 //            if type == .local || type == .cloud {

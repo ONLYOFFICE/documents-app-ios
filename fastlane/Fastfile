@@ -79,7 +79,7 @@ platform :ios do
 
     # Read changelog file
     change_log_file = options[:changelog_file]
-    if(File.exist?(change_log_file))
+    if !change_log_file.nil? && File.exist?(change_log_file)
       change_log = File.read(change_log_file)
     end
 
@@ -163,7 +163,7 @@ platform :ios do
 
     # Read changelog file
     change_log_file = options[:changelog_file]
-    if(File.exist?(change_log_file))
+    if !change_log_file.nil? && File.exist?(change_log_file)
       change_log = File.read(change_log_file)
     end
 

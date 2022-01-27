@@ -257,8 +257,8 @@ class ASCConnectCloudViewController: UITableViewController {
                 viewController.complation = authComplation(info:)
                 viewController.title = providerName(type)
                 viewController.provider = .yandex
-                viewController.needServer = false
                 viewController.logo = providerImage(type)
+                viewController.needServer = false
             }
         case .webdav:
             connectionVC = ASCConnectStorageWebDavController.instantiate(from: Storyboard.connectStorage)
@@ -291,8 +291,8 @@ class ASCConnectCloudViewController: UITableViewController {
                 viewController.complation = authComplation(info:)
                 viewController.title = providerName(type)
                 viewController.provider = .kDrive
-                viewController.needServer = false
                 viewController.logo = providerImage(type)
+                viewController.needServer = false
             }
         default:
             break

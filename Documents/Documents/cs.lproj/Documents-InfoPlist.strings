@@ -19,6 +19,9 @@
 /* Privacy - Face ID Usage Description */
 "NSFaceIDUsageDescription" = "Tato aplikace vyžaduje oprávnění k identifikaci obličeje, aby se ověřila pomocí funkce Face ID.";
 
+/* Privacy - Photo Library Additions Usage Description */
+"NSPhotoLibraryAddUsageDescription" = "Tato aplikace vyžaduje přístup do knihovny fotografií, takže můžete v aplikaci nahrát fotografie.";
+
 /* Privacy - Photo Library Usage Description */
 "NSPhotoLibraryUsageDescription" = "Tato aplikace vyžaduje přístup do knihovny fotografií, takže můžete v aplikaci nahrát fotografie.";
 

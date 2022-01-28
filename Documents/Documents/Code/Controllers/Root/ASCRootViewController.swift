@@ -73,6 +73,14 @@ class ASCRootViewController: ASCBaseTabBarController {
             onlyofficeSC.tabBarItem.title = ASCConstants.Name.appNameShort
         }
         
+        if #available(iOS 15.0, *), UIDevice.pad {
+            let appearance = UITabBarAppearance()
+            appearance.configureWithDefaultBackground()
+           
+            tabBar.standardAppearance = appearance
+            tabBar.scrollEdgeAppearance = tabBar.standardAppearance
+        }
+        
         update(traitCollection: traitCollection)
         
         checkNotifications()

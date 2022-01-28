@@ -1,3 +1,6 @@
+/* Class = "UILabel"; text = "Label"; ObjectID = "amC-Ph-cGL"; */
+"amC-Ph-cGL.text" = "Etichetta";
+
 /* Class = "UIButton"; normalTitle = "Continue"; ObjectID = "BMv-HP-hD2"; */
 "BMv-HP-hD2.normalTitle" = "Continuare";
 
@@ -16,11 +19,17 @@
 /* Class = "UITextField"; placeholder = "Last Name"; ObjectID = "iLP-xJ-pU3"; */
 "iLP-xJ-pU3.placeholder" = "Cognome";
 
+/* Class = "UITextField"; placeholder = "Your phone number"; ObjectID = "kgQ-EP-Qap"; */
+"kgQ-EP-Qap.placeholder" = "Inserisci numero di telefono";
+
 /* Class = "UILabel"; text = "Choose a password and\nstart using your office"; ObjectID = "qKc-e7-uTl"; */
 "qKc-e7-uTl.text" = "Scegli una password e\ninizia a usare il tuo office";
 
 /* Class = "UILabel"; text = "After the registration a mail with your portal registration details will be sent to your email address."; ObjectID = "qwT-Pr-auo"; */
 "qwT-Pr-auo.text" = "Dopo la procedura di registrazione, una mail con i dettagli della registrazione del portale verrà inviata al tuo indirizzo email.";
+
+/* Class = "UIButton"; normalTitle = "🇱🇻"; ObjectID = "SZG-z0-C6T"; */
+"SZG-z0-C6T.normalTitle" = "🇱🇻";
 
 /* Class = "UITextField"; placeholder = "Password"; ObjectID = "to9-RR-YBV"; */
 "to9-RR-YBV.placeholder" = "Password";

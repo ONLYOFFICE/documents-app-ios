@@ -260,7 +260,7 @@ class ASCSignInViewController: ASCBaseViewController {
                 let authRequest = OnlyofficeAuthRequest()
                 authRequest.provider = .facebook
                 authRequest.portal = strongSelf.portal
-                authRequest.facebookToken = accessToken
+                authRequest.accessToken = accessToken
                 
                 let hud = MBProgressHUD.showTopMost()
                 hud?.label.text = NSLocalizedString("Logging in", comment: "Caption of the process")
@@ -303,7 +303,7 @@ class ASCSignInViewController: ASCBaseViewController {
                 let authRequest = OnlyofficeAuthRequest()
                 authRequest.provider = .google
                 authRequest.portal = strongSelf.portal
-                authRequest.googleToken = accessToken
+                authRequest.accessToken = accessToken
                 
                 let hud = MBProgressHUD.showTopMost()
                 hud?.label.text = NSLocalizedString("Logging in", comment: "Caption of the process")

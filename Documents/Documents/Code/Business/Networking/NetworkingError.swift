@@ -10,6 +10,7 @@ import Foundation
 
 enum NetworkingError: LocalizedError {
     case cancelled
+    case timeOut
     case noInternet
     case invalidUrl
     case invalidData
@@ -21,6 +22,8 @@ enum NetworkingError: LocalizedError {
         switch self {
         case .cancelled:
             return NSLocalizedString("Request canceled", comment: "")
+        case .timeOut:
+            return NSLocalizedString("The request timed out.", comment: "")
         case .noInternet:
             return NSLocalizedString("No Internet connection", comment: "")
         case .invalidUrl:

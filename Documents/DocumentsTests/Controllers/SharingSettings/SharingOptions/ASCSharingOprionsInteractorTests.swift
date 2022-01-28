@@ -68,6 +68,11 @@ extension ASCSharingOprionsInteractorTests {
         func convertToParams(items: [(rightHolderId: String, access: ASCShareAccess)]) -> [OnlyofficeShareItemRequestModel] {
             []
         }
+        
+        func convertToParams(entities: [ASCEntity]) -> [String: [String]]? {
+            nil
+        }
+        
         func makeApiRequest(entity: ASCEntity) -> Endpoint<OnlyofficeResponseArray<OnlyofficeShare>>? {
             let file = ASCFile()
             file.id = "Foo"

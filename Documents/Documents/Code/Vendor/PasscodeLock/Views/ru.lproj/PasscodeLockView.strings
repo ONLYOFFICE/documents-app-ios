@@ -5,7 +5,7 @@
 "0Ph-dj-v7R.normalTitle" = "Использовать TouchID";
 
 /* Class = "UILabel"; text = "Title"; ObjectID = "1wK-Ol-7mm"; Note = "Do not translate"; */
-"1wK-Ol-7mm.text" = "Title";
+"1wK-Ol-7mm.text" = "Название";
 
 /* Class = "UIButton"; normalTitle = "5"; ObjectID = "C9Z-3u-ohd"; Note = "Do not translate"; */
 "C9Z-3u-ohd.normalTitle" = "5";
@@ -26,7 +26,7 @@
 "H78-kl-y6L.normalTitle" = "Удалить";
 
 /* Class = "UILabel"; text = "Description"; ObjectID = "HbT-GO-CPk"; Note = "Do not translate"; */
-"HbT-GO-CPk.text" = "Description";
+"HbT-GO-CPk.text" = "Описание";
 
 /* Class = "UIButton"; normalTitle = "8"; ObjectID = "PbJ-Y8-MMf"; Note = "Do not translate"; */
 "PbJ-Y8-MMf.normalTitle" = "8";

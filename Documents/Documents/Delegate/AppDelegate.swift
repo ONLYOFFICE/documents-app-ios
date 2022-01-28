@@ -8,8 +8,6 @@
 
 import UIKit
 import UserNotifications
-import FBSDKCoreKit
-import FBSDKLoginKit
 import GoogleSignIn
 import FirebaseCore
 import FirebaseMessaging
@@ -40,10 +38,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         ASCLogIntercepter.shared.start()
         ASCAccountsManager.start()
-        
-        // Initialize PasscodeLock presenter
-        initPasscodeLock()
-        
+                
         // Use Firebase library to configure APIs
         FirebaseApp.configure()
 
@@ -60,8 +55,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         self.window?.rootViewController = ASCRootViewController.instance()
         self.window?.makeKeyAndVisible()
         
+        // Initialize PasscodeLock presenter
+        initPasscodeLock()
+        
         // Check Update
         configureAppUpdater()
+        
+        UNUserNotificationCenter.current().delegate = self
         
         return true
     }
@@ -98,7 +98,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                    let scheme = schemes.last {
                     if let _ = url.scheme?.range(of: scheme, options: .caseInsensitive) {
                         if service == "facebook" {
-                            return ApplicationDelegate.shared.application(app, open: url, options: options)
+                            return ASCFacebookSignInController.application(app, open: url, options: options)
                         } else if service == "google" {
                             return GIDSignIn.sharedInstance.handle(url)
                         } else if service == "oodocuments" {

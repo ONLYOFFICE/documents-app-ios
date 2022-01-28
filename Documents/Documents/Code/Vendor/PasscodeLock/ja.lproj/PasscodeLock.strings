@@ -1,0 +1,39 @@
+/* (No Comment) */
+"PasscodeLockChangeDescription" = "古いパスコードを入力する";
+
+/* Change Passcode State */
+"PasscodeLockChangeTitle" = "古いパスコードを入力する";
+
+/* (No Comment) */
+"PasscodeLockConfirmDescription" = "もう一度パスコードを入力する";
+
+/* Confirm Passcode State */
+"PasscodeLockConfirmTitle" = "パスコードを確定";
+
+/* (No Comment) */
+"PasscodeLockEnterDescription" = "パスコードを入力して、進行します。";
+
+/* Enter Passcode State */
+"PasscodeLockEnterTitle" = "パスコードを入力する";
+
+/* (No Comment) */
+"PasscodeLockFaceIDButton" = "パスコードを入力する";
+
+/* (No Comment) */
+"PasscodeLockMismatchDescription" = "パスコードが合いません。";
+
+/* Passcode Mismatch State */
+"PasscodeLockMismatchTitle" = "もう一度お試しください";
+
+/* (No Comment) */
+"PasscodeLockSetDescription" = "パスコードを選択";
+
+/* Set Passcode State */
+"PasscodeLockSetTitle" = "パスコードを入力する";
+
+/* Touch ID Fallback Button */
+"PasscodeLockTouchIDButton" = "パスコードを入力する";
+
+/* Touch ID Reason */
+"PasscodeLockTouchIDReason" = "続けるには、承認が必要です";
+

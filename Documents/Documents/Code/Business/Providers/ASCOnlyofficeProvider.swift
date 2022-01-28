@@ -443,7 +443,7 @@ class ASCOnlyofficeProvider: ASCFileProviderProtocol & ASCSortableFileProviderPr
                 let semaphore = DispatchSemaphore(value: 0)
 
                 if isShareRoot {
-                    self.apiClient.request(OnlyofficeAPI.Endpoints.Sharing.removeSharingRights) { response, error in
+                    self.apiClient.request(OnlyofficeAPI.Endpoints.Sharing.removeSharingRights, parameters) { response, error in
                         defer { semaphore.signal() }
                         
                         if response?.result ?? false {
@@ -457,15 +457,34 @@ class ASCOnlyofficeProvider: ASCFileProviderProtocol & ASCSortableFileProviderPr
                     }
                 } else {
                     self.apiClient.request(OnlyofficeAPI.Endpoints.Operations.removeEntities, parameters) { response, error in
-                        defer { semaphore.signal() }
                         
                         if (response?.result?.count ?? 0) > 0 {
-                            resultItems += entities.filter { folderIds.contains($0.id) }
-                            resultItems += entities.filter { fileIds.contains($0.id) }
+                            var checkOperation: (()->Void)?
+                            checkOperation = {
+                                self.apiClient.request(OnlyofficeAPI.Endpoints.Operations.list) {
+                                    result, error in
+                                    defer { semaphore.signal() }
+                                    if let error = error {
+                                        lastError = ASCProviderError(msg: error.localizedDescription)
+                                    } else if let operation = result?.result?.first, let progress = operation.progress {
+                                        if progress >= 100 {
+                                            resultItems += entities.filter { folderIds.contains($0.id) }
+                                            resultItems += entities.filter { fileIds.contains($0.id) }
+                                        } else {
+                                            Thread.sleep(forTimeInterval: 1)
+                                            checkOperation?()
+                                        }
+                                    } else {
+                                        lastError = ASCProviderError(msg: NetworkingError.invalidData.localizedDescription)
+                                    }
+                                }
+                            }
+                            checkOperation?()
                         } else {
                             lastError = ASCProviderError(
                                 msg: error?.localizedDescription ?? NSLocalizedString("Unable delete items", comment: "")
                             )
+                            semaphore.signal()
                         }
                     }
                 }
@@ -555,38 +574,15 @@ class ASCOnlyofficeProvider: ASCFileProviderProtocol & ASCSortableFileProviderPr
         params: [String: Any]?,
         processing: @escaping NetworkProgressHandler) {
         
-        var uploadParams = params ?? [:]
-        let mime = uploadParams["mime"] as? String
-
-        uploadParams.removeAll(keys: ["mime"])
-
-        if overwrite {
-            uploadParams += [
-                "createNewIfExist": "true",
-            ]
-        }
+        let mime = params?["mime"] as? String ?? "application/octet-stream"
+        let fileName = params?["title"] as? String ?? ""
         
-//        apiClient.request(OnlyofficeAPI.Endpoints.Uploads.upload(in: path), uploadParams) { data in
-//            data.append(data, withName: "file", fileName: title, mimeType: mime)
-//        } _: { response, error in
-//            //
-//        }
-
-        apiClient.upload(OnlyofficeAPI.Endpoints.Uploads.insert(in: path), data, params, mime) { response, progress, error in
+        /// Upload method using multipart/form-data
+        apiClient.request(OnlyofficeAPI.Endpoints.Uploads.upload(in: path)) { multipartFormData in
+            multipartFormData.append(data, withName: "file", fileName: fileName, mimeType: mime)
+        } _: { response, progress, error  in
             processing(response?.result, progress, error)
         }
-
-
-//        apiLegacy.upload(
-//            String(format: ASCOnlyOfficeApi.apiInsertFile, path),
-//            data: data,
-//            parameters: uploadParams,
-//            method: .post,
-//            mime: mime,
-//            processing: { progress, result, error, response in
-//                processing(result, progress, error)
-//            }
-//        )
     }
 
     func createDocument(_ name: String, fileExtension: String, in folder: ASCFolder, completeon: ASCProviderCompletionHandler?) {
@@ -906,6 +902,10 @@ class ASCOnlyofficeProvider: ASCFileProviderProtocol & ASCSortableFileProviderPr
             return false
         }
         
+        if category?.folder?.rootFolderType == .onlyofficeShare {
+            return true
+        }
+        
         let isProjectRoot = isRoot(folder: parentFolder) && (parentFolder?.rootFolderType == .onlyofficeBunch || parentFolder?.rootFolderType == .onlyofficeProjects)
 
         return (access == ASCEntityAccess.none
@@ -960,7 +960,6 @@ class ASCOnlyofficeProvider: ASCFileProviderProtocol & ASCSortableFileProviderPr
 
         if let file = file, apiClient.active {
             let fileExtension   = file.title.fileExtension().lowercased()
-            let isPersonal      = (apiClient.baseURL?.absoluteString.contains(ASCConstants.Urls.portalPersonal)) ?? false
             let canRead         = allowRead(entity: file)
             let canEdit         = allowEdit(entity: file)
             let canDelete       = allowDelete(entity: file)
@@ -969,7 +968,8 @@ class ASCOnlyofficeProvider: ASCFileProviderProtocol & ASCSortableFileProviderPr
             let isShared        = file.rootFolderType == .onlyofficeShare
             let isProjects      = file.rootFolderType == .onlyofficeBunch || file.rootFolderType == .onlyofficeProjects
             let canOpenEditor   = ASCConstants.FileExtensions.documents.contains(fileExtension) ||
-                ASCConstants.FileExtensions.spreadsheets.contains(fileExtension)
+                ASCConstants.FileExtensions.spreadsheets.contains(fileExtension) ||
+                ASCConstants.FileExtensions.forms.contains(fileExtension)
             let canPreview      = canOpenEditor ||
                 ASCConstants.FileExtensions.presentations.contains(fileExtension) ||
                 ASCConstants.FileExtensions.images.contains(fileExtension) ||
@@ -1008,7 +1008,7 @@ class ASCOnlyofficeProvider: ASCFileProviderProtocol & ASCSortableFileProviderPr
                 entityActions.insert(.download)
             }
 
-            if canEdit && canShare && !isProjects && !isPersonal {
+            if canEdit && canShare && !isProjects {
                 entityActions.insert(.share)
             }
 
@@ -1025,7 +1025,6 @@ class ASCOnlyofficeProvider: ASCFileProviderProtocol & ASCSortableFileProviderPr
         var entityActions: ASCEntityActions = []
 
         if let folder = folder, apiClient.active {
-            let isPersonal      = (apiClient.baseURL?.absoluteString.contains(ASCConstants.Urls.portalPersonal)) ?? false
             let canRead         = allowRead(entity: folder)
             let canEdit         = allowEdit(entity: folder)
             let canDelete       = allowDelete(entity: folder)
@@ -1049,7 +1048,7 @@ class ASCOnlyofficeProvider: ASCFileProviderProtocol & ASCSortableFileProviderPr
                 entityActions.insert(.move)
             }
 
-            if canEdit && canShare && !isPersonal && !isProjects {
+            if canEdit && canShare && !isProjects {
                 entityActions.insert(.share)
             }
 
@@ -1288,7 +1287,8 @@ class ASCOnlyofficeProvider: ASCFileProviderProtocol & ASCSortableFileProviderPr
         let isAllowConvert  =
             ASCConstants.FileExtensions.documents.contains(fileExt) ||
             ASCConstants.FileExtensions.spreadsheets.contains(fileExt) ||
-            ASCConstants.FileExtensions.presentations.contains(fileExt)
+            ASCConstants.FileExtensions.presentations.contains(fileExt) ||
+            ASCConstants.FileExtensions.forms.contains(fileExt)
 
         if isPdf {
             let openHandler = delegate?.openProgress(file: file, title: NSLocalizedString("Downloading", comment: "Caption of the processing") + "...", 0.15)

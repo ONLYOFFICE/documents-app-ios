@@ -27,7 +27,7 @@ class ASCConstants {
     }
 
     struct Urls {
-        static let portalPersonal           = "://personal.onlyoffice.com"
+        static let personalPortals          = ["://personal.onlyoffice.com", "://personal.teamlab.info"]
         static let apiSystemUrl             = "https://api-system.%@"
         static let apiValidatePortalName    = "api/portal/validateportalname"
         static let apiRegistrationPortal    = "api/portal/register"
@@ -82,12 +82,16 @@ class ASCConstants {
         static let allowCoauthoring         = "allow_coauthoring"
         static let checkSdkFully            = "check_sdk_fully"
         static let recaptchaForPortalRegistration = "recaptcha_for_portal_registration"
+        static let privacyPolicyLink        = "link_privacy_policy"
+        static let termsOfServiceLink       = "link_terms_of_service"
 
         static func setupDefaults() {
-            let defaultValues: [String: NSObject] = [
+            let defaultValues: [String : NSObject] = [
                 allowCoauthoring: NSNumber(value: true),
                 checkSdkFully: NSNumber(value: true),
-                recaptchaForPortalRegistration: NSNumber(value: true)
+                recaptchaForPortalRegistration: NSNumber(value: true),
+                privacyPolicyLink: NSString(string: "https://help.onlyoffice.com/products/files/doceditor.aspx?fileid=5048502&doc=SXhWMEVzSEYxNlVVaXJJeUVtS0kyYk14YWdXTEFUQmRWL250NllHNUFGbz0_IjUwNDg1MDIi0"),
+                termsOfServiceLink: NSString(string: "https://help.onlyoffice.com/products/files/doceditor.aspx?fileid=5048471&doc=bXJ6UmJacDVnVDMxV01oMHhrUlpwaGFBcXJUUUE3VHRuTGZrRUF5a1NKVT0_IjUwNDg0NzEi0")
             ]
 
             RemoteConfig.remoteConfig().setDefaults(defaultValues)
@@ -138,9 +142,10 @@ class ASCConstants {
         static let documents                    = ["docx", "doc", "odt", "rtf", "mht", "html", "htm", "epub", "fb2", "txt"]
         static let spreadsheets                 = ["xlsx", "xls", "csv", "ods"]
         static let presentations                = ["pptx", "ppt", "odp"]
+        static let forms                        = ["docxf", "oform"]
         static let images                       = ["jpg", "jpeg", "png", "gif", "bmp", "tif", "tiff", "ico"]
         static let videos                       = ["mpg", "mpeg", "mpg4", "mp4", "m4v", "mov", "avi", "vfw", "m75", "m15", "3g2", "3gp2", "3gp", "3gpp"]
-        static let allowEdit                    = ["docx", "xlsx", "pptx", "csv", "txt", "odt", "ods", "odp", "doc", "xls", "ppt", "rtf", "mht", "html", "htm", "epub", "fb2"]
+        static let allowEdit                    = ["docx", "xlsx", "pptx", "csv", "txt", "odt", "ods", "odp", "doc", "xls", "ppt", "rtf", "mht", "html", "htm", "epub", "fb2", "docxf", "oform"]
         static let editorImportDocuments        = ["doc", "odt", "txt", "rtf", "mht", "html", "htm", "epub", "fb2"]
         static let editorImportSpreadsheets     = ["xls", "ods", "csv"]
         static let editorImportPresentations    = ["ppt", "odp"]

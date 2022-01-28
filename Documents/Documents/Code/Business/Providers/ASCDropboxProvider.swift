@@ -819,6 +819,7 @@ class ASCDropboxProvider: ASCFileProviderProtocol & ASCSortableFileProviderProto
                     if let file = file {
                         file.id = newPath.rawValue
                         file.title = newPath.fileName
+                        file.viewUrl = newPath.rawValue
                         
                         completeon?(strongSelf, file, true, nil)
                     } else if let folder = folder {
@@ -1016,7 +1017,8 @@ class ASCDropboxProvider: ASCFileProviderProtocol & ASCSortableFileProviderProto
             let canDelete       = allowDelete(entity: file)
             let canOpenEditor   = ASCConstants.FileExtensions.documents.contains(fileExtension) ||
                                   ASCConstants.FileExtensions.spreadsheets.contains(fileExtension) ||
-                                  ASCConstants.FileExtensions.presentations.contains(fileExtension)
+                                  ASCConstants.FileExtensions.presentations.contains(fileExtension) ||
+                                  ASCConstants.FileExtensions.forms.contains(fileExtension)
             let canPreview      = canOpenEditor ||
                                   ASCConstants.FileExtensions.images.contains(fileExtension) ||
                                   fileExtension == "pdf"

@@ -18,35 +18,44 @@ class ASCSharingOptionsPresenter: ASCSharingOptionsPresentationLogic {
     func presentData(response: ASCSharingOptions.Model.Response.ResponseType) {
         switch response {
         
-        case .presentRightHolders(rightHoldersResponse: let rightHoldersResponse):
-            let sharedInfoItems = rightHoldersResponse.sharedInfoItems
-            let currentUser = rightHoldersResponse.currentUser
-            let isImportant: (OnlyofficeShare) -> Bool = { shareInfo in
-                var isShareInfoUserIsCurrenUser = false
-                if let shareInfoUserId = shareInfo.user?.userId,
-                   let currentUserId = currentUser?.userId
-                {
-                    isShareInfoUserIsCurrenUser = shareInfoUserId == currentUserId
-                }
-                return shareInfo.owner || isShareInfoUserIsCurrenUser
-            }
-            
-            var imprtantRightHolders: [ASCSharingRightHolderViewModel] = []
-            var otherRightHolders: [ASCSharingRightHolderViewModel] = []
-            
-            sharedInfoItems.forEach({ sharedInfo  in
-                if let viewModel = makeRightHolderViewModel(fromShareInfo: sharedInfo) {
-                    if isImportant(sharedInfo) {
-                        imprtantRightHolders.append(viewModel)
-                    } else {
-                        otherRightHolders.append(viewModel)
+        case .presentRightHolders(rightHoldersResponse: let rightHoldersResult):
+            switch rightHoldersResult {
+            case .success(let rightHoldersResponse):
+                let sharedInfoItems = rightHoldersResponse.sharedInfoItems
+                let currentUser = rightHoldersResponse.currentUser
+                let isImportant: (OnlyofficeShare) -> Bool = { shareInfo in
+                    var isShareInfoUserIsCurrenUser = false
+                    if let shareInfoUserId = shareInfo.user?.userId,
+                       let currentUserId = currentUser?.userId
+                    {
+                        isShareInfoUserIsCurrenUser = shareInfoUserId == currentUserId
                     }
+                    return shareInfo.owner || isShareInfoUserIsCurrenUser
                 }
-            })
-            viewController?.display(viewModel: .displayRightHolders(.init(internalLink: rightHoldersResponse.internalLink,
-                                                                          externalLink: rightHoldersResponse.externalLink,
-                                                                          importantRightHolders: imprtantRightHolders,
-                                                                          otherRightHolders: otherRightHolders)))
+                
+                var imprtantRightHolders: [ASCSharingRightHolderViewModel] = []
+                var otherRightHolders: [ASCSharingRightHolderViewModel] = []
+                
+                sharedInfoItems.forEach({ sharedInfo  in
+                    if let viewModel = makeRightHolderViewModel(fromShareInfo: sharedInfo) {
+                        if isImportant(sharedInfo) {
+                            imprtantRightHolders.append(viewModel)
+                        } else {
+                            otherRightHolders.append(viewModel)
+                        }
+                    }
+                })
+                viewController?.display(viewModel: .displayRightHolders(.init(internalLink: rightHoldersResponse.internalLink,
+                                                                              externalLink: rightHoldersResponse.externalLink,
+                                                                              importantRightHolders: imprtantRightHolders,
+                                                                              otherRightHolders: otherRightHolders)))
+            case .failure(let error):
+                viewController?.display(viewModel: .displayRightHolders(.init(internalLink: nil,
+                                                                              externalLink: nil,
+                                                                              importantRightHolders: [],
+                                                                              otherRightHolders: [])))
+                viewController?.display(viewModel: .displayError(error.localizedDescription))
+            }
         case .presentChangeRightHolderAccess(changeRightHolderResponse: let changeRightHolderResponse):
             viewController?.display(viewModel: .displayChangeRightHolderAccess(.init(rightHolder: changeRightHolderResponse.rightHolder,
                                                                                      error: changeRightHolderResponse.error)))

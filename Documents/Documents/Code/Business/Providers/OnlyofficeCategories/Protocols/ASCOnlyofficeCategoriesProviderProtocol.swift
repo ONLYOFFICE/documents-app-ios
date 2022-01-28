@@ -10,5 +10,5 @@ import Foundation
 
 protocol ASCOnlyofficeCategoriesProviderProtocol {
     var categoriesCurrentlyLoading: Bool { get }
-    func loadCategories(completion: @escaping ([ASCOnlyofficeCategory]) -> Void)
+    func loadCategories(completion: @escaping (Result<[ASCOnlyofficeCategory], Error>) -> Void)
 }

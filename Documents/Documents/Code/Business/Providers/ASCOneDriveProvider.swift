@@ -24,7 +24,21 @@ class ASCOneDriveProvider: ASCSortableFileProviderProtocol {
     var total: Int = 0
     
     private var apiClient: OnedriveApiClient?
-    public var provider: ASCOneDriveFileProvider?
+    public var provider: ASCOneDriveFileProvider? {
+        didSet {
+            guard let provider = provider else {
+                entityExistenceChecker = nil
+                entityUniqNameFinder = nil
+                return
+            }
+            
+            entityExistenceChecker = ASCEntityExistenceCheckerByAttributes(provider: provider)
+            entityUniqNameFinder = ASCEntityUniqNameFinder(entityExistChecker: entityExistenceChecker!)
+        }
+    }
+    
+    private var entityExistenceChecker: ASCEntityExistenceChecker?
+    private var entityUniqNameFinder: ASCUniqNameFinder?
     
     fileprivate lazy var providerOperationDelegate = ASCOneDriveProviderDelegate()
     
@@ -542,7 +556,15 @@ extension ASCOneDriveProvider: ASCFileProviderProtocol {
         var dstPath = path
         
         if let fileName = params?["title"] as? String {
-            dstPath = (dstPath as NSString).appendingPathComponent(fileName)
+            if !dstPath.isEmpty {
+                dstPath = (dstPath as NSString)
+                    .appending(":")
+                    .appendingPathComponent(fileName)
+                    .appending(":")
+            } else {
+                dstPath = (dstPath as NSString)
+                    .appendingPathComponent(fileName)
+            }
         }
         
         let dummyFilePath = Path.userTemporary + UUID().uuidString
@@ -754,47 +776,21 @@ extension ASCOneDriveProvider: ASCFileProviderProtocol {
         }
     }
     
-    func findUnicName(baseName: String, inFolder folder: ASCFolder, completionHandler: @escaping (String) -> Void) {
-        guard let provider = provider else {
-            completionHandler(baseName)
+    func findUniqName(suggestedName: String, inFolder folder: ASCFolder, completionHandler: @escaping (String) -> Void) {
+        guard let provider = provider, let entityUniqNameFinder = entityUniqNameFinder else {
+            completionHandler(suggestedName)
             return
         }
         
         let pathFoundCompletion: (String?, Error?) -> Void = { path, error in
-            guard error == nil, let folderPath = path
-            else {
-                completionHandler(baseName)
+            guard error == nil, let folderPath = path else {
+                completionHandler(suggestedName)
                 return
             }
             
-            var checkingName = baseName
-            var isCurrentNameUnic = false
-            
-            var triesCount = 0;
-            repeat {
-                let semaphore = DispatchSemaphore(value: 0)
-                let filePath = folderPath.appendingPathComponent(checkingName)
-                provider.attributesOfItem(path: filePath) { fileObject, error in
-                    if fileObject == nil || error != nil {
-                        isCurrentNameUnic = true
-                    } else {
-                        triesCount += 1
-                        
-                        let fullItemName = baseName
-                        let itemExtension = fullItemName.pathExtension
-                        if !itemExtension.isEmpty {
-                            let itemName = fullItemName.deletingPathExtension
-                            checkingName = "\(itemName) \(triesCount).\(itemExtension)"
-                        } else {
-                            checkingName = "\(baseName) \(triesCount)"
-                        }
-                        
-                    }
-                    semaphore.signal()
-                }
-                semaphore.wait()
-            } while (!isCurrentNameUnic);
-            completionHandler(checkingName)
+            entityUniqNameFinder.find(bySuggestedName: suggestedName, atPath: folderPath) { uniqName in
+                completionHandler(uniqName)
+            }
         }
         
         if folder.id.isEmpty {
@@ -812,7 +808,7 @@ extension ASCOneDriveProvider: ASCFileProviderProtocol {
         
         let fileTitle = name + "." + fileExtension
         
-        findUnicName(baseName: fileTitle, inFolder: folder) { fileTitle in
+        findUniqName(suggestedName: fileTitle, inFolder: folder) { fileTitle in
             let file = ASCFile()
             file.title = fileTitle
             self.chechTransfer(items: [file], to: folder) { [self] (status, items, message) in
@@ -909,40 +905,106 @@ extension ASCOneDriveProvider: ASCFileProviderProtocol {
             return
         }
         
-        findUnicName(baseName: name, inFolder: folder) { name in
-        
-        provider.create(folder: name, at: folder.id) { [weak self] error in
-            DispatchQueue.main.async(execute: { [weak self] in
-                guard let strongSelf = self else { return }
+        let folderCreateWithNameCompletion: (String) -> Void = { name in
+            provider.create(folder: name, at: folder.id) { [weak self] error in
                 
-                if let error = error {
-                    completeon?(strongSelf, nil, false, error)
-                } else {
-                    let path = (Path(folder.id) + name).rawValue
-                    let nowDate = Date()
-
-                    let cloudFolder = ASCFolder()
-                    cloudFolder.id = path
-                    cloudFolder.rootFolderType = .onedriveAll
-                    cloudFolder.title = name
-                    cloudFolder.created = nowDate
-                    cloudFolder.updated = nowDate
-                    cloudFolder.createdBy = strongSelf.user
-                    cloudFolder.updatedBy = strongSelf.user
-                    cloudFolder.parent = folder
-                    cloudFolder.parentId = folder.id
-
-                    ASCAnalytics.logEvent(ASCConstants.Analytics.Event.createEntity, parameters: [
-                        ASCAnalytics.Event.Key.portal: provider.baseURL?.absoluteString ?? ASCAnalytics.Event.Value.none,
-                        ASCAnalytics.Event.Key.onDevice: false,
-                        ASCAnalytics.Event.Key.type: ASCAnalytics.Event.Value.folder
-                        ]
-                    )
-
-                    completeon?(strongSelf, cloudFolder, true, nil)
+                guard let self = self else { return }
+                        
+                guard error == nil else {
+                    completeon?(self, nil, false, error)
+                    return
                 }
-            })
+                
+                self.getEntityId(by: name, in: folder) { result in
+                    switch result {
+                    case .success(let id):
+                        let nowDate = Date()
+                        let cloudFolder = ASCFolder()
+                        cloudFolder.id = "id:\(id)"
+                        cloudFolder.rootFolderType = .onedriveAll
+                        cloudFolder.title = name
+                        cloudFolder.created = nowDate
+                        cloudFolder.updated = nowDate
+                        cloudFolder.createdBy = self.user
+                        cloudFolder.updatedBy = self.user
+                        cloudFolder.parent = folder
+                        cloudFolder.parentId = folder.id
+
+                        ASCAnalytics.logEvent(ASCConstants.Analytics.Event.createEntity, parameters: [
+                            ASCAnalytics.Event.Key.portal: provider.baseURL?.absoluteString ?? ASCAnalytics.Event.Value.none,
+                            ASCAnalytics.Event.Key.onDevice: false,
+                            ASCAnalytics.Event.Key.type: ASCAnalytics.Event.Value.folder
+                            ]
+                        )
+                        
+                        DispatchQueue.main.async(execute: {
+                            completeon?(self, cloudFolder, true, nil)
+                        })
+                    case .failure(let error):
+                        DispatchQueue.main.async(execute: {
+                            completeon?(self, nil, false, error)
+                        })
+                    }
+                }
+            }
         }
+        
+        findUniqName(suggestedName: name, inFolder: folder, completionHandler: folderCreateWithNameCompletion)
+    }
+    
+    private func getEntityId(by name: String, in folder: ASCFolder, completion: @escaping (Result<String, Error>) -> Void) {
+        getEntityInfo(by: name, in: folder) { result in
+            switch result {
+            case .success(let oneDriveFileObject):
+                guard let id = oneDriveFileObject.id else {
+                    completion(.failure(NetworkingError.unknown(error: nil)))
+                    return
+                }
+                
+                completion(.success(id))
+            case .failure(let error):
+                completion(.failure(error))
+            }
+        }
+    }
+    
+    private func getEntityInfo(by name: String, in folder: ASCFolder, completion: @escaping (Result<OneDriveFileObject, Error>) -> Void) {
+        guard let provider = provider else {
+            completion(.failure(NetworkingError.unknown(error: nil)))
+            return
+        }
+        
+        let foundPathCompletion: (String?, Error?) -> Void = { folderPath, error  in
+            guard error == nil else {
+                completion(.failure(error!))
+                return
+            }
+            
+            guard let folderPath = folderPath else {
+                completion(.failure(NetworkingError.unknown(error: nil)))
+                return
+            }
+            
+            let path = folderPath.appendingPathComponent(name)
+        
+            provider.attributesOfItem(path: path) { entity, error in
+                guard error == nil else {
+                    completion(.failure(error!))
+                    return
+                }
+                
+                guard let entity = entity, let oneDriveFileObject = entity as? OneDriveFileObject else {
+                    completion(.failure(NetworkingError.unknown(error: nil)))
+                    return
+                }
+                completion(.success(oneDriveFileObject))
+            }
+        }
+        
+        if folder.id.isEmpty {
+            foundPathCompletion("/", nil)
+        } else {
+            provider.pathOfItem(withId: folder.id, completionHandler: foundPathCompletion)
         }
     }
     
@@ -1091,7 +1153,8 @@ extension ASCOneDriveProvider: ASCFileProviderProtocol {
             let canDelete       = allowDelete(entity: file)
             let canOpenEditor   = ASCConstants.FileExtensions.documents.contains(fileExtension) ||
                                   ASCConstants.FileExtensions.spreadsheets.contains(fileExtension) ||
-                                  ASCConstants.FileExtensions.presentations.contains(fileExtension)
+                                  ASCConstants.FileExtensions.presentations.contains(fileExtension) ||
+                                  ASCConstants.FileExtensions.forms.contains(fileExtension)
             let canPreview      = canOpenEditor ||
                                   ASCConstants.FileExtensions.images.contains(fileExtension) ||
                                   fileExtension == "pdf"

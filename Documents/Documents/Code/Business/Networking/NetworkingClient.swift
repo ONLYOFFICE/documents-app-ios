@@ -237,10 +237,19 @@ class NetworkingClient: NSObject, NetworkingRequestingProtocol {
             switch error {
             case .sessionTaskFailed(let error):
                 if let urlError = error as? URLError {
-                    if urlError.code  == URLError.Code.notConnectedToInternet {
+                    switch urlError.code {
+                    case .notConnectedToInternet:
                         return .noInternet
+                    case .cancelled:
+                        return .cancelled
+                    case .timedOut:
+                        return .timeOut
+                    default:
+                        break
                     }
                 }
+            case .explicitlyCancelled:
+                return .cancelled
             default:
                 break
             }

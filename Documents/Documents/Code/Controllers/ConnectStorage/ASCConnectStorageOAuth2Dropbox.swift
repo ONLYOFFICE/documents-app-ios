@@ -33,6 +33,11 @@ class ASCConnectStorageOAuth2Dropbox: ASCConnectStorageOAuth2Delegate {
         let authRequest = "https://www.dropbox.com/oauth2/authorize?\(parameters.stringAsHttpParameters())"
         let urlRequest = URLRequest(url: URL(string: authRequest)!)
         
+        let customUserAgent = "Mozilla/5.0 (iPhone; CPU iPhone OS 10_3 like Mac OS X) AppleWebKit/603.1.23 (KHTML, like Gecko) Version/10.0 Mobile/14E5239e Safari/602.1"
+        
+        UserDefaults.standard.register(defaults: ["UserAgent": customUserAgent])
+        
+        controller.webView?.customUserAgent = customUserAgent
         controller.load(request: urlRequest)
     }
     

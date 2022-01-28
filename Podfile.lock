@@ -1,13 +1,13 @@
 PODS:
-  - Alamofire (5.4.4)
+  - Alamofire (5.5.0)
   - AppAuth (1.4.0):
     - AppAuth/Core (= 1.4.0)
     - AppAuth/ExternalUserAgent (= 1.4.0)
   - AppAuth/Core (1.4.0)
   - AppAuth/ExternalUserAgent (1.4.0)
-  - atlantis-proxyman (1.11.2)
-  - DocumentConverter (7.0.0)
-  - DocumentEditor (7.0.0)
+  - atlantis-proxyman (1.12.0)
+  - DocumentConverter (7.0.1)
+  - DocumentEditor (7.0.1)
   - FacebookCore (0.9.0):
     - FBSDKCoreKit (~> 5.0)
   - FacebookLogin (0.9.0):
@@ -25,125 +25,132 @@ PODS:
   - FBSDKLoginKit/Login (5.15.1):
     - FBSDKCoreKit (~> 5.0)
   - FileKit (5.2.0)
-  - FilesProvider (0.26.0)
-  - Firebase (8.7.0):
-    - Firebase/Core (= 8.7.0)
-  - Firebase/Analytics (8.7.0):
+  - FilesProvider (0.26.1)
+  - Firebase (8.10.0):
+    - Firebase/Core (= 8.10.0)
+  - Firebase/Analytics (8.10.0):
     - Firebase/Core
-  - Firebase/Core (8.7.0):
+  - Firebase/Core (8.10.0):
     - Firebase/CoreOnly
-    - FirebaseAnalytics (~> 8.7.0)
-  - Firebase/CoreOnly (8.7.0):
-    - FirebaseCore (= 8.7.0)
-  - Firebase/Crashlytics (8.7.0):
+    - FirebaseAnalytics (~> 8.10.0)
+  - Firebase/CoreOnly (8.10.0):
+    - FirebaseCore (= 8.10.0)
+  - Firebase/Crashlytics (8.10.0):
     - Firebase/CoreOnly
-    - FirebaseCrashlytics (~> 8.7.0)
-  - Firebase/Messaging (8.7.0):
+    - FirebaseCrashlytics (~> 8.10.0)
+  - Firebase/Messaging (8.10.0):
     - Firebase/CoreOnly
-    - FirebaseMessaging (~> 8.7.0)
-  - Firebase/RemoteConfig (8.7.0):
+    - FirebaseMessaging (~> 8.10.0)
+  - Firebase/RemoteConfig (8.10.0):
     - Firebase/CoreOnly
-    - FirebaseRemoteConfig (~> 8.7.0)
-  - FirebaseABTesting (8.7.0):
+    - FirebaseRemoteConfig (~> 8.10.0)
+  - FirebaseABTesting (8.10.0):
     - FirebaseCore (~> 8.0)
-  - FirebaseAnalytics (8.7.0):
-    - FirebaseAnalytics/AdIdSupport (= 8.7.0)
-    - FirebaseCore (~> 8.0)
-    - FirebaseInstallations (~> 8.0)
-    - GoogleUtilities/AppDelegateSwizzler (~> 7.4)
-    - GoogleUtilities/MethodSwizzler (~> 7.4)
-    - GoogleUtilities/Network (~> 7.4)
-    - "GoogleUtilities/NSData+zlib (~> 7.4)"
-    - nanopb (~> 2.30908.0)
-  - FirebaseAnalytics/AdIdSupport (8.7.0):
+  - FirebaseAnalytics (8.10.0):
+    - FirebaseAnalytics/AdIdSupport (= 8.10.0)
     - FirebaseCore (~> 8.0)
     - FirebaseInstallations (~> 8.0)
-    - GoogleAppMeasurement (= 8.7.0)
-    - GoogleUtilities/AppDelegateSwizzler (~> 7.4)
-    - GoogleUtilities/MethodSwizzler (~> 7.4)
-    - GoogleUtilities/Network (~> 7.4)
-    - "GoogleUtilities/NSData+zlib (~> 7.4)"
+    - GoogleUtilities/AppDelegateSwizzler (~> 7.6)
+    - GoogleUtilities/MethodSwizzler (~> 7.6)
+    - GoogleUtilities/Network (~> 7.6)
+    - "GoogleUtilities/NSData+zlib (~> 7.6)"
     - nanopb (~> 2.30908.0)
-  - FirebaseCore (8.7.0):
+  - FirebaseAnalytics/AdIdSupport (8.10.0):
+    - FirebaseCore (~> 8.0)
+    - FirebaseInstallations (~> 8.0)
+    - GoogleAppMeasurement (= 8.10.0)
+    - GoogleUtilities/AppDelegateSwizzler (~> 7.6)
+    - GoogleUtilities/MethodSwizzler (~> 7.6)
+    - GoogleUtilities/Network (~> 7.6)
+    - "GoogleUtilities/NSData+zlib (~> 7.6)"
+    - nanopb (~> 2.30908.0)
+  - FirebaseCore (8.10.0):
     - FirebaseCoreDiagnostics (~> 8.0)
-    - GoogleUtilities/Environment (~> 7.4)
-    - GoogleUtilities/Logger (~> 7.4)
-  - FirebaseCoreDiagnostics (8.7.0):
-    - GoogleDataTransport (~> 9.0)
-    - GoogleUtilities/Environment (~> 7.4)
-    - GoogleUtilities/Logger (~> 7.4)
+    - GoogleUtilities/Environment (~> 7.6)
+    - GoogleUtilities/Logger (~> 7.6)
+  - FirebaseCoreDiagnostics (8.10.0):
+    - GoogleDataTransport (~> 9.1)
+    - GoogleUtilities/Environment (~> 7.6)
+    - GoogleUtilities/Logger (~> 7.6)
     - nanopb (~> 2.30908.0)
-  - FirebaseCrashlytics (8.7.0):
+  - FirebaseCrashlytics (8.10.0):
     - FirebaseCore (~> 8.0)
     - FirebaseInstallations (~> 8.0)
-    - GoogleDataTransport (~> 9.0)
-    - GoogleUtilities/Environment (~> 7.4)
+    - GoogleDataTransport (~> 9.1)
+    - GoogleUtilities/Environment (~> 7.6)
     - nanopb (~> 2.30908.0)
     - PromisesObjC (< 3.0, >= 1.2)
-  - FirebaseInstallations (8.7.0):
+  - FirebaseInstallations (8.10.0):
     - FirebaseCore (~> 8.0)
-    - GoogleUtilities/Environment (~> 7.4)
-    - GoogleUtilities/UserDefaults (~> 7.4)
+    - GoogleUtilities/Environment (~> 7.6)
+    - GoogleUtilities/UserDefaults (~> 7.6)
     - PromisesObjC (< 3.0, >= 1.2)
-  - FirebaseMessaging (8.7.0):
+  - FirebaseMessaging (8.10.0):
     - FirebaseCore (~> 8.0)
     - FirebaseInstallations (~> 8.0)
-    - GoogleDataTransport (~> 9.0)
-    - GoogleUtilities/AppDelegateSwizzler (~> 7.4)
-    - GoogleUtilities/Environment (~> 7.4)
-    - GoogleUtilities/Reachability (~> 7.4)
-    - GoogleUtilities/UserDefaults (~> 7.4)
+    - GoogleDataTransport (~> 9.1)
+    - GoogleUtilities/AppDelegateSwizzler (~> 7.6)
+    - GoogleUtilities/Environment (~> 7.6)
+    - GoogleUtilities/Reachability (~> 7.6)
+    - GoogleUtilities/UserDefaults (~> 7.6)
     - nanopb (~> 2.30908.0)
-  - FirebaseRemoteConfig (8.7.0):
+  - FirebaseRemoteConfig (8.10.0):
     - FirebaseABTesting (~> 8.0)
     - FirebaseCore (~> 8.0)
     - FirebaseInstallations (~> 8.0)
-    - GoogleUtilities/Environment (~> 7.4)
-    - "GoogleUtilities/NSData+zlib (~> 7.4)"
+    - GoogleUtilities/Environment (~> 7.6)
+    - "GoogleUtilities/NSData+zlib (~> 7.6)"
   - GoogleAPIClientForREST/Core (1.6.0):
     - GTMSessionFetcher (>= 1.6.1)
   - GoogleAPIClientForREST/Drive (1.6.0):
     - GoogleAPIClientForREST/Core
     - GTMSessionFetcher (>= 1.6.1)
-  - GoogleAppMeasurement (8.7.0):
-    - GoogleAppMeasurement/AdIdSupport (= 8.7.0)
-    - GoogleUtilities/AppDelegateSwizzler (~> 7.4)
-    - GoogleUtilities/MethodSwizzler (~> 7.4)
-    - GoogleUtilities/Network (~> 7.4)
-    - "GoogleUtilities/NSData+zlib (~> 7.4)"
+  - GoogleAppMeasurement (8.10.0):
+    - GoogleAppMeasurement/AdIdSupport (= 8.10.0)
+    - GoogleUtilities/AppDelegateSwizzler (~> 7.6)
+    - GoogleUtilities/MethodSwizzler (~> 7.6)
+    - GoogleUtilities/Network (~> 7.6)
+    - "GoogleUtilities/NSData+zlib (~> 7.6)"
     - nanopb (~> 2.30908.0)
-  - GoogleAppMeasurement/AdIdSupport (8.7.0):
-    - GoogleUtilities/AppDelegateSwizzler (~> 7.4)
-    - GoogleUtilities/MethodSwizzler (~> 7.4)
-    - GoogleUtilities/Network (~> 7.4)
-    - "GoogleUtilities/NSData+zlib (~> 7.4)"
+  - GoogleAppMeasurement/AdIdSupport (8.10.0):
+    - GoogleAppMeasurement/WithoutAdIdSupport (= 8.10.0)
+    - GoogleUtilities/AppDelegateSwizzler (~> 7.6)
+    - GoogleUtilities/MethodSwizzler (~> 7.6)
+    - GoogleUtilities/Network (~> 7.6)
+    - "GoogleUtilities/NSData+zlib (~> 7.6)"
     - nanopb (~> 2.30908.0)
-  - GoogleDataTransport (9.1.0):
+  - GoogleAppMeasurement/WithoutAdIdSupport (8.10.0):
+    - GoogleUtilities/AppDelegateSwizzler (~> 7.6)
+    - GoogleUtilities/MethodSwizzler (~> 7.6)
+    - GoogleUtilities/Network (~> 7.6)
+    - "GoogleUtilities/NSData+zlib (~> 7.6)"
+    - nanopb (~> 2.30908.0)
+  - GoogleDataTransport (9.1.2):
     - GoogleUtilities/Environment (~> 7.2)
     - nanopb (~> 2.30908.0)
     - PromisesObjC (< 3.0, >= 1.2)
-  - GoogleSignIn (6.0.2):
+  - GoogleSignIn (6.1.0):
     - AppAuth (~> 1.4)
     - GTMAppAuth (~> 1.0)
     - GTMSessionFetcher/Core (~> 1.1)
-  - GoogleUtilities/AppDelegateSwizzler (7.5.2):
+  - GoogleUtilities/AppDelegateSwizzler (7.6.0):
     - GoogleUtilities/Environment
     - GoogleUtilities/Logger
     - GoogleUtilities/Network
-  - GoogleUtilities/Environment (7.5.2):
+  - GoogleUtilities/Environment (7.6.0):
     - PromisesObjC (< 3.0, >= 1.2)
-  - GoogleUtilities/Logger (7.5.2):
+  - GoogleUtilities/Logger (7.6.0):
     - GoogleUtilities/Environment
-  - GoogleUtilities/MethodSwizzler (7.5.2):
+  - GoogleUtilities/MethodSwizzler (7.6.0):
     - GoogleUtilities/Logger
-  - GoogleUtilities/Network (7.5.2):
+  - GoogleUtilities/Network (7.6.0):
     - GoogleUtilities/Logger
     - "GoogleUtilities/NSData+zlib"
     - GoogleUtilities/Reachability
-  - "GoogleUtilities/NSData+zlib (7.5.2)"
-  - GoogleUtilities/Reachability (7.5.2):
+  - "GoogleUtilities/NSData+zlib (7.6.0)"
+  - GoogleUtilities/Reachability (7.6.0):
     - GoogleUtilities/Logger
-  - GoogleUtilities/UserDefaults (7.5.2):
+  - GoogleUtilities/UserDefaults (7.6.0):
     - GoogleUtilities/Logger
   - GTMAppAuth (1.2.2):
     - AppAuth/Core (~> 1.4)
@@ -153,7 +160,7 @@ PODS:
   - GTMSessionFetcher/Core (1.7.0)
   - GTMSessionFetcher/Full (1.7.0):
     - GTMSessionFetcher/Core (= 1.7.0)
-  - IQKeyboardManagerSwift (6.5.6)
+  - IQKeyboardManagerSwift (6.5.9)
   - KeychainSwift (19.0.0)
   - Kingfisher (6.3.1)
   - MBProgressHUD (1.2.0)
@@ -173,24 +180,24 @@ PODS:
   - PhoneNumberKit/PhoneNumberKitCore (3.3.3)
   - PhoneNumberKit/UIKit (3.3.3):
     - PhoneNumberKit/PhoneNumberKitCore
-  - PresentationEditor (7.0.0)
+  - PresentationEditor (7.0.1)
   - PromisesObjC (2.0.0)
   - ReCaptcha (1.6.0):
     - ReCaptcha/Core (= 1.6.0)
   - ReCaptcha/Core (1.6.0)
-  - SDWebImage (5.11.1):
-    - SDWebImage/Core (= 5.11.1)
-  - SDWebImage/Core (5.11.1)
+  - SDWebImage (5.12.1):
+    - SDWebImage/Core (= 5.12.1)
+  - SDWebImage/Core (5.12.1)
   - Siren (5.7.1)
   - SkyFloatingLabelTextField (4.0.0)
-  - SpreadsheetEditor (7.0.0)
+  - SpreadsheetEditor (7.0.1)
   - SwiftGen (6.4.0)
   - SwiftMessages (9.0.4):
     - SwiftMessages/App (= 9.0.4)
   - SwiftMessages/App (9.0.4)
   - SwiftRater (1.8.0)
   - SwiftyJSON (5.0.1)
-  - SwiftyXMLParser (5.5.0)
+  - SwiftyXMLParser (5.6.0)
   - UICircularProgressRing (8.0.0)
   - WhatsNewKit (1.3.7)
 
@@ -295,7 +302,7 @@ EXTERNAL SOURCES:
 
 CHECKOUT OPTIONS:
   FilesProvider:
-    :commit: 4fb08a2eb7f657a893c48432227b4c165305ec52
+    :commit: de4efd5df99c1d062edbfd3156c47c59cf08bbf7
     :git: https://github.com/ayuzhin/FileProvider.git
   MediaBrowser:
     :commit: 4726f4f3af8ee18becfb421aa60abd03731baacf
@@ -305,34 +312,34 @@ CHECKOUT OPTIONS:
     :git: https://github.com/Skyscanner/SkyFloatingLabelTextField.git
 
 SPEC CHECKSUMS:
-  Alamofire: f3b09a368f1582ab751b3fff5460276e0d2cf5c9
+  Alamofire: 1c4fb5369c3fe93d2857c780d8bbe09f06f97e7c
   AppAuth: 31bcec809a638d7bd2f86ea8a52bd45f6e81e7c7
-  atlantis-proxyman: 555cd547946b654b81ac4deea4fca2f27825429d
-  DocumentConverter: 7b48070109ef94c452a2facbfd7b8c0fbe0988ed
-  DocumentEditor: 3001b3844dabb72272da4a20f9d7444789110c0f
+  atlantis-proxyman: 5e0d2214eb04c9646e4426c170248918c76815a9
+  DocumentConverter: 5dbe907bb983e5dd0aa25e122378649f426ac69e
+  DocumentEditor: c0b1defbc6af8c1c467f9ad355a5b58d5dec9126
   FacebookCore: ba86524b66cfa86d0f8e65d08faa8504a9f732dd
   FacebookLogin: 6cee9fd6e1fe976fe8f7eec199e27b28b14f5d63
   FBSDKCoreKit: 1d5acf7c9d7a2f92bb1a242dc60cae5b7adb91df
   FBSDKLoginKit: f1ea8026a58b52d30c9f2e6a58ca7d813619fb83
   FileKit: 10bfd8a3023a0b09f24c9f49546cbbddf43fd464
-  FilesProvider: a7272b1e61ce07ca239c56db4efa0c5635f393ef
-  Firebase: bc9325d5ee2041524bac78a5213d0e530c651309
-  FirebaseABTesting: 5a72ea0e88422f9e223614cb4016cafffb2af8d1
-  FirebaseAnalytics: 52768800c2add1d84b751420cb4caaf8195f2c41
-  FirebaseCore: f4804c1d3f4bbbefc88904d15653038f2c99ddf7
-  FirebaseCoreDiagnostics: b63732f581a1c6a453ec7241f9ab60b3a5bd3450
-  FirebaseCrashlytics: 6fac03d1eef054833b71c929c93ab95c12989728
-  FirebaseInstallations: ede6fb72bb6337914e5888b399271259d0c4910c
-  FirebaseMessaging: 93227dd71d7888e200baef65043f81acb2b6596e
-  FirebaseRemoteConfig: 34300dd83055c06e2768d0932dd8fb2c1575745f
+  FilesProvider: ffd7aff5bb3f87d33188ae79d37d9ef05934d3df
+  Firebase: 44213362f1dcc52555b935dc925ed35ac55f1b20
+  FirebaseABTesting: fc7255f7e96d3cf7a1131fd68636c47e312cef76
+  FirebaseAnalytics: 319c9b3b1bdd400d60e2f415dff0c5f6959e6760
+  FirebaseCore: 04186597c095da37d90ff9fd3e53bc61a1ff2440
+  FirebaseCoreDiagnostics: 56fb7216d87e0e6ec2feddefa9d8a392fe8b2c18
+  FirebaseCrashlytics: 3b7f17cdf5bf1ae6ad5956696a6c26edeb39cca7
+  FirebaseInstallations: 830327b45345ffc859eaa9c17bcd5ae893fd5425
+  FirebaseMessaging: b0aeba17332ee1ee610662b4d1e02a86db82f08f
+  FirebaseRemoteConfig: 84d3397887d95587f0ee7a0a3989b2756dc2bbf9
   GoogleAPIClientForREST: 5183df28e7bcb7b7b41ebd558e16083cfed60d99
-  GoogleAppMeasurement: 2be61ce546ad074dbe4dd545f222ac6033bb1d9e
-  GoogleDataTransport: 85fd18ff3019bb85d3f2c551d04c481dedf71fc9
-  GoogleSignIn: fd381840dbe7c1137aa6dc30849a5c3e070c034a
-  GoogleUtilities: 8de2a97a17e15b6b98e38e8770e2d129a57c0040
+  GoogleAppMeasurement: a3311dbcf3ea651e5a070fe8559b57c174ada081
+  GoogleDataTransport: 629c20a4d363167143f30ea78320d5a7eb8bd940
+  GoogleSignIn: c90b5bec45e780f54c6a8e1e3c182a86e3dda69d
+  GoogleUtilities: 684ee790a24f73ebb2d1d966e9711c203f2a4237
   GTMAppAuth: ad5c2b70b9a8689e1a04033c9369c4915bfcbe89
   GTMSessionFetcher: 43748f93435c2aa068b1cbe39655aaf600652e91
-  IQKeyboardManagerSwift: c7df9d2deb356c04522f5c4b7b6e4ce4d8ed94fe
+  IQKeyboardManagerSwift: 6e839c575c4aa1078d58a596e41244e77abe918f
   KeychainSwift: a06190cf933ad46b1e0abc3d77d29c06331715c7
   Kingfisher: 016c8b653a35add51dd34a3aba36b580041acc74
   MBProgressHUD: 3ee5efcc380f6a79a7cc9b363dd669c5e1ae7406
@@ -341,18 +348,18 @@ SPEC CHECKSUMS:
   nanopb: a0ba3315591a9ae0a16a309ee504766e90db0c96
   ObjectMapper: 1eb41f610210777375fa806bf161dc39fb832b81
   PhoneNumberKit: 4ce83273551c4d2ae10b7361162f4283dd02835f
-  PresentationEditor: b98ca9ca0b529338e32bc4a86949cfd9c70eb658
+  PresentationEditor: bbf4c772b9a08858f79cde4a98b54792eaaf1db3
   PromisesObjC: 68159ce6952d93e17b2dfe273b8c40907db5ba58
   ReCaptcha: d493ed256054a7b6a7eabcaf0b47ec9a8f42a16e
-  SDWebImage: a7f831e1a65eb5e285e3fb046a23fcfbf08e696d
+  SDWebImage: 4dc3e42d9ec0c1028b960a33ac6b637bb432207b
   Siren: 76ac728f4f2f4a3576c322272e94a0e37955664f
   SkyFloatingLabelTextField: 79ddc40e4ad59707fedbb48d605417aee48bb78a
-  SpreadsheetEditor: 2eabf14d92b796d32781ebcf7a4d0a03f4045ad5
+  SpreadsheetEditor: 737f9f2ee9f42ce27a5e3e4b99551d3069dd4008
   SwiftGen: 67860cc7c3cfc2ed25b9b74cfd55495fc89f9108
   SwiftMessages: 082ed63613a49fa8e749cd6000bb0a8b9bbc736f
   SwiftRater: 6094fa6e9b3866ff8beca0a871b4b5f9ab896a6d
   SwiftyJSON: 2f33a42c6fbc52764d96f13368585094bfd8aa5e
-  SwiftyXMLParser: 027d9e6fb54a38d95dccec025bcea9693f699c47
+  SwiftyXMLParser: 9b98995235961881322015ebe38d1f3d7c953bd7
   UICircularProgressRing: 19927375b2b21b5fa5fd9582f15ccdef9659da16
   WhatsNewKit: c87028c4059dccd113495422801914cc53f6aab0
 

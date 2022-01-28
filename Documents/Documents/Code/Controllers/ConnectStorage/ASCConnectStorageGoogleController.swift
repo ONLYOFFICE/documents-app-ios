@@ -24,7 +24,7 @@ class ASCConnectStorageGoogleController: NSObject {
     // MARK: - Lifecycle Methods
     
     func signIn(parentVC: UIViewController) {
-        googleSignInController.signIn(controller: parentVC, scopes: [kGTLRAuthScopeDrive]) { [weak self] token, userData, error in
+        googleSignInController.signIn(controller: parentVC, scopes: [kGTLRAuthScopeDrive, kGTLRAuthScopeDriveAppdata, kGTLRAuthScopeDriveFile]) { [weak self] token, userData, error in
             var info: [String: Any] = [
                 "providerKey": ASCFolderProviderType.googleDrive.rawValue,
             ]

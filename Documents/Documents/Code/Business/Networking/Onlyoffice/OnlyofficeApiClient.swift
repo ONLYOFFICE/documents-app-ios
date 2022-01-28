@@ -11,19 +11,21 @@ import Alamofire
 import SwiftyJSON
 
 class OnlyofficeTokenAdapter: RequestAdapter {
-    private let accessToken: String
+    private let accessToken: String?
     
-    init(accessToken: String) {
+    init(accessToken: String?) {
         self.accessToken = accessToken
     }
     
     func adapt(_ urlRequest: URLRequest, for session: Session, completion: @escaping (Result<URLRequest, Error>) -> Void) {
         var urlRequest = urlRequest
         
-        if OnlyofficeApiClient.shared.isHttp2 {
-            urlRequest.headers.update(.authorization(bearerToken: accessToken))
-        } else {
-            urlRequest.headers.update(.authorization(accessToken)) // Legacy portals
+        if let accessToken = accessToken {
+            if OnlyofficeApiClient.shared.isHttp2 {
+                urlRequest.headers.update(.authorization(bearerToken: accessToken))
+            } else {
+                urlRequest.headers.update(.authorization(accessToken)) // Legacy portals
+            }
         }
         completion(.success(urlRequest))
     }
@@ -68,7 +70,7 @@ class OnlyofficeApiClient: NetworkingClient {
         configuration.timeoutIntervalForResource = 30
         configuration.headers = .default
         
-        let adapter = OnlyofficeTokenAdapter(accessToken: token ?? "")
+        let adapter = OnlyofficeTokenAdapter(accessToken: token)
         
         self.manager = Session(
             configuration: configuration,
@@ -119,6 +121,7 @@ class OnlyofficeApiClient: NetworkingClient {
         OnlyofficeApiClient.shared.token = nil
         OnlyofficeApiClient.shared.serverVersion = nil
         OnlyofficeApiClient.shared.capabilities = nil
+        OnlyofficeApiClient.shared.configure()
     }
     
     func download(

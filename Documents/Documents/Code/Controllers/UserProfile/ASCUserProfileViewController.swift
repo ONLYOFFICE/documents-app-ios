@@ -21,6 +21,7 @@ class ASCUserProfileViewController: UITableViewController {
     @IBOutlet weak var emailTitleLabel: UILabel!
     @IBOutlet weak var emailLabel: UILabel!
     @IBOutlet weak var logoutCell: UITableViewCell!
+    @IBOutlet weak var deleteAccountCell: UITableViewCell!
     
     // MARK: - Lifecycle Methods
     
@@ -99,7 +100,7 @@ class ASCUserProfileViewController: UITableViewController {
             let navigationBarHeight = (navigationController?.navigationBar.y ?? 0) + (navigationController?.navigationBar.height ?? 0)
 
             canvasFrame.size.height = UIDevice.phone
-                ? UIDevice.height - navigationBarHeight - 150 - bottomSafeAreaInset
+                ? UIDevice.height - navigationBarHeight - 225 - bottomSafeAreaInset
                 : preferredContentSize.height - navigationBarHeight - bottomSafeAreaInset
             canvasView.frame = canvasFrame
         }
@@ -146,6 +147,24 @@ class ASCUserProfileViewController: UITableViewController {
         }
     }
     
+    private func showDeleteAccountAlert() {
+        let titleAlert = NSLocalizedString("Terminate account", comment: "")
+        let messageAlert = NSLocalizedString("You have requested a termination of account sample@gmail.com. After the deletion, your account and all data associated with it will be erased permanently in accordance with our Privacy statement.", comment: "")
+        
+        let alertController = UIAlertController(title: titleAlert,
+                                                message: messageAlert,
+                                                preferredStyle: .alert)
+        let cancelAlertAction = UIAlertAction(title: NSLocalizedString("cancel", comment: ""),
+                                              style: .cancel)
+        let deleteAlertAction = UIAlertAction(title: NSLocalizedString("Delete", comment: ""),
+                                              style: .default)
+        
+        alertController.addAction(cancelAlertAction)
+        alertController.addAction(deleteAlertAction)
+        
+        present(alertController, animated: true, completion: nil)
+    }
+    
     @objc func updateUserUnfo(_ notification: Notification) {
         if let user = ASCFileManager.onlyofficeProvider?.user {
             userNameLabel?.text = user.displayName
@@ -184,9 +203,19 @@ class ASCUserProfileViewController: UITableViewController {
             logoutController.addCancel()
             
             present(logoutController, animated: true, completion: nil)
+        } else if cell == deleteAccountCell {
+            showDeleteAccountAlert()
         }
     }
     
+    override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 7
+    }
+    
+    override func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+        return 7
+    }
+        
     // MARK: - Actions
     
     @IBAction func onDone(_ sender: UIBarButtonItem) {

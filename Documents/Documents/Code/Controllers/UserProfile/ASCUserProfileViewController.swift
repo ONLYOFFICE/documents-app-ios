@@ -9,6 +9,12 @@
 import UIKit
 import Kingfisher
 import MBProgressHUD
+import WebKit
+
+enum ASCAccauntType {
+    case admin
+    case user
+}
 
 class ASCUserProfileViewController: UITableViewController {
 
@@ -195,10 +201,23 @@ class ASCUserProfileViewController: UITableViewController {
         let alertController = UIAlertController(title: titleAlert,
                                                 message: messageAlert,
                                                 preferredStyle: .alert)
-        let cancelAlertAction = UIAlertAction(title: NSLocalizedString("cancel", comment: ""),
+        let cancelAlertAction = UIAlertAction(title: NSLocalizedString("Cancel", comment: ""),
                                               style: .cancel)
         let deleteAlertAction = UIAlertAction(title: NSLocalizedString("Delete", comment: ""),
-                                              style: .default)
+                                              style: .default) { [weak self] _ in
+            guard let self = self else { return }
+            self.getAccountType { [weak self] accountType in
+                guard let self = self else { return }
+                DispatchQueue.main.async {
+                    switch accountType {
+                    case .admin:
+                        self.showDeletingOwnerPortalAlert()
+                    case .user:
+                        self.showConfirmationTerminateAlert()
+                    }
+                }
+            }
+        }
         
         alertController.addAction(cancelAlertAction)
         alertController.addAction(deleteAlertAction)
@@ -225,5 +244,58 @@ class ASCUserProfileViewController: UITableViewController {
         
         present(logoutController, animated: true, completion: nil)
     }
-
+    
+    private func showConfirmationTerminateAlert(){
+        let terminateAccountController = UIAlertController(
+            title: NSLocalizedString("Terminate account",comment: ""),
+            message: NSLocalizedString("Enter password to complete data termintaion.", comment: ""),
+            preferredStyle: .alert)
+        let confirmAction = UIAlertAction(title: NSLocalizedString("Confirm termination", comment: ""),
+                                          style: .default)
+        let cancelAlertAction = UIAlertAction(title: NSLocalizedString("Cancel", comment: ""),
+                                              style: .cancel)
+        terminateAccountController.addAction(confirmAction)
+        terminateAccountController.addAction(cancelAlertAction)
+        terminateAccountController.addTextField { textField in
+            textField.isSecureTextEntry = true
+        }
+        present(terminateAccountController, animated: true, completion: nil)
+    }
+    
+    private func showDeletingOwnerPortalAlert() {
+        let terminateAccountController = UIAlertController(
+            title: NSLocalizedString("Terminate account",comment: ""),
+            message: NSLocalizedString("You want to terminate account sample@gmail.com. This account is owner of portal sample.onlyoffice.eu, so it cannot be deleted without removing all portal data. To complete account termation, you need to change owner in portal access settings first or delete entire portal.", comment: ""),
+            preferredStyle: .alert)
+        let openPortalAction = UIAlertAction(title: NSLocalizedString("Open portal settings", comment: ""),
+                                             style: .default) { _ in
+            self.openWebView()
+        }
+        
+        let cancelAlertAction = UIAlertAction(title: NSLocalizedString("Cancel", comment: ""),
+                                              style: .cancel)
+        terminateAccountController.addAction(openPortalAction)
+        terminateAccountController.addAction(cancelAlertAction)
+ 
+        present(terminateAccountController, animated: true, completion: nil)
+    }
+    
+    private func openWebView() {
+        guard var portalUrl = portalLabel.text else { return }
+        portalUrl = portalUrl.appendingPathComponent(ASCConstants.Urls.portalUserAccessRightsPath)
+        
+        let webViewController = ASCWebKitViewController(urlString: portalUrl)
+        let nc = UINavigationController(rootASCViewController: webViewController)
+        nc.modalPresentationStyle = .fullScreen
+        
+        navigationController?.present(nc, animated: true, completion: nil)
+    }
+    
+    private func getAccountType(completion: @escaping (ASCAccauntType) -> ()) {
+        DispatchQueue.global().async {
+            //MARK: - TODO activity indicator
+            //MARK: - TODO get account type from server
+            completion(.admin)
+        }
+    }
 }

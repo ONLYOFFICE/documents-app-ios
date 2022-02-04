@@ -130,6 +130,47 @@ class ASCUserProfileViewController: UITableViewController {
                                         userInfo: userInfo)
     }
 
+    @objc func updateUserUnfo(_ notification: Notification) {
+        if let user = ASCFileManager.onlyofficeProvider?.user {
+            userNameLabel?.text = user.displayName
+            portalLabel?.text = ASCFileManager.onlyofficeProvider?.apiClient.baseURL?.absoluteString
+            emailLabel?.text = user.email
+
+            if let avatar = user.avatarRetina ?? user.avatar,
+                let avatarUrl = OnlyofficeApiClient.absoluteUrl(from: URL(string: avatar)) {
+                avatarView?.kf.apiSetImage(with: avatarUrl,
+                                           placeholder: Asset.Images.avatarDefault.image)
+            }
+        }
+    }
+    
+    // MARK: - Table view Delegate
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+        
+        let cell = super.tableView(tableView, cellForRowAt: indexPath)
+        if cell == logoutCell {
+            showLogoutAlert()
+        } else if cell == deleteAccountCell {
+            showDeleteAccountAlert()
+        }
+    }
+    
+    override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 7
+    }
+    
+    override func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+        return 7
+    }
+        
+    // MARK: - Actions
+    
+    @IBAction func onDone(_ sender: UIBarButtonItem) {
+        dismiss(animated: true, completion: nil)
+    }
+    
     // MARK: - Private
     
     private func onLogout() {
@@ -165,61 +206,24 @@ class ASCUserProfileViewController: UITableViewController {
         present(alertController, animated: true, completion: nil)
     }
     
-    @objc func updateUserUnfo(_ notification: Notification) {
-        if let user = ASCFileManager.onlyofficeProvider?.user {
-            userNameLabel?.text = user.displayName
-            portalLabel?.text = ASCFileManager.onlyofficeProvider?.apiClient.baseURL?.absoluteString
-            emailLabel?.text = user.email
-
-            if let avatar = user.avatarRetina ?? user.avatar,
-                let avatarUrl = OnlyofficeApiClient.absoluteUrl(from: URL(string: avatar)) {
-                avatarView?.kf.apiSetImage(with: avatarUrl,
-                                           placeholder: Asset.Images.avatarDefault.image)
-            }
-        }
-    }
-    
-    // MARK: - Table view Delegate
-    
-    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        tableView.deselectRow(at: indexPath, animated: true)
+    private func showLogoutAlert() {
+        let logoutController = UIAlertController(
+            title: NSLocalizedString("Are you sure you want to leave this account?", comment: ""),
+            message: nil,
+            preferredStyle: UIDevice.phone ? .actionSheet : .alert,
+            tintColor: nil
+        )
         
-        let cell = super.tableView(tableView, cellForRowAt: indexPath)
-        if cell == logoutCell {
-            let logoutController = UIAlertController(
-                title: NSLocalizedString("Are you sure you want to leave this account?", comment: ""),
-                message: nil,
-                preferredStyle: UIDevice.phone ? .actionSheet : .alert,
-                tintColor: nil
-            )
-            
-            logoutController.addAction(
-                title: NSLocalizedString("Logout", comment: "Button title"),
-                style: .destructive,
-                handler: { action in
-                self.onLogout()
-            })
-            
-            logoutController.addCancel()
-            
-            present(logoutController, animated: true, completion: nil)
-        } else if cell == deleteAccountCell {
-            showDeleteAccountAlert()
-        }
-    }
-    
-    override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return 7
-    }
-    
-    override func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
-        return 7
-    }
+        logoutController.addAction(
+            title: NSLocalizedString("Logout", comment: "Button title"),
+            style: .destructive,
+            handler: { action in
+            self.onLogout()
+        })
         
-    // MARK: - Actions
-    
-    @IBAction func onDone(_ sender: UIBarButtonItem) {
-        dismiss(animated: true, completion: nil)
+        logoutController.addCancel()
+        
+        present(logoutController, animated: true, completion: nil)
     }
 
 }

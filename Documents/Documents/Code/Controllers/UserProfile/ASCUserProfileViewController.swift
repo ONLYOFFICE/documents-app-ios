@@ -11,11 +11,6 @@ import Kingfisher
 import MBProgressHUD
 import WebKit
 
-enum ASCAccauntType {
-    case admin
-    case user
-}
-
 class ASCUserProfileViewController: UITableViewController {
 
     // MARK: - Properties
@@ -204,18 +199,12 @@ class ASCUserProfileViewController: UITableViewController {
         let cancelAlertAction = UIAlertAction(title: NSLocalizedString("Cancel", comment: ""),
                                               style: .cancel)
         let deleteAlertAction = UIAlertAction(title: NSLocalizedString("Delete", comment: ""),
-                                              style: .default) { [weak self] _ in
-            guard let self = self else { return }
-            self.getAccountType { [weak self] accountType in
-                guard let self = self else { return }
-                DispatchQueue.main.async {
-                    switch accountType {
-                    case .admin:
-                        self.showDeletingOwnerPortalAlert()
-                    case .user:
-                        self.showConfirmationTerminateAlert()
-                    }
-                }
+                                              style: .default) { _ in
+            guard let user = ASCFileManager.onlyofficeProvider?.user else { return }
+            if user.isAdmin {
+                self.showDeletingOwnerPortalAlert()
+            } else  {
+                self.showConfirmationTerminateAlert()
             }
         }
         
@@ -289,13 +278,5 @@ class ASCUserProfileViewController: UITableViewController {
         nc.modalPresentationStyle = .fullScreen
         
         navigationController?.present(nc, animated: true, completion: nil)
-    }
-    
-    private func getAccountType(completion: @escaping (ASCAccauntType) -> ()) {
-        DispatchQueue.global().async {
-            //MARK: - TODO activity indicator
-            //MARK: - TODO get account type from server
-            completion(.admin)
-        }
     }
 }

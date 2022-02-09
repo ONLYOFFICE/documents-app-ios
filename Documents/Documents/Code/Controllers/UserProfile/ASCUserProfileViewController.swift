@@ -9,7 +9,6 @@
 import UIKit
 import Kingfisher
 import MBProgressHUD
-import WebKit
 
 class ASCUserProfileViewController: UITableViewController {
 
@@ -23,6 +22,9 @@ class ASCUserProfileViewController: UITableViewController {
     @IBOutlet weak var emailLabel: UILabel!
     @IBOutlet weak var logoutCell: UITableViewCell!
     @IBOutlet weak var deleteAccountCell: UITableViewCell!
+    
+    let heightForHeaderInSection: CGFloat = 7
+    let heightForFooterInSection: CGFloat = 7
     
     // MARK: - Lifecycle Methods
     
@@ -99,10 +101,11 @@ class ASCUserProfileViewController: UITableViewController {
             var canvasFrame = canvasView.frame
             let bottomSafeAreaInset = view.safeAreaInsets.bottom
             let navigationBarHeight = (navigationController?.navigationBar.y ?? 0) + (navigationController?.navigationBar.height ?? 0)
+            let cellHeight = deleteAccountCell.height + heightForFooterInSection + heightForHeaderInSection
 
             canvasFrame.size.height = UIDevice.phone
-                ? UIDevice.height - navigationBarHeight - 225 - bottomSafeAreaInset
-                : preferredContentSize.height - navigationBarHeight - bottomSafeAreaInset
+                ? UIDevice.height - navigationBarHeight - cellHeight * 3 - bottomSafeAreaInset
+                : preferredContentSize.height - navigationBarHeight - cellHeight - bottomSafeAreaInset - 10
             canvasView.frame = canvasFrame
         }
     }
@@ -159,11 +162,11 @@ class ASCUserProfileViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return 7
+        return heightForHeaderInSection
     }
     
     override func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
-        return 7
+        return heightForFooterInSection
     }
         
     // MARK: - Actions
@@ -190,26 +193,35 @@ class ASCUserProfileViewController: UITableViewController {
     }
     
     private func showDeleteAccountAlert() {
+        guard let user = ASCFileManager.onlyofficeProvider?.user,
+              let email = user.email else { return }
+        
         let titleAlert = NSLocalizedString("Terminate account", comment: "")
-        let messageAlert = NSLocalizedString("You have requested a termination of account sample@gmail.com. After the deletion, your account and all data associated with it will be erased permanently in accordance with our Privacy statement.", comment: "")
+        let messageAlert = NSLocalizedString("Send the profile deletion instructions to the email address \(email)?", comment: "")
         
         let alertController = UIAlertController(title: titleAlert,
                                                 message: messageAlert,
                                                 preferredStyle: .alert)
-        let cancelAlertAction = UIAlertAction(title: NSLocalizedString("Cancel", comment: ""),
-                                              style: .cancel)
-        let deleteAlertAction = UIAlertAction(title: NSLocalizedString("Delete", comment: ""),
+        let sendAlertAction = UIAlertAction(title: NSLocalizedString("Send", comment: ""),
                                               style: .default) { _ in
-            guard let user = ASCFileManager.onlyofficeProvider?.user else { return }
-            if user.isAdmin {
-                self.showDeletingOwnerPortalAlert()
-            } else  {
-                self.showConfirmationTerminateAlert()
+            let hud = MBProgressHUD.showTopMost()
+            hud?.label.text = NSLocalizedString("Sending", comment: "")
+            
+            self.deleteAccountMailRequest { result in
+                DispatchQueue.main.async {
+                    hud?.hide(animated: true)
+                    switch result {
+                    case .success:
+                        self.showSendAlert()
+                    case .failure(let errorMessage):
+                        print(errorMessage)
+                        self.showErrorAlert(message: errorMessage)
+                    }
+                }
             }
         }
-        
-        alertController.addAction(cancelAlertAction)
-        alertController.addAction(deleteAlertAction)
+        alertController.addCancel()
+        alertController.addAction(sendAlertAction)
         
         present(alertController, animated: true, completion: nil)
     }
@@ -234,49 +246,53 @@ class ASCUserProfileViewController: UITableViewController {
         present(logoutController, animated: true, completion: nil)
     }
     
-    private func showConfirmationTerminateAlert(){
-        let terminateAccountController = UIAlertController(
-            title: NSLocalizedString("Terminate account",comment: ""),
-            message: NSLocalizedString("Enter password to complete data termintaion.", comment: ""),
-            preferredStyle: .alert)
-        let confirmAction = UIAlertAction(title: NSLocalizedString("Confirm termination", comment: ""),
-                                          style: .default)
-        let cancelAlertAction = UIAlertAction(title: NSLocalizedString("Cancel", comment: ""),
-                                              style: .cancel)
-        terminateAccountController.addAction(confirmAction)
-        terminateAccountController.addAction(cancelAlertAction)
-        terminateAccountController.addTextField { textField in
-            textField.isSecureTextEntry = true
+    private func deleteAccountMailRequest(completion: @escaping (RequestResult) -> ()) {
+        let networkClient = OnlyofficeApiClient()
+        let portalUrl = portalLabel.text
+        
+        networkClient.configure(url: portalUrl)
+        networkClient.request(OnlyofficeAPI.Endpoints.Settings.deleteAccount) { response, error in
+            guard error == nil else {
+                completion(.failure(error!.localizedDescription))
+                return
+            }
+            if let result = response {
+                guard result.error == nil else {
+                    let errorMessage = NSLocalizedString("Error", comment: "")
+                    completion(.failure(result.error?.message ?? errorMessage))
+                    return
+                }
+                completion(.success)
+            }
         }
-        present(terminateAccountController, animated: true, completion: nil)
     }
     
-    private func showDeletingOwnerPortalAlert() {
-        let terminateAccountController = UIAlertController(
-            title: NSLocalizedString("Terminate account",comment: ""),
-            message: NSLocalizedString("You want to terminate account sample@gmail.com. This account is owner of portal sample.onlyoffice.eu, so it cannot be deleted without removing all portal data. To complete account termation, you need to change owner in portal access settings first or delete entire portal.", comment: ""),
+    private func showSendAlert() {
+        let alertController = UIAlertController(
+            title: NSLocalizedString("Instructions had been sent to your email", comment: ""),
+            message: nil,
             preferredStyle: .alert)
-        let openPortalAction = UIAlertAction(title: NSLocalizedString("Open portal settings", comment: ""),
-                                             style: .default) { _ in
-            self.openWebView()
-        }
         
-        let cancelAlertAction = UIAlertAction(title: NSLocalizedString("Cancel", comment: ""),
-                                              style: .cancel)
-        terminateAccountController.addAction(openPortalAction)
-        terminateAccountController.addAction(cancelAlertAction)
- 
-        present(terminateAccountController, animated: true, completion: nil)
+        alertController.addOk()
+        present(alertController, animated: true, completion: nil)
     }
     
-    private func openWebView() {
-        guard var portalUrl = portalLabel.text else { return }
-        portalUrl = portalUrl.appendingPathComponent(ASCConstants.Urls.portalUserAccessRightsPath)
+    private func showErrorAlert(message: String) {
+        let alertController = UIAlertController(
+            title: NSLocalizedString("Error", comment: ""),
+            message: message,
+            preferredStyle: .alert)
         
-        let webViewController = ASCWebKitViewController(urlString: portalUrl)
-        let nc = UINavigationController(rootASCViewController: webViewController)
-        nc.modalPresentationStyle = .fullScreen
-        
-        navigationController?.present(nc, animated: true, completion: nil)
+        alertController.addOk()
+        present(alertController, animated: true, completion: nil)
+    }
+}
+
+extension ASCUserProfileViewController {
+    typealias ErrorMessage = String
+    
+    enum RequestResult {
+        case success
+        case failure(ErrorMessage)
     }
 }

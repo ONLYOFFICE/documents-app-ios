@@ -49,6 +49,7 @@ class OnlyofficeAPI {
         static public let shareFile              = "api/\(version)/files/file/%@/share"
         static public let shareFolder            = "api/\(version)/files/folder/%@/share"
         static public let forgotPassword         = "api/\(version)/people/password"
+        static public let deleteAccount          = "api/\(version)/people/self/delete"
         
         struct Forlder {
             static public let root      = "@root"
@@ -198,6 +199,7 @@ class OnlyofficeAPI {
             static let versions: Endpoint<OnlyofficeResponse<OnlyofficeVersion>> = Endpoint<OnlyofficeResponse<OnlyofficeVersion>>.make(Path.serversVersion)
             static let capabilities: Endpoint<OnlyofficeResponse<OnlyofficeCapabilities>> = Endpoint<OnlyofficeResponse<OnlyofficeCapabilities>>.make(Path.capabilities)
             static let forgotPassword: Endpoint<OnlyofficeResponseType<String>> = Endpoint<OnlyofficeResponseType<String>>.make(Path.forgotPassword, .post)
+            static let deleteAccount: Endpoint<OnlyofficeResponseBase> = Endpoint<OnlyofficeResponseBase>.make(Path.deleteAccount, .put)
         }
     }
 

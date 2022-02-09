@@ -13,6 +13,7 @@ class OnlyofficeResponseBase: Mappable {
     var count: Int?
     var status: Int?
     var statusCode: Int?
+    var error: OnlyofficeResponseError?
 
     required convenience init?(map: Map) {
         self.init()
@@ -22,8 +23,29 @@ class OnlyofficeResponseBase: Mappable {
         count       <- map["count"]
         status      <- map["status"]
         statusCode  <- map["statusCode"]
+        error       <- map["error"]
     }
 }
+
+class OnlyofficeResponseError: Mappable {
+    var message: String?
+    var type: String?
+    var stack: String?
+    var hresult: Int?
+    
+    required convenience init?(map: Map) {
+        self.init()
+    }
+    
+    func mapping(map: Map) {
+        message  <- map["message"]
+        type     <- map["type"]
+        stack    <- map["stack"]
+        hresult  <- map["hresult"]
+    }
+}
+
+
     
 class OnlyofficeResponse<T: Mappable>: OnlyofficeResponseBase {
 

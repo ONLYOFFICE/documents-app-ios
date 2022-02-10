@@ -196,12 +196,8 @@ class ASCUserProfileViewController: UITableViewController {
         guard let user = ASCFileManager.onlyofficeProvider?.user,
               let email = user.email else { return }
         
-        let titleAlert = NSLocalizedString("Terminate account", comment: "")
-        let messageAlert = NSLocalizedString("Send the profile deletion instructions to the email address \(email)?", comment: "")
-        
-        let alertController = UIAlertController(title: titleAlert,
-                                                message: messageAlert,
-                                                preferredStyle: .alert)
+        let title = NSLocalizedString("Terminate account", comment: "")
+        let message = NSLocalizedString("Send the profile deletion instructions to the email address \(email)?", comment: "")
         let sendAlertAction = UIAlertAction(title: NSLocalizedString("Send", comment: ""),
                                               style: .default) { _ in
             let hud = MBProgressHUD.showTopMost()
@@ -220,9 +216,9 @@ class ASCUserProfileViewController: UITableViewController {
                 }
             }
         }
-        alertController.addCancel()
-        alertController.addAction(sendAlertAction)
         
+        let alertController = UIAlertController.alert(title, message: message, actions: [sendAlertAction])
+            .cancelable()
         present(alertController, animated: true, completion: nil)
     }
     
@@ -247,43 +243,24 @@ class ASCUserProfileViewController: UITableViewController {
     }
     
     private func deleteAccountMailRequest(completion: @escaping (RequestResult) -> ()) {
-        let networkClient = OnlyofficeApiClient()
-        let portalUrl = portalLabel.text
-        
-        networkClient.configure(url: portalUrl)
-        networkClient.request(OnlyofficeAPI.Endpoints.Settings.deleteAccount) { response, error in
+        OnlyofficeApiClient.shared.request(OnlyofficeAPI.Endpoints.Settings.deleteAccount) { response, error in
             guard error == nil else {
                 completion(.failure(error!.localizedDescription))
                 return
             }
-            if let result = response {
-                guard result.error == nil else {
-                    let errorMessage = NSLocalizedString("Error", comment: "")
-                    completion(.failure(result.error?.message ?? errorMessage))
-                    return
-                }
-                completion(.success)
-            }
+            completion(.success)
         }
     }
     
     private func showSendAlert() {
-        let alertController = UIAlertController(
-            title: NSLocalizedString("Instructions had been sent to your email", comment: ""),
-            message: nil,
-            preferredStyle: .alert)
-        
-        alertController.addOk()
+        let alertController = UIAlertController.alert(
+            NSLocalizedString("Instructions had been sent to your email", comment: ""),
+            message: nil)
         present(alertController, animated: true, completion: nil)
     }
     
     private func showErrorAlert(message: String) {
-        let alertController = UIAlertController(
-            title: NSLocalizedString("Error", comment: ""),
-            message: message,
-            preferredStyle: .alert)
-        
-        alertController.addOk()
+        let alertController = UIAlertController.alert(NSLocalizedString("Error", comment: ""), message: message)
         present(alertController, animated: true, completion: nil)
     }
 }

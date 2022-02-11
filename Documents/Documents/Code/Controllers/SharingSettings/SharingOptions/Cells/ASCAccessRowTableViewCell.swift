@@ -21,11 +21,7 @@ class ASCAccessRowTableViewCell: UITableViewCell, ASCReusedIdentifierProtocol {
     var hSpacing: CGFloat = 16
     private lazy var title = UILabel()
     
-    private lazy var access: UILabel = {
-        let label = UILabel()
-        label.textColor = .systemGray
-        return label
-    }()
+    private lazy var access = UIImageView()
     
     func configureContent() {
         guard let viewModel = viewModel else {
@@ -35,8 +31,7 @@ class ASCAccessRowTableViewCell: UITableViewCell, ASCReusedIdentifierProtocol {
         accessoryType = .disclosureIndicator
         
         title.text = viewModel.title
-        access.text = viewModel.access.title()
-        
+        access.image = viewModel.access.image()
         title.translatesAutoresizingMaskIntoConstraints = false
         access.translatesAutoresizingMaskIntoConstraints = false
         

@@ -171,6 +171,7 @@
 		E0609BF41BC138CF6774A5B3 /* ASCUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = E06093EE3529CD8AE31D5519 /* ASCUser.swift */; };
 		E0609CA78B7ADE534424D45E /* ASCFolder.swift in Sources */ = {isa = PBXBuildFile; fileRef = E060976FAE7FB8D6B47A6B6A /* ASCFolder.swift */; };
 		F33E473B27AD9BC200EFF6D9 /* ASCWebKitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F33E473A27AD9BC200EFF6D9 /* ASCWebKitViewController.swift */; };
+		FC0299F127B6409000E5341B /* ASCWebKitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F33E473A27AD9BC200EFF6D9 /* ASCWebKitViewController.swift */; };
 		FC050F7E1ECB1F6800FD452C /* ConnectStorage.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FC050F801ECB1F6800FD452C /* ConnectStorage.storyboard */; };
 		FC059D981E82584400BC2F5E /* ASCDateTransform.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC059D971E82584400BC2F5E /* ASCDateTransform.swift */; };
 		FC059D9A1E8259F100BC2F5E /* Dictionary+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC059D991E8259F100BC2F5E /* Dictionary+Extension.swift */; };
@@ -3838,6 +3839,7 @@
 				FC1AC11527A042D0006C1B6E /* ASCShareSettingsAPIWorkerFactory.swift in Sources */,
 				FC36D2DB25B5C32200412DDB /* ASCFolderProviderType.swift in Sources */,
 				FC68528226837B7300D830EC /* OnlyofficeUserPhoto.swift in Sources */,
+				FC0299F127B6409000E5341B /* ASCWebKitViewController.swift in Sources */,
 				FC36D2DC25B5C32200412DDB /* ASCConnectStorageOAuth2OneDrive.swift in Sources */,
 				FC68528C26837B7300D830EC /* OnlyofficeShare.swift in Sources */,
 				FC36D2DD25B5C32200412DDB /* ASCLocalization.swift in Sources */,

@@ -1043,6 +1043,11 @@ Note: if you forget the passcode, you'll need to delete and reinstall the app. A
         <target>-</target>
         <note>Class = "UILabel"; text = "-"; ObjectID = "9Yi-42-22H"; Note = "Do not translate";</note>
       </trans-unit>
+      <trans-unit id="708-fR-i2H.text" xml:space="preserve">
+        <source>Delete account</source>
+        <target>Удалить аккаунт</target>
+        <note>Class = "UILabel"; text = "Delete account"; ObjectID = "708-fR-i2H";</note>
+      </trans-unit>
       <trans-unit id="BXA-IE-d8z.title" xml:space="preserve">
         <source>Account</source>
         <target>Учетная запись</target>
@@ -1301,12 +1306,16 @@ Note: if you forget the passcode, you'll need to delete and reinstall the app. A
         <target>Новая таблица</target>
         <note/>
       </trans-unit>
-      <trans-unit id="ONLYOFFICE form template (.docxf)" xml:space="preserve">
-        <source>ONLYOFFICE form template (.docxf)</source>
+      <trans-unit id="ONLYOFFICE Edit Form document (.docxf)" xml:space="preserve">
+        <source>ONLYOFFICE Edit Form document (.docxf)</source>
         <note/>
       </trans-unit>
-      <trans-unit id="ONLYOFFICE fillable form (.oform)" xml:space="preserve">
-        <source>ONLYOFFICE fillable form (.oform)</source>
+      <trans-unit id="ONLYOFFICE Fill Form document (.oform)" xml:space="preserve">
+        <source>ONLYOFFICE Fill Form document (.oform)</source>
+        <note/>
+      </trans-unit>
+      <trans-unit id="ONLYOFFICE form template (.docxf)" xml:space="preserve">
+        <source>ONLYOFFICE form template (.docxf)</source>
         <note/>
       </trans-unit>
     </body>
@@ -1318,6 +1327,7 @@ Note: if you forget the passcode, you'll need to delete and reinstall the app. A
     <body>
       <trans-unit id="CFBundleName" xml:space="preserve">
         <source>Documents-Alpha</source>
+        <target>Документы</target>
         <note>Bundle name</note>
       </trans-unit>
       <trans-unit id="NSCameraUsageDescription" xml:space="preserve">
@@ -1360,12 +1370,20 @@ Note: if you forget the passcode, you'll need to delete and reinstall the app. A
         <target>Новая таблица</target>
         <note/>
       </trans-unit>
-      <trans-unit id="ONLYOFFICE form template (.docxf)" xml:space="preserve">
-        <source>ONLYOFFICE form template (.docxf)</source>
+      <trans-unit id="ONLYOFFICE Edit Form document (.docxf)" xml:space="preserve">
+        <source>ONLYOFFICE Edit Form document (.docxf)</source>
+        <note/>
+      </trans-unit>
+      <trans-unit id="ONLYOFFICE Fill Form document (.oform)" xml:space="preserve">
+        <source>ONLYOFFICE Fill Form document (.oform)</source>
         <note/>
       </trans-unit>
       <trans-unit id="ONLYOFFICE fillable form (.oform)" xml:space="preserve">
         <source>ONLYOFFICE fillable form (.oform)</source>
+        <note/>
+      </trans-unit>
+      <trans-unit id="ONLYOFFICE form template (.docxf)" xml:space="preserve">
+        <source>ONLYOFFICE form template (.docxf)</source>
         <note/>
       </trans-unit>
     </body>
@@ -2237,6 +2255,11 @@ others which use WebDAV protocol.</source>
         <target>Неверный адрес портала</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
+      <trans-unit id="Instructions had been sent to your email" xml:space="preserve">
+        <source>Instructions had been sent to your email</source>
+        <target>Инструкция отправлена ​​на вашу почту</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
       <trans-unit id="Invalid Country Code" xml:space="preserve">
         <source>Invalid Country Code</source>
         <target>Некорректный код страны</target>
@@ -2832,6 +2855,16 @@ to the clipboard</source>
         <target>Выбор прав доступа</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
+      <trans-unit id="Send" xml:space="preserve">
+        <source>Send</source>
+        <target>Отправить</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Send the profile deletion instructions to the email address %@?" xml:space="preserve">
+        <source>Send the profile deletion instructions to the email address %@?</source>
+        <target>Отправить инструкцию по удалению профиля на адрес электронной почты %@?</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
       <trans-unit id="Sending" xml:space="preserve">
         <source>Sending</source>
         <target>Отправка</target>
@@ -2946,6 +2979,11 @@ to the clipboard</source>
         <source>Tb</source>
         <target>Тб</target>
         <note>Data units</note>
+      </trans-unit>
+      <trans-unit id="Terminate account" xml:space="preserve">
+        <source>Terminate account</source>
+        <target>Удалить аккаунт</target>
+        <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Terms of Service" xml:space="preserve">
         <source>Terms of Service</source>

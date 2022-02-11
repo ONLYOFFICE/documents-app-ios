@@ -24,7 +24,7 @@ class OnlyofficeResponseBase: Mappable {
         statusCode  <- map["statusCode"]
     }
 }
-    
+   
 class OnlyofficeResponse<T: Mappable>: OnlyofficeResponseBase {
 
     var result: T?

@@ -27,19 +27,20 @@ class ASCConstants {
     }
 
     struct Urls {
-        static let personalPortals          = ["://personal.onlyoffice.com", "://personal.teamlab.info"]
-        static let apiSystemUrl             = "https://api-system.%@"
-        static let apiValidatePortalName    = "api/portal/validateportalname"
-        static let apiRegistrationPortal    = "api/portal/register"
-        static let apiForgetPassword        = "%@/auth.aspx#passrecovery"
-        static let supportMailTo            = "support@onlyoffice.com"
-        static let legalTerms               = "https://www.onlyoffice.com/legalterms.aspx"
-        static let applicationPage          = "https://www.onlyoffice.com/mobile.aspx"
-        static let applicationFeedbackForum = "https://cloud.onlyoffice.org/viewforum.php?f=48"
-        static let appReview                = "itms-apps://itunes.apple.com/app/id944896972?action=write-review"
-        static let appStoreGoogleAuth       = "https://itunes.apple.com/app/id388497605"
-        static let help2authByApp           = "https://helpcenter.onlyoffice.com/guides/two-factor-authentication.aspx#step4"
-        static let documentServiceDomain    = ASCConstants.internalConstants["UrlsDocumentServiceDomain"] as? String ?? ""
+        static let personalPortals            = ["://personal.onlyoffice.com", "://personal.teamlab.info"]
+        static let apiSystemUrl               = "https://api-system.%@"
+        static let apiValidatePortalName      = "api/portal/validateportalname"
+        static let apiRegistrationPortal      = "api/portal/register"
+        static let apiForgetPassword          = "%@/auth.aspx#passrecovery"
+        static let supportMailTo              = "support@onlyoffice.com"
+        static let legalTerms                 = "https://www.onlyoffice.com/legalterms.aspx"
+        static let applicationPage            = "https://www.onlyoffice.com/mobile.aspx"
+        static let applicationFeedbackForum   = "https://cloud.onlyoffice.org/viewforum.php?f=48"
+        static let appReview                  = "itms-apps://itunes.apple.com/app/id944896972?action=write-review"
+        static let appStoreGoogleAuth         = "https://itunes.apple.com/app/id388497605"
+        static let help2authByApp             = "https://helpcenter.onlyoffice.com/guides/two-factor-authentication.aspx#step4"
+        static let documentServiceDomain      = ASCConstants.internalConstants["UrlsDocumentServiceDomain"] as? String ?? ""
+        static let portalUserAccessRightsPath = "Management.aspx?type=4"
     }
     
     struct SettingsKeys {

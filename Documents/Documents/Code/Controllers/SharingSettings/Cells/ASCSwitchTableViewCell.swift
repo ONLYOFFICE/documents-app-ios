@@ -30,6 +30,10 @@ class ASCSwitchTableViewCell: UITableViewCell, ASCReusedIdentifierProtocol {
         selectionStyle = .none
         
         title.text = viewModel.title
+        title.numberOfLines = 1
+        title.minimumScaleFactor = 0.8
+        title.adjustsFontSizeToFitWidth = true
+        
         uiSwitch.isOn = viewModel.isActive
         uiSwitch.onTintColor = Asset.Colors.brend.color
         uiSwitch.addTarget(self, action: #selector(switchChanged), for: UIControl.Event.valueChanged)
@@ -44,9 +48,8 @@ class ASCSwitchTableViewCell: UITableViewCell, ASCReusedIdentifierProtocol {
         uiSwitch.anchorCenterYToSuperview()
         NSLayoutConstraint.activate([
             title.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: hSpacing),
-            
-            uiSwitch.leadingAnchor.constraint(equalTo: title.trailingAnchor, constant: hSpacing),
-            uiSwitch.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -hSpacing)
+            uiSwitch.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -hSpacing),
+            title.trailingAnchor.constraint(equalTo: uiSwitch.leadingAnchor, constant: -hSpacing)
         ])
 
     }

@@ -3745,7 +3745,7 @@ extension ASCDocumentsViewController: ASCProviderDelegate {
     ///   - parent: Parent view controller
     ///   - entity: Entity to share
     private func presentShareController(in parent: UIViewController, entity: ASCEntity) {
-        let sharedViewController = ASCSharingOptionsViewController(style: .grouped)
+        let sharedViewController = ASCSharingOptionsViewController()
         let sharedNavigationVC = ASCBaseNavigationController(rootASCViewController: sharedViewController)
         
         if UIDevice.pad {

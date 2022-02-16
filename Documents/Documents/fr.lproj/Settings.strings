@@ -1,5 +1,5 @@
 /* Class = "UINavigationItem"; title = "About"; ObjectID = "0DJ-uV-iju"; */
-"0DJ-uV-iju.title" = "A propos";
+"0DJ-uV-iju.title" = "À propos";
 
 /* Class = "UILabel"; text = "None"; ObjectID = "1kc-cf-XDc"; */
 "1kc-cf-XDc.text" = "Aucun";
@@ -8,7 +8,7 @@
 "4oc-1P-wMA.headerTitle" = "Sécurité";
 
 /* Class = "UINavigationItem"; title = "Passcode Lock"; ObjectID = "7gT-v5-3eH"; */
-"7gT-v5-3eH.title" = "Code de verrouillage";
+"7gT-v5-3eH.title" = "Verrouillage par code";
 
 /* Class = "UITableViewSection"; footerTitle = "Request a password when the application starts.\n\nNote: if you forget the passcode, you'll need to delete and reinstall the app. All local documents will be lost."; ObjectID = "8Qq-uc-rWT"; */
 "8Qq-uc-rWT.footerTitle" = "Demander un mot de passe lors du démarrage de l'application.\n\nRemarque: si vous avez oublié le mot de passe, vous avez besoin de supprimer et de réinstaller l'application. Tous les documents locaux seront perdus.";
@@ -17,7 +17,7 @@
 "13m-jH-9Vu.text" = "Version";
 
 /* Class = "UILabel"; text = "Compress Images"; ObjectID = "19F-CC-u2R"; */
-"19F-CC-u2R.text" = "Comprimer les images";
+"19F-CC-u2R.text" = "Compresser les images";
 
 /* Class = "UILabel"; text = "Cache"; ObjectID = "aV0-Ch-4Py"; */
 "aV0-Ch-4Py.text" = "Cache";
@@ -29,7 +29,7 @@
 "cl6-b0-Mjh.text" = "Politique de confidentialité";
 
 /* Class = "UILabel"; text = "Rate App"; ObjectID = "CUM-1F-5Be"; */
-"CUM-1F-5Be.text" = "Evaluez l'application";
+"CUM-1F-5Be.text" = "Evaluer l'application";
 
 /* Class = "UITableViewSection"; headerTitle = "Information"; ObjectID = "ESd-H3-Pfh"; */
 "ESd-H3-Pfh.headerTitle" = "Information";
@@ -38,10 +38,10 @@
 "GqQ-Bv-Deg.text" = "Racontez à un ami";
 
 /* Class = "UILabel"; text = "Passcode Lock"; ObjectID = "i2P-F4-EhP"; */
-"i2P-F4-EhP.text" = "Code de verrouillage";
+"i2P-F4-EhP.text" = "Verrouillage par code";
 
 /* Class = "UILabel"; text = "About"; ObjectID = "IS2-tT-Q4G"; */
-"IS2-tT-Q4G.text" = "A propos de ONLYOFFICE";
+"IS2-tT-Q4G.text" = "À propos de ONLYOFFICE";
 
 /* Class = "UILabel"; text = "© Ascensio System SIA"; ObjectID = "lEo-YM-MnB"; */
 "lEo-YM-MnB.text" = "© Ascensio System SIA";
@@ -56,7 +56,7 @@
 "OKJ-3w-yJd.title" = "Paramètres";
 
 /* Class = "UILabel"; text = "Terms of Service"; ObjectID = "PDj-N7-sjJ"; */
-"PDj-N7-sjJ.text" = "Accord utilisateur";
+"PDj-N7-sjJ.text" = "Conditions d'utilisation";
 
 /* Class = "UILabel"; text = "Support"; ObjectID = "raN-Fz-DnL"; */
 "raN-Fz-DnL.text" = "Assistance";

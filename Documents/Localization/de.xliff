@@ -425,7 +425,7 @@ Authentication</source>
       </trans-unit>
       <trans-unit id="MNA-z2-ITx.text" xml:space="preserve">
         <source>Enter a phone number that can be used to verify your identity</source>
-        <target>Geben Sie die Telefonnummer ein, mit der Sie Ihre Identität bestätigen können.</target>
+        <target state="translated">Geben Sie die Telefonnummer ein, mit der Sie Ihre Identität bestätigen können</target>
         <note>Class = "UILabel"; text = "Enter a phone number that can be used to verify your identity"; ObjectID = "MNA-z2-ITx";</note>
       </trans-unit>
       <trans-unit id="MUG-TG-NlP.title" xml:space="preserve">
@@ -1215,10 +1215,12 @@ Hinweis: Wenn Sie das Kennwort vergessen haben, müssen Sie die App löschen und
       </trans-unit>
       <trans-unit id="ONLYOFFICE form template (.docxf)" xml:space="preserve">
         <source>ONLYOFFICE form template (.docxf)</source>
+        <target state="translated">ONLYOFFICE-Formularvorlage (.docxf)</target>
         <note/>
       </trans-unit>
       <trans-unit id="ONLYOFFICE fillable form (.oform)" xml:space="preserve">
         <source>ONLYOFFICE fillable form (.oform)</source>
+        <target state="translated">Ausfüllbares ONLYOFFICE-Formular (.oform)</target>
         <note/>
       </trans-unit>
     </body>
@@ -1275,10 +1277,12 @@ Hinweis: Wenn Sie das Kennwort vergessen haben, müssen Sie die App löschen und
       </trans-unit>
       <trans-unit id="ONLYOFFICE form template (.docxf)" xml:space="preserve">
         <source>ONLYOFFICE form template (.docxf)</source>
+        <target state="translated">ONLYOFFICE-Formularvorlage (.docxf)</target>
         <note/>
       </trans-unit>
       <trans-unit id="ONLYOFFICE fillable form (.oform)" xml:space="preserve">
         <source>ONLYOFFICE fillable form (.oform)</source>
+        <target state="translated">Ausfüllbares ONLYOFFICE-Formular (.oform)</target>
         <note/>
       </trans-unit>
     </body>
@@ -1401,6 +1405,8 @@ Hinweis: Wenn Sie das Kennwort vergessen haben, müssen Sie die App löschen und
       <trans-unit id="Add users or groups and allow them to &#10; read, review or edit documents." xml:space="preserve">
         <source>Add users or groups and allow them to 
  read, review or edit documents.</source>
+        <target state="translated">Fügen Sie Benutzer oder Gruppen hinzu und erlauben Sie 
+ Öffnen, Überprüfen oder Bearbeiten von Dokumenten.</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Address is empty" xml:space="preserve">
@@ -1460,7 +1466,7 @@ Hinweis: Wenn Sie das Kennwort vergessen haben, müssen Sie die App löschen und
       </trans-unit>
       <trans-unit id="By creating the portal you agree with our Privacy Policy and Terms of Service" xml:space="preserve">
         <source>By creating the portal you agree with our Privacy Policy and Terms of Service</source>
-        <target>Mit der Erstellung des Portals erklären Sie sich mit unseren Datenschutzbestimmungen und Nutzungsbedingungen einverstanden.</target>
+        <target state="translated">Mit der Erstellung des Portals erklären Sie sich mit unseren Datenschutzbestimmungen und Nutzungsbedingungen einverstanden</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Camera Unavailable" xml:space="preserve">
@@ -1617,8 +1623,9 @@ die das WebDAV-Protokoll verwenden.</target>
         <target>Es wird kopiert</target>
         <note>Caption of the processing</note>
       </trans-unit>
-      <trans-unit id="Could not change file attrubutes" xml:space="preserve">
-        <source>Could not change file attrubutes</source>
+      <trans-unit id="Could not change file attributes" xml:space="preserve">
+        <source>Could not change file attributes</source>
+        <target state="translated">Dateiattribute können nicht geändert werden</target>
         <note>Description of file operation error</note>
       </trans-unit>
       <trans-unit id="Could not change the directory" xml:space="preserve">
@@ -1934,7 +1941,7 @@ die das WebDAV-Protokoll verwenden.</target>
       </trans-unit>
       <trans-unit id="Empty name." xml:space="preserve">
         <source>Empty name.</source>
-        <target>Das Feld Name ist leer</target>
+        <target state="translated">Das Feld Name ist leer.</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Encoding" xml:space="preserve">
@@ -1999,7 +2006,7 @@ die das WebDAV-Protokoll verwenden.</target>
       </trans-unit>
       <trans-unit id="Failed to get file information from the server." xml:space="preserve">
         <source>Failed to get file information from the server.</source>
-        <target>Fehler beim Abrufen von Dateiinformationen vom Server:</target>
+        <target state="translated">Fehler beim Abrufen von Dateiinformationen vom Server.</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Failed to get file list." xml:space="preserve">
@@ -2398,7 +2405,7 @@ in die Zwischenablage kopiert</target>
       </trans-unit>
       <trans-unit id="Once you enter the password and open the file, the current password to the file will be reset" xml:space="preserve">
         <source>Once you enter the password and open the file, the current password to the file will be reset</source>
-        <target>Sobald Sie das Passwort eingegeben und die Datei geöffnet haben, wird das aktuelle Passwort für die Datei zurückgesetzt.</target>
+        <target state="translated">Sobald Sie das Passwort eingegeben und die Datei geöffnet haben, wird das aktuelle Passwort für die Datei zurückgesetzt</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="OneDrive" xml:space="preserve">
@@ -2468,7 +2475,7 @@ in die Zwischenablage kopiert</target>
       </trans-unit>
       <trans-unit id="Passwords do not match" xml:space="preserve">
         <source>Passwords do not match</source>
-        <target>Die Kennwörter stimmen nicht überein.</target>
+        <target state="translated">Die Kennwörter stimmen nicht überein</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Pb" xml:space="preserve">
@@ -2548,7 +2555,7 @@ in die Zwischenablage kopiert</target>
       </trans-unit>
       <trans-unit id="Portal is unavailable." xml:space="preserve">
         <source>Portal is unavailable.</source>
-        <target>Das Portal ist nicht verfügbar</target>
+        <target state="translated">Das Portal ist nicht verfügbar.</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Presentation" xml:space="preserve">
@@ -2948,7 +2955,7 @@ kopiert</target>
       </trans-unit>
       <trans-unit id="The server is not available." xml:space="preserve">
         <source>The server is not available.</source>
-        <target>Der Server ist nicht verfügbar</target>
+        <target state="translated">Der Server ist nicht verfügbar.</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="The trash is empty" xml:space="preserve">
@@ -3113,7 +3120,7 @@ kopiert</target>
       </trans-unit>
       <trans-unit id="Unknown item type." xml:space="preserve">
         <source>Unknown item type.</source>
-        <target>Unbekannter Elementtyp</target>
+        <target state="translated">Unbekannter Elementtyp.</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Unlock with Face ID" xml:space="preserve">
@@ -3128,7 +3135,7 @@ kopiert</target>
       </trans-unit>
       <trans-unit id="Unsupported format." xml:space="preserve">
         <source>Unsupported format.</source>
-        <target>Nicht unterstütztes Dateiformat</target>
+        <target state="translated">Nicht unterstütztes Dateiformat.</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Uploading" xml:space="preserve">
@@ -3219,8 +3226,8 @@ kopiert</target>
       <trans-unit id="Welcome to %@ mobile editing suite!&#10;Swipe to learn more about the app." xml:space="preserve">
         <source>Welcome to %@ mobile editing suite!
 Swipe to learn more about the app.</source>
-        <target>Willkommen in der %@ Mobile Editing Suite!
-Swipen Sie um mehr über die App zu erfahren</target>
+        <target state="translated">Willkommen in der %@ Mobile Editing Suite!
+Swipen Sie um mehr über die App zu erfahren.</target>
         <note>Introduction Step One - Description</note>
       </trans-unit>
       <trans-unit id="What's New" xml:space="preserve">

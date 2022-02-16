@@ -2,7 +2,7 @@
 "PasscodeLockChangeDescription" = "Introduzca su contraseña antigua.";
 
 /* Change Passcode State */
-"PasscodeLockChangeTitle" = "Introduzca contraseña antigua";
+"PasscodeLockChangeTitle" = "Introducir contraseña antigua";
 
 /* (No Comment) */
 "PasscodeLockConfirmDescription" = "Introduzca la contraseña de nuevo.";
@@ -32,7 +32,7 @@
 "PasscodeLockSetTitle" = "Introduzca una contraseña";
 
 /* Touch ID Fallback Button */
-"PasscodeLockTouchIDButton" = "Introduzca contraseña";
+"PasscodeLockTouchIDButton" = "Introducir contraseña";
 
 /* Touch ID Reason */
 "PasscodeLockTouchIDReason" = "Se requiere autenticación para proceder";

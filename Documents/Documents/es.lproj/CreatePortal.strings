@@ -1,5 +1,5 @@
 /* Class = "UILabel"; text = "Label"; ObjectID = "amC-Ph-cGL"; */
-"amC-Ph-cGL.text" = "Marca";
+"amC-Ph-cGL.text" = "Etiqueta";
 
 /* Class = "UIButton"; normalTitle = "Continue"; ObjectID = "BMv-HP-hD2"; */
 "BMv-HP-hD2.normalTitle" = "Continuar";
@@ -20,7 +20,7 @@
 "iLP-xJ-pU3.placeholder" = "Apellido";
 
 /* Class = "UITextField"; placeholder = "Your phone number"; ObjectID = "kgQ-EP-Qap"; */
-"kgQ-EP-Qap.placeholder" = "Introduzca su número de teléfono";
+"kgQ-EP-Qap.placeholder" = "Su número de teléfono";
 
 /* Class = "UILabel"; text = "Choose a password and\nstart using your office"; ObjectID = "qKc-e7-uTl"; */
 "qKc-e7-uTl.text" = "Elija una contraseña y empiece a usar su oficina";

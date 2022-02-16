@@ -83,5 +83,5 @@
 "WM5-Ng-sRj.title" = "Clouds";
 
 /* Class = "UILabel"; text = "Select another cloud to connect to Nextcloud, ownCloud and others are supported."; ObjectID = "WQV-WX-BW2"; */
-"WQV-WX-BW2.text" = "Sélectionnez un autre cloud pour vous connecter à Nextcloud, ownCloud et d'autres clouds supportés.";
+"WQV-WX-BW2.text" = "Sélectionnez un autre cloud pour vous connecter à Nextcloud, ownCloud et à d'autres pris en charge.";
 

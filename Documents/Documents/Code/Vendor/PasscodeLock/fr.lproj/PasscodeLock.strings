@@ -20,7 +20,7 @@
 "PasscodeLockFaceIDButton" = "Entrez le code d'accès";
 
 /* (No Comment) */
-"PasscodeLockMismatchDescription" = "Codes d'accès ne sont pas identiques.";
+"PasscodeLockMismatchDescription" = "Les codes d'accès ne correspondent pas.";
 
 /* Passcode Mismatch State */
 "PasscodeLockMismatchTitle" = "Essayez à nouveau";

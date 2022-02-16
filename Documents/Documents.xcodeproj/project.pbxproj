@@ -896,6 +896,9 @@
 		FC029A3927BCF2FC00E5341B /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Documents-InfoPlist.strings"; sourceTree = "<group>"; };
 		FC029A3A27BCF2FC00E5341B /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Documents.alpha-InfoPlist.strings"; sourceTree = "<group>"; };
 		FC029A3B27BCF2FC00E5341B /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Localizable.strings"; sourceTree = "<group>"; };
+		FC029A3C27BCF8E800E5341B /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = "ja.lproj/Documents-InfoPlist.strings"; sourceTree = "<group>"; };
+		FC029A3D27BD053300E5341B /* pt-BR */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "pt-BR"; path = "pt-BR.lproj/Documents.alpha-InfoPlist.strings"; sourceTree = "<group>"; };
+		FC029A3E27BD053500E5341B /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = "ja.lproj/Documents.alpha-InfoPlist.strings"; sourceTree = "<group>"; };
 		FC050F7F1ECB1F6800FD452C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/ConnectStorage.storyboard; sourceTree = "<group>"; };
 		FC050F821ECB1F6A00FD452C /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/ConnectStorage.strings; sourceTree = "<group>"; };
 		FC059D971E82584400BC2F5E /* ASCDateTransform.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASCDateTransform.swift; sourceTree = "<group>"; };
@@ -4398,6 +4401,8 @@
 				FC90070B278C6A1300C9983C /* de */,
 				FC90070C278C6A3500C9983C /* es */,
 				FC029A3A27BCF2FC00E5341B /* zh-Hans */,
+				FC029A3D27BD053300E5341B /* pt-BR */,
+				FC029A3E27BD053500E5341B /* ja */,
 			);
 			name = "Documents.alpha-InfoPlist.strings";
 			sourceTree = "<group>";
@@ -4557,6 +4562,7 @@
 				FCE6246E26F874A200EFAE7C /* it */,
 				FCE6248426F874B400EFAE7C /* pt-BR */,
 				FC029A3927BCF2FC00E5341B /* zh-Hans */,
+				FC029A3C27BCF8E800E5341B /* ja */,
 			);
 			name = "Documents-InfoPlist.strings";
 			sourceTree = "<group>";

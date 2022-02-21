@@ -35,6 +35,7 @@ class ASCSignInViewController: ASCBaseViewController {
     @IBOutlet weak var forgotButton: UIButton!
     @IBOutlet weak var facebookButton: UIButton!
     @IBOutlet weak var googleButton: UIButton!
+    @IBOutlet weak var microsoftButton: UIButton!
     @IBOutlet weak var loginByLabel: UILabel!
     
     // MARK: - Lifecycle Methods
@@ -322,6 +323,49 @@ class ASCSignInViewController: ASCBaseViewController {
                 }
             }
         }
+    }
+    
+    
+    @IBAction func onMicrosoftLogin(_ sender: UIButton) {
+        view.endEditing(true)
+        
+        let oauth2VC = ASCConnectStorageOAuth2ViewController.instantiate(from: Storyboard.connectStorage)
+        let microsoftController = ASCMicrosoftSignInController()
+        microsoftController.clientId = ASCConstants.Clouds.Microsoft.clientId
+        microsoftController.redirectUrl = ASCConstants.Clouds.Microsoft.redirectUri
+        oauth2VC.responseType = .code
+        oauth2VC.complation = { [weak self] info in
+            guard let self = self else { return }
+            if let accessToken = info["token"] as? String {
+                let authRequest = OnlyofficeAuthRequest()
+                authRequest.provider = .microsoft
+                authRequest.portal = self.portal
+                authRequest.accessToken = accessToken
+                
+                let hud = MBProgressHUD.showTopMost()
+                hud?.label.text = NSLocalizedString("Logging in", comment: "Caption of the process")
+                
+                ASCSignInController.shared.login(by: authRequest, in: self.navigationController) { success in
+                    if success {
+                        hud?.setSuccessState()
+                        hud?.hide(animated: true, afterDelay: 2)
+                        
+                        NotificationCenter.default.post(name: ASCConstants.Notifications.loginOnlyofficeCompleted, object: nil)
+                        
+                        self.dismiss(animated: true, completion: nil)
+                    } else {
+                        hud?.hide(animated: true)
+                        UIAlertController.showError(in: self, message: NSLocalizedString("User authentication failed", comment: ""))
+                    }
+                }
+            } else if let error = info["error"] as? String {
+                UIAlertController.showError(in: self, message: error)
+            }
+        }
+        oauth2VC.delegate = microsoftController
+        oauth2VC.title = "Microsoft"
+        
+        navigationController?.pushViewController(oauth2VC, animated: true)
     }
     
     @IBAction func onSSOLogin(_ sender: UIButton) {

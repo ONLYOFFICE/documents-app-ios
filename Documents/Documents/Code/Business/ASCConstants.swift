@@ -175,6 +175,11 @@ class ASCConstants {
             static let redirectUri: String  = ASCConstants.internalConstants["OneDriveRedirectUrl"] as? String ?? ""
         }
         
+        struct Microsoft {
+            static let clientId: String     = ASCConstants.internalConstants["MicrosoftClientId"] as? String ?? ""
+            static let redirectUri: String  = ASCConstants.internalConstants["MicrosoftRedirectUrl"] as? String ?? ""
+        }
+        
         struct Facebook {
             static let appId: String        = ASCConstants.internalConstants["FacebookAppID"] as? String ?? ""
         }

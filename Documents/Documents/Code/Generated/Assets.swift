@@ -130,6 +130,7 @@ internal enum Asset {
     internal static let signinFacebook = ImageAsset(name: "signin-facebook")
     internal static let signinGoogle = ImageAsset(name: "signin-google")
     internal static let signinLinkedin = ImageAsset(name: "signin-linkedin")
+    internal static let signinMicrosoft = ImageAsset(name: "signin-microsoft")
     internal static let signinSso = ImageAsset(name: "signin-sso")
     internal static let signinTwitter = ImageAsset(name: "signin-twitter")
     internal static let categoryLogo = ImageAsset(name: "category-logo")

@@ -171,6 +171,7 @@
 		E0609BF41BC138CF6774A5B3 /* ASCUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = E06093EE3529CD8AE31D5519 /* ASCUser.swift */; };
 		E0609CA78B7ADE534424D45E /* ASCFolder.swift in Sources */ = {isa = PBXBuildFile; fileRef = E060976FAE7FB8D6B47A6B6A /* ASCFolder.swift */; };
 		F33E473B27AD9BC200EFF6D9 /* ASCWebKitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F33E473A27AD9BC200EFF6D9 /* ASCWebKitViewController.swift */; };
+		F37F0A2927C12B9E00371183 /* ASCMicrosoftSignInController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F37F0A2827C12B9E00371183 /* ASCMicrosoftSignInController.swift */; };
 		FC0299F127B6409000E5341B /* ASCWebKitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F33E473A27AD9BC200EFF6D9 /* ASCWebKitViewController.swift */; };
 		FC050F7E1ECB1F6800FD452C /* ConnectStorage.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FC050F801ECB1F6800FD452C /* ConnectStorage.storyboard */; };
 		FC059D981E82584400BC2F5E /* ASCDateTransform.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC059D971E82584400BC2F5E /* ASCDateTransform.swift */; };
@@ -911,6 +912,7 @@
 		E060976FAE7FB8D6B47A6B6A /* ASCFolder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASCFolder.swift; sourceTree = "<group>"; };
 		E44246600744D0821FA7F89D /* Pods-Documents-Alpha.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Documents-Alpha.release.xcconfig"; path = "../Pods/Target Support Files/Pods-Documents-Alpha/Pods-Documents-Alpha.release.xcconfig"; sourceTree = "<group>"; };
 		F33E473A27AD9BC200EFF6D9 /* ASCWebKitViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCWebKitViewController.swift; sourceTree = "<group>"; };
+		F37F0A2827C12B9E00371183 /* ASCMicrosoftSignInController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCMicrosoftSignInController.swift; sourceTree = "<group>"; };
 		FC050F7F1ECB1F6800FD452C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/ConnectStorage.storyboard; sourceTree = "<group>"; };
 		FC050F821ECB1F6A00FD452C /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/ConnectStorage.strings; sourceTree = "<group>"; };
 		FC059D971E82584400BC2F5E /* ASCDateTransform.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASCDateTransform.swift; sourceTree = "<group>"; };
@@ -2287,6 +2289,7 @@
 				FC64B2E91EE56C5500920FDD /* ASCFacebookSignInController.swift */,
 				FC64B2EA1EE56C5500920FDD /* ASCGoogleSignInController.swift */,
 				FC6F0CD61F542E7E002D33D9 /* ASCSSOSignInController.swift */,
+				F37F0A2827C12B9E00371183 /* ASCMicrosoftSignInController.swift */,
 			);
 			path = Social;
 			sourceTree = "<group>";
@@ -4134,6 +4137,7 @@
 				FCC826FC1F9F4B9700744F68 /* ASCAccountsManager.swift in Sources */,
 				FC059D9A1E8259F100BC2F5E /* Dictionary+Extension.swift in Sources */,
 				1D14AACB269595C2009E48AD /* ASCSharingOprionsExternalLink.swift in Sources */,
+				F37F0A2927C12B9E00371183 /* ASCMicrosoftSignInController.swift in Sources */,
 				1D2E3B9226BB2AE800BEBE9D /* ASCSharingSettingsAccessNotesProvidersFactory.swift in Sources */,
 				FCA5B9291E48A2B500CD2EA9 /* ASCDocumentsViewController.swift in Sources */,
 				FC68526926837B7300D830EC /* NextcloudServerError.swift in Sources */,

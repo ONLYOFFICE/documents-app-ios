@@ -12,22 +12,21 @@ import WebKit
 typealias ASCSSOSignInHandler = (_ token: String?, _ error: Error?) -> Void
 
 class ASCSSOSignInController: UIViewController {
-
     // MARK: - Properties
-    
+
     var webView: WKWebView!
-    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
-    
+    @IBOutlet var activityIndicator: UIActivityIndicatorView!
+
     private var signInHandler: ASCSSOSignInHandler?
-    
+
     // MARK: - Lifecycle Methods
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+
         webView = WKWebView(frame: .zero, configuration: WKWebViewConfiguration())
         view.insertSubview(webView, at: 0)
-        
+
         webView.fillToSuperview()
         webView.navigationDelegate = self
     }
@@ -36,14 +35,14 @@ class ASCSSOSignInController: UIViewController {
         super.didReceiveMemoryWarning()
     }
 
-    override var supportedInterfaceOrientations : UIInterfaceOrientationMask {
+    override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
         return UIDevice.phone ? .portrait : [.portrait, .landscape]
     }
 
     override var preferredInterfaceOrientationForPresentation: UIInterfaceOrientation {
         return UIDevice.phone ? .portrait : super.preferredInterfaceOrientationForPresentation
     }
-    
+
     func signIn(ssoUrl: String, handler: @escaping ASCSSOSignInHandler) {
         signInHandler = handler
 
@@ -69,14 +68,14 @@ class ASCSSOSignInController: UIViewController {
             cookieJar.deleteCookie(cookie)
         }
     }
-    
+
     private func getQueryStringParameter(url: String, param: String) -> String? {
         guard let url = URLComponents(string: url) else { return nil }
         return url.queryItems?.first(where: { $0.name == param })?.value
     }
 
     // MARK: - Actions
-    
+
     @IBAction func onDone(_ sender: UIBarButtonItem) {
         navigationController?.dismiss(animated: true, completion: nil)
     }
@@ -85,14 +84,13 @@ class ASCSSOSignInController: UIViewController {
 // MARK: - WKNavigation Delegate
 
 extension ASCSSOSignInController: WKNavigationDelegate {
-
     func webView(
         _ webView: WKWebView,
         decidePolicyFor navigationAction: WKNavigationAction,
-        decisionHandler: @escaping (WKNavigationActionPolicy) -> Void)
-    {
+        decisionHandler: @escaping (WKNavigationActionPolicy) -> Void
+    ) {
         log.info("webview url = \(navigationAction.request)")
-        
+
         guard
             let host = navigationAction.request.url?.host,
             let urlString = navigationAction.request.url?.absoluteString
@@ -102,49 +100,49 @@ extension ASCSSOSignInController: WKNavigationDelegate {
         }
 
         title = host
-        
+
         if let errorCode = getQueryStringParameter(url: urlString, param: "error") ?? getQueryStringParameter(url: urlString, param: "m") {
             log.error("Code: \(errorCode)")
             signInHandler?(nil, NSError(domain: "SSOError", code: 0, userInfo: [
-                NSLocalizedDescriptionKey: errorCode
+                NSLocalizedDescriptionKey: errorCode,
             ]))
             navigationController?.dismiss(animated: true, completion: nil)
             decisionHandler(.cancel)
             return
         }
-        
+
         if let token = getQueryStringParameter(url: urlString, param: "token") {
             navigationController?.dismiss(animated: false, completion: nil)
             signInHandler?(token, nil)
             decisionHandler(.cancel)
             return
         }
-        
+
         decisionHandler(.allow)
     }
 
     func webView(
         _ webView: WKWebView,
-        didFinish navigation: WKNavigation!)
-    {
+        didFinish navigation: WKNavigation!
+    ) {
         activityIndicator?.stopAnimating()
         activityIndicator?.isHidden = true
     }
-    
+
     func webView(
         _ webView: WKWebView,
         didFail navigation: WKNavigation!,
-        withError error: Error)
-    {
+        withError error: Error
+    ) {
         log.error(error)
-        
+
         let alertController = UIAlertController(
             title: ASCLocalization.Common.error,
             message: error.localizedDescription,
             preferredStyle: .alert,
             tintColor: nil
         )
-        
+
         alertController.addAction(
             UIAlertAction(
                 title: ASCLocalization.Common.ok,
@@ -154,21 +152,21 @@ extension ASCSSOSignInController: WKNavigationDelegate {
                 }
             )
         )
-        
+
         present(alertController, animated: true, completion: nil)
     }
-    
+
     func webView(
         _ webView: WKWebView,
         didReceive challenge: URLAuthenticationChallenge,
-        completionHandler: @escaping (URLSession.AuthChallengeDisposition, URLCredential?) -> Void)
-    {
+        completionHandler: @escaping (URLSession.AuthChallengeDisposition, URLCredential?) -> Void
+    ) {
         guard let serverTrust = challenge.protectionSpace.serverTrust else {
             completionHandler(.cancelAuthenticationChallenge, nil)
             return
         }
         let exceptions = SecTrustCopyExceptions(serverTrust)
         SecTrustSetExceptions(serverTrust, exceptions)
-        completionHandler(.useCredential, URLCredential(trust: serverTrust));
+        completionHandler(.useCredential, URLCredential(trust: serverTrust))
     }
 }

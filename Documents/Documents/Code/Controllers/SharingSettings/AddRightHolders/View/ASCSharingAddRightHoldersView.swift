@@ -13,7 +13,7 @@ typealias RightHoldersTableType = ASCSharingAddRightHoldersViewController.RightH
 protocol ASCSharingAddRightHoldersViewDelegate: AnyObject {
     func getAccessList() -> ([ASCShareAccess])
     func getCurrentAccess() -> ASCShareAccess
-    
+
     @available(iOS 14.0, *)
     func onAccessMenuSelectAction(action: UIAction, shareAccessRaw: Int)
     func onAccessSheetSelectAction(shareAccessRaw: Int)
@@ -21,7 +21,7 @@ protocol ASCSharingAddRightHoldersViewDelegate: AnyObject {
     func onNextButtonTapped()
     func onSelectAllButtonTapped()
     func onDeselectAllButtonTapped()
-    
+
     func present(sheetAccessController: UIViewController)
 }
 
@@ -31,35 +31,33 @@ class ASCSharingAddRightHoldersView {
     weak var navigationController: UINavigationController?
     weak var navigationItem: UINavigationItem!
     weak var delegate: ASCSharingAddRightHoldersViewDelegate?
-    
+
     var defaultSelectedTable: RightHoldersTableType = .users
-    
+
     private(set) var searchController = UISearchController(searchResultsController: nil)
     var searchControllerDelegate: UISearchControllerDelegate!
     var searchResultsUpdating: UISearchResultsUpdating!
     var searchBarDelegate: UISearchBarDelegate!
-    
+
     lazy var usersTableView = UITableView()
     lazy var groupsTableView = UITableView()
     lazy var searchResultsTable = UITableView()
-    
+
     // MARK: - Activity indicators
-    
+
     public lazy var loadingUsersTableActivityIndicator = UIActivityIndicatorView()
     public lazy var loadingGroupsTableActivityIndicator = UIActivityIndicatorView()
-    
+
     // MARK: - Navigation bar props
+
     let title = NSLocalizedString("Shared access", comment: "")
-    
-    private lazy var selectAllBarBtn: UIBarButtonItem = {
-        UIBarButtonItem(title: NSLocalizedString("Select all", comment: ""), style: .plain, target: self, action: #selector(onSelectAllButtonTapped))
-    }()
-    
-    private lazy var deselectAllBarBtn: UIBarButtonItem = {
-        UIBarButtonItem(title: NSLocalizedString("Deselect all", comment: ""), style: .plain, target: self, action: #selector(onDeselectAllButtonTapped))
-    }()
-    
+
+    private lazy var selectAllBarBtn: UIBarButtonItem = UIBarButtonItem(title: NSLocalizedString("Select all", comment: ""), style: .plain, target: self, action: #selector(onSelectAllButtonTapped))
+
+    private lazy var deselectAllBarBtn: UIBarButtonItem = UIBarButtonItem(title: NSLocalizedString("Deselect all", comment: ""), style: .plain, target: self, action: #selector(onDeselectAllButtonTapped))
+
     // MARK: - Darken screen props
+
     private lazy var darkeingView: UIView = {
         let view = UIView()
         view.backgroundColor = .black
@@ -67,42 +65,44 @@ class ASCSharingAddRightHoldersView {
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
-    
+
     private var isDarken: Bool {
         darkeingView.superview != nil
     }
-    
+
     // MARK: - Empty view props
+
     private lazy var emptyView: ASCDocumentsEmptyView? = {
         guard let view = UIView.loadFromNib(named: String(describing: ASCDocumentsEmptyView.self)) as? ASCDocumentsEmptyView else { return nil }
         view.type = .search
         return view
     }()
-    
+
     // MARK: - Modal size props
-    
+
     var defaultPresentingViewSize = CGSize(width: 540, height: 620)
-    
+
     // MARK: - Toolbar props
+
     var isNextBarBtnEnabled = false {
         didSet {
             updateToolbars()
         }
     }
-    
+
     @available(iOS 14.0, *)
     private var accessBarBtnMenu: UIMenu {
         let accessList = delegate?.getAccessList() ?? []
         let menuItems = accessList
-            .map({ access in
+            .map { access in
                 UIAction(title: access.title(),
                          image: access.image(),
                          state: access == self.delegate?.getCurrentAccess() ? .on : .off,
                          handler: { [access] action in self.onAccessMenuSelectAction(action: action, shareAccessRaw: access.rawValue) })
-            })
+            }
         return UIMenu(title: "", children: menuItems)
     }
-    
+
     private lazy var keyboardToolbar: UIToolbar = {
         let bar = UIToolbar(frame: CGRect(x: 0, y: 0, width: view.width, height: 44))
         bar.translatesAutoresizingMaskIntoConstraints = true
@@ -110,11 +110,13 @@ class ASCSharingAddRightHoldersView {
         bar.sizeToFit()
         return bar
     }()
-    
+
     // MARK: - Keyboard props
+
     var dispalayingKeyboardFrame: CGRect?
-    
+
     // MARK: - Init
+
     init(
         view: UIView,
         navigationItem: UINavigationItem,
@@ -130,13 +132,14 @@ class ASCSharingAddRightHoldersView {
         self.searchResultsUpdating = searchResultsUpdating
         self.searchBarDelegate = searchBarDelegate
     }
-    
+
     // MARK: - Deinit
+
     deinit {
         NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillShowNotification, object: nil)
         NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillHideNotification, object: nil)
     }
-    
+
     func load() {
         if #available(iOS 13.0, *) {
             view?.backgroundColor = .systemBackground
@@ -149,7 +152,7 @@ class ASCSharingAddRightHoldersView {
         configureToolBar()
         saveCurrentPreferredSizeAsDefault()
     }
-    
+
     func reset() {
         resetModalSize()
         usersTableView.reloadData()
@@ -163,40 +166,39 @@ class ASCSharingAddRightHoldersView {
         searchController.searchResultsUpdater = nil
         searchController = UISearchController(searchResultsController: nil)
         navigationItem.searchController = nil
-        
+
         showTable(tableType: defaultSelectedTable)
         removeDarkenFromScreen()
         navigationController?.isToolbarHidden = false
         updateTitle(withSelectedCount: 0)
-        
     }
-    
+
     func updateTitle(withSelectedCount selected: Int) {
         if selected < 1 {
             navigationItem.setTitle(title, subtitle: nil)
         } else {
             navigationItem.setTitle(title,
                                     subtitle: String.localizedStringWithFormat(
-                                        NSLocalizedString("%d selected", comment:"Count of seclected rows: count + selected"), selected)
-            )
+                                        NSLocalizedString("%d selected", comment: "Count of seclected rows: count + selected"), selected
+                                    ))
         }
     }
-    
 }
 
 // MARK: - @OBJC func delegate
-extension ASCSharingAddRightHoldersView {    
+
+extension ASCSharingAddRightHoldersView {
     @available(iOS 14.0, *)
     @objc func onAccessMenuSelectAction(action: UIAction, shareAccessRaw: Int) {
         delegate?.onAccessMenuSelectAction(action: action, shareAccessRaw: shareAccessRaw)
         updateToolbars()
     }
-    
+
     @objc func onAccessSheetSelectAction(shareAccessRaw: Int) {
         delegate?.onAccessSheetSelectAction(shareAccessRaw: shareAccessRaw)
         updateToolbars()
     }
-    
+
     @objc func showAccessSheet() {
         let accessController = UIAlertController(
             title: NSLocalizedString("Selecting access rights", comment: ""),
@@ -205,37 +207,40 @@ extension ASCSharingAddRightHoldersView {
             tintColor: nil
         )
         let accessList = delegate?.getAccessList() ?? []
-        accessList.forEach({ access in
+        accessList.forEach { access in
             accessController.addAction(UIAlertAction(
-                                        title: access.title(),
-                                        style: access == .deny ? .destructive : .default,
-                                        handler: { [unowned self] _ in self.onAccessSheetSelectAction(shareAccessRaw: access.rawValue) }))
-        })
-        
+                title: access.title(),
+                style: access == .deny ? .destructive : .default,
+                handler: { [unowned self] _ in self.onAccessSheetSelectAction(shareAccessRaw: access.rawValue) }
+            ))
+        }
+
         accessController.addAction(
             UIAlertAction(
                 title: ASCLocalization.Common.cancel,
                 style: .cancel,
-                handler: nil)
+                handler: nil
+            )
         )
-        
+
         delegate?.present(sheetAccessController: accessController)
     }
-    
+
     @objc func onNextButtonTapped() {
         delegate?.onNextButtonTapped()
     }
-    
+
     @objc func onSelectAllButtonTapped() {
         delegate?.onSelectAllButtonTapped()
     }
-    
+
     @objc func onDeselectAllButtonTapped() {
         delegate?.onDeselectAllButtonTapped()
     }
 }
 
 // MARK: - Navigation bar methods
+
 extension ASCSharingAddRightHoldersView {
     func configureNavigationBar() {
         configureSearchController()
@@ -250,21 +255,21 @@ extension ASCSharingAddRightHoldersView {
         navigationController.navigationBar.barTintColor = getNavigationBarColor()
         navigationController.navigationBar.shadowImage = UIImage()
     }
-    
+
     func showSelectBarBtn() {
         navigationItem.rightBarButtonItem = selectAllBarBtn
     }
-    
+
     func clearSearchBar() {
         searchController.dismiss(animated: false)
         searchController.isActive = false
         searchController.searchBar.text = nil
     }
-    
+
     func showDeselectBarBtn() {
         navigationItem.rightBarButtonItem = deselectAllBarBtn
     }
-      
+
     private func getNavigationBarColor() -> UIColor {
         if #available(iOS 13.0, *) {
             return .secondarySystemBackground
@@ -272,15 +277,15 @@ extension ASCSharingAddRightHoldersView {
             return .Light.secondarySystemBackground
         }
     }
-    
+
     private func configureSearchController() {
         searchController.delegate = searchControllerDelegate
         searchController.searchResultsUpdater = searchResultsUpdating
         searchController.searchBar.delegate = searchBarDelegate
-        searchController.obscuresBackgroundDuringPresentation  = false
+        searchController.obscuresBackgroundDuringPresentation = false
         searchController.searchBar.placeholder = NSLocalizedString("Search", comment: "")
         searchController.searchBar.showsScopeBar = true
-        searchController.searchBar.scopeButtonTitles = RightHoldersTableType.allCases.map({ $0.getTitle() })
+        searchController.searchBar.scopeButtonTitles = RightHoldersTableType.allCases.map { $0.getTitle() }
         if UIDevice.phone {
             searchController.searchBar.inputAccessoryView = keyboardToolbar
         }
@@ -289,39 +294,39 @@ extension ASCSharingAddRightHoldersView {
 }
 
 // MARK: - Segmented control methods
+
 extension ASCSharingAddRightHoldersView {
-        
     func showTablesSegmentedControl() {
         if #available(iOS 13.0, *) {
             searchController.searchBar.setShowsScope(true, animated: true)
         } else {
-            self.searchController.searchBar.showsScopeBar = true
+            searchController.searchBar.showsScopeBar = true
         }
     }
-    
+
     func hideTablesSegmentedControl() {
         if #available(iOS 13.0, *) {
             self.searchController.searchBar.setShowsScope(false, animated: true)
         } else {
-            self.searchController.searchBar.showsScopeBar = false
+            searchController.searchBar.showsScopeBar = false
         }
     }
 }
 
 // MARK: - Table views methods
+
 extension ASCSharingAddRightHoldersView {
-    
     private func configureTables() {
-        let tables = RightHoldersTableType.allCases.map({ getTableView(byRightHoldersTableType: $0 )}) + [searchResultsTable]
+        let tables = RightHoldersTableType.allCases.map { getTableView(byRightHoldersTableType: $0) } + [searchResultsTable]
         configureGeneralsParams(forTableViews: tables)
-        
+
         if #available(iOS 13.0, *) {
             searchResultsTable.backgroundColor = .systemBackground
         } else {
             searchResultsTable.backgroundColor = .white
         }
     }
-    
+
     private func configureGeneralsParams(forTableViews tableViews: [UITableView]) {
         for tableView in tableViews {
             tableView.tableFooterView = UIView()
@@ -335,33 +340,33 @@ extension ASCSharingAddRightHoldersView {
             tableView.allowsMultipleSelectionDuringEditing = true
         }
     }
-    
+
     func showTable(tableType: RightHoldersTableType) {
         let tableView = getTableView(byRightHoldersTableType: tableType)
         view.addSubview(tableView)
         tableView.fillToSuperview()
-        RightHoldersTableType.allCases.filter({ $0 != tableType }).forEach { type in
+        RightHoldersTableType.allCases.filter { $0 != tableType }.forEach { type in
             getTableView(byRightHoldersTableType: type).removeFromSuperview()
         }
     }
-    
+
     func showSearchResultTable() {
         view.addSubview(searchResultsTable)
-        
+
         var bottomOffset: CGFloat = 0
         let keyboradHeigh = (dispalayingKeyboardFrame?.height ?? 0)
         if UIDevice.phone {
             bottomOffset = keyboradHeigh
         }
-        
+
         NSLayoutConstraint.activate([
             searchResultsTable.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
             searchResultsTable.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
             searchResultsTable.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
-            searchResultsTable.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -bottomOffset)
+            searchResultsTable.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -bottomOffset),
         ])
     }
-    
+
     func getTableView(byRightHoldersTableType rightHoldersTableType: RightHoldersTableType) -> UITableView {
         switch rightHoldersTableType {
         case .users: return usersTableView
@@ -371,6 +376,7 @@ extension ASCSharingAddRightHoldersView {
 }
 
 // MARK: - Darken screen methods
+
 extension ASCSharingAddRightHoldersView {
     func darkenScreen() {
         view.addSubview(darkeingView)
@@ -378,16 +384,17 @@ extension ASCSharingAddRightHoldersView {
             darkeingView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
             darkeingView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
             darkeingView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
-            darkeingView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor)
+            darkeingView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
         ])
     }
-    
+
     func removeDarkenFromScreen() {
         darkeingView.removeFromSuperview()
     }
 }
 
 // MARK: - Empty view methods
+
 extension ASCSharingAddRightHoldersView {
     public func showEmptyView(_ show: Bool) {
         guard let emptyView = emptyView else {
@@ -396,7 +403,7 @@ extension ASCSharingAddRightHoldersView {
         if show {
             emptyView.removeFromSuperview()
             emptyView.frame = searchResultsTable.frame
-            
+
             if UIDevice.pad,
                let preferedContentHeight = viewController?.preferredContentSize.height,
                preferedContentHeight > 0,
@@ -407,11 +414,11 @@ extension ASCSharingAddRightHoldersView {
             } else if emptyView.imageView.image == nil {
                 emptyView.type = .search
             }
-            
+
             if UIDevice.phone {
                 emptyView.frame = searchResultsTable.frame.offsetBy(dx: 0, dy: 75)
             }
-            
+
             searchResultsTable.addSubview(emptyView)
         } else {
             emptyView.removeFromSuperview()
@@ -426,21 +433,21 @@ extension ASCSharingAddRightHoldersView {
 }
 
 // MARK: - Toolbar methods
+
 extension ASCSharingAddRightHoldersView {
-    
     func configureToolBar() {
-        self.navigationController?.isToolbarHidden = false
+        navigationController?.isToolbarHidden = false
         delegate?.onUpdateToolbarItems(makeToolbarItems())
     }
-    
+
     private func makeToolbarItems() -> [UIBarButtonItem] {
         let spaceItem = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
         let currentAccess = delegate?.getCurrentAccess() ?? .none
         let accessBarBtnItem = makeAccessBarBtn(title: currentAccess.title(), image: currentAccess.image())
         return [accessBarBtnItem, spaceItem, makeNextBarBtn()]
     }
-    
-    private func makeAccessBarBtn(title: String, image: UIImage?) -> UIBarButtonItem  {
+
+    private func makeAccessBarBtn(title: String, image: UIImage?) -> UIBarButtonItem {
         let barBtn = UIButton(type: .system)
         barBtn.setTitle(title, for: .normal)
         barBtn.setImage(image, for: .normal)
@@ -456,10 +463,10 @@ extension ASCSharingAddRightHoldersView {
         } else {
             barBtn.addTarget(self, action: #selector(showAccessSheet), for: .touchUpInside)
         }
-        
+
         return barBtnItem
     }
-    
+
     private func makeNextBarBtn() -> UIBarButtonItem {
         let nextBtn = ASCButtonStyle()
         nextBtn.layer.cornerRadius = 13
@@ -469,12 +476,12 @@ extension ASCSharingAddRightHoldersView {
         nextBtn.addTarget(self, action: #selector(onNextButtonTapped), for: .touchUpInside)
         nextBtn.isEnabled = isNextBarBtnEnabled
         nextBtn.enableMode = isNextBarBtnEnabled ? .enabled : .disabled
-    
+
         let barItem = UIBarButtonItem(customView: nextBtn)
         barItem.isEnabled = isNextBarBtnEnabled
         return barItem
     }
-    
+
     public func updateToolbars() {
         delegate?.onUpdateToolbarItems(makeToolbarItems())
         if UIDevice.phone {
@@ -484,14 +491,14 @@ extension ASCSharingAddRightHoldersView {
 }
 
 // MARK: - Keyboard appear \ desappear
+
 extension ASCSharingAddRightHoldersView {
-    
     private func notificationsRegister() {
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(sender:)), name: UIResponder.keyboardWillShowNotification, object: nil)
-        
+
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide(sender:)), name: UIResponder.keyboardWillHideNotification, object: nil)
     }
-    
+
     @objc func keyboardWillShow(sender: NSNotification) {
         guard let keyboardFrame = getKeyboardFrame(bySenderNotification: sender) else { return }
         dispalayingKeyboardFrame = keyboardFrame
@@ -502,7 +509,7 @@ extension ASCSharingAddRightHoldersView {
             }
         }
     }
-    
+
     @objc func keyboardWillHide(sender: NSNotification) {
         dispalayingKeyboardFrame = nil
         if UIDevice.pad {
@@ -511,108 +518,108 @@ extension ASCSharingAddRightHoldersView {
             }
         }
     }
-    
+
     private func getKeyboardFrame(bySenderNotification sender: NSNotification) -> CGRect? {
         guard let userInfo = sender.userInfo else { return nil }
-        guard let keyboardSize = userInfo[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue else { return nil}
+        guard let keyboardSize = userInfo[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue else { return nil }
         return keyboardSize.cgRectValue
     }
 }
 
 // MARK: - Modal size funcs
+
 extension ASCSharingAddRightHoldersView {
     func saveCurrentPreferredSizeAsDefault() {
         if UIDevice.pad, let presentingViewSize = navigationController?.viewControllers[0].view.size {
-
             let navBarHeight = navigationController?.navigationBar.height ?? 0
             let toolbarHeigh = navigationController?.toolbar.height ?? 0
 
             defaultPresentingViewSize = CGSize(width: presentingViewSize.width, height: presentingViewSize.height - toolbarHeigh - navBarHeight)
         }
     }
-    
+
     func changeModalHeightIfNeeded(keyboardSize: CGRect) {
         if UIDevice.pad {
-            let presentingViewHeight =  navigationController?.presentingViewController?.view.size.height ?? 0
-            
+            let presentingViewHeight = navigationController?.presentingViewController?.view.size.height ?? 0
+
             let modalHeigh = presentingViewHeight > 0 && presentingViewHeight < UIScreen.main.bounds.height
                 ? presentingViewHeight
                 : defaultPresentingViewSize.height
-            
+
             let spaceAroundModalHeight: CGFloat = 150
             var freeSpace = UIScreen.main.bounds.height - modalHeigh - spaceAroundModalHeight
-            
+
             if freeSpace < 0 {
                 freeSpace = 0
             }
-            
+
             if keyboardSize.height > freeSpace {
                 let differance = keyboardSize.height - freeSpace
                 let minModalHeight: CGFloat = 150
                 var newModelHeight = defaultPresentingViewSize.height - differance
-                
+
                 if newModelHeight < minModalHeight {
                     newModelHeight = minModalHeight
                 }
-                
+
                 let preferredContentSize = CGSize(width: defaultPresentingViewSize.width, height: newModelHeight)
-                
+
                 log.info("new model size", preferredContentSize)
-                
-                self.navigationController?.preferredContentSize = preferredContentSize
-                self.viewController?.preferredContentSize = preferredContentSize
+
+                navigationController?.preferredContentSize = preferredContentSize
+                viewController?.preferredContentSize = preferredContentSize
             } else {
                 log.info("new model size is default")
                 resetModalSizeIfNeeded()
             }
         }
     }
-    
+
     func resetModalSizeIfNeeded() {
         let didPreferredContentSizeChange = navigationController?.preferredContentSize.height ?? 0 > 0
             || navigationController?.preferredContentSize.width ?? 0 > 0
-        if UIDevice.pad && didPreferredContentSizeChange {
-            self.resetModalSize()
+        if UIDevice.pad, didPreferredContentSizeChange {
+            resetModalSize()
         }
     }
-    
+
     func resetModalSize() {
         navigationController?.preferredContentSize = CGSize(width: 0, height: 0)
-        self.viewController?.preferredContentSize = CGSize(width: 0, height: 0)
+        viewController?.preferredContentSize = CGSize(width: 0, height: 0)
     }
 }
 
 // MARK: - Activity indicators funcs
+
 extension ASCSharingAddRightHoldersView {
-    
     public func runUsersLoadingAnimation() {
         showTableLoadingActivityIndicator(tableView: usersTableView, activityIndicator: loadingUsersTableActivityIndicator)
     }
-    
+
     public func stopUsersLoadingAnimation() {
         hideTableLoadingActivityIndicator(activityIndicator: loadingUsersTableActivityIndicator)
     }
-    
+
     public func runGroupsLoadingAnimation() {
         showTableLoadingActivityIndicator(tableView: groupsTableView, activityIndicator: loadingGroupsTableActivityIndicator)
     }
-    
+
     public func stopGroupsLoadingAnimation() {
         hideTableLoadingActivityIndicator(activityIndicator: loadingGroupsTableActivityIndicator)
     }
-    
+
     private func showTableLoadingActivityIndicator(tableView: UITableView, activityIndicator loadingTableActivityIndicator: UIActivityIndicatorView) {
         let navBarHeight = navigationController?.navigationBar.height ?? 0
         let searchBarHeight = searchController.searchBar.height
         let centerYOffset = (navBarHeight + searchBarHeight) / 2
-        
+
         loadingTableActivityIndicator.translatesAutoresizingMaskIntoConstraints = false
         loadingTableActivityIndicator.startAnimating()
         tableView.addSubview(loadingTableActivityIndicator)
         loadingTableActivityIndicator.anchorCenterXToSuperview()
         loadingTableActivityIndicator.centerYAnchor.constraint(equalTo: tableView.centerYAnchor, constant: -centerYOffset).isActive = true
     }
-    
+
     private func hideTableLoadingActivityIndicator(activityIndicator loadingTableActivityIndicator: UIActivityIndicatorView) {
         loadingTableActivityIndicator.stopAnimating()
         loadingTableActivityIndicator.removeFromSuperview()

@@ -8,16 +8,16 @@
 
 import UIKit
 
-typealias UIControlClosureType = () -> ()
+typealias UIControlClosureType = () -> Void
 
 class UIControlClosure {
     let closure: UIControlClosureType
-    
-    init (_ closure: @escaping UIControlClosureType) {
+
+    init(_ closure: @escaping UIControlClosureType) {
         self.closure = closure
     }
-    
-    @objc func invoke () {
+
+    @objc func invoke() {
         closure()
     }
 }

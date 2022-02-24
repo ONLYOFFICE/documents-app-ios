@@ -9,10 +9,9 @@
 import UIKit
 
 class ASCProfileAvatarView: UIImageView {
-
     // MARK: - Properties
 
-    lazy private var innerBorderLayer: CAShapeLayer = {
+    private lazy var innerBorderLayer: CAShapeLayer = {
         $0.strokeColor = UIColor.white.cgColor
         $0.lineWidth = 4
         $0.frame = bounds

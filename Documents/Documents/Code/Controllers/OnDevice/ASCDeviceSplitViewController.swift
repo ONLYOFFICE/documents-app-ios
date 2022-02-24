@@ -9,7 +9,6 @@
 import UIKit
 
 class ASCDeviceSplitViewController: ASCBaseSplitViewController {
-
     override func viewDidLoad() {
         super.viewDidLoad()
     }

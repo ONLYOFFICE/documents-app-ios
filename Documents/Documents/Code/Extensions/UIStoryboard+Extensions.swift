@@ -11,7 +11,6 @@ import UIKit
 // MARK: - Methods
 
 extension UIStoryboard {
-
     /// Get main storyboard for application
     static var main: UIStoryboard? {
         let bundle = Bundle.main
@@ -26,7 +25,7 @@ extension UIStoryboard {
     func instantiateViewController<T: UIViewController>(withClass name: T.Type) -> T? {
         return instantiateViewController(withIdentifier: String(describing: name)) as? T
     }
-    
+
     ///
     /// Create new `ViewController` from `Storyboard`.
     /// - Parameter storyboard: The storyboard to instantiate the view controller from.
@@ -38,11 +37,11 @@ extension UIStoryboard {
     ///
     static func create<T>(storyboard: Storyboard,
                           controller: T.Type,
-                          bundle: Bundle? = Bundle.main) -> T {
-      let uiStoryboard = UIStoryboard(name: storyboard.rawValue, bundle: nil)
-      return uiStoryboard.instantiateViewController(withIdentifier: String(describing: controller.self)) as! T
+                          bundle: Bundle? = Bundle.main) -> T
+    {
+        let uiStoryboard = UIStoryboard(name: storyboard.rawValue, bundle: nil)
+        return uiStoryboard.instantiateViewController(withIdentifier: String(describing: controller.self)) as! T
     }
-
 }
 
 ///
@@ -52,33 +51,31 @@ extension UIStoryboard {
 enum Storyboard: String {
     case launchScreen, main, login, sort, transfer, intro, connectStorage,
          settings, userProfile, createPortal, debug
-    
+
     var rawValue: String {
-        get {
-            switch self {
-            case .launchScreen:
-                return StoryboardScene.LaunchScreen.storyboardName
-            case .main:
-                return StoryboardScene.Main.storyboardName
-            case .login:
-                return StoryboardScene.Login.storyboardName
-            case .sort:
-                return StoryboardScene.Sort.storyboardName
-            case .transfer:
-                return StoryboardScene.Transfer.storyboardName
-            case .intro:
-                return StoryboardScene.Intro.storyboardName
-            case .connectStorage:
-                return StoryboardScene.ConnectStorage.storyboardName
-            case .settings:
-                return StoryboardScene.Settings.storyboardName
-            case .userProfile:
-                return StoryboardScene.UserProfile.storyboardName
-            case .createPortal:
-                return StoryboardScene.CreatePortal.storyboardName
-            case .debug:
-                return StoryboardScene.Debug.storyboardName
-            }
+        switch self {
+        case .launchScreen:
+            return StoryboardScene.LaunchScreen.storyboardName
+        case .main:
+            return StoryboardScene.Main.storyboardName
+        case .login:
+            return StoryboardScene.Login.storyboardName
+        case .sort:
+            return StoryboardScene.Sort.storyboardName
+        case .transfer:
+            return StoryboardScene.Transfer.storyboardName
+        case .intro:
+            return StoryboardScene.Intro.storyboardName
+        case .connectStorage:
+            return StoryboardScene.ConnectStorage.storyboardName
+        case .settings:
+            return StoryboardScene.Settings.storyboardName
+        case .userProfile:
+            return StoryboardScene.UserProfile.storyboardName
+        case .createPortal:
+            return StoryboardScene.CreatePortal.storyboardName
+        case .debug:
+            return StoryboardScene.Debug.storyboardName
         }
     }
 }

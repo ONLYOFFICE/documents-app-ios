@@ -191,6 +191,7 @@ PODS:
   - Siren (5.7.1)
   - SkyFloatingLabelTextField (4.0.0)
   - SpreadsheetEditor (7.0.1)
+  - SwiftFormat/CLI (0.49.2)
   - SwiftGen (6.4.0)
   - SwiftMessages (9.0.4):
     - SwiftMessages/App (= 9.0.4)
@@ -231,6 +232,7 @@ DEPENDENCIES:
   - Siren
   - SkyFloatingLabelTextField (from `https://github.com/Skyscanner/SkyFloatingLabelTextField.git`)
   - SpreadsheetEditor (from `../editors-ios/SpreadsheetEditor.podspec`)
+  - SwiftFormat/CLI (~> 0.49)
   - SwiftGen (~> 6.4.0)
   - SwiftMessages (= 9.0.4)
   - SwiftRater
@@ -276,6 +278,7 @@ SPEC REPOS:
     - ReCaptcha
     - SDWebImage
     - Siren
+    - SwiftFormat
     - SwiftGen
     - SwiftMessages
     - SwiftRater
@@ -355,6 +358,7 @@ SPEC CHECKSUMS:
   Siren: 76ac728f4f2f4a3576c322272e94a0e37955664f
   SkyFloatingLabelTextField: 79ddc40e4ad59707fedbb48d605417aee48bb78a
   SpreadsheetEditor: 737f9f2ee9f42ce27a5e3e4b99551d3069dd4008
+  SwiftFormat: dca5803d3e2120aed5614f1653d252e62ac33be1
   SwiftGen: 67860cc7c3cfc2ed25b9b74cfd55495fc89f9108
   SwiftMessages: 082ed63613a49fa8e749cd6000bb0a8b9bbc736f
   SwiftRater: 6094fa6e9b3866ff8beca0a871b4b5f9ab896a6d
@@ -363,6 +367,6 @@ SPEC CHECKSUMS:
   UICircularProgressRing: 19927375b2b21b5fa5fd9582f15ccdef9659da16
   WhatsNewKit: c87028c4059dccd113495422801914cc53f6aab0
 
-PODFILE CHECKSUM: eb81a134c4a840a1245571b199fadb01c9e3c974
+PODFILE CHECKSUM: dc474c0b48ece0e5929dc094629c012126194c63
 
 COCOAPODS: 1.11.2

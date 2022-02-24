@@ -10,38 +10,37 @@
 /// Additionally, the reference makes added events own itself.
 /// This retain cycle allows owned objects to live as long as valid subscriptions exist.
 public class OwningEventReference<T>: EventReference<T> {
-    
-    internal var owned: AnyObject? = nil
+    internal var owned: AnyObject?
 
-    public override func add(_ subscription: SubscriptionType) -> SubscriptionType {
+    override public func add(_ subscription: SubscriptionType) -> SubscriptionType {
         let subscr = super.add(subscription)
         if owned != nil {
             subscr.addOwnedObject(self)
         }
         return subscr
     }
-    
-    public override func add(_ handler: @escaping (T) -> ()) -> EventSubscription<T> {
+
+    override public func add(_ handler: @escaping (T) -> Void) -> EventSubscription<T> {
         let subscr = super.add(handler)
         if owned != nil {
             subscr.addOwnedObject(self)
         }
         return subscr
     }
-    
-    public override func remove(_ subscription: SubscriptionType) {
+
+    override public func remove(_ subscription: SubscriptionType) {
         subscription.removeOwnedObject(self)
         super.remove(subscription)
     }
-    
-    public override func removeAll() {
+
+    override public func removeAll() {
         for subscription in event.subscriptions {
             subscription.removeOwnedObject(self)
         }
         super.removeAll()
     }
-    
-    public override func add(owner: AnyObject, _ handler:  @escaping HandlerType) -> SubscriptionType {
+
+    override public func add(owner: AnyObject, _ handler: @escaping HandlerType) -> SubscriptionType {
         let subscr = super.add(owner: owner, handler)
         if owned != nil {
             subscr.addOwnedObject(self)
@@ -49,8 +48,7 @@ public class OwningEventReference<T>: EventReference<T> {
         return subscr
     }
 
-    public override init(event: Event<T>) {
+    override public init(event: Event<T>) {
         super.init(event: event)
     }
-    
 }

@@ -9,11 +9,9 @@
 import UIKit
 
 class ASCTransferViewCell: UITableViewCell {
+    @IBOutlet var folderView: UIImageView!
+    @IBOutlet var titleLabel: UILabel!
 
-    @IBOutlet weak var folderView: UIImageView!
-    @IBOutlet weak var titleLabel: UILabel!
-
-    
     override func awakeFromNib() {
         super.awakeFromNib()
     }
@@ -21,5 +19,4 @@ class ASCTransferViewCell: UITableViewCell {
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
     }
-
 }

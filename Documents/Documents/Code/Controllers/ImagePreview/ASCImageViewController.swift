@@ -6,18 +6,18 @@
 //  Copyright © 2017 Ascensio System SIA. All rights reserved.
 //
 
-import UIKit
 import MediaBrowser
 import SDWebImage
+import UIKit
 
 class ASCImageViewController: MediaBrowser {
-    
     var medias: [Media] = [] {
         didSet {
             reloadData()
         }
     }
-    var dismissHandler: (() -> Void)? = nil
+
+    var dismissHandler: (() -> Void)?
 
     private var fileProvider: ASCFileProviderProtocol?
 
@@ -46,11 +46,11 @@ class ASCImageViewController: MediaBrowser {
         view.backgroundColor = .black
 
         // Translate MWPhotoBrowser strings
-        let _ = [
+        _ = [
             NSLocalizedString("Select Photos", comment: ""),
-            NSLocalizedString("photo", comment:"Used in the context: '1 photo'"),
-            NSLocalizedString("photos", comment:"Used in the context: '3 photos'"),
-            NSLocalizedString("of", comment: "Used in the context: 'Showing 1 of 3 items'")
+            NSLocalizedString("photo", comment: "Used in the context: '1 photo'"),
+            NSLocalizedString("photos", comment: "Used in the context: '3 photos'"),
+            NSLocalizedString("of", comment: "Used in the context: 'Showing 1 of 3 items'"),
         ]
     }
 
@@ -75,25 +75,24 @@ class ASCImageViewController: MediaBrowser {
 }
 
 extension ASCImageViewController: MediaBrowserDelegate {
-
     func numberOfMedia(in mediaBrowser: MediaBrowser) -> Int {
         return medias.count
     }
 
     func media(for mediaBrowser: MediaBrowser, at index: Int) -> Media {
-        if (index < medias.count) {
+        if index < medias.count {
             return medias[index]
         }
         return Media()
     }
-    
+
     func thumbnail(for mediaBrowser: MediaBrowser, at index: Int) -> Media {
-        if (index < medias.count) {
+        if index < medias.count {
             return medias[index]
         }
         return Media()
     }
-    
+
     func mediaBrowserDidFinishModalPresentation(mediaBrowser: MediaBrowser) {
         dismiss(animated: true) {
             self.dismissHandler?()

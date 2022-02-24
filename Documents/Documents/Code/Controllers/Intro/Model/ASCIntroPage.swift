@@ -13,4 +13,3 @@ struct ASCIntroPage {
     var subtitle: String
     var image: UIImage
 }
- 

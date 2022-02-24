@@ -9,7 +9,6 @@
 import Foundation
 
 public extension Sequence where Element: Equatable {
-
     /// Check if array contains an array of elements.
     ///
     ///        [1, 2, 3, 4, 5].contains([1, 2]) -> true
@@ -27,5 +26,4 @@ public extension Sequence where Element: Equatable {
         }
         return true
     }
-
 }

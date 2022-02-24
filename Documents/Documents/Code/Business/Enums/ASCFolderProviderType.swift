@@ -9,17 +9,17 @@
 import UIKit
 
 enum ASCFolderProviderType: String, CaseIterable {
-    case boxNet         = "Box"
-    case dropBox        = "DropboxV2"
-    case google         = "Google"
-    case googleDrive    = "GoogleDrive"
-    case sharePoint     = "SharePoint"
-    case skyDrive       = "SkyDrive"
-    case oneDrive       = "OneDrive"
-    case webDav         = "WebDav"
-    case yandex         = "Yandex"
-    case nextCloud      = "NextCloud"
-    case ownCloud       = "ownCloud"
-    case iCloud         = "iCloud"
-    case kDrive         = "kDrive"
+    case boxNet = "Box"
+    case dropBox = "DropboxV2"
+    case google = "Google"
+    case googleDrive = "GoogleDrive"
+    case sharePoint = "SharePoint"
+    case skyDrive = "SkyDrive"
+    case oneDrive = "OneDrive"
+    case webDav = "WebDav"
+    case yandex = "Yandex"
+    case nextCloud = "NextCloud"
+    case ownCloud
+    case iCloud
+    case kDrive
 }

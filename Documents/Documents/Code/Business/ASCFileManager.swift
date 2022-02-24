@@ -6,9 +6,9 @@
 //  Copyright © 2018 Ascensio System SIA. All rights reserved.
 //
 
-import UIKit
-import KeychainSwift
 import FileKit
+import KeychainSwift
+import UIKit
 
 class ASCFileManager {
     public static var provider: ASCFileProviderProtocol? {
@@ -16,6 +16,7 @@ class ASCFileManager {
             storeCurrentProvider()
         }
     }
+
     public static var localProvider: ASCLocalProvider = ASCLocalProvider()
     public static var onlyofficeProvider: ASCOnlyofficeProvider?
     public static var cloudProviders: [ASCFileProviderProtocol] = [] {
@@ -25,16 +26,14 @@ class ASCFileManager {
     }
 
     private static var keychain: KeychainSwift {
-        get {
-            let keychain = KeychainSwift()
-            keychain.accessGroup = ASCConstants.Keychain.group
-            keychain.synchronizable = true
-            return keychain
-        }
+        let keychain = KeychainSwift()
+        keychain.accessGroup = ASCConstants.Keychain.group
+        keychain.synchronizable = true
+        return keychain
     }
 
     public static var observer = Event<Any?>()
-    
+
     static func reset() {
         provider?.reset()
         localProvider.reset()
@@ -60,11 +59,11 @@ class ASCFileManager {
         case .kdrive: return ASCKdriveFileProvider()
         }
     }
-    
+
     static func createProvider(by folderType: ASCFolderProviderType) -> ASCFileProviderProtocol? {
         switch folderType {
         case .boxNet: return nil
-        case .dropBox:return ASCDropboxProvider()
+        case .dropBox: return ASCDropboxProvider()
         case .google: return ASCGoogleDriveProvider()
         case .googleDrive: return ASCGoogleDriveProvider()
         case .sharePoint: return nil
@@ -104,7 +103,8 @@ class ASCFileManager {
     static func loadProviders() {
         // Load providers
         if let rawData = keychain.getData(ASCConstants.Keychain.keyProviders),
-            let serializedProviders = NSKeyedUnarchiver.unarchiveObject(with: rawData) as? [String] {
+           let serializedProviders = NSKeyedUnarchiver.unarchiveObject(with: rawData) as? [String]
+        {
             cloudProviders = []
 
             serializedProviders.forEach { serializedProvider in
@@ -113,7 +113,7 @@ class ASCFileManager {
                    let provider = ASCFileManager.createProvider(by: type)
                 {
                     provider.deserialize(serializedProvider)
-                    
+
                     if let onlyofficeProvider = provider as? ASCOnlyofficeProvider {
                         self.onlyofficeProvider = onlyofficeProvider
                     } else {
@@ -122,7 +122,7 @@ class ASCFileManager {
                 }
             }
         }
-        
+
         if ASCConstants.Feature.allowiCloud {
             // iCloud Setup
             iCloudUpdate()
@@ -140,8 +140,9 @@ class ASCFileManager {
 
     static func loadCurrentProvider() {
         if let rawData = keychain.getData(ASCConstants.Keychain.keyLastProviderId),
-            let currentProviderId = String(data: rawData, encoding: .utf8) {
-            if let onlyofficeProvider = onlyofficeProvider, onlyofficeProvider.id == currentProviderId  {
+           let currentProviderId = String(data: rawData, encoding: .utf8)
+        {
+            if let onlyofficeProvider = onlyofficeProvider, onlyofficeProvider.id == currentProviderId {
                 provider = onlyofficeProvider
             } else if let cloudProvider = cloudProviders.first(where: { $0.id == currentProviderId }) {
                 provider = cloudProvider
@@ -152,7 +153,7 @@ class ASCFileManager {
             provider = localProvider
         }
     }
-    
+
     class func documentTemplatePath(
         with fileExtension: String,
         languageCode: String = Locale.current.languageCode ?? "en",
@@ -162,24 +163,24 @@ class ASCFileManager {
         let preferredLanguage = "\(languageCode)-\(regionCode)"
         let templateDirectoryRoot = "new"
         let templateFileName = "new.\(fileExtension)"
-        let templateDirectoryList = (resourcePath + templateDirectoryRoot).find() { $0.fileName }
+        let templateDirectoryList = (resourcePath + templateDirectoryRoot).find { $0.fileName }
 
         let templateDirectory =
             templateDirectoryList.first { $0 == preferredLanguage } ?? // [language designator]-[region designator]
-            templateDirectoryList.first { $0[safe: 0..<2] == preferredLanguage[safe: 0..<2] } ?? // [language designator]
+            templateDirectoryList.first { $0[safe: 0 ..< 2] == preferredLanguage[safe: 0 ..< 2] } ?? // [language designator]
             "en-US"
-        
+
         let templatePath = resourcePath + templateDirectoryRoot + templateDirectory + templateFileName
-        
+
         if templatePath.exists {
             return templatePath.standardRawValue
         }
-        
+
         return nil
     }
-    
+
     // MARK: - Internal
-    
+
     private static func iCloudUpdate() {
         if let iCloudProvider = cloudProviders.first(where: { $0.type == .icloud }) as? ASCiCloudProvider {
             iCloudProvider.initialize { success in

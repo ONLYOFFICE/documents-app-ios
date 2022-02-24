@@ -8,27 +8,26 @@
 
 import Kingfisher
 
-extension KingfisherWrapper where Base: KFCrossPlatformImageView {
-
+public extension KingfisherWrapper where Base: KFCrossPlatformImageView {
     @discardableResult
-    public func setProviderImage(
+    func setProviderImage(
         with resource: Resource?,
         for provider: Any,
         placeholder: Placeholder? = nil,
         options: KingfisherOptionsInfo? = nil,
         progressBlock: DownloadProgressBlock? = nil,
-        completionHandler: ((Swift.Result<RetrieveImageResult, KingfisherError>) -> Void)? = nil) -> DownloadTask?
-    {
+        completionHandler: ((Swift.Result<RetrieveImageResult, KingfisherError>) -> Void)? = nil
+    ) -> DownloadTask? {
         guard let provider = provider as? ASCFileProviderProtocol else { return nil }
-        
+
         let defaultTimeout: TimeInterval = 15
         let modifier = AnyModifier { request in
             var apiRequest = request
             apiRequest.timeoutInterval = defaultTimeout
-            
+
             if let authorization = provider.authorization {
                 apiRequest.setValue(authorization, forHTTPHeaderField: "Authorization")
-                
+
                 if provider is ASCOnlyofficeProvider {
                     let token = authorization.replacingOccurrences(of: "Bearer ", with: "")
                     var cookies = apiRequest.value(forHTTPHeaderField: "Cookie") ?? ""
@@ -40,11 +39,11 @@ extension KingfisherWrapper where Base: KFCrossPlatformImageView {
         }
 
         var localOptions = options ?? [.transition(.fade(0.3))]
-        
+
         if provider is ASCOnlyofficeProvider {
-            if  let baseUrl = OnlyofficeApiClient.shared.baseURL,
-                let resource = resource,
-                baseUrl.host == resource.downloadURL.host
+            if let baseUrl = OnlyofficeApiClient.shared.baseURL,
+               let resource = resource,
+               baseUrl.host == resource.downloadURL.host
             {
                 localOptions.append(.requestModifier(modifier))
             } else {

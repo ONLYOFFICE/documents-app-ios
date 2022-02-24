@@ -10,18 +10,18 @@ import Foundation
 
 class ASCPortalTypeDefinderByUrl: ASCPortalTypeDefinderProtocol {
     var url: URL?
-    
+
     init(url: URL? = nil) {
         self.url = url
     }
-    
+
     func definePortalType() -> ASCPortalType {
         guard let url = url else { return .unknown }
-        
+
         if url.absoluteString.contains(ASCConstants.Urls.personalPortals) {
             return .personal
         }
-        
+
         return .unknown
     }
 }

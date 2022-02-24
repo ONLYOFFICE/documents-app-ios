@@ -16,18 +16,17 @@ class OnlyofficeUserPhoto: Mappable {
     var original: String?
     var retina: String?
     var small: String?
-    
-    
+
     required init?(map: Map) {
         //
     }
 
     func mapping(map: Map) {
-        big         <- map["big"]
-        max         <- map["max"]
-        medium      <- map["medium"]
-        original    <- map["original"]
-        retina      <- map["retina"]
-        small       <- map["small"]
+        big <- map["big"]
+        max <- map["max"]
+        medium <- map["medium"]
+        original <- map["original"]
+        retina <- map["retina"]
+        small <- map["small"]
     }
 }

@@ -13,8 +13,8 @@ struct ASCSharingSettingsAccessViewModel {
     var currentlyAccess: ASCShareAccess? = .read
     var accessProvider: ASCSharingSettingsAccessProvider?
     var accessNoteProvider: ASCSharingSettingsAccessNotesProviderProtocol?
-    var largeTitleDisplayMode:  UINavigationItem.LargeTitleDisplayMode = .automatic
+    var largeTitleDisplayMode: UINavigationItem.LargeTitleDisplayMode = .automatic
     var headerText: String = NSLocalizedString("Access settings", comment: "")
-    
+
     var selectAccessDelegate: ((ASCShareAccess) -> Void)?
 }

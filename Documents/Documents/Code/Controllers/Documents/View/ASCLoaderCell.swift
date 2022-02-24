@@ -9,13 +9,12 @@
 import UIKit
 
 class ASCLoaderCell: UITableViewCell {
-
     // MARK: - Properties
 
-    @IBOutlet weak var indicator: UIActivityIndicatorView!
+    @IBOutlet var indicator: UIActivityIndicatorView!
 
     // MARK: - Lifecycle Methods
-    
+
     override func awakeFromNib() {
         super.awakeFromNib()
     }
@@ -27,5 +26,4 @@ class ASCLoaderCell: UITableViewCell {
     func startActivity() {
         indicator.startAnimating()
     }
-
 }

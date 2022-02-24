@@ -6,55 +6,56 @@
 //  Copyright © 2017 Ascensio System SIA. All rights reserved.
 //
 
-import UIKit
 import KeychainSwift
+import UIKit
 
 class ASCAccountsManager {
     public static let shared = ASCAccountsManager()
-    
+
     private(set) var accounts: [ASCAccount] = []
     private let keychain = KeychainSwift()
-    
+
     // MARK: - Private
-    
+
     init() {
         NSKeyedUnarchiver.setClass(ASCAccount.self, forClassName: "Projects.ASCAccount")
         NSKeyedUnarchiver.setClass(ASCAccount.self, forClassName: "ASCAccount")
         NSKeyedArchiver.setClassName("ASCAccount", for: ASCAccount.self)
 
-        NotificationCenter.default.addObserver(self, selector: #selector(onUpdateUserInfo), name: ASCConstants.Notifications.userInfoOnlyofficeUpdate, object: nil)        
+        NotificationCenter.default.addObserver(self, selector: #selector(onUpdateUserInfo), name: ASCConstants.Notifications.userInfoOnlyofficeUpdate, object: nil)
         loadAccounts()
     }
-    
+
     deinit {
         NotificationCenter.default.removeObserver(self)
     }
-    
+
     public class func start() {
         _ = ASCAccountsManager.shared
     }
-    
+
     private func loadAccounts() {
         keychain.accessGroup = ASCConstants.Keychain.group
         keychain.synchronizable = true
 
         if let rawData = keychain.getData(ASCConstants.Keychain.keyAccounts),
-            let array = NSKeyedUnarchiver.unarchiveObject(with: rawData) as? [ASCAccount] {
+           let array = NSKeyedUnarchiver.unarchiveObject(with: rawData) as? [ASCAccount]
+        {
             accounts = array
         } else {
             accounts = []
         }
     }
-    
+
     private func storeAccounts() {
         let rawData = NSKeyedArchiver.archivedData(withRootObject: accounts)
         keychain.set(rawData, forKey: ASCConstants.Keychain.keyAccounts)
     }
-    
+
     private func index(of account: ASCAccount) -> Int? {
         return accounts.firstIndex(where: { ($0.email == account.email) && ($0.portal == account.portal) })
     }
-    
+
     @objc func onUpdateUserInfo() {
         if
             let user = ASCFileManager.onlyofficeProvider?.user,
@@ -69,14 +70,13 @@ class ASCAccountsManager {
                 "avatar": user.avatarRetina ?? user.avatar ?? "",
                 "portal": portal,
                 "token": token,
-                "expires": dateTransform.transformToJSON(provider.apiClient.expires) ?? ""
-                ])
-            {
+                "expires": dateTransform.transformToJSON(provider.apiClient.expires) ?? "",
+            ]) {
                 add(account)
             }
         }
     }
-    
+
     // MARK: - Public
 
     /// Add new account or update exist
@@ -100,7 +100,7 @@ class ASCAccountsManager {
             storeAccounts()
         }
     }
-    
+
     /// Update exist account
     ///
     /// - Parameter account: Search exist record to update by 'id' and 'portal' properties of ASCAccount object

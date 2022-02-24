@@ -10,45 +10,45 @@ import Foundation
 import UIKit
 
 class ASCLoadedDocumentViewControllerByProviderAndFolderFinder: ASCLoadedViewControllerFinderProtocol {
-    
     func find(requestModel: ASCLoadedVCFinderModels.DocumentsVC.Request) -> ASCLoadedVCFinderModels.DocumentsVC.Response {
-        
         let nilResult = ASCLoadedVCFinderModels.DocumentsVC.Response(viewController: nil)
-        
+
         guard !requestModel.folderId.isEmpty, !requestModel.providerId.isEmpty else {
             return nilResult
         }
-        
+
         let allDocumentsNavigationControllers = getAllASCDocumentsNavigationControllers()
-        
+
         guard let navigationControllerWithNeededProvider = getFirstASCDocumentsNavigationController(
-                navigationControllers: allDocumentsNavigationControllers,
-                withProviderId: requestModel.providerId)
+            navigationControllers: allDocumentsNavigationControllers,
+            withProviderId: requestModel.providerId
+        )
         else {
             return nilResult
         }
-        
+
         guard let documentsViewControllerWithNeededFolder = getFirstASCDocumentsViewController(
-                navigationController: navigationControllerWithNeededProvider,
-                withFolderId: requestModel.folderId)
+            navigationController: navigationControllerWithNeededProvider,
+            withFolderId: requestModel.folderId
+        )
         else {
             return nilResult
         }
-        
+
         return ASCLoadedVCFinderModels.DocumentsVC.Response(viewController: documentsViewControllerWithNeededFolder)
     }
-    
+
     func getAllASCDocumentsNavigationControllers() -> [ASCDocumentsNavigationController] {
-        guard let root = self.getRootViewController() else {
+        guard let root = getRootViewController() else {
             return []
         }
-        
-        var queue: [UIViewController] = [];
-        var values: [ASCDocumentsNavigationController] = [];
-        
-        queue.append(root);
-        
-        while(!queue.isEmpty){
+
+        var queue: [UIViewController] = []
+        var values: [ASCDocumentsNavigationController] = []
+
+        queue.append(root)
+
+        while !queue.isEmpty {
             let vc = queue.removeFirst()
             if let nc = vc as? ASCDocumentsNavigationController {
                 values.append(nc)
@@ -56,7 +56,7 @@ class ASCLoadedDocumentViewControllerByProviderAndFolderFinder: ASCLoadedViewCon
                 queue.append(contentsOf: vc.children)
             }
         }
-        return values;
+        return values
     }
 
     func getFirstASCDocumentsNavigationController(navigationControllers: [ASCDocumentsNavigationController], withProviderId providerId: String) -> ASCDocumentsNavigationController? {
@@ -71,7 +71,7 @@ class ASCLoadedDocumentViewControllerByProviderAndFolderFinder: ASCLoadedViewCon
             return documentsVC.provider?.id == providerId
         })
     }
-    
+
     func getFirstASCDocumentsViewController(navigationController: ASCDocumentsNavigationController, withFolderId folderId: String) -> ASCDocumentsViewController? {
         for child in navigationController.children {
             if let documentsVC = child as? ASCDocumentsViewController, documentsVC.folder?.id == folderId {

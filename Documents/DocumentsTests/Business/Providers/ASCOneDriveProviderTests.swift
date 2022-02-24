@@ -6,14 +6,13 @@
 //  Copyright © 2021 Ascensio System SIA. All rights reserved.
 //
 
-import XCTest
-import UIKit
-import FilesProvider
-import FileKit
 @testable import Documents
+import FileKit
+import FilesProvider
+import UIKit
+import XCTest
 
 class ASCOneDriveProviderTests: XCTestCase {
-    
     var sut: ASCOneDriveProvider!
 
     override func setUpWithError() throws {
@@ -21,10 +20,11 @@ class ASCOneDriveProviderTests: XCTestCase {
     }
 
     override func tearDownWithError() throws {
-       sut = nil
+        sut = nil
     }
 
     // MARK: - findUniqName func tests
+
     func testFindUnicNameWhenBaseNameIsUnicThenReturnsBaseName() throws {
         let folder = ASCFolder()
         folder.id = "1"
@@ -53,7 +53,7 @@ class ASCOneDriveProviderTests: XCTestCase {
             XCTAssertEqual(name, "Foo 7.docx")
         }
     }
-    
+
     func testFindUnicNameWhenBaseNameExistOneTimesThenReturnsBaseNameWithTwoPostfixInRootFolder() throws {
         let folder = ASCFolder()
         folder.id = ""
@@ -67,7 +67,7 @@ class ASCOneDriveProviderTests: XCTestCase {
             XCTAssertEqual(name, "Foo 2.docx")
         }
     }
-    
+
     func testFindUnicNameWhenDirectoryBaseNameIsUnicThenReturnsBaseName() throws {
         let folder = ASCFolder()
         folder.id = ""
@@ -76,7 +76,7 @@ class ASCOneDriveProviderTests: XCTestCase {
             XCTAssertEqual(name, "Foo")
         }
     }
-    
+
     func testFindUnicNameWhenDirectoryBaseNameExistTwoTimesThenReturnsDirectoryBaseNameWithTreePostfix() throws {
         let folder = ASCFolder()
         folder.id = "2"
@@ -85,14 +85,14 @@ class ASCOneDriveProviderTests: XCTestCase {
         mockProvider.existingPaths = [
             "/2/Foo",
             "/2/Foo 1",
-            "/2/Foo 2"
+            "/2/Foo 2",
         ]
         sut.provider = mockProvider
         sut.findUniqName(suggestedName: "Foo", inFolder: folder) { name in
             XCTAssertEqual(name, "Foo 3")
         }
     }
-    
+
     func testFindUnicNameWhenDirectoryBaseNameExistThreeTimesThenReturnsDirectoryBaseNameWithFourPostfixInRootFolder() throws {
         let folder = ASCFolder()
         folder.id = ""
@@ -108,8 +108,9 @@ class ASCOneDriveProviderTests: XCTestCase {
             XCTAssertEqual(name, "Foo 4")
         }
     }
-    
+
     // MARK: - rename func tests
+
     func testWhenRenameFileInEmptyDirThenRenamed() {
         let entity = ASCFile()
         entity.title = "Foo.docx"
@@ -119,7 +120,7 @@ class ASCOneDriveProviderTests: XCTestCase {
         sut.rename(entity, to: "Bar") { sut, entity, success, error in
             XCTAssertNil(error)
             XCTAssertTrue(success)
-            
+
             guard let entity = entity as? ASCFile else {
                 XCTFail("Couldn't cust entity to file")
                 return
@@ -129,7 +130,7 @@ class ASCOneDriveProviderTests: XCTestCase {
         }
         waitForExpectations(timeout: 1)
     }
-    
+
     func testWhenRenameFileInFolderWithExistNameThanFailure() {
         let entity = ASCFile()
         entity.title = "Foo.docx"
@@ -144,7 +145,7 @@ class ASCOneDriveProviderTests: XCTestCase {
         sut.rename(entity, to: "Bar") { sut, entity, success, error in
             XCTAssertNotNil(error)
             XCTAssertFalse(success)
-            
+
             guard let entity = entity as? ASCFile else {
                 XCTFail("Couldn't cust entity to file")
                 return
@@ -154,12 +155,12 @@ class ASCOneDriveProviderTests: XCTestCase {
         }
         waitForExpectations(timeout: 1)
     }
-    
+
     func testWhenRenameFileInRootFolderWithExistNameThanFailure() {
         let entity = ASCFile()
         entity.title = "Foo.docx"
         entity.id = "1"
-        
+
         let mockProvider = ASCOneDriveFileProviderMock()
         mockProvider.pathsOfItemsIds["1"] = "/Foo.docx"
         mockProvider.existingPaths = [
@@ -170,7 +171,7 @@ class ASCOneDriveProviderTests: XCTestCase {
         sut.rename(entity, to: "Bar") { sut, entity, success, error in
             XCTAssertNotNil(error)
             XCTAssertFalse(success)
-            
+
             guard let entity = entity as? ASCFile else {
                 XCTFail("Couldn't cust entity to file")
                 return
@@ -180,18 +181,18 @@ class ASCOneDriveProviderTests: XCTestCase {
         }
         waitForExpectations(timeout: 1)
     }
-    
+
     func testWhenRenameFolderInEmptyDirThenRenamed() {
         let entity = ASCFolder()
         entity.title = "Foo"
         entity.id = ""
         sut.provider = ASCOneDriveFileProviderMock()
-        
+
         let expect = expectation(description: "renaming folder")
         sut.rename(entity, to: "Bar") { sut, entity, success, error in
             XCTAssertNil(error)
             XCTAssertTrue(success)
-            
+
             guard let entity = entity as? ASCFolder else {
                 XCTFail("Couldn't cust entity to folder")
                 return
@@ -201,7 +202,7 @@ class ASCOneDriveProviderTests: XCTestCase {
         }
         waitForExpectations(timeout: 1)
     }
-    
+
     func testWhenRenameFolderInFolderWithExistNameThanFailure() {
         let entity = ASCFolder()
         entity.title = "Foo"
@@ -216,7 +217,7 @@ class ASCOneDriveProviderTests: XCTestCase {
         sut.rename(entity, to: "Bar") { sut, entity, success, error in
             XCTAssertNotNil(error)
             XCTAssertFalse(success)
-            
+
             guard let entity = entity as? ASCFolder else {
                 XCTFail("Couldn't cust entity to folder")
                 return
@@ -226,7 +227,7 @@ class ASCOneDriveProviderTests: XCTestCase {
         }
         waitForExpectations(timeout: 1)
     }
-    
+
     func testWhenRenameFolderInRootFolderWithExistNameThanFailure() {
         let entity = ASCFolder()
         entity.title = "Foo"
@@ -240,7 +241,7 @@ class ASCOneDriveProviderTests: XCTestCase {
         sut.rename(entity, to: "Bar") { sut, entity, success, error in
             XCTAssertNotNil(error)
             XCTAssertFalse(success)
-            
+
             guard let entity = entity as? ASCFolder else {
                 XCTFail("Couldn't cust entity to folder")
                 return
@@ -253,6 +254,7 @@ class ASCOneDriveProviderTests: XCTestCase {
 }
 
 // MARK: - Extensions
+
 extension ASCOneDriveProviderTests {
     class ASCOneDriveFileProviderMock: ASCOneDriveFileProvider {
         typealias Path = String
@@ -260,7 +262,7 @@ extension ASCOneDriveProviderTests {
 
         var existingPaths: [String] = []
         var pathsOfItemsIds: [Id: Path] = [:]
-        
+
         override func pathOfItem(withId itemId: String, completionHandler: @escaping (String?, Error?) -> Void) {
             if let path = pathsOfItemsIds[itemId] {
                 completionHandler(path, nil)
@@ -268,9 +270,8 @@ extension ASCOneDriveProviderTests {
                 completionHandler(nil, ErrorMock.pathNotFound)
             }
         }
-        
+
         override func attributesOfItem(path: String, completionHandler: @escaping (FileObject?, Error?) -> Void) {
-            
             if existingPaths.contains(path) {
                 let pathExtEmpty = path.pathExtension.isEmpty
                 let fileResourceTypeKey: URLFileResourceType = pathExtEmpty ? .directory : .regular
@@ -280,26 +281,27 @@ extension ASCOneDriveProviderTests {
                 completionHandler(nil, nil)
             }
         }
-        
+
         override func moveItem(path: String, to toPath: String, overwrite: Bool, completionHandler: SimpleCompletionHandler) -> Progress? {
             completionHandler?(nil)
             return nil
         }
-        
-        override func moveItem(path: String, to toPath: String, overwrite: Bool, requestData: [String : Any], completionHandler: SimpleCompletionHandler) -> Progress? {
+
+        override func moveItem(path: String, to toPath: String, overwrite: Bool, requestData: [String: Any], completionHandler: SimpleCompletionHandler) -> Progress? {
             completionHandler?(nil)
             return nil
         }
-        
+
         init() {
             super.init(credential: nil)
         }
-        
+
+        @available(*, unavailable)
         required convenience init?(coder aDecoder: NSCoder) {
             fatalError("init(coder:) has not been implemented")
         }
     }
-    
+
     enum ErrorMock: Error {
         case pathNotFound
     }

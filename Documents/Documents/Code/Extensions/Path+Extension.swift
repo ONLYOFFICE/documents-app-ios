@@ -6,9 +6,8 @@
 //  Copyright © 2018 Ascensio System SIA. All rights reserved.
 //
 
-
-import Foundation
 import FileKit
+import Foundation
 
 let DEFAULT_MIME_TYPE = "application/octet-stream"
 let mimeTypes = [
@@ -114,11 +113,11 @@ let mimeTypes = [
     "asx": "video/x-ms-asf",
     "asf": "video/x-ms-asf",
     "wmv": "video/x-ms-wmv",
-    "avi": "video/x-msvideo"
+    "avi": "video/x-msvideo",
 ]
 
-extension Path {
-    public var mime: String? {
+public extension Path {
+    var mime: String? {
         if !isDirectoryFile {
             return mimeTypes[rawValue.fileExtension().lowercased()] ?? DEFAULT_MIME_TYPE
         }

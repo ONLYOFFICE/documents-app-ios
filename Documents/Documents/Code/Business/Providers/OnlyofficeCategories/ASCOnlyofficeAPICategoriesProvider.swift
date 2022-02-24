@@ -10,18 +10,18 @@ import Foundation
 
 class ASCOnlyofficeAPICategoriesProvider: ASCOnlyofficeCategoriesProviderProtocol {
     var categoriesCurrentlyLoading: Bool = false
-    
+
     func loadCategories(completion: @escaping (Result<[ASCOnlyofficeCategory], Error>) -> Void) {
         var categories: [ASCOnlyofficeCategory] = []
         guard !categoriesCurrentlyLoading else {
             completion(.success(categories))
             return
         }
-        
+
         categoriesCurrentlyLoading = true
         DispatchQueue.global(qos: .userInteractive).async {
             OnlyofficeApiClient.request(OnlyofficeAPI.Endpoints.Folders.roots) { [self] response, error in
-                
+
                 guard error == nil else {
                     log.error(error!)
                     categoriesCurrentlyLoading = false
@@ -30,7 +30,7 @@ class ASCOnlyofficeAPICategoriesProvider: ASCOnlyofficeCategoriesProviderProtoco
                     }
                     return
                 }
-                
+
                 if let paths = response?.result {
                     categories = paths.compactMap { path in
                         if let current = path.current {
@@ -40,11 +40,11 @@ class ASCOnlyofficeAPICategoriesProvider: ASCOnlyofficeCategoriesProviderProtoco
                     }
                     categories.sort { $0.sortWeight < $1.sortWeight }
                 }
-                
+
                 DispatchQueue.main.async {
                     completion(.success(categories))
                 }
-                
+
                 categoriesCurrentlyLoading = false
             }
         }

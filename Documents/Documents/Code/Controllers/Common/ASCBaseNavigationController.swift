@@ -9,7 +9,6 @@
 import UIKit
 
 class ASCBaseNavigationController: UINavigationController {
-
     // MARK: - Properties
 
     var hasShadow: Bool = false {
@@ -35,7 +34,7 @@ class ASCBaseNavigationController: UINavigationController {
     private var shadowView: UIView?
 
     // MARK: - Lifecycle Methods
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
     }
@@ -47,27 +46,27 @@ class ASCBaseNavigationController: UINavigationController {
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
-    
-    override var supportedInterfaceOrientations : UIInterfaceOrientationMask {
+
+    override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
         return topViewController?.supportedInterfaceOrientations ?? [.portrait, .landscape]
     }
-    
+
     override var preferredInterfaceOrientationForPresentation: UIInterfaceOrientation {
         return topViewController?.preferredInterfaceOrientationForPresentation ?? super.preferredInterfaceOrientationForPresentation
     }
-    
+
     // MARK: - UI
 
     override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
         shadowView?.backgroundColor = Asset.Colors.tableCellSeparator.color
     }
-    
+
     // MARK: - Methods for change style status bar
-    
+
     override open var childForStatusBarStyle: UIViewController? {
         return topViewController
     }
-    
+
     override open var childForStatusBarHidden: UIViewController? {
         return topViewController
     }

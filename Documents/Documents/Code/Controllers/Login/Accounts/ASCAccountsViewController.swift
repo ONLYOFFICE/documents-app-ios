@@ -6,48 +6,47 @@
 //  Copyright © 2017 Ascensio System SIA. All rights reserved.
 //
 
-import UIKit
-import MBProgressHUD
 import Firebase
+import MBProgressHUD
+import UIKit
 
 class ASCAccountsViewController: ASCBaseViewController {
-
     // MARK: - Outlets
-    
-    @IBOutlet weak var accountsCollectionView: UICollectionView!
-    @IBOutlet weak var displayNameLabel: UILabel!
-    @IBOutlet weak var portalLabel: UILabel!
-    @IBOutlet weak var labelsView: UIStackView!
-    @IBOutlet weak var continueButton: UIButton!
-    @IBOutlet weak var accountInfoTopConstraint: NSLayoutConstraint!
+
+    @IBOutlet var accountsCollectionView: UICollectionView!
+    @IBOutlet var displayNameLabel: UILabel!
+    @IBOutlet var portalLabel: UILabel!
+    @IBOutlet var labelsView: UIStackView!
+    @IBOutlet var continueButton: UIButton!
+    @IBOutlet var accountInfoTopConstraint: NSLayoutConstraint!
 
     // MARK: - Lifecycle
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+
         if ASCAccountsManager.shared.accounts.count < 1 {
             switchVCSingle()
             return
         }
-        
+
         setupLayout()
         currentPage = 0
-        
-        self.view.subviews
-                .filter { $0 is UIButton }
-                .forEach { $0.isExclusiveTouch = true }
+
+        view.subviews
+            .filter { $0 is UIButton }
+            .forEach { $0.isExclusiveTouch = true }
     }
-    
+
     deinit {
         NotificationCenter.default.removeObserver(self)
     }
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
+
         navigationController?.navigationBar.prefersLargeTitles = false
-        
+
         navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
         navigationController?.navigationBar.shadowImage = UIImage()
         navigationController?.navigationBar.isTranslucent = true
@@ -59,12 +58,12 @@ class ASCAccountsViewController: ASCBaseViewController {
         continueButton?.isUserInteractionEnabled = true
         continueButton?.isEnabled = true
     }
-    
+
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
 
-    override var supportedInterfaceOrientations : UIInterfaceOrientationMask {
+    override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
         return UIDevice.phone ? .portrait : [.portrait, .landscape]
     }
 
@@ -81,17 +80,17 @@ class ASCAccountsViewController: ASCBaseViewController {
             accountInfoTopConstraint?.constant = 5
         }
     }
-    
+
     private var currentPage: Int = -1 {
         didSet {
             if currentPage == oldValue || currentPage < 0 {
                 return
             }
-            
+
             updateInfo(pageIndex: currentPage)
         }
     }
-    
+
     private var pageSize: CGSize {
         if let layout = accountsCollectionView.collectionViewLayout as? UPCarouselFlowLayout {
             var pageSize = layout.itemSize
@@ -102,25 +101,25 @@ class ASCAccountsViewController: ASCBaseViewController {
             }
             return pageSize
         }
-        
+
         return .zero
     }
-    
+
     private func updateInfo(pageIndex: Int) {
         let animationDuration = 0.3
-        
-        view.subviews.forEach({$0.layer.removeAllAnimations()})
+
+        view.subviews.forEach { $0.layer.removeAllAnimations() }
         view.layer.removeAllAnimations()
         view.layoutIfNeeded()
-        
+
         if pageIndex < 0 || pageIndex >= ASCAccountsManager.shared.accounts.count {
             UIView.animate(withDuration: animationDuration / 2, animations: { [weak self] in
                 self?.labelsView?.transform = CGAffineTransform(scaleX: 0.9, y: 0.9)
                 self?.labelsView?.alpha = 0
-            }) { [weak self] (completed) in
+            }) { [weak self] completed in
                 self?.displayNameLabel?.text = ""
                 self?.portalLabel?.text = ""
-                
+
                 UIView.animate(withDuration: animationDuration / 2) { [weak self] in
                     self?.labelsView?.transform = CGAffineTransform(scaleX: 1, y: 1)
                     self?.labelsView?.alpha = 1
@@ -132,31 +131,31 @@ class ASCAccountsViewController: ASCBaseViewController {
         UIView.animate(withDuration: animationDuration / 2, animations: { [weak self] in
             self?.labelsView?.transform = CGAffineTransform(scaleX: 0.9, y: 0.9)
             self?.labelsView?.alpha = 0
-        }) { [weak self] (completed) in
+        }) { [weak self] completed in
             let index = self?.currentPage ?? max(pageIndex, 0)
             let account = ASCAccountsManager.shared.accounts[index]
             self?.displayNameLabel?.text = account.email ?? NSLocalizedString("Unknown", comment: "")
             self?.portalLabel?.text = URL(string: account.portal ?? "")?.host ?? account.portal
-            
+
             UIView.animate(withDuration: animationDuration / 2) { [weak self] in
                 self?.labelsView?.transform = CGAffineTransform(scaleX: 1, y: 1)
                 self?.labelsView?.alpha = 1
             }
         }
     }
-    
+
     private func calcCurrentPage(by scrollView: UIScrollView) {
         if let layout = accountsCollectionView.collectionViewLayout as? UPCarouselFlowLayout {
             let pageSide = (layout.scrollDirection == .horizontal) ? pageSize.width : pageSize.height
             let offset = (layout.scrollDirection == .horizontal) ? scrollView.contentOffset.x : scrollView.contentOffset.y
             let page = Int(floor((offset - pageSide / 2) / pageSide) + 1)
-            
-            if page > -1 && page < ASCAccountsManager.shared.accounts.count {
+
+            if page > -1, page < ASCAccountsManager.shared.accounts.count {
                 currentPage = page
             }
         }
     }
-    
+
     private func switchVCSingle() {
         if ASCAccountsManager.shared.accounts.count < 1 {
             navigator.navigate(to: .onlyofficeConnectPortal)
@@ -197,11 +196,11 @@ class ASCAccountsViewController: ASCBaseViewController {
             if let error = error {
                 log.error(error)
             }
-            
+
             if let communityVersion = response?.result?.community {
                 OnlyofficeApiClient.shared.serverVersion = communityVersion
             }
-            
+
             completion(true, nil)
         }
     }
@@ -243,7 +242,7 @@ class ASCAccountsViewController: ASCBaseViewController {
                 })
                 semaphore.wait()
             }
-            
+
             // Check portal version
             requestQueue.addOperation {
                 let semaphore = DispatchSemaphore(value: 0)
@@ -255,7 +254,7 @@ class ASCAccountsViewController: ASCBaseViewController {
 
             // Check read user info
             requestQueue.addOperation {
-                if nil == lastErrorMsg {
+                if lastErrorMsg == nil {
                     let semaphore = DispatchSemaphore(value: 0)
 
                     dummyOnlyofficeProvider.userInfo { success, error in
@@ -310,58 +309,57 @@ class ASCAccountsViewController: ASCBaseViewController {
                         )
 
                         ASCAnalytics.logEvent(ASCConstants.Analytics.Event.switchAccount, parameters: [
-                            ASCAnalytics.Event.Key.portal: baseUrl
-                            ]
-                        )
+                            ASCAnalytics.Event.Key.portal: baseUrl,
+                        ])
 
-                        ASCEditorManager.shared.fetchDocumentService { _,_,_  in }
+                        ASCEditorManager.shared.fetchDocumentService { _, _, _ in }
                         strongSelf.dismiss(animated: true, completion: nil)
 
                         hud?.hide(animated: true, afterDelay: 0.3)
                     }
-                    
+
                     completion()
                 }
             }
         }
     }
-    
+
     // MARK: - Actions
 
     @IBAction func onDeleteAccount(_ sender: UIBarButtonItem) {
         let account = ASCAccountsManager.shared.accounts[currentPage]
-        
+
         let deleteController = UIAlertController(
             title: String(format: NSLocalizedString("Are you sure you want to delete the account %@ from this device?", comment: ""), account.email ?? ""),
             message: nil,
             preferredStyle: UIDevice.phone ? .actionSheet : .alert,
             tintColor: nil
         )
-        
+
         deleteController.addAction(title: NSLocalizedString("Delete account", comment: ""), style: .destructive, handler: { [weak self] action in
             ASCAccountsManager.shared.remove(account)
-            
+
             if ASCAccountsManager.shared.accounts.count < 1 {
                 self?.switchVCSingle()
                 return
             }
-            
+
             guard let pageIndex = self?.currentPage else { return }
-            
+
             self?.accountsCollectionView.deleteItems(at: [IndexPath(row: pageIndex, section: 0)])
-            
-            if pageIndex >= ASCAccountsManager.shared.accounts.count && ASCAccountsManager.shared.accounts.count > 0 {
+
+            if pageIndex >= ASCAccountsManager.shared.accounts.count, ASCAccountsManager.shared.accounts.count > 0 {
                 self?.currentPage -= 1
             } else {
                 self?.updateInfo(pageIndex: pageIndex)
             }
         })
-        
+
         deleteController.addCancel()
-        
+
         present(deleteController, animated: true, completion: nil)
     }
-    
+
     @IBAction func onContinue(_ sender: UIButton) {
         sender.isUserInteractionEnabled = false
         sender.isEnabled = false
@@ -371,7 +369,7 @@ class ASCAccountsViewController: ASCBaseViewController {
             sender.isEnabled = true
         }
     }
-    
+
     @IBAction func onClose(_ sender: UIBarButtonItem) {
         OnlyofficeApiClient.shared.cancelAll()
 
@@ -390,7 +388,6 @@ class ASCAccountsViewController: ASCBaseViewController {
         }
     }
 }
-
 
 // MARK: - UICollectionView DataSource
 
@@ -418,7 +415,6 @@ extension ASCAccountsViewController: UICollectionViewDataSource {
     }
 }
 
-
 // MARK: - UICollectionView Delegate
 
 extension ASCAccountsViewController: UICollectionViewDelegate {
@@ -431,7 +427,6 @@ extension ASCAccountsViewController: UICollectionViewDelegate {
         collectionView.scrollToItem(at: indexPath, at: .centeredHorizontally, animated: true)
     }
 }
-
 
 // MARK: - UIScrollView Delegate
 

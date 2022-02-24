@@ -2961,6 +2961,7 @@
 				EA743117C604D6C921D4BCD0 /* [CP] Check Pods Manifest.lock */,
 				FC1CA5A326452823001CC5CA /* Check dependencies and try checkout */,
 				FCE1861D2628C51F0086D21B /* SwiftGen */,
+				FC70518527C23DE400D4F8F1 /* SwiftFormat */,
 				FCFDAA891E48A10C007A240C /* Sources */,
 				FCFDAA8A1E48A10C007A240C /* Frameworks */,
 				FCFDAA8B1E48A10C007A240C /* Resources */,
@@ -3569,6 +3570,24 @@
 			shellPath = /bin/sh;
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Documents-Alpha/Pods-Documents-Alpha-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
+		};
+		FC70518527C23DE400D4F8F1 /* SwiftFormat */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = SwiftFormat;
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "if [ $CONFIGURATION == Debug ]; then\n    \"${PODS_ROOT}/SwiftFormat/CommandLineTool/swiftformat\" \"$SRCROOT\" \\\n    --swiftversion ${SWIFT_VERSION} \\\n    --exclude Pods,**/Generated \\\n    --lintonly unusedArguments,redundantType\nfi\n";
 		};
 		FC7DA57E1EF2962A0011092A /* Upload symbols to Firebase Crashlytics */ = {
 			isa = PBXShellScriptBuildPhase;

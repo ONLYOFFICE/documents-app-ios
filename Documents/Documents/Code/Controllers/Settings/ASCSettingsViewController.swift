@@ -6,56 +6,54 @@
 //  Copyright © 2017 Ascensio System SIA. All rights reserved.
 //
 
-import UIKit
-import FileKit
-import MBProgressHUD
-import SDWebImage
-import MessageUI
 import DocumentConverter
+import FileKit
 import Kingfisher
+import MBProgressHUD
+import MessageUI
+import SDWebImage
+import UIKit
 
 class ASCSettingsViewController: UITableViewController, MFMailComposeViewControllerDelegate {
-
     // MARK: - Properties
-    
-    @IBOutlet weak var clearCacheCell: UITableViewCell!
-    @IBOutlet weak var supportCell: UITableViewCell!
-    @IBOutlet weak var introCell: UITableViewCell!
-    @IBOutlet weak var compressImagesSwitch: UISwitch!
-    @IBOutlet weak var previewFilesSwitch: UISwitch!
-    
-    
+
+    @IBOutlet var clearCacheCell: UITableViewCell!
+    @IBOutlet var supportCell: UITableViewCell!
+    @IBOutlet var introCell: UITableViewCell!
+    @IBOutlet var compressImagesSwitch: UISwitch!
+    @IBOutlet var previewFilesSwitch: UISwitch!
+
     private var cacheSize: UInt64 = 0
-    
+
     // MARK: - Lifecycle Methods
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+
         compressImagesSwitch?.isOn = UserDefaults.standard.bool(forKey: ASCConstants.SettingsKeys.compressImage)
         previewFilesSwitch?.isOn = UserDefaults.standard.bool(forKey: ASCConstants.SettingsKeys.previewFiles)
-        
+
         navigationController?.view.backgroundColor = Asset.Colors.tableBackground.color
     }
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
+
         if UIDevice.pad {
             navigationController?.navigationBar.prefersLargeTitles = false
-            
+
             navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
             navigationController?.navigationBar.shadowImage = UIImage()
             navigationController?.navigationBar.isTranslucent = true
         }
     }
-    
+
     override func scrollViewDidScroll(_ scrollView: UIScrollView) {
         if UIDevice.pad {
             guard let navigationBar = navigationController?.navigationBar else { return }
-            
+
             let transparent = (navigationBar.y + navigationBar.height + scrollView.contentOffset.y) > 0
-            
+
             navigationBar.setBackgroundImage(transparent ? nil : UIImage(), for: .default)
             navigationBar.shadowImage = transparent ? nil : UIImage()
         }
@@ -71,10 +69,10 @@ class ASCSettingsViewController: UITableViewController, MFMailComposeViewControl
     }
 
     // MARK: - Table view Delegate
-    
+
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
-        
+
         let cell = super.tableView(tableView, cellForRowAt: indexPath)
         if cell == clearCacheCell {
             clearCache()
@@ -87,25 +85,25 @@ class ASCSettingsViewController: UITableViewController, MFMailComposeViewControl
     }
 
     // MARK: - Private
-    
+
     private func calcCacheSize() {
         clearCacheCell?.isUserInteractionEnabled = false
-        //clearCacheCell?.detailTextLabel?.text = ""
-        
+        // clearCacheCell?.detailTextLabel?.text = ""
+
         let activityView = UIActivityIndicatorView(style: .gray)
         activityView.color = view.tintColor
         activityView.startAnimating()
-        
+
         if cacheSize < 1 {
             clearCacheCell?.detailTextLabel?.text = ""
             clearCacheCell?.accessoryView = activityView
         }
-                    
+
         DispatchQueue.global().async { [weak self] in
             guard let strongSelf = self else { return }
 
             var commonSize: UInt64 = 0
-            
+
             _ = Path.userTemporary.find(searchDepth: 5) { path in
                 if path.isRegular {
                     commonSize += path.fileSize ?? 0
@@ -118,7 +116,7 @@ class ASCSettingsViewController: UITableViewController, MFMailComposeViewControl
 
             ImageCache.default.calculateDiskStorageSize { [weak self] result in
                 switch result {
-                case .success(let size):
+                case let .success(size):
                     log.info("Disk cache size: \(Double(size) / 1024 / 1024) MB")
                     guard let strongSelf = self else { return }
 
@@ -136,7 +134,7 @@ class ASCSettingsViewController: UITableViewController, MFMailComposeViewControl
                                 : String.fileSizeToString(with: strongSelf.cacheSize)
                         }
                     }
-                case .failure(let error):
+                case let .failure(error):
                     print(error)
                     guard let strongSelf = self else { return }
 
@@ -146,7 +144,7 @@ class ASCSettingsViewController: UITableViewController, MFMailComposeViewControl
             }
         }
     }
-    
+
     private func clearCache() {
         let alertController = UIAlertController(
             title: NSLocalizedString("Clear Cache?", comment: "Button title"),
@@ -154,20 +152,20 @@ class ASCSettingsViewController: UITableViewController, MFMailComposeViewControl
             preferredStyle: UIDevice.pad ? .alert : .actionSheet,
             tintColor: nil
         )
-        let deleteAction = UIAlertAction(title: NSLocalizedString("Clear Cache", comment: "Button title"), style: .destructive) { (action) in
+        let deleteAction = UIAlertAction(title: NSLocalizedString("Clear Cache", comment: "Button title"), style: .destructive) { action in
             guard let hud = MBProgressHUD.showTopMost() else {
                 return
             }
-            
+
             hud.mode = .indeterminate
             hud.label.text = NSLocalizedString("Clearing", comment: "Caption of the processing")
-            
+
             DispatchQueue.global().async { [weak self] in
                 _ = Path.userTemporary.find(searchDepth: 1) { path in
                     ASCLocalFileHelper.shared.removeFile(path)
                     return true
                 }
-                
+
                 DispatchQueue.main.async { [weak self] in
                     guard let strongSelf = self else { return }
 
@@ -179,29 +177,29 @@ class ASCSettingsViewController: UITableViewController, MFMailComposeViewControl
                     // Clear images
                     SDImageCache.shared.clearMemory()
                     SDImageCache.shared.clearDisk()
-                    
+
                     // Clear categories
                     ASCOnlyofficeUserDefaultsCacheCategoriesProvider().clearCache()
-                    
+
                     hud.setSuccessState()
                     hud.hide(animated: true, afterDelay: 2)
-                    
+
                     strongSelf.calcCacheSize()
                 }
             }
         }
         let cancelAction = UIAlertAction(title: ASCLocalization.Common.cancel, style: .cancel)
-        
+
         alertController.addAction(deleteAction)
         alertController.addAction(cancelAction)
-        
+
         present(alertController, animated: true, completion: nil)
     }
-    
+
     func sendFeedback() {
-        let composer = MFMailComposeViewController()        
+        let composer = MFMailComposeViewController()
         let localSdkVersion = ASCEditorManager.shared.localSDKVersion().joined(separator: ".")
-        
+
         if MFMailComposeViewController.canSendMail() {
             composer.mailComposeDelegate = self
             composer.setToRecipients([ASCConstants.Urls.supportMailTo])
@@ -213,7 +211,7 @@ class ASCSettingsViewController: UITableViewController, MFMailComposeViewControl
                 "SDK: \(localSdkVersion)",
                 "Converter: \(DocumentLocalConverter.sdkVersion() ?? "")",
                 "Device model: \(Device.current.safeDescription)",
-                "iOS Version: \(ASCCommon.systemVersion)"
+                "iOS Version: \(ASCCommon.systemVersion)",
             ].joined(separator: "\n"), isHTML: false)
 
             present(composer, animated: true, completion: nil)
@@ -226,28 +224,26 @@ class ASCSettingsViewController: UITableViewController, MFMailComposeViewControl
                         if let url = URL(string: ASCConstants.Urls.applicationFeedbackForum), UIApplication.shared.canOpenURL(url) {
                             UIApplication.shared.open(url, options: [:], completionHandler: nil)
                         }
-                    })
+                    }),
                 ]
             )
         }
     }
-    
+
     // MARK: - MFMailComposeViewController Delegate
-    
+
     func mailComposeController(_ controller: MFMailComposeViewController, didFinishWith result: MFMailComposeResult, error: Error?) {
         dismiss(animated: true, completion: nil)
     }
 
-    
     // MARK: - Actions
-    
+
     @IBAction func onCompressImages(_ sender: UISwitch) {
         UserDefaults.standard.set(sender.isOn, forKey: ASCConstants.SettingsKeys.compressImage)
     }
-    
+
     @IBAction func onFilePreview(_ sender: UISwitch) {
         UserDefaults.standard.set(sender.isOn, forKey: ASCConstants.SettingsKeys.previewFiles)
         NotificationCenter.default.post(name: ASCConstants.Notifications.reloadData, object: nil)
     }
-    
 }

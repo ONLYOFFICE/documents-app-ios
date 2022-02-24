@@ -9,16 +9,16 @@
 import Foundation
 
 enum ASCFileProviderType: String, CaseIterable {
-    case unknown        = "ASCFileProviderTypeUnknown"
-    case local          = "ASCFileProviderTypeLocal"
-    case onlyoffice     = "ASCFileProviderTypeOnlyoffice"
-    case webdav         = "ASCFileProviderTypeWebDAV"
-    case nextcloud      = "ASCFileProviderTypeNextcloud"
-    case owncloud       = "ASCFileProviderTypeOwncloud"
-    case yandex         = "ASCFileProviderTypeYandex"
-    case dropbox        = "ASCFileProviderTypeDropbox"
-    case googledrive    = "ASCFileProviderTypeGoogleDrive"
-    case icloud         = "ASCFileProviderTypeiCloud"
-    case onedrive       = "ASCFileProviderTypeOneDrive"
-    case kdrive         = "ASCFileProviderTypeKDrive"
+    case unknown = "ASCFileProviderTypeUnknown"
+    case local = "ASCFileProviderTypeLocal"
+    case onlyoffice = "ASCFileProviderTypeOnlyoffice"
+    case webdav = "ASCFileProviderTypeWebDAV"
+    case nextcloud = "ASCFileProviderTypeNextcloud"
+    case owncloud = "ASCFileProviderTypeOwncloud"
+    case yandex = "ASCFileProviderTypeYandex"
+    case dropbox = "ASCFileProviderTypeDropbox"
+    case googledrive = "ASCFileProviderTypeGoogleDrive"
+    case icloud = "ASCFileProviderTypeiCloud"
+    case onedrive = "ASCFileProviderTypeOneDrive"
+    case kdrive = "ASCFileProviderTypeKDrive"
 }

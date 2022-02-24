@@ -9,7 +9,6 @@
 import MGSwipeTableCell
 
 extension MGSwipeButton {
-
     func horizontalCenterIconOverText(spacing: CGFloat = 3) {
         guard
             let titleLabel = titleLabel,

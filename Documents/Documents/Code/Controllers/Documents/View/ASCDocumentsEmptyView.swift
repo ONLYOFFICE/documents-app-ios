@@ -9,7 +9,6 @@
 import UIKit
 
 class ASCDocumentsEmptyView: UIView {
-
     enum EmptyViewState {
         case `default`, local, trash, cloud, cloudNoPermissions, search, error, networkError
     }
@@ -23,22 +22,24 @@ class ASCDocumentsEmptyView: UIView {
         }
     }
 
-    @IBOutlet weak var imageView: UIImageView!
-    @IBOutlet weak var titleLabel: UILabel!
-    @IBOutlet weak var subtitleLabel: UILabel!
-    @IBOutlet weak var actionButton: ASCButtonStyle!
-    @IBOutlet weak var centerYConstraint: NSLayoutConstraint!
+    @IBOutlet var imageView: UIImageView!
+    @IBOutlet var titleLabel: UILabel!
+    @IBOutlet var subtitleLabel: UILabel!
+    @IBOutlet var actionButton: ASCButtonStyle!
+    @IBOutlet var centerYConstraint: NSLayoutConstraint!
 
     private lazy var effectGroup: UIMotionEffectGroup = {
         let horizontalEffect = UIInterpolatingMotionEffect(
             keyPath: "center.x",
-            type: .tiltAlongHorizontalAxis)
+            type: .tiltAlongHorizontalAxis
+        )
         horizontalEffect.minimumRelativeValue = -16
         horizontalEffect.maximumRelativeValue = 16
 
         let verticalEffect = UIInterpolatingMotionEffect(
             keyPath: "center.y",
-            type: .tiltAlongVerticalAxis)
+            type: .tiltAlongVerticalAxis
+        )
         verticalEffect.minimumRelativeValue = -16
         verticalEffect.maximumRelativeValue = 16
 
@@ -58,7 +59,7 @@ class ASCDocumentsEmptyView: UIView {
             // UIView appear
 
             isUserInteractionEnabled = true
-            
+
             actionButton?.styleType = .action
             actionButton?.setTitleColor(.white, for: .normal)
             actionButton?.addTarget(self, action: #selector(onActionButton), for: .touchUpInside)
@@ -141,5 +142,4 @@ class ASCDocumentsEmptyView: UIView {
             actionButton?.removeFromSuperview()
         }
     }
-
 }

@@ -6,32 +6,31 @@
 //  Copyright © 2021 Ascensio System SIA. All rights reserved.
 //
 
-import Foundation
 import FilesProvider
+import Foundation
 
 class ASCOneDriveFileProvider: OneDriveFileProvider {
-    
-    open override func copy(with zone: NSZone? = nil) -> Any {
-        var serverURL = self.baseURL
+    override open func copy(with zone: NSZone? = nil) -> Any {
+        var serverURL = baseURL
         if serverURL?.lastPathComponent == OneDriveFileProvider.graphVersion {
             serverURL?.deleteLastPathComponent()
         }
-        let copy = OneDriveFileProvider(credential: self.credential, serverURL: serverURL, route: self.route, cache: self.cache)
-        copy.delegate = self.delegate
-        copy.fileOperationDelegate = self.fileOperationDelegate
-        copy.useCache = self.useCache
-        copy.validatingCache = self.validatingCache
+        let copy = OneDriveFileProvider(credential: credential, serverURL: serverURL, route: route, cache: cache)
+        copy.delegate = delegate
+        copy.fileOperationDelegate = fileOperationDelegate
+        copy.useCache = useCache
+        copy.validatingCache = validatingCache
         return copy
     }
-    
-    open override func isReachable(completionHandler: @escaping (_ success: Bool, _ error: Error?) -> Void) {
+
+    override open func isReachable(completionHandler: @escaping (_ success: Bool, _ error: Error?) -> Void) {
         var request = URLRequest(url: url(of: ""))
         request.httpMethod = "Get"
         request.setValue(authentication: credential, with: .oAuth2)
-        let task = session.dataTask(with: request, completionHandler: { (data, response, error) in
+        let task = session.dataTask(with: request, completionHandler: { data, response, error in
             let status = (response as? HTTPURLResponse)?.statusCode ?? 400
             if status >= 400, let code = FileProviderHTTPErrorCode(rawValue: status) {
-                let errorDesc = data.flatMap({ String(data: $0, encoding: .utf8) })
+                let errorDesc = data.flatMap { String(data: $0, encoding: .utf8) }
                 let error = FileProviderOneDriveError(code: code, path: "", serverDescription: errorDesc)
                 completionHandler(false, error)
                 return
@@ -40,7 +39,7 @@ class ASCOneDriveFileProvider: OneDriveFileProvider {
         })
         task.resume()
     }
-    
+
     func pathOfItem(withId itemId: String, completionHandler: @escaping (_ path: String?, _ error: Error?) -> Void) {
         let components = URLComponents(url: url(of: itemId), resolvingAgainstBaseURL: false)
         guard let url = components?.url else {
@@ -48,11 +47,11 @@ class ASCOneDriveFileProvider: OneDriveFileProvider {
             return
         }
         var request = URLRequest(url: url)
-                                          
+
         request.httpMethod = "GET"
-        request.setValue(authentication: self.credential, with: .oAuth2)
-        
-        let task = session.dataTask(with: request, completionHandler: { (data, response, error) in
+        request.setValue(authentication: credential, with: .oAuth2)
+
+        let task = session.dataTask(with: request, completionHandler: { data, response, error in
             var serverError: FileProviderOneDriveError?
             if let response = response as? HTTPURLResponse, response.statusCode >= 400 {
                 let code = FileProviderHTTPErrorCode(rawValue: response.statusCode)
@@ -60,7 +59,7 @@ class ASCOneDriveFileProvider: OneDriveFileProvider {
                 completionHandler(nil, serverError)
                 return
             }
-            
+
             guard let json = self.deserializeJSON(data: data) else {
                 let err = URLError(.badServerResponse, userInfo: ["reason": "deserialization faild"])
                 completionHandler(nil, err)
@@ -79,12 +78,12 @@ class ASCOneDriveFileProvider: OneDriveFileProvider {
         })
         task.resume()
     }
-    
+
     /**
      Returns a `FileObject` containing the attributes of the item (file, directory, symlink, etc.) at the path in question via asynchronous completion handler.
-     
+
      If the directory contains no entries or an error is occured, this method will return the empty `FileObject`.
-     
+
      - Parameters:
      - path: path to target directory. If empty, attributes of root will be returned.
      - completionHandler: a closure with result of directory entries or error.
@@ -98,13 +97,13 @@ class ASCOneDriveFileProvider: OneDriveFileProvider {
             completionHandler(nil, URLError(.badURL))
             return
         }
-        
+
         var request = URLRequest(url: url)
-                                          
+
         request.httpMethod = "GET"
-        request.setValue(authentication: self.credential, with: .oAuth2)
-        
-        let task = session.dataTask(with: request, completionHandler: { (data, response, error) in
+        request.setValue(authentication: credential, with: .oAuth2)
+
+        let task = session.dataTask(with: request, completionHandler: { data, response, error in
             var serverError: FileProviderOneDriveError?
             if let response = response as? HTTPURLResponse, response.statusCode >= 400 {
                 let code = FileProviderHTTPErrorCode(rawValue: response.statusCode)
@@ -112,16 +111,15 @@ class ASCOneDriveFileProvider: OneDriveFileProvider {
                 completionHandler(nil, serverError)
                 return
             }
-            
+
             guard let json = self.deserializeJSON(data: data), let entries = json["value"] as? [Any] else {
                 let err = URLError(.badServerResponse, userInfo: ["reason": "deserialization faild"])
                 completionHandler(nil, err)
                 return
             }
-            
+
             var files = [FileObject]()
             for entry in entries {
-                
                 if let entry = entry as? [String: Any],
                    let name = entry["name"] as? String,
                    let id = entry["id"] as? String
@@ -141,84 +139,83 @@ class ASCOneDriveFileProvider: OneDriveFileProvider {
                         .fileSizeKey: (entry["size"] as? NSNumber)?.int64Value ?? -1,
                     ]
                     let file = FileObject(allValues: allValues)
-                    
+
                     files.append(file)
                 }
             }
-            
+
             guard files.count == 1 else {
                 completionHandler(nil, error)
                 return
             }
-            
+
             completionHandler(files.first, error)
         })
         task.resume()
     }
-    
+
     override func moveItem(path: String, to toPath: String, overwrite: Bool, completionHandler: SimpleCompletionHandler) -> Progress? {
-        return self.moveItem(path: path, to: toPath, overwrite: overwrite, requestData: [:], completionHandler: completionHandler)
+        return moveItem(path: path, to: toPath, overwrite: overwrite, requestData: [:], completionHandler: completionHandler)
     }
-    
-    func moveItem(path: String, to toPath: String, overwrite: Bool,  requestData: [String: Any], completionHandler: SimpleCompletionHandler) -> Progress? {
+
+    func moveItem(path: String, to toPath: String, overwrite: Bool, requestData: [String: Any], completionHandler: SimpleCompletionHandler) -> Progress? {
         let url = super.url(of: path, modifier: "")
-        
+
         var request = URLRequest(url: url)
-        
+
         request.httpMethod = "PATCH"
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
-        request.setValue(authentication: self.credential, with: .oAuth2)
-        
+        request.setValue(authentication: credential, with: .oAuth2)
+
         var requestData = requestData
-        
+
         if !toPath.isEmpty {
             requestData["parentReference"] = toPath.hasPrefix("id")
-                ? ["id"  : toPath.removingPrefix("id:")]
+                ? ["id": toPath.removingPrefix("id:")]
                 : ["path": toPath]
         }
         if overwrite {
             requestData["@microsoft.graph.conflictBehavior"] = "replace"
         }
-        
+
         let jsonData = try? JSONSerialization.data(withJSONObject: requestData)
         request.httpBody = jsonData
-        let task = session.dataTask(with: request, completionHandler: { (data, response, error) in
+        let task = session.dataTask(with: request, completionHandler: { data, response, error in
             completionHandler?(error)
         })
         task.resume()
-        
+
         return nil
     }
-    
+
     override func copyItem(path: String, to toPath: String, overwrite: Bool, completionHandler: SimpleCompletionHandler) -> Progress? {
-        
         let url = super.url(of: path, modifier: "copy")
         var request = URLRequest(url: url)
-        
+
         request.httpMethod = "POST"
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
-        request.setValue(authentication: self.credential, with: .oAuth2)
-        
+        request.setValue(authentication: credential, with: .oAuth2)
+
         var requestData: [String: Any] = [:]
 
         requestData["parentReference"] = toPath.hasPrefix("id")
-            ? ["id"  : toPath.removingPrefix("id:")]
+            ? ["id": toPath.removingPrefix("id:")]
             : ["path": toPath]
-            
+
         if overwrite {
             requestData["@microsoft.graph.conflictBehavior"] = "replace"
         }
-        
+
         let jsonData = try? JSONSerialization.data(withJSONObject: requestData)
         request.httpBody = jsonData
-        let task = session.dataTask(with: request, completionHandler: { (data, response, error) in
+        let task = session.dataTask(with: request, completionHandler: { data, response, error in
             completionHandler?(error)
         })
         task.resume()
-        
+
         return nil
     }
-    
+
     private func deserializeJSON(data: Data?) -> [String: Any]? {
         guard let data = data else {
             return nil
@@ -234,7 +231,7 @@ internal extension URLRequest {
             let base64String = plainData!.base64EncodedString(options: [])
             return base64String
         }
-        
+
         guard let credential = credential else { return }
         switch type {
         case .basic:
@@ -242,18 +239,18 @@ internal extension URLRequest {
             let pass = credential.password ?? ""
             let authStr = "\(user):\(pass)"
             if let base64Auth = authStr.data(using: .utf8)?.base64EncodedString() {
-                self.setValue("Basic \(base64Auth)", forHTTPHeaderField: "Authorization")
+                setValue("Basic \(base64Auth)", forHTTPHeaderField: "Authorization")
             }
         case .digest:
             // handled by RemoteSessionDelegate
             break
         case .oAuth1:
             if let oauth = credential.password {
-                self.setValue("OAuth \(oauth)", forHTTPHeaderField: "Authorization")
+                setValue("OAuth \(oauth)", forHTTPHeaderField: "Authorization")
             }
         case .oAuth2:
             if let bearer = credential.password {
-                self.setValue("Bearer \(bearer)", forHTTPHeaderField: "Authorization")
+                setValue("Bearer \(bearer)", forHTTPHeaderField: "Authorization")
             }
         }
     }

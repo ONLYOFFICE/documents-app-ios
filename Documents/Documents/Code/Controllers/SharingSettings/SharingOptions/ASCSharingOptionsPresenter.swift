@@ -14,13 +14,12 @@ protocol ASCSharingOptionsPresentationLogic {
 
 class ASCSharingOptionsPresenter: ASCSharingOptionsPresentationLogic {
     weak var viewController: ASCSharingOptionsDisplayLogic?
-    
+
     func presentData(response: ASCSharingOptions.Model.Response.ResponseType) {
         switch response {
-        
-        case .presentRightHolders(rightHoldersResponse: let rightHoldersResult):
+        case let .presentRightHolders(rightHoldersResponse: rightHoldersResult):
             switch rightHoldersResult {
-            case .success(let rightHoldersResponse):
+            case let .success(rightHoldersResponse):
                 let sharedInfoItems = rightHoldersResponse.sharedInfoItems
                 let currentUser = rightHoldersResponse.currentUser
                 let isImportant: (OnlyofficeShare) -> Bool = { shareInfo in
@@ -32,11 +31,11 @@ class ASCSharingOptionsPresenter: ASCSharingOptionsPresentationLogic {
                     }
                     return shareInfo.owner || isShareInfoUserIsCurrenUser
                 }
-                
+
                 var imprtantRightHolders: [ASCSharingRightHolderViewModel] = []
                 var otherRightHolders: [ASCSharingRightHolderViewModel] = []
-                
-                sharedInfoItems.forEach({ sharedInfo  in
+
+                sharedInfoItems.forEach { sharedInfo in
                     if let viewModel = makeRightHolderViewModel(fromShareInfo: sharedInfo) {
                         if isImportant(sharedInfo) {
                             imprtantRightHolders.append(viewModel)
@@ -44,22 +43,22 @@ class ASCSharingOptionsPresenter: ASCSharingOptionsPresentationLogic {
                             otherRightHolders.append(viewModel)
                         }
                     }
-                })
+                }
                 viewController?.display(viewModel: .displayRightHolders(.init(internalLink: rightHoldersResponse.internalLink,
                                                                               externalLink: rightHoldersResponse.externalLink,
                                                                               importantRightHolders: imprtantRightHolders,
                                                                               otherRightHolders: otherRightHolders)))
-            case .failure(let error):
+            case let .failure(error):
                 viewController?.display(viewModel: .displayRightHolders(.init(internalLink: nil,
                                                                               externalLink: nil,
                                                                               importantRightHolders: [],
                                                                               otherRightHolders: [])))
                 viewController?.display(viewModel: .displayError(error.localizedDescription))
             }
-        case .presentChangeRightHolderAccess(changeRightHolderResponse: let changeRightHolderResponse):
+        case let .presentChangeRightHolderAccess(changeRightHolderResponse: changeRightHolderResponse):
             viewController?.display(viewModel: .displayChangeRightHolderAccess(.init(rightHolder: changeRightHolderResponse.rightHolder,
                                                                                      error: changeRightHolderResponse.error)))
-        case .presentRemoveRightHolderAccess(removeRightHolderResponse: let removeRightHolderResponse):
+        case let .presentRemoveRightHolderAccess(removeRightHolderResponse: removeRightHolderResponse):
             if removeRightHolderResponse.error == nil {
                 viewController?.display(viewModel: .displayRemoveRightHolderAccess(.init(indexPath: removeRightHolderResponse.indexPath, rightHolderViewModel: nil, error: nil)))
             } else {
@@ -68,10 +67,9 @@ class ASCSharingOptionsPresenter: ASCSharingOptionsPresentationLogic {
                                                                                          rightHolderViewModel: rightHolderViewModel,
                                                                                          error: removeRightHolderResponse.error)))
             }
-            
         }
     }
-    
+
     private func makeRightHolderViewModel(fromShareInfo sharedInfo: OnlyofficeShare) -> ASCSharingRightHolderViewModel? {
         var name = ""
         var id: String?
@@ -87,17 +85,16 @@ class ASCSharingOptionsPresenter: ASCSharingOptionsPresentationLogic {
             name = group.name ?? ""
             rightHolderType = .group
         }
-        
+
         let access = ASCSharingRightHolderViewModelAccess(entityAccess: sharedInfo.access,
-                                                           accessEditable: !sharedInfo.locked && !sharedInfo.owner)
+                                                          accessEditable: !sharedInfo.locked && !sharedInfo.owner)
         guard let unwrapedId = id else { return nil }
         return ASCSharingRightHolderViewModel(id: unwrapedId,
-                                                       avatarUrl: avatarUrl,
-                                                       name: name,
-                                                       department: sharedInfo.user?.department,
-                                                       isOwner: sharedInfo.owner,
-                                                       rightHolderType: rightHolderType ?? .user,
-                                                       access: access)
+                                              avatarUrl: avatarUrl,
+                                              name: name,
+                                              department: sharedInfo.user?.department,
+                                              isOwner: sharedInfo.owner,
+                                              rightHolderType: rightHolderType ?? .user,
+                                              access: access)
     }
-    
 }

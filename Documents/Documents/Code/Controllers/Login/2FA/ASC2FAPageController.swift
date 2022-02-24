@@ -7,7 +7,7 @@
 //
 
 import UIKit
-//import SwiftEntryKit
+// import SwiftEntryKit
 
 class ASC2FAPageController: UIViewController {
     static let identifier = String(describing: ASC2FAPageController.self)
@@ -18,7 +18,7 @@ class ASC2FAPageController: UIViewController {
     var request: OnlyofficeAuthRequest?
     var completeon: ASCSignInComplateHandler?
 
-    @IBOutlet weak var secretField: UITextField!
+    @IBOutlet var secretField: UITextField!
 
     fileprivate lazy var tostCopyView: UIView = {
         let height: CGFloat = 50
@@ -65,14 +65,14 @@ class ASC2FAPageController: UIViewController {
         super.didReceiveMemoryWarning()
     }
 
-    override var supportedInterfaceOrientations : UIInterfaceOrientationMask {
+    override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
         return UIDevice.phone ? .portrait : [.portrait, .landscape]
     }
 
     override var preferredInterfaceOrientationForPresentation: UIInterfaceOrientation {
         return UIDevice.phone ? .portrait : super.preferredInterfaceOrientationForPresentation
     }
-    
+
     // MARK: - Actions
 
     @IBAction func openAuthApp(_ sender: UIButton) {
@@ -94,7 +94,7 @@ class ASC2FAPageController: UIViewController {
         urlComponents.path = "/" + (userName ?? portal ?? appName)
         urlComponents.queryItems = [
             URLQueryItem(name: "secret", value: secret ?? ""),
-            URLQueryItem(name: "issuer", value: "\(appName) - \(portal ?? "")")
+            URLQueryItem(name: "issuer", value: "\(appName) - \(portal ?? "")"),
         ]
 
         do {
@@ -109,6 +109,7 @@ class ASC2FAPageController: UIViewController {
             UIApplication.shared.open(urlGoogleAuth, options: [:], completionHandler: nil)
         }
     }
+
     @IBAction func onCopySecret(_ sender: UIButton) {
         guard
             let field = secretField,

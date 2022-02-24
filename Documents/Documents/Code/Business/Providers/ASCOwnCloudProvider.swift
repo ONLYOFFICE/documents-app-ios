@@ -6,28 +6,23 @@
 //  Copyright © 2018 Ascensio System SIA. All rights reserved.
 //
 
-import UIKit
 import FilesProvider
+import UIKit
 
 class ASCOwnCloudProvider: ASCWebDAVProvider {
-
     // MARK: - Properties
 
     override var type: ASCFileProviderType {
-        get {
-            return .owncloud
-        }
+        return .owncloud
     }
 
     override var rootFolder: ASCFolder {
-        get {
-            return {
-                $0.title = NSLocalizedString("ownCloud", comment: "")
-                $0.rootFolderType = .owncloudAll
-                $0.id = "/"
-                return $0
-            }(ASCFolder())
-        }
+        return {
+            $0.title = NSLocalizedString("ownCloud", comment: "")
+            $0.rootFolderType = .owncloudAll
+            $0.id = "/"
+            return $0
+        }(ASCFolder())
     }
 
     private let webdavEndpoint = "/remote.php/dav/files"
@@ -43,7 +38,8 @@ class ASCOwnCloudProvider: ASCWebDAVProvider {
         var providerUrl = baseURL
 
         if providerUrl.scheme == nil,
-            let fixedUrl = URL(string: "https://\(providerUrl.absoluteString)") {
+           let fixedUrl = URL(string: "https://\(providerUrl.absoluteString)")
+        {
             providerUrl = fixedUrl
         }
 
@@ -60,13 +56,13 @@ class ASCOwnCloudProvider: ASCWebDAVProvider {
 
     override func copy() -> ASCFileProviderProtocol {
         let copy = ASCOwnCloudProvider()
-        
+
         copy.items = items
         copy.page = page
         copy.total = total
         copy.delegate = delegate
         copy.deserialize(serialize() ?? "")
-        
+
         return copy
     }
 
@@ -99,25 +95,25 @@ class ASCOwnCloudProvider: ASCWebDAVProvider {
             }
         }
     }
-    
-    override func isReachable(with info: [String : Any], complation: @escaping ((Bool, ASCFileProviderProtocol?) -> Void)) {
+
+    override func isReachable(with info: [String: Any], complation: @escaping ((Bool, ASCFileProviderProtocol?) -> Void)) {
         guard
             let portal = info["url"] as? String,
             let login = info["login"] as? String,
             let password = info["password"] as? String,
             let portalUrl = URL(string: portal)
-            else {
-                complation(false, nil)
-                return
+        else {
+            complation(false, nil)
+            return
         }
 
         let credential = URLCredential(user: login, password: password, persistence: .permanent)
         let ownCloudProvider = ASCOwnCloudProvider(baseURL: portalUrl, credential: credential)
 
         ownCloudProvider.isReachable { success, error in
-            DispatchQueue.main.async(execute: {
+            DispatchQueue.main.async {
                 complation(success, success ? ownCloudProvider : nil)
-            })
+            }
         }
     }
 

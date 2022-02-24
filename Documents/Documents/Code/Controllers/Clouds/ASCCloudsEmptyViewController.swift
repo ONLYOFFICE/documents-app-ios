@@ -13,9 +13,8 @@ class ASCCloudsEmptyViewController: ASCBaseViewController {
 
     // MARK: - Properties
 
-    @IBOutlet weak var subtitleLabel: UILabel!
+    @IBOutlet var subtitleLabel: UILabel!
     @IBOutlet var cloudButtons: [UIButton]!
-
 
     var onAddService: ((_ type: ASCFileProviderType) -> Void)?
 
@@ -32,12 +31,11 @@ class ASCCloudsEmptyViewController: ASCBaseViewController {
                 }
             }
         }
-
     }
 
     @IBAction func onConnectService(_ sender: UIButton) {
         if let restorationIdentifier = sender.restorationIdentifier,
-            let providerType = ASCFileProviderType(rawValue: restorationIdentifier)
+           let providerType = ASCFileProviderType(rawValue: restorationIdentifier)
         {
             onAddService?(providerType)
         }

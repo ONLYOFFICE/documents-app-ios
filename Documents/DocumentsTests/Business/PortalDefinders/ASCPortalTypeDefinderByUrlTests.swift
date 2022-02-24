@@ -6,11 +6,10 @@
 //  Copyright © 2021 Ascensio System SIA. All rights reserved.
 //
 
-import XCTest
 @testable import Documents
+import XCTest
 
 class ASCPortalTypeDefinderByUrlTests: XCTestCase {
-    
     var sut: ASCPortalTypeDefinderByUrl!
 
     override func setUpWithError() throws {
@@ -27,15 +26,14 @@ class ASCPortalTypeDefinderByUrlTests: XCTestCase {
         sut.url = URL(string: "https://foo.com/bar/baz")
         XCTAssertEqual(sut.definePortalType(), .unknown)
     }
-    
+
     func testWhenPersonalOfficeReturnsPersonal() {
         sut.url = URL(string: "https://personal.onlyoffice.com/bar/baz")
         XCTAssertEqual(sut.definePortalType(), .personal)
     }
-    
+
     func testWhenPersonalTestReturnsPersonal() {
         sut.url = URL(string: "http://personal.teamlab.info/bar/baz")
         XCTAssertEqual(sut.definePortalType(), .personal)
     }
-
 }

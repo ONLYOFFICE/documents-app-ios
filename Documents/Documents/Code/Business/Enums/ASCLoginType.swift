@@ -10,14 +10,14 @@ import Foundation
 
 enum ASCLoginType: String, CaseIterable {
     case undefined = ""
-    case email = "email"
-    case facebook = "facebook"
-    case google = "google"
-    case twitter = "twitter"
-    case linkedin = "linkedin"
-    case openid = "openid"
-    case box = "box"
-    case sso = "sso"
+    case email
+    case facebook
+    case google
+    case twitter
+    case linkedin
+    case openid
+    case box
+    case sso
 
     init() {
         self = .undefined

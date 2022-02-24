@@ -10,7 +10,6 @@ import Foundation
 import MGSwipeTableCell
 
 class ASCStyles {
-
     static let initialize: Void = {
         // Appearances
 //        UINavigationBar.appearance().titleTextAttributes = [
@@ -28,11 +27,11 @@ class ASCStyles {
     }()
 
     static func decorate(menu buttons: [MGSwipeButton]) -> [MGSwipeButton] {
-        buttons.forEach({ button in
+        buttons.forEach { button in
             button.buttonWidth = 75
             button.titleLabel?.font = UIFont.systemFont(ofSize: 13)
             button.centerIconOverText()
-        })
+        }
 
         return buttons
     }
@@ -55,10 +54,9 @@ class ASCStyles {
     static func createBarButton(title: String, target: Any?, action: Selector) -> UIBarButtonItem {
         return UIBarButtonItem(title: title, style: .plain, target: target, action: action)
     }
-    
+
     @available(iOS 14.0, *)
     static func createBarButton(title: String, menu: UIMenu?) -> UIBarButtonItem {
         return UIBarButtonItem(title: title, image: nil, primaryAction: nil, menu: menu)
     }
-
 }

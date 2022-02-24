@@ -42,8 +42,12 @@ class ASCSharingOptionsViewController: ASCBaseTableViewController {
 
     private lazy var accessViewController = ASCSharingSettingsAccessViewController()
 
-    override init(style: UITableView.Style = .grouped) {
-        super.init(style: style)
+    init() {
+        if #available(iOS 13.0, *) {
+            super.init(style: .insetGrouped)
+        } else {
+            super.init(style: .grouped)
+        }
     }
 
     @available(*, unavailable)

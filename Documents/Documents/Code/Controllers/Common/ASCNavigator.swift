@@ -80,7 +80,7 @@ final class ASCNavigator {
         case .sort:
             return ASCSortViewController.instance()
         case let .shareSettings(entity):
-            return ASCSharingOptionsViewController(style: .grouped)
+            return ASCSharingOptionsViewController()
         case .onlyofficeConnectPortal:
             return ASCConnectPortalViewController.instance()
         case let .onlyofficeSignIn(portal):

@@ -17,7 +17,7 @@ class ASCAccessRowTableViewCell: UITableViewCell, ASCReusedIdentifierProtocol {
         }
     }
 
-    var hSpacing: CGFloat = 16
+    private var hSpacing: CGFloat = 16
     private lazy var title = UILabel()
 
     private lazy var access = UIImageView()
@@ -31,8 +31,10 @@ class ASCAccessRowTableViewCell: UITableViewCell, ASCReusedIdentifierProtocol {
 
         title.text = viewModel.title
         access.image = viewModel.access.image()
-        title.translatesAutoresizingMaskIntoConstraints = false
-        access.translatesAutoresizingMaskIntoConstraints = false
+
+        if #available(iOS 13.0, *) {
+            access.image = access.image?.withTintColor(.lightGray)
+        }
 
         contentView.addSubview(title)
         contentView.addSubview(access)
@@ -40,11 +42,7 @@ class ASCAccessRowTableViewCell: UITableViewCell, ASCReusedIdentifierProtocol {
         title.anchorCenterYToSuperview()
         access.anchorCenterYToSuperview()
 
-        NSLayoutConstraint.activate([
-            title.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: hSpacing),
-            title.trailingAnchor.constraint(equalTo: access.leadingAnchor, constant: -hSpacing),
-
-            access.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -12),
-        ])
+        title.anchor(left: contentView.leftAnchor, right: access.leftAnchor, leftConstant: hSpacing)
+        access.anchor(right: contentView.rightAnchor, rightConstant: 5)
     }
 }

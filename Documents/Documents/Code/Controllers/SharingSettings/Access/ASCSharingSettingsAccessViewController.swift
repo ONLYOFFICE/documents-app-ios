@@ -82,6 +82,11 @@ extension ASCSharingSettingsAccessViewController {
         cell.textLabel?.text = access.title()
         cell.accessoryType = access == viewModel?.currentlyAccess ? .checkmark : .none
         cell.selectionStyle = .none
+
+        if #available(iOS 13.0, *) {
+            cell.imageView?.image = cell.imageView?.image?.withTintColor(.lightGray)
+        }
+
         return cell
     }
 

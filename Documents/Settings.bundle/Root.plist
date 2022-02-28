@@ -6,7 +6,11 @@
 	<array>
 		<dict>
 			<key>DefaultValue</key>
+<<<<<<< HEAD
+			<string>7.0.1 (764)</string>
+=======
 			<string>7.1 (765)</string>
+>>>>>>> release/v7.1.0
 			<key>Key</key>
 			<string>version_preference</string>
 			<key>Title</key>

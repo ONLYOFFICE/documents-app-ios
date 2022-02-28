@@ -1,5 +1,5 @@
 /* Class = "UINavigationItem"; title = "About"; ObjectID = "0DJ-uV-iju"; */
-"0DJ-uV-iju.title" = "Sobre";
+"0DJ-uV-iju.title" = "Acerca de";
 
 /* Class = "UILabel"; text = "None"; ObjectID = "1kc-cf-XDc"; */
 "1kc-cf-XDc.text" = "Ninguno";
@@ -29,19 +29,19 @@
 "cl6-b0-Mjh.text" = "Política de Privacidad";
 
 /* Class = "UILabel"; text = "Rate App"; ObjectID = "CUM-1F-5Be"; */
-"CUM-1F-5Be.text" = "Evaluar aplicación";
+"CUM-1F-5Be.text" = "Calificar aplicación";
 
 /* Class = "UITableViewSection"; headerTitle = "Information"; ObjectID = "ESd-H3-Pfh"; */
 "ESd-H3-Pfh.headerTitle" = "Información";
 
 /* Class = "UILabel"; text = "Tell a Friend"; ObjectID = "GqQ-Bv-Deg"; */
-"GqQ-Bv-Deg.text" = "Cuéntale a un amigo";
+"GqQ-Bv-Deg.text" = "Cuéntele a un amigo";
 
 /* Class = "UILabel"; text = "Passcode Lock"; ObjectID = "i2P-F4-EhP"; */
 "i2P-F4-EhP.text" = "Bloqueo de contraseña";
 
 /* Class = "UILabel"; text = "About"; ObjectID = "IS2-tT-Q4G"; */
-"IS2-tT-Q4G.text" = "Sobre ONLYOFFICE";
+"IS2-tT-Q4G.text" = "Acerca de ONLYOFFICE";
 
 /* Class = "UILabel"; text = "© Ascensio System SIA"; ObjectID = "lEo-YM-MnB"; */
 "lEo-YM-MnB.text" = "© Ascensio System SIA";
@@ -56,7 +56,7 @@
 "OKJ-3w-yJd.title" = "Ajustes";
 
 /* Class = "UILabel"; text = "Terms of Service"; ObjectID = "PDj-N7-sjJ"; */
-"PDj-N7-sjJ.text" = "Acuerdo de usuario";
+"PDj-N7-sjJ.text" = "Términos del servicio";
 
 /* Class = "UILabel"; text = "Support"; ObjectID = "raN-Fz-DnL"; */
 "raN-Fz-DnL.text" = "Soporte";

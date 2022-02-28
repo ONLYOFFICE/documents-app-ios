@@ -1740,7 +1740,7 @@ class ASCEditorManager: NSObject, DEEditorDelegate, SEEditorDelegate, PEEditorDe
 
         return [
             "asc.de.external.appname": ASCConstants.Name.appNameShort,
-//            "asc.de.external.helpurl": "http://helpcenter.onlyoffice.com/%@%@mobile-applications/documents/document-editor/index.aspx",
+            "asc.de.external.helpurl": "https://helpcenter.onlyoffice.com/%@%@mobile-applications/documents/document-editor/index.aspx",
             "asc.de.external.page.formats": [
                 [
                     "description": "A6",
@@ -2035,7 +2035,7 @@ class ASCEditorManager: NSObject, DEEditorDelegate, SEEditorDelegate, PEEditorDe
         let shortCm = NSLocalizedString("cm", comment: "Cut from centimeters")
         return [
             "asc.se.external.appname": ASCConstants.Name.appNameShort,
-//            "asc.se.external.helpurl": "http://helpcenter.onlyoffice.com/%@%@mobile-applications/documents/spreadsheet-editor/index.aspx",
+            "asc.se.external.helpurl": "https://helpcenter.onlyoffice.com/%@%@mobile-applications/documents/spreadsheet-editor/index.aspx",
             "asc.se.external.page.formats": [
                 [
                     "width": 105,
@@ -2324,7 +2324,7 @@ class ASCEditorManager: NSObject, DEEditorDelegate, SEEditorDelegate, PEEditorDe
 
         return [
             "asc.pe.external.appname": ASCConstants.Name.appNameShort,
-//            "asc.pe.external.helpurl": "http://helpcenter.onlyoffice.com/%@%@mobile-applications/documents/presentation-editor/index.aspx"
+            "asc.pe.external.helpurl": "https://helpcenter.onlyoffice.com/%@%@mobile-applications/documents/presentation-editor/index.aspx"
         ]
     }
 

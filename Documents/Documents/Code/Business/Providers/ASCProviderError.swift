@@ -44,7 +44,7 @@ class ASCProviderError: LocalizedError, CustomStringConvertible {
             case .copyFileFail:
                 msg = NSLocalizedString("Could not copy file", comment: "Description of file operation error")
             case .attributesChangeFail:
-                msg = NSLocalizedString("Could not change file attrubutes", comment: "Description of file operation error")
+                msg = NSLocalizedString("Could not change file attributes", comment: "Description of file operation error")
             }
         } else {
             msg = error.localizedDescription

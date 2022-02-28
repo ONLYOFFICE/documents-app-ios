@@ -20,7 +20,7 @@
 "KNc-kE-PIF.title" = "Conectar almacenamiento";
 
 /* Class = "UITableViewSection"; footerTitle = "You can connect the following accounts to the ONLYOFFICE™ Documents."; ObjectID = "muA-mV-bS6"; */
-"muA-mV-bS6.footerTitle" = "Usted puede conectar las cuentas siguientes al ONLYOFFICE™ Documentos.";
+"muA-mV-bS6.footerTitle" = "Usted puede conectar las cuentas siguientes a ONLYOFFICE™ Documents.";
 
 /* Class = "UITextField"; placeholder = "example.com"; ObjectID = "njA-lI-fvY"; */
 "njA-lI-fvY.placeholder" = "ejemplo.com";

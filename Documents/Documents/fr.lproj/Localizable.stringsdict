@@ -21,7 +21,7 @@
 	<key>%lu File selected</key>
 	<dict>
 		<key>NSStringLocalizedFormatKey</key>
-		<string>%#@files@</string>
+		<string>%#@fichiers@</string>
 		<key>files</key>
 		<dict>
 			<key>NSStringFormatSpecTypeKey</key>
@@ -37,7 +37,7 @@
 	<key>%lu Folder and %lu File selected</key>
 	<dict>
 		<key>NSStringLocalizedFormatKey</key>
-		<string>%1$#@lu_folders@</string>
+		<string>%1$#@lu_dossiers@</string>
 		<key>lu_files</key>
 		<dict>
 			<key>NSStringFormatSpecTypeKey</key>
@@ -56,17 +56,17 @@
 			<key>NSStringFormatValueTypeKey</key>
 			<string>lu</string>
 			<key>one</key>
-			<string>%lu dossier %2$#@lu_files@</string>
+			<string>%lu dossier %2$#@lu_fichiers@</string>
 			<key>other</key>
-			<string>%lu dossiers %2$#@lu_files@</string>
+			<string>%lu dossiers %2$#@lu_fichiers@</string>
 			<key>zero</key>
-			<string>%2$#@lu_files@</string>
+			<string>%2$#@lu_fichiers@</string>
 		</dict>
 	</dict>
 	<key>%lu Folder selected</key>
 	<dict>
 		<key>NSStringLocalizedFormatKey</key>
-		<string>%#@folders@</string>
+		<string>%#@dossiers@</string>
 		<key>folders</key>
 		<dict>
 			<key>NSStringFormatSpecTypeKey</key>
@@ -82,7 +82,7 @@
 	<key>Delete %lu File</key>
 	<dict>
 		<key>NSStringLocalizedFormatKey</key>
-		<string>%#@files@</string>
+		<string>%#@fichiers@</string>
 		<key>files</key>
 		<dict>
 			<key>NSStringFormatSpecTypeKey</key>
@@ -98,7 +98,7 @@
 	<key>Delete %lu Folder</key>
 	<dict>
 		<key>NSStringLocalizedFormatKey</key>
-		<string>%#@folders@</string>
+		<string>%#@dossiers@</string>
 		<key>folders</key>
 		<dict>
 			<key>NSStringFormatSpecTypeKey</key>
@@ -114,7 +114,7 @@
 	<key>Delete %lu Folder and %lu File</key>
 	<dict>
 		<key>NSStringLocalizedFormatKey</key>
-		<string>%1$#@lu_folders@</string>
+		<string>%1$#@lu_dossiers@</string>
 		<key>lu_files</key>
 		<dict>
 			<key>NSStringFormatSpecTypeKey</key>
@@ -139,7 +139,7 @@
 			<key>other</key>
 			<string>Supprimer %lu dossiers %2$#@lu_files@</string>
 			<key>zero</key>
-			<string>Supprimer %2$#@lu_files@</string>
+			<string>Supprimer %2$#@lu_fichiers@</string>
 		</dict>
 	</dict>
 </dict>

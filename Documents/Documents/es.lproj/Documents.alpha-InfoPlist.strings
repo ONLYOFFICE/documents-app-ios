@@ -2,10 +2,10 @@
 "CFBundleName" = "Documents-Alfa";
 
 /* (No Comment) */
-"New Document" = "Nuevo Documento";
+"New Document" = "Nuevo documento";
 
 /* (No Comment) */
-"New Presentation" = "Presentación nueva";
+"New Presentation" = "Nueva presentación";
 
 /* (No Comment) */
 "New Spreadsheet" = "Nueva hoja de cálculo";
@@ -20,8 +20,14 @@
 "NSLocalNetworkUsageDescription" = "Se requiere acceso a la red";
 
 /* Privacy - Photo Library Additions Usage Description */
-"NSPhotoLibraryAddUsageDescription" = "Esta aplicación requiere acceso a la biblioteca de fotos para que puedas cargar fotos en la aplicación.";
+"NSPhotoLibraryAddUsageDescription" = "Esta aplicación requiere acceso a la biblioteca de fotos para que puedas cargar fotos en la aplicación.";
 
 /* Privacy - Photo Library Usage Description */
 "NSPhotoLibraryUsageDescription" = "Esta aplicación requiere acceso a la biblioteca de fotos para que puedas cargar fotos en la aplicación.";
+
+/* (No Comment) */
+"ONLYOFFICE fillable form (.oform)" = "Formulario rellenable de ONLYOFFICE (.oform)";
+
+/* (No Comment) */
+"ONLYOFFICE form template (.docxf)" = "Plantilla de formulario de ONLYOFFICE (.docxf)";
 

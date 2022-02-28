@@ -32,7 +32,7 @@
 "AqJ-b9-XQV.normalTitle" = "Continuer";
 
 /* Class = "UILabel"; text = "Set up an application to generate the authentication codes"; ObjectID = "B8R-KD-Lml"; */
-"B8R-KD-Lml.text" = "Paramétrer l'application pour générer les codes d'authentification\n";
+"B8R-KD-Lml.text" = "Configurez une application pour générer les codes d'authentification";
 
 /* Class = "UILabel"; text = "Password recovery"; ObjectID = "bLE-8U-AOX"; */
 "bLE-8U-AOX.text" = "Récupération de mot de passe";
@@ -59,10 +59,10 @@
 "Fso-pj-304.text" = "Adresse";
 
 /* Class = "UIButton"; normalTitle = "Create cloud"; ObjectID = "G99-FE-uk4"; */
-"G99-FE-uk4.normalTitle" = "Créer cloud";
+"G99-FE-uk4.normalTitle" = "Créer un cloud";
 
 /* Class = "UILabel"; text = "Connect to your ONLYOFFICE cloud to store files online and collaborate on documents in real time"; ObjectID = "GFx-Ry-9GC"; */
-"GFx-Ry-9GC.text" = "Se connecter à votre ONLYOFFICE cloud pour stocker les fichiers en ligne et collaborer sur des documents en temps réel";
+"GFx-Ry-9GC.text" = "Connectez-vous à votre ONLYOFFICE cloud pour stocker les fichiers en ligne et collaborer sur les documents en temps réel";
 
 /* Class = "UILabel"; text = "Select an account to sign in"; ObjectID = "Gkv-tP-6EM"; */
 "Gkv-tP-6EM.text" = "Sélectionnez un compte pour vous connecter";
@@ -80,7 +80,7 @@
 "LwV-Os-V4m.text" = "Lancez l'application Google Authenticator";
 
 /* Class = "UILabel"; text = "Please enter the email you used while registering on the portal. The password recovery instructions will be send to that email address."; ObjectID = "Mbh-dU-7po"; */
-"Mbh-dU-7po.text" = "Veuillez saisir l'adresse électronique que vous avez utilisée lors de votre inscription sur le portail. Les instructions de récupération du mot de passe seront envoyées à cette adresse.";
+"Mbh-dU-7po.text" = "Veuillez saisir l'e-mail que vous avez utilisé lors de votre inscription sur le portail. Les instructions de récupération du mot de passe seront envoyées à cet e-mail.";
 
 /* Class = "UILabel"; text = "Enter a phone number that can be used to verify your identity"; ObjectID = "MNA-z2-ITx"; */
 "MNA-z2-ITx.text" = "Saisissez un numéro de téléphone qui peut être utilisé pour vérifier votre identité";
@@ -92,7 +92,7 @@
 "NBg-dA-b3o.title" = "Pays";
 
 /* Class = "UIButton"; normalTitle = "Back to login"; ObjectID = "OHG-hv-GGj"; */
-"OHG-hv-GGj.normalTitle" = "Retour connexion";
+"OHG-hv-GGj.normalTitle" = "Retour à la page de connexion";
 
 /* Class = "UITextField"; placeholder = "Code"; ObjectID = "OnI-QD-xeI"; */
 "OnI-QD-xeI.placeholder" = "Code";
@@ -116,7 +116,7 @@
 "SH2-Fd-5Ze.text" = "Ouvrez l'application d'authentication et copiez le code de l'appli";
 
 /* Class = "UILabel"; text = "Login via"; ObjectID = "szM-hs-ncG"; */
-"szM-hs-ncG.text" = "Connectez-vous via";
+"szM-hs-ncG.text" = "Connexion via";
 
 /* Class = "UITextField"; placeholder = "Secret"; ObjectID = "tnK-je-flS"; */
 "tnK-je-flS.placeholder" = "Secret";
@@ -131,7 +131,7 @@
 "vgV-fF-jOl.text" = "Copiez le code généré par l'application Google Authenticator et insérez-le dans le champ correspondant";
 
 /* Class = "UILabel"; text = "Please set up an application to generate the codes for the portal access (e.g. Google Authenticator) to continue the work at the portal"; ObjectID = "vlQ-jV-iFo"; */
-"vlQ-jV-iFo.text" = "Veuillez créer une application pour générer les codes d'accès au portail (par ex. Google Authenticator) afin de poursuivre le travail sur le portail.";
+"vlQ-jV-iFo.text" = "Veuillez configurer une application pour générer les codes d'accès au portail (par exemple Google Authenticator) afin de poursuivre le travail sur le portail";
 
 /* Class = "UITextField"; placeholder = "Your phone number"; ObjectID = "w2U-Ci-R7v"; */
 "w2U-Ci-R7v.placeholder" = "Votre numéro de téléphone";

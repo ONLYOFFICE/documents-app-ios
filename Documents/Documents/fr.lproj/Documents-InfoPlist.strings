@@ -11,17 +11,20 @@
 "New Presentation" = "Nouvelle présentation";
 
 /* (No Comment) */
-"New Spreadsheet" = "Nouveau tableur";
+"New Spreadsheet" = "Nouveau classeur";
 
 /* Privacy - Camera Usage Description */
-"NSCameraUsageDescription" = "Cette application demande  l'accès au caméra pour que vous puissiez prendre des photos.";
+"NSCameraUsageDescription" = "Cette application nécessite un accès à l'appareil photo, afin que vous puissiez prendre des photos et les charger dans l'application.";
 
 /* Privacy - Face ID Usage Description */
 "NSFaceIDUsageDescription" = "Cette application demande un accès à Face ID pour que vous puissiez vous connecter via la reconnaissance de visage.";
 
 /* Privacy - Photo Library Additions Usage Description */
-"NSPhotoLibraryAddUsageDescription" = "Cette application demande l'accès à la Galerie photo pour que vous puissiez télécharger vos photos dans l'application.";
+"NSPhotoLibraryAddUsageDescription" = "Cette application nécessite un accès à la galerie de photos, afin que vous puissiez charger vos photos dans l'application.";
 
 /* Privacy - Photo Library Usage Description */
-"NSPhotoLibraryUsageDescription" = "Cette application demande l'accès à la galérie pour que vous puissiez charger vos photos dans l'application";
+"NSPhotoLibraryUsageDescription" = "Cette application nécessite un accès à la galerie de photos, afin que vous puissiez charger vos photos dans l'application.";
+
+/* (No Comment) */
+"ONLYOFFICE form template (.docxf)" = "Modèle de formulaire ONLYOFFICE (.docxf)";
 

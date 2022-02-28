@@ -398,7 +398,7 @@
 				<string>public.data</string>
 			</array>
 			<key>UTTypeDescription</key>
-			<string>ONLYOFFICE Fill Form document (.oform)</string>
+			<string>ONLYOFFICE fillable form (.oform)</string>
 			<key>UTTypeIconFiles</key>
 			<array/>
 			<key>UTTypeIdentifier</key>
@@ -417,7 +417,7 @@
 				<string>public.data</string>
 			</array>
 			<key>UTTypeDescription</key>
-			<string>ONLYOFFICE Edit Form document (.docxf)</string>
+			<string>ONLYOFFICE form template (.docxf)</string>
 			<key>UTTypeIconFiles</key>
 			<array/>
 			<key>UTTypeIdentifier</key>
@@ -439,7 +439,7 @@
 				<string>public.data</string>
 			</array>
 			<key>UTTypeDescription</key>
-			<string>ONLYOFFICE Fill Form document (.oform)</string>
+			<string>ONLYOFFICE fillable form (.oform)</string>
 			<key>UTTypeIconFiles</key>
 			<array/>
 			<key>UTTypeIdentifier</key>
@@ -458,7 +458,7 @@
 				<string>public.data</string>
 			</array>
 			<key>UTTypeDescription</key>
-			<string>ONLYOFFICE Edit Form document (.docxf)</string>
+			<string>ONLYOFFICE form template (.docxf)</string>
 			<key>UTTypeIconFiles</key>
 			<array/>
 			<key>UTTypeIdentifier</key>

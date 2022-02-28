@@ -1,18 +1,18 @@
 /* Class = "UILabel"; text = "Loading..."; ObjectID = "9YY-0H-nww"; */
-"9YY-0H-nww.text" = "Loading...";
+"9YY-0H-nww.text" = "正在加载。。。";
 
 /* Class = "UIBarButtonItem"; title = "Copy here"; ObjectID = "fep-T1-W9m"; */
-"fep-T1-W9m.title" = "Copy here";
+"fep-T1-W9m.title" = "在此复制";
 
 /* Class = "UILabel"; text = "Folder"; ObjectID = "lcP-TZ-iV7"; */
-"lcP-TZ-iV7.text" = "Folder";
+"lcP-TZ-iV7.text" = "文件夹";
 
 /* Class = "UILabel"; text = "No subfolders"; ObjectID = "POc-L2-pZq"; */
-"POc-L2-pZq.text" = "No subfolders";
+"POc-L2-pZq.text" = "没有子文件夹";
 
 /* Class = "UINavigationItem"; prompt = "Move items to the selected folder"; ObjectID = "xZh-ES-1Gb"; */
-"xZh-ES-1Gb.prompt" = "Move items to the selected folder";
+"xZh-ES-1Gb.prompt" = "将项目移至选定的文件夹";
 
 /* Class = "UINavigationItem"; title = "Root Folders"; ObjectID = "xZh-ES-1Gb"; */
-"xZh-ES-1Gb.title" = "Root Folders";
+"xZh-ES-1Gb.title" = "根文件夹";
 

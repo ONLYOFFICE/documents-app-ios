@@ -227,7 +227,7 @@
 "Copying" = "Копирование";
 
 /* Description of file operation error */
-"Could not change file attrubutes" = "Не удалось изменить атрибуты файла";
+"Could not change file attributes" = "Не удалось изменить атрибуты файла";
 
 /* Description of file operation error */
 "Could not change the directory" = "Не удалось изменить каталог";

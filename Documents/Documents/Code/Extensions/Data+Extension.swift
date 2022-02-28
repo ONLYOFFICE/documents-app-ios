@@ -9,7 +9,6 @@
 import Foundation
 
 extension Data {
-
     /// String by encoding Data using the given encoding (if applicable).
     ///
     /// - Parameter encoding: encoding.
@@ -17,7 +16,7 @@ extension Data {
     func string(encoding: String.Encoding) -> String? {
         return String(data: self, encoding: encoding)
     }
-    
+
     init?(base64URLEncoded string: String) {
         let base64Encoded = string
             .replacingOccurrences(of: "_", with: "/")
@@ -30,7 +29,7 @@ extension Data {
 
     func base64URLEncodedString() -> String {
         // use URL safe encoding and remove padding
-        return self.base64EncodedString()
+        return base64EncodedString()
             .replacingOccurrences(of: "/", with: "_")
             .replacingOccurrences(of: "+", with: "-")
             .replacingOccurrences(of: "=", with: "")

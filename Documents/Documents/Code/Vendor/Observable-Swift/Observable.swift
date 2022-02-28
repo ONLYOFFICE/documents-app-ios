@@ -20,17 +20,16 @@ public struct ValueChange<T> {
 
 /// A struct representing an observable value.
 public struct Observable<T>: UnownableObservable {
-    
     public typealias ValueType = T
 
     public private(set) var beforeChange = EventReference<ValueChange<T>>()
     public private(set) var afterChange = EventReference<ValueChange<T>>()
-    
-    public var value : T {
+
+    public var value: T {
         willSet { beforeChange.notify(ValueChange(value, newValue)) }
         didSet { afterChange.notify(ValueChange(oldValue, value)) }
     }
-    
+
     public mutating func unshare(removeSubscriptions: Bool) {
         if removeSubscriptions {
             beforeChange = EventReference<ValueChange<T>>()
@@ -45,7 +44,7 @@ public struct Observable<T>: UnownableObservable {
         }
     }
 
-    public init(_ v : T) {
+    public init(_ v: T) {
         value = v
     }
 }

@@ -12,23 +12,21 @@ protocol ASCSharingAddRightHoldersRoutingLogic {
     func routeToVerifyRightHoldersViewController(segue: UIStoryboardSegue?)
 }
 
-protocol ASCSharingAddRightHoldersDataPassing
-{
+protocol ASCSharingAddRightHoldersDataPassing {
     var dataStore: ASCSharingAddRightHoldersDataStore? { get }
 }
 
-
 class ASCSharingAddRightHoldersRouter: NSObject, ASCSharingAddRightHoldersRoutingLogic, ASCSharingAddRightHoldersDataPassing {
-    
     var dataStore: ASCSharingAddRightHoldersDataStore?
-    
+
     weak var viewController: ASCSharingAddRightHoldersViewController?
     var verifyRightHoldersViewController: ASCSharingSettingsVerifyRightHoldersViewController?
-    
+
     // MARK: Routing
+
     func routeToVerifyRightHoldersViewController(segue: UIStoryboardSegue?) {
         let isDestinationAlreadyInit = verifyRightHoldersViewController != nil
-        
+
         if isDestinationAlreadyInit {
             verifyRightHoldersViewController?.reset()
         } else {
@@ -40,20 +38,19 @@ class ASCSharingAddRightHoldersRouter: NSObject, ASCSharingAddRightHoldersRoutin
             let sourceDataStore = dataStore,
             var destinationDataStore = destinationViewController.router?.dataStore
         else { return }
-        
+
         passDataToAddRightHoldersViewController(source: sourceDataStore, destination: &destinationDataStore)
         navigateToVerifyRightHoldersViewController(source: viewController, destination: destinationViewController)
         if isDestinationAlreadyInit {
             destinationViewController.load()
         }
     }
-    
+
     private func navigateToVerifyRightHoldersViewController(source: ASCSharingAddRightHoldersViewController, destination: ASCSharingSettingsVerifyRightHoldersViewController) {
         source.navigationController?.pushViewController(destination, animated: true)
     }
-    
+
     private func passDataToAddRightHoldersViewController(source: ASCSharingAddRightHoldersDataStore, destination: inout ASCSharingSettingsVerifyRightHoldersDataStore) {
-        
         destination.clearData()
         destination.sharedInfoItems = source.sharedInfoItems
         destination.itemsForSharingAdd = source.itemsForSharingAdd

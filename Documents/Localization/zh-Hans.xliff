@@ -907,6 +907,10 @@ Note: if you forget the passcode, you'll need to delete and reinstall the app. A
         <target>-</target>
         <note>Class = "UILabel"; text = "-"; ObjectID = "9Yi-42-22H"; Note = "Do not translate";</note>
       </trans-unit>
+      <trans-unit id="708-fR-i2H.text" xml:space="preserve">
+        <source>Delete account</source>
+        <note>Class = "UILabel"; text = "Delete account"; ObjectID = "708-fR-i2H";</note>
+      </trans-unit>
       <trans-unit id="BXA-IE-d8z.title" xml:space="preserve">
         <source>Account</source>
         <target>帐户</target>
@@ -2104,6 +2108,10 @@ others which use WebDAV protocol.</source>
         <target>门户地址不正确</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
+      <trans-unit id="Instructions had been sent to your email" xml:space="preserve">
+        <source>Instructions had been sent to your email</source>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
       <trans-unit id="Invalid Country Code" xml:space="preserve">
         <source>Invalid Country Code</source>
         <target>国家代码无效</target>
@@ -2699,6 +2707,14 @@ to the clipboard</source>
         <target>选择访问权</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
+      <trans-unit id="Send" xml:space="preserve">
+        <source>Send</source>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Send the profile deletion instructions to the email address %@?" xml:space="preserve">
+        <source>Send the profile deletion instructions to the email address %@?</source>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
       <trans-unit id="Sending" xml:space="preserve">
         <source>Sending</source>
         <target>正在发送</target>
@@ -2813,6 +2829,10 @@ to the clipboard</source>
         <source>Tb</source>
         <target>Tb</target>
         <note>Data units</note>
+      </trans-unit>
+      <trans-unit id="Terminate account" xml:space="preserve">
+        <source>Terminate account</source>
+        <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Terms of Service" xml:space="preserve">
         <source>Terms of Service</source>

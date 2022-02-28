@@ -14,37 +14,34 @@ protocol ASCSharingSettingsVerifyRightHoldersViewDelegate: AnyObject {
 }
 
 class ASCSharingSettingsVerifyRightHoldersView {
-    
     weak var view: UIView!
     weak var tableView: UITableView!
     weak var navigationController: UINavigationController?
     weak var navigationItem: UINavigationItem?
     weak var delegate: ASCSharingSettingsVerifyRightHoldersViewDelegate?
-    
-    private lazy var doneBarBtn: UIBarButtonItem = {
-        return UIBarButtonItem(title: NSLocalizedString("Done", comment: ""),style: .done, target: self, action: #selector(onDoneBarBtnTapped))
-    }()
-    
+
+    private lazy var doneBarBtn: UIBarButtonItem = UIBarButtonItem(title: NSLocalizedString("Done", comment: ""), style: .done, target: self, action: #selector(onDoneBarBtnTapped))
+
     init(view: UIView, tableView: UITableView) {
         self.view = view
         self.tableView = tableView
     }
-    
+
     func configure() {
         configureNavigationBar()
         configureTableView()
     }
-    
+
     func reset() {
         tableView.reloadData()
     }
-    
+
     private func configureNavigationBar() {
         navigationItem?.largeTitleDisplayMode = .never
         navigationController?.isToolbarHidden = true
         navigationItem?.rightBarButtonItem = doneBarBtn
     }
-    
+
     private func configureTableView() {
         tableView.tableFooterView = UIView()
         if #available(iOS 15.0, *) {} else {
@@ -56,7 +53,8 @@ class ASCSharingSettingsVerifyRightHoldersView {
     }
 }
 
-//MARK: - Functions for delegate
+// MARK: - Functions for delegate
+
 extension ASCSharingSettingsVerifyRightHoldersView {
     @objc func onDoneBarBtnTapped() {
         delegate?.onDoneBarBtnTapped()

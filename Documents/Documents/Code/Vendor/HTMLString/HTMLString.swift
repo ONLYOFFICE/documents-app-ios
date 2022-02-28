@@ -3,7 +3,6 @@ import Foundation
 // MARK: Escaping
 
 public extension String {
-
     ///
     /// Returns a copy of the current `String` where every character incompatible with HTML Unicode
     /// encoding (UTF-16 or UTF-8) is replaced by a decimal HTML entity.
@@ -18,7 +17,7 @@ public extension String {
     /// | `a` | `a` | Not escaped (alphanumerical) |
     ///
 
-    public var addingUnicodeEntities: String {
+    var addingUnicodeEntities: String {
         return unicodeScalars.reduce("") { $0 + $1.escapingIfNeeded }
     }
 
@@ -41,16 +40,14 @@ public extension String {
     /// as it is faster and produces a less bloated and more readable HTML.
     ///
 
-    public var addingASCIIEntities: String {
+    var addingASCIIEntities: String {
         return unicodeScalars.reduce("") { $0 + $1.escapingForASCII }
     }
-
 }
 
 // MARK: - Unescaping
 
 extension String {
-
     ///
     /// Returns a copy of the current `String` where every HTML entity is replaced with the matching
     /// Unicode character.
@@ -68,8 +65,7 @@ extension String {
     ///
 
     public var removingHTMLEntities: String {
-
-        guard self.contains("&") else {
+        guard contains("&") else {
             return self
         }
 
@@ -77,7 +73,6 @@ extension String {
         var cursorPosition = startIndex
 
         while let delimiterRange = range(of: "&", range: cursorPosition ..< endIndex) {
-
             // Avoid unnecessary operations
             let head = self[cursorPosition ..< delimiterRange.lowerBound]
             result += head
@@ -93,7 +88,6 @@ extension String {
             let replacementString: String
 
             if escapableContentString.hasPrefix("#") {
-
                 guard let unescapedNumber = escapableContentString.unescapeAsNumber() else {
                     result += self[delimiterRange.lowerBound ..< semicolonRange.upperBound]
                     cursorPosition = semicolonRange.upperBound
@@ -103,7 +97,6 @@ extension String {
                 replacementString = unescapedNumber
 
             } else {
-
                 guard let unescapedCharacter = HTMLUnescapingTable[escapableContentString] else {
                     result += self[delimiterRange.lowerBound ..< semicolonRange.upperBound]
                     cursorPosition = semicolonRange.upperBound
@@ -111,12 +104,10 @@ extension String {
                 }
 
                 replacementString = unescapedCharacter
-
             }
 
             result += replacementString
             cursorPosition = semicolonRange.upperBound
-
         }
 
         // Append unprocessed data, if unprocessed data there is
@@ -124,11 +115,9 @@ extension String {
         result += tail
 
         return result
-
     }
 
     private func unescapeAsNumber() -> String? {
-
         let isHexadecimal = hasPrefix("#X") || hasPrefix("#x")
         let radix = isHexadecimal ? 16 : 10
 
@@ -136,20 +125,18 @@ extension String {
         let numberString = self[numberStartIndex ..< endIndex]
 
         guard let codePoint = UInt32(numberString, radix: radix),
-              let scalar = UnicodeScalar(codePoint) else {
+              let scalar = UnicodeScalar(codePoint)
+        else {
             return nil
         }
 
         return String(scalar)
-
     }
-
 }
 
 // MARK: - UnicodeScalar+Escape
 
 extension UnicodeScalar {
-
     /// Returns the decimal HTML entity for this Unicode scalar.
     public var htmlEscaped: String {
         return "&#" + String(value) + ";"
@@ -164,15 +151,12 @@ extension UnicodeScalar {
     /// Escapes the scalar only if it needs to be escaped for Unicode pages.
     ///
     /// [Reference](http://wonko.com/post/html-escaping)
-    /// 
+    ///
 
     fileprivate var escapingIfNeeded: String {
-
         switch value {
         case 33, 34, 36, 37, 38, 39, 43, 44, 60, 61, 62, 64, 91, 93, 96, 123, 125: return htmlEscaped
         default: return String(self)
         }
-
     }
-
 }

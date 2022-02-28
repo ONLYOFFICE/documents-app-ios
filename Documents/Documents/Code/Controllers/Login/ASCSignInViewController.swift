@@ -6,42 +6,42 @@
 //  Copyright © 2017 Ascensio System SIA. All rights reserved.
 //
 
-import UIKit
 import Alamofire
-import SkyFloatingLabelTextField
 import IQKeyboardManagerSwift
 import MBProgressHUD
+import SkyFloatingLabelTextField
+import UIKit
 
 class ASCSignInViewController: ASCBaseViewController {
     static let identifier = String(describing: ASCSignInViewController.self)
-    
-    class override var storyboard: Storyboard { return Storyboard.login }
+
+    override class var storyboard: Storyboard { return Storyboard.login }
 
     // MARK: - Properties
-    
+
     var portal: String?
     var email: String?
     var renewal: Bool = false
 
     private let facebookSignInController = ASCFacebookSignInController()
     private let googleSignInController = ASCGoogleSignInController()
-    
+
     // MARK: - Outlets
-    
-    @IBOutlet weak var emailField: SkyFloatingLabelTextField!
-    @IBOutlet weak var passwordField: SkyFloatingLabelTextField!
-    @IBOutlet weak var addressLabel: UILabel!
-    @IBOutlet weak var ssoButton: ASCButtonStyle!
-    @IBOutlet weak var forgotButton: UIButton!
-    @IBOutlet weak var facebookButton: UIButton!
-    @IBOutlet weak var googleButton: UIButton!
-    @IBOutlet weak var loginByLabel: UILabel!
-    
+
+    @IBOutlet var emailField: SkyFloatingLabelTextField!
+    @IBOutlet var passwordField: SkyFloatingLabelTextField!
+    @IBOutlet var addressLabel: UILabel!
+    @IBOutlet var ssoButton: ASCButtonStyle!
+    @IBOutlet var forgotButton: UIButton!
+    @IBOutlet var facebookButton: UIButton!
+    @IBOutlet var googleButton: UIButton!
+    @IBOutlet var loginByLabel: UILabel!
+
     // MARK: - Lifecycle Methods
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+
         addressLabel?.text = portal
         emailField?.text = email
 
@@ -55,7 +55,7 @@ class ASCSignInViewController: ASCBaseViewController {
             emailField?.placeholder = NSLocalizedString("Email", comment: "")
         }
         passwordField?.placeholder = NSLocalizedString("Password", comment: "")
-                
+
         for field in [emailField, passwordField] {
             field?.titleFont = UIFont.systemFont(ofSize: 12)
             field?.lineHeight = UIDevice.screenPixel
@@ -73,11 +73,11 @@ class ASCSignInViewController: ASCBaseViewController {
 
         let ssoUrl = capabilities?.ssoUrl ?? ""
         var ssoLabel = capabilities?.ssoLabel ?? ""
-            
+
         if ssoLabel.isEmpty {
             ssoLabel = NSLocalizedString("Single Sign-on", comment: "")
         }
-        
+
         if ssoUrl.isEmpty {
             ssoButton?.removeFromSuperview()
         } else {
@@ -107,10 +107,10 @@ class ASCSignInViewController: ASCBaseViewController {
         navigationController?.navigationBar.isTranslucent = true
         navigationController?.navigationBar.shadowImage = UIImage()
     }
-    
+
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        
+
         if let passwordField = passwordField as? ASCFloatingLabelTextField {
             passwordField.rightPadding = forgotButton.width + 10
         }
@@ -120,79 +120,79 @@ class ASCSignInViewController: ASCBaseViewController {
         IQKeyboardManager.shared.shouldShowToolbarPlaceholder = false
         IQKeyboardManager.shared.shouldToolbarUsesTextFieldTintColor = true
     }
-    
+
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-        
+
         IQKeyboardManager.shared.enable = false
         IQKeyboardManager.shared.enableAutoToolbar = false
     }
 
-    override var supportedInterfaceOrientations : UIInterfaceOrientationMask {
+    override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
         return UIDevice.phone ? .portrait : [.portrait, .landscape]
     }
 
     override var preferredInterfaceOrientationForPresentation: UIInterfaceOrientation {
         return UIDevice.phone ? .portrait : super.preferredInterfaceOrientationForPresentation
     }
-    
+
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         view.endEditing(true)
     }
-    
+
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
-    
+
     // MARK: - Private
-    
+
     private func valid(login: String) -> Bool {
         if login.length < 1 {
             emailField?.errorMessage = NSLocalizedString("Login is empty", comment: "")
             emailField?.shake()
             return false
         }
-        
+
         return true
     }
-    
+
     private func valid(email: String) -> Bool {
         if email.length < 1 {
             emailField?.errorMessage = NSLocalizedString("Email is empty", comment: "")
             emailField?.shake()
             return false
         }
-        
+
         if !email.isValidOnlyofficeEmail {
             emailField?.errorMessage = NSLocalizedString("Email is not valid", comment: "")
             emailField?.shake()
             return false
         }
-        
+
         return true
     }
-    
+
     private func valid(password: String) -> Bool {
         if password.length < 1 {
             passwordField?.errorMessage = NSLocalizedString("Password is empty", comment: "")
             passwordField?.shake()
             return false
         }
-        
+
         return true
     }
-    
+
     // MARK: - Actions
-    
+
     @IBAction func onForgotPassword(_ sender: Any) {
         navigator.navigate(to: .recoveryPasswordByEmail)
     }
-    
+
     @IBAction func onEmailLogin(_ sender: Any) {
         guard let portal = OnlyofficeApiClient.shared.baseURL?.absoluteString ?? portal?.trimmed else {
             return
         }
-        
+
         guard let email = emailField?.text?.trimmed else {
             return
         }
@@ -206,22 +206,22 @@ class ASCSignInViewController: ASCBaseViewController {
                 return
             }
         }
-        
+
         guard let password = passwordField?.text?.trimmed, valid(password: password) else {
             return
         }
-        
+
         view.endEditing(true)
-        
+
         let authRequest = OnlyofficeAuthRequest()
         authRequest.provider = .email
         authRequest.portal = portal
         authRequest.userName = email
         authRequest.password = password
-        
+
         let hud = MBProgressHUD.showTopMost()
         hud?.label.text = NSLocalizedString("Logging in", comment: "Caption of the process")
-        
+
         ASCSignInController.shared.login(by: authRequest, in: navigationController) { [weak self] success in
             if success {
                 hud?.setSuccessState()
@@ -229,17 +229,17 @@ class ASCSignInViewController: ASCBaseViewController {
 
                 // Notify
                 NotificationCenter.default.post(name: ASCConstants.Notifications.loginOnlyofficeCompleted, object: nil)
-                
+
                 self?.dismiss(animated: true, completion: nil)
             } else {
                 hud?.hide(animated: true)
             }
         }
     }
-    
+
     @IBAction func onFacebookLogin(_ sender: UIButton) {
         view.endEditing(true)
-        
+
         facebookSignInController.signIn(controller: self) { [weak self] token, error in
             guard let strongSelf = self else { return }
 
@@ -248,21 +248,21 @@ class ASCSignInViewController: ASCBaseViewController {
                 authRequest.provider = .facebook
                 authRequest.portal = strongSelf.portal
                 authRequest.accessToken = accessToken
-                
+
                 let hud = MBProgressHUD.showTopMost()
                 hud?.label.text = NSLocalizedString("Logging in", comment: "Caption of the process")
-                
+
                 ASCSignInController.shared.login(by: authRequest, in: strongSelf.navigationController) { success in
                     if success {
                         hud?.setSuccessState()
                         hud?.hide(animated: true, afterDelay: 2)
 
                         NotificationCenter.default.post(name: ASCConstants.Notifications.loginOnlyofficeCompleted, object: nil)
-                        
+
                         strongSelf.dismiss(animated: true, completion: nil)
                     } else {
                         hud?.hide(animated: true)
-                        
+
                         UIAlertController.showError(
                             in: strongSelf,
                             message: NSLocalizedString("User authentication failed", comment: "")
@@ -279,10 +279,10 @@ class ASCSignInViewController: ASCBaseViewController {
             }
         }
     }
-    
+
     @IBAction func onGoogleLogin(_ sender: UIButton) {
         view.endEditing(true)
-        
+
         googleSignInController.signIn(controller: self) { [weak self] token, userData, error in
             guard let strongSelf = self else { return }
 
@@ -291,10 +291,10 @@ class ASCSignInViewController: ASCBaseViewController {
                 authRequest.provider = .google
                 authRequest.portal = strongSelf.portal
                 authRequest.accessToken = accessToken
-                
+
                 let hud = MBProgressHUD.showTopMost()
                 hud?.label.text = NSLocalizedString("Logging in", comment: "Caption of the process")
-                
+
                 ASCSignInController.shared.login(by: authRequest, in: strongSelf.navigationController) { success in
                     if success {
                         hud?.setSuccessState()
@@ -302,11 +302,11 @@ class ASCSignInViewController: ASCBaseViewController {
 
                         // Notify
                         NotificationCenter.default.post(name: ASCConstants.Notifications.loginOnlyofficeCompleted, object: nil)
-                        
+
                         strongSelf.dismiss(animated: true, completion: nil)
                     } else {
                         hud?.hide(animated: true)
-                        
+
                         UIAlertController.showError(
                             in: strongSelf,
                             message: NSLocalizedString("User authentication failed", comment: "")
@@ -323,40 +323,41 @@ class ASCSignInViewController: ASCBaseViewController {
             }
         }
     }
-    
+
     @IBAction func onSSOLogin(_ sender: UIButton) {
         view.endEditing(true)
-        
+
         let ssoNavigationController = StoryboardScene.Login.ascssoSignInNavigationController.instantiate()
-        
+
         present(ssoNavigationController, animated: true, completion: { [weak self] in
             if let ssoViewController = ssoNavigationController.topViewController as? ASCSSOSignInController {
                 let api = OnlyofficeApiClient.shared
-                
+
                 let requestQueue = OperationQueue()
                 requestQueue.maxConcurrentOperationCount = 1
-                
+
                 var lastError: Error?
                 var hud: MBProgressHUD?
-                
+
                 // Sign in with SSO
                 requestQueue.addOperation {
                     let semaphore = DispatchSemaphore(value: 0)
                     DispatchQueue.main.async {
                         ssoViewController.signIn(ssoUrl: api.capabilities?.ssoUrl ?? "", handler: { token, error in
                             defer { semaphore.signal() }
-                            
+
                             if let error = error {
                                 lastError = NetworkingError.apiError(
                                     error: OnlyofficeServerError.unknown(
                                         message: String(
-                                            format: NSLocalizedString("Please retry. \n\n If the problem persists contact us and mention this error code: SSO - %@", comment: ""), error.localizedDescription)
+                                            format: NSLocalizedString("Please retry. \n\n If the problem persists contact us and mention this error code: SSO - %@", comment: ""), error.localizedDescription
+                                        )
                                     )
                                 )
                             } else if let token = token, token.length > 0 {
                                 hud = MBProgressHUD.showTopMost()
                                 hud?.label.text = NSLocalizedString("Logging in", comment: "Caption of the process")
-                                
+
                                 // Set api
                                 api.baseURL = api.baseURL
                                 api.token = token
@@ -364,13 +365,13 @@ class ASCSignInViewController: ASCBaseViewController {
                             }
                         })
                     }
-                    
+
                     semaphore.wait()
                 }
-                
+
                 // Get server version
                 requestQueue.addOperation {
-                    if nil == lastError,
+                    if lastError == nil,
                        let token = api.token,
                        let baseUrl = api.baseURL?.absoluteString
                     {
@@ -378,16 +379,16 @@ class ASCSignInViewController: ASCBaseViewController {
                         DispatchQueue.main.async {
                             OnlyofficeApiClient.request(OnlyofficeAPI.Endpoints.Settings.versions) { response, error in
                                 defer { semaphore.signal() }
-                                
+
                                 if let error = error {
                                     lastError = error
                                     log.error(error)
                                     return
                                 }
-                                
+
                                 if let communityVersion = response?.result?.community {
                                     api.serverVersion = communityVersion
-                                    
+
                                     // Init ONLYOFFICE provider
                                     ASCFileManager.onlyofficeProvider = ASCOnlyofficeProvider(baseUrl: baseUrl, token: token)
                                     ASCFileManager.provider = ASCFileManager.onlyofficeProvider
@@ -398,15 +399,15 @@ class ASCSignInViewController: ASCBaseViewController {
                         semaphore.wait()
                     }
                 }
-                
+
                 // Fetch user info
                 requestQueue.addOperation {
-                    if nil == lastError {
+                    if lastError == nil {
                         let semaphore = DispatchSemaphore(value: 0)
                         if let onlyofficeProvider = ASCFileManager.onlyofficeProvider?.copy() as? ASCOnlyofficeProvider {
                             onlyofficeProvider.userInfo { success, error in
                                 defer { semaphore.signal() }
-                                
+
                                 if success {
                                     ASCFileManager.onlyofficeProvider?.user = onlyofficeProvider.user
                                 } else {
@@ -417,18 +418,18 @@ class ASCSignInViewController: ASCBaseViewController {
                         semaphore.wait()
                     }
                 }
-                
+
                 DispatchQueue.global(qos: .background).async { [weak self] in
                     requestQueue.waitUntilAllOperationsAreFinished()
-                    
+
                     DispatchQueue.main.async { [weak self] in
                         guard let strongSelf = self else {
                             return
                         }
-                        
+
                         if let error = lastError {
                             hud?.hide(animated: false)
-                            
+
                             UIAlertController.showError(
                                 in: strongSelf.parent ?? strongSelf,
                                 message: error.localizedDescription
@@ -436,25 +437,25 @@ class ASCSignInViewController: ASCBaseViewController {
                         } else {
                             hud?.setSuccessState()
                             hud?.hide(animated: true, afterDelay: 1)
-                            
+
                             OnlyofficeApiClient.request(
                                 OnlyofficeAPI.Endpoints.Auth.deviceRegistration,
                                 ["type": OnlyofficeApplicationType.documents.rawValue]
                             )
-                            
+
                             // Analytics
                             if let portal = OnlyofficeApiClient.shared.baseURL?.absoluteURL {
                                 ASCAnalytics.logEvent(ASCConstants.Analytics.Event.loginPortal, parameters: [
                                     ASCAnalytics.Event.Key.portal: portal,
-                                    ASCAnalytics.Event.Key.provider: ASCLoginType.sso.rawValue
+                                    ASCAnalytics.Event.Key.provider: ASCLoginType.sso.rawValue,
                                 ])
                             }
-                            
-                            ASCEditorManager.shared.fetchDocumentService { _,_,_  in }
-                            
+
+                            ASCEditorManager.shared.fetchDocumentService { _, _, _ in }
+
                             // Notify
                             NotificationCenter.default.post(name: ASCConstants.Notifications.loginOnlyofficeCompleted, object: nil)
-                            
+
                             strongSelf.dismiss(animated: true, completion: nil)
                         }
                     }
@@ -467,20 +468,19 @@ class ASCSignInViewController: ASCBaseViewController {
 // MARK: - Text Field Delegate
 
 extension ASCSignInViewController: UITextFieldDelegate {
-
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         let nextTag = textField.tag + 1
-        
+
         if let nextResponder = textField.superview?.viewWithTag(nextTag) {
             nextResponder.becomeFirstResponder()
         } else {
             onEmailLogin(textField)
             return true
         }
-        
+
         return false
     }
-    
+
     func textField(_ textField: UITextField,
                    shouldChangeCharactersIn range: NSRange,
                    replacementString string: String) -> Bool
@@ -490,5 +490,4 @@ extension ASCSignInViewController: UITextFieldDelegate {
         }
         return true
     }
-    
 }

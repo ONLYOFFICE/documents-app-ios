@@ -14,7 +14,7 @@ enum ASCLoadedVCFinderModels {
             var folderId: String
             var providerId: String
         }
-        
+
         struct Response {
             var viewController: ASCDocumentsViewController?
         }

@@ -6,13 +6,12 @@
 //  Copyright © 2021 Ascensio System SIA. All rights reserved.
 //
 
-import XCTest
 import Alamofire
-import ObjectMapper
 @testable import Documents
+import ObjectMapper
+import XCTest
 
 class ASCSharingOprionsInteractorTests: XCTestCase {
-    
     var sut: ASCSharingOptionsInteractor!
     var presenter: MockSharingOptionsPresentationLogic!
     var apiWorker: MockShareSettingsAPIWorker!
@@ -20,12 +19,11 @@ class ASCSharingOprionsInteractorTests: XCTestCase {
     var networkingRequestManager: NetworkingRequestingProtocol!
 
     override func setUpWithError() throws {
-        
         presenter = MockSharingOptionsPresentationLogic()
         apiWorker = MockShareSettingsAPIWorker()
         linkMaker = MockLinkMaker()
         networkingRequestManager = MockNetworkRequesting()
-        
+
         sut = ASCSharingOptionsInteractor(entityLinkMaker: linkMaker, entity: ASCFile(), apiWorker: apiWorker, networkingRequestManager: networkingRequestManager)
     }
 
@@ -35,12 +33,12 @@ class ASCSharingOprionsInteractorTests: XCTestCase {
         linkMaker = nil
         networkingRequestManager = nil
     }
-    
+
     func testChangingRightHolderAccessChengeDataStore() {
         let rightHolder = ASCSharingRightHolder(id: "Foo", type: .user, access: .read, isOwner: false)
         let user = ASCUser()
         user.userId = "Foo"
-        
+
         sut.sharedInfoItems.append(.init(access: rightHolder.access, user: user))
         let expectation = expectation(description: "server expectation")
         sut.makeRequest(request: .changeRightHolderAccess(.init(entity: ASCFile(), rightHolder: rightHolder, access: .comment)))
@@ -50,29 +48,26 @@ class ASCSharingOprionsInteractorTests: XCTestCase {
         }
         waitForExpectations(timeout: 2)
     }
-
 }
 
 extension ASCSharingOprionsInteractorTests {
-    
-    
     class MockSharingOptionsPresentationLogic: ASCSharingOptionsPresentationLogic {
-        func presentData(response: ASCSharingOptions.Model.Response.ResponseType) { }
+        func presentData(response: ASCSharingOptions.Model.Response.ResponseType) {}
     }
-    
+
     class MockShareSettingsAPIWorker: ASCShareSettingsAPIWorkerProtocol {
         func convertToParams(shareItems: [OnlyofficeShare]) -> [OnlyofficeShareItemRequestModel] {
             []
         }
-        
+
         func convertToParams(items: [(rightHolderId: String, access: ASCShareAccess)]) -> [OnlyofficeShareItemRequestModel] {
             []
         }
-        
+
         func convertToParams(entities: [ASCEntity]) -> [String: [String]]? {
             nil
         }
-        
+
         func makeApiRequest(entity: ASCEntity) -> Endpoint<OnlyofficeResponseArray<OnlyofficeShare>>? {
             let file = ASCFile()
             file.id = "Foo"
@@ -81,23 +76,20 @@ extension ASCSharingOprionsInteractorTests {
             })
         }
     }
-    
+
     class MockLinkMaker: ASCEntityLinkMakerProtocol {
         func make(entity: ASCEntity) -> String? {
             nil
         }
     }
-    
+
     class MockNetworkRequesting: NetworkingRequestingProtocol {
         func request<Response>(_ endpoint: Endpoint<Response>, _ parameters: Parameters?, _ completion: ((Response?, NetworkingError?) -> Void)?) {
             completion?(nil, nil)
         }
-        
+
         func request<Response>(_ endpoint: Endpoint<Response>, _ parameters: Parameters?, _ apply: ((MultipartFormData) -> Void)?, _ completion: ((Response?, Double, NetworkingError?) -> Void)?) {
             completion?(nil, 0, nil)
         }
-        
-        
     }
-    
 }

@@ -10,10 +10,10 @@ import SDWebImage
 
 class ASCSDWebImageDownloaderOperation: SDWebImageDownloaderOperation {
     override func urlSession(_ session: URLSession,
-                    task: URLSessionTask,
-                    willPerformHTTPRedirection response: HTTPURLResponse,
-                    newRequest request: URLRequest,
-                    completionHandler: @escaping (URLRequest?) -> Void)
+                             task: URLSessionTask,
+                             willPerformHTTPRedirection response: HTTPURLResponse,
+                             newRequest request: URLRequest,
+                             completionHandler: @escaping (URLRequest?) -> Void)
     {
         var modifyRequest = request
 

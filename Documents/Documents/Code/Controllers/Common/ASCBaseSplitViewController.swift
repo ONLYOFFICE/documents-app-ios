@@ -9,9 +9,8 @@
 import UIKit
 
 class ASCBaseSplitViewController: UISplitViewController {
-
     // MARK: - Properties
-    
+
     var primaryViewController: UIViewController? {
         return viewControllers.first
     }
@@ -23,7 +22,7 @@ class ASCBaseSplitViewController: UISplitViewController {
     private var isDidAppear: Bool = false
 
     // MARK: - Lifecycle Methods
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -45,7 +44,7 @@ class ASCBaseSplitViewController: UISplitViewController {
         isDidAppear = true
         super.viewDidAppear(animated)
     }
-    
+
     // MARK: - UI
 
     override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
@@ -72,8 +71,7 @@ extension ASCBaseSplitViewController: UISplitViewControllerDelegate {
                              onto primaryViewController: UIViewController) -> Bool
     {
         if UIDevice.phone {
-            if let primaryNC = primaryViewController as? UINavigationController
-            {
+            if let primaryNC = primaryViewController as? UINavigationController {
                 primaryNC.popToRootViewController(animated: false)
                 return true
             }
@@ -112,6 +110,4 @@ extension ASCBaseSplitViewController: UISplitViewControllerDelegate {
         }
         return false
     }
-
 }
-

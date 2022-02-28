@@ -950,6 +950,10 @@ Nota: Si Usted olvida el código de acceso, necesitará eliminar e instalar la a
         <target>-</target>
         <note>Class = "UILabel"; text = "-"; ObjectID = "9Yi-42-22H"; Note = "Do not translate";</note>
       </trans-unit>
+      <trans-unit id="708-fR-i2H.text" xml:space="preserve">
+        <source>Delete account</source>
+        <note>Class = "UILabel"; text = "Delete account"; ObjectID = "708-fR-i2H";</note>
+      </trans-unit>
       <trans-unit id="BXA-IE-d8z.title" xml:space="preserve">
         <source>Account</source>
         <target>Cuenta</target>
@@ -1277,6 +1281,10 @@ Nota: Si Usted olvida el código de acceso, necesitará eliminar e instalar la a
       <trans-unit id="ONLYOFFICE form template (.docxf)" xml:space="preserve">
         <source>ONLYOFFICE form template (.docxf)</source>
         <target>Plantilla de formulario de ONLYOFFICE (.docxf)</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="ONLYOFFICE form template (.docxf)" xml:space="preserve">
+        <source>ONLYOFFICE form template (.docxf)</source>
         <note/>
       </trans-unit>
     </body>
@@ -2147,6 +2155,10 @@ otros que utilizan el protocolo WebDAV.</target>
         <target>Dirección de portal incorrecta</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
+      <trans-unit id="Instructions had been sent to your email" xml:space="preserve">
+        <source>Instructions had been sent to your email</source>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
       <trans-unit id="Invalid Country Code" xml:space="preserve">
         <source>Invalid Country Code</source>
         <target>Código de país inválido</target>
@@ -2735,6 +2747,14 @@ Si el problema persiste, póngase en contacto con nosotros y mencione este códi
         <target>Seleccionando los derechos de acceso</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
+      <trans-unit id="Send" xml:space="preserve">
+        <source>Send</source>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Send the profile deletion instructions to the email address %@?" xml:space="preserve">
+        <source>Send the profile deletion instructions to the email address %@?</source>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
       <trans-unit id="Sending" xml:space="preserve">
         <source>Sending</source>
         <target>Enviando</target>
@@ -2849,6 +2869,10 @@ Si el problema persiste, póngase en contacto con nosotros y mencione este códi
         <source>Tb</source>
         <target>Tb</target>
         <note>Data units</note>
+      </trans-unit>
+      <trans-unit id="Terminate account" xml:space="preserve">
+        <source>Terminate account</source>
+        <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Terms of Service" xml:space="preserve">
         <source>Terms of Service</source>

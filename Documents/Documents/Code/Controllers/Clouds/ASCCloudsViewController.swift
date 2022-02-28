@@ -9,10 +9,9 @@
 import UIKit
 
 class ASCCloudsViewController: UITableViewController {
-
     private var connected: [ASCCategory] = []
     private var login: [ASCCategory] = []
-    
+
     private var cloudsSubscription: EventSubscription<Any?>?
 
     fileprivate let providerName: ((_ type: ASCFileProviderType) -> String) = { type in
@@ -69,7 +68,7 @@ class ASCCloudsViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+
         navigationController?.navigationBar.prefersLargeTitles = true
         navigationItem.largeTitleDisplayMode = .always
 
@@ -81,7 +80,7 @@ class ASCCloudsViewController: UITableViewController {
         clearsSelectionOnViewWillAppear = UIDevice.phone
         loadData()
         updateLargeTitlesSize()
-        
+
         ManagedAppConfig.shared.add(observer: self)
         ManagedAppConfig.shared.triggerHooks()
     }
@@ -93,10 +92,10 @@ class ASCCloudsViewController: UITableViewController {
             ASCViewControllerManager.shared.rootController?.tabBar.isHidden = true
         }
     }
-    
+
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        
+
         navigationController?.navigationBar.prefersLargeTitles = true
         navigationItem.largeTitleDisplayMode = .always
     }
@@ -110,7 +109,7 @@ class ASCCloudsViewController: UITableViewController {
     func loadData() {
         updateMyClouds()
         updateLoginClouds()
-        
+
         cloudsSubscription = ASCFileManager.observer.add(owner: self) { [weak self] objects in
             self?.tableView?.reloadData()
         }
@@ -151,7 +150,6 @@ class ASCCloudsViewController: UITableViewController {
         login.append(ASCCategory())
     }
 
-
     func onConnectComplete(provider: ASCFileProviderProtocol) {
         // Reload list info
         connectProvider(provider)
@@ -190,7 +188,8 @@ class ASCCloudsViewController: UITableViewController {
 
     func disconnectProvider(by index: Int) {
         if let removedProvider = connected[index].provider,
-            let removedIndex = ASCFileManager.cloudProviders.firstIndex(where: { $0.id == removedProvider.id}) {
+           let removedIndex = ASCFileManager.cloudProviders.firstIndex(where: { $0.id == removedProvider.id })
+        {
             ASCFileManager.cloudProviders.remove(at: removedIndex)
             ASCFileManager.storeProviders()
         }
@@ -223,7 +222,7 @@ class ASCCloudsViewController: UITableViewController {
         loadData()
 
         if let index = UserDefaults.standard.object(forKey: ASCConstants.SettingsKeys.lastCloudIndex) as? Int,
-            index < connected.count
+           index < connected.count
         {
             select(provider: connected[index].provider)
         } else {
@@ -249,17 +248,17 @@ class ASCCloudsViewController: UITableViewController {
 //        }
 
         if let splitVC = splitViewController {
-            if  let provider = provider,
-                let documentsNC = ASCDocumentsNavigationController.instantiate(from: Storyboard.main) as? ASCDocumentsNavigationController,
-                let documentsVC = documentsNC.topViewController as? ASCDocumentsViewController
-            { 
+            if let provider = provider,
+               let documentsNC = ASCDocumentsNavigationController.instantiate(from: Storyboard.main) as? ASCDocumentsNavigationController,
+               let documentsVC = documentsNC.topViewController as? ASCDocumentsViewController
+            {
                 let rootFolder = provider.rootFolder
                 let folder = folder ?? rootFolder
 
                 // Pop to root
-                if  let primaryViewController = (splitVC as? ASCBaseSplitViewController)?.primaryViewController,
-                    let documentsNavigationVC = primaryViewController as? ASCCloudsNavigationController,
-                    let categoriesVC = documentsNavigationVC.viewControllers.first as? ASCCloudsViewController
+                if let primaryViewController = (splitVC as? ASCBaseSplitViewController)?.primaryViewController,
+                   let documentsNavigationVC = primaryViewController as? ASCCloudsNavigationController,
+                   let categoriesVC = documentsNavigationVC.viewControllers.first as? ASCCloudsViewController
                 {
                     documentsNavigationVC.viewControllers = [categoriesVC]
                 }
@@ -306,10 +305,10 @@ class ASCCloudsViewController: UITableViewController {
                 }
             } else {
                 UserDefaults.standard.removeObject(forKey: ASCConstants.SettingsKeys.lastCloudIndex)
-                
+
                 if UIDevice.phone || ASCViewControllerManager.shared.currentSizeClass == .compact {
                     if let splitVC = splitViewController as? ASCBaseSplitViewController,
-                        let documentsNC = splitVC.primaryViewController as? ASCCloudsNavigationController ?? splitVC.detailViewController as? ASCCloudsNavigationController
+                       let documentsNC = splitVC.primaryViewController as? ASCCloudsNavigationController ?? splitVC.detailViewController as? ASCCloudsNavigationController
                     {
                         documentsNC.popToRootViewController(animated: false)
                     }
@@ -317,23 +316,23 @@ class ASCCloudsViewController: UITableViewController {
                     let emptyCloudVC = ASCCloudsEmptyViewController.instantiate(from: Storyboard.main)
                     emptyCloudVC.onAddService = { [weak self] type in
                         guard let strongSelf = self else { return }
-                        
+
                         strongSelf.presentConnectProviderView(by: type) { [weak self] in
                             guard let strongSelf = self else { return }
-                            
+
                             if let splitVC = strongSelf.splitViewController as? ASCBaseSplitViewController,
-                                let documentsNC = splitVC.detailViewController as? ASCDocumentsNavigationController,
-                                let documentsVC = documentsNC.viewControllers.first as? ASCDocumentsViewController,
-                                let currentProvider = documentsVC.provider,
-                                let providerIndex = strongSelf.connected.firstIndex(where: { $0.provider?.id == currentProvider.id })
+                               let documentsNC = splitVC.detailViewController as? ASCDocumentsNavigationController,
+                               let documentsVC = documentsNC.viewControllers.first as? ASCDocumentsViewController,
+                               let currentProvider = documentsVC.provider,
+                               let providerIndex = strongSelf.connected.firstIndex(where: { $0.provider?.id == currentProvider.id })
                             {
                                 strongSelf.tableView.selectRow(at: IndexPath(row: providerIndex, section: 0), animated: true, scrollPosition: .none)
                             }
                         }
                     }
-                    
+
                     splitVC.showDetailViewController(UINavigationController(rootASCViewController: emptyCloudVC), sender: self)
-                    
+
                     if let selectedIndexPath = tableView.indexPathForSelectedRow {
                         tableView.deselectRow(at: selectedIndexPath, animated: false)
                     }
@@ -359,11 +358,10 @@ extension ASCCloudsViewController {
         return 0
     }
 
-
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cellConnectedIdentifier    = ASCCloudCategoryCell.identifier + "-Connected"
-        let cellLoginIdentifier        = ASCCloudCategoryCell.identifier + "-Login"
-        let cellAddIdentifier          = ASCCloudCategoryCell.identifier + "-Add"
+        let cellConnectedIdentifier = ASCCloudCategoryCell.identifier + "-Connected"
+        let cellLoginIdentifier = ASCCloudCategoryCell.identifier + "-Login"
+        let cellAddIdentifier = ASCCloudCategoryCell.identifier + "-Add"
 
         var category: ASCCategory?
         var cellIdentifier = cellConnectedIdentifier
@@ -401,11 +399,11 @@ extension ASCCloudsViewController {
 
             cell.category = category
             cell.cellType = type
-            
+
             if cellIdentifier == cellConnectedIdentifier {
                 cell.accessoryType = (UIDevice.phone || ASCViewControllerManager.shared.currentSizeClass == .compact) ? .disclosureIndicator : .none
             }
-            
+
             return cell
         }
 
@@ -445,10 +443,10 @@ extension ASCCloudsViewController {
                         guard let strongSelf = self else { return }
 
                         if let splitVC = strongSelf.splitViewController as? ASCBaseSplitViewController,
-                            let documentsNC = splitVC.detailViewController as? ASCDocumentsNavigationController,
-                            let documentsVC = documentsNC.viewControllers.first as? ASCDocumentsViewController,
-                            let currentProvider = documentsVC.provider,
-                            let providerIndex = strongSelf.connected.firstIndex(where: { $0.provider?.id == currentProvider.id })
+                           let documentsNC = splitVC.detailViewController as? ASCDocumentsNavigationController,
+                           let documentsVC = documentsNC.viewControllers.first as? ASCDocumentsViewController,
+                           let currentProvider = documentsVC.provider,
+                           let providerIndex = strongSelf.connected.firstIndex(where: { $0.provider?.id == currentProvider.id })
                         {
                             strongSelf.tableView.selectRow(at: IndexPath(row: providerIndex, section: 0), animated: true, scrollPosition: .none)
                         } else {
@@ -462,10 +460,10 @@ extension ASCCloudsViewController {
                     guard let strongSelf = self else { return }
 
                     if let splitVC = strongSelf.splitViewController as? ASCBaseSplitViewController,
-                        let documentsNC = splitVC.detailViewController as? ASCDocumentsNavigationController,
-                        let documentsVC = documentsNC.viewControllers.first as? ASCDocumentsViewController,
-                        let currentProvider = documentsVC.provider,
-                        let providerIndex = strongSelf.connected.firstIndex(where: { $0.provider?.id == currentProvider.id })
+                       let documentsNC = splitVC.detailViewController as? ASCDocumentsNavigationController,
+                       let documentsVC = documentsNC.viewControllers.first as? ASCDocumentsViewController,
+                       let currentProvider = documentsVC.provider,
+                       let providerIndex = strongSelf.connected.firstIndex(where: { $0.provider?.id == currentProvider.id })
                     {
                         strongSelf.tableView.selectRow(at: IndexPath(row: providerIndex, section: 0), animated: true, scrollPosition: .none)
                     } else {
@@ -487,5 +485,4 @@ extension ASCCloudsViewController {
 
         return []
     }
-
 }

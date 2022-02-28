@@ -11,25 +11,24 @@ import UIKit
 struct ASCEntityActions: OptionSet {
     let rawValue: Int
 
-    static let open         = ASCEntityActions(rawValue: 1 << 0)
-    static let edit         = ASCEntityActions(rawValue: 1 << 1)
-    static let rename       = ASCEntityActions(rawValue: 1 << 2)
-    static let copy         = ASCEntityActions(rawValue: 1 << 3)
-    static let move         = ASCEntityActions(rawValue: 1 << 4)
-    static let download     = ASCEntityActions(rawValue: 1 << 5)
-    static let delete       = ASCEntityActions(rawValue: 1 << 6)
-    static let restore      = ASCEntityActions(rawValue: 1 << 7)
-    static let share        = ASCEntityActions(rawValue: 1 << 8)
-    static let upload       = ASCEntityActions(rawValue: 1 << 9)
-    static let export       = ASCEntityActions(rawValue: 1 << 10)
-    static let unmount      = ASCEntityActions(rawValue: 1 << 11)
-    static let duplicate    = ASCEntityActions(rawValue: 1 << 12)
-    static let favarite     = ASCEntityActions(rawValue: 1 << 13)
+    static let open = ASCEntityActions(rawValue: 1 << 0)
+    static let edit = ASCEntityActions(rawValue: 1 << 1)
+    static let rename = ASCEntityActions(rawValue: 1 << 2)
+    static let copy = ASCEntityActions(rawValue: 1 << 3)
+    static let move = ASCEntityActions(rawValue: 1 << 4)
+    static let download = ASCEntityActions(rawValue: 1 << 5)
+    static let delete = ASCEntityActions(rawValue: 1 << 6)
+    static let restore = ASCEntityActions(rawValue: 1 << 7)
+    static let share = ASCEntityActions(rawValue: 1 << 8)
+    static let upload = ASCEntityActions(rawValue: 1 << 9)
+    static let export = ASCEntityActions(rawValue: 1 << 10)
+    static let unmount = ASCEntityActions(rawValue: 1 << 11)
+    static let duplicate = ASCEntityActions(rawValue: 1 << 12)
+    static let favarite = ASCEntityActions(rawValue: 1 << 13)
 }
 
-typealias ASCProviderUserInfoHandler = ((_ success: Bool, _ error: Error?) -> Void)
-typealias ASCProviderCompletionHandler = ((_ provider: ASCFileProviderProtocol, _ result: Any?, _ success: Bool, _ error: Error?) -> Void)
-
+typealias ASCProviderUserInfoHandler = (_ success: Bool, _ error: Error?) -> Void
+typealias ASCProviderCompletionHandler = (_ provider: ASCFileProviderProtocol, _ result: Any?, _ success: Bool, _ error: Error?) -> Void
 
 // MARK: - ASCProviderDelegate protocol
 
@@ -40,14 +39,12 @@ protocol ASCProviderDelegate {
     func presentShareController(provider: ASCFileProviderProtocol, entity: ASCEntity)
 }
 
-
 // MARK: - ASCProviderDelegate protocol optionals
 
 extension ASCProviderDelegate {
     func updateItems(provider: ASCFileProviderProtocol) {}
     func presentShareController(provider: ASCFileProviderProtocol, entity: ASCEntity) {}
 }
-
 
 // MARK: - ASCBaseFileProvider protocol
 
@@ -75,7 +72,7 @@ protocol ASCFileProviderProtocol {
     func updateSort(completeon: ASCProviderCompletionHandler?)
     func serialize() -> String?
     func deserialize(_ jsonString: String)
-    
+
     // Items
     func add(item: ASCEntity, at index: Int)
     func add(items: [ASCEntity], at index: Int)
@@ -114,7 +111,6 @@ protocol ASCFileProviderProtocol {
     func preview(file: ASCFile, files: [ASCFile]?, in view: UIView?)
 }
 
-
 // MARK: - ASCFileProvider protocol
 
 extension ASCFileProviderProtocol {
@@ -127,7 +123,7 @@ extension ASCFileProviderProtocol {
     func isReachable(completionHandler: @escaping (_ success: Bool, _ error: Error?) -> Void) {}
     func isReachable(with info: [String: Any], complation: @escaping ((_ success: Bool, _ provider: ASCFileProviderProtocol?) -> Void)) { complation(false, nil) }
     func absoluteUrl(from string: String?) -> URL? { return URL(string: string ?? "") }
-    func errorMessage(by errorObject: Any) -> String  { return "" }
+    func errorMessage(by errorObject: Any) -> String { return "" }
     func handleNetworkError(_ error: Error?) -> Bool { return false }
     func modifyImageDownloader(request: URLRequest) -> URLRequest { return request }
     func modify(_ path: String, data: Data, params: [String: Any]?, processing: @escaping NetworkProgressHandler) {}
@@ -152,12 +148,11 @@ extension ASCFileProviderProtocol {
     func preview(file: ASCFile, files: [ASCFile]? = nil, in view: UIView? = nil) {}
 }
 
-
 // MARK: - ASCSortableFileProvider protocol
 
 protocol ASCSortableFileProviderProtocol {
     var folder: ASCFolder? { get set }
-    var fetchInfo: [String : Any?]? { get set }
+    var fetchInfo: [String: Any?]? { get set }
 
     func sort(by info: [String: Any], entities: inout [ASCEntity])
     func sort(by info: [String: Any], folders: inout [ASCFolder], files: inout [ASCFile])
@@ -171,9 +166,9 @@ extension ASCSortableFileProviderProtocol {
     ///   - folders: Sorted folders
     ///   - files: Sorted files
     func sort(by info: [String: Any], folders: inout [ASCFolder], files: inout [ASCFile]) {
-        let sortBy      = ASCDocumentSortType(info["type"] as? String ?? "az")
-        let sortOrder   = info["order"] as? String ?? "ascending"
-        let ascending   = sortOrder == "ascending"
+        let sortBy = ASCDocumentSortType(info["type"] as? String ?? "az")
+        let sortOrder = info["order"] as? String ?? "ascending"
+        let ascending = sortOrder == "ascending"
 
         switch sortBy {
         case .type:
@@ -201,7 +196,7 @@ extension ASCSortableFileProviderProtocol {
                 : files.sorted { $0.title > $1.title }
         }
     }
-    
+
     /// Sort records
     ///
     /// - Parameters:
@@ -210,9 +205,9 @@ extension ASCSortableFileProviderProtocol {
     func sort(by info: [String: Any], entities: inout [ASCEntity]) {
         var folders = entities.filter { $0 is ASCFolder } as? [ASCFolder] ?? []
         var files = entities.filter { $0 is ASCFile } as? [ASCFile] ?? []
-        
+
         sort(by: info, folders: &folders, files: &files)
-        
+
         entities = folders as [ASCEntity] + files as [ASCEntity]
     }
 }

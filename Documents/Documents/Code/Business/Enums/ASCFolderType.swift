@@ -9,27 +9,27 @@
 import Foundation
 
 enum ASCFolderType: Int {
-    case unknown                = 0
+    case unknown = 0
 
-    case onlyofficeCommon       = 1
-    case onlyofficeBunch        = 2
-    case onlyofficeTrash        = 3
-    case onlyofficeUser         = 5
-    case onlyofficeShare        = 6
-    case onlyofficeProjects     = 8
-    case onlyofficeFavorites    = 10
-    case onlyofficeRecent       = 11
+    case onlyofficeCommon = 1
+    case onlyofficeBunch = 2
+    case onlyofficeTrash = 3
+    case onlyofficeUser = 5
+    case onlyofficeShare = 6
+    case onlyofficeProjects = 8
+    case onlyofficeFavorites = 10
+    case onlyofficeRecent = 11
 
-    case deviceDocuments        = 50
-    case deviceTrash            = 51
+    case deviceDocuments = 50
+    case deviceTrash = 51
 
-    case nextcloudAll           = 101
-    case owncloudAll            = 102
-    case yandexAll              = 103
-    case webdavAll              = 104
-    case dropboxAll             = 105
-    case googledriveAll         = 106
-    case icloudAll              = 107
-    case onedriveAll            = 108
-    case kdriveAll              = 109
+    case nextcloudAll = 101
+    case owncloudAll = 102
+    case yandexAll = 103
+    case webdavAll = 104
+    case dropboxAll = 105
+    case googledriveAll = 106
+    case icloudAll = 107
+    case onedriveAll = 108
+    case kdriveAll = 109
 }

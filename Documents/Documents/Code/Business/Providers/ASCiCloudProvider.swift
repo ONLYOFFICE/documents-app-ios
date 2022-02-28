@@ -6,42 +6,37 @@
 //  Copyright © 2020 Ascensio System SIA. All rights reserved.
 //
 
-import UIKit
 import CloudKit
-import FilesProvider
 import FileKit
+import FilesProvider
 import Firebase
+import UIKit
 
 class ASCiCloudProvider: ASCFileProviderProtocol & ASCSortableFileProviderProtocol {
-    
     // MARK: - Properties
-    
+
     var type: ASCFileProviderType {
-        get {
-            return .icloud
-        }
+        return .icloud
     }
+
     var id: String? {
-        get {
-            guard let identifier = identifier else { return nil }
-            return identifier.md5
-        }
+        guard let identifier = identifier else { return nil }
+        return identifier.md5
     }
+
     var rootFolder: ASCFolder {
-        get {
-            return {
-                $0.title = NSLocalizedString("iCloud Drive", comment: "")
-                $0.rootFolderType = .icloudAll
-                $0.id = ""
-                return $0
-            }(ASCFolder())
-        }
+        return {
+            $0.title = NSLocalizedString("iCloud Drive", comment: "")
+            $0.rootFolderType = .icloudAll
+            $0.id = ""
+            return $0
+        }(ASCFolder())
     }
+
     var authorization: String? {
-        get {
-            return nil
-        }
+        return nil
     }
+
     private(set) var hasiCloudAccount = false
 
     var user: ASCUser?
@@ -51,9 +46,9 @@ class ASCiCloudProvider: ASCFileProviderProtocol & ASCSortableFileProviderProtoc
     var delegate: ASCProviderDelegate?
 
     internal var folder: ASCFolder?
-    internal var fetchInfo: [String : Any?]?
+    internal var fetchInfo: [String: Any?]?
     internal var provider: CloudFileProvider?
-    
+
     fileprivate let identifier: String? = (Bundle.main.bundleIdentifier != nil) ? ("iCloud." + Bundle.main.bundleIdentifier!) : nil
     fileprivate lazy var providerOperationDelegate = ASCiCloudProviderDelegate()
     private let watcherQuery = NSMetadataQuery()
@@ -63,21 +58,22 @@ class ASCiCloudProvider: ASCFileProviderProtocol & ASCSortableFileProviderProtoc
         uid: String,
         provider: FileProviderBasic,
         progress: Progress,
-        delegate: ASCiCloudProviderDelegate)] = []
-    
+        delegate: ASCiCloudProviderDelegate
+    )] = []
+
     private let errorProviderUndefined = NSLocalizedString("Unknown file provider", comment: "")
-    
+
     // MARK: - Lifecycle Methods
-    
+
     func initialize(_ complation: ((Bool) -> Void)? = nil) {
         DispatchQueue.global().async { [weak self] in
             guard let strongSelf = self else {
                 complation?(false)
                 return
             }
-            
+
             strongSelf.provider = CloudFileProvider(containerId: strongSelf.identifier, scope: .documents)
-              
+
             DispatchQueue.main.async {
                 strongSelf.userInfo { success, error in
                     DispatchQueue.main.async {
@@ -87,30 +83,30 @@ class ASCiCloudProvider: ASCFileProviderProtocol & ASCSortableFileProviderProtoc
             }
         }
     }
-    
+
     func copy() -> ASCFileProviderProtocol {
         let copy = ASCiCloudProvider()
-        
+
         copy.provider = provider
         copy.items = items
         copy.page = page
         copy.total = total
         copy.delegate = delegate
         copy.deserialize(serialize() ?? "")
-        
+
         return copy
     }
-    
+
     func reset() {
         page = 0
         total = 0
         items.removeAll()
     }
-    
+
     func serialize() -> String? {
         var info: [String: Any] = [
             "type": type.rawValue,
-            "hasiCloudAccount": hasiCloudAccount
+            "hasiCloudAccount": hasiCloudAccount,
         ]
 
         if let user = user {
@@ -129,55 +125,55 @@ class ASCiCloudProvider: ASCFileProviderProtocol & ASCSortableFileProviderProtoc
             if let userJson = json["user"] as? [String: Any] {
                 user = ASCUser(JSON: userJson)
             }
-            
+
             hasiCloudAccount = json["hasiCloudAccount"] as? Bool ?? false
         }
     }
-    
+
     func add(item: ASCEntity, at index: Int) {
         if !items.contains(where: { $0.uid == item.uid }) {
             items.insert(item, at: index)
             total += 1
         }
     }
-    
+
     func add(items: [ASCEntity], at index: Int) {
-        let uniqItems = items.filter { (item) -> Bool in
-            return !self.items.contains(where: { $0.uid == item.uid })
+        let uniqItems = items.filter { item -> Bool in
+            !self.items.contains(where: { $0.uid == item.uid })
         }
         self.items.insert(contentsOf: uniqItems, at: index)
-        self.total += uniqItems.count
+        total += uniqItems.count
     }
-    
+
     func remove(at index: Int) {
         items.remove(at: index)
         total -= 1
     }
-    
+
     /// Fetch an user information
     ///
     /// - Parameter completeon: a closure with result of user or error
     func userInfo(completeon: ASCProviderUserInfoHandler?) {
         let container = CKContainer.default()
-        
-        container.accountStatus() { [weak self] accountStatus, error in
+
+        container.accountStatus { [weak self] accountStatus, error in
             guard let strongSelf = self else {
                 completeon?(false, nil)
                 return
             }
-            
+
             strongSelf.hasiCloudAccount = accountStatus == .available
-            
+
             strongSelf.user = ASCUser()
             strongSelf.user?.userId = strongSelf.identifier
 //            strongSelf.user?.firstName = "iCloud"
 //            strongSelf.user?.lastName = ""
             strongSelf.user?.displayName = "iCloud Drive"
-            
+
             DispatchQueue.main.async {
                 completeon?(true, nil)
             }
-            
+
 //            if accountStatus == .available {
 //
 //                strongSelf.user = ASCUser()
@@ -220,29 +216,29 @@ class ASCiCloudProvider: ASCFileProviderProtocol & ASCSortableFileProviderProtoc
 //            }
         }
     }
-    
+
     /// Sort records
     ///
     /// - Parameters:
     ///   - completeon: a closure with result of sort entries or error
     func updateSort(completeon: ASCProviderCompletionHandler?) {
-        if let sortInfo = fetchInfo?["sort"] as? [String : Any] {
+        if let sortInfo = fetchInfo?["sort"] as? [String: Any] {
             sort(by: sortInfo, entities: &items)
             total = items.count
         }
         completeon?(self, folder, true, nil)
     }
-    
+
     private func directLink(from publicLink: String) -> String? {
-        let getQueryStringParameter: ((String, String) -> String?) = { (url, param) -> String? in
+        let getQueryStringParameter: ((String, String) -> String?) = { url, param -> String? in
             guard let url = URLComponents(string: url) else { return nil }
             return url.queryItems?.first(where: { $0.name == param })?.value
         }
-        
-        let expandParams: (String?) -> String? = { (value) -> String? in
+
+        let expandParams: (String?) -> String? = { value -> String? in
             guard let value = value else { return nil }
             var expandValue = value
-            
+
             if let regex = try? NSRegularExpression(pattern: "\\$\\{(\\w+)\\}", options: []) {
                 let matches = regex.matches(in: value,
                                             options: [],
@@ -250,7 +246,7 @@ class ASCiCloudProvider: ASCFileProviderProtocol & ASCSortableFileProviderProtoc
                 for match in matches {
                     let stringKey = String(value[Range(match.range, in: value)!])
                     let queryKey = stringKey.trimmingCharacters(in: CharacterSet.letters.inverted)
-                    
+
                     if let value = getQueryStringParameter(publicLink, queryKey) {
                         expandValue = expandValue.replacingOccurrences(of: stringKey, with: value)
                     }
@@ -258,7 +254,7 @@ class ASCiCloudProvider: ASCFileProviderProtocol & ASCSortableFileProviderProtoc
             }
             return expandValue
         }
-  
+
         return expandParams(getQueryStringParameter(publicLink, "u"))
     }
 
@@ -268,16 +264,16 @@ class ASCiCloudProvider: ASCFileProviderProtocol & ASCSortableFileProviderProtoc
     ///   - folder: target directory
     ///   - parameters: dictionary of settings for searching and sorting or any other information
     ///   - completeon: a closure with result of directory entries or error
-    func fetch(for folder: ASCFolder, parameters: [String : Any?], completeon: ASCProviderCompletionHandler?) {
+    func fetch(for folder: ASCFolder, parameters: [String: Any?], completeon: ASCProviderCompletionHandler?) {
         guard let provider = provider else {
             completeon?(self, folder, false, nil)
             return
         }
-        
+
         self.folder = folder
 
         let fetch: ((_ completeon: ASCProviderCompletionHandler?) -> Void) = { [weak self] completeon in
-            
+
             var query = NSPredicate(format: "TRUEPREDICATE")
 
             // Search
@@ -288,14 +284,14 @@ class ASCiCloudProvider: ASCFileProviderProtocol & ASCSortableFileProviderProtoc
             {
                 query = NSPredicate(format: "(name BEGINSWITH[c] %@)", text.lowercased())
             }
-            
+
             provider.searchFiles(
                 path: folder.id,
                 recursive: false,
                 query: query,
-                foundItemHandler: nil)
-            { [weak self] objects, error in
-                DispatchQueue.main.async(execute: { [weak self] in
+                foundItemHandler: nil
+            ) { [weak self] objects, error in
+                DispatchQueue.main.async { [weak self] in
                     guard let strongSelf = self else { return }
 
                     if let error = error {
@@ -328,7 +324,7 @@ class ASCiCloudProvider: ASCFileProviderProtocol & ASCSortableFileProviderProtoc
                             cloudFolder.parentId = folder.id
 
                             return cloudFolder
-                    }
+                        }
 
                     files = objects
                         .filter { !$0.isDirectory && !$0.isSymLink && !$0.isHidden }
@@ -352,7 +348,7 @@ class ASCiCloudProvider: ASCFileProviderProtocol & ASCSortableFileProviderProtoc
                             cloudFile.pureContentLength = Int(fileSize)
 
                             return cloudFile
-                    }
+                        }
 
                     // Hotfix view url of media files
                     let mediaFiles = files.filter { file in
@@ -385,18 +381,18 @@ class ASCiCloudProvider: ASCFileProviderProtocol & ASCSortableFileProviderProtoc
 
                     // Sort
                     strongSelf.fetchInfo = parameters
-                    
-                    if let sortInfo = parameters["sort"] as? [String : Any] {
+
+                    if let sortInfo = parameters["sort"] as? [String: Any] {
                         self?.sort(by: sortInfo, folders: &folders, files: &files)
                     }
 
                     strongSelf.items = folders as [ASCEntity] + files as [ASCEntity]
                     strongSelf.total = strongSelf.items.count
-                    
+
                     strongSelf.registerNotifcation(path: folder.id)
 
                     completeon?(strongSelf, folder, true, nil)
-                })
+                }
             }
         }
 
@@ -413,26 +409,26 @@ class ASCiCloudProvider: ASCFileProviderProtocol & ASCSortableFileProviderProtoc
             }
         }
     }
-    
+
     func absoluteUrl(from string: String?) -> URL? {
         guard
             let path = string,
             let provider = provider
         else { return nil }
-        
+
         // Public link
         if path.hasPrefix("http"), let validUrl = path.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) {
             return URL(string: validUrl)
         }
-        
+
         // Local path
         return provider.url(of: path)
     }
-    
+
     func relativePathOf(url: URL) -> String? {
         return provider?.relativePathOf(url: url)
     }
-    
+
     func download(_ path: String, to destinationURL: URL, processing: @escaping NetworkProgressHandler) {
         guard let provider = provider else {
             processing(nil, 0, nil)
@@ -446,7 +442,7 @@ class ASCiCloudProvider: ASCFileProviderProtocol & ASCSortableFileProviderProtoc
                 processing(nil, 0, nil)
                 return
             }
-            
+
             if let localProvider = provider.copy() as? CloudFileProvider {
                 let handlerUid = UUID().uuidString
                 let operationDelegate = ASCiCloudProviderDelegate()
@@ -455,7 +451,7 @@ class ASCiCloudProvider: ASCFileProviderProtocol & ASCSortableFileProviderProtoc
                         self?.operationHendlers.remove(at: processIndex)
                     }
                 }
-                
+
                 operationDelegate.onSucceed = { fileProvider, operation in
                     DispatchQueue.main.async {
                         processing(destinationURL, 1.0, nil)
@@ -473,9 +469,9 @@ class ASCiCloudProvider: ASCFileProviderProtocol & ASCSortableFileProviderProtoc
                         processing(nil, Double(progress), nil)
                     }
                 }
-                
+
                 localProvider.delegate = operationDelegate
-                
+
                 do {
                     if FileManager.default.fileExists(atPath: destinationURL.path) {
                         try FileManager.default.removeItem(at: destinationURL)
@@ -485,24 +481,25 @@ class ASCiCloudProvider: ASCFileProviderProtocol & ASCSortableFileProviderProtoc
                     processing(nil, 1.0, error)
                     return
                 }
-                
+
                 downloadProgress = localProvider.copyItem(path: path, toLocalURL: destinationURL, completionHandler: { error in
                     if let error = error {
                         log.error(error.localizedDescription)
-                        
+
                         DispatchQueue.main.async {
                             processing(nil, 1.0, error)
                         }
                         cleanupHendler(handlerUid)
                     }
                 })
-                
+
                 if let localProgress = downloadProgress {
                     strongSelf.operationHendlers.append((
                         uid: handlerUid,
                         provider: localProvider,
                         progress: localProgress,
-                        delegate: operationDelegate))
+                        delegate: operationDelegate
+                    ))
                 }
             } else {
                 DispatchQueue.main.async {
@@ -511,7 +508,7 @@ class ASCiCloudProvider: ASCFileProviderProtocol & ASCSortableFileProviderProtoc
             }
         }
     }
-    
+
     func modify(_ path: String, data: Data, params: [String: Any]?, processing: @escaping NetworkProgressHandler) {
         guard let provider = provider else {
             processing(nil, 0, nil)
@@ -522,7 +519,7 @@ class ASCiCloudProvider: ASCFileProviderProtocol & ASCSortableFileProviderProtoc
             self?.operationProcess = nil
 
             self?.attributesOfItem(path: path, completionHandler: { fileObject, error in
-                DispatchQueue.main.async(execute: { [weak self] in
+                DispatchQueue.main.async { [weak self] in
                     if let error = error {
                         processing(nil, 1.0, error)
                     } else if let fileObject = fileObject {
@@ -549,7 +546,7 @@ class ASCiCloudProvider: ASCFileProviderProtocol & ASCSortableFileProviderProtoc
                     } else {
                         processing(nil, 1.0, nil)
                     }
-                })
+                }
             })
         }
         providerOperationDelegate.onFailed = { [weak self] fileProvider, operation, error in
@@ -590,7 +587,7 @@ class ASCiCloudProvider: ASCFileProviderProtocol & ASCSortableFileProviderProtoc
 
         do {
             try data.write(to: dummyFilePath, atomically: true)
-        } catch(let error) {
+        } catch {
             processing(nil, 1, error)
             return
         }
@@ -605,29 +602,29 @@ class ASCiCloudProvider: ASCFileProviderProtocol & ASCSortableFileProviderProtoc
                 }
                 return
             }
-            
+
             if let localProvider = provider.copy() as? CloudFileProvider {
                 let handlerUid = UUID().uuidString
                 let operationDelegate = ASCiCloudProviderDelegate()
-                
+
                 let cleanupHendler: (String) -> Void = { [weak self] uid in
                     if let processIndex = self?.operationHendlers.firstIndex(where: { $0.uid == uid }) {
                         self?.operationHendlers.remove(at: processIndex)
                     }
                 }
-                
+
                 operationDelegate.onSucceed = { fileProvider, operation in
                     self?.attributesOfItem(path: dstPath, completionHandler: { fileObject, error in
-                        DispatchQueue.main.async(execute: { [weak self] in
+                        DispatchQueue.main.async { [weak self] in
                             if let error = error {
                                 processing(nil, 1.0, error)
                             } else if let fileObject = fileObject {
                                 let fileSize: UInt64 = (fileObject.size < 0) ? 0 : UInt64(fileObject.size)
-                                
+
                                 let parent = ASCFolder()
                                 parent.id = path
                                 parent.title = (path as NSString).lastPathComponent
-                                
+
                                 let cloudFile = ASCFile()
                                 cloudFile.id = fileObject.path
                                 cloudFile.rootFolderType = .icloudAll
@@ -640,14 +637,14 @@ class ASCiCloudProvider: ASCFileProviderProtocol & ASCSortableFileProviderProtoc
                                 cloudFile.viewUrl = fileObject.path
                                 cloudFile.displayContentLength = String.fileSizeToString(with: fileSize)
                                 cloudFile.pureContentLength = Int(fileSize)
-                                
+
                                 processing(cloudFile, 1.0, nil)
                             } else {
                                 processing(nil, 1.0, nil)
                             }
                             ASCLocalFileHelper.shared.removeFile(dummyFilePath)
                             cleanupHendler(handlerUid)
-                        })
+                        }
                     })
                 }
                 operationDelegate.onFailed = { fileProvider, operation, error in
@@ -661,13 +658,13 @@ class ASCiCloudProvider: ASCFileProviderProtocol & ASCSortableFileProviderProtoc
                     localProgress = max(localProgress, progress)
                     processing(nil, Double(localProgress), nil)
                 }
-                
+
                 localProvider.delegate = operationDelegate
-                
+
                 uploadProgress = localProvider.copyItem(localFile: dummyFilePath.url, to: dstPath) { error in
                     if let error = error {
                         log.error(error.localizedDescription)
-                        
+
                         DispatchQueue.main.async {
                             processing(nil, 1.0, error)
                         }
@@ -675,13 +672,14 @@ class ASCiCloudProvider: ASCFileProviderProtocol & ASCSortableFileProviderProtoc
                         cleanupHendler(handlerUid)
                     }
                 }
-                
+
                 if let localProgress = uploadProgress {
                     strongSelf.operationHendlers.append((
                         uid: handlerUid,
                         provider: localProvider,
                         progress: localProgress,
-                        delegate: operationDelegate))
+                        delegate: operationDelegate
+                    ))
                 }
             } else {
                 DispatchQueue.main.async {
@@ -701,19 +699,19 @@ class ASCiCloudProvider: ASCFileProviderProtocol & ASCSortableFileProviderProtoc
             ?? name + "." + fileExtension
 
         // Copy empty template to desination path
-        if  let templatePath = ASCFileManager.documentTemplatePath(with: fileExtension) {
+        if let templatePath = ASCFileManager.documentTemplatePath(with: fileExtension) {
             let localUrl = Path(templatePath).url
             let remotePath = (Path(folder.id) + fileTitle).rawValue
 
             operationProcess = provider.copyItem(localFile: localUrl, to: remotePath) { [weak self] error in
-                DispatchQueue.main.async(execute: { [weak self] in
+                DispatchQueue.main.async { [weak self] in
                     guard let strongSelf = self else { return }
                     if let error = error {
                         log.error(error.localizedDescription)
                         completeon?(strongSelf, nil, false, ASCProviderError(msg: error.localizedDescription))
                     } else {
                         self?.attributesOfItem(path: remotePath, completionHandler: { [weak self] fileObject, error in
-                            DispatchQueue.main.async(execute: { [weak self] in
+                            DispatchQueue.main.async { [weak self] in
                                 guard let strongSelf = self else { return }
 
                                 if let error = error {
@@ -737,18 +735,17 @@ class ASCiCloudProvider: ASCFileProviderProtocol & ASCSortableFileProviderProtoc
                                         ASCAnalytics.Event.Key.portal: "icloud",
                                         ASCAnalytics.Event.Key.onDevice: false,
                                         ASCAnalytics.Event.Key.type: ASCAnalytics.Event.Value.file,
-                                        ASCAnalytics.Event.Key.fileExt: cloudFile.title.fileExtension().lowercased()
-                                        ]
-                                    )
+                                        ASCAnalytics.Event.Key.fileExt: cloudFile.title.fileExtension().lowercased(),
+                                    ])
 
                                     completeon?(strongSelf, cloudFile, true, nil)
                                 } else {
                                     completeon?(strongSelf, nil, false, nil)
                                 }
-                            })
+                            }
                         })
                     }
-                })
+                }
             }
         }
     }
@@ -760,16 +757,15 @@ class ASCiCloudProvider: ASCFileProviderProtocol & ASCSortableFileProviderProtoc
     func createFile(_ name: String, in folder: ASCFolder, data: Data, params: [String: Any]?, processing: @escaping NetworkProgressHandler) {
         let fileTitle = resolve(fileTitle: name, for: items.filter { $0 is ASCFile } as? [ASCFile] ?? []) ?? name
         let path = (Path(folder.id) + fileTitle).rawValue
-        
+
         upload(path, data: data, overwrite: false, params: nil) { result, progress, error in
             if let _ = result {
                 ASCAnalytics.logEvent(ASCConstants.Analytics.Event.createEntity, parameters: [
                     ASCAnalytics.Event.Key.portal: "icloud",
                     ASCAnalytics.Event.Key.onDevice: false,
                     ASCAnalytics.Event.Key.type: ASCAnalytics.Event.Value.file,
-                    ASCAnalytics.Event.Key.fileExt: name.fileExtension()
-                    ]
-                )
+                    ASCAnalytics.Event.Key.fileExt: name.fileExtension(),
+                ])
             }
             processing(result, progress, error)
         }
@@ -780,14 +776,14 @@ class ASCiCloudProvider: ASCFileProviderProtocol & ASCSortableFileProviderProtoc
             completeon?(self, nil, false, ASCProviderError(msg: errorProviderUndefined))
             return
         }
-        
+
         let folderTitle = resolve(folderTitle: name, for: items.filter { $0 is ASCFolder } as? [ASCFolder] ?? [])
             ?? name
 
         provider.create(folder: folderTitle, at: folder.id) { [weak self] error in
-            DispatchQueue.main.async(execute: { [weak self] in
+            DispatchQueue.main.async { [weak self] in
                 guard let strongSelf = self else { return }
-                
+
                 if let error = error {
                     completeon?(strongSelf, nil, false, error)
                 } else {
@@ -808,16 +804,15 @@ class ASCiCloudProvider: ASCFileProviderProtocol & ASCSortableFileProviderProtoc
                     ASCAnalytics.logEvent(ASCConstants.Analytics.Event.createEntity, parameters: [
                         ASCAnalytics.Event.Key.portal: "icloud",
                         ASCAnalytics.Event.Key.onDevice: false,
-                        ASCAnalytics.Event.Key.type: ASCAnalytics.Event.Value.folder
-                        ]
-                    )
+                        ASCAnalytics.Event.Key.type: ASCAnalytics.Event.Value.folder,
+                    ])
 
                     completeon?(strongSelf, cloudFolder, true, nil)
                 }
-            })
+            }
         }
     }
-    
+
     func rename(_ entity: ASCEntity, to newName: String, completeon: ASCProviderCompletionHandler?) {
         guard let provider = provider else {
             completeon?(self, nil, false, ASCProviderError(msg: errorProviderUndefined))
@@ -827,7 +822,7 @@ class ASCiCloudProvider: ASCFileProviderProtocol & ASCSortableFileProviderProtoc
         let file = entity as? ASCFile
         let folder = entity as? ASCFolder
 
-        if file == nil && folder == nil {
+        if file == nil, folder == nil {
             completeon?(self, nil, false, ASCProviderError(msg: NSLocalizedString("Unknown item type.", comment: "")))
             return
         }
@@ -848,7 +843,7 @@ class ASCiCloudProvider: ASCFileProviderProtocol & ASCSortableFileProviderProtoc
         }
 
         provider.moveItem(path: oldPath.rawValue, to: newPath.rawValue, overwrite: false) { [weak self] error in
-            DispatchQueue.main.async(execute: { [weak self] in
+            DispatchQueue.main.async { [weak self] in
                 guard let strongSelf = self else { return }
 
                 if let error = error {
@@ -868,10 +863,10 @@ class ASCiCloudProvider: ASCFileProviderProtocol & ASCSortableFileProviderProtoc
                         completeon?(strongSelf, nil, false, ASCProviderError(msg: NSLocalizedString("Unknown item type.", comment: "")))
                     }
                 }
-            })
+            }
         }
     }
-    
+
     func delete(_ entities: [ASCEntity], from folder: ASCFolder, move: Bool?, completeon: ASCProviderCompletionHandler?) {
         guard let provider = provider else {
             completeon?(self, nil, false, ASCProviderError(msg: errorProviderUndefined))
@@ -903,12 +898,12 @@ class ASCiCloudProvider: ASCFileProviderProtocol & ASCSortableFileProviderProtoc
         operationQueue.addOperation { [weak self] in
             guard let strongSelf = self else { return }
 
-            DispatchQueue.main.async(execute: {
+            DispatchQueue.main.async {
                 completeon?(strongSelf, results, results.count > 0, lastError)
-            })
+            }
         }
     }
-    
+
     func chechTransfer(items: [ASCEntity], to folder: ASCFolder, handler: ASCEntityHandler? = nil) {
 //        guard let provider = provider else {
 //            handler?(.error, nil, ASCProviderError(msg: errorProviderUndefined).localizedDescription)
@@ -928,7 +923,7 @@ class ASCiCloudProvider: ASCFileProviderProtocol & ASCSortableFileProviderProtoc
                 let destPath = NSString(string: folder.id).appendingPathComponent(NSString(string: entity.id).lastPathComponent)
 
                 self?.attributesOfItem(path: destPath, completionHandler: { object, error in
-                    if nil == error {
+                    if error == nil {
                         conflictItems.append(entity)
                     }
                     semaphore.signal()
@@ -938,12 +933,12 @@ class ASCiCloudProvider: ASCFileProviderProtocol & ASCSortableFileProviderProtoc
         }
 
         operationQueue.addOperation {
-            DispatchQueue.main.async(execute: {
+            DispatchQueue.main.async {
                 handler?(.end, conflictItems, nil)
-            })
+            }
         }
     }
-    
+
     func transfer(items: [ASCEntity], to folder: ASCFolder, move: Bool, overwrite: Bool, handler: ASCEntityProgressHandler?) {
         var cancel = false
 
@@ -963,9 +958,9 @@ class ASCiCloudProvider: ASCFileProviderProtocol & ASCSortableFileProviderProtoc
         for (index, entity) in items.enumerated() {
             operationQueue.addOperation {
                 if cancel {
-                    DispatchQueue.main.async(execute: {
+                    DispatchQueue.main.async {
                         handler?(.end, 1, results, lastError?.localizedDescription, &cancel)
-                    })
+                    }
                     return
                 }
 
@@ -979,9 +974,9 @@ class ASCiCloudProvider: ASCFileProviderProtocol & ASCSortableFileProviderProtoc
                         } else {
                             results.append(entity)
                         }
-                        DispatchQueue.main.async(execute: {
+                        DispatchQueue.main.async {
                             handler?(.progress, Float(index) / Float(items.count), entity, error?.localizedDescription, &cancel)
-                        })
+                        }
                         semaphore.signal()
                     })
                 } else {
@@ -991,9 +986,9 @@ class ASCiCloudProvider: ASCFileProviderProtocol & ASCSortableFileProviderProtoc
                         } else {
                             results.append(entity)
                         }
-                        DispatchQueue.main.async(execute: {
+                        DispatchQueue.main.async {
                             handler?(.progress, Float(index + 1) / Float(items.count), entity, error?.localizedDescription, &cancel)
-                        })
+                        }
                         semaphore.signal()
                     })
                 }
@@ -1002,22 +997,22 @@ class ASCiCloudProvider: ASCFileProviderProtocol & ASCSortableFileProviderProtoc
         }
 
         operationQueue.addOperation {
-            DispatchQueue.main.async(execute: {
+            DispatchQueue.main.async {
                 if items.count == results.count {
                     handler?(.end, 1, results, nil, &cancel)
                 } else {
                     handler?(.end, 1, results, lastError?.localizedDescription, &cancel)
                 }
-            })
+            }
         }
     }
-    
+
     // MARK: - Access
 
     func allowRead(entity: AnyObject?) -> Bool {
         return true
     }
-    
+
     func allowEdit(entity: AnyObject?) -> Bool {
         return true
     }
@@ -1042,17 +1037,17 @@ class ASCiCloudProvider: ASCFileProviderProtocol & ASCSortableFileProviderProtoc
         var entityActions: ASCEntityActions = []
 
         if let file = file {
-            let fileExtension   = file.title.fileExtension().lowercased()
-            let canRead         = allowRead(entity: file)
-            let canEdit         = allowEdit(entity: file)
-            let canDelete       = allowDelete(entity: file)
-            let canOpenEditor   = ASCConstants.FileExtensions.documents.contains(fileExtension) ||
-                                  ASCConstants.FileExtensions.spreadsheets.contains(fileExtension) ||
-                                  ASCConstants.FileExtensions.presentations.contains(fileExtension) ||
-                                  ASCConstants.FileExtensions.forms.contains(fileExtension)
-            let canPreview      = canOpenEditor ||
-                                  ASCConstants.FileExtensions.images.contains(fileExtension) ||
-                                  fileExtension == "pdf"
+            let fileExtension = file.title.fileExtension().lowercased()
+            let canRead = allowRead(entity: file)
+            let canEdit = allowEdit(entity: file)
+            let canDelete = allowDelete(entity: file)
+            let canOpenEditor = ASCConstants.FileExtensions.documents.contains(fileExtension) ||
+                ASCConstants.FileExtensions.spreadsheets.contains(fileExtension) ||
+                ASCConstants.FileExtensions.presentations.contains(fileExtension) ||
+                ASCConstants.FileExtensions.forms.contains(fileExtension)
+            let canPreview = canOpenEditor ||
+                ASCConstants.FileExtensions.images.contains(fileExtension) ||
+                fileExtension == "pdf"
 
             if canRead {
                 entityActions.insert([.copy, .export])
@@ -1070,7 +1065,7 @@ class ASCiCloudProvider: ASCFileProviderProtocol & ASCSortableFileProviderProtoc
                 entityActions.insert(.open)
             }
 
-            if canEdit && canOpenEditor && UIDevice.allowEditor {
+            if canEdit, canOpenEditor, UIDevice.allowEditor {
                 entityActions.insert(.edit)
             }
         }
@@ -1082,9 +1077,9 @@ class ASCiCloudProvider: ASCFileProviderProtocol & ASCSortableFileProviderProtoc
         var entityActions: ASCEntityActions = []
 
         if let folder = folder {
-            let canRead         = allowRead(entity: folder)
-            let canEdit         = allowEdit(entity: folder)
-            let canDelete       = allowDelete(entity: folder)
+            let canRead = allowRead(entity: folder)
+            let canEdit = allowEdit(entity: folder)
+            let canDelete = allowDelete(entity: folder)
 
             if canEdit {
                 entityActions.insert(.rename)
@@ -1094,7 +1089,7 @@ class ASCiCloudProvider: ASCFileProviderProtocol & ASCSortableFileProviderProtoc
                 entityActions.insert(.copy)
             }
 
-            if canEdit && canDelete {
+            if canEdit, canDelete {
                 entityActions.insert(.move)
             }
 
@@ -1105,13 +1100,13 @@ class ASCiCloudProvider: ASCFileProviderProtocol & ASCSortableFileProviderProtoc
 
         return entityActions
     }
-    
+
     // MARK: - Open file
 
     func open(file: ASCFile, viewMode: Bool = false) {
-        let title           = file.title
-        let fileExt         = title.fileExtension().lowercased()
-        let allowOpen       = ASCConstants.FileExtensions.allowEdit.contains(fileExt)
+        let title = file.title
+        let fileExt = title.fileExtension().lowercased()
+        let allowOpen = ASCConstants.FileExtensions.allowEdit.contains(fileExt)
 
         if allowOpen {
             let editMode = !viewMode && UIDevice.allowEditor
@@ -1123,11 +1118,11 @@ class ASCiCloudProvider: ASCFileProviderProtocol & ASCSortableFileProviderProtoc
     }
 
     func preview(file: ASCFile, files: [ASCFile]?, in view: UIView?) {
-        let title           = file.title
-        let fileExt         = title.fileExtension().lowercased()
-        let isPdf           = fileExt == "pdf"
-        let isImage         = ASCConstants.FileExtensions.images.contains(fileExt)
-        let isVideo         = ASCConstants.FileExtensions.videos.contains(fileExt)
+        let title = file.title
+        let fileExt = title.fileExtension().lowercased()
+        let isPdf = fileExt == "pdf"
+        let isImage = ASCConstants.FileExtensions.images.contains(fileExt)
+        let isVideo = ASCConstants.FileExtensions.videos.contains(fileExt)
 
         if isPdf {
             let openHandler = delegate?.openProgress(file: file, title: NSLocalizedString("Downloading", comment: "Caption of the processing") + "...", 0.15)
@@ -1141,55 +1136,55 @@ class ASCiCloudProvider: ASCFileProviderProtocol & ASCSortableFileProviderProtoc
             }
         }
     }
-    
+
     // MARK: - Helpers
-    
+
     private func resolve(fileTitle: String, for files: [ASCFile]) -> String? {
         let fileName = fileTitle.fileName()
         let fileExtension = fileTitle.fileExtension()
         let conflict: (String) -> Bool = { title in
-           return files.contains(where: { $0.title == title } )
+            files.contains(where: { $0.title == title })
         }
-        
+
         var resolveTitle = fileTitle
-        
+
         // Add postfix if file exist
         if conflict(resolveTitle) {
-            for index in 2...100 {
+            for index in 2 ... 100 {
                 resolveTitle = (fileName + "-\(index)." + fileExtension)
-                
+
                 if !conflict(resolveTitle) {
                     return resolveTitle
                 }
             }
         }
-        
+
         return conflict(resolveTitle) ? nil : resolveTitle
     }
-    
+
     private func resolve(folderTitle: String, for folders: [ASCFolder]) -> String? {
         let conflict: (String) -> Bool = { title in
-           return folders.contains(where: { $0.title == title } )
+            folders.contains(where: { $0.title == title })
         }
-        
+
         var resolveTitle = folderTitle
-        
+
         // Add postfix if folder exist
         if conflict(resolveTitle) {
-            for index in 2...100 {
+            for index in 2 ... 100 {
                 resolveTitle = folderTitle + "-\(index)"
-                
+
                 if !conflict(resolveTitle) {
                     return resolveTitle
                 }
             }
         }
-        
+
         return conflict(resolveTitle) ? nil : resolveTitle
     }
-    
+
     // MARK: - File watcher
-    
+
     /// Starts monitoring a path and its subpaths, including files and folders, for any change,
     /// including copy, move/rename, content changes, etc.
     ///
@@ -1200,26 +1195,25 @@ class ASCiCloudProvider: ASCFileProviderProtocol & ASCSortableFileProviderProtoc
         guard let provider = provider else {
             return
         }
-            
+
         unregisterNotifcation(path: path)
         let pathURL = provider.url(of: path)
         watcherQuery.predicate = NSPredicate(format: "(%K BEGINSWITH %@)", NSMetadataItemPathKey, pathURL.path)
         watcherQuery.valueListAttributes = []
         watcherQuery.searchScopes = [provider.scope.rawValue]
-        
-        
+
         watcherObserver = NotificationCenter.default.addObserver(forName: .NSMetadataQueryDidUpdate, object: watcherQuery, queue: nil, using: { [weak self] notification in
             guard let strongSelf = self else { return }
             strongSelf.watcherQuery.disableUpdates()
             strongSelf.handleWatchUpdate(notification)
             strongSelf.watcherQuery.enableUpdates()
         })
-        
+
         DispatchQueue.main.async { [weak self] in
             self?.watcherQuery.start()
         }
     }
-    
+
     /// Stops monitoring the path.
     ///
     /// - Parameter path: path of directory.
@@ -1228,29 +1222,29 @@ class ASCiCloudProvider: ASCFileProviderProtocol & ASCSortableFileProviderProtoc
             watcherQuery.disableUpdates()
             watcherQuery.stop()
         }
-        
+
         if let observer = watcherObserver {
             NotificationCenter.default.removeObserver(observer)
         }
     }
-    
+
     private func handleWatchUpdate(_ notification: Notification) {
         guard let folder = folder else { return }
-       
-        let isOwnerEntity: ((ASCEntity) -> Bool) = { (entity) -> Bool in
+
+        let isOwnerEntity: ((ASCEntity) -> Bool) = { entity -> Bool in
             guard
                 let parentPath = (entity as? ASCFolder)?.parent?.id ?? (entity as? ASCFile)?.parent?.id
             else { return false }
-            
+
             return folder.id == parentPath
         }
-        
+
         let attributes = [
             NSMetadataItemURLKey, NSMetadataItemFSNameKey, NSMetadataItemPathKey,
             NSMetadataItemFSSizeKey, NSMetadataItemContentTypeTreeKey, NSMetadataItemFSCreationDateKey,
-            NSMetadataItemFSContentChangeDateKey
+            NSMetadataItemFSContentChangeDateKey,
         ]
-        
+
         /// Filter changes only for current folder
         let addedItems = (notification.userInfo?[NSMetadataQueryUpdateAddedItemsKey] as? [NSMetadataItem] ?? [])
             .compactMap { mapEntity(attributes: $0.values(forAttributes: attributes) ?? [:]) }
@@ -1261,26 +1255,26 @@ class ASCiCloudProvider: ASCFileProviderProtocol & ASCSortableFileProviderProtoc
         let removedItems = (notification.userInfo?[NSMetadataQueryUpdateRemovedItemsKey] as? [NSMetadataItem] ?? [])
             .compactMap { mapEntity(attributes: $0.values(forAttributes: attributes) ?? [:]) }
             .filter { isOwnerEntity($0) }
-        
+
         /// Have any change
         if addedItems.count + changedItems.count + removedItems.count > 0 {
 //            fetch(for: folder, parameters: fetchInfo ?? [:]) { [weak self] provider, folder, success, error in
 //                guard let strongSelf = self else { return }
 //                strongSelf.delegate?.updateItems(provider: strongSelf)
 //            }
-            
+
             for newItem in addedItems {
-                if nil == items.firstIndex(where: { $0.id == newItem.id }) {
+                if items.firstIndex(where: { $0.id == newItem.id }) == nil {
                     items.append(newItem)
                 }
             }
-            
+
             for removeItem in removedItems {
                 if let removeIndex = items.firstIndex(where: { $0.id == removeItem.id }) {
                     items.remove(at: removeIndex)
                 }
             }
-            
+
             for updateItem in changedItems {
                 if let updateIndex = items.firstIndex(where: { $0.id == updateItem.id }) {
                     items[updateIndex] = updateItem
@@ -1289,34 +1283,34 @@ class ASCiCloudProvider: ASCFileProviderProtocol & ASCSortableFileProviderProtoc
 
             var folders: [ASCFolder] = items.filter { $0 is ASCFolder } as? [ASCFolder] ?? []
             var files: [ASCFile] = items.filter { $0 is ASCFile } as? [ASCFile] ?? []
-            
+
             let defaultSortInfo = [
                 "type": "dateandtime",
-                "order": "descending"
+                "order": "descending",
             ]
-            let sortInfo = fetchInfo?["sort"] as? [String : Any] ?? defaultSortInfo
+            let sortInfo = fetchInfo?["sort"] as? [String: Any] ?? defaultSortInfo
             sort(by: sortInfo, folders: &folders, files: &files)
-            
+
             items = folders as [ASCEntity] + files as [ASCEntity]
             total = items.count
 
             delegate?.updateItems(provider: self)
         }
     }
-    
+
     private func mapEntity(attributes attribs: [String: Any]) -> ASCEntity? {
         guard
             let provider = provider,
             let url = (attribs[NSMetadataItemURLKey] as? URL)?.standardizedFileURL,
             let name = attribs[NSMetadataItemFSNameKey] as? String
         else { return nil }
-        
+
         let path = provider.relativePathOf(url: url)
         let isFolder = (attribs[NSMetadataItemContentTypeTreeKey] as? [String])?.contains("public.folder") ?? false
         let size = (attribs[NSMetadataItemFSSizeKey] as? NSNumber)?.int64Value ?? -1
         let creationDate = attribs[NSMetadataItemFSCreationDateKey] as? Date
         let modifiedDate = attribs[NSMetadataItemFSContentChangeDateKey] as? Date
-        
+
         let parent = ASCFolder()
         parent.id = path.deletingLastPathComponent.replacingOccurrences(of: provider.baseURL?.path ?? "", with: "")
 
@@ -1350,27 +1344,26 @@ class ASCiCloudProvider: ASCFileProviderProtocol & ASCSortableFileProviderProtoc
             return file
         }
     }
-    
+
     private func attributesOfItem(path: String, completionHandler: @escaping (_ attributes: FileObject?, _ error: Error?) -> Void) {
         guard let provider = provider else {
             completionHandler(nil, ASCProviderError(msg: errorProviderUndefined))
             return
         }
-        
+
         let query = NSPredicate(format: "TRUEPREDICATE")
-        provider.searchFiles(path: path, recursive: true, query: query, foundItemHandler: nil, completionHandler: { (files, error) in
+        provider.searchFiles(path: path, recursive: true, query: query, foundItemHandler: nil, completionHandler: { files, error in
             completionHandler(files.first, error)
         })
     }
-    
 }
 
 // MARK: - FileProvider Delegate
 
 class ASCiCloudProviderDelegate: FileProviderDelegate {
-    var onSucceed:((_ fileProvider: FileProviderOperations, _ operation: FileOperationType) -> Void)?
-    var onFailed:((_ fileProvider: FileProviderOperations, _ operation: FileOperationType, _ error: Error) -> Void)?
-    var onProgress:((_ fileProvider: FileProviderOperations, _ operation: FileOperationType, _ progress: Float) -> Void)?
+    var onSucceed: ((_ fileProvider: FileProviderOperations, _ operation: FileOperationType) -> Void)?
+    var onFailed: ((_ fileProvider: FileProviderOperations, _ operation: FileOperationType, _ error: Error) -> Void)?
+    var onProgress: ((_ fileProvider: FileProviderOperations, _ operation: FileOperationType, _ progress: Float) -> Void)?
 
     func fileproviderSucceed(_ fileProvider: FileProviderOperations, operation: FileOperationType) {
         log.info("\(String(describing: fileProvider)): \(operation) - Success")

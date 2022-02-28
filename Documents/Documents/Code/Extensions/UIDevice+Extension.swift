@@ -10,32 +10,32 @@ import UIKit
 
 enum ScreenInches: CGFloat {
     case inches35 = 480 // iPhone 4s
-    case inches4  = 568 // iPhone SE
+    case inches4 = 568 // iPhone SE
     case inches47 = 667 // iPhone 7
     case inches55 = 736 // iPhone 7 Plus
 }
 
 extension UIDevice {
     static var phone: Bool {
-        return self.current.userInterfaceIdiom == .phone
+        return current.userInterfaceIdiom == .phone
     }
-    
+
     static var pad: Bool {
-        return self.current.userInterfaceIdiom == .pad
+        return current.userInterfaceIdiom == .pad
     }
-    
+
     static var height: CGFloat {
         return max(UIScreen.main.bounds.width, UIScreen.main.bounds.height)
     }
-    
+
     static func greatOfInches(_ inches: ScreenInches) -> Bool {
         return UIDevice.height >= inches.rawValue
     }
-    
+
     static var screenPixel: CGFloat {
-        return 1.0 / UIScreen.main.scale;
+        return 1.0 / UIScreen.main.scale
     }
-    
+
     static var platform: String {
         var sysinfo = utsname()
         uname(&sysinfo) // ignore return value
@@ -48,11 +48,11 @@ extension UIDevice {
 
     static var allowEditor: Bool {
         let allUnsupportedDevicesForEdit: [Device] = [
-            .iPhone4, .iPhone4s, .iPad2, .iPad3
+            .iPhone4, .iPhone4s, .iPad2, .iPad3,
         ]
         return !device.isOneOf(allUnsupportedDevicesForEdit)
     }
-    
+
     static var displayName: String {
         return UIDevice.current.name
     }

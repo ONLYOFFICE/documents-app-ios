@@ -6,60 +6,59 @@
 //  Copyright © 2021 Ascensio System SIA. All rights reserved.
 //
 
-import UIKit
-import SkyFloatingLabelTextField
-import MBProgressHUD
 import Alamofire
 import IQKeyboardManagerSwift
+import MBProgressHUD
+import SkyFloatingLabelTextField
+import UIKit
 
 class ASCPasswordRecoveryViewController: ASCBaseViewController {
-    
-    class override var storyboard: Storyboard { return Storyboard.login }
-    
+    override class var storyboard: Storyboard { return Storyboard.login }
+
     // MARK: - Outlets
-    
-    @IBOutlet weak var recoveryTitle: UILabel!
-    @IBOutlet weak var instruction: UILabel!
-    @IBOutlet weak var emailTextField: SkyFloatingLabelTextField!
-    @IBOutlet weak var sendButton: ASCButtonStyle!
-    
+
+    @IBOutlet var recoveryTitle: UILabel!
+    @IBOutlet var instruction: UILabel!
+    @IBOutlet var emailTextField: SkyFloatingLabelTextField!
+    @IBOutlet var sendButton: ASCButtonStyle!
+
     // MARK: - Properties
-    
+
     private let portal: String? = nil
-    private var responseText: String? = nil
-    
+    private var responseText: String?
+
     // MARK: - Lifecycle Methods
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+
         isAddHideKeyboardHandler = true
-        
+
         sendButton?.styleType = .default
         sendButton?.tag = ASCBaseViewController.actionTag
     }
-    
+
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
+
         IQKeyboardManager.shared.enable = true
         IQKeyboardManager.shared.enableAutoToolbar = true
         IQKeyboardManager.shared.keyboardDistanceFromTextField = 124.0
     }
-    
+
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-        
+
         IQKeyboardManager.shared.enable = false
         IQKeyboardManager.shared.enableAutoToolbar = false
     }
-    
+
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        
+
         emailTextField?.becomeFirstResponder()
     }
-    
+
     private func valid(email: String) -> Bool {
         if email.length < 1 {
             emailTextField?.errorMessage = NSLocalizedString("Email is empty", comment: "")
@@ -75,46 +74,46 @@ class ASCPasswordRecoveryViewController: ASCBaseViewController {
 
         return true
     }
-    
+
     private func presentEmailSentVC(responseText: String) {
         guard let email = emailTextField?.text?.trimmed else { return }
         navigator.navigate(to: .recoveryPasswordConfirmed(email: email))
     }
-    
+
     // MARK: - Actions
-    
+
     @IBAction func onSendButton(_ sender: Any) {
         let email = emailTextField?.text?.trimmed ?? ""
-        
+
         guard valid(email: email) else {
             return
         }
-        
+
         guard let portal = OnlyofficeApiClient.shared.baseURL?.absoluteString.trimmed else {
             emailTextField?.errorMessage = NSLocalizedString("The portal is not available", comment: "")
             emailTextField?.shake()
             return
         }
-        
+
         let parameters: Parameters = [
             "email": email,
-            "portal": portal
+            "portal": portal,
         ]
-        
+
         let hud = MBProgressHUD.showTopMost()
         hud?.label.text = NSLocalizedString("Sending", comment: "Caption of the process")
-        
+
         ASCPasswordRecoveryController.shared.forgotPassword(portalUrl: portal, options: parameters) { [weak self] result in
             switch result {
-            case .success(let response):
+            case let .success(response):
                 hud?.setSuccessState()
                 hud?.hide(animated: true, afterDelay: 2)
-                
+
                 self?.presentEmailSentVC(responseText: response.response)
-            case .failure(let error):
+            case let .failure(error):
                 log.error(error)
                 hud?.hide(animated: true)
-                
+
                 if let controller = self {
                     UIAlertController.showError(
                         in: controller,

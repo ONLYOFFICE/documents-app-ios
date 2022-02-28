@@ -28,4 +28,3 @@ class ASCSharingSettingsAccessForExternalLinkNotesProvider: ASCSharingSettingsAc
         }
     }
 }
-

@@ -9,10 +9,9 @@
 import UIKit
 
 class ASCSortViewCell: UITableViewCell {
-
     // MARK: - Properties
 
-    @IBOutlet weak var ascendingSwitch: UISwitch!
+    @IBOutlet var ascendingSwitch: UISwitch!
     var onAscendingChange: ((Bool) -> Void)?
 
     // MARK: - Lifecycle Methods

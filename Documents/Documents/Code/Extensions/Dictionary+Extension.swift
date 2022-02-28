@@ -8,18 +8,19 @@
 
 import Foundation
 
-extension Dictionary {
-    func stringAsHttpParameters() -> String {
-        let parameterArray = self.map { (key, value) -> String in
+public extension Dictionary {
+    internal func stringAsHttpParameters() -> String {
+        let parameterArray = map { key, value -> String in
             if let strKey = key as? String,
                let strValue = value as? String,
                let encodeKey = strKey.addingPercentEncoding(withAllowedCharacters: CharacterSet.urlQueryAllowed),
-               let encodeValue = strValue.addingPercentEncoding(withAllowedCharacters: CharacterSet.urlQueryAllowed) {
+               let encodeValue = strValue.addingPercentEncoding(withAllowedCharacters: CharacterSet.urlQueryAllowed)
+            {
                 return "\(encodeKey)=\(encodeValue)"
             }
             return ""
         }
-        
+
         return parameterArray.joined(separator: "&")
     }
 
@@ -32,31 +33,31 @@ extension Dictionary {
     ///        dict.keys.contains("key2") -> false
     ///
     /// - Parameter keys: keys to be removed
-    public mutating func removeAll<S: Sequence>(keys: S) where S.Element == Key {
+    mutating func removeAll<S: Sequence>(keys: S) where S.Element == Key {
         keys.forEach { removeValue(forKey: $0) }
     }
 
     // MARK: - Operators
-    
+
     /// Merge the keys/values of two dictionaries.
     ///
     /// - Parameters:
     ///   - lhs: dictionary
     ///   - rhs: dictionary
     /// - Returns: An dictionary with keys and values from both.
-    public static func +(lhs: [Key: Value], rhs: [Key: Value]) -> [Key: Value] {
+    static func + (lhs: [Key: Value], rhs: [Key: Value]) -> [Key: Value] {
         var result = lhs
-        rhs.forEach{ result[$0] = $1 }
+        rhs.forEach { result[$0] = $1 }
         return result
     }
-    
+
     /// Append the keys and values from the second dictionary into the first one.
     ///
     /// - Parameters:
     ///   - lhs: dictionary
     ///   - rhs: dictionary
-    public static func +=(lhs: inout [Key: Value], rhs: [Key: Value]) {
-        rhs.forEach { lhs[$0] = $1}
+    static func += (lhs: inout [Key: Value], rhs: [Key: Value]) {
+        rhs.forEach { lhs[$0] = $1 }
     }
 
     /// JSON String from dictionary.
@@ -82,7 +83,7 @@ extension Dictionary {
     ///
     /// - Parameter prettify: set true to prettify string (default is false).
     /// - Returns: optional JSON String (if applicable).
-    public func jsonString(prettify: Bool = false) -> String? {
+    func jsonString(prettify: Bool = false) -> String? {
         guard JSONSerialization.isValidJSONObject(self) else { return nil }
         let options = (prettify == true) ? JSONSerialization.WritingOptions.prettyPrinted : JSONSerialization.WritingOptions()
         guard let jsonData = try? JSONSerialization.data(withJSONObject: self, options: options) else { return nil }

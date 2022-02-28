@@ -9,8 +9,8 @@
 import UIKit
 
 // MARK: - Properties
-public extension UIButton {
 
+public extension UIButton {
     /// Image of disabled state for button; also inspectable from Storyboard.
     @IBInspectable
     var imageForDisabled: UIImage? {
@@ -142,12 +142,11 @@ public extension UIButton {
             setTitle(newValue, for: .selected)
         }
     }
-
 }
 
 // MARK: - Methods
-public extension UIButton {
 
+public extension UIButton {
     private var states: [UIControl.State] {
         return [.normal, .selected, .highlighted, .disabled]
     }
@@ -224,14 +223,13 @@ public extension UIButton {
     ///   - titlePosition: UIViewContentModeTop, UIViewContentModeBottom, UIViewContentModeLeft or UIViewContentModeRight
     ///   - additionalSpacing: Spacing between image and title
     ///   - state: State to apply this behaviour
-    func set(image: UIImage?, title: String, titlePosition: Position, additionalSpacing: CGFloat, state: UIControl.State){
+    func set(image: UIImage?, title: String, titlePosition: Position, additionalSpacing: CGFloat, state: UIControl.State) {
         imageView?.contentMode = .center
         setImage(image, for: state)
         setTitle(title, for: state)
         titleLabel?.contentMode = .center
 
         adjust(title: title as NSString, at: titlePosition, with: additionalSpacing)
-
     }
 
     /// This method sets an image and an attributed title for a UIButton and
@@ -243,7 +241,7 @@ public extension UIButton {
     ///   - titlePosition: UIViewContentModeTop, UIViewContentModeBottom, UIViewContentModeLeft or UIViewContentModeRight
     ///   - additionalSpacing: Spacing between image and title
     ///   - state: State to apply this behaviour
-    func set(image: UIImage?, attributedTitle title: NSAttributedString, at position: Position, width spacing: CGFloat, state: UIControl.State){
+    func set(image: UIImage?, attributedTitle title: NSAttributedString, at position: Position, width spacing: CGFloat, state: UIControl.State) {
         imageView?.contentMode = .center
         setImage(image, for: state)
 
@@ -252,7 +250,6 @@ public extension UIButton {
         titleLabel?.contentMode = .center
         setAttributedTitle(title, for: state)
     }
-
 
     // MARK: Private Methods
 
@@ -273,16 +270,16 @@ public extension UIButton {
         arrange(titleSize: titleSize, imageRect: imageRect, atPosition: position, withSpacing: spacing)
     }
 
-    private func arrange(titleSize: CGSize, imageRect:CGRect, atPosition position: Position, withSpacing spacing: CGFloat) {
-        switch (position) {
+    private func arrange(titleSize: CGSize, imageRect: CGRect, atPosition position: Position, withSpacing spacing: CGFloat) {
+        switch position {
         case .top:
             titleEdgeInsets = UIEdgeInsets(top: -(imageRect.height + titleSize.height + spacing), left: -(imageRect.width), bottom: 0, right: 0)
             imageEdgeInsets = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: -titleSize.width)
-            contentEdgeInsets = UIEdgeInsets(top: spacing / 2 + titleSize.height, left: -imageRect.width/2, bottom: 0, right: -imageRect.width/2)
+            contentEdgeInsets = UIEdgeInsets(top: spacing / 2 + titleSize.height, left: -imageRect.width / 2, bottom: 0, right: -imageRect.width / 2)
         case .bottom:
-            titleEdgeInsets = UIEdgeInsets(top: (imageRect.height + titleSize.height + spacing), left: -(imageRect.width), bottom: 0, right: 0)
+            titleEdgeInsets = UIEdgeInsets(top: imageRect.height + titleSize.height + spacing, left: -(imageRect.width), bottom: 0, right: 0)
             imageEdgeInsets = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: -titleSize.width)
-            contentEdgeInsets = UIEdgeInsets(top: 0, left: -imageRect.width/2, bottom: spacing / 2 + titleSize.height, right: -imageRect.width/2)
+            contentEdgeInsets = UIEdgeInsets(top: 0, left: -imageRect.width / 2, bottom: spacing / 2 + titleSize.height, right: -imageRect.width / 2)
         case .left:
             titleEdgeInsets = UIEdgeInsets(top: 0, left: -(imageRect.width * 2), bottom: 0, right: 0)
             imageEdgeInsets = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: -(titleSize.width * 2 + spacing))

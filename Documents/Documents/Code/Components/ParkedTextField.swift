@@ -6,11 +6,10 @@
 //  Copyright (c) 2015 Gunay Mert Karadogan. All rights reserved.
 //
 
-import UIKit
 import SkyFloatingLabelTextField
+import UIKit
 
 open class ParkedTextField: SkyFloatingLabelTextField {
-
     // MARK: Properties
 
     /// Constant part of the text. Defaults to "".
@@ -23,12 +22,12 @@ open class ParkedTextField: SkyFloatingLabelTextField {
                 return
             }
             if !text.isEmpty {
-                let typed = text[text.startIndex..<text.index(text.endIndex, offsetBy: -self.parkedText.count)]
+                let typed = text[text.startIndex ..< text.index(text.endIndex, offsetBy: -self.parkedText.count)]
                 text = typed + newValue
 
-                prevText =  text
+                prevText = text
                 _parkedText = newValue
-                
+
                 textChanged(self)
             } else {
                 _parkedText = newValue
@@ -38,6 +37,7 @@ open class ParkedTextField: SkyFloatingLabelTextField {
             placeholder = placeholderTextText + parkedText
         }
     }
+
     var _parkedText = ""
 
     /// Variable part of the text. Defaults to "".
@@ -47,7 +47,7 @@ open class ParkedTextField: SkyFloatingLabelTextField {
                 return ""
             }
             if text.hasSuffix(parkedText) {
-                return String(text[text.startIndex..<text.index(text.endIndex, offsetBy: -parkedText.count)])
+                return String(text[text.startIndex ..< text.index(text.endIndex, offsetBy: -parkedText.count)])
             } else {
                 return text
             }
@@ -64,7 +64,6 @@ open class ParkedTextField: SkyFloatingLabelTextField {
             placeholder = placeholderTextText + parkedText
         }
     }
-
 
     /// Constant part of the text. Defaults to the text field's font.
     open var parkedTextFont: UIFont! {
@@ -84,11 +83,11 @@ open class ParkedTextField: SkyFloatingLabelTextField {
     var parkedTextAttributes: [NSAttributedString.Key: Any] {
         return [
             NSAttributedString.Key.font: parkedTextFont,
-            NSAttributedString.Key.foregroundColor: parkedTextColor ?? textColor!
+            NSAttributedString.Key.foregroundColor: parkedTextColor ?? textColor!,
         ]
     }
 
-    open override var placeholder: String? {
+    override open var placeholder: String? {
         didSet {
             if let placeholder = placeholder {
                 let attributedString = NSMutableAttributedString(string: placeholder)
@@ -104,12 +103,11 @@ open class ParkedTextField: SkyFloatingLabelTextField {
     enum TypingState {
         case start, typed
     }
+
     var typingState = TypingState.start
 
     var beginningOfParkedText: UITextPosition? {
-        get {
-            return position(from: endOfDocument, offset: -parkedText.count)
-        }
+        return position(from: endOfDocument, offset: -parkedText.count)
     }
 
     var prevText = ""
@@ -121,12 +119,12 @@ open class ParkedTextField: SkyFloatingLabelTextField {
         commonInit()
     }
 
-    public override init(frame: CGRect) {
+    override public init(frame: CGRect) {
         super.init(frame: frame)
         commonInit()
     }
 
-    func commonInit() {        
+    func commonInit() {
         if let boldFont = font {
             parkedTextFont = bold(boldFont)
         } else {
@@ -142,7 +140,6 @@ open class ParkedTextField: SkyFloatingLabelTextField {
 
         typingState = .start
     }
-
 
     // MARK: EditingChanged handler
 
@@ -172,11 +169,11 @@ open class ParkedTextField: SkyFloatingLabelTextField {
 
         default:
             break
-
         }
     }
 
     // MARK: Utilites
+
     func updateAttributedTextWith(_ text: String) {
         if let parkedTextRange = text.range(of: parkedText, options: NSString.CompareOptions.backwards, range: nil, locale: nil) {
             let nsRange = NSRangeFromRange(text, range: parkedTextRange)
@@ -187,7 +184,7 @@ open class ParkedTextField: SkyFloatingLabelTextField {
             attributedText = attributedString
         }
     }
-    
+
     func NSRangeFromRange(_ text: String, range: Range<String.Index>) -> NSRange {
         return NSRange(range, in: text)
     }

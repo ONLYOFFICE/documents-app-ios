@@ -54,6 +54,7 @@ def common_pods
   pod 'IQKeyboardManagerSwift'
   pod 'KeychainSwift'
   pod 'SwiftGen', '~> 6.4.0'
+  pod 'SwiftFormat/CLI', '~> 0.49', :configurations => ['Debug']
 
 end
 

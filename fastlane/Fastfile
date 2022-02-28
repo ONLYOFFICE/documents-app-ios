@@ -69,7 +69,7 @@ platform :ios do
       clean: true,
       scheme: "Documents",
       workspace: "ONLYOFFICE-Documents.xcworkspace",
-      export_xcargs: "-allowProvisioningUpdates"
+      xcargs: "-allowProvisioningUpdates"
     )
 
     # get the last commit comments from Git history
@@ -160,7 +160,7 @@ platform :ios do
       clean: true,
       scheme: "Documents-Alpha",
       workspace: "ONLYOFFICE-Documents.xcworkspace",
-      export_xcargs: "-allowProvisioningUpdates"
+      xcargs: "-allowProvisioningUpdates"
     )
 
     # get the last commit comments from Git history

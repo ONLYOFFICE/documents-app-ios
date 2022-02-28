@@ -9,10 +9,9 @@
 import UIKit
 
 class ASCUserAvatarView: UIImageView {
-
     // MARK: - Properties
 
-    lazy private var innerBorder: CAShapeLayer = {
+    private lazy var innerBorder: CAShapeLayer = {
         $0.strokeColor = UIColor.lightGray.withAlphaComponent(0.1).cgColor
         $0.lineWidth = 2
         $0.frame = bounds

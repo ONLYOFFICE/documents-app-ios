@@ -6,20 +6,17 @@
 //  Copyright © 2018 Ascensio System SIA. All rights reserved.
 //
 
-import UIKit
 import FileKit
 import Firebase
+import UIKit
 
 class ASCLocalProvider: ASCFileProviderProtocol & ASCSortableFileProviderProtocol {
     var id: String? {
-        get {
-            return "device"
-        }
+        return "device"
     }
+
     var type: ASCFileProviderType {
-        get {
-            return .local
-        }
+        return .local
     }
 
     var items: [ASCEntity] = []
@@ -28,15 +25,13 @@ class ASCLocalProvider: ASCFileProviderProtocol & ASCSortableFileProviderProtoco
     var authorization: String?
 
     var user: ASCUser? {
-        get {
-            return deviceUser
-        }
+        return deviceUser
     }
 
     var delegate: ASCProviderDelegate?
-    
+
     internal var folder: ASCFolder?
-    internal var fetchInfo: [String : Any?]?
+    internal var fetchInfo: [String: Any?]?
 
     fileprivate lazy var deviceUser: ASCUser = {
         let owner = ASCUser()
@@ -54,13 +49,13 @@ class ASCLocalProvider: ASCFileProviderProtocol & ASCSortableFileProviderProtoco
 
     func copy() -> ASCFileProviderProtocol {
         let copy = ASCLocalProvider()
-        
+
         copy.items = items.map { $0 }
         copy.page = page
         copy.total = total
         copy.delegate = delegate
         copy.authorization = authorization
-        
+
         return copy
     }
 
@@ -75,20 +70,20 @@ class ASCLocalProvider: ASCFileProviderProtocol & ASCSortableFileProviderProtoco
             total += 1
         }
     }
-    
+
     func add(items: [ASCEntity], at index: Int) {
-        let uniqItems = items.filter { (item) -> Bool in
-            return !self.items.contains(where: { $0.uid == item.uid })
+        let uniqItems = items.filter { item -> Bool in
+            !self.items.contains(where: { $0.uid == item.uid })
         }
         self.items.insert(contentsOf: uniqItems, at: index)
-        self.total += uniqItems.count
+        total += uniqItems.count
     }
-    
+
     func remove(at index: Int) {
         items.remove(at: index)
         total -= 1
     }
-    
+
     /// Fetch an user information
     ///
     /// - Parameter completeon: a closure with result of user or error
@@ -108,7 +103,7 @@ class ASCLocalProvider: ASCFileProviderProtocol & ASCSortableFileProviderProtoco
         let paths = ASCLocalFileHelper.shared.entityList(Path(folder.id))
 
         self.folder = folder
-        
+
         for path in paths {
             let owner = ASCUser()
             owner.displayName = UIDevice.displayName
@@ -130,7 +125,7 @@ class ASCLocalProvider: ASCFileProviderProtocol & ASCSortableFileProviderProtoco
                 localFolder.parentId = folder.id
 
                 // Exclude file system folder
-                if folder.parent == nil && path.fileName == "Inbox" {
+                if folder.parent == nil, path.fileName == "Inbox" {
                     continue
                 }
 
@@ -163,7 +158,7 @@ class ASCLocalProvider: ASCFileProviderProtocol & ASCSortableFileProviderProtoco
 
         // Sort
         fetchInfo = parameters
-        
+
         if let sortInfo = parameters["sort"] as? [String: Any] {
             sort(by: sortInfo, folders: &folders, files: &files)
         }
@@ -188,7 +183,7 @@ class ASCLocalProvider: ASCFileProviderProtocol & ASCSortableFileProviderProtoco
     ///   - entities: Records found
     private func search(by info: [String: Any], entities: inout [ASCEntity]) {
         if let searchText = (info["text"] as? String)?.lowercased(), searchText.length > 0 {
-            entities = entities.filter() { entity in
+            entities = entities.filter { entity in
                 if let file = entity as? ASCFile {
                     return file.title.lowercased().range(of: searchText) != nil
                 } else if let folder = entity as? ASCFolder {
@@ -204,13 +199,13 @@ class ASCLocalProvider: ASCFileProviderProtocol & ASCSortableFileProviderProtoco
     /// - Parameters:
     ///   - completeon: a closure with result of sort entries or error
     func updateSort(completeon: ASCProviderCompletionHandler?) {
-        if let sortInfo = fetchInfo?["sort"] as? [String : Any] {
+        if let sortInfo = fetchInfo?["sort"] as? [String: Any] {
             sort(by: sortInfo, entities: &items)
             total = items.count
         }
         completeon?(self, folder, true, nil)
     }
-    
+
     func download(_ path: String, to destinationURL: URL, processing: @escaping NetworkProgressHandler) {
         processing(nil, 0, nil)
 
@@ -221,7 +216,7 @@ class ASCLocalProvider: ASCFileProviderProtocol & ASCSortableFileProviderProtoco
         }
     }
 
-    func upload(_ path: String, data: Data, overwrite: Bool, params: [String : Any]?, processing: @escaping NetworkProgressHandler) {
+    func upload(_ path: String, data: Data, overwrite: Bool, params: [String: Any]?, processing: @escaping NetworkProgressHandler) {
         var dstPath = path
 
         if let fileName = params?["title"] as? String {
@@ -232,7 +227,7 @@ class ASCLocalProvider: ASCFileProviderProtocol & ASCSortableFileProviderProtoco
 
         do {
             try data.write(to: dummyFilePath, atomically: true)
-        } catch(let error) {
+        } catch {
             processing(nil, 1, error)
             return
         }
@@ -248,7 +243,6 @@ class ASCLocalProvider: ASCFileProviderProtocol & ASCSortableFileProviderProtoco
             parenFolder.id = destFilePath.parent.rawValue
             parenFolder.title = destFilePath.parent.fileName
             parenFolder.device = true
-
 
             let localFile = ASCFile()
             localFile.id = destFilePath.rawValue
@@ -274,7 +268,7 @@ class ASCLocalProvider: ASCFileProviderProtocol & ASCSortableFileProviderProtoco
         let file = entity as? ASCFile
         let folder = entity as? ASCFolder
 
-        if file == nil && folder == nil {
+        if file == nil, folder == nil {
             completeon?(self, nil, false, ASCProviderError(msg: NSLocalizedString("Unknown item type.", comment: "")))
             return
         }
@@ -358,15 +352,15 @@ class ASCLocalProvider: ASCFileProviderProtocol & ASCSortableFileProviderProtoco
 
         completeon?(self, entities, true, nil)
     }
-    
+
     func emptyTrash(completeon: ASCProviderCompletionHandler?) {
         // Empty local trash
         let trashItems = ASCLocalFileHelper.shared.entityList(Path.userTrash)
-        
+
         for item in trashItems {
             ASCLocalFileHelper.shared.removeFile(item)
         }
-        
+
         completeon?(self, nil, true, nil)
     }
 
@@ -407,9 +401,8 @@ class ASCLocalProvider: ASCFileProviderProtocol & ASCSortableFileProviderProtoco
                     ASCAnalytics.Event.Key.portal: ASCAnalytics.Event.Value.none,
                     ASCAnalytics.Event.Key.onDevice: true,
                     ASCAnalytics.Event.Key.type: ASCAnalytics.Event.Value.file,
-                    ASCAnalytics.Event.Key.fileExt: file.title.fileExtension().lowercased()
-                    ]
-                )
+                    ASCAnalytics.Event.Key.fileExt: file.title.fileExtension().lowercased(),
+                ])
 
                 completeon?(self, file, true, nil)
             } else {
@@ -429,9 +422,9 @@ class ASCLocalProvider: ASCFileProviderProtocol & ASCSortableFileProviderProtoco
             processing(nil, 0, nil)
 
             let filePath = Path(folder.id) + name
-            do{
+            do {
                 try data.write(to: filePath, atomically: true)
-            } catch(let error) {
+            } catch {
                 processing(nil, 1, error)
                 return
             }
@@ -455,9 +448,8 @@ class ASCLocalProvider: ASCFileProviderProtocol & ASCSortableFileProviderProtoco
                 ASCAnalytics.Event.Key.portal: ASCAnalytics.Event.Value.none,
                 ASCAnalytics.Event.Key.onDevice: true,
                 ASCAnalytics.Event.Key.type: ASCAnalytics.Event.Value.file,
-                ASCAnalytics.Event.Key.fileExt: file.title.fileExtension()
-                ]
-            )
+                ASCAnalytics.Event.Key.fileExt: file.title.fileExtension(),
+            ])
 
             processing(file, 1, nil)
         } else {
@@ -496,9 +488,8 @@ class ASCLocalProvider: ASCFileProviderProtocol & ASCSortableFileProviderProtoco
                 ASCAnalytics.logEvent(ASCConstants.Analytics.Event.createEntity, parameters: [
                     ASCAnalytics.Event.Key.portal: ASCAnalytics.Event.Value.none,
                     ASCAnalytics.Event.Key.onDevice: true,
-                    ASCAnalytics.Event.Key.type: ASCAnalytics.Event.Value.folder
-                    ]
-                )
+                    ASCAnalytics.Event.Key.type: ASCAnalytics.Event.Value.folder,
+                ])
 
                 completeon?(self, newFolder, true, nil)
             } else {
@@ -536,7 +527,8 @@ class ASCLocalProvider: ASCFileProviderProtocol & ASCSortableFileProviderProtoco
 
         for entity in items {
             if let title = (entity as? ASCFolder)?.title ?? (entity as? ASCFile)?.title ?? nil,
-                let path = (entity as? ASCFolder)?.id ?? (entity as? ASCFile)?.id ?? nil {
+               let path = (entity as? ASCFolder)?.id ?? (entity as? ASCFile)?.id ?? nil
+            {
                 let srcPath = Path(path)
                 let destPath = Path(folder.id) + title
 
@@ -572,7 +564,7 @@ class ASCLocalProvider: ASCFileProviderProtocol & ASCSortableFileProviderProtoco
         let file = entity as? ASCFile
         let folder = entity as? ASCFolder
 
-        if file == nil && folder == nil {
+        if file == nil, folder == nil {
             return false
         }
 
@@ -597,7 +589,7 @@ class ASCLocalProvider: ASCFileProviderProtocol & ASCSortableFileProviderProtoco
         let file = entity as? ASCFile
         let folder = entity as? ASCFolder
 
-        if file == nil && folder == nil {
+        if file == nil, folder == nil {
             return false
         }
 
@@ -620,16 +612,16 @@ class ASCLocalProvider: ASCFileProviderProtocol & ASCSortableFileProviderProtoco
         var entityActions: ASCEntityActions = []
 
         if let file = file {
-            let fileExtension   = file.title.fileExtension().lowercased()
-            let canRead         = allowRead(entity: file)
-            let canEdit         = allowEdit(entity: file)
-            let canDelete       = allowDelete(entity: file)
-            let isTrash         = file.rootFolderType == .deviceTrash
-            let canOpenEditor   = ASCConstants.FileExtensions.documents.contains(fileExtension) ||
+            let fileExtension = file.title.fileExtension().lowercased()
+            let canRead = allowRead(entity: file)
+            let canEdit = allowEdit(entity: file)
+            let canDelete = allowDelete(entity: file)
+            let isTrash = file.rootFolderType == .deviceTrash
+            let canOpenEditor = ASCConstants.FileExtensions.documents.contains(fileExtension) ||
                 ASCConstants.FileExtensions.spreadsheets.contains(fileExtension) ||
                 ASCConstants.FileExtensions.presentations.contains(fileExtension) ||
                 ASCConstants.FileExtensions.forms.contains(fileExtension)
-            let canPreview      = canOpenEditor ||
+            let canPreview = canOpenEditor ||
                 ASCConstants.FileExtensions.images.contains(fileExtension) ||
                 fileExtension == "pdf"
 
@@ -653,11 +645,11 @@ class ASCLocalProvider: ASCFileProviderProtocol & ASCSortableFileProviderProtoco
                 entityActions.insert(.open)
             }
 
-            if canEdit && canOpenEditor && UIDevice.allowEditor {
+            if canEdit, canOpenEditor, UIDevice.allowEditor {
                 entityActions.insert(.edit)
             }
 
-            if (ASCFileManager.onlyofficeProvider?.apiClient.active ?? false) && !isTrash {
+            if ASCFileManager.onlyofficeProvider?.apiClient.active ?? false, !isTrash {
                 entityActions.insert(.upload)
             }
         }
@@ -669,9 +661,9 @@ class ASCLocalProvider: ASCFileProviderProtocol & ASCSortableFileProviderProtoco
         var entityActions: ASCEntityActions = []
 
         if let folder = folder {
-            let canRead         = allowRead(entity: folder)
-            let canEdit         = allowEdit(entity: folder)
-            let canDelete       = allowDelete(entity: folder)
+            let canRead = allowRead(entity: folder)
+            let canEdit = allowEdit(entity: folder)
+            let canDelete = allowDelete(entity: folder)
 
             if folder.rootFolderType == .deviceTrash {
                 return [.delete, .restore]
@@ -685,7 +677,7 @@ class ASCLocalProvider: ASCFileProviderProtocol & ASCSortableFileProviderProtoco
                 entityActions.insert(.copy)
             }
 
-            if canEdit && canDelete {
+            if canEdit, canDelete {
                 entityActions.insert(.move)
             }
 
@@ -696,19 +688,19 @@ class ASCLocalProvider: ASCFileProviderProtocol & ASCSortableFileProviderProtoco
 
         return entityActions
     }
-    
+
     // MARK: - Helpers
-    
+
     func absoluteUrl(from string: String?) -> URL? {
         return URL(fileURLWithPath: string ?? "")
     }
 
     // MARK: - Open file
-    
+
     func open(file: ASCFile, viewMode: Bool = false) {
-        let title           = file.title
-        let fileExt         = title.fileExtension().lowercased()
-        let allowOpen       = ASCConstants.FileExtensions.allowEdit.contains(fileExt)
+        let title = file.title
+        let fileExt = title.fileExtension().lowercased()
+        let allowOpen = ASCConstants.FileExtensions.allowEdit.contains(fileExt)
 
         if allowOpen {
             let editMode = !viewMode && UIDevice.allowEditor
@@ -720,11 +712,11 @@ class ASCLocalProvider: ASCFileProviderProtocol & ASCSortableFileProviderProtoco
     }
 
     func preview(file: ASCFile, files: [ASCFile]?, in view: UIView?) {
-        let title           = file.title
-        let fileExt         = title.fileExtension().lowercased()
-        let isPdf           = fileExt == "pdf"
-        let isImage         = ASCConstants.FileExtensions.images.contains(fileExt)
-        let isVideo         = ASCConstants.FileExtensions.videos.contains(fileExt)
+        let title = file.title
+        let fileExt = title.fileExtension().lowercased()
+        let isPdf = fileExt == "pdf"
+        let isImage = ASCConstants.FileExtensions.images.contains(fileExt)
+        let isVideo = ASCConstants.FileExtensions.videos.contains(fileExt)
 
         if isPdf {
             ASCEditorManager.shared.browsePdfLocal(file)

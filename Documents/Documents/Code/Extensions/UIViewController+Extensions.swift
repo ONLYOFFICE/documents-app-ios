@@ -9,19 +9,18 @@
 import UIKit
 
 // MARK: - Properties
-public extension UIViewController {
 
+public extension UIViewController {
     /// Check if ViewController is onscreen and not hidden.
     var isVisible: Bool {
         // http://stackoverflow.com/questions/2777438/how-to-tell-if-uiviewcontrollers-view-is-visible
         return isViewLoaded && view.window != nil
     }
-
 }
 
 // MARK: - Methods
-extension UIViewController {
 
+extension UIViewController {
     /// Assign as listener to notification.
     ///
     /// - Parameters:
@@ -47,7 +46,7 @@ extension UIViewController {
     class func instantiateFromStoryboard(storyboardName: String) -> Self {
         return instantiateFromStoryboardHelper(type: self, storyboardName: storyboardName)
     }
-    
+
     /// Type-safe method to instantiate a viewcontroller from storyboard
     class func instantiate(from storyboard: Storyboard) -> Self {
         return instantiateFromStoryboardHelper(type: self, storyboardName: storyboard.rawValue)
@@ -65,8 +64,7 @@ extension UIViewController {
 
     /// Top most ViewController
     func topMostViewController() -> UIViewController {
-
-        if let presented = self.presentedViewController {
+        if let presented = presentedViewController {
             return presented.topMostViewController()
         }
 
@@ -77,7 +75,7 @@ extension UIViewController {
         if let tab = self as? UITabBarController {
             return tab.selectedViewController?.topMostViewController() ?? tab
         }
-        
+
         if let split = self as? UISplitViewController {
             return split.viewControllers.last?.topMostViewController() ?? split
         }
@@ -91,15 +89,15 @@ extension UIViewController {
             let navigationController = navigationController,
             navigationController.navigationBar.prefersLargeTitles
         else { return }
-        
+
         navigationController.navigationBar.prefersLargeTitles = true
         navigationItem.largeTitleDisplayMode = .automatic
         navigationController.navigationBar.sizeToFit()
     }
-    
+
     /// Search parent
     func findParentController<T: UIViewController>() -> T? {
-        return self is T ? self as? T : self.parent?.findParentController() as T?
+        return self is T ? self as? T : parent?.findParentController() as T?
     }
 
     /// Hide keyboard when tapped around
@@ -112,13 +110,13 @@ extension UIViewController {
     @objc func dismissKeyboard() {
         view.endEditing(true)
     }
-    
+
     /// Check status of notifications and registry if needed
     public func checkNotifications() {
         if #available(iOS 10.0, *) {
             UNUserNotificationCenter.current().getNotificationSettings { settings in
                 let status = settings.authorizationStatus
-                
+
                 if status == .authorized {
                     DispatchQueue.main.async {
                         UIApplication.shared.registerForRemoteNotifications()
@@ -130,8 +128,8 @@ extension UIViewController {
                 } else if status == .notDetermined {
                     if #available(iOS 10.0, *) {
                         let center = UNUserNotificationCenter.current()
-                        
-                        center.requestAuthorization(options:[.badge, .alert, .sound]) { granted, error in
+
+                        center.requestAuthorization(options: [.badge, .alert, .sound]) { granted, error in
                             DispatchQueue.main.async {
                                 let allow = error == nil
                                 if allow {

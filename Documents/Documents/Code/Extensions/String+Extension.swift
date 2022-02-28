@@ -11,7 +11,7 @@ import UIKit
 
 extension String {
     var length: Int {
-        return self.count
+        return count
     }
 
     /// Check if string is valid email format.
@@ -25,7 +25,7 @@ extension String {
         let regex = "^(?:[\\p{L}0-9!#$%\\&'*+/=?\\^_`{|}~-]+(?:\\.[\\p{L}0-9!#$%\\&'*+/=?\\^_`{|}~-]+)*|\"(?:[\\x01-\\x08\\x0b\\x0c\\x0e-\\x1f\\x21\\x23-\\x5b\\x5d-\\x7f]|\\\\[\\x01-\\x09\\x0b\\x0c\\x0e-\\x7f])*\")@(?:(?:[\\p{L}0-9](?:[a-z0-9-]*[\\p{L}0-9])?\\.)+[\\p{L}0-9](?:[\\p{L}0-9-]*[\\p{L}0-9])?|\\[(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?|[\\p{L}0-9-]*[\\p{L}0-9]:(?:[\\x01-\\x08\\x0b\\x0c\\x0e-\\x1f\\x21-\\x5a\\x53-\\x7f]|\\\\[\\x01-\\x09\\x0b\\x0c\\x0e-\\x7f])+)\\])$"
         return range(of: regex, options: .regularExpression, range: nil, locale: nil) != nil
     }
-    
+
     /// Check if string is valid email format for ONLYOFFICE portals.
     ///
     /// - Note: Note that this property does not validate the email address against an email server. It merely attempts to determine whether its format is suitable for an email address.
@@ -36,39 +36,39 @@ extension String {
         let regex = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,}"
         return range(of: regex, options: .regularExpression, range: nil, locale: nil) != nil
     }
-    
+
     /// String with no spaces or new lines in beginning and end.
     ///
     ///     "   hello  \n".trimmed -> "hello"
     ///
     var trimmed: String {
-        return self.trimmingCharacters(in: .whitespacesAndNewlines)
+        return trimmingCharacters(in: .whitespacesAndNewlines)
     }
-    
+
     var dateFromISO8601: Date? {
         return Date.iso8601Formatter.date(from: self)
     }
-    
-    subscript (i: Int) -> String {
+
+    subscript(i: Int) -> String {
         return self[i ..< i + 1]
     }
-    
+
     func substring(from: Int) -> String {
         return self[min(from, length) ..< length]
     }
-    
+
     func substring(to: Int) -> String {
         return self[0 ..< max(0, to)]
     }
-    
-    subscript (r: Range<Int>) -> String {
+
+    subscript(r: Range<Int>) -> String {
         let range = Range(uncheckedBounds: (lower: max(0, min(length, r.lowerBound)),
                                             upper: min(length, max(0, r.upperBound))))
         let start = index(startIndex, offsetBy: range.lowerBound)
         let end = index(start, offsetBy: range.upperBound - range.lowerBound)
         return String(self[start ..< end])
     }
-    
+
     /// Safely subscript string with index.
     ///
     ///        "Hello World!"[safe: 3] -> "l"
@@ -90,16 +90,17 @@ extension String {
     ///
     /// - Parameter range: Range expression.
     subscript<R>(safe range: R) -> String? where R: RangeExpression, R.Bound == Int {
-        let range = range.relative(to: Int.min..<Int.max)
+        let range = range.relative(to: Int.min ..< Int.max)
         guard range.lowerBound >= 0,
-            let lowerIndex = index(startIndex, offsetBy: range.lowerBound, limitedBy: endIndex),
-            let upperIndex = index(startIndex, offsetBy: range.upperBound, limitedBy: endIndex) else {
+              let lowerIndex = index(startIndex, offsetBy: range.lowerBound, limitedBy: endIndex),
+              let upperIndex = index(startIndex, offsetBy: range.upperBound, limitedBy: endIndex)
+        else {
             return nil
         }
 
-        return String(self[lowerIndex..<upperIndex])
+        return String(self[lowerIndex ..< upperIndex])
     }
-    
+
     static func fileSizeToString(with size: UInt64) -> String {
         if size < 1 {
             return NSLocalizedString("Zero bytes", comment: "Data units")
@@ -116,25 +117,25 @@ extension String {
             NSLocalizedString("Pb", comment: "Data units"),
             NSLocalizedString("Eb", comment: "Data units"),
             NSLocalizedString("Zb", comment: "Data units"),
-            NSLocalizedString("Yb", comment: "Data units")
+            NSLocalizedString("Yb", comment: "Data units"),
         ]
-        
+
         while convertedValue > 1024 {
             convertedValue /= 1024
             multiplyFactor += 1
         }
-        
+
         if multiplyFactor == 0 {
             return String(format: "%4.0f %@", convertedValue, tokens[multiplyFactor])
         } else {
             return String(format: "%4.2f %@", convertedValue, tokens[multiplyFactor])
         }
     }
-    
+
     func fileName() -> String {
         return ((self as NSString).deletingPathExtension as NSString).lastPathComponent
     }
-    
+
     func fileExtension() -> String {
         return (self as NSString).pathExtension
     }
@@ -146,15 +147,15 @@ extension String {
     public func matches(pattern: String) -> Bool {
         return range(of: pattern, options: .regularExpression, range: nil, locale: nil) != nil
     }
-    
+
     /// Inner comparison utility to handle same versions with different length. (Ex: "1.0.0" & "1.0")
-    private func compare(toVersion targetVersion: String) -> ComparisonResult {        
+    private func compare(toVersion targetVersion: String) -> ComparisonResult {
         let versionDelimiter = "."
         var result: ComparisonResult = .orderedSame
         var versionComponents = components(separatedBy: versionDelimiter)
         var targetComponents = targetVersion.components(separatedBy: versionDelimiter)
         let spareCount = versionComponents.count - targetComponents.count
-        
+
         if spareCount == 0 {
             result = compare(targetVersion, options: .numeric)
         } else {
@@ -178,9 +179,9 @@ extension String {
         var startIndex = self.startIndex
         var results = [Substring]()
 
-        while startIndex < self.endIndex {
-            let endIndex = self.index(startIndex, offsetBy: length, limitedBy: self.endIndex) ?? self.endIndex
-            results.append(self[startIndex..<endIndex])
+        while startIndex < endIndex {
+            let endIndex = index(startIndex, offsetBy: length, limitedBy: self.endIndex) ?? self.endIndex
+            results.append(self[startIndex ..< endIndex])
             startIndex = endIndex
         }
 
@@ -216,10 +217,9 @@ extension String {
     ///        "textFThis*is::/le    gal.😀,?縦書き 123ield.text?sadfasdf" -> "textFThis-is-le    gal.😀,-縦書き 123ield.text-sadfasdf"
     ///
     var validPathName: String {
-        return self
-            .trimmed
+        return trimmed
             .components(separatedBy: CharacterSet(charactersIn: String.invalidTitleChars))
-            .filter({ $0.count > 0 })
+            .filter { $0.count > 0 }
             .joined(separator: "-")
     }
 
@@ -232,7 +232,7 @@ extension String {
     ///   - options: json serialization options
     /// - Returns: dictinoray object
     func toDictionary(options: JSONSerialization.ReadingOptions = []) -> [String: Any]? {
-        if let data = self.data(using: .utf8) {
+        if let data = data(using: .utf8) {
             do {
                 return try JSONSerialization.jsonObject(with: data, options: options) as? [String: Any]
             } catch {
@@ -247,14 +247,12 @@ extension String {
     ///     "Hello".md5 -> Optional("8b1a9953c4611296a827abf8c47804d7")
     ///
     var md5: String? {
-        guard let data = self.data(using: String.Encoding.utf8) else { return nil }
-
-        let hash = data.withUnsafeBytes { (bytes: UnsafePointer<Data>) -> [UInt8] in
-            var hash: [UInt8] = [UInt8](repeating: 0, count: Int(CC_MD5_DIGEST_LENGTH))
-            CC_MD5(bytes, CC_LONG(data.count), &hash)
+        let data = Data(utf8)
+        let hash = data.withUnsafeBytes { (bytes: UnsafeRawBufferPointer) -> [UInt8] in
+            var hash = [UInt8](repeating: 0, count: Int(CC_MD5_DIGEST_LENGTH))
+            CC_MD5(bytes.baseAddress, CC_LONG(data.count), &hash)
             return hash
         }
-
         return hash.map { String(format: "%02x", $0) }.joined()
     }
 
@@ -311,7 +309,7 @@ extension String {
         guard !hasPrefix(prefix) else { return self }
         return prefix + self
     }
-    
+
     /// Truncate string (cut it to a given number of characters).
     ///
     ///        var str = "This is a very long sentence"
@@ -325,7 +323,7 @@ extension String {
     mutating func truncate(toLength length: Int, trailing: String? = "...") -> String {
         guard length > 0 else { return self }
         if count > length {
-            self = self[startIndex..<index(startIndex, offsetBy: length)] + (trailing ?? "")
+            self = self[startIndex ..< index(startIndex, offsetBy: length)] + (trailing ?? "")
         }
         return self
     }
@@ -340,16 +338,16 @@ extension String {
     ///   - trailing: string to add at the end of truncated string.
     /// - Returns: truncated string (this is an extr...).
     func truncated(toLength length: Int, trailing: String? = "...") -> String {
-        guard 0..<count ~= length else { return self }
-        return self[startIndex..<index(startIndex, offsetBy: length)] + (trailing ?? "")
+        guard 0 ..< count ~= length else { return self }
+        return self[startIndex ..< index(startIndex, offsetBy: length)] + (trailing ?? "")
     }
-    
+
     public func isVersion(equalTo targetVersion: String) -> Bool { return compare(toVersion: targetVersion) == .orderedSame }
     public func isVersion(greaterThan targetVersion: String) -> Bool { return compare(toVersion: targetVersion) == .orderedDescending }
     public func isVersion(greaterThanOrEqualTo targetVersion: String) -> Bool { return compare(toVersion: targetVersion) != .orderedAscending }
     public func isVersion(lessThan targetVersion: String) -> Bool { return compare(toVersion: targetVersion) == .orderedAscending }
     public func isVersion(lessThanOrEqualTo targetVersion: String) -> Bool { return compare(toVersion: targetVersion) != .orderedDescending }
-    
+
     func matches(for regex: String) -> [String] {
         let text = self
         do {
@@ -359,7 +357,7 @@ extension String {
             return results.map {
                 String(text[Range($0.range, in: text)!])
             }
-        } catch let error {
+        } catch {
             print("invalid regex: \(error.localizedDescription)")
             return []
         }
@@ -367,8 +365,8 @@ extension String {
 }
 
 // MARK: - NSString extensions
-public extension String {
 
+public extension String {
     /// NSString from a string.
     var nsString: NSString {
         return NSString(string: self)

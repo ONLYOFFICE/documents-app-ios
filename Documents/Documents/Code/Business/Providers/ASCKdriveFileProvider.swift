@@ -6,25 +6,21 @@
 //  Copyright © 2021 Ascensio System SIA. All rights reserved.
 //
 
-import UIKit
 import FilesProvider
+import UIKit
 
 class ASCKdriveFileProvider: ASCWebDAVProvider {
     override var type: ASCFileProviderType {
-        get {
-            return .kdrive
-        }
+        return .kdrive
     }
 
     override var rootFolder: ASCFolder {
-        get {
-            return {
-                $0.title = NSLocalizedString("kDrive", comment: "")
-                $0.rootFolderType = .kdriveAll
-                $0.id = "/"
-                return $0
-            }(ASCFolder())
-        }
+        return {
+            $0.title = NSLocalizedString("kDrive", comment: "")
+            $0.rootFolderType = .kdriveAll
+            $0.id = "/"
+            return $0
+        }(ASCFolder())
     }
 
     private let baseUrl = URL(string: "https://connect.drive.infomaniak.com")!
@@ -40,13 +36,13 @@ class ASCKdriveFileProvider: ASCWebDAVProvider {
 
     override func copy() -> ASCFileProviderProtocol {
         let copy = ASCKdriveFileProvider()
-        
+
         copy.items = items
         copy.page = page
         copy.total = total
         copy.delegate = delegate
         copy.deserialize(serialize() ?? "")
-        
+
         return copy
     }
 
@@ -67,8 +63,8 @@ class ASCKdriveFileProvider: ASCWebDAVProvider {
             }
         }
     }
-    
-    override func isReachable(with info: [String : Any], complation: @escaping ((Bool, ASCFileProviderProtocol?) -> Void)) {
+
+    override func isReachable(with info: [String: Any], complation: @escaping ((Bool, ASCFileProviderProtocol?) -> Void)) {
         guard
             let login = info["login"] as? String,
             let password = info["password"] as? String
@@ -87,12 +83,11 @@ class ASCKdriveFileProvider: ASCWebDAVProvider {
         }(ASCFolder())
 
         kDriveCloudProvider.fetch(for: rootFolder, parameters: [:]) { provider, folder, success, error in
-            DispatchQueue.main.async(execute: {
+            DispatchQueue.main.async {
                 complation(success, success ? kDriveCloudProvider : nil)
-            })
+            }
         }
     }
-
 
     /// Fetch an Array of 'ASCEntity's identifying the the directory entries via asynchronous completion handler.
     ///

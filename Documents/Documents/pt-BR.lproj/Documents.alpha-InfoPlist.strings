@@ -1,5 +1,5 @@
 /* Bundle name */
-"CFBundleName" = "Documentos";
+"CFBundleName" = "Documentos-Alpha";
 
 /* (No Comment) */
 "New Document" = "Novo Documento";
@@ -16,6 +16,9 @@
 /* Privacy - Face ID Usage Description */
 "NSFaceIDUsageDescription" = "Este aplicativo requer permissão de identificação facial para autenticar usando o reconhecimento facial.";
 
+/* Privacy - Local Network Usage Description */
+"NSLocalNetworkUsageDescription" = "Acesso à rede necessário";
+
 /* Privacy - Photo Library Additions Usage Description */
 "NSPhotoLibraryAddUsageDescription" = "Este aplicativo requer acesso à biblioteca de fotos, para que você possa carregar suas fotos no aplicativo.";
 
@@ -24,7 +27,4 @@
 
 /* (No Comment) */
 "ONLYOFFICE fillable form (.oform)" = "Formulário preenchível do ONLYOFFICE (.oform)";
-
-/* (No Comment) */
-"ONLYOFFICE form template (.docxf)" = "Modelo de formulário do ONLYOFFICE (.docxf)";
 

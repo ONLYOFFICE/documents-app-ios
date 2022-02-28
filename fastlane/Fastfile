@@ -6,6 +6,10 @@ Dotenv.load '.env.secret'
 default_platform :ios
 skip_docs # Do not create fastlane/README.md
 
+def truncate(string, max)
+    string.length > max ? "#{string[0...max]}\n..." : string
+end
+
 platform :ios do
   before_all do
     ensure_env_vars(
@@ -79,9 +83,11 @@ platform :ios do
 
     # Read changelog file
     change_log_file = options[:changelog_file]
-    if(File.exist?(change_log_file))
+    if !change_log_file.nil? && File.exist?(change_log_file)
       change_log = File.read(change_log_file)
     end
+
+    change_log = truncate(change_log, 3500)
 
     # creates a bump version commit 
     commit_version_bump(
@@ -163,9 +169,11 @@ platform :ios do
 
     # Read changelog file
     change_log_file = options[:changelog_file]
-    if(File.exist?(change_log_file))
+    if !change_log_file.nil? && File.exist?(change_log_file)
       change_log = File.read(change_log_file)
     end
+
+    change_log = truncate(change_log, 3500)
 
     # creates a bump version commit
     update_plist(

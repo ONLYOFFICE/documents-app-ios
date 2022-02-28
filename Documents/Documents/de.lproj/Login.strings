@@ -83,7 +83,7 @@
 "Mbh-dU-7po.text" = "Bitte geben Sie die E-Mail-Adresse ein, die Sie bei der Registrierung auf dem Portal verwendet haben. Die Anweisungen zur Passwortwiederherstellung werden an diese E-Mail-Adresse gesendet.";
 
 /* Class = "UILabel"; text = "Enter a phone number that can be used to verify your identity"; ObjectID = "MNA-z2-ITx"; */
-"MNA-z2-ITx.text" = "Geben Sie die Telefonnummer ein, mit der Sie Ihre Identität bestätigen können.";
+"MNA-z2-ITx.text" = "Geben Sie die Telefonnummer ein, mit der Sie Ihre Identität bestätigen können";
 
 /* Class = "UIBarButtonItem"; title = "Back"; ObjectID = "MUG-TG-NlP"; */
 "MUG-TG-NlP.title" = "Zurück";

@@ -14,13 +14,13 @@
 "FZg-vj-AVJ.text" = "Profitez d'essai gratuit de 30 jours";
 
 /* Class = "UILabel"; text = "Create your own\nweb office"; ObjectID = "huj-vr-CgZ"; */
-"huj-vr-CgZ.text" = "Créer votre propre \noffice web";
+"huj-vr-CgZ.text" = "Créer votre propre \noffice en ligne";
 
 /* Class = "UITextField"; placeholder = "Last Name"; ObjectID = "iLP-xJ-pU3"; */
 "iLP-xJ-pU3.placeholder" = "Nom de famille";
 
 /* Class = "UITextField"; placeholder = "Your phone number"; ObjectID = "kgQ-EP-Qap"; */
-"kgQ-EP-Qap.placeholder" = "Entrez votre numéro de téléphone";
+"kgQ-EP-Qap.placeholder" = "Votre numéro de téléphone";
 
 /* Class = "UILabel"; text = "Choose a password and\nstart using your office"; ObjectID = "qKc-e7-uTl"; */
 "qKc-e7-uTl.text" = "Choisissez un mot de passe et \nlancez votre office";

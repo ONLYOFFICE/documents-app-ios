@@ -7,7 +7,7 @@ PODS:
   - AppAuth/ExternalUserAgent (1.4.0)
   - atlantis-proxyman (1.12.0)
   - DocumentConverter (7.0.0)
-  - DocumentEditor (7.0.0)
+  - DocumentEditor (7.0.1)
   - FacebookCore (0.9.0):
     - FBSDKCoreKit (~> 5.0)
   - FacebookLogin (0.9.0):
@@ -180,7 +180,7 @@ PODS:
   - PhoneNumberKit/PhoneNumberKitCore (3.3.3)
   - PhoneNumberKit/UIKit (3.3.3):
     - PhoneNumberKit/PhoneNumberKitCore
-  - PresentationEditor (7.0.0)
+  - PresentationEditor (7.0.1)
   - PromisesObjC (2.0.0)
   - ReCaptcha (1.6.0):
     - ReCaptcha/Core (= 1.6.0)
@@ -190,7 +190,7 @@ PODS:
   - SDWebImage/Core (5.12.1)
   - Siren (5.7.1)
   - SkyFloatingLabelTextField (4.0.0)
-  - SpreadsheetEditor (7.0.0)
+  - SpreadsheetEditor (7.0.1)
   - SwiftGen (6.4.0)
   - SwiftMessages (9.0.4):
     - SwiftMessages/App (= 9.0.4)
@@ -316,7 +316,7 @@ SPEC CHECKSUMS:
   AppAuth: 31bcec809a638d7bd2f86ea8a52bd45f6e81e7c7
   atlantis-proxyman: 5e0d2214eb04c9646e4426c170248918c76815a9
   DocumentConverter: 7b48070109ef94c452a2facbfd7b8c0fbe0988ed
-  DocumentEditor: a3c684955f8c2e7d5ff2652b95fdba0e19f1d5ad
+  DocumentEditor: c325b8d6191890af52012774fbdc8fe5b7fbd65b
   FacebookCore: ba86524b66cfa86d0f8e65d08faa8504a9f732dd
   FacebookLogin: 6cee9fd6e1fe976fe8f7eec199e27b28b14f5d63
   FBSDKCoreKit: 1d5acf7c9d7a2f92bb1a242dc60cae5b7adb91df
@@ -348,13 +348,13 @@ SPEC CHECKSUMS:
   nanopb: a0ba3315591a9ae0a16a309ee504766e90db0c96
   ObjectMapper: 1eb41f610210777375fa806bf161dc39fb832b81
   PhoneNumberKit: 4ce83273551c4d2ae10b7361162f4283dd02835f
-  PresentationEditor: 923f7fe2b05b69d816089816f45f42c257e860af
+  PresentationEditor: f14ff47d00b90173eab571e4180ab2ad98f537de
   PromisesObjC: 68159ce6952d93e17b2dfe273b8c40907db5ba58
   ReCaptcha: d493ed256054a7b6a7eabcaf0b47ec9a8f42a16e
   SDWebImage: 4dc3e42d9ec0c1028b960a33ac6b637bb432207b
   Siren: 76ac728f4f2f4a3576c322272e94a0e37955664f
   SkyFloatingLabelTextField: 79ddc40e4ad59707fedbb48d605417aee48bb78a
-  SpreadsheetEditor: 4a97ddbcef6bbf9dfeeafc3374acf5eeeca25d77
+  SpreadsheetEditor: e6a6e924ada9b605cdc144cdffda94553f57435f
   SwiftGen: 67860cc7c3cfc2ed25b9b74cfd55495fc89f9108
   SwiftMessages: 082ed63613a49fa8e749cd6000bb0a8b9bbc736f
   SwiftRater: 6094fa6e9b3866ff8beca0a871b4b5f9ab896a6d

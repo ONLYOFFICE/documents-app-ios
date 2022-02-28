@@ -7,7 +7,7 @@
     <body>
       <trans-unit id="1hg-GO-WNq.text" xml:space="preserve">
         <source>Next</source>
-        <target state="translated">Ao lado do eixo</target>
+        <target>Próximo</target>
         <note>Class = "UILabel"; text = "Next"; ObjectID = "1hg-GO-WNq";</note>
       </trans-unit>
       <trans-unit id="2MJ-bj-ZpN.placeholder" xml:space="preserve">
@@ -74,7 +74,7 @@
       </trans-unit>
       <trans-unit id="SZG-z0-C6T.normalTitle" xml:space="preserve">
         <source>🇱🇻</source>
-        <target state="translated">🇱🇻</target>
+        <target>🇱🇻</target>
         <note>Class = "UIButton"; normalTitle = "🇱🇻"; ObjectID = "SZG-z0-C6T";</note>
       </trans-unit>
       <trans-unit id="TP3-h7-Hq1.placeholder" xml:space="preserve">
@@ -94,7 +94,7 @@
       </trans-unit>
       <trans-unit id="amC-Ph-cGL.text" xml:space="preserve">
         <source>Label</source>
-        <target state="translated">Etiqueta</target>
+        <target>Etiqueta</target>
         <note>Class = "UILabel"; text = "Label"; ObjectID = "amC-Ph-cGL";</note>
       </trans-unit>
       <trans-unit id="cHX-qo-kcu.text" xml:space="preserve">
@@ -123,7 +123,7 @@ office Web</target>
       </trans-unit>
       <trans-unit id="kgQ-EP-Qap.placeholder" xml:space="preserve">
         <source>Your phone number</source>
-        <target state="translated">Inserir seu numero de telefone</target>
+        <target>Inserir seu numero de telefone</target>
         <note>Class = "UITextField"; placeholder = "Your phone number"; ObjectID = "kgQ-EP-Qap";</note>
       </trans-unit>
       <trans-unit id="qKc-e7-uTl.text" xml:space="preserve">
@@ -174,17 +174,17 @@ comece a usar seu office</target>
     <body>
       <trans-unit id="/%d selected:dict/NSStringLocalizedFormatKey:dict/:string" xml:space="preserve">
         <source>%#@items@</source>
-        <target state="translated">%#@items@</target>
+        <target>%#@items@</target>
         <note/>
       </trans-unit>
       <trans-unit id="/%d selected:dict/items:dict/one:dict/:string" xml:space="preserve">
         <source>%d selected</source>
-        <target state="translated">%d selecionado</target>
+        <target>%d selecionado</target>
         <note/>
       </trans-unit>
       <trans-unit id="/%d selected:dict/items:dict/other:dict/:string" xml:space="preserve">
         <source>%d selected</source>
-        <target state="translated">%d selecionado</target>
+        <target>%d selecionado</target>
         <note/>
       </trans-unit>
       <trans-unit id="/%lu File selected:dict/NSStringLocalizedFormatKey:dict/:string" xml:space="preserve">
@@ -278,8 +278,8 @@ comece a usar seu office</target>
         <note/>
       </trans-unit>
       <trans-unit id="/Delete %lu Folder and %lu File:dict/lu_files:dict/zero:dict/:string" xml:space="preserve">
-        <source>__Source_text_is_empty__Translate_Or_Leave_this_text_as_is_if_target_text_is_also_empty__(/Delete %lu Folder and %lu File:dict/lu_files:dict/zero:dict/:string)</source>
-        <target>__Source_text_is_empty__Translate_Or_Leave_this_text_as_is_if_target_text_is_also_empty__(/Excluir %lu pasta e %lu arquivo:dict/lu_files:dict/zero:dict/:string)</target>
+        <source/>
+        <target/>
         <note/>
       </trans-unit>
       <trans-unit id="/Delete %lu Folder and %lu File:dict/lu_folders:dict/one:dict/:string" xml:space="preserve">
@@ -366,7 +366,7 @@ comece a usar seu office</target>
       </trans-unit>
       <trans-unit id="AqB-m0-2UQ.text" xml:space="preserve">
         <source>If a user with the email exists, the password change instruction has been sent to this email address.</source>
-        <target state="translated">Caso exista um usuário com o e-mail, as instruções de alteração de senha foram enviadas para este endereço de e-mail.</target>
+        <target>Caso exista um usuário com o e-mail, as instruções de alteração de senha foram enviadas para este endereço de e-mail.</target>
         <note>Class = "UILabel"; text = "If a user with the email exists, the password change instruction has been sent to this email address."; ObjectID = "AqB-m0-2UQ"; Note = "Do not translate";</note>
       </trans-unit>
       <trans-unit id="AqJ-b9-XQV.normalTitle" xml:space="preserve">
@@ -376,7 +376,7 @@ comece a usar seu office</target>
       </trans-unit>
       <trans-unit id="B8R-KD-Lml.text" xml:space="preserve">
         <source>Set up an application to generate the authentication codes</source>
-        <target state="translated">Configure um aplicativo para gerar os códigos de autenticação</target>
+        <target>Configure um aplicativo para gerar os códigos de autenticação</target>
         <note>Class = "UILabel"; text = "Set up an application to generate the authentication codes"; ObjectID = "B8R-KD-Lml";</note>
       </trans-unit>
       <trans-unit id="DK4-QO-Jde.text" xml:space="preserve">
@@ -415,12 +415,12 @@ dois fatores</target>
       </trans-unit>
       <trans-unit id="K5M-Of-QAk.text" xml:space="preserve">
         <source>Copy the key and paste it to the Google Authenticator application</source>
-        <target state="translated">Copie a chave e a cole no aplicativo Google Authenticator</target>
+        <target>Copie a chave e a cole no aplicativo Google Authenticator</target>
         <note>Class = "UILabel"; text = "Copy the key and paste it to the Google Authenticator application"; ObjectID = "K5M-Of-QAk";</note>
       </trans-unit>
       <trans-unit id="LwV-Os-V4m.text" xml:space="preserve">
         <source>Launch Google Authenticator application</source>
-        <target state="translated">Inicie o aplicativo Google Authenticator</target>
+        <target>Inicie o aplicativo Google Authenticator</target>
         <note>Class = "UILabel"; text = "Launch Google Authenticator application"; ObjectID = "LwV-Os-V4m";</note>
       </trans-unit>
       <trans-unit id="MNA-z2-ITx.text" xml:space="preserve">
@@ -435,7 +435,7 @@ dois fatores</target>
       </trans-unit>
       <trans-unit id="Mbh-dU-7po.text" xml:space="preserve">
         <source>Please enter the email you used while registering on the portal. The password recovery instructions will be send to that email address.</source>
-        <target state="translated">Por favor, insira o e-mail que você usou durante o registro no portal. As instruções de recuperação de senha serão enviadas para o endereço de email.</target>
+        <target>Por favor, insira o e-mail que você usou durante o registro no portal. As instruções de recuperação de senha serão enviadas para o endereço de email.</target>
         <note>Class = "UILabel"; text = "Please enter the email you used while registering on the portal. The password recovery instructions will be send to that email address."; ObjectID = "Mbh-dU-7po";</note>
       </trans-unit>
       <trans-unit id="NBg-dA-b3o.title" xml:space="preserve">
@@ -445,7 +445,7 @@ dois fatores</target>
       </trans-unit>
       <trans-unit id="OHG-hv-GGj.normalTitle" xml:space="preserve">
         <source>Back to login</source>
-        <target state="translated">Voltar para o login</target>
+        <target>Voltar para o login</target>
         <note>Class = "UIButton"; normalTitle = "Back to login"; ObjectID = "OHG-hv-GGj";</note>
       </trans-unit>
       <trans-unit id="OnI-QD-xeI.placeholder" xml:space="preserve">
@@ -460,7 +460,7 @@ dois fatores</target>
       </trans-unit>
       <trans-unit id="R2F-fc-11j.text" xml:space="preserve">
         <source>Run the application and tap the new account icon</source>
-        <target state="translated">Execute o aplicativo e toque no novo ícone de conta</target>
+        <target>Execute o aplicativo e toque no novo ícone de conta</target>
         <note>Class = "UILabel"; text = "Run the application and tap the new account icon"; ObjectID = "R2F-fc-11j";</note>
       </trans-unit>
       <trans-unit id="RDr-pH-MKV.normalTitle" xml:space="preserve">
@@ -470,7 +470,7 @@ dois fatores</target>
       </trans-unit>
       <trans-unit id="SH2-Fd-5Ze.text" xml:space="preserve">
         <source>Open authentication app and copy code from there</source>
-        <target state="translated">Abra o aplicativo de autenticação&#11;e copie o código de lá</target>
+        <target>Abra o aplicativo de autenticação e copie o código de lá</target>
         <note>Class = "UILabel"; text = "Open authentication app and copy code from there"; ObjectID = "SH2-Fd-5Ze";</note>
       </trans-unit>
       <trans-unit id="W8Q-CO-c0L.text" xml:space="preserve">
@@ -495,7 +495,7 @@ dois fatores</target>
       </trans-unit>
       <trans-unit id="bLE-8U-AOX.text" xml:space="preserve">
         <source>Password recovery</source>
-        <target state="translated">Recuperação de senha</target>
+        <target>Recuperação de senha</target>
         <note>Class = "UILabel"; text = "Password recovery"; ObjectID = "bLE-8U-AOX";</note>
       </trans-unit>
       <trans-unit id="cBn-x1-r5A.text" xml:space="preserve">
@@ -515,7 +515,7 @@ dois fatores</target>
       </trans-unit>
       <trans-unit id="ePY-rM-AOE.normalTitle" xml:space="preserve">
         <source>Send</source>
-        <target state="translated">Enviar</target>
+        <target>Enviar</target>
         <note>Class = "UIButton"; normalTitle = "Send"; ObjectID = "ePY-rM-AOE";</note>
       </trans-unit>
       <trans-unit id="gzc-cW-NPT.title" xml:space="preserve">
@@ -560,7 +560,7 @@ dois fatores</target>
       </trans-unit>
       <trans-unit id="vgV-fF-jOl.text" xml:space="preserve">
         <source>Copy the code generated by Google Authenticator application and insert it to the input field</source>
-        <target state="translated">Copie o código gerado pelo aplicativo Google Authenticator e o insira no campo de entrada</target>
+        <target>Copie o código gerado pelo aplicativo Google Authenticator e o insira no campo de entrada</target>
         <note>Class = "UILabel"; text = "Copy the code generated by Google Authenticator application and insert it to the input field"; ObjectID = "vgV-fF-jOl";</note>
       </trans-unit>
       <trans-unit id="vlQ-jV-iFo.text" xml:space="preserve">
@@ -853,7 +853,7 @@ Observação: se você se esquecer do código de acesso, será necessário exclu
       </trans-unit>
       <trans-unit id="cl6-b0-Mjh.text" xml:space="preserve">
         <source>Privacy Policy</source>
-        <target state="translated">Política de privacidade</target>
+        <target>Política de privacidade</target>
         <note>Class = "UILabel"; text = "Privacy Policy"; ObjectID = "cl6-b0-Mjh";</note>
       </trans-unit>
       <trans-unit id="i2P-F4-EhP.text" xml:space="preserve">
@@ -1165,126 +1165,125 @@ Observação: se você se esquecer do código de acesso, será necessário exclu
       </trans-unit>
     </body>
   </file>
-  <file original="Documents/en.lproj/Documents-InfoPlist.strings" source-language="en" target-language="pt-BR" datatype="plaintext">
+  <file original="Documents/Base.lproj/Documents-InfoPlist.strings" source-language="en" target-language="pt-BR" datatype="plaintext">
     <header>
       <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="13.2.1" build-num="13C100"/>
     </header>
     <body>
       <trans-unit id="CFBundleName" xml:space="preserve">
         <source>Documents</source>
-        <target state="translated">Documentos</target>
+        <target>Documentos</target>
         <note>Bundle name</note>
       </trans-unit>
       <trans-unit id="NSCameraUsageDescription" xml:space="preserve">
         <source>This app requires access to the camera, so that you can take photo and upload it in the app.</source>
-        <target state="translated">Este aplicativo requer acesso à câmera, para que você possa tirar fotos e carregá-la no aplicativo.</target>
+        <target>Este aplicativo requer acesso à câmera, para que você possa tirar fotos e carregá-la no aplicativo.</target>
         <note>Privacy - Camera Usage Description</note>
       </trans-unit>
       <trans-unit id="NSFaceIDUsageDescription" xml:space="preserve">
         <source>This app requires Face ID permission to authenticate using Face recognition.</source>
-        <target state="translated">Este aplicativo requer permissão de identificação facial para autenticar usando o reconhecimento facial.</target>
+        <target>Este aplicativo requer permissão de identificação facial para autenticar usando o reconhecimento facial.</target>
         <note>Privacy - Face ID Usage Description</note>
       </trans-unit>
       <trans-unit id="NSPhotoLibraryAddUsageDescription" xml:space="preserve">
         <source>This app requires access to the photo library, so that you can upload your photos in the app.</source>
-        <target state="translated">Este aplicativo requer acesso à biblioteca de fotos, para que você possa carregar suas fotos no aplicativo.</target>
+        <target>Este aplicativo requer acesso à biblioteca de fotos, para que você possa carregar suas fotos no aplicativo.</target>
         <note>Privacy - Photo Library Additions Usage Description</note>
       </trans-unit>
       <trans-unit id="NSPhotoLibraryUsageDescription" xml:space="preserve">
         <source>This app requires access to the photo library, so that you can upload your photos in the app.</source>
-        <target state="translated">Este aplicativo requer acesso à biblioteca de fotos, para que você possa carregar suas fotos no aplicativo.</target>
+        <target>Este aplicativo requer acesso à biblioteca de fotos, para que você possa carregar suas fotos no aplicativo.</target>
         <note>Privacy - Photo Library Usage Description</note>
       </trans-unit>
       <trans-unit id="New Document" xml:space="preserve">
         <source>New Document</source>
-        <target state="translated">Novo Documento</target>
+        <target>Novo Documento</target>
         <note/>
       </trans-unit>
       <trans-unit id="New Presentation" xml:space="preserve">
         <source>New Presentation</source>
-        <target state="translated">Nova apresentação</target>
+        <target>Nova apresentação</target>
         <note/>
       </trans-unit>
       <trans-unit id="New Spreadsheet" xml:space="preserve">
         <source>New Spreadsheet</source>
-        <target state="translated">Nova planilha</target>
-        <note/>
-      </trans-unit>
-      <trans-unit id="ONLYOFFICE form template (.docxf)" xml:space="preserve">
-        <source>ONLYOFFICE form template (.docxf)</source>
-        <target state="translated">Modelo de formulário do ONLYOFFICE (.docxf)</target>
+        <target>Nova planilha</target>
         <note/>
       </trans-unit>
       <trans-unit id="ONLYOFFICE fillable form (.oform)" xml:space="preserve">
         <source>ONLYOFFICE fillable form (.oform)</source>
-        <target state="translated">Formulário preenchível do ONLYOFFICE (.oform)</target>
+        <target>Formulário preenchível do ONLYOFFICE (.oform)</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="ONLYOFFICE form template (.docxf)" xml:space="preserve">
+        <source>ONLYOFFICE form template (.docxf)</source>
+        <target>Modelo de formulário do ONLYOFFICE (.docxf)</target>
         <note/>
       </trans-unit>
     </body>
   </file>
-  <file original="Documents/en.lproj/Documents.alpha-InfoPlist.strings" datatype="plaintext" source-language="en" target-language="pt-BR">
+  <file original="Documents/en.lproj/Documents.alpha-InfoPlist.strings" source-language="en" target-language="pt-BR" datatype="plaintext">
     <header>
       <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="13.2.1" build-num="13C100"/>
     </header>
     <body>
       <trans-unit id="CFBundleName" xml:space="preserve">
         <source>Documents-Alpha</source>
-        <target state="translated">Documentos-Alpha</target>
+        <target>Documentos-Alpha</target>
         <note>Bundle name</note>
       </trans-unit>
       <trans-unit id="NSCameraUsageDescription" xml:space="preserve">
         <source>This app requires access to the camera, so that you can take photo and upload it in the app.</source>
-        <target state="translated">Este aplicativo requer acesso à câmera, para que você possa tirar fotos e carregá-la no aplicativo.</target>
+        <target>Este aplicativo requer acesso à câmera, para que você possa tirar fotos e carregá-la no aplicativo.</target>
         <note>Privacy - Camera Usage Description</note>
       </trans-unit>
       <trans-unit id="NSFaceIDUsageDescription" xml:space="preserve">
         <source>This app requires Face ID permission to authenticate using Face recognition.</source>
-        <target state="translated">Este aplicativo requer permissão de identificação facial para autenticar usando o reconhecimento facial.</target>
+        <target>Este aplicativo requer permissão de identificação facial para autenticar usando o reconhecimento facial.</target>
         <note>Privacy - Face ID Usage Description</note>
       </trans-unit>
       <trans-unit id="NSLocalNetworkUsageDescription" xml:space="preserve">
         <source>Network access required</source>
-        <target state="translated">Acesso à rede necessário</target>
+        <target>Acesso à rede necessário</target>
         <note>Privacy - Local Network Usage Description</note>
       </trans-unit>
       <trans-unit id="NSPhotoLibraryAddUsageDescription" xml:space="preserve">
         <source>This app requires access to the photo library, so that you can upload your photos in the app.</source>
-        <target state="translated">Este aplicativo requer acesso à biblioteca de fotos, para que você possa carregar suas fotos no aplicativo.</target>
+        <target>Este aplicativo requer acesso à biblioteca de fotos, para que você possa carregar suas fotos no aplicativo.</target>
         <note>Privacy - Photo Library Additions Usage Description</note>
       </trans-unit>
       <trans-unit id="NSPhotoLibraryUsageDescription" xml:space="preserve">
         <source>This app requires access to the photo library, so that you can upload your photos in the app.</source>
-        <target state="translated">Este aplicativo requer acesso à biblioteca de fotos, para que você possa carregar suas fotos no aplicativo.</target>
+        <target>Este aplicativo requer acesso à biblioteca de fotos, para que você possa carregar suas fotos no aplicativo.</target>
         <note>Privacy - Photo Library Usage Description</note>
       </trans-unit>
       <trans-unit id="New Document" xml:space="preserve">
         <source>New Document</source>
-        <target state="translated">Novo Documento</target>
+        <target>Novo Documento</target>
         <note/>
       </trans-unit>
       <trans-unit id="New Presentation" xml:space="preserve">
         <source>New Presentation</source>
-        <target state="translated">Nova apresentação</target>
+        <target>Nova apresentação</target>
         <note/>
       </trans-unit>
       <trans-unit id="New Spreadsheet" xml:space="preserve">
         <source>New Spreadsheet</source>
-        <target state="translated">Nova planilha</target>
-        <note/>
-      </trans-unit>
-      <trans-unit id="ONLYOFFICE form template (.docxf))" xml:space="preserve">
-        <source>ONLYOFFICE form template (.docxf)</source>
-        <target state="translated">Modelo de formulário do ONLYOFFICE (.docxf)</target>
+        <target>Nova planilha</target>
         <note/>
       </trans-unit>
       <trans-unit id="ONLYOFFICE fillable form (.oform)" xml:space="preserve">
         <source>ONLYOFFICE fillable form (.oform)</source>
-        <target state="translated">Formulário preenchível do ONLYOFFICE (.oform)</target>
+        <target>Formulário preenchível do ONLYOFFICE (.oform)</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="ONLYOFFICE form template (.docxf)" xml:space="preserve">
+        <source>ONLYOFFICE form template (.docxf)</source>
         <note/>
       </trans-unit>
     </body>
   </file>
-  <file original="Documents/en.lproj/Localizable.strings" source-language="en" target-language="pt-BR" datatype="plaintext">
+  <file original="Documents/Base.lproj/Localizable.strings" source-language="en" target-language="pt-BR" datatype="plaintext">
     <header>
       <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="13.2.1" build-num="13C100"/>
     </header>

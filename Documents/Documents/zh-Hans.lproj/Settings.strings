@@ -1,69 +1,75 @@
 /* Class = "UINavigationItem"; title = "About"; ObjectID = "0DJ-uV-iju"; */
-"0DJ-uV-iju.title" = "About";
+"0DJ-uV-iju.title" = "关于";
 
 /* Class = "UILabel"; text = "None"; ObjectID = "1kc-cf-XDc"; */
-"1kc-cf-XDc.text" = "None";
+"1kc-cf-XDc.text" = "无";
 
 /* Class = "UITableViewSection"; headerTitle = "Security"; ObjectID = "4oc-1P-wMA"; */
-"4oc-1P-wMA.headerTitle" = "Security";
+"4oc-1P-wMA.headerTitle" = "安全";
 
 /* Class = "UINavigationItem"; title = "Passcode Lock"; ObjectID = "7gT-v5-3eH"; */
-"7gT-v5-3eH.title" = "Passcode Lock";
+"7gT-v5-3eH.title" = "密码锁";
 
 /* Class = "UITableViewSection"; footerTitle = "Request a password when the application starts.\n\nNote: if you forget the passcode, you'll need to delete and reinstall the app. All local documents will be lost."; ObjectID = "8Qq-uc-rWT"; */
-"8Qq-uc-rWT.footerTitle" = "Request a password when the application starts.\n\nNote: if you forget the passcode, you'll need to delete and reinstall the app. All local documents will be lost.";
+"8Qq-uc-rWT.footerTitle" = "当应用程序启动时，要求提供密码。\n\n注意：如果您忘记了密码，您将需要删除并重新安装该应用程序。所有的本地文件都会丢失。";
 
 /* Class = "UILabel"; text = "Version"; ObjectID = "13m-jH-9Vu"; */
-"13m-jH-9Vu.text" = "Version";
+"13m-jH-9Vu.text" = "版本";
 
 /* Class = "UILabel"; text = "Compress Images"; ObjectID = "19F-CC-u2R"; */
-"19F-CC-u2R.text" = "Compress Images";
+"19F-CC-u2R.text" = "压缩图像";
 
 /* Class = "UILabel"; text = "Cache"; ObjectID = "aV0-Ch-4Py"; */
-"aV0-Ch-4Py.text" = "Cache";
+"aV0-Ch-4Py.text" = "缓存";
 
 /* Class = "UITableViewSection"; headerTitle = "Storage"; ObjectID = "Bmt-tc-yd7"; */
-"Bmt-tc-yd7.headerTitle" = "Storage";
+"Bmt-tc-yd7.headerTitle" = "存储";
+
+/* Class = "UILabel"; text = "Privacy Policy"; ObjectID = "cl6-b0-Mjh"; */
+"cl6-b0-Mjh.text" = "隐私策略";
 
 /* Class = "UILabel"; text = "Rate App"; ObjectID = "CUM-1F-5Be"; */
-"CUM-1F-5Be.text" = "Rate App";
+"CUM-1F-5Be.text" = "评价应用";
 
 /* Class = "UITableViewSection"; headerTitle = "Information"; ObjectID = "ESd-H3-Pfh"; */
-"ESd-H3-Pfh.headerTitle" = "Information";
+"ESd-H3-Pfh.headerTitle" = "信息";
 
 /* Class = "UILabel"; text = "Tell a Friend"; ObjectID = "GqQ-Bv-Deg"; */
-"GqQ-Bv-Deg.text" = "Tell a Friend";
+"GqQ-Bv-Deg.text" = "告诉朋友";
 
 /* Class = "UILabel"; text = "Passcode Lock"; ObjectID = "i2P-F4-EhP"; */
-"i2P-F4-EhP.text" = "Passcode Lock";
+"i2P-F4-EhP.text" = "密码锁";
 
 /* Class = "UILabel"; text = "About"; ObjectID = "IS2-tT-Q4G"; */
-"IS2-tT-Q4G.text" = "About";
+"IS2-tT-Q4G.text" = "关于";
 
 /* Class = "UILabel"; text = "© Ascensio System SIA"; ObjectID = "lEo-YM-MnB"; */
 "lEo-YM-MnB.text" = "© Ascensio System SIA";
 
 /* Class = "UITabBarItem"; title = "Settings"; ObjectID = "MZJ-3d-460"; */
-"MZJ-3d-460.title" = "Settings";
+"MZJ-3d-460.title" = "设置";
 
 /* Class = "UILabel"; text = "Introduction Tour"; ObjectID = "NGC-k1-Jm9"; */
-"NGC-k1-Jm9.text" = "Introduction Tour";
+"NGC-k1-Jm9.text" = "导览";
 
 /* Class = "UINavigationItem"; title = "Settings"; ObjectID = "OKJ-3w-yJd"; */
-"OKJ-3w-yJd.title" = "Settings";
+"OKJ-3w-yJd.title" = "设置";
+
+/* Class = "UILabel"; text = "Terms of Service"; ObjectID = "PDj-N7-sjJ"; */
+"PDj-N7-sjJ.text" = "服务条款";
 
 /* Class = "UILabel"; text = "Support"; ObjectID = "raN-Fz-DnL"; */
-"raN-Fz-DnL.text" = "Support";
+"raN-Fz-DnL.text" = "支持";
 
 /* Class = "UILabel"; text = "Change Passcode"; ObjectID = "RuR-k5-kRu"; */
-"RuR-k5-kRu.text" = "Change Passcode";
+"RuR-k5-kRu.text" = "更改密码";
 
 /* Class = "UILabel"; text = "Files Preview"; ObjectID = "W0F-l2-98t"; */
-"W0F-l2-98t.text" = "Files Preview";
+"W0F-l2-98t.text" = "文件预览";
 
 /* Class = "UILabel"; text = "Turn Passcode On"; ObjectID = "XYC-Zw-fk6"; */
-"XYC-Zw-fk6.text" = "Turn Passcode On";
+"XYC-Zw-fk6.text" = "开启密码";
 
 /* Class = "UILabel"; text = "Unlock with Touch ID"; ObjectID = "YfE-Pr-7QU"; */
-"YfE-Pr-7QU.text" = "Unlock with Touch ID";
+"YfE-Pr-7QU.text" = "用Touch ID解锁";
 

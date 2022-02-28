@@ -13,7 +13,7 @@
 			<key>NSStringFormatValueTypeKey</key>
 			<string>d</string>
 			<key>other</key>
-			<string>%d selected</string>
+			<string>%d 已选定</string>
 		</dict>
 	</dict>
 	<key>%lu File selected</key>
@@ -27,7 +27,7 @@
 			<key>NSStringFormatValueTypeKey</key>
 			<string>lu</string>
 			<key>other</key>
-			<string>%lu Files selected</string>
+			<string>%lu 文件已选定</string>
 		</dict>
 	</dict>
 	<key>%lu Folder and %lu File selected</key>
@@ -41,7 +41,7 @@
 			<key>NSStringFormatValueTypeKey</key>
 			<string>lu</string>
 			<key>other</key>
-			<string>and %lu Files selected</string>
+			<string>和 %lu 文件已选定</string>
 		</dict>
 		<key>lu_folders</key>
 		<dict>
@@ -50,7 +50,7 @@
 			<key>NSStringFormatValueTypeKey</key>
 			<string>lu</string>
 			<key>other</key>
-			<string>%lu Folders %2$#@lu_files@</string>
+			<string>%lu 文件夹 %2$#@lu_files@</string>
 			<key>zero</key>
 			<string>%2$#@lu_files@</string>
 		</dict>
@@ -66,7 +66,7 @@
 			<key>NSStringFormatValueTypeKey</key>
 			<string>lu</string>
 			<key>other</key>
-			<string>%lu Folders selected</string>
+			<string>%lu 文件夹已选定</string>
 		</dict>
 	</dict>
 	<key>Delete %lu File</key>
@@ -80,7 +80,7 @@
 			<key>NSStringFormatValueTypeKey</key>
 			<string>lu</string>
 			<key>other</key>
-			<string>Delete %lu Files</string>
+			<string>删除 %lu 文件</string>
 		</dict>
 	</dict>
 	<key>Delete %lu Folder</key>
@@ -94,7 +94,7 @@
 			<key>NSStringFormatValueTypeKey</key>
 			<string>lu</string>
 			<key>other</key>
-			<string>Delete %lu Folders</string>
+			<string>删除 %lu 文件夹</string>
 		</dict>
 	</dict>
 	<key>Delete %lu Folder and %lu File</key>
@@ -108,9 +108,9 @@
 			<key>NSStringFormatValueTypeKey</key>
 			<string>lu</string>
 			<key>other</key>
-			<string>and %lu Files</string>
+			<string>和 %lu 文件</string>
 			<key>zero</key>
-			<string></string>
+			<string> </string>
 		</dict>
 		<key>lu_folders</key>
 		<dict>
@@ -119,9 +119,9 @@
 			<key>NSStringFormatValueTypeKey</key>
 			<string>lu</string>
 			<key>other</key>
-			<string>Delete %lu Folders %2$#@lu_files@</string>
+			<string>删除 %lu 文件夹 %2$#@lu_files@</string>
 			<key>zero</key>
-			<string>Delete %2$#@lu_files@</string>
+			<string>删除 %2$#@lu_files@</string>
 		</dict>
 	</dict>
 </dict>

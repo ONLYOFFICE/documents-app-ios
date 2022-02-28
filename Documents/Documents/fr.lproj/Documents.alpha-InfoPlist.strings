@@ -11,7 +11,7 @@
 "New Spreadsheet" = "Nouveau classeur";
 
 /* Privacy - Camera Usage Description */
-"NSCameraUsageDescription" = "Cette application demande l'accès à l'appareil photo pour que vous puissiez prendre des photos et les charger dans l'application. ";
+"NSCameraUsageDescription" = "Cette application nécessite un accès à l'appareil photo, afin que vous puissiez prendre des photos et les charger dans l'application.";
 
 /* Privacy - Face ID Usage Description */
 "NSFaceIDUsageDescription" = "Cette application nécessite l'autorisation Face ID pour s'authentifier à l'aide de la reconnaissance faciale.";
@@ -20,8 +20,14 @@
 "NSLocalNetworkUsageDescription" = "Accès réseau requis";
 
 /* Privacy - Photo Library Additions Usage Description */
-"NSPhotoLibraryAddUsageDescription" = "Cette application demande l'accès à la Galerie photo pour que vous puissiez télécharger vos photos dans l'application.";
+"NSPhotoLibraryAddUsageDescription" = "Cette application nécessite un accès à la galerie de photos, afin que vous puissiez charger vos photos dans l'application.";
 
 /* Privacy - Photo Library Usage Description */
-"NSPhotoLibraryUsageDescription" = "Cette application demande l'accès à la Galerie photo pour que vous puissiez télécharger vos photos dans l'application.";
+"NSPhotoLibraryUsageDescription" = "Cette application nécessite un accès à la galerie de photos, afin que vous puissiez charger vos photos dans l'application.";
+
+/* (No Comment) */
+"ONLYOFFICE fillable form (.oform)" = "Formulaire ONLYOFFICE remplissable (.oform)";
+
+/* (No Comment) */
+"ONLYOFFICE form template (.docxf)" = "Modèle de formulaire ONLYOFFICE  (.docxf)";
 

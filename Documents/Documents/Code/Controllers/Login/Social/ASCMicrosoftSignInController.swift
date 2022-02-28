@@ -29,7 +29,8 @@ class ASCMicrosoftSignInController: ASCConnectStorageOAuth2Delegate {
         ]
         
         let authRequest = "https://login.microsoftonline.com/consumers/oauth2/v2.0/authorize?\(parameters.stringAsHttpParameters())"
-        let urlRequest = URLRequest(url: URL(string: authRequest)!)
+        guard let url = URL(string: authRequest) else { return }
+        let urlRequest = URLRequest(url: url)
 
         controller.load(request: urlRequest)
     }

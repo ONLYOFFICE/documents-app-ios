@@ -25,3 +25,9 @@
 /* Privacy - Photo Library Usage Description */
 "NSPhotoLibraryUsageDescription" = "Этому приложению требуется доступ к библиотеке фотографий, чтобы вы могли загружать свои фотографии в приложение.";
 
+/* (No Comment) */
+"ONLYOFFICE fillable form (.oform)" = "Заполняемая форма ONLYOFFICE (.oform)";
+
+/* (No Comment) */
+"ONLYOFFICE form template (.docxf)" = "Шаблон формы ONLYOFFICE (.docxf)";
+

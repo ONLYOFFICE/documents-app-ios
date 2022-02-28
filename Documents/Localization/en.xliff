@@ -1210,14 +1210,14 @@ Note: if you forget the passcode, you'll need to delete and reinstall the app. A
         <target>New Spreadsheet</target>
         <note/>
       </trans-unit>
-      <trans-unit id="ONLYOFFICE form template (.docxf)" xml:space="preserve">
-        <source>ONLYOFFICE form template (.docxf)</source>
-        <target>ONLYOFFICE form template (.docxf)</target>
-        <note/>
-      </trans-unit>
       <trans-unit id="ONLYOFFICE fillable form (.oform)" xml:space="preserve">
         <source>ONLYOFFICE fillable form (.oform)</source>
         <target>ONLYOFFICE fillable form (.oform)</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="ONLYOFFICE form template (.docxf)" xml:space="preserve">
+        <source>ONLYOFFICE form template (.docxf)</source>
+        <target>ONLYOFFICE form template (.docxf)</target>
         <note/>
       </trans-unit>
     </body>
@@ -1272,14 +1272,14 @@ Note: if you forget the passcode, you'll need to delete and reinstall the app. A
         <target>New Spreadsheet</target>
         <note/>
       </trans-unit>
-      <trans-unit id="ONLYOFFICE form template (.docxf)" xml:space="preserve">
-        <source>ONLYOFFICE form template (.docxf)</source>
-        <target>ONLYOFFICE form template (.docxf)</target>
-        <note/>
-      </trans-unit>
       <trans-unit id="ONLYOFFICE fillable form (.oform)" xml:space="preserve">
         <source>ONLYOFFICE fillable form (.oform)</source>
         <target>ONLYOFFICE fillable form (.oform)</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="ONLYOFFICE form template (.docxf)" xml:space="preserve">
+        <source>ONLYOFFICE form template (.docxf)</source>
+        <target>ONLYOFFICE form template (.docxf)</target>
         <note/>
       </trans-unit>
     </body>
@@ -1620,9 +1620,9 @@ others which use WebDAV protocol.</target>
         <target>Copying</target>
         <note>Caption of the processing</note>
       </trans-unit>
-      <trans-unit id="Could not change file attrubutes" xml:space="preserve">
-        <source>Could not change file attrubutes</source>
-        <target>Could not change file attrubutes</target>
+      <trans-unit id="Could not change file attributes" xml:space="preserve">
+        <source>Could not change file attributes</source>
+        <target>Could not change file attributes</target>
         <note>Description of file operation error</note>
       </trans-unit>
       <trans-unit id="Could not change the directory" xml:space="preserve">

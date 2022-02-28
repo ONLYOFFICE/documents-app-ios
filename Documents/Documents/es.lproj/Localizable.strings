@@ -5,13 +5,13 @@
 "%i of %i" = "%1$i de %2$i";
 
 /* No comment provided by engineer. */
-"%lu File selected" = "%lu Archivo seleccionado";
+"%lu File selected" = "%lu archivo seleccionado";
 
 /* No comment provided by engineer. */
-"%lu Folder and %lu File selected" = "%1$lu Carpeta y %2$lu Archivo seleccionado";
+"%lu Folder and %lu File selected" = "%1$lu carpeta y %2$lu archivo seleccionado";
 
 /* No comment provided by engineer. */
-"%lu Folder selected" = "%lu Carpeta seleccionada";
+"%lu Folder selected" = "%lu carpeta seleccionada";
 
 /* No comment provided by engineer. */
 "%lu items with the same name already exist in the folder '%@'. Overwrite the items?" = "%1$lu objetos con el mismo nombre ya existen en la carpeta '%2$@'. ¿Sobrescribir los objetos?";
@@ -20,7 +20,7 @@
 "© Ascensio System SIA %d" = "© Ascensio System SIA %d";
 
 /* No comment provided by engineer. */
-"A file with a similar name already exists in the document directory on the device." = "Un archivo con un nombre similar ya existe en el directorio de documento en el dispositivo.";
+"A file with a similar name already exists in the document directory on the device." = "Un archivo con un nombre similar ya existe en el directorio de documentos en el dispositivo.";
 
 /* No comment provided by engineer. */
 "A user or group will be able only to view the document and add comments, as well as manage them." = "Un usuario o grupo sólo podrá ver el documento y añadir comentarios, así como administrarlos.";
@@ -29,7 +29,7 @@
 "A user or group will be able only to view the document and fill in the forms inserted into the document." = "Un usuario o grupo sólo podrá ver el documento y rellenar los formularios insertados en el documento.";
 
 /* No comment provided by engineer. */
-"A user or group will be able only to view the document." = "Un usuario o grupo sólo podrá ver el documento";
+"A user or group will be able only to view the document." = "Un usuario o grupo sólo podrá ver el documento.";
 
 /* No comment provided by engineer. */
 "A user or group will be able to view and change the document without actually editing it, but all the changes made by a reviewer will be recorded and shown to the file owner (or a person who has full access to the file) so that he/she will be able to accept or reject them." = "Un usuario o grupo podrá ver y modificar el documento sin editarlo, pero todos los cambios realizados por un revisor se registrarán y se mostrarán al propietario del archivo (o a cualquier persona que tenga acceso completo al archivo) para que pueda aceptarlos o rechazarlos.";
@@ -59,10 +59,10 @@
 "Access settings" = "Ajustes de acceso";
 
 /* No comment provided by engineer. */
-"Account name is empty" = "Nombre de cuenta está vacío";
+"Account name is empty" = "El nombre de cuenta está vacío";
 
 /* No comment provided by engineer. */
-"Account name is not valid" = "Nombre de cuenta no es válido";
+"Account name is not valid" = "El nombre de cuenta no es válido";
 
 /* Sharing settings add notification message */
 "Add message" = "Añadir mensaje";
@@ -71,7 +71,7 @@
 "Add users or groups and allow them to \n read, review or edit documents." = "Añada usuarios o grupos y concédales permiso para\nleer, revisar o editar documentos.";
 
 /* No comment provided by engineer. */
-"Address is empty" = "Dirección está vacía";
+"Address is empty" = "La dirección está vacía";
 
 /* No comment provided by engineer. */
 "All" = "Todo";
@@ -101,16 +101,16 @@
 "Better formatting" = "Mejor formato";
 
 /* No comment provided by engineer. */
-"Box directory" = "Directorio de casilla";
+"Box directory" = "Directorio de Box";
 
 /* No comment provided by engineer. */
-"By creating the portal you agree with our Privacy Policy and Terms of Service" = "Al crear el portal, usted acepta nuestra Política de privacidad y las Condiciones del servicio";
+"By creating the portal you agree with our Privacy Policy and Terms of Service" = "Al crear el portal, usted acepta nuestra Política de privacidad y los Términos del servicio";
 
 /* Data units */
 "bytes" = "bytes";
 
 /* No comment provided by engineer. */
-"Camera Unavailable" = "Cámara No Disponible";
+"Camera Unavailable" = "Cámara no disponible";
 
 /* No comment provided by engineer. */
 "Can not create file in the folder." = "No se puede crear un archivo en la carpeta.";
@@ -125,19 +125,19 @@
 "Can not duplicate the file." = "No se puede duplicar el archivo.";
 
 /* No comment provided by engineer. */
-"Cancel" = "Cerrar";
+"Cancel" = "Cancelar";
 
 /* No comment provided by engineer. */
 "Check your internet connection" = "Compruebe la conexión a Internet";
 
 /* No comment provided by engineer. */
-"Choose Code Page" = "Seleccionar Página de Códigos";
+"Choose Code Page" = "Seleccionar página de códigos";
 
 /* No comment provided by engineer. */
 "Choose CSV Options" = "Seleccionar Opciones de CSV";
 
 /* Caption of the processing */
-"Cleanup" = "Limpieza";
+"Cleanup" = "Limpiar";
 
 /* Button title */
 "Clear Cache" = "Borrar caché";
@@ -149,13 +149,13 @@
 "Clear formatting, use extended color palette, and change font with improved settings." = "Borre el formato, utilice la paleta de colores ampliada y cambie el tipo de fuente con una configuración mejorada.";
 
 /* Caption of the processing */
-"Clearing" = "Limpieza";
+"Clearing" = "Borrando";
 
 /* Close view */
 "Close" = "Cerrar";
 
 /* No comment provided by engineer. */
-"Close the document before opening a new one." = "Cierre el documento antes de abrir otro";
+"Close the document before opening a new one." = "Cierre el documento antes de abrir otro.";
 
 /* Default external storage name */
 "Cloud directory" = "Directorio de la nube";
@@ -164,7 +164,7 @@
 "cm" = "cm";
 
 /* Introduction Step Five - Title */
-"Collaborate with your team" = "Colaborar con su equipo";
+"Collaborate with your team" = "Colabore con su equipo";
 
 /* Share status */
 "Comment" = "Comentario";
@@ -173,7 +173,7 @@
 "Common Documents" = "Documentos comunes";
 
 /* Cancel */
-"common.cancel" = "Cerrar";
+"common.cancel" = "Cancelar";
 
 /* Error */
 "common.error" = "Error";
@@ -194,10 +194,10 @@
 "Connect" = "Conectar";
 
 /* No comment provided by engineer. */
-"Connect Clouds" = "Nube conectados";
+"Connect Clouds" = "Conectar nubes";
 
 /* Introduction Step Three - Description */
-"Connect third-party storage\nlike Nextcloud, ownCloud, Yandex Disk and\nothers which use WebDAV protocol." = "Conectar el almacenamiento de terceros\ncomo Nextcloud, ownCloud, Yandex Disk y\notros que utilizan el protocolo WebDAV.";
+"Connect third-party storage\nlike Nextcloud, ownCloud, Yandex Disk and\nothers which use WebDAV protocol." = "Conecte el almacenamiento de terceros\ncomo Nextcloud, ownCloud, Yandex Disk y\notros que utilizan el protocolo WebDAV.";
 
 /* Footer text */
 "Connect to your %@ cloud to store files online and collaborate on documents in real time" = "Conéctese a su nube %@ para almacenar archivos en línea y colaborar en documentos en tiempo real";
@@ -257,7 +257,7 @@
 "Could not delete." = "No se puede eliminar.";
 
 /* No comment provided by engineer. */
-"Could not download file." = "No se puede descargar archivo.";
+"Could not download file." = "No se puede descargar el archivo.";
 
 /* No comment provided by engineer. */
 "Could not download object." = "No se puede descargar un objeto.";
@@ -281,10 +281,10 @@
 "Could not open file." = "No se puede abrir el archivo.";
 
 /* No comment provided by engineer. */
-"Could not read data from file." = "No se puede leer datos del archivo.";
+"Could not read data from file." = "No se puede leer los datos del archivo.";
 
 /* No comment provided by engineer. */
-"Could not read data from the file." = "No se puede leer datos del archivo.";
+"Could not read data from the file." = "No se puede leer los datos del archivo.";
 
 /* Description of file operation error */
 "Could not read from file" = "No se puede leer desde el archivo";
@@ -296,16 +296,16 @@
 "Could not write to file" = "No se puede escribir en el archivo";
 
 /* No comment provided by engineer. */
-"Couldn't open file" = "No se pudo abrir archivo";
+"Couldn't open file" = "No se pudo abrir el archivo";
 
 /* No comment provided by engineer. */
 "Create" = "Crear";
 
 /* Introduction Step Two - Description */
-"Create and edit documents with our comprehensive toolbar: work with complex objects in text documents, perform extensive calculations in spreadsheets, create stunning presentations and view PDF files with no formatting loss." = "Cree y edite documentos con nuestra barra de herramientas amplia: trabaje con objetos complejos en documentos de texto, realice cálculos extensos en hojas de cálculo, cree presentaciones asombrosas y vea archivos PDF sin la pérdida de formateo.";
+"Create and edit documents with our comprehensive toolbar: work with complex objects in text documents, perform extensive calculations in spreadsheets, create stunning presentations and view PDF files with no formatting loss." = "Cree y edite documentos con nuestra barra de herramientas amplia: trabaje con objetos complejos en documentos de texto, realice cálculos extensos en hojas de cálculo, cree presentaciones asombrosas y vea archivos PDF sin la pérdida de formate.";
 
 /* No comment provided by engineer. */
-"Create new documents, spreadsheets or presentations. Create new folders to organize your files." = "Crear nuevos documentos, hojas de cálculo o presentaciones. Crear nuevas carpetas para organizar los archivos.";
+"Create new documents, spreadsheets or presentations. Create new folders to organize your files." = "Cree nuevos documentos, hojas de cálculo o presentaciones. Cree nuevas carpetas para organizar los archivos.";
 
 /* Caption of the process */
 "Creating" = "Creando";
@@ -320,13 +320,13 @@
 "Delete" = "Eliminar";
 
 /* No comment provided by engineer. */
-"Delete %lu File" = "Eliminar %lu Archivo";
+"Delete %lu File" = "Eliminar %lu archivo";
 
 /* No comment provided by engineer. */
-"Delete %lu Folder" = "Eliminar %lu Carpeta";
+"Delete %lu Folder" = "Eliminar %lu carpeta";
 
 /* No comment provided by engineer. */
-"Delete %lu Folder and %lu File" = "Eliminar %1$lu Carpeta y %2$lu Archivo";
+"Delete %lu Folder and %lu File" = "Eliminar %1$lu carpeta y %2$lu archivo";
 
 /* No comment provided by engineer. */
 "Delete account" = "Eliminar cuenta";
@@ -347,7 +347,7 @@
 "Deny Access" = "Denegar acceso";
 
 /* No comment provided by engineer. */
-"Deselect all" = "Anular la selección";
+"Deselect all" = "Anular selección";
 
 /* Button title */
 "Disconnect third party" = "Desconectar el tercero";
@@ -356,7 +356,7 @@
 "Document" = "Documento";
 
 /* Default title of sample document */
-"Document Sample" = "Documento de ejemplo";
+"Document Sample" = "Ejemplo de documento";
 
 /* Category title */
 "Documents" = "Documentos";
@@ -396,13 +396,13 @@
 "Email" = "Correo electrónico";
 
 /* No comment provided by engineer. */
-"Email is empty" = "Email está vacío";
+"Email is empty" = "El correo electrónico está vacío";
 
 /* No comment provided by engineer. */
-"Email is incorrect." = "Email es incorrecto.";
+"Email is incorrect." = "El correo electrónico es incorrecto.";
 
 /* No comment provided by engineer. */
-"Email is not valid" = "Email no es válido";
+"Email is not valid" = "El correo electrónico no es válido";
 
 /* No comment provided by engineer. */
 "Empty file." = "Archivo vacío.";
@@ -411,13 +411,13 @@
 "Empty name." = "Nombre vacío.";
 
 /* No comment provided by engineer. */
-"Encoding" = "Codificación";
+"Encoding" = "Codificando";
 
 /* Presentation Viewer */
 "End Slide Show" = "Finalizar presentación";
 
 /* No comment provided by engineer. */
-"Enter Portal Address" = "Introduzca Nombre de Portal";
+"Enter Portal Address" = "Introducir la dirección del portal";
 
 /* No comment provided by engineer. */
 "Error" = "Error";
@@ -426,10 +426,10 @@
 "Error code: %ld" = "Código de error: %ld";
 
 /* Access is Forbidden message */
-"error.errorForbiddenMsg" = "Contacte con el administrador del portal para acceso al módulo Proyectos";
+"error.errorForbiddenMsg" = "Contacte con el administrador del portal para acceder al recurso.";
 
 /* Access is Forbidden title */
-"error.errorForbiddenTitle" = "Acceso al módulo Proyectos está prohibido";
+"error.errorForbiddenTitle" = "El acceso está prohibido";
 
 /* The resource can not be found Title */
 "error.errorNotFoundMsg" = "El recurso no se puede encontrar";
@@ -447,10 +447,10 @@
 "Failed online conversion service." = "Servicio de conversión en línea fracasado.";
 
 /* No comment provided by engineer. */
-"Failed to check portal availability." = "Fallo al verificar la disponibilidad de portal.";
+"Failed to check portal availability." = "Error al verificar la disponibilidad de portal.";
 
 /* No comment provided by engineer. */
-"Failed to check the name of the portal" = "Fallo al verificar el nombre del portal";
+"Failed to check the name of the portal" = "Error al verificar el nombre del portal";
 
 /* No comment provided by engineer. */
 "Failed to connect folder." = "Error al conectar la carpeta.";
@@ -462,7 +462,7 @@
 "Failed to get file information from the server." = "Fallo al recibir la información sobre archivo del servidor.";
 
 /* No comment provided by engineer. */
-"Failed to get file list." = "Fallo de obtener la lista de archivos";
+"Failed to get file list." = "Error al obtener la lista de archivos.";
 
 /* No comment provided by engineer. */
 "Failed to get information about the file." = "Fallo al obtener información del archivo.";
@@ -477,19 +477,19 @@
 "Failed to send feedback by mail. Try to write your request on our forum." = "No se pudo enviar la información por correo. Intente escribir su solicitud en nuestro foro.";
 
 /* No comment provided by engineer. */
-"Failed upload source file to conversion online service." = "Fallo al cargar el archivo de origen al servicio de conversión en línea.";
+"Failed upload source file to conversion online service." = "Error al cargar el archivo de origen al servicio de conversión en línea.";
 
 /* No comment provided by engineer. */
-"Failure to download file from portal." = "Fallo al descargar archivo del portal.";
+"Failure to download file from portal." = "Error al descargar el archivo del portal.";
 
 /* No comment provided by engineer. */
-"Failure to download result from conversion online service." = "Fallo al descargar el resultado del servicio de conversión en línea.";
+"Failure to download result from conversion online service." = "Error al descargar el resultado del servicio de conversión en línea.";
 
 /* Description of file operation error */
-"File already exists" = "Archivo ya existe";
+"File already exists" = "El archivo ya existe";
 
 /* Description of file operation error */
-"File does not exist" = "Archivo no existe";
+"File does not exist" = "El archivo no existe";
 
 /* No comment provided by engineer. */
 "Files" = "Archivos";
@@ -498,7 +498,7 @@
 "Fillable forms" = "Formularios rellenables";
 
 /* No comment provided by engineer. */
-"First name is incorrect" = "Nombre es incorrecto";
+"First name is incorrect" = "El nombre es incorrecto";
 
 /* No comment provided by engineer. */
 "Folder title" = "Título de carpeta";
@@ -516,13 +516,13 @@
 "Gb" = "Gb";
 
 /* No comment provided by engineer. */
-"Get started" = "Empiece a usar";
+"Get started" = "Comenzar";
 
 /* No comment provided by engineer. */
-"GET STARTED!" = "¡EMPIECE A USAR!";
+"GET STARTED!" = "¡COMENZAR!";
 
 /* Introduction Step One - Title */
-"Getting started" = "Empiece a usar";
+"Getting started" = "Comenzando";
 
 /* No comment provided by engineer. */
 "Go to forum" = "Ir al foro";
@@ -561,7 +561,7 @@
 "Invalid Data" = "Datos no válidos";
 
 /* No comment provided by engineer. */
-"Invalid Url" = "URL no válida:";
+"Invalid Url" = "URL no válida";
 
 /* Data units */
 "Kb" = "Kb";
@@ -573,29 +573,29 @@
 "kDrive directory" = "Directorio de kDrive";
 
 /* No comment provided by engineer. */
-"Last name is empty" = "Apellido está vacío";
+"Last name is empty" = "El apellido está vacío";
 
 /* No comment provided by engineer. */
-"Last name is incorrect" = "Apellido es incorrecto";
+"Last name is incorrect" = "El apellido es incorrecto";
 
 /* No comment provided by engineer. */
-"Link copied\nto the clipboard" = "Enlace se ha copiado al portapapeles";
+"Link copied\nto the clipboard" = "El enlace se ha copiado al portapapeles";
 
 /* Caption of the process */
-"Logging in" = "Accediendo";
+"Logging in" = "Iniciando sesión";
 
 /* No comment provided by engineer. */
 "Login" = "Acceso";
 
 /* No comment provided by engineer. */
-"Login by %@" = "Inicio por %@";
+"Login by %@" = "Iniciar sesión por";
 
 /* No comment provided by engineer. */
-"Login is empty" = "Login está vacío";
+"Login is empty" = "El login está vacío";
 
 /* Button title
    Caption of the process */
-"Logout" = "Cierre de sesión";
+"Logout" = "Cerrar sesión";
 
 /* Button title */
 "Mark as favorite" = "Marcar como favorito";
@@ -631,25 +631,25 @@
 "My Drive" = "Mi Drive";
 
 /* No comment provided by engineer. */
-"Name is empty" = "Nombre está vacío";
+"Name is empty" = "El nombre está vacío";
 
 /* No comment provided by engineer. */
-"Needs additional params." = "Necesita parámetros adicionales.";
+"Needs additional params." = "Se necesitan parámetros adicionales.";
 
 /* No comment provided by engineer. */
 "New" = "Nuevo";
 
 /* No comment provided by engineer. */
-"New Document" = "Nuevo Documento";
+"New Document" = "Nuevo documento";
 
 /* No comment provided by engineer. */
-"New Folder" = "Nueva Carpeta";
+"New Folder" = "Nueva carpeta";
 
 /* No comment provided by engineer. */
 "New Presentation" = "Crear presentación";
 
 /* No comment provided by engineer. */
-"New Spreadsheet" = "Nueva Hoja de Cálculo";
+"New Spreadsheet" = "Nueva hoja de cálculo";
 
 /* Next step */
 "Next" = "Siguiente";
@@ -693,7 +693,7 @@
 "None" = "Ninguno";
 
 /* No comment provided by engineer. */
-"Note: removal from your account can not be undone." = "Nota: eliminación de su cuenta no se puede deshacer.";
+"Note: removal from your account can not be undone." = "Nota: la eliminación de su cuenta no se puede deshacer.";
 
 /* Sharing settings switcher */
 "Notify by Email" = "Notificar por email";
@@ -720,7 +720,7 @@
 "OneDrive directory" = "Directorio de OneDrive";
 
 /* No comment provided by engineer. */
-"OneDrive for Business" = "OneDrive for Business";
+"OneDrive for Business" = "OneDrive para empresas";
 
 /* Short App Name */
 "ONLYOFFICE" = "ONLYOFFICE";
@@ -732,7 +732,7 @@
 "Oops!" = "¡Vaya!";
 
 /* No comment provided by engineer. */
-"Open Document" = "Abrir Documento";
+"Open Document" = "Abrir documento";
 
 /* Caption of the processing */
 "Opening" = "Abriendo";
@@ -762,7 +762,7 @@
 "Password" = "Contraseña";
 
 /* No comment provided by engineer. */
-"Password is empty" = "Contraseña está vacía";
+"Password is empty" = "La contraseña está vacía";
 
 /* No comment provided by engineer. */
 "Passwords do not match" = "Contraseñas no coinciden";
@@ -774,7 +774,7 @@
 "Phone" = "Teléfono";
 
 /* No comment provided by engineer. */
-"Phone is incorrect" = "Teléfono es incorrecto";
+"Phone is incorrect" = "El número de teléfono es incorrecto";
 
 /* Used in the context: '1 photo' */
 "photo" = "foto";
@@ -804,16 +804,16 @@
 "Please retry. \n\n If the problem persists contact us and mention this error code: SSO - %@" = "Por favor, reintente. Si el problema persiste, contáctenos y mencione este código de error: SSO - %@";
 
 /* No comment provided by engineer. */
-"Portal Address" = "Dirección de Portal";
+"Portal Address" = "Dirección del portal";
 
 /* No comment provided by engineer. */
-"Portal is unavailable." = "Portal no está disponible.";
+"Portal is unavailable." = "El portal no está disponible.";
 
 /* No comment provided by engineer. */
 "Presentation" = "Presentación";
 
 /* Default title of sample document */
-"Presentation Sample" = "Presentación de ejemplo";
+"Presentation Sample" = "Ejemplo de presentación";
 
 /* No comment provided by engineer. */
 "Presentations" = "Presentaciones";
@@ -831,10 +831,10 @@
 "Project Documents" = "Documentos de proyecto";
 
 /* No comment provided by engineer. */
-"Protected File" = "Archivo Protegido";
+"Protected File" = "Archivo protegido";
 
 /* Share status */
-"Read Only" = "Solo lectura";
+"Read Only" = "Sólo lectura";
 
 /* Button title */
 "Recover here" = "Recuperar aquí";
@@ -858,13 +858,13 @@
 "Rename" = "Renombrar";
 
 /* No comment provided by engineer. */
-"Rename failed." = "Fallo al renombrar.";
+"Rename failed." = "Error al renombrar.";
 
 /* No comment provided by engineer. */
-"Rename failed. An object with such a similar name exists." = "Fallo al renombrar. Ya existe un objeto con un nombre similar.";
+"Rename failed. An object with such a similar name exists." = "Error al renombrar. Ya existe un objeto con un nombre similar.";
 
 /* Caption of the processing */
-"Renaming" = "Renombrando...";
+"Renaming" = "Asignando nombre";
 
 /* No comment provided by engineer. */
 "Renewal" = "Renovación";
@@ -892,13 +892,13 @@
 
 /* Button title
    Navigation bar button title */
-"Select" = "Seleccionar ";
+"Select" = "Seleccionar";
 
 /* No comment provided by engineer. */
 "Select all" = "Seleccionar todo";
 
 /* No comment provided by engineer. */
-"Select another cloud to connect to Nextcloud, ownCloud and others are supported." = "Seleccione otra nube para conectarse a Nextcloud, ownCloud y otras nubes soportadas";
+"Select another cloud to connect to Nextcloud, ownCloud and others are supported." = "Seleccione otra nube para conectarse a Nextcloud, ownCloud y otras nubes soportadas.";
 
 /* No comment provided by engineer. */
 "Select Photos" = "Seleccionar fotos";
@@ -925,7 +925,7 @@
 "Sending" = "Enviando";
 
 /* No comment provided by engineer. */
-"Set favorite failed." = "Error al marcar como favorito";
+"Set favorite failed." = "Error al marcar como favorito.";
 
 /* No comment provided by engineer. */
 "Settings" = "Ajustes";
@@ -934,7 +934,7 @@
 "Shared access" = "Acceso compartido";
 
 /* Category title */
-"Shared with Me" = "Compartido para mi";
+"Shared with Me" = "Compartido para mí";
 
 /* No comment provided by engineer. */
 "SharePoint directory" = "Directorio de SharePoint";
@@ -943,13 +943,13 @@
 "Sharing" = "Compartiendo";
 
 /* No comment provided by engineer. */
-"Sharing settings" = "Sharing Settings";
+"Sharing settings" = "Ajustes de uso compartido";
 
 /* Button title */
 "Sharing Settings" = "Ajustes de uso compartido";
 
 /* No comment provided by engineer. */
-"Single Sign-on" = "Un solo registro";
+"Single Sign-on" = "Inicio de sesión único";
 
 /* No comment provided by engineer. */
 "Size" = "Tamaño";
@@ -964,10 +964,10 @@
 "Slide %i of %i" = "Diapositiva %1$i de %2$i";
 
 /* No comment provided by engineer. */
-"Something went wrong, try again" = "Se ha producido un problema. Vuelva a intentarlo.";
+"Something went wrong, try again" = "Se ha producido un problema. Vuelva a intentarlo";
 
 /* No comment provided by engineer. */
-"Something wrong" = "Problema";
+"Something wrong" = "Algo va mal";
 
 /* Button title */
 "Sort" = "Clasificar";
@@ -979,7 +979,7 @@
 "Spreadsheet" = "Hoja de cálculo";
 
 /* Default title of sample document */
-"Spreadsheet Sample" = "Hoja de cálculo de ejemplo";
+"Spreadsheet Sample" = "Ejemplo de hoja de cálculo";
 
 /* No comment provided by engineer. */
 "Spreadsheets" = "Hojas de cálculo";
@@ -988,7 +988,7 @@
 "Switch" = "Cambiar";
 
 /* No comment provided by engineer. */
-"Tab" = "Ficha";
+"Tab" = "Tabulación";
 
 /* Data units */
 "Tb" = "Tb";
@@ -1009,13 +1009,13 @@
 "The deleted files go to the trash. You can either restore or delete them forever." = "Los archivos eliminados serán enviados a la papelera. Puede restaurarlos o eliminarlos para siempre.";
 
 /* No comment provided by engineer. */
-"The file in the Trash can not be viewed." = "No se puede visualizar el archivo en la Basura.";
+"The file in the Trash can not be viewed." = "No se puede visualizar el archivo en la papelera.";
 
 /* No comment provided by engineer. */
 "The file will be irretrievably deleted. This action is irreversible." = "El archivo será eliminado irremediablemente. Esta acción es irreversible.";
 
 /* No comment provided by engineer. */
-"The folder in the Trash can not be opened." = "La carpeta en la Papelera no puede abrirse.";
+"The folder in the Trash can not be opened." = "La carpeta en la papelera no puede abrirse.";
 
 /* No comment provided by engineer. */
 "The folder will be irretrievably deleted. This action is irreversible." = "La carpeta será eliminado irremediablemente. Esta acción es irreversible.";
@@ -1054,7 +1054,7 @@
 "Third-party storage" = "Almacenamiento de terceros";
 
 /* No comment provided by engineer. */
-"This document is being edited. Do you want open %@ to view only?" = "Este documento está siendo editado. ¿Desea abrir %@ solamente en modo vista?";
+"This document is being edited. Do you want open %@ to view only?" = "Este documento está siendo editado. ¿Desea abrir %@ en el modo de solo visualización?";
 
 /* No comment provided by engineer. */
 "This folder is empty" = "La carpeta está vacía";
@@ -1066,10 +1066,10 @@
 "This option is used to block access previously granted to a user or group." = "Esta opción se utiliza para bloquear el acceso previamente concedido a un usuario o grupo.";
 
 /* No comment provided by engineer. */
-"This presentation is being edited. Do you want open %@ to view only?" = "Esta presentación está siendo editada. ¿Desea abrir %@ solamente en modo vista?";
+"This presentation is being edited. Do you want open %@ to view only?" = "Esta presentación está siendo editada. ¿Desea abrir %@ en el modo de solo visualización?";
 
 /* No comment provided by engineer. */
-"This spreadsheet is being edited. Do you want open %@ to view only?" = "Esta hoja de cálculo está siendo editada. ¿Desea abrir %@ solamente en modo vista?";
+"This spreadsheet is being edited. Do you want open %@ to view only?" = "Esta hoja de cálculo está siendo editada. ¿Desea abrir %@ en el modo de solo visualización?";
 
 /* No comment provided by engineer. */
 "Title" = "Título";
@@ -1081,7 +1081,7 @@
 "To open a new document, you must exit the current document." = "Para abrir un nuevo documento, usted debe cerrar el documento actual.";
 
 /* Category title */
-"Trash" = "Basura";
+"Trash" = "Papelera";
 
 /* No comment provided by engineer. */
 "Try again" = "Inténtelo de nuevo";
@@ -1162,10 +1162,10 @@
 "Use external keyboards in ONLYOFFICE Documents with improved compatibility." = "Utilice teclados externos en ONLYOFFICE Documents con una compatibilidad mejorada.";
 
 /* Button title */
-"Use Face ID" = "Use Face ID";
+"Use Face ID" = "Usar Face ID";
 
 /* Button title */
-"Use Touch ID" = "Use Touch ID";
+"Use Touch ID" = "Usar Touch ID";
 
 /* No comment provided by engineer. */
 "User authentication failed" = "Error de autenticación de usuario";
@@ -1189,16 +1189,16 @@
 "Version" = "Versión";
 
 /* No comment provided by engineer. */
-"View and fill online forms, save them as PDF files." = "Vea y rellene formularios en línea, guárdelos como archivos PDF.\n";
+"View and fill online forms, save them as PDF files." = "Vea y rellene formularios en línea, guárdelos como archivos PDF.";
 
 /* No comment provided by engineer. */
-"Warning" = "Aviso";
+"Warning" = "Advertencia";
 
 /* No comment provided by engineer. */
 "We are sorry, this portal name is already taken" = "Lo sentimos, este nombre de portal ya está ocupando";
 
 /* No comment provided by engineer. */
-"We have sent you an SMS with a code to the number %@" = "Le hemos enviado un SMS con un código al número %@";
+"We have sent you an SMS with a code to the number %@" = "Le enviamos un SMS con un código al número %@";
 
 /* No comment provided by engineer. */
 "WebDAV" = "WebDAV";
@@ -1207,10 +1207,10 @@
 "WebDAV directory" = "Directorio de WebDAV";
 
 /* Introduction Step One - Description */
-"Welcome to %@ mobile editing suite!\nSwipe to learn more about the app." = "¡Bienvenido a la suite de edición para móviles de %@!\nDeslice para obtener más información sobre la aplicación.";
+"Welcome to %@ mobile editing suite!\nSwipe to learn more about the app." = "¡Bienvenido/a a la suite de edición para móviles de %@!\nDeslice para obtener más información sobre la aplicación.";
 
 /* No comment provided by engineer. */
-"What's New" = "¿Qué hay de nuevo?";
+"What's New" = "Qué hay de nuevo";
 
 /* Introduction Step Four - Description */
 "Work with documents offline.\nCreated files can later be uploaded to online portal and\nthen accessed from any other device." = "Trabaje con documentos offline.\nLos archivos creados se puede cargar al portal en línea más tarde y luego acceder desde cualquier otro dispositivo.";
@@ -1225,7 +1225,7 @@
 "Yandex directory" = "Directorio de Yandex";
 
 /* No comment provided by engineer. */
-"Yandex Disk" = "Disco Yandex";
+"Yandex Disk" = "Yandex Disk";
 
 /* Data units */
 "Yb" = "Yb";
@@ -1234,7 +1234,7 @@
 "You can connect the following accounts to the %@." = "Usted puede conectar las cuentas siguientes al %@.";
 
 /* No comment provided by engineer. */
-"You can connect the following accounts to the %@. They will be displayed in 'My Documents' folder and you will be able to edit and save them right on the portal all in one place." = "Usted puede conectar las cuentas siguientes al %@. Ellas se visualizarán en la carpeta 'Mis Documentos' y Usted podrá editar y guardarlos directamente en el portal en un solo lugar.";
+"You can connect the following accounts to the %@. They will be displayed in 'My Documents' folder and you will be able to edit and save them right on the portal all in one place." = "Usted puede conectar las cuentas siguientes al %@. Ellas se visualizarán en la carpeta 'Mis Documentos' y usted podrá editar y guardarlos directamente en el portal en un solo lugar.";
 
 /* No comment provided by engineer. */
 "You have read-only access to this folder. You cannot create files or folders here." = "Solo tiene acceso de lectura a esta carpeta. No puede crear archivos o carpetas aquí.";
@@ -1249,8 +1249,8 @@
 "Zero bytes" = "Cero bytes";
 
 /* No comment provided by engineer. */
-"Сould not download file." = "No se pudo descargar el archivo";
+"Сould not download file." = "No se pudo descargar el archivo.";
 
 /* No comment provided by engineer. */
-"Сould not upload file." = "No se pudo subir el archivo";
+"Сould not upload file." = "No se pudo subir el archivo.";
 

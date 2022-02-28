@@ -80,7 +80,7 @@
 "LwV-Os-V4m.text" = "Avvia Google Authenticator";
 
 /* Class = "UILabel"; text = "Please enter the email you used while registering on the portal. The password recovery instructions will be send to that email address."; ObjectID = "Mbh-dU-7po"; */
-"Mbh-dU-7po.text" = "Per favore, inserisci l'indirizzo email utilizzato per la registrazione nel portale per inviare le istruzioni per il recupero della password";
+"Mbh-dU-7po.text" = "Ti preghiamo di inserire l'email utilizzata durante la registrazione al portale. Le istruzioni per il recupero della password verranno inviate a quell'indirizzo email.";
 
 /* Class = "UILabel"; text = "Enter a phone number that can be used to verify your identity"; ObjectID = "MNA-z2-ITx"; */
 "MNA-z2-ITx.text" = "Inserisci un numero di telefono che possa essere utilizzato per verificare la tua identità";

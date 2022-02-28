@@ -31,7 +31,7 @@
 			<key>one</key>
 			<string>%lu archivo seleccionado</string>
 			<key>other</key>
-			<string>%lu archivos seleccionado</string>
+			<string>%lu archivos seleccionados</string>
 		</dict>
 	</dict>
 	<key>%lu Folder and %lu File selected</key>
@@ -45,7 +45,7 @@
 			<key>NSStringFormatValueTypeKey</key>
 			<string>lu</string>
 			<key>one</key>
-			<string>y %lu archivo seleccionados</string>
+			<string>y %lu archivo seleccionado</string>
 			<key>other</key>
 			<string>y %lu archivos seleccionados</string>
 		</dict>
@@ -126,7 +126,7 @@
 			<key>other</key>
 			<string>y %lu archivos</string>
 			<key>zero</key>
-			<string></string>
+			<string> </string>
 		</dict>
 		<key>lu_folders</key>
 		<dict>

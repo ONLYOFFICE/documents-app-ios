@@ -140,6 +140,7 @@ internal enum Asset {
     internal static let menuDenyAccess = ImageAsset(name: "menu-deny-access")
     internal static let menuFormFilling = ImageAsset(name: "menu-form-filling")
     internal static let menuFullAccess = ImageAsset(name: "menu-full-access")
+    internal static let menuOwner = ImageAsset(name: "menu-owner")
     internal static let menuReview = ImageAsset(name: "menu-review")
     internal static let menuViewOnly = ImageAsset(name: "menu-view-only")
     internal static let avatarDefaultGroup = ImageAsset(name: "avatar-default-group")

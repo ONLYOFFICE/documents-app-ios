@@ -16,7 +16,7 @@ class ASCSharingOptionsViewControllerTest: XCTestCase {
     var tableView: UITableView!
 
     override func setUpWithError() throws {
-        sut = ASCSharingOptionsViewController(style: .grouped)
+        sut = ASCSharingOptionsViewController()
         tableView = sut.tableView
     }
 

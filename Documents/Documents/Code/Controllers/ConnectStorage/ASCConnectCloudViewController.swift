@@ -175,7 +175,7 @@ class ASCConnectCloudViewController: UITableViewController {
                 if let topViewController = UIApplication.topViewController() {
                     UIAlertController.showError(
                         in: topViewController,
-                        message: (info["error"] as? String) ?? NSLocalizedString("Wrong login or password.", comment: "")
+                        message: (info["error"] as? String) ?? NSLocalizedString("Wrong server, login or password.", comment: "")
                     )
                 }
             }

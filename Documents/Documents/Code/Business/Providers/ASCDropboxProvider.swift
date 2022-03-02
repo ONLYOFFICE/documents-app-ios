@@ -19,12 +19,8 @@ class ASCDropboxProvider: ASCFileProviderProtocol & ASCSortableFileProviderProto
     }
 
     var id: String? {
-        if
-            let provider = provider,
-            let credential = provider.credential,
-            let password = credential.password
-        {
-            return (String(describing: self) + password).md5
+        if let user = user {
+            return user.userId
         }
         return nil
     }

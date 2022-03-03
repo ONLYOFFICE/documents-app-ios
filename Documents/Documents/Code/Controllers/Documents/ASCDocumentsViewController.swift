@@ -213,8 +213,7 @@ class ASCDocumentsViewController: ASCBaseTableViewController, UIGestureRecognize
     }
 
     deinit {
-        UserDefaults.standard.removeObserver(self, forKeyPath: ASCConstants.SettingsKeys.sortDocuments)
-        NotificationCenter.default.removeObserver(self)
+        cleanup()
     }
 
     override func didReceiveMemoryWarning() {
@@ -296,6 +295,10 @@ class ASCDocumentsViewController: ASCBaseTableViewController, UIGestureRecognize
         if #available(iOS 11.0, *) {
             navigationItem.searchController = nil
         }
+
+        if parent == nil {
+            cleanup()
+        }
     }
 
     override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey: Any]?, context: UnsafeMutableRawPointer?) {
@@ -327,6 +330,12 @@ class ASCDocumentsViewController: ASCBaseTableViewController, UIGestureRecognize
                 swipeCell.hideSwipe(animated: false)
             }
         }
+    }
+
+    private func cleanup() {
+        provider = nil
+        UserDefaults.standard.removeObserver(self, forKeyPath: ASCConstants.SettingsKeys.sortDocuments)
+        NotificationCenter.default.removeObserver(self)
     }
 
     // MARK: - Public

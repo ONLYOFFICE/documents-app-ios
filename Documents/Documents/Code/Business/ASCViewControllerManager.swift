@@ -403,13 +403,34 @@ class ASCViewControllerManager {
         }
     }
 
+    /// Fix model under camelCase. Model for deeplink is wrong
+    /// - Parameter dictionary: Dictionary with any key names
+    /// - Returns: Dictionary with keys uses camelCase
+    private func camelCaseKeys(of dictionary: [String: Any]) -> [String: Any] {
+        var result: [String: Any] = [:]
+
+        for key in dictionary.keys {
+            let correctKey = key.prefix(1).lowercased() + key.dropFirst()
+
+            if let dictionary = dictionary[key] as? [String: Any] {
+                result[correctKey] = camelCaseKeys(of: dictionary)
+            } else {
+                result[correctKey] = dictionary[key]
+            }
+        }
+
+        return result
+    }
+
     private func routeOpenPortalFile(info: [String: Any]) {
+        let correctInfo = camelCaseKeys(of: info)
+
         guard
             let appDelegate = UIApplication.shared.delegate as? AppDelegate,
-            let portal = info["portal"] as? String,
-            let email = info["email"] as? String,
-            let fileJson = info["file"] as? [String: Any],
-            let folderJson = info["folder"] as? [String: Any],
+            let portal = correctInfo["portal"] as? String,
+            let email = correctInfo["email"] as? String,
+            let fileJson = correctInfo["file"] as? [String: Any],
+            let folderJson = correctInfo["folder"] as? [String: Any],
             var file = ASCFile(JSON: fileJson),
             var folder = ASCFolder(JSON: folderJson)
         else { return }
@@ -514,11 +535,23 @@ class ASCViewControllerManager {
                     hud?.hide(animated: true)
 
                     if file.id != "", folder.id != "" {
-                        ASCViewControllerManager.shared.rootController?.display(provider: ASCFileManager.onlyofficeProvider, folder: folder)
+                        ASCViewControllerManager.shared.rootController?.display(provider: ASCFileManager.onlyofficeProvider, folder: folder.parentId == nil ? folder : nil)
 
                         delay(seconds: 0.1) {
                             if let documentVC = ASCViewControllerManager.shared.rootController?.topMostViewController() as? ASCDocumentsViewController {
-                                documentVC.open(file: file)
+                                // Open target folder if not root folder
+                                if !(documentVC.folder == folder), folder.parentId != nil {
+                                    let controller = ASCDocumentsViewController.instantiate(from: Storyboard.main)
+                                    documentVC.navigationController?.pushViewController(controller, animated: false)
+
+                                    controller.provider = documentVC.provider?.copy()
+                                    controller.folder = folder
+                                    controller.title = folder.title
+
+                                    controller.open(file: file)
+                                } else {
+                                    documentVC.open(file: file)
+                                }
                             }
                         }
                     } else if let topVC = ASCViewControllerManager.shared.rootController?.topMostViewController() {

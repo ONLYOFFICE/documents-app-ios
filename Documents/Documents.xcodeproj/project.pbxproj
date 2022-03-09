@@ -171,6 +171,9 @@
 		E0609BF41BC138CF6774A5B3 /* ASCUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = E06093EE3529CD8AE31D5519 /* ASCUser.swift */; };
 		E0609CA78B7ADE534424D45E /* ASCFolder.swift in Sources */ = {isa = PBXBuildFile; fileRef = E060976FAE7FB8D6B47A6B6A /* ASCFolder.swift */; };
 		F33E473B27AD9BC200EFF6D9 /* ASCWebKitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F33E473A27AD9BC200EFF6D9 /* ASCWebKitViewController.swift */; };
+		F377689527CFCF2D0044EDA6 /* ASCConnectStorageNextCloudServerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F377689427CFCF2D0044EDA6 /* ASCConnectStorageNextCloudServerController.swift */; };
+		F377689627CFD4570044EDA6 /* ASCConnectStorageNextCloudServerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F377689427CFCF2D0044EDA6 /* ASCConnectStorageNextCloudServerController.swift */; };
+		F377689827D273B20044EDA6 /* ASCNextCloudConnectStorageDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F377689727D273B20044EDA6 /* ASCNextCloudConnectStorageDelegate.swift */; };
 		FC0299F127B6409000E5341B /* ASCWebKitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F33E473A27AD9BC200EFF6D9 /* ASCWebKitViewController.swift */; };
 		FC050F7E1ECB1F6800FD452C /* ConnectStorage.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FC050F801ECB1F6800FD452C /* ConnectStorage.storyboard */; };
 		FC059D981E82584400BC2F5E /* ASCDateTransform.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC059D971E82584400BC2F5E /* ASCDateTransform.swift */; };
@@ -911,6 +914,8 @@
 		E060976FAE7FB8D6B47A6B6A /* ASCFolder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASCFolder.swift; sourceTree = "<group>"; };
 		E44246600744D0821FA7F89D /* Pods-Documents-Alpha.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Documents-Alpha.release.xcconfig"; path = "../Pods/Target Support Files/Pods-Documents-Alpha/Pods-Documents-Alpha.release.xcconfig"; sourceTree = "<group>"; };
 		F33E473A27AD9BC200EFF6D9 /* ASCWebKitViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCWebKitViewController.swift; sourceTree = "<group>"; };
+		F377689427CFCF2D0044EDA6 /* ASCConnectStorageNextCloudServerController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCConnectStorageNextCloudServerController.swift; sourceTree = "<group>"; };
+		F377689727D273B20044EDA6 /* ASCNextCloudConnectStorageDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCNextCloudConnectStorageDelegate.swift; sourceTree = "<group>"; };
 		FC029A3927BCF2FC00E5341B /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Documents-InfoPlist.strings"; sourceTree = "<group>"; };
 		FC029A3A27BCF2FC00E5341B /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Documents.alpha-InfoPlist.strings"; sourceTree = "<group>"; };
 		FC029A3B27BCF2FC00E5341B /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Localizable.strings"; sourceTree = "<group>"; };
@@ -2017,6 +2022,7 @@
 			isa = PBXGroup;
 			children = (
 				FCF8472722CB39ED00ABC3B4 /* Views */,
+				F377689427CFCF2D0044EDA6 /* ASCConnectStorageNextCloudServerController.swift */,
 				FC407FBB2191DC76009089EB /* ASCConnectCloudViewController.swift */,
 				FC08F8721ECB2FD600988DDE /* ASCConnectPortalThirdPartyViewController.swift */,
 				FC8C69821ECC8EA8005B68D7 /* ASCConnectStorageWebDavController.swift */,
@@ -2026,6 +2032,7 @@
 				FC8C697A1ECC2F44005B68D7 /* ASCConnectStorageOAuth2Google.swift */,
 				FC8C697C1ECC6163005B68D7 /* ASCConnectStorageOAuth2OneDrive.swift */,
 				FC8C697E1ECC6755005B68D7 /* ASCConnectStorageOAuth2Box.swift */,
+				F377689727D273B20044EDA6 /* ASCNextCloudConnectStorageDelegate.swift */,
 			);
 			path = ConnectStorage;
 			sourceTree = "<group>";
@@ -3932,6 +3939,7 @@
 				1D49E2B126A9BDB20024AC7A /* ASCSharingAddRightHoldersModels.swift in Sources */,
 				1D49E2A426A9BD680024AC7A /* ASCReusedIdentifierProtocol.swift in Sources */,
 				FC36D2FB25B5C32200412DDB /* KingfisherWrapper+Extensions.swift in Sources */,
+				F377689627CFD4570044EDA6 /* ASCConnectStorageNextCloudServerController.swift in Sources */,
 				FC36D2FC25B5C32200412DDB /* Date+Extension.swift in Sources */,
 				FC36D2FD25B5C32200412DDB /* ASCConnectCloudViewController.swift in Sources */,
 				FC68529C26837B7300D830EC /* DropboxAccount.swift in Sources */,
@@ -4164,6 +4172,7 @@
 				FC68526926837B7300D830EC /* NextcloudServerError.swift in Sources */,
 				FC65B18021F9AF5300AD5114 /* ASCEntityItemProvider.swift in Sources */,
 				FC65B6B61EB9F23800AE73BB /* ASCDocumentService.swift in Sources */,
+				F377689827D273B20044EDA6 /* ASCNextCloudConnectStorageDelegate.swift in Sources */,
 				1D14AAD626962E6F009E48AD /* ASCSharingSettingsAccessTableProvider.swift in Sources */,
 				FC7CF5191EF3EFF300C0A64F /* NSString+HTMLString.swift in Sources */,
 				1D14AADD26964995009E48AD /* ASCSharingSettingsAccessProviderFactory.swift in Sources */,
@@ -4320,6 +4329,7 @@
 				E0609CA78B7ADE534424D45E /* ASCFolder.swift in Sources */,
 				1DEB996F274E2C7C0071C1DB /* ASCPersonalShareSettingsAPIWorker.swift in Sources */,
 				1D299153274FB46300A06F3B /* ASCPortalTypeDefinderProtocol.swift in Sources */,
+				F377689527CFCF2D0044EDA6 /* ASCConnectStorageNextCloudServerController.swift in Sources */,
 				1DF505242641867300B78496 /* ASCOneDriveFileProvider.swift in Sources */,
 				FC708EE421B92E94001BBE5B /* UIBarButtonItem+Extensions.swift in Sources */,
 				FC059D9C1E82657F00BC2F5E /* ASCIndexTransform.swift in Sources */,

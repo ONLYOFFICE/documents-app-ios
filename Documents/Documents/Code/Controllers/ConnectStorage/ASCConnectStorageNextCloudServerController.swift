@@ -91,6 +91,15 @@ class ASCConnectStorageNextCloudServerController: UITableViewController {
 
         navigationController?.pushViewController(oauth2VC, animated: true)
     }
+
+    private func valid(portal: String) -> Bool {
+        guard !portal.isEmpty, let url = NSURL(string: portal) else { return false }
+
+        if !UIApplication.shared.canOpenURL(url as URL) {
+            return false
+        }
+        return true
+    }
 }
 
 // MARK: - TableView Delegate
@@ -101,7 +110,12 @@ extension ASCConnectStorageNextCloudServerController {
 
         let cell = super.tableView(tableView, cellForRowAt: indexPath)
         if cell == doneCell {
-            showWebView()
+            if valid(portal: serverField.text ?? "") {
+                showWebView()
+            } else {
+                serverField?.shake()
+                doneLabel.isUserInteractionEnabled = false
+            }
         }
     }
 }

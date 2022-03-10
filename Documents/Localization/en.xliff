@@ -40,6 +40,16 @@
         <target>Required</target>
         <note>Class = "UITextField"; placeholder = "Required"; ObjectID = "gp7-l6-arn";</note>
       </trans-unit>
+      <trans-unit id="i2t-Xh-reL.placeholder" xml:space="preserve">
+        <source>example.com</source>
+        <target>example.com</target>
+        <note>Class = "UITextField"; placeholder = "example.com"; ObjectID = "i2t-Xh-reL";</note>
+      </trans-unit>
+      <trans-unit id="idC-C3-Fpx.text" xml:space="preserve">
+        <source>Server</source>
+        <target>Server</target>
+        <note>Class = "UILabel"; text = "Server"; ObjectID = "idC-C3-Fpx";</note>
+      </trans-unit>
       <trans-unit id="muA-mV-bS6.footerTitle" xml:space="preserve">
         <source>You can connect the following accounts to the ONLYOFFICE™ Documents.</source>
         <target>You can connect the following accounts to the ONLYOFFICE™ Documents.</target>
@@ -54,6 +64,11 @@
         <source>Server</source>
         <target>Server</target>
         <note>Class = "UILabel"; text = "Server"; ObjectID = "q9H-LF-Uc2";</note>
+      </trans-unit>
+      <trans-unit id="sK2-QR-ADm.text" xml:space="preserve">
+        <source>Next</source>
+        <target>Next</target>
+        <note>Class = "UILabel"; text = "Next"; ObjectID = "sK2-QR-ADm";</note>
       </trans-unit>
     </body>
   </file>

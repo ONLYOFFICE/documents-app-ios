@@ -83,6 +83,12 @@ class ASCConnectStorageNextCloudServerController: UITableViewController {
             }
         }
 
+        if #available(iOS 13.0, *) {
+            navigationController?.navigationBar.backgroundColor = .systemBackground
+        } else {
+            navigationController?.navigationBar.backgroundColor = .white
+        }
+
         navigationController?.pushViewController(oauth2VC, animated: true)
     }
 }

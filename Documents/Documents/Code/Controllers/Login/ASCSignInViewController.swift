@@ -336,12 +336,11 @@ class ASCSignInViewController: ASCBaseViewController {
         oauth2VC.responseType = .code
         oauth2VC.complation = { [weak self] info in
             guard let self = self else { return }
-            if let accessToken = info["token"] as? String {
+            if let codeOauth = info["code"] as? String {
                 let authRequest = OnlyofficeAuthRequest()
                 authRequest.provider = .microsoft
                 authRequest.portal = self.portal
-                authRequest.accessToken = accessToken
-                
+                authRequest.codeOauth = codeOauth
                 let hud = MBProgressHUD.showTopMost()
                 hud?.label.text = NSLocalizedString("Logging in", comment: "Caption of the process")
                 

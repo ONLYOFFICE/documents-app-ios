@@ -21,6 +21,7 @@ class OnlyofficeAuthRequest: Mappable {
     var facebookToken: String?
     var googleToken: String?
     var accessToken: String?
+    var codeOauth: String?
     
     init() {
         //
@@ -42,5 +43,6 @@ class OnlyofficeAuthRequest: Mappable {
         facebookToken       <- map["facebookToken"]
         googleToken         <- map["googleToken"]
         accessToken         <- map["accessToken"]
+        codeOauth           <- map["codeOauth"]
     }
 }

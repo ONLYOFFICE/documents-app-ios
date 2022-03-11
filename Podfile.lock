@@ -351,7 +351,7 @@ SPEC CHECKSUMS:
   nanopb: a0ba3315591a9ae0a16a309ee504766e90db0c96
   ObjectMapper: 1eb41f610210777375fa806bf161dc39fb832b81
   PhoneNumberKit: 4ce83273551c4d2ae10b7361162f4283dd02835f
-  PresentationEditor: d110a1f38b7bf7366b84fd4a61009160880d2b35
+  PresentationEditor: bbf4c772b9a08858f79cde4a98b54792eaaf1db3
   PromisesObjC: 68159ce6952d93e17b2dfe273b8c40907db5ba58
   ReCaptcha: d493ed256054a7b6a7eabcaf0b47ec9a8f42a16e
   SDWebImage: 4dc3e42d9ec0c1028b960a33ac6b637bb432207b

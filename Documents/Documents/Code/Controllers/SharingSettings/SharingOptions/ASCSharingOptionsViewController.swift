@@ -205,7 +205,7 @@ extension ASCSharingOptionsViewController: ASCSharingOptionsDisplayLogic {
 
                     tableView.insertRows(at: [viewModel.indexPath], with: .left)
                 } else {
-                    switch SharingFolderOprinosSection(rawValue: viewModel.indexPath.section) {
+                    switch SharingFolderOptinosSection(rawValue: viewModel.indexPath.section) {
                     case .importantRightHolders: importantRightHolders.insert(rightHolderViewModel, at: viewModel.indexPath.row)
                     case .otherRightHolders: otherRightHolders.insert(rightHolderViewModel, at: viewModel.indexPath.row)
                     default: return
@@ -227,14 +227,14 @@ extension ASCSharingOptionsViewController: ASCSharingOptionsDisplayLogic {
             importantRightHolders[indexOfImportant].access?.entityAccess = rightHolder.access
             let sectionIndex = isSharingViaExternalLinkPossible()
                 ? SharingOptionsSection.importantRightHolders.rawValue
-                : SharingFolderOprinosSection.importantRightHolders.rawValue
+                : SharingFolderOptinosSection.importantRightHolders.rawValue
             tableView.reloadRows(at: [IndexPath(row: indexOfImportant, section: sectionIndex)], with: .automatic)
 
         } else if let indexOfOther = otherRightHolders.firstIndex(where: { $0.id == rightHolder.id }) {
             otherRightHolders[indexOfOther].access?.entityAccess = rightHolder.access
             let sectionIndex = isSharingViaExternalLinkPossible()
                 ? SharingOptionsSection.otherRightHolders.rawValue
-                : SharingFolderOprinosSection.otherRightHolders.rawValue
+                : SharingFolderOptinosSection.otherRightHolders.rawValue
             tableView.reloadRows(at: [IndexPath(row: indexOfOther, section: sectionIndex)], with: .automatic)
         }
     }
@@ -266,7 +266,7 @@ extension ASCSharingOptionsViewController {
         if isSharingViaExternalLinkPossible() {
             return SharingOptionsSection.allCases.count
         } else {
-            return SharingFolderOprinosSection.allCases.count
+            return SharingFolderOptinosSection.allCases.count
         }
     }
 
@@ -279,7 +279,7 @@ extension ASCSharingOptionsViewController {
             case .otherRightHolders: return otherRightHoldersCell(cellForRowAt: indexPath)
             }
         } else {
-            let section = getSharingFolderOprinosSection(sectionRawValue: indexPath.section)
+            let section = getSharingFolderOptinosSection(sectionRawValue: indexPath.section)
             switch section {
             case .importantRightHolders: return importantRightHoldersCell(cellForRowAt: indexPath)
             case .otherRightHolders: return otherRightHoldersCell(cellForRowAt: indexPath)
@@ -329,7 +329,7 @@ extension ASCSharingOptionsViewController {
             case .otherRightHolders: return otherRightHolders.count
             }
         } else {
-            let section = getSharingFolderOprinosSection(sectionRawValue: section)
+            let section = getSharingFolderOptinosSection(sectionRawValue: section)
             switch section {
             case .importantRightHolders: return importantRightHolders.count
             case .otherRightHolders: return otherRightHolders.count
@@ -417,7 +417,7 @@ extension ASCSharingOptionsViewController {
             case .otherRightHolders: viewModel = otherRightHolders[indexPath.row]
             }
         } else {
-            let section = getSharingFolderOprinosSection(sectionRawValue: indexPath.section)
+            let section = getSharingFolderOptinosSection(sectionRawValue: indexPath.section)
             switch section {
             case .importantRightHolders: viewModel = importantRightHolders[indexPath.row]
             case .otherRightHolders: viewModel = otherRightHolders[indexPath.row]
@@ -495,7 +495,7 @@ extension ASCSharingOptionsViewController {
             case .otherRightHolders: viewModel = otherRightHolders[indexPath.row]
             }
         } else {
-            let section = getSharingFolderOprinosSection(sectionRawValue: indexPath.section)
+            let section = getSharingFolderOptinosSection(sectionRawValue: indexPath.section)
             switch section {
             case .importantRightHolders: viewModel = importantRightHolders[indexPath.row]
             case .otherRightHolders: viewModel = otherRightHolders[indexPath.row]
@@ -515,7 +515,7 @@ extension ASCSharingOptionsViewController {
         if isSharingViaExternalLinkPossible() {
             return getSharingOptionsSection(sectionRawValue: sectionRawValue)
         } else {
-            return getSharingFolderOprinosSection(sectionRawValue: sectionRawValue)
+            return getSharingFolderOptinosSection(sectionRawValue: sectionRawValue)
         }
     }
 
@@ -524,8 +524,8 @@ extension ASCSharingOptionsViewController {
         return section
     }
 
-    private func getSharingFolderOprinosSection(sectionRawValue: Int) -> SharingFolderOprinosSection {
-        guard let section = SharingFolderOprinosSection(rawValue: sectionRawValue) else { fatalError("couldn't get SharingFolderOprinosSection") }
+    private func getSharingFolderOptinosSection(sectionRawValue: Int) -> SharingFolderOptinosSection {
+        guard let section = SharingFolderOptinosSection(rawValue: sectionRawValue) else { fatalError("couldn't get SharingFolderOprinosSection") }
         return section
     }
 }
@@ -576,7 +576,7 @@ extension ASCSharingOptionsViewController {
         }
     }
 
-    enum SharingFolderOprinosSection: Int, CaseIterable, ASCSharingOptionsSectionProtocol {
+    enum SharingFolderOptinosSection: Int, CaseIterable, ASCSharingOptionsSectionProtocol {
         case importantRightHolders
         case otherRightHolders
 

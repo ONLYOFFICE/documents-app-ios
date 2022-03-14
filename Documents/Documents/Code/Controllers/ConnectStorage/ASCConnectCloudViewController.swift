@@ -234,12 +234,9 @@ class ASCConnectCloudViewController: UITableViewController {
                 connectionVC = oauth2VC
             }
         case .nextcloud:
-            connectionVC = ASCConnectStorageWebDavController.instantiate(from: Storyboard.connectStorage)
-            if let viewController = connectionVC as? ASCConnectStorageWebDavController {
+            connectionVC = ASCConnectStorageNextCloudServerController.instantiate(from: Storyboard.connectStorage)
+            if let viewController = connectionVC as? ASCConnectStorageNextCloudServerController {
                 viewController.complation = authComplation(info:)
-                viewController.title = providerName(type)
-                viewController.provider = .nextCloud
-                viewController.logo = providerImage(type)
             }
         case .owncloud:
             connectionVC = ASCConnectStorageWebDavController.instantiate(from: Storyboard.connectStorage)
@@ -313,13 +310,6 @@ class ASCConnectCloudViewController: UITableViewController {
 //        let connectStorageSegue = StoryboardSegue.ConnectStorage(rawValue: identifier)
 
         switch identifier {
-        case "nextcloudSegue":
-            if let viewController = segue.destination as? ASCConnectStorageWebDavController {
-                viewController.complation = authComplation(info:)
-                viewController.title = providerName(.nextcloud)
-                viewController.provider = .nextCloud
-                viewController.logo = providerImage(.nextcloud)
-            }
         case "owncloudSegue":
             if let viewController = segue.destination as? ASCConnectStorageWebDavController {
                 viewController.complation = authComplation(info:)

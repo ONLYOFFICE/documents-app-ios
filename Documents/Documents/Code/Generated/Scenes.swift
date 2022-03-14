@@ -19,6 +19,8 @@ internal enum StoryboardScene {
 
     internal static let ascConnectPortalThirdPartyViewController = SceneType<Documents.ASCConnectPortalThirdPartyViewController>(storyboard: ConnectStorage.self, identifier: "ASCConnectPortalThirdPartyViewController")
 
+    internal static let ascConnectStorageNextCloudServerController = SceneType<Documents.ASCConnectStorageNextCloudServerController>(storyboard: ConnectStorage.self, identifier: "ASCConnectStorageNextCloudServerController")
+
     internal static let ascConnectStorageOAuth2ViewController = SceneType<Documents.ASCConnectStorageOAuth2ViewController>(storyboard: ConnectStorage.self, identifier: "ASCConnectStorageOAuth2ViewController")
 
     internal static let ascConnectStorageWebDavController = SceneType<Documents.ASCConnectStorageWebDavController>(storyboard: ConnectStorage.self, identifier: "ASCConnectStorageWebDavController")

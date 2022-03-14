@@ -38,8 +38,8 @@
 		1D1A2E3A2660FF7F00D0335B /* ASCLoadedVCFinderModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D1A2E392660FF7F00D0335B /* ASCLoadedVCFinderModels.swift */; };
 		1D1A2E412661018100D0335B /* Assets.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCE186492628CFE70086D21B /* Assets.swift */; };
 		1D1A2E46266103AE00D0335B /* ASCLoadedViewControllerFinderProtocolTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D1A2E45266103AE00D0335B /* ASCLoadedViewControllerFinderProtocolTests.swift */; };
-		1D25F6A5273978E700C50691 /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FC28021425B9B8C5000E9D99 /* CloudKit.framework */; };
 		1D1DB5562759023800FA0BEE /* ASCSharingSettingsAccessDocumentFormProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D1DB5552759023800FA0BEE /* ASCSharingSettingsAccessDocumentFormProvider.swift */; };
+		1D25F6A5273978E700C50691 /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FC28021425B9B8C5000E9D99 /* CloudKit.framework */; };
 		1D29914F274FB37700A06F3B /* ASCPortalType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D29914E274FB37600A06F3B /* ASCPortalType.swift */; };
 		1D299153274FB46300A06F3B /* ASCPortalTypeDefinderProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D299152274FB46300A06F3B /* ASCPortalTypeDefinderProtocol.swift */; };
 		1D299155274FB4EE00A06F3B /* ASCPortalTypeDefinderByUrl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D299154274FB4EE00A06F3B /* ASCPortalTypeDefinderByUrl.swift */; };
@@ -119,13 +119,13 @@
 		1D71107A26A5A93000E00421 /* ASCShareSettingsAPIWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D71107926A5A93000E00421 /* ASCShareSettingsAPIWorker.swift */; };
 		1D71107D26A5A9A000E00421 /* ASCShareSettingsAPIWorkerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D71107C26A5A9A000E00421 /* ASCShareSettingsAPIWorkerTests.swift */; };
 		1D71107F26A8217400E00421 /* UINavigationItem+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D71107E26A8217300E00421 /* UINavigationItem+Extensions.swift */; };
-		1D84F975273FC2EC00C94E74 /* ASCAppleIdSignInController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D84F974273FC2EC00C94E74 /* ASCAppleIdSignInController.swift */; };
 		1D76212C277DE2D70088126B /* ASCOnlyofficeCategoriesChainContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D76212B277DE2D60088126B /* ASCOnlyofficeCategoriesChainContainer.swift */; };
 		1D76B047275B746200389C61 /* ASCNextCloudProviderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D76B046275B746200389C61 /* ASCNextCloudProviderTests.swift */; };
 		1D76B04B275B921100389C61 /* ASCEntityExistenceChecker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D76B04A275B921100389C61 /* ASCEntityExistenceChecker.swift */; };
 		1D76B04E275B935400389C61 /* ASCUniqNameFinder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D76B04D275B935400389C61 /* ASCUniqNameFinder.swift */; };
 		1D76B050275B957A00389C61 /* ASCEntityUniqNameFinder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D76B04F275B957A00389C61 /* ASCEntityUniqNameFinder.swift */; };
 		1D76B052275B9DC200389C61 /* ASCEntityExistenceCheckerByAttributes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D76B051275B9DC200389C61 /* ASCEntityExistenceCheckerByAttributes.swift */; };
+		1D84F975273FC2EC00C94E74 /* ASCAppleIdSignInController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D84F974273FC2EC00C94E74 /* ASCAppleIdSignInController.swift */; };
 		1D863F1126722FB3000BAC3C /* ASCSharingRightHolderTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D863F1026722FB3000BAC3C /* ASCSharingRightHolderTableViewCell.swift */; };
 		1D863F1A26725BC7000BAC3C /* ASCSharingRightHolderViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D863F1926725BC6000BAC3C /* ASCSharingRightHolderViewModel.swift */; };
 		1D863F1F2673DEFF000BAC3C /* ASCSwitchTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D863F1E2673DEFE000BAC3C /* ASCSwitchTableViewCell.swift */; };
@@ -850,13 +850,13 @@
 		1D71107926A5A93000E00421 /* ASCShareSettingsAPIWorker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCShareSettingsAPIWorker.swift; sourceTree = "<group>"; };
 		1D71107C26A5A9A000E00421 /* ASCShareSettingsAPIWorkerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCShareSettingsAPIWorkerTests.swift; sourceTree = "<group>"; };
 		1D71107E26A8217300E00421 /* UINavigationItem+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UINavigationItem+Extensions.swift"; sourceTree = "<group>"; };
-		1D84F974273FC2EC00C94E74 /* ASCAppleIdSignInController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCAppleIdSignInController.swift; sourceTree = "<group>"; };
 		1D76212B277DE2D60088126B /* ASCOnlyofficeCategoriesChainContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCOnlyofficeCategoriesChainContainer.swift; sourceTree = "<group>"; };
 		1D76B046275B746200389C61 /* ASCNextCloudProviderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCNextCloudProviderTests.swift; sourceTree = "<group>"; };
 		1D76B04A275B921100389C61 /* ASCEntityExistenceChecker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCEntityExistenceChecker.swift; sourceTree = "<group>"; };
 		1D76B04D275B935400389C61 /* ASCUniqNameFinder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCUniqNameFinder.swift; sourceTree = "<group>"; };
 		1D76B04F275B957A00389C61 /* ASCEntityUniqNameFinder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCEntityUniqNameFinder.swift; sourceTree = "<group>"; };
 		1D76B051275B9DC200389C61 /* ASCEntityExistenceCheckerByAttributes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCEntityExistenceCheckerByAttributes.swift; sourceTree = "<group>"; };
+		1D84F974273FC2EC00C94E74 /* ASCAppleIdSignInController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCAppleIdSignInController.swift; sourceTree = "<group>"; };
 		1D863F1026722FB3000BAC3C /* ASCSharingRightHolderTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCSharingRightHolderTableViewCell.swift; sourceTree = "<group>"; };
 		1D863F1926725BC6000BAC3C /* ASCSharingRightHolderViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCSharingRightHolderViewModel.swift; sourceTree = "<group>"; };
 		1D863F1E2673DEFE000BAC3C /* ASCSwitchTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCSwitchTableViewCell.swift; sourceTree = "<group>"; };
@@ -3162,6 +3162,7 @@
 				"${PODS_ROOT}/../../editors-ios/build/SDK/lib/graphics.framework",
 				"${PODS_ROOT}/../../editors-ios/build/SDK/lib/HtmlFile2.framework",
 				"${PODS_ROOT}/../../editors-ios/build/SDK/lib/HtmlRenderer.framework",
+				"${PODS_ROOT}/../../editors-ios/build/SDK/lib/kernel_network.framework",
 				"${PODS_ROOT}/../../editors-ios/build/SDK/lib/kernel.framework",
 				"${PODS_ROOT}/../../editors-ios/build/SDK/lib/PdfReader.framework",
 				"${PODS_ROOT}/../../editors-ios/build/SDK/lib/PdfWriter.framework",
@@ -3225,6 +3226,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/graphics.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/HtmlFile2.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/HtmlRenderer.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/kernel_network.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/kernel.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/PdfReader.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/PdfWriter.framework",
@@ -3440,6 +3442,7 @@
 				"${PODS_ROOT}/../../editors-ios/build/SDK/lib/graphics.framework",
 				"${PODS_ROOT}/../../editors-ios/build/SDK/lib/HtmlFile2.framework",
 				"${PODS_ROOT}/../../editors-ios/build/SDK/lib/HtmlRenderer.framework",
+				"${PODS_ROOT}/../../editors-ios/build/SDK/lib/kernel_network.framework",
 				"${PODS_ROOT}/../../editors-ios/build/SDK/lib/kernel.framework",
 				"${PODS_ROOT}/../../editors-ios/build/SDK/lib/PdfReader.framework",
 				"${PODS_ROOT}/../../editors-ios/build/SDK/lib/PdfWriter.framework",
@@ -3503,6 +3506,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/graphics.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/HtmlFile2.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/HtmlRenderer.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/kernel_network.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/kernel.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/PdfReader.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/PdfWriter.framework",

@@ -345,7 +345,7 @@ class ASCSignInViewController: ASCBaseViewController {
                 let authRequest = OnlyofficeAuthRequest()
                 authRequest.provider = .appleid
                 authRequest.portal = self.portal
-                authRequest.accessToken = appleIdAuthorizationCode
+                authRequest.codeOauth = appleIdAuthorizationCode
                 
                 let hud = MBProgressHUD.showTopMost()
                 hud?.label.text = NSLocalizedString("Logging in", comment: "Caption of the process")

@@ -9,14 +9,14 @@
 import UIKit
 
 enum ASCShareAccess: Int, CaseIterable {
-    case none       = 0
-    case full       = 1
-    case read       = 2
-    case deny       = 3
-    case varies     = 4
-    case review     = 5
-    case comment    = 6
-    case fillForms  = 7
+    case none = 0
+    case full = 1
+    case read = 2
+    case deny = 3
+    case varies = 4
+    case review = 5
+    case comment = 6
+    case fillForms = 7
     case userFilter = 8
 
     init() {
@@ -36,21 +36,21 @@ enum ASCShareAccess: Int, CaseIterable {
         default: self = .none
         }
     }
-    
+
     func getSortWeight() -> Int {
         switch self {
-        case .none:       return 5
-        case .full:       return 10
-        case .varies:     return 20
-        case .review:     return 30
-        case .comment:    return 40
-        case .read:       return 50
-        case .fillForms:  return 60
+        case .none: return 5
+        case .full: return 10
+        case .varies: return 20
+        case .review: return 30
+        case .comment: return 40
+        case .read: return 50
+        case .fillForms: return 60
         case .userFilter: return 70
-        case .deny:       return 80
+        case .deny: return 80
         }
     }
-    
+
     func title() -> String {
         switch self {
         case .none:
@@ -73,7 +73,7 @@ enum ASCShareAccess: Int, CaseIterable {
             return NSLocalizedString("Custom filter", comment: "Share status")
         }
     }
-    
+
     func image() -> UIImage? {
         if #available(iOS 13, *) {
             switch self {
@@ -86,7 +86,9 @@ enum ASCShareAccess: Int, CaseIterable {
             case .deny:
                 return Asset.Images.menuDenyAccess.image
             case .varies:
+
                 return nil // MARK: - TODO
+
             case .review:
                 return Asset.Images.menuReview.image
             case .comment:

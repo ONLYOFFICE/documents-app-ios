@@ -13,22 +13,21 @@ protocol ASCSharingSettingsVerifyRightHoldersRoutingLogic {
     func routeToParentWithDoneCopmletion(segue: UIStoryboardSegue?)
 }
 
-protocol ASCSharingSettingsVerifyRightHoldersDataPassing
-{
+protocol ASCSharingSettingsVerifyRightHoldersDataPassing {
     var dataStore: ASCSharingSettingsVerifyRightHoldersDataStore? { get }
 }
 
 class ASCSharingSettingsVerifyRightHoldersRouter: NSObject, ASCSharingSettingsVerifyRightHoldersRoutingLogic, ASCSharingSettingsVerifyRightHoldersDataPassing {
-
     weak var viewController: ASCSharingSettingsVerifyRightHoldersViewController?
     var dataStore: ASCSharingSettingsVerifyRightHoldersDataStore?
 
     var accessViewController: ASCSharingSettingsAccessViewController?
-    
+
     // MARK: Routing
+
     func routeToAccessViewController(viewModel: ASCSharingSettingsAccessViewModel, segue: UIStoryboardSegue?) {
         let isDestinationAlreadyInit = accessViewController != nil
-        
+
         if !isDestinationAlreadyInit {
             accessViewController = ASCSharingSettingsAccessViewController()
         }
@@ -37,19 +36,19 @@ class ASCSharingSettingsVerifyRightHoldersRouter: NSObject, ASCSharingSettingsVe
             let viewController = viewController,
             let destinationDataStore = accessViewController
         else { return }
-        
+
         passDataToAddRightHoldersViewController(viewModel: viewModel, destination: destinationDataStore)
         navigateToAddRightHoldersViewController(source: viewController, destination: destinationViewController)
     }
-    
+
     private func navigateToAddRightHoldersViewController(source: ASCSharingSettingsVerifyRightHoldersViewController, destination: ASCSharingSettingsAccessViewController) {
         source.navigationController?.pushViewController(destination, animated: true)
     }
-    
+
     private func passDataToAddRightHoldersViewController(viewModel: ASCSharingSettingsAccessViewModel, destination: ASCSharingSettingsAccessViewController) {
         destination.viewModel = viewModel
     }
-    
+
     func routeToParentWithDoneCopmletion(segue: UIStoryboardSegue?) {
         viewController?.navigationController?.dismiss(animated: true, completion: {
             self.dataStore?.doneComplerion()

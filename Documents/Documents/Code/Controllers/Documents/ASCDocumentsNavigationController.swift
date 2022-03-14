@@ -14,5 +14,4 @@ class ASCDocumentsNavigationController: ASCBaseNavigationController {
     override func viewDidLoad() {
         super.viewDidLoad()
     }
-
 }

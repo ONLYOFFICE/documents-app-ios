@@ -19,20 +19,20 @@ class OnlyofficeFileOperation: Mappable {
     var url: String?
     var files: [ASCFile] = []
     var folders: [ASCFolder] = []
-    
+
     required init?(map: Map) {
         //
     }
 
     func mapping(map: Map) {
-        id          <- map["id"]
-        operation   <- map["operation"]
-        progress    <- map["progress"]
-        error       <- map["error"]
-        processed   <- map["processed"]
-        finished    <- map["finished"]
-        url         <- map["url"]
-        files       <- map["files"]
-        folders     <- map["folders"]
+        id <- map["id"]
+        operation <- map["operation"]
+        progress <- map["progress"]
+        error <- map["error"]
+        processed <- map["processed"]
+        finished <- map["finished"]
+        url <- map["url"]
+        files <- map["files"]
+        folders <- map["folders"]
     }
 }

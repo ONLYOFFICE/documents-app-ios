@@ -6,17 +6,15 @@
 //  Copyright © 2021 Ascensio System SIA. All rights reserved.
 //
 
-import Foundation
 import Alamofire
+import Foundation
 
 class NextcloudAPI {
-
-    struct Path {
-        static public let storageStats = "index.php/apps/files/ajax/getstoragestats.php"
+    enum Path {
+        public static let storageStats = "index.php/apps/files/ajax/getstoragestats.php"
     }
 
-    struct Endpoints {
+    enum Endpoints {
         static let currentAccount: Endpoint<NextcloudDataResult<NextcloudStorageStats>> = Endpoint<NextcloudDataResult<NextcloudStorageStats>>.make(Path.storageStats, .get, URLEncoding.default)
     }
-
 }

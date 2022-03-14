@@ -68,6 +68,9 @@
 "Add message" = "Nachricht hinzufügen";
 
 /* No comment provided by engineer. */
+"Add users or groups and allow them to \n read, review or edit documents." = "Fügen Sie Benutzer oder Gruppen hinzu und erlauben Sie \n Öffnen, Überprüfen oder Bearbeiten von Dokumenten.";
+
+/* No comment provided by engineer. */
 "Address is empty" = "Das Feld Adresse ist leer";
 
 /* No comment provided by engineer. */
@@ -101,7 +104,7 @@
 "Box directory" = "Box-Verzeichnis";
 
 /* No comment provided by engineer. */
-"By creating the portal you agree with our Privacy Policy and Terms of Service" = "Mit der Erstellung des Portals erklären Sie sich mit unseren Datenschutzbestimmungen und Nutzungsbedingungen einverstanden.";
+"By creating the portal you agree with our Privacy Policy and Terms of Service" = "Mit der Erstellung des Portals erklären Sie sich mit unseren Datenschutzbestimmungen und Nutzungsbedingungen einverstanden";
 
 /* Data units */
 "bytes" = "Bytes";
@@ -216,6 +219,9 @@
 
 /* Caption of the processing */
 "Copying" = "Es wird kopiert";
+
+/* Description of file operation error */
+"Could not change file attributes" = "Dateiattribute können nicht geändert werden";
 
 /* Description of file operation error */
 "Could not change the directory" = "Ordner kann nicht geändert werden";
@@ -405,7 +411,7 @@
 "Empty file." = "Leere Datei.";
 
 /* No comment provided by engineer. */
-"Empty name." = "Das Feld Name ist leer";
+"Empty name." = "Das Feld Name ist leer.";
 
 /* No comment provided by engineer. */
 "Encoding" = "Codierung";
@@ -456,7 +462,7 @@
 "Failed to copy: %@" = "Kopieren fehlgeschlagen: %@";
 
 /* No comment provided by engineer. */
-"Failed to get file information from the server." = "Fehler beim Abrufen von Dateiinformationen vom Server:";
+"Failed to get file information from the server." = "Fehler beim Abrufen von Dateiinformationen vom Server.";
 
 /* No comment provided by engineer. */
 "Failed to get file list." = "Fehler beim Abrufen von Dateiliste.";
@@ -708,7 +714,7 @@
 "On iPhone" = "Auf dem iPhone";
 
 /* No comment provided by engineer. */
-"Once you enter the password and open the file, the current password to the file will be reset" = "Sobald Sie das Passwort eingegeben und die Datei geöffnet haben, wird das aktuelle Passwort für die Datei zurückgesetzt.";
+"Once you enter the password and open the file, the current password to the file will be reset" = "Sobald Sie das Passwort eingegeben und die Datei geöffnet haben, wird das aktuelle Passwort für die Datei zurückgesetzt";
 
 /* No comment provided by engineer. */
 "OneDrive" = "OneDrive";
@@ -762,7 +768,7 @@
 "Password is empty" = "Das Feld Kennwort ist leer";
 
 /* No comment provided by engineer. */
-"Passwords do not match" = "Die Kennwörter stimmen nicht überein.";
+"Passwords do not match" = "Die Kennwörter stimmen nicht überein";
 
 /* Data units */
 "Pb" = "Pb";
@@ -804,7 +810,7 @@
 "Portal Address" = "Portaladresse";
 
 /* No comment provided by engineer. */
-"Portal is unavailable." = "Das Portal ist nicht verfügbar";
+"Portal is unavailable." = "Das Portal ist nicht verfügbar.";
 
 /* No comment provided by engineer. */
 "Presentation" = "Präsentation";
@@ -1042,7 +1048,7 @@
 "The request timed out." = "Bei der Anforderung ist eine Zeitüberschreitung aufgetreten.";
 
 /* No comment provided by engineer. */
-"The server is not available." = "Der Server ist nicht verfügbar";
+"The server is not available." = "Der Server ist nicht verfügbar.";
 
 /* No comment provided by engineer. */
 "The trash is empty" = "Der Papierkorb ist leer";
@@ -1141,7 +1147,7 @@
 "Unknown file provider" = "Unbekannter Datei-Anbieter";
 
 /* No comment provided by engineer. */
-"Unknown item type." = "Unbekannter Elementtyp";
+"Unknown item type." = "Unbekannter Elementtyp.";
 
 /* No comment provided by engineer. */
 "Unlock with Face ID" = "Mit Face-ID entsperren";
@@ -1150,7 +1156,7 @@
 "Unlock with Touch ID" = "Mit Touch-ID entsperren";
 
 /* No comment provided by engineer. */
-"Unsupported format." = "Nicht unterstütztes Dateiformat";
+"Unsupported format." = "Nicht unterstütztes Dateiformat.";
 
 /* Caption of the process */
 "Uploading" = "Wird hochgeladen";
@@ -1204,7 +1210,7 @@
 "WebDAV directory" = "WebDAV-Verzeichnis";
 
 /* Introduction Step One - Description */
-"Welcome to %@ mobile editing suite!\nSwipe to learn more about the app." = "Willkommen in der %@ Mobile Editing Suite!\nSwipen Sie um mehr über die App zu erfahren";
+"Welcome to %@ mobile editing suite!\nSwipe to learn more about the app." = "Willkommen in der %@ Mobile Editing Suite!\nSwipen Sie um mehr über die App zu erfahren.";
 
 /* No comment provided by engineer. */
 "What's New" = "Neuerungen";

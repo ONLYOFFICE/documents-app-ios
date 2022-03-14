@@ -6,27 +6,27 @@
 //  Copyright © 2019 Ascensio System SIA. All rights reserved.
 //
 
-import UIKit
-import MGSwipeTableCell
 import Kingfisher
+import MGSwipeTableCell
+import UIKit
 
 class ASCFileCell: MGSwipeTableCell {
-
     // MARK: - Properties
 
-    @IBOutlet weak var title: UILabel!
-    @IBOutlet weak var date: UILabel!
-    @IBOutlet weak var owner: UILabel!
-    @IBOutlet weak var sizeLabel: UILabel!
-    @IBOutlet weak var separaterLabel: UILabel!
-    @IBOutlet weak var icon: UIImageView!
-    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
-    
-    var file: ASCFile? = nil {
+    @IBOutlet var title: UILabel!
+    @IBOutlet var date: UILabel!
+    @IBOutlet var owner: UILabel!
+    @IBOutlet var sizeLabel: UILabel!
+    @IBOutlet var separaterLabel: UILabel!
+    @IBOutlet var icon: UIImageView!
+    @IBOutlet var activityIndicator: UIActivityIndicatorView!
+
+    var file: ASCFile? {
         didSet {
             updateData()
         }
     }
+
     var provider: ASCFileProviderProtocol?
 
     fileprivate lazy var dateFormatter: DateFormatter = {
@@ -37,7 +37,7 @@ class ASCFileCell: MGSwipeTableCell {
     }()
 
     // MARK: - Lifecycle Methods
-    
+
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -56,7 +56,7 @@ class ASCFileCell: MGSwipeTableCell {
         guard let fileInfo = file else {
             title?.text = NSLocalizedString("Unknown", comment: "Invalid entity name")
             owner?.text = NSLocalizedString("none", comment: "Invalid entity owner")
-            date?.text  = NSLocalizedString("none", comment: "Invalid entity date")
+            date?.text = NSLocalizedString("none", comment: "Invalid entity date")
             return
         }
 
@@ -65,7 +65,7 @@ class ASCFileCell: MGSwipeTableCell {
         date?.text = (fileInfo.updated != nil)
             ? dateFormatter.string(from: fileInfo.updated!)
             : nil
-        
+
         if fileInfo.pureContentLength < 1 {
             if fileInfo.device {
                 separaterLabel?.text = "•"
@@ -78,41 +78,41 @@ class ASCFileCell: MGSwipeTableCell {
             separaterLabel?.text = "•"
             sizeLabel?.text = fileInfo.displayContentLength
         }
-        
+
         /// Status info
-        
+
         if #available(iOS 13.0, *) {
             if fileInfo.isEditing {
                 let editImage = UIImage(
                     systemName: "pencil",
                     withConfiguration: UIImage.SymbolConfiguration(font: UIFont.systemFont(ofSize: 13, weight: .black))
                 )?.withTintColor(Asset.Colors.brend.color, renderingMode: .alwaysOriginal) ?? UIImage()
-                
+
                 title?.addTrailing(image: editImage)
             }
-            
+
             if fileInfo.isFavorite {
                 let favoriteImage = UIImage(
                     systemName: "star.fill",
                     withConfiguration: UIImage.SymbolConfiguration(font: UIFont.systemFont(ofSize: 13, weight: .medium))
                 )?.withTintColor(Asset.Colors.brend.color, renderingMode: .alwaysOriginal) ?? UIImage()
-                
+
                 title?.addTrailing(image: favoriteImage)
             }
         }
-        
+
         /// Thumb view
         let fileExt = fileInfo.title.fileExtension().lowercased()
 
         icon?.contentMode = .center
         icon?.alpha = 1
         activityIndicator?.isHidden = true
-        
+
         if ASCConstants.FileExtensions.images.contains(fileExt) {
             if UserDefaults.standard.bool(forKey: ASCConstants.SettingsKeys.previewFiles) {
                 activityIndicator?.isHidden = false
                 icon?.alpha = 0
-                
+
                 guard let provider = provider else {
                     icon?.image = Asset.Images.listFormatImage.image
                     return
@@ -124,12 +124,12 @@ class ASCFileCell: MGSwipeTableCell {
                     placeholder: Asset.Images.listFormatImage.image,
                     completionHandler: { [weak self] result in
                         switch result {
-                        case .success(_):
+                        case .success:
                             self?.icon?.contentMode = .scaleAspectFit
                         default:
                             self?.icon?.contentMode = .center
                         }
-                        
+
                         self?.activityIndicator?.isHidden = true
                         UIView.animate(withDuration: 0.2) { [weak self] in
                             self?.icon?.alpha = 1
@@ -160,7 +160,7 @@ class ASCFileCell: MGSwipeTableCell {
         } else {
             icon?.image = Asset.Images.listFormatUnknown.image
         }
-        
+
         if let rootFolderType = file?.parent?.rootFolderType {
             switch rootFolderType {
             case .icloudAll:

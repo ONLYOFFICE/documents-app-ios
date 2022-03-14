@@ -8,47 +8,47 @@
 
 import UIKit
 
-public struct ASCCommon {
+public enum ASCCommon {
     public static var appDisplayName: String? {
         // http://stackoverflow.com/questions/28254377/get-app-name-in-swift
         return Bundle.main.infoDictionary?[kCFBundleNameKey as String] as? String
     }
-    
+
     public static var appBundleID: String? {
         return Bundle.main.bundleIdentifier
     }
-    
+
     public static var appVersion: String? {
         if let versionMode = appVersionMode {
             return "\(Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String ?? "")-\(versionMode)"
         }
         return Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String
     }
-    
+
     public static var appVersionMode: String? {
         return Bundle.main.infoDictionary?["VersionMode"] as? String
     }
-    
+
     public static var appBuild: String? {
         return Bundle.main.object(forInfoDictionaryKey: kCFBundleVersionKey as String) as? String
     }
-    
+
     public static var currentDevice: UIDevice {
         return UIDevice.current
     }
-    
+
     public static var deviceModel: String {
         return currentDevice.model
     }
-        
+
     public static var systemVersion: String {
         return currentDevice.systemVersion
     }
-    
+
     public static var statusBarHeight: CGFloat {
         return UIApplication.shared.statusBarFrame.height
     }
-    
+
     public static var applicationIconBadgeNumber: Int {
         get {
             return UIApplication.shared.applicationIconBadgeNumber
@@ -58,14 +58,12 @@ public struct ASCCommon {
         }
     }
 
-    public static var isUnitTesting: Bool = {
-        return ASCCommon.environment("ASC_UNIT_TESTING") != nil
-    }()
+    public static var isUnitTesting: Bool = ASCCommon.environment("ASC_UNIT_TESTING") != nil
 
     public static func environment(_ name: String) -> String? {
         return ProcessInfo.processInfo.environment[name]
     }
-    
+
     public static func delay(seconds: Double, queue: DispatchQueue = .main, completion: @escaping () -> Void) {
         let task = DispatchWorkItem { completion() }
         queue.asyncAfter(deadline: .now() + seconds, execute: task)

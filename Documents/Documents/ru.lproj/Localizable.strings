@@ -20,12 +20,6 @@
 "© Ascensio System SIA %d" = "© Ascensio System SIA %d";
 
 /* No comment provided by engineer. */
-"Сould not download file." = "Не удалось скачать файл.";
-
-/* No comment provided by engineer. */
-"Сould not upload file." = "Не удалось загрузить файл.";
-
-/* No comment provided by engineer. */
 "A file with a similar name already exists in the document directory on the device." = "Файл с таким именем уже существует в папке с документами на этом устройстве.";
 
 /* No comment provided by engineer. */
@@ -227,7 +221,7 @@
 "Copying" = "Копирование";
 
 /* Description of file operation error */
-"Could not change file attrubutes" = "Не удалось изменить атрибуты файла";
+"Could not change file attributes" = "Не удалось изменить атрибуты файла";
 
 /* Description of file operation error */
 "Could not change the directory" = "Не удалось изменить каталог";
@@ -1268,4 +1262,10 @@
 
 /* Data units */
 "Zero bytes" = "Ноль байт";
+
+/* No comment provided by engineer. */
+"Сould not download file." = "Не удалось скачать файл.";
+
+/* No comment provided by engineer. */
+"Сould not upload file." = "Не удалось загрузить файл.";
 

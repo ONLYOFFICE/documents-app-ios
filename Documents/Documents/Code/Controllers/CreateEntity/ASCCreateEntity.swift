@@ -6,15 +6,13 @@
 //  Copyright © 2017 Ascensio System SIA. All rights reserved.
 //
 
-import UIKit
-import MBProgressHUD
-import CoreServices
 import AVFoundation
+import CoreServices
+import MBProgressHUD
 import SwiftMessages
-
+import UIKit
 
 class ASCCreateEntity: NSObject, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
-
     // MARK: - Properties
 
     private var provider: ASCFileProviderProtocol?
@@ -59,13 +57,13 @@ class ASCCreateEntity: NSObject, UIImagePickerControllerDelegate, UINavigationCo
 //                (contentView as? CornerRoundingView)?.cornerRadius = 0
 
                 for constraint in contentView.superview?.constraints ?? [] {
-                    if  let _ = constraint.firstItem as? ASCCreateEntityView ?? constraint.firstItem as? CornerRoundingView,
-                        let _ = constraint.secondItem as? ASCCreateEntityView ?? constraint.secondItem as? CornerRoundingView
+                    if let _ = constraint.firstItem as? ASCCreateEntityView ?? constraint.firstItem as? CornerRoundingView,
+                       let _ = constraint.secondItem as? ASCCreateEntityView ?? constraint.secondItem as? CornerRoundingView
                     {
                         constraint.constant = 0
                     }
                 }
-                
+
                 createEntityView.topConstraints.constant = 20
             }
 
@@ -81,7 +79,7 @@ class ASCCreateEntity: NSObject, UIImagePickerControllerDelegate, UINavigationCo
             if let senderView = senderView {
                 createController.modalPresentationStyle = .popover
                 createController.preferredContentSize = createController.view.frame.size
-                
+
                 if #available(iOS 13.0, *) {
                     if viewController.traitCollection.userInterfaceStyle == .light {
                         createController.popoverPresentationController?.backgroundColor = .white
@@ -134,42 +132,42 @@ class ASCCreateEntity: NSObject, UIImagePickerControllerDelegate, UINavigationCo
 
         createFile(fileExtension, viewController: viewController)
     }
-    
+
     func createFile(_ fileExtension: String, viewController: ASCDocumentsViewController) {
         guard let provider = provider else { return }
-        var hud: MBProgressHUD? = nil
-        
+        var hud: MBProgressHUD?
+
         ASCEntityManager.shared.createFile(for: provider, fileExtension, in: viewController.folder, handler: { status, entity, error in
             if status == .begin {
                 hud = MBProgressHUD.showTopMost()
                 hud?.label.text = NSLocalizedString("Creating", comment: "Caption of the process")
             } else if status == .error {
                 hud?.hide(animated: true)
-                
+
                 if error != nil {
                     self.showError(message: error!)
                 }
             } else if status == .end {
                 hud?.hide(animated: false)
-                
+
                 if let entity = entity {
                     viewController.add(entity: entity)
                 }
             }
         })
     }
-    
+
     func createFolder(viewController: ASCDocumentsViewController) {
         guard let provider = provider else { return }
-        var hud: MBProgressHUD? = nil
-        
+        var hud: MBProgressHUD?
+
         ASCEntityManager.shared.createFolder(for: provider, in: viewController.folder, handler: { status, entity, error in
             if status == .begin {
                 hud = MBProgressHUD.showTopMost()
                 hud?.label.text = NSLocalizedString("Creating", comment: "Caption of the process")
             } else if status == .error {
                 hud?.hide(animated: true)
-                
+
                 if error != nil {
                     self.showError(message: error!)
                 }
@@ -195,9 +193,10 @@ class ASCCreateEntity: NSObject, UIImagePickerControllerDelegate, UINavigationCo
                 String(kUTTypeText),
                 String(kUTTypeContent),
                 String(kUTTypeItem),
-                String(kUTTypeData)
+                String(kUTTypeData),
             ],
-            in: .import)
+            in: .import
+        )
 //        documentPicker.addOptionWithTitle("Photos", image: nil, order: .First, handler: nil)
         documentPicker.delegate = ASCCreateEntityDocumentDelegate.shared
         viewController.present(documentPicker, animated: true)
@@ -207,18 +206,18 @@ class ASCCreateEntity: NSObject, UIImagePickerControllerDelegate, UINavigationCo
         if !UIImagePickerController.isSourceTypeAvailable(.photoLibrary) {
             return
         }
-        
+
         ASCCreateEntityImageDelegate.shared.documentsViewController = viewController
         ASCCreateEntityImageDelegate.shared.provider = provider
-        
+
         let imagePickerController = UIImagePickerController()
         imagePickerController.sourceType = .photoLibrary
         imagePickerController.allowsEditing = false
         imagePickerController.delegate = ASCCreateEntityImageDelegate.shared
-        
+
         viewController.present(imagePickerController, animated: true, completion: nil)
     }
-    
+
     func takePhoto(viewController: ASCDocumentsViewController) {
         func showCamera() {
             if UIImagePickerController.isSourceTypeAvailable(.camera) {
@@ -238,26 +237,25 @@ class ASCCreateEntity: NSObject, UIImagePickerControllerDelegate, UINavigationCo
         }
 
         func showAuthorizationAlert() {
-            //Camera not available
+            // Camera not available
             let cameraUnavailableAlertController = UIAlertController(
                 title: NSLocalizedString("Camera Unavailable", comment: ""),
                 message: NSLocalizedString("Please go to Settings and enable the camera for this app to use this feature.", comment: ""),
                 preferredStyle: .alert
             )
 
-            let settingsAction = UIAlertAction(title: NSLocalizedString("Settings", comment: ""), style: .cancel, handler: { (alert) in
+            let settingsAction = UIAlertAction(title: NSLocalizedString("Settings", comment: ""), style: .cancel, handler: { alert in
                 let settingsUrl = NSURL(string: UIApplication.openSettingsURLString)
                 if let url = settingsUrl {
                     DispatchQueue.main.async {
                         UIApplication.shared.open(url as URL, options: [:], completionHandler: nil)
                     }
-
                 }
             })
             let cancelAction = UIAlertAction(title: ASCLocalization.Common.cancel, style: .default, handler: nil)
             cameraUnavailableAlertController.addAction(settingsAction)
             cameraUnavailableAlertController.addAction(cancelAction)
-            viewController.present(cameraUnavailableAlertController , animated: true, completion: nil)
+            viewController.present(cameraUnavailableAlertController, animated: true, completion: nil)
         }
 
         if AVCaptureDevice.authorizationStatus(for: .video) != .authorized {
@@ -273,12 +271,10 @@ class ASCCreateEntity: NSObject, UIImagePickerControllerDelegate, UINavigationCo
         } else {
             showCamera()
         }
-
-
     }
-    
+
     // MARK: - Private
-    
+
     private func showError(message: String) {
         if let topVC = ASCViewControllerManager.shared.topViewController {
             UIAlertController.showError(in: topVC, message: message)
@@ -290,19 +286,19 @@ class ASCCreateEntity: NSObject, UIImagePickerControllerDelegate, UINavigationCo
 
 class ASCCreateEntityDocumentDelegate: NSObject, UIDocumentPickerDelegate {
     public static let shared = ASCCreateEntityDocumentDelegate()
-    var documentsViewController: ASCDocumentsViewController? = nil
+    var documentsViewController: ASCDocumentsViewController?
     var provider: ASCFileProviderProtocol?
 
     func documentPicker(_ controller: UIDocumentPickerViewController, didPickDocumentAt url: URL) {
         _ = url.startAccessingSecurityScopedResource()
 
         let coordinator = NSFileCoordinator()
-        var error: NSError? = nil
+        var error: NSError?
 
         let hud = MBProgressHUD.showTopMost()
         hud?.mode = .indeterminate
 
-        coordinator.coordinate(readingItemAt: url, options: [], error: &error) { (url) -> Void in
+        coordinator.coordinate(readingItemAt: url, options: [], error: &error) { url in
             hud?.hide(animated: false)
 
             do {
@@ -313,10 +309,10 @@ class ASCCreateEntityDocumentDelegate: NSObject, UIDocumentPickerDelegate {
                     let openingAlert = ASCProgressAlert(
                         title: NSLocalizedString("Uploading", comment: "Caption of the process") + "...",
                         message: nil,
-                        handler:
-                    { (cancel) in
-                        forceCancel = cancel
-                    })
+                        handler: { cancel in
+                            forceCancel = cancel
+                        }
+                    )
 
                     ASCEntityManager.shared.createFile(
                         for: provider,
@@ -324,8 +320,7 @@ class ASCCreateEntityDocumentDelegate: NSObject, UIDocumentPickerDelegate {
                         data: fileData,
                         name: url.lastPathComponent,
                         params: nil,
-                        handler:
-                        { status, progress, entity, error, cancel in
+                        handler: { status, progress, entity, error, cancel in
                             if status == .begin {
                                 openingAlert.show()
                             } else if status == .progress {
@@ -349,7 +344,8 @@ class ASCCreateEntityDocumentDelegate: NSObject, UIDocumentPickerDelegate {
                                     self.documentsViewController?.add(entity: entity, open: false)
                                 }
                             }
-                    })
+                        }
+                    )
                 }
 
             } catch {
@@ -375,38 +371,38 @@ class ASCCreateEntityDocumentDelegate: NSObject, UIDocumentPickerDelegate {
 
 class ASCCreateEntityImageDelegate: NSObject, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     public static let shared = ASCCreateEntityImageDelegate()
-    var documentsViewController: ASCDocumentsViewController? = nil
+    var documentsViewController: ASCDocumentsViewController?
     var provider: ASCFileProviderProtocol?
-    
+
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
         picker.dismiss(animated: true, completion: nil)
     }
-    
+
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey: Any]) {
         picker.dismiss(animated: true, completion: nil)
 
         let mediaType = info[UIImagePickerController.InfoKey.mediaType] as! NSString
-        
+
         if !mediaType.isEqual(to: kUTTypeImage as NSString as String) {
             return
         }
-        
+
         guard let imageToSave = info[UIImagePickerController.InfoKey.editedImage] as? UIImage ?? info[UIImagePickerController.InfoKey.originalImage] as? UIImage else {
             return
         }
-        
+
         let compressionQuality: CGFloat = UserDefaults.standard.bool(forKey: ASCConstants.SettingsKeys.compressImage) ? 0.1 : 1.0
-        
+
         if let provider = provider, let imageData = imageToSave.jpegData(compressionQuality: compressionQuality) {
             var forceCancel = false
             let openingAlert = ASCProgressAlert(
                 title: NSLocalizedString("Uploading", comment: "Caption of the process") + "...",
                 message: nil,
-                handler:
-            { (cancel) in
-                forceCancel = cancel
-            })
-            
+                handler: { cancel in
+                    forceCancel = cancel
+                }
+            )
+
             ASCEntityManager.shared.createImage(
                 for: provider,
                 in: documentsViewController?.folder,
@@ -436,13 +432,13 @@ class ASCCreateEntityImageDelegate: NSObject, UIImagePickerControllerDelegate, U
                             self.documentsViewController?.add(entity: entity)
                         }
                     }
-            })
+                }
+            )
         }
     }
-    
-    
+
     // MARK: - Private
-    
+
     private func showError(message: String) {
         if let topVC = ASCViewControllerManager.shared.topViewController {
             UIAlertController.showError(in: topVC, message: message)

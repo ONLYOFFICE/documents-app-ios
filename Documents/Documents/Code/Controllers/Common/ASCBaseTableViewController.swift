@@ -9,13 +9,12 @@
 import UIKit
 
 class ASCBaseTableViewController: UITableViewController {
-
     // MARK: - Properties
-    
+
     lazy var navigator = ASCNavigator(navigationController: navigationController)
-    
+
     // MARK: - Lifecycle Methods
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
     }
@@ -23,21 +22,21 @@ class ASCBaseTableViewController: UITableViewController {
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
-    
-    override var supportedInterfaceOrientations : UIInterfaceOrientationMask {
+
+    override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
         return [.portrait, .landscape]
     }
-    
+
     override var preferredInterfaceOrientationForPresentation: UIInterfaceOrientation {
         return super.preferredInterfaceOrientationForPresentation
     }
-    
+
     // MARK: - Create
-    
+
     public class var storyboard: Storyboard {
         fatalError("Storyboard not defined:\(String(describing: self))")
     }
-    
+
     public class func instance() -> Self {
         return instantiate(from: storyboard)
     }

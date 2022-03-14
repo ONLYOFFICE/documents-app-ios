@@ -9,7 +9,6 @@
 import Foundation
 
 class ASCShareSettingsAPIWorkerFactory {
-    
     func get(by portalType: ASCPortalType) -> ASCShareSettingsAPIWorkerProtocol {
         switch portalType {
         case .personal:

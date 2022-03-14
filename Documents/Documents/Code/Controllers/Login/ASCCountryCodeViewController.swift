@@ -6,20 +6,20 @@
 //  Copyright © 2017 Ascensio System SIA. All rights reserved.
 //
 
-import UIKit
 import PhoneNumberKit
+import UIKit
 
 class ASCCountryCodeViewController: ASCBaseTableViewController {
-    class override var storyboard: Storyboard { return Storyboard.login }
-    
+    override class var storyboard: Storyboard { return Storyboard.login }
+
     // MARK: - Properties
-    
-    var selectCountry: ((String, UInt64, String) -> Void)? = nil
-    
+
+    var selectCountry: ((String, UInt64, String) -> Void)?
+
     private let phoneNumberKit = PhoneNumberKit()
     private var countries: [String: [[String: Any]]] = [:]
     private var literals: [String] = []
-    
+
     // Search
     private lazy var searchController: UISearchController = {
         $0.delegate = self
@@ -36,60 +36,62 @@ class ASCCountryCodeViewController: ASCBaseTableViewController {
         }
         return $0
     }(UISearchController(searchResultsController: nil))
+
     private lazy var searchBackground: UIView = {
         $0.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         $0.backgroundColor = .white
         return $0
     }(UIView())
+
     private lazy var searchSeparator: UIView = {
         $0.autoresizingMask = [.flexibleWidth, .flexibleBottomMargin]
         $0.backgroundColor = .lightGray
         return $0
     }(UIView())
+
     private var searchQuery: String = ""
-    
-    
+
     // MARK: - Lifecycle Methods
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+
         tableView.backgroundView = UIView()
         tableView.tableFooterView = UIView()
 
         // Prepare data
         fillData()
-        
+
         navigationItem.searchController = searchController
     }
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
+
         navigationController?.navigationBar.setBackgroundImage(nil, for: .default)
         navigationController?.navigationBar.isTranslucent = true
         navigationController?.navigationBar.shadowImage = UIImage()
     }
-    
+
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
 
-    override var supportedInterfaceOrientations : UIInterfaceOrientationMask {
+    override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
         return UIDevice.phone ? .portrait : [.portrait, .landscape]
     }
 
     override var preferredInterfaceOrientationForPresentation: UIInterfaceOrientation {
         return UIDevice.phone ? .portrait : super.preferredInterfaceOrientationForPresentation
     }
-    
+
     // MARK: - Private
-    
+
     private func fillData() {
         let allCountries = phoneNumberKit.allCountries()
         var allCountriesSorted: [[String: Any]] = []
-        var search: String? = nil
-        
+        var search: String?
+
         countries.removeAll()
         literals.removeAll()
 
@@ -98,9 +100,9 @@ class ASCCountryCodeViewController: ASCBaseTableViewController {
                 search = searchText
             }
         }
-        
+
         let validCountries = allCountries.filter { $0 != "001" }
-        
+
         for country in validCountries {
             if let countryName = Locale.current.localizedString(forRegionCode: country),
                let code = phoneNumberKit.countryCode(for: country)
@@ -110,25 +112,25 @@ class ASCCountryCodeViewController: ASCBaseTableViewController {
                         allCountriesSorted.append([
                             "country": countryName,
                             "code": code,
-                            "region": country
-                            ])
+                            "region": country,
+                        ])
                     }
                 } else {
                     allCountriesSorted.append([
                         "country": countryName,
                         "code": code,
-                        "region": country
-                        ])
+                        "region": country,
+                    ])
                 }
             }
         }
-        
+
         allCountriesSorted = allCountriesSorted.sorted(by: { ($0["country"] as! String).uppercased() < ($1["country"] as! String).uppercased() })
-        
+
         for country in allCountriesSorted {
             if let countryName = country["country"] as? String {
                 let literal = countryName[0].uppercased()
-                
+
                 if let _ = countries[literal] {
                     countries[literal]?.append(country)
                 } else {
@@ -137,7 +139,7 @@ class ASCCountryCodeViewController: ASCBaseTableViewController {
                 }
             }
         }
-        
+
         literals = literals.sorted(by: <)
     }
 }
@@ -145,7 +147,6 @@ class ASCCountryCodeViewController: ASCBaseTableViewController {
 // MARK: - Table view data source
 
 extension ASCCountryCodeViewController {
-    
     override func numberOfSections(in tableView: UITableView) -> Int {
         return literals.count
     }
@@ -157,12 +158,12 @@ extension ASCCountryCodeViewController {
     override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         return literals[section]
     }
-    
+
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cellCountryCode", for: indexPath)
 
         let literal = literals[indexPath.section]
-        
+
         if let info = countries[literal]?[indexPath.row] {
             cell.textLabel?.text = info["country"] as? String ?? ""
             cell.detailTextLabel?.text = "+\(info["code"] as? UInt64 ?? 0)"
@@ -170,10 +171,10 @@ extension ASCCountryCodeViewController {
 
         return cell
     }
-    
+
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let literal = literals[indexPath.section]
-        
+
         if let info = countries[literal]?[indexPath.row] {
             selectCountry?(
                 info["country"] as? String ?? "",
@@ -182,29 +183,28 @@ extension ASCCountryCodeViewController {
             )
         }
 
-        self.navigationController?.popViewController(animated: true)
+        navigationController?.popViewController(animated: true)
     }
-    
+
     override func tableView(_ tableView: UITableView, sectionForSectionIndexTitle title: String, at index: Int) -> Int {
         if index == 0 {
             tableView.contentOffset = CGPoint(x: 0, y: -64)
             return NSNotFound
         }
-        
+
         return index - 1
     }
-    
+
     override func sectionIndexTitles(for tableView: UITableView) -> [String]? {
         var indexes = literals
         indexes.insert(UITableView.indexSearch, at: 0)
         return indexes
     }
-    
 }
-    
+
 // MARK: - UISearchController Delegate
 
-extension ASCCountryCodeViewController : UISearchControllerDelegate {
+extension ASCCountryCodeViewController: UISearchControllerDelegate {
     func didPresentSearchController(_ searchController: UISearchController) {
         if #available(iOS 11.0, *) {
             //
@@ -218,7 +218,7 @@ extension ASCCountryCodeViewController : UISearchControllerDelegate {
             )
             searchBackground.alpha = 1
             searchController.view?.insertSubview(searchBackground, at: 0)
-            
+
             searchSeparator.frame = CGRect(
                 x: 0,
                 y: searchController.searchBar.frame.size.height + statusbarHeight,
@@ -228,7 +228,7 @@ extension ASCCountryCodeViewController : UISearchControllerDelegate {
             searchController.view?.insertSubview(searchSeparator, at: 0)
         }
     }
-    
+
     func willDismissSearchController(_ searchController: UISearchController) {
         if #available(iOS 11.0, *) {
             //
@@ -237,22 +237,18 @@ extension ASCCountryCodeViewController : UISearchControllerDelegate {
             searchBackground.alpha = 0
         }
     }
-    
+
     func didDismissSearchController(_ searchController: UISearchController) {
         fillData()
         tableView.reloadData()
     }
-    
 }
-
 
 // MARK: - UISearchResults Updating
 
-extension ASCCountryCodeViewController : UISearchResultsUpdating {
-    
+extension ASCCountryCodeViewController: UISearchResultsUpdating {
     func updateSearchResults(for searchController: UISearchController) {
         fillData()
         tableView.reloadData()
     }
-
 }

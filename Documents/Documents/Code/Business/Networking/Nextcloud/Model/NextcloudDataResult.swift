@@ -10,8 +10,7 @@ import Foundation
 import ObjectMapper
 
 class NextcloudDataResult<T: Mappable>: Mappable {
-
-    var result: T? = nil
+    var result: T?
 
     required convenience init?(map: Map) {
         self.init()

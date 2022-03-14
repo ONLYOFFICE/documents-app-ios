@@ -14,19 +14,19 @@ class ASCCloudCategoryCell: UITableViewCell {
     struct ASCCloudCategoryCellType: OptionSet {
         let rawValue: Int
 
-        static let top      = ASCCloudCategoryCellType(rawValue: 1 << 0)
-        static let bottom   = ASCCloudCategoryCellType(rawValue: 1 << 1)
+        static let top = ASCCloudCategoryCellType(rawValue: 1 << 0)
+        static let bottom = ASCCloudCategoryCellType(rawValue: 1 << 1)
     }
 
     // MARK: - Properties
 
-    @IBOutlet weak var logo: UIImageView!
-    @IBOutlet weak var title: UILabel!
-    @IBOutlet weak var subtitle: UILabel!
+    @IBOutlet var logo: UIImageView!
+    @IBOutlet var title: UILabel!
+    @IBOutlet var subtitle: UILabel!
 
-    @IBOutlet weak var topSeparator: UIView!
-    @IBOutlet weak var bottomSeparator: UIView!
-    @IBOutlet weak var leftConstarintOfBottomSeparator: NSLayoutConstraint!
+    @IBOutlet var topSeparator: UIView!
+    @IBOutlet var bottomSeparator: UIView!
+    @IBOutlet var leftConstarintOfBottomSeparator: NSLayoutConstraint!
 
     var cellType: ASCCloudCategoryCellType = [] {
         didSet {
@@ -50,7 +50,7 @@ class ASCCloudCategoryCell: UITableViewCell {
     }
 
     // MARK: - Lifecycle Methods
-    
+
     override func awakeFromNib() {
         super.awakeFromNib()
     }
@@ -69,5 +69,4 @@ class ASCCloudCategoryCell: UITableViewCell {
         subtitle?.text = category.subtitle
         logo?.image = category.image
     }
-
 }

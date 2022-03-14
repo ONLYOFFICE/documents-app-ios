@@ -5,7 +5,7 @@
 "%i of %i" = "%1$i di %2$i";
 
 /* No comment provided by engineer. */
-"%lu File selected" = "%lu file selezionati";
+"%lu File selected" = "%lu file selezionato";
 
 /* No comment provided by engineer. */
 "%lu Folder and %lu File selected" = "%1$lu Cartelle e %2$lu File selezionati";
@@ -399,7 +399,7 @@
 "Email is empty" = "Campo Email vuoto";
 
 /* No comment provided by engineer. */
-"Email is incorrect." = "Indirizzo email non corretto";
+"Email is incorrect." = "Indirizzo email non corretto.";
 
 /* No comment provided by engineer. */
 "Email is not valid" = "Email non valida";
@@ -1157,6 +1157,9 @@
 
 /* Caption of the process */
 "Uploading" = "Caricamento";
+
+/* No comment provided by engineer. */
+"Use external keyboards in ONLYOFFICE Documents with improved compatibility." = "Usa tastiere esterne in ONLYOFFICE Documents con compatibilità migliorata.";
 
 /* Button title */
 "Use Face ID" = "Utilizzare Face ID";

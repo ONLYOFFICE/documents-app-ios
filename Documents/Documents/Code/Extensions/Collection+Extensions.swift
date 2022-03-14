@@ -7,27 +7,27 @@
 //
 
 #if canImport(Dispatch)
-import Dispatch
+    import Dispatch
 #endif
 
 // MARK: - Methods
-public extension Collection {
 
+public extension Collection {
     #if canImport(Dispatch)
-    /// Performs `each` closure for each element of collection in parallel.
-    ///
-    ///        array.forEachInParallel { item in
-    ///            print(item)
-    ///        }
-    ///
-    /// - Parameter each: closure to run for each element.
-    func forEachInParallel(_ each: (Self.Element) -> Void) {
-        let indicesArray = Array(indices)
-        DispatchQueue.concurrentPerform(iterations: indicesArray.count) { (index) in
-            let elementIndex = indicesArray[index]
-            each(self[elementIndex])
+        /// Performs `each` closure for each element of collection in parallel.
+        ///
+        ///        array.forEachInParallel { item in
+        ///            print(item)
+        ///        }
+        ///
+        /// - Parameter each: closure to run for each element.
+        func forEachInParallel(_ each: (Self.Element) -> Void) {
+            let indicesArray = Array(indices)
+            DispatchQueue.concurrentPerform(iterations: indicesArray.count) { index in
+                let elementIndex = indicesArray[index]
+                each(self[elementIndex])
+            }
         }
-    }
     #endif
 
     /// Safe protects the array from out of bounds by use of optional.
@@ -40,12 +40,11 @@ public extension Collection {
     subscript(safe index: Index) -> Element? {
         return indices.contains(index) ? self[index] : nil
     }
-
 }
 
 // MARK: - Methods (Int)
-public extension Collection where Index == Int {
 
+public extension Collection where Index == Int {
     /// Get all indices where condition is met.
     ///
     ///     [1, 7, 1, 2, 4, 1, 8].indices(where: { $0 == 1 }) -> [0, 2, 5]
@@ -73,7 +72,7 @@ public extension Collection where Index == Int {
 
         var value: Int = 0
         while value < count {
-            try body(Array(self[Swift.max(value, startIndex)..<Swift.min(value + slice, endIndex)]))
+            try body(Array(self[Swift.max(value, startIndex) ..< Swift.min(value + slice, endIndex)]))
             value += slice
         }
     }
@@ -86,22 +85,21 @@ public extension Collection where Index == Int {
     /// - Parameter size: The size of the slices to be returned.
     /// - Returns: grouped self.
     func group(by size: Int) -> [[Element]]? {
-        //Inspired by: https://lodash.com/docs/4.17.4#chunk
+        // Inspired by: https://lodash.com/docs/4.17.4#chunk
         guard size > 0, !isEmpty else { return nil }
         var value: Int = 0
         var slices: [[Element]] = []
         while value < count {
-            slices.append(Array(self[Swift.max(value, startIndex)..<Swift.min(value + size, endIndex)]))
+            slices.append(Array(self[Swift.max(value, startIndex) ..< Swift.min(value + size, endIndex)]))
             value += size
         }
         return slices
     }
-
 }
 
 // MARK: - Methods (Integer)
-public extension Collection where Element == IntegerLiteralType, Index == Int {
 
+public extension Collection where Element == IntegerLiteralType, Index == Int {
     /// Average of all elements in array.
     ///
     /// - Returns: the average of the array's elements.
@@ -109,12 +107,11 @@ public extension Collection where Element == IntegerLiteralType, Index == Int {
         // http://stackoverflow.com/questions/28288148/making-my-function-calculate-average-of-array-swift
         return isEmpty ? 0 : Double(reduce(0, +)) / Double(count)
     }
-
 }
 
 // MARK: - Methods (FloatingPoint)
-public extension Collection where Element: FloatingPoint {
 
+public extension Collection where Element: FloatingPoint {
     /// Average of all elements in array.
     ///
     ///        [1.2, 2.3, 4.5, 3.4, 4.5].average() = 3.18
@@ -122,7 +119,6 @@ public extension Collection where Element: FloatingPoint {
     /// - Returns: average of the array's elements.
     func average() -> Element {
         guard !isEmpty else { return 0 }
-        return reduce(0, {$0 + $1}) / Element(count)
+        return reduce(0) { $0 + $1 } / Element(count)
     }
-
 }

@@ -27,7 +27,6 @@
 import UIKit
 
 extension UIAlertController {
-
     /**
      Create an alert style `UIAlertController`
 
@@ -44,10 +43,8 @@ extension UIAlertController {
         message: String? = nil,
         acceptMessage: String = "OK",
         handler: ((UIAlertAction) -> Void)? = nil
-        ) -> UIAlertController {
-
+    ) -> UIAlertController {
         return UIAlertController.alert(name, message: message, actions: [UIAlertAction(title: acceptMessage, style: .cancel, handler: handler)])
-
     }
 
     /**
@@ -65,15 +62,13 @@ extension UIAlertController {
         message: String? = nil,
         actions: [UIAlertAction],
         tintColor: UIColor? = nil
-        ) -> UIAlertController {
-
-        let alertController =  UIAlertController(title: name, message: message, preferredStyle: .alert)
+    ) -> UIAlertController {
+        let alertController = UIAlertController(title: name, message: message, preferredStyle: .alert)
         alertController.view.tintColor = tintColor ?? Asset.Colors.brend.color
 
         actions.forEach(alertController.addAction)
 
         return alertController
-
     }
 
     /**
@@ -89,11 +84,9 @@ extension UIAlertController {
     class func alert(
         _ name: String,
         message: String? = nil,
-        actionHandler: (() -> [UIAlertAction])
-        ) -> UIAlertController {
-
+        actionHandler: () -> [UIAlertAction]
+    ) -> UIAlertController {
         return UIAlertController.alert(name, message: message, actions: actionHandler())
-
     }
 
     /**
@@ -109,14 +102,12 @@ extension UIAlertController {
         _ name: String,
         message: String? = nil,
         actions: [UIAlertAction]? = nil
-        ) -> UIAlertController {
-
-        let alertController =  UIAlertController(title: name, message: message, preferredStyle: .actionSheet)
+    ) -> UIAlertController {
+        let alertController = UIAlertController(title: name, message: message, preferredStyle: .actionSheet)
 
         actions?.forEach(alertController.addAction)
 
         return alertController
-
     }
 
     /**
@@ -131,11 +122,9 @@ extension UIAlertController {
     class func sheet(
         _ name: String,
         message: String? = nil,
-        actionHandler: (() -> [UIAlertAction])
-        ) -> UIAlertController {
-
+        actionHandler: () -> [UIAlertAction]
+    ) -> UIAlertController {
         return UIAlertController.sheet(name, message: message, actions: actionHandler())
-
     }
 
     /**
@@ -151,12 +140,10 @@ extension UIAlertController {
         title: String,
         style: UIAlertAction.Style = .default,
         handler: ((UIAlertAction) -> Void)? = nil
-        ) -> UIAlertController {
-
+    ) -> UIAlertController {
         addAction(title: title, style: style, handler: handler)
 
         return self
-
     }
 
     /**
@@ -168,12 +155,10 @@ extension UIAlertController {
      */
     func okable(
         handler: ((UIAlertAction) -> Void)? = nil
-        ) -> UIAlertController {
-
+    ) -> UIAlertController {
         addOk(handler: handler)
 
         return self
-
     }
 
     /**
@@ -185,12 +170,10 @@ extension UIAlertController {
      */
     func cancelable(
         handler: ((UIAlertAction) -> Void)? = nil
-        ) -> UIAlertController {
-
+    ) -> UIAlertController {
         addCancel(handler: handler)
 
         return self
-
     }
 
     /**
@@ -205,12 +188,10 @@ extension UIAlertController {
         title: String,
         style: UIAlertAction.Style = .default,
         handler: ((UIAlertAction) -> Void)? = nil
-        ) {
-
+    ) {
         let action = UIAlertAction(title: title, style: style, handler: handler)
 
         addAction(action)
-
     }
 
     /**
@@ -220,9 +201,7 @@ extension UIAlertController {
 
      */
     func addOk(handler: ((UIAlertAction) -> Void)? = nil) {
-
         addAction(title: NSLocalizedString("OK", comment: ""), style: .default, handler: handler)
-
     }
 
     /**
@@ -232,18 +211,15 @@ extension UIAlertController {
 
      */
     func addCancel(handler: ((UIAlertAction) -> Void)? = nil) {
-
         addAction(
             title: NSLocalizedString("Cancel", comment: ""),
             style: .cancel,
             handler: handler
         )
     }
-
 }
 
 extension UIAlertAction {
-
     /**
      Create and return an action with the specified title and behavior.
      Actions are enabled by default when you create them.
@@ -261,10 +237,8 @@ extension UIAlertAction {
     convenience init(
         title: String?,
         handler: ((UIAlertAction) -> Void)? = nil
-        ) {
-
+    ) {
         self.init(title: title, style: .default, handler: handler)
-
     }
 
     /**
@@ -288,15 +262,12 @@ extension UIAlertAction {
         title: String,
         style: UIAlertAction.Style = .default,
         handler: ((UIAlertAction) -> Void)? = nil
-        ) -> [UIAlertAction] {
-
+    ) -> [UIAlertAction] {
         return [self, UIAlertAction(title: title, style: style, handler: handler)]
-
     }
 }
 
 extension Collection where Iterator.Element == UIAlertAction {
-
     /**
      Appends an UIAlertAction to this array and returns a array of UIAlertActions
 
@@ -311,17 +282,14 @@ extension Collection where Iterator.Element == UIAlertAction {
      - parameter handler: A block to execute when the user selects the action.
      This block has no return value and takes the selected action object as its only parameter.
      (default: `nil`)
-     
+
      - returns: Array with the `UIAlertAction`s
      */
     func appending(
         title: String,
         style: UIAlertAction.Style = .default,
         handler: ((UIAlertAction) -> Void)? = nil
-        ) -> [UIAlertAction] {
-        
+    ) -> [UIAlertAction] {
         return self + [UIAlertAction(title: title, style: style, handler: handler)]
-        
     }
-    
 }

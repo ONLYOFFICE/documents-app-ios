@@ -19,14 +19,13 @@ class OnlyofficeResponseBase: Mappable {
     }
 
     func mapping(map: Map) {
-        count       <- map["count"]
-        status      <- map["status"]
-        statusCode  <- map["statusCode"]
+        count <- map["count"]
+        status <- map["status"]
+        statusCode <- map["statusCode"]
     }
 }
-   
-class OnlyofficeResponse<T: Mappable>: OnlyofficeResponseBase {
 
+class OnlyofficeResponse<T: Mappable>: OnlyofficeResponseBase {
     var result: T?
 
     required convenience init?(map: Map) {
@@ -35,13 +34,12 @@ class OnlyofficeResponse<T: Mappable>: OnlyofficeResponseBase {
 
     override func mapping(map: Map) {
         super.mapping(map: map)
-        
+
         result <- map["response"]
     }
 }
 
 class OnlyofficeResponseType<T>: OnlyofficeResponseBase {
-
     var result: T?
 
     required convenience init?(map: Map) {
@@ -50,38 +48,35 @@ class OnlyofficeResponseType<T>: OnlyofficeResponseBase {
 
     override func mapping(map: Map) {
         super.mapping(map: map)
-        
+
         result <- map["response"]
     }
 }
 
-
 class OnlyofficeResponseArray<T: Mappable>: OnlyofficeResponseBase {
-    
     var result: [T]?
-    
+
     required convenience init?(map: Map) {
         self.init()
     }
-    
+
     override func mapping(map: Map) {
         super.mapping(map: map)
-        
+
         result <- map["response"]
     }
 }
 
 class OnlyofficeResponseArrayType<T>: OnlyofficeResponseBase {
-    
     var result: [T]?
-    
+
     required convenience init?(map: Map) {
         self.init()
     }
-    
+
     override func mapping(map: Map) {
         super.mapping(map: map)
-        
+
         result <- map["response"]
     }
 }

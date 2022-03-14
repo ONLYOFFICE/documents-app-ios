@@ -2,6 +2,22 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>%d selected</key>
+	<dict>
+		<key>NSStringLocalizedFormatKey</key>
+		<string>%#@items@</string>
+		<key>items</key>
+		<dict>
+			<key>NSStringFormatSpecTypeKey</key>
+			<string>NSStringPluralRuleType</string>
+			<key>NSStringFormatValueTypeKey</key>
+			<string>d</string>
+			<key>one</key>
+			<string>%d selecionado</string>
+			<key>other</key>
+			<string>%d selecionado</string>
+		</dict>
+	</dict>
 	<key>%lu File selected</key>
 	<dict>
 		<key>NSStringLocalizedFormatKey</key>
@@ -110,7 +126,7 @@
 			<key>other</key>
 			<string>e %lu arquivos</string>
 			<key>zero</key>
-			<string>__Source_text_is_empty__Translate_Or_Leave_this_text_as_is_if_target_text_is_also_empty__(/Excluir %lu pasta e %lu arquivo:dict/lu_files:dict/zero:dict/:string)</string>
+			<string></string>
 		</dict>
 		<key>lu_folders</key>
 		<dict>

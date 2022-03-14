@@ -28,6 +28,9 @@
 /* Class = "UIButton"; normalTitle = "Continue"; ObjectID = "AqJ-b9-XQV"; */
 "AqJ-b9-XQV.normalTitle" = "続ける";
 
+/* Class = "UILabel"; text = "Set up an application to generate the authentication codes"; ObjectID = "B8R-KD-Lml"; */
+"B8R-KD-Lml.text" = "アプリを設定して、 認証コードを生成する";
+
 /* Class = "UILabel"; text = "Haven't received the code?"; ObjectID = "cb0-ic-tPA"; */
 "cb0-ic-tPA.text" = "コードを受け取っていませんか?";
 
@@ -61,6 +64,9 @@
 /* Class = "UINavigationItem"; title = "SSO Login"; ObjectID = "hRN-W6-nA0"; */
 "hRN-W6-nA0.title" = "シングルサインオンでログイン";
 
+/* Class = "UILabel"; text = "Copy the key and paste it to the Google Authenticator application"; ObjectID = "K5M-Of-QAk"; */
+"K5M-Of-QAk.text" = "このキーをコピーして、貼り付け Google Authenticator アプリ";
+
 /* Class = "UILabel"; text = "Enter a phone number that can be used to verify your identity"; ObjectID = "MNA-z2-ITx"; */
 "MNA-z2-ITx.text" = "本人確認に使用する電話番号を入力する";
 
@@ -82,8 +88,14 @@
 /* Class = "UITextField"; placeholder = "Code"; ObjectID = "qEs-UQ-wWd"; */
 "qEs-UQ-wWd.placeholder" = "コード";
 
+/* Class = "UILabel"; text = "Run the application and tap the new account icon"; ObjectID = "R2F-fc-11j"; */
+"R2F-fc-11j.text" = "アプリを実行して 新しいアカウントのアイコンをタップ";
+
 /* Class = "UIButton"; normalTitle = "Open"; ObjectID = "RDr-pH-MKV"; */
 "RDr-pH-MKV.normalTitle" = "開く";
+
+/* Class = "UILabel"; text = "Open authentication app and copy code from there"; ObjectID = "SH2-Fd-5Ze"; */
+"SH2-Fd-5Ze.text" = "authentication アプリを開いて そこからのコードをコピー";
 
 /* Class = "UILabel"; text = "Login via"; ObjectID = "szM-hs-ncG"; */
 "szM-hs-ncG.text" = "経由でログイン";

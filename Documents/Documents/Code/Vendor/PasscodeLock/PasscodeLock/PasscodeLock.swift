@@ -10,64 +10,58 @@ import Foundation
 import LocalAuthentication
 
 open class PasscodeLock: PasscodeLockType {
-    
     open weak var delegate: PasscodeLockTypeDelegate?
     public let configuration: PasscodeLockConfigurationType
-    
+
     open var repository: PasscodeRepositoryType {
         return configuration.repository
     }
-    
+
     open var state: PasscodeLockStateType {
         return lockState
     }
-    
+
     open var isTouchIDAllowed: Bool {
         return isTouchIDEnabled() && configuration.isTouchIDAllowed && lockState.isTouchIDAllowed
     }
-    
+
     fileprivate var lockState: PasscodeLockStateType
     fileprivate lazy var passcode = [String]()
-    
+
     public init(state: PasscodeLockStateType, configuration: PasscodeLockConfigurationType) {
-        
         precondition(configuration.passcodeLength > 0, "Passcode length sould be greather than zero.")
-        
-        self.lockState = state
+
+        lockState = state
         self.configuration = configuration
     }
-    
+
     open func addSign(_ sign: String) {
-        
         passcode.append(sign)
         delegate?.passcodeLock(self, addedSignAtIndex: passcode.count - 1)
-        
+
         if passcode.count >= configuration.passcodeLength {
-            
             // handles "requires exclusive access" error at Swift 4
             var lockStateCopy = lockState
             lockStateCopy.acceptPasscode(passcode, fromLock: self)
             passcode.removeAll(keepingCapacity: true)
         }
     }
-    
+
     open func removeSign() {
-        
         guard passcode.count > 0 else { return }
-        
+
         passcode.removeLast()
         delegate?.passcodeLock(self, removedSignAtIndex: passcode.count)
     }
-    
+
     open func changeStateTo(_ state: PasscodeLockStateType) {
-        
         lockState = state
         delegate?.passcodeLockDidChangeState(self)
     }
-    
+
     open func authenticateWithBiometrics() {
         guard isTouchIDAllowed else { return }
-        
+
         let context = LAContext()
         let reason: String
 
@@ -95,7 +89,7 @@ open class PasscodeLock: PasscodeLockType {
             }
         }
     }
-    
+
     fileprivate func handleTouchIDResult(_ success: Bool) {
         DispatchQueue.main.async {
             if success {
@@ -104,7 +98,7 @@ open class PasscodeLock: PasscodeLockType {
             }
         }
     }
-    
+
     fileprivate func isTouchIDEnabled() -> Bool {
         return LAContext().canEvaluatePolicy(.deviceOwnerAuthenticationWithBiometrics, error: nil)
     }

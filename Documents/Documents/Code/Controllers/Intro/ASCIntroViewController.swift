@@ -11,14 +11,15 @@ import UIKit
 class ASCIntroViewController: UIViewController {
     static let identifier = String(describing: ASCIntroViewController.self)
 
-    @IBOutlet weak var pageControl: UIPageControl!
-    @IBOutlet weak var doneButton: UIButton!
-    
+    @IBOutlet var pageControl: UIPageControl!
+    @IBOutlet var doneButton: UIButton!
+
     private var pageViewController: UIPageViewController? {
         didSet {
             configure()
         }
     }
+
     private var pageViewControllers = [UIViewController]()
     private var pages: [ASCIntroPage] = [
         /// 1
@@ -50,55 +51,55 @@ class ASCIntroViewController: UIViewController {
             title: NSLocalizedString("Collaborate with your team", comment: "Introduction Step Five - Title"),
             subtitle: String.localizedStringWithFormat(NSLocalizedString("In online mode, use real-time co-editing features of %@ to work on documents together with your portal members, share documents and create common storage folders.", comment: "Introduction Step Five - Description"), ASCConstants.Name.appNameShort),
             image: Asset.Images.introStepFive.image
-        )
+        ),
     ]
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
         doneButton.titleLabel?.numberOfLines = 1
         doneButton.titleLabel?.adjustsFontSizeToFitWidth = true
         doneButton.titleLabel?.lineBreakMode = .byClipping
-        
+
         if #available(iOS 13.0, *) {
             pageControl.pageIndicatorTintColor = UIColor.systemGray5
             pageControl.currentPageIndicatorTintColor = UIColor.systemGray
         }
-        
+
         pageControl.addTarget(self, action: #selector(pageControlSelectionAction), for: [.touchUpInside, .touchUpOutside])
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
-    
-    override var supportedInterfaceOrientations : UIInterfaceOrientationMask {
+
+    override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
         return UIDevice.phone ? .portrait : [.portrait, .landscape]
     }
-    
+
     override var preferredInterfaceOrientationForPresentation: UIInterfaceOrientation {
         return UIDevice.phone ? .portrait : super.preferredInterfaceOrientationForPresentation
     }
-    
+
     private func configure() {
         if let pageController = pageViewController {
             pageController.delegate = self
             pageController.dataSource = self
-            
+
             if #available(iOS 13.0, *) {
                 pageController.view.backgroundColor = .systemBackground
             } else {
                 pageController.view.backgroundColor = .white
             }
-            
+
             for subview in pageController.view.subviews {
                 if subview is UIPageControl {
                     subview.isHidden = true
                 }
             }
-            
+
             pageViewControllers.removeAll()
-            
+
             for (index, page) in pages.enumerated() {
                 let pageVC = ASCIntroPageController.instantiate(from: Storyboard.intro)
                 pageVC.page = page
@@ -106,45 +107,45 @@ class ASCIntroViewController: UIViewController {
 
                 pageViewControllers.append(pageVC)
             }
-            
+
             if let firstViewController = pageViewControllers.first {
                 pageController.setViewControllers([firstViewController], direction: .forward, animated: false, completion: nil)
             }
         }
     }
-    
+
     private func updateDone(by index: Int) {
         var title = NSLocalizedString("SKIP", comment: "")
-        
+
         if index >= pageViewControllers.count - 1 {
             title = NSLocalizedString("GET STARTED!", comment: "")
         }
-        
+
         doneButton.setTitle(title.uppercased(), for: .normal)
     }
 
     // MARK: - Actions
-    
+
     @IBAction func onDone(_ sender: UIButton) {
         dismiss(animated: true, completion: nil)
     }
-    
+
     @objc func pageControlSelectionAction(_ sender: UIPageControl) {
         let prevIndex = sender.currentPage
         delay(seconds: 0.1) {
             let page = self.pageControl.currentPage
-            
+
             var direction: UIPageViewController.NavigationDirection = page - prevIndex > 0 ? .forward : .reverse
-            
+
             if page < 1 {
                 direction = .reverse
             }
-            
+
             self.pageViewController?.setViewControllers([self.pageViewControllers[page]], direction: direction, animated: true, completion: nil)
             self.updateDone(by: page)
         }
     }
-    
+
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
@@ -183,7 +184,7 @@ extension ASCIntroViewController: UIPageViewControllerDataSource {
         }
 
         let nextIndex = abs((currentIndex + 1) % pageViewControllers.count)
-        
+
         return pageViewControllers[nextIndex]
     }
 

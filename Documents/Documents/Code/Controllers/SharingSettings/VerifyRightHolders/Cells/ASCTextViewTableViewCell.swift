@@ -10,21 +10,21 @@ import UIKit
 
 class ASCTextViewTableViewCell: UITableViewCell, ASCReusedIdentifierProtocol, ASCViewModelSetter {
     static var reuseId: String = "TextFiieldTableViewCell"
-    
+
     var viewModel: ASCTextFieldCellViewModel? {
         didSet {
             configureContentView()
         }
     }
-    
+
     let textView = UITextView()
     var hSpacing: CGFloat = 16
     var vSpacing: CGFloat = 10
 
     var placeHolderText = ""
-    
+
     func configureContentView() {
-        self.selectionStyle = .none
+        selectionStyle = .none
         guard let viewModel = viewModel else { return }
 
         textView.delegate = self
@@ -37,15 +37,15 @@ class ASCTextViewTableViewCell: UITableViewCell, ASCReusedIdentifierProtocol, AS
             textView.text = placeHolderText
             textView.textColor = .lightGray
         }
-        
+
         textView.translatesAutoresizingMaskIntoConstraints = false
         contentView.addSubview(textView)
-        
+
         NSLayoutConstraint.activate([
             textView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: vSpacing),
             textView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: hSpacing),
             textView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -hSpacing),
-            textView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -vSpacing)
+            textView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -vSpacing),
         ])
     }
 
@@ -58,14 +58,12 @@ class ASCTextViewTableViewCell: UITableViewCell, ASCReusedIdentifierProtocol, AS
 }
 
 // MARK: - UITextViewDelegate for Placeholder
-extension ASCTextViewTableViewCell: UITextViewDelegate {
 
-    func textViewDidBeginEditing(_ textView: UITextView)
-    {
-        if (textView.text == placeHolderText && textView.textColor == .lightGray)
-        {
+extension ASCTextViewTableViewCell: UITextViewDelegate {
+    func textViewDidBeginEditing(_ textView: UITextView) {
+        if textView.text == placeHolderText, textView.textColor == .lightGray {
             textView.text = ""
-            
+
             if #available(iOS 13.0, *) {
                 textView.textColor = .label
             } else {
@@ -75,10 +73,8 @@ extension ASCTextViewTableViewCell: UITextViewDelegate {
         textView.becomeFirstResponder()
     }
 
-    func textViewDidEndEditing(_ textView: UITextView)
-    {
-        if (textView.text == "")
-        {
+    func textViewDidEndEditing(_ textView: UITextView) {
+        if textView.text == "" {
             textView.text = placeHolderText
             textView.textColor = .lightGray
         }

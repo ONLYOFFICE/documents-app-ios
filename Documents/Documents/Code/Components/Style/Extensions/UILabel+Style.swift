@@ -9,16 +9,14 @@
 import UIKit
 
 extension UILabel {
-    
     var textStyle: ASCTextStyle {
-       
         get {
             ASCTextStyle.undefined
         }
-       
+
         set(newValue) {
-            self.font = newValue.font
-            self.textColor = newValue.color
+            font = newValue.font
+            textColor = newValue.color
         }
     }
 }

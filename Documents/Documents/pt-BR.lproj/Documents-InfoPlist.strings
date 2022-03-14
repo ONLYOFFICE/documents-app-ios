@@ -1,27 +1,30 @@
 /* Bundle name */
-"CFBundleName" = "Документы";
-
-/* (No Commment) */
-"CFBundleDisplayName" = "Документы";
+"CFBundleName" = "Documentos";
 
 /* (No Comment) */
-"New Document" = "Новый документ";
+"New Document" = "Novo Documento";
 
 /* (No Comment) */
-"New Presentation" = "Новая презентация";
+"New Presentation" = "Nova apresentação";
 
 /* (No Comment) */
-"New Spreadsheet" = "Новая таблица";
+"New Spreadsheet" = "Nova planilha";
 
 /* Privacy - Camera Usage Description */
-"NSCameraUsageDescription" = "Это приложение требует доступа к камере, чтобы иметь возможность снимать фото и загрузить его в приложение.";
+"NSCameraUsageDescription" = "Este aplicativo requer acesso à câmera, para que você possa tirar fotos e carregá-la no aplicativo.";
 
 /* Privacy - Face ID Usage Description */
-"NSFaceIDUsageDescription" = "Этому приложению требуется разрешение на использование Face ID для аутентификации с помощью технологии распознавания лиц.";
+"NSFaceIDUsageDescription" = "Este aplicativo requer permissão de identificação facial para autenticar usando o reconhecimento facial.";
 
 /* Privacy - Photo Library Additions Usage Description */
-"NSPhotoLibraryAddUsageDescription" = "Это приложение требует доступа к библиотеке фотографий, для загрузки фотографий из библиотеке фотографий.";
+"NSPhotoLibraryAddUsageDescription" = "Este aplicativo requer acesso à biblioteca de fotos, para que você possa carregar suas fotos no aplicativo.";
 
 /* Privacy - Photo Library Usage Description */
-"NSPhotoLibraryUsageDescription" = "Это приложение требует доступа к библиотеке фотографий, для загрузки фотографий из библиотеке фотографий.";
+"NSPhotoLibraryUsageDescription" = "Este aplicativo requer acesso à biblioteca de fotos, para que você possa carregar suas fotos no aplicativo.";
+
+/* (No Comment) */
+"ONLYOFFICE fillable form (.oform)" = "Formulário preenchível do ONLYOFFICE (.oform)";
+
+/* (No Comment) */
+"ONLYOFFICE form template (.docxf)" = "Modelo de formulário do ONLYOFFICE (.docxf)";
 

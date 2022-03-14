@@ -14,7 +14,6 @@ import UIKit
 internal enum StoryboardSegue {
   internal enum ConnectStorage: String, SegueType {
     case kdriveSegue
-    case nextcloudSegue
     case owncloudSegue
     case webdavSegue
   }

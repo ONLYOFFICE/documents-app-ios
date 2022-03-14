@@ -6,34 +6,32 @@
 //  Copyright © 2018 Ascensio System SIA. All rights reserved.
 //
 
-import UIKit
 import Alamofire
+import UIKit
 
 class ASCNetworkReachability {
     public static let shared = ASCNetworkReachability()
 
     public var isReachable: Bool {
-        get {
-            if let manager = NetworkReachabilityManager() {
-                return manager.isReachable
-            }
-            return false
+        if let manager = NetworkReachabilityManager() {
+            return manager.isReachable
         }
+        return false
     }
 
     private let reachabilityManager = NetworkReachabilityManager()
 
-    required init () {
+    required init() {
         if let reachability = reachabilityManager {
             reachability.startListening { status in
                 log.info("Network Status Changed: \(status)")
-                DispatchQueue.main.async(execute: {
+                DispatchQueue.main.async {
                     NotificationCenter.default.post(
                         name: ASCConstants.Notifications.networkStatusChanged,
                         object: nil,
                         userInfo: ["status": status]
                     )
-                })
+                }
             }
         }
     }

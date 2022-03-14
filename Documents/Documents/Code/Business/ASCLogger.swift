@@ -9,10 +9,7 @@
 import Foundation
 import os.log
 
-var log = {
-    return ASCLogger()
-}()
-
+var log = ASCLogger()
 
 struct ASCLogger {
     private let osLog: OSLog
@@ -36,6 +33,7 @@ struct ASCLogger {
                 return "🔴 ERROR:"
             }
         }
+
         @available(iOS 10.0, *)
         var osLogType: OSLogType {
             switch self {
@@ -51,7 +49,7 @@ struct ASCLogger {
         }
     }
 
-    typealias Hook = ((String, Level) -> Void)
+    typealias Hook = (String, Level) -> Void
     var hook: Hook?
 
     fileprivate init() {
@@ -62,7 +60,7 @@ struct ASCLogger {
         _ = s.wait(timeout: .now() + 0.033)
         defer { s.signal() }
 
-        let extraMessage: String = arguments.map({ String(describing: $0) }).joined(separator: " ")
+        let extraMessage: String = arguments.map { String(describing: $0) }.joined(separator: " ")
         let log: String = {
             switch level {
             case .debug:
@@ -85,19 +83,19 @@ struct ASCLogger {
         }
     }
 
-    func debug(_ log: Any, _ arguments: Any..., function: String = #function, file: String  = #file, line: UInt = #line) {
+    func debug(_ log: Any, _ arguments: Any..., function: String = #function, file: String = #file, line: UInt = #line) {
         self.log(.debug, log, arguments, function: getPrettyFunction(function, file), line: line)
     }
 
-    func info(_ log: Any, _ arguments: Any..., function: String = #function, file: String  = #file, line: UInt = #line) {
+    func info(_ log: Any, _ arguments: Any..., function: String = #function, file: String = #file, line: UInt = #line) {
         self.log(.info, log, arguments, function: getPrettyFunction(function, file), line: line)
     }
 
-    func warning(_ log: Any, _ arguments: Any..., function: String = #function, file: String  = #file, line: UInt = #line) {
+    func warning(_ log: Any, _ arguments: Any..., function: String = #function, file: String = #file, line: UInt = #line) {
         self.log(.warning, log, arguments, function: getPrettyFunction(function, file), line: line)
     }
 
-    func error(_ log: Any, _ arguments: Any..., function: String = #function, file: String  = #file, line: UInt = #line) {
+    func error(_ log: Any, _ arguments: Any..., function: String = #function, file: String = #file, line: UInt = #line) {
         self.log(.error, log, arguments, function: getPrettyFunction(function, file), line: line)
     }
 }

@@ -40,6 +40,14 @@
         <target>Richiesto</target>
         <note>Class = "UITextField"; placeholder = "Required"; ObjectID = "gp7-l6-arn";</note>
       </trans-unit>
+      <trans-unit id="i2t-Xh-reL.placeholder" xml:space="preserve">
+        <source>example.com</source>
+        <note>Class = "UITextField"; placeholder = "example.com"; ObjectID = "i2t-Xh-reL";</note>
+      </trans-unit>
+      <trans-unit id="idC-C3-Fpx.text" xml:space="preserve">
+        <source>Server</source>
+        <note>Class = "UILabel"; text = "Server"; ObjectID = "idC-C3-Fpx";</note>
+      </trans-unit>
       <trans-unit id="muA-mV-bS6.footerTitle" xml:space="preserve">
         <source>You can connect the following accounts to the ONLYOFFICE™ Documents.</source>
         <target>È possibile collegare i seguenti account ad ONLYOFFICE™ Documents.</target>
@@ -54,6 +62,10 @@
         <source>Server</source>
         <target>Server</target>
         <note>Class = "UILabel"; text = "Server"; ObjectID = "q9H-LF-Uc2";</note>
+      </trans-unit>
+      <trans-unit id="sK2-QR-ADm.text" xml:space="preserve">
+        <source>Next</source>
+        <note>Class = "UILabel"; text = "Next"; ObjectID = "sK2-QR-ADm";</note>
       </trans-unit>
     </body>
   </file>
@@ -435,7 +447,7 @@ a due fattori</target>
       </trans-unit>
       <trans-unit id="Mbh-dU-7po.text" xml:space="preserve">
         <source>Please enter the email you used while registering on the portal. The password recovery instructions will be send to that email address.</source>
-        <target>Per favore, inserisci l'indirizzo email utilizzato per la registrazione nel portale per inviare le istruzioni per il recupero della password</target>
+        <target>Ti preghiamo di inserire l'email utilizzata durante la registrazione al portale. Le istruzioni per il recupero della password verranno inviate a quell'indirizzo email.</target>
         <note>Class = "UILabel"; text = "Please enter the email you used while registering on the portal. The password recovery instructions will be send to that email address."; ObjectID = "Mbh-dU-7po";</note>
       </trans-unit>
       <trans-unit id="NBg-dA-b3o.title" xml:space="preserve">
@@ -1214,16 +1226,13 @@ Nota: se dimentichi il codice di accesso, dovrai disinstallare e reinstallare l'
         <target>Nuovo foglio di calcolo</target>
         <note/>
       </trans-unit>
-      <trans-unit id="ONLYOFFICE Edit Form document (.docxf)" xml:space="preserve">
-        <source>ONLYOFFICE Edit Form document (.docxf)</source>
-        <note/>
-      </trans-unit>
-      <trans-unit id="ONLYOFFICE Fill Form document (.oform)" xml:space="preserve">
-        <source>ONLYOFFICE Fill Form document (.oform)</source>
+      <trans-unit id="ONLYOFFICE fillable form (.oform)" xml:space="preserve">
+        <source>ONLYOFFICE fillable form (.oform)</source>
         <note/>
       </trans-unit>
       <trans-unit id="ONLYOFFICE form template (.docxf)" xml:space="preserve">
         <source>ONLYOFFICE form template (.docxf)</source>
+        <target>Modello di modulo ONLYOFFICE (.docxf)</target>
         <note/>
       </trans-unit>
     </body>
@@ -1278,20 +1287,14 @@ Nota: se dimentichi il codice di accesso, dovrai disinstallare e reinstallare l'
         <target>Nuovo foglio di calcolo</target>
         <note/>
       </trans-unit>
-      <trans-unit id="ONLYOFFICE Edit Form document (.docxf)" xml:space="preserve">
-        <source>ONLYOFFICE Edit Form document (.docxf)</source>
-        <note/>
-      </trans-unit>
-      <trans-unit id="ONLYOFFICE Fill Form document (.oform)" xml:space="preserve">
-        <source>ONLYOFFICE Fill Form document (.oform)</source>
-        <note/>
-      </trans-unit>
       <trans-unit id="ONLYOFFICE fillable form (.oform)" xml:space="preserve">
         <source>ONLYOFFICE fillable form (.oform)</source>
+        <target>Modulo compilabile ONLYOFFICE (.oform)</target>
         <note/>
       </trans-unit>
       <trans-unit id="ONLYOFFICE form template (.docxf)" xml:space="preserve">
         <source>ONLYOFFICE form template (.docxf)</source>
+        <target>Modello di modulo ONLYOFFICE (.docxf)</target>
         <note/>
       </trans-unit>
     </body>
@@ -1313,7 +1316,7 @@ Nota: se dimentichi il codice di accesso, dovrai disinstallare e reinstallare l'
       </trans-unit>
       <trans-unit id="%lu File selected" xml:space="preserve">
         <source>%lu File selected</source>
-        <target>%lu file selezionati</target>
+        <target>%lu file selezionato</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="%lu Folder and %lu File selected" xml:space="preserve">
@@ -1632,8 +1635,8 @@ altri che utilizzano il protocollo WebDAV.</target>
         <target>Copiatura</target>
         <note>Caption of the processing</note>
       </trans-unit>
-      <trans-unit id="Could not change file attrubutes" xml:space="preserve">
-        <source>Could not change file attrubutes</source>
+      <trans-unit id="Could not change file attributes" xml:space="preserve">
+        <source>Could not change file attributes</source>
         <note>Description of file operation error</note>
       </trans-unit>
       <trans-unit id="Could not change the directory" xml:space="preserve">
@@ -1934,7 +1937,7 @@ altri che utilizzano il protocollo WebDAV.</target>
       </trans-unit>
       <trans-unit id="Email is incorrect." xml:space="preserve">
         <source>Email is incorrect.</source>
-        <target>Indirizzo email non corretto</target>
+        <target>Indirizzo email non corretto.</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Email is not valid" xml:space="preserve">
@@ -3176,6 +3179,7 @@ to the clipboard</source>
       </trans-unit>
       <trans-unit id="Use external keyboards in ONLYOFFICE Documents with improved compatibility." xml:space="preserve">
         <source>Use external keyboards in ONLYOFFICE Documents with improved compatibility.</source>
+        <target>Usa tastiere esterne in ONLYOFFICE Documents con compatibilità migliorata.</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="User authentication failed" xml:space="preserve">

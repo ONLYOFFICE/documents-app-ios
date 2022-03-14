@@ -6,11 +6,10 @@
 //  Copyright © 2021 Ascensio System SIA. All rights reserved.
 //
 
-import XCTest
 @testable import Documents
+import XCTest
 
 class ASCSharingSettingsAccessViewControllerTests: XCTestCase {
-    
     var sut: ASCSharingSettingsAccessViewController!
     var accessNoteProvider: ASCSharingSettingsAccessNotesProviderProtocol!
 
@@ -30,15 +29,13 @@ class ASCSharingSettingsAccessViewControllerTests: XCTestCase {
                                                           headerText: "")
         sut.viewModel = viewModel
         XCTAssertEqual(sut.tableView.dataSource?.tableView?(sut.tableView, titleForFooterInSection: 0), "Foo")
-        
+
         sut.viewModel?.currentlyAccess = .deny
         XCTAssertEqual(sut.tableView.dataSource?.tableView?(sut.tableView, titleForFooterInSection: 0), "Bar")
-        
+
         sut.viewModel?.currentlyAccess = .comment
         XCTAssertEqual(sut.tableView.dataSource?.tableView?(sut.tableView, titleForFooterInSection: 0), nil)
-        
     }
-
 }
 
 extension ASCSharingSettingsAccessViewControllerTests {

@@ -175,10 +175,10 @@ class ASCConstants {
         }
 
         enum Microsoft {
-            static let clientId: String     = ASCConstants.internalConstants["MicrosoftClientId"] as? String ?? ""
-            static let redirectUri: String  = ASCConstants.internalConstants["MicrosoftRedirectUrl"] as? String ?? ""
+            static let clientId: String = ASCConstants.internalConstants["MicrosoftClientId"] as? String ?? ""
+            static let redirectUri: String = ASCConstants.internalConstants["MicrosoftRedirectUrl"] as? String ?? ""
         }
-        
+
         enum Facebook {
             static let appId: String = ASCConstants.internalConstants["FacebookAppID"] as? String ?? ""
         }

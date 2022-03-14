@@ -327,7 +327,7 @@ class ASCSignInViewController: ASCBaseViewController {
 
     @IBAction func onMicrosoftLogin(_ sender: UIButton) {
         view.endEditing(true)
-        
+
         let oauth2VC = ASCConnectStorageOAuth2ViewController.instantiate(from: Storyboard.connectStorage)
         let microsoftController = ASCMicrosoftSignInController()
         microsoftController.clientId = ASCConstants.Clouds.Microsoft.clientId
@@ -342,14 +342,14 @@ class ASCSignInViewController: ASCBaseViewController {
                 authRequest.codeOauth = codeOauth
                 let hud = MBProgressHUD.showTopMost()
                 hud?.label.text = NSLocalizedString("Logging in", comment: "Caption of the process")
-                
+
                 ASCSignInController.shared.login(by: authRequest, in: self.navigationController) { success in
                     if success {
                         hud?.setSuccessState()
                         hud?.hide(animated: true, afterDelay: 2)
-                        
+
                         NotificationCenter.default.post(name: ASCConstants.Notifications.loginOnlyofficeCompleted, object: nil)
-                        
+
                         self.dismiss(animated: true, completion: nil)
                     } else {
                         hud?.hide(animated: true)
@@ -362,10 +362,10 @@ class ASCSignInViewController: ASCBaseViewController {
         }
         oauth2VC.delegate = microsoftController
         oauth2VC.title = "Microsoft"
-        
+
         navigationController?.pushViewController(oauth2VC, animated: true)
     }
-    
+
     @IBAction func onSSOLogin(_ sender: UIButton) {
         view.endEditing(true)
 

@@ -11,6 +11,8 @@ import UIKit
 import WebKit
 
 class ASCConnectStorageNextCloudServerController: UITableViewController {
+    // MARK: - Properties
+
     var complation: (([String: String]) -> Void)?
 
     @IBOutlet var serverField: UITextField!
@@ -26,13 +28,22 @@ class ASCConnectStorageNextCloudServerController: UITableViewController {
     private var backPattern2 = "files"
     private var urlString: String = ""
 
+    // MARK: - Lifecycle Methods
+
     override func viewDidLoad() {
         super.viewDidLoad()
+
+        title = "Nextcloud"
 
         doneCell?.isUserInteractionEnabled = false
         doneLabel?.isEnabled = false
 
         serverField.addTarget(self, action: #selector(textFieldDidChange(_:)), for: .editingChanged)
+    }
+
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        serverField?.becomeFirstResponder()
     }
 
     @objc func textFieldDidChange(_ textField: UITextField) {

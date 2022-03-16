@@ -11,6 +11,7 @@ import Foundation
 import SwiftyJSON
 
 class OnlyofficeTokenAdapter: RequestAdapter {
+
     private let accessToken: String
 
     init(accessToken: String) {
@@ -118,6 +119,7 @@ class OnlyofficeApiClient: NetworkingClient {
         OnlyofficeApiClient.shared.token = nil
         OnlyofficeApiClient.shared.serverVersion = nil
         OnlyofficeApiClient.shared.capabilities = nil
+        OnlyofficeApiClient.shared.configure()
     }
 
     func download(

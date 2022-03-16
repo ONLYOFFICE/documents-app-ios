@@ -127,6 +127,7 @@ internal enum Asset {
     internal static let listMenuRestore = ImageAsset(name: "list-menu-restore")
     internal static let listMenuTrash = ImageAsset(name: "list-menu-trash")
     internal static let listMenuUpload = ImageAsset(name: "list-menu-upload")
+    internal static let signinApple = ImageAsset(name: "signin-apple")
     internal static let signinFacebook = ImageAsset(name: "signin-facebook")
     internal static let signinGoogle = ImageAsset(name: "signin-google")
     internal static let signinLinkedin = ImageAsset(name: "signin-linkedin")

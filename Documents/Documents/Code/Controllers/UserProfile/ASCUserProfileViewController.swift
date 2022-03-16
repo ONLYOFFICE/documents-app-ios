@@ -121,6 +121,7 @@ class ASCUserProfileViewController: UITableViewController {
         // Cleanup ONLYOFFICE provider
         ASCFileManager.onlyofficeProvider?.reset()
         ASCFileManager.onlyofficeProvider = nil
+        OnlyofficeApiClient.reset()
         ASCFileManager.storeProviders()
 
         var userInfo: [String: Any]?

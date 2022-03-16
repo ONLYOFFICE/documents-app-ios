@@ -6,6 +6,7 @@
 //  Copyright © 2017 Ascensio System SIA. All rights reserved.
 //
 
+import AuthenticationServices
 import Alamofire
 import IQKeyboardManagerSwift
 import MBProgressHUD
@@ -25,7 +26,9 @@ class ASCSignInViewController: ASCBaseViewController {
 
     private let facebookSignInController = ASCFacebookSignInController()
     private let googleSignInController = ASCGoogleSignInController()
-
+    @available(iOS 13.0, *)
+    private lazy var appleIdSignInController = ASCAppleIdSignInController()
+  
     // MARK: - Outlets
 
     @IBOutlet var emailField: SkyFloatingLabelTextField!
@@ -71,6 +74,8 @@ class ASCSignInViewController: ASCBaseViewController {
             button?.titleLabel?.adjustsFontSizeToFitWidth = true
             button?.titleLabel?.lineBreakMode = .byClipping
         }
+        
+        appleIdButton?.imageView?.layer.cornerRadius = 4
 
         let ssoUrl = capabilities?.ssoUrl ?? ""
         var ssoLabel = capabilities?.ssoLabel ?? ""
@@ -92,10 +97,17 @@ class ASCSignInViewController: ASCBaseViewController {
         if let capabilities = capabilities {
             let allowFacebook = capabilities.providers.contains(.facebook)
             let allowGoogle = capabilities.providers.contains(.google)
-
+            let allowAppleId = capabilities.providers.contains(.appleid)
+            
             loginByLabel?.isHidden = !(allowFacebook || allowGoogle)
             facebookButton?.isHidden = !allowFacebook
             googleButton?.isHidden = !allowGoogle
+            
+            if #available(iOS 13.0, *) {
+                appleIdButton?.isHidden = !allowAppleId
+            } else {
+                appleIdButton?.isHidden = true
+            }
         }
     }
 
@@ -321,6 +333,45 @@ class ASCSignInViewController: ASCBaseViewController {
                         message: NSLocalizedString("Unable to get information about the user.", comment: "")
                     )
                 }
+            }
+        }
+    }
+    
+    @available (iOS 13, *)
+    @IBAction func onAppleIdLogin(_ sender: UIButton) {
+        appleIdSignInController.signIn(controller: self) { result in
+            switch result {
+            case .success(let appleIdAuthorizationCode):
+                let authRequest = OnlyofficeAuthRequest()
+                authRequest.provider = .appleid
+                authRequest.portal = self.portal
+                authRequest.codeOauth = appleIdAuthorizationCode
+                
+                let hud = MBProgressHUD.showTopMost()
+                hud?.label.text = NSLocalizedString("Logging in", comment: "Caption of the process")
+              
+                ASCSignInController.shared.login(by: authRequest, in: self.navigationController) { success in
+                    if success {
+                        hud?.setSuccessState()
+                        hud?.hide(animated: true, afterDelay: 2)
+
+                        NotificationCenter.default.post(name: ASCConstants.Notifications.loginOnlyofficeCompleted, object: nil)
+                        
+                        self.dismiss(animated: true, completion: nil)
+                    } else {
+                        hud?.hide(animated: true)
+                        
+                        UIAlertController.showError(
+                            in: self,
+                            message: NSLocalizedString("User authentication failed", comment: "")
+                        )
+                    }
+                }
+            case .failure(let error):
+                UIAlertController.showError(
+                    in: self,
+                    message: error.localizedDescription
+                )
             }
         }
     }

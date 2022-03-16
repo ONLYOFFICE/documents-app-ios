@@ -18,6 +18,7 @@ enum ASCLoginType: String, CaseIterable {
     case openid
     case box
     case sso
+    case appleid
     case microsoft
 
     init() {
@@ -34,6 +35,7 @@ enum ASCLoginType: String, CaseIterable {
         case "openid": self = .openid
         case "box": self = .box
         case "sso": self = .sso
+        case "appleid": self = .appleid
         case "microsoft": self = .microsoft
         default: self = .undefined
         }

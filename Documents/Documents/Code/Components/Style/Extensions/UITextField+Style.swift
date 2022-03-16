@@ -9,29 +9,26 @@
 import UIKit
 
 extension UITextField {
-    
     var textStyle: ASCTextStyle {
-       
         get {
             ASCTextStyle.undefined
         }
-       
+
         set(newValue) {
-            self.font = newValue.font
-            self.textColor = newValue.color
+            font = newValue.font
+            textColor = newValue.color
         }
     }
-    
+
     var placeholderTextStyle: ASCTextStyle {
-       
         get {
             ASCTextStyle.undefined
         }
-       
+
         set(newValue) {
-            self.attributedPlaceholder = NSAttributedString(string: placeholder ?? "", attributes: [
-                .font : newValue.font,
-                .foregroundColor : newValue.color
+            attributedPlaceholder = NSAttributedString(string: placeholder ?? "", attributes: [
+                .font: newValue.font,
+                .foregroundColor: newValue.color,
             ])
         }
     }

@@ -16,17 +16,17 @@ class OnlyofficeAuth: Mappable {
     var phoneNoise: String?
     var tfa: Bool?
     var tfaKey: String?
-    
+
     required init?(map: Map) {
         //
     }
 
     func mapping(map: Map) {
-        token       <- map["token"]
-        expires     <- map["expires"]
-        sms         <- map["sms"]
-        phoneNoise  <- map["phoneNoise"]
-        tfa         <- map["tfa"]
-        tfaKey      <- map["tfaKey"]
+        token <- map["token"]
+        expires <- map["expires"]
+        sms <- map["sms"]
+        phoneNoise <- map["phoneNoise"]
+        tfa <- map["tfa"]
+        tfaKey <- map["tfaKey"]
     }
 }

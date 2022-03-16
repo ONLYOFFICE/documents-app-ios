@@ -42,6 +42,7 @@
 		8AFBA30D23E8727D0052F6E9 /* ASCFloatingLabelTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AFBA30C23E8727D0052F6E9 /* ASCFloatingLabelTextField.swift */; };
 		E0609BF41BC138CF6774A5B3 /* ASCUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = E06093EE3529CD8AE31D5519 /* ASCUser.swift */; };
 		E0609CA78B7ADE534424D45E /* ASCFolder.swift in Sources */ = {isa = PBXBuildFile; fileRef = E060976FAE7FB8D6B47A6B6A /* ASCFolder.swift */; };
+		FC029A0127B6436A00E5341B /* ASCWebKitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC029A0027B6436A00E5341B /* ASCWebKitViewController.swift */; };
 		FC050F7E1ECB1F6800FD452C /* ConnectStorage.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FC050F801ECB1F6800FD452C /* ConnectStorage.storyboard */; };
 		FC059D981E82584400BC2F5E /* ASCDateTransform.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC059D971E82584400BC2F5E /* ASCDateTransform.swift */; };
 		FC059D9A1E8259F100BC2F5E /* Dictionary+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC059D991E8259F100BC2F5E /* Dictionary+Extension.swift */; };
@@ -511,6 +512,7 @@
 		BEA9E68A9DE5AF9099F7F723 /* Pods-Documents-develop.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Documents-develop.debug.xcconfig"; path = "Target Support Files/Pods-Documents-develop/Pods-Documents-develop.debug.xcconfig"; sourceTree = "<group>"; };
 		E06093EE3529CD8AE31D5519 /* ASCUser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASCUser.swift; sourceTree = "<group>"; };
 		E060976FAE7FB8D6B47A6B6A /* ASCFolder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASCFolder.swift; sourceTree = "<group>"; };
+		FC029A0027B6436A00E5341B /* ASCWebKitViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASCWebKitViewController.swift; sourceTree = "<group>"; };
 		FC050F7F1ECB1F6800FD452C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/ConnectStorage.storyboard; sourceTree = "<group>"; };
 		FC050F821ECB1F6A00FD452C /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/ConnectStorage.strings; sourceTree = "<group>"; };
 		FC059D971E82584400BC2F5E /* ASCDateTransform.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASCDateTransform.swift; sourceTree = "<group>"; };
@@ -1008,6 +1010,14 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		FC0299FF27B6436A00E5341B /* WebKit */ = {
+			isa = PBXGroup;
+			children = (
+				FC029A0027B6436A00E5341B /* ASCWebKitViewController.swift */,
+			);
+			path = WebKit;
+			sourceTree = "<group>";
+		};
 		FC059D961E82581D00BC2F5E /* Transforms */ = {
 			isa = PBXGroup;
 			children = (
@@ -1237,6 +1247,7 @@
 				FC7D98D92729942600410795 /* SharingSettings */,
 				FC60A6421E9F5F7E000598C2 /* Transfer */,
 				FCC396491ECDD9660016BB10 /* UserProfile */,
+				FC0299FF27B6436A00E5341B /* WebKit */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -2883,6 +2894,7 @@
 				FC7D99222729942700410795 /* ASCSharingAddRightHoldersViewController.swift in Sources */,
 				FC7D996C2729952400410795 /* ASCSharingSettingsAccessNotesProviderProtocol.swift in Sources */,
 				FC239983267A2E0F00B82EAC /* ASCOneDriveProvider.swift in Sources */,
+				FC029A0127B6436A00E5341B /* ASCWebKitViewController.swift in Sources */,
 				FC08F8751ECB399900988DDE /* ASCConnectStorageOAuth2ViewController.swift in Sources */,
 				FC7D99392729942700410795 /* ASCShareSettingsAPIWorker.swift in Sources */,
 				FC2B0CCF2642C6F400969DB9 /* NextcloudServerError.swift in Sources */,

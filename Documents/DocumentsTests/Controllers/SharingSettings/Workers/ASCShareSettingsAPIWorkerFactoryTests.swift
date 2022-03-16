@@ -6,12 +6,11 @@
 //  Copyright © 2021 Ascensio System SIA. All rights reserved.
 //
 
+@testable import Documents
 import Foundation
 import XCTest
-@testable import Documents
 
 class ASCShareSettingsAPIWorkerFactoryTests: XCTestCase {
-    
     var sut: ASCShareSettingsAPIWorkerFactory!
 
     override func setUpWithError() throws {
@@ -28,7 +27,7 @@ class ASCShareSettingsAPIWorkerFactoryTests: XCTestCase {
         let worker = sut.get(by: .personal)
         XCTAssertTrue(worker is ASCPersonalShareSettingsAPIWorker)
     }
-    
+
     func testWhenEmptyUnknownPortalTypeReturnsBaseShareSettingsWorker() {
         let worker = sut.get(by: .unknown)
         XCTAssertTrue(worker is ASCShareSettingsAPIWorker)

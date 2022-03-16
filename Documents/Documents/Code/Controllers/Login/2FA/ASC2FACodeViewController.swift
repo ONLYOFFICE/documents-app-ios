@@ -6,14 +6,14 @@
 //  Copyright © 2019 Ascensio System SIA. All rights reserved.
 //
 
-import UIKit
-import MBProgressHUD
 import IQKeyboardManagerSwift
+import MBProgressHUD
+import UIKit
 
 class ASC2FACodeViewController: ASCBaseViewController {
     static let identifier = String(describing: ASC2FACodeViewController.self)
-    
-    class override var storyboard: Storyboard { return Storyboard.login }
+
+    override class var storyboard: Storyboard { return Storyboard.login }
 
     // MARK: - Properties
 
@@ -24,9 +24,9 @@ class ASC2FACodeViewController: ASCBaseViewController {
     private let codeLength: Int = 6
 
     // MARK: - Outlets
-    
-    @IBOutlet weak var codeField: UITextField!
-    @IBOutlet weak var helpLabel: UILabel!
+
+    @IBOutlet var codeField: UITextField!
+    @IBOutlet var helpLabel: UILabel!
 
     // MARK: - Lifecycle Methods
 
@@ -72,14 +72,14 @@ class ASC2FACodeViewController: ASCBaseViewController {
         IQKeyboardManager.shared.enableAutoToolbar = false
     }
 
-    override var supportedInterfaceOrientations : UIInterfaceOrientationMask {
+    override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
         return UIDevice.phone ? .portrait : [.portrait, .landscape]
     }
 
     override var preferredInterfaceOrientationForPresentation: UIInterfaceOrientation {
         return UIDevice.phone ? .portrait : super.preferredInterfaceOrientationForPresentation
     }
-    
+
     @objc func tapFunction(sender: UITapGestureRecognizer) {
         helpLabel?.alpha = 0.5
 
@@ -126,11 +126,10 @@ class ASC2FACodeViewController: ASCBaseViewController {
 // MARK: - UITextField Delegate
 
 extension ASC2FACodeViewController: UITextFieldDelegate {
-
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         let currentCharacterCount = codeField.text?.count ?? 0
 
-        if (range.length + range.location > currentCharacterCount){
+        if range.length + range.location > currentCharacterCount {
             return false
         }
 

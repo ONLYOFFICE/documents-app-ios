@@ -9,8 +9,8 @@
 import UIKit
 
 // MARK: - Methods
-public extension NSAttributedString {
 
+public extension NSAttributedString {
     /// Applies given attributes to the new instance of NSAttributedString initialized with self object
     ///
     /// - Parameter attributes: Dictionary of attributes
@@ -40,10 +40,11 @@ public extension NSAttributedString {
     /// - Returns: An NSAttributedString with attributes applied to substrings matching the pattern
     func applying(attributes: [NSAttributedString.Key: Any],
                   toRangesMatching pattern: String,
-                  options: NSRegularExpression.Options = []) -> NSAttributedString {
+                  options: NSRegularExpression.Options = []) -> NSAttributedString
+    {
         guard let pattern = try? NSRegularExpression(pattern: pattern, options: options) else { return self }
 
-        let matches = pattern.matches(in: string, options: [], range: NSRange(0..<length))
+        let matches = pattern.matches(in: string, options: [], range: NSRange(0 ..< length))
         let result = NSMutableAttributedString(attributedString: self)
 
         for match in matches {
@@ -67,6 +68,7 @@ public extension NSAttributedString {
 }
 
 // MARK: - Operators
+
 public extension NSAttributedString {
     /// Add a NSAttributedString to another NSAttributedString.
     ///

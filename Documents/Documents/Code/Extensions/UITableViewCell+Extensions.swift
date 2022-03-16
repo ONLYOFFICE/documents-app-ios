@@ -9,12 +9,12 @@
 import UIKit
 
 // MARK: - Methods
+
 extension UITableViewCell {
-
     static func createForTableView(_ tableView: UITableView) -> UITableViewCell? {
-        let className = String(describing:self)
+        let className = String(describing: self)
 
-        var cell: UITableViewCell? = nil
+        var cell: UITableViewCell?
 
         cell = tableView.dequeueReusableCell(withIdentifier: className)
 
@@ -26,10 +26,10 @@ extension UITableViewCell {
 
         return cell
     }
-        
+
     @objc func debounce(delay: Double) {
-        self.isUserInteractionEnabled = false
-        
+        isUserInteractionEnabled = false
+
         let deadline = DispatchTime.now() + delay
         DispatchQueue.main.asyncAfter(deadline: deadline) {
             self.isUserInteractionEnabled = true

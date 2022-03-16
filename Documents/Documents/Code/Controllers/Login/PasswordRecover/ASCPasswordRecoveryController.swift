@@ -6,19 +6,17 @@
 //  Copyright © 2021 Ascensio System SIA. All rights reserved.
 //
 
-import Foundation
 import Alamofire
+import Foundation
 
 class ASCPasswordRecoveryController {
-    
     public static let shared = ASCPasswordRecoveryController()
-    
-    // MARK: - Public
-    
-    func forgotPassword(portalUrl: String, options: Parameters, completion: @escaping ((Result<ASCResponsePassword, Error>) -> Void)) {
 
+    // MARK: - Public
+
+    func forgotPassword(portalUrl: String, options: Parameters, completion: @escaping ((Result<ASCResponsePassword, Error>) -> Void)) {
         let networkClient = OnlyofficeApiClient()
-        
+
         networkClient.configure(url: portalUrl)
         networkClient.request(OnlyofficeAPI.Endpoints.Settings.forgotPassword, options) { response, error in
             if let result = response?.result {
@@ -30,4 +28,3 @@ class ASCPasswordRecoveryController {
         }
     }
 }
-

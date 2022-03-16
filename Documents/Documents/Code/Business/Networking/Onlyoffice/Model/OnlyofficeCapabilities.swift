@@ -6,8 +6,8 @@
 //  Copyright © 2019 Ascensio System SIA. All rights reserved.
 //
 
-import UIKit
 import ObjectMapper
+import UIKit
 
 class OnlyofficeCapabilities: Mappable {
     var ldapEnabled: Bool = false
@@ -24,9 +24,9 @@ class OnlyofficeCapabilities: Mappable {
     }
 
     func mapping(map: Map) {
-        ldapEnabled     <- map["ldapEnabled"]
-        ssoLabel        <- map["ssoLabel"]
-        ssoUrl          <- map["ssoUrl"]
-        providers       <- map["providers"]
+        ldapEnabled <- map["ldapEnabled"]
+        ssoLabel <- map["ssoLabel"]
+        ssoUrl <- map["ssoUrl"]
+        providers <- map["providers"]
     }
 }

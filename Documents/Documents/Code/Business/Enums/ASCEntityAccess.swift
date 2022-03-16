@@ -9,13 +9,13 @@
 import Foundation
 
 enum ASCEntityAccess: Int {
-    case none               = 0
-    case readWrite          = 1
-    case read               = 2
-    case restrict           = 3
-    case varies             = 4
-    case review             = 5
-    case comment            = 6
-    case fillforms          = 7
-    case customFilter       = 8
+    case none = 0
+    case readWrite = 1
+    case read = 2
+    case restrict = 3
+    case varies = 4
+    case review = 5
+    case comment = 6
+    case fillforms = 7
+    case customFilter = 8
 }

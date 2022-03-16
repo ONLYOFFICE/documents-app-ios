@@ -8,7 +8,6 @@
 
 import UIKit
 
-
 protocol ASCSharingOptionsSectionProtocol {
     func title() -> String
     func heightForRow() -> CGFloat

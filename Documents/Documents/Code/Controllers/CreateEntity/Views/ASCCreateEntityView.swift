@@ -6,20 +6,19 @@
 //  Copyright © 2019 Ascensio System SIA. All rights reserved.
 //
 
-import UIKit
 import SwiftMessages
+import UIKit
 
 class ASCCreateEntityView: MessageView {
-
     // MARK: - Properties
 
-    @IBOutlet weak var documentButton: UIButton!
-    @IBOutlet weak var spreadsheetButton: UIButton!
-    @IBOutlet weak var presentationButton: UIButton!
-    @IBOutlet weak var otherStackView: UIStackView!
-    @IBOutlet weak var cloudButtonContainerView: UIView!
-    @IBOutlet weak var topConstraints: NSLayoutConstraint!
-    
+    @IBOutlet var documentButton: UIButton!
+    @IBOutlet var spreadsheetButton: UIButton!
+    @IBOutlet var presentationButton: UIButton!
+    @IBOutlet var otherStackView: UIStackView!
+    @IBOutlet var cloudButtonContainerView: UIView!
+    @IBOutlet var topConstraints: NSLayoutConstraint!
+
     var onCreate: ((String) -> Void)?
     var allowConnectClouds: Bool = true {
         didSet {
@@ -40,7 +39,7 @@ class ASCCreateEntityView: MessageView {
             [documentButton, spreadsheetButton, presentationButton].forEach { button in
                 button?.layer.cornerRadius = 10
             }
-            
+
             if UIDevice.phone || ASCViewControllerManager.shared.currentSizeClass == .compact {
                 if #available(iOS 13.0, *) {
                     backgroundView.backgroundColor = .tertiarySystemBackground
@@ -54,21 +53,24 @@ class ASCCreateEntityView: MessageView {
                 title: NSLocalizedString("Document", comment: ""),
                 titlePosition: .bottom,
                 additionalSpacing: 20,
-                state: .normal)
+                state: .normal
+            )
 
             spreadsheetButton.set(
                 image: Asset.Images.createSpreadsheet.image,
                 title: NSLocalizedString("Spreadsheet", comment: ""),
                 titlePosition: .bottom,
                 additionalSpacing: 20,
-                state: .normal)
+                state: .normal
+            )
 
             presentationButton.set(
                 image: Asset.Images.createPresentation.image,
                 title: NSLocalizedString("Presentation", comment: ""),
                 titlePosition: .bottom,
                 additionalSpacing: 20,
-                state: .normal)
+                state: .normal
+            )
         }
     }
 
@@ -96,5 +98,4 @@ class ASCCreateEntityView: MessageView {
             onCreate?(restorationIdentifier)
         }
     }
-
 }

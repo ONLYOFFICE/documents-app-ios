@@ -9,13 +9,11 @@
 import Foundation
 
 class OnedriveAPI {
-
-    struct Path {
-        static public let me = "me"
+    enum Path {
+        public static let me = "me"
     }
 
-    struct Endpoints {
+    enum Endpoints {
         static let me: Endpoint<ASCUser> = Endpoint<ASCUser>.make(Path.me)
     }
-
 }

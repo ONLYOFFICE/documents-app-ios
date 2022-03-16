@@ -6,37 +6,32 @@
 //  Copyright © 2018 Ascensio System SIA. All rights reserved.
 //
 
-import UIKit
-import FilesProvider
-import FileKit
 import Alamofire
 import DocumentEditor
+import FileKit
+import FilesProvider
+import UIKit
 
 class ASCNextCloudProvider: ASCWebDAVProvider {
-
     // MARK: - Properties
 
     override var type: ASCFileProviderType {
-        get {
-            return .nextcloud
-        }
+        return .nextcloud
     }
 
     override var rootFolder: ASCFolder {
-        get {
-            return {
-                $0.title = NSLocalizedString("Nextcloud", comment: "")
-                $0.rootFolderType = .nextcloudAll
-                $0.id = "/"
-                return $0
-            }(ASCFolder())
-        }
+        return {
+            $0.title = NSLocalizedString("Nextcloud", comment: "")
+            $0.rootFolderType = .nextcloudAll
+            $0.id = "/"
+            return $0
+        }(ASCFolder())
     }
 
     private var apiClient: NextcloudApiClient?
     private let webdavEndpoint = "/remote.php/dav/files"
     private let endpointPath = "/remote.php/dav/files/%@"
-    
+
     override var provider: WebDAVFileProvider? {
         didSet {
             guard let provider = provider else {
@@ -44,12 +39,12 @@ class ASCNextCloudProvider: ASCWebDAVProvider {
                 entityUniqNameFinder = nil
                 return
             }
-            
+
             entityExistenceChecker = ASCEntityExistenceCheckerByAttributes(provider: provider)
             entityUniqNameFinder = ASCEntityUniqNameFinder(entityExistChecker: entityExistenceChecker!)
         }
     }
-    
+
     private var entityExistenceChecker: ASCEntityExistenceChecker?
     private var entityUniqNameFinder: ASCUniqNameFinder?
 
@@ -64,7 +59,8 @@ class ASCNextCloudProvider: ASCWebDAVProvider {
         var providerUrl = baseURL
 
         if providerUrl.scheme == nil,
-            let fixedUrl = URL(string: "https://\(providerUrl.absoluteString)") {
+           let fixedUrl = URL(string: "https://\(providerUrl.absoluteString)")
+        {
             providerUrl = fixedUrl
         }
 
@@ -92,16 +88,16 @@ class ASCNextCloudProvider: ASCWebDAVProvider {
 
     override func copy() -> ASCFileProviderProtocol {
         let copy = ASCNextCloudProvider()
-        
+
         copy.items = items
         copy.page = page
         copy.total = total
         copy.delegate = delegate
         copy.deserialize(serialize() ?? "")
-        
+
         return copy
     }
-    
+
     override func cancel() {
         super.cancel()
         apiClient?.cancelAll()
@@ -129,7 +125,7 @@ class ASCNextCloudProvider: ASCWebDAVProvider {
 
                 provider = WebDAVFileProvider(baseURL: providerUrl, credential: credential)
                 provider?.credentialType = .basic
-                
+
                 apiClient = NextcloudApiClient(
                     url: ((providerUrl.scheme != nil) ? "\(providerUrl.scheme!)://" : "") + "\(providerUrl.host ?? "")",
                     user: userId,
@@ -138,8 +134,8 @@ class ASCNextCloudProvider: ASCWebDAVProvider {
             }
         }
     }
-    
-    override func isReachable(with info: [String : Any], complation: @escaping ((Bool, ASCFileProviderProtocol?) -> Void)) {
+
+    override func isReachable(with info: [String: Any], complation: @escaping ((Bool, ASCFileProviderProtocol?) -> Void)) {
         guard
             let portal = info["url"] as? String,
             let login = info["login"] as? String,
@@ -154,9 +150,9 @@ class ASCNextCloudProvider: ASCWebDAVProvider {
         let nextCloudProvider = ASCNextCloudProvider(baseURL: portalUrl, credential: credential)
 
         nextCloudProvider.isReachable { success, error in
-            DispatchQueue.main.async(execute: {
+            DispatchQueue.main.async {
                 complation(success, success ? nextCloudProvider : nil) // Need to capture nextCloudProvider variable
-            })
+            }
         }
     }
 
@@ -167,7 +163,7 @@ class ASCNextCloudProvider: ASCWebDAVProvider {
         guard let apiClient = apiClient else { return }
 
         let params = [
-            "dir": "/"
+            "dir": "/",
         ]
 
         apiClient.request(NextcloudAPI.Endpoints.currentAccount, params) { [weak self] response, error in
@@ -175,7 +171,7 @@ class ASCNextCloudProvider: ASCWebDAVProvider {
                 completeon?(false, nil)
                 return
             }
-            
+
             guard let account = response?.result else {
                 completeon?(false, error)
                 if let error = error {
@@ -183,7 +179,7 @@ class ASCNextCloudProvider: ASCWebDAVProvider {
                 }
                 return
             }
-            
+
             strongSelf.user = ASCUser()
             strongSelf.user?.userId = account.owner
             strongSelf.user?.displayName = account.ownerDisplayName
@@ -209,37 +205,37 @@ class ASCNextCloudProvider: ASCWebDAVProvider {
     override func allowEdit(entity: AnyObject?) -> Bool {
         return true
     }
-    
+
     override func createDocument(_ name: String, fileExtension: String, in folder: ASCFolder, completeon: ASCProviderCompletionHandler?) {
         findUniqName(suggestedName: name.appendingPathExtension(fileExtension) ?? name, inFolder: folder) { uniqName in
             super.createDocument(uniqName.removingSuffix(".\(fileExtension)"), fileExtension: fileExtension, in: folder, completeon: completeon)
         }
     }
-    
+
     override func createImage(_ name: String, in folder: ASCFolder, data: Data, params: [String: Any]?, processing: @escaping NetworkProgressHandler) {
         findUniqName(suggestedName: name, inFolder: folder) { uniqName in
             super.createImage(uniqName, in: folder, data: data, params: params, processing: processing)
         }
     }
-    
+
     override func createFile(_ name: String, in folder: ASCFolder, data: Data, params: [String: Any]?, processing: @escaping NetworkProgressHandler) {
         findUniqName(suggestedName: name, inFolder: folder) { uniqName in
             super.createFile(uniqName, in: folder, data: data, params: params, processing: processing)
         }
     }
-    
+
     override func createFolder(_ name: String, in folder: ASCFolder, params: [String: Any]?, completeon: ASCProviderCompletionHandler?) {
         findUniqName(suggestedName: name, inFolder: folder) { uniqName in
             super.createFolder(uniqName, in: folder, params: params, completeon: completeon)
         }
     }
-    
+
     func findUniqName(suggestedName: String, inFolder folder: ASCFolder, completionHandler: @escaping (String) -> Void) {
         guard let entityUniqNameFinder = entityUniqNameFinder else {
             completionHandler(suggestedName)
             return
         }
-        
+
         entityUniqNameFinder.find(bySuggestedName: suggestedName, atPath: folder.id) { uniqName in
             completionHandler(uniqName)
         }

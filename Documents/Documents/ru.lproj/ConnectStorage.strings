@@ -16,6 +16,9 @@
 /* Class = "UITextField"; placeholder = "Required"; ObjectID = "gp7-l6-arn"; */
 "gp7-l6-arn.placeholder" = "Обязательно";
 
+/* Class = "UILabel"; text = "Server"; ObjectID = "idC-C3-Fpx"; */
+"idC-C3-Fpx.text" = "Сервер";
+
 /* Class = "UINavigationItem"; title = "Connect Storage"; ObjectID = "KNc-kE-PIF"; */
 "KNc-kE-PIF.title" = "Подключить хранилище";
 
@@ -27,4 +30,7 @@
 
 /* Class = "UILabel"; text = "Server"; ObjectID = "q9H-LF-Uc2"; */
 "q9H-LF-Uc2.text" = "Сервер";
+
+/* Class = "UILabel"; text = "Next"; ObjectID = "sK2-QR-ADm"; */
+"sK2-QR-ADm.text" = "Далее";
 

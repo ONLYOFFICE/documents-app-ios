@@ -9,10 +9,9 @@
 import Foundation
 
 public protocol PasscodeRepositoryType {
-    
-    var hasPasscode: Bool {get}
-    var passcode: [String]? {get}
-    
+    var hasPasscode: Bool { get }
+    var passcode: [String]? { get }
+
     func savePasscode(_ passcode: [String])
     func deletePasscode()
 }

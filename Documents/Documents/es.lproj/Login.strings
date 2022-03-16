@@ -14,13 +14,13 @@
 "18Q-Kh-0cC.text" = "Detalle";
 
 /* Class = "UIButton"; normalTitle = "Login by"; ObjectID = "51s-1D-raN"; */
-"51s-1D-raN.normalTitle" = "Inicio por";
+"51s-1D-raN.normalTitle" = "Iniciar sesión por";
 
 /* Class = "UILabel"; text = "Phone Number"; ObjectID = "76Y-EB-F07"; */
 "76Y-EB-F07.text" = "Número de teléfono";
 
 /* Class = "UIButton"; normalTitle = "Forgot?"; ObjectID = "78r-Ca-NKv"; */
-"78r-Ca-NKv.normalTitle" = "¿Olvidó su contraseña? ";
+"78r-Ca-NKv.normalTitle" = "¿Olvidó su contraseña?";
 
 /* Class = "UILabel"; text = "Account"; ObjectID = "AkN-p0-Mzy"; */
 "AkN-p0-Mzy.text" = "Cuenta";
@@ -32,7 +32,7 @@
 "AqJ-b9-XQV.normalTitle" = "Continuar";
 
 /* Class = "UILabel"; text = "Set up an application to generate the authentication codes"; ObjectID = "B8R-KD-Lml"; */
-"B8R-KD-Lml.text" = "Configurar una aplicación para generar códigos de autenticación";
+"B8R-KD-Lml.text" = "Configure una aplicación para generar códigos de autenticación";
 
 /* Class = "UILabel"; text = "Password recovery"; ObjectID = "bLE-8U-AOX"; */
 "bLE-8U-AOX.text" = "Recuperación de contraseña";
@@ -65,7 +65,7 @@
 "GFx-Ry-9GC.text" = "Conecte a su nube ONLYOFFICE para almacenar archivos en línea y colaborar en documentos en tiempo real";
 
 /* Class = "UILabel"; text = "Select an account to sign in"; ObjectID = "Gkv-tP-6EM"; */
-"Gkv-tP-6EM.text" = "Seleccione una cuenta para acceder ";
+"Gkv-tP-6EM.text" = "Seleccione una cuenta para iniciar sesión";
 
 /* Class = "UINavigationItem"; title = "Accounts"; ObjectID = "gzc-cW-NPT"; */
 "gzc-cW-NPT.title" = "Cuentas";
@@ -77,13 +77,13 @@
 "K5M-Of-QAk.text" = "Copie la clave y péguela en la aplicación Google Authenticator";
 
 /* Class = "UILabel"; text = "Launch Google Authenticator application"; ObjectID = "LwV-Os-V4m"; */
-"LwV-Os-V4m.text" = "Lanzce la aplicación Google Authenticator\n";
+"LwV-Os-V4m.text" = "Lance la aplicación Google Authenticator";
 
 /* Class = "UILabel"; text = "Please enter the email you used while registering on the portal. The password recovery instructions will be send to that email address."; ObjectID = "Mbh-dU-7po"; */
 "Mbh-dU-7po.text" = "Por favor, introduzca el correo electrónico que utilizó al registrarse en el portal. Las instrucciones para recuperar la contraseña se enviarán a esa dirección de correo electrónico.";
 
 /* Class = "UILabel"; text = "Enter a phone number that can be used to verify your identity"; ObjectID = "MNA-z2-ITx"; */
-"MNA-z2-ITx.text" = "Introduzca un número de teléfono que puede ser usado para verificar su personalidad";
+"MNA-z2-ITx.text" = "Introduzca un número de teléfono que se puede usar para verificar su personalidad";
 
 /* Class = "UIBarButtonItem"; title = "Back"; ObjectID = "MUG-TG-NlP"; */
 "MUG-TG-NlP.title" = "Atrás";
@@ -101,7 +101,7 @@
 "peP-Hz-Lai.normalTitle" = "Seleccionar otra cuenta";
 
 /* Class = "UIButton"; normalTitle = "Sign in"; ObjectID = "QAn-vu-xMR"; */
-"QAn-vu-xMR.normalTitle" = "Acceso";
+"QAn-vu-xMR.normalTitle" = "Iniciar sesión";
 
 /* Class = "UITextField"; placeholder = "Code"; ObjectID = "qEs-UQ-wWd"; */
 "qEs-UQ-wWd.placeholder" = "Código";
@@ -119,7 +119,7 @@
 "szM-hs-ncG.text" = "Acceso vía";
 
 /* Class = "UITextField"; placeholder = "Secret"; ObjectID = "tnK-je-flS"; */
-"tnK-je-flS.placeholder" = "Secreta";
+"tnK-je-flS.placeholder" = "Secreto";
 
 /* Class = "UILabel"; text = "Get more information"; ObjectID = "ttx-IC-XrN"; */
 "ttx-IC-XrN.text" = "Obtener más información";
@@ -131,13 +131,13 @@
 "vgV-fF-jOl.text" = "Copie el código generado por la aplicación Google Authenticator e insértelo en el campo de entrada";
 
 /* Class = "UILabel"; text = "Please set up an application to generate the codes for the portal access (e.g. Google Authenticator) to continue the work at the portal"; ObjectID = "vlQ-jV-iFo"; */
-"vlQ-jV-iFo.text" = "Por favor, cree una aplicación para generar los códigos de acceso al portal (por ejemplo, Google Authenticator) para continuar las tareas en el portal.";
+"vlQ-jV-iFo.text" = "Por favor, cree una aplicación para generar los códigos de acceso al portal (por ejemplo, Google Authenticator) para continuar las tareas en el portal";
 
 /* Class = "UITextField"; placeholder = "Your phone number"; ObjectID = "w2U-Ci-R7v"; */
 "w2U-Ci-R7v.placeholder" = "Su número de teléfono";
 
 /* Class = "UILabel"; text = "We have sent you an SMS with a code to the number %@"; ObjectID = "W8Q-CO-c0L"; */
-"W8Q-CO-c0L.text" = "Le hemos enviado un SMS con un código al número %@";
+"W8Q-CO-c0L.text" = "Le enviamos un SMS con un código al número %@";
 
 /* Class = "UILabel"; text = "Add a secret key"; ObjectID = "WuZ-wI-3aH"; */
 "WuZ-wI-3aH.text" = "Añadir una clave secreta";

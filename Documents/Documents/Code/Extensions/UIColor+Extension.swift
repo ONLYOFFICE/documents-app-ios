@@ -10,36 +10,36 @@ import UIKit
 
 extension UIColor {
     convenience init(hex: String) {
-        var red:   CGFloat = 0.0
+        var red: CGFloat = 0.0
         var green: CGFloat = 0.0
-        var blue:  CGFloat = 0.0
+        var blue: CGFloat = 0.0
         var alpha: CGFloat = 1.0
-        
+
         if hex.hasPrefix("#") {
-            let index   = hex.index(hex.startIndex, offsetBy: 1)
-            let hex     = String(hex[index...])
+            let index = hex.index(hex.startIndex, offsetBy: 1)
+            let hex = String(hex[index...])
             let scanner = Scanner(string: hex)
             var hexValue: CUnsignedLongLong = 0
             if scanner.scanHexInt64(&hexValue) {
-                switch (hex.count) {
+                switch hex.count {
                 case 3:
-                    red   = CGFloat((hexValue & 0xF00) >> 8)       / 15.0
-                    green = CGFloat((hexValue & 0x0F0) >> 4)       / 15.0
-                    blue  = CGFloat(hexValue & 0x00F)              / 15.0
+                    red = CGFloat((hexValue & 0xF00) >> 8) / 15.0
+                    green = CGFloat((hexValue & 0x0F0) >> 4) / 15.0
+                    blue = CGFloat(hexValue & 0x00F) / 15.0
                 case 4:
-                    red   = CGFloat((hexValue & 0xF000) >> 12)     / 15.0
-                    green = CGFloat((hexValue & 0x0F00) >> 8)      / 15.0
-                    blue  = CGFloat((hexValue & 0x00F0) >> 4)      / 15.0
-                    alpha = CGFloat(hexValue & 0x000F)             / 15.0
+                    red = CGFloat((hexValue & 0xF000) >> 12) / 15.0
+                    green = CGFloat((hexValue & 0x0F00) >> 8) / 15.0
+                    blue = CGFloat((hexValue & 0x00F0) >> 4) / 15.0
+                    alpha = CGFloat(hexValue & 0x000F) / 15.0
                 case 6:
-                    red   = CGFloat((hexValue & 0xFF0000) >> 16)   / 255.0
-                    green = CGFloat((hexValue & 0x00FF00) >> 8)    / 255.0
-                    blue  = CGFloat(hexValue & 0x0000FF)           / 255.0
+                    red = CGFloat((hexValue & 0xFF0000) >> 16) / 255.0
+                    green = CGFloat((hexValue & 0x00FF00) >> 8) / 255.0
+                    blue = CGFloat(hexValue & 0x0000FF) / 255.0
                 case 8:
-                    red   = CGFloat((hexValue & 0xFF000000) >> 24) / 255.0
-                    green = CGFloat((hexValue & 0x00FF0000) >> 16) / 255.0
-                    blue  = CGFloat((hexValue & 0x0000FF00) >> 8)  / 255.0
-                    alpha = CGFloat(hexValue & 0x000000FF)         / 255.0
+                    red = CGFloat((hexValue & 0xFF00_0000) >> 24) / 255.0
+                    green = CGFloat((hexValue & 0x00FF_0000) >> 16) / 255.0
+                    blue = CGFloat((hexValue & 0x0000_FF00) >> 8) / 255.0
+                    alpha = CGFloat(hexValue & 0x0000_00FF) / 255.0
                 default:
                     print("Invalid RGB string, number of characters after # should be either 3, 4, 6 or 8")
                 }
@@ -49,19 +49,19 @@ extension UIColor {
         } else {
             print("Invalid RGB string, missing # as prefix")
         }
-        self.init(red:red, green:green, blue:blue, alpha:alpha)
+        self.init(red: red, green: green, blue: blue, alpha: alpha)
     }
-    
+
     func saturate(_ value: CGFloat) -> UIColor {
         var hue: CGFloat = 0, saturation: CGFloat = 0, brightness: CGFloat = 0, alpha: CGFloat = 0
         getHue(&hue, saturation: &saturation, brightness: &brightness, alpha: &alpha)
-        
+
         return UIColor(hue: hue, saturation: saturation * value, brightness: brightness, alpha: alpha)
     }
 }
 
-
 // MARK: - Methods
+
 public extension UIColor {
     /// Blend two Colors.
     ///
@@ -72,7 +72,8 @@ public extension UIColor {
     ///   - intensity2: intensity of second color (default is 0.5)
     /// - Returns: Color created by blending first and second colors.
     static func blend(_ color1: UIColor, intensity1: CGFloat = 0.5, with color2: UIColor,
-                      intensity2: CGFloat = 0.5) -> UIColor {
+                      intensity2: CGFloat = 0.5) -> UIColor
+    {
         // http://stackoverflow.com/questions/27342715/blend-uicolors-in-swift
         let total = intensity1 + intensity2
         let level1 = intensity1 / total
@@ -149,7 +150,7 @@ public extension UIColor {
 }
 
 extension UIColor {
-    struct Light {
+    enum Light {
         static var secondarySystemBackground = UIColor(hex: "#f2f2f7ff")
     }
 }

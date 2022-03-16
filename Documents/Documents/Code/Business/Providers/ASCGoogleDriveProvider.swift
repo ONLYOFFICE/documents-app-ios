@@ -6,60 +6,55 @@
 //  Copyright © 2019 Ascensio System SIA. All rights reserved.
 //
 
-import UIKit
-import GoogleSignIn
-import GoogleAPIClientForREST
-import GTMSessionFetcher
 import FileKit
 import Firebase
+import GoogleAPIClientForREST
+import GoogleSignIn
+import GTMSessionFetcher
+import UIKit
 
 class ASCGoogleDriveProvider: ASCFileProviderProtocol & ASCSortableFileProviderProtocol {
-
     // MARK: - Properties
 
     var id: String? {
-        get {
-            if let user = googleUser {
-                return user.userID
-            }
-            return nil
+        if let user = googleUser {
+            return user.userID
         }
+        return nil
     }
+
     var type: ASCFileProviderType {
-        get {
-            return .googledrive
-        }
+        return .googledrive
     }
+
     var rootFolder: ASCFolder {
-        get {
-            return {
-                $0.title = NSLocalizedString(NSLocalizedString("My Drive", comment: ""), comment: "")
-                $0.rootFolderType = .googledriveAll
-                $0.id = "root"
-                return $0
-            }(ASCFolder())
-        }
+        return {
+            $0.title = NSLocalizedString(NSLocalizedString("My Drive", comment: ""), comment: "")
+            $0.rootFolderType = .googledriveAll
+            $0.id = "root"
+            return $0
+        }(ASCFolder())
     }
+
     var user: ASCUser?
     var items: [ASCEntity] = []
     var page: Int = 0
     var total: Int = 0
     var authorization: String? {
-        get {
-            guard let googleUser = googleUser else { return nil }
-            return "Bearer \(googleUser.authentication.accessToken)"
-        }
+        guard let googleUser = googleUser else { return nil }
+        return "Bearer \(googleUser.authentication.accessToken)"
     }
+
     var delegate: ASCProviderDelegate?
 
     internal var folder: ASCFolder?
-    internal var fetchInfo: [String : Any?]?
+    internal var fetchInfo: [String: Any?]?
 
     private let googleDriveService = GTLRDriveService()
     private var googleUser: GIDGoogleUser?
     private var fetcher = GTMSessionFetcher()
-    
-    struct ApiPath {
+
+    enum ApiPath {
         static let contentLinkById = "https://www.googleapis.com/download/drive/v3/files/%@?alt=media"
     }
 
@@ -69,32 +64,32 @@ class ASCGoogleDriveProvider: ASCFileProviderProtocol & ASCSortableFileProviderP
         case readFolder = "ASCGoogleDriveProviderReadFolder"
         case download = "ASCGoogleDriveProviderDownload"
         case upload = "ASCGoogleDriveProviderUpload"
-        
+
         var description: String {
             switch self {
             case .providerUndefined: return NSLocalizedString("Unknown file provider", comment: "")
             case .userUndefined: return NSLocalizedString("User undefined", comment: "")
             case .readFolder: return NSLocalizedString("Failed to get file list.", comment: "")
-            case .download: return  NSLocalizedString("Сould not download file.", comment: "")
-            case .upload: return  NSLocalizedString("Сould not upload file.", comment: "")
+            case .download: return NSLocalizedString("Сould not download file.", comment: "")
+            case .upload: return NSLocalizedString("Сould not upload file.", comment: "")
             }
         }
     }
-    
+
     private let googleMimeTypes = [
         "application/vnd.google-apps.document",
         "application/vnd.google-apps.spreadsheet",
         "application/vnd.google-apps.presentation",
-        "application/vnd.google-apps.form"
+        "application/vnd.google-apps.form",
     ]
     private let defaultObjectFields = "id,name,mimeType,modifiedTime,createdTime,fileExtension,size,webContentLink,parents"
 
     // MARK: - Lifecycle Methods
-    
+
     init() {
         //
     }
-    
+
     init(userData: Data) {
         /// https://medium.com/@kgleong/uploading-files-to-google-drive-using-the-google-ios-sdk-fcad3e9d6c07
         /// https://github.com/google/google-api-objectivec-client-for-rest/blob/master/Examples/DriveSample/DriveSampleWindowController.m
@@ -102,18 +97,17 @@ class ASCGoogleDriveProvider: ASCFileProviderProtocol & ASCSortableFileProviderP
         /// https://github.com/net3ton/moneytravel/blob/b11955b44183bea1ec3dbe1c343cf87952774872/moneytravel/GoogleDrive.swift
         /// https://github.com/wtanuw/WTLibrary-iOS/blob/efe49d5561f7e317963cae8d7d12054fe0af8871/WTLibrary-iOS/Classes/WTGoogle/WTGoogleDriveManager.m
 
-// Test archive->unarchive
+        // Test archive->unarchive
 //        do {
 //            googleUser = try NSKeyedUnarchiver.unarchiveTopLevelObjectWithData(userData) as? GIDGoogleUser
 //            googleDriveService.authorizer = googleUser?.authentication.fetcherAuthorizer()
 //        } catch {
 //            log.error("Failed to create ASCGoogleDriveProvider")
 //        }
-        
-// Test serialize data->string->data
+
+        // Test serialize data->string->data
 //        let data2string = userData.base64EncodedString(options: NSData.Base64EncodingOptions())
 //        let string2data = Data(base64Encoded: data2string, options: NSData.Base64DecodingOptions())
-
 
         googleUser = NSKeyedUnarchiver.unarchiveObject(with: userData) as? GIDGoogleUser
         googleDriveService.authorizer = googleUser?.authentication.fetcherAuthorizer()
@@ -121,16 +115,16 @@ class ASCGoogleDriveProvider: ASCFileProviderProtocol & ASCSortableFileProviderP
 
     func copy() -> ASCFileProviderProtocol {
         let copy = ASCGoogleDriveProvider()
-        
+
         copy.items = items
         copy.page = page
         copy.total = total
         copy.delegate = delegate
         copy.deserialize(serialize() ?? "")
-        
+
         return copy
     }
-    
+
     func reset() {
         cancel()
 
@@ -138,7 +132,7 @@ class ASCGoogleDriveProvider: ASCFileProviderProtocol & ASCSortableFileProviderP
         total = 0
         items.removeAll()
     }
-    
+
     func cancel() {
         if fetcher.isFetching {
             fetcher.stopFetching()
@@ -147,16 +141,16 @@ class ASCGoogleDriveProvider: ASCFileProviderProtocol & ASCSortableFileProviderP
 
     func serialize() -> String? {
         var info: [String: Any] = [
-            "type": type.rawValue
+            "type": type.rawValue,
         ]
-        
-        if  let user = googleUser {
+
+        if let user = googleUser {
             let userData = NSKeyedArchiver.archivedData(withRootObject: user)
             let userString = userData.base64EncodedString(options: NSData.Base64EncodingOptions())
 
             info += ["googleuser": userString]
         }
-        
+
         if let user = user {
             info += ["user": user.toJSON()]
         }
@@ -176,58 +170,58 @@ class ASCGoogleDriveProvider: ASCFileProviderProtocol & ASCSortableFileProviderP
                 googleUser = NSKeyedUnarchiver.unarchiveObject(with: userData) as? GIDGoogleUser
                 googleDriveService.authorizer = googleUser?.authentication.fetcherAuthorizer()
             }
-            
+
             if let userJson = json["user"] as? [String: Any] {
                 user = ASCUser(JSON: userJson)
             }
         }
     }
-    
+
     func add(item: ASCEntity, at index: Int) {
         if !items.contains(where: { $0.uid == item.uid }) {
             items.insert(item, at: index)
             total += 1
         }
     }
-    
+
     func add(items: [ASCEntity], at index: Int) {
-        let uniqItems = items.filter { (item) -> Bool in
-            return !self.items.contains(where: { $0.uid == item.uid })
+        let uniqItems = items.filter { item -> Bool in
+            !self.items.contains(where: { $0.uid == item.uid })
         }
         self.items.insert(contentsOf: uniqItems, at: index)
-        self.total += uniqItems.count
+        total += uniqItems.count
     }
-    
+
     func remove(at index: Int) {
         items.remove(at: index)
         total -= 1
     }
-    
+
     func isReachable(completionHandler: @escaping (_ success: Bool, _ error: Error?) -> Void) {
-        DispatchQueue.main.async(execute: { [weak self] in
+        DispatchQueue.main.async { [weak self] in
             self?.userInfo { success, error in
                 completionHandler(success, error)
             }
-        })
+        }
     }
-    
-    func isReachable(with info: [String : Any], complation: @escaping ((Bool, ASCFileProviderProtocol?) -> Void)) {
+
+    func isReachable(with info: [String: Any], complation: @escaping ((Bool, ASCFileProviderProtocol?) -> Void)) {
         guard
             let user = info["user"] as? Data
         else {
             complation(false, nil)
             return
         }
-        
+
         let googleDriveProvider = ASCGoogleDriveProvider(userData: user)
 
         googleDriveProvider.isReachable { success, error in
-            DispatchQueue.main.async(execute: {
+            DispatchQueue.main.async {
                 complation(success, success ? googleDriveProvider : nil)
-            })
+            }
         }
     }
-    
+
     /// Fetch an user information
     ///
     /// - Parameter completeon: a closure with result of user or error
@@ -237,21 +231,21 @@ class ASCGoogleDriveProvider: ASCFileProviderProtocol & ASCSortableFileProviderP
             completeon?(false, error)
             return
         }
-        
+
         user = ASCUser()
         user?.userId = googleUser.userID
         user?.displayName = googleUser.profile?.name
         user?.department = googleUser.profile?.email
-        
+
         completeon?(true, nil)
     }
-    
+
     /// Sort records
     ///
     /// - Parameters:
     ///   - completeon: a closure with result of sort entries or error
     func updateSort(completeon: ASCProviderCompletionHandler?) {
-        if let sortInfo = fetchInfo?["sort"] as? [String : Any] {
+        if let sortInfo = fetchInfo?["sort"] as? [String: Any] {
             sort(by: sortInfo, entities: &items)
             total = items.count
         }
@@ -264,34 +258,34 @@ class ASCGoogleDriveProvider: ASCFileProviderProtocol & ASCSortableFileProviderP
     ///   - folder: target directory
     ///   - parameters: dictionary of settings for searching and sorting or any other information
     ///   - completeon: a closure with result of directory entries or error
-    func fetch(for folder: ASCFolder, parameters: [String : Any?], completeon: ASCProviderCompletionHandler?) {
+    func fetch(for folder: ASCFolder, parameters: [String: Any?], completeon: ASCProviderCompletionHandler?) {
         guard let googleUser = googleUser else {
             completeon?(self, folder, false, nil)
             return
         }
-        
+
         self.folder = folder
-        
+
         let fetch: ((_ completeon: ASCProviderCompletionHandler?) -> Void) = { [weak self] completeon in
             guard let strongSelf = self else { return }
-            
+
             let query = GTLRDriveQuery_FilesList.query()
-            
+
             // Comma-separated list of areas the search applies to. E.g., appDataFolder, photos, drive.
             query.spaces = "drive"
-            
+
             // Comma-separated list of access levels to search in. Some possible values are "user,allTeamDrives" or "user"
             query.corpora = "user"
-            
+
             var queryParams = ""
-            
+
             queryParams += "'\(folder.id)' in parents and trashed = false"
-            
+
             // Only owned items
             if let email = googleUser.profile?.email {
                 queryParams += " and '\(email)' in owners"
             }
-            
+
             // Search
             if
                 let search = parameters["search"] as? [String: Any],
@@ -300,17 +294,17 @@ class ASCGoogleDriveProvider: ASCFileProviderProtocol & ASCSortableFileProviderP
             {
                 queryParams += " and name contains '\(text.lowercased())'"
             }
-            
+
             query.q = queryParams
             query.fields = "files(id,name,mimeType,modifiedTime,createdTime,fileExtension,size,webContentLink)"
-            
+
             strongSelf.googleDriveService.executeQuery(query) { _, result, error in
-                DispatchQueue.main.async(execute: {
+                DispatchQueue.main.async {
                     if let error = error {
                         completeon?(strongSelf, folder, false, error)
                         return
                     }
-                    
+
                     guard
                         let collection = result as? GTLRDrive_FileList,
                         let objects = collection.files
@@ -318,10 +312,10 @@ class ASCGoogleDriveProvider: ASCFileProviderProtocol & ASCSortableFileProviderP
                         completeon?(strongSelf, folder, false, ASCProviderError(msg: ErrorType.readFolder.description))
                         return
                     }
-                    
+
                     var files: [ASCFile] = []
                     var folders: [ASCFolder] = []
-                    
+
                     folders = objects
                         .filter { $0.mimeType == "application/vnd.google-apps.folder" }
                         .map {
@@ -335,10 +329,10 @@ class ASCGoogleDriveProvider: ASCFileProviderProtocol & ASCSortableFileProviderP
                             cloudFolder.updatedBy = strongSelf.user
                             cloudFolder.parent = folder
                             cloudFolder.parentId = folder.id
-                            
+
                             return cloudFolder
-                    }
-                    
+                        }
+
                     files = objects
                         .filter { $0.mimeType != "application/vnd.google-apps.folder" }
                         .map {
@@ -357,23 +351,23 @@ class ASCGoogleDriveProvider: ASCFileProviderProtocol & ASCSortableFileProviderP
                             cloudFile.pureContentLength = Int(fileSize)
 
                             return cloudFile
-                    }
-                    
+                        }
+
                     // Sort
                     strongSelf.fetchInfo = parameters
-                    
+
                     if let sortInfo = parameters["sort"] as? [String: Any] {
                         self?.sort(by: sortInfo, folders: &folders, files: &files)
                     }
-                    
+
                     strongSelf.items = folders as [ASCEntity] + files as [ASCEntity]
                     strongSelf.total = strongSelf.items.count
-                    
+
                     completeon?(strongSelf, folder, true, nil)
-                })
+                }
             }
         }
-        
+
         if let _ = user {
             fetch(completeon)
         } else {
@@ -387,7 +381,7 @@ class ASCGoogleDriveProvider: ASCFileProviderProtocol & ASCSortableFileProviderP
             }
         }
     }
-    
+
     /// Fetch an direct URL to the content
     ///
     /// - Parameters:
@@ -396,7 +390,7 @@ class ASCGoogleDriveProvider: ASCFileProviderProtocol & ASCSortableFileProviderP
         let urlString = String(format: ASCGoogleDriveProvider.ApiPath.contentLinkById, string ?? "")
         return URL(string: urlString)
     }
-    
+
     /// Download an file on path via asynchronous completion handler
     ///
     /// - Parameters:
@@ -411,13 +405,13 @@ class ASCGoogleDriveProvider: ASCFileProviderProtocol & ASCSortableFileProviderP
 
         // Force stop fetching
         cancel()
-        
+
         // Query metadata file info
         let queryMetadata = GTLRDriveQuery_FilesGet.query(withFileId: path)
         queryMetadata.fields = "id,name,mimeType,size"
-        
+
         googleDriveService.executeQuery(queryMetadata) { [weak self] _, result, error in
-            DispatchQueue.main.async(execute: { [weak self] in
+            DispatchQueue.main.async { [weak self] in
                 if let _ = error {
                     processing(nil, 0, ASCProviderError(msg: ErrorType.download.description))
                     return
@@ -432,7 +426,7 @@ class ASCGoogleDriveProvider: ASCFileProviderProtocol & ASCSortableFileProviderP
                 }
 
                 var queryDownload: GTLRDriveQuery
-                
+
                 // Googles own format can be downloaded via this query
                 // https://developers.google.com/drive/v3/web/manage-downloads
                 if strongSelf.googleMimeTypes.contains(googleFileInfo.mimeType ?? "") {
@@ -440,7 +434,7 @@ class ASCGoogleDriveProvider: ASCFileProviderProtocol & ASCSortableFileProviderP
                 } else {
                     queryDownload = GTLRDriveQuery_FilesGet.queryForMedia(withFileId: path)
                 }
-                
+
                 let downloadRequest = strongSelf.googleDriveService.request(for: queryDownload) as URLRequest
 
                 strongSelf.fetcher = strongSelf.googleDriveService.fetcherService.fetcher(with: downloadRequest)
@@ -449,12 +443,12 @@ class ASCGoogleDriveProvider: ASCFileProviderProtocol & ASCSortableFileProviderP
                 strongSelf.fetcher.downloadProgressBlock = { bytesWritten, totalBytesWritten, totalBytesExpectedToWrite in
                     let expectedSize = max(1, googleFileInfo.size?.uint64Value ?? 0)
                     let progress = Double(totalBytesWritten) / Double(expectedSize)
-                    
+
                     DispatchQueue.main.async {
                         processing(nil, progress, nil)
                     }
                 }
-                
+
                 // Prepare destination
                 do {
                     if FileManager.default.fileExists(atPath: destinationURL.path) {
@@ -465,7 +459,7 @@ class ASCGoogleDriveProvider: ASCFileProviderProtocol & ASCSortableFileProviderP
                     processing(nil, 1.0, error)
                     return
                 }
-                
+
                 // Do fetch
                 strongSelf.fetcher.destinationFileURL = destinationURL
                 strongSelf.fetcher.beginFetch(completionHandler: { data, error in
@@ -477,10 +471,10 @@ class ASCGoogleDriveProvider: ASCFileProviderProtocol & ASCSortableFileProviderP
                         }
                     }
                 })
-            })
+            }
         }
     }
-    
+
     /// Upload data on path via asynchronous completion handler
     ///
     /// - Parameters:
@@ -496,14 +490,14 @@ class ASCGoogleDriveProvider: ASCFileProviderProtocol & ASCSortableFileProviderP
 
         // Force stop fetching
         cancel()
-        
+
         // Query metadata file info
         let metadataFields = defaultObjectFields
         let queryMetadata = GTLRDriveQuery_FilesGet.query(withFileId: path)
         queryMetadata.fields = "id,name,mimeType,size,parents"
-        
+
         googleDriveService.executeQuery(queryMetadata) { [weak self] _, result, error in
-            DispatchQueue.main.async(execute: { [weak self] in
+            DispatchQueue.main.async { [weak self] in
                 if let _ = error {
                     processing(nil, 0, ASCProviderError(msg: ErrorType.upload.description))
                     return
@@ -517,11 +511,11 @@ class ASCGoogleDriveProvider: ASCFileProviderProtocol & ASCSortableFileProviderP
                     processing(nil, 0, ASCProviderError(msg: ErrorType.upload.description))
                     return
                 }
-                
+
                 let metadata = GTLRDrive_File()
                 metadata.name = googleFileInfo.name ?? ""
                 metadata.parents = googleFileInfo.parents ?? []
-                
+
                 // Remove original
                 let queryDelete = GTLRDriveQuery_FilesDelete.query(withFileId: path)
                 strongSelf.googleDriveService.executeQuery(queryDelete) { ticket, file, error in
@@ -530,22 +524,22 @@ class ASCGoogleDriveProvider: ASCFileProviderProtocol & ASCSortableFileProviderP
                             processing(nil, 1.0, error)
                             return
                         }
-                        
+
                         // Upload changes
                         let uploadParameters = GTLRUploadParameters(data: data, mimeType: mimeType)
                         let queryCreate = GTLRDriveQuery_FilesCreate.query(withObject: metadata, uploadParameters: uploadParameters)
                         queryMetadata.fields = metadataFields
-                        
+
                         let ticket = strongSelf.googleDriveService.executeQuery(queryCreate) { ticket, file, error in
                             DispatchQueue.main.async {
                                 if let error = error {
                                     processing(nil, 1.0, error)
                                 } else if let fileObject = file as? GTLRDrive_File {
                                     let fileSize: UInt64 = max(0, UInt64(truncating: fileObject.size ?? 0))
-                                    
+
                                     let parent = ASCFolder()
                                     parent.id = fileObject.parents?.first ?? ""
-                                    
+
                                     let cloudFile = ASCFile()
                                     cloudFile.id = fileObject.identifier ?? ""
                                     cloudFile.rootFolderType = .googledriveAll
@@ -558,7 +552,7 @@ class ASCGoogleDriveProvider: ASCFileProviderProtocol & ASCSortableFileProviderP
                                     cloudFile.viewUrl = fileObject.identifier ?? ""
                                     cloudFile.displayContentLength = String.fileSizeToString(with: fileSize)
                                     cloudFile.pureContentLength = Int(fileSize)
-                                    
+
                                     processing(cloudFile, 1.0, nil)
                                 } else {
                                     processing(nil, 1.0, nil)
@@ -573,7 +567,7 @@ class ASCGoogleDriveProvider: ASCFileProviderProtocol & ASCSortableFileProviderP
                         }
                     }
                 }
-            })
+            }
         }
     }
 
@@ -588,16 +582,16 @@ class ASCGoogleDriveProvider: ASCFileProviderProtocol & ASCSortableFileProviderP
         guard
             let _ = googleUser,
             let fileName = params?["title"] as? String
-            else {
-                processing(nil, 0, ASCProviderError(msg: ErrorType.upload.description))
-                return
+        else {
+            processing(nil, 0, ASCProviderError(msg: ErrorType.upload.description))
+            return
         }
-        
+
         // Force stop fetching
         cancel()
-        
+
         let mimeType = params?["mime"] as? String ?? "application/octet-stream"
-        
+
         if overwrite, let fileId = params?["fileId"] as? String {
             let deleteFile: ASCFile = {
                 $0.id = fileId
@@ -624,7 +618,7 @@ class ASCGoogleDriveProvider: ASCFileProviderProtocol & ASCSortableFileProviderP
             completeon?(self, nil, false, ASCProviderError(msg: ErrorType.userUndefined.description))
             return
         }
-        
+
         let fileTitle = name + "." + fileExtension
 
         // Copy empty template to desination path
@@ -633,16 +627,16 @@ class ASCGoogleDriveProvider: ASCFileProviderProtocol & ASCSortableFileProviderP
                 let templatPath = Path(templatePath)
                 let data = try Data.read(from: Path(templatePath))
                 var params: [String: Any] = [
-                    "title" : fileTitle
+                    "title": fileTitle,
                 ]
-                
+
                 if let mime = templatPath.mime {
                     params["mime"] = mime
                 }
-                
+
                 upload(folder.id, data: data, overwrite: false, params: params) { [weak self] result, progress, error in
                     guard let strongSelf = self else { return }
-                    
+
                     if let error = error {
                         completeon?(strongSelf, nil, false, ASCProviderError(error))
                     } else if let file = result as? ASCFile {
@@ -650,10 +644,9 @@ class ASCGoogleDriveProvider: ASCFileProviderProtocol & ASCSortableFileProviderP
                             ASCAnalytics.Event.Key.portal: "Direct - Google Drive",
                             ASCAnalytics.Event.Key.onDevice: false,
                             ASCAnalytics.Event.Key.type: ASCAnalytics.Event.Value.file,
-                            ASCAnalytics.Event.Key.fileExt: file.title.fileExtension().lowercased()
-                            ]
-                        )
-                        
+                            ASCAnalytics.Event.Key.fileExt: file.title.fileExtension().lowercased(),
+                        ])
+
                         completeon?(strongSelf, file, true, nil)
                     }
                 }
@@ -662,7 +655,7 @@ class ASCGoogleDriveProvider: ASCFileProviderProtocol & ASCSortableFileProviderP
             }
         }
     }
-    
+
     /// Create new image via asynchronous completion handler
     ///
     /// - Parameters:
@@ -685,18 +678,17 @@ class ASCGoogleDriveProvider: ASCFileProviderProtocol & ASCSortableFileProviderP
     ///   - processing: a closure with result of operation or error
     func createFile(_ name: String, in folder: ASCFolder, data: Data, params: [String: Any]?, processing: @escaping NetworkProgressHandler) {
         let params: [String: Any] = [
-            "title" : name
+            "title": name,
         ]
-        
+
         upload(folder.id, data: data, overwrite: false, params: params) { result, progress, error in
             if let _ = result {
                 ASCAnalytics.logEvent(ASCConstants.Analytics.Event.createEntity, parameters: [
                     ASCAnalytics.Event.Key.portal: "Direct - Google Drive",
                     ASCAnalytics.Event.Key.onDevice: false,
                     ASCAnalytics.Event.Key.type: ASCAnalytics.Event.Value.file,
-                    ASCAnalytics.Event.Key.fileExt: name.fileExtension()
-                    ]
-                )
+                    ASCAnalytics.Event.Key.fileExt: name.fileExtension(),
+                ])
             }
             processing(result, progress, error)
         }
@@ -714,32 +706,32 @@ class ASCGoogleDriveProvider: ASCFileProviderProtocol & ASCSortableFileProviderP
             completeon?(self, nil, false, ASCProviderError(msg: ErrorType.userUndefined.description))
             return
         }
-        
+
         let metadata = GTLRDrive_File()
         metadata.name = name
         metadata.mimeType = "application/vnd.google-apps.folder"
         metadata.parents = [folder.id]
-        
+
         let queryCreate = GTLRDriveQuery_FilesCreate.query(withObject: metadata, uploadParameters: nil)
         queryCreate.fields = defaultObjectFields
-        
+
         googleDriveService.executeQuery(queryCreate) { [weak self] _, result, error in
             guard let strongSelf = self else { return }
-            
+
             DispatchQueue.main.async {
                 if let error = error {
                     completeon?(strongSelf, nil, false, error)
                     return
                 }
-                
+
                 guard let folderObject = result as? GTLRDrive_File else {
                     completeon?(strongSelf, nil, false, ASCProviderError(msg: ErrorType.readFolder.description))
                     return
                 }
-                
+
                 let parent = ASCFolder()
                 parent.id = folderObject.parents?.first ?? ""
-                
+
                 let cloudFolder = ASCFolder()
                 cloudFolder.id = folderObject.identifier ?? ""
                 cloudFolder.rootFolderType = .googledriveAll
@@ -750,19 +742,18 @@ class ASCGoogleDriveProvider: ASCFileProviderProtocol & ASCSortableFileProviderP
                 cloudFolder.updatedBy = strongSelf.user
                 cloudFolder.parent = parent
                 cloudFolder.parentId = parent.id
-                
+
                 ASCAnalytics.logEvent(ASCConstants.Analytics.Event.createEntity, parameters: [
                     ASCAnalytics.Event.Key.portal: "Direct - Google Drive",
                     ASCAnalytics.Event.Key.onDevice: false,
-                    ASCAnalytics.Event.Key.type: ASCAnalytics.Event.Value.folder
-                    ]
-                )
-                
+                    ASCAnalytics.Event.Key.type: ASCAnalytics.Event.Value.folder,
+                ])
+
                 completeon?(strongSelf, cloudFolder, true, nil)
             }
         }
     }
-    
+
     /// Rename entity via asynchronous completion handler
     ///
     /// - Parameters:
@@ -777,7 +768,7 @@ class ASCGoogleDriveProvider: ASCFileProviderProtocol & ASCSortableFileProviderP
 
         let metadata = GTLRDrive_File()
         metadata.name = newName
-        
+
         if let file = entity as? ASCFile {
             let fileExtension = file.title.fileExtension()
             metadata.name = newName + (fileExtension.length < 1 ? "" : ".\(fileExtension)")
@@ -785,16 +776,16 @@ class ASCGoogleDriveProvider: ASCFileProviderProtocol & ASCSortableFileProviderP
 
         let queryRename = GTLRDriveQuery_FilesUpdate.query(withObject: metadata, fileId: entity.id, uploadParameters: nil)
         queryRename.fields = defaultObjectFields
-        
+
         googleDriveService.executeQuery(queryRename) { [weak self] _, result, error in
             guard let strongSelf = self else { return }
-            
+
             DispatchQueue.main.async {
                 if let error = error {
                     completeon?(strongSelf, nil, false, error)
                     return
                 }
-                
+
                 if let file = entity as? ASCFile {
                     let fileExtension = file.title.fileExtension()
                     file.title = newName + (fileExtension.length < 1 ? "" : ".\(fileExtension)")
@@ -808,7 +799,7 @@ class ASCGoogleDriveProvider: ASCFileProviderProtocol & ASCSortableFileProviderP
             }
         }
     }
-    
+
     /// Remove list of entities via asynchronous completion handler
     ///
     /// - Parameters:
@@ -820,18 +811,18 @@ class ASCGoogleDriveProvider: ASCFileProviderProtocol & ASCSortableFileProviderP
             completeon?(self, nil, false, ASCProviderError(msg: ErrorType.userUndefined.description))
             return
         }
-        
+
         var lastError: Error?
         var results: [ASCEntity] = []
-        
+
         let operationQueue = OperationQueue()
         operationQueue.maxConcurrentOperationCount = 1
-        
+
         for entity in entities {
             operationQueue.addOperation { [weak self] in
                 guard let strongSelf = self else { return }
                 let semaphore = DispatchSemaphore(value: 0)
-                
+
                 strongSelf.apiDelete(item: entity) { object, error in
                     if let error = error {
                         lastError = error
@@ -843,13 +834,13 @@ class ASCGoogleDriveProvider: ASCFileProviderProtocol & ASCSortableFileProviderP
                 semaphore.wait()
             }
         }
-        
+
         operationQueue.addOperation { [weak self] in
             guard let strongSelf = self else { return }
-            
-            DispatchQueue.main.async(execute: {
+
+            DispatchQueue.main.async {
                 completeon?(strongSelf, results, results.count > 0, lastError)
-            })
+            }
         }
     }
 
@@ -863,7 +854,7 @@ class ASCGoogleDriveProvider: ASCFileProviderProtocol & ASCSortableFileProviderP
         handler?(.begin, nil, nil)
         handler?(.end, [], nil)
     }
-    
+
     /// Transfer items of entities via asynchronous completion handler
     ///
     /// - Parameters:
@@ -872,50 +863,50 @@ class ASCGoogleDriveProvider: ASCFileProviderProtocol & ASCSortableFileProviderP
     ///   - handler: a closure with result of operation or error
     func transfer(items: [ASCEntity], to folder: ASCFolder, move: Bool, overwrite: Bool, handler: ASCEntityProgressHandler?) {
         var cancel = false
-        
+
         guard let _ = googleUser else {
             handler?(.end, 1, nil, ErrorType.userUndefined.description, &cancel)
             return
         }
-        
+
         handler?(.begin, 0, nil, nil, &cancel)
-        
+
         var lastError: Error?
         var results: [ASCEntity] = []
-        
+
         let operationQueue = OperationQueue()
         operationQueue.maxConcurrentOperationCount = 1
-        
+
         for (index, entity) in items.enumerated() {
             operationQueue.addOperation {
                 if cancel {
-                    DispatchQueue.main.async(execute: {
+                    DispatchQueue.main.async {
                         handler?(.end, 1, results, lastError?.localizedDescription, &cancel)
-                    })
+                    }
                     return
                 }
-                
+
                 let semaphore = DispatchSemaphore(value: 0)
-                
+
                 self.apiCopy(item: entity, to: folder) { object, error in
                     if let error = error {
                         lastError = error
                     } else {
                         results.append(entity)
                     }
-                    
+
                     if move {
                         // Delete original
                         self.apiDelete(item: entity) { object, error in
-                            DispatchQueue.main.async(execute: {
+                            DispatchQueue.main.async {
                                 handler?(.progress, Float(index + 1) / Float(items.count), entity, error?.localizedDescription, &cancel)
-                            })
+                            }
                             semaphore.signal()
                         }
                     } else {
-                        DispatchQueue.main.async(execute: {
+                        DispatchQueue.main.async {
                             handler?(.progress, Float(index + 1) / Float(items.count), entity, error?.localizedDescription, &cancel)
-                        })
+                        }
                         semaphore.signal()
                     }
                 }
@@ -923,20 +914,20 @@ class ASCGoogleDriveProvider: ASCFileProviderProtocol & ASCSortableFileProviderP
                 semaphore.wait()
             }
         }
-        
+
         operationQueue.addOperation {
-            DispatchQueue.main.async(execute: {
+            DispatchQueue.main.async {
                 if items.count == results.count {
                     handler?(.end, 1, results, nil, &cancel)
                 } else {
                     handler?(.end, 1, results, lastError?.localizedDescription, &cancel)
                 }
-            })
+            }
         }
     }
-    
+
     // MARK: - Private
-    
+
     /// Query metadata file info via Google Api
     ///
     /// - Parameters:
@@ -947,10 +938,10 @@ class ASCGoogleDriveProvider: ASCFileProviderProtocol & ASCSortableFileProviderP
             complation(nil, ASCProviderError(msg: ErrorType.userUndefined.description))
             return
         }
-        
+
         let queryMetadata = GTLRDriveQuery_FilesGet.query(withFileId: item.id)
         queryMetadata.fields = defaultObjectFields
-        
+
         googleDriveService.executeQuery(queryMetadata) { ticket, file, error in
             DispatchQueue.main.async {
                 if let error = error {
@@ -963,7 +954,7 @@ class ASCGoogleDriveProvider: ASCFileProviderProtocol & ASCSortableFileProviderP
             }
         }
     }
-    
+
     /// Copy file via Google Api
     ///
     /// - Parameters:
@@ -974,14 +965,14 @@ class ASCGoogleDriveProvider: ASCFileProviderProtocol & ASCSortableFileProviderP
             complation(nil, ASCProviderError(msg: ErrorType.userUndefined.description))
             return
         }
-        
+
         let metadata = GTLRDrive_File()
         metadata.name = (item as? ASCFile)?.title ?? (item as? ASCFolder)?.title ?? Date().iso8601
         metadata.parents = [folder.id]
-        
+
         let queryDelete = GTLRDriveQuery_FilesCopy.query(withObject: metadata, fileId: item.id)
         queryDelete.fields = defaultObjectFields
-        
+
         googleDriveService.executeQuery(queryDelete) { ticket, file, error in
             DispatchQueue.main.async {
                 if let error = error {
@@ -994,7 +985,7 @@ class ASCGoogleDriveProvider: ASCFileProviderProtocol & ASCSortableFileProviderP
             }
         }
     }
-    
+
     /// Delete file via Google Api
     ///
     /// - Parameters:
@@ -1005,10 +996,10 @@ class ASCGoogleDriveProvider: ASCFileProviderProtocol & ASCSortableFileProviderP
             complation(nil, ASCProviderError(msg: ErrorType.userUndefined.description))
             return
         }
-        
+
         let queryDelete = GTLRDriveQuery_FilesDelete.query(withFileId: item.id)
         queryDelete.fields = defaultObjectFields
-        
+
         googleDriveService.executeQuery(queryDelete) { ticket, file, error in
             DispatchQueue.main.async {
                 if let error = error {
@@ -1021,7 +1012,7 @@ class ASCGoogleDriveProvider: ASCFileProviderProtocol & ASCSortableFileProviderP
             }
         }
     }
-    
+
     /// Upload file via Google Api
     ///
     /// - Parameters:
@@ -1035,31 +1026,31 @@ class ASCGoogleDriveProvider: ASCFileProviderProtocol & ASCSortableFileProviderP
         name: String,
         mimeType: String,
         folderId: String,
-        processing: @escaping NetworkProgressHandler)
-    {
+        processing: @escaping NetworkProgressHandler
+    ) {
         guard let _ = googleUser else {
             processing(nil, 0, ASCProviderError(msg: ErrorType.upload.description))
             return
         }
-        
+
         let metadata = GTLRDrive_File()
         metadata.name = name
         metadata.parents = [folderId]
-        
+
         let uploadParameters = GTLRUploadParameters(data: data, mimeType: mimeType)
         let queryCreate = GTLRDriveQuery_FilesCreate.query(withObject: metadata, uploadParameters: uploadParameters)
         queryCreate.fields = defaultObjectFields
-        
+
         let ticket = googleDriveService.executeQuery(queryCreate) { [weak self] ticket, file, error in
             DispatchQueue.main.async {
                 if let error = error {
                     processing(nil, 1.0, error)
                 } else if let fileObject = file as? GTLRDrive_File {
                     let fileSize: UInt64 = max(0, UInt64(truncating: fileObject.size ?? 0))
-                    
+
                     let parent = ASCFolder()
                     parent.id = fileObject.parents?.first ?? ""
-                    
+
                     let cloudFile = ASCFile()
                     cloudFile.id = fileObject.identifier ?? ""
                     cloudFile.rootFolderType = .googledriveAll
@@ -1072,7 +1063,7 @@ class ASCGoogleDriveProvider: ASCFileProviderProtocol & ASCSortableFileProviderP
                     cloudFile.viewUrl = fileObject.identifier ?? ""
                     cloudFile.displayContentLength = String.fileSizeToString(with: fileSize)
                     cloudFile.pureContentLength = Int(fileSize)
-                    
+
                     processing(cloudFile, 1.0, nil)
                 } else {
                     processing(nil, 1.0, nil)
@@ -1086,14 +1077,13 @@ class ASCGoogleDriveProvider: ASCFileProviderProtocol & ASCSortableFileProviderP
             }
         }
     }
-    
-    
+
     // MARK: - Access
 
     func allowRead(entity: AnyObject?) -> Bool {
         return true
     }
-    
+
     func allowEdit(entity: AnyObject?) -> Bool {
         return true
     }
@@ -1118,17 +1108,17 @@ class ASCGoogleDriveProvider: ASCFileProviderProtocol & ASCSortableFileProviderP
         var entityActions: ASCEntityActions = []
 
         if let file = file {
-            let fileExtension   = file.title.fileExtension().lowercased()
-            let canRead         = allowRead(entity: file)
-            let canEdit         = allowEdit(entity: file)
-            let canDelete       = allowDelete(entity: file)
-            let canOpenEditor   = ASCConstants.FileExtensions.documents.contains(fileExtension) ||
-                                  ASCConstants.FileExtensions.spreadsheets.contains(fileExtension) ||
-                                  ASCConstants.FileExtensions.presentations.contains(fileExtension) ||
-                                  ASCConstants.FileExtensions.forms.contains(fileExtension)
-            let canPreview      = canOpenEditor ||
-                                  ASCConstants.FileExtensions.images.contains(fileExtension) ||
-                                  fileExtension == "pdf"
+            let fileExtension = file.title.fileExtension().lowercased()
+            let canRead = allowRead(entity: file)
+            let canEdit = allowEdit(entity: file)
+            let canDelete = allowDelete(entity: file)
+            let canOpenEditor = ASCConstants.FileExtensions.documents.contains(fileExtension) ||
+                ASCConstants.FileExtensions.spreadsheets.contains(fileExtension) ||
+                ASCConstants.FileExtensions.presentations.contains(fileExtension) ||
+                ASCConstants.FileExtensions.forms.contains(fileExtension)
+            let canPreview = canOpenEditor ||
+                ASCConstants.FileExtensions.images.contains(fileExtension) ||
+                fileExtension == "pdf"
 
             if canRead {
                 entityActions.insert([.copy, .export])
@@ -1146,7 +1136,7 @@ class ASCGoogleDriveProvider: ASCFileProviderProtocol & ASCSortableFileProviderP
                 entityActions.insert(.open)
             }
 
-            if canEdit && canOpenEditor && UIDevice.allowEditor {
+            if canEdit, canOpenEditor, UIDevice.allowEditor {
                 entityActions.insert(.edit)
             }
         }
@@ -1158,9 +1148,9 @@ class ASCGoogleDriveProvider: ASCFileProviderProtocol & ASCSortableFileProviderP
         var entityActions: ASCEntityActions = []
 
         if let folder = folder {
-            let canRead         = allowRead(entity: folder)
-            let canEdit         = allowEdit(entity: folder)
-            let canDelete       = allowDelete(entity: folder)
+            let canRead = allowRead(entity: folder)
+            let canEdit = allowEdit(entity: folder)
+            let canDelete = allowDelete(entity: folder)
 
             if canEdit {
                 entityActions.insert(.rename)
@@ -1170,7 +1160,7 @@ class ASCGoogleDriveProvider: ASCFileProviderProtocol & ASCSortableFileProviderP
                 entityActions.insert(.copy)
             }
 
-            if canEdit && canDelete {
+            if canEdit, canDelete {
                 entityActions.insert(.move)
             }
 
@@ -1181,13 +1171,13 @@ class ASCGoogleDriveProvider: ASCFileProviderProtocol & ASCSortableFileProviderP
 
         return entityActions
     }
-    
+
     // MARK: - Open file
 
     func open(file: ASCFile, viewMode: Bool = false) {
-        let title           = file.title
-        let fileExt         = title.fileExtension().lowercased()
-        let allowOpen       = ASCConstants.FileExtensions.allowEdit.contains(fileExt)
+        let title = file.title
+        let fileExt = title.fileExtension().lowercased()
+        let allowOpen = ASCConstants.FileExtensions.allowEdit.contains(fileExt)
 
         if allowOpen {
             let editMode = !viewMode && UIDevice.allowEditor
@@ -1199,11 +1189,11 @@ class ASCGoogleDriveProvider: ASCFileProviderProtocol & ASCSortableFileProviderP
     }
 
     func preview(file: ASCFile, files: [ASCFile]?, in view: UIView?) {
-        let title           = file.title
-        let fileExt         = title.fileExtension().lowercased()
-        let isPdf           = fileExt == "pdf"
-        let isImage         = ASCConstants.FileExtensions.images.contains(fileExt)
-        let isVideo         = ASCConstants.FileExtensions.videos.contains(fileExt)
+        let title = file.title
+        let fileExt = title.fileExtension().lowercased()
+        let isPdf = fileExt == "pdf"
+        let isImage = ASCConstants.FileExtensions.images.contains(fileExt)
+        let isVideo = ASCConstants.FileExtensions.videos.contains(fileExt)
 
         if isPdf {
             let openHandler = delegate?.openProgress(file: file, title: NSLocalizedString("Downloading", comment: "Caption of the processing") + "...", 0.15)

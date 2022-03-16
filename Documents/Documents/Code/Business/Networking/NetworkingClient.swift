@@ -13,30 +13,29 @@ typealias NetworkCompletionHandler = (_ result: Any?, _ error: Error?) -> Void
 typealias NetworkProgressHandler = (_ result: Any?, _ progress: Double, _ error: Error?) -> Void
 
 class ServerTrustPolicyManager: ServerTrustManager {
-
     override func serverTrustEvaluator(forHost host: String) throws -> ServerTrustEvaluating? {
         return DisabledTrustEvaluator()
     }
-
 }
 
 protocol NetworkingRequestingProtocol {
-    func request<Response> (
+    func request<Response>(
         _ endpoint: Endpoint<Response>,
         _ parameters: Parameters?,
-        _ completion: ((_ result: Response?, _ error: NetworkingError?) -> Void)?)
-    
-    func request<Response> (
+        _ completion: ((_ result: Response?, _ error: NetworkingError?) -> Void)?
+    )
+
+    func request<Response>(
         _ endpoint: Endpoint<Response>,
         _ parameters: Parameters?,
         _ apply: ((_ data: MultipartFormData) -> Void)?,
-        _ completion: ((_ result: Response?, _ progress: Double, _ error: NetworkingError?) -> Void)?)
+        _ completion: ((_ result: Response?, _ progress: Double, _ error: NetworkingError?) -> Void)?
+    )
 }
 
 class NetworkingClient: NSObject, NetworkingRequestingProtocol {
-    
     // MARK: - Properties
-    
+
     public var baseURL: URL?
     public var token: String? {
         didSet {
@@ -45,118 +44,118 @@ class NetworkingClient: NSObject, NetworkingRequestingProtocol {
             }
         }
     }
-    
+
     // MARK: - Internal Properties
-    
+
     internal var manager = Alamofire.Session()
     private let queue = DispatchQueue(label: "asc.networking.client.\(String(describing: type(of: self)))")
-    
+
     private lazy var configuration: URLSessionConfiguration = {
         $0.timeoutIntervalForRequest = 30
         $0.timeoutIntervalForResource = 30
         return $0
-    } (URLSessionConfiguration.default)
-    
+    }(URLSessionConfiguration.default)
+
     public var headers: HTTPHeaders = .default
-    
+
     // MARK: - init
-    
-    public override init() {
+
+    override public init() {
         super.init()
     }
-    
+
     public func configure(url: String, token: String? = nil) {
-        self.baseURL = URL(string: url)
-        self.manager = Alamofire.Session(
-            configuration: self.configuration,
+        baseURL = URL(string: url)
+        manager = Alamofire.Session(
+            configuration: configuration,
             serverTrustManager: ServerTrustManager(allHostsMustBeEvaluated: false,
-                                                   evaluators: [:]))
+                                                   evaluators: [:])
+        )
     }
-    
+
     // MARK: - Control
-    
+
     public func clear() {
         cancelAll()
     }
-    
+
     public func cancelAll() {
-        self.manager.session.getAllTasks { tasks in
+        manager.session.getAllTasks { tasks in
             tasks.forEach { $0.cancel() }
         }
     }
-    
-    func request<Response> (
+
+    func request<Response>(
         _ endpoint: Endpoint<Response>,
         _ parameters: Parameters? = nil,
-        _ completion: ((_ result: Response?, _ error: NetworkingError?) -> Void)? = nil) {
-        
-        guard let url = self.url(path: endpoint.path) else {
+        _ completion: ((_ result: Response?, _ error: NetworkingError?) -> Void)? = nil
+    ) {
+        guard let url = url(path: endpoint.path) else {
             completion?(nil, .invalidUrl)
             return
         }
-        
+
         var params: Parameters = [:]
-        
+
         if let keys = parameters?.keys {
             for key in keys {
                 params[key] = parameters?[key]
             }
         }
-        
-        self.manager.request(
+
+        manager.request(
             url,
             method: endpoint.method,
             parameters: (params.count == 0) ? nil : params,
             encoding: endpoint.parameterEncoding ?? JSONEncoding.default,
-            headers: self.headers)
-            .validate()
-            .responseData(queue: self.queue) { response in
-                
-                switch response.result {
-                case .success(let value):
-                    do {
-                        let result = try endpoint.decode(value)
-                        DispatchQueue.main.async {
-                            completion?(result, nil)
-                        }
-                    } catch {
-                        DispatchQueue.main.async {
-                            completion?(nil, .invalidData)
-                        }
-                    }
-                    break
-                case .failure(let error):
-                    let err = self.parseError(response.data, error)
-                    var result: Response? = nil
-                    
-                    if let value = response.data {
-                        do {
-                            result = try endpoint.decode(value)
-                        } catch { }
-                    }
-                    
+            headers: headers
+        )
+        .validate()
+        .responseData(queue: queue) { response in
+
+            switch response.result {
+            case let .success(value):
+                do {
+                    let result = try endpoint.decode(value)
                     DispatchQueue.main.async {
-                        completion?(result, err)
+                        completion?(result, nil)
                     }
-                    break
+                } catch {
+                    DispatchQueue.main.async {
+                        completion?(nil, .invalidData)
+                    }
+                }
+            case let .failure(error):
+                let err = self.parseError(response.data, error)
+                var result: Response?
+
+                if let value = response.data {
+                    do {
+                        result = try endpoint.decode(value)
+                    } catch {}
+                }
+
+                DispatchQueue.main.async {
+                    completion?(result, err)
                 }
             }
+        }
     }
-    
-    func request<Response> (
+
+    func request<Response>(
         _ endpoint: Endpoint<Response>,
         _ parameters: Parameters? = nil,
         _ apply: ((_ data: MultipartFormData) -> Void)? = nil,
-        _ completion: ((_ result: Response?, _ progress: Double, _ error: NetworkingError?) -> Void)? = nil) {
-        
-        guard let url = self.url(path: endpoint.path) else {
+        _ completion: ((_ result: Response?, _ progress: Double, _ error: NetworkingError?) -> Void)? = nil
+    ) {
+        guard let url = url(path: endpoint.path) else {
             completion?(nil, 1, .invalidUrl)
             return
         }
-        
+
         let params: Parameters = [:]
-        
-        self.manager.upload(multipartFormData: { data in
+
+        manager.upload(multipartFormData: { data in
             for (key, value) in params {
                 if let valueData = (value as? String)?.data(using: String.Encoding.utf8) {
                     data.append(valueData, withName: key)
@@ -165,77 +164,75 @@ class NetworkingClient: NSObject, NetworkingRequestingProtocol {
             apply?(data)
         }, to: url,
         method: endpoint.method,
-        headers: self.headers)
-        .uploadProgress{ progress in
-            log.debug("Upload Progress: \(progress.fractionCompleted)")
-            DispatchQueue.main.async {
-                completion?(nil, progress.fractionCompleted, nil)
-            }
-        }
-        .responseData(queue: self.queue) { response in
-            switch response.result {
-            case .success(let value):
-                do {
-                    let result = try endpoint.decode(value)
-                    DispatchQueue.main.async {
-                        completion?(result,1,  nil)
-                    }
-                } catch {
-                    DispatchQueue.main.async {
-                        completion?(nil, 1, .invalidData)
-                    }
-                }
-                break
-            case .failure(let error):
-                let err = self.parseError(response.data, error)
+        headers: headers)
+            .uploadProgress { progress in
+                log.debug("Upload Progress: \(progress.fractionCompleted)")
                 DispatchQueue.main.async {
-                    completion?(nil, 1, err)
+                    completion?(nil, progress.fractionCompleted, nil)
                 }
-                break
             }
-        }
+            .responseData(queue: queue) { response in
+                switch response.result {
+                case let .success(value):
+                    do {
+                        let result = try endpoint.decode(value)
+                        DispatchQueue.main.async {
+                            completion?(result, 1, nil)
+                        }
+                    } catch {
+                        DispatchQueue.main.async {
+                            completion?(nil, 1, .invalidData)
+                        }
+                    }
+                case let .failure(error):
+                    let err = self.parseError(response.data, error)
+                    DispatchQueue.main.async {
+                        completion?(nil, 1, err)
+                    }
+                }
+            }
     }
-    
-    func download (
+
+    func download(
         _ path: String,
         _ to: URL,
-        _ completion: ((_ result: Any?, _ progress: Double, _ error: NetworkingError?) -> Void)? = nil) {
-        
-        guard let url = self.url(path: path) else {
+        _ completion: ((_ result: Any?, _ progress: Double, _ error: NetworkingError?) -> Void)? = nil
+    ) {
+        guard let url = url(path: path) else {
             completion?(nil, 1, .invalidUrl)
             return
         }
-        
+
         let destination: DownloadRequest.Destination = { _, _ in
-            return (to, [.removePreviousFile, .createIntermediateDirectories])
+            (to, [.removePreviousFile, .createIntermediateDirectories])
         }
-        
-        self.manager.download(url, to: destination)
-        .downloadProgress { progress in
-            log.debug("Download Progress: \(progress.fractionCompleted)")
-            DispatchQueue.main.async {
-                completion?(nil, progress.fractionCompleted, nil)
-            }
-        }
-        .responseData { response in
-            switch response.result {
-            case .success(let data):
+
+        manager.download(url, to: destination)
+            .downloadProgress { progress in
+                log.debug("Download Progress: \(progress.fractionCompleted)")
                 DispatchQueue.main.async {
-                    completion?(data, 1, nil)
-                }
-            case .failure(let error):
-                let err = self.parseError(response.value, error)
-                DispatchQueue.main.async {
-                    completion?(nil, 1, err)
+                    completion?(nil, progress.fractionCompleted, nil)
                 }
             }
-        }
+            .responseData { response in
+                switch response.result {
+                case let .success(data):
+                    DispatchQueue.main.async {
+                        completion?(data, 1, nil)
+                    }
+                case let .failure(error):
+                    let err = self.parseError(response.value, error)
+                    DispatchQueue.main.async {
+                        completion?(nil, 1, err)
+                    }
+                }
+            }
     }
-    
+
     func parseError(_ data: Data?, _ error: AFError? = nil) -> NetworkingError {
         if let error = error {
             switch error {
-            case .sessionTaskFailed(let error):
+            case let .sessionTaskFailed(error):
                 if let urlError = error as? URLError {
                     switch urlError.code {
                     case .notConnectedToInternet:
@@ -254,27 +251,26 @@ class NetworkingClient: NSObject, NetworkingRequestingProtocol {
                 break
             }
         }
-        
+
         return .invalidData
     }
-    
+
     func url(path: String) -> URL? {
         return baseURL?.appendingPathComponent(path)
     }
 }
 
 extension NetworkingClient: URLSessionDelegate {
-    
     func urlSession(_ session: URLSession,
                     didReceive challenge: URLAuthenticationChallenge,
-                    completionHandler: @escaping (URLSession.AuthChallengeDisposition, URLCredential?) -> Void) {
+                    completionHandler: @escaping (URLSession.AuthChallengeDisposition, URLCredential?) -> Void)
+    {
         completionHandler(URLSession.AuthChallengeDisposition.useCredential,
                           URLCredential(trust: challenge.protectionSpace.serverTrust!))
     }
 }
 
 extension NetworkingClient {
-
     class func clearCookies(for url: URL?) {
         let cookieStorage = HTTPCookieStorage.shared
 
@@ -284,7 +280,7 @@ extension NetworkingClient {
             }
         }
     }
-    
+
 //    class func request<Response>(
 //        endpoint: Endpoint<Response>,
 //        parameters: Parameters? = nil,

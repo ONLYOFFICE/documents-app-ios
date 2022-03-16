@@ -11,7 +11,7 @@ import UIKit
 extension UIFont {
     func withTraits(traits: UIFontDescriptor.SymbolicTraits) -> UIFont {
         let descriptor = fontDescriptor.withSymbolicTraits(traits)
-        return UIFont(descriptor: descriptor!, size: 0) //size 0 means keep the size as it is
+        return UIFont(descriptor: descriptor!, size: 0) // size 0 means keep the size as it is
     }
 
     func bold() -> UIFont {
@@ -21,7 +21,7 @@ extension UIFont {
     func italic() -> UIFont {
         return withTraits(traits: .traitItalic)
     }
-    
+
     func with(weight: UIFont.Weight) -> UIFont {
         return UIFont.systemFont(ofSize: pointSize, weight: weight)
     }

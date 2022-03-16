@@ -9,13 +9,12 @@
 import UIKit
 
 class ASCOnlyofficeSplitViewController: ASCBaseSplitViewController {
-
     // MARK: - Properties
 
     private var renewAccount: ASCAccount?
 
     // MARK: - Lifecycle Methods
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -33,7 +32,6 @@ class ASCOnlyofficeSplitViewController: ASCBaseSplitViewController {
         tabBarItem.title = ASCConstants.Name.appNameShort
 
         if ASCFileManager.onlyofficeProvider == nil {
-
             let accountsVC = ASCAccountsViewController.instantiate(from: Storyboard.login)
             let accountsNavigationVC = ASCBaseNavigationController(rootASCViewController: accountsVC)
 
@@ -60,8 +58,8 @@ class ASCOnlyofficeSplitViewController: ASCBaseSplitViewController {
     @objc func onOnlyofficeLogoutCompleted(_ notification: Notification) {
 //        showDetailViewController(UINavigationController(rootASCViewController: ASCBaseViewController()), sender: self)
 
-        if  let userInfo = notification.userInfo,
-            let account = userInfo["account"] as? ASCAccount
+        if let userInfo = notification.userInfo,
+           let account = userInfo["account"] as? ASCAccount
         {
             renewAccount = account
         }
@@ -74,5 +72,4 @@ class ASCOnlyofficeSplitViewController: ASCBaseSplitViewController {
             viewWillAppear(false)
         }
     }
-
 }

@@ -9,7 +9,6 @@
 import UIKit
 
 class ASCShadowRadiusView: UIView {
-
     // MARK: - Properties
 
     @IBInspectable var shadowColor: UIColor = .gray
@@ -17,7 +16,7 @@ class ASCShadowRadiusView: UIView {
     @IBInspectable var shadowRadius: CGFloat = 3
     @IBInspectable var shadowOpacity: Float = 0.25
 
-    lazy private var shadowLayer: CAShapeLayer = {
+    private lazy var shadowLayer: CAShapeLayer = {
         $0.shadowColor = shadowColor.cgColor
         $0.shadowOffset = shadowOffset
         $0.shadowRadius = shadowRadius
@@ -49,7 +48,7 @@ class ASCShadowRadiusView: UIView {
             x: bounds.origin.x + 1,
             y: bounds.origin.y + 1,
             width: bounds.width - 2,
-            height: bounds.height - 2)).cgPath
+            height: bounds.height - 2
+        )).cgPath
     }
-
 }

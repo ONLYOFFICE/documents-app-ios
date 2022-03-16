@@ -12,21 +12,19 @@ protocol ASCSharingOptionsRoutingLogic {
     func routeToAddRightHoldersViewController(segue: UIStoryboardSegue?)
 }
 
-protocol ASCSharingOptionsDataPassing
-{
+protocol ASCSharingOptionsDataPassing {
     var dataStore: ASCSharingOptionsDataStore? { get }
 }
 
 class ASCSharingOptionsRouter: NSObject, ASCSharingOptionsRoutingLogic, ASCSharingOptionsDataPassing {
-
     var dataStore: ASCSharingOptionsDataStore?
-    
+
     var addRightHoldersViewController: ASCSharingAddRightHoldersViewController?
-    
-    
+
     weak var viewController: ASCSharingOptionsViewController?
-    
+
     // MARK: Routing
+
     func routeToAddRightHoldersViewController(segue: UIStoryboardSegue?) {
         var isDestinationAlreadyInit = false
         if addRightHoldersViewController != nil {
@@ -41,26 +39,24 @@ class ASCSharingOptionsRouter: NSObject, ASCSharingOptionsRoutingLogic, ASCShari
             let sourceDataStore = dataStore,
             var destinationDataStore = destinationViewController.router?.dataStore
         else { return }
-        
+
         destinationViewController.accessProvider = viewController.accessProviderFactory.get(entity: viewController.entity ?? ASCEntity(), isAccessExternal: false)
-        passDataToAddRightHoldersViewController(source: sourceDataStore, destination: &destinationDataStore) { }
+        passDataToAddRightHoldersViewController(source: sourceDataStore, destination: &destinationDataStore) {}
         navigateToAddRightHoldersViewController(source: viewController, destination: destinationViewController)
         if isDestinationAlreadyInit {
             destinationViewController.start()
         }
     }
-    
+
     private func navigateToAddRightHoldersViewController(source: ASCSharingOptionsViewController, destination: ASCSharingAddRightHoldersViewController) {
-        
         source.navigationController?.pushViewController(destination, animated: true)
     }
-    
-    private func passDataToAddRightHoldersViewController(source: ASCSharingOptionsDataStore,  destination: inout ASCSharingAddRightHoldersDataStore, doneCompletion: @escaping () -> Void) {
+
+    private func passDataToAddRightHoldersViewController(source: ASCSharingOptionsDataStore, destination: inout ASCSharingAddRightHoldersDataStore, doneCompletion: @escaping () -> Void) {
         destination.sharedInfoItems = source.sharedInfoItems
         destination.currentUser = source.currentUser
         destination.entity = source.entity
         destination.doneComplerion = doneCompletion
         destination.entityOwner = source.entityOwner
     }
-    
 }

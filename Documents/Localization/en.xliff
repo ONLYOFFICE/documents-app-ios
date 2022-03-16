@@ -40,6 +40,16 @@
         <target>Required</target>
         <note>Class = "UITextField"; placeholder = "Required"; ObjectID = "gp7-l6-arn";</note>
       </trans-unit>
+      <trans-unit id="i2t-Xh-reL.placeholder" xml:space="preserve">
+        <source>example.com</source>
+        <target>example.com</target>
+        <note>Class = "UITextField"; placeholder = "example.com"; ObjectID = "i2t-Xh-reL";</note>
+      </trans-unit>
+      <trans-unit id="idC-C3-Fpx.text" xml:space="preserve">
+        <source>Server</source>
+        <target>Server</target>
+        <note>Class = "UILabel"; text = "Server"; ObjectID = "idC-C3-Fpx";</note>
+      </trans-unit>
       <trans-unit id="muA-mV-bS6.footerTitle" xml:space="preserve">
         <source>You can connect the following accounts to the ONLYOFFICE™ Documents.</source>
         <target>You can connect the following accounts to the ONLYOFFICE™ Documents.</target>
@@ -54,6 +64,11 @@
         <source>Server</source>
         <target>Server</target>
         <note>Class = "UILabel"; text = "Server"; ObjectID = "q9H-LF-Uc2";</note>
+      </trans-unit>
+      <trans-unit id="sK2-QR-ADm.text" xml:space="preserve">
+        <source>Next</source>
+        <target>Next</target>
+        <note>Class = "UILabel"; text = "Next"; ObjectID = "sK2-QR-ADm";</note>
       </trans-unit>
     </body>
   </file>
@@ -952,6 +967,11 @@ Note: if you forget the passcode, you'll need to delete and reinstall the app. A
         <target>-</target>
         <note>Class = "UILabel"; text = "-"; ObjectID = "9Yi-42-22H"; Note = "Do not translate";</note>
       </trans-unit>
+      <trans-unit id="708-fR-i2H.text" xml:space="preserve">
+        <source>Delete account</source>
+        <target>Delete account</target>
+        <note>Class = "UILabel"; text = "Delete account"; ObjectID = "708-fR-i2H";</note>
+      </trans-unit>
       <trans-unit id="BXA-IE-d8z.title" xml:space="preserve">
         <source>Account</source>
         <target>Account</target>
@@ -1210,14 +1230,14 @@ Note: if you forget the passcode, you'll need to delete and reinstall the app. A
         <target>New Spreadsheet</target>
         <note/>
       </trans-unit>
-      <trans-unit id="ONLYOFFICE form template (.docxf)" xml:space="preserve">
-        <source>ONLYOFFICE form template (.docxf)</source>
-        <target>ONLYOFFICE form template (.docxf)</target>
-        <note/>
-      </trans-unit>
       <trans-unit id="ONLYOFFICE fillable form (.oform)" xml:space="preserve">
         <source>ONLYOFFICE fillable form (.oform)</source>
         <target>ONLYOFFICE fillable form (.oform)</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="ONLYOFFICE form template (.docxf)" xml:space="preserve">
+        <source>ONLYOFFICE form template (.docxf)</source>
+        <target>ONLYOFFICE form template (.docxf)</target>
         <note/>
       </trans-unit>
     </body>
@@ -1272,14 +1292,14 @@ Note: if you forget the passcode, you'll need to delete and reinstall the app. A
         <target>New Spreadsheet</target>
         <note/>
       </trans-unit>
-      <trans-unit id="ONLYOFFICE form template (.docxf)" xml:space="preserve">
-        <source>ONLYOFFICE form template (.docxf)</source>
-        <target>ONLYOFFICE form template (.docxf)</target>
-        <note/>
-      </trans-unit>
       <trans-unit id="ONLYOFFICE fillable form (.oform)" xml:space="preserve">
         <source>ONLYOFFICE fillable form (.oform)</source>
         <target>ONLYOFFICE fillable form (.oform)</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="ONLYOFFICE form template (.docxf)" xml:space="preserve">
+        <source>ONLYOFFICE form template (.docxf)</source>
+        <target>ONLYOFFICE form template (.docxf)</target>
         <note/>
       </trans-unit>
     </body>
@@ -1620,9 +1640,9 @@ others which use WebDAV protocol.</target>
         <target>Copying</target>
         <note>Caption of the processing</note>
       </trans-unit>
-      <trans-unit id="Could not change file attrubutes" xml:space="preserve">
-        <source>Could not change file attrubutes</source>
-        <target>Could not change file attrubutes</target>
+      <trans-unit id="Could not change file attributes" xml:space="preserve">
+        <source>Could not change file attributes</source>
+        <target>Could not change file attributes</target>
         <note>Description of file operation error</note>
       </trans-unit>
       <trans-unit id="Could not change the directory" xml:space="preserve">
@@ -2149,6 +2169,11 @@ others which use WebDAV protocol.</target>
       <trans-unit id="Incorrect portal address" xml:space="preserve">
         <source>Incorrect portal address</source>
         <target>Incorrect portal address</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Instructions had been sent to your email" xml:space="preserve">
+        <source>Instructions had been sent to your email</source>
+        <target>Instructions had been sent to your email</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Invalid Country Code" xml:space="preserve">
@@ -2746,6 +2771,16 @@ to the clipboard</target>
         <target>Selecting access rights</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
+      <trans-unit id="Send" xml:space="preserve">
+        <source>Send</source>
+        <target>Send</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Send the profile deletion instructions to the email address %@?" xml:space="preserve">
+        <source>Send the profile deletion instructions to the email address %@?</source>
+        <target>Send the profile deletion instructions to the email address %@?</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
       <trans-unit id="Sending" xml:space="preserve">
         <source>Sending</source>
         <target>Sending</target>
@@ -2860,6 +2895,11 @@ to the clipboard</target>
         <source>Tb</source>
         <target>Tb</target>
         <note>Data units</note>
+      </trans-unit>
+      <trans-unit id="Terminate account" xml:space="preserve">
+        <source>Terminate account</source>
+        <target>Terminate account</target>
+        <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Terms of Service" xml:space="preserve">
         <source>Terms of Service</source>

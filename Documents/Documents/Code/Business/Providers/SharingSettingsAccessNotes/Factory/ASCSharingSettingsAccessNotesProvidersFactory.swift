@@ -9,7 +9,6 @@
 import Foundation
 
 class ASCSharingSettingsAccessNotesProvidersFactory {
-    
     func get(accessType: AccessType) -> ASCSharingSettingsAccessNotesProviderProtocol {
         switch accessType {
         case .externalLink:
@@ -18,7 +17,7 @@ class ASCSharingSettingsAccessNotesProvidersFactory {
             return ASCSharingSettingsAccessForUserOrGroupNotesProvider()
         }
     }
-    
+
     enum AccessType {
         case externalLink
         case userOrGroup

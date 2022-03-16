@@ -22,3 +22,6 @@
 /* Privacy - Photo Library Usage Description */
 "NSPhotoLibraryUsageDescription" = "Questa app richiede l'accesso alla libreria di foto, in modo da poter caricare le tue foto nell'app.";
 
+/* (No Comment) */
+"ONLYOFFICE form template (.docxf)" = "Modello di modulo ONLYOFFICE (.docxf)";
+

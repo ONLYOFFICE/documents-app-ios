@@ -32,7 +32,7 @@ enum OnlyofficeServerError: NetworkingServerError {
         switch self {
         case .unauthorized:
             return NSLocalizedString("User authentication required", comment: "")
-        case .unknown(let message):
+        case let .unknown(message):
             return message ?? NSLocalizedString("Something went wrong, try again", comment: "")
         case .paymentRequired:
             return ASCLocalization.Error.paymentRequiredTitle

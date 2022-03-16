@@ -8,27 +8,26 @@
 
 import UIKit
 
-class ASCDocumentsToolbar : UIToolbar {
-    
+class ASCDocumentsToolbar: UIToolbar {
     override func layoutSubviews() {
         super.layoutSubviews()
-        
+
         if let uiBarBackground = subviews.first(where: { NSStringFromClass($0.classForCoder).contains("UIBarBackground") }),
            let uiToolbarContentView = subviews.first(where: { NSStringFromClass($0.classForCoder).contains("UIToolbarContentView") })
         {
-            let contentViewHeight =  uiToolbarContentView.frame.height
-            
+            let contentViewHeight = uiToolbarContentView.frame.height
+
             if (uiBarBackground.height - contentViewHeight) < contentViewHeight {
                 return
             }
-            
+
             uiBarBackground.frame = CGRect(
                 x: uiBarBackground.x,
                 y: uiBarBackground.y + contentViewHeight,
                 width: uiBarBackground.width,
                 height: uiBarBackground.height - contentViewHeight
             )
-            
+
             uiToolbarContentView.frame = CGRect(
                 x: uiToolbarContentView.x,
                 y: uiToolbarContentView.y + contentViewHeight,
@@ -37,5 +36,4 @@ class ASCDocumentsToolbar : UIToolbar {
             )
         }
     }
-
 }

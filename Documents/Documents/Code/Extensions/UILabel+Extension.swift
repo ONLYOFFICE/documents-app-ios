@@ -9,25 +9,24 @@
 import UIKit
 
 extension UILabel {
-    
     func addTrailing(image: UIImage) {
         let attachment = NSTextAttachment()
         attachment.image = image
 
         let attachmentString = NSAttributedString(attachment: attachment)
         let string: NSMutableAttributedString
-        
-        if let attributedText = self.attributedText {
+
+        if let attributedText = attributedText {
             string = attributedText.mutableCopy() as! NSMutableAttributedString
         } else {
-            string = NSMutableAttributedString(string: self.text ?? "", attributes: [:])
+            string = NSMutableAttributedString(string: text ?? "", attributes: [:])
         }
 
         string.append(NSAttributedString(string: " "))
         string.append(attachmentString)
-        self.attributedText = string
+        attributedText = string
     }
-    
+
     func addLeading(image: UIImage) {
         let attachment = NSTextAttachment()
         attachment.image = image
@@ -35,18 +34,17 @@ extension UILabel {
         let attachmentString = NSAttributedString(attachment: attachment)
         let mutableAttributedString = NSMutableAttributedString()
         mutableAttributedString.append(attachmentString)
-        
+
         let string: NSMutableAttributedString
-        
-        if let attributedText = self.attributedText {
+
+        if let attributedText = attributedText {
             string = attributedText.mutableCopy() as! NSMutableAttributedString
         } else {
-            string = NSMutableAttributedString(string: self.text ?? "", attributes: [:])
+            string = NSMutableAttributedString(string: text ?? "", attributes: [:])
         }
-        
+
         mutableAttributedString.append(NSAttributedString(string: " "))
         mutableAttributedString.append(string)
-        self.attributedText = mutableAttributedString
+        attributedText = mutableAttributedString
     }
-
 }

@@ -9,14 +9,14 @@
 import UIKit
 
 class ASCLocalization {
-    struct Common {
+    enum Common {
         static let cancel = NSLocalizedString("common.cancel", tableName: nil, bundle: Bundle.main, value: "Cancel", comment: "Cancel")
         static let ok = NSLocalizedString("common.ok", tableName: nil, bundle: Bundle.main, value: "OK", comment: "OK")
         static let error = NSLocalizedString("common.error", tableName: nil, bundle: Bundle.main, value: "Error", comment: "Error")
         static let me = NSLocalizedString("common.me", tableName: nil, bundle: Bundle.main, value: "Me", comment: "Myself")
     }
 
-    struct Error {
+    enum Error {
         static let paymentRequiredTitle = NSLocalizedString("common.paymentRequiredTitle", tableName: nil, bundle: Bundle.main, value: "Payment required", comment: "Payment required title")
         static let paymentRequiredMsg = NSLocalizedString("common.paymentRequiredMsg", tableName: nil, bundle: Bundle.main, value: "The paid period is over", comment: "Payment required message")
         static let forbiddenTitle = NSLocalizedString("error.errorForbiddenTitle", tableName: nil, bundle: Bundle.main, value: "Access is Forbidden", comment: "Access is Forbidden title")

@@ -80,7 +80,7 @@
 "All Files" = "Все файлы";
 
 /* No comment provided by engineer. */
-"Allow access via external link" = "Разрешить доступ по внешней ссылке";
+"Allow access via external link" = "Доступ по внешней ссылке";
 
 /* No comment provided by engineer. */
 "An unexpected error has occurred. Please try again later. Sorry for inconvenience." = "Произошла непредвиденная ошибка. Повторите попытку позже. Извините за неудобство.";
@@ -221,7 +221,7 @@
 "Copying" = "Копирование";
 
 /* Description of file operation error */
-"Could not change file attrubutes" = "Не удалось изменить атрибуты файла";
+"Could not change file attributes" = "Не удалось изменить атрибуты файла";
 
 /* Description of file operation error */
 "Could not change the directory" = "Не удалось изменить каталог";
@@ -556,6 +556,9 @@
 
 /* No comment provided by engineer. */
 "Incorrect portal address" = "Неверный адрес портала";
+
+/* No comment provided by engineer. */
+"Instructions had been sent to your email" = "Инструкция отправлена ​​на вашу почту";
 
 /* No comment provided by engineer. */
 "Invalid Country Code" = "Некорректный код страны";
@@ -924,6 +927,12 @@
 /* No comment provided by engineer. */
 "Selecting access rights" = "Выбор прав доступа";
 
+/* No comment provided by engineer. */
+"Send" = "Отправить";
+
+/* No comment provided by engineer. */
+"Send the profile deletion instructions to the email address %@?" = "Отправить инструкцию по удалению профиля на адрес электронной почты %@?";
+
 /* Caption of the process */
 "Sending" = "Отправка";
 
@@ -995,6 +1004,9 @@
 
 /* Data units */
 "Tb" = "Тб";
+
+/* No comment provided by engineer. */
+"Terminate account" = "Удалить аккаунт";
 
 /* Part of phrases - By creating the portal you agree with our Privacy Policy and Terms of Service */
 "Terms of Service" = "Условиями использования";

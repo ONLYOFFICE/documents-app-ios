@@ -40,6 +40,14 @@
         <target>写真を置き換えする</target>
         <note>Class = "UITextField"; placeholder = "Required"; ObjectID = "gp7-l6-arn";</note>
       </trans-unit>
+      <trans-unit id="i2t-Xh-reL.placeholder" xml:space="preserve">
+        <source>example.com</source>
+        <note>Class = "UITextField"; placeholder = "example.com"; ObjectID = "i2t-Xh-reL";</note>
+      </trans-unit>
+      <trans-unit id="idC-C3-Fpx.text" xml:space="preserve">
+        <source>Server</source>
+        <note>Class = "UILabel"; text = "Server"; ObjectID = "idC-C3-Fpx";</note>
+      </trans-unit>
       <trans-unit id="muA-mV-bS6.footerTitle" xml:space="preserve">
         <source>You can connect the following accounts to the ONLYOFFICE™ Documents.</source>
         <target>次のアカウントを ONLYOFFICE™ Documents に接続できます。</target>
@@ -54,6 +62,10 @@
         <source>Server</source>
         <target>サーバー</target>
         <note>Class = "UILabel"; text = "Server"; ObjectID = "q9H-LF-Uc2";</note>
+      </trans-unit>
+      <trans-unit id="sK2-QR-ADm.text" xml:space="preserve">
+        <source>Next</source>
+        <note>Class = "UILabel"; text = "Next"; ObjectID = "sK2-QR-ADm";</note>
       </trans-unit>
     </body>
   </file>
@@ -894,6 +906,10 @@ Note: if you forget the passcode, you'll need to delete and reinstall the app. A
         <target>-</target>
         <note>Class = "UILabel"; text = "-"; ObjectID = "9Yi-42-22H"; Note = "Do not translate";</note>
       </trans-unit>
+      <trans-unit id="708-fR-i2H.text" xml:space="preserve">
+        <source>Delete account</source>
+        <note>Class = "UILabel"; text = "Delete account"; ObjectID = "708-fR-i2H";</note>
+      </trans-unit>
       <trans-unit id="BXA-IE-d8z.title" xml:space="preserve">
         <source>Account</source>
         <target>アカウント</target>
@@ -1107,7 +1123,7 @@ Note: if you forget the passcode, you'll need to delete and reinstall the app. A
       </trans-unit>
     </body>
   </file>
-  <file original="Documents/en.lproj/Documents-InfoPlist.strings" datatype="plaintext" source-language="en" target-language="ja">
+  <file original="Documents/en.lproj/Documents-InfoPlist.strings" source-language="en" target-language="ja" datatype="plaintext">
     <header>
       <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="13.2.1" build-num="13C100"/>
     </header>
@@ -1151,63 +1167,72 @@ Note: if you forget the passcode, you'll need to delete and reinstall the app. A
         <target>新規スプレッドシート</target>
         <note/>
       </trans-unit>
-      <trans-unit id="ONLYOFFICE Edit Form document (.docxf)" xml:space="preserve">
-        <source>ONLYOFFICE Edit Form document (.docxf)</source>
-        <note/>
-      </trans-unit>
-      <trans-unit id="ONLYOFFICE Fill Form document (.oform)" xml:space="preserve">
-        <source>ONLYOFFICE Fill Form document (.oform)</source>
-        <note/>
-      </trans-unit>
-    </body>
-  </file>
-  <file original="Documents/en.lproj/Documents.alpha-InfoPlist.strings" datatype="plaintext" source-language="en" target-language="ja">
-    <header>
-      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="13.2.1" build-num="13C100"/>
-    </header>
-    <body>
-      <trans-unit id="CFBundleName" xml:space="preserve">
-        <source>Documents-Alpha</source>
-        <note>Bundle name</note>
-      </trans-unit>
-      <trans-unit id="NSCameraUsageDescription" xml:space="preserve">
-        <source>This app requires access to the camera, so that you can take photo and upload it in the app.</source>
-        <note>Privacy - Camera Usage Description</note>
-      </trans-unit>
-      <trans-unit id="NSFaceIDUsageDescription" xml:space="preserve">
-        <source>This app requires Face ID permission to authenticate using Face recognition.</source>
-        <note>Privacy - Face ID Usage Description</note>
-      </trans-unit>
-      <trans-unit id="NSLocalNetworkUsageDescription" xml:space="preserve">
-        <source>Network access required</source>
-        <note>Privacy - Local Network Usage Description</note>
-      </trans-unit>
-      <trans-unit id="NSPhotoLibraryAddUsageDescription" xml:space="preserve">
-        <source>This app requires access to the photo library, so that you can upload your photos in the app.</source>
-        <note>Privacy - Photo Library Additions Usage Description</note>
-      </trans-unit>
-      <trans-unit id="NSPhotoLibraryUsageDescription" xml:space="preserve">
-        <source>This app requires access to the photo library, so that you can upload your photos in the app.</source>
-        <note>Privacy - Photo Library Usage Description</note>
-      </trans-unit>
-      <trans-unit id="New Document" xml:space="preserve">
-        <source>New Document</source>
-        <note/>
-      </trans-unit>
-      <trans-unit id="New Presentation" xml:space="preserve">
-        <source>New Presentation</source>
-        <note/>
-      </trans-unit>
-      <trans-unit id="New Spreadsheet" xml:space="preserve">
-        <source>New Spreadsheet</source>
+      <trans-unit id="ONLYOFFICE fillable form (.oform)" xml:space="preserve">
+        <source>ONLYOFFICE fillable form (.oform)</source>
         <note/>
       </trans-unit>
       <trans-unit id="ONLYOFFICE form template (.docxf)" xml:space="preserve">
         <source>ONLYOFFICE form template (.docxf)</source>
         <note/>
       </trans-unit>
+    </body>
+  </file>
+  <file original="Documents/en.lproj/Documents.alpha-InfoPlist.strings" source-language="en" target-language="ja" datatype="plaintext">
+    <header>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="13.2.1" build-num="13C100"/>
+    </header>
+    <body>
+      <trans-unit id="CFBundleName" xml:space="preserve">
+        <source>Documents-Alpha</source>
+        <target>Документи-Алфа</target>
+        <note>Bundle name</note>
+      </trans-unit>
+      <trans-unit id="NSCameraUsageDescription" xml:space="preserve">
+        <source>This app requires access to the camera, so that you can take photo and upload it in the app.</source>
+        <target>Това приложение изисква достъп до камерата, за да можете да правите снимки.</target>
+        <note>Privacy - Camera Usage Description</note>
+      </trans-unit>
+      <trans-unit id="NSFaceIDUsageDescription" xml:space="preserve">
+        <source>This app requires Face ID permission to authenticate using Face recognition.</source>
+        <target>Това приложение изисква разрешението за идентификация на лицето, за да се удостовери с помощта на функцията за разпознаване на лица.</target>
+        <note>Privacy - Face ID Usage Description</note>
+      </trans-unit>
+      <trans-unit id="NSLocalNetworkUsageDescription" xml:space="preserve">
+        <source>Network access required</source>
+        <target>Изисква се достъп до мрежа</target>
+        <note>Privacy - Local Network Usage Description</note>
+      </trans-unit>
+      <trans-unit id="NSPhotoLibraryAddUsageDescription" xml:space="preserve">
+        <source>This app requires access to the photo library, so that you can upload your photos in the app.</source>
+        <target>Това приложение изисква достъп до библиотеката с снимки, за да можете да качвате снимките си в приложението.</target>
+        <note>Privacy - Photo Library Additions Usage Description</note>
+      </trans-unit>
+      <trans-unit id="NSPhotoLibraryUsageDescription" xml:space="preserve">
+        <source>This app requires access to the photo library, so that you can upload your photos in the app.</source>
+        <target>Това приложение изисква достъп до библиотеката с снимки, за да можете да качвате снимките си в приложението.</target>
+        <note>Privacy - Photo Library Usage Description</note>
+      </trans-unit>
+      <trans-unit id="New Document" xml:space="preserve">
+        <source>New Document</source>
+        <target>Нов документ</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="New Presentation" xml:space="preserve">
+        <source>New Presentation</source>
+        <target>Нова презентация</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="New Spreadsheet" xml:space="preserve">
+        <source>New Spreadsheet</source>
+        <target>Нова електронна таблица</target>
+        <note/>
+      </trans-unit>
       <trans-unit id="ONLYOFFICE fillable form (.oform)" xml:space="preserve">
         <source>ONLYOFFICE fillable form (.oform)</source>
+        <note/>
+      </trans-unit>
+      <trans-unit id="ONLYOFFICE form template (.docxf)" xml:space="preserve">
+        <source>ONLYOFFICE form template (.docxf)</source>
         <note/>
       </trans-unit>
     </body>
@@ -1531,8 +1556,8 @@ WebDAV プロトコールを使用する他のクラウド</target>
         <target>コピー中</target>
         <note>Caption of the processing</note>
       </trans-unit>
-      <trans-unit id="Could not change file attrubutes" xml:space="preserve">
-        <source>Could not change file attrubutes</source>
+      <trans-unit id="Could not change file attributes" xml:space="preserve">
+        <source>Could not change file attributes</source>
         <note>Description of file operation error</note>
       </trans-unit>
       <trans-unit id="Could not change the directory" xml:space="preserve">
@@ -2032,6 +2057,10 @@ WebDAV プロトコールを使用する他のクラウド</target>
       <trans-unit id="Incorrect portal address" xml:space="preserve">
         <source>Incorrect portal address</source>
         <target>ポータルのアドレスが正しくありません</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Instructions had been sent to your email" xml:space="preserve">
+        <source>Instructions had been sent to your email</source>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Invalid Country Code" xml:space="preserve">
@@ -2606,6 +2635,14 @@ to the clipboard</source>
         <source>Selecting access rights</source>
         <note>No comment provided by engineer.</note>
       </trans-unit>
+      <trans-unit id="Send" xml:space="preserve">
+        <source>Send</source>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Send the profile deletion instructions to the email address %@?" xml:space="preserve">
+        <source>Send the profile deletion instructions to the email address %@?</source>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
       <trans-unit id="Sending" xml:space="preserve">
         <source>Sending</source>
         <note>Caption of the process</note>
@@ -2713,6 +2750,10 @@ to the clipboard</source>
         <source>Tb</source>
         <target>Tb</target>
         <note>Data units</note>
+      </trans-unit>
+      <trans-unit id="Terminate account" xml:space="preserve">
+        <source>Terminate account</source>
+        <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Terms of Service" xml:space="preserve">
         <source>Terms of Service</source>

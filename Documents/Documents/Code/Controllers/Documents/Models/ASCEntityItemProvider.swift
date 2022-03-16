@@ -15,34 +15,35 @@ class ASCEntityItemProvider: NSObject, Codable {
     public var entity: ASCEntity {
         return file ?? folder ?? ASCEntity()
     }
+
     private var file: ASCFile?
     private var folder: ASCFolder?
 
-    private enum CodingKeys : String, CodingKey {
+    private enum CodingKeys: String, CodingKey {
         case providerId
         case file
         case folder
     }
 
-    required public init(providerId: String, entity: ASCEntity) {
+    public required init(providerId: String, entity: ASCEntity) {
         self.providerId = providerId
-        self.file = entity as? ASCFile
-        self.folder = entity as? ASCFolder
+        file = entity as? ASCFile
+        folder = entity as? ASCFolder
     }
 
-    required public init(from decoder: Decoder) throws {
+    public required init(from decoder: Decoder) throws {
         let values = try decoder.container(keyedBy: ASCEntityItemProvider.CodingKeys.self)
         do {
             let fileJson = try values.decode(String.self, forKey: .file)
-            self.file = ASCFile(JSONString: fileJson)
-        } catch { }
+            file = ASCFile(JSONString: fileJson)
+        } catch {}
 
         do {
             let folderJson = try values.decode(String.self, forKey: .folder)
-            self.folder = ASCFolder(JSONString: folderJson)
-        } catch { }
+            folder = ASCFolder(JSONString: folderJson)
+        } catch {}
 
-        self.providerId = try values.decode(String.self, forKey: .providerId)
+        providerId = try values.decode(String.self, forKey: .providerId)
     }
 
     public func encode(to encoder: Encoder) throws {
@@ -66,7 +67,8 @@ extension ASCEntityItemProvider: NSItemProviderReading {
     }
 
     static func object(withItemProviderData data: Data,
-                       typeIdentifier: String) throws -> Self {
+                       typeIdentifier: String) throws -> Self
+    {
         let decoder = JSONDecoder()
         let documentsItemProvider = try decoder.decode(ASCEntityItemProvider.self, from: data)
 
@@ -80,7 +82,8 @@ extension ASCEntityItemProvider: NSItemProviderWriting {
     }
 
     func loadData(withTypeIdentifier typeIdentifier: String,
-                  forItemProviderCompletionHandler completionHandler: @escaping (Data?, Error?) -> Void) -> Progress? {
+                  forItemProviderCompletionHandler completionHandler: @escaping (Data?, Error?) -> Void) -> Progress?
+    {
         let progress = Progress(totalUnitCount: 100)
         do {
             let data = try JSONEncoder().encode(self)

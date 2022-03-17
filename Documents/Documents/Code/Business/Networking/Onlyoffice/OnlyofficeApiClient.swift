@@ -11,7 +11,6 @@ import Foundation
 import SwiftyJSON
 
 class OnlyofficeTokenAdapter: RequestAdapter {
-
     private let accessToken: String
 
     init(accessToken: String) {

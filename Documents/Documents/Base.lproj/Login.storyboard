@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="B0k-do-2Bx">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="B0k-do-2Bx">
     <device id="retina6_0" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -574,7 +574,7 @@
                                 </constraints>
                             </view>
                             <stackView opaque="NO" contentMode="scaleToFill" spacing="30" translatesAutoresizingMaskIntoConstraints="NO" id="na0-HR-avv">
-                                <rect key="frame" x="90" y="710" width="210" height="50"/>
+                                <rect key="frame" x="53" y="710" width="284" height="50"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gXK-Fu-Jlq" userLabel="Facebook login">
                                         <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
@@ -598,7 +598,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Hq7-X8-dJk" userLabel="Apple login">
-                                        <rect key="frame" x="160" y="0.0" width="50" height="50"/>
+                                        <rect key="frame" x="160" y="0.0" width="44" height="50"/>
                                         <inset key="imageEdgeInsets" minX="3" minY="6" maxX="3" maxY="6"/>
                                         <state key="normal" image="signin-apple"/>
                                         <userDefinedRuntimeAttributes>
@@ -611,7 +611,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9h9-uT-mkt" userLabel="Microsoft login">
-                                        <rect key="frame" x="160" y="0.0" width="50" height="50"/>
+                                        <rect key="frame" x="234" y="0.0" width="50" height="50"/>
                                         <state key="normal" image="signin-microsoft"/>
                                         <userDefinedRuntimeAttributes>
                                             <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
@@ -1045,7 +1045,7 @@ Authentication</string>
                                 <color key="currentPageIndicatorTintColor" white="0.66666666669999997" alpha="1" colorSpace="calibratedWhite"/>
                             </pageControl>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="e1X-0t-hcs">
-                                <rect key="frame" x="254" y="747" width="120" height="60"/>
+                                <rect key="frame" x="254" y="747.66666666666663" width="120" height="60"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="60" id="6rY-ut-ZMh"/>
                                     <constraint firstAttribute="width" constant="120" id="uq4-MU-dhF"/>
@@ -1564,16 +1564,16 @@ Authentication</string>
     </scenes>
     <designables>
         <designable name="ciJ-Qc-kAx">
-            <size key="intrinsicContentSize" width="160.66666666666666" height="34"/>
+            <size key="intrinsicContentSize" width="280" height="39.220703125"/>
         </designable>
         <designable name="lTc-Mg-8ay">
-            <size key="intrinsicContentSize" width="62.666666666666664" height="34"/>
+            <size key="intrinsicContentSize" width="280" height="39.220703125"/>
         </designable>
         <designable name="q8z-Ru-xxV">
-            <size key="intrinsicContentSize" width="63.333333333333336" height="34"/>
+            <size key="intrinsicContentSize" width="280" height="39.220703125"/>
         </designable>
         <designable name="xUt-UA-mBW">
-            <size key="intrinsicContentSize" width="90.333333333333329" height="34"/>
+            <size key="intrinsicContentSize" width="280" height="39.220703125"/>
         </designable>
     </designables>
     <color key="tintColor" red="0.1764705882352941" green="0.41960784313725491" blue="0.69019607843137254" alpha="1" colorSpace="calibratedRGB"/>

@@ -6,8 +6,8 @@
 //  Copyright © 2017 Ascensio System SIA. All rights reserved.
 //
 
-import AuthenticationServices
 import Alamofire
+import AuthenticationServices
 import IQKeyboardManagerSwift
 import MBProgressHUD
 import SkyFloatingLabelTextField
@@ -28,7 +28,7 @@ class ASCSignInViewController: ASCBaseViewController {
     private let googleSignInController = ASCGoogleSignInController()
     @available(iOS 13.0, *)
     private lazy var appleIdSignInController = ASCAppleIdSignInController()
-  
+
     // MARK: - Outlets
 
     @IBOutlet var emailField: SkyFloatingLabelTextField!
@@ -40,6 +40,8 @@ class ASCSignInViewController: ASCBaseViewController {
     @IBOutlet var googleButton: UIButton!
     @IBOutlet var microsoftButton: UIButton!
     @IBOutlet var loginByLabel: UILabel!
+    @IBOutlet var appleIdButton: UIButton!
+    @IBOutlet var signInButtonsStack: UIStackView!
 
     // MARK: - Lifecycle Methods
 
@@ -74,7 +76,7 @@ class ASCSignInViewController: ASCBaseViewController {
             button?.titleLabel?.adjustsFontSizeToFitWidth = true
             button?.titleLabel?.lineBreakMode = .byClipping
         }
-        
+
         appleIdButton?.imageView?.layer.cornerRadius = 4
 
         let ssoUrl = capabilities?.ssoUrl ?? ""
@@ -98,16 +100,19 @@ class ASCSignInViewController: ASCBaseViewController {
             let allowFacebook = capabilities.providers.contains(.facebook)
             let allowGoogle = capabilities.providers.contains(.google)
             let allowAppleId = capabilities.providers.contains(.appleid)
-            
-            loginByLabel?.isHidden = !(allowFacebook || allowGoogle)
+            let allowMicrosoft = capabilities.providers.contains(.microsoft)
+
+            loginByLabel?.isHidden = !(allowFacebook || allowGoogle || allowAppleId || allowMicrosoft)
             facebookButton?.isHidden = !allowFacebook
             googleButton?.isHidden = !allowGoogle
-            
+
             if #available(iOS 13.0, *) {
                 appleIdButton?.isHidden = !allowAppleId
             } else {
                 appleIdButton?.isHidden = true
             }
+
+            microsoftButton?.isHidden = !allowMicrosoft
         }
     }
 
@@ -336,38 +341,38 @@ class ASCSignInViewController: ASCBaseViewController {
             }
         }
     }
-    
-    @available (iOS 13, *)
+
+    @available(iOS 13, *)
     @IBAction func onAppleIdLogin(_ sender: UIButton) {
         appleIdSignInController.signIn(controller: self) { result in
             switch result {
-            case .success(let appleIdAuthorizationCode):
+            case let .success(appleIdAuthorizationCode):
                 let authRequest = OnlyofficeAuthRequest()
                 authRequest.provider = .appleid
                 authRequest.portal = self.portal
                 authRequest.codeOauth = appleIdAuthorizationCode
-                
+
                 let hud = MBProgressHUD.showTopMost()
                 hud?.label.text = NSLocalizedString("Logging in", comment: "Caption of the process")
-              
+
                 ASCSignInController.shared.login(by: authRequest, in: self.navigationController) { success in
                     if success {
                         hud?.setSuccessState()
                         hud?.hide(animated: true, afterDelay: 2)
 
                         NotificationCenter.default.post(name: ASCConstants.Notifications.loginOnlyofficeCompleted, object: nil)
-                        
+
                         self.dismiss(animated: true, completion: nil)
                     } else {
                         hud?.hide(animated: true)
-                        
+
                         UIAlertController.showError(
                             in: self,
                             message: NSLocalizedString("User authentication failed", comment: "")
                         )
                     }
                 }
-            case .failure(let error):
+            case let .failure(error):
                 UIAlertController.showError(
                     in: self,
                     message: error.localizedDescription

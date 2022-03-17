@@ -6,10 +6,10 @@
 //  Copyright © 2021 Ascensio System SIA. All rights reserved.
 //
 
-import Foundation
-import UIKit
 import AuthenticationServices
+import Foundation
 import MBProgressHUD
+import UIKit
 
 typealias AppleIdAuthorizationCode = String
 
@@ -17,14 +17,14 @@ typealias AppleIdAuthorizationCode = String
 class ASCAppleIdSignInController: NSObject {
     private lazy var viewController: UIViewController = UIViewController()
     private var completionHandler: (Result<AppleIdAuthorizationCode, Error>) -> Void = { _ in }
-    
+
     func signIn(controller: UIViewController, handler: @escaping (Result<AppleIdAuthorizationCode, Error>) -> Void) {
         viewController = controller
         completionHandler = handler
-        
+
         let appleIDProvider = ASAuthorizationAppleIDProvider()
         let request = appleIDProvider.createRequest()
-        
+
         request.requestedScopes = [.fullName, .email]
 
         let authorizationController = ASAuthorizationController(authorizationRequests: [request])
@@ -37,7 +37,7 @@ class ASCAppleIdSignInController: NSObject {
 @available(iOS 13.0, *)
 extension ASCAppleIdSignInController: ASAuthorizationControllerPresentationContextProviding {
     func presentationAnchor(for controller: ASAuthorizationController) -> ASPresentationAnchor {
-        self.viewController.view.window!
+        viewController.view.window!
     }
 }
 
@@ -55,10 +55,10 @@ extension ASCAppleIdSignInController: ASAuthorizationControllerDelegate {
             completionHandler(.failure(Errors.appleIdAuthFailed))
             return
         }
-        
+
         completionHandler(.success(codeStr))
     }
-    
+
     @available(iOS 13.0, *)
     public func authorizationController(
         controller: ASAuthorizationController,
@@ -72,7 +72,7 @@ extension ASCAppleIdSignInController: ASAuthorizationControllerDelegate {
 extension ASCAppleIdSignInController {
     enum Errors: Error, LocalizedError {
         case appleIdAuthFailed
-        
+
         var errorDescription: String? {
             switch self {
             case .appleIdAuthFailed:

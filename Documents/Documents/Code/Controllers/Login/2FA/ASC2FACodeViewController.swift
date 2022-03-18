@@ -46,30 +46,31 @@ class ASC2FACodeViewController: ASCBaseViewController {
         helpLabel?.addGestureRecognizer(tapGesture)
     }
 
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
 
         IQKeyboardManager.shared.enable = true
         IQKeyboardManager.shared.enableAutoToolbar = true
         IQKeyboardManager.shared.shouldShowToolbarPlaceholder = false
         IQKeyboardManager.shared.shouldToolbarUsesTextFieldTintColor = true
 
-        if let _ = helpLabel {
-            codeField?.becomeFirstResponder()
-        }
-    }
-
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-
         checkPastboard()
     }
 
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
+        if KeyboardManagerHelper.disablingKeyboardToolbarByScreen == nil {
+            KeyboardManagerHelper.disablingKeyboardToolbarByScreen = ASC2FACodeViewController.identifier
+        }
+    }
 
-        IQKeyboardManager.shared.enable = false
-        IQKeyboardManager.shared.enableAutoToolbar = false
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        if KeyboardManagerHelper.disablingKeyboardToolbarByScreen == ASC2FACodeViewController.identifier || KeyboardManagerHelper.disablingKeyboardToolbarByScreen == nil {
+            IQKeyboardManager.shared.enable = false
+            IQKeyboardManager.shared.enableAutoToolbar = false
+            KeyboardManagerHelper.disablingKeyboardToolbarByScreen = nil
+        }
     }
 
     override var supportedInterfaceOrientations: UIInterfaceOrientationMask {

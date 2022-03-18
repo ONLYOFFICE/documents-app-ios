@@ -124,9 +124,18 @@ class ASCSignInViewController: ASCBaseViewController {
 
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
+        if KeyboardManagerHelper.disablingKeyboardToolbarByScreen == nil {
+            KeyboardManagerHelper.disablingKeyboardToolbarByScreen = ASCSignInViewController.identifier
+        }
+    }
 
-        IQKeyboardManager.shared.enable = false
-        IQKeyboardManager.shared.enableAutoToolbar = false
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        if KeyboardManagerHelper.disablingKeyboardToolbarByScreen == ASCSignInViewController.identifier || KeyboardManagerHelper.disablingKeyboardToolbarByScreen == nil {
+            IQKeyboardManager.shared.enable = false
+            IQKeyboardManager.shared.enableAutoToolbar = false
+            KeyboardManagerHelper.disablingKeyboardToolbarByScreen = nil
+        }
     }
 
     override var supportedInterfaceOrientations: UIInterfaceOrientationMask {

@@ -2480,6 +2480,12 @@ class ASCDocumentsViewController: ASCBaseTableViewController, UIGestureRecognize
         })
     }
 
+    @available(iOS 13.0, *)
+    override func tableView(_ tableView: UITableView, shouldBeginMultipleSelectionInteractionAt indexPath: IndexPath) -> Bool {
+        setEditMode(true)
+        return true
+    }
+
     // MARK: - Open files
 
     func open(file: ASCFile, viewMode: Bool = false) {

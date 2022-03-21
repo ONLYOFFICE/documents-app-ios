@@ -13,6 +13,7 @@ import SkyFloatingLabelTextField
 import UIKit
 
 class ASCConnectPortalViewController: ASCBaseViewController {
+    static let identifier = String(describing: ASCConnectPortalViewController.self)
     override class var storyboard: Storyboard { return Storyboard.login }
 
     // MARK: - Properties
@@ -76,10 +77,20 @@ class ASCConnectPortalViewController: ASCBaseViewController {
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
 
-        IQKeyboardManager.shared.enable = false
-        IQKeyboardManager.shared.enableAutoToolbar = false
+        if KeyboardManagerHelper.disablingKeyboardToolbarByScreen == nil {
+            KeyboardManagerHelper.disablingKeyboardToolbarByScreen = ASCConnectPortalViewController.identifier
+        }
 
         view.endEditing(true)
+    }
+
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        if KeyboardManagerHelper.disablingKeyboardToolbarByScreen == ASCConnectPortalViewController.identifier || KeyboardManagerHelper.disablingKeyboardToolbarByScreen == nil {
+            IQKeyboardManager.shared.enable = false
+            IQKeyboardManager.shared.enableAutoToolbar = false
+            KeyboardManagerHelper.disablingKeyboardToolbarByScreen = nil
+        }
     }
 
     override var supportedInterfaceOrientations: UIInterfaceOrientationMask {

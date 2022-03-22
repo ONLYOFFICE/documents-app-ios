@@ -333,6 +333,10 @@ class ASCDocumentsViewController: ASCBaseTableViewController, UIGestureRecognize
     }
 
     private func cleanup() {
+        if provider == nil {
+            return
+        }
+
         provider = nil
         UserDefaults.standard.removeObserver(self, forKeyPath: ASCConstants.SettingsKeys.sortDocuments)
         NotificationCenter.default.removeObserver(self)

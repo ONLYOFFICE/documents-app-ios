@@ -511,7 +511,8 @@ class ASCViewControllerManager {
                     if let resultFolder = response?.result {
                         folder = resultFolder
                     } else {
-                        folder.id = ""
+                        // Have no permissions for the folder, open root 'Shared with folder'
+                        folder.id = "@share"
                     }
                 }
             }

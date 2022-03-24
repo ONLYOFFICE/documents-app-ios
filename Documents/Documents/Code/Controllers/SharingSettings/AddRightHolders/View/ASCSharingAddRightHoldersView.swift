@@ -469,10 +469,8 @@ extension ASCSharingAddRightHoldersView {
 
     private func makeNextBarBtn() -> UIBarButtonItem {
         let nextBtn = ASCButtonStyle()
-        nextBtn.layer.cornerRadius = 13
-        nextBtn.textStyle = .semibodyWhite
-        nextBtn.setTitleForAllStates(NSLocalizedString("Next", comment: ""))
-        nextBtn.contentEdgeInsets = UIEdgeInsets(top: 2, left: 20, bottom: 2, right: 20)
+        nextBtn.styleType = .capsule
+        nextBtn.setTitleForAllStates(NSLocalizedString("Next", comment: "").uppercased())
         nextBtn.addTarget(self, action: #selector(onNextButtonTapped), for: .touchUpInside)
         nextBtn.isEnabled = isNextBarBtnEnabled
         nextBtn.enableMode = isNextBarBtnEnabled ? .enabled : .disabled

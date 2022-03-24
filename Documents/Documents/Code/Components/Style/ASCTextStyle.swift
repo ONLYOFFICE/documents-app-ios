@@ -71,20 +71,6 @@ enum ASCTextStyle {
                 return (UIFont.preferredFont(forTextStyle: .subheadline), .lightGray, 1)
             }
 
-        case .title3Bold:
-            if #available(iOS 13.0, *) {
-                return (UIFont.preferredFont(forTextStyle: .title3).bold(), .label, 1)
-            } else {
-                return (UIFont.preferredFont(forTextStyle: .title3).bold(), .black, 1)
-            }
-
-        case .subhead:
-            if #available(iOS 13.0, *) {
-                return (UIFont.preferredFont(forTextStyle: .subheadline), .label, 1)
-            } else {
-                return (UIFont.preferredFont(forTextStyle: .subheadline), .black, 1)
-            }
-
         case .subheadWhite:
             return (UIFont.preferredFont(forTextStyle: .subheadline), .white, 1)
 
@@ -93,6 +79,13 @@ enum ASCTextStyle {
                 return (UIFont.preferredFont(forTextStyle: .subheadline).bold(), .label, 1)
             } else {
                 return (UIFont.preferredFont(forTextStyle: .subheadline).bold(), .black, 1)
+            }
+
+        case .title3Bold:
+            if #available(iOS 13.0, *) {
+                return (UIFont.preferredFont(forTextStyle: .title3).bold(), .label, 1)
+            } else {
+                return (UIFont.preferredFont(forTextStyle: .title3).bold(), .black, 1)
             }
 
         case .largeTitleBold:

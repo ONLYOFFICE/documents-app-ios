@@ -9,7 +9,7 @@
 import UIKit
 
 enum ASCButtonStyleType: Int {
-    case `default`, action, bordered, gray
+    case `default`, action, bordered, gray, capsule
 }
 
 class ASCButtonStyle: UIButton {
@@ -77,6 +77,15 @@ class ASCButtonStyle: UIButton {
                 } else {
                     setTitleColorForAllStates(.black)
                 }
+            case .capsule:
+                UIView.animate(withDuration: 0.2, delay: 0.0, options: [], animations: {
+                    self.backgroundColor = self.isHighlighted
+                        ? Asset.Colors.brend.color.lighten()
+                        : Asset.Colors.brend.color
+                    self.backgroundColor = self.isEnabled
+                        ? self.backgroundColor
+                        : .lightGray
+                }, completion: nil)
             default:
                 UIView.animate(withDuration: 0.2, delay: 0.0, options: [], animations: {
                     self.backgroundColor = self.isHighlighted
@@ -127,6 +136,17 @@ class ASCButtonStyle: UIButton {
         updateColors()
     }
 
+    override func layoutSubviews() {
+        super.layoutSubviews()
+
+        switch styleType {
+        case .capsule:
+            layerCornerRadius = height * 0.5
+        default:
+            break
+        }
+    }
+
     private func updateStyle() {
         switch styleType {
         case .action:
@@ -148,6 +168,12 @@ class ASCButtonStyle: UIButton {
             layerCornerRadius = 8.0
         case .gray:
             layerCornerRadius = 8.0
+        case .capsule:
+            backgroundColor = Asset.Colors.brend.color
+            titleLabel?.textStyle = ASCTextStyle.subheadBold
+            titleLabel?.adjustsFontForContentSizeCategory = true
+            contentEdgeInsets = UIEdgeInsets(top: 5, left: 15, bottom: 5, right: 15)
+            layerCornerRadius = height * 0.5
         default:
             backgroundColor = Asset.Colors.brend.color
             titleLabel?.textStyle = ASCTextStyle.bodyWhite

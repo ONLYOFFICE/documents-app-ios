@@ -222,7 +222,7 @@ DEPENDENCIES:
   - KeychainSwift
   - Kingfisher
   - MBProgressHUD
-  - MediaBrowser (from `https://github.com/ayuzhin/MediaBrowser.git`)
+  - MediaBrowser (from `https://github.com/ayuzhin/MediaBrowser.git`, commit `626befc`)
   - MGSwipeTableCell
   - ObjectMapper
   - PhoneNumberKit
@@ -295,6 +295,7 @@ EXTERNAL SOURCES:
   FilesProvider:
     :git: https://github.com/ayuzhin/FileProvider.git
   MediaBrowser:
+    :commit: 626befc
     :git: https://github.com/ayuzhin/MediaBrowser.git
   PresentationEditor:
     :path: "../editors-ios/PresentationEditor.podspec"
@@ -308,7 +309,7 @@ CHECKOUT OPTIONS:
     :commit: de4efd5df99c1d062edbfd3156c47c59cf08bbf7
     :git: https://github.com/ayuzhin/FileProvider.git
   MediaBrowser:
-    :commit: 4726f4f3af8ee18becfb421aa60abd03731baacf
+    :commit: 626befc
     :git: https://github.com/ayuzhin/MediaBrowser.git
   SkyFloatingLabelTextField:
     :commit: a0750ebbc7311f3b3debf99c5e59338e854afa59
@@ -367,6 +368,6 @@ SPEC CHECKSUMS:
   UICircularProgressRing: 19927375b2b21b5fa5fd9582f15ccdef9659da16
   WhatsNewKit: c87028c4059dccd113495422801914cc53f6aab0
 
-PODFILE CHECKSUM: dc474c0b48ece0e5929dc094629c012126194c63
+PODFILE CHECKSUM: 1a9fe5594e6c26756a7eb260ee7046bcc796b1d4
 
 COCOAPODS: 1.11.2

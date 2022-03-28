@@ -64,6 +64,7 @@ class ASCDocumentsViewController: ASCBaseTableViewController, UIGestureRecognize
     private var selectBarButton: UIBarButtonItem?
     private var cancelBarButton: UIBarButtonItem?
     private var selectAllBarButton: UIBarButtonItem?
+    private var moreBarButton: UIBarButtonItem?
 
     // Search
     private lazy var searchController: UISearchController = {
@@ -605,11 +606,13 @@ class ASCDocumentsViewController: ASCBaseTableViewController, UIGestureRecognize
             ?? ASCStyles.createBarButton(title: ASCLocalization.Common.cancel, target: self, action: #selector(onCancelAction))
         selectAllBarButton = selectAllBarButton
             ?? ASCStyles.createBarButton(title: NSLocalizedString("Select", comment: "Button title"), target: self, action: #selector(onSelectAll))
-
+        moreBarButton = moreBarButton
+            ?? createMoreBarButton()
         sortSelectBarButton?.isEnabled = total > 0
         sortBarButton?.isEnabled = total > 0
         selectBarButton?.isEnabled = total > 0
         selectAllBarButton?.isEnabled = total > 0
+        moreBarButton?.isEnabled = total > 0
 
         if #available(iOS 14.0, *) {
             for barButton in [sortSelectBarButton, sortBarButton] {
@@ -628,8 +631,11 @@ class ASCDocumentsViewController: ASCBaseTableViewController, UIGestureRecognize
         } else {
             navigationItem.setLeftBarButtonItems(nil, animated: animated)
             var rightBarBtnItems = [ASCStyles.barFixedSpace]
-            if let addBarBtn = addBarButton {
+            if let addBarBtn = addBarButton,
+               let moreBarBtn = moreBarButton
+            {
                 rightBarBtnItems.append(addBarBtn)
+                rightBarBtnItems.append(moreBarBtn)
             }
             if UIDevice.phone {
                 if let sortSelectBarBtn = sortSelectBarButton {
@@ -665,7 +671,10 @@ class ASCDocumentsViewController: ASCBaseTableViewController, UIGestureRecognize
             return ASCStyles.createBarButton(image: Asset.Images.navMore.image, target: self, action: #selector(onSortSelectAction))
         }
 
-        return ASCStyles.createBarButton(title: NSLocalizedString("Select", comment: "Navigation bar button title"), target: self, action: #selector(onSelectAction))
+        return ASCStyles.createBarButton(
+            title: NSLocalizedString("Select", comment: "Navigation bar button title"),
+            target: self//,
+            //action: #selector(onSelectAction))
     }
 
     private func createSortBarButton() -> UIBarButtonItem? {
@@ -674,6 +683,18 @@ class ASCDocumentsViewController: ASCBaseTableViewController, UIGestureRecognize
         }
 
         return ASCStyles.createBarButton(image: Asset.Images.navSort.image, target: self, action: #selector(onSortAction))
+    }
+
+    private func createMoreBarButton() -> UIBarButtonItem? {
+        guard categoryIsRecent else {
+            // MARK: - TODO change action
+
+            return ASCStyles.createBarButton(image: Asset.Images.navMore.image, target: self, action: #selector(onSelectAction))
+        }
+
+        // MARK: - TODO change action
+
+        return ASCStyles.createBarButton(title: NSLocalizedString("More", comment: "Navigation bar button title"), target: self, action: #selector(onSelectAction))
     }
 
     private func configureToolBar() {
@@ -1176,6 +1197,7 @@ class ASCDocumentsViewController: ASCBaseTableViewController, UIGestureRecognize
         sortSelectBarButton?.isEnabled = !hasError && total > 0
         sortBarButton?.isEnabled = !hasError && total > 0
         selectBarButton?.isEnabled = !hasError && total > 0
+        moreBarButton?.isEnabled = !hasError && total > 0
     }
 
     private func fileMenu(cell: ASCFileCell) -> [MGSwipeButton]? {

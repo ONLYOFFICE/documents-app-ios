@@ -38,7 +38,7 @@ def common_pods
 
   pod 'SkyFloatingLabelTextField', :git => 'https://github.com/Skyscanner/SkyFloatingLabelTextField.git'
   pod 'MBProgressHUD'
-  pod 'MediaBrowser', :git => 'https://github.com/ayuzhin/MediaBrowser.git', :commit => '626befc'
+  pod 'MediaBrowser', :git => 'https://github.com/ayuzhin/MediaBrowser.git', :commit => '8411f5d'
   pod 'SwiftRater'
   pod 'Siren'
   pod 'WhatsNewKit'

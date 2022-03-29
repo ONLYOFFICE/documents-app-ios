@@ -42,6 +42,7 @@ internal enum Asset {
     internal static let barDeleteAll = ImageAsset(name: "bar-delete-all")
     internal static let barDeleteLink = ImageAsset(name: "bar-delete-link")
     internal static let barDelete = ImageAsset(name: "bar-delete")
+    internal static let barFilter = ImageAsset(name: "bar-filter")
     internal static let barMove = ImageAsset(name: "bar-move")
     internal static let barRecover = ImageAsset(name: "bar-recover")
     internal static let barSelect = ImageAsset(name: "bar-select")

@@ -64,6 +64,7 @@ class ASCDocumentsViewController: ASCBaseTableViewController, UIGestureRecognize
     private var selectBarButton: UIBarButtonItem?
     private var cancelBarButton: UIBarButtonItem?
     private var selectAllBarButton: UIBarButtonItem?
+    private var filterBarButton: UIBarButtonItem?
 
     // Search
     private lazy var searchController: UISearchController = {
@@ -475,6 +476,8 @@ class ASCDocumentsViewController: ASCBaseTableViewController, UIGestureRecognize
         }
     }
 
+    @objc func onFilterAction() {}
+
     @objc func onAddEntityAction() {
         guard let provider = provider else { return }
         flashBlockInteration()
@@ -599,6 +602,8 @@ class ASCDocumentsViewController: ASCBaseTableViewController, UIGestureRecognize
             ?? createSortSelectBarButton()
         sortBarButton = sortBarButton
             ?? createSortBarButton()
+        filterBarButton = filterBarButton
+            ?? createFilterBarButton()
         selectBarButton = selectBarButton
             ?? ASCStyles.createBarButton(image: Asset.Images.navSelect.image, target: self, action: #selector(onSelectAction))
         cancelBarButton = cancelBarButton
@@ -609,6 +614,7 @@ class ASCDocumentsViewController: ASCBaseTableViewController, UIGestureRecognize
         sortBarButton?.isEnabled = total > 0
         selectBarButton?.isEnabled = total > 0
         selectAllBarButton?.isEnabled = total > 0
+        filterBarButton?.isEnabled = total > 0
 
         if #available(iOS 14.0, *) {
             for barButton in [sortSelectBarButton, sortBarButton] {
@@ -634,6 +640,10 @@ class ASCDocumentsViewController: ASCBaseTableViewController, UIGestureRecognize
             if let sortSelectBarBtn = sortSelectBarButton {
                 rightBarBtnItems.append(sortSelectBarBtn)
             }
+
+            if let filterBarBtn = filterBarButton {
+                rightBarBtnItems.append(filterBarBtn)
+            }
             navigationItem.setRightBarButtonItems(rightBarBtnItems, animated: animated)
         }
 
@@ -649,6 +659,10 @@ class ASCDocumentsViewController: ASCBaseTableViewController, UIGestureRecognize
         guard showAddButton else { return nil }
 
         return ASCStyles.createBarButton(image: Asset.Images.navAdd.image, target: self, action: #selector(onAddEntityAction))
+    }
+
+    private func createFilterBarButton() -> UIBarButtonItem {
+        return ASCStyles.createBarButton(image: Asset.Images.barFilter.image, target: self, action: #selector(onFilterAction))
     }
 
     private func createSortSelectBarButton() -> UIBarButtonItem {
@@ -1171,6 +1185,7 @@ class ASCDocumentsViewController: ASCBaseTableViewController, UIGestureRecognize
         sortSelectBarButton?.isEnabled = !hasError && total > 0
         sortBarButton?.isEnabled = !hasError && total > 0
         selectBarButton?.isEnabled = !hasError && total > 0
+        filterBarButton?.isEnabled = !hasError && total > 0
     }
 
     private func fileMenu(cell: ASCFileCell) -> [MGSwipeButton]? {

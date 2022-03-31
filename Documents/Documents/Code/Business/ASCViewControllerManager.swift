@@ -43,9 +43,7 @@ class ASCViewControllerManager {
 
     private var openFileInfo: [String: Any]? {
         didSet {
-            if let info = openFileInfo {
-                routeOpenFile(info: info)
-            }
+            routeOpenFile()
         }
     }
 
@@ -92,10 +90,7 @@ class ASCViewControllerManager {
         configureRater()
 
         /// Open file from outside
-        if let info = openFileInfo {
-            routeOpenFile(info: info)
-            openFileInfo = nil
-        }
+        routeOpenFile()
     }
 
     func route(by url: URL, options: [UIApplication.OpenURLOptionsKey: Any]) -> Bool {
@@ -187,26 +182,29 @@ class ASCViewControllerManager {
         }
     }
 
-    private func routeOpenFile(info: [String: Any]) {
-        if let url = info["url"] as? URL {
-            if FileManager.default.isUbiquitousItem(at: url) {
-                // iCloud file
-                routeOpeniCloudFile(info: info)
-            } else if url.absoluteString.contains(ASCFileManager.localProvider.rootFolder.id) {
-                if url.absoluteString.contains(ASCFileManager.localProvider.rootFolder.id.appendingPathComponent("Inbox")) {
+    func routeOpenFile() {
+        if let info = openFileInfo {
+            if let url = info["url"] as? URL {
+                if FileManager.default.isUbiquitousItem(at: url) {
+                    // iCloud file
+                    routeOpeniCloudFile(info: info)
+                } else if url.absoluteString.contains(ASCFileManager.localProvider.rootFolder.id) {
+                    if url.absoluteString.contains(ASCFileManager.localProvider.rootFolder.id.appendingPathComponent("Inbox")) {
+                        // Import and open file
+                        routeOpenLocalFile(info: info)
+                    } else {
+                        // Open file
+                        routeOpenLocalFile(info: info, needImport: false)
+                    }
+                } else {
                     // Import and open file
                     routeOpenLocalFile(info: info)
-                } else {
-                    // Open file
-                    routeOpenLocalFile(info: info, needImport: false)
                 }
+                openFileInfo = nil
             } else {
-                // Import and open file
-                routeOpenLocalFile(info: info)
+                // Portal
+                routeOpenPortalFile(info: info)
             }
-        } else {
-            // Portal
-            routeOpenPortalFile(info: info)
         }
     }
 
@@ -427,12 +425,12 @@ class ASCViewControllerManager {
 
         guard
             let appDelegate = UIApplication.shared.delegate as? AppDelegate,
-            let portal = correctInfo["portal"] as? String,
-            let email = correctInfo["email"] as? String,
-            let fileJson = correctInfo["file"] as? [String: Any],
-            let folderJson = correctInfo["folder"] as? [String: Any],
-            var file = ASCFile(JSON: fileJson),
-            var folder = ASCFolder(JSON: folderJson)
+            let deepLink = ASCDeepLink(JSON: correctInfo),
+            let originalUrl = deepLink.originalUrl,
+            let portal = URL(string: originalUrl)?.dropPathAndQuery().absoluteString,
+            let email = deepLink.email,
+            var file = deepLink.file,
+            var folder = deepLink.folder
         else { return }
 
         let processAndOpenFile: () -> Void = { [weak self] in
@@ -447,8 +445,6 @@ class ASCViewControllerManager {
                 !(onlyofficeProvider?.apiClient.baseURL?.absoluteString ?? "").contains(portal) ||
                 email != onlyofficeProvider?.user?.email
             {
-                self?.openFileInfo = nil
-
                 let account = ASCAccountsManager.shared.get(by: portal, email: email)
                 let alertController = UIAlertController(
                     title: NSLocalizedString("Open Document", comment: ""),
@@ -461,9 +457,27 @@ class ASCViewControllerManager {
                     UIAlertAction(
                         title: (account != nil) ? NSLocalizedString("Switch", comment: "") : NSLocalizedString("Login", comment: ""),
                         style: .default,
-                        handler: { action in // [weak self] action in
-                            let currentAccout = ASCAccountsManager.shared.get(by: portal, email: email)
-                            ASCUserProfileViewController.logout(renewAccount: currentAccout)
+                        handler: { action in
+
+                            if let rootVC = ASCViewControllerManager.shared.rootController,
+                               let onlyofficeSplitViewController = rootVC.viewControllers?.first(where: { $0 is ASCOnlyofficeSplitViewController }),
+                               !onlyofficeSplitViewController.isViewLoaded
+                            {
+                                ASCViewControllerManager.shared.rootController?.display(
+                                    provider: ASCOnlyofficeProvider(),
+                                    folder: nil
+                                )
+                            } else {
+                                ASCUserProfileViewController.logout(renewAccount: account)
+                            }
+
+                            if account == nil, ASCAccountsManager.shared.accounts.count > 0 {
+                                delay(seconds: 0.3) {
+                                    if let accountsVC = ASCViewControllerManager.shared.rootController?.topMostViewController() {
+                                        accountsVC.navigationController?.pushViewController(ASCConnectPortalViewController.instance(), animated: true, completion: {})
+                                    }
+                                }
+                            }
                         }
                     )
                 )
@@ -472,14 +486,24 @@ class ASCViewControllerManager {
                     UIAlertAction(
                         title: ASCLocalization.Common.cancel,
                         style: .cancel,
-                        handler: nil
+                        handler: { [weak self] action in
+                            self?.openFileInfo = nil
+                        }
                     )
                 )
 
-                ASCViewControllerManager.shared.rootController?.present(alertController, animated: true, completion: nil)
+                delay(seconds: 1.0) {
+                    ASCViewControllerManager
+                        .shared
+                        .rootController?
+                        .topMostViewController()
+                        .present(alertController, animated: true, completion: nil)
+                }
 
                 return
             }
+
+            self?.openFileInfo = nil
 
             if ASCEditorManager.shared.isOpenedFile,
                let topWindow = UIApplication.shared.windows.first(where: { $0.isKeyWindow }),
@@ -536,9 +560,11 @@ class ASCViewControllerManager {
                     hud?.hide(animated: true)
 
                     if file.id != "", folder.id != "" {
-                        ASCViewControllerManager.shared.rootController?.display(provider: ASCFileManager.onlyofficeProvider, folder: folder.parentId == nil ? folder : nil)
+                        delay(seconds: 0.2) {
+                            ASCViewControllerManager.shared.rootController?.display(provider: ASCFileManager.onlyofficeProvider, folder: folder.parentId == nil ? folder : nil)
+                        }
 
-                        delay(seconds: 0.1) {
+                        delay(seconds: 0.3) {
                             if let documentVC = ASCViewControllerManager.shared.rootController?.topMostViewController() as? ASCDocumentsViewController {
                                 // Open target folder if not root folder
                                 if !(documentVC.folder == folder), folder.parentId != nil {

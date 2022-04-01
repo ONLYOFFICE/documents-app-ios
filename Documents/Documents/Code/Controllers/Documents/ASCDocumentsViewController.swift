@@ -476,7 +476,11 @@ class ASCDocumentsViewController: ASCBaseTableViewController, UIGestureRecognize
         }
     }
 
-    @objc func onFilterAction() {}
+    @objc func onFilterAction() {
+        let filtersViewController = ASCFiltersViewController()
+        let navigationVC = UINavigationController(rootASCViewController: filtersViewController)
+        navigationController?.present(navigationVC, animated: true)
+    }
 
     @objc func onAddEntityAction() {
         guard let provider = provider else { return }

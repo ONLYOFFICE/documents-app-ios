@@ -12,6 +12,7 @@ class ASCFiltersCollectionViewHeader: UICollectionReusableView {
     static let identifier = "ASCFiltersCollectionViewHeader"
     private let headerLabel: UILabel = {
         let label = UILabel()
+        label.font = UIFont.systemFont(ofSize: 17, weight: .semibold)
         label.textAlignment = .left
         label.textColor = .black
         return label

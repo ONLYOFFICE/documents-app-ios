@@ -10,7 +10,7 @@ import UIKit
 
 class ASCFiltersCollectionViewCell: UICollectionViewCell {
     static let identifier = "ASCFiltersCollectionViewCell"
-    static let pillHeight: CGFloat = 24.0
+    static let pillHeight: CGFloat = 32.0
     var labelText = UILabel()
 
     override init(frame: CGRect) {

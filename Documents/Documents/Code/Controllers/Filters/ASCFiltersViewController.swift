@@ -18,15 +18,48 @@ class ASCFiltersViewController: UIViewController {
     let cellLeftRightPadding: CGFloat = 32.0
 
     var collectionView: UICollectionView!
+    var showResultsButton: UIButton!
 
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = Asset.Colors.tableCategoryBackground.color
+        setupNavigationBar()
+        showResultButtonConstraints()
         setupCollectionView()
+    }
+
+    private func showResultButtonConstraints() {
+        showResultsButton = UIButton()
+        showResultsButton.backgroundColor = Asset.Colors.viewBackground.color
+        showResultsButton.setTitleColorForAllStates(Asset.Colors.brend.color)
+        showResultsButton.layer.cornerRadius = 10
+        showResultsButton.setTitle(NSLocalizedString("Show 100 results", comment: ""), for: .normal)
+
+        view.addSubview(showResultsButton)
+        showResultsButton.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            showResultsButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 16),
+            showResultsButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -16),
+            showResultsButton.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -44),
+            showResultsButton.heightAnchor.constraint(equalToConstant: 52),
+
+        ])
     }
 }
 
 private extension ASCFiltersViewController {
+    func setupNavigationBar() {
+        let navigationTitle = UILabel()
+        navigationTitle.font = UIFont.systemFont(ofSize: 17, weight: .semibold)
+        navigationTitle.text = NSLocalizedString("Filters", comment: "")
+        navigationItem.titleView = navigationTitle
+
+        let rightBarButton = UIBarButtonItem(title: NSLocalizedString("Reset", comment: ""), style: UIBarButtonItem.Style.plain, target: self, action: #selector(myRightSideBarButtonItemTapped))
+        let leftBarButton = UIBarButtonItem(title: NSLocalizedString("Cancel", comment: ""), style: UIBarButtonItem.Style.plain, target: self, action: #selector(myRightSideBarButtonItemTapped))
+        navigationItem.rightBarButtonItem = rightBarButton
+        navigationItem.leftBarButtonItem = leftBarButton
+    }
+
     func setupCollectionView() {
         let pillLayout = ASCPillLayout()
         collectionView = UICollectionView(frame: .zero, collectionViewLayout: pillLayout)
@@ -37,17 +70,30 @@ private extension ASCFiltersViewController {
         collectionView.register(ASCFiltersCollectionViewHeader.self,
                                 forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader,
                                 withReuseIdentifier: ASCFiltersCollectionViewHeader.identifier)
-
+        collectionView.backgroundColor = Asset.Colors.tableBackground.color
         collectionView.dataSource = self
         collectionView.delegate = self
         pillLayout.delegate = self
         collectionView.collectionViewLayout = pillLayout
         view.addSubview(collectionView)
-        collectionView.frame = view.bounds
+
+        collectionView.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            collectionView.topAnchor.constraint(equalTo: view.topAnchor, constant: 70),
+            collectionView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: 16),
+            collectionView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 16),
+            collectionView.bottomAnchor.constraint(equalTo: showResultsButton.topAnchor),
+        ])
+    }
+
+    @objc func myRightSideBarButtonItemTapped() {
+        print("Button tapped")
     }
 }
 
 extension ASCFiltersViewController: UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {}
+
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         return filters.count
     }
@@ -59,6 +105,9 @@ extension ASCFiltersViewController: UICollectionViewDataSource, UICollectionView
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ASCFiltersCollectionViewCell.identifier, for: indexPath) as? ASCFiltersCollectionViewCell
         cell?.setLabel(filters[indexPath.section][indexPath.row])
+        if indexPath.section == 1 {
+            cell?.labelText.textColor = Asset.Colors.brend.color
+        }
         return cell!
     }
 
@@ -79,14 +128,14 @@ extension ASCFiltersViewController: ASCPillLayoutDelegate {
     }
 
     func collectionView(_ collectionView: UICollectionView, heightForHeaderInSection section: Int) -> CGFloat {
-        return 52.0
+        return 22.0
     }
 
     func collectionView(_ collectionView: UICollectionView, insetsForItemsInSection section: Int) -> UIEdgeInsets {
-        return UIEdgeInsets(top: 16.0, left: 16.0, bottom: 16.0, right: 16.0)
+        return UIEdgeInsets(top: 16.0, left: 0, bottom: 16.0, right: 16.0)
     }
 
     func collectionView(_ collectionView: UICollectionView, itemSpacingInSection section: Int) -> CGFloat {
-        return 12.0
+        return 16.0
     }
 }

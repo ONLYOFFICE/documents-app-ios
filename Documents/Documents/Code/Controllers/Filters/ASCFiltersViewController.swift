@@ -10,9 +10,17 @@ import UIKit
 
 class ASCFiltersViewController: UIViewController {
     var sections: [String] = ["Type", "Author", "Search"]
-    var filters: [[String]] = [["Folders", "Documents", "Presentations", "Spreadsheets", "Images", "Media", "Archives", "All files"],
-                               ["Users", "Groups"],
-                               ["Exclude subfolders"]]
+    var filters: [[ASCDocumentsFilterModel]] = [[ASCDocumentsFilterModel(filterName: "Folders", isSelected: false),
+                                                 ASCDocumentsFilterModel(filterName: "Documents", isSelected: false),
+                                                 ASCDocumentsFilterModel(filterName: "Presentations", isSelected: false),
+                                                 ASCDocumentsFilterModel(filterName: "Spreadsheets", isSelected: false),
+                                                 ASCDocumentsFilterModel(filterName: "Images", isSelected: false),
+                                                 ASCDocumentsFilterModel(filterName: "Media", isSelected: false),
+                                                 ASCDocumentsFilterModel(filterName: "Archives", isSelected: false),
+                                                 ASCDocumentsFilterModel(filterName: "All files", isSelected: false)],
+                                                [ASCDocumentsFilterModel(filterName: "Users", isSelected: false),
+                                                 ASCDocumentsFilterModel(filterName: "Groups", isSelected: false)],
+                                                [ASCDocumentsFilterModel(filterName: "Exclude subfolders", isSelected: false)]]
 
     // Set by constraints at the cell level. Currently hardcoding here. But can be derived from the actual constraints in the cell
     let cellLeftRightPadding: CGFloat = 32.0
@@ -54,8 +62,8 @@ private extension ASCFiltersViewController {
         navigationTitle.text = NSLocalizedString("Filters", comment: "")
         navigationItem.titleView = navigationTitle
 
-        let rightBarButton = UIBarButtonItem(title: NSLocalizedString("Reset", comment: ""), style: UIBarButtonItem.Style.plain, target: self, action: #selector(myRightSideBarButtonItemTapped))
-        let leftBarButton = UIBarButtonItem(title: NSLocalizedString("Cancel", comment: ""), style: UIBarButtonItem.Style.plain, target: self, action: #selector(myRightSideBarButtonItemTapped))
+        let rightBarButton = UIBarButtonItem(title: NSLocalizedString("Reset", comment: ""), style: UIBarButtonItem.Style.plain, target: self, action: #selector(resetBarButtonItemTapped))
+        let leftBarButton = UIBarButtonItem(title: NSLocalizedString("Cancel", comment: ""), style: UIBarButtonItem.Style.plain, target: self, action: #selector(cancelBarButtonItemTapped))
         navigationItem.rightBarButtonItem = rightBarButton
         navigationItem.leftBarButtonItem = leftBarButton
     }
@@ -86,13 +94,31 @@ private extension ASCFiltersViewController {
         ])
     }
 
-    @objc func myRightSideBarButtonItemTapped() {
-        print("Button tapped")
+    @objc func resetBarButtonItemTapped() {}
+
+    @objc func cancelBarButtonItemTapped() {
+        dismiss(animated: true)
     }
 }
 
 extension ASCFiltersViewController: UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {}
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        if let cell = collectionView.cellForItem(at: indexPath) as? ASCFiltersCollectionViewCell {
+            if (filters[indexPath.section][indexPath.row].isSelected) == false {
+                filters[indexPath.section][indexPath.row].isSelected = true
+                cell.labelText.textColor = Asset.Colors.viewBackground.color
+                cell.backgroundColor = Asset.Colors.brend.color
+            } else {
+                if indexPath.section == 1 {
+                    cell.labelText.textColor = Asset.Colors.brend.color
+                } else {
+                    cell.labelText.textColor = .black
+                }
+                cell.backgroundColor = Asset.Colors.viewBackground.color
+                filters[indexPath.section][indexPath.row].isSelected = false
+            }
+        }
+    }
 
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         return filters.count
@@ -104,7 +130,7 @@ extension ASCFiltersViewController: UICollectionViewDataSource, UICollectionView
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ASCFiltersCollectionViewCell.identifier, for: indexPath) as? ASCFiltersCollectionViewCell
-        cell?.setLabel(filters[indexPath.section][indexPath.row])
+        cell?.setLabel(filters[indexPath.section][indexPath.row].filterName)
         if indexPath.section == 1 {
             cell?.labelText.textColor = Asset.Colors.brend.color
         }
@@ -121,7 +147,7 @@ extension ASCFiltersViewController: UICollectionViewDataSource, UICollectionView
 
 extension ASCFiltersViewController: ASCPillLayoutDelegate {
     func collectionView(_ collectionView: UICollectionView, sizeForPillAtIndexPath indexPath: IndexPath) -> CGSize {
-        let label = filters[indexPath.section][indexPath.row]
+        let label = filters[indexPath.section][indexPath.row].filterName
         let referenceSize = CGSize(width: CGFloat.greatestFiniteMagnitude, height: ASCFiltersCollectionViewCell.pillHeight)
         let calculatedSize = (label as NSString).boundingRect(with: referenceSize, options: NSStringDrawingOptions.usesLineFragmentOrigin, attributes: [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 15.0)], context: nil)
         return CGSize(width: calculatedSize.width + cellLeftRightPadding, height: ASCFiltersCollectionViewCell.pillHeight)

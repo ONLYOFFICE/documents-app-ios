@@ -182,6 +182,7 @@
 		F3B17C1427F4C5340021E03A /* ASCFiltersCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3B17C1327F4C5340021E03A /* ASCFiltersCollectionViewCell.swift */; };
 		F3B17C1827F5B8610021E03A /* ASCFiltersCollectionViewHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3B17C1727F5B8610021E03A /* ASCFiltersCollectionViewHeader.swift */; };
 		F3B17C2027F5DE2E0021E03A /* ASCPillLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3B17C1F27F5DE2E0021E03A /* ASCPillLayout.swift */; };
+		F3B17C2327FC82D50021E03A /* ASCDocumentsFilterModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3B17C2227FC82D20021E03A /* ASCDocumentsFilterModel.swift */; };
 		FC0299F127B6409000E5341B /* ASCWebKitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F33E473A27AD9BC200EFF6D9 /* ASCWebKitViewController.swift */; };
 		FC050F7E1ECB1F6800FD452C /* ConnectStorage.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FC050F801ECB1F6800FD452C /* ConnectStorage.storyboard */; };
 		FC059D981E82584400BC2F5E /* ASCDateTransform.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC059D971E82584400BC2F5E /* ASCDateTransform.swift */; };
@@ -931,6 +932,7 @@
 		F3B17C1327F4C5340021E03A /* ASCFiltersCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ASCFiltersCollectionViewCell.swift; path = Documents/Code/Controllers/Filters/ASCFiltersCollectionViewCell.swift; sourceTree = SOURCE_ROOT; };
 		F3B17C1727F5B8610021E03A /* ASCFiltersCollectionViewHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ASCFiltersCollectionViewHeader.swift; path = Documents/Code/Controllers/Filters/ASCFiltersCollectionViewHeader.swift; sourceTree = SOURCE_ROOT; };
 		F3B17C1F27F5DE2E0021E03A /* ASCPillLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCPillLayout.swift; sourceTree = "<group>"; };
+		F3B17C2227FC82D20021E03A /* ASCDocumentsFilterModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCDocumentsFilterModel.swift; sourceTree = "<group>"; };
 		FC029A3927BCF2FC00E5341B /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Documents-InfoPlist.strings"; sourceTree = "<group>"; };
 		FC029A3A27BCF2FC00E5341B /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Documents.alpha-InfoPlist.strings"; sourceTree = "<group>"; };
 		FC029A3B27BCF2FC00E5341B /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Localizable.strings"; sourceTree = "<group>"; };
@@ -2019,6 +2021,7 @@
 		F3B17C0927F4ADE30021E03A /* Filters */ = {
 			isa = PBXGroup;
 			children = (
+				F3B17C2127FC82830021E03A /* Model */,
 				F3B17C0A27F4B8370021E03A /* View */,
 				F3B17C0727F374D80021E03A /* ASCFiltersViewController.swift */,
 				F3B17C1F27F5DE2E0021E03A /* ASCPillLayout.swift */,
@@ -2033,6 +2036,14 @@
 				F3B17C1727F5B8610021E03A /* ASCFiltersCollectionViewHeader.swift */,
 			);
 			path = View;
+			sourceTree = "<group>";
+		};
+		F3B17C2127FC82830021E03A /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				F3B17C2227FC82D20021E03A /* ASCDocumentsFilterModel.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 		FC059D961E82581D00BC2F5E /* Transforms */ = {
@@ -4381,6 +4392,7 @@
 				E0609CA78B7ADE534424D45E /* ASCFolder.swift in Sources */,
 				1DEB996F274E2C7C0071C1DB /* ASCPersonalShareSettingsAPIWorker.swift in Sources */,
 				F3B17C0827F374D90021E03A /* ASCFiltersViewController.swift in Sources */,
+				F3B17C2327FC82D50021E03A /* ASCDocumentsFilterModel.swift in Sources */,
 				1D299153274FB46300A06F3B /* ASCPortalTypeDefinderProtocol.swift in Sources */,
 				F377689527CFCF2D0044EDA6 /* ASCConnectStorageNextCloudServerController.swift in Sources */,
 				1DF505242641867300B78496 /* ASCOneDriveFileProvider.swift in Sources */,

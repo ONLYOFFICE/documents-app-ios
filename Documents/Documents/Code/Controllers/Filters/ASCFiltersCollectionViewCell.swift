@@ -23,6 +23,11 @@ class ASCFiltersCollectionViewCell: UICollectionViewCell {
         fatalError("init(coder:) has not been implemented")
     }
 
+    override func prepareForReuse() {
+        setupView()
+        labelText.text = ""
+    }
+
     func setLabel(_ text: String?) {
         labelText.text = text
     }

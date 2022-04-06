@@ -12,3 +12,8 @@ struct ASCDocumentsFilterModel {
     var filterName: String
     var isSelected: Bool
 }
+
+struct ASCDocumentsSectionModel {
+    var sectionName: String
+    var filters: [ASCDocumentsFilterModel]
+}

@@ -20,6 +20,12 @@
 "© Ascensio System SIA %d" = "© Ascensio System SIA %d";
 
 /* No comment provided by engineer. */
+"Сould not download file." = "Не удалось скачать файл.";
+
+/* No comment provided by engineer. */
+"Сould not upload file." = "Не удалось загрузить файл.";
+
+/* No comment provided by engineer. */
 "A file with a similar name already exists in the document directory on the device." = "Файл с таким именем уже существует в папке с документами на этом устройстве.";
 
 /* No comment provided by engineer. */
@@ -76,6 +82,9 @@
 /* No comment provided by engineer. */
 "All" = "Все";
 
+/* No comment provided by engineer. */
+"All files" = "Все файлы";
+
 /* Category title */
 "All Files" = "Все файлы";
 
@@ -87,6 +96,9 @@
 
 /* Caption of the process */
 "Applying" = "Применение";
+
+/* No comment provided by engineer. */
+"Archives" = "Архивы";
 
 /* No comment provided by engineer. */
 "Are you sure you want to delete the account %@ from this device?" = "Вы действительно хотите удалить аккаунт %@ с этого устройства?";
@@ -440,6 +452,9 @@
 /* Unknown Server Error */
 "error.errorServerTitle" = "Ошибка сервера";
 
+/* No comment provided by engineer. */
+"Exclude subfolders" = "Исключить подпапки";
+
 /* Button title */
 "Export" = "Экспорт";
 
@@ -499,6 +514,9 @@
 
 /* No comment provided by engineer. */
 "Fillable forms" = "Заполнение форм";
+
+/* No comment provided by engineer. */
+"Filters" = "Фильтры";
 
 /* No comment provided by engineer. */
 "First name is incorrect" = "Некорректное поле Имя";
@@ -611,6 +629,9 @@
 
 /* If current user name is not set */
 "Me" = "Я";
+
+/* No comment provided by engineer. */
+"Media" = "Медиа";
 
 /* Button title */
 "More" = "Еще";
@@ -881,6 +902,9 @@
 /* No comment provided by engineer. */
 "Request had insufficient authentication scopes" = "Запрос имеет недостаточные области аутентификации";
 
+/* No comment provided by engineer. */
+"Reset" = "Сброс";
+
 /* Button title */
 "Restore" = "Восстановить";
 
@@ -959,6 +983,9 @@
 
 /* Button title */
 "Sharing Settings" = "Совместный доступ";
+
+/* No comment provided by engineer. */
+"Show %d results" = "Показать %d результатов";
 
 /* No comment provided by engineer. */
 "Single Sign-on" = "Единая точка входа";

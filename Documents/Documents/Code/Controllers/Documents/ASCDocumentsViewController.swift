@@ -479,7 +479,14 @@ class ASCDocumentsViewController: ASCBaseTableViewController, UIGestureRecognize
     @objc func onFilterAction() {
         let filtersViewController = ASCFiltersViewController()
         let navigationVC = UINavigationController(rootASCViewController: filtersViewController)
-        navigationController?.present(navigationVC, animated: true)
+        if UIDevice.pad {
+            navigationVC.preferredContentSize = CGSize(width: 380, height: 714)
+            navigationVC.modalPresentationStyle = .popover
+            navigationVC.popoverPresentationController?.barButtonItem = filterBarButton
+            present(navigationVC, animated: true) {}
+        } else {
+            navigationController?.present(navigationVC, animated: true)
+        }
     }
 
     @objc func onAddEntityAction() {
@@ -636,17 +643,16 @@ class ASCDocumentsViewController: ASCBaseTableViewController, UIGestureRecognize
             navigationItem.setRightBarButtonItems([cancelBarButton!], animated: animated)
         } else {
             navigationItem.setLeftBarButtonItems(nil, animated: animated)
-            var rightBarBtnItems = [ASCStyles.barFixedSpace]
-            if let addBarBtn = addBarButton {
-                rightBarBtnItems.append(addBarBtn)
-            }
 
+            var rightBarBtnItems = [ASCStyles.barFixedSpace]
             if let sortSelectBarBtn = sortSelectBarButton {
                 rightBarBtnItems.append(sortSelectBarBtn)
             }
-
             if let filterBarBtn = filterBarButton {
                 rightBarBtnItems.append(filterBarBtn)
+            }
+            if let addBarBtn = addBarButton {
+                rightBarBtnItems.append(addBarBtn)
             }
             navigationItem.setRightBarButtonItems(rightBarBtnItems, animated: animated)
         }

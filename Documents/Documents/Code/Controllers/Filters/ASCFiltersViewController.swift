@@ -32,9 +32,7 @@ class ASCFiltersViewController: UIViewController {
                                  ]),
     ]
 
-    // Set by constraints at the cell level. Currently hardcoding here. But can be derived from the actual constraints in the cell
     let cellLeftRightPadding: CGFloat = 32.0
-
     var collectionView: UICollectionView!
     var showResultsButton: UIButton!
 
@@ -45,8 +43,10 @@ class ASCFiltersViewController: UIViewController {
         showResultButtonConstraints()
         setupCollectionView()
     }
+}
 
-    private func showResultButtonConstraints() {
+private extension ASCFiltersViewController {
+    func showResultButtonConstraints() {
         showResultsButton = UIButton()
         showResultsButton.backgroundColor = Asset.Colors.viewBackground.color
         showResultsButton.setTitleColorForAllStates(Asset.Colors.brend.color)
@@ -63,9 +63,7 @@ class ASCFiltersViewController: UIViewController {
 
         ])
     }
-}
 
-private extension ASCFiltersViewController {
     func setupNavigationBar() {
         let navigationTitle = UILabel()
         navigationTitle.font = UIFont.systemFont(ofSize: 17, weight: .semibold)
@@ -94,7 +92,10 @@ private extension ASCFiltersViewController {
         pillLayout.delegate = self
         collectionView.collectionViewLayout = pillLayout
         view.addSubview(collectionView)
+        setupCollectionViewConstraints()
+    }
 
+    func setupCollectionViewConstraints() {
         collectionView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
             collectionView.topAnchor.constraint(equalTo: view.topAnchor, constant: 70),
@@ -111,7 +112,7 @@ private extension ASCFiltersViewController {
             }
         }
         collectionView.reloadData()
-        print(data)
+        setupCollectionView()
     }
 
     @objc func cancelBarButtonItemTapped() {

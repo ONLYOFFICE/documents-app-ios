@@ -1424,6 +1424,10 @@ Observação: se você se esquecer do código de acesso, será necessário exclu
         <target>Todos os arquivos</target>
         <note>Category title</note>
       </trans-unit>
+      <trans-unit id="All files" xml:space="preserve">
+        <source>All files</source>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
       <trans-unit id="Allow access via external link" xml:space="preserve">
         <source>Allow access via external link</source>
         <note>No comment provided by engineer.</note>
@@ -1433,9 +1437,17 @@ Observação: se você se esquecer do código de acesso, será necessário exclu
         <target>Ocorreu um erro inesperado. Tente novamente mais tarde. Desculpe pelo transtorno.</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
+      <trans-unit id="AppleId authentication failed" xml:space="preserve">
+        <source>AppleId authentication failed</source>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
       <trans-unit id="Applying" xml:space="preserve">
         <source>Applying</source>
         <note>Caption of the process</note>
+      </trans-unit>
+      <trans-unit id="Archives" xml:space="preserve">
+        <source>Archives</source>
+        <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Are you sure you want to delete the account %@ from this device?" xml:space="preserve">
         <source>Are you sure you want to delete the account %@ from this device?</source>
@@ -1948,6 +1960,10 @@ outros que usam o protocolo WebDAV.</target>
         <source>Error code: %ld</source>
         <note>No comment provided by engineer.</note>
       </trans-unit>
+      <trans-unit id="Exclude subfolders" xml:space="preserve">
+        <source>Exclude subfolders</source>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
       <trans-unit id="Export" xml:space="preserve">
         <source>Export</source>
         <note>Button title</note>
@@ -2037,6 +2053,10 @@ outros que usam o protocolo WebDAV.</target>
       </trans-unit>
       <trans-unit id="Fillable forms" xml:space="preserve">
         <source>Fillable forms</source>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Filters" xml:space="preserve">
+        <source>Filters</source>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="First name is incorrect" xml:space="preserve">
@@ -2194,6 +2214,10 @@ to the clipboard</source>
         <source>Me</source>
         <target>Me</target>
         <note>If current user name is not set</note>
+      </trans-unit>
+      <trans-unit id="Media" xml:space="preserve">
+        <source>Media</source>
+        <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="More" xml:space="preserve">
         <source>More</source>
@@ -2485,6 +2509,12 @@ Se o problema persistir, entre em contato conosco e mencione este código de err
 Se o problema persistir, entre em contato conosco e mencione este código de erro: Google - %@</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
+      <trans-unit id="Please retry. &#10;&#10; If the problem persists contact us and mention this error code: Microsoft - %@" xml:space="preserve">
+        <source>Please retry. 
+
+ If the problem persists contact us and mention this error code: Microsoft - %@</source>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
       <trans-unit id="Please retry. &#10;&#10; If the problem persists contact us and mention this error code: OneDrive - %@" xml:space="preserve">
         <source>Please retry. 
 
@@ -2618,6 +2648,10 @@ Se o problema persistir, entre em contato conosco e mencione este código de err
         <source>Request had insufficient authentication scopes</source>
         <note>No comment provided by engineer.</note>
       </trans-unit>
+      <trans-unit id="Reset" xml:space="preserve">
+        <source>Reset</source>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
       <trans-unit id="Restore" xml:space="preserve">
         <source>Restore</source>
         <target>Restaurar</target>
@@ -2742,6 +2776,10 @@ Se o problema persistir, entre em contato conosco e mencione este código de err
       </trans-unit>
       <trans-unit id="Sharing settings" xml:space="preserve">
         <source>Sharing settings</source>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Show %d results" xml:space="preserve">
+        <source>Show %d results</source>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Single Sign-on" xml:space="preserve">

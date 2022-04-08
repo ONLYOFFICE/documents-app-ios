@@ -33,6 +33,7 @@ class ASCFiltersViewController: UIViewController {
     ]
 
     let cellLeftRightPadding: CGFloat = 32.0
+    let resultCount = 100
     var collectionView: UICollectionView!
     var showResultsButton: UIButton!
 
@@ -51,7 +52,9 @@ private extension ASCFiltersViewController {
         showResultsButton.backgroundColor = Asset.Colors.viewBackground.color
         showResultsButton.setTitleColorForAllStates(Asset.Colors.brend.color)
         showResultsButton.layer.cornerRadius = 10
-        showResultsButton.setTitle(NSLocalizedString("Show 100 results", comment: ""), for: .normal)
+        showResultsButton.setTitle(String.localizedStringWithFormat(
+            NSLocalizedString("Show %d results", comment: ""), resultCount
+        ), for: .normal)
 
         view.addSubview(showResultsButton)
         showResultsButton.translatesAutoresizingMaskIntoConstraints = false

@@ -1530,6 +1530,11 @@ Note: if you forget the passcode, you'll need to delete and reinstall the app. A
         <target>Все файлы</target>
         <note>Category title</note>
       </trans-unit>
+      <trans-unit id="All files" xml:space="preserve">
+        <source>All files</source>
+        <target>Все файлы</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
       <trans-unit id="Allow access via external link" xml:space="preserve">
         <source>Allow access via external link</source>
         <target>Доступ по внешней ссылке</target>
@@ -1540,10 +1545,19 @@ Note: if you forget the passcode, you'll need to delete and reinstall the app. A
         <target>Произошла непредвиденная ошибка. Повторите попытку позже. Извините за неудобство.</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
+      <trans-unit id="AppleId authentication failed" xml:space="preserve">
+        <source>AppleId authentication failed</source>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
       <trans-unit id="Applying" xml:space="preserve">
         <source>Applying</source>
         <target>Применение</target>
         <note>Caption of the process</note>
+      </trans-unit>
+      <trans-unit id="Archives" xml:space="preserve">
+        <source>Archives</source>
+        <target>Архивы</target>
+        <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Are you sure you want to delete the account %@ from this device?" xml:space="preserve">
         <source>Are you sure you want to delete the account %@ from this device?</source>
@@ -2075,6 +2089,11 @@ others which use WebDAV protocol.</source>
         <target>Код ошибки: %ld</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
+      <trans-unit id="Exclude subfolders" xml:space="preserve">
+        <source>Exclude subfolders</source>
+        <target>Исключить подпапки</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
       <trans-unit id="Export" xml:space="preserve">
         <source>Export</source>
         <target>Экспорт</target>
@@ -2173,6 +2192,10 @@ others which use WebDAV protocol.</source>
       <trans-unit id="Fillable forms" xml:space="preserve">
         <source>Fillable forms</source>
         <target>Заполнение форм</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Filters" xml:space="preserve">
+        <source>Filters</source>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="First name is incorrect" xml:space="preserve">
@@ -2342,6 +2365,11 @@ to the clipboard</source>
         <source>Me</source>
         <target>Я</target>
         <note>If current user name is not set</note>
+      </trans-unit>
+      <trans-unit id="Media" xml:space="preserve">
+        <source>Media</source>
+        <target>Медиа</target>
+        <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="More" xml:space="preserve">
         <source>More</source>
@@ -2641,6 +2669,12 @@ to the clipboard</source>
 Если проблема повторяется, напишите нам и назовите код ошибки: Google - %@</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
+      <trans-unit id="Please retry. &#10;&#10; If the problem persists contact us and mention this error code: Microsoft - %@" xml:space="preserve">
+        <source>Please retry. 
+
+ If the problem persists contact us and mention this error code: Microsoft - %@</source>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
       <trans-unit id="Please retry. &#10;&#10; If the problem persists contact us and mention this error code: OneDrive - %@" xml:space="preserve">
         <source>Please retry. 
 
@@ -2779,6 +2813,11 @@ to the clipboard</source>
         <target>Запрос имеет недостаточные области аутентификации</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
+      <trans-unit id="Reset" xml:space="preserve">
+        <source>Reset</source>
+        <target>Сброс</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
       <trans-unit id="Restore" xml:space="preserve">
         <source>Restore</source>
         <target>Восстановить</target>
@@ -2913,6 +2952,11 @@ to the clipboard</source>
       <trans-unit id="Sharing settings" xml:space="preserve">
         <source>Sharing settings</source>
         <target>Совместный доступ</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Show %d results" xml:space="preserve">
+        <source>Show %d results</source>
+        <target>Показать %d результатов</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Single Sign-on" xml:space="preserve">

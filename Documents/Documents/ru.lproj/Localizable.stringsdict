@@ -2,6 +2,26 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>Show %d results</key>
+	<dict>
+		<key>NSStringLocalizedFormatKey</key>
+		<string>%#@results@</string>
+		<key>results</key>
+		<dict>
+			<key>NSStringFormatSpecTypeKey</key>
+			<string>NSStringPluralRuleType</string>
+			<key>NSStringFormatValueTypeKey</key>
+			<string>d</string>
+			<key>one</key>
+			<string>Показать %d результат</string>
+			<key>few</key>
+			<string>Показать %d результата</string>
+			<key>many</key>
+			<string>Показать %d результатов</string>
+			<key>other</key>
+			<string>Показать %d результатов</string>
+		</dict>
+	</dict>
 	<key>%d selected</key>
 	<dict>
 		<key>NSStringLocalizedFormatKey</key>

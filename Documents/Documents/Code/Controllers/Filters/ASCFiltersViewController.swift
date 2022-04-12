@@ -9,72 +9,92 @@
 import UIKit
 
 class ASCFiltersViewController: UIViewController {
+    // MARK: - Properties
+
     var data: [ASCDocumentsSectionModel] = [
-        ASCDocumentsSectionModel(sectionName: NSLocalizedString("Type", comment: ""),
-                                 filters: [
-                                     ASCDocumentsFilterModel(filterName: NSLocalizedString("Folders", comment: ""), isSelected: false),
-                                     ASCDocumentsFilterModel(filterName: NSLocalizedString("Documents", comment: ""), isSelected: false),
-                                     ASCDocumentsFilterModel(filterName: NSLocalizedString("Presentations", comment: ""), isSelected: false),
-                                     ASCDocumentsFilterModel(filterName: NSLocalizedString("Spreadsheets", comment: ""), isSelected: false),
-                                     ASCDocumentsFilterModel(filterName: NSLocalizedString("Images", comment: ""), isSelected: false),
-                                     ASCDocumentsFilterModel(filterName: NSLocalizedString("Media", comment: ""), isSelected: false),
-                                     ASCDocumentsFilterModel(filterName: NSLocalizedString("Archives", comment: ""), isSelected: false),
-                                     ASCDocumentsFilterModel(filterName: NSLocalizedString("All files", comment: ""), isSelected: false),
-                                 ]),
-        ASCDocumentsSectionModel(sectionName: NSLocalizedString("Author", comment: ""),
-                                 filters: [
-                                     ASCDocumentsFilterModel(filterName: NSLocalizedString("Users", comment: ""), isSelected: false),
-                                     ASCDocumentsFilterModel(filterName: NSLocalizedString("Groups", comment: ""), isSelected: false),
-                                 ]),
-        ASCDocumentsSectionModel(sectionName: NSLocalizedString("Search", comment: ""),
-                                 filters: [
-                                     ASCDocumentsFilterModel(filterName: NSLocalizedString("Exclude subfolders", comment: ""), isSelected: false),
-                                 ]),
+        ASCDocumentsSectionModel(
+            sectionName: NSLocalizedString("Type", comment: ""),
+            filters: [
+                ASCDocumentsFilterModel(filterName: NSLocalizedString("Folders", comment: ""), isSelected: false),
+                ASCDocumentsFilterModel(filterName: NSLocalizedString("Documents", comment: ""), isSelected: false),
+                ASCDocumentsFilterModel(filterName: NSLocalizedString("Presentations", comment: ""), isSelected: false),
+                ASCDocumentsFilterModel(filterName: NSLocalizedString("Spreadsheets", comment: ""), isSelected: false),
+                ASCDocumentsFilterModel(filterName: NSLocalizedString("Images", comment: ""), isSelected: false),
+                ASCDocumentsFilterModel(filterName: NSLocalizedString("Media", comment: ""), isSelected: false),
+                ASCDocumentsFilterModel(filterName: NSLocalizedString("Archives", comment: ""), isSelected: false),
+                ASCDocumentsFilterModel(filterName: NSLocalizedString("All files", comment: ""), isSelected: false),
+            ]
+        ),
+        ASCDocumentsSectionModel(
+            sectionName: NSLocalizedString("Author", comment: ""),
+            filters: [
+                ASCDocumentsFilterModel(filterName: NSLocalizedString("Users", comment: ""), isSelected: false),
+                ASCDocumentsFilterModel(filterName: NSLocalizedString("Groups", comment: ""), isSelected: false),
+            ]
+        ),
+        ASCDocumentsSectionModel(
+            sectionName: NSLocalizedString("Search", comment: ""),
+            filters: [
+                ASCDocumentsFilterModel(filterName: NSLocalizedString("Exclude subfolders", comment: ""), isSelected: false),
+            ]
+        ),
     ]
 
     let cellLeftRightPadding: CGFloat = 32.0
     let resultCount = 100
     var collectionView: UICollectionView!
-    var showResultsButton: UIButton!
+    private lazy var showResultsButton: ASCButtonStyle = {
+        $0.styleType = .blank
+        return $0
+    }(ASCButtonStyle())
+
+    // MARK: - Lifecycle Methods
 
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = Asset.Colors.tableCategoryBackground.color
         setupNavigationBar()
-        showResultButtonConstraints()
         setupCollectionView()
+        showResultButtonConstraints()
+
+        showResultsButton.addTarget(self, action: #selector(onShowResultsButtonTapped), for: .touchUpInside)
     }
 }
 
 private extension ASCFiltersViewController {
     func showResultButtonConstraints() {
-        showResultsButton = UIButton()
-        showResultsButton.backgroundColor = Asset.Colors.viewBackground.color
-        showResultsButton.setTitleColorForAllStates(Asset.Colors.brend.color)
-        showResultsButton.layer.cornerRadius = 10
         showResultsButton.setTitle(String.localizedStringWithFormat(
             NSLocalizedString("Show %d results", comment: ""), resultCount
         ), for: .normal)
 
         view.addSubview(showResultsButton)
-        showResultsButton.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activate([
-            showResultsButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 16),
-            showResultsButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -16),
-            showResultsButton.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -44),
-            showResultsButton.heightAnchor.constraint(equalToConstant: 52),
-
-        ])
+        showResultsButton.anchor(
+            left: view.leftAnchor,
+            bottom: view.safeAreaLayoutGuide.bottomAnchor,
+            right: view.rightAnchor,
+            leftConstant: 16,
+            bottomConstant: 10,
+            rightConstant: 16,
+            heightConstant: 52
+        )
     }
 
     func setupNavigationBar() {
-        let navigationTitle = UILabel()
-        navigationTitle.font = UIFont.systemFont(ofSize: 17, weight: .semibold)
-        navigationTitle.text = NSLocalizedString("Filters", comment: "")
-        navigationItem.titleView = navigationTitle
+        navigationItem.largeTitleDisplayMode = .never
+        navigationItem.title = NSLocalizedString("Filters", comment: "")
 
-        let rightBarButton = UIBarButtonItem(title: NSLocalizedString("Reset", comment: ""), style: UIBarButtonItem.Style.plain, target: self, action: #selector(resetBarButtonItemTapped))
-        let leftBarButton = UIBarButtonItem(title: NSLocalizedString("Cancel", comment: ""), style: UIBarButtonItem.Style.plain, target: self, action: #selector(cancelBarButtonItemTapped))
+        let rightBarButton = UIBarButtonItem(
+            title: NSLocalizedString("Reset", comment: ""),
+            style: UIBarButtonItem.Style.plain,
+            target: self,
+            action: #selector(resetBarButtonItemTapped)
+        )
+        let leftBarButton = UIBarButtonItem(
+            title: NSLocalizedString("Cancel", comment: ""),
+            style: UIBarButtonItem.Style.plain,
+            target: self,
+            action: #selector(cancelBarButtonItemTapped)
+        )
         navigationItem.rightBarButtonItem = rightBarButton
         navigationItem.leftBarButtonItem = leftBarButton
     }
@@ -89,7 +109,6 @@ private extension ASCFiltersViewController {
         collectionView.register(ASCFiltersCollectionViewHeader.self,
                                 forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader,
                                 withReuseIdentifier: ASCFiltersCollectionViewHeader.identifier)
-        collectionView.backgroundColor = Asset.Colors.tableBackground.color
         collectionView.dataSource = self
         collectionView.delegate = self
         pillLayout.delegate = self
@@ -99,13 +118,14 @@ private extension ASCFiltersViewController {
     }
 
     func setupCollectionViewConstraints() {
-        collectionView.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activate([
-            collectionView.topAnchor.constraint(equalTo: view.topAnchor, constant: 70),
-            collectionView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: 16),
-            collectionView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 16),
-            collectionView.bottomAnchor.constraint(equalTo: showResultsButton.topAnchor),
-        ])
+        collectionView.anchor(
+            top: view.safeAreaLayoutGuide.topAnchor,
+            left: view.leftAnchor,
+            bottom: view.bottomAnchor,
+            right: view.rightAnchor,
+            leftConstant: 16,
+            rightConstant: 16
+        )
     }
 
     @objc func resetBarButtonItemTapped() {
@@ -121,10 +141,19 @@ private extension ASCFiltersViewController {
     @objc func cancelBarButtonItemTapped() {
         dismiss(animated: true)
     }
+
+    @objc func onShowResultsButtonTapped() {
+        print("call onShowResultsButtonTapped")
+    }
 }
 
 extension ASCFiltersViewController: UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        //
+        // TODO: Implement the logic for changing the appearance of the cell inside the class.
+        // Use property like Selected.
+        // Add dark mode support
+        //
         if let cell = collectionView.cellForItem(at: indexPath) as? ASCFiltersCollectionViewCell {
             if (data[indexPath.section].filters[indexPath.row].isSelected) == false {
                 data[indexPath.section].filters[indexPath.row].isSelected = true

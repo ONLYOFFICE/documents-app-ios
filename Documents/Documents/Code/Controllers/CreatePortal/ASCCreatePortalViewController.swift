@@ -54,7 +54,7 @@ class ASCCreatePortalViewController: ASCBaseViewController {
         // Configure title
 
         titleLabel?.textStyle = .title1
-        subtitleLabel?.textStyle = .subhead
+        subtitleLabel?.textStyle = .subheadline
 
         // Configure fields of form
 
@@ -101,14 +101,14 @@ class ASCCreatePortalViewController: ASCBaseViewController {
         // Configure terms and footnote label
 
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(tapTerms))
-        termsLabel?.textStyle = .subheadLight
+        termsLabel?.textStyle = .subheadlineLight
         termsLabel?.attributedText = NSAttributedString(string: NSLocalizedString("By creating the portal you agree with our Privacy Policy and Terms of Service", comment: ""))
             .applying(attributes: [.foregroundColor: Asset.Colors.brend.color], toRangesMatching: NSLocalizedString("Privacy Policy", comment: ""))
             .applying(attributes: [.foregroundColor: Asset.Colors.brend.color], toRangesMatching: NSLocalizedString("Terms of Service", comment: ""))
         termsLabel?.isUserInteractionEnabled = true
         termsLabel?.addGestureRecognizer(tapGesture)
 
-        footnoteLabel?.textStyle = .subheadLight
+        footnoteLabel?.textStyle = .subheadlineLight
 
         // Configure action button
 

@@ -9,12 +9,11 @@
 import UIKit
 
 class ASCFiltersCollectionViewHeader: UICollectionReusableView {
-    static let identifier = "ASCFiltersCollectionViewHeader"
+    static let identifier = String(describing: ASCFiltersCollectionViewHeader.self)
+
     private let headerLabel: UILabel = {
         let label = UILabel()
-        label.font = UIFont.systemFont(ofSize: 17, weight: .semibold)
-        label.textAlignment = .left
-        label.textColor = .black
+        label.textStyle = .headline
         return label
     }()
 

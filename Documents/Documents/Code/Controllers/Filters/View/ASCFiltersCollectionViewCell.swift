@@ -9,7 +9,8 @@
 import UIKit
 
 class ASCFiltersCollectionViewCell: UICollectionViewCell {
-    static let identifier = "ASCFiltersCollectionViewCell"
+    static let identifier = String(describing: ASCFiltersCollectionViewCell.self)
+
     static let pillHeight: CGFloat = 32.0
     var labelText = UILabel()
 
@@ -35,7 +36,7 @@ class ASCFiltersCollectionViewCell: UICollectionViewCell {
 
 private extension ASCFiltersCollectionViewCell {
     func setupView() {
-        backgroundColor = Asset.Colors.viewBackground.color
+        backgroundColor = Asset.Colors.filterCapsule.color
         layer.cornerRadius = ASCFiltersCollectionViewCell.pillHeight / 2
         labelText.frame = bounds
         labelText.textAlignment = .center

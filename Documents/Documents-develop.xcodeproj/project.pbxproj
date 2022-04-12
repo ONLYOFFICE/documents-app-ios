@@ -279,6 +279,12 @@
 		FC9749971EE04FB300D00DDB /* ASCSignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC9749961EE04FB300D00DDB /* ASCSignInViewController.swift */; };
 		FC99FAF1226460F2000F1464 /* ASC2FAViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC99FAF0226460F2000F1464 /* ASC2FAViewController.swift */; };
 		FC9E28BF2244E88C000D315E /* ASCDocumentsEmptyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC9E28BE2244E88C000D315E /* ASCDocumentsEmptyView.swift */; };
+		FC9F496927F5CC5300D88936 /* ASCDeepLink.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC9F496827F5CC5300D88936 /* ASCDeepLink.swift */; };
+		FC9F496B27F5CFE100D88936 /* ASCConnectStorageNextCloudServerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC9F496A27F5CFE000D88936 /* ASCConnectStorageNextCloudServerController.swift */; };
+		FC9F496D27F5D05600D88936 /* ASCNextCloudConnectStorageDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC9F496C27F5D05600D88936 /* ASCNextCloudConnectStorageDelegate.swift */; };
+		FC9F496F27F5D0C900D88936 /* ASCAppleIdSignInController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC9F496E27F5D0C900D88936 /* ASCAppleIdSignInController.swift */; };
+		FC9F497127F5D0D100D88936 /* ASCMicrosoftSignInController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC9F497027F5D0D100D88936 /* ASCMicrosoftSignInController.swift */; };
+		FC9F497427F5D10E00D88936 /* KeyboardManagerHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC9F497327F5D10E00D88936 /* KeyboardManagerHelper.swift */; };
 		FCA0AD271EBC90AC00AA53EB /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FCA0AD291EBC90AC00AA53EB /* Login.storyboard */; };
 		FCA10114218348B70018867F /* ASCCategory.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCA10113218348B70018867F /* ASCCategory.swift */; };
 		FCA44175267B861800A33CB8 /* OnlyofficeShare.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCA44174267B861800A33CB8 /* OnlyofficeShare.swift */; };
@@ -750,6 +756,12 @@
 		FC9749961EE04FB300D00DDB /* ASCSignInViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASCSignInViewController.swift; sourceTree = "<group>"; };
 		FC99FAF0226460F2000F1464 /* ASC2FAViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASC2FAViewController.swift; sourceTree = "<group>"; };
 		FC9E28BE2244E88C000D315E /* ASCDocumentsEmptyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCDocumentsEmptyView.swift; sourceTree = "<group>"; };
+		FC9F496827F5CC5300D88936 /* ASCDeepLink.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASCDeepLink.swift; sourceTree = "<group>"; };
+		FC9F496A27F5CFE000D88936 /* ASCConnectStorageNextCloudServerController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASCConnectStorageNextCloudServerController.swift; sourceTree = "<group>"; };
+		FC9F496C27F5D05600D88936 /* ASCNextCloudConnectStorageDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASCNextCloudConnectStorageDelegate.swift; sourceTree = "<group>"; };
+		FC9F496E27F5D0C900D88936 /* ASCAppleIdSignInController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASCAppleIdSignInController.swift; sourceTree = "<group>"; };
+		FC9F497027F5D0D100D88936 /* ASCMicrosoftSignInController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASCMicrosoftSignInController.swift; sourceTree = "<group>"; };
+		FC9F497327F5D10E00D88936 /* KeyboardManagerHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeyboardManagerHelper.swift; sourceTree = "<group>"; };
 		FCA0AD281EBC90AC00AA53EB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Login.storyboard; sourceTree = "<group>"; };
 		FCA0AD2B1EBC90AD00AA53EB /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Login.strings; sourceTree = "<group>"; };
 		FCA10113218348B70018867F /* ASCCategory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCCategory.swift; sourceTree = "<group>"; };
@@ -1041,6 +1053,8 @@
 				8A01844723A261530025BE85 /* ASCConnectCloudViewController.swift */,
 				8A01844623A261530025BE85 /* ASCConnectPortalThirdPartyViewController.swift */,
 				8A01844523A261530025BE85 /* ASCConnectStorageGoogleController.swift */,
+				FC9F496A27F5CFE000D88936 /* ASCConnectStorageNextCloudServerController.swift */,
+				FC9F496C27F5D05600D88936 /* ASCNextCloudConnectStorageDelegate.swift */,
 			);
 			path = ConnectStorage;
 			sourceTree = "<group>";
@@ -1417,8 +1431,10 @@
 		FC64B2E81EE56C5500920FDD /* Social */ = {
 			isa = PBXGroup;
 			children = (
+				FC9F496E27F5D0C900D88936 /* ASCAppleIdSignInController.swift */,
 				FC64B2E91EE56C5500920FDD /* ASCFacebookSignInController.swift */,
 				FC64B2EA1EE56C5500920FDD /* ASCGoogleSignInController.swift */,
+				FC9F497027F5D0D100D88936 /* ASCMicrosoftSignInController.swift */,
 				FC6F0CD61F542E7E002D33D9 /* ASCSSOSignInController.swift */,
 			);
 			path = Social;
@@ -1889,6 +1905,14 @@
 			path = 2FA;
 			sourceTree = "<group>";
 		};
+		FC9F497227F5D10E00D88936 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				FC9F497327F5D10E00D88936 /* KeyboardManagerHelper.swift */,
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
 		FCA441B92680FE2900A33CB8 /* Request */ = {
 			isa = PBXGroup;
 			children = (
@@ -1936,6 +1960,7 @@
 			isa = PBXGroup;
 			children = (
 				FC059D961E82581D00BC2F5E /* Transforms */,
+				FC9F496827F5CC5300D88936 /* ASCDeepLink.swift */,
 				FCA10113218348B70018867F /* ASCCategory.swift */,
 				FC92C5BA2059125E004442CC /* ASCEntity.swift */,
 				FCAE8B8A1E71676B004FC332 /* ASCFile.swift */,
@@ -1977,6 +2002,7 @@
 				FC6106F81F9E2948002A25C8 /* Accounts */,
 				FC64B2E81EE56C5500920FDD /* Social */,
 				FC99FAEF22645F1D000F1464 /* 2FA */,
+				FC9F497227F5D10E00D88936 /* Helpers */,
 				FCECDDCB26430982006CD7B9 /* PasswordRecover */,
 				FC9749961EE04FB300D00DDB /* ASCSignInViewController.swift */,
 				FCC552B31EC2F96600F645EE /* ASCPhoneNumberViewController.swift */,
@@ -2796,12 +2822,14 @@
 				FC68398D21B7DFCE00251CEA /* ASCOnlyofficeNavigationController.swift in Sources */,
 				FCEF9D1B1ED2C94300627BA5 /* Functions.swift in Sources */,
 				FC5D0437263C2BF800D9DBCF /* DropboxAccount.swift in Sources */,
+				FC9F496B27F5CFE100D88936 /* ASCConnectStorageNextCloudServerController.swift in Sources */,
 				FC53691024EB21040092765B /* ASCProviderError.swift in Sources */,
 				8A01844E23A261900025BE85 /* ASCGoogleDriveProvider.swift in Sources */,
 				FC5D040B263AE28400D9DBCF /* Endpoint.swift in Sources */,
 				FC7D99212729942700410795 /* ASCSharingAddRightHoldersPresenter.swift in Sources */,
 				FC8C69811ECC7B6B005B68D7 /* Common+Extension.swift in Sources */,
 				FC7D99442729942700410795 /* ASCSharingSettingsVerifyRightHoldersRouter.swift in Sources */,
+				FC9F496D27F5D05600D88936 /* ASCNextCloudConnectStorageDelegate.swift in Sources */,
 				FCF6186D268E0A9A00CD8D84 /* ASCLoadedDocumentViewControllerByProviderAndFolderFinder.swift in Sources */,
 				FC92C5BB2059125F004442CC /* ASCEntity.swift in Sources */,
 				FCE1F6461EDC456700D9DE17 /* ASCCreatePortalViewController.swift in Sources */,
@@ -2834,6 +2862,7 @@
 				FC7D99682729952400410795 /* ASCSharingSettingsAccessProvider.swift in Sources */,
 				FC7D991C2729942700410795 /* ASCSharingAddRightHoldersInteractor.swift in Sources */,
 				FCEF9D331ED2D18500627BA5 /* ASCPasscodeLockConfiguration.swift in Sources */,
+				FC9F496F27F5D0C900D88936 /* ASCAppleIdSignInController.swift in Sources */,
 				FC2B0CD12642C79800969DB9 /* OnlyofficeServerError.swift in Sources */,
 				FCEF9D241ED2C94300627BA5 /* PasscodeLockConfigurationType.swift in Sources */,
 				FC9161DC1EE965970031B6DB /* ASCGroup.swift in Sources */,
@@ -2890,6 +2919,7 @@
 				FCEF9D201ED2C94300627BA5 /* PasscodeLock.swift in Sources */,
 				FC31B2801E767CAB008699C3 /* ASCFileCell.swift in Sources */,
 				FC0F01E3216F4EA7008D79A5 /* ASCWebDAVProvider.swift in Sources */,
+				FC9F497127F5D0D100D88936 /* ASCMicrosoftSignInController.swift in Sources */,
 				FC5D0411263BE43A00D9DBCF /* NetworkingServerError.swift in Sources */,
 				FC7D99222729942700410795 /* ASCSharingAddRightHoldersViewController.swift in Sources */,
 				FC7D996C2729952400410795 /* ASCSharingSettingsAccessNotesProviderProtocol.swift in Sources */,
@@ -2908,6 +2938,7 @@
 				FCFB36071EDF0AB00001597E /* ASCBanner.swift in Sources */,
 				FCEF9D391ED2D34400627BA5 /* ASCPasscodeLockSplashView.swift in Sources */,
 				FCD04FCA1E7FDECF008641CD /* UIAlertController+SwiftAlertController.swift in Sources */,
+				FC9F496927F5CC5300D88936 /* ASCDeepLink.swift in Sources */,
 				FC7D998D272997B500410795 /* OnedriveTokenAdapter.swift in Sources */,
 				FCEA68232264733A0055926A /* ASC2FAPageController.swift in Sources */,
 				FCECDDC926430978006CD7B9 /* ASCEmailSentViewController.swift in Sources */,
@@ -3059,6 +3090,7 @@
 				FCECDDDD26430B79006CD7B9 /* ASCResponsePassword.swift in Sources */,
 				FC7D99242729942700410795 /* ASCSharingAddRightHoldersModels.swift in Sources */,
 				FCB1BEC11E8E4368004C7967 /* UIAlertController+Extension.swift in Sources */,
+				FC9F497427F5D10E00D88936 /* KeyboardManagerHelper.swift in Sources */,
 				FC0F01DF216F443E008D79A5 /* ASCLocalProvider.swift in Sources */,
 				FC872B281EC44925001636CB /* ASCSMSCodeViewController.swift in Sources */,
 				FC7D993D2729942700410795 /* ASCShareSettingsAPIWorkerProtocol.swift in Sources */,

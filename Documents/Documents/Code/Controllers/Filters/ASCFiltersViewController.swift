@@ -6,63 +6,68 @@
 //  Copyright © 2022 Ascensio System SIA. All rights reserved.
 //
 
+import SwiftUI
 import UIKit
 
 class ASCFiltersViewController: UIViewController {
     // MARK: - Properties
-
+    
     var data: [ASCDocumentsSectionModel] = [
-        ASCDocumentsSectionModel(
-            sectionName: NSLocalizedString("Type", comment: ""),
-            filters: [
-                ASCDocumentsFilterModel(filterName: NSLocalizedString("Folders", comment: ""), isSelected: false),
-                ASCDocumentsFilterModel(filterName: NSLocalizedString("Documents", comment: ""), isSelected: false),
-                ASCDocumentsFilterModel(filterName: NSLocalizedString("Presentations", comment: ""), isSelected: false),
-                ASCDocumentsFilterModel(filterName: NSLocalizedString("Spreadsheets", comment: ""), isSelected: false),
-                ASCDocumentsFilterModel(filterName: NSLocalizedString("Images", comment: ""), isSelected: false),
-                ASCDocumentsFilterModel(filterName: NSLocalizedString("Media", comment: ""), isSelected: false),
-                ASCDocumentsFilterModel(filterName: NSLocalizedString("Archives", comment: ""), isSelected: false),
-                ASCDocumentsFilterModel(filterName: NSLocalizedString("All files", comment: ""), isSelected: false),
-            ]
-        ),
-        ASCDocumentsSectionModel(
-            sectionName: NSLocalizedString("Author", comment: ""),
-            filters: [
-                ASCDocumentsFilterModel(filterName: NSLocalizedString("Users", comment: ""), isSelected: false),
-                ASCDocumentsFilterModel(filterName: NSLocalizedString("Groups", comment: ""), isSelected: false),
-            ]
-        ),
-        ASCDocumentsSectionModel(
-            sectionName: NSLocalizedString("Search", comment: ""),
-            filters: [
-                ASCDocumentsFilterModel(filterName: NSLocalizedString("Exclude subfolders", comment: ""), isSelected: false),
-            ]
-        ),
+        ASCDocumentsSectionModel(sectionName: NSLocalizedString("Type", comment: ""),
+                                 filters: [
+                                    ASCDocumentsFilterModel(filterName: NSLocalizedString("Folders", comment: ""), isSelected: false, filter: .folders),
+                                    ASCDocumentsFilterModel(filterName: NSLocalizedString("Documents", comment: ""), isSelected: false, filter: .documents),
+                                    ASCDocumentsFilterModel(filterName: NSLocalizedString("Presentations", comment: ""), isSelected: false, filter: .presentations),
+                                    ASCDocumentsFilterModel(filterName: NSLocalizedString("Spreadsheets", comment: ""), isSelected: false, filter: .spreadsheets),
+                                    ASCDocumentsFilterModel(filterName: NSLocalizedString("Images", comment: ""), isSelected: false, filter: .images),
+                                    ASCDocumentsFilterModel(filterName: NSLocalizedString("Media", comment: ""), isSelected: false, filter: .media),
+                                    ASCDocumentsFilterModel(filterName: NSLocalizedString("Archives", comment: ""), isSelected: false, filter: .archive),
+                                    ASCDocumentsFilterModel(filterName: NSLocalizedString("All files", comment: ""), isSelected: false, filter: .files),
+                                 ]),
+        ASCDocumentsSectionModel(sectionName: NSLocalizedString("Author", comment: ""),
+                                 filters: [
+                                    ASCDocumentsFilterModel(filterName: NSLocalizedString("Users", comment: ""), isSelected: false, filter: .user),
+                                    ASCDocumentsFilterModel(filterName: NSLocalizedString("Groups", comment: ""), isSelected: false, filter: .group),
+                                 ]),
+        ASCDocumentsSectionModel(sectionName: NSLocalizedString("Search", comment: ""),
+                                 filters: [
+                                    ASCDocumentsFilterModel(filterName: NSLocalizedString("Exclude subfolders", comment: ""), isSelected: false, filter: .byExtension),
+                                 ]),
     ]
-
+    
     let cellLeftRightPadding: CGFloat = 32.0
     let resultCount = 100
+    var folderId: String?
     var collectionView: UICollectionView!
     private lazy var showResultsButton: ASCButtonStyle = {
         $0.styleType = .blank
         return $0
     }(ASCButtonStyle())
-
+    
     // MARK: - Lifecycle Methods
-
+    
+    init(folderId: String) {
+        super.init(nibName: nil, bundle: nil)
+        self.folderId = folderId
+    }
+    
+    @available(*, unavailable)
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = Asset.Colors.tableCategoryBackground.color
         setupNavigationBar()
         setupCollectionView()
         showResultButtonConstraints()
-
+        
         showResultsButton.addTarget(self, action: #selector(onShowResultsButtonTapped), for: .touchUpInside)
     }
 }
 
 private extension ASCFiltersViewController {
-    
     func deselectFiltersInSection(byIndex sectionIndex: Int) {
         for (filterIndex, _) in data[sectionIndex].filters.enumerated() {
             data[sectionIndex].filters[filterIndex].isSelected = false
@@ -88,11 +93,11 @@ private extension ASCFiltersViewController {
         }
         return nil
     }
-
+    
     func selectFilter(at indexPath: IndexPath) {
         data[indexPath.section].filters[indexPath.item].isSelected = true
     }
-
+    
     func fiterTypeIdentifier() -> FilterType {
         for (sectionIndex, section) in data.enumerated() {
             for (filterIndex, _) in section.filters.enumerated() {
@@ -103,12 +108,28 @@ private extension ASCFiltersViewController {
         }
         return .none
     }
-
+    
+    func showFiltredFilesRequest() {
+        let filterType: FilterType = fiterTypeIdentifier()
+        guard
+            let user = ASCFileManager.onlyofficeProvider?.user,
+            let userId = user.userId,
+            let folderId = folderId
+        else { return }
+        let parameters: [String: Any] = [
+            "userIdOrGroupId": userId,
+            "filterType": filterType,
+        ]
+        let endpoint = OnlyofficeAPI.Endpoints.Folders.filter(folderId: folderId)
+        OnlyofficeApiClient.shared.request(endpoint, parameters) { result, error in
+        }
+    }
+    
     func showResultButtonConstraints() {
         showResultsButton.setTitle(String.localizedStringWithFormat(
             NSLocalizedString("Show %d results", comment: ""), resultCount
         ), for: .normal)
-
+        
         view.addSubview(showResultsButton)
         showResultsButton.anchor(
             left: view.leftAnchor,
@@ -120,11 +141,11 @@ private extension ASCFiltersViewController {
             heightConstant: 52
         )
     }
-
+    
     func setupNavigationBar() {
         navigationItem.largeTitleDisplayMode = .never
         navigationItem.title = NSLocalizedString("Filters", comment: "")
-
+        
         let rightBarButton = UIBarButtonItem(
             title: NSLocalizedString("Reset", comment: ""),
             style: UIBarButtonItem.Style.plain,
@@ -140,7 +161,7 @@ private extension ASCFiltersViewController {
         navigationItem.rightBarButtonItem = rightBarButton
         navigationItem.leftBarButtonItem = leftBarButton
     }
-
+    
     func setupCollectionView() {
         let pillLayout = ASCPillLayout()
         collectionView = UICollectionView(frame: .zero, collectionViewLayout: pillLayout)
@@ -158,7 +179,7 @@ private extension ASCFiltersViewController {
         view.addSubview(collectionView)
         setupCollectionViewConstraints()
     }
-
+    
     func setupCollectionViewConstraints() {
         collectionView.anchor(
             top: view.safeAreaLayoutGuide.topAnchor,
@@ -169,7 +190,7 @@ private extension ASCFiltersViewController {
             rightConstant: 16
         )
     }
-
+    
     @objc func resetBarButtonItemTapped() {
         for (sectionIndex, section) in data.enumerated() {
             for (filterIndex, _) in section.filters.enumerated() {
@@ -179,18 +200,17 @@ private extension ASCFiltersViewController {
         collectionView.reloadData()
         setupCollectionView()
     }
-
+    
     @objc func cancelBarButtonItemTapped() {
         dismiss(animated: true)
     }
-
+    
     @objc func onShowResultsButtonTapped() {
         print("call onShowResultsButtonTapped")
     }
 }
 
 extension ASCFiltersViewController: UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
-
     //
     // TODO: Implement the logic for changing the appearance of the cell inside the class.
     // Use property like Selected.
@@ -201,22 +221,22 @@ extension ASCFiltersViewController: UICollectionViewDataSource, UICollectionView
             resetCell(at: selectedItemIndexPath)
             deselectFiltersInSection(byIndex: indexPath.section)
         }
-      
+        
         if let cell = collectionView.cellForItem(at: indexPath) as? ASCFiltersCollectionViewCell {
             cell.labelText.textColor = Asset.Colors.viewBackground.color
             cell.backgroundColor = Asset.Colors.brend.color
             selectFilter(at: indexPath)
         }
     }
-
+    
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         return data.count
     }
-
+    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return data[section].filters.count
     }
-
+    
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ASCFiltersCollectionViewCell.identifier, for: indexPath) as? ASCFiltersCollectionViewCell
         cell?.setLabel(data[indexPath.section].filters[indexPath.row].filterName)
@@ -225,7 +245,7 @@ extension ASCFiltersViewController: UICollectionViewDataSource, UICollectionView
         }
         return cell!
     }
-
+    
     func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
         let header = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: ASCFiltersCollectionViewHeader.identifier, for: indexPath) as? ASCFiltersCollectionViewHeader
         header?.setupLabel("\(data[indexPath.section].sectionName)")
@@ -241,16 +261,25 @@ extension ASCFiltersViewController: ASCPillLayoutDelegate {
         let calculatedSize = (label as NSString).boundingRect(with: referenceSize, options: NSStringDrawingOptions.usesLineFragmentOrigin, attributes: [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 15.0)], context: nil)
         return CGSize(width: calculatedSize.width + cellLeftRightPadding, height: ASCFiltersCollectionViewCell.pillHeight)
     }
-
+    
     func collectionView(_ collectionView: UICollectionView, heightForHeaderInSection section: Int) -> CGFloat {
         return 22.0
     }
-
+    
     func collectionView(_ collectionView: UICollectionView, insetsForItemsInSection section: Int) -> UIEdgeInsets {
-        return UIEdgeInsets(top: 16.0, left: 0, bottom: 16.0, right: 16.0)
+        return UIEdgeInsets(top: 16.0, left: 0, bottom: 16.0, right: 0)
     }
-
+    
     func collectionView(_ collectionView: UICollectionView, itemSpacingInSection section: Int) -> CGFloat {
         return 16.0
+    }
+}
+
+extension ASCFiltersViewController {
+    typealias ErrorMessage = String
+    
+    enum RequestResult {
+        case success
+        case failure(ErrorMessage)
     }
 }

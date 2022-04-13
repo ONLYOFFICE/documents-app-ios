@@ -477,7 +477,8 @@ class ASCDocumentsViewController: ASCBaseTableViewController, UIGestureRecognize
     }
 
     @objc func onFilterAction() {
-        let filtersViewController = ASCFiltersViewController()
+        guard let folderId = folder?.id else { return }
+        let filtersViewController = ASCFiltersViewController(folderId: folderId)
         let navigationVC = UINavigationController(rootASCViewController: filtersViewController)
         if UIDevice.pad {
             navigationVC.preferredContentSize = CGSize(width: 380, height: 714)

@@ -85,6 +85,9 @@
 /* No comment provided by engineer. */
 "An unexpected error has occurred. Please try again later. Sorry for inconvenience." = "Произошла непредвиденная ошибка. Повторите попытку позже. Извините за неудобство.";
 
+/* No comment provided by engineer. */
+"AppleId authentication failed" = "Аутентификация через AppleId не удалась";
+
 /* Caption of the process */
 "Applying" = "Применение";
 
@@ -804,6 +807,9 @@
 "Please retry. \n\n If the problem persists contact us and mention this error code: Google - %@" = "Попробуйте ещё раз.\n\nЕсли проблема повторяется, напишите нам и назовите код ошибки: Google - %@";
 
 /* No comment provided by engineer. */
+"Please retry. \n\n If the problem persists contact us and mention this error code: Microsoft - %@" = "Попробуйте ещё раз.\n\nЕсли проблема повторяется, напишите нам и назовите код ошибки: Microsoft - %@";
+
+/* No comment provided by engineer. */
 "Please retry. \n\n If the problem persists contact us and mention this error code: OneDrive - %@" = "Попробуйте ещё раз.\n\nЕсли проблема повторяется, напишите нам и назовите код ошибки: OneDrive - %@";
 
 /* No comment provided by engineer. */
@@ -1234,7 +1240,7 @@
 "Work with office files" = "Работайте с файлами документов";
 
 /* No comment provided by engineer. */
-"Wrong login or password." = "Неверный логин или пароль.";
+"Wrong server, login or password." = "Неверный адрес сервера, логин или пароль.";
 
 /* No comment provided by engineer. */
 "Yandex directory" = "Папка Яндекс";

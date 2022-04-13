@@ -27,7 +27,7 @@ class ASCConnectStorageOAuth2Dropbox: ASCConnectStorageOAuth2Delegate {
             "response_type": controller.responseType == .code ? "code" : "token",
             "client_id": clientId ?? "",
             "redirect_uri": redirectUrl ?? "",
-            "force_reauthentication": "true"
+            "force_reauthentication": "true",
         ]
 
         let authRequest = "https://www.dropbox.com/oauth2/authorize?\(parameters.stringAsHttpParameters())"

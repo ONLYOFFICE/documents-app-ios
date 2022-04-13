@@ -47,6 +47,48 @@ class ASCFiltersViewController: UIViewController {
 }
 
 private extension ASCFiltersViewController {
+    
+    func deselectFiltersInSection(byIndex sectionIndex: Int) {
+        for (filterIndex, _) in data[sectionIndex].filters.enumerated() {
+            data[sectionIndex].filters[filterIndex].isSelected = false
+        }
+    }
+    
+    func resetCell(at indexPath: IndexPath) {
+        if let cell = collectionView.cellForItem(at: indexPath) as? ASCFiltersCollectionViewCell {
+            if indexPath.section == 1 {
+                cell.labelText.textColor = Asset.Colors.brend.color
+            } else {
+                cell.labelText.textColor = .black
+            }
+            cell.backgroundColor = Asset.Colors.viewBackground.color
+        }
+    }
+    
+    func selectedItem(in section: Int) -> IndexPath? {
+        for (filterIndex, _) in data[section].filters.enumerated() {
+            if data[section].filters[filterIndex].isSelected {
+                return IndexPath(item: filterIndex, section: section)
+            }
+        }
+        return nil
+    }
+
+    func selectFilter(at indexPath: IndexPath) {
+        data[indexPath.section].filters[indexPath.item].isSelected = true
+    }
+
+    func fiterTypeIdentifier() -> FilterType {
+        for (sectionIndex, section) in data.enumerated() {
+            for (filterIndex, _) in section.filters.enumerated() {
+                if data[sectionIndex].filters[filterIndex].isSelected == true {
+                    return data[sectionIndex].filters[filterIndex].filter
+                }
+            }
+        }
+        return .none
+    }
+
     func showResultButtonConstraints() {
         showResultsButton = UIButton()
         showResultsButton.backgroundColor = Asset.Colors.viewBackground.color
@@ -124,21 +166,17 @@ private extension ASCFiltersViewController {
 }
 
 extension ASCFiltersViewController: UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
+
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        if let selectedItemIndexPath = selectedItem(in: indexPath.section) {
+            resetCell(at: selectedItemIndexPath)
+            deselectFiltersInSection(byIndex: indexPath.section)
+        }
+
         if let cell = collectionView.cellForItem(at: indexPath) as? ASCFiltersCollectionViewCell {
-            if (data[indexPath.section].filters[indexPath.row].isSelected) == false {
-                data[indexPath.section].filters[indexPath.row].isSelected = true
-                cell.labelText.textColor = Asset.Colors.viewBackground.color
-                cell.backgroundColor = Asset.Colors.brend.color
-            } else {
-                if indexPath.section == 1 {
-                    cell.labelText.textColor = Asset.Colors.brend.color
-                } else {
-                    cell.labelText.textColor = .black
-                }
-                cell.backgroundColor = Asset.Colors.viewBackground.color
-                data[indexPath.section].filters[indexPath.row].isSelected = false
-            }
+            cell.labelText.textColor = Asset.Colors.viewBackground.color
+            cell.backgroundColor = Asset.Colors.brend.color
+            selectFilter(at: indexPath)
         }
     }
 

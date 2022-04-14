@@ -60,10 +60,14 @@ class ASCFiltersViewController: UIViewController {
         super.viewDidLoad()
         view.backgroundColor = Asset.Colors.tableCategoryBackground.color
         setupNavigationBar()
-        setupCollectionView()
         showResultButtonConstraints()
-        
+        setupCollectionView()
         showResultsButton.addTarget(self, action: #selector(onShowResultsButtonTapped), for: .touchUpInside)
+    }
+
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        navigationItem.largeTitleDisplayMode = .never
     }
 
     func fiterTypeIdentifier() -> FilterType {
@@ -168,7 +172,7 @@ private extension ASCFiltersViewController {
         collectionView.anchor(
             top: view.safeAreaLayoutGuide.topAnchor,
             left: view.leftAnchor,
-            bottom: view.bottomAnchor,
+            bottom: showResultsButton.topAnchor,
             right: view.rightAnchor,
             leftConstant: 16,
             rightConstant: 16
@@ -181,8 +185,8 @@ private extension ASCFiltersViewController {
                 data[sectionIndex].filters[filterIndex].isSelected = false
             }
         }
-        collectionView.reloadData()
         setupCollectionView()
+        collectionView.reloadData()
     }
     
     @objc func cancelBarButtonItemTapped() {

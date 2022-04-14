@@ -272,7 +272,7 @@ class ASCOnlyofficeProvider: ASCFileProviderProtocol & ASCSortableFileProviderPr
             }
 
             /// Filter
-            if let filter = parameters["filterType"] as? Int {
+            if let filter = parameters["filterType"] as? String {
                 params["filterType"] = filter
             }
 

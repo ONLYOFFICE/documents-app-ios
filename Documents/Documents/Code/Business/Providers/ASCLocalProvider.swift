@@ -170,10 +170,50 @@ class ASCLocalProvider: ASCFileProviderProtocol & ASCSortableFileProviderProtoco
             search(by: searchInfo, entities: &commonList)
         }
 
+        // Filter
+        if let filterType = parameters["filterType"] as? FilterType {
+            commonList = { list in
+                switch filterType {
+                case .none: return list
+                case .files:
+                    return list.filter { $0 is ASCFile }
+                case .folders:
+                    return list.filter { $0 is ASCFolder }
+                case .documents:
+                    return filter(list: list, byFileExtensions: ASCConstants.FileExtensions.documents)
+                case .presentations:
+                    return filter(list: list, byFileExtensions: ASCConstants.FileExtensions.presentations)
+                case .spreadsheets:
+                    return filter(list: list, byFileExtensions: ASCConstants.FileExtensions.spreadsheets)
+                case .images:
+                    return filter(list: list, byFileExtensions: ASCConstants.FileExtensions.images)
+                case .user:
+                    return list
+                case .group:
+                    return list
+                case .archive:
+                    return filter(list: list, byFileExtensions: ASCConstants.FileExtensions.archives)
+                case .byExtension:
+                    return list
+                case .media:
+                    return filter(list: list, byFileExtensions: ASCConstants.FileExtensions.videos)
+                }
+            }(commonList)
+        }
+
         total = commonList.count
         items = commonList
 
         completeon?(self, folder, true, nil)
+    }
+
+    private func filter(list: [ASCEntity], byFileExtensions fileExtensions: [String]) -> [ASCEntity] {
+        return list.filter {
+            guard let file = $0 as? ASCFile else { return false }
+            let fileExtension = file.title.fileExtension().lowercased()
+            let archiveExtensions = fileExtensions
+            return archiveExtensions.contains(fileExtension)
+        }
     }
 
     /// Search records

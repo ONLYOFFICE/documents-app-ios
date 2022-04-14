@@ -145,6 +145,7 @@ class ASCConstants {
         static let forms = ["docxf", "oform"]
         static let images = ["jpg", "jpeg", "png", "gif", "bmp", "tif", "tiff", "ico"]
         static let videos = ["mpg", "mpeg", "mpg4", "mp4", "m4v", "mov", "avi", "vfw", "m75", "m15", "3g2", "3gp2", "3gp", "3gpp"]
+        static let archives = ["zip", "tar", "gz"]
         static let allowEdit = ["docx", "xlsx", "pptx", "csv", "txt", "odt", "ods", "odp", "doc", "xls", "ppt", "rtf", "mht", "html", "htm", "epub", "fb2", "docxf", "oform"]
         static let editorImportDocuments = ["doc", "odt", "txt", "rtf", "mht", "html", "htm", "epub", "fb2"]
         static let editorImportSpreadsheets = ["xls", "ods", "csv"]

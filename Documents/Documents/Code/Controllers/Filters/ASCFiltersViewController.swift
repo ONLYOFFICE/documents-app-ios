@@ -38,6 +38,7 @@ class ASCFiltersViewController: UIViewController {
     let cellLeftRightPadding: CGFloat = 32.0
     let resultCount = 100
     var folderId: String?
+    var showResultsCompletion: () -> Void = {}
     var collectionView: UICollectionView!
     private lazy var showResultsButton: ASCButtonStyle = {
         $0.styleType = .blank
@@ -45,10 +46,9 @@ class ASCFiltersViewController: UIViewController {
     }(ASCButtonStyle())
     
     // MARK: - Lifecycle Methods
-    
-    init(folderId: String) {
+
+    init() {
         super.init(nibName: nil, bundle: nil)
-        self.folderId = folderId
     }
     
     @available(*, unavailable)
@@ -64,6 +64,17 @@ class ASCFiltersViewController: UIViewController {
         showResultButtonConstraints()
         
         showResultsButton.addTarget(self, action: #selector(onShowResultsButtonTapped), for: .touchUpInside)
+    }
+
+    func fiterTypeIdentifier() -> FilterType {
+        for (sectionIndex, section) in data.enumerated() {
+            for (filterIndex, _) in section.filters.enumerated() {
+                if data[sectionIndex].filters[filterIndex].isSelected == true {
+                    return data[sectionIndex].filters[filterIndex].filter
+                }
+            }
+        }
+        return .none
     }
 }
 
@@ -97,34 +108,7 @@ private extension ASCFiltersViewController {
     func selectFilter(at indexPath: IndexPath) {
         data[indexPath.section].filters[indexPath.item].isSelected = true
     }
-    
-    func fiterTypeIdentifier() -> FilterType {
-        for (sectionIndex, section) in data.enumerated() {
-            for (filterIndex, _) in section.filters.enumerated() {
-                if data[sectionIndex].filters[filterIndex].isSelected == true {
-                    return data[sectionIndex].filters[filterIndex].filter
-                }
-            }
-        }
-        return .none
-    }
-    
-    func showFiltredFilesRequest() {
-        let filterType: FilterType = fiterTypeIdentifier()
-        guard
-            let user = ASCFileManager.onlyofficeProvider?.user,
-            let userId = user.userId,
-            let folderId = folderId
-        else { return }
-        let parameters: [String: Any] = [
-            "userIdOrGroupId": userId,
-            "filterType": filterType,
-        ]
-        let endpoint = OnlyofficeAPI.Endpoints.Folders.filter(folderId: folderId)
-        OnlyofficeApiClient.shared.request(endpoint, parameters) { result, error in
-        }
-    }
-    
+
     func showResultButtonConstraints() {
         showResultsButton.setTitle(String.localizedStringWithFormat(
             NSLocalizedString("Show %d results", comment: ""), resultCount
@@ -206,7 +190,8 @@ private extension ASCFiltersViewController {
     }
     
     @objc func onShowResultsButtonTapped() {
-        print("call onShowResultsButtonTapped")
+        showResultsCompletion()
+        dismiss(animated: true)
     }
 }
 

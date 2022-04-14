@@ -115,6 +115,9 @@ class ASCDocumentsViewController: ASCBaseTableViewController, UIGestureRecognize
     // Sort
     private lazy var defaultsSortTypes: [ASCDocumentSortType] = [.dateandtime, .az, .type, .size]
 
+    // Filter
+    private lazy var filtersViewController = ASCFiltersViewController()
+
     // MARK: - Outlets
 
     @IBOutlet var loadingView: UIView!
@@ -478,7 +481,10 @@ class ASCDocumentsViewController: ASCBaseTableViewController, UIGestureRecognize
 
     @objc func onFilterAction() {
         guard let folderId = folder?.id else { return }
-        let filtersViewController = ASCFiltersViewController(folderId: folderId)
+        filtersViewController.folderId = folderId
+        filtersViewController.showResultsCompletion = { [weak self] in
+            self?.loadFirstPage()
+        }
         let navigationVC = UINavigationController(rootASCViewController: filtersViewController)
         if UIDevice.pad {
             navigationVC.preferredContentSize = CGSize(width: 380, height: 714)
@@ -880,6 +886,10 @@ class ASCDocumentsViewController: ASCBaseTableViewController, UIGestureRecognize
             ]
         }
 
+        // filter
+        let filterType = filtersViewController.fiterTypeIdentifier()
+        params["filterType"] = filterType
+
         provider?.fetch(for: folder, parameters: params) { [weak self] provider, folder, success, error in
             guard let strongSelf = self else { return }
 
@@ -920,6 +930,12 @@ class ASCDocumentsViewController: ASCBaseTableViewController, UIGestureRecognize
                 }
 
                 params["sort"] = sortParams
+            }
+
+            // filter
+            let filterType = filtersViewController.fiterTypeIdentifier()
+            if filterType != .none {
+                params["filterType"] = filterType.rawValue
             }
 
             cloudProvider.fetch(for: folder, parameters: params) { [weak self] provider, entity, success, error in

@@ -49,7 +49,7 @@ class ASCOnlyofficeCategory: ASCCategory {
             return Asset.Images.categoryMy.image
         case .onlyofficeShare:
             return Asset.Images.categoryShare.image
-        case .onlyofficeProjects:
+        case .onlyofficeBunch, .onlyofficeProjects:
             return Asset.Images.categoryProjects.image
         case .onlyofficeFavorites:
             return Asset.Images.categoryFavorites.image
@@ -72,7 +72,7 @@ class ASCOnlyofficeCategory: ASCCategory {
             return 40
         case .onlyofficeCommon:
             return 60
-        case .onlyofficeProjects:
+        case .onlyofficeBunch, .onlyofficeProjects:
             return 70
         case .onlyofficeTrash:
             return 80
@@ -93,7 +93,7 @@ class ASCOnlyofficeCategory: ASCCategory {
             return OnlyofficeAPI.Path.Forlder.recent
         case .onlyofficeCommon:
             return OnlyofficeAPI.Path.Forlder.common
-        case .onlyofficeProjects:
+        case .onlyofficeBunch, .onlyofficeProjects:
             return OnlyofficeAPI.Path.Forlder.projects
         case .onlyofficeTrash:
             return OnlyofficeAPI.Path.Forlder.trash
@@ -110,7 +110,7 @@ class ASCOnlyofficeCategory: ASCCategory {
             return true
         case .onlyofficeCommon:
             return true
-        case .onlyofficeProjects:
+        case .onlyofficeBunch, .onlyofficeProjects:
             return true
         default:
             return false

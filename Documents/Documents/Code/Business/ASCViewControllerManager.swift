@@ -561,7 +561,19 @@ class ASCViewControllerManager {
 
                     if file.id != "", folder.id != "" {
                         delay(seconds: 0.2) {
-                            ASCViewControllerManager.shared.rootController?.display(provider: ASCFileManager.onlyofficeProvider, folder: folder.parentId == nil ? folder : nil)
+                            if let copyFolder = ASCFolder(JSON: folder.toJSON()) {
+                                // Correction root folfer type
+                                if copyFolder.rootFolderType == .onlyofficeBunch {
+                                    copyFolder.title = ASCOnlyofficeCategory.title(of: .onlyofficeProjects)
+                                    copyFolder.rootFolderType = .onlyofficeProjects
+                                }
+
+                                if let documentVC = ASCViewControllerManager.shared.rootController?.topMostViewController() as? ASCDocumentsViewController {
+                                    if !(documentVC.folder == copyFolder) {
+                                        ASCViewControllerManager.shared.rootController?.display(provider: ASCFileManager.onlyofficeProvider, folder: copyFolder)
+                                    }
+                                }
+                            }
                         }
 
                         delay(seconds: 0.3) {

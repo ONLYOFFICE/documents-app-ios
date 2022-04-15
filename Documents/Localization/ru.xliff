@@ -2715,7 +2715,7 @@ to the clipboard</source>
       </trans-unit>
       <trans-unit id="Project Documents" xml:space="preserve">
         <source>Project Documents</source>
-        <target>Документы проектов</target>
+        <target>В проектах</target>
         <note>Category title</note>
       </trans-unit>
       <trans-unit id="Protected File" xml:space="preserve">

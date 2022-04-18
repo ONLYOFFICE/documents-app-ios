@@ -644,6 +644,10 @@
 		FCAE8B8D1E717B84004FC332 /* EventManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCAE8B8C1E717B84004FC332 /* EventManager.swift */; };
 		FCB1BEC11E8E4368004C7967 /* UIAlertController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCB1BEC01E8E4368004C7967 /* UIAlertController+Extension.swift */; };
 		FCB1BEC31E8E5E55004C7967 /* MBProgressHUD+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCB1BEC21E8E5E55004C7967 /* MBProgressHUD+Extension.swift */; };
+		FCB1CF3F280D84070050EA7A /* ASCAppleIdSignInController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D84F974273FC2EC00C94E74 /* ASCAppleIdSignInController.swift */; };
+		FCB1CF40280D843C0050EA7A /* ASCNextCloudConnectStorageDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F377689727D273B20044EDA6 /* ASCNextCloudConnectStorageDelegate.swift */; };
+		FCB1CF41280D84D60050EA7A /* KeyboardManagerHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = F336546127E4903400ABBEB3 /* KeyboardManagerHelper.swift */; };
+		FCB1CF42280D85610050EA7A /* ASCMicrosoftSignInController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F37F0A2827C12B9E00371183 /* ASCMicrosoftSignInController.swift */; };
 		FCB839661EB8948D0065EC25 /* ASCIntroPageController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCB839651EB8948D0065EC25 /* ASCIntroPageController.swift */; };
 		FCB8A39221C27EE000CF74FA /* ASCDeviceCategoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCB8A39121C27EE000CF74FA /* ASCDeviceCategoryViewController.swift */; };
 		FCB8A39521C2881100CF74FA /* ASCDeviceCategoryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCB8A39421C2881100CF74FA /* ASCDeviceCategoryCell.swift */; };
@@ -3771,6 +3775,7 @@
 				1D49E2BA26A9BDD90024AC7A /* ASCSharingSettingsVerifyRightHoldersModels.swift in Sources */,
 				FC1AC11A27A043D1006C1B6E /* ASCSharingSettingsAccessOFormProvider.swift in Sources */,
 				1D49E2AA26A9BD8F0024AC7A /* ASCSharingAddRightHoldersView.swift in Sources */,
+				FCB1CF41280D84D60050EA7A /* KeyboardManagerHelper.swift in Sources */,
 				FC36D29525B5C32200412DDB /* Mappings.swift in Sources */,
 				FC36D29625B5C32200412DDB /* ASCRootViewController.swift in Sources */,
 				FC36D29725B5C32200412DDB /* ASCProfileAvatarView.swift in Sources */,
@@ -3825,6 +3830,8 @@
 				FC68526E26837B7300D830EC /* NextcloudEndpoints.swift in Sources */,
 				FC36D2B425B5C32200412DDB /* ASCSortViewController.swift in Sources */,
 				1D128F9D26B3285300603B0F /* ASCCentredLabelHeaderFooterView.swift in Sources */,
+				FCB1CF42280D85610050EA7A /* ASCMicrosoftSignInController.swift in Sources */,
+				FCB1CF3F280D84070050EA7A /* ASCAppleIdSignInController.swift in Sources */,
 				1D49E29B26A9BD340024AC7A /* ASCSharingOptionsSectionProtocol.swift in Sources */,
 				1D49E2A226A9BD5E0024AC7A /* ASCShareSettingsAPIWorker.swift in Sources */,
 				FC1AC11427A042D0006C1B6E /* ASCPersonalShareSettingsAPIWorker.swift in Sources */,
@@ -3931,6 +3938,7 @@
 				FC36D2ED25B5C32200412DDB /* PasscodeLockType.swift in Sources */,
 				1D49E29C26A9BD380024AC7A /* ASCEntityLinkMakerProtocol.swift in Sources */,
 				FCF694B32631C10400808644 /* ASCBaseTableViewController.swift in Sources */,
+				FCB1CF40280D843C0050EA7A /* ASCNextCloudConnectStorageDelegate.swift in Sources */,
 				FC36D2EE25B5C32200412DDB /* ASCOnlyofficeCategoryCell.swift in Sources */,
 				FCAE112F26A800E60013B475 /* ASCKdriveFileProvider.swift in Sources */,
 				1D49E29D26A9BD400024AC7A /* ASCSwitchTableViewCell.swift in Sources */,

@@ -1,5 +1,5 @@
 //
-//  ASCSelectUserTableViewDataModelItem.swift
+//  ASCUserTableViewDataModelItem.swift
 //  Documents
 //
 //  Created by Лолита Чернышева on 15.04.2022.
@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct ASCSelectUserTableViewDataModelItem {
+struct ASCUserTableViewDataModelItem {
     var id: String?
     var avatarImageUrl: String?
     var userName: String?

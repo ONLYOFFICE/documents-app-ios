@@ -41,6 +41,7 @@ class ASCFiltersViewController: UIViewController {
     var showResultsCompletion: () -> Void = {}
     var collectionView: UICollectionView!
     lazy var selectUserViewController = ASCSelectUserViewController()
+    lazy var selectGroupViewController = ASCSelectGroupViewController()
     private lazy var showResultsButton: ASCButtonStyle = {
         $0.styleType = .blank
         return $0
@@ -220,6 +221,11 @@ extension ASCFiltersViewController: UICollectionViewDataSource, UICollectionView
 
         if indexPath.section == 1, indexPath.item == 0 {
             let navigationVC = UINavigationController(rootASCViewController: selectUserViewController)
+            navigationController?.present(navigationVC, animated: true)
+        }
+
+        if indexPath.section == 1, indexPath.item == 1 {
+            let navigationVC = UINavigationController(rootASCViewController: selectGroupViewController)
             navigationController?.present(navigationVC, animated: true)
         }
     }

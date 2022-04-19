@@ -17,6 +17,7 @@ enum ASCSharingAddRightHolders {
                 case loadGroups
                 case selectViewModel(_ request: ViewModelSelectedRequest)
                 case deselectViewModel(_ request: ViewModelDeselectedRequest)
+                case changeAccessForSelected(_ request: ASCShareAccess)
             }
 
             struct ViewModelSelectedRequest {

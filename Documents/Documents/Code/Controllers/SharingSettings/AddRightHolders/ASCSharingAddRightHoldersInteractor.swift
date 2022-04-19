@@ -57,6 +57,14 @@ class ASCSharingAddRightHoldersInteractor: ASCSharingAddRightHoldersBusinessLogi
             if let type = defineType(byId: request.deselectedViewModel.id) {
                 presenter?.presentData(responseType: .presentSelected(.init(selectedModel: request.deselectedViewModel, isSelect: false, type: type)))
             }
+        case let .changeAccessForSelected(request: access):
+            var updatedItems = [OnlyofficeShare]()
+            dataStore?.itemsForSharingAdd.forEach { item in
+                var item = item
+                item.access = access
+                updatedItems.append(item)
+            }
+            dataStore?.itemsForSharingAdd = updatedItems
         }
     }
 

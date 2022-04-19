@@ -40,6 +40,7 @@ class ASCFiltersViewController: UIViewController {
     var folderId: String?
     var showResultsCompletion: () -> Void = {}
     var collectionView: UICollectionView!
+    lazy var selectUserViewController = ASCSelectUserViewController()
     private lazy var showResultsButton: ASCButtonStyle = {
         $0.styleType = .blank
         return $0
@@ -215,6 +216,11 @@ extension ASCFiltersViewController: UICollectionViewDataSource, UICollectionView
             cell.labelText.textColor = Asset.Colors.viewBackground.color
             cell.backgroundColor = Asset.Colors.brend.color
             selectFilter(at: indexPath)
+        }
+
+        if indexPath.section == 1, indexPath.item == 0 {
+            let navigationVC = UINavigationController(rootASCViewController: selectUserViewController)
+            navigationController?.present(navigationVC, animated: true)
         }
     }
     

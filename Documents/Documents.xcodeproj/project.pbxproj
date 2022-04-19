@@ -178,6 +178,8 @@
 		F377689627CFD4570044EDA6 /* ASCConnectStorageNextCloudServerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F377689427CFCF2D0044EDA6 /* ASCConnectStorageNextCloudServerController.swift */; };
 		F377689827D273B20044EDA6 /* ASCNextCloudConnectStorageDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F377689727D273B20044EDA6 /* ASCNextCloudConnectStorageDelegate.swift */; };
 		F37F0A2927C12B9E00371183 /* ASCMicrosoftSignInController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F37F0A2827C12B9E00371183 /* ASCMicrosoftSignInController.swift */; };
+		F391DE5D280964AF00C93648 /* ASCSelectUserTableViewDataModelItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = F391DE5C280964AF00C93648 /* ASCSelectUserTableViewDataModelItem.swift */; };
+		F391DE5F280968B700C93648 /* ASCSelectUserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F391DE5E280968B700C93648 /* ASCSelectUserViewController.swift */; };
 		F3B17C0827F374D90021E03A /* ASCFiltersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3B17C0727F374D80021E03A /* ASCFiltersViewController.swift */; };
 		F3B17C2327FC82D50021E03A /* ASCDocumentsFilterModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3B17C2227FC82D20021E03A /* ASCDocumentsFilterModel.swift */; };
 		FC0299F127B6409000E5341B /* ASCWebKitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F33E473A27AD9BC200EFF6D9 /* ASCWebKitViewController.swift */; };
@@ -931,6 +933,8 @@
 		F377689427CFCF2D0044EDA6 /* ASCConnectStorageNextCloudServerController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCConnectStorageNextCloudServerController.swift; sourceTree = "<group>"; };
 		F377689727D273B20044EDA6 /* ASCNextCloudConnectStorageDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCNextCloudConnectStorageDelegate.swift; sourceTree = "<group>"; };
 		F37F0A2827C12B9E00371183 /* ASCMicrosoftSignInController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCMicrosoftSignInController.swift; sourceTree = "<group>"; };
+		F391DE5C280964AF00C93648 /* ASCSelectUserTableViewDataModelItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCSelectUserTableViewDataModelItem.swift; sourceTree = "<group>"; };
+		F391DE5E280968B700C93648 /* ASCSelectUserViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCSelectUserViewController.swift; sourceTree = "<group>"; };
 		F3B17C0727F374D80021E03A /* ASCFiltersViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCFiltersViewController.swift; sourceTree = "<group>"; };
 		F3B17C2227FC82D20021E03A /* ASCDocumentsFilterModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCDocumentsFilterModel.swift; sourceTree = "<group>"; };
 		FC029A3927BCF2FC00E5341B /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Documents-InfoPlist.strings"; sourceTree = "<group>"; };
@@ -2027,6 +2031,7 @@
 				F3B17C2127FC82830021E03A /* Model */,
 				FC1984942805559D002057B2 /* View */,
 				F3B17C0727F374D80021E03A /* ASCFiltersViewController.swift */,
+				F391DE5E280968B700C93648 /* ASCSelectUserViewController.swift */,
 			);
 			path = Filters;
 			sourceTree = "<group>";
@@ -2035,6 +2040,7 @@
 			isa = PBXGroup;
 			children = (
 				F3B17C2227FC82D20021E03A /* ASCDocumentsFilterModel.swift */,
+				F391DE5C280964AF00C93648 /* ASCSelectUserTableViewDataModelItem.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -4373,6 +4379,7 @@
 				FC6839A021B80BDF00251CEA /* ASCCloudCategoryCell.swift in Sources */,
 				FCEF9D211ED2C94300627BA5 /* SetPasscodeState.swift in Sources */,
 				FCECDDD1264309D7006CD7B9 /* ASCEmailSentViewController.swift in Sources */,
+				F391DE5D280964AF00C93648 /* ASCSelectUserTableViewDataModelItem.swift in Sources */,
 				FC4D0A2D24950503001EF1B5 /* ASCDebugManager.swift in Sources */,
 				FC066AB9252DB7C5007357F7 /* ObservableReference.swift in Sources */,
 				FCF696412637E73000808644 /* ASCDocumentSortType.swift in Sources */,
@@ -4441,6 +4448,7 @@
 				FC9150F21EC35D850076A855 /* UIView+Extension.swift in Sources */,
 				FC066AB2252DB7C5007357F7 /* Event.swift in Sources */,
 				FC1984982805559D002057B2 /* ASCFiltersCollectionViewCell.swift in Sources */,
+				F391DE5F280968B700C93648 /* ASCSelectUserViewController.swift in Sources */,
 				FC7CF5161EF3EFF300C0A64F /* Deprecated.swift in Sources */,
 				FC1EA5CD1ECED0A0008FEE2E /* ASCBaseViewController.swift in Sources */,
 				FCB839661EB8948D0065EC25 /* ASCIntroPageController.swift in Sources */,

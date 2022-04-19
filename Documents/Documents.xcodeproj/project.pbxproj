@@ -1408,8 +1408,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				667548327089FF37AB5BACBB /* Pods_Documents_Alpha.framework in Frameworks */,
 				1D25F6A5273978E700C50691 /* CloudKit.framework in Frameworks */,
+				667548327089FF37AB5BACBB /* Pods_Documents_Alpha.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -94,11 +94,6 @@ target 'Documents-Alpha' do
   pod 'SpreadsheetEditor', :path => '../editors-ios/SpreadsheetEditor.podspec'
   pod 'DocumentEditor', :path => '../editors-ios/DocumentEditor.podspec'
   pod 'PresentationEditor', :path => '../editors-ios/PresentationEditor.podspec'
-
-  target 'DocumentsTests' do
-    inherit! :complete
-    inherit! :search_paths
-  end
 end
 
 target 'Documents-develop' do

@@ -15,7 +15,7 @@ protocol ASCSharingAddRightHoldersDataStore {
     var doneComplerion: () -> Void { get set }
 
     var sharedInfoItems: [OnlyofficeShare] { get set }
-    var itemsForSharingAdd: [OnlyofficeShare] { get }
+    var itemsForSharingAdd: [OnlyofficeShare] { get set }
     var itemsForSharingRemove: [OnlyofficeShare] { get }
     var users: [ASCUser] { get set }
     var groups: [ASCGroup] { get set }
@@ -33,7 +33,7 @@ class ASCSharingAddRightHoldersRAMDataStore: ASCSharingAddRightHoldersDataStore 
     var doneComplerion: () -> Void = {}
 
     var sharedInfoItems: [OnlyofficeShare] = []
-    private(set) var itemsForSharingAdd: [OnlyofficeShare] = []
+    var itemsForSharingAdd: [OnlyofficeShare] = []
     private(set) var itemsForSharingRemove: [OnlyofficeShare] = []
 
     var users: [ASCUser] = []

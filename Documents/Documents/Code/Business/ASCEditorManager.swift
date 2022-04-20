@@ -2398,17 +2398,27 @@ class ASCEditorManager: NSObject, DEEditorDelegate, SEEditorDelegate, PEEditorDe
                             documentsVC = documentsNC.viewControllers.first as? ASCDocumentsViewController
                         }
                     } else {
-                        if let documentsNC = splitVC.viewControllers.first as? ASCBaseNavigationController {
-                            documentsVC = documentsNC.viewControllers.last as? ASCDocumentsViewController
-                        }
+                        documentsVC = ASCViewControllerManager.shared.rootController?.topMostViewController() as? ASCDocumentsViewController
                     }
 
                     if let documentsVC = documentsVC {
-                        let openHandler = documentsVC.openProgress(file: file, title: NSLocalizedString("Processing", comment: "Caption of the processing") + "...", 0.15)
-                        let closeHandler = documentsVC.closeProgress(file: file, title: NSLocalizedString("Saving", comment: "Caption of the processing"))
+                        let openHandler = documentsVC.openProgress(
+                            file: file,
+                            title: NSLocalizedString("Processing", comment: "Caption of the processing") + "...",
+                            0.15
+                        )
+                        let closeHandler = documentsVC.closeProgress(
+                            file: file,
+                            title: NSLocalizedString("Saving", comment: "Caption of the processing")
+                        )
 
                         strongSelf.openedFilePassword = password
-                        strongSelf.editLocal(file, viewMode: strongSelf.openedFileInViewMode, openHandler: openHandler, closeHandler: closeHandler)
+                        strongSelf.editLocal(
+                            file,
+                            viewMode: strongSelf.openedFileInViewMode,
+                            openHandler: openHandler,
+                            closeHandler: closeHandler
+                        )
                     }
                 }
             }

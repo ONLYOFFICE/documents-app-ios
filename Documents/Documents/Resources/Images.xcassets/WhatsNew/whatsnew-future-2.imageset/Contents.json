@@ -2,11 +2,11 @@
     "images" : [
         {
             "idiom" : "universal",
-            "filename" : "whatsnew-future-сleaFormat-light.pdf"
+            "filename" : "whatsnew-future-2-light.pdf"
         },
         {
             "idiom" : "universal",
-            "filename" : "whatsnew-future-сleaFormat-dark.pdf",
+            "filename" : "whatsnew-future-2-dark.pdf",
             "appearances" : [
                 {
                     "appearance" : "luminosity",

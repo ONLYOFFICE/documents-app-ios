@@ -1476,11 +1476,6 @@ Note: if you forget the passcode, you'll need to delete and reinstall the app. A
         <target>Author</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
-      <trans-unit id="Better formatting" xml:space="preserve">
-        <source>Better formatting</source>
-        <target>Better formatting</target>
-        <note>No comment provided by engineer.</note>
-      </trans-unit>
       <trans-unit id="Box directory" xml:space="preserve">
         <source>Box directory</source>
         <target>Box directory</target>
@@ -1550,11 +1545,6 @@ Note: if you forget the passcode, you'll need to delete and reinstall the app. A
         <source>Clear Cache?</source>
         <target>Clear Cache?</target>
         <note>Button title</note>
-      </trans-unit>
-      <trans-unit id="Clear formatting, use extended color palette, and change font with improved settings." xml:space="preserve">
-        <source>Clear formatting, use extended color palette, and change font with improved settings.</source>
-        <target>Clear formatting, use extended color palette, and change font with improved settings.</target>
-        <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Clearing" xml:space="preserve">
         <source>Clearing</source>
@@ -1996,11 +1986,6 @@ others which use WebDAV protocol.</target>
         <target>Export</target>
         <note>Button title</note>
       </trans-unit>
-      <trans-unit id="External keyboards" xml:space="preserve">
-        <source>External keyboards</source>
-        <target>External keyboards</target>
-        <note>No comment provided by engineer.</note>
-      </trans-unit>
       <trans-unit id="Failed online conversion service." xml:space="preserve">
         <source>Failed online conversion service.</source>
         <target>Failed online conversion service.</target>
@@ -2086,9 +2071,9 @@ others which use WebDAV protocol.</target>
         <target>Files</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
-      <trans-unit id="Fillable forms" xml:space="preserve">
-        <source>Fillable forms</source>
-        <target>Fillable forms</target>
+      <trans-unit id="Fill the shapes using gradients, images, or patterns. Choose the desirable line type." xml:space="preserve">
+        <source>Fill the shapes using gradients, images, or patterns. Choose the desirable line type.</source>
+        <target>Fill the shapes using gradients, images, or patterns. Choose the desirable line type.</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="First name is incorrect" xml:space="preserve">
@@ -2218,6 +2203,11 @@ to the clipboard</source>
 to the clipboard</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
+      <trans-unit id="Log in to your cloud using Apple ID or Microsoft account." xml:space="preserve">
+        <source>Log in to your cloud using Apple ID or Microsoft account.</source>
+        <target>Log in to your cloud using Apple ID or Microsoft account.</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
       <trans-unit id="Logging in" xml:space="preserve">
         <source>Logging in</source>
         <target>Logging in</target>
@@ -2263,6 +2253,11 @@ to the clipboard</target>
         <source>More</source>
         <target>More</target>
         <note>Button title</note>
+      </trans-unit>
+      <trans-unit id="More in autoshapes" xml:space="preserve">
+        <source>More in autoshapes</source>
+        <target>More in autoshapes</target>
+        <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Move" xml:space="preserve">
         <source>Move</source>
@@ -2332,6 +2327,11 @@ to the clipboard</target>
       <trans-unit id="New Spreadsheet" xml:space="preserve">
         <source>New Spreadsheet</source>
         <target>New Spreadsheet</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="New authentication methods" xml:space="preserve">
+        <source>New authentication methods</source>
+        <target>New authentication methods</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Next" xml:space="preserve">
@@ -2649,6 +2649,11 @@ to the clipboard</target>
         <target>Recovery</target>
         <note>Caption of the processing</note>
       </trans-unit>
+      <trans-unit id="Regional settings" xml:space="preserve">
+        <source>Regional settings</source>
+        <target>Regional settings</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
       <trans-unit id="Registration" xml:space="preserve">
         <source>Registration</source>
         <target>Registration</target>
@@ -2769,6 +2774,11 @@ to the clipboard</target>
         <source>Select the folder to recover the items</source>
         <target>Select the folder to recover the items</target>
         <note>One line. Max 50 charasters</note>
+      </trans-unit>
+      <trans-unit id="Select the region in spreadsheet settings to automatically convert currency, date, and time." xml:space="preserve">
+        <source>Select the region in spreadsheet settings to automatically convert currency, date, and time.</source>
+        <target>Select the region in spreadsheet settings to automatically convert currency, date, and time.</target>
+        <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Selected provider is not available" xml:space="preserve">
         <source>Selected provider is not available</source>
@@ -3204,11 +3214,6 @@ to the clipboard</target>
         <target>Use Touch ID</target>
         <note>Button title</note>
       </trans-unit>
-      <trans-unit id="Use external keyboards in ONLYOFFICE Documents with improved compatibility." xml:space="preserve">
-        <source>Use external keyboards in ONLYOFFICE Documents with improved compatibility.</source>
-        <target>Use external keyboards in ONLYOFFICE Documents with improved compatibility.</target>
-        <note>No comment provided by engineer.</note>
-      </trans-unit>
       <trans-unit id="User authentication failed" xml:space="preserve">
         <source>User authentication failed</source>
         <target>User authentication failed</target>
@@ -3242,11 +3247,6 @@ to the clipboard</target>
       <trans-unit id="Version" xml:space="preserve">
         <source>Version</source>
         <target>Version</target>
-        <note>No comment provided by engineer.</note>
-      </trans-unit>
-      <trans-unit id="View and fill online forms, save them as PDF files." xml:space="preserve">
-        <source>View and fill online forms, save them as PDF files.</source>
-        <target>View and fill online forms, save them as PDF files.</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Warning" xml:space="preserve">

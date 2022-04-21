@@ -1425,11 +1425,6 @@ Note: if you forget the passcode, you'll need to delete and reinstall the app. A
         <target>作者</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
-      <trans-unit id="Better formatting" xml:space="preserve">
-        <source>Better formatting</source>
-        <target>更好的格式化</target>
-        <note>No comment provided by engineer.</note>
-      </trans-unit>
       <trans-unit id="Box directory" xml:space="preserve">
         <source>Box directory</source>
         <target>箱子目录</target>
@@ -1499,11 +1494,6 @@ Note: if you forget the passcode, you'll need to delete and reinstall the app. A
         <source>Clear Cache?</source>
         <target>清除缓存吗？</target>
         <note>Button title</note>
-      </trans-unit>
-      <trans-unit id="Clear formatting, use extended color palette, and change font with improved settings." xml:space="preserve">
-        <source>Clear formatting, use extended color palette, and change font with improved settings.</source>
-        <target>清除格式，使用扩展调色板，并使用改进的设置更改字体。</target>
-        <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Clearing" xml:space="preserve">
         <source>Clearing</source>
@@ -1944,11 +1934,6 @@ others which use WebDAV protocol.</source>
         <target>导出</target>
         <note>Button title</note>
       </trans-unit>
-      <trans-unit id="External keyboards" xml:space="preserve">
-        <source>External keyboards</source>
-        <target>外接键盘</target>
-        <note>No comment provided by engineer.</note>
-      </trans-unit>
       <trans-unit id="Failed online conversion service." xml:space="preserve">
         <source>Failed online conversion service.</source>
         <target>在线转换服务失败。</target>
@@ -2034,9 +2019,9 @@ others which use WebDAV protocol.</source>
         <target>文件</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
-      <trans-unit id="Fillable forms" xml:space="preserve">
-        <source>Fillable forms</source>
-        <target>可填写的表单</target>
+      <trans-unit id="Fill the shapes using gradients, images, or patterns. Choose the desirable line type." xml:space="preserve">
+        <source>Fill the shapes using gradients, images, or patterns. Choose the desirable line type.</source>
+        <target state="translated">使用梯度、图像或图案填充形状。选择理想的线条类型。</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="First name is incorrect" xml:space="preserve">
@@ -2165,6 +2150,11 @@ to the clipboard</source>
 到剪贴板</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
+      <trans-unit id="Log in to your cloud using Apple ID or Microsoft account." xml:space="preserve">
+        <source>Log in to your cloud using Apple ID or Microsoft account.</source>
+        <target state="translated">使用Apple ID或微软账户登录您的云端。</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
       <trans-unit id="Logging in" xml:space="preserve">
         <source>Logging in</source>
         <target>正在登录</target>
@@ -2210,6 +2200,11 @@ to the clipboard</source>
         <source>More</source>
         <target>更多</target>
         <note>Button title</note>
+      </trans-unit>
+      <trans-unit id="More in autoshapes" xml:space="preserve">
+        <source>More in autoshapes</source>
+        <target state="translated">自动形状新功能</target>
+        <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Move" xml:space="preserve">
         <source>Move</source>
@@ -2279,6 +2274,11 @@ to the clipboard</source>
       <trans-unit id="New Spreadsheet" xml:space="preserve">
         <source>New Spreadsheet</source>
         <target>新建电子表格</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="New authentication methods" xml:space="preserve">
+        <source>New authentication methods</source>
+        <target state="translated">新的认证方法</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Next" xml:space="preserve">
@@ -2593,6 +2593,11 @@ to the clipboard</source>
         <target>恢复</target>
         <note>Caption of the processing</note>
       </trans-unit>
+      <trans-unit id="Regional settings" xml:space="preserve">
+        <source>Regional settings</source>
+        <target state="translated">区域设置</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
       <trans-unit id="Registration" xml:space="preserve">
         <source>Registration</source>
         <target>注册</target>
@@ -2713,6 +2718,11 @@ to the clipboard</source>
         <source>Select the folder to recover the items</source>
         <target>选择文件夹恢复该项目</target>
         <note>One line. Max 50 charasters</note>
+      </trans-unit>
+      <trans-unit id="Select the region in spreadsheet settings to automatically convert currency, date, and time." xml:space="preserve">
+        <source>Select the region in spreadsheet settings to automatically convert currency, date, and time.</source>
+        <target state="translated">在电子表格设置中选择区域，以自动转换货币、日期和时间。</target>
+        <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Selected provider is not available" xml:space="preserve">
         <source>Selected provider is not available</source>
@@ -3145,11 +3155,6 @@ to the clipboard</source>
         <target>使用Touch ID</target>
         <note>Button title</note>
       </trans-unit>
-      <trans-unit id="Use external keyboards in ONLYOFFICE Documents with improved compatibility." xml:space="preserve">
-        <source>Use external keyboards in ONLYOFFICE Documents with improved compatibility.</source>
-        <target>在ONLYOFFICE文档中使用外部键盘。</target>
-        <note>No comment provided by engineer.</note>
-      </trans-unit>
       <trans-unit id="User authentication failed" xml:space="preserve">
         <source>User authentication failed</source>
         <target>用户验证失败</target>
@@ -3183,11 +3188,6 @@ to the clipboard</source>
       <trans-unit id="Version" xml:space="preserve">
         <source>Version</source>
         <target>版本</target>
-        <note>No comment provided by engineer.</note>
-      </trans-unit>
-      <trans-unit id="View and fill online forms, save them as PDF files." xml:space="preserve">
-        <source>View and fill online forms, save them as PDF files.</source>
-        <target>在线查看并填写表单，将其另存为PDF文件。</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Warning" xml:space="preserve">

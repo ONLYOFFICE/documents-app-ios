@@ -378,6 +378,9 @@
 "Files" = "ファイル";
 
 /* No comment provided by engineer. */
+"Fill the shapes using gradients, images, or patterns. Choose the desirable line type." = "グラデーションや画像、パターンを使って図形を塗りつぶすこと、望ましい線の種類の選択ができます。";
+
+/* No comment provided by engineer. */
 "Folder title" = "フォルダーのタイトル";
 
 /* No comment provided by engineer. */
@@ -422,6 +425,9 @@
 /* Data units */
 "Kb" = "キガバイト";
 
+/* No comment provided by engineer. */
+"Log in to your cloud using Apple ID or Microsoft account." = "Apple IDやMicrosoftアカウントを使って、クラウドにログインできます。";
+
 /* Caption of the process */
 "Logging in" = "ログインしました";
 
@@ -446,6 +452,9 @@
 
 /* Button title */
 "More" = "もっと";
+
+/* No comment provided by engineer. */
+"More in autoshapes" = "オートシェイプの詳細";
 
 /* Button title */
 "Move" = "移動";
@@ -473,6 +482,9 @@
 
 /* No comment provided by engineer. */
 "Needs additional params." = "追加のパラミーターが必要です。";
+
+/* No comment provided by engineer. */
+"New authentication methods" = "新しい認証方法";
 
 /* No comment provided by engineer. */
 "New Document" = "新規ドキュメント";
@@ -651,6 +663,9 @@
 "Recovery" = "回復";
 
 /* No comment provided by engineer. */
+"Regional settings" = "地域設定";
+
+/* No comment provided by engineer. */
 "Registration" = "登録";
 
 /* No comment provided by engineer. */
@@ -701,6 +716,9 @@
 
 /* One line. Max 50 charasters */
 "Select the folder to recover the items" = "フォルダーを選択して、アイテムを回復する";
+
+/* No comment provided by engineer. */
+"Select the region in spreadsheet settings to automatically convert currency, date, and time." = "スプレッドシートの設定で地域を選択すると、通貨、日付、時刻が自動的に変換します。";
 
 /* No comment provided by engineer. */
 "Selected provider is not available" = "選択したプロバイダーはご利用できません";
@@ -920,9 +938,6 @@
 
 /* Introduction Step Two - Title */
 "Work with office files" = "オフラインファイルを編集する";
-
-/* No comment provided by engineer. */
-"Wrong login or password." = "間違ったログインかパスワードです。";
 
 /* No comment provided by engineer. */
 "Yandex directory" = "Yandex ディレクトリ";

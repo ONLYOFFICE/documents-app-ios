@@ -173,9 +173,9 @@ internal enum Asset {
     internal static let tabOnlyoffice = ImageAsset(name: "tab-onlyoffice")
     internal static let tabSettingsSelected = ImageAsset(name: "tab-settings-selected")
     internal static let tabSettings = ImageAsset(name: "tab-settings")
-    internal static let whatsnewFutureForm = ImageAsset(name: "whatsnew-future-form")
-    internal static let whatsnewFutureKeyboard = ImageAsset(name: "whatsnew-future-keyboard")
-    internal static let whatsnewFutureСleaFormat = ImageAsset(name: "whatsnew-future-сleaFormat")
+    internal static let whatsnewFuture1 = ImageAsset(name: "whatsnew-future-1")
+    internal static let whatsnewFuture2 = ImageAsset(name: "whatsnew-future-2")
+    internal static let whatsnewFuture3 = ImageAsset(name: "whatsnew-future-3")
   }
 }
 // swiftlint:enable identifier_name line_length nesting type_body_length type_name

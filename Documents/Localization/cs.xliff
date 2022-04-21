@@ -1555,10 +1555,6 @@ Poznámka: Pokud zapomenete přístupový kód, budete muset aplikaci smazat a p
         <target>Autor</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
-      <trans-unit id="Better formatting" xml:space="preserve">
-        <source>Better formatting</source>
-        <note>No comment provided by engineer.</note>
-      </trans-unit>
       <trans-unit id="Box directory" xml:space="preserve">
         <source>Box directory</source>
         <target>Adresář schránky</target>
@@ -1628,10 +1624,6 @@ Poznámka: Pokud zapomenete přístupový kód, budete muset aplikaci smazat a p
         <source>Clear Cache?</source>
         <target>Vyčistit cache?</target>
         <note>Button title</note>
-      </trans-unit>
-      <trans-unit id="Clear formatting, use extended color palette, and change font with improved settings." xml:space="preserve">
-        <source>Clear formatting, use extended color palette, and change font with improved settings.</source>
-        <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Clearing" xml:space="preserve">
         <source>Clearing</source>
@@ -2072,10 +2064,6 @@ jiné, které používají protokol WebDAV.</target>
         <target>Exportovat</target>
         <note>Button title</note>
       </trans-unit>
-      <trans-unit id="External keyboards" xml:space="preserve">
-        <source>External keyboards</source>
-        <note>No comment provided by engineer.</note>
-      </trans-unit>
       <trans-unit id="Failed online conversion service." xml:space="preserve">
         <source>Failed online conversion service.</source>
         <target>Služba online konverze se nezdařila.</target>
@@ -2161,8 +2149,9 @@ jiné, které používají protokol WebDAV.</target>
         <target>Soubory</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
-      <trans-unit id="Fillable forms" xml:space="preserve">
-        <source>Fillable forms</source>
+      <trans-unit id="Fill the shapes using gradients, images, or patterns. Choose the desirable line type." xml:space="preserve">
+        <source>Fill the shapes using gradients, images, or patterns. Choose the desirable line type.</source>
+        <target state="translated">Vyplňte tvary pomocí gradientů, obrázků nebo vzorů. Vyberte požadovaný typ čáry.</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="First name is incorrect" xml:space="preserve">
@@ -2290,6 +2279,11 @@ to the clipboard</source>
         <target>Odkaz zkopírován do schránky</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
+      <trans-unit id="Log in to your cloud using Apple ID or Microsoft account." xml:space="preserve">
+        <source>Log in to your cloud using Apple ID or Microsoft account.</source>
+        <target state="translated">Přihlaste se do cloudu pomocí Apple ID nebo účtu Microsoft.</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
       <trans-unit id="Logging in" xml:space="preserve">
         <source>Logging in</source>
         <target>Přihlášení v</target>
@@ -2335,6 +2329,11 @@ to the clipboard</source>
         <source>More</source>
         <target>Více</target>
         <note>Button title</note>
+      </trans-unit>
+      <trans-unit id="More in autoshapes" xml:space="preserve">
+        <source>More in autoshapes</source>
+        <target state="translated">Více automatických tvarů</target>
+        <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Move" xml:space="preserve">
         <source>Move</source>
@@ -2404,6 +2403,11 @@ to the clipboard</source>
       <trans-unit id="New Spreadsheet" xml:space="preserve">
         <source>New Spreadsheet</source>
         <target>Nová tabulka</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="New authentication methods" xml:space="preserve">
+        <source>New authentication methods</source>
+        <target state="translated">Nové metody ověřování</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Next" xml:space="preserve">
@@ -2716,6 +2720,11 @@ to the clipboard</source>
         <target>Obnova</target>
         <note>Caption of the processing</note>
       </trans-unit>
+      <trans-unit id="Regional settings" xml:space="preserve">
+        <source>Regional settings</source>
+        <target state="translated">Regionální nastavení</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
       <trans-unit id="Registration" xml:space="preserve">
         <source>Registration</source>
         <target>Registrace</target>
@@ -2836,6 +2845,11 @@ to the clipboard</source>
         <source>Select the folder to recover the items</source>
         <target>Vyberte složku pro obnovení položek</target>
         <note>One line. Max 50 charasters</note>
+      </trans-unit>
+      <trans-unit id="Select the region in spreadsheet settings to automatically convert currency, date, and time." xml:space="preserve">
+        <source>Select the region in spreadsheet settings to automatically convert currency, date, and time.</source>
+        <target state="translated">Vyberte region v nastavení tabulky pro automatický převod měny, data a času.</target>
+        <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Selected provider is not available" xml:space="preserve">
         <source>Selected provider is not available</source>
@@ -3268,10 +3282,6 @@ do schránky</target>
         <target>Použít odemykání pomocí otisku</target>
         <note>Button title</note>
       </trans-unit>
-      <trans-unit id="Use external keyboards in ONLYOFFICE Documents with improved compatibility." xml:space="preserve">
-        <source>Use external keyboards in ONLYOFFICE Documents with improved compatibility.</source>
-        <note>No comment provided by engineer.</note>
-      </trans-unit>
       <trans-unit id="User authentication failed" xml:space="preserve">
         <source>User authentication failed</source>
         <target>Ověření uživatele selhalo</target>
@@ -3305,10 +3315,6 @@ do schránky</target>
       <trans-unit id="Version" xml:space="preserve">
         <source>Version</source>
         <target>Verze</target>
-        <note>No comment provided by engineer.</note>
-      </trans-unit>
-      <trans-unit id="View and fill online forms, save them as PDF files." xml:space="preserve">
-        <source>View and fill online forms, save them as PDF files.</source>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Warning" xml:space="preserve">

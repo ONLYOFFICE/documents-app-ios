@@ -1565,11 +1565,6 @@ Note: if you forget the passcode, you'll need to delete and reinstall the app. A
         <target>Автор</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
-      <trans-unit id="Better formatting" xml:space="preserve">
-        <source>Better formatting</source>
-        <target>Улучшенное форматирование</target>
-        <note>No comment provided by engineer.</note>
-      </trans-unit>
       <trans-unit id="Box directory" xml:space="preserve">
         <source>Box directory</source>
         <target>Папка Box</target>
@@ -1639,11 +1634,6 @@ Note: if you forget the passcode, you'll need to delete and reinstall the app. A
         <source>Clear Cache?</source>
         <target>Очистить кэш?</target>
         <note>Button title</note>
-      </trans-unit>
-      <trans-unit id="Clear formatting, use extended color palette, and change font with improved settings." xml:space="preserve">
-        <source>Clear formatting, use extended color palette, and change font with improved settings.</source>
-        <target>Очищайте форматирование, пользуйтесь расширенной палитрой цветов, удобно настраивайте размер шрифта.</target>
-        <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Clearing" xml:space="preserve">
         <source>Clearing</source>
@@ -2085,11 +2075,6 @@ others which use WebDAV protocol.</source>
         <target>Экспорт</target>
         <note>Button title</note>
       </trans-unit>
-      <trans-unit id="External keyboards" xml:space="preserve">
-        <source>External keyboards</source>
-        <target>Внешние клавиатуры</target>
-        <note>No comment provided by engineer.</note>
-      </trans-unit>
       <trans-unit id="Failed online conversion service." xml:space="preserve">
         <source>Failed online conversion service.</source>
         <target>Ошибка службы онлайн-конвертации</target>
@@ -2175,9 +2160,9 @@ others which use WebDAV protocol.</source>
         <target>Файлы</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
-      <trans-unit id="Fillable forms" xml:space="preserve">
-        <source>Fillable forms</source>
-        <target>Заполнение форм</target>
+      <trans-unit id="Fill the shapes using gradients, images, or patterns. Choose the desirable line type." xml:space="preserve">
+        <source>Fill the shapes using gradients, images, or patterns. Choose the desirable line type.</source>
+        <target state="translated">Выполняйте заливку фигур градиентом, изображением или узором. Выбирайте подходящий тип линий.</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="First name is incorrect" xml:space="preserve">
@@ -2307,6 +2292,11 @@ to the clipboard</source>
 в буфер обмена</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
+      <trans-unit id="Log in to your cloud using Apple ID or Microsoft account." xml:space="preserve">
+        <source>Log in to your cloud using Apple ID or Microsoft account.</source>
+        <target state="translated">Осуществляйте вход в облако с помощью Apple ID или аккаунта Microsoft.</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
       <trans-unit id="Logging in" xml:space="preserve">
         <source>Logging in</source>
         <target>Выполняется вход</target>
@@ -2352,6 +2342,11 @@ to the clipboard</source>
         <source>More</source>
         <target>Еще</target>
         <note>Button title</note>
+      </trans-unit>
+      <trans-unit id="More in autoshapes" xml:space="preserve">
+        <source>More in autoshapes</source>
+        <target state="translated">Улучшенные автофигуры</target>
+        <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Move" xml:space="preserve">
         <source>Move</source>
@@ -2421,6 +2416,11 @@ to the clipboard</source>
       <trans-unit id="New Spreadsheet" xml:space="preserve">
         <source>New Spreadsheet</source>
         <target>Новая таблица</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="New authentication methods" xml:space="preserve">
+        <source>New authentication methods</source>
+        <target state="translated">Новые возможности входа</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Next" xml:space="preserve">
@@ -2738,6 +2738,11 @@ to the clipboard</source>
         <target>Восстановление</target>
         <note>Caption of the processing</note>
       </trans-unit>
+      <trans-unit id="Regional settings" xml:space="preserve">
+        <source>Regional settings</source>
+        <target>Региональные настройки</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
       <trans-unit id="Registration" xml:space="preserve">
         <source>Registration</source>
         <target>Регистрация</target>
@@ -2858,6 +2863,11 @@ to the clipboard</source>
         <source>Select the folder to recover the items</source>
         <target>Выберите папку для восстановления элементов</target>
         <note>One line. Max 50 charasters</note>
+      </trans-unit>
+      <trans-unit id="Select the region in spreadsheet settings to automatically convert currency, date, and time." xml:space="preserve">
+        <source>Select the region in spreadsheet settings to automatically convert currency, date, and time.</source>
+        <target>Настройте регион в таблицах чтобы автоматически форматировать валюту, даты и время.</target>
+        <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Selected provider is not available" xml:space="preserve">
         <source>Selected provider is not available</source>
@@ -3293,11 +3303,6 @@ to the clipboard</source>
         <target>Использовать Touch ID</target>
         <note>Button title</note>
       </trans-unit>
-      <trans-unit id="Use external keyboards in ONLYOFFICE Documents with improved compatibility." xml:space="preserve">
-        <source>Use external keyboards in ONLYOFFICE Documents with improved compatibility.</source>
-        <target>Используйте внешние клавиатуры c приложением ONLYOFFICE Документы с улучшенной совместимостью.</target>
-        <note>No comment provided by engineer.</note>
-      </trans-unit>
       <trans-unit id="User authentication failed" xml:space="preserve">
         <source>User authentication failed</source>
         <target>Не удалось выполнить проверку подлинности пользователя</target>
@@ -3331,11 +3336,6 @@ to the clipboard</source>
       <trans-unit id="Version" xml:space="preserve">
         <source>Version</source>
         <target>Версия</target>
-        <note>No comment provided by engineer.</note>
-      </trans-unit>
-      <trans-unit id="View and fill online forms, save them as PDF files." xml:space="preserve">
-        <source>View and fill online forms, save them as PDF files.</source>
-        <target>Открывайте и заполняйте онлайн формы, сохраняйте их в формате PDF.</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Warning" xml:space="preserve">

@@ -98,9 +98,6 @@
 "Author" = "Autor";
 
 /* No comment provided by engineer. */
-"Better formatting" = "Mejor formato";
-
-/* No comment provided by engineer. */
 "Box directory" = "Directorio de Box";
 
 /* No comment provided by engineer. */
@@ -144,9 +141,6 @@
 
 /* Button title */
 "Clear Cache?" = "¿Borrar caché?";
-
-/* No comment provided by engineer. */
-"Clear formatting, use extended color palette, and change font with improved settings." = "Borre el formato, utilice la paleta de colores ampliada y cambie el tipo de fuente con una configuración mejorada.";
 
 /* Caption of the processing */
 "Clearing" = "Borrando";
@@ -441,9 +435,6 @@
 "Export" = "Exportar";
 
 /* No comment provided by engineer. */
-"External keyboards" = "Teclados externos";
-
-/* No comment provided by engineer. */
 "Failed online conversion service." = "Servicio de conversión en línea fracasado.";
 
 /* No comment provided by engineer. */
@@ -495,7 +486,7 @@
 "Files" = "Archivos";
 
 /* No comment provided by engineer. */
-"Fillable forms" = "Formularios rellenables";
+"Fill the shapes using gradients, images, or patterns. Choose the desirable line type." = "Rellene las formas utilizando gradientes, imágenes o patrones. Elija el tipo de línea que desee.";
 
 /* No comment provided by engineer. */
 "First name is incorrect" = "El nombre es incorrecto";
@@ -581,6 +572,9 @@
 /* No comment provided by engineer. */
 "Link copied\nto the clipboard" = "El enlace se ha copiado al portapapeles";
 
+/* No comment provided by engineer. */
+"Log in to your cloud using Apple ID or Microsoft account." = "Inicie sesión en su nube utilizando el ID de Apple o la cuenta de Microsoft.";
+
 /* Caption of the process */
 "Logging in" = "Iniciando sesión";
 
@@ -608,6 +602,9 @@
 
 /* Button title */
 "More" = "Más";
+
+/* No comment provided by engineer. */
+"More in autoshapes" = "Más en autoformas";
 
 /* Button title */
 "Move" = "Mover";
@@ -638,6 +635,9 @@
 
 /* No comment provided by engineer. */
 "New" = "Nuevo";
+
+/* No comment provided by engineer. */
+"New authentication methods" = "Nuevos métodos de autenticación";
 
 /* No comment provided by engineer. */
 "New Document" = "Nuevo documento";
@@ -843,6 +843,9 @@
 "Recovery" = "Recuperación";
 
 /* No comment provided by engineer. */
+"Regional settings" = "Configuración regional";
+
+/* No comment provided by engineer. */
 "Registration" = "Registro";
 
 /* No comment provided by engineer. */
@@ -911,6 +914,9 @@
 
 /* One line. Max 50 charasters */
 "Select the folder to recover the items" = "Seleccionar la carpeta para recuperar los objetos";
+
+/* No comment provided by engineer. */
+"Select the region in spreadsheet settings to automatically convert currency, date, and time." = "Seleccione la región en la configuración de la hoja de cálculo para convertir automáticamente la moneda, la fecha y la hora.";
 
 /* No comment provided by engineer. */
 "Selected provider is not available" = "El proveedor seleccionado no está disponible";
@@ -1158,9 +1164,6 @@
 /* Caption of the process */
 "Uploading" = "Cargando";
 
-/* No comment provided by engineer. */
-"Use external keyboards in ONLYOFFICE Documents with improved compatibility." = "Utilice teclados externos en ONLYOFFICE Documents con una compatibilidad mejorada.";
-
 /* Button title */
 "Use Face ID" = "Usar Face ID";
 
@@ -1189,9 +1192,6 @@
 "Version" = "Versión";
 
 /* No comment provided by engineer. */
-"View and fill online forms, save them as PDF files." = "Vea y rellene formularios en línea, guárdelos como archivos PDF.";
-
-/* No comment provided by engineer. */
 "Warning" = "Advertencia";
 
 /* No comment provided by engineer. */
@@ -1217,9 +1217,6 @@
 
 /* Introduction Step Two - Title */
 "Work with office files" = "Trabaje con archivos de oficina";
-
-/* No comment provided by engineer. */
-"Wrong login or password." = "Contraseña o nombre de usuario incorrectos.";
 
 /* No comment provided by engineer. */
 "Yandex directory" = "Directorio de Yandex";

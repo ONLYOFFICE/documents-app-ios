@@ -483,6 +483,9 @@
 "Files" = "Soubory";
 
 /* No comment provided by engineer. */
+"Fill the shapes using gradients, images, or patterns. Choose the desirable line type." = "Vyplňte tvary pomocí gradientů, obrázků nebo vzorů. Vyberte požadovaný typ čáry.";
+
+/* No comment provided by engineer. */
 "First name is incorrect" = "Křestní jméno je nesprávné";
 
 /* No comment provided by engineer. */
@@ -566,6 +569,9 @@
 /* No comment provided by engineer. */
 "Link copied\nto the clipboard" = "Odkaz zkopírován do schránky";
 
+/* No comment provided by engineer. */
+"Log in to your cloud using Apple ID or Microsoft account." = "Přihlaste se do cloudu pomocí Apple ID nebo účtu Microsoft.";
+
 /* Caption of the process */
 "Logging in" = "Přihlášení v";
 
@@ -593,6 +599,9 @@
 
 /* Button title */
 "More" = "Více";
+
+/* No comment provided by engineer. */
+"More in autoshapes" = "Více automatických tvarů";
 
 /* Button title */
 "Move" = "Přesunout";
@@ -623,6 +632,9 @@
 
 /* No comment provided by engineer. */
 "New" = "Nový";
+
+/* No comment provided by engineer. */
+"New authentication methods" = "Nové metody ověřování";
 
 /* No comment provided by engineer. */
 "New Document" = "Nový dokument";
@@ -828,6 +840,9 @@
 "Recovery" = "Obnova";
 
 /* No comment provided by engineer. */
+"Regional settings" = "Regionální nastavení";
+
+/* No comment provided by engineer. */
 "Registration" = "Registrace";
 
 /* No comment provided by engineer. */
@@ -896,6 +911,9 @@
 
 /* One line. Max 50 charasters */
 "Select the folder to recover the items" = "Vyberte složku pro obnovení položek";
+
+/* No comment provided by engineer. */
+"Select the region in spreadsheet settings to automatically convert currency, date, and time." = "Vyberte region v nastavení tabulky pro automatický převod měny, data a času.";
 
 /* No comment provided by engineer. */
 "Selected provider is not available" = "Vybraný poskytovatel není dostupný";
@@ -1196,9 +1214,6 @@
 
 /* Introduction Step Two - Title */
 "Work with office files" = "Pracujte s kancelářskými soubory";
-
-/* No comment provided by engineer. */
-"Wrong login or password." = "Špatný login nebo heslo.";
 
 /* No comment provided by engineer. */
 "Yandex directory" = "Adresář Yandex";

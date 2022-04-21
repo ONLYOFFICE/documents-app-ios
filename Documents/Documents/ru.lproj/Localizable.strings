@@ -101,9 +101,6 @@
 "Author" = "Автор";
 
 /* No comment provided by engineer. */
-"Better formatting" = "Улучшенное форматирование";
-
-/* No comment provided by engineer. */
 "Box directory" = "Папка Box";
 
 /* No comment provided by engineer. */
@@ -147,9 +144,6 @@
 
 /* Button title */
 "Clear Cache?" = "Очистить кэш?";
-
-/* No comment provided by engineer. */
-"Clear formatting, use extended color palette, and change font with improved settings." = "Очищайте форматирование, пользуйтесь расширенной палитрой цветов, удобно настраивайте размер шрифта.";
 
 /* Caption of the processing */
 "Clearing" = "Очистка";
@@ -447,9 +441,6 @@
 "Export" = "Экспорт";
 
 /* No comment provided by engineer. */
-"External keyboards" = "Внешние клавиатуры";
-
-/* No comment provided by engineer. */
 "Failed online conversion service." = "Ошибка службы онлайн-конвертации";
 
 /* No comment provided by engineer. */
@@ -501,7 +492,7 @@
 "Files" = "Файлы";
 
 /* No comment provided by engineer. */
-"Fillable forms" = "Заполнение форм";
+"Fill the shapes using gradients, images, or patterns. Choose the desirable line type." = "Выполняйте заливку фигур градиентом, изображением или узором. Выбирайте подходящий тип линий.";
 
 /* No comment provided by engineer. */
 "First name is incorrect" = "Некорректное поле Имя";
@@ -590,6 +581,9 @@
 /* No comment provided by engineer. */
 "Link copied\nto the clipboard" = "Ссылка скопирована\nв буфер обмена";
 
+/* No comment provided by engineer. */
+"Log in to your cloud using Apple ID or Microsoft account." = "Осуществляйте вход в облако с помощью Apple ID или аккаунта Microsoft.";
+
 /* Caption of the process */
 "Logging in" = "Выполняется вход";
 
@@ -617,6 +611,9 @@
 
 /* Button title */
 "More" = "Еще";
+
+/* No comment provided by engineer. */
+"More in autoshapes" = "Улучшенные автофигуры";
 
 /* Button title */
 "Move" = "Переместить";
@@ -647,6 +644,9 @@
 
 /* No comment provided by engineer. */
 "New" = "Новый";
+
+/* No comment provided by engineer. */
+"New authentication methods" = "Новые возможности входа";
 
 /* No comment provided by engineer. */
 "New Document" = "Новый документ";
@@ -855,6 +855,9 @@
 "Recovery" = "Восстановление";
 
 /* No comment provided by engineer. */
+"Regional settings" = "Региональные настройки";
+
+/* No comment provided by engineer. */
 "Registration" = "Регистрация";
 
 /* No comment provided by engineer. */
@@ -923,6 +926,9 @@
 
 /* One line. Max 50 charasters */
 "Select the folder to recover the items" = "Выберите папку для восстановления элементов";
+
+/* No comment provided by engineer. */
+"Select the region in spreadsheet settings to automatically convert currency, date, and time." = "Настройте регион в таблицах чтобы автоматически форматировать валюту, даты и время.";
 
 /* No comment provided by engineer. */
 "Selected provider is not available" = "Выбранный провайдер недоступен";
@@ -1179,9 +1185,6 @@
 /* Caption of the process */
 "Uploading" = "Загрузка";
 
-/* No comment provided by engineer. */
-"Use external keyboards in ONLYOFFICE Documents with improved compatibility." = "Используйте внешние клавиатуры c приложением ONLYOFFICE Документы с улучшенной совместимостью.";
-
 /* Button title */
 "Use Face ID" = "Использовать Face ID";
 
@@ -1208,9 +1211,6 @@
 
 /* No comment provided by engineer. */
 "Version" = "Версия";
-
-/* No comment provided by engineer. */
-"View and fill online forms, save them as PDF files." = "Открывайте и заполняйте онлайн формы, сохраняйте их в формате PDF.";
 
 /* No comment provided by engineer. */
 "Warning" = "Предупреждение";

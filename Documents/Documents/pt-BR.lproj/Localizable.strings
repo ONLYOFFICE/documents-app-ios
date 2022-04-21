@@ -378,6 +378,9 @@
 "Files" = "Arquivos";
 
 /* No comment provided by engineer. */
+"Fill the shapes using gradients, images, or patterns. Choose the desirable line type." = "Preencha as formas usando gradientes, imagens ou padrões. Escolha o tipo de linha desejada.";
+
+/* No comment provided by engineer. */
 "Folder title" = "Título da pasta";
 
 /* No comment provided by engineer. */
@@ -419,11 +422,11 @@
 /* No comment provided by engineer. */
 "Invalid Country Code" = "Código de país inválido";
 
-/* Error message */
-"Invalid URL: The format ot the URL could not be determined" = "URL inválido: não foi possível determinar o formato do URL";
-
 /* Data units */
 "Kb" = "Kb";
+
+/* No comment provided by engineer. */
+"Log in to your cloud using Apple ID or Microsoft account." = "Faça login em sua nuvem usando o ID Apple ou a conta da Microsoft.";
 
 /* Caption of the process */
 "Logging in" = "Login em";
@@ -449,6 +452,9 @@
 
 /* Button title */
 "More" = "Mais";
+
+/* No comment provided by engineer. */
+"More in autoshapes" = "Mais em formas automáticas";
 
 /* Button title */
 "Move" = "Mover";
@@ -476,6 +482,9 @@
 
 /* No comment provided by engineer. */
 "Needs additional params." = "Precisa de parâmetros adicionais.";
+
+/* No comment provided by engineer. */
+"New authentication methods" = "Novos métodos de autenticação";
 
 /* No comment provided by engineer. */
 "New Document" = "Novo documento";
@@ -514,8 +523,7 @@
 "No search result" = "Nenhum resultado encontrado";
 
 /* Invalid entity date
-   Invalid entity owner
-   No information */
+   Invalid entity owner */
 "none" = "nenhum";
 
 /* If the cache is empty
@@ -576,7 +584,7 @@
 /* No comment provided by engineer. */
 "ownCloud" = "ownCloud";
 
-/* No comment provided by engineer. */
+/* Table cell right holder acces text */
 "Owner" = "Proprietário";
 
 /* No comment provided by engineer. */
@@ -655,6 +663,9 @@
 "Recovery" = "Recuperação";
 
 /* No comment provided by engineer. */
+"Regional settings" = "Configurações regionais";
+
+/* No comment provided by engineer. */
 "Registration" = "Registro";
 
 /* No comment provided by engineer. */
@@ -705,6 +716,9 @@
 
 /* One line. Max 50 charasters */
 "Select the folder to recover the items" = "Selecione a pasta para recuperar os itens";
+
+/* No comment provided by engineer. */
+"Select the region in spreadsheet settings to automatically convert currency, date, and time." = "Selecione a região nas configurações da planilha para converter automaticamente moeda, data e hora.";
 
 /* No comment provided by engineer. */
 "Selected provider is not available" = "O provedor selecionado não está disponível";
@@ -857,9 +871,6 @@
 "Unknown" = "Desconhecido";
 
 /* No comment provided by engineer. */
-"Unknown API response." = "Resposta desconhecida da API.";
-
-/* No comment provided by engineer. */
 "Unknown file provider" = "Provedor de arquivo desconhecido";
 
 /* No comment provided by engineer. */
@@ -874,9 +885,6 @@
 /* No comment provided by engineer. */
 "Unsupported format." = "Formato não suportado.";
 
-/* Button title */
-"Upload" = "Upload";
-
 /* Caption of the process */
 "Uploading" = "Fazendo upload";
 
@@ -886,7 +894,7 @@
 /* Button title */
 "Use Touch ID" = "Usar Touch ID";
 
-/* Error message */
+/* No comment provided by engineer. */
 "User authentication failed" = "Autenticação do usuário falhou";
 
 /* No comment provided by engineer. */
@@ -930,9 +938,6 @@
 
 /* Introduction Step Two - Title */
 "Work with office files" = "Trabalhe com arquivos office";
-
-/* No comment provided by engineer. */
-"Wrong login or password." = "Login ou senha errada.";
 
 /* No comment provided by engineer. */
 "Yandex directory" = "Diretório do Yandex";

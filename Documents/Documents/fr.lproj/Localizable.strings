@@ -98,9 +98,6 @@
 "Author" = "Auteur";
 
 /* No comment provided by engineer. */
-"Better formatting" = "Mise en forme améliorée";
-
-/* No comment provided by engineer. */
 "Box directory" = "Répertoire Box";
 
 /* No comment provided by engineer. */
@@ -144,9 +141,6 @@
 
 /* Button title */
 "Clear Cache?" = "Vider le cache ?";
-
-/* No comment provided by engineer. */
-"Clear formatting, use extended color palette, and change font with improved settings." = "Effacez la mise en forme, utilisez une palette de couleurs étendue et modifiez les polices grâce à des paramètres améliorés.";
 
 /* Caption of the processing */
 "Clearing" = "Effacement";
@@ -441,9 +435,6 @@
 "Export" = "Exportation";
 
 /* No comment provided by engineer. */
-"External keyboards" = "Claviers externes";
-
-/* No comment provided by engineer. */
 "Failed online conversion service." = "Conversion en ligne échouée.";
 
 /* No comment provided by engineer. */
@@ -495,7 +486,7 @@
 "Files" = "Fichiers";
 
 /* No comment provided by engineer. */
-"Fillable forms" = "Formulaires à remplir";
+"Fill the shapes using gradients, images, or patterns. Choose the desirable line type." = "Remplissez les formes en utilisant des dégradés, des images ou des motifs. Choisissez le type de ligne souhaitable.";
 
 /* No comment provided by engineer. */
 "First name is incorrect" = "Le prénom est incorrect";
@@ -581,6 +572,9 @@
 /* No comment provided by engineer. */
 "Link copied\nto the clipboard" = "Le lien\nest copié dans le Presse-papiers";
 
+/* No comment provided by engineer. */
+"Log in to your cloud using Apple ID or Microsoft account." = "Connectez-vous à votre cloud en utilisant Apple ID ou votre compte Microsoft.";
+
 /* Caption of the process */
 "Logging in" = "Connexion";
 
@@ -608,6 +602,9 @@
 
 /* Button title */
 "More" = "Plus";
+
+/* No comment provided by engineer. */
+"More in autoshapes" = "Plus de formes automatiques";
 
 /* Button title */
 "Move" = "Déplacer";
@@ -638,6 +635,9 @@
 
 /* No comment provided by engineer. */
 "New" = "Nouveau";
+
+/* No comment provided by engineer. */
+"New authentication methods" = "Nouvelles méthodes d’authentification";
 
 /* No comment provided by engineer. */
 "New Document" = "Nouveau document";
@@ -843,6 +843,9 @@
 "Recovery" = "Récupération";
 
 /* No comment provided by engineer. */
+"Regional settings" = "Paramètres régionaux";
+
+/* No comment provided by engineer. */
 "Registration" = "Enregistrement";
 
 /* No comment provided by engineer. */
@@ -911,6 +914,9 @@
 
 /* One line. Max 50 charasters */
 "Select the folder to recover the items" = "Sélectionner le dossier pour récupérer les éléments";
+
+/* No comment provided by engineer. */
+"Select the region in spreadsheet settings to automatically convert currency, date, and time." = "Sélectionnez la région dans les paramètres de la feuille de calcul pour convertir automatiquement la devise, la date et l’heure.";
 
 /* No comment provided by engineer. */
 "Selected provider is not available" = "Le fournisseur sélectionné n'est pas disponible";
@@ -1158,9 +1164,6 @@
 /* Caption of the process */
 "Uploading" = "Téléchargement";
 
-/* No comment provided by engineer. */
-"Use external keyboards in ONLYOFFICE Documents with improved compatibility." = "Utilisez des claviers externes dans ONLYOFFICE Documents avec une compatibilité améliorée.";
-
 /* Button title */
 "Use Face ID" = "Utiliser Face ID (l'identifiant de visage)";
 
@@ -1189,9 +1192,6 @@
 "Version" = "Version";
 
 /* No comment provided by engineer. */
-"View and fill online forms, save them as PDF files." = "Affichez et remplissez les formulaires en ligne et enregistrez-les au format PDF.";
-
-/* No comment provided by engineer. */
 "Warning" = "Alerte";
 
 /* No comment provided by engineer. */
@@ -1217,9 +1217,6 @@
 
 /* Introduction Step Two - Title */
 "Work with office files" = "Travailler avec des fichiers office";
-
-/* No comment provided by engineer. */
-"Wrong login or password." = "Identifiant ou mot de passe erroné.";
 
 /* No comment provided by engineer. */
 "Yandex directory" = "Répertoire Yandex";

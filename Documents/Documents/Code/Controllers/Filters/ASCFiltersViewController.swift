@@ -194,24 +194,28 @@ private extension ASCFiltersViewController {
             rightConstant: 16
         )
     }
-    
+
     @objc func resetBarButtonItemTapped() {
         for (sectionIndex, section) in data.enumerated() {
             for (filterIndex, _) in section.filters.enumerated() {
                 data[sectionIndex].filters[filterIndex].isSelected = false
             }
         }
-        setupCollectionView()
-        collectionView.reloadData()
+        reloadColletionView()
     }
-    
+
     @objc func cancelBarButtonItemTapped() {
         dismiss(animated: true)
     }
-    
+
     @objc func onShowResultsButtonTapped() {
         showResultsCompletion()
         dismiss(animated: true)
+    }
+
+    private func reloadColletionView() {
+        collectionView.removeFromSuperview()
+        setupCollectionView()
     }
 }
 
@@ -302,7 +306,7 @@ extension ASCFiltersViewController {
 extension ASCFiltersViewController: ASCFiltersViewControllerDelegate {
     func updateData(filterText itemText: String) {
         guard let indexPath = selectedItem(in: 1) else { return }
-        (collectionView.cellForItem(at: indexPath) as? ASCFiltersCollectionViewCell)?.setLabel(itemText)
         data[indexPath.section].filters[indexPath.item].filterName = itemText
+        reloadColletionView()
     }
 }

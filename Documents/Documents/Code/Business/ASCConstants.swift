@@ -149,7 +149,7 @@ class ASCConstants {
         static let editorImportDocuments = ["doc", "odt", "txt", "rtf", "mht", "html", "htm", "epub", "fb2"]
         static let editorImportSpreadsheets = ["xls", "ods", "csv"]
         static let editorImportPresentations = ["ppt", "odp"]
-        static let editorExportDocuments = ["docx", "odt", "dotx", "ott"]
+        static let editorExportDocuments = ["docx", "odt", "dotx", "ott", "docxf", "oform"]
         static let editorExportSpreadsheets = ["xlsx", "ods", "xltx", "ots"]
         static let editorExportPresentations = ["pptx", "odp", "potx", "otp"]
         static let editorExportFormats = editorExportDocuments + editorExportSpreadsheets + editorExportPresentations

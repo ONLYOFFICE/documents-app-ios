@@ -14,6 +14,7 @@ class ASCSelectUserViewController: UIViewController {
     private var dataArray = [ASCUserTableViewDataModelItem]()
     private var cellHeight: CGFloat = 60
     private var tableView = UITableView()
+    weak var delegate: ASCFiltersViewControllerDelegate?
 
     // MARK: - search
 
@@ -127,17 +128,34 @@ extension ASCSelectUserViewController: UITableViewDelegate, UITableViewDataSourc
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: ASCSharingRightHolderTableViewCell.reuseId, for: indexPath) as? ASCSharingRightHolderTableViewCell else { return UITableViewCell() }
 
-        let dataModel: ASCUserTableViewDataModelItem
-        if isFiltering {
-            dataModel = filteredUsers[indexPath.row]
-        } else {
-            dataModel = dataArray[indexPath.row]
-        }
+        let dataModel = getDataModel(indexPath: indexPath)
+
         cell.viewModel = .init(id: dataModel.id ?? "",
                                avatarUrl: dataModel.avatarImageUrl,
                                name: dataModel.userName ?? "",
                                department: dataModel.userPosition)
         return cell
+    }
+
+    func getDataModel(indexPath: IndexPath) -> ASCUserTableViewDataModelItem {
+        if isFiltering {
+            return filteredUsers[indexPath.row]
+        } else {
+            return dataArray[indexPath.row]
+        }
+    }
+
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if tableView.cellForRow(at: indexPath)?.accessoryType == .checkmark {
+            tableView.cellForRow(at: indexPath)?.accessoryType = .none
+        } else {
+            tableView.cellForRow(at: indexPath)?.accessoryType = .checkmark
+        }
+        let dataModel = getDataModel(indexPath: indexPath)
+        if let filterText = dataModel.userName {
+            delegate?.updateData(filterText: filterText)
+        }
+        dismiss(animated: true)
     }
 
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {

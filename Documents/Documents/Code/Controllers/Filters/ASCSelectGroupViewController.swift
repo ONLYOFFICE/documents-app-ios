@@ -14,6 +14,7 @@ class ASCSelectGroupViewController: UIViewController {
     private var dataArray = [ASCGroupTableViewDataModelItem]()
     private var cellHeight: CGFloat = 60
     private var tableView = UITableView()
+    weak var delegate: ASCFiltersViewControllerDelegate?
 
     // MARK: - Search
 
@@ -119,14 +120,7 @@ extension ASCSelectGroupViewController: UITableViewDelegate, UITableViewDataSour
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = UITableViewCell()
-
-        let dataModel: ASCGroupTableViewDataModelItem
-
-        if isFiltering {
-            dataModel = filteredGroup[indexPath.row]
-        } else {
-            dataModel = dataArray[indexPath.row]
-        }
+        let dataModel = getDataModel(indexPath: indexPath)
 
         if #available(iOS 14.0, *) {
             var content = cell.defaultContentConfiguration()
@@ -136,6 +130,27 @@ extension ASCSelectGroupViewController: UITableViewDelegate, UITableViewDataSour
             cell.textLabel?.text = dataModel.groupName
         }
         return cell
+    }
+
+    func getDataModel(indexPath: IndexPath) -> ASCGroupTableViewDataModelItem {
+        if isFiltering {
+            return filteredGroup[indexPath.row]
+        } else {
+            return dataArray[indexPath.row]
+        }
+    }
+
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if tableView.cellForRow(at: indexPath)?.accessoryType == .checkmark {
+            tableView.cellForRow(at: indexPath)?.accessoryType = .none
+        } else {
+            tableView.cellForRow(at: indexPath)?.accessoryType = .checkmark
+        }
+        let dataModel = getDataModel(indexPath: indexPath)
+        if let filterText = dataModel.groupName {
+            delegate?.updateData(filterText: filterText)
+        }
+        dismiss(animated: true)
     }
 
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {

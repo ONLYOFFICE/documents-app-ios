@@ -9,6 +9,10 @@
 import SwiftUI
 import UIKit
 
+protocol ASCFiltersViewControllerDelegate: AnyObject {
+    func updateData(filterText: String)
+}
+
 class ASCFiltersViewController: UIViewController {
     // MARK: - Properties
     
@@ -40,8 +44,18 @@ class ASCFiltersViewController: UIViewController {
     var folderId: String?
     var showResultsCompletion: () -> Void = {}
     var collectionView: UICollectionView!
-    lazy var selectUserViewController = ASCSelectUserViewController()
-    lazy var selectGroupViewController = ASCSelectGroupViewController()
+    lazy var selectUserViewController: ASCSelectUserViewController = {
+        let controller = ASCSelectUserViewController()
+        controller.delegate = self
+        return controller
+    }()
+
+    lazy var selectGroupViewController: ASCSelectGroupViewController = {
+        let controller = ASCSelectGroupViewController()
+        controller.delegate = self
+        return controller
+    }()
+
     private lazy var showResultsButton: ASCButtonStyle = {
         $0.styleType = .blank
         return $0
@@ -282,5 +296,13 @@ extension ASCFiltersViewController {
     enum RequestResult {
         case success
         case failure(ErrorMessage)
+    }
+}
+
+extension ASCFiltersViewController: ASCFiltersViewControllerDelegate {
+    func updateData(filterText itemText: String) {
+        guard let indexPath = selectedItem(in: 1) else { return }
+        (collectionView.cellForItem(at: indexPath) as? ASCFiltersCollectionViewCell)?.setLabel(itemText)
+        data[indexPath.section].filters[indexPath.item].filterName = itemText
     }
 }

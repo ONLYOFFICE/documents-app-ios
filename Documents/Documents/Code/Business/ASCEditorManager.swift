@@ -6,13 +6,16 @@
 //  Copyright © 2017 Ascensio System SIA. All rights reserved.
 //
 
-import DocumentConverter
-import DocumentEditor
+#if !NO_EDITORS
+    import DocumentConverter
+    import DocumentEditor
+    import PresentationEditor
+    import SpreadsheetEditor
+#endif
+
 import FileKit
 import Firebase
 import MediaBrowser
-import PresentationEditor
-import SpreadsheetEditor
 import UIKit
 
 enum ASCEditorManagerStatus: String {
@@ -54,7 +57,7 @@ typealias ASCEditorManagerFavoriteHandler = (_ file: ASCFile?, _ complation: @es
 typealias ASCEditorManagerShareHandler = (_ file: ASCFile?) -> Void
 typealias ASCEditorManagerLockedHandler = () -> Void
 
-class ASCEditorManager: NSObject, DEEditorDelegate, SEEditorDelegate, PEEditorDelegate, UITextFieldDelegate, UIDocumentInteractionControllerDelegate {
+class ASCEditorManager: NSObject {
     public static let shared = ASCEditorManager()
 
     // MARK: - Private
@@ -82,7 +85,6 @@ class ASCEditorManager: NSObject, DEEditorDelegate, SEEditorDelegate, PEEditorDe
     private var openedCopy = false
     private var openedFilePassword = ""
     private var openedFileInViewMode = false
-    private let alert = ASCConverterOptionsAlert()
     private var encoding: Int?
     private var delimiter: Int?
     private var resolvedFilePath: Path!
@@ -125,14 +127,7 @@ class ASCEditorManager: NSObject, DEEditorDelegate, SEEditorDelegate, PEEditorDe
         _ = NSLocalizedString("Slide %i of %i", comment: "Presentation Viewer")
 
         // Prepare to use custom fonts
-        DocumentLocalConverter.prepareFonts { appFontsCache in
-            log.info("Prepare application fonts cache in: \(appFontsCache ?? ASCLocalization.Common.error)")
-            if UIDevice.allowEditor {
-                SEEditorContext.sharedInstance().fontsPaths = ASCEditorManager.shared.editorFontsPaths
-                SEEditorContext.sharedInstance().dataFontsPath = ASCEditorManager.shared.dataFontsPath
-                SEEditorContext.sharedInstance().load()
-            }
-        }
+        prepareFonts()
     }
 
     private func createEditorWindow() -> UIWindow? {
@@ -159,252 +154,6 @@ class ASCEditorManager: NSObject, DEEditorDelegate, SEEditorDelegate, PEEditorDe
         editorWindow?.removeFromSuperview()
 
         editorWindow = nil
-    }
-
-    func openEditorLocal(file: ASCFile, viewMode: Bool = false, autosave: Bool = false, locallyEditing: Bool = false, handler: ASCEditorManagerOpenHandler? = nil) {
-        let title = file.title
-        let fileExt = title.fileExtension().lowercased()
-        let isDocument = (["docx"] + ASCConstants.FileExtensions.editorImportDocuments).contains(fileExt)
-        let isSpreadsheet = (["xlsx"] + ASCConstants.FileExtensions.editorImportSpreadsheets).contains(fileExt)
-        let isPresentation = (["pptx"] + ASCConstants.FileExtensions.editorImportPresentations).contains(fileExt)
-        let isForm = ASCConstants.FileExtensions.forms.contains(fileExt)
-
-        var cancel = false
-        var editorNavigationController: UIViewController?
-
-        if isDocument || isForm {
-            editorNavigationController = DEEditorNavigationController()
-        } else if isSpreadsheet {
-            editorNavigationController = SEEditorNavigationController()
-        } else if isPresentation {
-            editorNavigationController = PEEditorNavigationController()
-        }
-
-        guard let documentEditorNavigation = editorNavigationController as? DEEditorNavigationController ?? editorNavigationController as? SEEditorNavigationController ?? editorNavigationController as? PEEditorNavigationController else {
-            handler?(.error, 1, ASCEditorManagerError(msg: NSLocalizedString("Could not open editor.", comment: "")), &cancel)
-            return
-        }
-
-        openedFile = nil
-        openedCopy = locallyEditing
-
-        let password = UserDefaults.standard.object(forKey: ASCConstants.SettingsKeys.passwordOpenedDocument) as? String ?? ""
-        var documentPermissions: String?
-
-        // FillForms mode
-        if isForm, fileExt == "oform" {
-            documentPermissions = [
-                "fillForms": true,
-                "onDevice": true,
-            ].jsonString()
-        }
-
-        var documentInfo = [
-            "title": file.title,
-            "viewMode": viewMode,
-            "date": file.updated ?? Date(),
-            "docUserId": UIDevice.current.identifierForVendor?.uuidString ?? UUID().uuidString,
-            "docUserName": file.updatedBy?.displayName ?? (UIDevice.current.name.count > 0
-                ? UIDevice.current.name
-                : NSLocalizedString("Me", comment: "If current user name is not set")),
-            "autosave": true,
-            "file": file.toJSONString()!,
-            "locallyEditing": locallyEditing,
-            "appFonts": editorFontsPaths,
-            "dataFontsPath": dataFontsPath,
-        ] as [String: Any]
-
-        if let documentPermissions = documentPermissions {
-            documentInfo += [
-                "documentPermissions": documentPermissions,
-            ]
-        }
-
-        if viewMode == false {
-            UserDefaults.standard.set(documentInfo, forKey: ASCConstants.SettingsKeys.openedDocument)
-        }
-
-        if #available(iOS 13.0, *) {
-            documentEditorNavigation.modalPresentationStyle = .fullScreen
-        }
-
-        documentEditorNavigation.modalTransitionStyle = .crossDissolve
-        documentEditorNavigation.editorViewLoaded = { [weak navigationView = documentEditorNavigation] in
-            navigationView?.editorController.documentInfo = documentInfo
-        }
-
-        let workDirectory = Path.userAutosavedInformation + file.title + "/"
-        let loader = ASCDocumentLoader(path: workDirectory.rawValue)
-        let document = ASCDocument()
-        document.password = password
-        document.backupPath = (Path.userAutosavedInformation + file.title + "/").rawValue
-
-        document.loader = loader
-        document.loader.options = ["autosave": autosave]
-        document.load { [unowned self] status, progress, error in
-            if let loadError = error as NSError? {
-                log.error(loadError)
-                handler?(.error, 1, error, &cancel)
-            } else {
-                if status == kASCDocumentSerializerBegin {
-                    handler?(.begin, 1, error, &cancel)
-                } else if status == kASCDocumentSerializerProgress {
-                    handler?(.progress, progress, error, &cancel)
-                } else if status == kASCDocumentSerializerEnd {
-                    self.createEditorWindow()?.rootViewController?.present(documentEditorNavigation, animated: true, completion: {
-                        DispatchQueue.main.async {
-                            documentEditorNavigation.editorController.delegate = self
-                            documentEditorNavigation.editorController.open(document)
-                            self.openedFile = file
-                            ASCAnalytics.logEvent(ASCConstants.Analytics.Event.openEditor, parameters: [
-                                ASCAnalytics.Event.Key.portal: OnlyofficeApiClient.shared.baseURL?.absoluteString ?? ASCAnalytics.Event.Value.none,
-                                ASCAnalytics.Event.Key.type: isDocument
-                                    ? ASCAnalytics.Event.Value.document
-                                    : (isSpreadsheet
-                                        ? ASCAnalytics.Event.Value.spreadsheet
-                                        : (isPresentation
-                                            ? ASCAnalytics.Event.Value.presentation
-                                            : (isForm
-                                                ? ASCAnalytics.Event.Value.form
-                                                : ASCAnalytics.Event.Value.unknown
-                                            )
-                                        )
-                                    ),
-                                ASCAnalytics.Event.Key.onDevice: file.device,
-                                ASCAnalytics.Event.Key.locallyEditing: locallyEditing,
-                                ASCAnalytics.Event.Key.fileExt: fileExt,
-                                ASCAnalytics.Event.Key.viewMode: viewMode,
-                            ])
-                            handler?(.end, 1, error, &cancel)
-                        }
-                    })
-                }
-            }
-        }
-    }
-
-    func openEditorInCollaboration(file: ASCFile, viewMode: Bool = false, handler: ASCEditorManagerOpenHandler? = nil) {
-        let title = file.title
-        let fileExt = title.fileExtension().lowercased()
-        let isDocument = (["docx"] + ASCConstants.FileExtensions.editorImportDocuments).contains(fileExt)
-        let isSpreadsheet = (["xlsx"] + ASCConstants.FileExtensions.editorImportSpreadsheets).contains(fileExt)
-        let isPresentation = (["pptx"] + ASCConstants.FileExtensions.editorImportPresentations).contains(fileExt)
-        let isForm = ASCConstants.FileExtensions.forms.contains(fileExt)
-
-        var cancel = false
-        var editorNavigationController: UIViewController?
-
-        if isDocument || isForm {
-            editorNavigationController = DEEditorNavigationController()
-        } else if isSpreadsheet {
-            editorNavigationController = SEEditorNavigationController()
-        } else if isPresentation {
-            editorNavigationController = PEEditorNavigationController()
-        }
-
-        guard let documentEditorNavigation = editorNavigationController as? DEEditorNavigationController ?? editorNavigationController as? SEEditorNavigationController ?? editorNavigationController as? PEEditorNavigationController else {
-            handler?(.error, 1, ASCEditorManagerError(msg: NSLocalizedString("Could not open editor.", comment: "")), &cancel)
-            return
-        }
-
-        openedFile = nil
-
-        guard
-            let user = ASCFileManager.onlyofficeProvider?.user,
-            let userId = user.userId,
-            let userName = file.createdBy?.displayName ?? user.userName,
-            let firstName = user.firstName,
-            let lastName = user.lastName
-        else {
-            handler?(.error, 1, ASCEditorManagerError(msg: NSLocalizedString("Could not open editor.", comment: "")), &cancel)
-            return
-        }
-
-        let sdkCheck = checkSDKVersion()
-
-        var documentInfo: [String: Any] = [
-            "title": file.title,
-            "date": file.created!,
-            "author": file.createdBy?.displayName ?? "",
-            "viewMode": viewMode || !sdkCheck,
-            "coauthoring": true,
-            "docUserId": userId,
-            "docUserName": userName,
-            "docUserFirstName": firstName,
-            "docUserLastName": lastName,
-            "docKey": documentKeyForTrack ?? "",
-            "docURL": documentURLForTrack ?? "",
-            "docService": documentServiceURL ?? "",
-            "documentToken": documentToken ?? "",
-            "documentPermissions": documentPermissions ?? "",
-            "documentCommonConfig": documentCommonConfig ?? "",
-            "file": file.toJSONString()!,
-            "sdkCheck": sdkCheck,
-            "appFonts": editorFontsPaths,
-            "dataFontsPath": dataFontsPath,
-            "supportShare": true,
-        ]
-
-        // Enabling the Favorite function only on portals version 11 and higher
-        if let communityServerVersion = OnlyofficeApiClient.shared.serverVersion,
-           communityServerVersion.isVersion(greaterThanOrEqualTo: "11.0")
-        {
-            documentInfo["favorite"] = file.isFavorite
-        }
-
-        if !(viewMode || !sdkCheck) {
-            UserDefaults.standard.set(documentInfo, forKey: ASCConstants.SettingsKeys.openedDocument)
-        }
-
-        if #available(iOS 13.0, *) {
-            documentEditorNavigation.modalPresentationStyle = .fullScreen
-        }
-
-        documentEditorNavigation.modalTransitionStyle = .crossDissolve
-        documentEditorNavigation.editorViewLoaded = { [weak navigationView = documentEditorNavigation] in
-            navigationView?.editorController.documentInfo = documentInfo
-        }
-
-        let workDirectory = Path.userAutosavedInformation + file.title + "/"
-        let mediaDirectory = workDirectory + "media"
-
-        ASCLocalFileHelper.shared.removeDirectory(workDirectory)
-        ASCLocalFileHelper.shared.createDirectory(workDirectory)
-        ASCLocalFileHelper.shared.createDirectory(mediaDirectory)
-
-        if workDirectory.exists, mediaDirectory.exists {
-            let document = ASCDocument()
-            document.loader = ASCDocumentLoader(path: workDirectory.rawValue)
-            document.load { _, _, _ in }
-
-            createEditorWindow()?.rootViewController?.present(documentEditorNavigation, animated: true, completion: {
-                documentEditorNavigation.editorController.delegate = self
-                documentEditorNavigation.editorController.open(document)
-                self.openedFile = file
-                self.provider = ASCFileManager.onlyofficeProvider
-
-                ASCAnalytics.logEvent(ASCConstants.Analytics.Event.openEditor, parameters: [
-                    ASCAnalytics.Event.Key.portal: OnlyofficeApiClient.shared.baseURL?.absoluteString ?? ASCAnalytics.Event.Value.none,
-                    ASCAnalytics.Event.Key.type: isDocument
-                        ? ASCAnalytics.Event.Value.document
-                        : (isSpreadsheet
-                            ? ASCAnalytics.Event.Value.spreadsheet
-                            : (isPresentation
-                                ? ASCAnalytics.Event.Value.presentation
-                                : (isForm
-                                    ? ASCAnalytics.Event.Value.form
-                                    : ASCAnalytics.Event.Value.unknown
-                                )
-                            )
-                        ),
-                    ASCAnalytics.Event.Key.onDevice: false,
-                    ASCAnalytics.Event.Key.locallyEditing: false,
-                    ASCAnalytics.Event.Key.fileExt: fileExt,
-                    ASCAnalytics.Event.Key.viewMode: viewMode,
-                ])
-                handler?(.end, 1, nil, &cancel)
-            })
-        }
     }
 
     private func fetchDocumentInfo(_ file: ASCFile, viewMode: Bool = false, handler: @escaping (Bool, Error?) -> Void) {
@@ -480,358 +229,16 @@ class ASCEditorManager: NSObject, DEEditorDelegate, SEEditorDelegate, PEEditorDe
         }
     }
 
-    private func convertToEdit(file: ASCFile, processing: ASCFileManagerConverterHandler? = nil) {
-        let title = file.title
-        let fileExtension = title.fileExtension().lowercased()
-
-        if !ASCConstants.FileExtensions.allowEdit.contains(fileExtension) {
-            processing?(.error, 1, ASCEditorManagerError(msg: NSLocalizedString("Unsupported format.", comment: "")), nil)
-            return
-        }
-
-        let converter = DocumentLocalConverter()
-
-        converter.fontsPaths = editorFontsPaths
-        converter.dataFontsPath = dataFontsPath
-
-        let outputPath = Path.userAutosavedInformation + title + "/"
-        let tempPath = Path.userTemporary + UUID().uuidString
-
-        do {
-            try outputPath.createDirectory(withIntermediateDirectories: true)
-            try tempPath.createDirectory(withIntermediateDirectories: true)
-        } catch {
-            processing?(.error, 1, ASCEditorManagerError(msg: NSLocalizedString("Couldn't open file", comment: "")), nil)
-            ASCLocalFileHelper.shared.removeDirectory(tempPath)
-            return
-        }
-
-        var conversionDirection = ConversionDirection.CD_ERROR
-
-        switch fileExtension {
-        case "docx", "doc", "rtf", "mht", "html", "htm", "epub", "fb2", "docxf", "oform":
-            conversionDirection = ConversionDirection.CD_DOCX2DOCT_BIN
-        case "xlsx", "xls":
-            conversionDirection = ConversionDirection.CD_XSLX2XSLT_BIN
-        case "pptx", "ppt":
-            conversionDirection = ConversionDirection.CD_PPTX2PPTT_BIN
-        case "csv":
-            conversionDirection = ConversionDirection.CD_CSV2XLST_BIN
-        case "txt":
-            conversionDirection = ConversionDirection.CD_TXT2DOCT_BIN
-        case "odt":
-            conversionDirection = ConversionDirection.CD_ODT2DOCT_BIN
-        case "ods":
-            conversionDirection = ConversionDirection.CD_ODS2XSLT_BIN
-        case "odp":
-            conversionDirection = ConversionDirection.CD_ODP2PPTT_BIN
-        default:
-            conversionDirection = ConversionDirection.CD_ERROR
-        }
-
-        if conversionDirection == ConversionDirection.CD_ERROR {
-            return
-        }
-
-        let options: [AnyHashable: Any] = [
-            "Key": converterKey,
-            "FileData": NSNull(),
-            "FileFrom": file.id,
-            "FileTo": (outputPath + "Editor.bin").rawValue,
-            "ConversionDirection": NSNumber(value: conversionDirection.rawValue),
-            "FontDir": dataFontsPath,
-            "TempDir": tempPath.rawValue,
-            "Async": false,
-            "Password": openedFilePassword,
-            "encoding": encoding ?? 0,
-            "delimiter": delimiter ?? 0,
-        ]
-
-        UserDefaults.standard.set(openedFilePassword, forKey: ASCConstants.SettingsKeys.passwordOpenedDocument)
-
-        if ["csv", "txt"].contains(fileExtension), encoding == nil, delimiter == nil {
-            processing?(.silentError, 0, nil, "")
-
-            alert.isOnlyCodePages = fileExtension == "txt"
-
-            DispatchQueue.main.asyncAfter(deadline: .now() + 0.33) {
-                self.showConverterOptionsAlertAndEdit(file: file)
-            }
-        } else {
-            converter.options = options
-
-            openedFilePassword = ""
-            encoding = nil
-            delimiter = nil
-        }
-
-        DispatchQueue.global().async {
-            converter.start { [weak self] status, progress, error in
-                DispatchQueue.main.async {
-                    if status == kDocumentLocalConverterBegin {
-                        processing?(.begin, 0, error, outputPath.rawValue)
-                    } else if status == kDocumentLocalConverterProgress {
-                        processing?(.progress, progress, error, outputPath.rawValue)
-                    } else if status == kDocumentLocalConverterEnd {
-                        processing?(.end, 1, error, outputPath.rawValue)
-                        ASCLocalFileHelper.shared.removeDirectory(tempPath)
-                    } else if status == kDocumentLocalConverterError {
-                        guard let strongSelf = self, let error = error as NSError? else { return }
-
-                        if Int32(error.code) == kErrorPassword || Int32(error.code) == kErrorDRM {
-                            processing?(.silentError, 1, error, outputPath.rawValue)
-                            ASCLocalFileHelper.shared.removeDirectory(tempPath)
-
-                            DispatchQueue.main.asyncAfter(deadline: .now() + 0.33) {
-                                strongSelf.showInputPasswordAlertAndEdit(file: file)
-                            }
-                        } else {
-                            processing?(.error, 1, error, outputPath.rawValue)
-                            ASCLocalFileHelper.shared.removeDirectory(tempPath)
-                        }
-                    }
-                }
-            }
-        }
-    }
-
-    private func convertToSave(file: ASCFile, password: String = "", processing: ASCFileManagerConverterHandler? = nil) {
-        let title = file.title
-        let fileExtension = title.fileExtension().lowercased()
-
-        if !ASCConstants.FileExtensions.allowEdit.contains(fileExtension) {
-            processing?(.error, 1, ASCEditorManagerError(msg: NSLocalizedString("Unsupported format.", comment: "")), nil)
-            return
-        }
-
-        let converter = DocumentLocalConverter()
-
-        converter.fontsPaths = editorFontsPaths
-        converter.dataFontsPath = dataFontsPath
-
-        let inputPath = Path.userAutosavedInformation + title + "/"
-        let tempPath = Path.userTemporary + UUID().uuidString
-
-        do {
-            try tempPath.createDirectory(withIntermediateDirectories: true)
-        } catch {
-            log.error("Save local file couldn't directory structure")
-        }
-
-        var fileTo = file.id
-
-        var conversionDirection = ConversionDirection.CD_ERROR
-
-        switch fileExtension {
-        case "docx", "docxf", "oform":
-            conversionDirection = ConversionDirection.CD_DOCT_BIN2DOCX
-        case "xlsx":
-            conversionDirection = ConversionDirection.CD_XSLT_BIN2XSLX
-        case "pptx":
-            conversionDirection = ConversionDirection.CD_PPTT_BIN2PPTX
-        case "csv":
-            conversionDirection = ConversionDirection.CD_XSLT_BIN2XSLX
-            fileTo = resolvedFilePath.rawValue
-        case "txt":
-            conversionDirection = ConversionDirection.CD_DOCT_BIN2DOCX
-            fileTo = resolvedFilePath.rawValue
-        case "odt":
-            conversionDirection = ConversionDirection.CD_DOCT_BIN2DOCX
-            fileTo = resolvedFilePath.rawValue
-        case "ods":
-            conversionDirection = ConversionDirection.CD_XSLT_BIN2XSLX
-            fileTo = resolvedFilePath.rawValue
-        case "odp":
-            conversionDirection = ConversionDirection.CD_PPTT_BIN2PPTX
-            fileTo = resolvedFilePath.rawValue
-        case "doc", "rtf", "mht", "html", "htm", "epub", "fb2":
-            conversionDirection = ConversionDirection.CD_DOCT_BIN2DOCX
-            fileTo = resolvedFilePath.rawValue
-        case "xls":
-            conversionDirection = ConversionDirection.CD_XSLT_BIN2XSLX
-            fileTo = resolvedFilePath.rawValue
-        case "ppt":
-            conversionDirection = ConversionDirection.CD_PPTT_BIN2PPTX
-            fileTo = resolvedFilePath.rawValue
-        default:
-            conversionDirection = ConversionDirection.CD_ERROR
-        }
-
-        converter.options = [
-            "Key": converterKey,
-            "FileData": NSNull(),
-            "FileFrom": (inputPath + "Editor.bin").rawValue,
-            "FileTo": fileTo,
-            "ConversionDirection": NSNumber(value: conversionDirection.rawValue),
-            "FontDir": dataFontsPath,
-            "TempDir": tempPath.rawValue,
-            "Async": false,
-            "Password": password,
-            "themesFolder": PEEditorViewController.themesFolder() ?? "",
-        ]
-
-        if !password.isEmpty {
-            UserDefaults.standard.removeObject(forKey: ASCConstants.SettingsKeys.passwordOpenedDocument)
-        }
-
-        DispatchQueue.global().async {
-            converter.start { status, progress, error in
-                DispatchQueue.main.async {
-                    if status == kDocumentLocalConverterBegin {
-                        processing?(.begin, 0, error, file.id)
-                    } else if status == kDocumentLocalConverterProgress {
-                        processing?(.progress, progress, error, file.id)
-                    } else if status == kDocumentLocalConverterEnd {
-                        processing?(.end, 1, error, file.id)
-                        ASCLocalFileHelper.shared.removeDirectory(tempPath)
-                    } else if status == kDocumentLocalConverterError {
-                        processing?(.error, 1, error, file.id)
-                        ASCLocalFileHelper.shared.removeDirectory(tempPath)
-                    }
-                }
-            }
-        }
-    }
-
-    private func convertToExport(input path: String, output file: ASCFile, processing: ASCFileManagerConverterHandler? = nil) {
-        let title = file.title
-        let fileExt = title.fileExtension().lowercased()
-
-        if !ASCConstants.FileExtensions.editorExportFormats.contains(fileExt) {
-            processing?(.error, 1, ASCEditorManagerError(msg: NSLocalizedString("Unsupported format.", comment: "")), nil)
-            return
-        }
-
-        let converter = DocumentLocalConverter()
-
-        converter.fontsPaths = editorFontsPaths
-        converter.dataFontsPath = dataFontsPath
-
-        let inputPath = Path(path)
-        let tempPath = Path.userTemporary + UUID().uuidString
-
-        do {
-            try tempPath.createDirectory(withIntermediateDirectories: true)
-        } catch {
-            log.error("Save local file couldn't directory structure")
-        }
-
-        var conversionDirection = ConversionDirection.CD_ERROR
-
-        switch fileExt {
-        case "docx", "docxf", "oform":
-            conversionDirection = ConversionDirection.CD_DOCT_BIN2DOCX
-        case "xlsx":
-            conversionDirection = ConversionDirection.CD_XSLT_BIN2XSLX
-        case "pptx":
-            conversionDirection = ConversionDirection.CD_PPTT_BIN2PPTX
-        case "odt":
-            conversionDirection = ConversionDirection.CD_DOCT_BIN2ODT
-        case "ods":
-            conversionDirection = ConversionDirection.CD_XSLT_BIN2ODS
-        case "odp":
-            conversionDirection = ConversionDirection.CD_PPTT_BIN2ODP
-        case "dotx":
-            conversionDirection = ConversionDirection.CD_DOCT_BIN2DOTX
-        case "xltx":
-            conversionDirection = ConversionDirection.CD_XSLT_BIN2XLTX
-        case "potx":
-            conversionDirection = ConversionDirection.CD_PPTT_BIN2POTX
-        case "ott":
-            conversionDirection = ConversionDirection.CD_DOCT_BIN2OTT
-        case "ots":
-            conversionDirection = ConversionDirection.CD_XSLT_BIN2OTS
-        case "otp":
-            conversionDirection = ConversionDirection.CD_PPTT_BIN2OTP
-        default:
-            conversionDirection = ConversionDirection.CD_ERROR
-        }
-
-        converter.options = [
-            "Key": converterKey,
-            "FileData": NSNull(),
-            "FileFrom": (inputPath + "Editor.bin").rawValue,
-            "FileTo": file.id,
-            "ConversionDirection": NSNumber(value: conversionDirection.rawValue),
-            "FontDir": dataFontsPath,
-            "TempDir": tempPath.rawValue,
-            "Async": false,
-        ]
-
-        DispatchQueue.global().async {
-            converter.start { status, progress, error in
-                DispatchQueue.main.async {
-                    if status == kDocumentLocalConverterBegin {
-                        processing?(.begin, 0, error, file.id)
-                    } else if status == kDocumentLocalConverterProgress {
-                        processing?(.progress, progress, error, file.id)
-                    } else if status == kDocumentLocalConverterEnd {
-                        processing?(.end, 1, error, file.id)
-                        ASCLocalFileHelper.shared.removeDirectory(tempPath)
-                    } else if status == kDocumentLocalConverterError {
-                        processing?(.error, 1, error, file.id)
-                        ASCLocalFileHelper.shared.removeDirectory(tempPath)
-                    }
-                }
-            }
-        }
-    }
-
-    private func openChartEditor(_ controller: DEEditorViewController!, _ chartData: String) {
-        let loader = ASCDocumentLoader(path: "")
-        let document: ASCDocument! = ASCDocument()
-        document.loader = loader
-
-        let documentEditorNavigation = SEEditorNavigationController()
-
-        if let editor = documentEditorNavigation.viewControllers.first as? SEEditorViewController {
-            editor.documentInfo = [
-                "viewMode": false,
-                "chartEditor": true,
-                "chartData": chartData,
-                "appFonts": editorFontsPaths,
-                "dataFontsPath": dataFontsPath,
-            ]
-
-            editor.delegate = self
-            editor.editorViewLoaded = { editor.open(document) }
-
-            controller.navigationController?.pushViewController(editor, animated: true)
-        }
-    }
-
-    private func openChartEditor(_ controller: PEEditorViewController!, _ chartData: String) {
-        let loader = ASCDocumentLoader(path: "")
-        let document: ASCDocument! = ASCDocument()
-        document.loader = loader
-
-        let documentEditorNavigation = SEEditorNavigationController()
-
-        if let editor = documentEditorNavigation.viewControllers.first as? SEEditorViewController {
-            editor.documentInfo = [
-                "viewMode": false,
-                "chartEditor": true,
-                "chartData": chartData,
-                "appFonts": editorFontsPaths,
-                "dataFontsPath": dataFontsPath,
-            ]
-
-            editor.delegate = self
-            editor.editorViewLoaded = { editor.open(document) }
-
-            controller.navigationController?.pushViewController(editor, animated: true)
-        }
-    }
-
     // MARK: - Local editing online files
 
-    func editFileLocally(for provider: ASCFileProviderProtocol,
-                         _ file: ASCFile,
-                         viewMode: Bool,
-                         handler: ASCEditorManagerOpenHandler? = nil,
-                         closeHandler: ASCEditorManagerCloseHandler? = nil,
-                         lockedHandler: ASCEditorManagerLockedHandler? = nil)
-    {
+    func editFileLocally(
+        for provider: ASCFileProviderProtocol,
+        _ file: ASCFile,
+        viewMode: Bool,
+        handler: ASCEditorManagerOpenHandler? = nil,
+        closeHandler: ASCEditorManagerCloseHandler? = nil,
+        lockedHandler: ASCEditorManagerLockedHandler? = nil
+    ) {
         var cancel = false
 
         self.provider = provider
@@ -917,7 +324,12 @@ class ASCEditorManager: NSObject, DEEditorDelegate, SEEditorDelegate, PEEditorDe
         }
     }
 
-    func downloadAndOpenFile(for provider: ASCFileProviderProtocol, _ file: ASCFile, _ viewMode: Bool, _ cancel: inout Bool) {
+    func downloadAndOpenFile(
+        for provider: ASCFileProviderProtocol,
+        _ file: ASCFile,
+        _ viewMode: Bool,
+        _ cancel: inout Bool
+    ) {
         ASCEntityManager.shared.downloadTemp(for: provider, entity: file) { [unowned self] status, progress, result, error, cancel in
             if status == .begin {
                 self.openHandler?(.progress, 0.1, nil, &cancel)
@@ -1350,999 +762,6 @@ class ASCEditorManager: NSObject, DEEditorDelegate, SEEditorDelegate, PEEditorDe
         }
     }
 
-    func convert(from srcFile: ASCFile, to dstFile: ASCFile, params: [String: Any]? = nil, processing: ASCFileManagerConverterHandler? = nil) {
-        let srcExtension = srcFile.title.fileExtension().lowercased()
-        let dstExtension = dstFile.title.fileExtension().lowercased()
-
-        if !ASCConstants.FileExtensions.allowEdit.contains(srcExtension) {
-            processing?(.error, 1, ASCEditorManagerError(msg: NSLocalizedString("Unsupported format.", comment: "")), nil)
-            return
-        }
-
-        let converter = DocumentLocalConverter()
-
-        converter.fontsPaths = editorFontsPaths
-        converter.dataFontsPath = dataFontsPath
-
-        let tempPath = Path.userTemporary + UUID().uuidString
-
-        var options: [String: Any] = [:]
-
-        var conversionDirection = ConversionDirection.CD_ERROR
-
-        if srcExtension == "docx" {
-            if dstExtension == "odt" {
-                conversionDirection = ConversionDirection.CD_DOCXODT
-            }
-        } else if srcExtension == "xlsx" {
-            if dstExtension == "ods" {
-                conversionDirection = ConversionDirection.CD_XLSXODS
-            }
-        } else if srcExtension == "pptx" {
-            if dstExtension == "odp" {
-                conversionDirection = ConversionDirection.CD_PPTXODP
-            }
-        } else if srcExtension == "odt" {
-            if dstExtension == "docx" {
-                conversionDirection = ConversionDirection.CD_ODTDOCX
-            }
-        } else if srcExtension == "ods" {
-            if dstExtension == "xlsx" {
-                conversionDirection = ConversionDirection.CD_ODSXLSX
-            }
-        } else if srcExtension == "odp" {
-            if dstExtension == "pptx" {
-                conversionDirection = ConversionDirection.CD_ODPPPTX
-            }
-        } else if srcExtension == "csv" {
-            if dstExtension == "xlsx" {
-                conversionDirection = ConversionDirection.CD_CSV2XLSX
-
-                if let params = params,
-                   let encoding = params["encoding"] as? Int,
-                   let delimiter = params["delimiter"] as? Int
-                {
-                    options += [
-                        "encoding": encoding,
-                        "delimiter": delimiter,
-                    ]
-                } else {
-                    processing?(.silentError, 1, ASCEditorManagerError(msg: NSLocalizedString("Needs additional params.", comment: ""), type: .warning), nil)
-                    return
-                }
-            }
-        } else if srcExtension == "txt" {
-            conversionDirection = ConversionDirection.CD_TXT2DOCX
-
-            if let params = params,
-               let encoding = params["encoding"] as? Int
-            {
-                options += [
-                    "encoding": encoding,
-                ]
-            } else {
-                processing?(.silentError, 1, ASCEditorManagerError(msg: NSLocalizedString("Needs additional params.", comment: ""), type: .warning), nil)
-                return
-            }
-        }
-
-        if conversionDirection == ConversionDirection.CD_ERROR {
-            processing?(.error, 1, ASCEditorManagerError(msg: NSLocalizedString("Unsupported format.", comment: "")), nil)
-            return
-        }
-
-        // Has password
-        if let params = params, let password = params["password"] {
-            options += [
-                "Password": password,
-            ]
-        }
-
-        options += [
-            "Key": converterKey,
-            "FileData": NSNull(),
-            "FileFrom": srcFile.id,
-            "FileTo": dstFile.id,
-            "ConversionDirection": NSNumber(value: conversionDirection.rawValue),
-            "FontDir": dataFontsPath,
-            "TempDir": tempPath.rawValue,
-            "Async": false,
-        ]
-
-        DispatchQueue.global().async {
-            converter.start { status, progress, error in
-                DispatchQueue.main.async {
-                    if status == kDocumentLocalConverterBegin {
-                        processing?(.begin, 0, error, dstFile.id)
-                    } else if status == kDocumentLocalConverterProgress {
-                        processing?(.progress, progress, error, dstFile.id)
-                    } else if status == kDocumentLocalConverterEnd {
-                        processing?(.end, 1, error, dstFile.id)
-                        ASCLocalFileHelper.shared.removeDirectory(tempPath)
-                    } else if status == kDocumentLocalConverterError {
-                        if let error = error as NSError?, Int32(error.code) == kErrorPassword || Int32(error.code) == kErrorDRM {
-                            processing?(.silentError, 1, error, dstFile.id)
-                        } else {
-                            processing?(.error, 1, error, dstFile.id)
-                        }
-                        ASCLocalFileHelper.shared.removeDirectory(tempPath)
-                    }
-                }
-            }
-        }
-    }
-
-    // MARK: - UIDocumentInteractionControllerDelegate
-
-    func documentInteractionControllerViewControllerForPreview(_ controller: UIDocumentInteractionController) -> UIViewController {
-        return (createEditorWindow()?.rootViewController)!
-    }
-
-    func documentInteractionControllerDidEndPreview(_ controller: UIDocumentInteractionController) {
-        cleanupEditorWindow()
-
-        // Cleanup temporary file
-        if let file = openedFile, file.id.range(of: Path.userTemporary.rawValue) != nil {
-            ASCLocalFileHelper.shared.removeFile(Path(file.id))
-        }
-
-        openedFile = nil
-    }
-
-    // MARK: - DEEditorDelegate
-
-    func documentLoading(_ controller: DEEditorViewController!, progress value: CGFloat) {
-        log.info("DEEditorDelegate:documentLoading \(value)")
-
-        if let file = openedFile, !file.device {
-            OnlyofficeApiClient.request(OnlyofficeAPI.Endpoints.Files.startEdit(file: file)) { response, error in
-                if let error = error {
-                    log.error(error)
-                }
-            }
-        }
-    }
-
-    func documentWorkCompleted(_ controller: DEEditorViewController!, document: DEDocument!) {
-        log.info("DEEditorDelegate:documentWorkCompleted")
-
-        cleanupEditorWindow()
-
-        if let file = openedFile {
-            var cancel = false
-
-            if file.device {
-                if document != nil {
-                    /// Document changed
-
-                    if openedlocallyFile == nil, openedCopy {
-                        let copyFile = Path.userDocuments + Path(file.id).fileName
-                        guard let dstPath = ASCLocalFileHelper.shared.resolve(filePath: copyFile) else {
-                            closeHandler?(.error, 1, nil, nil, &cancel)
-                            return
-                        }
-
-                        file.id = dstPath.rawValue
-
-                    } else {
-                        let fileExtension = file.title.fileExtension().lowercased()
-                        if !ASCConstants.FileExtensions.editorImportDocuments.contains(fileExtension) {
-                            /// Store original
-                            _ = ASCLocalFileHelper.shared.move(from: Path(file.id), to: Path.userTemporary + file.title)
-                        } else {
-                            let fileTo = Path(Path(file.id).url.deletingPathExtension().path + ".docx")
-                            guard let filePath = ASCLocalFileHelper.shared.resolve(filePath: fileTo) else {
-                                closeHandler?(.error, 1, nil, nil, &cancel)
-                                return
-                            }
-
-                            resolvedFilePath = filePath
-                        }
-                    }
-
-                    convertToSave(file: file, password: document.password, processing: { status, progress, error, outputPath in
-                        if status == .begin {
-                            self.closeHandler?(.begin, 0, file, error, &cancel)
-                        } else if status == .progress {
-                            self.closeHandler?(.progress, progress, file, error, &cancel)
-                        } else if status == .end {
-                            let filePath = Path(file.id)
-
-                            if let openedlocallyFile = self.openedlocallyFile, let provider = self.provider
-                            {
-                                // File is not original
-                                let fileExtension = file.title.fileExtension().lowercased()
-                                if ASCConstants.FileExtensions.editorImportDocuments.contains(fileExtension) {
-                                    file.title = file.title.fileName() + ".docx"
-                                    file.id = self.resolvedFilePath.rawValue
-                                }
-
-                                ASCEntityManager.shared.uploadEdit(
-                                    for: provider,
-                                    file: file,
-                                    originalFile: openedlocallyFile,
-                                    handler:
-                                    { [unowned self] status, progress, result, error, cancel in
-                                        if status == .begin {
-                                            self.closeHandler?(.begin, 0, file, nil, &cancel)
-                                        } else if status == .progress {
-                                            self.closeHandler?(.progress, progress, file, nil, &cancel)
-                                        } else if status == .end || status == .error {
-                                            if status == .end {
-                                                if let resultFile = result as? ASCFile {
-                                                    self.closeHandler?(.end, 1, resultFile, nil, &cancel)
-                                                } else {
-                                                    self.closeHandler?(.end, 1, file, nil, &cancel)
-                                                }
-                                            } else {
-                                                self.closeHandler?(.error, 1, file, nil, &cancel)
-                                            }
-                                            self.stopLocallyEditing()
-
-                                            // Store backup
-                                            if status == .error {
-                                                // Backup on Device file
-                                                let dateFormatter = DateFormatter()
-                                                dateFormatter.dateFormat = "yyyyMMddHHmmss"
-
-                                                let nowString = dateFormatter.string(from: Date())
-                                                let backupPath = Path.userDocuments + Path("\(file.title.fileName())-Backup-\(nowString).\(file.title.fileExtension())")
-
-                                                ASCLocalFileHelper.shared.copy(from: filePath,
-                                                                               to: backupPath)
-                                            }
-
-                                            let lastTempFile = Path.userTemporary + file.title
-                                            let autosaveFile = Path.userAutosavedInformation + file.title
-
-                                            // Remove autosave
-                                            ASCLocalFileHelper.shared.removeDirectory(lastTempFile)
-
-                                            // Remove original
-                                            ASCLocalFileHelper.shared.removeFile(autosaveFile)
-
-                                            UserDefaults.standard.removeObject(forKey: ASCConstants.SettingsKeys.openedDocument)
-                                            UserDefaults.standard.removeObject(forKey: ASCConstants.SettingsKeys.passwordOpenedDocument)
-                                        }
-                                    }
-                                )
-
-                            } else {
-                                let owner = ASCUser()
-                                owner.displayName = UIDevice.displayName
-
-                                let file = ASCFile()
-                                file.id = filePath.rawValue
-                                file.rootFolderType = .deviceDocuments
-                                file.title = filePath.fileName
-                                file.created = filePath.creationDate
-                                file.updated = filePath.modificationDate
-                                file.createdBy = owner
-                                file.updatedBy = owner
-                                file.device = true
-                                file.displayContentLength = String.fileSizeToString(with: filePath.fileSize ?? 0)
-                                file.pureContentLength = Int(filePath.fileSize ?? 0)
-
-                                let fileExtension = file.title.fileExtension().lowercased()
-                                if ASCConstants.FileExtensions.editorImportDocuments.contains(fileExtension) {
-                                    file.id = self.resolvedFilePath.rawValue
-                                    file.title = file.title.fileName() + ".docx"
-
-                                    let newFilePath = Path(file.id)
-                                    file.created = newFilePath.creationDate
-                                    file.updated = newFilePath.modificationDate
-                                    file.displayContentLength = String.fileSizeToString(with: newFilePath.fileSize ?? 0)
-                                    file.pureContentLength = Int(newFilePath.fileSize ?? 0)
-                                }
-
-                                self.closeHandler?(.end, 1, file, nil, &cancel)
-
-                                // Remove autosave
-                                ASCLocalFileHelper.shared.removeDirectory(Path.userTemporary + file.title)
-
-                                // Remove original
-                                ASCLocalFileHelper.shared.removeFile(Path.userAutosavedInformation + file.title)
-
-                                UserDefaults.standard.removeObject(forKey: ASCConstants.SettingsKeys.openedDocument)
-                                UserDefaults.standard.removeObject(forKey: ASCConstants.SettingsKeys.passwordOpenedDocument)
-                            }
-
-                        } else if status == .error {
-                            self.closeHandler?(.error, 1, file, error, &cancel)
-
-                            // Remove autosave
-                            ASCLocalFileHelper.shared.removeDirectory(Path.userAutosavedInformation + file.title)
-
-                            // Restore original
-                            _ = ASCLocalFileHelper.shared.move(from: Path.userTemporary + file.title, to: Path(file.id))
-
-                            UserDefaults.standard.removeObject(forKey: ASCConstants.SettingsKeys.openedDocument)
-                            UserDefaults.standard.removeObject(forKey: ASCConstants.SettingsKeys.passwordOpenedDocument)
-                        }
-                    })
-                } else {
-                    stopLocallyEditing()
-
-                    // No changes
-                    ASCLocalFileHelper.shared.removeDirectory(Path.userAutosavedInformation + file.title)
-                    closeHandler?(.end, 1, nil, nil, &cancel)
-
-                    UserDefaults.standard.removeObject(forKey: ASCConstants.SettingsKeys.openedDocument)
-                    UserDefaults.standard.removeObject(forKey: ASCConstants.SettingsKeys.passwordOpenedDocument)
-                }
-            } else {
-                if let closeHandler = closeHandler {
-                    closeHandler(.begin, 0, file, nil, &cancel)
-
-                    ASCLocalFileHelper.shared.removeDirectory(Path.userAutosavedInformation + file.title)
-                    UserDefaults.standard.removeObject(forKey: ASCConstants.SettingsKeys.openedDocument)
-                    UserDefaults.standard.removeObject(forKey: ASCConstants.SettingsKeys.passwordOpenedDocument)
-
-                    OnlyofficeApiClient.request(OnlyofficeAPI.Endpoints.Files.info(file: file)) { response, error in
-                        if let newFile = response?.result {
-                            closeHandler(.end, 1, newFile, nil, &cancel)
-                        } else {
-                            closeHandler(.error, 1, file, error, &cancel)
-                        }
-                    }
-                }
-            }
-
-            openedFile = nil
-        }
-    }
-
-    func documentExport(_ controller: DEEditorViewController!, document: DEDocument!, format: String!, processing: DEDocumentConverting!) {
-        log.info("DEEditorDelegate:documentExport")
-
-        if let file = openedFile {
-            let tempExportPath = Path.userTemporary + UUID().uuidString
-
-            let exportFile = ASCFile()
-            exportFile.title = file.title.fileName() + "." + format
-            exportFile.id = (tempExportPath + exportFile.title).rawValue
-
-            do {
-                try tempExportPath.createDirectory(withIntermediateDirectories: true)
-            } catch {
-                log.error("Export file couldn't create directory structure")
-            }
-
-            convertToExport(input: document.path, output: exportFile, processing: { status, progress, error, outputPath in
-                if status == .begin {
-                    processing("begin", 0, nil, nil)
-                } else if status == .progress {
-                    processing("progress", progress, nil, nil)
-                } else if status == .end {
-                    processing("end", 1, nil, exportFile.id)
-                } else if status == .error {
-                    processing("error", 1, ASCEditorManagerError(msg: NSLocalizedString("Could not convert file to export.", comment: "")), nil)
-                }
-            })
-        }
-    }
-
-    func documentBackup(_ controller: DEEditorViewController!, document: DEDocument!) {
-        log.info("DEEditorDelegate:documentBackup")
-
-        if controller.isDocumentModifity {
-            UserDefaults.standard.set(true, forKey: ASCConstants.SettingsKeys.openedDocumentModifity)
-        }
-    }
-
-    func documentChartData(_ controller: DEEditorViewController!, data: String!) {
-        openChartEditor(controller, data)
-    }
-
-    func documentEditorSettings(_ controller: DEEditorViewController!) -> [AnyHashable: Any]! {
-        setenv("APPLICATION_NAME", ASCConstants.Name.appNameShort, 1)
-        setenv("COMPANY_NAME", ASCConstants.Name.copyright, 1)
-
-        return [
-            "asc.de.external.appname": ASCConstants.Name.appNameShort,
-            "asc.de.external.helpurl": "https://helpcenter.onlyoffice.com/%@%@mobile-applications/documents/document-editor/index.aspx",
-            "asc.de.external.page.formats": [
-                [
-                    "description": "A6",
-                    "size": "10.5 x 14.8",
-                    "value": [105, 148], // 105 × 148
-                ], [
-                    "description": "A2",
-                    "size": "42 x 59.4",
-                    "value": [420, 594], // 420 × 594
-                ], [
-                    "description": "A1",
-                    "size": "59.4 x 84.1",
-                    "value": [594, 841], // 594 × 841
-                ], [
-                    "description": "A0",
-                    "size": "84.1 x 118.9",
-                    "value": [841, 1189], // 841 × 1189
-                ],
-            ],
-        ]
-    }
-
-    func documentShare(_ complation: DEDocumentShareComplate!) {
-        if let file = openedFile {
-            shareHandler?(file)
-        }
-    }
-
-    func documentFavorite(_ favorite: Bool, complation: DEDocumentFavoriteComplate!) {
-        if let file = openedFile, let _ = favoriteHandler {
-            favoriteHandler?(file) { favorite in
-                self.openedFile?.isFavorite = favorite
-                complation(favorite)
-            }
-        }
-    }
-
-    // MARK: - SEEditorDelegate
-
-    func spreadsheetLoading(_ controller: SEEditorViewController!, progress value: CGFloat) {
-        log.info("SEEditorDelegate:documentLoading \(value)")
-
-        if let file = openedFile, !file.device {
-            OnlyofficeApiClient.request(OnlyofficeAPI.Endpoints.Files.startEdit(file: file)) { response, error in
-                if let error = error {
-                    log.error(error)
-                }
-            }
-        }
-    }
-
-    func spreadsheetWorkCompleted(_ controller: SEEditorViewController!, document: SEDocument!) {
-        log.info("SEEditorDelegate:documentWorkCompleted")
-
-        cleanupEditorWindow()
-
-        if let file = openedFile {
-            var cancel = false
-
-            if file.device {
-                // Save changes
-                if document != nil {
-                    if openedlocallyFile == nil, openedCopy {
-                        let copyFile = Path.userDocuments + Path(file.id).fileName
-                        guard let dstPath = ASCLocalFileHelper.shared.resolve(filePath: copyFile) else {
-                            closeHandler?(.error, 1, nil, nil, &cancel)
-                            return
-                        }
-
-                        file.id = dstPath.rawValue
-
-                    } else {
-                        let fileExtension = file.title.fileExtension().lowercased()
-                        if !ASCConstants.FileExtensions.editorImportSpreadsheets.contains(fileExtension) {
-                            // Store original
-                            _ = ASCLocalFileHelper.shared.move(from: Path(file.id), to: Path.userTemporary + file.title)
-                        } else {
-                            let fileTo = Path(Path(file.id).url.deletingPathExtension().path + ".xlsx")
-                            guard let filePath = ASCLocalFileHelper.shared.resolve(filePath: fileTo) else {
-                                closeHandler?(.error, 1, nil, nil, &cancel)
-                                return
-                            }
-
-                            resolvedFilePath = filePath
-                        }
-                    }
-
-                    convertToSave(file: file, password: document.password, processing: { status, progress, error, outputPath in
-                        if status == .begin {
-                            self.closeHandler?(.begin, 0, file, error, &cancel)
-                        } else if status == .progress {
-                            self.closeHandler?(.progress, progress, file, error, &cancel)
-                        } else if status == .end {
-                            let filePath = Path(file.id)
-
-                            if let openedlocallyFile = self.openedlocallyFile, let provider = self.provider {
-                                // File is not original
-                                let fileExtension = file.title.fileExtension().lowercased()
-                                if ASCConstants.FileExtensions.editorImportSpreadsheets.contains(fileExtension) {
-                                    file.title = file.title.fileName() + ".xlsx"
-                                    file.id = self.resolvedFilePath.rawValue
-                                }
-
-                                ASCEntityManager.shared.uploadEdit(
-                                    for: provider,
-                                    file: file,
-                                    originalFile: openedlocallyFile,
-                                    handler:
-                                    { [unowned self] status, progress, result, error, cancel in
-                                        if status == .begin {
-                                            self.closeHandler?(.begin, 0, file, nil, &cancel)
-                                        } else if status == .progress {
-                                            self.closeHandler?(.progress, progress, file, nil, &cancel)
-                                        } else if status == .end || status == .error {
-                                            if status == .end {
-                                                if let resultFile = result as? ASCFile {
-                                                    self.closeHandler?(.end, 1, resultFile, nil, &cancel)
-                                                } else {
-                                                    self.closeHandler?(.end, 1, file, nil, &cancel)
-                                                }
-                                            } else {
-                                                self.closeHandler?(.error, 1, file, nil, &cancel)
-                                            }
-                                            self.stopLocallyEditing()
-
-                                            // Store backup
-                                            if status == .error {
-                                                // Backup on Device file
-                                                let dateFormatter = DateFormatter()
-                                                dateFormatter.dateFormat = "yyyyMMddHHmmss"
-
-                                                let nowString = dateFormatter.string(from: Date())
-                                                let backupPath = Path.userDocuments + Path("\(file.title.fileName())-Backup-\(nowString).\(file.title.fileExtension())")
-
-                                                ASCLocalFileHelper.shared.copy(from: filePath,
-                                                                               to: backupPath)
-                                            }
-
-                                            let lastTempFile = Path.userTemporary + file.title
-                                            let autosaveFile = Path.userAutosavedInformation + file.title
-
-                                            // Remove autosave
-                                            ASCLocalFileHelper.shared.removeDirectory(lastTempFile)
-
-                                            // Remove original
-                                            ASCLocalFileHelper.shared.removeFile(autosaveFile)
-
-                                            UserDefaults.standard.removeObject(forKey: ASCConstants.SettingsKeys.openedDocument)
-                                            UserDefaults.standard.removeObject(forKey: ASCConstants.SettingsKeys.passwordOpenedDocument)
-                                        }
-                                    }
-                                )
-
-                            } else {
-                                let owner = ASCUser()
-                                owner.displayName = UIDevice.displayName
-
-                                let file = ASCFile()
-                                file.id = filePath.rawValue
-                                file.rootFolderType = .deviceDocuments
-                                file.title = filePath.fileName
-                                file.created = filePath.creationDate
-                                file.updated = filePath.modificationDate
-                                file.createdBy = owner
-                                file.updatedBy = owner
-                                file.device = true
-                                file.displayContentLength = String.fileSizeToString(with: filePath.fileSize ?? 0)
-                                file.pureContentLength = Int(filePath.fileSize ?? 0)
-
-                                let lastTempFile = Path.userTemporary + file.title
-                                let autosaveFile = Path.userAutosavedInformation + file.title
-                                let fileExtension = file.title.fileExtension().lowercased()
-
-                                if ASCConstants.FileExtensions.editorImportSpreadsheets.contains(fileExtension) {
-                                    file.id = self.resolvedFilePath.rawValue
-                                    file.title = file.title.fileName() + ".xlsx"
-
-                                    let newFilePath = Path(file.id)
-                                    file.created = newFilePath.creationDate
-                                    file.updated = newFilePath.modificationDate
-                                    file.displayContentLength = String.fileSizeToString(with: newFilePath.fileSize ?? 0)
-                                    file.pureContentLength = Int(newFilePath.fileSize ?? 0)
-                                }
-
-                                self.closeHandler?(.end, 1, file, nil, &cancel)
-
-                                // Remove autosave
-                                ASCLocalFileHelper.shared.removeDirectory(lastTempFile)
-
-                                // Remove original
-                                ASCLocalFileHelper.shared.removeFile(autosaveFile)
-
-                                UserDefaults.standard.removeObject(forKey: ASCConstants.SettingsKeys.openedDocument)
-                                UserDefaults.standard.removeObject(forKey: ASCConstants.SettingsKeys.passwordOpenedDocument)
-                            }
-
-                        } else if status == .error {
-                            self.closeHandler?(.error, 1, file, error, &cancel)
-
-                            // Remove autosave
-                            ASCLocalFileHelper.shared.removeDirectory(Path.userAutosavedInformation + file.title)
-
-                            // Restore original
-                            _ = ASCLocalFileHelper.shared.move(from: Path.userTemporary + file.title, to: Path(file.id))
-
-                            UserDefaults.standard.removeObject(forKey: ASCConstants.SettingsKeys.openedDocument)
-                            UserDefaults.standard.removeObject(forKey: ASCConstants.SettingsKeys.passwordOpenedDocument)
-                        }
-                    })
-                } else {
-                    stopLocallyEditing()
-
-                    // Don't save changes
-                    ASCLocalFileHelper.shared.removeDirectory(Path.userAutosavedInformation + file.title)
-                    closeHandler?(.end, 1, nil, nil, &cancel)
-
-                    UserDefaults.standard.removeObject(forKey: ASCConstants.SettingsKeys.openedDocument)
-                    UserDefaults.standard.removeObject(forKey: ASCConstants.SettingsKeys.passwordOpenedDocument)
-                }
-            } else {
-                if let closeHandler = closeHandler {
-                    closeHandler(.begin, 0, file, nil, &cancel)
-
-                    UserDefaults.standard.removeObject(forKey: ASCConstants.SettingsKeys.openedDocument)
-                    ASCLocalFileHelper.shared.removeDirectory(Path.userAutosavedInformation + file.title)
-
-                    OnlyofficeApiClient.request(OnlyofficeAPI.Endpoints.Files.info(file: file)) { response, error in
-                        if let newFile = response?.result {
-                            closeHandler(.end, 1, newFile, nil, &cancel)
-                        } else {
-                            closeHandler(.error, 1, file, error, &cancel)
-                        }
-                    }
-                }
-            }
-
-            openedFile = nil
-        }
-    }
-
-    func spreadsheetExport(_ controller: SEEditorViewController!, document: SEDocument!, format: String!, processing: SEDocumentConverting!) {
-        log.info("SEEditorDelegate:documentExport")
-
-        if let file = openedFile {
-            let tempExportPath = Path.userTemporary + UUID().uuidString
-
-            let exportFile = ASCFile()
-            exportFile.title = file.title.fileName() + "." + format
-            exportFile.id = (tempExportPath + exportFile.title).rawValue
-
-            do {
-                try tempExportPath.createDirectory(withIntermediateDirectories: true)
-            } catch {
-                log.error("Export file couldn't create directory structure")
-            }
-
-            convertToExport(input: document.path, output: exportFile, processing: { status, progress, error, outputPath in
-                if status == .begin {
-                    processing("begin", 0, nil, nil)
-                } else if status == .progress {
-                    processing("progress", progress, nil, nil)
-                } else if status == .end {
-                    processing("end", 1, nil, exportFile.id)
-                } else if status == .error {
-                    processing("error", 1, ASCEditorManagerError(msg: NSLocalizedString("Could not convert file to export.", comment: "")), nil)
-                }
-            })
-        }
-    }
-
-    func spreadsheetBackup(_ controller: SEEditorViewController!, document: SEDocument!) {
-        if controller.isDocumentModifity {
-            UserDefaults.standard.set(true, forKey: ASCConstants.SettingsKeys.openedDocumentModifity)
-        }
-    }
-
-    func spreadsheetChartData(_ controller: SEEditorViewController!, data: String!) {
-        if let n = controller.navigationController {
-            if let documentController = n.viewControllers[0] as? DEEditorViewController {
-                documentController.setChartData(data)
-            }
-            if let documentController = n.viewControllers[0] as? PEEditorViewController {
-                documentController.setChartData(data)
-            }
-        }
-    }
-
-    func spreadsheetEditorSettings(_ controller: SEEditorViewController!) -> [AnyHashable: Any]! {
-        setenv("APPLICATION_NAME", ASCConstants.Name.appNameShort, 1)
-        setenv("COMPANY_NAME", ASCConstants.Name.copyright, 1)
-
-        let shortCm = NSLocalizedString("cm", comment: "Cut from centimeters")
-        return [
-            "asc.se.external.appname": ASCConstants.Name.appNameShort,
-            "asc.se.external.helpurl": "https://helpcenter.onlyoffice.com/%@%@mobile-applications/documents/spreadsheet-editor/index.aspx",
-            "asc.se.external.page.formats": [
-                [
-                    "width": 105,
-                    "height": 148,
-                    "display": String(format: NSLocalizedString("A6 (10,5%@ x 14,8%@)", comment: "Format info"), shortCm, shortCm),
-                ], [
-                    "width": 420,
-                    "height": 594,
-                    "display": String(format: NSLocalizedString("A2 (42%@ x 59,4%@)", comment: "Format info"), shortCm, shortCm),
-                ], [
-                    "width": 594,
-                    "height": 841,
-                    "display": String(format: NSLocalizedString("A1 (59,4%@ x 84,1%@)", comment: "Format info"), shortCm, shortCm),
-                ], [
-                    "width": 841,
-                    "height": 1189,
-                    "display": String(format: NSLocalizedString("A0 (84,1%@ x 119,9%@)", comment: "Format info"), shortCm, shortCm),
-                ],
-            ],
-        ]
-    }
-
-    func spreadsheetShare(_ complation: SEDocumentShareComplate!) {
-        if let file = openedFile {
-            shareHandler?(file)
-        }
-    }
-
-    func spreadsheetFavorite(_ favorite: Bool, complation: SEDocumentFavoriteComplate!) {
-        if let file = openedFile, let _ = favoriteHandler {
-            favoriteHandler?(file) { favorite in
-                self.openedFile?.isFavorite = favorite
-                complation(favorite)
-            }
-        }
-    }
-
-    // MARK: - PEEditorDelegate
-
-    func presentationLoading(_ controller: PEEditorViewController!, progress value: CGFloat) {
-        log.info("PEEditorDelegate:documentLoading \(value)")
-
-        if let file = openedFile, !file.device {
-            OnlyofficeApiClient.request(OnlyofficeAPI.Endpoints.Files.startEdit(file: file)) { response, error in
-                if let error = error {
-                    log.error(error)
-                }
-            }
-        }
-    }
-
-    func presentationWorkCompleted(_ controller: PEEditorViewController!, document: PEDocument!) {
-        log.info("PEEditorDelegate:documentWorkCompleted")
-
-        cleanupEditorWindow()
-
-        if let file = openedFile {
-            var cancel = false
-
-            if file.device {
-                // Save changes
-                if document != nil {
-                    if openedlocallyFile == nil, openedCopy {
-                        let copyFile = Path.userDocuments + Path(file.id).fileName
-                        guard let dstPath = ASCLocalFileHelper.shared.resolve(filePath: copyFile) else {
-                            closeHandler?(.error, 1, nil, nil, &cancel)
-                            return
-                        }
-
-                        file.id = dstPath.rawValue
-
-                    } else {
-                        let fileExtension = file.title.fileExtension().lowercased()
-                        if !ASCConstants.FileExtensions.editorImportPresentations.contains(fileExtension) {
-                            // Store original
-                            _ = ASCLocalFileHelper.shared.move(from: Path(file.id), to: Path.userTemporary + file.title)
-                        } else {
-                            let fileTo = Path(Path(file.id).url.deletingPathExtension().path + ".pptx")
-                            guard let filePath = ASCLocalFileHelper.shared.resolve(filePath: fileTo) else {
-                                closeHandler?(.error, 1, nil, nil, &cancel)
-                                return
-                            }
-
-                            resolvedFilePath = filePath
-                        }
-                    }
-
-                    convertToSave(file: file, password: document.password, processing: { status, progress, error, outputPath in
-                        if status == .begin {
-                            self.closeHandler?(.begin, 0, file, error, &cancel)
-                        } else if status == .progress {
-                            self.closeHandler?(.progress, progress, file, error, &cancel)
-                        } else if status == .end {
-                            let filePath = Path(file.id)
-
-                            if let openedlocallyFile = self.openedlocallyFile, let provider = self.provider {
-                                // File is not original
-                                let fileExtension = file.title.fileExtension().lowercased()
-                                if ASCConstants.FileExtensions.editorImportPresentations.contains(fileExtension) {
-                                    file.title = file.title.fileName() + ".pptx"
-                                    file.id = self.resolvedFilePath.rawValue
-                                }
-
-                                ASCEntityManager.shared.uploadEdit(
-                                    for: provider,
-                                    file: file,
-                                    originalFile: openedlocallyFile,
-                                    handler:
-                                    { [unowned self] status, progress, result, error, cancel in
-                                        if status == .begin {
-                                            self.closeHandler?(.begin, 0, file, nil, &cancel)
-                                        } else if status == .progress {
-                                            self.closeHandler?(.progress, progress, file, nil, &cancel)
-                                        } else if status == .end || status == .error {
-                                            if status == .end {
-                                                if let resultFile = result as? ASCFile {
-                                                    self.closeHandler?(.end, 1, resultFile, nil, &cancel)
-                                                } else {
-                                                    self.closeHandler?(.end, 1, file, nil, &cancel)
-                                                }
-                                            } else {
-                                                self.closeHandler?(.error, 1, file, nil, &cancel)
-                                            }
-                                            self.stopLocallyEditing()
-
-                                            // Store backup
-                                            if status == .error {
-                                                // Backup on Device file
-                                                let dateFormatter = DateFormatter()
-                                                dateFormatter.dateFormat = "yyyyMMddHHmmss"
-
-                                                let nowString = dateFormatter.string(from: Date())
-                                                let backupPath = Path.userDocuments + Path("\(file.title.fileName())-Backup-\(nowString).\(file.title.fileExtension())")
-
-                                                ASCLocalFileHelper.shared.copy(from: filePath,
-                                                                               to: backupPath)
-                                            }
-
-                                            let lastTempFile = Path.userTemporary + file.title
-                                            let autosaveFile = Path.userAutosavedInformation + file.title
-
-                                            // Remove autosave
-                                            ASCLocalFileHelper.shared.removeDirectory(lastTempFile)
-
-                                            // Remove original
-                                            ASCLocalFileHelper.shared.removeFile(autosaveFile)
-
-                                            UserDefaults.standard.removeObject(forKey: ASCConstants.SettingsKeys.openedDocument)
-                                            UserDefaults.standard.removeObject(forKey: ASCConstants.SettingsKeys.passwordOpenedDocument)
-                                        }
-                                    }
-                                )
-
-                            } else {
-                                let owner = ASCUser()
-                                owner.displayName = UIDevice.displayName
-
-                                let file = ASCFile()
-                                file.id = filePath.rawValue
-                                file.rootFolderType = .deviceDocuments
-                                file.title = filePath.fileName
-                                file.created = filePath.creationDate
-                                file.updated = filePath.modificationDate
-                                file.createdBy = owner
-                                file.updatedBy = owner
-                                file.device = true
-                                file.displayContentLength = String.fileSizeToString(with: filePath.fileSize ?? 0)
-                                file.pureContentLength = Int(filePath.fileSize ?? 0)
-
-                                let fileExtension = file.title.fileExtension().lowercased()
-                                let lastTempFile = Path.userTemporary + file.title
-                                let autosaveFile = Path.userAutosavedInformation + file.title
-
-                                if ASCConstants.FileExtensions.editorImportPresentations.contains(fileExtension) {
-                                    file.id = self.resolvedFilePath.rawValue
-                                    file.title = file.title.fileName() + ".pptx"
-
-                                    let newFilePath = Path(file.id)
-                                    file.created = newFilePath.creationDate
-                                    file.updated = newFilePath.modificationDate
-                                    file.displayContentLength = String.fileSizeToString(with: newFilePath.fileSize ?? 0)
-                                    file.pureContentLength = Int(newFilePath.fileSize ?? 0)
-                                }
-
-                                self.closeHandler?(.end, 1, file, nil, &cancel)
-
-                                // Remove autosave
-                                ASCLocalFileHelper.shared.removeDirectory(lastTempFile)
-
-                                // Remove original
-                                ASCLocalFileHelper.shared.removeFile(autosaveFile)
-
-                                UserDefaults.standard.removeObject(forKey: ASCConstants.SettingsKeys.openedDocument)
-                                UserDefaults.standard.removeObject(forKey: ASCConstants.SettingsKeys.passwordOpenedDocument)
-                            }
-
-                        } else if status == .error {
-                            self.closeHandler?(.error, 1, file, error, &cancel)
-
-                            // Remove autosave
-                            ASCLocalFileHelper.shared.removeDirectory(Path.userAutosavedInformation + file.title)
-
-                            // Restore original
-                            _ = ASCLocalFileHelper.shared.move(from: Path.userTemporary + file.title, to: Path(file.id))
-
-                            UserDefaults.standard.removeObject(forKey: ASCConstants.SettingsKeys.openedDocument)
-                            UserDefaults.standard.removeObject(forKey: ASCConstants.SettingsKeys.passwordOpenedDocument)
-                        }
-                    })
-                } else {
-                    stopLocallyEditing()
-
-                    // Don't save changes
-                    ASCLocalFileHelper.shared.removeDirectory(Path.userAutosavedInformation + file.title)
-                    closeHandler?(.end, 1, nil, nil, &cancel)
-
-                    UserDefaults.standard.removeObject(forKey: ASCConstants.SettingsKeys.openedDocument)
-                    UserDefaults.standard.removeObject(forKey: ASCConstants.SettingsKeys.passwordOpenedDocument)
-                }
-            } else {
-                if let closeHandler = closeHandler {
-                    closeHandler(.begin, 0, file, nil, &cancel)
-
-                    UserDefaults.standard.removeObject(forKey: ASCConstants.SettingsKeys.openedDocument)
-                    ASCLocalFileHelper.shared.removeDirectory(Path.userAutosavedInformation + file.title)
-
-                    OnlyofficeApiClient.request(OnlyofficeAPI.Endpoints.Files.info(file: file)) { response, error in
-                        if let newFile = response?.result {
-                            closeHandler(.end, 1, newFile, nil, &cancel)
-                        } else {
-                            closeHandler(.error, 1, file, error, &cancel)
-                        }
-                    }
-                }
-            }
-
-            openedFile = nil
-        }
-    }
-
-    func presentationExport(_ controller: PEEditorViewController!, document: PEDocument!, format: String!, processing: PEDocumentConverting!) {
-        log.info("PEEditorDelegate:presentationExport")
-
-        if let file = openedFile {
-            let tempExportPath = Path.userTemporary + UUID().uuidString
-
-            let exportFile = ASCFile()
-            exportFile.title = file.title.fileName() + "." + format
-            exportFile.id = (tempExportPath + exportFile.title).rawValue
-
-            do {
-                try tempExportPath.createDirectory(withIntermediateDirectories: true)
-            } catch {
-                log.error("Export file couldn't create directory structure")
-            }
-
-            convertToExport(input: document.path, output: exportFile, processing: { status, progress, error, outputPath in
-                if status == .begin {
-                    processing("begin", 0, nil, nil)
-                } else if status == .progress {
-                    processing("progress", progress, nil, nil)
-                } else if status == .end {
-                    processing("end", 1, nil, exportFile.id)
-                } else if status == .error {
-                    processing("error", 1, ASCEditorManagerError(msg: NSLocalizedString("Could not convert file to export.", comment: "")), nil)
-                }
-            })
-        }
-    }
-
-    func presentationBackup(_ controller: PEEditorViewController!, document: PEDocument!) {
-        log.info("PEEditorDelegate:presentationBackup")
-
-        if controller.isDocumentModifity {
-            UserDefaults.standard.set(true, forKey: ASCConstants.SettingsKeys.openedDocumentModifity)
-        }
-    }
-
-    func presentationChartData(_ controller: PEEditorViewController!, data: String!) {
-        openChartEditor(controller, data)
-    }
-
-    func presentationEditorSettings(_ controller: PEEditorViewController!) -> [AnyHashable: Any]! {
-        setenv("APPLICATION_NAME", ASCConstants.Name.appNameShort, 1)
-        setenv("COMPANY_NAME", ASCConstants.Name.copyright, 1)
-
-        return [
-            "asc.pe.external.appname": ASCConstants.Name.appNameShort,
-            "asc.pe.external.helpurl": "https://helpcenter.onlyoffice.com/%@%@mobile-applications/documents/presentation-editor/index.aspx",
-        ]
-    }
-
-    func presentationShare(_ complation: PEDocumentShareComplate!) {
-        if let file = openedFile {
-            shareHandler?(file)
-        }
-    }
-
-    func presentationFavorite(_ favorite: Bool, complation: PEDocumentFavoriteComplate!) {
-        if let file = openedFile, let _ = favoriteHandler {
-            favoriteHandler?(file) { favorite in
-                self.openedFile?.isFavorite = favorite
-                complation(favorite)
-            }
-        }
-    }
-
     // MARK: - Utils
 
     func checkSDKVersion() -> Bool {
@@ -2373,14 +792,6 @@ class ASCEditorManager: NSObject, DEEditorDelegate, SEEditorDelegate, PEEditorDe
             }
         }
         return false
-    }
-
-    func localSDKVersion() -> [String] {
-        if let sdkVersion = DocumentEditor.DEEditorViewController().sdkVersion() {
-            log.info("SDK Version:", sdkVersion)
-            return sdkVersion.components(separatedBy: ".")
-        }
-        return []
     }
 
     // MARK: - Dialog Utils
@@ -2472,45 +883,30 @@ class ASCEditorManager: NSObject, DEEditorDelegate, SEEditorDelegate, PEEditorDe
             topVC.present(alertController, animated: true, completion: nil)
         }
     }
+}
 
-    func showConverterOptionsAlertAndEdit(file: ASCFile) {
-        showConverterOptionsAlert { [weak self] encoding, delimiter in
-            guard let strongSelf = self else { return }
+// MARK: - UIDocumentInteractionControllerDelegate
 
-            var documentsVC: ASCDocumentsViewController?
-
-            if let splitVC = UIApplication.topViewController() as? ASCBaseSplitViewController {
-                if splitVC.viewControllers.count > 1 {
-                    if let documentsNC = splitVC.viewControllers.last as? ASCDocumentsNavigationController {
-                        documentsVC = documentsNC.viewControllers.first as? ASCDocumentsViewController
-                    }
-                } else {
-                    if let documentsNC = splitVC.viewControllers.first as? ASCBaseNavigationController {
-                        documentsVC = documentsNC.viewControllers.last as? ASCDocumentsViewController
-                    }
-                }
-
-                if let documentsVC = documentsVC {
-                    let openHandler = documentsVC.openProgress(file: file, title: NSLocalizedString("Processing", comment: "Caption of the processing") + "...", 0.15)
-                    let closeHandler = documentsVC.closeProgress(file: file, title: NSLocalizedString("Saving", comment: "Caption of the processing"))
-
-                    strongSelf.encoding = encoding
-                    strongSelf.delimiter = delimiter + 1
-
-                    strongSelf.editLocal(file, viewMode: strongSelf.openedFileInViewMode, openHandler: openHandler, closeHandler: closeHandler)
-                }
-            }
-        }
+extension ASCEditorManager: UIDocumentInteractionControllerDelegate {
+    func documentInteractionControllerViewControllerForPreview(_ controller: UIDocumentInteractionController) -> UIViewController {
+        return (createEditorWindow()?.rootViewController)!
     }
 
-    func showConverterOptionsAlert(handler: @escaping (_ encoding: Int, _ delimiter: Int) -> Void) {
-        alert.show { encoding, delimiter in
-            handler(encoding, delimiter)
+    func documentInteractionControllerDidEndPreview(_ controller: UIDocumentInteractionController) {
+        cleanupEditorWindow()
+
+        // Cleanup temporary file
+        if let file = openedFile, file.id.range(of: Path.userTemporary.rawValue) != nil {
+            ASCLocalFileHelper.shared.removeFile(Path(file.id))
         }
+
+        openedFile = nil
     }
+}
 
-    // MARK: - UITextField Delegate
+// MARK: - UITextField Delegate
 
+extension ASCEditorManager: UITextFieldDelegate {
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         if textField.isFirstResponder {
             if let primaryLanguage = textField.textInputMode?.primaryLanguage, primaryLanguage == "emoji" {
@@ -2540,3 +936,1747 @@ class ASCEditorManager: NSObject, DEEditorDelegate, SEEditorDelegate, PEEditorDe
         return false
     }
 }
+
+// MARK: - Methods
+
+extension ASCEditorManager {
+    #if !NO_EDITORS
+
+        private func prepareFonts() {
+            DocumentLocalConverter.prepareFonts { appFontsCache in
+                log.info("Prepare application fonts cache in: \(appFontsCache ?? ASCLocalization.Common.error)")
+                if UIDevice.allowEditor {
+                    SEEditorContext.sharedInstance().fontsPaths = ASCEditorManager.shared.editorFontsPaths
+                    SEEditorContext.sharedInstance().dataFontsPath = ASCEditorManager.shared.dataFontsPath
+                    SEEditorContext.sharedInstance().load()
+                }
+            }
+        }
+
+        /// Open local file
+        /// - Parameters:
+        ///   - file: The file object located on the device
+        ///   - viewMode: Open in preview mode
+        ///   - autosave: Autosave
+        ///   - locallyEditing: Local editing of an external file
+        ///   - handler: File open process handler
+        func openEditorLocal(
+            file: ASCFile,
+            viewMode: Bool = false,
+            autosave: Bool = false,
+            locallyEditing: Bool = false,
+            handler: ASCEditorManagerOpenHandler? = nil
+        ) {
+            let title = file.title
+            let fileExt = title.fileExtension().lowercased()
+            let isDocument = (["docx"] + ASCConstants.FileExtensions.editorImportDocuments).contains(fileExt)
+            let isSpreadsheet = (["xlsx"] + ASCConstants.FileExtensions.editorImportSpreadsheets).contains(fileExt)
+            let isPresentation = (["pptx"] + ASCConstants.FileExtensions.editorImportPresentations).contains(fileExt)
+            let isForm = ASCConstants.FileExtensions.forms.contains(fileExt)
+
+            var cancel = false
+            var editorNavigationController: UIViewController?
+
+            if isDocument || isForm {
+                editorNavigationController = DEEditorNavigationController()
+            } else if isSpreadsheet {
+                editorNavigationController = SEEditorNavigationController()
+            } else if isPresentation {
+                editorNavigationController = PEEditorNavigationController()
+            }
+
+            guard let documentEditorNavigation = editorNavigationController as? DEEditorNavigationController ?? editorNavigationController as? SEEditorNavigationController ?? editorNavigationController as? PEEditorNavigationController else {
+                handler?(.error, 1, ASCEditorManagerError(msg: NSLocalizedString("Could not open editor.", comment: "")), &cancel)
+                return
+            }
+
+            openedFile = nil
+            openedCopy = locallyEditing
+
+            let password = UserDefaults.standard.object(forKey: ASCConstants.SettingsKeys.passwordOpenedDocument) as? String ?? ""
+            var documentPermissions: String?
+
+            // FillForms mode
+            if isForm, fileExt == "oform" {
+                documentPermissions = [
+                    "fillForms": true,
+                    "onDevice": true,
+                ].jsonString()
+            }
+
+            var documentInfo = [
+                "title": file.title,
+                "viewMode": viewMode,
+                "date": file.updated ?? Date(),
+                "docUserId": UIDevice.current.identifierForVendor?.uuidString ?? UUID().uuidString,
+                "docUserName": file.updatedBy?.displayName ?? (UIDevice.current.name.count > 0
+                    ? UIDevice.current.name
+                    : NSLocalizedString("Me", comment: "If current user name is not set")),
+                "autosave": true,
+                "file": file.toJSONString()!,
+                "locallyEditing": locallyEditing,
+                "appFonts": editorFontsPaths,
+                "dataFontsPath": dataFontsPath,
+            ] as [String: Any]
+
+            if let documentPermissions = documentPermissions {
+                documentInfo += [
+                    "documentPermissions": documentPermissions,
+                ]
+            }
+
+            if viewMode == false {
+                UserDefaults.standard.set(documentInfo, forKey: ASCConstants.SettingsKeys.openedDocument)
+            }
+
+            if #available(iOS 13.0, *) {
+                documentEditorNavigation.modalPresentationStyle = .fullScreen
+            }
+
+            documentEditorNavigation.modalTransitionStyle = .crossDissolve
+            documentEditorNavigation.editorViewLoaded = { [weak navigationView = documentEditorNavigation] in
+                navigationView?.editorController.documentInfo = documentInfo
+            }
+
+            let workDirectory = Path.userAutosavedInformation + file.title + "/"
+            let loader = ASCDocumentLoader(path: workDirectory.rawValue)
+            let document = ASCDocument()
+            document.password = password
+            document.backupPath = (Path.userAutosavedInformation + file.title + "/").rawValue
+
+            document.loader = loader
+            document.loader.options = ["autosave": autosave]
+            document.load { [unowned self] status, progress, error in
+                if let loadError = error as NSError? {
+                    log.error(loadError)
+                    handler?(.error, 1, error, &cancel)
+                } else {
+                    if status == kASCDocumentSerializerBegin {
+                        handler?(.begin, 1, error, &cancel)
+                    } else if status == kASCDocumentSerializerProgress {
+                        handler?(.progress, progress, error, &cancel)
+                    } else if status == kASCDocumentSerializerEnd {
+                        self.createEditorWindow()?.rootViewController?.present(documentEditorNavigation, animated: true, completion: {
+                            DispatchQueue.main.async {
+                                documentEditorNavigation.editorController.delegate = self
+                                documentEditorNavigation.editorController.open(document)
+                                self.openedFile = file
+                                ASCAnalytics.logEvent(ASCConstants.Analytics.Event.openEditor, parameters: [
+                                    ASCAnalytics.Event.Key.portal: OnlyofficeApiClient.shared.baseURL?.absoluteString ?? ASCAnalytics.Event.Value.none,
+                                    ASCAnalytics.Event.Key.type: isDocument
+                                        ? ASCAnalytics.Event.Value.document
+                                        : (isSpreadsheet
+                                            ? ASCAnalytics.Event.Value.spreadsheet
+                                            : (isPresentation
+                                                ? ASCAnalytics.Event.Value.presentation
+                                                : (isForm
+                                                    ? ASCAnalytics.Event.Value.form
+                                                    : ASCAnalytics.Event.Value.unknown
+                                                )
+                                            )
+                                        ),
+                                    ASCAnalytics.Event.Key.onDevice: file.device,
+                                    ASCAnalytics.Event.Key.locallyEditing: locallyEditing,
+                                    ASCAnalytics.Event.Key.fileExt: fileExt,
+                                    ASCAnalytics.Event.Key.viewMode: viewMode,
+                                ])
+                                handler?(.end, 1, error, &cancel)
+                            }
+                        })
+                    }
+                }
+            }
+        }
+
+        /// Open file from Document Server in collaboration mode
+        /// - Parameters:
+        ///   - file: The file object
+        ///   - viewMode: Force open in view mode
+        ///   - handler: File open process handler
+        func openEditorInCollaboration(
+            file: ASCFile,
+            viewMode: Bool = false,
+            handler: ASCEditorManagerOpenHandler? = nil
+        ) {
+            let title = file.title
+            let fileExt = title.fileExtension().lowercased()
+            let isDocument = (["docx"] + ASCConstants.FileExtensions.editorImportDocuments).contains(fileExt)
+            let isSpreadsheet = (["xlsx"] + ASCConstants.FileExtensions.editorImportSpreadsheets).contains(fileExt)
+            let isPresentation = (["pptx"] + ASCConstants.FileExtensions.editorImportPresentations).contains(fileExt)
+            let isForm = ASCConstants.FileExtensions.forms.contains(fileExt)
+
+            var cancel = false
+            var editorNavigationController: UIViewController?
+
+            if isDocument || isForm {
+                editorNavigationController = DEEditorNavigationController()
+            } else if isSpreadsheet {
+                editorNavigationController = SEEditorNavigationController()
+            } else if isPresentation {
+                editorNavigationController = PEEditorNavigationController()
+            }
+
+            guard let documentEditorNavigation = editorNavigationController as? DEEditorNavigationController ?? editorNavigationController as? SEEditorNavigationController ?? editorNavigationController as? PEEditorNavigationController else {
+                handler?(.error, 1, ASCEditorManagerError(msg: NSLocalizedString("Could not open editor.", comment: "")), &cancel)
+                return
+            }
+
+            openedFile = nil
+
+            guard
+                let user = ASCFileManager.onlyofficeProvider?.user,
+                let userId = user.userId,
+                let userName = file.createdBy?.displayName ?? user.userName,
+                let firstName = user.firstName,
+                let lastName = user.lastName
+            else {
+                handler?(.error, 1, ASCEditorManagerError(msg: NSLocalizedString("Could not open editor.", comment: "")), &cancel)
+                return
+            }
+
+            let sdkCheck = checkSDKVersion()
+
+            var documentInfo: [String: Any] = [
+                "title": file.title,
+                "date": file.created!,
+                "author": file.createdBy?.displayName ?? "",
+                "viewMode": viewMode || !sdkCheck,
+                "coauthoring": true,
+                "docUserId": userId,
+                "docUserName": userName,
+                "docUserFirstName": firstName,
+                "docUserLastName": lastName,
+                "docKey": documentKeyForTrack ?? "",
+                "docURL": documentURLForTrack ?? "",
+                "docService": documentServiceURL ?? "",
+                "documentToken": documentToken ?? "",
+                "documentPermissions": documentPermissions ?? "",
+                "documentCommonConfig": documentCommonConfig ?? "",
+                "file": file.toJSONString()!,
+                "sdkCheck": sdkCheck,
+                "appFonts": editorFontsPaths,
+                "dataFontsPath": dataFontsPath,
+                "supportShare": true,
+            ]
+
+            // Enabling the Favorite function only on portals version 11 and higher
+            if let communityServerVersion = OnlyofficeApiClient.shared.serverVersion,
+               communityServerVersion.isVersion(greaterThanOrEqualTo: "11.0")
+            {
+                documentInfo["favorite"] = file.isFavorite
+            }
+
+            if !(viewMode || !sdkCheck) {
+                UserDefaults.standard.set(documentInfo, forKey: ASCConstants.SettingsKeys.openedDocument)
+            }
+
+            if #available(iOS 13.0, *) {
+                documentEditorNavigation.modalPresentationStyle = .fullScreen
+            }
+
+            documentEditorNavigation.modalTransitionStyle = .crossDissolve
+            documentEditorNavigation.editorViewLoaded = { [weak navigationView = documentEditorNavigation] in
+                navigationView?.editorController.documentInfo = documentInfo
+            }
+
+            let workDirectory = Path.userAutosavedInformation + file.title + "/"
+            let mediaDirectory = workDirectory + "media"
+
+            ASCLocalFileHelper.shared.removeDirectory(workDirectory)
+            ASCLocalFileHelper.shared.createDirectory(workDirectory)
+            ASCLocalFileHelper.shared.createDirectory(mediaDirectory)
+
+            if workDirectory.exists, mediaDirectory.exists {
+                let document = ASCDocument()
+                document.loader = ASCDocumentLoader(path: workDirectory.rawValue)
+                document.load { _, _, _ in }
+
+                createEditorWindow()?.rootViewController?.present(documentEditorNavigation, animated: true, completion: {
+                    documentEditorNavigation.editorController.delegate = self
+                    documentEditorNavigation.editorController.open(document)
+                    self.openedFile = file
+                    self.provider = ASCFileManager.onlyofficeProvider
+
+                    ASCAnalytics.logEvent(ASCConstants.Analytics.Event.openEditor, parameters: [
+                        ASCAnalytics.Event.Key.portal: OnlyofficeApiClient.shared.baseURL?.absoluteString ?? ASCAnalytics.Event.Value.none,
+                        ASCAnalytics.Event.Key.type: isDocument
+                            ? ASCAnalytics.Event.Value.document
+                            : (isSpreadsheet
+                                ? ASCAnalytics.Event.Value.spreadsheet
+                                : (isPresentation
+                                    ? ASCAnalytics.Event.Value.presentation
+                                    : (isForm
+                                        ? ASCAnalytics.Event.Value.form
+                                        : ASCAnalytics.Event.Value.unknown
+                                    )
+                                )
+                            ),
+                        ASCAnalytics.Event.Key.onDevice: false,
+                        ASCAnalytics.Event.Key.locallyEditing: false,
+                        ASCAnalytics.Event.Key.fileExt: fileExt,
+                        ASCAnalytics.Event.Key.viewMode: viewMode,
+                    ])
+                    handler?(.end, 1, nil, &cancel)
+                })
+            }
+        }
+
+        /// Converting a file to an internal format for opening in an editor
+        /// - Parameters:
+        ///   - file: File object
+        ///   - processing: File convertation process handler
+        private func convertToEdit(file: ASCFile, processing: ASCFileManagerConverterHandler? = nil) {
+            let title = file.title
+            let fileExtension = title.fileExtension().lowercased()
+
+            if !ASCConstants.FileExtensions.allowEdit.contains(fileExtension) {
+                processing?(.error, 1, ASCEditorManagerError(msg: NSLocalizedString("Unsupported format.", comment: "")), nil)
+                return
+            }
+
+            let converter = DocumentLocalConverter()
+
+            converter.fontsPaths = editorFontsPaths
+            converter.dataFontsPath = dataFontsPath
+
+            let outputPath = Path.userAutosavedInformation + title + "/"
+            let tempPath = Path.userTemporary + UUID().uuidString
+
+            do {
+                try outputPath.createDirectory(withIntermediateDirectories: true)
+                try tempPath.createDirectory(withIntermediateDirectories: true)
+            } catch {
+                processing?(.error, 1, ASCEditorManagerError(msg: NSLocalizedString("Couldn't open file", comment: "")), nil)
+                ASCLocalFileHelper.shared.removeDirectory(tempPath)
+                return
+            }
+
+            var conversionDirection = ConversionDirection.CD_ERROR
+
+            switch fileExtension {
+            case "docx", "doc", "rtf", "mht", "html", "htm", "epub", "fb2", "docxf", "oform":
+                conversionDirection = ConversionDirection.CD_DOCX2DOCT_BIN
+            case "xlsx", "xls":
+                conversionDirection = ConversionDirection.CD_XSLX2XSLT_BIN
+            case "pptx", "ppt":
+                conversionDirection = ConversionDirection.CD_PPTX2PPTT_BIN
+            case "csv":
+                conversionDirection = ConversionDirection.CD_CSV2XLST_BIN
+            case "txt":
+                conversionDirection = ConversionDirection.CD_TXT2DOCT_BIN
+            case "odt":
+                conversionDirection = ConversionDirection.CD_ODT2DOCT_BIN
+            case "ods":
+                conversionDirection = ConversionDirection.CD_ODS2XSLT_BIN
+            case "odp":
+                conversionDirection = ConversionDirection.CD_ODP2PPTT_BIN
+            default:
+                conversionDirection = ConversionDirection.CD_ERROR
+            }
+
+            if conversionDirection == ConversionDirection.CD_ERROR {
+                return
+            }
+
+            let options: [AnyHashable: Any] = [
+                "Key": converterKey,
+                "FileData": NSNull(),
+                "FileFrom": file.id,
+                "FileTo": (outputPath + "Editor.bin").rawValue,
+                "ConversionDirection": NSNumber(value: conversionDirection.rawValue),
+                "FontDir": dataFontsPath,
+                "TempDir": tempPath.rawValue,
+                "Async": false,
+                "Password": openedFilePassword,
+                "encoding": encoding ?? 0,
+                "delimiter": delimiter ?? 0,
+            ]
+
+            UserDefaults.standard.set(openedFilePassword, forKey: ASCConstants.SettingsKeys.passwordOpenedDocument)
+
+            if ["csv", "txt"].contains(fileExtension), encoding == nil, delimiter == nil {
+                processing?(.silentError, 0, nil, "")
+
+                alert.isOnlyCodePages = fileExtension == "txt"
+
+                DispatchQueue.main.asyncAfter(deadline: .now() + 0.33) {
+                    self.showConverterOptionsAlertAndEdit(file: file)
+                }
+            } else {
+                converter.options = options
+
+                openedFilePassword = ""
+                encoding = nil
+                delimiter = nil
+            }
+
+            DispatchQueue.global().async {
+                converter.start { [weak self] status, progress, error in
+                    DispatchQueue.main.async {
+                        if status == kDocumentLocalConverterBegin {
+                            processing?(.begin, 0, error, outputPath.rawValue)
+                        } else if status == kDocumentLocalConverterProgress {
+                            processing?(.progress, progress, error, outputPath.rawValue)
+                        } else if status == kDocumentLocalConverterEnd {
+                            processing?(.end, 1, error, outputPath.rawValue)
+                            ASCLocalFileHelper.shared.removeDirectory(tempPath)
+                        } else if status == kDocumentLocalConverterError {
+                            guard let strongSelf = self, let error = error as NSError? else { return }
+
+                            if Int32(error.code) == kErrorPassword || Int32(error.code) == kErrorDRM {
+                                processing?(.silentError, 1, error, outputPath.rawValue)
+                                ASCLocalFileHelper.shared.removeDirectory(tempPath)
+
+                                DispatchQueue.main.asyncAfter(deadline: .now() + 0.33) {
+                                    strongSelf.showInputPasswordAlertAndEdit(file: file)
+                                }
+                            } else {
+                                processing?(.error, 1, error, outputPath.rawValue)
+                                ASCLocalFileHelper.shared.removeDirectory(tempPath)
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        private func convertToSave(
+            file: ASCFile,
+            password: String = "",
+            processing: ASCFileManagerConverterHandler? = nil
+        ) {
+            let title = file.title
+            let fileExtension = title.fileExtension().lowercased()
+
+            if !ASCConstants.FileExtensions.allowEdit.contains(fileExtension) {
+                processing?(.error, 1, ASCEditorManagerError(msg: NSLocalizedString("Unsupported format.", comment: "")), nil)
+                return
+            }
+
+            let converter = DocumentLocalConverter()
+
+            converter.fontsPaths = editorFontsPaths
+            converter.dataFontsPath = dataFontsPath
+
+            let inputPath = Path.userAutosavedInformation + title + "/"
+            let tempPath = Path.userTemporary + UUID().uuidString
+
+            do {
+                try tempPath.createDirectory(withIntermediateDirectories: true)
+            } catch {
+                log.error("Save local file couldn't directory structure")
+            }
+
+            var fileTo = file.id
+
+            var conversionDirection = ConversionDirection.CD_ERROR
+
+            switch fileExtension {
+            case "docx", "docxf", "oform":
+                conversionDirection = ConversionDirection.CD_DOCT_BIN2DOCX
+            case "xlsx":
+                conversionDirection = ConversionDirection.CD_XSLT_BIN2XSLX
+            case "pptx":
+                conversionDirection = ConversionDirection.CD_PPTT_BIN2PPTX
+            case "csv":
+                conversionDirection = ConversionDirection.CD_XSLT_BIN2XSLX
+                fileTo = resolvedFilePath.rawValue
+            case "txt":
+                conversionDirection = ConversionDirection.CD_DOCT_BIN2DOCX
+                fileTo = resolvedFilePath.rawValue
+            case "odt":
+                conversionDirection = ConversionDirection.CD_DOCT_BIN2DOCX
+                fileTo = resolvedFilePath.rawValue
+            case "ods":
+                conversionDirection = ConversionDirection.CD_XSLT_BIN2XSLX
+                fileTo = resolvedFilePath.rawValue
+            case "odp":
+                conversionDirection = ConversionDirection.CD_PPTT_BIN2PPTX
+                fileTo = resolvedFilePath.rawValue
+            case "doc", "rtf", "mht", "html", "htm", "epub", "fb2":
+                conversionDirection = ConversionDirection.CD_DOCT_BIN2DOCX
+                fileTo = resolvedFilePath.rawValue
+            case "xls":
+                conversionDirection = ConversionDirection.CD_XSLT_BIN2XSLX
+                fileTo = resolvedFilePath.rawValue
+            case "ppt":
+                conversionDirection = ConversionDirection.CD_PPTT_BIN2PPTX
+                fileTo = resolvedFilePath.rawValue
+            default:
+                conversionDirection = ConversionDirection.CD_ERROR
+            }
+
+            converter.options = [
+                "Key": converterKey,
+                "FileData": NSNull(),
+                "FileFrom": (inputPath + "Editor.bin").rawValue,
+                "FileTo": fileTo,
+                "ConversionDirection": NSNumber(value: conversionDirection.rawValue),
+                "FontDir": dataFontsPath,
+                "TempDir": tempPath.rawValue,
+                "Async": false,
+                "Password": password,
+                "themesFolder": PEEditorViewController.themesFolder() ?? "",
+            ]
+
+            if !password.isEmpty {
+                UserDefaults.standard.removeObject(forKey: ASCConstants.SettingsKeys.passwordOpenedDocument)
+            }
+
+            DispatchQueue.global().async {
+                converter.start { status, progress, error in
+                    DispatchQueue.main.async {
+                        if status == kDocumentLocalConverterBegin {
+                            processing?(.begin, 0, error, file.id)
+                        } else if status == kDocumentLocalConverterProgress {
+                            processing?(.progress, progress, error, file.id)
+                        } else if status == kDocumentLocalConverterEnd {
+                            processing?(.end, 1, error, file.id)
+                            ASCLocalFileHelper.shared.removeDirectory(tempPath)
+                        } else if status == kDocumentLocalConverterError {
+                            processing?(.error, 1, error, file.id)
+                            ASCLocalFileHelper.shared.removeDirectory(tempPath)
+                        }
+                    }
+                }
+            }
+        }
+
+        private func convertToExport(
+            input path: String,
+            output file: ASCFile,
+            processing: ASCFileManagerConverterHandler? = nil
+        ) {
+            let title = file.title
+            let fileExt = title.fileExtension().lowercased()
+
+            if !ASCConstants.FileExtensions.editorExportFormats.contains(fileExt) {
+                processing?(.error, 1, ASCEditorManagerError(msg: NSLocalizedString("Unsupported format.", comment: "")), nil)
+                return
+            }
+
+            let converter = DocumentLocalConverter()
+
+            converter.fontsPaths = editorFontsPaths
+            converter.dataFontsPath = dataFontsPath
+
+            let inputPath = Path(path)
+            let tempPath = Path.userTemporary + UUID().uuidString
+
+            do {
+                try tempPath.createDirectory(withIntermediateDirectories: true)
+            } catch {
+                log.error("Save local file couldn't directory structure")
+            }
+
+            var conversionDirection = ConversionDirection.CD_ERROR
+
+            switch fileExt {
+            case "docx", "docxf", "oform":
+                conversionDirection = ConversionDirection.CD_DOCT_BIN2DOCX
+            case "xlsx":
+                conversionDirection = ConversionDirection.CD_XSLT_BIN2XSLX
+            case "pptx":
+                conversionDirection = ConversionDirection.CD_PPTT_BIN2PPTX
+            case "odt":
+                conversionDirection = ConversionDirection.CD_DOCT_BIN2ODT
+            case "ods":
+                conversionDirection = ConversionDirection.CD_XSLT_BIN2ODS
+            case "odp":
+                conversionDirection = ConversionDirection.CD_PPTT_BIN2ODP
+            case "dotx":
+                conversionDirection = ConversionDirection.CD_DOCT_BIN2DOTX
+            case "xltx":
+                conversionDirection = ConversionDirection.CD_XSLT_BIN2XLTX
+            case "potx":
+                conversionDirection = ConversionDirection.CD_PPTT_BIN2POTX
+            case "ott":
+                conversionDirection = ConversionDirection.CD_DOCT_BIN2OTT
+            case "ots":
+                conversionDirection = ConversionDirection.CD_XSLT_BIN2OTS
+            case "otp":
+                conversionDirection = ConversionDirection.CD_PPTT_BIN2OTP
+            default:
+                conversionDirection = ConversionDirection.CD_ERROR
+            }
+
+            converter.options = [
+                "Key": converterKey,
+                "FileData": NSNull(),
+                "FileFrom": (inputPath + "Editor.bin").rawValue,
+                "FileTo": file.id,
+                "ConversionDirection": NSNumber(value: conversionDirection.rawValue),
+                "FontDir": dataFontsPath,
+                "TempDir": tempPath.rawValue,
+                "Async": false,
+            ]
+
+            DispatchQueue.global().async {
+                converter.start { status, progress, error in
+                    DispatchQueue.main.async {
+                        if status == kDocumentLocalConverterBegin {
+                            processing?(.begin, 0, error, file.id)
+                        } else if status == kDocumentLocalConverterProgress {
+                            processing?(.progress, progress, error, file.id)
+                        } else if status == kDocumentLocalConverterEnd {
+                            processing?(.end, 1, error, file.id)
+                            ASCLocalFileHelper.shared.removeDirectory(tempPath)
+                        } else if status == kDocumentLocalConverterError {
+                            processing?(.error, 1, error, file.id)
+                            ASCLocalFileHelper.shared.removeDirectory(tempPath)
+                        }
+                    }
+                }
+            }
+        }
+
+        private func openChartEditor(_ controller: DEEditorViewController!, _ chartData: String) {
+            let loader = ASCDocumentLoader(path: "")
+            let document: ASCDocument! = ASCDocument()
+            document.loader = loader
+
+            let documentEditorNavigation = SEEditorNavigationController()
+
+            if let editor = documentEditorNavigation.viewControllers.first as? SEEditorViewController {
+                editor.documentInfo = [
+                    "viewMode": false,
+                    "chartEditor": true,
+                    "chartData": chartData,
+                    "appFonts": editorFontsPaths,
+                    "dataFontsPath": dataFontsPath,
+                ]
+
+                editor.delegate = self
+                editor.editorViewLoaded = { editor.open(document) }
+
+                controller.navigationController?.pushViewController(editor, animated: true)
+            }
+        }
+
+        private func openChartEditor(_ controller: PEEditorViewController!, _ chartData: String) {
+            let loader = ASCDocumentLoader(path: "")
+            let document: ASCDocument! = ASCDocument()
+            document.loader = loader
+
+            let documentEditorNavigation = SEEditorNavigationController()
+
+            if let editor = documentEditorNavigation.viewControllers.first as? SEEditorViewController {
+                editor.documentInfo = [
+                    "viewMode": false,
+                    "chartEditor": true,
+                    "chartData": chartData,
+                    "appFonts": editorFontsPaths,
+                    "dataFontsPath": dataFontsPath,
+                ]
+
+                editor.delegate = self
+                editor.editorViewLoaded = { editor.open(document) }
+
+                controller.navigationController?.pushViewController(editor, animated: true)
+            }
+        }
+
+        /// Methods for converting a file to another format.
+        /// - Parameters:
+        ///   - srcFile: Source file object
+        ///   - dstFile: Destination file object
+        ///   - params: Additional params
+        ///   - processing: File convertation process handler
+        @available(*, deprecated, message: "The method is currently not used.")
+        func convert(
+            from srcFile: ASCFile,
+            to dstFile: ASCFile,
+            params: [String: Any]? = nil,
+            processing: ASCFileManagerConverterHandler? = nil
+        ) {
+            let srcExtension = srcFile.title.fileExtension().lowercased()
+            let dstExtension = dstFile.title.fileExtension().lowercased()
+
+            if !ASCConstants.FileExtensions.allowEdit.contains(srcExtension) {
+                processing?(.error, 1, ASCEditorManagerError(msg: NSLocalizedString("Unsupported format.", comment: "")), nil)
+                return
+            }
+
+            let converter = DocumentLocalConverter()
+
+            converter.fontsPaths = editorFontsPaths
+            converter.dataFontsPath = dataFontsPath
+
+            let tempPath = Path.userTemporary + UUID().uuidString
+
+            var options: [String: Any] = [:]
+
+            var conversionDirection = ConversionDirection.CD_ERROR
+
+            if srcExtension == "docx" {
+                if dstExtension == "odt" {
+                    conversionDirection = ConversionDirection.CD_DOCXODT
+                }
+            } else if srcExtension == "xlsx" {
+                if dstExtension == "ods" {
+                    conversionDirection = ConversionDirection.CD_XLSXODS
+                }
+            } else if srcExtension == "pptx" {
+                if dstExtension == "odp" {
+                    conversionDirection = ConversionDirection.CD_PPTXODP
+                }
+            } else if srcExtension == "odt" {
+                if dstExtension == "docx" {
+                    conversionDirection = ConversionDirection.CD_ODTDOCX
+                }
+            } else if srcExtension == "ods" {
+                if dstExtension == "xlsx" {
+                    conversionDirection = ConversionDirection.CD_ODSXLSX
+                }
+            } else if srcExtension == "odp" {
+                if dstExtension == "pptx" {
+                    conversionDirection = ConversionDirection.CD_ODPPPTX
+                }
+            } else if srcExtension == "csv" {
+                if dstExtension == "xlsx" {
+                    conversionDirection = ConversionDirection.CD_CSV2XLSX
+
+                    if let params = params,
+                       let encoding = params["encoding"] as? Int,
+                       let delimiter = params["delimiter"] as? Int
+                    {
+                        options += [
+                            "encoding": encoding,
+                            "delimiter": delimiter,
+                        ]
+                    } else {
+                        processing?(.silentError, 1, ASCEditorManagerError(msg: NSLocalizedString("Needs additional params.", comment: ""), type: .warning), nil)
+                        return
+                    }
+                }
+            } else if srcExtension == "txt" {
+                conversionDirection = ConversionDirection.CD_TXT2DOCX
+
+                if let params = params,
+                   let encoding = params["encoding"] as? Int
+                {
+                    options += [
+                        "encoding": encoding,
+                    ]
+                } else {
+                    processing?(.silentError, 1, ASCEditorManagerError(msg: NSLocalizedString("Needs additional params.", comment: ""), type: .warning), nil)
+                    return
+                }
+            }
+
+            if conversionDirection == ConversionDirection.CD_ERROR {
+                processing?(.error, 1, ASCEditorManagerError(msg: NSLocalizedString("Unsupported format.", comment: "")), nil)
+                return
+            }
+
+            // Has password
+            if let params = params, let password = params["password"] {
+                options += [
+                    "Password": password,
+                ]
+            }
+
+            options += [
+                "Key": converterKey,
+                "FileData": NSNull(),
+                "FileFrom": srcFile.id,
+                "FileTo": dstFile.id,
+                "ConversionDirection": NSNumber(value: conversionDirection.rawValue),
+                "FontDir": dataFontsPath,
+                "TempDir": tempPath.rawValue,
+                "Async": false,
+            ]
+
+            DispatchQueue.global().async {
+                converter.start { status, progress, error in
+                    DispatchQueue.main.async {
+                        if status == kDocumentLocalConverterBegin {
+                            processing?(.begin, 0, error, dstFile.id)
+                        } else if status == kDocumentLocalConverterProgress {
+                            processing?(.progress, progress, error, dstFile.id)
+                        } else if status == kDocumentLocalConverterEnd {
+                            processing?(.end, 1, error, dstFile.id)
+                            ASCLocalFileHelper.shared.removeDirectory(tempPath)
+                        } else if status == kDocumentLocalConverterError {
+                            if let error = error as NSError?, Int32(error.code) == kErrorPassword || Int32(error.code) == kErrorDRM {
+                                processing?(.silentError, 1, error, dstFile.id)
+                            } else {
+                                processing?(.error, 1, error, dstFile.id)
+                            }
+                            ASCLocalFileHelper.shared.removeDirectory(tempPath)
+                        }
+                    }
+                }
+            }
+        }
+
+        /// Version of local converter
+        /// - Returns: Array of numbers of version
+        func localSDKVersion() -> [String] {
+            if let sdkVersion = DocumentEditor.DEEditorViewController().sdkVersion() {
+                log.info("SDK Version:", sdkVersion)
+                return sdkVersion.components(separatedBy: ".")
+            }
+            return []
+        }
+
+        func showConverterOptionsAlert(handler: @escaping (_ encoding: Int, _ delimiter: Int) -> Void) {
+            alert.show { encoding, delimiter in
+                handler(encoding, delimiter)
+            }
+        }
+
+        func showConverterOptionsAlertAndEdit(file: ASCFile) {
+            showConverterOptionsAlert { [weak self] encoding, delimiter in
+                guard let strongSelf = self else { return }
+
+                var documentsVC: ASCDocumentsViewController?
+
+                if let splitVC = UIApplication.topViewController() as? ASCBaseSplitViewController {
+                    if splitVC.viewControllers.count > 1 {
+                        if let documentsNC = splitVC.viewControllers.last as? ASCDocumentsNavigationController {
+                            documentsVC = documentsNC.viewControllers.first as? ASCDocumentsViewController
+                        }
+                    } else {
+                        if let documentsNC = splitVC.viewControllers.first as? ASCBaseNavigationController {
+                            documentsVC = documentsNC.viewControllers.last as? ASCDocumentsViewController
+                        }
+                    }
+
+                    if let documentsVC = documentsVC {
+                        let openHandler = documentsVC.openProgress(file: file, title: NSLocalizedString("Processing", comment: "Caption of the processing") + "...", 0.15)
+                        let closeHandler = documentsVC.closeProgress(file: file, title: NSLocalizedString("Saving", comment: "Caption of the processing"))
+
+                        strongSelf.encoding = encoding
+                        strongSelf.delimiter = delimiter + 1
+
+                        strongSelf.editLocal(file, viewMode: strongSelf.openedFileInViewMode, openHandler: openHandler, closeHandler: closeHandler)
+                    }
+                }
+            }
+        }
+
+    #else
+
+        private func prepareFonts() {
+            log.info("Prepare application fonts cache is not supported")
+        }
+
+        /// Open local file
+        /// - Parameters:
+        ///   - file: The file object located on the device
+        ///   - viewMode: Open in preview mode
+        ///   - autosave: Autosave
+        ///   - locallyEditing: Local editing of an external file
+        ///   - handler: File open process handler
+        func openEditorLocal(
+            file: ASCFile,
+            viewMode: Bool = false,
+            autosave: Bool = false,
+            locallyEditing: Bool = false,
+            handler: ASCEditorManagerOpenHandler? = nil
+        ) {
+            var cancel = false
+            handler?(.error, 1, ASCEditorManagerError(msg: NSLocalizedString("The ONLYOFFICE Editors module is missing. Please contact support@onlyoffice.com for more information.", comment: "")), &cancel)
+        }
+
+        /// Open file from Document Server in collaboration mode
+        /// - Parameters:
+        ///   - file: The file object
+        ///   - viewMode: Force open in view mode
+        ///   - handler: File open process handler
+        func openEditorInCollaboration(
+            file: ASCFile,
+            viewMode: Bool = false,
+            handler: ASCEditorManagerOpenHandler? = nil
+        ) {
+            var cancel = false
+            handler?(.error, 1, ASCEditorManagerError(msg: NSLocalizedString("The ONLYOFFICE Editors module is missing. Please contact support@onlyoffice.com for more information.", comment: "")), &cancel)
+        }
+
+        /// Converting a file to an internal format for opening in an editor
+        /// - Parameters:
+        ///   - file: File object
+        ///   - processing: File convertation process handler
+        private func convertToEdit(file: ASCFile, processing: ASCFileManagerConverterHandler? = nil) {
+            processing?(.error, 1, ASCEditorManagerError(msg: NSLocalizedString("The ONLYOFFICE Editors module is missing. Please contact support@onlyoffice.com for more information.", comment: "")), nil)
+        }
+
+        /// Version of local converter
+        /// - Returns: Array of numbers of version
+        func localSDKVersion() -> [String] {
+            return ["0", "0", "0"]
+        }
+
+    #endif
+}
+
+#if !NO_EDITORS
+
+    // MARK: - Private
+
+    extension ASCEditorManager {
+        private let alert = ASCConverterOptionsAlert()
+    }
+
+    // MARK: - DEEditorDelegate
+
+    extension ASCEditorManager: DEEditorDelegate {
+        func documentLoading(_ controller: DEEditorViewController!, progress value: CGFloat) {
+            log.info("DEEditorDelegate:documentLoading \(value)")
+
+            if let file = openedFile, !file.device {
+                OnlyofficeApiClient.request(OnlyofficeAPI.Endpoints.Files.startEdit(file: file)) { response, error in
+                    if let error = error {
+                        log.error(error)
+                    }
+                }
+            }
+        }
+
+        func documentWorkCompleted(_ controller: DEEditorViewController!, document: DEDocument!) {
+            log.info("DEEditorDelegate:documentWorkCompleted")
+
+            cleanupEditorWindow()
+
+            if let file = openedFile {
+                var cancel = false
+
+                if file.device {
+                    if document != nil {
+                        /// Document changed
+
+                        if openedlocallyFile == nil, openedCopy {
+                            let copyFile = Path.userDocuments + Path(file.id).fileName
+                            guard let dstPath = ASCLocalFileHelper.shared.resolve(filePath: copyFile) else {
+                                closeHandler?(.error, 1, nil, nil, &cancel)
+                                return
+                            }
+
+                            file.id = dstPath.rawValue
+
+                        } else {
+                            let fileExtension = file.title.fileExtension().lowercased()
+                            if !ASCConstants.FileExtensions.editorImportDocuments.contains(fileExtension) {
+                                /// Store original
+                                _ = ASCLocalFileHelper.shared.move(from: Path(file.id), to: Path.userTemporary + file.title)
+                            } else {
+                                let fileTo = Path(Path(file.id).url.deletingPathExtension().path + ".docx")
+                                guard let filePath = ASCLocalFileHelper.shared.resolve(filePath: fileTo) else {
+                                    closeHandler?(.error, 1, nil, nil, &cancel)
+                                    return
+                                }
+
+                                resolvedFilePath = filePath
+                            }
+                        }
+
+                        convertToSave(file: file, password: document.password, processing: { status, progress, error, outputPath in
+                            if status == .begin {
+                                self.closeHandler?(.begin, 0, file, error, &cancel)
+                            } else if status == .progress {
+                                self.closeHandler?(.progress, progress, file, error, &cancel)
+                            } else if status == .end {
+                                let filePath = Path(file.id)
+
+                                if let openedlocallyFile = self.openedlocallyFile, let provider = self.provider
+                                {
+                                    // File is not original
+                                    let fileExtension = file.title.fileExtension().lowercased()
+                                    if ASCConstants.FileExtensions.editorImportDocuments.contains(fileExtension) {
+                                        file.title = file.title.fileName() + ".docx"
+                                        file.id = self.resolvedFilePath.rawValue
+                                    }
+
+                                    ASCEntityManager.shared.uploadEdit(
+                                        for: provider,
+                                        file: file,
+                                        originalFile: openedlocallyFile,
+                                        handler:
+                                        { [unowned self] status, progress, result, error, cancel in
+                                            if status == .begin {
+                                                self.closeHandler?(.begin, 0, file, nil, &cancel)
+                                            } else if status == .progress {
+                                                self.closeHandler?(.progress, progress, file, nil, &cancel)
+                                            } else if status == .end || status == .error {
+                                                if status == .end {
+                                                    if let resultFile = result as? ASCFile {
+                                                        self.closeHandler?(.end, 1, resultFile, nil, &cancel)
+                                                    } else {
+                                                        self.closeHandler?(.end, 1, file, nil, &cancel)
+                                                    }
+                                                } else {
+                                                    self.closeHandler?(.error, 1, file, nil, &cancel)
+                                                }
+                                                self.stopLocallyEditing()
+
+                                                // Store backup
+                                                if status == .error {
+                                                    // Backup on Device file
+                                                    let dateFormatter = DateFormatter()
+                                                    dateFormatter.dateFormat = "yyyyMMddHHmmss"
+
+                                                    let nowString = dateFormatter.string(from: Date())
+                                                    let backupPath = Path.userDocuments + Path("\(file.title.fileName())-Backup-\(nowString).\(file.title.fileExtension())")
+
+                                                    ASCLocalFileHelper.shared.copy(from: filePath,
+                                                                                   to: backupPath)
+                                                }
+
+                                                let lastTempFile = Path.userTemporary + file.title
+                                                let autosaveFile = Path.userAutosavedInformation + file.title
+
+                                                // Remove autosave
+                                                ASCLocalFileHelper.shared.removeDirectory(lastTempFile)
+
+                                                // Remove original
+                                                ASCLocalFileHelper.shared.removeFile(autosaveFile)
+
+                                                UserDefaults.standard.removeObject(forKey: ASCConstants.SettingsKeys.openedDocument)
+                                                UserDefaults.standard.removeObject(forKey: ASCConstants.SettingsKeys.passwordOpenedDocument)
+                                            }
+                                        }
+                                    )
+
+                                } else {
+                                    let owner = ASCUser()
+                                    owner.displayName = UIDevice.displayName
+
+                                    let file = ASCFile()
+                                    file.id = filePath.rawValue
+                                    file.rootFolderType = .deviceDocuments
+                                    file.title = filePath.fileName
+                                    file.created = filePath.creationDate
+                                    file.updated = filePath.modificationDate
+                                    file.createdBy = owner
+                                    file.updatedBy = owner
+                                    file.device = true
+                                    file.displayContentLength = String.fileSizeToString(with: filePath.fileSize ?? 0)
+                                    file.pureContentLength = Int(filePath.fileSize ?? 0)
+
+                                    let fileExtension = file.title.fileExtension().lowercased()
+                                    if ASCConstants.FileExtensions.editorImportDocuments.contains(fileExtension) {
+                                        file.id = self.resolvedFilePath.rawValue
+                                        file.title = file.title.fileName() + ".docx"
+
+                                        let newFilePath = Path(file.id)
+                                        file.created = newFilePath.creationDate
+                                        file.updated = newFilePath.modificationDate
+                                        file.displayContentLength = String.fileSizeToString(with: newFilePath.fileSize ?? 0)
+                                        file.pureContentLength = Int(newFilePath.fileSize ?? 0)
+                                    }
+
+                                    self.closeHandler?(.end, 1, file, nil, &cancel)
+
+                                    // Remove autosave
+                                    ASCLocalFileHelper.shared.removeDirectory(Path.userTemporary + file.title)
+
+                                    // Remove original
+                                    ASCLocalFileHelper.shared.removeFile(Path.userAutosavedInformation + file.title)
+
+                                    UserDefaults.standard.removeObject(forKey: ASCConstants.SettingsKeys.openedDocument)
+                                    UserDefaults.standard.removeObject(forKey: ASCConstants.SettingsKeys.passwordOpenedDocument)
+                                }
+
+                            } else if status == .error {
+                                self.closeHandler?(.error, 1, file, error, &cancel)
+
+                                // Remove autosave
+                                ASCLocalFileHelper.shared.removeDirectory(Path.userAutosavedInformation + file.title)
+
+                                // Restore original
+                                _ = ASCLocalFileHelper.shared.move(from: Path.userTemporary + file.title, to: Path(file.id))
+
+                                UserDefaults.standard.removeObject(forKey: ASCConstants.SettingsKeys.openedDocument)
+                                UserDefaults.standard.removeObject(forKey: ASCConstants.SettingsKeys.passwordOpenedDocument)
+                            }
+                        })
+                    } else {
+                        stopLocallyEditing()
+
+                        // No changes
+                        ASCLocalFileHelper.shared.removeDirectory(Path.userAutosavedInformation + file.title)
+                        closeHandler?(.end, 1, nil, nil, &cancel)
+
+                        UserDefaults.standard.removeObject(forKey: ASCConstants.SettingsKeys.openedDocument)
+                        UserDefaults.standard.removeObject(forKey: ASCConstants.SettingsKeys.passwordOpenedDocument)
+                    }
+                } else {
+                    if let closeHandler = closeHandler {
+                        closeHandler(.begin, 0, file, nil, &cancel)
+
+                        ASCLocalFileHelper.shared.removeDirectory(Path.userAutosavedInformation + file.title)
+                        UserDefaults.standard.removeObject(forKey: ASCConstants.SettingsKeys.openedDocument)
+                        UserDefaults.standard.removeObject(forKey: ASCConstants.SettingsKeys.passwordOpenedDocument)
+
+                        OnlyofficeApiClient.request(OnlyofficeAPI.Endpoints.Files.info(file: file)) { response, error in
+                            if let newFile = response?.result {
+                                closeHandler(.end, 1, newFile, nil, &cancel)
+                            } else {
+                                closeHandler(.error, 1, file, error, &cancel)
+                            }
+                        }
+                    }
+                }
+
+                openedFile = nil
+            }
+        }
+
+        func documentExport(_ controller: DEEditorViewController!, document: DEDocument!, format: String!, processing: DEDocumentConverting!) {
+            log.info("DEEditorDelegate:documentExport")
+
+            if let file = openedFile {
+                let tempExportPath = Path.userTemporary + UUID().uuidString
+
+                let exportFile = ASCFile()
+                exportFile.title = file.title.fileName() + "." + format
+                exportFile.id = (tempExportPath + exportFile.title).rawValue
+
+                do {
+                    try tempExportPath.createDirectory(withIntermediateDirectories: true)
+                } catch {
+                    log.error("Export file couldn't create directory structure")
+                }
+
+                convertToExport(input: document.path, output: exportFile, processing: { status, progress, error, outputPath in
+                    if status == .begin {
+                        processing("begin", 0, nil, nil)
+                    } else if status == .progress {
+                        processing("progress", progress, nil, nil)
+                    } else if status == .end {
+                        processing("end", 1, nil, exportFile.id)
+                    } else if status == .error {
+                        processing("error", 1, ASCEditorManagerError(msg: NSLocalizedString("Could not convert file to export.", comment: "")), nil)
+                    }
+                })
+            }
+        }
+
+        func documentBackup(_ controller: DEEditorViewController!, document: DEDocument!) {
+            log.info("DEEditorDelegate:documentBackup")
+
+            if controller.isDocumentModifity {
+                UserDefaults.standard.set(true, forKey: ASCConstants.SettingsKeys.openedDocumentModifity)
+            }
+        }
+
+        func documentChartData(_ controller: DEEditorViewController!, data: String!) {
+            openChartEditor(controller, data)
+        }
+
+        func documentEditorSettings(_ controller: DEEditorViewController!) -> [AnyHashable: Any]! {
+            setenv("APPLICATION_NAME", ASCConstants.Name.appNameShort, 1)
+            setenv("COMPANY_NAME", ASCConstants.Name.copyright, 1)
+
+            return [
+                "asc.de.external.appname": ASCConstants.Name.appNameShort,
+                "asc.de.external.helpurl": "https://helpcenter.onlyoffice.com/%@%@mobile-applications/documents/document-editor/index.aspx",
+                "asc.de.external.page.formats": [
+                    [
+                        "description": "A6",
+                        "size": "10.5 x 14.8",
+                        "value": [105, 148], // 105 × 148
+                    ], [
+                        "description": "A2",
+                        "size": "42 x 59.4",
+                        "value": [420, 594], // 420 × 594
+                    ], [
+                        "description": "A1",
+                        "size": "59.4 x 84.1",
+                        "value": [594, 841], // 594 × 841
+                    ], [
+                        "description": "A0",
+                        "size": "84.1 x 118.9",
+                        "value": [841, 1189], // 841 × 1189
+                    ],
+                ],
+            ]
+        }
+
+        func documentShare(_ complation: DEDocumentShareComplate!) {
+            if let file = openedFile {
+                shareHandler?(file)
+            }
+        }
+
+        func documentFavorite(_ favorite: Bool, complation: DEDocumentFavoriteComplate!) {
+            if let file = openedFile, let _ = favoriteHandler {
+                favoriteHandler?(file) { favorite in
+                    self.openedFile?.isFavorite = favorite
+                    complation(favorite)
+                }
+            }
+        }
+    }
+
+    // MARK: - SEEditorDelegate
+
+    extension ASCEditorManager: SEEditorDelegate {
+        func spreadsheetLoading(_ controller: SEEditorViewController!, progress value: CGFloat) {
+            log.info("SEEditorDelegate:documentLoading \(value)")
+
+            if let file = openedFile, !file.device {
+                OnlyofficeApiClient.request(OnlyofficeAPI.Endpoints.Files.startEdit(file: file)) { response, error in
+                    if let error = error {
+                        log.error(error)
+                    }
+                }
+            }
+        }
+
+        func spreadsheetWorkCompleted(_ controller: SEEditorViewController!, document: SEDocument!) {
+            log.info("SEEditorDelegate:documentWorkCompleted")
+
+            cleanupEditorWindow()
+
+            if let file = openedFile {
+                var cancel = false
+
+                if file.device {
+                    // Save changes
+                    if document != nil {
+                        if openedlocallyFile == nil, openedCopy {
+                            let copyFile = Path.userDocuments + Path(file.id).fileName
+                            guard let dstPath = ASCLocalFileHelper.shared.resolve(filePath: copyFile) else {
+                                closeHandler?(.error, 1, nil, nil, &cancel)
+                                return
+                            }
+
+                            file.id = dstPath.rawValue
+
+                        } else {
+                            let fileExtension = file.title.fileExtension().lowercased()
+                            if !ASCConstants.FileExtensions.editorImportSpreadsheets.contains(fileExtension) {
+                                // Store original
+                                _ = ASCLocalFileHelper.shared.move(from: Path(file.id), to: Path.userTemporary + file.title)
+                            } else {
+                                let fileTo = Path(Path(file.id).url.deletingPathExtension().path + ".xlsx")
+                                guard let filePath = ASCLocalFileHelper.shared.resolve(filePath: fileTo) else {
+                                    closeHandler?(.error, 1, nil, nil, &cancel)
+                                    return
+                                }
+
+                                resolvedFilePath = filePath
+                            }
+                        }
+
+                        convertToSave(file: file, password: document.password, processing: { status, progress, error, outputPath in
+                            if status == .begin {
+                                self.closeHandler?(.begin, 0, file, error, &cancel)
+                            } else if status == .progress {
+                                self.closeHandler?(.progress, progress, file, error, &cancel)
+                            } else if status == .end {
+                                let filePath = Path(file.id)
+
+                                if let openedlocallyFile = self.openedlocallyFile, let provider = self.provider {
+                                    // File is not original
+                                    let fileExtension = file.title.fileExtension().lowercased()
+                                    if ASCConstants.FileExtensions.editorImportSpreadsheets.contains(fileExtension) {
+                                        file.title = file.title.fileName() + ".xlsx"
+                                        file.id = self.resolvedFilePath.rawValue
+                                    }
+
+                                    ASCEntityManager.shared.uploadEdit(
+                                        for: provider,
+                                        file: file,
+                                        originalFile: openedlocallyFile,
+                                        handler:
+                                        { [unowned self] status, progress, result, error, cancel in
+                                            if status == .begin {
+                                                self.closeHandler?(.begin, 0, file, nil, &cancel)
+                                            } else if status == .progress {
+                                                self.closeHandler?(.progress, progress, file, nil, &cancel)
+                                            } else if status == .end || status == .error {
+                                                if status == .end {
+                                                    if let resultFile = result as? ASCFile {
+                                                        self.closeHandler?(.end, 1, resultFile, nil, &cancel)
+                                                    } else {
+                                                        self.closeHandler?(.end, 1, file, nil, &cancel)
+                                                    }
+                                                } else {
+                                                    self.closeHandler?(.error, 1, file, nil, &cancel)
+                                                }
+                                                self.stopLocallyEditing()
+
+                                                // Store backup
+                                                if status == .error {
+                                                    // Backup on Device file
+                                                    let dateFormatter = DateFormatter()
+                                                    dateFormatter.dateFormat = "yyyyMMddHHmmss"
+
+                                                    let nowString = dateFormatter.string(from: Date())
+                                                    let backupPath = Path.userDocuments + Path("\(file.title.fileName())-Backup-\(nowString).\(file.title.fileExtension())")
+
+                                                    ASCLocalFileHelper.shared.copy(from: filePath,
+                                                                                   to: backupPath)
+                                                }
+
+                                                let lastTempFile = Path.userTemporary + file.title
+                                                let autosaveFile = Path.userAutosavedInformation + file.title
+
+                                                // Remove autosave
+                                                ASCLocalFileHelper.shared.removeDirectory(lastTempFile)
+
+                                                // Remove original
+                                                ASCLocalFileHelper.shared.removeFile(autosaveFile)
+
+                                                UserDefaults.standard.removeObject(forKey: ASCConstants.SettingsKeys.openedDocument)
+                                                UserDefaults.standard.removeObject(forKey: ASCConstants.SettingsKeys.passwordOpenedDocument)
+                                            }
+                                        }
+                                    )
+
+                                } else {
+                                    let owner = ASCUser()
+                                    owner.displayName = UIDevice.displayName
+
+                                    let file = ASCFile()
+                                    file.id = filePath.rawValue
+                                    file.rootFolderType = .deviceDocuments
+                                    file.title = filePath.fileName
+                                    file.created = filePath.creationDate
+                                    file.updated = filePath.modificationDate
+                                    file.createdBy = owner
+                                    file.updatedBy = owner
+                                    file.device = true
+                                    file.displayContentLength = String.fileSizeToString(with: filePath.fileSize ?? 0)
+                                    file.pureContentLength = Int(filePath.fileSize ?? 0)
+
+                                    let lastTempFile = Path.userTemporary + file.title
+                                    let autosaveFile = Path.userAutosavedInformation + file.title
+                                    let fileExtension = file.title.fileExtension().lowercased()
+
+                                    if ASCConstants.FileExtensions.editorImportSpreadsheets.contains(fileExtension) {
+                                        file.id = self.resolvedFilePath.rawValue
+                                        file.title = file.title.fileName() + ".xlsx"
+
+                                        let newFilePath = Path(file.id)
+                                        file.created = newFilePath.creationDate
+                                        file.updated = newFilePath.modificationDate
+                                        file.displayContentLength = String.fileSizeToString(with: newFilePath.fileSize ?? 0)
+                                        file.pureContentLength = Int(newFilePath.fileSize ?? 0)
+                                    }
+
+                                    self.closeHandler?(.end, 1, file, nil, &cancel)
+
+                                    // Remove autosave
+                                    ASCLocalFileHelper.shared.removeDirectory(lastTempFile)
+
+                                    // Remove original
+                                    ASCLocalFileHelper.shared.removeFile(autosaveFile)
+
+                                    UserDefaults.standard.removeObject(forKey: ASCConstants.SettingsKeys.openedDocument)
+                                    UserDefaults.standard.removeObject(forKey: ASCConstants.SettingsKeys.passwordOpenedDocument)
+                                }
+
+                            } else if status == .error {
+                                self.closeHandler?(.error, 1, file, error, &cancel)
+
+                                // Remove autosave
+                                ASCLocalFileHelper.shared.removeDirectory(Path.userAutosavedInformation + file.title)
+
+                                // Restore original
+                                _ = ASCLocalFileHelper.shared.move(from: Path.userTemporary + file.title, to: Path(file.id))
+
+                                UserDefaults.standard.removeObject(forKey: ASCConstants.SettingsKeys.openedDocument)
+                                UserDefaults.standard.removeObject(forKey: ASCConstants.SettingsKeys.passwordOpenedDocument)
+                            }
+                        })
+                    } else {
+                        stopLocallyEditing()
+
+                        // Don't save changes
+                        ASCLocalFileHelper.shared.removeDirectory(Path.userAutosavedInformation + file.title)
+                        closeHandler?(.end, 1, nil, nil, &cancel)
+
+                        UserDefaults.standard.removeObject(forKey: ASCConstants.SettingsKeys.openedDocument)
+                        UserDefaults.standard.removeObject(forKey: ASCConstants.SettingsKeys.passwordOpenedDocument)
+                    }
+                } else {
+                    if let closeHandler = closeHandler {
+                        closeHandler(.begin, 0, file, nil, &cancel)
+
+                        UserDefaults.standard.removeObject(forKey: ASCConstants.SettingsKeys.openedDocument)
+                        ASCLocalFileHelper.shared.removeDirectory(Path.userAutosavedInformation + file.title)
+
+                        OnlyofficeApiClient.request(OnlyofficeAPI.Endpoints.Files.info(file: file)) { response, error in
+                            if let newFile = response?.result {
+                                closeHandler(.end, 1, newFile, nil, &cancel)
+                            } else {
+                                closeHandler(.error, 1, file, error, &cancel)
+                            }
+                        }
+                    }
+                }
+
+                openedFile = nil
+            }
+        }
+
+        func spreadsheetExport(_ controller: SEEditorViewController!, document: SEDocument!, format: String!, processing: SEDocumentConverting!) {
+            log.info("SEEditorDelegate:documentExport")
+
+            if let file = openedFile {
+                let tempExportPath = Path.userTemporary + UUID().uuidString
+
+                let exportFile = ASCFile()
+                exportFile.title = file.title.fileName() + "." + format
+                exportFile.id = (tempExportPath + exportFile.title).rawValue
+
+                do {
+                    try tempExportPath.createDirectory(withIntermediateDirectories: true)
+                } catch {
+                    log.error("Export file couldn't create directory structure")
+                }
+
+                convertToExport(input: document.path, output: exportFile, processing: { status, progress, error, outputPath in
+                    if status == .begin {
+                        processing("begin", 0, nil, nil)
+                    } else if status == .progress {
+                        processing("progress", progress, nil, nil)
+                    } else if status == .end {
+                        processing("end", 1, nil, exportFile.id)
+                    } else if status == .error {
+                        processing("error", 1, ASCEditorManagerError(msg: NSLocalizedString("Could not convert file to export.", comment: "")), nil)
+                    }
+                })
+            }
+        }
+
+        func spreadsheetBackup(_ controller: SEEditorViewController!, document: SEDocument!) {
+            if controller.isDocumentModifity {
+                UserDefaults.standard.set(true, forKey: ASCConstants.SettingsKeys.openedDocumentModifity)
+            }
+        }
+
+        func spreadsheetChartData(_ controller: SEEditorViewController!, data: String!) {
+            if let n = controller.navigationController {
+                if let documentController = n.viewControllers[0] as? DEEditorViewController {
+                    documentController.setChartData(data)
+                }
+                if let documentController = n.viewControllers[0] as? PEEditorViewController {
+                    documentController.setChartData(data)
+                }
+            }
+        }
+
+        func spreadsheetEditorSettings(_ controller: SEEditorViewController!) -> [AnyHashable: Any]! {
+            setenv("APPLICATION_NAME", ASCConstants.Name.appNameShort, 1)
+            setenv("COMPANY_NAME", ASCConstants.Name.copyright, 1)
+
+            let shortCm = NSLocalizedString("cm", comment: "Cut from centimeters")
+            return [
+                "asc.se.external.appname": ASCConstants.Name.appNameShort,
+                "asc.se.external.helpurl": "https://helpcenter.onlyoffice.com/%@%@mobile-applications/documents/spreadsheet-editor/index.aspx",
+                "asc.se.external.page.formats": [
+                    [
+                        "width": 105,
+                        "height": 148,
+                        "display": String(format: NSLocalizedString("A6 (10,5%@ x 14,8%@)", comment: "Format info"), shortCm, shortCm),
+                    ], [
+                        "width": 420,
+                        "height": 594,
+                        "display": String(format: NSLocalizedString("A2 (42%@ x 59,4%@)", comment: "Format info"), shortCm, shortCm),
+                    ], [
+                        "width": 594,
+                        "height": 841,
+                        "display": String(format: NSLocalizedString("A1 (59,4%@ x 84,1%@)", comment: "Format info"), shortCm, shortCm),
+                    ], [
+                        "width": 841,
+                        "height": 1189,
+                        "display": String(format: NSLocalizedString("A0 (84,1%@ x 119,9%@)", comment: "Format info"), shortCm, shortCm),
+                    ],
+                ],
+            ]
+        }
+
+        func spreadsheetShare(_ complation: SEDocumentShareComplate!) {
+            if let file = openedFile {
+                shareHandler?(file)
+            }
+        }
+
+        func spreadsheetFavorite(_ favorite: Bool, complation: SEDocumentFavoriteComplate!) {
+            if let file = openedFile, let _ = favoriteHandler {
+                favoriteHandler?(file) { favorite in
+                    self.openedFile?.isFavorite = favorite
+                    complation(favorite)
+                }
+            }
+        }
+    }
+
+    // MARK: - PEEditorDelegate
+
+    extension ASCEditorManager: PEEditorDelegate {
+        func presentationLoading(_ controller: PEEditorViewController!, progress value: CGFloat) {
+            log.info("PEEditorDelegate:documentLoading \(value)")
+
+            if let file = openedFile, !file.device {
+                OnlyofficeApiClient.request(OnlyofficeAPI.Endpoints.Files.startEdit(file: file)) { response, error in
+                    if let error = error {
+                        log.error(error)
+                    }
+                }
+            }
+        }
+
+        func presentationWorkCompleted(_ controller: PEEditorViewController!, document: PEDocument!) {
+            log.info("PEEditorDelegate:documentWorkCompleted")
+
+            cleanupEditorWindow()
+
+            if let file = openedFile {
+                var cancel = false
+
+                if file.device {
+                    // Save changes
+                    if document != nil {
+                        if openedlocallyFile == nil, openedCopy {
+                            let copyFile = Path.userDocuments + Path(file.id).fileName
+                            guard let dstPath = ASCLocalFileHelper.shared.resolve(filePath: copyFile) else {
+                                closeHandler?(.error, 1, nil, nil, &cancel)
+                                return
+                            }
+
+                            file.id = dstPath.rawValue
+
+                        } else {
+                            let fileExtension = file.title.fileExtension().lowercased()
+                            if !ASCConstants.FileExtensions.editorImportPresentations.contains(fileExtension) {
+                                // Store original
+                                _ = ASCLocalFileHelper.shared.move(from: Path(file.id), to: Path.userTemporary + file.title)
+                            } else {
+                                let fileTo = Path(Path(file.id).url.deletingPathExtension().path + ".pptx")
+                                guard let filePath = ASCLocalFileHelper.shared.resolve(filePath: fileTo) else {
+                                    closeHandler?(.error, 1, nil, nil, &cancel)
+                                    return
+                                }
+
+                                resolvedFilePath = filePath
+                            }
+                        }
+
+                        convertToSave(file: file, password: document.password, processing: { status, progress, error, outputPath in
+                            if status == .begin {
+                                self.closeHandler?(.begin, 0, file, error, &cancel)
+                            } else if status == .progress {
+                                self.closeHandler?(.progress, progress, file, error, &cancel)
+                            } else if status == .end {
+                                let filePath = Path(file.id)
+
+                                if let openedlocallyFile = self.openedlocallyFile, let provider = self.provider {
+                                    // File is not original
+                                    let fileExtension = file.title.fileExtension().lowercased()
+                                    if ASCConstants.FileExtensions.editorImportPresentations.contains(fileExtension) {
+                                        file.title = file.title.fileName() + ".pptx"
+                                        file.id = self.resolvedFilePath.rawValue
+                                    }
+
+                                    ASCEntityManager.shared.uploadEdit(
+                                        for: provider,
+                                        file: file,
+                                        originalFile: openedlocallyFile,
+                                        handler:
+                                        { [unowned self] status, progress, result, error, cancel in
+                                            if status == .begin {
+                                                self.closeHandler?(.begin, 0, file, nil, &cancel)
+                                            } else if status == .progress {
+                                                self.closeHandler?(.progress, progress, file, nil, &cancel)
+                                            } else if status == .end || status == .error {
+                                                if status == .end {
+                                                    if let resultFile = result as? ASCFile {
+                                                        self.closeHandler?(.end, 1, resultFile, nil, &cancel)
+                                                    } else {
+                                                        self.closeHandler?(.end, 1, file, nil, &cancel)
+                                                    }
+                                                } else {
+                                                    self.closeHandler?(.error, 1, file, nil, &cancel)
+                                                }
+                                                self.stopLocallyEditing()
+
+                                                // Store backup
+                                                if status == .error {
+                                                    // Backup on Device file
+                                                    let dateFormatter = DateFormatter()
+                                                    dateFormatter.dateFormat = "yyyyMMddHHmmss"
+
+                                                    let nowString = dateFormatter.string(from: Date())
+                                                    let backupPath = Path.userDocuments + Path("\(file.title.fileName())-Backup-\(nowString).\(file.title.fileExtension())")
+
+                                                    ASCLocalFileHelper.shared.copy(from: filePath,
+                                                                                   to: backupPath)
+                                                }
+
+                                                let lastTempFile = Path.userTemporary + file.title
+                                                let autosaveFile = Path.userAutosavedInformation + file.title
+
+                                                // Remove autosave
+                                                ASCLocalFileHelper.shared.removeDirectory(lastTempFile)
+
+                                                // Remove original
+                                                ASCLocalFileHelper.shared.removeFile(autosaveFile)
+
+                                                UserDefaults.standard.removeObject(forKey: ASCConstants.SettingsKeys.openedDocument)
+                                                UserDefaults.standard.removeObject(forKey: ASCConstants.SettingsKeys.passwordOpenedDocument)
+                                            }
+                                        }
+                                    )
+
+                                } else {
+                                    let owner = ASCUser()
+                                    owner.displayName = UIDevice.displayName
+
+                                    let file = ASCFile()
+                                    file.id = filePath.rawValue
+                                    file.rootFolderType = .deviceDocuments
+                                    file.title = filePath.fileName
+                                    file.created = filePath.creationDate
+                                    file.updated = filePath.modificationDate
+                                    file.createdBy = owner
+                                    file.updatedBy = owner
+                                    file.device = true
+                                    file.displayContentLength = String.fileSizeToString(with: filePath.fileSize ?? 0)
+                                    file.pureContentLength = Int(filePath.fileSize ?? 0)
+
+                                    let fileExtension = file.title.fileExtension().lowercased()
+                                    let lastTempFile = Path.userTemporary + file.title
+                                    let autosaveFile = Path.userAutosavedInformation + file.title
+
+                                    if ASCConstants.FileExtensions.editorImportPresentations.contains(fileExtension) {
+                                        file.id = self.resolvedFilePath.rawValue
+                                        file.title = file.title.fileName() + ".pptx"
+
+                                        let newFilePath = Path(file.id)
+                                        file.created = newFilePath.creationDate
+                                        file.updated = newFilePath.modificationDate
+                                        file.displayContentLength = String.fileSizeToString(with: newFilePath.fileSize ?? 0)
+                                        file.pureContentLength = Int(newFilePath.fileSize ?? 0)
+                                    }
+
+                                    self.closeHandler?(.end, 1, file, nil, &cancel)
+
+                                    // Remove autosave
+                                    ASCLocalFileHelper.shared.removeDirectory(lastTempFile)
+
+                                    // Remove original
+                                    ASCLocalFileHelper.shared.removeFile(autosaveFile)
+
+                                    UserDefaults.standard.removeObject(forKey: ASCConstants.SettingsKeys.openedDocument)
+                                    UserDefaults.standard.removeObject(forKey: ASCConstants.SettingsKeys.passwordOpenedDocument)
+                                }
+
+                            } else if status == .error {
+                                self.closeHandler?(.error, 1, file, error, &cancel)
+
+                                // Remove autosave
+                                ASCLocalFileHelper.shared.removeDirectory(Path.userAutosavedInformation + file.title)
+
+                                // Restore original
+                                _ = ASCLocalFileHelper.shared.move(from: Path.userTemporary + file.title, to: Path(file.id))
+
+                                UserDefaults.standard.removeObject(forKey: ASCConstants.SettingsKeys.openedDocument)
+                                UserDefaults.standard.removeObject(forKey: ASCConstants.SettingsKeys.passwordOpenedDocument)
+                            }
+                        })
+                    } else {
+                        stopLocallyEditing()
+
+                        // Don't save changes
+                        ASCLocalFileHelper.shared.removeDirectory(Path.userAutosavedInformation + file.title)
+                        closeHandler?(.end, 1, nil, nil, &cancel)
+
+                        UserDefaults.standard.removeObject(forKey: ASCConstants.SettingsKeys.openedDocument)
+                        UserDefaults.standard.removeObject(forKey: ASCConstants.SettingsKeys.passwordOpenedDocument)
+                    }
+                } else {
+                    if let closeHandler = closeHandler {
+                        closeHandler(.begin, 0, file, nil, &cancel)
+
+                        UserDefaults.standard.removeObject(forKey: ASCConstants.SettingsKeys.openedDocument)
+                        ASCLocalFileHelper.shared.removeDirectory(Path.userAutosavedInformation + file.title)
+
+                        OnlyofficeApiClient.request(OnlyofficeAPI.Endpoints.Files.info(file: file)) { response, error in
+                            if let newFile = response?.result {
+                                closeHandler(.end, 1, newFile, nil, &cancel)
+                            } else {
+                                closeHandler(.error, 1, file, error, &cancel)
+                            }
+                        }
+                    }
+                }
+
+                openedFile = nil
+            }
+        }
+
+        func presentationExport(_ controller: PEEditorViewController!, document: PEDocument!, format: String!, processing: PEDocumentConverting!) {
+            log.info("PEEditorDelegate:presentationExport")
+
+            if let file = openedFile {
+                let tempExportPath = Path.userTemporary + UUID().uuidString
+
+                let exportFile = ASCFile()
+                exportFile.title = file.title.fileName() + "." + format
+                exportFile.id = (tempExportPath + exportFile.title).rawValue
+
+                do {
+                    try tempExportPath.createDirectory(withIntermediateDirectories: true)
+                } catch {
+                    log.error("Export file couldn't create directory structure")
+                }
+
+                convertToExport(input: document.path, output: exportFile, processing: { status, progress, error, outputPath in
+                    if status == .begin {
+                        processing("begin", 0, nil, nil)
+                    } else if status == .progress {
+                        processing("progress", progress, nil, nil)
+                    } else if status == .end {
+                        processing("end", 1, nil, exportFile.id)
+                    } else if status == .error {
+                        processing("error", 1, ASCEditorManagerError(msg: NSLocalizedString("Could not convert file to export.", comment: "")), nil)
+                    }
+                })
+            }
+        }
+
+        func presentationBackup(_ controller: PEEditorViewController!, document: PEDocument!) {
+            log.info("PEEditorDelegate:presentationBackup")
+
+            if controller.isDocumentModifity {
+                UserDefaults.standard.set(true, forKey: ASCConstants.SettingsKeys.openedDocumentModifity)
+            }
+        }
+
+        func presentationChartData(_ controller: PEEditorViewController!, data: String!) {
+            openChartEditor(controller, data)
+        }
+
+        func presentationEditorSettings(_ controller: PEEditorViewController!) -> [AnyHashable: Any]! {
+            setenv("APPLICATION_NAME", ASCConstants.Name.appNameShort, 1)
+            setenv("COMPANY_NAME", ASCConstants.Name.copyright, 1)
+
+            return [
+                "asc.pe.external.appname": ASCConstants.Name.appNameShort,
+                "asc.pe.external.helpurl": "https://helpcenter.onlyoffice.com/%@%@mobile-applications/documents/presentation-editor/index.aspx",
+            ]
+        }
+
+        func presentationShare(_ complation: PEDocumentShareComplate!) {
+            if let file = openedFile {
+                shareHandler?(file)
+            }
+        }
+
+        func presentationFavorite(_ favorite: Bool, complation: PEDocumentFavoriteComplate!) {
+            if let file = openedFile, let _ = favoriteHandler {
+                favoriteHandler?(file) { favorite in
+                    self.openedFile?.isFavorite = favorite
+                    complation(favorite)
+                }
+            }
+        }
+    }
+
+#endif

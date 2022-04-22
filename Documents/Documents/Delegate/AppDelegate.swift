@@ -38,17 +38,19 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         ASCLogIntercepter.shared.start()
         ASCAccountsManager.start()
 
-        // Use Firebase library to configure APIs
-        FirebaseApp.configure()
+        #if !OPEN_SOURCE
+            // Use Firebase library to configure APIs
+            FirebaseApp.configure()
 
-        // Reset application badge
-        ASCCommon.applicationIconBadgeNumber = 0
+            // Reset application badge
+            ASCCommon.applicationIconBadgeNumber = 0
 
-        // Register for remote notifications
-        Messaging.messaging().delegate = self
+            // Register for remote notifications
+            Messaging.messaging().delegate = self
 
-        // Initialize searchable promo
-        searchablePromoInit()
+            // Initialize searchable promo
+            searchablePromoInit()
+        #endif
 
         window = UIWindow()
         window?.rootViewController = ASCRootViewController.instance()

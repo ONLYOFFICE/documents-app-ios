@@ -324,12 +324,12 @@
 	<string>This app requires access to the photo library, so that you can upload your photos in the app.</string>
 	<key>NSUbiquitousContainers</key>
 	<dict>
-		<key>iCloud.com.onlyoffice.Documents.dev</key>
+		<key>iCloud.com.onlyoffice.Documents.opensource</key>
 		<dict>
 			<key>NSUbiquitousContainerIsDocumentScopePublic</key>
 			<true/>
 			<key>NSUbiquitousContainerName</key>
-			<string>Documents by ONLYOFFICE(Alpha)</string>
+			<string>Documents by ONLYOFFICE(OpenSource)</string>
 			<key>NSUbiquitousContainerSupportedFolderLevels</key>
 			<string>One</string>
 		</dict>

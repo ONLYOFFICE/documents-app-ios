@@ -58,14 +58,14 @@ class ASCOneDriveProvider: ASCSortableFileProviderProtocol {
         provider = nil
         apiClient = nil
     }
-
-    init(urlCredential: URLCredential, oAuthCredential: OneDriveOAuthCredential) {
+    
+    init(urlCredential: URLCredential, oAuthCredential: ASCOAuthCredential) {
         provider = ASCOneDriveFileProvider(credential: urlCredential)
         apiClient = OnedriveApiClient()
         apiClient?.credential = oAuthCredential
         apiClient?.onRefreshToken = { [weak self] credential in
             self?.provider?.credential = URLCredential(
-                user: ASCConstants.Clouds.Dropbox.clientId,
+                user: ASCConstants.Clouds.OneDrive.clientId,
                 password: credential.accessToken,
                 persistence: .forSession
             )
@@ -344,13 +344,13 @@ extension ASCOneDriveProvider: ASCFileProviderProtocol {
                let refreshToken = json["refreshToken"] as? String,
                let expiration = json["expiration"] as? Double
             {
-                let oAuthCredential = OneDriveOAuthCredential(
+                let oAuthCredential = ASCOAuthCredential(
                     accessToken: accessToken,
                     refreshToken: refreshToken,
                     expiration: Date(timeIntervalSince1970: expiration)
                 )
                 let urlCredential = URLCredential(
-                    user: ASCConstants.Clouds.Dropbox.clientId,
+                    user: ASCConstants.Clouds.OneDrive.clientId,
                     password: oAuthCredential.accessToken,
                     persistence: .forSession
                 )
@@ -361,7 +361,7 @@ extension ASCOneDriveProvider: ASCFileProviderProtocol {
                 apiClient?.credential = oAuthCredential
                 apiClient?.onRefreshToken = { [weak self] credential in
                     self?.provider?.credential = URLCredential(
-                        user: ASCConstants.Clouds.Dropbox.clientId,
+                        user: ASCConstants.Clouds.OneDrive.clientId,
                         password: credential.accessToken,
                         persistence: .forSession
                     )
@@ -404,7 +404,7 @@ extension ASCOneDriveProvider: ASCFileProviderProtocol {
         }
 
         let urlCredential = URLCredential(user: ASCConstants.Clouds.OneDrive.clientId, password: accessToken, persistence: .forSession)
-        let oAuthCredential = OneDriveOAuthCredential(accessToken: accessToken, refreshToken: refreshToken, expiration: Date().adding(.second, value: expiration))
+        let oAuthCredential = ASCOAuthCredential(accessToken: accessToken, refreshToken: refreshToken, expiration: Date().adding(.second, value: expiration))
         let onedriveCloudProvider = ASCOneDriveProvider(urlCredential: urlCredential, oAuthCredential: oAuthCredential)
 
         onedriveCloudProvider.isReachable { success, error in

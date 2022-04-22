@@ -8,7 +8,7 @@
 
 import Alamofire
 
-struct OneDriveOAuthCredential: AuthenticationCredential {
+struct ASCOAuthCredential: AuthenticationCredential {
     let accessToken: String
     let refreshToken: String
     let expiration: Date

@@ -12,6 +12,7 @@ class ASCOnlyofficeCategory: ASCCategory {
     var sortWeight = 500
 
     convenience init(folder: ASCFolder) {
+        let folder = folder.copy()
         self.init()
         self.folder = folder
         title = folder.title.isEmpty

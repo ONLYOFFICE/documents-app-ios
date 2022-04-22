@@ -10,7 +10,8 @@ import Alamofire
 import Foundation
 
 class OnedriveApiClient: NetworkingClient {
-    public var credential: OneDriveOAuthCredential? {
+    
+    public var credential: ASCOAuthCredential? {
         didSet {
             if oldValue == nil {
                 configure(url: baseURL?.absoluteString ?? "", token: credential?.accessToken)
@@ -18,7 +19,7 @@ class OnedriveApiClient: NetworkingClient {
         }
     }
 
-    public var onRefreshToken: ((OneDriveOAuthCredential) -> Void)?
+    public var onRefreshToken: ((ASCOAuthCredential) -> Void)?
 
     override public init() {
         super.init()

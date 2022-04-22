@@ -221,9 +221,10 @@ class ASCConnectCloudViewController: UITableViewController {
         case .dropbox:
             let oauth2VC = ASCConnectStorageOAuth2ViewController.instantiate(from: Storyboard.connectStorage)
             let dropboxController = ASCConnectStorageOAuth2Dropbox()
-            dropboxController.clientId = ASCConstants.Clouds.Dropbox.clientId
+            dropboxController.clientId = ASCConstants.Clouds.Dropbox.appId
+            dropboxController.clientSecret = ASCConstants.Clouds.Dropbox.clientSecret
             dropboxController.redirectUrl = ASCConstants.Clouds.Dropbox.redirectUri
-            oauth2VC.responseType = .token
+            oauth2VC.responseType = .code
             oauth2VC.complation = authComplation(info:)
             oauth2VC.delegate = dropboxController
             oauth2VC.title = "Dropbox"

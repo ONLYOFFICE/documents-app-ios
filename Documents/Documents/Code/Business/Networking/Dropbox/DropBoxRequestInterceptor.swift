@@ -1,52 +1,53 @@
 //
-//  OnedriveTokenAdapter.swift
+//  DropBoxRequestInterceptor.swift
 //  Documents
 //
-//  Created by Alexander Yuzhin on 10.08.2021.
-//  Copyright © 2021 Ascensio System SIA. All rights reserved.
+//  Created by Pavel Chernyshev on 21.04.2022.
+//  Copyright © 2022 Ascensio System SIA. All rights reserved.
 //
 
+import Foundation
 import Alamofire
 
-class OneDriveRequestInterceptor: RequestInterceptor {
-    enum OneDriveRequestInterceptorError: Error {
+class DropBoxRequestInterceptor: RequestInterceptor {
+    enum DropBoxRequestInterceptorError: Error {
         case unauthtorized
     }
 
-    private weak var api: OnedriveApiClient?
-
-    init(api: OnedriveApiClient?) {
+    private weak var api: DropboxApiClient?
+    
+    init(api: DropboxApiClient?) {
         self.api = api
     }
-
+    
     func adapt(_ urlRequest: URLRequest, for session: Session, completion: @escaping (Result<URLRequest, Error>) -> Void) {
         guard let credential = api?.credential else {
-            completion(.failure(OneDriveRequestInterceptorError.unauthtorized))
+            completion(.failure(DropBoxRequestInterceptorError.unauthtorized));
             return
         }
-
+        
         var urlRequest = urlRequest
         urlRequest.headers.update(.authorization(bearerToken: credential.accessToken))
         completion(.success(urlRequest))
     }
-
+    
     func retry(_ request: Request, for session: Session, dueTo error: Error, completion: @escaping (RetryResult) -> Void) {
         guard let response = request.task?.response as? HTTPURLResponse, response.statusCode == 401 else {
             /// The request did not fail due to a 401 Unauthorized response.
             /// Return the original error and don't retry the request.
             return completion(.doNotRetryWithError(error))
         }
-
+        
         refreshToken { [weak self] result in
             guard let self = self else { return }
-
+            
             switch result {
-            case let .success(credential):
+            case .success(let credential):
                 self.api?.credential = credential
                 self.api?.onRefreshToken?(credential)
                 /// After updating the token we can safely retry the original request.
                 completion(.retry)
-            case let .failure(error):
+            case .failure(let error):
                 completion(.doNotRetryWithError(error))
             }
         }
@@ -54,25 +55,25 @@ class OneDriveRequestInterceptor: RequestInterceptor {
     
     private func refreshToken(completion: @escaping (Result<ASCOAuthCredential, Error>) -> Void) {
         guard let refreshToken = api?.credential?.refreshToken else {
-            completion(.failure(OneDriveRequestInterceptorError.unauthtorized))
+            completion(.failure(DropBoxRequestInterceptorError.unauthtorized))
             return
         }
-
-        let onedriveController = ASCConnectStorageOAuth2OneDrive()
-        onedriveController.clientId = ASCConstants.Clouds.OneDrive.clientId
-        onedriveController.redirectUrl = ASCConstants.Clouds.OneDrive.redirectUri
-        onedriveController.clientSecret = ASCConstants.Clouds.OneDrive.clientSecret
-
-        onedriveController.accessToken(with: refreshToken) { result in
+        
+        let dropboxController = ASCConnectStorageOAuth2Dropbox()
+        dropboxController.clientId = ASCConstants.Clouds.Dropbox.appId
+        dropboxController.redirectUrl = ASCConstants.Clouds.Dropbox.redirectUri
+        dropboxController.clientSecret = ASCConstants.Clouds.Dropbox.clientSecret
+        
+        dropboxController.accessToken(with: refreshToken) { result in
             switch result {
             case .success(let model):
                 let credential = ASCOAuthCredential(
                     accessToken: model.access_token,
-                    refreshToken: model.refresh_token,
+                    refreshToken: refreshToken,
                     expiration: Date().adding(.second, value: model.expires_in)
                 )
                 completion(.success(credential))
-            case let .failure(error):
+            case .failure(let error):
                 completion(.failure(error))
             }
         }

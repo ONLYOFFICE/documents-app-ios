@@ -64,4 +64,27 @@ class ASCFolder: ASCEntity {
         // Internal
         device <- map["device"]
     }
+    
+    func copy() -> ASCFolder {
+        let folder = ASCFolder()
+        folder.parentId = parentId
+        folder.filesCount = filesCount
+        folder.foldersCount = foldersCount
+        folder.isShareable = isShareable
+        folder.title = title
+        folder.access = access
+        folder.shared = shared
+        folder.rootFolderType = rootFolderType
+        folder.updated = updated
+        folder.updatedBy = updatedBy
+        folder.created = created
+        folder.createdBy = createdBy
+        folder.isNew = isNew
+        folder.isThirdParty = isThirdParty
+        folder.providerType = providerType
+        folder.device = device
+        folder.parent = parent
+        
+        return folder
+    }
 }

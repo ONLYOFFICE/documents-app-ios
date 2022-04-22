@@ -24,7 +24,18 @@ class DropboxTokenAdapter: RequestAdapter {
 }
 
 class DropboxApiClient: NetworkingClient {
-    override public init() {
+    
+    public var credential: ASCOAuthCredential? {
+        didSet {
+            if oldValue == nil {
+                configure(url: baseURL?.absoluteString ?? "", token: credential?.accessToken)
+            }
+        }
+    }
+    
+    public var onRefreshToken: ((ASCOAuthCredential) -> Void)?
+    
+    public override init() {
         super.init()
         baseURL = URL(string: "https://api.dropboxapi.com/2/")
     }
@@ -34,12 +45,12 @@ class DropboxApiClient: NetworkingClient {
         configuration.timeoutIntervalForRequest = 30 // seconds
         configuration.timeoutIntervalForResource = 30
         configuration.headers = .default
-
-        let adapter = DropboxTokenAdapter(accessToken: token ?? "")
-
-        manager = Session(
+        
+        let interceptor = DropBoxRequestInterceptor(api: self)
+        
+        self.manager = Session(
             configuration: configuration,
-            interceptor: Interceptor(adapters: [adapter]),
+            interceptor: interceptor,
             serverTrustManager: ServerTrustPolicyManager(evaluators: [:])
         )
     }

@@ -51,7 +51,7 @@ class OneDriveRequestInterceptor: RequestInterceptor {
             }
         }
     }
-    
+
     private func refreshToken(completion: @escaping (Result<ASCOAuthCredential, Error>) -> Void) {
         guard let refreshToken = api?.credential?.refreshToken else {
             completion(.failure(OneDriveRequestInterceptorError.unauthtorized))
@@ -65,7 +65,7 @@ class OneDriveRequestInterceptor: RequestInterceptor {
 
         onedriveController.accessToken(with: refreshToken) { result in
             switch result {
-            case .success(let model):
+            case let .success(model):
                 let credential = ASCOAuthCredential(
                     accessToken: model.access_token,
                     refreshToken: model.refresh_token,

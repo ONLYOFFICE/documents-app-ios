@@ -10,7 +10,6 @@ import Alamofire
 import Foundation
 
 class OnedriveApiClient: NetworkingClient {
-    
     public var credential: ASCOAuthCredential? {
         didSet {
             if oldValue == nil {

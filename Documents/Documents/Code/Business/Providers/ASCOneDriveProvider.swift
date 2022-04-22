@@ -58,7 +58,7 @@ class ASCOneDriveProvider: ASCSortableFileProviderProtocol {
         provider = nil
         apiClient = nil
     }
-    
+
     init(urlCredential: URLCredential, oAuthCredential: ASCOAuthCredential) {
         provider = ASCOneDriveFileProvider(credential: urlCredential)
         apiClient = OnedriveApiClient()

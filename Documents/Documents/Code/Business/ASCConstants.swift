@@ -162,12 +162,12 @@ class ASCConstants {
             .nextCloud, .ownCloud, .google, .googleDrive, .dropBox, .skyDrive,
             .oneDrive, .sharePoint, .boxNet, .yandex, .kDrive, .webDav,
         ]
-        
-        struct Dropbox {
-            static let clientId: String     = ASCConstants.internalConstants["DropboxClientId"] as? String ?? ""
-            static let appId: String        = ASCConstants.internalConstants["DropboxAppId"] as? String ?? ""
+
+        enum Dropbox {
+            static let clientId: String = ASCConstants.internalConstants["DropboxClientId"] as? String ?? ""
+            static let appId: String = ASCConstants.internalConstants["DropboxAppId"] as? String ?? ""
             static let clientSecret: String = ASCConstants.internalConstants["DropboxClientSecret"] as? String ?? ""
-            static let redirectUri: String  = ASCConstants.internalConstants["DropboxRedirectUrl"] as? String ?? ""
+            static let redirectUri: String = ASCConstants.internalConstants["DropboxRedirectUrl"] as? String ?? ""
         }
 
         enum OneDrive {

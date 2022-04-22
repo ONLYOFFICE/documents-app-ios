@@ -64,7 +64,7 @@ class ASCFolder: ASCEntity {
         // Internal
         device <- map["device"]
     }
-    
+
     func copy() -> ASCFolder {
         let folder = ASCFolder()
         folder.parentId = parentId
@@ -84,7 +84,7 @@ class ASCFolder: ASCEntity {
         folder.providerType = providerType
         folder.device = device
         folder.parent = parent
-        
+
         return folder
     }
 }

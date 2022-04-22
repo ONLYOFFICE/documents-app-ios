@@ -21,7 +21,7 @@ protocol ASCConnectStorageOAuth2Delegate {
     func shouldStartLoad(with request: String, in controller: ASCConnectStorageOAuth2ViewController) -> Bool
 }
 
-typealias StringKeysDictCompletion = ([String: Any]) -> ()
+typealias StringKeysDictCompletion = ([String: Any]) -> Void
 
 class ASCConnectStorageOAuth2ViewController: UIViewController {
     // MARK: - Properties
@@ -32,6 +32,7 @@ class ASCConnectStorageOAuth2ViewController: UIViewController {
     var webView: WKWebView!
     var delegate: ASCConnectStorageOAuth2Delegate?
     var complation: StringKeysDictCompletion?
+
     // MARK: - Lifecycle Methods
 
     override func viewDidLoad() {

@@ -345,12 +345,12 @@ class ASCEditorManager: NSObject, DEEditorDelegate, SEEditorDelegate, PEEditorDe
             "supportShare": true,
         ]
 
-        // Enabling the Favorite function only on portals version 11 and higher, and not guest
+        // Enabling the Favorite function only on portals version 11 and higher
         if let communityServerVersion = OnlyofficeApiClient.shared.serverVersion,
-           communityServerVersion.isVersion(greaterThanOrEqualTo: "11.0"),
-           !user.isVisitor
+           communityServerVersion.isVersion(greaterThanOrEqualTo: "11.0")
         {
-            documentInfo["favorite"] = file.isFavorite
+            documentInfo["favorite"] = file.isFavorite && !user.isVisitor
+            documentInfo["denyDownload"] = file.denyDownload
         }
 
         if !(viewMode || !sdkCheck) {

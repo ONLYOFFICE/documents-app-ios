@@ -950,6 +950,7 @@ class ASCOnlyofficeProvider: ASCFileProviderProtocol & ASCSortableFileProviderPr
             let canEdit = allowEdit(entity: file)
             let canDelete = allowDelete(entity: file)
             let canShare = allowShare(entity: file)
+            let canDownload = !file.denyDownload
             let isTrash = file.rootFolderType == .onlyofficeTrash
             let isShared = file.rootFolderType == .onlyofficeShare
             let isProjects = file.rootFolderType == .onlyofficeBunch || file.rootFolderType == .onlyofficeProjects
@@ -972,12 +973,16 @@ class ASCOnlyofficeProvider: ASCFileProviderProtocol & ASCSortableFileProviderPr
                 entityActions.insert(.favarite)
             }
 
-            if canRead {
+            if canRead, canDownload {
                 entityActions.insert([.copy, .export])
             }
 
             if canDelete {
-                entityActions.insert([.delete, .move])
+                if canDownload {
+                    entityActions.insert([.delete, .move])
+                } else {
+                    entityActions.insert([.delete])
+                }
             }
 
             if canEdit {
@@ -992,15 +997,15 @@ class ASCOnlyofficeProvider: ASCFileProviderProtocol & ASCSortableFileProviderPr
                 entityActions.insert(.edit)
             }
 
-            if canRead, !isTrash {
+            if canRead, !isTrash, canDownload {
                 entityActions.insert(.download)
             }
 
-            if canEdit, canShare, !isProjects {
+            if canEdit, canShare, !isProjects, canDownload {
                 entityActions.insert(.share)
             }
 
-            if canEdit, !isShared, !isFavoriteCategory, !isRecentCategory, !(file.parent?.isThirdParty ?? false) {
+            if canEdit, !isShared, !isFavoriteCategory, !isRecentCategory, !(file.parent?.isThirdParty ?? false), canDownload {
                 entityActions.insert(.duplicate)
             }
         }

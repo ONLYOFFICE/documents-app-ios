@@ -968,7 +968,9 @@ class ASCOnlyofficeProvider: ASCFileProviderProtocol & ASCSortableFileProviderPr
                 return [.delete, .restore]
             }
 
-            entityActions.insert(.favarite)
+            if let user = user, !user.isVisitor {
+                entityActions.insert(.favarite)
+            }
 
             if canRead {
                 entityActions.insert([.copy, .export])

@@ -9,10 +9,15 @@
 import UIKit
 
 class ASCSelectUserViewController: UIViewController {
+    private enum Constants {
+        static let cellHeight: CGFloat = 60
+        static let leftRightInserts: CGFloat = 16
+        static let cornerRadius: CGFloat = 10
+    }
+
     // MARK: - properties
 
     private var dataArray = [ASCUserTableViewDataModelItem]()
-    private var cellHeight: CGFloat = 60
     private var tableView = UITableView()
     weak var delegate: ASCFiltersViewControllerDelegate?
 
@@ -76,15 +81,15 @@ class ASCSelectUserViewController: UIViewController {
         tableView.dataSource = self
 
         tableView.backgroundColor = Asset.Colors.viewBackground.color
-        tableView.layer.cornerRadius = 10
+        tableView.layer.cornerRadius = Constants.cornerRadius
 
         view.addSubview(tableView)
         tableView.anchor(top: view.safeAreaLayoutGuide.topAnchor,
                          left: view.leftAnchor,
                          bottom: view.bottomAnchor,
                          right: view.rightAnchor,
-                         leftConstant: 16,
-                         rightConstant: 16)
+                         leftConstant: Constants.leftRightInserts,
+                         rightConstant: Constants.leftRightInserts)
     }
 
     @objc private func cancelBarButtonItemTapped() {
@@ -159,7 +164,7 @@ extension ASCSelectUserViewController: UITableViewDelegate, UITableViewDataSourc
     }
 
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return cellHeight
+        return Constants.cellHeight
     }
 }
 

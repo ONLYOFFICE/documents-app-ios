@@ -6,7 +6,6 @@
 //  Copyright © 2022 Ascensio System SIA. All rights reserved.
 //
 
-import SwiftUI
 import UIKit
 
 protocol ASCFiltersViewControllerDelegate: AnyObject {
@@ -14,6 +13,14 @@ protocol ASCFiltersViewControllerDelegate: AnyObject {
 }
 
 class ASCFiltersViewController: UIViewController {
+    private enum Constants {
+        static let cellLeftRightPadding: CGFloat = 32.0
+        static let leftRightInserts: CGFloat = 16.0
+        static let buttonHeight: CGFloat = 52.0
+        static let headerHeight: CGFloat = 22.0
+        static let itemSpace: CGFloat = 16.0
+    }
+
     // MARK: - Properties
     
     var data: [ASCDocumentsSectionModel] = [
@@ -38,8 +45,7 @@ class ASCFiltersViewController: UIViewController {
                                     ASCDocumentsFilterModel(filterName: NSLocalizedString("Exclude subfolders", comment: ""), isSelected: false, filter: .byExtension),
                                  ]),
     ]
-    
-    let cellLeftRightPadding: CGFloat = 32.0
+
     let resultCount = 100
     var folderId: String?
     var showResultsCompletion: () -> Void = {}
@@ -139,10 +145,10 @@ private extension ASCFiltersViewController {
             left: view.leftAnchor,
             bottom: view.safeAreaLayoutGuide.bottomAnchor,
             right: view.rightAnchor,
-            leftConstant: 16,
+            leftConstant: Constants.leftRightInserts,
             bottomConstant: 10,
-            rightConstant: 16,
-            heightConstant: 52
+            rightConstant: Constants.leftRightInserts,
+            heightConstant: Constants.buttonHeight
         )
     }
     
@@ -167,8 +173,8 @@ private extension ASCFiltersViewController {
     }
     
     func setupCollectionView() {
-        let pillLayout = ASCPillLayout()
-        collectionView = UICollectionView(frame: .zero, collectionViewLayout: pillLayout)
+        let layout = LeftAlignedCollectionViewFlowLayout()
+        collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
         collectionView.backgroundColor = .clear
         guard let collectionView = collectionView else { return }
         collectionView.register(ASCFiltersCollectionViewCell.self,
@@ -178,8 +184,7 @@ private extension ASCFiltersViewController {
                                 withReuseIdentifier: ASCFiltersCollectionViewHeader.identifier)
         collectionView.dataSource = self
         collectionView.delegate = self
-        pillLayout.delegate = self
-        collectionView.collectionViewLayout = pillLayout
+        collectionView.collectionViewLayout = layout
         view.addSubview(collectionView)
         setupCollectionViewConstraints()
     }
@@ -190,8 +195,8 @@ private extension ASCFiltersViewController {
             left: view.leftAnchor,
             bottom: showResultsButton.topAnchor,
             right: view.rightAnchor,
-            leftConstant: 16,
-            rightConstant: 16
+            leftConstant: Constants.leftRightInserts,
+            rightConstant: Constants.leftRightInserts
         )
     }
 
@@ -268,29 +273,32 @@ extension ASCFiltersViewController: UICollectionViewDataSource, UICollectionView
     func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
         let header = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: ASCFiltersCollectionViewHeader.identifier, for: indexPath) as? ASCFiltersCollectionViewHeader
         header?.setupLabel("\(data[indexPath.section].sectionName)")
-        header?.backgroundColor = Asset.Colors.tableCategoryBackground.color
         return header!
     }
 }
 
-extension ASCFiltersViewController: ASCPillLayoutDelegate {
-    func collectionView(_ collectionView: UICollectionView, sizeForPillAtIndexPath indexPath: IndexPath) -> CGSize {
+extension ASCFiltersViewController {
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let label = data[indexPath.section].filters[indexPath.row].filterName
         let referenceSize = CGSize(width: CGFloat.greatestFiniteMagnitude, height: ASCFiltersCollectionViewCell.pillHeight)
         let calculatedSize = (label as NSString).boundingRect(with: referenceSize, options: NSStringDrawingOptions.usesLineFragmentOrigin, attributes: [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 15.0)], context: nil)
-        return CGSize(width: calculatedSize.width + cellLeftRightPadding, height: ASCFiltersCollectionViewCell.pillHeight)
+        return CGSize(width: calculatedSize.width + Constants.cellLeftRightPadding, height: ASCFiltersCollectionViewCell.pillHeight)
     }
-    
-    func collectionView(_ collectionView: UICollectionView, heightForHeaderInSection section: Int) -> CGFloat {
-        return 22.0
+
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+        Constants.itemSpace
     }
-    
-    func collectionView(_ collectionView: UICollectionView, insetsForItemsInSection section: Int) -> UIEdgeInsets {
-        return UIEdgeInsets(top: 16.0, left: 0, bottom: 16.0, right: 0)
+
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
+        Constants.itemSpace
     }
-    
-    func collectionView(_ collectionView: UICollectionView, itemSpacingInSection section: Int) -> CGFloat {
-        return 16.0
+
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
+        return UIEdgeInsets(top: Constants.itemSpace, left: 0, bottom: Constants.itemSpace, right: 0)
+    }
+
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
+        return CGSize(width: view.frame.size.width, height: Constants.headerHeight)
     }
 }
 

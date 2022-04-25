@@ -12,7 +12,9 @@ class ASCSelectGroupViewController: UIViewController {
     // MARK: - properties
 
     private var dataArray = [ASCGroupTableViewDataModelItem]()
-    private var cellHeight: CGFloat = 60
+    private let cellHeight: CGFloat = 60
+    private let leftRightInserts: CGFloat = 16
+    private let cornerRadius: CGFloat = 10
     private var tableView = UITableView()
     weak var delegate: ASCFiltersViewControllerDelegate?
 
@@ -94,15 +96,15 @@ class ASCSelectGroupViewController: UIViewController {
         tableView.dataSource = self
 
         tableView.backgroundColor = Asset.Colors.viewBackground.color
-        tableView.layer.cornerRadius = 10
+        tableView.layer.cornerRadius = cornerRadius
 
         view.addSubview(tableView)
         tableView.anchor(top: view.safeAreaLayoutGuide.topAnchor,
                          left: view.leftAnchor,
                          bottom: view.bottomAnchor,
                          right: view.rightAnchor,
-                         leftConstant: 16,
-                         rightConstant: 16)
+                         leftConstant: leftRightInserts,
+                         rightConstant: leftRightInserts)
     }
 
     @objc private func cancelBarButtonItemTapped() {

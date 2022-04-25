@@ -11,9 +11,21 @@ import UIKit
 class ASCFiltersCollectionViewHeader: UICollectionReusableView {
     static let identifier = String(describing: ASCFiltersCollectionViewHeader.self)
 
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        backgroundColor = Asset.Colors.tableCategoryBackground.color
+        addSubview(headerLabel)
+    }
+
+    @available(*, unavailable)
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+
     private let headerLabel: UILabel = {
         let label = UILabel()
         label.textStyle = .headline
+        label.textAlignment = .left
         return label
     }()
 
@@ -23,7 +35,6 @@ class ASCFiltersCollectionViewHeader: UICollectionReusableView {
 
     override func layoutSubviews() {
         super.layoutSubviews()
-        addSubview(headerLabel)
         headerLabel.frame = bounds
     }
 }

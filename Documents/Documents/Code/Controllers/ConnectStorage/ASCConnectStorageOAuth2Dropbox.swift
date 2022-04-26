@@ -7,32 +7,57 @@
 //
 
 import Alamofire
+import ObjectMapper
 import UIKit
 
 class ASCConnectStorageOAuth2Dropbox: ASCConnectStorageOAuth2Delegate {
-    struct AuthByCodeResponseModel: Codable {
-        var access_token: String
-        var expires_in: Int
-        var token_type: String
-        var scope: String
-        var refresh_token: String
-        var account_id: String
-        var uid: String
+    struct AuthByCodeResponseModel: Mappable {
+        var providerKey = ASCFolderProviderType.dropBox.rawValue
+
+        var accessToken: String = ""
+        var expiresIn: Int = 0
+        var tokenType: String = ""
+        var scope: String = ""
+        var refreshToken: String = ""
+        var accountId: String = ""
+        var uid: String = ""
         var dict: [String: Any] { [
-            "access_token": access_token,
-            "expires_in": expires_in,
-            "token_type": token_type,
+            "providerKey": providerKey,
+            "access_token": accessToken,
+            "token": accessToken,
+            "expires_in": expiresIn,
+            "token_type": tokenType,
             "scope": scope,
-            "refresh_token": refresh_token,
-            "account_id": account_id,
+            "refresh_token": refreshToken,
+            "account_id": accountId,
             "uid": uid,
         ] }
+
+        init?(map: Map) {}
+
+        mutating func mapping(map: Map) {
+            accessToken <- map["access_token"]
+            expiresIn <- map["expires_in"]
+            tokenType <- map["token_type"]
+            scope <- map["scope"]
+            refreshToken <- map["refresh_token"]
+            accountId <- map["account_id"]
+            uid <- map["uid"]
+        }
     }
 
-    struct RefreshTokenResponseModel: Codable {
-        var access_token: String
-        var expires_in: Int
-        var token_type: String
+    struct RefreshTokenResponseModel: Mappable {
+        var accessToken: String = ""
+        var expiresIn: Int = 0
+        var tokenType: String = ""
+
+        init?(map: Map) {}
+
+        mutating func mapping(map: Map) {
+            accessToken <- map["access_token"]
+            expiresIn <- map["expires_in"]
+            tokenType <- map["token_type"]
+        }
     }
 
     // MARK: - Properties
@@ -48,13 +73,11 @@ class ASCConnectStorageOAuth2Dropbox: ASCConnectStorageOAuth2Delegate {
 
     var clientSecret: String?
 
-    let tokenUrl = "https://api.dropboxapi.com/oauth2/token"
-
     // MARK: - ASCConnectStorageOAuth2 Delegate
 
     func viewDidLoad(controller: ASCConnectStorageOAuth2ViewController) {
         let parameters: [String: String] = [
-            "response_type": controller.responseType == .code ? "code" : "token",
+            "response_type": "code",
             "token_access_type": "offline",
             "client_id": clientId ?? "",
             "redirect_uri": redirectUrl ?? "",
@@ -80,40 +103,27 @@ class ASCConnectStorageOAuth2Dropbox: ASCConnectStorageOAuth2Delegate {
             return false
         }
 
-        if let redirectUrl = redirectUrl, request.contains(redirectUrl) {
-            if controller.responseType == .code {
-                if let code = controller.getQueryStringParameter(url: request, param: "code") {
-                    accessToken(byCode: code) { result in
-                        switch result {
-                        case let .success(model):
-                            var dict = model.dict
-                            dict["providerKey"] = ASCFolderProviderType.dropBox.rawValue
-                            dict["token"] = model.access_token
-                            controller.complation?(dict)
-                        case let .failure(error):
-                            self.handleError(controller: controller, errorMessage: error.localizedDescription)
-                        }
-                    }
-                    return false
-                }
-            } else {
-                var correctRequest = request
+        guard let redirectUrl = redirectUrl, request.contains(redirectUrl),
+              let code = controller.getQueryStringParameter(url: request, param: "code") else { return true }
 
-                if request.contains(redirectUrl + "#") {
-                    correctRequest = request.replacingOccurrences(of: redirectUrl + "#", with: redirectUrl + "?")
-                }
-
-                if let token = controller.getQueryStringParameter(url: correctRequest, param: "access_token") {
-                    controller.complation?([
-                        "providerKey": ASCFolderProviderType.dropBox.rawValue,
-                        "token": token,
-                    ])
-                    return false
+        switch controller.responseType {
+        case .code:
+            controller.complation?([
+                "providerKey": ASCFolderProviderType.dropBox.rawValue,
+                "token": code,
+            ])
+        case .token:
+            accessToken(byCode: code) { result in
+                switch result {
+                case let .success(model):
+                    controller.complation?(model.dict)
+                case let .failure(error):
+                    self.handleError(controller: controller, errorMessage: error.localizedDescription)
                 }
             }
         }
 
-        return true
+        return false
     }
 
     func accessToken(with refreshToken: String, completion: @escaping (Result<RefreshTokenResponseModel, Error>) -> Void) {
@@ -121,12 +131,8 @@ class ASCConnectStorageOAuth2Dropbox: ASCConnectStorageOAuth2Delegate {
             "grant_type": "refresh_token",
             "refresh_token": refreshToken,
         ]
-        let httpHeaders = HTTPHeaders([
-            baseAuthHeader(),
-            HTTPHeader(name: "Content-Type", value: "application/x-www-form-urlencoded"),
-        ])
 
-        request(parameters: parameters, httpHeaders: httpHeaders, completion: completion)
+        request(parameters: parameters, completion: completion)
     }
 
     private func accessToken(byCode code: String, completion: @escaping (Result<AuthByCodeResponseModel, Error>) -> Void) {
@@ -135,30 +141,29 @@ class ASCConnectStorageOAuth2Dropbox: ASCConnectStorageOAuth2Delegate {
             "grant_type": "authorization_code",
             "redirect_uri": redirectUrl ?? "",
         ]
-        let httpHeaders = HTTPHeaders([
-            baseAuthHeader(),
-            HTTPHeader(name: "Content-Type", value: "application/x-www-form-urlencoded"),
-        ])
 
-        request(parameters: parameters, httpHeaders: httpHeaders, completion: completion)
+        request(parameters: parameters, completion: completion)
     }
 
-    private func request<T: Codable>(parameters: Parameters, httpHeaders: HTTPHeaders, completion: @escaping (Result<T, Error>) -> Void) {
-        AF.request(
-            tokenUrl,
-            method: .post,
-            parameters: parameters,
-            encoding: URLEncoding.httpBody,
-            headers: httpHeaders
-        ).responseDecodable(of: T.self) { response in
-            switch response.result {
-            case let .success(model):
-                log.info(model)
-                completion(.success(model))
-            case let .failure(error):
-                log.error(error)
-                completion(.failure(error))
+    private func request<T: BaseMappable>(parameters: Parameters, completion: @escaping (Result<T, Error>) -> Void) {
+        let tokenEndpoint: Endpoint<T> = Endpoint<T>.make(DropboxAPI.Path.token, .post, URLEncoding.httpBody)
+        let client = NetworkingClient()
+        client.configure(url: DropboxAPI.URL.api)
+        client.headers.add(baseAuthHeader())
+        client.headers.add(name: "Content-Type", value: "application/x-www-form-urlencoded")
+        client.request(tokenEndpoint, parameters) { result, error in
+            guard let result = result else {
+                if let error = error {
+                    log.error(error)
+                    completion(.failure(error))
+                } else {
+                    completion(.failure(NetworkingError.unknown(error: error)))
+                }
+                return
             }
+
+            log.info(result)
+            completion(.success(result))
         }
     }
 

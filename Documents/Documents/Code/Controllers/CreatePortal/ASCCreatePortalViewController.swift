@@ -94,7 +94,7 @@ class ASCCreatePortalViewController: ASCBaseViewController {
                 phoneCodeLabel.text = "+\(code) "
                 phoneNumberField?.leftView = phoneCodeLabel
                 phoneNumberField?.leftViewMode = .always
-                phoneNumberField?.placeholder = phonePlaceholder(for: region)
+                phoneNumberField?.placeholder = ""
             }
         }
 
@@ -196,8 +196,7 @@ class ASCCreatePortalViewController: ASCBaseViewController {
     }
 
     private func phonePlaceholder(for region: String) -> String? {
-        return ""
-        return phoneNumberKit
+        phoneNumberKit
             .getFormattedExampleNumber(forCountry: region, ofType: .mobile, withFormat: .international, withPrefix: false)?
             .replacingOccurrences(of: "\\d", with: "0", options: .regularExpression)
     }
@@ -657,7 +656,7 @@ class ASCCreatePortalViewController: ASCBaseViewController {
                 self.phoneCodeLabel.text = "+\(code) "
                 self.phoneNumberField?.leftView = nil
                 self.phoneNumberField?.leftView = self.phoneCodeLabel
-                self.phoneNumberField?.placeholder = self.phonePlaceholder(for: region)
+                self.phoneNumberField?.placeholder = ""
             }
         }
     }

@@ -1,5 +1,5 @@
 //
-//  OneDriveOAuthCredential.swift
+//  ASCOAuthCredential.swift
 //  Documents
 //
 //  Created by Alexander Yuzhin on 10.08.2021.

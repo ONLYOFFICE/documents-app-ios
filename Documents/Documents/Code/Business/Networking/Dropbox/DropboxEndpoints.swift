@@ -10,9 +10,14 @@ import Alamofire
 import Foundation
 
 class DropboxAPI {
+    enum URL {
+        public static let api = "https://api.dropboxapi.com"
+    }
+
     enum Path {
         public static let currentAccount = "users/get_current_account"
         public static let temporaryLink = "files/get_temporary_link"
+        public static let token = "oauth2/token"
     }
 
     enum Endpoints {

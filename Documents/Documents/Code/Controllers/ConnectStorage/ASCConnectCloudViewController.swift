@@ -224,7 +224,7 @@ class ASCConnectCloudViewController: UITableViewController {
             dropboxController.clientId = ASCConstants.Clouds.Dropbox.appId
             dropboxController.clientSecret = ASCConstants.Clouds.Dropbox.clientSecret
             dropboxController.redirectUrl = ASCConstants.Clouds.Dropbox.redirectUri
-            oauth2VC.responseType = .code
+            oauth2VC.responseType = .token
             oauth2VC.complation = authComplation(info:)
             oauth2VC.delegate = dropboxController
             oauth2VC.title = "Dropbox"
@@ -307,8 +307,6 @@ class ASCConnectCloudViewController: UITableViewController {
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         guard let identifier = segue.identifier else { return }
-
-//        let connectStorageSegue = StoryboardSegue.ConnectStorage(rawValue: identifier)
 
         switch identifier {
         case "owncloudSegue":

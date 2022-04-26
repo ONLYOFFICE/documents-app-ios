@@ -68,9 +68,9 @@ class DropBoxRequestInterceptor: RequestInterceptor {
             switch result {
             case let .success(model):
                 let credential = ASCOAuthCredential(
-                    accessToken: model.access_token,
+                    accessToken: model.accessToken,
                     refreshToken: refreshToken,
-                    expiration: Date().adding(.second, value: model.expires_in)
+                    expiration: Date().adding(.second, value: model.expiresIn)
                 )
                 completion(.success(credential))
             case let .failure(error):

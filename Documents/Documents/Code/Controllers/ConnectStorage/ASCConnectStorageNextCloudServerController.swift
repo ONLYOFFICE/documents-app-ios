@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import MBProgressHUD
 import UIKit
 import WebKit
 
@@ -103,13 +104,31 @@ class ASCConnectStorageNextCloudServerController: UITableViewController {
         navigationController?.pushViewController(oauth2VC, animated: true)
     }
 
-    private func valid(portal: String) -> Bool {
-        guard !portal.isEmpty, let url = NSURL(string: portal) else { return false }
-
-        if !UIApplication.shared.canOpenURL(url as URL) {
-            return false
+    private func valid(portal: String, completion: @escaping (Bool) -> Void) {
+        guard !portal.isEmpty, let url = NSURL(string: portal) else {
+            completion(false)
+            return
         }
-        return true
+
+        guard UIApplication.shared.canOpenURL(url as URL) else {
+            completion(false)
+            return
+        }
+
+        let hud = MBProgressHUD.showTopMost()
+        hud?.label.text = NSLocalizedString("Logging in", comment: "Caption of the process")
+        (URLSession.shared.dataTask(with: url as URL) { data, response, error in
+            DispatchQueue.main.async {
+                hud?.hide(animated: true, afterDelay: 0.3)
+                guard data != nil else {
+                    log.error("url is anavailable \(url)")
+                    completion(false)
+                    return
+                }
+                log.info("url is correct \(url)")
+                completion(true)
+            }
+        }).resume()
     }
 }
 
@@ -118,14 +137,17 @@ class ASCConnectStorageNextCloudServerController: UITableViewController {
 extension ASCConnectStorageNextCloudServerController {
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
-
         let cell = super.tableView(tableView, cellForRowAt: indexPath)
         if cell == doneCell {
-            if valid(portal: serverField.text ?? "") {
-                showWebView()
-            } else {
-                serverField?.shake()
-                doneLabel.isUserInteractionEnabled = false
+            valid(portal: serverField.text ?? "") { [weak self] isSuccess in
+
+                guard let self = self else { return }
+                if isSuccess {
+                    self.showWebView()
+                } else {
+                    self.serverField?.shake()
+                    self.doneLabel.isUserInteractionEnabled = false
+                }
             }
         }
     }

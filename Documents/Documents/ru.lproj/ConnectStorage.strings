@@ -16,6 +16,9 @@
 /* Class = "UITextField"; placeholder = "Required"; ObjectID = "gp7-l6-arn"; */
 "gp7-l6-arn.placeholder" = "Обязательно";
 
+/* Class = "UITextField"; placeholder = "example.com"; ObjectID = "i2t-Xh-reL"; */
+"i2t-Xh-reL.placeholder" = "example.com";
+
 /* Class = "UILabel"; text = "Server"; ObjectID = "idC-C3-Fpx"; */
 "idC-C3-Fpx.text" = "Сервер";
 

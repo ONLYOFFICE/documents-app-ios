@@ -68,6 +68,9 @@
 "Add message" = "Přidat zprávu";
 
 /* No comment provided by engineer. */
+"Add users or groups and allow them to \n read, review or edit documents." = "Přidejte uživatele nebo skupiny a dejte jim právo číst, prohlížet nebo upravovat dokumenty.";
+
+/* No comment provided by engineer. */
 "Address is empty" = "Adresa je prázdná";
 
 /* No comment provided by engineer. */
@@ -81,6 +84,9 @@
 
 /* No comment provided by engineer. */
 "An unexpected error has occurred. Please try again later. Sorry for inconvenience." = "Došlo k neočekávané chybě. Prosím zkuste to znovu později. Omlouváme se za nepříjemnosti.";
+
+/* No comment provided by engineer. */
+"AppleId authentication failed" = "Ověření AppleId se nezdařilo";
 
 /* Caption of the process */
 "Applying" = "Použití stránky";
@@ -210,6 +216,9 @@
 
 /* Caption of the processing */
 "Copying" = "Kopírování";
+
+/* Description of file operation error */
+"Could not change file attributes" = "Nepodařilo se změnit atributy souboru";
 
 /* Description of file operation error */
 "Could not change the directory" = "Nepodařilo se změnit adresář";
@@ -543,6 +552,9 @@
 "Incorrect portal address" = "Nesprávná adresa portálu";
 
 /* No comment provided by engineer. */
+"Instructions had been sent to your email" = "Pokyny byly odeslány na e-mail";
+
+/* No comment provided by engineer. */
 "Invalid Country Code" = "Neplatný kód země";
 
 /* No comment provided by engineer. */
@@ -795,6 +807,9 @@
 "Please retry. \n\n If the problem persists contact us and mention this error code: Google - %@" = "Zkuste to prosím znovu.\n\n Pokud problém přetrvává, kontaktujte nás a zmiňte tento kód chyby: Google - %@";
 
 /* No comment provided by engineer. */
+"Please retry. \n\n If the problem persists contact us and mention this error code: Microsoft - %@" = "Zkuste to prosím znovu.\n\n Pokud problém přetrvává, kontaktujte nás a zmiňte tento kód chyby: Microsoft - %@";
+
+/* No comment provided by engineer. */
 "Please retry. \n\n If the problem persists contact us and mention this error code: OneDrive - %@" = "Zkuste to prosím znovu.\n\n Pokud problém přetrvává, kontaktujte nás a zmiňte tento kód chyby: OneDrive - %@";
 
 /* No comment provided by engineer. */
@@ -924,6 +939,12 @@
 /* No comment provided by engineer. */
 "Selecting access rights" = "Výběr přístupových práv";
 
+/* No comment provided by engineer. */
+"Send" = "Odeslat";
+
+/* No comment provided by engineer. */
+"Send the profile deletion instructions to the email address %@?" = "Pokyny k odstranění profilu byly zaslány na e-mailovou adresu %@?";
+
 /* Caption of the process */
 "Sending" = "Odesílání";
 
@@ -995,6 +1016,9 @@
 
 /* Data units */
 "Tb" = "Tb";
+
+/* No comment provided by engineer. */
+"Terminate account" = "Ukončení účtu";
 
 /* Part of phrases - By creating the portal you agree with our Privacy Policy and Terms of Service */
 "Terms of Service" = "Podmínky použití";
@@ -1214,6 +1238,9 @@
 
 /* Introduction Step Two - Title */
 "Work with office files" = "Pracujte s kancelářskými soubory";
+
+/* No comment provided by engineer. */
+"Wrong server, login or password." = "Chybný server, přihlašovací jméno nebo heslo.";
 
 /* No comment provided by engineer. */
 "Yandex directory" = "Adresář Yandex";

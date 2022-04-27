@@ -1,0 +1,36 @@
+/* Class = "UIButton"; normalTitle = "Continue"; ObjectID = "BMv-HP-hD2"; */
+"BMv-HP-hD2.normalTitle" = "继续";
+
+/* Class = "UILabel"; text = "By creating the portal you agree with our\nTerms of service"; ObjectID = "cHX-qo-kcu"; */
+"cHX-qo-kcu.text" = "通过创建门户网站，您同意我们的\n服务条款";
+
+/* Class = "UIButton"; normalTitle = "Create portal"; ObjectID = "d4S-7C-Csx"; */
+"d4S-7C-Csx.normalTitle" = "创建门户网站";
+
+/* Class = "UILabel"; text = "Make use of 30 days trial for free"; ObjectID = "FZg-vj-AVJ"; */
+"FZg-vj-AVJ.text" = "试试30天的免费试用期";
+
+/* Class = "UILabel"; text = "Create your own\nweb office"; ObjectID = "huj-vr-CgZ"; */
+"huj-vr-CgZ.text" = "创建您自己的\n网络办公室";
+
+/* Class = "UITextField"; placeholder = "Last Name"; ObjectID = "iLP-xJ-pU3"; */
+"iLP-xJ-pU3.placeholder" = "姓";
+
+/* Class = "UILabel"; text = "Choose a password and\nstart using your office"; ObjectID = "qKc-e7-uTl"; */
+"qKc-e7-uTl.text" = "选择密码并\n开始使用您的办公室";
+
+/* Class = "UILabel"; text = "After the registration a mail with your portal registration details will be sent to your email address."; ObjectID = "qwT-Pr-auo"; */
+"qwT-Pr-auo.text" = "注册后，一封包含您的门户注册信息的邮件将被发送到你的邮箱。";
+
+/* Class = "UITextField"; placeholder = "Password"; ObjectID = "to9-RR-YBV"; */
+"to9-RR-YBV.placeholder" = "密码";
+
+/* Class = "UITextField"; placeholder = "First Name"; ObjectID = "TP3-h7-Hq1"; */
+"TP3-h7-Hq1.placeholder" = "名";
+
+/* Class = "UITextField"; placeholder = "Email Address"; ObjectID = "WWd-Za-CPd"; */
+"WWd-Za-CPd.placeholder" = "邮箱地址";
+
+/* Class = "UITextField"; placeholder = "Repeat Password"; ObjectID = "Zgx-q8-jRP"; */
+"Zgx-q8-jRP.placeholder" = "重复密码";
+

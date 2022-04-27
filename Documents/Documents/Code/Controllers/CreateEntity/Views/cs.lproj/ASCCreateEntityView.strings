@@ -5,10 +5,10 @@
 "2aV-hB-7Nt.normalTitle" = "Vyfotit";
 
 /* Class = "UIButton"; normalTitle = "Import Image"; ObjectID = "IU2-I1-b4Q"; */
-"IU2-I1-b4Q.normalTitle" = "Import Image";
+"IU2-I1-b4Q.normalTitle" = "Importovat obrázek";
 
 /* Class = "UIButton"; normalTitle = "Import File"; ObjectID = "wdt-5y-x9j"; */
-"wdt-5y-x9j.normalTitle" = "Import File";
+"wdt-5y-x9j.normalTitle" = "Importovat soubor";
 
 /* Class = "UIButton"; normalTitle = "Connect Storage"; ObjectID = "ziC-q7-ky6"; */
 "ziC-q7-ky6.normalTitle" = "Připojit úložiště";

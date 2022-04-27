@@ -26,5 +26,8 @@
 "NSPhotoLibraryUsageDescription" = "Это приложение требует доступа к библиотеке фотографий, для загрузки фотографий из библиотеке фотографий.";
 
 /* (No Comment) */
+"ONLYOFFICE fillable form (.oform)" = "Заполняемая форма ONLYOFFICE (.oform)";
+
+/* (No Comment) */
 "ONLYOFFICE form template (.docxf)" = "Шаблон формы ONLYOFFICE (.docxf)";
 

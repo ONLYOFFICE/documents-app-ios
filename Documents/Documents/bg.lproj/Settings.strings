@@ -14,7 +14,7 @@
 "8Qq-uc-rWT.footerTitle" = "Искане на парола при стартиране на приложението.\n\nЗабележка: ако забравите паролата, ще трябва да изтриете и преинсталирате приложението. Всички местни документи ще бъдат изгубени.";
 
 /* Class = "UILabel"; text = "Version"; ObjectID = "13m-jH-9Vu"; */
-"13m-jH-9Vu.text" = "версия";
+"13m-jH-9Vu.text" = "Версия";
 
 /* Class = "UILabel"; text = "Compress Images"; ObjectID = "19F-CC-u2R"; */
 "19F-CC-u2R.text" = "Компресиране на изображения";
@@ -23,7 +23,7 @@
 "aV0-Ch-4Py.text" = "Скривалище";
 
 /* Class = "UITableViewSection"; headerTitle = "Storage"; ObjectID = "Bmt-tc-yd7"; */
-"Bmt-tc-yd7.headerTitle" = "съхранение";
+"Bmt-tc-yd7.headerTitle" = "Съхранение";
 
 /* Class = "UILabel"; text = "Privacy Policy"; ObjectID = "cl6-b0-Mjh"; */
 "cl6-b0-Mjh.text" = "Декларация за поверителност";

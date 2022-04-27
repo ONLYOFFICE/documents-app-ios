@@ -25,6 +25,9 @@
 /* Class = "UITableViewSection"; headerTitle = "Storage"; ObjectID = "Bmt-tc-yd7"; */
 "Bmt-tc-yd7.headerTitle" = "ストレージ";
 
+/* Class = "UILabel"; text = "Privacy Policy"; ObjectID = "cl6-b0-Mjh"; */
+"cl6-b0-Mjh.text" = "プライバシーポリシー";
+
 /* Class = "UILabel"; text = "Rate App"; ObjectID = "CUM-1F-5Be"; */
 "CUM-1F-5Be.text" = "アプリを評価";
 
@@ -51,6 +54,9 @@
 
 /* Class = "UINavigationItem"; title = "Settings"; ObjectID = "OKJ-3w-yJd"; */
 "OKJ-3w-yJd.title" = "設定";
+
+/* Class = "UILabel"; text = "Terms of Service"; ObjectID = "PDj-N7-sjJ"; */
+"PDj-N7-sjJ.text" = "利用規約";
 
 /* Class = "UILabel"; text = "Support"; ObjectID = "raN-Fz-DnL"; */
 "raN-Fz-DnL.text" = "サポート";

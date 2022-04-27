@@ -125,8 +125,8 @@
 		1D76B04E275B935400389C61 /* ASCUniqNameFinder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D76B04D275B935400389C61 /* ASCUniqNameFinder.swift */; };
 		1D76B050275B957A00389C61 /* ASCEntityUniqNameFinder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D76B04F275B957A00389C61 /* ASCEntityUniqNameFinder.swift */; };
 		1D76B052275B9DC200389C61 /* ASCEntityExistenceCheckerByAttributes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D76B051275B9DC200389C61 /* ASCEntityExistenceCheckerByAttributes.swift */; };
-		1D84F975273FC2EC00C94E74 /* ASCAppleIdSignInController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D84F974273FC2EC00C94E74 /* ASCAppleIdSignInController.swift */; };
 		1D81EBA92811AB7000EDFB86 /* DropBoxRequestInterceptor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D81EBA82811AB7000EDFB86 /* DropBoxRequestInterceptor.swift */; };
+		1D84F975273FC2EC00C94E74 /* ASCAppleIdSignInController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D84F974273FC2EC00C94E74 /* ASCAppleIdSignInController.swift */; };
 		1D863F1126722FB3000BAC3C /* ASCSharingRightHolderTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D863F1026722FB3000BAC3C /* ASCSharingRightHolderTableViewCell.swift */; };
 		1D863F1A26725BC7000BAC3C /* ASCSharingRightHolderViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D863F1926725BC6000BAC3C /* ASCSharingRightHolderViewModel.swift */; };
 		1D863F1F2673DEFF000BAC3C /* ASCSwitchTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D863F1E2673DEFE000BAC3C /* ASCSwitchTableViewCell.swift */; };
@@ -871,8 +871,8 @@
 		1D76B04D275B935400389C61 /* ASCUniqNameFinder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCUniqNameFinder.swift; sourceTree = "<group>"; };
 		1D76B04F275B957A00389C61 /* ASCEntityUniqNameFinder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCEntityUniqNameFinder.swift; sourceTree = "<group>"; };
 		1D76B051275B9DC200389C61 /* ASCEntityExistenceCheckerByAttributes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCEntityExistenceCheckerByAttributes.swift; sourceTree = "<group>"; };
-		1D84F974273FC2EC00C94E74 /* ASCAppleIdSignInController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCAppleIdSignInController.swift; sourceTree = "<group>"; };
 		1D81EBA82811AB7000EDFB86 /* DropBoxRequestInterceptor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DropBoxRequestInterceptor.swift; sourceTree = "<group>"; };
+		1D84F974273FC2EC00C94E74 /* ASCAppleIdSignInController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCAppleIdSignInController.swift; sourceTree = "<group>"; };
 		1D863F1026722FB3000BAC3C /* ASCSharingRightHolderTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCSharingRightHolderTableViewCell.swift; sourceTree = "<group>"; };
 		1D863F1926725BC6000BAC3C /* ASCSharingRightHolderViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCSharingRightHolderViewModel.swift; sourceTree = "<group>"; };
 		1D863F1E2673DEFE000BAC3C /* ASCSwitchTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCSwitchTableViewCell.swift; sourceTree = "<group>"; };
@@ -959,6 +959,20 @@
 		FC08F8741ECB399900988DDE /* ASCConnectStorageOAuth2ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASCConnectStorageOAuth2ViewController.swift; sourceTree = "<group>"; };
 		FC08F8761ECB402000988DDE /* ASCConnectStorageOAuth2Dropbox.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASCConnectStorageOAuth2Dropbox.swift; sourceTree = "<group>"; };
 		FC0946AF249776D4005D54E6 /* ASCLogger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCLogger.swift; sourceTree = "<group>"; };
+		FC09998628195EF10063BB08 /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/ConnectStorage.strings"; sourceTree = "<group>"; };
+		FC09998728195EF10063BB08 /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/CreatePortal.strings"; sourceTree = "<group>"; };
+		FC09998828195EF10063BB08 /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/Intro.strings"; sourceTree = "<group>"; };
+		FC09998928195EF10063BB08 /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.stringsdict; name = "zh-Hant"; path = "zh-Hant.lproj/Localizable.stringsdict"; sourceTree = "<group>"; };
+		FC09998A28195EF10063BB08 /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/Login.strings"; sourceTree = "<group>"; };
+		FC09998B28195EF10063BB08 /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/Main.strings"; sourceTree = "<group>"; };
+		FC09998C28195EF10063BB08 /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/Settings.strings"; sourceTree = "<group>"; };
+		FC09998D28195EF10063BB08 /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/Sort.strings"; sourceTree = "<group>"; };
+		FC09998E28195EF10063BB08 /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/Transfer.strings"; sourceTree = "<group>"; };
+		FC09998F28195EF10063BB08 /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/UserProfile.strings"; sourceTree = "<group>"; };
+		FC09999028195EF10063BB08 /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/ASCCreateEntityView.strings"; sourceTree = "<group>"; };
+		FC09999128195EF20063BB08 /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/PasscodeLock.strings"; sourceTree = "<group>"; };
+		FC09999228195EF20063BB08 /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/PasscodeLockView.strings"; sourceTree = "<group>"; };
+		FC09999328195EF20063BB08 /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		FC0C1CF323A8E11F0067894D /* fonts */ = {isa = PBXFileReference; lastKnownFileType = folder; name = fonts; path = "../../../../editors-ios/build/SDKData/fonts"; sourceTree = "<group>"; };
 		FC0F01DE216F443E008D79A5 /* ASCLocalProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCLocalProvider.swift; sourceTree = "<group>"; };
 		FC0F01E0216F46B7008D79A5 /* ASCOnlyofficeProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCOnlyofficeProvider.swift; sourceTree = "<group>"; };
@@ -3080,6 +3094,7 @@
 				"pt-BR",
 				ja,
 				"zh-Hans",
+				"zh-Hant",
 			);
 			mainGroup = FCFDAA841E48A10C007A240C;
 			productRefGroup = FCFDAA8E1E48A10C007A240C /* Products */;
@@ -4470,6 +4485,7 @@
 				FCE6247A26F874B200EFAE7C /* pt-BR */,
 				FC6E84C82775CDE700028965 /* ja */,
 				FC6E84D72775CE0300028965 /* zh-Hans */,
+				FC09998628195EF10063BB08 /* zh-Hant */,
 			);
 			name = ConnectStorage.storyboard;
 			sourceTree = "<group>";
@@ -4488,6 +4504,7 @@
 				FCE6248026F874B300EFAE7C /* pt-BR */,
 				FC6E84D42775CDE700028965 /* ja */,
 				FC6E84E32775CE0300028965 /* zh-Hans */,
+				FC09999228195EF20063BB08 /* zh-Hant */,
 			);
 			name = PasscodeLockView.xib;
 			sourceTree = "<group>";
@@ -4507,6 +4524,7 @@
 				FCE6247F26F874B300EFAE7C /* pt-BR */,
 				FC6E84D22775CDE700028965 /* ja */,
 				FC6E84E12775CE0300028965 /* zh-Hans */,
+				FC09999028195EF10063BB08 /* zh-Hant */,
 			);
 			name = ASCCreateEntityView.xib;
 			sourceTree = "<group>";
@@ -4542,6 +4560,7 @@
 				FCE6247926F874B200EFAE7C /* pt-BR */,
 				FC6E84CA2775CDE700028965 /* ja */,
 				FC6E84D92775CE0300028965 /* zh-Hans */,
+				FC09998828195EF10063BB08 /* zh-Hant */,
 			);
 			name = Intro.storyboard;
 			sourceTree = "<group>";
@@ -4560,6 +4579,7 @@
 				FCE6247626F874B200EFAE7C /* pt-BR */,
 				FC6E84CC2775CDE700028965 /* ja */,
 				FC6E84DB2775CE0300028965 /* zh-Hans */,
+				FC09998A28195EF10063BB08 /* zh-Hant */,
 			);
 			name = Login.storyboard;
 			sourceTree = "<group>";
@@ -4578,6 +4598,7 @@
 				FCE6247B26F874B300EFAE7C /* pt-BR */,
 				FC6E84CE2775CDE700028965 /* ja */,
 				FC6E84DD2775CE0300028965 /* zh-Hans */,
+				FC09998C28195EF10063BB08 /* zh-Hant */,
 			);
 			name = Settings.storyboard;
 			sourceTree = "<group>";
@@ -4596,6 +4617,7 @@
 				FCE6247C26F874B300EFAE7C /* pt-BR */,
 				FC6E84D12775CDE700028965 /* ja */,
 				FC6E84E02775CE0300028965 /* zh-Hans */,
+				FC09998F28195EF10063BB08 /* zh-Hant */,
 			);
 			name = UserProfile.storyboard;
 			sourceTree = "<group>";
@@ -4613,6 +4635,7 @@
 				FCE6248226F874B300EFAE7C /* pt-BR */,
 				FC6E84D52775CDE700028965 /* ja */,
 				FC029A3B27BCF2FC00E5341B /* zh-Hans */,
+				FC09999328195EF20063BB08 /* zh-Hant */,
 			);
 			name = Localizable.strings;
 			sourceTree = "<group>";
@@ -4631,6 +4654,7 @@
 				FCE6247D26F874B300EFAE7C /* pt-BR */,
 				FC6E84C92775CDE700028965 /* ja */,
 				FC6E84D82775CE0300028965 /* zh-Hans */,
+				FC09998728195EF10063BB08 /* zh-Hant */,
 			);
 			name = CreatePortal.storyboard;
 			sourceTree = "<group>";
@@ -4649,6 +4673,7 @@
 				FCE6247726F874B200EFAE7C /* pt-BR */,
 				FC6E84CF2775CDE700028965 /* ja */,
 				FC6E84DE2775CE0300028965 /* zh-Hans */,
+				FC09998D28195EF10063BB08 /* zh-Hant */,
 			);
 			name = Sort.storyboard;
 			sourceTree = "<group>";
@@ -4667,6 +4692,7 @@
 				FCE6247826F874B200EFAE7C /* pt-BR */,
 				FC6E84D02775CDE700028965 /* ja */,
 				FC6E84DF2775CE0300028965 /* zh-Hans */,
+				FC09998E28195EF10063BB08 /* zh-Hant */,
 			);
 			name = Transfer.storyboard;
 			sourceTree = "<group>";
@@ -4702,6 +4728,7 @@
 				FCE6248126F874B300EFAE7C /* pt-BR */,
 				FC6E84D32775CDE700028965 /* ja */,
 				FC6E84E22775CE0300028965 /* zh-Hans */,
+				FC09999128195EF20063BB08 /* zh-Hant */,
 			);
 			name = PasscodeLock.strings;
 			sourceTree = "<group>";
@@ -4740,6 +4767,7 @@
 				FCE6247526F874B200EFAE7C /* pt-BR */,
 				FC6E84CD2775CDE700028965 /* ja */,
 				FC6E84DC2775CE0300028965 /* zh-Hans */,
+				FC09998B28195EF10063BB08 /* zh-Hant */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";
@@ -4758,6 +4786,7 @@
 				FCE6248326F874B300EFAE7C /* pt-BR */,
 				FC6E84CB2775CDE700028965 /* ja */,
 				FC6E84DA2775CE0300028965 /* zh-Hans */,
+				FC09998928195EF10063BB08 /* zh-Hant */,
 			);
 			name = Localizable.stringsdict;
 			sourceTree = "<group>";

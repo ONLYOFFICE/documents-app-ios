@@ -85,6 +85,9 @@
 /* No comment provided by engineer. */
 "An unexpected error has occurred. Please try again later. Sorry for inconvenience." = "发生了意外的错误。请稍后再试。对不起，给您带来不便。";
 
+/* No comment provided by engineer. */
+"AppleId authentication failed" = "Apple ID验证失败";
+
 /* Caption of the process */
 "Applying" = "正在应用中";
 
@@ -213,6 +216,9 @@
 
 /* Caption of the processing */
 "Copying" = "正在复制";
+
+/* Description of file operation error */
+"Could not change file attributes" = "无法改变文件属性";
 
 /* Description of file operation error */
 "Could not change the directory" = "无法改变目录";
@@ -546,6 +552,9 @@
 "Incorrect portal address" = "门户地址不正确";
 
 /* No comment provided by engineer. */
+"Instructions had been sent to your email" = "指示已发送到您的邮箱";
+
+/* No comment provided by engineer. */
 "Invalid Country Code" = "国家代码无效";
 
 /* No comment provided by engineer. */
@@ -798,6 +807,9 @@
 "Please retry. \n\n If the problem persists contact us and mention this error code: Google - %@" = "请重试。\n\n 如果问题仍然存在，请联系我们并提及此错误代码： Google - %@";
 
 /* No comment provided by engineer. */
+"Please retry. \n\n If the problem persists contact us and mention this error code: Microsoft - %@" = "请重试。\n\n 如果问题仍然存在，请联系我们并提及此错误代码：Microsoft - %@";
+
+/* No comment provided by engineer. */
 "Please retry. \n\n If the problem persists contact us and mention this error code: OneDrive - %@" = "请重试。\n\n 如果问题仍然存在，请联系我们并提及此错误代码：OneDrive - %@";
 
 /* No comment provided by engineer. */
@@ -927,6 +939,12 @@
 /* No comment provided by engineer. */
 "Selecting access rights" = "选择访问权";
 
+/* No comment provided by engineer. */
+"Send" = "发送";
+
+/* No comment provided by engineer. */
+"Send the profile deletion instructions to the email address %@?" = "将账户的删除指示发送到%@?电子邮件地址";
+
 /* Caption of the process */
 "Sending" = "正在发送";
 
@@ -998,6 +1016,9 @@
 
 /* Data units */
 "Tb" = "Tb";
+
+/* No comment provided by engineer. */
+"Terminate account" = "删除账户";
 
 /* Part of phrases - By creating the portal you agree with our Privacy Policy and Terms of Service */
 "Terms of Service" = "服务条款";
@@ -1217,6 +1238,9 @@
 
 /* Introduction Step Two - Title */
 "Work with office files" = "处理办公文件";
+
+/* No comment provided by engineer. */
+"Wrong server, login or password." = "服务器、登录名或密码错误。";
 
 /* No comment provided by engineer. */
 "Yandex directory" = "Yandex目录";

@@ -1,27 +1,28 @@
 //
-//  OnedriveTokenAdapter.swift
+//  DropBoxRequestInterceptor.swift
 //  Documents
 //
-//  Created by Alexander Yuzhin on 10.08.2021.
-//  Copyright © 2021 Ascensio System SIA. All rights reserved.
+//  Created by Pavel Chernyshev on 21.04.2022.
+//  Copyright © 2022 Ascensio System SIA. All rights reserved.
 //
 
 import Alamofire
+import Foundation
 
-class OneDriveRequestInterceptor: RequestInterceptor {
-    enum OneDriveRequestInterceptorError: Error {
+class DropBoxRequestInterceptor: RequestInterceptor {
+    enum DropBoxRequestInterceptorError: Error {
         case unauthtorized
     }
 
-    private weak var api: OnedriveApiClient?
+    private weak var api: DropboxApiClient?
 
-    init(api: OnedriveApiClient?) {
+    init(api: DropboxApiClient?) {
         self.api = api
     }
 
     func adapt(_ urlRequest: URLRequest, for session: Session, completion: @escaping (Result<URLRequest, Error>) -> Void) {
         guard let credential = api?.credential else {
-            completion(.failure(OneDriveRequestInterceptorError.unauthtorized))
+            completion(.failure(DropBoxRequestInterceptorError.unauthtorized))
             return
         }
 
@@ -54,22 +55,22 @@ class OneDriveRequestInterceptor: RequestInterceptor {
 
     private func refreshToken(completion: @escaping (Result<ASCOAuthCredential, Error>) -> Void) {
         guard let refreshToken = api?.credential?.refreshToken else {
-            completion(.failure(OneDriveRequestInterceptorError.unauthtorized))
+            completion(.failure(DropBoxRequestInterceptorError.unauthtorized))
             return
         }
 
-        let onedriveController = ASCConnectStorageOAuth2OneDrive()
-        onedriveController.clientId = ASCConstants.Clouds.OneDrive.clientId
-        onedriveController.redirectUrl = ASCConstants.Clouds.OneDrive.redirectUri
-        onedriveController.clientSecret = ASCConstants.Clouds.OneDrive.clientSecret
+        let dropboxController = ASCConnectStorageOAuth2Dropbox()
+        dropboxController.clientId = ASCConstants.Clouds.Dropbox.appId
+        dropboxController.redirectUrl = ASCConstants.Clouds.Dropbox.redirectUri
+        dropboxController.clientSecret = ASCConstants.Clouds.Dropbox.clientSecret
 
-        onedriveController.accessToken(with: refreshToken) { result in
+        dropboxController.accessToken(with: refreshToken) { result in
             switch result {
             case let .success(model):
                 let credential = ASCOAuthCredential(
-                    accessToken: model.access_token,
-                    refreshToken: model.refresh_token,
-                    expiration: Date().adding(.second, value: model.expires_in)
+                    accessToken: model.accessToken,
+                    refreshToken: refreshToken,
+                    expiration: Date().adding(.second, value: model.expiresIn)
                 )
                 completion(.success(credential))
             case let .failure(error):

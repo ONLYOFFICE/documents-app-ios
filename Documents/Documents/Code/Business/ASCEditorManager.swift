@@ -961,7 +961,7 @@ class ASCEditorManager: NSObject, DEEditorDelegate, SEEditorDelegate, PEEditorDe
                     }
                 }
             } else {
-                OnlyofficeApiClient.request(OnlyofficeAPI.Endpoints.Files.startEdit(file: file), ["editingAlone": "true"]) { response, error in
+                OnlyofficeApiClient.request(OnlyofficeAPI.Endpoints.Files.startEdit(file: file), ["editingAlone" : true]) { response, error in
                     log.info("apiFileStartEdit")
 
                     if let error = error {

@@ -35,7 +35,7 @@ class ASCNextCloudConnectStorageDelegate: ASCConnectStorageOAuth2Delegate {
             let separated = request.components(separatedBy: "&")
             guard let loginString = separated.filter({ $0.contains("user") }).first,
                   let passwordString = separated.filter({ $0.contains("password") }).first,
-                  let login = loginString.split(separator: ":").last,
+                  let login = loginString.split(separator: ":").last?.removingPercentEncoding,
                   let password = passwordString.split(separator: ":").last
             else {
                 return true

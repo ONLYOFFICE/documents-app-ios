@@ -703,6 +703,7 @@
 		FCE1F6461EDC456700D9DE17 /* ASCCreatePortalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCE1F6451EDC456700D9DE17 /* ASCCreatePortalViewController.swift */; };
 		FCE35DD61E9E7BC100BC2B68 /* Sort.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FCE35DD81E9E7BC100BC2B68 /* Sort.storyboard */; };
 		FCE35DDB1E9E7BCA00BC2B68 /* Transfer.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FCE35DDD1E9E7BCA00BC2B68 /* Transfer.storyboard */; };
+		FCE3789A281C2BCC009C4038 /* DropBoxRequestInterceptor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D81EBA82811AB7000EDFB86 /* DropBoxRequestInterceptor.swift */; };
 		FCEA68232264733A0055926A /* ASC2FAPageController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCEA68222264733A0055926A /* ASC2FAPageController.swift */; };
 		FCECDDCF264309D7006CD7B9 /* ASCPasswordRecoveryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCECDDCD264309D7006CD7B9 /* ASCPasswordRecoveryViewController.swift */; };
 		FCECDDD0264309D7006CD7B9 /* ASCPasswordRecoveryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCECDDCD264309D7006CD7B9 /* ASCPasswordRecoveryViewController.swift */; };
@@ -3901,6 +3902,7 @@
 				1D49E29A26A9BD2C0024AC7A /* ASCOnlyofficeFileInternalLinkMaker.swift in Sources */,
 				FC1AC10D27A040D8006C1B6E /* ASCPortalTypeDefinderByUrl.swift in Sources */,
 				FC36D2CC25B5C32200412DDB /* UISplitViewController+Extensions.swift in Sources */,
+				FCE3789A281C2BCC009C4038 /* DropBoxRequestInterceptor.swift in Sources */,
 				FC68527226837B7300D830EC /* NextcloudStorageStats.swift in Sources */,
 				FC36D2CE25B5C32200412DDB /* ASCDebugConsoleViewController.swift in Sources */,
 				FC36D2CF25B5C32200412DDB /* PasscodeSignPlaceholderView.swift in Sources */,

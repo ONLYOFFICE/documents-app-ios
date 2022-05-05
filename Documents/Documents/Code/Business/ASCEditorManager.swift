@@ -1297,7 +1297,7 @@ extension ASCEditorManager {
             if ["csv", "txt"].contains(fileExtension), encoding == nil, delimiter == nil {
                 processing?(.silentError, 0, nil, "")
 
-                alert.isOnlyCodePages = fileExtension == "txt"
+                ASCEditorManager.alert.isOnlyCodePages = fileExtension == "txt"
 
                 DispatchQueue.main.asyncAfter(deadline: .now() + 0.33) {
                     self.showConverterOptionsAlertAndEdit(file: file)
@@ -1721,7 +1721,7 @@ extension ASCEditorManager {
         }
 
         func showConverterOptionsAlert(handler: @escaping (_ encoding: Int, _ delimiter: Int) -> Void) {
-            alert.show { encoding, delimiter in
+            ASCEditorManager.alert.show { encoding, delimiter in
                 handler(encoding, delimiter)
             }
         }
@@ -1777,7 +1777,8 @@ extension ASCEditorManager {
             handler: ASCEditorManagerOpenHandler? = nil
         ) {
             var cancel = false
-            handler?(.error, 1, ASCEditorManagerError(msg: NSLocalizedString("The ONLYOFFICE Editors module is missing. Please contact support@onlyoffice.com for more information.", comment: "")), &cancel)
+            handler?(.error, 1, ASCEditorManagerError(
+                msg: NSLocalizedString("The ONLYOFFICE Editors module is missing. Please contact support@onlyoffice.com for more information.", comment: "")), &cancel)
         }
 
         /// Open file from Document Server in collaboration mode
@@ -1791,7 +1792,8 @@ extension ASCEditorManager {
             handler: ASCEditorManagerOpenHandler? = nil
         ) {
             var cancel = false
-            handler?(.error, 1, ASCEditorManagerError(msg: NSLocalizedString("The ONLYOFFICE Editors module is missing. Please contact support@onlyoffice.com for more information.", comment: "")), &cancel)
+            handler?(.error, 1, ASCEditorManagerError(
+                msg: NSLocalizedString("The ONLYOFFICE Editors module is missing. Please contact support@onlyoffice.com for more information.", comment: "")), &cancel)
         }
 
         /// Converting a file to an internal format for opening in an editor
@@ -1816,7 +1818,7 @@ extension ASCEditorManager {
     // MARK: - Private
 
     extension ASCEditorManager {
-        private let alert = ASCConverterOptionsAlert()
+        private static var alert = ASCConverterOptionsAlert()
     }
 
     // MARK: - DEEditorDelegate

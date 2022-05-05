@@ -85,6 +85,9 @@
 /* No comment provided by engineer. */
 "An unexpected error has occurred. Please try again later. Sorry for inconvenience." = "Une erreur inattendue s'est produite. Veuillez réessayer plus tard. Désolé pour cet inconvénient.";
 
+/* No comment provided by engineer. */
+"AppleId authentication failed" = "Authentification AppleId a échoué";
+
 /* Caption of the process */
 "Applying" = "Application";
 
@@ -213,6 +216,9 @@
 
 /* Caption of the processing */
 "Copying" = "Copie en cours";
+
+/* Description of file operation error */
+"Could not change file attributes" = "Impossible de modifier les attributs du fichier";
 
 /* Description of file operation error */
 "Could not change the directory" = "Impossible de modifier le répertoire";
@@ -546,6 +552,9 @@
 "Incorrect portal address" = "Adresse de portail incorrecte";
 
 /* No comment provided by engineer. */
+"Instructions had been sent to your email" = "Les instructions ont été envoyées à votre e-mail";
+
+/* No comment provided by engineer. */
 "Invalid Country Code" = "Code de pays Incorrect";
 
 /* No comment provided by engineer. */
@@ -798,6 +807,9 @@
 "Please retry. \n\n If the problem persists contact us and mention this error code: Google - %@" = "Veuillez réessayer. \n\n Si le problème persiste, contactez-nous et mentionnez ce code d'erreur : Google - %@";
 
 /* No comment provided by engineer. */
+"Please retry. \n\n If the problem persists contact us and mention this error code: Microsoft - %@" = "Veuillez réessayer. \n\n Si le problème persiste, contactez-nous et mentionnez ce code d'erreur : Microsoft - %@";
+
+/* No comment provided by engineer. */
 "Please retry. \n\n If the problem persists contact us and mention this error code: OneDrive - %@" = "Veuillez réessayer. \n\n Si le problème persiste, contactez-nous et mentionnez ce code d'erreur : OneDrive - %@";
 
 /* No comment provided by engineer. */
@@ -927,6 +939,12 @@
 /* No comment provided by engineer. */
 "Selecting access rights" = "Sélection des droits d'accès";
 
+/* No comment provided by engineer. */
+"Send" = "Envoyer";
+
+/* No comment provided by engineer. */
+"Send the profile deletion instructions to the email address %@?" = "Envoyer les instructions de suppression du profil à l'e-mail %@ ?";
+
 /* Caption of the process */
 "Sending" = "Envoi en cours";
 
@@ -998,6 +1016,9 @@
 
 /* Data units */
 "Tb" = "To";
+
+/* No comment provided by engineer. */
+"Terminate account" = "Résilier le compte";
 
 /* Part of phrases - By creating the portal you agree with our Privacy Policy and Terms of Service */
 "Terms of Service" = "Conditions d'utilisation";
@@ -1217,6 +1238,9 @@
 
 /* Introduction Step Two - Title */
 "Work with office files" = "Travailler avec des fichiers office";
+
+/* No comment provided by engineer. */
+"Wrong server, login or password." = "Serveur, identifiant ou mot de passe erroné.";
 
 /* No comment provided by engineer. */
 "Yandex directory" = "Répertoire Yandex";

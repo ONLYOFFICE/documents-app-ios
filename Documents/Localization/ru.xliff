@@ -42,6 +42,7 @@
       </trans-unit>
       <trans-unit id="i2t-Xh-reL.placeholder" xml:space="preserve">
         <source>example.com</source>
+        <target>example.com</target>
         <note>Class = "UITextField"; placeholder = "example.com"; ObjectID = "i2t-Xh-reL";</note>
       </trans-unit>
       <trans-unit id="idC-C3-Fpx.text" xml:space="preserve">
@@ -1322,6 +1323,7 @@ Note: if you forget the passcode, you'll need to delete and reinstall the app. A
       </trans-unit>
       <trans-unit id="ONLYOFFICE fillable form (.oform)" xml:space="preserve">
         <source>ONLYOFFICE fillable form (.oform)</source>
+        <target>Заполняемая форма ONLYOFFICE (.oform)</target>
         <note/>
       </trans-unit>
       <trans-unit id="ONLYOFFICE form template (.docxf)" xml:space="preserve">
@@ -2162,7 +2164,7 @@ others which use WebDAV protocol.</source>
       </trans-unit>
       <trans-unit id="Fill the shapes using gradients, images, or patterns. Choose the desirable line type." xml:space="preserve">
         <source>Fill the shapes using gradients, images, or patterns. Choose the desirable line type.</source>
-        <target state="translated">Выполняйте заливку фигур градиентом, изображением или узором. Выбирайте подходящий тип линий.</target>
+        <target>Выполняйте заливку фигур градиентом, изображением или узором. Выбирайте подходящий тип линий.</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="First name is incorrect" xml:space="preserve">
@@ -2294,7 +2296,7 @@ to the clipboard</source>
       </trans-unit>
       <trans-unit id="Log in to your cloud using Apple ID or Microsoft account." xml:space="preserve">
         <source>Log in to your cloud using Apple ID or Microsoft account.</source>
-        <target state="translated">Осуществляйте вход в облако с помощью Apple ID или аккаунта Microsoft.</target>
+        <target>Осуществляйте вход в облако с помощью Apple ID или аккаунта Microsoft.</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Logging in" xml:space="preserve">
@@ -2345,7 +2347,7 @@ to the clipboard</source>
       </trans-unit>
       <trans-unit id="More in autoshapes" xml:space="preserve">
         <source>More in autoshapes</source>
-        <target state="translated">Улучшенные автофигуры</target>
+        <target>Улучшенные автофигуры</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Move" xml:space="preserve">
@@ -2420,7 +2422,7 @@ to the clipboard</source>
       </trans-unit>
       <trans-unit id="New authentication methods" xml:space="preserve">
         <source>New authentication methods</source>
-        <target state="translated">Новые возможности входа</target>
+        <target>Новые возможности входа</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Next" xml:space="preserve">

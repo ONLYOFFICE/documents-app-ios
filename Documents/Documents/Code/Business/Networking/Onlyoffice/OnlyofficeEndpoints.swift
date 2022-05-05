@@ -145,7 +145,7 @@ class OnlyofficeAPI {
             }
 
             static func startEdit(file: ASCFile) -> Endpoint<OnlyofficeResponseType<String>> {
-                return Endpoint<OnlyofficeResponseType<String>>.make(String(format: Path.startEdit, file.id), .post, URLEncoding.default)
+                return Endpoint<OnlyofficeResponseType<String>>.make(String(format: Path.startEdit, file.id), .post)
             }
 
             static func trackEdit(file: ASCFile) -> Endpoint<OnlyofficeResponseType<Parameters>> {

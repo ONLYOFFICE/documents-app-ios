@@ -50,6 +50,8 @@
 		FC066B16252DC3CE007357F7 /* ASCiCloudProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC066B15252DC3CD007357F7 /* ASCiCloudProvider.swift */; };
 		FC08F8751ECB399900988DDE /* ASCConnectStorageOAuth2ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC08F8741ECB399900988DDE /* ASCConnectStorageOAuth2ViewController.swift */; };
 		FC08F8771ECB402000988DDE /* ASCConnectStorageOAuth2Dropbox.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC08F8761ECB402000988DDE /* ASCConnectStorageOAuth2Dropbox.swift */; };
+		FC09996F281921890063BB08 /* ASCOAuthCredential.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC09996E281921890063BB08 /* ASCOAuthCredential.swift */; };
+		FC099971281921C50063BB08 /* DropBoxRequestInterceptor.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC099970281921C50063BB08 /* DropBoxRequestInterceptor.swift */; };
 		FC0F01DF216F443E008D79A5 /* ASCLocalProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC0F01DE216F443E008D79A5 /* ASCLocalProvider.swift */; };
 		FC0F01E1216F46B7008D79A5 /* ASCOnlyofficeProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC0F01E0216F46B7008D79A5 /* ASCOnlyofficeProvider.swift */; };
 		FC0F01E3216F4EA7008D79A5 /* ASCWebDAVProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC0F01E2216F4EA7008D79A5 /* ASCWebDAVProvider.swift */; };
@@ -249,7 +251,6 @@
 		FC7D9984272996D600410795 /* UIButton+Style.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC7D9981272996D600410795 /* UIButton+Style.swift */; };
 		FC7D99862729972400410795 /* UITapGestureRecognizer+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC7D99852729972400410795 /* UITapGestureRecognizer+Extensions.swift */; };
 		FC7D998B272997B500410795 /* OnedriveEndpoints.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC7D9987272997B500410795 /* OnedriveEndpoints.swift */; };
-		FC7D998C272997B500410795 /* OneDriveOAuthCredential.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC7D9988272997B500410795 /* OneDriveOAuthCredential.swift */; };
 		FC7D998D272997B500410795 /* OnedriveTokenAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC7D9989272997B500410795 /* OnedriveTokenAdapter.swift */; };
 		FC7D998E272997B500410795 /* OnedriveApiClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC7D998A272997B500410795 /* OnedriveApiClient.swift */; };
 		FC7D9990272997FF00410795 /* UINavigationItem+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC7D998F272997FF00410795 /* UINavigationItem+Extensions.swift */; };
@@ -527,6 +528,8 @@
 		FC066B15252DC3CD007357F7 /* ASCiCloudProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASCiCloudProvider.swift; sourceTree = "<group>"; };
 		FC08F8741ECB399900988DDE /* ASCConnectStorageOAuth2ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASCConnectStorageOAuth2ViewController.swift; sourceTree = "<group>"; };
 		FC08F8761ECB402000988DDE /* ASCConnectStorageOAuth2Dropbox.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASCConnectStorageOAuth2Dropbox.swift; sourceTree = "<group>"; };
+		FC09996E281921890063BB08 /* ASCOAuthCredential.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASCOAuthCredential.swift; sourceTree = "<group>"; };
+		FC099970281921C50063BB08 /* DropBoxRequestInterceptor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DropBoxRequestInterceptor.swift; sourceTree = "<group>"; };
 		FC0F01DE216F443E008D79A5 /* ASCLocalProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCLocalProvider.swift; sourceTree = "<group>"; };
 		FC0F01E0216F46B7008D79A5 /* ASCOnlyofficeProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCOnlyofficeProvider.swift; sourceTree = "<group>"; };
 		FC0F01E2216F4EA7008D79A5 /* ASCWebDAVProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCWebDAVProvider.swift; sourceTree = "<group>"; };
@@ -726,7 +729,6 @@
 		FC7D9981272996D600410795 /* UIButton+Style.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIButton+Style.swift"; sourceTree = "<group>"; };
 		FC7D99852729972400410795 /* UITapGestureRecognizer+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UITapGestureRecognizer+Extensions.swift"; sourceTree = "<group>"; };
 		FC7D9987272997B500410795 /* OnedriveEndpoints.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OnedriveEndpoints.swift; sourceTree = "<group>"; };
-		FC7D9988272997B500410795 /* OneDriveOAuthCredential.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OneDriveOAuthCredential.swift; sourceTree = "<group>"; };
 		FC7D9989272997B500410795 /* OnedriveTokenAdapter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OnedriveTokenAdapter.swift; sourceTree = "<group>"; };
 		FC7D998A272997B500410795 /* OnedriveApiClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OnedriveApiClient.swift; sourceTree = "<group>"; };
 		FC7D998F272997FF00410795 /* UINavigationItem+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UINavigationItem+Extensions.swift"; sourceTree = "<group>"; };
@@ -1347,6 +1349,7 @@
 				FC68522B26835A1700D830EC /* Onedrive */,
 				FC5D0412263BE8B700D9DBCF /* Dropbox */,
 				FC5D0438263C3EC000D9DBCF /* Nextcloud */,
+				FC09996E281921890063BB08 /* ASCOAuthCredential.swift */,
 				FC5D040A263AE28400D9DBCF /* Endpoint.swift */,
 				FC5D040C263AEDCD00D9DBCF /* NetworkingClient.swift */,
 				FC5D040E263AF06400D9DBCF /* NetworkingError.swift */,
@@ -1361,6 +1364,7 @@
 				FC5D0435263C2BD800D9DBCF /* Model */,
 				FC5D0413263BE8F300D9DBCF /* DropboxApiClient.swift */,
 				FC5D0415263BECB600D9DBCF /* DropboxEndpoints.swift */,
+				FC099970281921C50063BB08 /* DropBoxRequestInterceptor.swift */,
 			);
 			path = Dropbox;
 			sourceTree = "<group>";
@@ -1541,7 +1545,6 @@
 			children = (
 				FC7D998A272997B500410795 /* OnedriveApiClient.swift */,
 				FC7D9987272997B500410795 /* OnedriveEndpoints.swift */,
-				FC7D9988272997B500410795 /* OneDriveOAuthCredential.swift */,
 				FC7D9989272997B500410795 /* OnedriveTokenAdapter.swift */,
 			);
 			path = Onedrive;
@@ -2849,7 +2852,6 @@
 				FC2C73DC2754BCA7008E9063 /* ASCPortalType.swift in Sources */,
 				FCFE46DB275E237E007C9AE0 /* ASCEntityExistenceChecker.swift in Sources */,
 				FC7D99202729942700410795 /* ASCSharingAddRightHoldersView.swift in Sources */,
-				FC7D998C272997B500410795 /* OneDriveOAuthCredential.swift in Sources */,
 				FC2B0CCA264149E200969DB9 /* OnlyofficeAuth.swift in Sources */,
 				FC7D99412729942700410795 /* ASCSharingSettingsVerifyRightHoldersViewController.swift in Sources */,
 				FCF2761C22C0E8E500984E83 /* ASCProfileAvatarView.swift in Sources */,
@@ -2909,6 +2911,7 @@
 				FC768D3E277D96D200D2FDBC /* ASCSharingSettingsAccessOFormProvider.swift in Sources */,
 				FC67072C252DC4A600DFD268 /* ObservableChainingProxy.swift in Sources */,
 				FCA6946B2057ED9900ED8D8E /* Data+Extension.swift in Sources */,
+				FC09996F281921890063BB08 /* ASCOAuthCredential.swift in Sources */,
 				FC2B0CC8264146C100969DB9 /* OnlyofficeAuthRequest.swift in Sources */,
 				FCDA61001EA0ED6800A12E16 /* ASCTransferNavigationController.swift in Sources */,
 				FCADF37A1EC9DA9A001CA4A9 /* NSLayoutConstraint+Extensions.swift in Sources */,
@@ -3027,6 +3030,7 @@
 				8AF0B3662360B28900383610 /* ASCDropboxProvider.swift in Sources */,
 				FC2C73DA2754BC5F008E9063 /* ASCOnlyofficeFileInternalLinkMaker.swift in Sources */,
 				FC7D99722729961100410795 /* UIBarButtonItem+Extensions.swift in Sources */,
+				FC099971281921C50063BB08 /* DropBoxRequestInterceptor.swift in Sources */,
 				8A01844B23A261540025BE85 /* ASCConnectCloudViewController.swift in Sources */,
 				FC2C73E32754BCDF008E9063 /* ASCPortalTypeDefinderByCurrentConnection.swift in Sources */,
 				FC768D3D277D96D200D2FDBC /* ASCSharingSettingsAccessPresentationProvider.swift in Sources */,

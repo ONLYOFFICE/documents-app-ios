@@ -372,7 +372,7 @@ class ASCEditorManager: NSObject {
                     }
                 }
             } else {
-                OnlyofficeApiClient.request(OnlyofficeAPI.Endpoints.Files.startEdit(file: file), ["editingAlone": "true"]) { response, error in
+                OnlyofficeApiClient.request(OnlyofficeAPI.Endpoints.Files.startEdit(file: file), ["editingAlone": true]) { response, error in
                     log.info("apiFileStartEdit")
 
                     if let error = error {
@@ -1001,6 +1001,7 @@ extension ASCEditorManager {
                 documentPermissions = [
                     "fillForms": true,
                     "onDevice": true,
+                    "fileType": "oform",
                 ].jsonString()
             }
 
@@ -1163,7 +1164,8 @@ extension ASCEditorManager {
             if let communityServerVersion = OnlyofficeApiClient.shared.serverVersion,
                communityServerVersion.isVersion(greaterThanOrEqualTo: "11.0")
             {
-                documentInfo["favorite"] = file.isFavorite
+                documentInfo["favorite"] = file.isFavorite && !user.isVisitor
+                documentInfo["denyDownload"] = file.denyDownload
             }
 
             if !(viewMode || !sdkCheck) {
@@ -1738,19 +1740,28 @@ extension ASCEditorManager {
                             documentsVC = documentsNC.viewControllers.first as? ASCDocumentsViewController
                         }
                     } else {
-                        if let documentsNC = splitVC.viewControllers.first as? ASCBaseNavigationController {
-                            documentsVC = documentsNC.viewControllers.last as? ASCDocumentsViewController
-                        }
+                        documentsVC = ASCViewControllerManager.shared.rootController?.topMostViewController() as? ASCDocumentsViewController
                     }
 
                     if let documentsVC = documentsVC {
-                        let openHandler = documentsVC.openProgress(file: file, title: NSLocalizedString("Processing", comment: "Caption of the processing") + "...", 0.15)
-                        let closeHandler = documentsVC.closeProgress(file: file, title: NSLocalizedString("Saving", comment: "Caption of the processing"))
+                        let openHandler = documentsVC.openProgress(
+                            file: file,
+                            title: NSLocalizedString("Processing", comment: "Caption of the processing") + "...",
+                            0.15
+                        )
+                        let closeHandler = documentsVC.closeProgress(
+                            file: file,
+                            title: NSLocalizedString("Saving", comment: "Caption of the processing")
+                        )
 
                         strongSelf.encoding = encoding
                         strongSelf.delimiter = delimiter + 1
-
-                        strongSelf.editLocal(file, viewMode: strongSelf.openedFileInViewMode, openHandler: openHandler, closeHandler: closeHandler)
+                        strongSelf.editLocal(
+                            file,
+                            viewMode: strongSelf.openedFileInViewMode,
+                            openHandler: openHandler,
+                            closeHandler: closeHandler
+                        )
                     }
                 }
             }

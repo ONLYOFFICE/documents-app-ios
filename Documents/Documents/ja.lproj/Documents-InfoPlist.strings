@@ -1,6 +1,9 @@
 /* Bundle name */
 "CFBundleName" = "ドキュメント";
 
+/* (No Commment) */
+"CFBundleDisplayName" = "ドキュメント";
+
 /* (No Comment) */
 "New Document" = "新規ドキュメント";
 
@@ -18,4 +21,13 @@
 
 /* Privacy - Photo Library Additions Usage Description */
 "NSPhotoLibraryAddUsageDescription" = "このアプリ内で写真をアップロードできるようになるには、フォトライブラリーへのアクセスが必要です。";
+
+/* Privacy - Photo Library Usage Description */
+"NSPhotoLibraryUsageDescription" = "このアプリ内で写真をアップロードできるようになるには、フォトライブラリーへのアクセスが必要です。";
+
+/* (No Comment) */
+"ONLYOFFICE fillable form (.oform)" = "ONLYOFFICE記入可能なオンライン フォーム (.oform)";
+
+/* (No Comment) */
+"ONLYOFFICE form template (.docxf)" = "ONLYOFFICEドキュメント フォーム テンプレート (.docxf)";
 

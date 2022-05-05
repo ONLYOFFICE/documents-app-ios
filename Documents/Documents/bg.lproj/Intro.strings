@@ -1,8 +1,8 @@
 /* Class = "UILabel"; text = "Here at DESIGN, we sometimes talk about web design, and we’re always talking about print design, but one thing we don’t often write about are mobile design interfaces. "; ObjectID = "De8-tD-APT"; Note = "Do not translate"; */
-"De8-tD-APT.text" = "Here at DESIGN, we sometimes talk about web design, and we’re always talking about print design, but one thing we don’t often write about are mobile design interfaces.";
+"De8-tD-APT.text" = "Тук в DESIGN понякога говорим за уеб дизайн и винаги говорим за печатен дизайн, но едно нещо, за което не пишем често, са интерфейсите за мобилен дизайн. ";
 
 /* Class = "UIButton"; normalTitle = "SKIP"; ObjectID = "JV9-d9-sJs"; */
-"JV9-d9-sJs.normalTitle" = "пропускане";
+"JV9-d9-sJs.normalTitle" = "ПРОПУСКАНЕ";
 
 /* Class = "UILabel"; text = "App Onboarding Design"; ObjectID = "KAF-Bt-8qi"; Note = "Do not translate"; */
 "KAF-Bt-8qi.text" = "Дизайн за Вграждане в Приложение";

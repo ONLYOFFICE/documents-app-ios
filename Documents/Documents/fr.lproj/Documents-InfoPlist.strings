@@ -26,5 +26,8 @@
 "NSPhotoLibraryUsageDescription" = "Cette application nécessite un accès à la galerie de photos, afin que vous puissiez charger vos photos dans l'application.";
 
 /* (No Comment) */
+"ONLYOFFICE fillable form (.oform)" = "Formulaire ONLYOFFICE remplissable (.oform)";
+
+/* (No Comment) */
 "ONLYOFFICE form template (.docxf)" = "Modèle de formulaire ONLYOFFICE (.docxf)";
 

@@ -196,6 +196,7 @@ class ASCEditorManager: NSObject, DEEditorDelegate, SEEditorDelegate, PEEditorDe
             documentPermissions = [
                 "fillForms": true,
                 "onDevice": true,
+                "fileType": "oform",
             ].jsonString()
         }
 

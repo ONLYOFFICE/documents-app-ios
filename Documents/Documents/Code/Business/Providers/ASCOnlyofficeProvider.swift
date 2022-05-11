@@ -272,8 +272,8 @@ class ASCOnlyofficeProvider: ASCFileProviderProtocol & ASCSortableFileProviderPr
             }
 
             /// Filter
-            if let filter = parameters["filterType"] as? String {
-                params["filterType"] = filter
+            if let filters = parameters["filters"] as? [String: Any] {
+                params.merge(filters, uniquingKeysWith: { current, _ in current })
             }
 
             strongSelf.apiClient.request(OnlyofficeAPI.Endpoints.Folders.path(of: folder), params) { [weak self] response, error in

@@ -171,7 +171,7 @@ class ASCLocalProvider: ASCFileProviderProtocol & ASCSortableFileProviderProtoco
         }
 
         // Filter
-        if let filterType = parameters["filterType"] as? FilterType {
+        if let filterType = parameters["filterType"] as? ApiFilterType {
             commonList = { list in
                 switch filterType {
                 case .none: return list

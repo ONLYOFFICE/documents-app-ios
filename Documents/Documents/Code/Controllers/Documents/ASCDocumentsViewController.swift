@@ -116,7 +116,16 @@ class ASCDocumentsViewController: ASCBaseTableViewController, UIGestureRecognize
     private lazy var defaultsSortTypes: [ASCDocumentSortType] = [.dateandtime, .az, .type, .size]
 
     // Filter
-    private lazy var filtersViewController = ASCFiltersViewController()
+
+    lazy var filtersViewController = ASCFiltersViewController()
+    private lazy var filtersController: ASCOnlyOfficeFiltersController = {
+        let builder = ASCFiltersCollectionViewModelBuilder()
+        return ASCOnlyOfficeFiltersController(
+            builder: builder,
+            filtersViewController: filtersViewController,
+            itemsCount: total
+        )
+    }()
 
     // MARK: - Outlets
 
@@ -480,10 +489,13 @@ class ASCDocumentsViewController: ASCBaseTableViewController, UIGestureRecognize
     }
 
     @objc func onFilterAction() {
-        guard let folderId = folder?.id else { return }
-        filtersViewController.folderId = folderId
-        filtersViewController.showResultsCompletion = { [weak self] in
-            self?.loadFirstPage()
+        if provider?.type == .onlyoffice, let provider = provider as? ASCOnlyofficeProvider {
+            filtersController.folder = folder
+            filtersController.provider = provider
+            filtersController.actionButtonTappedClousure = { [weak self] in
+                self?.loadFirstPage()
+            }
+            filtersController.updateViewModel()
         }
         let navigationVC = UINavigationController(rootASCViewController: filtersViewController)
         if UIDevice.pad {
@@ -886,9 +898,9 @@ class ASCDocumentsViewController: ASCBaseTableViewController, UIGestureRecognize
             ]
         }
 
-        // filter
-        let filterType = filtersViewController.fiterTypeIdentifier()
-        params["filterType"] = filterType
+        // filter MARK: - TODO
+//        let filterType = filtersViewController.fiterTypeIdentifier()
+//        params["filterType"] = filterType
 
         provider?.fetch(for: folder, parameters: params) { [weak self] provider, folder, success, error in
             guard let strongSelf = self else { return }
@@ -932,10 +944,8 @@ class ASCDocumentsViewController: ASCBaseTableViewController, UIGestureRecognize
                 params["sort"] = sortParams
             }
 
-            // filter
-            let filterType = filtersViewController.fiterTypeIdentifier()
-            if filterType != .none {
-                params["filterType"] = filterType.rawValue
+            if provider?.type == .onlyoffice {
+                params["filters"] = filtersController.filtersParams
             }
 
             cloudProvider.fetch(for: folder, parameters: params) { [weak self] provider, entity, success, error in

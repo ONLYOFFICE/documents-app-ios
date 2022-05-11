@@ -63,21 +63,22 @@ class ASCAboutViewController: UITableViewController, UIGestureRecognizerDelegate
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        var convertertVersion = "none"
+        var versionInfo = [
+            [NSLocalizedString("Version", comment: ""), " \(ASCCommon.appVersion ?? "") (\(ASCCommon.appBuild ?? ""))"],
+        ]
 
         #if !NO_EDITORS
-            convertertVersion = DocumentLocalConverter.sdkVersion() ?? ""
+            versionInfo += [
+                ["SDK", ASCEditorManager.shared.localSDKVersion().joined(separator: ".")],
+                [NSLocalizedString("Converter", comment: ""), DocumentLocalConverter.sdkVersion() ?? ""],
+            ]
         #endif
 
-        let versionInfo = [
-            [NSLocalizedString("Version", comment: ""), " \(ASCCommon.appVersion ?? "") (\(ASCCommon.appBuild ?? ""))"],
-            ["SDK", ASCEditorManager.shared.localSDKVersion().joined(separator: ".")],
-            [NSLocalizedString("Converter", comment: ""), convertertVersion],
-        ]
-        .map { $0.joined(separator: " ") }
-        .joined(separator: "\n")
+        let versionInfoString = versionInfo
+            .map { $0.joined(separator: " ") }
+            .joined(separator: "\n")
 
-        versionLabel.text = versionInfo
+        versionLabel.text = versionInfoString
         copyrightsLabel.text = ASCConstants.Name.copyright
 
         let logoGestureTap = UITapGestureRecognizer(target: self, action: #selector(logoTap))

@@ -29,17 +29,16 @@ class ASCFiltersViewController: UIViewController {
                 reloadColletionView()
             }
             if viewModel.state == .loading {
-                // MARK: TODO activity indicator
-
-                showResultsButton.setTitle("Loading...", for: .normal)
+                showLoading()
             } else {
+                hideLoading()
                 showResultsButton.setTitle(viewModel.actionButtonTitle, for: .normal)
             }
         }
     }
 
     var collectionView: UICollectionView!
-
+    private var activityIndicator: UIActivityIndicatorView!
     private lazy var showResultsButton: ASCButtonStyle = {
         $0.styleType = .blank
         return $0
@@ -72,6 +71,39 @@ class ASCFiltersViewController: UIViewController {
 }
 
 private extension ASCFiltersViewController {
+    
+    // MARK: - Activity Indicator
+
+    func showLoading() {
+        showResultsButton.setTitle("", for: .normal)
+
+        if activityIndicator == nil {
+            activityIndicator = createActivityIndicator()
+        }
+        showSpinning()
+    }
+
+    func hideLoading() {
+        activityIndicator?.stopAnimating()
+    }
+
+    func createActivityIndicator() -> UIActivityIndicatorView {
+        let activityIndicator = UIActivityIndicatorView()
+        activityIndicator.hidesWhenStopped = true
+        return activityIndicator
+    }
+
+    func showSpinning() {
+        showResultsButton.addSubview(activityIndicator)
+        activityIndicator.anchor(top: showResultsButton.topAnchor,
+                                 left: showResultsButton.leftAnchor,
+                                 bottom: showResultsButton.bottomAnchor,
+                                 right: showResultsButton.rightAnchor)
+        activityIndicator.startAnimating()
+    }
+
+    // MARK: - Cell Actions
+
     func resetCell(at indexPath: IndexPath) {
         viewModel.didFilterResetBtnTapped(getFilterViewModel(indexPath: indexPath))
     }
@@ -84,6 +116,8 @@ private extension ASCFiltersViewController {
         }
         return nil
     }
+
+    // MARK: - Configure
 
     func showResultButtonConstraints() {
         showResultsButton.setTitle(viewModel.actionButtonTitle, for: .normal)
@@ -151,6 +185,13 @@ private extension ASCFiltersViewController {
         viewModel.data[indexPath.section].filters[indexPath.item]
     }
 
+    func reloadColletionView() {
+        collectionView.removeFromSuperview()
+        setupCollectionView()
+    }
+
+    // MARK: - objc methods
+
     @objc func resetBarButtonItemTapped() {
         viewModel.resetButtonClosure()
     }
@@ -162,11 +203,6 @@ private extension ASCFiltersViewController {
     @objc func onShowResultsButtonTapped() {
         viewModel.actionButtonClosure()
         dismiss(animated: true)
-    }
-
-    private func reloadColletionView() {
-        collectionView.removeFromSuperview()
-        setupCollectionView()
     }
 }
 

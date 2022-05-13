@@ -6,7 +6,10 @@
 //  Copyright © 2017 Ascensio System SIA. All rights reserved.
 //
 
-import DocumentConverter
+#if !NO_EDITORS
+    import DocumentConverter
+#endif
+
 import FileKit
 import Kingfisher
 import MBProgressHUD
@@ -199,6 +202,11 @@ class ASCSettingsViewController: UITableViewController, MFMailComposeViewControl
     func sendFeedback() {
         let composer = MFMailComposeViewController()
         let localSdkVersion = ASCEditorManager.shared.localSDKVersion().joined(separator: ".")
+        var converterVersion = "none"
+
+        #if !NO_EDITORS
+            converterVersion = DocumentLocalConverter.sdkVersion() ?? ""
+        #endif
 
         if MFMailComposeViewController.canSendMail() {
             composer.mailComposeDelegate = self
@@ -209,7 +217,7 @@ class ASCSettingsViewController: UITableViewController, MFMailComposeViewControl
                 String(repeating: "_", count: 20),
                 "App version: \(ASCCommon.appVersion ?? "Unknown") (\(ASCCommon.appBuild ?? "Unknown"))",
                 "SDK: \(localSdkVersion)",
-                "Converter: \(DocumentLocalConverter.sdkVersion() ?? "")",
+                "Converter: \(converterVersion)",
                 "Device model: \(Device.current.safeDescription)",
                 "iOS Version: \(ASCCommon.systemVersion)",
             ].joined(separator: "\n"), isHTML: false)

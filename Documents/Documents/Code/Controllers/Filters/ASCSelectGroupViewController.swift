@@ -57,7 +57,7 @@ class ASCSelectGroupViewController: UIViewController {
                     let groupName = group.name
                     let id = group.id
 
-                    self.dataArray.append(ASCGroupTableViewDataModelItem(groupId: id, groupName: groupName))
+                    self.dataArray.append(ASCGroupTableViewDataModelItem(groupId: id, groupName: groupName, isSelected: false))
                 }
 
                 DispatchQueue.main.async { [weak self] in
@@ -131,6 +131,10 @@ extension ASCSelectGroupViewController: UITableViewDelegate, UITableViewDataSour
         } else {
             cell.textLabel?.text = dataModel.groupName
         }
+
+        if dataModel.isSelected == true {
+            cell.accessoryType = .checkmark
+        }
         return cell
     }
 
@@ -142,16 +146,57 @@ extension ASCSelectGroupViewController: UITableViewDelegate, UITableViewDataSour
         }
     }
 
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if tableView.cellForRow(at: indexPath)?.accessoryType == .checkmark {
-            tableView.cellForRow(at: indexPath)?.accessoryType = .none
-        } else {
-            tableView.cellForRow(at: indexPath)?.accessoryType = .checkmark
+    func deselectAll() {
+        filteredGroup.enumerated().forEach { index, _ in
+            filteredGroup[index].isSelected = false
         }
+
+        dataArray.enumerated().forEach { index, _ in
+            dataArray[index].isSelected = false
+        }
+    }
+
+    func selectCell(indexPath: IndexPath) {
+        let index: Int? = {
+            if isFiltering {
+                return filteredGroup.firstIndex { item in
+                    item.isSelected == true
+                }
+            } else {
+                return dataArray.firstIndex { item in
+                    item.isSelected == true
+                }
+            }
+        }()
+        if let index = index {
+            let previousCellIndexPath = IndexPath(row: index, section: 0)
+            tableView.cellForRow(at: previousCellIndexPath)?.accessoryType = .none
+        }
+        deselectAll()
+
+        let model = getDataModel(indexPath: indexPath)
+        if let dataArrayIndex = dataArray.firstIndex(where: { item in
+            guard let itemId = item.groupId, let modelId = model.groupId else { return false }
+            return itemId == modelId
+        }) {
+            dataArray[dataArrayIndex].isSelected = true
+        }
+
+        if let filteredGroupArrayIndex = filteredGroup.firstIndex(where: { item in
+            guard let itemId = item.groupId, let modelId = model.groupId else { return false }
+            return itemId == modelId
+        }) {
+            filteredGroup[filteredGroupArrayIndex].isSelected = true
+        }
+        tableView.cellForRow(at: indexPath)?.accessoryType = .checkmark
+    }
+
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let dataModel = getDataModel(indexPath: indexPath)
         if let filterText = dataModel.groupName {
             delegate?.updateData(filterText: filterText)
         }
+        selectCell(indexPath: indexPath)
         dismiss(animated: true)
     }
 

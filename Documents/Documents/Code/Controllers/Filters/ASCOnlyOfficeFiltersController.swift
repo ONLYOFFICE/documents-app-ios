@@ -104,7 +104,6 @@ class ASCOnlyOfficeFiltersController {
             }
 
             if isAthorModelsContainsSelectedId {
-
                 switch ApiFilterType(rawValue: filterViewModel.id) {
                 case .user:
                     let navigationVC = UINavigationController(rootASCViewController: self.selectUserViewController)
@@ -144,7 +143,6 @@ class ASCOnlyOfficeFiltersController {
         updateViewModel()
 
         let completion: (Int) -> Void = { [weak self] count in
-            print(count)
             self?.itemsCount = count
             self?.currentLoading = false
             self?.updateViewModel()
@@ -155,7 +153,6 @@ class ASCOnlyOfficeFiltersController {
                 completion(self?.itemsCount ?? 0)
                 return
             }
-            print(provider.total)
             completion(provider.total)
         })
     }
@@ -163,6 +160,9 @@ class ASCOnlyOfficeFiltersController {
 
 extension ASCOnlyOfficeFiltersController: ASCFiltersViewControllerDelegate {
     func updateData(filterText itemText: String) {
+        authorsModels.enumerated().forEach { index, _ in
+            authorsModels[index].selectedName = nil
+        }
         switch currentSelectedAuthorFilterType {
         case .user, .group:
             if let index = authorsModels.firstIndex(where: { $0.filterType == currentSelectedAuthorFilterType }) {

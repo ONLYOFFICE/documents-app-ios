@@ -13,4 +13,5 @@ struct ASCUserTableViewDataModelItem {
     var avatarImageUrl: String?
     var userName: String?
     var userPosition: String?
+    var isSelected: Bool
 }

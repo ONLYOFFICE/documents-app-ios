@@ -11,4 +11,5 @@ import Foundation
 struct ASCGroupTableViewDataModelItem {
     var groupId: String?
     var groupName: String?
+    var isSelected: Bool
 }

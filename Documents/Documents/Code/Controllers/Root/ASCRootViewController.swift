@@ -6,21 +6,20 @@
 //  Copyright © 2018 Ascensio System SIA. All rights reserved.
 //
 
-import UIKit
 import FileKit
+import UIKit
 
 class ASCRootViewController: ASCBaseTabBarController {
-
     // MARK: - Properties
-    
-    class override var storyboard: Storyboard { return Storyboard.main }
-    
+
+    override class var storyboard: Storyboard { return Storyboard.main }
+
     var currentSizeClass: UIUserInterfaceSizeClass = .compact
-    
+
     private var isFirstOpenDeviceCategory = false
     private var isFirstOpenOnlyofficeCategory = false
     private var isFirstOpenCloudCategory = false
-    
+
     var isUserInteractionEnabled: Bool = true {
         didSet {
             tabBar.isUserInteractionEnabled = isUserInteractionEnabled
@@ -32,10 +31,10 @@ class ASCRootViewController: ASCBaseTabBarController {
     deinit {
         NotificationCenter.default.removeObserver(self)
     }
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+
         if ASCCommon.isUnitTesting {
             displaySplash()
             return
@@ -72,25 +71,25 @@ class ASCRootViewController: ASCBaseTabBarController {
         if let onlyofficeSC = viewControllers?.first(where: { $0 is ASCOnlyofficeSplitViewController }) {
             onlyofficeSC.tabBarItem.title = ASCConstants.Name.appNameShort
         }
-        
+
         if #available(iOS 15.0, *), UIDevice.pad {
             let appearance = UITabBarAppearance()
             appearance.configureWithDefaultBackground()
-           
+
             tabBar.standardAppearance = appearance
             tabBar.scrollEdgeAppearance = tabBar.standardAppearance
         }
-        
+
         update(traitCollection: traitCollection)
-        
+
         checkNotifications()
     }
-    
+
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
     }
 
-    override var supportedInterfaceOrientations : UIInterfaceOrientationMask {
+    override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
         return UIDevice.phone ? .portrait : [.portrait, .landscape]
     }
 
@@ -102,9 +101,9 @@ class ASCRootViewController: ASCBaseTabBarController {
         super.traitCollectionDidChange(previousTraitCollection)
         update(traitCollection: traitCollection)
     }
-    
+
     private func update(traitCollection: UITraitCollection) {
-        if currentSizeClass != traitCollection.horizontalSizeClass && UIDevice.pad {
+        if currentSizeClass != traitCollection.horizontalSizeClass, UIDevice.pad {
             currentSizeClass = traitCollection.horizontalSizeClass
             NotificationCenter.default.post(name: ASCConstants.Notifications.updateSizeClass, object: currentSizeClass)
         }
@@ -113,18 +112,18 @@ class ASCRootViewController: ASCBaseTabBarController {
     private func displaySplash() {
         UIApplication.shared.windows.last?.rootViewController = StoryboardScene.Main.ascSplashViewController.instantiate()
     }
-    
+
     private func navigateLocalProvider(to folder: ASCFolder?) {
         if let index = viewControllers?.firstIndex(where: { $0 is ASCDeviceSplitViewController }) {
             selectedIndex = index
 
-            if  let splitVC = selectedViewController as? ASCDeviceSplitViewController,
-                let categoryNC = splitVC.primaryViewController as? ASCBaseNavigationController,
-                let categoryVC = categoryNC.topViewController as? ASCDeviceCategoryViewController ?? categoryNC.viewControllers.first as? ASCDeviceCategoryViewController
+            if let splitVC = selectedViewController as? ASCDeviceSplitViewController,
+               let categoryNC = splitVC.primaryViewController as? ASCBaseNavigationController,
+               let categoryVC = categoryNC.topViewController as? ASCDeviceCategoryViewController ?? categoryNC.viewControllers.first as? ASCDeviceCategoryViewController
             {
                 if let folder = folder {
                     isFirstOpenDeviceCategory = true
-                    
+
                     if folder.rootFolderType == .deviceTrash {
                         categoryVC.select(category: categoryVC.deviceTrashCategory)
                     } else {
@@ -147,17 +146,17 @@ class ASCRootViewController: ASCBaseTabBarController {
             }
         }
     }
-    
+
     private func navigateOnlyofficeProvider(to folder: ASCFolder?) {
         if let index = viewControllers?.firstIndex(where: { $0 is ASCOnlyofficeSplitViewController }) {
             selectedIndex = index
 
-            if  let splitVC = selectedViewController as? ASCOnlyofficeSplitViewController,
-                let categoryNC = splitVC.primaryViewController as? ASCBaseNavigationController,
-                let categoryVC = categoryNC.viewControllers.first(where: { $0 is ASCOnlyofficeCategoriesViewController }) as? ASCOnlyofficeCategoriesViewController
+            if let splitVC = selectedViewController as? ASCOnlyofficeSplitViewController,
+               let categoryNC = splitVC.primaryViewController as? ASCBaseNavigationController,
+               let categoryVC = categoryNC.viewControllers.first(where: { $0 is ASCOnlyofficeCategoriesViewController }) as? ASCOnlyofficeCategoriesViewController
             {
                 isFirstOpenOnlyofficeCategory = true
-                
+
                 if let folder = folder {
                     let category = ASCOnlyofficeCategory(folder: folder)
 
@@ -167,7 +166,7 @@ class ASCRootViewController: ASCBaseTabBarController {
                     /// Display stored folder if needed
                     delay(seconds: 0.01) {
                         if !(ASCFileManager.onlyofficeProvider?.isRoot(folder: folder) ?? false) {
-                            if  let documentsNC = splitVC.detailViewController as? ASCBaseNavigationController ?? splitVC.primaryViewController as? ASCBaseNavigationController
+                            if let documentsNC = splitVC.detailViewController as? ASCBaseNavigationController ?? splitVC.primaryViewController as? ASCBaseNavigationController
                             {
                                 let documentsVC = ASCDocumentsViewController.instantiate(from: Storyboard.main)
                                 documentsNC.pushViewController(documentsVC, animated: false)
@@ -182,13 +181,13 @@ class ASCRootViewController: ASCBaseTabBarController {
             }
         }
     }
-    
+
     private func navigateiCloudProvider(to folder: ASCFolder?) {
         if let index = viewControllers?.firstIndex(where: { $0 is ASCCloudsSplitViewController }) {
             selectedIndex = index
 
             if let splitVC = selectedViewController as? ASCCloudsSplitViewController,
-                let categoryVC = splitVC.primaryViewController?.topMostViewController() as? ASCCloudsViewController
+               let categoryVC = splitVC.primaryViewController?.topMostViewController() as? ASCCloudsViewController
             {
                 isFirstOpenCloudCategory = true
                 let cloudProvider = ASCFileManager.cloudProviders.first(where: { $0 is ASCiCloudProvider })
@@ -196,10 +195,10 @@ class ASCRootViewController: ASCBaseTabBarController {
             }
         }
     }
-    
+
     func display(provider: ASCFileProviderProtocol?, folder: ASCFolder?) {
         guard let provider = provider else { return }
-        
+
         if provider.type == .local {
             navigateLocalProvider(to: folder)
         } else if provider.type == .onlyoffice {
@@ -211,7 +210,7 @@ class ASCRootViewController: ASCBaseTabBarController {
                 selectedIndex = index
 
                 if let splitVC = selectedViewController as? ASCCloudsSplitViewController,
-                    let categoryVC = splitVC.primaryViewController?.topMostViewController() as? ASCCloudsViewController
+                   let categoryVC = splitVC.primaryViewController?.topMostViewController() as? ASCCloudsViewController
                 {
                     isFirstOpenCloudCategory = true
                     let cloudProvider = ASCFileManager.cloudProviders.first(where: { $0.id == provider.id })
@@ -226,8 +225,8 @@ class ASCRootViewController: ASCBaseTabBarController {
     @objc func checkShortcutLaunch() {
         if let appDelegate = UIApplication.shared.delegate as? AppDelegate {
             let createFile: () -> Void = {
-                if  ASCEditorManager.shared.isOpenedFile,
-                    let rootKeyWindowVC = UIApplication.shared.keyWindow?.rootViewController
+                if ASCEditorManager.shared.isOpenedFile,
+                   let rootKeyWindowVC = UIApplication.shared.keyWindow?.rootViewController
                 {
                     UIAlertController.showWarning(
                         in: rootKeyWindowVC.topMostViewController(),
@@ -235,8 +234,8 @@ class ASCRootViewController: ASCBaseTabBarController {
                     )
                     return
                 }
-                
-                var fileExt: String? = nil
+
+                var fileExt: String?
 
                 if UserDefaults.standard.bool(forKey: ASCConstants.SettingsKeys.forceCreateNewDocument) {
                     UserDefaults.standard.removeObject(forKey: ASCConstants.SettingsKeys.forceCreateNewDocument)
@@ -257,8 +256,9 @@ class ASCRootViewController: ASCBaseTabBarController {
                     rootVC.display(provider: ASCFileManager.localProvider, folder: nil)
 
                     delay(seconds: 0.3, completion: {
-                        if  let documentsVC = rootVC.topMostViewController() as? ASCDocumentsViewController,
-                            let provider = documentsVC.provider {
+                        if let documentsVC = rootVC.topMostViewController() as? ASCDocumentsViewController,
+                           let provider = documentsVC.provider
+                        {
                             ASCCreateEntity().createFile(fileExtension, for: provider, in: documentsVC)
                         }
                     })
@@ -293,7 +293,6 @@ class ASCRootViewController: ASCBaseTabBarController {
                     }
                 }
             }
-
 
             if appDelegate.passcodeLockPresenter.isPasscodePresented {
                 appDelegate.passcodeLockPresenter.passcodeLockVC.dismissCompletionCallback = {
@@ -331,14 +330,13 @@ class ASCRootViewController: ASCBaseTabBarController {
 // MARK: - UITabBarController Delegate
 
 extension ASCRootViewController: UITabBarControllerDelegate {
-
     func tabBarController(_ tabBarController: UITabBarController, didSelect viewController: UIViewController) {
 //        print("tabBarController didSelect")
     }
 
     func tabBarController(_ tabBarController: UITabBarController, shouldSelect viewController: UIViewController) -> Bool {
         guard tabBar.isUserInteractionEnabled else { return false }
-        
+
         if let viewController = viewController as? ASCBaseSplitViewController {
             if selectedViewController == viewController {
                 if UIDevice.phone {
@@ -355,37 +353,36 @@ extension ASCRootViewController: UITabBarControllerDelegate {
                 }
             } else {
                 if viewController.detailViewController == nil || ((viewController.detailViewController as? ASCDocumentsViewController) != nil) {
-                    
                     /// Display detail VC
-                    
+
                     if let deviceSC = viewController as? ASCDeviceSplitViewController,
-                        let categoryVC = deviceSC.primaryViewController?.topMostViewController() as? ASCDeviceCategoryViewController {
-                        
+                       let categoryVC = deviceSC.primaryViewController?.topMostViewController() as? ASCDeviceCategoryViewController
+                    {
                         if isFirstOpenDeviceCategory { return true }
                         isFirstOpenDeviceCategory = true
-                        
+
                         categoryVC.select(category: categoryVC.deviceDocumentsCategory)
                     } else if let deviceSC = viewController as? ASCOnlyofficeSplitViewController,
-                        let categoryVC = deviceSC.primaryViewController?.topMostViewController() as? ASCOnlyofficeCategoriesViewController {
+                              let categoryVC = deviceSC.primaryViewController?.topMostViewController() as? ASCOnlyofficeCategoriesViewController
+                    {
                         let category: ASCOnlyofficeCategory = {
                             $0.title = ASCOnlyofficeCategory.title(of: .onlyofficeUser)
                             $0.folder = ASCOnlyofficeCategory.folder(of: .onlyofficeUser)
                             return $0
                         }(ASCOnlyofficeCategory())
-                        
+
                         if isFirstOpenOnlyofficeCategory { return true }
                         isFirstOpenOnlyofficeCategory = true
-                        
+
                         categoryVC.select(category: category)
                     } else if let deviceSC = viewController as? ASCCloudsSplitViewController {
                         if deviceSC.detailViewController == nil || ((deviceSC.detailViewController as? ASCDocumentsViewController) != nil),
-                            let categoryNC = deviceSC.primaryViewController as? ASCCloudsNavigationController
+                           let categoryNC = deviceSC.primaryViewController as? ASCCloudsNavigationController
                         {
                             if let categoryVC = categoryNC.topViewController as? ASCCloudsViewController {
-                                
                                 if isFirstOpenCloudCategory { return true }
                                 isFirstOpenCloudCategory = true
-                                
+
                                 categoryVC.displayLastSelected()
                             } else if (categoryNC.topViewController as? ASCDocumentsViewController) == nil {
                                 categoryNC.popToRootViewController(animated: false)

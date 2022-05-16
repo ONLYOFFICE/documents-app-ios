@@ -6,18 +6,21 @@
 //  Copyright © 2021 Ascensio System SIA. All rights reserved.
 //
 
-import Foundation
 import Alamofire
+import Foundation
 
 class DropboxAPI {
-
-    struct Path {
-        static public let currentAccount = "users/get_current_account"
-        static public let temporaryLink = "files/get_temporary_link"
+    enum URL {
+        public static let api = "https://api.dropboxapi.com"
     }
 
-    struct Endpoints {
+    enum Path {
+        public static let currentAccount = "users/get_current_account"
+        public static let temporaryLink = "files/get_temporary_link"
+        public static let token = "oauth2/token"
+    }
+
+    enum Endpoints {
         static let currentAccount: Endpoint<DropboxAccount> = Endpoint<DropboxAccount>.make(Path.currentAccount, .post)
     }
-
 }

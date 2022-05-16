@@ -127,9 +127,11 @@ internal enum Asset {
     internal static let listMenuRestore = ImageAsset(name: "list-menu-restore")
     internal static let listMenuTrash = ImageAsset(name: "list-menu-trash")
     internal static let listMenuUpload = ImageAsset(name: "list-menu-upload")
+    internal static let signinApple = ImageAsset(name: "signin-apple")
     internal static let signinFacebook = ImageAsset(name: "signin-facebook")
     internal static let signinGoogle = ImageAsset(name: "signin-google")
     internal static let signinLinkedin = ImageAsset(name: "signin-linkedin")
+    internal static let signinMicrosoft = ImageAsset(name: "signin-microsoft")
     internal static let signinSso = ImageAsset(name: "signin-sso")
     internal static let signinTwitter = ImageAsset(name: "signin-twitter")
     internal static let categoryLogo = ImageAsset(name: "category-logo")
@@ -140,6 +142,7 @@ internal enum Asset {
     internal static let menuDenyAccess = ImageAsset(name: "menu-deny-access")
     internal static let menuFormFilling = ImageAsset(name: "menu-form-filling")
     internal static let menuFullAccess = ImageAsset(name: "menu-full-access")
+    internal static let menuOwner = ImageAsset(name: "menu-owner")
     internal static let menuReview = ImageAsset(name: "menu-review")
     internal static let menuViewOnly = ImageAsset(name: "menu-view-only")
     internal static let avatarDefaultGroup = ImageAsset(name: "avatar-default-group")
@@ -170,9 +173,9 @@ internal enum Asset {
     internal static let tabOnlyoffice = ImageAsset(name: "tab-onlyoffice")
     internal static let tabSettingsSelected = ImageAsset(name: "tab-settings-selected")
     internal static let tabSettings = ImageAsset(name: "tab-settings")
-    internal static let whatsnewFutureForm = ImageAsset(name: "whatsnew-future-form")
-    internal static let whatsnewFutureKeyboard = ImageAsset(name: "whatsnew-future-keyboard")
-    internal static let whatsnewFutureСleaFormat = ImageAsset(name: "whatsnew-future-сleaFormat")
+    internal static let whatsnewFuture1 = ImageAsset(name: "whatsnew-future-1")
+    internal static let whatsnewFuture2 = ImageAsset(name: "whatsnew-future-2")
+    internal static let whatsnewFuture3 = ImageAsset(name: "whatsnew-future-3")
   }
 }
 // swiftlint:enable identifier_name line_length nesting type_body_length type_name

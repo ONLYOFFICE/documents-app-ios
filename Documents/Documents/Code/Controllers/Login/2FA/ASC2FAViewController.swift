@@ -10,28 +10,29 @@ import UIKit
 
 class ASC2FAViewController: ASCBaseViewController {
     static let identifier = String(describing: ASC2FAViewController.self)
-    
-    class override var storyboard: Storyboard { return Storyboard.login }
+
+    override class var storyboard: Storyboard { return Storyboard.login }
 
     // MARK: - Properties
 
     var request: OnlyofficeAuthRequest?
     var completeon: ASCSignInComplateHandler?
 
-    @IBOutlet weak var pageControl: UIPageControl!
-    @IBOutlet weak var doneButton: UIButton!
+    @IBOutlet var pageControl: UIPageControl!
+    @IBOutlet var doneButton: UIButton!
 
     private var pageViewController: UIPageViewController? {
         didSet {
             configure()
         }
     }
+
     private var pages = [UIViewController]()
     private var pagesIdentifiers: [String] = [
         "ASC2FAStepInstallAppPageController",
         "ASC2FAStepRunAppPageController",
         "ASC2FAStepSecretPageController",
-        "ASC2FAStepCodePageController"
+        "ASC2FAStepCodePageController",
     ]
 
     // MARK: - Lifecycle Methods
@@ -57,7 +58,7 @@ class ASC2FAViewController: ASCBaseViewController {
         super.didReceiveMemoryWarning()
     }
 
-    override var supportedInterfaceOrientations : UIInterfaceOrientationMask {
+    override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
         return UIDevice.phone ? .portrait : [.portrait, .landscape]
     }
 
@@ -75,7 +76,7 @@ class ASC2FAViewController: ASCBaseViewController {
             } else {
                 pageController.view.backgroundColor = .white
             }
-            
+
             for subview in pageController.view.subviews {
                 if subview is UIPageControl {
                     subview.isHidden = true
@@ -133,7 +134,6 @@ class ASC2FAViewController: ASCBaseViewController {
         }
     }
 }
-
 
 extension ASC2FAViewController: UIPageViewControllerDelegate {
     func pageViewController(_ pageViewController: UIPageViewController,

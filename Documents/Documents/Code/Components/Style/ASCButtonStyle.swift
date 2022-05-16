@@ -9,11 +9,10 @@
 import UIKit
 
 enum ASCButtonStyleType: Int {
-    case `default`, action, bordered, gray
+    case `default`, action, bordered, gray, capsule
 }
 
 class ASCButtonStyle: UIButton {
-    
     // MARK: - Properties
 
     var styleType: ASCButtonStyleType = .default {
@@ -21,32 +20,32 @@ class ASCButtonStyle: UIButton {
             updateStyle()
         }
     }
-    
+
     @IBInspectable
     var styleTypeAdapter: Int {
         get {
             return styleType.rawValue
         }
-        set (styleIndex) {
+        set(styleIndex) {
             styleType = ASCButtonStyleType(rawValue: styleIndex) ?? .default
         }
     }
 
-    open override var isHighlighted: Bool {
+    override open var isHighlighted: Bool {
         didSet {
             switch styleType {
             case .action:
-                UIView.animate(withDuration: 0.2, delay: 0.0, options:[], animations: {
+                UIView.animate(withDuration: 0.2, delay: 0.0, options: [], animations: {
                     self.backgroundColor = self.isHighlighted
                         ? Asset.Colors.action.color.lighten()
                         : Asset.Colors.action.color
                     self.backgroundColor = self.isEnabled
                         ? self.backgroundColor
                         : .lightGray
-                }, completion:nil)
+                }, completion: nil)
                 setTitleColorForAllStates(.white)
             case .bordered:
-                UIView.animate(withDuration: 0.2, delay: 0.0, options:[], animations: {
+                UIView.animate(withDuration: 0.2, delay: 0.0, options: [], animations: {
                     self.backgroundColor = self.isHighlighted
                         ? .lightGray.lighten(by: 0.3)
                         : .clear
@@ -56,10 +55,10 @@ class ASCButtonStyle: UIButton {
                     self.backgroundColor = self.isEnabled
                         ? self.backgroundColor
                         : .lightGray
-                }, completion:nil)
+                }, completion: nil)
                 setTitleColorForAllStates(.gray)
             case .gray:
-                UIView.animate(withDuration: 0.2, delay: 0.0, options:[], animations: {
+                UIView.animate(withDuration: 0.2, delay: 0.0, options: [], animations: {
                     if #available(iOS 13.0, *) {
                         self.backgroundColor = self.isHighlighted
                             ? .tertiarySystemFill.lighten()
@@ -72,14 +71,23 @@ class ASCButtonStyle: UIButton {
                     self.backgroundColor = self.isEnabled
                         ? self.backgroundColor
                         : .lightGray
-                }, completion:nil)
+                }, completion: nil)
                 if #available(iOS 13.0, *) {
                     setTitleColorForAllStates(.label)
                 } else {
                     setTitleColorForAllStates(.black)
                 }
+            case .capsule:
+                UIView.animate(withDuration: 0.2, delay: 0.0, options: [], animations: {
+                    self.backgroundColor = self.isHighlighted
+                        ? Asset.Colors.brend.color.lighten()
+                        : Asset.Colors.brend.color
+                    self.backgroundColor = self.isEnabled
+                        ? self.backgroundColor
+                        : .lightGray
+                }, completion: nil)
             default:
-                UIView.animate(withDuration: 0.2, delay: 0.0, options:[], animations: {
+                UIView.animate(withDuration: 0.2, delay: 0.0, options: [], animations: {
                     self.backgroundColor = self.isHighlighted
                         ? Asset.Colors.brend.color.lighten()
                         : Asset.Colors.brend.color
@@ -90,12 +98,12 @@ class ASCButtonStyle: UIButton {
                     self.titleLabel?.transform = self.isHighlighted
                         ? CGAffineTransform(scaleX: 0.92, y: 0.92)
                         : .identity
-                }, completion:nil)
+                }, completion: nil)
             }
         }
     }
 
-    open override var isEnabled: Bool {
+    override open var isEnabled: Bool {
         didSet {
             switch styleType {
             case .action:
@@ -116,7 +124,7 @@ class ASCButtonStyle: UIButton {
 
     // MARK: - Lifecycle Methods
 
-    public override init(frame: CGRect) {
+    override public init(frame: CGRect) {
         super.init(frame: frame)
     }
 
@@ -126,6 +134,17 @@ class ASCButtonStyle: UIButton {
 
     override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
         updateColors()
+    }
+
+    override func layoutSubviews() {
+        super.layoutSubviews()
+
+        switch styleType {
+        case .capsule:
+            layerCornerRadius = height * 0.5
+        default:
+            break
+        }
     }
 
     private func updateStyle() {
@@ -149,6 +168,12 @@ class ASCButtonStyle: UIButton {
             layerCornerRadius = 8.0
         case .gray:
             layerCornerRadius = 8.0
+        case .capsule:
+            backgroundColor = Asset.Colors.brend.color
+            titleLabel?.textStyle = ASCTextStyle.subheadBold
+            titleLabel?.adjustsFontForContentSizeCategory = true
+            contentEdgeInsets = UIEdgeInsets(top: 5, left: 15, bottom: 5, right: 15)
+            layerCornerRadius = height * 0.5
         default:
             backgroundColor = Asset.Colors.brend.color
             titleLabel?.textStyle = ASCTextStyle.bodyWhite
@@ -158,11 +183,10 @@ class ASCButtonStyle: UIButton {
 
         /// Update disabled
         let enabled = isEnabled
-        self.isEnabled = enabled
+        isEnabled = enabled
     }
 
     private func updateColors() {
         //
     }
-
 }

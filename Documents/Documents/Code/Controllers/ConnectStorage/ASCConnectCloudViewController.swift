@@ -6,8 +6,8 @@
 //  Copyright © 2018 Ascensio System SIA. All rights reserved.
 //
 
-import UIKit
 import MBProgressHUD
+import UIKit
 
 class ASCConnectCloudViewController: UITableViewController {
     static let identifier = String(describing: ASCConnectCloudViewController.self)
@@ -102,7 +102,7 @@ class ASCConnectCloudViewController: UITableViewController {
             return ""
         }
     }
-    
+
     // MARK: - Lifecycle Methods
 
     override func viewDidLoad() {
@@ -122,12 +122,12 @@ class ASCConnectCloudViewController: UITableViewController {
         }
         return nil
     }
-    
+
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if let cell = tableView.cellForRow(at: indexPath) {
             if let identifier = cell.reuseIdentifier {
                 let providerType = ASCFileProviderType(rawValue: identifier) ?? .unknown
-                
+
                 switch providerType {
                 case .googledrive:
                     tableView.deselectRow(at: indexPath, animated: true)
@@ -138,7 +138,6 @@ class ASCConnectCloudViewController: UITableViewController {
                     presentProviderConnection(by: providerType, animated: true)
                 default:
                     tableView.deselectRow(at: indexPath, animated: true)
-                    break
                 }
             }
         }
@@ -176,7 +175,7 @@ class ASCConnectCloudViewController: UITableViewController {
                 if let topViewController = UIApplication.topViewController() {
                     UIAlertController.showError(
                         in: topViewController,
-                        message: (info["error"] as? String) ?? NSLocalizedString("Wrong login or password.", comment: "")
+                        message: (info["error"] as? String) ?? NSLocalizedString("Wrong server, login or password.", comment: "")
                     )
                 }
             }
@@ -185,7 +184,7 @@ class ASCConnectCloudViewController: UITableViewController {
 
     private func checkProvider(info: [String: Any], complation: @escaping ((_ success: Bool, _ provider: ASCFileProviderProtocol?) -> Void)) {
         guard let providerKey = info["providerKey"] as? String,
-            let folderProviderType = ASCFolderProviderType(rawValue: providerKey)
+              let folderProviderType = ASCFolderProviderType(rawValue: providerKey)
         else {
             complation(false, nil)
             return
@@ -214,34 +213,31 @@ class ASCConnectCloudViewController: UITableViewController {
             let googleConnectController = ASCConnectStorageGoogleController()
             googleConnectController.complation = { [weak self] info in
                 self?.authComplation(info: info)
-                let _ = googleConnectController
+                _ = googleConnectController
             }
             delay(seconds: 0.1) {
                 googleConnectController.signIn(parentVC: self)
             }
-            break
         case .dropbox:
             let oauth2VC = ASCConnectStorageOAuth2ViewController.instantiate(from: Storyboard.connectStorage)
             let dropboxController = ASCConnectStorageOAuth2Dropbox()
-            dropboxController.clientId = ASCConstants.Clouds.Dropbox.clientId
+            dropboxController.clientId = ASCConstants.Clouds.Dropbox.appId
+            dropboxController.clientSecret = ASCConstants.Clouds.Dropbox.clientSecret
             dropboxController.redirectUrl = ASCConstants.Clouds.Dropbox.redirectUri
             oauth2VC.responseType = .token
             oauth2VC.complation = authComplation(info:)
             oauth2VC.delegate = dropboxController
             oauth2VC.title = "Dropbox"
-            
+
             if animated {
                 navigationController?.pushViewController(oauth2VC, animated: animated)
             } else {
                 connectionVC = oauth2VC
             }
         case .nextcloud:
-            connectionVC = ASCConnectStorageWebDavController.instantiate(from: Storyboard.connectStorage)
-            if let viewController = connectionVC as? ASCConnectStorageWebDavController {
+            connectionVC = ASCConnectStorageNextCloudServerController.instantiate(from: Storyboard.connectStorage)
+            if let viewController = connectionVC as? ASCConnectStorageNextCloudServerController {
                 viewController.complation = authComplation(info:)
-                viewController.title = providerName(type)
-                viewController.provider = .nextCloud
-                viewController.logo = providerImage(type)
             }
         case .owncloud:
             connectionVC = ASCConnectStorageWebDavController.instantiate(from: Storyboard.connectStorage)
@@ -279,7 +275,7 @@ class ASCConnectCloudViewController: UITableViewController {
             oauth2VC.complation = authComplation(info:)
             oauth2VC.delegate = onedriveController
             oauth2VC.title = "OneDrive"
-            
+
             if animated {
                 navigationController?.pushViewController(oauth2VC, animated: animated)
             } else {
@@ -311,17 +307,8 @@ class ASCConnectCloudViewController: UITableViewController {
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         guard let identifier = segue.identifier else { return }
-        
-//        let connectStorageSegue = StoryboardSegue.ConnectStorage(rawValue: identifier)
-        
+
         switch identifier {
-        case "nextcloudSegue":
-            if let viewController = segue.destination as? ASCConnectStorageWebDavController {
-                viewController.complation = authComplation(info:)
-                viewController.title = providerName(.nextcloud)
-                viewController.provider = .nextCloud
-                viewController.logo = providerImage(.nextcloud)
-            }
         case "owncloudSegue":
             if let viewController = segue.destination as? ASCConnectStorageWebDavController {
                 viewController.complation = authComplation(info:)
@@ -356,5 +343,4 @@ class ASCConnectCloudViewController: UITableViewController {
             break
         }
     }
-
 }

@@ -13,8 +13,8 @@ class ASCDeviceCategoryCell: UITableViewCell {
 
     // MARK: - Properties
 
-    @IBOutlet weak var caption: UILabel!
-    @IBOutlet weak var categoryImage: UIImageView!
+    @IBOutlet var caption: UILabel!
+    @IBOutlet var categoryImage: UIImageView!
 
     var category: ASCCategory? {
         didSet {
@@ -41,5 +41,4 @@ class ASCDeviceCategoryCell: UITableViewCell {
         caption?.text = category.title
         categoryImage?.image = category.image
     }
-
 }

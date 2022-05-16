@@ -9,6 +9,7 @@
 import Foundation
 
 // MARK: - Methods
+
 public extension Array {
     /// Insert an element at the beginning of array.
     ///
@@ -30,8 +31,8 @@ public extension Array {
     ///   - otherIndex: index of other element.
     mutating func safeSwap(from index: Index, to otherIndex: Index) {
         guard index != otherIndex else { return }
-        guard startIndex..<endIndex ~= index else { return }
-        guard startIndex..<endIndex ~= otherIndex else { return }
+        guard startIndex ..< endIndex ~= index else { return }
+        guard startIndex ..< endIndex ~= otherIndex else { return }
         swapAt(index, otherIndex)
     }
 
@@ -55,6 +56,7 @@ public extension Array {
 }
 
 // MARK: - Methods (Equatable)
+
 public extension Array where Element: Equatable {
     /// Remove all instances of an item from array.
     ///

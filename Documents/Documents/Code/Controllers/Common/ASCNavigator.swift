@@ -9,45 +9,42 @@
 import UIKit
 
 enum Destination {
-    
     // MARK: - Documents
-    
+
     case sort(types: [ASCDocumentSortStateType], ascending: Bool, complation: ASCSortViewController.ASCSortComplation?)
     case shareSettings(entity: ASCEntity)
-    
+
     // MARK: - Login
-    
+
     case onlyofficeConnectPortal
     case onlyofficeSignIn(portal: String?)
     case countryPhoneCodes
-    
+
     // MARK: - Password recovery
-    
+
     case recoveryPasswordByEmail
     case recoveryPasswordConfirmed(email: String)
-    
 }
 
 final class ASCNavigator {
-    
     // MARK: - Properties
-    
+
     private weak var navigationController: UINavigationController?
 
     // MARK: - Initialize
-    
+
     init(navigationController: UINavigationController?) {
         self.navigationController = navigationController
     }
-    
+
     // MARK: - Public
-    
+
     @discardableResult
     func navigate(to destination: Destination) -> UIViewController? {
         let viewController = makeViewController(for: destination)
-        
+
         switch destination {
-        case .sort(let types, let ascending, let complation):
+        case let .sort(types, ascending, complation):
             if let sortViewController = viewController as? ASCSortViewController {
                 sortViewController.types = types
                 sortViewController.ascending = ascending
@@ -55,10 +52,10 @@ final class ASCNavigator {
                 let navigationVC = UINavigationController(rootASCViewController: sortViewController)
                 navigationController?.present(navigationVC, animated: true, completion: nil)
             }
-        case .shareSettings(let entity):
+        case let .shareSettings(entity):
             if let sharedViewController = viewController as? ASCSharingOptionsViewController {
                 let sharedNavigationVC = ASCBaseNavigationController(rootASCViewController: sharedViewController)
-                
+
                 if UIDevice.pad {
                     sharedNavigationVC.modalPresentationStyle = .formSheet
                 }
@@ -72,27 +69,27 @@ final class ASCNavigator {
         default:
             navigationController?.pushViewController(viewController, animated: true)
         }
-        
+
         return viewController
     }
-    
+
     // MARK: - Private
-    
-    fileprivate func makeViewController(for destination: Destination) -> UIViewController {
+
+    private func makeViewController(for destination: Destination) -> UIViewController {
         switch destination {
         case .sort:
             return ASCSortViewController.instance()
-        case .shareSettings(let entity):
-            return ASCSharingOptionsViewController(style: .grouped)
+        case let .shareSettings(entity):
+            return ASCSharingOptionsViewController()
         case .onlyofficeConnectPortal:
             return ASCConnectPortalViewController.instance()
-        case .onlyofficeSignIn(let portal):
+        case let .onlyofficeSignIn(portal):
             let signinViewController = ASCSignInViewController.instance()
             signinViewController.portal = portal
             return signinViewController
         case .countryPhoneCodes:
             return ASCCountryCodeViewController.instance()
-        case .recoveryPasswordConfirmed(let email):
+        case let .recoveryPasswordConfirmed(email):
             let controller = ASCEmailSentViewController.instance()
             controller.email = email
             return controller
@@ -100,5 +97,4 @@ final class ASCNavigator {
             return ASCPasswordRecoveryViewController.instance()
         }
     }
-    
 }

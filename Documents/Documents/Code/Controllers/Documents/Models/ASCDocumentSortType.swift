@@ -11,18 +11,18 @@ import Foundation
 typealias ASCDocumentSortStateType = (type: ASCDocumentSortType, active: Bool)
 
 enum ASCDocumentSortType: String, CaseIterable {
-    case dateandtime = "dateandtime"
-    case az = "az"
-    case size = "size"
-    case author = "author"
-    case type = "type"
-    case new = "new"
+    case dateandtime
+    case az
+    case size
+    case author
+    case type
+    case new
     case unknown = ""
-    
+
     init() {
         self = .unknown
     }
-    
+
     init(_ type: String) {
         switch type {
         case "dateandtime":
@@ -41,7 +41,7 @@ enum ASCDocumentSortType: String, CaseIterable {
             self = .unknown
         }
     }
-    
+
     var description: String {
         switch self {
         case .dateandtime:

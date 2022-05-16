@@ -85,6 +85,9 @@
 /* No comment provided by engineer. */
 "An unexpected error has occurred. Please try again later. Sorry for inconvenience." = "Une erreur inattendue s'est produite. Veuillez réessayer plus tard. Désolé pour cet inconvénient.";
 
+/* No comment provided by engineer. */
+"AppleId authentication failed" = "Authentification AppleId a échoué";
+
 /* Caption of the process */
 "Applying" = "Application";
 
@@ -96,9 +99,6 @@
 
 /* No comment provided by engineer. */
 "Author" = "Auteur";
-
-/* No comment provided by engineer. */
-"Better formatting" = "Mise en forme améliorée";
 
 /* No comment provided by engineer. */
 "Box directory" = "Répertoire Box";
@@ -144,9 +144,6 @@
 
 /* Button title */
 "Clear Cache?" = "Vider le cache ?";
-
-/* No comment provided by engineer. */
-"Clear formatting, use extended color palette, and change font with improved settings." = "Effacez la mise en forme, utilisez une palette de couleurs étendue et modifiez les polices grâce à des paramètres améliorés.";
 
 /* Caption of the processing */
 "Clearing" = "Effacement";
@@ -219,6 +216,9 @@
 
 /* Caption of the processing */
 "Copying" = "Copie en cours";
+
+/* Description of file operation error */
+"Could not change file attributes" = "Impossible de modifier les attributs du fichier";
 
 /* Description of file operation error */
 "Could not change the directory" = "Impossible de modifier le répertoire";
@@ -441,9 +441,6 @@
 "Export" = "Exportation";
 
 /* No comment provided by engineer. */
-"External keyboards" = "Claviers externes";
-
-/* No comment provided by engineer. */
 "Failed online conversion service." = "Conversion en ligne échouée.";
 
 /* No comment provided by engineer. */
@@ -495,7 +492,7 @@
 "Files" = "Fichiers";
 
 /* No comment provided by engineer. */
-"Fillable forms" = "Formulaires à remplir";
+"Fill the shapes using gradients, images, or patterns. Choose the desirable line type." = "Remplissez les formes en utilisant des dégradés, des images ou des motifs. Choisissez le type de ligne souhaitable.";
 
 /* No comment provided by engineer. */
 "First name is incorrect" = "Le prénom est incorrect";
@@ -555,6 +552,9 @@
 "Incorrect portal address" = "Adresse de portail incorrecte";
 
 /* No comment provided by engineer. */
+"Instructions had been sent to your email" = "Les instructions ont été envoyées à votre e-mail";
+
+/* No comment provided by engineer. */
 "Invalid Country Code" = "Code de pays Incorrect";
 
 /* No comment provided by engineer. */
@@ -580,6 +580,9 @@
 
 /* No comment provided by engineer. */
 "Link copied\nto the clipboard" = "Le lien\nest copié dans le Presse-papiers";
+
+/* No comment provided by engineer. */
+"Log in to your cloud using Apple ID or Microsoft account." = "Connectez-vous à votre cloud en utilisant Apple ID ou votre compte Microsoft.";
 
 /* Caption of the process */
 "Logging in" = "Connexion";
@@ -608,6 +611,9 @@
 
 /* Button title */
 "More" = "Plus";
+
+/* No comment provided by engineer. */
+"More in autoshapes" = "Plus de formes automatiques";
 
 /* Button title */
 "Move" = "Déplacer";
@@ -638,6 +644,9 @@
 
 /* No comment provided by engineer. */
 "New" = "Nouveau";
+
+/* No comment provided by engineer. */
+"New authentication methods" = "Nouvelles méthodes d’authentification";
 
 /* No comment provided by engineer. */
 "New Document" = "Nouveau document";
@@ -798,6 +807,9 @@
 "Please retry. \n\n If the problem persists contact us and mention this error code: Google - %@" = "Veuillez réessayer. \n\n Si le problème persiste, contactez-nous et mentionnez ce code d'erreur : Google - %@";
 
 /* No comment provided by engineer. */
+"Please retry. \n\n If the problem persists contact us and mention this error code: Microsoft - %@" = "Veuillez réessayer. \n\n Si le problème persiste, contactez-nous et mentionnez ce code d'erreur : Microsoft - %@";
+
+/* No comment provided by engineer. */
 "Please retry. \n\n If the problem persists contact us and mention this error code: OneDrive - %@" = "Veuillez réessayer. \n\n Si le problème persiste, contactez-nous et mentionnez ce code d'erreur : OneDrive - %@";
 
 /* No comment provided by engineer. */
@@ -841,6 +853,9 @@
 
 /* Caption of the processing */
 "Recovery" = "Récupération";
+
+/* No comment provided by engineer. */
+"Regional settings" = "Paramètres régionaux";
 
 /* No comment provided by engineer. */
 "Registration" = "Enregistrement";
@@ -913,6 +928,9 @@
 "Select the folder to recover the items" = "Sélectionner le dossier pour récupérer les éléments";
 
 /* No comment provided by engineer. */
+"Select the region in spreadsheet settings to automatically convert currency, date, and time." = "Sélectionnez la région dans les paramètres de la feuille de calcul pour convertir automatiquement la devise, la date et l’heure.";
+
+/* No comment provided by engineer. */
 "Selected provider is not available" = "Le fournisseur sélectionné n'est pas disponible";
 
 /* No comment provided by engineer. */
@@ -920,6 +938,12 @@
 
 /* No comment provided by engineer. */
 "Selecting access rights" = "Sélection des droits d'accès";
+
+/* No comment provided by engineer. */
+"Send" = "Envoyer";
+
+/* No comment provided by engineer. */
+"Send the profile deletion instructions to the email address %@?" = "Envoyer les instructions de suppression du profil à l'e-mail %@ ?";
 
 /* Caption of the process */
 "Sending" = "Envoi en cours";
@@ -992,6 +1016,9 @@
 
 /* Data units */
 "Tb" = "To";
+
+/* No comment provided by engineer. */
+"Terminate account" = "Résilier le compte";
 
 /* Part of phrases - By creating the portal you agree with our Privacy Policy and Terms of Service */
 "Terms of Service" = "Conditions d'utilisation";
@@ -1158,9 +1185,6 @@
 /* Caption of the process */
 "Uploading" = "Téléchargement";
 
-/* No comment provided by engineer. */
-"Use external keyboards in ONLYOFFICE Documents with improved compatibility." = "Utilisez des claviers externes dans ONLYOFFICE Documents avec une compatibilité améliorée.";
-
 /* Button title */
 "Use Face ID" = "Utiliser Face ID (l'identifiant de visage)";
 
@@ -1187,9 +1211,6 @@
 
 /* No comment provided by engineer. */
 "Version" = "Version";
-
-/* No comment provided by engineer. */
-"View and fill online forms, save them as PDF files." = "Affichez et remplissez les formulaires en ligne et enregistrez-les au format PDF.";
 
 /* No comment provided by engineer. */
 "Warning" = "Alerte";
@@ -1219,7 +1240,7 @@
 "Work with office files" = "Travailler avec des fichiers office";
 
 /* No comment provided by engineer. */
-"Wrong login or password." = "Identifiant ou mot de passe erroné.";
+"Wrong server, login or password." = "Serveur, identifiant ou mot de passe erroné.";
 
 /* No comment provided by engineer. */
 "Yandex directory" = "Répertoire Yandex";

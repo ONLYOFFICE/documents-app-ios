@@ -6,25 +6,21 @@
 //  Copyright © 2018 Ascensio System SIA. All rights reserved.
 //
 
-import UIKit
 import FilesProvider
+import UIKit
 
 class ASCYandexFileProvider: ASCWebDAVProvider {
     override var type: ASCFileProviderType {
-        get {
-            return .yandex
-        }
+        return .yandex
     }
 
     override var rootFolder: ASCFolder {
-        get {
-            return {
-                $0.title = NSLocalizedString("Yandex Disk", comment: "")
-                $0.rootFolderType = .yandexAll
-                $0.id = "/"
-                return $0
-            }(ASCFolder())
-        }
+        return {
+            $0.title = NSLocalizedString("Yandex Disk", comment: "")
+            $0.rootFolderType = .yandexAll
+            $0.id = "/"
+            return $0
+        }(ASCFolder())
     }
 
     private let baseUrl = URL(string: "https://webdav.yandex.ru")!
@@ -40,17 +36,17 @@ class ASCYandexFileProvider: ASCWebDAVProvider {
 
     override func copy() -> ASCFileProviderProtocol {
         let copy = ASCYandexFileProvider()
-        
+
         copy.items = items
         copy.page = page
         copy.total = total
         copy.delegate = delegate
         copy.deserialize(serialize() ?? "")
-        
+
         return copy
     }
-    
-    override func isReachable(with info: [String : Any], complation: @escaping ((Bool, ASCFileProviderProtocol?) -> Void)) {
+
+    override func isReachable(with info: [String: Any], complation: @escaping ((Bool, ASCFileProviderProtocol?) -> Void)) {
         guard
             let login = info["login"] as? String,
             let password = info["password"] as? String
@@ -69,9 +65,9 @@ class ASCYandexFileProvider: ASCWebDAVProvider {
         }(ASCFolder())
 
         yandexCloudProvider.fetch(for: rootFolder, parameters: [:]) { provider, folder, success, error in
-            DispatchQueue.main.async(execute: {
+            DispatchQueue.main.async {
                 complation(success, success ? yandexCloudProvider : nil)
-            })
+            }
         }
     }
 
@@ -92,7 +88,6 @@ class ASCYandexFileProvider: ASCWebDAVProvider {
             }
         }
     }
-
 
     /// Fetch an Array of 'ASCEntity's identifying the the directory entries via asynchronous completion handler.
     ///

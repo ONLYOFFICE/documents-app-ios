@@ -9,20 +9,20 @@
 import UIKit
 
 class ASCOnlyofficeCategory: ASCCategory {
-    
     var sortWeight = 500
-    
+
     convenience init(folder: ASCFolder) {
+        let folder = folder.copy()
         self.init()
         self.folder = folder
-        self.title = folder.title.isEmpty
+        title = folder.title.isEmpty
             ? Self.title(of: folder.rootFolderType)
             : folder.title
-        self.image = Self.image(of: folder.rootFolderType)
+        image = Self.image(of: folder.rootFolderType)
         self.folder?.id = Self.id(of: folder.rootFolderType)
-        self.sortWeight = Self.sortWeight(of: folder.rootFolderType)
+        sortWeight = Self.sortWeight(of: folder.rootFolderType)
     }
-    
+
     static func title(of type: ASCFolderType) -> String {
         switch type {
         case .onlyofficeUser:
@@ -39,7 +39,7 @@ class ASCOnlyofficeCategory: ASCCategory {
             return ""
         }
     }
-    
+
     static func image(of type: ASCFolderType) -> UIImage? {
         switch type {
         case .onlyofficeCommon:
@@ -50,7 +50,7 @@ class ASCOnlyofficeCategory: ASCCategory {
             return Asset.Images.categoryMy.image
         case .onlyofficeShare:
             return Asset.Images.categoryShare.image
-        case .onlyofficeProjects:
+        case .onlyofficeBunch, .onlyofficeProjects:
             return Asset.Images.categoryProjects.image
         case .onlyofficeFavorites:
             return Asset.Images.categoryFavorites.image
@@ -60,7 +60,7 @@ class ASCOnlyofficeCategory: ASCCategory {
             return nil
         }
     }
-    
+
     static func sortWeight(of type: ASCFolderType) -> Int {
         switch type {
         case .onlyofficeUser:
@@ -73,7 +73,7 @@ class ASCOnlyofficeCategory: ASCCategory {
             return 40
         case .onlyofficeCommon:
             return 60
-        case .onlyofficeProjects:
+        case .onlyofficeBunch, .onlyofficeProjects:
             return 70
         case .onlyofficeTrash:
             return 80
@@ -81,7 +81,7 @@ class ASCOnlyofficeCategory: ASCCategory {
             return 500
         }
     }
-    
+
     static func id(of type: ASCFolderType) -> String {
         switch type {
         case .onlyofficeUser:
@@ -94,7 +94,7 @@ class ASCOnlyofficeCategory: ASCCategory {
             return OnlyofficeAPI.Path.Forlder.recent
         case .onlyofficeCommon:
             return OnlyofficeAPI.Path.Forlder.common
-        case .onlyofficeProjects:
+        case .onlyofficeBunch, .onlyofficeProjects:
             return OnlyofficeAPI.Path.Forlder.projects
         case .onlyofficeTrash:
             return OnlyofficeAPI.Path.Forlder.trash
@@ -102,7 +102,7 @@ class ASCOnlyofficeCategory: ASCCategory {
             return ""
         }
     }
-    
+
     static func allowToMoveAndCopy(of type: ASCFolderType) -> Bool {
         switch type {
         case .onlyofficeUser:
@@ -111,15 +111,15 @@ class ASCOnlyofficeCategory: ASCCategory {
             return true
         case .onlyofficeCommon:
             return true
-        case .onlyofficeProjects:
+        case .onlyofficeBunch, .onlyofficeProjects:
             return true
         default:
             return false
         }
     }
-    
+
     static func allowToMoveAndCopy(category: ASCOnlyofficeCategory) -> Bool {
-        allowToMoveAndCopy(of: category.folder?.rootFolderType ?? . unknown)
+        allowToMoveAndCopy(of: category.folder?.rootFolderType ?? .unknown)
     }
 
     static func folder(of type: ASCFolderType) -> ASCFolder? {
@@ -146,8 +146,9 @@ class ASCOnlyofficeCategory: ASCCategory {
             return nil
         }
     }
-    
+
     // MARK: - Codable requires
+
     override init() {
         super.init()
     }
@@ -159,6 +160,7 @@ class ASCOnlyofficeCategory: ASCCategory {
 }
 
 // MARK: - Codable realization
+
 extension ASCOnlyofficeCategory: Codable {
     enum CodingKeys: String, CodingKey {
         case title
@@ -167,14 +169,14 @@ extension ASCOnlyofficeCategory: Codable {
         case subtitle
         case sort
     }
-    
+
     func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: CodingKeys.self)
-        
+
         if let title = title {
             try container.encode(title, forKey: .title)
         }
-        if let folderId = self.folder?.id {
+        if let folderId = folder?.id {
             try container.encode(folderId, forKey: .folderId)
         }
         if let rootFolderType = folder?.rootFolderType {
@@ -185,21 +187,21 @@ extension ASCOnlyofficeCategory: Codable {
         }
         try container.encode(sortWeight, forKey: .sort)
     }
-    
+
     func decode(from decoder: Decoder) throws {
         let values = try decoder.container(keyedBy: CodingKeys.self)
-        
+
         title = try? values.decode(String.self, forKey: .title)
         subtitle = try? values.decode(String.self, forKey: .subtitle)
         sortWeight = try values.decode(Int.self, forKey: .sort)
-        
+
         guard let rootFolderTypeRaw = try? values.decode(Int.self, forKey: .rootFolderTypeRaw),
               let rootFolderType = ASCFolderType(rawValue: rootFolderTypeRaw),
               let folderId = try? values.decode(String.self, forKey: .folderId)
         else {
             return
         }
-        
+
         let folder = ASCFolder()
         folder.id = folderId
         folder.rootFolderType = rootFolderType
@@ -210,6 +212,7 @@ extension ASCOnlyofficeCategory: Codable {
 }
 
 // MARK: - Equatable
+
 extension ASCOnlyofficeCategory: Equatable {
     static func == (lhs: ASCOnlyofficeCategory, rhs: ASCOnlyofficeCategory) -> Bool {
         return lhs.folder?.id == rhs.folder?.id

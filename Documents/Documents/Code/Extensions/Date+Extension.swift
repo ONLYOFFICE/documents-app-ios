@@ -65,10 +65,10 @@ extension Date {
     ///
     var millisecond: Int {
         get {
-            return calendar.component(.nanosecond, from: self) / 1000000
+            return calendar.component(.nanosecond, from: self) / 1_000_000
         }
         set {
-            let nanoSeconds = newValue * 1000000
+            let nanoSeconds = newValue * 1_000_000
             let allowedRange = calendar.range(of: .nanosecond, in: .second, for: self)!
             guard allowedRange.contains(nanoSeconds) else { return }
 

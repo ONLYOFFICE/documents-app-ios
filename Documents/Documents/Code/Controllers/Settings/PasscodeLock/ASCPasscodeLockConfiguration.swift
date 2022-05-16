@@ -9,9 +9,8 @@
 import UIKit
 
 class ASCPasscodeLockConfiguration: PasscodeLockConfigurationType {
-    
     // MARK: - Properties
-    
+
     var touchIdReason: String?
     let repository: PasscodeRepositoryType
     let passcodeLength = 4
@@ -23,16 +22,17 @@ class ASCPasscodeLockConfiguration: PasscodeLockConfigurationType {
             //
         }
     }
+
     let shouldRequestTouchIDImmediately = true
     let maximumInccorectPasscodeAttempts = -1
-    
+
     // MARK: - Lifecycle Methods
-    
+
     init(repository: PasscodeRepositoryType) {
         self.repository = repository
     }
-    
-    init() {        
-        self.repository = ASCUserDefaultsPasscodeRepository()
+
+    init() {
+        repository = ASCUserDefaultsPasscodeRepository()
     }
 }

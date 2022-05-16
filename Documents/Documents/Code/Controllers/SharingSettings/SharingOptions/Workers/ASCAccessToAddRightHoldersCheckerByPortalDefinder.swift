@@ -10,11 +10,11 @@ import Foundation
 
 class ASCAccessToAddRightHoldersCheckerByPortalDefinder: ASCAccessToAddRightHoldersCheckerProtocol {
     let portalType: ASCPortalType
-    
+
     init(portalType: ASCPortalType) {
         self.portalType = portalType
     }
-    
+
     func checkAccessToAddRightHolders() -> Bool {
         switch portalType {
         case .personal: return false

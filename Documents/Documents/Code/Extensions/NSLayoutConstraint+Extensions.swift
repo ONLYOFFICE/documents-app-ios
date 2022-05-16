@@ -9,7 +9,6 @@
 import UIKit
 
 extension NSLayoutConstraint {
-    
     @IBInspectable
     var preciseConstant: Int {
         get {

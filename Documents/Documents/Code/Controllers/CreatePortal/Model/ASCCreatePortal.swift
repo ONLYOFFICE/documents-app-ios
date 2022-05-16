@@ -27,7 +27,7 @@ class ASCCreatePortal: Mappable {
     var appKey: String?
     var recaptchaResponse: String?
     var recaptchaType: ASCCreatePortalReCaptchaType = .iOSV2
-    
+
     init() {
         //
     }
@@ -37,19 +37,18 @@ class ASCCreatePortal: Mappable {
     }
 
     func mapping(map: Map) {
-        firstName           <- map["firstName"]
-        lastName            <- map["lastName"]
-        email               <- map["email"]
-        phone               <- map["phone"]
-        portalName          <- map["portalName"]
-        partnerId           <- map["partnerId"]
-        industry            <- map["industry"]
-        timeZoneName        <- map["timeZoneName"]
-        language            <- map["language"]
-        password            <- map["password"]
-        appKey              <- map["appKey"]
-        recaptchaResponse   <- map["recaptchaResponse"]
-        recaptchaType       <- (map["recaptchaType"], EnumTransform())
+        firstName <- map["firstName"]
+        lastName <- map["lastName"]
+        email <- map["email"]
+        phone <- map["phone"]
+        portalName <- map["portalName"]
+        partnerId <- map["partnerId"]
+        industry <- map["industry"]
+        timeZoneName <- map["timeZoneName"]
+        language <- map["language"]
+        password <- map["password"]
+        appKey <- map["appKey"]
+        recaptchaResponse <- map["recaptchaResponse"]
+        recaptchaType <- (map["recaptchaType"], EnumTransform())
     }
-    
 }

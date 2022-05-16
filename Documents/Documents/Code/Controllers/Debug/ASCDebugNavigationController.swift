@@ -9,20 +9,19 @@
 import UIKit
 
 class ASCDebugNavigationController: ASCBaseNavigationController {
-
     // MARK: - Properties
-    
+
     var onDismissed: (() -> Void)?
-    
+
     // MARK: - Lifecycle Methods
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
     }
 
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
-        
+
         if isBeingDismissed {
             onDismissed?()
         }

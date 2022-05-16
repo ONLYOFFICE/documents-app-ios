@@ -9,7 +9,6 @@
 import UIKit
 
 class ASCCloudsSplitViewController: ASCBaseSplitViewController {
-
     override func viewDidLoad() {
         super.viewDidLoad()
     }

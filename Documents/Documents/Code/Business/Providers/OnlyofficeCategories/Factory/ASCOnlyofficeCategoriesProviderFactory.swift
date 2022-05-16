@@ -9,10 +9,9 @@
 import Foundation
 
 class ASCOnlyofficeCategoriesProviderFactory {
-    
     private var isServerVersionEstablished = false
     private lazy var provider: ASCOnlyofficeCategoriesProviderProtocol = ASCOnlyofficeAppBasedCategoriesProvider()
-    
+
     func get() -> ASCOnlyofficeCategoriesProviderProtocol {
         guard isServerVersionEstablished else {
             guard let communityServerVersion = OnlyofficeApiClient.shared.serverVersion else {
@@ -25,20 +24,21 @@ class ASCOnlyofficeCategoriesProviderFactory {
             provider = makeAPICategoriesProvider()
             return provider
         }
-        
+
         return provider
     }
-    
+
     private func makeAPICategoriesProvider() -> ASCOnlyofficeCategoriesProviderProtocol {
         let apiCategoriesProvider = ASCOnlyofficeAPICategoriesProvider()
         let filtredApiCategoriesProvider = ASCOnlyofficeCategoriesProviderFilterProxy(
             categoriesProvider: apiCategoriesProvider,
-            filter: { $0.folder?.rootFolderType != .unknown })
+            filter: { $0.folder?.rootFolderType != .unknown }
+        )
         let applicationCategoriesProvider = ASCOnlyofficeAppBasedCategoriesProvider()
-        
+
         let firstTryCategoriesProvider = filtredApiCategoriesProvider
         let nextTryCategoriesProvider = applicationCategoriesProvider
-        
+
         return ASCOnlyofficeCategoriesChainContainerFailureToNext(base: firstTryCategoriesProvider, next: nextTryCategoriesProvider)
     }
 }

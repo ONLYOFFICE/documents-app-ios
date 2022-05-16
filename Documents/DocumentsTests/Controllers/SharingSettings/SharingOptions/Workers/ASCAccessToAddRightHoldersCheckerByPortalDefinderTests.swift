@@ -6,12 +6,10 @@
 //  Copyright © 2021 Ascensio System SIA. All rights reserved.
 //
 
-import XCTest
-import XCTest
 @testable import Documents
+import XCTest
 
 class ASCAccessToAddRightHoldersCheckerByPortalDefinderTests: XCTestCase {
-    
     var sut: ASCAccessToAddRightHoldersCheckerByPortalDefinder!
 
     override func setUpWithError() throws {
@@ -27,7 +25,7 @@ class ASCAccessToAddRightHoldersCheckerByPortalDefinderTests: XCTestCase {
         sut = ASCAccessToAddRightHoldersCheckerByPortalDefinder(portalType: .unknown)
         XCTAssertTrue(sut.checkAccessToAddRightHolders())
     }
-    
+
     func testWhenPersonalPortalThenReturnsFalse() {
         sut = ASCAccessToAddRightHoldersCheckerByPortalDefinder(portalType: .personal)
         XCTAssertFalse(sut.checkAccessToAddRightHolders())

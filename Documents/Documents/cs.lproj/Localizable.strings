@@ -68,6 +68,9 @@
 "Add message" = "Přidat zprávu";
 
 /* No comment provided by engineer. */
+"Add users or groups and allow them to \n read, review or edit documents." = "Přidejte uživatele nebo skupiny a dejte jim právo číst, prohlížet nebo upravovat dokumenty.";
+
+/* No comment provided by engineer. */
 "Address is empty" = "Adresa je prázdná";
 
 /* No comment provided by engineer. */
@@ -81,6 +84,9 @@
 
 /* No comment provided by engineer. */
 "An unexpected error has occurred. Please try again later. Sorry for inconvenience." = "Došlo k neočekávané chybě. Prosím zkuste to znovu později. Omlouváme se za nepříjemnosti.";
+
+/* No comment provided by engineer. */
+"AppleId authentication failed" = "Ověření AppleId se nezdařilo";
 
 /* Caption of the process */
 "Applying" = "Použití stránky";
@@ -210,6 +216,9 @@
 
 /* Caption of the processing */
 "Copying" = "Kopírování";
+
+/* Description of file operation error */
+"Could not change file attributes" = "Nepodařilo se změnit atributy souboru";
 
 /* Description of file operation error */
 "Could not change the directory" = "Nepodařilo se změnit adresář";
@@ -483,6 +492,9 @@
 "Files" = "Soubory";
 
 /* No comment provided by engineer. */
+"Fill the shapes using gradients, images, or patterns. Choose the desirable line type." = "Vyplňte tvary pomocí gradientů, obrázků nebo vzorů. Vyberte požadovaný typ čáry.";
+
+/* No comment provided by engineer. */
 "First name is incorrect" = "Křestní jméno je nesprávné";
 
 /* No comment provided by engineer. */
@@ -540,6 +552,9 @@
 "Incorrect portal address" = "Nesprávná adresa portálu";
 
 /* No comment provided by engineer. */
+"Instructions had been sent to your email" = "Pokyny byly odeslány na e-mail";
+
+/* No comment provided by engineer. */
 "Invalid Country Code" = "Neplatný kód země";
 
 /* No comment provided by engineer. */
@@ -565,6 +580,9 @@
 
 /* No comment provided by engineer. */
 "Link copied\nto the clipboard" = "Odkaz zkopírován do schránky";
+
+/* No comment provided by engineer. */
+"Log in to your cloud using Apple ID or Microsoft account." = "Přihlaste se do cloudu pomocí Apple ID nebo účtu Microsoft.";
 
 /* Caption of the process */
 "Logging in" = "Přihlášení v";
@@ -593,6 +611,9 @@
 
 /* Button title */
 "More" = "Více";
+
+/* No comment provided by engineer. */
+"More in autoshapes" = "Více automatických tvarů";
 
 /* Button title */
 "Move" = "Přesunout";
@@ -623,6 +644,9 @@
 
 /* No comment provided by engineer. */
 "New" = "Nový";
+
+/* No comment provided by engineer. */
+"New authentication methods" = "Nové metody ověřování";
 
 /* No comment provided by engineer. */
 "New Document" = "Nový dokument";
@@ -783,6 +807,9 @@
 "Please retry. \n\n If the problem persists contact us and mention this error code: Google - %@" = "Zkuste to prosím znovu.\n\n Pokud problém přetrvává, kontaktujte nás a zmiňte tento kód chyby: Google - %@";
 
 /* No comment provided by engineer. */
+"Please retry. \n\n If the problem persists contact us and mention this error code: Microsoft - %@" = "Zkuste to prosím znovu.\n\n Pokud problém přetrvává, kontaktujte nás a zmiňte tento kód chyby: Microsoft - %@";
+
+/* No comment provided by engineer. */
 "Please retry. \n\n If the problem persists contact us and mention this error code: OneDrive - %@" = "Zkuste to prosím znovu.\n\n Pokud problém přetrvává, kontaktujte nás a zmiňte tento kód chyby: OneDrive - %@";
 
 /* No comment provided by engineer. */
@@ -826,6 +853,9 @@
 
 /* Caption of the processing */
 "Recovery" = "Obnova";
+
+/* No comment provided by engineer. */
+"Regional settings" = "Regionální nastavení";
 
 /* No comment provided by engineer. */
 "Registration" = "Registrace";
@@ -898,6 +928,9 @@
 "Select the folder to recover the items" = "Vyberte složku pro obnovení položek";
 
 /* No comment provided by engineer. */
+"Select the region in spreadsheet settings to automatically convert currency, date, and time." = "Vyberte region v nastavení tabulky pro automatický převod měny, data a času.";
+
+/* No comment provided by engineer. */
 "Selected provider is not available" = "Vybraný poskytovatel není dostupný";
 
 /* No comment provided by engineer. */
@@ -905,6 +938,12 @@
 
 /* No comment provided by engineer. */
 "Selecting access rights" = "Výběr přístupových práv";
+
+/* No comment provided by engineer. */
+"Send" = "Odeslat";
+
+/* No comment provided by engineer. */
+"Send the profile deletion instructions to the email address %@?" = "Pokyny k odstranění profilu byly zaslány na e-mailovou adresu %@?";
 
 /* Caption of the process */
 "Sending" = "Odesílání";
@@ -977,6 +1016,9 @@
 
 /* Data units */
 "Tb" = "Tb";
+
+/* No comment provided by engineer. */
+"Terminate account" = "Ukončení účtu";
 
 /* Part of phrases - By creating the portal you agree with our Privacy Policy and Terms of Service */
 "Terms of Service" = "Podmínky použití";
@@ -1198,7 +1240,7 @@
 "Work with office files" = "Pracujte s kancelářskými soubory";
 
 /* No comment provided by engineer. */
-"Wrong login or password." = "Špatný login nebo heslo.";
+"Wrong server, login or password." = "Chybný server, přihlašovací jméno nebo heslo.";
 
 /* No comment provided by engineer. */
 "Yandex directory" = "Adresář Yandex";

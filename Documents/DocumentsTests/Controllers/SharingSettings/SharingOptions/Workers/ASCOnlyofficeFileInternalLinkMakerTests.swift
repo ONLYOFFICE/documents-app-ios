@@ -6,11 +6,10 @@
 //  Copyright © 2021 Ascensio System SIA. All rights reserved.
 //
 
-import XCTest
 @testable import Documents
+import XCTest
 
 class ASCOnlyofficeFileInternalLinkMakerTests: XCTestCase {
-    
     var sut: ASCOnlyofficeFileInternalLinkMaker!
 
     override func setUpWithError() throws {
@@ -26,7 +25,7 @@ class ASCOnlyofficeFileInternalLinkMakerTests: XCTestCase {
         let link = sut.make(entity: folder)
         XCTAssertNil(link)
     }
-    
+
     func testMakeForFileWithId123ReturnsLinkWith123() {
         let file = ASCFile()
         file.id = "123"
@@ -35,5 +34,4 @@ class ASCOnlyofficeFileInternalLinkMakerTests: XCTestCase {
         let link = sut.make(entity: file)
         XCTAssertEqual(link, expect)
     }
-
 }

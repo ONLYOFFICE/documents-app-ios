@@ -68,6 +68,9 @@
 "Add message" = "Добавяне на съобщение";
 
 /* No comment provided by engineer. */
+"Add users or groups and allow them to \n read, review or edit documents." = "Add users or groups and allow them to \n read, review or edit documents.";
+
+/* No comment provided by engineer. */
 "Address is empty" = "Адресът е празен";
 
 /* No comment provided by engineer. */
@@ -81,6 +84,9 @@
 
 /* No comment provided by engineer. */
 "An unexpected error has occurred. Please try again later. Sorry for inconvenience." = "Появи се неочаквана грешка. Молим да опитате отново по-късно. Извиняваме се за неудобството.";
+
+/* No comment provided by engineer. */
+"AppleId authentication failed" = "Неуспешна идентификация AppleId ";
 
 /* Caption of the process */
 "Applying" = "Прилагане";
@@ -200,7 +206,7 @@
 "Continue anyway" = "Все пак продължете";
 
 /* No comment provided by engineer. */
-"Converter" = "конвертор";
+"Converter" = "Конвертор";
 
 /* Button title */
 "Copy" = "Копирай";
@@ -210,6 +216,9 @@
 
 /* Caption of the processing */
 "Copying" = "Копиране";
+
+/* Description of file operation error */
+"Could not change file attributes" = "Атрибутите на файла не могат да бъдат променени";
 
 /* Description of file operation error */
 "Could not change the directory" = "Директорията не може да бъде сменена";
@@ -483,6 +492,9 @@
 "Files" = "Файлове";
 
 /* No comment provided by engineer. */
+"Fill the shapes using gradients, images, or patterns. Choose the desirable line type." = "Попълнете формите, използвайки градиенти, изображения или модели. Изберете желания тип линия.";
+
+/* No comment provided by engineer. */
 "First name is incorrect" = "Първото име е неправилно";
 
 /* No comment provided by engineer. */
@@ -540,6 +552,9 @@
 "Incorrect portal address" = "Неправилен адрес на портала";
 
 /* No comment provided by engineer. */
+"Instructions had been sent to your email" = "Инструкциите бяха пратени на имейла Ви";
+
+/* No comment provided by engineer. */
 "Invalid Country Code" = "Невалиден код на държавата";
 
 /* No comment provided by engineer. */
@@ -565,6 +580,9 @@
 
 /* No comment provided by engineer. */
 "Link copied\nto the clipboard" = "Връзката е копирана\nв клипборда";
+
+/* No comment provided by engineer. */
+"Log in to your cloud using Apple ID or Microsoft account." = "Влезте в облака си, използвайки Apple ID или Microsoft профила си.";
 
 /* Caption of the process */
 "Logging in" = "Влизане в системата";
@@ -593,6 +611,9 @@
 
 /* Button title */
 "More" = "Повече";
+
+/* No comment provided by engineer. */
+"More in autoshapes" = "Още в автоматични форми";
 
 /* Button title */
 "Move" = "Ход";
@@ -623,6 +644,9 @@
 
 /* No comment provided by engineer. */
 "New" = "Нов";
+
+/* No comment provided by engineer. */
+"New authentication methods" = "Нови методи за удостоверяване";
 
 /* No comment provided by engineer. */
 "New Document" = "Нов документ";
@@ -783,6 +807,9 @@
 "Please retry. \n\n If the problem persists contact us and mention this error code: Google - %@" = "Моля, опитайте отново.\n\n Ако проблемът продължава, свържете се с нас и споменете този код за грешка: Google - %@";
 
 /* No comment provided by engineer. */
+"Please retry. \n\n If the problem persists contact us and mention this error code: Microsoft - %@" = "Моля, опитайте отново. \n\n Ако проблемът продължава, свържете се с нас и споменете този код за грешка: Microsoft - %@";
+
+/* No comment provided by engineer. */
 "Please retry. \n\n If the problem persists contact us and mention this error code: OneDrive - %@" = "Моля, опитайте отново. \n\n Ако проблемът продължава, свържете се с нас и споменете този код за грешка: OneDrive - %@";
 
 /* No comment provided by engineer. */
@@ -826,6 +853,9 @@
 
 /* Caption of the processing */
 "Recovery" = "Възстановяване";
+
+/* No comment provided by engineer. */
+"Regional settings" = "Регионални настройки";
 
 /* No comment provided by engineer. */
 "Registration" = "Регистрация";
@@ -898,6 +928,9 @@
 "Select the folder to recover the items" = "Изберете папката за възстановяване на елементи";
 
 /* No comment provided by engineer. */
+"Select the region in spreadsheet settings to automatically convert currency, date, and time." = "Изберете региона в настройките на таблицата, за да можете автоматично да конвертирате валута, дата и час.";
+
+/* No comment provided by engineer. */
 "Selected provider is not available" = "Избраният доставчик не е наличен";
 
 /* No comment provided by engineer. */
@@ -905,6 +938,12 @@
 
 /* No comment provided by engineer. */
 "Selecting access rights" = "Избиране на права за достъп";
+
+/* No comment provided by engineer. */
+"Send" = "Изпрати";
+
+/* No comment provided by engineer. */
+"Send the profile deletion instructions to the email address %@?" = "Да изпратим ли инструкциите за изтриване на имейл адрес %@?";
 
 /* Caption of the process */
 "Sending" = "Изпращане";
@@ -940,7 +979,7 @@
 "Size" = "Размер";
 
 /* Button title */
-"Skip" = "пропускане";
+"Skip" = "Пропускане";
 
 /* No comment provided by engineer. */
 "SKIP" = "ПРОПУСКАНЕ";
@@ -958,7 +997,7 @@
 "Sort" = "Вид";
 
 /* No comment provided by engineer. */
-"Space" = "пространство";
+"Space" = "Пространство";
 
 /* No comment provided by engineer. */
 "Spreadsheet" = "Електронна таблица";
@@ -977,6 +1016,9 @@
 
 /* Data units */
 "Tb" = "Тб";
+
+/* No comment provided by engineer. */
+"Terminate account" = "Анулирай профил";
 
 /* Part of phrases - By creating the portal you agree with our Privacy Policy and Terms of Service */
 "Terms of Service" = "Условия за ползване";
@@ -1198,7 +1240,7 @@
 "Work with office files" = "Работа с офис файлове";
 
 /* No comment provided by engineer. */
-"Wrong login or password." = "Грешен влизам или парола";
+"Wrong server, login or password." = "Грешен сървър, влизам или парола.";
 
 /* No comment provided by engineer. */
 "Yandex directory" = "Yandex директория";

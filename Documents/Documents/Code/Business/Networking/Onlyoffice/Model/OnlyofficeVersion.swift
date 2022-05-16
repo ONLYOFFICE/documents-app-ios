@@ -20,10 +20,10 @@ class OnlyofficeVersion: Mappable {
     }
 
     func mapping(map: Map) {
-        community   <- map["communityServer"]
-        document    <- map["documentServer"]
-        mail        <- map["mailServer"]
-        xmpp        <- map["xmppServer"]
-        community   <- map["communityServer"]
+        community <- map["communityServer"]
+        document <- map["documentServer"]
+        mail <- map["mailServer"]
+        xmpp <- map["xmppServer"]
+        community <- map["communityServer"]
     }
 }

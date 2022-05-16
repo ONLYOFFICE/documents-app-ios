@@ -17,19 +17,18 @@ class OnlyofficePath: Mappable {
     var pathParts: [Int] = []
     var startIndex: Int = 0
     var total: Int = 0
-    
-    
+
     required init?(map: Map) {
         //
     }
 
     func mapping(map: Map) {
-        count       <- map ["count"]
-        current     <- map ["current"]
-        files       <- map ["files"]
-        folders     <- map ["folders"]
-        pathParts   <- map ["pathParts"]
-        startIndex  <- map ["startIndex"]
-        total       <- map ["total"]
+        count <- map["count"]
+        current <- map["current"]
+        files <- map["files"]
+        folders <- map["folders"]
+        pathParts <- map["pathParts"]
+        startIndex <- map["startIndex"]
+        total <- map["total"]
     }
 }

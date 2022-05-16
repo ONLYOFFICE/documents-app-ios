@@ -13,15 +13,14 @@ protocol ASCSharingAddRightHoldersBusinessLogic {
 }
 
 class ASCSharingAddRightHoldersInteractor: ASCSharingAddRightHoldersBusinessLogic {
-    
     var dataStore: ASCSharingAddRightHoldersDataStore?
     var presenter: ASCSharingAddRightHoldersPresentationLogic?
-    
+
     func makeRequest(requestType: ASCSharingAddRightHolders.Model.Request.RequestType) {
         switch requestType {
         case .loadUsers:
             OnlyofficeApiClient.request(OnlyofficeAPI.Endpoints.People.all) { [unowned self] response, error in
-                
+
                 if let error = error {
                     log.error(error)
                 } else if let users = response?.result {
@@ -43,25 +42,32 @@ class ASCSharingAddRightHoldersInteractor: ASCSharingAddRightHoldersBusinessLogi
                     let sharedInfoItems = self.dataStore?.sharedInfoItems ?? []
                     self.presenter?.presentData(responseType: .presentGroups(.init(groups: groups, sharedEntities: sharedInfoItems)))
                 }
-                
             }
-        case .selectViewModel(request: let request):
+        case let .selectViewModel(request: request):
             if let shareInfo = makeShareInfo(model: request.selectedViewModel, access: request.access) {
                 dataStore?.add(shareInfo: shareInfo)
             }
             if let type = defineType(byId: request.selectedViewModel.id) {
                 presenter?.presentData(responseType: .presentSelected(.init(selectedModel: request.selectedViewModel, isSelect: true, type: type)))
             }
-        case .deselectViewModel(request: let request):
+        case let .deselectViewModel(request: request):
             if let shareInfo = makeShareInfo(model: request.deselectedViewModel, access: .none) {
                 dataStore?.remove(shareInfo: shareInfo)
             }
             if let type = defineType(byId: request.deselectedViewModel.id) {
                 presenter?.presentData(responseType: .presentSelected(.init(selectedModel: request.deselectedViewModel, isSelect: false, type: type)))
             }
+        case let .changeAccessForSelected(request: access):
+            var updatedItems = [OnlyofficeShare]()
+            dataStore?.itemsForSharingAdd.forEach { item in
+                var item = item
+                item.access = access
+                updatedItems.append(item)
+            }
+            dataStore?.itemsForSharingAdd = updatedItems
         }
     }
-    
+
     private func makeShareInfo(model: ASCSharingRightHolderViewModel, access: ASCShareAccess) -> OnlyofficeShare? {
         guard let dataStore = dataStore else { return nil }
         switch model.rightHolderType {
@@ -77,7 +83,7 @@ class ASCSharingAddRightHoldersInteractor: ASCSharingAddRightHoldersBusinessLogi
         }
         return nil
     }
-    
+
     private func defineType(byId id: String) -> RightHoldersTableType? {
         guard let dataStore = dataStore else { return nil }
         if let _ = dataStore.users.firstIndex(where: { $0.userId == id }) {

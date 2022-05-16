@@ -10,27 +10,26 @@ import Foundation
 
 class ASCEntityUniqNameFinder: ASCUniqNameFinder {
     let entityExistChecker: ASCEntityExistenceChecker
-    
+
     init(entityExistChecker: ASCEntityExistenceChecker) {
         self.entityExistChecker = entityExistChecker
     }
-    
-    func find(bySuggestedName suggestedName: String, atPath path: String, completion: @escaping (UniqName) -> Void) {
 
+    func find(bySuggestedName suggestedName: String, atPath path: String, completion: @escaping (UniqName) -> Void) {
         var checkingName = suggestedName
         var isCurrentNameUniq = false
         let folderPath = path
-        
-        var triesCount = 0;
+
+        var triesCount = 0
         repeat {
             let semaphore = DispatchSemaphore(value: 0)
             let filePath = folderPath.appendingPathComponent(checkingName)
-            self.entityExistChecker.isExist(entityFullName: filePath) { isExist in
+            entityExistChecker.isExist(entityFullName: filePath) { isExist in
                 if !isExist {
                     isCurrentNameUniq = true
                 } else {
                     triesCount += 1
-                    
+
                     let fullItemName = suggestedName
                     let itemExtension = fullItemName.pathExtension
                     if !itemExtension.isEmpty {
@@ -39,13 +38,11 @@ class ASCEntityUniqNameFinder: ASCUniqNameFinder {
                     } else {
                         checkingName = "\(suggestedName) \(triesCount)"
                     }
-                    
                 }
                 semaphore.signal()
             }
             semaphore.wait()
-        } while (!isCurrentNameUniq);
+        } while !isCurrentNameUniq
         completion(checkingName)
-        
     }
 }

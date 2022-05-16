@@ -9,27 +9,25 @@
 import UIKit
 
 class ASCPasscodeLockPresenter: PasscodeLockPresenter {
-    
     // MARK: - Properties
-    
+
     fileprivate let notificationCenter: NotificationCenter
     fileprivate let splashView: UIView
-    
+
     var isFreshAppLaunch = true
-    
+
     // MARK: - Lifecycle Methods
-    
+
     init(mainWindow window: UIWindow?, configuration: PasscodeLockConfigurationType) {
-        
         notificationCenter = NotificationCenter.default
-        
+
         splashView = ASCPasscodeLockSplashView()
-        
+
         // TIP: you can set your custom viewController that has added functionality in a custom .xib too
         let passcodeLockVC = PasscodeLockViewController(state: .enterPasscode, configuration: configuration)
-        
+
         super.init(mainWindow: window, configuration: configuration, viewController: passcodeLockVC)
-        
+
         // add notifications observers
         notificationCenter.addObserver(
             self,
@@ -37,14 +35,14 @@ class ASCPasscodeLockPresenter: PasscodeLockPresenter {
             name: UIApplication.didFinishLaunchingNotification,
             object: nil
         )
-        
+
         notificationCenter.addObserver(
             self,
             selector: #selector(ASCPasscodeLockPresenter.applicationDidEnterBackground),
             name: UIApplication.didEnterBackgroundNotification,
             object: nil
         )
-        
+
         notificationCenter.addObserver(
             self,
             selector: #selector(ASCPasscodeLockPresenter.applicationDidBecomeActive),
@@ -52,40 +50,40 @@ class ASCPasscodeLockPresenter: PasscodeLockPresenter {
             object: nil
         )
     }
-    
+
     deinit {
         // remove all notfication observers
         notificationCenter.removeObserver(self)
     }
-    
-    @objc dynamic func applicationDidLaunched() -> Void {
+
+    @objc dynamic func applicationDidLaunched() {
         // start the Pin Lock presenter
         passcodeLockVC.successCallback = { [weak self] _ in
-            
+
             // we can set isFreshAppLaunch to false
             self?.isFreshAppLaunch = false
         }
-        
+
         presentPasscodeLock()
     }
-    
-    @objc dynamic func applicationDidEnterBackground() -> Void {
+
+    @objc dynamic func applicationDidEnterBackground() {
         // present PIN lock
         presentPasscodeLock()
-        
+
         // add splashView for iOS app background swithcer
         let configuration = ASCPasscodeLockConfiguration()
-        
+
         if configuration.repository.hasPasscode {
             addSplashView()
         }
     }
-    
-    @objc dynamic func applicationDidBecomeActive() -> Void {
+
+    @objc dynamic func applicationDidBecomeActive() {
         // remove splashView for iOS app background swithcer
         removeSplashView()
     }
-    
+
     fileprivate func addSplashView() {
         // add splashView for iOS app background swithcer
         if isPasscodePresented {
@@ -102,7 +100,7 @@ class ASCPasscodeLockPresenter: PasscodeLockPresenter {
             }
         }
     }
-    
+
     fileprivate func removeSplashView() {
         // remove splashView for iOS app background swithcer
         splashView.removeFromSuperview()

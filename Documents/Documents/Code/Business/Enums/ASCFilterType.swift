@@ -9,13 +9,13 @@
 import Foundation
 
 enum ASCFilterType: Int {
-    case none               = 0
-    case filesOnly          = 1
-    case foldersOnly        = 2
-    case documentsOnly      = 3
-    case presentationsOnly  = 4
-    case spreadsheetsOnly   = 5
-    case imagesOnly         = 7
-    case byUser             = 8
-    case byDepartment       = 9
+    case none = 0
+    case filesOnly = 1
+    case foldersOnly = 2
+    case documentsOnly = 3
+    case presentationsOnly = 4
+    case spreadsheetsOnly = 5
+    case imagesOnly = 7
+    case byUser = 8
+    case byDepartment = 9
 }

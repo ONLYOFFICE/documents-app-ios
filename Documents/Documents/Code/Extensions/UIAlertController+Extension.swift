@@ -11,7 +11,7 @@ import UIKit
 extension UIAlertController {
     convenience init(title: String?, message: String?, preferredStyle: UIAlertController.Style, tintColor: UIColor?) {
         self.init(title: title, message: message, preferredStyle: preferredStyle)
-        self.view.tintColor = tintColor ?? Asset.Colors.brend.color
+        view.tintColor = tintColor ?? Asset.Colors.brend.color
     }
 
     static func showError(in viewController: UIViewController, message: String, actions: [UIAlertAction]? = nil) {
@@ -19,16 +19,16 @@ extension UIAlertController {
             NSLocalizedString("Error", comment: ""),
             message: message,
             actions: actions ?? []
-            ).okable()
+        ).okable()
         viewController.present(alertController, animated: true, completion: nil)
     }
-    
+
     static func showWarning(in viewController: UIViewController, message: String, actions: [UIAlertAction]? = nil) {
         let alertController = UIAlertController.alert(
             NSLocalizedString("Warning", comment: ""),
             message: message,
             actions: actions ?? []
-            ).okable()
+        ).okable()
         viewController.present(alertController, animated: true, completion: nil)
     }
 }

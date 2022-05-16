@@ -6,12 +6,11 @@
 //  Copyright © 2021 Ascensio System SIA. All rights reserved.
 //
 
-import XCTest
-import UIKit
 @testable import Documents
+import UIKit
+import XCTest
 
 class ASCLoadedViewControllerFinderProtocolTests: XCTestCase {
-    
     var sut: ASCLoadedViewControllerFinderProtocol!
 
     override func setUpWithError() throws {
@@ -24,15 +23,14 @@ class ASCLoadedViewControllerFinderProtocolTests: XCTestCase {
 
     func testSetRootVCWhenGetRootVCWeGetTheSameRootVC() {
         let vc = ASCRootViewController()
-        
+
         UIApplication.shared.windows.first?.rootViewController = vc
         let window = UIWindow(frame: UIScreen.main.bounds)
-            window.rootViewController = vc
-            window.makeKeyAndVisible()
-        
-    
+        window.rootViewController = vc
+        window.makeKeyAndVisible()
+
         let gettedRootVC = sut.getRootViewController()
-        
+
         XCTAssertNotNil(gettedRootVC)
         XCTAssertTrue(gettedRootVC === vc)
     }

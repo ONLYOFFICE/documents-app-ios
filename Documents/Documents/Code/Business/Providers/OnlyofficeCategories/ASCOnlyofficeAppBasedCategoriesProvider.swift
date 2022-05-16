@@ -13,9 +13,8 @@ class ASCOnlyofficeAppBasedCategoriesProvider: ASCOnlyofficeCategoriesProviderPr
     var protalTypeDefinder: ASCPortalTypeDefinderProtocol = ASCPortalTypeDefinderByCurrentConnection()
     func loadCategories(completion: @escaping (Result<[ASCOnlyofficeCategory], Error>) -> Void) {
         if let onlyoffice = ASCFileManager.onlyofficeProvider, let user = onlyoffice.user {
-            
             categoriesCurrentlyLoading = true
-            
+
             var categories: [ASCOnlyofficeCategory] = []
 
             let isPersonal = protalTypeDefinder.definePortalType() == .personal
@@ -41,7 +40,7 @@ class ASCOnlyofficeAppBasedCategoriesProvider: ASCOnlyofficeCategoriesProviderPr
                     $0.image = Asset.Images.categoryShare.image
                     $0.folder = ASCOnlyofficeCategory.folder(of: .onlyofficeShare)
                     return $0
-                    }(ASCOnlyofficeCategory()))
+                }(ASCOnlyofficeCategory()))
             }
 
             // Common Documents Category
@@ -51,7 +50,7 @@ class ASCOnlyofficeAppBasedCategoriesProvider: ASCOnlyofficeCategoriesProviderPr
                     $0.image = Asset.Images.categoryCommon.image
                     $0.folder = ASCOnlyofficeCategory.folder(of: .onlyofficeCommon)
                     return $0
-                    }(ASCOnlyofficeCategory()))
+                }(ASCOnlyofficeCategory()))
             }
 
             // Project Documents Category
@@ -61,7 +60,7 @@ class ASCOnlyofficeAppBasedCategoriesProvider: ASCOnlyofficeCategoriesProviderPr
                     $0.image = Asset.Images.categoryProjects.image
                     $0.folder = ASCOnlyofficeCategory.folder(of: .onlyofficeProjects)
                     return $0
-                    }(ASCOnlyofficeCategory()))
+                }(ASCOnlyofficeCategory()))
             }
 
             // Trash Category
@@ -70,8 +69,8 @@ class ASCOnlyofficeAppBasedCategoriesProvider: ASCOnlyofficeCategoriesProviderPr
                 $0.image = Asset.Images.categoryTrash.image
                 $0.folder = ASCOnlyofficeCategory.folder(of: .onlyofficeTrash)
                 return $0
-                }(ASCOnlyofficeCategory()))
-            
+            }(ASCOnlyofficeCategory()))
+
             categoriesCurrentlyLoading = false
             completion(.success(categories))
         } else {

@@ -10,21 +10,21 @@ import Foundation
 import ObjectMapper
 
 class ASCGroup: Mappable {
-    var id: String? = nil
-    var name: String? = nil
-    var manager: String? = nil
-    
+    var id: String?
+    var name: String?
+    var manager: String?
+
     init() {
         //
     }
-    
+
     required init?(map: Map) {
         //
     }
-    
+
     func mapping(map: Map) {
-        id      <- (map["id"], ASCIndexTransform())
-        name    <- (map["name"], ASCStringTransform())
+        id <- (map["id"], ASCIndexTransform())
+        name <- (map["name"], ASCStringTransform())
         manager <- (map["manager"], ASCStringTransform())
     }
 }

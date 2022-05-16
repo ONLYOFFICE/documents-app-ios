@@ -6,11 +6,10 @@
 //  Copyright © 2018 Ascensio System SIA. All rights reserved.
 //
 
-import UIKit
 import FileKit
+import UIKit
 
 class ASCDeviceCategoryViewController: UITableViewController {
-
     // MARK: - Properties
 
     var deviceDocumentsCategory: ASCCategory = {
@@ -53,7 +52,7 @@ class ASCDeviceCategoryViewController: UITableViewController {
 
         categories = [
             deviceDocumentsCategory,
-            deviceTrashCategory
+            deviceTrashCategory,
         ]
     }
 
@@ -76,24 +75,24 @@ class ASCDeviceCategoryViewController: UITableViewController {
 
         navigationController?.navigationBar.prefersLargeTitles = true
         navigationItem.largeTitleDisplayMode = .always
-        
+
         if ASCViewControllerManager.shared.rootController?.isEditing == true {
             ASCViewControllerManager.shared.rootController?.tabBar.isHidden = true
         }
         updateLargeTitlesSize()
     }
-    
+
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        
+
         navigationController?.navigationBar.prefersLargeTitles = true
         navigationItem.largeTitleDisplayMode = .always
     }
 
     func select(category: ASCCategory, animated: Bool = false) {
-        if  let splitVC = splitViewController,
-            let documentsNC = ASCDocumentsNavigationController.instantiate(from: Storyboard.main) as? ASCDocumentsNavigationController,
-            let documentsVC = documentsNC.topViewController as? ASCDocumentsViewController
+        if let splitVC = splitViewController,
+           let documentsNC = ASCDocumentsNavigationController.instantiate(from: Storyboard.main) as? ASCDocumentsNavigationController,
+           let documentsVC = documentsNC.topViewController as? ASCDocumentsViewController
         {
             if animated {
                 splitVC.showDetailViewController(documentsNC, sender: self)
@@ -106,7 +105,7 @@ class ASCDeviceCategoryViewController: UITableViewController {
             }
 
             splitVC.hideMasterController()
-            
+
             documentsVC.provider = category.provider
             documentsVC.folder = category.folder
             documentsVC.title = category.title
@@ -119,13 +118,11 @@ class ASCDeviceCategoryViewController: UITableViewController {
             }
         }
     }
-
 }
 
 // MARK: - Table view data source
 
 extension ASCDeviceCategoryViewController {
-
     override func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
@@ -147,5 +144,4 @@ extension ASCDeviceCategoryViewController {
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         select(category: categories[indexPath.row], animated: true)
     }
-
 }

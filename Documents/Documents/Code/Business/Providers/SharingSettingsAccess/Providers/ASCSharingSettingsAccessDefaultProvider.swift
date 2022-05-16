@@ -8,4 +8,4 @@
 
 import Foundation
 
-class ASCSharingSettingsAccessDefaultProvider: ASCSharingSettingsAccessProvider { }
+class ASCSharingSettingsAccessDefaultProvider: ASCSharingSettingsAccessProvider {}

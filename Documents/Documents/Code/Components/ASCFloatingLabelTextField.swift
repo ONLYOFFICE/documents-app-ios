@@ -6,18 +6,17 @@
 //  Copyright © 2020 Ascensio System SIA. All rights reserved.
 //
 
-import UIKit
 import SkyFloatingLabelTextField
+import UIKit
 
 class ASCFloatingLabelTextField: SkyFloatingLabelTextField {
-
     // MARK: - Properties
-    
+
     @IBInspectable var leftPadding: CGFloat = 0
     @IBInspectable var rightPadding: CGFloat = 0
 
     // MARK: - Lifecycle Methods
-    
+
     override open func placeholderRect(forBounds bounds: CGRect) -> CGRect {
         return CGRect(
             x: leftPadding,
@@ -51,5 +50,4 @@ class ASCFloatingLabelTextField: SkyFloatingLabelTextField {
         }
         return CGRect(x: leftPadding, y: titleHeight(), width: bounds.size.width, height: titleHeight())
     }
-
 }

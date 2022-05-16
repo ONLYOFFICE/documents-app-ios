@@ -6,8 +6,8 @@
 //  Copyright © 2021 Ascensio System SIA. All rights reserved.
 //
 
-import Foundation
 import Alamofire
+import Foundation
 import SwiftyJSON
 
 class NextcloudTokenAdapter: RequestAdapter {
@@ -27,55 +27,54 @@ class NextcloudTokenAdapter: RequestAdapter {
 }
 
 class NextcloudApiClient: NetworkingClient {
-    
-    public override init() {
+    override public init() {
         super.init()
     }
-    
+
     convenience init(url: String, user: String, password: String) {
         self.init()
         configure(url: url, user: user, password: password)
     }
-    
+
     public func configure(url: String, user: String? = nil, password: String? = nil) {
         guard let user = user, let password = password else {
             manager = Session()
             return
         }
-        
+
         baseURL = URL(string: url)
-        
+
         let configuration = URLSessionConfiguration.default
         configuration.timeoutIntervalForRequest = 30
         configuration.timeoutIntervalForResource = 30
         configuration.headers = .default
-        
+
         let adapter = NextcloudTokenAdapter(user: user, password: password)
-        
+
         manager = Session(
             configuration: configuration,
             interceptor: Interceptor(adapters: [adapter]),
             serverTrustManager: ServerTrustPolicyManager(evaluators: [:])
         )
     }
-    
+
     override func parseError(_ data: Data?, _ error: AFError? = nil) -> NetworkingError {
         let error = super.parseError(data, error)
-        
+
         if let data = data {
             do {
                 let json = try JSON(data: data)
                 if let errorString = json["message"].string {
                     return .apiError(error: NextcloudServerError(rawValue: errorString))
                 }
-            } catch (let error) {
+            } catch {
                 log.debug(error)
             }
         }
-        
+
         return error
     }
-    
+
     func absoluteUrl(from url: URL?) -> URL? {
         if let url = url {
             if let _ = url.host {
@@ -86,5 +85,4 @@ class NextcloudApiClient: NetworkingClient {
         }
         return nil
     }
-    
 }

@@ -9,10 +9,9 @@
 import Foundation
 
 class ASCShareSettingsAPIWorker: ASCShareSettingsAPIWorkerProtocol {
-
     func makeApiRequest(entity: ASCEntity) -> Endpoint<OnlyofficeResponseArray<OnlyofficeShare>>? {
-        var request: Endpoint<OnlyofficeResponseArray<OnlyofficeShare>>? = nil
-        
+        var request: Endpoint<OnlyofficeResponseArray<OnlyofficeShare>>?
+
         if let file = entity as? ASCFile {
             request = OnlyofficeAPI.Endpoints.Sharing.file(file: file)
         } else if let folder = entity as? ASCFolder {
@@ -20,8 +19,8 @@ class ASCShareSettingsAPIWorker: ASCShareSettingsAPIWorkerProtocol {
         }
         return request
     }
-    
-    func convertToParams(entities: [ASCEntity]) -> [String : [ASCEntityId]]? {
+
+    func convertToParams(entities: [ASCEntity]) -> [String: [ASCEntityId]]? {
         nil
     }
 }

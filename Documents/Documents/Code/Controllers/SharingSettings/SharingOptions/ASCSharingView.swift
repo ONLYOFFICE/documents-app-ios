@@ -15,12 +15,9 @@ protocol ASCSharingViewDelegate: AnyObject {
 }
 
 class ASCSharingView {
-    
     private weak var delegate: ASCSharingViewDelegate?
-    
-    private lazy var doneBarBtn: UIBarButtonItem = {
-        return UIBarButtonItem(title: NSLocalizedString("Close", comment: ""),style: .done, target: self, action: #selector(onDoneBarBtnTapped))
-    }()
+
+    private lazy var doneBarBtn: UIBarButtonItem = UIBarButtonItem(title: NSLocalizedString("Close", comment: ""), style: .done, target: self, action: #selector(onDoneBarBtnTapped))
 
     private lazy var linkBarButtonItem: UIBarButtonItem = {
         var icon: UIImage?
@@ -31,7 +28,7 @@ class ASCSharingView {
         }
         return UIBarButtonItem(image: icon, style: .plain, target: self, action: #selector(onLinkBarButtonTap))
     }()
-    
+
     private var navBarHeigh: CGFloat = 0
     private lazy var addRightsBarButtonItem: UIBarButtonItem = {
         var icon: UIImage?
@@ -42,12 +39,12 @@ class ASCSharingView {
         }
         return UIBarButtonItem(image: icon, style: .plain, target: self, action: #selector(onAddRightsBarButtonTap))
     }()
-    
+
     public lazy var loadingTableActivityIndicator = UIActivityIndicatorView()
-    
+
     convenience init(delegate: ASCSharingViewDelegate?) {
         self.init()
-        
+
         self.delegate = delegate
     }
 
@@ -55,27 +52,27 @@ class ASCSharingView {
         navigationController?.navigationItem.largeTitleDisplayMode = .never
         navBarHeigh = navigationController?.navigationBar.height ?? 0
     }
-    
+
     public func configureNavigationItem(_ navigationItem: UINavigationItem, allowAddRightHoders: Bool) {
         navigationItem.leftBarButtonItem = doneBarBtn
         navigationItem.title = NSLocalizedString("Sharing settings", comment: "")
-        
+
         var items = [UIBarButtonItem]()
         if allowAddRightHoders {
             items.append(addRightsBarButtonItem)
         }
         items.append(linkBarButtonItem)
-        
+
         navigationItem.rightBarButtonItems = items
     }
-    
+
     public func configureTableView(_ tableView: UITableView) {
         tableView.tableFooterView = UIView()
         if #available(iOS 15.0, *) {} else {
             tableView.backgroundColor = Asset.Colors.tableBackground.color
         }
         tableView.sectionFooterHeight = 0
-        
+
         tableView.register(ASCSwitchTableViewCell.self,
                            forCellReuseIdentifier: ASCSwitchTableViewCell.reuseId)
         tableView.register(ASCAccessRowTableViewCell.self,
@@ -87,7 +84,7 @@ class ASCSharingView {
         tableView.register(ASCCentredLabelHeaderFooterView.self,
                            forHeaderFooterViewReuseIdentifier: ASCCentredLabelHeaderFooterView.reuseId)
     }
-    
+
     public func configureForUser(accessViewController: ASCSharingSettingsAccessViewController, userName: String, access: ASCShareAccess, provider: ASCSharingSettingsAccessProvider, selectAccessDelegate: ((ASCShareAccess) -> Void)?) {
         let viewModel = ASCSharingSettingsAccessViewModel(title: userName,
                                                           currentlyAccess: access,
@@ -98,9 +95,10 @@ class ASCSharingView {
                                                           selectAccessDelegate: selectAccessDelegate)
         accessViewController.viewModel = viewModel
     }
-    
+
     public func configureForLink(accessViewController: ASCSharingSettingsAccessViewController, access: ASCShareAccess, provider: ASCSharingSettingsAccessProvider,
-        selectAccessDelegate: ((ASCShareAccess) -> Void)?) {
+                                 selectAccessDelegate: ((ASCShareAccess) -> Void)?)
+    {
         let viewModel = ASCSharingSettingsAccessViewModel(title: NSLocalizedString("Sharing settings", comment: ""),
                                                           currentlyAccess: access,
                                                           accessProvider: provider,
@@ -110,7 +108,7 @@ class ASCSharingView {
                                                           selectAccessDelegate: selectAccessDelegate)
         accessViewController.viewModel = viewModel
     }
-    
+
     public func showTableLoadingActivityIndicator(tableView: UITableView) {
         let centerYOffset = navBarHeigh
         loadingTableActivityIndicator.translatesAutoresizingMaskIntoConstraints = false
@@ -119,21 +117,21 @@ class ASCSharingView {
         loadingTableActivityIndicator.anchorCenterXToSuperview()
         loadingTableActivityIndicator.centerYAnchor.constraint(equalTo: tableView.centerYAnchor, constant: -centerYOffset).isActive = true
     }
-    
+
     public func hideTableLoadingActivityIndicator() {
         loadingTableActivityIndicator.stopAnimating()
         loadingTableActivityIndicator.removeFromSuperview()
     }
-    
+
     @objc func onLinkBarButtonTap() {
-        self.delegate?.onLinkBarButtonTap()
+        delegate?.onLinkBarButtonTap()
     }
-    
+
     @objc func onAddRightsBarButtonTap() {
-        self.delegate?.onAddRightsBarButtonTap()
+        delegate?.onAddRightsBarButtonTap()
     }
-    
+
     @objc func onDoneBarBtnTapped() {
-        self.delegate?.onDoneBarBtnTapped()
+        delegate?.onDoneBarBtnTapped()
     }
 }

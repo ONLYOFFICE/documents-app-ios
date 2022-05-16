@@ -6,21 +6,19 @@
 //  Copyright © 2020 Ascensio System SIA. All rights reserved.
 //
 
-import Foundation
 import Firebase
 import FirebaseAnalytics
+import Foundation
 
 final class ASCAnalytics {
-    
-    class func logEvent(_ event: String, parameters: [String : Any]? = nil) {
+    class func logEvent(_ event: String, parameters: [String: Any]? = nil) {
         if ASCConstants.Analytics.allow {
             Analytics.logEvent(event, parameters: parameters)
         }
     }
-    
-    struct Event {
-        
-        struct Key {
+
+    enum Event {
+        enum Key {
             static let portal = "portal"
             static let email = "email"
             static let onDevice = "onDevice"
@@ -30,8 +28,8 @@ final class ASCAnalytics {
             static let viewMode = "viewMode"
             static let provider = "provider"
         }
-        
-        struct Value {
+
+        enum Value {
             static let none = "none"
             static let file = "file"
             static let folder = "folder"
@@ -41,6 +39,5 @@ final class ASCAnalytics {
             static let presentation = "presentation"
             static let unknown = "unknown"
         }
-        
     }
 }

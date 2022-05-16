@@ -15,6 +15,7 @@ class ASCEntity: Mappable {
             uid = String(describing: type(of: self)) + "-" + id
         }
     }
+
     var uid: String = ""
     var isPlaceholder = false
 
@@ -31,10 +32,8 @@ class ASCEntity: Mappable {
     }
 }
 
-extension ASCEntity : Equatable {
-    
-    static func ==(lhs: ASCEntity, rhs: ASCEntity) -> Bool {
+extension ASCEntity: Equatable {
+    static func == (lhs: ASCEntity, rhs: ASCEntity) -> Bool {
         return lhs.uid == rhs.uid
     }
-    
 }

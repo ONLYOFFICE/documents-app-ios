@@ -24,8 +24,9 @@ class ASCFile: ASCEntity {
     var created: Date?
     var createdBy: ASCUser?
     var device: Bool = false
-    var parent: ASCFolder? = nil
-    
+    var parent: ASCFolder?
+    var denyDownload: Bool = false
+
     override init() {
         super.init()
     }
@@ -33,7 +34,7 @@ class ASCFile: ASCEntity {
     required init?(map: Map) {
         super.init(map: map)
     }
-    
+
     var isEditing: Bool {
         get { return fileStatus.contains(.isEditing) }
         set {
@@ -44,7 +45,7 @@ class ASCFile: ASCEntity {
             }
         }
     }
-    
+
     var isNew: Bool {
         get { return fileStatus.contains(.isNew) }
         set {
@@ -55,7 +56,7 @@ class ASCFile: ASCEntity {
             }
         }
     }
-    
+
     var isFavorite: Bool {
         get { return fileStatus.contains(.isFavorite) }
         set {
@@ -66,7 +67,7 @@ class ASCFile: ASCEntity {
             }
         }
     }
-    
+
     var isTemplate: Bool {
         get { return fileStatus.contains(.isTemplate) }
         set {
@@ -80,24 +81,25 @@ class ASCFile: ASCEntity {
 
     override func mapping(map: Map) {
         super.mapping(map: map)
-        
-        id                      <- (map["id"], ASCIndexTransform())
-        version                 <- map["version"]
-        displayContentLength    <- map["contentLength"]
-        pureContentLength       <- map["pureContentLength"]
-        fileStatus              <- map["fileStatus"]
-        viewUrl                 <- map["viewUrl"]
-        title                   <- (map["title"], ASCStringTransform())
-        access                  <- (map["access"], EnumTransform())
-        shared                  <- map["shared"]
-        rootFolderType          <- (map["rootFolderType"], EnumTransform())
-        updated                 <- (map["updated"], ASCDateTransform())
-        updatedBy               <- map["updatedBy"]
-        created                 <- (map["created"], ASCDateTransform())
-        createdBy               <- map["createdBy"]
-        device                  <- map["device"]
-        
+
+        id <- (map["id"], ASCIndexTransform())
+        version <- map["version"]
+        displayContentLength <- map["contentLength"]
+        pureContentLength <- map["pureContentLength"]
+        fileStatus <- map["fileStatus"]
+        viewUrl <- map["viewUrl"]
+        title <- (map["title"], ASCStringTransform())
+        access <- (map["access"], EnumTransform())
+        shared <- map["shared"]
+        rootFolderType <- (map["rootFolderType"], EnumTransform())
+        updated <- (map["updated"], ASCDateTransform())
+        updatedBy <- map["updatedBy"]
+        created <- (map["created"], ASCDateTransform())
+        createdBy <- map["createdBy"]
+        device <- map["device"]
+        denyDownload <- map["denyDownload"]
+
         // Internal
-        device                  <- map["device"]
+        device <- map["device"]
     }
 }

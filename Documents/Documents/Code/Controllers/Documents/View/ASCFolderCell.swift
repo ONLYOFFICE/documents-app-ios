@@ -6,19 +6,18 @@
 //  Copyright © 2019 Ascensio System SIA. All rights reserved.
 //
 
-import UIKit
 import MGSwipeTableCell
+import UIKit
 
 class ASCFolderCell: MGSwipeTableCell {
-
     // MARK: - Properties
 
-    @IBOutlet weak var title: UILabel!
-    @IBOutlet weak var owner: UILabel!
-    @IBOutlet weak var date: UILabel!
-    @IBOutlet weak var icon: UIImageView!
+    @IBOutlet var title: UILabel!
+    @IBOutlet var owner: UILabel!
+    @IBOutlet var date: UILabel!
+    @IBOutlet var icon: UIImageView!
 
-    var folder: ASCFolder? = nil {
+    var folder: ASCFolder? {
         didSet {
             updateData()
         }
@@ -50,7 +49,7 @@ class ASCFolderCell: MGSwipeTableCell {
         guard let folderInfo = folder else {
             title?.text = NSLocalizedString("Unknown", comment: "Invalid entity name")
             owner?.text = NSLocalizedString("none", comment: "Invalid entity owner")
-            date?.text  = NSLocalizedString("none", comment: "Invalid entity date")
+            date?.text = NSLocalizedString("none", comment: "Invalid entity date")
             return
         }
 
@@ -83,7 +82,7 @@ class ASCFolderCell: MGSwipeTableCell {
                 break
             }
         }
-        
+
         if let rootFolderType = folder?.rootFolderType {
             switch rootFolderType {
             case .icloudAll:
@@ -94,4 +93,3 @@ class ASCFolderCell: MGSwipeTableCell {
         }
     }
 }
-

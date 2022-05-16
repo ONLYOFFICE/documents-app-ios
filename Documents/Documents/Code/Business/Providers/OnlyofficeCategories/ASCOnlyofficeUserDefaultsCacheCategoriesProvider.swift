@@ -9,10 +9,9 @@
 import Foundation
 
 class ASCOnlyofficeUserDefaultsCacheCategoriesProvider {
-    
     private let encoder = JSONEncoder()
     private let decoder = JSONDecoder()
-    
+
     public func getKey(for account: ASCAccount) -> String? {
         guard let email = account.email,
               let portal = account.portal,
@@ -26,36 +25,35 @@ class ASCOnlyofficeUserDefaultsCacheCategoriesProvider {
 }
 
 extension ASCOnlyofficeUserDefaultsCacheCategoriesProvider: ASCOnlyofficeCacheCategoriesProvider {
-    
     func save(for account: ASCAccount, categories: [ASCOnlyofficeCategory]) -> Error? {
         guard let key = getKey(for: account) else {
             return nil
         }
-        
+
         do {
-            let data = try self.encoder.encode(categories)
-        
+            let data = try encoder.encode(categories)
+
             UserDefaults.standard.setValue(data, forKey: key)
-        } catch let error {
+        } catch {
             return error
         }
         return nil
     }
-    
+
     func getCategories(for account: ASCAccount) -> [ASCOnlyofficeCategory] {
         guard let key = getKey(for: account), let data = UserDefaults.standard.data(forKey: key) else {
             return []
         }
         do {
-            return try self.decoder.decode([ASCOnlyofficeCategory].self, from: data)
+            return try decoder.decode([ASCOnlyofficeCategory].self, from: data)
         } catch {
             return []
         }
     }
-    
+
     func clearCache() {
         UserDefaults.standard.dictionaryRepresentation().keys
-            .filter({ $0.hasPrefix(ASCConstants.CacheKeys.onlyofficeCategoriesPrefix) })
-            .forEach({ UserDefaults.standard.removeObject(forKey: $0) })
+            .filter { $0.hasPrefix(ASCConstants.CacheKeys.onlyofficeCategoriesPrefix) }
+            .forEach { UserDefaults.standard.removeObject(forKey: $0) }
     }
 }

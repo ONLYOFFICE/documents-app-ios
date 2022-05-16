@@ -6,16 +6,16 @@
 //  Copyright © 2017 Ascensio System SIA. All rights reserved.
 //
 
-import UIKit
+import CoreServices
 import FileKit
 import Firebase
-import CoreServices
+import UIKit
 
 enum ASCEntityProcessStatus: String {
-    case begin     = "ASCEntityCreateBegin"
-    case progress  = "ASCEntityCreateProgress"
-    case end       = "ASCEntityCreateEnd"
-    case error     = "ASCEntityCreateError"
+    case begin = "ASCEntityCreateBegin"
+    case progress = "ASCEntityCreateProgress"
+    case end = "ASCEntityCreateEnd"
+    case error = "ASCEntityCreateError"
 }
 
 typealias ASCEntityHandler = (_ status: ASCEntityProcessStatus, _ result: Any?, _ error: String?) -> Void
@@ -23,40 +23,40 @@ typealias ASCEntityProgressHandler = (_ status: ASCEntityProcessStatus, _ progre
 
 class ASCEntityManager: NSObject, UITextFieldDelegate {
     public static let shared = ASCEntityManager()
-    
-    static private let maxTitle = 170
-    static private let errorDomain = "ASCEntityManagerError"
-    
+
+    private static let maxTitle = 170
+    private static let errorDomain = "ASCEntityManagerError"
+
     // MARK: - Public
-    
+
     func createFile(for provider: ASCFileProviderProtocol, _ fileExtension: String, in folder: ASCFolder?, handler: ASCEntityHandler? = nil) {
         guard let folder = folder else {
             return
         }
-        
+
         var fileName = NSLocalizedString("New Document", comment: "")
-        
+
         if fileExtension == "xlsx" {
             fileName = NSLocalizedString("New Spreadsheet", comment: "")
         } else if fileExtension == "pptx" {
             fileName = NSLocalizedString("New Presentation", comment: "")
         }
-        
+
         let alertController = UIAlertController(title: fileName, message: nil, preferredStyle: .alert)
-        let cancelAction = UIAlertAction(title: ASCLocalization.Common.cancel, style: .cancel) { (action) in
+        let cancelAction = UIAlertAction(title: ASCLocalization.Common.cancel, style: .cancel) { action in
             if let textField = alertController.textFields?.first {
                 textField.selectedTextRange = nil
             }
         }
-        let createAction = UIAlertAction(title: NSLocalizedString("Create", comment: "")) { (action) in
+        let createAction = UIAlertAction(title: NSLocalizedString("Create", comment: "")) { action in
             if let textField = alertController.textFields?.first {
                 textField.selectedTextRange = nil
-                
+
                 if var fileTitle = textField.text?.validPathName {
                     if fileTitle.length < 1 {
                         fileTitle = fileName
                     }
-                    
+
                     handler?(.begin, nil, nil)
 
                     provider.createDocument(fileTitle, fileExtension: fileExtension, in: folder, completeon: { provider, file, success, error in
@@ -71,42 +71,42 @@ class ASCEntityManager: NSObject, UITextFieldDelegate {
                 }
             }
         }
-        
+
         alertController.addAction(cancelAction)
         alertController.addAction(createAction)
-        alertController.addTextField { (textField) in
+        alertController.addTextField { textField in
             textField.delegate = self
             textField.text = fileName
-            
-            textField.add(for: .editingChanged, {
+
+            textField.add(for: .editingChanged) {
                 createAction.isEnabled = !((textField.text ?? "").trimmed.isEmpty)
-            })
-            
+            }
+
             delay(seconds: 0.3) {
                 textField.selectAll(nil)
             }
         }
-        
+
         if let topVC = ASCViewControllerManager.shared.topViewController {
             alertController.view.tintColor = Asset.Colors.brend.color
             topVC.present(alertController, animated: true, completion: nil)
         }
     }
-    
+
     func createFolder(for provider: ASCFileProviderProtocol, in folder: ASCFolder?, handler: ASCEntityHandler? = nil) {
         guard let folder = folder else {
             return
         }
-        
+
         let folderName = NSLocalizedString("New Folder", comment: "")
-        
+
         let alertController = UIAlertController(title: NSLocalizedString("New Folder", comment: ""), message: nil, preferredStyle: .alert)
-        let cancelAction = UIAlertAction(title: ASCLocalization.Common.cancel, style: .cancel) { (action) in
+        let cancelAction = UIAlertAction(title: ASCLocalization.Common.cancel, style: .cancel) { action in
             if let textField = alertController.textFields?.first {
                 textField.selectedTextRange = nil
             }
         }
-        let createAction = UIAlertAction(title: NSLocalizedString("Create", comment: "")) { (action) in
+        let createAction = UIAlertAction(title: NSLocalizedString("Create", comment: "")) { action in
             if let textField = alertController.textFields?.first {
                 textField.selectedTextRange = nil
 
@@ -114,7 +114,7 @@ class ASCEntityManager: NSObject, UITextFieldDelegate {
                     if folderTitle.length < 1 {
                         folderTitle = folderName
                     }
-                    
+
                     handler?(.begin, nil, nil)
 
                     provider.createFolder(folderTitle, in: folder, params: nil, completeon: { provider, folder, success, error in
@@ -129,25 +129,25 @@ class ASCEntityManager: NSObject, UITextFieldDelegate {
                 }
             }
         }
-        
+
         alertController.addAction(cancelAction)
         alertController.addAction(createAction)
-        alertController.addTextField { (textField) in
+        alertController.addTextField { textField in
             textField.delegate = self
             textField.text = folderName
-            
-            textField.add(for: .editingChanged, {
+
+            textField.add(for: .editingChanged) {
                 let name = (textField.text ?? "").trimmed
                 let isEnabled = !name.isEmpty && !(name == "." || name == "..")
-                
+
                 createAction.isEnabled = isEnabled
-            })
-            
+            }
+
             delay(seconds: 0.3) {
                 textField.selectAll(nil)
             }
         }
-        
+
         if let topVC = ASCViewControllerManager.shared.topViewController {
             alertController.view.tintColor = Asset.Colors.brend.color
             topVC.present(alertController, animated: true, completion: nil)
@@ -160,8 +160,8 @@ class ASCEntityManager: NSObject, UITextFieldDelegate {
         data: Data,
         name: String,
         params: [String: Any]?,
-        handler: ASCEntityProgressHandler? = nil)
-    {
+        handler: ASCEntityProgressHandler? = nil
+    ) {
         guard let folder = folder else {
             return
         }
@@ -171,12 +171,13 @@ class ASCEntityManager: NSObject, UITextFieldDelegate {
         handler?(.begin, 0, nil, nil, &cancel)
 
         var params: [String: Any] = [
-            "mime": "application/octet-stream"
+            "mime": "application/octet-stream",
         ]
         let pathExtension = name.fileExtension()
 
-        if  let uti = UTTypeCreatePreferredIdentifierForTag(kUTTagClassFilenameExtension, pathExtension as NSString, nil)?.takeRetainedValue(),
-            let mimetype = UTTypeCopyPreferredTagWithClass(uti, kUTTagClassMIMEType)?.takeRetainedValue() {
+        if let uti = UTTypeCreatePreferredIdentifierForTag(kUTTagClassFilenameExtension, pathExtension as NSString, nil)?.takeRetainedValue(),
+           let mimetype = UTTypeCopyPreferredTagWithClass(uti, kUTTagClassMIMEType)?.takeRetainedValue()
+        {
             params["mime"] = mimetype as String
         }
 
@@ -201,17 +202,17 @@ class ASCEntityManager: NSObject, UITextFieldDelegate {
         in folder: ASCFolder?,
         imageData: Data,
         fileExtension: String,
-        handler: ASCEntityProgressHandler? = nil)
-    {
+        handler: ASCEntityProgressHandler? = nil
+    ) {
         guard let folder = folder else {
             return
         }
-        
+
         var cancel = false
-        
+
         let formatter = DateFormatter()
         formatter.dateFormat = "yyyy-MM-dd HH-mm-ss"
-        
+
         let fileTitle = formatter.string(from: Date()) + "." + fileExtension
 //        let params: [String: Any] = [
 //            "title": fileTitle,
@@ -235,25 +236,25 @@ class ASCEntityManager: NSObject, UITextFieldDelegate {
             }
         }
     }
-    
+
     func delete(for provider: ASCFileProviderProtocol, entities: [AnyObject], from folder: ASCFolder, handler: ASCEntityHandler? = nil) {
         let fromFolder = folder
 
         handler?(.begin, nil, nil)
-        
+
         var isDeviceEntities = true
-        
+
         // Detect type of entities
         if let firstEntity = entities.first {
             let firstFile = firstEntity as? ASCFile
             let firstFolder = firstEntity as? ASCFolder
-            
+
             isDeviceEntities = firstFile?.device ?? firstFolder?.device ?? true
         } else {
             handler?(.end, nil, nil)
             return
         }
-        
+
         if isDeviceEntities {
             for entity in entities {
                 if let file = entity as? ASCFile {
@@ -264,7 +265,7 @@ class ASCEntityManager: NSObject, UITextFieldDelegate {
                             handler?(.error, nil, NSLocalizedString("Could not delete the file.", comment: ""))
                             return
                         }
-                        
+
                         if let _ = ASCLocalFileHelper.shared.move(from: Path(file.id), to: filePath) {
                             handler?(.error, nil, NSLocalizedString("Could not delete the file.", comment: ""))
                             return
@@ -278,7 +279,7 @@ class ASCEntityManager: NSObject, UITextFieldDelegate {
                             handler?(.error, nil, NSLocalizedString("Could not delete the folder.", comment: ""))
                             return
                         }
-                        
+
                         if let _ = ASCLocalFileHelper.shared.move(from: Path(folder.id), to: folderPath) {
                             handler?(.error, nil, NSLocalizedString("Could not delete the folder.", comment: ""))
                             return
@@ -286,7 +287,7 @@ class ASCEntityManager: NSObject, UITextFieldDelegate {
                     }
                 }
             }
-            
+
             handler?(.end, entities, nil)
         } else {
             if let entities = entities as? [ASCEntity] {
@@ -300,22 +301,22 @@ class ASCEntityManager: NSObject, UITextFieldDelegate {
             }
         }
     }
-    
+
     func delete(for provider: ASCFileProviderProtocol, entity: AnyObject?, handler: ASCEntityHandler? = nil) {
         let file = entity as? ASCFile
         let folder = entity as? ASCFolder
 //        let parentFolder = file?.parent ?? folder?.parent
-        
-        if file == nil && folder == nil {
+
+        if file == nil, folder == nil {
             handler?(.error, nil, NSLocalizedString("Unknown item type.", comment: ""))
             return
         }
-        
-        let isDevice =  (file?.device ?? folder?.device)!
+
+        let isDevice = (file?.device ?? folder?.device)!
         let entityTitle = file?.title ?? folder?.title
-        
+
         handler?(.begin, nil, nil)
-        
+
         if isDevice {
             if let deviceFile = file {
                 if deviceFile.rootFolderType == .onlyofficeTrash {
@@ -325,7 +326,7 @@ class ASCEntityManager: NSObject, UITextFieldDelegate {
                         handler?(.error, nil, NSLocalizedString("Could not delete the file.", comment: ""))
                         return
                     }
-                    
+
                     if let _ = ASCLocalFileHelper.shared.move(from: Path(deviceFile.id), to: filePath) {
                         handler?(.error, nil, NSLocalizedString("Could not delete the file.", comment: ""))
                         return
@@ -340,7 +341,7 @@ class ASCEntityManager: NSObject, UITextFieldDelegate {
                         handler?(.error, nil, NSLocalizedString("Could not delete the folder.", comment: ""))
                         return
                     }
-                    
+
                     if let _ = ASCLocalFileHelper.shared.move(from: Path(deviceFolder.id), to: folderPath) {
                         handler?(.error, nil, NSLocalizedString("Could not delete the folder.", comment: ""))
                         return
@@ -352,8 +353,8 @@ class ASCEntityManager: NSObject, UITextFieldDelegate {
             let isShareEntity = (file?.rootFolderType == .onlyofficeShare) || (folder?.rootFolderType == .onlyofficeShare)
 
             if isShareEntity {
-                let parameters = file != nil ? ["fileIds" : [file?.id]] : ["folderIds": [folder?.id]]
-                
+                let parameters = file != nil ? ["fileIds": [file?.id]] : ["folderIds": [folder?.id]]
+
                 OnlyofficeApiClient.shared.request(OnlyofficeAPI.Endpoints.Sharing.removeSharingRights, parameters) { result, error in
                     if let error = error {
                         handler?(.error, nil, error.localizedDescription)
@@ -386,33 +387,33 @@ class ASCEntityManager: NSObject, UITextFieldDelegate {
             }
         }
     }
-    
+
     func rename(for provider: ASCFileProviderProtocol, entity: AnyObject?, handler: ASCEntityHandler? = nil) {
         let file = entity as? ASCFile
         let folder = entity as? ASCFolder
-        
-        if file == nil && folder == nil {
+
+        if file == nil, folder == nil {
             handler?(.error, nil, NSLocalizedString("Unknown item type.", comment: ""))
             return
         }
-        
+
         let entityTitle = file?.title ?? folder?.title
         let alertController = UIAlertController(title: NSLocalizedString("Rename", comment: ""), message: nil, preferredStyle: .alert)
-        let cancelAction = UIAlertAction(title: ASCLocalization.Common.cancel, style: .cancel) { (action) in
+        let cancelAction = UIAlertAction(title: ASCLocalization.Common.cancel, style: .cancel) { action in
             if let textField = alertController.textFields?.first {
                 textField.selectedTextRange = nil
             }
         }
-        let renameAction = UIAlertAction(title: NSLocalizedString("Rename", comment: "")) { (action) in
+        let renameAction = UIAlertAction(title: NSLocalizedString("Rename", comment: "")) { action in
             if let textField = alertController.textFields?.first {
                 textField.selectedTextRange = nil
-                
+
                 if let newTitle = textField.text?.validPathName {
                     if newTitle.length < 1 {
                         handler?(.error, nil, NSLocalizedString("Empty name.", comment: ""))
                         return
                     }
-                    
+
                     handler?(.begin, nil, nil)
 
                     provider.rename(file ?? folder!, to: newTitle, completeon: { provider, entity, success, error in
@@ -425,41 +426,41 @@ class ASCEntityManager: NSObject, UITextFieldDelegate {
                 }
             }
         }
-        
+
         alertController.addAction(cancelAction)
         alertController.addAction(renameAction)
-        alertController.addTextField { (textField) in
+        alertController.addTextField { textField in
             textField.delegate = self
             textField.text = entityTitle?.fileName()
-            
-            textField.add(for: .editingChanged, {
+
+            textField.add(for: .editingChanged) {
                 let name = (textField.text ?? "").trimmed
                 var isEnabled = !name.isEmpty
-                
+
                 if entity is ASCFolder, name == "." || name == ".." {
                     isEnabled = false
                 }
-                
+
                 renameAction.isEnabled = isEnabled
-            })
-            
+            }
+
             delay(seconds: 0.3) {
                 textField.selectAll(nil)
             }
         }
-        
+
         if let topVC = ASCViewControllerManager.shared.topViewController {
             alertController.view.tintColor = Asset.Colors.brend.color
             topVC.present(alertController, animated: true, completion: nil)
         }
     }
-    
+
     func favorite(for provider: ASCFileProviderProtocol, entity: AnyObject?, favorite: Bool, handler: ASCEntityHandler? = nil) {
         guard let file = entity as? ASCFile else {
             handler?(.error, nil, NSLocalizedString("Unknown item type.", comment: ""))
             return
         }
-        
+
         handler?(.begin, nil, nil)
 
         provider.favorite(file, favorite: favorite) { provider, entity, success, error in
@@ -470,40 +471,40 @@ class ASCEntityManager: NSObject, UITextFieldDelegate {
             }
         }
     }
-    
+
     func download(for provider: ASCFileProviderProtocol, entity: AnyObject?, handler: ASCEntityProgressHandler? = nil) {
         var cancel = false
-        
+
         guard let file = entity as? ASCFile else {
             handler?(.error, 1, nil, NSLocalizedString("Could not download object.", comment: ""), &cancel)
             return
         }
-        
+
         let fileTitle = file.title
         let destination = Path.userDocuments + fileTitle
-        
+
         if destination.exists {
             handler?(.error, 1, nil, NSLocalizedString("A file with a similar name already exists in the document directory on the device.", comment: ""), &cancel)
             return
         }
-        
+
         handler?(.begin, 0, nil, nil, &cancel)
-        
-        provider.download(file.viewUrl ?? "", to: URL(fileURLWithPath:destination.rawValue)) { result, progress, error in
+
+        provider.download(file.viewUrl ?? "", to: URL(fileURLWithPath: destination.rawValue)) { result, progress, error in
             if cancel {
                 ASCLocalFileHelper.shared.removeFile(destination)
                 handler?(.end, 1, nil, nil, &cancel)
                 return
             }
-            
+
             if let error = error {
                 ASCLocalFileHelper.shared.removeFile(destination)
                 handler?(.error, Float(progress), nil, ASCProviderError(error).localizedDescription, &cancel) // ?? ASCOnlyOfficeApi.errorMessage(by: response!)
-            } else if nil != result {
+            } else if result != nil {
                 // Create entity info
                 let owner = ASCUser()
                 owner.displayName = UIDevice.displayName
-                
+
                 let file = ASCFile()
                 file.id = destination.rawValue
                 file.rootFolderType = .deviceDocuments
@@ -515,47 +516,47 @@ class ASCEntityManager: NSObject, UITextFieldDelegate {
                 file.device = true
                 file.displayContentLength = String.fileSizeToString(with: destination.fileSize ?? 0)
                 file.pureContentLength = Int(destination.fileSize ?? 0)
-                
+
                 handler?(.end, 1, file, nil, &cancel)
             } else {
                 handler?(.progress, Float(progress), nil, nil, &cancel)
             }
         }
     }
-    
+
     func downloadTemp(for provider: ASCFileProviderProtocol, entity: AnyObject?, handler: ASCEntityProgressHandler? = nil) {
         var cancel = false
-        
+
         guard let file = entity as? ASCFile else {
             handler?(.error, 1, nil, NSLocalizedString("Could not download object.", comment: ""), &cancel)
             return
         }
-        
+
         let fileTitle = file.title
         let destination = Path.userTemporary + fileTitle
-     
-        ASCLocalFileHelper.shared.removeFile(Path.init(url: URL(fileURLWithPath:destination.rawValue))!)
-       
+
+        ASCLocalFileHelper.shared.removeFile(Path(url: URL(fileURLWithPath: destination.rawValue))!)
+
         if destination.exists {
             handler?(.error, 1, nil, NSLocalizedString("A file with a similar name already exists in the document directory on the device.", comment: ""), &cancel)
             return
         }
-        
+
         handler?(.begin, 0, nil, nil, &cancel)
-        
-        provider.download(file.viewUrl ?? "", to: URL(fileURLWithPath:destination.rawValue)) { result, progress, error in
+
+        provider.download(file.viewUrl ?? "", to: URL(fileURLWithPath: destination.rawValue)) { result, progress, error in
             if cancel {
                 handler?(.end, 1, nil, nil, &cancel)
                 return
             }
-            
+
             if let _ = error {
                 handler?(.error, Float(progress), nil, NSLocalizedString("Could not download object.", comment: ""), &cancel)
-            } else if nil != result {
+            } else if result != nil {
                 // Create entity info
                 let owner = ASCUser()
                 owner.displayName = UIDevice.displayName
-                
+
                 let file = ASCFile()
                 file.id = destination.rawValue
                 file.rootFolderType = .deviceDocuments
@@ -567,7 +568,7 @@ class ASCEntityManager: NSObject, UITextFieldDelegate {
                 file.device = true
                 file.displayContentLength = String.fileSizeToString(with: destination.fileSize ?? 0)
                 file.pureContentLength = Int(destination.fileSize ?? 0)
-                
+
                 handler?(.end, 1, file, nil, &cancel)
             } else {
                 handler?(.progress, Float(progress), nil, nil, &cancel)
@@ -577,25 +578,25 @@ class ASCEntityManager: NSObject, UITextFieldDelegate {
 
     func duplicate(file: ASCFile, to folder: ASCFolder, handler: ASCEntityProgressHandler? = nil) {
         var cancel = false
-        
+
         handler?(.begin, 0, nil, nil, &cancel)
-        
+
         if folder.device {
             let fileName = file.title.fileName()
             let fileExtension = file.title.fileExtension()
-            
+
             guard let filePath = ASCLocalFileHelper.shared.resolve(filePath: Path(folder.id) + (fileName + "." + fileExtension)) else {
                 handler?(.error, 1, nil, NSLocalizedString("Can not duplicate the file.", comment: ""), &cancel)
                 return
             }
-            
+
             if let error = ASCLocalFileHelper.shared.copy(from: Path(file.id), to: filePath) {
                 handler?(.error, 1, nil, ASCProviderError(error).localizedDescription, &cancel)
             } else {
                 // Create entity info
                 let owner = ASCUser()
                 owner.displayName = UIDevice.displayName
-                
+
                 let file = ASCFile()
                 file.id = filePath.rawValue
                 file.rootFolderType = .deviceDocuments
@@ -607,21 +608,21 @@ class ASCEntityManager: NSObject, UITextFieldDelegate {
                 file.device = true
                 file.displayContentLength = String.fileSizeToString(with: filePath.fileSize ?? 0)
                 file.pureContentLength = Int(filePath.fileSize ?? 0)
-                
+
                 handler?(.end, 1, file, nil, &cancel)
             }
         } else {
             let parameters: [String: Any] = [
                 "destFolderId": folder.id,
                 "fileIds": file.id,
-                "conflictResolveType": 2
+                "conflictResolveType": 2,
             ]
-            
+
             OnlyofficeApiClient.shared.request(OnlyofficeAPI.Endpoints.Operations.copy, parameters) { result, error in
                 if let error = error {
                     handler?(.error, 1, nil, error.localizedDescription, &cancel)
                 } else {
-                    var checkOperation: (()->Void)?
+                    var checkOperation: (() -> Void)?
                     checkOperation = {
                         OnlyofficeApiClient.shared.request(OnlyofficeAPI.Endpoints.Operations.list) { result, error in
                             if let error = error {
@@ -648,24 +649,24 @@ class ASCEntityManager: NSObject, UITextFieldDelegate {
         var cancel = false
 
         handler?(.begin, 0, nil, nil, &cancel)
-        
+
         let dataFile = DataFile(path: Path(file.id))
         var content: Data?
-        
+
         do {
             content = try dataFile.read()
         } catch {
             handler?(.error, 1, nil, NSLocalizedString("Could not read data from the file.", comment: ""), &cancel)
             return
         }
-        
+
         guard let data = content else {
             handler?(.error, 1, nil, NSLocalizedString("Could not read data from the file.", comment: ""), &cancel)
             return
         }
 
         let params: [String: Any] = [
-            "mime": Path(file.id).mime ?? DEFAULT_MIME_TYPE
+            "mime": Path(file.id).mime ?? DEFAULT_MIME_TYPE,
         ]
 
         if originalFile.title == file.title {
@@ -687,34 +688,33 @@ class ASCEntityManager: NSObject, UITextFieldDelegate {
         } else if let parent = originalFile.parent {
             // Upload new file
             let params: [String: Any] = [
-                "title": file.title
+                "title": file.title,
             ]
 
             provider.upload(parent.id,
                             data: data,
                             overwrite: true,
                             params: params,
-                            processing:
-                { result, progress, error in
-                    if nil != error || nil != result {
-                        if let error = error {
-                            log.error("Upload file \(file.title) - \(error.localizedDescription)")
-                            handler?(.error, Float(progress), nil, NSLocalizedString("The server is not available.", comment: ""), &cancel)
-                        }
+                            processing: { result, progress, error in
+                                if error != nil || result != nil {
+                                    if let error = error {
+                                        log.error("Upload file \(file.title) - \(error.localizedDescription)")
+                                        handler?(.error, Float(progress), nil, NSLocalizedString("The server is not available.", comment: ""), &cancel)
+                                    }
 
-                        if let result = result as? [String: Any] {
-                            if let file = ASCFile(JSON: result) {
-                                handler?(.end, 1, file, nil, &cancel)
-                                NotificationCenter.default.post(name: ASCConstants.Notifications.updateFileInfo, object: result)
-                            }
-                        } else if let file = result as? ASCFile {
-                            handler?(.end, 1, file, nil, &cancel)
-                            NotificationCenter.default.post(name: ASCConstants.Notifications.updateFileInfo, object: result)
-                        } else {
-                            handler?(.progress, Float(progress), nil, nil, &cancel)
-                        }
-                    }
-            })
+                                    if let result = result as? [String: Any] {
+                                        if let file = ASCFile(JSON: result) {
+                                            handler?(.end, 1, file, nil, &cancel)
+                                            NotificationCenter.default.post(name: ASCConstants.Notifications.updateFileInfo, object: result)
+                                        }
+                                    } else if let file = result as? ASCFile {
+                                        handler?(.end, 1, file, nil, &cancel)
+                                        NotificationCenter.default.post(name: ASCConstants.Notifications.updateFileInfo, object: result)
+                                    } else {
+                                        handler?(.progress, Float(progress), nil, nil, &cancel)
+                                    }
+                                }
+                            })
         } else {
             handler?(.error, 1, nil, NSLocalizedString("Could not read data from the file.", comment: ""), &cancel)
         }
@@ -723,7 +723,7 @@ class ASCEntityManager: NSObject, UITextFieldDelegate {
     func transfer(from: (items: [ASCEntity], provider: ASCFileProviderProtocol),
                   to: (folder: ASCFolder, provider: ASCFileProviderProtocol),
                   move: Bool = false,
-                  handler: @escaping ((_ progress: Float, _ complation: Bool, _ success: Bool, _ newItems: [ASCEntity]?, _ error: Error?, _ cancel: inout Bool) -> Void) )
+                  handler: @escaping ((_ progress: Float, _ complation: Bool, _ success: Bool, _ newItems: [ASCEntity]?, _ error: Error?, _ cancel: inout Bool) -> Void))
     {
         var cancel = false
 
@@ -743,18 +743,18 @@ class ASCEntityManager: NSObject, UITextFieldDelegate {
             localFolder: ASCFolder?,
             dstFolder: ASCFolder?,
             items: [ASCEntity]
-            )] = [(
-                srcFolder: srcParent,
-                localFolder: nil,
-                dstFolder: to.folder,
-                items: from.items
-                )]
+        )] = [(
+            srcFolder: srcParent,
+            localFolder: nil,
+            dstFolder: to.folder,
+            items: from.items
+        )]
         let srcProvider = from.provider
         let dstProvider = to.provider
         var newItems: [ASCEntity] = []
 
-        let srcAbsolutePath: ((ASCEntity)-> String) = { entity in
-            var localPath:[String] = [(entity as? ASCFile)?.title ?? (entity as? ASCFolder)?.title ?? ""]
+        let srcAbsolutePath: ((ASCEntity) -> String) = { entity in
+            var localPath: [String] = [(entity as? ASCFile)?.title ?? (entity as? ASCFolder)?.title ?? ""]
             var parent = (entity as? ASCFile)?.parent ?? (entity as? ASCFolder)?.parent
 
             while let folder = structures.first(where: { $0.srcFolder.id == parent?.id })?.srcFolder {
@@ -775,11 +775,11 @@ class ASCEntityManager: NSObject, UITextFieldDelegate {
                 srcProvider.cancel()
                 dstProvider.cancel()
             }
-            
+
             // Cleanup temporary
             ASCLocalFileHelper.shared.removeDirectory(tempPath)
         }
-        
+
         let showNetworkErrorIfNeeded = {
             if !ASCNetworkReachability.shared.isReachable {
                 ASCBanner.shared.showError(
@@ -798,7 +798,7 @@ class ASCEntityManager: NSObject, UITextFieldDelegate {
         operationQueue.addOperation {
             let readQueue = OperationQueue()
             let srcProviderCopy = srcProvider.copy()
-            
+
             func read(folder: ASCFolder, level: Int = 0) {
                 readQueue.addOperation {
                     let semaphore = DispatchSemaphore(value: 0)
@@ -824,7 +824,8 @@ class ASCEntityManager: NSObject, UITextFieldDelegate {
                                     srcFolder: folder,
                                     localFolder: nil,
                                     dstFolder: nil,
-                                    items: provider.items)
+                                    items: provider.items
+                                )
                                 )
                             }
                         }
@@ -836,7 +837,7 @@ class ASCEntityManager: NSObject, UITextFieldDelegate {
                 }
             }
 
-            let rootFolders = structures.first?.items.compactMap({ $0 as? ASCFolder }) ?? []
+            let rootFolders = structures.first?.items.compactMap { $0 as? ASCFolder } ?? []
             for folder in rootFolders {
                 read(folder: folder)
             }
@@ -845,7 +846,7 @@ class ASCEntityManager: NSObject, UITextFieldDelegate {
         }
 
         // Download
-        
+
         var downloadErrorFiles: [ASCFile] = []
 
         operationQueue.addOperation {
@@ -869,7 +870,7 @@ class ASCEntityManager: NSObject, UITextFieldDelegate {
 
             // Downloading files
             let files = Array(structures
-                .compactMap({ $0.items.compactMap({ $0 as? ASCFile }) })
+                .compactMap { $0.items.compactMap { $0 as? ASCFile } }
                 .joined())
 
             var localProgress: Float = 0
@@ -878,7 +879,7 @@ class ASCEntityManager: NSObject, UITextFieldDelegate {
 
             let downloadQueue = OperationQueue()
             downloadQueue.maxConcurrentOperationCount = 1
-            
+
             for file in files {
                 let localPath = tempPath + srcAbsolutePath(file)
 
@@ -895,20 +896,20 @@ class ASCEntityManager: NSObject, UITextFieldDelegate {
                         let normalizeCurrentProgress = sizeOfCommonProgress / Float(files.count) * Float(progress)
                         handler(commonProgress + localProgress + normalizeCurrentProgress, false, false, nil, nil, &cancel)
 
-                        if nil != error || nil != result {
+                        if error != nil || result != nil {
                             if let error = error {
                                 log.error("Download file: \(file.title) - \(error.localizedDescription)")
-                                
+
                                 if srcProvider.type != .local {
                                     showNetworkErrorIfNeeded()
                                 }
-                                
+
                                 if let structureIndex = structures.firstIndex(where: { $0.items.contains(where: { ($0 as? ASCFile)?.viewUrl == file.viewUrl }) }) {
                                     if let index = structures[structureIndex].items.firstIndex(where: { ($0 as? ASCFile)?.viewUrl == file.viewUrl }) {
                                         structures[structureIndex].items.remove(at: index)
                                     }
                                 }
-                                
+
                                 downloadErrorFiles.append(file)
                             }
 
@@ -974,7 +975,7 @@ class ASCEntityManager: NSObject, UITextFieldDelegate {
             }
 
             for structure in structures {
-                let folders = structure.items.compactMap({ $0 as? ASCFolder })
+                let folders = structure.items.compactMap { $0 as? ASCFolder }
 
                 for folder in folders {
                     if let parent = folder.parent {
@@ -993,7 +994,7 @@ class ASCEntityManager: NSObject, UITextFieldDelegate {
         // Upload files
 
         var uploadErrorFiles: [ASCFile] = []
-        
+
         operationQueue.addOperation {
             if cancel {
                 forceExit()
@@ -1008,16 +1009,16 @@ class ASCEntityManager: NSObject, UITextFieldDelegate {
             //            uploadQueue.maxConcurrentOperationCount = 1
 
             let fileCount = Array(structures
-                .compactMap({ $0.items.compactMap({ $0 as? ASCFile }) })
+                .compactMap { $0.items.compactMap { $0 as? ASCFile } }
                 .joined()).count
 
             for structure in structures {
                 if let dstFolder = structure.dstFolder, let localFolder = structure.localFolder {
-                    let files = structure.items.compactMap({ $0 as? ASCFile })
+                    let files = structure.items.compactMap { $0 as? ASCFile }
 
                     for file in files {
                         let params: [String: Any] = [
-                            "title": file.title
+                            "title": file.title,
                         ]
                         let localFilePath = Path(localFolder.id) + file.title
                         let dataFile = DataFile(path: localFilePath)
@@ -1038,42 +1039,40 @@ class ASCEntityManager: NSObject, UITextFieldDelegate {
                                                    data: data,
                                                    overwrite: true,
                                                    params: params,
-                                                   processing:
-                                    { result, progress, error in
-                                        if cancel {
-                                            forceExit()
-                                            semaphore.signal()
-                                            return
-                                        }
+                                                   processing: { result, progress, error in
+                                                       if cancel {
+                                                           forceExit()
+                                                           semaphore.signal()
+                                                           return
+                                                       }
 
-                                        let normalizeCurrentProgress = sizeOfCommonProgress / Float(fileCount) * Float(progress)
-                                        handler(commonProgress + localProgress + normalizeCurrentProgress, false, false, nil, nil, &cancel)
+                                                       let normalizeCurrentProgress = sizeOfCommonProgress / Float(fileCount) * Float(progress)
+                                                       handler(commonProgress + localProgress + normalizeCurrentProgress, false, false, nil, nil, &cancel)
 
-                                        if nil != error || nil != result {
-                                            if let error = error {
-                                                log.error("Upload file \(file.title) - \(error.localizedDescription)")
-                                                if dstProvider.type != .local {
-                                                    showNetworkErrorIfNeeded()
-                                                }
-                                                uploadErrorFiles.append(file)
-                                            }
+                                                       if error != nil || result != nil {
+                                                           if let error = error {
+                                                               log.error("Upload file \(file.title) - \(error.localizedDescription)")
+                                                               if dstProvider.type != .local {
+                                                                   showNetworkErrorIfNeeded()
+                                                               }
+                                                               uploadErrorFiles.append(file)
+                                                           }
 
-                                            if let result = result as? [String: Any] {
-                                                if let file = ASCFile(JSON: result) {
-                                                    newItems.append(file)
-                                                }
-                                            } else if let file = result as? ASCFile {
-                                                newItems.append(file)
-                                            }
+                                                           if let result = result as? [String: Any] {
+                                                               if let file = ASCFile(JSON: result) {
+                                                                   newItems.append(file)
+                                                               }
+                                                           } else if let file = result as? ASCFile {
+                                                               newItems.append(file)
+                                                           }
 
-                                            processedFiles = processedFiles + 1
-                                            localProgress = sizeOfCommonProgress * Float(processedFiles) / Float(fileCount)
-                                            handler(commonProgress + localProgress, false, false, nil, nil, &cancel)
+                                                           processedFiles = processedFiles + 1
+                                                           localProgress = sizeOfCommonProgress * Float(processedFiles) / Float(fileCount)
+                                                           handler(commonProgress + localProgress, false, false, nil, nil, &cancel)
 
-                                            semaphore.signal()
-                                        }
-                                }
-                                )
+                                                           semaphore.signal()
+                                                       }
+                                                   })
                                 semaphore.wait()
                             }
                         }
@@ -1085,7 +1084,7 @@ class ASCEntityManager: NSObject, UITextFieldDelegate {
 
             commonProgress = commonProgress + localProgress
             handler(commonProgress, false, false, nil, nil, &cancel)
-            
+
             let errorFiles = downloadErrorFiles + uploadErrorFiles
             if errorFiles.count > 0 {
                 let errorMsg = move
@@ -1111,7 +1110,7 @@ class ASCEntityManager: NSObject, UITextFieldDelegate {
             //            log.debug(to.folder)
             //            log.debug(newItems)
 
-            let appendItems = newItems.filter({ ($0 as? ASCFile)?.parent?.uid == to.folder.uid || ($0 as? ASCFolder)?.parent?.uid == to.folder.uid })
+            let appendItems = newItems.filter { ($0 as? ASCFile)?.parent?.uid == to.folder.uid || ($0 as? ASCFolder)?.parent?.uid == to.folder.uid }
             //            log.debug(appendItems)
 
             if move {
@@ -1122,7 +1121,7 @@ class ASCEntityManager: NSObject, UITextFieldDelegate {
                         let errorFiles = downloadErrorFiles + uploadErrorFiles
                         let errorFilesUids = errorFiles.map { $0.uid }
                         let movedItems = from.items.filter { !errorFilesUids.contains($0.uid) }
-                        
+
                         srcProvider.delete(movedItems, from: srcParent, move: move, completeon: { provider, result, success, error in
                             semaphore.signal()
                         })
@@ -1139,31 +1138,32 @@ class ASCEntityManager: NSObject, UITextFieldDelegate {
                 handler(1, true, true, appendItems, nil, &cancel)
             }
         }
-        
+
         // Cleanup temporary
         operationQueue.addOperation {
             ASCLocalFileHelper.shared.removeDirectory(tempPath)
         }
     }
-    
+
     // MARK: - UITextField Delegate
-    
+
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         if textField.isFirstResponder {
             if let primaryLanguage = textField.textInputMode?.primaryLanguage, primaryLanguage == "emoji" {
                 return false
             }
         }
-  
+
         guard let textFieldText = textField.text,
-            let rangeOfTextToReplace = Range(range, in: textFieldText) else {
-                return false
+              let rangeOfTextToReplace = Range(range, in: textFieldText)
+        else {
+            return false
         }
-        
+
         let substringToReplace = textFieldText[rangeOfTextToReplace]
         let count = textFieldText.count - substringToReplace.count + string.count
-        let validReplaceText = nil == string.rangeOfCharacter(from: CharacterSet(charactersIn: String.invalidTitleChars))
-        
+        let validReplaceText = string.rangeOfCharacter(from: CharacterSet(charactersIn: String.invalidTitleChars)) == nil
+
         return count <= ASCEntityManager.maxTitle && validReplaceText
     }
 }

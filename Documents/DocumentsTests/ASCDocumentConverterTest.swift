@@ -6,30 +6,30 @@
 //  Copyright © 2018 Ascensio System SIA. All rights reserved.
 //
 
-import XCTest
 import DocumentConverter
 import FileKit
+import XCTest
 
 class ASCDocumentConverterTest: XCTestCase {
     private let converterKey = "{95874338-e6dc-4965-9791-b7802f22aa67}"
     private let openedFilePassword = "555"
-    
+
     lazy var appFonts: [String] = {
         var paths = [Bundle.main.resourcePath?.appendingPathComponent("fonts") ?? ""]
-        
+
         if let appFontsFolder = FileManager.default.urls(for: .cachesDirectory, in: .userDomainMask).first {
             paths.insert(appFontsFolder.appendingPathComponent("Fonts").path, at: 0)
         }
         return paths
     }()
-    
+
     lazy var dataFontsPath: String = {
         let paths = NSSearchPathForDirectoriesInDomains(.cachesDirectory, .userDomainMask, true)
         if let documentsDirectory = paths.first {
             let path = documentsDirectory + "/asc.editors.data.cache.fonts"
             do {
                 try FileManager.default.createDirectory(atPath: path, withIntermediateDirectories: false, attributes: nil)
-            } catch { }
+            } catch {}
             return path
         }
         return ""
@@ -39,7 +39,7 @@ class ASCDocumentConverterTest: XCTestCase {
         super.setUp()
         // Put setup code here. This method is called before the invocation of each test method in the class.
     }
-    
+
     override func tearDown() {
         // Put teardown code here. This method is called after the invocation of each test method in the class.
         super.tearDown()
@@ -95,38 +95,38 @@ class ASCDocumentConverterTest: XCTestCase {
             directionInfoTo = "PPTX -> PPTT"
             directionInfoBack = "PPTT -> PPTX"
         } else {
-            return(false, "❌ Complete FAILURE: Unsupported file: \(path.rawValue)")
+            return (false, "❌ Complete FAILURE: Unsupported file: \(path.rawValue)")
         }
 
-        let converter   = DocumentLocalConverter()
-        let outputPath  = Path.userAutosavedInformation + path.fileName + "/"
-        let tempPath    = Path.userTemporary + UUID().uuidString
-        let fontPath    = "/System/Library/Fonts"
+        let converter = DocumentLocalConverter()
+        let outputPath = Path.userAutosavedInformation + path.fileName + "/"
+        let tempPath = Path.userTemporary + UUID().uuidString
+        let fontPath = "/System/Library/Fonts"
 
         do {
             try outputPath.createDirectory(withIntermediateDirectories: true)
             try tempPath.createDirectory(withIntermediateDirectories: true)
         } catch {
-            return(false, "❌ Complete FAILURE: Couldn't directory structure for: \(path.rawValue)")
+            return (false, "❌ Complete FAILURE: Couldn't directory structure for: \(path.rawValue)")
         }
 
-        var resultError: Error? = nil
+        var resultError: Error?
 
-        converter.fontsPaths        = appFonts
-        converter.dataFontsPath     = dataFontsPath
-        converter.options           = [
-            "Key"                   : converterKey,
-            "FileData"              : NSNull(),
-            "FileFrom"              : path.rawValue,
-            "FileTo"                : (outputPath + "Editor.bin").rawValue,
-            "ConversionDirection"   : NSNumber(value: conversionDirectionTo.rawValue),
-            "FontDir"               : fontPath,
-            "TempDir"               : tempPath.rawValue,
-            "Async"                 : false,
-            "Password"              : openedFilePassword
+        converter.fontsPaths = appFonts
+        converter.dataFontsPath = dataFontsPath
+        converter.options = [
+            "Key": converterKey,
+            "FileData": NSNull(),
+            "FileFrom": path.rawValue,
+            "FileTo": (outputPath + "Editor.bin").rawValue,
+            "ConversionDirection": NSNumber(value: conversionDirectionTo.rawValue),
+            "FontDir": fontPath,
+            "TempDir": tempPath.rawValue,
+            "Async": false,
+            "Password": openedFilePassword,
         ]
 
-        converter.start { (status, progress, error) in
+        converter.start { status, progress, error in
             if status == kDocumentLocalConverterBegin {
                 print("♻️ Start \(directionInfoTo) of \(path.fileName)")
                 resultError = error
@@ -148,23 +148,23 @@ class ASCDocumentConverterTest: XCTestCase {
         }
 
         if let error = resultError {
-            return(false, "❌ Complete FAILURE: Error: \(error) for: \(path.rawValue)")
+            return (false, "❌ Complete FAILURE: Error: \(error) for: \(path.rawValue)")
         }
 
-        converter.fontsPaths        = appFonts
-        converter.dataFontsPath     = dataFontsPath
-        converter.options           = [
-            "Key"                   : converterKey,
-            "FileData"              : NSNull(),
-            "FileFrom"              : (outputPath + "Editor.bin").rawValue,
-            "FileTo"                : (outputPath + path.fileName).rawValue,
-            "ConversionDirection"   : NSNumber(value: conversionDirectionBack.rawValue),
-            "FontDir"               : fontPath,
-            "TempDir"               : tempPath.rawValue,
-            "Async"                 : false
+        converter.fontsPaths = appFonts
+        converter.dataFontsPath = dataFontsPath
+        converter.options = [
+            "Key": converterKey,
+            "FileData": NSNull(),
+            "FileFrom": (outputPath + "Editor.bin").rawValue,
+            "FileTo": (outputPath + path.fileName).rawValue,
+            "ConversionDirection": NSNumber(value: conversionDirectionBack.rawValue),
+            "FontDir": fontPath,
+            "TempDir": tempPath.rawValue,
+            "Async": false,
         ]
 
-        converter.start { [unowned self] (status, progress, error) in
+        converter.start { [unowned self] status, progress, error in
             if status == kDocumentLocalConverterBegin {
                 print("♻️ Start \(directionInfoBack) of \(path.fileName)")
                 resultError = error
@@ -192,14 +192,16 @@ class ASCDocumentConverterTest: XCTestCase {
 
     func testLocalDocuments() {
         if let testResourceUrl = Bundle(for: type(of: self)).resourceURL,
-            let testResourcePath = Path(url: testResourceUrl) {
+           let testResourcePath = Path(url: testResourceUrl)
+        {
             let testDocumentsPath = testResourcePath + "documents"
 
             for path in testDocumentsPath {
                 if path.pathExtension == "docx" ||
-                   path.pathExtension == "xlsx" ||
-                   path.pathExtension == "pptx" {
-                    print("📦 BEGIN CONVERTING of file: \(path.fileName)" )
+                    path.pathExtension == "xlsx" ||
+                    path.pathExtension == "pptx"
+                {
+                    print("📦 BEGIN CONVERTING of file: \(path.fileName)")
                     let result = convertDocument(path)
                     print("📦 END CONVERTING \(result.1)")
 
@@ -208,12 +210,11 @@ class ASCDocumentConverterTest: XCTestCase {
             }
         }
     }
-    
+
 //    func testPerformanceExample() {
 //        // This is an example of a performance test case.
 //        self.measure {
 //            // Put the code you want to measure the time of here.
 //        }
 //    }
-
 }

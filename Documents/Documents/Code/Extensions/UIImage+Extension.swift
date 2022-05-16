@@ -9,6 +9,7 @@
 import UIKit
 
 // MARK: - Initializers
+
 public extension UIImage {
     /// Create UIImage from color and size.
     ///

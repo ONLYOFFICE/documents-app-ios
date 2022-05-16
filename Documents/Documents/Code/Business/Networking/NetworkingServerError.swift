@@ -8,6 +8,4 @@
 
 import Foundation
 
-protocol NetworkingServerError: LocalizedError {
-
-}
+protocol NetworkingServerError: LocalizedError {}

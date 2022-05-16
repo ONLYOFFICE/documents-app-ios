@@ -9,10 +9,9 @@
 import UIKit
 
 extension UISplitViewController {
-
     func hideMasterController() {
-            let originPreferredDisplayMode = preferredDisplayMode
-            preferredDisplayMode = .primaryHidden
-            preferredDisplayMode = originPreferredDisplayMode
+        let originPreferredDisplayMode = preferredDisplayMode
+        preferredDisplayMode = .primaryHidden
+        preferredDisplayMode = originPreferredDisplayMode
     }
 }

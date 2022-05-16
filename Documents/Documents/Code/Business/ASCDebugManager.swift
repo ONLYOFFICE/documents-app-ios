@@ -10,7 +10,7 @@ import UIKit
 
 class ASCDebugManager: NSObject {
     public static let shared = ASCDebugManager()
-    
+
     public var enabled: Bool {
         get {
             return UserDefaults.standard.bool(forKey: isDebugModeKey)
@@ -19,7 +19,7 @@ class ASCDebugManager: NSObject {
             UserDefaults.standard.set(newValue, forKey: isDebugModeKey)
         }
     }
-    
+
     fileprivate let isDebugModeKey = "asc.debug.mode"
     fileprivate var presented: Bool = false
     fileprivate var presentingViewController: UIViewController? {
@@ -29,16 +29,16 @@ class ASCDebugManager: NSObject {
         }
         return rootViewController
     }
-    
+
     fileprivate func toggleDebugMenu() {
         presented ? hideDebugMenu() : showDebugMenu()
     }
-    
+
     fileprivate func showDebugMenu() {
         if presented {
             return
         }
-        
+
         let debugNV = ASCDebugNavigationController.instantiate(from: Storyboard.debug)
         debugNV.onDismissed = {
             self.presented = false
@@ -52,7 +52,7 @@ class ASCDebugManager: NSObject {
 
         presented = true
     }
-    
+
     fileprivate func hideDebugMenu() {
         if !presented {
             return
@@ -64,30 +64,24 @@ class ASCDebugManager: NSObject {
     }
 }
 
-
 // MARK: - UIAdaptivePresentationControllerDelegate
 
 extension ASCDebugManager: UIAdaptivePresentationControllerDelegate {
-
     public func presentationControllerDidDismiss(_ presentationController: UIPresentationController) {
         presented = false
     }
-    
 }
-
 
 // MARK: - UIWindow extension
 
 extension UIWindow {
-
     override open func motionEnded(_ motion: UIEvent.EventSubtype, with event: UIEvent?) {
         if ASCDebugManager.shared.enabled {
-            if (event!.type == .motion && event!.subtype == .motionShake) {
+            if event!.type == .motion && event!.subtype == .motionShake {
                 ASCDebugManager.shared.toggleDebugMenu()
                 return
             }
         }
         super.motionEnded(motion, with: event)
     }
-    
 }

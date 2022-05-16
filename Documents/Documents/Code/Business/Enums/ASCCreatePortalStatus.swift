@@ -16,7 +16,7 @@ enum ASCCreatePortalStatus: String, CaseIterable {
     case failurePassPolicyError = "passPolicyError"
     case failureEmailIncorrect = "emailIncorrect"
     case failureParams = "params"
-    case unknown = "unknown"
+    case unknown
 
     init() {
         self = .unknown

@@ -10,11 +10,11 @@ import UIKit
 
 class ASCSortViewController: ASCBaseTableViewController {
     static let identifier = String(describing: ASCSortViewController.self)
-    
-    class override var storyboard: Storyboard { return Storyboard.sort }
+
+    override class var storyboard: Storyboard { return Storyboard.sort }
 
     public typealias ASCSortComplation = (_ type: ASCDocumentSortType, _ ascending: Bool) -> Void
-    
+
     // MARK: - Properties
 
     var types: [ASCDocumentSortStateType] = []
@@ -23,10 +23,10 @@ class ASCSortViewController: ASCBaseTableViewController {
 
     // MARK: - Outlets
 
-    @IBOutlet weak var sortTypeLabel: UILabel!
-    @IBOutlet weak var ascendingSwitch: UISwitch!
+    @IBOutlet var sortTypeLabel: UILabel!
+    @IBOutlet var ascendingSwitch: UISwitch!
     @IBOutlet var sortTypeTable: UITableView!
-    @IBOutlet weak var doneButton: UIBarButtonItem!
+    @IBOutlet var doneButton: UIBarButtonItem!
 
     // MARK: - Lifecycle Methods
 

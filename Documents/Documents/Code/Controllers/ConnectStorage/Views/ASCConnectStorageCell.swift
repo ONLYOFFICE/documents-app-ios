@@ -11,17 +11,17 @@ import UIKit
 class ASCConnectStorageCell: UITableViewCell {
     static let identifier = String(describing: ASCConnectStorageCell.self)
 
-
     // MARK: - Properties
 
-    @IBOutlet weak var logoImageView: UIImageView!
-    @IBOutlet weak var captionLabel: UILabel!
+    @IBOutlet var logoImageView: UIImageView!
+    @IBOutlet var captionLabel: UILabel!
 
     var type: ASCFolderProviderType? {
         didSet {
             updateInfo()
         }
     }
+
     var clientId: String?
     var redirectUrl: String?
 
@@ -75,5 +75,4 @@ class ASCConnectStorageCell: UITableViewCell {
             logoImageView?.image = UIImage(named: "logo-icloud-large") // TODO: check!
         }
     }
-    
 }

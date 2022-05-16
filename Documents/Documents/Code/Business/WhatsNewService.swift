@@ -9,33 +9,31 @@
 import WhatsNewKit
 
 final class WhatsNewService {
-    
     class _WhatsNewService {
-        
         class var news: [WhatsNew.Item] {
             return [
                 WhatsNew.Item(
-                    title: NSLocalizedString("Fillable forms", comment: ""),
-                    subtitle: NSLocalizedString("View and fill online forms, save them as PDF files.", comment: ""),
-                    image: Asset.Images.whatsnewFutureForm.image
+                    title: NSLocalizedString("New authentication methods", comment: ""),
+                    subtitle: NSLocalizedString("Log in to your cloud using Apple ID or Microsoft account.", comment: ""),
+                    image: Asset.Images.whatsnewFuture3.image
                 ),
                 WhatsNew.Item(
-                    title: NSLocalizedString("Better formatting", comment: ""),
-                    subtitle: NSLocalizedString("Clear formatting, use extended color palette, and change font with improved settings.", comment: ""),
-                    image: Asset.Images.whatsnewFutureСleaFormat.image
+                    title: NSLocalizedString("More in autoshapes", comment: ""),
+                    subtitle: NSLocalizedString("Fill the shapes using gradients, images, or patterns. Choose the desirable line type.", comment: ""),
+                    image: Asset.Images.whatsnewFuture2.image
                 ),
                 WhatsNew.Item(
-                    title: NSLocalizedString("External keyboards", comment: ""),
-                    subtitle: NSLocalizedString("Use external keyboards in ONLYOFFICE Documents with improved compatibility.", comment: ""),
-                    image: Asset.Images.whatsnewFutureKeyboard.image
-                )
+                    title: NSLocalizedString("Regional settings", comment: ""),
+                    subtitle: NSLocalizedString("Select the region in spreadsheet settings to automatically convert currency, date, and time.", comment: ""),
+                    image: Asset.Images.whatsnewFuture1.image
+                ),
             ]
         }
-        
+
         class func presentWhatsNew() {
             let dummyButton = ASCButtonStyle()
             dummyButton.styleType = .default
-            
+
             // Initialize default Configuration
             var configuration = WhatsNewViewController.Configuration()
             configuration.completionButton.title = NSLocalizedString("Get started", comment: "")
@@ -45,7 +43,7 @@ final class WhatsNewService {
             configuration.itemsView.titleFont = ASCTextStyle.title3Bold.font
             configuration.itemsView.subtitleFont = ASCTextStyle.subhead.font
             configuration.itemsView.autoTintImage = false
-            
+
             if #available(iOS 13.0, *) {
                 configuration.itemsView.subtitleColor = .secondaryLabel
             } else {
@@ -55,7 +53,7 @@ final class WhatsNewService {
             /// Increase TitleView Insets
             configuration.titleView.insets.top = 60
             configuration.titleView.insets.bottom = 30
-            
+
             /// Adjusts Insets for iPad
             configuration.padAdjustment = { configuration in
                 /// Increase TitleView Insets
@@ -63,20 +61,20 @@ final class WhatsNewService {
                 configuration.titleView.insets.left = 40
                 configuration.titleView.insets.right = 40
                 configuration.titleView.insets.bottom = 50
-                
+
                 /// Increase ItemsView Insets
                 configuration.itemsView.insets.top = 10
                 configuration.itemsView.insets.left = 80
                 configuration.itemsView.insets.right = 80
                 configuration.itemsView.insets.bottom = 20
-                
+
                 /// Increase CompletionButton Insets
                 configuration.completionButton.insets.top = 40
                 configuration.completionButton.insets.left = 80
                 configuration.completionButton.insets.right = 80
                 configuration.completionButton.insets.bottom = 40
             }
-            
+
             // Initialize WhatsNew
             let whatsNew = WhatsNew(
                 version: WhatsNew.Version(stringLiteral: ASCCommon.appVersion ?? "1.0"),
@@ -100,10 +98,10 @@ final class WhatsNewService {
             }
         }
     }
-    
+
     public class func show(force: Bool = false) {
         let storeAppVersion = UserDefaults.standard.string(forKey: ASCConstants.SettingsKeys.appVersion)
-        
+
         if let appVersion = ASCCommon.appVersion, storeAppVersion != appVersion {
             UserDefaults.standard.set(appVersion, forKey: ASCConstants.SettingsKeys.appVersion)
             _WhatsNewService.presentWhatsNew()
@@ -111,5 +109,4 @@ final class WhatsNewService {
             _WhatsNewService.presentWhatsNew()
         }
     }
-    
 }

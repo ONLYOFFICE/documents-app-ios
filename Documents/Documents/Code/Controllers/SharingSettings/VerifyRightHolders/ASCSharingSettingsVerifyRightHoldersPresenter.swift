@@ -13,16 +13,15 @@ protocol ASCSharingSettingsVerifyRightHoldersPresentationLogic {
 }
 
 class ASCSharingSettingsVerifyRightHoldersPresenter: ASCSharingSettingsVerifyRightHoldersPresentationLogic {
-    
     weak var viewController: ASCSharingSettingsVerifyRightHoldersDisplayLogic?
-    
+
     func presentData(responseType: ASCSharingSettingsVerifyRightHolders.Model.Response.ResponseType) {
         switch responseType {
-        case .presentShareItems(response: let resopnse):
+        case let .presentShareItems(response: resopnse):
             var users: [ASCSharingRightHolderViewModel] = []
             var groups: [ASCSharingRightHolderViewModel] = []
-            
-            resopnse.items.forEach({ sharedInfo  in
+
+            resopnse.items.forEach { sharedInfo in
                 var name = ""
                 var id: String?
                 var avatarUrl: String?
@@ -37,9 +36,9 @@ class ASCSharingSettingsVerifyRightHoldersPresenter: ASCSharingSettingsVerifyRig
                     name = group.name ?? ""
                     rightHolderType = .group
                 }
-                
+
                 let access = ASCSharingRightHolderViewModelAccess(entityAccess: sharedInfo.access,
-                                                                   accessEditable: !sharedInfo.locked && !sharedInfo.owner)
+                                                                  accessEditable: !sharedInfo.locked && !sharedInfo.owner)
                 if let unwrapedId = id {
                     let viewModel = ASCSharingRightHolderViewModel(id: unwrapedId,
                                                                    avatarUrl: avatarUrl,
@@ -54,20 +53,20 @@ class ASCSharingSettingsVerifyRightHoldersPresenter: ASCSharingSettingsVerifyRig
                     case .group:
                         groups.append(viewModel)
                     default:
-                        let _ = viewModel
+                        _ = viewModel
                     }
                 }
-            })
-            
+            }
+
             viewController?.displayData(viewModelType: .displayShareItems(.init(users: users, groups: groups)))
-            
-        case .presentAccessProvider(provider: let provider):
+
+        case let .presentAccessProvider(provider: provider):
             viewController?.displayData(viewModelType: .displayAccessProvider(provider))
-        case .presentApplyingShareSettings(response: let response):
+        case let .presentApplyingShareSettings(response: response):
             viewController?.displayData(viewModelType: .displayApplyShareSettings(.init(error: response.error)))
-        case .presentAccessChange(response: let response):
+        case let .presentAccessChange(response: response):
             viewController?.displayData(viewModelType: .displayAccessChange(.init(model: response.model, errorMessage: response.errorMessage)))
-        case .presentAccessRemove(response: let response):
+        case let .presentAccessRemove(response: response):
             viewController?.displayData(viewModelType: .displayAccessRemove(.init(indexPath: response.indexPath, errorMessage: response.errorMessage)))
         }
     }

@@ -9,40 +9,36 @@
 import UIKit
 
 extension UIButton {
-    
     var textStyle: ASCTextStyle {
-        
         get {
             ASCTextStyle.undefined
         }
-        
+
         set(newValue) {
-            self.titleLabel?.font = newValue.font
-            self.setTitleColor(newValue.color, for: .normal)
+            titleLabel?.font = newValue.font
+            setTitleColor(newValue.color, for: .normal)
         }
     }
 
     var textStyleSelected: ASCTextStyle {
-        
         get {
             ASCTextStyle.undefined
         }
-        
+
         set(newValue) {
-            self.titleLabel?.font = newValue.font
-            self.setTitleColor(newValue.color, for: .selected)
+            titleLabel?.font = newValue.font
+            setTitleColor(newValue.color, for: .selected)
         }
     }
-    
+
     var textStyleDisabled: ASCTextStyle {
-        
         get {
             ASCTextStyle.undefined
         }
-        
+
         set(newValue) {
-            self.titleLabel?.font = newValue.font
-            self.setTitleColor(newValue.color, for: .disabled)
+            titleLabel?.font = newValue.font
+            setTitleColor(newValue.color, for: .disabled)
         }
     }
 }

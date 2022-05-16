@@ -21,26 +21,28 @@ class OnlyofficeAuthRequest: Mappable {
     var facebookToken: String?
     var googleToken: String?
     var accessToken: String?
-    
+    var codeOauth: String?
+
     init() {
         //
     }
-    
+
     required init?(map: Map) {
         //
     }
 
     func mapping(map: Map) {
-        provider            <- map["provider"]
-        portal              <- map["portal"]
-        userName            <- map["userName"]
-        password            <- map["password"]
-        code                <- map["code"]
-        phoneNoise          <- map["phoneNoise"]
-        mobilePhone         <- map["mobilePhone"]
-        tfaKey              <- map["tfaKey"]
-        facebookToken       <- map["facebookToken"]
-        googleToken         <- map["googleToken"]
-        accessToken         <- map["accessToken"]
+        provider <- map["provider"]
+        portal <- map["portal"]
+        userName <- map["userName"]
+        password <- map["password"]
+        code <- map["code"]
+        phoneNoise <- map["phoneNoise"]
+        mobilePhone <- map["mobilePhone"]
+        tfaKey <- map["tfaKey"]
+        facebookToken <- map["facebookToken"]
+        googleToken <- map["googleToken"]
+        accessToken <- map["accessToken"]
+        codeOauth <- map["codeOauth"]
     }
 }

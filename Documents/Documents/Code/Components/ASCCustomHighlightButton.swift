@@ -9,17 +9,16 @@
 import UIKit
 
 class ASCCustomHighlightButton: UIButton {
-
     // MARK: - Properties
 
     @IBInspectable var selectedCustomColor: UIColor = UIColor.white
     @IBInspectable var defaultBackgroundColor: UIColor = UIColor.white
     @IBInspectable var animateHighlight: Bool = false
-    @IBInspectable var hapticFeedback : Bool = false
+    @IBInspectable var hapticFeedback: Bool = false
 
     // MARK: - Lifecycle Methods
 
-    public override init(frame: CGRect) {
+    override public init(frame: CGRect) {
         super.init(frame: frame)
     }
 
@@ -27,7 +26,7 @@ class ASCCustomHighlightButton: UIButton {
         super.init(coder: aDecoder)
     }
 
-    open override var isHighlighted: Bool {
+    override open var isHighlighted: Bool {
         didSet {
             applyStyles()
 
@@ -47,15 +46,15 @@ class ASCCustomHighlightButton: UIButton {
                     : self.defaultBackgroundColor
             })
         } else {
-            self.backgroundColor = self.isHighlighted
-                ? self.selectedCustomColor
-                : self.defaultBackgroundColor
+            backgroundColor = isHighlighted
+                ? selectedCustomColor
+                : defaultBackgroundColor
         }
     }
 
     override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
         super.touchesMoved(touches, with: event)
-        
+
         if isHighlighted {
             if animateHighlight {
                 layer.removeAllAnimations()

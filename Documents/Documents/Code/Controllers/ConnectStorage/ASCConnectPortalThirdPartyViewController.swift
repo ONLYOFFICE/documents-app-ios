@@ -6,20 +6,19 @@
 //  Copyright © 2017 Ascensio System SIA. All rights reserved.
 //
 
-import UIKit
 import MBProgressHUD
+import UIKit
 
 class ASCConnectPortalThirdPartyViewController: UITableViewController {
-
     // MARK: - Properies
-    
-    static private let maxTitle = 170
+
+    private static let maxTitle = 170
 
     private var providers: [(provider: ASCFolderProviderType, info: [String: String])] = []
     private var defaultProviders: [ASCFolderProviderType] = ASCConstants.Clouds.defaultConnectFolderProviders
 
     // MARK: - Lifecycle Methods
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -77,28 +76,28 @@ class ASCConnectPortalThirdPartyViewController: UITableViewController {
                 if let defaultProviderIndex = localProviders.firstIndex(where: { $0.provider == type }) {
                     localProviders.remove(at: defaultProviderIndex)
                 }
-                localProviders.append(((provider: type, info: [:])))
+                localProviders.append((provider: type, info: [:]))
             }
 
             /// Override the list according to preference.
             var orderedProviders: [(provider: ASCFolderProviderType, info: [String: String])] = []
-           
+
             ASCConstants.Clouds.preferredOrderCloudProviders.forEach { type in
                 if let providerInfo = localProviders.first(where: { $0.provider == type }) {
                     orderedProviders.append(providerInfo)
                 }
             }
-            
+
             strongSelf.providers = orderedProviders
             strongSelf.tableView.reloadData()
         }
     }
-    
+
     private func authComplation(info: [String: Any]) {
         var folderName = NSLocalizedString("Cloud directory", comment: "Default external storage name")
-        
-        if  let providerKey = info["providerKey"] as? String,
-            let type = ASCFolderProviderType(rawValue: providerKey)
+
+        if let providerKey = info["providerKey"] as? String,
+           let type = ASCFolderProviderType(rawValue: providerKey)
         {
             switch type {
             case .googleDrive:
@@ -125,8 +124,8 @@ class ASCConnectPortalThirdPartyViewController: UITableViewController {
                 break
             }
         }
-        
-        dismiss(animated: true) { 
+
+        dismiss(animated: true) {
             let alertController = UIAlertController(
                 title: NSLocalizedString("Folder title", comment: ""),
                 message: nil,
@@ -136,45 +135,45 @@ class ASCConnectPortalThirdPartyViewController: UITableViewController {
             let cancelAction = UIAlertAction(
                 title: ASCLocalization.Common.cancel,
                 style: .cancel,
-                handler:
-            { action in
-                if let textField = alertController.textFields?.first {
-                    textField.selectedTextRange = nil
+                handler: { action in
+                    if let textField = alertController.textFields?.first {
+                        textField.selectedTextRange = nil
+                    }
                 }
-            })
+            )
             let connectAction = UIAlertAction(
                 title: NSLocalizedString("Connect", comment: "Button title"),
                 style: .default,
-                handler:
-            { action in
-                guard let textField = alertController.textFields?.first else {
-                    return
-                }
-                
-                textField.selectedTextRange = nil
-                
-                if var folderTitle = textField.text?.trimmed {
-                    if folderTitle.length < 1 {
-                        folderTitle = folderName
+                handler: { action in
+                    guard let textField = alertController.textFields?.first else {
+                        return
                     }
-                    
-                    var params = info
-                    params["customerTitle"] = folderTitle
-                    
-                    self.connectFolder(params)
+
+                    textField.selectedTextRange = nil
+
+                    if var folderTitle = textField.text?.trimmed {
+                        if folderTitle.length < 1 {
+                            folderTitle = folderName
+                        }
+
+                        var params = info
+                        params["customerTitle"] = folderTitle
+
+                        self.connectFolder(params)
+                    }
                 }
-            })
-            
+            )
+
             alertController.addAction(cancelAction)
             alertController.addAction(connectAction)
-            alertController.addTextField { (textField) in
+            alertController.addTextField { textField in
                 textField.delegate = self
                 textField.text = folderName
-                
-                textField.add(for: .editingChanged, {
+
+                textField.add(for: .editingChanged) {
                     connectAction.isEnabled = !((textField.text ?? "").trimmed.isEmpty)
-                })
-                
+                }
+
                 delay(seconds: 0.2) {
                     textField.selectAll(nil)
                 }
@@ -185,20 +184,20 @@ class ASCConnectPortalThirdPartyViewController: UITableViewController {
             }
         }
     }
-    
+
     private func connectFolder(_ params: [String: Any]) {
         guard let rootVC = ASCViewControllerManager.shared.rootController else {
             return
         }
-        
+
         let hud = MBProgressHUD.showTopMost()
         hud?.label.text = NSLocalizedString("Creating", comment: "Caption of the process")
-        
+
         OnlyofficeApiClient.request(OnlyofficeAPI.Endpoints.ThirdPartyIntegration.connect, params) { response, error in
             if let error = error {
                 log.error(error)
                 hud?.hide(animated: true)
-                
+
                 UIAlertController.showError(
                     in: rootVC.topMostViewController(),
                     message: error.localizedDescription
@@ -207,12 +206,12 @@ class ASCConnectPortalThirdPartyViewController: UITableViewController {
                 if let newFolder = response?.result {
                     hud?.setSuccessState()
                     hud?.hide(animated: false, afterDelay: 1.3)
-                    
-                    if  let splitVC = ASCViewControllerManager.shared.topViewController as? ASCOnlyofficeSplitViewController,
-                        let documentsVC = (splitVC.detailViewController ?? splitVC.primaryViewController)?.topMostViewController() as? ASCDocumentsViewController,
-                        let categoryFolder = documentsVC.folder,
-                        categoryFolder.rootFolderType == .onlyofficeUser,
-                        (categoryFolder.parentId == nil || categoryFolder.parentId == "0") // is onlyoffice root of user's folder
+
+                    if let splitVC = ASCViewControllerManager.shared.topViewController as? ASCOnlyofficeSplitViewController,
+                       let documentsVC = (splitVC.detailViewController ?? splitVC.primaryViewController)?.topMostViewController() as? ASCDocumentsViewController,
+                       let categoryFolder = documentsVC.folder,
+                       categoryFolder.rootFolderType == .onlyofficeUser,
+                       categoryFolder.parentId == nil || categoryFolder.parentId == "0" // is onlyoffice root of user's folder
                     {
                         documentsVC.add(entity: newFolder)
                     } else {
@@ -222,8 +221,8 @@ class ASCConnectPortalThirdPartyViewController: UITableViewController {
                         )
 
                         delay(seconds: 0.3) {
-                            if  let splitVC = ASCViewControllerManager.shared.topViewController as? ASCOnlyofficeSplitViewController,
-                                let documentsVC = (splitVC.detailViewController ?? splitVC.primaryViewController)?.topMostViewController() as? ASCDocumentsViewController
+                            if let splitVC = ASCViewControllerManager.shared.topViewController as? ASCOnlyofficeSplitViewController,
+                               let documentsVC = (splitVC.detailViewController ?? splitVC.primaryViewController)?.topMostViewController() as? ASCDocumentsViewController
                             {
                                 documentsVC.highlight(entity: newFolder)
                             }
@@ -239,14 +238,13 @@ class ASCConnectPortalThirdPartyViewController: UITableViewController {
             }
         }
     }
-    
+
     // MARK: - Actions
-    
+
     @IBAction func onCancel(_ sender: UIBarButtonItem) {
         dismiss(animated: true, completion: nil)
     }
-    
-    
+
     // MARK: - Navigation
 
     private func presentViewController(by providerType: ASCFolderProviderType) {
@@ -254,7 +252,6 @@ class ASCConnectPortalThirdPartyViewController: UITableViewController {
         let providerInfo: [String: String] = providers.first(where: { $0.provider == providerType })?.info ?? [:]
 
         switch providerType {
-
         case .dropBox:
             let oauth2VC = ASCConnectStorageOAuth2ViewController.instantiate(from: Storyboard.connectStorage)
             let dropboxController = ASCConnectStorageOAuth2Dropbox()
@@ -346,10 +343,9 @@ class ASCConnectPortalThirdPartyViewController: UITableViewController {
             webDavVC.provider = .webDav
             webDavVC.logo = Asset.Images.logoWebdavLarge.image
             viewController = webDavVC
-            
+
         default:
             break
-            
         }
 
         if let viewController = viewController {
@@ -361,7 +357,6 @@ class ASCConnectPortalThirdPartyViewController: UITableViewController {
 // MARK: - UITableView Delegate
 
 extension ASCConnectPortalThirdPartyViewController {
-
     override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         return CGFloat.leastNormalMagnitude
     }
@@ -372,14 +367,11 @@ extension ASCConnectPortalThirdPartyViewController {
         }
         return nil
     }
-
 }
-
 
 // MARK: - UITableView DataSource
 
 extension ASCConnectPortalThirdPartyViewController {
-
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return providers.count
     }
@@ -395,30 +387,28 @@ extension ASCConnectPortalThirdPartyViewController {
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         presentViewController(by: providers[indexPath.row].provider)
     }
-
 }
 
 // MARK: - UITextField Delegate
 
 extension ASCConnectPortalThirdPartyViewController: UITextFieldDelegate {
-
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         if textField.isFirstResponder {
             if let primaryLanguage = textField.textInputMode?.primaryLanguage, primaryLanguage == "emoji" {
                 return false
             }
         }
-  
+
         guard let textFieldText = textField.text,
-            let rangeOfTextToReplace = Range(range, in: textFieldText) else {
-                return false
+              let rangeOfTextToReplace = Range(range, in: textFieldText)
+        else {
+            return false
         }
-        
+
         let substringToReplace = textFieldText[rangeOfTextToReplace]
         let count = textFieldText.count - substringToReplace.count + string.count
-        let validReplaceText = nil == string.rangeOfCharacter(from: CharacterSet(charactersIn: String.invalidTitleChars))
-        
+        let validReplaceText = string.rangeOfCharacter(from: CharacterSet(charactersIn: String.invalidTitleChars)) == nil
+
         return count <= ASCConnectPortalThirdPartyViewController.maxTitle && validReplaceText
     }
-
 }

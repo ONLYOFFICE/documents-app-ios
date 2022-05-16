@@ -6,12 +6,12 @@
 //  Copyright © 2018 Ascensio System SIA. All rights reserved.
 //
 
-import UIKit
 import FileKit
+import UIKit
 
 class ASCOnDeviceNavigationController: ASCBaseNavigationController {
     static let identifier = String(describing: ASCOnDeviceNavigationController.self)
-    
+
     // MARK: - Lifecycle Methods
 
     override func viewDidLoad() {

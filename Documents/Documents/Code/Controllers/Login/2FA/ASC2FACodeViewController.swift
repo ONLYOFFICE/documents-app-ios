@@ -6,14 +6,14 @@
 //  Copyright © 2019 Ascensio System SIA. All rights reserved.
 //
 
-import UIKit
-import MBProgressHUD
 import IQKeyboardManagerSwift
+import MBProgressHUD
+import UIKit
 
 class ASC2FACodeViewController: ASCBaseViewController {
     static let identifier = String(describing: ASC2FACodeViewController.self)
-    
-    class override var storyboard: Storyboard { return Storyboard.login }
+
+    override class var storyboard: Storyboard { return Storyboard.login }
 
     // MARK: - Properties
 
@@ -24,9 +24,9 @@ class ASC2FACodeViewController: ASCBaseViewController {
     private let codeLength: Int = 6
 
     // MARK: - Outlets
-    
-    @IBOutlet weak var codeField: UITextField!
-    @IBOutlet weak var helpLabel: UILabel!
+
+    @IBOutlet var codeField: UITextField!
+    @IBOutlet var helpLabel: UILabel!
 
     // MARK: - Lifecycle Methods
 
@@ -46,40 +46,41 @@ class ASC2FACodeViewController: ASCBaseViewController {
         helpLabel?.addGestureRecognizer(tapGesture)
     }
 
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
 
         IQKeyboardManager.shared.enable = true
         IQKeyboardManager.shared.enableAutoToolbar = true
         IQKeyboardManager.shared.shouldShowToolbarPlaceholder = false
         IQKeyboardManager.shared.shouldToolbarUsesTextFieldTintColor = true
 
-        if let _ = helpLabel {
-            codeField?.becomeFirstResponder()
-        }
-    }
-
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-
         checkPastboard()
     }
 
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-
-        IQKeyboardManager.shared.enable = false
-        IQKeyboardManager.shared.enableAutoToolbar = false
+        if KeyboardManagerHelper.disablingKeyboardToolbarByScreen == nil {
+            KeyboardManagerHelper.disablingKeyboardToolbarByScreen = ASC2FACodeViewController.identifier
+        }
     }
 
-    override var supportedInterfaceOrientations : UIInterfaceOrientationMask {
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        if KeyboardManagerHelper.disablingKeyboardToolbarByScreen == ASC2FACodeViewController.identifier || KeyboardManagerHelper.disablingKeyboardToolbarByScreen == nil {
+            IQKeyboardManager.shared.enable = false
+            IQKeyboardManager.shared.enableAutoToolbar = false
+            KeyboardManagerHelper.disablingKeyboardToolbarByScreen = nil
+        }
+    }
+
+    override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
         return UIDevice.phone ? .portrait : [.portrait, .landscape]
     }
 
     override var preferredInterfaceOrientationForPresentation: UIInterfaceOrientation {
         return UIDevice.phone ? .portrait : super.preferredInterfaceOrientationForPresentation
     }
-    
+
     @objc func tapFunction(sender: UITapGestureRecognizer) {
         helpLabel?.alpha = 0.5
 
@@ -126,11 +127,10 @@ class ASC2FACodeViewController: ASCBaseViewController {
 // MARK: - UITextField Delegate
 
 extension ASC2FACodeViewController: UITextFieldDelegate {
-
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         let currentCharacterCount = codeField.text?.count ?? 0
 
-        if (range.length + range.location > currentCharacterCount){
+        if range.length + range.location > currentCharacterCount {
             return false
         }
 

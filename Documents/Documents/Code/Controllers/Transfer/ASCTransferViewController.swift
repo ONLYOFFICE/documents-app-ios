@@ -6,14 +6,14 @@
 //  Copyright © 2017 Ascensio System SIA. All rights reserved.
 //
 
-import UIKit
 import FileKit
+import UIKit
 
 typealias ASCTransferViewType = (provider: ASCFileProviderProtocol?, folder: ASCFolder)
 
 class ASCTransferViewController: UITableViewController {
     static let identifier = String(describing: ASCTransferViewController.self)
-    
+
     fileprivate let idOnlyofficeRoot = "id-onlyoffice-root"
 
     fileprivate let providerName: ((_ type: ASCFileProviderType) -> String) = { type in
@@ -61,20 +61,20 @@ class ASCTransferViewController: UITableViewController {
             return nil
         }
     }
-    
+
     private lazy var onlyofficeCategoryProviderFactory = ASCOnlyofficeCategoriesProviderFactory()
 
     // MARK: - Public
 
     var provider: ASCFileProviderProtocol?
-    var folder: ASCFolder? = nil {
+    var folder: ASCFolder? {
         didSet {
             if oldValue == nil {
                 loadFirstPage()
             }
         }
     }
-    
+
     // MARK: - Private
 
     private let kPageLoadingCellTag = 7777
@@ -83,56 +83,51 @@ class ASCTransferViewController: UITableViewController {
             tableView.reloadData()
         }
     }
+
     private var transferType: ASCTransferType {
-        get {
-            if let navigationController = navigationController as? ASCTransferNavigationController {
-                return navigationController.transferType
-            }
-            return .copy
+        if let navigationController = navigationController as? ASCTransferNavigationController {
+            return navigationController.transferType
         }
+        return .copy
     }
 
     private var sourceFolder: ASCFolder? {
-        get {
-            if let navigationController = navigationController as? ASCTransferNavigationController {
-                return navigationController.sourceFolder
-            }
-            return nil
+        if let navigationController = navigationController as? ASCTransferNavigationController {
+            return navigationController.sourceFolder
         }
+        return nil
     }
-    
+
     private var sourceItems: [ASCEntity]? {
-        get {
-            if let navigationController = navigationController as? ASCTransferNavigationController {
-                return navigationController.sourceItems
-            }
-            return nil
+        if let navigationController = navigationController as? ASCTransferNavigationController {
+            return navigationController.sourceItems
         }
+        return nil
     }
 
     private var sourceProvider: ASCFileProviderProtocol? {
-        get {
-            if let navigationController = navigationController as? ASCTransferNavigationController {
-                return navigationController.sourceProvider
-            }
-            return nil
+        if let navigationController = navigationController as? ASCTransferNavigationController {
+            return navigationController.sourceProvider
         }
+        return nil
     }
-    
+
     // MARK: - Outlets
-    @IBOutlet weak var actionButton: UIBarButtonItem!
+
+    @IBOutlet var actionButton: UIBarButtonItem!
     @IBOutlet var emptyView: UIView!
     @IBOutlet var loadingView: UIView!
-    
+
     // MARK: - UIViewController
+
     override func viewDidLoad() {
         super.viewDidLoad()
-                
+
         tableView.backgroundView = UIView()
         tableView.tableFooterView = UIView()
 
         updateTransferType()
-        
+
         if let refreshControl = refreshControl {
             refreshControl.addTarget(self, action: #selector(refresh(_:)), for: UIControl.Event.valueChanged)
         }
@@ -142,11 +137,11 @@ class ASCTransferViewController: UITableViewController {
         super.viewWillAppear(animated)
 
         updateTransferType()
-        
-        // Layout loader        
+
+        // Layout loader
         DispatchQueue.main.async { [weak self] in
             guard let strongSelf = self else { return }
-            
+
             if let _ = strongSelf.loadingView?.superview {
                 strongSelf.loadingView?.centerYAnchor.constraint(
                     equalTo: strongSelf.view.centerYAnchor,
@@ -160,14 +155,14 @@ class ASCTransferViewController: UITableViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
+
     @objc func refresh(_ refreshControl: UIRefreshControl) {
-        fetchData({ success in
+        fetchData { success in
             DispatchQueue.main.async {
                 self.refreshControl?.endRefreshing()
                 self.showEmptyView(self.tableData.count < 1)
             }
-        })
+        }
     }
 
     // MARK: - Private
@@ -188,7 +183,7 @@ class ASCTransferViewController: UITableViewController {
         if let onlyofficeProvider = ASCFileManager.onlyofficeProvider?.copy() {
             let folderOnlyoffice = ASCFolder()
             folderOnlyoffice.title = ASCConstants.Name.appNameShort
-            folderOnlyoffice.id = self.idOnlyofficeRoot
+            folderOnlyoffice.id = idOnlyofficeRoot
             tableData.append((provider: onlyofficeProvider, folder: folderOnlyoffice))
         }
 
@@ -199,84 +194,84 @@ class ASCTransferViewController: UITableViewController {
         }
 
         updateTransferType()
-        
+
         tableView.reloadData()
         refreshControl = nil
     }
-    
+
     private func loadFirstPage() {
         guard let provider = provider else {
             fillRootFolders()
             return
         }
-        
+
         provider.reset()
         showLoadingPage(true)
-        
-        fetchData({ success in
+
+        fetchData { success in
             DispatchQueue.main.async {
                 // UI update
                 self.showLoadingPage(false)
                 self.showEmptyView(self.tableData.count < 1)
             }
-        })
+        }
     }
-    
-    private func fetchData(_ completeon: ((Bool) -> ())? = nil) {
+
+    private func fetchData(_ completeon: ((Bool) -> Void)? = nil) {
         title = title ?? folder?.title
 
         if let provider = provider, let folder = folder {
-            if  provider.id == ASCFileManager.onlyofficeProvider?.id,
-                folder.id == self.idOnlyofficeRoot
+            if provider.id == ASCFileManager.onlyofficeProvider?.id,
+               folder.id == idOnlyofficeRoot
             {
                 let categoryProvider = onlyofficeCategoryProviderFactory.get()
                 categoryProvider.loadCategories { result in
                     switch result {
-                    case .success(let categories):
-                    let categorFolders: [ASCFolder] = categories
-                        .filter { ASCOnlyofficeCategory.allowToMoveAndCopy(category: $0) }
-                        .compactMap { $0.folder }
-                    
-                    var tableData: [ASCTransferViewType] = []
+                    case let .success(categories):
+                        let categorFolders: [ASCFolder] = categories
+                            .filter { ASCOnlyofficeCategory.allowToMoveAndCopy(category: $0) }
+                            .compactMap { $0.folder }
 
-                    let fetchQueue = OperationQueue()
-                    fetchQueue.maxConcurrentOperationCount = 1
+                        var tableData: [ASCTransferViewType] = []
 
-                    for folder in categorFolders {
-                        fetchQueue.addOperation {
-                            let semaphore = DispatchSemaphore(value: 0)
-                            let params: [String: Any] = [
-                                "count"        : 1,
-                                "filterType"   : ASCFilterType.foldersOnly.rawValue
-                            ]
-                            provider.fetch(for: folder, parameters: params) { provider, result, success, error in
-                                if success, let folder = result as? ASCFolder {
-                                    tableData.append(ASCTransferViewType(provider: provider, folder: folder))
-                                }
+                        let fetchQueue = OperationQueue()
+                        fetchQueue.maxConcurrentOperationCount = 1
 
-                                if folder.id == categorFolders.last?.id {
-                                    DispatchQueue.main.async {
-                                        self.tableData = tableData
-                                        completeon?(true)
+                        for folder in categorFolders {
+                            fetchQueue.addOperation {
+                                let semaphore = DispatchSemaphore(value: 0)
+                                let params: [String: Any] = [
+                                    "count": 1,
+                                    "filterType": ASCFilterType.foldersOnly.rawValue,
+                                ]
+                                provider.fetch(for: folder, parameters: params) { provider, result, success, error in
+                                    if success, let folder = result as? ASCFolder {
+                                        tableData.append(ASCTransferViewType(provider: provider, folder: folder))
                                     }
+
+                                    if folder.id == categorFolders.last?.id {
+                                        DispatchQueue.main.async {
+                                            self.tableData = tableData
+                                            completeon?(true)
+                                        }
+                                    }
+
+                                    semaphore.signal()
                                 }
-
-                                semaphore.signal()
+                                semaphore.wait()
                             }
-                            semaphore.wait()
                         }
-                    }
 
-                    self.actionButton?.isEnabled = false
-                    case .failure(let error):
+                        self.actionButton?.isEnabled = false
+                    case let .failure(error):
                         UIAlertController.showError(in: self, message: error.localizedDescription)
                     }
                 }
             } else {
                 let params: [String: Any] = [
-                    "count"        : 1000,
-                    "filterType"   : ASCFilterType.foldersOnly.rawValue
-                    ]
+                    "count": 1000,
+                    "filterType": ASCFilterType.foldersOnly.rawValue,
+                ]
                 provider.fetch(for: folder, parameters: params) { [weak self] provider, folder, success, error in
                     guard let strongSelf = self else {
                         completeon?(false)
@@ -295,7 +290,7 @@ class ASCTransferViewController: UITableViewController {
             }
         }
     }
-    
+
     private func updateTransferType() {
         switch transferType {
         case .copy:
@@ -309,45 +304,45 @@ class ASCTransferViewController: UITableViewController {
             actionButton?.title = NSLocalizedString("Recover here", comment: "Button title")
         }
     }
-    
+
     private func showLoadingPage(_ show: Bool) {
         if show {
             showEmptyView(false)
             view.addSubview(loadingView)
-            
+
             loadingView.translatesAutoresizingMaskIntoConstraints = false
             loadingView.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
             loadingView.centerYAnchor.constraint(equalTo: view.centerYAnchor, constant: -view.safeAreaInsets.top).isActive = true
-            
+
             tableView.isUserInteractionEnabled = false
         } else {
             loadingView.removeFromSuperview()
             tableView.isUserInteractionEnabled = true
         }
     }
-    
+
     private func showEmptyView(_ show: Bool) {
         if !show {
             emptyView.removeFromSuperview()
-        } else  {
+        } else {
             view.addSubview(emptyView)
-            
+
             emptyView.translatesAutoresizingMaskIntoConstraints = false
             emptyView.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
             emptyView.centerYAnchor.constraint(equalTo: view.centerYAnchor, constant: -view.safeAreaInsets.top).isActive = true
         }
     }
-    
+
     // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
-    
+
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return tableData.count
     }
-    
+
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cellFolderCellId = "TransferFolderCell"
 
@@ -355,18 +350,18 @@ class ASCTransferViewController: UITableViewController {
             showEmptyView(true)
         } else {
             showEmptyView(false)
-            
+
             let itemInfo = tableData[indexPath.row]
 
             if let cell = tableView.dequeueReusableCell(withIdentifier: cellFolderCellId, for: indexPath) as? ASCTransferViewCell {
                 if itemInfo.folder.parent == nil {
-                    var folderImage: UIImage? = nil
+                    var folderImage: UIImage?
 
                     if let provider = itemInfo.provider {
                         folderImage = providerImage(provider.type)
                     }
 
-                    if itemInfo.folder.id == self.idOnlyofficeRoot {
+                    if itemInfo.folder.id == idOnlyofficeRoot {
                         folderImage = Asset.Images.tabOnlyoffice.image
                     }
 
@@ -379,19 +374,14 @@ class ASCTransferViewController: UITableViewController {
                         } else {
                             folderImage = allowFaceId ? Asset.Images.categoryIphoneNew.image : Asset.Images.categoryIphone.image
                         }
-                        break
                     case .onlyofficeUser:
                         folderImage = Asset.Images.categoryMy.image
-                        break
                     case .onlyofficeShare:
                         folderImage = Asset.Images.categoryShare.image
-                        break
                     case .onlyofficeCommon:
                         folderImage = Asset.Images.categoryCommon.image
-                        break
                     case .onlyofficeBunch, .onlyofficeProjects:
                         folderImage = Asset.Images.categoryProjects.image
-                        break
                     default:
                         break
                     }
@@ -408,10 +398,10 @@ class ASCTransferViewController: UITableViewController {
                         ? itemInfo.folder.title
                         : itemInfo.provider?.user?.displayName ?? itemInfo.folder.title
                 }
-                
+
                 cell.isUserInteractionEnabled = true
                 cell.contentView.alpha = 1
-                
+
                 if let sourceItems = sourceItems {
                     if let _ = sourceItems.first(where: { $0.id == itemInfo.folder.id }) {
                         cell.isUserInteractionEnabled = false
@@ -422,23 +412,23 @@ class ASCTransferViewController: UITableViewController {
                 return cell
             }
         }
-        
+
         return UITableViewCell()
     }
-    
+
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
-        
+
         let itemInfo = tableData[indexPath.row]
-        
+
         if let sourceItems = sourceItems {
             if let _ = sourceItems.first(where: { $0.id == itemInfo.folder.id }) {
                 return
             }
         }
-        
+
         let transferVC = ASCTransferViewController.instantiate(from: Storyboard.transfer)
-        
+
         transferVC.provider = itemInfo.provider?.copy()
         transferVC.folder = itemInfo.folder
 
@@ -446,14 +436,14 @@ class ASCTransferViewController: UITableViewController {
     }
 
     // MARK: - Actions
-    
+
     @IBAction func onClose(_ sender: UIBarButtonItem) {
-        self.dismiss(animated: true, completion: nil)
+        dismiss(animated: true, completion: nil)
     }
 
     @IBAction func onDone(_ sender: UIBarButtonItem) {
         if let navigationController = navigationController as? ASCTransferNavigationController {
-            self.dismiss(animated: true, completion: nil)
+            dismiss(animated: true, completion: nil)
             navigationController.doneHandler?(provider, folder)
         }
     }

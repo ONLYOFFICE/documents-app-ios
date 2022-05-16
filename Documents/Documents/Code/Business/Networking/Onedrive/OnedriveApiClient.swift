@@ -6,22 +6,21 @@
 //  Copyright © 2021 Ascensio System SIA. All rights reserved.
 //
 
-import Foundation
 import Alamofire
+import Foundation
 
 class OnedriveApiClient: NetworkingClient {
-    
-    public var credential: OneDriveOAuthCredential? {
+    public var credential: ASCOAuthCredential? {
         didSet {
             if oldValue == nil {
                 configure(url: baseURL?.absoluteString ?? "", token: credential?.accessToken)
             }
         }
     }
-    
-    public var onRefreshToken: ((OneDriveOAuthCredential) -> Void)?
 
-    public override init() {
+    public var onRefreshToken: ((ASCOAuthCredential) -> Void)?
+
+    override public init() {
         super.init()
         baseURL = URL(string: "https://graph.microsoft.com/v1.0/")
     }
@@ -31,9 +30,9 @@ class OnedriveApiClient: NetworkingClient {
         configuration.timeoutIntervalForRequest = 30 // seconds
         configuration.timeoutIntervalForResource = 30
         configuration.headers = .default
-        
+
         let interceptor = OneDriveRequestInterceptor(api: self)
-        
+
         manager = Session(
             configuration: configuration,
             interceptor: interceptor,

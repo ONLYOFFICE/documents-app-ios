@@ -11,7 +11,7 @@ import ObjectMapper
 
 class DropboxAccount: Mappable {
     var id: String = ""
-    var name: [String : Any]?
+    var name: [String: Any]?
     var displayName: String? {
         guard let name = name else { return nil }
         return name["display_name"] as? String

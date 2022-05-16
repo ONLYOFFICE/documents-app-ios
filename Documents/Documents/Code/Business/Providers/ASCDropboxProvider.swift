@@ -6,41 +6,32 @@
 //  Copyright © 2019 Ascensio System SIA. All rights reserved.
 //
 
-import UIKit
-import FilesProvider
 import FileKit
+import FilesProvider
 import Firebase
+import UIKit
 
 class ASCDropboxProvider: ASCFileProviderProtocol & ASCSortableFileProviderProtocol {
-    
     // MARK: - Properties
-    
+
     var type: ASCFileProviderType {
-        get {
-            return .dropbox
-        }
+        return .dropbox
     }
+
     var id: String? {
-        get {
-            if
-                let provider = provider,
-                let credential = provider.credential,
-                let password = credential.password
-            {
-                return (String(describing: self) + password).md5
-            }
-            return nil
+        if let user = user {
+            return user.userId
         }
+        return nil
     }
+
     var rootFolder: ASCFolder {
-        get {
-            return {
-                $0.title = NSLocalizedString("Dropbox", comment: "")
-                $0.rootFolderType = .dropboxAll
-                $0.id = "/"
-                return $0
-            }(ASCFolder())
-        }
+        return {
+            $0.title = NSLocalizedString("Dropbox", comment: "")
+            $0.rootFolderType = .dropboxAll
+            $0.id = "/"
+            return $0
+        }(ASCFolder())
     }
 
     var user: ASCUser?
@@ -48,60 +39,66 @@ class ASCDropboxProvider: ASCFileProviderProtocol & ASCSortableFileProviderProto
     var page: Int = 0
     var total: Int = 0
     var authorization: String? {
-        get {
-            guard
-                let provider = provider,
-                let credential = provider.credential,
-                let token = credential.password
-            else { return nil }
+        guard
+            let provider = provider,
+            let credential = provider.credential,
+            let token = credential.password
+        else { return nil }
 
-            return "Bearer \(token)"
-        }
+        return "Bearer \(token)"
     }
+
     var delegate: ASCProviderDelegate?
 
     private var apiClient: DropboxApiClient?
     internal var provider: DropboxFileProvider?
-    
+
     internal var folder: ASCFolder?
-    internal var fetchInfo: [String : Any?]?
-    
+    internal var fetchInfo: [String: Any?]?
+
     fileprivate lazy var providerOperationDelegate = ASCDropboxProviderDelegate()
     private var operationProcess: Progress?
     fileprivate var operationHendlers: [(
         uid: String,
         provider: FileProviderBasic,
         progress: Progress,
-        delegate: ASCDropboxProviderDelegate)] = []
-    
+        delegate: ASCDropboxProviderDelegate
+    )] = []
+
     private let errorProviderUndefined = NSLocalizedString("Unknown file provider", comment: "")
-    
+
     // MARK: - Lifecycle Methods
-    
+
     init() {
         provider = nil
         apiClient = nil
     }
-    
-    init(credential: URLCredential) {
-        provider = DropboxFileProvider(credential: credential)
-        
+
+    init(urlCredential: URLCredential, oAuthCredential: ASCOAuthCredential) {
+        provider = DropboxFileProvider(credential: urlCredential)
         apiClient = DropboxApiClient()
-        apiClient?.token = credential.password
+        apiClient?.credential = oAuthCredential
+        apiClient?.onRefreshToken = { [weak self] credential in
+            self?.provider?.credential = URLCredential(
+                user: ASCConstants.Clouds.Dropbox.appId,
+                password: credential.accessToken,
+                persistence: .forSession
+            )
+        }
     }
-    
+
     func copy() -> ASCFileProviderProtocol {
         let copy = ASCDropboxProvider()
-        
+
         copy.items = items
         copy.page = page
         copy.total = total
         copy.delegate = delegate
         copy.deserialize(serialize() ?? "")
-        
+
         return copy
     }
-    
+
     func reset() {
         cancel()
 
@@ -109,26 +106,28 @@ class ASCDropboxProvider: ASCFileProviderProtocol & ASCSortableFileProviderProto
         total = 0
         items.removeAll()
     }
-    
+
     func cancel() {
         apiClient?.cancelAll()
-        
+
         operationProcess?.cancel()
         operationProcess = nil
-        
+
         operationHendlers.forEach { handler in
             handler.progress.cancel()
         }
         operationHendlers.removeAll()
     }
-    
+
     func serialize() -> String? {
         var info: [String: Any] = [
-            "type": type.rawValue
+            "type": type.rawValue,
         ]
 
-        if let token = provider?.credential?.password {
-            info += ["token": token]
+        if let authCredential = apiClient?.credential {
+            info += ["accessToken": authCredential.accessToken]
+            info += ["refreshToken": authCredential.refreshToken]
+            info += ["expiration": authCredential.expiration.timeIntervalSinceNow]
         }
 
         if let user = user {
@@ -153,87 +152,110 @@ class ASCDropboxProvider: ASCFileProviderProtocol & ASCSortableFileProviderProto
                 user = ASCUser(JSON: userJson)
             }
 
-            if let token = json["token"] as? String {
-                let credential = URLCredential(user: ASCConstants.Clouds.Dropbox.clientId, password: token, persistence: .forSession)
-                provider = DropboxFileProvider(credential: credential)
+            if let accessToken = json["accessToken"] as? String,
+               let refreshToken = json["refreshToken"] as? String,
+               let expiration = json["expiration"] as? Double
+            {
+                let oAuthCredential = ASCOAuthCredential(
+                    accessToken: accessToken,
+                    refreshToken: refreshToken,
+                    expiration: Date(timeIntervalSince1970: expiration)
+                )
+                let urlCredential = URLCredential(
+                    user: ASCConstants.Clouds.Dropbox.appId,
+                    password: oAuthCredential.accessToken,
+                    persistence: .forSession
+                )
+
+                provider = DropboxFileProvider(credential: urlCredential)
 
                 apiClient = DropboxApiClient()
-                apiClient?.token = credential.password
+                apiClient?.credential = oAuthCredential
+                apiClient?.onRefreshToken = { [weak self] credential in
+                    self?.provider?.credential = URLCredential(
+                        user: ASCConstants.Clouds.Dropbox.appId,
+                        password: credential.accessToken,
+                        persistence: .forSession
+                    )
+                }
             }
         }
     }
-    
+
     func add(item: ASCEntity, at index: Int) {
         if !items.contains(where: { $0.uid == item.uid }) {
             items.insert(item, at: index)
             total += 1
         }
     }
-    
+
     func add(items: [ASCEntity], at index: Int) {
-        let uniqItems = items.filter { (item) -> Bool in
-            return !self.items.contains(where: { $0.uid == item.uid })
+        let uniqItems = items.filter { item -> Bool in
+            !self.items.contains(where: { $0.uid == item.uid })
         }
         self.items.insert(contentsOf: uniqItems, at: index)
-        self.total += uniqItems.count
+        total += uniqItems.count
     }
-    
+
     func remove(at index: Int) {
         items.remove(at: index)
         total -= 1
     }
-    
+
     func isReachable(completionHandler: @escaping (_ success: Bool, _ error: Error?) -> Void) {
         guard let provider = provider else {
             let error = ASCProviderError(msg: errorProviderUndefined)
-            
-            DispatchQueue.main.async(execute: {
+
+            DispatchQueue.main.async {
                 completionHandler(false, error)
-            })
+            }
             return
         }
 
         provider.isReachable(completionHandler: { [weak self] success, error in
             if success {
-                DispatchQueue.main.async(execute: { [weak self] in
+                DispatchQueue.main.async { [weak self] in
                     self?.userInfo { success, error in
                         completionHandler(success, error)
                     }
-                })
+                }
             } else {
                 completionHandler(false, error)
             }
         })
     }
-    
-    func isReachable(with info: [String : Any], complation: @escaping ((Bool, ASCFileProviderProtocol?) -> Void)) {
+
+    func isReachable(with info: [String: Any], complation: @escaping ((Bool, ASCFileProviderProtocol?) -> Void)) {
         guard
-            let token = info["token"] as? String
+            let accessToken = info["token"] as? String,
+            let refreshToken = info["refresh_token"] as? String,
+            let expiration = info["expires_in"] as? Int
         else {
             complation(false, nil)
             return
         }
-        
-        let credential = URLCredential(user: ASCConstants.Clouds.Dropbox.clientId, password: token, persistence: .forSession)
-        let dropboxCloudProvider = ASCDropboxProvider(credential: credential)
-        
+
+        let urlCredential = URLCredential(user: ASCConstants.Clouds.Dropbox.appId, password: accessToken, persistence: .forSession)
+        let oAuthCredential = ASCOAuthCredential(accessToken: accessToken, refreshToken: refreshToken, expiration: Date().adding(.second, value: expiration))
+        let dropboxCloudProvider = ASCDropboxProvider(urlCredential: urlCredential, oAuthCredential: oAuthCredential)
+
         dropboxCloudProvider.isReachable { success, error in
-            DispatchQueue.main.async(execute: {
+            DispatchQueue.main.async {
                 complation(success, success ? dropboxCloudProvider : nil)
-            })
+            }
         }
     }
-    
+
     /// Fetch a user information
     ///
     /// - Parameter completeon: a closure with result of user or error
-    func userInfo(completeon: ASCProviderUserInfoHandler?) {       
+    func userInfo(completeon: ASCProviderUserInfoHandler?) {
         apiClient?.request(DropboxAPI.Endpoints.currentAccount) { [weak self] response, error in
             guard let strongSelf = self else {
                 completeon?(false, error)
                 return
             }
-            
+
             guard let account = response else {
                 completeon?(false, error)
                 if let error = error {
@@ -241,24 +263,24 @@ class ASCDropboxProvider: ASCFileProviderProtocol & ASCSortableFileProviderProto
                 }
                 return
             }
-            
+
             strongSelf.user = ASCUser()
             strongSelf.user?.userId = account.id
             strongSelf.user?.displayName = account.displayName
             strongSelf.user?.department = "Dropbox"
-            
+
             ASCFileManager.storeProviders()
-            
+
             completeon?(true, nil)
         }
     }
-    
+
     /// Sort records
     ///
     /// - Parameters:
     ///   - completeon: a closure with result of sort entries or error
     func updateSort(completeon: ASCProviderCompletionHandler?) {
-        if let sortInfo = fetchInfo?["sort"] as? [String : Any] {
+        if let sortInfo = fetchInfo?["sort"] as? [String: Any] {
             sort(by: sortInfo, entities: &items)
             total = items.count
         }
@@ -271,14 +293,14 @@ class ASCDropboxProvider: ASCFileProviderProtocol & ASCSortableFileProviderProto
     ///   - folder: target directory
     ///   - parameters: dictionary of settings for searching and sorting or any other information
     ///   - completeon: a closure with result of directory entries or error
-    func fetch(for folder: ASCFolder, parameters: [String : Any?], completeon: ASCProviderCompletionHandler?) {
+    func fetch(for folder: ASCFolder, parameters: [String: Any?], completeon: ASCProviderCompletionHandler?) {
         guard let provider = provider else {
             completeon?(self, folder, false, nil)
             return
         }
 
         self.folder = folder
-        
+
         let fetch: ((_ completeon: ASCProviderCompletionHandler?) -> Void) = { [weak self] completeon in
             var query = NSPredicate(format: "TRUEPREDICATE")
 
@@ -297,9 +319,9 @@ class ASCDropboxProvider: ASCFileProviderProtocol & ASCSortableFileProviderProto
                 path: folder.id,
                 recursive: false,
                 query: query,
-                foundItemHandler: nil)
-            { [weak self] objects, error in
-                DispatchQueue.main.async(execute: { [weak self] in
+                foundItemHandler: nil
+            ) { [weak self] objects, error in
+                DispatchQueue.main.async { [weak self] in
                     guard let strongSelf = self else { return }
 
                     if let error = error {
@@ -325,22 +347,17 @@ class ASCDropboxProvider: ASCFileProviderProtocol & ASCSortableFileProviderProto
                             cloudFolder.updated = $0.modifiedDate
                             cloudFolder.createdBy = strongSelf.user
                             cloudFolder.updatedBy = strongSelf.user
-                            //                        cloudFolder.filesCount = -1
-                            //                        cloudFolder.foldersCount = -1
                             cloudFolder.parent = folder
                             cloudFolder.parentId = folder.id
 
                             return cloudFolder
-                    }
+                        }
 
                     files = objects
                         .filter { !$0.isDirectory && !$0.isSymLink && !$0.isHidden }
                         .map {
                             let fileSize: UInt64 = ($0.size < 0) ? 0 : UInt64($0.size)
                             let cloudFile = ASCFile()
-                            //                            file.id = $0.path
-                            //                            file.title = $0.name
-                            //                            file.created = $0.creationDate ?? $0.modifiedDate
 
                             cloudFile.id = $0.path
                             cloudFile.rootFolderType = .dropboxAll
@@ -355,17 +372,17 @@ class ASCDropboxProvider: ASCFileProviderProtocol & ASCSortableFileProviderProto
                             cloudFile.pureContentLength = Int(fileSize)
 
                             return cloudFile
-                    }
+                        }
 
-                    // Hotfix view url of media files                                        
+                    // Hotfix view url of media files
                     let mediaFiles = files.filter { file in
                         let fileExt = file.title.fileExtension().lowercased()
                         return ASCConstants.FileExtensions.images.contains(fileExt) || ASCConstants.FileExtensions.videos.contains(fileExt)
                     }
-                    
+
                     if mediaFiles.count > 0 {
                         let getLinkQueue = OperationQueue()
-                        
+
                         for file in mediaFiles {
                             getLinkQueue.addOperation {
                                 let semaphore = DispatchSemaphore(value: 0)
@@ -379,13 +396,13 @@ class ASCDropboxProvider: ASCFileProviderProtocol & ASCSortableFileProviderProto
                                 semaphore.wait()
                             }
                         }
-                        
+
                         getLinkQueue.waitUntilAllOperationsAreFinished()
                     }
-                    
+
                     // Sort
                     strongSelf.fetchInfo = parameters
-                    
+
                     if let sortInfo = parameters["sort"] as? [String: Any] {
                         self?.sort(by: sortInfo, folders: &folders, files: &files)
                     }
@@ -394,13 +411,11 @@ class ASCDropboxProvider: ASCFileProviderProtocol & ASCSortableFileProviderProto
                     strongSelf.total = strongSelf.items.count
 
                     completeon?(strongSelf, folder, true, nil)
-                })
+                }
             }
         }
 
-        if let _ = user {
-            fetch(completeon)
-        } else {
+        if user == nil || apiClient?.credential?.requiresRefresh ?? false {
             userInfo { [weak self] success, error in
                 if success {
                     fetch(completeon)
@@ -409,24 +424,26 @@ class ASCDropboxProvider: ASCFileProviderProtocol & ASCSortableFileProviderProto
                     completeon?(strongSelf, folder, false, error)
                 }
             }
+        } else {
+            fetch(completeon)
         }
     }
-    
+
     func absoluteUrl(from string: String?) -> URL? {
         guard let urlString = string else { return nil }
         return URL(string: urlString)
     }
-    
+
     func download(_ path: String, to destinationURL: URL, processing: @escaping NetworkProgressHandler) {
         guard let provider = provider else {
             processing(nil, 0, nil)
             return
         }
-        
+
         //        ASCBaseApi.clearCookies(for: provider.baseURL)
-        
+
         var downloadProgress: Progress?
-        
+
         if let localProvider = provider.copy() as? DropboxFileProvider {
             let handlerUid = UUID().uuidString
             let operationDelegate = ASCDropboxProviderDelegate()
@@ -435,7 +452,7 @@ class ASCDropboxProvider: ASCFileProviderProtocol & ASCSortableFileProviderProto
                     self?.operationHendlers.remove(at: processIndex)
                 }
             }
-            
+
             operationDelegate.onSucceed = { fileProvider, operation in
                 DispatchQueue.main.async {
                     processing(destinationURL, 0, nil)
@@ -453,9 +470,9 @@ class ASCDropboxProvider: ASCFileProviderProtocol & ASCSortableFileProviderProto
                     processing(nil, Double(progress), nil)
                 }
             }
-            
+
             localProvider.delegate = operationDelegate
-            
+
             do {
                 if FileManager.default.fileExists(atPath: destinationURL.path) {
                     try FileManager.default.removeItem(at: destinationURL)
@@ -465,50 +482,51 @@ class ASCDropboxProvider: ASCFileProviderProtocol & ASCSortableFileProviderProto
                 processing(nil, 1.0, error)
                 return
             }
-            
+
             downloadProgress = localProvider.copyItem(path: path, toLocalURL: destinationURL, completionHandler: { error in
                 if let error = error {
                     log.error(error.localizedDescription)
-                    
+
                     DispatchQueue.main.async {
                         processing(nil, 1.0, error)
                     }
                     cleanupHendler(handlerUid)
                 }
             })
-            
+
             if let localProgress = downloadProgress {
                 operationHendlers.append((
                     uid: handlerUid,
                     provider: localProvider,
                     progress: localProgress,
-                    delegate: operationDelegate))
+                    delegate: operationDelegate
+                ))
             }
         } else {
             processing(nil, 0, nil)
         }
     }
-    
+
     func modify(_ path: String, data: Data, params: [String: Any]?, processing: @escaping NetworkProgressHandler) {
         guard let provider = provider else {
             processing(nil, 0, nil)
             return
         }
-        
+
         providerOperationDelegate.onSucceed = { [weak self] fileProvider, operation in
             self?.operationProcess = nil
-            
+
             fileProvider.attributesOfItem(path: path, completionHandler: { fileObject, error in
-                DispatchQueue.main.async(execute: { [weak self] in
+                DispatchQueue.main.async { [weak self] in
                     if let error = error {
                         processing(nil, 1.0, error)
                     } else if let fileObject = fileObject {
                         let fileSize: UInt64 = (fileObject.size < 0) ? 0 : UInt64(fileObject.size)
-                        
+
                         let parent = ASCFolder()
                         parent.id = path
                         parent.title = (path as NSString).lastPathComponent
-                        
+
                         let cloudFile = ASCFile()
                         cloudFile.id = fileObject.path
                         cloudFile.rootFolderType = .dropboxAll
@@ -521,12 +539,12 @@ class ASCDropboxProvider: ASCFileProviderProtocol & ASCSortableFileProviderProto
                         cloudFile.viewUrl = fileObject.path
                         cloudFile.displayContentLength = String.fileSizeToString(with: fileSize)
                         cloudFile.pureContentLength = Int(fileSize)
-                        
+
                         processing(cloudFile, 1.0, nil)
                     } else {
                         processing(nil, 1.0, nil)
                     }
-                })
+                }
             })
         }
         providerOperationDelegate.onFailed = { [weak self] fileProvider, operation, error in
@@ -540,9 +558,9 @@ class ASCDropboxProvider: ASCFileProviderProtocol & ASCSortableFileProviderProto
                 processing(nil, Double(progress), nil)
             }
         }
-        
+
         provider.delegate = providerOperationDelegate
-        
+
         operationProcess = provider.writeContents(path: path, contents: data, overwrite: true) { error in
             log.error(error?.localizedDescription ?? "")
             DispatchQueue.main.async {
@@ -556,47 +574,47 @@ class ASCDropboxProvider: ASCFileProviderProtocol & ASCSortableFileProviderProto
             processing(nil, 0, nil)
             return
         }
-        
+
         var dstPath = path
-        
+
         if let fileName = params?["title"] as? String {
             dstPath = (dstPath as NSString).appendingPathComponent(fileName)
         }
-        
+
         let dummyFilePath = Path.userTemporary + UUID().uuidString
-        
+
         do {
             try data.write(to: dummyFilePath, atomically: true)
-        } catch(let error) {
+        } catch {
             processing(nil, 1, error)
             return
         }
-        
+
         var localProgress: Float = 0
         var uploadProgress: Progress?
-        
+
         if let localProvider = provider.copy() as? DropboxFileProvider {
             let handlerUid = UUID().uuidString
             let operationDelegate = ASCDropboxProviderDelegate()
-            
+
             let cleanupHendler: (String) -> Void = { [weak self] uid in
                 if let processIndex = self?.operationHendlers.firstIndex(where: { $0.uid == uid }) {
                     self?.operationHendlers.remove(at: processIndex)
                 }
             }
-            
+
             operationDelegate.onSucceed = { fileProvider, operation in
                 fileProvider.attributesOfItem(path: dstPath, completionHandler: { fileObject, error in
-                    DispatchQueue.main.async(execute: { [weak self] in
+                    DispatchQueue.main.async { [weak self] in
                         if let error = error {
                             processing(nil, 1.0, error)
                         } else if let fileObject = fileObject {
                             let fileSize: UInt64 = (fileObject.size < 0) ? 0 : UInt64(fileObject.size)
-                            
+
                             let parent = ASCFolder()
                             parent.id = path
                             parent.title = (path as NSString).lastPathComponent
-                            
+
                             let cloudFile = ASCFile()
                             cloudFile.id = fileObject.path
                             cloudFile.rootFolderType = .dropboxAll
@@ -609,14 +627,14 @@ class ASCDropboxProvider: ASCFileProviderProtocol & ASCSortableFileProviderProto
                             cloudFile.viewUrl = fileObject.path
                             cloudFile.displayContentLength = String.fileSizeToString(with: fileSize)
                             cloudFile.pureContentLength = Int(fileSize)
-                            
+
                             processing(cloudFile, 1.0, nil)
                         } else {
                             processing(nil, 1.0, nil)
                         }
                         ASCLocalFileHelper.shared.removeFile(dummyFilePath)
                         cleanupHendler(handlerUid)
-                    })
+                    }
                 })
             }
             operationDelegate.onFailed = { fileProvider, operation, error in
@@ -630,13 +648,13 @@ class ASCDropboxProvider: ASCFileProviderProtocol & ASCSortableFileProviderProto
                 localProgress = max(localProgress, progress)
                 processing(nil, Double(localProgress), nil)
             }
-            
+
             localProvider.delegate = operationDelegate
-            
+
             uploadProgress = localProvider.copyItem(localFile: dummyFilePath.url, to: dstPath) { error in
                 if let error = error {
                     log.error(error.localizedDescription)
-                    
+
                     DispatchQueue.main.async {
                         processing(nil, 1.0, error)
                     }
@@ -644,13 +662,14 @@ class ASCDropboxProvider: ASCFileProviderProtocol & ASCSortableFileProviderProto
                     cleanupHendler(handlerUid)
                 }
             }
-            
+
             if let localProgress = uploadProgress {
                 operationHendlers.append((
                     uid: handlerUid,
                     provider: localProvider,
                     progress: localProgress,
-                    delegate: operationDelegate))
+                    delegate: operationDelegate
+                ))
             }
         } else {
             processing(nil, 0, nil)
@@ -662,25 +681,25 @@ class ASCDropboxProvider: ASCFileProviderProtocol & ASCSortableFileProviderProto
             completeon?(self, nil, false, ASCProviderError(msg: errorProviderUndefined))
             return
         }
-        
+
         let fileTitle = name + "." + fileExtension
-        
+
         // Copy empty template to desination path
         if let templatePath = ASCFileManager.documentTemplatePath(with: fileExtension) {
             let localUrl = Path(templatePath).url
             let remotePath = (Path(folder.id) + fileTitle).rawValue
-            
+
             operationProcess = provider.copyItem(localFile: localUrl, to: remotePath) { [weak self] error in
-                DispatchQueue.main.async(execute: { [weak self] in
+                DispatchQueue.main.async { [weak self] in
                     guard let strongSelf = self else { return }
                     if let error = error {
                         log.error(error.localizedDescription)
                         completeon?(strongSelf, nil, false, ASCProviderError(error))
                     } else {
                         provider.attributesOfItem(path: remotePath, completionHandler: { [weak self] fileObject, error in
-                            DispatchQueue.main.async(execute: { [weak self] in
+                            DispatchQueue.main.async { [weak self] in
                                 guard let strongSelf = self else { return }
-                                
+
                                 if let error = error {
                                     completeon?(strongSelf, nil, false, ASCProviderError(error))
                                 } else if let fileObject = fileObject {
@@ -697,23 +716,22 @@ class ASCDropboxProvider: ASCFileProviderProtocol & ASCSortableFileProviderProto
                                     cloudFile.viewUrl = fileObject.path
                                     cloudFile.displayContentLength = String.fileSizeToString(with: fileSize)
                                     cloudFile.pureContentLength = Int(fileSize)
-                                    
+
                                     ASCAnalytics.logEvent(ASCConstants.Analytics.Event.createEntity, parameters: [
                                         ASCAnalytics.Event.Key.portal: strongSelf.provider?.baseURL?.absoluteString ?? ASCAnalytics.Event.Value.none,
                                         ASCAnalytics.Event.Key.onDevice: false,
                                         ASCAnalytics.Event.Key.type: ASCAnalytics.Event.Value.file,
-                                        ASCAnalytics.Event.Key.fileExt: cloudFile.title.fileExtension().lowercased()
-                                        ]
-                                    )
-                                    
+                                        ASCAnalytics.Event.Key.fileExt: cloudFile.title.fileExtension().lowercased(),
+                                    ])
+
                                     completeon?(strongSelf, cloudFile, true, nil)
                                 } else {
                                     completeon?(strongSelf, nil, false, nil)
                                 }
-                            })
+                            }
                         })
                     }
-                })
+                }
             }
         }
     }
@@ -730,9 +748,8 @@ class ASCDropboxProvider: ASCFileProviderProtocol & ASCSortableFileProviderProto
                     ASCAnalytics.Event.Key.portal: self?.provider?.baseURL?.absoluteString ?? ASCAnalytics.Event.Value.none,
                     ASCAnalytics.Event.Key.onDevice: false,
                     ASCAnalytics.Event.Key.type: ASCAnalytics.Event.Value.file,
-                    ASCAnalytics.Event.Key.fileExt: name.fileExtension()
-                    ]
-                )
+                    ASCAnalytics.Event.Key.fileExt: name.fileExtension(),
+                ])
             }
             processing(result, progress, error)
         }
@@ -743,11 +760,11 @@ class ASCDropboxProvider: ASCFileProviderProtocol & ASCSortableFileProviderProto
             completeon?(self, nil, false, ASCProviderError(msg: errorProviderUndefined))
             return
         }
-        
+
         provider.create(folder: name, at: folder.id) { [weak self] error in
-            DispatchQueue.main.async(execute: { [weak self] in
+            DispatchQueue.main.async { [weak self] in
                 guard let strongSelf = self else { return }
-                
+
                 if let error = error {
                     completeon?(strongSelf, nil, false, error)
                 } else {
@@ -768,91 +785,88 @@ class ASCDropboxProvider: ASCFileProviderProtocol & ASCSortableFileProviderProto
                     ASCAnalytics.logEvent(ASCConstants.Analytics.Event.createEntity, parameters: [
                         ASCAnalytics.Event.Key.portal: provider.baseURL?.absoluteString ?? ASCAnalytics.Event.Value.none,
                         ASCAnalytics.Event.Key.onDevice: false,
-                        ASCAnalytics.Event.Key.type: ASCAnalytics.Event.Value.folder
-                        ]
-                    )
+                        ASCAnalytics.Event.Key.type: ASCAnalytics.Event.Value.folder,
+                    ])
 
                     completeon?(strongSelf, cloudFolder, true, nil)
                 }
-            })
+            }
         }
     }
-    
+
     func rename(_ entity: ASCEntity, to newName: String, completeon: ASCProviderCompletionHandler?) {
         guard let provider = provider else {
             completeon?(self, nil, false, ASCProviderError(msg: errorProviderUndefined))
             return
         }
-        
+
         let file = entity as? ASCFile
         let folder = entity as? ASCFolder
-        
-        if file == nil && folder == nil {
+
+        if file == nil, folder == nil {
             completeon?(self, nil, false, ASCProviderError(msg: NSLocalizedString("Unknown item type.", comment: "")))
             return
         }
-        
+
         var oldPath: Path = Path()
         var newPath: Path = Path()
-        
+
         let entityTitle = file?.title ?? folder?.title
-        
+
         if let file = file {
             let fileExtension = entityTitle?.fileExtension() ?? ""
-            
+
             oldPath = Path(file.id)
             newPath = oldPath.parent + (newName + (fileExtension.length < 1 ? "" : ("." + fileExtension)))
         } else if let folder = folder {
             oldPath = Path(folder.id)
             newPath = oldPath.parent + newName
         }
-        
-        //        ASCBaseApi.clearCookies(for: provider.baseURL)
-        
+
         provider.moveItem(path: oldPath.rawValue, to: newPath.rawValue, overwrite: false) { [weak self] error in
-            DispatchQueue.main.async(execute: { [weak self] in
+            DispatchQueue.main.async { [weak self] in
                 guard let strongSelf = self else { return }
-                
+
                 if let error = error {
                     completeon?(strongSelf, nil, false, ASCProviderError(error))
-                } else {                    
+                } else {
                     if let file = file {
                         file.id = newPath.rawValue
                         file.title = newPath.fileName
                         file.viewUrl = newPath.rawValue
-                        
+
                         completeon?(strongSelf, file, true, nil)
                     } else if let folder = folder {
                         folder.id = newPath.rawValue
                         folder.title = newName
-                        
+
                         completeon?(strongSelf, folder, true, nil)
                     } else {
                         completeon?(strongSelf, nil, false, ASCProviderError(msg: NSLocalizedString("Unknown item type.", comment: "")))
                     }
                 }
-            })
+            }
         }
     }
-    
+
     func delete(_ entities: [ASCEntity], from folder: ASCFolder, move: Bool?, completeon: ASCProviderCompletionHandler?) {
         guard let provider = provider else {
             completeon?(self, nil, false, ASCProviderError(msg: errorProviderUndefined))
             return
         }
-        
+
         var lastError: Error?
         var results: [ASCEntity] = []
-        
+
         let operationQueue = OperationQueue()
         operationQueue.maxConcurrentOperationCount = 1
-        
+
         for entity in entities {
             operationQueue.addOperation {
                 let semaphore = DispatchSemaphore(value: 0)
-                
+
                 //                ASCBaseApi.clearCookies(for: provider.baseURL)
-                
+
                 provider.removeItem(path: entity.id, completionHandler: { error in
                     if let error = error {
                         lastError = error
@@ -864,38 +878,38 @@ class ASCDropboxProvider: ASCFileProviderProtocol & ASCSortableFileProviderProto
                 semaphore.wait()
             }
         }
-        
+
         operationQueue.addOperation { [weak self] in
             guard let strongSelf = self else { return }
-            
-            DispatchQueue.main.async(execute: {
+
+            DispatchQueue.main.async {
                 completeon?(strongSelf, results, results.count > 0, lastError)
-            })
+            }
         }
     }
-    
+
     func chechTransfer(items: [ASCEntity], to folder: ASCFolder, handler: ASCEntityHandler? = nil) {
         guard let provider = provider else {
             handler?(.error, nil, ASCProviderError(msg: errorProviderUndefined).localizedDescription)
             return
         }
-        
+
         var conflictItems: [Any] = []
-        
+
         handler?(.begin, nil, nil)
-        
+
         let operationQueue = OperationQueue()
         operationQueue.maxConcurrentOperationCount = 1
-        
+
         for entity in items {
             operationQueue.addOperation {
                 let semaphore = DispatchSemaphore(value: 0)
                 let destPath = NSString(string: folder.id).appendingPathComponent(NSString(string: entity.id).lastPathComponent)
-                
+
                 //                ASCBaseApi.clearCookies(for: provider.baseURL)
-                
+
                 provider.attributesOfItem(path: destPath, completionHandler: { object, error in
-                    if nil == error {
+                    if error == nil {
                         conflictItems.append(entity)
                     }
                     semaphore.signal()
@@ -903,44 +917,44 @@ class ASCDropboxProvider: ASCFileProviderProtocol & ASCSortableFileProviderProto
                 semaphore.wait()
             }
         }
-        
+
         operationQueue.addOperation {
-            DispatchQueue.main.async(execute: {
+            DispatchQueue.main.async {
                 handler?(.end, conflictItems, nil)
-            })
+            }
         }
     }
-    
+
     func transfer(items: [ASCEntity], to folder: ASCFolder, move: Bool, overwrite: Bool, handler: ASCEntityProgressHandler?) {
         var cancel = false
-        
+
         guard let provider = provider else {
             handler?(.end, 1, nil, ASCProviderError(msg: errorProviderUndefined).localizedDescription, &cancel)
             return
         }
-        
+
         handler?(.begin, 0, nil, nil, &cancel)
-        
+
         var lastError: Error?
         var results: [ASCEntity] = []
-        
+
         let operationQueue = OperationQueue()
         operationQueue.maxConcurrentOperationCount = 1
-        
+
         for (index, entity) in items.enumerated() {
             operationQueue.addOperation {
                 if cancel {
-                    DispatchQueue.main.async(execute: {
+                    DispatchQueue.main.async {
                         handler?(.end, 1, results, lastError?.localizedDescription, &cancel)
-                    })
+                    }
                     return
                 }
-                
+
                 let semaphore = DispatchSemaphore(value: 0)
                 let destPath = NSString(string: folder.id).appendingPathComponent(NSString(string: entity.id).lastPathComponent)
-                
+
                 //                ASCBaseApi.clearCookies(for: provider.baseURL)
-                
+
                 if move {
                     provider.moveItem(path: entity.id, to: destPath, overwrite: overwrite, completionHandler: { error in
                         if let error = error {
@@ -948,9 +962,9 @@ class ASCDropboxProvider: ASCFileProviderProtocol & ASCSortableFileProviderProto
                         } else {
                             results.append(entity)
                         }
-                        DispatchQueue.main.async(execute: {
+                        DispatchQueue.main.async {
                             handler?(.progress, Float(index) / Float(items.count), entity, error?.localizedDescription, &cancel)
-                        })
+                        }
                         semaphore.signal()
                     })
                 } else {
@@ -960,33 +974,33 @@ class ASCDropboxProvider: ASCFileProviderProtocol & ASCSortableFileProviderProto
                         } else {
                             results.append(entity)
                         }
-                        DispatchQueue.main.async(execute: {
+                        DispatchQueue.main.async {
                             handler?(.progress, Float(index + 1) / Float(items.count), entity, error?.localizedDescription, &cancel)
-                        })
+                        }
                         semaphore.signal()
                     })
                 }
                 semaphore.wait()
             }
         }
-        
+
         operationQueue.addOperation {
-            DispatchQueue.main.async(execute: {
+            DispatchQueue.main.async {
                 if items.count == results.count {
                     handler?(.end, 1, results, nil, &cancel)
                 } else {
                     handler?(.end, 1, results, lastError?.localizedDescription, &cancel)
                 }
-            })
+            }
         }
     }
-    
+
     // MARK: - Access
 
     func allowRead(entity: AnyObject?) -> Bool {
         return true
     }
-    
+
     func allowEdit(entity: AnyObject?) -> Bool {
         return true
     }
@@ -1011,17 +1025,17 @@ class ASCDropboxProvider: ASCFileProviderProtocol & ASCSortableFileProviderProto
         var entityActions: ASCEntityActions = []
 
         if let file = file {
-            let fileExtension   = file.title.fileExtension().lowercased()
-            let canRead         = allowRead(entity: file)
-            let canEdit         = allowEdit(entity: file)
-            let canDelete       = allowDelete(entity: file)
-            let canOpenEditor   = ASCConstants.FileExtensions.documents.contains(fileExtension) ||
-                                  ASCConstants.FileExtensions.spreadsheets.contains(fileExtension) ||
-                                  ASCConstants.FileExtensions.presentations.contains(fileExtension) ||
-                                  ASCConstants.FileExtensions.forms.contains(fileExtension)
-            let canPreview      = canOpenEditor ||
-                                  ASCConstants.FileExtensions.images.contains(fileExtension) ||
-                                  fileExtension == "pdf"
+            let fileExtension = file.title.fileExtension().lowercased()
+            let canRead = allowRead(entity: file)
+            let canEdit = allowEdit(entity: file)
+            let canDelete = allowDelete(entity: file)
+            let canOpenEditor = ASCConstants.FileExtensions.documents.contains(fileExtension) ||
+                ASCConstants.FileExtensions.spreadsheets.contains(fileExtension) ||
+                ASCConstants.FileExtensions.presentations.contains(fileExtension) ||
+                ASCConstants.FileExtensions.forms.contains(fileExtension)
+            let canPreview = canOpenEditor ||
+                ASCConstants.FileExtensions.images.contains(fileExtension) ||
+                fileExtension == "pdf"
 
             if canRead {
                 entityActions.insert([.copy, .export])
@@ -1039,7 +1053,7 @@ class ASCDropboxProvider: ASCFileProviderProtocol & ASCSortableFileProviderProto
                 entityActions.insert(.open)
             }
 
-            if canEdit && canOpenEditor && UIDevice.allowEditor {
+            if canEdit, canOpenEditor, UIDevice.allowEditor {
                 entityActions.insert(.edit)
             }
         }
@@ -1051,9 +1065,9 @@ class ASCDropboxProvider: ASCFileProviderProtocol & ASCSortableFileProviderProto
         var entityActions: ASCEntityActions = []
 
         if let folder = folder {
-            let canRead         = allowRead(entity: folder)
-            let canEdit         = allowEdit(entity: folder)
-            let canDelete       = allowDelete(entity: folder)
+            let canRead = allowRead(entity: folder)
+            let canEdit = allowEdit(entity: folder)
+            let canDelete = allowDelete(entity: folder)
 
             if canEdit {
                 entityActions.insert(.rename)
@@ -1063,7 +1077,7 @@ class ASCDropboxProvider: ASCFileProviderProtocol & ASCSortableFileProviderProto
                 entityActions.insert(.copy)
             }
 
-            if canEdit && canDelete {
+            if canEdit, canDelete {
                 entityActions.insert(.move)
             }
 
@@ -1078,9 +1092,9 @@ class ASCDropboxProvider: ASCFileProviderProtocol & ASCSortableFileProviderProto
     // MARK: - Open file
 
     func open(file: ASCFile, viewMode: Bool = false) {
-        let title           = file.title
-        let fileExt         = title.fileExtension().lowercased()
-        let allowOpen       = ASCConstants.FileExtensions.allowEdit.contains(fileExt)
+        let title = file.title
+        let fileExt = title.fileExtension().lowercased()
+        let allowOpen = ASCConstants.FileExtensions.allowEdit.contains(fileExt)
 
         if allowOpen {
             let editMode = !viewMode && UIDevice.allowEditor
@@ -1092,11 +1106,11 @@ class ASCDropboxProvider: ASCFileProviderProtocol & ASCSortableFileProviderProto
     }
 
     func preview(file: ASCFile, files: [ASCFile]?, in view: UIView?) {
-        let title           = file.title
-        let fileExt         = title.fileExtension().lowercased()
-        let isPdf           = fileExt == "pdf"
-        let isImage         = ASCConstants.FileExtensions.images.contains(fileExt)
-        let isVideo         = ASCConstants.FileExtensions.videos.contains(fileExt)
+        let title = file.title
+        let fileExt = title.fileExtension().lowercased()
+        let isPdf = fileExt == "pdf"
+        let isImage = ASCConstants.FileExtensions.images.contains(fileExt)
+        let isVideo = ASCConstants.FileExtensions.videos.contains(fileExt)
 
         if isPdf {
             let openHandler = delegate?.openProgress(file: file, title: NSLocalizedString("Downloading", comment: "Caption of the processing") + "...", 0.15)
@@ -1110,16 +1124,14 @@ class ASCDropboxProvider: ASCFileProviderProtocol & ASCSortableFileProviderProto
             }
         }
     }
-
 }
-
 
 // MARK: - FileProvider Delegate
 
 class ASCDropboxProviderDelegate: FileProviderDelegate {
-    var onSucceed:((_ fileProvider: FileProviderOperations, _ operation: FileOperationType) -> Void)?
-    var onFailed:((_ fileProvider: FileProviderOperations, _ operation: FileOperationType, _ error: Error) -> Void)?
-    var onProgress:((_ fileProvider: FileProviderOperations, _ operation: FileOperationType, _ progress: Float) -> Void)?
+    var onSucceed: ((_ fileProvider: FileProviderOperations, _ operation: FileOperationType) -> Void)?
+    var onFailed: ((_ fileProvider: FileProviderOperations, _ operation: FileOperationType, _ error: Error) -> Void)?
+    var onProgress: ((_ fileProvider: FileProviderOperations, _ operation: FileOperationType, _ progress: Float) -> Void)?
 
     func fileproviderSucceed(_ fileProvider: FileProviderOperations, operation: FileOperationType) {
         log.info("\(String(describing: fileProvider)): \(operation) - Success")

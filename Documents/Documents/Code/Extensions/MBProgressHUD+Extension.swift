@@ -9,8 +9,7 @@
 import MBProgressHUD
 
 extension MBProgressHUD {
-
-    static weak var currentHUD: MBProgressHUD? = nil
+    weak static var currentHUD: MBProgressHUD?
 
     static func showTopMost() -> MBProgressHUD? {
         if let topView = UIApplication.shared.keyWindow?.rootViewController?.view {
@@ -22,7 +21,7 @@ extension MBProgressHUD {
         }
         return nil
     }
-    
+
     func setSuccessState(title: String? = nil) {
         mode = .customView
         customView = UIImageView(image: Asset.Images.hudCheckmark.image)

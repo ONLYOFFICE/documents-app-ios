@@ -9,9 +9,8 @@
 import UIKit
 
 class ASCCentredLabelHeaderFooterView: UITableViewHeaderFooterView, ASCReusedIdentifierProtocol {
-    
     static var reuseId: String = "ASCCentredLabelHeaderFooterView"
-    
+
     lazy var centredTextLabel: UILabel = {
         $0.textStyle = .placeholderRegular
         $0.textAlignment = .center
@@ -23,11 +22,12 @@ class ASCCentredLabelHeaderFooterView: UITableViewHeaderFooterView, ASCReusedIde
         super.init(reuseIdentifier: reuseIdentifier)
         configureContents()
     }
-    
+
+    @available(*, unavailable)
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
+
     func configureContents() {
         centredTextLabel.translatesAutoresizingMaskIntoConstraints = false
 
@@ -36,7 +36,7 @@ class ASCCentredLabelHeaderFooterView: UITableViewHeaderFooterView, ASCReusedIde
             centredTextLabel.leadingAnchor.constraint(equalTo: contentView.layoutMarginsGuide.leadingAnchor),
             centredTextLabel.trailingAnchor.constraint(equalTo: contentView.layoutMarginsGuide.trailingAnchor),
             centredTextLabel.topAnchor.constraint(equalTo: contentView.layoutMarginsGuide.topAnchor),
-            centredTextLabel.bottomAnchor.constraint(equalTo: contentView.layoutMarginsGuide.bottomAnchor)
+            centredTextLabel.bottomAnchor.constraint(equalTo: contentView.layoutMarginsGuide.bottomAnchor),
         ])
     }
 }

@@ -10,6 +10,6 @@ import Foundation
 
 protocol ASCViewModelSetter {
     associatedtype ViewModel
-    
+
     var viewModel: ViewModel? { get set }
 }

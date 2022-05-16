@@ -9,16 +9,15 @@
 import UIKit
 
 extension UIView {
-    
     func shake() {
         let animation = CAKeyframeAnimation(keyPath: "position.x")
-        
+
         animation.timingFunction = CAMediaTimingFunction(name: CAMediaTimingFunctionName.easeOut)
         animation.duration = 0.3
-        animation.values = [ 0.0, 20.0, -20.0, 10.0, 0.0 ]
-        animation.keyTimes = [ 0.0, NSNumber(value: 1.0 / 6.0), NSNumber(value: 3.0 / 6.0), NSNumber(value: 5.0 / 6.0), 1.0 ]
+        animation.values = [0.0, 20.0, -20.0, 10.0, 0.0]
+        animation.keyTimes = [0.0, NSNumber(value: 1.0 / 6.0), NSNumber(value: 3.0 / 6.0), NSNumber(value: 5.0 / 6.0), 1.0]
         animation.isAdditive = true
-        
+
         layer.add(animation, forKey: "shake")
     }
 
@@ -123,8 +122,8 @@ extension UIView {
         _ show: Bool,
         animeted: Bool,
         inserts: UIEdgeInsets = UIEdgeInsets(top: 1, left: 0, bottom: 1, right: 0),
-        radius: CGFloat = 6)
-    {
+        radius: CGFloat = 6
+    ) {
         if show {
             if let _ = layer.sublayers?.first?.animation(forKey: "backgroundColor") {
                 return
@@ -145,7 +144,7 @@ extension UIView {
             solidLayer.cornerRadius = radius
 
             solidLayer.add(animation, forKey: "backgroundColor")
-            layer.insertSublayer(solidLayer, at:0)
+            layer.insertSublayer(solidLayer, at: 0)
 
             CATransaction.commit()
         } else {
@@ -155,15 +154,15 @@ extension UIView {
             }
         }
     }
-    
+
     func dropShadow(
         color: UIColor,
         opacity: Float = 0.5,
         offSet: CGSize,
         radius: CGFloat = 1,
         scale: Bool = true,
-        spread: CGFloat = 0)
-    {
+        spread: CGFloat = 0
+    ) {
         layer.masksToBounds = false
         layer.shadowColor = color.cgColor
         layer.shadowOpacity = opacity
@@ -172,7 +171,7 @@ extension UIView {
 
         let rect = bounds.insetBy(dx: -spread, dy: -spread)
         layer.shadowPath = UIBezierPath(rect: rect).cgPath
-        
+
         layer.shouldRasterize = true
         layer.rasterizationScale = scale ? UIScreen.main.scale : 1
     }
@@ -185,6 +184,67 @@ extension UIView {
     /// - Returns: optional UIView (if applicable).
     public class func loadFromNib(named name: String, bundle: Bundle? = nil) -> UIView? {
         return UINib(nibName: name, bundle: bundle).instantiate(withOwner: nil, options: nil)[0] as? UIView
+    }
+
+    /// Add anchors from any side of the current view into the specified anchors and returns the newly added constraints.
+    ///
+    /// - Parameters:
+    ///   - top: current view's top anchor will be anchored into the specified anchor.
+    ///   - left: current view's left anchor will be anchored into the specified anchor.
+    ///   - bottom: current view's bottom anchor will be anchored into the specified anchor.
+    ///   - right: current view's right anchor will be anchored into the specified anchor.
+    ///   - topConstant: current view's top anchor margin.
+    ///   - leftConstant: current view's left anchor margin.
+    ///   - bottomConstant: current view's bottom anchor margin.
+    ///   - rightConstant: current view's right anchor margin.
+    ///   - widthConstant: current view's width.
+    ///   - heightConstant: current view's height.
+    /// - Returns: array of newly added constraints (if applicable).
+    @discardableResult
+    func anchor(
+        top: NSLayoutYAxisAnchor? = nil,
+        left: NSLayoutXAxisAnchor? = nil,
+        bottom: NSLayoutYAxisAnchor? = nil,
+        right: NSLayoutXAxisAnchor? = nil,
+        topConstant: CGFloat = 0,
+        leftConstant: CGFloat = 0,
+        bottomConstant: CGFloat = 0,
+        rightConstant: CGFloat = 0,
+        widthConstant: CGFloat = 0,
+        heightConstant: CGFloat = 0
+    ) -> [NSLayoutConstraint] {
+        // https://videos.letsbuildthatapp.com/
+        translatesAutoresizingMaskIntoConstraints = false
+
+        var anchors = [NSLayoutConstraint]()
+
+        if let top = top {
+            anchors.append(topAnchor.constraint(equalTo: top, constant: topConstant))
+        }
+
+        if let left = left {
+            anchors.append(leftAnchor.constraint(equalTo: left, constant: leftConstant))
+        }
+
+        if let bottom = bottom {
+            anchors.append(bottomAnchor.constraint(equalTo: bottom, constant: -bottomConstant))
+        }
+
+        if let right = right {
+            anchors.append(rightAnchor.constraint(equalTo: right, constant: -rightConstant))
+        }
+
+        if widthConstant > 0 {
+            anchors.append(widthAnchor.constraint(equalToConstant: widthConstant))
+        }
+
+        if heightConstant > 0 {
+            anchors.append(heightAnchor.constraint(equalToConstant: heightConstant))
+        }
+
+        anchors.forEach { $0.isActive = true }
+
+        return anchors
     }
 
     /// Anchor center X into current view's superview with a constant margin value.
@@ -218,59 +278,57 @@ extension UIView {
         anchorCenterXToSuperview()
         anchorCenterYToSuperview()
     }
-    
+
     /// Anchor all sides of the view into it's superview.
-     @available(iOS 9, *)
-     func fillToSuperview() {
-         // https://videos.letsbuildthatapp.com/
-         translatesAutoresizingMaskIntoConstraints = false
-         if let superview = superview {
-             let left = leftAnchor.constraint(equalTo: superview.leftAnchor)
-             let right = rightAnchor.constraint(equalTo: superview.rightAnchor)
-             let top = topAnchor.constraint(equalTo: superview.topAnchor)
-             let bottom = bottomAnchor.constraint(equalTo: superview.bottomAnchor)
-             NSLayoutConstraint.activate([left, right, top, bottom])
-         }
-     }
+    @available(iOS 9, *)
+    func fillToSuperview() {
+        // https://videos.letsbuildthatapp.com/
+        translatesAutoresizingMaskIntoConstraints = false
+        if let superview = superview {
+            let left = leftAnchor.constraint(equalTo: superview.leftAnchor)
+            let right = rightAnchor.constraint(equalTo: superview.rightAnchor)
+            let top = topAnchor.constraint(equalTo: superview.topAnchor)
+            let bottom = bottomAnchor.constraint(equalTo: superview.bottomAnchor)
+            NSLayoutConstraint.activate([left, right, top, bottom])
+        }
+    }
 }
 
 // MARK: - Constraints
+
 extension UIView {
-    
     func fillToSuperview(padding: UIEdgeInsets) {
         anchor(top: superview?.topAnchor, leading: superview?.leadingAnchor, bottom: superview?.bottomAnchor, trailing: superview?.trailingAnchor, padding: padding)
     }
-    
+
     func anchorSize(to view: UIView) {
         widthAnchor.constraint(equalTo: view.widthAnchor).isActive = true
         heightAnchor.constraint(equalTo: view.heightAnchor).isActive = true
     }
-    
+
     func anchor(top: NSLayoutYAxisAnchor?, leading: NSLayoutXAxisAnchor?, bottom: NSLayoutYAxisAnchor?, trailing: NSLayoutXAxisAnchor?, padding: UIEdgeInsets = .zero, size: CGSize = .zero) {
-        
         if let top = top {
             topAnchor.constraint(equalTo: top, constant: padding.top).isActive = true
         }
-        
+
         if let leading = leading {
             leadingAnchor.constraint(equalTo: leading, constant: padding.left).isActive = true
         }
-        
+
         if let bottom = bottom {
             bottomAnchor.constraint(equalTo: bottom, constant: -padding.bottom).isActive = true
         }
-        
+
         if let trailing = trailing {
             trailingAnchor.constraint(equalTo: trailing, constant: -padding.right).isActive = true
         }
-        
+
         if size.width != 0 {
             widthAnchor.constraint(equalToConstant: size.width).isActive = true
         }
-        
+
         if size.height != 0 {
             heightAnchor.constraint(equalToConstant: size.height).isActive = true
         }
     }
-    
 }

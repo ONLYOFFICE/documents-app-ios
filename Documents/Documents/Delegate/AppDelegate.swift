@@ -6,63 +6,64 @@
 //  Copyright © 2017 Ascensio System SIA. All rights reserved.
 //
 
-import UIKit
-import UserNotifications
-import GoogleSignIn
+import CoreServices
+import CoreSpotlight
 import FirebaseCore
 import FirebaseMessaging
-import CoreSpotlight
-import CoreServices
+import GoogleSignIn
 import Siren
+import UIKit
+import UserNotifications
 #if DEBUG
-import Atlantis
+    import Atlantis
 #endif
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
-
     var window: UIWindow?
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         self.launchOptions = launchOptions
-        
+
         if ASCCommon.isUnitTesting {
             return true
         }
-        
+
         #if DEBUG
-        Atlantis.start()
+            Atlantis.start()
         #endif
 
         ASCStyles.initialize
-        
+
         ASCLogIntercepter.shared.start()
         ASCAccountsManager.start()
-                
-        // Use Firebase library to configure APIs
-        FirebaseApp.configure()
 
-        // Reset application badge
-        ASCCommon.applicationIconBadgeNumber = 0
-        
-        // Register for remote notifications
-        Messaging.messaging().delegate = self
+        #if !OPEN_SOURCE
+            // Use Firebase library to configure APIs
+            FirebaseApp.configure()
 
-        // Initialize searchable promo
-        searchablePromoInit()
-        
-        self.window = UIWindow()
-        self.window?.rootViewController = ASCRootViewController.instance()
-        self.window?.makeKeyAndVisible()
-        
+            // Reset application badge
+            ASCCommon.applicationIconBadgeNumber = 0
+
+            // Register for remote notifications
+            Messaging.messaging().delegate = self
+
+            // Initialize searchable promo
+            searchablePromoInit()
+        #endif
+
+        window = UIWindow()
+        window?.rootViewController = ASCRootViewController.instance()
+        window?.makeKeyAndVisible()
+
         // Initialize PasscodeLock presenter
         initPasscodeLock()
-        
+
         // Check Update
         configureAppUpdater()
-        
+
         UNUserNotificationCenter.current().delegate = self
-        
+
         return true
     }
 
@@ -72,16 +73,19 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication,
                      performActionFor shortcutItem: UIApplicationShortcutItem,
-                     completionHandler: @escaping (Bool) -> Void) {
+                     completionHandler: @escaping (Bool) -> Void)
+    {
         completionHandler(handle(shortcutItem))
     }
 
     func application(_ application: UIApplication,
                      continue userActivity: NSUserActivity,
-                     restorationHandler: @escaping ([UIUserActivityRestoring]?) -> Void) -> Bool {
+                     restorationHandler: @escaping ([UIUserActivityRestoring]?) -> Void) -> Bool
+    {
         if userActivity.activityType == CSSearchableItemActionType,
-            let info = userActivity.userInfo,
-            let selectedIdentifier = info[CSSearchableItemActivityIdentifier] as? String {
+           let info = userActivity.userInfo,
+           let selectedIdentifier = info[CSSearchableItemActivityIdentifier] as? String
+        {
             log.debug("Selected Identifier: \(selectedIdentifier)")
         }
 
@@ -90,12 +94,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ app: UIApplication,
                      open url: URL,
-                     options: [UIApplication.OpenURLOptionsKey : Any] = [:]) -> Bool {
+                     options: [UIApplication.OpenURLOptionsKey: Any] = [:]) -> Bool
+    {
         if let bundleTypes = Bundle.main.infoDictionary?["CFBundleURLTypes"] as? [[String: Any]] {
             for urlType in bundleTypes {
                 if let service = urlType["CFBundleURLName"] as? String,
                    let schemes = urlType["CFBundleURLSchemes"] as? [String],
-                   let scheme = schemes.last {
+                   let scheme = schemes.last
+                {
                     if let _ = url.scheme?.range(of: scheme, options: .caseInsensitive) {
                         if service == "facebook" {
                             return ASCFacebookSignInController.application(app, open: url, options: options)
@@ -108,14 +114,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 }
             }
         }
-        
+
         if url.isFileURL {
             return ASCViewControllerManager.shared.route(by: url, options: options)
         }
-     
+
         return false
     }
-    
+
     private func handle(_ shortcutItem: UIApplicationShortcutItem) -> Bool {
         switch shortcutItem.type {
         case ASCConstants.Shortcuts.newDocument:
@@ -142,7 +148,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
 
     private func searchablePromoInit() {
-        CSSearchableIndex.default().deleteSearchableItems(withDomainIdentifiers: [ASCConstants.Searchable.domainPromo]) { (error) in
+        CSSearchableIndex.default().deleteSearchableItems(withDomainIdentifiers: [ASCConstants.Searchable.domainPromo]) { error in
             var searchableItems = [CSSearchableItem]()
 
             for (index, keyword) in ASCConstants.Searchable.promoKeywords.enumerated() {
@@ -152,11 +158,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 let searchableItem = CSSearchableItem(
                     uniqueIdentifier: "\(index)",
                     domainIdentifier: ASCConstants.Searchable.domainPromo,
-                    attributeSet: searchItemAttributeSet)
+                    attributeSet: searchItemAttributeSet
+                )
                 searchableItems.append(searchableItem)
             }
 
-            CSSearchableIndex.default().indexSearchableItems(searchableItems) { (error) -> Void in
+            CSSearchableIndex.default().indexSearchableItems(searchableItems) { error in
                 if let error = error {
                     print(error.localizedDescription)
                 }

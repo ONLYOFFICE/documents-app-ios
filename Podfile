@@ -38,7 +38,7 @@ def common_pods
 
   pod 'SkyFloatingLabelTextField', :git => 'https://github.com/Skyscanner/SkyFloatingLabelTextField.git'
   pod 'MBProgressHUD'
-  pod 'MediaBrowser', :git => 'https://github.com/ayuzhin/MediaBrowser.git'
+  pod 'MediaBrowser', :git => 'https://github.com/ayuzhin/MediaBrowser.git', :commit => '8411f5d'
   pod 'SwiftRater'
   pod 'Siren'
   pod 'WhatsNewKit'
@@ -54,6 +54,7 @@ def common_pods
   pod 'IQKeyboardManagerSwift'
   pod 'KeychainSwift'
   pod 'SwiftGen', '~> 6.4.0'
+  pod 'SwiftFormat/CLI', '~> 0.49', :configurations => ['Debug']
 
 end
 
@@ -72,10 +73,12 @@ target 'Documents' do
   
   common_pods
   
-  pod 'DocumentConverter', :path => '../editors-ios/DocumentConverter.podspec'
-  pod 'SpreadsheetEditor', :path => '../editors-ios/SpreadsheetEditor.podspec'
-  pod 'DocumentEditor', :path => '../editors-ios/DocumentEditor.podspec'
-  pod 'PresentationEditor', :path => '../editors-ios/PresentationEditor.podspec'
+  if Dir.exist?('../editors-ios')
+    pod 'DocumentConverter', :path => '../editors-ios/DocumentConverter.podspec'
+    pod 'SpreadsheetEditor', :path => '../editors-ios/SpreadsheetEditor.podspec'
+    pod 'DocumentEditor', :path => '../editors-ios/DocumentEditor.podspec'
+    pod 'PresentationEditor', :path => '../editors-ios/PresentationEditor.podspec'
+  end
 
   target 'DocumentsTests' do
     inherit! :complete
@@ -89,15 +92,31 @@ target 'Documents-Alpha' do
   
   common_pods
   
-  pod 'DocumentConverter', :path => '../editors-ios/DocumentConverter.podspec'
-  pod 'SpreadsheetEditor', :path => '../editors-ios/SpreadsheetEditor.podspec'
-  pod 'DocumentEditor', :path => '../editors-ios/DocumentEditor.podspec'
-  pod 'PresentationEditor', :path => '../editors-ios/PresentationEditor.podspec'
+  if Dir.exist?('../editors-ios')
+    pod 'DocumentConverter', :path => '../editors-ios/DocumentConverter.podspec'
+    pod 'SpreadsheetEditor', :path => '../editors-ios/SpreadsheetEditor.podspec'
+    pod 'DocumentEditor', :path => '../editors-ios/DocumentEditor.podspec'
+    pod 'PresentationEditor', :path => '../editors-ios/PresentationEditor.podspec'
+  end
 end
 
 target 'Documents-develop' do
   workspace 'ONLYOFFICE-Documents-develop'
   project 'Documents/Documents-develop.xcodeproj'
+  
+  common_pods
+end
+
+target 'Documents-withouteditors' do
+  workspace 'ONLYOFFICE-Documents-opensource'
+  project 'Documents/Documents-opensource.xcodeproj'
+  
+  common_pods
+end
+
+target 'Documents-witheditors' do
+  workspace 'ONLYOFFICE-Documents-opensource'
+  project 'Documents/Documents-opensource.xcodeproj'
   
   common_pods
 end

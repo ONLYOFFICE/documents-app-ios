@@ -1,6 +1,9 @@
 /* Bundle name */
 "CFBundleName" = "文档";
 
+/* (No Commment) */
+"CFBundleDisplayName" = "文档";
+
 /* (No Comment) */
 "New Document" = "新建文档";
 
@@ -21,6 +24,9 @@
 
 /* Privacy - Photo Library Usage Description */
 "NSPhotoLibraryUsageDescription" = "该应用程序需要访问图片库，这样您就可以将照片上传到应用程序中。";
+
+/* (No Comment) */
+"ONLYOFFICE fillable form (.oform)" = "ONLYOFFICE可填写的表单 (.oform)";
 
 /* (No Comment) */
 "ONLYOFFICE form template (.docxf)" = "ONLYOFFICE表单模板 (.docxf)";

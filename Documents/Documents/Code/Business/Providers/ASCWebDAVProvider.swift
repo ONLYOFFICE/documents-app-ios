@@ -6,76 +6,69 @@
 //  Copyright © 2018 Ascensio System SIA. All rights reserved.
 //
 
-import UIKit
-import FilesProvider
 import FileKit
+import FilesProvider
 import Firebase
+import UIKit
 
 class ASCWebDAVProvider: ASCFileProviderProtocol & ASCSortableFileProviderProtocol {
-
     // MARK: - Properties
 
     var type: ASCFileProviderType {
-        get {
-            return .webdav
-        }
+        return .webdav
     }
-    var id: String? {
-        get {
-            if
-                let provider = provider,
-                let credential = provider.credential,
-                let baseUrl = provider.baseURL?.absoluteString,
-                let userId = credential.user,
-                let password = credential.password
-            {
-                return (baseUrl + password + userId).md5
-            }
 
-            return nil
+    var id: String? {
+        if
+            let provider = provider,
+            let credential = provider.credential,
+            let baseUrl = provider.baseURL?.absoluteString,
+            let userId = credential.user,
+            let password = credential.password
+        {
+            return (baseUrl + password + userId).md5
         }
+
+        return nil
     }
+
     var items: [ASCEntity] = []
     var page: Int = 0
     var pageSize: Int = 20
     var total: Int = 0
-    var user: ASCUser? = nil
+    var user: ASCUser?
     var authorization: String? {
-        get {
-            guard
-                let provider = provider,
-                let credential = provider.credential,
-                let user = credential.user,
-                let password = credential.password,
-                let credentialData = "\(user):\(password)".data(using: .utf8)
-            else { return nil }
+        guard
+            let provider = provider,
+            let credential = provider.credential,
+            let user = credential.user,
+            let password = credential.password,
+            let credentialData = "\(user):\(password)".data(using: .utf8)
+        else { return nil }
 
-            let base64Credentials = credentialData.base64EncodedData(options: [])
-            if let base64Date = Data(base64Encoded: base64Credentials) {
-                return "Basic \(base64Date.base64EncodedString())"
-            }
-
-            return nil
+        let base64Credentials = credentialData.base64EncodedData(options: [])
+        if let base64Date = Data(base64Encoded: base64Credentials) {
+            return "Basic \(base64Date.base64EncodedString())"
         }
+
+        return nil
     }
 
     var rootFolder: ASCFolder {
-        get {
-            return {
-                $0.title = NSLocalizedString("WebDAV", comment: "")
-                $0.rootFolderType = .webdavAll
-                $0.id = "/"
-                return $0
-            }(ASCFolder())
-        }
+        return {
+            $0.title = NSLocalizedString("WebDAV", comment: "")
+            $0.rootFolderType = .webdavAll
+            $0.id = "/"
+            return $0
+        }(ASCFolder())
     }
 
     var delegate: ASCProviderDelegate?
 
     internal var provider: WebDAVFileProvider?
-    
+
     internal var folder: ASCFolder?
-    internal var fetchInfo: [String : Any?]?
+    internal var fetchInfo: [String: Any?]?
 
     fileprivate lazy var providerOperationDelegate = ASCWebDAVProviderDelegate()
     private var operationProcess: Progress?
@@ -83,12 +76,13 @@ class ASCWebDAVProvider: ASCFileProviderProtocol & ASCSortableFileProviderProtoc
         uid: String,
         provider: FileProviderBasic,
         progress: Progress,
-        delegate: ASCWebDAVProviderDelegate)] = []
+        delegate: ASCWebDAVProviderDelegate
+    )] = []
 
     private let errorProviderUndefined = NSLocalizedString("Unknown file provider", comment: "")
 
     // MARK: - Lifecycle Methods
-    
+
     init() {
         provider = nil
         user = nil
@@ -98,7 +92,8 @@ class ASCWebDAVProvider: ASCFileProviderProtocol & ASCSortableFileProviderProtoc
         var providerUrl = baseURL
 
         if providerUrl.scheme == nil,
-            let fixedUrl = URL(string: "https://\(providerUrl.absoluteString)") {
+           let fixedUrl = URL(string: "https://\(providerUrl.absoluteString)")
+        {
             providerUrl = fixedUrl
         }
 
@@ -113,13 +108,13 @@ class ASCWebDAVProvider: ASCFileProviderProtocol & ASCSortableFileProviderProtoc
 
     func copy() -> ASCFileProviderProtocol {
         let copy = ASCWebDAVProvider()
-        
+
         copy.items = items
         copy.page = page
         copy.total = total
         copy.delegate = delegate
         copy.deserialize(serialize() ?? "")
-        
+
         return copy
     }
 
@@ -143,11 +138,11 @@ class ASCWebDAVProvider: ASCFileProviderProtocol & ASCSortableFileProviderProtoc
 
     func serialize() -> String? {
         var info: [String: Any] = [
-            "type": type.rawValue
+            "type": type.rawValue,
         ]
 
         if let baseUrl = provider?.baseURL?.absoluteString {
-            info += ["baseUrl": baseUrl.hasSuffix("/") ? baseUrl.dropLast() : baseUrl ]
+            info += ["baseUrl": baseUrl.hasSuffix("/") ? baseUrl.dropLast() : baseUrl]
         }
 
         if let password = provider?.credential?.password {
@@ -189,22 +184,22 @@ class ASCWebDAVProvider: ASCFileProviderProtocol & ASCSortableFileProviderProtoc
             }
         }
     }
-    
+
     func add(item: ASCEntity, at index: Int) {
         if !items.contains(where: { $0.uid == item.uid }) {
             items.insert(item, at: index)
             total += 1
         }
     }
-    
+
     func add(items: [ASCEntity], at index: Int) {
-        let uniqItems = items.filter { (item) -> Bool in
-            return !self.items.contains(where: { $0.uid == item.uid })
+        let uniqItems = items.filter { item -> Bool in
+            !self.items.contains(where: { $0.uid == item.uid })
         }
         self.items.insert(contentsOf: uniqItems, at: index)
-        self.total += uniqItems.count
+        total += uniqItems.count
     }
-    
+
     func remove(at index: Int) {
         items.remove(at: index)
         total -= 1
@@ -213,26 +208,26 @@ class ASCWebDAVProvider: ASCFileProviderProtocol & ASCSortableFileProviderProtoc
     func isReachable(completionHandler: @escaping (_ success: Bool, _ error: Error?) -> Void) {
         guard let provider = provider else {
             let error = ASCProviderError(msg: errorProviderUndefined)
-            
-            DispatchQueue.main.async(execute: {
+
+            DispatchQueue.main.async {
                 completionHandler(false, error)
-            })
+            }
             return
         }
 
 //        ASCBaseApi.clearCookies(for: provider.baseURL)
 
         provider.isReachable(completionHandler: { success, error in
-            DispatchQueue.main.async(execute: {
+            DispatchQueue.main.async {
                 completionHandler(success, error)
-            })
+            }
         })
     }
 
     func isReachable(
         with info: [String: Any],
-        complation: @escaping ((_ success: Bool, _ provider: ASCFileProviderProtocol?) -> Void))
-    {
+        complation: @escaping ((_ success: Bool, _ provider: ASCFileProviderProtocol?) -> Void)
+    ) {
         guard
             let portal = info["url"] as? String,
             let login = info["login"] as? String,
@@ -242,7 +237,7 @@ class ASCWebDAVProvider: ASCFileProviderProtocol & ASCSortableFileProviderProtoc
             complation(false, nil)
             return
         }
-        
+
         let credential = URLCredential(user: login, password: password, persistence: .permanent)
         let webDavProvider = ASCWebDAVProvider(baseURL: portalUrl, credential: credential)
         let rootFolder: ASCFolder = {
@@ -251,20 +246,20 @@ class ASCWebDAVProvider: ASCFileProviderProtocol & ASCSortableFileProviderProtoc
             $0.id = "/"
             return $0
         }(ASCFolder())
-        
+
         webDavProvider.fetch(for: rootFolder, parameters: [:]) { provider, folder, success, error in
-            DispatchQueue.main.async(execute: {
+            DispatchQueue.main.async {
                 complation(success, success ? webDavProvider : nil)
-            })
+            }
         }
     }
-    
+
     /// Sort records
     ///
     /// - Parameters:
     ///   - completeon: a closure with result of sort entries or error
     func updateSort(completeon: ASCProviderCompletionHandler?) {
-        if let sortInfo = fetchInfo?["sort"] as? [String : Any] {
+        if let sortInfo = fetchInfo?["sort"] as? [String: Any] {
             sort(by: sortInfo, entities: &items)
             total = items.count
         }
@@ -289,7 +284,7 @@ class ASCWebDAVProvider: ASCFileProviderProtocol & ASCSortableFileProviderProtoc
             completeon?(self, folder, false, nil)
             return
         }
-        
+
         self.folder = folder
 
         let fetch: ((_ completeon: ASCProviderCompletionHandler?) -> Void) = { [weak self] completeon in
@@ -310,9 +305,9 @@ class ASCWebDAVProvider: ASCFileProviderProtocol & ASCSortableFileProviderProtoc
                 path: folder.id,
                 recursive: false,
                 query: query,
-                foundItemHandler: nil)
-            { [weak self] objects, error in
-                DispatchQueue.main.async(execute: { [weak self] in
+                foundItemHandler: nil
+            ) { [weak self] objects, error in
+                DispatchQueue.main.async { [weak self] in
                     guard let strongSelf = self else { return }
 
                     if let error = error {
@@ -344,7 +339,7 @@ class ASCWebDAVProvider: ASCFileProviderProtocol & ASCSortableFileProviderProtoc
                             cloudFolder.parentId = folder.id
 
                             return cloudFolder
-                    }
+                        }
 
                     files = objects
                         .filter { !$0.isDirectory && !$0.isSymLink && !$0.isHidden }
@@ -368,11 +363,11 @@ class ASCWebDAVProvider: ASCFileProviderProtocol & ASCSortableFileProviderProtoc
                             cloudFile.pureContentLength = Int(fileSize)
 
                             return cloudFile
-                    }
+                        }
 
                     // Sort
                     strongSelf.fetchInfo = parameters
-                    
+
                     if let sortInfo = parameters["sort"] as? [String: Any] {
                         self?.sort(by: sortInfo, folders: &folders, files: &files)
                     }
@@ -381,7 +376,7 @@ class ASCWebDAVProvider: ASCFileProviderProtocol & ASCSortableFileProviderProtoc
                     strongSelf.total = strongSelf.items.count
 
                     completeon?(strongSelf, folder, true, nil)
-                })
+                }
             }
         }
 
@@ -469,7 +464,8 @@ class ASCWebDAVProvider: ASCFileProviderProtocol & ASCSortableFileProviderProtoc
                     uid: handlerUid,
                     provider: localProvider,
                     progress: localProgress,
-                    delegate: operationDelegate))
+                    delegate: operationDelegate
+                ))
             }
         } else {
             processing(nil, 0, nil)
@@ -488,7 +484,7 @@ class ASCWebDAVProvider: ASCFileProviderProtocol & ASCSortableFileProviderProtoc
             self?.operationProcess = nil
 
             fileProvider.attributesOfItem(path: path, completionHandler: { fileObject, error in
-                DispatchQueue.main.async(execute: { [weak self] in
+                DispatchQueue.main.async { [weak self] in
                     if let error = error {
                         processing(nil, 1.0, error)
                     } else if let fileObject = fileObject {
@@ -515,7 +511,7 @@ class ASCWebDAVProvider: ASCFileProviderProtocol & ASCSortableFileProviderProtoc
                     } else {
                         processing(nil, 1.0, nil)
                     }
-                })
+                }
             })
         }
         providerOperationDelegate.onFailed = { [weak self] fileProvider, operation, error in
@@ -558,7 +554,7 @@ class ASCWebDAVProvider: ASCFileProviderProtocol & ASCSortableFileProviderProtoc
 
         do {
             try data.write(to: dummyFilePath, atomically: true)
-        } catch(let error) {
+        } catch {
             processing(nil, 1, error)
             return
         }
@@ -578,7 +574,7 @@ class ASCWebDAVProvider: ASCFileProviderProtocol & ASCSortableFileProviderProtoc
 
             operationDelegate.onSucceed = { fileProvider, operation in
                 fileProvider.attributesOfItem(path: dstPath, completionHandler: { fileObject, error in
-                    DispatchQueue.main.async(execute: { [weak self] in
+                    DispatchQueue.main.async { [weak self] in
                         if let error = error {
                             processing(nil, 1.0, error)
                         } else if let fileObject = fileObject {
@@ -607,7 +603,7 @@ class ASCWebDAVProvider: ASCFileProviderProtocol & ASCSortableFileProviderProtoc
                         }
                         ASCLocalFileHelper.shared.removeFile(dummyFilePath)
                         cleanupHendler(handlerUid)
-                    })
+                    }
                 })
             }
             operationDelegate.onFailed = { fileProvider, operation, error in
@@ -641,7 +637,8 @@ class ASCWebDAVProvider: ASCFileProviderProtocol & ASCSortableFileProviderProtoc
                     uid: handlerUid,
                     provider: localProvider,
                     progress: localProgress,
-                    delegate: operationDelegate))
+                    delegate: operationDelegate
+                ))
             }
         } else {
             processing(nil, 0, nil)
@@ -664,14 +661,14 @@ class ASCWebDAVProvider: ASCFileProviderProtocol & ASCSortableFileProviderProtoc
             let remotePath = (Path(folder.id) + fileTitle).rawValue
 
             operationProcess = provider.copyItem(localFile: localUrl, to: remotePath) { [weak self] error in
-                DispatchQueue.main.async(execute: { [weak self] in
+                DispatchQueue.main.async { [weak self] in
                     guard let strongSelf = self else { return }
                     if let error = error {
                         log.error(error.localizedDescription)
                         completeon?(strongSelf, nil, false, ASCProviderError(error))
                     } else {
                         provider.attributesOfItem(path: remotePath, completionHandler: { [weak self] fileObject, error in
-                            DispatchQueue.main.async(execute: { [weak self] in
+                            DispatchQueue.main.async { [weak self] in
                                 guard let strongSelf = self else { return }
 
                                 if let error = error {
@@ -695,18 +692,17 @@ class ASCWebDAVProvider: ASCFileProviderProtocol & ASCSortableFileProviderProtoc
                                         ASCAnalytics.Event.Key.portal: strongSelf.provider?.baseURL?.absoluteString ?? ASCAnalytics.Event.Value.none,
                                         ASCAnalytics.Event.Key.onDevice: false,
                                         ASCAnalytics.Event.Key.type: ASCAnalytics.Event.Value.file,
-                                        ASCAnalytics.Event.Key.fileExt: cloudFile.title.fileExtension().lowercased()
-                                        ]
-                                    )
+                                        ASCAnalytics.Event.Key.fileExt: cloudFile.title.fileExtension().lowercased(),
+                                    ])
 
                                     completeon?(strongSelf, cloudFile, true, nil)
                                 } else {
                                     completeon?(strongSelf, nil, false, nil)
                                 }
-                            })
+                            }
                         })
                     }
-                })
+                }
             }
         }
     }
@@ -723,9 +719,8 @@ class ASCWebDAVProvider: ASCFileProviderProtocol & ASCSortableFileProviderProtoc
                     ASCAnalytics.Event.Key.portal: self?.provider?.baseURL?.absoluteString ?? ASCAnalytics.Event.Value.none,
                     ASCAnalytics.Event.Key.onDevice: false,
                     ASCAnalytics.Event.Key.type: ASCAnalytics.Event.Value.file,
-                    ASCAnalytics.Event.Key.fileExt: name.fileExtension()
-                    ]
-                )
+                    ASCAnalytics.Event.Key.fileExt: name.fileExtension(),
+                ])
             }
             processing(result, progress, error)
         }
@@ -740,7 +735,7 @@ class ASCWebDAVProvider: ASCFileProviderProtocol & ASCSortableFileProviderProtoc
 //        ASCBaseApi.clearCookies(for: provider.baseURL)
 
         provider.create(folder: name, at: folder.id) { [weak self] error in
-            DispatchQueue.main.async(execute: { [weak self] in
+            DispatchQueue.main.async { [weak self] in
                 guard let strongSelf = self else { return }
 
                 if let error = error {
@@ -763,13 +758,12 @@ class ASCWebDAVProvider: ASCFileProviderProtocol & ASCSortableFileProviderProtoc
                     ASCAnalytics.logEvent(ASCConstants.Analytics.Event.createEntity, parameters: [
                         ASCAnalytics.Event.Key.portal: provider.baseURL?.absoluteString ?? ASCAnalytics.Event.Value.none,
                         ASCAnalytics.Event.Key.onDevice: false,
-                        ASCAnalytics.Event.Key.type: ASCAnalytics.Event.Value.folder
-                        ]
-                    )
+                        ASCAnalytics.Event.Key.type: ASCAnalytics.Event.Value.folder,
+                    ])
 
                     completeon?(strongSelf, cloudFolder, true, nil)
                 }
-            })
+            }
         }
     }
 
@@ -782,7 +776,7 @@ class ASCWebDAVProvider: ASCFileProviderProtocol & ASCSortableFileProviderProtoc
         let file = entity as? ASCFile
         let folder = entity as? ASCFolder
 
-        if file == nil && folder == nil {
+        if file == nil, folder == nil {
             completeon?(self, nil, false, ASCProviderError(msg: NSLocalizedString("Unknown item type.", comment: "")))
             return
         }
@@ -805,7 +799,7 @@ class ASCWebDAVProvider: ASCFileProviderProtocol & ASCSortableFileProviderProtoc
 //        ASCBaseApi.clearCookies(for: provider.baseURL)
 
         provider.moveItem(path: oldPath.rawValue, to: newPath.rawValue, overwrite: false) { [weak self] error in
-            DispatchQueue.main.async(execute: { [weak self] in
+            DispatchQueue.main.async { [weak self] in
                 guard let strongSelf = self else { return }
 
                 if let error = error {
@@ -826,7 +820,7 @@ class ASCWebDAVProvider: ASCFileProviderProtocol & ASCSortableFileProviderProtoc
                         completeon?(strongSelf, nil, false, ASCProviderError(msg: NSLocalizedString("Unknown item type.", comment: "")))
                     }
                 }
-            })
+            }
         }
     }
 
@@ -863,9 +857,9 @@ class ASCWebDAVProvider: ASCFileProviderProtocol & ASCSortableFileProviderProtoc
         operationQueue.addOperation { [weak self] in
             guard let strongSelf = self else { return }
 
-            DispatchQueue.main.async(execute: {
+            DispatchQueue.main.async {
                 completeon?(strongSelf, results, results.count > 0, lastError)
-            })
+            }
         }
     }
 
@@ -890,7 +884,7 @@ class ASCWebDAVProvider: ASCFileProviderProtocol & ASCSortableFileProviderProtoc
 //                ASCBaseApi.clearCookies(for: provider.baseURL)
 
                 provider.attributesOfItem(path: destPath, completionHandler: { object, error in
-                    if nil == error {
+                    if error == nil {
                         conflictItems.append(entity)
                     }
                     semaphore.signal()
@@ -900,9 +894,9 @@ class ASCWebDAVProvider: ASCFileProviderProtocol & ASCSortableFileProviderProtoc
         }
 
         operationQueue.addOperation {
-            DispatchQueue.main.async(execute: {
+            DispatchQueue.main.async {
                 handler?(.end, conflictItems, nil)
-            })
+            }
         }
     }
 
@@ -925,9 +919,9 @@ class ASCWebDAVProvider: ASCFileProviderProtocol & ASCSortableFileProviderProtoc
         for (index, entity) in items.enumerated() {
             operationQueue.addOperation {
                 if cancel {
-                    DispatchQueue.main.async(execute: {
+                    DispatchQueue.main.async {
                         handler?(.end, 1, results, lastError?.localizedDescription, &cancel)
-                    })
+                    }
                     return
                 }
 
@@ -943,9 +937,9 @@ class ASCWebDAVProvider: ASCFileProviderProtocol & ASCSortableFileProviderProtoc
                         } else {
                             results.append(entity)
                         }
-                        DispatchQueue.main.async(execute: {
+                        DispatchQueue.main.async {
                             handler?(.progress, Float(index) / Float(items.count), entity, error?.localizedDescription, &cancel)
-                        })
+                        }
                         semaphore.signal()
                     })
                 } else {
@@ -955,9 +949,9 @@ class ASCWebDAVProvider: ASCFileProviderProtocol & ASCSortableFileProviderProtoc
                         } else {
                             results.append(entity)
                         }
-                        DispatchQueue.main.async(execute: {
+                        DispatchQueue.main.async {
                             handler?(.progress, Float(index + 1) / Float(items.count), entity, error?.localizedDescription, &cancel)
-                        })
+                        }
                         semaphore.signal()
                     })
                 }
@@ -966,13 +960,13 @@ class ASCWebDAVProvider: ASCFileProviderProtocol & ASCSortableFileProviderProtoc
         }
 
         operationQueue.addOperation {
-            DispatchQueue.main.async(execute: {
+            DispatchQueue.main.async {
                 if items.count == results.count {
                     handler?(.end, 1, results, nil, &cancel)
                 } else {
                     handler?(.end, 1, results, lastError?.localizedDescription, &cancel)
                 }
-            })
+            }
         }
     }
 
@@ -981,7 +975,7 @@ class ASCWebDAVProvider: ASCFileProviderProtocol & ASCSortableFileProviderProtoc
     func allowRead(entity: AnyObject?) -> Bool {
         return true
     }
-    
+
     func allowEdit(entity: AnyObject?) -> Bool {
         return true
     }
@@ -1006,17 +1000,17 @@ class ASCWebDAVProvider: ASCFileProviderProtocol & ASCSortableFileProviderProtoc
         var entityActions: ASCEntityActions = []
 
         if let file = file {
-            let fileExtension   = file.title.fileExtension().lowercased()
-            let canRead         = allowRead(entity: file)
-            let canEdit         = allowEdit(entity: file)
-            let canDelete       = allowDelete(entity: file)
-            let canOpenEditor   = ASCConstants.FileExtensions.documents.contains(fileExtension) ||
-                                  ASCConstants.FileExtensions.spreadsheets.contains(fileExtension) ||
-                                  ASCConstants.FileExtensions.presentations.contains(fileExtension) ||
-                                  ASCConstants.FileExtensions.forms.contains(fileExtension)
-            let canPreview      = canOpenEditor ||
-                                  ASCConstants.FileExtensions.images.contains(fileExtension) ||
-                                  fileExtension == "pdf"
+            let fileExtension = file.title.fileExtension().lowercased()
+            let canRead = allowRead(entity: file)
+            let canEdit = allowEdit(entity: file)
+            let canDelete = allowDelete(entity: file)
+            let canOpenEditor = ASCConstants.FileExtensions.documents.contains(fileExtension) ||
+                ASCConstants.FileExtensions.spreadsheets.contains(fileExtension) ||
+                ASCConstants.FileExtensions.presentations.contains(fileExtension) ||
+                ASCConstants.FileExtensions.forms.contains(fileExtension)
+            let canPreview = canOpenEditor ||
+                ASCConstants.FileExtensions.images.contains(fileExtension) ||
+                fileExtension == "pdf"
 
             if canRead {
                 entityActions.insert([.copy, .export])
@@ -1034,7 +1028,7 @@ class ASCWebDAVProvider: ASCFileProviderProtocol & ASCSortableFileProviderProtoc
                 entityActions.insert(.open)
             }
 
-            if canEdit && canOpenEditor && UIDevice.allowEditor {
+            if canEdit, canOpenEditor, UIDevice.allowEditor {
                 entityActions.insert(.edit)
             }
         }
@@ -1046,9 +1040,9 @@ class ASCWebDAVProvider: ASCFileProviderProtocol & ASCSortableFileProviderProtoc
         var entityActions: ASCEntityActions = []
 
         if let folder = folder {
-            let canRead         = allowRead(entity: folder)
-            let canEdit         = allowEdit(entity: folder)
-            let canDelete       = allowDelete(entity: folder)
+            let canRead = allowRead(entity: folder)
+            let canEdit = allowEdit(entity: folder)
+            let canDelete = allowDelete(entity: folder)
 
             if canEdit {
                 entityActions.insert(.rename)
@@ -1058,7 +1052,7 @@ class ASCWebDAVProvider: ASCFileProviderProtocol & ASCSortableFileProviderProtoc
                 entityActions.insert(.copy)
             }
 
-            if canEdit && canDelete {
+            if canEdit, canDelete {
                 entityActions.insert(.move)
             }
 
@@ -1073,9 +1067,9 @@ class ASCWebDAVProvider: ASCFileProviderProtocol & ASCSortableFileProviderProtoc
     // MARK: - Open file
 
     func open(file: ASCFile, viewMode: Bool = false) {
-        let title           = file.title
-        let fileExt         = title.fileExtension().lowercased()
-        let allowOpen       = ASCConstants.FileExtensions.allowEdit.contains(fileExt)
+        let title = file.title
+        let fileExt = title.fileExtension().lowercased()
+        let allowOpen = ASCConstants.FileExtensions.allowEdit.contains(fileExt)
 
         if allowOpen {
             let editMode = !viewMode && UIDevice.allowEditor
@@ -1087,11 +1081,11 @@ class ASCWebDAVProvider: ASCFileProviderProtocol & ASCSortableFileProviderProtoc
     }
 
     func preview(file: ASCFile, files: [ASCFile]?, in view: UIView?) {
-        let title           = file.title
-        let fileExt         = title.fileExtension().lowercased()
-        let isPdf           = fileExt == "pdf"
-        let isImage         = ASCConstants.FileExtensions.images.contains(fileExt)
-        let isVideo         = ASCConstants.FileExtensions.videos.contains(fileExt)
+        let title = file.title
+        let fileExt = title.fileExtension().lowercased()
+        let isPdf = fileExt == "pdf"
+        let isImage = ASCConstants.FileExtensions.images.contains(fileExt)
+        let isVideo = ASCConstants.FileExtensions.videos.contains(fileExt)
 
         if isPdf {
             let openHandler = delegate?.openProgress(file: file, title: NSLocalizedString("Downloading", comment: "Caption of the processing") + "...", 0.15)
@@ -1110,9 +1104,9 @@ class ASCWebDAVProvider: ASCFileProviderProtocol & ASCSortableFileProviderProtoc
 // MARK: - FileProvider Delegate
 
 class ASCWebDAVProviderDelegate: FileProviderDelegate {
-    var onSucceed:((_ fileProvider: FileProviderOperations, _ operation: FileOperationType) -> Void)?
-    var onFailed:((_ fileProvider: FileProviderOperations, _ operation: FileOperationType, _ error: Error) -> Void)?
-    var onProgress:((_ fileProvider: FileProviderOperations, _ operation: FileOperationType, _ progress: Float) -> Void)?
+    var onSucceed: ((_ fileProvider: FileProviderOperations, _ operation: FileOperationType) -> Void)?
+    var onFailed: ((_ fileProvider: FileProviderOperations, _ operation: FileOperationType, _ error: Error) -> Void)?
+    var onProgress: ((_ fileProvider: FileProviderOperations, _ operation: FileOperationType, _ progress: Float) -> Void)?
 
     func fileproviderSucceed(_ fileProvider: FileProviderOperations, operation: FileOperationType) {
         log.info("\(String(describing: fileProvider)): \(operation) - Success")
@@ -1131,4 +1125,3 @@ class ASCWebDAVProviderDelegate: FileProviderDelegate {
         onProgress?(fileProvider, operation, progress)
     }
 }
-

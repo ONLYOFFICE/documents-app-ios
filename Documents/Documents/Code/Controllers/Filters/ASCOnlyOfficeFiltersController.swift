@@ -39,6 +39,11 @@ class ASCOnlyOfficeFiltersController {
         if let model = filterModels.first(where: { $0.isSelected }) {
             params["filterType"] = model.filterType.rawValue
         }
+        if let model = authorsModels.first(where: { $0.selectedName != nil }),
+           let id = model.id
+        {
+            params["userIdOrGroupId"] = id
+        }
         return params
     }
 
@@ -159,7 +164,7 @@ class ASCOnlyOfficeFiltersController {
 }
 
 extension ASCOnlyOfficeFiltersController: ASCFiltersViewControllerDelegate {
-    func updateData(filterText itemText: String) {
+    func updateData(filterText itemText: String, id: String?) {
         authorsModels.enumerated().forEach { index, _ in
             authorsModels[index].selectedName = nil
         }
@@ -167,6 +172,7 @@ extension ASCOnlyOfficeFiltersController: ASCFiltersViewControllerDelegate {
         case .user, .group:
             if let index = authorsModels.firstIndex(where: { $0.filterType == currentSelectedAuthorFilterType }) {
                 authorsModels[index].selectedName = itemText
+                authorsModels[index].id = id
             }
         default: break
         }

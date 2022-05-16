@@ -194,7 +194,7 @@ extension ASCSelectGroupViewController: UITableViewDelegate, UITableViewDataSour
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let dataModel = getDataModel(indexPath: indexPath)
         if let filterText = dataModel.groupName {
-            delegate?.updateData(filterText: filterText)
+            delegate?.updateData(filterText: filterText, id: dataModel.groupId)
         }
         selectCell(indexPath: indexPath)
         dismiss(animated: true)

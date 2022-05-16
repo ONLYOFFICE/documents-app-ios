@@ -9,7 +9,7 @@
 import UIKit
 
 protocol ASCFiltersViewControllerDelegate: AnyObject {
-    func updateData(filterText: String)
+    func updateData(filterText: String, id: String?)
 }
 
 class ASCFiltersViewController: UIViewController {
@@ -71,7 +71,6 @@ class ASCFiltersViewController: UIViewController {
 }
 
 private extension ASCFiltersViewController {
-    
     // MARK: - Activity Indicator
 
     func showLoading() {

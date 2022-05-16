@@ -24,6 +24,7 @@ struct ASCDocumentsFilterModel: FilterTypeConvirtable {
 }
 
 struct ActionFilterModel: FilterTypeConvirtable {
+    var id: String? = nil
     var defaultName: String
     var selectedName: String?
     var filterType: ApiFilterType

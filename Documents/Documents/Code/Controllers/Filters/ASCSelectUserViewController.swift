@@ -111,8 +111,14 @@ class ASCSelectUserViewController: UIViewController {
                     let avatarUrl = user.avatar
                     let id = user.userId
 
-                    self?.dataArray.append(ASCUserTableViewDataModelItem(id: id, avatarImageUrl: avatarUrl, userName: userName, userPosition: department, isSelected: false))
+                    self?.dataArray.append(ASCUserTableViewDataModelItem(id: id,
+                                                                         avatarImageUrl: avatarUrl,
+                                                                         userName: userName,
+                                                                         userPosition: department,
+                                                                         isSelected: false,
+                                                                         isOwner: user.isShareOwner))
                 }
+                self?.dataArray.sort(by: { l, _ in l.isOwner })
 
                 DispatchQueue.main.async { [weak self] in
                     self?.tableView.reloadData()
@@ -202,7 +208,7 @@ extension ASCSelectUserViewController: UITableViewDelegate, UITableViewDataSourc
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let dataModel = getDataModel(indexPath: indexPath)
         if let filterText = dataModel.userName {
-            delegate?.updateData(filterText: filterText)
+            delegate?.updateData(filterText: filterText, id: dataModel.id)
         }
         selectCell(indexPath: indexPath)
         dismiss(animated: true)

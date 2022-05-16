@@ -14,4 +14,5 @@ struct ASCUserTableViewDataModelItem {
     var userName: String?
     var userPosition: String?
     var isSelected: Bool
+    var isOwner: Bool = false
 }

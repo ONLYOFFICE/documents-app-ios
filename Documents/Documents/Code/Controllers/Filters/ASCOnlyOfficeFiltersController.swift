@@ -107,6 +107,7 @@ class ASCOnlyOfficeFiltersController {
                 for (index, filterModel) in self.filterModels.enumerated() {
                     self.filterModels[index].isSelected = filterModel.filterType.rawValue == filterViewModel.id && previousSelectedFilter?.filterType.rawValue != filterViewModel.id
                 }
+                self.runPreload()
             }
 
             if isAthorModelsContainsSelectedId {
@@ -121,9 +122,8 @@ class ASCOnlyOfficeFiltersController {
                     self.currentSelectedAuthorFilterType = .group
                 default: return
                 }
+                self.updateViewModel()
             }
-
-            self.runPreload()
         }
     }
 
@@ -179,6 +179,6 @@ extension ASCOnlyOfficeFiltersController: ASCFiltersViewControllerDelegate {
         }
 
         currentSelectedAuthorFilterType = nil
-        updateViewModel()
+        runPreload()
     }
 }

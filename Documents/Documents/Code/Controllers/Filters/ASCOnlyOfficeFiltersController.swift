@@ -103,8 +103,9 @@ class ASCOnlyOfficeFiltersController {
             let isAthorModelsContainsSelectedId: Bool = self.authorsModels.map { $0.filterType.rawValue }.contains(filterViewModel.id)
 
             if isFilterModelsContainsSelectedId {
+                let previousSelectedFilter = self.filterModels.first(where: { $0.isSelected })
                 for (index, filterModel) in self.filterModels.enumerated() {
-                    self.filterModels[index].isSelected = filterModel.filterType.rawValue == filterViewModel.id
+                    self.filterModels[index].isSelected = filterModel.filterType.rawValue == filterViewModel.id && previousSelectedFilter?.filterType.rawValue != filterViewModel.id
                 }
             }
 

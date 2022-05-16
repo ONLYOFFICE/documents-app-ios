@@ -1222,7 +1222,7 @@ class ASCDocumentsViewController: ASCBaseTableViewController, UIGestureRecognize
         sortSelectBarButton?.isEnabled = !hasError && total > 0
         sortBarButton?.isEnabled = !hasError && total > 0
         selectBarButton?.isEnabled = !hasError && total > 0
-        filterBarButton?.isEnabled = !hasError && total > 0
+        filterBarButton?.isEnabled = !hasError
     }
 
     private func fileMenu(cell: ASCFileCell) -> [MGSwipeButton]? {

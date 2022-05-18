@@ -92,6 +92,13 @@ class ASCOnlyOfficeFiltersController {
     private func buildActions() {
         buildDidSelectedClosure()
         buildResetButtonClosureBuilder()
+        builder.didFilterResetBtnTapped = { [weak self] filterViewModel in
+            guard let self = self else { return }
+            if let index = self.authorsModels.firstIndex(where: { $0.filterType.rawValue == filterViewModel.id }) {
+                self.authorsModels[index].selectedName = nil
+                self.runPreload()
+            }
+        }
         builder.actionButtonClosure = { [weak self] in self?.actionButtonTappedClousure() }
     }
 

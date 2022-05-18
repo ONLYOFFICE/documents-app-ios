@@ -13,6 +13,7 @@ class ASCFiltersCollectionViewCell: UICollectionViewCell {
 
     static let pillHeight: CGFloat = 32.0
     var labelText = UILabel()
+    var deselectFilterBtn = UIButton()
 
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -32,14 +33,37 @@ class ASCFiltersCollectionViewCell: UICollectionViewCell {
     func setLabel(_ text: String?) {
         labelText.text = text
     }
+
+    func addDeselectFilterBtnToView() {
+        addSubview(deselectFilterBtn)
+        setFilterResetBtn()
+        labelText.anchor(top: topAnchor,
+                         left: leftAnchor,
+                         bottom: bottomAnchor,
+                         right: deselectFilterBtn.leftAnchor,
+                         leftConstant: 9)
+    }
 }
 
 private extension ASCFiltersCollectionViewCell {
+    
     func setupView() {
+        addSubview(labelText)
         backgroundColor = Asset.Colors.filterCapsule.color
         layer.cornerRadius = ASCFiltersCollectionViewCell.pillHeight / 2
         labelText.frame = bounds
         labelText.textAlignment = .center
-        addSubview(labelText)
+    }
+    
+    func setFilterResetBtn() {
+        deselectFilterBtn.anchor(top: topAnchor,
+                                 bottom: bottomAnchor,
+                                 right: rightAnchor,
+                                 topConstant: 8,
+                                 bottomConstant: 8,
+                                 rightConstant: 8,
+                                 widthConstant: 16,
+                                 heightConstant: 16)
+        deselectFilterBtn.setImage(Asset.Images.closeBtn.image, for: .normal)
     }
 }

@@ -224,12 +224,19 @@ extension ASCFiltersViewController: UICollectionViewDataSource, UICollectionView
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ASCFiltersCollectionViewCell.identifier, for: indexPath) as? ASCFiltersCollectionViewCell
         let filterViewModel = getFilterViewModel(indexPath: indexPath)
         if filterViewModel.isSelected {
+            if filterViewModel.isFilterResetBtnShowen == true {
+                cell?.addDeselectFilterBtnToView()
+            }
             cell?.labelText.textColor = Asset.Colors.viewBackground.color
             cell?.backgroundColor = Asset.Colors.brend.color
         } else {
             cell?.labelText.textColor = filterViewModel.defaultTextColor
             cell?.backgroundColor = Asset.Colors.viewBackground.color
         }
+        cell?.deselectFilterBtn.add(for: .touchUpInside) {
+            self.viewModel.didFilterResetBtnTapped(filterViewModel)
+        }
+        cell?.deselectFilterBtn.isHidden = !filterViewModel.isFilterResetBtnShowen
         cell?.setLabel(filterViewModel.filterName)
 
         return cell!
@@ -248,7 +255,11 @@ extension ASCFiltersViewController {
         let label = filterViewModel.filterName
         let referenceSize = CGSize(width: CGFloat.greatestFiniteMagnitude, height: ASCFiltersCollectionViewCell.pillHeight)
         let calculatedSize = (label as NSString).boundingRect(with: referenceSize, options: NSStringDrawingOptions.usesLineFragmentOrigin, attributes: [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 15.0)], context: nil)
-        return CGSize(width: calculatedSize.width + Constants.cellLeftRightPadding, height: ASCFiltersCollectionViewCell.pillHeight)
+        if filterViewModel.isFilterResetBtnShowen == true {
+            return CGSize(width: calculatedSize.width + Constants.cellLeftRightPadding + Constants.cellLeftRightPadding, height: ASCFiltersCollectionViewCell.pillHeight)
+        } else {
+            return CGSize(width: calculatedSize.width + Constants.cellLeftRightPadding, height: ASCFiltersCollectionViewCell.pillHeight)
+        }
     }
 
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {

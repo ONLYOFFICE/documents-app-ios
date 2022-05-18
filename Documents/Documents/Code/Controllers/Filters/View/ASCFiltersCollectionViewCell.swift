@@ -46,7 +46,6 @@ class ASCFiltersCollectionViewCell: UICollectionViewCell {
 }
 
 private extension ASCFiltersCollectionViewCell {
-    
     func setupView() {
         addSubview(labelText)
         backgroundColor = Asset.Colors.filterCapsule.color
@@ -64,6 +63,6 @@ private extension ASCFiltersCollectionViewCell {
                                  rightConstant: 8,
                                  widthConstant: 16,
                                  heightConstant: 16)
-        deselectFilterBtn.setImage(Asset.Images.closeBtn.image, for: .normal)
+        deselectFilterBtn.setImage(Asset.Images.closeButton.image, for: .normal)
     }
 }

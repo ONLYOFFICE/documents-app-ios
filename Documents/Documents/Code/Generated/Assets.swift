@@ -93,6 +93,7 @@ internal enum Asset {
     internal static let emptyNoConnection = ImageAsset(name: "empty-no-connection")
     internal static let emptySearchResult = ImageAsset(name: "empty-search-result")
     internal static let emptyTrash = ImageAsset(name: "empty-trash")
+    internal static let closeButton = ImageAsset(name: "close-button")
     internal static let hudCheckmark = ImageAsset(name: "hud-checkmark")
     internal static let hudCross = ImageAsset(name: "hud-cross")
     internal static let mailNotification = ImageAsset(name: "mail-notification")

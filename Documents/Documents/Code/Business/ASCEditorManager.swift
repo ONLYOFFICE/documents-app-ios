@@ -839,7 +839,7 @@ class ASCEditorManager: NSObject {
     func showInputPasswordAlert(for file: ASCFile, handler: @escaping (_ password: String?) -> Void) {
         let alertController = UIAlertController(
             title: NSLocalizedString("Protected File", comment: ""),
-            message: file.device ? nil : NSLocalizedString("Once you enter the password and open the file, the current password to the file will be reset", comment: ""),
+            message: NSLocalizedString("Enter a password to open the file.", comment: ""),
             preferredStyle: .alert,
             tintColor: nil
         )

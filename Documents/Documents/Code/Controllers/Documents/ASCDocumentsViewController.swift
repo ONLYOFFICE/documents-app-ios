@@ -495,7 +495,7 @@ class ASCDocumentsViewController: ASCBaseTableViewController, UIGestureRecognize
             filtersController.actionButtonTappedClousure = { [weak self] in
                 self?.loadFirstPage()
             }
-            filtersController.updateViewModel()
+            filtersController.prepareForDisplay()
         }
         let navigationVC = UINavigationController(rootASCViewController: filtersViewController)
         if UIDevice.pad {
@@ -667,7 +667,9 @@ class ASCDocumentsViewController: ASCBaseTableViewController, UIGestureRecognize
             if let sortSelectBarBtn = sortSelectBarButton {
                 rightBarBtnItems.append(sortSelectBarBtn)
             }
-            if let filterBarBtn = filterBarButton {
+            if let filterBarBtn = filterBarButton,
+               provider?.type == .onlyoffice
+            {
                 rightBarBtnItems.append(filterBarBtn)
             }
             if let addBarBtn = addBarButton {

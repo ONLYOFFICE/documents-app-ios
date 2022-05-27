@@ -113,6 +113,9 @@ class ASCUserProfileViewController: UITableViewController {
     static func logout(renewAccount: ASCAccount? = nil) {
         OnlyofficeApiClient.shared.cancelAll()
 
+        // Unsubscribe from push notifications
+        ASCPushNotificationManager.requestClearRegister()
+        
         // Cleanup auth info
         OnlyofficeApiClient.reset()
 
@@ -130,9 +133,11 @@ class ASCUserProfileViewController: UITableViewController {
             userInfo = ["account": account]
         }
 
-        NotificationCenter.default.post(name: ASCConstants.Notifications.logoutOnlyofficeCompleted,
-                                        object: nil,
-                                        userInfo: userInfo)
+        NotificationCenter.default.post(
+            name: ASCConstants.Notifications.logoutOnlyofficeCompleted,
+            object: nil,
+            userInfo: userInfo
+        )
     }
 
     @objc func updateUserUnfo(_ notification: Notification) {

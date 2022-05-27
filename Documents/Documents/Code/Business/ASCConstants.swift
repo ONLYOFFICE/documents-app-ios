@@ -63,11 +63,13 @@ class ASCConstants {
         static let sdkVersion = "asc-sdk-version"
         static let passwordOpenedDocument = "asc-opened-document-password"
         static let lastCloudIndex = "asc-last-cloud-index"
+        static let pushAllNotification = "asc-push-all"
 
         static func setupDefaults() {
             UserDefaults.standard.register(defaults: [ASCConstants.SettingsKeys.compressImage: true])
             UserDefaults.standard.register(defaults: [ASCConstants.SettingsKeys.allowTouchId: true])
             UserDefaults.standard.register(defaults: [ASCConstants.SettingsKeys.previewFiles: true])
+            UserDefaults.standard.register(defaults: [ASCConstants.SettingsKeys.pushAllNotification: true])
         }
     }
 

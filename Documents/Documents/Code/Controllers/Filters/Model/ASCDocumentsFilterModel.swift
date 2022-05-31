@@ -52,6 +52,7 @@ struct FiltersCollectionViewModel {
     var state: State = .normal
     var data: [ASCDocumentsSectionViewModel]
     var actionButtonTitle: String
+    var actionButtonIsActive: Bool = true
 
     var actionButtonClosure: () -> Void
     var resetButtonClosure: () -> Void

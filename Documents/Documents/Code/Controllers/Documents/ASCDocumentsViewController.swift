@@ -118,14 +118,17 @@ class ASCDocumentsViewController: ASCBaseTableViewController, UIGestureRecognize
     // Filter
 
     lazy var filtersViewController = ASCFiltersViewController()
-    private lazy var filtersController: ASCOnlyOfficeFiltersController = {
-        let builder = ASCFiltersCollectionViewModelBuilder()
-        return ASCOnlyOfficeFiltersController(
-            builder: builder,
-            filtersViewController: filtersViewController,
-            itemsCount: total
-        )
-    }()
+    lazy var filtersBuilder = ASCFiltersCollectionViewModelBuilder()
+    private lazy var onlyOfficeFiltersController = ASCOnlyOfficeFiltersController(
+        builder: filtersBuilder,
+        filtersViewController: filtersViewController,
+        itemsCount: total
+    )
+    private lazy var localFilterController = ASCLocalFilterController(
+        builder: filtersBuilder,
+        filtersViewController: filtersViewController,
+        itemsCount: total
+    )
 
     // MARK: - Outlets
 
@@ -490,12 +493,19 @@ class ASCDocumentsViewController: ASCBaseTableViewController, UIGestureRecognize
 
     @objc func onFilterAction() {
         if provider?.type == .onlyoffice, let provider = provider as? ASCOnlyofficeProvider {
-            filtersController.folder = folder
-            filtersController.provider = provider
-            filtersController.actionButtonTappedClousure = { [weak self] in
+            onlyOfficeFiltersController.folder = folder
+            onlyOfficeFiltersController.provider = provider
+            onlyOfficeFiltersController.actionButtonTappedClousure = { [weak self] in
                 self?.loadFirstPage()
             }
-            filtersController.prepareForDisplay()
+            onlyOfficeFiltersController.prepareForDisplay()
+        } else if provider?.type == .local {
+            localFilterController.folder = folder
+            localFilterController.provider = provider
+            localFilterController.actionButtonTappedClousure = { [weak self] in
+                self?.loadFirstPage()
+            }
+            localFilterController.prepareForDisplay()
         }
         let navigationVC = UINavigationController(rootASCViewController: filtersViewController)
         if UIDevice.pad {
@@ -668,7 +678,7 @@ class ASCDocumentsViewController: ASCBaseTableViewController, UIGestureRecognize
                 rightBarBtnItems.append(sortSelectBarBtn)
             }
             if let filterBarBtn = filterBarButton,
-               provider?.type == .onlyoffice
+               provider?.type == .onlyoffice || provider?.type == .local
             {
                 rightBarBtnItems.append(filterBarBtn)
             }
@@ -900,9 +910,8 @@ class ASCDocumentsViewController: ASCBaseTableViewController, UIGestureRecognize
             ]
         }
 
-        // filter MARK: - TODO
-//        let filterType = filtersViewController.fiterTypeIdentifier()
-//        params["filterType"] = filterType
+        // Filters
+        params["filters"] = localFilterController.filtersParams
 
         provider?.fetch(for: folder, parameters: params) { [weak self] provider, folder, success, error in
             guard let strongSelf = self else { return }
@@ -947,7 +956,7 @@ class ASCDocumentsViewController: ASCBaseTableViewController, UIGestureRecognize
             }
 
             if provider?.type == .onlyoffice {
-                params["filters"] = filtersController.filtersParams
+                params["filters"] = onlyOfficeFiltersController.filtersParams
             }
 
             cloudProvider.fetch(for: folder, parameters: params) { [weak self] provider, entity, success, error in

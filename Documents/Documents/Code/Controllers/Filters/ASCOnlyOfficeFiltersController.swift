@@ -29,7 +29,7 @@ class ASCOnlyOfficeFiltersController {
                 ActionFilterModel(defaultName: FiltersName.users.localizedString(), selectedName: nil, filterType: .user),
                 ActionFilterModel(defaultName: FiltersName.groups.localizedString(), selectedName: nil, filterType: .group),
             ],
-            itemsCount: 0)
+            itemsCount: count)
         }
     }
 
@@ -43,7 +43,6 @@ class ASCOnlyOfficeFiltersController {
     private var currentSelectedAuthorFilterType: ApiFilterType?
     private let builder: ASCFiltersCollectionViewModelBuilder
     private var currentLoading = false
-    private let initialiItemsCount: Int
     private let filtersViewController: ASCFiltersViewController
     private lazy var selectUserViewController: ASCSelectUserViewController = {
         let controller = ASCSelectUserViewController()
@@ -73,16 +72,15 @@ class ASCOnlyOfficeFiltersController {
     init(builder: ASCFiltersCollectionViewModelBuilder, filtersViewController: ASCFiltersViewController, itemsCount: Int) {
         self.builder = builder
         self.filtersViewController = filtersViewController
-        initialiItemsCount = itemsCount
-        tempState = .defaultState(initialiItemsCount)
+        tempState = .defaultState(itemsCount)
         buildActions()
     }
 
-    func prepareForDisplay() {
+    func prepareForDisplay(total: Int) {
         if let appliedState = appliedState {
             tempState = appliedState
         } else {
-            tempState = .defaultState(initialiItemsCount)
+            tempState = .defaultState(total)
         }
         updateViewModel()
     }

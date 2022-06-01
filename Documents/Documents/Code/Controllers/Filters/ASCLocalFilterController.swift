@@ -24,7 +24,7 @@ class ASCLocalFilterController {
                 ASCDocumentsFilterModel(filterName: FiltersName.archives.localizedString(), isSelected: false, filterType: .archive),
                 ASCDocumentsFilterModel(filterName: FiltersName.allFiles.localizedString(), isSelected: false, filterType: .files),
             ],
-            itemsCount: 0)
+            itemsCount: count)
         }
     }
 
@@ -38,7 +38,6 @@ class ASCLocalFilterController {
     private var currentSelectedAuthorFilterType: ApiFilterType?
     private let builder: ASCFiltersCollectionViewModelBuilder
     private var currentLoading = false
-    private let initialiItemsCount: Int
     private let filtersViewController: ASCFiltersViewController
 
     // MARK: - public properties
@@ -57,16 +56,15 @@ class ASCLocalFilterController {
     init(builder: ASCFiltersCollectionViewModelBuilder, filtersViewController: ASCFiltersViewController, itemsCount: Int) {
         self.builder = builder
         self.filtersViewController = filtersViewController
-        initialiItemsCount = itemsCount
-        tempState = .defaultState(initialiItemsCount)
+        tempState = .defaultState(itemsCount)
         buildActions()
     }
 
-    func prepareForDisplay() {
+    func prepareForDisplay(total: Int) {
         if let appliedState = appliedState {
             tempState = appliedState
         } else {
-            tempState = .defaultState(initialiItemsCount)
+            tempState = .defaultState(total)
         }
         updateViewModel()
     }

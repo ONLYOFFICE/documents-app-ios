@@ -492,20 +492,20 @@ class ASCDocumentsViewController: ASCBaseTableViewController, UIGestureRecognize
     }
 
     @objc func onFilterAction() {
-        if provider?.type == .onlyoffice, let provider = provider as? ASCOnlyofficeProvider {
+        if provider?.type == .onlyoffice, let provider = provider?.copy() as? ASCOnlyofficeProvider {
             onlyOfficeFiltersController.folder = folder
             onlyOfficeFiltersController.provider = provider
             onlyOfficeFiltersController.actionButtonTappedClousure = { [weak self] in
                 self?.loadFirstPage()
             }
-            onlyOfficeFiltersController.prepareForDisplay()
+            onlyOfficeFiltersController.prepareForDisplay(total: total)
         } else if provider?.type == .local {
             localFilterController.folder = folder
-            localFilterController.provider = provider
+            localFilterController.provider = provider?.copy()
             localFilterController.actionButtonTappedClousure = { [weak self] in
                 self?.loadFirstPage()
             }
-            localFilterController.prepareForDisplay()
+            localFilterController.prepareForDisplay(total: total)
         }
         let navigationVC = UINavigationController(rootASCViewController: filtersViewController)
         if UIDevice.pad {

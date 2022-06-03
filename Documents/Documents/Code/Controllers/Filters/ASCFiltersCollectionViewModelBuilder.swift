@@ -18,10 +18,11 @@ class ASCFiltersCollectionViewModelBuilder {
     var resetButtonClosure: () -> Void = {}
     var didSelectedClosure: (FilterViewModel) -> Void = { _ in }
     var didFilterResetBtnTapped: (FilterViewModel) -> Void = { _ in }
+    var actionButtonTitle: ActionButtonViewModel = .empty
 
     func buildViewModel(state: FiltersCollectionViewModel.State,
                         filtersContainers: [FiltersContainer],
-                        actionButtonTitle: String) -> FiltersCollectionViewModel
+                        actionButtonViewModel: ActionButtonViewModel) -> FiltersCollectionViewModel
     {
         let data: [ASCDocumentsSectionViewModel] = filtersContainers.map { filtersContainer in
             let filterViewModelList: [FilterViewModel] = filtersContainer.elements.map { $0.convert() }
@@ -29,7 +30,7 @@ class ASCFiltersCollectionViewModelBuilder {
         }
         return FiltersCollectionViewModel(state: state,
                                           data: data,
-                                          actionButtonTitle: actionButtonTitle,
+                                          actionButtonViewModel: actionButtonViewModel,
                                           actionButtonClosure: actionButtonClosure,
                                           resetButtonClosure: resetButtonClosure,
                                           didSelectedClosure: didSelectedClosure,

@@ -84,9 +84,15 @@ class ASCLocalFilterController {
             state: currentLoading ? .loading : .normal,
             filtersContainers: [
                 .init(sectionName: FiltersSection.type.localizedString(), elements: tempState.filterModels),
-            ], actionButtonTitle: tempState.itemsCount > 0
-                ? String.localizedStringWithFormat(NSLocalizedString("Show %d results", comment: ""), tempState.itemsCount)
-                : NSLocalizedString("Show results", comment: "")
+            ], actionButtonViewModel: tempState.itemsCount > 0
+                ? ActionButtonViewModel(text: String.localizedStringWithFormat(NSLocalizedString("Show %d results", comment: ""), tempState.itemsCount),
+                                        backgroundColor: Asset.Colors.filterCapsule.color,
+                                        textColor: Asset.Colors.brend.color,
+                                        isActive: true)
+                : ActionButtonViewModel(text: NSLocalizedString("Nothing to show", comment: ""),
+                                        backgroundColor: Asset.Colors.filterCapsule.color,
+                                        textColor: Asset.Colors.tableCellSeparator.color,
+                                        isActive: false)
         )
         filtersViewController.viewModel = viewModel
     }

@@ -6,7 +6,6 @@
 //  Copyright © 2022 Ascensio System SIA. All rights reserved.
 //
 
-import SwiftUI
 import UIKit
 
 protocol FilterTypeConvirtable {
@@ -51,15 +50,14 @@ struct FiltersCollectionViewModel {
 
     var state: State = .normal
     var data: [ASCDocumentsSectionViewModel]
-    var actionButtonTitle: String
-    var actionButtonIsActive: Bool = true
+    var actionButtonViewModel: ActionButtonViewModel
 
     var actionButtonClosure: () -> Void
     var resetButtonClosure: () -> Void
     var didSelectedClosure: (_ filterViewModel: FilterViewModel) -> Void
     var didFilterResetBtnTapped: (_ filterViewModel: FilterViewModel) -> Void
 
-    static var empty = FiltersCollectionViewModel(data: [], actionButtonTitle: "") {} resetButtonClosure: {} didSelectedClosure: { _ in } didFilterResetBtnTapped: { _ in }
+    static var empty = FiltersCollectionViewModel(data: [], actionButtonViewModel: .empty) {} resetButtonClosure: {} didSelectedClosure: { _ in } didFilterResetBtnTapped: { _ in }
 }
 
 struct FilterViewModel {
@@ -68,6 +66,15 @@ struct FilterViewModel {
     var filterName: String
     var isFilterResetBtnShowen: Bool
     var defaultTextColor: UIColor = .black
+}
+
+struct ActionButtonViewModel {
+    var text: String
+    var backgroundColor: UIColor
+    var textColor: UIColor
+    var isActive: Bool = true
+
+    static var empty = ActionButtonViewModel(text: "", backgroundColor: Asset.Colors.filterCapsule.color, textColor: Asset.Colors.brend.color, isActive: true)
 }
 
 enum ApiFilterType: String {

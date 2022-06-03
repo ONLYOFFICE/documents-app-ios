@@ -32,7 +32,11 @@ class ASCFiltersViewController: UIViewController {
                 showLoading()
             } else {
                 hideLoading()
-                showResultsButton.setTitle(viewModel.actionButtonTitle, for: .normal)
+                showResultsButton.setTitle(viewModel.actionButtonViewModel.text, for: .normal)
+                showResultsButton.isEnabled = viewModel.actionButtonViewModel.isActive
+                showResultsButton.backgroundColor = viewModel.actionButtonViewModel.backgroundColor
+                showResultsButton.titleColorForNormal = viewModel.actionButtonViewModel.textColor
+                showResultsButton.titleColorForDisabled = viewModel.actionButtonViewModel.textColor
             }
         }
     }
@@ -119,7 +123,6 @@ private extension ASCFiltersViewController {
     // MARK: - Configure
 
     func showResultButtonConstraints() {
-        showResultsButton.setTitle(viewModel.actionButtonTitle, for: .normal)
         view.addSubview(showResultsButton)
         showResultsButton.anchor(
             left: view.leftAnchor,

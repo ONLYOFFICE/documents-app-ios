@@ -18,6 +18,29 @@ class ASCSelectGroupViewController: UIViewController {
     private var tableView = UITableView()
     weak var delegate: ASCFiltersViewControllerDelegate?
 
+    func markAsSelected(id: String?) {
+        deselectAll()
+        if let id = id {
+            selectItem(byId: id)
+        }
+        if isViewLoaded {
+            tableView.reloadData()
+        }
+    }
+
+    private func selectItem(byId id: String) {
+        filteredGroup.enumerated().forEach { index, item in
+            if item.groupId == id {
+                filteredGroup[index].isSelected = true
+            }
+        }
+        dataArray.enumerated().forEach { index, item in
+            if item.groupId == id {
+                dataArray[index].isSelected = true
+            }
+        }
+    }
+
     // MARK: - Search
 
     let searchController = UISearchController(searchResultsController: nil)

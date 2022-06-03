@@ -119,7 +119,7 @@ class ASCOnlyOfficeFiltersController {
         builder.didFilterResetBtnTapped = { [weak self] filterViewModel in
             guard let self = self else { return }
             if let index = self.tempState.authorsModels.firstIndex(where: { $0.filterType.rawValue == filterViewModel.id }) {
-                self.tempState.authorsModels[index].selectedName = nil
+                self.resetAuthorModel(index: index)
                 self.runPreload()
             }
         }
@@ -145,12 +145,22 @@ class ASCOnlyOfficeFiltersController {
             }
 
             if isAthorModelsContainsSelectedId {
+                let selectedIdClosure: (ApiFilterType?) -> String? = { [weak self] type in
+                    switch type {
+                    case .user: return self?.tempState.authorsModels.first(where: { $0.filterType == .user })?.id
+                    case .group: return self?.tempState.authorsModels.first(where: { $0.filterType == .group })?.id
+                    default: return nil
+                    }
+                }
+
                 switch ApiFilterType(rawValue: filterViewModel.id) {
                 case .user:
+                    self.selectUserViewController.markAsSelected(id: selectedIdClosure(.user))
                     let navigationVC = UINavigationController(rootASCViewController: self.selectUserViewController)
                     ASCViewControllerManager.shared.topViewController?.navigationController?.present(navigationVC, animated: true)
                     self.currentSelectedAuthorFilterType = .user
                 case .group:
+                    self.selectGroupViewController.markAsSelected(id: selectedIdClosure(.group))
                     let navigationVC = UINavigationController(rootASCViewController: self.selectGroupViewController)
                     ASCViewControllerManager.shared.topViewController?.navigationController?.present(navigationVC, animated: true)
                     self.currentSelectedAuthorFilterType = .group
@@ -169,9 +179,7 @@ class ASCOnlyOfficeFiltersController {
                 self.tempState.filterModels[index].isSelected = false
             }
 
-            for (index, _) in self.tempState.authorsModels.enumerated() {
-                self.tempState.authorsModels[index].selectedName = nil
-            }
+            self.resetAuthorModels()
             self.runPreload()
         }
     }
@@ -197,13 +205,22 @@ class ASCOnlyOfficeFiltersController {
             completion(provider.total)
         })
     }
+
+    private func resetAuthorModels() {
+        tempState.authorsModels.enumerated().forEach { index, _ in
+            resetAuthorModel(index: index)
+        }
+    }
+
+    private func resetAuthorModel(index: Int) {
+        tempState.authorsModels[index].selectedName = nil
+        tempState.authorsModels[index].id = nil
+    }
 }
 
 extension ASCOnlyOfficeFiltersController: ASCFiltersViewControllerDelegate {
     func updateData(filterText itemText: String, id: String?) {
-        tempState.authorsModels.enumerated().forEach { index, _ in
-            tempState.authorsModels[index].selectedName = nil
-        }
+        resetAuthorModels()
         switch currentSelectedAuthorFilterType {
         case .user, .group:
             if let index = tempState.authorsModels.firstIndex(where: { $0.filterType == currentSelectedAuthorFilterType }) {

@@ -21,6 +21,29 @@ class ASCSelectUserViewController: UIViewController {
     private var tableView = UITableView()
     weak var delegate: ASCFiltersViewControllerDelegate?
 
+    func markAsSelected(id: String?) {
+        deselectAll()
+        if let id = id {
+            selectItem(byId: id)
+        }
+        if isViewLoaded {
+            tableView.reloadData()
+        }
+    }
+
+    private func selectItem(byId id: String) {
+        filteredUsers.enumerated().forEach { index, item in
+            if item.id == id {
+                filteredUsers[index].isSelected = true
+            }
+        }
+        dataArray.enumerated().forEach { index, item in
+            if item.id == id {
+                dataArray[index].isSelected = true
+            }
+        }
+    }
+
     // MARK: - search
 
     let searchController = UISearchController(searchResultsController: nil)

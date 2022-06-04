@@ -82,9 +82,6 @@
 /* No comment provided by engineer. */
 "All" = "Все";
 
-/* No comment provided by engineer. */
-"All files" = "Все файлы";
-
 /* Category title */
 "All Files" = "Все файлы";
 
@@ -96,9 +93,6 @@
 
 /* Caption of the process */
 "Applying" = "Применение";
-
-/* No comment provided by engineer. */
-"Archives" = "Архивы";
 
 /* No comment provided by engineer. */
 "Are you sure you want to delete the account %@ from this device?" = "Вы действительно хотите удалить аккаунт %@ с этого устройства?";
@@ -452,9 +446,6 @@
 /* Unknown Server Error */
 "error.errorServerTitle" = "Ошибка сервера";
 
-/* No comment provided by engineer. */
-"Exclude subfolders" = "Исключить подпапки";
-
 /* Button title */
 "Export" = "Экспорт";
 
@@ -630,9 +621,6 @@
 /* If current user name is not set */
 "Me" = "Я";
 
-/* No comment provided by engineer. */
-"Media" = "Медиа";
-
 /* Button title */
 "More" = "Еще";
 
@@ -721,6 +709,9 @@
 
 /* No comment provided by engineer. */
 "Note: removal from your account can not be undone." = "Внимание: удаление из Вашего аккаунта будет нельзя отменить.";
+
+/* No comment provided by engineer. */
+"Nothing to show" = "Нечего показать";
 
 /* Sharing settings switcher */
 "Notify by Email" = "Отправить оповещение";
@@ -931,6 +922,9 @@
 "Select another cloud to connect to Nextcloud, ownCloud and others are supported." = "Выберите другое облако для подключения к Nextcloud, ownCloud и другим поддерживаемым сервисам.";
 
 /* No comment provided by engineer. */
+"Select group" = "Группы";
+
+/* No comment provided by engineer. */
 "Select Photos" = "Выбрать фото";
 
 /* One line. Max 50 charasters */
@@ -941,6 +935,9 @@
 
 /* One line. Max 50 charasters */
 "Select the folder to recover the items" = "Выберите папку для восстановления элементов";
+
+/* No comment provided by engineer. */
+"Select user" = "Пользователи";
 
 /* No comment provided by engineer. */
 "Selected provider is not available" = "Выбранный провайдер недоступен";
@@ -1261,9 +1258,6 @@
 "Work with office files" = "Работайте с файлами документов";
 
 /* No comment provided by engineer. */
-"Wrong login or password." = "Неверный логин или пароль.";
-
-/* No comment provided by engineer. */
 "Yandex directory" = "Папка Яндекс";
 
 /* No comment provided by engineer. */
@@ -1289,10 +1283,4 @@
 
 /* Data units */
 "Zero bytes" = "Ноль байт";
-
-/* No comment provided by engineer. */
-"Сould not download file." = "Не удалось скачать файл.";
-
-/* No comment provided by engineer. */
-"Сould not upload file." = "Не удалось загрузить файл.";
 

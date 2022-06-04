@@ -1362,10 +1362,6 @@ Note: if you forget the passcode, you'll need to delete and reinstall the app. A
         <target>すべてのファイル</target>
         <note>Category title</note>
       </trans-unit>
-      <trans-unit id="All files" xml:space="preserve">
-        <source>All files</source>
-        <note>No comment provided by engineer.</note>
-      </trans-unit>
       <trans-unit id="Allow access via external link" xml:space="preserve">
         <source>Allow access via external link</source>
         <note>No comment provided by engineer.</note>
@@ -1382,10 +1378,6 @@ Note: if you forget the passcode, you'll need to delete and reinstall the app. A
       <trans-unit id="Applying" xml:space="preserve">
         <source>Applying</source>
         <note>Caption of the process</note>
-      </trans-unit>
-      <trans-unit id="Archives" xml:space="preserve">
-        <source>Archives</source>
-        <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Are you sure you want to delete the account %@ from this device?" xml:space="preserve">
         <source>Are you sure you want to delete the account %@ from this device?</source>
@@ -1899,10 +1891,6 @@ WebDAV プロトコールを使用する他のクラウド</target>
         <source>Error code: %ld</source>
         <note>No comment provided by engineer.</note>
       </trans-unit>
-      <trans-unit id="Exclude subfolders" xml:space="preserve">
-        <source>Exclude subfolders</source>
-        <note>No comment provided by engineer.</note>
-      </trans-unit>
       <trans-unit id="Export" xml:space="preserve">
         <source>Export</source>
         <note>Button title</note>
@@ -2154,10 +2142,6 @@ to the clipboard</source>
         <target>わたし</target>
         <note>If current user name is not set</note>
       </trans-unit>
-      <trans-unit id="Media" xml:space="preserve">
-        <source>Media</source>
-        <note>No comment provided by engineer.</note>
-      </trans-unit>
       <trans-unit id="More" xml:space="preserve">
         <source>More</source>
         <target>もっと</target>
@@ -2293,6 +2277,10 @@ to the clipboard</source>
       <trans-unit id="Note: removal from your account can not be undone." xml:space="preserve">
         <source>Note: removal from your account can not be undone.</source>
         <target>注: アカウント空の削除は失敗することがあります。</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Nothing to show" xml:space="preserve">
+        <source>Nothing to show</source>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Notify by Email" xml:space="preserve">
@@ -2640,6 +2628,10 @@ to the clipboard</source>
         <target>もう1つのクラウドを選択して、Nextcloud、ownCloud、サポートされている他のクラウドに接続</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
+      <trans-unit id="Select group" xml:space="preserve">
+        <source>Select group</source>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
       <trans-unit id="Select the folder to copy the items" xml:space="preserve">
         <source>Select the folder to copy the items</source>
         <target>フォルダーを選択して、アイテムをコピーする</target>
@@ -2654,6 +2646,10 @@ to the clipboard</source>
         <source>Select the folder to recover the items</source>
         <target>フォルダーを選択して、アイテムを回復する</target>
         <note>One line. Max 50 charasters</note>
+      </trans-unit>
+      <trans-unit id="Select user" xml:space="preserve">
+        <source>Select user</source>
+        <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Selected provider is not available" xml:space="preserve">
         <source>Selected provider is not available</source>
@@ -3152,9 +3148,8 @@ then accessed from any other device.</source>
         <target>オフラインファイルを編集する</target>
         <note>Introduction Step Two - Title</note>
       </trans-unit>
-      <trans-unit id="Wrong login or password." xml:space="preserve">
-        <source>Wrong login or password.</source>
-        <target>間違ったログインかパスワードです。</target>
+      <trans-unit id="Wrong server, login or password." xml:space="preserve">
+        <source>Wrong server, login or password.</source>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Yandex Disk" xml:space="preserve">

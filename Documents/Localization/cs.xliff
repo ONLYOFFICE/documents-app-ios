@@ -1521,10 +1521,6 @@ Poznámka: Pokud zapomenete přístupový kód, budete muset aplikaci smazat a p
         <target>Všechny soubory</target>
         <note>Category title</note>
       </trans-unit>
-      <trans-unit id="All files" xml:space="preserve">
-        <source>All files</source>
-        <note>No comment provided by engineer.</note>
-      </trans-unit>
       <trans-unit id="Allow access via external link" xml:space="preserve">
         <source>Allow access via external link</source>
         <target>Povolit přístup přes externí odkaz</target>
@@ -1543,10 +1539,6 @@ Poznámka: Pokud zapomenete přístupový kód, budete muset aplikaci smazat a p
         <source>Applying</source>
         <target>Použití stránky</target>
         <note>Caption of the process</note>
-      </trans-unit>
-      <trans-unit id="Archives" xml:space="preserve">
-        <source>Archives</source>
-        <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Are you sure you want to delete the account %@ from this device?" xml:space="preserve">
         <source>Are you sure you want to delete the account %@ from this device?</source>
@@ -2075,10 +2067,6 @@ jiné, které používají protokol WebDAV.</target>
         <target>Kód chyby: %ld</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
-      <trans-unit id="Exclude subfolders" xml:space="preserve">
-        <source>Exclude subfolders</source>
-        <note>No comment provided by engineer.</note>
-      </trans-unit>
       <trans-unit id="Export" xml:space="preserve">
         <source>Export</source>
         <target>Exportovat</target>
@@ -2347,10 +2335,6 @@ to the clipboard</source>
         <target>Já</target>
         <note>If current user name is not set</note>
       </trans-unit>
-      <trans-unit id="Media" xml:space="preserve">
-        <source>Media</source>
-        <note>No comment provided by engineer.</note>
-      </trans-unit>
       <trans-unit id="More" xml:space="preserve">
         <source>More</source>
         <target>Více</target>
@@ -2490,6 +2474,10 @@ to the clipboard</source>
       <trans-unit id="Note: removal from your account can not be undone." xml:space="preserve">
         <source>Note: removal from your account can not be undone.</source>
         <target>Poznámka: odstranění ze svého účtu nelze vrátit zpět.</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Nothing to show" xml:space="preserve">
+        <source>Nothing to show</source>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Notify by Email" xml:space="preserve">
@@ -2846,6 +2834,10 @@ to the clipboard</source>
         <target>Zvolte další cloud pro připojení k Nextcloud, ownCloud a další jsou podporovány.</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
+      <trans-unit id="Select group" xml:space="preserve">
+        <source>Select group</source>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
       <trans-unit id="Select the folder to copy the items" xml:space="preserve">
         <source>Select the folder to copy the items</source>
         <target>Vyberte složku pro zkopírování položek</target>
@@ -2860,6 +2852,10 @@ to the clipboard</source>
         <source>Select the folder to recover the items</source>
         <target>Vyberte složku pro obnovení položek</target>
         <note>One line. Max 50 charasters</note>
+      </trans-unit>
+      <trans-unit id="Select user" xml:space="preserve">
+        <source>Select user</source>
+        <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Selected provider is not available" xml:space="preserve">
         <source>Selected provider is not available</source>
@@ -3389,9 +3385,8 @@ Vytvořené soubory mohou být později nahrány do online portálu. Poté k nim
         <target>Pracujte s kancelářskými soubory</target>
         <note>Introduction Step Two - Title</note>
       </trans-unit>
-      <trans-unit id="Wrong login or password." xml:space="preserve">
-        <source>Wrong login or password.</source>
-        <target>Špatný login nebo heslo.</target>
+      <trans-unit id="Wrong server, login or password." xml:space="preserve">
+        <source>Wrong server, login or password.</source>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Yandex Disk" xml:space="preserve">

@@ -117,6 +117,31 @@ enum FiltersName: String, CaseIterable {
     case excludeSubfolders = "Exclude subfolders"
 
     func localizedString() -> String {
-        return NSLocalizedString(rawValue, comment: "")
+        switch self {
+        case .folders:
+            return NSLocalizedString("Folders", comment: "")
+        case .documents:
+            return NSLocalizedString("Documents", comment: "")
+        case .presentations:
+            return NSLocalizedString("Presentations", comment: "")
+        case .spreadsheets:
+            return NSLocalizedString("Spreadsheets", comment: "")
+        case .images:
+            return NSLocalizedString("Images", comment: "")
+        case .media:
+            return NSLocalizedString("Media", comment: "")
+        case .archives:
+            return NSLocalizedString("Archives", comment: "")
+        case .allFiles:
+            return NSLocalizedString("All files", comment: "")
+        case .users:
+            return NSLocalizedString("Users", comment: "")
+        case .groups:
+            return NSLocalizedString("Groups", comment: "")
+        case .search:
+            return NSLocalizedString("Search", comment: "")
+        case .excludeSubfolders:
+            return NSLocalizedString("Exclude subfolders", comment: "")
+        }
     }
 }

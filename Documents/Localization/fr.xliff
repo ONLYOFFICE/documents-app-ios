@@ -1436,6 +1436,10 @@ Remarque: si vous avez oublié le mot de passe, vous avez besoin de supprimer et
         <target>Tous les fichiers</target>
         <note>Category title</note>
       </trans-unit>
+      <trans-unit id="All files" xml:space="preserve">
+        <source>All files</source>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
       <trans-unit id="Allow access via external link" xml:space="preserve">
         <source>Allow access via external link</source>
         <target>Autoriser l'accès par le lien externe</target>
@@ -1454,6 +1458,10 @@ Remarque: si vous avez oublié le mot de passe, vous avez besoin de supprimer et
         <source>Applying</source>
         <target>Application</target>
         <note>Caption of the process</note>
+      </trans-unit>
+      <trans-unit id="Archives" xml:space="preserve">
+        <source>Archives</source>
+        <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Are you sure you want to delete the account %@ from this device?" xml:space="preserve">
         <source>Are you sure you want to delete the account %@ from this device?</source>
@@ -1984,6 +1992,10 @@ d'autres via le protocole WebDAV.</target>
         <target>Code d'erreur : %ld</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
+      <trans-unit id="Exclude subfolders" xml:space="preserve">
+        <source>Exclude subfolders</source>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
       <trans-unit id="Export" xml:space="preserve">
         <source>Export</source>
         <target>Exportation</target>
@@ -2254,6 +2266,10 @@ est copié dans le Presse-papiers</target>
         <source>Me</source>
         <target>Moi</target>
         <note>If current user name is not set</note>
+      </trans-unit>
+      <trans-unit id="Media" xml:space="preserve">
+        <source>Media</source>
+        <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="More" xml:space="preserve">
         <source>More</source>

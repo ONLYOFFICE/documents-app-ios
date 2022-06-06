@@ -1434,6 +1434,10 @@ leer, revisar o editar documentos.</target>
         <target>Todos los archivos</target>
         <note>Category title</note>
       </trans-unit>
+      <trans-unit id="All files" xml:space="preserve">
+        <source>All files</source>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
       <trans-unit id="Allow access via external link" xml:space="preserve">
         <source>Allow access via external link</source>
         <target>Permitir el acceso a través de un enlace externo</target>
@@ -1452,6 +1456,10 @@ leer, revisar o editar documentos.</target>
         <source>Applying</source>
         <target>Aplicando</target>
         <note>Caption of the process</note>
+      </trans-unit>
+      <trans-unit id="Archives" xml:space="preserve">
+        <source>Archives</source>
+        <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Are you sure you want to delete the account %@ from this device?" xml:space="preserve">
         <source>Are you sure you want to delete the account %@ from this device?</source>
@@ -1982,6 +1990,10 @@ otros que utilizan el protocolo WebDAV.</target>
         <target>Código de error: %ld</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
+      <trans-unit id="Exclude subfolders" xml:space="preserve">
+        <source>Exclude subfolders</source>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
       <trans-unit id="Export" xml:space="preserve">
         <source>Export</source>
         <target>Exportar</target>
@@ -2251,6 +2263,10 @@ to the clipboard</source>
         <source>Me</source>
         <target>Yo</target>
         <note>If current user name is not set</note>
+      </trans-unit>
+      <trans-unit id="Media" xml:space="preserve">
+        <source>Media</source>
+        <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="More" xml:space="preserve">
         <source>More</source>

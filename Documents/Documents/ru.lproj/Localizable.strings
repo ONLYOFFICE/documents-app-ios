@@ -82,6 +82,9 @@
 /* No comment provided by engineer. */
 "All" = "Все";
 
+/* No comment provided by engineer. */
+"All files" = "Все файлы";
+
 /* Category title */
 "All Files" = "Все файлы";
 
@@ -93,6 +96,9 @@
 
 /* Caption of the process */
 "Applying" = "Применение";
+
+/* No comment provided by engineer. */
+"Archives" = "Архивы";
 
 /* No comment provided by engineer. */
 "Are you sure you want to delete the account %@ from this device?" = "Вы действительно хотите удалить аккаунт %@ с этого устройства?";
@@ -620,6 +626,9 @@
 
 /* If current user name is not set */
 "Me" = "Я";
+
+/* No comment provided by engineer. */
+"Media" = "Медиа";
 
 /* Button title */
 "More" = "Еще";

@@ -1441,6 +1441,11 @@ Note: if you forget the passcode, you'll need to delete and reinstall the app. A
         <target>All Files</target>
         <note>Category title</note>
       </trans-unit>
+      <trans-unit id="All files" xml:space="preserve">
+        <source>All files</source>
+        <target>All files</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
       <trans-unit id="Allow access via external link" xml:space="preserve">
         <source>Allow access via external link</source>
         <target>Allow access via external link</target>
@@ -1460,6 +1465,11 @@ Note: if you forget the passcode, you'll need to delete and reinstall the app. A
         <source>Applying</source>
         <target>Applying</target>
         <note>Caption of the process</note>
+      </trans-unit>
+      <trans-unit id="Archives" xml:space="preserve">
+        <source>Archives</source>
+        <target>Archives</target>
+        <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Are you sure you want to delete the account %@ from this device?" xml:space="preserve">
         <source>Are you sure you want to delete the account %@ from this device?</source>
@@ -1991,6 +2001,11 @@ others which use WebDAV protocol.</target>
         <target>Error code: %ld</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
+      <trans-unit id="Exclude subfolders" xml:space="preserve">
+        <source>Exclude subfolders</source>
+        <target>Exclude subfolders</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
       <trans-unit id="Export" xml:space="preserve">
         <source>Export</source>
         <target>Export</target>
@@ -2263,6 +2278,11 @@ to the clipboard</target>
         <source>Me</source>
         <target>Me</target>
         <note>If current user name is not set</note>
+      </trans-unit>
+      <trans-unit id="Media" xml:space="preserve">
+        <source>Media</source>
+        <target>Media</target>
+        <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="More" xml:space="preserve">
         <source>More</source>

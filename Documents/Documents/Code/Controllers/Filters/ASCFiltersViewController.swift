@@ -209,8 +209,6 @@ private extension ASCFiltersViewController {
 }
 
 extension ASCFiltersViewController: UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
-    // TODO: - Add dark mode support
-
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         viewModel.didSelectedClosure(getFilterViewModel(indexPath: indexPath))
     }
@@ -234,7 +232,7 @@ extension ASCFiltersViewController: UICollectionViewDataSource, UICollectionView
             cell?.backgroundColor = Asset.Colors.brend.color
         } else {
             cell?.labelText.textColor = filterViewModel.defaultTextColor
-            cell?.backgroundColor = Asset.Colors.viewBackground.color
+            cell?.backgroundColor = Asset.Colors.filterCapsule.color
         }
         cell?.deselectFilterBtn.add(for: .touchUpInside) {
             self.viewModel.didFilterResetBtnTapped(filterViewModel)

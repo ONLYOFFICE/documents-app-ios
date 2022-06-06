@@ -65,7 +65,7 @@ struct FilterViewModel {
     var isSelected: Bool
     var filterName: String
     var isFilterResetBtnShowen: Bool
-    var defaultTextColor: UIColor = .black
+    var defaultTextColor: UIColor = Asset.Colors.textSubtitle.color
 }
 
 struct ActionButtonViewModel {

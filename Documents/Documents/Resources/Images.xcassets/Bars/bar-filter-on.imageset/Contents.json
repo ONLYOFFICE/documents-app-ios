@@ -2,11 +2,11 @@
     "images" : [
         {
             "idiom" : "universal",
-            "filename" : "bar-filter-light.pdf"
+            "filename" : "bar-filter-on-light.pdf"
         },
         {
             "idiom" : "universal",
-            "filename" : "bar-filter-dark.pdf",
+            "filename" : "bar-filter-on-dark.pdf",
             "appearances" : [
                 {
                     "appearance" : "luminosity",

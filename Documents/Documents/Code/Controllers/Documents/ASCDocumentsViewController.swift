@@ -482,6 +482,7 @@ class ASCDocumentsViewController: ASCBaseTableViewController, UIGestureRecognize
         provider?.filterController?.provider = providerCopy
         provider?.filterController?.onAction = { [weak self] in
             self?.loadFirstPage()
+            self?.configureNavigationBar(animated: false)
         }
         provider?.filterController?.prepareForDisplay(total: total)
 
@@ -623,8 +624,7 @@ class ASCDocumentsViewController: ASCBaseTableViewController, UIGestureRecognize
             ?? createSortSelectBarButton()
         sortBarButton = sortBarButton
             ?? createSortBarButton()
-        filterBarButton = filterBarButton
-            ?? createFilterBarButton()
+        filterBarButton = createFilterBarButton()
         selectBarButton = selectBarButton
             ?? ASCStyles.createBarButton(image: Asset.Images.navSelect.image, target: self, action: #selector(onSelectAction))
         cancelBarButton = cancelBarButton
@@ -684,7 +684,13 @@ class ASCDocumentsViewController: ASCBaseTableViewController, UIGestureRecognize
     }
 
     private func createFilterBarButton() -> UIBarButtonItem {
-        return ASCStyles.createBarButton(image: Asset.Images.barFilter.image, target: self, action: #selector(onFilterAction))
+        let isReset = provider?.filterController?.isReset ?? true
+
+        return ASCStyles.createBarButton(
+            image: isReset ? Asset.Images.barFilter.image : Asset.Images.barFilterOn.image,
+            target: self,
+            action: #selector(onFilterAction)
+        )
     }
 
     private func createSortSelectBarButton() -> UIBarButtonItem {

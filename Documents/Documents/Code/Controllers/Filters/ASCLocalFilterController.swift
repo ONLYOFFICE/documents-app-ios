@@ -49,6 +49,10 @@ class ASCLocalFilterController: ASCFiltersControllerProtocol {
         return makeFilterParams(state: appliedState)
     }
 
+    var isReset: Bool {
+        !tempState.filterModels.map { $0.isSelected }.contains(true)
+    }
+
     var onAction: () -> Void = {}
 
     // MARK: - init

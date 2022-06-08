@@ -63,6 +63,6 @@ private extension ASCFiltersCollectionViewCell {
                                  rightConstant: 8,
                                  widthConstant: 16,
                                  heightConstant: 16)
-        deselectFilterBtn.setImage(Asset.Images.closeButton.image, for: .normal)
+        deselectFilterBtn.setImage(Asset.Images.tagClose.image, for: .normal)
     }
 }

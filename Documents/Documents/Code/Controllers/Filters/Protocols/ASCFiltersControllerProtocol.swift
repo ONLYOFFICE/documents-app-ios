@@ -13,6 +13,7 @@ protocol ASCFiltersControllerProtocol {
     var provider: ASCFileProviderProtocol? { get set }
     var filtersViewController: ASCFiltersViewController { get }
     var filtersParams: [String: Any]? { get }
+    var isReset: Bool { get }
     var onAction: () -> Void { get set }
 
     init(builder: ASCFiltersCollectionViewModelBuilder, filtersViewController: ASCFiltersViewController, itemsCount: Int)

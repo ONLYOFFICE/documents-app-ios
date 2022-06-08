@@ -2,11 +2,11 @@
     "images" : [
         {
             "idiom" : "universal",
-            "filename" : "bar-filter-light.pdf"
+            "filename" : "tag-close-light.pdf"
         },
         {
             "idiom" : "universal",
-            "filename" : "bar-filter-dark.pdf",
+            "filename" : "tag-close-dark.pdf",
             "appearances" : [
                 {
                     "appearance" : "luminosity",

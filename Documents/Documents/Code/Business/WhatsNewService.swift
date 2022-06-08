@@ -45,6 +45,7 @@ final class WhatsNewService {
             configuration.itemsView.autoTintImage = false
 
             if #available(iOS 13.0, *) {
+                configuration.backgroundColor = .systemBackground
                 configuration.itemsView.subtitleColor = .secondaryLabel
             } else {
                 configuration.itemsView.subtitleColor = .darkGray

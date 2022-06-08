@@ -82,7 +82,7 @@ class ASCRootViewController: ASCBaseTabBarController {
 
         update(traitCollection: traitCollection)
 
-        checkNotifications()
+//        checkNotifications()
     }
 
     override func viewDidAppear(_ animated: Bool) {
@@ -290,6 +290,8 @@ class ASCRootViewController: ASCBaseTabBarController {
                         if let url = URL(string: stringUrl) {
                             UIApplication.shared.open(url, options: [:], completionHandler: nil)
                         }
+                    } else if let navigationData = userInfo["data"] as? [String: Any] {
+                        ASCViewControllerManager.shared.route(by: navigationData)
                     }
                 }
             }

@@ -17,7 +17,7 @@ import MessageUI
 import SDWebImage
 import UIKit
 
-class ASCSettingsViewController: UITableViewController, MFMailComposeViewControllerDelegate {
+class ASCSettingsViewController: ASCBaseTableViewController {
     // MARK: - Properties
 
     @IBOutlet var clearCacheCell: UITableViewCell!
@@ -25,6 +25,8 @@ class ASCSettingsViewController: UITableViewController, MFMailComposeViewControl
     @IBOutlet var introCell: UITableViewCell!
     @IBOutlet var compressImagesSwitch: UISwitch!
     @IBOutlet var previewFilesSwitch: UISwitch!
+    @IBOutlet var notificationCell: ASCSettingsNotificationCell!
+    @IBOutlet var whatsnewCell: UITableViewCell!
 
     private var cacheSize: UInt64 = 0
 
@@ -37,6 +39,15 @@ class ASCSettingsViewController: UITableViewController, MFMailComposeViewControl
         previewFilesSwitch?.isOn = UserDefaults.standard.bool(forKey: ASCConstants.SettingsKeys.previewFiles)
 
         navigationController?.view.backgroundColor = Asset.Colors.tableBackground.color
+
+        NotificationCenter.default.addObserver(
+            self,
+            selector: #selector(appWillEnterForeground),
+            name: UIApplication.willEnterForegroundNotification,
+            object: nil
+        )
+
+        tableView.register(ASCSettingsNotificationCell.self, forCellReuseIdentifier: ASCSettingsNotificationCell.identifier)
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -65,10 +76,20 @@ class ASCSettingsViewController: UITableViewController, MFMailComposeViewControl
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         calcCacheSize()
+
+        checkNotifications { [weak self] authorizationStatus in
+            self?.onCheckNotificationStatus(status: authorizationStatus)
+        }
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
+    }
+
+    @objc func appWillEnterForeground() {
+        checkNotifications { [weak self] authorizationStatus in
+            self?.onCheckNotificationStatus(status: authorizationStatus)
+        }
     }
 
     // MARK: - Table view Delegate
@@ -84,10 +105,19 @@ class ASCSettingsViewController: UITableViewController, MFMailComposeViewControl
         } else if cell == introCell {
             let introVC = ASCIntroViewController.instantiate(from: Storyboard.intro)
             present(introVC, animated: true, completion: nil)
+        } else if cell == whatsnewCell {
+            WhatsNewService.show(force: true)
+        } else if cell == notificationCell {
+            navigator.navigate(to: .notificationSettings)
         }
     }
 
     // MARK: - Private
+
+    private func onCheckNotificationStatus(status: UNAuthorizationStatus) {
+        notificationCell?.displayError = status != .authorized
+        tableView?.reloadData()
+    }
 
     private func calcCacheSize() {
         clearCacheCell?.isUserInteractionEnabled = false
@@ -238,12 +268,6 @@ class ASCSettingsViewController: UITableViewController, MFMailComposeViewControl
         }
     }
 
-    // MARK: - MFMailComposeViewController Delegate
-
-    func mailComposeController(_ controller: MFMailComposeViewController, didFinishWith result: MFMailComposeResult, error: Error?) {
-        dismiss(animated: true, completion: nil)
-    }
-
     // MARK: - Actions
 
     @IBAction func onCompressImages(_ sender: UISwitch) {
@@ -253,5 +277,17 @@ class ASCSettingsViewController: UITableViewController, MFMailComposeViewControl
     @IBAction func onFilePreview(_ sender: UISwitch) {
         UserDefaults.standard.set(sender.isOn, forKey: ASCConstants.SettingsKeys.previewFiles)
         NotificationCenter.default.post(name: ASCConstants.Notifications.reloadData, object: nil)
+    }
+}
+
+// MARK: - MFMailComposeViewController Delegate
+
+extension ASCSettingsViewController: MFMailComposeViewControllerDelegate {
+    func mailComposeController(
+        _ controller: MFMailComposeViewController,
+        didFinishWith result:
+        MFMailComposeResult, error: Error?
+    ) {
+        dismiss(animated: true, completion: nil)
     }
 }

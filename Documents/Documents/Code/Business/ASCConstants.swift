@@ -15,6 +15,7 @@ class ASCConstants {
         static let appNameShort = NSLocalizedString("ONLYOFFICE", comment: "Short App Name")
         static let appNameFull = NSLocalizedString("ONLYOFFICE Documents", comment: "Full App Name")
         static let copyright = String(format: NSLocalizedString("© Ascensio System SIA %d", comment: ""), Calendar.current.component(.year, from: Date()))
+        static let brendPortalName = NSLocalizedString("ONLYOFFICE portal", comment: "Full App Name")
     }
 
     enum Keys {
@@ -63,11 +64,13 @@ class ASCConstants {
         static let sdkVersion = "asc-sdk-version"
         static let passwordOpenedDocument = "asc-opened-document-password"
         static let lastCloudIndex = "asc-last-cloud-index"
+        static let pushAllNotification = "asc-push-all"
 
         static func setupDefaults() {
             UserDefaults.standard.register(defaults: [ASCConstants.SettingsKeys.compressImage: true])
             UserDefaults.standard.register(defaults: [ASCConstants.SettingsKeys.allowTouchId: true])
             UserDefaults.standard.register(defaults: [ASCConstants.SettingsKeys.previewFiles: true])
+            UserDefaults.standard.register(defaults: [ASCConstants.SettingsKeys.pushAllNotification: true])
         }
     }
 

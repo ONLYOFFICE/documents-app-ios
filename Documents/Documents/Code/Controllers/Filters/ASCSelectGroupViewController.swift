@@ -9,13 +9,20 @@
 import UIKit
 
 class ASCSelectGroupViewController: UIViewController {
-    // MARK: - properties
+    // MARK: - Properties
 
     private var dataArray = [ASCGroupTableViewDataModelItem]()
     private let cellHeight: CGFloat = 60
     private let leftRightInserts: CGFloat = 16
     private let cornerRadius: CGFloat = 10
-    private var tableView = UITableView()
+    private var tableView: UITableView = {
+        if #available(iOS 13.0, *) {
+            return UITableView(frame: .zero, style: .insetGrouped)
+        } else {
+            return UITableView(frame: .zero, style: .grouped)
+        }
+    }()
+
     weak var delegate: ASCFiltersViewControllerDelegate?
 
     func markAsSelected(id: String?) {
@@ -40,6 +47,15 @@ class ASCSelectGroupViewController: UIViewController {
             }
         }
     }
+
+    private let activityIndicator = UIActivityIndicatorView()
+    private lazy var noSearchResultLabel: UILabel = {
+        $0.text = NSLocalizedString("No Search Result", comment: "")
+        $0.textAlignment = .center
+        $0.font = UIFont.preferredFont(forTextStyle: .body)
+        $0.textColor = .lightGray
+        return $0
+    }(UILabel())
 
     // MARK: - Search
 
@@ -72,7 +88,11 @@ class ASCSelectGroupViewController: UIViewController {
     }
 
     private func groupsListRequest() {
+        showActivityIndicator()
+
         OnlyofficeApiClient.request(OnlyofficeAPI.Endpoints.People.groups) { [unowned self] response, error in
+            self.hideActivityIndicator()
+
             if let error = error {
                 log.error(error)
             } else if let groups = response?.result {
@@ -85,6 +105,7 @@ class ASCSelectGroupViewController: UIViewController {
 
                 DispatchQueue.main.async { [weak self] in
                     self?.tableView.reloadData()
+                    self?.displayPlaceholderIfNeeded()
                 }
             }
         }
@@ -98,8 +119,6 @@ class ASCSelectGroupViewController: UIViewController {
     }
 
     private func setupNavigationBar() {
-        navigationController?.navigationBar.setBackgroundImage(UIImage(), for: UIBarMetrics.default)
-        navigationController?.navigationBar.shadowImage = UIImage()
         navigationItem.searchController = searchController
         navigationItem.largeTitleDisplayMode = .never
         navigationItem.title = NSLocalizedString("Select group", comment: "")
@@ -117,30 +136,67 @@ class ASCSelectGroupViewController: UIViewController {
     private func setupTableView() {
         tableView.delegate = self
         tableView.dataSource = self
-
-        tableView.backgroundColor = Asset.Colors.viewBackground.color
-        tableView.layer.cornerRadius = cornerRadius
-
+        tableView.tableHeaderView = UIView(
+            frame: CGRect(
+                x: 0, y: 0, width: 1, height: CGFloat.leastNormalMagnitude
+            )
+        )
+        tableView.tableFooterView = UIView(
+            frame: CGRect(
+                x: 0, y: 0, width: 1, height: leftRightInserts
+            )
+        )
         view.addSubview(tableView)
-        tableView.anchor(top: view.safeAreaLayoutGuide.topAnchor,
-                         left: view.leftAnchor,
-                         bottom: view.bottomAnchor,
-                         right: view.rightAnchor,
-                         leftConstant: leftRightInserts,
-                         rightConstant: leftRightInserts)
+        tableView.fillToSuperview()
     }
 
     @objc private func cancelBarButtonItemTapped() {
         dismiss(animated: true)
     }
+
+    private func showActivityIndicator() {
+        activityIndicator.translatesAutoresizingMaskIntoConstraints = false
+
+        view.addSubview(activityIndicator)
+
+        let tableHeaderHeigh = tableView.tableHeaderView?.height ?? 0
+
+        activityIndicator.centerYAnchor.constraint(
+            equalTo: view.centerYAnchor,
+            constant: -tableHeaderHeigh - activityIndicator.height
+        ).isActive = true
+        activityIndicator.anchorCenterXToSuperview()
+        activityIndicator.startAnimating()
+    }
+
+    private func hideActivityIndicator() {
+        activityIndicator.stopAnimating()
+        activityIndicator.removeFromSuperview()
+    }
+
+    private func displayPlaceholderIfNeeded() {
+        noSearchResultLabel.removeFromSuperview()
+
+        if numberOfRecords() < 1 {
+            view.addSubview(noSearchResultLabel)
+            noSearchResultLabel.anchorCenterXToSuperview()
+            noSearchResultLabel.anchorCenterYToSuperview(constant: -100)
+        }
+    }
 }
 
+// MARK: - UITableViewDelegate and UITableViewDataSource
+
 extension ASCSelectGroupViewController: UITableViewDelegate, UITableViewDataSource {
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    private func numberOfRecords() -> Int {
         if isFiltering {
             return filteredGroup.count
         }
         return dataArray.count
+    }
+
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return numberOfRecords()
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -241,5 +297,6 @@ extension ASCSelectGroupViewController: UISearchResultsUpdating, UISearchBarDele
             (group.groupName?.lowercased().contains(searchText.lowercased())) ?? false
         }
         tableView.reloadData()
+        displayPlaceholderIfNeeded()
     }
 }

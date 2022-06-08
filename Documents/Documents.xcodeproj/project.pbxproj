@@ -245,6 +245,7 @@
 		FC1EA5D21ECF2A6D008FEE2E /* ASCSettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC1EA5D11ECF2A6D008FEE2E /* ASCSettingsViewController.swift */; };
 		FC23FC5B2043EEF0003B3AE7 /* ASCUserAvatarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC23FC5A2043EEEF003B3AE7 /* ASCUserAvatarView.swift */; };
 		FC23FC5D2044018F003B3AE7 /* Other in Resources */ = {isa = PBXBuildFile; fileRef = FC23FC5C2044018F003B3AE7 /* Other */; };
+		FC25B4642850F3A60075D6C2 /* ASCSelectUserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F391DE5E280968B700C93648 /* ASCSelectUserViewController.swift */; };
 		FC28021525B9B8C5000E9D99 /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FC28021425B9B8C5000E9D99 /* CloudKit.framework */; };
 		FC28F2C11E8CF4B900A8F985 /* UIColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC28F2C01E8CF4B900A8F985 /* UIColor+Extension.swift */; };
 		FC28F2C41E8D131800A8F985 /* ASCCreateEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC28F2C31E8D131800A8F985 /* ASCCreateEntity.swift */; };
@@ -3265,8 +3266,8 @@
 				"${PODS_ROOT}/../../editors-ios/build/SDK/lib/graphics.framework",
 				"${PODS_ROOT}/../../editors-ios/build/SDK/lib/HtmlFile2.framework",
 				"${PODS_ROOT}/../../editors-ios/build/SDK/lib/HtmlRenderer.framework",
-				"${PODS_ROOT}/../../editors-ios/build/SDK/lib/kernel_network.framework",
 				"${PODS_ROOT}/../../editors-ios/build/SDK/lib/kernel.framework",
+				"${PODS_ROOT}/../../editors-ios/build/SDK/lib/kernel_network.framework",
 				"${PODS_ROOT}/../../editors-ios/build/SDK/lib/PdfReader.framework",
 				"${PODS_ROOT}/../../editors-ios/build/SDK/lib/PdfWriter.framework",
 				"${PODS_ROOT}/../../editors-ios/build/SDK/lib/UnicodeConverter.framework",
@@ -3329,8 +3330,8 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/graphics.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/HtmlFile2.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/HtmlRenderer.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/kernel_network.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/kernel.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/kernel_network.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/PdfReader.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/PdfWriter.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/UnicodeConverter.framework",
@@ -3545,8 +3546,8 @@
 				"${PODS_ROOT}/../../editors-ios/build/SDK/lib/graphics.framework",
 				"${PODS_ROOT}/../../editors-ios/build/SDK/lib/HtmlFile2.framework",
 				"${PODS_ROOT}/../../editors-ios/build/SDK/lib/HtmlRenderer.framework",
-				"${PODS_ROOT}/../../editors-ios/build/SDK/lib/kernel_network.framework",
 				"${PODS_ROOT}/../../editors-ios/build/SDK/lib/kernel.framework",
+				"${PODS_ROOT}/../../editors-ios/build/SDK/lib/kernel_network.framework",
 				"${PODS_ROOT}/../../editors-ios/build/SDK/lib/PdfReader.framework",
 				"${PODS_ROOT}/../../editors-ios/build/SDK/lib/PdfWriter.framework",
 				"${PODS_ROOT}/../../editors-ios/build/SDK/lib/UnicodeConverter.framework",
@@ -3609,8 +3610,8 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/graphics.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/HtmlFile2.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/HtmlRenderer.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/kernel_network.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/kernel.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/kernel_network.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/PdfReader.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/PdfWriter.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/UnicodeConverter.framework",
@@ -3860,6 +3861,7 @@
 				FC68526A26837B7300D830EC /* NextcloudServerError.swift in Sources */,
 				FC36D2A625B5C32200412DDB /* Dictionary+Extension.swift in Sources */,
 				FC36D2A725B5C32200412DDB /* ASCDocumentsViewController.swift in Sources */,
+				FC25B4642850F3A60075D6C2 /* ASCSelectUserViewController.swift in Sources */,
 				FC36D2A825B5C32200412DDB /* ASCEntityItemProvider.swift in Sources */,
 				FC36D2A925B5C32200412DDB /* ASCDocumentService.swift in Sources */,
 				FC36D2AA25B5C32200412DDB /* NSString+HTMLString.swift in Sources */,

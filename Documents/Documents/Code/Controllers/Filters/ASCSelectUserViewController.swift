@@ -15,10 +15,17 @@ class ASCSelectUserViewController: UIViewController {
         static let cornerRadius: CGFloat = 10
     }
 
-    // MARK: - properties
+    // MARK: - Properties
 
     private var dataArray = [ASCUserTableViewDataModelItem]()
-    private var tableView = UITableView()
+    private var tableView: UITableView = {
+        if #available(iOS 13.0, *) {
+            return UITableView(frame: .zero, style: .insetGrouped)
+        } else {
+            return UITableView(frame: .zero, style: .grouped)
+        }
+    }()
+
     weak var delegate: ASCFiltersViewControllerDelegate?
 
     func markAsSelected(id: String?) {
@@ -44,7 +51,16 @@ class ASCSelectUserViewController: UIViewController {
         }
     }
 
-    // MARK: - search
+    private let activityIndicator = UIActivityIndicatorView()
+    private lazy var noSearchResultLabel: UILabel = {
+        $0.text = NSLocalizedString("No Search Result", comment: "")
+        $0.textAlignment = .center
+        $0.font = UIFont.preferredFont(forTextStyle: .body)
+        $0.textColor = .lightGray
+        return $0
+    }(UILabel())
+
+    // MARK: - Search
 
     let searchController = UISearchController(searchResultsController: nil)
     private var filteredUsers = [ASCUserTableViewDataModelItem]()
@@ -82,8 +98,6 @@ class ASCSelectUserViewController: UIViewController {
     }
 
     private func setupNavigationBar() {
-        navigationController?.navigationBar.setBackgroundImage(UIImage(), for: UIBarMetrics.default)
-        navigationController?.navigationBar.shadowImage = UIImage()
         navigationItem.searchController = searchController
         navigationItem.largeTitleDisplayMode = .never
         navigationItem.title = NSLocalizedString("Select user", comment: "")
@@ -102,17 +116,18 @@ class ASCSelectUserViewController: UIViewController {
         tableView.register(ASCSharingRightHolderTableViewCell.self, forCellReuseIdentifier: ASCSharingRightHolderTableViewCell.reuseId)
         tableView.delegate = self
         tableView.dataSource = self
-
-        tableView.backgroundColor = Asset.Colors.viewBackground.color
-        tableView.layer.cornerRadius = Constants.cornerRadius
-
+        tableView.tableHeaderView = UIView(
+            frame: CGRect(
+                x: 0, y: 0, width: 1, height: CGFloat.leastNormalMagnitude
+            )
+        )
+        tableView.tableFooterView = UIView(
+            frame: CGRect(
+                x: 0, y: 0, width: 1, height: Constants.leftRightInserts
+            )
+        )
         view.addSubview(tableView)
-        tableView.anchor(top: view.safeAreaLayoutGuide.topAnchor,
-                         left: view.leftAnchor,
-                         bottom: view.bottomAnchor,
-                         right: view.rightAnchor,
-                         leftConstant: Constants.leftRightInserts,
-                         rightConstant: Constants.leftRightInserts)
+        tableView.fillToSuperview()
     }
 
     @objc private func cancelBarButtonItemTapped() {
@@ -120,57 +135,101 @@ class ASCSelectUserViewController: UIViewController {
     }
 
     private func usersListRequest() {
+        showActivityIndicator()
+
         OnlyofficeApiClient.request(OnlyofficeAPI.Endpoints.People.all) { [weak self] response, error in
+            self?.hideActivityIndicator()
+
             if let error = error {
                 log.error(error)
             } else if let users = response?.result {
                 for user in users {
-                    let firstName = user.firstName ?? ""
-                    let lastName = user.lastName ?? ""
-                    let fullName = "\(lastName) \(firstName)".trimmed
-
-                    let userName = fullName
+                    let userName = user.displayName
                     let department = user.department
                     let avatarUrl = user.avatar
                     let id = user.userId
 
-                    self?.dataArray.append(ASCUserTableViewDataModelItem(id: id,
-                                                                         avatarImageUrl: avatarUrl,
-                                                                         userName: userName,
-                                                                         userPosition: department,
-                                                                         isSelected: false,
-                                                                         isOwner: user.isShareOwner))
+                    self?.dataArray.append(
+                        ASCUserTableViewDataModelItem(
+                            id: id,
+                            avatarImageUrl: avatarUrl,
+                            userName: userName,
+                            userPosition: department,
+                            isSelected: false,
+                            isOwner: user.isShareOwner
+                        )
+                    )
                 }
                 self?.dataArray.sort(by: { l, _ in l.isOwner })
 
                 DispatchQueue.main.async { [weak self] in
                     self?.tableView.reloadData()
+                    self?.displayPlaceholderIfNeeded()
                 }
             }
         }
     }
+
+    private func showActivityIndicator() {
+        activityIndicator.translatesAutoresizingMaskIntoConstraints = false
+
+        view.addSubview(activityIndicator)
+
+        let tableHeaderHeigh = tableView.tableHeaderView?.height ?? 0
+
+        activityIndicator.centerYAnchor.constraint(
+            equalTo: view.centerYAnchor,
+            constant: -tableHeaderHeigh - activityIndicator.height
+        ).isActive = true
+        activityIndicator.anchorCenterXToSuperview()
+        activityIndicator.startAnimating()
+    }
+
+    private func hideActivityIndicator() {
+        activityIndicator.stopAnimating()
+        activityIndicator.removeFromSuperview()
+    }
+
+    private func displayPlaceholderIfNeeded() {
+        noSearchResultLabel.removeFromSuperview()
+
+        if numberOfRecords() < 1 {
+            view.addSubview(noSearchResultLabel)
+            noSearchResultLabel.anchorCenterXToSuperview()
+            noSearchResultLabel.anchorCenterYToSuperview(constant: -100)
+        }
+    }
 }
 
+// MARK: - UITableViewDelegate and UITableViewDataSource
+
 extension ASCSelectUserViewController: UITableViewDelegate, UITableViewDataSource {
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    private func numberOfRecords() -> Int {
         if isFiltering {
             return filteredUsers.count
         }
         return dataArray.count
     }
 
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return numberOfRecords()
+    }
+
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: ASCSharingRightHolderTableViewCell.reuseId, for: indexPath) as? ASCSharingRightHolderTableViewCell else { return UITableViewCell() }
 
+        // Data
         let dataModel = getDataModel(indexPath: indexPath)
 
         cell.viewModel = .init(id: dataModel.id ?? "",
                                avatarUrl: dataModel.avatarImageUrl,
                                name: dataModel.userName ?? "",
                                department: dataModel.userPosition)
+
         if dataModel.isSelected == true {
             cell.accessoryType = .checkmark
         }
+
         return cell
     }
 
@@ -256,5 +315,6 @@ extension ASCSelectUserViewController: UISearchResultsUpdating, UISearchBarDeleg
         }
 
         tableView.reloadData()
+        displayPlaceholderIfNeeded()
     }
 }

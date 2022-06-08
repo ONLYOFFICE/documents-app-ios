@@ -53,7 +53,7 @@ private extension ASCFiltersCollectionViewCell {
         labelText.frame = bounds
         labelText.textAlignment = .center
     }
-    
+
     func setFilterResetBtn() {
         deselectFilterBtn.anchor(top: topAnchor,
                                  bottom: bottomAnchor,

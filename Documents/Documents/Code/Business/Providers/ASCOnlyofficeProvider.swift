@@ -48,6 +48,11 @@ class ASCOnlyofficeProvider: ASCFileProviderProtocol & ASCSortableFileProviderPr
     }
 
     var delegate: ASCProviderDelegate?
+    var filterController: ASCFiltersControllerProtocol? = ASCOnlyOfficeFiltersController(
+        builder: ASCFiltersCollectionViewModelBuilder(),
+        filtersViewController: ASCFiltersViewController(),
+        itemsCount: 0
+    )
 
     internal var folder: ASCFolder?
     internal var fetchInfo: [String: Any?]?

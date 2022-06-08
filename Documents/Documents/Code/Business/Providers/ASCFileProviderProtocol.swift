@@ -62,6 +62,7 @@ protocol ASCFileProviderProtocol {
     var authorization: String? { get }
 
     var delegate: ASCProviderDelegate? { get set }
+    var filterController: ASCFiltersControllerProtocol? { get set }
 
     // Methods
     func copy() -> ASCFileProviderProtocol

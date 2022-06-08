@@ -29,6 +29,11 @@ class ASCLocalProvider: ASCFileProviderProtocol & ASCSortableFileProviderProtoco
     }
 
     var delegate: ASCProviderDelegate?
+    var filterController: ASCFiltersControllerProtocol? = ASCLocalFilterController(
+        builder: ASCFiltersCollectionViewModelBuilder(),
+        filtersViewController: ASCFiltersViewController(),
+        itemsCount: 0
+    )
 
     internal var folder: ASCFolder?
     internal var fetchInfo: [String: Any?]?

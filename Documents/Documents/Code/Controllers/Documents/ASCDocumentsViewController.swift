@@ -115,21 +115,6 @@ class ASCDocumentsViewController: ASCBaseTableViewController, UIGestureRecognize
     // Sort
     private lazy var defaultsSortTypes: [ASCDocumentSortType] = [.dateandtime, .az, .type, .size]
 
-    // Filter
-
-    lazy var filtersViewController = ASCFiltersViewController()
-    lazy var filtersBuilder = ASCFiltersCollectionViewModelBuilder()
-    private lazy var onlyOfficeFiltersController = ASCOnlyOfficeFiltersController(
-        builder: filtersBuilder,
-        filtersViewController: filtersViewController,
-        itemsCount: total
-    )
-    private lazy var localFilterController = ASCLocalFilterController(
-        builder: filtersBuilder,
-        filtersViewController: filtersViewController,
-        itemsCount: total
-    )
-
     // MARK: - Outlets
 
     @IBOutlet var loadingView: UIView!
@@ -492,29 +477,25 @@ class ASCDocumentsViewController: ASCBaseTableViewController, UIGestureRecognize
     }
 
     @objc func onFilterAction() {
-        if provider?.type == .onlyoffice, let provider = provider?.copy() as? ASCOnlyofficeProvider {
-            onlyOfficeFiltersController.folder = folder
-            onlyOfficeFiltersController.provider = provider
-            onlyOfficeFiltersController.actionButtonTappedClousure = { [weak self] in
-                self?.loadFirstPage()
-            }
-            onlyOfficeFiltersController.prepareForDisplay(total: total)
-        } else if provider?.type == .local {
-            localFilterController.folder = folder
-            localFilterController.provider = provider?.copy()
-            localFilterController.actionButtonTappedClousure = { [weak self] in
-                self?.loadFirstPage()
-            }
-            localFilterController.prepareForDisplay(total: total)
+        let providerCopy = provider?.copy()
+        provider?.filterController?.folder = folder
+        provider?.filterController?.provider = providerCopy
+        provider?.filterController?.onAction = { [weak self] in
+            self?.loadFirstPage()
         }
-        let navigationVC = UINavigationController(rootASCViewController: filtersViewController)
-        if UIDevice.pad {
-            navigationVC.preferredContentSize = CGSize(width: 380, height: 714)
-            navigationVC.modalPresentationStyle = .popover
-            navigationVC.popoverPresentationController?.barButtonItem = filterBarButton
-            present(navigationVC, animated: true) {}
-        } else {
-            navigationController?.present(navigationVC, animated: true)
+        provider?.filterController?.prepareForDisplay(total: total)
+
+        if let filtersViewController = provider?.filterController?.filtersViewController {
+            let navigationVC = UINavigationController(rootASCViewController: filtersViewController)
+
+            if UIDevice.pad {
+                navigationVC.preferredContentSize = CGSize(width: 380, height: 714)
+                navigationVC.modalPresentationStyle = .popover
+                navigationVC.popoverPresentationController?.barButtonItem = filterBarButton
+                present(navigationVC, animated: true) {}
+            } else {
+                navigationController?.present(navigationVC, animated: true)
+            }
         }
     }
 
@@ -911,13 +892,14 @@ class ASCDocumentsViewController: ASCBaseTableViewController, UIGestureRecognize
         }
 
         // Filters
-        params["filters"] = localFilterController.filtersParams
+        if let filtersParams = provider?.filterController?.filtersParams {
+            params["filters"] = filtersParams
+        }
 
         provider?.fetch(for: folder, parameters: params) { [weak self] provider, folder, success, error in
             guard let strongSelf = self else { return }
 
             strongSelf.tableView.reloadData()
-
             strongSelf.showEmptyView(strongSelf.total < 1)
 
             completeon?(true)
@@ -955,8 +937,8 @@ class ASCDocumentsViewController: ASCBaseTableViewController, UIGestureRecognize
                 params["sort"] = sortParams
             }
 
-            if provider?.type == .onlyoffice {
-                params["filters"] = onlyOfficeFiltersController.filtersParams
+            if let filtersParams = provider?.filterController?.filtersParams {
+                params["filters"] = filtersParams
             }
 
             cloudProvider.fetch(for: folder, parameters: params) { [weak self] provider, entity, success, error in

@@ -8,7 +8,7 @@
 
 import Foundation
 
-class ASCLocalFilterController {
+class ASCLocalFilterController: ASCFiltersControllerProtocol {
     struct State {
         var filterModels: [ASCDocumentsFilterModel]
         var itemsCount: Int
@@ -38,22 +38,26 @@ class ASCLocalFilterController {
     private var currentSelectedAuthorFilterType: ApiFilterType?
     private let builder: ASCFiltersCollectionViewModelBuilder
     private var currentLoading = false
-    private let filtersViewController: ASCFiltersViewController
 
     // MARK: - public properties
 
     var folder: ASCFolder?
     var provider: ASCFileProviderProtocol?
+    var filtersViewController: ASCFiltersViewController
     var filtersParams: [String: Any]? {
         guard let appliedState = appliedState else { return nil }
         return makeFilterParams(state: appliedState)
     }
 
-    var actionButtonTappedClousure: () -> Void = {}
+    var onAction: () -> Void = {}
 
     // MARK: - init
 
-    init(builder: ASCFiltersCollectionViewModelBuilder, filtersViewController: ASCFiltersViewController, itemsCount: Int) {
+    required init(
+        builder: ASCFiltersCollectionViewModelBuilder,
+        filtersViewController: ASCFiltersViewController,
+        itemsCount: Int
+    ) {
         self.builder = builder
         self.filtersViewController = filtersViewController
         tempState = .defaultState(itemsCount)
@@ -102,7 +106,7 @@ class ASCLocalFilterController {
         buildResetButtonClosureBuilder()
         builder.actionButtonClosure = { [weak self] in
             self?.appliedState = self?.tempState
-            self?.actionButtonTappedClousure()
+            self?.onAction()
         }
     }
 

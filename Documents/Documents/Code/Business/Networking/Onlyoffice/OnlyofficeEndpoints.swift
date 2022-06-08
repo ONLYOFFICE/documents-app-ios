@@ -49,7 +49,7 @@ class OnlyofficeAPI {
         public static let shareFolder = "api/\(version)/files/folder/%@/share"
         public static let forgotPassword = "api/\(version)/people/password"
         public static let deleteAccount = "api/\(version)/people/self/delete"
-        public static let pushRegisterDevice = "/api/\(version)/settings/push/docregisterdevice "
+        public static let pushRegisterDevice = "/api/\(version)/settings/push/docregisterdevice"
         public static let pushSubscribe = "/api/\(version)/settings/push/docsubscribe"
 
         enum Forlder {

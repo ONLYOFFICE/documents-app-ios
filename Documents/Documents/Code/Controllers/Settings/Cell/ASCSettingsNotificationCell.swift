@@ -9,6 +9,8 @@
 import UIKit
 
 class ASCSettingsNotificationCell: UITableViewCell {
+    static let identifier = String(describing: ASCSettingsNotificationCell.self)
+
     // MARK: - Properties
 
     private lazy var errorIconView: UIImageView = {

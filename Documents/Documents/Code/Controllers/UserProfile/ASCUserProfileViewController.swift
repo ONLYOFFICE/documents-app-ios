@@ -115,7 +115,7 @@ class ASCUserProfileViewController: UITableViewController {
 
         // Unsubscribe from push notifications
         ASCPushNotificationManager.requestClearRegister()
-        
+
         // Cleanup auth info
         OnlyofficeApiClient.reset()
 

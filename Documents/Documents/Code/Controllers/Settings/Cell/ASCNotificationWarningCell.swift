@@ -23,6 +23,8 @@ class ASCNotificationWarningCell: UITableViewCell {
     // MARK: - Properties
 
     @IBOutlet var warningImageView: UIImageView!
+    @IBOutlet var titleLabel: UILabel!
+    @IBOutlet var subtitleLabel: UILabel!
     @IBOutlet var settingsButton: ASCButtonStyle!
 
     var viewModel: ASCNotificationWarningCellViewModel? {
@@ -37,7 +39,12 @@ class ASCNotificationWarningCell: UITableViewCell {
 
     override func awakeFromNib() {
         super.awakeFromNib()
+
+        titleLabel?.text = NSLocalizedString("Push notifications disabled", comment: "")
+        subtitleLabel?.text = NSLocalizedString("To receive push notifications from the ONLYOFFICE application, you need to allow receiving notifications for this application in the iOS settings", comment: "")
+        settingsButton?.setTitleForAllStates(NSLocalizedString("Turn ON in Settings", comment: ""))
         settingsButton?.styleType = .default
+
         if #available(iOS 13.0, *) {
             warningImageView?.image = UIImage(systemName: "info.circle.fill")?
                 .withTintColor(.systemPink, renderingMode: .alwaysOriginal)

@@ -93,6 +93,7 @@ class ASCViewControllerManager {
         routeOpenFile()
     }
 
+    @discardableResult
     func route(by url: URL, options: [UIApplication.OpenURLOptionsKey: Any]) -> Bool {
 //        print("sourceApplication: \(options[UIApplicationOpenURLOptionsKey.sourceApplication] as? String ?? "")")
 //        print("annotation: \(options[UIApplicationOpenURLOptionsKey.annotation] as? String ?? "")")
@@ -122,6 +123,12 @@ class ASCViewControllerManager {
         }
 
         return false
+    }
+
+    @discardableResult
+    func route(by json: [String: Any]) -> Bool {
+        openFileInfo = json
+        return true
     }
 
     // MARK: - Private
@@ -203,7 +210,7 @@ class ASCViewControllerManager {
                 openFileInfo = nil
             } else {
                 // Portal
-                routeOpenPortalFile(info: info)
+                routeOpenPortalEntity(info: info)
             }
         }
     }
@@ -420,7 +427,7 @@ class ASCViewControllerManager {
         return result
     }
 
-    private func routeOpenPortalFile(info: [String: Any]) {
+    private func routeOpenPortalEntity(info: [String: Any]) {
         let correctInfo = camelCaseKeys(of: info)
 
         guard
@@ -428,10 +435,15 @@ class ASCViewControllerManager {
             let deepLink = ASCDeepLink(JSON: correctInfo),
             let originalUrl = deepLink.originalUrl,
             let portal = URL(string: originalUrl)?.dropPathAndQuery().absoluteString,
-            let email = deepLink.email,
-            var file = deepLink.file,
-            var folder = deepLink.folder
+            let email = deepLink.email
         else { return }
+
+        let rootSharedFolder = ASCFolder()
+        rootSharedFolder.id = "@share"
+        rootSharedFolder.rootFolderType = .onlyofficeShare
+
+        var file = deepLink.file
+        var folder = deepLink.folder ?? rootSharedFolder
 
         let processAndOpenFile: () -> Void = { [weak self] in
             /// Hide introdaction screen
@@ -455,7 +467,9 @@ class ASCViewControllerManager {
 
                 alertController.addAction(
                     UIAlertAction(
-                        title: (account != nil) ? NSLocalizedString("Switch", comment: "") : NSLocalizedString("Login", comment: ""),
+                        title: (account != nil)
+                            ? NSLocalizedString("Switch", comment: "")
+                            : NSLocalizedString("Login", comment: ""),
                         style: .default,
                         handler: { action in
 
@@ -517,39 +531,43 @@ class ASCViewControllerManager {
                 return
             }
 
-            let isRootFolder = folder.parentId == nil || folder.parentId == "0"
+            // Syncronize api calls
+            let requestGroup = DispatchGroup()
 
+            // Display hud
             let hud = MBProgressHUD.showTopMost()
             hud?.mode = .indeterminate
             hud?.label.text = NSLocalizedString("Opening", comment: "Caption of the processing")
 
-            // Syncronize api calls
-            let requestGroup = DispatchGroup()
-
             // Read full folder info
-            if !isRootFolder {
-                requestGroup.enter()
-                OnlyofficeApiClient.request(OnlyofficeAPI.Endpoints.Folders.info(folder: folder)) { response, error in
-                    defer { requestGroup.leave() }
 
-                    if let resultFolder = response?.result {
-                        folder = resultFolder
-                    } else {
-                        // Have no permissions for the folder, open root 'Shared with folder'
-                        folder.id = "@share"
-                    }
-                }
-            }
+            let isRootFolder = folder.parentId == nil || folder.parentId == "0"
 
-            // Read full file info
+            //                if !isRootFolder {
             requestGroup.enter()
-            OnlyofficeApiClient.request(OnlyofficeAPI.Endpoints.Files.info(file: file)) { response, error in
+            OnlyofficeApiClient.request(OnlyofficeAPI.Endpoints.Folders.info(folder: folder)) { response, error in
                 defer { requestGroup.leave() }
 
-                if let resultFile = response?.result {
-                    file = resultFile
+                if let resultFolder = response?.result {
+                    folder = resultFolder
                 } else {
-                    file.id = ""
+                    folder = rootSharedFolder
+                }
+            }
+            //                }
+
+            // Read full file info
+
+            if let strongFile = file {
+                requestGroup.enter()
+                OnlyofficeApiClient.request(OnlyofficeAPI.Endpoints.Files.info(file: strongFile)) { response, error in
+                    defer { requestGroup.leave() }
+
+                    if let resultFile = response?.result {
+                        file = resultFile
+                    } else {
+                        file?.id = ""
+                    }
                 }
             }
 
@@ -559,7 +577,7 @@ class ASCViewControllerManager {
                 DispatchQueue.main.async {
                     hud?.hide(animated: true)
 
-                    if file.id != "", folder.id != "" {
+                    if !folder.id.isEmpty {
                         delay(seconds: 0.2) {
                             if let copyFolder = ASCFolder(JSON: folder.toJSON()) {
                                 // Correction root folfer type
@@ -568,16 +586,25 @@ class ASCViewControllerManager {
                                     copyFolder.rootFolderType = .onlyofficeProjects
                                 }
 
-                                if let documentVC = ASCViewControllerManager.shared.rootController?.topMostViewController() as? ASCDocumentsViewController {
-                                    if !(documentVC.folder == copyFolder) {
-                                        ASCViewControllerManager.shared.rootController?.display(provider: ASCFileManager.onlyofficeProvider, folder: copyFolder)
+                                if let topMostViewController = ASCViewControllerManager.shared.rootController?.topMostViewController() {
+                                    let topOpenFolder: ASCFolder? = (topMostViewController as? ASCDocumentsViewController)?.folder
+
+                                    if topOpenFolder != copyFolder {
+                                        ASCViewControllerManager.shared.rootController?.display(
+                                            provider: ASCFileManager.onlyofficeProvider,
+                                            folder: copyFolder
+                                        )
                                     }
                                 }
                             }
                         }
+                    }
 
+                    if let file = file, !file.id.isEmpty {
                         delay(seconds: 0.3) {
-                            if let documentVC = ASCViewControllerManager.shared.rootController?.topMostViewController() as? ASCDocumentsViewController {
+                            if let topMostViewController = ASCViewControllerManager.shared.rootController?.topMostViewController(),
+                               let documentVC = topMostViewController as? ASCDocumentsViewController
+                            {
                                 // Open target folder if not root folder
                                 if !(documentVC.folder == folder), folder.parentId != nil {
                                     let controller = ASCDocumentsViewController.instantiate(from: Storyboard.main)
@@ -593,12 +620,13 @@ class ASCViewControllerManager {
                                 }
                             }
                         }
-                    } else if let topVC = ASCViewControllerManager.shared.rootController?.topMostViewController() {
-                        UIAlertController.showError(
-                            in: topVC,
-                            message: NSLocalizedString("Failed to get information about the file.", comment: "")
-                        )
                     }
+//                    } else if let topVC = ASCViewControllerManager.shared.rootController?.topMostViewController() {
+//                        UIAlertController.showError(
+//                            in: topVC,
+//                            message: NSLocalizedString("Failed to get information about the file.", comment: "")
+//                        )
+//                    }
                 }
             }
         }

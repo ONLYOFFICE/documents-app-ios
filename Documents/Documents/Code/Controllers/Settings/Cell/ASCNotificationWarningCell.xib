@@ -11,7 +11,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" rowHeight="220" id="KGk-i7-Jjw" customClass="ASCNotificationWarningCell" customModule="Documents_develop" customModuleProvider="target">
+        <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" rowHeight="220" id="KGk-i7-Jjw" customClass="ASCNotificationWarningCell" customModule="Documents" customModuleProvider="target">
             <rect key="frame" x="0.0" y="0.0" width="473" height="220"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
@@ -22,36 +22,35 @@
                         <rect key="frame" x="20" y="16" width="433" height="188"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="hE3-vN-A1Q">
-                                <rect key="frame" x="0.0" y="0.0" width="216.5" height="75"/>
+                                <rect key="frame" x="0.0" y="0.0" width="64" height="111"/>
                                 <subviews>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="HZW-K8-mzY">
-                                        <rect key="frame" x="0.0" y="25.5" width="24" height="24"/>
+                                        <rect key="frame" x="0.0" y="43.5" width="24" height="24"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="24" id="KNt-XM-UAJ"/>
                                             <constraint firstAttribute="height" constant="24" id="LdJ-lG-Vj2"/>
                                         </constraints>
                                     </imageView>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Push notifications disabled" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BP1-ch-iff">
-                                        <rect key="frame" x="34" y="29" width="182.5" height="17"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BP1-ch-iff">
+                                        <rect key="frame" x="34" y="47" width="30" height="17"/>
                                         <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
                             </stackView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tUQ-V3-dp9">
-                                <rect key="frame" x="0.0" y="90" width="413.5" height="52"/>
-                                <string key="text">To receive push notifications from the ONLYOFFICE application, you need to allow receiving notifications for this application in the iOS settings</string>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Subtitle" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tUQ-V3-dp9">
+                                <rect key="frame" x="0.0" y="126" width="47" height="16"/>
                                 <fontDescription key="fontDescription" style="UICTFontTextStyleCallout"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="agZ-Qr-bm0" customClass="ASCButtonStyle" customModule="Documents_develop" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="157" width="150.5" height="31"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="agZ-Qr-bm0" customClass="ASCButtonStyle" customModule="Documents" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="157" width="67" height="31"/>
                                 <color key="backgroundColor" name="brend"/>
                                 <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" title="Turn ON in Settings"/>
+                                <buttonConfiguration key="configuration" style="plain" title="Button"/>
                                 <connections>
                                     <action selector="onButtonTap:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="KwU-no-rhT"/>
                                 </connections>
@@ -69,6 +68,8 @@
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
                 <outlet property="settingsButton" destination="agZ-Qr-bm0" id="0Ef-hn-eix"/>
+                <outlet property="subtitleLabel" destination="tUQ-V3-dp9" id="XUo-7C-bO8"/>
+                <outlet property="titleLabel" destination="BP1-ch-iff" id="3p8-gS-gwE"/>
                 <outlet property="warningImageView" destination="HZW-K8-mzY" id="Adj-Vi-VtU"/>
             </connections>
             <point key="canvasLocation" x="248.55072463768118" y="150"/>

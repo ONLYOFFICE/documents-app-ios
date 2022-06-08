@@ -9,18 +9,18 @@
 import UIKit
 
 class ASCNotificationSettingsViewController: ASCBaseTableViewController {
-    typealias NotificationSection = (items: [CellType], header: String?, footer: String?)
+    // Section model
+
+    struct NotificationSection {
+        var items: [CellType]
+        var header: String?
+        var footer: String?
+    }
 
     // MARK: - Properties
 
     private var authorizationStatus: UNAuthorizationStatus = .authorized
-
-    private var tableData: [NotificationSection] = [] {
-        didSet {
-            tableView?.reloadData()
-        }
-    }
-
+    private var tableData: [SectionType] = []
     private var isPortalActive: Bool {
         ASCFileManager.onlyofficeProvider?.apiClient.active ?? false
     }
@@ -45,7 +45,7 @@ class ASCNotificationSettingsViewController: ASCBaseTableViewController {
         title = NSLocalizedString("Notifications", comment: "")
 
         tableView?.cellLayoutMarginsFollowReadableWidth = true
-        
+
         build()
 
         NotificationCenter.default.addObserver(
@@ -58,19 +58,19 @@ class ASCNotificationSettingsViewController: ASCBaseTableViewController {
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
+
         if UIDevice.pad {
             navigationController?.navigationBar.prefersLargeTitles = false
             navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
             navigationController?.navigationBar.shadowImage = UIImage()
             navigationController?.navigationBar.isTranslucent = true
         }
-        
+
         checkNotifications { [weak self] authorizationStatus in
             self?.onCheckNotificationStatus(status: authorizationStatus)
         }
     }
-    
+
     override func scrollViewDidScroll(_ scrollView: UIScrollView) {
         if UIDevice.pad {
             guard let navigationBar = navigationController?.navigationBar else { return }
@@ -95,31 +95,52 @@ class ASCNotificationSettingsViewController: ASCBaseTableViewController {
     }
 
     private func build() {
-        var data: [NotificationSection] = []
+        var data: [SectionType] = []
 
-        let allowPushAllNotification = UserDefaults.standard.bool(forKey: ASCConstants.SettingsKeys.pushAllNotification)
+        // Notifications section
 
-        let commonNotification: CellType = .switchControl(
+        let notificationsFooterText: () -> String = {
+            self.isPortalActive
+                ? UserDefaults.standard.bool(forKey: ASCConstants.SettingsKeys.pushAllNotification)
+                ? String(format: NSLocalizedString("Disable if you do not want to receive notifications from the %@", comment: ""), ASCConstants.Name.brendPortalName)
+                : String(format: NSLocalizedString("Enable if you want to receive notifications from the %@", comment: ""), ASCConstants.Name.brendPortalName)
+                : String(format: NSLocalizedString("The setting will be available upon authorization on the %@.", comment: ""), ASCConstants.Name.brendPortalName)
+        }
+
+        var notificationsSection: NotificationSection?
+        var commonNotification: CellType!
+
+        commonNotification = .switchControl(
             viewModel: ASCSwitchCellViewModel(
                 title: NSLocalizedString("All notifications", comment: ""),
-                isOn: allowPushAllNotification,
+                isOn: UserDefaults.standard.bool(forKey: ASCConstants.SettingsKeys.pushAllNotification),
                 enabled: isPortalActive,
                 valueChanged: { [weak self] isOn in
-                    self?.allowAllNotificetion(allow: isOn)
+                    guard let self = self else { return }
+
+                    self.allowAllNotificetion(allow: isOn)
+
+                    if let section = self.tableData.firstIndex(where: { item in
+                        guard case .notifications = item else { return false }; return true
+                    }) {
+                        self.tableData[section].footer = notificationsFooterText()
+                        self.tableView?.refreshFooterTitle(inSection: section)
+                    }
                 }
             )
         )
 
-        let notificationsSection = NotificationSection(
+        notificationsSection = NotificationSection(
             items: [commonNotification],
             header: NSLocalizedString("Show notifications", comment: ""),
-            footer: isPortalActive
-            ? NSLocalizedString("Disable if you do not want to receive notifications from the ONLYOFFICE portal", comment: "")
-            : NSLocalizedString("The setting will be available upon authorization on the ONLYOFFICE portal.", comment: "")
+            footer: notificationsFooterText()
         )
 
-        data.append(notificationsSection)
+        if let notificationsSection = notificationsSection {
+            data.append(.notifications(viewModel: notificationsSection))
+        }
 
+        // Warning section
         if authorizationStatus != .authorized {
             let notificationsSection = NotificationSection(
                 items: [
@@ -132,10 +153,11 @@ class ASCNotificationSettingsViewController: ASCBaseTableViewController {
                 header: nil,
                 footer: nil
             )
-            data.insert(notificationsSection, at: 0)
+            data.insert(.warning(viewModel: notificationsSection), at: 0)
         }
 
         tableData = data
+        tableView?.reloadData()
     }
 
     private func openSettings() {
@@ -171,7 +193,7 @@ extension ASCNotificationSettingsViewController {
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        tableData[section].items.count
+        tableData[section].toSection().items.count
     }
 
     override public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -179,11 +201,11 @@ extension ASCNotificationSettingsViewController {
     }
 
     override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        tableData[section].header
+        tableData[section].toSection().header
     }
 
     override func tableView(_ tableView: UITableView, titleForFooterInSection section: Int) -> String? {
-        tableData[section].footer
+        tableData[section].toSection().footer
     }
 
     override public func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -195,7 +217,49 @@ extension ASCNotificationSettingsViewController {
     }
 
     private func cellType(by indexPath: IndexPath) -> CellType {
-        tableData[indexPath.section].items[indexPath.row]
+        tableData[indexPath.section].toSection().items[indexPath.row]
+    }
+}
+
+// MARK: - Section types
+
+extension ASCNotificationSettingsViewController {
+    enum SectionType {
+        case warning(viewModel: NotificationSection)
+        case notifications(viewModel: NotificationSection)
+
+        public func toSection() -> NotificationSection {
+            switch self {
+            case let .warning(viewModel):
+                return viewModel
+            case let .notifications(viewModel):
+                return viewModel
+            }
+        }
+
+        var footer: String? {
+            get {
+                switch self {
+                case let .warning(viewModel):
+                    return viewModel.footer
+                case let .notifications(viewModel):
+                    return viewModel.footer
+                }
+            }
+
+            set {
+                switch self {
+                case let .warning(viewModel):
+                    var newViewModel = viewModel
+                    newViewModel.footer = newValue
+                    self = .warning(viewModel: newViewModel)
+                case let .notifications(viewModel):
+                    var newViewModel = viewModel
+                    newViewModel.footer = newValue
+                    self = .notifications(viewModel: newViewModel)
+                }
+            }
+        }
     }
 }
 

@@ -55,7 +55,7 @@
                                             <segue destination="HD4-gx-psy" kind="show" id="JnN-X9-bvk"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" textLabel="g9j-Q0-lXB" style="IBUITableViewCellStyleDefault" id="lDa-d9-3tp" customClass="ASCSettingsNotificationCell" customModule="Documents_develop">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" textLabel="g9j-Q0-lXB" style="IBUITableViewCellStyleDefault" id="lDa-d9-3tp" customClass="ASCSettingsNotificationCell" customModule="Documents" customModuleProvider="target">
                                         <rect key="frame" x="20" y="83.666666030883789" width="350" height="52"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="lDa-d9-3tp" id="edi-2T-XiS">

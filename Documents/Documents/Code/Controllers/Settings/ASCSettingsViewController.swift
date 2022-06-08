@@ -46,6 +46,8 @@ class ASCSettingsViewController: ASCBaseTableViewController {
             name: UIApplication.willEnterForegroundNotification,
             object: nil
         )
+
+        tableView.register(ASCSettingsNotificationCell.self, forCellReuseIdentifier: ASCSettingsNotificationCell.identifier)
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -113,8 +115,8 @@ class ASCSettingsViewController: ASCBaseTableViewController {
     // MARK: - Private
 
     private func onCheckNotificationStatus(status: UNAuthorizationStatus) {
-        notificationCell.displayError = status != .authorized
-        tableView.reloadData()
+        notificationCell?.displayError = status != .authorized
+        tableView?.reloadData()
     }
 
     private func calcCacheSize() {

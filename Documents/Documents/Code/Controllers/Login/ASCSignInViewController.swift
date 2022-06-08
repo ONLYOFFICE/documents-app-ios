@@ -549,7 +549,7 @@ class ASCSignInViewController: ASCBaseViewController {
                                 OnlyofficeAPI.Endpoints.Auth.deviceRegistration,
                                 ["type": OnlyofficeApplicationType.documents.rawValue]
                             )
-                            
+
                             // Registration for push notification
                             ASCPushNotificationManager.requestRegister()
 

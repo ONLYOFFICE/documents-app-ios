@@ -15,6 +15,7 @@ class ASCConstants {
         static let appNameShort = NSLocalizedString("ONLYOFFICE", comment: "Short App Name")
         static let appNameFull = NSLocalizedString("ONLYOFFICE Documents", comment: "Full App Name")
         static let copyright = String(format: NSLocalizedString("© Ascensio System SIA %d", comment: ""), Calendar.current.component(.year, from: Date()))
+        static let brendPortalName = NSLocalizedString("ONLYOFFICE portal", comment: "Full App Name")
     }
 
     enum Keys {

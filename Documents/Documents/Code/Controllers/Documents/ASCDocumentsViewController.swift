@@ -695,7 +695,21 @@ class ASCDocumentsViewController: ASCBaseTableViewController, UIGestureRecognize
 
     private func createSortSelectBarButton() -> UIBarButtonItem {
         guard categoryIsRecent else {
-            return ASCStyles.createBarButton(image: Asset.Images.navMore.image, target: self, action: #selector(onSortSelectAction))
+            if #available(iOS 13.0, *) {
+                let config = UIImage.SymbolConfiguration(pointSize: 22, weight: .light)
+
+                return ASCStyles.createBarButton(
+                    image: UIImage(systemName: "ellipsis.circle", withConfiguration: config),
+                    target: self,
+                    action: #selector(onSortSelectAction)
+                )
+            } else {
+                return ASCStyles.createBarButton(
+                    image: Asset.Images.navMore.image,
+                    target: self,
+                    action: #selector(onSortSelectAction)
+                )
+            }
         }
 
         return ASCStyles.createBarButton(

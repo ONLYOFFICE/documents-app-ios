@@ -290,28 +290,8 @@ class ASCRootViewController: ASCBaseTabBarController {
                         if let url = URL(string: stringUrl) {
                             UIApplication.shared.open(url, options: [:], completionHandler: nil)
                         }
-                    } else {
-                        var data: [String: Any] = [:]
-                        if let folderId = userInfo["folderId"] as? String {
-                            data["folder"] = [
-                                "id": folderId,
-                            ]
-                        }
-
-                        if let fileId = userInfo["fileId"] as? String {
-                            data["file"] = [
-                                "id": fileId,
-                            ]
-                        }
-
-                        if let email = ASCFileManager.onlyofficeProvider?.user?.email {
-                            data["email"] = email
-                        }
-                        if let portal = ASCFileManager.onlyofficeProvider?.apiClient.baseURL?.absoluteString {
-                            data["originalUrl"] = portal
-                        }
-
-                        ASCViewControllerManager.shared.route(by: data)
+                    } else if let navigationData = userInfo["data"] as? [String: Any] {
+                        ASCViewControllerManager.shared.route(by: navigationData)
                     }
                 }
             }

@@ -445,6 +445,8 @@ class ASCViewControllerManager {
         var file = deepLink.file
         var folder = deepLink.folder ?? rootSharedFolder
 
+        let isOpenFile = file != nil && !(file!.id.isEmpty)
+
         let processAndOpenFile: () -> Void = { [weak self] in
             /// Hide introdaction screen
             if let introViewController = ASCViewControllerManager.shared.rootController?.topMostViewController() as? ASCIntroViewController {
@@ -459,8 +461,12 @@ class ASCViewControllerManager {
             {
                 let account = ASCAccountsManager.shared.get(by: portal, email: email)
                 let alertController = UIAlertController(
-                    title: NSLocalizedString("Open Document", comment: ""),
-                    message: String(format: NSLocalizedString("To open a document, you must go to portal %@ under your account.", comment: ""), portal),
+                    title: isOpenFile
+                        ? NSLocalizedString("Open Document", comment: "")
+                        : NSLocalizedString("Open Folder", comment: ""),
+                    message: String(format: isOpenFile
+                        ? NSLocalizedString("To open a document, you must go to portal %@ under your account.", comment: "")
+                        : NSLocalizedString("To open a folder, you must go to portal %@ under your account.", comment: ""), portal),
                     preferredStyle: .alert,
                     tintColor: nil
                 )
@@ -525,7 +531,9 @@ class ASCViewControllerManager {
             {
                 UIAlertController.showWarning(
                     in: topVC,
-                    message: NSLocalizedString("To open a new document, you must exit the current document.", comment: "")
+                    message: isOpenFile
+                        ? NSLocalizedString("To open a new document, you must exit the current document.", comment: "")
+                        : NSLocalizedString("To open a folder, you must exit the current document.", comment: "")
                 )
                 self?.openFileInfo = nil
                 return
@@ -540,10 +548,6 @@ class ASCViewControllerManager {
             hud?.label.text = NSLocalizedString("Opening", comment: "Caption of the processing")
 
             // Read full folder info
-
-            let isRootFolder = folder.parentId == nil || folder.parentId == "0"
-
-            //                if !isRootFolder {
             requestGroup.enter()
             OnlyofficeApiClient.request(OnlyofficeAPI.Endpoints.Folders.info(folder: folder)) { response, error in
                 defer { requestGroup.leave() }
@@ -554,7 +558,6 @@ class ASCViewControllerManager {
                     folder = rootSharedFolder
                 }
             }
-            //                }
 
             // Read full file info
 

@@ -18,6 +18,7 @@ public extension URL {
         if var components = URLComponents(string: absoluteString) {
             components.path = ""
             components.query = nil
+            components.fragment = nil
             return components.url ?? self
         }
         return self

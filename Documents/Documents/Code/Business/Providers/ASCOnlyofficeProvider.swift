@@ -48,6 +48,11 @@ class ASCOnlyofficeProvider: ASCFileProviderProtocol & ASCSortableFileProviderPr
     }
 
     var delegate: ASCProviderDelegate?
+    var filterController: ASCFiltersControllerProtocol? = ASCOnlyOfficeFiltersController(
+        builder: ASCFiltersCollectionViewModelBuilder(),
+        filtersViewController: ASCFiltersViewController(),
+        itemsCount: 0
+    )
 
     internal var folder: ASCFolder?
     internal var fetchInfo: [String: Any?]?
@@ -272,8 +277,8 @@ class ASCOnlyofficeProvider: ASCFileProviderProtocol & ASCSortableFileProviderPr
             }
 
             /// Filter
-            if let filter = parameters["filterType"] as? Int {
-                params["filterType"] = filter
+            if let filters = parameters["filters"] as? [String: Any] {
+                params.merge(filters, uniquingKeysWith: { current, _ in current })
             }
 
             strongSelf.apiClient.request(OnlyofficeAPI.Endpoints.Folders.path(of: folder), params) { [weak self] response, error in

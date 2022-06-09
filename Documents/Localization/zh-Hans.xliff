@@ -1396,6 +1396,10 @@ Note: if you forget the passcode, you'll need to delete and reinstall the app. A
         <target>所有文件</target>
         <note>Category title</note>
       </trans-unit>
+      <trans-unit id="All files" xml:space="preserve">
+        <source>All files</source>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
       <trans-unit id="Allow access via external link" xml:space="preserve">
         <source>Allow access via external link</source>
         <target>允许通过外部链接访问</target>
@@ -1415,6 +1419,10 @@ Note: if you forget the passcode, you'll need to delete and reinstall the app. A
         <source>Applying</source>
         <target>正在应用中</target>
         <note>Caption of the process</note>
+      </trans-unit>
+      <trans-unit id="Archives" xml:space="preserve">
+        <source>Archives</source>
+        <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Are you sure you want to delete the account %@ from this device?" xml:space="preserve">
         <source>Are you sure you want to delete the account %@ from this device?</source>
@@ -1936,6 +1944,10 @@ others which use WebDAV protocol.</source>
         <target>代码错误: %ld</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
+      <trans-unit id="Exclude subfolders" xml:space="preserve">
+        <source>Exclude subfolders</source>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
       <trans-unit id="Export" xml:space="preserve">
         <source>Export</source>
         <target>导出</target>
@@ -2029,6 +2041,10 @@ others which use WebDAV protocol.</source>
       <trans-unit id="Fill the shapes using gradients, images, or patterns. Choose the desirable line type." xml:space="preserve">
         <source>Fill the shapes using gradients, images, or patterns. Choose the desirable line type.</source>
         <target>使用梯度、图像或图案填充形状。选择理想的线条类型。</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Filters" xml:space="preserve">
+        <source>Filters</source>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="First name is incorrect" xml:space="preserve">
@@ -2204,6 +2220,10 @@ to the clipboard</source>
         <target>我</target>
         <note>If current user name is not set</note>
       </trans-unit>
+      <trans-unit id="Media" xml:space="preserve">
+        <source>Media</source>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
       <trans-unit id="More" xml:space="preserve">
         <source>More</source>
         <target>更多</target>
@@ -2353,6 +2373,10 @@ to the clipboard</source>
       <trans-unit id="Note: removal from your account can not be undone." xml:space="preserve">
         <source>Note: removal from your account can not be undone.</source>
         <target>注意：从您的账户中删除是无法撤销的。</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Nothing to show" xml:space="preserve">
+        <source>Nothing to show</source>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Notify by Email" xml:space="preserve">
@@ -2664,6 +2688,10 @@ to the clipboard</source>
         <target>请求的验证范围不足</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
+      <trans-unit id="Reset" xml:space="preserve">
+        <source>Reset</source>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
       <trans-unit id="Restore" xml:space="preserve">
         <source>Restore</source>
         <target>还原</target>
@@ -2715,6 +2743,10 @@ to the clipboard</source>
         <target>选择另一个云来连接Nextcloud，支持ownCloud和其他云。</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
+      <trans-unit id="Select group" xml:space="preserve">
+        <source>Select group</source>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
       <trans-unit id="Select the folder to copy the items" xml:space="preserve">
         <source>Select the folder to copy the items</source>
         <target>选择文件夹复制该项目</target>
@@ -2729,6 +2761,10 @@ to the clipboard</source>
         <source>Select the folder to recover the items</source>
         <target>选择文件夹恢复该项目</target>
         <note>One line. Max 50 charasters</note>
+      </trans-unit>
+      <trans-unit id="Select user" xml:space="preserve">
+        <source>Select user</source>
+        <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Select the region in spreadsheet settings to automatically convert currency, date, and time." xml:space="preserve">
         <source>Select the region in spreadsheet settings to automatically convert currency, date, and time.</source>
@@ -2803,6 +2839,10 @@ to the clipboard</source>
       <trans-unit id="Sharing settings" xml:space="preserve">
         <source>Sharing settings</source>
         <target>共享设置</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Show %d results" xml:space="preserve">
+        <source>Show %d results</source>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Single Sign-on" xml:space="preserve">

@@ -18,6 +18,7 @@ class ASCOneDriveProvider: ASCSortableFileProviderProtocol {
 
     // MARK: - ASCFileProviderProtocol variables
 
+    var filterController: ASCFiltersControllerProtocol?
     var delegate: ASCProviderDelegate?
     var user: ASCUser?
     var items: [ASCEntity] = []

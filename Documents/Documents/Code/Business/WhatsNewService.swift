@@ -41,7 +41,7 @@ final class WhatsNewService {
             configuration.completionButton.cornerRadius = dummyButton.layerCornerRadius
             configuration.titleView.titleFont = ASCTextStyle.largeTitleBold.font
             configuration.itemsView.titleFont = ASCTextStyle.title3Bold.font
-            configuration.itemsView.subtitleFont = ASCTextStyle.subhead.font
+            configuration.itemsView.subtitleFont = ASCTextStyle.subheadline.font
             configuration.itemsView.autoTintImage = false
 
             if #available(iOS 13.0, *) {

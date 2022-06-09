@@ -1439,6 +1439,10 @@ leer, revisar o editar documentos.</target>
         <target>Todos los archivos</target>
         <note>Category title</note>
       </trans-unit>
+      <trans-unit id="All files" xml:space="preserve">
+        <source>All files</source>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
       <trans-unit id="Allow access via external link" xml:space="preserve">
         <source>Allow access via external link</source>
         <target>Permitir el acceso a través de un enlace externo</target>
@@ -1458,6 +1462,10 @@ leer, revisar o editar documentos.</target>
         <source>Applying</source>
         <target>Aplicando</target>
         <note>Caption of the process</note>
+      </trans-unit>
+      <trans-unit id="Archives" xml:space="preserve">
+        <source>Archives</source>
+        <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Are you sure you want to delete the account %@ from this device?" xml:space="preserve">
         <source>Are you sure you want to delete the account %@ from this device?</source>
@@ -1979,6 +1987,10 @@ otros que utilizan el protocolo WebDAV.</target>
         <target>Código de error: %ld</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
+      <trans-unit id="Exclude subfolders" xml:space="preserve">
+        <source>Exclude subfolders</source>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
       <trans-unit id="Export" xml:space="preserve">
         <source>Export</source>
         <target>Exportar</target>
@@ -2072,6 +2084,10 @@ otros que utilizan el protocolo WebDAV.</target>
       <trans-unit id="Fill the shapes using gradients, images, or patterns. Choose the desirable line type." xml:space="preserve">
         <source>Fill the shapes using gradients, images, or patterns. Choose the desirable line type.</source>
         <target>Rellene las formas utilizando gradientes, imágenes o patrones. Elija el tipo de línea que desee.</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Filters" xml:space="preserve">
+        <source>Filters</source>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="First name is incorrect" xml:space="preserve">
@@ -2246,6 +2262,10 @@ to the clipboard</source>
         <target>Yo</target>
         <note>If current user name is not set</note>
       </trans-unit>
+      <trans-unit id="Media" xml:space="preserve">
+        <source>Media</source>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
       <trans-unit id="More" xml:space="preserve">
         <source>More</source>
         <target>Más</target>
@@ -2395,6 +2415,10 @@ to the clipboard</source>
       <trans-unit id="Note: removal from your account can not be undone." xml:space="preserve">
         <source>Note: removal from your account can not be undone.</source>
         <target>Nota: la eliminación de su cuenta no se puede deshacer.</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Nothing to show" xml:space="preserve">
+        <source>Nothing to show</source>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Notify by Email" xml:space="preserve">
@@ -2699,6 +2723,10 @@ Si el problema persiste, póngase en contacto con nosotros y mencione este códi
         <target>La solicitud tenía un grado de autentificación insuficiente</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
+      <trans-unit id="Reset" xml:space="preserve">
+        <source>Reset</source>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
       <trans-unit id="Restore" xml:space="preserve">
         <source>Restore</source>
         <target>Restaurar</target>
@@ -2750,6 +2778,10 @@ Si el problema persiste, póngase en contacto con nosotros y mencione este códi
         <target>Seleccione otra nube para conectarse a Nextcloud, ownCloud y otras nubes soportadas.</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
+      <trans-unit id="Select group" xml:space="preserve">
+        <source>Select group</source>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
       <trans-unit id="Select the folder to copy the items" xml:space="preserve">
         <source>Select the folder to copy the items</source>
         <target>Seleccionar la carpeta para copiar los objetos</target>
@@ -2764,6 +2796,10 @@ Si el problema persiste, póngase en contacto con nosotros y mencione este códi
         <source>Select the folder to recover the items</source>
         <target>Seleccionar la carpeta para recuperar los objetos</target>
         <note>One line. Max 50 charasters</note>
+      </trans-unit>
+      <trans-unit id="Select user" xml:space="preserve">
+        <source>Select user</source>
+        <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Select the region in spreadsheet settings to automatically convert currency, date, and time." xml:space="preserve">
         <source>Select the region in spreadsheet settings to automatically convert currency, date, and time.</source>
@@ -2838,6 +2874,10 @@ Si el problema persiste, póngase en contacto con nosotros y mencione este códi
       <trans-unit id="Sharing settings" xml:space="preserve">
         <source>Sharing settings</source>
         <target>Ajustes de uso compartido</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Show %d results" xml:space="preserve">
+        <source>Show %d results</source>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Single Sign-on" xml:space="preserve">

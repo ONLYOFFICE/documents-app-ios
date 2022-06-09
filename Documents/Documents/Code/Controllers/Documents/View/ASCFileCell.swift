@@ -61,7 +61,7 @@ class ASCFileCell: MGSwipeTableCell {
         }
 
         title?.text = fileInfo.title
-        owner?.text = fileInfo.updatedBy?.displayName
+        owner?.text = fileInfo.createdBy?.displayName
         date?.text = (fileInfo.updated != nil)
             ? dateFormatter.string(from: fileInfo.updated!)
             : nil

@@ -44,6 +44,7 @@ class ASCiCloudProvider: ASCFileProviderProtocol & ASCSortableFileProviderProtoc
     var page: Int = 0
     var total: Int = 0
     var delegate: ASCProviderDelegate?
+    var filterController: ASCFiltersControllerProtocol?
 
     internal var folder: ASCFolder?
     internal var fetchInfo: [String: Any?]?

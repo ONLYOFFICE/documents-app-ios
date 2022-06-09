@@ -20,6 +20,12 @@
 "© Ascensio System SIA %d" = "© Ascensio System SIA %d";
 
 /* No comment provided by engineer. */
+"Сould not download file." = "Не удалось скачать файл.";
+
+/* No comment provided by engineer. */
+"Сould not upload file." = "Не удалось загрузить файл.";
+
+/* No comment provided by engineer. */
 "A file with a similar name already exists in the document directory on the device." = "Файл с таким именем уже существует в папке с документами на этом устройстве.";
 
 /* No comment provided by engineer. */
@@ -76,6 +82,9 @@
 /* No comment provided by engineer. */
 "All" = "Все";
 
+/* No comment provided by engineer. */
+"All files" = "Все файлы";
+
 /* Category title */
 "All Files" = "Все файлы";
 
@@ -90,6 +99,9 @@
 
 /* Caption of the process */
 "Applying" = "Применение";
+
+/* No comment provided by engineer. */
+"Archives" = "Архивы";
 
 /* No comment provided by engineer. */
 "Are you sure you want to delete the account %@ from this device?" = "Вы действительно хотите удалить аккаунт %@ с этого устройства?";
@@ -495,6 +507,9 @@
 "Fill the shapes using gradients, images, or patterns. Choose the desirable line type." = "Выполняйте заливку фигур градиентом, изображением или узором. Выбирайте подходящий тип линий.";
 
 /* No comment provided by engineer. */
+"Filters" = "Фильтры";
+
+/* No comment provided by engineer. */
 "First name is incorrect" = "Некорректное поле Имя";
 
 /* No comment provided by engineer. */
@@ -609,6 +624,9 @@
 /* If current user name is not set */
 "Me" = "Я";
 
+/* No comment provided by engineer. */
+"Media" = "Медиа";
+
 /* Button title */
 "More" = "Еще";
 
@@ -703,6 +721,9 @@
 
 /* No comment provided by engineer. */
 "Note: removal from your account can not be undone." = "Внимание: удаление из Вашего аккаунта будет нельзя отменить.";
+
+/* No comment provided by engineer. */
+"Nothing to show" = "Нечего показать";
 
 /* Sharing settings switcher */
 "Notify by Email" = "Отправить оповещение";
@@ -890,6 +911,9 @@
 /* No comment provided by engineer. */
 "Request had insufficient authentication scopes" = "Запрос имеет недостаточные области аутентификации";
 
+/* No comment provided by engineer. */
+"Reset" = "Сброс";
+
 /* Button title */
 "Restore" = "Восстановить";
 
@@ -916,6 +940,9 @@
 "Select another cloud to connect to Nextcloud, ownCloud and others are supported." = "Выберите другое облако для подключения к Nextcloud, ownCloud и другим поддерживаемым сервисам.";
 
 /* No comment provided by engineer. */
+"Select group" = "Группы";
+
+/* No comment provided by engineer. */
 "Select Photos" = "Выбрать фото";
 
 /* One line. Max 50 charasters */
@@ -928,7 +955,7 @@
 "Select the folder to recover the items" = "Выберите папку для восстановления элементов";
 
 /* No comment provided by engineer. */
-"Select the region in spreadsheet settings to automatically convert currency, date, and time." = "Настройте регион в таблицах чтобы автоматически форматировать валюту, даты и время.";
+"Select user" = "Пользователи";
 
 /* No comment provided by engineer. */
 "Selected provider is not available" = "Выбранный провайдер недоступен";
@@ -971,6 +998,9 @@
 
 /* Button title */
 "Sharing Settings" = "Совместный доступ";
+
+/* No comment provided by engineer. */
+"Show %d results" = "Показать %d результатов";
 
 /* No comment provided by engineer. */
 "Single Sign-on" = "Единая точка входа";
@@ -1268,10 +1298,4 @@
 
 /* Data units */
 "Zero bytes" = "Ноль байт";
-
-/* No comment provided by engineer. */
-"Сould not download file." = "Не удалось скачать файл.";
-
-/* No comment provided by engineer. */
-"Сould not upload file." = "Не удалось загрузить файл.";
 

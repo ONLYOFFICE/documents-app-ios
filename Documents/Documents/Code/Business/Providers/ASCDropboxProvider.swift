@@ -49,6 +49,7 @@ class ASCDropboxProvider: ASCFileProviderProtocol & ASCSortableFileProviderProto
     }
 
     var delegate: ASCProviderDelegate?
+    var filterController: ASCFiltersControllerProtocol?
 
     private var apiClient: DropboxApiClient?
     internal var provider: DropboxFileProvider?

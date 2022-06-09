@@ -6,7 +6,10 @@
 //  Copyright © 2017 Ascensio System SIA. All rights reserved.
 //
 
-import DocumentConverter
+#if !NO_EDITORS
+    import DocumentConverter
+#endif
+
 import SwiftRater
 import UIKit
 
@@ -60,15 +63,22 @@ class ASCAboutViewController: UITableViewController, UIGestureRecognizerDelegate
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        let versionInfo = [
+        var versionInfo = [
             [NSLocalizedString("Version", comment: ""), " \(ASCCommon.appVersion ?? "") (\(ASCCommon.appBuild ?? ""))"],
-            ["SDK", ASCEditorManager.shared.localSDKVersion().joined(separator: ".")],
-            [NSLocalizedString("Converter", comment: ""), DocumentLocalConverter.sdkVersion() ?? ""],
         ]
-        .map { $0.joined(separator: " ") }
-        .joined(separator: "\n")
 
-        versionLabel.text = versionInfo
+        #if !NO_EDITORS
+            versionInfo += [
+                ["SDK", ASCEditorManager.shared.localSDKVersion().joined(separator: ".")],
+                [NSLocalizedString("Converter", comment: ""), DocumentLocalConverter.sdkVersion() ?? ""],
+            ]
+        #endif
+
+        let versionInfoString = versionInfo
+            .map { $0.joined(separator: " ") }
+            .joined(separator: "\n")
+
+        versionLabel.text = versionInfoString
         copyrightsLabel.text = ASCConstants.Name.copyright
 
         let logoGestureTap = UITapGestureRecognizer(target: self, action: #selector(logoTap))

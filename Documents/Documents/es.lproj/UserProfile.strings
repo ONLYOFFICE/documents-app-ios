@@ -4,6 +4,9 @@
 /* Class = "UILabel"; text = "-"; ObjectID = "9Yi-42-22H"; Note = "Do not translate"; */
 "9Yi-42-22H.text" = "-";
 
+/* Class = "UILabel"; text = "Delete account"; ObjectID = "708-fR-i2H"; */
+"708-fR-i2H.text" = "Eliminar cuenta";
+
 /* Class = "UINavigationItem"; title = "Account"; ObjectID = "BXA-IE-d8z"; */
 "BXA-IE-d8z.title" = "Cuenta";
 

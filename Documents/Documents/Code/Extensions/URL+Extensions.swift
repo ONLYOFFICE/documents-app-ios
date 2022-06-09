@@ -10,6 +10,20 @@ import AVFoundation
 import UIKit
 
 public extension URL {
+    /// Generates new URL that does not have path and query.
+    ///
+    ///     let url = URL(string: "https://domain.com/path/other?q=1234")!
+    ///     print(url.dropPathAndQuery()) // prints "https://domain.com"
+    func dropPathAndQuery() -> URL {
+        if var components = URLComponents(string: absoluteString) {
+            components.path = ""
+            components.query = nil
+            components.fragment = nil
+            return components.url ?? self
+        }
+        return self
+    }
+
     /// Generate a thumbnail image from given url. Returns nil if no thumbnail could be created. This function may take some time to complete. It's recommended to dispatch the call if the thumbnail is not generated from a local resource.
     ///
     ///     var url = URL(string: "https://video.golem.de/files/1/1/20637/wrkw0718-sd.mp4")!

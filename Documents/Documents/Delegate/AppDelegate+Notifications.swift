@@ -11,11 +11,14 @@ import FirebaseMessaging
 import UIKit
 
 extension AppDelegate {
-    func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable: Any]) {
+    func application(_ application: UIApplication,
+                     didReceiveRemoteNotification userInfo: [AnyHashable: Any])
+    {
         log.debug(userInfo)
     }
 
-    func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable: Any],
+    func application(_ application: UIApplication,
+                     didReceiveRemoteNotification userInfo: [AnyHashable: Any],
                      fetchCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> Void)
     {
         UserDefaults.standard.set(userInfo, forKey: ASCConstants.SettingsKeys.pushUserInfo)
@@ -26,11 +29,15 @@ extension AppDelegate {
         completionHandler(UIBackgroundFetchResult.newData)
     }
 
-    func application(_ application: UIApplication, didFailToRegisterForRemoteNotificationsWithError error: Error) {
+    func application(_ application: UIApplication,
+                     didFailToRegisterForRemoteNotificationsWithError error: Error)
+    {
         log.debug("Unable to register for remote notifications: \(error.localizedDescription)")
     }
 
-    func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
+    func application(_ application: UIApplication,
+                     didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data)
+    {
         let deviceTokenString = deviceToken.map { String(format: "%02.2hhx", $0) }.joined()
 
         Messaging.messaging().apnsToken = deviceToken
@@ -91,7 +98,9 @@ extension AppDelegate: UNUserNotificationCenterDelegate {
 }
 
 extension AppDelegate: MessagingDelegate {
-    func messaging(_ messaging: Messaging, didReceiveRegistrationToken fcmToken: String?) {
+    func messaging(_ messaging: Messaging,
+                   didReceiveRegistrationToken fcmToken: String?)
+    {
         guard let fcmToken = fcmToken else {
             log.error("FirebaseMessaging Framework Reference token is not exist")
             return
@@ -102,5 +111,7 @@ extension AppDelegate: MessagingDelegate {
 
         let dataDict: [String: String] = ["token": fcmToken]
         NotificationCenter.default.post(name: Notification.Name("FCMToken"), object: nil, userInfo: dataDict)
+
+        ASCPushNotificationManager.requestRegister(fcmToken: fcmToken)
     }
 }

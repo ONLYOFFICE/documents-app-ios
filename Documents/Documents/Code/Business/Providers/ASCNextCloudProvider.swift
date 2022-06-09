@@ -7,7 +7,6 @@
 //
 
 import Alamofire
-import DocumentEditor
 import FileKit
 import FilesProvider
 import UIKit

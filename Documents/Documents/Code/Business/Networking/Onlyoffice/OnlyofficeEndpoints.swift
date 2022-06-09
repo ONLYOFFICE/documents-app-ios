@@ -49,6 +49,8 @@ class OnlyofficeAPI {
         public static let shareFolder = "api/\(version)/files/folder/%@/share"
         public static let forgotPassword = "api/\(version)/people/password"
         public static let deleteAccount = "api/\(version)/people/self/delete"
+        public static let pushRegisterDevice = "/api/\(version)/settings/push/docregisterdevice"
+        public static let pushSubscribe = "/api/\(version)/settings/push/docsubscribe"
 
         enum Forlder {
             public static let root = "@root"
@@ -149,7 +151,7 @@ class OnlyofficeAPI {
             }
 
             static func startEdit(file: ASCFile) -> Endpoint<OnlyofficeResponseType<String>> {
-                return Endpoint<OnlyofficeResponseType<String>>.make(String(format: Path.startEdit, file.id), .post, URLEncoding.default)
+                return Endpoint<OnlyofficeResponseType<String>>.make(String(format: Path.startEdit, file.id), .post)
             }
 
             static func trackEdit(file: ASCFile) -> Endpoint<OnlyofficeResponseType<Parameters>> {
@@ -219,6 +221,13 @@ class OnlyofficeAPI {
             static let capabilities: Endpoint<OnlyofficeResponse<OnlyofficeCapabilities>> = Endpoint<OnlyofficeResponse<OnlyofficeCapabilities>>.make(Path.capabilities)
             static let forgotPassword: Endpoint<OnlyofficeResponseType<String>> = Endpoint<OnlyofficeResponseType<String>>.make(Path.forgotPassword, .post)
             static let deleteAccount: Endpoint<OnlyofficeResponseBase> = Endpoint<OnlyofficeResponseBase>.make(Path.deleteAccount, .put)
+        }
+
+        // MARK: Push
+
+        enum Push {
+            static let pushRegisterDevice: Endpoint<OnlyofficeResponseType<ASCPushSubscribed>> = Endpoint<OnlyofficeResponseType<ASCPushSubscribed>>.make(Path.pushRegisterDevice, .post)
+            static let pushSubscribe: Endpoint<OnlyofficeResponseType<ASCPushSubscribed>> = Endpoint<OnlyofficeResponseType<ASCPushSubscribed>>.make(Path.pushSubscribe, .put)
         }
     }
 }

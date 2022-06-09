@@ -1,5 +1,5 @@
 ![Platforms](https://img.shields.io/badge/platforms-ios-lightgrey.svg)
-[![AppStore: ONLYOFFICE Documents](https://img.shields.io/badge/version-7.0.1-blue.svg?style=flat)](https://itunes.apple.com/app/onlyoffice-documents/id944896972)
+[![AppStore: ONLYOFFICE Documents](https://img.shields.io/badge/version-7.2-blue.svg?style=flat)](https://itunes.apple.com/app/onlyoffice-documents/id944896972)
 
 ## ONLYOFFICE Documents for iOS
 

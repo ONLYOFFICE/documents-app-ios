@@ -216,7 +216,7 @@
 				<string>list-format-docxf</string>
 			</array>
 			<key>CFBundleTypeName</key>
-			<string>ONLYOFFICE form template (.docxf)</string>
+			<string>ONLYOFFICE Edit Form document (.docxf)</string>
 			<key>LSHandlerRank</key>
 			<string>Owner</string>
 			<key>LSItemContentTypes</key>
@@ -236,7 +236,7 @@
 	<key>CFBundlePackageType</key>
 	<string>APPL</string>
 	<key>CFBundleShortVersionString</key>
-	<string>7.1</string>
+	<string>7.2</string>
 	<key>CFBundleURLTypes</key>
 	<array>
 		<dict>
@@ -271,7 +271,7 @@
 		</dict>
 	</array>
 	<key>CFBundleVersion</key>
-	<string>765</string>
+	<string>769</string>
 	<key>FacebookAdvertiserIDCollectionEnabled</key>
 	<integer>0</integer>
 	<key>FacebookAutoInitEnabled</key>

@@ -94,6 +94,9 @@
 /* No comment provided by engineer. */
 "An unexpected error has occurred. Please try again later. Sorry for inconvenience." = "Произошла непредвиденная ошибка. Повторите попытку позже. Извините за неудобство.";
 
+/* No comment provided by engineer. */
+"AppleId authentication failed" = "Аутентификация через AppleId не удалась";
+
 /* Caption of the process */
 "Applying" = "Применение";
 
@@ -108,9 +111,6 @@
 
 /* No comment provided by engineer. */
 "Author" = "Автор";
-
-/* No comment provided by engineer. */
-"Better formatting" = "Улучшенное форматирование";
 
 /* No comment provided by engineer. */
 "Box directory" = "Папка Box";
@@ -156,9 +156,6 @@
 
 /* Button title */
 "Clear Cache?" = "Очистить кэш?";
-
-/* No comment provided by engineer. */
-"Clear formatting, use extended color palette, and change font with improved settings." = "Очищайте форматирование, пользуйтесь расширенной палитрой цветов, удобно настраивайте размер шрифта.";
 
 /* Caption of the processing */
 "Clearing" = "Очистка";
@@ -456,9 +453,6 @@
 "Export" = "Экспорт";
 
 /* No comment provided by engineer. */
-"External keyboards" = "Внешние клавиатуры";
-
-/* No comment provided by engineer. */
 "Failed online conversion service." = "Ошибка службы онлайн-конвертации";
 
 /* No comment provided by engineer. */
@@ -510,7 +504,7 @@
 "Files" = "Файлы";
 
 /* No comment provided by engineer. */
-"Fillable forms" = "Заполнение форм";
+"Fill the shapes using gradients, images, or patterns. Choose the desirable line type." = "Выполняйте заливку фигур градиентом, изображением или узором. Выбирайте подходящий тип линий.";
 
 /* No comment provided by engineer. */
 "Filters" = "Фильтры";
@@ -602,6 +596,9 @@
 /* No comment provided by engineer. */
 "Link copied\nto the clipboard" = "Ссылка скопирована\nв буфер обмена";
 
+/* No comment provided by engineer. */
+"Log in to your cloud using Apple ID or Microsoft account." = "Осуществляйте вход в облако с помощью Apple ID или аккаунта Microsoft.";
+
 /* Caption of the process */
 "Logging in" = "Выполняется вход";
 
@@ -633,6 +630,9 @@
 /* Button title */
 "More" = "Еще";
 
+/* No comment provided by engineer. */
+"More in autoshapes" = "Улучшенные автофигуры";
+
 /* Button title */
 "Move" = "Переместить";
 
@@ -662,6 +662,9 @@
 
 /* No comment provided by engineer. */
 "New" = "Новый";
+
+/* No comment provided by engineer. */
+"New authentication methods" = "Новые возможности входа";
 
 /* No comment provided by engineer. */
 "New Document" = "Новый документ";
@@ -825,6 +828,9 @@
 "Please retry. \n\n If the problem persists contact us and mention this error code: Google - %@" = "Попробуйте ещё раз.\n\nЕсли проблема повторяется, напишите нам и назовите код ошибки: Google - %@";
 
 /* No comment provided by engineer. */
+"Please retry. \n\n If the problem persists contact us and mention this error code: Microsoft - %@" = "Попробуйте ещё раз.\n\nЕсли проблема повторяется, напишите нам и назовите код ошибки: Microsoft - %@";
+
+/* No comment provided by engineer. */
 "Please retry. \n\n If the problem persists contact us and mention this error code: OneDrive - %@" = "Попробуйте ещё раз.\n\nЕсли проблема повторяется, напишите нам и назовите код ошибки: OneDrive - %@";
 
 /* No comment provided by engineer. */
@@ -855,7 +861,7 @@
 "Processing" = "Обработка";
 
 /* Category title */
-"Project Documents" = "Документы проектов";
+"Project Documents" = "В проектах";
 
 /* No comment provided by engineer. */
 "Protected File" = "Защищенный файл";
@@ -868,6 +874,9 @@
 
 /* Caption of the processing */
 "Recovery" = "Восстановление";
+
+/* No comment provided by engineer. */
+"Regional settings" = "Региональные настройки";
 
 /* No comment provided by engineer. */
 "Registration" = "Регистрация";
@@ -1206,9 +1215,6 @@
 /* Caption of the process */
 "Uploading" = "Загрузка";
 
-/* No comment provided by engineer. */
-"Use external keyboards in ONLYOFFICE Documents with improved compatibility." = "Используйте внешние клавиатуры c приложением ONLYOFFICE Документы с улучшенной совместимостью.";
-
 /* Button title */
 "Use Face ID" = "Использовать Face ID";
 
@@ -1237,9 +1243,6 @@
 "Version" = "Версия";
 
 /* No comment provided by engineer. */
-"View and fill online forms, save them as PDF files." = "Открывайте и заполняйте онлайн формы, сохраняйте их в формате PDF.";
-
-/* No comment provided by engineer. */
 "Warning" = "Предупреждение";
 
 /* No comment provided by engineer. */
@@ -1265,6 +1268,9 @@
 
 /* Introduction Step Two - Title */
 "Work with office files" = "Работайте с файлами документов";
+
+/* No comment provided by engineer. */
+"Wrong server, login or password." = "Неверный адрес сервера, логин или пароль.";
 
 /* No comment provided by engineer. */
 "Yandex directory" = "Папка Яндекс";

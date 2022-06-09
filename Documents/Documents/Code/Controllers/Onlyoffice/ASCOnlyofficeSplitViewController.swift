@@ -53,6 +53,10 @@ class ASCOnlyofficeSplitViewController: ASCBaseSplitViewController {
 
     @objc func onOnlyofficeLogInCompleted(_ notification: Notification) {
         ASCViewControllerManager.shared.rootController?.display(provider: ASCFileManager.onlyofficeProvider, folder: nil)
+
+        delay(seconds: 0.1) {
+            ASCViewControllerManager.shared.routeOpenFile()
+        }
     }
 
     @objc func onOnlyofficeLogoutCompleted(_ notification: Notification) {

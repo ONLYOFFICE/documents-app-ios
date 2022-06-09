@@ -1,5 +1,5 @@
 /* Class = "UILabel"; text = "Next"; ObjectID = "1hg-GO-WNq"; */
-"1hg-GO-WNq.text" = "次の変更箇所";
+"1hg-GO-WNq.text" = "次へ";
 
 /* Class = "UITextField"; placeholder = "Required"; ObjectID = "2MJ-bj-ZpN"; */
 "2MJ-bj-ZpN.placeholder" = "必須";
@@ -14,7 +14,13 @@
 "fGf-yk-zsE.text" = "パスワード";
 
 /* Class = "UITextField"; placeholder = "Required"; ObjectID = "gp7-l6-arn"; */
-"gp7-l6-arn.placeholder" = "写真を置き換えする";
+"gp7-l6-arn.placeholder" = "必須";
+
+/* Class = "UITextField"; placeholder = "example.com"; ObjectID = "i2t-Xh-reL"; */
+"i2t-Xh-reL.placeholder" = "example.com";
+
+/* Class = "UILabel"; text = "Server"; ObjectID = "idC-C3-Fpx"; */
+"idC-C3-Fpx.text" = "サーバー";
 
 /* Class = "UINavigationItem"; title = "Connect Storage"; ObjectID = "KNc-kE-PIF"; */
 "KNc-kE-PIF.title" = "接続ストレージ";
@@ -27,4 +33,7 @@
 
 /* Class = "UILabel"; text = "Server"; ObjectID = "q9H-LF-Uc2"; */
 "q9H-LF-Uc2.text" = "サーバー";
+
+/* Class = "UILabel"; text = "Next"; ObjectID = "sK2-QR-ADm"; */
+"sK2-QR-ADm.text" = "次の変更箇所";
 

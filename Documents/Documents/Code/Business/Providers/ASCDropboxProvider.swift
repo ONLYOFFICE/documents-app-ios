@@ -75,11 +75,17 @@ class ASCDropboxProvider: ASCFileProviderProtocol & ASCSortableFileProviderProto
         apiClient = nil
     }
 
-    init(credential: URLCredential) {
-        provider = DropboxFileProvider(credential: credential)
-
+    init(urlCredential: URLCredential, oAuthCredential: ASCOAuthCredential) {
+        provider = DropboxFileProvider(credential: urlCredential)
         apiClient = DropboxApiClient()
-        apiClient?.token = credential.password
+        apiClient?.credential = oAuthCredential
+        apiClient?.onRefreshToken = { [weak self] credential in
+            self?.provider?.credential = URLCredential(
+                user: ASCConstants.Clouds.Dropbox.appId,
+                password: credential.accessToken,
+                persistence: .forSession
+            )
+        }
     }
 
     func copy() -> ASCFileProviderProtocol {
@@ -119,8 +125,10 @@ class ASCDropboxProvider: ASCFileProviderProtocol & ASCSortableFileProviderProto
             "type": type.rawValue,
         ]
 
-        if let token = provider?.credential?.password {
-            info += ["token": token]
+        if let authCredential = apiClient?.credential {
+            info += ["accessToken": authCredential.accessToken]
+            info += ["refreshToken": authCredential.refreshToken]
+            info += ["expiration": authCredential.expiration.timeIntervalSinceNow]
         }
 
         if let user = user {
@@ -145,12 +153,32 @@ class ASCDropboxProvider: ASCFileProviderProtocol & ASCSortableFileProviderProto
                 user = ASCUser(JSON: userJson)
             }
 
-            if let token = json["token"] as? String {
-                let credential = URLCredential(user: ASCConstants.Clouds.Dropbox.clientId, password: token, persistence: .forSession)
-                provider = DropboxFileProvider(credential: credential)
+            if let accessToken = json["accessToken"] as? String,
+               let refreshToken = json["refreshToken"] as? String,
+               let expiration = json["expiration"] as? Double
+            {
+                let oAuthCredential = ASCOAuthCredential(
+                    accessToken: accessToken,
+                    refreshToken: refreshToken,
+                    expiration: Date(timeIntervalSince1970: expiration)
+                )
+                let urlCredential = URLCredential(
+                    user: ASCConstants.Clouds.Dropbox.appId,
+                    password: oAuthCredential.accessToken,
+                    persistence: .forSession
+                )
+
+                provider = DropboxFileProvider(credential: urlCredential)
 
                 apiClient = DropboxApiClient()
-                apiClient?.token = credential.password
+                apiClient?.credential = oAuthCredential
+                apiClient?.onRefreshToken = { [weak self] credential in
+                    self?.provider?.credential = URLCredential(
+                        user: ASCConstants.Clouds.Dropbox.appId,
+                        password: credential.accessToken,
+                        persistence: .forSession
+                    )
+                }
             }
         }
     }
@@ -200,14 +228,17 @@ class ASCDropboxProvider: ASCFileProviderProtocol & ASCSortableFileProviderProto
 
     func isReachable(with info: [String: Any], complation: @escaping ((Bool, ASCFileProviderProtocol?) -> Void)) {
         guard
-            let token = info["token"] as? String
+            let accessToken = info["token"] as? String,
+            let refreshToken = info["refresh_token"] as? String,
+            let expiration = info["expires_in"] as? Int
         else {
             complation(false, nil)
             return
         }
 
-        let credential = URLCredential(user: ASCConstants.Clouds.Dropbox.clientId, password: token, persistence: .forSession)
-        let dropboxCloudProvider = ASCDropboxProvider(credential: credential)
+        let urlCredential = URLCredential(user: ASCConstants.Clouds.Dropbox.appId, password: accessToken, persistence: .forSession)
+        let oAuthCredential = ASCOAuthCredential(accessToken: accessToken, refreshToken: refreshToken, expiration: Date().adding(.second, value: expiration))
+        let dropboxCloudProvider = ASCDropboxProvider(urlCredential: urlCredential, oAuthCredential: oAuthCredential)
 
         dropboxCloudProvider.isReachable { success, error in
             DispatchQueue.main.async {
@@ -317,8 +348,6 @@ class ASCDropboxProvider: ASCFileProviderProtocol & ASCSortableFileProviderProto
                             cloudFolder.updated = $0.modifiedDate
                             cloudFolder.createdBy = strongSelf.user
                             cloudFolder.updatedBy = strongSelf.user
-                            //                        cloudFolder.filesCount = -1
-                            //                        cloudFolder.foldersCount = -1
                             cloudFolder.parent = folder
                             cloudFolder.parentId = folder.id
 
@@ -330,9 +359,6 @@ class ASCDropboxProvider: ASCFileProviderProtocol & ASCSortableFileProviderProto
                         .map {
                             let fileSize: UInt64 = ($0.size < 0) ? 0 : UInt64($0.size)
                             let cloudFile = ASCFile()
-                            //                            file.id = $0.path
-                            //                            file.title = $0.name
-                            //                            file.created = $0.creationDate ?? $0.modifiedDate
 
                             cloudFile.id = $0.path
                             cloudFile.rootFolderType = .dropboxAll
@@ -390,9 +416,7 @@ class ASCDropboxProvider: ASCFileProviderProtocol & ASCSortableFileProviderProto
             }
         }
 
-        if let _ = user {
-            fetch(completeon)
-        } else {
+        if user == nil || apiClient?.credential?.requiresRefresh ?? false {
             userInfo { [weak self] success, error in
                 if success {
                     fetch(completeon)
@@ -401,6 +425,8 @@ class ASCDropboxProvider: ASCFileProviderProtocol & ASCSortableFileProviderProto
                     completeon?(strongSelf, folder, false, error)
                 }
             }
+        } else {
+            fetch(completeon)
         }
     }
 
@@ -797,8 +823,6 @@ class ASCDropboxProvider: ASCFileProviderProtocol & ASCSortableFileProviderProto
             oldPath = Path(folder.id)
             newPath = oldPath.parent + newName
         }
-
-        //        ASCBaseApi.clearCookies(for: provider.baseURL)
 
         provider.moveItem(path: oldPath.rawValue, to: newPath.rawValue, overwrite: false) { [weak self] error in
             DispatchQueue.main.async { [weak self] in

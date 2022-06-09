@@ -318,6 +318,7 @@ extension ASCSharingAddRightHoldersViewController: ASCSharingAddRightHoldersView
 
     func onAccessSheetSelectAction(shareAccessRaw: Int) {
         guard let access = ASCShareAccess(rawValue: shareAccessRaw) else { return }
+        interactor?.makeRequest(requestType: .changeAccessForSelected(access))
         selectedAccess = access
     }
 

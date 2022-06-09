@@ -198,6 +198,9 @@ class ASCSignInController {
                                         ["type": OnlyofficeApplicationType.documents.rawValue]
                                     )
 
+                                    // Registration for push notification
+                                    ASCPushNotificationManager.requestRegister()
+
                                     // Analytics
                                     if let portal = request.portal {
                                         ASCAnalytics.logEvent(ASCConstants.Analytics.Event.loginPortal, parameters: [

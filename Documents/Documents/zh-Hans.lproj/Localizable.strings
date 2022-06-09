@@ -85,6 +85,9 @@
 /* No comment provided by engineer. */
 "An unexpected error has occurred. Please try again later. Sorry for inconvenience." = "发生了意外的错误。请稍后再试。对不起，给您带来不便。";
 
+/* No comment provided by engineer. */
+"AppleId authentication failed" = "Apple ID验证失败";
+
 /* Caption of the process */
 "Applying" = "正在应用中";
 
@@ -96,9 +99,6 @@
 
 /* No comment provided by engineer. */
 "Author" = "作者";
-
-/* No comment provided by engineer. */
-"Better formatting" = "更好的格式化";
 
 /* No comment provided by engineer. */
 "Box directory" = "箱子目录";
@@ -144,9 +144,6 @@
 
 /* Button title */
 "Clear Cache?" = "清除缓存吗？";
-
-/* No comment provided by engineer. */
-"Clear formatting, use extended color palette, and change font with improved settings." = "清除格式，使用扩展调色板，并使用改进的设置更改字体。";
 
 /* Caption of the processing */
 "Clearing" = "清除";
@@ -219,6 +216,9 @@
 
 /* Caption of the processing */
 "Copying" = "正在复制";
+
+/* Description of file operation error */
+"Could not change file attributes" = "无法改变文件属性";
 
 /* Description of file operation error */
 "Could not change the directory" = "无法改变目录";
@@ -441,9 +441,6 @@
 "Export" = "导出";
 
 /* No comment provided by engineer. */
-"External keyboards" = "外接键盘";
-
-/* No comment provided by engineer. */
 "Failed online conversion service." = "在线转换服务失败。";
 
 /* No comment provided by engineer. */
@@ -495,7 +492,7 @@
 "Files" = "文件";
 
 /* No comment provided by engineer. */
-"Fillable forms" = "可填写的表单";
+"Fill the shapes using gradients, images, or patterns. Choose the desirable line type." = "使用梯度、图像或图案填充形状。选择理想的线条类型。";
 
 /* No comment provided by engineer. */
 "First name is incorrect" = "名字不正确";
@@ -555,6 +552,9 @@
 "Incorrect portal address" = "门户地址不正确";
 
 /* No comment provided by engineer. */
+"Instructions had been sent to your email" = "指示已发送到您的邮箱";
+
+/* No comment provided by engineer. */
 "Invalid Country Code" = "国家代码无效";
 
 /* No comment provided by engineer. */
@@ -580,6 +580,9 @@
 
 /* No comment provided by engineer. */
 "Link copied\nto the clipboard" = "链接已复制\n到剪贴板";
+
+/* No comment provided by engineer. */
+"Log in to your cloud using Apple ID or Microsoft account." = "使用Apple ID或微软账户登录您的云端。";
 
 /* Caption of the process */
 "Logging in" = "正在登录";
@@ -608,6 +611,9 @@
 
 /* Button title */
 "More" = "更多";
+
+/* No comment provided by engineer. */
+"More in autoshapes" = "自动形状新功能";
 
 /* Button title */
 "Move" = "移动";
@@ -638,6 +644,9 @@
 
 /* No comment provided by engineer. */
 "New" = "新";
+
+/* No comment provided by engineer. */
+"New authentication methods" = "新的认证方法";
 
 /* No comment provided by engineer. */
 "New Document" = "新建文档";
@@ -798,6 +807,9 @@
 "Please retry. \n\n If the problem persists contact us and mention this error code: Google - %@" = "请重试。\n\n 如果问题仍然存在，请联系我们并提及此错误代码： Google - %@";
 
 /* No comment provided by engineer. */
+"Please retry. \n\n If the problem persists contact us and mention this error code: Microsoft - %@" = "请重试。\n\n 如果问题仍然存在，请联系我们并提及此错误代码：Microsoft - %@";
+
+/* No comment provided by engineer. */
 "Please retry. \n\n If the problem persists contact us and mention this error code: OneDrive - %@" = "请重试。\n\n 如果问题仍然存在，请联系我们并提及此错误代码：OneDrive - %@";
 
 /* No comment provided by engineer. */
@@ -841,6 +853,9 @@
 
 /* Caption of the processing */
 "Recovery" = "恢复";
+
+/* No comment provided by engineer. */
+"Regional settings" = "区域设置";
 
 /* No comment provided by engineer. */
 "Registration" = "注册";
@@ -913,6 +928,9 @@
 "Select the folder to recover the items" = "选择文件夹恢复该项目";
 
 /* No comment provided by engineer. */
+"Select the region in spreadsheet settings to automatically convert currency, date, and time." = "在电子表格设置中选择区域，以自动转换货币、日期和时间。";
+
+/* No comment provided by engineer. */
 "Selected provider is not available" = "选定的提供程序不可用";
 
 /* No comment provided by engineer. */
@@ -920,6 +938,12 @@
 
 /* No comment provided by engineer. */
 "Selecting access rights" = "选择访问权";
+
+/* No comment provided by engineer. */
+"Send" = "发送";
+
+/* No comment provided by engineer. */
+"Send the profile deletion instructions to the email address %@?" = "将账户的删除指示发送到%@?电子邮件地址";
 
 /* Caption of the process */
 "Sending" = "正在发送";
@@ -992,6 +1016,9 @@
 
 /* Data units */
 "Tb" = "Tb";
+
+/* No comment provided by engineer. */
+"Terminate account" = "删除账户";
 
 /* Part of phrases - By creating the portal you agree with our Privacy Policy and Terms of Service */
 "Terms of Service" = "服务条款";
@@ -1158,9 +1185,6 @@
 /* Caption of the process */
 "Uploading" = "正在上转";
 
-/* No comment provided by engineer. */
-"Use external keyboards in ONLYOFFICE Documents with improved compatibility." = "在ONLYOFFICE文档中使用外部键盘。";
-
 /* Button title */
 "Use Face ID" = "使用Face ID";
 
@@ -1187,9 +1211,6 @@
 
 /* No comment provided by engineer. */
 "Version" = "版本";
-
-/* No comment provided by engineer. */
-"View and fill online forms, save them as PDF files." = "在线查看并填写表单，将其另存为PDF文件。";
 
 /* No comment provided by engineer. */
 "Warning" = "警告";
@@ -1219,7 +1240,7 @@
 "Work with office files" = "处理办公文件";
 
 /* No comment provided by engineer. */
-"Wrong login or password." = "登录名或密码错误。";
+"Wrong server, login or password." = "服务器、登录名或密码错误。";
 
 /* No comment provided by engineer. */
 "Yandex directory" = "Yandex目录";

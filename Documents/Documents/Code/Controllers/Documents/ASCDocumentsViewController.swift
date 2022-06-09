@@ -11,7 +11,6 @@ import FileKit
 import MBProgressHUD
 import MGSwipeTableCell
 import ObjectMapper
-import SpreadsheetEditor
 import SwiftMessages
 import SwiftRater
 import UIKit

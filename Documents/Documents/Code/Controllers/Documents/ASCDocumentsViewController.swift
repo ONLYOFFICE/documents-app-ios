@@ -654,17 +654,19 @@ class ASCDocumentsViewController: ASCBaseTableViewController, UIGestureRecognize
             navigationItem.setLeftBarButtonItems(nil, animated: animated)
 
             var rightBarBtnItems = [ASCStyles.barFixedSpace]
+
             if let sortSelectBarBtn = sortSelectBarButton {
                 rightBarBtnItems.append(sortSelectBarBtn)
             }
-            if let filterBarBtn = filterBarButton,
-               provider?.type == .onlyoffice || provider?.type == .local
-            {
+
+            if let filterBarBtn = filterBarButton, provider?.filterController != nil {
                 rightBarBtnItems.append(filterBarBtn)
             }
+
             if let addBarBtn = addBarButton {
                 rightBarBtnItems.append(addBarBtn)
             }
+
             navigationItem.setRightBarButtonItems(rightBarBtnItems, animated: animated)
         }
 
@@ -679,7 +681,21 @@ class ASCDocumentsViewController: ASCBaseTableViewController, UIGestureRecognize
 
         guard showAddButton else { return nil }
 
-        return ASCStyles.createBarButton(image: Asset.Images.navAdd.image, target: self, action: #selector(onAddEntityAction))
+        if #available(iOS 13.0, *) {
+            let config = UIImage.SymbolConfiguration(pointSize: 22, weight: .regular)
+
+            return ASCStyles.createBarButton(
+                image: UIImage(systemName: "plus", withConfiguration: config),
+                target: self,
+                action: #selector(onAddEntityAction)
+            )
+        } else {
+            return ASCStyles.createBarButton(
+                image: Asset.Images.navAdd.image,
+                target: self,
+                action: #selector(onAddEntityAction)
+            )
+        }
     }
 
     private func createFilterBarButton() -> UIBarButtonItem {
@@ -695,7 +711,7 @@ class ASCDocumentsViewController: ASCBaseTableViewController, UIGestureRecognize
     private func createSortSelectBarButton() -> UIBarButtonItem {
         guard categoryIsRecent else {
             if #available(iOS 13.0, *) {
-                let config = UIImage.SymbolConfiguration(pointSize: 22, weight: .light)
+                let config = UIImage.SymbolConfiguration(pointSize: 20, weight: .regular)
 
                 return ASCStyles.createBarButton(
                     image: UIImage(systemName: "ellipsis.circle", withConfiguration: config),

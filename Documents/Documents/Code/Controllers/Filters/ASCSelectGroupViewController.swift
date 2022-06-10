@@ -77,9 +77,9 @@ class ASCSelectGroupViewController: UIViewController {
         view.backgroundColor = Asset.Colors.tableCategoryBackground.color
         searchController.searchBar.delegate = self
         setupNavigationBar()
-        groupsListRequest()
-        setupTableView()
         configureSearchController()
+        setupTableView()
+        groupsListRequest()
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -157,6 +157,7 @@ class ASCSelectGroupViewController: UIViewController {
     private func showActivityIndicator() {
         activityIndicator.translatesAutoresizingMaskIntoConstraints = false
 
+        activityIndicator.removeFromSuperview()
         view.addSubview(activityIndicator)
 
         let tableHeaderHeigh = tableView.tableHeaderView?.height ?? 0

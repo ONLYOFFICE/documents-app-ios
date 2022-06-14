@@ -20,7 +20,7 @@ class ASCSettingsNotificationCell: UITableViewCell {
             $0.contentMode = .center
         }
         return $0
-    }(UIImageView(frame: CGRect(x: 0, y: 0, width: 16, height: 16)))
+    }(UIImageView(frame: CGRect(x: 0, y: 0, width: 18, height: 18)))
 
     var displayError: Bool = false {
         didSet {

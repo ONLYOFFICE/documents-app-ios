@@ -66,11 +66,21 @@ class ASCConstants {
         static let lastCloudIndex = "asc-last-cloud-index"
         static let pushAllNotification = "asc-push-all"
 
+        // Debug
+        static let debugHideSearchbarIfEmpty = "asc-debug-hidesearchbarifempty"
+        static let debugAllowiCloud = "asc-debug-allowicloud"
+        static let debugAllowCategoriesSkeleton = "asc-debug-allowcategoriesskeleton"
+
         static func setupDefaults() {
             UserDefaults.standard.register(defaults: [ASCConstants.SettingsKeys.compressImage: true])
             UserDefaults.standard.register(defaults: [ASCConstants.SettingsKeys.allowTouchId: true])
             UserDefaults.standard.register(defaults: [ASCConstants.SettingsKeys.previewFiles: true])
             UserDefaults.standard.register(defaults: [ASCConstants.SettingsKeys.pushAllNotification: true])
+
+            // Debug
+            UserDefaults.standard.register(defaults: [ASCConstants.SettingsKeys.debugHideSearchbarIfEmpty: false])
+            UserDefaults.standard.register(defaults: [ASCConstants.SettingsKeys.debugAllowiCloud: true])
+            UserDefaults.standard.register(defaults: [ASCConstants.SettingsKeys.debugAllowCategoriesSkeleton: false])
         }
     }
 
@@ -216,10 +226,19 @@ class ASCConstants {
 
     enum Feature {
         // Hide the searchbar in the navigationbar if the list of documents is empty
-        static let hideSearchbarIfEmpty = false
+        static var hideSearchbarIfEmpty: Bool {
+            UserDefaults.standard.bool(forKey: ASCConstants.SettingsKeys.debugHideSearchbarIfEmpty)
+        }
 
         // Allow iCloud provider
-        static let allowiCloud = true
+        static var allowiCloud: Bool {
+            UserDefaults.standard.bool(forKey: ASCConstants.SettingsKeys.debugAllowiCloud)
+        }
+
+        // Allow skeleton animation for ONLYOFFICE categories on load
+        static var allowCategoriesSkeleton: Bool {
+            UserDefaults.standard.bool(forKey: ASCConstants.SettingsKeys.debugAllowCategoriesSkeleton)
+        }
     }
 
     static func remoteConfigValue(forKey key: String) -> RemoteConfigValue? {

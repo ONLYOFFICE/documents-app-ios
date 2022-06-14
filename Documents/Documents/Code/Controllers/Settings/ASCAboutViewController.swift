@@ -46,7 +46,9 @@ enum SocialNetwork {
     }
 }
 
-class ASCAboutViewController: UITableViewController, UIGestureRecognizerDelegate {
+class ASCAboutViewController: ASCBaseTableViewController, UIGestureRecognizerDelegate {
+    override class var storyboard: Storyboard { return Storyboard.settings }
+
     // MARK: - Properties
 
     @IBOutlet var versionLabel: UILabel!

@@ -107,6 +107,10 @@ internal enum StoryboardScene {
     internal static let storyboardName = "Settings"
 
     internal static let initialScene = InitialSceneType<Documents.ASCBaseNavigationController>(storyboard: Settings.self)
+
+    internal static let ascAboutViewController = SceneType<Documents.ASCAboutViewController>(storyboard: Settings.self, identifier: "ASCAboutViewController")
+
+    internal static let ascPasscodeLockViewController = SceneType<Documents.ASCPasscodeLockViewController>(storyboard: Settings.self, identifier: "ASCPasscodeLockViewController")
   }
   internal enum Sort: StoryboardType {
     internal static let storyboardName = "Sort"

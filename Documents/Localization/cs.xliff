@@ -2,7 +2,7 @@
 <xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="1.2" xsi:schemaLocation="urn:oasis:names:tc:xliff:document:1.2 http://docs.oasis-open.org/xliff/v1.2/os/xliff-core-1.2-strict.xsd">
   <file original="Documents/Base.lproj/ConnectStorage.storyboard" source-language="en" target-language="cs" datatype="plaintext">
     <header>
-      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="13.3" build-num="13E113"/>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="13.3.1" build-num="13E500a"/>
     </header>
     <body>
       <trans-unit id="1hg-GO-WNq.text" xml:space="preserve">
@@ -74,7 +74,7 @@
   </file>
   <file original="Documents/Base.lproj/CreatePortal.storyboard" source-language="en" target-language="cs" datatype="plaintext">
     <header>
-      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="13.3" build-num="13E113"/>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="13.3.1" build-num="13E500a"/>
     </header>
     <body>
       <trans-unit id="BMv-HP-hD2.normalTitle" xml:space="preserve">
@@ -162,7 +162,7 @@ začněte používat vaší kancelář</target>
   </file>
   <file original="Documents/Base.lproj/Intro.storyboard" source-language="en" target-language="cs" datatype="plaintext">
     <header>
-      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="13.3" build-num="13E113"/>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="13.3.1" build-num="13E500a"/>
     </header>
     <body>
       <trans-unit id="De8-tD-APT.text" xml:space="preserve">
@@ -184,7 +184,7 @@ začněte používat vaší kancelář</target>
   </file>
   <file original="Documents/Base.lproj/Localizable.stringsdict" source-language="en" target-language="cs" datatype="plaintext">
     <header>
-      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="13.3" build-num="13E113"/>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="13.3.1" build-num="13E500a"/>
     </header>
     <body>
       <trans-unit id="/%d selected:dict/NSStringLocalizedFormatKey:dict/:string" xml:space="preserve">
@@ -421,7 +421,7 @@ začněte používat vaší kancelář</target>
   </file>
   <file original="Documents/Base.lproj/Login.storyboard" source-language="en" target-language="cs" datatype="plaintext">
     <header>
-      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="13.3" build-num="13E113"/>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="13.3.1" build-num="13E500a"/>
     </header>
     <body>
       <trans-unit id="0X2-Xg-z5B.text" xml:space="preserve">
@@ -692,7 +692,7 @@ ověření</target>
   </file>
   <file original="Documents/Base.lproj/Main.storyboard" source-language="en" target-language="cs" datatype="plaintext">
     <header>
-      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="13.3" build-num="13E113"/>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="13.3.1" build-num="13E500a"/>
     </header>
     <body>
       <trans-unit id="0Hf-aP-smp.text" xml:space="preserve">
@@ -844,23 +844,13 @@ ověření</target>
   </file>
   <file original="Documents/Base.lproj/Settings.storyboard" source-language="en" target-language="cs" datatype="plaintext">
     <header>
-      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="13.3" build-num="13E113"/>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="13.3.1" build-num="13E500a"/>
     </header>
     <body>
       <trans-unit id="0DJ-uV-iju.title" xml:space="preserve">
         <source>About</source>
         <target>O</target>
         <note>Class = "UINavigationItem"; title = "About"; ObjectID = "0DJ-uV-iju";</note>
-      </trans-unit>
-      <trans-unit id="1kc-cf-XDc.text" xml:space="preserve">
-        <source>None</source>
-        <target>Žádný</target>
-        <note>Class = "UILabel"; text = "None"; ObjectID = "1kc-cf-XDc";</note>
-      </trans-unit>
-      <trans-unit id="4oc-1P-wMA.headerTitle" xml:space="preserve">
-        <source>Security</source>
-        <target>Zabezpečení</target>
-        <note>Class = "UITableViewSection"; headerTitle = "Security"; ObjectID = "4oc-1P-wMA";</note>
       </trans-unit>
       <trans-unit id="7gT-v5-3eH.title" xml:space="preserve">
         <source>Passcode Lock</source>
@@ -881,50 +871,20 @@ Poznámka: Pokud zapomenete přístupový kód, budete muset aplikaci smazat a p
         <target>Verze</target>
         <note>Class = "UILabel"; text = "Version"; ObjectID = "13m-jH-9Vu";</note>
       </trans-unit>
-      <trans-unit id="19F-CC-u2R.text" xml:space="preserve">
-        <source>Compress Images</source>
-        <target>Komprimovat obrázky</target>
-        <note>Class = "UILabel"; text = "Compress Images"; ObjectID = "19F-CC-u2R";</note>
-      </trans-unit>
-      <trans-unit id="Bmt-tc-yd7.headerTitle" xml:space="preserve">
-        <source>Storage</source>
-        <target>Úložiště</target>
-        <note>Class = "UITableViewSection"; headerTitle = "Storage"; ObjectID = "Bmt-tc-yd7";</note>
-      </trans-unit>
       <trans-unit id="CUM-1F-5Be.text" xml:space="preserve">
         <source>Rate App</source>
         <target>Ohodnoťte aplikaci</target>
         <note>Class = "UILabel"; text = "Rate App"; ObjectID = "CUM-1F-5Be";</note>
-      </trans-unit>
-      <trans-unit id="ESd-H3-Pfh.headerTitle" xml:space="preserve">
-        <source>Information</source>
-        <target>Informace</target>
-        <note>Class = "UITableViewSection"; headerTitle = "Information"; ObjectID = "ESd-H3-Pfh";</note>
       </trans-unit>
       <trans-unit id="GqQ-Bv-Deg.text" xml:space="preserve">
         <source>Tell a Friend</source>
         <target>Povědět kamarádovi</target>
         <note>Class = "UILabel"; text = "Tell a Friend"; ObjectID = "GqQ-Bv-Deg";</note>
       </trans-unit>
-      <trans-unit id="IS2-tT-Q4G.text" xml:space="preserve">
-        <source>About</source>
-        <target>O ONLYOFFICE</target>
-        <note>Class = "UILabel"; text = "About"; ObjectID = "IS2-tT-Q4G";</note>
-      </trans-unit>
       <trans-unit id="MZJ-3d-460.title" xml:space="preserve">
         <source>Settings</source>
         <target>Nastavení</target>
         <note>Class = "UITabBarItem"; title = "Settings"; ObjectID = "MZJ-3d-460";</note>
-      </trans-unit>
-      <trans-unit id="NGC-k1-Jm9.text" xml:space="preserve">
-        <source>Introduction Tour</source>
-        <target>Úvodní prohlídka</target>
-        <note>Class = "UILabel"; text = "Introduction Tour"; ObjectID = "NGC-k1-Jm9";</note>
-      </trans-unit>
-      <trans-unit id="OKJ-3w-yJd.title" xml:space="preserve">
-        <source>Settings</source>
-        <target>Nastavení</target>
-        <note>Class = "UINavigationItem"; title = "Settings"; ObjectID = "OKJ-3w-yJd";</note>
       </trans-unit>
       <trans-unit id="PDj-N7-sjJ.text" xml:space="preserve">
         <source>Terms of Service</source>
@@ -936,11 +896,6 @@ Poznámka: Pokud zapomenete přístupový kód, budete muset aplikaci smazat a p
         <target>Změnit přístupový kód</target>
         <note>Class = "UILabel"; text = "Change Passcode"; ObjectID = "RuR-k5-kRu";</note>
       </trans-unit>
-      <trans-unit id="W0F-l2-98t.text" xml:space="preserve">
-        <source>Files Preview</source>
-        <target>Náhled souborů</target>
-        <note>Class = "UILabel"; text = "Files Preview"; ObjectID = "W0F-l2-98t";</note>
-      </trans-unit>
       <trans-unit id="XYC-Zw-fk6.text" xml:space="preserve">
         <source>Turn Passcode On</source>
         <target>Zapnout přístupový kód</target>
@@ -951,36 +906,25 @@ Poznámka: Pokud zapomenete přístupový kód, budete muset aplikaci smazat a p
         <target>Odemknout pomocí Touch ID</target>
         <note>Class = "UILabel"; text = "Unlock with Touch ID"; ObjectID = "YfE-Pr-7QU";</note>
       </trans-unit>
-      <trans-unit id="aV0-Ch-4Py.text" xml:space="preserve">
-        <source>Cache</source>
-        <target>Cache</target>
-        <note>Class = "UILabel"; text = "Cache"; ObjectID = "aV0-Ch-4Py";</note>
+      <trans-unit id="bfL-pj-gii.title" xml:space="preserve">
+        <source>Settings</source>
+        <note>Class = "UINavigationItem"; title = "Settings"; ObjectID = "bfL-pj-gii";</note>
       </trans-unit>
       <trans-unit id="cl6-b0-Mjh.text" xml:space="preserve">
         <source>Privacy Policy</source>
         <target>Zásady ochrany soukromí</target>
         <note>Class = "UILabel"; text = "Privacy Policy"; ObjectID = "cl6-b0-Mjh";</note>
       </trans-unit>
-      <trans-unit id="i2P-F4-EhP.text" xml:space="preserve">
-        <source>Passcode Lock</source>
-        <target>Zámek na přístupový kód</target>
-        <note>Class = "UILabel"; text = "Passcode Lock"; ObjectID = "i2P-F4-EhP";</note>
-      </trans-unit>
       <trans-unit id="lEo-YM-MnB.text" xml:space="preserve">
         <source>© Ascensio System SIA</source>
         <target>© Ascensio System SIA</target>
         <note>Class = "UILabel"; text = "© Ascensio System SIA"; ObjectID = "lEo-YM-MnB";</note>
       </trans-unit>
-      <trans-unit id="raN-Fz-DnL.text" xml:space="preserve">
-        <source>Support</source>
-        <target>Podpora</target>
-        <note>Class = "UILabel"; text = "Support"; ObjectID = "raN-Fz-DnL";</note>
-      </trans-unit>
     </body>
   </file>
   <file original="Documents/Base.lproj/Sort.storyboard" source-language="en" target-language="cs" datatype="plaintext">
     <header>
-      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="13.3" build-num="13E113"/>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="13.3.1" build-num="13E500a"/>
     </header>
     <body>
       <trans-unit id="HjM-la-pDc.text" xml:space="preserve">
@@ -1007,7 +951,7 @@ Poznámka: Pokud zapomenete přístupový kód, budete muset aplikaci smazat a p
   </file>
   <file original="Documents/Base.lproj/Transfer.storyboard" source-language="en" target-language="cs" datatype="plaintext">
     <header>
-      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="13.3" build-num="13E113"/>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="13.3.1" build-num="13E500a"/>
     </header>
     <body>
       <trans-unit id="9YY-0H-nww.text" xml:space="preserve">
@@ -1044,7 +988,7 @@ Poznámka: Pokud zapomenete přístupový kód, budete muset aplikaci smazat a p
   </file>
   <file original="Documents/Base.lproj/UserProfile.storyboard" source-language="en" target-language="cs" datatype="plaintext">
     <header>
-      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="13.3" build-num="13E113"/>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="13.3.1" build-num="13E500a"/>
     </header>
     <body>
       <trans-unit id="1S2-Q7-5vL.text" xml:space="preserve">
@@ -1091,7 +1035,7 @@ Poznámka: Pokud zapomenete přístupový kód, budete muset aplikaci smazat a p
   </file>
   <file original="Documents/Code/Controllers/CreateEntity/Views/Base.lproj/ASCCreateEntityView.xib" source-language="en" target-language="cs" datatype="plaintext">
     <header>
-      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="13.3" build-num="13E113"/>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="13.3.1" build-num="13E500a"/>
     </header>
     <body>
       <trans-unit id="0TH-k4-z5u.normalTitle" xml:space="preserve">
@@ -1123,7 +1067,7 @@ Poznámka: Pokud zapomenete přístupový kód, budete muset aplikaci smazat a p
   </file>
   <file original="Documents/Code/Vendor/PasscodeLock/Base.lproj/PasscodeLock.strings" source-language="en" target-language="cs" datatype="plaintext">
     <header>
-      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="13.3" build-num="13E113"/>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="13.3.1" build-num="13E500a"/>
     </header>
     <body>
       <trans-unit id="PasscodeLockChangeDescription" xml:space="preserve">
@@ -1195,7 +1139,7 @@ Poznámka: Pokud zapomenete přístupový kód, budete muset aplikaci smazat a p
   </file>
   <file original="Documents/Code/Vendor/PasscodeLock/Views/Base.lproj/PasscodeLockView.xib" source-language="en" target-language="cs" datatype="plaintext">
     <header>
-      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="13.3" build-num="13E113"/>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="13.3.1" build-num="13E500a"/>
     </header>
     <body>
       <trans-unit id="0CR-0R-0Nr.normalTitle" xml:space="preserve">
@@ -1277,7 +1221,7 @@ Poznámka: Pokud zapomenete přístupový kód, budete muset aplikaci smazat a p
   </file>
   <file original="Documents/en.lproj/Documents-InfoPlist.strings" source-language="en" target-language="cs" datatype="plaintext">
     <header>
-      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="13.3" build-num="13E113"/>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="13.3.1" build-num="13E500a"/>
     </header>
     <body>
       <trans-unit id="CFBundleName" xml:space="preserve">
@@ -1334,7 +1278,7 @@ Poznámka: Pokud zapomenete přístupový kód, budete muset aplikaci smazat a p
   </file>
   <file original="Documents/en.lproj/Documents.alpha-InfoPlist.strings" source-language="en" target-language="cs" datatype="plaintext">
     <header>
-      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="13.3" build-num="13E113"/>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="13.3.1" build-num="13E500a"/>
     </header>
     <body>
       <trans-unit id="CFBundleName" xml:space="preserve">
@@ -1396,7 +1340,7 @@ Poznámka: Pokud zapomenete přístupový kód, budete muset aplikaci smazat a p
   </file>
   <file original="Documents/en.lproj/Localizable.strings" source-language="en" target-language="cs" datatype="plaintext">
     <header>
-      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="13.3" build-num="13E113"/>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="13.3.1" build-num="13E500a"/>
     </header>
     <body>
       <trans-unit id="%d selected" xml:space="preserve">
@@ -1479,6 +1423,10 @@ Poznámka: Pokud zapomenete přístupový kód, budete muset aplikaci smazat a p
         <target>A6 (10,5%1$@ x 14,8%2$@)</target>
         <note>Format info</note>
       </trans-unit>
+      <trans-unit id="About" xml:space="preserve">
+        <source>About</source>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
       <trans-unit id="Access by external link" xml:space="preserve">
         <source>Access by external link</source>
         <target>Přístup prostřednictvím externího odkazu</target>
@@ -1534,6 +1482,10 @@ Poznámka: Pokud zapomenete přístupový kód, budete muset aplikaci smazat a p
         <source>All files</source>
         <note>No comment provided by engineer.</note>
       </trans-unit>
+      <trans-unit id="All notifications" xml:space="preserve">
+        <source>All notifications</source>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
       <trans-unit id="Allow access via external link" xml:space="preserve">
         <source>Allow access via external link</source>
         <target>Povolit přístup přes externí odkaz</target>
@@ -1581,6 +1533,10 @@ Poznámka: Pokud zapomenete přístupový kód, budete muset aplikaci smazat a p
       <trans-unit id="By creating the portal you agree with our Privacy Policy and Terms of Service" xml:space="preserve">
         <source>By creating the portal you agree with our Privacy Policy and Terms of Service</source>
         <target>Vytvořením portálu souhlasíte s našimi zásadami ochrany osobních údajů a podmínkami služby.</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Cache" xml:space="preserve">
+        <source>Cache</source>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Camera Unavailable" xml:space="preserve">
@@ -1678,6 +1634,10 @@ Poznámka: Pokud zapomenete přístupový kód, budete muset aplikaci smazat a p
         <target>Společné dokumenty</target>
         <note>Category title</note>
       </trans-unit>
+      <trans-unit id="Compress Images" xml:space="preserve">
+        <source>Compress Images</source>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
       <trans-unit id="Connect" xml:space="preserve">
         <source>Connect</source>
         <target>Připojit</target>
@@ -1706,6 +1666,10 @@ jiné, které používají protokol WebDAV.</target>
         <source>Connecting</source>
         <target>Připojování</target>
         <note>Caption of the process</note>
+      </trans-unit>
+      <trans-unit id="Console" xml:space="preserve">
+        <source>Console</source>
+        <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Continue anyway" xml:space="preserve">
         <source>Continue anyway</source>
@@ -1952,6 +1916,14 @@ jiné, které používají protokol WebDAV.</target>
         <target>Odznačit vše</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
+      <trans-unit id="Developer options" xml:space="preserve">
+        <source>Developer options</source>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Disable if you do not want to receive notifications from the %@" xml:space="preserve">
+        <source>Disable if you do not want to receive notifications from the %@</source>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
       <trans-unit id="Disconnect third party" xml:space="preserve">
         <source>Disconnect third party</source>
         <target>Odpojit třetí stranu</target>
@@ -2053,6 +2025,10 @@ jiné, které používají protokol WebDAV.</target>
         <target>Prázdný název.</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
+      <trans-unit id="Enable if you want to receive notifications from the %@" xml:space="preserve">
+        <source>Enable if you want to receive notifications from the %@</source>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
       <trans-unit id="Encoding" xml:space="preserve">
         <source>Encoding</source>
         <target>Kódování</target>
@@ -2066,6 +2042,10 @@ jiné, které používají protokol WebDAV.</target>
       <trans-unit id="Enter Portal Address" xml:space="preserve">
         <source>Enter Portal Address</source>
         <target>Zadejte adresu portálu</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Enter a password to open the file." xml:space="preserve">
+        <source>Enter a password to open the file.</source>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Error" xml:space="preserve">
@@ -2157,6 +2137,10 @@ jiné, které používají protokol WebDAV.</target>
         <target>Stahování výsledku ze služby online konverze selhalo</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
+      <trans-unit id="Features" xml:space="preserve">
+        <source>Features</source>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
       <trans-unit id="File already exists" xml:space="preserve">
         <source>File already exists</source>
         <target>Soubor již existuje</target>
@@ -2170,6 +2154,10 @@ jiné, které používají protokol WebDAV.</target>
       <trans-unit id="Files" xml:space="preserve">
         <source>Files</source>
         <target>Soubory</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Files Preview" xml:space="preserve">
+        <source>Files Preview</source>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Fill the shapes using gradients, images, or patterns. Choose the desirable line type." xml:space="preserve">
@@ -2264,6 +2252,10 @@ jiné, které používají protokol WebDAV.</target>
       <trans-unit id="Incorrect portal address" xml:space="preserve">
         <source>Incorrect portal address</source>
         <target>Nesprávná adresa portálu</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Information" xml:space="preserve">
+        <source>Information</source>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Instructions had been sent to your email" xml:space="preserve">
@@ -2462,6 +2454,10 @@ to the clipboard</source>
         <target>Žádné připojení k internetu</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
+      <trans-unit id="No Search Result" xml:space="preserve">
+        <source>No Search Result</source>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
       <trans-unit id="No client IDs of application" xml:space="preserve">
         <source>No client IDs of application</source>
         <target>Žádné ID klienta aplikace</target>
@@ -2512,6 +2508,10 @@ to the clipboard</source>
         <source>Nothing to show</source>
         <note>No comment provided by engineer.</note>
       </trans-unit>
+      <trans-unit id="Notifications" xml:space="preserve">
+        <source>Notifications</source>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
       <trans-unit id="Notify by Email" xml:space="preserve">
         <source>Notify by Email</source>
         <target>Oznámení e-mailem</target>
@@ -2532,6 +2532,10 @@ to the clipboard</source>
         <target>ONLYOFFICE Documents</target>
         <note>Full App Name</note>
       </trans-unit>
+      <trans-unit id="ONLYOFFICE portal" xml:space="preserve">
+        <source>ONLYOFFICE portal</source>
+        <note>Full App Name</note>
+      </trans-unit>
       <trans-unit id="On iPad" xml:space="preserve">
         <source>On iPad</source>
         <target>V iPadu</target>
@@ -2541,11 +2545,6 @@ to the clipboard</source>
         <source>On iPhone</source>
         <target>V iPhonu</target>
         <note>Category title</note>
-      </trans-unit>
-      <trans-unit id="Once you enter the password and open the file, the current password to the file will be reset" xml:space="preserve">
-        <source>Once you enter the password and open the file, the current password to the file will be reset</source>
-        <target>Jakmile zadáte heslo a soubor otevřete, stávající heslo k souboru bude resetováno</target>
-        <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="OneDrive" xml:space="preserve">
         <source>OneDrive</source>
@@ -2572,10 +2571,18 @@ to the clipboard</source>
         <target>Otevřít dokument</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
+      <trans-unit id="Open Folder" xml:space="preserve">
+        <source>Open Folder</source>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
       <trans-unit id="Opening" xml:space="preserve">
         <source>Opening</source>
         <target>Úvod</target>
         <note>Caption of the processing</note>
+      </trans-unit>
+      <trans-unit id="Options" xml:space="preserve">
+        <source>Options</source>
+        <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Order" xml:space="preserve">
         <source>Order</source>
@@ -2601,6 +2608,10 @@ to the clipboard</source>
         <source>Owner</source>
         <target>Majitel</target>
         <note>Table cell right holder acces text</note>
+      </trans-unit>
+      <trans-unit id="Passcode Lock" xml:space="preserve">
+        <source>Passcode Lock</source>
+        <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Password" xml:space="preserve">
         <source>Password</source>
@@ -2742,6 +2753,10 @@ to the clipboard</source>
       <trans-unit id="Protected File" xml:space="preserve">
         <source>Protected File</source>
         <target>Chráněný soubor</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Push notifications disabled" xml:space="preserve">
+        <source>Push notifications disabled</source>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Read Only" xml:space="preserve">
@@ -2893,13 +2908,13 @@ to the clipboard</source>
         <target>Vyberte složku pro obnovení položek</target>
         <note>One line. Max 50 charasters</note>
       </trans-unit>
-      <trans-unit id="Select user" xml:space="preserve">
-        <source>Select user</source>
-        <note>No comment provided by engineer.</note>
-      </trans-unit>
       <trans-unit id="Select the region in spreadsheet settings to automatically convert currency, date, and time." xml:space="preserve">
         <source>Select the region in spreadsheet settings to automatically convert currency, date, and time.</source>
         <target>Vyberte region v nastavení tabulky pro automatický převod měny, data a času.</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Select user" xml:space="preserve">
+        <source>Select user</source>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Selected provider is not available" xml:space="preserve">
@@ -2942,6 +2957,10 @@ to the clipboard</source>
         <target>Nastavení</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
+      <trans-unit id="Settings and Security" xml:space="preserve">
+        <source>Settings and Security</source>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
       <trans-unit id="SharePoint directory" xml:space="preserve">
         <source>SharePoint directory</source>
         <target>Adresář SharePoint</target>
@@ -2974,6 +2993,10 @@ to the clipboard</source>
       </trans-unit>
       <trans-unit id="Show %d results" xml:space="preserve">
         <source>Show %d results</source>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Show notifications" xml:space="preserve">
+        <source>Show notifications</source>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Single Sign-on" xml:space="preserve">
@@ -3031,6 +3054,14 @@ to the clipboard</source>
         <target>Tabulky</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
+      <trans-unit id="Storage" xml:space="preserve">
+        <source>Storage</source>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Support" xml:space="preserve">
+        <source>Support</source>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
       <trans-unit id="Switch" xml:space="preserve">
         <source>Switch</source>
         <target>Přepnutí</target>
@@ -3064,6 +3095,10 @@ to the clipboard</source>
       <trans-unit id="The %@ server is not available." xml:space="preserve">
         <source>The %@ server is not available.</source>
         <target>Server %@ není k dispozici.</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="The ONLYOFFICE Editors module is missing. Please contact support@onlyoffice.com for more information." xml:space="preserve">
+        <source>The ONLYOFFICE Editors module is missing. Please contact support@onlyoffice.com for more information.</source>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="The account name must be between 6 and 50 characters long" xml:space="preserve">
@@ -3145,6 +3180,10 @@ do schránky</target>
         <target>Server není dostupný.</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
+      <trans-unit id="The setting will be available upon authorization on the %@." xml:space="preserve">
+        <source>The setting will be available upon authorization on the %@.</source>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
       <trans-unit id="The trash is empty" xml:space="preserve">
         <source>The trash is empty</source>
         <target>Koš je prázdný</target>
@@ -3195,9 +3234,21 @@ do schránky</target>
         <target>Chcete-li otevřít dokument, přihlaste se ke svému účtu a přejděte na portál% @.</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
+      <trans-unit id="To open a folder, you must exit the current document." xml:space="preserve">
+        <source>To open a folder, you must exit the current document.</source>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="To open a folder, you must go to portal %@ under your account." xml:space="preserve">
+        <source>To open a folder, you must go to portal %@ under your account.</source>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
       <trans-unit id="To open a new document, you must exit the current document." xml:space="preserve">
         <source>To open a new document, you must exit the current document.</source>
         <target>Pokud chcete otevřít nový dokument, musíte opustit aktuální dokument.</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="To receive push notifications from the ONLYOFFICE application, you need to allow receiving notifications for this application in the iOS settings" xml:space="preserve">
+        <source>To receive push notifications from the ONLYOFFICE application, you need to allow receiving notifications for this application in the iOS settings</source>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Trash" xml:space="preserve">
@@ -3218,6 +3269,10 @@ do schránky</target>
       <trans-unit id="Try to connect via another protocol?" xml:space="preserve">
         <source>Try to connect via another protocol?</source>
         <target>Zkuste se připojit přes jiný protokol?</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Turn ON in Settings" xml:space="preserve">
+        <source>Turn ON in Settings</source>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Turn Passcode Off" xml:space="preserve">
@@ -3410,6 +3465,10 @@ Přetáhněte prstem a zjistěte více o aplikaci.</target>
       <trans-unit id="What's New" xml:space="preserve">
         <source>What's New</source>
         <target>Novinky</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Whats's New" xml:space="preserve">
+        <source>Whats's New</source>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Work with documents offline.&#10;Created files can later be uploaded to online portal and&#10;then accessed from any other device." xml:space="preserve">
@@ -3605,7 +3664,7 @@ Vytvořené soubory mohou být později nahrány do online portálu. Poté k nim
   </file>
   <file original="Settings.bundle/en.lproj/Root.strings" source-language="en" target-language="cs" datatype="plaintext">
     <header>
-      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="13.3" build-num="13E113"/>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="13.3.1" build-num="13E500a"/>
     </header>
     <body>
       <trans-unit id="Acknowledgements" xml:space="preserve">

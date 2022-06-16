@@ -624,8 +624,8 @@
 		FC7CF5171EF3EFF300C0A64F /* HTMLString.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC7CF5131EF3EFF300C0A64F /* HTMLString.swift */; };
 		FC7CF5181EF3EFF300C0A64F /* Mappings.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC7CF5141EF3EFF300C0A64F /* Mappings.swift */; };
 		FC7CF5191EF3EFF300C0A64F /* NSString+HTMLString.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC7CF5151EF3EFF300C0A64F /* NSString+HTMLString.swift */; };
-		FC7DC87C285B3A3600E61C69 /* ASCOAuthCredential.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC7DC87B285B3A3600E61C69 /* ASCOAuthCredential.swift */; };
-		FC7DC87D285B3A3600E61C69 /* ASCOAuthCredential.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC7DC87B285B3A3600E61C69 /* ASCOAuthCredential.swift */; };
+		FC7DC881285B3C5000E61C69 /* ASCOAuthCredential.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC7DC880285B3C4F00E61C69 /* ASCOAuthCredential.swift */; };
+		FC7DC882285B3C5000E61C69 /* ASCOAuthCredential.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC7DC880285B3C4F00E61C69 /* ASCOAuthCredential.swift */; };
 		FC7F786B236ACBB00026E260 /* ASCConnectStorageGoogleController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC7F786A236ACBB00026E260 /* ASCConnectStorageGoogleController.swift */; };
 		FC80CA2C25BADE1E0077C2B8 /* ASCiCloudProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC066ABE252DB811007357F7 /* ASCiCloudProvider.swift */; };
 		FC80CA3025BADEF10077C2B8 /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC066AA9252DB7C5007357F7 /* Event.swift */; };
@@ -1203,9 +1203,9 @@
 		FC7CF5131EF3EFF300C0A64F /* HTMLString.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HTMLString.swift; sourceTree = "<group>"; };
 		FC7CF5141EF3EFF300C0A64F /* Mappings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Mappings.swift; sourceTree = "<group>"; };
 		FC7CF5151EF3EFF300C0A64F /* NSString+HTMLString.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSString+HTMLString.swift"; sourceTree = "<group>"; };
-		FC7DC87B285B3A3600E61C69 /* ASCOAuthCredential.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASCOAuthCredential.swift; sourceTree = "<group>"; };
 		FC7DC87E285B3AB800E61C69 /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/Documents-InfoPlist.strings"; sourceTree = "<group>"; };
 		FC7DC87F285B3AB800E61C69 /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/Documents.alpha-InfoPlist.strings"; sourceTree = "<group>"; };
+		FC7DC880285B3C4F00E61C69 /* ASCOAuthCredential.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASCOAuthCredential.swift; sourceTree = "<group>"; };
 		FC7F786A236ACBB00026E260 /* ASCConnectStorageGoogleController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCConnectStorageGoogleController.swift; sourceTree = "<group>"; };
 		FC81C67C22C5041600A7D104 /* ASCCustomHighlightButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCCustomHighlightButton.swift; sourceTree = "<group>"; };
 		FC82827E21C3CC01005AF726 /* ASCDeviceSplitViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCDeviceSplitViewController.swift; sourceTree = "<group>"; };
@@ -2569,7 +2569,7 @@
 				FC68526726837B7300D830EC /* NetworkingClient.swift */,
 				FC68524B26837B7300D830EC /* NetworkingError.swift */,
 				FC68524F26837B7300D830EC /* NetworkingServerError.swift */,
-				FC7DC87B285B3A3600E61C69 /* ASCOAuthCredential.swift */,
+				FC7DC880285B3C4F00E61C69 /* ASCOAuthCredential.swift */,
 			);
 			path = Networking;
 			sourceTree = "<group>";
@@ -2652,10 +2652,10 @@
 		FC68526226837B7300D830EC /* Dropbox */ = {
 			isa = PBXGroup;
 			children = (
+				FC68526526837B7300D830EC /* Model */,
 				FC68526326837B7300D830EC /* DropboxEndpoints.swift */,
 				FC68526426837B7300D830EC /* DropboxApiClient.swift */,
 				1D81EBA82811AB7000EDFB86 /* DropBoxRequestInterceptor.swift */,
-				FC68526526837B7300D830EC /* Model */,
 			);
 			path = Dropbox;
 			sourceTree = "<group>";
@@ -4095,7 +4095,6 @@
 				1D49E2BC26A9BE170024AC7A /* ASCSharingSettingsAccessProvider.swift in Sources */,
 				FC36D2E625B5C32200412DDB /* ASCConnectStorageWebDavController.swift in Sources */,
 				FC36D2E725B5C32200412DDB /* PasscodeLockPresenter.swift in Sources */,
-				FC7DC87D285B3A3600E61C69 /* ASCOAuthCredential.swift in Sources */,
 				FC80CA3025BADEF10077C2B8 /* Event.swift in Sources */,
 				1D49E2AE26A9BDA60024AC7A /* ASCSharingAddRightHoldersInteractor.swift in Sources */,
 				FC54E805271F04BE00195CFD /* ASCCreatePortal.swift in Sources */,
@@ -4146,6 +4145,7 @@
 				FC36D2FA25B5C32200412DDB /* ASCOnlyofficeProvider.swift in Sources */,
 				1D49E2B126A9BDB20024AC7A /* ASCSharingAddRightHoldersModels.swift in Sources */,
 				1D49E2A426A9BD680024AC7A /* ASCReusedIdentifierProtocol.swift in Sources */,
+				FC7DC882285B3C5000E61C69 /* ASCOAuthCredential.swift in Sources */,
 				FC36D2FB25B5C32200412DDB /* KingfisherWrapper+Extensions.swift in Sources */,
 				F377689627CFD4570044EDA6 /* ASCConnectStorageNextCloudServerController.swift in Sources */,
 				FC36D2FC25B5C32200412DDB /* Date+Extension.swift in Sources */,
@@ -4527,7 +4527,7 @@
 				1D14AAE62698D56E009E48AD /* ASCSharingAddRightHoldersTableViewDataSourceAndDelegate.swift in Sources */,
 				FCEF9D231ED2C94300627BA5 /* PasscodeLockViewController.swift in Sources */,
 				FC301A21230D6D4600DC25CA /* ASCFolderCell.swift in Sources */,
-				FC7DC87C285B3A3600E61C69 /* ASCOAuthCredential.swift in Sources */,
+				FC7DC881285B3C5000E61C69 /* ASCOAuthCredential.swift in Sources */,
 				FCAE112E26A800E60013B475 /* ASCKdriveFileProvider.swift in Sources */,
 				FC6839A021B80BDF00251CEA /* ASCCloudCategoryCell.swift in Sources */,
 				FCEF9D211ED2C94300627BA5 /* SetPasscodeState.swift in Sources */,

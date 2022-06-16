@@ -50,6 +50,9 @@
 "A6 (10,5%@ x 14,8%@)" = "A6 (10,5%1$@ x 14,8%2$@)";
 
 /* No comment provided by engineer. */
+"About" = "Acerca de";
+
+/* No comment provided by engineer. */
 "Access by external link" = "Acceso a través de un enlace externo";
 
 /* No comment provided by engineer. */
@@ -108,6 +111,9 @@
 
 /* Data units */
 "bytes" = "bytes";
+
+/* No comment provided by engineer. */
+"Cache" = "Caché";
 
 /* No comment provided by engineer. */
 "Camera Unavailable" = "Cámara no disponible";
@@ -186,6 +192,9 @@
 
 /* Payment required title */
 "common.paymentRequiredTitle" = "Pago requerido";
+
+/* No comment provided by engineer. */
+"Compress Images" = "Comprimir imágenes";
 
 /* Button title */
 "Connect" = "Conectar";
@@ -492,6 +501,9 @@
 "Files" = "Archivos";
 
 /* No comment provided by engineer. */
+"Files Preview" = "Vista previa de archivos";
+
+/* No comment provided by engineer. */
 "Fill the shapes using gradients, images, or patterns. Choose the desirable line type." = "Rellene las formas utilizando gradientes, imágenes o patrones. Elija el tipo de línea que desee.";
 
 /* No comment provided by engineer. */
@@ -550,6 +562,9 @@
 
 /* No comment provided by engineer. */
 "Incorrect portal address" = "Dirección de portal incorrecta";
+
+/* No comment provided by engineer. */
+"Information" = "Información";
 
 /* No comment provided by engineer. */
 "Instructions had been sent to your email" = "Las instrucciones se han enviado a su correo electrónico";
@@ -720,9 +735,6 @@
 "On iPhone" = "En el iPhone";
 
 /* No comment provided by engineer. */
-"Once you enter the password and open the file, the current password to the file will be reset" = "Una vez que introduzca la contraseña y abra el archivo, se restablecerá la contraseña actual del archivo";
-
-/* No comment provided by engineer. */
 "OneDrive" = "OneDrive";
 
 /* No comment provided by engineer. */
@@ -766,6 +778,9 @@
 
 /* Table cell right holder acces text */
 "Owner" = "Propietario";
+
+/* No comment provided by engineer. */
+"Passcode Lock" = "Bloqueo de contraseña";
 
 /* No comment provided by engineer. */
 "Password" = "Contraseña";
@@ -1007,6 +1022,12 @@
 
 /* No comment provided by engineer. */
 "Spreadsheets" = "Hojas de cálculo";
+
+/* No comment provided by engineer. */
+"Storage" = "Almacenamiento";
+
+/* No comment provided by engineer. */
+"Support" = "Soporte";
 
 /* No comment provided by engineer. */
 "Switch" = "Cambiar";

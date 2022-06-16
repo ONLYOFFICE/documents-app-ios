@@ -20,12 +20,6 @@
 "© Ascensio System SIA %d" = "© Ascensio System SIA %d";
 
 /* No comment provided by engineer. */
-"Сould not download file." = "Не удалось скачать файл.";
-
-/* No comment provided by engineer. */
-"Сould not upload file." = "Не удалось загрузить файл.";
-
-/* No comment provided by engineer. */
 "A file with a similar name already exists in the document directory on the device." = "Файл с таким именем уже существует в папке с документами на этом устройстве.";
 
 /* No comment provided by engineer. */
@@ -54,6 +48,9 @@
 
 /* Format info */
 "A6 (10,5%@ x 14,8%@)" = "A6 (10,5%1$@ x 14,8%2$@)";
+
+/* No comment provided by engineer. */
+"About" = "О приложении";
 
 /* No comment provided by engineer. */
 "Access by external link" = "Доступ по внешней ссылке";
@@ -89,6 +86,9 @@
 "All Files" = "Все файлы";
 
 /* No comment provided by engineer. */
+"All notifications" = "Все уведомления";
+
+/* No comment provided by engineer. */
 "Allow access via external link" = "Доступ по внешней ссылке";
 
 /* No comment provided by engineer. */
@@ -120,6 +120,9 @@
 
 /* Data units */
 "bytes" = "байт";
+
+/* No comment provided by engineer. */
+"Cache" = "Кэш";
 
 /* No comment provided by engineer. */
 "Camera Unavailable" = "Камера недоступна";
@@ -199,6 +202,9 @@
 /* Payment required title */
 "common.paymentRequiredTitle" = "Требуется оплата портала";
 
+/* No comment provided by engineer. */
+"Compress Images" = "Сжатие изображений";
+
 /* Button title */
 "Connect" = "Подключить";
 
@@ -213,6 +219,9 @@
 
 /* Caption of the process */
 "Connecting" = "Подключение";
+
+/* No comment provided by engineer. */
+"Console" = "Консоль";
 
 /* No comment provided by engineer. */
 "Continue anyway" = "Продолжить все равно";
@@ -361,6 +370,12 @@
 /* No comment provided by engineer. */
 "Deselect all" = "Снять выделение";
 
+/* No comment provided by engineer. */
+"Developer options" = "Настройки разработчика";
+
+/* No comment provided by engineer. */
+"Disable if you do not want to receive notifications from the %@" = "Отключите, если вы не хотите получать уведомления от %@";
+
 /* Button title */
 "Disconnect third party" = "Отсоединить сторонние сервисы";
 
@@ -423,10 +438,16 @@
 "Empty name." = "Пустое имя.";
 
 /* No comment provided by engineer. */
+"Enable if you want to receive notifications from the %@" = "Включите, если хотите получать уведомления от %@";
+
+/* No comment provided by engineer. */
 "Encoding" = "Кодировка";
 
 /* Presentation Viewer */
 "End Slide Show" = "Завершить";
+
+/* No comment provided by engineer. */
+"Enter a password to open the file." = "Введите пароль, чтобы открыть файл.";
 
 /* No comment provided by engineer. */
 "Enter Portal Address" = "Введите адрес портала";
@@ -448,6 +469,9 @@
 
 /* Unknown Server Error */
 "error.errorServerTitle" = "Ошибка сервера";
+
+/* No comment provided by engineer. */
+"Exclude subfolders" = "Без подпапок";
 
 /* Button title */
 "Export" = "Экспорт";
@@ -494,6 +518,9 @@
 /* No comment provided by engineer. */
 "Failure to download result from conversion online service." = "Ошибка скачивания полученного файла из службы онлайн-конвертации.";
 
+/* No comment provided by engineer. */
+"Features" = "Фичи";
+
 /* Description of file operation error */
 "File already exists" = "Файл уже существует";
 
@@ -502,6 +529,9 @@
 
 /* No comment provided by engineer. */
 "Files" = "Файлы";
+
+/* No comment provided by engineer. */
+"Files Preview" = "Предпросмотр файлов";
 
 /* No comment provided by engineer. */
 "Fill the shapes using gradients, images, or patterns. Choose the desirable line type." = "Выполняйте заливку фигур градиентом, изображением или узором. Выбирайте подходящий тип линий.";
@@ -565,6 +595,9 @@
 
 /* No comment provided by engineer. */
 "Incorrect portal address" = "Неверный адрес портала";
+
+/* No comment provided by engineer. */
+"Information" = "Информация";
 
 /* No comment provided by engineer. */
 "Instructions had been sent to your email" = "Инструкция отправлена ​​на вашу почту";
@@ -711,6 +744,9 @@
 /* No comment provided by engineer. */
 "No search result" = "Не найдено";
 
+/* No comment provided by engineer. */
+"No Search Result" = "Не найдено";
+
 /* Invalid entity date
    Invalid entity owner */
 "none" = "нет";
@@ -724,6 +760,9 @@
 
 /* No comment provided by engineer. */
 "Nothing to show" = "Нечего показать";
+
+/* No comment provided by engineer. */
+"Notifications" = "Уведомления";
 
 /* Sharing settings switcher */
 "Notify by Email" = "Отправить оповещение";
@@ -741,9 +780,6 @@
 "On iPhone" = "На iPhone";
 
 /* No comment provided by engineer. */
-"Once you enter the password and open the file, the current password to the file will be reset" = "Как только вы введете пароль и откроете файл, текущий пароль к файлу будет сброшен";
-
-/* No comment provided by engineer. */
 "OneDrive" = "OneDrive";
 
 /* No comment provided by engineer. */
@@ -758,14 +794,23 @@
 /* Full App Name */
 "ONLYOFFICE Documents" = "ONLYOFFICE Документы";
 
+/* Full App Name */
+"ONLYOFFICE portal" = "Портал ONLYOFFICE";
+
 /* No comment provided by engineer. */
 "Oops!" = "Ошибка!";
 
 /* No comment provided by engineer. */
 "Open Document" = "Открыть документ";
 
+/* No comment provided by engineer. */
+"Open Folder" = "Открыть папку";
+
 /* Caption of the processing */
 "Opening" = "Открытие";
+
+/* No comment provided by engineer. */
+"Options" = "Опции";
 
 /* No comment provided by engineer. */
 "Order" = "Очередность";
@@ -787,6 +832,9 @@
 
 /* Table cell right holder acces text */
 "Owner" = "Владелец";
+
+/* No comment provided by engineer. */
+"Passcode Lock" = "Код блокировки";
 
 /* No comment provided by engineer. */
 "Password" = "Пароль";
@@ -865,6 +913,9 @@
 
 /* No comment provided by engineer. */
 "Protected File" = "Защищенный файл";
+
+/* No comment provided by engineer. */
+"Push notifications disabled" = "Push-уведомления отключены";
 
 /* Share status */
 "Read Only" = "Только чтение";
@@ -955,6 +1006,9 @@
 "Select the folder to recover the items" = "Выберите папку для восстановления элементов";
 
 /* No comment provided by engineer. */
+"Select the region in spreadsheet settings to automatically convert currency, date, and time." = "Настройте регион в таблицах чтобы автоматически форматировать валюту, даты и время.";
+
+/* No comment provided by engineer. */
 "Select user" = "Пользователи";
 
 /* No comment provided by engineer. */
@@ -982,6 +1036,9 @@
 "Settings" = "Настройки";
 
 /* No comment provided by engineer. */
+"Settings and Security" = "Настройки и безопасность";
+
+/* No comment provided by engineer. */
 "Shared access" = "Общий доступ";
 
 /* Category title */
@@ -1001,6 +1058,9 @@
 
 /* No comment provided by engineer. */
 "Show %d results" = "Показать %d результатов";
+
+/* No comment provided by engineer. */
+"Show notifications" = "Показать уведомления";
 
 /* No comment provided by engineer. */
 "Single Sign-on" = "Единая точка входа";
@@ -1037,6 +1097,12 @@
 
 /* No comment provided by engineer. */
 "Spreadsheets" = "Таблицы";
+
+/* No comment provided by engineer. */
+"Storage" = "Хранилище";
+
+/* No comment provided by engineer. */
+"Support" = "Поддержка";
 
 /* No comment provided by engineer. */
 "Switch" = "Переключить";
@@ -1084,6 +1150,9 @@
 "The link for external\naccess is copied\nto the clipboard" = "Ссылка для внешнего\nдоступа скопирована\nв буфер обмена";
 
 /* No comment provided by engineer. */
+"The ONLYOFFICE Editors module is missing. Please contact support@onlyoffice.com for more information." = "Модуль ONLYOFFICE Editors отсутствует. Пожалуйста, свяжитесь с support@onlyoffice.com для получения дополнительной информации.";
+
+/* No comment provided by engineer. */
 "The parameters are incorrect." = "Некорректные параметры";
 
 /* No comment provided by engineer. */
@@ -1103,6 +1172,9 @@
 
 /* No comment provided by engineer. */
 "The server is not available." = "Сервер недоступен.";
+
+/* No comment provided by engineer. */
+"The setting will be available upon authorization on the %@." = "Настройка будет доступна после авторизации на сайте %@.";
 
 /* No comment provided by engineer. */
 "The trash is empty" = "Корзина пуста";
@@ -1135,7 +1207,16 @@
 "To open a document, you must go to portal %@ under your account." = "Чтобы открыть документ, вы должны перейти на портал %@ под своей учетной записью.";
 
 /* No comment provided by engineer. */
+"To open a folder, you must exit the current document." = "Чтобы открыть папку, необходимо выйти из текущего документа.";
+
+/* No comment provided by engineer. */
+"To open a folder, you must go to portal %@ under your account." = "Чтобы открыть папку, необходимо перейти на портал %@ под своей учетной записью.";
+
+/* No comment provided by engineer. */
 "To open a new document, you must exit the current document." = "Чтобы открыть новый документ, вы должны выйти из текущего документа.";
+
+/* No comment provided by engineer. */
+"To receive push notifications from the %@ application, you need to allow receiving notifications for this application in the iOS settings" = "Чтобы получать push-уведомления от приложения %@, необходимо разрешить получение уведомлений для этого приложения в настройках iOS";
 
 /* Category title */
 "Trash" = "Корзина";
@@ -1148,6 +1229,9 @@
 
 /* No comment provided by engineer. */
 "Try to connect via another protocol?" = "Попытаться соединиться с использованием другого протокола?";
+
+/* No comment provided by engineer. */
+"Turn ON in Settings" = "Включить в настройках";
 
 /* No comment provided by engineer. */
 "Turn Passcode Off" = "Отключить код доступа";
@@ -1263,6 +1347,9 @@
 /* No comment provided by engineer. */
 "What's New" = "Новые возможности";
 
+/* No comment provided by engineer. */
+"Whats's New" = "Что нового";
+
 /* Introduction Step Four - Description */
 "Work with documents offline.\nCreated files can later be uploaded to online portal and\nthen accessed from any other device." = "Работайте с документами без интернета.\nСозданные файлы можно загрузить позднее на портал и получить доступ к ним с любого устройства.";
 
@@ -1298,4 +1385,10 @@
 
 /* Data units */
 "Zero bytes" = "Ноль байт";
+
+/* No comment provided by engineer. */
+"Сould not download file." = "Не удалось скачать файл.";
+
+/* No comment provided by engineer. */
+"Сould not upload file." = "Не удалось загрузить файл.";
 

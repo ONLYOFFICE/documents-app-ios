@@ -41,7 +41,7 @@ class ASCNotificationWarningCell: UITableViewCell {
         super.awakeFromNib()
 
         titleLabel?.text = NSLocalizedString("Push notifications disabled", comment: "")
-        subtitleLabel?.text = NSLocalizedString("To receive push notifications from the ONLYOFFICE application, you need to allow receiving notifications for this application in the iOS settings", comment: "")
+        subtitleLabel?.text = String(format: NSLocalizedString("To receive push notifications from the %@ application, you need to allow receiving notifications for this application in the iOS settings", comment: ""), ASCConstants.Name.appNameShort)
         settingsButton?.setTitleForAllStates(NSLocalizedString("Turn ON in Settings", comment: ""))
         settingsButton?.styleType = .default
 

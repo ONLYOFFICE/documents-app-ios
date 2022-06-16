@@ -2,8 +2,8 @@
 //  ASCSettingsViewController.swift
 //  Documents
 //
-//  Created by Alexander Yuzhin on 5/19/17.
-//  Copyright © 2017 Ascensio System SIA. All rights reserved.
+//  Created by Alexander Yuzhin on 13.06.2022.
+//  Copyright © 2022 Ascensio System SIA. All rights reserved.
 //
 
 #if !NO_EDITORS
@@ -18,27 +18,46 @@ import SDWebImage
 import UIKit
 
 class ASCSettingsViewController: ASCBaseTableViewController {
+    // Section model
+
+    struct SettingsSection {
+        var items: [CellType]
+        var header: String?
+        var footer: String?
+
+        init(items: [CellType], header: String? = nil, footer: String? = nil) {
+            self.items = items
+            self.header = header
+            self.footer = footer
+        }
+    }
+
     // MARK: - Properties
 
-    @IBOutlet var clearCacheCell: UITableViewCell!
-    @IBOutlet var supportCell: UITableViewCell!
-    @IBOutlet var introCell: UITableViewCell!
-    @IBOutlet var compressImagesSwitch: UISwitch!
-    @IBOutlet var previewFilesSwitch: UISwitch!
-    @IBOutlet var notificationCell: ASCSettingsNotificationCell!
-    @IBOutlet var whatsnewCell: UITableViewCell!
-
     private var cacheSize: UInt64 = 0
+    private var tableData: [SectionType] = []
+    private var authorizationStatus: UNAuthorizationStatus = .authorized
 
     // MARK: - Lifecycle Methods
+
+    init() {
+        if #available(iOS 13.0, *) {
+            super.init(style: .insetGrouped)
+        } else {
+            super.init(style: .grouped)
+        }
+    }
+
+    required init?(coder: NSCoder) {
+        super.init(coder: coder)
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        compressImagesSwitch?.isOn = UserDefaults.standard.bool(forKey: ASCConstants.SettingsKeys.compressImage)
-        previewFilesSwitch?.isOn = UserDefaults.standard.bool(forKey: ASCConstants.SettingsKeys.previewFiles)
+        title = NSLocalizedString("Settings", comment: "")
 
-        navigationController?.view.backgroundColor = Asset.Colors.tableBackground.color
+        configureTableView()
 
         NotificationCenter.default.addObserver(
             self,
@@ -47,7 +66,7 @@ class ASCSettingsViewController: ASCBaseTableViewController {
             object: nil
         )
 
-        tableView.register(ASCSettingsNotificationCell.self, forCellReuseIdentifier: ASCSettingsNotificationCell.identifier)
+        build()
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -62,6 +81,18 @@ class ASCSettingsViewController: ASCBaseTableViewController {
         }
     }
 
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+
+        build()
+
+        calcCacheSize()
+
+        checkNotifications { [weak self] authorizationStatus in
+            self?.onCheckNotificationStatus(status: authorizationStatus)
+        }
+    }
+
     override func scrollViewDidScroll(_ scrollView: UIScrollView) {
         if UIDevice.pad {
             guard let navigationBar = navigationController?.navigationBar else { return }
@@ -70,15 +101,6 @@ class ASCSettingsViewController: ASCBaseTableViewController {
 
             navigationBar.setBackgroundImage(transparent ? nil : UIImage(), for: .default)
             navigationBar.shadowImage = transparent ? nil : UIImage()
-        }
-    }
-
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        calcCacheSize()
-
-        checkNotifications { [weak self] authorizationStatus in
-            self?.onCheckNotificationStatus(status: authorizationStatus)
         }
     }
 
@@ -92,44 +114,213 @@ class ASCSettingsViewController: ASCBaseTableViewController {
         }
     }
 
-    // MARK: - Table view Delegate
+    private func configureTableView() {
+        view.backgroundColor = .groupTableViewBackground
 
-    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        tableView.deselectRow(at: indexPath, animated: true)
+        tableView.register(
+            ASCSettingsNotificationCell.self,
+            forCellReuseIdentifier: ASCSettingsNotificationCell.identifier
+        )
+    }
 
-        let cell = super.tableView(tableView, cellForRowAt: indexPath)
-        if cell == clearCacheCell {
-            clearCache()
-        } else if cell == supportCell {
-            sendFeedback()
-        } else if cell == introCell {
-            let introVC = ASCIntroViewController.instantiate(from: Storyboard.intro)
-            present(introVC, animated: true, completion: nil)
-        } else if cell == whatsnewCell {
-            WhatsNewService.show(force: true)
-        } else if cell == notificationCell {
-            navigator.navigate(to: .notificationSettings)
+    private func build() {
+        var data: [SectionType] = []
+
+        // Settings and Security section
+        let settingsSecuritySection = SettingsSection(
+            items: [
+                .standart(viewModel: ASCStandartCellViewModel(
+                    title: NSLocalizedString("Passcode Lock", comment: ""),
+                    action: {
+                        self.navigator.navigate(to: .passcodeLockSettings)
+                    },
+                    accessoryType: .disclosureIndicator
+                )),
+                .notifications(
+                    viewModel: ASCStandartCellViewModel(
+                        title: NSLocalizedString("Notifications", comment: ""),
+                        action: {
+                            self.navigator.navigate(to: .notificationSettings)
+                        },
+                        accessoryType: .disclosureIndicator
+                    ),
+                    displayError: authorizationStatus != .authorized
+                ),
+            ],
+            header: NSLocalizedString("Settings and Security", comment: "")
+        )
+        data.append(.standart(viewModel: settingsSecuritySection))
+
+        // Storage section
+        let storageSection = SettingsSection(
+            items: [
+                .cache(
+                    viewModel: ASCStandartCellViewModel(
+                        title: NSLocalizedString("Cache", comment: ""),
+                        action: {
+                            self.clearCache()
+                        }
+                    ),
+                    processing: true,
+                    detailText: nil
+                ),
+                .switchControl(viewModel: ASCSwitchCellViewModel(
+                    title: NSLocalizedString("Files Preview", comment: ""),
+                    isOn: UserDefaults.standard.bool(forKey: ASCConstants.SettingsKeys.previewFiles),
+                    valueChanged: { isOn in
+                        UserDefaults.standard.set(isOn, forKey: ASCConstants.SettingsKeys.previewFiles)
+                        NotificationCenter.default.post(name: ASCConstants.Notifications.reloadData, object: nil)
+                    }
+                )),
+                .switchControl(viewModel: ASCSwitchCellViewModel(
+                    title: NSLocalizedString("Compress Images", comment: ""),
+                    isOn: UserDefaults.standard.bool(forKey: ASCConstants.SettingsKeys.compressImage),
+                    valueChanged: { isOn in
+                        UserDefaults.standard.set(isOn, forKey: ASCConstants.SettingsKeys.compressImage)
+                    }
+                )),
+            ],
+            header: NSLocalizedString("Storage", comment: "")
+        )
+        data.append(.standart(viewModel: storageSection))
+
+        // Information section
+        let informationSection = SettingsSection(
+            items: [
+                .standart(viewModel: ASCStandartCellViewModel(
+                    title: NSLocalizedString("About", comment: ""),
+                    action: {
+                        self.navigator.navigate(to: .about)
+                    },
+                    accessoryType: .disclosureIndicator
+                )),
+                .standart(viewModel: ASCStandartCellViewModel(
+                    title: NSLocalizedString("Support", comment: ""),
+                    action: {
+                        self.sendFeedback()
+                    },
+                    accessoryType: .disclosureIndicator
+                )),
+                .standart(viewModel: ASCStandartCellViewModel(
+                    title: NSLocalizedString("Whats's New", comment: ""),
+                    action: {
+                        WhatsNewService.show(force: true)
+                    },
+                    accessoryType: .disclosureIndicator
+                )),
+            ],
+            header: NSLocalizedString("Information", comment: "")
+        )
+        data.append(.standart(viewModel: informationSection))
+
+        // Debug section
+        if ASCDebugManager.shared.enabled {
+            let debugSection = SettingsSection(
+                items: [
+                    .standart(viewModel: ASCStandartCellViewModel(
+                        title: NSLocalizedString("Options", comment: ""),
+                        action: {
+                            self.navigator.navigate(to: .developerOptions)
+                        },
+                        accessoryType: .disclosureIndicator
+                    )),
+                    .standart(viewModel: ASCStandartCellViewModel(
+                        title: NSLocalizedString("Console", comment: ""),
+                        action: {
+                            ASCDebugManager.shared.showDebugMenu()
+                        },
+                        accessoryType: .disclosureIndicator
+                    )),
+                ],
+                header: "Developer menu"
+            )
+            data.append(.debug(viewModel: debugSection))
         }
+
+        tableData = data
+        tableView?.reloadData()
     }
 
     // MARK: - Private
 
     private func onCheckNotificationStatus(status: UNAuthorizationStatus) {
-        notificationCell?.displayError = status != .authorized
-        tableView?.reloadData()
+        authorizationStatus = status
+
+        var notificationRowIndex: Int?
+
+        if let sectionIndex = tableData.firstIndex(where: { section in
+            if let rowIndex = section.toSection().items.firstIndex(where: { cell in
+                guard case .notifications = cell else { return false }; return true
+            }) {
+                notificationRowIndex = rowIndex
+                return true
+            }
+            return false
+        }), let notificationRowIndex = notificationRowIndex {
+            if let viewModel = tableData[sectionIndex].toSection().items[notificationRowIndex].viewModel() as? ASCStandartCellViewModel {
+                var section = tableData[sectionIndex]
+                var records = section.toSection().items
+
+                records[notificationRowIndex] = .notifications(
+                    viewModel: viewModel,
+                    displayError: authorizationStatus != .authorized
+                )
+
+                section.viewModel = SettingsSection(
+                    items: records,
+                    header: section.viewModel.header,
+                    footer: section.viewModel.footer
+                )
+
+                tableData[sectionIndex] = section
+                tableView?.reloadRows(at: [IndexPath(row: notificationRowIndex, section: sectionIndex)], with: .none)
+            }
+        }
     }
 
     private func calcCacheSize() {
-        clearCacheCell?.isUserInteractionEnabled = false
-        // clearCacheCell?.detailTextLabel?.text = ""
+        // Search cache data model
 
-        let activityView = UIActivityIndicatorView(style: .gray)
-        activityView.color = view.tintColor
-        activityView.startAnimating()
+        let updateCacheModel: (Bool, String?) -> Void = { [weak self] processing, detailText in
+            guard let self = self else { return }
+
+            var cacheRowIndex: Int?
+
+            if let sectionIndex = self.tableData.firstIndex(where: { section in
+                if let rowIndex = section.toSection().items.firstIndex(where: { cell in
+                    guard case .cache = cell else { return false }; return true
+                }) {
+                    cacheRowIndex = rowIndex
+                    return true
+                }
+                return false
+            }), let rowIndex = cacheRowIndex {
+                if let viewModel = self.tableData[sectionIndex].toSection().items[rowIndex].viewModel() as? ASCStandartCellViewModel {
+                    var section = self.tableData[sectionIndex]
+                    var records = section.toSection().items
+
+                    records[rowIndex] = .cache(
+                        viewModel: viewModel,
+                        processing: processing,
+                        detailText: detailText
+                    )
+
+                    section.viewModel = SettingsSection(
+                        items: records,
+                        header: section.viewModel.header,
+                        footer: section.viewModel.footer
+                    )
+
+                    self.tableData[sectionIndex] = section
+                    self.tableView?.reloadRows(at: [IndexPath(row: rowIndex, section: sectionIndex)], with: .none)
+                }
+            }
+        }
 
         if cacheSize < 1 {
-            clearCacheCell?.detailTextLabel?.text = ""
-            clearCacheCell?.accessoryView = activityView
+            updateCacheModel(true, "")
+        } else {
+            updateCacheModel(false, String.fileSizeToString(with: cacheSize))
         }
 
         DispatchQueue.global().async { [weak self] in
@@ -150,7 +341,7 @@ class ASCSettingsViewController: ASCBaseTableViewController {
             ImageCache.default.calculateDiskStorageSize { [weak self] result in
                 switch result {
                 case let .success(size):
-                    log.info("Disk cache size: \(Double(size) / 1024 / 1024) MB")
+                    log.info("Disk cache size: \(String.fileSizeToString(with: UInt64(size)))")
                     guard let strongSelf = self else { return }
 
                     strongSelf.cacheSize += UInt64(size)
@@ -160,19 +351,17 @@ class ASCSettingsViewController: ASCBaseTableViewController {
 
                         delay(seconds: 0.3) {
                             strongSelf.cacheSize += UInt64(SDImageCache.shared.totalDiskSize())
-                            strongSelf.clearCacheCell?.accessoryView = nil
-                            strongSelf.clearCacheCell?.isUserInteractionEnabled = strongSelf.cacheSize > 0
-                            strongSelf.clearCacheCell?.detailTextLabel?.text = strongSelf.cacheSize < 1
+                            updateCacheModel(false, strongSelf.cacheSize < 1
                                 ? NSLocalizedString("None", comment: "If the cache is empty")
-                                : String.fileSizeToString(with: strongSelf.cacheSize)
+                                : String.fileSizeToString(with: strongSelf.cacheSize))
                         }
                     }
                 case let .failure(error):
                     print(error)
                     guard let strongSelf = self else { return }
 
-                    strongSelf.clearCacheCell?.isUserInteractionEnabled = false
-                    strongSelf.clearCacheCell?.detailTextLabel?.text = NSLocalizedString("None", comment: "If the cache is empty")
+                    strongSelf.cacheSize = 0
+                    updateCacheModel(false, NSLocalizedString("None", comment: "If the cache is empty"))
                 }
             }
         }
@@ -229,7 +418,7 @@ class ASCSettingsViewController: ASCBaseTableViewController {
         present(alertController, animated: true, completion: nil)
     }
 
-    func sendFeedback() {
+    private func sendFeedback() {
         let composer = MFMailComposeViewController()
         let localSdkVersion = ASCEditorManager.shared.localSDKVersion().joined(separator: ".")
         var converterVersion = "none"
@@ -267,17 +456,6 @@ class ASCSettingsViewController: ASCBaseTableViewController {
             )
         }
     }
-
-    // MARK: - Actions
-
-    @IBAction func onCompressImages(_ sender: UISwitch) {
-        UserDefaults.standard.set(sender.isOn, forKey: ASCConstants.SettingsKeys.compressImage)
-    }
-
-    @IBAction func onFilePreview(_ sender: UISwitch) {
-        UserDefaults.standard.set(sender.isOn, forKey: ASCConstants.SettingsKeys.previewFiles)
-        NotificationCenter.default.post(name: ASCConstants.Notifications.reloadData, object: nil)
-    }
 }
 
 // MARK: - MFMailComposeViewController Delegate
@@ -289,5 +467,170 @@ extension ASCSettingsViewController: MFMailComposeViewControllerDelegate {
         MFMailComposeResult, error: Error?
     ) {
         dismiss(animated: true, completion: nil)
+    }
+}
+
+// MARK: - Table view data source
+
+extension ASCSettingsViewController {
+    override func numberOfSections(in tableView: UITableView) -> Int {
+        tableData.count
+    }
+
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        tableData[section].toSection().items.count
+    }
+
+    override public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        cellType(by: indexPath).toCell(tableView: tableView)
+    }
+
+    override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        tableData[section].toSection().header
+    }
+
+    override func tableView(_ tableView: UITableView, titleForFooterInSection section: Int) -> String? {
+        tableData[section].toSection().footer
+    }
+
+    override public func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+
+        switch cellType(by: indexPath) {
+        case let .standart(model),
+             let .notifications(model, _),
+             let .cache(model, _, _):
+            model.action?()
+        default:
+            break
+        }
+    }
+
+    private func cellType(by indexPath: IndexPath) -> CellType {
+        tableData[indexPath.section].toSection().items[indexPath.row]
+    }
+}
+
+// MARK: - Cell types
+
+extension ASCSettingsViewController {
+    enum CellType {
+        case standart(viewModel: ASCStandartCellViewModel)
+        case switchControl(viewModel: ASCSwitchCellViewModel)
+        case cache(viewModel: ASCStandartCellViewModel, processing: Bool, detailText: String?)
+        case notifications(viewModel: ASCStandartCellViewModel, displayError: Bool)
+
+        public func viewModel() -> Any {
+            switch self {
+            case let .standart(viewModel):
+                return viewModel
+            case let .switchControl(viewModel):
+                return viewModel
+            case let .cache(viewModel, _, _):
+                return viewModel
+            case let .notifications(viewModel, _):
+                return viewModel
+            }
+        }
+
+        public func toCell(tableView: UITableView) -> UITableViewCell {
+            switch self {
+            case let .standart(viewModel):
+                return makeStandartCell(viewModel, for: tableView) ?? makeDefaultCell()
+            case let .switchControl(viewModel):
+                return makeSwitchCell(viewModel, for: tableView) ?? makeDefaultCell()
+            case let .cache(viewModel, processing, detailText):
+                return makeCacheCell(viewModel, processing: processing, detailText: detailText, for: tableView) ?? makeDefaultCell()
+            case let .notifications(viewModel, displayError):
+                return makeNotificationCell(viewModel, displayError: displayError, for: tableView) ?? makeDefaultCell()
+            }
+        }
+
+        private func makeStandartCell(_ viewModel: ASCStandartCellViewModel, for tableView: UITableView) -> UITableViewCell? {
+            guard let cell = ASCStandartCell.createForTableView(tableView) as? ASCStandartCell else { return nil }
+            cell.viewModel = viewModel
+            return cell
+        }
+
+        private func makeNotificationCell(_ viewModel: ASCStandartCellViewModel, displayError: Bool, for tableView: UITableView) -> UITableViewCell? {
+            guard let cell = ASCSettingsNotificationCell.createForTableView(tableView) as? ASCSettingsNotificationCell else { return nil }
+            cell.textLabel?.text = viewModel.title
+            cell.accessoryType = .disclosureIndicator
+            cell.displayError = displayError
+            return cell
+        }
+
+        private func makeCacheCell(_ viewModel: ASCStandartCellViewModel, processing: Bool, detailText: String?, for tableView: UITableView) -> UITableViewCell? {
+            let cell = UITableViewCell(style: .value1, reuseIdentifier: nil)
+
+            cell.textLabel?.text = viewModel.title
+            cell.detailTextLabel?.textColor = tableView.tintColor
+
+            let parentVC = tableView.parentViewController as? ASCSettingsViewController
+            let cacheSize = parentVC?.cacheSize ?? 0
+
+            if processing {
+                let activityView = UIActivityIndicatorView(style: .gray)
+                activityView.color = tableView.tintColor
+                activityView.startAnimating()
+
+                cell.detailTextLabel?.text = detailText
+                cell.accessoryView = activityView
+            } else {
+                cell.accessoryView = nil
+                cell.detailTextLabel?.text = detailText
+            }
+
+            cell.isUserInteractionEnabled = cacheSize > 0 && !processing
+
+            return cell
+        }
+
+        private func makeSwitchCell(_ viewModel: ASCSwitchCellViewModel, for tableView: UITableView) -> UITableViewCell? {
+            guard let switchCell = ASCSwitchCell.createForTableView(tableView) as? ASCSwitchCell else { return nil }
+            switchCell.viewModel = viewModel
+            switchCell.uiSwitch?.onTintColor = tableView.tintColor
+            return switchCell
+        }
+
+        private func makeDefaultCell() -> UITableViewCell {
+            UITableViewCell()
+        }
+    }
+}
+
+// MARK: - Section types
+
+extension ASCSettingsViewController {
+    enum SectionType {
+        case standart(viewModel: SettingsSection)
+        case debug(viewModel: SettingsSection)
+
+        public func toSection() -> SettingsSection {
+            switch self {
+            case let .standart(viewModel),
+                 let .debug(viewModel):
+                return viewModel
+            }
+        }
+
+        var viewModel: SettingsSection {
+            get {
+                switch self {
+                case let .standart(viewModel),
+                     let .debug(viewModel):
+                    return viewModel
+                }
+            }
+
+            set {
+                switch self {
+                case .standart:
+                    self = .standart(viewModel: newValue)
+                case .debug:
+                    self = .debug(viewModel: newValue)
+                }
+            }
+        }
     }
 }

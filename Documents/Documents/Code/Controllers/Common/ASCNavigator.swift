@@ -28,6 +28,9 @@ enum Destination {
     // MARK: - Settings
 
     case notificationSettings
+    case about
+    case passcodeLockSettings
+    case developerOptions
 }
 
 final class ASCNavigator {
@@ -101,6 +104,12 @@ final class ASCNavigator {
             return ASCPasswordRecoveryViewController.instance()
         case .notificationSettings:
             return ASCNotificationSettingsViewController()
+        case .about:
+            return ASCAboutViewController.instance()
+        case .passcodeLockSettings:
+            return ASCPasscodeLockViewController.instance()
+        case .developerOptions:
+            return ASCDevelopOptionsViewController()
         }
     }
 }

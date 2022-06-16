@@ -56,10 +56,6 @@ class ASCOnlyofficeCategoriesViewController: UITableViewController {
 
     private var needReloadTableViewDataWhenViewLoaded = false
 
-    // MARK: - Features
-
-    var fatureAllowSkeleton = true
-
     // MARK: - Lifecycle Methods
 
     required init?(coder aDecoder: NSCoder) {
@@ -271,7 +267,7 @@ class ASCOnlyofficeCategoriesViewController: UITableViewController {
     }
 
     @objc func onOnlyofficeLogoutCompleted(_ notification: Notification) {
-        if fatureAllowSkeleton {
+        if ASCConstants.Feature.allowCategoriesSkeleton {
             loadedCategories = []
             skeleton(show: true)
         } else {
@@ -391,7 +387,7 @@ class ASCOnlyofficeCategoriesViewController: UITableViewController {
         tableView.reloadData()
         selectCurrentlyRow()
 
-        if fatureAllowSkeleton {
+        if ASCConstants.Feature.allowCategoriesSkeleton {
             skeleton(show: categoriesCurrentlyLoading)
         }
     }

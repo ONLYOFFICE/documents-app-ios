@@ -50,6 +50,9 @@
 "A6 (10,5%@ x 14,8%@)" = "A6 (10,5%1$@ x 14,8%2$@)";
 
 /* No comment provided by engineer. */
+"About" = "詳細情報";
+
+/* No comment provided by engineer. */
 "Access by external link" = "外部リンクによるアクセス";
 
 /* No comment provided by engineer. */
@@ -108,6 +111,9 @@
 
 /* Data units */
 "bytes" = "バイト";
+
+/* No comment provided by engineer. */
+"Cache" = "キャッシュ";
 
 /* No comment provided by engineer. */
 "Camera Unavailable" = "カメラが使用できます";
@@ -186,6 +192,9 @@
 
 /* Payment required title */
 "common.paymentRequiredTitle" = "支払いが必要です";
+
+/* No comment provided by engineer. */
+"Compress Images" = "イメージを圧縮";
 
 /* Button title */
 "Connect" = "接続";
@@ -492,6 +501,9 @@
 "Files" = "ファイル";
 
 /* No comment provided by engineer. */
+"Files Preview" = "ファイルのプレビュー";
+
+/* No comment provided by engineer. */
 "Fill the shapes using gradients, images, or patterns. Choose the desirable line type." = "グラデーションや画像、パターンを使って図形を塗りつぶすこと、望ましい線の種類の選択ができます。";
 
 /* No comment provided by engineer. */
@@ -550,6 +562,9 @@
 
 /* No comment provided by engineer. */
 "Incorrect portal address" = "ポータルのアドレスが正しくありません";
+
+/* No comment provided by engineer. */
+"Information" = "情報";
 
 /* No comment provided by engineer. */
 "Instructions had been sent to your email" = "指示書をメールアドレスに送りました。";
@@ -717,9 +732,6 @@
 "On iPhone" = "iPhone で";
 
 /* No comment provided by engineer. */
-"Once you enter the password and open the file, the current password to the file will be reset" = "パスワードを入力してこのファイルを開いたら、このファイルへの現在のパスワードが再設定されます";
-
-/* No comment provided by engineer. */
 "OneDrive" = "OneDrive";
 
 /* No comment provided by engineer. */
@@ -763,6 +775,9 @@
 
 /* Table cell right holder acces text */
 "Owner" = "所有者";
+
+/* No comment provided by engineer. */
+"Passcode Lock" = "パスコードロック";
 
 /* No comment provided by engineer. */
 "Password" = "パスワード";
@@ -1004,6 +1019,12 @@
 
 /* No comment provided by engineer. */
 "Spreadsheets" = "スプレッドシート";
+
+/* No comment provided by engineer. */
+"Storage" = "ストレージ";
+
+/* No comment provided by engineer. */
+"Support" = "サポート";
 
 /* No comment provided by engineer. */
 "Switch" = "スイッチ";

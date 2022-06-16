@@ -221,6 +221,9 @@
 "Connecting" = "Подключение";
 
 /* No comment provided by engineer. */
+"Console" = "Консоль";
+
+/* No comment provided by engineer. */
 "Continue anyway" = "Продолжить все равно";
 
 /* No comment provided by engineer. */
@@ -368,6 +371,9 @@
 "Deselect all" = "Снять выделение";
 
 /* No comment provided by engineer. */
+"Developer options" = "Настройки разработчика";
+
+/* No comment provided by engineer. */
 "Disable if you do not want to receive notifications from the %@" = "Отключите, если вы не хотите получать уведомления от %@";
 
 /* Button title */
@@ -511,6 +517,9 @@
 
 /* No comment provided by engineer. */
 "Failure to download result from conversion online service." = "Ошибка скачивания полученного файла из службы онлайн-конвертации.";
+
+/* No comment provided by engineer. */
+"Features" = "Фичи";
 
 /* Description of file operation error */
 "File already exists" = "Файл уже существует";
@@ -1205,9 +1214,6 @@
 
 /* No comment provided by engineer. */
 "To open a new document, you must exit the current document." = "Чтобы открыть новый документ, вы должны выйти из текущего документа.";
-
-/* No comment provided by engineer. */
-"To receive push notifications from the ONLYOFFICE application, you need to allow receiving notifications for this application in the iOS settings" = "Чтобы получать push-уведомления от приложения ONLYOFFICE, необходимо разрешить получение уведомлений для этого приложения в настройках iOS";
 
 /* Category title */
 "Trash" = "Корзина";

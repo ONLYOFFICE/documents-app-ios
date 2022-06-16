@@ -50,6 +50,9 @@
 "A6 (10,5%@ x 14,8%@)" = "A6 (10,5%1$@ x 14,8%2$@)";
 
 /* No comment provided by engineer. */
+"About" = "Относно";
+
+/* No comment provided by engineer. */
 "Access by external link" = "Достъп до външен линк";
 
 /* No comment provided by engineer. */
@@ -108,6 +111,9 @@
 
 /* Data units */
 "bytes" = "Байта";
+
+/* No comment provided by engineer. */
+"Cache" = "Скривалище";
 
 /* No comment provided by engineer. */
 "Camera Unavailable" = "Камерата е недостъпна";
@@ -186,6 +192,9 @@
 
 /* Payment required title */
 "common.paymentRequiredTitle" = "Изисква се плащане";
+
+/* No comment provided by engineer. */
+"Compress Images" = "Компресиране на изображения";
 
 /* Button title */
 "Connect" = "Свържете";
@@ -492,6 +501,9 @@
 "Files" = "Файлове";
 
 /* No comment provided by engineer. */
+"Files Preview" = "Преглед на файлове";
+
+/* No comment provided by engineer. */
 "Fill the shapes using gradients, images, or patterns. Choose the desirable line type." = "Попълнете формите, използвайки градиенти, изображения или модели. Изберете желания тип линия.";
 
 /* No comment provided by engineer. */
@@ -550,6 +562,9 @@
 
 /* No comment provided by engineer. */
 "Incorrect portal address" = "Неправилен адрес на портала";
+
+/* No comment provided by engineer. */
+"Information" = "Информация";
 
 /* No comment provided by engineer. */
 "Instructions had been sent to your email" = "Инструкциите бяха пратени на имейла Ви";
@@ -693,6 +708,9 @@
 /* No comment provided by engineer. */
 "No search result" = "Няма резултат от търсенето";
 
+/* No comment provided by engineer. */
+"No Search Result" = "Няма резултат от търсенето";
+
 /* Invalid entity date
    Invalid entity owner */
 "none" = "няма";
@@ -720,9 +738,6 @@
 "On iPhone" = "На iPhone";
 
 /* No comment provided by engineer. */
-"Once you enter the password and open the file, the current password to the file will be reset" = "След като въведете паролата и отворите файла, текущата парола за файла ще бъде нулирана";
-
-/* No comment provided by engineer. */
 "OneDrive" = "OneDrive";
 
 /* No comment provided by engineer. */
@@ -747,6 +762,9 @@
 "Opening" = "Отвор";
 
 /* No comment provided by engineer. */
+"Options" = "Настроики";
+
+/* No comment provided by engineer. */
 "Order" = "Поръчка";
 
 /* No comment provided by engineer. */
@@ -766,6 +784,9 @@
 
 /* Table cell right holder acces text */
 "Owner" = "Собственик";
+
+/* No comment provided by engineer. */
+"Passcode Lock" = "Заключване с парола";
 
 /* No comment provided by engineer. */
 "Password" = "Парола";
@@ -973,6 +994,9 @@
 "Sharing Settings" = "Споделяне на Настройки";
 
 /* No comment provided by engineer. */
+"Show notifications" = "Показване на известия";
+
+/* No comment provided by engineer. */
 "Single Sign-on" = "Единично влезне";
 
 /* No comment provided by engineer. */
@@ -1007,6 +1031,12 @@
 
 /* No comment provided by engineer. */
 "Spreadsheets" = "Електронни таблици";
+
+/* No comment provided by engineer. */
+"Storage" = "съхранение";
+
+/* No comment provided by engineer. */
+"Support" = "Поддържа";
 
 /* No comment provided by engineer. */
 "Switch" = "Ключ";
@@ -1054,6 +1084,9 @@
 "The link for external\naccess is copied\nto the clipboard" = "Линкът за външен\nдостъп е копиран\nв клипборда";
 
 /* No comment provided by engineer. */
+"The ONLYOFFICE Editors module is missing. Please contact support@onlyoffice.com for more information." = "Липсва модулът ONLYOFFICE Editors. Моля, свържете се с support@onlyoffice.com за повече информация.";
+
+/* No comment provided by engineer. */
 "The parameters are incorrect." = "Параметрите не са правилни.";
 
 /* No comment provided by engineer. */
@@ -1073,6 +1106,9 @@
 
 /* No comment provided by engineer. */
 "The server is not available." = "Сървърът не е наличен.";
+
+/* No comment provided by engineer. */
+"The setting will be available upon authorization on the %@." = "Настройката ще бъде налична при разрешаване в %@.";
 
 /* No comment provided by engineer. */
 "The trash is empty" = "Кошчето е празно";
@@ -1105,6 +1141,12 @@
 "To open a document, you must go to portal %@ under your account." = "За да отворите документ, трябва да отидете на портал %@ в профила си.";
 
 /* No comment provided by engineer. */
+"To open a folder, you must exit the current document." = "За да отворите папка, трябва да излезете от текущия документ.";
+
+/* No comment provided by engineer. */
+"To open a folder, you must go to portal %@ under your account." = "За да отворите дадена папка, трябва да отидете в портал %@ под вашия акаунт.";
+
+/* No comment provided by engineer. */
 "To open a new document, you must exit the current document." = "За да отворите нов документ, трябва да излезете от текущия документ.";
 
 /* Category title */
@@ -1118,6 +1160,9 @@
 
 /* No comment provided by engineer. */
 "Try to connect via another protocol?" = "Опитайте да се свържете чрез друг протокол?";
+
+/* No comment provided by engineer. */
+"Turn ON in Settings" = "Включете в Настройки";
 
 /* No comment provided by engineer. */
 "Turn Passcode Off" = "Изключете паролата";
@@ -1232,6 +1277,9 @@
 
 /* No comment provided by engineer. */
 "What's New" = "Какво ново";
+
+/* No comment provided by engineer. */
+"Whats's New" = "Какво е новото";
 
 /* Introduction Step Four - Description */
 "Work with documents offline.\nCreated files can later be uploaded to online portal and\nthen accessed from any other device." = "Работа с документи офлайн.\nСъздадените файлове по-късно могат да бъдат качени в онлайн портала и след това достъпни от всяко друго устройство.";

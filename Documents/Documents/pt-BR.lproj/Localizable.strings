@@ -50,6 +50,9 @@
 "A6 (10,5%@ x 14,8%@)" = "A6 (10,5%1$@ x 14,8%2$@)";
 
 /* No comment provided by engineer. */
+"About" = "Sobre";
+
+/* No comment provided by engineer. */
 "Access by external link" = "Acesso por link externo";
 
 /* No comment provided by engineer. */
@@ -108,6 +111,9 @@
 
 /* Data units */
 "bytes" = "bytes";
+
+/* No comment provided by engineer. */
+"Cache" = "Cache";
 
 /* No comment provided by engineer. */
 "Camera Unavailable" = "Câmera indisponível";
@@ -186,6 +192,9 @@
 
 /* Payment required title */
 "common.paymentRequiredTitle" = "Pagamento necessário";
+
+/* No comment provided by engineer. */
+"Compress Images" = "Compactar imagens";
 
 /* Button title */
 "Connect" = "Conectar";
@@ -492,6 +501,9 @@
 "Files" = "Arquivos";
 
 /* No comment provided by engineer. */
+"Files Preview" = "Visualização de arquivos";
+
+/* No comment provided by engineer. */
 "Fill the shapes using gradients, images, or patterns. Choose the desirable line type." = "Preencha as formas usando gradientes, imagens ou padrões. Escolha o tipo de linha desejada.";
 
 /* No comment provided by engineer. */
@@ -550,6 +562,9 @@
 
 /* No comment provided by engineer. */
 "Incorrect portal address" = "Endereço do portal incorreto";
+
+/* No comment provided by engineer. */
+"Information" = "Informações";
 
 /* No comment provided by engineer. */
 "Instructions had been sent to your email" = "As instruções foram enviadas para o seu e-mail";
@@ -720,9 +735,6 @@
 "On iPhone" = "No iPhone";
 
 /* No comment provided by engineer. */
-"Once you enter the password and open the file, the current password to the file will be reset" = "Depois de inserir a senha e abrir o arquivo, a senha atual do arquivo será redefinida";
-
-/* No comment provided by engineer. */
 "OneDrive" = "OneDrive";
 
 /* No comment provided by engineer. */
@@ -766,6 +778,9 @@
 
 /* Table cell right holder acces text */
 "Owner" = "Proprietário";
+
+/* No comment provided by engineer. */
+"Passcode Lock" = "Bloqueio por código de acesso";
 
 /* No comment provided by engineer. */
 "Password" = "Senha";
@@ -1007,6 +1022,12 @@
 
 /* No comment provided by engineer. */
 "Spreadsheets" = "Planilhas";
+
+/* No comment provided by engineer. */
+"Storage" = "Armazenamento";
+
+/* No comment provided by engineer. */
+"Support" = "Suporte";
 
 /* No comment provided by engineer. */
 "Switch" = "Alternar";

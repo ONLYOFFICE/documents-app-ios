@@ -148,9 +148,9 @@ class ASCSharingAddRightHoldersView {
         }
         notificationsRegister()
         configureNavigationBar()
-        configureTables()
         configureToolBar()
         saveCurrentPreferredSizeAsDefault()
+        configureTables()
     }
 
     func reset() {

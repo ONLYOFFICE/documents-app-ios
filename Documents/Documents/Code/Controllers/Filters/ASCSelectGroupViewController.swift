@@ -96,17 +96,17 @@ class ASCSelectGroupViewController: UIViewController {
             if let error = error {
                 log.error(error)
             } else if let groups = response?.result {
-                for group in groups {
-                    let groupName = group.name
-                    let id = group.id
-
-                    self.dataArray.append(ASCGroupTableViewDataModelItem(groupId: id, groupName: groupName, isSelected: false))
+                self.dataArray = groups.map {
+                    ASCGroupTableViewDataModelItem(
+                        groupId: $0.id,
+                        groupName: $0.name,
+                        isSelected: false
+                    )
                 }
+                .sorted { $0.groupName ?? "" < $1.groupName ?? "" }
 
-                DispatchQueue.main.async { [weak self] in
-                    self?.tableView.reloadData()
-                    self?.displayPlaceholderIfNeeded()
-                }
+                self.tableView.reloadData()
+                self.displayPlaceholderIfNeeded()
             }
         }
     }
@@ -205,16 +205,22 @@ extension ASCSelectGroupViewController: UITableViewDelegate, UITableViewDataSour
         let dataModel = getDataModel(indexPath: indexPath)
 
         if #available(iOS 14.0, *) {
-            var content = cell.defaultContentConfiguration()
-            content.text = dataModel.groupName
-            cell.contentConfiguration = content
+            var config = cell.defaultContentConfiguration()
+            config.textProperties.adjustsFontSizeToFitWidth = true
+            config.textProperties.numberOfLines = 2
+            config.textProperties.font = UIFont.preferredFont(forTextStyle: .callout)
+            config.text = dataModel.groupName
+            cell.automaticallyUpdatesContentConfiguration = true
+            cell.contentConfiguration = config
         } else {
+            cell.textLabel?.numberOfLines = 2
             cell.textLabel?.text = dataModel.groupName
         }
 
         if dataModel.isSelected == true {
             cell.accessoryType = .checkmark
         }
+        
         return cell
     }
 

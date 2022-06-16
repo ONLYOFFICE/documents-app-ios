@@ -143,29 +143,20 @@ class ASCSelectUserViewController: UIViewController {
             if let error = error {
                 log.error(error)
             } else if let users = response?.result {
-                for user in users {
-                    let userName = user.displayName
-                    let department = user.department
-                    let avatarUrl = user.avatar
-                    let id = user.userId
-
-                    self?.dataArray.append(
-                        ASCUserTableViewDataModelItem(
-                            id: id,
-                            avatarImageUrl: avatarUrl,
-                            userName: userName,
-                            userPosition: department,
-                            isSelected: false,
-                            isOwner: user.isShareOwner
-                        )
+                self?.dataArray = users.map {
+                    ASCUserTableViewDataModelItem(
+                        id: $0.userId,
+                        avatarImageUrl: $0.avatar,
+                        userName: $0.displayName,
+                        userPosition: $0.displayName,
+                        isSelected: false,
+                        isOwner: $0.isShareOwner
                     )
                 }
-                self?.dataArray.sort(by: { l, _ in l.isOwner })
-
-                DispatchQueue.main.async { [weak self] in
-                    self?.tableView.reloadData()
-                    self?.displayPlaceholderIfNeeded()
-                }
+                .sorted { $0.userName ?? "" < $1.userName ?? "" }
+                
+                self?.tableView.reloadData()
+                self?.displayPlaceholderIfNeeded()
             }
         }
     }
@@ -205,11 +196,13 @@ class ASCSelectUserViewController: UIViewController {
 // MARK: - UITableViewDelegate and UITableViewDataSource
 
 extension ASCSelectUserViewController: UITableViewDelegate, UITableViewDataSource {
+    
+    private func tableData() -> [ASCUserTableViewDataModelItem] {
+        (isFiltering ? filteredUsers : dataArray)
+    }
+    
     private func numberOfRecords() -> Int {
-        if isFiltering {
-            return filteredUsers.count
-        }
-        return dataArray.count
+        tableData().count
     }
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -235,11 +228,7 @@ extension ASCSelectUserViewController: UITableViewDelegate, UITableViewDataSourc
     }
 
     func getDataModel(indexPath: IndexPath) -> ASCUserTableViewDataModelItem {
-        if isFiltering {
-            return filteredUsers[indexPath.row]
-        } else {
-            return dataArray[indexPath.row]
-        }
+        tableData()[indexPath.row]
     }
 
     func deselectAll() {
@@ -254,14 +243,8 @@ extension ASCSelectUserViewController: UITableViewDelegate, UITableViewDataSourc
 
     func selectCell(indexPath: IndexPath) {
         let index: Int? = {
-            if isFiltering {
-                return filteredUsers.firstIndex { item in
-                    item.isSelected == true
-                }
-            } else {
-                return dataArray.firstIndex { item in
-                    item.isSelected == true
-                }
+            tableData().firstIndex { item in
+                item.isSelected == true
             }
         }()
         if let index = index {
@@ -299,6 +282,20 @@ extension ASCSelectUserViewController: UITableViewDelegate, UITableViewDataSourc
 
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return Constants.cellHeight
+    }
+    
+    func tableView(_ tableView: UITableView, sectionForSectionIndexTitle title: String, at index: Int) -> Int {
+        // No sections, so scroll manually
+        if let firstIndex = tableData().firstIndex(where: { "\(($0.userName ?? " ").uppercased().first ?? " ")" == title }) {
+            tableView.scrollToRow(at: IndexPath(row: firstIndex, section: 0), at: .top, animated: false)
+        }
+        return index
+    }
+    
+    func sectionIndexTitles(for tableView: UITableView) -> [String]? {
+        tableData()
+            .map { "\(($0.userName ?? " ").uppercased().first ?? " ")" }
+            .withoutDuplicates()
     }
 }
 

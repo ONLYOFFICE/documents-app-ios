@@ -228,7 +228,7 @@ extension ASCFiltersViewController: UICollectionViewDataSource, UICollectionView
             if filterViewModel.isFilterResetBtnShowen == true {
                 cell?.addDeselectFilterBtnToView()
             }
-            cell?.labelText.textColor = Asset.Colors.viewBackground.color
+            cell?.labelText.textColor = .white
             cell?.backgroundColor = Asset.Colors.brend.color
         } else {
             cell?.labelText.textColor = filterViewModel.defaultTextColor
@@ -257,9 +257,9 @@ extension ASCFiltersViewController {
         let referenceSize = CGSize(width: CGFloat.greatestFiniteMagnitude, height: ASCFiltersCollectionViewCell.pillHeight)
         let calculatedSize = (label as NSString).boundingRect(with: referenceSize, options: NSStringDrawingOptions.usesLineFragmentOrigin, attributes: [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 15.0)], context: nil)
         if filterViewModel.isFilterResetBtnShowen == true {
-            return CGSize(width: calculatedSize.width + Constants.cellLeftRightPadding + Constants.cellLeftRightPadding, height: ASCFiltersCollectionViewCell.pillHeight)
+            return CGSize(width: min(calculatedSize.width, collectionView.frame.width * 0.8) + Constants.cellLeftRightPadding + Constants.cellLeftRightPadding, height: ASCFiltersCollectionViewCell.pillHeight)
         } else {
-            return CGSize(width: calculatedSize.width + Constants.cellLeftRightPadding, height: ASCFiltersCollectionViewCell.pillHeight)
+            return CGSize(width: min(calculatedSize.width, collectionView.frame.width * 0.8) + Constants.cellLeftRightPadding, height: ASCFiltersCollectionViewCell.pillHeight)
         }
     }
 

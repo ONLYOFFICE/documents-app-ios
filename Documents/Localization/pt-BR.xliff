@@ -818,6 +818,7 @@ Observação: se você se esquecer do código de acesso, será necessário exclu
       </trans-unit>
       <trans-unit id="bfL-pj-gii.title" xml:space="preserve">
         <source>Settings</source>
+        <target state="translated">Configurações</target>
         <note>Class = "UINavigationItem"; title = "Settings"; ObjectID = "bfL-pj-gii";</note>
       </trans-unit>
       <trans-unit id="cl6-b0-Mjh.text" xml:space="preserve">
@@ -1335,6 +1336,7 @@ Observação: se você se esquecer do código de acesso, será necessário exclu
       </trans-unit>
       <trans-unit id="About" xml:space="preserve">
         <source>About</source>
+        <target state="translated">Sobre</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Access by external link" xml:space="preserve">
@@ -1447,6 +1449,7 @@ Observação: se você se esquecer do código de acesso, será necessário exclu
       </trans-unit>
       <trans-unit id="Cache" xml:space="preserve">
         <source>Cache</source>
+        <target state="translated">Cache</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Camera Unavailable" xml:space="preserve">
@@ -1546,6 +1549,7 @@ Observação: se você se esquecer do código de acesso, será necessário exclu
       </trans-unit>
       <trans-unit id="Compress Images" xml:space="preserve">
         <source>Compress Images</source>
+        <target state="translated">Compactar imagens</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Connect" xml:space="preserve">
@@ -2068,6 +2072,7 @@ outros que usam o protocolo WebDAV.</target>
       </trans-unit>
       <trans-unit id="Files Preview" xml:space="preserve">
         <source>Files Preview</source>
+        <target state="translated">Visualização de arquivos</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Fill the shapes using gradients, images, or patterns. Choose the desirable line type." xml:space="preserve">
@@ -2166,6 +2171,7 @@ outros que usam o protocolo WebDAV.</target>
       </trans-unit>
       <trans-unit id="Information" xml:space="preserve">
         <source>Information</source>
+        <target state="translated">Informações</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Instructions had been sent to your email" xml:space="preserve">
@@ -2521,6 +2527,7 @@ to the clipboard</source>
       </trans-unit>
       <trans-unit id="Passcode Lock" xml:space="preserve">
         <source>Passcode Lock</source>
+        <target state="translated">Bloqueio por código de acesso</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Password" xml:space="preserve">
@@ -2968,10 +2975,12 @@ Se o problema persistir, entre em contato conosco e mencione este código de err
       </trans-unit>
       <trans-unit id="Storage" xml:space="preserve">
         <source>Storage</source>
+        <target state="translated">Armazenamento</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Support" xml:space="preserve">
         <source>Support</source>
+        <target state="translated">Suporte</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Switch" xml:space="preserve">

@@ -818,6 +818,7 @@ Note: if you forget the passcode, you'll need to delete and reinstall the app. A
       </trans-unit>
       <trans-unit id="bfL-pj-gii.title" xml:space="preserve">
         <source>Settings</source>
+        <target state="translated">Настройки</target>
         <note>Class = "UINavigationItem"; title = "Settings"; ObjectID = "bfL-pj-gii";</note>
       </trans-unit>
       <trans-unit id="cl6-b0-Mjh.text" xml:space="preserve">
@@ -1335,6 +1336,7 @@ Note: if you forget the passcode, you'll need to delete and reinstall the app. A
       </trans-unit>
       <trans-unit id="About" xml:space="preserve">
         <source>About</source>
+        <target state="translated">Относно</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Access by external link" xml:space="preserve">
@@ -1448,6 +1450,7 @@ Note: if you forget the passcode, you'll need to delete and reinstall the app. A
       </trans-unit>
       <trans-unit id="Cache" xml:space="preserve">
         <source>Cache</source>
+        <target state="translated">Скривалище</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Camera Unavailable" xml:space="preserve">
@@ -1547,6 +1550,7 @@ Note: if you forget the passcode, you'll need to delete and reinstall the app. A
       </trans-unit>
       <trans-unit id="Compress Images" xml:space="preserve">
         <source>Compress Images</source>
+        <target state="translated">Компресиране на изображения</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Connect" xml:space="preserve">
@@ -2067,6 +2071,7 @@ others which use WebDAV protocol.</source>
       </trans-unit>
       <trans-unit id="Files Preview" xml:space="preserve">
         <source>Files Preview</source>
+        <target state="translated">Преглед на файлове</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Fill the shapes using gradients, images, or patterns. Choose the desirable line type." xml:space="preserve">
@@ -2165,6 +2170,7 @@ others which use WebDAV protocol.</source>
       </trans-unit>
       <trans-unit id="Information" xml:space="preserve">
         <source>Information</source>
+        <target state="translated">Информация</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Instructions had been sent to your email" xml:space="preserve">
@@ -2366,6 +2372,7 @@ to the clipboard</source>
       </trans-unit>
       <trans-unit id="No Search Result" xml:space="preserve">
         <source>No Search Result</source>
+        <target state="translated">Няма резултат от търсенето</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="No client IDs of application" xml:space="preserve">
@@ -2492,6 +2499,7 @@ to the clipboard</source>
       </trans-unit>
       <trans-unit id="Options" xml:space="preserve">
         <source>Options</source>
+        <target state="translated">Настроики</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Order" xml:space="preserve">
@@ -2521,6 +2529,7 @@ to the clipboard</source>
       </trans-unit>
       <trans-unit id="Passcode Lock" xml:space="preserve">
         <source>Passcode Lock</source>
+        <target state="translated">Заключване с парола</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Password" xml:space="preserve">
@@ -2909,6 +2918,7 @@ to the clipboard</source>
       </trans-unit>
       <trans-unit id="Show notifications" xml:space="preserve">
         <source>Show notifications</source>
+        <target state="translated">Показване на известия</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Single Sign-on" xml:space="preserve">
@@ -2968,10 +2978,12 @@ to the clipboard</source>
       </trans-unit>
       <trans-unit id="Storage" xml:space="preserve">
         <source>Storage</source>
+        <target state="translated">съхранение</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Support" xml:space="preserve">
         <source>Support</source>
+        <target state="translated">Поддържа</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Switch" xml:space="preserve">
@@ -3011,6 +3023,7 @@ to the clipboard</source>
       </trans-unit>
       <trans-unit id="The ONLYOFFICE Editors module is missing. Please contact support@onlyoffice.com for more information." xml:space="preserve">
         <source>The ONLYOFFICE Editors module is missing. Please contact support@onlyoffice.com for more information.</source>
+        <target state="translated">Липсва модулът ONLYOFFICE Editors. Моля, свържете се с support@onlyoffice.com за повече информация.</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="The account name must be between 6 and 50 characters long" xml:space="preserve">
@@ -3094,6 +3107,7 @@ to the clipboard</source>
       </trans-unit>
       <trans-unit id="The setting will be available upon authorization on the %@." xml:space="preserve">
         <source>The setting will be available upon authorization on the %@.</source>
+        <target state="translated">Настройката ще бъде налична при разрешаване в %@.</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="The trash is empty" xml:space="preserve">
@@ -3148,10 +3162,12 @@ to the clipboard</source>
       </trans-unit>
       <trans-unit id="To open a folder, you must exit the current document." xml:space="preserve">
         <source>To open a folder, you must exit the current document.</source>
+        <target state="translated">За да отворите папка, трябва да излезете от текущия документ.</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="To open a folder, you must go to portal %@ under your account." xml:space="preserve">
         <source>To open a folder, you must go to portal %@ under your account.</source>
+        <target state="translated">За да отворите дадена папка, трябва да отидете в портал %@ под вашия акаунт.</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="To open a new document, you must exit the current document." xml:space="preserve">
@@ -3161,6 +3177,7 @@ to the clipboard</source>
       </trans-unit>
       <trans-unit id="To receive push notifications from the ONLYOFFICE application, you need to allow receiving notifications for this application in the iOS settings" xml:space="preserve">
         <source>To receive push notifications from the ONLYOFFICE application, you need to allow receiving notifications for this application in the iOS settings</source>
+        <target state="translated">За да получавате push известия от приложението ONLYOFFICE, трябва да разрешите получаването на известия за това приложение в настройките на iOS</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Trash" xml:space="preserve">
@@ -3185,6 +3202,7 @@ to the clipboard</source>
       </trans-unit>
       <trans-unit id="Turn ON in Settings" xml:space="preserve">
         <source>Turn ON in Settings</source>
+        <target state="translated">Включете в Настройки</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Turn Passcode Off" xml:space="preserve">
@@ -3381,6 +3399,7 @@ Swipe to learn more about the app.</source>
       </trans-unit>
       <trans-unit id="Whats's New" xml:space="preserve">
         <source>Whats's New</source>
+        <target state="translated">Какво е новото</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Work with documents offline.&#10;Created files can later be uploaded to online portal and&#10;then accessed from any other device." xml:space="preserve">

@@ -7,7 +7,7 @@
     <body>
       <trans-unit id="1hg-GO-WNq.text" xml:space="preserve">
         <source>Next</source>
-        <target>下一个</target>
+        <target state="translated">下一个</target>
         <note>Class = "UILabel"; text = "Next"; ObjectID = "1hg-GO-WNq";</note>
       </trans-unit>
       <trans-unit id="2MJ-bj-ZpN.placeholder" xml:space="preserve">
@@ -773,6 +773,7 @@ Note: if you forget the passcode, you'll need to delete and reinstall the app. A
       </trans-unit>
       <trans-unit id="bfL-pj-gii.title" xml:space="preserve">
         <source>Settings</source>
+        <target state="translated">设置</target>
         <note>Class = "UINavigationItem"; title = "Settings"; ObjectID = "bfL-pj-gii";</note>
       </trans-unit>
       <trans-unit id="cl6-b0-Mjh.text" xml:space="preserve">
@@ -1290,6 +1291,7 @@ Note: if you forget the passcode, you'll need to delete and reinstall the app. A
       </trans-unit>
       <trans-unit id="About" xml:space="preserve">
         <source>About</source>
+        <target state="translated">关于</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Access by external link" xml:space="preserve">
@@ -1403,6 +1405,7 @@ Note: if you forget the passcode, you'll need to delete and reinstall the app. A
       </trans-unit>
       <trans-unit id="Cache" xml:space="preserve">
         <source>Cache</source>
+        <target state="translated">缓存</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Camera Unavailable" xml:space="preserve">
@@ -1502,6 +1505,7 @@ Note: if you forget the passcode, you'll need to delete and reinstall the app. A
       </trans-unit>
       <trans-unit id="Compress Images" xml:space="preserve">
         <source>Compress Images</source>
+        <target state="translated">压缩图像</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Connect" xml:space="preserve">
@@ -2024,6 +2028,7 @@ others which use WebDAV protocol.</source>
       </trans-unit>
       <trans-unit id="Files Preview" xml:space="preserve">
         <source>Files Preview</source>
+        <target state="translated">文件预览</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Fill the shapes using gradients, images, or patterns. Choose the desirable line type." xml:space="preserve">
@@ -2122,6 +2127,7 @@ others which use WebDAV protocol.</source>
       </trans-unit>
       <trans-unit id="Information" xml:space="preserve">
         <source>Information</source>
+        <target state="translated">信息</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Instructions had been sent to your email" xml:space="preserve">
@@ -2478,6 +2484,7 @@ to the clipboard</source>
       </trans-unit>
       <trans-unit id="Passcode Lock" xml:space="preserve">
         <source>Passcode Lock</source>
+        <target state="translated">密码锁</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Password" xml:space="preserve">
@@ -2925,10 +2932,12 @@ to the clipboard</source>
       </trans-unit>
       <trans-unit id="Storage" xml:space="preserve">
         <source>Storage</source>
+        <target state="translated">存储</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Support" xml:space="preserve">
         <source>Support</source>
+        <target state="translated">支持</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Switch" xml:space="preserve">

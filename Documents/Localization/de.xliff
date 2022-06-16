@@ -821,6 +821,7 @@ Hinweis: Wenn Sie das Kennwort vergessen haben, müssen Sie die App löschen und
       </trans-unit>
       <trans-unit id="bfL-pj-gii.title" xml:space="preserve">
         <source>Settings</source>
+        <target state="translated">Einstellungen</target>
         <note>Class = "UINavigationItem"; title = "Settings"; ObjectID = "bfL-pj-gii";</note>
       </trans-unit>
       <trans-unit id="cl6-b0-Mjh.text" xml:space="preserve">
@@ -1338,6 +1339,7 @@ Hinweis: Wenn Sie das Kennwort vergessen haben, müssen Sie die App löschen und
       </trans-unit>
       <trans-unit id="About" xml:space="preserve">
         <source>About</source>
+        <target state="translated">Über</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Access by external link" xml:space="preserve">
@@ -1451,6 +1453,7 @@ Hinweis: Wenn Sie das Kennwort vergessen haben, müssen Sie die App löschen und
       </trans-unit>
       <trans-unit id="Cache" xml:space="preserve">
         <source>Cache</source>
+        <target state="translated">Cache</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Camera Unavailable" xml:space="preserve">
@@ -1550,6 +1553,7 @@ Hinweis: Wenn Sie das Kennwort vergessen haben, müssen Sie die App löschen und
       </trans-unit>
       <trans-unit id="Compress Images" xml:space="preserve">
         <source>Compress Images</source>
+        <target state="translated">Bilder komprimieren</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Connect" xml:space="preserve">
@@ -2072,6 +2076,7 @@ die das WebDAV-Protokoll verwenden.</target>
       </trans-unit>
       <trans-unit id="Files Preview" xml:space="preserve">
         <source>Files Preview</source>
+        <target state="translated">Dateivorschau</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Fill the shapes using gradients, images, or patterns. Choose the desirable line type." xml:space="preserve">
@@ -2170,6 +2175,7 @@ die das WebDAV-Protokoll verwenden.</target>
       </trans-unit>
       <trans-unit id="Information" xml:space="preserve">
         <source>Information</source>
+        <target state="translated">Informationen</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Instructions had been sent to your email" xml:space="preserve">
@@ -2526,6 +2532,7 @@ in die Zwischenablage kopiert</target>
       </trans-unit>
       <trans-unit id="Passcode Lock" xml:space="preserve">
         <source>Passcode Lock</source>
+        <target state="translated">Kennwortsperre</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Password" xml:space="preserve">
@@ -2973,10 +2980,12 @@ in die Zwischenablage kopiert</target>
       </trans-unit>
       <trans-unit id="Storage" xml:space="preserve">
         <source>Storage</source>
+        <target state="translated">Speicher</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Support" xml:space="preserve">
         <source>Support</source>
+        <target state="translated">Support</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Switch" xml:space="preserve">

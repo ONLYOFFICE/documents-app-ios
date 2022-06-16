@@ -1678,6 +1678,7 @@ others which use WebDAV protocol.</source>
       </trans-unit>
       <trans-unit id="Console" xml:space="preserve">
         <source>Console</source>
+        <target state="translated">Консоль</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Continue anyway" xml:space="preserve">
@@ -1927,6 +1928,7 @@ others which use WebDAV protocol.</source>
       </trans-unit>
       <trans-unit id="Developer options" xml:space="preserve">
         <source>Developer options</source>
+        <target state="translated">Настройки разработчика</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Disable if you do not want to receive notifications from the %@" xml:space="preserve">
@@ -2152,6 +2154,7 @@ others which use WebDAV protocol.</source>
       </trans-unit>
       <trans-unit id="Features" xml:space="preserve">
         <source>Features</source>
+        <target state="translated">Фичи</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="File already exists" xml:space="preserve">

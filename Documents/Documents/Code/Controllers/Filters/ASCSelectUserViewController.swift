@@ -154,7 +154,7 @@ class ASCSelectUserViewController: UIViewController {
                     )
                 }
                 .sorted { $0.userName ?? "" < $1.userName ?? "" }
-                
+
                 self?.tableView.reloadData()
                 self?.displayPlaceholderIfNeeded()
             }
@@ -196,11 +196,10 @@ class ASCSelectUserViewController: UIViewController {
 // MARK: - UITableViewDelegate and UITableViewDataSource
 
 extension ASCSelectUserViewController: UITableViewDelegate, UITableViewDataSource {
-    
     private func tableData() -> [ASCUserTableViewDataModelItem] {
-        (isFiltering ? filteredUsers : dataArray)
+        isFiltering ? filteredUsers : dataArray
     }
-    
+
     private func numberOfRecords() -> Int {
         tableData().count
     }
@@ -242,11 +241,9 @@ extension ASCSelectUserViewController: UITableViewDelegate, UITableViewDataSourc
     }
 
     func selectCell(indexPath: IndexPath) {
-        let index: Int? = {
-            tableData().firstIndex { item in
-                item.isSelected == true
-            }
-        }()
+        let index: Int? = tableData().firstIndex { item in
+            item.isSelected == true
+        }
         if let index = index {
             let previousCellIndexPath = IndexPath(row: index, section: 0)
             tableView.cellForRow(at: previousCellIndexPath)?.accessoryType = .none
@@ -283,15 +280,15 @@ extension ASCSelectUserViewController: UITableViewDelegate, UITableViewDataSourc
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return Constants.cellHeight
     }
-    
+
     func tableView(_ tableView: UITableView, sectionForSectionIndexTitle title: String, at index: Int) -> Int {
         // No sections, so scroll manually
-        if let firstIndex = tableData().firstIndex(where: { "\(($0.userName ?? " ").uppercased().first ?? " ")" == title }) {
+        if let firstIndex = tableData().firstIndex(where: { title == "\(($0.userName ?? " ").uppercased().first ?? " ")" }) {
             tableView.scrollToRow(at: IndexPath(row: firstIndex, section: 0), at: .top, animated: false)
         }
         return index
     }
-    
+
     func sectionIndexTitles(for tableView: UITableView) -> [String]? {
         tableData()
             .map { "\(($0.userName ?? " ").uppercased().first ?? " ")" }

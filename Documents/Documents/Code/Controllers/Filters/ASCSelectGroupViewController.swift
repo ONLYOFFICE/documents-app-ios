@@ -220,7 +220,7 @@ extension ASCSelectGroupViewController: UITableViewDelegate, UITableViewDataSour
         if dataModel.isSelected == true {
             cell.accessoryType = .checkmark
         }
-        
+
         return cell
     }
 

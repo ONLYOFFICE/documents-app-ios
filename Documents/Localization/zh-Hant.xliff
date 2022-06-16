@@ -2,7 +2,7 @@
 <xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="1.2" xsi:schemaLocation="urn:oasis:names:tc:xliff:document:1.2 http://docs.oasis-open.org/xliff/v1.2/os/xliff-core-1.2-strict.xsd">
   <file original="Documents/Base.lproj/ConnectStorage.storyboard" source-language="en" target-language="zh-Hant" datatype="plaintext">
     <header>
-      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="13.3.1" build-num="13E500a"/>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="13.4.1" build-num="13F100"/>
     </header>
     <body>
       <trans-unit id="1hg-GO-WNq.text" xml:space="preserve">
@@ -42,12 +42,12 @@
       </trans-unit>
       <trans-unit id="i2t-Xh-reL.placeholder" xml:space="preserve">
         <source>example.com</source>
-        <target state="translated">example.com</target>
+        <target>example.com</target>
         <note>Class = "UITextField"; placeholder = "example.com"; ObjectID = "i2t-Xh-reL";</note>
       </trans-unit>
       <trans-unit id="idC-C3-Fpx.text" xml:space="preserve">
         <source>Server</source>
-        <target state="translated">服务器</target>
+        <target>服务器</target>
         <note>Class = "UILabel"; text = "Server"; ObjectID = "idC-C3-Fpx";</note>
       </trans-unit>
       <trans-unit id="muA-mV-bS6.footerTitle" xml:space="preserve">
@@ -67,14 +67,14 @@
       </trans-unit>
       <trans-unit id="sK2-QR-ADm.text" xml:space="preserve">
         <source>Next</source>
-        <target state="translated">下一个</target>
+        <target>下一个</target>
         <note>Class = "UILabel"; text = "Next"; ObjectID = "sK2-QR-ADm";</note>
       </trans-unit>
     </body>
   </file>
   <file original="Documents/Base.lproj/CreatePortal.storyboard" source-language="en" target-language="zh-Hant" datatype="plaintext">
     <header>
-      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="13.3.1" build-num="13E500a"/>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="13.4.1" build-num="13F100"/>
     </header>
     <body>
       <trans-unit id="BMv-HP-hD2.normalTitle" xml:space="preserve">
@@ -89,7 +89,7 @@
       </trans-unit>
       <trans-unit id="SZG-z0-C6T.normalTitle" xml:space="preserve">
         <source>🇱🇻</source>
-        <target state="translated">🇱🇻</target>
+        <target>🇱🇻</target>
         <note>Class = "UIButton"; normalTitle = "🇱🇻"; ObjectID = "SZG-z0-C6T";</note>
       </trans-unit>
       <trans-unit id="TP3-h7-Hq1.placeholder" xml:space="preserve">
@@ -109,7 +109,7 @@
       </trans-unit>
       <trans-unit id="amC-Ph-cGL.text" xml:space="preserve">
         <source>Label</source>
-        <target state="translated">标签​​</target>
+        <target>标签​​</target>
         <note>Class = "UILabel"; text = "Label"; ObjectID = "amC-Ph-cGL";</note>
       </trans-unit>
       <trans-unit id="cHX-qo-kcu.text" xml:space="preserve">
@@ -138,7 +138,7 @@ web office</source>
       </trans-unit>
       <trans-unit id="kgQ-EP-Qap.placeholder" xml:space="preserve">
         <source>Your phone number</source>
-        <target state="translated">您的手机号码</target>
+        <target>您的手机号码</target>
         <note>Class = "UITextField"; placeholder = "Your phone number"; ObjectID = "kgQ-EP-Qap";</note>
       </trans-unit>
       <trans-unit id="qKc-e7-uTl.text" xml:space="preserve">
@@ -162,7 +162,7 @@ start using your office</source>
   </file>
   <file original="Documents/Base.lproj/Intro.storyboard" source-language="en" target-language="zh-Hant" datatype="plaintext">
     <header>
-      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="13.3.1" build-num="13E500a"/>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="13.4.1" build-num="13F100"/>
     </header>
     <body>
       <trans-unit id="De8-tD-APT.text" xml:space="preserve">
@@ -184,7 +184,7 @@ start using your office</source>
   </file>
   <file original="Documents/Base.lproj/Localizable.stringsdict" source-language="en" target-language="zh-Hant" datatype="plaintext">
     <header>
-      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="13.3.1" build-num="13E500a"/>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="13.4.1" build-num="13F100"/>
     </header>
     <body>
       <trans-unit id="/%d selected:dict/NSStringLocalizedFormatKey:dict/:string" xml:space="preserve">
@@ -286,7 +286,7 @@ start using your office</source>
   </file>
   <file original="Documents/Base.lproj/Login.storyboard" source-language="en" target-language="zh-Hant" datatype="plaintext">
     <header>
-      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="13.3.1" build-num="13E500a"/>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="13.4.1" build-num="13F100"/>
     </header>
     <body>
       <trans-unit id="0X2-Xg-z5B.text" xml:space="preserve">
@@ -336,7 +336,7 @@ start using your office</source>
       </trans-unit>
       <trans-unit id="AqB-m0-2UQ.text" xml:space="preserve">
         <source>If a user with the email exists, the password change instruction has been sent to this email address.</source>
-        <target state="translated">如果存在拥有该电子邮件的用户，密码修改指令已经发送到该电子邮件地址。</target>
+        <target>如果存在拥有该电子邮件的用户，密码修改指令已经发送到该电子邮件地址。</target>
         <note>Class = "UILabel"; text = "If a user with the email exists, the password change instruction has been sent to this email address."; ObjectID = "AqB-m0-2UQ"; Note = "Do not translate";</note>
       </trans-unit>
       <trans-unit id="AqJ-b9-XQV.normalTitle" xml:space="preserve">
@@ -346,7 +346,7 @@ start using your office</source>
       </trans-unit>
       <trans-unit id="B8R-KD-Lml.text" xml:space="preserve">
         <source>Set up an application to generate the authentication codes</source>
-        <target state="translated">设置应用程序来生成验证码</target>
+        <target>设置应用程序来生成验证码</target>
         <note>Class = "UILabel"; text = "Set up an application to generate the authentication codes"; ObjectID = "B8R-KD-Lml";</note>
       </trans-unit>
       <trans-unit id="DK4-QO-Jde.text" xml:space="preserve">
@@ -385,12 +385,12 @@ Authentication</source>
       </trans-unit>
       <trans-unit id="K5M-Of-QAk.text" xml:space="preserve">
         <source>Copy the key and paste it to the Google Authenticator application</source>
-        <target state="translated">复制密钥并将其粘贴到 Google 身份验证器应用中</target>
+        <target>复制密钥并将其粘贴到 Google 身份验证器应用中</target>
         <note>Class = "UILabel"; text = "Copy the key and paste it to the Google Authenticator application"; ObjectID = "K5M-Of-QAk";</note>
       </trans-unit>
       <trans-unit id="LwV-Os-V4m.text" xml:space="preserve">
         <source>Launch Google Authenticator application</source>
-        <target state="translated">启动谷歌验证应用程序</target>
+        <target>启动谷歌验证应用程序</target>
         <note>Class = "UILabel"; text = "Launch Google Authenticator application"; ObjectID = "LwV-Os-V4m";</note>
       </trans-unit>
       <trans-unit id="MNA-z2-ITx.text" xml:space="preserve">
@@ -405,7 +405,7 @@ Authentication</source>
       </trans-unit>
       <trans-unit id="Mbh-dU-7po.text" xml:space="preserve">
         <source>Please enter the email you used while registering on the portal. The password recovery instructions will be send to that email address.</source>
-        <target state="translated">请输入您在门户网站上注册时使用的电子邮箱。密码恢复说明将发送到该电子邮箱地址。</target>
+        <target>请输入您在门户网站上注册时使用的电子邮箱。密码恢复说明将发送到该电子邮箱地址。</target>
         <note>Class = "UILabel"; text = "Please enter the email you used while registering on the portal. The password recovery instructions will be send to that email address."; ObjectID = "Mbh-dU-7po";</note>
       </trans-unit>
       <trans-unit id="NBg-dA-b3o.title" xml:space="preserve">
@@ -415,7 +415,7 @@ Authentication</source>
       </trans-unit>
       <trans-unit id="OHG-hv-GGj.normalTitle" xml:space="preserve">
         <source>Back to login</source>
-        <target state="translated">返回登录</target>
+        <target>返回登录</target>
         <note>Class = "UIButton"; normalTitle = "Back to login"; ObjectID = "OHG-hv-GGj";</note>
       </trans-unit>
       <trans-unit id="OnI-QD-xeI.placeholder" xml:space="preserve">
@@ -430,7 +430,7 @@ Authentication</source>
       </trans-unit>
       <trans-unit id="R2F-fc-11j.text" xml:space="preserve">
         <source>Run the application and tap the new account icon</source>
-        <target state="translated">运行应用程序，并点击新账户图标</target>
+        <target>运行应用程序，并点击新账户图标</target>
         <note>Class = "UILabel"; text = "Run the application and tap the new account icon"; ObjectID = "R2F-fc-11j";</note>
       </trans-unit>
       <trans-unit id="RDr-pH-MKV.normalTitle" xml:space="preserve">
@@ -440,7 +440,7 @@ Authentication</source>
       </trans-unit>
       <trans-unit id="SH2-Fd-5Ze.text" xml:space="preserve">
         <source>Open authentication app and copy code from there</source>
-        <target state="translated">打开验证应用程序并复制代码</target>
+        <target>打开验证应用程序并复制代码</target>
         <note>Class = "UILabel"; text = "Open authentication app and copy code from there"; ObjectID = "SH2-Fd-5Ze";</note>
       </trans-unit>
       <trans-unit id="W8Q-CO-c0L.text" xml:space="preserve">
@@ -465,7 +465,7 @@ Authentication</source>
       </trans-unit>
       <trans-unit id="bLE-8U-AOX.text" xml:space="preserve">
         <source>Password recovery</source>
-        <target state="translated">密码恢复</target>
+        <target>密码恢复</target>
         <note>Class = "UILabel"; text = "Password recovery"; ObjectID = "bLE-8U-AOX";</note>
       </trans-unit>
       <trans-unit id="cBn-x1-r5A.text" xml:space="preserve">
@@ -485,7 +485,7 @@ Authentication</source>
       </trans-unit>
       <trans-unit id="ePY-rM-AOE.normalTitle" xml:space="preserve">
         <source>Send</source>
-        <target state="translated">发送</target>
+        <target>发送</target>
         <note>Class = "UIButton"; normalTitle = "Send"; ObjectID = "ePY-rM-AOE";</note>
       </trans-unit>
       <trans-unit id="gzc-cW-NPT.title" xml:space="preserve">
@@ -530,7 +530,7 @@ Authentication</source>
       </trans-unit>
       <trans-unit id="vgV-fF-jOl.text" xml:space="preserve">
         <source>Copy the code generated by Google Authenticator application and insert it to the input field</source>
-        <target state="translated">复制 Google 身份验证应用生成的代码，并将其插入输入字段</target>
+        <target>复制 Google 身份验证应用生成的代码，并将其插入输入字段</target>
         <note>Class = "UILabel"; text = "Copy the code generated by Google Authenticator application and insert it to the input field"; ObjectID = "vgV-fF-jOl";</note>
       </trans-unit>
       <trans-unit id="vlQ-jV-iFo.text" xml:space="preserve">
@@ -557,7 +557,7 @@ Authentication</source>
   </file>
   <file original="Documents/Base.lproj/Main.storyboard" source-language="en" target-language="zh-Hant" datatype="plaintext">
     <header>
-      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="13.3.1" build-num="13E500a"/>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="13.4.1" build-num="13F100"/>
     </header>
     <body>
       <trans-unit id="0Hf-aP-smp.text" xml:space="preserve">
@@ -709,7 +709,7 @@ Authentication</source>
   </file>
   <file original="Documents/Base.lproj/Settings.storyboard" source-language="en" target-language="zh-Hant" datatype="plaintext">
     <header>
-      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="13.3.1" build-num="13E500a"/>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="13.4.1" build-num="13F100"/>
     </header>
     <body>
       <trans-unit id="0DJ-uV-iju.title" xml:space="preserve">
@@ -753,7 +753,7 @@ Note: if you forget the passcode, you'll need to delete and reinstall the app. A
       </trans-unit>
       <trans-unit id="PDj-N7-sjJ.text" xml:space="preserve">
         <source>Terms of Service</source>
-        <target state="translated">服务条款</target>
+        <target>服务条款</target>
         <note>Class = "UILabel"; text = "Terms of Service"; ObjectID = "PDj-N7-sjJ";</note>
       </trans-unit>
       <trans-unit id="RuR-k5-kRu.text" xml:space="preserve">
@@ -773,12 +773,12 @@ Note: if you forget the passcode, you'll need to delete and reinstall the app. A
       </trans-unit>
       <trans-unit id="bfL-pj-gii.title" xml:space="preserve">
         <source>Settings</source>
-        <target state="translated">设置</target>
+        <target>设置</target>
         <note>Class = "UINavigationItem"; title = "Settings"; ObjectID = "bfL-pj-gii";</note>
       </trans-unit>
       <trans-unit id="cl6-b0-Mjh.text" xml:space="preserve">
         <source>Privacy Policy</source>
-        <target state="translated">隐私策略</target>
+        <target>隐私策略</target>
         <note>Class = "UILabel"; text = "Privacy Policy"; ObjectID = "cl6-b0-Mjh";</note>
       </trans-unit>
       <trans-unit id="lEo-YM-MnB.text" xml:space="preserve">
@@ -790,7 +790,7 @@ Note: if you forget the passcode, you'll need to delete and reinstall the app. A
   </file>
   <file original="Documents/Base.lproj/Sort.storyboard" source-language="en" target-language="zh-Hant" datatype="plaintext">
     <header>
-      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="13.3.1" build-num="13E500a"/>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="13.4.1" build-num="13F100"/>
     </header>
     <body>
       <trans-unit id="HjM-la-pDc.text" xml:space="preserve">
@@ -817,7 +817,7 @@ Note: if you forget the passcode, you'll need to delete and reinstall the app. A
   </file>
   <file original="Documents/Base.lproj/Transfer.storyboard" source-language="en" target-language="zh-Hant" datatype="plaintext">
     <header>
-      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="13.3.1" build-num="13E500a"/>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="13.4.1" build-num="13F100"/>
     </header>
     <body>
       <trans-unit id="9YY-0H-nww.text" xml:space="preserve">
@@ -854,7 +854,7 @@ Note: if you forget the passcode, you'll need to delete and reinstall the app. A
   </file>
   <file original="Documents/Base.lproj/UserProfile.storyboard" source-language="en" target-language="zh-Hant" datatype="plaintext">
     <header>
-      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="13.3.1" build-num="13E500a"/>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="13.4.1" build-num="13F100"/>
     </header>
     <body>
       <trans-unit id="1S2-Q7-5vL.text" xml:space="preserve">
@@ -869,7 +869,7 @@ Note: if you forget the passcode, you'll need to delete and reinstall the app. A
       </trans-unit>
       <trans-unit id="708-fR-i2H.text" xml:space="preserve">
         <source>Delete account</source>
-        <target state="translated">删除账户</target>
+        <target>删除账户</target>
         <note>Class = "UILabel"; text = "Delete account"; ObjectID = "708-fR-i2H";</note>
       </trans-unit>
       <trans-unit id="BXA-IE-d8z.title" xml:space="preserve">
@@ -901,7 +901,7 @@ Note: if you forget the passcode, you'll need to delete and reinstall the app. A
   </file>
   <file original="Documents/Code/Controllers/CreateEntity/Views/Base.lproj/ASCCreateEntityView.xib" source-language="en" target-language="zh-Hant" datatype="plaintext">
     <header>
-      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="13.3.1" build-num="13E500a"/>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="13.4.1" build-num="13F100"/>
     </header>
     <body>
       <trans-unit id="0TH-k4-z5u.normalTitle" xml:space="preserve">
@@ -933,7 +933,7 @@ Note: if you forget the passcode, you'll need to delete and reinstall the app. A
   </file>
   <file original="Documents/Code/Vendor/PasscodeLock/Base.lproj/PasscodeLock.strings" source-language="en" target-language="zh-Hant" datatype="plaintext">
     <header>
-      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="13.3.1" build-num="13E500a"/>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="13.4.1" build-num="13F100"/>
     </header>
     <body>
       <trans-unit id="PasscodeLockChangeDescription" xml:space="preserve">
@@ -1005,7 +1005,7 @@ Note: if you forget the passcode, you'll need to delete and reinstall the app. A
   </file>
   <file original="Documents/Code/Vendor/PasscodeLock/Views/Base.lproj/PasscodeLockView.xib" source-language="en" target-language="zh-Hant" datatype="plaintext">
     <header>
-      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="13.3.1" build-num="13E500a"/>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="13.4.1" build-num="13F100"/>
     </header>
     <body>
       <trans-unit id="0CR-0R-0Nr.normalTitle" xml:space="preserve">
@@ -1085,133 +1085,133 @@ Note: if you forget the passcode, you'll need to delete and reinstall the app. A
       </trans-unit>
     </body>
   </file>
-  <file original="Documents/en.lproj/Documents-InfoPlist.strings" datatype="plaintext" source-language="en" target-language="zh-Hant">
+  <file original="Documents/en.lproj/Documents-InfoPlist.strings" source-language="en" target-language="zh-Hant" datatype="plaintext">
     <header>
-      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="13.3.1" build-num="13E500a"/>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="13.4.1" build-num="13F100"/>
     </header>
     <body>
       <trans-unit id="CFBundleName" xml:space="preserve">
         <source>Documents</source>
-        <target state="translated">文档</target>
+        <target>文档</target>
         <note>Bundle name</note>
       </trans-unit>
       <trans-unit id="NSCameraUsageDescription" xml:space="preserve">
         <source>This app requires access to the camera, so that you can take photo and upload it in the app.</source>
-        <target state="translated">该应用程序需要访问相机，这样您就可以拍照并将照片上传到应用程序中。</target>
+        <target>该应用程序需要访问相机，这样您就可以拍照并将照片上传到应用程序中。</target>
         <note>Privacy - Camera Usage Description</note>
       </trans-unit>
       <trans-unit id="NSFaceIDUsageDescription" xml:space="preserve">
         <source>This app requires Face ID permission to authenticate using Face recognition.</source>
-        <target state="translated">这个应用程序需要Face ID权限，以使用人脸识别进行验证。</target>
+        <target>这个应用程序需要Face ID权限，以使用人脸识别进行验证。</target>
         <note>Privacy - Face ID Usage Description</note>
       </trans-unit>
       <trans-unit id="NSPhotoLibraryAddUsageDescription" xml:space="preserve">
         <source>This app requires access to the photo library, so that you can upload your photos in the app.</source>
-        <target state="translated">该应用程序需要访问图片库，这样您就可以将照片上传到应用程序中。</target>
+        <target>该应用程序需要访问图片库，这样您就可以将照片上传到应用程序中。</target>
         <note>Privacy - Photo Library Additions Usage Description</note>
       </trans-unit>
       <trans-unit id="NSPhotoLibraryUsageDescription" xml:space="preserve">
         <source>This app requires access to the photo library, so that you can upload your photos in the app.</source>
-        <target state="translated">该应用程序需要访问图片库，这样您就可以将照片上传到应用程序中。</target>
+        <target>该应用程序需要访问图片库，这样您就可以将照片上传到应用程序中。</target>
         <note>Privacy - Photo Library Usage Description</note>
       </trans-unit>
       <trans-unit id="New Document" xml:space="preserve">
         <source>New Document</source>
-        <target state="translated">新建文档</target>
+        <target>新建文档</target>
         <note/>
       </trans-unit>
       <trans-unit id="New Presentation" xml:space="preserve">
         <source>New Presentation</source>
-        <target state="translated">新建演示文稿</target>
+        <target>新建演示文稿</target>
         <note/>
       </trans-unit>
       <trans-unit id="New Spreadsheet" xml:space="preserve">
         <source>New Spreadsheet</source>
-        <target state="translated">新建电子表格</target>
+        <target>新建电子表格</target>
         <note/>
       </trans-unit>
       <trans-unit id="ONLYOFFICE fillable form (.oform)" xml:space="preserve">
         <source>ONLYOFFICE fillable form (.oform)</source>
-        <target state="translated">ONLYOFFICE可填写的表单 (.oform)</target>
+        <target>ONLYOFFICE可填写的表单 (.oform)</target>
         <note/>
       </trans-unit>
       <trans-unit id="ONLYOFFICE form template (.docxf)" xml:space="preserve">
         <source>ONLYOFFICE form template (.docxf)</source>
-        <target state="translated">ONLYOFFICE表单模板 (.docxf)</target>
+        <target>ONLYOFFICE表单模板 (.docxf)</target>
         <note/>
       </trans-unit>
     </body>
   </file>
-  <file original="Documents/en.lproj/Documents.alpha-InfoPlist.strings" datatype="plaintext" source-language="en" target-language="zh-Hant">
+  <file original="Documents/en.lproj/Documents.alpha-InfoPlist.strings" source-language="en" target-language="zh-Hant" datatype="plaintext">
     <header>
-      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="13.3.1" build-num="13E500a"/>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="13.4.1" build-num="13F100"/>
     </header>
     <body>
       <trans-unit id="CFBundleName" xml:space="preserve">
         <source>Documents-Alpha</source>
-        <target state="translated">文档-Alpha</target>
+        <target>文档-Alpha</target>
         <note>Bundle name</note>
       </trans-unit>
       <trans-unit id="NSCameraUsageDescription" xml:space="preserve">
         <source>This app requires access to the camera, so that you can take photo and upload it in the app.</source>
-        <target state="translated">该应用程序需要访问相机，这样您就可以拍照并将照片上传到应用程序中。</target>
+        <target>该应用程序需要访问相机，这样您就可以拍照并将照片上传到应用程序中。</target>
         <note>Privacy - Camera Usage Description</note>
       </trans-unit>
       <trans-unit id="NSFaceIDUsageDescription" xml:space="preserve">
         <source>This app requires Face ID permission to authenticate using Face recognition.</source>
-        <target state="translated">这个应用程序需要Face ID权限，以使用人脸识别进行验证。</target>
+        <target>这个应用程序需要Face ID权限，以使用人脸识别进行验证。</target>
         <note>Privacy - Face ID Usage Description</note>
       </trans-unit>
       <trans-unit id="NSLocalNetworkUsageDescription" xml:space="preserve">
         <source>Network access required</source>
-        <target state="translated">需要网络访问</target>
+        <target>需要网络访问</target>
         <note>Privacy - Local Network Usage Description</note>
       </trans-unit>
       <trans-unit id="NSPhotoLibraryAddUsageDescription" xml:space="preserve">
         <source>This app requires access to the photo library, so that you can upload your photos in the app.</source>
-        <target state="translated">该应用程序需要访问图片库，这样您就可以将照片上传到应用程序中。</target>
+        <target>该应用程序需要访问图片库，这样您就可以将照片上传到应用程序中。</target>
         <note>Privacy - Photo Library Additions Usage Description</note>
       </trans-unit>
       <trans-unit id="NSPhotoLibraryUsageDescription" xml:space="preserve">
         <source>This app requires access to the photo library, so that you can upload your photos in the app.</source>
-        <target state="translated">该应用程序需要访问图片库，这样您就可以将照片上传到应用程序中。</target>
+        <target>该应用程序需要访问图片库，这样您就可以将照片上传到应用程序中。</target>
         <note>Privacy - Photo Library Usage Description</note>
       </trans-unit>
       <trans-unit id="New Document" xml:space="preserve">
         <source>New Document</source>
-        <target state="translated">新建文档</target>
+        <target>新建文档</target>
         <note/>
       </trans-unit>
       <trans-unit id="New Presentation" xml:space="preserve">
         <source>New Presentation</source>
-        <target state="translated">新建演示文稿</target>
+        <target>新建演示文稿</target>
         <note/>
       </trans-unit>
       <trans-unit id="New Spreadsheet" xml:space="preserve">
         <source>New Spreadsheet</source>
-        <target state="translated">新建电子表格</target>
+        <target>新建电子表格</target>
         <note/>
       </trans-unit>
       <trans-unit id="ONLYOFFICE fillable form (.oform)" xml:space="preserve">
         <source>ONLYOFFICE fillable form (.oform)</source>
-        <target state="translated">ONLYOFFICE可填写的表单 (.oform)</target>
+        <target>ONLYOFFICE可填写的表单 (.oform)</target>
         <note/>
       </trans-unit>
       <trans-unit id="ONLYOFFICE form template (.docxf)" xml:space="preserve">
         <source>ONLYOFFICE form template (.docxf)</source>
-        <target state="translated">ONLYOFFICE表单模板 (.docxf)</target>
+        <target>ONLYOFFICE表单模板 (.docxf)</target>
         <note/>
       </trans-unit>
     </body>
   </file>
   <file original="Documents/en.lproj/Localizable.strings" source-language="en" target-language="zh-Hant" datatype="plaintext">
     <header>
-      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="13.3.1" build-num="13E500a"/>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="13.4.1" build-num="13F100"/>
     </header>
     <body>
       <trans-unit id="%d selected" xml:space="preserve">
         <source>%d selected</source>
-        <target state="translated">%d 已选定</target>
+        <target>%d 已选定</target>
         <note>Count of seclected rows: count + selected</note>
       </trans-unit>
       <trans-unit id="%i of %i" xml:space="preserve">
@@ -1246,27 +1246,27 @@ Note: if you forget the passcode, you'll need to delete and reinstall the app. A
       </trans-unit>
       <trans-unit id="A user or group will be able only to view the document and add comments, as well as manage them." xml:space="preserve">
         <source>A user or group will be able only to view the document and add comments, as well as manage them.</source>
-        <target state="translated">用户或团队将只能查看文件、以及添加并管理评论。</target>
+        <target>用户或团队将只能查看文件、以及添加并管理评论。</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="A user or group will be able only to view the document and fill in the forms inserted into the document." xml:space="preserve">
         <source>A user or group will be able only to view the document and fill in the forms inserted into the document.</source>
-        <target state="translated">用户或团队将只能查看文件并填写表单。</target>
+        <target>用户或团队将只能查看文件并填写表单。</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="A user or group will be able only to view the document." xml:space="preserve">
         <source>A user or group will be able only to view the document.</source>
-        <target state="translated">用户或团队将只能查看文件。</target>
+        <target>用户或团队将只能查看文件。</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="A user or group will be able to view and change the document without actually editing it, but all the changes made by a reviewer will be recorded and shown to the file owner (or a person who has full access to the file) so that he/she will be able to accept or reject them." xml:space="preserve">
         <source>A user or group will be able to view and change the document without actually editing it, but all the changes made by a reviewer will be recorded and shown to the file owner (or a person who has full access to the file) so that he/she will be able to accept or reject them.</source>
-        <target state="translated">用户或团队将能够查看并修改文件，而不能实际编辑它。审查者所做的修改将记录下来，并给文件作者（或对文件有完全访问权的人）显示，这样他/她就能够接受或拒绝这些修改。</target>
+        <target>用户或团队将能够查看并修改文件，而不能实际编辑它。审查者所做的修改将记录下来，并给文件作者（或对文件有完全访问权的人）显示，这样他/她就能够接受或拒绝这些修改。</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="A user or group will be able to view and edit the document as well as to share this document." xml:space="preserve">
         <source>A user or group will be able to view and edit the document as well as to share this document.</source>
-        <target state="translated">用户或团队将能够查看、编辑并分享该文件。</target>
+        <target>用户或团队将能够查看、编辑并分享该文件。</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="A0 (84,1%@ x 119,9%@)" xml:space="preserve">
@@ -1291,22 +1291,22 @@ Note: if you forget the passcode, you'll need to delete and reinstall the app. A
       </trans-unit>
       <trans-unit id="About" xml:space="preserve">
         <source>About</source>
-        <target state="translated">关于</target>
+        <target>关于</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Access by external link" xml:space="preserve">
         <source>Access by external link</source>
-        <target state="translated">通过外部链接访问</target>
+        <target>通过外部链接访问</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Access rights" xml:space="preserve">
         <source>Access rights</source>
-        <target state="translated">访问权</target>
+        <target>访问权</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Access settings" xml:space="preserve">
         <source>Access settings</source>
-        <target state="translated">访问设置</target>
+        <target>访问设置</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Account name is empty" xml:space="preserve">
@@ -1321,13 +1321,13 @@ Note: if you forget the passcode, you'll need to delete and reinstall the app. A
       </trans-unit>
       <trans-unit id="Add message" xml:space="preserve">
         <source>Add message</source>
-        <target state="translated">添加消息</target>
+        <target>添加消息</target>
         <note>Sharing settings add notification message</note>
       </trans-unit>
       <trans-unit id="Add users or groups and allow them to &#10; read, review or edit documents." xml:space="preserve">
         <source>Add users or groups and allow them to 
  read, review or edit documents.</source>
-        <target state="translated">添加用户或团队允许他们 
+        <target>添加用户或团队允许他们 
 阅读、审查或编辑文件。</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
@@ -1356,7 +1356,7 @@ Note: if you forget the passcode, you'll need to delete and reinstall the app. A
       </trans-unit>
       <trans-unit id="Allow access via external link" xml:space="preserve">
         <source>Allow access via external link</source>
-        <target state="translated">允许通过外部链接访问</target>
+        <target>允许通过外部链接访问</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="An unexpected error has occurred. Please try again later. Sorry for inconvenience." xml:space="preserve">
@@ -1370,7 +1370,7 @@ Note: if you forget the passcode, you'll need to delete and reinstall the app. A
       </trans-unit>
       <trans-unit id="Applying" xml:space="preserve">
         <source>Applying</source>
-        <target state="translated">正在应用中</target>
+        <target>正在应用中</target>
         <note>Caption of the process</note>
       </trans-unit>
       <trans-unit id="Archives" xml:space="preserve">
@@ -1399,12 +1399,12 @@ Note: if you forget the passcode, you'll need to delete and reinstall the app. A
       </trans-unit>
       <trans-unit id="By creating the portal you agree with our Privacy Policy and Terms of Service" xml:space="preserve">
         <source>By creating the portal you agree with our Privacy Policy and Terms of Service</source>
-        <target state="translated">通过创建门户网站，您同意我们的隐私策略和服务条款</target>
+        <target>通过创建门户网站，您同意我们的隐私策略和服务条款</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Cache" xml:space="preserve">
         <source>Cache</source>
-        <target state="translated">缓存</target>
+        <target>缓存</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Camera Unavailable" xml:space="preserve">
@@ -1494,7 +1494,7 @@ Note: if you forget the passcode, you'll need to delete and reinstall the app. A
       </trans-unit>
       <trans-unit id="Comment" xml:space="preserve">
         <source>Comment</source>
-        <target state="translated">评论</target>
+        <target>评论</target>
         <note>Share status</note>
       </trans-unit>
       <trans-unit id="Common Documents" xml:space="preserve">
@@ -1504,7 +1504,7 @@ Note: if you forget the passcode, you'll need to delete and reinstall the app. A
       </trans-unit>
       <trans-unit id="Compress Images" xml:space="preserve">
         <source>Compress Images</source>
-        <target state="translated">压缩图像</target>
+        <target>压缩图像</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Connect" xml:space="preserve">
@@ -1722,7 +1722,7 @@ others which use WebDAV protocol.</source>
       </trans-unit>
       <trans-unit id="Custom filter" xml:space="preserve">
         <source>Custom filter</source>
-        <target state="translated">自定义筛选器</target>
+        <target>自定义筛选器</target>
         <note>Share status</note>
       </trans-unit>
       <trans-unit id="Date" xml:space="preserve">
@@ -1782,7 +1782,7 @@ others which use WebDAV protocol.</source>
       </trans-unit>
       <trans-unit id="Deselect all" xml:space="preserve">
         <source>Deselect all</source>
-        <target state="translated">取消全选</target>
+        <target>取消全选</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Developer options" xml:space="preserve">
@@ -1876,7 +1876,7 @@ others which use WebDAV protocol.</source>
       </trans-unit>
       <trans-unit id="Email is incorrect." xml:space="preserve">
         <source>Email is incorrect.</source>
-        <target state="translated">邮箱不正确。</target>
+        <target>邮箱不正确。</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Email is not valid" xml:space="preserve">
@@ -1924,7 +1924,7 @@ others which use WebDAV protocol.</source>
       </trans-unit>
       <trans-unit id="Error code: %ld" xml:space="preserve">
         <source>Error code: %ld</source>
-        <target state="translated">代码错误: %ld</target>
+        <target>代码错误: %ld</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Exclude subfolders" xml:space="preserve">
@@ -1933,7 +1933,7 @@ others which use WebDAV protocol.</source>
       </trans-unit>
       <trans-unit id="Export" xml:space="preserve">
         <source>Export</source>
-        <target state="translated">导出</target>
+        <target>导出</target>
         <note>Button title</note>
       </trans-unit>
       <trans-unit id="Failed online conversion service." xml:space="preserve">
@@ -1953,7 +1953,7 @@ others which use WebDAV protocol.</source>
       </trans-unit>
       <trans-unit id="Failed to connect folder." xml:space="preserve">
         <source>Failed to connect folder.</source>
-        <target state="translated">链接文件夹失败。</target>
+        <target>链接文件夹失败。</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Failed to copy: %@" xml:space="preserve">
@@ -1988,7 +1988,7 @@ others which use WebDAV protocol.</source>
       </trans-unit>
       <trans-unit id="Failed to send feedback by mail. Try to write your request on our forum." xml:space="preserve">
         <source>Failed to send feedback by mail. Try to write your request on our forum.</source>
-        <target state="translated">通过邮箱发送反馈信息失败。请尝试在我们的论坛上写下您的请求。</target>
+        <target>通过邮箱发送反馈信息失败。请尝试在我们的论坛上写下您的请求。</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Failed upload source file to conversion online service." xml:space="preserve">
@@ -2027,12 +2027,12 @@ others which use WebDAV protocol.</source>
       </trans-unit>
       <trans-unit id="Files Preview" xml:space="preserve">
         <source>Files Preview</source>
-        <target state="translated">文件预览</target>
+        <target>文件预览</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Fill the shapes using gradients, images, or patterns. Choose the desirable line type." xml:space="preserve">
         <source>Fill the shapes using gradients, images, or patterns. Choose the desirable line type.</source>
-        <target state="translated">使用梯度、图像或图案填充形状。选择理想的线条类型。</target>
+        <target>使用梯度、图像或图案填充形状。选择理想的线条类型。</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Filters" xml:space="preserve">
@@ -2041,7 +2041,7 @@ others which use WebDAV protocol.</source>
       </trans-unit>
       <trans-unit id="First name is incorrect" xml:space="preserve">
         <source>First name is incorrect</source>
-        <target state="translated">名字不正确</target>
+        <target>名字不正确</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Folder title" xml:space="preserve">
@@ -2056,7 +2056,7 @@ others which use WebDAV protocol.</source>
       </trans-unit>
       <trans-unit id="Form filling" xml:space="preserve">
         <source>Form filling</source>
-        <target state="translated">表单填写</target>
+        <target>表单填写</target>
         <note>Share status</note>
       </trans-unit>
       <trans-unit id="Full Access" xml:space="preserve">
@@ -2086,7 +2086,7 @@ others which use WebDAV protocol.</source>
       </trans-unit>
       <trans-unit id="Go to forum" xml:space="preserve">
         <source>Go to forum</source>
-        <target state="translated">转到论坛</target>
+        <target>转到论坛</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Google Drive" xml:space="preserve">
@@ -2106,7 +2106,7 @@ others which use WebDAV protocol.</source>
       </trans-unit>
       <trans-unit id="If a user with the mail %@ exists, then an instruction to change the password was sent to this address." xml:space="preserve">
         <source>If a user with the mail %@ exists, then an instruction to change the password was sent to this address.</source>
-        <target state="translated">如果存在拥有 %@ 电子邮件的用户，密码修改指令已经发送到该电子邮件地址。</target>
+        <target>如果存在拥有 %@ 电子邮件的用户，密码修改指令已经发送到该电子邮件地址。</target>
         <note>Email sent instructions</note>
       </trans-unit>
       <trans-unit id="Images" xml:space="preserve">
@@ -2126,7 +2126,7 @@ others which use WebDAV protocol.</source>
       </trans-unit>
       <trans-unit id="Information" xml:space="preserve">
         <source>Information</source>
-        <target state="translated">信息</target>
+        <target>信息</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Instructions had been sent to your email" xml:space="preserve">
@@ -2140,12 +2140,12 @@ others which use WebDAV protocol.</source>
       </trans-unit>
       <trans-unit id="Invalid Data" xml:space="preserve">
         <source>Invalid Data</source>
-        <target state="translated">数据无效</target>
+        <target>数据无效</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Invalid Url" xml:space="preserve">
         <source>Invalid Url</source>
-        <target state="translated">URL无效</target>
+        <target>URL无效</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Kb" xml:space="preserve">
@@ -2155,24 +2155,24 @@ others which use WebDAV protocol.</source>
       </trans-unit>
       <trans-unit id="Last name is empty" xml:space="preserve">
         <source>Last name is empty</source>
-        <target state="translated">姓为空</target>
+        <target>姓为空</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Last name is incorrect" xml:space="preserve">
         <source>Last name is incorrect</source>
-        <target state="translated">姓不正确</target>
+        <target>姓不正确</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Link copied&#10;to the clipboard" xml:space="preserve">
         <source>Link copied
 to the clipboard</source>
-        <target state="translated">链接已复制
+        <target>链接已复制
 到剪贴板</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Log in to your cloud using Apple ID or Microsoft account." xml:space="preserve">
         <source>Log in to your cloud using Apple ID or Microsoft account.</source>
-        <target state="translated">使用Apple ID或微软账户登录您的云端。</target>
+        <target>使用Apple ID或微软账户登录您的云端。</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Logging in" xml:space="preserve">
@@ -2203,7 +2203,7 @@ to the clipboard</source>
       </trans-unit>
       <trans-unit id="Mark as favorite" xml:space="preserve">
         <source>Mark as favorite</source>
-        <target state="translated">标记为收藏</target>
+        <target>标记为收藏</target>
         <note>Button title</note>
       </trans-unit>
       <trans-unit id="Mb" xml:space="preserve">
@@ -2227,7 +2227,7 @@ to the clipboard</source>
       </trans-unit>
       <trans-unit id="More in autoshapes" xml:space="preserve">
         <source>More in autoshapes</source>
-        <target state="translated">自动形状新功能</target>
+        <target>自动形状新功能</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Move" xml:space="preserve">
@@ -2277,7 +2277,7 @@ to the clipboard</source>
       </trans-unit>
       <trans-unit id="New" xml:space="preserve">
         <source>New</source>
-        <target state="translated">新</target>
+        <target>新</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="New Document" xml:space="preserve">
@@ -2302,7 +2302,7 @@ to the clipboard</source>
       </trans-unit>
       <trans-unit id="New authentication methods" xml:space="preserve">
         <source>New authentication methods</source>
-        <target state="translated">新的认证方法</target>
+        <target>新的认证方法</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Next" xml:space="preserve">
@@ -2317,12 +2317,12 @@ to the clipboard</source>
       </trans-unit>
       <trans-unit id="Nextcloud directory" xml:space="preserve">
         <source>Nextcloud directory</source>
-        <target state="translated">Nextcloud目录</target>
+        <target>Nextcloud目录</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="No Internet connection" xml:space="preserve">
         <source>No Internet connection</source>
-        <target state="translated">无互联网连接</target>
+        <target>无互联网连接</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="No Search Result" xml:space="preserve">
@@ -2331,7 +2331,7 @@ to the clipboard</source>
       </trans-unit>
       <trans-unit id="No client IDs of application" xml:space="preserve">
         <source>No client IDs of application</source>
-        <target state="translated">没有应用程序的客户ID</target>
+        <target>没有应用程序的客户ID</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="No connection" xml:space="preserve">
@@ -2385,7 +2385,7 @@ to the clipboard</source>
       </trans-unit>
       <trans-unit id="Notify by Email" xml:space="preserve">
         <source>Notify by Email</source>
-        <target state="translated">通过邮箱通知</target>
+        <target>通过邮箱通知</target>
         <note>Sharing settings switcher</note>
       </trans-unit>
       <trans-unit id="OK" xml:space="preserve">
@@ -2419,7 +2419,7 @@ to the clipboard</source>
       </trans-unit>
       <trans-unit id="OneDrive" xml:space="preserve">
         <source>OneDrive</source>
-        <target state="translated">OneDrive</target>
+        <target>OneDrive</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="OneDrive directory" xml:space="preserve">
@@ -2482,7 +2482,7 @@ to the clipboard</source>
       </trans-unit>
       <trans-unit id="Passcode Lock" xml:space="preserve">
         <source>Passcode Lock</source>
-        <target state="translated">密码锁</target>
+        <target>密码锁</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Password" xml:space="preserve">
@@ -2507,12 +2507,12 @@ to the clipboard</source>
       </trans-unit>
       <trans-unit id="Phone" xml:space="preserve">
         <source>Phone</source>
-        <target state="translated">电话</target>
+        <target>电话</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Phone is incorrect" xml:space="preserve">
         <source>Phone is incorrect</source>
-        <target state="translated">电话不正确</target>
+        <target>电话不正确</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Please go to Settings and enable the camera for this app to use this feature." xml:space="preserve">
@@ -2608,7 +2608,7 @@ to the clipboard</source>
       </trans-unit>
       <trans-unit id="Privacy Policy" xml:space="preserve">
         <source>Privacy Policy</source>
-        <target state="translated">隐私策略</target>
+        <target>隐私策略</target>
         <note>Part of phrases - By creating the portal you agree with our Privacy Policy and Terms of Service</note>
       </trans-unit>
       <trans-unit id="Processing" xml:space="preserve">
@@ -2647,7 +2647,7 @@ to the clipboard</source>
       </trans-unit>
       <trans-unit id="Regional settings" xml:space="preserve">
         <source>Regional settings</source>
-        <target state="translated">区域设置</target>
+        <target>区域设置</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Registration" xml:space="preserve">
@@ -2662,12 +2662,12 @@ to the clipboard</source>
       </trans-unit>
       <trans-unit id="Remove from Favorites" xml:space="preserve">
         <source>Remove from Favorites</source>
-        <target state="translated">从收藏夹中删除</target>
+        <target>从收藏夹中删除</target>
         <note>Button title</note>
       </trans-unit>
       <trans-unit id="Removing" xml:space="preserve">
         <source>Removing</source>
-        <target state="translated">正在删除</target>
+        <target>正在删除</target>
         <note>Caption of the process</note>
       </trans-unit>
       <trans-unit id="Rename" xml:space="preserve">
@@ -2697,12 +2697,12 @@ to the clipboard</source>
       </trans-unit>
       <trans-unit id="Request canceled" xml:space="preserve">
         <source>Request canceled</source>
-        <target state="translated">请求已取消</target>
+        <target>请求已取消</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Request had insufficient authentication scopes" xml:space="preserve">
         <source>Request had insufficient authentication scopes</source>
-        <target state="translated">请求的验证范围不足</target>
+        <target>请求的验证范围不足</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Reset" xml:space="preserve">
@@ -2736,7 +2736,7 @@ to the clipboard</source>
       </trans-unit>
       <trans-unit id="Search" xml:space="preserve">
         <source>Search</source>
-        <target state="translated">搜索</target>
+        <target>搜索</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Select" xml:space="preserve">
@@ -2752,7 +2752,7 @@ to the clipboard</source>
       </trans-unit>
       <trans-unit id="Select all" xml:space="preserve">
         <source>Select all</source>
-        <target state="translated">全选</target>
+        <target>全选</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Select another cloud to connect to Nextcloud, ownCloud and others are supported." xml:space="preserve">
@@ -2781,7 +2781,7 @@ to the clipboard</source>
       </trans-unit>
       <trans-unit id="Select the region in spreadsheet settings to automatically convert currency, date, and time." xml:space="preserve">
         <source>Select the region in spreadsheet settings to automatically convert currency, date, and time.</source>
-        <target state="translated">在电子表格设置中选择区域，以自动转换货币、日期和时间。</target>
+        <target>在电子表格设置中选择区域，以自动转换货币、日期和时间。</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Select user" xml:space="preserve">
@@ -2800,12 +2800,12 @@ to the clipboard</source>
       </trans-unit>
       <trans-unit id="Selecting access rights" xml:space="preserve">
         <source>Selecting access rights</source>
-        <target state="translated">选择访问权</target>
+        <target>选择访问权</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Send" xml:space="preserve">
         <source>Send</source>
-        <target state="translated">发送</target>
+        <target>发送</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Send the profile deletion instructions to the email address %@?" xml:space="preserve">
@@ -2814,12 +2814,12 @@ to the clipboard</source>
       </trans-unit>
       <trans-unit id="Sending" xml:space="preserve">
         <source>Sending</source>
-        <target state="translated">正在发送</target>
+        <target>正在发送</target>
         <note>Caption of the process</note>
       </trans-unit>
       <trans-unit id="Set favorite failed." xml:space="preserve">
         <source>Set favorite failed.</source>
-        <target state="translated">设置收藏夹失败。</target>
+        <target>设置收藏夹失败。</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Settings" xml:space="preserve">
@@ -2838,7 +2838,7 @@ to the clipboard</source>
       </trans-unit>
       <trans-unit id="Shared access" xml:space="preserve">
         <source>Shared access</source>
-        <target state="translated">共享访问</target>
+        <target>共享访问</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Shared with Me" xml:space="preserve">
@@ -2853,12 +2853,12 @@ to the clipboard</source>
       </trans-unit>
       <trans-unit id="Sharing Settings" xml:space="preserve">
         <source>Sharing Settings</source>
-        <target state="translated">共享设置</target>
+        <target>共享设置</target>
         <note>Button title</note>
       </trans-unit>
       <trans-unit id="Sharing settings" xml:space="preserve">
         <source>Sharing settings</source>
-        <target state="translated">共享设置</target>
+        <target>共享设置</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Show %d results" xml:space="preserve">
@@ -2891,12 +2891,12 @@ to the clipboard</source>
       </trans-unit>
       <trans-unit id="Something went wrong, try again" xml:space="preserve">
         <source>Something went wrong, try again</source>
-        <target state="translated">出错了，请稍后重试</target>
+        <target>出错了，请稍后重试</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Something wrong" xml:space="preserve">
         <source>Something wrong</source>
-        <target state="translated">出错了</target>
+        <target>出错了</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Sort" xml:space="preserve">
@@ -2926,12 +2926,12 @@ to the clipboard</source>
       </trans-unit>
       <trans-unit id="Storage" xml:space="preserve">
         <source>Storage</source>
-        <target state="translated">存储</target>
+        <target>存储</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Support" xml:space="preserve">
         <source>Support</source>
-        <target state="translated">支持</target>
+        <target>支持</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Switch" xml:space="preserve">
@@ -2955,7 +2955,7 @@ to the clipboard</source>
       </trans-unit>
       <trans-unit id="Terms of Service" xml:space="preserve">
         <source>Terms of Service</source>
-        <target state="translated">服务条款</target>
+        <target>服务条款</target>
         <note>Part of phrases - By creating the portal you agree with our Privacy Policy and Terms of Service</note>
       </trans-unit>
       <trans-unit id="Text copied" xml:space="preserve">
@@ -2965,7 +2965,7 @@ to the clipboard</source>
       </trans-unit>
       <trans-unit id="The %@ server is not available." xml:space="preserve">
         <source>The %@ server is not available.</source>
-        <target state="translated">%@ 服务器不可用。</target>
+        <target>%@ 服务器不可用。</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="The ONLYOFFICE Editors module is missing. Please contact support@onlyoffice.com for more information." xml:space="preserve">
@@ -2994,7 +2994,7 @@ to the clipboard</source>
       </trans-unit>
       <trans-unit id="The folder in the Trash can not be opened." xml:space="preserve">
         <source>The folder in the Trash can not be opened.</source>
-        <target state="translated">无法打开垃圾桶中的文件夹。</target>
+        <target>无法打开垃圾桶中的文件夹。</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="The folder will be irretrievably deleted. This action is irreversible." xml:space="preserve">
@@ -3011,19 +3011,19 @@ to the clipboard</source>
         <source>The link for external
 access is copied
 to the clipboard</source>
-        <target state="translated">用于外部访问的链接
+        <target>用于外部访问的链接
 已复制
 到剪贴板上</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="The parameters are incorrect." xml:space="preserve">
         <source>The parameters are incorrect.</source>
-        <target state="translated">参数不正确。</target>
+        <target>参数不正确。</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="The password is incorrect. It must contain 8 characters" xml:space="preserve">
         <source>The password is incorrect. It must contain 8 characters</source>
-        <target state="translated">密码不正确。密码必须包含8个字符</target>
+        <target>密码不正确。密码必须包含8个字符</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="The portal address is invalid" xml:space="preserve">
@@ -3033,7 +3033,7 @@ to the clipboard</source>
       </trans-unit>
       <trans-unit id="The portal is not available" xml:space="preserve">
         <source>The portal is not available</source>
-        <target state="translated">门户不可用</target>
+        <target>门户不可用</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="The portal name must be between 6 and 50 characters long" xml:space="preserve">
@@ -3043,7 +3043,7 @@ to the clipboard</source>
       </trans-unit>
       <trans-unit id="The request timed out." xml:space="preserve">
         <source>The request timed out.</source>
-        <target state="translated">请求已超时。</target>
+        <target>请求已超时。</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="The server is not available." xml:space="preserve">
@@ -3082,7 +3082,7 @@ to the clipboard</source>
       </trans-unit>
       <trans-unit id="This option is used to block access previously granted to a user or group." xml:space="preserve">
         <source>This option is used to block access previously granted to a user or group.</source>
-        <target state="translated">该选项用于阻止以前授予某个用户或团队的访问。</target>
+        <target>该选项用于阻止以前授予某个用户或团队的访问。</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="This presentation is being edited. Do you want open %@ to view only?" xml:space="preserve">
@@ -3118,8 +3118,8 @@ to the clipboard</source>
         <target>为了打开新的文档，请关闭当前文档。</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
-      <trans-unit id="To receive push notifications from the ONLYOFFICE application, you need to allow receiving notifications for this application in the iOS settings" xml:space="preserve">
-        <source>To receive push notifications from the ONLYOFFICE application, you need to allow receiving notifications for this application in the iOS settings</source>
+      <trans-unit id="To receive push notifications from the %@ application, you need to allow receiving notifications for this application in the iOS settings" xml:space="preserve">
+        <source>To receive push notifications from the %@ application, you need to allow receiving notifications for this application in the iOS settings</source>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Trash" xml:space="preserve">
@@ -3163,12 +3163,12 @@ to the clipboard</source>
       </trans-unit>
       <trans-unit id="Unable delete items" xml:space="preserve">
         <source>Unable delete items</source>
-        <target state="translated">无法删除项目</target>
+        <target>无法删除项目</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Unable disconnect third party" xml:space="preserve">
         <source>Unable disconnect third party</source>
-        <target state="translated">无法断开第三方的连接</target>
+        <target>无法断开第三方的连接</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Unable to get information about the portal" xml:space="preserve">
@@ -3183,32 +3183,32 @@ to the clipboard</source>
       </trans-unit>
       <trans-unit id="Unauthorized users will be able only to view the document and add comments, as well as manage them." xml:space="preserve">
         <source>Unauthorized users will be able only to view the document and add comments, as well as manage them.</source>
-        <target state="translated">未经授权的用户将只能查看文件并添加评论，以及管理它们。</target>
+        <target>未经授权的用户将只能查看文件并添加评论，以及管理它们。</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Unauthorized users will be able only to view the document and fill in the forms inserted into the document." xml:space="preserve">
         <source>Unauthorized users will be able only to view the document and fill in the forms inserted into the document.</source>
-        <target state="translated">未经授权的用户将只能查看文件并填写表单。</target>
+        <target>未经授权的用户将只能查看文件并填写表单。</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Unauthorized users will be able only to view the document." xml:space="preserve">
         <source>Unauthorized users will be able only to view the document.</source>
-        <target state="translated">未经授权的用户将只能查看文件。</target>
+        <target>未经授权的用户将只能查看文件。</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Unauthorized users will be able to view and change the document without actually editing it, but all the changes made by a reviewer will be recorded and shown to the file owner (or a person who has full access to the file) so that he/she will be able to accept or reject them." xml:space="preserve">
         <source>Unauthorized users will be able to view and change the document without actually editing it, but all the changes made by a reviewer will be recorded and shown to the file owner (or a person who has full access to the file) so that he/she will be able to accept or reject them.</source>
-        <target state="translated">未经授权的用户将能够查看并修改文件，而不能实际编辑它。审查者所做的修改将记录下来，并给文件所有者（或对文件有完全访问权的人）显示，这样他/她就能够接受或拒绝这些修改。</target>
+        <target>未经授权的用户将能够查看并修改文件，而不能实际编辑它。审查者所做的修改将记录下来，并给文件所有者（或对文件有完全访问权的人）显示，这样他/她就能够接受或拒绝这些修改。</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Unauthorized users will be able to view and edit the document as well as to share this document." xml:space="preserve">
         <source>Unauthorized users will be able to view and edit the document as well as to share this document.</source>
-        <target state="translated">未经授权的用户将能够查看、编辑并分享该文件。</target>
+        <target>未经授权的用户将能够查看、编辑并分享该文件。</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Unauthorized users will not have access to the document." xml:space="preserve">
         <source>Unauthorized users will not have access to the document.</source>
-        <target state="translated">未经授权的用户无法访问文件。</target>
+        <target>未经授权的用户无法访问文件。</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Unexpected response from the service." xml:space="preserve">
@@ -3223,7 +3223,7 @@ to the clipboard</source>
       </trans-unit>
       <trans-unit id="Unknown error" xml:space="preserve">
         <source>Unknown error</source>
-        <target state="translated">未知错误</target>
+        <target>未知错误</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Unknown file provider" xml:space="preserve">
@@ -3273,7 +3273,7 @@ to the clipboard</source>
       </trans-unit>
       <trans-unit id="User authentication required" xml:space="preserve">
         <source>User authentication required</source>
-        <target state="translated">需要用户验证</target>
+        <target>需要用户验证</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="User undefined" xml:space="preserve">
@@ -3467,22 +3467,22 @@ then accessed from any other device.</source>
       </trans-unit>
       <trans-unit id="iCloud" xml:space="preserve">
         <source>iCloud</source>
-        <target state="translated">iCloud</target>
+        <target>iCloud</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="iCloud Drive" xml:space="preserve">
         <source>iCloud Drive</source>
-        <target state="translated">iCloud Drive</target>
+        <target>iCloud Drive</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="kDrive" xml:space="preserve">
         <source>kDrive</source>
-        <target state="translated">kDrive</target>
+        <target>kDrive</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="kDrive directory" xml:space="preserve">
         <source>kDrive directory</source>
-        <target state="translated">kDrive目录</target>
+        <target>kDrive目录</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="none" xml:space="preserve">
@@ -3503,7 +3503,7 @@ then accessed from any other device.</source>
       </trans-unit>
       <trans-unit id="ownCloud directory" xml:space="preserve">
         <source>ownCloud directory</source>
-        <target state="translated">ownCloud目录</target>
+        <target>ownCloud目录</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="photo" xml:space="preserve">
@@ -3535,7 +3535,7 @@ then accessed from any other device.</source>
   </file>
   <file original="Settings.bundle/en.lproj/Root.strings" source-language="en" target-language="zh-Hant" datatype="plaintext">
     <header>
-      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="13.3.1" build-num="13E500a"/>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="13.4.1" build-num="13F100"/>
     </header>
     <body>
       <trans-unit id="Acknowledgements" xml:space="preserve">

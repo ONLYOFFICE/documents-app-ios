@@ -7,6 +7,7 @@
 //
 
 import MBProgressHUD
+import SwiftyDropbox
 import UIKit
 
 class ASCConnectCloudViewController: UITableViewController {
@@ -219,20 +220,26 @@ class ASCConnectCloudViewController: UITableViewController {
                 googleConnectController.signIn(parentVC: self)
             }
         case .dropbox:
-            let oauth2VC = ASCConnectStorageOAuth2ViewController.instantiate(from: Storyboard.connectStorage)
-            let dropboxController = ASCConnectStorageOAuth2Dropbox()
-            dropboxController.clientId = ASCConstants.Clouds.Dropbox.appId
-            dropboxController.clientSecret = ASCConstants.Clouds.Dropbox.clientSecret
-            dropboxController.redirectUrl = ASCConstants.Clouds.Dropbox.redirectUri
-            oauth2VC.responseType = .token
-            oauth2VC.complation = authComplation(info:)
-            oauth2VC.delegate = dropboxController
-            oauth2VC.title = "Dropbox"
-
-            if animated {
-                navigationController?.pushViewController(oauth2VC, animated: animated)
+            if ASCConstants.Feature.dropboxSDKLogin {
+                ASCDropboxSDKWrapper.shared.login(at: self) { [weak self] info in
+                    self?.authComplation(info: info)
+                }
             } else {
-                connectionVC = oauth2VC
+                let oauth2VC = ASCConnectStorageOAuth2ViewController.instantiate(from: Storyboard.connectStorage)
+                let dropboxController = ASCConnectStorageOAuth2Dropbox()
+                dropboxController.clientId = ASCConstants.Clouds.Dropbox.appId
+                dropboxController.clientSecret = ASCConstants.Clouds.Dropbox.clientSecret
+                dropboxController.redirectUrl = ASCConstants.Clouds.Dropbox.redirectUri
+                oauth2VC.responseType = .token
+                oauth2VC.complation = authComplation(info:)
+                oauth2VC.delegate = dropboxController
+                oauth2VC.title = "Dropbox"
+
+                if animated {
+                    navigationController?.pushViewController(oauth2VC, animated: animated)
+                } else {
+                    connectionVC = oauth2VC
+                }
             }
         case .nextcloud:
             connectionVC = ASCConnectStorageNextCloudServerController.instantiate(from: Storyboard.connectStorage)

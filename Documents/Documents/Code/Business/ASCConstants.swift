@@ -70,6 +70,7 @@ class ASCConstants {
         static let debugHideSearchbarIfEmpty = "asc-debug-hidesearchbarifempty"
         static let debugAllowiCloud = "asc-debug-allowicloud"
         static let debugAllowCategoriesSkeleton = "asc-debug-allowcategoriesskeleton"
+        static let debugDropboxSDKLogin = "asc-debug-dropboxsdklogin"
 
         static func setupDefaults() {
             UserDefaults.standard.register(defaults: [ASCConstants.SettingsKeys.compressImage: true])
@@ -81,6 +82,7 @@ class ASCConstants {
             UserDefaults.standard.register(defaults: [ASCConstants.SettingsKeys.debugHideSearchbarIfEmpty: false])
             UserDefaults.standard.register(defaults: [ASCConstants.SettingsKeys.debugAllowiCloud: true])
             UserDefaults.standard.register(defaults: [ASCConstants.SettingsKeys.debugAllowCategoriesSkeleton: false])
+            UserDefaults.standard.register(defaults: [ASCConstants.SettingsKeys.debugDropboxSDKLogin: true])
         }
     }
 
@@ -238,6 +240,11 @@ class ASCConstants {
         // Allow skeleton animation for ONLYOFFICE categories on load
         static var allowCategoriesSkeleton: Bool {
             UserDefaults.standard.bool(forKey: ASCConstants.SettingsKeys.debugAllowCategoriesSkeleton)
+        }
+
+        // Connect Dropbox Cloud via SDK
+        static var dropboxSDKLogin: Bool {
+            UserDefaults.standard.bool(forKey: ASCConstants.SettingsKeys.debugDropboxSDKLogin)
         }
     }
 

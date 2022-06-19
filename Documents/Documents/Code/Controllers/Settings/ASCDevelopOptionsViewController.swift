@@ -118,6 +118,13 @@ class ASCDevelopOptionsViewController: ASCBaseTableViewController {
                         UserDefaults.standard.set(isOn, forKey: ASCConstants.SettingsKeys.debugHideSearchbarIfEmpty)
                     }
                 )),
+                .switchControl(viewModel: ASCSwitchCellViewModel(
+                    title: "Connect Dropbox via SDK (true)",
+                    isOn: ASCConstants.Feature.dropboxSDKLogin,
+                    valueChanged: { isOn in
+                        UserDefaults.standard.set(isOn, forKey: ASCConstants.SettingsKeys.debugDropboxSDKLogin)
+                    }
+                )),
             ],
             header: NSLocalizedString("Features", comment: "")
         )

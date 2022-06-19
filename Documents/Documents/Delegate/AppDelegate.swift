@@ -12,6 +12,7 @@ import FirebaseCore
 import FirebaseMessaging
 import GoogleSignIn
 import Siren
+import SwiftyDropbox
 import UIKit
 import UserNotifications
 #if DEBUG
@@ -47,6 +48,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
             // Register for remote notifications
             Messaging.messaging().delegate = self
+
+            DropboxClientsManager.setupWithAppKey(ASCConstants.Clouds.Dropbox.appId)
 
             // Initialize searchable promo
             searchablePromoInit()
@@ -107,6 +110,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                             return ASCFacebookSignInController.application(app, open: url, options: options)
                         } else if service == "google" {
                             return GIDSignIn.sharedInstance.handle(url)
+                        } else if service == "dropbox" {
+                            return DropboxClientsManager.handleRedirectURL(url, completion: ASCDropboxSDKWrapper.shared.handleOAuthRedirect)
                         } else if service == "oodocuments" {
                             return ASCViewControllerManager.shared.route(by: url, options: options)
                         }

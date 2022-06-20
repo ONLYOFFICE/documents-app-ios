@@ -22,7 +22,7 @@ final class ASCDropboxSDKWrapper {
     ]
     private var providerKey = ASCFolderProviderType.dropBox.rawValue
     private var loginComplation: ASCDropboxSDKLoginComplate?
-    
+
     /// Login via Dropbox SDK
     /// - Parameters:
     ///   - controller: Parent ViewController for present
@@ -42,7 +42,7 @@ final class ASCDropboxSDKWrapper {
             scopeRequest: scopeRequest
         )
     }
-    
+
     /// Redirect handle from Dropbox SDK
     /// - Parameter authResult: Result of authorization
     func handleOAuthRedirect(_ authResult: DropboxOAuthResult?) {

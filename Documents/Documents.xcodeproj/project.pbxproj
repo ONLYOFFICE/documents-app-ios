@@ -1209,6 +1209,21 @@
 		FC7DC87F285B3AB800E61C69 /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/Documents.alpha-InfoPlist.strings"; sourceTree = "<group>"; };
 		FC7DC880285B3C4F00E61C69 /* ASCOAuthCredential.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASCOAuthCredential.swift; sourceTree = "<group>"; };
 		FC7DC889285F631100E61C69 /* ASCDropboxSDKWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCDropboxSDKWrapper.swift; sourceTree = "<group>"; };
+		FC7DC8CE2860B2D600E61C69 /* hy-AM */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "hy-AM"; path = "hy-AM.lproj/LaunchScreen.strings"; sourceTree = "<group>"; };
+		FC7DC8CF2860B2D600E61C69 /* hy-AM */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "hy-AM"; path = "hy-AM.lproj/Main.strings"; sourceTree = "<group>"; };
+		FC7DC8D02860B2D600E61C69 /* hy-AM */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "hy-AM"; path = "hy-AM.lproj/Login.strings"; sourceTree = "<group>"; };
+		FC7DC8D12860B2D600E61C69 /* hy-AM */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "hy-AM"; path = "hy-AM.lproj/Sort.strings"; sourceTree = "<group>"; };
+		FC7DC8D22860B2D700E61C69 /* hy-AM */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "hy-AM"; path = "hy-AM.lproj/Transfer.strings"; sourceTree = "<group>"; };
+		FC7DC8D32860B2D700E61C69 /* hy-AM */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "hy-AM"; path = "hy-AM.lproj/Intro.strings"; sourceTree = "<group>"; };
+		FC7DC8D42860B2D700E61C69 /* hy-AM */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "hy-AM"; path = "hy-AM.lproj/ConnectStorage.strings"; sourceTree = "<group>"; };
+		FC7DC8D52860B2D700E61C69 /* hy-AM */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "hy-AM"; path = "hy-AM.lproj/Settings.strings"; sourceTree = "<group>"; };
+		FC7DC8D62860B2D800E61C69 /* hy-AM */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "hy-AM"; path = "hy-AM.lproj/UserProfile.strings"; sourceTree = "<group>"; };
+		FC7DC8D72860B2D800E61C69 /* hy-AM */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "hy-AM"; path = "hy-AM.lproj/CreatePortal.strings"; sourceTree = "<group>"; };
+		FC7DC8D82860B2D800E61C69 /* hy-AM */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "hy-AM"; path = "hy-AM.lproj/ASCCreateEntityView.strings"; sourceTree = "<group>"; };
+		FC7DC8D92860B2D800E61C69 /* hy-AM */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "hy-AM"; path = "hy-AM.lproj/PasscodeLockView.strings"; sourceTree = "<group>"; };
+		FC7DC8DA2860B2D800E61C69 /* hy-AM */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "hy-AM"; path = "hy-AM.lproj/PasscodeLock.strings"; sourceTree = "<group>"; };
+		FC7DC8DB2860B2D900E61C69 /* hy-AM */ = {isa = PBXFileReference; lastKnownFileType = text.plist.stringsdict; name = "hy-AM"; path = "hy-AM.lproj/Localizable.stringsdict"; sourceTree = "<group>"; };
+		FC7DC8DC2860B3EB00E61C69 /* hy-AM.xliff */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = "hy-AM.xliff"; sourceTree = "<group>"; };
 		FC7F786A236ACBB00026E260 /* ASCConnectStorageGoogleController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCConnectStorageGoogleController.swift; sourceTree = "<group>"; };
 		FC81C67C22C5041600A7D104 /* ASCCustomHighlightButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCCustomHighlightButton.swift; sourceTree = "<group>"; };
 		FC82827E21C3CC01005AF726 /* ASCDeviceSplitViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCDeviceSplitViewController.swift; sourceTree = "<group>"; };
@@ -2428,6 +2443,7 @@
 				FCB844592768B7B000A3F918 /* en.xliff */,
 				FCB844582768B7B000A3F918 /* es.xliff */,
 				FCB844562768B7B000A3F918 /* fr.xliff */,
+				FC7DC8DC2860B3EB00E61C69 /* hy-AM.xliff */,
 				FCB8445F2768B7B000A3F918 /* it.xliff */,
 				FCB844552768B7B000A3F918 /* ja.xliff */,
 				FCB844542768B7B000A3F918 /* pt-BR.xliff */,
@@ -3234,6 +3250,7 @@
 				ja,
 				"zh-Hans",
 				"zh-Hant",
+				"hy-AM",
 			);
 			mainGroup = FCFDAA841E48A10C007A240C;
 			productRefGroup = FCFDAA8E1E48A10C007A240C /* Products */;
@@ -4678,6 +4695,7 @@
 				FC6E84C82775CDE700028965 /* ja */,
 				FC6E84D72775CE0300028965 /* zh-Hans */,
 				FC09998628195EF10063BB08 /* zh-Hant */,
+				FC7DC8D42860B2D700E61C69 /* hy-AM */,
 			);
 			name = ConnectStorage.storyboard;
 			sourceTree = "<group>";
@@ -4697,6 +4715,7 @@
 				FC6E84D42775CDE700028965 /* ja */,
 				FC6E84E32775CE0300028965 /* zh-Hans */,
 				FC09999228195EF20063BB08 /* zh-Hant */,
+				FC7DC8D92860B2D800E61C69 /* hy-AM */,
 			);
 			name = PasscodeLockView.xib;
 			sourceTree = "<group>";
@@ -4717,6 +4736,7 @@
 				FC6E84D22775CDE700028965 /* ja */,
 				FC6E84E12775CE0300028965 /* zh-Hans */,
 				FC09999028195EF10063BB08 /* zh-Hant */,
+				FC7DC8D82860B2D800E61C69 /* hy-AM */,
 			);
 			name = ASCCreateEntityView.xib;
 			sourceTree = "<group>";
@@ -4754,6 +4774,7 @@
 				FC6E84CA2775CDE700028965 /* ja */,
 				FC6E84D92775CE0300028965 /* zh-Hans */,
 				FC09998828195EF10063BB08 /* zh-Hant */,
+				FC7DC8D32860B2D700E61C69 /* hy-AM */,
 			);
 			name = Intro.storyboard;
 			sourceTree = "<group>";
@@ -4773,6 +4794,7 @@
 				FC6E84CC2775CDE700028965 /* ja */,
 				FC6E84DB2775CE0300028965 /* zh-Hans */,
 				FC09998A28195EF10063BB08 /* zh-Hant */,
+				FC7DC8D02860B2D600E61C69 /* hy-AM */,
 			);
 			name = Login.storyboard;
 			sourceTree = "<group>";
@@ -4792,6 +4814,7 @@
 				FC6E84CE2775CDE700028965 /* ja */,
 				FC6E84DD2775CE0300028965 /* zh-Hans */,
 				FC09998C28195EF10063BB08 /* zh-Hant */,
+				FC7DC8D52860B2D700E61C69 /* hy-AM */,
 			);
 			name = Settings.storyboard;
 			sourceTree = "<group>";
@@ -4811,6 +4834,7 @@
 				FC6E84D12775CDE700028965 /* ja */,
 				FC6E84E02775CE0300028965 /* zh-Hans */,
 				FC09998F28195EF10063BB08 /* zh-Hant */,
+				FC7DC8D62860B2D800E61C69 /* hy-AM */,
 			);
 			name = UserProfile.storyboard;
 			sourceTree = "<group>";
@@ -4848,6 +4872,7 @@
 				FC6E84C92775CDE700028965 /* ja */,
 				FC6E84D82775CE0300028965 /* zh-Hans */,
 				FC09998728195EF10063BB08 /* zh-Hant */,
+				FC7DC8D72860B2D800E61C69 /* hy-AM */,
 			);
 			name = CreatePortal.storyboard;
 			sourceTree = "<group>";
@@ -4867,6 +4892,7 @@
 				FC6E84CF2775CDE700028965 /* ja */,
 				FC6E84DE2775CE0300028965 /* zh-Hans */,
 				FC09998D28195EF10063BB08 /* zh-Hant */,
+				FC7DC8D12860B2D600E61C69 /* hy-AM */,
 			);
 			name = Sort.storyboard;
 			sourceTree = "<group>";
@@ -4886,6 +4912,7 @@
 				FC6E84D02775CDE700028965 /* ja */,
 				FC6E84DF2775CE0300028965 /* zh-Hans */,
 				FC09998E28195EF10063BB08 /* zh-Hant */,
+				FC7DC8D22860B2D700E61C69 /* hy-AM */,
 			);
 			name = Transfer.storyboard;
 			sourceTree = "<group>";
@@ -4923,6 +4950,7 @@
 				FC6E84D32775CDE700028965 /* ja */,
 				FC6E84E22775CE0300028965 /* zh-Hans */,
 				FC09999128195EF20063BB08 /* zh-Hant */,
+				FC7DC8DA2860B2D800E61C69 /* hy-AM */,
 			);
 			name = PasscodeLock.strings;
 			sourceTree = "<group>";
@@ -4962,6 +4990,7 @@
 				FC6E84CD2775CDE700028965 /* ja */,
 				FC6E84DC2775CE0300028965 /* zh-Hans */,
 				FC09998B28195EF10063BB08 /* zh-Hant */,
+				FC7DC8CF2860B2D600E61C69 /* hy-AM */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";
@@ -4981,6 +5010,7 @@
 				FC6E84CB2775CDE700028965 /* ja */,
 				FC6E84DA2775CE0300028965 /* zh-Hans */,
 				FC09998928195EF10063BB08 /* zh-Hant */,
+				FC7DC8DB2860B2D900E61C69 /* hy-AM */,
 			);
 			name = Localizable.stringsdict;
 			sourceTree = "<group>";
@@ -4997,6 +5027,7 @@
 				FCF3B47C22CA2FF400BBCD94 /* bg */,
 				FCE6246126F8749F00EFAE7C /* it */,
 				FCE6247426F874B200EFAE7C /* pt-BR */,
+				FC7DC8CE2860B2D600E61C69 /* hy-AM */,
 			);
 			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";

@@ -221,8 +221,8 @@ class ASCConnectCloudViewController: UITableViewController {
             }
         case .dropbox:
             if ASCConstants.Feature.dropboxSDKLogin {
-                ASCDropboxSDKWrapper.shared.login(at: self) { [weak self] info in
-                    self?.authComplation(info: info)
+                ASCDropboxSDKWrapper.shared.login(at: self) { info in
+                    self.authComplation(info: info)
                 }
             } else {
                 let oauth2VC = ASCConnectStorageOAuth2ViewController.instantiate(from: Storyboard.connectStorage)

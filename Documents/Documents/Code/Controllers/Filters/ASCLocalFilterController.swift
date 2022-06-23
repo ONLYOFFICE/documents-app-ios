@@ -131,7 +131,7 @@ class ASCLocalFilterController: ASCFiltersControllerProtocol {
     }
 
     private func buildResetButtonClosureBuilder() {
-        builder.resetButtonClosure = { [weak self] in
+        builder.commonResetButtonClosure = { [weak self] in
             guard let self = self else { return }
             for (index, _) in self.tempState.filterModels.enumerated() {
                 self.tempState.filterModels[index].isSelected = false

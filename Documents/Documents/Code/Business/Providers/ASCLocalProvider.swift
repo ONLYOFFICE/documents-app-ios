@@ -182,7 +182,6 @@ class ASCLocalProvider: ASCFileProviderProtocol & ASCSortableFileProviderProtoco
         {
             commonList = { list in
                 switch filterType {
-                case .none: return list
                 case .files:
                     return list.filter { $0 is ASCFile }
                 case .folders:
@@ -195,16 +194,12 @@ class ASCLocalProvider: ASCFileProviderProtocol & ASCSortableFileProviderProtoco
                     return filter(list: list, byFileExtensions: ASCConstants.FileExtensions.spreadsheets)
                 case .images:
                     return filter(list: list, byFileExtensions: ASCConstants.FileExtensions.images)
-                case .user:
-                    return list
-                case .group:
-                    return list
                 case .archive:
                     return filter(list: list, byFileExtensions: ASCConstants.FileExtensions.archives)
-                case .byExtension:
-                    return list
                 case .media:
                     return filter(list: list, byFileExtensions: ASCConstants.FileExtensions.videos)
+                case .none, .user, .group, .byExtension, .excludeSubfolders:
+                    return list
                 }
             }(commonList)
         }

@@ -945,11 +945,6 @@ extension ASCEditorManager {
         private func prepareFonts() {
             DocumentLocalConverter.prepareFonts { appFontsCache in
                 log.info("Prepare application fonts cache in: \(appFontsCache ?? ASCLocalization.Common.error)")
-                if UIDevice.allowEditor {
-                    SEEditorContext.sharedInstance().fontsPaths = ASCEditorManager.shared.editorFontsPaths
-                    SEEditorContext.sharedInstance().dataFontsPath = ASCEditorManager.shared.dataFontsPath
-                    SEEditorContext.sharedInstance().load()
-                }
             }
         }
 

@@ -128,12 +128,6 @@ class ASCOnlyOfficeFiltersController: ASCFiltersControllerProtocol {
                     params["filterType"] = model.filterType.rawValue
                 }
             case .searchFilters:
-                if let model = state.authorsModels.first(where: { $0.selectedName != nil }),
-                   let id = model.id
-                {
-                    params["userIdOrGroupId"] = id
-                }
-            case .ownerFilters:
                 if let model = state.searchFilterModels.first(where: { $0.isSelected }) {
                     switch model.filterType {
                     case .excludeSubfolders:
@@ -141,6 +135,12 @@ class ASCOnlyOfficeFiltersController: ASCFiltersControllerProtocol {
                     default:
                         log.error("UnsuppurtedFIlterType: \(model.filterType.rawValue)")
                     }
+                }
+            case .ownerFilters:
+                if let model = state.authorsModels.first(where: { $0.selectedName != nil }),
+                   let id = model.id
+                {
+                    params["userIdOrGroupId"] = id
                 }
             }
         }

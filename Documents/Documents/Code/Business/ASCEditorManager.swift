@@ -118,6 +118,11 @@ class ASCEditorManager: NSObject {
         return ""
     }()
 
+    private let licenseUrl = Bundle.main.url(
+        forResource: ASCConstants.Keys.licenseName,
+        withExtension: "lic"
+    ) ?? URL(fileURLWithPath: "")
+
     override required init() {
         super.init()
 
@@ -945,11 +950,6 @@ extension ASCEditorManager {
         private func prepareFonts() {
             DocumentLocalConverter.prepareFonts { appFontsCache in
                 log.info("Prepare application fonts cache in: \(appFontsCache ?? ASCLocalization.Common.error)")
-                if UIDevice.allowEditor {
-                    SEEditorContext.sharedInstance().fontsPaths = ASCEditorManager.shared.editorFontsPaths
-                    SEEditorContext.sharedInstance().dataFontsPath = ASCEditorManager.shared.dataFontsPath
-                    SEEditorContext.sharedInstance().load()
-                }
             }
         }
 
@@ -1018,6 +1018,7 @@ extension ASCEditorManager {
                 "locallyEditing": locallyEditing,
                 "appFonts": editorFontsPaths,
                 "dataFontsPath": dataFontsPath,
+                "license": licenseUrl,
             ] as [String: Any]
 
             if let documentPermissions = documentPermissions {
@@ -1027,7 +1028,9 @@ extension ASCEditorManager {
             }
 
             if viewMode == false {
-                UserDefaults.standard.set(documentInfo, forKey: ASCConstants.SettingsKeys.openedDocument)
+                var documentInfoCopy = documentInfo
+                documentInfoCopy["license"] = (documentInfoCopy["license"] as? URL)?.absoluteString
+                UserDefaults.standard.set(documentInfoCopy, forKey: ASCConstants.SettingsKeys.openedDocument)
             }
 
             if #available(iOS 13.0, *) {
@@ -1158,6 +1161,7 @@ extension ASCEditorManager {
                 "appFonts": editorFontsPaths,
                 "dataFontsPath": dataFontsPath,
                 "supportShare": true,
+                "license": licenseUrl,
             ]
 
             // Enabling the Favorite function only on portals version 11 and higher
@@ -1169,7 +1173,9 @@ extension ASCEditorManager {
             }
 
             if !(viewMode || !sdkCheck) {
-                UserDefaults.standard.set(documentInfo, forKey: ASCConstants.SettingsKeys.openedDocument)
+                var documentInfoCopy = documentInfo
+                documentInfoCopy["license"] = (documentInfoCopy["license"] as? URL)?.absoluteString
+                UserDefaults.standard.set(documentInfoCopy, forKey: ASCConstants.SettingsKeys.openedDocument)
             }
 
             if #available(iOS 13.0, *) {
@@ -1546,6 +1552,7 @@ extension ASCEditorManager {
                     "chartData": chartData,
                     "appFonts": editorFontsPaths,
                     "dataFontsPath": dataFontsPath,
+                    "license": licenseUrl,
                 ]
 
                 editor.delegate = self
@@ -1569,6 +1576,7 @@ extension ASCEditorManager {
                     "chartData": chartData,
                     "appFonts": editorFontsPaths,
                     "dataFontsPath": dataFontsPath,
+                    "license": licenseUrl,
                 ]
 
                 editor.delegate = self

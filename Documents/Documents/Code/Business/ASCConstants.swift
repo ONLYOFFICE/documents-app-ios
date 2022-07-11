@@ -25,6 +25,7 @@ class ASCConstants {
         static let converterKey = ASCConstants.internalConstants["KeysConverterKey"] as? String ?? ""
         static let recaptcha = ASCConstants.internalConstants["ReCaptcha"] as? String ?? ""
         static let recaptchaInfo = ASCConstants.internalConstants["ReCaptchaInfo"] as? String ?? ""
+        static let licenseName = "F8D434904F7142C49EB3E4CD738CFE01"
     }
 
     enum Urls {

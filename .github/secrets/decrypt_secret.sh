@@ -9,6 +9,7 @@ SECRETS=(
     "../../Documents/Documents/Services/GoogleService-Info-prod.plist"
     "../../Documents/Documents/Internal.plist"
     "../../Documents/Keys/api-project-948651087073-firebase-crashreporting-0ashu-f1015e074c.json"
+    "../../Documents/Keys/F8D434904F7142C49EB3E4CD738CFE01.lic"
 )
 
 if [ -z "$GIT_DOCUMENTS_PASSPHRASE" ]

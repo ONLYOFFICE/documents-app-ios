@@ -272,6 +272,8 @@
 		<dict>
 			<key>CFBundleTypeRole</key>
 			<string>Editor</string>
+			<key>CFBundleURLName</key>
+			<string>dropbox</string>
 			<key>CFBundleURLSchemes</key>
 			<array>
 				<string>db-qunx5fv62hf63gy</string>
@@ -279,7 +281,7 @@
 		</dict>
 	</array>
 	<key>CFBundleVersion</key>
-	<string>797</string>
+	<string>801</string>
 	<key>FacebookAdvertiserIDCollectionEnabled</key>
 	<integer>0</integer>
 	<key>FacebookAutoInitEnabled</key>

@@ -3552,7 +3552,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "# Copy resources\nADDITIONAL_FILES=(\n    \"${PROJECT_DIR}/Documents/Internal.plist\"\n)\n\nfor file_path in ${ADDITIONAL_FILES[@]}; do\n    if [ -f \"${file_path}\" ]; then\n        rsync --delete -av \"${file_path}\" \"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}\"\n    fi\ndone\n\n# Copy GoogleService plist\ncp -r \"${PROJECT_DIR}/Documents/Services/GoogleService-Info-prod.plist\" \"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/GoogleService-Info.plist\"\n\n# Fix InfoPlist.strings\nfind \"${TARGET_BUILD_DIR}\" -name \"Documents-InfoPlist.strings\" -type f -execdir mv {} \"InfoPlist.strings\" \\;\n";
+			shellScript = "# Copy resources\nADDITIONAL_FILES=(\n    \"${PROJECT_DIR}/Documents/Internal.plist\"\n    \"${PROJECT_DIR}/Keys/F8D434904F7142C49EB3E4CD738CFE01.lic\"\n)\n\nfor file_path in ${ADDITIONAL_FILES[@]}; do\n    if [ -f \"${file_path}\" ]; then\n        rsync --delete -av \"${file_path}\" \"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}\"\n    fi\ndone\n\n# Copy GoogleService plist\ncp -r \"${PROJECT_DIR}/Documents/Services/GoogleService-Info-prod.plist\" \"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/GoogleService-Info.plist\"\n\n# Fix InfoPlist.strings\nfind \"${TARGET_BUILD_DIR}\" -name \"Documents-InfoPlist.strings\" -type f -execdir mv {} \"InfoPlist.strings\" \\;\n";
 			showEnvVarsInLog = 0;
 		};
 		FC1CA5A226451F61001CC5CA /* Check dependencies and try checkout */ = {
@@ -3627,7 +3627,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "# Copy resources\nADDITIONAL_FILES=(\n    \"${PROJECT_DIR}/Documents/Internal.plist\"\n)\n\nfor file_path in ${ADDITIONAL_FILES[@]}; do\n    if [ -f \"${file_path}\" ]; then\n        rsync --delete -av \"${file_path}\" \"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}\"\n    fi\ndone\n\n# Copy GoogleService plist\ncp -r \"${PROJECT_DIR}/Documents/Services/GoogleService-Info-dev.plist\" \"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/GoogleService-Info.plist\"\n\n# Fix InfoPlist.strings\nfind \"${TARGET_BUILD_DIR}\" -name \"Documents.alpha-InfoPlist.strings\" -type f -execdir mv {} \"InfoPlist.strings\" \\;\n";
+			shellScript = "# Copy resources\nADDITIONAL_FILES=(\n    \"${PROJECT_DIR}/Documents/Internal.plist\"\n    \"${PROJECT_DIR}/Keys/F8D434904F7142C49EB3E4CD738CFE01.lic\"\n)\n\nfor file_path in ${ADDITIONAL_FILES[@]}; do\n    if [ -f \"${file_path}\" ]; then\n        rsync --delete -av \"${file_path}\" \"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}\"\n    fi\ndone\n\n# Copy GoogleService plist\ncp -r \"${PROJECT_DIR}/Documents/Services/GoogleService-Info-dev.plist\" \"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/GoogleService-Info.plist\"\n\n# Fix InfoPlist.strings\nfind \"${TARGET_BUILD_DIR}\" -name \"Documents.alpha-InfoPlist.strings\" -type f -execdir mv {} \"InfoPlist.strings\" \\;\n";
 			showEnvVarsInLog = 0;
 		};
 		FC36D34D25B5C32200412DDB /* Increment Build Number */ = {

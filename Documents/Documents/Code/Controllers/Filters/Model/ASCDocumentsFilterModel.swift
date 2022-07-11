@@ -90,6 +90,7 @@ enum ApiFilterType: String {
     case archive = "ArchiveOnly"
     case byExtension = "ByExtension"
     case media = "MediaOnly"
+    case excludeSubfolders
 }
 
 enum FiltersSection: String, CaseIterable {

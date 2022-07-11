@@ -103,12 +103,82 @@ class ASCLocalProvider: ASCFileProviderProtocol & ASCSortableFileProviderProtoco
     ///   - parameters: dictionary of settings for searching and sorting or any other information
     ///   - completeon: a closure with result of directory entries or error
     func fetch(for folder: ASCFolder, parameters: [String: Any?], completeon: ASCProviderCompletionHandler?) {
+        var (folders, files): ([ASCFolder], [ASCFile]) = {
+            if let filters = parameters["filters"] as? [String: Any],
+               filters["withSubfolders"] as? Bool == true
+            {
+                return getAllFilesAndFolders(from: folder)
+            } else {
+                return getContent(from: folder)
+            }
+        }()
+
+        // Sort
+        fetchInfo = parameters
+
+        if let sortInfo = parameters["sort"] as? [String: Any] {
+            sort(by: sortInfo, folders: &folders, files: &files)
+        }
+
+        //
+        var commonList = folders as [ASCEntity] + files as [ASCEntity]
+
+        // Search
+        if let searchInfo = parameters["search"] as? [String: Any] {
+            search(by: searchInfo, entities: &commonList)
+        }
+
+        if let filters = parameters["filters"] as? [String: Any],
+           let filterTypeRaw = filters["filterType"] as? String,
+           let filterType = ApiFilterType(rawValue: filterTypeRaw)
+        {
+            commonList = { list in
+                switch filterType {
+                case .files:
+                    return list.filter { $0 is ASCFile }
+                case .folders:
+                    return list.filter { $0 is ASCFolder }
+                case .documents:
+                    return filter(list: list, byFileExtensions: ASCConstants.FileExtensions.documents)
+                case .presentations:
+                    return filter(list: list, byFileExtensions: ASCConstants.FileExtensions.presentations)
+                case .spreadsheets:
+                    return filter(list: list, byFileExtensions: ASCConstants.FileExtensions.spreadsheets)
+                case .images:
+                    return filter(list: list, byFileExtensions: ASCConstants.FileExtensions.images)
+                case .archive:
+                    return filter(list: list, byFileExtensions: ASCConstants.FileExtensions.archives)
+                case .media:
+                    return filter(list: list, byFileExtensions: ASCConstants.FileExtensions.videos)
+                case .none, .user, .group, .byExtension, .excludeSubfolders:
+                    return list
+                }
+            }(commonList)
+        }
+
+        total = commonList.count
+        items = commonList
+
+        completeon?(self, folder, true, nil)
+    }
+
+    func getAllFilesAndFolders(from parentFolder: ASCFolder) -> (folders: [ASCFolder], files: [ASCFile]) {
+        var (folders, files) = getContent(from: parentFolder)
+
+        for folder in folders {
+            let subItems = getAllFilesAndFolders(from: folder)
+            folders.append(contentsOf: subItems.folders)
+            files.append(contentsOf: subItems.files)
+        }
+        return (folders, files)
+    }
+
+    private func getContent(from folder: ASCFolder) -> ([ASCFolder], [ASCFile]) {
         var folders = [ASCFolder]()
         var files = [ASCFile]()
         let paths = ASCLocalFileHelper.shared.entityList(Path(folder.id))
 
         self.folder = folder
-
         for path in paths {
             let owner = ASCUser()
             owner.displayName = UIDevice.displayName
@@ -161,58 +231,7 @@ class ASCLocalProvider: ASCFileProviderProtocol & ASCSortableFileProviderProtoco
             }
         }
 
-        // Sort
-        fetchInfo = parameters
-
-        if let sortInfo = parameters["sort"] as? [String: Any] {
-            sort(by: sortInfo, folders: &folders, files: &files)
-        }
-
-        var commonList = folders as [ASCEntity] + files as [ASCEntity]
-
-        // Search
-        if let searchInfo = parameters["search"] as? [String: Any] {
-            search(by: searchInfo, entities: &commonList)
-        }
-
-        // Filter
-        if let filters = parameters["filters"] as? [String: Any],
-           let filterTypeRaw = filters["filterType"] as? String,
-           let filterType = ApiFilterType(rawValue: filterTypeRaw)
-        {
-            commonList = { list in
-                switch filterType {
-                case .none: return list
-                case .files:
-                    return list.filter { $0 is ASCFile }
-                case .folders:
-                    return list.filter { $0 is ASCFolder }
-                case .documents:
-                    return filter(list: list, byFileExtensions: ASCConstants.FileExtensions.documents)
-                case .presentations:
-                    return filter(list: list, byFileExtensions: ASCConstants.FileExtensions.presentations)
-                case .spreadsheets:
-                    return filter(list: list, byFileExtensions: ASCConstants.FileExtensions.spreadsheets)
-                case .images:
-                    return filter(list: list, byFileExtensions: ASCConstants.FileExtensions.images)
-                case .user:
-                    return list
-                case .group:
-                    return list
-                case .archive:
-                    return filter(list: list, byFileExtensions: ASCConstants.FileExtensions.archives)
-                case .byExtension:
-                    return list
-                case .media:
-                    return filter(list: list, byFileExtensions: ASCConstants.FileExtensions.videos)
-                }
-            }(commonList)
-        }
-
-        total = commonList.count
-        items = commonList
-
-        completeon?(self, folder, true, nil)
+        return (folders, files)
     }
 
     private func filter(list: [ASCEntity], byFileExtensions fileExtensions: [String]) -> [ASCEntity] {

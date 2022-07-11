@@ -10,7 +10,13 @@ import Foundation
 
 class ASCLocalFilterController: ASCFiltersControllerProtocol {
     struct State {
+        enum DataType: CaseIterable {
+            case extensionFilters
+            case searchFilters
+        }
+
         var filterModels: [ASCDocumentsFilterModel]
+        var searchFilterModels: [ASCDocumentsFilterModel]
         var itemsCount: Int
 
         static var defaultState: (Int) -> State = { count in
@@ -24,6 +30,7 @@ class ASCLocalFilterController: ASCFiltersControllerProtocol {
                 ASCDocumentsFilterModel(filterName: FiltersName.archives.localizedString(), isSelected: false, filterType: .archive),
                 ASCDocumentsFilterModel(filterName: FiltersName.allFiles.localizedString(), isSelected: false, filterType: .files),
             ],
+            searchFilterModels: [ASCDocumentsFilterModel(filterName: FiltersName.excludeSubfolders.localizedString(), isSelected: false, filterType: .excludeSubfolders)],
             itemsCount: count)
         }
     }
@@ -74,15 +81,42 @@ class ASCLocalFilterController: ASCFiltersControllerProtocol {
         } else {
             tempState = .defaultState(total)
         }
-        updateViewModel()
+        runPreload()
+    }
+
+    private func hasSelectedFilter(state: State) -> Bool {
+        var result = false
+        State.DataType.allCases.forEach { type in
+            switch type {
+            case .extensionFilters:
+                result = result || state.filterModels.map { $0.isSelected }.contains(true)
+            case .searchFilters:
+                result = result || state.searchFilterModels.map { $0.isSelected }.contains(true)
+            }
+        }
+        return result
     }
 
     private func makeFilterParams(state: State) -> [String: Any] {
-        let hasSelectedFilter = state.filterModels.map { $0.isSelected }.contains(true)
-        var params: [String: Any] = [:]
-        guard hasSelectedFilter else { return params }
-        if let model = state.filterModels.first(where: { $0.isSelected }) {
-            params["filterType"] = model.filterType.rawValue
+        var params: [String: Any] = ["withSubfolders": true]
+        guard hasSelectedFilter(state: state) else { return params }
+
+        State.DataType.allCases.forEach { type in
+            switch type {
+            case .extensionFilters:
+                if let model = state.filterModels.first(where: { $0.isSelected }) {
+                    params["filterType"] = model.filterType.rawValue
+                }
+            case .searchFilters:
+                if let model = state.searchFilterModels.first(where: { $0.isSelected }) {
+                    switch model.filterType {
+                    case .excludeSubfolders:
+                        params["withSubfolders"] = false
+                    default:
+                        log.error("UnsuppurtedFIlterType: \(model.filterType.rawValue)")
+                    }
+                }
+            }
         }
         return params
     }
@@ -92,6 +126,7 @@ class ASCLocalFilterController: ASCFiltersControllerProtocol {
             state: currentLoading ? .loading : .normal,
             filtersContainers: [
                 .init(sectionName: FiltersSection.type.localizedString(), elements: tempState.filterModels),
+                .init(sectionName: FiltersSection.search.localizedString(), elements: tempState.searchFilterModels),
             ], actionButtonViewModel: tempState.itemsCount > 0
                 ? ActionButtonViewModel(text: String.localizedStringWithFormat(NSLocalizedString("Show %d results", comment: ""), tempState.itemsCount),
                                         backgroundColor: Asset.Colors.filterCapsule.color,
@@ -107,7 +142,7 @@ class ASCLocalFilterController: ASCFiltersControllerProtocol {
 
     private func buildActions() {
         buildDidSelectedClosure()
-        buildResetButtonClosureBuilder()
+        buildCommonResetButtonClosureBuilder()
         builder.actionButtonClosure = { [weak self] in
             self?.appliedState = self?.tempState
             self?.onAction()
@@ -118,24 +153,46 @@ class ASCLocalFilterController: ASCFiltersControllerProtocol {
         builder.didSelectedClosure = { [weak self] filterViewModel in
             guard let self = self else { return }
 
-            let isFilterModelsContainsSelectedId: Bool = self.tempState.filterModels.map { $0.filterType.rawValue }.contains(filterViewModel.id)
+            State.DataType.allCases.forEach { type in
+                switch type {
+                case .extensionFilters:
+                    let isFilterModelsContainsSelectedId: Bool = self.tempState.filterModels.map { $0.filterType.rawValue }.contains(filterViewModel.id)
 
-            if isFilterModelsContainsSelectedId {
-                let previousSelectedFilter = self.tempState.filterModels.first(where: { $0.isSelected })
-                for (index, filterModel) in self.tempState.filterModels.enumerated() {
-                    self.tempState.filterModels[index].isSelected = filterModel.filterType.rawValue == filterViewModel.id && previousSelectedFilter?.filterType.rawValue != filterViewModel.id
+                    if isFilterModelsContainsSelectedId {
+                        let previousSelectedFilter = self.tempState.filterModels.first(where: { $0.isSelected })
+                        for (index, filterModel) in self.tempState.filterModels.enumerated() {
+                            self.tempState.filterModels[index].isSelected = filterModel.filterType.rawValue == filterViewModel.id && previousSelectedFilter?.filterType.rawValue != filterViewModel.id
+                        }
+                        self.runPreload()
+                    }
+                case .searchFilters:
+                    let isSearchModelsContainsSelectedId: Bool = self.tempState.searchFilterModels.map { $0.filterType.rawValue }.contains(filterViewModel.id)
+
+                    if isSearchModelsContainsSelectedId {
+                        let previousSelectedFilter = self.tempState.searchFilterModels.first(where: { $0.isSelected })
+                        for (index, filterModel) in self.tempState.searchFilterModels.enumerated() {
+                            self.tempState.searchFilterModels[index].isSelected = filterModel.filterType.rawValue == filterViewModel.id && previousSelectedFilter?.filterType.rawValue != filterViewModel.id
+                        }
+                        self.runPreload()
+                    }
                 }
-                self.runPreload()
             }
         }
     }
 
-    private func buildResetButtonClosureBuilder() {
-        builder.resetButtonClosure = { [weak self] in
+    private func buildCommonResetButtonClosureBuilder() {
+        builder.commonResetButtonClosure = { [weak self] in
             guard let self = self else { return }
-            for (index, _) in self.tempState.filterModels.enumerated() {
-                self.tempState.filterModels[index].isSelected = false
+
+            State.DataType.allCases.forEach { type in
+                switch type {
+                case .extensionFilters:
+                    self.resetModels(models: &self.tempState.filterModels)
+                case .searchFilters:
+                    self.resetModels(models: &self.tempState.searchFilterModels)
+                }
             }
+
             self.runPreload()
         }
     }
@@ -160,5 +217,11 @@ class ASCLocalFilterController: ASCFiltersControllerProtocol {
             }
             completion(provider.total)
         })
+    }
+
+    private func resetModels(models: inout [ASCDocumentsFilterModel]) {
+        models.enumerated().forEach { index, _ in
+            models[index].isSelected = false
+        }
     }
 }

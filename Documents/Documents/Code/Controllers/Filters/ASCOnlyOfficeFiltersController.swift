@@ -10,8 +10,15 @@ import UIKit
 
 class ASCOnlyOfficeFiltersController: ASCFiltersControllerProtocol {
     struct State {
+        enum DataType: CaseIterable {
+            case extensionFilters
+            case ownerFilters
+            case searchFilters
+        }
+
         var filterModels: [ASCDocumentsFilterModel]
         var authorsModels: [ActionFilterModel]
+        var searchFilterModels: [ASCDocumentsFilterModel]
         var itemsCount: Int
 
         static var defaultState: (Int) -> State = { count in
@@ -29,6 +36,7 @@ class ASCOnlyOfficeFiltersController: ASCFiltersControllerProtocol {
                 ActionFilterModel(defaultName: FiltersName.users.localizedString(), selectedName: nil, filterType: .user),
                 ActionFilterModel(defaultName: FiltersName.groups.localizedString(), selectedName: nil, filterType: .group),
             ],
+            searchFilterModels: [ASCDocumentsFilterModel(filterName: FiltersName.excludeSubfolders.localizedString(), isSelected: false, filterType: .excludeSubfolders)],
             itemsCount: count)
         }
     }
@@ -91,21 +99,52 @@ class ASCOnlyOfficeFiltersController: ASCFiltersControllerProtocol {
         } else {
             tempState = .defaultState(total)
         }
-        updateViewModel()
+        runPreload()
+    }
+
+    private func hasSelectedFilter(state: State) -> Bool {
+        var result = false
+        State.DataType.allCases.forEach { type in
+            switch type {
+            case .extensionFilters:
+                result = result || state.filterModels.map { $0.isSelected }.contains(true)
+            case .ownerFilters:
+                result = result || state.authorsModels.compactMap { $0.selectedName }.count > 0
+            case .searchFilters:
+                result = result || state.searchFilterModels.map { $0.isSelected }.contains(true)
+            }
+        }
+        return result
     }
 
     private func makeFilterParams(state: State) -> [String: Any] {
-        let hasSelectedFilter = state.filterModels.map { $0.isSelected }.contains(true) || state.authorsModels.compactMap { $0.selectedName }.count > 0
-        var params: [String: Any] = [:]
-        guard hasSelectedFilter else { return params }
-        if let model = state.filterModels.first(where: { $0.isSelected }) {
-            params["filterType"] = model.filterType.rawValue
+        var params: [String: Any] = ["withSubfolders": "true"]
+        guard hasSelectedFilter(state: state) else { return params }
+
+        State.DataType.allCases.forEach { type in
+            switch type {
+            case .extensionFilters:
+                if let model = state.filterModels.first(where: { $0.isSelected }) {
+                    params["filterType"] = model.filterType.rawValue
+                }
+            case .searchFilters:
+                if let model = state.searchFilterModels.first(where: { $0.isSelected }) {
+                    switch model.filterType {
+                    case .excludeSubfolders:
+                        params["withSubfolders"] = "false"
+                    default:
+                        log.error("UnsuppurtedFIlterType: \(model.filterType.rawValue)")
+                    }
+                }
+            case .ownerFilters:
+                if let model = state.authorsModels.first(where: { $0.selectedName != nil }),
+                   let id = model.id
+                {
+                    params["userIdOrGroupId"] = id
+                }
+            }
         }
-        if let model = state.authorsModels.first(where: { $0.selectedName != nil }),
-           let id = model.id
-        {
-            params["userIdOrGroupId"] = id
-        }
+
         return params
     }
 
@@ -115,6 +154,7 @@ class ASCOnlyOfficeFiltersController: ASCFiltersControllerProtocol {
             filtersContainers: [
                 .init(sectionName: FiltersSection.type.localizedString(), elements: tempState.filterModels),
                 .init(sectionName: FiltersSection.author.localizedString(), elements: tempState.authorsModels),
+                .init(sectionName: FiltersSection.search.localizedString(), elements: tempState.searchFilterModels),
             ], actionButtonViewModel: tempState.itemsCount > 0
                 ? ActionButtonViewModel(text: String.localizedStringWithFormat(NSLocalizedString("Show %d results", comment: ""), tempState.itemsCount),
                                         backgroundColor: Asset.Colors.filterCapsule.color,
@@ -130,12 +170,18 @@ class ASCOnlyOfficeFiltersController: ASCFiltersControllerProtocol {
 
     private func buildActions() {
         buildDidSelectedClosure()
-        buildResetButtonClosureBuilder()
+        buildCommonResetButtonClosureBuilder()
         builder.didFilterResetBtnTapped = { [weak self] filterViewModel in
             guard let self = self else { return }
-            if let index = self.tempState.authorsModels.firstIndex(where: { $0.filterType.rawValue == filterViewModel.id }) {
-                self.resetAuthorModel(index: index)
-                self.runPreload()
+            State.DataType.allCases.forEach { type in
+                switch type {
+                case .extensionFilters, .searchFilters: break
+                case .ownerFilters:
+                    if let index = self.tempState.authorsModels.firstIndex(where: { $0.filterType.rawValue == filterViewModel.id }) {
+                        self.resetAuthorModel(index: index)
+                        self.runPreload()
+                    }
+                }
             }
         }
         builder.actionButtonClosure = { [weak self] in
@@ -148,53 +194,75 @@ class ASCOnlyOfficeFiltersController: ASCFiltersControllerProtocol {
         builder.didSelectedClosure = { [weak self] filterViewModel in
             guard let self = self else { return }
 
-            let isFilterModelsContainsSelectedId: Bool = self.tempState.filterModels.map { $0.filterType.rawValue }.contains(filterViewModel.id)
-            let isAthorModelsContainsSelectedId: Bool = self.tempState.authorsModels.map { $0.filterType.rawValue }.contains(filterViewModel.id)
+            State.DataType.allCases.forEach { type in
+                switch type {
+                case .extensionFilters:
+                    let isFilterModelsContainsSelectedId: Bool = self.tempState.filterModels.map { $0.filterType.rawValue }.contains(filterViewModel.id)
 
-            if isFilterModelsContainsSelectedId {
-                let previousSelectedFilter = self.tempState.filterModels.first(where: { $0.isSelected })
-                for (index, filterModel) in self.tempState.filterModels.enumerated() {
-                    self.tempState.filterModels[index].isSelected = filterModel.filterType.rawValue == filterViewModel.id && previousSelectedFilter?.filterType.rawValue != filterViewModel.id
-                }
-                self.runPreload()
-            }
+                    if isFilterModelsContainsSelectedId {
+                        let previousSelectedFilter = self.tempState.filterModels.first(where: { $0.isSelected })
+                        for (index, filterModel) in self.tempState.filterModels.enumerated() {
+                            self.tempState.filterModels[index].isSelected = filterModel.filterType.rawValue == filterViewModel.id && previousSelectedFilter?.filterType.rawValue != filterViewModel.id
+                        }
+                        self.runPreload()
+                    }
+                case .ownerFilters:
+                    let isAthorModelsContainsSelectedId: Bool = self.tempState.authorsModels.map { $0.filterType.rawValue }.contains(filterViewModel.id)
 
-            if isAthorModelsContainsSelectedId {
-                let selectedIdClosure: (ApiFilterType?) -> String? = { [weak self] type in
-                    switch type {
-                    case .user: return self?.tempState.authorsModels.first(where: { $0.filterType == .user })?.id
-                    case .group: return self?.tempState.authorsModels.first(where: { $0.filterType == .group })?.id
-                    default: return nil
+                    if isAthorModelsContainsSelectedId {
+                        let selectedIdClosure: (ApiFilterType?) -> String? = { [weak self] type in
+                            switch type {
+                            case .user: return self?.tempState.authorsModels.first(where: { $0.filterType == .user })?.id
+                            case .group: return self?.tempState.authorsModels.first(where: { $0.filterType == .group })?.id
+                            default: return nil
+                            }
+                        }
+
+                        switch ApiFilterType(rawValue: filterViewModel.id) {
+                        case .user:
+                            self.selectUserViewController.markAsSelected(id: selectedIdClosure(.user))
+                            let navigationVC = UINavigationController(rootASCViewController: self.selectUserViewController)
+                            ASCViewControllerManager.shared.topViewController?.navigationController?.present(navigationVC, animated: true)
+                            self.currentSelectedAuthorFilterType = .user
+                        case .group:
+                            self.selectGroupViewController.markAsSelected(id: selectedIdClosure(.group))
+                            let navigationVC = UINavigationController(rootASCViewController: self.selectGroupViewController)
+                            ASCViewControllerManager.shared.topViewController?.navigationController?.present(navigationVC, animated: true)
+                            self.currentSelectedAuthorFilterType = .group
+                        default: return
+                        }
+                        self.updateViewModel()
+                    }
+                case .searchFilters:
+                    let isSearchModelsContainsSelectedId: Bool = self.tempState.searchFilterModels.map { $0.filterType.rawValue }.contains(filterViewModel.id)
+
+                    if isSearchModelsContainsSelectedId {
+                        let previousSelectedFilter = self.tempState.searchFilterModels.first(where: { $0.isSelected })
+                        for (index, filterModel) in self.tempState.searchFilterModels.enumerated() {
+                            self.tempState.searchFilterModels[index].isSelected = filterModel.filterType.rawValue == filterViewModel.id && previousSelectedFilter?.filterType.rawValue != filterViewModel.id
+                        }
+                        self.runPreload()
                     }
                 }
-
-                switch ApiFilterType(rawValue: filterViewModel.id) {
-                case .user:
-                    self.selectUserViewController.markAsSelected(id: selectedIdClosure(.user))
-                    let navigationVC = UINavigationController(rootASCViewController: self.selectUserViewController)
-                    ASCViewControllerManager.shared.topViewController?.navigationController?.present(navigationVC, animated: true)
-                    self.currentSelectedAuthorFilterType = .user
-                case .group:
-                    self.selectGroupViewController.markAsSelected(id: selectedIdClosure(.group))
-                    let navigationVC = UINavigationController(rootASCViewController: self.selectGroupViewController)
-                    ASCViewControllerManager.shared.topViewController?.navigationController?.present(navigationVC, animated: true)
-                    self.currentSelectedAuthorFilterType = .group
-                default: return
-                }
-                self.updateViewModel()
             }
         }
     }
 
-    private func buildResetButtonClosureBuilder() {
-        builder.resetButtonClosure = { [weak self] in
+    private func buildCommonResetButtonClosureBuilder() {
+        builder.commonResetButtonClosure = { [weak self] in
             guard let self = self else { return }
 
-            for (index, _) in self.tempState.filterModels.enumerated() {
-                self.tempState.filterModels[index].isSelected = false
+            State.DataType.allCases.forEach { type in
+                switch type {
+                case .extensionFilters:
+                    self.resetModels(models: &self.tempState.filterModels)
+                case .ownerFilters:
+                    self.resetAuthorModels()
+                case .searchFilters:
+                    self.resetModels(models: &self.tempState.searchFilterModels)
+                }
             }
 
-            self.resetAuthorModels()
             self.runPreload()
         }
     }
@@ -230,6 +298,12 @@ class ASCOnlyOfficeFiltersController: ASCFiltersControllerProtocol {
     private func resetAuthorModel(index: Int) {
         tempState.authorsModels[index].selectedName = nil
         tempState.authorsModels[index].id = nil
+    }
+
+    private func resetModels(models: inout [ASCDocumentsFilterModel]) {
+        models.enumerated().forEach { index, _ in
+            models[index].isSelected = false
+        }
     }
 }
 

@@ -15,7 +15,7 @@ struct FiltersContainer {
 
 class ASCFiltersCollectionViewModelBuilder {
     var actionButtonClosure: () -> Void = {}
-    var resetButtonClosure: () -> Void = {}
+    var commonResetButtonClosure: () -> Void = {}
     var didSelectedClosure: (FilterViewModel) -> Void = { _ in }
     var didFilterResetBtnTapped: (FilterViewModel) -> Void = { _ in }
     var actionButtonTitle: ActionButtonViewModel = .empty
@@ -32,7 +32,7 @@ class ASCFiltersCollectionViewModelBuilder {
                                           data: data,
                                           actionButtonViewModel: actionButtonViewModel,
                                           actionButtonClosure: actionButtonClosure,
-                                          resetButtonClosure: resetButtonClosure,
+                                          resetButtonClosure: commonResetButtonClosure,
                                           didSelectedClosure: didSelectedClosure,
                                           didFilterResetBtnTapped: didFilterResetBtnTapped)
     }

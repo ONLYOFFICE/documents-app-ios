@@ -2825,7 +2825,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "# Copy resources\nADDITIONAL_FILES=(\n    \"${PROJECT_DIR}/Documents/Internal.plist\",\n    \"${PROJECT_DIR}/Keys/F8D434904F7142C49EB3E4CD738CFE01.lic\"\n)\n\nfor file_path in ${ADDITIONAL_FILES[@]}; do\n    if [ -f \"${file_path}\" ]; then\n        rsync --delete -av \"${file_path}\" \"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}\"\n    fi\ndone\n\n# Copy GoogleService plist\ncp -r \"${PROJECT_DIR}/Documents/Services/GoogleService-Info-prod.plist\" \"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/GoogleService-Info.plist\"\n";
+			shellScript = "# Copy resources\nADDITIONAL_FILES=(\n    \"${PROJECT_DIR}/Documents/Internal.plist\"\n    \"${PROJECT_DIR}/Keys/F8D434904F7142C49EB3E4CD738CFE01.lic\"\n)\n\nfor file_path in ${ADDITIONAL_FILES[@]}; do\n    if [ -f \"${file_path}\" ]; then\n        rsync --delete -av \"${file_path}\" \"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}\"\n    fi\ndone\n\n# Copy GoogleService plist\ncp -r \"${PROJECT_DIR}/Documents/Services/GoogleService-Info-prod.plist\" \"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/GoogleService-Info.plist\"\n";
 		};
 		FC1CA5AE2645294F001CC5CA /* Check dependencies and try checkout */ = {
 			isa = PBXShellScriptBuildPhase;

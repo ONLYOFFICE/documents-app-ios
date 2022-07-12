@@ -74,7 +74,12 @@ struct ActionButtonViewModel {
     var textColor: UIColor
     var isActive: Bool = true
 
-    static var empty = ActionButtonViewModel(text: "", backgroundColor: Asset.Colors.filterCapsule.color, textColor: Asset.Colors.brend.color, isActive: true)
+    static var empty = ActionButtonViewModel(
+        text: "",
+        backgroundColor: Asset.Colors.filterCapsule.color,
+        textColor: Asset.Colors.brend.color,
+        isActive: true
+    )
 }
 
 enum ApiFilterType: String {
@@ -99,7 +104,14 @@ enum FiltersSection: String, CaseIterable {
     case search = "Search"
 
     func localizedString() -> String {
-        return NSLocalizedString(rawValue, comment: "")
+        switch self {
+        case .type:
+            return NSLocalizedString("Type", comment: "")
+        case .author:
+            return NSLocalizedString("Author", comment: "")
+        case .search:
+            return NSLocalizedString("Search", comment: "")
+        }
     }
 }
 

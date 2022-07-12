@@ -63,6 +63,13 @@ class ASCOnlyOfficeFiltersController: ASCFiltersControllerProtocol {
         controller.delegate = self
         return controller
     }()
+    
+    private var allowSearchFilter: Bool {
+        if let onlyofficeProvider = provider as? ASCOnlyofficeProvider {
+            return onlyofficeProvider.apiClient.serverVersion?.isVersion(greaterThanOrEqualTo: "12.0.1") ?? false
+        }
+        return false
+    }
 
     // MARK: - public properties
 
@@ -154,8 +161,9 @@ class ASCOnlyOfficeFiltersController: ASCFiltersControllerProtocol {
             filtersContainers: [
                 .init(sectionName: FiltersSection.type.localizedString(), elements: tempState.filterModels),
                 .init(sectionName: FiltersSection.author.localizedString(), elements: tempState.authorsModels),
-                .init(sectionName: FiltersSection.search.localizedString(), elements: tempState.searchFilterModels),
-            ], actionButtonViewModel: tempState.itemsCount > 0
+                allowSearchFilter ? .init(sectionName: FiltersSection.search.localizedString(), elements: tempState.searchFilterModels) : nil,
+            ].compactMap { $0 },
+            actionButtonViewModel: tempState.itemsCount > 0
                 ? ActionButtonViewModel(text: String.localizedStringWithFormat(NSLocalizedString("Show %d results", comment: ""), tempState.itemsCount),
                                         backgroundColor: Asset.Colors.filterCapsule.color,
                                         textColor: Asset.Colors.brend.color,

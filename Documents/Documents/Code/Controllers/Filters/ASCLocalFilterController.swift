@@ -98,7 +98,10 @@ class ASCLocalFilterController: ASCFiltersControllerProtocol {
     }
 
     private func makeFilterParams(state: State) -> [String: Any] {
-        var params: [String: Any] = ["withSubfolders": true]
+        var params: [String: Any] = [:]
+        if state.filterModels.first(where: { $0.isSelected }) != nil {
+            params["withSubfolders"] = true
+        }
         guard hasSelectedFilter(state: state) else { return params }
 
         State.DataType.allCases.forEach { type in

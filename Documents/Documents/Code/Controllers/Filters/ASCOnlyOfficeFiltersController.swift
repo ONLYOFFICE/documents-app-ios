@@ -118,7 +118,12 @@ class ASCOnlyOfficeFiltersController: ASCFiltersControllerProtocol {
     }
 
     private func makeFilterParams(state: State) -> [String: Any] {
-        var params: [String: Any] = ["withSubfolders": "true"]
+        var params: [String: Any] = [:]
+        if state.filterModels.first(where: { $0.isSelected }) != nil ||
+            state.authorsModels.first(where: { $0.selectedName != nil }) != nil
+        {
+            params["withSubfolders"] = "true"
+        }
         guard hasSelectedFilter(state: state) else { return params }
 
         State.DataType.allCases.forEach { type in

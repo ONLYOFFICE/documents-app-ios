@@ -244,6 +244,12 @@ class ASCOnlyofficeProvider: ASCFileProviderProtocol & ASCSortableFileProviderPr
     ///   - parameters: dictionary of settings for searching and sorting or any other information
     ///   - completeon: a closure with result of directory entries or error
     func fetch(for folder: ASCFolder, parameters: [String: Any?], completeon: ASCProviderCompletionHandler?) {
+        var parameters = parameters
+        if parameters["search"] as? [String: Any] != nil {
+            if parameters["filters"] as? [String: Any] == nil {
+                parameters["filters"] = ["withSubfolders": "true"]
+            }
+        }
         self.folder = folder
 
         let fetch: ((_ completeon: ASCProviderCompletionHandler?) -> Void) = { [weak self] completeon in

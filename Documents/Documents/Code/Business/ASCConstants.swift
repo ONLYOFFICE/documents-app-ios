@@ -110,8 +110,10 @@ class ASCConstants {
                 termsOfServiceLink: NSString(string: "https://help.onlyoffice.com/products/files/doceditor.aspx?fileid=5048471&doc=bXJ6UmJacDVnVDMxV01oMHhrUlpwaGFBcXJUUUE3VHRuTGZrRUF5a1NKVT0_IjUwNDg0NzEi0"),
             ]
 
-            RemoteConfig.remoteConfig().setDefaults(defaultValues)
-            fetchRemoteConfig()
+            #if !OPEN_SOURCE
+                RemoteConfig.remoteConfig().setDefaults(defaultValues)
+                fetchRemoteConfig()
+            #endif
         }
     }
 

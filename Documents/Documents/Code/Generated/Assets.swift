@@ -23,6 +23,7 @@ internal typealias AssetImageTypeAlias = ImageAsset.Image
 internal enum Asset {
   internal enum Colors {
     internal static let action = ColorAsset(name: "action")
+    internal static let badge = ColorAsset(name: "badge")
     internal static let brend = ColorAsset(name: "brend")
     internal static let debug = ColorAsset(name: "debug")
     internal static let filterCapsule = ColorAsset(name: "filter-capsule")

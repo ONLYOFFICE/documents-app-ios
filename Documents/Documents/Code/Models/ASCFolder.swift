@@ -22,7 +22,7 @@ class ASCFolder: ASCEntity {
     var updatedBy: ASCUser?
     var created: Date?
     var createdBy: ASCUser?
-    var isNew: Bool = false
+    var new: Int = 0
     var isThirdParty: Bool = false
     var providerType: ASCFolderProviderType?
     var device: Bool = false
@@ -57,7 +57,7 @@ class ASCFolder: ASCEntity {
         updatedBy <- map["updatedBy"]
         created <- (map["created"], ASCDateTransform())
         createdBy <- map["createdBy"]
-        isNew <- map["isNew"]
+        new <- map["new"]
         isThirdParty <- map["providerItem"]
         providerType <- (map["providerKey"], EnumTransform())
 
@@ -80,7 +80,7 @@ class ASCFolder: ASCEntity {
             folder.updatedBy = updatedBy
             folder.created = created
             folder.createdBy = createdBy
-            folder.isNew = isNew
+            folder.new = new
             folder.isThirdParty = isThirdParty
             folder.providerType = providerType
             folder.device = device

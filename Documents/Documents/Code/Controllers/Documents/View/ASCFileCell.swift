@@ -131,6 +131,7 @@ class ASCFileCell: MGSwipeTableCell {
         }
 
         /// Thumb view
+
         let fileExt = fileInfo.title.fileExtension().lowercased()
 
         icon?.contentMode = .center

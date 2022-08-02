@@ -63,7 +63,7 @@ class ASCOnlyOfficeFiltersController: ASCFiltersControllerProtocol {
         controller.delegate = self
         return controller
     }()
-    
+
     private var allowSearchFilter: Bool {
         if let onlyofficeProvider = provider as? ASCOnlyofficeProvider {
             return onlyofficeProvider.apiClient.serverVersion?.isVersion(greaterThanOrEqualTo: "12.0.1") ?? false

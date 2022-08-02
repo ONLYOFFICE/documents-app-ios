@@ -26,6 +26,9 @@ enum ASCTextStyle {
     case subheadline
     case subheadlineWhite
     case subheadlineBold
+
+    case caption2White
+
     case placeholderRegular
 
     case underlineField
@@ -103,6 +106,9 @@ enum ASCTextStyle {
             } else {
                 return (UIFont.systemFont(ofSize: 34).bold(), .black, 1)
             }
+
+        case .caption2White:
+            return (UIFont.preferredFont(forTextStyle: .caption2), .white, 1)
 
         case .placeholderRegular:
             if #available(iOS 13.0, *) {

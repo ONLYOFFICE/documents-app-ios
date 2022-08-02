@@ -22,7 +22,13 @@ class ASCAccountsManager {
         NSKeyedUnarchiver.setClass(ASCAccount.self, forClassName: "ASCAccount")
         NSKeyedArchiver.setClassName("ASCAccount", for: ASCAccount.self)
 
-        NotificationCenter.default.addObserver(self, selector: #selector(onUpdateUserInfo), name: ASCConstants.Notifications.userInfoOnlyofficeUpdate, object: nil)
+        NotificationCenter.default.addObserver(
+            self,
+            selector: #selector(onUpdateUserInfo),
+            name: ASCConstants.Notifications.userInfoOnlyofficeUpdate,
+            object: nil
+        )
+
         loadAccounts()
     }
 

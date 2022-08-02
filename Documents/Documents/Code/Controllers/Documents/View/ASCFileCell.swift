@@ -20,6 +20,7 @@ class ASCFileCell: MGSwipeTableCell {
     @IBOutlet var separaterLabel: UILabel!
     @IBOutlet var icon: UIImageView!
     @IBOutlet var activityIndicator: UIActivityIndicatorView!
+    @IBOutlet var titleStackView: UIStackView!
 
     var file: ASCFile? {
         didSet {
@@ -35,6 +36,16 @@ class ASCFileCell: MGSwipeTableCell {
         formatter.timeStyle = .short
         return formatter
     }()
+
+    private lazy var newBadge: ASCPaddingLabel = {
+        $0.backgroundColor = Asset.Colors.badge.color
+        $0.text = NSLocalizedString("new", comment: "Badge of file in file list")
+        $0.textStyle = .caption2White
+        $0.padding = UIEdgeInsets(top: 2, left: 4, bottom: 3, right: 4)
+        $0.layerCornerRadius = 4
+        $0.sizeToFit()
+        return $0
+    }(ASCPaddingLabel(frame: .zero))
 
     // MARK: - Lifecycle Methods
 
@@ -60,8 +71,48 @@ class ASCFileCell: MGSwipeTableCell {
             return
         }
 
+        /// Display title
+
+        for view in titleStackView?.arrangedSubviews ?? [] {
+            view.removeFromSuperview()
+        }
+        titleStackView?.alignment = .center
+
         title?.text = fileInfo.title
+        titleStackView?.addArrangedSubview(title)
+
+        /// Status info in title
+
+        if #available(iOS 13.0, *) {
+            if fileInfo.isEditing {
+                let editImage = UIImage(
+                    systemName: "pencil",
+                    withConfiguration: UIImage.SymbolConfiguration(font: UIFont.systemFont(ofSize: 13, weight: .black))
+                )?.withTintColor(Asset.Colors.brend.color, renderingMode: .alwaysOriginal) ?? UIImage()
+
+                titleStackView?.addArrangedSubview(UIImageView(image: editImage))
+            }
+
+            if fileInfo.isFavorite {
+                let favoriteImage = UIImage(
+                    systemName: "star.fill",
+                    withConfiguration: UIImage.SymbolConfiguration(font: UIFont.systemFont(ofSize: 13, weight: .medium))
+                )?.withTintColor(Asset.Colors.brend.color, renderingMode: .alwaysOriginal) ?? UIImage()
+
+                titleStackView?.addArrangedSubview(UIImageView(image: favoriteImage))
+            }
+
+            if fileInfo.isNew, let badgeNewImage = newBadge.screenshot {
+                titleStackView?.addArrangedSubview(UIImageView(image: badgeNewImage))
+            }
+        }
+
+        /// Display owner
+
         owner?.text = fileInfo.createdBy?.displayName
+
+        /// Display date
+
         date?.text = (fileInfo.updated != nil)
             ? dateFormatter.string(from: fileInfo.updated!)
             : nil
@@ -77,28 +128,6 @@ class ASCFileCell: MGSwipeTableCell {
         } else {
             separaterLabel?.text = "•"
             sizeLabel?.text = fileInfo.displayContentLength
-        }
-
-        /// Status info
-
-        if #available(iOS 13.0, *) {
-            if fileInfo.isEditing {
-                let editImage = UIImage(
-                    systemName: "pencil",
-                    withConfiguration: UIImage.SymbolConfiguration(font: UIFont.systemFont(ofSize: 13, weight: .black))
-                )?.withTintColor(Asset.Colors.brend.color, renderingMode: .alwaysOriginal) ?? UIImage()
-
-                title?.addTrailing(image: editImage)
-            }
-
-            if fileInfo.isFavorite {
-                let favoriteImage = UIImage(
-                    systemName: "star.fill",
-                    withConfiguration: UIImage.SymbolConfiguration(font: UIFont.systemFont(ofSize: 13, weight: .medium))
-                )?.withTintColor(Asset.Colors.brend.color, renderingMode: .alwaysOriginal) ?? UIImage()
-
-                title?.addTrailing(image: favoriteImage)
-            }
         }
 
         /// Thumb view

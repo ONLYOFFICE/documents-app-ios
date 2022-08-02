@@ -215,6 +215,8 @@
 		FC142A8C28981B6000EDE7CE /* ASCDropboxSDKWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC142A8A28981B6000EDE7CE /* ASCDropboxSDKWrapper.swift */; };
 		FC142A8E28981BEA00EDE7CE /* UITableView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC142A8D28981BEA00EDE7CE /* UITableView+Extensions.swift */; };
 		FC142A8F28981BEA00EDE7CE /* UITableView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC142A8D28981BEA00EDE7CE /* UITableView+Extensions.swift */; };
+		FC142A9228990AEC00EDE7CE /* ASCPaddingLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC142A9128990AEC00EDE7CE /* ASCPaddingLabel.swift */; };
+		FC142A9328990AEC00EDE7CE /* ASCPaddingLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC142A9128990AEC00EDE7CE /* ASCPaddingLabel.swift */; };
 		FC156CEF261708A00015835A /* sample in Resources */ = {isa = PBXBuildFile; fileRef = FC156CEE261708A00015835A /* sample */; };
 		FC156CF526170A660015835A /* new in Resources */ = {isa = PBXBuildFile; fileRef = FC156CF426170A660015835A /* new */; };
 		FC1755971E9CAFDB00D73D8E /* ASCSortViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC1755961E9CAFDB00D73D8E /* ASCSortViewController.swift */; };
@@ -1013,6 +1015,7 @@
 		FC142A8728981AE000EDE7CE /* UITextField+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UITextField+Extensions.swift"; sourceTree = "<group>"; };
 		FC142A8A28981B6000EDE7CE /* ASCDropboxSDKWrapper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASCDropboxSDKWrapper.swift; sourceTree = "<group>"; };
 		FC142A8D28981BEA00EDE7CE /* UITableView+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UITableView+Extensions.swift"; sourceTree = "<group>"; };
+		FC142A9128990AEC00EDE7CE /* ASCPaddingLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCPaddingLabel.swift; sourceTree = "<group>"; };
 		FC156CEE261708A00015835A /* sample */ = {isa = PBXFileReference; lastKnownFileType = folder; name = sample; path = "../../../../document-templates/sample"; sourceTree = "<group>"; };
 		FC156CF426170A660015835A /* new */ = {isa = PBXFileReference; lastKnownFileType = folder; name = new; path = "../../../../document-templates/new"; sourceTree = "<group>"; };
 		FC1755961E9CAFDB00D73D8E /* ASCSortViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASCSortViewController.swift; sourceTree = "<group>"; };
@@ -2714,6 +2717,7 @@
 				FC6106F61F9E28EE002A25C8 /* UPCarouselFlowLayout.swift */,
 				FC81C67C22C5041600A7D104 /* ASCCustomHighlightButton.swift */,
 				FCED8F4D23E8355500EC1DAC /* ASCFloatingLabelTextField.swift */,
+				FC142A9128990AEC00EDE7CE /* ASCPaddingLabel.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -3732,6 +3736,7 @@
 				FC7081062812E2260057FCD2 /* ASCSharingOptionsModels.swift in Sources */,
 				FC7081072812E2260057FCD2 /* Common+Extension.swift in Sources */,
 				FC7081092812E2260057FCD2 /* ASCCreatePortalViewController.swift in Sources */,
+				FC142A9328990AEC00EDE7CE /* ASCPaddingLabel.swift in Sources */,
 				FC70810A2812E2260057FCD2 /* EventSubscription.swift in Sources */,
 				FC70810B2812E2260057FCD2 /* ASCConnectPortalViewController.swift in Sources */,
 				FC70810C2812E2260057FCD2 /* ASCSignInViewController.swift in Sources */,
@@ -4137,6 +4142,7 @@
 				1D14AAF32698E85A009E48AD /* ASCSharingAddRightHoldersRouter.swift in Sources */,
 				1DE6D6BC2631AEE1001B825B /* ASCOnlyofficeAPICategoriesProvider.swift in Sources */,
 				FC68398A21B7DF0C00251CEA /* ASCOnDeviceNavigationController.swift in Sources */,
+				FC142A9228990AEC00EDE7CE /* ASCPaddingLabel.swift in Sources */,
 				FCC39FEA1E6ECB3400DECB8D /* ASCLocalFileHelper.swift in Sources */,
 				FC07073E26CEA6AB003E2077 /* UITapGestureRecognizer+Extensions.swift in Sources */,
 				FC6F0CD71F542E7E002D33D9 /* ASCSSOSignInController.swift in Sources */,

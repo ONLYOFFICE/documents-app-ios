@@ -57,6 +57,7 @@
 		FC0F01E3216F4EA7008D79A5 /* ASCWebDAVProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC0F01E2216F4EA7008D79A5 /* ASCWebDAVProvider.swift */; };
 		FC124FAC26CCED2200778FC9 /* WhatsNewService.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC124FAB26CCED2200778FC9 /* WhatsNewService.swift */; };
 		FC12ACF22567CF5E00FF1CBB /* ASCAnalytics.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC12ACF12567CF5E00FF1CBB /* ASCAnalytics.swift */; };
+		FC142A9828992D4F00EDE7CE /* ASCPaddingLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC142A9728992D4E00EDE7CE /* ASCPaddingLabel.swift */; };
 		FC1755971E9CAFDB00D73D8E /* ASCSortViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC1755961E9CAFDB00D73D8E /* ASCSortViewController.swift */; };
 		FC1AC0F627A00280006C1B6E /* DocxRenderer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FC1AC0F527A00280006C1B6E /* DocxRenderer.framework */; };
 		FC1AD6142175FE7000DADEE0 /* ASCNetworkReachability.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC1AD6132175FE7000DADEE0 /* ASCNetworkReachability.swift */; };
@@ -561,6 +562,7 @@
 		FC0F01E2216F4EA7008D79A5 /* ASCWebDAVProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCWebDAVProvider.swift; sourceTree = "<group>"; };
 		FC124FAB26CCED2200778FC9 /* WhatsNewService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WhatsNewService.swift; sourceTree = "<group>"; };
 		FC12ACF12567CF5E00FF1CBB /* ASCAnalytics.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCAnalytics.swift; sourceTree = "<group>"; };
+		FC142A9728992D4E00EDE7CE /* ASCPaddingLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASCPaddingLabel.swift; sourceTree = "<group>"; };
 		FC1755961E9CAFDB00D73D8E /* ASCSortViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASCSortViewController.swift; sourceTree = "<group>"; };
 		FC1AC0F527A00280006C1B6E /* DocxRenderer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = DocxRenderer.framework; path = "../../editors-ios/build/SDK/lib/DocxRenderer.framework"; sourceTree = "<group>"; };
 		FC1AD6132175FE7000DADEE0 /* ASCNetworkReachability.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCNetworkReachability.swift; sourceTree = "<group>"; };
@@ -2003,6 +2005,7 @@
 				FCFB36061EDF0AB00001597E /* ASCBanner.swift */,
 				8A79BCD52080DD5C00998DA7 /* ASConverterOptionsAlert.swift */,
 				FC8540C31E83A582000C2436 /* ASCProgressAlert.swift */,
+				FC142A9728992D4E00EDE7CE /* ASCPaddingLabel.swift */,
 				FCF2761B22C0E8E500984E83 /* ASCProfileAvatarView.swift */,
 				FCF2761D22C0FA5E00984E83 /* ASCShadowRadiusView.swift */,
 				FC23FC5A2043EEEF003B3AE7 /* ASCUserAvatarView.swift */,
@@ -3021,6 +3024,7 @@
 				FC7D991B2729942700410795 /* ASCSwitchTableViewCell.swift in Sources */,
 				FC059D9A1E8259F100BC2F5E /* Dictionary+Extension.swift in Sources */,
 				FC2B0CC42640524F00969DB9 /* OnlyofficeVersion.swift in Sources */,
+				FC142A9828992D4F00EDE7CE /* ASCPaddingLabel.swift in Sources */,
 				FC7D9983272996D600410795 /* UILabel+Style.swift in Sources */,
 				FCA5B9291E48A2B500CD2EA9 /* ASCDocumentsViewController.swift in Sources */,
 				FC5D0441263FE0E700D9DBCF /* NextcloudDataResult.swift in Sources */,

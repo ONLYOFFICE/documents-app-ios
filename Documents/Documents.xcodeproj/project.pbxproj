@@ -215,6 +215,8 @@
 		FC0F01E1216F46B7008D79A5 /* ASCOnlyofficeProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC0F01E0216F46B7008D79A5 /* ASCOnlyofficeProvider.swift */; };
 		FC0F01E3216F4EA7008D79A5 /* ASCWebDAVProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC0F01E2216F4EA7008D79A5 /* ASCWebDAVProvider.swift */; };
 		FC12ACF42567D1C300FF1CBB /* ASCAnalytics.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC12ACF32567D1C200FF1CBB /* ASCAnalytics.swift */; };
+		FC142A9A28992D6C00EDE7CE /* ASCPaddingLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC142A9928992D6C00EDE7CE /* ASCPaddingLabel.swift */; };
+		FC142A9B28992D6C00EDE7CE /* ASCPaddingLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC142A9928992D6C00EDE7CE /* ASCPaddingLabel.swift */; };
 		FC156CEF261708A00015835A /* sample in Resources */ = {isa = PBXBuildFile; fileRef = FC156CEE261708A00015835A /* sample */; };
 		FC156CF0261708A00015835A /* sample in Resources */ = {isa = PBXBuildFile; fileRef = FC156CEE261708A00015835A /* sample */; };
 		FC156CF526170A660015835A /* new in Resources */ = {isa = PBXBuildFile; fileRef = FC156CF426170A660015835A /* new */; };
@@ -1032,6 +1034,7 @@
 		FC0F01E0216F46B7008D79A5 /* ASCOnlyofficeProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCOnlyofficeProvider.swift; sourceTree = "<group>"; };
 		FC0F01E2216F4EA7008D79A5 /* ASCWebDAVProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCWebDAVProvider.swift; sourceTree = "<group>"; };
 		FC12ACF32567D1C200FF1CBB /* ASCAnalytics.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASCAnalytics.swift; sourceTree = "<group>"; };
+		FC142A9928992D6C00EDE7CE /* ASCPaddingLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASCPaddingLabel.swift; sourceTree = "<group>"; };
 		FC156CEE261708A00015835A /* sample */ = {isa = PBXFileReference; lastKnownFileType = folder; name = sample; path = "../../../../document-templates/sample"; sourceTree = "<group>"; };
 		FC156CF426170A660015835A /* new */ = {isa = PBXFileReference; lastKnownFileType = folder; name = new; path = "../../../../document-templates/new"; sourceTree = "<group>"; };
 		FC1755961E9CAFDB00D73D8E /* ASCSortViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASCSortViewController.swift; sourceTree = "<group>"; };
@@ -2724,6 +2727,7 @@
 				FCFB36061EDF0AB00001597E /* ASCBanner.swift */,
 				8A79BCD52080DD5C00998DA7 /* ASConverterOptionsAlert.swift */,
 				FC8540C31E83A582000C2436 /* ASCProgressAlert.swift */,
+				FC142A9928992D6C00EDE7CE /* ASCPaddingLabel.swift */,
 				FCF2761B22C0E8E500984E83 /* ASCProfileAvatarView.swift */,
 				FCF2761D22C0FA5E00984E83 /* ASCShadowRadiusView.swift */,
 				FC23FC5A2043EEEF003B3AE7 /* ASCUserAvatarView.swift */,
@@ -4149,6 +4153,7 @@
 				FCEFE19E2673E29300B367AE /* ASCOneDriveFileProvider.swift in Sources */,
 				FC36D2EF25B5C32200412DDB /* ASCConnectStorageOAuth2Dropbox.swift in Sources */,
 				1D49E2A526A9BD760024AC7A /* ASCViewModelSetter.swift in Sources */,
+				FC142A9B28992D6C00EDE7CE /* ASCPaddingLabel.swift in Sources */,
 				FC36D2F025B5C32200412DDB /* ASCUser.swift in Sources */,
 				FC36D2F125B5C32200412DDB /* PasscodeLockViewController.swift in Sources */,
 				FC36D2F225B5C32200412DDB /* ASCFolderCell.swift in Sources */,
@@ -4407,6 +4412,7 @@
 				1DE6D6BC2631AEE1001B825B /* ASCOnlyofficeAPICategoriesProvider.swift in Sources */,
 				FC25B455284F67F70075D6C2 /* ASCSwitchCell.swift in Sources */,
 				FC68398A21B7DF0C00251CEA /* ASCOnDeviceNavigationController.swift in Sources */,
+				FC142A9A28992D6C00EDE7CE /* ASCPaddingLabel.swift in Sources */,
 				FCC39FEA1E6ECB3400DECB8D /* ASCLocalFileHelper.swift in Sources */,
 				FC07073E26CEA6AB003E2077 /* UITapGestureRecognizer+Extensions.swift in Sources */,
 				FC6F0CD71F542E7E002D33D9 /* ASCSSOSignInController.swift in Sources */,

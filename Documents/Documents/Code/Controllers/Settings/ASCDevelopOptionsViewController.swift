@@ -101,28 +101,35 @@ class ASCDevelopOptionsViewController: ASCBaseTableViewController {
                     title: "Skeleton of categories (false)",
                     isOn: ASCConstants.Feature.allowCategoriesSkeleton,
                     valueChanged: { isOn in
-                        UserDefaults.standard.set(isOn, forKey: ASCConstants.SettingsKeys.debugAllowCategoriesSkeleton)
+                        ASCConstants.Feature.allowCategoriesSkeleton = isOn
                     }
                 )),
                 .switchControl(viewModel: ASCSwitchCellViewModel(
                     title: "Allow iCloud (true)",
                     isOn: ASCConstants.Feature.allowiCloud,
                     valueChanged: { isOn in
-                        UserDefaults.standard.set(isOn, forKey: ASCConstants.SettingsKeys.debugAllowiCloud)
+                        ASCConstants.Feature.allowiCloud = isOn
                     }
                 )),
                 .switchControl(viewModel: ASCSwitchCellViewModel(
                     title: "Hide Searchbar if empty screen (false)",
                     isOn: ASCConstants.Feature.hideSearchbarIfEmpty,
                     valueChanged: { isOn in
-                        UserDefaults.standard.set(isOn, forKey: ASCConstants.SettingsKeys.debugHideSearchbarIfEmpty)
+                        ASCConstants.Feature.hideSearchbarIfEmpty = isOn
                     }
                 )),
                 .switchControl(viewModel: ASCSwitchCellViewModel(
                     title: "Connect Dropbox via SDK (true)",
                     isOn: ASCConstants.Feature.dropboxSDKLogin,
                     valueChanged: { isOn in
-                        UserDefaults.standard.set(isOn, forKey: ASCConstants.SettingsKeys.debugDropboxSDKLogin)
+                        ASCConstants.Feature.dropboxSDKLogin = isOn
+                    }
+                )),
+                .switchControl(viewModel: ASCSwitchCellViewModel(
+                    title: "Open DE in view mode (true)",
+                    isOn: ASCConstants.Feature.openViewModeByDefault,
+                    valueChanged: { isOn in
+                        ASCConstants.Feature.openViewModeByDefault = isOn
                     }
                 )),
             ],

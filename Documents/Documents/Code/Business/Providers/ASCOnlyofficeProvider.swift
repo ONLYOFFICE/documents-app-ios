@@ -1206,13 +1206,13 @@ class ASCOnlyofficeProvider: ASCFileProviderProtocol & ASCSortableFileProviderPr
 
     // MARK: - Open file
 
-    func open(file: ASCFile, viewMode: Bool = false) {
+    func open(file: ASCFile, openViewMode: Bool, canEdit: Bool) {
         let title = file.title
         let fileExt = title.fileExtension().lowercased()
         let allowOpen = ASCConstants.FileExtensions.allowEdit.contains(fileExt)
 
         if allowOpen {
-            let editMode = !viewMode && UIDevice.allowEditor
+            let editMode = !openViewMode && UIDevice.allowEditor
             let strongDelegate = delegate
             let openHandler = strongDelegate?.openProgress(file: file, title: NSLocalizedString("Processing", comment: "Caption of the processing") + "...", 0)
             let closeHandler = strongDelegate?.closeProgress(file: file, title: NSLocalizedString("Saving", comment: "Caption of the processing"))
@@ -1235,14 +1235,15 @@ class ASCOnlyofficeProvider: ASCFileProviderProtocol & ASCSortableFileProviderPr
             if ASCEditorManager.shared.checkSDKVersion() {
                 ASCEditorManager.shared.editCloud(
                     file,
-                    viewMode: !editMode,
+                    openViewMode: !editMode,
+                    canEdit: canEdit,
                     handler: openHandler,
                     closeHandler: closeHandler,
                     favoriteHandler: favoriteHandler,
                     shareHandler: shareHandler
                 )
             } else {
-                ASCEditorManager.shared.editFileLocally(for: self, file, viewMode: viewMode, handler: openHandler, closeHandler: closeHandler, lockedHandler: {
+                ASCEditorManager.shared.editFileLocally(for: self, file, openViewMode: openViewMode, canEdit: canEdit, handler: openHandler, closeHandler: closeHandler, lockedHandler: {
                     delay(seconds: 0.3) {
                         let isSpreadsheet = file.title.fileExtension() == "xlsx"
                         let isPresentation = file.title.fileExtension() == "pptx"
@@ -1265,7 +1266,7 @@ class ASCOnlyofficeProvider: ASCFileProviderProtocol & ASCSortableFileProviderPr
                             let openHandler = strongDelegate?.openProgress(file: file, title: NSLocalizedString("Processing", comment: "Caption of the processing") + "...", 0)
                             let closeHandler = strongDelegate?.closeProgress(file: file, title: NSLocalizedString("Saving", comment: "Caption of the processing"))
 
-                            ASCEditorManager.shared.editFileLocally(for: self, file, viewMode: true, handler: openHandler, closeHandler: closeHandler)
+                            ASCEditorManager.shared.editFileLocally(for: self, file, openViewMode: true, canEdit: false, handler: openHandler, closeHandler: closeHandler)
                         }
                         .cancelable()
 

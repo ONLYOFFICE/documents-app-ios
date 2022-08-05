@@ -239,7 +239,8 @@ class ASCEditorManager: NSObject {
     func editFileLocally(
         for provider: ASCFileProviderProtocol,
         _ file: ASCFile,
-        viewMode: Bool,
+        openViewMode: Bool,
+        canEdit: Bool,
         handler: ASCEditorManagerOpenHandler? = nil,
         closeHandler: ASCEditorManagerCloseHandler? = nil,
         lockedHandler: ASCEditorManagerLockedHandler? = nil
@@ -255,7 +256,7 @@ class ASCEditorManager: NSObject {
         self.lockedHandler = lockedHandler
 
         if provider is ASCOnlyofficeProvider {
-            fetchDocumentInfo(file, viewMode: viewMode, handler: { canEdit, error in
+            fetchDocumentInfo(file, viewMode: !canEdit, handler: { canEdit, error in
                 if cancel {
                     handler?(.end, 1, nil, &cancel)
                     return
@@ -274,15 +275,17 @@ class ASCEditorManager: NSObject {
                     self.closeHandler = closeHandler
                     self.openHandler = handler
 
-                    if viewMode {
+                    if openViewMode {
                         var cancel = false
-                        self.downloadAndOpenFile(for: provider, file, viewMode, &cancel)
+                        self.downloadAndOpenFile(for: provider, file, openViewMode: openViewMode, canEdit: canEdit, &cancel)
                     } else {
-                        self.timer = Timer.scheduledTimer(timeInterval: 4,
-                                                          target: self,
-                                                          selector: #selector(ASCEditorManager.updateLocallyEditFile),
-                                                          userInfo: file,
-                                                          repeats: true)
+                        self.timer = Timer.scheduledTimer(
+                            timeInterval: 4,
+                            target: self,
+                            selector: #selector(ASCEditorManager.updateLocallyEditFile),
+                            userInfo: file,
+                            repeats: true
+                        )
                         self.timer?.fire()
                     }
                 }
@@ -291,7 +294,7 @@ class ASCEditorManager: NSObject {
             self.closeHandler = closeHandler
             openHandler = handler
 
-            downloadAndOpenFile(for: provider, file, viewMode, &cancel)
+            downloadAndOpenFile(for: provider, file, openViewMode: openViewMode, canEdit: canEdit, &cancel)
         }
     }
 
@@ -332,7 +335,8 @@ class ASCEditorManager: NSObject {
     func downloadAndOpenFile(
         for provider: ASCFileProviderProtocol,
         _ file: ASCFile,
-        _ viewMode: Bool,
+        openViewMode: Bool,
+        canEdit: Bool,
         _ cancel: inout Bool
     ) {
         ASCEntityManager.shared.downloadTemp(for: provider, entity: file) { [unowned self] status, progress, result, error, cancel in
@@ -349,7 +353,7 @@ class ASCEditorManager: NSObject {
 
                     if let newFile = result as? ASCFile {
                         self.provider = provider
-                        self.editOnlineFileLocally(newFile, viewMode: viewMode)
+                        self.editOnlineFileLocally(newFile, openViewMode: openViewMode, canEdit: canEdit)
                     } else {
                         self.stopLocallyEditing()
                         self.openHandler?(.error, 1, nil, &cancel)
@@ -397,7 +401,13 @@ class ASCEditorManager: NSObject {
                     } else {
                         if let provider = ASCFileManager.onlyofficeProvider {
                             self.trackingFileStatus = self.trackingReadyForLocking
-                            self.downloadAndOpenFile(for: provider, file, false, &cancel)
+                            self.downloadAndOpenFile(
+                                for: provider,
+                                file,
+                                openViewMode: false,
+                                canEdit: true,
+                                &cancel
+                            )
                         }
                     }
                 }
@@ -405,7 +415,7 @@ class ASCEditorManager: NSObject {
         }
     }
 
-    func editOnlineFileLocally(_ file: ASCFile, viewMode: Bool = false) {
+    func editOnlineFileLocally(_ file: ASCFile, openViewMode: Bool, canEdit: Bool) {
         var cancel = false
 
         openHandler?(.begin, 0.15, nil, &cancel)
@@ -429,7 +439,13 @@ class ASCEditorManager: NSObject {
                     log.info("Local file open editor. Status: \(status), progress: \(progress), error: \(String(describing: error))")
                 }
 
-                self.openEditorLocal(file: file, viewMode: viewMode, locallyEditing: true, handler: editorOpenHandler)
+                self.openEditorLocal(
+                    file: file,
+                    openViewMode: openViewMode,
+                    canEdit: canEdit,
+                    locallyEditing: true,
+                    handler: editorOpenHandler
+                )
 
                 self.openHandler?(.end, 1, nil, &cancel)
             } else if status == .error {
@@ -440,25 +456,39 @@ class ASCEditorManager: NSObject {
         })
     }
 
-    func openEditorLocalCopy(file: ASCFile, viewMode: Bool = false, autosave: Bool = false, locallyEditing: Bool = false,
-                             handler: ASCEditorManagerOpenHandler? = nil,
-                             closeHandler: ASCEditorManagerCloseHandler? = nil)
+    func openEditorLocalCopy(
+        file: ASCFile,
+        openViewMode: Bool = false,
+        canEdit: Bool = true,
+        autosave: Bool = false,
+        locallyEditing: Bool = false,
+        handler: ASCEditorManagerOpenHandler? = nil,
+        closeHandler: ASCEditorManagerCloseHandler? = nil)
     {
         self.closeHandler = closeHandler
-        openEditorLocal(file: file, viewMode: viewMode, autosave: autosave, locallyEditing: locallyEditing, handler: handler)
+        
+        openEditorLocal(
+            file: file,
+            openViewMode: openViewMode,
+            canEdit: canEdit,
+            autosave: autosave,
+            locallyEditing: locallyEditing,
+            handler: handler
+        )
     }
 
     // MARK: - Public
 
     func editLocal(
         _ file: ASCFile,
-        viewMode: Bool = false,
+        openViewMode: Bool = false,
+        canEdit: Bool = true,
         openHandler: ASCEditorManagerOpenHandler? = nil,
         closeHandler: ASCEditorManagerCloseHandler? = nil
     ) {
         var cancel = false
 
-        openedFileInViewMode = viewMode
+        openedFileInViewMode = openViewMode
 
         openHandler?(.begin, 0.15, nil, &cancel)
 
@@ -482,7 +512,13 @@ class ASCEditorManager: NSObject {
                 }
 
                 self.closeHandler = closeHandler
-                self.openEditorLocal(file: file, viewMode: viewMode, handler: editorOpenHandler)
+                self.openEditorLocal(
+                    file: file,
+                    openViewMode: openViewMode,
+                    canEdit: canEdit,
+                    locallyEditing: true,
+                    handler: editorOpenHandler
+                )
 
                 openHandler?(.end, 1, nil, &cancel)
             } else if status == .error {
@@ -495,7 +531,8 @@ class ASCEditorManager: NSObject {
 
     func editCloud(
         _ file: ASCFile,
-        viewMode: Bool = false,
+        openViewMode: Bool = false,
+        canEdit: Bool,
         handler: ASCEditorManagerOpenHandler? = nil,
         closeHandler: ASCEditorManagerCloseHandler? = nil,
         favoriteHandler: ASCEditorManagerFavoriteHandler? = nil,
@@ -508,7 +545,7 @@ class ASCEditorManager: NSObject {
         self.shareHandler = nil
 
         func fetchAndOpen() {
-            fetchDocumentInfo(file, viewMode: viewMode, handler: { canEdit, error in
+            fetchDocumentInfo(file, viewMode: openViewMode, handler: { canEdit, error in
                 if cancel {
                     handler?(.end, 1, nil, &cancel)
                     return
@@ -527,7 +564,7 @@ class ASCEditorManager: NSObject {
                     self.closeHandler = closeHandler
                     self.favoriteHandler = favoriteHandler
                     self.shareHandler = shareHandler
-                    self.openEditorInCollaboration(file: file, viewMode: !canEdit, handler: handler)
+                    self.openEditorInCollaboration(file: file, openViewMode: openViewMode, handler: handler)
                 }
             })
         }
@@ -831,7 +868,7 @@ class ASCEditorManager: NSObject {
                         strongSelf.openedFilePassword = password
                         strongSelf.editLocal(
                             file,
-                            viewMode: strongSelf.openedFileInViewMode,
+                            openViewMode: strongSelf.openedFileInViewMode,
                             openHandler: openHandler,
                             closeHandler: closeHandler
                         )
@@ -962,7 +999,8 @@ extension ASCEditorManager {
         ///   - handler: File open process handler
         func openEditorLocal(
             file: ASCFile,
-            viewMode: Bool = false,
+            openViewMode: Bool = false,
+            canEdit: Bool = true,
             autosave: Bool = false,
             locallyEditing: Bool = false,
             handler: ASCEditorManagerOpenHandler? = nil
@@ -994,20 +1032,21 @@ extension ASCEditorManager {
             openedCopy = locallyEditing
 
             let password = UserDefaults.standard.object(forKey: ASCConstants.SettingsKeys.passwordOpenedDocument) as? String ?? ""
-            var documentPermissions: String?
-
+            var documentPermissions: [String: Any] = [
+                "onDevice": true,
+                "fileType": fileExt,
+                "fillForms": false,
+                "edit": canEdit,
+            ]
+            
             // FillForms mode
             if isForm, fileExt == "oform" {
-                documentPermissions = [
-                    "fillForms": true,
-                    "onDevice": true,
-                    "fileType": "oform",
-                ].jsonString()
+                documentPermissions["fillForms"] = true
             }
 
-            var documentInfo = [
+            let documentInfo = [
                 "title": file.title,
-                "viewMode": viewMode,
+                "viewMode": openViewMode,
                 "date": file.updated ?? Date(),
                 "docUserId": UIDevice.current.identifierForVendor?.uuidString ?? UUID().uuidString,
                 "docUserName": file.updatedBy?.displayName ?? (UIDevice.current.name.count > 0
@@ -1019,15 +1058,11 @@ extension ASCEditorManager {
                 "appFonts": editorFontsPaths,
                 "dataFontsPath": dataFontsPath,
                 "license": licenseUrl,
+                "documentPermissions": documentPermissions.jsonString() ?? "",
             ] as [String: Any]
 
-            if let documentPermissions = documentPermissions {
-                documentInfo += [
-                    "documentPermissions": documentPermissions,
-                ]
-            }
 
-            if viewMode == false {
+            if openViewMode == false {
                 var documentInfoCopy = documentInfo
                 documentInfoCopy["license"] = (documentInfoCopy["license"] as? URL)?.absoluteString
                 UserDefaults.standard.set(documentInfoCopy, forKey: ASCConstants.SettingsKeys.openedDocument)
@@ -1082,7 +1117,7 @@ extension ASCEditorManager {
                                     ASCAnalytics.Event.Key.onDevice: file.device,
                                     ASCAnalytics.Event.Key.locallyEditing: locallyEditing,
                                     ASCAnalytics.Event.Key.fileExt: fileExt,
-                                    ASCAnalytics.Event.Key.viewMode: viewMode,
+                                    ASCAnalytics.Event.Key.viewMode: openViewMode,
                                 ])
                                 handler?(.end, 1, error, &cancel)
                             }
@@ -1099,7 +1134,7 @@ extension ASCEditorManager {
         ///   - handler: File open process handler
         func openEditorInCollaboration(
             file: ASCFile,
-            viewMode: Bool = false,
+            openViewMode: Bool = false,
             handler: ASCEditorManagerOpenHandler? = nil
         ) {
             let title = file.title
@@ -1144,7 +1179,7 @@ extension ASCEditorManager {
                 "title": file.title,
                 "date": file.created!,
                 "author": file.createdBy?.displayName ?? "",
-                "viewMode": viewMode || !sdkCheck,
+                "viewMode": openViewMode || !sdkCheck,
                 "coauthoring": true,
                 "docUserId": userId,
                 "docUserName": userName,
@@ -1172,7 +1207,7 @@ extension ASCEditorManager {
                 documentInfo["denyDownload"] = file.denyDownload
             }
 
-            if !(viewMode || !sdkCheck) {
+            if !(openViewMode || !sdkCheck) {
                 var documentInfoCopy = documentInfo
                 documentInfoCopy["license"] = (documentInfoCopy["license"] as? URL)?.absoluteString
                 UserDefaults.standard.set(documentInfoCopy, forKey: ASCConstants.SettingsKeys.openedDocument)
@@ -1222,7 +1257,7 @@ extension ASCEditorManager {
                         ASCAnalytics.Event.Key.onDevice: false,
                         ASCAnalytics.Event.Key.locallyEditing: false,
                         ASCAnalytics.Event.Key.fileExt: fileExt,
-                        ASCAnalytics.Event.Key.viewMode: viewMode,
+                        ASCAnalytics.Event.Key.viewMode: openViewMode,
                     ])
                     handler?(.end, 1, nil, &cancel)
                 })
@@ -1766,7 +1801,8 @@ extension ASCEditorManager {
                         strongSelf.delimiter = delimiter + 1
                         strongSelf.editLocal(
                             file,
-                            viewMode: strongSelf.openedFileInViewMode,
+                            openViewMode: strongSelf.openedFileInViewMode,
+                            canEdit: true,
                             openHandler: openHandler,
                             closeHandler: closeHandler
                         )

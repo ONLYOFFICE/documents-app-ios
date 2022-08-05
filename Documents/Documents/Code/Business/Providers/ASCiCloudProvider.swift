@@ -1104,17 +1104,24 @@ class ASCiCloudProvider: ASCFileProviderProtocol & ASCSortableFileProviderProtoc
 
     // MARK: - Open file
 
-    func open(file: ASCFile, viewMode: Bool = false) {
+    func open(file: ASCFile, openViewMode: Bool, canEdit: Bool) {
         let title = file.title
         let fileExt = title.fileExtension().lowercased()
         let allowOpen = ASCConstants.FileExtensions.allowEdit.contains(fileExt)
 
         if allowOpen {
-            let editMode = !viewMode && UIDevice.allowEditor
+            let editMode = !openViewMode && UIDevice.allowEditor
             let openHandler = delegate?.openProgress(file: file, title: NSLocalizedString("Processing", comment: "Caption of the processing") + "...", 0)
             let closeHandler = delegate?.closeProgress(file: file, title: NSLocalizedString("Saving", comment: "Caption of the processing"))
 
-            ASCEditorManager.shared.editFileLocally(for: self, file, viewMode: !editMode, handler: openHandler, closeHandler: closeHandler)
+            ASCEditorManager.shared.editFileLocally(
+                for: self,
+                file,
+                openViewMode: !editMode,
+                canEdit: canEdit && UIDevice.allowEditor,
+                handler: openHandler,
+                closeHandler: closeHandler
+            )
         }
     }
 

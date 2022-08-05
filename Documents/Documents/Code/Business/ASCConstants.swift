@@ -72,18 +72,20 @@ class ASCConstants {
         static let debugAllowiCloud = "asc-debug-allowicloud"
         static let debugAllowCategoriesSkeleton = "asc-debug-allowcategoriesskeleton"
         static let debugDropboxSDKLogin = "asc-debug-dropboxsdklogin"
+        static let debugOpenEditorViewModeDefault = "asc-debug-openeditorviewmodedefault"
 
         static func setupDefaults() {
             UserDefaults.standard.register(defaults: [ASCConstants.SettingsKeys.compressImage: true])
             UserDefaults.standard.register(defaults: [ASCConstants.SettingsKeys.allowTouchId: true])
             UserDefaults.standard.register(defaults: [ASCConstants.SettingsKeys.previewFiles: true])
             UserDefaults.standard.register(defaults: [ASCConstants.SettingsKeys.pushAllNotification: true])
-
+            
             // Debug
             UserDefaults.standard.register(defaults: [ASCConstants.SettingsKeys.debugHideSearchbarIfEmpty: false])
             UserDefaults.standard.register(defaults: [ASCConstants.SettingsKeys.debugAllowiCloud: true])
             UserDefaults.standard.register(defaults: [ASCConstants.SettingsKeys.debugAllowCategoriesSkeleton: false])
             UserDefaults.standard.register(defaults: [ASCConstants.SettingsKeys.debugDropboxSDKLogin: true])
+            UserDefaults.standard.register(defaults: [ASCConstants.SettingsKeys.debugOpenEditorViewModeDefault: true])
         }
     }
 
@@ -232,22 +234,32 @@ class ASCConstants {
     enum Feature {
         // Hide the searchbar in the navigationbar if the list of documents is empty
         static var hideSearchbarIfEmpty: Bool {
-            UserDefaults.standard.bool(forKey: ASCConstants.SettingsKeys.debugHideSearchbarIfEmpty)
+            get { UserDefaults.standard.bool(forKey: ASCConstants.SettingsKeys.debugHideSearchbarIfEmpty) }
+            set { UserDefaults.standard.set(newValue, forKey: ASCConstants.SettingsKeys.debugHideSearchbarIfEmpty) }
         }
 
         // Allow iCloud provider
         static var allowiCloud: Bool {
-            UserDefaults.standard.bool(forKey: ASCConstants.SettingsKeys.debugAllowiCloud)
+            get { UserDefaults.standard.bool(forKey: ASCConstants.SettingsKeys.debugAllowiCloud) }
+            set { UserDefaults.standard.set(newValue, forKey: ASCConstants.SettingsKeys.debugAllowiCloud) }
         }
 
         // Allow skeleton animation for ONLYOFFICE categories on load
         static var allowCategoriesSkeleton: Bool {
-            UserDefaults.standard.bool(forKey: ASCConstants.SettingsKeys.debugAllowCategoriesSkeleton)
+            get { UserDefaults.standard.bool(forKey: ASCConstants.SettingsKeys.debugAllowCategoriesSkeleton) }
+            set { UserDefaults.standard.set(newValue, forKey: ASCConstants.SettingsKeys.debugAllowCategoriesSkeleton) }
         }
 
         // Connect Dropbox Cloud via SDK
         static var dropboxSDKLogin: Bool {
-            UserDefaults.standard.bool(forKey: ASCConstants.SettingsKeys.debugDropboxSDKLogin)
+            get { UserDefaults.standard.bool(forKey: ASCConstants.SettingsKeys.debugDropboxSDKLogin) }
+            set { UserDefaults.standard.set(newValue, forKey: ASCConstants.SettingsKeys.debugDropboxSDKLogin) }
+        }
+        
+        // Open editors in view mode
+        static var openViewModeByDefault: Bool {
+            get { UserDefaults.standard.bool(forKey: ASCConstants.SettingsKeys.debugOpenEditorViewModeDefault) }
+            set { UserDefaults.standard.set(newValue, forKey: ASCConstants.SettingsKeys.debugOpenEditorViewModeDefault) }
         }
     }
 

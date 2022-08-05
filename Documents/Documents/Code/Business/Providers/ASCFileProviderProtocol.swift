@@ -108,7 +108,7 @@ protocol ASCFileProviderProtocol {
     func actions(for entity: ASCEntity?) -> ASCEntityActions
 
     // Open files
-    func open(file: ASCFile, viewMode: Bool)
+    func open(file: ASCFile, openViewMode: Bool, canEdit: Bool)
     func preview(file: ASCFile, files: [ASCFile]?, in view: UIView?)
 }
 
@@ -145,8 +145,7 @@ extension ASCFileProviderProtocol {
     func allowEdit(entity: AnyObject?) -> Bool { return false }
     func allowDelete(entity: AnyObject?) -> Bool { return false }
     func actions(for entity: ASCEntity?) -> ASCEntityActions { return [] }
-    func open(file: ASCFile, viewMode: Bool = false) {}
-    func preview(file: ASCFile, files: [ASCFile]? = nil, in view: UIView? = nil) {}
+
 }
 
 // MARK: - ASCSortableFileProvider protocol

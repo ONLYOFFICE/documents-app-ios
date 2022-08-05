@@ -415,7 +415,7 @@ class ASCDocumentsViewController: ASCBaseTableViewController, UIGestureRecognize
                 let isPresentation = fileExt == "pptx"
 
                 if isDocument || isSpreadsheet || isPresentation {
-                    provider.open(file: file, viewMode: false)
+                    provider.open(file: file, openViewMode: false, canEdit: true)
                 }
             }
         } else if let folder = entity as? ASCFolder {
@@ -2477,7 +2477,18 @@ class ASCDocumentsViewController: ASCBaseTableViewController, UIGestureRecognize
             controller.folder = folder
             controller.title = folder.title
         } else if let file = tableData[indexPath.row] as? ASCFile, let provider = provider {
-            open(file: file, viewMode: !provider.allowEdit(entity: file))
+            if ASCConstants.Feature.openViewModeByDefault {
+                let title = file.title,
+                    fileExt = title.fileExtension().lowercased()
+                
+                if ASCConstants.FileExtensions.documents.contains(fileExt) {
+                    open(file: file, viewMode: true)
+                } else {
+                    open(file: file, viewMode: !provider.allowEdit(entity: file))
+                }
+            } else {
+                open(file: file, viewMode: !provider.allowEdit(entity: file))
+            }
         }
     }
 
@@ -2580,7 +2591,7 @@ class ASCDocumentsViewController: ASCBaseTableViewController, UIGestureRecognize
 
         if allowOpen {
             provider?.delegate = self
-            provider?.open(file: file, viewMode: viewMode)
+            provider?.open(file: file, openViewMode: viewMode, canEdit: provider?.allowEdit(entity: file) ?? false)
 
             searchController.isActive = false
         } else if let index = tableData.firstIndex(where: { $0.id == file.id }) {
@@ -2654,14 +2665,15 @@ class ASCDocumentsViewController: ASCBaseTableViewController, UIGestureRecognize
 
                                     ASCEditorManager.shared.openEditorLocalCopy(
                                         file: file,
-                                        viewMode: false,
+                                        openViewMode: false,
+                                        canEdit: true,
                                         autosave: true,
                                         locallyEditing: locallyEditing,
                                         handler: nil,
                                         closeHandler: closeHandler
                                     )
                                 } else {
-                                    self?.provider?.open(file: file, viewMode: false)
+                                    self?.provider?.open(file: file, openViewMode: false, canEdit: true)
                                 }
                             })
                         }

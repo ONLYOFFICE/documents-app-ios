@@ -1,45 +1,45 @@
+/* Class = "UILabel"; text = "Label"; ObjectID = "amC-Ph-cGL"; */
+"amC-Ph-cGL.text" = "Պիտակ";
 
 /* Class = "UIButton"; normalTitle = "Continue"; ObjectID = "BMv-HP-hD2"; */
-"BMv-HP-hD2.normalTitle" = "Continue";
+"BMv-HP-hD2.normalTitle" = "Շարունակել";
+
+/* Class = "UILabel"; text = "By creating the portal you agree with our\nTerms of service"; ObjectID = "cHX-qo-kcu"; */
+"cHX-qo-kcu.text" = "Ստեղծելով պորտալը՝ դուք համաձայն եք մեր հետ\nԾառայությունների մատուցման պայմաններ";
+
+/* Class = "UIButton"; normalTitle = "Create portal"; ObjectID = "d4S-7C-Csx"; */
+"d4S-7C-Csx.normalTitle" = "Ստեղծել պորտալ";
 
 /* Class = "UILabel"; text = "Make use of 30 days trial for free"; ObjectID = "FZg-vj-AVJ"; */
-"FZg-vj-AVJ.text" = "Make use of 30 days trial for free";
+"FZg-vj-AVJ.text" = "Օգտագործեք 30-օրյա փորձաշրջանն անվճար";
+
+/* Class = "UILabel"; text = "Create your own\nweb office"; ObjectID = "huj-vr-CgZ"; */
+"huj-vr-CgZ.text" = "Ստեղծեք ձեր սեփականը\nվեբ գրասենյակ";
+
+/* Class = "UITextField"; placeholder = "Last Name"; ObjectID = "iLP-xJ-pU3"; */
+"iLP-xJ-pU3.placeholder" = "Ազգանուն";
+
+/* Class = "UITextField"; placeholder = "Your phone number"; ObjectID = "kgQ-EP-Qap"; */
+"kgQ-EP-Qap.placeholder" = "Ձեր ազգանունը";
+
+/* Class = "UILabel"; text = "Choose a password and\nstart using your office"; ObjectID = "qKc-e7-uTl"; */
+"qKc-e7-uTl.text" = "Ընտրեք գաղտնաբառ և\nսկսեք օգտագործել ձեր գրասենյակը";
+
+/* Class = "UILabel"; text = "After the registration a mail with your portal registration details will be sent to your email address."; ObjectID = "qwT-Pr-auo"; */
+"qwT-Pr-auo.text" = "Գրանցվելուց հետո ձեր պորտալի գրանցման մանրամասներով նամակ կուղարկվի ձեր էլ. փոստին";
 
 /* Class = "UIButton"; normalTitle = "🇱🇻"; ObjectID = "SZG-z0-C6T"; */
 "SZG-z0-C6T.normalTitle" = "🇱🇻";
 
+/* Class = "UITextField"; placeholder = "Password"; ObjectID = "to9-RR-YBV"; */
+"to9-RR-YBV.placeholder" = "Գաղտնաբառ";
+
 /* Class = "UITextField"; placeholder = "First Name"; ObjectID = "TP3-h7-Hq1"; */
-"TP3-h7-Hq1.placeholder" = "First Name";
+"TP3-h7-Hq1.placeholder" = "Անուն";
 
 /* Class = "UITextField"; placeholder = "Email Address"; ObjectID = "WWd-Za-CPd"; */
-"WWd-Za-CPd.placeholder" = "Email Address";
+"WWd-Za-CPd.placeholder" = "Էլ․ փոստ";
 
 /* Class = "UITextField"; placeholder = "Repeat Password"; ObjectID = "Zgx-q8-jRP"; */
-"Zgx-q8-jRP.placeholder" = "Repeat Password";
+"Zgx-q8-jRP.placeholder" = "Կրկնեք գաղտնաբառը";
 
-/* Class = "UILabel"; text = "Label"; ObjectID = "amC-Ph-cGL"; */
-"amC-Ph-cGL.text" = "Label";
-
-/* Class = "UILabel"; text = "By creating the portal you agree with our\nTerms of service"; ObjectID = "cHX-qo-kcu"; */
-"cHX-qo-kcu.text" = "By creating the portal you agree with our\nTerms of service";
-
-/* Class = "UIButton"; normalTitle = "Create portal"; ObjectID = "d4S-7C-Csx"; */
-"d4S-7C-Csx.normalTitle" = "Create portal";
-
-/* Class = "UILabel"; text = "Create your own\nweb office"; ObjectID = "huj-vr-CgZ"; */
-"huj-vr-CgZ.text" = "Create your own\nweb office";
-
-/* Class = "UITextField"; placeholder = "Last Name"; ObjectID = "iLP-xJ-pU3"; */
-"iLP-xJ-pU3.placeholder" = "Last Name";
-
-/* Class = "UITextField"; placeholder = "Your phone number"; ObjectID = "kgQ-EP-Qap"; */
-"kgQ-EP-Qap.placeholder" = "Your phone number";
-
-/* Class = "UILabel"; text = "Choose a password and\nstart using your office"; ObjectID = "qKc-e7-uTl"; */
-"qKc-e7-uTl.text" = "Choose a password and\nstart using your office";
-
-/* Class = "UILabel"; text = "After the registration a mail with your portal registration details will be sent to your email address."; ObjectID = "qwT-Pr-auo"; */
-"qwT-Pr-auo.text" = "After the registration a mail with your portal registration details will be sent to your email address.";
-
-/* Class = "UITextField"; placeholder = "Password"; ObjectID = "to9-RR-YBV"; */
-"to9-RR-YBV.placeholder" = "Password";

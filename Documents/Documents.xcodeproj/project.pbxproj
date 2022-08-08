@@ -1351,6 +1351,9 @@
 		FCE35DDA1E9E7BC500BC2B68 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Sort.strings; sourceTree = "<group>"; };
 		FCE35DDC1E9E7BCA00BC2B68 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Transfer.storyboard; sourceTree = "<group>"; };
 		FCE35DDF1E9E7BCB00BC2B68 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Transfer.strings; sourceTree = "<group>"; };
+		FCE4225428A104490073E2BB /* hy-AM */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "hy-AM"; path = "hy-AM.lproj/Documents-InfoPlist.strings"; sourceTree = "<group>"; };
+		FCE4225528A104490073E2BB /* hy-AM */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "hy-AM"; path = "hy-AM.lproj/Documents.alpha-InfoPlist.strings"; sourceTree = "<group>"; };
+		FCE4225628A104490073E2BB /* hy-AM */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "hy-AM"; path = "hy-AM.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		FCE6246126F8749F00EFAE7C /* it */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = it; path = it.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
 		FCE6246226F8749F00EFAE7C /* it */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = it; path = it.lproj/Main.strings; sourceTree = "<group>"; };
 		FCE6246326F8749F00EFAE7C /* it */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = it; path = it.lproj/Login.strings; sourceTree = "<group>"; };
@@ -4761,6 +4764,7 @@
 				FC029A3D27BD053300E5341B /* pt-BR */,
 				FC029A3E27BD053500E5341B /* ja */,
 				FC7DC87F285B3AB800E61C69 /* zh-Hant */,
+				FCE4225528A104490073E2BB /* hy-AM */,
 			);
 			name = "Documents.alpha-InfoPlist.strings";
 			sourceTree = "<group>";
@@ -4859,6 +4863,7 @@
 				FC6E84D52775CDE700028965 /* ja */,
 				FC029A3B27BCF2FC00E5341B /* zh-Hans */,
 				FC09999328195EF20063BB08 /* zh-Hant */,
+				FCE4225628A104490073E2BB /* hy-AM */,
 			);
 			name = Localizable.strings;
 			sourceTree = "<group>";
@@ -4937,6 +4942,7 @@
 				FC029A3927BCF2FC00E5341B /* zh-Hans */,
 				FC029A3C27BCF8E800E5341B /* ja */,
 				FC7DC87E285B3AB800E61C69 /* zh-Hant */,
+				FCE4225428A104490073E2BB /* hy-AM */,
 			);
 			name = "Documents-InfoPlist.strings";
 			sourceTree = "<group>";

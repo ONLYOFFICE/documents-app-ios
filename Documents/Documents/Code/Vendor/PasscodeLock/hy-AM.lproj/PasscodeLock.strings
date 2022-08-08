@@ -1,34 +1,39 @@
-/* 
-  PasscodeLock.strings
-  PasscodeLock
-
-  Created by Yanko Dimitrov on 8/28/15.
-  Copyright (c) 2015 Yanko Dimitrov. All rights reserved.
-*/
-
-/* Enter Passcode State */
-"PasscodeLockEnterTitle" = "Enter Passcode";
-"PasscodeLockEnterDescription" = "Enter your passcode to proceed.";
-
-/* Set Passcode State */
-"PasscodeLockSetTitle" = "Enter a Passcode";
-"PasscodeLockSetDescription" = "Choose your passcode.";
-
-/* Confirm Passcode State */
-"PasscodeLockConfirmTitle" = "Confirm Passcode";
-"PasscodeLockConfirmDescription" = "Enter the passcode again.";
+/* (No Comment) */
+"PasscodeLockChangeDescription" = "Գրեք ձեր հին գաղտնաբառը";
 
 /* Change Passcode State */
-"PasscodeLockChangeTitle" = "Enter Old Passcode";
-"PasscodeLockChangeDescription" = "Enter your old passcode.";
+"PasscodeLockChangeTitle" = "Գրեք հին գաղտնաբառը";
+
+/* (No Comment) */
+"PasscodeLockConfirmDescription" = "Կրկին գրեք գաղտնաբառը";
+
+/* Confirm Passcode State */
+"PasscodeLockConfirmTitle" = "Հաստատել գաղտնաբառը";
+
+/* (No Comment) */
+"PasscodeLockEnterDescription" = "Շարունակելու համար մուտքագրեք ձեր ծածկագիրը:";
+
+/* Enter Passcode State */
+"PasscodeLockEnterTitle" = "Մուտքագրեք գաղտնաբառ";
+
+/* (No Comment) */
+"PasscodeLockFaceIDButton" = "Մուտքագրեք գաղտնաբառ";
+
+/* (No Comment) */
+"PasscodeLockMismatchDescription" = "Անցակոդերը չեն համընկնում:";
 
 /* Passcode Mismatch State */
-"PasscodeLockMismatchTitle" = "Try again";
-"PasscodeLockMismatchDescription" = "Passcodes didn\'t match.";
+"PasscodeLockMismatchTitle" = "Կրկին փորձել";
 
-/* Touch ID Reason */
-"PasscodeLockTouchIDReason" = "Authentication required to proceed";
+/* (No Comment) */
+"PasscodeLockSetDescription" = "Ընտրեք ձեր ծածկագիրը:";
+
+/* Set Passcode State */
+"PasscodeLockSetTitle" = "Մուտքագրեք գաղտնաբառ";
 
 /* Touch ID Fallback Button */
-"PasscodeLockTouchIDButton" = "Enter Passcode";
-"PasscodeLockFaceIDButton" = "Enter Passcode";
+"PasscodeLockTouchIDButton" = "Մուտքագրեք գաղտնաբառ";
+
+/* Touch ID Reason */
+"PasscodeLockTouchIDReason" = "Շարունակելու համար անհրաժեշտ է նույնականացում";
+

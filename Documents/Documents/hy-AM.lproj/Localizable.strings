@@ -1,0 +1,1394 @@
+/* Count of seclected rows: count + selected */
+"%d selected" = "%d ընտրված";
+
+/* Presentation Viewer */
+"%i of %i" = "%1$i -ի %2$i";
+
+/* No comment provided by engineer. */
+"%lu File selected" = "%lu ֆայլն ընտրված է";
+
+/* No comment provided by engineer. */
+"%lu Folder and %lu File selected" = "%1$lu Թղթապանակը և %2$lu Ֆայլն ընտրված են";
+
+/* No comment provided by engineer. */
+"%lu Folder selected" = "Ընտրված է %lu թղթապանակ";
+
+/* No comment provided by engineer. */
+"%lu items with the same name already exist in the folder '%@'. Overwrite the items?" = "Նույն անունով %1$lu տարր արդեն գոյություն ունի «%2$@» պանակում: Վերագրե՞լ տարրերը:";
+
+/* No comment provided by engineer. */
+"© Ascensio System SIA %d" = "© Ascensio System SIA %d";
+
+/* No comment provided by engineer. */
+"A file with a similar name already exists in the document directory on the device." = "Նման անունով ֆայլ արդեն գոյություն ունի սարքի փաստաթղթերի գրացուցակում:";
+
+/* No comment provided by engineer. */
+"A user or group will be able only to view the document and add comments, as well as manage them." = "Օգտատերը կամ խումբը կկարողանա միայն դիտել փաստաթուղթը և ավելացնել մեկնաբանություններ, ինչպես նաև կառավարել դրանք:";
+
+/* No comment provided by engineer. */
+"A user or group will be able only to view the document and fill in the forms inserted into the document." = "Օգտագործողը կամ խումբը կկարողանա միայն դիտել փաստաթուղթը և լրացնել փաստաթղթում տեղադրված ձևերը:";
+
+/* No comment provided by engineer. */
+"A user or group will be able only to view the document." = "Օգտատերը կամ խումբը կկարողանա միայն դիտել փաստաթուղթը:";
+
+/* No comment provided by engineer. */
+"A user or group will be able to view and change the document without actually editing it, but all the changes made by a reviewer will be recorded and shown to the file owner (or a person who has full access to the file) so that he/she will be able to accept or reject them." = "Օգտատերը կամ խումբը կկարողանա դիտել և փոխել փաստաթուղթը՝ առանց այն իրականում խմբագրելու, սակայն գրախոսի կողմից կատարված բոլոր փոփոխությունները կգրանցվեն և կցուցադրվեն ֆայլի սեփականատիրոջը (կամ ֆայլին լիարժեք հասանելիություն ունեցող անձին), որպեսզի նա /նա կկարողանա ընդունել կամ մերժել դրանք:";
+
+/* No comment provided by engineer. */
+"A user or group will be able to view and edit the document as well as to share this document." = "Օգտատերը կամ խումբը կկարողանա դիտել և խմբագրել փաստաթուղթը, ինչպես նաև կիսել այս փաստաթուղթը:";
+
+/* Format info */
+"A0 (84,1%@ x 119,9%@)" = "A0 (84,1%1$@ x 119,9%2$@)";
+
+/* Format info */
+"A1 (59,4%@ x 84,1%@)" = "A1 (59,4%1$@ x 84,1%2$@)";
+
+/* Format info */
+"A2 (42%@ x 59,4%@)" = "A2 (42%1$@ x 59,4%2$@)";
+
+/* Format info */
+"A6 (10,5%@ x 14,8%@)" = "A6 (10,5%1$@ x 14,8%2$@)";
+
+/* No comment provided by engineer. */
+"About" = "Մասին";
+
+/* No comment provided by engineer. */
+"Access by external link" = "Մուտք գործել արտաքին հղումով";
+
+/* No comment provided by engineer. */
+"Access rights" = "Մուտքի իրավունքներ";
+
+/* No comment provided by engineer. */
+"Access settings" = "Մուտքի կարգավորումներ";
+
+/* No comment provided by engineer. */
+"Account name is empty" = "Հաշվի անունը դատարկ է";
+
+/* No comment provided by engineer. */
+"Account name is not valid" = "Հաշվի անունը վավեր չէ";
+
+/* Sharing settings add notification message */
+"Add message" = "Ավելացնել հաղորդագրություն";
+
+/* No comment provided by engineer. */
+"Add users or groups and allow them to \n read, review or edit documents." = "Ավելացրեք օգտվողներ կամ խմբեր և թույլ տվեք նրանց\n կարդալ, վերանայել կամ խմբագրել փաստաթղթերը:";
+
+/* No comment provided by engineer. */
+"Address is empty" = "Հասցեն դատարկ է";
+
+/* No comment provided by engineer. */
+"All" = "Բոլորը";
+
+/* No comment provided by engineer. */
+"All files" = "Բոլոր Ֆայլերը";
+
+/* Category title */
+"All Files" = "Բոլոր Ֆայլերը";
+
+/* No comment provided by engineer. */
+"All notifications" = "Բոլոր ծանուցումները";
+
+/* No comment provided by engineer. */
+"Allow access via external link" = "Թույլատրել մուտքը արտաքին հղման միջոցով";
+
+/* No comment provided by engineer. */
+"An unexpected error has occurred. Please try again later. Sorry for inconvenience." = "Անսպասելի սխալ է տեղի ունեցել: Խնդրում ենք փորձել ավելի ուշ. Կներեք անհարմարության համար։";
+
+/* No comment provided by engineer. */
+"AppleId authentication failed" = "Apple Id-ի նույնականացումը ձախողվեց";
+
+/* Caption of the process */
+"Applying" = "Դիմում";
+
+/* No comment provided by engineer. */
+"Archives" = "Արխիվներ";
+
+/* No comment provided by engineer. */
+"Are you sure you want to delete the account %@ from this device?" = "Իսկապե՞ս ուզում եք ջնջել %@ հաշիվն այս սարքից:";
+
+/* No comment provided by engineer. */
+"Are you sure you want to leave this account?" = "Իսկապե՞ս ուզում եք լքել այս հաշիվը:";
+
+/* No comment provided by engineer. */
+"Author" = "Հեղինակ";
+
+/* No comment provided by engineer. */
+"Box directory" = "Տուփի գրացուցակ";
+
+/* No comment provided by engineer. */
+"By creating the portal you agree with our Privacy Policy and Terms of Service" = "Ստեղծելով պորտալը՝ դուք համաձայնում եք մեր Գաղտնիության քաղաքականությանը և Ծառայության պայմաններին";
+
+/* Data units */
+"bytes" = "բայթ";
+
+/* No comment provided by engineer. */
+"Cache" = "Cache";
+
+/* No comment provided by engineer. */
+"Camera Unavailable" = "Տեսախցիկը անհասանելի է";
+
+/* No comment provided by engineer. */
+"Can not create file in the folder." = "Հնարավոր չէ ստեղծել ֆայլ թղթապանակում:";
+
+/* No comment provided by engineer. */
+"Can not create file with this name." = "Հնարավոր չէ ստեղծել այս անունով ֆայլ:";
+
+/* No comment provided by engineer. */
+"Can not create folder with this name." = "Հնարավոր չէ ստեղծել այս անունով թղթապանակ:";
+
+/* No comment provided by engineer. */
+"Can not duplicate the file." = "Հնարավոր չէ կրկնօրինակել ֆայլը:";
+
+/* No comment provided by engineer. */
+"Cancel" = "Չեղարկել";
+
+/* No comment provided by engineer. */
+"Check your internet connection" = "Ստուգեք ձեր ինտերնետային կապը";
+
+/* No comment provided by engineer. */
+"Choose Code Page" = "Ընտրեք կոդի էջը";
+
+/* No comment provided by engineer. */
+"Choose CSV Options" = "Ընտրեք CSV Ընտրանքներ";
+
+/* Caption of the processing */
+"Cleanup" = "Մաքրում";
+
+/* Button title */
+"Clear Cache" = "Մաքրել քեշը";
+
+/* Button title */
+"Clear Cache?" = "Մաքրե՞լ քեշը";
+
+/* Caption of the processing */
+"Clearing" = "Մաքրում";
+
+/* Close view */
+"Close" = "փակել";
+
+/* No comment provided by engineer. */
+"Close the document before opening a new one." = "Փակեք փաստաթուղթը նորը բացելուց առաջ:";
+
+/* Default external storage name */
+"Cloud directory" = "Ամպային գրացուցակ";
+
+/* Cut from centimeters */
+"cm" = "սմ";
+
+/* Introduction Step Five - Title */
+"Collaborate with your team" = "Համագործակցեք ձեր թիմի հետ";
+
+/* Share status */
+"Comment" = "Մեկնաբանություն";
+
+/* Category title */
+"Common Documents" = "Ընդհանուր փաստաթղթեր";
+
+/* Cancel */
+"common.cancel" = "Չեղարկել";
+
+/* Error */
+"common.error" = "Սխալ";
+
+/* Myself */
+"common.me" = "Ես";
+
+/* OK */
+"common.ok" = "OK";
+
+/* Payment required message */
+"common.paymentRequiredMsg" = "Վճարովի ժամկետն ավարտվել է";
+
+/* Payment required title */
+"common.paymentRequiredTitle" = "Պահանջվում է վճարում";
+
+/* No comment provided by engineer. */
+"Compress Images" = "Սեղմել պատկերները";
+
+/* Button title */
+"Connect" = "Միացնել";
+
+/* No comment provided by engineer. */
+"Connect Clouds" = "Միացրեք ամպերը";
+
+/* Introduction Step Three - Description */
+"Connect third-party storage\nlike Nextcloud, ownCloud, Yandex Disk and\nothers which use WebDAV protocol." = "Միացրեք երրորդ կողմի պահեստը\nինչպես Nextcloud-ը, ownCloud-ը, Yandex Disk-ը և\nմյուսները, որոնք օգտագործում են WebDAV արձանագրությունը:";
+
+/* Footer text */
+"Connect to your %@ cloud to store files online and collaborate on documents in real time" = "Միացեք ձեր %@ ամպին՝ առցանց ֆայլերը պահելու և փաստաթղթերի վրա իրական ժամանակում համագործակցելու համար";
+
+/* Caption of the process */
+"Connecting" = "Միացում";
+
+/* No comment provided by engineer. */
+"Console" = "Վահանակ";
+
+/* No comment provided by engineer. */
+"Continue anyway" = "Ինչևէ, շարունակիր";
+
+/* No comment provided by engineer. */
+"Converter" = "Փոխարկիչ";
+
+/* Button title */
+"Copy" = "Պատճենել";
+
+/* Button title */
+"Copy here" = "Պատճենել այստեղ";
+
+/* Caption of the processing */
+"Copying" = "Պատճենում";
+
+/* Description of file operation error */
+"Could not change file attributes" = "Չհաջողվեց փոխել ֆայլի հատկանիշները";
+
+/* Description of file operation error */
+"Could not change the directory" = "Չհաջողվեց փոխել գրացուցակը";
+
+/* No comment provided by engineer. */
+"Could not convert file to export." = "Չհաջողվեց ֆայլը փոխարկել արտահանման:";
+
+/* Description of file operation error */
+"Could not copy file" = "Չհաջողվեց պատճենել ֆայլը";
+
+/* No comment provided by engineer. */
+"Could not copy." = "Չհաջողվեց պատճենել:";
+
+/* Description of file operation error */
+"Could not create a directory" = "Չհաջողվեց ստեղծել գրացուցակ";
+
+/* Description of file operation error */
+"Could not create a hard link" = "Չհաջողվեց ստեղծել կոշտ հղում";
+
+/* Description of file operation error */
+"Could not create file" = "Չհաջողվեց ստեղծել ֆայլ";
+
+/* Description of file operation error */
+"Could not create symlink from" = "Չհաջողվեց ստեղծել սիմվոլյուց";
+
+/* Description of file operation error */
+"Could not delete file" = "Չհաջողվեց ջնջել ֆայլը";
+
+/* No comment provided by engineer. */
+"Could not delete the file." = "Չհաջողվեց ջնջել ֆայլը:";
+
+/* No comment provided by engineer. */
+"Could not delete the folder." = "Չհաջողվեց ջնջել թղթապանակը:";
+
+/* No comment provided by engineer. */
+"Could not delete." = "Չհաջողվեց ջնջել:";
+
+/* No comment provided by engineer. */
+"Could not download file." = "Չհաջողվեց ներբեռնել ֆայլը:";
+
+/* No comment provided by engineer. */
+"Could not download object." = "Չհաջողվեց ներբեռնել օբյեկտը:";
+
+/* No comment provided by engineer. */
+"Could not download the file." = "Չհաջողվեց ներբեռնել ֆայլը:";
+
+/* No comment provided by engineer. */
+"Could not duplicate the file." = "Հնարավոր չէ կրկնօրինակել ֆայլը:";
+
+/* No comment provided by engineer. */
+"Could not export the file." = "Չհաջողվեց արտահանել ֆայլը:";
+
+/* Description of file operation error */
+"Could not move file" = "Չհաջողվեց տեղափոխել ֆայլը";
+
+/* No comment provided by engineer. */
+"Could not open editor." = "Չհաջողվեց բացել խմբագրիչը:";
+
+/* No comment provided by engineer. */
+"Could not open file." = "Չհաջողվեց բացել ֆայլը:";
+
+/* No comment provided by engineer. */
+"Could not read data from file." = "Չհաջողվեց կարդալ տվյալները ֆայլից:";
+
+/* No comment provided by engineer. */
+"Could not read data from the file." = "Չհաջողվեց կարդալ ֆայլից տվյալները:";
+
+/* Description of file operation error */
+"Could not read from file" = "Չհաջողվեց կարդալ ֆայլից";
+
+/* No comment provided by engineer. */
+"Could not save the file." = "Չհաջողվեց պահպանել ֆայլը:";
+
+/* Description of file operation error */
+"Could not write to file" = "Չհաջողվեց գրել ֆայլին";
+
+/* No comment provided by engineer. */
+"Couldn't open file" = "Չհաջողվեց բացել ֆայլը";
+
+/* No comment provided by engineer. */
+"Create" = "Ստեղծել";
+
+/* Introduction Step Two - Description */
+"Create and edit documents with our comprehensive toolbar: work with complex objects in text documents, perform extensive calculations in spreadsheets, create stunning presentations and view PDF files with no formatting loss." = "Ստեղծեք և խմբագրեք փաստաթղթեր մեր համապարփակ գործիքագոտու միջոցով. աշխատեք տեքստային փաստաթղթերի բարդ օբյեկտների հետ, կատարեք լայնածավալ հաշվարկներ աղյուսակներում, ստեղծեք ցնցող ներկայացումներ և դիտեք PDF ֆայլեր առանց ձևաչափման կորստի:";
+
+/* No comment provided by engineer. */
+"Create new documents, spreadsheets or presentations. Create new folders to organize your files." = "Ստեղծեք նոր փաստաթղթեր, աղյուսակներ կամ ներկայացումներ: Ստեղծեք նոր թղթապանակներ՝ ձեր ֆայլերը կազմակերպելու համար:";
+
+/* Caption of the process */
+"Creating" = "Ստեղծելով";
+
+/* Share status */
+"Custom filter" = "Պատվերով զտիչ";
+
+/* No comment provided by engineer. */
+"Date" = "Ամսաթիվ";
+
+/* Button title */
+"Delete" = "Ջնջել";
+
+/* No comment provided by engineer. */
+"Delete %lu File" = "Ջնջել %lu ֆայլը";
+
+/* No comment provided by engineer. */
+"Delete %lu Folder" = "Ջնջել %lu թղթապանակը";
+
+/* No comment provided by engineer. */
+"Delete %lu Folder and %lu File" = "Ջնջել %1$lu թղթապանակը և %2$lu ֆայլը";
+
+/* No comment provided by engineer. */
+"Delete account" = "Հաշիվը ջնջել";
+
+/* Button title */
+"Delete File" = "Ջնջել Ֆայլը";
+
+/* No comment provided by engineer. */
+"Delete Folder" = "Ջնջել թղթապանակը";
+
+/* Caption of the processing */
+"Deleting" = "Ջնջվում է";
+
+/* No comment provided by engineer. */
+"Delimiter" = "Սահմանազատող";
+
+/* Share status */
+"Deny Access" = "Մերժել մուտքը";
+
+/* No comment provided by engineer. */
+"Deselect all" = "Ապաընտրել բոլորը";
+
+/* No comment provided by engineer. */
+"Developer options" = "Մշակողի ընտրանքներ";
+
+/* No comment provided by engineer. */
+"Disable if you do not want to receive notifications from the %@" = "Անջատեք, եթե չեք ցանկանում ծանուցումներ ստանալ %@-ից";
+
+/* Button title */
+"Disconnect third party" = "Անջատեք երրորդ կողմը";
+
+/* No comment provided by engineer. */
+"Document" = "Փաստաթուղթ";
+
+/* Default title of sample document */
+"Document Sample" = "Փաստաթղթի նմուշ";
+
+/* Category title */
+"Documents" = "Փաստաթղթեր";
+
+/* Button title
+   Operation completed */
+"Done" = "Կատարած";
+
+/* Button title */
+"Download" = "Բեռնել";
+
+/* Caption of the processing */
+"Downloading" = "Ներբեռնում";
+
+/* No comment provided by engineer. */
+"Dropbox" = "Dropbox";
+
+/* No comment provided by engineer. */
+"Dropbox directory" = "Dropbox գրացուցակ";
+
+/* Button title */
+"Duplicate" = "Կրկնօրինակել";
+
+/* Caption of the processing */
+"Duplication" = "Կրկնօրինակում";
+
+/* Data units */
+"Eb" = "Eb";
+
+/* Button title */
+"Edit" = "Խմբագրել";
+
+/* Introduction Step Four - Title */
+"Edit documents locally" = "Խմբագրել փաստաթղթերը տեղում";
+
+/* No comment provided by engineer. */
+"Email" = "Էլ․ փոստ";
+
+/* No comment provided by engineer. */
+"Email is empty" = "Հասցեն դատարկ է";
+
+/* No comment provided by engineer. */
+"Email is incorrect." = "Էլփոստը սխալ է:";
+
+/* No comment provided by engineer. */
+"Email is not valid" = "Էլփոստը վավեր չէ";
+
+/* No comment provided by engineer. */
+"Empty file." = "Դատարկ ֆայլ։";
+
+/* No comment provided by engineer. */
+"Empty name." = "Դատարկ անուն.";
+
+/* No comment provided by engineer. */
+"Enable if you want to receive notifications from the %@" = "Միացնել, եթե ցանկանում եք ծանուցումներ ստանալ %@-ից";
+
+/* No comment provided by engineer. */
+"Encoding" = "Կոդավորում";
+
+/* Presentation Viewer */
+"End Slide Show" = "Ավարտել սլայդ շոուն";
+
+/* No comment provided by engineer. */
+"Enter a password to open the file." = "Մուտքագրեք գաղտնաբառ՝ ֆայլը բացելու համար:";
+
+/* No comment provided by engineer. */
+"Enter Portal Address" = "Մուտքագրեք պորտալի հասցեն";
+
+/* No comment provided by engineer. */
+"Error" = "Սխալ";
+
+/* No comment provided by engineer. */
+"Error code: %ld" = "Սխալի կոդը՝ %ld";
+
+/* Access is Forbidden message */
+"error.errorForbiddenMsg" = "Կապվեք պորտալի ադմինիստրատորի հետ ռեսուրսին մուտք գործելու համար:";
+
+/* Access is Forbidden title */
+"error.errorForbiddenTitle" = "Մուտքն արգելված է";
+
+/* The resource can not be found Title */
+"error.errorNotFoundMsg" = "Ռեսուրսը հնարավոր չէ գտնել";
+
+/* Unknown Server Error */
+"error.errorServerTitle" = "Սերվերի սխալ";
+
+/* No comment provided by engineer. */
+"Exclude subfolders" = "Բացառել ենթաթղթապանակները";
+
+/* Button title */
+"Export" = "Արտահանում";
+
+/* No comment provided by engineer. */
+"Failed online conversion service." = "Չհաջողվեց առցանց փոխակերպման ծառայություն:";
+
+/* No comment provided by engineer. */
+"Failed to check portal availability." = "Չհաջողվեց ստուգել պորտալի առկայությունը:";
+
+/* No comment provided by engineer. */
+"Failed to check the name of the portal" = "Չհաջողվեց ստուգել պորտալի անունը";
+
+/* No comment provided by engineer. */
+"Failed to connect folder." = "Չհաջողվեց միացնել պանակը:";
+
+/* No comment provided by engineer. */
+"Failed to copy: %@" = "Չհաջողվեց պատճենել՝ %@";
+
+/* No comment provided by engineer. */
+"Failed to get file information from the server." = "Չհաջողվեց ստանալ ֆայլի տեղեկատվությունը սերվերից:";
+
+/* No comment provided by engineer. */
+"Failed to get file list." = "Չհաջողվեց ստանալ ֆայլերի ցանկը:";
+
+/* No comment provided by engineer. */
+"Failed to get information about the file." = "Չհաջողվեց տեղեկություններ ստանալ ֆայլի մասին:";
+
+/* No comment provided by engineer. */
+"Failed to get the address of the document server." = "Չհաջողվեց ստանալ փաստաթղթերի սերվերի հասցեն:";
+
+/* No comment provided by engineer. */
+"Failed to move: %@" = "Չհաջողվեց տեղափոխել՝ %@";
+
+/* No comment provided by engineer. */
+"Failed to send feedback by mail. Try to write your request on our forum." = "Չհաջողվեց հետադարձ կապ ուղարկել փոստով: Փորձեք գրել ձեր հարցումը մեր ֆորումում:";
+
+/* No comment provided by engineer. */
+"Failed upload source file to conversion online service." = "Չհաջողվեց վերբեռնել աղբյուրի ֆայլը փոխակերպման առցանց ծառայություն:";
+
+/* No comment provided by engineer. */
+"Failure to download file from portal." = "Չհաջողվեց ներբեռնել ֆայլը պորտալից:";
+
+/* No comment provided by engineer. */
+"Failure to download result from conversion online service." = "Չհաջողվեց ներբեռնել արդյունքը փոխակերպման առցանց ծառայությունից:";
+
+/* No comment provided by engineer. */
+"Features" = "Հատկություններ";
+
+/* Description of file operation error */
+"File already exists" = "Ֆայլն արդեն գոյություն ունի";
+
+/* Description of file operation error */
+"File does not exist" = "Ֆայլը գոյություն չունի";
+
+/* No comment provided by engineer. */
+"Files" = "Ֆայլեր";
+
+/* No comment provided by engineer. */
+"Files Preview" = "Ֆայլերի նախադիտում";
+
+/* No comment provided by engineer. */
+"Fill the shapes using gradients, images, or patterns. Choose the desirable line type." = "Ֆայլերի նախադիտում";
+
+/* No comment provided by engineer. */
+"Filters" = "Զտիչներ";
+
+/* No comment provided by engineer. */
+"First name is incorrect" = "Անունը սխալ է";
+
+/* No comment provided by engineer. */
+"Folder title" = "Թղթապանակի վերնագիր";
+
+/* No comment provided by engineer. */
+"Folders" = "Թղթապանակներ";
+
+/* Share status */
+"Form filling" = "Ձևաթղթի լրացում";
+
+/* Share status */
+"Full Access" = "Ամբողջական մուտք";
+
+/* Data units */
+"Gb" = "Գբ";
+
+/* No comment provided by engineer. */
+"Get started" = "ՍԿՍԵԼ!";
+
+/* No comment provided by engineer. */
+"GET STARTED!" = "ՍԿՍԵԼ!";
+
+/* Introduction Step One - Title */
+"Getting started" = "Սկսել";
+
+/* No comment provided by engineer. */
+"Go to forum" = "Գնացեք ֆորում";
+
+/* No comment provided by engineer. */
+"Google directory" = "Google գրացուցակ";
+
+/* No comment provided by engineer. */
+"Google Drive" = "Google Drive";
+
+/* No comment provided by engineer. */
+"Groups" = "Խմբեր";
+
+/* No comment provided by engineer. */
+"iCloud" = "iCloud";
+
+/* No comment provided by engineer. */
+"iCloud Drive" = "iCloud Drive";
+
+/* Email sent instructions */
+"If a user with the mail %@ exists, then an instruction to change the password was sent to this address." = "Եթե %@ փոստով օգտվող կա, ապա այս հասցեին ուղարկվել է գաղտնաբառը փոխելու հրահանգ:";
+
+/* No comment provided by engineer. */
+"Images" = "Պատկերներ";
+
+/* Introduction Step Five - Description */
+"In online mode, use real-time co-editing features of %@ to work on documents together with your portal members, share documents and create common storage folders." = "Առցանց ռեժիմում օգտագործեք %@-ի իրական ժամանակում համատեղ խմբագրման հնարավորությունները՝ ձեր պորտալի անդամների հետ փաստաթղթերի վրա աշխատելու, փաստաթղթերը կիսելու և ընդհանուր պահեստային թղթապանակներ ստեղծելու համար:";
+
+/* No comment provided by engineer. */
+"Incorrect portal address" = "Պորտալի սխալ հասցե";
+
+/* No comment provided by engineer. */
+"Information" = "Տեղեկություն";
+
+/* No comment provided by engineer. */
+"Instructions had been sent to your email" = "Հրահանգներն ուղարկվել են ձեր էլ";
+
+/* No comment provided by engineer. */
+"Invalid Country Code" = "Անվավեր երկրի կոդ";
+
+/* No comment provided by engineer. */
+"Invalid Data" = "Անվավեր տվյալներ";
+
+/* No comment provided by engineer. */
+"Invalid Url" = "Անվավեր Url";
+
+/* Data units */
+"Kb" = "kb";
+
+/* No comment provided by engineer. */
+"kDrive" = "kDrive";
+
+/* No comment provided by engineer. */
+"kDrive directory" = "kDrive գրացուցակ";
+
+/* No comment provided by engineer. */
+"Last name is empty" = "Ազգանունը դատարկ է";
+
+/* No comment provided by engineer. */
+"Last name is incorrect" = "Ազգանունը սխալ է";
+
+/* No comment provided by engineer. */
+"Link copied\nto the clipboard" = "Հղումը պատճենված է\nդեպի clipboard ";
+
+/* No comment provided by engineer. */
+"Log in to your cloud using Apple ID or Microsoft account." = "Մուտք գործեք ձեր ամպ՝ օգտագործելով Apple ID կամ Microsoft հաշիվ:";
+
+/* Caption of the process */
+"Logging in" = "Մուտք գործեք";
+
+/* No comment provided by engineer. */
+"Login" = "Մուտք գործել";
+
+/* No comment provided by engineer. */
+"Login by %@" = "Մուտք գործեք %@-ով";
+
+/* No comment provided by engineer. */
+"Login is empty" = "Մուտքը դատարկ է";
+
+/* Button title
+   Caption of the process */
+"Logout" = "Դուրս գալ";
+
+/* Button title */
+"Mark as favorite" = "Նշել որպես ֆավորիտ";
+
+/* Data units */
+"Mb" = "Mb";
+
+/* If current user name is not set */
+"Me" = "Ես";
+
+/* No comment provided by engineer. */
+"Media" = "Մեդիա";
+
+/* Button title */
+"More" = "Ավելին";
+
+/* No comment provided by engineer. */
+"More in autoshapes" = "Ավելին ավտոձևերով";
+
+/* Button title */
+"Move" = "Տեղափոխել";
+
+/* Button title */
+"Move here" = "Տեղափոխեք այստեղ";
+
+/* Button title */
+"Move or Copy" = "Տեղափոխել կամ պատճենել";
+
+/* Caption of the processing */
+"Moving" = "Շարժվող";
+
+/* No comment provided by engineer. */
+"My Clouds" = "Իմ ամպերը";
+
+/* Category title */
+"My Documents" = "Իմ փաստաթղթերը";
+
+/* No comment provided by engineer. */
+"My Drive" = "Իմ դրայվը";
+
+/* No comment provided by engineer. */
+"Name is empty" = "Անունը դատարկ է";
+
+/* No comment provided by engineer. */
+"Needs additional params." = "Լրացուցիչ պարամետրերի կարիք կա:";
+
+/* No comment provided by engineer. */
+"New" = "Նոր";
+
+/* No comment provided by engineer. */
+"New authentication methods" = "Նույնականացման նոր մեթոդներ";
+
+/* No comment provided by engineer. */
+"New Document" = "Նոր փաստաթուղթ";
+
+/* No comment provided by engineer. */
+"New Folder" = "Նոր թղթապանակ";
+
+/* No comment provided by engineer. */
+"New Presentation" = "Նոր պրեզենտացիա";
+
+/* No comment provided by engineer. */
+"New Spreadsheet" = "Նոր աղյուսակ";
+
+/* Next step */
+"Next" = "Հաջորդը";
+
+/* No comment provided by engineer. */
+"Nextcloud" = "Nextcloud";
+
+/* No comment provided by engineer. */
+"Nextcloud directory" = "Nextcloud գրացուցակ";
+
+/* No comment provided by engineer. */
+"No client IDs of application" = "Ծրագրի հաճախորդի ID-ներ չկան";
+
+/* No comment provided by engineer. */
+"No connection" = "Կապ չկա";
+
+/* No comment provided by engineer. */
+"No information about the user profile." = "Օգտագործողի պրոֆիլի մասին տեղեկություններ չկան:";
+
+/* No comment provided by engineer. */
+"No Internet connection" = "Ինտերնետ կապ չկա";
+
+/* No comment provided by engineer. */
+"No network" = "Ցանց չկա";
+
+/* No comment provided by engineer. */
+"No network connection can be found. Please check the connection and reload the page." = "Ցանցային կապ չի գտնվել: Խնդրում ենք ստուգել կապը և վերաբեռնել էջը:";
+
+/* No comment provided by engineer. */
+"No results matching your search could be found. Please try another phrase." = "Ձեր որոնմանը համապատասխանող արդյունքներ չեն գտնվել: Խնդրում ենք փորձել մեկ այլ արտահայտություն:";
+
+/* No comment provided by engineer. */
+"No search result" = "Որոնման արդյունք չկա";
+
+/* No comment provided by engineer. */
+"No Search Result" = "Որոնման արդյունք չկա";
+
+/* Invalid entity date
+   Invalid entity owner */
+"none" = "Ոչ ոք.";
+
+/* If the cache is empty
+   Share status */
+"None" = "Ոչ ոք";
+
+/* No comment provided by engineer. */
+"Note: removal from your account can not be undone." = "Նշում. ձեր հաշվից հեռացումը հնարավոր չէ հետարկել:";
+
+/* No comment provided by engineer. */
+"Nothing to show" = "Ցույց տալու ոչինչ չկա";
+
+/* No comment provided by engineer. */
+"Notifications" = "Ծանուցումներ";
+
+/* Sharing settings switcher */
+"Notify by Email" = "Տեղեկացնել էլփոստով";
+
+/* Used in the context: 'Showing 1 of 3 items' */
+"of" = "-ից";
+
+/* No comment provided by engineer. */
+"OK" = "OK";
+
+/* Category title */
+"On iPad" = "iPad-ի վրա";
+
+/* Category title */
+"On iPhone" = "iPhone-ի վրա";
+
+/* No comment provided by engineer. */
+"OneDrive" = "OneDrive";
+
+/* No comment provided by engineer. */
+"OneDrive directory" = "OneDrive գրացուցակ";
+
+/* No comment provided by engineer. */
+"OneDrive for Business" = "OneDrive բիզնեսի համար";
+
+/* Short App Name */
+"ONLYOFFICE" = "ONLYOFFICE";
+
+/* Full App Name */
+"ONLYOFFICE Documents" = "ONLYOFFICE Փաստաթղթեր";
+
+/* Full App Name */
+"ONLYOFFICE portal" = "ONLYOFFICE պորտալ";
+
+/* No comment provided by engineer. */
+"Oops!" = "Oops!";
+
+/* No comment provided by engineer. */
+"Open Document" = "Բացեք փաստաթուղթ";
+
+/* No comment provided by engineer. */
+"Open Folder" = "Բացեք Թղթապանակը";
+
+/* Caption of the processing */
+"Opening" = "Բացում";
+
+/* No comment provided by engineer. */
+"Options" = "Ընտրանքներ";
+
+/* No comment provided by engineer. */
+"Order" = "Պատվեր";
+
+/* No comment provided by engineer. */
+"Other" = "այլ";
+
+/* Button title */
+"Overwrite" = "Վերագրել";
+
+/* Button title */
+"Overwrite confirmation" = "Վերագրանցել հաստատումը";
+
+/* No comment provided by engineer. */
+"ownCloud" = "ownCloud";
+
+/* No comment provided by engineer. */
+"ownCloud directory" = "ownCloud գրացուցակ";
+
+/* Table cell right holder acces text */
+"Owner" = "Օգտատեր";
+
+/* No comment provided by engineer. */
+"Passcode Lock" = "Անցակոդի կողպեք";
+
+/* No comment provided by engineer. */
+"Password" = "Գաղտնաբառ";
+
+/* No comment provided by engineer. */
+"Password is empty" = "Գաղտնաբառը դատարկ է";
+
+/* No comment provided by engineer. */
+"Passwords do not match" = "Գաղտնաբառը չի համընկնում:";
+
+/* Data units */
+"Pb" = "Pb";
+
+/* No comment provided by engineer. */
+"Phone" = "Հեռախոս";
+
+/* No comment provided by engineer. */
+"Phone is incorrect" = "Հեռախոսահամարը սխալ է";
+
+/* Used in the context: '1 photo' */
+"photo" = "Լուսանկար";
+
+/* Used in the context: '3 photos' */
+"photos" = "լուսանկարներ";
+
+/* No comment provided by engineer. */
+"Please go to Settings and enable the camera for this app to use this feature." = "Խնդրում ենք գնալ Կարգավորումներ և միացրեք տեսախցիկը, որպեսզի այս հավելվածն օգտագործի այս գործառույթը:";
+
+/* No comment provided by engineer. */
+"Please re-login to renew your session." = "Խնդրում ենք նորից մուտք գործել՝ ձեր նստաշրջանը թարմացնելու համար:";
+
+/* No comment provided by engineer. */
+"Please retry. \n\n If the problem persists contact us and mention this error code: Box - %@" = "Խնդրում ենք նորից փորձել:\n\n  Եթե խնդիրը չվերանա, դիմեք մեզ և նշեք այս սխալի կոդը՝ Box - %@";
+
+/* No comment provided by engineer. */
+"Please retry. \n\n If the problem persists contact us and mention this error code: Dropbox - %@" = "Խնդրում ենք նորից փորձել:\n\n  Եթե խնդիրը չվերանա, դիմեք մեզ և նշեք այս սխալի կոդը՝ Dropbox - %@";
+
+/* No comment provided by engineer. */
+"Please retry. \n\n If the problem persists contact us and mention this error code: Google - %@" = "Խնդրում ենք նորից փորձել:\n\n  Եթե խնդիրը չվերանա, դիմեք մեզ և նշեք այս սխալի կոդը՝ Google - %@";
+
+/* No comment provided by engineer. */
+"Please retry. \n\n If the problem persists contact us and mention this error code: Microsoft - %@" = "Խնդրում ենք նորից փորձել:\n\n  Եթե խնդիրը չվերանա, դիմեք մեզ և նշեք այս սխալի կոդը՝ Microsoft - %@";
+
+/* No comment provided by engineer. */
+"Please retry. \n\n If the problem persists contact us and mention this error code: OneDrive - %@" = "Խնդրում ենք նորից փորձել:\n\n  Եթե խնդիրը չվերանա, դիմեք մեզ և նշեք այս սխալի կոդը՝ OneDrive - %@";
+
+/* No comment provided by engineer. */
+"Please retry. \n\n If the problem persists contact us and mention this error code: SSO - %@" = "Խնդրում ենք նորից փորձել:\n\n  Եթե խնդիրը չվերանա, դիմեք մեզ և նշեք այս սխալի կոդը՝ SSO - %@";
+
+/* No comment provided by engineer. */
+"Portal Address" = "Պորտալի հասցե";
+
+/* No comment provided by engineer. */
+"Portal is unavailable." = "Պորտալն անհասանելի է:";
+
+/* No comment provided by engineer. */
+"Presentation" = "Պրեզենտացիա";
+
+/* Default title of sample document */
+"Presentation Sample" = "Պրեզենտացիայի նմուշ";
+
+/* No comment provided by engineer. */
+"Presentations" = "Պրեզենտացիաներ";
+
+/* Button title */
+"Preview" = "Նախադիտում";
+
+/* Part of phrases - By creating the portal you agree with our Privacy Policy and Terms of Service */
+"Privacy Policy" = "Գաղտնիության քաղաքականություն";
+
+/* Caption of the processing */
+"Processing" = "Մշակում";
+
+/* Category title */
+"Project Documents" = "Ծրագրի փաստաթղթեր";
+
+/* No comment provided by engineer. */
+"Protected File" = "Պաշտպանված ֆայլ";
+
+/* No comment provided by engineer. */
+"Push notifications disabled" = "Push ծանուցումներն անջատված են";
+
+/* Share status */
+"Read Only" = "Միայն կարդալու համար";
+
+/* Button title */
+"Recover here" = "Վերականգնել այստեղ";
+
+/* Caption of the processing */
+"Recovery" = "Վերականգնում";
+
+/* No comment provided by engineer. */
+"Regional settings" = "Տարածաշրջանային կարգավորումներ";
+
+/* No comment provided by engineer. */
+"Registration" = "Գրանցում";
+
+/* No comment provided by engineer. */
+"Reload" = "Վերբեռնել";
+
+/* Button title */
+"Remove from Favorites" = "Հեռացնել ընտրյալներից";
+
+/* Caption of the process */
+"Removing" = "Հեռացնելով";
+
+/* Button title */
+"Rename" = "Վերանվանել";
+
+/* No comment provided by engineer. */
+"Rename failed." = "Չհաջողվեց վերանվանել:";
+
+/* No comment provided by engineer. */
+"Rename failed. An object with such a similar name exists." = "Չհաջողվեց վերանվանել: Նմանատիպ անվանումով օբյեկտ գոյություն ունի:";
+
+/* Caption of the processing */
+"Renaming" = "Անվանափոխում";
+
+/* No comment provided by engineer. */
+"Renewal" = "Թարմացում";
+
+/* No comment provided by engineer. */
+"Request canceled" = "Հայցը չեղարկվել է";
+
+/* No comment provided by engineer. */
+"Request had insufficient authentication scopes" = "Հարցումն ուներ նույնականացման բավարար շրջանակներ";
+
+/* No comment provided by engineer. */
+"Reset" = "Վերականգնել";
+
+/* Button title */
+"Restore" = "Վերականգնել";
+
+/* Caption of the processing */
+"Restoring" = "Վերականգնում";
+
+/* Share status */
+"Review" = "Վերանայում";
+
+/* Caption of the processing */
+"Saving" = "Խնայողություն";
+
+/* No comment provided by engineer. */
+"Search" = "Որոնել";
+
+/* Button title
+   Navigation bar button title */
+"Select" = "Ընտրել";
+
+/* No comment provided by engineer. */
+"Select all" = "Ընտրել բոլորը";
+
+/* No comment provided by engineer. */
+"Select another cloud to connect to Nextcloud, ownCloud and others are supported." = "Nextcloud-ին միանալու համար ընտրեք մեկ այլ ամպ, ownCloud-ը և մյուսները աջակցվում են:";
+
+/* No comment provided by engineer. */
+"Select group" = "Ընտրեք խումբ";
+
+/* No comment provided by engineer. */
+"Select Photos" = "Ընտրեք Լուսանկարներ";
+
+/* One line. Max 50 charasters */
+"Select the folder to copy the items" = "Ընտրեք թղթապանակը՝ տարրերը պատճենելու համար";
+
+/* One line. Max 50 charasters */
+"Select the folder to move the items" = "Ընտրեք թղթապանակը՝ տարրերը տեղափոխելու համար";
+
+/* One line. Max 50 charasters */
+"Select the folder to recover the items" = "Ընտրեք թղթապանակը՝ տարրերը վերականգնելու համար";
+
+/* No comment provided by engineer. */
+"Select the region in spreadsheet settings to automatically convert currency, date, and time." = "Ընտրեք տարածաշրջանը աղյուսակի կարգավորումներում՝ արժույթը, ամսաթիվը և ժամը ավտոմատ փոխարկելու համար:";
+
+/* No comment provided by engineer. */
+"Select user" = "Ընտրեք օգտվողին";
+
+/* No comment provided by engineer. */
+"Selected provider is not available" = "Ընտրված մատակարարը հասանելի չէ";
+
+/* No comment provided by engineer. */
+"Selected: %ld" = "Ընտրված է՝ %ld";
+
+/* No comment provided by engineer. */
+"Selecting access rights" = "Մուտքի իրավունքի ընտրություն";
+
+/* No comment provided by engineer. */
+"Send" = "Ուղարկել";
+
+/* No comment provided by engineer. */
+"Send the profile deletion instructions to the email address %@?" = "Ուղարկե՞լ պրոֆիլի ջնջման հրահանգները %@ էլ.";
+
+/* Caption of the process */
+"Sending" = "Ուղարկել";
+
+/* No comment provided by engineer. */
+"Set favorite failed." = "Չհաջողվեց սահմանել սիրվածը:";
+
+/* No comment provided by engineer. */
+"Settings" = "Կարգավորումներ";
+
+/* No comment provided by engineer. */
+"Settings and Security" = "Կարգավորումներ և անվտանգություն";
+
+/* No comment provided by engineer. */
+"Shared access" = "Համօգտագործվող մուտք";
+
+/* Category title */
+"Shared with Me" = "Կիսվել է ինձ հետ";
+
+/* No comment provided by engineer. */
+"SharePoint directory" = "SharePoint գրացուցակ";
+
+/* Caption of the process */
+"Sharing" = "Համօգտագործում";
+
+/* No comment provided by engineer. */
+"Sharing settings" = "Համօգտագործման կարգավորումներ";
+
+/* Button title */
+"Sharing Settings" = "Համօգտագործման կարգավորումներ";
+
+/* No comment provided by engineer. */
+"Show %d results" = "Ցույց տալ %d արդյունք";
+
+/* No comment provided by engineer. */
+"Show notifications" = "Ցույց տալ ծանուցումները";
+
+/* No comment provided by engineer. */
+"Single Sign-on" = "Single Sign-on";
+
+/* No comment provided by engineer. */
+"Size" = "Չափ";
+
+/* Button title */
+"Skip" = "Բաց թողնել";
+
+/* No comment provided by engineer. */
+"SKIP" = "ՑԱՏԿԵԼ";
+
+/* Presentation Viewer */
+"Slide %i of %i" = "Սահեցրեք %1$i %2$i-ից";
+
+/* No comment provided by engineer. */
+"Something went wrong, try again" = "Սխալ առաջացավ, նորից փորձեք";
+
+/* No comment provided by engineer. */
+"Something wrong" = "Ինչ - որ բան սխալ է";
+
+/* Button title */
+"Sort" = "Դասավորել";
+
+/* No comment provided by engineer. */
+"Space" = "Բացատ";
+
+/* No comment provided by engineer. */
+"Spreadsheet" = "Աղյուսակ";
+
+/* Default title of sample document */
+"Spreadsheet Sample" = "Աղյուսակային նմուշ";
+
+/* No comment provided by engineer. */
+"Spreadsheets" = "Աղյուսակներ";
+
+/* No comment provided by engineer. */
+"Storage" = "Պահպանում";
+
+/* No comment provided by engineer. */
+"Support" = "Աջակցություն";
+
+/* No comment provided by engineer. */
+"Switch" = "Անջատիչ";
+
+/* No comment provided by engineer. */
+"Tab" = "Ներդիր";
+
+/* Data units */
+"Tb" = "Tb";
+
+/* No comment provided by engineer. */
+"Terminate account" = "Դադարեցնել հաշիվը";
+
+/* Part of phrases - By creating the portal you agree with our Privacy Policy and Terms of Service */
+"Terms of Service" = "Ծառայությունների մատուցման պայմաններ";
+
+/* Notification title */
+"Text copied" = "Տեքստը պատճենված է";
+
+/* No comment provided by engineer. */
+"The %@ server is not available." = "%@ սերվերը հասանելի չէ:";
+
+/* No comment provided by engineer. */
+"The account name must be between 6 and 50 characters long" = "Հաշվի անունը պետք է լինի 6-ից 50 նիշ";
+
+/* No comment provided by engineer. */
+"The deleted files go to the trash. You can either restore or delete them forever." = "Ջնջված ֆայլերը գնում են աղբարկղ: Դուք կարող եք կամ վերականգնել կամ ջնջել դրանք ընդմիշտ:";
+
+/* No comment provided by engineer. */
+"The file in the Trash can not be viewed." = "Աղբարկղում գտնվող ֆայլը չի կարող դիտվել:";
+
+/* No comment provided by engineer. */
+"The file will be irretrievably deleted. This action is irreversible." = "Ֆայլն անդառնալիորեն կջնջվի: Այս գործողությունն անշրջելի է։";
+
+/* No comment provided by engineer. */
+"The folder in the Trash can not be opened." = "Աղբարկղում գտնվող թղթապանակը հնարավոր չէ բացել:";
+
+/* No comment provided by engineer. */
+"The folder will be irretrievably deleted. This action is irreversible." = "Թղթապանակն անդառնալիորեն կջնջվի: Այս գործողությունն անշրջելի է։";
+
+/* No comment provided by engineer. */
+"The item with the name '%@' already exists in the folder '%@'." = "«%1$@» անունով տարրն արդեն կա «%2$@» պանակում:";
+
+/* No comment provided by engineer. */
+"The link for external\naccess is copied\nto the clipboard" = "Հղում արտաքինի համար\nմուտքը պատճենված է\nդեպի clipboard";
+
+/* No comment provided by engineer. */
+"The ONLYOFFICE Editors module is missing. Please contact support@onlyoffice.com for more information." = "ONLYOFFICE Editors մոդուլը բացակայում է: Լրացուցիչ տեղեկությունների համար խնդրում ենք կապվել support@onlyoffice.com-ի հետ:";
+
+/* No comment provided by engineer. */
+"The parameters are incorrect." = "Պարամետրերը սխալ են։";
+
+/* No comment provided by engineer. */
+"The password is incorrect. It must contain 8 characters" = "Գաղտնաբառը սխալ է: Այն պետք է պարունակի 8 նիշ";
+
+/* No comment provided by engineer. */
+"The portal address is invalid" = "Պորտալի հասցեն անվավեր է";
+
+/* No comment provided by engineer. */
+"The portal is not available" = "Պորտալը հասանելի չէ";
+
+/* No comment provided by engineer. */
+"The portal name must be between 6 and 50 characters long" = "Պորտալի անունը պետք է լինի 6-ից 50 նիշ";
+
+/* No comment provided by engineer. */
+"The request timed out." = "Հարցման ժամկետը սպառվել է:";
+
+/* No comment provided by engineer. */
+"The server is not available." = "Սերվերը հասանելի չէ:";
+
+/* No comment provided by engineer. */
+"The setting will be available upon authorization on the %@." = "Կարգավորումը հասանելի կլինի թույլտվությունից հետո %@-ում:";
+
+/* No comment provided by engineer. */
+"The trash is empty" = "Աղբարկղը դատարկ է";
+
+/* Introduction Step Three - Title */
+"Third-party storage" = "Երրորդ կողմի պահեստավորում";
+
+/* No comment provided by engineer. */
+"This document is being edited. Do you want open %@ to view only?" = "Այս փաստաթուղթը խմբագրվում է: Ցանկանու՞մ եք բացել %@-ը միայն դիտելու համար:";
+
+/* No comment provided by engineer. */
+"This folder is empty" = "Այս թղթապանակը դատարկ է";
+
+/* No comment provided by engineer. */
+"This operation will free up space on your device by deleting temporary files. Your offline files and personal data won't be removed." = "Այս գործողությունը ձեր սարքում տարածք կազատի՝ ջնջելով ժամանակավոր ֆայլերը: Ձեր անցանց ֆայլերը և անձնական տվյալները չեն հեռացվի:";
+
+/* No comment provided by engineer. */
+"This option is used to block access previously granted to a user or group." = "Այս տարբերակն օգտագործվում է արգելափակելու մուտքը նախկինում տրված օգտվողին կամ խմբին:";
+
+/* No comment provided by engineer. */
+"This presentation is being edited. Do you want open %@ to view only?" = "Այս ներկայացումը խմբագրվում է: Ցանկանու՞մ եք բացել %@-ը միայն դիտելու համար:";
+
+/* No comment provided by engineer. */
+"This spreadsheet is being edited. Do you want open %@ to view only?" = "Այս աղյուսակը խմբագրվում է: Ցանկանու՞մ եք բացել %@-ը միայն դիտելու համար:";
+
+/* No comment provided by engineer. */
+"Title" = "Կոչում";
+
+/* No comment provided by engineer. */
+"To open a document, you must go to portal %@ under your account." = "Փաստաթուղթ բացելու համար ձեր հաշվի տակ պետք է գնաք %@ պորտալ:";
+
+/* No comment provided by engineer. */
+"To open a folder, you must exit the current document." = "Թղթապանակ բացելու համար դուք պետք է դուրս գաք ընթացիկ փաստաթղթից:";
+
+/* No comment provided by engineer. */
+"To open a folder, you must go to portal %@ under your account." = "Թղթապանակ բացելու համար ձեր հաշվի տակ պետք է գնաք %@ պորտալ:";
+
+/* No comment provided by engineer. */
+"To open a new document, you must exit the current document." = "Նոր փաստաթուղթ բացելու համար դուք պետք է դուրս գաք ընթացիկ փաստաթղթից:";
+
+/* No comment provided by engineer. */
+"To receive push notifications from the %@ application, you need to allow receiving notifications for this application in the iOS settings" = "%@ հավելվածից push ծանուցումներ ստանալու համար դուք պետք է թույլատրեք ծանուցումներ ստանալ այս հավելվածի համար iOS-ի կարգավորումներում";
+
+/* Category title */
+"Trash" = "Աղբարկղ";
+
+/* No comment provided by engineer. */
+"Try again" = "Կրկին փորձել";
+
+/* No comment provided by engineer. */
+"Try Again" = "Կրկին փորձեք";
+
+/* No comment provided by engineer. */
+"Try to connect via another protocol?" = "Փորձե՞լ միանալ այլ արձանագրության միջոցով:";
+
+/* No comment provided by engineer. */
+"Turn ON in Settings" = "Միացրեք Կարգավորումներում";
+
+/* No comment provided by engineer. */
+"Turn Passcode Off" = "Անջատեք գաղտնաբառը";
+
+/* No comment provided by engineer. */
+"Turn Passcode On" = "Միացնել գաղտնաբառը";
+
+/* No comment provided by engineer. */
+"Type" = "Տիպ";
+
+/* No comment provided by engineer. */
+"Unable delete items" = "Չհաջողվեց ջնջել տարրերը";
+
+/* No comment provided by engineer. */
+"Unable disconnect third party" = "Չհաջողվեց անջատել երրորդ կողմը";
+
+/* No comment provided by engineer. */
+"Unable to get information about the portal" = "Անհնար է տեղեկատվություն ստանալ պորտալի մասին";
+
+/* No comment provided by engineer. */
+"Unable to get information about the user." = "Հնարավոր չէ ստանալ օգտատիրոջ մասին տեղեկատվություն:";
+
+/* No comment provided by engineer. */
+"Unauthorized users will be able only to view the document and add comments, as well as manage them." = "Չլիազորված օգտատերերը կկարողանան միայն դիտել փաստաթուղթը և ավելացնել մեկնաբանություններ, ինչպես նաև կառավարել դրանք։";
+
+/* No comment provided by engineer. */
+"Unauthorized users will be able only to view the document and fill in the forms inserted into the document." = "Չլիազորված օգտվողները կկարողանան միայն դիտել փաստաթուղթը և լրացնել փաստաթղթում տեղադրված ձևերը:";
+
+/* No comment provided by engineer. */
+"Unauthorized users will be able only to view the document." = "Չլիազորված օգտվողները կկարողանան միայն դիտել փաստաթուղթը:";
+
+/* No comment provided by engineer. */
+"Unauthorized users will be able to view and change the document without actually editing it, but all the changes made by a reviewer will be recorded and shown to the file owner (or a person who has full access to the file) so that he/she will be able to accept or reject them." = "Չլիազորված օգտատերերը կկարողանան դիտել և փոխել փաստաթուղթը՝ առանց այն իրականում խմբագրելու, սակայն վերանայողի կողմից կատարված բոլոր փոփոխությունները կգրանցվեն և կցուցադրվեն ֆայլի սեփականատիրոջը (կամ ֆայլին լիարժեք հասանելիություն ունեցող անձին), որպեսզի նա կկարողանան ընդունել կամ մերժել դրանք:";
+
+/* No comment provided by engineer. */
+"Unauthorized users will be able to view and edit the document as well as to share this document." = "Չլիազորված օգտվողները կկարողանան դիտել և խմբագրել փաստաթուղթը, ինչպես նաև կիսվել այս փաստաթղթով:";
+
+/* No comment provided by engineer. */
+"Unauthorized users will not have access to the document." = "Չլիազորված օգտատերերին մուտք չի լինի փաստաթուղթը:";
+
+/* No comment provided by engineer. */
+"Unexpected response from the service." = "Անսպասելի արձագանք ծառայության կողմից.";
+
+/* Invalid entity name */
+"Unknown" = "Անհայտ";
+
+/* No comment provided by engineer. */
+"Unknown error" = "Անհայտ սխալ";
+
+/* No comment provided by engineer. */
+"Unknown file provider" = "Անհայտ ֆայլերի մատակարար";
+
+/* No comment provided by engineer. */
+"Unknown item type." = "Անհայտ ապրանքի տեսակը:";
+
+/* No comment provided by engineer. */
+"Unlock with Face ID" = "Ապակողպեք Face ID-ով";
+
+/* No comment provided by engineer. */
+"Unlock with Touch ID" = "Ապակողպեք Touch ID-ով";
+
+/* No comment provided by engineer. */
+"Unsupported format." = "Չաջակցվող ձևաչափ:";
+
+/* Caption of the process */
+"Uploading" = "Վերբեռնում";
+
+/* Button title */
+"Use Face ID" = "Օգտագործեք Face ID";
+
+/* Button title */
+"Use Touch ID" = "Օգտագործեք Touch ID";
+
+/* No comment provided by engineer. */
+"User authentication failed" = "Օգտատիրոջ նույնականացումը ձախողվեց";
+
+/* No comment provided by engineer. */
+"User authentication required" = "Պահանջվում է օգտագործողի նույնականացում";
+
+/* No comment provided by engineer. */
+"User undefined" = "Օգտատերը չսահմանված է";
+
+/* No comment provided by engineer. */
+"Users" = "Օգտատերեր";
+
+/* Caption of the process */
+"Validation" = "Վավերացում";
+
+/* Share status */
+"Varies" = "Տատանվում է";
+
+/* No comment provided by engineer. */
+"Version" = "Տարբերակ";
+
+/* No comment provided by engineer. */
+"Warning" = "Զգուշացում";
+
+/* No comment provided by engineer. */
+"We are sorry, this portal name is already taken" = "Ցավում ենք, այս պորտալի անվանումն արդեն վերցված է";
+
+/* No comment provided by engineer. */
+"We have sent you an SMS with a code to the number %@" = "Մենք ձեզ SMS ենք ուղարկել կոդով %@ համարին";
+
+/* No comment provided by engineer. */
+"WebDAV" = "WebDAV";
+
+/* No comment provided by engineer. */
+"WebDAV directory" = "WebDAV գրացուցակ";
+
+/* Introduction Step One - Description */
+"Welcome to %@ mobile editing suite!\nSwipe to learn more about the app." = "Բարի գալուստ %@ բջջային խմբագրման փաթեթ:\nՀավելվածի մասին ավելին իմանալու համար սահեցրեք:";
+
+/* No comment provided by engineer. */
+"What's New" = "Ինչ նորություն կա";
+
+/* No comment provided by engineer. */
+"Whats's New" = "Ինչ նորություն կա";
+
+/* Introduction Step Four - Description */
+"Work with documents offline.\nCreated files can later be uploaded to online portal and\nthen accessed from any other device." = "Աշխատեք փաստաթղթերի հետ անցանց:\nՍտեղծված ֆայլերը հետագայում կարող են վերբեռնվել առցանց պորտալ և\nայնուհետև հասանելի է ցանկացած այլ սարքից:";
+
+/* Introduction Step Two - Title */
+"Work with office files" = "Աշխատեք գրասենյակային ֆայլերի հետ";
+
+/* No comment provided by engineer. */
+"Wrong server, login or password." = "Սխալ սերվեր, մուտք կամ գաղտնաբառ:";
+
+/* No comment provided by engineer. */
+"Yandex directory" = "Yandex գրացուցակ";
+
+/* No comment provided by engineer. */
+"Yandex Disk" = "Yandex Disk";
+
+/* Data units */
+"Yb" = "Yb";
+
+/* No comment provided by engineer. */
+"You can connect the following accounts to the %@." = "Դուք կարող եք միացնել հետևյալ հաշիվները %@-ին:";
+
+/* No comment provided by engineer. */
+"You can connect the following accounts to the %@. They will be displayed in 'My Documents' folder and you will be able to edit and save them right on the portal all in one place." = "Դուք կարող եք միացնել հետևյալ հաշիվները %@-ին: Դրանք կցուցադրվեն «Իմ փաստաթղթերը» թղթապանակում, և դուք կկարողանաք խմբագրել և պահպանել դրանք անմիջապես պորտալում՝ բոլորը մեկ տեղում:";
+
+/* No comment provided by engineer. */
+"You have read-only access to this folder. You cannot create files or folders here." = "Դուք միայն կարդալու մուտք ունեք այս թղթապանակ: Այստեղ դուք չեք կարող ֆայլեր կամ թղթապանակներ ստեղծել:";
+
+/* No comment provided by engineer. */
+"Your session has expired" = "Ձեր նստաշրջանի ժամկետն ավարտվել է";
+
+/* Data units */
+"Zb" = "Zb";
+
+/* Data units */
+"Zero bytes" = "Զրո բայթ";
+
+/* No comment provided by engineer. */
+"Сould not download file." = "Չհաջողվեց ներբեռնել ֆայլը:";
+
+/* No comment provided by engineer. */
+"Сould not upload file." = "Չհաջողվեց վերբեռնել ֆայլը:";
+

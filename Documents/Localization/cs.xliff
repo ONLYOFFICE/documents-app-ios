@@ -3623,6 +3623,10 @@ Vytvořené soubory mohou být později nahrány do online portálu. Poté k nim
         <target>Adresář kDrive</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
+      <trans-unit id="new" xml:space="preserve">
+        <source>new</source>
+        <note>Badge of file in file list</note>
+      </trans-unit>
       <trans-unit id="none" xml:space="preserve">
         <source>none</source>
         <target>žádný</target>

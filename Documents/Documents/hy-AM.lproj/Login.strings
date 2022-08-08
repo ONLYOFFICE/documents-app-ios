@@ -1,156 +1,156 @@
-
 /* Class = "UILabel"; text = "Copy the code"; ObjectID = "00r-ek-IVa"; */
-"00r-ek-IVa.text" = "Copy the code";
+"00r-ek-IVa.text" = "Պատճենել կոդը";
 
 /* Class = "UILabel"; text = "Title"; ObjectID = "0X2-Xg-z5B"; */
-"0X2-Xg-z5B.text" = "Title";
-
-/* Class = "UILabel"; text = "Detail"; ObjectID = "18Q-Kh-0cC"; */
-"18Q-Kh-0cC.text" = "Detail";
+"0X2-Xg-z5B.text" = "Վերնագիր";
 
 /* Class = "UITextField"; text = "Country Code"; ObjectID = "3oc-kQ-msr"; */
-"3oc-kQ-msr.text" = "Country Code";
-
-/* Class = "UIButton"; normalTitle = "Login by"; ObjectID = "51s-1D-raN"; */
-"51s-1D-raN.normalTitle" = "Login by";
+"3oc-kQ-msr.text" = "Երկրի կոդ";
 
 /* Class = "UILabel"; text = "-"; ObjectID = "6Zd-HN-8wS"; */
 "6Zd-HN-8wS.text" = "-";
 
+/* Class = "UILabel"; text = "Detail"; ObjectID = "18Q-Kh-0cC"; */
+"18Q-Kh-0cC.text" = "Դետալ";
+
+/* Class = "UIButton"; normalTitle = "Login by"; ObjectID = "51s-1D-raN"; */
+"51s-1D-raN.normalTitle" = "Մուտք գործել";
+
 /* Class = "UILabel"; text = "Phone Number"; ObjectID = "76Y-EB-F07"; */
-"76Y-EB-F07.text" = "Phone Number";
+"76Y-EB-F07.text" = "Հեռախոսահամար";
 
 /* Class = "UIButton"; normalTitle = "Forgot?"; ObjectID = "78r-Ca-NKv"; */
-"78r-Ca-NKv.normalTitle" = "Forgot?";
+"78r-Ca-NKv.normalTitle" = "Մոռացե՞լ եք";
 
 /* Class = "UILabel"; text = "Account"; ObjectID = "AkN-p0-Mzy"; */
-"AkN-p0-Mzy.text" = "Account";
+"AkN-p0-Mzy.text" = "Հաշիվ";
 
 /* Class = "UILabel"; text = "If a user with the email exists, the password change instruction has been sent to this email address."; ObjectID = "AqB-m0-2UQ"; Note = "Do not translate"; */
-"AqB-m0-2UQ.text" = "If a user with the email exists, the password change instruction has been sent to this email address.";
+"AqB-m0-2UQ.text" = "Եթե ​​էլփոստով օգտվող կա, գաղտնաբառը փոխելու հրահանգն ուղարկվել է այս էլ. հասցեին:";
 
 /* Class = "UIButton"; normalTitle = "Continue"; ObjectID = "AqJ-b9-XQV"; */
-"AqJ-b9-XQV.normalTitle" = "Continue";
+"AqJ-b9-XQV.normalTitle" = "Շարունակել";
 
 /* Class = "UILabel"; text = "Set up an application to generate the authentication codes"; ObjectID = "B8R-KD-Lml"; */
-"B8R-KD-Lml.text" = "Set up an application to generate the authentication codes";
+"B8R-KD-Lml.text" = "Ստեղծեք հավելված՝ նույնականացման կոդերը ստեղծելու համար";
+
+/* Class = "UILabel"; text = "Password recovery"; ObjectID = "bLE-8U-AOX"; */
+"bLE-8U-AOX.text" = "Գաղտնաբառի վերականգնում";
+
+/* Class = "UILabel"; text = "Haven't received the code?"; ObjectID = "cb0-ic-tPA"; */
+"cb0-ic-tPA.text" = "Չե՞ք ստացել կոդը";
+
+/* Class = "UILabel"; text = "Portal"; ObjectID = "cBn-x1-r5A"; */
+"cBn-x1-r5A.text" = "Պորտալ";
 
 /* Class = "UILabel"; text = "Two-Factor\nAuthentication"; ObjectID = "DK4-QO-Jde"; */
 "DK4-QO-Jde.text" = "Two-Factor\nAuthentication";
 
+/* Class = "UIButton"; normalTitle = "Next"; ObjectID = "e1X-0t-hcs"; Note = "Do not translate"; */
+"e1X-0t-hcs.normalTitle" = "Հաջորդը";
+
 /* Class = "UILabel"; text = "Two-Factor\nAuthentication"; ObjectID = "Eb4-3w-0Jf"; */
 "Eb4-3w-0Jf.text" = "Two-Factor\nAuthentication";
 
+/* Class = "UIButton"; normalTitle = "Send"; ObjectID = "ePY-rM-AOE"; */
+"ePY-rM-AOE.normalTitle" = "Ուղարկել";
+
 /* Class = "UILabel"; text = "Address"; ObjectID = "Fso-pj-304"; */
-"Fso-pj-304.text" = "Address";
+"Fso-pj-304.text" = "Հասցե";
 
 /* Class = "UIButton"; normalTitle = "Create cloud"; ObjectID = "G99-FE-uk4"; */
-"G99-FE-uk4.normalTitle" = "Create cloud";
+"G99-FE-uk4.normalTitle" = "Ստեղծել ամպ";
 
 /* Class = "UILabel"; text = "Connect to your ONLYOFFICE cloud to store files online and collaborate on documents in real time"; ObjectID = "GFx-Ry-9GC"; */
-"GFx-Ry-9GC.text" = "Connect to your ONLYOFFICE cloud to store files online and collaborate on documents in real time";
+"GFx-Ry-9GC.text" = "Միացեք ձեր ONLYOFFICE ամպին՝ առցանց ֆայլերը պահելու և փաստաթղթերի շուրջ իրական ժամանակում համագործակցելու համար";
 
 /* Class = "UILabel"; text = "Select an account to sign in"; ObjectID = "Gkv-tP-6EM"; */
-"Gkv-tP-6EM.text" = "Select an account to sign in";
-
-/* Class = "UILabel"; text = "Copy the key and paste it to the Google Authenticator application"; ObjectID = "K5M-Of-QAk"; */
-"K5M-Of-QAk.text" = "Copy the key and paste it to the Google Authenticator application";
-
-/* Class = "UILabel"; text = "Launch Google Authenticator application"; ObjectID = "LwV-Os-V4m"; */
-"LwV-Os-V4m.text" = "Launch Google Authenticator application";
-
-/* Class = "UILabel"; text = "Enter a phone number that can be used to verify your identity"; ObjectID = "MNA-z2-ITx"; */
-"MNA-z2-ITx.text" = "Enter a phone number that can be used to verify your identity";
-
-/* Class = "UIBarButtonItem"; title = "Back"; ObjectID = "MUG-TG-NlP"; */
-"MUG-TG-NlP.title" = "Back";
-
-/* Class = "UILabel"; text = "Please enter the email you used while registering on the portal. The password recovery instructions will be send to that email address."; ObjectID = "Mbh-dU-7po"; */
-"Mbh-dU-7po.text" = "Please enter the email you used while registering on the portal. The password recovery instructions will be send to that email address.";
-
-/* Class = "UINavigationItem"; title = "Country"; ObjectID = "NBg-dA-b3o"; */
-"NBg-dA-b3o.title" = "Country";
-
-/* Class = "UIButton"; normalTitle = "Back to login"; ObjectID = "OHG-hv-GGj"; */
-"OHG-hv-GGj.normalTitle" = "Back to login";
-
-/* Class = "UITextField"; placeholder = "Code"; ObjectID = "OnI-QD-xeI"; */
-"OnI-QD-xeI.placeholder" = "Code";
-
-/* Class = "UIButton"; normalTitle = "Sign in"; ObjectID = "QAn-vu-xMR"; */
-"QAn-vu-xMR.normalTitle" = "Sign in";
-
-/* Class = "UILabel"; text = "Run the application and tap the new account icon"; ObjectID = "R2F-fc-11j"; */
-"R2F-fc-11j.text" = "Run the application and tap the new account icon";
-
-/* Class = "UIButton"; normalTitle = "Open"; ObjectID = "RDr-pH-MKV"; */
-"RDr-pH-MKV.normalTitle" = "Open";
-
-/* Class = "UILabel"; text = "Open authentication app and copy code from there"; ObjectID = "SH2-Fd-5Ze"; */
-"SH2-Fd-5Ze.text" = "Open authentication app and copy code from there";
-
-/* Class = "UILabel"; text = "We have sent you an SMS with a code to the number %@"; ObjectID = "W8Q-CO-c0L"; */
-"W8Q-CO-c0L.text" = "We have sent you an SMS with a code to the number %@";
-
-/* Class = "UILabel"; text = "Add a secret key"; ObjectID = "WuZ-wI-3aH"; */
-"WuZ-wI-3aH.text" = "Add a secret key";
-
-/* Class = "UILabel"; text = "Connection to cloud"; ObjectID = "XsM-aD-o1I"; */
-"XsM-aD-o1I.text" = "Connection to cloud";
-
-/* Class = "UITextField"; placeholder = "Code"; ObjectID = "ZWV-Q1-HY9"; */
-"ZWV-Q1-HY9.placeholder" = "Code";
-
-/* Class = "UILabel"; text = "Password recovery"; ObjectID = "bLE-8U-AOX"; */
-"bLE-8U-AOX.text" = "Password recovery";
-
-/* Class = "UILabel"; text = "Portal"; ObjectID = "cBn-x1-r5A"; */
-"cBn-x1-r5A.text" = "Portal";
-
-/* Class = "UILabel"; text = "Haven't received the code?"; ObjectID = "cb0-ic-tPA"; */
-"cb0-ic-tPA.text" = "Haven't received the code?";
-
-/* Class = "UIButton"; normalTitle = "Next"; ObjectID = "e1X-0t-hcs"; Note = "Do not translate"; */
-"e1X-0t-hcs.normalTitle" = "Next";
-
-/* Class = "UIButton"; normalTitle = "Send"; ObjectID = "ePY-rM-AOE"; */
-"ePY-rM-AOE.normalTitle" = "Send";
+"Gkv-tP-6EM.text" = "Մուտք գործելու համար ընտրեք հաշիվ";
 
 /* Class = "UINavigationItem"; title = "Accounts"; ObjectID = "gzc-cW-NPT"; */
-"gzc-cW-NPT.title" = "Accounts";
+"gzc-cW-NPT.title" = "Հաշիվներ";
 
 /* Class = "UINavigationItem"; title = "SSO Login"; ObjectID = "hRN-W6-nA0"; */
-"hRN-W6-nA0.title" = "SSO Login";
+"hRN-W6-nA0.title" = "SSO Մուտք";
+
+/* Class = "UILabel"; text = "Copy the key and paste it to the Google Authenticator application"; ObjectID = "K5M-Of-QAk"; */
+"K5M-Of-QAk.text" = "Պատճենեք կոդը և տեղադրեք այն Google Authenticator հավելվածում";
+
+/* Class = "UILabel"; text = "Launch Google Authenticator application"; ObjectID = "LwV-Os-V4m"; */
+"LwV-Os-V4m.text" = "Գործարկեք Google Authenticator հավելվածը";
+
+/* Class = "UILabel"; text = "Please enter the email you used while registering on the portal. The password recovery instructions will be send to that email address."; ObjectID = "Mbh-dU-7po"; */
+"Mbh-dU-7po.text" = "Խնդրում ենք մուտքագրել այն էլ.փոստը, որն օգտագործել եք պորտալում գրանցվելիս: Գաղտնաբառի վերականգնման հրահանգները կուղարկվեն այդ էլփոստի հասցեին:";
+
+/* Class = "UILabel"; text = "Enter a phone number that can be used to verify your identity"; ObjectID = "MNA-z2-ITx"; */
+"MNA-z2-ITx.text" = "Մուտքագրեք հեռախոսահամար, որը կարող է օգտագործվել ձեր ինքնությունը հաստատելու համար";
+
+/* Class = "UIBarButtonItem"; title = "Back"; ObjectID = "MUG-TG-NlP"; */
+"MUG-TG-NlP.title" = "Հետ";
+
+/* Class = "UINavigationItem"; title = "Country"; ObjectID = "NBg-dA-b3o"; */
+"NBg-dA-b3o.title" = "Երկիր";
+
+/* Class = "UIButton"; normalTitle = "Back to login"; ObjectID = "OHG-hv-GGj"; */
+"OHG-hv-GGj.normalTitle" = "Վերադարձ դեպի մուտք";
+
+/* Class = "UITextField"; placeholder = "Code"; ObjectID = "OnI-QD-xeI"; */
+"OnI-QD-xeI.placeholder" = "Կոդ";
 
 /* Class = "UIButton"; normalTitle = "Select another account"; ObjectID = "peP-Hz-Lai"; */
-"peP-Hz-Lai.normalTitle" = "Select another account";
+"peP-Hz-Lai.normalTitle" = "Ընտրել այլ հաշիվ";
+
+/* Class = "UIButton"; normalTitle = "Sign in"; ObjectID = "QAn-vu-xMR"; */
+"QAn-vu-xMR.normalTitle" = "Մուտք գործել";
 
 /* Class = "UITextField"; placeholder = "Code"; ObjectID = "qEs-UQ-wWd"; */
-"qEs-UQ-wWd.placeholder" = "Code";
+"qEs-UQ-wWd.placeholder" = "Կոդ";
+
+/* Class = "UILabel"; text = "Run the application and tap the new account icon"; ObjectID = "R2F-fc-11j"; */
+"R2F-fc-11j.text" = "Գործարկեք հավելվածը և հպեք նոր հաշվի պատկերակին";
+
+/* Class = "UIButton"; normalTitle = "Open"; ObjectID = "RDr-pH-MKV"; */
+"RDr-pH-MKV.normalTitle" = "Բացել";
+
+/* Class = "UILabel"; text = "Open authentication app and copy code from there"; ObjectID = "SH2-Fd-5Ze"; */
+"SH2-Fd-5Ze.text" = "Բացեք նույնականացման հավելվածը և այնտեղից պատճենեք կոդը";
 
 /* Class = "UILabel"; text = "Login via"; ObjectID = "szM-hs-ncG"; */
-"szM-hs-ncG.text" = "Login via";
+"szM-hs-ncG.text" = "Մուտք գործեք միջոցով";
 
 /* Class = "UITextField"; placeholder = "Secret"; ObjectID = "tnK-je-flS"; */
-"tnK-je-flS.placeholder" = "Secret";
+"tnK-je-flS.placeholder" = "Գաղտնիք";
 
 /* Class = "UILabel"; text = "Get more information"; ObjectID = "ttx-IC-XrN"; */
-"ttx-IC-XrN.text" = "Get more information";
+"ttx-IC-XrN.text" = "Ստանալ ավելի շատ տեղեկատվություն";
 
 /* Class = "UIBarButtonItem"; title = "Next"; ObjectID = "twm-cB-W69"; */
-"twm-cB-W69.title" = "Next";
+"twm-cB-W69.title" = "Հաջորդը";
 
 /* Class = "UILabel"; text = "Copy the code generated by Google Authenticator application and insert it to the input field"; ObjectID = "vgV-fF-jOl"; */
-"vgV-fF-jOl.text" = "Copy the code generated by Google Authenticator application and insert it to the input field";
+"vgV-fF-jOl.text" = "Պատճենեք Google Authenticator հավելվածի կողմից ստեղծված կոդը և տեղադրեք այն մուտքագրման դաշտում";
 
 /* Class = "UILabel"; text = "Please set up an application to generate the codes for the portal access (e.g. Google Authenticator) to continue the work at the portal"; ObjectID = "vlQ-jV-iFo"; */
-"vlQ-jV-iFo.text" = "Please set up an application to generate the codes for the portal access (e.g. Google Authenticator) to continue the work at the portal";
+"vlQ-jV-iFo.text" = "Խնդրում ենք կարգավորել հավելված՝ պորտալ մուտք գործելու համար (օրինակ՝ Google Authenticator) կոդեր ստեղծելու համար՝ աշխատանքը պորտալում շարունակելու համար։";
 
 /* Class = "UITextField"; placeholder = "Your phone number"; ObjectID = "w2U-Ci-R7v"; */
-"w2U-Ci-R7v.placeholder" = "Your phone number";
+"w2U-Ci-R7v.placeholder" = "Ձեր հեռախոսահամարը";
+
+/* Class = "UILabel"; text = "We have sent you an SMS with a code to the number %@"; ObjectID = "W8Q-CO-c0L"; */
+"W8Q-CO-c0L.text" = "Մենք ձեզ SMS ենք ուղարկել կոդով %@ համարին";
+
+/* Class = "UILabel"; text = "Add a secret key"; ObjectID = "WuZ-wI-3aH"; */
+"WuZ-wI-3aH.text" = "Ավելացնել գաղտնի բանալի";
 
 /* Class = "UITextField"; text = "+"; ObjectID = "x6G-qW-5Pq"; */
 "x6G-qW-5Pq.text" = "+";
 
+/* Class = "UILabel"; text = "Connection to cloud"; ObjectID = "XsM-aD-o1I"; */
+"XsM-aD-o1I.text" = "Միացնել Cloud";
+
 /* Class = "UIButton"; normalTitle = "Continue"; ObjectID = "yjY-PY-41s"; */
-"yjY-PY-41s.normalTitle" = "Continue";
+"yjY-PY-41s.normalTitle" = "Շարունակել";
+
+/* Class = "UITextField"; placeholder = "Code"; ObjectID = "ZWV-Q1-HY9"; */
+"ZWV-Q1-HY9.placeholder" = "Կոդ";
+

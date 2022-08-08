@@ -5,7 +5,7 @@
 	<key>%d selected</key>
 	<dict>
 		<key>NSStringLocalizedFormatKey</key>
-		<string>%#@items@</string>
+		<string>%#@իրեր@</string>
 		<key>items</key>
 		<dict>
 			<key>NSStringFormatSpecTypeKey</key>
@@ -13,60 +13,15 @@
 			<key>NSStringFormatValueTypeKey</key>
 			<string>d</string>
 			<key>one</key>
-			<string>%d selected</string>
+			<string>%d ընտրված</string>
 			<key>other</key>
-			<string>%d selected</string>
-		</dict>
-	</dict>
-	<key>%lu Folder and %lu File selected</key>
-	<dict>
-		<key>NSStringLocalizedFormatKey</key>
-		<string>%1$#@lu_folders@</string>
-		<key>lu_folders</key>
-		<dict>
-			<key>NSStringFormatSpecTypeKey</key>
-			<string>NSStringPluralRuleType</string>
-			<key>NSStringFormatValueTypeKey</key>
-			<string>lu</string>
-			<key>zero</key>
-			<string>%2$#@lu_files@</string>
-			<key>one</key>
-			<string>%lu Folder %2$#@lu_files@</string>
-			<key>other</key>
-			<string>%lu Folders %2$#@lu_files@</string>
-		</dict>
-		<key>lu_files</key>
-		<dict>
-			<key>NSStringFormatSpecTypeKey</key>
-			<string>NSStringPluralRuleType</string>
-			<key>NSStringFormatValueTypeKey</key>
-			<string>lu</string>
-			<key>one</key>
-			<string>and %lu File selected</string>
-			<key>other</key>
-			<string>and %lu Files selected</string>
-		</dict>
-	</dict>
-	<key>%lu Folder selected</key>
-	<dict>
-		<key>NSStringLocalizedFormatKey</key>
-		<string>%#@folders@</string>
-		<key>folders</key>
-		<dict>
-			<key>NSStringFormatSpecTypeKey</key>
-			<string>NSStringPluralRuleType</string>
-			<key>NSStringFormatValueTypeKey</key>
-			<string>lu</string>
-			<key>one</key>
-			<string>%lu Folder selected</string>
-			<key>other</key>
-			<string>%lu Folders selected</string>
+			<string>%d ընտրված</string>
 		</dict>
 	</dict>
 	<key>%lu File selected</key>
 	<dict>
 		<key>NSStringLocalizedFormatKey</key>
-		<string>%#@files@</string>
+		<string>%#@ֆայլեր@</string>
 		<key>files</key>
 		<dict>
 			<key>NSStringFormatSpecTypeKey</key>
@@ -74,46 +29,44 @@
 			<key>NSStringFormatValueTypeKey</key>
 			<string>lu</string>
 			<key>one</key>
-			<string>%lu File selected</string>
+			<string>%lu ֆայլն ընտրված է</string>
 			<key>other</key>
-			<string>%lu Files selected</string>
+			<string>%lu ֆայլերը ընտրված են</string>
 		</dict>
 	</dict>
-	<key>Delete %lu Folder and %lu File</key>
+	<key>%lu Folder and %lu File selected</key>
 	<dict>
 		<key>NSStringLocalizedFormatKey</key>
-		<string>%1$#@lu_folders@</string>
-		<key>lu_folders</key>
-		<dict>
-			<key>NSStringFormatSpecTypeKey</key>
-			<string>NSStringPluralRuleType</string>
-			<key>NSStringFormatValueTypeKey</key>
-			<string>lu</string>
-			<key>zero</key>
-			<string>Delete %2$#@lu_files@</string>
-			<key>one</key>
-			<string>Delete %lu Folder %2$#@lu_files@</string>
-			<key>other</key>
-			<string>Delete %lu Folders %2$#@lu_files@</string>
-		</dict>
+		<string>%1$#@lu_թղթապանակ@</string>
 		<key>lu_files</key>
 		<dict>
 			<key>NSStringFormatSpecTypeKey</key>
 			<string>NSStringPluralRuleType</string>
 			<key>NSStringFormatValueTypeKey</key>
 			<string>lu</string>
-			<key>zero</key>
-			<string></string>
 			<key>one</key>
-			<string>and %lu File</string>
+			<string>և %lu ֆալերը ընտրված են</string>
 			<key>other</key>
-			<string>and %lu Files</string>
+			<string>և %lu ֆալերը ընտրված են</string>
+		</dict>
+		<key>lu_folders</key>
+		<dict>
+			<key>NSStringFormatSpecTypeKey</key>
+			<string>NSStringPluralRuleType</string>
+			<key>NSStringFormatValueTypeKey</key>
+			<string>lu</string>
+			<key>one</key>
+			<string>%lu Թղթապանակ %2$#@lu_Ֆայլեր@</string>
+			<key>other</key>
+			<string>%lu Թղթապանակներ %2$#@lu_ֆայլեր@</string>
+			<key>zero</key>
+			<string>%2$#@lu_Ֆայլեր@</string>
 		</dict>
 	</dict>
-	<key>Delete %lu Folder</key>
+	<key>%lu Folder selected</key>
 	<dict>
 		<key>NSStringLocalizedFormatKey</key>
-		<string>%#@folders@</string>
+		<string>%#@թղթապանակներ@</string>
 		<key>folders</key>
 		<dict>
 			<key>NSStringFormatSpecTypeKey</key>
@@ -121,15 +74,15 @@
 			<key>NSStringFormatValueTypeKey</key>
 			<string>lu</string>
 			<key>one</key>
-			<string>Delete %lu Folder</string>
+			<string>Ընտրված է %lu թղթապանակ</string>
 			<key>other</key>
-			<string>Delete %lu Folders</string>
+			<string>Ընտրված է %lu թղթապանակ</string>
 		</dict>
 	</dict>
 	<key>Delete %lu File</key>
 	<dict>
 		<key>NSStringLocalizedFormatKey</key>
-		<string>%#@files@</string>
+		<string>%#@ֆայլեր@</string>
 		<key>files</key>
 		<dict>
 			<key>NSStringFormatSpecTypeKey</key>
@@ -137,9 +90,56 @@
 			<key>NSStringFormatValueTypeKey</key>
 			<string>lu</string>
 			<key>one</key>
-			<string>Delete %lu File</string>
+			<string>Ջնջել %lu ֆայլը</string>
 			<key>other</key>
-			<string>Delete %lu Files</string>
+			<string>Ջնջել %lu Ֆայլերը</string>
+		</dict>
+	</dict>
+	<key>Delete %lu Folder</key>
+	<dict>
+		<key>NSStringLocalizedFormatKey</key>
+		<string>%#@թղթապանակներ@</string>
+		<key>folders</key>
+		<dict>
+			<key>NSStringFormatSpecTypeKey</key>
+			<string>NSStringPluralRuleType</string>
+			<key>NSStringFormatValueTypeKey</key>
+			<string>lu</string>
+			<key>one</key>
+			<string>Ջնջել %lu թղթապանակը</string>
+			<key>other</key>
+			<string>Ջնջել %lu թղթապանակները</string>
+		</dict>
+	</dict>
+	<key>Delete %lu Folder and %lu File</key>
+	<dict>
+		<key>NSStringLocalizedFormatKey</key>
+		<string>%1$#@lu_թղթապանակ@</string>
+		<key>lu_files</key>
+		<dict>
+			<key>NSStringFormatSpecTypeKey</key>
+			<string>NSStringPluralRuleType</string>
+			<key>NSStringFormatValueTypeKey</key>
+			<string>lu</string>
+			<key>one</key>
+			<string>և %lu Ֆայլ</string>
+			<key>other</key>
+			<string>և %lu Ֆայլեր</string>
+			<key>zero</key>
+			<string></string>
+		</dict>
+		<key>lu_folders</key>
+		<dict>
+			<key>NSStringFormatSpecTypeKey</key>
+			<string>NSStringPluralRuleType</string>
+			<key>NSStringFormatValueTypeKey</key>
+			<string>lu</string>
+			<key>one</key>
+			<string>Ջնջել %lu Թղթապանակի %2$#@lu_ֆայլերը@</string>
+			<key>other</key>
+			<string>Ջնջել %lu Թղթապանակների %2$#@lu_ֆայլերը@</string>
+			<key>zero</key>
+			<string>Ջնջել %2$#@lu_ֆայլերը@</string>
 		</dict>
 	</dict>
 </dict>

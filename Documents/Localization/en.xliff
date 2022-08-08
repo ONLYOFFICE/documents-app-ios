@@ -3570,6 +3570,11 @@ then accessed from any other device.</target>
         <target>kDrive directory</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
+      <trans-unit id="new" xml:space="preserve">
+        <source>new</source>
+        <target>new</target>
+        <note>Badge of file in file list</note>
+      </trans-unit>
       <trans-unit id="none" xml:space="preserve">
         <source>none</source>
         <target>none</target>

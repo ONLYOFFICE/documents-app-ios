@@ -145,7 +145,6 @@ extension ASCFileProviderProtocol {
     func allowEdit(entity: AnyObject?) -> Bool { return false }
     func allowDelete(entity: AnyObject?) -> Bool { return false }
     func actions(for entity: ASCEntity?) -> ASCEntityActions { return [] }
-
 }
 
 // MARK: - ASCSortableFileProvider protocol

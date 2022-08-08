@@ -463,10 +463,10 @@ class ASCEditorManager: NSObject {
         autosave: Bool = false,
         locallyEditing: Bool = false,
         handler: ASCEditorManagerOpenHandler? = nil,
-        closeHandler: ASCEditorManagerCloseHandler? = nil)
-    {
+        closeHandler: ASCEditorManagerCloseHandler? = nil
+    ) {
         self.closeHandler = closeHandler
-        
+
         openEditorLocal(
             file: file,
             openViewMode: openViewMode,
@@ -1038,7 +1038,7 @@ extension ASCEditorManager {
                 "fillForms": false,
                 "edit": canEdit,
             ]
-            
+
             // FillForms mode
             if isForm, fileExt == "oform" {
                 documentPermissions["fillForms"] = true
@@ -1060,7 +1060,6 @@ extension ASCEditorManager {
                 "license": licenseUrl,
                 "documentPermissions": documentPermissions.jsonString() ?? "",
             ] as [String: Any]
-
 
             if openViewMode == false {
                 var documentInfoCopy = documentInfo

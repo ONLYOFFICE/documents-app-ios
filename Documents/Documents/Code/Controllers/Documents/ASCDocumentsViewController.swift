@@ -2480,7 +2480,7 @@ class ASCDocumentsViewController: ASCBaseTableViewController, UIGestureRecognize
             if ASCConstants.Feature.openViewModeByDefault {
                 let title = file.title,
                     fileExt = title.fileExtension().lowercased()
-                
+
                 if ASCConstants.FileExtensions.documents.contains(fileExt) {
                     open(file: file, viewMode: true)
                 } else {

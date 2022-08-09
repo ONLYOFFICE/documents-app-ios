@@ -1621,13 +1621,27 @@ class ASCDocumentsViewController: ASCBaseTableViewController, UIGestureRecognize
                 UIAction(
                     title: file.isFavorite
                         ? NSLocalizedString("Remove from Favorites", comment: "Button title")
-                        : NSLocalizedString("Mark as favorite", comment: "Button title"),
+                        : NSLocalizedString("Mark as Favorite", comment: "Button title"),
                     image: file.isFavorite
                         ? UIImage(systemName: "star.fill")
                         : UIImage(systemName: "star")
                 ) { [unowned self] action in
                     cell.hideSwipe(animated: true)
                     self.favorite(cell: cell, favorite: !file.isFavorite)
+                }
+            )
+        }
+        
+        /// Mark as read action
+        
+        if actions.contains(.new) {
+            topActions.append(
+                UIAction(
+                    title: NSLocalizedString("Mark as Read", comment: "Button title"),
+                    image: UIImage(systemName: "envelope.open")
+                ) { [unowned self] action in
+                    cell.hideSwipe(animated: true)
+                    self.markAsRead(cell: cell)
                 }
             )
         }
@@ -1854,6 +1868,20 @@ class ASCDocumentsViewController: ASCBaseTableViewController, UIGestureRecognize
             )
         }
 
+        /// Mark as read action
+        
+        if actions.contains(.new) {
+            rootActions.append(
+                UIAction(
+                    title: NSLocalizedString("Mark as Read", comment: "Button title"),
+                    image: UIImage(systemName: "envelope.open")
+                ) { [unowned self] action in
+                    cell.hideSwipe(animated: true)
+                    self.markAsRead(cell: cell)
+                }
+            )
+        }
+        
         /// Restore action
 
         if actions.contains(.restore) {
@@ -2137,11 +2165,24 @@ class ASCDocumentsViewController: ASCBaseTableViewController, UIGestureRecognize
                 UIAlertAction(
                     title: file.isFavorite
                         ? NSLocalizedString("Remove from Favorites", comment: "Button title")
-                        : NSLocalizedString("Mark as favorite", comment: "Button title"),
+                        : NSLocalizedString("Mark as Favorite", comment: "Button title"),
                     style: .default,
                     handler: { [unowned self] action in
                         cell.hideSwipe(animated: true)
                         self.favorite(cell: cell, favorite: !file.isFavorite)
+                    }
+                )
+            )
+        }
+        
+        if actions.contains(.new) {
+            actionAlertController.addAction(
+                UIAlertAction(
+                    title: NSLocalizedString("Mark as Read", comment: "Button title"),
+                    style: .default,
+                    handler: { [unowned self] action in
+                        cell.hideSwipe(animated: true)
+                        self.markAsRead(cell: cell)
                     }
                 )
             )
@@ -2266,6 +2307,19 @@ class ASCDocumentsViewController: ASCBaseTableViewController, UIGestureRecognize
                     handler: { [unowned self] action in
                         cell.hideSwipe(animated: true)
                         self.move(cell: cell)
+                    }
+                )
+            )
+        }
+        
+        if actions.contains(.new) {
+            actionAlertController.addAction(
+                UIAlertAction(
+                    title: NSLocalizedString("Mark as Read", comment: "Button title"),
+                    style: .default,
+                    handler: { [unowned self] action in
+                        cell.hideSwipe(animated: true)
+                        self.markAsRead(cell: cell)
                     }
                 )
             )
@@ -2839,8 +2893,8 @@ class ASCDocumentsViewController: ASCBaseTableViewController, UIGestureRecognize
             } else if status == .error {
                 hud?.hide(animated: true)
 
-                if error != nil {
-                    UIAlertController.showError(in: self, message: error!)
+                if let error = error {
+                    UIAlertController.showError(in: self, message: error)
                 }
             } else if status == .end {
                 if entity != nil {
@@ -2870,7 +2924,51 @@ class ASCDocumentsViewController: ASCBaseTableViewController, UIGestureRecognize
             }
         }
     }
+    
+    func markAsRead(cell: UITableViewCell) {
+        guard
+            let provider = provider,
+            let entity = (cell as? ASCFileCell)?.file ?? (cell as? ASCFolderCell)?.folder
+        else { return }
 
+        var hud: MBProgressHUD?
+
+        ASCEntityManager.shared.markAsRead(for: provider, entities: [entity])  { [unowned self] status, result, error in
+            if status == .begin {
+                hud = MBProgressHUD.showTopMost()
+                hud?.mode = .indeterminate
+            } else if status == .error {
+                hud?.hide(animated: true)
+
+                if let error = error {
+                    UIAlertController.showError(in: self, message: error)
+                }
+            } else if status == .end {
+                if let entities = result as? [AnyObject], let entity = entities.first {
+                    hud?.setSuccessState()
+                    hud?.hide(animated: false, afterDelay: 1.3)
+
+                    if let indexPath = self.tableView.indexPath(for: cell) {
+                    
+                        if let file = entity as? ASCFile {
+                            file.isNew = false
+                            self.provider?.items[indexPath.row] = file
+                        } else if let folder = entity as? ASCFolder {
+                            folder.new = 0
+                            self.provider?.items[indexPath.row] = folder
+                        }
+                        
+                        self.tableView.beginUpdates()
+                        self.tableView.reloadRows(at: [indexPath], with: .fade)
+                        self.tableView.endUpdates()
+                    }
+                } else {
+                    hud?.hide(animated: false)
+                }
+            }
+        }
+    }
+    
     func export(cell: UITableViewCell) {
         guard let fileCell = cell as? ASCFileCell, let file = fileCell.file else {
             UIAlertController.showError(

@@ -471,6 +471,18 @@ class ASCEntityManager: NSObject, UITextFieldDelegate {
             }
         }
     }
+    
+    func markAsRead(for provider: ASCFileProviderProtocol, entities: [AnyObject], handler: ASCEntityHandler? = nil) {
+        handler?(.begin, nil, nil)
+
+        provider.markAsRead(entities.compactMap { $0 as? ASCEntity}) { provider, entities, success, error in
+            if !success {
+                handler?(.error, nil, error?.localizedDescription ?? NSLocalizedString("Mark as Read failed.", comment: ""))
+            } else {
+                handler?(.end, entities, nil)
+            }
+        }
+    }
 
     func download(for provider: ASCFileProviderProtocol, entity: AnyObject?, handler: ASCEntityProgressHandler? = nil) {
         var cancel = false

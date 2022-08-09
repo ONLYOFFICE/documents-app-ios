@@ -25,6 +25,7 @@ struct ASCEntityActions: OptionSet {
     static let unmount = ASCEntityActions(rawValue: 1 << 11)
     static let duplicate = ASCEntityActions(rawValue: 1 << 12)
     static let favarite = ASCEntityActions(rawValue: 1 << 13)
+    static let new = ASCEntityActions(rawValue: 1 << 14)
 }
 
 typealias ASCProviderUserInfoHandler = (_ success: Bool, _ error: Error?) -> Void
@@ -92,6 +93,7 @@ protocol ASCFileProviderProtocol {
     func upload(_ path: String, data: Data, overwrite: Bool, params: [String: Any]?, processing: @escaping NetworkProgressHandler)
     func rename(_ entity: ASCEntity, to newName: String, completeon: ASCProviderCompletionHandler?)
     func favorite(_ entity: ASCEntity, favorite: Bool, completeon: ASCProviderCompletionHandler?)
+    func markAsRead(_ entities: [ASCEntity], completeon: ASCProviderCompletionHandler?)
     func delete(_ entities: [ASCEntity], from folder: ASCFolder, move: Bool?, completeon: ASCProviderCompletionHandler?)
     func emptyTrash(completeon: ASCProviderCompletionHandler?)
     func createDocument(_ name: String, fileExtension: String, in folder: ASCFolder, completeon: ASCProviderCompletionHandler?)
@@ -132,6 +134,7 @@ extension ASCFileProviderProtocol {
     func upload(_ path: String, data: Data, overwrite: Bool, params: [String: Any]?, processing: @escaping NetworkProgressHandler) {}
     func rename(_ entity: ASCEntity, to newName: String, completeon: ASCProviderCompletionHandler?) {}
     func favorite(_ entity: ASCEntity, favorite: Bool, completeon: ASCProviderCompletionHandler?) {}
+    func markAsRead(_ entities: [ASCEntity], completeon: ASCProviderCompletionHandler?) {}
     func delete(_ entities: [ASCEntity], from folder: ASCFolder, move: Bool?, completeon: ASCProviderCompletionHandler?) {}
     func emptyTrash(completeon: ASCProviderCompletionHandler?) {}
     func createDocument(_ name: String, fileExtension: String, in folder: ASCFolder, completeon: ASCProviderCompletionHandler?) {}

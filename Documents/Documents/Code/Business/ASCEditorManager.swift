@@ -516,7 +516,6 @@ class ASCEditorManager: NSObject {
                     file: file,
                     openViewMode: openViewMode,
                     canEdit: canEdit,
-                    locallyEditing: true,
                     handler: editorOpenHandler
                 )
 
@@ -1915,7 +1914,7 @@ extension ASCEditorManager {
                             let fileExtension = file.title.fileExtension().lowercased()
                             if !ASCConstants.FileExtensions.editorImportDocuments.contains(fileExtension) {
                                 /// Store original
-                                _ = ASCLocalFileHelper.shared.move(from: Path(file.id), to: Path.userTemporary + file.title)
+                                ASCLocalFileHelper.shared.move(from: Path(file.id), to: Path.userTemporary + file.title)
                             } else {
                                 let fileTo = Path(Path(file.id).url.deletingPathExtension().path + ".docx")
                                 guard let filePath = ASCLocalFileHelper.shared.resolve(filePath: fileTo) else {
@@ -2041,7 +2040,7 @@ extension ASCEditorManager {
                                 ASCLocalFileHelper.shared.removeDirectory(Path.userAutosavedInformation + file.title)
 
                                 // Restore original
-                                _ = ASCLocalFileHelper.shared.move(from: Path.userTemporary + file.title, to: Path(file.id))
+                                ASCLocalFileHelper.shared.move(from: Path.userTemporary + file.title, to: Path(file.id))
 
                                 UserDefaults.standard.removeObject(forKey: ASCConstants.SettingsKeys.openedDocument)
                                 UserDefaults.standard.removeObject(forKey: ASCConstants.SettingsKeys.passwordOpenedDocument)
@@ -2205,7 +2204,7 @@ extension ASCEditorManager {
                             let fileExtension = file.title.fileExtension().lowercased()
                             if !ASCConstants.FileExtensions.editorImportSpreadsheets.contains(fileExtension) {
                                 // Store original
-                                _ = ASCLocalFileHelper.shared.move(from: Path(file.id), to: Path.userTemporary + file.title)
+                                ASCLocalFileHelper.shared.move(from: Path(file.id), to: Path.userTemporary + file.title)
                             } else {
                                 let fileTo = Path(Path(file.id).url.deletingPathExtension().path + ".xlsx")
                                 guard let filePath = ASCLocalFileHelper.shared.resolve(filePath: fileTo) else {
@@ -2333,7 +2332,7 @@ extension ASCEditorManager {
                                 ASCLocalFileHelper.shared.removeDirectory(Path.userAutosavedInformation + file.title)
 
                                 // Restore original
-                                _ = ASCLocalFileHelper.shared.move(from: Path.userTemporary + file.title, to: Path(file.id))
+                                ASCLocalFileHelper.shared.move(from: Path.userTemporary + file.title, to: Path(file.id))
 
                                 UserDefaults.standard.removeObject(forKey: ASCConstants.SettingsKeys.openedDocument)
                                 UserDefaults.standard.removeObject(forKey: ASCConstants.SettingsKeys.passwordOpenedDocument)
@@ -2502,7 +2501,7 @@ extension ASCEditorManager {
                             let fileExtension = file.title.fileExtension().lowercased()
                             if !ASCConstants.FileExtensions.editorImportPresentations.contains(fileExtension) {
                                 // Store original
-                                _ = ASCLocalFileHelper.shared.move(from: Path(file.id), to: Path.userTemporary + file.title)
+                                ASCLocalFileHelper.shared.move(from: Path(file.id), to: Path.userTemporary + file.title)
                             } else {
                                 let fileTo = Path(Path(file.id).url.deletingPathExtension().path + ".pptx")
                                 guard let filePath = ASCLocalFileHelper.shared.resolve(filePath: fileTo) else {
@@ -2630,7 +2629,7 @@ extension ASCEditorManager {
                                 ASCLocalFileHelper.shared.removeDirectory(Path.userAutosavedInformation + file.title)
 
                                 // Restore original
-                                _ = ASCLocalFileHelper.shared.move(from: Path.userTemporary + file.title, to: Path(file.id))
+                                ASCLocalFileHelper.shared.move(from: Path.userTemporary + file.title, to: Path(file.id))
 
                                 UserDefaults.standard.removeObject(forKey: ASCConstants.SettingsKeys.openedDocument)
                                 UserDefaults.standard.removeObject(forKey: ASCConstants.SettingsKeys.passwordOpenedDocument)

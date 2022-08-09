@@ -360,7 +360,8 @@ class ASCLocalProvider: ASCFileProviderProtocol & ASCSortableFileProviderProtoco
             return
         }
 
-        if let _ = ASCLocalFileHelper.shared.move(from: oldPath, to: newPath) {
+        if let error = ASCLocalFileHelper.shared.move(from: oldPath, to: newPath) {
+            log.error(error)
             completeon?(self, nil, false, ASCProviderError(msg: NSLocalizedString("Rename failed.", comment: "")))
             return
         } else {
@@ -395,7 +396,8 @@ class ASCLocalProvider: ASCFileProviderProtocol & ASCSortableFileProviderProtoco
                         return
                     }
 
-                    if let _ = ASCLocalFileHelper.shared.move(from: Path(file.id), to: filePath) {
+                    if let error = ASCLocalFileHelper.shared.move(from: Path(file.id), to: filePath) {
+                        log.error(error)
                         completeon?(self, nil, false, ASCProviderError(msg: NSLocalizedString("Could not delete the file.", comment: "")))
                         return
                     }
@@ -409,7 +411,8 @@ class ASCLocalProvider: ASCFileProviderProtocol & ASCSortableFileProviderProtoco
                         return
                     }
 
-                    if let _ = ASCLocalFileHelper.shared.move(from: Path(folder.id), to: folderPath) {
+                    if let error = ASCLocalFileHelper.shared.move(from: Path(folder.id), to: folderPath) {
+                        log.error(error)
                         completeon?(self, nil, false, ASCProviderError(msg: NSLocalizedString("Could not delete the folder.", comment: "")))
                         return
                     }

@@ -266,7 +266,8 @@ class ASCEntityManager: NSObject, UITextFieldDelegate {
                             return
                         }
 
-                        if let _ = ASCLocalFileHelper.shared.move(from: Path(file.id), to: filePath) {
+                        if let error = ASCLocalFileHelper.shared.move(from: Path(file.id), to: filePath) {
+                            log.error(error)
                             handler?(.error, nil, NSLocalizedString("Could not delete the file.", comment: ""))
                             return
                         }
@@ -280,7 +281,8 @@ class ASCEntityManager: NSObject, UITextFieldDelegate {
                             return
                         }
 
-                        if let _ = ASCLocalFileHelper.shared.move(from: Path(folder.id), to: folderPath) {
+                        if let error = ASCLocalFileHelper.shared.move(from: Path(folder.id), to: folderPath) {
+                            log.error(error)
                             handler?(.error, nil, NSLocalizedString("Could not delete the folder.", comment: ""))
                             return
                         }
@@ -327,7 +329,8 @@ class ASCEntityManager: NSObject, UITextFieldDelegate {
                         return
                     }
 
-                    if let _ = ASCLocalFileHelper.shared.move(from: Path(deviceFile.id), to: filePath) {
+                    if let error = ASCLocalFileHelper.shared.move(from: Path(deviceFile.id), to: filePath) {
+                        log.error(error)
                         handler?(.error, nil, NSLocalizedString("Could not delete the file.", comment: ""))
                         return
                     }
@@ -342,7 +345,8 @@ class ASCEntityManager: NSObject, UITextFieldDelegate {
                         return
                     }
 
-                    if let _ = ASCLocalFileHelper.shared.move(from: Path(deviceFolder.id), to: folderPath) {
+                    if let error = ASCLocalFileHelper.shared.move(from: Path(deviceFolder.id), to: folderPath) {
+                        log.error(error)
                         handler?(.error, nil, NSLocalizedString("Could not delete the folder.", comment: ""))
                         return
                     }

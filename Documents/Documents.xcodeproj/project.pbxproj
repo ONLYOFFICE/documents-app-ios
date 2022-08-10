@@ -3140,6 +3140,7 @@
 				FC36D26F25B5C32200412DDB /* [CP] Check Pods Manifest.lock */,
 				FC1CA5A226451F61001CC5CA /* Check dependencies and try checkout */,
 				FCCB1945262ACA06007517BB /* SwiftGen */,
+				FCE4227828A377920073E2BB /* SwiftFormat */,
 				FC36D27025B5C32200412DDB /* Sources */,
 				FC36D32B25B5C32200412DDB /* Frameworks */,
 				FC36D32D25B5C32200412DDB /* Resources */,
@@ -3894,6 +3895,24 @@
 			shellPath = /bin/sh;
 			shellScript = "if [[ -f \"${PODS_ROOT}/SwiftGen/bin/swiftgen\" ]]; then\n  \"${PODS_ROOT}/SwiftGen/bin/swiftgen\"\nelse\n  echo \"warning: SwiftGen is not installed. Run 'pod install --repo-update' to install it.\"\nfi\n";
 			showEnvVarsInLog = 0;
+		};
+		FCE4227828A377920073E2BB /* SwiftFormat */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = SwiftFormat;
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "if [ $CONFIGURATION == Debug ]; then\n    \"${PODS_ROOT}/SwiftFormat/CommandLineTool/swiftformat\" \"$SRCROOT\" \\\n    --swiftversion ${SWIFT_VERSION} \\\n    --exclude Pods,**/Generated \\\n    --lintonly unusedArguments,redundantType\nfi\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 

@@ -1631,9 +1631,9 @@ class ASCDocumentsViewController: ASCBaseTableViewController, UIGestureRecognize
                 }
             )
         }
-        
+
         /// Mark as read action
-        
+
         if actions.contains(.new) {
             topActions.append(
                 UIAction(
@@ -1869,7 +1869,7 @@ class ASCDocumentsViewController: ASCBaseTableViewController, UIGestureRecognize
         }
 
         /// Mark as read action
-        
+
         if actions.contains(.new) {
             rootActions.append(
                 UIAction(
@@ -1881,7 +1881,7 @@ class ASCDocumentsViewController: ASCBaseTableViewController, UIGestureRecognize
                 }
             )
         }
-        
+
         /// Restore action
 
         if actions.contains(.restore) {
@@ -2174,7 +2174,7 @@ class ASCDocumentsViewController: ASCBaseTableViewController, UIGestureRecognize
                 )
             )
         }
-        
+
         if actions.contains(.new) {
             actionAlertController.addAction(
                 UIAlertAction(
@@ -2311,7 +2311,7 @@ class ASCDocumentsViewController: ASCBaseTableViewController, UIGestureRecognize
                 )
             )
         }
-        
+
         if actions.contains(.new) {
             actionAlertController.addAction(
                 UIAlertAction(
@@ -2924,7 +2924,7 @@ class ASCDocumentsViewController: ASCBaseTableViewController, UIGestureRecognize
             }
         }
     }
-    
+
     func markAsRead(cell: UITableViewCell) {
         guard
             let provider = provider,
@@ -2933,7 +2933,7 @@ class ASCDocumentsViewController: ASCBaseTableViewController, UIGestureRecognize
 
         var hud: MBProgressHUD?
 
-        ASCEntityManager.shared.markAsRead(for: provider, entities: [entity])  { [unowned self] status, result, error in
+        ASCEntityManager.shared.markAsRead(for: provider, entities: [entity]) { [unowned self] status, result, error in
             if status == .begin {
                 hud = MBProgressHUD.showTopMost()
                 hud?.mode = .indeterminate
@@ -2949,7 +2949,6 @@ class ASCDocumentsViewController: ASCBaseTableViewController, UIGestureRecognize
                     hud?.hide(animated: false, afterDelay: 1.3)
 
                     if let indexPath = self.tableView.indexPath(for: cell) {
-                    
                         if let file = entity as? ASCFile {
                             file.isNew = false
                             self.provider?.items[indexPath.row] = file
@@ -2957,7 +2956,7 @@ class ASCDocumentsViewController: ASCBaseTableViewController, UIGestureRecognize
                             folder.new = 0
                             self.provider?.items[indexPath.row] = folder
                         }
-                        
+
                         self.tableView.beginUpdates()
                         self.tableView.reloadRows(at: [indexPath], with: .fade)
                         self.tableView.endUpdates()
@@ -2968,7 +2967,7 @@ class ASCDocumentsViewController: ASCBaseTableViewController, UIGestureRecognize
             }
         }
     }
-    
+
     func export(cell: UITableViewCell) {
         guard let fileCell = cell as? ASCFileCell, let file = fileCell.file else {
             UIAlertController.showError(

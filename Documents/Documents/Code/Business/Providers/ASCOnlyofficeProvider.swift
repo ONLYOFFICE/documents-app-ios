@@ -395,26 +395,26 @@ class ASCOnlyofficeProvider: ASCFileProviderProtocol & ASCSortableFileProviderPr
             }
         }
     }
-    
+
     func markAsRead(_ entities: [ASCEntity], completeon: ASCProviderCompletionHandler?) {
         var params: [String: [String]] = [:]
-        
+
         let fileIds = entities
             .filter { $0 is ASCFile }
             .map { $0.id }
-        
+
         let folderIds = entities
             .filter { $0 is ASCFolder }
             .map { $0.id }
-        
+
         if !fileIds.isEmpty {
             params["fileIds"] = fileIds
         }
-        
+
         if !folderIds.isEmpty {
             params["folderIds"] = folderIds
         }
-        
+
         apiClient.request(OnlyofficeAPI.Endpoints.Operations.markAsRead, params) { response, error in
             if let error = error {
                 completeon?(self, nil, false, error)
@@ -1041,7 +1041,7 @@ class ASCOnlyofficeProvider: ASCFileProviderProtocol & ASCSortableFileProviderPr
             if canEdit, !isShared, !isFavoriteCategory, !isRecentCategory, !(file.parent?.isThirdParty ?? false), canDownload {
                 entityActions.insert(.duplicate)
             }
-            
+
             if file.isNew {
                 entityActions.insert(.new)
             }
@@ -1088,7 +1088,7 @@ class ASCOnlyofficeProvider: ASCFileProviderProtocol & ASCSortableFileProviderPr
             if isThirdParty {
                 entityActions.insert(.unmount)
             }
-            
+
             if folder.new > 0 {
                 entityActions.insert(.new)
             }

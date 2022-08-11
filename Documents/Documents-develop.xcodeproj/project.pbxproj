@@ -997,7 +997,7 @@
 		FCF916C91ED44F3A0032C135 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.stringsdict; name = Base; path = Base.lproj/Localizable.stringsdict; sourceTree = "<group>"; };
 		FCF916CB1ED44F430032C135 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.stringsdict; name = ru; path = ru.lproj/Localizable.stringsdict; sourceTree = "<group>"; };
 		FCFB36061EDF0AB00001597E /* ASCBanner.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASCBanner.swift; sourceTree = "<group>"; };
-		FCFDAA8D1E48A10C007A240C /* Documents-develop.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Documents-develop.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		FCFDAA8D1E48A10C007A240C /* Documents-dev.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Documents-dev.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		FCFDAA9A1E48A10C007A240C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		FCFE46D4275E237E007C9AE0 /* ASCEntityUniqNameFinder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASCEntityUniqNameFinder.swift; sourceTree = "<group>"; };
 		FCFE46D5275E237E007C9AE0 /* ASCEntityExistenceCheckerByAttributes.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASCEntityExistenceCheckerByAttributes.swift; sourceTree = "<group>"; };
@@ -2439,7 +2439,7 @@
 		FCFDAA8E1E48A10C007A240C /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				FCFDAA8D1E48A10C007A240C /* Documents-develop.app */,
+				FCFDAA8D1E48A10C007A240C /* Documents-dev.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -2521,7 +2521,7 @@
 			);
 			name = "Documents-develop";
 			productName = "Documents-Swift";
-			productReference = FCFDAA8D1E48A10C007A240C /* Documents-develop.app */;
+			productReference = FCFDAA8D1E48A10C007A240C /* Documents-dev.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -3681,7 +3681,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.onlyoffice.Documents;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = "Documents-dev";
 				PROVISIONING_PROFILE = "";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "Documents/Code/Bridge/Documents-Bridging-Header.h";
@@ -3752,7 +3752,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.onlyoffice.Documents;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = "Documents-dev";
 				SWIFT_OBJC_BRIDGING_HEADER = "Documents/Code/Bridge/Documents-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";

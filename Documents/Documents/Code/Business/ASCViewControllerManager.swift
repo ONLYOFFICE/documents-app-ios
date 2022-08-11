@@ -74,17 +74,22 @@ class ASCViewControllerManager {
 
         ASCEditorManager.shared.fetchDocumentService { _, _, _ in }
 
+        let appDelegate = UIApplication.shared.delegate as? AppDelegate
+
         if let _ = UserDefaults.standard.string(forKey: ASCConstants.SettingsKeys.appVersion) {
             /// Display whats new if needed
 
             WhatsNewService.show()
+            appDelegate?.checkNotifications()
         } else {
             /// Firsh launch of the app
 
             UserDefaults.standard.set(ASCCommon.appVersion, forKey: ASCConstants.SettingsKeys.appVersion)
             prepareContent()
             rootController?.display(provider: ASCFileManager.localProvider, folder: nil)
-            showIntro()
+            showIntro {
+                appDelegate?.checkNotifications()
+            }
         }
 
         configureRater()
@@ -144,10 +149,11 @@ class ASCViewControllerManager {
         SwiftRater.appLaunched()
     }
 
-    private func showIntro() {
+    private func showIntro(complation: (() -> Void)? = nil) {
         delay(seconds: 0.2) { [weak self] in
             if let topVC = self?.rootController?.topMostViewController() {
                 let introController = ASCIntroViewController.instantiate(from: Storyboard.intro)
+                introController.complation = complation
                 introController.modalTransitionStyle = .crossDissolve
 
                 if #available(iOS 13.0, *) {

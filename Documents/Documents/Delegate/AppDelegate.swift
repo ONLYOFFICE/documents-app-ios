@@ -51,6 +51,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
             // Register for remote notifications
             Messaging.messaging().delegate = self
+            UNUserNotificationCenter.current().delegate = self
 
             DropboxClientsManager.setupWithAppKey(ASCConstants.Clouds.Dropbox.appId)
 
@@ -67,8 +68,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
         // Check Update
         configureAppUpdater()
-
-        UNUserNotificationCenter.current().delegate = self
 
         return true
     }

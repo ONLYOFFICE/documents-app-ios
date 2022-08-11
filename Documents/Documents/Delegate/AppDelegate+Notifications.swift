@@ -11,6 +11,37 @@ import FirebaseMessaging
 import UIKit
 
 extension AppDelegate {
+    @available(iOS 10.0, *)
+    func checkNotifications() {
+        let center = UNUserNotificationCenter.current()
+
+        center.getNotificationSettings { [weak self] settings in
+            let status = settings.authorizationStatus
+
+            switch status {
+            case .authorized:
+                DispatchQueue.main.async {
+                    UIApplication.shared.registerForRemoteNotifications()
+                    ASCPushNotificationManager.requestRegister()
+                }
+            case .denied:
+                log.warning("Push not authorized")
+                ASCPushNotificationManager.requestClearRegister()
+            case .notDetermined:
+                center.requestAuthorization(options: [.badge, .alert, .sound]) { [weak self] granted, error in
+                    guard let strongSelf = self else { return }
+                    strongSelf.checkNotifications()
+                }
+
+                DispatchQueue.main.async {
+                    UIApplication.shared.registerForRemoteNotifications()
+                }
+            default:
+                break
+            }
+        }
+    }
+
     func application(_ application: UIApplication,
                      didReceiveRemoteNotification userInfo: [AnyHashable: Any])
     {

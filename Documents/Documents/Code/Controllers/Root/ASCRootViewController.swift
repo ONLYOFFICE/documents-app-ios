@@ -81,8 +81,6 @@ class ASCRootViewController: ASCBaseTabBarController {
         }
 
         update(traitCollection: traitCollection)
-
-//        checkNotifications()
     }
 
     override func viewDidAppear(_ animated: Bool) {

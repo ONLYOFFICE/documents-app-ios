@@ -11,8 +11,14 @@ import UIKit
 class ASCIntroViewController: UIViewController {
     static let identifier = String(describing: ASCIntroViewController.self)
 
+    // MARK: - Outlets
+
     @IBOutlet var pageControl: UIPageControl!
     @IBOutlet var doneButton: UIButton!
+
+    // MARK: - Properties
+
+    var complation: (() -> Void)?
 
     private var pageViewController: UIPageViewController? {
         didSet {
@@ -53,6 +59,8 @@ class ASCIntroViewController: UIViewController {
             image: Asset.Images.introStepFive.image
         ),
     ]
+
+    // MARK: - Lifecycle Methods
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -127,6 +135,7 @@ class ASCIntroViewController: UIViewController {
     // MARK: - Actions
 
     @IBAction func onDone(_ sender: UIButton) {
+        complation?()
         dismiss(animated: true, completion: nil)
     }
 

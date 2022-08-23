@@ -290,6 +290,8 @@ class ASCRootViewController: ASCBaseTabBarController {
                         }
                     } else if let navigationData = userInfo["data"] as? [String: Any] {
                         ASCViewControllerManager.shared.route(by: navigationData)
+                    } else if let navigationDataString = userInfo["data"] as? String, let navigationData = navigationDataString.toDictionary() {
+                        ASCViewControllerManager.shared.route(by: navigationData)
                     }
                 }
             }

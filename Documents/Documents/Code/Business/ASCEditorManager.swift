@@ -1193,7 +1193,7 @@ extension ASCEditorManager {
                 "sdkCheck": sdkCheck,
                 "appFonts": editorFontsPaths,
                 "dataFontsPath": dataFontsPath,
-                "supportShare": true, // TODO: Handle permission
+                "supportShare": file.access == .readWrite,
                 "license": licenseUrl,
             ]
 

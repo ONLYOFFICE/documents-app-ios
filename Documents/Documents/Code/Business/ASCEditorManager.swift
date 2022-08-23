@@ -1824,7 +1824,8 @@ extension ASCEditorManager {
         ///   - handler: File open process handler
         func openEditorLocal(
             file: ASCFile,
-            viewMode: Bool = false,
+            openViewMode: Bool = false,
+            canEdit: Bool = true,
             autosave: Bool = false,
             locallyEditing: Bool = false,
             handler: ASCEditorManagerOpenHandler? = nil
@@ -1841,7 +1842,7 @@ extension ASCEditorManager {
         ///   - handler: File open process handler
         func openEditorInCollaboration(
             file: ASCFile,
-            viewMode: Bool = false,
+            openViewMode: Bool = false,
             handler: ASCEditorManagerOpenHandler? = nil
         ) {
             var cancel = false

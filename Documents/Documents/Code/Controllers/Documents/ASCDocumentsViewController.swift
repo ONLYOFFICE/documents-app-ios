@@ -466,7 +466,7 @@ class ASCDocumentsViewController: ASCBaseTableViewController, UIGestureRecognize
         }
     }
 
-    fileprivate func flashBlockInteration() {
+    func flashBlockInteration() {
         view.isUserInteractionEnabled = false
         ASCViewControllerManager.shared.rootController?.isUserInteractionEnabled = false
         delay(seconds: 0.2) {
@@ -1253,682 +1253,6 @@ class ASCDocumentsViewController: ASCBaseTableViewController, UIGestureRecognize
         filterBarButton?.isEnabled = !hasError
     }
 
-    private func fileMenu(cell: ASCFileCell) -> [MGSwipeButton]? {
-        guard
-            let file = cell.file,
-            let provider = provider,
-            view.isUserInteractionEnabled
-        else {
-            return nil
-        }
-
-        let actions = provider.actions(for: file)
-
-        // Restore
-        let restore = MGSwipeButton(
-            title: NSLocalizedString("Restore", comment: "Button title"),
-            icon: Asset.Images.listMenuRestore.image,
-            backgroundColor: ASCConstants.Colors.grey
-        ) { [unowned self] cell -> Bool in
-            self.recover(cell: cell)
-            return true
-        }
-
-        // Delete
-        let delete = MGSwipeButton(
-            title: NSLocalizedString("Delete", comment: "Button title"),
-            icon: Asset.Images.listMenuTrash.image,
-            backgroundColor: ASCConstants.Colors.red
-        )
-        delete.callback = { [unowned self] cell -> Bool in
-            guard view.isUserInteractionEnabled else { return true }
-
-            var title: String?
-            let isTrash = self.isTrash(self.folder)
-
-            if isTrash {
-                title = NSLocalizedString("The file will be irretrievably deleted. This action is irreversible.", comment: "")
-            } else if let folder = self.folder, folder.isThirdParty {
-                title = NSLocalizedString("Note: removal from your account can not be undone.", comment: "")
-            }
-
-            let alertDelete = UIAlertController(
-                title: title,
-                message: nil,
-                preferredStyle: .actionSheet,
-                tintColor: nil
-            )
-
-            alertDelete.addAction(
-                UIAlertAction(
-                    title: NSLocalizedString("Delete File", comment: "Button title"),
-                    style: .destructive,
-                    handler: { action in
-                        cell.hideSwipe(animated: true)
-                        self.delete(cell: cell)
-                    }
-                )
-            )
-
-            if UIDevice.pad {
-                alertDelete.modalPresentationStyle = .popover
-                alertDelete.popoverPresentationController?.sourceView = delete
-                alertDelete.popoverPresentationController?.sourceRect = delete.bounds
-                alertDelete.popoverPresentationController?.permittedArrowDirections = [.up, .down]
-                flashBlockInteration()
-            } else {
-                alertDelete.addAction(
-                    UIAlertAction(
-                        title: ASCLocalization.Common.cancel,
-                        style: .cancel,
-                        handler: { action in
-                            cell.hideSwipe(animated: true)
-                        }
-                    )
-                )
-            }
-
-            self.present(alertDelete, animated: true, completion: nil)
-            self.hideableViewControllerOnTransition = alertDelete
-
-            return false
-        }
-
-        // Download
-        let download = MGSwipeButton(
-            title: NSLocalizedString("Download", comment: "Button title"),
-            icon: Asset.Images.listMenuDownload.image,
-            backgroundColor: ASCConstants.Colors.grey
-        ) { [unowned self] cell -> Bool in
-            self.download(cell: cell)
-            return true
-        }
-
-        // Rename
-        let rename = MGSwipeButton(
-            title: NSLocalizedString("Rename", comment: "Button title"),
-            icon: Asset.Images.listMenuRename.image,
-            backgroundColor: ASCConstants.Colors.grey
-        ) { [unowned self] cell -> Bool in
-            self.rename(cell: cell)
-            return true
-        }
-
-        // Copy
-        let copy = MGSwipeButton(
-            title: NSLocalizedString("Copy", comment: "Button title"),
-            icon: Asset.Images.listMenuCopy.image,
-            backgroundColor: ASCConstants.Colors.grey
-        ) { [unowned self] cell -> Bool in
-            self.copy(cell: cell)
-            return true
-        }
-
-        // More
-        let more = MGSwipeButton(
-            title: NSLocalizedString("More", comment: "Button title"),
-            icon: Asset.Images.listMenuMore.image,
-            backgroundColor: ASCConstants.Colors.lightGrey
-        )
-        more.callback = { [unowned self] swipedCell -> Bool in
-            guard view.isUserInteractionEnabled else { return true }
-
-            if let moreAlertController = self.fileActionMenu(cell: cell) {
-                if UIDevice.pad {
-                    moreAlertController.modalPresentationStyle = .popover
-                    moreAlertController.popoverPresentationController?.sourceView = more
-                    moreAlertController.popoverPresentationController?.sourceRect = more.bounds
-                    moreAlertController.popoverPresentationController?.permittedArrowDirections = [.up, .down]
-                    flashBlockInteration()
-                }
-
-                moreAlertController.view.tintColor = self.view.tintColor
-                self.searchController.searchBar.resignFirstResponder()
-                self.present(moreAlertController, animated: true, completion: nil)
-                self.hideableViewControllerOnTransition = moreAlertController
-            }
-
-            return false
-        }
-
-        cell.swipeBackgroundColor = ASCConstants.Colors.lighterGrey
-
-        var items: [MGSwipeButton] = []
-
-        if actions.contains(.delete) { items.append(delete) }
-        if actions.contains(.restore) { items.append(restore) }
-        if actions.contains(.rename) { items.append(rename) }
-        if actions.contains(.copy) { items.append(copy) }
-        if actions.contains(.download) { items.append(download) }
-
-        if items.count > 2 {
-            items = Array(items[..<2])
-            items.append(more)
-        }
-
-        return decorate(menu: items)
-    }
-
-    private func folderMenu(cell: ASCFolderCell) -> [MGSwipeButton]? {
-        guard
-            let folder = cell.folder,
-            let provider = provider,
-            view.isUserInteractionEnabled
-        else {
-            return nil
-        }
-
-        let actions = provider.actions(for: folder)
-
-        // Restore
-        let restore = MGSwipeButton(
-            title: NSLocalizedString("Restore", comment: "Button title"),
-            icon: Asset.Images.listMenuRestore.image,
-            backgroundColor: ASCConstants.Colors.grey
-        ) { [unowned self] cell -> Bool in
-            self.recover(cell: cell)
-            return true
-        }
-
-        // Delete
-        let delete = MGSwipeButton(
-            title: NSLocalizedString("Delete", comment: "Button title"),
-            icon: Asset.Images.listMenuTrash.image,
-            backgroundColor: ASCConstants.Colors.red
-        )
-        delete.callback = { [unowned self] cell -> Bool in
-            guard view.isUserInteractionEnabled else { return true }
-
-            var title: String?
-            let isTrash = self.isTrash(self.folder)
-
-            if isTrash {
-                title = NSLocalizedString("The folder will be irretrievably deleted. This action is irreversible.", comment: "")
-            } else if let folder = self.folder, folder.isThirdParty {
-                title = NSLocalizedString("Note: removal from your account can not be undone.", comment: "")
-            }
-
-            let alertDelete = UIAlertController(
-                title: title,
-                message: nil,
-                preferredStyle: .actionSheet,
-                tintColor: nil
-            )
-
-            alertDelete.addAction(
-                UIAlertAction(
-                    title: folder.isThirdParty && !(self.folder?.isThirdParty ?? false)
-                        ? NSLocalizedString("Disconnect third party", comment: "")
-                        : NSLocalizedString("Delete Folder", comment: ""),
-                    style: .destructive,
-                    handler: { action in
-                        cell.hideSwipe(animated: true)
-                        self.delete(cell: cell)
-                    }
-                )
-            )
-
-            if UIDevice.pad {
-                alertDelete.modalPresentationStyle = .popover
-                alertDelete.popoverPresentationController?.sourceView = delete
-                alertDelete.popoverPresentationController?.sourceRect = delete.bounds
-                alertDelete.popoverPresentationController?.permittedArrowDirections = [.up, .down]
-                flashBlockInteration()
-            } else {
-                alertDelete.addAction(
-                    UIAlertAction(
-                        title: ASCLocalization.Common.cancel,
-                        style: .cancel,
-                        handler: { action in
-                            cell.hideSwipe(animated: true)
-                        }
-                    )
-                )
-            }
-
-            self.present(alertDelete, animated: true, completion: nil)
-            self.hideableViewControllerOnTransition = alertDelete
-
-            return false
-        }
-
-        // Rename
-        let rename = MGSwipeButton(
-            title: NSLocalizedString("Rename", comment: "Button title"),
-            icon: Asset.Images.listMenuRename.image,
-            backgroundColor: ASCConstants.Colors.grey
-        ) { [unowned self] cell -> Bool in
-            self.rename(cell: cell)
-            return true
-        }
-
-        // Copy
-        let copy = MGSwipeButton(
-            title: NSLocalizedString("Copy", comment: "Button title"),
-            icon: Asset.Images.listMenuCopy.image,
-            backgroundColor: ASCConstants.Colors.grey
-        ) { [unowned self] cell -> Bool in
-            self.copy(cell: cell)
-            return true
-        }
-
-        // More
-        let more = MGSwipeButton(
-            title: NSLocalizedString("More", comment: "Button title"),
-            icon: Asset.Images.listMenuMore.image,
-            backgroundColor: ASCConstants.Colors.lightGrey
-        )
-        more.callback = { [unowned self] swipedCell -> Bool in
-            guard view.isUserInteractionEnabled else { return true }
-
-            if let moreAlertController = self.folderActionMenu(cell: cell) {
-                if UIDevice.pad {
-                    moreAlertController.modalPresentationStyle = .popover
-                    moreAlertController.popoverPresentationController?.sourceView = more
-                    moreAlertController.popoverPresentationController?.sourceRect = more.bounds
-                    moreAlertController.popoverPresentationController?.permittedArrowDirections = [.up, .down]
-                    flashBlockInteration()
-                }
-
-                moreAlertController.view.tintColor = self.view.tintColor
-                self.searchController.searchBar.resignFirstResponder()
-                self.present(moreAlertController, animated: true, completion: nil)
-                self.hideableViewControllerOnTransition = moreAlertController
-            }
-
-            return false
-        }
-
-        cell.swipeBackgroundColor = ASCConstants.Colors.lighterGrey
-
-        var items: [MGSwipeButton] = []
-
-        if actions.contains(.unmount) || actions.contains(.delete) { items.append(delete) }
-        if actions.contains(.restore) { items.append(restore) }
-        if actions.contains(.rename) { items.append(rename) }
-        if actions.contains(.copy) { items.append(copy) }
-
-        if items.count > 2 {
-            items = Array(items[..<2])
-            items.append(more)
-        }
-
-        return decorate(menu: items)
-    }
-
-    @available(iOS 13.0, *)
-    private func makeFileContextMenu(for cell: ASCFileCell) -> UIMenu? {
-        guard
-            let file = cell.file,
-            let provider = provider
-        else {
-            return nil
-        }
-
-        let actions = provider.actions(for: file)
-
-        var rootActions: [UIMenuElement] = []
-        var topActions: [UIMenuElement] = []
-        var middleActions: [UIMenuElement] = []
-        var bottomActions: [UIMenuElement] = []
-
-        /// Preview action
-
-        if actions.contains(.open) {
-            topActions.append(
-                UIAction(
-                    title: NSLocalizedString("Preview", comment: "Button title"),
-                    image: UIImage(systemName: "eye")
-                ) { [unowned self] action in
-                    cell.hideSwipe(animated: true)
-                    self.open(file: file, viewMode: true)
-                }
-            )
-        }
-
-        /// Edit action
-
-        if actions.contains(.edit) {
-            topActions.append(
-                UIAction(
-                    title: NSLocalizedString("Edit", comment: "Button title"),
-                    image: UIImage(systemName: "pencil")
-                ) { [unowned self] action in
-                    cell.hideSwipe(animated: true)
-                    self.open(file: file)
-                }
-            )
-        }
-
-        /// Download action
-
-        if actions.contains(.download) {
-            topActions.append(
-                UIAction(
-                    title: NSLocalizedString("Download", comment: "Button title"),
-                    image: UIImage(systemName: "square.and.arrow.down")
-                ) { [unowned self] action in
-                    cell.hideSwipe(animated: true)
-                    self.download(cell: cell)
-                }
-            )
-        }
-
-        /// Favorite action
-
-        if actions.contains(.favarite) {
-            topActions.append(
-                UIAction(
-                    title: file.isFavorite
-                        ? NSLocalizedString("Remove from Favorites", comment: "Button title")
-                        : NSLocalizedString("Mark as Favorite", comment: "Button title"),
-                    image: file.isFavorite
-                        ? UIImage(systemName: "star.fill")
-                        : UIImage(systemName: "star")
-                ) { [unowned self] action in
-                    cell.hideSwipe(animated: true)
-                    self.favorite(cell: cell, favorite: !file.isFavorite)
-                }
-            )
-        }
-
-        /// Mark as read action
-
-        if actions.contains(.new) {
-            topActions.append(
-                UIAction(
-                    title: NSLocalizedString("Mark as Read", comment: "Button title"),
-                    image: UIImage(systemName: "envelope.open")
-                ) { [unowned self] action in
-                    cell.hideSwipe(animated: true)
-                    self.markAsRead(cell: cell)
-                }
-            )
-        }
-
-        /// Rename action
-
-        if actions.contains(.rename) {
-            middleActions.append(
-                UIAction(
-                    title: NSLocalizedString("Rename", comment: "Button title"),
-                    image: UIImage(systemName: "pencil.and.ellipsis.rectangle")
-                ) { [unowned self] action in
-                    cell.hideSwipe(animated: true)
-                    self.rename(cell: cell)
-                }
-            )
-        }
-
-        /// Copy action
-
-        let copy = UIAction(
-            title: NSLocalizedString("Copy", comment: "Button title"),
-            image: UIImage(systemName: "doc.on.doc")
-        ) { [unowned self] action in
-            cell.hideSwipe(animated: true)
-            self.copy(cell: cell)
-        }
-
-        /// Duplicate action
-
-        let duplicate = UIAction(
-            title: NSLocalizedString("Duplicate", comment: "Button title"),
-            image: UIImage(systemName: "plus.rectangle.on.rectangle")
-        ) { [unowned self] action in
-            cell.hideSwipe(animated: true)
-            self.duplicate(cell: cell)
-        }
-
-        /// Move action
-
-        let move = UIAction(
-            title: NSLocalizedString("Move", comment: "Button title"),
-            image: UIImage(systemName: "folder")
-        ) { [unowned self] action in
-            cell.hideSwipe(animated: true)
-            self.move(cell: cell)
-        }
-
-        /// Transfer items
-
-        if actions.contains(.copy), actions.contains(.duplicate), actions.contains(.move) {
-            middleActions.append(
-                UIMenu(title: NSLocalizedString("Move or Copy", comment: "Button title") + "...", children: [copy, duplicate, move])
-            )
-        } else {
-            if actions.contains(.copy) {
-                middleActions.append(copy)
-            }
-            if actions.contains(.duplicate) {
-                middleActions.append(duplicate)
-            }
-            if actions.contains(.move) {
-                middleActions.append(move)
-            }
-        }
-
-        /// Restore action
-
-        if actions.contains(.restore) {
-            middleActions.append(
-                UIAction(
-                    title: NSLocalizedString("Restore", comment: "Button title"),
-                    image: UIImage(systemName: "arrow.2.circlepath")
-                ) { [unowned self] action in
-                    cell.hideSwipe(animated: true)
-                    self.recover(cell: cell)
-                }
-            )
-        }
-
-        /// Delete action
-
-        if actions.contains(.delete) {
-            middleActions.append(
-                UIAction(
-                    title: NSLocalizedString("Delete", comment: "Button title"),
-                    image: UIImage(systemName: "trash"),
-                    attributes: .destructive
-                ) { [unowned self] action in
-                    cell.hideSwipe(animated: true)
-                    self.delete(cell: cell)
-                }
-            )
-        }
-
-        /// Unmount action
-
-        if actions.contains(.unmount) {
-            middleActions.append(
-                UIAction(
-                    title: NSLocalizedString("Disconnect third party", comment: "Button title"),
-                    image: UIImage(systemName: "trash"),
-                    attributes: .destructive
-                ) { [unowned self] action in
-                    cell.hideSwipe(animated: true)
-                    self.delete(cell: cell)
-                }
-            )
-        }
-
-        /// Share action
-
-        if actions.contains(.share) {
-            bottomActions.append(
-                UIAction(
-                    title: NSLocalizedString("Sharing Settings", comment: "Button title"),
-                    image: UIImage(systemName: "person.2")
-                ) { [unowned self] action in
-                    cell.hideSwipe(animated: true)
-                    navigator.navigate(to: .shareSettings(entity: file))
-                }
-            )
-        }
-
-        /// Export action
-
-        if actions.contains(.export) {
-            bottomActions.append(
-                UIAction(
-                    title: NSLocalizedString("Export", comment: "Button title"),
-                    image: UIImage(systemName: "square.and.arrow.up")
-                ) { [unowned self] action in
-                    cell.hideSwipe(animated: true)
-                    self.export(cell: cell)
-                }
-            )
-        }
-
-        if #available(iOS 14.0, *) {
-            return UIMenu(title: "", options: [.displayInline], children: [
-                UIMenu(title: "", options: .displayInline, children: topActions),
-                UIMenu(title: "", options: .displayInline, children: middleActions),
-                UIMenu(title: "", options: .displayInline, children: bottomActions),
-            ])
-        } else {
-            rootActions = [topActions, bottomActions, middleActions].reduce([], +)
-            return UIMenu(title: "", children: rootActions)
-        }
-    }
-
-    @available(iOS 13.0, *)
-    private func makeFolderContextMenu(for cell: ASCFolderCell) -> UIMenu? {
-        guard
-            let folder = cell.folder,
-            let provider = provider
-        else {
-            return nil
-        }
-
-        let actions = provider.actions(for: folder)
-
-        var rootActions: [UIMenuElement] = []
-
-        /// Rename action
-
-        if actions.contains(.rename) {
-            rootActions.append(
-                UIAction(
-                    title: NSLocalizedString("Rename", comment: "Button title"),
-                    image: UIImage(systemName: "pencil.and.ellipsis.rectangle")
-                ) { [unowned self] action in
-                    cell.hideSwipe(animated: true)
-                    self.rename(cell: cell)
-                }
-            )
-        }
-
-        /// Copy action
-
-        let copy = UIAction(
-            title: NSLocalizedString("Copy", comment: "Button title"),
-            image: UIImage(systemName: "doc.on.doc")
-        ) { [unowned self] action in
-            cell.hideSwipe(animated: true)
-            self.copy(cell: cell)
-        }
-
-        /// Move action
-
-        let move = UIAction(
-            title: NSLocalizedString("Move", comment: "Button title"),
-            image: UIImage(systemName: "folder")
-        ) { [unowned self] action in
-            cell.hideSwipe(animated: true)
-            self.move(cell: cell)
-        }
-
-        /// Transfer items
-
-        if actions.contains(.copy), actions.contains(.move) {
-            rootActions.append(
-                UIMenu(title: NSLocalizedString("Move or Copy", comment: "Button title") + "...", children: [copy, move])
-            )
-        } else {
-            if actions.contains(.copy) {
-                rootActions.append(copy)
-            }
-            if actions.contains(.move) {
-                rootActions.append(move)
-            }
-        }
-
-        /// Share action
-
-        if actions.contains(.share) {
-            rootActions.append(
-                UIAction(
-                    title: NSLocalizedString("Sharing Settings", comment: "Button title"),
-                    image: UIImage(systemName: "person.2")
-                ) { [unowned self] action in
-                    cell.hideSwipe(animated: true)
-                    navigator.navigate(to: .shareSettings(entity: folder))
-                }
-            )
-        }
-
-        /// Mark as read action
-
-        if actions.contains(.new) {
-            rootActions.append(
-                UIAction(
-                    title: NSLocalizedString("Mark as Read", comment: "Button title"),
-                    image: UIImage(systemName: "envelope.open")
-                ) { [unowned self] action in
-                    cell.hideSwipe(animated: true)
-                    self.markAsRead(cell: cell)
-                }
-            )
-        }
-
-        /// Restore action
-
-        if actions.contains(.restore) {
-            rootActions.append(
-                UIAction(
-                    title: NSLocalizedString("Restore", comment: "Button title"),
-                    image: UIImage(systemName: "arrow.2.circlepath")
-                ) { [unowned self] action in
-                    cell.hideSwipe(animated: true)
-                    self.recover(cell: cell)
-                }
-            )
-        }
-
-        /// Delete action
-
-        if actions.contains(.delete) {
-            rootActions.append(
-                UIAction(
-                    title: NSLocalizedString("Delete", comment: "Button title"),
-                    image: UIImage(systemName: "trash"),
-                    attributes: .destructive
-                ) { [unowned self] action in
-                    cell.hideSwipe(animated: true)
-                    self.delete(cell: cell)
-                }
-            )
-        }
-
-        /// Unmount action
-
-        if actions.contains(.unmount), !(self.folder?.isThirdParty ?? false) {
-            rootActions.append(
-                UIAction(
-                    title: NSLocalizedString("Disconnect third party", comment: "Button title"),
-                    image: UIImage(systemName: "trash"),
-                    attributes: .destructive
-                ) { [unowned self] action in
-                    cell.hideSwipe(animated: true)
-                    self.delete(cell: cell)
-                }
-            )
-        }
-
-        return UIMenu(title: "", children: rootActions)
-    }
-
     @available(iOS 14.0, *)
     private func sortSelectMenu(for button: UIButton) -> UIMenu? {
         var selectActions: [UIMenuElement] = []
@@ -2052,343 +1376,6 @@ class ASCDocumentsViewController: ASCBaseTableViewController, UIGestureRecognize
         ])
     }
 
-    private func fileActionMenu(cell: ASCFileCell) -> UIAlertController? {
-        guard
-            let file = cell.file,
-            let provider = provider,
-            view.isUserInteractionEnabled
-        else {
-            return nil
-        }
-
-        let actions = provider.actions(for: file)
-
-        let actionAlertController = UIAlertController(
-            title: nil,
-            message: nil,
-            preferredStyle: .actionSheet,
-            tintColor: nil
-        )
-
-        if actions.contains(.open) {
-            actionAlertController.addAction(
-                UIAlertAction(
-                    title: NSLocalizedString("Preview", comment: "Button title"),
-                    style: .default,
-                    handler: { [unowned self] action in
-                        cell.hideSwipe(animated: true)
-                        self.open(file: file, viewMode: true)
-                    }
-                )
-            )
-        }
-
-        if actions.contains(.edit) {
-            actionAlertController.addAction(
-                UIAlertAction(
-                    title: NSLocalizedString("Edit", comment: "Button title"),
-                    style: .default,
-                    handler: { [unowned self] action in
-                        cell.hideSwipe(animated: true)
-                        self.open(file: file)
-                    }
-                )
-            )
-        }
-
-        if actions.contains(.download) {
-            actionAlertController.addAction(
-                UIAlertAction(
-                    title: NSLocalizedString("Download", comment: "Button title"),
-                    style: .default,
-                    handler: { [unowned self] action in
-                        cell.hideSwipe(animated: true)
-                        self.download(cell: cell)
-                    }
-                )
-            )
-        }
-
-        if actions.contains(.rename) {
-            actionAlertController.addAction(
-                UIAlertAction(
-                    title: NSLocalizedString("Rename", comment: "Button title"),
-                    style: .default,
-                    handler: { [unowned self] action in
-                        cell.hideSwipe(animated: true)
-                        self.rename(cell: cell)
-                    }
-                )
-            )
-        }
-
-        if actions.contains(.copy) {
-            actionAlertController.addAction(
-                UIAlertAction(
-                    title: NSLocalizedString("Copy", comment: "Button title"),
-                    style: .default,
-                    handler: { [unowned self] action in
-                        cell.hideSwipe(animated: true)
-                        self.copy(cell: cell)
-                    }
-                )
-            )
-        }
-
-        if actions.contains(.duplicate) {
-            actionAlertController.addAction(
-                UIAlertAction(
-                    title: NSLocalizedString("Duplicate", comment: "Button title"),
-                    style: .default,
-                    handler: { [unowned self] action in
-                        cell.hideSwipe(animated: true)
-                        self.duplicate(cell: cell)
-                    }
-                ))
-        }
-
-        if actions.contains(.move) {
-            actionAlertController.addAction(
-                UIAlertAction(
-                    title: NSLocalizedString("Move", comment: "Button title"),
-                    style: .default,
-                    handler: { [unowned self] action in
-                        cell.hideSwipe(animated: true)
-                        self.move(cell: cell)
-                    }
-                )
-            )
-        }
-
-        if actions.contains(.favarite) {
-            actionAlertController.addAction(
-                UIAlertAction(
-                    title: file.isFavorite
-                        ? NSLocalizedString("Remove from Favorites", comment: "Button title")
-                        : NSLocalizedString("Mark as Favorite", comment: "Button title"),
-                    style: .default,
-                    handler: { [unowned self] action in
-                        cell.hideSwipe(animated: true)
-                        self.favorite(cell: cell, favorite: !file.isFavorite)
-                    }
-                )
-            )
-        }
-
-        if actions.contains(.new) {
-            actionAlertController.addAction(
-                UIAlertAction(
-                    title: NSLocalizedString("Mark as Read", comment: "Button title"),
-                    style: .default,
-                    handler: { [unowned self] action in
-                        cell.hideSwipe(animated: true)
-                        self.markAsRead(cell: cell)
-                    }
-                )
-            )
-        }
-
-        if actions.contains(.share) {
-            actionAlertController.addAction(
-                UIAlertAction(
-                    title: NSLocalizedString("Sharing Settings", comment: "Button title"),
-                    style: .default,
-                    handler: { [unowned self] action in
-                        cell.hideSwipe(animated: true)
-                        navigator.navigate(to: .shareSettings(entity: file))
-                    }
-                )
-            )
-        }
-
-        if actions.contains(.export) {
-            actionAlertController.addAction(
-                UIAlertAction(
-                    title: NSLocalizedString("Export", comment: "Button title"),
-                    style: .default,
-                    handler: { [unowned self] action in
-                        cell.hideSwipe(animated: true)
-                        self.export(cell: cell)
-                    }
-                )
-            )
-        }
-
-        if actions.contains(.delete) {
-            actionAlertController.addAction(
-                UIAlertAction(
-                    title: NSLocalizedString("Delete", comment: "Button title"),
-                    style: .destructive,
-                    handler: { [unowned self] action in
-                        cell.hideSwipe(animated: true)
-                        self.delete(cell: cell)
-                    }
-                )
-            )
-        }
-
-        if actions.contains(.unmount) {
-            actionAlertController.addAction(
-                UIAlertAction(
-                    title: NSLocalizedString("Disconnect third party", comment: "Button title"),
-                    style: .destructive,
-                    handler: { [unowned self] action in
-                        cell.hideSwipe(animated: true)
-                        self.delete(cell: cell)
-                    }
-                )
-            )
-        }
-
-        if UIDevice.phone {
-            actionAlertController.addAction(
-                UIAlertAction(
-                    title: ASCLocalization.Common.cancel,
-                    style: .cancel,
-                    handler: { action in
-                        cell.hideSwipe(animated: true)
-                    }
-                )
-            )
-        }
-
-        return actionAlertController
-    }
-
-    private func folderActionMenu(cell: ASCFolderCell) -> UIAlertController? {
-        guard
-            let folder = cell.folder,
-            let provider = provider,
-            view.isUserInteractionEnabled
-        else {
-            return nil
-        }
-
-        let actions = provider.actions(for: folder)
-
-        let actionAlertController = UIAlertController(
-            title: nil,
-            message: nil,
-            preferredStyle: .actionSheet,
-            tintColor: nil
-        )
-
-        if actions.contains(.rename) {
-            actionAlertController.addAction(
-                UIAlertAction(
-                    title: NSLocalizedString("Rename", comment: "Button title"),
-                    style: .default,
-                    handler: { [unowned self] action in
-                        cell.hideSwipe(animated: true)
-                        self.rename(cell: cell)
-                    }
-                )
-            )
-        }
-
-        if actions.contains(.copy) {
-            actionAlertController.addAction(
-                UIAlertAction(
-                    title: NSLocalizedString("Copy", comment: "Button title"),
-                    style: .default,
-                    handler: { [unowned self] action in
-                        cell.hideSwipe(animated: true)
-                        self.copy(cell: cell)
-                    }
-                )
-            )
-        }
-
-        if actions.contains(.move) {
-            actionAlertController.addAction(
-                UIAlertAction(
-                    title: NSLocalizedString("Move", comment: "Button title"),
-                    style: .default,
-                    handler: { [unowned self] action in
-                        cell.hideSwipe(animated: true)
-                        self.move(cell: cell)
-                    }
-                )
-            )
-        }
-
-        if actions.contains(.new) {
-            actionAlertController.addAction(
-                UIAlertAction(
-                    title: NSLocalizedString("Mark as Read", comment: "Button title"),
-                    style: .default,
-                    handler: { [unowned self] action in
-                        cell.hideSwipe(animated: true)
-                        self.markAsRead(cell: cell)
-                    }
-                )
-            )
-        }
-
-        if actions.contains(.share) {
-            actionAlertController.addAction(
-                UIAlertAction(
-                    title: NSLocalizedString("Sharing Settings", comment: "Button title"),
-                    style: .default,
-                    handler: { [unowned self] action in
-                        cell.hideSwipe(animated: true)
-                        navigator.navigate(to: .shareSettings(entity: folder))
-                    }
-                )
-            )
-        }
-
-        if actions.contains(.delete) {
-            actionAlertController.addAction(
-                UIAlertAction(
-                    title: NSLocalizedString("Delete", comment: "Button title"),
-                    style: .destructive,
-                    handler: { [unowned self] action in
-                        cell.hideSwipe(animated: true)
-                        self.delete(cell: cell)
-                    }
-                )
-            )
-        }
-
-        if actions.contains(.unmount), !(self.folder?.isThirdParty ?? false) {
-            actionAlertController.addAction(
-                UIAlertAction(
-                    title: NSLocalizedString("Disconnect third party", comment: "Button title"),
-                    style: .destructive,
-                    handler: { [unowned self] action in
-                        cell.hideSwipe(animated: true)
-                        self.delete(cell: cell)
-                    }
-                )
-            )
-        }
-
-        if UIDevice.phone {
-            actionAlertController.addAction(
-                UIAlertAction(
-                    title: ASCLocalization.Common.cancel,
-                    style: .cancel,
-                    handler: { action in
-                        cell.hideSwipe(animated: true)
-                    }
-                )
-            )
-        }
-
-        return actionAlertController
-    }
-
-    private func decorate(menu buttons: [MGSwipeButton]) -> [MGSwipeButton] {
-        for button in buttons {
-            button.buttonWidth = 75
-            button.titleLabel?.font = UIFont.systemFont(ofSize: 12)
-            button.horizontalCenterIconOverText()
-        }
-
-        return buttons
-    }
-
     private func highlight(cell: UITableViewCell) {
         let originalBgColor = cell.contentView.backgroundColor
 
@@ -2439,193 +1426,6 @@ class ASCDocumentsViewController: ASCBaseTableViewController, UIGestureRecognize
         swipeToPreviousFolder.direction = .right
         swipeToPreviousFolder.name = "swipeRight"
         view.addGestureRecognizer(swipeToPreviousFolder)
-    }
-
-    // MARK: - Table view data source
-
-    override func numberOfSections(in tableView: UITableView) -> Int {
-        return 1
-    }
-
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if tableData.count < total {
-            return tableData.count + 1
-        }
-
-        return tableData.count
-    }
-
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        if tableData.count > 0 {
-            emptyView?.removeFromSuperview()
-
-            if indexPath.row < tableData.count {
-                if let folder = tableData[indexPath.row] as? ASCFolder {
-                    // Folder cell
-
-                    if let folderCell = ASCFolderCell.createForTableView(tableView) as? ASCFolderCell {
-                        folderCell.folder = folder
-                        folderCell.delegate = self
-
-                        return folderCell
-                    }
-                } else if let file = tableData[indexPath.row] as? ASCFile {
-                    // File cell
-
-                    if let fileCell = ASCFileCell.createForTableView(tableView) as? ASCFileCell {
-                        fileCell.provider = provider
-                        fileCell.file = file
-                        fileCell.delegate = self
-
-                        return fileCell
-                    }
-                }
-            } else {
-                // Loader cell
-
-                if let loaderCell = ASCLoaderCell.createForTableView(tableView) as? ASCLoaderCell {
-                    loaderCell.tag = kPageLoadingCellTag
-                    loaderCell.separatorInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: .greatestFiniteMagnitude)
-                    loaderCell.startActivity()
-
-                    return loaderCell
-                }
-            }
-        }
-
-        return UITableViewCell()
-    }
-
-    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if tableView.isEditing {
-            if let folder = tableData[indexPath.row] as? ASCFolder {
-                selectedIds.insert(folder.uid)
-            } else if let file = tableData[indexPath.row] as? ASCFile {
-                selectedIds.insert(file.uid)
-            }
-
-            events.trigger(eventName: "item:didSelect")
-            return
-        }
-
-        tableView.deselectRow(at: indexPath, animated: true)
-
-        if indexPath.row >= tableData.count {
-            return
-        }
-
-        if let folder = tableData[indexPath.row] as? ASCFolder {
-            if isTrash(folder) {
-                UIAlertController.showWarning(
-                    in: self,
-                    message: NSLocalizedString("The folder in the Trash can not be opened.", comment: "")
-                )
-                return
-            }
-
-            let controller = ASCDocumentsViewController.instantiate(from: Storyboard.main)
-            navigationController?.pushViewController(controller, animated: true)
-
-            controller.provider = provider?.copy()
-            controller.provider?.reset()
-            controller.folder = folder
-            controller.title = folder.title
-        } else if let file = tableData[indexPath.row] as? ASCFile, let provider = provider {
-            if ASCConstants.Feature.openViewModeByDefault {
-                let title = file.title,
-                    fileExt = title.fileExtension().lowercased()
-
-                if ASCConstants.FileExtensions.documents.contains(fileExt) {
-                    open(file: file, viewMode: true)
-                } else {
-                    open(file: file, viewMode: !provider.allowEdit(entity: file))
-                }
-            } else {
-                open(file: file, viewMode: !provider.allowEdit(entity: file))
-            }
-        }
-    }
-
-    override func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
-        if tableView.isEditing {
-            if let folder = tableData[indexPath.row] as? ASCFolder {
-                selectedIds.remove(folder.uid)
-            } else if let file = tableData[indexPath.row] as? ASCFile {
-                selectedIds.remove(file.uid)
-            }
-
-            events.trigger(eventName: "item:didDeselect")
-            return
-        }
-    }
-
-    override func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
-        if cell.tag == kPageLoadingCellTag {
-            cell.setEditing(false, animated: false)
-            cell.isHidden = false
-            provider?.page += 1
-
-            fetchData { [weak self] success in
-                if !success {
-                    guard let strongSelf = self else { return }
-
-                    strongSelf.provider?.page -= 1
-                    delay(seconds: 0.6) {
-                        cell.isHidden = true
-                    }
-                }
-            }
-        } else {
-            if indexPath.row > tableData.count - 1 {
-                return
-            }
-
-            var isSelected = false
-
-            if let folder = tableData[indexPath.row] as? ASCFolder {
-                isSelected = selectedIds.contains(folder.uid)
-            } else if let file = tableData[indexPath.row] as? ASCFile {
-                isSelected = selectedIds.contains(file.uid)
-            }
-
-            if isSelected {
-                tableView.selectRow(at: indexPath, animated: false, scrollPosition: .none)
-                self.tableView(tableView, didSelectRowAt: indexPath)
-            }
-        }
-    }
-
-    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        if tableData.count < total, indexPath.row == tableData.count - 1 {
-            if let cell = tableView.cellForRow(at: indexPath), cell.tag == kPageLoadingCellTag {
-                return false
-            }
-        }
-        return true
-    }
-
-    @available(iOS 13.0, *)
-    override func tableView(_ tableView: UITableView, contextMenuConfigurationForRowAt indexPath: IndexPath, point: CGPoint) -> UIContextMenuConfiguration? {
-        return UIContextMenuConfiguration(identifier: nil, previewProvider: nil, actionProvider: { [weak self] suggestedActions in
-            guard
-                let strongSelf = self,
-                let cell = tableView.cellForRow(at: indexPath)
-            else { return nil }
-
-            if let fileCell = cell as? ASCFileCell {
-                return strongSelf.makeFileContextMenu(for: fileCell)
-            } else if let folderCell = cell as? ASCFolderCell {
-                return strongSelf.makeFolderContextMenu(for: folderCell)
-            }
-
-            return nil
-        })
-    }
-
-    @available(iOS 13.0, *)
-    override func tableView(_ tableView: UITableView, shouldBeginMultipleSelectionInteractionAt indexPath: IndexPath) -> Bool {
-        setEditMode(true)
-        return true
     }
 
     // MARK: - Open files
@@ -2745,6 +1545,71 @@ class ASCDocumentsViewController: ASCBaseTableViewController, UIGestureRecognize
         } else if let folderCell = cell as? ASCFolderCell, let folder = folderCell.folder {
             delete(indexes: [folder.uid])
         }
+    }
+
+    func deleteIfNeeded(
+        cell: UITableViewCell,
+        menuButton: UIButton,
+        complation: @escaping (UITableViewCell, Bool) -> Void
+    ) {
+        var title: String?
+        let isTrash = self.isTrash(folder)
+        let cellFolder = (cell as? ASCFolderCell)?.folder
+        let currentFolder = folder
+
+        if isTrash {
+            title = NSLocalizedString("The file will be irretrievably deleted. This action is irreversible.", comment: "")
+        } else if let currentFolder = currentFolder, currentFolder.isThirdParty {
+            title = NSLocalizedString("Note: removal from your account can not be undone.", comment: "")
+        }
+
+        let alertDelete = UIAlertController(
+            title: title,
+            message: nil,
+            preferredStyle: .actionSheet,
+            tintColor: nil
+        )
+
+        var message = NSLocalizedString("Delete File", comment: "Button title")
+
+        if let cellFolder = cellFolder {
+            message = NSLocalizedString("Delete Folder", comment: "")
+
+            if cellFolder.isThirdParty, !(currentFolder?.isThirdParty ?? false) {
+                message = NSLocalizedString("Disconnect third party", comment: "")
+            }
+        }
+
+        alertDelete.addAction(
+            UIAlertAction(
+                title: message,
+                style: .destructive,
+                handler: { action in
+                    complation(cell, true)
+                }
+            )
+        )
+
+        if UIDevice.pad {
+            alertDelete.modalPresentationStyle = .popover
+            alertDelete.popoverPresentationController?.sourceView = menuButton
+            alertDelete.popoverPresentationController?.sourceRect = menuButton.bounds
+            alertDelete.popoverPresentationController?.permittedArrowDirections = [.up, .down]
+            flashBlockInteration()
+        } else {
+            alertDelete.addAction(
+                UIAlertAction(
+                    title: ASCLocalization.Common.cancel,
+                    style: .cancel,
+                    handler: { action in
+                        complation(cell, false)
+                    }
+                )
+            )
+        }
+
+        present(alertDelete, animated: true, completion: nil)
+        hideableViewControllerOnTransition = alertDelete
     }
 
     func rename(cell: UITableViewCell) {
@@ -3095,6 +1960,23 @@ class ASCDocumentsViewController: ASCBaseTableViewController, UIGestureRecognize
         }
     }
 
+    func more(cell: UITableViewCell, menuButton: UIButton) {
+        if let moreAlertController = buildFileActionMenu(for: cell) {
+            if UIDevice.pad {
+                moreAlertController.modalPresentationStyle = .popover
+                moreAlertController.popoverPresentationController?.sourceView = menuButton
+                moreAlertController.popoverPresentationController?.sourceRect = menuButton.bounds
+                moreAlertController.popoverPresentationController?.permittedArrowDirections = [.up, .down]
+                flashBlockInteration()
+            }
+
+            moreAlertController.view.tintColor = view.tintColor
+            searchController.searchBar.resignFirstResponder()
+            present(moreAlertController, animated: true, completion: nil)
+            hideableViewControllerOnTransition = moreAlertController
+        }
+    }
+
     private func insideTransfer(
         items: [ASCEntity],
         to folder: ASCFolder,
@@ -3305,57 +2187,59 @@ class ASCDocumentsViewController: ASCBaseTableViewController, UIGestureRecognize
                         transferAlert.show()
                         transferAlert.progress = 0
 
-                        ASCEntityManager.shared.transfer(from: (items: items, provider: srcProvider),
-                                                         to: (folder: destFolder, provider: destProvider),
-                                                         move: move,
-                                                         handler:
-                                                         { [weak self] progress, complate, success, newItems, error, cancel in
-                                                             log.debug("Transfer procress: \(Int(progress * 100))%")
+                        ASCEntityManager.shared.transfer(
+                            from: (items: items, provider: srcProvider),
+                            to: (folder: destFolder, provider: destProvider),
+                            move: move,
+                            handler:
+                            { [weak self] progress, complate, success, newItems, error, cancel in
+                                log.debug("Transfer procress: \(Int(progress * 100))%")
 
-                                                             if forceCancel {
-                                                                 cancel = forceCancel
-                                                             }
+                                if forceCancel {
+                                    cancel = forceCancel
+                                }
 
-                                                             DispatchQueue.main.async { [items, newItems] in
-                                                                 if complate {
-                                                                     transferAlert.hide()
+                                DispatchQueue.main.async { [items, newItems] in
+                                    if complate {
+                                        transferAlert.hide()
 
-                                                                     if success {
-                                                                         completion?(nil)
+                                        if success {
+                                            completion?(nil)
 
-                                                                         if !items.isEmpty, let destVC = getLoadedViewController(byFolderId: destFolder.id, andProviderId: destProvider.id) {
-                                                                             if let transfers = newItems, items.count == transfers.count {
-                                                                                 insert(transferedItems: transfers, toLoadedViewController: destVC)
-                                                                             } else {
-                                                                                 destVC.loadFirstPage()
-                                                                             }
-                                                                         }
-                                                                     } else {
-                                                                         completion?(items)
-                                                                     }
+                                            if !items.isEmpty, let destVC = getLoadedViewController(byFolderId: destFolder.id, andProviderId: destProvider.id) {
+                                                if let transfers = newItems, items.count == transfers.count {
+                                                    insert(transferedItems: transfers, toLoadedViewController: destVC)
+                                                } else {
+                                                    destVC.loadFirstPage()
+                                                }
+                                            }
+                                        } else {
+                                            completion?(items)
+                                        }
 
-                                                                     if let strongSelf = self {
-                                                                         if srcProvider.type != .local || destProvider.type != .local,
-                                                                            !ASCNetworkReachability.shared.isReachable
-                                                                         {
-                                                                             UIAlertController.showError(
-                                                                                 in: strongSelf,
-                                                                                 message: NSLocalizedString("Check your internet connection", comment: "")
-                                                                             )
-                                                                         } else {
-                                                                             if !success, let error = error {
-                                                                                 UIAlertController.showError(
-                                                                                     in: strongSelf,
-                                                                                     message: error.localizedDescription
-                                                                                 )
-                                                                             }
-                                                                         }
-                                                                     }
-                                                                 } else {
-                                                                     transferAlert.progress = progress
-                                                                 }
-                                                             }
-                                                         })
+                                        if let strongSelf = self {
+                                            if srcProvider.type != .local || destProvider.type != .local,
+                                               !ASCNetworkReachability.shared.isReachable
+                                            {
+                                                UIAlertController.showError(
+                                                    in: strongSelf,
+                                                    message: NSLocalizedString("Check your internet connection", comment: "")
+                                                )
+                                            } else {
+                                                if !success, let error = error {
+                                                    UIAlertController.showError(
+                                                        in: strongSelf,
+                                                        message: error.localizedDescription
+                                                    )
+                                                }
+                                            }
+                                        }
+                                    } else {
+                                        transferAlert.progress = progress
+                                    }
+                                }
+                            }
+                        )
                     }
                 }
             }
@@ -3710,6 +2594,195 @@ class ASCDocumentsViewController: ASCBaseTableViewController, UIGestureRecognize
     }
 }
 
+// MARK: - Table view data source
+
+extension ASCDocumentsViewController {
+    override func numberOfSections(in tableView: UITableView) -> Int {
+        return 1
+    }
+
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        if tableData.count < total {
+            return tableData.count + 1
+        }
+
+        return tableData.count
+    }
+
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        if tableData.count > 0 {
+            emptyView?.removeFromSuperview()
+
+            if indexPath.row < tableData.count {
+                if let folder = tableData[indexPath.row] as? ASCFolder {
+                    // Folder cell
+
+                    if let folderCell = ASCFolderCell.createForTableView(tableView) as? ASCFolderCell {
+                        folderCell.folder = folder
+                        folderCell.delegate = self
+
+                        return folderCell
+                    }
+                } else if let file = tableData[indexPath.row] as? ASCFile {
+                    // File cell
+
+                    if let fileCell = ASCFileCell.createForTableView(tableView) as? ASCFileCell {
+                        fileCell.provider = provider
+                        fileCell.file = file
+                        fileCell.delegate = self
+
+                        return fileCell
+                    }
+                }
+            } else {
+                // Loader cell
+
+                if let loaderCell = ASCLoaderCell.createForTableView(tableView) as? ASCLoaderCell {
+                    loaderCell.tag = kPageLoadingCellTag
+                    loaderCell.separatorInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: .greatestFiniteMagnitude)
+                    loaderCell.startActivity()
+
+                    return loaderCell
+                }
+            }
+        }
+
+        return UITableViewCell()
+    }
+
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if tableView.isEditing {
+            if let folder = tableData[indexPath.row] as? ASCFolder {
+                selectedIds.insert(folder.uid)
+            } else if let file = tableData[indexPath.row] as? ASCFile {
+                selectedIds.insert(file.uid)
+            }
+
+            events.trigger(eventName: "item:didSelect")
+            return
+        }
+
+        tableView.deselectRow(at: indexPath, animated: true)
+
+        if indexPath.row >= tableData.count {
+            return
+        }
+
+        if let folder = tableData[indexPath.row] as? ASCFolder {
+            if isTrash(folder) {
+                UIAlertController.showWarning(
+                    in: self,
+                    message: NSLocalizedString("The folder in the Trash can not be opened.", comment: "")
+                )
+                return
+            }
+
+            let controller = ASCDocumentsViewController.instantiate(from: Storyboard.main)
+            navigationController?.pushViewController(controller, animated: true)
+
+            controller.provider = provider?.copy()
+            controller.provider?.reset()
+            controller.folder = folder
+            controller.title = folder.title
+        } else if let file = tableData[indexPath.row] as? ASCFile, let provider = provider {
+            if ASCConstants.Feature.openViewModeByDefault {
+                let title = file.title,
+                    fileExt = title.fileExtension().lowercased()
+
+                if ASCConstants.FileExtensions.documents.contains(fileExt) {
+                    open(file: file, viewMode: true)
+                } else {
+                    open(file: file, viewMode: !provider.allowEdit(entity: file))
+                }
+            } else {
+                open(file: file, viewMode: !provider.allowEdit(entity: file))
+            }
+        }
+    }
+
+    override func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
+        if tableView.isEditing {
+            if let folder = tableData[indexPath.row] as? ASCFolder {
+                selectedIds.remove(folder.uid)
+            } else if let file = tableData[indexPath.row] as? ASCFile {
+                selectedIds.remove(file.uid)
+            }
+
+            events.trigger(eventName: "item:didDeselect")
+            return
+        }
+    }
+
+    override func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        if cell.tag == kPageLoadingCellTag {
+            cell.setEditing(false, animated: false)
+            cell.isHidden = false
+            provider?.page += 1
+
+            fetchData { [weak self] success in
+                if !success {
+                    guard let strongSelf = self else { return }
+
+                    strongSelf.provider?.page -= 1
+                    delay(seconds: 0.6) {
+                        cell.isHidden = true
+                    }
+                }
+            }
+        } else {
+            if indexPath.row > tableData.count - 1 {
+                return
+            }
+
+            var isSelected = false
+
+            if let folder = tableData[indexPath.row] as? ASCFolder {
+                isSelected = selectedIds.contains(folder.uid)
+            } else if let file = tableData[indexPath.row] as? ASCFile {
+                isSelected = selectedIds.contains(file.uid)
+            }
+
+            if isSelected {
+                tableView.selectRow(at: indexPath, animated: false, scrollPosition: .none)
+                self.tableView(tableView, didSelectRowAt: indexPath)
+            }
+        }
+    }
+
+    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+        if tableData.count < total, indexPath.row == tableData.count - 1 {
+            if let cell = tableView.cellForRow(at: indexPath), cell.tag == kPageLoadingCellTag {
+                return false
+            }
+        }
+        return true
+    }
+
+    @available(iOS 13.0, *)
+    override func tableView(_ tableView: UITableView, contextMenuConfigurationForRowAt indexPath: IndexPath, point: CGPoint) -> UIContextMenuConfiguration? {
+        return UIContextMenuConfiguration(identifier: nil, previewProvider: nil, actionProvider: { [weak self] suggestedActions in
+            guard
+                let strongSelf = self,
+                let cell = tableView.cellForRow(at: indexPath)
+            else { return nil }
+
+            if let fileCell = cell as? ASCFileCell {
+                return strongSelf.buildFileContextMenu(for: fileCell)
+            } else if let folderCell = cell as? ASCFolderCell {
+                return strongSelf.buildFolderContextMenu(for: folderCell)
+            }
+
+            return nil
+        })
+    }
+
+    @available(iOS 13.0, *)
+    override func tableView(_ tableView: UITableView, shouldBeginMultipleSelectionInteractionAt indexPath: IndexPath) -> Bool {
+        setEditMode(true)
+        return true
+    }
+}
+
 // MARK: - UISearchControllerDelegate
 
 extension ASCDocumentsViewController: UISearchControllerDelegate {
@@ -3802,28 +2875,6 @@ extension ASCDocumentsViewController: UISearchResultsUpdating {
                 }
             }
         }
-    }
-}
-
-// MARK: - MGSwipeTableCellDelegate
-
-extension ASCDocumentsViewController: MGSwipeTableCellDelegate {
-    func swipeTableCell(_ cell: MGSwipeTableCell, canSwipe direction: MGSwipeDirection, from point: CGPoint) -> Bool {
-        return direction != .leftToRight
-    }
-
-    func swipeTableCell(_ cell: MGSwipeTableCell, swipeButtonsFor direction: MGSwipeDirection, swipeSettings: MGSwipeSettings, expansionSettings: MGSwipeExpansionSettings) -> [UIView]? {
-        swipeSettings.transition = .border
-
-        if direction == .rightToLeft {
-            if let fileCell = cell as? ASCFileCell {
-                return fileMenu(cell: fileCell)
-            } else if let folderCell = cell as? ASCFolderCell {
-                return folderMenu(cell: folderCell)
-            }
-        }
-
-        return nil
     }
 }
 

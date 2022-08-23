@@ -1163,7 +1163,7 @@ extension ASCEditorManager {
             guard
                 let user = ASCFileManager.onlyofficeProvider?.user,
                 let userId = user.userId,
-                let userName = file.createdBy?.displayName ?? user.userName,
+                let userName = user.userName ?? file.createdBy?.displayName,
                 let firstName = user.firstName,
                 let lastName = user.lastName
             else {
@@ -1193,7 +1193,7 @@ extension ASCEditorManager {
                 "sdkCheck": sdkCheck,
                 "appFonts": editorFontsPaths,
                 "dataFontsPath": dataFontsPath,
-                "supportShare": true,
+                "supportShare": true, // TODO: Handle permission
                 "license": licenseUrl,
             ]
 

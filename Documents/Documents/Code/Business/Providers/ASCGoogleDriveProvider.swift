@@ -7,6 +7,7 @@
 //
 
 import FileKit
+import FilesProvider
 import Firebase
 import GoogleAPIClientForREST
 import GoogleSignIn
@@ -77,12 +78,37 @@ class ASCGoogleDriveProvider: ASCFileProviderProtocol & ASCSortableFileProviderP
         }
     }
 
+    enum GoogleMimeTypes: String, CaseIterable {
+        case document = "application/vnd.google-apps.document"
+        case spreadsheet = "application/vnd.google-apps.spreadsheet"
+        case presentation = "application/vnd.google-apps.presentation"
+        case form = "application/vnd.google-apps.form"
+        case folder = "application/vnd.google-apps.folder"
+        case unknown
+
+        init() {
+            self = .unknown
+        }
+
+        init(_ type: String) {
+            switch type {
+            case "application/vnd.google-apps.document": self = .document
+            case "application/vnd.google-apps.spreadsheet": self = .spreadsheet
+            case "application/vnd.google-apps.presentation": self = .presentation
+            case "application/vnd.google-apps.form": self = .form
+            case "application/vnd.google-apps.folder": self = .folder
+            default: self = .unknown
+            }
+        }
+    }
+
     private let googleMimeTypes = [
-        "application/vnd.google-apps.document",
-        "application/vnd.google-apps.spreadsheet",
-        "application/vnd.google-apps.presentation",
-        "application/vnd.google-apps.form",
-    ]
+        GoogleMimeTypes.document,
+        GoogleMimeTypes.spreadsheet,
+        GoogleMimeTypes.presentation,
+        GoogleMimeTypes.form,
+    ].map { $0.rawValue }
+
     private let defaultObjectFields = "id,name,mimeType,modifiedTime,createdTime,fileExtension,size,webContentLink,parents"
 
     // MARK: - Lifecycle Methods
@@ -318,7 +344,7 @@ class ASCGoogleDriveProvider: ASCFileProviderProtocol & ASCSortableFileProviderP
                     var folders: [ASCFolder] = []
 
                     folders = objects
-                        .filter { $0.mimeType == "application/vnd.google-apps.folder" }
+                        .filter { $0.mimeType == GoogleMimeTypes.folder.rawValue }
                         .map {
                             let cloudFolder = ASCFolder()
                             cloudFolder.id = $0.identifier ?? ""
@@ -335,13 +361,13 @@ class ASCGoogleDriveProvider: ASCFileProviderProtocol & ASCSortableFileProviderP
                         }
 
                     files = objects
-                        .filter { $0.mimeType != "application/vnd.google-apps.folder" }
+                        .filter { $0.mimeType != GoogleMimeTypes.folder.rawValue }
                         .map {
                             let fileSize: UInt64 = max(0, UInt64(truncating: $0.size ?? 0))
                             let cloudFile = ASCFile()
                             cloudFile.id = $0.identifier ?? ""
                             cloudFile.rootFolderType = .googledriveAll
-                            cloudFile.title = $0.name ?? ""
+                            cloudFile.title = ($0.name ?? "") + (self?.documementExtension(for: $0) ?? "")
                             cloudFile.created = $0.createdTime?.date
                             cloudFile.updated = $0.modifiedTime?.date
                             cloudFile.createdBy = strongSelf.user
@@ -431,7 +457,10 @@ class ASCGoogleDriveProvider: ASCFileProviderProtocol & ASCSortableFileProviderP
                 // Googles own format can be downloaded via this query
                 // https://developers.google.com/drive/v3/web/manage-downloads
                 if strongSelf.googleMimeTypes.contains(googleFileInfo.mimeType ?? "") {
-                    queryDownload = GTLRDriveQuery_FilesExport.queryForMedia(withFileId: path, mimeType: "application/pdf")
+                    queryDownload = GTLRDriveQuery_FilesExport.queryForMedia(
+                        withFileId: path,
+                        mimeType: strongSelf.googleMimeToOpenXML(mimeType: googleFileInfo.mimeType) ?? "application/pdf"
+                    )
                 } else {
                     queryDownload = GTLRDriveQuery_FilesGet.queryForMedia(withFileId: path)
                 }
@@ -514,7 +543,7 @@ class ASCGoogleDriveProvider: ASCFileProviderProtocol & ASCSortableFileProviderP
                 }
 
                 let metadata = GTLRDrive_File()
-                metadata.name = googleFileInfo.name ?? ""
+                metadata.name = (googleFileInfo.name ?? "") + (strongSelf.documementExtension(for: googleFileInfo) ?? "")
                 metadata.parents = googleFileInfo.parents ?? []
 
                 // Remove original
@@ -527,7 +556,7 @@ class ASCGoogleDriveProvider: ASCFileProviderProtocol & ASCSortableFileProviderP
                         }
 
                         // Upload changes
-                        let uploadParameters = GTLRUploadParameters(data: data, mimeType: mimeType)
+                        let uploadParameters = GTLRUploadParameters(data: data, mimeType: strongSelf.googleMimeToOpenXML(mimeType: mimeType) ?? mimeType)
                         let queryCreate = GTLRDriveQuery_FilesCreate.query(withObject: metadata, uploadParameters: uploadParameters)
                         queryMetadata.fields = metadataFields
 
@@ -536,7 +565,7 @@ class ASCGoogleDriveProvider: ASCFileProviderProtocol & ASCSortableFileProviderP
                                 if let error = error {
                                     processing(nil, 1.0, error)
                                 } else if let fileObject = file as? GTLRDrive_File {
-                                    let fileSize: UInt64 = max(0, UInt64(truncating: fileObject.size ?? 0))
+                                    let fileSize: UInt64 = max(0, UInt64(truncating: fileObject.size ?? NSNumber(value: data.count)))
 
                                     let parent = ASCFolder()
                                     parent.id = fileObject.parents?.first ?? ""
@@ -545,8 +574,8 @@ class ASCGoogleDriveProvider: ASCFileProviderProtocol & ASCSortableFileProviderP
                                     cloudFile.id = fileObject.identifier ?? ""
                                     cloudFile.rootFolderType = .googledriveAll
                                     cloudFile.title = fileObject.name ?? ""
-                                    cloudFile.created = fileObject.createdTime?.date
-                                    cloudFile.updated = fileObject.modifiedTime?.date
+                                    cloudFile.created = fileObject.createdTime?.date ?? Date()
+                                    cloudFile.updated = fileObject.modifiedTime?.date ?? Date()
                                     cloudFile.createdBy = strongSelf.user
                                     cloudFile.updatedBy = strongSelf.user
                                     cloudFile.parent = parent
@@ -1076,6 +1105,47 @@ class ASCGoogleDriveProvider: ASCFileProviderProtocol & ASCSortableFileProviderP
                 log.debug("progress: \(Double(totalBytesSent) / Double(max(1, totalBytesExpectedToSend)))")
                 processing(nil, Double(totalBytesSent) / Double(max(1, totalBytesExpectedToSend)), nil)
             }
+        }
+    }
+
+    /// Get openxmlformat file extension by google file
+    /// - Parameter googleDocument: Google file type
+    /// - Returns: File extension with dot
+    private func documementExtension(for googleDocument: GTLRDrive_File) -> String? {
+        if let mimeType = googleDocument.mimeType,
+           let fileExtension = googleDocument.name?.fileExtension(),
+           fileExtension.isEmpty
+        {
+            switch GoogleMimeTypes(mimeType) {
+            case .document:
+                return ".docx"
+            case .spreadsheet:
+                return ".xlsx"
+            case .presentation:
+                return ".pptx"
+            default:
+                break
+            }
+        }
+
+        return nil
+    }
+
+    /// Convert google mime type to openxmlformat mime type
+    /// - Parameter mimeType: Original mime type
+    /// - Returns: Transformed mime type
+    private func googleMimeToOpenXML(mimeType: String?) -> String? {
+        guard let mimeType = mimeType else { return nil }
+
+        switch GoogleMimeTypes(mimeType) {
+        case .document:
+            return ContentMIMEType.word.rawValue
+        case .spreadsheet:
+            return ContentMIMEType.excel.rawValue
+        case .presentation:
+            return ContentMIMEType.powerpoint.rawValue
+        default:
+            return nil
         }
     }
 

@@ -364,6 +364,9 @@
 /* No comment provided by engineer. */
 "Document" = "Dokument";
 
+/* No comment provided by engineer. */
+"Document protection" = "Ochrana dokumentů";
+
 /* Default title of sample document */
 "Document Sample" = "Vzorek dokumentu";
 
@@ -427,6 +430,9 @@
 
 /* No comment provided by engineer. */
 "Enter Portal Address" = "Zadejte adresu portálu";
+
+/* No comment provided by engineer. */
+"Enter text using handwriting instead of device keyboard. ONLYOFFICE will recognize text and insert it in the document." = "Zadávejte text ručně místo klávesnice zařízení. ONLYOFFICE rozpozná text a vloží jej do dokumentu.";
 
 /* No comment provided by engineer. */
 "Error" = "Chyba";
@@ -498,13 +504,16 @@
 "File does not exist" = "Soubor neexistuje";
 
 /* No comment provided by engineer. */
+"File search became easier with filtering options: by type for local files and by type and author for cloud files." = "Vyhledávání souborů se stalo jednodušší díky možnostem filtrování: podle typu pro místní soubory a podle typu a autora pro soubory v cloudu.";
+
+/* No comment provided by engineer. */
 "Files" = "Soubory";
 
 /* No comment provided by engineer. */
 "Files Preview" = "Náhled souborů";
 
 /* No comment provided by engineer. */
-"Fill the shapes using gradients, images, or patterns. Choose the desirable line type." = "Vyplňte tvary pomocí gradientů, obrázků nebo vzorů. Vyberte požadovaný typ čáry.";
+"Filtering in search" = "Filtrování ve vyhledávání";
 
 /* No comment provided by engineer. */
 "First name is incorrect" = "Křestní jméno je nesprávné";
@@ -544,6 +553,9 @@
 
 /* No comment provided by engineer. */
 "Groups" = "Skupiny";
+
+/* No comment provided by engineer. */
+"Handwriting recognition" = "Rozpoznávání rukou psaného textu";
 
 /* No comment provided by engineer. */
 "iCloud" = "iCloud";
@@ -596,9 +608,6 @@
 /* No comment provided by engineer. */
 "Link copied\nto the clipboard" = "Odkaz zkopírován do schránky";
 
-/* No comment provided by engineer. */
-"Log in to your cloud using Apple ID or Microsoft account." = "Přihlaste se do cloudu pomocí Apple ID nebo účtu Microsoft.";
-
 /* Caption of the process */
 "Logging in" = "Přihlášení v";
 
@@ -616,7 +625,7 @@
 "Logout" = "Odhlášení";
 
 /* Button title */
-"Mark as favorite" = "Označit jako oblíbené";
+"Mark as Favorite" = "Označit jako oblíbené";
 
 /* Data units */
 "Mb" = "Mb";
@@ -626,9 +635,6 @@
 
 /* Button title */
 "More" = "Více";
-
-/* No comment provided by engineer. */
-"More in autoshapes" = "Více automatických tvarů";
 
 /* Button title */
 "Move" = "Přesunout";
@@ -659,9 +665,6 @@
 
 /* No comment provided by engineer. */
 "New" = "Nový";
-
-/* No comment provided by engineer. */
-"New authentication methods" = "Nové metody ověřování";
 
 /* No comment provided by engineer. */
 "New Document" = "Nový dokument";
@@ -858,6 +861,9 @@
 "Project Documents" = "Projektové dokumenty";
 
 /* No comment provided by engineer. */
+"Protect documents with passwords to share them securely with trusted collaborators." = "Chraňte dokumenty hesly, abyste je mohli bezpečně sdílet s důvěryhodnými spolupracovníky.";
+
+/* No comment provided by engineer. */
 "Protected File" = "Chráněný soubor";
 
 /* Share status */
@@ -868,9 +874,6 @@
 
 /* Caption of the processing */
 "Recovery" = "Obnova";
-
-/* No comment provided by engineer. */
-"Regional settings" = "Regionální nastavení";
 
 /* No comment provided by engineer. */
 "Registration" = "Registrace";
@@ -941,9 +944,6 @@
 
 /* One line. Max 50 charasters */
 "Select the folder to recover the items" = "Vyberte složku pro obnovení položek";
-
-/* No comment provided by engineer. */
-"Select the region in spreadsheet settings to automatically convert currency, date, and time." = "Vyberte region v nastavení tabulky pro automatický převod měny, data a času.";
 
 /* No comment provided by engineer. */
 "Selected provider is not available" = "Vybraný poskytovatel není dostupný";
@@ -1064,9 +1064,6 @@
 
 /* No comment provided by engineer. */
 "The folder in the Trash can not be opened." = "Složku v koši nelze otevřít.";
-
-/* No comment provided by engineer. */
-"The folder will be irretrievably deleted. This action is irreversible." = "Složka bude nenávratně smazána. Tato akce je nevratná.";
 
 /* No comment provided by engineer. */
 "The item with the name '%@' already exists in the folder '%@'." = "Položka s názvem '%1$@' již existuje ve složce '%2$@'";

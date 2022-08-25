@@ -382,6 +382,9 @@
 /* No comment provided by engineer. */
 "Document" = "Документ";
 
+/* No comment provided by engineer. */
+"Document protection" = "Защита документов";
+
 /* Default title of sample document */
 "Document Sample" = "Образец документа";
 
@@ -451,6 +454,9 @@
 
 /* No comment provided by engineer. */
 "Enter Portal Address" = "Введите адрес портала";
+
+/* No comment provided by engineer. */
+"Enter text using handwriting instead of device keyboard. ONLYOFFICE will recognize text and insert it in the document." = "Используйте рукописный ввод в редакторе документов вместо клавиатуры. ONLYOFFICE распознает текст и вставит его в документ.";
 
 /* No comment provided by engineer. */
 "Error" = "Ошибка";
@@ -528,13 +534,16 @@
 "File does not exist" = "Файл не существует";
 
 /* No comment provided by engineer. */
+"File search became easier with filtering options: by type for local files and by type and author for cloud files." = "Поиск по файлам стал проще с фильтрами: по типу для локальных файлов и по типу и автору для документов в облаке.";
+
+/* No comment provided by engineer. */
 "Files" = "Файлы";
 
 /* No comment provided by engineer. */
 "Files Preview" = "Предпросмотр файлов";
 
 /* No comment provided by engineer. */
-"Fill the shapes using gradients, images, or patterns. Choose the desirable line type." = "Выполняйте заливку фигур градиентом, изображением или узором. Выбирайте подходящий тип линий.";
+"Filtering in search" = "Фильтрация поиска";
 
 /* No comment provided by engineer. */
 "Filters" = "Фильтры";
@@ -577,6 +586,9 @@
 
 /* No comment provided by engineer. */
 "Groups" = "Группы";
+
+/* No comment provided by engineer. */
+"Handwriting recognition" = "Рукописный ввод";
 
 /* No comment provided by engineer. */
 "iCloud" = "iCloud";
@@ -629,9 +641,6 @@
 /* No comment provided by engineer. */
 "Link copied\nto the clipboard" = "Ссылка скопирована\nв буфер обмена";
 
-/* No comment provided by engineer. */
-"Log in to your cloud using Apple ID or Microsoft account." = "Осуществляйте вход в облако с помощью Apple ID или аккаунта Microsoft.";
-
 /* Caption of the process */
 "Logging in" = "Выполняется вход";
 
@@ -649,7 +658,13 @@
 "Logout" = "Выход";
 
 /* Button title */
-"Mark as favorite" = "Добавить в избранное";
+"Mark as Favorite" = "Добавить в избранное";
+
+/* Button title */
+"Mark as Read" = "Пометить прочтённым";
+
+/* No comment provided by engineer. */
+"Mark as Read failed." = "Пометить прочтённым не удалось.";
 
 /* Data units */
 "Mb" = "Мб";
@@ -662,9 +677,6 @@
 
 /* Button title */
 "More" = "Еще";
-
-/* No comment provided by engineer. */
-"More in autoshapes" = "Улучшенные автофигуры";
 
 /* Button title */
 "Move" = "Переместить";
@@ -693,11 +705,11 @@
 /* No comment provided by engineer. */
 "Needs additional params." = "Нужны дополнительные параметры.";
 
-/* No comment provided by engineer. */
-"New" = "Новый";
+/* Badge of file in file list */
+"new" = "новое";
 
 /* No comment provided by engineer. */
-"New authentication methods" = "Новые возможности входа";
+"New" = "Новый";
 
 /* No comment provided by engineer. */
 "New Document" = "Новый документ";
@@ -912,6 +924,9 @@
 "Project Documents" = "В проектах";
 
 /* No comment provided by engineer. */
+"Protect documents with passwords to share them securely with trusted collaborators." = "Защищайте документы с помощью паролей чтобы безопасно делиться файлами с другими пользователями.";
+
+/* No comment provided by engineer. */
 "Protected File" = "Защищенный файл";
 
 /* No comment provided by engineer. */
@@ -925,9 +940,6 @@
 
 /* Caption of the processing */
 "Recovery" = "Восстановление";
-
-/* No comment provided by engineer. */
-"Regional settings" = "Региональные настройки";
 
 /* No comment provided by engineer. */
 "Registration" = "Регистрация";
@@ -1004,9 +1016,6 @@
 
 /* One line. Max 50 charasters */
 "Select the folder to recover the items" = "Выберите папку для восстановления элементов";
-
-/* No comment provided by engineer. */
-"Select the region in spreadsheet settings to automatically convert currency, date, and time." = "Настройте регион в таблицах чтобы автоматически форматировать валюту, даты и время.";
 
 /* No comment provided by engineer. */
 "Select user" = "Пользователи";
@@ -1139,9 +1148,6 @@
 
 /* No comment provided by engineer. */
 "The folder in the Trash can not be opened." = "Невозможно открыть папку, находящийся в корзине.";
-
-/* No comment provided by engineer. */
-"The folder will be irretrievably deleted. This action is irreversible." = "Папка будет безвозвратно удалена. Это действие нельзя отменить.";
 
 /* No comment provided by engineer. */
 "The item with the name '%@' already exists in the folder '%@'." = "Файл с именем '%1$@' уже существует в папке '%2$@'";

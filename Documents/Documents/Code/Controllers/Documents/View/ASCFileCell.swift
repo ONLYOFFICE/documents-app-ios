@@ -39,7 +39,7 @@ class ASCFileCell: MGSwipeTableCell {
 
     private lazy var newBadge: ASCPaddingLabel = {
         $0.backgroundColor = Asset.Colors.badge.color
-        $0.text = NSLocalizedString("new", comment: "Badge of file in file list")
+        $0.text = NSLocalizedString("new", comment: "Badge of file in file list").lowercased()
         $0.textStyle = .caption2White
         $0.padding = UIEdgeInsets(top: 2, left: 4, bottom: 3, right: 4)
         $0.layerCornerRadius = 4

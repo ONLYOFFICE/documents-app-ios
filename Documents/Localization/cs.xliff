@@ -1943,6 +1943,11 @@ jiné, které používají protokol WebDAV.</target>
         <target>Vzorek dokumentu</target>
         <note>Default title of sample document</note>
       </trans-unit>
+      <trans-unit id="Document protection" xml:space="preserve">
+        <source>Document protection</source>
+        <target state="translated">Ochrana dokumentů</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
       <trans-unit id="Documents" xml:space="preserve">
         <source>Documents</source>
         <target>Dokumenty</target>
@@ -2052,6 +2057,11 @@ jiné, které používají protokol WebDAV.</target>
         <source>Enter a password to open the file.</source>
         <note>No comment provided by engineer.</note>
       </trans-unit>
+      <trans-unit id="Enter text using handwriting instead of device keyboard. ONLYOFFICE will recognize text and insert it in the document." xml:space="preserve">
+        <source>Enter text using handwriting instead of device keyboard. ONLYOFFICE will recognize text and insert it in the document.</source>
+        <target state="translated">Zadávejte text ručně místo klávesnice zařízení. ONLYOFFICE rozpozná text a vloží jej do dokumentu.</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
       <trans-unit id="Error" xml:space="preserve">
         <source>Error</source>
         <target>Chyba</target>
@@ -2155,6 +2165,11 @@ jiné, které používají protokol WebDAV.</target>
         <target>Soubor neexistuje</target>
         <note>Description of file operation error</note>
       </trans-unit>
+      <trans-unit id="File search became easier with filtering options: by type for local files and by type and author for cloud files." xml:space="preserve">
+        <source>File search became easier with filtering options: by type for local files and by type and author for cloud files.</source>
+        <target state="translated">Vyhledávání souborů se stalo jednodušší díky možnostem filtrování: podle typu pro místní soubory a podle typu a autora pro soubory v cloudu.</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
       <trans-unit id="Files" xml:space="preserve">
         <source>Files</source>
         <target>Soubory</target>
@@ -2165,9 +2180,9 @@ jiné, které používají protokol WebDAV.</target>
         <target>Náhled souborů</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
-      <trans-unit id="Fill the shapes using gradients, images, or patterns. Choose the desirable line type." xml:space="preserve">
-        <source>Fill the shapes using gradients, images, or patterns. Choose the desirable line type.</source>
-        <target>Vyplňte tvary pomocí gradientů, obrázků nebo vzorů. Vyberte požadovaný typ čáry.</target>
+      <trans-unit id="Filtering in search" xml:space="preserve">
+        <source>Filtering in search</source>
+        <target state="translated">Filtrování ve vyhledávání</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Filters" xml:space="preserve">
@@ -2239,6 +2254,11 @@ jiné, které používají protokol WebDAV.</target>
         <target>Skupiny</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
+      <trans-unit id="Handwriting recognition" xml:space="preserve">
+        <source>Handwriting recognition</source>
+        <target state="translated">Rozpoznávání rukou psaného textu</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
       <trans-unit id="If a user with the mail %@ exists, then an instruction to change the password was sent to this address." xml:space="preserve">
         <source>If a user with the mail %@ exists, then an instruction to change the password was sent to this address.</source>
         <target>Pokud uživatel s e-mailovou adresou %@ existuje, byl na tuto adresu zaslán pokyn ke změně hesla.</target>
@@ -2305,11 +2325,6 @@ to the clipboard</source>
         <target>Odkaz zkopírován do schránky</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
-      <trans-unit id="Log in to your cloud using Apple ID or Microsoft account." xml:space="preserve">
-        <source>Log in to your cloud using Apple ID or Microsoft account.</source>
-        <target>Přihlaste se do cloudu pomocí Apple ID nebo účtu Microsoft.</target>
-        <note>No comment provided by engineer.</note>
-      </trans-unit>
       <trans-unit id="Logging in" xml:space="preserve">
         <source>Logging in</source>
         <target>Přihlášení v</target>
@@ -2336,10 +2351,18 @@ to the clipboard</source>
         <note>Button title
    Caption of the process</note>
       </trans-unit>
-      <trans-unit id="Mark as favorite" xml:space="preserve">
-        <source>Mark as favorite</source>
+      <trans-unit id="Mark as Favorite" xml:space="preserve">
+        <source>Mark as Favorite</source>
         <target>Označit jako oblíbené</target>
         <note>Button title</note>
+      </trans-unit>
+      <trans-unit id="Mark as Read" xml:space="preserve">
+        <source>Mark as Read</source>
+        <note>Button title</note>
+      </trans-unit>
+      <trans-unit id="Mark as Read failed." xml:space="preserve">
+        <source>Mark as Read failed.</source>
+        <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Mb" xml:space="preserve">
         <source>Mb</source>
@@ -2359,11 +2382,6 @@ to the clipboard</source>
         <source>More</source>
         <target>Více</target>
         <note>Button title</note>
-      </trans-unit>
-      <trans-unit id="More in autoshapes" xml:space="preserve">
-        <source>More in autoshapes</source>
-        <target>Více automatických tvarů</target>
-        <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Move" xml:space="preserve">
         <source>Move</source>
@@ -2433,11 +2451,6 @@ to the clipboard</source>
       <trans-unit id="New Spreadsheet" xml:space="preserve">
         <source>New Spreadsheet</source>
         <target>Nová tabulka</target>
-        <note>No comment provided by engineer.</note>
-      </trans-unit>
-      <trans-unit id="New authentication methods" xml:space="preserve">
-        <source>New authentication methods</source>
-        <target>Nové metody ověřování</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Next" xml:space="preserve">
@@ -2757,6 +2770,11 @@ to the clipboard</source>
         <target>Projektové dokumenty</target>
         <note>Category title</note>
       </trans-unit>
+      <trans-unit id="Protect documents with passwords to share them securely with trusted collaborators." xml:space="preserve">
+        <source>Protect documents with passwords to share them securely with trusted collaborators.</source>
+        <target state="translated">Chraňte dokumenty hesly, abyste je mohli bezpečně sdílet s důvěryhodnými spolupracovníky.</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
       <trans-unit id="Protected File" xml:space="preserve">
         <source>Protected File</source>
         <target>Chráněný soubor</target>
@@ -2780,11 +2798,6 @@ to the clipboard</source>
         <source>Recovery</source>
         <target>Obnova</target>
         <note>Caption of the processing</note>
-      </trans-unit>
-      <trans-unit id="Regional settings" xml:space="preserve">
-        <source>Regional settings</source>
-        <target>Regionální nastavení</target>
-        <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Registration" xml:space="preserve">
         <source>Registration</source>
@@ -2914,11 +2927,6 @@ to the clipboard</source>
         <source>Select the folder to recover the items</source>
         <target>Vyberte složku pro obnovení položek</target>
         <note>One line. Max 50 charasters</note>
-      </trans-unit>
-      <trans-unit id="Select the region in spreadsheet settings to automatically convert currency, date, and time." xml:space="preserve">
-        <source>Select the region in spreadsheet settings to automatically convert currency, date, and time.</source>
-        <target>Vyberte region v nastavení tabulky pro automatický převod měny, data a času.</target>
-        <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Select user" xml:space="preserve">
         <source>Select user</source>
@@ -3133,11 +3141,6 @@ to the clipboard</source>
       <trans-unit id="The folder in the Trash can not be opened." xml:space="preserve">
         <source>The folder in the Trash can not be opened.</source>
         <target>Složku v koši nelze otevřít.</target>
-        <note>No comment provided by engineer.</note>
-      </trans-unit>
-      <trans-unit id="The folder will be irretrievably deleted. This action is irreversible." xml:space="preserve">
-        <source>The folder will be irretrievably deleted. This action is irreversible.</source>
-        <target>Složka bude nenávratně smazána. Tato akce je nevratná.</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="The item with the name '%@' already exists in the folder '%@'." xml:space="preserve">

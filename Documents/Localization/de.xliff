@@ -1857,6 +1857,11 @@ die das WebDAV-Protokoll verwenden.</target>
         <target>Musterdokument</target>
         <note>Default title of sample document</note>
       </trans-unit>
+      <trans-unit id="Document protection" xml:space="preserve">
+        <source>Document protection</source>
+        <target state="translated">Dokumentenschutz</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
       <trans-unit id="Documents" xml:space="preserve">
         <source>Documents</source>
         <target>Dokumente</target>
@@ -1966,6 +1971,11 @@ die das WebDAV-Protokoll verwenden.</target>
         <source>Enter a password to open the file.</source>
         <note>No comment provided by engineer.</note>
       </trans-unit>
+      <trans-unit id="Enter text using handwriting instead of device keyboard. ONLYOFFICE will recognize text and insert it in the document." xml:space="preserve">
+        <source>Enter text using handwriting instead of device keyboard. ONLYOFFICE will recognize text and insert it in the document.</source>
+        <target state="translated">Geben Sie Text handschriftlich statt über die Gerätetastatur ein. ONLYOFFICE erkennt den Text und fügt ihn in das Dokument ein.</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
       <trans-unit id="Error" xml:space="preserve">
         <source>Error</source>
         <target>Fehler</target>
@@ -2069,6 +2079,11 @@ die das WebDAV-Protokoll verwenden.</target>
         <target>Die Datei existiert nicht</target>
         <note>Description of file operation error</note>
       </trans-unit>
+      <trans-unit id="File search became easier with filtering options: by type for local files and by type and author for cloud files." xml:space="preserve">
+        <source>File search became easier with filtering options: by type for local files and by type and author for cloud files.</source>
+        <target state="translated">Die Dateisuche ist durch Filteroptionen einfacher: nach Typ für lokale Dateien und nach Typ und Autor für Cloud-Dateien.</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
       <trans-unit id="Files" xml:space="preserve">
         <source>Files</source>
         <target>Dateien</target>
@@ -2079,9 +2094,9 @@ die das WebDAV-Protokoll verwenden.</target>
         <target>Dateivorschau</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
-      <trans-unit id="Fill the shapes using gradients, images, or patterns. Choose the desirable line type." xml:space="preserve">
-        <source>Fill the shapes using gradients, images, or patterns. Choose the desirable line type.</source>
-        <target>Füllen Sie die Formen mit Farbverläufen, Bildern oder Mustern. Wählen Sie den gewünschten Linientyp aus.</target>
+      <trans-unit id="Filtering in search" xml:space="preserve">
+        <source>Filtering in search</source>
+        <target state="translated">Filtern bei der Suche</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Filters" xml:space="preserve">
@@ -2153,6 +2168,11 @@ die das WebDAV-Protokoll verwenden.</target>
         <target>Gruppen</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
+      <trans-unit id="Handwriting recognition" xml:space="preserve">
+        <source>Handwriting recognition</source>
+        <target state="translated">Handschrifterkennung</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
       <trans-unit id="If a user with the mail %@ exists, then an instruction to change the password was sent to this address." xml:space="preserve">
         <source>If a user with the mail %@ exists, then an instruction to change the password was sent to this address.</source>
         <target>Wenn es einen Benutzer mit der E-Mail %@ gibt, wurden die Anweisungen zum Ändern des Passworts an diese E-Mail-Adresse verschickt.</target>
@@ -2220,11 +2240,6 @@ to the clipboard</source>
 in die Zwischenablage kopiert</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
-      <trans-unit id="Log in to your cloud using Apple ID or Microsoft account." xml:space="preserve">
-        <source>Log in to your cloud using Apple ID or Microsoft account.</source>
-        <target>Melden Sie sich bei Ihrer Cloud mit Apple ID oder dem Microsoft-Konto an.</target>
-        <note>No comment provided by engineer.</note>
-      </trans-unit>
       <trans-unit id="Logging in" xml:space="preserve">
         <source>Logging in</source>
         <target>Anmeldung</target>
@@ -2251,10 +2266,18 @@ in die Zwischenablage kopiert</target>
         <note>Button title
    Caption of the process</note>
       </trans-unit>
-      <trans-unit id="Mark as favorite" xml:space="preserve">
-        <source>Mark as favorite</source>
+      <trans-unit id="Mark as Favorite" xml:space="preserve">
+        <source>Mark as Favorite</source>
         <target>Als Favorit markieren</target>
         <note>Button title</note>
+      </trans-unit>
+      <trans-unit id="Mark as Read" xml:space="preserve">
+        <source>Mark as Read</source>
+        <note>Button title</note>
+      </trans-unit>
+      <trans-unit id="Mark as Read failed." xml:space="preserve">
+        <source>Mark as Read failed.</source>
+        <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Mb" xml:space="preserve">
         <source>Mb</source>
@@ -2274,11 +2297,6 @@ in die Zwischenablage kopiert</target>
         <source>More</source>
         <target>Mehr</target>
         <note>Button title</note>
-      </trans-unit>
-      <trans-unit id="More in autoshapes" xml:space="preserve">
-        <source>More in autoshapes</source>
-        <target>Mehr in AutoFormen</target>
-        <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Move" xml:space="preserve">
         <source>Move</source>
@@ -2348,11 +2366,6 @@ in die Zwischenablage kopiert</target>
       <trans-unit id="New Spreadsheet" xml:space="preserve">
         <source>New Spreadsheet</source>
         <target>Neue Tabelle</target>
-        <note>No comment provided by engineer.</note>
-      </trans-unit>
-      <trans-unit id="New authentication methods" xml:space="preserve">
-        <source>New authentication methods</source>
-        <target>Neue Methoden zur Authentifizierung</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Next" xml:space="preserve">
@@ -2674,6 +2687,11 @@ in die Zwischenablage kopiert</target>
         <target>Projektdokumente</target>
         <note>Category title</note>
       </trans-unit>
+      <trans-unit id="Protect documents with passwords to share them securely with trusted collaborators." xml:space="preserve">
+        <source>Protect documents with passwords to share them securely with trusted collaborators.</source>
+        <target state="translated">Schützen Sie Dokumente mit Passwörtern, um sie auf sichere Weise mit vertrauenswürdigen Mitautoren zu teilen.</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
       <trans-unit id="Protected File" xml:space="preserve">
         <source>Protected File</source>
         <target>Geschützte Datei</target>
@@ -2697,11 +2715,6 @@ in die Zwischenablage kopiert</target>
         <source>Recovery</source>
         <target>Wiederherstellung</target>
         <note>Caption of the processing</note>
-      </trans-unit>
-      <trans-unit id="Regional settings" xml:space="preserve">
-        <source>Regional settings</source>
-        <target>Regionale Einstellungen</target>
-        <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Registration" xml:space="preserve">
         <source>Registration</source>
@@ -2831,11 +2844,6 @@ in die Zwischenablage kopiert</target>
         <source>Select the folder to recover the items</source>
         <target>Wählen sie den Ordner, um Elemente wiederherzustellen</target>
         <note>One line. Max 50 charasters</note>
-      </trans-unit>
-      <trans-unit id="Select the region in spreadsheet settings to automatically convert currency, date, and time." xml:space="preserve">
-        <source>Select the region in spreadsheet settings to automatically convert currency, date, and time.</source>
-        <target>Wählen Sie die Region in den Einstellungen von Tabellenkalkulationen aus, um Währung, Datum und Uhrzeit automatisch zu konvertieren.</target>
-        <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Select user" xml:space="preserve">
         <source>Select user</source>
@@ -3050,11 +3058,6 @@ in die Zwischenablage kopiert</target>
       <trans-unit id="The folder in the Trash can not be opened." xml:space="preserve">
         <source>The folder in the Trash can not be opened.</source>
         <target>Der Ordner im Papierkorb kann nicht geöffnet werden.</target>
-        <note>No comment provided by engineer.</note>
-      </trans-unit>
-      <trans-unit id="The folder will be irretrievably deleted. This action is irreversible." xml:space="preserve">
-        <source>The folder will be irretrievably deleted. This action is irreversible.</source>
-        <target>Der Ordner wird unwiderruflich gelöscht. Diese Aktion ist nicht umkehrbar.</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="The item with the name '%@' already exists in the folder '%@'." xml:space="preserve">

@@ -429,6 +429,9 @@
 "Enter Portal Address" = "Въведете Адрес на портал";
 
 /* No comment provided by engineer. */
+"Enter text using handwriting instead of device keyboard. ONLYOFFICE will recognize text and insert it in the document." = "Въведете текст, като използвате ръкописен текст вместо клавиатурата на устройството. ONLYOFFICE ще разпознае текста и ще го вмъкне в документа.";
+
+/* No comment provided by engineer. */
 "Error" = "Грешка";
 
 /* No comment provided by engineer. */
@@ -498,13 +501,16 @@
 "File does not exist" = "Файлът не съществува";
 
 /* No comment provided by engineer. */
+"File search became easier with filtering options: by type for local files and by type and author for cloud files." = "Търсенето на файлове стана по-лесно с опциите за филтриране: по тип за локални файлове и по тип и автор за файлове в облак.";
+
+/* No comment provided by engineer. */
 "Files" = "Файлове";
 
 /* No comment provided by engineer. */
 "Files Preview" = "Преглед на файлове";
 
 /* No comment provided by engineer. */
-"Fill the shapes using gradients, images, or patterns. Choose the desirable line type." = "Попълнете формите, използвайки градиенти, изображения или модели. Изберете желания тип линия.";
+"Filtering in search" = "Филтриране в търсенето";
 
 /* No comment provided by engineer. */
 "First name is incorrect" = "Първото име е неправилно";
@@ -544,6 +550,9 @@
 
 /* No comment provided by engineer. */
 "Groups" = "Групи";
+
+/* No comment provided by engineer. */
+"Handwriting recognition" = "Разпознаване на почерк";
 
 /* No comment provided by engineer. */
 "iCloud" = "iCloud";
@@ -596,9 +605,6 @@
 /* No comment provided by engineer. */
 "Link copied\nto the clipboard" = "Връзката е копирана\nв клипборда";
 
-/* No comment provided by engineer. */
-"Log in to your cloud using Apple ID or Microsoft account." = "Влезте в облака си, използвайки Apple ID или Microsoft профила си.";
-
 /* Caption of the process */
 "Logging in" = "Влизане в системата";
 
@@ -615,9 +621,6 @@
    Caption of the process */
 "Logout" = "Излез от профила си";
 
-/* Button title */
-"Mark as favorite" = "Маркирай като любимо";
-
 /* Data units */
 "Mb" = "Мб";
 
@@ -626,9 +629,6 @@
 
 /* Button title */
 "More" = "Повече";
-
-/* No comment provided by engineer. */
-"More in autoshapes" = "Още в автоматични форми";
 
 /* Button title */
 "Move" = "Ход";
@@ -659,9 +659,6 @@
 
 /* No comment provided by engineer. */
 "New" = "Нов";
-
-/* No comment provided by engineer. */
-"New authentication methods" = "Нови методи за удостоверяване";
 
 /* No comment provided by engineer. */
 "New Document" = "Нов документ";
@@ -864,6 +861,9 @@
 "Project Documents" = "Документи по проекта";
 
 /* No comment provided by engineer. */
+"Protect documents with passwords to share them securely with trusted collaborators." = "Защитете документите с пароли, за да ги споделяте сигурно с доверени сътрудници.";
+
+/* No comment provided by engineer. */
 "Protected File" = "Защитен файл";
 
 /* Share status */
@@ -874,9 +874,6 @@
 
 /* Caption of the processing */
 "Recovery" = "Възстановяване";
-
-/* No comment provided by engineer. */
-"Regional settings" = "Регионални настройки";
 
 /* No comment provided by engineer. */
 "Registration" = "Регистрация";
@@ -947,9 +944,6 @@
 
 /* One line. Max 50 charasters */
 "Select the folder to recover the items" = "Изберете папката за възстановяване на елементи";
-
-/* No comment provided by engineer. */
-"Select the region in spreadsheet settings to automatically convert currency, date, and time." = "Изберете региона в настройките на таблицата, за да можете автоматично да конвертирате валута, дата и час.";
 
 /* No comment provided by engineer. */
 "Selected provider is not available" = "Избраният доставчик не е наличен";
@@ -1073,9 +1067,6 @@
 
 /* No comment provided by engineer. */
 "The folder in the Trash can not be opened." = "Папката в КОшчето не може да бъде отворена.";
-
-/* No comment provided by engineer. */
-"The folder will be irretrievably deleted. This action is irreversible." = "Папката ще бъде безвъзвратно изтрита. Това действие е необратимо.";
 
 /* No comment provided by engineer. */
 "The item with the name '%@' already exists in the folder '%@'." = "Елементът с името „%1$@“ вече съществува в папката „%2$@“.";

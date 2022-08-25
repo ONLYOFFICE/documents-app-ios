@@ -382,6 +382,9 @@
 /* No comment provided by engineer. */
 "Document" = "Փաստաթուղթ";
 
+/* No comment provided by engineer. */
+"Document protection" = "Փաստաթղթերի պաշտպանություն";
+
 /* Default title of sample document */
 "Document Sample" = "Փաստաթղթի նմուշ";
 
@@ -451,6 +454,9 @@
 
 /* No comment provided by engineer. */
 "Enter Portal Address" = "Մուտքագրեք պորտալի հասցեն";
+
+/* No comment provided by engineer. */
+"Enter text using handwriting instead of device keyboard. ONLYOFFICE will recognize text and insert it in the document." = "Օգտագործեք ձեռագիր մուտքագրում փաստաթղթերի խմբագրիչում՝ ստեղնաշարի փոխարեն: ONLYOFFICE-ը կճանաչի տեքստը և կտեղադրի այն փաստաթղթում:";
 
 /* No comment provided by engineer. */
 "Error" = "Սխալ";
@@ -528,13 +534,16 @@
 "File does not exist" = "Ֆայլը գոյություն չունի";
 
 /* No comment provided by engineer. */
+"File search became easier with filtering options: by type for local files and by type and author for cloud files." = "Ֆայլերի որոնումը հեշտացել է զտիչներով․ ըստ տեսակի՝ տեղական ֆայլերի համար և ըստ տեսակի ու հեղինակի՝ ամպի մեջ գտնվող փաստաթղթերի համար:";
+
+/* No comment provided by engineer. */
 "Files" = "Ֆայլեր";
 
 /* No comment provided by engineer. */
 "Files Preview" = "Ֆայլերի նախադիտում";
 
 /* No comment provided by engineer. */
-"Fill the shapes using gradients, images, or patterns. Choose the desirable line type." = "Ֆայլերի նախադիտում";
+"Filtering in search" = "Որոնման զտում";
 
 /* No comment provided by engineer. */
 "Filters" = "Զտիչներ";
@@ -577,6 +586,9 @@
 
 /* No comment provided by engineer. */
 "Groups" = "Խմբեր";
+
+/* No comment provided by engineer. */
+"Handwriting recognition" = "Ձեռագիր Փաստաթղթեր";
 
 /* No comment provided by engineer. */
 "iCloud" = "iCloud";
@@ -629,9 +641,6 @@
 /* No comment provided by engineer. */
 "Link copied\nto the clipboard" = "Հղումը պատճենված է\nդեպի clipboard ";
 
-/* No comment provided by engineer. */
-"Log in to your cloud using Apple ID or Microsoft account." = "Մուտք գործեք ձեր ամպ՝ օգտագործելով Apple ID կամ Microsoft հաշիվ:";
-
 /* Caption of the process */
 "Logging in" = "Մուտք գործեք";
 
@@ -649,7 +658,7 @@
 "Logout" = "Դուրս գալ";
 
 /* Button title */
-"Mark as favorite" = "Նշել որպես ֆավորիտ";
+"Mark as Favorite" = "Նշել որպես ֆավորիտ";
 
 /* Data units */
 "Mb" = "Mb";
@@ -662,9 +671,6 @@
 
 /* Button title */
 "More" = "Ավելին";
-
-/* No comment provided by engineer. */
-"More in autoshapes" = "Ավելին ավտոձևերով";
 
 /* Button title */
 "Move" = "Տեղափոխել";
@@ -695,9 +701,6 @@
 
 /* No comment provided by engineer. */
 "New" = "Նոր";
-
-/* No comment provided by engineer. */
-"New authentication methods" = "Նույնականացման նոր մեթոդներ";
 
 /* No comment provided by engineer. */
 "New Document" = "Նոր փաստաթուղթ";
@@ -912,6 +915,9 @@
 "Project Documents" = "Ծրագրի փաստաթղթեր";
 
 /* No comment provided by engineer. */
+"Protect documents with passwords to share them securely with trusted collaborators." = "Պաշտպանեք փաստաթղթերը գաղտնաբառերով՝ ապահով կերպով վստահելի համահեղինակների հետ կիսվելու համար:";
+
+/* No comment provided by engineer. */
 "Protected File" = "Պաշտպանված ֆայլ";
 
 /* No comment provided by engineer. */
@@ -925,9 +931,6 @@
 
 /* Caption of the processing */
 "Recovery" = "Վերականգնում";
-
-/* No comment provided by engineer. */
-"Regional settings" = "Տարածաշրջանային կարգավորումներ";
 
 /* No comment provided by engineer. */
 "Registration" = "Գրանցում";
@@ -1004,9 +1007,6 @@
 
 /* One line. Max 50 charasters */
 "Select the folder to recover the items" = "Ընտրեք թղթապանակը՝ տարրերը վերականգնելու համար";
-
-/* No comment provided by engineer. */
-"Select the region in spreadsheet settings to automatically convert currency, date, and time." = "Ընտրեք տարածաշրջանը աղյուսակի կարգավորումներում՝ արժույթը, ամսաթիվը և ժամը ավտոմատ փոխարկելու համար:";
 
 /* No comment provided by engineer. */
 "Select user" = "Ընտրեք օգտվողին";
@@ -1139,9 +1139,6 @@
 
 /* No comment provided by engineer. */
 "The folder in the Trash can not be opened." = "Աղբարկղում գտնվող թղթապանակը հնարավոր չէ բացել:";
-
-/* No comment provided by engineer. */
-"The folder will be irretrievably deleted. This action is irreversible." = "Թղթապանակն անդառնալիորեն կջնջվի: Այս գործողությունն անշրջելի է։";
 
 /* No comment provided by engineer. */
 "The item with the name '%@' already exists in the folder '%@'." = "«%1$@» անունով տարրն արդեն կա «%2$@» պանակում:";

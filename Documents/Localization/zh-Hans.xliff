@@ -1809,6 +1809,11 @@ others which use WebDAV protocol.</source>
         <target>文档示例</target>
         <note>Default title of sample document</note>
       </trans-unit>
+      <trans-unit id="Document protection" xml:space="preserve">
+        <source>Document protection</source>
+        <target state="translated">文件保护</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
       <trans-unit id="Documents" xml:space="preserve">
         <source>Documents</source>
         <target>文档</target>
@@ -1918,6 +1923,11 @@ others which use WebDAV protocol.</source>
         <source>Enter a password to open the file.</source>
         <note>No comment provided by engineer.</note>
       </trans-unit>
+      <trans-unit id="Enter text using handwriting instead of device keyboard. ONLYOFFICE will recognize text and insert it in the document." xml:space="preserve">
+        <source>Enter text using handwriting instead of device keyboard. ONLYOFFICE will recognize text and insert it in the document.</source>
+        <target state="translated">使用手写输入文字，ONLYOFFICE将识别文本并将其插入到文档中。</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
       <trans-unit id="Error" xml:space="preserve">
         <source>Error</source>
         <target>错误</target>
@@ -2021,6 +2031,11 @@ others which use WebDAV protocol.</source>
         <target>文件不存在</target>
         <note>Description of file operation error</note>
       </trans-unit>
+      <trans-unit id="File search became easier with filtering options: by type for local files and by type and author for cloud files." xml:space="preserve">
+        <source>File search became easier with filtering options: by type for local files and by type and author for cloud files.</source>
+        <target state="translated">通过过滤选项，文件搜索变得更加容易：本地文件可以按类型搜索，云文件可以按类型和作者搜索。</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
       <trans-unit id="Files" xml:space="preserve">
         <source>Files</source>
         <target>文件</target>
@@ -2031,9 +2046,9 @@ others which use WebDAV protocol.</source>
         <target>文件预览</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
-      <trans-unit id="Fill the shapes using gradients, images, or patterns. Choose the desirable line type." xml:space="preserve">
-        <source>Fill the shapes using gradients, images, or patterns. Choose the desirable line type.</source>
-        <target>使用梯度、图像或图案填充形状。选择理想的线条类型。</target>
+      <trans-unit id="Filtering in search" xml:space="preserve">
+        <source>Filtering in search</source>
+        <target state="translated">搜索中的过滤功能</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Filters" xml:space="preserve">
@@ -2105,6 +2120,11 @@ others which use WebDAV protocol.</source>
         <target>团队</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
+      <trans-unit id="Handwriting recognition" xml:space="preserve">
+        <source>Handwriting recognition</source>
+        <target state="translated">手写识别</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
       <trans-unit id="If a user with the mail %@ exists, then an instruction to change the password was sent to this address." xml:space="preserve">
         <source>If a user with the mail %@ exists, then an instruction to change the password was sent to this address.</source>
         <target>如果存在拥有 %@ 电子邮件的用户，密码修改指令已经发送到该电子邮件地址。</target>
@@ -2172,11 +2192,6 @@ to the clipboard</source>
 到剪贴板</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
-      <trans-unit id="Log in to your cloud using Apple ID or Microsoft account." xml:space="preserve">
-        <source>Log in to your cloud using Apple ID or Microsoft account.</source>
-        <target>使用Apple ID或微软账户登录您的云端。</target>
-        <note>No comment provided by engineer.</note>
-      </trans-unit>
       <trans-unit id="Logging in" xml:space="preserve">
         <source>Logging in</source>
         <target>正在登录</target>
@@ -2203,10 +2218,18 @@ to the clipboard</source>
         <note>Button title
    Caption of the process</note>
       </trans-unit>
-      <trans-unit id="Mark as favorite" xml:space="preserve">
-        <source>Mark as favorite</source>
+      <trans-unit id="Mark as Favorite" xml:space="preserve">
+        <source>Mark as Favorite</source>
         <target>标记为收藏</target>
         <note>Button title</note>
+      </trans-unit>
+      <trans-unit id="Mark as Read" xml:space="preserve">
+        <source>Mark as Read</source>
+        <note>Button title</note>
+      </trans-unit>
+      <trans-unit id="Mark as Read failed." xml:space="preserve">
+        <source>Mark as Read failed.</source>
+        <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Mb" xml:space="preserve">
         <source>Mb</source>
@@ -2226,11 +2249,6 @@ to the clipboard</source>
         <source>More</source>
         <target>更多</target>
         <note>Button title</note>
-      </trans-unit>
-      <trans-unit id="More in autoshapes" xml:space="preserve">
-        <source>More in autoshapes</source>
-        <target>自动形状新功能</target>
-        <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Move" xml:space="preserve">
         <source>Move</source>
@@ -2300,11 +2318,6 @@ to the clipboard</source>
       <trans-unit id="New Spreadsheet" xml:space="preserve">
         <source>New Spreadsheet</source>
         <target>新建电子表格</target>
-        <note>No comment provided by engineer.</note>
-      </trans-unit>
-      <trans-unit id="New authentication methods" xml:space="preserve">
-        <source>New authentication methods</source>
-        <target>新的认证方法</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Next" xml:space="preserve">
@@ -2626,6 +2639,11 @@ to the clipboard</source>
         <target>项目文档</target>
         <note>Category title</note>
       </trans-unit>
+      <trans-unit id="Protect documents with passwords to share them securely with trusted collaborators." xml:space="preserve">
+        <source>Protect documents with passwords to share them securely with trusted collaborators.</source>
+        <target state="translated">用密码保护文件，与受信任的协作者安全地分享内容。</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
       <trans-unit id="Protected File" xml:space="preserve">
         <source>Protected File</source>
         <target>受保护的文件</target>
@@ -2649,11 +2667,6 @@ to the clipboard</source>
         <source>Recovery</source>
         <target>恢复</target>
         <note>Caption of the processing</note>
-      </trans-unit>
-      <trans-unit id="Regional settings" xml:space="preserve">
-        <source>Regional settings</source>
-        <target>区域设置</target>
-        <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Registration" xml:space="preserve">
         <source>Registration</source>
@@ -2783,11 +2796,6 @@ to the clipboard</source>
         <source>Select the folder to recover the items</source>
         <target>选择文件夹恢复该项目</target>
         <note>One line. Max 50 charasters</note>
-      </trans-unit>
-      <trans-unit id="Select the region in spreadsheet settings to automatically convert currency, date, and time." xml:space="preserve">
-        <source>Select the region in spreadsheet settings to automatically convert currency, date, and time.</source>
-        <target>在电子表格设置中选择区域，以自动转换货币、日期和时间。</target>
-        <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Select user" xml:space="preserve">
         <source>Select user</source>
@@ -3002,11 +3010,6 @@ to the clipboard</source>
       <trans-unit id="The folder in the Trash can not be opened." xml:space="preserve">
         <source>The folder in the Trash can not be opened.</source>
         <target>无法打开垃圾桶中的文件夹。</target>
-        <note>No comment provided by engineer.</note>
-      </trans-unit>
-      <trans-unit id="The folder will be irretrievably deleted. This action is irreversible." xml:space="preserve">
-        <source>The folder will be irretrievably deleted. This action is irreversible.</source>
-        <target>该文件夹将无可挽回地删除。此操作不可逆。</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="The item with the name '%@' already exists in the folder '%@'." xml:space="preserve">

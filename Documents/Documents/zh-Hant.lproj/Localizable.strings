@@ -361,6 +361,9 @@
 /* No comment provided by engineer. */
 "Document" = "文档";
 
+/* No comment provided by engineer. */
+"Document protection" = "文件保护";
+
 /* Default title of sample document */
 "Document Sample" = "文档示例";
 
@@ -424,6 +427,9 @@
 
 /* No comment provided by engineer. */
 "Enter Portal Address" = "输入门户地址";
+
+/* No comment provided by engineer. */
+"Enter text using handwriting instead of device keyboard. ONLYOFFICE will recognize text and insert it in the document." = "使用手写输入文字，ONLYOFFICE将识别文本并将其插入到文档中。";
 
 /* No comment provided by engineer. */
 "Error" = "错误";
@@ -495,13 +501,16 @@
 "File does not exist" = "文件不存在";
 
 /* No comment provided by engineer. */
+"File search became easier with filtering options: by type for local files and by type and author for cloud files." = "通过过滤选项，文件搜索变得更加容易：本地文件可以按类型搜索，云文件可以按类型和作者搜索。";
+
+/* No comment provided by engineer. */
 "Files" = "文件";
 
 /* No comment provided by engineer. */
 "Files Preview" = "文件预览";
 
 /* No comment provided by engineer. */
-"Fill the shapes using gradients, images, or patterns. Choose the desirable line type." = "使用梯度、图像或图案填充形状。选择理想的线条类型。";
+"Filtering in search" = "搜索中的过滤功能";
 
 /* No comment provided by engineer. */
 "First name is incorrect" = "名字不正确";
@@ -541,6 +550,9 @@
 
 /* No comment provided by engineer. */
 "Groups" = "团队";
+
+/* No comment provided by engineer. */
+"Handwriting recognition" = "手写识别";
 
 /* No comment provided by engineer. */
 "iCloud" = "iCloud";
@@ -590,9 +602,6 @@
 /* No comment provided by engineer. */
 "Link copied\nto the clipboard" = "链接已复制\n到剪贴板";
 
-/* No comment provided by engineer. */
-"Log in to your cloud using Apple ID or Microsoft account." = "使用Apple ID或微软账户登录您的云端。";
-
 /* Caption of the process */
 "Logging in" = "正在登录";
 
@@ -610,7 +619,7 @@
 "Logout" = "登出";
 
 /* Button title */
-"Mark as favorite" = "标记为收藏";
+"Mark as Favorite" = "标记为收藏";
 
 /* Data units */
 "Mb" = "Mb";
@@ -620,9 +629,6 @@
 
 /* Button title */
 "More" = "更多";
-
-/* No comment provided by engineer. */
-"More in autoshapes" = "自动形状新功能";
 
 /* Button title */
 "Move" = "移动";
@@ -653,9 +659,6 @@
 
 /* No comment provided by engineer. */
 "New" = "新";
-
-/* No comment provided by engineer. */
-"New authentication methods" = "新的认证方法";
 
 /* No comment provided by engineer. */
 "New Document" = "新建文档";
@@ -849,6 +852,9 @@
 "Project Documents" = "项目文档";
 
 /* No comment provided by engineer. */
+"Protect documents with passwords to share them securely with trusted collaborators." = "用密码保护文件，与受信任的协作者安全地分享内容。";
+
+/* No comment provided by engineer. */
 "Protected File" = "受保护的文件";
 
 /* Share status */
@@ -859,9 +865,6 @@
 
 /* Caption of the processing */
 "Recovery" = "恢复";
-
-/* No comment provided by engineer. */
-"Regional settings" = "区域设置";
 
 /* No comment provided by engineer. */
 "Registration" = "注册";
@@ -932,9 +935,6 @@
 
 /* One line. Max 50 charasters */
 "Select the folder to recover the items" = "选择文件夹恢复该项目";
-
-/* No comment provided by engineer. */
-"Select the region in spreadsheet settings to automatically convert currency, date, and time." = "在电子表格设置中选择区域，以自动转换货币、日期和时间。";
 
 /* No comment provided by engineer. */
 "Selected provider is not available" = "选定的提供程序不可用";
@@ -1049,9 +1049,6 @@
 
 /* No comment provided by engineer. */
 "The folder in the Trash can not be opened." = "无法打开垃圾桶中的文件夹。";
-
-/* No comment provided by engineer. */
-"The folder will be irretrievably deleted. This action is irreversible." = "该文件夹将无可挽回地删除。此操作不可逆。";
 
 /* No comment provided by engineer. */
 "The item with the name '%@' already exists in the folder '%@'." = "名称为 '%1$@' 的项目已经存在于 '%2$@' 文件夹中。";

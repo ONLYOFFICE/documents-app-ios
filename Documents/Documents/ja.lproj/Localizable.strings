@@ -364,6 +364,9 @@
 /* No comment provided by engineer. */
 "Document" = "ドキュメント";
 
+/* No comment provided by engineer. */
+"Document protection" = "ドキュメントの保護";
+
 /* Default title of sample document */
 "Document Sample" = "ドキュメントのサンプル";
 
@@ -427,6 +430,9 @@
 
 /* No comment provided by engineer. */
 "Enter Portal Address" = "ポータルのアドレスを入力する";
+
+/* No comment provided by engineer. */
+"Enter text using handwriting instead of device keyboard. ONLYOFFICE will recognize text and insert it in the document." = "デバイスのキーボードではなく、手書きでテキストを入力することができます。ONLYOFFICEは、テキストを認識し、ドキュメントに挿入します。";
 
 /* No comment provided by engineer. */
 "Error" = "エラー";
@@ -498,13 +504,16 @@
 "File does not exist" = "ファイルが存在しません";
 
 /* No comment provided by engineer. */
+"File search became easier with filtering options: by type for local files and by type and author for cloud files." = "ローカルファイルは種類で、クラウドファイルは種類と作者でフィルタリングできるようになり、ファイル検索がより簡単になりました。";
+
+/* No comment provided by engineer. */
 "Files" = "ファイル";
 
 /* No comment provided by engineer. */
 "Files Preview" = "ファイルのプレビュー";
 
 /* No comment provided by engineer. */
-"Fill the shapes using gradients, images, or patterns. Choose the desirable line type." = "グラデーションや画像、パターンを使って図形を塗りつぶすこと、望ましい線の種類の選択ができます。";
+"Filtering in search" = "検索フィルタリング";
 
 /* No comment provided by engineer. */
 "First name is incorrect" = "名前が正しくありません";
@@ -544,6 +553,9 @@
 
 /* No comment provided by engineer. */
 "Groups" = "グループ";
+
+/* No comment provided by engineer. */
+"Handwriting recognition" = "手書き文字認識";
 
 /* No comment provided by engineer. */
 "iCloud" = "iCloud";
@@ -593,9 +605,6 @@
 /* No comment provided by engineer. */
 "Last name is incorrect" = "名字が正しくありません";
 
-/* No comment provided by engineer. */
-"Log in to your cloud using Apple ID or Microsoft account." = "Apple IDやMicrosoftアカウントを使って、クラウドにログインできます。";
-
 /* Caption of the process */
 "Logging in" = "ログインしました";
 
@@ -613,7 +622,7 @@
 "Logout" = "ログアウト";
 
 /* Button title */
-"Mark as favorite" = "お気に入りとしてマーク";
+"Mark as Favorite" = "お気に入りとしてマーク";
 
 /* Data units */
 "Mb" = "メガバイト";
@@ -623,9 +632,6 @@
 
 /* Button title */
 "More" = "もっと";
-
-/* No comment provided by engineer. */
-"More in autoshapes" = "オートシェイプの詳細";
 
 /* Button title */
 "Move" = "移動";
@@ -656,9 +662,6 @@
 
 /* No comment provided by engineer. */
 "New" = "新しい";
-
-/* No comment provided by engineer. */
-"New authentication methods" = "新しい認証方法";
 
 /* No comment provided by engineer. */
 "New Document" = "新規ドキュメント";
@@ -855,6 +858,9 @@
 "Project Documents" = "プロジェクトドキュメント";
 
 /* No comment provided by engineer. */
+"Protect documents with passwords to share them securely with trusted collaborators." = "ドキュメントをパスワードで保護し、信頼できる共同作業者と安全に共有するのが可能です。";
+
+/* No comment provided by engineer. */
 "Protected File" = "保護ファイル";
 
 /* Share status */
@@ -865,9 +871,6 @@
 
 /* Caption of the processing */
 "Recovery" = "回復";
-
-/* No comment provided by engineer. */
-"Regional settings" = "地域設定";
 
 /* No comment provided by engineer. */
 "Registration" = "登録";
@@ -938,9 +941,6 @@
 
 /* One line. Max 50 charasters */
 "Select the folder to recover the items" = "フォルダーを選択して、アイテムを回復する";
-
-/* No comment provided by engineer. */
-"Select the region in spreadsheet settings to automatically convert currency, date, and time." = "スプレッドシートの設定で地域を選択すると、通貨、日付、時刻が自動的に変換します。";
 
 /* No comment provided by engineer. */
 "Selected provider is not available" = "選択したプロバイダーはご利用できません";
@@ -1061,9 +1061,6 @@
 
 /* No comment provided by engineer. */
 "The folder in the Trash can not be opened." = "ゴミ箱のフォルダを開くことができません";
-
-/* No comment provided by engineer. */
-"The folder will be irretrievably deleted. This action is irreversible." = "フォルダーは永久に削除されます。このアクションは取り止めできません。";
 
 /* No comment provided by engineer. */
 "The item with the name '%@' already exists in the folder '%@'." = "‘%1$@’ という名前のファイルは既にフォルダー '%2$@’ に存在します。";

@@ -364,6 +364,9 @@
 /* No comment provided by engineer. */
 "Document" = "Documento";
 
+/* No comment provided by engineer. */
+"Document protection" = "Proteção de documentos";
+
 /* Default title of sample document */
 "Document Sample" = "Amostra do documento";
 
@@ -427,6 +430,9 @@
 
 /* No comment provided by engineer. */
 "Enter Portal Address" = "Digite o endereço do portal";
+
+/* No comment provided by engineer. */
+"Enter text using handwriting instead of device keyboard. ONLYOFFICE will recognize text and insert it in the document." = "Insira texto usando o manuscrito em vez do teclado do dispositivo. O ONLYOFFICE reconhecerá o texto e o inserirá no documento.";
 
 /* No comment provided by engineer. */
 "Error" = "Erro";
@@ -498,13 +504,16 @@
 "File does not exist" = "O arquivo não existe";
 
 /* No comment provided by engineer. */
+"File search became easier with filtering options: by type for local files and by type and author for cloud files." = "A pesquisa de arquivos está mais fácil com as opções de filtragem: por tipo para arquivos locais; e por tipo e autor para arquivos na nuvem.";
+
+/* No comment provided by engineer. */
 "Files" = "Arquivos";
 
 /* No comment provided by engineer. */
 "Files Preview" = "Visualização de arquivos";
 
 /* No comment provided by engineer. */
-"Fill the shapes using gradients, images, or patterns. Choose the desirable line type." = "Preencha as formas usando gradientes, imagens ou padrões. Escolha o tipo de linha desejada.";
+"Filtering in search" = "Filtragem na pesquisa";
 
 /* No comment provided by engineer. */
 "First name is incorrect" = "O primeiro nome está incorreto";
@@ -544,6 +553,9 @@
 
 /* No comment provided by engineer. */
 "Groups" = "Grupos";
+
+/* No comment provided by engineer. */
+"Handwriting recognition" = "Reconhecimento de manuscrito";
 
 /* No comment provided by engineer. */
 "iCloud" = "iCloud";
@@ -596,9 +608,6 @@
 /* No comment provided by engineer. */
 "Link copied\nto the clipboard" = "Link copiado para a área de transferência";
 
-/* No comment provided by engineer. */
-"Log in to your cloud using Apple ID or Microsoft account." = "Faça login em sua nuvem usando o ID Apple ou a conta da Microsoft.";
-
 /* Caption of the process */
 "Logging in" = "Login em";
 
@@ -616,7 +625,7 @@
 "Logout" = "Sair";
 
 /* Button title */
-"Mark as favorite" = "Marcar como favorito";
+"Mark as Favorite" = "Marcar como favorito";
 
 /* Data units */
 "Mb" = "Mb";
@@ -626,9 +635,6 @@
 
 /* Button title */
 "More" = "Mais";
-
-/* No comment provided by engineer. */
-"More in autoshapes" = "Mais em formas automáticas";
 
 /* Button title */
 "Move" = "Mover";
@@ -659,9 +665,6 @@
 
 /* No comment provided by engineer. */
 "New" = "Novo";
-
-/* No comment provided by engineer. */
-"New authentication methods" = "Novos métodos de autenticação";
 
 /* No comment provided by engineer. */
 "New Document" = "Novo documento";
@@ -858,6 +861,9 @@
 "Project Documents" = "Documentos do projeto";
 
 /* No comment provided by engineer. */
+"Protect documents with passwords to share them securely with trusted collaborators." = "Proteja documentos com senhas para compartilhá-los de forma segura com colaboradores confiáveis.";
+
+/* No comment provided by engineer. */
 "Protected File" = "Arquivo protegido";
 
 /* Share status */
@@ -868,9 +874,6 @@
 
 /* Caption of the processing */
 "Recovery" = "Recuperação";
-
-/* No comment provided by engineer. */
-"Regional settings" = "Configurações regionais";
 
 /* No comment provided by engineer. */
 "Registration" = "Registro";
@@ -941,9 +944,6 @@
 
 /* One line. Max 50 charasters */
 "Select the folder to recover the items" = "Selecione a pasta para recuperar os itens";
-
-/* No comment provided by engineer. */
-"Select the region in spreadsheet settings to automatically convert currency, date, and time." = "Selecione a região nas configurações da planilha para converter automaticamente moeda, data e hora.";
 
 /* No comment provided by engineer. */
 "Selected provider is not available" = "O provedor selecionado não está disponível";
@@ -1064,9 +1064,6 @@
 
 /* No comment provided by engineer. */
 "The folder in the Trash can not be opened." = "O servidor %@ não está disponível.";
-
-/* No comment provided by engineer. */
-"The folder will be irretrievably deleted. This action is irreversible." = "A pasta será excluída de forma irreversível. Esta ação é irreversível.";
 
 /* No comment provided by engineer. */
 "The item with the name '%@' already exists in the folder '%@'." = "O item com o nome '%1$@' já existe na pasta '%2$@'.";

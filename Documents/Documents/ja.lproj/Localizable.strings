@@ -79,8 +79,14 @@
 /* No comment provided by engineer. */
 "All" = "すべて";
 
+/* No comment provided by engineer. */
+"All files" = "すべてのファイル";
+
 /* Category title */
 "All Files" = "すべてのファイル";
+
+/* No comment provided by engineer. */
+"All notifications" = "すべての通知";
 
 /* No comment provided by engineer. */
 "Allow access via external link" = "外部リンクからのアクセスを許可する";
@@ -93,6 +99,9 @@
 
 /* Caption of the process */
 "Applying" = "適用";
+
+/* No comment provided by engineer. */
+"Archives" = "アーカイブ";
 
 /* No comment provided by engineer. */
 "Are you sure you want to delete the account %@ from this device?" = "本当にデバイスからアカウンド %@ を削除しますか?";
@@ -210,6 +219,9 @@
 
 /* Caption of the process */
 "Connecting" = "接続中";
+
+/* No comment provided by engineer. */
+"Console" = "コンソール";
 
 /* No comment provided by engineer. */
 "Continue anyway" = "強制的に続ける";
@@ -358,6 +370,12 @@
 /* No comment provided by engineer. */
 "Deselect all" = "すべて選択解除";
 
+/* No comment provided by engineer. */
+"Developer options" = "開発者のオプション";
+
+/* No comment provided by engineer. */
+"Disable if you do not want to receive notifications from the %@" = "%@からの通知を受け取りたくない場合は、無効にしてください";
+
 /* Button title */
 "Disconnect third party" = "サードパーティーの接続をやめる";
 
@@ -423,10 +441,16 @@
 "Empty name." = "空の名前。";
 
 /* No comment provided by engineer. */
+"Enable if you want to receive notifications from the %@" = "%@からの通知を受け取りたい場合は、有効にしてください";
+
+/* No comment provided by engineer. */
 "Encoding" = "符号化する";
 
 /* Presentation Viewer */
 "End Slide Show" = "スライドショーを終了する";
+
+/* No comment provided by engineer. */
+"Enter a password to open the file." = "ファイルを開くためにパスワードを入力してください。";
 
 /* No comment provided by engineer. */
 "Enter Portal Address" = "ポータルのアドレスを入力する";
@@ -451,6 +475,9 @@
 
 /* Unknown Server Error */
 "error.errorServerTitle" = "サーバーのエラー";
+
+/* No comment provided by engineer. */
+"Exclude subfolders" = "サブフォルダなし";
 
 /* Button title */
 "Export" = "エクスポート";
@@ -497,6 +524,9 @@
 /* No comment provided by engineer. */
 "Failure to download result from conversion online service." = "変換オンラインサービスから結果をダウンロードできませんでした。";
 
+/* No comment provided by engineer. */
+"Features" = "機能";
+
 /* Description of file operation error */
 "File already exists" = "ファイルはすでに存在しています";
 
@@ -514,6 +544,9 @@
 
 /* No comment provided by engineer. */
 "Filtering in search" = "検索フィルタリング";
+
+/* No comment provided by engineer. */
+"Filters" = "フィルタ";
 
 /* No comment provided by engineer. */
 "First name is incorrect" = "名前が正しくありません";
@@ -605,6 +638,9 @@
 /* No comment provided by engineer. */
 "Last name is incorrect" = "名字が正しくありません";
 
+/* No comment provided by engineer. */
+"Link copied\nto the clipboard" = "クリップボードに\nコピーされたリンク";
+
 /* Caption of the process */
 "Logging in" = "ログインしました";
 
@@ -624,11 +660,20 @@
 /* Button title */
 "Mark as Favorite" = "お気に入りとしてマーク";
 
+/* Button title */
+"Mark as Read" = "既読にする";
+
+/* No comment provided by engineer. */
+"Mark as Read failed." = "既読にすることに失敗しました";
+
 /* Data units */
 "Mb" = "メガバイト";
 
 /* If current user name is not set */
 "Me" = "わたし";
+
+/* No comment provided by engineer. */
+"Media" = "メディア";
 
 /* Button title */
 "More" = "もっと";
@@ -659,6 +704,9 @@
 
 /* No comment provided by engineer. */
 "Needs additional params." = "追加のパラミーターが必要です。";
+
+/* Badge of file in file list */
+"new" = "新しい";
 
 /* No comment provided by engineer. */
 "New" = "新しい";
@@ -708,6 +756,9 @@
 /* No comment provided by engineer. */
 "No search result" = "検索結果はありません。";
 
+/* No comment provided by engineer. */
+"No Search Result" = "検索結果は見つかりませんでした";
+
 /* Invalid entity date
    Invalid entity owner */
 "none" = "なし";
@@ -718,6 +769,12 @@
 
 /* No comment provided by engineer. */
 "Note: removal from your account can not be undone." = "注: アカウント空の削除は失敗することがあります。";
+
+/* No comment provided by engineer. */
+"Nothing to show" = "表示するアイテムがありません";
+
+/* No comment provided by engineer. */
+"Notifications" = "通知";
 
 /* Sharing settings switcher */
 "Notify by Email" = "メールで通知する";
@@ -749,14 +806,23 @@
 /* Full App Name */
 "ONLYOFFICE Documents" = "ONLYOFFICE Documents";
 
+/* Full App Name */
+"ONLYOFFICE portal" = "ONLYOFFICEのポータル";
+
 /* No comment provided by engineer. */
 "Oops!" = "申し訳ございません。";
 
 /* No comment provided by engineer. */
 "Open Document" = "ドキュメントを開く";
 
+/* No comment provided by engineer. */
+"Open Folder" = "フォルダを開く";
+
 /* Caption of the processing */
 "Opening" = "開始中";
+
+/* No comment provided by engineer. */
+"Options" = "設定";
 
 /* No comment provided by engineer. */
 "Order" = "命令";
@@ -863,6 +929,9 @@
 /* No comment provided by engineer. */
 "Protected File" = "保護ファイル";
 
+/* No comment provided by engineer. */
+"Push notifications disabled" = "プッシュ通知無効";
+
 /* Share status */
 "Read Only" = "閲覧のみ";
 
@@ -905,6 +974,9 @@
 /* No comment provided by engineer. */
 "Request had insufficient authentication scopes" = "リクエストの認証スコープが不十分でした";
 
+/* No comment provided by engineer. */
+"Reset" = "リセット";
+
 /* Button title */
 "Restore" = "戻す";
 
@@ -931,6 +1003,9 @@
 "Select another cloud to connect to Nextcloud, ownCloud and others are supported." = "もう1つのクラウドを選択して、Nextcloud、ownCloud、サポートされている他のクラウドに接続";
 
 /* No comment provided by engineer. */
+"Select group" = "グループを選択する";
+
+/* No comment provided by engineer. */
 "Select Photos" = "画像を選択";
 
 /* One line. Max 50 charasters */
@@ -941,6 +1016,9 @@
 
 /* One line. Max 50 charasters */
 "Select the folder to recover the items" = "フォルダーを選択して、アイテムを回復する";
+
+/* No comment provided by engineer. */
+"Select user" = "ユーザーを選択する";
 
 /* No comment provided by engineer. */
 "Selected provider is not available" = "選択したプロバイダーはご利用できません";
@@ -967,6 +1045,9 @@
 "Settings" = "設定";
 
 /* No comment provided by engineer. */
+"Settings and Security" = "設定とセキュリティ";
+
+/* No comment provided by engineer. */
 "Shared access" = "共有アクセス";
 
 /* Category title */
@@ -983,6 +1064,12 @@
 
 /* Button title */
 "Sharing Settings" = "共有設定";
+
+/* No comment provided by engineer. */
+"Show %d results" = "%d結果を表示する";
+
+/* No comment provided by engineer. */
+"Show notifications" = "通知を表示する";
 
 /* No comment provided by engineer. */
 "Single Sign-on" = "シングルサインオン";
@@ -1069,6 +1156,9 @@
 "The link for external\naccess is copied\nto the clipboard" = "外部アクセス用の\nリンクがクリップボードに\nコピーされた";
 
 /* No comment provided by engineer. */
+"The ONLYOFFICE Editors module is missing. Please contact support@onlyoffice.com for more information." = "ONLYOFFICEエディタのモジュールがありません。詳しくは、support@onlyoffice.com までお問い合わせください";
+
+/* No comment provided by engineer. */
 "The parameters are incorrect." = "パラメータが正しくありません";
 
 /* No comment provided by engineer. */
@@ -1088,6 +1178,9 @@
 
 /* No comment provided by engineer. */
 "The server is not available." = "このサーバーは利用できません。";
+
+/* No comment provided by engineer. */
+"The setting will be available upon authorization on the %@." = "設定は、%@で認証されると可能になります";
 
 /* No comment provided by engineer. */
 "The trash is empty" = "ごみ箱は空です";
@@ -1120,7 +1213,16 @@
 "To open a document, you must go to portal %@ under your account." = "ドキュメントを開くには、専用のアカウントでポータル %@ に移動してください。";
 
 /* No comment provided by engineer. */
+"To open a folder, you must exit the current document." = "フォルダを開くには、現在のドキュメントを終了する必要があります";
+
+/* No comment provided by engineer. */
+"To open a folder, you must go to portal %@ under your account." = "フォルダを開くには、自分のアカウントにあるポータルサイト %@ にアクセスする必要があります";
+
+/* No comment provided by engineer. */
 "To open a new document, you must exit the current document." = "新規ドキュメントを開くには、現在のドキュメントを中止してください。";
+
+/* No comment provided by engineer. */
+"To receive push notifications from the %@ application, you need to allow receiving notifications for this application in the iOS settings" = "%@アプリケーションからのプッシュ通知を受け取るには、iOSの設定でこのアプリケーションの通知受信を許可する必要があります";
 
 /* Category title */
 "Trash" = "ごみ箱";
@@ -1133,6 +1235,9 @@
 
 /* No comment provided by engineer. */
 "Try to connect via another protocol?" = "他のプロトコールで接続を試しますか?";
+
+/* No comment provided by engineer. */
+"Turn ON in Settings" = "設定でオンにしてください";
 
 /* No comment provided by engineer. */
 "Turn Passcode Off" = "パスコードをオフにする";

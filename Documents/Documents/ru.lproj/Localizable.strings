@@ -1351,10 +1351,7 @@
 "Welcome to %@ mobile editing suite!\nSwipe to learn more about the app." = "Добро пожаловать в мобильный редактор %@!\nПроведите пальцем для дополнительной информации о приложении.";
 
 /* No comment provided by engineer. */
-"What's New" = "Новые возможности";
-
-/* No comment provided by engineer. */
-"Whats's New" = "Что нового";
+"What's New" = "Что нового";
 
 /* Introduction Step Four - Description */
 "Work with documents offline.\nCreated files can later be uploaded to online portal and\nthen accessed from any other device." = "Работайте с документами без интернета.\nСозданные файлы можно загрузить позднее на портал и получить доступ к ним с любого устройства.";

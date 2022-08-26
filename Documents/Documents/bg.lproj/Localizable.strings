@@ -79,8 +79,14 @@
 /* No comment provided by engineer. */
 "All" = "Всички";
 
+/* No comment provided by engineer. */
+"All files" = "Всички файлове";
+
 /* Category title */
 "All Files" = "Всички файлове";
+
+/* No comment provided by engineer. */
+"All notifications" = "Всички известия";
 
 /* No comment provided by engineer. */
 "Allow access via external link" = "Позволете достъп чрез външен линк";
@@ -93,6 +99,9 @@
 
 /* Caption of the process */
 "Applying" = "Прилагане";
+
+/* No comment provided by engineer. */
+"Archives" = "Архиви";
 
 /* No comment provided by engineer. */
 "Are you sure you want to delete the account %@ from this device?" = "Наистина ли искате да изтриете профила %@ от това устройство?";
@@ -210,6 +219,9 @@
 
 /* Caption of the process */
 "Connecting" = "Свързване";
+
+/* No comment provided by engineer. */
+"Console" = "Конзола";
 
 /* No comment provided by engineer. */
 "Continue anyway" = "Все пак продължете";
@@ -358,11 +370,20 @@
 /* No comment provided by engineer. */
 "Deselect all" = "Премахнете избора от всички";
 
+/* No comment provided by engineer. */
+"Developer options" = "Опции за разработчици";
+
+/* No comment provided by engineer. */
+"Disable if you do not want to receive notifications from the %@" = "Деактивирайте, ако не искате да получавате известия от %@";
+
 /* Button title */
 "Disconnect third party" = "Преказнете връзката с трета страна";
 
 /* No comment provided by engineer. */
 "Document" = "Документ";
+
+/* No comment provided by engineer. */
+"Document protection" = "Защита на документи";
 
 /* Default title of sample document */
 "Document Sample" = "Пример за документ";
@@ -420,10 +441,16 @@
 "Empty name." = "Празно име.";
 
 /* No comment provided by engineer. */
+"Enable if you want to receive notifications from the %@" = "Активирайте, ако искате да получавате известия от %@";
+
+/* No comment provided by engineer. */
 "Encoding" = "Кодиране";
 
 /* Presentation Viewer */
 "End Slide Show" = "Край на слайдшоуто";
+
+/* No comment provided by engineer. */
+"Enter a password to open the file." = "Въведете парола, за да отворите файла.";
 
 /* No comment provided by engineer. */
 "Enter Portal Address" = "Въведете Адрес на портал";
@@ -448,6 +475,9 @@
 
 /* Unknown Server Error */
 "error.errorServerTitle" = "Грешка в сървъра";
+
+/* No comment provided by engineer. */
+"Exclude subfolders" = "Няма подпапки";
 
 /* Button title */
 "Export" = "Изнеси";
@@ -494,6 +524,9 @@
 /* No comment provided by engineer. */
 "Failure to download result from conversion online service." = "Неуспехът да изтеглите резултат от онлайн услугата за преобразуване.";
 
+/* No comment provided by engineer. */
+"Features" = "Характеристики";
+
 /* Description of file operation error */
 "File already exists" = "Файлът вече съществува";
 
@@ -511,6 +544,9 @@
 
 /* No comment provided by engineer. */
 "Filtering in search" = "Филтриране в търсенето";
+
+/* No comment provided by engineer. */
+"Filters" = "Филтри";
 
 /* No comment provided by engineer. */
 "First name is incorrect" = "Първото име е неправилно";
@@ -621,11 +657,23 @@
    Caption of the process */
 "Logout" = "Излез от профила си";
 
+/* Button title */
+"Mark as Favorite" = "Маркирай като любимо";
+
+/* Button title */
+"Mark as Read" = "Маркирай като прочетено";
+
+/* No comment provided by engineer. */
+"Mark as Read failed." = "Маркирането като прочетено не бе успешно.";
+
 /* Data units */
 "Mb" = "Мб";
 
 /* If current user name is not set */
 "Me" = "Аз";
+
+/* No comment provided by engineer. */
+"Media" = "Мултимедия";
 
 /* Button title */
 "More" = "Повече";
@@ -656,6 +704,9 @@
 
 /* No comment provided by engineer. */
 "Needs additional params." = "Необходими са допълнителни параметри.";
+
+/* Badge of file in file list */
+"new" = "нов";
 
 /* No comment provided by engineer. */
 "New" = "Нов";
@@ -719,6 +770,12 @@
 /* No comment provided by engineer. */
 "Note: removal from your account can not be undone." = "Забележка: премахването от профила Ви не може да бъде отменено.";
 
+/* No comment provided by engineer. */
+"Nothing to show" = "Нищо за показване";
+
+/* No comment provided by engineer. */
+"Notifications" = "Известия";
+
 /* Sharing settings switcher */
 "Notify by Email" = "Известяване чрез имейл";
 
@@ -749,11 +806,17 @@
 /* Full App Name */
 "ONLYOFFICE Documents" = "ONLYOFFICE документи";
 
+/* Full App Name */
+"ONLYOFFICE portal" = "Портал ONLYOFFICE";
+
 /* No comment provided by engineer. */
 "Oops!" = "Опаа!";
 
 /* No comment provided by engineer. */
 "Open Document" = "Отворете документа";
+
+/* No comment provided by engineer. */
+"Open Folder" = "Отвори папка";
 
 /* Caption of the processing */
 "Opening" = "Отвор";
@@ -866,6 +929,9 @@
 /* No comment provided by engineer. */
 "Protected File" = "Защитен файл";
 
+/* No comment provided by engineer. */
+"Push notifications disabled" = "Push известията са деактивиран";
+
 /* Share status */
 "Read Only" = "Само за четене";
 
@@ -908,6 +974,9 @@
 /* No comment provided by engineer. */
 "Request had insufficient authentication scopes" = "Заявката имаше недостатъчни обхвати за удостоверяване";
 
+/* No comment provided by engineer. */
+"Reset" = "Нулиране";
+
 /* Button title */
 "Restore" = "Възстанови";
 
@@ -934,6 +1003,9 @@
 "Select another cloud to connect to Nextcloud, ownCloud and others are supported." = "Изберете друг облак, за да се свържете с Nextcloud, ownCloud и други, които се поддържат.";
 
 /* No comment provided by engineer. */
+"Select group" = "Избери група";
+
+/* No comment provided by engineer. */
 "Select Photos" = "Изберете снимки";
 
 /* One line. Max 50 charasters */
@@ -944,6 +1016,9 @@
 
 /* One line. Max 50 charasters */
 "Select the folder to recover the items" = "Изберете папката за възстановяване на елементи";
+
+/* No comment provided by engineer. */
+"Select user" = "Избери потребител";
 
 /* No comment provided by engineer. */
 "Selected provider is not available" = "Избраният доставчик не е наличен";
@@ -970,6 +1045,9 @@
 "Settings" = "Настройки";
 
 /* No comment provided by engineer. */
+"Settings and Security" = "Настройки и сигурност";
+
+/* No comment provided by engineer. */
 "Shared access" = "Споделен достъп";
 
 /* Category title */
@@ -986,6 +1064,9 @@
 
 /* Button title */
 "Sharing Settings" = "Споделяне на Настройки";
+
+/* No comment provided by engineer. */
+"Show %d results" = "Покажи %d резултата";
 
 /* No comment provided by engineer. */
 "Show notifications" = "Показване на известия";
@@ -1140,6 +1221,9 @@
 /* No comment provided by engineer. */
 "To open a new document, you must exit the current document." = "За да отворите нов документ, трябва да излезете от текущия документ.";
 
+/* No comment provided by engineer. */
+"To receive push notifications from the %@ application, you need to allow receiving notifications for this application in the iOS settings" = "За да получавате push известия от приложението %@, трябва да разрешите получаването на известия за това приложение в настройките на iOS";
+
 /* Category title */
 "Trash" = "Боклук";
 
@@ -1267,10 +1351,7 @@
 "Welcome to %@ mobile editing suite!\nSwipe to learn more about the app." = "Добре дошли в %@ мобилен пакет за редактиране!\nПлъзнете, за да научите повече за приложението.";
 
 /* No comment provided by engineer. */
-"What's New" = "Какво ново";
-
-/* No comment provided by engineer. */
-"Whats's New" = "Какво е новото";
+"What's New" = "Какво е новото";
 
 /* Introduction Step Four - Description */
 "Work with documents offline.\nCreated files can later be uploaded to online portal and\nthen accessed from any other device." = "Работа с документи офлайн.\nСъздадените файлове по-късно могат да бъдат качени в онлайн портала и след това достъпни от всяко друго устройство.";

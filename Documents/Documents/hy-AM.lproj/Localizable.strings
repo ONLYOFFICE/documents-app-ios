@@ -660,6 +660,12 @@
 /* Button title */
 "Mark as Favorite" = "Նշել որպես ֆավորիտ";
 
+/* Button title */
+"Mark as Read" = "Նշել որպես կարդացված";
+
+/* No comment provided by engineer. */
+"Mark as Read failed." = "Նշել որպես կարդացվածը ձախողված";
+
 /* Data units */
 "Mb" = "Mb";
 
@@ -698,6 +704,9 @@
 
 /* No comment provided by engineer. */
 "Needs additional params." = "Լրացուցիչ պարամետրերի կարիք կա:";
+
+/* Badge of file in file list */
+"new" = "նոր";
 
 /* No comment provided by engineer. */
 "New" = "Նոր";
@@ -1343,9 +1352,6 @@
 
 /* No comment provided by engineer. */
 "What's New" = "Ինչ նորություն կա";
-
-/* No comment provided by engineer. */
-"Whats's New" = "Ինչ նորություն կա";
 
 /* Introduction Step Four - Description */
 "Work with documents offline.\nCreated files can later be uploaded to online portal and\nthen accessed from any other device." = "Աշխատեք փաստաթղթերի հետ անցանց:\nՍտեղծված ֆայլերը հետագայում կարող են վերբեռնվել առցանց պորտալ և\nայնուհետև հասանելի է ցանկացած այլ սարքից:";

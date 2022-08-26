@@ -258,7 +258,7 @@ start using your office</source>
       </trans-unit>
       <trans-unit id="/Delete %lu Folder and %lu File:dict/lu_files:dict/zero:dict/:string" xml:space="preserve">
         <source/>
-        <target/>
+        <target state="needs-translation"/>
         <note/>
       </trans-unit>
       <trans-unit id="/Delete %lu Folder and %lu File:dict/lu_folders:dict/other:dict/:string" xml:space="preserve">
@@ -1347,10 +1347,12 @@ Note: if you forget the passcode, you'll need to delete and reinstall the app. A
       </trans-unit>
       <trans-unit id="All files" xml:space="preserve">
         <source>All files</source>
+        <target state="translated">すべてのファイル</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="All notifications" xml:space="preserve">
         <source>All notifications</source>
+        <target state="translated">すべての通知</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Allow access via external link" xml:space="preserve">
@@ -1375,6 +1377,7 @@ Note: if you forget the passcode, you'll need to delete and reinstall the app. A
       </trans-unit>
       <trans-unit id="Archives" xml:space="preserve">
         <source>Archives</source>
+        <target state="translated">アーカイブ</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Are you sure you want to delete the account %@ from this device?" xml:space="preserve">
@@ -1539,6 +1542,7 @@ WebDAV プロトコールを使用する他のクラウド</target>
       </trans-unit>
       <trans-unit id="Console" xml:space="preserve">
         <source>Console</source>
+        <target state="translated">コンソール</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Continue anyway" xml:space="preserve">
@@ -1788,10 +1792,12 @@ WebDAV プロトコールを使用する他のクラウド</target>
       </trans-unit>
       <trans-unit id="Developer options" xml:space="preserve">
         <source>Developer options</source>
+        <target state="translated">開発者のオプション</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Disable if you do not want to receive notifications from the %@" xml:space="preserve">
         <source>Disable if you do not want to receive notifications from the %@</source>
+        <target state="translated">%@からの通知を受け取りたくない場合は、無効にしてください</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Disconnect third party" xml:space="preserve">
@@ -1902,6 +1908,7 @@ WebDAV プロトコールを使用する他のクラウド</target>
       </trans-unit>
       <trans-unit id="Enable if you want to receive notifications from the %@" xml:space="preserve">
         <source>Enable if you want to receive notifications from the %@</source>
+        <target state="translated">%@からの通知を受け取りたい場合は、有効にしてください</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Encoding" xml:space="preserve">
@@ -1921,6 +1928,7 @@ WebDAV プロトコールを使用する他のクラウド</target>
       </trans-unit>
       <trans-unit id="Enter a password to open the file." xml:space="preserve">
         <source>Enter a password to open the file.</source>
+        <target state="translated">ファイルを開くためにパスワードを入力してください。</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Enter text using handwriting instead of device keyboard. ONLYOFFICE will recognize text and insert it in the document." xml:space="preserve">
@@ -1940,6 +1948,7 @@ WebDAV プロトコールを使用する他のクラウド</target>
       </trans-unit>
       <trans-unit id="Exclude subfolders" xml:space="preserve">
         <source>Exclude subfolders</source>
+        <target state="translated">サブフォルダなし</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Export" xml:space="preserve">
@@ -2019,6 +2028,7 @@ WebDAV プロトコールを使用する他のクラウド</target>
       </trans-unit>
       <trans-unit id="Features" xml:space="preserve">
         <source>Features</source>
+        <target state="translated">機能</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="File already exists" xml:space="preserve">
@@ -2053,6 +2063,7 @@ WebDAV プロトコールを使用する他のクラウド</target>
       </trans-unit>
       <trans-unit id="Filters" xml:space="preserve">
         <source>Filters</source>
+        <target state="translated">フィルタ</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="First name is incorrect" xml:space="preserve">
@@ -2188,6 +2199,8 @@ WebDAV プロトコールを使用する他のクラウド</target>
       <trans-unit id="Link copied&#10;to the clipboard" xml:space="preserve">
         <source>Link copied
 to the clipboard</source>
+        <target state="translated">クリップボードに
+コピーされたリンク</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Logging in" xml:space="preserve">
@@ -2223,10 +2236,12 @@ to the clipboard</source>
       </trans-unit>
       <trans-unit id="Mark as Read" xml:space="preserve">
         <source>Mark as Read</source>
+        <target state="translated">既読にする</target>
         <note>Button title</note>
       </trans-unit>
       <trans-unit id="Mark as Read failed." xml:space="preserve">
         <source>Mark as Read failed.</source>
+        <target state="translated">既読にすることに失敗しました</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Mb" xml:space="preserve">
@@ -2241,6 +2256,7 @@ to the clipboard</source>
       </trans-unit>
       <trans-unit id="Media" xml:space="preserve">
         <source>Media</source>
+        <target state="translated">メディア</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="More" xml:space="preserve">
@@ -2340,6 +2356,7 @@ to the clipboard</source>
       </trans-unit>
       <trans-unit id="No Search Result" xml:space="preserve">
         <source>No Search Result</source>
+        <target state="translated">検索結果は見つかりませんでした</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="No client IDs of application" xml:space="preserve">
@@ -2390,10 +2407,12 @@ to the clipboard</source>
       </trans-unit>
       <trans-unit id="Nothing to show" xml:space="preserve">
         <source>Nothing to show</source>
+        <target state="translated">表示するアイテムがありません</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Notifications" xml:space="preserve">
         <source>Notifications</source>
+        <target state="translated">通知</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Notify by Email" xml:space="preserve">
@@ -2418,6 +2437,7 @@ to the clipboard</source>
       </trans-unit>
       <trans-unit id="ONLYOFFICE portal" xml:space="preserve">
         <source>ONLYOFFICE portal</source>
+        <target state="translated">ONLYOFFICEのポータル</target>
         <note>Full App Name</note>
       </trans-unit>
       <trans-unit id="On iPad" xml:space="preserve">
@@ -2457,6 +2477,7 @@ to the clipboard</source>
       </trans-unit>
       <trans-unit id="Open Folder" xml:space="preserve">
         <source>Open Folder</source>
+        <target state="translated">フォルダを開く</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Opening" xml:space="preserve">
@@ -2466,6 +2487,7 @@ to the clipboard</source>
       </trans-unit>
       <trans-unit id="Options" xml:space="preserve">
         <source>Options</source>
+        <target state="translated">設定</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Order" xml:space="preserve">
@@ -2649,6 +2671,7 @@ to the clipboard</source>
       </trans-unit>
       <trans-unit id="Push notifications disabled" xml:space="preserve">
         <source>Push notifications disabled</source>
+        <target state="translated">プッシュ通知無効</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Read Only" xml:space="preserve">
@@ -2723,6 +2746,7 @@ to the clipboard</source>
       </trans-unit>
       <trans-unit id="Reset" xml:space="preserve">
         <source>Reset</source>
+        <target state="translated">リセット</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Restore" xml:space="preserve">
@@ -2778,6 +2802,7 @@ to the clipboard</source>
       </trans-unit>
       <trans-unit id="Select group" xml:space="preserve">
         <source>Select group</source>
+        <target state="translated">グループを選択する</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Select the folder to copy the items" xml:space="preserve">
@@ -2797,6 +2822,7 @@ to the clipboard</source>
       </trans-unit>
       <trans-unit id="Select user" xml:space="preserve">
         <source>Select user</source>
+        <target state="translated">ユーザーを選択する</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Selected provider is not available" xml:space="preserve">
@@ -2841,6 +2867,7 @@ to the clipboard</source>
       </trans-unit>
       <trans-unit id="Settings and Security" xml:space="preserve">
         <source>Settings and Security</source>
+        <target state="translated">設定とセキュリティ</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="SharePoint directory" xml:space="preserve">
@@ -2875,10 +2902,12 @@ to the clipboard</source>
       </trans-unit>
       <trans-unit id="Show %d results" xml:space="preserve">
         <source>Show %d results</source>
+        <target state="translated">%d結果を表示する</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Show notifications" xml:space="preserve">
         <source>Show notifications</source>
+        <target state="translated">通知を表示する</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Single Sign-on" xml:space="preserve">
@@ -2983,6 +3012,7 @@ to the clipboard</source>
       </trans-unit>
       <trans-unit id="The ONLYOFFICE Editors module is missing. Please contact support@onlyoffice.com for more information." xml:space="preserve">
         <source>The ONLYOFFICE Editors module is missing. Please contact support@onlyoffice.com for more information.</source>
+        <target state="translated">ONLYOFFICEエディタのモジュールがありません。詳しくは、support@onlyoffice.com までお問い合わせください</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="The account name must be between 6 and 50 characters long" xml:space="preserve">
@@ -3061,6 +3091,7 @@ to the clipboard</source>
       </trans-unit>
       <trans-unit id="The setting will be available upon authorization on the %@." xml:space="preserve">
         <source>The setting will be available upon authorization on the %@.</source>
+        <target state="translated">設定は、%@で認証されると可能になります</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="The trash is empty" xml:space="preserve">
@@ -3115,10 +3146,12 @@ to the clipboard</source>
       </trans-unit>
       <trans-unit id="To open a folder, you must exit the current document." xml:space="preserve">
         <source>To open a folder, you must exit the current document.</source>
+        <target state="translated">フォルダを開くには、現在のドキュメントを終了する必要があります</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="To open a folder, you must go to portal %@ under your account." xml:space="preserve">
         <source>To open a folder, you must go to portal %@ under your account.</source>
+        <target state="translated">フォルダを開くには、自分のアカウントにあるポータルサイト %@ にアクセスする必要があります</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="To open a new document, you must exit the current document." xml:space="preserve">
@@ -3128,6 +3161,7 @@ to the clipboard</source>
       </trans-unit>
       <trans-unit id="To receive push notifications from the %@ application, you need to allow receiving notifications for this application in the iOS settings" xml:space="preserve">
         <source>To receive push notifications from the %@ application, you need to allow receiving notifications for this application in the iOS settings</source>
+        <target state="translated">%@アプリケーションからのプッシュ通知を受け取るには、iOSの設定でこのアプリケーションの通知受信を許可する必要があります</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Trash" xml:space="preserve">
@@ -3152,6 +3186,7 @@ to the clipboard</source>
       </trans-unit>
       <trans-unit id="Turn ON in Settings" xml:space="preserve">
         <source>Turn ON in Settings</source>
+        <target state="translated">設定でオンにしてください</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Turn Passcode Off" xml:space="preserve">
@@ -3345,8 +3380,9 @@ Swipe to learn more about the app.</source>
         <target>新規機能</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
-      <trans-unit id="Whats's New" xml:space="preserve">
-        <source>Whats's New</source>
+      <trans-unit id="What's New" xml:space="preserve">
+        <source>What's New</source>
+        <target state="translated">新規機能</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Work with documents offline.&#10;Created files can later be uploaded to online portal and&#10;then accessed from any other device." xml:space="preserve">
@@ -3493,6 +3529,7 @@ then accessed from any other device.</source>
       </trans-unit>
       <trans-unit id="new" xml:space="preserve">
         <source>new</source>
+        <target state="translated">新しい</target>
         <note>Badge of file in file list</note>
       </trans-unit>
       <trans-unit id="none" xml:space="preserve">

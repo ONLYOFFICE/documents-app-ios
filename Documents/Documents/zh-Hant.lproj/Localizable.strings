@@ -79,8 +79,14 @@
 /* No comment provided by engineer. */
 "All" = "全部";
 
+/* No comment provided by engineer. */
+"All files" = "所有文件";
+
 /* Category title */
 "All Files" = "所有文件";
+
+/* No comment provided by engineer. */
+"All notifications" = "所有通知";
 
 /* No comment provided by engineer. */
 "Allow access via external link" = "允许通过外部链接访问";
@@ -88,8 +94,14 @@
 /* No comment provided by engineer. */
 "An unexpected error has occurred. Please try again later. Sorry for inconvenience." = "发生了意外的错误。请稍后再试。对不起，给您带来不便。";
 
+/* No comment provided by engineer. */
+"AppleId authentication failed" = "Apple ID验证失败";
+
 /* Caption of the process */
 "Applying" = "正在应用中";
+
+/* No comment provided by engineer. */
+"Archives" = "封存檔案";
 
 /* No comment provided by engineer. */
 "Are you sure you want to delete the account %@ from this device?" = "您确定要删除设备上%@ 账户吗？";
@@ -207,6 +219,9 @@
 
 /* Caption of the process */
 "Connecting" = "正在链接中";
+
+/* No comment provided by engineer. */
+"Console" = "控制台";
 
 /* No comment provided by engineer. */
 "Continue anyway" = "仍然继续";
@@ -355,6 +370,12 @@
 /* No comment provided by engineer. */
 "Deselect all" = "取消全选";
 
+/* No comment provided by engineer. */
+"Developer options" = "開發者選項";
+
+/* No comment provided by engineer. */
+"Disable if you do not want to receive notifications from the %@" = "若您不想接收來自%@的通知，則請禁用";
+
 /* Button title */
 "Disconnect third party" = "断开第三方的连接";
 
@@ -420,10 +441,16 @@
 "Empty name." = "空名称。";
 
 /* No comment provided by engineer. */
+"Enable if you want to receive notifications from the %@" = "若您想要接收來自%@的通知，則請啟用";
+
+/* No comment provided by engineer. */
 "Encoding" = "编码";
 
 /* Presentation Viewer */
 "End Slide Show" = "结束幻灯片放映";
+
+/* No comment provided by engineer. */
+"Enter a password to open the file." = "輸入檔案密碼";
 
 /* No comment provided by engineer. */
 "Enter Portal Address" = "输入门户地址";
@@ -448,6 +475,9 @@
 
 /* Unknown Server Error */
 "error.errorServerTitle" = "服务器错误";
+
+/* No comment provided by engineer. */
+"Exclude subfolders" = "排除子文件夾";
 
 /* Button title */
 "Export" = "导出";
@@ -494,6 +524,9 @@
 /* No comment provided by engineer. */
 "Failure to download result from conversion online service." = "无法从在线转换服务中下载结果。";
 
+/* No comment provided by engineer. */
+"Features" = "功能";
+
 /* Description of file operation error */
 "File already exists" = "文件已存在";
 
@@ -511,6 +544,9 @@
 
 /* No comment provided by engineer. */
 "Filtering in search" = "搜索中的过滤功能";
+
+/* No comment provided by engineer. */
+"Filters" = "過濾器";
 
 /* No comment provided by engineer. */
 "First name is incorrect" = "名字不正确";
@@ -576,6 +612,9 @@
 "Information" = "信息";
 
 /* No comment provided by engineer. */
+"Instructions had been sent to your email" = "指示已发送到您的邮箱";
+
+/* No comment provided by engineer. */
 "Invalid Country Code" = "国家代码无效";
 
 /* No comment provided by engineer. */
@@ -621,11 +660,20 @@
 /* Button title */
 "Mark as Favorite" = "标记为收藏";
 
+/* Button title */
+"Mark as Read" = "标为已读";
+
+/* No comment provided by engineer. */
+"Mark as Read failed." = "标为已读失败";
+
 /* Data units */
 "Mb" = "Mb";
 
 /* If current user name is not set */
 "Me" = "我";
+
+/* No comment provided by engineer. */
+"Media" = "媒體";
 
 /* Button title */
 "More" = "更多";
@@ -656,6 +704,9 @@
 
 /* No comment provided by engineer. */
 "Needs additional params." = "需要额外的参数。";
+
+/* Badge of file in file list */
+"new" = "新";
 
 /* No comment provided by engineer. */
 "New" = "新";
@@ -705,6 +756,9 @@
 /* No comment provided by engineer. */
 "No search result" = "未找到搜索结果";
 
+/* No comment provided by engineer. */
+"No Search Result" = "沒有搜索結果";
+
 /* Invalid entity date
    Invalid entity owner */
 "none" = "无";
@@ -715,6 +769,12 @@
 
 /* No comment provided by engineer. */
 "Note: removal from your account can not be undone." = "注意：从您的账户中删除是无法撤销的。";
+
+/* No comment provided by engineer. */
+"Nothing to show" = "沒有可顯示的內容";
+
+/* No comment provided by engineer. */
+"Notifications" = "通知";
 
 /* Sharing settings switcher */
 "Notify by Email" = "通过邮箱通知";
@@ -746,14 +806,23 @@
 /* Full App Name */
 "ONLYOFFICE Documents" = "ONLYOFFICE文档";
 
+/* Full App Name */
+"ONLYOFFICE portal" = "ONLYOFFICE入口網站";
+
 /* No comment provided by engineer. */
 "Oops!" = "抱歉!";
 
 /* No comment provided by engineer. */
 "Open Document" = "打开文档";
 
+/* No comment provided by engineer. */
+"Open Folder" = "開啟資料夾";
+
 /* Caption of the processing */
 "Opening" = "正在打开";
+
+/* No comment provided by engineer. */
+"Options" = "选项";
 
 /* No comment provided by engineer. */
 "Order" = "顺序";
@@ -819,6 +888,9 @@
 "Please retry. \n\n If the problem persists contact us and mention this error code: Google - %@" = "请重试。\n\n 如果问题仍然存在，请联系我们并提及此错误代码： Google - %@";
 
 /* No comment provided by engineer. */
+"Please retry. \n\n If the problem persists contact us and mention this error code: Microsoft - %@" = "请重试。\n\n 如果问题仍然存在，请联系我们并提及此错误代码：Microsoft - %@";
+
+/* No comment provided by engineer. */
 "Please retry. \n\n If the problem persists contact us and mention this error code: OneDrive - %@" = "请重试。\n\n 如果问题仍然存在，请联系我们并提及此错误代码：OneDrive - %@";
 
 /* No comment provided by engineer. */
@@ -856,6 +928,9 @@
 
 /* No comment provided by engineer. */
 "Protected File" = "受保护的文件";
+
+/* No comment provided by engineer. */
+"Push notifications disabled" = "推送通知已禁用";
 
 /* Share status */
 "Read Only" = "只读";
@@ -899,6 +974,9 @@
 /* No comment provided by engineer. */
 "Request had insufficient authentication scopes" = "请求的验证范围不足";
 
+/* No comment provided by engineer. */
+"Reset" = "重設";
+
 /* Button title */
 "Restore" = "还原";
 
@@ -925,6 +1003,9 @@
 "Select another cloud to connect to Nextcloud, ownCloud and others are supported." = "选择另一个云来连接Nextcloud，支持ownCloud和其他云。";
 
 /* No comment provided by engineer. */
+"Select group" = "選擇群組";
+
+/* No comment provided by engineer. */
 "Select Photos" = "选择照片";
 
 /* One line. Max 50 charasters */
@@ -935,6 +1016,9 @@
 
 /* One line. Max 50 charasters */
 "Select the folder to recover the items" = "选择文件夹恢复该项目";
+
+/* No comment provided by engineer. */
+"Select user" = "選擇使用者";
 
 /* No comment provided by engineer. */
 "Selected provider is not available" = "选定的提供程序不可用";
@@ -948,6 +1032,9 @@
 /* No comment provided by engineer. */
 "Send" = "发送";
 
+/* No comment provided by engineer. */
+"Send the profile deletion instructions to the email address %@?" = "将账户的删除指示发送到%@?电子邮件地址";
+
 /* Caption of the process */
 "Sending" = "正在发送";
 
@@ -956,6 +1043,9 @@
 
 /* No comment provided by engineer. */
 "Settings" = "设置";
+
+/* No comment provided by engineer. */
+"Settings and Security" = "設定及安全性";
 
 /* No comment provided by engineer. */
 "Shared access" = "共享访问";
@@ -974,6 +1064,12 @@
 
 /* Button title */
 "Sharing Settings" = "共享设置";
+
+/* No comment provided by engineer. */
+"Show %d results" = "顯示%結果";
+
+/* No comment provided by engineer. */
+"Show notifications" = "顯示通知";
 
 /* No comment provided by engineer. */
 "Single Sign-on" = "单一登录";
@@ -1026,6 +1122,9 @@
 /* Data units */
 "Tb" = "Tb";
 
+/* No comment provided by engineer. */
+"Terminate account" = "删除账户";
+
 /* Part of phrases - By creating the portal you agree with our Privacy Policy and Terms of Service */
 "Terms of Service" = "服务条款";
 
@@ -1057,6 +1156,9 @@
 "The link for external\naccess is copied\nto the clipboard" = "用于外部访问的链接\n已复制\n到剪贴板上";
 
 /* No comment provided by engineer. */
+"The ONLYOFFICE Editors module is missing. Please contact support@onlyoffice.com for more information." = "缺少ONLYOFFICE編輯器模塊。 請聯繫 support@onlyoffice.com 瞭解更多資訊。";
+
+/* No comment provided by engineer. */
 "The parameters are incorrect." = "参数不正确。";
 
 /* No comment provided by engineer. */
@@ -1076,6 +1178,9 @@
 
 /* No comment provided by engineer. */
 "The server is not available." = "服务器不可用。";
+
+/* No comment provided by engineer. */
+"The setting will be available upon authorization on the %@." = "該設定將在%@上授權後可用。";
 
 /* No comment provided by engineer. */
 "The trash is empty" = "垃圾桶为空";
@@ -1108,7 +1213,16 @@
 "To open a document, you must go to portal %@ under your account." = "为了打开文件，登录您账户并访问 %@ 门户。";
 
 /* No comment provided by engineer. */
+"To open a folder, you must exit the current document." = "若需開啟資料夾，您必須退出當前的文件。";
+
+/* No comment provided by engineer. */
+"To open a folder, you must go to portal %@ under your account." = "若需開啟資料夾，您必須前往您帳戶下的入口網站%@。";
+
+/* No comment provided by engineer. */
 "To open a new document, you must exit the current document." = "为了打开新的文档，请关闭当前文档。";
+
+/* No comment provided by engineer. */
+"To receive push notifications from the %@ application, you need to allow receiving notifications for this application in the iOS settings" = "要從%@應用程序接收推送通知，您需要在iOS設定中允許接收此應用程序的通知";
 
 /* Category title */
 "Trash" = "垃圾桶";
@@ -1121,6 +1235,9 @@
 
 /* No comment provided by engineer. */
 "Try to connect via another protocol?" = "要不要试着通过其他协议连接？";
+
+/* No comment provided by engineer. */
+"Turn ON in Settings" = "在設定中開啟";
 
 /* No comment provided by engineer. */
 "Turn Passcode Off" = "关掉密码";
@@ -1241,6 +1358,9 @@
 
 /* Introduction Step Two - Title */
 "Work with office files" = "处理办公文件";
+
+/* No comment provided by engineer. */
+"Wrong server, login or password." = "服务器、登录名或密码错误。";
 
 /* No comment provided by engineer. */
 "Yandex directory" = "Yandex目录";

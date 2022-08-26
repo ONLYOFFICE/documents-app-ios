@@ -202,7 +202,7 @@ class ASCSettingsViewController: ASCBaseTableViewController {
                     accessoryType: .disclosureIndicator
                 )),
                 .standart(viewModel: ASCStandartCellViewModel(
-                    title: NSLocalizedString("Whats's New", comment: ""),
+                    title: NSLocalizedString("What's New", comment: ""),
                     action: {
                         WhatsNewService.show(force: true)
                     },

@@ -294,7 +294,7 @@ comece a usar seu office</target>
       </trans-unit>
       <trans-unit id="/Delete %lu Folder and %lu File:dict/lu_files:dict/zero:dict/:string" xml:space="preserve">
         <source/>
-        <target/>
+        <target state="needs-translation"/>
         <note/>
       </trans-unit>
       <trans-unit id="/Delete %lu Folder and %lu File:dict/lu_folders:dict/one:dict/:string" xml:space="preserve">
@@ -1392,10 +1392,12 @@ Observação: se você se esquecer do código de acesso, será necessário exclu
       </trans-unit>
       <trans-unit id="All files" xml:space="preserve">
         <source>All files</source>
+        <target state="translated">Todos os arquivos</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="All notifications" xml:space="preserve">
         <source>All notifications</source>
+        <target state="translated">Todas as notificações</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Allow access via external link" xml:space="preserve">
@@ -1420,6 +1422,7 @@ Observação: se você se esquecer do código de acesso, será necessário exclu
       </trans-unit>
       <trans-unit id="Archives" xml:space="preserve">
         <source>Archives</source>
+        <target state="translated">Arquivos </target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Are you sure you want to delete the account %@ from this device?" xml:space="preserve">
@@ -1583,6 +1586,7 @@ outros que usam o protocolo WebDAV.</target>
       </trans-unit>
       <trans-unit id="Console" xml:space="preserve">
         <source>Console</source>
+        <target state="translated">Console</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Continue anyway" xml:space="preserve">
@@ -1832,10 +1836,12 @@ outros que usam o protocolo WebDAV.</target>
       </trans-unit>
       <trans-unit id="Developer options" xml:space="preserve">
         <source>Developer options</source>
+        <target state="translated">Opções de desenvolvimento</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Disable if you do not want to receive notifications from the %@" xml:space="preserve">
         <source>Disable if you do not want to receive notifications from the %@</source>
+        <target state="translated">Desative se você não quiser receber notificações do %@</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Disconnect third party" xml:space="preserve">
@@ -1946,6 +1952,7 @@ outros que usam o protocolo WebDAV.</target>
       </trans-unit>
       <trans-unit id="Enable if you want to receive notifications from the %@" xml:space="preserve">
         <source>Enable if you want to receive notifications from the %@</source>
+        <target state="translated">Ative se você quiser receber notificações do %@</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Encoding" xml:space="preserve">
@@ -1965,6 +1972,7 @@ outros que usam o protocolo WebDAV.</target>
       </trans-unit>
       <trans-unit id="Enter a password to open the file." xml:space="preserve">
         <source>Enter a password to open the file.</source>
+        <target state="translated">Inserir a Senha para Abrir o Arquivo.</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Enter text using handwriting instead of device keyboard. ONLYOFFICE will recognize text and insert it in the document." xml:space="preserve">
@@ -1984,6 +1992,7 @@ outros que usam o protocolo WebDAV.</target>
       </trans-unit>
       <trans-unit id="Exclude subfolders" xml:space="preserve">
         <source>Exclude subfolders</source>
+        <target state="translated">Excluir subpastas</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Export" xml:space="preserve">
@@ -2063,6 +2072,7 @@ outros que usam o protocolo WebDAV.</target>
       </trans-unit>
       <trans-unit id="Features" xml:space="preserve">
         <source>Features</source>
+        <target state="translated">Recursos</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="File already exists" xml:space="preserve">
@@ -2097,6 +2107,7 @@ outros que usam o protocolo WebDAV.</target>
       </trans-unit>
       <trans-unit id="Filters" xml:space="preserve">
         <source>Filters</source>
+        <target state="translated">Filtros</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="First name is incorrect" xml:space="preserve">
@@ -2268,10 +2279,12 @@ to the clipboard</source>
       </trans-unit>
       <trans-unit id="Mark as Read" xml:space="preserve">
         <source>Mark as Read</source>
+        <target state="translated">Marcar como lido</target>
         <note>Button title</note>
       </trans-unit>
       <trans-unit id="Mark as Read failed." xml:space="preserve">
         <source>Mark as Read failed.</source>
+        <target state="translated">Falha ao marcar como lido.</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Mb" xml:space="preserve">
@@ -2286,6 +2299,7 @@ to the clipboard</source>
       </trans-unit>
       <trans-unit id="Media" xml:space="preserve">
         <source>Media</source>
+        <target state="translated">Média</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="More" xml:space="preserve">
@@ -2385,6 +2399,7 @@ to the clipboard</source>
       </trans-unit>
       <trans-unit id="No Search Result" xml:space="preserve">
         <source>No Search Result</source>
+        <target state="translated">Nenhum resultado de busca</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="No client IDs of application" xml:space="preserve">
@@ -2435,10 +2450,12 @@ to the clipboard</source>
       </trans-unit>
       <trans-unit id="Nothing to show" xml:space="preserve">
         <source>Nothing to show</source>
+        <target state="translated">Nada a mostrar</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Notifications" xml:space="preserve">
         <source>Notifications</source>
+        <target state="translated">Notificações</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Notify by Email" xml:space="preserve">
@@ -2463,6 +2480,7 @@ to the clipboard</source>
       </trans-unit>
       <trans-unit id="ONLYOFFICE portal" xml:space="preserve">
         <source>ONLYOFFICE portal</source>
+        <target state="translated">Portal do ONLYOFFICE</target>
         <note>Full App Name</note>
       </trans-unit>
       <trans-unit id="On iPad" xml:space="preserve">
@@ -2502,6 +2520,7 @@ to the clipboard</source>
       </trans-unit>
       <trans-unit id="Open Folder" xml:space="preserve">
         <source>Open Folder</source>
+        <target state="translated">Abrir pasta</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Opening" xml:space="preserve">
@@ -2511,6 +2530,7 @@ to the clipboard</source>
       </trans-unit>
       <trans-unit id="Options" xml:space="preserve">
         <source>Options</source>
+        <target state="translated">Opções</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Order" xml:space="preserve">
@@ -2694,6 +2714,7 @@ Se o problema persistir, entre em contato conosco e mencione este código de err
       </trans-unit>
       <trans-unit id="Push notifications disabled" xml:space="preserve">
         <source>Push notifications disabled</source>
+        <target state="translated">Notificações por push desativadas</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Read Only" xml:space="preserve">
@@ -2768,6 +2789,7 @@ Se o problema persistir, entre em contato conosco e mencione este código de err
       </trans-unit>
       <trans-unit id="Reset" xml:space="preserve">
         <source>Reset</source>
+        <target state="translated">Redefinir</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Restore" xml:space="preserve">
@@ -2823,6 +2845,7 @@ Se o problema persistir, entre em contato conosco e mencione este código de err
       </trans-unit>
       <trans-unit id="Select group" xml:space="preserve">
         <source>Select group</source>
+        <target state="translated">Selecionar grupo</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Select the folder to copy the items" xml:space="preserve">
@@ -2842,6 +2865,7 @@ Se o problema persistir, entre em contato conosco e mencione este código de err
       </trans-unit>
       <trans-unit id="Select user" xml:space="preserve">
         <source>Select user</source>
+        <target state="translated">Selecionar usuário</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Selected provider is not available" xml:space="preserve">
@@ -2886,6 +2910,7 @@ Se o problema persistir, entre em contato conosco e mencione este código de err
       </trans-unit>
       <trans-unit id="Settings and Security" xml:space="preserve">
         <source>Settings and Security</source>
+        <target state="translated">Configurações e segurança</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="SharePoint directory" xml:space="preserve">
@@ -2920,10 +2945,12 @@ Se o problema persistir, entre em contato conosco e mencione este código de err
       </trans-unit>
       <trans-unit id="Show %d results" xml:space="preserve">
         <source>Show %d results</source>
+        <target state="translated">Exibir %d resultados</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Show notifications" xml:space="preserve">
         <source>Show notifications</source>
+        <target state="translated">Exibir notificações</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Single Sign-on" xml:space="preserve">
@@ -3028,6 +3055,7 @@ Se o problema persistir, entre em contato conosco e mencione este código de err
       </trans-unit>
       <trans-unit id="The ONLYOFFICE Editors module is missing. Please contact support@onlyoffice.com for more information." xml:space="preserve">
         <source>The ONLYOFFICE Editors module is missing. Please contact support@onlyoffice.com for more information.</source>
+        <target state="translated">O módulo do ONLYOFFICE Editors está ausente. Entre em contato com support@onlyoffice.com para mais informações.</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="The account name must be between 6 and 50 characters long" xml:space="preserve">
@@ -3104,6 +3132,7 @@ to the clipboard</source>
       </trans-unit>
       <trans-unit id="The setting will be available upon authorization on the %@." xml:space="preserve">
         <source>The setting will be available upon authorization on the %@.</source>
+        <target state="translated">A configuração estará disponível mediante autorização no %@.</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="The trash is empty" xml:space="preserve">
@@ -3158,10 +3187,12 @@ to the clipboard</source>
       </trans-unit>
       <trans-unit id="To open a folder, you must exit the current document." xml:space="preserve">
         <source>To open a folder, you must exit the current document.</source>
+        <target state="translated">Para abrir uma pasta, você deve sair do documento atual.</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="To open a folder, you must go to portal %@ under your account." xml:space="preserve">
         <source>To open a folder, you must go to portal %@ under your account.</source>
+        <target state="translated">Para abrir uma pasta, você deve ir para o portal %@ em sua conta.</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="To open a new document, you must exit the current document." xml:space="preserve">
@@ -3171,6 +3202,7 @@ to the clipboard</source>
       </trans-unit>
       <trans-unit id="To receive push notifications from the %@ application, you need to allow receiving notifications for this application in the iOS settings" xml:space="preserve">
         <source>To receive push notifications from the %@ application, you need to allow receiving notifications for this application in the iOS settings</source>
+        <target state="translated">Para receber notificações por push do aplicativo %@, você precisa permitir o recebimento de notificações deste aplicativo nas configurações do iOS.</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Trash" xml:space="preserve">
@@ -3195,6 +3227,7 @@ to the clipboard</source>
       </trans-unit>
       <trans-unit id="Turn ON in Settings" xml:space="preserve">
         <source>Turn ON in Settings</source>
+        <target state="translated">Ative nas Configurações</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Turn Passcode Off" xml:space="preserve">
@@ -3389,8 +3422,9 @@ Deslize para saber mais sobre o aplicativo.</target>
         <target>Novidades</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
-      <trans-unit id="Whats's New" xml:space="preserve">
-        <source>Whats's New</source>
+      <trans-unit id="What's New" xml:space="preserve">
+        <source>What's New</source>
+        <target state="translated">Novidades</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Work with documents offline.&#10;Created files can later be uploaded to online portal and&#10;then accessed from any other device." xml:space="preserve">
@@ -3539,6 +3573,7 @@ a seguir, acessados a partir de qualquer outro dispositivo.</target>
       </trans-unit>
       <trans-unit id="new" xml:space="preserve">
         <source>new</source>
+        <target state="translated">novo</target>
         <note>Badge of file in file list</note>
       </trans-unit>
       <trans-unit id="none" xml:space="preserve">

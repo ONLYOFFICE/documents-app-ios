@@ -294,7 +294,7 @@ start using your office</source>
       </trans-unit>
       <trans-unit id="/Delete %lu Folder and %lu File:dict/lu_files:dict/zero:dict/:string" xml:space="preserve">
         <source/>
-        <target/>
+        <target state="needs-translation"/>
         <note/>
       </trans-unit>
       <trans-unit id="/Delete %lu Folder and %lu File:dict/lu_folders:dict/one:dict/:string" xml:space="preserve">
@@ -2281,10 +2281,12 @@ to the clipboard</source>
       </trans-unit>
       <trans-unit id="Mark as Read" xml:space="preserve">
         <source>Mark as Read</source>
+        <target state="translated">Նշել որպես կարդացված</target>
         <note>Button title</note>
       </trans-unit>
       <trans-unit id="Mark as Read failed." xml:space="preserve">
         <source>Mark as Read failed.</source>
+        <target state="translated">Նշել որպես կարդացվածը ձախողված</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Mb" xml:space="preserve">
@@ -3424,8 +3426,8 @@ Swipe to learn more about the app.</source>
         <target>Ինչ նորություն կա</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
-      <trans-unit id="Whats's New" xml:space="preserve">
-        <source>Whats's New</source>
+      <trans-unit id="What's New" xml:space="preserve">
+        <source>What's New</source>
         <target>Ինչ նորություն կա</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
@@ -3575,6 +3577,7 @@ then accessed from any other device.</source>
       </trans-unit>
       <trans-unit id="new" xml:space="preserve">
         <source>new</source>
+        <target state="translated">նոր</target>
         <note>Badge of file in file list</note>
       </trans-unit>
       <trans-unit id="none" xml:space="preserve">

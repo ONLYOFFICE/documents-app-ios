@@ -126,7 +126,7 @@
 			<key>other</key>
 			<string>y %lu archivos</string>
 			<key>zero</key>
-			<string> </string>
+			<string></string>
 		</dict>
 		<key>lu_folders</key>
 		<dict>

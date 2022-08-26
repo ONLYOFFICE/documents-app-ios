@@ -259,7 +259,7 @@ start using your office</source>
       </trans-unit>
       <trans-unit id="/Delete %lu Folder and %lu File:dict/lu_files:dict/zero:dict/:string" xml:space="preserve">
         <source/>
-        <target/>
+        <target state="needs-translation"/>
         <note/>
       </trans-unit>
       <trans-unit id="/Delete %lu Folder and %lu File:dict/lu_folders:dict/other:dict/:string" xml:space="preserve">
@@ -1348,10 +1348,12 @@ Note: if you forget the passcode, you'll need to delete and reinstall the app. A
       </trans-unit>
       <trans-unit id="All files" xml:space="preserve">
         <source>All files</source>
+        <target state="translated">所有文件</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="All notifications" xml:space="preserve">
         <source>All notifications</source>
+        <target state="translated">所有通知</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Allow access via external link" xml:space="preserve">
@@ -1366,6 +1368,7 @@ Note: if you forget the passcode, you'll need to delete and reinstall the app. A
       </trans-unit>
       <trans-unit id="AppleId authentication failed" xml:space="preserve">
         <source>AppleId authentication failed</source>
+        <target state="translated">Apple ID验证失败</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Applying" xml:space="preserve">
@@ -1375,6 +1378,7 @@ Note: if you forget the passcode, you'll need to delete and reinstall the app. A
       </trans-unit>
       <trans-unit id="Archives" xml:space="preserve">
         <source>Archives</source>
+        <target state="translated">封存檔案</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Are you sure you want to delete the account %@ from this device?" xml:space="preserve">
@@ -1538,6 +1542,7 @@ others which use WebDAV protocol.</source>
       </trans-unit>
       <trans-unit id="Console" xml:space="preserve">
         <source>Console</source>
+        <target state="translated">控制台</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Continue anyway" xml:space="preserve">
@@ -1787,10 +1792,12 @@ others which use WebDAV protocol.</source>
       </trans-unit>
       <trans-unit id="Developer options" xml:space="preserve">
         <source>Developer options</source>
+        <target state="translated">開發者選項</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Disable if you do not want to receive notifications from the %@" xml:space="preserve">
         <source>Disable if you do not want to receive notifications from the %@</source>
+        <target state="translated">若您不想接收來自%@的通知，則請禁用</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Disconnect third party" xml:space="preserve">
@@ -1901,6 +1908,7 @@ others which use WebDAV protocol.</source>
       </trans-unit>
       <trans-unit id="Enable if you want to receive notifications from the %@" xml:space="preserve">
         <source>Enable if you want to receive notifications from the %@</source>
+        <target state="translated">若您想要接收來自%@的通知，則請啟用</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Encoding" xml:space="preserve">
@@ -1920,6 +1928,7 @@ others which use WebDAV protocol.</source>
       </trans-unit>
       <trans-unit id="Enter a password to open the file." xml:space="preserve">
         <source>Enter a password to open the file.</source>
+        <target state="translated">輸入檔案密碼</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Enter text using handwriting instead of device keyboard. ONLYOFFICE will recognize text and insert it in the document." xml:space="preserve">
@@ -1939,6 +1948,7 @@ others which use WebDAV protocol.</source>
       </trans-unit>
       <trans-unit id="Exclude subfolders" xml:space="preserve">
         <source>Exclude subfolders</source>
+        <target state="translated">排除子文件夾</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Export" xml:space="preserve">
@@ -2018,6 +2028,7 @@ others which use WebDAV protocol.</source>
       </trans-unit>
       <trans-unit id="Features" xml:space="preserve">
         <source>Features</source>
+        <target state="translated">功能</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="File already exists" xml:space="preserve">
@@ -2052,6 +2063,7 @@ others which use WebDAV protocol.</source>
       </trans-unit>
       <trans-unit id="Filters" xml:space="preserve">
         <source>Filters</source>
+        <target state="translated">過濾器</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="First name is incorrect" xml:space="preserve">
@@ -2151,6 +2163,7 @@ others which use WebDAV protocol.</source>
       </trans-unit>
       <trans-unit id="Instructions had been sent to your email" xml:space="preserve">
         <source>Instructions had been sent to your email</source>
+        <target state="translated">指示已发送到您的邮箱</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Invalid Country Code" xml:space="preserve">
@@ -2223,10 +2236,12 @@ to the clipboard</source>
       </trans-unit>
       <trans-unit id="Mark as Read" xml:space="preserve">
         <source>Mark as Read</source>
+        <target state="translated">标为已读</target>
         <note>Button title</note>
       </trans-unit>
       <trans-unit id="Mark as Read failed." xml:space="preserve">
         <source>Mark as Read failed.</source>
+        <target state="translated">标为已读失败</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Mb" xml:space="preserve">
@@ -2241,6 +2256,7 @@ to the clipboard</source>
       </trans-unit>
       <trans-unit id="Media" xml:space="preserve">
         <source>Media</source>
+        <target state="translated">媒體</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="More" xml:space="preserve">
@@ -2340,6 +2356,7 @@ to the clipboard</source>
       </trans-unit>
       <trans-unit id="No Search Result" xml:space="preserve">
         <source>No Search Result</source>
+        <target state="translated">沒有搜索結果</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="No client IDs of application" xml:space="preserve">
@@ -2390,10 +2407,12 @@ to the clipboard</source>
       </trans-unit>
       <trans-unit id="Nothing to show" xml:space="preserve">
         <source>Nothing to show</source>
+        <target state="translated">沒有可顯示的內容</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Notifications" xml:space="preserve">
         <source>Notifications</source>
+        <target state="translated">通知</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Notify by Email" xml:space="preserve">
@@ -2418,6 +2437,7 @@ to the clipboard</source>
       </trans-unit>
       <trans-unit id="ONLYOFFICE portal" xml:space="preserve">
         <source>ONLYOFFICE portal</source>
+        <target state="translated">ONLYOFFICE入口網站</target>
         <note>Full App Name</note>
       </trans-unit>
       <trans-unit id="On iPad" xml:space="preserve">
@@ -2457,6 +2477,7 @@ to the clipboard</source>
       </trans-unit>
       <trans-unit id="Open Folder" xml:space="preserve">
         <source>Open Folder</source>
+        <target state="translated">開啟資料夾</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Opening" xml:space="preserve">
@@ -2466,6 +2487,7 @@ to the clipboard</source>
       </trans-unit>
       <trans-unit id="Options" xml:space="preserve">
         <source>Options</source>
+        <target state="translated">选项</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Order" xml:space="preserve">
@@ -2569,6 +2591,9 @@ to the clipboard</source>
         <source>Please retry. 
 
  If the problem persists contact us and mention this error code: Microsoft - %@</source>
+        <target state="translated">请重试。
+
+ 如果问题仍然存在，请联系我们并提及此错误代码：Microsoft - %@</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Please retry. &#10;&#10; If the problem persists contact us and mention this error code: OneDrive - %@" xml:space="preserve">
@@ -2646,6 +2671,7 @@ to the clipboard</source>
       </trans-unit>
       <trans-unit id="Push notifications disabled" xml:space="preserve">
         <source>Push notifications disabled</source>
+        <target state="translated">推送通知已禁用</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Read Only" xml:space="preserve">
@@ -2720,6 +2746,7 @@ to the clipboard</source>
       </trans-unit>
       <trans-unit id="Reset" xml:space="preserve">
         <source>Reset</source>
+        <target state="translated">重設</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Restore" xml:space="preserve">
@@ -2775,6 +2802,7 @@ to the clipboard</source>
       </trans-unit>
       <trans-unit id="Select group" xml:space="preserve">
         <source>Select group</source>
+        <target state="translated">選擇群組</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Select the folder to copy the items" xml:space="preserve">
@@ -2794,6 +2822,7 @@ to the clipboard</source>
       </trans-unit>
       <trans-unit id="Select user" xml:space="preserve">
         <source>Select user</source>
+        <target state="translated">選擇使用者</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Selected provider is not available" xml:space="preserve">
@@ -2818,6 +2847,7 @@ to the clipboard</source>
       </trans-unit>
       <trans-unit id="Send the profile deletion instructions to the email address %@?" xml:space="preserve">
         <source>Send the profile deletion instructions to the email address %@?</source>
+        <target state="translated">将账户的删除指示发送到%@?电子邮件地址</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Sending" xml:space="preserve">
@@ -2837,6 +2867,7 @@ to the clipboard</source>
       </trans-unit>
       <trans-unit id="Settings and Security" xml:space="preserve">
         <source>Settings and Security</source>
+        <target state="translated">設定及安全性</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="SharePoint directory" xml:space="preserve">
@@ -2871,10 +2902,12 @@ to the clipboard</source>
       </trans-unit>
       <trans-unit id="Show %d results" xml:space="preserve">
         <source>Show %d results</source>
+        <target state="translated">顯示%結果</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Show notifications" xml:space="preserve">
         <source>Show notifications</source>
+        <target state="translated">顯示通知</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Single Sign-on" xml:space="preserve">
@@ -2959,6 +2992,7 @@ to the clipboard</source>
       </trans-unit>
       <trans-unit id="Terminate account" xml:space="preserve">
         <source>Terminate account</source>
+        <target state="translated">删除账户</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Terms of Service" xml:space="preserve">
@@ -2978,6 +3012,7 @@ to the clipboard</source>
       </trans-unit>
       <trans-unit id="The ONLYOFFICE Editors module is missing. Please contact support@onlyoffice.com for more information." xml:space="preserve">
         <source>The ONLYOFFICE Editors module is missing. Please contact support@onlyoffice.com for more information.</source>
+        <target state="translated">缺少ONLYOFFICE編輯器模塊。 請聯繫 support@onlyoffice.com 瞭解更多資訊。</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="The account name must be between 6 and 50 characters long" xml:space="preserve">
@@ -3056,6 +3091,7 @@ to the clipboard</source>
       </trans-unit>
       <trans-unit id="The setting will be available upon authorization on the %@." xml:space="preserve">
         <source>The setting will be available upon authorization on the %@.</source>
+        <target state="translated">該設定將在%@上授權後可用。</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="The trash is empty" xml:space="preserve">
@@ -3110,10 +3146,12 @@ to the clipboard</source>
       </trans-unit>
       <trans-unit id="To open a folder, you must exit the current document." xml:space="preserve">
         <source>To open a folder, you must exit the current document.</source>
+        <target state="translated">若需開啟資料夾，您必須退出當前的文件。</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="To open a folder, you must go to portal %@ under your account." xml:space="preserve">
         <source>To open a folder, you must go to portal %@ under your account.</source>
+        <target state="translated">若需開啟資料夾，您必須前往您帳戶下的入口網站%@。</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="To open a new document, you must exit the current document." xml:space="preserve">
@@ -3123,6 +3161,7 @@ to the clipboard</source>
       </trans-unit>
       <trans-unit id="To receive push notifications from the %@ application, you need to allow receiving notifications for this application in the iOS settings" xml:space="preserve">
         <source>To receive push notifications from the %@ application, you need to allow receiving notifications for this application in the iOS settings</source>
+        <target state="translated">要從%@應用程序接收推送通知，您需要在iOS設定中允許接收此應用程序的通知</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Trash" xml:space="preserve">
@@ -3147,6 +3186,7 @@ to the clipboard</source>
       </trans-unit>
       <trans-unit id="Turn ON in Settings" xml:space="preserve">
         <source>Turn ON in Settings</source>
+        <target state="translated">在設定中開啟</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Turn Passcode Off" xml:space="preserve">
@@ -3341,8 +3381,9 @@ Swipe to learn more about the app.</source>
         <target>新增功能</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
-      <trans-unit id="Whats's New" xml:space="preserve">
-        <source>Whats's New</source>
+      <trans-unit id="What's New" xml:space="preserve">
+        <source>What's New</source>
+        <target state="translated">新增功能</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Work with documents offline.&#10;Created files can later be uploaded to online portal and&#10;then accessed from any other device." xml:space="preserve">
@@ -3361,6 +3402,7 @@ then accessed from any other device.</source>
       </trans-unit>
       <trans-unit id="Wrong server, login or password." xml:space="preserve">
         <source>Wrong server, login or password.</source>
+        <target state="translated">服务器、登录名或密码错误。</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Yandex Disk" xml:space="preserve">
@@ -3490,6 +3532,7 @@ then accessed from any other device.</source>
       </trans-unit>
       <trans-unit id="new" xml:space="preserve">
         <source>new</source>
+        <target state="translated">新</target>
         <note>Badge of file in file list</note>
       </trans-unit>
       <trans-unit id="none" xml:space="preserve">

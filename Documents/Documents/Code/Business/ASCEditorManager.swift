@@ -54,6 +54,7 @@ class ASCEditorManagerError: LocalizedError, CustomStringConvertible, CustomNSEr
 typealias ASCEditorManagerOpenHandler = (_ status: ASCEditorManagerStatus, _ progress: Float, _ error: Error?, _ cancel: inout Bool) -> Void
 typealias ASCEditorManagerCloseHandler = (_ status: ASCEditorManagerStatus, _ progress: Float, _ result: ASCFile?, _ error: Error?, _ cancel: inout Bool) -> Void
 typealias ASCEditorManagerFavoriteHandler = (_ file: ASCFile?, _ complation: @escaping (Bool) -> Void) -> Void
+typealias ASCEditorManagerRenameHandler = (_ file: ASCFile?, _ title: String, _ complation: @escaping (Bool) -> Void) -> Void
 typealias ASCEditorManagerShareHandler = (_ file: ASCFile?) -> Void
 typealias ASCEditorManagerLockedHandler = () -> Void
 
@@ -68,6 +69,7 @@ class ASCEditorManager: NSObject {
     private var openHandler: ASCEditorManagerOpenHandler?
     private var favoriteHandler: ASCEditorManagerFavoriteHandler?
     private var shareHandler: ASCEditorManagerShareHandler?
+    private var renameHandler: ASCEditorManagerRenameHandler?
     private var documentInteractionController: UIDocumentInteractionController?
     private var documentServiceURL: String?
     private var documentKeyForTrack: String?
@@ -243,6 +245,7 @@ class ASCEditorManager: NSObject {
         canEdit: Bool,
         handler: ASCEditorManagerOpenHandler? = nil,
         closeHandler: ASCEditorManagerCloseHandler? = nil,
+        renameHandler: ASCEditorManagerRenameHandler? = nil,
         lockedHandler: ASCEditorManagerLockedHandler? = nil
     ) {
         var cancel = false
@@ -253,6 +256,7 @@ class ASCEditorManager: NSObject {
         openHandler = nil
         favoriteHandler = nil
         shareHandler = nil
+        self.renameHandler = nil
         self.lockedHandler = lockedHandler
 
         if provider is ASCOnlyofficeProvider {
@@ -274,6 +278,7 @@ class ASCEditorManager: NSObject {
 
                     self.closeHandler = closeHandler
                     self.openHandler = handler
+                    self.renameHandler = renameHandler
 
                     if openViewMode {
                         var cancel = false
@@ -292,6 +297,7 @@ class ASCEditorManager: NSObject {
             })
         } else {
             self.closeHandler = closeHandler
+            self.renameHandler = renameHandler
             openHandler = handler
 
             downloadAndOpenFile(for: provider, file, openViewMode: openViewMode, canEdit: canEdit, &cancel)
@@ -327,6 +333,7 @@ class ASCEditorManager: NSObject {
                 openHandler = nil
                 favoriteHandler = nil
                 shareHandler = nil
+                renameHandler = nil
                 trackingFileStatus = 0
             }
         }
@@ -463,9 +470,11 @@ class ASCEditorManager: NSObject {
         autosave: Bool = false,
         locallyEditing: Bool = false,
         handler: ASCEditorManagerOpenHandler? = nil,
-        closeHandler: ASCEditorManagerCloseHandler? = nil
+        closeHandler: ASCEditorManagerCloseHandler? = nil,
+        renameHandler: ASCEditorManagerRenameHandler? = nil
     ) {
         self.closeHandler = closeHandler
+        self.renameHandler = renameHandler
 
         openEditorLocal(
             file: file,
@@ -484,9 +493,13 @@ class ASCEditorManager: NSObject {
         openViewMode: Bool = false,
         canEdit: Bool = true,
         openHandler: ASCEditorManagerOpenHandler? = nil,
-        closeHandler: ASCEditorManagerCloseHandler? = nil
+        closeHandler: ASCEditorManagerCloseHandler? = nil,
+        renameHandler: ASCEditorManagerRenameHandler? = nil
     ) {
         var cancel = false
+
+        self.closeHandler = nil
+        self.renameHandler = nil
 
         openedFileInViewMode = openViewMode
 
@@ -512,6 +525,8 @@ class ASCEditorManager: NSObject {
                 }
 
                 self.closeHandler = closeHandler
+                self.renameHandler = renameHandler
+
                 self.openEditorLocal(
                     file: file,
                     openViewMode: openViewMode,
@@ -535,13 +550,15 @@ class ASCEditorManager: NSObject {
         handler: ASCEditorManagerOpenHandler? = nil,
         closeHandler: ASCEditorManagerCloseHandler? = nil,
         favoriteHandler: ASCEditorManagerFavoriteHandler? = nil,
-        shareHandler: ASCEditorManagerShareHandler? = nil
+        shareHandler: ASCEditorManagerShareHandler? = nil,
+        renameHandler: ASCEditorManagerRenameHandler? = nil
     ) {
         var cancel = false
 
         self.closeHandler = nil
         self.favoriteHandler = nil
         self.shareHandler = nil
+        self.renameHandler = nil
 
         func fetchAndOpen() {
             fetchDocumentInfo(file, viewMode: openViewMode, handler: { canEdit, error in
@@ -563,6 +580,7 @@ class ASCEditorManager: NSObject {
                     self.closeHandler = closeHandler
                     self.favoriteHandler = favoriteHandler
                     self.shareHandler = shareHandler
+                    self.renameHandler = renameHandler
                     self.openEditorInCollaboration(file: file, openViewMode: openViewMode, handler: handler)
                 }
             })
@@ -589,7 +607,10 @@ class ASCEditorManager: NSObject {
         }
     }
 
-    func browsePdfLocal(_ pdf: ASCFile, handler: ASCEditorManagerOpenHandler? = nil) {
+    func browsePdfLocal(
+        _ pdf: ASCFile,
+        handler: ASCEditorManagerOpenHandler? = nil
+    ) {
         var cancel = false
 
         openedFile = pdf
@@ -610,7 +631,11 @@ class ASCEditorManager: NSObject {
         handler?(.end, 1, nil, &cancel)
     }
 
-    func browsePdfCloud(for provider: ASCFileProviderProtocol, _ pdf: ASCFile, handler: ASCEditorManagerOpenHandler? = nil) {
+    func browsePdfCloud(
+        for provider: ASCFileProviderProtocol,
+        _ pdf: ASCFile,
+        handler: ASCEditorManagerOpenHandler? = nil
+    ) {
         var cancel = false
 
         handler?(.begin, 0, nil, &cancel)
@@ -2150,17 +2175,30 @@ extension ASCEditorManager {
             ]
         }
 
-        func documentShare(_ complation: DEDocumentShareComplate!) {
+        func documentShare(_ complation: DEDocumentProcessingComplate!) {
             if let file = openedFile {
                 shareHandler?(file)
             }
         }
 
-        func documentFavorite(_ favorite: Bool, complation: DEDocumentFavoriteComplate!) {
+        func documentFavorite(_ favorite: Bool, complation: DEDocumentProcessingWithResultComplate!) {
             if let file = openedFile, let _ = favoriteHandler {
                 favoriteHandler?(file) { favorite in
                     self.openedFile?.isFavorite = favorite
                     complation(favorite)
+                }
+            }
+        }
+
+        func documentRename(_ title: String!, complation: DEDocumentProcessingWithResultComplate!) {
+            if let file = openedFile {
+                let fileExtension = file.title.fileExtension()
+
+                renameHandler?(file, title) { success in
+                    if success {
+                        self.openedFile?.title = title + (fileExtension.length < 1 ? "" : ".\(fileExtension)")
+                    }
+                    complation(success)
                 }
             }
         }
@@ -2447,13 +2485,13 @@ extension ASCEditorManager {
             ]
         }
 
-        func spreadsheetShare(_ complation: SEDocumentShareComplate!) {
+        func spreadsheetShare(_ complation: DEDocumentProcessingComplate!) {
             if let file = openedFile {
                 shareHandler?(file)
             }
         }
 
-        func spreadsheetFavorite(_ favorite: Bool, complation: SEDocumentFavoriteComplate!) {
+        func spreadsheetFavorite(_ favorite: Bool, complation: DEDocumentProcessingWithResultComplate!) {
             if let file = openedFile, let _ = favoriteHandler {
                 favoriteHandler?(file) { favorite in
                     self.openedFile?.isFavorite = favorite
@@ -2719,13 +2757,13 @@ extension ASCEditorManager {
             ]
         }
 
-        func presentationShare(_ complation: PEDocumentShareComplate!) {
+        func presentationShare(_ complation: DEDocumentProcessingComplate!) {
             if let file = openedFile {
                 shareHandler?(file)
             }
         }
 
-        func presentationFavorite(_ favorite: Bool, complation: PEDocumentFavoriteComplate!) {
+        func presentationFavorite(_ favorite: Bool, complation: DEDocumentProcessingWithResultComplate!) {
             if let file = openedFile, let _ = favoriteHandler {
                 favoriteHandler?(file) { favorite in
                     self.openedFile?.isFavorite = favorite

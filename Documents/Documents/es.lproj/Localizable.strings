@@ -456,7 +456,7 @@
 "Enter Portal Address" = "Introducir la dirección del portal";
 
 /* No comment provided by engineer. */
-"Enter text using handwriting instead of device keyboard. ONLYOFFICE will recognize text and insert it in the document." = "Introduzca el texto utilizando la escritura a mano en lugar de utilizar el teclado del dispositivo. ONLYOFFICE reconocerá el texto y lo insertará en el documento.";
+"Enter text using handwriting instead of device keyboard. ONLYOFFICE will recognize text and insert it in the document. The feature is available for English only." = "Introduzca el texto utilizando la escritura a mano en lugar de utilizar el teclado del dispositivo. ONLYOFFICE reconocerá el texto y lo insertará en el documento. Esta característica solo está disponible para el inglés.";
 
 /* No comment provided by engineer. */
 "Error" = "Error";

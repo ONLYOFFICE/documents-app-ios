@@ -1931,9 +1931,9 @@ others which use WebDAV protocol.</source>
         <target state="translated">輸入檔案密碼</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
-      <trans-unit id="Enter text using handwriting instead of device keyboard. ONLYOFFICE will recognize text and insert it in the document." xml:space="preserve">
-        <source>Enter text using handwriting instead of device keyboard. ONLYOFFICE will recognize text and insert it in the document.</source>
-        <target state="translated">使用手写输入文字，ONLYOFFICE将识别文本并将其插入到文档中。</target>
+      <trans-unit id="Enter text using handwriting instead of device keyboard. ONLYOFFICE will recognize text and insert it in the document. The feature is available for English only." xml:space="preserve">
+        <source>Enter text using handwriting instead of device keyboard. ONLYOFFICE will recognize text and insert it in the document. The feature is available for English only.</source>
+        <target state="translated">使用手写输入文字，ONLYOFFICE将识别文本并将其插入到文档中。该功能仅支持英语。</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Error" xml:space="preserve">

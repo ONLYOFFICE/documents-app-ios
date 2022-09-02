@@ -1974,9 +1974,9 @@ others which use WebDAV protocol.</source>
         <target state="translated">Въведете парола, за да отворите файла.</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
-      <trans-unit id="Enter text using handwriting instead of device keyboard. ONLYOFFICE will recognize text and insert it in the document." xml:space="preserve">
-        <source>Enter text using handwriting instead of device keyboard. ONLYOFFICE will recognize text and insert it in the document.</source>
-        <target state="translated">Въведете текст, като използвате ръкописен текст вместо клавиатурата на устройството. ONLYOFFICE ще разпознае текста и ще го вмъкне в документа.</target>
+      <trans-unit id="Enter text using handwriting instead of device keyboard. ONLYOFFICE will recognize text and insert it in the document. The feature is available for English only." xml:space="preserve">
+        <source>Enter text using handwriting instead of device keyboard. ONLYOFFICE will recognize text and insert it in the document. The feature is available for English only.</source>
+        <target state="translated">Въведете текст, като използвате ръкописен текст вместо клавиатурата на устройството. ONLYOFFICE ще разпознае текста и ще го вмъкне в документа. Функцията е налична само за английски език.</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Error" xml:space="preserve">

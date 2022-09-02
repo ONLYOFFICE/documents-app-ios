@@ -456,7 +456,7 @@
 "Enter Portal Address" = "Entrez l'adresse du portail";
 
 /* No comment provided by engineer. */
-"Enter text using handwriting instead of device keyboard. ONLYOFFICE will recognize text and insert it in the document." = "Saisissez un texte en utilisant l’écriture manuscrite au lieu du clavier de l’appareil. ONLYOFFICE reconnaîtra le texte et l’insérera au document.";
+"Enter text using handwriting instead of device keyboard. ONLYOFFICE will recognize text and insert it in the document. The feature is available for English only." = "Saisissez un texte en utilisant l'écriture manuscrite au lieu du clavier de l'appareil. ONLYOFFICE reconnaîtra le texte et l'insérera au document. Cette fonctionnalité n'est disponible qu'en anglais.";
 
 /* No comment provided by engineer. */
 "Error" = "Erreur";

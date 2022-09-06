@@ -20,16 +20,17 @@ class ASCConnectStorageWebDavController: UITableViewController {
     @IBOutlet var doneCell: UITableViewCell!
     @IBOutlet var doneLabel: UILabel!
     @IBOutlet var logoView: UIImageView!
+    @IBOutlet var loginTitleLabel: UILabel!
 
-    var needServer: Bool = true {
+    var configuration: ASCConnectStorageWebDavControllerConfiguration? {
         didSet {
-            tableView?.reloadData()
+            updateView()
         }
     }
 
-    var provider: ASCFolderProviderType = .webDav
-    var logo: UIImage?
-    var complation: (([String: String]) -> Void)?
+    private var needServer: Bool {
+        configuration?.needServer ?? false
+    }
 
     // MARK: - Lifecycle Methods
 
@@ -44,7 +45,7 @@ class ASCConnectStorageWebDavController: UITableViewController {
             field?.addTarget(self, action: #selector(textFieldDidChange(_:)), for: .editingChanged)
         }
 
-        if logo != nil {
+        if let logo = configuration?.logo {
             logoView.image = logo
         }
     }
@@ -86,7 +87,16 @@ class ASCConnectStorageWebDavController: UITableViewController {
 
     // MARK: - Private
 
+    private func updateView() {
+        tableView?.reloadData()
+        loginTitleLabel?.text = configuration?.loginTitle
+    }
+
     private func connect() {
+        guard
+            let provider = configuration?.provider
+        else { return }
+
         if let server = serverField?.text, needServer, server.isEmpty {
             serverField?.becomeFirstResponder()
             return
@@ -118,7 +128,7 @@ class ASCConnectStorageWebDavController: UITableViewController {
             params["url"] = serverUrl
         }
 
-        complation?(params)
+        configuration?.complation?(params)
     }
 }
 
@@ -147,6 +157,13 @@ extension ASCConnectStorageWebDavController {
         if cell == doneCell {
             connect()
         }
+    }
+
+    override func tableView(_ tableView: UITableView, titleForFooterInSection section: Int) -> String? {
+        if section == 0 {
+            return configuration?.instruction
+        }
+        return nil
     }
 }
 

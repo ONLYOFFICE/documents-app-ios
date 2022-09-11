@@ -2499,6 +2499,19 @@ extension ASCEditorManager {
                 }
             }
         }
+
+        func spreadsheetRename(_ title: String!, complation: SEDocumentProcessingWithResultComplate!) {
+            if let file = openedFile {
+                let fileExtension = file.title.fileExtension()
+
+                renameHandler?(file, title) { success in
+                    if success {
+                        self.openedFile?.title = title + (fileExtension.length < 1 ? "" : ".\(fileExtension)")
+                    }
+                    complation(success)
+                }
+            }
+        }
     }
 
     // MARK: - PEEditorDelegate

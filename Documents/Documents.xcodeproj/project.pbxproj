@@ -115,6 +115,12 @@
 		1D5DB0352658086C006B4757 /* ASCOnlyofficeCacheCategoriesProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D5DB0342658086B006B4757 /* ASCOnlyofficeCacheCategoriesProvider.swift */; };
 		1D5DB03A2658097E006B4757 /* ASCOnlyofficeUserDefaultsCacheCategoriesProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D5DB0392658097E006B4757 /* ASCOnlyofficeUserDefaultsCacheCategoriesProvider.swift */; };
 		1D5DB04F265850B3006B4757 /* ASCOnlyofficeUserDefaultsCacheCategoriesProviderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D5DB04E265850B3006B4757 /* ASCOnlyofficeUserDefaultsCacheCategoriesProviderTests.swift */; };
+		1D667A3528CE1E46009BD85D /* ASCOnlyofficeCategoriesGrouper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D667A3428CE1E45009BD85D /* ASCOnlyofficeCategoriesGrouper.swift */; };
+		1D667A3828CE1E52009BD85D /* ASCOnlyofficeDocSpaceCategoriesGroper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D667A3628CE1E52009BD85D /* ASCOnlyofficeDocSpaceCategoriesGroper.swift */; };
+		1D667A3928CE1E52009BD85D /* ASCOnlyofficeCategoriesDefaultGrouper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D667A3728CE1E52009BD85D /* ASCOnlyofficeCategoriesDefaultGrouper.swift */; };
+		1D667A3A28CE1E59009BD85D /* ASCOnlyofficeCategoriesDefaultGrouper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D667A3728CE1E52009BD85D /* ASCOnlyofficeCategoriesDefaultGrouper.swift */; };
+		1D667A3B28CE1E59009BD85D /* ASCOnlyofficeDocSpaceCategoriesGroper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D667A3628CE1E52009BD85D /* ASCOnlyofficeDocSpaceCategoriesGroper.swift */; };
+		1D667A3E28CE33A3009BD85D /* ASCOnlyofficeCategoriesProviderFactoryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D667A3D28CE33A3009BD85D /* ASCOnlyofficeCategoriesProviderFactoryTests.swift */; };
 		1D71107826A5A78100E00421 /* ASCShareSettingsAPIWorkerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D71107726A5A78100E00421 /* ASCShareSettingsAPIWorkerProtocol.swift */; };
 		1D71107A26A5A93000E00421 /* ASCShareSettingsAPIWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D71107926A5A93000E00421 /* ASCShareSettingsAPIWorker.swift */; };
 		1D71107D26A5A9A000E00421 /* ASCShareSettingsAPIWorkerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D71107C26A5A9A000E00421 /* ASCShareSettingsAPIWorkerTests.swift */; };
@@ -918,6 +924,10 @@
 		1D5DB0342658086B006B4757 /* ASCOnlyofficeCacheCategoriesProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCOnlyofficeCacheCategoriesProvider.swift; sourceTree = "<group>"; };
 		1D5DB0392658097E006B4757 /* ASCOnlyofficeUserDefaultsCacheCategoriesProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCOnlyofficeUserDefaultsCacheCategoriesProvider.swift; sourceTree = "<group>"; };
 		1D5DB04E265850B3006B4757 /* ASCOnlyofficeUserDefaultsCacheCategoriesProviderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCOnlyofficeUserDefaultsCacheCategoriesProviderTests.swift; sourceTree = "<group>"; };
+		1D667A3428CE1E45009BD85D /* ASCOnlyofficeCategoriesGrouper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASCOnlyofficeCategoriesGrouper.swift; sourceTree = "<group>"; };
+		1D667A3628CE1E52009BD85D /* ASCOnlyofficeDocSpaceCategoriesGroper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASCOnlyofficeDocSpaceCategoriesGroper.swift; sourceTree = "<group>"; };
+		1D667A3728CE1E52009BD85D /* ASCOnlyofficeCategoriesDefaultGrouper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASCOnlyofficeCategoriesDefaultGrouper.swift; sourceTree = "<group>"; };
+		1D667A3D28CE33A3009BD85D /* ASCOnlyofficeCategoriesProviderFactoryTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCOnlyofficeCategoriesProviderFactoryTests.swift; sourceTree = "<group>"; };
 		1D71107726A5A78100E00421 /* ASCShareSettingsAPIWorkerProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCShareSettingsAPIWorkerProtocol.swift; sourceTree = "<group>"; };
 		1D71107926A5A93000E00421 /* ASCShareSettingsAPIWorker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCShareSettingsAPIWorker.swift; sourceTree = "<group>"; };
 		1D71107C26A5A9A000E00421 /* ASCShareSettingsAPIWorkerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCShareSettingsAPIWorkerTests.swift; sourceTree = "<group>"; };
@@ -1852,9 +1862,18 @@
 		1D5DB04726584E37006B4757 /* OnlyofficeCategories */ = {
 			isa = PBXGroup;
 			children = (
+				1D667A3C28CE336B009BD85D /* Factory */,
 				1D5DB04E265850B3006B4757 /* ASCOnlyofficeUserDefaultsCacheCategoriesProviderTests.swift */,
 			);
 			path = OnlyofficeCategories;
+			sourceTree = "<group>";
+		};
+		1D667A3C28CE336B009BD85D /* Factory */ = {
+			isa = PBXGroup;
+			children = (
+				1D667A3D28CE33A3009BD85D /* ASCOnlyofficeCategoriesProviderFactoryTests.swift */,
+			);
+			path = Factory;
 			sourceTree = "<group>";
 		};
 		1D71107526A5A6BB00E00421 /* Workers */ = {
@@ -1948,6 +1967,8 @@
 				1D9820002631A8D900144B57 /* ASCOnlyofficeAppBasedCategoriesProvider.swift */,
 				1DE6D6BB2631AEE1001B825B /* ASCOnlyofficeAPICategoriesProvider.swift */,
 				1D5DB0392658097E006B4757 /* ASCOnlyofficeUserDefaultsCacheCategoriesProvider.swift */,
+				1D667A3728CE1E52009BD85D /* ASCOnlyofficeCategoriesDefaultGrouper.swift */,
+				1D667A3628CE1E52009BD85D /* ASCOnlyofficeDocSpaceCategoriesGroper.swift */,
 			);
 			path = OnlyofficeCategories;
 			sourceTree = "<group>";
@@ -2080,6 +2101,7 @@
 		1DE6D6C02631BDB7001B825B /* Protocols */ = {
 			isa = PBXGroup;
 			children = (
+				1D667A3428CE1E45009BD85D /* ASCOnlyofficeCategoriesGrouper.swift */,
 				1D981FF22631A6AF00144B57 /* ASCOnlyofficeCategoriesProviderProtocol.swift */,
 				1D5DB0342658086B006B4757 /* ASCOnlyofficeCacheCategoriesProvider.swift */,
 			);
@@ -3987,6 +4009,7 @@
 				FC36D28B25B5C32200412DDB /* Common+Extension.swift in Sources */,
 				FC68528626837B7300D830EC /* OnlyofficeCapabilities.swift in Sources */,
 				FC36D28C25B5C32200412DDB /* ASCEntity.swift in Sources */,
+				1D667A3A28CE1E59009BD85D /* ASCOnlyofficeCategoriesDefaultGrouper.swift in Sources */,
 				1D49E2B326A9BDBD0024AC7A /* ASCSharingSettingsVerifyRightHoldersView.swift in Sources */,
 				FCF695CF2632FAC500808644 /* ASCButtonStyle.swift in Sources */,
 				FC36D28D25B5C32200412DDB /* ASCCreatePortalViewController.swift in Sources */,
@@ -4034,6 +4057,7 @@
 				FC36D29F25B5C32200412DDB /* ASCDateTransform.swift in Sources */,
 				FC36D2A025B5C32200412DDB /* ASCOnDeviceNavigationController.swift in Sources */,
 				FCF6966B26384C3300808644 /* ASCOnlyofficeAPICategoriesProvider.swift in Sources */,
+				1D667A3B28CE1E59009BD85D /* ASCOnlyofficeDocSpaceCategoriesGroper.swift in Sources */,
 				FC07073F26CEA6AC003E2077 /* UITapGestureRecognizer+Extensions.swift in Sources */,
 				FC25B456284F67F70075D6C2 /* ASCSwitchCell.swift in Sources */,
 				FC36D2A125B5C32200412DDB /* ASCLocalFileHelper.swift in Sources */,
@@ -4303,6 +4327,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				FCCDE680204973F500CFC653 /* ASCDocumentConverterTest.swift in Sources */,
+				1D667A3E28CE33A3009BD85D /* ASCOnlyofficeCategoriesProviderFactoryTests.swift in Sources */,
 				FCD2DD6E2702F70400D31BD5 /* ManagedAppConfig.swift in Sources */,
 				FC56B5CB20C03F3400557C1F /* ASCSortViewCellTableViewCell.swift in Sources */,
 				FC4D864720C50AE00047B871 /* String+Extension.swift in Sources */,
@@ -4413,6 +4438,7 @@
 				FC68528526837B7300D830EC /* OnlyofficeCapabilities.swift in Sources */,
 				1DD2FF21275A9EB000676010 /* ASCSharingSettingsAccessOFormProvider.swift in Sources */,
 				1D4C6778268A2573000F2284 /* ASCSharingOptionsModels.swift in Sources */,
+				1D667A3528CE1E46009BD85D /* ASCOnlyofficeCategoriesGrouper.swift in Sources */,
 				FC8C69811ECC7B6B005B68D7 /* Common+Extension.swift in Sources */,
 				FC92C5BB2059125F004442CC /* ASCEntity.swift in Sources */,
 				FCE1F6461EDC456700D9DE17 /* ASCCreatePortalViewController.swift in Sources */,
@@ -4455,6 +4481,7 @@
 				1DE6D6BC2631AEE1001B825B /* ASCOnlyofficeAPICategoriesProvider.swift in Sources */,
 				FC25B455284F67F70075D6C2 /* ASCSwitchCell.swift in Sources */,
 				FC68398A21B7DF0C00251CEA /* ASCOnDeviceNavigationController.swift in Sources */,
+				1D667A3828CE1E52009BD85D /* ASCOnlyofficeDocSpaceCategoriesGroper.swift in Sources */,
 				FC142A9A28992D6C00EDE7CE /* ASCPaddingLabel.swift in Sources */,
 				FCC39FEA1E6ECB3400DECB8D /* ASCLocalFileHelper.swift in Sources */,
 				FC07073E26CEA6AB003E2077 /* UITapGestureRecognizer+Extensions.swift in Sources */,
@@ -4536,6 +4563,7 @@
 				FCD33B5921C9195000D52DAF /* ASCDocumentsNavigationController.swift in Sources */,
 				FCA3A41B22C3671200D0E57E /* UISplitViewController+Extensions.swift in Sources */,
 				FC4D0A222494F807001EF1B5 /* ASCDebugConsoleViewController.swift in Sources */,
+				1D667A3928CE1E52009BD85D /* ASCOnlyofficeCategoriesDefaultGrouper.swift in Sources */,
 				FC066AB6252DB7C5007357F7 /* Observable.swift in Sources */,
 				1D4C677A268A2573000F2284 /* ASCSharingOptionsInteractor.swift in Sources */,
 				FCEF9D2A1ED2C94300627BA5 /* PasscodeSignPlaceholderView.swift in Sources */,

@@ -62,6 +62,7 @@ class OnlyofficeAPI {
             public static let trash = "@trash"
             public static let favorites = "@favorites"
             public static let recent = "@recent"
+            public static let room = "rooms"
         }
     }
 

@@ -21,9 +21,13 @@ class ASCOnlyofficeCategoriesViewController: UITableViewController {
     private var account: ASCAccount?
     private let cacheManager: ASCOnlyofficeCacheCategoriesProvider = ASCOnlyofficeUserDefaultsCacheCategoriesProvider()
 
-    private lazy var categoriesProviderFactory = ASCOnlyofficeCategoriesProviderFactory()
+    private lazy var categoriesProviderFactory: ASCOnlyofficeCategoriesProviderFactoryProtocol = ASCOnlyofficeCategoriesProviderFactory()
     private var categoriesCurrentlyLoading: Bool {
         return categoriesProviderFactory.get().categoriesCurrentlyLoading
+    }
+
+    private var categoriesGrouper: ASCOnlyofficeCategoriesGrouper {
+        categoriesProviderFactory.getCategoriesGrouper()
     }
 
     private var cachedCategories: [ASCOnlyofficeCategory] {
@@ -47,6 +51,10 @@ class ASCOnlyofficeCategoriesViewController: UITableViewController {
 
     private var categories: [ASCOnlyofficeCategory] {
         loadedCategories.isEmpty ? cachedCategories : loadedCategories
+    }
+
+    private var groupedCategroies: ASCOnlyofficeCategoriesGroup {
+        categoriesGrouper.group(categories: categories)
     }
 
     private var needUpdateCategoriesCache: Bool {
@@ -451,7 +459,17 @@ class ASCOnlyofficeCategoriesViewController: UITableViewController {
     func selectRow(with folderType: ASCFolderType?) {
         if let index = categories.firstIndex(where: { $0.folder?.rootFolderType == folderType }) {
             if UIDevice.pad {
-                tableView.selectRow(at: IndexPath(row: index, section: 0), animated: false, scrollPosition: .none)
+                switch groupedCategroies {
+                case .notGroupd:
+                    tableView.selectRow(at: IndexPath(row: index, section: 0), animated: false, scrollPosition: .none)
+                case let .titledGroups(groups):
+                    for (groupIndex, categories) in groups.map({ $0.categories }).enumerated() {
+                        if let categoryIndex = categories.firstIndex(where: { $0.folder?.rootFolderType == folderType }) {
+                            tableView.selectRow(at: IndexPath(row: categoryIndex, section: groupIndex), animated: false, scrollPosition: .none)
+                            break
+                        }
+                    }
+                }
             }
             currentlySelectedFolderType = folderType
         }
@@ -462,16 +480,44 @@ class ASCOnlyofficeCategoriesViewController: UITableViewController {
 
 extension ASCOnlyofficeCategoriesViewController {
     override func numberOfSections(in tableView: UITableView) -> Int {
-        return 1
+        switch groupedCategroies {
+        case .notGroupd:
+            return 1
+        case let .titledGroups(groups):
+            return groups.count
+        }
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return categories.count
+        switch groupedCategroies {
+        case let .notGroupd(categories):
+            return categories.count
+        case let .titledGroups(groups):
+            return groups[section].categories.count
+        }
+    }
+
+    override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        switch groupedCategroies {
+        case .notGroupd:
+            return .leastNonzeroMagnitude
+        case .titledGroups:
+            return 38
+        }
+    }
+
+    override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        switch groupedCategroies {
+        case .notGroupd:
+            return nil
+        case let .titledGroups(groups):
+            return groups[section].title
+        }
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if let cell = tableView.dequeueReusableCell(withIdentifier: ASCOnlyofficeCategoryCell.identifier, for: indexPath) as? ASCOnlyofficeCategoryCell {
-            cell.category = categories[indexPath.row]
+            cell.category = getCategory(by: indexPath)
             cell.accessoryType = (UIDevice.phone || ASCViewControllerManager.shared.currentSizeClass == .compact) ? .disclosureIndicator : .none
             return cell
         }
@@ -480,6 +526,15 @@ extension ASCOnlyofficeCategoriesViewController {
     }
 
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        select(category: categories[indexPath.row], animated: true)
+        select(category: getCategory(by: indexPath), animated: true)
+    }
+
+    private func getCategory(by indexPath: IndexPath) -> ASCOnlyofficeCategory {
+        switch groupedCategroies {
+        case let .notGroupd(categories):
+            return categories[indexPath.row]
+        case let .titledGroups(groups):
+            return groups[indexPath.section].categories[indexPath.row]
+        }
     }
 }

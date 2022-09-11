@@ -117,13 +117,13 @@ class ASCOnlyofficeProvider: ASCFileProviderProtocol & ASCSortableFileProviderPr
             info += ["token": token]
         }
 
-        if let serverVersion = apiClient.serverVersion {
-            info += ["serverVersion": serverVersion]
-        }
-
         if let expires = apiClient.expires {
             let dateTransform = ASCDateTransform()
             info += ["expires": dateTransform.transformToJSON(expires) ?? ""]
+        }
+
+        if let serverVersion = apiClient.serverVersion {
+            info += ["serverVersion": serverVersion.toJSON()]
         }
 
         if let capabilities = apiClient.capabilities {
@@ -151,11 +151,13 @@ class ASCOnlyofficeProvider: ASCFileProviderProtocol & ASCSortableFileProviderPr
                 apiClient.capabilities = OnlyofficeCapabilities(JSON: capabilitiesJson)
             }
 
+            if let versions = json["serverVersion"] as? [String: Any] {
+                apiClient.serverVersion = OnlyofficeVersion(JSON: versions)
+            }
             let dateTransform = ASCDateTransform()
 
             apiClient.baseURL = URL(string: json["baseUrl"] as? String ?? "")
             apiClient.token = json["token"] as? String
-            apiClient.serverVersion = json["serverVersion"] as? String
             apiClient.expires = dateTransform.transformFromJSON(json["expires"])
         }
     }
@@ -254,6 +256,9 @@ class ASCOnlyofficeProvider: ASCFileProviderProtocol & ASCSortableFileProviderPr
                 "startIndex": (parameters["startIndex"] as? Int) ?? strongSelf.page * strongSelf.pageSize,
                 "count": (parameters["count"] as? Int) ?? strongSelf.pageSize,
             ]
+            if ASCOnlyofficeCategory.isDocSpaceRoom(type: folder.rootFolderType), let searchArea = ASCOnlyofficeCategory.searchArea(of: folder.rootFolderType) {
+                params["searchArea"] = searchArea
+            }
 
             /// Search
             if let search = parameters["search"] as? [String: Any] {

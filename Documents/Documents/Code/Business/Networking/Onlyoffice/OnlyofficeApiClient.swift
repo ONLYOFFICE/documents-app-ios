@@ -35,14 +35,14 @@ class OnlyofficeApiClient: NetworkingClient {
     // MARK: - Properties
 
     public var expires: Date?
-    public var serverVersion: String?
+    public var serverVersion: OnlyofficeVersion?
     public var capabilities: OnlyofficeCapabilities?
     public var active: Bool {
         return baseURL != nil && token != nil
     }
 
     public var isHttp2: Bool {
-        return serverVersion?.isVersion(greaterThanOrEqualTo: "10.0") ?? false
+        return serverVersion?.community?.isVersion(greaterThanOrEqualTo: "10.0") ?? false
     }
 
     private let queue = DispatchQueue(label: "asc.networking.client.\(String(describing: type(of: self)))")
@@ -253,7 +253,7 @@ class OnlyofficeApiClient: NetworkingClient {
             }
 
             if let versions = response?.result {
-                self?.serverVersion = versions.community
+                self?.serverVersion = versions
             }
         }
     }

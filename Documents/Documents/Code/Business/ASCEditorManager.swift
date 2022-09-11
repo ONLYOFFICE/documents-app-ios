@@ -2770,17 +2770,30 @@ extension ASCEditorManager {
             ]
         }
 
-        func presentationShare(_ complation: DEDocumentProcessingComplate!) {
+        func presentationShare(_ complation: PEDocumentProcessingComplate!) {
             if let file = openedFile {
                 shareHandler?(file)
             }
         }
 
-        func presentationFavorite(_ favorite: Bool, complation: DEDocumentProcessingWithResultComplate!) {
+        func presentationFavorite(_ favorite: Bool, complation: PEDocumentProcessingWithResultComplate!) {
             if let file = openedFile, let _ = favoriteHandler {
                 favoriteHandler?(file) { favorite in
                     self.openedFile?.isFavorite = favorite
                     complation(favorite)
+                }
+            }
+        }
+
+        func presentationRename(_ title: String!, complation: PEDocumentProcessingWithResultComplate!) {
+            if let file = openedFile {
+                let fileExtension = file.title.fileExtension()
+
+                renameHandler?(file, title) { success in
+                    if success {
+                        self.openedFile?.title = title + (fileExtension.length < 1 ? "" : ".\(fileExtension)")
+                    }
+                    complation(success)
                 }
             }
         }

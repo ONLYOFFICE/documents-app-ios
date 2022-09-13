@@ -121,6 +121,7 @@
 		1D667A3A28CE1E59009BD85D /* ASCOnlyofficeCategoriesDefaultGrouper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D667A3728CE1E52009BD85D /* ASCOnlyofficeCategoriesDefaultGrouper.swift */; };
 		1D667A3B28CE1E59009BD85D /* ASCOnlyofficeDocSpaceCategoriesGroper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D667A3628CE1E52009BD85D /* ASCOnlyofficeDocSpaceCategoriesGroper.swift */; };
 		1D667A3E28CE33A3009BD85D /* ASCOnlyofficeCategoriesProviderFactoryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D667A3D28CE33A3009BD85D /* ASCOnlyofficeCategoriesProviderFactoryTests.swift */; };
+		1D667A4028D11D03009BD85D /* ASCRoomType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D667A3F28D11D03009BD85D /* ASCRoomType.swift */; };
 		1D71107826A5A78100E00421 /* ASCShareSettingsAPIWorkerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D71107726A5A78100E00421 /* ASCShareSettingsAPIWorkerProtocol.swift */; };
 		1D71107A26A5A93000E00421 /* ASCShareSettingsAPIWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D71107926A5A93000E00421 /* ASCShareSettingsAPIWorker.swift */; };
 		1D71107D26A5A9A000E00421 /* ASCShareSettingsAPIWorkerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D71107C26A5A9A000E00421 /* ASCShareSettingsAPIWorkerTests.swift */; };
@@ -928,6 +929,7 @@
 		1D667A3628CE1E52009BD85D /* ASCOnlyofficeDocSpaceCategoriesGroper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASCOnlyofficeDocSpaceCategoriesGroper.swift; sourceTree = "<group>"; };
 		1D667A3728CE1E52009BD85D /* ASCOnlyofficeCategoriesDefaultGrouper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASCOnlyofficeCategoriesDefaultGrouper.swift; sourceTree = "<group>"; };
 		1D667A3D28CE33A3009BD85D /* ASCOnlyofficeCategoriesProviderFactoryTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCOnlyofficeCategoriesProviderFactoryTests.swift; sourceTree = "<group>"; };
+		1D667A3F28D11D03009BD85D /* ASCRoomType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCRoomType.swift; sourceTree = "<group>"; };
 		1D71107726A5A78100E00421 /* ASCShareSettingsAPIWorkerProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCShareSettingsAPIWorkerProtocol.swift; sourceTree = "<group>"; };
 		1D71107926A5A93000E00421 /* ASCShareSettingsAPIWorker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCShareSettingsAPIWorker.swift; sourceTree = "<group>"; };
 		1D71107C26A5A9A000E00421 /* ASCShareSettingsAPIWorkerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCShareSettingsAPIWorkerTests.swift; sourceTree = "<group>"; };
@@ -2834,6 +2836,7 @@
 				FC6106FE1F9E3502002A25C8 /* ASCAccount.swift */,
 				FC25B43A284F679F0075D6C2 /* ASCPushSubscribed.swift */,
 				FC753C8027F41F7E000B4DCC /* ASCDeepLink.swift */,
+				1D667A3F28D11D03009BD85D /* ASCRoomType.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -4697,6 +4700,7 @@
 				FC41D80E2265DADC00A155C2 /* ASCFileProviderType.swift in Sources */,
 				1DEB9976274E46480071C1DB /* ASCShareSettingsAPIWorkerFactory.swift in Sources */,
 				FC4D0A242494F8B2001EF1B5 /* ASCLogIntercepter.swift in Sources */,
+				1D667A4028D11D03009BD85D /* ASCRoomType.swift in Sources */,
 				FC82827F21C3CC01005AF726 /* ASCDeviceSplitViewController.swift in Sources */,
 				FCA7501122BBD65A00991682 /* ASCCreateEntityView.swift in Sources */,
 				1DCCEC05268CC6A700692167 /* ASCSharingOptionsSectionProtocol.swift in Sources */,

@@ -93,8 +93,11 @@ class ASCFolderCell: MGSwipeTableCell {
         date?.text = (folderInfo.created != nil) ? dateFormatter.string(from: folderInfo.created!) : nil
 
         /// Thumb view
-
-        icon.image = Asset.Images.listFolder.image
+        if let roomType = folder?.roomType {
+            icon.image = roomType.image
+        } else {
+            icon.image = Asset.Images.listFolder.image
+        }
 
         if let provider = folder?.providerType {
             switch provider {

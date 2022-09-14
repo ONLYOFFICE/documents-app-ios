@@ -3682,7 +3682,7 @@
 					"$(PROJECT_DIR)/../../editors-ios/build/SDK/lib",
 				);
 				INFOPLIST_FILE = Documents/Documents.dev.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.onlyoffice.Documents;
 				PRODUCT_NAME = "Documents-dev";
@@ -3753,7 +3753,7 @@
 					"$(PROJECT_DIR)/../../editors-ios/build/SDK/lib",
 				);
 				INFOPLIST_FILE = Documents/Documents.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.onlyoffice.Documents;
 				PRODUCT_NAME = "Documents-dev";

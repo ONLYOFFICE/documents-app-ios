@@ -256,7 +256,6 @@ extension ASCDocumentsViewController {
         else {
             return nil
         }
-
         let actions = provider.actions(for: folder)
 
         var rootActions: [UIMenuElement] = []

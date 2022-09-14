@@ -862,6 +862,10 @@ class ASCOnlyofficeProvider: ASCFileProviderProtocol & ASCSortableFileProviderPr
             if isRoot(folder: folder), folder.rootFolderType == .onlyofficeProjects || folder.rootFolderType == .onlyofficeBunch {
                 return false
             }
+
+            if isRoot(folder: folder), ASCOnlyofficeCategory.isDocSpaceRoom(type: folder.rootFolderType) {
+                return false
+            }
         }
 
         var access: ASCEntityAccess = ((file != nil) ? file?.access : folder?.access)!

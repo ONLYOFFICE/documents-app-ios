@@ -133,7 +133,7 @@ class ASCOnlyofficeCategory: ASCCategory {
         case .onlyofficeRoomShared:
             return "Active"
         case .onlyofficeRoomArchived:
-            return "Archived"
+            return "Archive"
         default: return nil
         }
     }

@@ -1968,7 +1968,7 @@ class ASCDocumentsViewController: ASCBaseTableViewController, UIGestureRecognize
     }
 
     func more(cell: UITableViewCell, menuButton: UIButton) {
-        if let moreAlertController = buildFileActionMenu(for: cell) {
+        if let moreAlertController = buildActionMenu(for: cell) {
             if UIDevice.pad {
                 moreAlertController.modalPresentationStyle = .popover
                 moreAlertController.popoverPresentationController?.sourceView = menuButton

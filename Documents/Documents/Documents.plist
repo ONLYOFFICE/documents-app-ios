@@ -130,6 +130,18 @@
 			<key>CFBundleTypeIconFiles</key>
 			<array/>
 			<key>CFBundleTypeName</key>
+			<string>Plain text</string>
+			<key>LSHandlerRank</key>
+			<string>Alternate</string>
+			<key>LSItemContentTypes</key>
+			<array>
+				<string>public.plain-text</string>
+			</array>
+		</dict>
+		<dict>
+			<key>CFBundleTypeIconFiles</key>
+			<array/>
+			<key>CFBundleTypeName</key>
 			<string>Rich Text Format</string>
 			<key>LSHandlerRank</key>
 			<string>Alternate</string>
@@ -281,7 +293,7 @@
 		</dict>
 	</array>
 	<key>CFBundleVersion</key>
-	<string>815</string>
+	<string>824</string>
 	<key>FacebookAdvertiserIDCollectionEnabled</key>
 	<integer>0</integer>
 	<key>FacebookAutoInitEnabled</key>

@@ -124,6 +124,7 @@
 		1D667A4028D11D03009BD85D /* ASCRoomType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D667A3F28D11D03009BD85D /* ASCRoomType.swift */; };
 		1D667A4F28D3AA5F009BD85D /* ASCDocumentsCellSwipeMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D667A4E28D3AA5F009BD85D /* ASCDocumentsCellSwipeMenu.swift */; };
 		1D667A5328D3AB50009BD85D /* ASCDocumentsCellContextMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D667A5228D3AB50009BD85D /* ASCDocumentsCellContextMenu.swift */; };
+		1D667A5528D3AEA0009BD85D /* ASCDocumentsFolderCellContextMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D667A5428D3AEA0009BD85D /* ASCDocumentsFolderCellContextMenu.swift */; };
 		1D667A5928D3B80C009BD85D /* ASCEntityRemoverActionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D667A5828D3B80C009BD85D /* ASCEntityRemoverActionController.swift */; };
 		1D667A5D28D3BA2D009BD85D /* ASCDocumentsEntityRemoverActionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D667A5C28D3BA2D009BD85D /* ASCDocumentsEntityRemoverActionController.swift */; };
 		1D71107826A5A78100E00421 /* ASCShareSettingsAPIWorkerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D71107726A5A78100E00421 /* ASCShareSettingsAPIWorkerProtocol.swift */; };
@@ -936,6 +937,7 @@
 		1D667A3F28D11D03009BD85D /* ASCRoomType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCRoomType.swift; sourceTree = "<group>"; };
 		1D667A4E28D3AA5F009BD85D /* ASCDocumentsCellSwipeMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCDocumentsCellSwipeMenu.swift; sourceTree = "<group>"; };
 		1D667A5228D3AB50009BD85D /* ASCDocumentsCellContextMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCDocumentsCellContextMenu.swift; sourceTree = "<group>"; };
+		1D667A5428D3AEA0009BD85D /* ASCDocumentsFolderCellContextMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCDocumentsFolderCellContextMenu.swift; sourceTree = "<group>"; };
 		1D667A5828D3B80C009BD85D /* ASCEntityRemoverActionController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCEntityRemoverActionController.swift; sourceTree = "<group>"; };
 		1D667A5C28D3BA2D009BD85D /* ASCDocumentsEntityRemoverActionController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCDocumentsEntityRemoverActionController.swift; sourceTree = "<group>"; };
 		1D71107726A5A78100E00421 /* ASCShareSettingsAPIWorkerProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCShareSettingsAPIWorkerProtocol.swift; sourceTree = "<group>"; };
@@ -1915,6 +1917,7 @@
 			isa = PBXGroup;
 			children = (
 				1D667A5228D3AB50009BD85D /* ASCDocumentsCellContextMenu.swift */,
+				1D667A5428D3AEA0009BD85D /* ASCDocumentsFolderCellContextMenu.swift */,
 			);
 			path = CellContext;
 			sourceTree = "<group>";
@@ -4804,6 +4807,7 @@
 				FC81C67D22C5041600A7D104 /* ASCCustomHighlightButton.swift in Sources */,
 				FC8C697F1ECC6755005B68D7 /* ASCConnectStorageOAuth2Box.swift in Sources */,
 				F3DA8959280ECEA2005456B5 /* ASCSelectGroupViewController.swift in Sources */,
+				1D667A5528D3AEA0009BD85D /* ASCDocumentsFolderCellContextMenu.swift in Sources */,
 				FC2EEA3821BAB05F00CB85A3 /* UIViewController+Extensions.swift in Sources */,
 				1DC43EE6269F613000373D5A /* ASCSharingSettingsVerifyRightHoldersViewController.swift in Sources */,
 				FCB1BEC11E8E4368004C7967 /* UIAlertController+Extension.swift in Sources */,

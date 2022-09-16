@@ -49,6 +49,10 @@ extension ASCProviderDelegate {
 
 // MARK: - ASCBaseFileProvider protocol
 
+protocol FileProviderHolder: AnyObject {
+    var provider: ASCFileProviderProtocol? { get set }
+}
+
 protocol ASCFileProviderProtocol {
     // Information
     var id: String? { get }

@@ -9,6 +9,10 @@
 import Foundation
 import ObjectMapper
 
+protocol FolderHolder: AnyObject {
+    var folder: ASCFolder? { get set }
+}
+
 class ASCFolder: ASCEntity {
     var parentId: String?
     var filesCount: Int = 0

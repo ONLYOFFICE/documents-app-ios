@@ -9,10 +9,10 @@
 import Foundation
 import MBProgressHUD
 
-final class ASCDocumentsEntityRemoverActionController: ASCEntityRemoverActionController {
+final class ASCDocumentsEntityRemoverActionController: ASCEntityRemoverActionController, FileProviderHolder, FolderHolder {
     typealias EntitiesGetter = (Set<String>) -> (localItems: [ASCEntity], cloudItems: [ASCEntity])
-    typealias ProviderIndexesGetter = ([ASCEntity]) -> [Int]
-    typealias RemovedItemsHandler = ([ASCEntity]) -> Void
+    typealias ProviderIndexesGetter = ([ASCEntity]) -> [IndexPath]
+    typealias RemovedItemsHandler = ([IndexPath]) -> Void
     typealias ErrorHandler = (String?) -> Void
 
     var provider: ASCFileProviderProtocol?
@@ -49,10 +49,12 @@ final class ASCDocumentsEntityRemoverActionController: ASCEntityRemoverActionCon
 
                 // Remove data
                 if let provider = self.provider {
-                    providerIndexesGetter(deteteItems).forEach(provider.remove(at:))
+                    let deletedIndexes = providerIndexesGetter(deteteItems)
+                    deletedIndexes.forEach {
+                        provider.remove(at: $0.row)
+                    }
+                    removedItemsHandler(deletedIndexes)
                 }
-
-                removedItemsHandler(deteteItems)
             }
         }
     }

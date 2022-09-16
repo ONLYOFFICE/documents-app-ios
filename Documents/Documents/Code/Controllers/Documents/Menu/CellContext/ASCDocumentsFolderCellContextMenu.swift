@@ -10,12 +10,23 @@ import Foundation
 import MBProgressHUD
 import MGSwipeTableCell
 
-final class ASCDocumentsFolderCellContextMenu: ASCDocumentsCellContextMenu {
+final class ASCDocumentsFolderCellContextMenu: ASCDocumentsCellContextMenu, FileProviderHolder, FolderHolder {
+    typealias DeleteIfNeededHandler = (UITableViewCell, UIButton, _ complation: @escaping (UITableViewCell, Bool) -> Void) -> Void
+
     var provider: ASCFileProviderProtocol?
     var folder: ASCFolder?
+    let removerActionController: ASCEntityRemoverActionController
+    let deleteIfNeededhandler: DeleteIfNeededHandler
 
-    init(provider: ASCFileProviderProtocol? = nil) {
+    init(provider: ASCFileProviderProtocol?,
+         folder: ASCFolder?,
+         removerActionController: ASCEntityRemoverActionController,
+         deleteIfNeededhandler: @escaping DeleteIfNeededHandler)
+    {
         self.provider = provider
+        self.folder = folder
+        self.removerActionController = removerActionController
+        self.deleteIfNeededhandler = deleteIfNeededhandler
     }
 
     @available(iOS 13.0, *)
@@ -37,6 +48,9 @@ final class ASCDocumentsFolderCellContextMenu: ASCDocumentsCellContextMenu {
             icon: Asset.Images.listMenuRestore.image,
             backgroundColor: ASCConstants.Colors.grey
         ) { [unowned self] cell -> Bool in
+
+            // MARK: - TODO
+
             //   self.recover(cell: cell)
             true
         }
@@ -50,15 +64,15 @@ final class ASCDocumentsFolderCellContextMenu: ASCDocumentsCellContextMenu {
         delete.callback = { [unowned self] cell -> Bool in
             guard interfaceInteractable() else { return true }
 
-//            self.deleteIfNeeded(cell: cell, menuButton: delete) { cell, allowDelete in
-//                guard let cell = cell as? MGSwipeTableCell else { return }
-//
-//                cell.hideSwipe(animated: true)
-//
-//                if allowDelete {
-//                    self.delete(cell: cell)
-//                }
-//            }
+            self.deleteIfNeededhandler(cell, delete) { cell, allowDelete in
+                guard let cell = cell as? MGSwipeTableCell else { return }
+
+                cell.hideSwipe(animated: true)
+
+                if allowDelete, let folderCell = cell as? ASCFolderCell, let folder = folderCell.folder {
+                    self.removerActionController.delete(indexes: [folder.uid])
+                }
+            }
             return false
         }
 
@@ -68,6 +82,9 @@ final class ASCDocumentsFolderCellContextMenu: ASCDocumentsCellContextMenu {
             icon: Asset.Images.listMenuRename.image,
             backgroundColor: ASCConstants.Colors.grey
         ) { [unowned self] cell -> Bool in
+
+            // MARK: - TODO
+
             // self.rename(cell: cell)
             true
         }
@@ -78,6 +95,9 @@ final class ASCDocumentsFolderCellContextMenu: ASCDocumentsCellContextMenu {
             icon: Asset.Images.listMenuCopy.image,
             backgroundColor: ASCConstants.Colors.grey
         ) { [unowned self] cell -> Bool in
+
+            // MARK: - TODO
+
             // self.copy(cell: cell)
             true
         }
@@ -90,6 +110,9 @@ final class ASCDocumentsFolderCellContextMenu: ASCDocumentsCellContextMenu {
         )
         more.callback = { [unowned self] swipedCell -> Bool in
             guard interfaceInteractable() else { return true }
+
+            // MARK: - TODO
+
             // self.more(cell: cell, menuButton: more)
             return false
         }
@@ -107,6 +130,8 @@ final class ASCDocumentsFolderCellContextMenu: ASCDocumentsCellContextMenu {
             items = Array(items[..<2])
             items.append(more)
         }
+
+        // MARK: - TODO
 
         // return decorate(menu: items)
         return nil

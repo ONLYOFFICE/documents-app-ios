@@ -591,6 +591,15 @@ extension ASCDocumentsViewController {
 
     // MARK: - Action menu
 
+    func buildActionMenu(for cell: UITableViewCell) -> UIAlertController? {
+        if cell is ASCFileCell {
+            return buildFileActionMenu(for: cell)
+        } else if cell is ASCFolderCell {
+            return buildFolderActionMenu(for: cell)
+        }
+        return nil
+    }
+
     func buildFileActionMenu(for cell: UITableViewCell) -> UIAlertController? {
         guard
             let cell = cell as? ASCFileCell,
@@ -795,8 +804,9 @@ extension ASCDocumentsViewController {
         return actionAlertController
     }
 
-    func buildFolderActionMenu(for cell: ASCFolderCell) -> UIAlertController? {
+    func buildFolderActionMenu(for cell: UITableViewCell) -> UIAlertController? {
         guard
+            let cell = cell as? ASCFolderCell,
             let folder = cell.folder,
             let provider = provider,
             view.isUserInteractionEnabled

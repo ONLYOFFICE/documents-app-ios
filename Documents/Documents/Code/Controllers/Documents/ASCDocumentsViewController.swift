@@ -55,6 +55,16 @@ class ASCDocumentsViewController: ASCBaseTableViewController, UIGestureRecognize
     private let kPageLoadingCellTag = 7777
     private var highlightEntity: ASCEntity?
     private var hideableViewControllerOnTransition: UIViewController?
+    
+    // MARK: - Actions controllers vars
+    
+    lazy var removerActionController: ASCEntityRemoverActionController = ASCDocumentsEntityRemoverActionController(
+        provider: provider,
+        folder: folder,
+        itemsGetter: getLocalAndCloudItems,
+        providerIndexesGetter: getProviderIndexes,
+        removedItemsHandler: handleRemovedItems,
+        errorHandeler: removeErrorHandler)
 
     // Navigation bar
     private var addBarButton: UIBarButtonItem?
@@ -3299,5 +3309,48 @@ extension ASCDocumentsViewController: UITableViewDropDelegate {
             }
         }
         return UITableViewDropProposal(operation: .forbidden)
+    }
+}
+
+// MARK: - Remove handlers
+extension ASCDocumentsViewController {
+    func removeErrorHandler(error: String?) {
+        UIAlertController.showError(in: self,
+                                    message: error ?? NSLocalizedString("Could not delete.", comment: ""))
+    }
+    
+    func handleRemovedItems(deteteItems: [ASCEntity]) {
+        let deteteIndexes: [IndexPath] = deteteItems.compactMap(indexPath(by:))
+        // Remove cells
+        tableView.beginUpdates()
+        tableView.deleteRows(at: deteteIndexes, with: .fade)
+        tableView.endUpdates()
+
+        showEmptyView(total < 1)
+        updateNavBar()
+        setEditMode(false)
+    }
+}
+
+// MARK: - Help funcs
+extension ASCDocumentsViewController {
+    func getLocalAndCloudItems(indexes: Set<String>) -> (localItems: [ASCEntity], cloudItems: [ASCEntity]) {
+        var localItems: [ASCEntity] = []
+        var cloudItems: [ASCEntity] = []
+
+        for uid in indexes {
+            if let index = tableData.firstIndex(where: { $0.uid == uid }) {
+                if let file = tableData[index] as? ASCFile {
+                    file.device ? localItems.append(file) : cloudItems.append(file)
+                } else if let folder = tableData[index] as? ASCFolder {
+                    folder.device ? localItems.append(folder) : cloudItems.append(folder)
+                }
+            }
+        }
+        return (localItems, cloudItems)
+    }
+
+    func getProviderIndexes(items: [ASCEntity]) -> [Int] {
+        items.compactMap(indexPath(by:)).map { $0.row }
     }
 }

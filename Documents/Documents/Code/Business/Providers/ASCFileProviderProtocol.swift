@@ -26,6 +26,9 @@ struct ASCEntityActions: OptionSet {
     static let duplicate = ASCEntityActions(rawValue: 1 << 12)
     static let favarite = ASCEntityActions(rawValue: 1 << 13)
     static let new = ASCEntityActions(rawValue: 1 << 14)
+    static let archive = ASCEntityActions(rawValue: 1 << 15)
+    static let info = ASCEntityActions(rawValue: 1 << 16)
+    static let addUsers = ASCEntityActions(rawValue: 1 << 17)
 }
 
 typealias ASCProviderUserInfoHandler = (_ success: Bool, _ error: Error?) -> Void

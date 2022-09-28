@@ -19,7 +19,7 @@ class ASCSharingAddRightHoldersPresenter: ASCSharingAddRightHoldersPresentationL
         switch responseType {
         case let .presentUsers(response: response):
             var viewModels: [(ASCSharingRightHolderViewModel, IsSelected)] = []
-            let users = response.users.sorted(by: { $0.userName ?? "" < $1.userName ?? "" })
+            let users = response.users.sorted(by: { $0.displayName ?? "" < $1.displayName ?? "" })
             let usersIdsSet: Set<String> = Set(response.sharedEntities.map { $0.user?.userId ?? nil }.compactMap { $0 })
 
             let currentUserId = response.currentUser?.userId
@@ -39,14 +39,10 @@ class ASCSharingAddRightHoldersPresenter: ASCSharingAddRightHoldersPresentationL
                     isSelected = true
                 }
 
-                let firstName = user.firstName ?? ""
-                let lastName = user.lastName ?? ""
-                let fullName = "\(lastName) \(firstName)".trimmed
-
                 let viewModel = ASCSharingRightHolderViewModel(
                     id: user.userId ?? "",
                     avatarUrl: user.avatar,
-                    name: fullName,
+                    name: user.displayName ?? "",
                     department: user.department,
                     isOwner: false,
                     rightHolderType: .user,

@@ -43,7 +43,7 @@ class ASCEmailSentViewController: ASCBaseViewController {
         guard let email = email else { return }
 
         let boldAttributes: [NSAttributedString.Key: Any] = [
-            .font: ASCTextStyle.subheadBold.font,
+            .font: ASCTextStyle.subheadlineBold.font,
         ]
 
         let attributedString = NSAttributedString(string: String(format: NSLocalizedString("If a user with the mail %@ exists, then an instruction to change the password was sent to this address.", comment: "Email sent instructions"), email))

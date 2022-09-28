@@ -20,10 +20,15 @@ enum ASCTextStyle {
     case bodyWhite
     case semibodyWhite
 
-    case subheadLight
-    case subhead
-    case subheadWhite
-    case subheadBold
+    case headline
+
+    case subheadlineLight
+    case subheadline
+    case subheadlineWhite
+    case subheadlineBold
+
+    case caption2White
+
     case placeholderRegular
 
     case underlineField
@@ -57,24 +62,31 @@ enum ASCTextStyle {
         case .semibodyWhite:
             return (UIFont.preferredFont(forTextStyle: .body).with(weight: .semibold), .white, 1)
 
-        case .subhead:
+        case .headline:
+            if #available(iOS 13.0, *) {
+                return (UIFont.preferredFont(forTextStyle: .headline), .label, 1)
+            } else {
+                return (UIFont.preferredFont(forTextStyle: .headline), .black, 1)
+            }
+
+        case .subheadline:
             if #available(iOS 13.0, *) {
                 return (UIFont.preferredFont(forTextStyle: .subheadline), .label, 1)
             } else {
                 return (UIFont.preferredFont(forTextStyle: .subheadline), .black, 1)
             }
 
-        case .subheadLight:
+        case .subheadlineLight:
             if #available(iOS 13.0, *) {
                 return (UIFont.preferredFont(forTextStyle: .subheadline), .secondaryLabel, 1)
             } else {
                 return (UIFont.preferredFont(forTextStyle: .subheadline), .lightGray, 1)
             }
 
-        case .subheadWhite:
+        case .subheadlineWhite:
             return (UIFont.preferredFont(forTextStyle: .subheadline), .white, 1)
 
-        case .subheadBold:
+        case .subheadlineBold:
             if #available(iOS 13.0, *) {
                 return (UIFont.preferredFont(forTextStyle: .subheadline).bold(), .label, 1)
             } else {
@@ -94,6 +106,9 @@ enum ASCTextStyle {
             } else {
                 return (UIFont.systemFont(ofSize: 34).bold(), .black, 1)
             }
+
+        case .caption2White:
+            return (UIFont.preferredFont(forTextStyle: .caption2), .white, 1)
 
         case .placeholderRegular:
             if #available(iOS 13.0, *) {

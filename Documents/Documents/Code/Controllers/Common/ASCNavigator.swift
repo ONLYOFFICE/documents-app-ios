@@ -24,6 +24,13 @@ enum Destination {
 
     case recoveryPasswordByEmail
     case recoveryPasswordConfirmed(email: String)
+
+    // MARK: - Settings
+
+    case notificationSettings
+    case about
+    case passcodeLockSettings
+    case developerOptions
 }
 
 final class ASCNavigator {
@@ -79,7 +86,7 @@ final class ASCNavigator {
         switch destination {
         case .sort:
             return ASCSortViewController.instance()
-        case let .shareSettings(entity):
+        case .shareSettings:
             return ASCSharingOptionsViewController()
         case .onlyofficeConnectPortal:
             return ASCConnectPortalViewController.instance()
@@ -95,6 +102,14 @@ final class ASCNavigator {
             return controller
         case .recoveryPasswordByEmail:
             return ASCPasswordRecoveryViewController.instance()
+        case .notificationSettings:
+            return ASCNotificationSettingsViewController()
+        case .about:
+            return ASCAboutViewController.instance()
+        case .passcodeLockSettings:
+            return ASCPasscodeLockViewController.instance()
+        case .developerOptions:
+            return ASCDevelopOptionsViewController()
         }
     }
 }

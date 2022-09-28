@@ -9,6 +9,23 @@
 import UIKit
 
 extension UIColor {
+    /// Create a UIColor with different colors for light and dark mode.
+    ///
+    /// - Parameters:
+    ///     - light: Color to use in light/unspecified mode.
+    ///     - dark: Color to use in dark mode.
+    convenience init(light: UIColor, dark: UIColor) {
+        if #available(iOS 13.0, tvOS 13.0, *) {
+            self.init(dynamicProvider: { $0.userInterfaceStyle == .dark ? dark : light })
+        } else {
+            self.init(cgColor: light.cgColor)
+        }
+    }
+
+    /// Create Color from hexadecimal value with optional transparency.
+    ///
+    /// - Parameters:
+    ///   - hex: hexadecimal string (example: #DECEB5).
     convenience init(hex: String) {
         var red: CGFloat = 0.0
         var green: CGFloat = 0.0

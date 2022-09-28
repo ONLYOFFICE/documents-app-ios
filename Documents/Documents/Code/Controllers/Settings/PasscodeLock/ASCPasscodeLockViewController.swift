@@ -13,7 +13,9 @@ enum ASCBiometryType: Int {
     case none, touchID, faceID
 }
 
-class ASCPasscodeLockViewController: UITableViewController {
+class ASCPasscodeLockViewController: ASCBaseTableViewController {
+    override class var storyboard: Storyboard { return Storyboard.settings }
+
     // MARK: - Properties
 
     fileprivate var configuration: PasscodeLockConfigurationType

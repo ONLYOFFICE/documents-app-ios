@@ -69,9 +69,8 @@ class ASCConnectStorageOAuth2Dropbox: ASCConnectStorageOAuth2Delegate {
     }
 
     var clientId: String?
-    var redirectUrl: String?
-
     var clientSecret: String?
+    var redirectUrl: String?
 
     // MARK: - ASCConnectStorageOAuth2 Delegate
 

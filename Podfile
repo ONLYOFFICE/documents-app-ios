@@ -19,6 +19,7 @@ def common_pods
   pod 'FacebookLogin'
   pod 'GoogleSignIn'
   pod 'GoogleAPIClientForREST/Drive'
+  pod 'SwiftyDropbox', :git => 'https://github.com/ayuzhin/SwiftyDropbox.git'
 
   # Firebase
 

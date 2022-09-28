@@ -42,11 +42,11 @@ class ASCSharingOprionsInteractorTests: XCTestCase {
         sut.sharedInfoItems.append(.init(access: rightHolder.access, user: user))
         let expectation = expectation(description: "server expectation")
         sut.makeRequest(request: .changeRightHolderAccess(.init(entity: ASCFile(), rightHolder: rightHolder, access: .comment)))
-        DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
             XCTAssertEqual(self.sut.sharedInfoItems[0].access, .comment)
             expectation.fulfill()
         }
-        waitForExpectations(timeout: 2)
+        waitForExpectations(timeout: 4)
     }
 }
 

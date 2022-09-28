@@ -1,0 +1,39 @@
+/* Class = "UILabel"; text = "Next"; ObjectID = "1hg-GO-WNq"; */
+"1hg-GO-WNq.text" = "Հաջորդը";
+
+/* Class = "UITextField"; placeholder = "Required"; ObjectID = "2MJ-bj-ZpN"; */
+"2MJ-bj-ZpN.placeholder" = "Պահանջվում է";
+
+/* Class = "UINavigationItem"; title = "Connect Cloud"; ObjectID = "7Kx-Sr-sD2"; */
+"7Kx-Sr-sD2.title" = "Միացնել Cloud";
+
+/* Class = "UILabel"; text = "Login"; ObjectID = "8QU-S0-L4O"; */
+"8QU-S0-L4O.text" = "Մուտք";
+
+/* Class = "UILabel"; text = "Password"; ObjectID = "fGf-yk-zsE"; */
+"fGf-yk-zsE.text" = "Գաղտնաբառ";
+
+/* Class = "UITextField"; placeholder = "Required"; ObjectID = "gp7-l6-arn"; */
+"gp7-l6-arn.placeholder" = "Պահանջված է";
+
+/* Class = "UITextField"; placeholder = "example.com"; ObjectID = "i2t-Xh-reL"; */
+"i2t-Xh-reL.placeholder" = "example.com";
+
+/* Class = "UILabel"; text = "Server"; ObjectID = "idC-C3-Fpx"; */
+"idC-C3-Fpx.text" = "Սպասարկիչ";
+
+/* Class = "UINavigationItem"; title = "Connect Storage"; ObjectID = "KNc-kE-PIF"; */
+"KNc-kE-PIF.title" = "Միացնել պահեստ";
+
+/* Class = "UITableViewSection"; footerTitle = "You can connect the following accounts to the ONLYOFFICE™ Documents."; ObjectID = "muA-mV-bS6"; */
+"muA-mV-bS6.footerTitle" = "Դուք կարող եք միացնել հետևյալ հաշիվները ONLYOFFICE™ փաստաթղթերին:";
+
+/* Class = "UITextField"; placeholder = "example.com"; ObjectID = "njA-lI-fvY"; */
+"njA-lI-fvY.placeholder" = "example.com";
+
+/* Class = "UILabel"; text = "Server"; ObjectID = "q9H-LF-Uc2"; */
+"q9H-LF-Uc2.text" = "Սպասարկիչ";
+
+/* Class = "UILabel"; text = "Next"; ObjectID = "sK2-QR-ADm"; */
+"sK2-QR-ADm.text" = "Հաջորդը";
+

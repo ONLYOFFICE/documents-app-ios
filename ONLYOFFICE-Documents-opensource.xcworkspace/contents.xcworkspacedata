@@ -7,4 +7,10 @@
    <FileRef
       location = "group:Documents/Documents-opensource.xcodeproj">
    </FileRef>
+   <FileRef
+      location = "group:Documents/Documents-develop.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:Documents/Documents.xcodeproj">
+   </FileRef>
 </Workspace>

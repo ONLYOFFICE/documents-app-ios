@@ -9,7 +9,7 @@
 import UIKit
 
 enum ASCButtonStyleType: Int {
-    case `default`, action, bordered, gray, capsule
+    case `default`, action, blank, bordered, gray, capsule
 }
 
 class ASCButtonStyle: UIButton {
@@ -77,6 +77,19 @@ class ASCButtonStyle: UIButton {
                 } else {
                     setTitleColorForAllStates(.black)
                 }
+            case .blank:
+                var isDark = false
+                var bgColor: UIColor = .white
+                if #available(iOS 13.0, *) {
+                    isDark = traitCollection.userInterfaceStyle == .dark
+                    bgColor = UIColor(light: .white, dark: .systemGray5)
+                }
+                UIView.animate(withDuration: 0.2, delay: 0.0, options: [], animations: {
+                    self.backgroundColor = self.isHighlighted
+                        ? isDark ? bgColor.lighten(by: 0.1) : bgColor.darken(by: 0.1)
+                        : bgColor
+                }, completion: nil)
+                setTitleColorForAllStates(Asset.Colors.brend.color)
             case .capsule:
                 UIView.animate(withDuration: 0.2, delay: 0.0, options: [], animations: {
                     self.backgroundColor = self.isHighlighted
@@ -108,6 +121,12 @@ class ASCButtonStyle: UIButton {
             switch styleType {
             case .action:
                 backgroundColor = isEnabled ? Asset.Colors.action.color : Asset.Colors.grayLight.color
+            case .blank:
+                var bgColor: UIColor = .white
+                if #available(iOS 13.0, *) {
+                    bgColor = UIColor(light: .white, dark: .systemGray5)
+                }
+                backgroundColor = isEnabled ? bgColor : Asset.Colors.grayLight.color
             case .bordered:
                 backgroundColor = isEnabled ? .clear : .lightGray.lighten()
             case .gray:
@@ -151,7 +170,7 @@ class ASCButtonStyle: UIButton {
         switch styleType {
         case .action:
             backgroundColor = Asset.Colors.action.color
-            titleLabel?.textStyle = ASCTextStyle.subheadWhite
+            titleLabel?.textStyle = ASCTextStyle.subheadlineWhite
             titleLabel?.adjustsFontForContentSizeCategory = true
             layer.cornerRadius = 8
             layer.shadowOpacity = 1
@@ -159,6 +178,15 @@ class ASCButtonStyle: UIButton {
             layer.shadowOffset = CGSize(width: 0, height: 1)
             // layer.shouldRasterize = true
             layer.shadowRadius = 1
+        case .blank:
+            var bgColor: UIColor = .white
+            if #available(iOS 13.0, *) {
+                bgColor = UIColor(light: .white, dark: .systemGray5)
+            }
+            backgroundColor = bgColor
+            titleLabel?.adjustsFontForContentSizeCategory = true
+            layer.cornerRadius = 8
+            setTitleColorForAllStates(Asset.Colors.brend.color)
         case .bordered:
             backgroundColor = .clear
             layer.borderWidth = 1
@@ -170,7 +198,7 @@ class ASCButtonStyle: UIButton {
             layerCornerRadius = 8.0
         case .capsule:
             backgroundColor = Asset.Colors.brend.color
-            titleLabel?.textStyle = ASCTextStyle.subheadBold
+            titleLabel?.textStyle = ASCTextStyle.subheadlineBold
             titleLabel?.adjustsFontForContentSizeCategory = true
             contentEdgeInsets = UIEdgeInsets(top: 5, left: 15, bottom: 5, right: 15)
             layerCornerRadius = height * 0.5

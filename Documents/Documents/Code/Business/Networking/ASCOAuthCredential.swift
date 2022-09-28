@@ -7,6 +7,7 @@
 //
 
 import Alamofire
+import Foundation
 
 struct ASCOAuthCredential: AuthenticationCredential {
     let accessToken: String

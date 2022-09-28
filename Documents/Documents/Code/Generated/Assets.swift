@@ -23,8 +23,10 @@ internal typealias AssetImageTypeAlias = ImageAsset.Image
 internal enum Asset {
   internal enum Colors {
     internal static let action = ColorAsset(name: "action")
+    internal static let badge = ColorAsset(name: "badge")
     internal static let brend = ColorAsset(name: "brend")
     internal static let debug = ColorAsset(name: "debug")
+    internal static let filterCapsule = ColorAsset(name: "filter-capsule")
     internal static let grayLight = ColorAsset(name: "gray-light")
     internal static let tableBackground = ColorAsset(name: "table-background")
     internal static let tableCategoryBackground = ColorAsset(name: "table-category-background")
@@ -42,6 +44,8 @@ internal enum Asset {
     internal static let barDeleteAll = ImageAsset(name: "bar-delete-all")
     internal static let barDeleteLink = ImageAsset(name: "bar-delete-link")
     internal static let barDelete = ImageAsset(name: "bar-delete")
+    internal static let barFilterOn = ImageAsset(name: "bar-filter-on")
+    internal static let barFilter = ImageAsset(name: "bar-filter")
     internal static let barMove = ImageAsset(name: "bar-move")
     internal static let barRecover = ImageAsset(name: "bar-recover")
     internal static let barSelect = ImageAsset(name: "bar-select")
@@ -147,6 +151,7 @@ internal enum Asset {
     internal static let menuViewOnly = ImageAsset(name: "menu-view-only")
     internal static let avatarDefaultGroup = ImageAsset(name: "avatar-default-group")
     internal static let avatarDefault = ImageAsset(name: "avatar-default")
+    internal static let tagClose = ImageAsset(name: "tag-close")
     internal static let passcodeLockSplash = ImageAsset(name: "passcode-lock-splash")
     internal static let shortcutCreateDoc = ImageAsset(name: "shortcut-create-doc")
     internal static let shortcutCreatePres = ImageAsset(name: "shortcut-create-pres")

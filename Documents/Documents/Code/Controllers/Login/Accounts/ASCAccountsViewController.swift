@@ -308,6 +308,9 @@ class ASCAccountsViewController: ASCBaseViewController {
                             ["type": OnlyofficeApplicationType.documents.rawValue]
                         )
 
+                        // Registration for push notification
+                        ASCPushNotificationManager.requestRegister()
+
                         ASCAnalytics.logEvent(ASCConstants.Analytics.Event.switchAccount, parameters: [
                             ASCAnalytics.Event.Key.portal: baseUrl,
                         ])

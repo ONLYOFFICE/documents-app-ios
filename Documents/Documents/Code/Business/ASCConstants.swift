@@ -15,6 +15,7 @@ class ASCConstants {
         static let appNameShort = NSLocalizedString("ONLYOFFICE", comment: "Short App Name")
         static let appNameFull = NSLocalizedString("ONLYOFFICE Documents", comment: "Full App Name")
         static let copyright = String(format: NSLocalizedString("© Ascensio System SIA %d", comment: ""), Calendar.current.component(.year, from: Date()))
+        static let brendPortalName = NSLocalizedString("ONLYOFFICE portal", comment: "Full App Name")
     }
 
     enum Keys {
@@ -24,6 +25,7 @@ class ASCConstants {
         static let converterKey = ASCConstants.internalConstants["KeysConverterKey"] as? String ?? ""
         static let recaptcha = ASCConstants.internalConstants["ReCaptcha"] as? String ?? ""
         static let recaptchaInfo = ASCConstants.internalConstants["ReCaptchaInfo"] as? String ?? ""
+        static let licenseName = "F8D434904F7142C49EB3E4CD738CFE01"
     }
 
     enum Urls {
@@ -63,11 +65,27 @@ class ASCConstants {
         static let sdkVersion = "asc-sdk-version"
         static let passwordOpenedDocument = "asc-opened-document-password"
         static let lastCloudIndex = "asc-last-cloud-index"
+        static let pushAllNotification = "asc-push-all"
+
+        // Debug
+        static let debugHideSearchbarIfEmpty = "asc-debug-hidesearchbarifempty"
+        static let debugAllowiCloud = "asc-debug-allowicloud"
+        static let debugAllowCategoriesSkeleton = "asc-debug-allowcategoriesskeleton"
+        static let debugDropboxSDKLogin = "asc-debug-dropboxsdklogin"
+        static let debugOpenEditorViewModeDefault = "asc-debug-openeditorviewmodedefault"
 
         static func setupDefaults() {
             UserDefaults.standard.register(defaults: [ASCConstants.SettingsKeys.compressImage: true])
             UserDefaults.standard.register(defaults: [ASCConstants.SettingsKeys.allowTouchId: true])
             UserDefaults.standard.register(defaults: [ASCConstants.SettingsKeys.previewFiles: true])
+            UserDefaults.standard.register(defaults: [ASCConstants.SettingsKeys.pushAllNotification: true])
+
+            // Debug
+            UserDefaults.standard.register(defaults: [ASCConstants.SettingsKeys.debugHideSearchbarIfEmpty: false])
+            UserDefaults.standard.register(defaults: [ASCConstants.SettingsKeys.debugAllowiCloud: true])
+            UserDefaults.standard.register(defaults: [ASCConstants.SettingsKeys.debugAllowCategoriesSkeleton: false])
+            UserDefaults.standard.register(defaults: [ASCConstants.SettingsKeys.debugDropboxSDKLogin: true])
+            UserDefaults.standard.register(defaults: [ASCConstants.SettingsKeys.debugOpenEditorViewModeDefault: true])
         }
     }
 
@@ -94,8 +112,10 @@ class ASCConstants {
                 termsOfServiceLink: NSString(string: "https://help.onlyoffice.com/products/files/doceditor.aspx?fileid=5048471&doc=bXJ6UmJacDVnVDMxV01oMHhrUlpwaGFBcXJUUUE3VHRuTGZrRUF5a1NKVT0_IjUwNDg0NzEi0"),
             ]
 
-            RemoteConfig.remoteConfig().setDefaults(defaultValues)
-            fetchRemoteConfig()
+            #if !OPEN_SOURCE
+                RemoteConfig.remoteConfig().setDefaults(defaultValues)
+                fetchRemoteConfig()
+            #endif
         }
     }
 
@@ -145,6 +165,7 @@ class ASCConstants {
         static let forms = ["docxf", "oform"]
         static let images = ["jpg", "jpeg", "png", "gif", "bmp", "tif", "tiff", "ico"]
         static let videos = ["mpg", "mpeg", "mpg4", "mp4", "m4v", "mov", "avi", "vfw", "m75", "m15", "3g2", "3gp2", "3gp", "3gpp"]
+        static let archives = ["zip", "tar", "gz"]
         static let allowEdit = ["docx", "xlsx", "pptx", "csv", "txt", "odt", "ods", "odp", "doc", "xls", "ppt", "rtf", "mht", "html", "htm", "epub", "fb2", "docxf", "oform"]
         static let editorImportDocuments = ["doc", "odt", "txt", "rtf", "mht", "html", "htm", "epub", "fb2"]
         static let editorImportSpreadsheets = ["xls", "ods", "csv"]
@@ -212,10 +233,34 @@ class ASCConstants {
 
     enum Feature {
         // Hide the searchbar in the navigationbar if the list of documents is empty
-        static let hideSearchbarIfEmpty = false
+        static var hideSearchbarIfEmpty: Bool {
+            get { UserDefaults.standard.bool(forKey: ASCConstants.SettingsKeys.debugHideSearchbarIfEmpty) }
+            set { UserDefaults.standard.set(newValue, forKey: ASCConstants.SettingsKeys.debugHideSearchbarIfEmpty) }
+        }
 
         // Allow iCloud provider
-        static let allowiCloud = true
+        static var allowiCloud: Bool {
+            get { UserDefaults.standard.bool(forKey: ASCConstants.SettingsKeys.debugAllowiCloud) }
+            set { UserDefaults.standard.set(newValue, forKey: ASCConstants.SettingsKeys.debugAllowiCloud) }
+        }
+
+        // Allow skeleton animation for ONLYOFFICE categories on load
+        static var allowCategoriesSkeleton: Bool {
+            get { UserDefaults.standard.bool(forKey: ASCConstants.SettingsKeys.debugAllowCategoriesSkeleton) }
+            set { UserDefaults.standard.set(newValue, forKey: ASCConstants.SettingsKeys.debugAllowCategoriesSkeleton) }
+        }
+
+        // Connect Dropbox Cloud via SDK
+        static var dropboxSDKLogin: Bool {
+            get { UserDefaults.standard.bool(forKey: ASCConstants.SettingsKeys.debugDropboxSDKLogin) }
+            set { UserDefaults.standard.set(newValue, forKey: ASCConstants.SettingsKeys.debugDropboxSDKLogin) }
+        }
+
+        // Open editors in view mode
+        static var openViewModeByDefault: Bool {
+            get { UserDefaults.standard.bool(forKey: ASCConstants.SettingsKeys.debugOpenEditorViewModeDefault) }
+            set { UserDefaults.standard.set(newValue, forKey: ASCConstants.SettingsKeys.debugOpenEditorViewModeDefault) }
+        }
     }
 
     static func remoteConfigValue(forKey key: String) -> RemoteConfigValue? {

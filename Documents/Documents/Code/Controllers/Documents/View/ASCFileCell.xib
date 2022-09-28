@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -39,13 +39,16 @@
                         </constraints>
                     </imageView>
                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="2" translatesAutoresizingMaskIntoConstraints="NO" id="IGo-bB-cRp">
-                        <rect key="frame" x="66" y="14.5" width="249" height="48.5"/>
+                        <rect key="frame" x="66" y="14.5" width="244" height="48.5"/>
                         <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" alignment="top" spacing="2" translatesAutoresizingMaskIntoConstraints="NO" id="UC6-Nl-hZX">
-                                <rect key="frame" x="0.0" y="0.0" width="24" height="17"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacing="2" translatesAutoresizingMaskIntoConstraints="NO" id="UC6-Nl-hZX">
+                                <rect key="frame" x="0.0" y="0.0" width="27.5" height="17"/>
                                 <subviews>
-                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="File" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Wsn-vC-syb" userLabel="Title">
-                                        <rect key="frame" x="0.0" y="0.0" width="24" height="17"/>
+                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="File " lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Wsn-vC-syb" userLabel="Title">
+                                        <rect key="frame" x="0.0" y="0.0" width="27.5" height="17"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" relation="lessThanOrEqual" priority="250" constant="10" id="14d-oC-eAI"/>
+                                        </constraints>
                                         <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="14"/>
                                         <nil key="highlightedColor"/>
                                         <attributedString key="userComments">
@@ -128,7 +131,7 @@
                     <constraint firstItem="i1S-6f-HVh" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="ZuT-7u-Ekq"/>
                     <constraint firstItem="wmD-2M-oLc" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="cnn-Wj-BdB"/>
                     <constraint firstItem="IGo-bB-cRp" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="p5H-7C-4Nw"/>
-                    <constraint firstAttribute="trailing" secondItem="IGo-bB-cRp" secondAttribute="trailing" constant="5" id="w0P-dT-FR0"/>
+                    <constraint firstAttribute="trailing" secondItem="IGo-bB-cRp" secondAttribute="trailing" constant="10" id="w0P-dT-FR0"/>
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
@@ -140,6 +143,7 @@
                 <outlet property="separaterLabel" destination="hfg-78-jhd" id="oLZ-B2-ZKm"/>
                 <outlet property="sizeLabel" destination="nOe-Iz-YQ0" id="lvy-vF-xbV"/>
                 <outlet property="title" destination="Wsn-vC-syb" id="OZC-pP-1tI"/>
+                <outlet property="titleStackView" destination="UC6-Nl-hZX" id="W2R-YA-eUQ"/>
             </connections>
             <point key="canvasLocation" x="137.68115942028987" y="153.01339285714286"/>
         </tableViewCell>

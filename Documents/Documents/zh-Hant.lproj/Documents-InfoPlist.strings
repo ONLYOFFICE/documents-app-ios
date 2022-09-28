@@ -1,0 +1,30 @@
+/* Bundle name */
+"CFBundleName" = "文档";
+
+/* (No Comment) */
+"New Document" = "新建文档";
+
+/* (No Comment) */
+"New Presentation" = "新建演示文稿";
+
+/* (No Comment) */
+"New Spreadsheet" = "新建电子表格";
+
+/* Privacy - Camera Usage Description */
+"NSCameraUsageDescription" = "该应用程序需要访问相机，这样您就可以拍照并将照片上传到应用程序中。";
+
+/* Privacy - Face ID Usage Description */
+"NSFaceIDUsageDescription" = "这个应用程序需要Face ID权限，以使用人脸识别进行验证。";
+
+/* Privacy - Photo Library Additions Usage Description */
+"NSPhotoLibraryAddUsageDescription" = "该应用程序需要访问图片库，这样您就可以将照片上传到应用程序中。";
+
+/* Privacy - Photo Library Usage Description */
+"NSPhotoLibraryUsageDescription" = "该应用程序需要访问图片库，这样您就可以将照片上传到应用程序中。";
+
+/* (No Comment) */
+"ONLYOFFICE fillable form (.oform)" = "ONLYOFFICE可填写的表单 (.oform)";
+
+/* (No Comment) */
+"ONLYOFFICE form template (.docxf)" = "ONLYOFFICE表单模板 (.docxf)";
+

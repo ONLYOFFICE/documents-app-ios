@@ -50,6 +50,9 @@
 "A6 (10,5%@ x 14,8%@)" = "A6 (10,5%1$@ x 14,8%2$@)";
 
 /* No comment provided by engineer. */
+"About" = "Acerca de";
+
+/* No comment provided by engineer. */
 "Access by external link" = "Acceso a través de un enlace externo";
 
 /* No comment provided by engineer. */
@@ -76,8 +79,14 @@
 /* No comment provided by engineer. */
 "All" = "Todo";
 
+/* No comment provided by engineer. */
+"All files" = "Todos los archivos";
+
 /* Category title */
 "All Files" = "Todos los archivos";
+
+/* No comment provided by engineer. */
+"All notifications" = "Todas las notificaciones";
 
 /* No comment provided by engineer. */
 "Allow access via external link" = "Permitir el acceso a través de un enlace externo";
@@ -90,6 +99,9 @@
 
 /* Caption of the process */
 "Applying" = "Aplicando";
+
+/* No comment provided by engineer. */
+"Archives" = "Archivos";
 
 /* No comment provided by engineer. */
 "Are you sure you want to delete the account %@ from this device?" = "¿Está seguro de que desea eliminar la cuenta %@ de este dispositivo?";
@@ -108,6 +120,9 @@
 
 /* Data units */
 "bytes" = "bytes";
+
+/* No comment provided by engineer. */
+"Cache" = "Caché";
 
 /* No comment provided by engineer. */
 "Camera Unavailable" = "Cámara no disponible";
@@ -187,6 +202,9 @@
 /* Payment required title */
 "common.paymentRequiredTitle" = "Pago requerido";
 
+/* No comment provided by engineer. */
+"Compress Images" = "Comprimir imágenes";
+
 /* Button title */
 "Connect" = "Conectar";
 
@@ -201,6 +219,9 @@
 
 /* Caption of the process */
 "Connecting" = "Conectando";
+
+/* No comment provided by engineer. */
+"Console" = "Consola";
 
 /* No comment provided by engineer. */
 "Continue anyway" = "Continuar de todos modos";
@@ -349,11 +370,20 @@
 /* No comment provided by engineer. */
 "Deselect all" = "Anular selección";
 
+/* No comment provided by engineer. */
+"Developer options" = "Opciones del desarrollador";
+
+/* No comment provided by engineer. */
+"Disable if you do not want to receive notifications from the %@" = "Desactive si no desea recibir notificaciones de %@";
+
 /* Button title */
 "Disconnect third party" = "Desconectar el tercero";
 
 /* No comment provided by engineer. */
 "Document" = "Documento";
+
+/* No comment provided by engineer. */
+"Document protection" = "Protección de documentos";
 
 /* Default title of sample document */
 "Document Sample" = "Ejemplo de documento";
@@ -411,13 +441,22 @@
 "Empty name." = "Nombre vacío.";
 
 /* No comment provided by engineer. */
+"Enable if you want to receive notifications from the %@" = "Active si desea recibir notificaciones de %@";
+
+/* No comment provided by engineer. */
 "Encoding" = "Codificando";
 
 /* Presentation Viewer */
 "End Slide Show" = "Finalizar presentación";
 
 /* No comment provided by engineer. */
+"Enter a password to open the file." = "Escribir la contraseña para abrir el archive.";
+
+/* No comment provided by engineer. */
 "Enter Portal Address" = "Introducir la dirección del portal";
+
+/* No comment provided by engineer. */
+"Enter text using handwriting instead of device keyboard. ONLYOFFICE will recognize text and insert it in the document. The feature is available for English only." = "Introduzca el texto utilizando la escritura a mano en lugar de utilizar el teclado del dispositivo. ONLYOFFICE reconocerá el texto y lo insertará en el documento. Esta característica solo está disponible para el inglés.";
 
 /* No comment provided by engineer. */
 "Error" = "Error";
@@ -436,6 +475,9 @@
 
 /* Unknown Server Error */
 "error.errorServerTitle" = "Error del servidor";
+
+/* No comment provided by engineer. */
+"Exclude subfolders" = "No hay subcarpetas";
 
 /* Button title */
 "Export" = "Exportar";
@@ -482,6 +524,9 @@
 /* No comment provided by engineer. */
 "Failure to download result from conversion online service." = "Error al descargar el resultado del servicio de conversión en línea.";
 
+/* No comment provided by engineer. */
+"Features" = "Características";
+
 /* Description of file operation error */
 "File already exists" = "El archivo ya existe";
 
@@ -489,10 +534,19 @@
 "File does not exist" = "El archivo no existe";
 
 /* No comment provided by engineer. */
+"File search became easier with filtering options: by type for local files and by type and author for cloud files." = "La búsqueda de archivos es ahora más fácil con nuevas opciones de filtrado: por tipo para los archivos locales y por tipo y autor para los archivos en la nube.";
+
+/* No comment provided by engineer. */
 "Files" = "Archivos";
 
 /* No comment provided by engineer. */
-"Fill the shapes using gradients, images, or patterns. Choose the desirable line type." = "Rellene las formas utilizando gradientes, imágenes o patrones. Elija el tipo de línea que desee.";
+"Files Preview" = "Vista previa de archivos";
+
+/* No comment provided by engineer. */
+"Filtering in search" = "Filtrado en la búsqueda";
+
+/* No comment provided by engineer. */
+"Filters" = "Filtros";
 
 /* No comment provided by engineer. */
 "First name is incorrect" = "El nombre es incorrecto";
@@ -534,6 +588,9 @@
 "Groups" = "Grupos";
 
 /* No comment provided by engineer. */
+"Handwriting recognition" = "Reconocimiento de escritura a mano";
+
+/* No comment provided by engineer. */
 "iCloud" = "iCloud";
 
 /* No comment provided by engineer. */
@@ -550,6 +607,9 @@
 
 /* No comment provided by engineer. */
 "Incorrect portal address" = "Dirección de portal incorrecta";
+
+/* No comment provided by engineer. */
+"Information" = "Información";
 
 /* No comment provided by engineer. */
 "Instructions had been sent to your email" = "Las instrucciones se han enviado a su correo electrónico";
@@ -581,9 +641,6 @@
 /* No comment provided by engineer. */
 "Link copied\nto the clipboard" = "El enlace se ha copiado al portapapeles";
 
-/* No comment provided by engineer. */
-"Log in to your cloud using Apple ID or Microsoft account." = "Inicie sesión en su nube utilizando el ID de Apple o la cuenta de Microsoft.";
-
 /* Caption of the process */
 "Logging in" = "Iniciando sesión";
 
@@ -601,7 +658,13 @@
 "Logout" = "Cerrar sesión";
 
 /* Button title */
-"Mark as favorite" = "Marcar como favorito";
+"Mark as Favorite" = "Marcar como favorito";
+
+/* Button title */
+"Mark as Read" = "Marcar como leído";
+
+/* No comment provided by engineer. */
+"Mark as Read failed." = "Error al marcar como leído.";
 
 /* Data units */
 "Mb" = "Mb";
@@ -609,11 +672,11 @@
 /* If current user name is not set */
 "Me" = "Yo";
 
+/* No comment provided by engineer. */
+"Media" = "Medios";
+
 /* Button title */
 "More" = "Más";
-
-/* No comment provided by engineer. */
-"More in autoshapes" = "Más en autoformas";
 
 /* Button title */
 "Move" = "Mover";
@@ -642,11 +705,11 @@
 /* No comment provided by engineer. */
 "Needs additional params." = "Se necesitan parámetros adicionales.";
 
-/* No comment provided by engineer. */
-"New" = "Nuevo";
+/* Badge of file in file list */
+"new" = "nuevo";
 
 /* No comment provided by engineer. */
-"New authentication methods" = "Nuevos métodos de autenticación";
+"New" = "Nuevo";
 
 /* No comment provided by engineer. */
 "New Document" = "Nuevo documento";
@@ -693,6 +756,9 @@
 /* No comment provided by engineer. */
 "No search result" = "No hay resultados de búsqueda";
 
+/* No comment provided by engineer. */
+"No Search Result" = "No hay resultados de búsqueda";
+
 /* Invalid entity date
    Invalid entity owner */
 "none" = "ninguno";
@@ -703,6 +769,12 @@
 
 /* No comment provided by engineer. */
 "Note: removal from your account can not be undone." = "Nota: la eliminación de su cuenta no se puede deshacer.";
+
+/* No comment provided by engineer. */
+"Nothing to show" = "Nada que mostrar";
+
+/* No comment provided by engineer. */
+"Notifications" = "Notificaciones";
 
 /* Sharing settings switcher */
 "Notify by Email" = "Notificar por email";
@@ -720,9 +792,6 @@
 "On iPhone" = "En el iPhone";
 
 /* No comment provided by engineer. */
-"Once you enter the password and open the file, the current password to the file will be reset" = "Una vez que introduzca la contraseña y abra el archivo, se restablecerá la contraseña actual del archivo";
-
-/* No comment provided by engineer. */
 "OneDrive" = "OneDrive";
 
 /* No comment provided by engineer. */
@@ -737,14 +806,23 @@
 /* Full App Name */
 "ONLYOFFICE Documents" = "ONLYOFFICE Documents";
 
+/* Full App Name */
+"ONLYOFFICE portal" = "Portal de ONLYOFFICE";
+
 /* No comment provided by engineer. */
 "Oops!" = "¡Vaya!";
 
 /* No comment provided by engineer. */
 "Open Document" = "Abrir documento";
 
+/* No comment provided by engineer. */
+"Open Folder" = "Abrir carpeta";
+
 /* Caption of the processing */
 "Opening" = "Abriendo";
+
+/* No comment provided by engineer. */
+"Options" = "Opciones";
 
 /* No comment provided by engineer. */
 "Order" = "Ordenar";
@@ -766,6 +844,9 @@
 
 /* Table cell right holder acces text */
 "Owner" = "Propietario";
+
+/* No comment provided by engineer. */
+"Passcode Lock" = "Bloqueo de contraseña";
 
 /* No comment provided by engineer. */
 "Password" = "Contraseña";
@@ -843,7 +924,13 @@
 "Project Documents" = "Documentos de proyecto";
 
 /* No comment provided by engineer. */
+"Protect documents with passwords to share them securely with trusted collaborators." = "Proteja sus documentos con contraseñas para poder compartirlos de forma segura con otros usuarios.";
+
+/* No comment provided by engineer. */
 "Protected File" = "Archivo protegido";
+
+/* No comment provided by engineer. */
+"Push notifications disabled" = "Notificaciones push desactivadas";
 
 /* Share status */
 "Read Only" = "Sólo lectura";
@@ -853,9 +940,6 @@
 
 /* Caption of the processing */
 "Recovery" = "Recuperación";
-
-/* No comment provided by engineer. */
-"Regional settings" = "Configuración regional";
 
 /* No comment provided by engineer. */
 "Registration" = "Registro";
@@ -890,6 +974,9 @@
 /* No comment provided by engineer. */
 "Request had insufficient authentication scopes" = "La solicitud tenía un grado de autentificación insuficiente";
 
+/* No comment provided by engineer. */
+"Reset" = "Restablecer";
+
 /* Button title */
 "Restore" = "Restaurar";
 
@@ -916,6 +1003,9 @@
 "Select another cloud to connect to Nextcloud, ownCloud and others are supported." = "Seleccione otra nube para conectarse a Nextcloud, ownCloud y otras nubes soportadas.";
 
 /* No comment provided by engineer. */
+"Select group" = "Seleccionar grupo";
+
+/* No comment provided by engineer. */
 "Select Photos" = "Seleccionar fotos";
 
 /* One line. Max 50 charasters */
@@ -928,7 +1018,7 @@
 "Select the folder to recover the items" = "Seleccionar la carpeta para recuperar los objetos";
 
 /* No comment provided by engineer. */
-"Select the region in spreadsheet settings to automatically convert currency, date, and time." = "Seleccione la región en la configuración de la hoja de cálculo para convertir automáticamente la moneda, la fecha y la hora.";
+"Select user" = "Seleccionar usuario";
 
 /* No comment provided by engineer. */
 "Selected provider is not available" = "El proveedor seleccionado no está disponible";
@@ -955,6 +1045,9 @@
 "Settings" = "Ajustes";
 
 /* No comment provided by engineer. */
+"Settings and Security" = "Ajustes y seguridad";
+
+/* No comment provided by engineer. */
 "Shared access" = "Acceso compartido";
 
 /* Category title */
@@ -971,6 +1064,12 @@
 
 /* Button title */
 "Sharing Settings" = "Ajustes de uso compartido";
+
+/* No comment provided by engineer. */
+"Show %d results" = "Mostrar %d resultados";
+
+/* No comment provided by engineer. */
+"Show notifications" = "Mostrar notificaciones";
 
 /* No comment provided by engineer. */
 "Single Sign-on" = "Inicio de sesión único";
@@ -1009,6 +1108,12 @@
 "Spreadsheets" = "Hojas de cálculo";
 
 /* No comment provided by engineer. */
+"Storage" = "Almacenamiento";
+
+/* No comment provided by engineer. */
+"Support" = "Soporte";
+
+/* No comment provided by engineer. */
 "Switch" = "Cambiar";
 
 /* No comment provided by engineer. */
@@ -1045,13 +1150,13 @@
 "The folder in the Trash can not be opened." = "La carpeta en la papelera no puede abrirse.";
 
 /* No comment provided by engineer. */
-"The folder will be irretrievably deleted. This action is irreversible." = "La carpeta será eliminado irremediablemente. Esta acción es irreversible.";
-
-/* No comment provided by engineer. */
 "The item with the name '%@' already exists in the folder '%@'." = "El objeto con el nombre '%1$@' ya existe en la carpeta '%2$@'.";
 
 /* No comment provided by engineer. */
 "The link for external\naccess is copied\nto the clipboard" = "El enlace para acceso externo se ha copiado en el portapapeles";
+
+/* No comment provided by engineer. */
+"The ONLYOFFICE Editors module is missing. Please contact support@onlyoffice.com for more information." = "El módulo de los editores de ONLYOFFICE no está disponible. Por favor, póngase en contacto con support@onlyoffice.com para obtener más información.";
 
 /* No comment provided by engineer. */
 "The parameters are incorrect." = "Los parámetros son incorrectos.";
@@ -1073,6 +1178,9 @@
 
 /* No comment provided by engineer. */
 "The server is not available." = "El servidor no está disponible.";
+
+/* No comment provided by engineer. */
+"The setting will be available upon authorization on the %@." = "La configuración estará disponible después de la autorización en %@.";
 
 /* No comment provided by engineer. */
 "The trash is empty" = "La papelera está vacía";
@@ -1105,7 +1213,16 @@
 "To open a document, you must go to portal %@ under your account." = "Para abrir un documento, usted debe ir al portal %@ bajo su cuenta.";
 
 /* No comment provided by engineer. */
+"To open a folder, you must exit the current document." = "Para abrir una carpeta, debe salir del documento actual.";
+
+/* No comment provided by engineer. */
+"To open a folder, you must go to portal %@ under your account." = "Para abrir una carpeta, debe ir al portal de %@ con su cuenta.";
+
+/* No comment provided by engineer. */
 "To open a new document, you must exit the current document." = "Para abrir un nuevo documento, usted debe cerrar el documento actual.";
+
+/* No comment provided by engineer. */
+"To receive push notifications from the %@ application, you need to allow receiving notifications for this application in the iOS settings" = "Para recibir notificaciones push de la aplicación de %@, debe permitir la recepción de notificaciones para esta aplicación en la configuración de iOS";
 
 /* Category title */
 "Trash" = "Papelera";
@@ -1118,6 +1235,9 @@
 
 /* No comment provided by engineer. */
 "Try to connect via another protocol?" = "¿Intentar conectar a través de otro protocolo?";
+
+/* No comment provided by engineer. */
+"Turn ON in Settings" = "Activar en los ajustes";
 
 /* No comment provided by engineer. */
 "Turn Passcode Off" = "Desactivar código de acceso";

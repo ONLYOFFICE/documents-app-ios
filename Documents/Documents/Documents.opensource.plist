@@ -130,6 +130,18 @@
 			<key>CFBundleTypeIconFiles</key>
 			<array/>
 			<key>CFBundleTypeName</key>
+			<string>Plain text</string>
+			<key>LSHandlerRank</key>
+			<string>Alternate</string>
+			<key>LSItemContentTypes</key>
+			<array>
+				<string>public.plain-text</string>
+			</array>
+		</dict>
+		<dict>
+			<key>CFBundleTypeIconFiles</key>
+			<array/>
+			<key>CFBundleTypeName</key>
 			<string>Rich Text Format</string>
 			<key>LSHandlerRank</key>
 			<string>Alternate</string>
@@ -269,6 +281,16 @@
 				<string>oodocuments</string>
 			</array>
 		</dict>
+		<dict>
+			<key>CFBundleTypeRole</key>
+			<string>Editor</string>
+			<key>CFBundleURLName</key>
+			<string>dropbox</string>
+			<key>CFBundleURLSchemes</key>
+			<array>
+				<string>db-qunx5fv62hf63gy</string>
+			</array>
+		</dict>
 	</array>
 	<key>CFBundleVersion</key>
 	<string>766</string>
@@ -298,6 +320,8 @@
 		<string>vk-share</string>
 		<string>vkauthorize</string>
 		<string>otpauth</string>
+		<string>dbapi-8-emm</string>
+		<string>dbapi-2</string>
 	</array>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>

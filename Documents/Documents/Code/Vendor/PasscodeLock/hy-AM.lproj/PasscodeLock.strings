@@ -1,0 +1,39 @@
+/* (No Comment) */
+"PasscodeLockChangeDescription" = "Գրեք ձեր հին գաղտնաբառը";
+
+/* Change Passcode State */
+"PasscodeLockChangeTitle" = "Գրեք հին գաղտնաբառը";
+
+/* (No Comment) */
+"PasscodeLockConfirmDescription" = "Կրկին գրեք գաղտնաբառը";
+
+/* Confirm Passcode State */
+"PasscodeLockConfirmTitle" = "Հաստատել գաղտնաբառը";
+
+/* (No Comment) */
+"PasscodeLockEnterDescription" = "Շարունակելու համար մուտքագրեք ձեր ծածկագիրը:";
+
+/* Enter Passcode State */
+"PasscodeLockEnterTitle" = "Մուտքագրեք գաղտնաբառ";
+
+/* (No Comment) */
+"PasscodeLockFaceIDButton" = "Մուտքագրեք գաղտնաբառ";
+
+/* (No Comment) */
+"PasscodeLockMismatchDescription" = "Անցակոդերը չեն համընկնում:";
+
+/* Passcode Mismatch State */
+"PasscodeLockMismatchTitle" = "Կրկին փորձել";
+
+/* (No Comment) */
+"PasscodeLockSetDescription" = "Ընտրեք ձեր ծածկագիրը:";
+
+/* Set Passcode State */
+"PasscodeLockSetTitle" = "Մուտքագրեք գաղտնաբառ";
+
+/* Touch ID Fallback Button */
+"PasscodeLockTouchIDButton" = "Մուտքագրեք գաղտնաբառ";
+
+/* Touch ID Reason */
+"PasscodeLockTouchIDReason" = "Շարունակելու համար անհրաժեշտ է նույնականացում";
+

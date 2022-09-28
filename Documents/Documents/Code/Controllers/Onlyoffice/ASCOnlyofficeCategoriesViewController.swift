@@ -86,9 +86,18 @@ class ASCOnlyofficeCategoriesViewController: UITableViewController {
 
         clearsSelectionOnViewWillAppear = UIDevice.phone
 
-        NotificationCenter.default.addObserver(self, selector: #selector(updateUserInfo), name: ASCConstants.Notifications.userInfoOnlyofficeUpdate, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(onOnlyofficeLogInCompleted(_:)), name: ASCConstants.Notifications.loginOnlyofficeCompleted, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(onOnlyofficeLogoutCompleted(_:)), name: ASCConstants.Notifications.logoutOnlyofficeCompleted, object: nil)
+        let addObserver: (Notification.Name, Selector) -> Void = { name, selector in
+            NotificationCenter.default.addObserver(
+                self,
+                selector: selector,
+                name: name,
+                object: nil
+            )
+        }
+
+        addObserver(ASCConstants.Notifications.userInfoOnlyofficeUpdate, #selector(updateUserInfo))
+        addObserver(ASCConstants.Notifications.loginOnlyofficeCompleted, #selector(onOnlyofficeLogInCompleted(_:)))
+        addObserver(ASCConstants.Notifications.logoutOnlyofficeCompleted, #selector(onOnlyofficeLogoutCompleted(_:)))
 
         if loadedCategories.isEmpty, !categoriesCurrentlyLoading {
             loadCategories {
@@ -258,10 +267,13 @@ class ASCOnlyofficeCategoriesViewController: UITableViewController {
     }
 
     @objc func onOnlyofficeLogoutCompleted(_ notification: Notification) {
-        loadCategories {
-            self.updateTableView()
+        if ASCConstants.Feature.allowCategoriesSkeleton {
+            loadedCategories = []
+            skeleton(show: true)
+        } else {
+            cachedCategories = []
+            loadedCategories = []
         }
-
         updateUserInfo()
     }
 
@@ -311,6 +323,25 @@ class ASCOnlyofficeCategoriesViewController: UITableViewController {
         }
     }
 
+    private func skeleton(show: Bool) {
+        DispatchQueue.main.async { [weak self] in
+            self?.tableView.isUserInteractionEnabled = !show
+            self?.tableView.visibleCells.forEach { cell in
+                let contentUI = cell.subviews(ofType: UILabel.self) + cell.subviews(ofType: UIImageView.self)
+                contentUI.forEach { view in
+                    view.showSkeleton(show, animeted: true)
+                    if let label = view as? UILabel {
+                        if #available(iOS 13.0, *) {
+                            label.textColor = show ? .clear : .label
+                        } else {
+                            label.textColor = show ? .clear : .black
+                        }
+                    }
+                }
+            }
+        }
+    }
+
     // MARK: - Actions
 
     @IBAction func onUserAction(_ sender: UIButton) {
@@ -355,6 +386,10 @@ class ASCOnlyofficeCategoriesViewController: UITableViewController {
     private func updateTableView() {
         tableView.reloadData()
         selectCurrentlyRow()
+
+        if ASCConstants.Feature.allowCategoriesSkeleton {
+            skeleton(show: categoriesCurrentlyLoading)
+        }
     }
 
     // MARK: - Select row

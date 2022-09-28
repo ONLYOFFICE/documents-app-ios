@@ -13,19 +13,19 @@ final class WhatsNewService {
         class var news: [WhatsNew.Item] {
             return [
                 WhatsNew.Item(
-                    title: NSLocalizedString("New authentication methods", comment: ""),
-                    subtitle: NSLocalizedString("Log in to your cloud using Apple ID or Microsoft account.", comment: ""),
-                    image: Asset.Images.whatsnewFuture3.image
-                ),
-                WhatsNew.Item(
-                    title: NSLocalizedString("More in autoshapes", comment: ""),
-                    subtitle: NSLocalizedString("Fill the shapes using gradients, images, or patterns. Choose the desirable line type.", comment: ""),
+                    title: NSLocalizedString("Handwriting recognition", comment: ""),
+                    subtitle: NSLocalizedString("Enter text using handwriting instead of device keyboard. ONLYOFFICE will recognize text and insert it in the document. The feature is available for English only.", comment: ""),
                     image: Asset.Images.whatsnewFuture2.image
                 ),
                 WhatsNew.Item(
-                    title: NSLocalizedString("Regional settings", comment: ""),
-                    subtitle: NSLocalizedString("Select the region in spreadsheet settings to automatically convert currency, date, and time.", comment: ""),
+                    title: NSLocalizedString("Filtering in search", comment: ""),
+                    subtitle: NSLocalizedString("File search became easier with filtering options: by type for local files and by type and author for cloud files.", comment: ""),
                     image: Asset.Images.whatsnewFuture1.image
+                ),
+                WhatsNew.Item(
+                    title: NSLocalizedString("Document protection", comment: ""),
+                    subtitle: NSLocalizedString("Protect documents with passwords to share them securely with trusted collaborators.", comment: ""),
+                    image: Asset.Images.whatsnewFuture3.image
                 ),
             ]
         }
@@ -40,11 +40,12 @@ final class WhatsNewService {
             configuration.completionButton.backgroundColor = dummyButton.backgroundColor ?? Asset.Colors.brend.color
             configuration.completionButton.cornerRadius = dummyButton.layerCornerRadius
             configuration.titleView.titleFont = ASCTextStyle.largeTitleBold.font
-            configuration.itemsView.titleFont = ASCTextStyle.title3Bold.font
-            configuration.itemsView.subtitleFont = ASCTextStyle.subhead.font
+            configuration.itemsView.titleFont = ASCTextStyle.headline.font
+            configuration.itemsView.subtitleFont = ASCTextStyle.subheadline.font
             configuration.itemsView.autoTintImage = false
 
             if #available(iOS 13.0, *) {
+                configuration.backgroundColor = .systemBackground
                 configuration.itemsView.subtitleColor = .secondaryLabel
             } else {
                 configuration.itemsView.subtitleColor = .darkGray

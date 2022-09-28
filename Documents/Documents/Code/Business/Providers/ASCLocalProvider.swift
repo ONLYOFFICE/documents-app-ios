@@ -29,6 +29,11 @@ class ASCLocalProvider: ASCFileProviderProtocol & ASCSortableFileProviderProtoco
     }
 
     var delegate: ASCProviderDelegate?
+    var filterController: ASCFiltersControllerProtocol? = ASCLocalFilterController(
+        builder: ASCFiltersCollectionViewModelBuilder(),
+        filtersViewController: ASCFiltersViewController(),
+        itemsCount: 0
+    )
 
     internal var folder: ASCFolder?
     internal var fetchInfo: [String: Any?]?
@@ -98,12 +103,82 @@ class ASCLocalProvider: ASCFileProviderProtocol & ASCSortableFileProviderProtoco
     ///   - parameters: dictionary of settings for searching and sorting or any other information
     ///   - completeon: a closure with result of directory entries or error
     func fetch(for folder: ASCFolder, parameters: [String: Any?], completeon: ASCProviderCompletionHandler?) {
+        var (folders, files): ([ASCFolder], [ASCFile]) = {
+            if let filters = parameters["filters"] as? [String: Any],
+               filters["withSubfolders"] as? Bool == true
+            {
+                return getAllFilesAndFolders(from: folder)
+            } else {
+                return getContent(from: folder)
+            }
+        }()
+
+        // Sort
+        fetchInfo = parameters
+
+        if let sortInfo = parameters["sort"] as? [String: Any] {
+            sort(by: sortInfo, folders: &folders, files: &files)
+        }
+
+        //
+        var commonList = folders as [ASCEntity] + files as [ASCEntity]
+
+        // Search
+        if let searchInfo = parameters["search"] as? [String: Any] {
+            search(by: searchInfo, entities: &commonList)
+        }
+
+        if let filters = parameters["filters"] as? [String: Any],
+           let filterTypeRaw = filters["filterType"] as? String,
+           let filterType = ApiFilterType(rawValue: filterTypeRaw)
+        {
+            commonList = { list in
+                switch filterType {
+                case .files:
+                    return list.filter { $0 is ASCFile }
+                case .folders:
+                    return list.filter { $0 is ASCFolder }
+                case .documents:
+                    return filter(list: list, byFileExtensions: ASCConstants.FileExtensions.documents)
+                case .presentations:
+                    return filter(list: list, byFileExtensions: ASCConstants.FileExtensions.presentations)
+                case .spreadsheets:
+                    return filter(list: list, byFileExtensions: ASCConstants.FileExtensions.spreadsheets)
+                case .images:
+                    return filter(list: list, byFileExtensions: ASCConstants.FileExtensions.images)
+                case .archive:
+                    return filter(list: list, byFileExtensions: ASCConstants.FileExtensions.archives)
+                case .media:
+                    return filter(list: list, byFileExtensions: ASCConstants.FileExtensions.videos)
+                case .none, .user, .group, .byExtension, .excludeSubfolders:
+                    return list
+                }
+            }(commonList)
+        }
+
+        total = commonList.count
+        items = commonList
+
+        completeon?(self, folder, true, nil)
+    }
+
+    func getAllFilesAndFolders(from parentFolder: ASCFolder) -> (folders: [ASCFolder], files: [ASCFile]) {
+        var (folders, files) = getContent(from: parentFolder)
+
+        for folder in folders {
+            let subItems = getAllFilesAndFolders(from: folder)
+            folders.append(contentsOf: subItems.folders)
+            files.append(contentsOf: subItems.files)
+        }
+        return (folders, files)
+    }
+
+    private func getContent(from folder: ASCFolder) -> ([ASCFolder], [ASCFile]) {
         var folders = [ASCFolder]()
         var files = [ASCFile]()
         let paths = ASCLocalFileHelper.shared.entityList(Path(folder.id))
 
         self.folder = folder
-
         for path in paths {
             let owner = ASCUser()
             owner.displayName = UIDevice.displayName
@@ -156,24 +231,16 @@ class ASCLocalProvider: ASCFileProviderProtocol & ASCSortableFileProviderProtoco
             }
         }
 
-        // Sort
-        fetchInfo = parameters
+        return (folders, files)
+    }
 
-        if let sortInfo = parameters["sort"] as? [String: Any] {
-            sort(by: sortInfo, folders: &folders, files: &files)
+    private func filter(list: [ASCEntity], byFileExtensions fileExtensions: [String]) -> [ASCEntity] {
+        return list.filter {
+            guard let file = $0 as? ASCFile else { return false }
+            let fileExtension = file.title.fileExtension().lowercased()
+            let archiveExtensions = fileExtensions
+            return archiveExtensions.contains(fileExtension)
         }
-
-        var commonList = folders as [ASCEntity] + files as [ASCEntity]
-
-        // Search
-        if let searchInfo = parameters["search"] as? [String: Any] {
-            search(by: searchInfo, entities: &commonList)
-        }
-
-        total = commonList.count
-        items = commonList
-
-        completeon?(self, folder, true, nil)
     }
 
     /// Search records
@@ -293,7 +360,8 @@ class ASCLocalProvider: ASCFileProviderProtocol & ASCSortableFileProviderProtoco
             return
         }
 
-        if let _ = ASCLocalFileHelper.shared.move(from: oldPath, to: newPath) {
+        if let error = ASCLocalFileHelper.shared.move(from: oldPath, to: newPath) {
+            log.error(error)
             completeon?(self, nil, false, ASCProviderError(msg: NSLocalizedString("Rename failed.", comment: "")))
             return
         } else {
@@ -328,7 +396,8 @@ class ASCLocalProvider: ASCFileProviderProtocol & ASCSortableFileProviderProtoco
                         return
                     }
 
-                    if let _ = ASCLocalFileHelper.shared.move(from: Path(file.id), to: filePath) {
+                    if let error = ASCLocalFileHelper.shared.move(from: Path(file.id), to: filePath) {
+                        log.error(error)
                         completeon?(self, nil, false, ASCProviderError(msg: NSLocalizedString("Could not delete the file.", comment: "")))
                         return
                     }
@@ -342,7 +411,8 @@ class ASCLocalProvider: ASCFileProviderProtocol & ASCSortableFileProviderProtoco
                         return
                     }
 
-                    if let _ = ASCLocalFileHelper.shared.move(from: Path(folder.id), to: folderPath) {
+                    if let error = ASCLocalFileHelper.shared.move(from: Path(folder.id), to: folderPath) {
+                        log.error(error)
                         completeon?(self, nil, false, ASCProviderError(msg: NSLocalizedString("Could not delete the folder.", comment: "")))
                         return
                     }
@@ -697,17 +767,23 @@ class ASCLocalProvider: ASCFileProviderProtocol & ASCSortableFileProviderProtoco
 
     // MARK: - Open file
 
-    func open(file: ASCFile, viewMode: Bool = false) {
+    func open(file: ASCFile, openViewMode: Bool, canEdit: Bool) {
         let title = file.title
         let fileExt = title.fileExtension().lowercased()
         let allowOpen = ASCConstants.FileExtensions.allowEdit.contains(fileExt)
 
         if allowOpen {
-            let editMode = !viewMode && UIDevice.allowEditor
+            let editMode = !openViewMode && UIDevice.allowEditor
             let openHandler = delegate?.openProgress(file: file, title: NSLocalizedString("Processing", comment: "Caption of the processing") + "...", 0.15)
             let closeHandler = delegate?.closeProgress(file: file, title: NSLocalizedString("Saving", comment: "Caption of the processing"))
 
-            ASCEditorManager.shared.editLocal(file, viewMode: !editMode, openHandler: openHandler, closeHandler: closeHandler)
+            ASCEditorManager.shared.editLocal(
+                file,
+                openViewMode: !editMode,
+                canEdit: canEdit && UIDevice.allowEditor,
+                openHandler: openHandler,
+                closeHandler: closeHandler
+            )
         }
     }
 

@@ -1,0 +1,87 @@
+/* Class = "UILabel"; text = "Connect to Cloud"; ObjectID = "0Hf-aP-smp"; */
+"0Hf-aP-smp.text" = "Միացնել Cloud";
+
+/* Class = "UITabBarItem"; title = "Clouds"; ObjectID = "6qd-Sb-ejT"; */
+"6qd-Sb-ejT.title" = "Clouds";
+
+/* Class = "UIBarButtonItem"; title = "Clouds"; ObjectID = "9bV-HI-h8F"; */
+"9bV-HI-h8F.title" = "Clouds";
+
+/* Class = "UINavigationController"; title = "ONLYOFFICE"; ObjectID = "cGA-Zo-QiU"; */
+"cGA-Zo-QiU.title" = "ONLYOFFICE";
+
+/* Class = "UITabBarItem"; title = "On iPad"; ObjectID = "d8B-af-U9v"; */
+"d8B-af-U9v.title" = "iPad-ի վրա";
+
+/* Class = "UILabel"; text = "Name"; ObjectID = "EbX-7l-0KP"; Note = "Do not translate"; */
+"EbX-7l-0KP.text" = "Անուն";
+
+/* Class = "UILabel"; text = "Category"; ObjectID = "FAC-qi-qFR"; Note = "Do not translate"; */
+"FAC-qi-qFR.text" = "Կարգավիճակ";
+
+/* Class = "UILabel"; text = "Other Cloud"; ObjectID = "FkK-jc-e1U"; */
+"FkK-jc-e1U.text" = "Այլ Cloud";
+
+/* Class = "UILabel"; text = "Category"; ObjectID = "GcW-AI-d08"; Note = "Do not translate"; */
+"GcW-AI-d08.text" = "Կատեգորիա";
+
+/* Class = "UILabel"; text = "Name"; ObjectID = "gTQ-Nt-RDQ"; Note = "Do not translate"; */
+"gTQ-Nt-RDQ.text" = "Անուն";
+
+/* Class = "UINavigationController"; title = "On iPad"; ObjectID = "gvd-UQ-EFI"; */
+"gvd-UQ-EFI.title" = "iPad-ի վրա";
+
+/* Class = "UINavigationItem"; title = "Documents"; ObjectID = "iQZ-4u-7mL"; */
+"iQZ-4u-7mL.title" = "Փաստաթղթեր";
+
+/* Class = "UILabel"; text = "Address"; ObjectID = "Jg5-fy-5tz"; Note = "Do not translate"; */
+"Jg5-fy-5tz.text" = "Հասցե";
+
+/* Class = "UILabel"; text = "Address"; ObjectID = "jRC-an-McY"; Note = "Do not translate"; */
+"jRC-an-McY.text" = "Հասցե";
+
+/* Class = "UITableViewController"; title = "On iPad"; ObjectID = "Kfl-YE-c7u"; */
+"Kfl-YE-c7u.title" = "iPad-ի վրա";
+
+/* Class = "UITabBarItem"; title = "Settings"; ObjectID = "Ksc-pZ-Sdz"; */
+"Ksc-pZ-Sdz.title" = "Կարգավորումներ";
+
+/* Class = "UINavigationItem"; title = "Clouds"; ObjectID = "Lg6-aq-s31"; */
+"Lg6-aq-s31.title" = "Clouds";
+
+/* Class = "UILabel"; text = "Loading..."; ObjectID = "Mcf-gv-2zL"; */
+"Mcf-gv-2zL.text" = "Բեռնվում է...";
+
+/* Class = "UITabBarItem"; title = "ONLYOFFICE"; ObjectID = "nQn-Gz-R0Z"; */
+"nQn-Gz-R0Z.title" = "ONLYOFFICE";
+
+/* Class = "UIBarButtonItem"; title = "ONLYOFFICE"; ObjectID = "oRP-oW-6D9"; */
+"oRP-oW-6D9.title" = "ONLYOFFICE";
+
+/* Class = "UIViewController"; title = "Choose Cloud"; ObjectID = "pM4-zR-Xil"; */
+"pM4-zR-Xil.title" = "Ընտրել ամպ";
+
+/* Class = "UINavigationItem"; title = "ONLYOFFICE"; ObjectID = "rZi-T5-tyI"; */
+"rZi-T5-tyI.title" = "ONLYOFFICE";
+
+/* Class = "UILabel"; text = "Name"; ObjectID = "s1a-WZ-ro9"; Note = "Do not translate"; */
+"s1a-WZ-ro9.text" = "Անուն";
+
+/* Class = "UINavigationItem"; title = "On iPad"; ObjectID = "w18-Ta-54p"; */
+"w18-Ta-54p.title" = "iPad-ի վրա";
+
+/* Class = "UITabBarItem"; title = "Clouds"; ObjectID = "wcS-gn-5AV"; */
+"wcS-gn-5AV.title" = "Clouds";
+
+/* Class = "UINavigationItem"; title = "Choose Cloud"; ObjectID = "WIL-sg-dk2"; */
+"WIL-sg-dk2.title" = "Ընտրել ամպ";
+
+/* Class = "UITabBarItem"; title = "ONLYOFFICE"; ObjectID = "WLM-Ff-ccz"; */
+"WLM-Ff-ccz.title" = "ONLYOFFICE";
+
+/* Class = "UINavigationController"; title = "Clouds"; ObjectID = "WM5-Ng-sRj"; */
+"WM5-Ng-sRj.title" = "Clouds";
+
+/* Class = "UILabel"; text = "Select another cloud to connect to Nextcloud, ownCloud and others are supported."; ObjectID = "WQV-WX-BW2"; */
+"WQV-WX-BW2.text" = "Nextcloud-ին միանալու համար ընտրեք մեկ այլ ամպ, սեփականCloud-ը և մյուսները աջակցվում են:";
+

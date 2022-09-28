@@ -114,6 +114,17 @@ extension UIView {
         }
     }
 
+    /// Take screenshot of view (if applicable).
+    var screenshot: UIImage? {
+        UIGraphicsBeginImageContextWithOptions(layer.frame.size, false, 0)
+        defer {
+            UIGraphicsEndImageContext()
+        }
+        guard let context = UIGraphicsGetCurrentContext() else { return nil }
+        layer.render(in: context)
+        return UIGraphicsGetImageFromCurrentImageContext()
+    }
+
     func clone<T: UIView>() -> T {
         return NSKeyedUnarchiver.unarchiveObject(with: NSKeyedArchiver.archivedData(withRootObject: self)) as! T
     }
@@ -291,6 +302,23 @@ extension UIView {
             let bottom = bottomAnchor.constraint(equalTo: superview.bottomAnchor)
             NSLayoutConstraint.activate([left, right, top, bottom])
         }
+    }
+
+    /// Returns all the subviews of a given type recursively in the
+    /// view hierarchy rooted on the view it its called.
+    ///
+    /// - Parameter ofType: Class of the view to search.
+    /// - Returns: All subviews with a specified type.
+    func subviews<T>(ofType _: T.Type) -> [T] {
+        var views = [T]()
+        for subview in subviews {
+            if let view = subview as? T {
+                views.append(view)
+            } else if !subview.subviews.isEmpty {
+                views.append(contentsOf: subview.subviews(ofType: T.self))
+            }
+        }
+        return views
     }
 }
 

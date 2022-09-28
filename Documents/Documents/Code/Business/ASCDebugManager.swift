@@ -34,7 +34,7 @@ class ASCDebugManager: NSObject {
         presented ? hideDebugMenu() : showDebugMenu()
     }
 
-    fileprivate func showDebugMenu() {
+    public func showDebugMenu() {
         if presented {
             return
         }

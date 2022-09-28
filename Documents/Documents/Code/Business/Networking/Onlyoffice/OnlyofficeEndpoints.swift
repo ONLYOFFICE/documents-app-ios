@@ -49,6 +49,9 @@ class OnlyofficeAPI {
         public static let shareFolder = "api/\(version)/files/folder/%@/share"
         public static let forgotPassword = "api/\(version)/people/password"
         public static let deleteAccount = "api/\(version)/people/self/delete"
+        public static let pushRegisterDevice = "/api/\(version)/settings/push/docregisterdevice"
+        public static let pushSubscribe = "/api/\(version)/settings/push/docsubscribe"
+        public static let markAsRead = "api/\(version)/files/fileops/markasread"
 
         enum Forlder {
             public static let root = "@root"
@@ -114,6 +117,10 @@ class OnlyofficeAPI {
 
             static func delete(folder: ASCFolder) -> Endpoint<OnlyofficeResponse<ASCFolder>> {
                 return Endpoint<OnlyofficeResponse<ASCFolder>>.make(String(format: Path.folder, folder.id), .delete)
+            }
+
+            static func filter(folderId: String) -> Endpoint<OnlyofficeResponse<ASCFolder>> {
+                return Endpoint<OnlyofficeResponse<ASCFile>>.make(String(format: Path.files, folderId), .get, URLEncoding.queryString)
             }
         }
 
@@ -182,6 +189,7 @@ class OnlyofficeAPI {
             static let copy: Endpoint<OnlyofficeResponse<OnlyofficeFileOperation>> = Endpoint<OnlyofficeResponse<OnlyofficeFileOperation>>.make(Path.operationCopy, .put)
             static let move: Endpoint<OnlyofficeResponse<OnlyofficeFileOperation>> = Endpoint<OnlyofficeResponse<OnlyofficeFileOperation>>.make(Path.operationMove, .put)
             static let list: Endpoint<OnlyofficeResponseArray<OnlyofficeFileOperation>> = Endpoint<OnlyofficeResponseArray<OnlyofficeFileOperation>>.make(Path.operations)
+            static let markAsRead: Endpoint<OnlyofficeResponse<OnlyofficeFileOperation>> = Endpoint<OnlyofficeResponse<OnlyofficeFileOperation>>.make(Path.markAsRead, .put)
         }
 
         // MARK: Third-Party Integration
@@ -215,6 +223,13 @@ class OnlyofficeAPI {
             static let capabilities: Endpoint<OnlyofficeResponse<OnlyofficeCapabilities>> = Endpoint<OnlyofficeResponse<OnlyofficeCapabilities>>.make(Path.capabilities)
             static let forgotPassword: Endpoint<OnlyofficeResponseType<String>> = Endpoint<OnlyofficeResponseType<String>>.make(Path.forgotPassword, .post)
             static let deleteAccount: Endpoint<OnlyofficeResponseBase> = Endpoint<OnlyofficeResponseBase>.make(Path.deleteAccount, .put)
+        }
+
+        // MARK: Push
+
+        enum Push {
+            static let pushRegisterDevice: Endpoint<OnlyofficeResponseType<ASCPushSubscribed>> = Endpoint<OnlyofficeResponseType<ASCPushSubscribed>>.make(Path.pushRegisterDevice, .post)
+            static let pushSubscribe: Endpoint<OnlyofficeResponseType<ASCPushSubscribed>> = Endpoint<OnlyofficeResponseType<ASCPushSubscribed>>.make(Path.pushSubscribe, .put)
         }
     }
 }

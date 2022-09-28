@@ -550,6 +550,9 @@ class ASCSignInViewController: ASCBaseViewController {
                                 ["type": OnlyofficeApplicationType.documents.rawValue]
                             )
 
+                            // Registration for push notification
+                            ASCPushNotificationManager.requestRegister()
+
                             // Analytics
                             if let portal = OnlyofficeApiClient.shared.baseURL?.absoluteURL {
                                 ASCAnalytics.logEvent(ASCConstants.Analytics.Event.loginPortal, parameters: [

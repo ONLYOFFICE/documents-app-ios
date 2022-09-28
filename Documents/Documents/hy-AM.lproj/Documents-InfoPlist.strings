@@ -1,0 +1,30 @@
+/* Bundle name */
+"CFBundleName" = "Փաստաթղթեր";
+
+/* (No Comment) */
+"New Document" = "Նոր փաստաթուղթ";
+
+/* (No Comment) */
+"New Presentation" = "Նոր պրեզենտացիա";
+
+/* (No Comment) */
+"New Spreadsheet" = "Նոր աղյուսակ";
+
+/* Privacy - Camera Usage Description */
+"NSCameraUsageDescription" = "Այս հավելվածին անհրաժեշտ է մուտք դեպի տեսախցիկ, որպեսզի կարողանաք լուսանկարել և վերբեռնել այն հավելվածում:";
+
+/* Privacy - Face ID Usage Description */
+"NSFaceIDUsageDescription" = "Այս հավելվածը պահանջում է Face ID-ի թույլտվություն՝ դեմքի ճանաչման միջոցով նույնականացման համար:";
+
+/* Privacy - Photo Library Additions Usage Description */
+"NSPhotoLibraryAddUsageDescription" = "Այս հավելվածին անհրաժեշտ է մուտք գործել ֆոտոդարան, որպեսզի կարողանաք վերբեռնել ձեր լուսանկարները հավելվածում:";
+
+/* Privacy - Photo Library Usage Description */
+"NSPhotoLibraryUsageDescription" = "Այս հավելվածին անհրաժեշտ է մուտք գործել ֆոտոդարան, որպեսզի կարողանաք վերբեռնել ձեր լուսանկարները հավելվածում:";
+
+/* (No Comment) */
+"ONLYOFFICE fillable form (.oform)" = "ONLYOFFICE լրացվող ձև (.oform)";
+
+/* (No Comment) */
+"ONLYOFFICE form template (.docxf)" = "ONLYOFFICE ձևանմուշ (.docxf)";
+

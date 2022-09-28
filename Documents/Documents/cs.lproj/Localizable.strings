@@ -50,6 +50,9 @@
 "A6 (10,5%@ x 14,8%@)" = "A6 (10,5%1$@ x 14,8%2$@)";
 
 /* No comment provided by engineer. */
+"About" = "O ONLYOFFICE";
+
+/* No comment provided by engineer. */
 "Access by external link" = "Přístup prostřednictvím externího odkazu";
 
 /* No comment provided by engineer. */
@@ -76,8 +79,14 @@
 /* No comment provided by engineer. */
 "All" = "Vše";
 
+/* No comment provided by engineer. */
+"All files" = "Všechny soubory";
+
 /* Category title */
 "All Files" = "Všechny soubory";
+
+/* No comment provided by engineer. */
+"All notifications" = "Všechna oznámení";
 
 /* No comment provided by engineer. */
 "Allow access via external link" = "Povolit přístup přes externí odkaz";
@@ -90,6 +99,9 @@
 
 /* Caption of the process */
 "Applying" = "Použití stránky";
+
+/* No comment provided by engineer. */
+"Archives" = "Archivy";
 
 /* No comment provided by engineer. */
 "Are you sure you want to delete the account %@ from this device?" = "Opravdu chcete smazat účet account %@ z tohoto zařízení?";
@@ -108,6 +120,9 @@
 
 /* Data units */
 "bytes" = "bajty";
+
+/* No comment provided by engineer. */
+"Cache" = "Cache";
 
 /* No comment provided by engineer. */
 "Camera Unavailable" = "Kamera není dostupná";
@@ -187,6 +202,9 @@
 /* Payment required title */
 "common.paymentRequiredTitle" = "Je požadována platba";
 
+/* No comment provided by engineer. */
+"Compress Images" = "Komprimovat obrázky";
+
 /* Button title */
 "Connect" = "Připojit";
 
@@ -201,6 +219,9 @@
 
 /* Caption of the process */
 "Connecting" = "Připojování";
+
+/* No comment provided by engineer. */
+"Console" = "Konzola";
 
 /* No comment provided by engineer. */
 "Continue anyway" = "Přesto pokračovat";
@@ -349,11 +370,20 @@
 /* No comment provided by engineer. */
 "Deselect all" = "Odznačit vše";
 
+/* No comment provided by engineer. */
+"Developer options" = "Možnosti pro vývojáře";
+
+/* No comment provided by engineer. */
+"Disable if you do not want to receive notifications from the %@" = "Zakázat, pokud nechcete dostávat oznámení z %@";
+
 /* Button title */
 "Disconnect third party" = "Odpojit třetí stranu";
 
 /* No comment provided by engineer. */
 "Document" = "Dokument";
+
+/* No comment provided by engineer. */
+"Document protection" = "Ochrana dokumentů";
 
 /* Default title of sample document */
 "Document Sample" = "Vzorek dokumentu";
@@ -411,13 +441,22 @@
 "Empty name." = "Prázdný název.";
 
 /* No comment provided by engineer. */
+"Enable if you want to receive notifications from the %@" = "Povolit, pokud chcete dostávat oznámení z %@";
+
+/* No comment provided by engineer. */
 "Encoding" = "Kódování";
 
 /* Presentation Viewer */
 "End Slide Show" = "Ukončit prezentaci";
 
 /* No comment provided by engineer. */
+"Enter a password to open the file." = "Zadejte heslo pro otevření souboru.";
+
+/* No comment provided by engineer. */
 "Enter Portal Address" = "Zadejte adresu portálu";
+
+/* No comment provided by engineer. */
+"Enter text using handwriting instead of device keyboard. ONLYOFFICE will recognize text and insert it in the document. The feature is available for English only." = "Zadávejte text ručně místo klávesnice zařízení. ONLYOFFICE rozpozná text a vloží jej do dokumentu.Tato funkce je dostupná pouze pro angličtinu.";
 
 /* No comment provided by engineer. */
 "Error" = "Chyba";
@@ -436,6 +475,9 @@
 
 /* Unknown Server Error */
 "error.errorServerTitle" = "Chyba serveru";
+
+/* No comment provided by engineer. */
+"Exclude subfolders" = "Vyloučit podsložky";
 
 /* Button title */
 "Export" = "Exportovat";
@@ -482,6 +524,9 @@
 /* No comment provided by engineer. */
 "Failure to download result from conversion online service." = "Stahování výsledku ze služby online konverze selhalo";
 
+/* No comment provided by engineer. */
+"Features" = "Funkce";
+
 /* Description of file operation error */
 "File already exists" = "Soubor již existuje";
 
@@ -489,10 +534,19 @@
 "File does not exist" = "Soubor neexistuje";
 
 /* No comment provided by engineer. */
+"File search became easier with filtering options: by type for local files and by type and author for cloud files." = "Vyhledávání souborů se stalo jednodušší díky možnostem filtrování: podle typu pro místní soubory a podle typu a autora pro soubory v cloudu.";
+
+/* No comment provided by engineer. */
 "Files" = "Soubory";
 
 /* No comment provided by engineer. */
-"Fill the shapes using gradients, images, or patterns. Choose the desirable line type." = "Vyplňte tvary pomocí gradientů, obrázků nebo vzorů. Vyberte požadovaný typ čáry.";
+"Files Preview" = "Náhled souborů";
+
+/* No comment provided by engineer. */
+"Filtering in search" = "Filtrování ve vyhledávání";
+
+/* No comment provided by engineer. */
+"Filters" = "Filtry";
 
 /* No comment provided by engineer. */
 "First name is incorrect" = "Křestní jméno je nesprávné";
@@ -534,6 +588,9 @@
 "Groups" = "Skupiny";
 
 /* No comment provided by engineer. */
+"Handwriting recognition" = "Rozpoznávání rukou psaného textu";
+
+/* No comment provided by engineer. */
 "iCloud" = "iCloud";
 
 /* No comment provided by engineer. */
@@ -550,6 +607,9 @@
 
 /* No comment provided by engineer. */
 "Incorrect portal address" = "Nesprávná adresa portálu";
+
+/* No comment provided by engineer. */
+"Information" = "Informace";
 
 /* No comment provided by engineer. */
 "Instructions had been sent to your email" = "Pokyny byly odeslány na e-mail";
@@ -581,9 +641,6 @@
 /* No comment provided by engineer. */
 "Link copied\nto the clipboard" = "Odkaz zkopírován do schránky";
 
-/* No comment provided by engineer. */
-"Log in to your cloud using Apple ID or Microsoft account." = "Přihlaste se do cloudu pomocí Apple ID nebo účtu Microsoft.";
-
 /* Caption of the process */
 "Logging in" = "Přihlášení v";
 
@@ -601,7 +658,13 @@
 "Logout" = "Odhlášení";
 
 /* Button title */
-"Mark as favorite" = "Označit jako oblíbené";
+"Mark as Favorite" = "Označit jako oblíbené";
+
+/* Button title */
+"Mark as Read" = "Označit jako přečtené";
+
+/* No comment provided by engineer. */
+"Mark as Read failed." = "Označit jako přečtené se nezdařilo.";
 
 /* Data units */
 "Mb" = "Mb";
@@ -609,11 +672,11 @@
 /* If current user name is not set */
 "Me" = "Já";
 
+/* No comment provided by engineer. */
+"Media" = "Média";
+
 /* Button title */
 "More" = "Více";
-
-/* No comment provided by engineer. */
-"More in autoshapes" = "Více automatických tvarů";
 
 /* Button title */
 "Move" = "Přesunout";
@@ -642,11 +705,11 @@
 /* No comment provided by engineer. */
 "Needs additional params." = "Jsou zapotřebí další parametry.";
 
-/* No comment provided by engineer. */
-"New" = "Nový";
+/* Badge of file in file list */
+"new" = "nový";
 
 /* No comment provided by engineer. */
-"New authentication methods" = "Nové metody ověřování";
+"New" = "Nový";
 
 /* No comment provided by engineer. */
 "New Document" = "Nový dokument";
@@ -693,6 +756,9 @@
 /* No comment provided by engineer. */
 "No search result" = "Žádné výsledky vyhledávání";
 
+/* No comment provided by engineer. */
+"No Search Result" = "Žádné výsledky vyhledávání";
+
 /* Invalid entity date
    Invalid entity owner */
 "none" = "žádný";
@@ -703,6 +769,12 @@
 
 /* No comment provided by engineer. */
 "Note: removal from your account can not be undone." = "Poznámka: odstranění ze svého účtu nelze vrátit zpět.";
+
+/* No comment provided by engineer. */
+"Nothing to show" = "Nic se nezobrazuje";
+
+/* No comment provided by engineer. */
+"Notifications" = "Oznámení";
 
 /* Sharing settings switcher */
 "Notify by Email" = "Oznámení e-mailem";
@@ -720,9 +792,6 @@
 "On iPhone" = "V iPhonu";
 
 /* No comment provided by engineer. */
-"Once you enter the password and open the file, the current password to the file will be reset" = "Jakmile zadáte heslo a soubor otevřete, stávající heslo k souboru bude resetováno";
-
-/* No comment provided by engineer. */
 "OneDrive" = "OneDrive";
 
 /* No comment provided by engineer. */
@@ -737,14 +806,23 @@
 /* Full App Name */
 "ONLYOFFICE Documents" = "ONLYOFFICE Documents";
 
+/* Full App Name */
+"ONLYOFFICE portal" = "Portál ONLYOFFICE";
+
 /* No comment provided by engineer. */
 "Oops!" = "Jejda!";
 
 /* No comment provided by engineer. */
 "Open Document" = "Otevřít dokument";
 
+/* No comment provided by engineer. */
+"Open Folder" = "Otevřít složku";
+
 /* Caption of the processing */
 "Opening" = "Úvod";
+
+/* No comment provided by engineer. */
+"Options" = "Možnosti";
 
 /* No comment provided by engineer. */
 "Order" = "Příkaz";
@@ -766,6 +844,9 @@
 
 /* Table cell right holder acces text */
 "Owner" = "Majitel";
+
+/* No comment provided by engineer. */
+"Passcode Lock" = "Zámek na přístupový kód";
 
 /* No comment provided by engineer. */
 "Password" = "Heslo";
@@ -843,7 +924,13 @@
 "Project Documents" = "Projektové dokumenty";
 
 /* No comment provided by engineer. */
+"Protect documents with passwords to share them securely with trusted collaborators." = "Chraňte dokumenty hesly, abyste je mohli bezpečně sdílet s důvěryhodnými spolupracovníky.";
+
+/* No comment provided by engineer. */
 "Protected File" = "Chráněný soubor";
+
+/* No comment provided by engineer. */
+"Push notifications disabled" = "Push oznámení jsou vypnuta";
 
 /* Share status */
 "Read Only" = "Pouze pro čtení";
@@ -853,9 +940,6 @@
 
 /* Caption of the processing */
 "Recovery" = "Obnova";
-
-/* No comment provided by engineer. */
-"Regional settings" = "Regionální nastavení";
 
 /* No comment provided by engineer. */
 "Registration" = "Registrace";
@@ -890,6 +974,9 @@
 /* No comment provided by engineer. */
 "Request had insufficient authentication scopes" = "Požadavek neměl dostatečné rozsahy ověřování";
 
+/* No comment provided by engineer. */
+"Reset" = "Obnovit";
+
 /* Button title */
 "Restore" = "Obnovit";
 
@@ -916,6 +1003,9 @@
 "Select another cloud to connect to Nextcloud, ownCloud and others are supported." = "Zvolte další cloud pro připojení k Nextcloud, ownCloud a další jsou podporovány.";
 
 /* No comment provided by engineer. */
+"Select group" = "Vybrat skupinu";
+
+/* No comment provided by engineer. */
 "Select Photos" = "Vybrat fotky";
 
 /* One line. Max 50 charasters */
@@ -928,7 +1018,7 @@
 "Select the folder to recover the items" = "Vyberte složku pro obnovení položek";
 
 /* No comment provided by engineer. */
-"Select the region in spreadsheet settings to automatically convert currency, date, and time." = "Vyberte region v nastavení tabulky pro automatický převod měny, data a času.";
+"Select user" = "Vybrat uživatele";
 
 /* No comment provided by engineer. */
 "Selected provider is not available" = "Vybraný poskytovatel není dostupný";
@@ -955,6 +1045,9 @@
 "Settings" = "Nastavení";
 
 /* No comment provided by engineer. */
+"Settings and Security" = "Nastavení a zabezpečení";
+
+/* No comment provided by engineer. */
 "Shared access" = "Sdílený přístup";
 
 /* Category title */
@@ -971,6 +1064,12 @@
 
 /* Button title */
 "Sharing Settings" = "Sdílet nastavení";
+
+/* No comment provided by engineer. */
+"Show %d results" = "Zobrazit %d výsledků";
+
+/* No comment provided by engineer. */
+"Show notifications" = "Zobrazit oznámení";
 
 /* No comment provided by engineer. */
 "Single Sign-on" = "Jednorázové přihlášení";
@@ -1009,6 +1108,12 @@
 "Spreadsheets" = "Tabulky";
 
 /* No comment provided by engineer. */
+"Storage" = "Úložiště";
+
+/* No comment provided by engineer. */
+"Support" = "Podpora";
+
+/* No comment provided by engineer. */
 "Switch" = "Přepnutí";
 
 /* No comment provided by engineer. */
@@ -1045,13 +1150,13 @@
 "The folder in the Trash can not be opened." = "Složku v koši nelze otevřít.";
 
 /* No comment provided by engineer. */
-"The folder will be irretrievably deleted. This action is irreversible." = "Složka bude nenávratně smazána. Tato akce je nevratná.";
-
-/* No comment provided by engineer. */
 "The item with the name '%@' already exists in the folder '%@'." = "Položka s názvem '%1$@' již existuje ve složce '%2$@'";
 
 /* No comment provided by engineer. */
 "The link for external\naccess is copied\nto the clipboard" = "Odkaz pro externí\npřístup je zkopírován\ndo schránky";
+
+/* No comment provided by engineer. */
+"The ONLYOFFICE Editors module is missing. Please contact support@onlyoffice.com for more information." = "Chybí modul ONLYOFFICE Editors. Další informace získáte na adrese support@onlyoffice.com.";
 
 /* No comment provided by engineer. */
 "The parameters are incorrect." = "Parametry jsou nesprávné.";
@@ -1073,6 +1178,9 @@
 
 /* No comment provided by engineer. */
 "The server is not available." = "Server není dostupný.";
+
+/* No comment provided by engineer. */
+"The setting will be available upon authorization on the %@." = "Nastavení bude k dispozici po autorizaci na %@.";
 
 /* No comment provided by engineer. */
 "The trash is empty" = "Koš je prázdný";
@@ -1105,7 +1213,16 @@
 "To open a document, you must go to portal %@ under your account." = "Chcete-li otevřít dokument, přihlaste se ke svému účtu a přejděte na portál% @.";
 
 /* No comment provided by engineer. */
+"To open a folder, you must exit the current document." = "Chcete-li otevřít složku, musíte ukončit aktuální dokument.";
+
+/* No comment provided by engineer. */
+"To open a folder, you must go to portal %@ under your account." = "Chcete-li otevřít složku, musíte přejít na portál %@ pod svým účtem.";
+
+/* No comment provided by engineer. */
 "To open a new document, you must exit the current document." = "Pokud chcete otevřít nový dokument, musíte opustit aktuální dokument.";
+
+/* No comment provided by engineer. */
+"To receive push notifications from the %@ application, you need to allow receiving notifications for this application in the iOS settings" = "Chcete-li přijímat push oznámení z aplikace %@, musíte v nastavení systému iOS povolit přijímání oznámení pro tuto aplikaci.";
 
 /* Category title */
 "Trash" = "Koš";
@@ -1118,6 +1235,9 @@
 
 /* No comment provided by engineer. */
 "Try to connect via another protocol?" = "Zkuste se připojit přes jiný protokol?";
+
+/* No comment provided by engineer. */
+"Turn ON in Settings" = "Zapnout v nastavení";
 
 /* No comment provided by engineer. */
 "Turn Passcode Off" = "Vypnout přístupový kód";

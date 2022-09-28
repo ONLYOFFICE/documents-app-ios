@@ -266,7 +266,8 @@ class ASCEntityManager: NSObject, UITextFieldDelegate {
                             return
                         }
 
-                        if let _ = ASCLocalFileHelper.shared.move(from: Path(file.id), to: filePath) {
+                        if let error = ASCLocalFileHelper.shared.move(from: Path(file.id), to: filePath) {
+                            log.error(error)
                             handler?(.error, nil, NSLocalizedString("Could not delete the file.", comment: ""))
                             return
                         }
@@ -280,7 +281,8 @@ class ASCEntityManager: NSObject, UITextFieldDelegate {
                             return
                         }
 
-                        if let _ = ASCLocalFileHelper.shared.move(from: Path(folder.id), to: folderPath) {
+                        if let error = ASCLocalFileHelper.shared.move(from: Path(folder.id), to: folderPath) {
+                            log.error(error)
                             handler?(.error, nil, NSLocalizedString("Could not delete the folder.", comment: ""))
                             return
                         }
@@ -327,7 +329,8 @@ class ASCEntityManager: NSObject, UITextFieldDelegate {
                         return
                     }
 
-                    if let _ = ASCLocalFileHelper.shared.move(from: Path(deviceFile.id), to: filePath) {
+                    if let error = ASCLocalFileHelper.shared.move(from: Path(deviceFile.id), to: filePath) {
+                        log.error(error)
                         handler?(.error, nil, NSLocalizedString("Could not delete the file.", comment: ""))
                         return
                     }
@@ -342,7 +345,8 @@ class ASCEntityManager: NSObject, UITextFieldDelegate {
                         return
                     }
 
-                    if let _ = ASCLocalFileHelper.shared.move(from: Path(deviceFolder.id), to: folderPath) {
+                    if let error = ASCLocalFileHelper.shared.move(from: Path(deviceFolder.id), to: folderPath) {
+                        log.error(error)
                         handler?(.error, nil, NSLocalizedString("Could not delete the folder.", comment: ""))
                         return
                     }
@@ -468,6 +472,18 @@ class ASCEntityManager: NSObject, UITextFieldDelegate {
                 handler?(.error, nil, error?.localizedDescription ?? NSLocalizedString("Set favorite failed.", comment: ""))
             } else {
                 handler?(.end, entity, nil)
+            }
+        }
+    }
+
+    func markAsRead(for provider: ASCFileProviderProtocol, entities: [AnyObject], handler: ASCEntityHandler? = nil) {
+        handler?(.begin, nil, nil)
+
+        provider.markAsRead(entities.compactMap { $0 as? ASCEntity }) { provider, entities, success, error in
+            if !success {
+                handler?(.error, nil, error?.localizedDescription ?? NSLocalizedString("Mark as Read failed.", comment: ""))
+            } else {
+                handler?(.end, entities, nil)
             }
         }
     }

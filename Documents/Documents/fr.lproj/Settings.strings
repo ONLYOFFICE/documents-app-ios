@@ -1,12 +1,6 @@
 /* Class = "UINavigationItem"; title = "About"; ObjectID = "0DJ-uV-iju"; */
 "0DJ-uV-iju.title" = "À propos";
 
-/* Class = "UILabel"; text = "None"; ObjectID = "1kc-cf-XDc"; */
-"1kc-cf-XDc.text" = "Aucun";
-
-/* Class = "UITableViewSection"; headerTitle = "Security"; ObjectID = "4oc-1P-wMA"; */
-"4oc-1P-wMA.headerTitle" = "Sécurité";
-
 /* Class = "UINavigationItem"; title = "Passcode Lock"; ObjectID = "7gT-v5-3eH"; */
 "7gT-v5-3eH.title" = "Verrouillage par code";
 
@@ -16,14 +10,8 @@
 /* Class = "UILabel"; text = "Version"; ObjectID = "13m-jH-9Vu"; */
 "13m-jH-9Vu.text" = "Version";
 
-/* Class = "UILabel"; text = "Compress Images"; ObjectID = "19F-CC-u2R"; */
-"19F-CC-u2R.text" = "Compresser les images";
-
-/* Class = "UILabel"; text = "Cache"; ObjectID = "aV0-Ch-4Py"; */
-"aV0-Ch-4Py.text" = "Cache";
-
-/* Class = "UITableViewSection"; headerTitle = "Storage"; ObjectID = "Bmt-tc-yd7"; */
-"Bmt-tc-yd7.headerTitle" = "Stockage";
+/* Class = "UINavigationItem"; title = "Settings"; ObjectID = "bfL-pj-gii"; */
+"bfL-pj-gii.title" = "Paramètres";
 
 /* Class = "UILabel"; text = "Privacy Policy"; ObjectID = "cl6-b0-Mjh"; */
 "cl6-b0-Mjh.text" = "Politique de confidentialité";
@@ -31,17 +19,8 @@
 /* Class = "UILabel"; text = "Rate App"; ObjectID = "CUM-1F-5Be"; */
 "CUM-1F-5Be.text" = "Evaluer l'application";
 
-/* Class = "UITableViewSection"; headerTitle = "Information"; ObjectID = "ESd-H3-Pfh"; */
-"ESd-H3-Pfh.headerTitle" = "Information";
-
 /* Class = "UILabel"; text = "Tell a Friend"; ObjectID = "GqQ-Bv-Deg"; */
 "GqQ-Bv-Deg.text" = "Racontez à un ami";
-
-/* Class = "UILabel"; text = "Passcode Lock"; ObjectID = "i2P-F4-EhP"; */
-"i2P-F4-EhP.text" = "Verrouillage par code";
-
-/* Class = "UILabel"; text = "About"; ObjectID = "IS2-tT-Q4G"; */
-"IS2-tT-Q4G.text" = "À propos de ONLYOFFICE";
 
 /* Class = "UILabel"; text = "© Ascensio System SIA"; ObjectID = "lEo-YM-MnB"; */
 "lEo-YM-MnB.text" = "© Ascensio System SIA";
@@ -49,23 +28,11 @@
 /* Class = "UITabBarItem"; title = "Settings"; ObjectID = "MZJ-3d-460"; */
 "MZJ-3d-460.title" = "Paramètres";
 
-/* Class = "UILabel"; text = "Introduction Tour"; ObjectID = "NGC-k1-Jm9"; */
-"NGC-k1-Jm9.text" = "Présentation";
-
-/* Class = "UINavigationItem"; title = "Settings"; ObjectID = "OKJ-3w-yJd"; */
-"OKJ-3w-yJd.title" = "Paramètres";
-
 /* Class = "UILabel"; text = "Terms of Service"; ObjectID = "PDj-N7-sjJ"; */
 "PDj-N7-sjJ.text" = "Conditions d'utilisation";
 
-/* Class = "UILabel"; text = "Support"; ObjectID = "raN-Fz-DnL"; */
-"raN-Fz-DnL.text" = "Assistance";
-
 /* Class = "UILabel"; text = "Change Passcode"; ObjectID = "RuR-k5-kRu"; */
 "RuR-k5-kRu.text" = "Changer le mot de passe";
-
-/* Class = "UILabel"; text = "Files Preview"; ObjectID = "W0F-l2-98t"; */
-"W0F-l2-98t.text" = "Aperçu des fichiers";
 
 /* Class = "UILabel"; text = "Turn Passcode On"; ObjectID = "XYC-Zw-fk6"; */
 "XYC-Zw-fk6.text" = "Activer le mot de passe";

@@ -16,6 +16,7 @@ class ASCFolderCell: MGSwipeTableCell {
     @IBOutlet var owner: UILabel!
     @IBOutlet var date: UILabel!
     @IBOutlet var icon: UIImageView!
+    @IBOutlet var titleStackView: UIStackView!
 
     var folder: ASCFolder? {
         didSet {
@@ -29,6 +30,16 @@ class ASCFolderCell: MGSwipeTableCell {
         formatter.timeStyle = .short
         return formatter
     }()
+
+    private lazy var newBadge: ASCPaddingLabel = {
+        $0.backgroundColor = Asset.Colors.badge.color
+        $0.text = "0"
+        $0.textStyle = .caption2White
+        $0.padding = UIEdgeInsets(top: 2, left: 4, bottom: 3, right: 4)
+        $0.layerCornerRadius = 4
+        $0.sizeToFit()
+        return $0
+    }(ASCPaddingLabel(frame: .zero))
 
     // MARK: - Lifecycle Methods
 
@@ -53,9 +64,35 @@ class ASCFolderCell: MGSwipeTableCell {
             return
         }
 
+        /// Display title
+
+        for view in titleStackView?.arrangedSubviews ?? [] {
+            view.removeFromSuperview()
+        }
+        titleStackView?.alignment = .center
+
         title?.text = folderInfo.title
+        titleStackView?.addArrangedSubview(title)
+
+        /// Status info in title
+
+        if #available(iOS 13.0, *) {
+            if folderInfo.new > 0 {
+                newBadge.text = String.compactNumeric(folderInfo.new)
+                newBadge.sizeToFit()
+                titleStackView?.addArrangedSubview(UIImageView(image: newBadge.screenshot))
+            }
+        }
+
+        /// Display owner
+
         owner?.text = folderInfo.createdBy?.displayName ?? NSLocalizedString("Unknown", comment: "Invalid entity name")
+
+        /// Display date
+
         date?.text = (folderInfo.created != nil) ? dateFormatter.string(from: folderInfo.created!) : nil
+
+        /// Thumb view
 
         icon.image = Asset.Images.listFolder.image
 

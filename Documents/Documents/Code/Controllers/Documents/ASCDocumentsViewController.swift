@@ -1638,6 +1638,59 @@ class ASCDocumentsViewController: ASCBaseTableViewController, UIGestureRecognize
         }
     }
 
+    func pin(cell: UITableViewCell) {
+        guard let folderCell = cell as? ASCFolderCell,
+              let folder = folderCell.folder,
+              let provider = provider else { return }
+        let hud = MBProgressHUD.showTopMost()
+        hud?.isHidden = false
+        provider.handle(action: .pin, folder: folder) { [weak self] status, entity, error in
+            guard let self = self else {
+                hud?.hide(animated: false)
+                return
+            }
+            let pinning = NSLocalizedString("Pinning", comment: "Caption of the processing")
+            self.baseProcessHandler(hud: hud, processingMessage: pinning, status, entity, error) {
+                if entity != nil {
+                    hud?.setSuccessState()
+                    hud?.hide(animated: false, afterDelay: 1.3)
+                    if let indexPath = self.tableView.indexPath(for: cell) {
+                        self.tableView.beginUpdates()
+                        self.tableView.reloadRows(at: [indexPath], with: .none)
+                        self.tableView.endUpdates()
+
+                        if let updatedCell = self.tableView.cellForRow(at: indexPath) {
+                            self.highlight(cell: updatedCell)
+                        }
+                    }
+                } else {
+                    hud?.hide(animated: false)
+                }
+            }
+        }
+    }
+
+    func baseProcessHandler(hud: MBProgressHUD?,
+                            processingMessage: String,
+                            _ status: ASCEntityProcessStatus,
+                            _ result: Any?,
+                            _ error: String?,
+                            completion: () -> Void)
+    {
+        if status == .begin {
+            hud?.isHidden = false
+            hud?.mode = .indeterminate
+            hud?.label.text = processingMessage
+        } else if status == .error {
+            hud?.hide(animated: true)
+            if error != nil {
+                UIAlertController.showError(in: self, message: error!)
+            }
+        } else if status == .end {
+            completion()
+        }
+    }
+
     func download(cell: UITableViewCell) {
         guard
             let fileCell = cell as? ASCFileCell,

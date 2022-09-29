@@ -274,6 +274,30 @@ extension ASCDocumentsViewController {
             )
         }
 
+        if actions.contains(.pin) {
+            rootActions.append(
+                UIAction(
+                    title: NSLocalizedString("Pin to top", comment: "Button title"),
+                    image: UIImage(systemName: "pin")
+                ) { [unowned self] action in
+                    cell.hideSwipe(animated: true)
+                    self.pin(cell: cell)
+                }
+            )
+        }
+
+        if actions.contains(.unpin) {
+            rootActions.append(
+                UIAction(
+                    title: NSLocalizedString("Unpin", comment: "Button title"),
+                    image: UIImage(systemName: "pin.slash")
+                ) { [unowned self] action in
+                    cell.hideSwipe(animated: true)
+                    // MARK: todo
+                }
+            )
+        }
+
         /// Copy action
 
         let copy = UIAction(
@@ -831,6 +855,33 @@ extension ASCDocumentsViewController {
                     handler: { [unowned self] action in
                         cell.hideSwipe(animated: true)
                         self.rename(cell: cell)
+                    }
+                )
+            )
+        }
+
+        if actions.contains(.pin) {
+            actionAlertController.addAction(
+                UIAlertAction(
+                    title: NSLocalizedString("Pin to top", comment: "Button title"),
+                    style: .default,
+                    handler: { [unowned self] action in
+                        cell.hideSwipe(animated: true)
+                        self.pin(cell: cell)
+                    }
+                )
+            )
+        }
+
+        if actions.contains(.unpin) {
+            actionAlertController.addAction(
+                UIAlertAction(
+                    title: NSLocalizedString("Pin to top", comment: "Button title"),
+                    style: .default,
+                    handler: { [unowned self] action in
+                        cell.hideSwipe(animated: true)
+
+                        // MARK: todo
                     }
                 )
             )

@@ -1068,6 +1068,7 @@ class ASCOnlyofficeProvider: ASCFileProviderProtocol & ASCSortableFileProviderPr
             let canDelete = allowDelete(entity: folder)
             let canShare = allowShare(entity: folder)
             let isProjects = folder.rootFolderType == .onlyofficeBunch || folder.rootFolderType == .onlyofficeProjects
+            let isRoom = ASCOnlyofficeCategory.isDocSpaceRoom(type: folder.rootFolderType)
             let isThirdParty = folder.isThirdParty && (folder.parent?.parentId == nil || folder.parent?.parentId == "0")
 
             if folder.rootFolderType == .onlyofficeTrash {
@@ -1101,9 +1102,26 @@ class ASCOnlyofficeProvider: ASCFileProviderProtocol & ASCSortableFileProviderPr
             if folder.new > 0 {
                 entityActions.insert(.new)
             }
+
+            if isRoom {
+                if folder.pinned {
+                    entityActions.insert(.unpin)
+                } else {
+                    entityActions.insert(.pin)
+                }
+                entityActions.insert(.archive)
+                entityActions.insert(.addUsers)
+                entityActions.insert(.info)
+            }
         }
 
         return entityActions
+    }
+    
+    // MARK: - Action handlers
+    
+    func handle(action: ASCEntityActions, folder: ASCFolder, handler: ASCEntityHandler?) {
+        
     }
 
     // MARK: - Helpers

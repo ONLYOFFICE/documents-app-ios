@@ -103,6 +103,7 @@ class ASCFolderCell: MGSwipeTableCell {
         if let folder = folder, folder.pinned {
             titleImage.image = Asset.Images.pin.image
         }
+
         if let provider = folder?.providerType {
             switch provider {
             case .boxNet:

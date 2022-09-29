@@ -21,6 +21,7 @@ class ASCFolder: ASCEntity {
     var title: String = ""
     var access: ASCEntityAccess = .none
     var shared: Bool = false
+    var pinned: Bool = false
     var roomType: ASCRoomType?
     var rootFolderType: ASCFolderType = .unknown
     var updated: Date?
@@ -57,6 +58,7 @@ class ASCFolder: ASCEntity {
         title <- (map["title"], ASCStringTransform())
         access <- (map["access"], EnumTransform())
         shared <- map["shared"]
+        pinned <- map["pinned"]
         roomType <- (map["roomType"], EnumTransform())
         rootFolderType <- (map["rootFolderType"], EnumTransform())
         updated <- (map["updated"], ASCDateTransform())

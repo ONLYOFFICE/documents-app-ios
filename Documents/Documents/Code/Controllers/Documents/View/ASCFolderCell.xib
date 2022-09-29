@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -38,13 +38,13 @@
                         </constraints>
                     </imageView>
                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="2" translatesAutoresizingMaskIntoConstraints="NO" id="HwK-NL-VyC">
-                        <rect key="frame" x="66" y="15" width="229.5" height="47"/>
+                        <rect key="frame" x="66" y="14.5" width="229.5" height="48"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacing="2" translatesAutoresizingMaskIntoConstraints="NO" id="qzY-SM-JLf">
-                                <rect key="frame" x="0.0" y="0.0" width="43" height="17"/>
+                                <rect key="frame" x="0.0" y="0.0" width="63" height="18"/>
                                 <subviews>
                                     <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Folder" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BSO-Bd-Qea">
-                                        <rect key="frame" x="0.0" y="0.0" width="43" height="17"/>
+                                        <rect key="frame" x="0.0" y="0.5" width="43" height="17"/>
                                         <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="14"/>
                                         <nil key="highlightedColor"/>
                                         <attributedString key="userComments">
@@ -56,10 +56,17 @@
                                             </fragment>
                                         </attributedString>
                                     </label>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="25" translatesAutoresizingMaskIntoConstraints="NO" id="mJh-Db-ug6">
+                                        <rect key="frame" x="45" y="0.0" width="18" height="18"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" secondItem="mJh-Db-ug6" secondAttribute="height" multiplier="1:1" id="CVh-jQ-HoP"/>
+                                            <constraint firstAttribute="width" constant="18" id="inh-Ci-G4p"/>
+                                        </constraints>
+                                    </imageView>
                                 </subviews>
                             </stackView>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="Owner" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ez1-hI-WEL">
-                                <rect key="frame" x="0.0" y="19" width="32.5" height="13"/>
+                                <rect key="frame" x="0.0" y="20" width="32.5" height="13"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="11"/>
                                 <color key="textColor" red="0.5568627451" green="0.5568627451" blue="0.57647058819999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
@@ -73,7 +80,7 @@
                                 </attributedString>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Date" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NxY-4m-846">
-                                <rect key="frame" x="0.0" y="34" width="23.5" height="13"/>
+                                <rect key="frame" x="0.0" y="35" width="23.5" height="13"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="11"/>
                                 <color key="textColor" red="0.5568627451" green="0.5568627451" blue="0.57647058819999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
@@ -106,6 +113,7 @@
                 <outlet property="icon" destination="PR2-Y6-y52" id="341-FS-DgZ"/>
                 <outlet property="owner" destination="ez1-hI-WEL" id="G7y-uu-dcG"/>
                 <outlet property="title" destination="BSO-Bd-Qea" id="sGa-R1-dEE"/>
+                <outlet property="titleImage" destination="mJh-Db-ug6" id="QLE-tQ-SlV"/>
                 <outlet property="titleStackView" destination="qzY-SM-JLf" id="EIj-k3-nP5"/>
             </connections>
             <point key="canvasLocation" x="137.68115942028987" y="104.79910714285714"/>

@@ -13,6 +13,7 @@ class ASCFolderCell: MGSwipeTableCell {
     // MARK: - Properties
 
     @IBOutlet var title: UILabel!
+    @IBOutlet var titleImage: UIImageView!
     @IBOutlet var owner: UILabel!
     @IBOutlet var date: UILabel!
     @IBOutlet var icon: UIImageView!
@@ -99,6 +100,9 @@ class ASCFolderCell: MGSwipeTableCell {
             icon.image = Asset.Images.listFolder.image
         }
 
+        if let folder = folder, folder.pinned {
+            titleImage.image = Asset.Images.pin.image
+        }
         if let provider = folder?.providerType {
             switch provider {
             case .boxNet:
@@ -130,6 +134,10 @@ class ASCFolderCell: MGSwipeTableCell {
             default:
                 break
             }
+        }
+
+        if titleImage.image != nil {
+            titleStackView?.addArrangedSubview(titleImage)
         }
     }
 }

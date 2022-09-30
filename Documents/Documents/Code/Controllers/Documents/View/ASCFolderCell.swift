@@ -141,4 +141,9 @@ class ASCFolderCell: MGSwipeTableCell {
             titleStackView?.addArrangedSubview(titleImage)
         }
     }
+
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        titleImage.image = nil
+    }
 }

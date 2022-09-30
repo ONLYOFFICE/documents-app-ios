@@ -52,6 +52,10 @@ class OnlyofficeAPI {
         public static let pushRegisterDevice = "/api/\(version)/settings/push/docregisterdevice"
         public static let pushSubscribe = "/api/\(version)/settings/push/docsubscribe"
         public static let markAsRead = "api/\(version)/files/fileops/markasread"
+        public static let room = "api/\(version)/files/rooms/%@"
+        public static let roomPin = room.appendingPathComponent("pin")
+        public static let roomUnpin = room.appendingPathComponent("unpin")
+        public static let roomArchive = room.appendingPathComponent("archive")
 
         enum Forlder {
             public static let root = "@root"
@@ -122,6 +126,20 @@ class OnlyofficeAPI {
 
             static func filter(folderId: String) -> Endpoint<OnlyofficeResponse<ASCFolder>> {
                 return Endpoint<OnlyofficeResponse<ASCFile>>.make(String(format: Path.files, folderId), .get, URLEncoding.queryString)
+            }
+        }
+
+        enum Rooms {
+            static func pin(folder: ASCFolder) -> Endpoint<OnlyofficeResponse<ASCFolder>> {
+                return Endpoint<OnlyofficeResponse<ASCFolder>>.make(String(format: Path.roomPin, folder.id), .put)
+            }
+
+            static func unpin(folder: ASCFolder) -> Endpoint<OnlyofficeResponse<ASCFolder>> {
+                return Endpoint<OnlyofficeResponse<ASCFolder>>.make(String(format: Path.roomUnpin, folder.id), .put)
+            }
+
+            static func archive(folder: ASCFolder) -> Endpoint<OnlyofficeResponse<ASCFolder>> {
+                return Endpoint<OnlyofficeResponse<ASCFolder>>.make(String(format: Path.roomArchive, folder.id), .put)
             }
         }
 

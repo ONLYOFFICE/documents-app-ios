@@ -1117,11 +1117,60 @@ class ASCOnlyofficeProvider: ASCFileProviderProtocol & ASCSortableFileProviderPr
 
         return entityActions
     }
-    
+
     // MARK: - Action handlers
-    
+
     func handle(action: ASCEntityActions, folder: ASCFolder, handler: ASCEntityHandler?) {
-        
+        switch action {
+        case .pin: pinRoom(folder: folder, handler: handler)
+        case .unpin: unpinRoom(folder: folder, handler: handler)
+        case .archive: archiveRoom(folder: folder, handler: handler)
+        default: unsupportedActionHandler(action: action, handler: handler)
+        }
+    }
+
+    private func pinRoom(folder: ASCFolder, handler: ASCEntityHandler?) {
+        handler?(.begin, nil, nil)
+        apiClient.request(OnlyofficeAPI.Endpoints.Rooms.pin(folder: folder)) { response, error in
+            if let folder = response?.result {
+                handler?(.end, folder, nil)
+            } else {
+                handler?(.error, nil, NSLocalizedString("Pinned failed.", comment: ""))
+            }
+        }
+    }
+
+    private func unpinRoom(folder: ASCFolder, handler: ASCEntityHandler?) {
+        handler?(.begin, nil, nil)
+        apiClient.request(OnlyofficeAPI.Endpoints.Rooms.unpin(folder: folder)) { response, error in
+            if let folder = response?.result {
+                handler?(.end, folder, nil)
+            } else {
+                handler?(.error, nil, NSLocalizedString("Unpinned failed.", comment: ""))
+            }
+        }
+    }
+
+    private func archiveRoom(folder: ASCFolder, handler: ASCEntityHandler?) {
+        handler?(.begin, nil, nil)
+        apiClient.request(OnlyofficeAPI.Endpoints.Rooms.archive(folder: folder)) { response, error in
+            if let folder = response?.result {
+                handler?(.end, folder, nil)
+            } else {
+                handler?(.error, nil, NSLocalizedString("Archive failed.", comment: ""))
+            }
+        }
+    }
+
+    private func unsupportedActionHandler(action: ASCEntityActions, handler: ASCEntityHandler?) {
+        log.error("Unsupported action \(action.rawValue)")
+        handler?(.error, nil, "Unsupported action")
+    }
+
+    private func updateItem(_ item: ASCEntity) {
+        if let index = items.firstIndex(where: { $0.id == item.id }) {
+            items[index] = item
+        }
     }
 
     // MARK: - Helpers

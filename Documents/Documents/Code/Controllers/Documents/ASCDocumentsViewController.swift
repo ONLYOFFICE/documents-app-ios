@@ -1638,31 +1638,56 @@ class ASCDocumentsViewController: ASCBaseTableViewController, UIGestureRecognize
         }
     }
 
-    func pin(cell: UITableViewCell) {
+    func archive(cell: UITableViewCell) {
         guard let folderCell = cell as? ASCFolderCell,
               let folder = folderCell.folder,
               let provider = provider else { return }
         let hud = MBProgressHUD.showTopMost()
         hud?.isHidden = false
-        provider.handle(action: .pin, folder: folder) { [weak self] status, entity, error in
+        let processLabel: String = NSLocalizedString("Archiving", comment: "Caption of the processing")
+        provider.handle(action: .archive, folder: folder) { [weak self] status, entity, error in
             guard let self = self else {
                 hud?.hide(animated: false)
                 return
             }
-            let pinning = NSLocalizedString("Pinning", comment: "Caption of the processing")
-            self.baseProcessHandler(hud: hud, processingMessage: pinning, status, entity, error) {
+            self.baseProcessHandler(hud: hud, processingMessage: processLabel, status, entity, error) {
                 if entity != nil {
                     hud?.setSuccessState()
                     hud?.hide(animated: false, afterDelay: 1.3)
-                    if let indexPath = self.tableView.indexPath(for: cell) {
-                        self.tableView.beginUpdates()
-                        self.tableView.reloadRows(at: [indexPath], with: .none)
-                        self.tableView.endUpdates()
 
-                        if let updatedCell = self.tableView.cellForRow(at: indexPath) {
-                            self.highlight(cell: updatedCell)
-                        }
+                    if let indexPath = self.tableView.indexPath(for: cell), entity as? ASCFolder != nil {
+                        self.provider?.remove(at: indexPath.row)
+                        self.tableView.beginUpdates()
+                        self.tableView.deleteRows(at: [indexPath], with: .fade)
+                        self.tableView.endUpdates()
                     }
+                } else {
+                    hud?.hide(animated: false)
+                }
+            }
+        }
+    }
+
+    func pinToggle(cell: UITableViewCell) {
+        guard let folderCell = cell as? ASCFolderCell,
+              let folder = folderCell.folder,
+              let provider = provider else { return }
+        let hud = MBProgressHUD.showTopMost()
+        hud?.isHidden = false
+        let action: ASCEntityActions = folder.pinned ? .unpin : .pin
+        let processLabel: String = folder.pinned
+            ? NSLocalizedString("Unpning", comment: "Caption of the processing")
+            : NSLocalizedString("Pinning", comment: "Caption of the processing")
+        provider.handle(action: action, folder: folder) { [weak self] status, entity, error in
+            guard let self = self else {
+                hud?.hide(animated: false)
+                return
+            }
+            self.baseProcessHandler(hud: hud, processingMessage: processLabel, status, entity, error) {
+                if entity != nil {
+                    hud?.setSuccessState()
+                    hud?.hide(animated: false, afterDelay: 1.3)
+                    self.loadFirstPage()
                 } else {
                     hud?.hide(animated: false)
                 }

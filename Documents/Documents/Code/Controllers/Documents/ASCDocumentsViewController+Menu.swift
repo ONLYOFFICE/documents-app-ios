@@ -281,7 +281,7 @@ extension ASCDocumentsViewController {
                     image: UIImage(systemName: "pin")
                 ) { [unowned self] action in
                     cell.hideSwipe(animated: true)
-                    self.pin(cell: cell)
+                    self.pinToggle(cell: cell)
                 }
             )
         }
@@ -293,7 +293,7 @@ extension ASCDocumentsViewController {
                     image: UIImage(systemName: "pin.slash")
                 ) { [unowned self] action in
                     cell.hideSwipe(animated: true)
-                    // MARK: todo
+                    self.pinToggle(cell: cell)
                 }
             )
         }
@@ -574,6 +574,16 @@ extension ASCDocumentsViewController {
             return true
         }
 
+        // Archive
+        let archive = MGSwipeButton(
+            title: NSLocalizedString("Archive", comment: "Button title"),
+            icon: Asset.Images.categoryArchived.image,
+            backgroundColor: ASCConstants.Colors.grey
+        ) { [unowned self] cell -> Bool in
+            self.archive(cell: cell)
+            return true
+        }
+
         // More
         let more = MGSwipeButton(
             title: NSLocalizedString("More", comment: "Button title"),
@@ -594,6 +604,7 @@ extension ASCDocumentsViewController {
         if actions.contains(.restore) { items.append(restore) }
         if actions.contains(.rename) { items.append(rename) }
         if actions.contains(.copy) { items.append(copy) }
+        if actions.contains(.archive) { items.append(archive) }
 
         if items.count > 2 {
             items = Array(items[..<2])
@@ -867,7 +878,7 @@ extension ASCDocumentsViewController {
                     style: .default,
                     handler: { [unowned self] action in
                         cell.hideSwipe(animated: true)
-                        self.pin(cell: cell)
+                        self.pinToggle(cell: cell)
                     }
                 )
             )
@@ -876,12 +887,24 @@ extension ASCDocumentsViewController {
         if actions.contains(.unpin) {
             actionAlertController.addAction(
                 UIAlertAction(
-                    title: NSLocalizedString("Pin to top", comment: "Button title"),
+                    title: NSLocalizedString("Unpin", comment: "Button title"),
                     style: .default,
                     handler: { [unowned self] action in
                         cell.hideSwipe(animated: true)
+                        self.pinToggle(cell: cell)
+                    }
+                )
+            )
+        }
 
-                        // MARK: todo
+        if actions.contains(.archive) {
+            actionAlertController.addAction(
+                UIAlertAction(
+                    title: NSLocalizedString("Archive", comment: "Button title"),
+                    style: .default,
+                    handler: { [unowned self] action in
+                        cell.hideSwipe(animated: true)
+                        self.archive(cell: cell)
                     }
                 )
             )

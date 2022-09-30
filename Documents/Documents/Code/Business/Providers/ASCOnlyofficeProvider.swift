@@ -1079,15 +1079,15 @@ class ASCOnlyofficeProvider: ASCFileProviderProtocol & ASCSortableFileProviderPr
                 entityActions.insert(.rename)
             }
 
-            if canRead {
+            if canRead, !isRoom {
                 entityActions.insert(.copy)
             }
 
-            if canEdit, canDelete {
+            if canEdit, canDelete, !isRoom {
                 entityActions.insert(.move)
             }
 
-            if canEdit, canShare, !isProjects {
+            if canEdit, canShare, !isProjects, !isRoom {
                 entityActions.insert(.share)
             }
 

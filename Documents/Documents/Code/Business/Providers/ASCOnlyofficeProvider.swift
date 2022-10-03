@@ -1153,7 +1153,7 @@ class ASCOnlyofficeProvider: ASCFileProviderProtocol & ASCSortableFileProviderPr
 
     private func archiveRoom(folder: ASCFolder, handler: ASCEntityHandler?) {
         handler?(.begin, nil, nil)
-        apiClient.request(OnlyofficeAPI.Endpoints.Rooms.archive(folder: folder)) { response, error in
+        apiClient.request(OnlyofficeAPI.Endpoints.Rooms.archive(folder: folder), ["deleteAfter": true]) { response, error in
             if let folder = response?.result {
                 handler?(.end, folder, nil)
             } else {

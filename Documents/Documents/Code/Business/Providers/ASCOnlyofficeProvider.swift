@@ -1069,6 +1069,7 @@ class ASCOnlyofficeProvider: ASCFileProviderProtocol & ASCSortableFileProviderPr
             let canShare = allowShare(entity: folder)
             let isProjects = folder.rootFolderType == .onlyofficeBunch || folder.rootFolderType == .onlyofficeProjects
             let isRoom = ASCOnlyofficeCategory.isDocSpaceRoom(type: folder.rootFolderType)
+            let isRoomAndRoot = isRoom && isRoot(folder: folder)
             let isThirdParty = folder.isThirdParty && (folder.parent?.parentId == nil || folder.parent?.parentId == "0")
 
             if folder.rootFolderType == .onlyofficeTrash {
@@ -1079,15 +1080,15 @@ class ASCOnlyofficeProvider: ASCFileProviderProtocol & ASCSortableFileProviderPr
                 entityActions.insert(.rename)
             }
 
-            if canRead, !isRoom {
+            if canRead, !isRoomAndRoot {
                 entityActions.insert(.copy)
             }
 
-            if canEdit, canDelete, !isRoom {
+            if canEdit, canDelete, !isRoomAndRoot {
                 entityActions.insert(.move)
             }
 
-            if canEdit, canShare, !isProjects, !isRoom {
+            if canEdit, canShare, !isProjects, !isRoomAndRoot {
                 entityActions.insert(.share)
             }
 
@@ -1103,7 +1104,7 @@ class ASCOnlyofficeProvider: ASCFileProviderProtocol & ASCSortableFileProviderPr
                 entityActions.insert(.new)
             }
 
-            if isRoom {
+            if isRoomAndRoot {
                 if folder.pinned {
                     entityActions.insert(.unpin)
                 } else {

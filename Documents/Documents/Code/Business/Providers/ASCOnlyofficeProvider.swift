@@ -801,12 +801,14 @@ class ASCOnlyofficeProvider: ASCFileProviderProtocol & ASCSortableFileProviderPr
 
     // MARK: - Access
 
-    func isRoot(folder: ASCFolder?) -> Bool {
-        if let folder = folder {
-            return folder.parentId == nil || folder.parentId == "0"
-        }
+    func isFolderInRoom(folder: ASCFolder?) -> Bool {
+        guard let folder = folder else { return false }
+        return ASCOnlyofficeCategory.isDocSpaceRoom(type: folder.rootFolderType)
+    }
 
-        return false
+    func isRoot(folder: ASCFolder?) -> Bool {
+        guard let folder = folder else { return false }
+        return folder.parentId == nil || folder.parentId == "0"
     }
 
     func allowRead(entity: AnyObject?) -> Bool {
@@ -1068,8 +1070,7 @@ class ASCOnlyofficeProvider: ASCFileProviderProtocol & ASCSortableFileProviderPr
             let canDelete = allowDelete(entity: folder)
             let canShare = allowShare(entity: folder)
             let isProjects = folder.rootFolderType == .onlyofficeBunch || folder.rootFolderType == .onlyofficeProjects
-            let isRoom = ASCOnlyofficeCategory.isDocSpaceRoom(type: folder.rootFolderType)
-            let isRoomAndRoot = isRoom && isRoot(folder: folder)
+            let isRoomFolder = isFolderInRoom(folder: folder) && folder.roomType != nil
             let isThirdParty = folder.isThirdParty && (folder.parent?.parentId == nil || folder.parent?.parentId == "0")
 
             if folder.rootFolderType == .onlyofficeTrash {
@@ -1080,15 +1081,15 @@ class ASCOnlyofficeProvider: ASCFileProviderProtocol & ASCSortableFileProviderPr
                 entityActions.insert(.rename)
             }
 
-            if canRead, !isRoomAndRoot {
+            if canRead, !isRoomFolder {
                 entityActions.insert(.copy)
             }
 
-            if canEdit, canDelete, !isRoomAndRoot {
+            if canEdit, canDelete, !isRoomFolder {
                 entityActions.insert(.move)
             }
 
-            if canEdit, canShare, !isProjects, !isRoomAndRoot {
+            if canEdit, canShare, !isProjects, !isRoomFolder {
                 entityActions.insert(.share)
             }
 
@@ -1104,7 +1105,7 @@ class ASCOnlyofficeProvider: ASCFileProviderProtocol & ASCSortableFileProviderPr
                 entityActions.insert(.new)
             }
 
-            if isRoomAndRoot {
+            if isRoomFolder {
                 if folder.pinned {
                     entityActions.insert(.unpin)
                 } else {

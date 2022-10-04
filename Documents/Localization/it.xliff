@@ -1976,9 +1976,9 @@ altri che utilizzano il protocollo WebDAV.</target>
         <target state="translated">Immettere la password per aprire il file.</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
-      <trans-unit id="Enter text using handwriting instead of device keyboard. ONLYOFFICE will recognize text and insert it in the document." xml:space="preserve">
-        <source>Enter text using handwriting instead of device keyboard. ONLYOFFICE will recognize text and insert it in the document.</source>
-        <target state="translated">Inserisci i contenuti utilizzando la scrittura a mano anziché la tastiera del dispositivo. ONLYOFFICE riconoscerà il testo e lo inserirà nel documento.</target>
+      <trans-unit id="Enter text using handwriting instead of device keyboard. ONLYOFFICE will recognize text and insert it in the document. The feature is available for English only." xml:space="preserve">
+        <source>Enter text using handwriting instead of device keyboard. ONLYOFFICE will recognize text and insert it in the document. The feature is available for English only.</source>
+        <target state="translated">Inserisci i contenuti utilizzando la scrittura a mano anziché la tastiera del dispositivo. ONLYOFFICE riconoscerà il testo e lo inserirà nel documento. La funzione è disponibile solo per l'inglese.</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Error" xml:space="preserve">

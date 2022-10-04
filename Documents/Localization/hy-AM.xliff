@@ -1976,9 +1976,9 @@ others which use WebDAV protocol.</source>
         <target>Մուտքագրեք գաղտնաբառ՝ ֆայլը բացելու համար:</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
-      <trans-unit id="Enter text using handwriting instead of device keyboard. ONLYOFFICE will recognize text and insert it in the document." xml:space="preserve">
-        <source>Enter text using handwriting instead of device keyboard. ONLYOFFICE will recognize text and insert it in the document.</source>
-        <target state="translated">Օգտագործեք ձեռագիր մուտքագրում փաստաթղթերի խմբագրիչում՝ ստեղնաշարի փոխարեն: ONLYOFFICE-ը կճանաչի տեքստը և կտեղադրի այն փաստաթղթում:</target>
+      <trans-unit id="Enter text using handwriting instead of device keyboard. ONLYOFFICE will recognize text and insert it in the document. The feature is available for English only." xml:space="preserve">
+        <source>Enter text using handwriting instead of device keyboard. ONLYOFFICE will recognize text and insert it in the document. The feature is available for English only.</source>
+        <target state="translated">Օգտագործեք ձեռագիր մուտքագրում փաստաթղթերի խմբագրիչում՝ ստեղնաշարի փոխարեն: ONLYOFFICE-ը կճանաչի տեքստը և կտեղադրի այն փաստաթղթում: Ֆունկցիան հասանելի է միայն անգլերենի համար:</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Error" xml:space="preserve">

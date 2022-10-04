@@ -2065,9 +2065,9 @@ jiné, které používají protokol WebDAV.</target>
         <target state="translated">Zadejte heslo pro otevření souboru.</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
-      <trans-unit id="Enter text using handwriting instead of device keyboard. ONLYOFFICE will recognize text and insert it in the document." xml:space="preserve">
-        <source>Enter text using handwriting instead of device keyboard. ONLYOFFICE will recognize text and insert it in the document.</source>
-        <target state="translated">Zadávejte text ručně místo klávesnice zařízení. ONLYOFFICE rozpozná text a vloží jej do dokumentu.</target>
+      <trans-unit id="Enter text using handwriting instead of device keyboard. ONLYOFFICE will recognize text and insert it in the document. The feature is available for English only." xml:space="preserve">
+        <source>Enter text using handwriting instead of device keyboard. ONLYOFFICE will recognize text and insert it in the document. The feature is available for English only.</source>
+        <target state="translated">Zadávejte text ručně místo klávesnice zařízení. ONLYOFFICE rozpozná text a vloží jej do dokumentu.Tato funkce je dostupná pouze pro angličtinu.</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Error" xml:space="preserve">

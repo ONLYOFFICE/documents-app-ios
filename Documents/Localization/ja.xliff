@@ -1931,9 +1931,9 @@ WebDAV プロトコールを使用する他のクラウド</target>
         <target state="translated">ファイルを開くためにパスワードを入力してください。</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
-      <trans-unit id="Enter text using handwriting instead of device keyboard. ONLYOFFICE will recognize text and insert it in the document." xml:space="preserve">
-        <source>Enter text using handwriting instead of device keyboard. ONLYOFFICE will recognize text and insert it in the document.</source>
-        <target state="translated">デバイスのキーボードではなく、手書きでテキストを入力することができます。ONLYOFFICEは、テキストを認識し、ドキュメントに挿入します。</target>
+      <trans-unit id="Enter text using handwriting instead of device keyboard. ONLYOFFICE will recognize text and insert it in the document. The feature is available for English only." xml:space="preserve">
+        <source>Enter text using handwriting instead of device keyboard. ONLYOFFICE will recognize text and insert it in the document. The feature is available for English only.</source>
+        <target state="translated">デバイスのキーボードではなく、手書きでテキストを入力することができます。ONLYOFFICEは、テキストを認識し、ドキュメントに挿入します。現在、英語のみでご利用いただけます。</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Error" xml:space="preserve">

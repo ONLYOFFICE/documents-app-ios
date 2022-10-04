@@ -456,7 +456,7 @@
 "Enter Portal Address" = "Մուտքագրեք պորտալի հասցեն";
 
 /* No comment provided by engineer. */
-"Enter text using handwriting instead of device keyboard. ONLYOFFICE will recognize text and insert it in the document." = "Օգտագործեք ձեռագիր մուտքագրում փաստաթղթերի խմբագրիչում՝ ստեղնաշարի փոխարեն: ONLYOFFICE-ը կճանաչի տեքստը և կտեղադրի այն փաստաթղթում:";
+"Enter text using handwriting instead of device keyboard. ONLYOFFICE will recognize text and insert it in the document. The feature is available for English only." = "Օգտագործեք ձեռագիր մուտքագրում փաստաթղթերի խմբագրիչում՝ ստեղնաշարի փոխարեն: ONLYOFFICE-ը կճանաչի տեքստը և կտեղադրի այն փաստաթղթում: Ֆունկցիան հասանելի է միայն անգլերենի համար:";
 
 /* No comment provided by engineer. */
 "Error" = "Սխալ";

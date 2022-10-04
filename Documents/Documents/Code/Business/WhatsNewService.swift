@@ -14,7 +14,7 @@ final class WhatsNewService {
             return [
                 WhatsNew.Item(
                     title: NSLocalizedString("Handwriting recognition", comment: ""),
-                    subtitle: NSLocalizedString("Enter text using handwriting instead of device keyboard. ONLYOFFICE will recognize text and insert it in the document.", comment: ""),
+                    subtitle: NSLocalizedString("Enter text using handwriting instead of device keyboard. ONLYOFFICE will recognize text and insert it in the document. The feature is available for English only.", comment: ""),
                     image: Asset.Images.whatsnewFuture2.image
                 ),
                 WhatsNew.Item(

@@ -1504,7 +1504,7 @@ Note: if you forget the passcode, you'll need to delete and reinstall the app. A
       </trans-unit>
       <trans-unit id="AppleId authentication failed" xml:space="preserve">
         <source>AppleId authentication failed</source>
-        <target>Аутентификация через AppleId не удалась</target>
+        <target state="translated">Аутентификация через AppleID не удалась</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Applying" xml:space="preserve">
@@ -2067,9 +2067,9 @@ others which use WebDAV protocol.</source>
         <target>Введите пароль, чтобы открыть файл.</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
-      <trans-unit id="Enter text using handwriting instead of device keyboard. ONLYOFFICE will recognize text and insert it in the document." xml:space="preserve">
-        <source>Enter text using handwriting instead of device keyboard. ONLYOFFICE will recognize text and insert it in the document.</source>
-        <target state="translated">Используйте рукописный ввод в редакторе документов вместо клавиатуры. ONLYOFFICE распознает текст и вставит его в документ.</target>
+      <trans-unit id="Enter text using handwriting instead of device keyboard. ONLYOFFICE will recognize text and insert it in the document. The feature is available for English only." xml:space="preserve">
+        <source>Enter text using handwriting instead of device keyboard. ONLYOFFICE will recognize text and insert it in the document. The feature is available for English only.</source>
+        <target state="translated">Используйте рукописный ввод в редакторе документов вместо клавиатуры. ONLYOFFICE распознает текст и вставит его в документ. Доступно только для английского языка.</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Error" xml:space="preserve">

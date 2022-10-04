@@ -456,7 +456,7 @@
 "Enter Portal Address" = "Въведете Адрес на портал";
 
 /* No comment provided by engineer. */
-"Enter text using handwriting instead of device keyboard. ONLYOFFICE will recognize text and insert it in the document." = "Въведете текст, като използвате ръкописен текст вместо клавиатурата на устройството. ONLYOFFICE ще разпознае текста и ще го вмъкне в документа.";
+"Enter text using handwriting instead of device keyboard. ONLYOFFICE will recognize text and insert it in the document. The feature is available for English only." = "Въведете текст, като използвате ръкописен текст вместо клавиатурата на устройството. ONLYOFFICE ще разпознае текста и ще го вмъкне в документа. Функцията е налична само за английски език.";
 
 /* No comment provided by engineer. */
 "Error" = "Грешка";

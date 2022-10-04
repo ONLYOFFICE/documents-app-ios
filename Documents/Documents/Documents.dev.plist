@@ -130,6 +130,18 @@
 			<key>CFBundleTypeIconFiles</key>
 			<array/>
 			<key>CFBundleTypeName</key>
+			<string>Plain text</string>
+			<key>LSHandlerRank</key>
+			<string>Alternate</string>
+			<key>LSItemContentTypes</key>
+			<array>
+				<string>public.plain-text</string>
+			</array>
+		</dict>
+		<dict>
+			<key>CFBundleTypeIconFiles</key>
+			<array/>
+			<key>CFBundleTypeName</key>
 			<string>Rich Text Format</string>
 			<key>LSHandlerRank</key>
 			<string>Alternate</string>
@@ -234,7 +246,7 @@
 	<key>CFBundlePackageType</key>
 	<string>APPL</string>
 	<key>CFBundleShortVersionString</key>
-	<string>7.2</string>
+	<string>7.3</string>
 	<key>CFBundleURLTypes</key>
 	<array>
 		<dict>

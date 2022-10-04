@@ -456,7 +456,7 @@
 "Enter Portal Address" = "ポータルのアドレスを入力する";
 
 /* No comment provided by engineer. */
-"Enter text using handwriting instead of device keyboard. ONLYOFFICE will recognize text and insert it in the document." = "デバイスのキーボードではなく、手書きでテキストを入力することができます。ONLYOFFICEは、テキストを認識し、ドキュメントに挿入します。";
+"Enter text using handwriting instead of device keyboard. ONLYOFFICE will recognize text and insert it in the document. The feature is available for English only." = "デバイスのキーボードではなく、手書きでテキストを入力することができます。ONLYOFFICEは、テキストを認識し、ドキュメントに挿入します。現在、英語のみでご利用いただけます。";
 
 /* No comment provided by engineer. */
 "Error" = "エラー";

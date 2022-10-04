@@ -1071,6 +1071,7 @@ class ASCOnlyofficeProvider: ASCFileProviderProtocol & ASCSortableFileProviderPr
             let canShare = allowShare(entity: folder)
             let isProjects = folder.rootFolderType == .onlyofficeBunch || folder.rootFolderType == .onlyofficeProjects
             let isRoomFolder = isFolderInRoom(folder: folder) && folder.roomType != nil
+            let isArchiveCategory = folder.rootFolderType == .onlyofficeRoomArchived
             let isThirdParty = folder.isThirdParty && (folder.parent?.parentId == nil || folder.parent?.parentId == "0")
 
             if folder.rootFolderType == .onlyofficeTrash {
@@ -1105,13 +1106,16 @@ class ASCOnlyofficeProvider: ASCFileProviderProtocol & ASCSortableFileProviderPr
                 entityActions.insert(.new)
             }
 
-            if isRoomFolder {
-                if folder.pinned {
-                    entityActions.insert(.unpin)
-                } else {
-                    entityActions.insert(.pin)
-                }
+            if isRoomFolder, !isArchiveCategory {
+                entityActions.insert(folder.pinned ? .unpin : .pin)
                 entityActions.insert(.archive)
+            }
+
+            if isRoomFolder, isArchiveCategory {
+                entityActions.insert(.unarchive)
+            }
+
+            if isRoomFolder {
                 entityActions.insert(.addUsers)
                 entityActions.insert(.info)
             }
@@ -1127,6 +1131,7 @@ class ASCOnlyofficeProvider: ASCFileProviderProtocol & ASCSortableFileProviderPr
         case .pin: pinRoom(folder: folder, handler: handler)
         case .unpin: unpinRoom(folder: folder, handler: handler)
         case .archive: archiveRoom(folder: folder, handler: handler)
+        case .unarchive: unpinRoom(folder: folder, handler: handler)
         default: unsupportedActionHandler(action: action, handler: handler)
         }
     }
@@ -1159,7 +1164,18 @@ class ASCOnlyofficeProvider: ASCFileProviderProtocol & ASCSortableFileProviderPr
             if let folder = response?.result {
                 handler?(.end, folder, nil)
             } else {
-                handler?(.error, nil, NSLocalizedString("Archive failed.", comment: ""))
+                handler?(.error, nil, NSLocalizedString("Archiving failed.", comment: ""))
+            }
+        }
+    }
+
+    private func unarchiveRoom(folder: ASCFolder, handler: ASCEntityHandler?) {
+        handler?(.begin, nil, nil)
+        apiClient.request(OnlyofficeAPI.Endpoints.Rooms.archive(folder: folder), ["deleteAfter": true]) { response, error in
+            if let folder = response?.result {
+                handler?(.end, folder, nil)
+            } else {
+                handler?(.error, nil, NSLocalizedString("Unarchiving failed.", comment: ""))
             }
         }
     }

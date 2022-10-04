@@ -56,6 +56,7 @@ class OnlyofficeAPI {
         public static let roomPin = room.appendingPathComponent("pin")
         public static let roomUnpin = room.appendingPathComponent("unpin")
         public static let roomArchive = room.appendingPathComponent("archive")
+        public static let roomUnarchive = room.appendingPathComponent("unarchive")
 
         enum Forlder {
             public static let root = "@root"
@@ -140,6 +141,10 @@ class OnlyofficeAPI {
 
             static func archive(folder: ASCFolder) -> Endpoint<OnlyofficeResponse<ASCFolder>> {
                 return Endpoint<OnlyofficeResponse<ASCFolder>>.make(String(format: Path.roomArchive, folder.id), .put)
+            }
+
+            static func unarchive(folder: ASCFolder) -> Endpoint<OnlyofficeResponse<ASCFolder>> {
+                return Endpoint<OnlyofficeResponse<ASCFolder>>.make(String(format: Path.roomUnarchive, folder.id), .put)
             }
         }
 

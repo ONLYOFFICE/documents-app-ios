@@ -298,6 +298,32 @@ extension ASCDocumentsViewController {
             )
         }
 
+        /// Archive
+
+        if actions.contains(.archive) {
+            rootActions.append(
+                UIAction(
+                    title: NSLocalizedString("Archive", comment: "Button title"),
+                    image: UIImage(systemName: "archivebox")
+                ) { [unowned self] action in
+                    cell.hideSwipe(animated: true)
+                    self.archive(cell: cell)
+                }
+            )
+        }
+
+        if actions.contains(.unarchive) {
+            rootActions.append(
+                UIAction(
+                    title: NSLocalizedString("Move from archive", comment: "Button title"),
+                    image: UIImage(systemName: "arrow.up.bin")
+                ) { [unowned self] action in
+                    cell.hideSwipe(animated: true)
+                    self.unarchive(cell: cell)
+                }
+            )
+        }
+
         /// Copy action
 
         let copy = UIAction(
@@ -901,6 +927,19 @@ extension ASCDocumentsViewController {
             actionAlertController.addAction(
                 UIAlertAction(
                     title: NSLocalizedString("Archive", comment: "Button title"),
+                    style: .default,
+                    handler: { [unowned self] action in
+                        cell.hideSwipe(animated: true)
+                        self.archive(cell: cell)
+                    }
+                )
+            )
+        }
+
+        if actions.contains(.unarchive) {
+            actionAlertController.addAction(
+                UIAlertAction(
+                    title: NSLocalizedString("Move from archive", comment: "Button title"),
                     style: .default,
                     handler: { [unowned self] action in
                         cell.hideSwipe(animated: true)

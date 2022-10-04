@@ -1640,26 +1640,38 @@ class ASCDocumentsViewController: ASCBaseTableViewController, UIGestureRecognize
 
     func archive(cell: UITableViewCell) {
         guard let folderCell = cell as? ASCFolderCell,
-              let folder = folderCell.folder,
-              let provider = provider else { return }
+              let folder = folderCell.folder else { return }
+        let processLabel: String = NSLocalizedString("Archiving", comment: "Caption of the processing")
+        handleAction(folder: folder, action: .archive, processingLabel: processLabel, copmletionBehavior: .delete(cell))
+    }
+
+    func unarchive(cell: UITableViewCell) {
+        guard let folderCell = cell as? ASCFolderCell,
+              let folder = folderCell.folder else { return }
+        let processLabel: String = NSLocalizedString("Moving from archive", comment: "Caption of the processing")
+        handleAction(folder: folder, action: .unarchive, processingLabel: processLabel, copmletionBehavior: .delete(cell))
+    }
+
+    private func handleAction(folder: ASCFolder, action: ASCEntityActions, processingLabel: String, copmletionBehavior: CompletionBehavior) {
         let hud = MBProgressHUD.showTopMost()
         hud?.isHidden = false
-        let processLabel: String = NSLocalizedString("Archiving", comment: "Caption of the processing")
-        provider.handle(action: .archive, folder: folder) { [weak self] status, entity, error in
+        provider?.handle(action: action, folder: folder) { [weak self] status, entity, error in
             guard let self = self else {
                 hud?.hide(animated: false)
                 return
             }
-            self.baseProcessHandler(hud: hud, processingMessage: processLabel, status, entity, error) {
+            self.baseProcessHandler(hud: hud, processingMessage: processingLabel, status, entity, error) {
                 if entity != nil {
                     hud?.setSuccessState()
                     hud?.hide(animated: false, afterDelay: 1.3)
-
-                    if let indexPath = self.tableView.indexPath(for: cell), entity as? ASCFolder != nil {
-                        self.provider?.remove(at: indexPath.row)
-                        self.tableView.beginUpdates()
-                        self.tableView.deleteRows(at: [indexPath], with: .fade)
-                        self.tableView.endUpdates()
+                    switch copmletionBehavior {
+                    case let .delete(cell):
+                        if let indexPath = self.tableView.indexPath(for: cell), entity as? ASCFolder != nil {
+                            self.provider?.remove(at: indexPath.row)
+                            self.tableView.beginUpdates()
+                            self.tableView.deleteRows(at: [indexPath], with: .fade)
+                            self.tableView.endUpdates()
+                        }
                     }
                 } else {
                     hud?.hide(animated: false)
@@ -3367,4 +3379,8 @@ extension ASCDocumentsViewController {
     func getProviderIndexes(items: [ASCEntity]) -> [IndexPath] {
         items.compactMap(indexPath(by:)).map { $0 }
     }
+}
+
+private enum CompletionBehavior {
+    case delete(UITableViewCell)
 }

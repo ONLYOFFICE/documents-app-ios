@@ -294,54 +294,70 @@ class ASCConnectPortalThirdPartyViewController: UITableViewController {
 
         case .yandex:
             let webDavVC = ASCConnectStorageWebDavController.instantiate(from: Storyboard.connectStorage)
-            webDavVC.complation = authComplation(info:)
-            webDavVC.title = NSLocalizedString("Yandex Disk", comment: "")
-            webDavVC.provider = .yandex
-            webDavVC.logo = (Locale.preferredLanguages.first?.lowercased().contains("ru") ?? false)
-                ? Asset.Images.logoYandexdiskRuLarge.image
-                : Asset.Images.logoYandexdiskLarge.image
-            webDavVC.needServer = false
+            webDavVC.configuration = ASCConnectStorageWebDavControllerConfiguration(
+                provider: .yandex,
+                loginTitle: nil,
+                needServer: false,
+                logo: (Locale.preferredLanguages.first?.lowercased().contains("ru") ?? false)
+                    ? Asset.Images.logoYandexdiskRuLarge.image
+                    : Asset.Images.logoYandexdiskLarge.image,
+                title: NSLocalizedString("Yandex Disk", comment: ""),
+                instruction: nil,
+                complation: authComplation(info:)
+            )
             viewController = webDavVC
 
         case .sharePoint:
             let webDavVC = ASCConnectStorageWebDavController.instantiate(from: Storyboard.connectStorage)
-            webDavVC.complation = authComplation(info:)
-            webDavVC.title = NSLocalizedString("OneDrive for Business", comment: "")
-            webDavVC.provider = .sharePoint
-            webDavVC.logo = Asset.Images.logoOnedriveproLarge.image
+            webDavVC.configuration = ASCConnectStorageWebDavControllerConfiguration(
+                provider: .sharePoint,
+                logo: Asset.Images.logoOnedriveproLarge.image,
+                title: NSLocalizedString("OneDrive for Business", comment: ""),
+                complation: authComplation(info:)
+            )
             viewController = webDavVC
 
         case .nextCloud:
             let webDavVC = ASCConnectStorageWebDavController.instantiate(from: Storyboard.connectStorage)
-            webDavVC.complation = authComplation(info:)
-            webDavVC.title = "Nextcloud"
-            webDavVC.provider = .nextCloud
-            webDavVC.logo = Asset.Images.logoNextcloudLarge.image
+            webDavVC.configuration = ASCConnectStorageWebDavControllerConfiguration(
+                provider: .nextCloud,
+                logo: Asset.Images.logoNextcloudLarge.image,
+                title: "Nextcloud",
+                complation: authComplation(info:)
+            )
             viewController = webDavVC
 
         case .ownCloud:
             let webDavVC = ASCConnectStorageWebDavController.instantiate(from: Storyboard.connectStorage)
-            webDavVC.complation = authComplation(info:)
-            webDavVC.title = "ownCloud"
-            webDavVC.provider = .ownCloud
-            webDavVC.logo = Asset.Images.logoOwncloudLarge.image
+            webDavVC.configuration = ASCConnectStorageWebDavControllerConfiguration(
+                provider: .ownCloud,
+                logo: Asset.Images.logoOwncloudLarge.image,
+                title: "ownCloud",
+                complation: authComplation(info:)
+            )
             viewController = webDavVC
 
         case .kDrive:
             let kDriveVC = ASCConnectStorageWebDavController.instantiate(from: Storyboard.connectStorage)
-            kDriveVC.complation = authComplation(info:)
-            kDriveVC.title = "kDrive"
-            kDriveVC.provider = .kDrive
-            kDriveVC.logo = Asset.Images.logoKdriveLarge.image
-            kDriveVC.needServer = false
+            kDriveVC.configuration = ASCConnectStorageWebDavControllerConfiguration(
+                provider: .kDrive,
+                loginTitle: NSLocalizedString("Email", comment: ""),
+                needServer: false,
+                logo: Asset.Images.logoKdriveLarge.image,
+                title: "kDrive",
+                instruction: NSLocalizedString("If you have activated double authentication, please generate a CDM application from the Infomaniak manager.", comment: ""),
+                complation: authComplation(info:)
+            )
             viewController = kDriveVC
 
         case .webDav:
             let webDavVC = ASCConnectStorageWebDavController.instantiate(from: Storyboard.connectStorage)
-            webDavVC.complation = authComplation(info:)
-            webDavVC.title = "WebDAV"
-            webDavVC.provider = .webDav
-            webDavVC.logo = Asset.Images.logoWebdavLarge.image
+            webDavVC.configuration = ASCConnectStorageWebDavControllerConfiguration(
+                provider: .webDav,
+                logo: Asset.Images.logoWebdavLarge.image,
+                title: "WebDAV",
+                complation: authComplation(info:)
+            )
             viewController = webDavVC
 
         default:

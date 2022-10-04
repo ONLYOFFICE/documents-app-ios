@@ -226,6 +226,8 @@
 		FC23FC5B2043EEF0003B3AE7 /* ASCUserAvatarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC23FC5A2043EEEF003B3AE7 /* ASCUserAvatarView.swift */; };
 		FC23FC5D2044018F003B3AE7 /* Other in Resources */ = {isa = PBXBuildFile; fileRef = FC23FC5C2044018F003B3AE7 /* Other */; };
 		FC28021525B9B8C5000E9D99 /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FC28021425B9B8C5000E9D99 /* CloudKit.framework */; };
+		FC2882BD28EC6AA20034E732 /* ASCConnectStorageWebDavControllerConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC2882BC28EC6AA20034E732 /* ASCConnectStorageWebDavControllerConfiguration.swift */; };
+		FC2882BE28EC6AA20034E732 /* ASCConnectStorageWebDavControllerConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC2882BC28EC6AA20034E732 /* ASCConnectStorageWebDavControllerConfiguration.swift */; };
 		FC28F2C11E8CF4B900A8F985 /* UIColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC28F2C01E8CF4B900A8F985 /* UIColor+Extension.swift */; };
 		FC28F2C41E8D131800A8F985 /* ASCCreateEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC28F2C31E8D131800A8F985 /* ASCCreateEntity.swift */; };
 		FC28F2C61E8D1BB200A8F985 /* ASCEntityManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC28F2C51E8D1BB200A8F985 /* ASCEntityManager.swift */; };
@@ -1046,6 +1048,7 @@
 		FC282BEC28228DF20077B0E1 /* Fb2File.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Fb2File.framework; path = Vendor/ONLYOFFICE/libs/Fb2File.framework; sourceTree = "<group>"; };
 		FC282BED28228DF20077B0E1 /* HtmlRenderer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = HtmlRenderer.framework; path = Vendor/ONLYOFFICE/libs/HtmlRenderer.framework; sourceTree = "<group>"; };
 		FC282BEE28228DF20077B0E1 /* PresentationEditor.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = PresentationEditor.framework; path = Vendor/ONLYOFFICE/libs/PresentationEditor.framework; sourceTree = "<group>"; };
+		FC2882BC28EC6AA20034E732 /* ASCConnectStorageWebDavControllerConfiguration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASCConnectStorageWebDavControllerConfiguration.swift; sourceTree = "<group>"; };
 		FC28F2C01E8CF4B900A8F985 /* UIColor+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColor+Extension.swift"; sourceTree = "<group>"; };
 		FC28F2C31E8D131800A8F985 /* ASCCreateEntity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASCCreateEntity.swift; sourceTree = "<group>"; };
 		FC28F2C51E8D1BB200A8F985 /* ASCEntityManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ASCEntityManager.swift; path = Documents/Code/Business/ASCEntityManager.swift; sourceTree = SOURCE_ROOT; };
@@ -2095,6 +2098,7 @@
 				FC8C697A1ECC2F44005B68D7 /* ASCConnectStorageOAuth2Google.swift */,
 				FC8C697C1ECC6163005B68D7 /* ASCConnectStorageOAuth2OneDrive.swift */,
 				FC8C697E1ECC6755005B68D7 /* ASCConnectStorageOAuth2Box.swift */,
+				FC2882BC28EC6AA20034E732 /* ASCConnectStorageWebDavControllerConfiguration.swift */,
 				FC142A8A28981B6000EDE7CE /* ASCDropboxSDKWrapper.swift */,
 				F377689727D273B20044EDA6 /* ASCNextCloudConnectStorageDelegate.swift */,
 			);
@@ -3877,6 +3881,7 @@
 				FC7081782812E2260057FCD2 /* CALayer+Animate.swift in Sources */,
 				FC7081792812E2260057FCD2 /* ASCDocumentsNavigationController.swift in Sources */,
 				FC70817A2812E2260057FCD2 /* UISplitViewController+Extensions.swift in Sources */,
+				FC2882BE28EC6AA20034E732 /* ASCConnectStorageWebDavControllerConfiguration.swift in Sources */,
 				FC70817B2812E2260057FCD2 /* ASCDebugConsoleViewController.swift in Sources */,
 				FC70817C2812E2260057FCD2 /* Observable.swift in Sources */,
 				FC70817D2812E2260057FCD2 /* ASCSharingOptionsInteractor.swift in Sources */,
@@ -4284,6 +4289,7 @@
 				FC68528126837B7300D830EC /* OnlyofficeUserPhoto.swift in Sources */,
 				FC89C39E2368450700705DE7 /* ASCGoogleDriveProvider.swift in Sources */,
 				FC68528B26837B7300D830EC /* OnlyofficeShare.swift in Sources */,
+				FC2882BD28EC6AA20034E732 /* ASCConnectStorageWebDavControllerConfiguration.swift in Sources */,
 				1D1DB5562759023800FA0BEE /* ASCSharingSettingsAccessDocumentFormProvider.swift in Sources */,
 				1D14AAF42698E85A009E48AD /* ASCSharingAddRightHoldersModels.swift in Sources */,
 				FC4D0A202494F7C9001EF1B5 /* ASCDebugNavigationController.swift in Sources */,

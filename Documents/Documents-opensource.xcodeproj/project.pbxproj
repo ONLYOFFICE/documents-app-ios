@@ -4739,7 +4739,7 @@
 					"$(PROJECT_DIR)/Vendor/ONLYOFFICE/libs",
 				);
 				INFOPLIST_FILE = Documents/Documents.opensource.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_SWIFT_FLAGS = "$(inherited) -D COCOAPODS -D OPEN_SOURCE";
 				PRODUCT_BUNDLE_IDENTIFIER = com.onlyoffice.Documents.opensource;
@@ -4768,7 +4768,7 @@
 					"$(PROJECT_DIR)/Vendor/ONLYOFFICE/libs",
 				);
 				INFOPLIST_FILE = Documents/Documents.opensource.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_SWIFT_FLAGS = "$(inherited) -D COCOAPODS -D OPEN_SOURCE";
 				PRODUCT_BUNDLE_IDENTIFIER = com.onlyoffice.Documents.opensource;
@@ -4888,7 +4888,7 @@
 				DEVELOPMENT_TEAM = 2WH24U26GJ;
 				ENABLE_BITCODE = YES;
 				INFOPLIST_FILE = Documents/Documents.opensource.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_SWIFT_FLAGS = "$(inherited) -D COCOAPODS -D OPEN_SOURCE -D NO_EDITORS";
 				PRODUCT_BUNDLE_IDENTIFIER = com.onlyoffice.Documents.opensource;
@@ -4913,7 +4913,7 @@
 				DEVELOPMENT_TEAM = 2WH24U26GJ;
 				ENABLE_BITCODE = YES;
 				INFOPLIST_FILE = Documents/Documents.opensource.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_SWIFT_FLAGS = "$(inherited) -D COCOAPODS -D OPEN_SOURCE -D NO_EDITORS";
 				PRODUCT_BUNDLE_IDENTIFIER = com.onlyoffice.Documents.opensource;

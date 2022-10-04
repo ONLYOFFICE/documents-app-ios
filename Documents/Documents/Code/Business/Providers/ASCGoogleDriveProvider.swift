@@ -1254,6 +1254,17 @@ class ASCGoogleDriveProvider: ASCFileProviderProtocol & ASCSortableFileProviderP
             let editMode = !openViewMode && UIDevice.allowEditor
             let openHandler = delegate?.openProgress(file: file, title: NSLocalizedString("Processing", comment: "Caption of the processing") + "...", 0)
             let closeHandler = delegate?.closeProgress(file: file, title: NSLocalizedString("Saving", comment: "Caption of the processing"))
+            let renameHandler: ASCEditorManagerRenameHandler = { file, title, complation in
+                guard let file = file else { complation(false); return }
+
+                self.rename(file, to: title) { provider, result, success, error in
+                    if let file = result as? ASCFile {
+                        complation(file.title.fileName() == title)
+                    } else {
+                        complation(false)
+                    }
+                }
+            }
 
             ASCEditorManager.shared.editFileLocally(
                 for: self,
@@ -1261,7 +1272,8 @@ class ASCGoogleDriveProvider: ASCFileProviderProtocol & ASCSortableFileProviderP
                 openViewMode: !editMode,
                 canEdit: canEdit,
                 handler: openHandler,
-                closeHandler: closeHandler
+                closeHandler: closeHandler,
+                renameHandler: renameHandler
             )
         }
     }

@@ -303,7 +303,7 @@ class ASCConnectCloudViewController: UITableViewController {
                     needServer: false,
                     logo: providerImage(type),
                     title: providerName(type),
-                    instruction: NSLocalizedString("If you have activated double authentication, please generate a CDM application from the Infomaniak manager.", comment: ""),
+                    instruction: NSLocalizedString("You must have a paid version of the player to use this service.\nIf you have activated double authentication, please generate a CDM application from the Infomaniak manager.", comment: ""),
                     complation: authComplation(info:)
                 )
             }

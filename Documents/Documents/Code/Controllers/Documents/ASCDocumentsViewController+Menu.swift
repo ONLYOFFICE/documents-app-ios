@@ -373,6 +373,18 @@ extension ASCDocumentsViewController {
             )
         }
 
+        if actions.contains(.info) {
+            rootActions.append(
+                UIAction(
+                    title: NSLocalizedString("Info", comment: "Button title"),
+                    image: UIImage(systemName: "person.2")
+                ) { [unowned self] action in
+                    cell.hideSwipe(animated: true)
+                    navigator.navigate(to: .shareSettings(entity: folder))
+                }
+            )
+        }
+
         /// Mark as read action
 
         if actions.contains(.new) {
@@ -992,6 +1004,19 @@ extension ASCDocumentsViewController {
             actionAlertController.addAction(
                 UIAlertAction(
                     title: NSLocalizedString("Sharing Settings", comment: "Button title"),
+                    style: .default,
+                    handler: { [unowned self] action in
+                        cell.hideSwipe(animated: true)
+                        navigator.navigate(to: .shareSettings(entity: folder))
+                    }
+                )
+            )
+        }
+
+        if actions.contains(.info) {
+            actionAlertController.addAction(
+                UIAlertAction(
+                    title: NSLocalizedString("Info", comment: "Button title"),
                     style: .default,
                     handler: { [unowned self] action in
                         cell.hideSwipe(animated: true)

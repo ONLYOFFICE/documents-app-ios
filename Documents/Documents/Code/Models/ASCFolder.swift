@@ -83,6 +83,7 @@ class ASCFolder: ASCEntity {
             folder.title = title
             folder.access = access
             folder.shared = shared
+            folder.roomType = roomType
             folder.rootFolderType = rootFolderType
             folder.updated = updated
             folder.updatedBy = updatedBy

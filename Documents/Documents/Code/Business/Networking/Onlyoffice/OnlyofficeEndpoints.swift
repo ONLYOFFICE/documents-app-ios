@@ -47,6 +47,7 @@ class OnlyofficeAPI {
         public static let groups = "api/\(version)/group"
         public static let shareFile = "api/\(version)/files/file/%@/share"
         public static let shareFolder = "api/\(version)/files/folder/%@/share"
+        public static let shareRoom = "api/\(version)/files/rooms/%@/share"
         public static let forgotPassword = "api/\(version)/people/password"
         public static let deleteAccount = "api/\(version)/people/self/delete"
         public static let pushRegisterDevice = "/api/\(version)/settings/push/docregisterdevice"
@@ -196,11 +197,15 @@ class OnlyofficeAPI {
             }
 
             static func file(file: ASCFile) -> Endpoint<OnlyofficeResponseArray<OnlyofficeShare>> {
-                return Endpoint<OnlyofficeResponseArray<OnlyofficeShare>>.make(String(format: Path.shareFile, file.id), .put)
+                return Endpoint<OnlyofficeResponseArray<OnlyofficeShare>>.make(String(format: Path.shareFile, file.id), .get)
             }
 
             static func folder(folder: ASCFolder) -> Endpoint<OnlyofficeResponseArray<OnlyofficeShare>> {
-                return Endpoint<OnlyofficeResponseArray<OnlyofficeShare>>.make(String(format: Path.shareFolder, folder.id), .put)
+                return Endpoint<OnlyofficeResponseArray<OnlyofficeShare>>.make(String(format: Path.shareFolder, folder.id), .get)
+            }
+
+            static func room(folder: ASCFolder) -> Endpoint<OnlyofficeResponseArray<OnlyofficeShare>> {
+                return Endpoint<OnlyofficeResponseArray<OnlyofficeShare>>.make(String(format: Path.shareRoom, folder.id), .get)
             }
         }
 

@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1D0700E728F35EF500955E0B /* ASCShareSettingsRoomsAPIWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D0700E628F354B700955E0B /* ASCShareSettingsRoomsAPIWorker.swift */; };
+		1D0700E828F35EF600955E0B /* ASCShareSettingsRoomsAPIWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D0700E628F354B700955E0B /* ASCShareSettingsRoomsAPIWorker.swift */; };
 		1D128F9C26B3285300603B0F /* ASCCentredLabelHeaderFooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D128F9B26B3285300603B0F /* ASCCentredLabelHeaderFooterView.swift */; };
 		1D128F9D26B3285300603B0F /* ASCCentredLabelHeaderFooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D128F9B26B3285300603B0F /* ASCCentredLabelHeaderFooterView.swift */; };
 		1D12D35E265E467900C8C519 /* ASCOnlyofficeCategoriesProviderFilterProxy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D12D35D265E467900C8C519 /* ASCOnlyofficeCategoriesProviderFilterProxy.swift */; };
@@ -877,6 +879,7 @@
 /* Begin PBXFileReference section */
 		1B32667722AD980849E124F1 /* Pods_Documents.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Documents.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		1B402BC0B41F5EA0B160A88F /* Pods-Documents-DocumentsTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Documents-DocumentsTests.release.xcconfig"; path = "../Pods/Target Support Files/Pods-Documents-DocumentsTests/Pods-Documents-DocumentsTests.release.xcconfig"; sourceTree = "<group>"; };
+		1D0700E628F354B700955E0B /* ASCShareSettingsRoomsAPIWorker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCShareSettingsRoomsAPIWorker.swift; sourceTree = "<group>"; };
 		1D128F9B26B3285300603B0F /* ASCCentredLabelHeaderFooterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCCentredLabelHeaderFooterView.swift; sourceTree = "<group>"; };
 		1D12D35D265E467900C8C519 /* ASCOnlyofficeCategoriesProviderFilterProxy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCOnlyofficeCategoriesProviderFilterProxy.swift; sourceTree = "<group>"; };
 		1D14AABE268E0B62009E48AD /* ASCSharingRightHolderViewModelProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCSharingRightHolderViewModelProtocol.swift; sourceTree = "<group>"; };
@@ -1958,6 +1961,7 @@
 			isa = PBXGroup;
 			children = (
 				1D71107926A5A93000E00421 /* ASCShareSettingsAPIWorker.swift */,
+				1D0700E628F354B700955E0B /* ASCShareSettingsRoomsAPIWorker.swift */,
 				1DEB996E274E2C7C0071C1DB /* ASCPersonalShareSettingsAPIWorker.swift */,
 				1DEB9975274E46480071C1DB /* ASCShareSettingsAPIWorkerFactory.swift */,
 			);
@@ -4268,6 +4272,7 @@
 				FCD317572642ECB700A08299 /* UIFont+Extensions.swift in Sources */,
 				FCEF853D26C3E43000173DDF /* AppDelegate+Notifications.swift in Sources */,
 				1D35FCC826B1CDF7000929B0 /* OnlyofficeShareItemRequestModel.swift in Sources */,
+				1D0700E828F35EF600955E0B /* ASCShareSettingsRoomsAPIWorker.swift in Sources */,
 				FC36D2E125B5C32200412DDB /* ASCGoogleDriveProvider.swift in Sources */,
 				1D49E2AF26A9BDA90024AC7A /* ASCSharingAddRightHoldersPresenter.swift in Sources */,
 				1D49E29826A9BD210024AC7A /* ASCAccessRowViewModel.swift in Sources */,
@@ -4559,6 +4564,7 @@
 				FC8C697B1ECC2F44005B68D7 /* ASCConnectStorageOAuth2Google.swift in Sources */,
 				F3AAEFC528241917008ED772 /* ASCOnlyOfficeFiltersController.swift in Sources */,
 				1D4C674F2685D0C3000F2284 /* ASCTextViewTableViewCell.swift in Sources */,
+				1D0700E728F35EF500955E0B /* ASCShareSettingsRoomsAPIWorker.swift in Sources */,
 				FC059D981E82584400BC2F5E /* ASCDateTransform.swift in Sources */,
 				1D14AAF32698E85A009E48AD /* ASCSharingAddRightHoldersRouter.swift in Sources */,
 				1D667A4F28D3AA5F009BD85D /* ASCDocumentsCellSwipeMenu.swift in Sources */,

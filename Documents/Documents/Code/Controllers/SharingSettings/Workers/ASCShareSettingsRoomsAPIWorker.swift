@@ -16,10 +16,8 @@ class ASCShareSettingsRoomsAPIWorker: ASCShareSettingsAPIWorkerProtocol {
     }
 
     func makeApiRequest(entity: ASCEntity) -> Endpoint<OnlyofficeResponseArray<OnlyofficeShare>>? {
-        guard let folder = entity as? ASCFolder else { return nil }
-
-        guard folder.roomType != nil else {
-            return OnlyofficeAPI.Endpoints.Sharing.folder(folder: folder)
+        guard let folder = entity as? ASCFolder, folder.roomType != nil else {
+            return baseWorker.makeApiRequest(entity: entity)
         }
 
         return OnlyofficeAPI.Endpoints.Sharing.room(folder: folder)

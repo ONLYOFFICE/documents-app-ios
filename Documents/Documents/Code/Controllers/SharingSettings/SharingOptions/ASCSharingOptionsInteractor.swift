@@ -74,7 +74,7 @@ class ASCSharingOptionsInteractor: ASCSharingOptionsBusinessLogic, ASCSharingOpt
 
         let internalLink = entityLinkMaker.make(entity: entity)
 
-        guard let apiRequest = apiWorker.makeApiRequest(entity: entity)
+        guard let apiRequest = apiWorker.makeApiRequest(entity: entity, for: .get)
         else {
             presenter?.presentData(response: .presentRightHolders(.failure(NetworkingError.unknown(error: nil))))
             return
@@ -111,7 +111,7 @@ class ASCSharingOptionsInteractor: ASCSharingOptionsBusinessLogic, ASCSharingOpt
         var rightHolder = changeRightHolderAccessRequest.rightHolder
         let access = changeRightHolderAccessRequest.access
 
-        guard let request = apiWorker.makeApiRequest(entity: entity) else { return }
+        guard let request = apiWorker.makeApiRequest(entity: entity, for: .set) else { return }
 
         let shareRequestModel = OnlyofficeShareRequestModel()
         shareRequestModel.notify = false
@@ -138,7 +138,7 @@ class ASCSharingOptionsInteractor: ASCSharingOptionsBusinessLogic, ASCSharingOpt
         let sharedItem = sharedInfoItems[sharedItemIndex]
         guard !sharedItem.locked else { return }
 
-        guard let request = apiWorker.makeApiRequest(entity: entity) else { return }
+        guard let request = apiWorker.makeApiRequest(entity: entity, for: .set) else { return }
         let shareRequestModel = OnlyofficeShareRequestModel()
         shareRequestModel.notify = false
         shareRequestModel.share = apiWorker.convertToParams(items: [(rightHolder.id, .none)])

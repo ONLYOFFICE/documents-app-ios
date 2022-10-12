@@ -6,16 +6,17 @@
 //  Copyright © 2021 Ascensio System SIA. All rights reserved.
 //
 
+import Alamofire
 import Foundation
 
 class ASCShareSettingsAPIWorker: ASCShareSettingsAPIWorkerProtocol {
-    func makeApiRequest(entity: ASCEntity) -> Endpoint<OnlyofficeResponseArray<OnlyofficeShare>>? {
+    func makeApiRequest(entity: ASCEntity, for reason: ShareSettingsAPIWorkerReason) -> Endpoint<OnlyofficeResponseArray<OnlyofficeShare>>? {
         var request: Endpoint<OnlyofficeResponseArray<OnlyofficeShare>>?
 
         if let file = entity as? ASCFile {
-            request = OnlyofficeAPI.Endpoints.Sharing.file(file: file)
+            request = OnlyofficeAPI.Endpoints.Sharing.file(file: file, method: reason.httpMethod)
         } else if let folder = entity as? ASCFolder {
-            request = OnlyofficeAPI.Endpoints.Sharing.folder(folder: folder)
+            request = OnlyofficeAPI.Endpoints.Sharing.folder(folder: folder, method: reason.httpMethod)
         }
         return request
     }

@@ -15,12 +15,12 @@ class ASCShareSettingsRoomsAPIWorker: ASCShareSettingsAPIWorkerProtocol {
         self.baseWorker = baseWorker
     }
 
-    func makeApiRequest(entity: ASCEntity) -> Endpoint<OnlyofficeResponseArray<OnlyofficeShare>>? {
+    func makeApiRequest(entity: ASCEntity, for reason: ShareSettingsAPIWorkerReason) -> Endpoint<OnlyofficeResponseArray<OnlyofficeShare>>? {
         guard let folder = entity as? ASCFolder, folder.roomType != nil else {
-            return baseWorker.makeApiRequest(entity: entity)
+            return baseWorker.makeApiRequest(entity: entity, for: reason)
         }
 
-        return OnlyofficeAPI.Endpoints.Sharing.room(folder: folder)
+        return OnlyofficeAPI.Endpoints.Sharing.room(folder: folder, method: reason.httpMethod)
     }
 
     func convertToParams(entities: [ASCEntity]) -> [String: [ASCEntityId]]? {

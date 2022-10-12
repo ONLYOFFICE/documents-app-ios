@@ -196,16 +196,16 @@ class OnlyofficeAPI {
                 Endpoint<OnlyofficeResponseArray<OnlyofficeShare>>.make(Path.filesShare, .post)
             }
 
-            static func file(file: ASCFile) -> Endpoint<OnlyofficeResponseArray<OnlyofficeShare>> {
-                return Endpoint<OnlyofficeResponseArray<OnlyofficeShare>>.make(String(format: Path.shareFile, file.id), .get)
+            static func file(file: ASCFile, method: HTTPMethod) -> Endpoint<OnlyofficeResponseArray<OnlyofficeShare>> {
+                return Endpoint<OnlyofficeResponseArray<OnlyofficeShare>>.make(String(format: Path.shareFile, file.id), method)
             }
 
-            static func folder(folder: ASCFolder) -> Endpoint<OnlyofficeResponseArray<OnlyofficeShare>> {
-                return Endpoint<OnlyofficeResponseArray<OnlyofficeShare>>.make(String(format: Path.shareFolder, folder.id), .get)
+            static func folder(folder: ASCFolder, method: HTTPMethod) -> Endpoint<OnlyofficeResponseArray<OnlyofficeShare>> {
+                return Endpoint<OnlyofficeResponseArray<OnlyofficeShare>>.make(String(format: Path.shareFolder, folder.id), method)
             }
 
-            static func room(folder: ASCFolder) -> Endpoint<OnlyofficeResponseArray<OnlyofficeShare>> {
-                return Endpoint<OnlyofficeResponseArray<OnlyofficeShare>>.make(String(format: Path.shareRoom, folder.id), .get)
+            static func room(folder: ASCFolder, method: HTTPMethod) -> Endpoint<OnlyofficeResponseArray<OnlyofficeShare>> {
+                return Endpoint<OnlyofficeResponseArray<OnlyofficeShare>>.make(String(format: Path.shareRoom, folder.id), method)
             }
         }
 

@@ -36,8 +36,9 @@ class ASCSharingOptionsPresenter: ASCSharingOptionsPresentationLogic {
                 var otherRightHolders: [ASCSharingRightHolderViewModel] = []
 
                 sharedInfoItems.forEach { sharedInfo in
-                    if let viewModel = makeRightHolderViewModel(fromShareInfo: sharedInfo) {
+                    if var viewModel = makeRightHolderViewModel(fromShareInfo: sharedInfo) {
                         if isImportant(sharedInfo) {
+                            viewModel.isImportant = true
                             imprtantRightHolders.append(viewModel)
                         } else {
                             otherRightHolders.append(viewModel)

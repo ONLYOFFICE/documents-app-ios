@@ -14,6 +14,7 @@ struct ASCSharingRightHolderViewModel: ASCNamedProtocol, ASCSharingRightHolderVi
     var name: String
     var department: String?
     var isOwner: Bool = false
+    var isImportant: Bool = false
     var rightHolderType: ASCSharingRightHolderType?
     var access: ASCSharingRightHolderViewModelAccess?
 }

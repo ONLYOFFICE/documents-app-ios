@@ -9,7 +9,7 @@
 import Foundation
 
 class ASCPersonalShareSettingsAPIWorker: ASCShareSettingsAPIWorkerProtocol {
-    func makeApiRequest(entity: ASCEntity) -> Endpoint<OnlyofficeResponseArray<OnlyofficeShare>>? {
+    func makeApiRequest(entity: ASCEntity, for reason: ShareSettingsAPIWorkerReason) -> Endpoint<OnlyofficeResponseArray<OnlyofficeShare>>? {
         OnlyofficeAPI.Endpoints.Sharing.entitiesShare()
     }
 

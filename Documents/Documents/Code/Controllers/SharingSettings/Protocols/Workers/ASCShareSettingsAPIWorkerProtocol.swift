@@ -6,7 +6,20 @@
 //  Copyright © 2021 Ascensio System SIA. All rights reserved.
 //
 
+import Alamofire
 import Foundation
+
+enum ShareSettingsAPIWorkerReason {
+    case get
+    case set
+
+    var httpMethod: HTTPMethod {
+        switch self {
+        case .get: return .get
+        case .set: return .put
+        }
+    }
+}
 
 protocol ASCShareSettingsAPIWorkerProtocol {
     typealias ASCEntityId = String
@@ -14,7 +27,7 @@ protocol ASCShareSettingsAPIWorkerProtocol {
     func convertToParams(shareItems: [OnlyofficeShare]) -> [OnlyofficeShareItemRequestModel]
     func convertToParams(items: [(rightHolderId: String, access: ASCShareAccess)]) -> [OnlyofficeShareItemRequestModel]
     func convertToParams(entities: [ASCEntity]) -> [String: [ASCEntityId]]?
-    func makeApiRequest(entity: ASCEntity) -> Endpoint<OnlyofficeResponseArray<OnlyofficeShare>>?
+    func makeApiRequest(entity: ASCEntity, for reason: ShareSettingsAPIWorkerReason) -> Endpoint<OnlyofficeResponseArray<OnlyofficeShare>>?
 }
 
 extension ASCShareSettingsAPIWorkerProtocol {

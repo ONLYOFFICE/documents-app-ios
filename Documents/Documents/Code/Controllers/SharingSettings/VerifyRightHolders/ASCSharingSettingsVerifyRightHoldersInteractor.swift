@@ -91,7 +91,7 @@ class ASCSharingSettingsVerifyRightHoldersInteractor: ASCSharingSettingsVerifyRi
                 return
             }
 
-            guard let apiRequest = apiWorker.makeApiRequest(entity: entity) else {
+            guard let apiRequest = apiWorker.makeApiRequest(entity: entity, for: .set) else {
                 log.error("Couldn't make an api request on entity")
                 presenter?.presentData(responseType: .presentApplyingShareSettings(.init(error: NSLocalizedString("Something wrong", comment: ""))))
                 return

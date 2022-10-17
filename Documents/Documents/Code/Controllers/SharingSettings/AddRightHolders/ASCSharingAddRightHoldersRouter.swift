@@ -13,13 +13,13 @@ protocol ASCSharingAddRightHoldersRoutingLogic {
 }
 
 protocol ASCSharingAddRightHoldersDataPassing {
-    var dataStore: ASCSharingAddRightHoldersDataStore? { get }
+    var dataStore: ASCSharingAddRightHoldersBaseDataStore? { get }
 }
 
 class ASCSharingAddRightHoldersRouter: NSObject, ASCSharingAddRightHoldersRoutingLogic, ASCSharingAddRightHoldersDataPassing {
-    var dataStore: ASCSharingAddRightHoldersDataStore?
+    var dataStore: ASCSharingAddRightHoldersBaseDataStore?
 
-    weak var viewController: ASCSharingAddRightHoldersViewController?
+    weak var viewController: UIViewController?
     var verifyRightHoldersViewController: ASCSharingSettingsVerifyRightHoldersViewController?
 
     // MARK: Routing
@@ -46,11 +46,11 @@ class ASCSharingAddRightHoldersRouter: NSObject, ASCSharingAddRightHoldersRoutin
         }
     }
 
-    private func navigateToVerifyRightHoldersViewController(source: ASCSharingAddRightHoldersViewController, destination: ASCSharingSettingsVerifyRightHoldersViewController) {
+    private func navigateToVerifyRightHoldersViewController(source: UIViewController, destination: ASCSharingSettingsVerifyRightHoldersViewController) {
         source.navigationController?.pushViewController(destination, animated: true)
     }
 
-    private func passDataToAddRightHoldersViewController(source: ASCSharingAddRightHoldersDataStore, destination: inout ASCSharingSettingsVerifyRightHoldersDataStore) {
+    private func passDataToAddRightHoldersViewController(source: ASCSharingAddRightHoldersBaseDataStore, destination: inout ASCSharingSettingsVerifyRightHoldersDataStore) {
         destination.clearData()
         destination.sharedInfoItems = source.sharedInfoItems
         destination.itemsForSharingAdd = source.itemsForSharingAdd

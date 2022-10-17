@@ -373,6 +373,18 @@ extension ASCDocumentsViewController {
             )
         }
 
+        if actions.contains(.addUsers) {
+            rootActions.append(
+                UIAction(
+                    title: NSLocalizedString("Add users", comment: "Button title"),
+                    image: UIImage(systemName: "person.badge.plus")
+                ) { [unowned self] action in
+                    cell.hideSwipe(animated: true)
+                    navigator.navigate(to: .addUsers(entity: folder))
+                }
+            )
+        }
+
         if actions.contains(.info) {
             rootActions.append(
                 UIAction(
@@ -1008,6 +1020,19 @@ extension ASCDocumentsViewController {
                     handler: { [unowned self] action in
                         cell.hideSwipe(animated: true)
                         navigator.navigate(to: .shareSettings(entity: folder))
+                    }
+                )
+            )
+        }
+
+        if actions.contains(.addUsers) {
+            actionAlertController.addAction(
+                UIAlertAction(
+                    title: NSLocalizedString("Add users", comment: "Button title"),
+                    style: .default,
+                    handler: { [unowned self] action in
+                        cell.hideSwipe(animated: true)
+                        navigator.navigate(to: .addUsers(entity: folder))
                     }
                 )
             )

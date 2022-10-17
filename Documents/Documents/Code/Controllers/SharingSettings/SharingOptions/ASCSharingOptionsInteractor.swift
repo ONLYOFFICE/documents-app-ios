@@ -113,10 +113,9 @@ class ASCSharingOptionsInteractor: ASCSharingOptionsBusinessLogic, ASCSharingOpt
 
         guard let request = apiWorker.makeApiRequest(entity: entity, for: .set) else { return }
 
-        let shareRequestModel = OnlyofficeShareRequestModel()
-        shareRequestModel.notify = false
-        shareRequestModel.share = apiWorker.convertToParams(items: [(rightHolder.id, access)])
-        networkingRequestManager.request(request, shareRequestModel.toJSON()) { [weak self] _, error in
+        let json = makeJsonParams(entity: entity, rightHolder: rightHolder, access: access)
+
+        networkingRequestManager.request(request, json) { [weak self] _, error in
             if error == nil {
                 rightHolder.access = access
                 if let index = self?.sharedInfoItems.firstIndex(where: { $0.user?.userId == rightHolder.id || $0.group?.id == rightHolder.id }) {
@@ -139,11 +138,9 @@ class ASCSharingOptionsInteractor: ASCSharingOptionsBusinessLogic, ASCSharingOpt
         guard !sharedItem.locked else { return }
 
         guard let request = apiWorker.makeApiRequest(entity: entity, for: .set) else { return }
-        let shareRequestModel = OnlyofficeShareRequestModel()
-        shareRequestModel.notify = false
-        shareRequestModel.share = apiWorker.convertToParams(items: [(rightHolder.id, .none)])
 
-        networkingRequestManager.request(request, shareRequestModel.toJSON()) { [weak self] _, error in
+        let json = makeJsonParams(entity: entity, rightHolder: rightHolder, access: .none)
+        networkingRequestManager.request(request, json) { [weak self] _, error in
             if error == nil {
                 self?.sharedInfoItems.remove(at: sharedItemIndex)
                 self?.presenter?.presentData(response: .presentRemoveRightHolderAccess(.init(indexPath: removeRightHolderAccessRequest.indexPath,
@@ -158,5 +155,18 @@ class ASCSharingOptionsInteractor: ASCSharingOptionsBusinessLogic, ASCSharingOpt
                                                                                              error: errorMessage)))
             }
         }
+    }
+
+    private func makeJsonParams(entity: ASCEntity, rightHolder: ASCSharingRightHolder, access: ASCShareAccess) -> [String: Any] {
+        guard entity.isRoom else {
+            let shareRequestModel = OnlyofficeShareRequestModel()
+            shareRequestModel.notify = false
+            shareRequestModel.share = apiWorker.convertToParams(items: [(rightHolder.id, access)])
+            return shareRequestModel.toJSON()
+        }
+        let inviteRequestModel = OnlyofficeInviteRequestModel()
+        inviteRequestModel.notify = false
+        inviteRequestModel.invitations = [.init(id: rightHolder.id, access: access)]
+        return inviteRequestModel.toJSON()
     }
 }

@@ -80,7 +80,10 @@ class ASCSharingRightHolderTableViewCell: UITableViewCell, ASCReusedIdentifierPr
         }
 
         title.text = viewModel.name
-        if let department = viewModel.department {
+
+        if let email = viewModel.email {
+            subtitle.text = email
+        } else if let department = viewModel.department {
             subtitle.text = department
         }
 

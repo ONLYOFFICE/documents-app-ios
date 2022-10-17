@@ -135,6 +135,10 @@
 		1D71107F26A8217400E00421 /* UINavigationItem+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D71107E26A8217300E00421 /* UINavigationItem+Extensions.swift */; };
 		1D7174A028F7D9F1007D6E4B /* ASCSharingSettingsAccessRoomsProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D71749F28F7D925007D6E4B /* ASCSharingSettingsAccessRoomsProvider.swift */; };
 		1D7174A128F7D9F2007D6E4B /* ASCSharingSettingsAccessRoomsProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D71749F28F7D925007D6E4B /* ASCSharingSettingsAccessRoomsProvider.swift */; };
+		1D7174C528F92DFF007D6E4B /* ASCSharingInviteRightHoldersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D7174C428F92DFF007D6E4B /* ASCSharingInviteRightHoldersViewController.swift */; };
+		1D7174C628F92DFF007D6E4B /* ASCSharingInviteRightHoldersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D7174C428F92DFF007D6E4B /* ASCSharingInviteRightHoldersViewController.swift */; };
+		1D7174C828F9AF98007D6E4B /* OnlyofficeInviteItemRequestModel .swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D7174C728F9AF97007D6E4B /* OnlyofficeInviteItemRequestModel .swift */; };
+		1D7174C928F9AF98007D6E4B /* OnlyofficeInviteItemRequestModel .swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D7174C728F9AF97007D6E4B /* OnlyofficeInviteItemRequestModel .swift */; };
 		1D76212C277DE2D70088126B /* ASCOnlyofficeCategoriesChainContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D76212B277DE2D60088126B /* ASCOnlyofficeCategoriesChainContainer.swift */; };
 		1D76B047275B746200389C61 /* ASCNextCloudProviderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D76B046275B746200389C61 /* ASCNextCloudProviderTests.swift */; };
 		1D76B04B275B921100389C61 /* ASCEntityExistenceChecker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D76B04A275B921100389C61 /* ASCEntityExistenceChecker.swift */; };
@@ -950,6 +954,8 @@
 		1D71107C26A5A9A000E00421 /* ASCShareSettingsAPIWorkerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCShareSettingsAPIWorkerTests.swift; sourceTree = "<group>"; };
 		1D71107E26A8217300E00421 /* UINavigationItem+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UINavigationItem+Extensions.swift"; sourceTree = "<group>"; };
 		1D71749F28F7D925007D6E4B /* ASCSharingSettingsAccessRoomsProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCSharingSettingsAccessRoomsProvider.swift; sourceTree = "<group>"; };
+		1D7174C428F92DFF007D6E4B /* ASCSharingInviteRightHoldersViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCSharingInviteRightHoldersViewController.swift; sourceTree = "<group>"; };
+		1D7174C728F9AF97007D6E4B /* OnlyofficeInviteItemRequestModel .swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "OnlyofficeInviteItemRequestModel .swift"; sourceTree = "<group>"; };
 		1D76212B277DE2D60088126B /* ASCOnlyofficeCategoriesChainContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCOnlyofficeCategoriesChainContainer.swift; sourceTree = "<group>"; };
 		1D76B046275B746200389C61 /* ASCNextCloudProviderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCNextCloudProviderTests.swift; sourceTree = "<group>"; };
 		1D76B04A275B921100389C61 /* ASCEntityExistenceChecker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCEntityExistenceChecker.swift; sourceTree = "<group>"; };
@@ -1818,6 +1824,7 @@
 				1D863F1926725BC6000BAC3C /* ASCSharingRightHolderViewModel.swift */,
 				1D9B807D2673EBEC0020B5ED /* ASCSwitchRowViewModel.swift */,
 				1D14AAC826958F87009E48AD /* ASCSharingRightHolder.swift */,
+				1D7174C728F9AF97007D6E4B /* OnlyofficeInviteItemRequestModel .swift */,
 				1D35FCC626B1B34F000929B0 /* OnlyofficeShareItemRequestModel.swift */,
 			);
 			path = Models;
@@ -2118,6 +2125,7 @@
 				1DA5E66D269E1EAA005F59E1 /* View */,
 				1D14AAE72698D5EC009E48AD /* DataSourceAndDelegates */,
 				1D14AAEE2698E85A009E48AD /* ASCSharingAddRightHoldersViewController.swift */,
+				1D7174C428F92DFF007D6E4B /* ASCSharingInviteRightHoldersViewController.swift */,
 				1D14AAEF2698E85A009E48AD /* ASCSharingAddRightHoldersInteractor.swift */,
 				1D14AAEA2698E85A009E48AD /* ASCSharingAddRightHoldersPresenter.swift */,
 				1D14AAEC2698E85A009E48AD /* ASCSharingAddRightHoldersRouter.swift */,
@@ -4103,6 +4111,7 @@
 				1D49E2B326A9BDBD0024AC7A /* ASCSharingSettingsVerifyRightHoldersView.swift in Sources */,
 				FCF695CF2632FAC500808644 /* ASCButtonStyle.swift in Sources */,
 				FC36D28D25B5C32200412DDB /* ASCCreatePortalViewController.swift in Sources */,
+				1D7174C928F9AF98007D6E4B /* OnlyofficeInviteItemRequestModel .swift in Sources */,
 				FC80CA3525BADEF10077C2B8 /* Observable.swift in Sources */,
 				FCF695912632E3D500808644 /* UIButton+Style.swift in Sources */,
 				FC36D28E25B5C32200412DDB /* ASCConnectPortalViewController.swift in Sources */,
@@ -4366,6 +4375,7 @@
 				FC36D30925B5C32200412DDB /* UILabel+Extension.swift in Sources */,
 				FC36D30A25B5C32200412DDB /* ASCConnectStorageGoogleController.swift in Sources */,
 				FC36D30B25B5C32200412DDB /* ASCAvatarCollectionViewCell.swift in Sources */,
+				1D7174C528F92DFF007D6E4B /* ASCSharingInviteRightHoldersViewController.swift in Sources */,
 				FC36D30C25B5C32200412DDB /* ASCOwnCloudProvider.swift in Sources */,
 				FC36D30D25B5C32200412DDB /* ASC2FAViewController.swift in Sources */,
 				FC36D30E25B5C32200412DDB /* ASCFileProviderType.swift in Sources */,
@@ -4494,6 +4504,7 @@
 				1D9B8094267400670020B5ED /* ASCAccessRowViewModel.swift in Sources */,
 				FC1EA5D21ECF2A6D008FEE2E /* ASCSettingsViewController.swift in Sources */,
 				FC1EA5CB1ECECBC3008FEE2E /* ASCBaseNavigationController.swift in Sources */,
+				1D7174C628F92DFF007D6E4B /* ASCSharingInviteRightHoldersViewController.swift in Sources */,
 				1D5DB03A2658097E006B4757 /* ASCOnlyofficeUserDefaultsCacheCategoriesProvider.swift in Sources */,
 				FC68528F26837B7300D830EC /* OnlyofficeAuthRequest.swift in Sources */,
 				FCCD8C90285782EB00ECD606 /* ASCStandartCell.swift in Sources */,
@@ -4527,6 +4538,7 @@
 				1DAAFF492679063700023F39 /* ASCViewModelSetter.swift in Sources */,
 				FC68398D21B7DFCE00251CEA /* ASCOnlyofficeNavigationController.swift in Sources */,
 				FCEF9D1B1ED2C94300627BA5 /* Functions.swift in Sources */,
+				1D7174C828F9AF98007D6E4B /* OnlyofficeInviteItemRequestModel .swift in Sources */,
 				FC066AB1252DB7C5007357F7 /* OwningEventReference.swift in Sources */,
 				FC68528526837B7300D830EC /* OnlyofficeCapabilities.swift in Sources */,
 				1DD2FF21275A9EB000676010 /* ASCSharingSettingsAccessOFormProvider.swift in Sources */,

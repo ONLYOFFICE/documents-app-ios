@@ -187,6 +187,10 @@ class ASCSharingOptionsViewController: ASCBaseTableViewController {
     // MARK: - Routing
 
     func onAddRightsBarButtonTap() {
+        guard !isRoomFolder else {
+            router?.routeToInviteRightHoldersViewController(segue: nil)
+            return
+        }
         router?.routeToAddRightHoldersViewController(segue: nil)
     }
 }

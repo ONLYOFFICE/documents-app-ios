@@ -8,7 +8,7 @@
 
 import Foundation
 
-protocol ASCSharingAddRightHoldersDataStore {
+protocol ASCSharingAddRightHoldersBaseDataStore {
     var entity: ASCEntity? { get set }
     var entityOwner: ASCUser? { get set }
     var currentUser: ASCUser? { get set }
@@ -18,7 +18,6 @@ protocol ASCSharingAddRightHoldersDataStore {
     var itemsForSharingAdd: [OnlyofficeShare] { get set }
     var itemsForSharingRemove: [OnlyofficeShare] { get }
     var users: [ASCUser] { get set }
-    var groups: [ASCGroup] { get set }
 
     func add(shareInfo: OnlyofficeShare)
     func remove(shareInfo: OnlyofficeShare)
@@ -26,7 +25,11 @@ protocol ASCSharingAddRightHoldersDataStore {
     func clear()
 }
 
-class ASCSharingAddRightHoldersRAMDataStore: ASCSharingAddRightHoldersDataStore {
+protocol ASCSharingAddRightHoldersDataStore: ASCSharingAddRightHoldersBaseDataStore {
+    var groups: [ASCGroup] { get set }
+}
+
+class ASCSharingAddRightHoldersBaseRAMDataStore: ASCSharingAddRightHoldersBaseDataStore {
     var entity: ASCEntity?
     var entityOwner: ASCUser?
     var currentUser: ASCUser?
@@ -37,7 +40,6 @@ class ASCSharingAddRightHoldersRAMDataStore: ASCSharingAddRightHoldersDataStore 
     private(set) var itemsForSharingRemove: [OnlyofficeShare] = []
 
     var users: [ASCUser] = []
-    var groups: [ASCGroup] = []
 
     /// add to itemsForSharingAdd if do not exist in sharedInfoItems and remove from itemsForSharingRemove if exist there
     func add(shareInfo: OnlyofficeShare) {
@@ -71,7 +73,6 @@ class ASCSharingAddRightHoldersRAMDataStore: ASCSharingAddRightHoldersDataStore 
         itemsForSharingAdd = []
         itemsForSharingRemove = []
         users = []
-        groups = []
     }
 
     private func findShareInfo(byShareInfo shareInfo: OnlyofficeShare, in store: [OnlyofficeShare]) -> OnlyofficeShare? {
@@ -95,5 +96,14 @@ class ASCSharingAddRightHoldersRAMDataStore: ASCSharingAddRightHoldersDataStore 
         store.removeAll { item in
             item.user?.userId == entityId || item.group?.id == entityId
         }
+    }
+}
+
+class ASCSharingAddRightHoldersRAMDataStore: ASCSharingAddRightHoldersBaseRAMDataStore, ASCSharingAddRightHoldersDataStore {
+    var groups: [ASCGroup] = []
+
+    override func clear() {
+        super.clear()
+        groups = []
     }
 }

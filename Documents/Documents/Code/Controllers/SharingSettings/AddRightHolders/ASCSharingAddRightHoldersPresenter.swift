@@ -43,6 +43,7 @@ class ASCSharingAddRightHoldersPresenter: ASCSharingAddRightHoldersPresentationL
                     id: user.userId ?? "",
                     avatarUrl: user.avatar,
                     name: user.displayName ?? "",
+                    email: user.email,
                     department: user.department,
                     isOwner: false,
                     rightHolderType: .user,

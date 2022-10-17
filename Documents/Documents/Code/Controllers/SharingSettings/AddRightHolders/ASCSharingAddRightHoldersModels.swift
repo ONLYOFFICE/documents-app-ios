@@ -57,6 +57,11 @@ enum ASCSharingAddRightHolders {
         }
 
         enum ViewModel {
+            enum ViewModelBase {
+                case displayUsers(_ viewModel: UsersViewModel)
+                case displaySelected(_ viewModel: SelectedViewModel)
+            }
+
             enum ViewModelData {
                 case displayUsers(_ viewModel: UsersViewModel)
                 case displayGroups(_ viewModel: GroupsViewModel)

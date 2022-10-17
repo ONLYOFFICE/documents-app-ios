@@ -8,8 +8,6 @@
 
 import UIKit
 
-typealias RightHoldersTableType = ASCSharingAddRightHoldersViewController.RightHoldersTableType
-
 protocol ASCSharingAddRightHoldersViewDelegate: AnyObject {
     func getAccessList() -> ([ASCShareAccess])
     func getCurrentAccess() -> ASCShareAccess
@@ -38,6 +36,7 @@ class ASCSharingAddRightHoldersView {
     var searchControllerDelegate: UISearchControllerDelegate!
     var searchResultsUpdating: UISearchResultsUpdating!
     var searchBarDelegate: UISearchBarDelegate!
+    var showsScopeBar: Bool
 
     lazy var usersTableView = UITableView()
     lazy var groupsTableView = UITableView()
@@ -123,7 +122,8 @@ class ASCSharingAddRightHoldersView {
         navigationController: UINavigationController?,
         searchControllerDelegate: UISearchControllerDelegate,
         searchResultsUpdating: UISearchResultsUpdating,
-        searchBarDelegate: UISearchBarDelegate
+        searchBarDelegate: UISearchBarDelegate,
+        showsScopeBar: Bool
     ) {
         self.view = view
         self.navigationController = navigationController
@@ -131,6 +131,7 @@ class ASCSharingAddRightHoldersView {
         self.searchControllerDelegate = searchControllerDelegate
         self.searchResultsUpdating = searchResultsUpdating
         self.searchBarDelegate = searchBarDelegate
+        self.showsScopeBar = showsScopeBar
     }
 
     // MARK: - Deinit
@@ -284,8 +285,10 @@ extension ASCSharingAddRightHoldersView {
         searchController.searchBar.delegate = searchBarDelegate
         searchController.obscuresBackgroundDuringPresentation = false
         searchController.searchBar.placeholder = NSLocalizedString("Search", comment: "")
-        searchController.searchBar.showsScopeBar = true
-        searchController.searchBar.scopeButtonTitles = RightHoldersTableType.allCases.map { $0.getTitle() }
+        searchController.searchBar.showsScopeBar = showsScopeBar
+        if showsScopeBar {
+            searchController.searchBar.scopeButtonTitles = RightHoldersTableType.allCases.map { $0.getTitle() }
+        }
         if UIDevice.phone {
             searchController.searchBar.inputAccessoryView = keyboardToolbar
         }

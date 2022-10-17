@@ -100,3 +100,10 @@ class ASCFolder: ASCEntity {
         return folder
     }
 }
+
+extension ASCEntity {
+    var isRoom: Bool {
+        guard let folder = self as? ASCFolder, folder.roomType != nil else { return false }
+        return true
+    }
+}

@@ -18,6 +18,8 @@ enum ASCShareAccess: Int, CaseIterable {
     case comment = 6
     case fillForms = 7
     case userFilter = 8
+    case roomManager = 9
+    case editing = 10
 
     init() {
         self = .none
@@ -33,6 +35,8 @@ enum ASCShareAccess: Int, CaseIterable {
         case 6: self = .comment
         case 7: self = .fillForms
         case 8: self = .userFilter
+        case 9: self = .roomManager
+        case 10: self = .editing
         default: self = .none
         }
     }
@@ -40,6 +44,8 @@ enum ASCShareAccess: Int, CaseIterable {
     func getSortWeight() -> Int {
         switch self {
         case .none: return 5
+        case .roomManager: return 7
+        case .editing: return 8
         case .full: return 10
         case .varies: return 20
         case .review: return 30
@@ -71,6 +77,10 @@ enum ASCShareAccess: Int, CaseIterable {
             return NSLocalizedString("Form filling", comment: "Share status")
         case .userFilter:
             return NSLocalizedString("Custom filter", comment: "Share status")
+        case .roomManager:
+            return NSLocalizedString("Room admin", comment: "Share status")
+        case .editing:
+            return NSLocalizedString("Editor", comment: "Share status")
         }
     }
 
@@ -97,6 +107,10 @@ enum ASCShareAccess: Int, CaseIterable {
                 return Asset.Images.menuFormFilling.image
             case .userFilter:
                 return Asset.Images.menuCustomFilter.image
+            case .roomManager:
+                return Asset.Images.menuOwner.image
+            case .editing:
+                return Asset.Images.menuFullAccess.image
             }
         }
         return nil

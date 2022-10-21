@@ -80,7 +80,8 @@ final class ASCNavigator {
                 }
                 navigationController?.present(addUsersNavigationVC, animated: true, completion: nil)
                 addUsersViewController.dataStore?.entity = entity
-                addUsersViewController.start()
+                addUsersViewController.dataStore?.currentUser = ASCFileManager.onlyofficeProvider?.user
+                addUsersViewController.accessProvider = ASCSharingSettingsAccessProviderFactory().get(entity: entity, isAccessExternal: false)
             }
         case .onlyofficeConnectPortal:
             navigationController?.viewControllers = [viewController]

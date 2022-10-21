@@ -9,7 +9,24 @@
 import Foundation
 
 class ASCSharingSettingsAccessRoomsProvider: ASCSharingSettingsAccessProvider {
+    let roomType: ASCRoomType
+
+    init(roomType: ASCRoomType) {
+        self.roomType = roomType
+    }
+
     func get() -> [ASCShareAccess] {
-        [.fillForms, .review, .comment, .read, .deny]
+        switch roomType {
+        case .fillingForm:
+            return [.roomManager, .fillForms, .read]
+        case .colobaration:
+            return [.roomManager, .editing, .read]
+        case .review:
+            return [.roomManager, .review, .comment, .read]
+        case .viewOnly:
+            return [.roomManager, .read]
+        case .custom:
+            return [.roomManager, .editing, .fillForms, .review, .comment, .read, .deny]
+        }
     }
 }

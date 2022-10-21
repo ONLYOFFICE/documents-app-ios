@@ -27,12 +27,12 @@ class ASCSharingSettingsAccessProviderFactory {
             return porviderContainer()
         }
 
-        guard let folder = entity as? ASCFolder, folder.roomType != nil else {
+        guard let folder = entity as? ASCFolder, let roomType = folder.roomType else {
             return isAccessExternal
                 ? ASCSharingSettingsAccessExternalDefaultProvider()
                 : ASCSharingSettingsAccessDefaultProvider()
         }
 
-        return ASCSharingSettingsAccessRoomsProvider()
+        return ASCSharingSettingsAccessRoomsProvider(roomType: roomType)
     }
 }

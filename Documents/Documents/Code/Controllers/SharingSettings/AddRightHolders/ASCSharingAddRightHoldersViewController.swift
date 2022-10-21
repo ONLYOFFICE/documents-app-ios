@@ -104,7 +104,8 @@ class ASCSharingAddRightHoldersViewController: UIViewController, ASCSharingAddRi
 
     private func setup() {
         let viewController = self
-        let interactor = ASCSharingAddRightHoldersInteractor()
+        let interactor = ASCSharingAddRightHoldersInteractor(apiWorker: ASCShareSettingsAPIWorkerFactory().get(by: ASCPortalTypeDefinderByCurrentConnection().definePortalType()),
+                                                             networkingRequestManager: OnlyofficeApiClient.shared)
         let presenter = ASCSharingAddRightHoldersPresenter()
         let router = ASCSharingAddRightHoldersRouter()
         let dataStore = ASCSharingAddRightHoldersRAMDataStore()
@@ -229,7 +230,7 @@ class ASCSharingAddRightHoldersViewController: UIViewController, ASCSharingAddRi
     func loadData() {
         if !usersCurrentlyLoading {
             usersCurrentlyLoading = true
-            interactor?.makeRequest(requestType: .loadUsers)
+            interactor?.makeRequest(requestType: .loadUsers(preloadReghtHolders: false))
         }
 
         if !groupsCurrentlyLoading {

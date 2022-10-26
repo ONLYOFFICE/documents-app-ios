@@ -264,6 +264,7 @@ class ASCConnectCloudViewController: UITableViewController {
                     needServer: false,
                     logo: providerImage(type),
                     title: providerName(type),
+                    instruction: NSLocalizedString("<p>Use the password created in <a href=\"https://yandex.ru/id/about\">Yandex ID</a>.</p><p>More detailed connection instructions can be found in the <a href=\"https://yandex.ru/support/disk-desktop/webdav-app-passwords.html?lang=ru\">help</a>.</p>", comment: ""),
                     complation: authComplation(info:)
                 )
             }
@@ -303,7 +304,7 @@ class ASCConnectCloudViewController: UITableViewController {
                     needServer: false,
                     logo: providerImage(type),
                     title: providerName(type),
-                    instruction: NSLocalizedString("You must have a paid version of the player to use this service.\nIf you have activated double authentication, please generate a CDM application from the Infomaniak manager.", comment: ""),
+                    instruction: NSLocalizedString("<p>You must have a paid version of the player to use this service.</p><p>If you have activated double authentication, please generate a CDM application from the Infomaniak manager. <a href=\"https://www.infomaniak.com/en/support/faq/1940/enable-two-step-verification\">More...</a></p>", comment: ""),
                     complation: authComplation(info:)
                 )
             }
@@ -352,6 +353,7 @@ class ASCConnectCloudViewController: UITableViewController {
                 configuration.provider = .yandex
                 configuration.logo = providerImage(.yandex)
                 configuration.needServer = false
+                configuration.instruction = NSLocalizedString("<p>Use the password created in <a href=\"https://yandex.ru/id/about\">Yandex ID</a>.</br>More detailed connection instructions can be found in the <a href=\"https://yandex.ru/support/disk-desktop/webdav-app-passwords.html?lang=ru\">help</a>.</p>", comment: "")
                 viewController.configuration = configuration
             }
         case "kdriveSegue":
@@ -362,6 +364,7 @@ class ASCConnectCloudViewController: UITableViewController {
                 configuration.provider = .kDrive
                 configuration.logo = providerImage(.kdrive)
                 configuration.needServer = false
+                configuration.instruction = NSLocalizedString("<p>You must have a paid version of the player to use this service.</p><p>If you have activated double authentication, please generate a CDM application from the Infomaniak manager. <a href=\"https://www.infomaniak.com/en/support/faq/1940/enable-two-step-verification\">More...</a></p>", comment: "")
                 viewController.configuration = configuration
             }
         default:

@@ -37,6 +37,11 @@ class ASCConnectStorageWebDavController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        tableView.register(
+            ASCLinkTableViewHeaderFooterView.self,
+            forHeaderFooterViewReuseIdentifier: ASCLinkTableViewHeaderFooterView.identifier
+        )
+
         doneCell?.isUserInteractionEnabled = false
         doneLabel?.isEnabled = false
 
@@ -159,11 +164,87 @@ extension ASCConnectStorageWebDavController {
         }
     }
 
+    private func htmlInjection(string: String) -> String {
+        let html = """
+        <html>
+          <head>
+            <style>
+              p {
+                margin: 0;
+              }
+            </style>
+          </head>
+          <body>
+            %@
+          </body>
+        </html>
+        """
+
+        return String(format: html, string)
+    }
+
     override func tableView(_ tableView: UITableView, titleForFooterInSection section: Int) -> String? {
         if section == 0 {
-            return configuration?.instruction
+            let titleForFooterInSection = htmlInjection(string: configuration?.instruction ?? "")
+            let data = Data(titleForFooterInSection.utf8)
+            let footerAttributedText = try? NSAttributedString(
+                data: data,
+                options: [.documentType: NSAttributedString.DocumentType.html],
+                documentAttributes: nil
+            )
+            return footerAttributedText?.string
         }
         return nil
+    }
+
+    override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        if section == tableView.numberOfSections - 1 {
+            return 36
+        }
+        return super.tableView(tableView, heightForHeaderInSection: section)
+    }
+
+    override func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
+        if section == 0 {
+            return tableView.dequeueReusableHeaderFooterView(withIdentifier: ASCLinkTableViewHeaderFooterView.identifier)
+        }
+        return nil
+    }
+
+    override func tableView(_ tableView: UITableView, willDisplayFooterView view: UIView, forSection section: Int) {
+        if section == 0 {
+            guard let footerView = view as? ASCLinkTableViewHeaderFooterView else { return }
+
+            let titleForFooterInSection = htmlInjection(string: configuration?.instruction ?? "")
+            let data = Data(titleForFooterInSection.utf8)
+            let footerAttributedText = try? NSAttributedString(
+                data: data,
+                options: [.documentType: NSAttributedString.DocumentType.html],
+                documentAttributes: nil
+            )
+
+            // Prepare font
+            let fontAttribute = UIFont.preferredFont(forTextStyle: .footnote)
+
+            // Prepare font color
+            let textColorAttribute = UIColor.secondaryLabel
+
+            if let footerAttributedText {
+                let attributes: [NSAttributedString.Key: Any] = [
+                    .font: fontAttribute,
+                    .foregroundColor: textColorAttribute,
+                    .underlineStyle: 0,
+                ]
+
+                let mutableAttributedText = footerAttributedText.mutableCopy() as! NSMutableAttributedString
+                mutableAttributedText.addAttributes(attributes, range: NSMakeRange(0, mutableAttributedText.length))
+                footerView.textView.attributedText = mutableAttributedText
+                footerView.textView.tintColor = tableView.tintColor
+
+                footerView.textLabel?.attributedText = mutableAttributedText // Force layout the footer view
+                footerView.textLabel?.isHidden = true
+            }
+        }
     }
 }
 

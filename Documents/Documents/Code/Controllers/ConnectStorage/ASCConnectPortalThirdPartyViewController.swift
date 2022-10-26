@@ -302,7 +302,7 @@ class ASCConnectPortalThirdPartyViewController: UITableViewController {
                     ? Asset.Images.logoYandexdiskRuLarge.image
                     : Asset.Images.logoYandexdiskLarge.image,
                 title: NSLocalizedString("Yandex Disk", comment: ""),
-                instruction: nil,
+                instruction: NSLocalizedString("<p>Use the password created in <a href=\"https://yandex.ru/id/about\">Yandex ID</a>.</br>More detailed connection instructions can be found in the <a href=\"https://yandex.ru/support/disk-desktop/webdav-app-passwords.html?lang=ru\">help</a>.</p>", comment: ""),
                 complation: authComplation(info:)
             )
             viewController = webDavVC
@@ -345,7 +345,7 @@ class ASCConnectPortalThirdPartyViewController: UITableViewController {
                 needServer: false,
                 logo: Asset.Images.logoKdriveLarge.image,
                 title: "kDrive",
-                instruction: NSLocalizedString("If you have activated double authentication, please generate a CDM application from the Infomaniak manager.", comment: ""),
+                instruction: NSLocalizedString("<p>You must have a paid version of the player to use this service.</p><p>If you have activated double authentication, please generate a CDM application from the Infomaniak manager. <a href=\"https://www.infomaniak.com/en/support/faq/1940/enable-two-step-verification\">More...</a></p>", comment: ""),
                 complation: authComplation(info:)
             )
             viewController = kDriveVC

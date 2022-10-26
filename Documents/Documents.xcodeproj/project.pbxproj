@@ -185,6 +185,8 @@
 		1DEB9973274E3ED10071C1DB /* ASCShareSettingsAPIWorkerFactoryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DEB9972274E3ED10071C1DB /* ASCShareSettingsAPIWorkerFactoryTests.swift */; };
 		1DEB9976274E46480071C1DB /* ASCShareSettingsAPIWorkerFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DEB9975274E46480071C1DB /* ASCShareSettingsAPIWorkerFactory.swift */; };
 		1DEB9978274E4DC80071C1DB /* ASCAccessToAddRightHoldersCheckerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DEB9977274E4DC80071C1DB /* ASCAccessToAddRightHoldersCheckerProtocol.swift */; };
+		1DEBFD7B2907BB72004CD353 /* InviteRigthHoldersByEmailsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DEBFD7A2907BB72004CD353 /* InviteRigthHoldersByEmailsViewModel.swift */; };
+		1DEBFD7D2907C1DA004CD353 /* InviteRigthHoldersByEmailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DEBFD7C2907C1DA004CD353 /* InviteRigthHoldersByEmailsViewController.swift */; };
 		1DF505242641867300B78496 /* ASCOneDriveFileProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DF505232641867300B78496 /* ASCOneDriveFileProvider.swift */; };
 		1DF6E0A926D5323B00FB42CE /* ASCOneDriveProviderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DF6E0A826D5323A00FB42CE /* ASCOneDriveProviderTests.swift */; };
 		667548327089FF37AB5BACBB /* Pods_Documents_Alpha.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 92C4B2EE0CEF31DA5A45CD1A /* Pods_Documents_Alpha.framework */; };
@@ -1002,6 +1004,8 @@
 		1DEB9972274E3ED10071C1DB /* ASCShareSettingsAPIWorkerFactoryTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCShareSettingsAPIWorkerFactoryTests.swift; sourceTree = "<group>"; };
 		1DEB9975274E46480071C1DB /* ASCShareSettingsAPIWorkerFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCShareSettingsAPIWorkerFactory.swift; sourceTree = "<group>"; };
 		1DEB9977274E4DC80071C1DB /* ASCAccessToAddRightHoldersCheckerProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCAccessToAddRightHoldersCheckerProtocol.swift; sourceTree = "<group>"; };
+		1DEBFD7A2907BB72004CD353 /* InviteRigthHoldersByEmailsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InviteRigthHoldersByEmailsViewModel.swift; sourceTree = "<group>"; };
+		1DEBFD7C2907C1DA004CD353 /* InviteRigthHoldersByEmailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InviteRigthHoldersByEmailsViewController.swift; sourceTree = "<group>"; };
 		1DF505232641867300B78496 /* ASCOneDriveFileProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCOneDriveFileProvider.swift; sourceTree = "<group>"; };
 		1DF6E0A826D5323A00FB42CE /* ASCOneDriveProviderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCOneDriveProviderTests.swift; sourceTree = "<group>"; };
 		223510FCC80632095899444E /* Pods_Documents_DocumentsTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Documents_DocumentsTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -2156,6 +2160,7 @@
 				1D4C674726850523000F2284 /* Cells */,
 				1D4C6752268A0574000F2284 /* SharingOptions */,
 				1DAAFF3E2678DF9B00023F39 /* AddRightHolders */,
+				1DEBFD792907BAEA004CD353 /* InviteRightHoldersByEmails */,
 				1DAAFF3A267898BB00023F39 /* Access */,
 				1D4C6744268500C2000F2284 /* VerifyRightHolders */,
 			);
@@ -2208,6 +2213,15 @@
 				1DE6D6C32631BE03001B825B /* ASCOnlyofficeCategoriesProviderFactory.swift */,
 			);
 			path = Factory;
+			sourceTree = "<group>";
+		};
+		1DEBFD792907BAEA004CD353 /* InviteRightHoldersByEmails */ = {
+			isa = PBXGroup;
+			children = (
+				1DEBFD7A2907BB72004CD353 /* InviteRigthHoldersByEmailsViewModel.swift */,
+				1DEBFD7C2907C1DA004CD353 /* InviteRigthHoldersByEmailsViewController.swift */,
+			);
+			path = InviteRightHoldersByEmails;
 			sourceTree = "<group>";
 		};
 		3C50733DA18F920525F5E1EB /* Frameworks */ = {
@@ -3583,6 +3597,7 @@
 				"${BUILT_PRODUCTS_DIR}/SwiftyJSON/SwiftyJSON.framework",
 				"${BUILT_PRODUCTS_DIR}/SwiftyXMLParser/SwiftyXMLParser.framework",
 				"${BUILT_PRODUCTS_DIR}/UICircularProgressRing/UICircularProgressRing.framework",
+				"${BUILT_PRODUCTS_DIR}/WSTagsField/WSTagsField.framework",
 				"${BUILT_PRODUCTS_DIR}/WhatsNewKit/WhatsNewKit.framework",
 				"${BUILT_PRODUCTS_DIR}/atlantis-proxyman/Atlantis.framework",
 				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
@@ -3649,6 +3664,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyJSON.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyXMLParser.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/UICircularProgressRing.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/WSTagsField.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/WhatsNewKit.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Atlantis.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
@@ -3867,6 +3883,7 @@
 				"${BUILT_PRODUCTS_DIR}/SwiftyJSON/SwiftyJSON.framework",
 				"${BUILT_PRODUCTS_DIR}/SwiftyXMLParser/SwiftyXMLParser.framework",
 				"${BUILT_PRODUCTS_DIR}/UICircularProgressRing/UICircularProgressRing.framework",
+				"${BUILT_PRODUCTS_DIR}/WSTagsField/WSTagsField.framework",
 				"${BUILT_PRODUCTS_DIR}/WhatsNewKit/WhatsNewKit.framework",
 				"${BUILT_PRODUCTS_DIR}/atlantis-proxyman/Atlantis.framework",
 				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
@@ -3933,6 +3950,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyJSON.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyXMLParser.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/UICircularProgressRing.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/WSTagsField.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/WhatsNewKit.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Atlantis.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
@@ -4564,6 +4582,7 @@
 				FC68398721B7DC0D00251CEA /* ASCRootViewController.swift in Sources */,
 				FCF2761C22C0E8E500984E83 /* ASCProfileAvatarView.swift in Sources */,
 				FCEF853626C3E3CF00173DDF /* AppDelegate.swift in Sources */,
+				1DEBFD7D2907C1DA004CD353 /* InviteRigthHoldersByEmailsViewController.swift in Sources */,
 				1D14AAD426962D7C009E48AD /* ASCSharingSettingsAccessDocumentProvider.swift in Sources */,
 				FC37D8E921CB8FA8001A7BFD /* UIDevice+DeviceKit.swift in Sources */,
 				1D76B04E275B935400389C61 /* ASCUniqNameFinder.swift in Sources */,
@@ -4725,6 +4744,7 @@
 				FC54E804271F04BE00195CFD /* ASCCreatePortal.swift in Sources */,
 				FCA4D5AA1E79728800ADD842 /* ASCEditorManager.swift in Sources */,
 				1DC43EE5269F613000373D5A /* ASCSharingSettingsVerifyRightHoldersModels.swift in Sources */,
+				1DEBFD7B2907BB72004CD353 /* InviteRigthHoldersByEmailsViewModel.swift in Sources */,
 				FCD317522642EA8700A08299 /* NSAttributedString+Extensions.swift in Sources */,
 				FCA10114218348B70018867F /* ASCCategory.swift in Sources */,
 				FCEF9D261ED2C94300627BA5 /* PasscodeLockType.swift in Sources */,

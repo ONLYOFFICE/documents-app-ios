@@ -47,6 +47,7 @@ def common_pods
   pod 'SwiftMessages', '9.0.4'
   pod 'MGSwipeTableCell'
   pod 'ReCaptcha'
+  pod "WSTagsField"
 
   # Utils
 

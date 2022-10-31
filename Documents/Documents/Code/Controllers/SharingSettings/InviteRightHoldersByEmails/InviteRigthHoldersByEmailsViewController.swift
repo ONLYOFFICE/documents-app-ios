@@ -11,30 +11,36 @@ import UIKit
 import WSTagsField
 
 class InviteRigthHoldersByEmailsViewController: UIViewController {
-    
     let viewModel: InviteRigthHoldersByEmailsViewModel
-    
+
     init(viewModel: InviteRigthHoldersByEmailsViewModel) {
         self.viewModel = viewModel
         super.init(nibName: nil, bundle: nil)
     }
-    
+
+    @available(*, unavailable)
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
+
     lazy var tagsView: WSTagsField = {
         let tagsView = WSTagsField()
         tagsView.textField.delegate = self
-        tagsView.backgroundColor = .white
+        tagsView.backgroundColor = .systemBackground
         tagsView.textField.placeholder = NSLocalizedString("Enter email", comment: "placeholder")
-        tagsView.layer.cornerRadius = 4
+        tagsView.layer.cornerRadius = 6
+        tagsView.contentInset = UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
+        tagsView.spaceBetweenLines = 10.0
+        tagsView.tintColor = UIColor(hex: "#747480").withAlphaComponent(0.08)
+        tagsView.textColor = .systemBlue
         return tagsView
     }()
 
     override func viewDidLoad() {
         super.viewDidLoad()
         view.addSubview(tagsView)
+        view.backgroundColor = .groupTableViewBackground
+        title = NSLocalizedString("Invite people", comment: "")
 
         tagsView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
@@ -54,5 +60,16 @@ extension InviteRigthHoldersByEmailsViewController: UITextFieldDelegate {
         tagsView.addTag(textFieldText)
         textField.text = ""
         return true
+    }
+}
+
+let __firstpartEmailPattern = "[A-Z0-9a-z]([A-Z0-9a-z._%+-]{0,30}[A-Z0-9a-z])?"
+let __serverpartEmailPattern = "([A-Z0-9a-z]([A-Z0-9a-z-]{0,30}[A-Z0-9a-z])?\\.){1,5}"
+let __emailRegex = __firstpartEmailPattern + "@" + __serverpartEmailPattern + "[A-Za-z]{2,8}"
+let __emailPredicate = NSPredicate(format: "SELF MATCHES %@", __emailRegex)
+
+extension String {
+    var isEmail: Bool {
+        return __emailPredicate.evaluate(with: self)
     }
 }

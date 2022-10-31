@@ -293,6 +293,9 @@
 		FC25B46A285116CB0075D6C2 /* ASCFiltersControllerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC25B469285116CB0075D6C2 /* ASCFiltersControllerProtocol.swift */; };
 		FC25B46B285116CB0075D6C2 /* ASCFiltersControllerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC25B469285116CB0075D6C2 /* ASCFiltersControllerProtocol.swift */; };
 		FC28021525B9B8C5000E9D99 /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FC28021425B9B8C5000E9D99 /* CloudKit.framework */; };
+		FC2882B928EC6A850034E732 /* ASCConnectStorageWebDavControllerConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC2882B828EC6A850034E732 /* ASCConnectStorageWebDavControllerConfiguration.swift */; };
+		FC2882BA28EC6A850034E732 /* ASCConnectStorageWebDavControllerConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC2882B828EC6A850034E732 /* ASCConnectStorageWebDavControllerConfiguration.swift */; };
+		FC2882BB28EC6A850034E732 /* ASCConnectStorageWebDavControllerConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC2882B828EC6A850034E732 /* ASCConnectStorageWebDavControllerConfiguration.swift */; };
 		FC28F2C11E8CF4B900A8F985 /* UIColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC28F2C01E8CF4B900A8F985 /* UIColor+Extension.swift */; };
 		FC28F2C41E8D131800A8F985 /* ASCCreateEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC28F2C31E8D131800A8F985 /* ASCCreateEntity.swift */; };
 		FC28F2C61E8D1BB200A8F985 /* ASCEntityManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC28F2C51E8D1BB200A8F985 /* ASCEntityManager.swift */; };
@@ -520,6 +523,8 @@
 		FC41D80C2265DA8700A155C2 /* ASCFilterType.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC41D80B2265DA8700A155C2 /* ASCFilterType.swift */; };
 		FC41D80E2265DADC00A155C2 /* ASCFileProviderType.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC41D80D2265DADC00A155C2 /* ASCFileProviderType.swift */; };
 		FC43E70F2195B5FC002AAA32 /* ASCYandexFileProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC43E70E2195B5FC002AAA32 /* ASCYandexFileProvider.swift */; };
+		FC4426662909518800319B38 /* ASCLinkTableViewHeaderFooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC4426652909518800319B38 /* ASCLinkTableViewHeaderFooterView.swift */; };
+		FC4426672909518800319B38 /* ASCLinkTableViewHeaderFooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC4426652909518800319B38 /* ASCLinkTableViewHeaderFooterView.swift */; };
 		FC470966261E529C006FFF90 /* Array+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC470965261E529C006FFF90 /* Array+Extensions.swift */; };
 		FC470967261E529C006FFF90 /* Array+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC470965261E529C006FFF90 /* Array+Extensions.swift */; };
 		FC4D0A1D2494F5EA001EF1B5 /* Debug.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FC4D0A1C2494F5EA001EF1B5 /* Debug.storyboard */; };
@@ -1106,6 +1111,7 @@
 		FC25B461284FAD720075D6C2 /* UITableView+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableView+Extensions.swift"; sourceTree = "<group>"; };
 		FC25B469285116CB0075D6C2 /* ASCFiltersControllerProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASCFiltersControllerProtocol.swift; sourceTree = "<group>"; };
 		FC28021425B9B8C5000E9D99 /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = System/Library/Frameworks/CloudKit.framework; sourceTree = SDKROOT; };
+		FC2882B828EC6A850034E732 /* ASCConnectStorageWebDavControllerConfiguration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASCConnectStorageWebDavControllerConfiguration.swift; sourceTree = "<group>"; };
 		FC28F2C01E8CF4B900A8F985 /* UIColor+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColor+Extension.swift"; sourceTree = "<group>"; };
 		FC28F2C31E8D131800A8F985 /* ASCCreateEntity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASCCreateEntity.swift; sourceTree = "<group>"; };
 		FC28F2C51E8D1BB200A8F985 /* ASCEntityManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ASCEntityManager.swift; path = Documents/Code/Business/ASCEntityManager.swift; sourceTree = SOURCE_ROOT; };
@@ -1135,6 +1141,7 @@
 		FC41D80B2265DA8700A155C2 /* ASCFilterType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCFilterType.swift; sourceTree = "<group>"; };
 		FC41D80D2265DADC00A155C2 /* ASCFileProviderType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCFileProviderType.swift; sourceTree = "<group>"; };
 		FC43E70E2195B5FC002AAA32 /* ASCYandexFileProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCYandexFileProvider.swift; sourceTree = "<group>"; };
+		FC4426652909518800319B38 /* ASCLinkTableViewHeaderFooterView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASCLinkTableViewHeaderFooterView.swift; sourceTree = "<group>"; };
 		FC470965261E529C006FFF90 /* Array+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Array+Extensions.swift"; sourceTree = "<group>"; };
 		FC4D0A1C2494F5EA001EF1B5 /* Debug.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Debug.storyboard; sourceTree = "<group>"; };
 		FC4D0A1F2494F7C9001EF1B5 /* ASCDebugNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCDebugNavigationController.swift; sourceTree = "<group>"; };
@@ -2335,8 +2342,9 @@
 				FC8C697A1ECC2F44005B68D7 /* ASCConnectStorageOAuth2Google.swift */,
 				FC8C697C1ECC6163005B68D7 /* ASCConnectStorageOAuth2OneDrive.swift */,
 				FC8C697E1ECC6755005B68D7 /* ASCConnectStorageOAuth2Box.swift */,
-				F377689727D273B20044EDA6 /* ASCNextCloudConnectStorageDelegate.swift */,
+				FC2882B828EC6A850034E732 /* ASCConnectStorageWebDavControllerConfiguration.swift */,
 				FC7DC889285F631100E61C69 /* ASCDropboxSDKWrapper.swift */,
+				F377689727D273B20044EDA6 /* ASCNextCloudConnectStorageDelegate.swift */,
 			);
 			path = ConnectStorage;
 			sourceTree = "<group>";
@@ -2879,6 +2887,7 @@
 				FC6DD4E51EDD59330095B16C /* ParkedTextField.swift */,
 				FC6106F61F9E28EE002A25C8 /* UPCarouselFlowLayout.swift */,
 				FC81C67C22C5041600A7D104 /* ASCCustomHighlightButton.swift */,
+				FC4426652909518800319B38 /* ASCLinkTableViewHeaderFooterView.swift */,
 				FCED8F4D23E8355500EC1DAC /* ASCFloatingLabelTextField.swift */,
 			);
 			path = Components;
@@ -4218,6 +4227,7 @@
 				FC68526E26837B7300D830EC /* NextcloudEndpoints.swift in Sources */,
 				FC36D2B425B5C32200412DDB /* ASCSortViewController.swift in Sources */,
 				1D128F9D26B3285300603B0F /* ASCCentredLabelHeaderFooterView.swift in Sources */,
+				FC4426672909518800319B38 /* ASCLinkTableViewHeaderFooterView.swift in Sources */,
 				FCB1CF42280D85610050EA7A /* ASCMicrosoftSignInController.swift in Sources */,
 				FCB1CF3F280D84070050EA7A /* ASCAppleIdSignInController.swift in Sources */,
 				1D49E29B26A9BD340024AC7A /* ASCSharingOptionsSectionProtocol.swift in Sources */,
@@ -4293,6 +4303,7 @@
 				FCCD8CA82859B80700ECD606 /* ASCDevelopOptionsViewController.swift in Sources */,
 				FC68528226837B7300D830EC /* OnlyofficeUserPhoto.swift in Sources */,
 				FC0299F127B6409000E5341B /* ASCWebKitViewController.swift in Sources */,
+				FC2882BA28EC6A850034E732 /* ASCConnectStorageWebDavControllerConfiguration.swift in Sources */,
 				FC36D2DC25B5C32200412DDB /* ASCConnectStorageOAuth2OneDrive.swift in Sources */,
 				FC68528C26837B7300D830EC /* OnlyofficeShare.swift in Sources */,
 				FC36D2DD25B5C32200412DDB /* ASCLocalization.swift in Sources */,
@@ -4461,6 +4472,7 @@
 				1D14AAC72694F0C4009E48AD /* ASCOnlyofficeFileInternalLinkMakerTests.swift in Sources */,
 				FC4D864020C50A710047B871 /* UIDevice+Extension.swift in Sources */,
 				FC4D864820C50AE00047B871 /* MBProgressHUD+Extension.swift in Sources */,
+				FC2882BB28EC6A850034E732 /* ASCConnectStorageWebDavControllerConfiguration.swift in Sources */,
 				1D1A2E412661018100D0335B /* Assets.swift in Sources */,
 				FC4D864220C50AE00047B871 /* Common+Extension.swift in Sources */,
 				1DEB9971274E2EF90071C1DB /* ASCPersonalShareSettingsAPIWorkerTests.swift in Sources */,
@@ -4651,6 +4663,7 @@
 				FCE1866B262AB4AB0086D21B /* Scenes.swift in Sources */,
 				FC68526D26837B7300D830EC /* NextcloudEndpoints.swift in Sources */,
 				FCEF9D201ED2C94300627BA5 /* PasscodeLock.swift in Sources */,
+				FC4426662909518800319B38 /* ASCLinkTableViewHeaderFooterView.swift in Sources */,
 				FCEF853F26C3EFD500173DDF /* AppDelegate+Helpers.swift in Sources */,
 				1D4C674D2685D043000F2284 /* ASCTextFieldCellViewModel.swift in Sources */,
 				1D14AAE92698D612009E48AD /* ASCSharingAddRightHoldersSearchResultsTableViewDataSourceAndDelegate.swift in Sources */,
@@ -4728,6 +4741,7 @@
 				1D1DB5562759023800FA0BEE /* ASCSharingSettingsAccessDocumentFormProvider.swift in Sources */,
 				1D14AAF42698E85A009E48AD /* ASCSharingAddRightHoldersModels.swift in Sources */,
 				FC4D0A202494F7C9001EF1B5 /* ASCDebugNavigationController.swift in Sources */,
+				FC2882B928EC6A850034E732 /* ASCConnectStorageWebDavControllerConfiguration.swift in Sources */,
 				FCEF853C26C3E43000173DDF /* AppDelegate+Notifications.swift in Sources */,
 				FC68526F26837B7300D830EC /* NextcloudDataResult.swift in Sources */,
 				FC8C69831ECC8EA8005B68D7 /* ASCConnectStorageWebDavController.swift in Sources */,
@@ -5259,7 +5273,7 @@
 				DEVELOPMENT_TEAM = 2WH24U26GJ;
 				ENABLE_BITCODE = YES;
 				INFOPLIST_FILE = Documents/Documents.alpha.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.onlyoffice.Documents.dev;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -5282,7 +5296,7 @@
 				DEVELOPMENT_TEAM = 2WH24U26GJ;
 				ENABLE_BITCODE = YES;
 				INFOPLIST_FILE = Documents/Documents.alpha.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.onlyoffice.Documents.dev;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -5312,7 +5326,7 @@
 				DEVELOPMENT_TEAM = 2WH24U26GJ;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				INFOPLIST_FILE = DocumentsTests/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.onlyoffice.DocumentsTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -5342,7 +5356,7 @@
 				DEVELOPMENT_TEAM = 2WH24U26GJ;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				INFOPLIST_FILE = DocumentsTests/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.onlyoffice.DocumentsTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -5394,7 +5408,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -5439,7 +5453,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
@@ -5460,7 +5474,7 @@
 				DEVELOPMENT_TEAM = 2WH24U26GJ;
 				ENABLE_BITCODE = YES;
 				INFOPLIST_FILE = Documents/Documents.dev.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.onlyoffice.Documents;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -5483,7 +5497,7 @@
 				DEVELOPMENT_TEAM = 2WH24U26GJ;
 				ENABLE_BITCODE = YES;
 				INFOPLIST_FILE = Documents/Documents.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.onlyoffice.Documents;
 				PRODUCT_NAME = "$(TARGET_NAME)";

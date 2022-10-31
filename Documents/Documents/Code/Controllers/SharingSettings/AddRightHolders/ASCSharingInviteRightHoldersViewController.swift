@@ -54,7 +54,7 @@ class ASCSharingInviteRightHoldersViewController: UIViewController, ASCSharingAd
         return !dataStore.itemsForSharingAdd.isEmpty || !dataStore.itemsForSharingRemove.isEmpty
     }
 
-    private lazy var usersTableViewDataSourceAndDelegate = ASCSharingAddRightHoldersTableViewDataSourceAndDelegate<ASCSharingRightHolderTableViewCell>(models: self.usersModels)
+    private lazy var usersTableViewDataSourceAndDelegate = ASCSharingInviteRightHoldersTableViewDataSourceAndDelegate<ASCSharingRightHolderTableViewCell>(models: self.usersModels)
 
     private lazy var searchResultsTableViewDataSourceAndDelegate: ASCSharingAddRightHoldersSearchResultsTableViewDataSourceAndDelegate = {
         guard let usersTableView = sharingAddRightHoldersView?.usersTableView
@@ -131,6 +131,15 @@ class ASCSharingInviteRightHoldersViewController: UIViewController, ASCSharingAd
 
         sharingAddRightHoldersView?.showTable(tableType: .users)
 
+        usersTableViewDataSourceAndDelegate.inviteCellClousure = { [weak self] in
+            guard let self = self, let entity = self.dataStore?.entity else { return }
+            let apiWorker = ASCShareSettingsAPIWorkerFactory().get(by: ASCPortalTypeDefinderByCurrentConnection().definePortalType())
+            let viewModel = InviteRigthHoldersByEmailsViewModelImp(entity: entity, apiWorker: apiWorker)
+            let inviteVC = InviteRigthHoldersByEmailsViewController(viewModel: viewModel)
+            inviteVC.view.frame = self.view.bounds
+            self.navigationController?.pushViewController(inviteVC, animated: true)
+        }
+
         loadData()
     }
 
@@ -173,6 +182,8 @@ class ASCSharingInviteRightHoldersViewController: UIViewController, ASCSharingAd
         selectedAccess = defaultAccess
         usersModels = []
         usersTableViewDataSourceAndDelegate.set(models: [])
+        usersTableViewDataSourceAndDelegate.inviteSectionEnabled = true
+
         updateSelectDeleselectAllBarBtn()
         sharingAddRightHoldersView?.reset()
 
@@ -349,6 +360,7 @@ extension ASCSharingInviteRightHoldersViewController: UISearchControllerDelegate
 
         guard !searchText.isEmpty else {
             usersTableViewDataSourceAndDelegate.set(models: usersModels)
+            usersTableViewDataSourceAndDelegate.inviteSectionEnabled = true
             sharingAddRightHoldersView?.showEmptyView(false)
             sharingAddRightHoldersView?.usersTableView.reloadData()
             sharingAddRightHoldersView?.searchResultsTable.reloadData()
@@ -358,6 +370,7 @@ extension ASCSharingInviteRightHoldersViewController: UISearchControllerDelegate
         let foundUsersModels = usersModels.filter { $0.0.name.lowercased().contains(searchText.lowercased()) }
 
         usersTableViewDataSourceAndDelegate.set(models: foundUsersModels)
+        usersTableViewDataSourceAndDelegate.inviteSectionEnabled = false
 
         sharingAddRightHoldersView?.usersTableView.reloadData()
 
@@ -392,6 +405,7 @@ extension ASCSharingInviteRightHoldersViewController: UISearchControllerDelegate
         sharingAddRightHoldersView?.removeDarkenFromScreen()
 
         usersTableViewDataSourceAndDelegate.set(models: usersModels)
+        usersTableViewDataSourceAndDelegate.inviteSectionEnabled = true
 
         sharingAddRightHoldersView?.usersTableView.reloadData()
 

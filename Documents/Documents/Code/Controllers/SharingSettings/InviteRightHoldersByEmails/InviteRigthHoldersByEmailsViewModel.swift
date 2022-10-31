@@ -39,14 +39,13 @@ class InviteRigthHoldersByEmailsViewModelImp: InviteRigthHoldersByEmailsViewMode
             completion(error)
         }
     }
-    
-    private func makeJsonParams(emails: [Email], access: ASCShareAccess) -> [String: Any] {
 
+    private func makeJsonParams(emails: [Email], access: ASCShareAccess) -> [String: Any] {
         let inviteRequestModel = OnlyofficeInviteRequestModel()
         inviteRequestModel.notify = false
         inviteRequestModel.inviteMessage = nil
         inviteRequestModel.invitations = emails.compactMap {
-            return .init(email: $0, access: access)
+            .init(email: $0, access: access)
         }
         return inviteRequestModel.toJSON()
     }

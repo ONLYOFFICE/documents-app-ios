@@ -249,27 +249,34 @@ class ASCConnectCloudViewController: UITableViewController {
         case .owncloud:
             connectionVC = ASCConnectStorageWebDavController.instantiate(from: Storyboard.connectStorage)
             if let viewController = connectionVC as? ASCConnectStorageWebDavController {
-                viewController.complation = authComplation(info:)
-                viewController.title = providerName(type)
-                viewController.provider = .ownCloud
-                viewController.logo = providerImage(type)
+                viewController.configuration = ASCConnectStorageWebDavControllerConfiguration(
+                    provider: .ownCloud,
+                    logo: providerImage(type),
+                    title: providerName(type),
+                    complation: authComplation(info:)
+                )
             }
         case .yandex:
             connectionVC = ASCConnectStorageWebDavController.instantiate(from: Storyboard.connectStorage)
             if let viewController = connectionVC as? ASCConnectStorageWebDavController {
-                viewController.complation = authComplation(info:)
-                viewController.title = providerName(type)
-                viewController.provider = .yandex
-                viewController.logo = providerImage(type)
-                viewController.needServer = false
+                viewController.configuration = ASCConnectStorageWebDavControllerConfiguration(
+                    provider: .yandex,
+                    needServer: false,
+                    logo: providerImage(type),
+                    title: providerName(type),
+                    instruction: NSLocalizedString("<p>Use the password created in <a href=\"https://yandex.ru/id/about\">Yandex ID</a>.</p><p>More detailed connection instructions can be found in the <a href=\"https://yandex.ru/support/disk-desktop/webdav-app-passwords.html?lang=ru\">help</a>.</p>", comment: ""),
+                    complation: authComplation(info:)
+                )
             }
         case .webdav:
             connectionVC = ASCConnectStorageWebDavController.instantiate(from: Storyboard.connectStorage)
             if let viewController = connectionVC as? ASCConnectStorageWebDavController {
-                viewController.complation = authComplation(info:)
-                viewController.title = providerName(type)
-                viewController.provider = .webDav
-                viewController.logo = providerImage(type)
+                viewController.configuration = ASCConnectStorageWebDavControllerConfiguration(
+                    provider: .webDav,
+                    logo: providerImage(type),
+                    title: providerName(type),
+                    complation: authComplation(info:)
+                )
             }
         case .onedrive:
             let oauth2VC = ASCConnectStorageOAuth2ViewController.instantiate(from: Storyboard.connectStorage)
@@ -291,11 +298,15 @@ class ASCConnectCloudViewController: UITableViewController {
         case .kdrive:
             connectionVC = ASCConnectStorageWebDavController.instantiate(from: Storyboard.connectStorage)
             if let viewController = connectionVC as? ASCConnectStorageWebDavController {
-                viewController.complation = authComplation(info:)
-                viewController.title = providerName(type)
-                viewController.provider = .kDrive
-                viewController.logo = providerImage(type)
-                viewController.needServer = false
+                viewController.configuration = ASCConnectStorageWebDavControllerConfiguration(
+                    provider: .kDrive,
+                    loginTitle: NSLocalizedString("Email", comment: ""),
+                    needServer: false,
+                    logo: providerImage(type),
+                    title: providerName(type),
+                    instruction: NSLocalizedString("<p>You must have a paid version of the player to use this service.</p><p>If you have activated double authentication, please generate a CDM application from the Infomaniak manager. <a href=\"https://www.infomaniak.com/en/support/faq/1940/enable-two-step-verification\">More...</a></p>", comment: ""),
+                    complation: authComplation(info:)
+                )
             }
         default:
             break
@@ -318,33 +329,43 @@ class ASCConnectCloudViewController: UITableViewController {
         switch identifier {
         case "owncloudSegue":
             if let viewController = segue.destination as? ASCConnectStorageWebDavController {
-                viewController.complation = authComplation(info:)
-                viewController.title = providerName(.owncloud)
-                viewController.provider = .ownCloud
-                viewController.logo = providerImage(.owncloud)
+                var configuration = ASCConnectStorageWebDavControllerConfiguration.defaultConfiguration()
+                configuration.complation = authComplation(info:)
+                configuration.title = providerName(.owncloud)
+                configuration.provider = .ownCloud
+                configuration.logo = providerImage(.owncloud)
+                viewController.configuration = configuration
             }
         case "webdavSegue":
             if let viewController = segue.destination as? ASCConnectStorageWebDavController {
-                viewController.complation = authComplation(info:)
-                viewController.title = providerName(.webdav)
-                viewController.provider = .webDav
-                viewController.logo = providerImage(.webdav)
+                var configuration = ASCConnectStorageWebDavControllerConfiguration.defaultConfiguration()
+                configuration.complation = authComplation(info:)
+                configuration.title = providerName(.webdav)
+                configuration.provider = .webDav
+                configuration.logo = providerImage(.webdav)
+                viewController.configuration = configuration
             }
         case "yandexSegue":
             if let viewController = segue.destination as? ASCConnectStorageWebDavController {
-                viewController.complation = authComplation(info:)
-                viewController.title = providerName(.yandex)
-                viewController.provider = .yandex
-                viewController.logo = providerImage(.yandex)
-                viewController.needServer = false
+                var configuration = ASCConnectStorageWebDavControllerConfiguration.defaultConfiguration()
+                configuration.complation = authComplation(info:)
+                configuration.title = providerName(.yandex)
+                configuration.provider = .yandex
+                configuration.logo = providerImage(.yandex)
+                configuration.needServer = false
+                configuration.instruction = NSLocalizedString("<p>Use the password created in <a href=\"https://yandex.ru/id/about\">Yandex ID</a>.</br>More detailed connection instructions can be found in the <a href=\"https://yandex.ru/support/disk-desktop/webdav-app-passwords.html?lang=ru\">help</a>.</p>", comment: "")
+                viewController.configuration = configuration
             }
         case "kdriveSegue":
             if let viewController = segue.destination as? ASCConnectStorageWebDavController {
-                viewController.complation = authComplation(info:)
-                viewController.title = providerName(.kdrive)
-                viewController.provider = .kDrive
-                viewController.logo = providerImage(.kdrive)
-                viewController.needServer = false
+                var configuration = ASCConnectStorageWebDavControllerConfiguration.defaultConfiguration()
+                configuration.complation = authComplation(info:)
+                configuration.title = providerName(.kdrive)
+                configuration.provider = .kDrive
+                configuration.logo = providerImage(.kdrive)
+                configuration.needServer = false
+                configuration.instruction = NSLocalizedString("<p>You must have a paid version of the player to use this service.</p><p>If you have activated double authentication, please generate a CDM application from the Infomaniak manager. <a href=\"https://www.infomaniak.com/en/support/faq/1940/enable-two-step-verification\">More...</a></p>", comment: "")
+                viewController.configuration = configuration
             }
         default:
             break

@@ -6,21 +6,43 @@
 //  Copyright © 2022 Ascensio System SIA. All rights reserved.
 //
 
+import Combine
 import Foundation
 
 typealias Email = String
 
 protocol InviteRigthHoldersByEmailsViewModel: AnyObject {
+    var currenAccessPubliser: Published<ASCShareAccess>.Publisher { get }
+    var currenAccess: ASCShareAccess { get }
+    var accessChangeHandler: (ASCShareAccess) -> Void { get }
+    var accessProvides: () -> [ASCShareAccess] { get }
+    var nextClosure: () -> Void { get set }
     func invite(emails: [Email], access: ASCShareAccess, completion: @escaping (Error?) -> Void)
 }
 
 class InviteRigthHoldersByEmailsViewModelImp: InviteRigthHoldersByEmailsViewModel {
+    var currenAccessPubliser: Published<ASCShareAccess>.Publisher { $currenAccess }
+
+    @Published var currenAccess: ASCShareAccess
+
+    lazy var accessChangeHandler: (ASCShareAccess) -> Void = { [weak self] access in
+        self?.currenAccess = access
+    }
+
+    let accessProvides: () -> [ASCShareAccess]
+    var nextClosure: () -> Void = {}
     private var entity: ASCEntity
     private var apiWorker: ASCShareSettingsAPIWorkerProtocol
 
-    init(entity: ASCEntity, apiWorker: ASCShareSettingsAPIWorkerProtocol) {
+    init(entity: ASCEntity,
+         currentAccess: ASCShareAccess,
+         apiWorker: ASCShareSettingsAPIWorkerProtocol,
+         accessProvider: ASCSharingSettingsAccessProvider)
+    {
         self.apiWorker = apiWorker
+        currenAccess = currentAccess
         self.entity = entity
+        accessProvides = { accessProvider.get() }
     }
 
     func invite(emails: [Email], access: ASCShareAccess, completion: @escaping (Error?) -> Void) {

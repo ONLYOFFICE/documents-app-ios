@@ -134,7 +134,7 @@ class ASCSharingInviteRightHoldersViewController: UIViewController, ASCSharingAd
         usersTableViewDataSourceAndDelegate.inviteCellClousure = { [weak self] in
             guard let self = self, let entity = self.dataStore?.entity else { return }
             let apiWorker = ASCShareSettingsAPIWorkerFactory().get(by: ASCPortalTypeDefinderByCurrentConnection().definePortalType())
-            let viewModel = InviteRigthHoldersByEmailsViewModelImp(entity: entity, apiWorker: apiWorker)
+            let viewModel = InviteRigthHoldersByEmailsViewModelImp(entity: entity, currentAccess: self.selectedAccess, apiWorker: apiWorker, accessProvider: self.accessProvider)
             let inviteVC = InviteRigthHoldersByEmailsViewController(viewModel: viewModel)
             inviteVC.view.frame = self.view.bounds
             self.navigationController?.pushViewController(inviteVC, animated: true)

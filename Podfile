@@ -133,6 +133,17 @@ post_install do | installer |
   installer.pods_project.targets.each do |target|
     target.build_configurations.each do |config|
       config.build_settings.delete 'IPHONEOS_DEPLOYMENT_TARGET'
+      config.build_settings['ENABLE_BITCODE'] = 'YES'
+
+      target_is_resource_bundle = target.respond_to?(:product_type) && target.product_type == 'com.apple.product-type.bundle'
+       target.build_configurations.each do |build_configuration|
+         if target_is_resource_bundle
+           build_configuration.build_settings['CODE_SIGNING_ALLOWED'] = 'NO'
+           build_configuration.build_settings['CODE_SIGNING_REQUIRED'] = 'NO'
+           build_configuration.build_settings['CODE_SIGNING_IDENTITY'] = '-'
+           build_configuration.build_settings['EXPANDED_CODE_SIGN_IDENTITY'] = '-'
+         end
+       end
     end
   end
 

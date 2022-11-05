@@ -133,7 +133,7 @@ post_install do | installer |
   installer.pods_project.targets.each do |target|
     target.build_configurations.each do |config|
       config.build_settings.delete 'IPHONEOS_DEPLOYMENT_TARGET'
-      config.build_settings['ENABLE_BITCODE'] = 'YES'
+      config.build_settings['ENABLE_BITCODE'] = 'NO'
 
       target_is_resource_bundle = target.respond_to?(:product_type) && target.product_type == 'com.apple.product-type.bundle'
        target.build_configurations.each do |build_configuration|

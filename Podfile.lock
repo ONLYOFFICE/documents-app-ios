@@ -330,8 +330,8 @@ SPEC CHECKSUMS:
   Alamofire: d368e1ff8a298e6dde360e35a3e68e6c610e7204
   AppAuth: 8fca6b5563a5baef2c04bee27538025e4ceb2add
   atlantis-proxyman: 2b6120eef28ade1f121a71b1075550345094623e
-  DocumentConverter: c15d0bfe11565b392d71da4d744674a1270ce7e8
-  DocumentEditor: b51483edda45ea7d578f1b9c06cc40729037a766
+  DocumentConverter: 30f71721a174de83fa364ee6e8801360783fc2d4
+  DocumentEditor: 000254d8845b9ebc7886fa2506926a5c740d38d9
   FacebookCore: ba86524b66cfa86d0f8e65d08faa8504a9f732dd
   FacebookLogin: 6cee9fd6e1fe976fe8f7eec199e27b28b14f5d63
   FBSDKCoreKit: 1d5acf7c9d7a2f92bb1a242dc60cae5b7adb91df
@@ -381,6 +381,6 @@ SPEC CHECKSUMS:
   UICircularProgressRing: 19927375b2b21b5fa5fd9582f15ccdef9659da16
   WhatsNewKit: c87028c4059dccd113495422801914cc53f6aab0
 
-PODFILE CHECKSUM: 063b45af8a02c526174e32c69b377b1123e31cf1
+PODFILE CHECKSUM: 42a2e97fd541f8beb2c54fd52d13617f56dd3004
 
 COCOAPODS: 1.11.2

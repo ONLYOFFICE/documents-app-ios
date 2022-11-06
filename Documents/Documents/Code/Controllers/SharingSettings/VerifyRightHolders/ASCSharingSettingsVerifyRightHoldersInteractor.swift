@@ -134,11 +134,15 @@ class ASCSharingSettingsVerifyRightHoldersInteractor: ASCSharingSettingsVerifyRi
             return shareRequestModel.toJSON()
         }
         let inviteRequestModel = OnlyofficeInviteRequestModel()
-        inviteRequestModel.notify = message != nil
+        inviteRequestModel.notify = true
         inviteRequestModel.inviteMessage = message
         inviteRequestModel.invitations = items.compactMap {
-            guard let id = $0.user?.userId else { return nil }
-            return .init(id: id, access: $0.access)
+            if let id = $0.user?.userId {
+                return .init(id: id, access: $0.access)
+            } else if let email = $0.email {
+                return .init(email: email, access: $0.access)
+            }
+            return nil
         }
         return inviteRequestModel.toJSON()
     }
@@ -203,6 +207,6 @@ class ASCSharingSettingsVerifyRightHoldersInteractor: ASCSharingSettingsVerifyRi
     }
 
     private func getItemIndex(byId id: String, in items: [OnlyofficeShare]) -> Int? {
-        items.firstIndex(where: { $0.user?.userId == id || $0.group?.id == id })
+        items.firstIndex(where: { $0.user?.userId == id || $0.group?.id == id || $0.email == id })
     }
 }

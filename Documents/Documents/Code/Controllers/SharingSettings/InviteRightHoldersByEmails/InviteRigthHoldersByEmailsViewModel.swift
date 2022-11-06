@@ -12,54 +12,39 @@ import Foundation
 typealias Email = String
 
 protocol InviteRigthHoldersByEmailsViewModel: AnyObject {
-    var currenAccessPubliser: Published<ASCShareAccess>.Publisher { get }
-    var currenAccess: ASCShareAccess { get }
+    var currentAccessPubliser: Published<ASCShareAccess>.Publisher { get }
+    var currentAccess: ASCShareAccess { get }
     var accessChangeHandler: (ASCShareAccess) -> Void { get }
     var accessProvides: () -> [ASCShareAccess] { get }
-    var nextClosure: () -> Void { get set }
-    func invite(emails: [Email], access: ASCShareAccess, completion: @escaping (Error?) -> Void)
+    var nextTapClosure: ([Email], ASCShareAccess) -> Void { get }
 }
 
 class InviteRigthHoldersByEmailsViewModelImp: InviteRigthHoldersByEmailsViewModel {
-    var currenAccessPubliser: Published<ASCShareAccess>.Publisher { $currenAccess }
+    var currentAccessPubliser: Published<ASCShareAccess>.Publisher { $currentAccess }
 
-    @Published var currenAccess: ASCShareAccess
+    @Published var currentAccess: ASCShareAccess
 
     lazy var accessChangeHandler: (ASCShareAccess) -> Void = { [weak self] access in
-        self?.currenAccess = access
+        self?.currentAccess = access
     }
 
     let accessProvides: () -> [ASCShareAccess]
-    var nextClosure: () -> Void = {}
+    let nextTapClosure: ([Email], ASCShareAccess) -> Void
+
     private var entity: ASCEntity
     private var apiWorker: ASCShareSettingsAPIWorkerProtocol
 
     init(entity: ASCEntity,
          currentAccess: ASCShareAccess,
          apiWorker: ASCShareSettingsAPIWorkerProtocol,
-         accessProvider: ASCSharingSettingsAccessProvider)
+         accessProvider: ASCSharingSettingsAccessProvider,
+         nextTapClosure: @escaping ([Email], ASCShareAccess) -> Void)
     {
         self.apiWorker = apiWorker
-        currenAccess = currentAccess
+        self.currentAccess = currentAccess
         self.entity = entity
+        self.nextTapClosure = nextTapClosure
         accessProvides = { accessProvider.get() }
-    }
-
-    func invite(emails: [Email], access: ASCShareAccess, completion: @escaping (Error?) -> Void) {
-        guard let apiRequest = apiWorker.makeApiRequest(entity: entity, for: .set) else {
-            log.error("Couldn't make an api request on entity")
-            completion(NetworkingError.invalidData)
-            return
-        }
-
-        let json = makeJsonParams(emails: emails, access: access)
-
-        OnlyofficeApiClient.request(apiRequest, json) { _, error in
-            if error != nil {
-                log.error(error?.localizedDescription ?? "")
-            }
-            completion(error)
-        }
     }
 
     private func makeJsonParams(emails: [Email], access: ASCShareAccess) -> [String: Any] {

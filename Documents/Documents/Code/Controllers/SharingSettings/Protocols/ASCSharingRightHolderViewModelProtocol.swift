@@ -21,6 +21,7 @@ enum ASCSharingRightHolderType: String {
     case user
     case group
     case link
+    case email
 }
 
 struct ASCSharingRightHolderViewModelAccess {

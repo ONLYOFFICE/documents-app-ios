@@ -16,7 +16,7 @@ protocol ASCSharingAddRightHoldersBaseDataStore {
 
     var sharedInfoItems: [OnlyofficeShare] { get set }
     var itemsForSharingAdd: [OnlyofficeShare] { get set }
-    var itemsForSharingRemove: [OnlyofficeShare] { get }
+    var itemsForSharingRemove: [OnlyofficeShare] { get set }
     var users: [ASCUser] { get set }
 
     func add(shareInfo: OnlyofficeShare)
@@ -37,7 +37,7 @@ class ASCSharingAddRightHoldersBaseRAMDataStore: ASCSharingAddRightHoldersBaseDa
 
     var sharedInfoItems: [OnlyofficeShare] = []
     var itemsForSharingAdd: [OnlyofficeShare] = []
-    private(set) var itemsForSharingRemove: [OnlyofficeShare] = []
+    var itemsForSharingRemove: [OnlyofficeShare] = []
 
     var users: [ASCUser] = []
 

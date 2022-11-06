@@ -26,7 +26,7 @@ class InviteRigthHoldersByEmailsViewController: UIViewController {
             .map { access in
                 UIAction(title: access.title(),
                          image: access.image(),
-                         state: access == viewModel.currenAccess ? .on : .off,
+                         state: access == viewModel.currentAccess ? .on : .off,
                          handler: { [unowned self, access] action in viewModel.accessChangeHandler(access) })
             }
         return UIMenu(title: "", children: menuItems)
@@ -44,7 +44,7 @@ class InviteRigthHoldersByEmailsViewController: UIViewController {
         self.viewModel = viewModel
         super.init(nibName: nil, bundle: nil)
 
-        viewModel.currenAccessPubliser
+        viewModel.currentAccessPubliser
             .receive(on: RunLoop.main)
             .sink { [weak self] _ in
                 self?.updateToolbars()
@@ -59,13 +59,27 @@ class InviteRigthHoldersByEmailsViewController: UIViewController {
     lazy var tagsView: WSTagsField = {
         let tagsView = WSTagsField()
         tagsView.textField.delegate = self
-        tagsView.backgroundColor = .systemBackground
         tagsView.textField.placeholder = NSLocalizedString("Enter email", comment: "placeholder")
+        tagsView.textField.textContentType = .emailAddress
+        tagsView.backgroundColor = .systemBackground
         tagsView.layer.cornerRadius = 6
-        tagsView.contentInset = UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
-        tagsView.spaceBetweenLines = 10.0
+        tagsView.contentInset = UIEdgeInsets(top: 10, left: 8, bottom: 0, right: 8)
+        tagsView.spaceBetweenLines = 15.0
+
         tagsView.tintColor = UIColor(hex: "#747480").withAlphaComponent(0.08)
         tagsView.textColor = .systemBlue
+        tagsView.selectedColor = ColorAsset.Color.blue
+        tagsView.selectedTextColor = .white
+        tagsView.enableScrolling = true
+        tagsView.isScrollEnabled = true
+        tagsView.showsVerticalScrollIndicator = true
+
+        tagsView.onDidAddTag = { [weak self] _, _ in
+            self?.updateToolbars()
+        }
+        tagsView.onDidRemoveTag = { [weak self] _, _ in
+            self?.updateToolbars()
+        }
         return tagsView
     }()
 
@@ -74,18 +88,24 @@ class InviteRigthHoldersByEmailsViewController: UIViewController {
         view.addSubview(tagsView)
         view.backgroundColor = .groupTableViewBackground
         title = NSLocalizedString("Invite people", comment: "")
+        let touchGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(tapGuestureRecognize))
 
+        tagsView.addGestureRecognizer(touchGestureRecognizer)
         tagsView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
             tagsView.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 20),
             tagsView.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -20),
             tagsView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 20),
-            tagsView.heightAnchor.constraint(lessThanOrEqualToConstant: 200),
+            tagsView.bottomAnchor.constraint(lessThanOrEqualTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -50),
         ])
     }
 
     override func viewDidAppear(_ animated: Bool) {
         configureToolBar()
+    }
+
+    @objc func tapGuestureRecognize() {
+        tagsView.textField.becomeFirstResponder()
     }
 
     // MARK: - Toolbar
@@ -105,7 +125,7 @@ class InviteRigthHoldersByEmailsViewController: UIViewController {
 
     private func makeToolbarItems() -> [UIBarButtonItem] {
         let spaceItem = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
-        let currentAccess = viewModel.currenAccess
+        let currentAccess = viewModel.currentAccess
         let accessBarBtnItem = makeAccessBarBtn(title: currentAccess.title(), image: currentAccess.image())
         return [accessBarBtnItem, spaceItem, makeNextBarBtn()]
     }
@@ -144,7 +164,7 @@ class InviteRigthHoldersByEmailsViewController: UIViewController {
     }
 
     @objc func onNextButtonTapped() {
-        viewModel.nextClosure()
+        viewModel.nextTapClosure(tagsView.tags.map { $0.text }, viewModel.currentAccess)
     }
 
     @objc func showAccessSheet() {

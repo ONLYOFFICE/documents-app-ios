@@ -39,6 +39,9 @@ class ASCSharingSettingsVerifyRightHoldersViewController: ASCBaseTableViewContro
     private lazy var accessProvider: ASCSharingSettingsAccessProvider = ASCSharingSettingsAccessDefaultProvider()
     private var currentlyApplying: Bool = false
     private var hud: MBProgressHUD?
+    private var isRoom: Bool {
+        router?.dataStore?.entity?.isRoom ?? false
+    }
 
     // MARK: Object lifecycle
 
@@ -167,7 +170,7 @@ class ASCSharingSettingsVerifyRightHoldersViewController: ASCBaseTableViewContro
             }
             if let index = usersModels.firstIndex(where: { $0.id == viewModel.model.id }) {
                 usersModels[index] = viewModel.model
-                tableView.reloadRows(at: [IndexPath(row: index, section: Section.users.rawValue)], with: .automatic)
+                tableView.reloadRows(at: [IndexPath(row: index, section: isRoom ? 0 : Section.users.rawValue)], with: .automatic)
             } else if let index = groupsModels.firstIndex(where: { $0.id == viewModel.model.id }) {
                 groupsModels[index] = viewModel.model
                 tableView.reloadRows(at: [IndexPath(row: index, section: Section.groups.rawValue)], with: .automatic)
@@ -210,7 +213,10 @@ extension ASCSharingSettingsVerifyRightHoldersViewController: ASCSharingSettings
 
 extension ASCSharingSettingsVerifyRightHoldersViewController {
     override func numberOfSections(in tableView: UITableView) -> Int {
-        Section.allCases.count
+        guard !isRoom else {
+            return Section.allCases.count - 1
+        }
+        return Section.allCases.count
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -339,6 +345,9 @@ extension ASCSharingSettingsVerifyRightHoldersViewController {
     }
 
     private func getSection(sectionRawValue rawValue: Int) -> Section {
+        guard !isRoom else {
+            return Section(rawValue: rawValue + 1)!
+        }
         guard let section = Section(rawValue: rawValue) else { fatalError("Couldn't find a section by index: \(rawValue)") }
         return section
     }

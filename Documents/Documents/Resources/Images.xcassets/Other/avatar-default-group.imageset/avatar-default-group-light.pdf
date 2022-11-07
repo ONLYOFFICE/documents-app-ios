@@ -1,14 +1,14 @@
 %PDF-1.7
 
 1 0 obj
-  << /BBox [ 0.000000 0.000000 50.000000 50.000000 ]
-     /Resources << >>
-     /Subtype /Form
+  << /Type /XObject
      /Length 2 0 R
      /Group << /Type /Group
                /S /Transparency
             >>
-     /Type /XObject
+     /Subtype /Form
+     /Resources << >>
+     /BBox [ 0.000000 0.000000 50.000000 50.000000 ]
   >>
 stream
 /DeviceRGB CS
@@ -52,14 +52,14 @@ endobj
 endobj
 
 3 0 obj
-  << /BBox [ 0.000000 0.000000 50.000000 50.000000 ]
-     /Resources << >>
-     /Subtype /Form
+  << /Type /XObject
      /Length 4 0 R
      /Group << /Type /Group
                /S /Transparency
             >>
-     /Type /XObject
+     /Subtype /Form
+     /Resources << >>
+     /BBox [ 0.000000 0.000000 50.000000 50.000000 ]
   >>
 stream
 /DeviceRGB CS
@@ -85,7 +85,12 @@ endobj
 endobj
 
 5 0 obj
-  << /BBox [ 0.000000 0.000000 50.000000 50.000000 ]
+  << /Type /XObject
+     /Length 6 0 R
+     /Group << /Type /Group
+               /S /Transparency
+            >>
+     /Subtype /Form
      /Resources << /XObject << /X1 1 0 R >>
                    /ExtGState << /E1 << /SMask << /Type /Mask
                                                   /G 3 0 R
@@ -94,12 +99,7 @@ endobj
                                         /Type /ExtGState
                                      >> >>
                 >>
-     /Subtype /Form
-     /Length 6 0 R
-     /Group << /Type /Group
-               /S /Transparency
-            >>
-     /Type /XObject
+     /BBox [ 0.000000 0.000000 50.000000 50.000000 ]
   >>
 stream
 /DeviceRGB CS
@@ -147,14 +147,14 @@ endobj
 endobj
 
 7 0 obj
-  << /BBox [ 0.000000 0.000000 50.000000 50.000000 ]
-     /Resources << >>
-     /Subtype /Form
+  << /Type /XObject
      /Length 8 0 R
      /Group << /Type /Group
                /S /Transparency
             >>
-     /Type /XObject
+     /Subtype /Form
+     /Resources << >>
+     /BBox [ 0.000000 0.000000 50.000000 50.000000 ]
   >>
 stream
 /DeviceRGB CS
@@ -237,8 +237,8 @@ endobj
 endobj
 
 14 0 obj
-  << /Type /Catalog
-     /Pages 13 0 R
+  << /Pages 13 0 R
+     /Type /Catalog
   >>
 endobj
 

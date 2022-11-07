@@ -63,7 +63,7 @@ final class ASCDocumentsEntityRemoverActionController: ASCEntityRemoverActionCon
         guard let provider = provider,
               let folder = folder else { return }
 
-        if items.count < 1 {
+        if items.isEmpty {
             completion?(nil)
             return
         }

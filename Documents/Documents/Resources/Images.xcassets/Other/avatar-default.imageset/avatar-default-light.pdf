@@ -1,14 +1,14 @@
 %PDF-1.7
 
 1 0 obj
-  << /BBox [ 0.000000 0.000000 50.000000 50.000000 ]
-     /Resources << >>
-     /Subtype /Form
+  << /Type /XObject
      /Length 2 0 R
      /Group << /Type /Group
                /S /Transparency
             >>
-     /Type /XObject
+     /Subtype /Form
+     /Resources << >>
+     /BBox [ 0.000000 0.000000 50.000000 50.000000 ]
   >>
 stream
 /DeviceRGB CS
@@ -52,14 +52,14 @@ endobj
 endobj
 
 3 0 obj
-  << /BBox [ 0.000000 0.000000 50.000000 50.000000 ]
-     /Resources << >>
-     /Subtype /Form
+  << /Type /XObject
      /Length 4 0 R
      /Group << /Type /Group
                /S /Transparency
             >>
-     /Type /XObject
+     /Subtype /Form
+     /Resources << >>
+     /BBox [ 0.000000 0.000000 50.000000 50.000000 ]
   >>
 stream
 /DeviceRGB CS
@@ -142,8 +142,8 @@ endobj
 endobj
 
 10 0 obj
-  << /Type /Catalog
-     /Pages 9 0 R
+  << /Pages 9 0 R
+     /Type /Catalog
   >>
 endobj
 

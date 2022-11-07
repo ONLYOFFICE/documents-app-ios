@@ -90,7 +90,11 @@ class ASCSharingInviteRightHoldersTableViewDataSourceAndDelegate<T: UITableViewC
     }
 
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        rowHeight
+        (inviteSectionEnabled && indexPath.section == 0) ? 44 : rowHeight
+    }
+
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        (inviteSectionEnabled && section == 0) ? 16 : .leastNonzeroMagnitude
     }
 
     func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCell.EditingStyle {
@@ -103,9 +107,5 @@ class ASCSharingInviteRightHoldersTableViewDataSourceAndDelegate<T: UITableViewC
 
     func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
         !inviteSectionEnabled || indexPath.section == 1
-    }
-
-    func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
-        20
     }
 }

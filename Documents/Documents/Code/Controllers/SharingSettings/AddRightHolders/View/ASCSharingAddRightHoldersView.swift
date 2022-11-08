@@ -39,8 +39,13 @@ class ASCSharingAddRightHoldersView {
     var showsScopeBar: Bool
 
     lazy var usersTableView = UITableView(frame: .zero, style: .insetGrouped)
+<<<<<<< HEAD
     lazy var groupsTableView = UITableView()
     lazy var searchResultsTable = UITableView()
+=======
+    lazy var groupsTableView = UITableView(frame: .zero, style: .insetGrouped)
+    lazy var searchResultsTable = UITableView(frame: .zero, style: .insetGrouped)
+>>>>>>> b114dc7f65ef51c1e2ae601171b61372e93511a4
 
     // MARK: - Activity indicators
 

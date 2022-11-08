@@ -226,7 +226,7 @@ class ASCSharingInviteRightHoldersViewController: UIViewController, ASCSharingAd
     func loadData() {
         if !usersCurrentlyLoading {
             usersCurrentlyLoading = true
-            interactor?.makeRequest(requestType: .loadUsers(preloadReghtHolders: true))
+            interactor?.makeRequest(requestType: .loadUsers(preloadRightHolders: true, hideUsersWhoHasRights: true))
         }
     }
 
@@ -284,7 +284,7 @@ class ASCSharingInviteRightHoldersViewController: UIViewController, ASCSharingAd
     // MARK: Routing
 
     private func routeToVerifyRightHolders() {
-        router?.routeToVerifyRightHoldersViewController(segue: nil)
+        router?.routeToVerifyRightHoldersViewController(segue: nil, clearSharedInfoItems: true)
     }
 }
 

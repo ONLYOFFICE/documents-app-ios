@@ -27,13 +27,13 @@ class ASCSharingAddRightHoldersInteractor: ASCSharingAddRightHoldersBusinessLogi
 
     func makeRequest(requestType: ASCSharingAddRightHolders.Model.Request.RequestType) {
         switch requestType {
-        case let .loadUsers(preloadRightHolders):
+        case let .loadUsers(preloadRightHolders, hideUsersWhoHasRights):
             guard preloadRightHolders else {
-                loadUsers()
+                loadUsers(hideUsersWhoHasRights: hideUsersWhoHasRights)
                 return
             }
             loadRightHolders { [weak self] in
-                self?.loadUsers()
+                self?.loadUsers(hideUsersWhoHasRights: hideUsersWhoHasRights)
             }
         case .loadGroups: return
             OnlyofficeApiClient.request(OnlyofficeAPI.Endpoints.People.groups) { [unowned self] response, error in
@@ -70,12 +70,14 @@ class ASCSharingAddRightHoldersInteractor: ASCSharingAddRightHoldersBusinessLogi
         }
     }
 
-    private func loadUsers() {
+    private func loadUsers(hideUsersWhoHasRights: Bool) {
         OnlyofficeApiClient.request(OnlyofficeAPI.Endpoints.People.all) { [unowned self] response, error in
             if let error = error {
                 log.error(error)
             } else if let users = response?.result {
-                self.dataStore?.users = users
+                let users = users.filter { user in
+                    !(self.dataStore?.sharedInfoItems.contains(where: { $0.user?.userId == user.userId }) ?? false)
+                }
                 self.dataStore?.users = users
                 let sharedInfoItems = self.dataStore?.sharedInfoItems ?? []
                 self.presenter?.presentData(responseType: .presentUsers(.init(users: users,

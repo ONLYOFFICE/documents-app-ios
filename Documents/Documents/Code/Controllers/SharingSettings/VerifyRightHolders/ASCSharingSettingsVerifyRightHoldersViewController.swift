@@ -87,8 +87,8 @@ class ASCSharingSettingsVerifyRightHoldersViewController: ASCBaseTableViewContro
     }
 
     func load() {
-        title = NSLocalizedString("Sharing settings", comment: "")
-        verifyRightHoldersView = ASCSharingSettingsVerifyRightHoldersView(view: view, tableView: tableView)
+        title = isRoom ? NSLocalizedString("Access rights", comment: "") : NSLocalizedString("Sharing settings", comment: "")
+        verifyRightHoldersView = ASCSharingSettingsVerifyRightHoldersView(view: view, tableView: tableView, isRoom: isRoom)
         verifyRightHoldersView?.navigationController = navigationController
         verifyRightHoldersView?.navigationItem = navigationItem
         verifyRightHoldersView?.delegate = self
@@ -298,7 +298,7 @@ extension ASCSharingSettingsVerifyRightHoldersViewController {
 
     override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         let hasRows = self.tableView(tableView, numberOfRowsInSection: section) > 0
-        return hasRows ? getSection(sectionRawValue: section).title() : nil
+        return hasRows ? getSection(sectionRawValue: section).title(isRoom: isRoom) : nil
     }
 
     override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
@@ -361,10 +361,14 @@ extension ASCSharingSettingsVerifyRightHoldersViewController {
         case users
         case groups
 
-        func title() -> String? {
+        func title(isRoom: Bool = false) -> String? {
             switch self {
             case .notify: return nil
-            case .users: return NSLocalizedString("Users", comment: "")
+            case .users:
+                guard !isRoom else {
+                    return NSLocalizedString("New users", comment: "")
+                }
+                return NSLocalizedString("Users", comment: "")
             case .groups: return NSLocalizedString("Groups", comment: "")
             }
         }

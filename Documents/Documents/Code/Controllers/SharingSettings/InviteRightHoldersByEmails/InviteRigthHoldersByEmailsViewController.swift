@@ -57,40 +57,54 @@ class InviteRigthHoldersByEmailsViewController: UIViewController {
     }
 
     lazy var tagsView: WSTagsField = {
-        let tagsView = WSTagsField()
-        tagsView.textField.delegate = self
-        tagsView.textField.placeholder = NSLocalizedString("Enter email", comment: "placeholder")
-        tagsView.textField.textContentType = .emailAddress
-        tagsView.backgroundColor = .systemBackground
-        tagsView.layer.cornerRadius = 6
-        tagsView.contentInset = UIEdgeInsets(top: 10, left: 8, bottom: 0, right: 8)
-        tagsView.spaceBetweenLines = 15.0
+        let tagsField = WSTagsField()
+        tagsField.layer.cornerRadius = 10
+        tagsField.backgroundColor = .systemBackground
+        tagsField.textField.keyboardType = .emailAddress
+        tagsField.textField.returnKeyType = .go
+        tagsField.placeholder = NSLocalizedString("Enter email", comment: "placeholder")
+        tagsField.cornerRadius = 6.0
+        tagsField.spaceBetweenLines = 16
+        tagsField.spaceBetweenTags = 6
+        tagsField.layoutMargins = UIEdgeInsets(top: 8, left: 12, bottom: 8, right: 12)
+        tagsField.contentInset = UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
+        tagsField.placeholderAlwaysVisible = true
+        tagsField.tintColor = Asset.Colors.brend.color
+        tagsField.textColor = .link
+        tagsField.selectedColor = Asset.Colors.brend.color
+        tagsField.selectedTextColor = .white
+        tagsField.enableScrolling = true
+        tagsField.isScrollEnabled = true
+        tagsField.showsVerticalScrollIndicator = true
 
-        tagsView.tintColor = UIColor(hex: "#747480").withAlphaComponent(0.08)
-        tagsView.textColor = .systemBlue
-        tagsView.selectedColor = ColorAsset.Color.blue
-        tagsView.selectedTextColor = .white
-        tagsView.enableScrolling = true
-        tagsView.isScrollEnabled = true
-        tagsView.showsVerticalScrollIndicator = true
+        tagsField.onDidAddTag = { [weak self] field, tag in
+            field.tagViews.forEach { $0.tintColor = Asset.Colors.systemFillQuarternary.color }
+            self?.updateToolbars()
+            field.contentInset = UIEdgeInsets(top: 10, left: 10, bottom: 0, right: 10)
+        }
 
-        tagsView.onDidAddTag = { [weak self] _, _ in
+        tagsField.onDidRemoveTag = { [weak self] field, tag in
             self?.updateToolbars()
+            if field.tags.isEmpty {
+                field.contentInset = UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
+            }
         }
-        tagsView.onDidRemoveTag = { [weak self] _, _ in
-            self?.updateToolbars()
+
+        tagsField.onShouldAcceptTag = { field in
+            field.text?.trimmingCharacters(in: .whitespacesAndNewlines)
+                .isValidOnlyofficeEmail ?? false
         }
-        return tagsView
+
+        return tagsField
     }()
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.addSubview(tagsView)
-        view.backgroundColor = .groupTableViewBackground
-        title = NSLocalizedString("Invite people", comment: "")
-        let touchGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(tapGuestureRecognize))
 
-        tagsView.addGestureRecognizer(touchGestureRecognizer)
+        title = NSLocalizedString("Invite people", comment: "")
+        view.backgroundColor = .systemGroupedBackground
+
+        view.addSubview(tagsView)
         tagsView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
             tagsView.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 20),
@@ -98,10 +112,15 @@ class InviteRigthHoldersByEmailsViewController: UIViewController {
             tagsView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 20),
             tagsView.bottomAnchor.constraint(lessThanOrEqualTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -50),
         ])
+        view.layoutSubviews()
+
+        let touchGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(tapGuestureRecognize))
+        tagsView.addGestureRecognizer(touchGestureRecognizer)
     }
 
     override func viewDidAppear(_ animated: Bool) {
         configureToolBar()
+        tagsView.textField.becomeFirstResponder()
     }
 
     @objc func tapGuestureRecognize() {
@@ -192,27 +211,5 @@ class InviteRigthHoldersByEmailsViewController: UIViewController {
         )
 
         present(accessController, animated: true, completion: nil)
-    }
-}
-
-extension InviteRigthHoldersByEmailsViewController: UITextFieldDelegate {
-    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
-        guard string.rangeOfCharacter(from: .whitespacesAndNewlines) != nil else { return true }
-        textField.text = textField.text?.trimmingCharacters(in: .whitespacesAndNewlines)
-        guard let textFieldText = textField.text, textFieldText.isEmail else { return false }
-        tagsView.addTag(textFieldText)
-        textField.text = ""
-        return true
-    }
-}
-
-let __firstpartEmailPattern = "[A-Z0-9a-z]([A-Z0-9a-z._%+-]{0,30}[A-Z0-9a-z])?"
-let __serverpartEmailPattern = "([A-Z0-9a-z]([A-Z0-9a-z-]{0,30}[A-Z0-9a-z])?\\.){1,5}"
-let __emailRegex = __firstpartEmailPattern + "@" + __serverpartEmailPattern + "[A-Za-z]{2,8}"
-let __emailPredicate = NSPredicate(format: "SELF MATCHES %@", __emailRegex)
-
-extension String {
-    var isEmail: Bool {
-        return __emailPredicate.evaluate(with: self)
     }
 }

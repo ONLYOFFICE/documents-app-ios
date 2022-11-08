@@ -38,7 +38,7 @@ class ASCSharingAddRightHoldersView {
     var searchBarDelegate: UISearchBarDelegate!
     var showsScopeBar: Bool
 
-    lazy var usersTableView = UITableView(frame: .zero, style: .grouped)
+    lazy var usersTableView = UITableView(frame: .zero, style: .insetGrouped)
     lazy var groupsTableView = UITableView()
     lazy var searchResultsTable = UITableView()
 
@@ -51,9 +51,19 @@ class ASCSharingAddRightHoldersView {
 
     let title = NSLocalizedString("Shared access", comment: "")
 
-    private lazy var selectAllBarBtn: UIBarButtonItem = UIBarButtonItem(title: NSLocalizedString("Select all", comment: ""), style: .plain, target: self, action: #selector(onSelectAllButtonTapped))
+    private lazy var selectAllBarBtn: UIBarButtonItem = UIBarButtonItem(
+        title: NSLocalizedString("Select all", comment: ""),
+        style: .plain,
+        target: self,
+        action: #selector(onSelectAllButtonTapped)
+    )
 
-    private lazy var deselectAllBarBtn: UIBarButtonItem = UIBarButtonItem(title: NSLocalizedString("Deselect all", comment: ""), style: .plain, target: self, action: #selector(onDeselectAllButtonTapped))
+    private lazy var deselectAllBarBtn: UIBarButtonItem = UIBarButtonItem(
+        title: NSLocalizedString("Deselect all", comment: ""),
+        style: .plain,
+        target: self,
+        action: #selector(onDeselectAllButtonTapped)
+    )
 
     // MARK: - Darken screen props
 

@@ -28,6 +28,7 @@ internal enum Asset {
     internal static let debug = ColorAsset(name: "debug")
     internal static let filterCapsule = ColorAsset(name: "filter-capsule")
     internal static let grayLight = ColorAsset(name: "gray-light")
+    internal static let systemFillQuarternary = ColorAsset(name: "system-fill-quarternary")
     internal static let tableBackground = ColorAsset(name: "table-background")
     internal static let tableCategoryBackground = ColorAsset(name: "table-category-background")
     internal static let tableCellSelected = ColorAsset(name: "table-cell-selected")

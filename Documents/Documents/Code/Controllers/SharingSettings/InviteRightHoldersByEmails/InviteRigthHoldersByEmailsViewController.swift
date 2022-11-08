@@ -8,10 +8,14 @@
 
 import Combine
 import Foundation
+import IQKeyboardManagerSwift
 import UIKit
 import WSTagsField
 
 class InviteRigthHoldersByEmailsViewController: UIViewController {
+    
+    // MARK: - Properties
+    
     private var cancellables: Set<AnyCancellable> = []
 
     let viewModel: InviteRigthHoldersByEmailsViewModel
@@ -40,22 +44,6 @@ class InviteRigthHoldersByEmailsViewController: UIViewController {
         return bar
     }()
 
-    init(viewModel: InviteRigthHoldersByEmailsViewModel) {
-        self.viewModel = viewModel
-        super.init(nibName: nil, bundle: nil)
-
-        viewModel.currentAccessPubliser
-            .receive(on: RunLoop.main)
-            .sink { [weak self] _ in
-                self?.updateToolbars()
-            }.store(in: &cancellables)
-    }
-
-    @available(*, unavailable)
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-
     lazy var tagsView: WSTagsField = {
         let tagsField = WSTagsField()
         tagsField.layer.cornerRadius = 10
@@ -79,48 +67,86 @@ class InviteRigthHoldersByEmailsViewController: UIViewController {
 
         tagsField.onDidAddTag = { [weak self] field, tag in
             field.tagViews.forEach { $0.tintColor = Asset.Colors.systemFillQuarternary.color }
-            self?.updateToolbars()
             field.contentInset = UIEdgeInsets(top: 10, left: 10, bottom: 0, right: 10)
+            self?.updateToolbars()
         }
 
         tagsField.onDidRemoveTag = { [weak self] field, tag in
-            self?.updateToolbars()
             if field.tags.isEmpty {
                 field.contentInset = UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
             }
+            self?.updateToolbars()
         }
 
         tagsField.onShouldAcceptTag = { field in
-            field.text?.trimmingCharacters(in: .whitespacesAndNewlines)
+            field.text?
+                .trimmingCharacters(in: .whitespacesAndNewlines)
                 .isValidOnlyofficeEmail ?? false
         }
 
         return tagsField
     }()
 
+    lazy var scrollView: UIScrollView = {
+        $0.clipsToBounds = true
+        $0.layer.cornerRadius = 10
+        $0.backgroundColor = .clear
+        return $0
+    }(UIScrollView(frame: .zero))
+
+    // MARK: - Lifecycle Methods
+    
+    init(viewModel: InviteRigthHoldersByEmailsViewModel) {
+        self.viewModel = viewModel
+        super.init(nibName: nil, bundle: nil)
+
+        viewModel.currentAccessPubliser
+            .receive(on: RunLoop.main)
+            .sink { [weak self] _ in
+                self?.updateToolbars()
+            }.store(in: &cancellables)
+    }
+
+    @available(*, unavailable)
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
         title = NSLocalizedString("Invite people", comment: "")
         view.backgroundColor = .systemGroupedBackground
 
-        view.addSubview(tagsView)
+        view.addSubview(scrollView)
+        scrollView.translatesAutoresizingMaskIntoConstraints = false
+        scrollView.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 20).isActive = true
+        scrollView.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -20).isActive = true
+        scrollView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 20).isActive = true
+        scrollView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -50).isActive = true
+
+        scrollView.addSubview(tagsView)
         tagsView.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activate([
-            tagsView.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 20),
-            tagsView.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -20),
-            tagsView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 20),
-            tagsView.bottomAnchor.constraint(lessThanOrEqualTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -50),
-        ])
-        view.layoutSubviews()
+        tagsView.centerXAnchor.constraint(equalTo: scrollView.centerXAnchor).isActive = true
+        tagsView.widthAnchor.constraint(equalTo: scrollView.widthAnchor).isActive = true
+        tagsView.topAnchor.constraint(equalTo: scrollView.topAnchor).isActive = true
+        tagsView.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor).isActive = true
 
         let touchGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(tapGuestureRecognize))
         tagsView.addGestureRecognizer(touchGestureRecognizer)
     }
 
     override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        IQKeyboardManager.shared.enable = true
+
         configureToolBar()
         tagsView.textField.becomeFirstResponder()
+    }
+
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        IQKeyboardManager.shared.enable = false
     }
 
     @objc func tapGuestureRecognize() {

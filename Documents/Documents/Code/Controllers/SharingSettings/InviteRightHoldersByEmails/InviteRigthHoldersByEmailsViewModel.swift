@@ -17,6 +17,8 @@ protocol InviteRigthHoldersByEmailsViewModel: AnyObject {
     var accessChangeHandler: (ASCShareAccess) -> Void { get }
     var accessProvides: () -> [ASCShareAccess] { get }
     var nextTapClosure: ([Email], ASCShareAccess) -> Void { get }
+
+    func checkPaymentQouta()
 }
 
 class InviteRigthHoldersByEmailsViewModelImp: InviteRigthHoldersByEmailsViewModel {
@@ -45,6 +47,12 @@ class InviteRigthHoldersByEmailsViewModelImp: InviteRigthHoldersByEmailsViewMode
         self.entity = entity
         self.nextTapClosure = nextTapClosure
         accessProvides = { accessProvider.get() }
+    }
+
+    func checkPaymentQouta() {
+        OnlyofficeApiClient.request(OnlyofficeAPI.Endpoints.Rooms.paymentQuota) { [unowned self] response, error in
+            // MARK: - TODO 
+        }
     }
 
     private func makeJsonParams(emails: [Email], access: ASCShareAccess) -> [String: Any] {

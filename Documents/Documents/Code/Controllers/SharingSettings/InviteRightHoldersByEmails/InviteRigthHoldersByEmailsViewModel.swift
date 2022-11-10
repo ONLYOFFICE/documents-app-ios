@@ -10,18 +10,21 @@ import Combine
 import Foundation
 
 typealias Email = String
+typealias AllowedQouta = Int
 
 protocol InviteRigthHoldersByEmailsViewModel: AnyObject {
+    var managerQouta: ASCPaymentQuotaFeatures? { get }
     var currentAccessPubliser: Published<ASCShareAccess>.Publisher { get }
     var currentAccess: ASCShareAccess { get }
     var accessChangeHandler: (ASCShareAccess) -> Void { get }
     var accessProvides: () -> [ASCShareAccess] { get }
     var nextTapClosure: ([Email], ASCShareAccess) -> Void { get }
 
-    func checkPaymentQouta()
+    func loadPaymentQouta(completion: @escaping () -> Void)
 }
 
 class InviteRigthHoldersByEmailsViewModelImp: InviteRigthHoldersByEmailsViewModel {
+    var managerQouta: ASCPaymentQuotaFeatures?
     var currentAccessPubliser: Published<ASCShareAccess>.Publisher { $currentAccess }
 
     @Published var currentAccess: ASCShareAccess
@@ -49,9 +52,13 @@ class InviteRigthHoldersByEmailsViewModelImp: InviteRigthHoldersByEmailsViewMode
         accessProvides = { accessProvider.get() }
     }
 
-    func checkPaymentQouta() {
-        OnlyofficeApiClient.request(OnlyofficeAPI.Endpoints.Rooms.paymentQuota) { [unowned self] response, error in
-            // MARK: - TODO 
+    func loadPaymentQouta(completion: @escaping () -> Void) {
+        OnlyofficeApiClient.request(OnlyofficeAPI.Endpoints.Rooms.paymentQuota) { [weak self] response, error in
+            defer { completion() }
+            guard let managerQouta = response?.result?.features.first(where: { $0.id == ASCPaymentQuotaFeatures.managerId }) else {
+                return
+            }
+            self?.managerQouta = managerQouta
         }
     }
 

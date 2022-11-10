@@ -32,6 +32,17 @@ struct ASCPaymentQuota: Mappable {
 }
 
 struct ASCPaymentQuotaFeatures: Mappable {
+    static let managerId = "manager"
+    static let totalSizeId = "total_size"
+    static let fileSizeId = "file_size"
+    static let usersId = "users"
+    static let roomId = "room"
+    static let whitelabelId = "whitelabel"
+    static let ssoId = "sso"
+    static let restoreId = "restore"
+    static let auditId = "audit"
+    static let usersInRoomId = "usersInRoom"
+
     var id: String?
     var value: Int?
     var type: String?

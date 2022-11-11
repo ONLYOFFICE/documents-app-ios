@@ -13,9 +13,8 @@ import UIKit
 import WSTagsField
 
 class InviteRigthHoldersByEmailsViewController: UIViewController {
-    
     // MARK: - Properties
-    
+
     private var cancellables: Set<AnyCancellable> = []
 
     let viewModel: InviteRigthHoldersByEmailsViewModel
@@ -95,7 +94,7 @@ class InviteRigthHoldersByEmailsViewController: UIViewController {
     }(UIScrollView(frame: .zero))
 
     // MARK: - Lifecycle Methods
-    
+
     init(viewModel: InviteRigthHoldersByEmailsViewModel) {
         self.viewModel = viewModel
         super.init(nibName: nil, bundle: nil)
@@ -111,7 +110,7 @@ class InviteRigthHoldersByEmailsViewController: UIViewController {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
 

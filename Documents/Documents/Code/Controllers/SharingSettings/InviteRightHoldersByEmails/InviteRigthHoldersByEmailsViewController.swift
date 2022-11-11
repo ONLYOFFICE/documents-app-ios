@@ -67,6 +67,7 @@ class InviteRigthHoldersByEmailsViewController: UIViewController {
         tagsField.onDidAddTag = { [weak self] field, tag in
             field.tagViews.forEach { $0.tintColor = Asset.Colors.systemFillQuarternary.color }
             field.contentInset = UIEdgeInsets(top: 10, left: 10, bottom: 0, right: 10)
+            self?.checkQouta()
             self?.updateToolbars()
         }
 
@@ -102,6 +103,7 @@ class InviteRigthHoldersByEmailsViewController: UIViewController {
         viewModel.currentAccessPubliser
             .receive(on: RunLoop.main)
             .sink { [weak self] _ in
+                self?.checkQouta()
                 self?.updateToolbars()
             }.store(in: &cancellables)
     }
@@ -113,6 +115,10 @@ class InviteRigthHoldersByEmailsViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+
+        viewModel.loadPaymentQouta { [weak self] in
+            self?.checkQouta()
+        }
 
         title = NSLocalizedString("Invite people", comment: "")
         view.backgroundColor = .systemGroupedBackground
@@ -150,6 +156,33 @@ class InviteRigthHoldersByEmailsViewController: UIViewController {
 
     @objc func tapGuestureRecognize() {
         tagsView.textField.becomeFirstResponder()
+    }
+
+    func checkQouta() {
+        guard let managerQouta = viewModel.managerQouta,
+              let maxManagerQouta = managerQouta.value,
+              let usedManagerQoura = managerQouta.used?.value,
+              case .roomManager = viewModel.currentAccess
+        else { return }
+
+        let anableQouta = maxManagerQouta - usedManagerQoura - tagsView.tags.count
+        if anableQouta == 1 {
+            showQoutaAlmostExhausted()
+        } else if anableQouta <= 0 {
+            showQoutaReached()
+        }
+    }
+
+    func showQoutaAlmostExhausted() {
+        let message = NSLocalizedString("The quota of paid users is almost exhausted. You can increase your quota on the website", comment: "")
+        let controller = UIAlertController(title: "", message: message, preferredStyle: .alert).okable()
+        present(controller, animated: true)
+    }
+
+    func showQoutaReached() {
+        let message = NSLocalizedString("The paid user limit has been reached. You can increase your quota on the website", comment: "")
+        let controller = UIAlertController(title: "", message: message, preferredStyle: .alert).okable()
+        present(controller, animated: true)
     }
 
     // MARK: - Toolbar

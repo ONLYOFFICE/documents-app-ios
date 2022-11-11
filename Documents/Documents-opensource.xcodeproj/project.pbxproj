@@ -87,6 +87,8 @@
 		1D8CFC5E290FEF6200F71071 /* ASCSharingInviteRightHoldersTableViewDataSourceAndDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D8CFC5D290FEDCC00F71071 /* ASCSharingInviteRightHoldersTableViewDataSourceAndDelegate.swift */; };
 		1D8CFC5F290FEF6300F71071 /* ASCSharingInviteRightHoldersTableViewDataSourceAndDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D8CFC5D290FEDCC00F71071 /* ASCSharingInviteRightHoldersTableViewDataSourceAndDelegate.swift */; };
 		1D8DF02F2639B6B10054B2F9 /* ASCOneDriveProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D8DF02E2639B6B10054B2F9 /* ASCOneDriveProvider.swift */; };
+		1D939F0A291C0DF500221F75 /* ASCPaymentQuota.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D939F09291C0DF500221F75 /* ASCPaymentQuota.swift */; };
+		1D939F0B291C0DF500221F75 /* ASCPaymentQuota.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D939F09291C0DF500221F75 /* ASCPaymentQuota.swift */; };
 		1D981FF32631A6AF00144B57 /* ASCOnlyofficeCategoriesProviderProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D981FF22631A6AF00144B57 /* ASCOnlyofficeCategoriesProviderProtocol.swift */; };
 		1D9820012631A8D900144B57 /* ASCOnlyofficeAppBasedCategoriesProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D9820002631A8D900144B57 /* ASCOnlyofficeAppBasedCategoriesProvider.swift */; };
 		1D9B807E2673EBEC0020B5ED /* ASCSwitchRowViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D9B807D2673EBEC0020B5ED /* ASCSwitchRowViewModel.swift */; };
@@ -933,6 +935,7 @@
 		1D8CFC55290D85E600F71071 /* ASCDocumentsCellSwipeMenu.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASCDocumentsCellSwipeMenu.swift; sourceTree = "<group>"; };
 		1D8CFC5D290FEDCC00F71071 /* ASCSharingInviteRightHoldersTableViewDataSourceAndDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCSharingInviteRightHoldersTableViewDataSourceAndDelegate.swift; sourceTree = "<group>"; };
 		1D8DF02E2639B6B10054B2F9 /* ASCOneDriveProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCOneDriveProvider.swift; sourceTree = "<group>"; };
+		1D939F09291C0DF500221F75 /* ASCPaymentQuota.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCPaymentQuota.swift; sourceTree = "<group>"; };
 		1D981FF22631A6AF00144B57 /* ASCOnlyofficeCategoriesProviderProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCOnlyofficeCategoriesProviderProtocol.swift; sourceTree = "<group>"; };
 		1D9820002631A8D900144B57 /* ASCOnlyofficeAppBasedCategoriesProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCOnlyofficeAppBasedCategoriesProvider.swift; sourceTree = "<group>"; };
 		1D9B7FE926FA5A0000D06E9B /* ASCSharingOprionsInteractorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCSharingOprionsInteractorTests.swift; sourceTree = "<group>"; };
@@ -2912,6 +2915,7 @@
 				FC142A32289819B400EDE7CE /* ASCGroup.swift */,
 				FC142A33289819B400EDE7CE /* ASCPushSubscribed.swift */,
 				FC142A2D289819B400EDE7CE /* ASCUser.swift */,
+				1D939F09291C0DF500221F75 /* ASCPaymentQuota.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -4126,6 +4130,7 @@
 				FC7081DB2812E2260057FCD2 /* ASCPersonalShareSettingsAPIWorker.swift in Sources */,
 				FC7081DC2812E2260057FCD2 /* ASCPortalTypeDefinderProtocol.swift in Sources */,
 				FC7081DD2812E2260057FCD2 /* ASCConnectStorageNextCloudServerController.swift in Sources */,
+				1D939F0B291C0DF500221F75 /* ASCPaymentQuota.swift in Sources */,
 				FC7081DE2812E2260057FCD2 /* ASCOneDriveFileProvider.swift in Sources */,
 				FC142A20289818B800EDE7CE /* ASCUserTableViewDataModelItem.swift in Sources */,
 				FC7081DF2812E2260057FCD2 /* UIBarButtonItem+Extensions.swift in Sources */,
@@ -4533,6 +4538,7 @@
 				FCEF9D1D1ED2C94300627BA5 /* ChangePasscodeState.swift in Sources */,
 				FC707C3D25AC5691004CB85B /* UILabel+Extension.swift in Sources */,
 				FC142A6E28981A1F00EDE7CE /* ASCPasscodeLockConfiguration.swift in Sources */,
+				1D939F0A291C0DF500221F75 /* ASCPaymentQuota.swift in Sources */,
 				1D1A2E322660FE6E00D0335B /* ASCLoadedViewControllerFinderProtocol.swift in Sources */,
 				FC7F786B236ACBB00026E260 /* ASCConnectStorageGoogleController.swift in Sources */,
 				FC6106FD1F9E30B9002A25C8 /* ASCAvatarCollectionViewCell.swift in Sources */,

@@ -53,6 +53,7 @@ class OnlyofficeAPI {
         public static let pushRegisterDevice = "/api/\(version)/settings/push/docregisterdevice"
         public static let pushSubscribe = "/api/\(version)/settings/push/docsubscribe"
         public static let markAsRead = "api/\(version)/files/fileops/markasread"
+        public static let paymentQuota = "api/\(version)/portal/payment/quota"
         public static let room = "api/\(version)/files/rooms/%@"
         public static let roomPin = room.appendingPathComponent("pin")
         public static let roomUnpin = room.appendingPathComponent("unpin")
@@ -132,6 +133,8 @@ class OnlyofficeAPI {
         }
 
         enum Rooms {
+            static let paymentQuota: Endpoint<OnlyofficeResponse<ASCPaymentQuota>> = Endpoint<OnlyofficeResponse<ASCPaymentQuota>>.make(Path.paymentQuota, .get)
+
             static func pin(folder: ASCFolder) -> Endpoint<OnlyofficeResponse<ASCFolder>> {
                 return Endpoint<OnlyofficeResponse<ASCFolder>>.make(String(format: Path.roomPin, folder.id), .put)
             }

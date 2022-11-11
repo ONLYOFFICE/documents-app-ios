@@ -63,12 +63,7 @@ extension ASCTextViewTableViewCell: UITextViewDelegate {
     func textViewDidBeginEditing(_ textView: UITextView) {
         if textView.text == placeHolderText, textView.textColor == .lightGray {
             textView.text = ""
-
-            if #available(iOS 13.0, *) {
-                textView.textColor = .label
-            } else {
-                textView.textColor = .black
-            }
+            textView.textColor = .label
         }
         textView.becomeFirstResponder()
     }

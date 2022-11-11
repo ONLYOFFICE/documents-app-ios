@@ -120,6 +120,11 @@ class InviteRigthHoldersByEmailsViewController: UIViewController {
             self?.checkQouta()
         }
 
+        let backTitle = NSLocalizedString("Back", comment: "")
+        let backButton = UIBarButtonItem(title: backTitle, style: .plain, target: self, action: #selector(showSureDismissAlert))
+        backButton.image = UIImage(systemName: "chevron.left")
+        navigationItem.leftBarButtonItem = backButton
+
         title = NSLocalizedString("Invite people", comment: "")
         view.backgroundColor = .systemGroupedBackground
 
@@ -174,14 +179,29 @@ class InviteRigthHoldersByEmailsViewController: UIViewController {
     }
 
     func showQoutaAlmostExhausted() {
-        let message = NSLocalizedString("The quota of paid users is almost exhausted. You can increase your quota on the website", comment: "")
+        let message = NSLocalizedString("The quota of users is almost exhausted. Сontact the portal administrator", comment: "")
         let controller = UIAlertController(title: "", message: message, preferredStyle: .alert).okable()
         present(controller, animated: true)
     }
 
     func showQoutaReached() {
-        let message = NSLocalizedString("The paid user limit has been reached. You can increase your quota on the website", comment: "")
+        let message = NSLocalizedString("The user limit has been reached. Сontact the portal administrator", comment: "")
         let controller = UIAlertController(title: "", message: message, preferredStyle: .alert).okable()
+        present(controller, animated: true)
+    }
+
+    @objc func showSureDismissAlert() {
+        guard !tagsView.tags.isEmpty else {
+            navigationController?.popViewController(animated: true)
+            return
+        }
+        let title = NSLocalizedString("Cancel invitation?", comment: "")
+        let message = NSLocalizedString("Selected users will not be invited to the room", comment: "")
+        let controller = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        controller.addOk { [unowned self] _ in
+            navigationController?.popViewController(animated: true)
+        }
+        controller.addCancel()
         present(controller, animated: true)
     }
 

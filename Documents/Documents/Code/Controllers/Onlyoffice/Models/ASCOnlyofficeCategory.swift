@@ -120,8 +120,9 @@ class ASCOnlyofficeCategory: ASCCategory {
     }
 
     static func isDocSpaceRoom(type: ASCFolderType) -> Bool {
+        guard ASCFileManager.onlyofficeProvider?.apiClient.serverVersion?.docSpace != nil else { return false }
         switch type {
-        case .onlyofficeRoomShared, .onlyofficeRoomArchived:
+        case .onlyofficeRoomShared, .onlyofficeRoomArchived, .onlyofficeUser:
             return true
         default:
             return false

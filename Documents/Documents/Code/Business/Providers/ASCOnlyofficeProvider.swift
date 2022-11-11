@@ -1045,7 +1045,7 @@ class ASCOnlyofficeProvider: ASCFileProviderProtocol & ASCSortableFileProviderPr
                 entityActions.insert(.download)
             }
 
-            if canEdit, canShare, !isProjects, canDownload {
+            if canEdit, canShare, !isProjects, canDownload, !isFolderInRoom(folder: folder) {
                 entityActions.insert(.share)
             }
 
@@ -1071,6 +1071,7 @@ class ASCOnlyofficeProvider: ASCFileProviderProtocol & ASCSortableFileProviderPr
             let canShare = allowShare(entity: folder)
             let isProjects = folder.rootFolderType == .onlyofficeBunch || folder.rootFolderType == .onlyofficeProjects
             let isRoomFolder = isFolderInRoom(folder: folder) && folder.roomType != nil
+
             let isArchiveCategory = folder.rootFolderType == .onlyofficeRoomArchived
             let isThirdParty = folder.isThirdParty && (folder.parent?.parentId == nil || folder.parent?.parentId == "0")
 
@@ -1090,7 +1091,7 @@ class ASCOnlyofficeProvider: ASCFileProviderProtocol & ASCSortableFileProviderPr
                 entityActions.insert(.move)
             }
 
-            if canEdit, canShare, !isProjects, !isRoomFolder {
+            if canEdit, canShare, !isProjects, !isRoomFolder, !isFolderInRoom(folder: folder) {
                 entityActions.insert(.share)
             }
 

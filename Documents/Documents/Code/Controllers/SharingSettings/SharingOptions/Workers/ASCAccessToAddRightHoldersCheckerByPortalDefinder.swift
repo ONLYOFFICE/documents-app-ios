@@ -18,7 +18,7 @@ class ASCAccessToAddRightHoldersCheckerByPortalDefinder: ASCAccessToAddRightHold
     func checkAccessToAddRightHolders() -> Bool {
         switch portalType {
         case .personal: return false
-        case .unknown: return true
+        case .docSpace, .unknown: return true
         }
     }
 }

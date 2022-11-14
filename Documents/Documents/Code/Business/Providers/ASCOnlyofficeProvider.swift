@@ -117,13 +117,13 @@ class ASCOnlyofficeProvider: ASCFileProviderProtocol & ASCSortableFileProviderPr
             info += ["token": token]
         }
 
-        if let serverVersion = apiClient.serverVersion {
-            info += ["serverVersion": serverVersion]
-        }
-
         if let expires = apiClient.expires {
             let dateTransform = ASCDateTransform()
             info += ["expires": dateTransform.transformToJSON(expires) ?? ""]
+        }
+
+        if let serverVersion = apiClient.serverVersion {
+            info += ["serverVersion": serverVersion.toJSON()]
         }
 
         if let capabilities = apiClient.capabilities {
@@ -151,11 +151,13 @@ class ASCOnlyofficeProvider: ASCFileProviderProtocol & ASCSortableFileProviderPr
                 apiClient.capabilities = OnlyofficeCapabilities(JSON: capabilitiesJson)
             }
 
+            if let versions = json["serverVersion"] as? [String: Any] {
+                apiClient.serverVersion = OnlyofficeVersion(JSON: versions)
+            }
             let dateTransform = ASCDateTransform()
 
             apiClient.baseURL = URL(string: json["baseUrl"] as? String ?? "")
             apiClient.token = json["token"] as? String
-            apiClient.serverVersion = json["serverVersion"] as? String
             apiClient.expires = dateTransform.transformFromJSON(json["expires"])
         }
     }
@@ -254,6 +256,9 @@ class ASCOnlyofficeProvider: ASCFileProviderProtocol & ASCSortableFileProviderPr
                 "startIndex": (parameters["startIndex"] as? Int) ?? strongSelf.page * strongSelf.pageSize,
                 "count": (parameters["count"] as? Int) ?? strongSelf.pageSize,
             ]
+            if ASCOnlyofficeCategory.isDocSpaceRoom(type: folder.rootFolderType), let searchArea = ASCOnlyofficeCategory.searchArea(of: folder.rootFolderType) {
+                params["searchArea"] = searchArea
+            }
 
             /// Search
             if let search = parameters["search"] as? [String: Any] {
@@ -796,12 +801,14 @@ class ASCOnlyofficeProvider: ASCFileProviderProtocol & ASCSortableFileProviderPr
 
     // MARK: - Access
 
-    func isRoot(folder: ASCFolder?) -> Bool {
-        if let folder = folder {
-            return folder.parentId == nil || folder.parentId == "0"
-        }
+    func isFolderInRoom(folder: ASCFolder?) -> Bool {
+        guard let folder = folder else { return false }
+        return ASCOnlyofficeCategory.isDocSpaceRoom(type: folder.rootFolderType)
+    }
 
-        return false
+    func isRoot(folder: ASCFolder?) -> Bool {
+        guard let folder = folder else { return false }
+        return folder.parentId == nil || folder.parentId == "0"
     }
 
     func allowRead(entity: AnyObject?) -> Bool {
@@ -855,6 +862,10 @@ class ASCOnlyofficeProvider: ASCFileProviderProtocol & ASCSortableFileProviderPr
             }
 
             if isRoot(folder: folder), folder.rootFolderType == .onlyofficeProjects || folder.rootFolderType == .onlyofficeBunch {
+                return false
+            }
+
+            if isRoot(folder: folder), ASCOnlyofficeCategory.isDocSpaceRoom(type: folder.rootFolderType) {
                 return false
             }
         }
@@ -1034,7 +1045,7 @@ class ASCOnlyofficeProvider: ASCFileProviderProtocol & ASCSortableFileProviderPr
                 entityActions.insert(.download)
             }
 
-            if canEdit, canShare, !isProjects, canDownload {
+            if canEdit, canShare, !isProjects, canDownload, !isFolderInRoom(folder: folder) {
                 entityActions.insert(.share)
             }
 
@@ -1059,6 +1070,9 @@ class ASCOnlyofficeProvider: ASCFileProviderProtocol & ASCSortableFileProviderPr
             let canDelete = allowDelete(entity: folder)
             let canShare = allowShare(entity: folder)
             let isProjects = folder.rootFolderType == .onlyofficeBunch || folder.rootFolderType == .onlyofficeProjects
+            let isRoomFolder = isFolderInRoom(folder: folder) && folder.roomType != nil
+
+            let isArchiveCategory = folder.rootFolderType == .onlyofficeRoomArchived
             let isThirdParty = folder.isThirdParty && (folder.parent?.parentId == nil || folder.parent?.parentId == "0")
 
             if folder.rootFolderType == .onlyofficeTrash {
@@ -1069,15 +1083,15 @@ class ASCOnlyofficeProvider: ASCFileProviderProtocol & ASCSortableFileProviderPr
                 entityActions.insert(.rename)
             }
 
-            if canRead {
+            if canRead, !isRoomFolder {
                 entityActions.insert(.copy)
             }
 
-            if canEdit, canDelete {
+            if canEdit, canDelete, !isRoomFolder {
                 entityActions.insert(.move)
             }
 
-            if canEdit, canShare, !isProjects {
+            if canEdit, canShare, !isProjects, !isRoomFolder, !isFolderInRoom(folder: folder) {
                 entityActions.insert(.share)
             }
 
@@ -1092,9 +1106,87 @@ class ASCOnlyofficeProvider: ASCFileProviderProtocol & ASCSortableFileProviderPr
             if folder.new > 0 {
                 entityActions.insert(.new)
             }
+
+            if isRoomFolder, !isArchiveCategory {
+                entityActions.insert(folder.pinned ? .unpin : .pin)
+                entityActions.insert(.addUsers)
+                entityActions.insert(.info)
+                entityActions.insert(.archive)
+            }
+
+            if isRoomFolder, isArchiveCategory {
+                entityActions.insert(.unarchive)
+            }
         }
 
         return entityActions
+    }
+
+    // MARK: - Action handlers
+
+    func handle(action: ASCEntityActions, folder: ASCFolder, handler: ASCEntityHandler?) {
+        switch action {
+        case .pin: pinRoom(folder: folder, handler: handler)
+        case .unpin: unpinRoom(folder: folder, handler: handler)
+        case .archive: archiveRoom(folder: folder, handler: handler)
+        case .unarchive: unpinRoom(folder: folder, handler: handler)
+        default: unsupportedActionHandler(action: action, handler: handler)
+        }
+    }
+
+    private func pinRoom(folder: ASCFolder, handler: ASCEntityHandler?) {
+        handler?(.begin, nil, nil)
+        apiClient.request(OnlyofficeAPI.Endpoints.Rooms.pin(folder: folder)) { response, error in
+            if let folder = response?.result {
+                handler?(.end, folder, nil)
+            } else {
+                handler?(.error, nil, NSLocalizedString("Pinned failed.", comment: ""))
+            }
+        }
+    }
+
+    private func unpinRoom(folder: ASCFolder, handler: ASCEntityHandler?) {
+        handler?(.begin, nil, nil)
+        apiClient.request(OnlyofficeAPI.Endpoints.Rooms.unpin(folder: folder)) { response, error in
+            if let folder = response?.result {
+                handler?(.end, folder, nil)
+            } else {
+                handler?(.error, nil, NSLocalizedString("Unpinned failed.", comment: ""))
+            }
+        }
+    }
+
+    private func archiveRoom(folder: ASCFolder, handler: ASCEntityHandler?) {
+        handler?(.begin, nil, nil)
+        apiClient.request(OnlyofficeAPI.Endpoints.Rooms.archive(folder: folder), ["deleteAfter": true]) { response, error in
+            if let folder = response?.result {
+                handler?(.end, folder, nil)
+            } else {
+                handler?(.error, nil, NSLocalizedString("Archiving failed.", comment: ""))
+            }
+        }
+    }
+
+    private func unarchiveRoom(folder: ASCFolder, handler: ASCEntityHandler?) {
+        handler?(.begin, nil, nil)
+        apiClient.request(OnlyofficeAPI.Endpoints.Rooms.archive(folder: folder), ["deleteAfter": true]) { response, error in
+            if let folder = response?.result {
+                handler?(.end, folder, nil)
+            } else {
+                handler?(.error, nil, NSLocalizedString("Unarchiving failed.", comment: ""))
+            }
+        }
+    }
+
+    private func unsupportedActionHandler(action: ASCEntityActions, handler: ASCEntityHandler?) {
+        log.error("Unsupported action \(action.rawValue)")
+        handler?(.error, nil, "Unsupported action")
+    }
+
+    private func updateItem(_ item: ASCEntity) {
+        if let index = items.firstIndex(where: { $0.id == item.id }) {
+            items[index] = item
+        }
     }
 
     // MARK: - Helpers

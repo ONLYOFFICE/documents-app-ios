@@ -25,6 +25,7 @@ class ASCDocumentsViewController: ASCBaseTableViewController, UIGestureRecognize
 
     var folder: ASCFolder? {
         didSet {
+            folderHolders.forEach { $0.folder = folder }
             if oldValue == nil, folder != nil {
                 loadFirstPage()
             }
@@ -37,6 +38,7 @@ class ASCDocumentsViewController: ASCBaseTableViewController, UIGestureRecognize
                 provider.delegate = self
             }
             configureProvider()
+            fileProviderHolders.forEach { $0.provider = provider }
         }
     }
 
@@ -55,6 +57,38 @@ class ASCDocumentsViewController: ASCBaseTableViewController, UIGestureRecognize
     private let kPageLoadingCellTag = 7777
     private var highlightEntity: ASCEntity?
     private var hideableViewControllerOnTransition: UIViewController?
+
+    // MARK: - Actions controllers vars
+
+    private lazy var removerActionController: ASCEntityRemoverActionController & FileProviderHolder & FolderHolder = ASCDocumentsEntityRemoverActionController(
+        provider: provider,
+        folder: folder,
+        itemsGetter: getLocalAndCloudItems,
+        providerIndexesGetter: getProviderIndexes,
+        removedItemsHandler: handleRemovedItems,
+        errorHandeler: removeErrorHandler
+    )
+
+    // MARK: - Menu vars
+
+    // MARK: - TODO use it after ASCDocumentsFolderCellContextMenu will be ready
+
+    private lazy var folderCellContextMenu: ASCDocumentsFolderCellContextMenu & FileProviderHolder & FolderHolder = ASCDocumentsFolderCellContextMenu(
+        provider: provider,
+        folder: folder,
+        removerActionController: removerActionController,
+        deleteIfNeededhandler: deleteIfNeeded
+    )
+
+    // FileProviderHolders getter
+    private var fileProviderHolders: [FileProviderHolder] {
+        [removerActionController, folderCellContextMenu]
+    }
+
+    // FolderHolders getter
+    private var folderHolders: [FolderHolder] {
+        [removerActionController, folderCellContextMenu]
+    }
 
     // Navigation bar
     private var addBarButton: UIBarButtonItem?
@@ -1548,75 +1582,10 @@ class ASCDocumentsViewController: ASCBaseTableViewController, UIGestureRecognize
 
     func delete(cell: UITableViewCell) {
         if let fileCell = cell as? ASCFileCell, let file = fileCell.file {
-            delete(indexes: [file.uid])
+            removerActionController.delete(indexes: [file.uid])
         } else if let folderCell = cell as? ASCFolderCell, let folder = folderCell.folder {
-            delete(indexes: [folder.uid])
+            removerActionController.delete(indexes: [folder.uid])
         }
-    }
-
-    func deleteIfNeeded(
-        cell: UITableViewCell,
-        menuButton: UIButton,
-        complation: @escaping (UITableViewCell, Bool) -> Void
-    ) {
-        var title: String?
-        let isTrash = self.isTrash(folder)
-        let cellFolder = (cell as? ASCFolderCell)?.folder
-        let currentFolder = folder
-
-        if isTrash {
-            title = NSLocalizedString("The file will be irretrievably deleted. This action is irreversible.", comment: "")
-        } else if let currentFolder = currentFolder, currentFolder.isThirdParty {
-            title = NSLocalizedString("Note: removal from your account can not be undone.", comment: "")
-        }
-
-        let alertDelete = UIAlertController(
-            title: title,
-            message: nil,
-            preferredStyle: .actionSheet,
-            tintColor: nil
-        )
-
-        var message = NSLocalizedString("Delete File", comment: "Button title")
-
-        if let cellFolder = cellFolder {
-            message = NSLocalizedString("Delete Folder", comment: "")
-
-            if cellFolder.isThirdParty, !(currentFolder?.isThirdParty ?? false) {
-                message = NSLocalizedString("Disconnect third party", comment: "")
-            }
-        }
-
-        alertDelete.addAction(
-            UIAlertAction(
-                title: message,
-                style: .destructive,
-                handler: { action in
-                    complation(cell, true)
-                }
-            )
-        )
-
-        if UIDevice.pad {
-            alertDelete.modalPresentationStyle = .popover
-            alertDelete.popoverPresentationController?.sourceView = menuButton
-            alertDelete.popoverPresentationController?.sourceRect = menuButton.bounds
-            alertDelete.popoverPresentationController?.permittedArrowDirections = [.up, .down]
-            flashBlockInteration()
-        } else {
-            alertDelete.addAction(
-                UIAlertAction(
-                    title: ASCLocalization.Common.cancel,
-                    style: .cancel,
-                    handler: { action in
-                        complation(cell, false)
-                    }
-                )
-            )
-        }
-
-        present(alertDelete, animated: true, completion: nil)
-        hideableViewControllerOnTransition = alertDelete
     }
 
     func rename(cell: UITableViewCell) {
@@ -1666,6 +1635,96 @@ class ASCDocumentsViewController: ASCBaseTableViewController, UIGestureRecognize
                     hud?.hide(animated: false)
                 }
             }
+        }
+    }
+
+    func archive(cell: UITableViewCell) {
+        guard let folderCell = cell as? ASCFolderCell,
+              let folder = folderCell.folder else { return }
+        let processLabel: String = NSLocalizedString("Archiving", comment: "Caption of the processing")
+        handleAction(folder: folder, action: .archive, processingLabel: processLabel, copmletionBehavior: .delete(cell))
+    }
+
+    func unarchive(cell: UITableViewCell) {
+        guard let folderCell = cell as? ASCFolderCell,
+              let folder = folderCell.folder else { return }
+        let processLabel: String = NSLocalizedString("Moving from archive", comment: "Caption of the processing")
+        handleAction(folder: folder, action: .unarchive, processingLabel: processLabel, copmletionBehavior: .delete(cell))
+    }
+
+    private func handleAction(folder: ASCFolder, action: ASCEntityActions, processingLabel: String, copmletionBehavior: CompletionBehavior) {
+        let hud = MBProgressHUD.showTopMost()
+        hud?.isHidden = false
+        provider?.handle(action: action, folder: folder) { [weak self] status, entity, error in
+            guard let self = self else {
+                hud?.hide(animated: false)
+                return
+            }
+            self.baseProcessHandler(hud: hud, processingMessage: processingLabel, status, entity, error) {
+                if entity != nil {
+                    hud?.setSuccessState()
+                    hud?.hide(animated: false, afterDelay: 1.3)
+                    switch copmletionBehavior {
+                    case let .delete(cell):
+                        if let indexPath = self.tableView.indexPath(for: cell), entity as? ASCFolder != nil {
+                            self.provider?.remove(at: indexPath.row)
+                            self.tableView.beginUpdates()
+                            self.tableView.deleteRows(at: [indexPath], with: .fade)
+                            self.tableView.endUpdates()
+                        }
+                    }
+                } else {
+                    hud?.hide(animated: false)
+                }
+            }
+        }
+    }
+
+    func pinToggle(cell: UITableViewCell) {
+        guard let folderCell = cell as? ASCFolderCell,
+              let folder = folderCell.folder,
+              let provider = provider else { return }
+        let hud = MBProgressHUD.showTopMost()
+        hud?.isHidden = false
+        let action: ASCEntityActions = folder.pinned ? .unpin : .pin
+        let processLabel: String = folder.pinned
+            ? NSLocalizedString("Unpning", comment: "Caption of the processing")
+            : NSLocalizedString("Pinning", comment: "Caption of the processing")
+        provider.handle(action: action, folder: folder) { [weak self] status, entity, error in
+            guard let self = self else {
+                hud?.hide(animated: false)
+                return
+            }
+            self.baseProcessHandler(hud: hud, processingMessage: processLabel, status, entity, error) {
+                if entity != nil {
+                    hud?.setSuccessState()
+                    hud?.hide(animated: false, afterDelay: 1.3)
+                    self.loadFirstPage()
+                } else {
+                    hud?.hide(animated: false)
+                }
+            }
+        }
+    }
+
+    func baseProcessHandler(hud: MBProgressHUD?,
+                            processingMessage: String,
+                            _ status: ASCEntityProcessStatus,
+                            _ result: Any?,
+                            _ error: String?,
+                            completion: () -> Void)
+    {
+        if status == .begin {
+            hud?.isHidden = false
+            hud?.mode = .indeterminate
+            hud?.label.text = processingMessage
+        } else if status == .error {
+            hud?.hide(animated: true)
+            if error != nil {
+                UIAlertController.showError(in: self, message: error!)
+            }
+        } else if status == .end {
+            completion()
         }
     }
 
@@ -2318,95 +2377,6 @@ class ASCDocumentsViewController: ASCBaseTableViewController, UIGestureRecognize
         }
     }
 
-    func delete(indexes: Set<String>) {
-        guard
-            let provider = provider,
-            let folder = folder
-        else { return }
-
-        var localItems: [ASCEntity] = []
-        var cloudItems: [ASCEntity] = []
-
-        for uid in indexes {
-            if let index = tableData.firstIndex(where: { $0.uid == uid }) {
-                if let file = tableData[index] as? ASCFile {
-                    file.device ? localItems.append(file) : cloudItems.append(file)
-                } else if let folder = tableData[index] as? ASCFolder {
-                    folder.device ? localItems.append(folder) : cloudItems.append(folder)
-                }
-            }
-        }
-
-        func deleteGroup(items: [ASCEntity], completion: (([ASCEntity]?) -> Void)? = nil) {
-            if items.count < 1 {
-                completion?(nil)
-                return
-            }
-
-            var hud: MBProgressHUD?
-
-            ASCEntityManager.shared.delete(for: provider, entities: items, from: folder) { status, result, error in
-                if status == .begin {
-                    if hud == nil {
-                        hud = MBProgressHUD.showTopMost()
-                        hud?.mode = .indeterminate
-                        hud?.label.text = NSLocalizedString("Deleting", comment: "Caption of the processing")
-                    }
-                } else if status == .error {
-                    hud?.hide(animated: true)
-                    hud = nil
-                    UIAlertController.showError(
-                        in: self,
-                        message: error ?? NSLocalizedString("Could not delete.", comment: "")
-                    )
-                    completion?(nil)
-                } else if status == .end {
-                    hud?.setSuccessState()
-                    hud?.hide(animated: false, afterDelay: 1.3)
-                    hud = nil
-
-                    let deletedItems = items.filter { provider.allowDelete(entity: $0) || (($0 as? ASCFolder)?.isThirdParty ?? false) }
-                    completion?(deletedItems)
-                }
-            }
-        }
-
-        var deteteItems: [ASCEntity] = []
-        deleteGroup(items: localItems) { [unowned self] items in
-            deteteItems += items ?? []
-
-            deleteGroup(items: cloudItems) { [unowned self] items in
-                deteteItems += items ?? []
-
-                var deteteIndexes: [IndexPath] = []
-
-                self.tableView.beginUpdates()
-
-                // Store remove indexes
-                for item in deteteItems {
-                    if let indexPath = self.indexPath(by: item) {
-                        deteteIndexes.append(indexPath)
-                    }
-                }
-
-                // Remove data
-                for item in deteteItems {
-                    if let indexPath = self.indexPath(by: item) {
-                        self.provider?.remove(at: indexPath.row)
-                    }
-                }
-
-                // Remove cells
-                self.tableView.deleteRows(at: deteteIndexes, with: .fade)
-                self.tableView.endUpdates()
-
-                self.showEmptyView(self.total < 1)
-                self.updateNavBar()
-                self.setEditMode(false)
-            }
-        }
-    }
-
     func emptyTrash() {
         guard let provider = provider else { return }
 
@@ -2559,7 +2529,7 @@ class ASCDocumentsViewController: ASCBaseTableViewController, UIGestureRecognize
                     title: message,
                     style: .destructive,
                     handler: { [unowned self] action in
-                        self.delete(indexes: self.selectedIds)
+                        self.removerActionController.delete(indexes: self.selectedIds)
                     }
                 )
             )
@@ -3300,4 +3270,117 @@ extension ASCDocumentsViewController: UITableViewDropDelegate {
         }
         return UITableViewDropProposal(operation: .forbidden)
     }
+}
+
+// MARK: - Remove handlers
+
+extension ASCDocumentsViewController {
+    func removeErrorHandler(error: String?) {
+        UIAlertController.showError(in: self,
+                                    message: error ?? NSLocalizedString("Could not delete.", comment: ""))
+    }
+
+    func handleRemovedItems(deteteIndexes: [IndexPath]) {
+        // Remove cells
+        tableView.beginUpdates()
+        tableView.deleteRows(at: deteteIndexes, with: .fade)
+        tableView.endUpdates()
+
+        showEmptyView(total < 1)
+        updateNavBar()
+        setEditMode(false)
+    }
+
+    func deleteIfNeeded(
+        cell: UITableViewCell,
+        menuButton: UIButton,
+        complation: @escaping (UITableViewCell, Bool) -> Void
+    ) {
+        var title: String?
+        let isTrash = self.isTrash(folder)
+        let cellFolder = (cell as? ASCFolderCell)?.folder
+        let currentFolder = folder
+
+        if isTrash {
+            title = NSLocalizedString("The file will be irretrievably deleted. This action is irreversible.", comment: "")
+        } else if let currentFolder = currentFolder, currentFolder.isThirdParty {
+            title = NSLocalizedString("Note: removal from your account can not be undone.", comment: "")
+        }
+
+        let alertDelete = UIAlertController(
+            title: title,
+            message: nil,
+            preferredStyle: .actionSheet,
+            tintColor: nil
+        )
+
+        var message = NSLocalizedString("Delete File", comment: "Button title")
+
+        if let cellFolder = cellFolder {
+            message = NSLocalizedString("Delete Folder", comment: "")
+
+            if cellFolder.isThirdParty, !(currentFolder?.isThirdParty ?? false) {
+                message = NSLocalizedString("Disconnect third party", comment: "")
+            }
+        }
+
+        alertDelete.addAction(
+            UIAlertAction(
+                title: message,
+                style: .destructive,
+                handler: { action in
+                    complation(cell, true)
+                }
+            )
+        )
+
+        if UIDevice.pad {
+            alertDelete.modalPresentationStyle = .popover
+            alertDelete.popoverPresentationController?.sourceView = menuButton
+            alertDelete.popoverPresentationController?.sourceRect = menuButton.bounds
+            alertDelete.popoverPresentationController?.permittedArrowDirections = [.up, .down]
+            flashBlockInteration()
+        } else {
+            alertDelete.addAction(
+                UIAlertAction(
+                    title: ASCLocalization.Common.cancel,
+                    style: .cancel,
+                    handler: { action in
+                        complation(cell, false)
+                    }
+                )
+            )
+        }
+
+        present(alertDelete, animated: true, completion: nil)
+        hideableViewControllerOnTransition = alertDelete
+    }
+}
+
+// MARK: - Help funcs
+
+extension ASCDocumentsViewController {
+    func getLocalAndCloudItems(indexes: Set<String>) -> (localItems: [ASCEntity], cloudItems: [ASCEntity]) {
+        var localItems: [ASCEntity] = []
+        var cloudItems: [ASCEntity] = []
+
+        for uid in indexes {
+            if let index = tableData.firstIndex(where: { $0.uid == uid }) {
+                if let file = tableData[index] as? ASCFile {
+                    file.device ? localItems.append(file) : cloudItems.append(file)
+                } else if let folder = tableData[index] as? ASCFolder {
+                    folder.device ? localItems.append(folder) : cloudItems.append(folder)
+                }
+            }
+        }
+        return (localItems, cloudItems)
+    }
+
+    func getProviderIndexes(items: [ASCEntity]) -> [IndexPath] {
+        items.compactMap(indexPath(by:)).map { $0 }
+    }
+}
+
+private enum CompletionBehavior {
+    case delete(UITableViewCell)
 }

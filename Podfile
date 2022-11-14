@@ -47,6 +47,7 @@ def common_pods
   pod 'SwiftMessages', '9.0.4'
   pod 'MGSwipeTableCell'
   pod 'ReCaptcha'
+  pod "WSTagsField"
 
   # Utils
 
@@ -87,20 +88,6 @@ target 'Documents' do
   end
 end
 
-target 'Documents-Alpha' do
-  workspace 'ONLYOFFICE-Documents'
-  project 'Documents/Documents.xcodeproj'
-  
-  common_pods
-  
-  if Dir.exist?('../editors-ios')
-    pod 'DocumentConverter', :path => '../editors-ios/DocumentConverter.podspec'
-    pod 'SpreadsheetEditor', :path => '../editors-ios/SpreadsheetEditor.podspec'
-    pod 'DocumentEditor', :path => '../editors-ios/DocumentEditor.podspec'
-    pod 'PresentationEditor', :path => '../editors-ios/PresentationEditor.podspec'
-  end
-end
-
 target 'Documents-develop' do
   workspace 'ONLYOFFICE-Documents-develop'
   project 'Documents/Documents-develop.xcodeproj'
@@ -136,14 +123,14 @@ post_install do | installer |
       config.build_settings['ENABLE_BITCODE'] = 'NO'
 
       target_is_resource_bundle = target.respond_to?(:product_type) && target.product_type == 'com.apple.product-type.bundle'
-       target.build_configurations.each do |build_configuration|
-         if target_is_resource_bundle
-           build_configuration.build_settings['CODE_SIGNING_ALLOWED'] = 'NO'
-           build_configuration.build_settings['CODE_SIGNING_REQUIRED'] = 'NO'
-           build_configuration.build_settings['CODE_SIGNING_IDENTITY'] = '-'
-           build_configuration.build_settings['EXPANDED_CODE_SIGN_IDENTITY'] = '-'
-         end
-       end
+      target.build_configurations.each do |build_configuration|
+        if target_is_resource_bundle
+          build_configuration.build_settings['CODE_SIGNING_ALLOWED'] = 'NO'
+          build_configuration.build_settings['CODE_SIGNING_REQUIRED'] = 'NO'
+          build_configuration.build_settings['CODE_SIGNING_IDENTITY'] = '-'
+          build_configuration.build_settings['EXPANDED_CODE_SIGN_IDENTITY'] = '-'
+        end
+      end
     end
   end
 

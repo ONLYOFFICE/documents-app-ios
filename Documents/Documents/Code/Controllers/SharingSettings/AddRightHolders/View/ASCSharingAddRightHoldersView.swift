@@ -8,8 +8,6 @@
 
 import UIKit
 
-typealias RightHoldersTableType = ASCSharingAddRightHoldersViewController.RightHoldersTableType
-
 protocol ASCSharingAddRightHoldersViewDelegate: AnyObject {
     func getAccessList() -> ([ASCShareAccess])
     func getCurrentAccess() -> ASCShareAccess
@@ -38,10 +36,11 @@ class ASCSharingAddRightHoldersView {
     var searchControllerDelegate: UISearchControllerDelegate!
     var searchResultsUpdating: UISearchResultsUpdating!
     var searchBarDelegate: UISearchBarDelegate!
+    var showsScopeBar: Bool
 
-    lazy var usersTableView = UITableView()
-    lazy var groupsTableView = UITableView()
-    lazy var searchResultsTable = UITableView()
+    lazy var usersTableView = UITableView(frame: .zero, style: .insetGrouped)
+    lazy var groupsTableView = UITableView(frame: .zero, style: .insetGrouped)
+    lazy var searchResultsTable = UITableView(frame: .zero, style: .insetGrouped)
 
     // MARK: - Activity indicators
 
@@ -52,9 +51,19 @@ class ASCSharingAddRightHoldersView {
 
     let title = NSLocalizedString("Shared access", comment: "")
 
-    private lazy var selectAllBarBtn: UIBarButtonItem = UIBarButtonItem(title: NSLocalizedString("Select all", comment: ""), style: .plain, target: self, action: #selector(onSelectAllButtonTapped))
+    private lazy var selectAllBarBtn: UIBarButtonItem = UIBarButtonItem(
+        title: NSLocalizedString("Select all", comment: ""),
+        style: .plain,
+        target: self,
+        action: #selector(onSelectAllButtonTapped)
+    )
 
-    private lazy var deselectAllBarBtn: UIBarButtonItem = UIBarButtonItem(title: NSLocalizedString("Deselect all", comment: ""), style: .plain, target: self, action: #selector(onDeselectAllButtonTapped))
+    private lazy var deselectAllBarBtn: UIBarButtonItem = UIBarButtonItem(
+        title: NSLocalizedString("Deselect all", comment: ""),
+        style: .plain,
+        target: self,
+        action: #selector(onDeselectAllButtonTapped)
+    )
 
     // MARK: - Darken screen props
 
@@ -123,7 +132,8 @@ class ASCSharingAddRightHoldersView {
         navigationController: UINavigationController?,
         searchControllerDelegate: UISearchControllerDelegate,
         searchResultsUpdating: UISearchResultsUpdating,
-        searchBarDelegate: UISearchBarDelegate
+        searchBarDelegate: UISearchBarDelegate,
+        showsScopeBar: Bool
     ) {
         self.view = view
         self.navigationController = navigationController
@@ -131,6 +141,7 @@ class ASCSharingAddRightHoldersView {
         self.searchControllerDelegate = searchControllerDelegate
         self.searchResultsUpdating = searchResultsUpdating
         self.searchBarDelegate = searchBarDelegate
+        self.showsScopeBar = showsScopeBar
     }
 
     // MARK: - Deinit
@@ -284,8 +295,10 @@ extension ASCSharingAddRightHoldersView {
         searchController.searchBar.delegate = searchBarDelegate
         searchController.obscuresBackgroundDuringPresentation = false
         searchController.searchBar.placeholder = NSLocalizedString("Search", comment: "")
-        searchController.searchBar.showsScopeBar = true
-        searchController.searchBar.scopeButtonTitles = RightHoldersTableType.allCases.map { $0.getTitle() }
+        searchController.searchBar.showsScopeBar = showsScopeBar
+        if showsScopeBar {
+            searchController.searchBar.scopeButtonTitles = RightHoldersTableType.allCases.map { $0.getTitle() }
+        }
         if UIDevice.phone {
             searchController.searchBar.inputAccessoryView = keyboardToolbar
         }

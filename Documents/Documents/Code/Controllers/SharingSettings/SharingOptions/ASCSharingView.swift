@@ -53,7 +53,7 @@ class ASCSharingView {
         navBarHeigh = navigationController?.navigationBar.height ?? 0
     }
 
-    public func configureNavigationItem(_ navigationItem: UINavigationItem, allowAddRightHoders: Bool) {
+    public func configureNavigationItem(_ navigationItem: UINavigationItem, allowAddRightHoders: Bool, allowLinkBarButton: Bool) {
         navigationItem.leftBarButtonItem = doneBarBtn
         navigationItem.title = NSLocalizedString("Sharing settings", comment: "")
 
@@ -61,7 +61,9 @@ class ASCSharingView {
         if allowAddRightHoders {
             items.append(addRightsBarButtonItem)
         }
-        items.append(linkBarButtonItem)
+        if allowLinkBarButton {
+            items.append(linkBarButtonItem)
+        }
 
         navigationItem.rightBarButtonItems = items
     }

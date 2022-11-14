@@ -256,7 +256,6 @@ extension ASCDocumentsViewController {
         else {
             return nil
         }
-
         let actions = provider.actions(for: folder)
 
         var rootActions: [UIMenuElement] = []
@@ -271,6 +270,56 @@ extension ASCDocumentsViewController {
                 ) { [unowned self] action in
                     cell.hideSwipe(animated: true)
                     self.rename(cell: cell)
+                }
+            )
+        }
+
+        if actions.contains(.pin) {
+            rootActions.append(
+                UIAction(
+                    title: NSLocalizedString("Pin to top", comment: "Button title"),
+                    image: UIImage(systemName: "pin")
+                ) { [unowned self] action in
+                    cell.hideSwipe(animated: true)
+                    self.pinToggle(cell: cell)
+                }
+            )
+        }
+
+        if actions.contains(.unpin) {
+            rootActions.append(
+                UIAction(
+                    title: NSLocalizedString("Unpin", comment: "Button title"),
+                    image: UIImage(systemName: "pin.slash")
+                ) { [unowned self] action in
+                    cell.hideSwipe(animated: true)
+                    self.pinToggle(cell: cell)
+                }
+            )
+        }
+
+        /// Archive
+
+        if actions.contains(.archive) {
+            rootActions.append(
+                UIAction(
+                    title: NSLocalizedString("Archive", comment: "Button title"),
+                    image: UIImage(systemName: "archivebox")
+                ) { [unowned self] action in
+                    cell.hideSwipe(animated: true)
+                    self.archive(cell: cell)
+                }
+            )
+        }
+
+        if actions.contains(.unarchive) {
+            rootActions.append(
+                UIAction(
+                    title: NSLocalizedString("Move from archive", comment: "Button title"),
+                    image: UIImage(systemName: "arrow.up.bin")
+                ) { [unowned self] action in
+                    cell.hideSwipe(animated: true)
+                    self.unarchive(cell: cell)
                 }
             )
         }
@@ -316,6 +365,30 @@ extension ASCDocumentsViewController {
             rootActions.append(
                 UIAction(
                     title: NSLocalizedString("Sharing Settings", comment: "Button title"),
+                    image: UIImage(systemName: "person.2")
+                ) { [unowned self] action in
+                    cell.hideSwipe(animated: true)
+                    navigator.navigate(to: .shareSettings(entity: folder))
+                }
+            )
+        }
+
+        if actions.contains(.addUsers) {
+            rootActions.append(
+                UIAction(
+                    title: NSLocalizedString("Add users", comment: "Button title"),
+                    image: UIImage(systemName: "person.badge.plus")
+                ) { [unowned self] action in
+                    cell.hideSwipe(animated: true)
+                    navigator.navigate(to: .addUsers(entity: folder))
+                }
+            )
+        }
+
+        if actions.contains(.info) {
+            rootActions.append(
+                UIAction(
+                    title: NSLocalizedString("Info", comment: "Button title"),
                     image: UIImage(systemName: "person.2")
                 ) { [unowned self] action in
                     cell.hideSwipe(animated: true)
@@ -551,6 +624,16 @@ extension ASCDocumentsViewController {
             return true
         }
 
+        // Archive
+        let archive = MGSwipeButton(
+            title: NSLocalizedString("Archive", comment: "Button title"),
+            icon: Asset.Images.categoryArchived.image,
+            backgroundColor: ASCConstants.Colors.grey
+        ) { [unowned self] cell -> Bool in
+            self.archive(cell: cell)
+            return true
+        }
+
         // More
         let more = MGSwipeButton(
             title: NSLocalizedString("More", comment: "Button title"),
@@ -571,6 +654,7 @@ extension ASCDocumentsViewController {
         if actions.contains(.restore) { items.append(restore) }
         if actions.contains(.rename) { items.append(rename) }
         if actions.contains(.copy) { items.append(copy) }
+        if actions.contains(.archive) { items.append(archive) }
 
         if items.count > 2 {
             items = Array(items[..<2])
@@ -837,6 +921,58 @@ extension ASCDocumentsViewController {
             )
         }
 
+        if actions.contains(.pin) {
+            actionAlertController.addAction(
+                UIAlertAction(
+                    title: NSLocalizedString("Pin to top", comment: "Button title"),
+                    style: .default,
+                    handler: { [unowned self] action in
+                        cell.hideSwipe(animated: true)
+                        self.pinToggle(cell: cell)
+                    }
+                )
+            )
+        }
+
+        if actions.contains(.unpin) {
+            actionAlertController.addAction(
+                UIAlertAction(
+                    title: NSLocalizedString("Unpin", comment: "Button title"),
+                    style: .default,
+                    handler: { [unowned self] action in
+                        cell.hideSwipe(animated: true)
+                        self.pinToggle(cell: cell)
+                    }
+                )
+            )
+        }
+
+        if actions.contains(.archive) {
+            actionAlertController.addAction(
+                UIAlertAction(
+                    title: NSLocalizedString("Archive", comment: "Button title"),
+                    style: .default,
+                    handler: { [unowned self] action in
+                        cell.hideSwipe(animated: true)
+                        self.archive(cell: cell)
+                    }
+                )
+            )
+        }
+
+        if actions.contains(.unarchive) {
+            actionAlertController.addAction(
+                UIAlertAction(
+                    title: NSLocalizedString("Move from archive", comment: "Button title"),
+                    style: .default,
+                    handler: { [unowned self] action in
+                        cell.hideSwipe(animated: true)
+                        self.archive(cell: cell)
+                    }
+                )
+            )
+        }
+
         if actions.contains(.copy) {
             actionAlertController.addAction(
                 UIAlertAction(
@@ -880,6 +1016,32 @@ extension ASCDocumentsViewController {
             actionAlertController.addAction(
                 UIAlertAction(
                     title: NSLocalizedString("Sharing Settings", comment: "Button title"),
+                    style: .default,
+                    handler: { [unowned self] action in
+                        cell.hideSwipe(animated: true)
+                        navigator.navigate(to: .shareSettings(entity: folder))
+                    }
+                )
+            )
+        }
+
+        if actions.contains(.addUsers) {
+            actionAlertController.addAction(
+                UIAlertAction(
+                    title: NSLocalizedString("Add users", comment: "Button title"),
+                    style: .default,
+                    handler: { [unowned self] action in
+                        cell.hideSwipe(animated: true)
+                        navigator.navigate(to: .addUsers(entity: folder))
+                    }
+                )
+            )
+        }
+
+        if actions.contains(.info) {
+            actionAlertController.addAction(
+                UIAlertAction(
+                    title: NSLocalizedString("Info", comment: "Button title"),
                     style: .default,
                     handler: { [unowned self] action in
                         cell.hideSwipe(animated: true)

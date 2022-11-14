@@ -12,8 +12,10 @@ struct ASCSharingRightHolderViewModel: ASCNamedProtocol, ASCSharingRightHolderVi
     var id: String
     var avatarUrl: String?
     var name: String
+    var email: String?
     var department: String?
     var isOwner: Bool = false
+    var isImportant: Bool = false
     var rightHolderType: ASCSharingRightHolderType?
     var access: ASCSharingRightHolderViewModelAccess?
 }

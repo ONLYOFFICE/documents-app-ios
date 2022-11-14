@@ -39,6 +39,9 @@ class ASCSharingSettingsVerifyRightHoldersViewController: ASCBaseTableViewContro
     private lazy var accessProvider: ASCSharingSettingsAccessProvider = ASCSharingSettingsAccessDefaultProvider()
     private var currentlyApplying: Bool = false
     private var hud: MBProgressHUD?
+    private var isRoom: Bool {
+        router?.dataStore?.entity?.isRoom ?? false
+    }
 
     // MARK: Object lifecycle
 
@@ -60,7 +63,7 @@ class ASCSharingSettingsVerifyRightHoldersViewController: ASCBaseTableViewContro
 
     private func setup() {
         let viewController = self
-        let interactor = ASCSharingSettingsVerifyRightHoldersInteractor(apiWorker: ASCShareSettingsAPIWorker())
+        let interactor = ASCSharingSettingsVerifyRightHoldersInteractor(apiWorker: ASCShareSettingsAPIWorkerFactory().get(by: ASCPortalTypeDefinderByCurrentConnection().definePortalType()))
         let presenter = ASCSharingSettingsVerifyRightHoldersPresenter()
         let router = ASCSharingSettingsVerifyRightHoldersRouter()
         viewController.interactor = interactor
@@ -84,8 +87,8 @@ class ASCSharingSettingsVerifyRightHoldersViewController: ASCBaseTableViewContro
     }
 
     func load() {
-        title = NSLocalizedString("Sharing settings", comment: "")
-        verifyRightHoldersView = ASCSharingSettingsVerifyRightHoldersView(view: view, tableView: tableView)
+        title = isRoom ? NSLocalizedString("Access rights", comment: "") : NSLocalizedString("Sharing settings", comment: "")
+        verifyRightHoldersView = ASCSharingSettingsVerifyRightHoldersView(view: view, tableView: tableView, isRoom: isRoom)
         verifyRightHoldersView?.navigationController = navigationController
         verifyRightHoldersView?.navigationItem = navigationItem
         verifyRightHoldersView?.delegate = self
@@ -167,7 +170,7 @@ class ASCSharingSettingsVerifyRightHoldersViewController: ASCBaseTableViewContro
             }
             if let index = usersModels.firstIndex(where: { $0.id == viewModel.model.id }) {
                 usersModels[index] = viewModel.model
-                tableView.reloadRows(at: [IndexPath(row: index, section: Section.users.rawValue)], with: .automatic)
+                tableView.reloadRows(at: [IndexPath(row: index, section: isRoom ? 0 : Section.users.rawValue)], with: .automatic)
             } else if let index = groupsModels.firstIndex(where: { $0.id == viewModel.model.id }) {
                 groupsModels[index] = viewModel.model
                 tableView.reloadRows(at: [IndexPath(row: index, section: Section.groups.rawValue)], with: .automatic)
@@ -210,7 +213,10 @@ extension ASCSharingSettingsVerifyRightHoldersViewController: ASCSharingSettings
 
 extension ASCSharingSettingsVerifyRightHoldersViewController {
     override func numberOfSections(in tableView: UITableView) -> Int {
-        Section.allCases.count
+        guard !isRoom else {
+            return Section.allCases.count - 1
+        }
+        return Section.allCases.count
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -292,7 +298,7 @@ extension ASCSharingSettingsVerifyRightHoldersViewController {
 
     override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         let hasRows = self.tableView(tableView, numberOfRowsInSection: section) > 0
-        return hasRows ? getSection(sectionRawValue: section).title() : nil
+        return hasRows ? getSection(sectionRawValue: section).title(isRoom: isRoom) : nil
     }
 
     override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
@@ -339,6 +345,9 @@ extension ASCSharingSettingsVerifyRightHoldersViewController {
     }
 
     private func getSection(sectionRawValue rawValue: Int) -> Section {
+        guard !isRoom else {
+            return Section(rawValue: rawValue + 1)!
+        }
         guard let section = Section(rawValue: rawValue) else { fatalError("Couldn't find a section by index: \(rawValue)") }
         return section
     }
@@ -352,10 +361,14 @@ extension ASCSharingSettingsVerifyRightHoldersViewController {
         case users
         case groups
 
-        func title() -> String? {
+        func title(isRoom: Bool = false) -> String? {
             switch self {
             case .notify: return nil
-            case .users: return NSLocalizedString("Users", comment: "")
+            case .users:
+                guard !isRoom else {
+                    return NSLocalizedString("New users", comment: "")
+                }
+                return NSLocalizedString("Users", comment: "")
             case .groups: return NSLocalizedString("Groups", comment: "")
             }
         }

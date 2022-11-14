@@ -75,12 +75,18 @@ class ASCSharingRightHolderTableViewCell: UITableViewCell, ASCReusedIdentifierPr
                                   placeholder: Asset.Images.avatarDefault.image)
         } else if viewModel.rightHolderType == .group {
             avatar.image = Asset.Images.avatarDefaultGroup.image
+        } else if viewModel.name.isValidEmail {
+            avatar.image = UIImage(systemName: "at.circle.fill")
+            avatar.tintColor = .secondaryLabel
         } else {
             avatar.image = Asset.Images.avatarDefault.image
         }
 
         title.text = viewModel.name
-        if let department = viewModel.department {
+
+        if let email = viewModel.email {
+            subtitle.text = email
+        } else if let department = viewModel.department {
             subtitle.text = department
         }
 

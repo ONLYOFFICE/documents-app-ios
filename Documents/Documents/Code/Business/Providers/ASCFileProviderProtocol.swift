@@ -26,6 +26,12 @@ struct ASCEntityActions: OptionSet {
     static let duplicate = ASCEntityActions(rawValue: 1 << 12)
     static let favarite = ASCEntityActions(rawValue: 1 << 13)
     static let new = ASCEntityActions(rawValue: 1 << 14)
+    static let archive = ASCEntityActions(rawValue: 1 << 15)
+    static let info = ASCEntityActions(rawValue: 1 << 16)
+    static let addUsers = ASCEntityActions(rawValue: 1 << 17)
+    static let pin = ASCEntityActions(rawValue: 1 << 18)
+    static let unpin = ASCEntityActions(rawValue: 1 << 19)
+    static let unarchive = ASCEntityActions(rawValue: 1 << 20)
 }
 
 typealias ASCProviderUserInfoHandler = (_ success: Bool, _ error: Error?) -> Void
@@ -48,6 +54,10 @@ extension ASCProviderDelegate {
 }
 
 // MARK: - ASCBaseFileProvider protocol
+
+protocol FileProviderHolder: AnyObject {
+    var provider: ASCFileProviderProtocol? { get set }
+}
 
 protocol ASCFileProviderProtocol {
     // Information
@@ -112,6 +122,9 @@ protocol ASCFileProviderProtocol {
     // Open files
     func open(file: ASCFile, openViewMode: Bool, canEdit: Bool)
     func preview(file: ASCFile, files: [ASCFile]?, in view: UIView?)
+
+    // Action Handlers
+    func handle(action: ASCEntityActions, folder: ASCFolder, handler: ASCEntityHandler?)
 }
 
 // MARK: - ASCFileProvider protocol
@@ -148,6 +161,10 @@ extension ASCFileProviderProtocol {
     func allowEdit(entity: AnyObject?) -> Bool { return false }
     func allowDelete(entity: AnyObject?) -> Bool { return false }
     func actions(for entity: ASCEntity?) -> ASCEntityActions { return [] }
+    func handle(action: ASCEntityActions, folder: ASCFolder, handler: ASCEntityHandler? = nil) {
+        log.error("Handle action \(action.rawValue) for folder \(folder.title) doesn't supported")
+        handler?(.error, folder, "Unsupported handle action")
+    }
 }
 
 // MARK: - ASCSortableFileProvider protocol

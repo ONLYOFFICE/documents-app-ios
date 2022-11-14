@@ -1223,7 +1223,7 @@ extension ASCEditorManager {
             ]
 
             // Enabling the Favorite function only on portals version 11 and higher
-            if let communityServerVersion = OnlyofficeApiClient.shared.serverVersion,
+            if let communityServerVersion = OnlyofficeApiClient.shared.serverVersion?.community,
                communityServerVersion.isVersion(greaterThanOrEqualTo: "11.0")
             {
                 documentInfo["favorite"] = file.isFavorite && !user.isVisitor

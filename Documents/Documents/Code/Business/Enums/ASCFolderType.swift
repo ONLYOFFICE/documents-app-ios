@@ -19,6 +19,8 @@ enum ASCFolderType: Int {
     case onlyofficeProjects = 8
     case onlyofficeFavorites = 10
     case onlyofficeRecent = 11
+    case onlyofficeRoomShared = 14
+    case onlyofficeRoomArchived = 20
 
     case deviceDocuments = 50
     case deviceTrash = 51

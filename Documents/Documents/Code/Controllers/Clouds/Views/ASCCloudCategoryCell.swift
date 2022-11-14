@@ -57,9 +57,6 @@ class ASCCloudCategoryCell: UITableViewCell {
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-//
-//        selectedBackgroundView = UIView()
-//        selectedBackgroundView?.backgroundColor = UIColor(white: 0.75, alpha: 1)
     }
 
     func updateData() {

@@ -13,6 +13,7 @@ class ASCFolderCell: MGSwipeTableCell {
     // MARK: - Properties
 
     @IBOutlet var title: UILabel!
+    @IBOutlet var titleImage: UIImageView!
     @IBOutlet var owner: UILabel!
     @IBOutlet var date: UILabel!
     @IBOutlet var icon: UIImageView!
@@ -93,8 +94,15 @@ class ASCFolderCell: MGSwipeTableCell {
         date?.text = (folderInfo.created != nil) ? dateFormatter.string(from: folderInfo.created!) : nil
 
         /// Thumb view
+        if let roomType = folder?.roomType {
+            icon.image = roomType.image
+        } else {
+            icon.image = Asset.Images.listFolder.image
+        }
 
-        icon.image = Asset.Images.listFolder.image
+        if let folder = folder, folder.pinned {
+            titleImage.image = Asset.Images.pin.image
+        }
 
         if let provider = folder?.providerType {
             switch provider {
@@ -128,5 +136,14 @@ class ASCFolderCell: MGSwipeTableCell {
                 break
             }
         }
+
+        if titleImage.image != nil {
+            titleStackView?.addArrangedSubview(titleImage)
+        }
+    }
+
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        titleImage.image = nil
     }
 }

@@ -10,5 +10,6 @@ import Foundation
 
 enum ASCPortalType: String {
     case personal
+    case docSpace
     case unknown
 }

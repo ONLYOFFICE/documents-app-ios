@@ -9,6 +9,10 @@
 import Foundation
 import ObjectMapper
 
+protocol FolderHolder: AnyObject {
+    var folder: ASCFolder? { get set }
+}
+
 class ASCFolder: ASCEntity {
     var parentId: String?
     var filesCount: Int = 0
@@ -17,6 +21,8 @@ class ASCFolder: ASCEntity {
     var title: String = ""
     var access: ASCEntityAccess = .none
     var shared: Bool = false
+    var pinned: Bool = false
+    var roomType: ASCRoomType?
     var rootFolderType: ASCFolderType = .unknown
     var updated: Date?
     var updatedBy: ASCUser?
@@ -52,6 +58,8 @@ class ASCFolder: ASCEntity {
         title <- (map["title"], ASCStringTransform())
         access <- (map["access"], EnumTransform())
         shared <- map["shared"]
+        pinned <- map["pinned"]
+        roomType <- (map["roomType"], EnumTransform())
         rootFolderType <- (map["rootFolderType"], EnumTransform())
         updated <- (map["updated"], ASCDateTransform())
         updatedBy <- map["updatedBy"]
@@ -75,6 +83,7 @@ class ASCFolder: ASCEntity {
             folder.title = title
             folder.access = access
             folder.shared = shared
+            folder.roomType = roomType
             folder.rootFolderType = rootFolderType
             folder.updated = updated
             folder.updatedBy = updatedBy
@@ -89,5 +98,12 @@ class ASCFolder: ASCEntity {
         }
 
         return folder
+    }
+}
+
+extension ASCEntity {
+    var isRoom: Bool {
+        guard let folder = self as? ASCFolder, folder.roomType != nil else { return false }
+        return true
     }
 }

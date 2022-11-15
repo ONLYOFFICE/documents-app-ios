@@ -103,15 +103,14 @@ class ASCDocumentsViewController: ASCBaseTableViewController, UIGestureRecognize
     private lazy var searchController: UISearchController = {
         $0.delegate = self
         $0.searchResultsUpdater = self
-        $0.dimsBackgroundDuringPresentation = false
         $0.searchBar.searchBarStyle = .minimal
         $0.searchBar.tintColor = view.tintColor
 
-        if #available(iOS 11.0, *) {
+        if #available(iOS 16.0, *) {
+            navigationItem.preferredSearchBarPlacement = .stacked
+        } else {
             navigationItem.searchController = nil
             navigationItem.hidesSearchBarWhenScrolling = featureLargeTitle
-        } else {
-            tableView.tableHeaderView = $0.searchBar
         }
         return $0
     }(UISearchController(searchResultsController: nil))

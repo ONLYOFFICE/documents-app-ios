@@ -242,7 +242,6 @@
 		FC142A8528981A8500EDE7CE /* ASCSharingSettingsAccessForExternalLinkNotesProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC142A7E28981A8500EDE7CE /* ASCSharingSettingsAccessForExternalLinkNotesProvider.swift */; };
 		FC142A8628981A8500EDE7CE /* ASCSharingSettingsAccessForExternalLinkNotesProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC142A7E28981A8500EDE7CE /* ASCSharingSettingsAccessForExternalLinkNotesProvider.swift */; };
 		FC142A8828981AE000EDE7CE /* UITextField+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC142A8728981AE000EDE7CE /* UITextField+Extensions.swift */; };
-		FC142A8928981AE000EDE7CE /* UITextField+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC142A8728981AE000EDE7CE /* UITextField+Extensions.swift */; };
 		FC142A8B28981B6000EDE7CE /* ASCDropboxSDKWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC142A8A28981B6000EDE7CE /* ASCDropboxSDKWrapper.swift */; };
 		FC142A8C28981B6000EDE7CE /* ASCDropboxSDKWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC142A8A28981B6000EDE7CE /* ASCDropboxSDKWrapper.swift */; };
 		FC142A8E28981BEA00EDE7CE /* UITableView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC142A8D28981BEA00EDE7CE /* UITableView+Extensions.swift */; };
@@ -859,7 +858,6 @@
 
 /* Begin PBXFileReference section */
 		0915017FDB3634B5249B555E /* Pods-Documents-witheditors.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Documents-witheditors.debug.xcconfig"; path = "../Pods/Target Support Files/Pods-Documents-witheditors/Pods-Documents-witheditors.debug.xcconfig"; sourceTree = "<group>"; };
-		1B402BC0B41F5EA0B160A88F /* Pods-Documents-DocumentsTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Documents-DocumentsTests.release.xcconfig"; path = "../Pods/Target Support Files/Pods-Documents-DocumentsTests/Pods-Documents-DocumentsTests.release.xcconfig"; sourceTree = "<group>"; };
 		1D128F9B26B3285300603B0F /* ASCCentredLabelHeaderFooterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCCentredLabelHeaderFooterView.swift; sourceTree = "<group>"; };
 		1D12D35D265E467900C8C519 /* ASCOnlyofficeCategoriesProviderFilterProxy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCOnlyofficeCategoriesProviderFilterProxy.swift; sourceTree = "<group>"; };
 		1D14AABE268E0B62009E48AD /* ASCSharingRightHolderViewModelProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCSharingRightHolderViewModelProtocol.swift; sourceTree = "<group>"; };
@@ -976,20 +974,15 @@
 		223510FCC80632095899444E /* Pods_Documents_DocumentsTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Documents_DocumentsTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		32E59E23DB58348D18FC0993 /* Pods-Documents-withouteditors.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Documents-withouteditors.release.xcconfig"; path = "../Pods/Target Support Files/Pods-Documents-withouteditors/Pods-Documents-withouteditors.release.xcconfig"; sourceTree = "<group>"; };
 		3591A05467A432968D686ECF /* Pods-DocumentsTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DocumentsTests.release.xcconfig"; path = "../Pods/Target Support Files/Pods-DocumentsTests/Pods-DocumentsTests.release.xcconfig"; sourceTree = "<group>"; };
-		3BF384B26A0BED3EFC4A3889 /* Pods-Documents-Dev.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Documents-Dev.release.xcconfig"; path = "../Pods/Target Support Files/Pods-Documents-Dev/Pods-Documents-Dev.release.xcconfig"; sourceTree = "<group>"; };
 		3FCB9A5180DCB4B88DC1FAF4 /* Pods-Documents.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Documents.debug.xcconfig"; path = "../Pods/Target Support Files/Pods-Documents/Pods-Documents.debug.xcconfig"; sourceTree = "<group>"; };
 		623F3AE813DFF5F90DB163B1 /* Pods-Documents-witheditors.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Documents-witheditors.release.xcconfig"; path = "../Pods/Target Support Files/Pods-Documents-witheditors/Pods-Documents-witheditors.release.xcconfig"; sourceTree = "<group>"; };
 		69EBD4C91EF2AB9D00D3C685 /* UINavigationController+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UINavigationController+Extension.swift"; sourceTree = "<group>"; };
-		6CBC0ED0667B3A2030713452 /* Pods-Documents-Dev.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Documents-Dev.debug.xcconfig"; path = "../Pods/Target Support Files/Pods-Documents-Dev/Pods-Documents-Dev.debug.xcconfig"; sourceTree = "<group>"; };
 		7390E689713220A904E49074 /* Pods-Documents-withouteditors.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Documents-withouteditors.debug.xcconfig"; path = "../Pods/Target Support Files/Pods-Documents-withouteditors/Pods-Documents-withouteditors.debug.xcconfig"; sourceTree = "<group>"; };
-		776605EDCAB83C1E517628AF /* Pods-Documents-DocumentsTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Documents-DocumentsTests.debug.xcconfig"; path = "../Pods/Target Support Files/Pods-Documents-DocumentsTests/Pods-Documents-DocumentsTests.debug.xcconfig"; sourceTree = "<group>"; };
 		8A79BCD52080DD5C00998DA7 /* ASConverterOptionsAlert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASConverterOptionsAlert.swift; sourceTree = "<group>"; };
 		92C4B2EE0CEF31DA5A45CD1A /* Pods_Documents_Alpha.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Documents_Alpha.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B7CE7D158863590DD1A006AC /* Pods-Documents.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Documents.release.xcconfig"; path = "../Pods/Target Support Files/Pods-Documents/Pods-Documents.release.xcconfig"; sourceTree = "<group>"; };
 		C98C6D1CF16699DFAAAA3A64 /* Pods_DocumentsTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DocumentsTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		D896FEA0D07E5E4FE956EF60 /* Pods-Documents-Alpha.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Documents-Alpha.debug.xcconfig"; path = "../Pods/Target Support Files/Pods-Documents-Alpha/Pods-Documents-Alpha.debug.xcconfig"; sourceTree = "<group>"; };
 		E06576ABBBB6A217572F0C89 /* Pods_Documents_withouteditors.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Documents_withouteditors.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		E44246600744D0821FA7F89D /* Pods-Documents-Alpha.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Documents-Alpha.release.xcconfig"; path = "../Pods/Target Support Files/Pods-Documents-Alpha/Pods-Documents-Alpha.release.xcconfig"; sourceTree = "<group>"; };
 		F336546127E4903400ABBEB3 /* KeyboardManagerHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardManagerHelper.swift; sourceTree = "<group>"; };
 		F33E473A27AD9BC200EFF6D9 /* ASCWebKitViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCWebKitViewController.swift; sourceTree = "<group>"; };
 		F377689427CFCF2D0044EDA6 /* ASCConnectStorageNextCloudServerController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCConnectStorageNextCloudServerController.swift; sourceTree = "<group>"; };
@@ -2149,14 +2142,8 @@
 			children = (
 				3FCB9A5180DCB4B88DC1FAF4 /* Pods-Documents.debug.xcconfig */,
 				B7CE7D158863590DD1A006AC /* Pods-Documents.release.xcconfig */,
-				776605EDCAB83C1E517628AF /* Pods-Documents-DocumentsTests.debug.xcconfig */,
-				1B402BC0B41F5EA0B160A88F /* Pods-Documents-DocumentsTests.release.xcconfig */,
 				FF1B246C8E6383E9C844D7A7 /* Pods-DocumentsTests.debug.xcconfig */,
 				3591A05467A432968D686ECF /* Pods-DocumentsTests.release.xcconfig */,
-				6CBC0ED0667B3A2030713452 /* Pods-Documents-Dev.debug.xcconfig */,
-				3BF384B26A0BED3EFC4A3889 /* Pods-Documents-Dev.release.xcconfig */,
-				D896FEA0D07E5E4FE956EF60 /* Pods-Documents-Alpha.debug.xcconfig */,
-				E44246600744D0821FA7F89D /* Pods-Documents-Alpha.release.xcconfig */,
 				0915017FDB3634B5249B555E /* Pods-Documents-witheditors.debug.xcconfig */,
 				623F3AE813DFF5F90DB163B1 /* Pods-Documents-witheditors.release.xcconfig */,
 				7390E689713220A904E49074 /* Pods-Documents-withouteditors.debug.xcconfig */,
@@ -3931,7 +3918,6 @@
 				FC7081232812E2260057FCD2 /* ASCOnlyofficeCategoriesProviderProtocol.swift in Sources */,
 				FC142A7728981A1F00EDE7CE /* ASCNotificationSettingsViewController.swift in Sources */,
 				FC7081242812E2260057FCD2 /* NetworkingServerError.swift in Sources */,
-				FC142A8928981AE000EDE7CE /* UITextField+Extensions.swift in Sources */,
 				FC7081252812E2260057FCD2 /* PasscodeLockConfigurationType.swift in Sources */,
 				FC7081262812E2260057FCD2 /* ASCSharingSettingsAccessViewController.swift in Sources */,
 				FC7081272812E2260057FCD2 /* ASCShareSettingsAPIWorker.swift in Sources */,

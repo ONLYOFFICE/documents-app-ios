@@ -1366,7 +1366,7 @@ class ASCDocumentsViewController: ASCBaseTableViewController, UIGestureRecognize
             ),
             UIAction(
                 title: NSLocalizedString("Files", comment: ""),
-                image: UIImage(systemName: "doc"),
+                image: Asset.Images.menuFiles.image,
                 handler: { [weak self] action in
                     self?.selectAllItems(type: ASCFile.self)
                 }
@@ -1380,21 +1380,21 @@ class ASCDocumentsViewController: ASCBaseTableViewController, UIGestureRecognize
             ),
             UIAction(
                 title: NSLocalizedString("Documents", comment: ""),
-                image: UIImage(systemName: "doc.text"),
+                image: Asset.Images.menuDocuments.image,
                 handler: { [weak self] action in
                     self?.selectAllItems(type: ASCFile.self, extensions: ASCConstants.FileExtensions.documents)
                 }
             ),
             UIAction(
                 title: NSLocalizedString("Spreadsheets", comment: ""),
-                image: UIImage(systemName: "tablecells"),
+                image: Asset.Images.menuSpreadsheet.image,
                 handler: { [weak self] action in
                     self?.selectAllItems(type: ASCFile.self, extensions: ASCConstants.FileExtensions.spreadsheets)
                 }
             ),
             UIAction(
                 title: NSLocalizedString("Presentations", comment: ""),
-                image: UIImage(systemName: "play.rectangle"),
+                image: Asset.Images.menuPresentation.image,
                 handler: { [weak self] action in
                     self?.selectAllItems(type: ASCFile.self, extensions: ASCConstants.FileExtensions.presentations)
                 }

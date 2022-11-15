@@ -405,6 +405,12 @@
 		FCCD8CA72859B80700ECD606 /* ASCDevelopOptionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCCD8CA62859B80700ECD606 /* ASCDevelopOptionsViewController.swift */; };
 		FCCDE680204973F500CFC653 /* ASCDocumentConverterTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCCDE67F204973F500CFC653 /* ASCDocumentConverterTest.swift */; };
 		FCCDE68220497C0D00CFC653 /* documents in Resources */ = {isa = PBXBuildFile; fileRef = FCCDE68120497C0D00CFC653 /* documents */; };
+		FCCF2EF92922852900E2C647 /* ASCIndexTransform.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC059D9B1E82657F00BC2F5E /* ASCIndexTransform.swift */; };
+		FCCF2EFA2922853000E2C647 /* ASCStringTransform.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC7CF50F1EF3E76F00C0A64F /* ASCStringTransform.swift */; };
+		FCCF2EFB2922856E00E2C647 /* ASCDateTransform.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC059D971E82584400BC2F5E /* ASCDateTransform.swift */; };
+		FCCF2EFC2922857500E2C647 /* ASCEntityAccess.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC41D8072265D9DD00A155C2 /* ASCEntityAccess.swift */; };
+		FCCF2EFD2922857C00E2C647 /* ASCFolderType.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC41D8092265DA5E00A155C2 /* ASCFolderType.swift */; };
+		FCCF2EFE292285DD00E2C647 /* ASCShareAccess.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC41D8032265D8DA00A155C2 /* ASCShareAccess.swift */; };
 		FCD04FCA1E7FDECF008641CD /* UIAlertController+SwiftAlertController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCD04FC91E7FDECF008641CD /* UIAlertController+SwiftAlertController.swift */; };
 		FCD2DD6C2702F70400D31BD5 /* ManagedAppConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCD2DD6B2702F70400D31BD5 /* ManagedAppConfig.swift */; };
 		FCD2DD6E2702F70400D31BD5 /* ManagedAppConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCD2DD6B2702F70400D31BD5 /* ManagedAppConfig.swift */; };
@@ -3343,6 +3349,7 @@
 				FC4D864F20C50AE00047B871 /* UINavigationController+Extension.swift in Sources */,
 				FC4D864420C50AE00047B871 /* Data+Extension.swift in Sources */,
 				FC4D864320C50AE00047B871 /* Dictionary+Extension.swift in Sources */,
+				FCCF2EFE292285DD00E2C647 /* ASCShareAccess.swift in Sources */,
 				1DEB9973274E3ED10071C1DB /* ASCShareSettingsAPIWorkerFactoryTests.swift in Sources */,
 				FC7E457029226A35006C4CA1 /* ASCDeepLink.swift in Sources */,
 				1D76B047275B746200389C61 /* ASCNextCloudProviderTests.swift in Sources */,
@@ -3350,6 +3357,7 @@
 				1D14AAC72694F0C4009E48AD /* ASCOnlyofficeFileInternalLinkMakerTests.swift in Sources */,
 				FC4D864020C50A710047B871 /* UIDevice+Extension.swift in Sources */,
 				FC4D864820C50AE00047B871 /* MBProgressHUD+Extension.swift in Sources */,
+				FCCF2EFC2922857500E2C647 /* ASCEntityAccess.swift in Sources */,
 				FC2882BB28EC6A850034E732 /* ASCConnectStorageWebDavControllerConfiguration.swift in Sources */,
 				1D1A2E412661018100D0335B /* Assets.swift in Sources */,
 				FC4D864220C50AE00047B871 /* Common+Extension.swift in Sources */,
@@ -3362,6 +3370,7 @@
 				1DA5E670269E2293005F59E1 /* ASCASCSharingSettingsVerifyRightHoldersTests.swift in Sources */,
 				1DC43EEC26A1EDF700373D5A /* ASCSharingSettingsVerifyRightHoldersInteractorTests.swift in Sources */,
 				1DA5E669269DBABC005F59E1 /* ASCSharingAddRightHoldersDataStoreTests.swift in Sources */,
+				FCCF2EFD2922857C00E2C647 /* ASCFolderType.swift in Sources */,
 				FCD2DD71270302B500D31BD5 /* ManagedAppConfigTest.swift in Sources */,
 				FC4D864A20C50AE00047B871 /* UIAlertController+Extension.swift in Sources */,
 				FC7E456A29226A35006C4CA1 /* ASCGroup.swift in Sources */,
@@ -3369,6 +3378,7 @@
 				FC4D864B20C50AE00047B871 /* UIAlertController+SwiftAlertController.swift in Sources */,
 				FC56B5C720C017C300557C1F /* ASCStyles.swift in Sources */,
 				FC4D864E20C50AE00047B871 /* NSLayoutConstraint+Extensions.swift in Sources */,
+				FCCF2EFA2922853000E2C647 /* ASCStringTransform.swift in Sources */,
 				FC77846D24756CDB005ED631 /* ASCFileProviderType.swift in Sources */,
 				FC4D864120C50AC00047B871 /* ASCConstants.swift in Sources */,
 				FC7E457429226A35006C4CA1 /* ASCPushSubscribed.swift in Sources */,
@@ -3387,7 +3397,9 @@
 				FC7E457829226A35006C4CA1 /* ASCRoomType.swift in Sources */,
 				1D29915E274FC38300A06F3B /* ASCAccessToAddRightHoldersCheckerByPortalDefinderTests.swift in Sources */,
 				1D2E3B9526BB338D00BEBE9D /* ASCSharingSettingsAccessViewControllerTests.swift in Sources */,
+				FCCF2EFB2922856E00E2C647 /* ASCDateTransform.swift in Sources */,
 				1D71107D26A5A9A000E00421 /* ASCShareSettingsAPIWorkerTests.swift in Sources */,
+				FCCF2EF92922852900E2C647 /* ASCIndexTransform.swift in Sources */,
 				FC7E456E29226A35006C4CA1 /* ASCFolder.swift in Sources */,
 				FC7E456429226A35006C4CA1 /* ASCAccount.swift in Sources */,
 			);

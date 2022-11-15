@@ -14,9 +14,9 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "FC7080CD2812E2260057FCD2"
-               BuildableName = "Documents-witheditors.app"
-               BlueprintName = "Documents-witheditors"
+               BlueprintIdentifier = "FCFDAA8C1E48A10C007A240C"
+               BuildableName = "Documents-withouteditors.app"
+               BlueprintName = "Documents-withouteditors"
                ReferencedContainer = "container:Documents-opensource.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -44,9 +44,9 @@
          runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "FC7080CD2812E2260057FCD2"
-            BuildableName = "Documents-witheditors.app"
-            BlueprintName = "Documents-witheditors"
+            BlueprintIdentifier = "FCFDAA8C1E48A10C007A240C"
+            BuildableName = "Documents-withouteditors.app"
+            BlueprintName = "Documents-withouteditors"
             ReferencedContainer = "container:Documents-opensource.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
@@ -61,9 +61,9 @@
          runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "FC7080CD2812E2260057FCD2"
-            BuildableName = "Documents-witheditors.app"
-            BlueprintName = "Documents-witheditors"
+            BlueprintIdentifier = "FCFDAA8C1E48A10C007A240C"
+            BuildableName = "Documents-withouteditors.app"
+            BlueprintName = "Documents-withouteditors"
             ReferencedContainer = "container:Documents-opensource.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>

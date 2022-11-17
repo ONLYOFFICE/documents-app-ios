@@ -99,7 +99,10 @@ platform :ios do
         xcodeproj: "Documents/Documents.xcodeproj",
         message: "Version bumped to v#{version_number}(#{build_number})",
         settings: true,
-        force: true
+        include: [
+          "Documents/Documents/Documents.plist",
+          "Documents/Settings.bundle/Root.plist"
+        ]
     )
 
     # create a local tag with the new version

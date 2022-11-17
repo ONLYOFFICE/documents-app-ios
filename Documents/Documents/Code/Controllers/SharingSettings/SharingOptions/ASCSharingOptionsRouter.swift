@@ -10,7 +10,7 @@ import UIKit
 
 protocol ASCSharingOptionsRoutingLogic {
     func routeToAddRightHoldersViewController(segue: UIStoryboardSegue?)
-    func routeToInviteRightHoldersViewController(segue: UIStoryboardSegue?)
+    func routeToInviteRightHoldersViewController(segue: UIStoryboardSegue?, sourceViewController: UIViewController?)
 }
 
 protocol ASCSharingOptionsDataPassing {
@@ -22,6 +22,8 @@ class ASCSharingOptionsRouter: NSObject, ASCSharingOptionsRoutingLogic, ASCShari
 
     var addRightHoldersViewController: ASCSharingAddRightHoldersViewController?
     var inviteRightHolderViewController: ASCSharingInviteRightHoldersViewController?
+
+    weak var sourceViewController: UIViewController?
 
     weak var viewController: ASCSharingOptionsViewController?
 
@@ -51,8 +53,9 @@ class ASCSharingOptionsRouter: NSObject, ASCSharingOptionsRoutingLogic, ASCShari
         }
     }
 
-    func routeToInviteRightHoldersViewController(segue: UIStoryboardSegue?) {
+    func routeToInviteRightHoldersViewController(segue: UIStoryboardSegue?, sourceViewController: UIViewController?) {
         var isDestinationAlreadyInit = false
+        self.sourceViewController = sourceViewController
         if inviteRightHolderViewController != nil {
             isDestinationAlreadyInit = true
             inviteRightHolderViewController?.reset()
@@ -67,7 +70,12 @@ class ASCSharingOptionsRouter: NSObject, ASCSharingOptionsRoutingLogic, ASCShari
         else { return }
 
         destinationViewController.accessProvider = viewController.accessProviderFactory.get(entity: viewController.entity ?? ASCEntity(), isAccessExternal: false)
-        passDataToAddRightHoldersViewController(source: sourceDataStore, destination: &destinationDataStore) {}
+        passDataToAddRightHoldersViewController(source: sourceDataStore, destination: &destinationDataStore) { [weak sourceViewController] in
+            guard let sourceViewController = sourceViewController else { return }
+            let message = NSLocalizedString("Link with the invitation has been sent to the mail", comment: "")
+            let controller = UIAlertController(title: "", message: message, preferredStyle: .alert).okable()
+            sourceViewController.present(controller, animated: true)
+        }
         navigate(source: viewController, destination: destinationViewController)
 
         if isDestinationAlreadyInit {
@@ -83,7 +91,7 @@ class ASCSharingOptionsRouter: NSObject, ASCSharingOptionsRoutingLogic, ASCShari
         destination.sharedInfoItems = source.sharedInfoItems
         destination.currentUser = source.currentUser
         destination.entity = source.entity
-        destination.doneComplerion = doneCompletion
+        destination.doneCompletion = doneCompletion
         destination.entityOwner = source.entityOwner
     }
 }

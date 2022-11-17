@@ -12,6 +12,16 @@ class ASCSharingInviteRightHoldersViewController: UIViewController, ASCSharingAd
     var interactor: ASCSharingAddRightHoldersBusinessLogic?
     var router: (NSObjectProtocol & ASCSharingAddRightHoldersRoutingLogic & ASCSharingAddRightHoldersDataPassing)?
     var dataStore: ASCSharingAddRightHoldersRAMDataStore?
+    weak var sourceViewController: UIViewController? {
+        didSet {
+            dataStore?.doneCompletion = { [weak sourceViewController] in
+                guard let sourceViewController = sourceViewController else { return }
+                let message = NSLocalizedString("Link with the invitation has been sent to the mail", comment: "")
+                let controller = UIAlertController(title: "", message: message, preferredStyle: .alert).okable()
+                sourceViewController.present(controller, animated: true)
+            }
+        }
+    }
 
     var sharingAddRightHoldersView: ASCSharingAddRightHoldersView?
     var defaultSelectedTable: RightHoldersTableType = .users

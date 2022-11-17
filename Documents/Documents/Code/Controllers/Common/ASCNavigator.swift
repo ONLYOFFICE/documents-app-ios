@@ -99,9 +99,11 @@ final class ASCNavigator {
         case .sort:
             return ASCSortViewController.instance()
         case .shareSettings:
-            return ASCSharingOptionsViewController()
+            return ASCSharingOptionsViewController(sourceViewController: navigationController?.viewControllers.last)
         case .addUsers:
-            return ASCSharingInviteRightHoldersViewController()
+            let vc = ASCSharingInviteRightHoldersViewController()
+            vc.sourceViewController = navigationController?.viewControllers.last
+            return vc
         case .onlyofficeConnectPortal:
             return ASCConnectPortalViewController.instance()
         case let .onlyofficeSignIn(portal):

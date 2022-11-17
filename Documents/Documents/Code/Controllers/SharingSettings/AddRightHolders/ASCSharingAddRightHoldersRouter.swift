@@ -66,6 +66,6 @@ class ASCSharingAddRightHoldersRouter: NSObject, ASCSharingAddRightHoldersRoutin
         destination.itemsForSharingAdd = source.itemsForSharingAdd
         destination.itemsForSharingRemove = source.itemsForSharingRemove
         destination.entity = source.entity
-        destination.doneComplerion = source.doneComplerion
+        destination.doneCompletion = source.doneCompletion
     }
 }

@@ -15,7 +15,7 @@ protocol ASCSharingSettingsVerifyRightHoldersBusinessLogic {
 
 protocol ASCSharingSettingsVerifyRightHoldersDataStore {
     var entity: ASCEntity? { get set }
-    var doneComplerion: () -> Void { get set }
+    var doneCompletion: () -> Void { get set }
 
     var sharedInfoItems: [OnlyofficeShare] { get set }
     var itemsForSharingAdd: [OnlyofficeShare] { get set }
@@ -35,7 +35,7 @@ class ASCSharingSettingsVerifyRightHoldersInteractor: ASCSharingSettingsVerifyRi
         }
     }
 
-    var doneComplerion: () -> Void = {}
+    var doneCompletion: () -> Void = {}
 
     var sharedInfoItems: [OnlyofficeShare] = []
     var itemsForSharingAdd: [OnlyofficeShare] = []
@@ -59,7 +59,7 @@ class ASCSharingSettingsVerifyRightHoldersInteractor: ASCSharingSettingsVerifyRi
 
     func clearData() {
         entity = nil
-        doneComplerion = {}
+        doneCompletion = {}
         sharedInfoItems = []
         itemsForSharingAdd = []
         itemsForSharingRemove = []

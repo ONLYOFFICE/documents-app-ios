@@ -58,7 +58,10 @@ class ASCSharingOptionsViewController: ASCBaseTableViewController {
             : .baseWithLink
     }
 
-    init() {
+    private weak var sourceViewController: UIViewController?
+
+    init(sourceViewController: UIViewController?) {
+        self.sourceViewController = sourceViewController
         if #available(iOS 13.0, *) {
             super.init(style: .insetGrouped)
         } else {
@@ -188,7 +191,7 @@ class ASCSharingOptionsViewController: ASCBaseTableViewController {
 
     func onAddRightsBarButtonTap() {
         guard !isRoomFolder else {
-            router?.routeToInviteRightHoldersViewController(segue: nil)
+            router?.routeToInviteRightHoldersViewController(segue: nil, sourceViewController: sourceViewController)
             return
         }
         router?.routeToAddRightHoldersViewController(segue: nil)

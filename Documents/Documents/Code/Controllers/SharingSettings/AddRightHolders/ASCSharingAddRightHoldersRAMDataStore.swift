@@ -12,7 +12,7 @@ protocol ASCSharingAddRightHoldersBaseDataStore {
     var entity: ASCEntity? { get set }
     var entityOwner: ASCUser? { get set }
     var currentUser: ASCUser? { get set }
-    var doneComplerion: () -> Void { get set }
+    var doneCompletion: () -> Void { get set }
 
     var sharedInfoItems: [OnlyofficeShare] { get set }
     var itemsForSharingAdd: [OnlyofficeShare] { get set }
@@ -33,7 +33,7 @@ class ASCSharingAddRightHoldersBaseRAMDataStore: ASCSharingAddRightHoldersBaseDa
     var entity: ASCEntity?
     var entityOwner: ASCUser?
     var currentUser: ASCUser?
-    var doneComplerion: () -> Void = {}
+    var doneCompletion: () -> Void = {}
 
     var sharedInfoItems: [OnlyofficeShare] = []
     var itemsForSharingAdd: [OnlyofficeShare] = []

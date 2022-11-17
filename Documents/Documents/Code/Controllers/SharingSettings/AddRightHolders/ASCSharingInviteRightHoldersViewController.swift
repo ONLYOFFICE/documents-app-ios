@@ -132,21 +132,7 @@ class ASCSharingInviteRightHoldersViewController: UIViewController, ASCSharingAd
         sharingAddRightHoldersView?.showTable(tableType: .users)
 
         usersTableViewDataSourceAndDelegate.inviteCellClousure = { [weak self] in
-            guard let self = self, let entity = self.dataStore?.entity else { return }
-            let apiWorker = ASCShareSettingsAPIWorkerFactory().get(by: ASCPortalTypeDefinderByCurrentConnection().definePortalType())
-            let viewModel = InviteRigthHoldersByEmailsViewModelImp(entity: entity, currentAccess: self.selectedAccess, apiWorker: apiWorker, accessProvider: self.accessProvider) { [weak self] emails, access in
-                guard let self = self else { return }
-                self.dataStore?.sharedInfoItems = []
-                self.dataStore?.itemsForSharingAdd = []
-                self.dataStore?.itemsForSharingRemove = []
-                emails.forEach { email in
-                    self.dataStore?.add(shareInfo: .init(access: access, email: email))
-                }
-                self.routeToVerifyRightHolders()
-            }
-            let inviteVC = InviteRigthHoldersByEmailsViewController(viewModel: viewModel)
-            inviteVC.view.frame = self.view.bounds
-            self.navigationController?.pushViewController(inviteVC, animated: true)
+            self?.showSureClearSelectionAlertIfNeededAndGoToInviteVC()
         }
 
         loadData()
@@ -436,5 +422,48 @@ extension ASCSharingInviteRightHoldersViewController: UISearchControllerDelegate
     func searchBar(_ searchBar: UISearchBar, selectedScopeButtonIndexDidChange selectedScope: Int) {
         guard let tableType = RightHoldersTableType(rawValue: selectedScope) else { return }
         sharingAddRightHoldersView?.showTable(tableType: tableType)
+    }
+}
+
+// MARK: - Navigation helper
+
+extension ASCSharingInviteRightHoldersViewController {
+    func showInviteByEmailViewController() {
+        guard let entity = dataStore?.entity else { return }
+        let apiWorker = ASCShareSettingsAPIWorkerFactory().get(by: ASCPortalTypeDefinderByCurrentConnection().definePortalType())
+        let viewModel = InviteRigthHoldersByEmailsViewModelImp(entity: entity, currentAccess: selectedAccess, apiWorker: apiWorker, accessProvider: accessProvider) { [weak self] emails, access in
+            guard let self = self else { return }
+            self.dataStore?.sharedInfoItems = []
+            self.dataStore?.itemsForSharingAdd = []
+            self.dataStore?.itemsForSharingRemove = []
+            emails.forEach { email in
+                self.dataStore?.add(shareInfo: .init(access: access, email: email))
+            }
+            self.routeToVerifyRightHolders()
+        }
+        let inviteVC = InviteRigthHoldersByEmailsViewController(viewModel: viewModel)
+        inviteVC.view.frame = view.bounds
+        navigationController?.pushViewController(inviteVC, animated: true)
+    }
+}
+
+// MARK: - Alert helpers
+
+extension ASCSharingInviteRightHoldersViewController {
+    func showSureClearSelectionAlertIfNeededAndGoToInviteVC() {
+        guard dataStore?.itemsForSharingAdd.isEmpty == false else {
+            showInviteByEmailViewController()
+            return
+        }
+        let title = NSLocalizedString("Clear selection?", comment: "")
+        let message = NSLocalizedString("Selected users will not be invited to the room", comment: "")
+        let controller = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        controller.addOk { [unowned self] _ in
+            showInviteByEmailViewController()
+            dataStore?.itemsForSharingAdd = []
+            dataStore?.itemsForSharingRemove = []
+        }
+        controller.addCancel()
+        present(controller, animated: true)
     }
 }

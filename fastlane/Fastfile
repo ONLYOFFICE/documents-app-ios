@@ -96,9 +96,10 @@ platform :ios do
 
     # creates a bump version commit 
     commit_version_bump(
+        xcodeproj: "Documents/Documents.xcodeproj",
         message: "Version bumped to v#{version_number}(#{build_number})",
         settings: true,
-        xcodeproj: "Documents/Documents.xcodeproj"
+        no_verify: true
     )
 
     # create a local tag with the new version

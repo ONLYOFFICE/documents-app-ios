@@ -14,9 +14,10 @@ class ASCSharingOptionsViewControllerTest: XCTestCase {
     var sut: ASCSharingOptionsViewController!
     var navigationController: UINavigationController!
     var tableView: UITableView!
+    let mockSourceViewController = MockSourceViewController()
 
     override func setUpWithError() throws {
-        sut = ASCSharingOptionsViewController()
+        sut = ASCSharingOptionsViewController(sourceViewController: mockSourceViewController)
         tableView = sut.tableView
     }
 
@@ -121,5 +122,13 @@ extension ASCSharingOptionsViewControllerTest {
 
         var internalLink: String?
         var externalLink: ASCSharingOprionsExternalLink?
+    }
+
+    class MockSourceViewController: UIViewController {
+        var presentWasCalled = false
+
+        override func present(_ viewControllerToPresent: UIViewController, animated flag: Bool, completion: (() -> Void)? = nil) {
+            presentWasCalled = true
+        }
     }
 }

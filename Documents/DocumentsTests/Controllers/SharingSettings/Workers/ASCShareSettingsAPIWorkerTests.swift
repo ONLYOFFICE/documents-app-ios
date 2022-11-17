@@ -26,7 +26,7 @@ class ASCShareSettingsAPIWorkerTests: XCTestCase {
         let file = ASCFile()
         file.id = "Foo"
 
-        let request = sut.makeApiRequest(entity: file)
+        let request = sut.makeApiRequest(entity: file, for: .set)
 
         XCTAssertNotNil(request)
         XCTAssertTrue(request?.path.contains(file.id) ?? false)
@@ -36,7 +36,7 @@ class ASCShareSettingsAPIWorkerTests: XCTestCase {
         let folder = ASCFolder()
         folder.id = "Foo"
 
-        let request = sut.makeApiRequest(entity: folder)
+        let request = sut.makeApiRequest(entity: folder, for: .set)
 
         XCTAssertNotNil(request)
         XCTAssertTrue(request?.path.contains(folder.id) ?? false)
@@ -46,7 +46,7 @@ class ASCShareSettingsAPIWorkerTests: XCTestCase {
         let entity = ASCEntity()
         entity.id = "Foo"
 
-        let request = sut.makeApiRequest(entity: entity)
+        let request = sut.makeApiRequest(entity: entity, for: .set)
 
         XCTAssertNil(request)
     }

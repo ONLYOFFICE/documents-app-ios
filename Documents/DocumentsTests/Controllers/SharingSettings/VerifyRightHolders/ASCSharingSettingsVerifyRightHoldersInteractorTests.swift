@@ -324,6 +324,6 @@ extension ASCSharingSettingsVerifyRightHoldersInteractorTests {
             nil
         }
 
-        func makeApiRequest(entity: ASCEntity) -> Endpoint<OnlyofficeResponseArray<OnlyofficeShare>>? { nil }
+        func makeApiRequest(entity: ASCEntity, for reason: ShareSettingsAPIWorkerReason) -> Endpoint<OnlyofficeResponseArray<OnlyofficeShare>>? { nil }
     }
 }

@@ -303,6 +303,7 @@
 		FC6F0CD71F542E7E002D33D9 /* ASCSSOSignInController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC6F0CD61F542E7E002D33D9 /* ASCSSOSignInController.swift */; };
 		FC707C3D25AC5691004CB85B /* UILabel+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC707C3C25AC5691004CB85B /* UILabel+Extension.swift */; };
 		FC708EE421B92E94001BBE5B /* UIBarButtonItem+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC708EE321B92E94001BBE5B /* UIBarButtonItem+Extensions.swift */; };
+		FC7765972926063D00ABAB5C /* ASCGlobalTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC7765962926063D00ABAB5C /* ASCGlobalTest.swift */; };
 		FC77846C24756CC2005ED631 /* ASCFolderProviderType.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCF8472C22CB4A5400ABC3B4 /* ASCFolderProviderType.swift */; };
 		FC77846D24756CDB005ED631 /* ASCFileProviderType.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC41D80D2265DADC00A155C2 /* ASCFileProviderType.swift */; };
 		FC77846E24756D17005ED631 /* UIDevice+DeviceKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC37D8E821CB8FA8001A7BFD /* UIDevice+DeviceKit.swift */; };
@@ -322,17 +323,13 @@
 		FC7E456529226A35006C4CA1 /* ASCPaymentQuota.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC7E455929226A34006C4CA1 /* ASCPaymentQuota.swift */; };
 		FC7E456629226A35006C4CA1 /* ASCPaymentQuota.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC7E455929226A34006C4CA1 /* ASCPaymentQuota.swift */; };
 		FC7E456729226A35006C4CA1 /* ASCCategory.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC7E455A29226A34006C4CA1 /* ASCCategory.swift */; };
-		FC7E456829226A35006C4CA1 /* ASCCategory.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC7E455A29226A34006C4CA1 /* ASCCategory.swift */; };
 		FC7E456929226A35006C4CA1 /* ASCGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC7E455B29226A34006C4CA1 /* ASCGroup.swift */; };
 		FC7E456A29226A35006C4CA1 /* ASCGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC7E455B29226A34006C4CA1 /* ASCGroup.swift */; };
 		FC7E456B29226A35006C4CA1 /* ASCEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC7E455C29226A34006C4CA1 /* ASCEntity.swift */; };
 		FC7E456C29226A35006C4CA1 /* ASCEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC7E455C29226A34006C4CA1 /* ASCEntity.swift */; };
 		FC7E456D29226A35006C4CA1 /* ASCFolder.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC7E455D29226A35006C4CA1 /* ASCFolder.swift */; };
-		FC7E456E29226A35006C4CA1 /* ASCFolder.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC7E455D29226A35006C4CA1 /* ASCFolder.swift */; };
 		FC7E456F29226A35006C4CA1 /* ASCDeepLink.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC7E455E29226A35006C4CA1 /* ASCDeepLink.swift */; };
-		FC7E457029226A35006C4CA1 /* ASCDeepLink.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC7E455E29226A35006C4CA1 /* ASCDeepLink.swift */; };
 		FC7E457129226A35006C4CA1 /* ASCFile.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC7E455F29226A35006C4CA1 /* ASCFile.swift */; };
-		FC7E457229226A35006C4CA1 /* ASCFile.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC7E455F29226A35006C4CA1 /* ASCFile.swift */; };
 		FC7E457329226A35006C4CA1 /* ASCPushSubscribed.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC7E456029226A35006C4CA1 /* ASCPushSubscribed.swift */; };
 		FC7E457429226A35006C4CA1 /* ASCPushSubscribed.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC7E456029226A35006C4CA1 /* ASCPushSubscribed.swift */; };
 		FC7E457529226A35006C4CA1 /* ASCUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC7E456129226A35006C4CA1 /* ASCUser.swift */; };
@@ -852,6 +849,7 @@
 		FC6F0CD61F542E7E002D33D9 /* ASCSSOSignInController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASCSSOSignInController.swift; sourceTree = "<group>"; };
 		FC707C3C25AC5691004CB85B /* UILabel+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UILabel+Extension.swift"; sourceTree = "<group>"; };
 		FC708EE321B92E94001BBE5B /* UIBarButtonItem+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIBarButtonItem+Extensions.swift"; sourceTree = "<group>"; };
+		FC7765962926063D00ABAB5C /* ASCGlobalTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCGlobalTest.swift; sourceTree = "<group>"; };
 		FC786FBD1EB8771700181D62 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Intro.storyboard; sourceTree = "<group>"; };
 		FC786FC01EB8771B00181D62 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Intro.strings; sourceTree = "<group>"; };
 		FC786FC21EB879F600181D62 /* ASCIntroViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASCIntroViewController.swift; sourceTree = "<group>"; };
@@ -2656,11 +2654,12 @@
 		FCCDE6762049734000CFC653 /* DocumentsTests */ = {
 			isa = PBXGroup;
 			children = (
+				FCCDE67F204973F500CFC653 /* ASCDocumentConverterTest.swift */,
+				FC7765962926063D00ABAB5C /* ASCGlobalTest.swift */,
 				1D5DB04526584DBC006B4757 /* Business */,
 				1DCCEC06268DBD5D00692167 /* Controllers */,
 				FCD2DD6F2703028500D31BD5 /* Services */,
 				FCCDE68120497C0D00CFC653 /* documents */,
-				FCCDE67F204973F500CFC653 /* ASCDocumentConverterTest.swift */,
 				FCCDE6792049734000CFC653 /* Info.plist */,
 				FCF8045D212EA38A00378AFD /* Localizable.strings */,
 				FCF8045A212E94A300378AFD /* InfoPlist.strings */,
@@ -3339,19 +3338,16 @@
 			buildActionMask = 2147483647;
 			files = (
 				FCCDE680204973F500CFC653 /* ASCDocumentConverterTest.swift in Sources */,
-				FC7E456829226A35006C4CA1 /* ASCCategory.swift in Sources */,
 				1D667A3E28CE33A3009BD85D /* ASCOnlyofficeCategoriesProviderFactoryTests.swift in Sources */,
 				FCD2DD6E2702F70400D31BD5 /* ManagedAppConfig.swift in Sources */,
 				FC56B5CB20C03F3400557C1F /* ASCSortViewCellTableViewCell.swift in Sources */,
 				FC4D864720C50AE00047B871 /* String+Extension.swift in Sources */,
-				FC7E457229226A35006C4CA1 /* ASCFile.swift in Sources */,
 				1D14AAE226964AF2009E48AD /* ASCSharingSettingsAccessProviderFactoryTests.swift in Sources */,
 				FC4D864F20C50AE00047B871 /* UINavigationController+Extension.swift in Sources */,
 				FC4D864420C50AE00047B871 /* Data+Extension.swift in Sources */,
 				FC4D864320C50AE00047B871 /* Dictionary+Extension.swift in Sources */,
 				FCCF2EFE292285DD00E2C647 /* ASCShareAccess.swift in Sources */,
 				1DEB9973274E3ED10071C1DB /* ASCShareSettingsAPIWorkerFactoryTests.swift in Sources */,
-				FC7E457029226A35006C4CA1 /* ASCDeepLink.swift in Sources */,
 				1D76B047275B746200389C61 /* ASCNextCloudProviderTests.swift in Sources */,
 				1DDC7B29280ED1D300287109 /* ASCSharingAddRightHoldersInteractorTests.swift in Sources */,
 				1D14AAC72694F0C4009E48AD /* ASCOnlyofficeFileInternalLinkMakerTests.swift in Sources */,
@@ -3378,6 +3374,7 @@
 				FC4D864B20C50AE00047B871 /* UIAlertController+SwiftAlertController.swift in Sources */,
 				FC56B5C720C017C300557C1F /* ASCStyles.swift in Sources */,
 				FC4D864E20C50AE00047B871 /* NSLayoutConstraint+Extensions.swift in Sources */,
+				FC7765972926063D00ABAB5C /* ASCGlobalTest.swift in Sources */,
 				FCCF2EFA2922853000E2C647 /* ASCStringTransform.swift in Sources */,
 				FC77846D24756CDB005ED631 /* ASCFileProviderType.swift in Sources */,
 				FC4D864120C50AC00047B871 /* ASCConstants.swift in Sources */,
@@ -3400,7 +3397,6 @@
 				FCCF2EFB2922856E00E2C647 /* ASCDateTransform.swift in Sources */,
 				1D71107D26A5A9A000E00421 /* ASCShareSettingsAPIWorkerTests.swift in Sources */,
 				FCCF2EF92922852900E2C647 /* ASCIndexTransform.swift in Sources */,
-				FC7E456E29226A35006C4CA1 /* ASCFolder.swift in Sources */,
 				FC7E456429226A35006C4CA1 /* ASCAccount.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

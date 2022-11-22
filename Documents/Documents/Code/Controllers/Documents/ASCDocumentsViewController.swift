@@ -667,7 +667,7 @@ class ASCDocumentsViewController: ASCBaseTableViewController, UIGestureRecognize
         sortBarButton?.isEnabled = total > 0
         selectBarButton?.isEnabled = total > 0
         selectAllBarButton?.isEnabled = total > 0
-        filterBarButton?.isEnabled = total > 0
+        filterBarButton?.isEnabled = total > 0 || provider?.filterController?.isReset == false
 
         if #available(iOS 14.0, *) {
             for barButton in [sortSelectBarButton, sortBarButton] {

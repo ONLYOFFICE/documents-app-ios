@@ -65,10 +65,10 @@ class ASCOnlyOfficeFiltersController: ASCFiltersControllerProtocol {
     }()
 
     private var allowSearchFilter: Bool {
-        if let onlyofficeProvider = provider as? ASCOnlyofficeProvider {
-            return onlyofficeProvider.apiClient.serverVersion?.community?.isVersion(greaterThanOrEqualTo: "12.0.1") ?? false
-        }
-        return false
+        guard let onlyofficeProvider = provider as? ASCOnlyofficeProvider else { return false }
+        let isRecentCategory = folder?.rootFolderType == .onlyofficeRecent
+        let isServerVersionCorrect = onlyofficeProvider.apiClient.serverVersion?.community?.isVersion(greaterThanOrEqualTo: "12.0.1") == true
+        return !isRecentCategory && isServerVersionCorrect
     }
 
     // MARK: - public properties

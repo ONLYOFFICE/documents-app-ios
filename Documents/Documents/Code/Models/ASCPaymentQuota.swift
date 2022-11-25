@@ -1,6 +1,6 @@
 //
 //  ASCPaymentQuota.swift
-//  Documents-opensource
+//  Documents
 //
 //  Created by Pavel Chernyshev on 08/11/22.
 //  Copyright © 2022 Ascensio System SIA. All rights reserved.

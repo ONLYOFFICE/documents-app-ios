@@ -46,7 +46,7 @@ class InviteRigthHoldersByEmailsViewController: UIViewController {
     lazy var tagsView: WSTagsField = {
         let tagsField = WSTagsField()
         tagsField.layer.cornerRadius = 10
-        tagsField.backgroundColor = .systemBackground
+        tagsField.backgroundColor = .secondarySystemGroupedBackground
         tagsField.textField.keyboardType = .emailAddress
         tagsField.textField.returnKeyType = .go
         tagsField.placeholder = NSLocalizedString("Enter email", comment: "placeholder")

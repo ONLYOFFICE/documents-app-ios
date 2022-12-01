@@ -22,23 +22,36 @@ class ASCOnlyOfficeFiltersController: ASCFiltersControllerProtocol {
         var itemsCount: Int
 
         static var defaultState: (Int) -> State = { count in
-            State(filterModels: [
-                ASCDocumentsFilterModel(filterName: FiltersName.folders.localizedString(), isSelected: false, filterType: .folders),
-                ASCDocumentsFilterModel(filterName: FiltersName.documents.localizedString(), isSelected: false, filterType: .documents),
-                ASCDocumentsFilterModel(filterName: FiltersName.presentations.localizedString(), isSelected: false, filterType: .presentations),
-                ASCDocumentsFilterModel(filterName: FiltersName.spreadsheets.localizedString(), isSelected: false, filterType: .spreadsheets),
-                ASCDocumentsFilterModel(filterName: FiltersName.images.localizedString(), isSelected: false, filterType: .images),
-                ASCDocumentsFilterModel(filterName: FiltersName.media.localizedString(), isSelected: false, filterType: .media),
-                ASCDocumentsFilterModel(filterName: FiltersName.archives.localizedString(), isSelected: false, filterType: .archive),
-                ASCDocumentsFilterModel(filterName: FiltersName.allFiles.localizedString(), isSelected: false, filterType: .files),
-            ],
-            authorsModels: [
-                ActionFilterModel(defaultName: FiltersName.users.localizedString(), selectedName: nil, filterType: .user),
-                ActionFilterModel(defaultName: FiltersName.groups.localizedString(), selectedName: nil, filterType: .group),
-            ],
-            searchFilterModels: [ASCDocumentsFilterModel(filterName: FiltersName.excludeSubfolders.localizedString(), isSelected: false, filterType: .excludeSubfolders)],
-            itemsCount: count)
+            State(filterModels: defaultFilterModel,
+                  authorsModels: defaultAuthorsModels,
+                  searchFilterModels: searchFilterModels,
+                  itemsCount: count)
         }
+
+        static var recentlyCategoryDefaultState: (Int) -> State = { count in
+            State(filterModels: defaultFilterModel.filter { $0.filterType != .folders },
+                  authorsModels: defaultAuthorsModels,
+                  searchFilterModels: searchFilterModels,
+                  itemsCount: count)
+        }
+
+        static let defaultFilterModel = [
+            ASCDocumentsFilterModel(filterName: FiltersName.folders.localizedString(), isSelected: false, filterType: .folders),
+            ASCDocumentsFilterModel(filterName: FiltersName.documents.localizedString(), isSelected: false, filterType: .documents),
+            ASCDocumentsFilterModel(filterName: FiltersName.presentations.localizedString(), isSelected: false, filterType: .presentations),
+            ASCDocumentsFilterModel(filterName: FiltersName.spreadsheets.localizedString(), isSelected: false, filterType: .spreadsheets),
+            ASCDocumentsFilterModel(filterName: FiltersName.images.localizedString(), isSelected: false, filterType: .images),
+            ASCDocumentsFilterModel(filterName: FiltersName.media.localizedString(), isSelected: false, filterType: .media),
+            ASCDocumentsFilterModel(filterName: FiltersName.archives.localizedString(), isSelected: false, filterType: .archive),
+            ASCDocumentsFilterModel(filterName: FiltersName.allFiles.localizedString(), isSelected: false, filterType: .files),
+        ]
+
+        static let defaultAuthorsModels = [
+            ActionFilterModel(defaultName: FiltersName.users.localizedString(), selectedName: nil, filterType: .user),
+            ActionFilterModel(defaultName: FiltersName.groups.localizedString(), selectedName: nil, filterType: .group),
+        ]
+
+        static let searchFilterModels = [ASCDocumentsFilterModel(filterName: FiltersName.excludeSubfolders.localizedString(), isSelected: false, filterType: .excludeSubfolders)]
     }
 
     // MARK: -  state
@@ -63,6 +76,10 @@ class ASCOnlyOfficeFiltersController: ASCFiltersControllerProtocol {
         controller.delegate = self
         return controller
     }()
+
+    private var isRecentCategory: Bool {
+        folder?.rootFolderType == .onlyofficeRecent
+    }
 
     private var allowSearchFilter: Bool {
         guard let onlyofficeProvider = provider as? ASCOnlyofficeProvider else { return false }
@@ -104,9 +121,14 @@ class ASCOnlyOfficeFiltersController: ASCFiltersControllerProtocol {
         if let appliedState = appliedState {
             tempState = appliedState
         } else {
-            tempState = .defaultState(total)
+            tempState = getDefaultState(total)
         }
         runPreload()
+    }
+
+    func getDefaultState(_ total: Int) -> State {
+        guard !isRecentCategory else { return .recentlyCategoryDefaultState(total) }
+        return .defaultState(total)
     }
 
     private func hasSelectedFilter(state: State) -> Bool {

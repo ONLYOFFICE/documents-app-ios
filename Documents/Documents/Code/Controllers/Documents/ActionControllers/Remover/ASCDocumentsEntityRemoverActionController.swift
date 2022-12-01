@@ -50,9 +50,15 @@ final class ASCDocumentsEntityRemoverActionController: ASCEntityRemoverActionCon
                 // Remove data
                 if let provider = self.provider {
                     let deletedIndexes = providerIndexesGetter(deteteItems)
-                    deletedIndexes.forEach {
-                        provider.remove(at: $0.row)
-                    }
+                    provider.items.enumerated()
+                        .filter { index, _ in deletedIndexes.contains(where: { $0.row == index }) }
+                        .map { index, value in value.id }
+                        .forEach { id in
+                            if let index = provider.items.firstIndex(where: { $0.id == id }) {
+                                provider.remove(at: index)
+                            }
+                        }
+
                     removedItemsHandler(deletedIndexes)
                 }
             }

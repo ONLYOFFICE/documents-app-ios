@@ -60,6 +60,7 @@ internal enum Asset {
     internal static let categoryArchived = ImageAsset(name: "category-archived")
     internal static let categoryCommon = ImageAsset(name: "category-common")
     internal static let categoryFavorites = ImageAsset(name: "category-favorites")
+    internal static let categoryFolder = ImageAsset(name: "category-folder")
     internal static let categoryIpadNew = ImageAsset(name: "category-ipad-new")
     internal static let categoryIpad = ImageAsset(name: "category-ipad")
     internal static let categoryIphoneNew = ImageAsset(name: "category-iphone-new")

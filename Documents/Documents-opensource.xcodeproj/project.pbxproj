@@ -850,6 +850,8 @@
 		FCF8472A22CB3E1800ABC3B4 /* ASCConnectStorageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCF8472822CB3E1800ABC3B4 /* ASCConnectStorageCell.swift */; };
 		FCF8472D22CB4A5400ABC3B4 /* ASCFolderProviderType.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCF8472C22CB4A5400ABC3B4 /* ASCFolderProviderType.swift */; };
 		FCF865201E4E0D1C003E47B6 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FCF8651C1E4E0D1C003E47B6 /* Main.storyboard */; };
+		FCF8A2ED2939096800EA137A /* UIWindow+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCF8A2EC2939096700EA137A /* UIWindow+Extensions.swift */; };
+		FCF8A2EE2939096800EA137A /* UIWindow+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCF8A2EC2939096700EA137A /* UIWindow+Extensions.swift */; };
 		FCF916CA1ED44F3A0032C135 /* Localizable.stringsdict in Resources */ = {isa = PBXBuildFile; fileRef = FCF916C81ED44F3A0032C135 /* Localizable.stringsdict */; };
 		FCFB36071EDF0AB00001597E /* ASCBanner.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCFB36061EDF0AB00001597E /* ASCBanner.swift */; };
 		FCFDAA981E48A10C007A240C /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FCFDAA971E48A10C007A240C /* Images.xcassets */; };
@@ -1492,6 +1494,7 @@
 		FCF8472822CB3E1800ABC3B4 /* ASCConnectStorageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCConnectStorageCell.swift; sourceTree = "<group>"; };
 		FCF8472C22CB4A5400ABC3B4 /* ASCFolderProviderType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCFolderProviderType.swift; sourceTree = "<group>"; };
 		FCF8651D1E4E0D1C003E47B6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		FCF8A2EC2939096700EA137A /* UIWindow+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIWindow+Extensions.swift"; sourceTree = "<group>"; };
 		FCF916C91ED44F3A0032C135 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.stringsdict; name = Base; path = Base.lproj/Localizable.stringsdict; sourceTree = "<group>"; };
 		FCF916CB1ED44F430032C135 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.stringsdict; name = ru; path = ru.lproj/Localizable.stringsdict; sourceTree = "<group>"; };
 		FCFB36061EDF0AB00001597E /* ASCBanner.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASCBanner.swift; sourceTree = "<group>"; };
@@ -2454,6 +2457,7 @@
 				FC142A8728981AE000EDE7CE /* UITextField+Extensions.swift */,
 				FC9150F11EC35D850076A855 /* UIView+Extension.swift */,
 				FC2EEA3721BAB05F00CB85A3 /* UIViewController+Extensions.swift */,
+				FCF8A2EC2939096700EA137A /* UIWindow+Extensions.swift */,
 				FC8A137E2268B57F006D8C6E /* URL+Extensions.swift */,
 				FC795595243E1A3A00CDD9FC /* KingfisherWrapper+Extensions.swift */,
 			);
@@ -4043,6 +4047,7 @@
 				FC7081962812E2260057FCD2 /* ASCAccessToAddRightHoldersCheckerByPortalDefinder.swift in Sources */,
 				FC7081972812E2260057FCD2 /* ASCViewControllerManager.swift in Sources */,
 				FC7081982812E2260057FCD2 /* ASCDocumentsEmptyView.swift in Sources */,
+				FCF8A2EE2939096800EA137A /* UIWindow+Extensions.swift in Sources */,
 				FC7081992812E2260057FCD2 /* ASCWebKitViewController.swift in Sources */,
 				FC70819A2812E2260057FCD2 /* ASConverterOptionsAlert.swift in Sources */,
 				FC70819B2812E2260057FCD2 /* OnlyofficeUserPhoto.swift in Sources */,
@@ -4431,6 +4436,7 @@
 				FCC3E9BE214006B1001B216C /* ASCLocalization.swift in Sources */,
 				1D299159274FBF2100A06F3B /* ASCAccessToAddRightHoldersCheckerByPortalDefinder.swift in Sources */,
 				FCDB31A61E7BD46800907FC0 /* ASCViewControllerManager.swift in Sources */,
+				FCF8A2ED2939096800EA137A /* UIWindow+Extensions.swift in Sources */,
 				FC9E28BF2244E88C000D315E /* ASCDocumentsEmptyView.swift in Sources */,
 				FC4DC3E5282BFB2F001060D6 /* ASCOAuthCredential.swift in Sources */,
 				F33E473B27AD9BC200EFF6D9 /* ASCWebKitViewController.swift in Sources */,

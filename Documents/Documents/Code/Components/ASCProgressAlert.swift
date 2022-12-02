@@ -74,7 +74,7 @@ class ASCProgressAlert {
                 alertWindow?.tintColor = delegate.window??.tintColor
             }
 
-            if let topWindow = UIApplication.shared.keyWindow {
+            if let topWindow = UIWindow.keyWindow {
                 alertWindow?.windowLevel = min(topWindow.windowLevel + 1, UIWindow.Level.statusBar - 10)
             }
 

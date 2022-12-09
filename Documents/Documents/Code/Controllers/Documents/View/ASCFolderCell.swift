@@ -10,7 +10,6 @@ import MGSwipeTableCell
 import UIKit
 
 class ASCFolderCell: MGSwipeTableCell {
-    
     // MARK: - Properties
 
     @IBOutlet var title: UILabel!

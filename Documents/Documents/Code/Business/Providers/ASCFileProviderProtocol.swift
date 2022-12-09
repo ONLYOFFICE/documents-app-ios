@@ -120,7 +120,7 @@ protocol ASCFileProviderProtocol {
     func actions(for entity: ASCEntity?) -> ASCEntityActions
 
     // Open files
-    func open(file: ASCFile, openViewMode: Bool, canEdit: Bool)
+    func open(file: ASCFile, openMode: ASCDocumentOpenMode, canEdit: Bool)
     func preview(file: ASCFile, files: [ASCFile]?, in view: UIView?)
 
     // Action Handlers

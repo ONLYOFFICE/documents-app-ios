@@ -1334,13 +1334,12 @@ class ASCOnlyofficeProvider: ASCFileProviderProtocol & ASCSortableFileProviderPr
 
     // MARK: - Open file
 
-    func open(file: ASCFile, openViewMode: Bool, canEdit: Bool) {
+    func open(file: ASCFile, openMode: ASCDocumentOpenMode, canEdit: Bool) {
         let title = file.title
         let fileExt = title.fileExtension().lowercased()
         let allowOpen = ASCConstants.FileExtensions.allowEdit.contains(fileExt)
 
         if allowOpen {
-            let editMode = !openViewMode && UIDevice.allowEditor
             let strongDelegate = delegate
             let openHandler = strongDelegate?.openProgress(file: file, title: NSLocalizedString("Processing", comment: "Caption of the processing") + "...", 0)
             let closeHandler = strongDelegate?.closeProgress(file: file, title: NSLocalizedString("Saving", comment: "Caption of the processing"))
@@ -1374,7 +1373,7 @@ class ASCOnlyofficeProvider: ASCFileProviderProtocol & ASCSortableFileProviderPr
             if ASCEditorManager.shared.checkSDKVersion() {
                 ASCEditorManager.shared.editCloud(
                     file,
-                    openViewMode: !editMode,
+                    openMode: openMode,
                     canEdit: canEdit,
                     handler: openHandler,
                     closeHandler: closeHandler,
@@ -1386,7 +1385,7 @@ class ASCOnlyofficeProvider: ASCFileProviderProtocol & ASCSortableFileProviderPr
                 ASCEditorManager.shared.editFileLocally(
                     for: self,
                     file,
-                    openViewMode: openViewMode,
+                    openMode: openMode,
                     canEdit: canEdit,
                     handler: openHandler,
                     closeHandler: closeHandler,
@@ -1414,7 +1413,14 @@ class ASCOnlyofficeProvider: ASCFileProviderProtocol & ASCSortableFileProviderPr
                                 let openHandler = strongDelegate?.openProgress(file: file, title: NSLocalizedString("Processing", comment: "Caption of the processing") + "...", 0)
                                 let closeHandler = strongDelegate?.closeProgress(file: file, title: NSLocalizedString("Saving", comment: "Caption of the processing"))
 
-                                ASCEditorManager.shared.editFileLocally(for: self, file, openViewMode: true, canEdit: false, handler: openHandler, closeHandler: closeHandler)
+                                ASCEditorManager.shared.editFileLocally(
+                                    for: self,
+                                    file,
+                                    openMode: openMode,
+                                    canEdit: false,
+                                    handler: openHandler,
+                                    closeHandler: closeHandler
+                                )
                             }
                             .cancelable()
 

@@ -448,7 +448,7 @@ class ASCDocumentsViewController: ASCBaseTableViewController, UIGestureRecognize
                 let isPresentation = fileExt == "pptx"
 
                 if isDocument || isSpreadsheet || isPresentation {
-                    provider.open(file: file, openViewMode: false, canEdit: true)
+                    provider.open(file: file, openMode: .create, canEdit: true)
                 }
             }
         } else if let folder = entity as? ASCFolder {
@@ -1478,7 +1478,7 @@ class ASCDocumentsViewController: ASCBaseTableViewController, UIGestureRecognize
 
         if allowOpen {
             provider?.delegate = self
-            provider?.open(file: file, openViewMode: viewMode, canEdit: provider?.allowEdit(entity: file) ?? false)
+            provider?.open(file: file, openMode: viewMode ? .view : .edit, canEdit: provider?.allowEdit(entity: file) ?? false)
             searchController.isActive = false
         } else if let index = tableData.firstIndex(where: { $0.id == file.id }) {
             let cell = tableView.cellForRow(at: IndexPath(row: index, section: 0))
@@ -1559,7 +1559,7 @@ class ASCDocumentsViewController: ASCBaseTableViewController, UIGestureRecognize
 
                                     ASCEditorManager.shared.openEditorLocalCopy(
                                         file: file,
-                                        openViewMode: false,
+                                        openMode: .edit,
                                         canEdit: true,
                                         autosave: true,
                                         locallyEditing: locallyEditing,
@@ -1567,7 +1567,7 @@ class ASCDocumentsViewController: ASCBaseTableViewController, UIGestureRecognize
                                         closeHandler: closeHandler
                                     )
                                 } else {
-                                    self?.provider?.open(file: file, openViewMode: false, canEdit: true)
+                                    self?.provider?.open(file: file, openMode: .edit, canEdit: true)
                                 }
                             })
                         }

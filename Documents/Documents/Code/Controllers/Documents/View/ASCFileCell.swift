@@ -21,6 +21,8 @@ class ASCFileCell: MGSwipeTableCell {
     @IBOutlet var icon: UIImageView!
     @IBOutlet var activityIndicator: UIActivityIndicatorView!
     @IBOutlet var titleStackView: UIStackView!
+    @IBOutlet var dateRight: UILabel!
+    @IBOutlet var rightMarginConstraint: NSLayoutConstraint!
 
     var file: ASCFile? {
         didSet {
@@ -47,6 +49,8 @@ class ASCFileCell: MGSwipeTableCell {
         return $0
     }(ASCPaddingLabel(frame: .zero))
 
+    fileprivate let transformWidth = 500.0
+
     // MARK: - Lifecycle Methods
 
     override func awakeFromNib() {
@@ -61,6 +65,22 @@ class ASCFileCell: MGSwipeTableCell {
 
         selectedBackgroundView = UIView()
         selectedBackgroundView?.backgroundColor = Asset.Colors.tableCellSelected.color
+    }
+
+    override func layoutSubviews() {
+        let isCompact = frame.width < transformWidth
+        rightMarginConstraint.constant = isCompact ? 10 : 40
+        date?.isHidden = !isCompact
+        separaterLabel?.isHidden = !isCompact
+
+        if let dateRight {
+            dateRight.isHidden = isCompact
+            dateRight.translatesAutoresizingMaskIntoConstraints = false
+            dateRight.removeConstraints(dateRight.constraints)
+            dateRight.widthAnchor.constraint(equalToConstant: 126).isActive = true
+        }
+
+        super.layoutSubviews()
     }
 
     func updateData() {
@@ -116,6 +136,7 @@ class ASCFileCell: MGSwipeTableCell {
         date?.text = (fileInfo.updated != nil)
             ? dateFormatter.string(from: fileInfo.updated!)
             : nil
+        dateRight?.text = date?.text
 
         if fileInfo.pureContentLength < 1 {
             if fileInfo.device {

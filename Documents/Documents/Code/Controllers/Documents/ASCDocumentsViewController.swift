@@ -784,6 +784,7 @@ class ASCDocumentsViewController: ASCBaseTableViewController, UIGestureRecognize
         let isDevice = (provider?.id == ASCFileManager.localProvider.id)
         let isShared = folder.rootFolderType == .onlyofficeShare
         let isTrash = self.isTrash(folder)
+        let isRecent = categoryIsRecent
         let isProjectRoot = (folder.rootFolderType == .onlyofficeBunch || folder.rootFolderType == .onlyofficeProjects) && isRoot
         let isGuest = ASCFileManager.onlyofficeProvider?.user?.isVisitor ?? false
 
@@ -835,7 +836,7 @@ class ASCDocumentsViewController: ASCBaseTableViewController, UIGestureRecognize
         }
 
         // Remove
-        if isDevice || !(isShared || isProjectRoot || isGuest) {
+        if isDevice || !(isShared || isProjectRoot || isGuest || isRecent) {
             items.append(createBarButton(Asset.Images.barDelete.image, #selector(onTrashSelected)))
             items.append(barFlexSpacer)
         }

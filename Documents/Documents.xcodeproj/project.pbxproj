@@ -113,6 +113,7 @@
 		1DCCEC05268CC6A700692167 /* ASCSharingOptionsSectionProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DCCEC04268CC6A600692167 /* ASCSharingOptionsSectionProtocol.swift */; };
 		1DCCEC0A268DBD9C00692167 /* ASCSharingOptionsViewControllerTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DCCEC09268DBD9C00692167 /* ASCSharingOptionsViewControllerTest.swift */; };
 		1DD2FF21275A9EB000676010 /* ASCSharingSettingsAccessOFormProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DD2FF20275A9B2D00676010 /* ASCSharingSettingsAccessOFormProvider.swift */; };
+		1DDA03B72949D428005E6857 /* ASCDocSpaceFiltersController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DDA03B62949D428005E6857 /* ASCDocSpaceFiltersController.swift */; };
 		1DDC7B29280ED1D300287109 /* ASCSharingAddRightHoldersInteractorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DDC7B28280ED1D300287109 /* ASCSharingAddRightHoldersInteractorTests.swift */; };
 		1DE6D6BC2631AEE1001B825B /* ASCOnlyofficeAPICategoriesProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DE6D6BB2631AEE1001B825B /* ASCOnlyofficeAPICategoriesProvider.swift */; };
 		1DE6D6C42631BE03001B825B /* ASCOnlyofficeCategoriesProviderFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DE6D6C32631BE03001B825B /* ASCOnlyofficeCategoriesProviderFactory.swift */; };
@@ -609,6 +610,7 @@
 		1DCCEC04268CC6A600692167 /* ASCSharingOptionsSectionProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCSharingOptionsSectionProtocol.swift; sourceTree = "<group>"; };
 		1DCCEC09268DBD9C00692167 /* ASCSharingOptionsViewControllerTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCSharingOptionsViewControllerTest.swift; sourceTree = "<group>"; };
 		1DD2FF20275A9B2D00676010 /* ASCSharingSettingsAccessOFormProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCSharingSettingsAccessOFormProvider.swift; sourceTree = "<group>"; };
+		1DDA03B62949D428005E6857 /* ASCDocSpaceFiltersController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCDocSpaceFiltersController.swift; sourceTree = "<group>"; };
 		1DDC7B28280ED1D300287109 /* ASCSharingAddRightHoldersInteractorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCSharingAddRightHoldersInteractorTests.swift; sourceTree = "<group>"; };
 		1DE6D6BB2631AEE1001B825B /* ASCOnlyofficeAPICategoriesProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCOnlyofficeAPICategoriesProvider.swift; sourceTree = "<group>"; };
 		1DE6D6C32631BE03001B825B /* ASCOnlyofficeCategoriesProviderFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCOnlyofficeCategoriesProviderFactory.swift; sourceTree = "<group>"; };
@@ -1865,6 +1867,7 @@
 		F3B17C0927F4ADE30021E03A /* Filters */ = {
 			isa = PBXGroup;
 			children = (
+				1DDA03B62949D428005E6857 /* ASCDocSpaceFiltersController.swift */,
 				F3AAEFC428241917008ED772 /* ASCOnlyOfficeFiltersController.swift */,
 				F3F0F6AD284502CE0083370A /* ASCLocalFilterController.swift */,
 				F3AAEFC228241178008ED772 /* ASCFiltersCollectionViewModelBuilder.swift */,
@@ -3462,6 +3465,7 @@
 				FC25B462284FAD720075D6C2 /* UITableView+Extensions.swift in Sources */,
 				FC41D8042265D8DA00A155C2 /* ASCShareAccess.swift in Sources */,
 				FC56B5CA20C03F3400557C1F /* ASCSortViewCellTableViewCell.swift in Sources */,
+				1DDA03B72949D428005E6857 /* ASCDocSpaceFiltersController.swift in Sources */,
 				FC68529D26837B7300D830EC /* NetworkingClient.swift in Sources */,
 				FC64B2EC1EE56C5500920FDD /* ASCGoogleSignInController.swift in Sources */,
 				FCF694C92632C9A600808644 /* ASCButtonStyle.swift in Sources */,

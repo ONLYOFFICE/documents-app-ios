@@ -150,7 +150,20 @@ class ASCLocalProvider: ASCFileProviderProtocol & ASCSortableFileProviderProtoco
                     return filter(list: list, byFileExtensions: ASCConstants.FileExtensions.archives)
                 case .media:
                     return filter(list: list, byFileExtensions: ASCConstants.FileExtensions.videos)
-                case .none, .user, .group, .byExtension, .excludeSubfolders:
+                case .none,
+                     .user,
+                     .group,
+                     .byExtension,
+                     .excludeSubfolders,
+                     .customRoom,
+                     .fillingFormRoom,
+                     .collaborationRoom,
+                     .reviewRoom,
+                     .viewOnlyRoom,
+                     .dropBox,
+                     .googleDrive,
+                     .oneDrive,
+                     .box:
                     return list
                 }
             }(commonList)

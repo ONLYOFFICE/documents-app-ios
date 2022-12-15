@@ -1013,7 +1013,7 @@ class ASCOnlyofficeProvider: ASCFileProviderProtocol & ASCSortableFileProviderPr
                 return [.delete, .restore]
             }
 
-            if let user = user, !user.isVisitor {
+            if let user = user, !user.isVisitor, !isFolderInRoom(folder: folder) {
                 entityActions.insert(.favarite)
             }
 

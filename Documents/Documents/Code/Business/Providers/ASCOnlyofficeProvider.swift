@@ -319,12 +319,18 @@ class ASCOnlyofficeProvider: ASCFileProviderProtocol & ASCSortableFileProviderPr
             }
 
             /// Filter
+            var hasFilters = false
             if let filters = parameters["filters"] as? [String: Any] {
+                hasFilters = true
                 params.merge(filters, uniquingKeysWith: { current, _ in current })
             }
 
             let endpoint: Endpoint<OnlyofficeResponse<OnlyofficePath>> = {
-                guard strongSelf.isRoot(folder: folder), ASCOnlyofficeCategory.isDocSpaceRoom(type: folder.rootFolderType) else {
+                guard hasFilters,
+                      strongSelf.isRoot(folder: folder),
+                      ASCOnlyofficeCategory.isDocSpaceRoom(type: folder.rootFolderType),
+                      ASCOnlyofficeCategory.hasRootRooms(type: folder.rootFolderType)
+                else {
                     return OnlyofficeAPI.Endpoints.Folders.path(of: folder)
                 }
                 return OnlyofficeAPI.Endpoints.Folders.roomsPath()
@@ -909,7 +915,7 @@ class ASCOnlyofficeProvider: ASCFileProviderProtocol & ASCSortableFileProviderPr
                 return false
             }
 
-            if isRoot(folder: folder), ASCOnlyofficeCategory.isDocSpaceRoom(type: folder.rootFolderType) {
+            if isRoot(folder: folder), ASCOnlyofficeCategory.hasRootRooms(type: folder.rootFolderType) {
                 return false
             }
         }

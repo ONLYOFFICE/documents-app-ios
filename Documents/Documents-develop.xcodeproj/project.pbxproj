@@ -125,6 +125,7 @@
 		FC4293C7294A685700DC3932 /* x2t.xcframework in CopyFiles */ = {isa = PBXBuildFile; fileRef = FC42939A294A673300DC3932 /* x2t.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		FC4293C8294A685900DC3932 /* XpsFile.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = FC42939E294A673400DC3932 /* XpsFile.xcframework */; };
 		FC4293C9294A685900DC3932 /* XpsFile.xcframework in CopyFiles */ = {isa = PBXBuildFile; fileRef = FC42939E294A673400DC3932 /* XpsFile.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		FC42948F294C964600DC3932 /* ASCDocSpaceFiltersController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC42948E294C964500DC3932 /* ASCDocSpaceFiltersController.swift */; };
 		FC43E70F2195B5FC002AAA32 /* ASCYandexFileProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC43E70E2195B5FC002AAA32 /* ASCYandexFileProvider.swift */; };
 		FC4710A72780942A00707B68 /* ASCOnlyofficeCategoriesChainContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC4710A62780942A00707B68 /* ASCOnlyofficeCategoriesChainContainer.swift */; };
 		FC4BCA39274F92E300C91403 /* ASCAccessToAddRightHoldersCheckerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC4BCA38274F92E300C91403 /* ASCAccessToAddRightHoldersCheckerProtocol.swift */; };
@@ -668,6 +669,7 @@
 		FC42939D294A673400DC3932 /* PdfFile.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = PdfFile.xcframework; path = "../../editors-ios/build/SDK/lib/PdfFile.xcframework"; sourceTree = "<group>"; };
 		FC42939E294A673400DC3932 /* XpsFile.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = XpsFile.xcframework; path = "../../editors-ios/build/SDK/lib/XpsFile.xcframework"; sourceTree = "<group>"; };
 		FC42939F294A673400DC3932 /* DjVuFile.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = DjVuFile.xcframework; path = "../../editors-ios/build/SDK/lib/DjVuFile.xcframework"; sourceTree = "<group>"; };
+		FC42948E294C964500DC3932 /* ASCDocSpaceFiltersController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASCDocSpaceFiltersController.swift; sourceTree = "<group>"; };
 		FC43E70E2195B5FC002AAA32 /* ASCYandexFileProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCYandexFileProvider.swift; sourceTree = "<group>"; };
 		FC4710A62780942A00707B68 /* ASCOnlyofficeCategoriesChainContainer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASCOnlyofficeCategoriesChainContainer.swift; sourceTree = "<group>"; };
 		FC4BCA38274F92E300C91403 /* ASCAccessToAddRightHoldersCheckerProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASCAccessToAddRightHoldersCheckerProtocol.swift; sourceTree = "<group>"; };
@@ -2038,6 +2040,7 @@
 				FC7DC863285A2D3400E61C69 /* Model */,
 				FC7DC867285A2D3400E61C69 /* View */,
 				FC7DC86C285A2D3400E61C69 /* Protocols */,
+				FC42948E294C964500DC3932 /* ASCDocSpaceFiltersController.swift */,
 				FC7DC85F285A2D3400E61C69 /* ASCFiltersCollectionViewModelBuilder.swift */,
 				FC7DC860285A2D3400E61C69 /* ASCFiltersViewController.swift */,
 				FC7DC861285A2D3400E61C69 /* ASCLocalFilterController.swift */,
@@ -3096,6 +3099,7 @@
 				FC7DC875285A2D3400E61C69 /* ASCUserTableViewDataModelItem.swift in Sources */,
 				FCB8A39221C27EE000CF74FA /* ASCDeviceCategoryViewController.swift in Sources */,
 				FC28F2C61E8D1BB200A8F985 /* ASCEntityManager.swift in Sources */,
+				FC42948F294C964600DC3932 /* ASCDocSpaceFiltersController.swift in Sources */,
 				FCC77C9E206D11B6001B7837 /* Path+Extension.swift in Sources */,
 				FCF696222632FF3E00808644 /* ASCButtonStyle.swift in Sources */,
 				FCCB1939262AC68F007517BB /* Scenes.swift in Sources */,

@@ -57,6 +57,7 @@ class ASCDocumentsViewController: ASCBaseTableViewController, UIGestureRecognize
     private let kPageLoadingCellTag = 7777
     private var highlightEntity: ASCEntity?
     private var hideableViewControllerOnTransition: UIViewController?
+    private var needsToLoadFirstPageOnAppear = false
 
     // MARK: - Actions controllers vars
 
@@ -257,6 +258,11 @@ class ASCDocumentsViewController: ASCBaseTableViewController, UIGestureRecognize
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
 
+        if needsToLoadFirstPageOnAppear {
+            needsToLoadFirstPageOnAppear.toggle()
+            loadFirstPage()
+        }
+
         if !featureLargeTitle {
             navigationController?.navigationBar.prefersLargeTitles = false
             navigationItem.largeTitleDisplayMode = .never
@@ -335,7 +341,12 @@ class ASCDocumentsViewController: ASCBaseTableViewController, UIGestureRecognize
     }
 
     override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey: Any]?, context: UnsafeMutableRawPointer?) {
+        let isViewControllerVisible = viewIfLoaded?.window != nil
         if keyPath == ASCConstants.SettingsKeys.sortDocuments {
+            guard isViewControllerVisible else {
+                needsToLoadFirstPageOnAppear = true
+                return
+            }
             loadFirstPage()
         }
     }

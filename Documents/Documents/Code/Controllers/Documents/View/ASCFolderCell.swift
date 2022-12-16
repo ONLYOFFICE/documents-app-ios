@@ -43,7 +43,7 @@ class ASCFolderCell: MGSwipeTableCell {
         return $0
     }(ASCPaddingLabel(frame: .zero))
 
-    fileprivate let transformWidth = 500.0
+    fileprivate let transformWidth = 450.0
 
     // MARK: - Lifecycle Methods
 

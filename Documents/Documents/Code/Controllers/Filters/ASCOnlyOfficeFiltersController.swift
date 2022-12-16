@@ -99,7 +99,8 @@ class ASCOnlyOfficeFiltersController: ASCFiltersControllerProtocol {
     }
 
     var isReset: Bool {
-        !tempState.filterModels.map { $0.isSelected }.contains(true)
+        guard let appliedState = appliedState else { return true }
+        return !hasSelectedFilter(state: appliedState)
     }
 
     var onAction: () -> Void = {}
@@ -154,7 +155,7 @@ class ASCOnlyOfficeFiltersController: ASCFiltersControllerProtocol {
             switch type {
             case .extensionFilters:
                 if let model = state.filterModels.first(where: { $0.isSelected }) {
-                    params["filterType"] = model.filterType.rawValue
+                    params["filterType"] = model.filterType.filterValue
                 }
             case .searchFilters:
                 if let model = state.searchFilterModels.first(where: { $0.isSelected }) {

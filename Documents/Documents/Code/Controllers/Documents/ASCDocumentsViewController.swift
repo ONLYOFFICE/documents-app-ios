@@ -287,6 +287,8 @@ class ASCDocumentsViewController: ASCBaseTableViewController, UIGestureRecognize
         } else {
             splitViewController?.presentsWithGesture = false
         }
+
+        configureNavigationBar()
     }
 
     override func viewDidAppear(_ animated: Bool) {

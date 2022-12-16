@@ -83,25 +83,87 @@ struct ActionButtonViewModel {
 }
 
 enum ApiFilterType: String {
-    case none = "None"
-    case files = "FilesOnly"
-    case folders = "FoldersOnly"
-    case documents = "DocumentsOnly"
-    case presentations = "PresentationsOnly"
-    case spreadsheets = "SpreadsheetsOnly"
-    case images = "ImagesOnly"
-    case user = "ByUser"
-    case group = "ByDepartment"
-    case archive = "ArchiveOnly"
-    case byExtension = "ByExtension"
-    case media = "MediaOnly"
+    case none
+    case files
+    case folders
+    case documents
+    case presentations
+    case spreadsheets
+    case images
+    case user
+    case group
+    case archive
+    case byExtension
+    case media
     case excludeSubfolders
+    /// rooms
+    case customRoom
+    case fillingFormRoom
+    case collaborationRoom
+    case reviewRoom
+    case viewOnlyRoom
+    /// third party resource
+    case dropBox
+    case googleDrive
+    case oneDrive
+    case box
+
+    var filterValue: String {
+        switch self {
+        case .none:
+            return "None"
+        case .files:
+            return "FilesOnly"
+        case .folders:
+            return "FoldersOnly"
+        case .documents:
+            return "DocumentsOnly"
+        case .presentations:
+            return "PresentationsOnly"
+        case .spreadsheets:
+            return "SpreadsheetsOnly"
+        case .images:
+            return "ImagesOnly"
+        case .user:
+            return "ByUser"
+        case .group:
+            return "ByDepartment"
+        case .archive:
+            return "ArchiveOnly"
+        case .byExtension:
+            return "ByExtension"
+        case .media:
+            return "MediaOnly"
+        case .excludeSubfolders:
+            return "excludeSubfolders"
+        case .customRoom:
+            return "5"
+        case .fillingFormRoom:
+            return "1"
+        case .collaborationRoom:
+            return "2"
+        case .reviewRoom:
+            return "3"
+        case .viewOnlyRoom:
+            return "4"
+        case .dropBox:
+            return "2"
+        case .googleDrive:
+            return "3"
+        case .oneDrive:
+            return "5"
+        case .box:
+            return "1"
+        }
+    }
 }
 
 enum FiltersSection: String, CaseIterable {
     case type = "Type"
     case author = "Author"
     case search = "Search"
+    case member
+    case thirdPartyResource
 
     func localizedString() -> String {
         switch self {
@@ -111,23 +173,38 @@ enum FiltersSection: String, CaseIterable {
             return NSLocalizedString("Author", comment: "")
         case .search:
             return NSLocalizedString("Search", comment: "")
+        case .member:
+            return NSLocalizedString("Member", comment: "")
+        case .thirdPartyResource:
+            return NSLocalizedString("Third party resource", comment: "")
         }
     }
 }
 
 enum FiltersName: String, CaseIterable {
-    case folders = "Folders"
-    case documents = "Documents"
-    case presentations = "Presentations"
-    case spreadsheets = "Spreadsheets"
-    case images = "Images"
-    case media = "Media"
-    case archives = "Archives"
-    case allFiles = "All files"
-    case users = "Users"
-    case groups = "Groups"
-    case search = "Search"
-    case excludeSubfolders = "Exclude subfolders"
+    case folders
+    case documents
+    case presentations
+    case spreadsheets
+    case images
+    case media
+    case archives
+    case allFiles
+    case users
+    case groups
+    case search
+    case excludeSubfolders
+    /// rooms
+    case customRoom
+    case fillingFormRoom
+    case collaborationRoom
+    case reviewRoom
+    case viewOnlyRoom
+    /// third party resource
+    case dropBox
+    case googleDrive
+    case oneDrive
+    case box
 
     func localizedString() -> String {
         switch self {
@@ -155,6 +232,24 @@ enum FiltersName: String, CaseIterable {
             return NSLocalizedString("Search", comment: "")
         case .excludeSubfolders:
             return NSLocalizedString("Exclude subfolders", comment: "")
+        case .customRoom:
+            return NSLocalizedString("Custom", comment: "")
+        case .fillingFormRoom:
+            return NSLocalizedString("Filling form", comment: "")
+        case .collaborationRoom:
+            return NSLocalizedString("Collaboration", comment: "")
+        case .reviewRoom:
+            return NSLocalizedString("Review", comment: "")
+        case .viewOnlyRoom:
+            return NSLocalizedString("View-Only", comment: "")
+        case .dropBox:
+            return NSLocalizedString("Dropbox", comment: "")
+        case .googleDrive:
+            return NSLocalizedString("Google Drive", comment: "")
+        case .oneDrive:
+            return NSLocalizedString("OneDrive", comment: "")
+        case .box:
+            return NSLocalizedString("Box", comment: "")
         }
     }
 }

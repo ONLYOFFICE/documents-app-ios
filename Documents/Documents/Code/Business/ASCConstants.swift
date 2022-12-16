@@ -302,7 +302,7 @@ class ASCConstants {
     }
 
     enum CacheKeys {
-        static let onlyofficeCategoriesPrefix = "onlyoffice_categories"
+        static let onlyofficeCategoriesPrefix = "onlyoffice_categories_v2"
     }
 }
 

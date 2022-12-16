@@ -41,11 +41,25 @@ class ASCOnlyofficeAPICategoriesProvider: ASCOnlyofficeCategoriesProviderProtoco
                     categories.sort { $0.sortWeight < $1.sortWeight }
                 }
 
+                setAppPriorityTitle(categories: categories)
+
                 DispatchQueue.main.async {
                     completion(.success(categories))
                 }
 
                 categoriesCurrentlyLoading = false
+            }
+        }
+    }
+
+    func setAppPriorityTitle(categories: [ASCCategory]) {
+        categories.forEach { category in
+            let appPriorityTitle: String = {
+                guard let rootFolderType = category.folder?.rootFolderType else { return "" }
+                return ASCOnlyofficeCategory.title(of: rootFolderType)
+            }()
+            if !appPriorityTitle.isEmpty {
+                category.title = appPriorityTitle
             }
         }
     }

@@ -48,13 +48,14 @@ class ASCOnlyofficeProvider: ASCFileProviderProtocol & ASCSortableFileProviderPr
     }
 
     var delegate: ASCProviderDelegate?
-    var filterController: ASCFiltersControllerProtocol? = ASCOnlyOfficeFiltersController(
-        builder: ASCFiltersCollectionViewModelBuilder(),
-        filtersViewController: ASCFiltersViewController(),
-        itemsCount: 0
-    )
+    var filterController: ASCFiltersControllerProtocol?
 
-    internal var folder: ASCFolder?
+    internal var folder: ASCFolder? {
+        didSet {
+            setFiltersController()
+        }
+    }
+
     internal var fetchInfo: [String: Any?]?
 
     var apiClient: OnlyofficeApiClient {
@@ -75,6 +76,35 @@ class ASCOnlyofficeProvider: ASCFileProviderProtocol & ASCSortableFileProviderPr
 
         apiClient.baseURL = URL(string: baseUrl)
         apiClient.token = token
+    }
+
+    func setFiltersController() {
+        guard let folder = folder, filterController == nil else { return }
+        filterController = makeFilterController(folder: folder)
+    }
+
+    func makeFilterController(folder: ASCFolder) -> ASCFiltersControllerProtocol {
+        switch filterControllerType(forFolder: folder) {
+        case .documents:
+            return ASCOnlyOfficeFiltersController(
+                builder: ASCFiltersCollectionViewModelBuilder(),
+                filtersViewController: ASCFiltersViewController(),
+                itemsCount: 0
+            )
+        case .rooms:
+            return ASCDocSpaceFiltersController(
+                builder: ASCFiltersCollectionViewModelBuilder(),
+                filtersViewController: ASCFiltersViewController(),
+                itemsCount: 0
+            )
+        }
+    }
+
+    fileprivate func filterControllerType(forFolder folder: ASCFolder) -> FilterControllerType {
+        guard isRoot(folder: folder), ASCOnlyofficeCategory.isDocSpaceRoom(type: folder.rootFolderType) else {
+            return .documents
+        }
+        return .rooms
     }
 
     func copy() -> ASCFileProviderProtocol {
@@ -286,7 +316,14 @@ class ASCOnlyofficeProvider: ASCFileProviderProtocol & ASCSortableFileProviderPr
                 params.merge(filters, uniquingKeysWith: { current, _ in current })
             }
 
-            strongSelf.apiClient.request(OnlyofficeAPI.Endpoints.Folders.path(of: folder), params) { [weak self] response, error in
+            let endpoint: Endpoint<OnlyofficeResponse<OnlyofficePath>> = {
+                guard strongSelf.isRoot(folder: folder), ASCOnlyofficeCategory.isDocSpaceRoom(type: folder.rootFolderType) else {
+                    return OnlyofficeAPI.Endpoints.Folders.path(of: folder)
+                }
+                return OnlyofficeAPI.Endpoints.Folders.roomsPath()
+            }()
+
+            strongSelf.apiClient.request(endpoint, params) { [weak self] response, error in
                 guard let strongSelf = self else {
                     completeon?(strongSelf, folder, false, error)
                     return
@@ -1013,7 +1050,7 @@ class ASCOnlyofficeProvider: ASCFileProviderProtocol & ASCSortableFileProviderPr
                 return [.delete, .restore]
             }
 
-            if let user = user, !user.isVisitor {
+            if let user = user, !user.isVisitor, !isFolderInRoom(folder: folder) {
                 entityActions.insert(.favarite)
             }
 
@@ -1334,13 +1371,12 @@ class ASCOnlyofficeProvider: ASCFileProviderProtocol & ASCSortableFileProviderPr
 
     // MARK: - Open file
 
-    func open(file: ASCFile, openViewMode: Bool, canEdit: Bool) {
+    func open(file: ASCFile, openMode: ASCDocumentOpenMode, canEdit: Bool) {
         let title = file.title
         let fileExt = title.fileExtension().lowercased()
         let allowOpen = ASCConstants.FileExtensions.allowEdit.contains(fileExt)
 
         if allowOpen {
-            let editMode = !openViewMode && UIDevice.allowEditor
             let strongDelegate = delegate
             let openHandler = strongDelegate?.openProgress(file: file, title: NSLocalizedString("Processing", comment: "Caption of the processing") + "...", 0)
             let closeHandler = strongDelegate?.closeProgress(file: file, title: NSLocalizedString("Saving", comment: "Caption of the processing"))
@@ -1374,7 +1410,7 @@ class ASCOnlyofficeProvider: ASCFileProviderProtocol & ASCSortableFileProviderPr
             if ASCEditorManager.shared.checkSDKVersion() {
                 ASCEditorManager.shared.editCloud(
                     file,
-                    openViewMode: !editMode,
+                    openMode: openMode,
                     canEdit: canEdit,
                     handler: openHandler,
                     closeHandler: closeHandler,
@@ -1386,7 +1422,7 @@ class ASCOnlyofficeProvider: ASCFileProviderProtocol & ASCSortableFileProviderPr
                 ASCEditorManager.shared.editFileLocally(
                     for: self,
                     file,
-                    openViewMode: openViewMode,
+                    openMode: openMode,
                     canEdit: canEdit,
                     handler: openHandler,
                     closeHandler: closeHandler,
@@ -1414,7 +1450,14 @@ class ASCOnlyofficeProvider: ASCFileProviderProtocol & ASCSortableFileProviderPr
                                 let openHandler = strongDelegate?.openProgress(file: file, title: NSLocalizedString("Processing", comment: "Caption of the processing") + "...", 0)
                                 let closeHandler = strongDelegate?.closeProgress(file: file, title: NSLocalizedString("Saving", comment: "Caption of the processing"))
 
-                                ASCEditorManager.shared.editFileLocally(for: self, file, openViewMode: true, canEdit: false, handler: openHandler, closeHandler: closeHandler)
+                                ASCEditorManager.shared.editFileLocally(
+                                    for: self,
+                                    file,
+                                    openMode: openMode,
+                                    canEdit: false,
+                                    handler: openHandler,
+                                    closeHandler: closeHandler
+                                )
                             }
                             .cancelable()
 
@@ -1452,5 +1495,21 @@ class ASCOnlyofficeProvider: ASCFileProviderProtocol & ASCSortableFileProviderPr
                 ASCEditorManager.shared.browseUnknownCloud(for: self, file, inView: view, handler: openHandler)
             }
         }
+    }
+}
+
+private extension ASCOnlyofficeProvider {
+    enum FilterControllerType: Equatable {
+        case documents
+        case rooms
+    }
+}
+
+private extension ASCFiltersControllerProtocol {
+    var type: ASCOnlyofficeProvider.FilterControllerType {
+        if self is ASCOnlyOfficeFiltersController {
+            return .documents
+        }
+        return .rooms
     }
 }

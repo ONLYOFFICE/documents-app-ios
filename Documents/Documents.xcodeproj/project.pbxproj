@@ -113,6 +113,7 @@
 		1DCCEC05268CC6A700692167 /* ASCSharingOptionsSectionProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DCCEC04268CC6A600692167 /* ASCSharingOptionsSectionProtocol.swift */; };
 		1DCCEC0A268DBD9C00692167 /* ASCSharingOptionsViewControllerTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DCCEC09268DBD9C00692167 /* ASCSharingOptionsViewControllerTest.swift */; };
 		1DD2FF21275A9EB000676010 /* ASCSharingSettingsAccessOFormProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DD2FF20275A9B2D00676010 /* ASCSharingSettingsAccessOFormProvider.swift */; };
+		1DDA03B72949D428005E6857 /* ASCDocSpaceFiltersController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DDA03B62949D428005E6857 /* ASCDocSpaceFiltersController.swift */; };
 		1DDC7B29280ED1D300287109 /* ASCSharingAddRightHoldersInteractorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DDC7B28280ED1D300287109 /* ASCSharingAddRightHoldersInteractorTests.swift */; };
 		1DE6D6BC2631AEE1001B825B /* ASCOnlyofficeAPICategoriesProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DE6D6BB2631AEE1001B825B /* ASCOnlyofficeAPICategoriesProvider.swift */; };
 		1DE6D6C42631BE03001B825B /* ASCOnlyofficeCategoriesProviderFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DE6D6C32631BE03001B825B /* ASCOnlyofficeCategoriesProviderFactory.swift */; };
@@ -362,6 +363,7 @@
 		FCA0AD271EBC90AC00AA53EB /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FCA0AD291EBC90AC00AA53EB /* Login.storyboard */; };
 		FCA0E5342542EF98008DDE78 /* ASCDocumentsToolbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCA0E5332542EF97008DDE78 /* ASCDocumentsToolbar.swift */; };
 		FCA3A41B22C3671200D0E57E /* UISplitViewController+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCA3A41A22C3671200D0E57E /* UISplitViewController+Extensions.swift */; };
+		FCA464A229437F5100EC05C7 /* ASCDocumentOpenMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCA464A129437F5000EC05C7 /* ASCDocumentOpenMode.swift */; };
 		FCA4D5AA1E79728800ADD842 /* ASCEditorManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCA4D5A91E79728800ADD842 /* ASCEditorManager.swift */; };
 		FCA5B9291E48A2B500CD2EA9 /* ASCDocumentsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCA5B9281E48A2B500CD2EA9 /* ASCDocumentsViewController.swift */; };
 		FCA6946B2057ED9900ED8D8E /* Data+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCA6946A2057ED9800ED8D8E /* Data+Extension.swift */; };
@@ -484,6 +486,7 @@
 		FCF8472A22CB3E1800ABC3B4 /* ASCConnectStorageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCF8472822CB3E1800ABC3B4 /* ASCConnectStorageCell.swift */; };
 		FCF8472D22CB4A5400ABC3B4 /* ASCFolderProviderType.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCF8472C22CB4A5400ABC3B4 /* ASCFolderProviderType.swift */; };
 		FCF865201E4E0D1C003E47B6 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FCF8651C1E4E0D1C003E47B6 /* Main.storyboard */; };
+		FCF8A2CF2938FDA300EA137A /* UIWindow+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCF8A2CE2938FDA300EA137A /* UIWindow+Extensions.swift */; };
 		FCF916CA1ED44F3A0032C135 /* Localizable.stringsdict in Resources */ = {isa = PBXBuildFile; fileRef = FCF916C81ED44F3A0032C135 /* Localizable.stringsdict */; };
 		FCFB36071EDF0AB00001597E /* ASCBanner.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCFB36061EDF0AB00001597E /* ASCBanner.swift */; };
 		FCFDAA981E48A10C007A240C /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FCFDAA971E48A10C007A240C /* Images.xcassets */; };
@@ -608,6 +611,7 @@
 		1DCCEC04268CC6A600692167 /* ASCSharingOptionsSectionProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCSharingOptionsSectionProtocol.swift; sourceTree = "<group>"; };
 		1DCCEC09268DBD9C00692167 /* ASCSharingOptionsViewControllerTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCSharingOptionsViewControllerTest.swift; sourceTree = "<group>"; };
 		1DD2FF20275A9B2D00676010 /* ASCSharingSettingsAccessOFormProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCSharingSettingsAccessOFormProvider.swift; sourceTree = "<group>"; };
+		1DDA03B62949D428005E6857 /* ASCDocSpaceFiltersController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCDocSpaceFiltersController.swift; sourceTree = "<group>"; };
 		1DDC7B28280ED1D300287109 /* ASCSharingAddRightHoldersInteractorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCSharingAddRightHoldersInteractorTests.swift; sourceTree = "<group>"; };
 		1DE6D6BB2631AEE1001B825B /* ASCOnlyofficeAPICategoriesProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCOnlyofficeAPICategoriesProvider.swift; sourceTree = "<group>"; };
 		1DE6D6C32631BE03001B825B /* ASCOnlyofficeCategoriesProviderFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCOnlyofficeCategoriesProviderFactory.swift; sourceTree = "<group>"; };
@@ -916,6 +920,7 @@
 		FCA0AD2B1EBC90AD00AA53EB /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Login.strings; sourceTree = "<group>"; };
 		FCA0E5332542EF97008DDE78 /* ASCDocumentsToolbar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCDocumentsToolbar.swift; sourceTree = "<group>"; };
 		FCA3A41A22C3671200D0E57E /* UISplitViewController+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UISplitViewController+Extensions.swift"; sourceTree = "<group>"; };
+		FCA464A129437F5000EC05C7 /* ASCDocumentOpenMode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASCDocumentOpenMode.swift; sourceTree = "<group>"; };
 		FCA4D5A91E79728800ADD842 /* ASCEditorManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASCEditorManager.swift; sourceTree = "<group>"; };
 		FCA5B9281E48A2B500CD2EA9 /* ASCDocumentsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASCDocumentsViewController.swift; sourceTree = "<group>"; };
 		FCA6946A2057ED9800ED8D8E /* Data+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Data+Extension.swift"; sourceTree = "<group>"; };
@@ -1167,6 +1172,7 @@
 		FCF8472822CB3E1800ABC3B4 /* ASCConnectStorageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCConnectStorageCell.swift; sourceTree = "<group>"; };
 		FCF8472C22CB4A5400ABC3B4 /* ASCFolderProviderType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCFolderProviderType.swift; sourceTree = "<group>"; };
 		FCF8651D1E4E0D1C003E47B6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		FCF8A2CE2938FDA300EA137A /* UIWindow+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIWindow+Extensions.swift"; sourceTree = "<group>"; };
 		FCF916C91ED44F3A0032C135 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.stringsdict; name = Base; path = Base.lproj/Localizable.stringsdict; sourceTree = "<group>"; };
 		FCF916CB1ED44F430032C135 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.stringsdict; name = ru; path = ru.lproj/Localizable.stringsdict; sourceTree = "<group>"; };
 		FCFB36061EDF0AB00001597E /* ASCBanner.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASCBanner.swift; sourceTree = "<group>"; };
@@ -1863,6 +1869,7 @@
 		F3B17C0927F4ADE30021E03A /* Filters */ = {
 			isa = PBXGroup;
 			children = (
+				1DDA03B62949D428005E6857 /* ASCDocSpaceFiltersController.swift */,
 				F3AAEFC428241917008ED772 /* ASCOnlyOfficeFiltersController.swift */,
 				F3F0F6AD284502CE0083370A /* ASCLocalFilterController.swift */,
 				F3AAEFC228241178008ED772 /* ASCFiltersCollectionViewModelBuilder.swift */,
@@ -2089,6 +2096,7 @@
 				FC41D7FC2265B72E00A155C2 /* UIStoryboard+Extensions.swift */,
 				FC9150F11EC35D850076A855 /* UIView+Extension.swift */,
 				FC2EEA3721BAB05F00CB85A3 /* UIViewController+Extensions.swift */,
+				FCF8A2CE2938FDA300EA137A /* UIWindow+Extensions.swift */,
 				FC8A137E2268B57F006D8C6E /* URL+Extensions.swift */,
 				FC795595243E1A3A00CDD9FC /* KingfisherWrapper+Extensions.swift */,
 			);
@@ -2126,6 +2134,7 @@
 			isa = PBXGroup;
 			children = (
 				FC8BBC9D22BA5D6100761152 /* ASCCreatePortalStatus.swift */,
+				FCA464A129437F5000EC05C7 /* ASCDocumentOpenMode.swift */,
 				FC41D8012265D6EF00A155C2 /* ASCLoginType.swift */,
 				FC41D8032265D8DA00A155C2 /* ASCShareAccess.swift */,
 				FC41D8052265D99C00A155C2 /* ASCFileStatus.swift */,
@@ -3074,20 +3083,6 @@
 				"${PODS_ROOT}/Target Support Files/Pods-Documents/Pods-Documents-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
 				"${BUILT_PRODUCTS_DIR}/AppAuth/AppAuth.framework",
-				"${PODS_ROOT}/../../editors-ios/build/SDK/lib/DjVuFile.framework",
-				"${PODS_ROOT}/../../editors-ios/build/SDK/lib/doctrenderer.framework",
-				"${PODS_ROOT}/../../editors-ios/build/SDK/lib/DocxRenderer.framework",
-				"${PODS_ROOT}/../../editors-ios/build/SDK/lib/EpubFile.framework",
-				"${PODS_ROOT}/../../editors-ios/build/SDK/lib/Fb2File.framework",
-				"${PODS_ROOT}/../../editors-ios/build/SDK/lib/graphics.framework",
-				"${PODS_ROOT}/../../editors-ios/build/SDK/lib/HtmlFile2.framework",
-				"${PODS_ROOT}/../../editors-ios/build/SDK/lib/HtmlRenderer.framework",
-				"${PODS_ROOT}/../../editors-ios/build/SDK/lib/kernel.framework",
-				"${PODS_ROOT}/../../editors-ios/build/SDK/lib/kernel_network.framework",
-				"${PODS_ROOT}/../../editors-ios/build/SDK/lib/PdfFile.framework",
-				"${PODS_ROOT}/../../editors-ios/build/SDK/lib/UnicodeConverter.framework",
-				"${PODS_ROOT}/../../editors-ios/build/SDK/lib/x2t.framework",
-				"${PODS_ROOT}/../../editors-ios/build/SDK/lib/XpsFile.framework",
 				"${BUILT_PRODUCTS_DIR}/DocumentConverter/DocumentConverter.framework",
 				"${BUILT_PRODUCTS_DIR}/DocumentEditor/DocumentEditor.framework",
 				"${BUILT_PRODUCTS_DIR}/FBSDKCoreKit/FBSDKCoreKit.framework",
@@ -3135,25 +3130,67 @@
 				"${BUILT_PRODUCTS_DIR}/WhatsNewKit/WhatsNewKit.framework",
 				"${BUILT_PRODUCTS_DIR}/atlantis-proxyman/Atlantis.framework",
 				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
+				"${PODS_XCFRAMEWORKS_BUILD_DIR}/DocumentConverter/DjVuFile.framework/DjVuFile",
+				"${PODS_XCFRAMEWORKS_BUILD_DIR}/DocumentConverter/doctrenderer.framework/doctrenderer",
+				"${PODS_XCFRAMEWORKS_BUILD_DIR}/DocumentConverter/DocxRenderer.framework/DocxRenderer",
+				"${PODS_XCFRAMEWORKS_BUILD_DIR}/DocumentConverter/EpubFile.framework/EpubFile",
+				"${PODS_XCFRAMEWORKS_BUILD_DIR}/DocumentConverter/Fb2File.framework/Fb2File",
+				"${PODS_XCFRAMEWORKS_BUILD_DIR}/DocumentConverter/graphics.framework/graphics",
+				"${PODS_XCFRAMEWORKS_BUILD_DIR}/DocumentConverter/HtmlFile2.framework/HtmlFile2",
+				"${PODS_XCFRAMEWORKS_BUILD_DIR}/DocumentConverter/HtmlRenderer.framework/HtmlRenderer",
+				"${PODS_XCFRAMEWORKS_BUILD_DIR}/DocumentConverter/kernel.framework/kernel",
+				"${PODS_XCFRAMEWORKS_BUILD_DIR}/DocumentConverter/kernel_network.framework/kernel_network",
+				"${PODS_XCFRAMEWORKS_BUILD_DIR}/DocumentConverter/PdfFile.framework/PdfFile",
+				"${PODS_XCFRAMEWORKS_BUILD_DIR}/DocumentConverter/UnicodeConverter.framework/UnicodeConverter",
+				"${PODS_XCFRAMEWORKS_BUILD_DIR}/DocumentConverter/x2t.framework/x2t",
+				"${PODS_XCFRAMEWORKS_BUILD_DIR}/DocumentConverter/XpsFile.framework/XpsFile",
+				"${PODS_XCFRAMEWORKS_BUILD_DIR}/DocumentEditor/DjVuFile.framework/DjVuFile",
+				"${PODS_XCFRAMEWORKS_BUILD_DIR}/DocumentEditor/doctrenderer.framework/doctrenderer",
+				"${PODS_XCFRAMEWORKS_BUILD_DIR}/DocumentEditor/DocxRenderer.framework/DocxRenderer",
+				"${PODS_XCFRAMEWORKS_BUILD_DIR}/DocumentEditor/EpubFile.framework/EpubFile",
+				"${PODS_XCFRAMEWORKS_BUILD_DIR}/DocumentEditor/Fb2File.framework/Fb2File",
+				"${PODS_XCFRAMEWORKS_BUILD_DIR}/DocumentEditor/graphics.framework/graphics",
+				"${PODS_XCFRAMEWORKS_BUILD_DIR}/DocumentEditor/HtmlFile2.framework/HtmlFile2",
+				"${PODS_XCFRAMEWORKS_BUILD_DIR}/DocumentEditor/HtmlRenderer.framework/HtmlRenderer",
+				"${PODS_XCFRAMEWORKS_BUILD_DIR}/DocumentEditor/kernel.framework/kernel",
+				"${PODS_XCFRAMEWORKS_BUILD_DIR}/DocumentEditor/kernel_network.framework/kernel_network",
+				"${PODS_XCFRAMEWORKS_BUILD_DIR}/DocumentEditor/PdfFile.framework/PdfFile",
+				"${PODS_XCFRAMEWORKS_BUILD_DIR}/DocumentEditor/UnicodeConverter.framework/UnicodeConverter",
+				"${PODS_XCFRAMEWORKS_BUILD_DIR}/DocumentEditor/x2t.framework/x2t",
+				"${PODS_XCFRAMEWORKS_BUILD_DIR}/DocumentEditor/XpsFile.framework/XpsFile",
+				"${PODS_XCFRAMEWORKS_BUILD_DIR}/PresentationEditor/DjVuFile.framework/DjVuFile",
+				"${PODS_XCFRAMEWORKS_BUILD_DIR}/PresentationEditor/doctrenderer.framework/doctrenderer",
+				"${PODS_XCFRAMEWORKS_BUILD_DIR}/PresentationEditor/DocxRenderer.framework/DocxRenderer",
+				"${PODS_XCFRAMEWORKS_BUILD_DIR}/PresentationEditor/EpubFile.framework/EpubFile",
+				"${PODS_XCFRAMEWORKS_BUILD_DIR}/PresentationEditor/Fb2File.framework/Fb2File",
+				"${PODS_XCFRAMEWORKS_BUILD_DIR}/PresentationEditor/graphics.framework/graphics",
+				"${PODS_XCFRAMEWORKS_BUILD_DIR}/PresentationEditor/HtmlFile2.framework/HtmlFile2",
+				"${PODS_XCFRAMEWORKS_BUILD_DIR}/PresentationEditor/HtmlRenderer.framework/HtmlRenderer",
+				"${PODS_XCFRAMEWORKS_BUILD_DIR}/PresentationEditor/kernel.framework/kernel",
+				"${PODS_XCFRAMEWORKS_BUILD_DIR}/PresentationEditor/kernel_network.framework/kernel_network",
+				"${PODS_XCFRAMEWORKS_BUILD_DIR}/PresentationEditor/PdfFile.framework/PdfFile",
+				"${PODS_XCFRAMEWORKS_BUILD_DIR}/PresentationEditor/UnicodeConverter.framework/UnicodeConverter",
+				"${PODS_XCFRAMEWORKS_BUILD_DIR}/PresentationEditor/x2t.framework/x2t",
+				"${PODS_XCFRAMEWORKS_BUILD_DIR}/PresentationEditor/XpsFile.framework/XpsFile",
+				"${PODS_XCFRAMEWORKS_BUILD_DIR}/SpreadsheetEditor/DjVuFile.framework/DjVuFile",
+				"${PODS_XCFRAMEWORKS_BUILD_DIR}/SpreadsheetEditor/doctrenderer.framework/doctrenderer",
+				"${PODS_XCFRAMEWORKS_BUILD_DIR}/SpreadsheetEditor/DocxRenderer.framework/DocxRenderer",
+				"${PODS_XCFRAMEWORKS_BUILD_DIR}/SpreadsheetEditor/EpubFile.framework/EpubFile",
+				"${PODS_XCFRAMEWORKS_BUILD_DIR}/SpreadsheetEditor/Fb2File.framework/Fb2File",
+				"${PODS_XCFRAMEWORKS_BUILD_DIR}/SpreadsheetEditor/graphics.framework/graphics",
+				"${PODS_XCFRAMEWORKS_BUILD_DIR}/SpreadsheetEditor/HtmlFile2.framework/HtmlFile2",
+				"${PODS_XCFRAMEWORKS_BUILD_DIR}/SpreadsheetEditor/HtmlRenderer.framework/HtmlRenderer",
+				"${PODS_XCFRAMEWORKS_BUILD_DIR}/SpreadsheetEditor/kernel.framework/kernel",
+				"${PODS_XCFRAMEWORKS_BUILD_DIR}/SpreadsheetEditor/kernel_network.framework/kernel_network",
+				"${PODS_XCFRAMEWORKS_BUILD_DIR}/SpreadsheetEditor/PdfFile.framework/PdfFile",
+				"${PODS_XCFRAMEWORKS_BUILD_DIR}/SpreadsheetEditor/UnicodeConverter.framework/UnicodeConverter",
+				"${PODS_XCFRAMEWORKS_BUILD_DIR}/SpreadsheetEditor/x2t.framework/x2t",
+				"${PODS_XCFRAMEWORKS_BUILD_DIR}/SpreadsheetEditor/XpsFile.framework/XpsFile",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AppAuth.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/DjVuFile.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/doctrenderer.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/DocxRenderer.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/EpubFile.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Fb2File.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/graphics.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/HtmlFile2.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/HtmlRenderer.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/kernel.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/kernel_network.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/PdfFile.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/UnicodeConverter.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/x2t.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/XpsFile.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/DocumentConverter.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/DocumentEditor.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBSDKCoreKit.framework",
@@ -3201,6 +3238,20 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/WhatsNewKit.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Atlantis.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/DjVuFile.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/doctrenderer.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/DocxRenderer.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/EpubFile.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Fb2File.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/graphics.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/HtmlFile2.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/HtmlRenderer.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/kernel.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/kernel_network.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/PdfFile.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/UnicodeConverter.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/x2t.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/XpsFile.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -3459,6 +3510,7 @@
 				FC25B462284FAD720075D6C2 /* UITableView+Extensions.swift in Sources */,
 				FC41D8042265D8DA00A155C2 /* ASCShareAccess.swift in Sources */,
 				FC56B5CA20C03F3400557C1F /* ASCSortViewCellTableViewCell.swift in Sources */,
+				1DDA03B72949D428005E6857 /* ASCDocSpaceFiltersController.swift in Sources */,
 				FC68529D26837B7300D830EC /* NetworkingClient.swift in Sources */,
 				FC64B2EC1EE56C5500920FDD /* ASCGoogleSignInController.swift in Sources */,
 				FCF694C92632C9A600808644 /* ASCButtonStyle.swift in Sources */,
@@ -3564,6 +3616,7 @@
 				FCEF9D2E1ED2D0DC00627BA5 /* ASCPasscodeLockViewController.swift in Sources */,
 				FC68527D26837B7300D830EC /* OnlyofficeApplicationType.swift in Sources */,
 				FCE1866B262AB4AB0086D21B /* Scenes.swift in Sources */,
+				FCA464A229437F5100EC05C7 /* ASCDocumentOpenMode.swift in Sources */,
 				FC68526D26837B7300D830EC /* NextcloudEndpoints.swift in Sources */,
 				FCEF9D201ED2C94300627BA5 /* PasscodeLock.swift in Sources */,
 				FC4426662909518800319B38 /* ASCLinkTableViewHeaderFooterView.swift in Sources */,
@@ -3637,6 +3690,7 @@
 				FCDB31A61E7BD46800907FC0 /* ASCViewControllerManager.swift in Sources */,
 				FC9E28BF2244E88C000D315E /* ASCDocumentsEmptyView.swift in Sources */,
 				F33E473B27AD9BC200EFF6D9 /* ASCWebKitViewController.swift in Sources */,
+				FCF8A2CF2938FDA300EA137A /* UIWindow+Extensions.swift in Sources */,
 				8A79BCD62080DD5C00998DA7 /* ASConverterOptionsAlert.swift in Sources */,
 				FC68528126837B7300D830EC /* OnlyofficeUserPhoto.swift in Sources */,
 				FC89C39E2368450700705DE7 /* ASCGoogleDriveProvider.swift in Sources */,

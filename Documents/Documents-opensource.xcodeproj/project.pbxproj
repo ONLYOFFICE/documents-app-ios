@@ -753,6 +753,8 @@
 		FCA0AD271EBC90AC00AA53EB /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FCA0AD291EBC90AC00AA53EB /* Login.storyboard */; };
 		FCA0E5342542EF98008DDE78 /* ASCDocumentsToolbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCA0E5332542EF97008DDE78 /* ASCDocumentsToolbar.swift */; };
 		FCA3A41B22C3671200D0E57E /* UISplitViewController+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCA3A41A22C3671200D0E57E /* UISplitViewController+Extensions.swift */; };
+		FCA4649F29437DD200EC05C7 /* ASCDocumentOpenMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCA4649E29437DD200EC05C7 /* ASCDocumentOpenMode.swift */; };
+		FCA464A029437DD200EC05C7 /* ASCDocumentOpenMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCA4649E29437DD200EC05C7 /* ASCDocumentOpenMode.swift */; };
 		FCA5B9291E48A2B500CD2EA9 /* ASCDocumentsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCA5B9281E48A2B500CD2EA9 /* ASCDocumentsViewController.swift */; };
 		FCA6946B2057ED9900ED8D8E /* Data+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCA6946A2057ED9800ED8D8E /* Data+Extension.swift */; };
 		FCA7500622BB91DE00991682 /* UIButton+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCA7500522BB91DE00991682 /* UIButton+Extensions.swift */; };
@@ -850,6 +852,8 @@
 		FCF8472A22CB3E1800ABC3B4 /* ASCConnectStorageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCF8472822CB3E1800ABC3B4 /* ASCConnectStorageCell.swift */; };
 		FCF8472D22CB4A5400ABC3B4 /* ASCFolderProviderType.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCF8472C22CB4A5400ABC3B4 /* ASCFolderProviderType.swift */; };
 		FCF865201E4E0D1C003E47B6 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FCF8651C1E4E0D1C003E47B6 /* Main.storyboard */; };
+		FCF8A2ED2939096800EA137A /* UIWindow+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCF8A2EC2939096700EA137A /* UIWindow+Extensions.swift */; };
+		FCF8A2EE2939096800EA137A /* UIWindow+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCF8A2EC2939096700EA137A /* UIWindow+Extensions.swift */; };
 		FCF916CA1ED44F3A0032C135 /* Localizable.stringsdict in Resources */ = {isa = PBXBuildFile; fileRef = FCF916C81ED44F3A0032C135 /* Localizable.stringsdict */; };
 		FCFB36071EDF0AB00001597E /* ASCBanner.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCFB36061EDF0AB00001597E /* ASCBanner.swift */; };
 		FCFDAA981E48A10C007A240C /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FCFDAA971E48A10C007A240C /* Images.xcassets */; };
@@ -1267,6 +1271,7 @@
 		FCA0AD2B1EBC90AD00AA53EB /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Login.strings; sourceTree = "<group>"; };
 		FCA0E5332542EF97008DDE78 /* ASCDocumentsToolbar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCDocumentsToolbar.swift; sourceTree = "<group>"; };
 		FCA3A41A22C3671200D0E57E /* UISplitViewController+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UISplitViewController+Extensions.swift"; sourceTree = "<group>"; };
+		FCA4649E29437DD200EC05C7 /* ASCDocumentOpenMode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASCDocumentOpenMode.swift; sourceTree = "<group>"; };
 		FCA4D5A91E79728800ADD842 /* ASCEditorManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASCEditorManager.swift; sourceTree = "<group>"; };
 		FCA5B9281E48A2B500CD2EA9 /* ASCDocumentsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASCDocumentsViewController.swift; sourceTree = "<group>"; };
 		FCA6946A2057ED9800ED8D8E /* Data+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Data+Extension.swift"; sourceTree = "<group>"; };
@@ -1492,6 +1497,7 @@
 		FCF8472822CB3E1800ABC3B4 /* ASCConnectStorageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCConnectStorageCell.swift; sourceTree = "<group>"; };
 		FCF8472C22CB4A5400ABC3B4 /* ASCFolderProviderType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCFolderProviderType.swift; sourceTree = "<group>"; };
 		FCF8651D1E4E0D1C003E47B6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		FCF8A2EC2939096700EA137A /* UIWindow+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIWindow+Extensions.swift"; sourceTree = "<group>"; };
 		FCF916C91ED44F3A0032C135 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.stringsdict; name = Base; path = Base.lproj/Localizable.stringsdict; sourceTree = "<group>"; };
 		FCF916CB1ED44F430032C135 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.stringsdict; name = ru; path = ru.lproj/Localizable.stringsdict; sourceTree = "<group>"; };
 		FCFB36061EDF0AB00001597E /* ASCBanner.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASCBanner.swift; sourceTree = "<group>"; };
@@ -2454,6 +2460,7 @@
 				FC142A8728981AE000EDE7CE /* UITextField+Extensions.swift */,
 				FC9150F11EC35D850076A855 /* UIView+Extension.swift */,
 				FC2EEA3721BAB05F00CB85A3 /* UIViewController+Extensions.swift */,
+				FCF8A2EC2939096700EA137A /* UIWindow+Extensions.swift */,
 				FC8A137E2268B57F006D8C6E /* URL+Extensions.swift */,
 				FC795595243E1A3A00CDD9FC /* KingfisherWrapper+Extensions.swift */,
 			);
@@ -2491,6 +2498,7 @@
 			isa = PBXGroup;
 			children = (
 				FC8BBC9D22BA5D6100761152 /* ASCCreatePortalStatus.swift */,
+				FCA4649E29437DD200EC05C7 /* ASCDocumentOpenMode.swift */,
 				FC41D8012265D6EF00A155C2 /* ASCLoginType.swift */,
 				FC41D8032265D8DA00A155C2 /* ASCShareAccess.swift */,
 				FC41D8052265D99C00A155C2 /* ASCFileStatus.swift */,
@@ -3970,6 +3978,7 @@
 				FC7081542812E2260057FCD2 /* Scenes.swift in Sources */,
 				FC7081552812E2260057FCD2 /* NextcloudEndpoints.swift in Sources */,
 				FC7081562812E2260057FCD2 /* PasscodeLock.swift in Sources */,
+				FCA464A029437DD200EC05C7 /* ASCDocumentOpenMode.swift in Sources */,
 				FC7081572812E2260057FCD2 /* AppDelegate+Helpers.swift in Sources */,
 				FC7081582812E2260057FCD2 /* ASCTextFieldCellViewModel.swift in Sources */,
 				FC7081592812E2260057FCD2 /* ASCSharingAddRightHoldersSearchResultsTableViewDataSourceAndDelegate.swift in Sources */,
@@ -4043,6 +4052,7 @@
 				FC7081962812E2260057FCD2 /* ASCAccessToAddRightHoldersCheckerByPortalDefinder.swift in Sources */,
 				FC7081972812E2260057FCD2 /* ASCViewControllerManager.swift in Sources */,
 				FC7081982812E2260057FCD2 /* ASCDocumentsEmptyView.swift in Sources */,
+				FCF8A2EE2939096800EA137A /* UIWindow+Extensions.swift in Sources */,
 				FC7081992812E2260057FCD2 /* ASCWebKitViewController.swift in Sources */,
 				FC70819A2812E2260057FCD2 /* ASConverterOptionsAlert.swift in Sources */,
 				FC70819B2812E2260057FCD2 /* OnlyofficeUserPhoto.swift in Sources */,
@@ -4358,6 +4368,7 @@
 				FC68527D26837B7300D830EC /* OnlyofficeApplicationType.swift in Sources */,
 				FCE1866B262AB4AB0086D21B /* Scenes.swift in Sources */,
 				FC68526D26837B7300D830EC /* NextcloudEndpoints.swift in Sources */,
+				FCA4649F29437DD200EC05C7 /* ASCDocumentOpenMode.swift in Sources */,
 				FC4160FF290911E5006B5E4A /* ASCLinkTableViewHeaderFooterView.swift in Sources */,
 				FCEF9D201ED2C94300627BA5 /* PasscodeLock.swift in Sources */,
 				FCEF853F26C3EFD500173DDF /* AppDelegate+Helpers.swift in Sources */,
@@ -4431,6 +4442,7 @@
 				FCC3E9BE214006B1001B216C /* ASCLocalization.swift in Sources */,
 				1D299159274FBF2100A06F3B /* ASCAccessToAddRightHoldersCheckerByPortalDefinder.swift in Sources */,
 				FCDB31A61E7BD46800907FC0 /* ASCViewControllerManager.swift in Sources */,
+				FCF8A2ED2939096800EA137A /* UIWindow+Extensions.swift in Sources */,
 				FC9E28BF2244E88C000D315E /* ASCDocumentsEmptyView.swift in Sources */,
 				FC4DC3E5282BFB2F001060D6 /* ASCOAuthCredential.swift in Sources */,
 				F33E473B27AD9BC200EFF6D9 /* ASCWebKitViewController.swift in Sources */,

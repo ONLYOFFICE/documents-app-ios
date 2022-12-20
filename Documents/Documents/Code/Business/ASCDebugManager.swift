@@ -23,7 +23,7 @@ class ASCDebugManager: NSObject {
     fileprivate let isDebugModeKey = "asc.debug.mode"
     fileprivate var presented: Bool = false
     fileprivate var presentingViewController: UIViewController? {
-        var rootViewController = UIApplication.shared.keyWindow?.rootViewController
+        var rootViewController = UIWindow.keyWindow?.rootViewController
         while let controller = rootViewController?.presentedViewController {
             rootViewController = controller
         }

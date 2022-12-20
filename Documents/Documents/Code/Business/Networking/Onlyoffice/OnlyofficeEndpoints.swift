@@ -111,6 +111,10 @@ class OnlyofficeAPI {
                 return Endpoint<OnlyofficeResponse<OnlyofficePath>>.make(String(format: Path.files, folder.id), .get, URLEncoding.default)
             }
 
+            static func roomsPath() -> Endpoint<OnlyofficeResponse<OnlyofficePath>> {
+                return Endpoint<OnlyofficeResponse<OnlyofficePath>>.make(String(format: Path.room, ""), .get, URLEncoding.default)
+            }
+
             static func info(folder: ASCFolder) -> Endpoint<OnlyofficeResponse<ASCFolder>> {
                 return Endpoint<OnlyofficeResponse<ASCFolder>>.make(String(format: Path.folder, folder.id))
             }

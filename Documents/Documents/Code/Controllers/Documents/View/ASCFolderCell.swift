@@ -18,6 +18,7 @@ class ASCFolderCell: MGSwipeTableCell {
     @IBOutlet var date: UILabel!
     @IBOutlet var icon: UIImageView!
     @IBOutlet var titleStackView: UIStackView!
+    @IBOutlet var dateRight: UILabel!
 
     var folder: ASCFolder? {
         didSet {
@@ -42,6 +43,8 @@ class ASCFolderCell: MGSwipeTableCell {
         return $0
     }(ASCPaddingLabel(frame: .zero))
 
+    fileprivate let transformWidth = 450.0
+
     // MARK: - Lifecycle Methods
 
     override func awakeFromNib() {
@@ -55,6 +58,19 @@ class ASCFolderCell: MGSwipeTableCell {
 
         selectedBackgroundView = UIView()
         selectedBackgroundView?.backgroundColor = Asset.Colors.tableCellSelected.color
+    }
+
+    override func layoutSubviews() {
+        date?.isHidden = frame.width > transformWidth
+
+        if let dateRight {
+            dateRight.isHidden = frame.width <= transformWidth
+            dateRight.translatesAutoresizingMaskIntoConstraints = false
+            dateRight.removeConstraints(dateRight.constraints)
+            dateRight.widthAnchor.constraint(equalToConstant: 126).isActive = true
+        }
+
+        super.layoutSubviews()
     }
 
     func updateData() {
@@ -92,6 +108,7 @@ class ASCFolderCell: MGSwipeTableCell {
         /// Display date
 
         date?.text = (folderInfo.created != nil) ? dateFormatter.string(from: folderInfo.created!) : nil
+        dateRight?.text = (folderInfo.created != nil) ? dateFormatter.string(from: folderInfo.created!) : nil
 
         /// Thumb view
         if let roomType = folder?.roomType {

@@ -1092,13 +1092,12 @@ class ASCDropboxProvider: ASCFileProviderProtocol & ASCSortableFileProviderProto
 
     // MARK: - Open file
 
-    func open(file: ASCFile, openViewMode: Bool, canEdit: Bool) {
+    func open(file: ASCFile, openMode: ASCDocumentOpenMode, canEdit: Bool) {
         let title = file.title
         let fileExt = title.fileExtension().lowercased()
         let allowOpen = ASCConstants.FileExtensions.allowEdit.contains(fileExt)
 
         if allowOpen {
-            let editMode = !openViewMode && UIDevice.allowEditor
             let openHandler = delegate?.openProgress(file: file, title: NSLocalizedString("Processing", comment: "Caption of the processing") + "...", 0)
             let closeHandler = delegate?.closeProgress(file: file, title: NSLocalizedString("Saving", comment: "Caption of the processing"))
             let renameHandler: ASCEditorManagerRenameHandler = { file, title, complation in
@@ -1116,7 +1115,7 @@ class ASCDropboxProvider: ASCFileProviderProtocol & ASCSortableFileProviderProto
             ASCEditorManager.shared.editFileLocally(
                 for: self,
                 file,
-                openViewMode: !editMode,
+                openMode: openMode,
                 canEdit: canEdit && UIDevice.allowEditor,
                 handler: openHandler,
                 closeHandler: closeHandler,

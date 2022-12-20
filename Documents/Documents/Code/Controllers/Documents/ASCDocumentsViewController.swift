@@ -57,6 +57,7 @@ class ASCDocumentsViewController: ASCBaseTableViewController, UIGestureRecognize
     private let kPageLoadingCellTag = 7777
     private var highlightEntity: ASCEntity?
     private var hideableViewControllerOnTransition: UIViewController?
+    private var needsToLoadFirstPageOnAppear = false
 
     // MARK: - Actions controllers vars
 
@@ -257,6 +258,11 @@ class ASCDocumentsViewController: ASCBaseTableViewController, UIGestureRecognize
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
 
+        if needsToLoadFirstPageOnAppear {
+            needsToLoadFirstPageOnAppear.toggle()
+            loadFirstPage()
+        }
+
         if !featureLargeTitle {
             navigationController?.navigationBar.prefersLargeTitles = false
             navigationItem.largeTitleDisplayMode = .never
@@ -281,6 +287,8 @@ class ASCDocumentsViewController: ASCBaseTableViewController, UIGestureRecognize
         } else {
             splitViewController?.presentsWithGesture = false
         }
+
+        configureNavigationBar()
     }
 
     override func viewDidAppear(_ animated: Bool) {
@@ -335,7 +343,12 @@ class ASCDocumentsViewController: ASCBaseTableViewController, UIGestureRecognize
     }
 
     override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey: Any]?, context: UnsafeMutableRawPointer?) {
+        let isViewControllerVisible = viewIfLoaded?.window != nil
         if keyPath == ASCConstants.SettingsKeys.sortDocuments {
+            guard isViewControllerVisible else {
+                needsToLoadFirstPageOnAppear = true
+                return
+            }
             loadFirstPage()
         }
     }
@@ -448,7 +461,7 @@ class ASCDocumentsViewController: ASCBaseTableViewController, UIGestureRecognize
                 let isPresentation = fileExt == "pptx"
 
                 if isDocument || isSpreadsheet || isPresentation {
-                    provider.open(file: file, openViewMode: false, canEdit: true)
+                    provider.open(file: file, openMode: .create, canEdit: true)
                 }
             }
         } else if let folder = entity as? ASCFolder {
@@ -784,6 +797,7 @@ class ASCDocumentsViewController: ASCBaseTableViewController, UIGestureRecognize
         let isDevice = (provider?.id == ASCFileManager.localProvider.id)
         let isShared = folder.rootFolderType == .onlyofficeShare
         let isTrash = self.isTrash(folder)
+        let isRecent = categoryIsRecent
         let isProjectRoot = (folder.rootFolderType == .onlyofficeBunch || folder.rootFolderType == .onlyofficeProjects) && isRoot
         let isGuest = ASCFileManager.onlyofficeProvider?.user?.isVisitor ?? false
 
@@ -835,7 +849,7 @@ class ASCDocumentsViewController: ASCBaseTableViewController, UIGestureRecognize
         }
 
         // Remove
-        if isDevice || !(isShared || isProjectRoot || isGuest) {
+        if isDevice || !(isShared || isProjectRoot || isGuest || isRecent) {
             items.append(createBarButton(Asset.Images.barDelete.image, #selector(onTrashSelected)))
             items.append(barFlexSpacer)
         }
@@ -1478,7 +1492,7 @@ class ASCDocumentsViewController: ASCBaseTableViewController, UIGestureRecognize
 
         if allowOpen {
             provider?.delegate = self
-            provider?.open(file: file, openViewMode: viewMode, canEdit: provider?.allowEdit(entity: file) ?? false)
+            provider?.open(file: file, openMode: viewMode ? .view : .edit, canEdit: provider?.allowEdit(entity: file) ?? false)
             searchController.isActive = false
         } else if let index = tableData.firstIndex(where: { $0.id == file.id }) {
             let cell = tableView.cellForRow(at: IndexPath(row: index, section: 0))
@@ -1559,7 +1573,7 @@ class ASCDocumentsViewController: ASCBaseTableViewController, UIGestureRecognize
 
                                     ASCEditorManager.shared.openEditorLocalCopy(
                                         file: file,
-                                        openViewMode: false,
+                                        openMode: .edit,
                                         canEdit: true,
                                         autosave: true,
                                         locallyEditing: locallyEditing,
@@ -1567,7 +1581,7 @@ class ASCDocumentsViewController: ASCBaseTableViewController, UIGestureRecognize
                                         closeHandler: closeHandler
                                     )
                                 } else {
-                                    self?.provider?.open(file: file, openViewMode: false, canEdit: true)
+                                    self?.provider?.open(file: file, openMode: .edit, canEdit: true)
                                 }
                             })
                         }

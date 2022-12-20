@@ -59,6 +59,10 @@ protocol FileProviderHolder: AnyObject {
     var provider: ASCFileProviderProtocol? { get set }
 }
 
+enum ASCFiletProviderContentType {
+    case files, folders, documents, spreadsheets, presentations, images
+}
+
 protocol ASCFileProviderProtocol {
     // Information
     var id: String? { get }
@@ -74,6 +78,7 @@ protocol ASCFileProviderProtocol {
 
     var delegate: ASCProviderDelegate? { get set }
     var filterController: ASCFiltersControllerProtocol? { get set }
+    var contentTypes: [ASCFiletProviderContentType] { get }
 
     // Methods
     func copy() -> ASCFileProviderProtocol
@@ -130,6 +135,10 @@ protocol ASCFileProviderProtocol {
 // MARK: - ASCFileProvider protocol
 
 extension ASCFileProviderProtocol {
+    var contentTypes: [ASCFiletProviderContentType] {
+        [.files, .folders, .documents, .spreadsheets, .presentations, .images]
+    }
+
     func cancel() {}
     func userInfo(completeon: ASCProviderUserInfoHandler?) {}
     func updateSort(completeon: ASCProviderCompletionHandler?) {}

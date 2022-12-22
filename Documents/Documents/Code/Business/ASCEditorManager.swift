@@ -1220,7 +1220,7 @@ extension ASCEditorManager {
                 "sdkCheck": sdkCheck,
                 "appFonts": editorFontsPaths,
                 "dataFontsPath": dataFontsPath,
-                "supportShare": file.access == .readWrite,
+                "supportShare": file.access == .readWrite || file.access == .none,
                 "license": licenseUrl,
             ]
 

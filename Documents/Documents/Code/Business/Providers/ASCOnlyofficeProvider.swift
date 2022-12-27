@@ -62,6 +62,13 @@ class ASCOnlyofficeProvider: ASCFileProviderProtocol & ASCSortableFileProviderPr
         return OnlyofficeApiClient.shared
     }
 
+    var isRecentCategory: Bool { category?.folder?.rootFolderType == .onlyofficeRecent }
+
+    var contentTypes: [ASCFiletProviderContentType] {
+        let defaultTypes: [ASCFiletProviderContentType] = [.files, .folders, .documents, .spreadsheets, .presentations, .images]
+        return isRecentCategory ? defaultTypes.filter { $0 != .folders } : defaultTypes
+    }
+
     init() {
         reset()
         OnlyofficeApiClient.reset()
@@ -1044,7 +1051,6 @@ class ASCOnlyofficeProvider: ASCFileProviderProtocol & ASCSortableFileProviderPr
                 fileExtension == "pdf"
 
             let isFavoriteCategory = category?.folder?.rootFolderType == .onlyofficeFavorites
-            let isRecentCategory = category?.folder?.rootFolderType == .onlyofficeRecent
 
             if isTrash {
                 return [.delete, .restore]

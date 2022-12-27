@@ -1370,57 +1370,73 @@ class ASCDocumentsViewController: ASCBaseTableViewController, UIGestureRecognize
 
     @available(iOS 14.0, *)
     private func selectAllMenu() -> UIMenu? {
-        return UIMenu(title: "", options: .displayInline, children: [
-            UIAction(
+        let uiActions: [UIAction] = {
+            var uiActions = [UIAction]()
+            uiActions.append(UIAction(
                 title: NSLocalizedString("All", comment: ""),
                 image: UIImage(systemName: "checkmark.circle"),
                 handler: { [weak self] action in
                     self?.selectAllItems(type: AnyObject.self)
                 }
-            ),
-            UIAction(
-                title: NSLocalizedString("Files", comment: ""),
-                image: Asset.Images.menuFiles.image,
-                handler: { [weak self] action in
-                    self?.selectAllItems(type: ASCFile.self)
+            ))
+
+            provider?.contentTypes.forEach { contentType in
+                switch contentType {
+                case .files:
+                    uiActions.append(UIAction(
+                        title: NSLocalizedString("Files", comment: ""),
+                        image: Asset.Images.menuFiles.image,
+                        handler: { [weak self] action in
+                            self?.selectAllItems(type: ASCFile.self)
+                        }
+                    ))
+                case .folders:
+                    uiActions.append(UIAction(
+                        title: NSLocalizedString("Folders", comment: ""),
+                        image: UIImage(systemName: "folder"),
+                        handler: { [weak self] action in
+                            self?.selectAllItems(type: ASCFolder.self)
+                        }
+                    ))
+                case .documents:
+                    uiActions.append(UIAction(
+                        title: NSLocalizedString("Documents", comment: ""),
+                        image: Asset.Images.menuDocuments.image,
+                        handler: { [weak self] action in
+                            self?.selectAllItems(type: ASCFile.self, extensions: ASCConstants.FileExtensions.documents)
+                        }
+                    ))
+                case .spreadsheets:
+                    uiActions.append(UIAction(
+                        title: NSLocalizedString("Spreadsheets", comment: ""),
+                        image: Asset.Images.menuSpreadsheet.image,
+                        handler: { [weak self] action in
+                            self?.selectAllItems(type: ASCFile.self, extensions: ASCConstants.FileExtensions.spreadsheets)
+                        }
+                    ))
+                case .presentations:
+                    uiActions.append(UIAction(
+                        title: NSLocalizedString("Presentations", comment: ""),
+                        image: Asset.Images.menuPresentation.image,
+                        handler: { [weak self] action in
+                            self?.selectAllItems(type: ASCFile.self, extensions: ASCConstants.FileExtensions.presentations)
+                        }
+                    ))
+                case .images:
+                    uiActions.append(UIAction(
+                        title: NSLocalizedString("Images", comment: ""),
+                        image: UIImage(systemName: "photo"),
+                        handler: { [weak self] action in
+                            self?.selectAllItems(type: ASCFile.self, extensions: ASCConstants.FileExtensions.images)
+                        }
+                    ))
                 }
-            ),
-            UIAction(
-                title: NSLocalizedString("Folders", comment: ""),
-                image: UIImage(systemName: "folder"),
-                handler: { [weak self] action in
-                    self?.selectAllItems(type: ASCFolder.self)
-                }
-            ),
-            UIAction(
-                title: NSLocalizedString("Documents", comment: ""),
-                image: Asset.Images.menuDocuments.image,
-                handler: { [weak self] action in
-                    self?.selectAllItems(type: ASCFile.self, extensions: ASCConstants.FileExtensions.documents)
-                }
-            ),
-            UIAction(
-                title: NSLocalizedString("Spreadsheets", comment: ""),
-                image: Asset.Images.menuSpreadsheet.image,
-                handler: { [weak self] action in
-                    self?.selectAllItems(type: ASCFile.self, extensions: ASCConstants.FileExtensions.spreadsheets)
-                }
-            ),
-            UIAction(
-                title: NSLocalizedString("Presentations", comment: ""),
-                image: Asset.Images.menuPresentation.image,
-                handler: { [weak self] action in
-                    self?.selectAllItems(type: ASCFile.self, extensions: ASCConstants.FileExtensions.presentations)
-                }
-            ),
-            UIAction(
-                title: NSLocalizedString("Images", comment: ""),
-                image: UIImage(systemName: "photo"),
-                handler: { [weak self] action in
-                    self?.selectAllItems(type: ASCFile.self, extensions: ASCConstants.FileExtensions.images)
-                }
-            ),
-        ])
+            }
+
+            return uiActions
+        }()
+
+        return UIMenu(title: "", options: .displayInline, children: uiActions)
     }
 
     private func highlight(cell: UITableViewCell) {
@@ -2473,24 +2489,35 @@ class ASCDocumentsViewController: ASCBaseTableViewController, UIGestureRecognize
         selectController.addAction(UIAlertAction(title: NSLocalizedString("All", comment: ""), handler: { [weak self] action in
             self?.selectAllItems(type: AnyObject.self)
         }))
-        selectController.addAction(UIAlertAction(title: NSLocalizedString("Files", comment: ""), handler: { [weak self] action in
-            self?.selectAllItems(type: ASCFile.self)
-        }))
-        selectController.addAction(UIAlertAction(title: NSLocalizedString("Folders", comment: ""), handler: { [weak self] action in
-            self?.selectAllItems(type: ASCFolder.self)
-        }))
-        selectController.addAction(UIAlertAction(title: NSLocalizedString("Documents", comment: ""), handler: { [weak self] action in
-            self?.selectAllItems(type: ASCFile.self, extensions: ASCConstants.FileExtensions.documents)
-        }))
-        selectController.addAction(UIAlertAction(title: NSLocalizedString("Spreadsheets", comment: ""), handler: { [weak self] action in
-            self?.selectAllItems(type: ASCFile.self, extensions: ASCConstants.FileExtensions.spreadsheets)
-        }))
-        selectController.addAction(UIAlertAction(title: NSLocalizedString("Presentations", comment: ""), handler: { [weak self] action in
-            self?.selectAllItems(type: ASCFile.self, extensions: ASCConstants.FileExtensions.presentations)
-        }))
-        selectController.addAction(UIAlertAction(title: NSLocalizedString("Images", comment: ""), handler: { [weak self] action in
-            self?.selectAllItems(type: ASCFile.self, extensions: ASCConstants.FileExtensions.images)
-        }))
+
+        provider?.contentTypes.forEach { contentType in
+            switch contentType {
+            case .files:
+                selectController.addAction(UIAlertAction(title: NSLocalizedString("Files", comment: ""), handler: { [weak self] action in
+                    self?.selectAllItems(type: ASCFile.self)
+                }))
+            case .folders:
+                selectController.addAction(UIAlertAction(title: NSLocalizedString("Folders", comment: ""), handler: { [weak self] action in
+                    self?.selectAllItems(type: ASCFolder.self)
+                }))
+            case .documents:
+                selectController.addAction(UIAlertAction(title: NSLocalizedString("Documents", comment: ""), handler: { [weak self] action in
+                    self?.selectAllItems(type: ASCFile.self, extensions: ASCConstants.FileExtensions.documents)
+                }))
+            case .spreadsheets:
+                selectController.addAction(UIAlertAction(title: NSLocalizedString("Spreadsheets", comment: ""), handler: { [weak self] action in
+                    self?.selectAllItems(type: ASCFile.self, extensions: ASCConstants.FileExtensions.spreadsheets)
+                }))
+            case .presentations:
+                selectController.addAction(UIAlertAction(title: NSLocalizedString("Presentations", comment: ""), handler: { [weak self] action in
+                    self?.selectAllItems(type: ASCFile.self, extensions: ASCConstants.FileExtensions.presentations)
+                }))
+            case .images:
+                selectController.addAction(UIAlertAction(title: NSLocalizedString("Images", comment: ""), handler: { [weak self] action in
+                    self?.selectAllItems(type: ASCFile.self, extensions: ASCConstants.FileExtensions.images)
+                }))
+            }
+        }
 
         selectController.addAction(UIAlertAction(title: ASCLocalization.Common.cancel, style: .cancel, handler: nil))
 

@@ -346,7 +346,11 @@ class ASCDocumentsViewController: ASCBaseTableViewController, UIGestureRecognize
         let isViewControllerVisible = viewIfLoaded?.window != nil
         if keyPath == ASCConstants.SettingsKeys.sortDocuments {
             guard isViewControllerVisible else {
-                needsToLoadFirstPageOnAppear = true
+                if provider?.id == ASCFileManager.localProvider.id {
+                    needsToLoadFirstPageOnAppear = true
+                } else {
+                    needsToLoadFirstPageOnAppear = provider?.authorization != nil
+                }
                 return
             }
             loadFirstPage()

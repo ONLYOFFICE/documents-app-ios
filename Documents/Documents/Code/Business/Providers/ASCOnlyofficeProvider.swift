@@ -1178,7 +1178,7 @@ class ASCOnlyofficeProvider: ASCFileProviderProtocol & ASCSortableFileProviderPr
         case .pin: pinRoom(folder: folder, handler: handler)
         case .unpin: unpinRoom(folder: folder, handler: handler)
         case .archive: archiveRoom(folder: folder, handler: handler)
-        case .unarchive: unpinRoom(folder: folder, handler: handler)
+        case .unarchive: unarchiveRoom(folder: folder, handler: handler)
         default: unsupportedActionHandler(action: action, handler: handler)
         }
     }
@@ -1218,7 +1218,7 @@ class ASCOnlyofficeProvider: ASCFileProviderProtocol & ASCSortableFileProviderPr
 
     private func unarchiveRoom(folder: ASCFolder, handler: ASCEntityHandler?) {
         handler?(.begin, nil, nil)
-        apiClient.request(OnlyofficeAPI.Endpoints.Rooms.archive(folder: folder), ["deleteAfter": true]) { response, error in
+        apiClient.request(OnlyofficeAPI.Endpoints.Rooms.unarchive(folder: folder), ["deleteAfter": true]) { response, error in
             if let folder = response?.result {
                 handler?(.end, folder, nil)
             } else {

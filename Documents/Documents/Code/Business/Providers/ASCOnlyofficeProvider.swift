@@ -733,16 +733,16 @@ class ASCOnlyofficeProvider: ASCFileProviderProtocol & ASCSortableFileProviderPr
         apiClient.request(OnlyofficeAPI.Endpoints.Folders.create(in: folder), ["title": name]) { result, error in
             if let error = error {
                 completeon?(self, nil, false, error)
-            } else if let folder = result?.result {
+            } else if let createdFolder = result?.result {
                 ASCAnalytics.logEvent(ASCConstants.Analytics.Event.createEntity, parameters: [
                     ASCAnalytics.Event.Key.portal: OnlyofficeApiClient.shared.baseURL?.absoluteString ?? ASCAnalytics.Event.Value.none,
                     ASCAnalytics.Event.Key.onDevice: false,
                     ASCAnalytics.Event.Key.type: ASCAnalytics.Event.Value.folder,
                 ])
-                completeon?(self, folder, true, nil)
+                createdFolder.parent = folder
+                completeon?(self, createdFolder, true, nil)
             } else {
                 completeon?(self, nil, false, NetworkingError.invalidData)
-//                completeon?(self, nil, false, ASCProviderError(NetworkingError.invalidData))
             }
         }
     }

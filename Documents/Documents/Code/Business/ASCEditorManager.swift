@@ -1908,7 +1908,10 @@ extension ASCEditorManager {
         func documentLoading(_ controller: DEEditorViewController!, progress value: CGFloat) {
             log.info("DEEditorDelegate:documentLoading \(value)")
 
-            if let file = openedFile, !file.device {
+            if let file = openedFile,
+               !file.device,
+               provider?.allowEdit(entity: file) ?? false
+            {
                 OnlyofficeApiClient.request(OnlyofficeAPI.Endpoints.Files.startEdit(file: file)) { response, error in
                     if let error = error {
                         log.error(error)

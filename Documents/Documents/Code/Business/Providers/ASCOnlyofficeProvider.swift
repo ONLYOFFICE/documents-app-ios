@@ -108,7 +108,7 @@ class ASCOnlyofficeProvider: ASCFileProviderProtocol & ASCSortableFileProviderPr
     }
 
     fileprivate func filterControllerType(forFolder folder: ASCFolder) -> FilterControllerType {
-        guard isRoot(folder: folder), ASCOnlyofficeCategory.isDocSpaceRoom(type: folder.rootFolderType) else {
+        guard isRoot(folder: folder), ASCOnlyofficeCategory.hasDocSpaceRooms(type: folder.rootFolderType) else {
             return .documents
         }
         return .rooms
@@ -293,7 +293,7 @@ class ASCOnlyofficeProvider: ASCFileProviderProtocol & ASCSortableFileProviderPr
                 "startIndex": (parameters["startIndex"] as? Int) ?? strongSelf.page * strongSelf.pageSize,
                 "count": (parameters["count"] as? Int) ?? strongSelf.pageSize,
             ]
-            if ASCOnlyofficeCategory.isDocSpaceRoom(type: folder.rootFolderType), let searchArea = ASCOnlyofficeCategory.searchArea(of: folder.rootFolderType) {
+            if ASCOnlyofficeCategory.isDocSpace(type: folder.rootFolderType), let searchArea = ASCOnlyofficeCategory.searchArea(of: folder.rootFolderType) {
                 params["searchArea"] = searchArea
             }
 
@@ -328,7 +328,7 @@ class ASCOnlyofficeProvider: ASCFileProviderProtocol & ASCSortableFileProviderPr
             let endpoint: Endpoint<OnlyofficeResponse<OnlyofficePath>> = {
                 guard hasFilters,
                       strongSelf.isRoot(folder: folder),
-                      ASCOnlyofficeCategory.isDocSpaceRoom(type: folder.rootFolderType),
+                      ASCOnlyofficeCategory.isDocSpace(type: folder.rootFolderType),
                       ASCOnlyofficeCategory.hasRootRooms(type: folder.rootFolderType)
                 else {
                     return OnlyofficeAPI.Endpoints.Folders.path(of: folder)
@@ -853,7 +853,7 @@ class ASCOnlyofficeProvider: ASCFileProviderProtocol & ASCSortableFileProviderPr
 
     func isFolderInRoom(folder: ASCFolder?) -> Bool {
         guard let folder = folder else { return false }
-        return ASCOnlyofficeCategory.isDocSpaceRoom(type: folder.rootFolderType)
+        return ASCOnlyofficeCategory.isDocSpace(type: folder.rootFolderType)
     }
 
     func isRoot(folder: ASCFolder?) -> Bool {

@@ -12,7 +12,7 @@ class ASCOnlyofficeCategory: ASCCategory {
     var sortWeight = 500
 
     var isDocSpaceRoom: Bool {
-        Self.isDocSpaceRoom(type: folder?.rootFolderType ?? .unknown)
+        Self.isDocSpace(type: folder?.rootFolderType ?? .unknown)
     }
 
     convenience init(folder: ASCFolder) {
@@ -121,10 +121,20 @@ class ASCOnlyofficeCategory: ASCCategory {
         }
     }
 
-    static func isDocSpaceRoom(type: ASCFolderType) -> Bool {
+    static func isDocSpace(type: ASCFolderType) -> Bool {
         guard ASCFileManager.onlyofficeProvider?.apiClient.serverVersion?.docSpace != nil else { return false }
         switch type {
         case .onlyofficeRoomShared, .onlyofficeRoomArchived, .onlyofficeUser:
+            return true
+        default:
+            return false
+        }
+    }
+
+    static func hasDocSpaceRooms(type: ASCFolderType) -> Bool {
+        guard isDocSpace(type: type), ASCFileManager.onlyofficeProvider?.apiClient.serverVersion?.docSpace != nil else { return false }
+        switch type {
+        case .onlyofficeRoomShared, .onlyofficeRoomArchived:
             return true
         default:
             return false

@@ -95,14 +95,7 @@ target 'Documents-develop' do
   common_pods
 end
 
-target 'Documents-withouteditors' do
-  workspace 'ONLYOFFICE-Documents-opensource'
-  project 'Documents/Documents-opensource.xcodeproj'
-  
-  common_pods
-end
-
-target 'Documents-witheditors' do
+target 'Documents-opensource' do
   workspace 'ONLYOFFICE-Documents-opensource'
   project 'Documents/Documents-opensource.xcodeproj'
   

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Scheme
-   LastUpgradeVersion = "1410"
+   LastUpgradeVersion = "1420"
    version = "1.3">
    <BuildAction
       parallelizeBuildables = "YES"
@@ -15,8 +15,8 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "FC7080CD2812E2260057FCD2"
-               BuildableName = "Documents-witheditors.app"
-               BlueprintName = "Documents-witheditors"
+               BuildableName = "Documents.app"
+               BlueprintName = "Documents-opensource"
                ReferencedContainer = "container:Documents-opensource.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -45,8 +45,8 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "FC7080CD2812E2260057FCD2"
-            BuildableName = "Documents-witheditors.app"
-            BlueprintName = "Documents-witheditors"
+            BuildableName = "Documents.app"
+            BlueprintName = "Documents-opensource"
             ReferencedContainer = "container:Documents-opensource.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
@@ -62,8 +62,8 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "FC7080CD2812E2260057FCD2"
-            BuildableName = "Documents-witheditors.app"
-            BlueprintName = "Documents-witheditors"
+            BuildableName = "Documents.app"
+            BlueprintName = "Documents-opensource"
             ReferencedContainer = "container:Documents-opensource.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>

@@ -939,6 +939,10 @@ class ASCOnlyofficeProvider: ASCFileProviderProtocol & ASCSortableFileProviderPr
         let folder = entity as? ASCFolder
         let parentFolder = file?.parent ?? folder?.parent
 
+        if let folder = folder, folder.isRoom, folder.rootFolderType != .onlyofficeRoomArchived {
+            return false
+        }
+
         if file == nil, folder == nil {
             return false
         }

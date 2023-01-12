@@ -1416,7 +1416,7 @@ class ASCOnlyofficeProvider: ASCFileProviderProtocol & ASCSortableFileProviderPr
 
                 self.rename(file, to: title) { provider, result, success, error in
                     if let file = result as? ASCFile {
-                        complation(file.title == title)
+                        complation(file.title.fileName() == title)
                     } else {
                         complation(false)
                     }

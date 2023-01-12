@@ -2,7 +2,7 @@
 <xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="1.2" xsi:schemaLocation="urn:oasis:names:tc:xliff:document:1.2 http://docs.oasis-open.org/xliff/v1.2/os/xliff-core-1.2-strict.xsd">
   <file original="Documents/Base.lproj/ConnectStorage.storyboard" source-language="en" target-language="de" datatype="plaintext">
     <header>
-      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="13.4.1" build-num="13F100"/>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="14.2" build-num="14C18"/>
     </header>
     <body>
       <trans-unit id="1hg-GO-WNq.text" xml:space="preserve">
@@ -74,7 +74,7 @@
   </file>
   <file original="Documents/Base.lproj/CreatePortal.storyboard" source-language="en" target-language="de" datatype="plaintext">
     <header>
-      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="13.4.1" build-num="13F100"/>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="14.2" build-num="14C18"/>
     </header>
     <body>
       <trans-unit id="BMv-HP-hD2.normalTitle" xml:space="preserve">
@@ -162,7 +162,7 @@ und schön können Sie loslegen</target>
   </file>
   <file original="Documents/Base.lproj/Intro.storyboard" source-language="en" target-language="de" datatype="plaintext">
     <header>
-      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="13.4.1" build-num="13F100"/>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="14.2" build-num="14C18"/>
     </header>
     <body>
       <trans-unit id="De8-tD-APT.text" xml:space="preserve">
@@ -184,7 +184,7 @@ und schön können Sie loslegen</target>
   </file>
   <file original="Documents/Base.lproj/Localizable.stringsdict" source-language="en" target-language="de" datatype="plaintext">
     <header>
-      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="13.4.1" build-num="13F100"/>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="14.2" build-num="14C18"/>
     </header>
     <body>
       <trans-unit id="/%d selected:dict/NSStringLocalizedFormatKey:dict/:string" xml:space="preserve">
@@ -294,7 +294,7 @@ und schön können Sie loslegen</target>
       </trans-unit>
       <trans-unit id="/Delete %lu Folder and %lu File:dict/lu_files:dict/zero:dict/:string" xml:space="preserve">
         <source/>
-        <target state="needs-translation"/>
+        <target/>
         <note/>
       </trans-unit>
       <trans-unit id="/Delete %lu Folder and %lu File:dict/lu_folders:dict/one:dict/:string" xml:space="preserve">
@@ -331,7 +331,7 @@ und schön können Sie loslegen</target>
   </file>
   <file original="Documents/Base.lproj/Login.storyboard" source-language="en" target-language="de" datatype="plaintext">
     <header>
-      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="13.4.1" build-num="13F100"/>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="14.2" build-num="14C18"/>
     </header>
     <body>
       <trans-unit id="0X2-Xg-z5B.text" xml:space="preserve">
@@ -605,7 +605,7 @@ und fügen Sie diesen in das Eingabefeld</target>
   </file>
   <file original="Documents/Base.lproj/Main.storyboard" source-language="en" target-language="de" datatype="plaintext">
     <header>
-      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="13.4.1" build-num="13F100"/>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="14.2" build-num="14C18"/>
     </header>
     <body>
       <trans-unit id="0Hf-aP-smp.text" xml:space="preserve">
@@ -757,7 +757,7 @@ und fügen Sie diesen in das Eingabefeld</target>
   </file>
   <file original="Documents/Base.lproj/Settings.storyboard" source-language="en" target-language="de" datatype="plaintext">
     <header>
-      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="13.4.1" build-num="13F100"/>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="14.2" build-num="14C18"/>
     </header>
     <body>
       <trans-unit id="0DJ-uV-iju.title" xml:space="preserve">
@@ -838,7 +838,7 @@ Hinweis: Wenn Sie das Kennwort vergessen haben, müssen Sie die App löschen und
   </file>
   <file original="Documents/Base.lproj/Sort.storyboard" source-language="en" target-language="de" datatype="plaintext">
     <header>
-      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="13.4.1" build-num="13F100"/>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="14.2" build-num="14C18"/>
     </header>
     <body>
       <trans-unit id="HjM-la-pDc.text" xml:space="preserve">
@@ -865,7 +865,7 @@ Hinweis: Wenn Sie das Kennwort vergessen haben, müssen Sie die App löschen und
   </file>
   <file original="Documents/Base.lproj/Transfer.storyboard" source-language="en" target-language="de" datatype="plaintext">
     <header>
-      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="13.4.1" build-num="13F100"/>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="14.2" build-num="14C18"/>
     </header>
     <body>
       <trans-unit id="9YY-0H-nww.text" xml:space="preserve">
@@ -902,7 +902,7 @@ Hinweis: Wenn Sie das Kennwort vergessen haben, müssen Sie die App löschen und
   </file>
   <file original="Documents/Base.lproj/UserProfile.storyboard" source-language="en" target-language="de" datatype="plaintext">
     <header>
-      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="13.4.1" build-num="13F100"/>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="14.2" build-num="14C18"/>
     </header>
     <body>
       <trans-unit id="1S2-Q7-5vL.text" xml:space="preserve">
@@ -949,7 +949,7 @@ Hinweis: Wenn Sie das Kennwort vergessen haben, müssen Sie die App löschen und
   </file>
   <file original="Documents/Code/Controllers/CreateEntity/Views/Base.lproj/ASCCreateEntityView.xib" source-language="en" target-language="de" datatype="plaintext">
     <header>
-      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="13.4.1" build-num="13F100"/>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="14.2" build-num="14C18"/>
     </header>
     <body>
       <trans-unit id="0TH-k4-z5u.normalTitle" xml:space="preserve">
@@ -981,7 +981,7 @@ Hinweis: Wenn Sie das Kennwort vergessen haben, müssen Sie die App löschen und
   </file>
   <file original="Documents/Code/Vendor/PasscodeLock/Base.lproj/PasscodeLock.strings" source-language="en" target-language="de" datatype="plaintext">
     <header>
-      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="13.4.1" build-num="13F100"/>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="14.2" build-num="14C18"/>
     </header>
     <body>
       <trans-unit id="PasscodeLockChangeDescription" xml:space="preserve">
@@ -1053,7 +1053,7 @@ Hinweis: Wenn Sie das Kennwort vergessen haben, müssen Sie die App löschen und
   </file>
   <file original="Documents/Code/Vendor/PasscodeLock/Views/Base.lproj/PasscodeLockView.xib" source-language="en" target-language="de" datatype="plaintext">
     <header>
-      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="13.4.1" build-num="13F100"/>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="14.2" build-num="14C18"/>
     </header>
     <body>
       <trans-unit id="0CR-0R-0Nr.normalTitle" xml:space="preserve">
@@ -1135,7 +1135,7 @@ Hinweis: Wenn Sie das Kennwort vergessen haben, müssen Sie die App löschen und
   </file>
   <file original="Documents/en.lproj/Documents-InfoPlist.strings" source-language="en" target-language="de" datatype="plaintext">
     <header>
-      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="13.4.1" build-num="13F100"/>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="14.2" build-num="14C18"/>
     </header>
     <body>
       <trans-unit id="CFBundleName" xml:space="preserve">
@@ -1190,71 +1190,9 @@ Hinweis: Wenn Sie das Kennwort vergessen haben, müssen Sie die App löschen und
       </trans-unit>
     </body>
   </file>
-  <file original="Documents/en.lproj/Documents.alpha-InfoPlist.strings" source-language="en" target-language="de" datatype="plaintext">
-    <header>
-      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="13.4.1" build-num="13F100"/>
-    </header>
-    <body>
-      <trans-unit id="CFBundleName" xml:space="preserve">
-        <source>Documents-Alpha</source>
-        <target>Dokumente-Alpha</target>
-        <note>Bundle name</note>
-      </trans-unit>
-      <trans-unit id="NSCameraUsageDescription" xml:space="preserve">
-        <source>This app requires access to the camera, so that you can take photo and upload it in the app.</source>
-        <target>Diese App benötigt Zugriff auf die Kamera, damit Sie Fotos machen und in die App hochladen können.</target>
-        <note>Privacy - Camera Usage Description</note>
-      </trans-unit>
-      <trans-unit id="NSFaceIDUsageDescription" xml:space="preserve">
-        <source>This app requires Face ID permission to authenticate using Face recognition.</source>
-        <target>Für die Authentifizierung mit Gesichtserkennung benötigt diese App die Berechtigung zur Gesichtserkennung.</target>
-        <note>Privacy - Face ID Usage Description</note>
-      </trans-unit>
-      <trans-unit id="NSLocalNetworkUsageDescription" xml:space="preserve">
-        <source>Network access required</source>
-        <target>Netzwerkzugriff erforderlich</target>
-        <note>Privacy - Local Network Usage Description</note>
-      </trans-unit>
-      <trans-unit id="NSPhotoLibraryAddUsageDescription" xml:space="preserve">
-        <source>This app requires access to the photo library, so that you can upload your photos in the app.</source>
-        <target>Diese App benötigt Zugriff auf die Foto-Bibliothek, damit Sie Ihre Fotos in die App hochladen können.</target>
-        <note>Privacy - Photo Library Additions Usage Description</note>
-      </trans-unit>
-      <trans-unit id="NSPhotoLibraryUsageDescription" xml:space="preserve">
-        <source>This app requires access to the photo library, so that you can upload your photos in the app.</source>
-        <target>Diese App benötigt Zugriff auf die Foto-Bibliothek, damit Sie Ihre Fotos in die App hochladen können.</target>
-        <note>Privacy - Photo Library Usage Description</note>
-      </trans-unit>
-      <trans-unit id="New Document" xml:space="preserve">
-        <source>New Document</source>
-        <target>Neues Dokument</target>
-        <note/>
-      </trans-unit>
-      <trans-unit id="New Presentation" xml:space="preserve">
-        <source>New Presentation</source>
-        <target>Neue Präsentation</target>
-        <note/>
-      </trans-unit>
-      <trans-unit id="New Spreadsheet" xml:space="preserve">
-        <source>New Spreadsheet</source>
-        <target>Neue Tabelle</target>
-        <note/>
-      </trans-unit>
-      <trans-unit id="ONLYOFFICE fillable form (.oform)" xml:space="preserve">
-        <source>ONLYOFFICE fillable form (.oform)</source>
-        <target>Ausfüllbares ONLYOFFICE-Formular (.oform)</target>
-        <note/>
-      </trans-unit>
-      <trans-unit id="ONLYOFFICE form template (.docxf)" xml:space="preserve">
-        <source>ONLYOFFICE form template (.docxf)</source>
-        <target>ONLYOFFICE-Formularvorlage (.docxf)</target>
-        <note/>
-      </trans-unit>
-    </body>
-  </file>
   <file original="Documents/en.lproj/Localizable.strings" source-language="en" target-language="de" datatype="plaintext">
     <header>
-      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="13.4.1" build-num="13F100"/>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="14.2" build-num="14C18"/>
     </header>
     <body>
       <trans-unit id="%d selected" xml:space="preserve">
@@ -1285,6 +1223,18 @@ Hinweis: Wenn Sie das Kennwort vergessen haben, müssen Sie die App löschen und
       <trans-unit id="%lu items with the same name already exist in the folder '%@'. Overwrite the items?" xml:space="preserve">
         <source>%1$lu items with the same name already exist in the folder '%2$@'. Overwrite the items?</source>
         <target>%1$lu Objekte mit demselben Namen existieren bereits im Ordner '%2$@'. Objekte überschreiben?</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="&lt;p&gt;Use the password created in &lt;a href=&quot;https://yandex.ru/id/about&quot;&gt;Yandex ID&lt;/a&gt;.&lt;/br&gt;More detailed connection instructions can be found in the &lt;a href=&quot;https://yandex.ru/support/disk-desktop/webdav-app-passwords.html?lang=ru&quot;&gt;help&lt;/a&gt;.&lt;/p&gt;" xml:space="preserve">
+        <source>&lt;p&gt;Use the password created in &lt;a href="https://yandex.ru/id/about"&gt;Yandex ID&lt;/a&gt;.&lt;/br&gt;More detailed connection instructions can be found in the &lt;a href="https://yandex.ru/support/disk-desktop/webdav-app-passwords.html?lang=ru"&gt;help&lt;/a&gt;.&lt;/p&gt;</source>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="&lt;p&gt;Use the password created in &lt;a href=&quot;https://yandex.ru/id/about&quot;&gt;Yandex ID&lt;/a&gt;.&lt;/p&gt;&lt;p&gt;More detailed connection instructions can be found in the &lt;a href=&quot;https://yandex.ru/support/disk-desktop/webdav-app-passwords.html?lang=ru&quot;&gt;help&lt;/a&gt;.&lt;/p&gt;" xml:space="preserve">
+        <source>&lt;p&gt;Use the password created in &lt;a href="https://yandex.ru/id/about"&gt;Yandex ID&lt;/a&gt;.&lt;/p&gt;&lt;p&gt;More detailed connection instructions can be found in the &lt;a href="https://yandex.ru/support/disk-desktop/webdav-app-passwords.html?lang=ru"&gt;help&lt;/a&gt;.&lt;/p&gt;</source>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="&lt;p&gt;You must have a paid version of the player to use this service.&lt;/p&gt;&lt;p&gt;If you have activated double authentication, please generate a CDM application from the Infomaniak manager. &lt;a href=&quot;https://www.infomaniak.com/en/support/faq/1940/enable-two-step-verification&quot;&gt;More...&lt;/a&gt;&lt;/p&gt;" xml:space="preserve">
+        <source>&lt;p&gt;You must have a paid version of the player to use this service.&lt;/p&gt;&lt;p&gt;If you have activated double authentication, please generate a CDM application from the Infomaniak manager. &lt;a href="https://www.infomaniak.com/en/support/faq/1940/enable-two-step-verification"&gt;More...&lt;/a&gt;&lt;/p&gt;</source>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="A file with a similar name already exists in the document directory on the device." xml:space="preserve">
@@ -1372,6 +1322,10 @@ Hinweis: Wenn Sie das Kennwort vergessen haben, müssen Sie die App löschen und
         <target>Nachricht hinzufügen</target>
         <note>Sharing settings add notification message</note>
       </trans-unit>
+      <trans-unit id="Add users" xml:space="preserve">
+        <source>Add users</source>
+        <note>Button title</note>
+      </trans-unit>
       <trans-unit id="Add users or groups and allow them to &#10; read, review or edit documents." xml:space="preserve">
         <source>Add users or groups and allow them to 
  read, review or edit documents.</source>
@@ -1396,12 +1350,12 @@ Hinweis: Wenn Sie das Kennwort vergessen haben, müssen Sie die App löschen und
       </trans-unit>
       <trans-unit id="All files" xml:space="preserve">
         <source>All files</source>
-        <target state="translated">Alle Dateien</target>
+        <target>Alle Dateien</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="All notifications" xml:space="preserve">
         <source>All notifications</source>
-        <target state="translated">Alle Benachrichtigungen</target>
+        <target>Alle Benachrichtigungen</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Allow access via external link" xml:space="preserve">
@@ -1424,9 +1378,21 @@ Hinweis: Wenn Sie das Kennwort vergessen haben, müssen Sie die App löschen und
         <target>Anwenden</target>
         <note>Caption of the process</note>
       </trans-unit>
+      <trans-unit id="Archive" xml:space="preserve">
+        <source>Archive</source>
+        <note>Button title</note>
+      </trans-unit>
       <trans-unit id="Archives" xml:space="preserve">
         <source>Archives</source>
-        <target state="translated">Archive</target>
+        <target>Archive</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Archiving" xml:space="preserve">
+        <source>Archiving</source>
+        <note>Caption of the processing</note>
+      </trans-unit>
+      <trans-unit id="Archiving failed." xml:space="preserve">
+        <source>Archiving failed.</source>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Are you sure you want to delete the account %@ from this device?" xml:space="preserve">
@@ -1442,6 +1408,14 @@ Hinweis: Wenn Sie das Kennwort vergessen haben, müssen Sie die App löschen und
       <trans-unit id="Author" xml:space="preserve">
         <source>Author</source>
         <target>Autor</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Back" xml:space="preserve">
+        <source>Back</source>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Box" xml:space="preserve">
+        <source>Box</source>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Box directory" xml:space="preserve">
@@ -1489,6 +1463,10 @@ Hinweis: Wenn Sie das Kennwort vergessen haben, müssen Sie die App löschen und
         <target>Abbrechen</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
+      <trans-unit id="Cancel invitation?" xml:space="preserve">
+        <source>Cancel invitation?</source>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
       <trans-unit id="Check your internet connection" xml:space="preserve">
         <source>Check your internet connection</source>
         <target>Bitte überprüfen Sie Ihre Internetverbindung</target>
@@ -1519,6 +1497,10 @@ Hinweis: Wenn Sie das Kennwort vergessen haben, müssen Sie die App löschen und
         <target>Cache löschen?</target>
         <note>Button title</note>
       </trans-unit>
+      <trans-unit id="Clear selection?" xml:space="preserve">
+        <source>Clear selection?</source>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
       <trans-unit id="Clearing" xml:space="preserve">
         <source>Clearing</source>
         <target>Wird gelöscht</target>
@@ -1543,6 +1525,10 @@ Hinweis: Wenn Sie das Kennwort vergessen haben, müssen Sie die App löschen und
         <source>Collaborate with your team</source>
         <target>Arbeiten Sie mit Ihren Teammitgliedern zusammen</target>
         <note>Introduction Step Five - Title</note>
+      </trans-unit>
+      <trans-unit id="Collaboration" xml:space="preserve">
+        <source>Collaboration</source>
+        <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Comment" xml:space="preserve">
         <source>Comment</source>
@@ -1590,7 +1576,7 @@ die das WebDAV-Protokoll verwenden.</target>
       </trans-unit>
       <trans-unit id="Console" xml:space="preserve">
         <source>Console</source>
-        <target state="translated">Konsole</target>
+        <target>Konsole</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Continue anyway" xml:space="preserve">
@@ -1773,6 +1759,10 @@ die das WebDAV-Protokoll verwenden.</target>
         <target>Wird erstellt</target>
         <note>Caption of the process</note>
       </trans-unit>
+      <trans-unit id="Custom" xml:space="preserve">
+        <source>Custom</source>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
       <trans-unit id="Custom filter" xml:space="preserve">
         <source>Custom filter</source>
         <target>Benutzerdefinierter Filter</target>
@@ -1840,12 +1830,12 @@ die das WebDAV-Protokoll verwenden.</target>
       </trans-unit>
       <trans-unit id="Developer options" xml:space="preserve">
         <source>Developer options</source>
-        <target state="translated">Für Entwickler</target>
+        <target>Für Entwickler</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Disable if you do not want to receive notifications from the %@" xml:space="preserve">
         <source>Disable if you do not want to receive notifications from the %@</source>
-        <target state="translated">Deaktivieren, wenn Sie keine Benachrichtigungen von %@ benötigen</target>
+        <target>Deaktivieren, wenn Sie keine Benachrichtigungen von %@ benötigen</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Disconnect third party" xml:space="preserve">
@@ -1865,7 +1855,7 @@ die das WebDAV-Protokoll verwenden.</target>
       </trans-unit>
       <trans-unit id="Document protection" xml:space="preserve">
         <source>Document protection</source>
-        <target state="translated">Dokumentenschutz</target>
+        <target>Dokumentenschutz</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Documents" xml:space="preserve">
@@ -1924,6 +1914,10 @@ die das WebDAV-Protokoll verwenden.</target>
         <target>Dokumente lokal bearbeiten</target>
         <note>Introduction Step Four - Title</note>
       </trans-unit>
+      <trans-unit id="Editor" xml:space="preserve">
+        <source>Editor</source>
+        <note>Share status</note>
+      </trans-unit>
       <trans-unit id="Email" xml:space="preserve">
         <source>Email</source>
         <target>E-Mail</target>
@@ -1956,7 +1950,7 @@ die das WebDAV-Protokoll verwenden.</target>
       </trans-unit>
       <trans-unit id="Enable if you want to receive notifications from the %@" xml:space="preserve">
         <source>Enable if you want to receive notifications from the %@</source>
-        <target state="translated"> Aktivieren, wenn Sie Benachrichtigungen von %@ benötigen</target>
+        <target> Aktivieren, wenn Sie Benachrichtigungen von %@ benötigen</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Encoding" xml:space="preserve">
@@ -1976,12 +1970,16 @@ die das WebDAV-Protokoll verwenden.</target>
       </trans-unit>
       <trans-unit id="Enter a password to open the file." xml:space="preserve">
         <source>Enter a password to open the file.</source>
-        <target state="translated">Kennwort zum Öffnen der Datei eingeben.</target>
+        <target>Kennwort zum Öffnen der Datei eingeben.</target>
         <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Enter email" xml:space="preserve">
+        <source>Enter email</source>
+        <note>placeholder</note>
       </trans-unit>
       <trans-unit id="Enter text using handwriting instead of device keyboard. ONLYOFFICE will recognize text and insert it in the document. The feature is available for English only." xml:space="preserve">
         <source>Enter text using handwriting instead of device keyboard. ONLYOFFICE will recognize text and insert it in the document. The feature is available for English only.</source>
-        <target state="translated">Geben Sie Text handschriftlich statt über die Gerätetastatur ein. ONLYOFFICE erkennt den Text und fügt ihn in das Dokument ein. Die Funktion ist nur für Englisch verfügbar.</target>
+        <target>Geben Sie Text handschriftlich statt über die Gerätetastatur ein. ONLYOFFICE erkennt den Text und fügt ihn in das Dokument ein. Die Funktion ist nur für Englisch verfügbar.</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Error" xml:space="preserve">
@@ -1996,7 +1994,7 @@ die das WebDAV-Protokoll verwenden.</target>
       </trans-unit>
       <trans-unit id="Exclude subfolders" xml:space="preserve">
         <source>Exclude subfolders</source>
-        <target state="translated">Keine Unterordner</target>
+        <target>Keine Unterordner</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Export" xml:space="preserve">
@@ -2076,7 +2074,7 @@ die das WebDAV-Protokoll verwenden.</target>
       </trans-unit>
       <trans-unit id="Features" xml:space="preserve">
         <source>Features</source>
-        <target state="translated">Funktionen</target>
+        <target>Funktionen</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="File already exists" xml:space="preserve">
@@ -2091,7 +2089,7 @@ die das WebDAV-Protokoll verwenden.</target>
       </trans-unit>
       <trans-unit id="File search became easier with filtering options: by type for local files and by type and author for cloud files." xml:space="preserve">
         <source>File search became easier with filtering options: by type for local files and by type and author for cloud files.</source>
-        <target state="translated">Die Dateisuche ist durch Filteroptionen einfacher: nach Typ für lokale Dateien und nach Typ und Autor für Cloud-Dateien.</target>
+        <target>Die Dateisuche ist durch Filteroptionen einfacher: nach Typ für lokale Dateien und nach Typ und Autor für Cloud-Dateien.</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Files" xml:space="preserve">
@@ -2104,14 +2102,18 @@ die das WebDAV-Protokoll verwenden.</target>
         <target>Dateivorschau</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
+      <trans-unit id="Filling form" xml:space="preserve">
+        <source>Filling form</source>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
       <trans-unit id="Filtering in search" xml:space="preserve">
         <source>Filtering in search</source>
-        <target state="translated">Filtern bei der Suche</target>
+        <target>Filtern bei der Suche</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Filters" xml:space="preserve">
         <source>Filters</source>
-        <target state="translated">Filter</target>
+        <target>Filter</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="First name is incorrect" xml:space="preserve">
@@ -2181,7 +2183,7 @@ die das WebDAV-Protokoll verwenden.</target>
       </trans-unit>
       <trans-unit id="Handwriting recognition" xml:space="preserve">
         <source>Handwriting recognition</source>
-        <target state="translated">Handschrifterkennung</target>
+        <target>Handschrifterkennung</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="If a user with the mail %@ exists, then an instruction to change the password was sent to this address." xml:space="preserve">
@@ -2203,6 +2205,10 @@ die das WebDAV-Protokoll verwenden.</target>
         <source>Incorrect portal address</source>
         <target>Falsche Portal-Adresse</target>
         <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Info" xml:space="preserve">
+        <source>Info</source>
+        <note>Button title</note>
       </trans-unit>
       <trans-unit id="Information" xml:space="preserve">
         <source>Information</source>
@@ -2229,6 +2235,18 @@ die das WebDAV-Protokoll verwenden.</target>
         <target>Ungültige URL</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
+      <trans-unit id="Invite" xml:space="preserve">
+        <source>Invite</source>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Invite people" xml:space="preserve">
+        <source>Invite people</source>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Invite people by email" xml:space="preserve">
+        <source>Invite people by email</source>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
       <trans-unit id="Kb" xml:space="preserve">
         <source>Kb</source>
         <target>Kb</target>
@@ -2249,6 +2267,10 @@ die das WebDAV-Protokoll verwenden.</target>
 to the clipboard</source>
         <target>Der Link wurde
 in die Zwischenablage kopiert</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Link with the invitation has been sent to the mail" xml:space="preserve">
+        <source>Link with the invitation has been sent to the mail</source>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Logging in" xml:space="preserve">
@@ -2284,12 +2306,12 @@ in die Zwischenablage kopiert</target>
       </trans-unit>
       <trans-unit id="Mark as Read" xml:space="preserve">
         <source>Mark as Read</source>
-        <target state="translated">Als gelesen markieren</target>
+        <target>Als gelesen markieren</target>
         <note>Button title</note>
       </trans-unit>
       <trans-unit id="Mark as Read failed." xml:space="preserve">
         <source>Mark as Read failed.</source>
-        <target state="translated">Als gelesen markieren fehlgeschlagen.</target>
+        <target>Als gelesen markieren fehlgeschlagen.</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Mb" xml:space="preserve">
@@ -2304,7 +2326,11 @@ in die Zwischenablage kopiert</target>
       </trans-unit>
       <trans-unit id="Media" xml:space="preserve">
         <source>Media</source>
-        <target state="translated">Medien</target>
+        <target>Medien</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Member" xml:space="preserve">
+        <source>Member</source>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="More" xml:space="preserve">
@@ -2315,6 +2341,10 @@ in die Zwischenablage kopiert</target>
       <trans-unit id="Move" xml:space="preserve">
         <source>Move</source>
         <target>Verschieben</target>
+        <note>Button title</note>
+      </trans-unit>
+      <trans-unit id="Move from archive" xml:space="preserve">
+        <source>Move from archive</source>
         <note>Button title</note>
       </trans-unit>
       <trans-unit id="Move here" xml:space="preserve">
@@ -2332,6 +2362,10 @@ in die Zwischenablage kopiert</target>
         <target>Wird verschoben</target>
         <note>Caption of the processing</note>
       </trans-unit>
+      <trans-unit id="Moving from archive" xml:space="preserve">
+        <source>Moving from archive</source>
+        <note>Caption of the processing</note>
+      </trans-unit>
       <trans-unit id="My Clouds" xml:space="preserve">
         <source>My Clouds</source>
         <target>Meine Clouds</target>
@@ -2346,6 +2380,14 @@ in die Zwischenablage kopiert</target>
         <source>My Drive</source>
         <target>My Drive</target>
         <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="My archived" xml:space="preserve">
+        <source>My archived</source>
+        <note>Category title</note>
+      </trans-unit>
+      <trans-unit id="My rooms" xml:space="preserve">
+        <source>My rooms</source>
+        <note>Category title</note>
       </trans-unit>
       <trans-unit id="Name is empty" xml:space="preserve">
         <source>Name is empty</source>
@@ -2382,6 +2424,10 @@ in die Zwischenablage kopiert</target>
         <target>Neue Tabelle</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
+      <trans-unit id="New users" xml:space="preserve">
+        <source>New users</source>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
       <trans-unit id="Next" xml:space="preserve">
         <source>Next</source>
         <target>Weiter</target>
@@ -2404,7 +2450,7 @@ in die Zwischenablage kopiert</target>
       </trans-unit>
       <trans-unit id="No Search Result" xml:space="preserve">
         <source>No Search Result</source>
-        <target state="translated">Keine Suchergebnisse</target>
+        <target>Keine Suchergebnisse</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="No client IDs of application" xml:space="preserve">
@@ -2455,12 +2501,12 @@ in die Zwischenablage kopiert</target>
       </trans-unit>
       <trans-unit id="Nothing to show" xml:space="preserve">
         <source>Nothing to show</source>
-        <target state="translated">Nichts zu zeigen</target>
+        <target>Nichts zu zeigen</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Notifications" xml:space="preserve">
         <source>Notifications</source>
-        <target state="translated">Benachrichtigungen</target>
+        <target>Benachrichtigungen</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Notify by Email" xml:space="preserve">
@@ -2485,7 +2531,7 @@ in die Zwischenablage kopiert</target>
       </trans-unit>
       <trans-unit id="ONLYOFFICE portal" xml:space="preserve">
         <source>ONLYOFFICE portal</source>
-        <target state="translated">ONLYOFFICE-Portal</target>
+        <target>ONLYOFFICE-Portal</target>
         <note>Full App Name</note>
       </trans-unit>
       <trans-unit id="On iPad" xml:space="preserve">
@@ -2525,7 +2571,7 @@ in die Zwischenablage kopiert</target>
       </trans-unit>
       <trans-unit id="Open Folder" xml:space="preserve">
         <source>Open Folder</source>
-        <target state="translated">Ordner öffnen</target>
+        <target>Ordner öffnen</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Opening" xml:space="preserve">
@@ -2535,7 +2581,7 @@ in die Zwischenablage kopiert</target>
       </trans-unit>
       <trans-unit id="Options" xml:space="preserve">
         <source>Options</source>
-        <target state="translated">Optionen</target>
+        <target>Optionen</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Order" xml:space="preserve">
@@ -2597,6 +2643,18 @@ in die Zwischenablage kopiert</target>
         <source>Phone is incorrect</source>
         <target>Telefon ist nicht korrekt</target>
         <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Pin to top" xml:space="preserve">
+        <source>Pin to top</source>
+        <note>Button title</note>
+      </trans-unit>
+      <trans-unit id="Pinned failed." xml:space="preserve">
+        <source>Pinned failed.</source>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Pinning" xml:space="preserve">
+        <source>Pinning</source>
+        <note>Caption of the processing</note>
       </trans-unit>
       <trans-unit id="Please go to Settings and enable the camera for this app to use this feature." xml:space="preserve">
         <source>Please go to Settings and enable the camera for this app to use this feature.</source>
@@ -2709,7 +2767,7 @@ in die Zwischenablage kopiert</target>
       </trans-unit>
       <trans-unit id="Protect documents with passwords to share them securely with trusted collaborators." xml:space="preserve">
         <source>Protect documents with passwords to share them securely with trusted collaborators.</source>
-        <target state="translated">Schützen Sie Dokumente mit Passwörtern, um sie auf sichere Weise mit vertrauenswürdigen Mitautoren zu teilen.</target>
+        <target>Schützen Sie Dokumente mit Passwörtern, um sie auf sichere Weise mit vertrauenswürdigen Mitautoren zu teilen.</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Protected File" xml:space="preserve">
@@ -2719,7 +2777,7 @@ in die Zwischenablage kopiert</target>
       </trans-unit>
       <trans-unit id="Push notifications disabled" xml:space="preserve">
         <source>Push notifications disabled</source>
-        <target state="translated">Push-Benachrichtigungen deaktiviert</target>
+        <target>Push-Benachrichtigungen deaktiviert</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Read Only" xml:space="preserve">
@@ -2794,7 +2852,7 @@ in die Zwischenablage kopiert</target>
       </trans-unit>
       <trans-unit id="Reset" xml:space="preserve">
         <source>Reset</source>
-        <target state="translated">Zurücksetzen</target>
+        <target>Zurücksetzen</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Restore" xml:space="preserve">
@@ -2811,6 +2869,14 @@ in die Zwischenablage kopiert</target>
         <source>Review</source>
         <target>Überprüfen</target>
         <note>Share status</note>
+      </trans-unit>
+      <trans-unit id="Room admin" xml:space="preserve">
+        <source>Room admin</source>
+        <note>Share status</note>
+      </trans-unit>
+      <trans-unit id="Rooms" xml:space="preserve">
+        <source>Rooms</source>
+        <note>DocSpace rooms</note>
       </trans-unit>
       <trans-unit id="SKIP" xml:space="preserve">
         <source>SKIP</source>
@@ -2850,7 +2916,7 @@ in die Zwischenablage kopiert</target>
       </trans-unit>
       <trans-unit id="Select group" xml:space="preserve">
         <source>Select group</source>
-        <target state="translated">Gruppe auswählen</target>
+        <target>Gruppe auswählen</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Select the folder to copy the items" xml:space="preserve">
@@ -2870,12 +2936,16 @@ in die Zwischenablage kopiert</target>
       </trans-unit>
       <trans-unit id="Select user" xml:space="preserve">
         <source>Select user</source>
-        <target state="translated">Person auswählen</target>
+        <target>Person auswählen</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Selected provider is not available" xml:space="preserve">
         <source>Selected provider is not available</source>
         <target>Der gewählte Anbieter ist nicht verfügbar</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Selected users will not be invited to the room" xml:space="preserve">
+        <source>Selected users will not be invited to the room</source>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Selected: %ld" xml:space="preserve">
@@ -2915,7 +2985,7 @@ in die Zwischenablage kopiert</target>
       </trans-unit>
       <trans-unit id="Settings and Security" xml:space="preserve">
         <source>Settings and Security</source>
-        <target state="translated">Einstellungen und Sicherheit</target>
+        <target>Einstellungen und Sicherheit</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="SharePoint directory" xml:space="preserve">
@@ -2950,12 +3020,12 @@ in die Zwischenablage kopiert</target>
       </trans-unit>
       <trans-unit id="Show %d results" xml:space="preserve">
         <source>Show %d results</source>
-        <target state="translated">%d Ergebnisse anzeigen</target>
+        <target>%d Ergebnisse anzeigen</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Show notifications" xml:space="preserve">
         <source>Show notifications</source>
-        <target state="translated">Benachrichtigungen anzeigen</target>
+        <target>Benachrichtigungen anzeigen</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Single Sign-on" xml:space="preserve">
@@ -3060,7 +3130,7 @@ in die Zwischenablage kopiert</target>
       </trans-unit>
       <trans-unit id="The ONLYOFFICE Editors module is missing. Please contact support@onlyoffice.com for more information." xml:space="preserve">
         <source>The ONLYOFFICE Editors module is missing. Please contact support@onlyoffice.com for more information.</source>
-        <target state="translated">Das Modul mit ONLYOFFICE-Editoren fehlt. Bitte kontaktieren Sie support@onlyoffice.com für weitere Informationen.</target>
+        <target>Das Modul mit ONLYOFFICE-Editoren fehlt. Bitte kontaktieren Sie support@onlyoffice.com für weitere Informationen.</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="The account name must be between 6 and 50 characters long" xml:space="preserve">
@@ -3127,6 +3197,10 @@ kopiert</target>
         <target>Der Name des Portals muss zwischen 6 und 50 Zeichen lang sein</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
+      <trans-unit id="The quota of users is almost exhausted. Сontact the portal administrator" xml:space="preserve">
+        <source>The quota of users is almost exhausted. Сontact the portal administrator</source>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
       <trans-unit id="The request timed out." xml:space="preserve">
         <source>The request timed out.</source>
         <target>Bei der Anforderung ist eine Zeitüberschreitung aufgetreten.</target>
@@ -3139,12 +3213,20 @@ kopiert</target>
       </trans-unit>
       <trans-unit id="The setting will be available upon authorization on the %@." xml:space="preserve">
         <source>The setting will be available upon authorization on the %@.</source>
-        <target state="translated">Die Einstellung wird nach der Autorisierung bei %@ verfügbar.</target>
+        <target>Die Einstellung wird nach der Autorisierung bei %@ verfügbar.</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="The trash is empty" xml:space="preserve">
         <source>The trash is empty</source>
         <target>Der Papierkorb ist leer</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="The user limit has been reached. Сontact the portal administrator" xml:space="preserve">
+        <source>The user limit has been reached. Сontact the portal administrator</source>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Third party resource" xml:space="preserve">
+        <source>Third party resource</source>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Third-party storage" xml:space="preserve">
@@ -3194,12 +3276,12 @@ kopiert</target>
       </trans-unit>
       <trans-unit id="To open a folder, you must exit the current document." xml:space="preserve">
         <source>To open a folder, you must exit the current document.</source>
-        <target state="translated">Um einen Ordner zu öffnen, müssen Sie das aktuelle Dokument verlassen.</target>
+        <target>Um einen Ordner zu öffnen, müssen Sie das aktuelle Dokument verlassen.</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="To open a folder, you must go to portal %@ under your account." xml:space="preserve">
         <source>To open a folder, you must go to portal %@ under your account.</source>
-        <target state="translated">Um einen Ordner zu öffnen, müssen Sie zum Portal %@ unter Ihrem Konto gehen.</target>
+        <target>Um einen Ordner zu öffnen, müssen Sie zum Portal %@ unter Ihrem Konto gehen.</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="To open a new document, you must exit the current document." xml:space="preserve">
@@ -3209,7 +3291,7 @@ kopiert</target>
       </trans-unit>
       <trans-unit id="To receive push notifications from the %@ application, you need to allow receiving notifications for this application in the iOS settings" xml:space="preserve">
         <source>To receive push notifications from the %@ application, you need to allow receiving notifications for this application in the iOS settings</source>
-        <target state="translated">Um Push-Benachrichtigungen von der Anwendung %@ zu erhalten, müssen Sie den Empfang von Benachrichtigungen für diese Anwendung in den iOS-Einstellungen zulassen</target>
+        <target>Um Push-Benachrichtigungen von der Anwendung %@ zu erhalten, müssen Sie den Empfang von Benachrichtigungen für diese Anwendung in den iOS-Einstellungen zulassen</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Trash" xml:space="preserve">
@@ -3234,7 +3316,7 @@ kopiert</target>
       </trans-unit>
       <trans-unit id="Turn ON in Settings" xml:space="preserve">
         <source>Turn ON in Settings</source>
-        <target state="translated">In Einstellungen einschalten</target>
+        <target>In Einstellungen einschalten</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Turn Passcode Off" xml:space="preserve">
@@ -3270,6 +3352,10 @@ kopiert</target>
       <trans-unit id="Unable to get information about the user." xml:space="preserve">
         <source>Unable to get information about the user.</source>
         <target>Es ist nicht möglich Informationen über den Benutzer abzurufen.</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Unarchiving failed." xml:space="preserve">
+        <source>Unarchiving failed.</source>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Unauthorized users will be able only to view the document and add comments, as well as manage them." xml:space="preserve">
@@ -3337,6 +3423,18 @@ kopiert</target>
         <target>Mit Touch-ID entsperren</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
+      <trans-unit id="Unpin" xml:space="preserve">
+        <source>Unpin</source>
+        <note>Button title</note>
+      </trans-unit>
+      <trans-unit id="Unpinned failed." xml:space="preserve">
+        <source>Unpinned failed.</source>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Unpning" xml:space="preserve">
+        <source>Unpning</source>
+        <note>Caption of the processing</note>
+      </trans-unit>
       <trans-unit id="Unsupported format." xml:space="preserve">
         <source>Unsupported format.</source>
         <target>Nicht unterstütztes Dateiformat.</target>
@@ -3377,6 +3475,10 @@ kopiert</target>
         <target>Benutzer</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
+      <trans-unit id="Users in room" xml:space="preserve">
+        <source>Users in room</source>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
       <trans-unit id="Validation" xml:space="preserve">
         <source>Validation</source>
         <target>Validierung</target>
@@ -3390,6 +3492,10 @@ kopiert</target>
       <trans-unit id="Version" xml:space="preserve">
         <source>Version</source>
         <target>Version</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="View-Only" xml:space="preserve">
+        <source>View-Only</source>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Warning" xml:space="preserve">
@@ -3427,11 +3533,6 @@ Swipen Sie um mehr über die App zu erfahren.</target>
       <trans-unit id="What's New" xml:space="preserve">
         <source>What's New</source>
         <target>Neuerungen</target>
-        <note>No comment provided by engineer.</note>
-      </trans-unit>
-      <trans-unit id="What's New" xml:space="preserve">
-        <source>What's New</source>
-        <target state="translated">Neuerungen</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Work with documents offline.&#10;Created files can later be uploaded to online portal and&#10;then accessed from any other device." xml:space="preserve">
@@ -3580,7 +3681,7 @@ dann von jedem anderen Gerät aus abgerufen werden.</target>
       </trans-unit>
       <trans-unit id="new" xml:space="preserve">
         <source>new</source>
-        <target state="translated">neu</target>
+        <target>neu</target>
         <note>Badge of file in file list</note>
       </trans-unit>
       <trans-unit id="none" xml:space="preserve">
@@ -3633,7 +3734,7 @@ dann von jedem anderen Gerät aus abgerufen werden.</target>
   </file>
   <file original="Settings.bundle/en.lproj/Root.strings" source-language="en" target-language="de" datatype="plaintext">
     <header>
-      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="13.4.1" build-num="13F100"/>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="14.2" build-num="14C18"/>
     </header>
     <body>
       <trans-unit id="Acknowledgements" xml:space="preserve">

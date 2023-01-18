@@ -1434,6 +1434,38 @@ class ASCDocumentsViewController: ASCBaseTableViewController, UIGestureRecognize
                             self?.selectAllItems(type: ASCFile.self, extensions: ASCConstants.FileExtensions.images)
                         }
                     ))
+                case .collaboration:
+                    uiActions.append(UIAction(
+                        title: NSLocalizedString("Collaboration", comment: ""),
+                        image: nil,
+                        handler: { [weak self] action in
+                            self?.selectAllItems(type: ASCFolder.self, roomTypes: [.colobaration])
+                        }
+                    ))
+                case .custom:
+                    uiActions.append(UIAction(
+                        title: NSLocalizedString("Custom", comment: ""),
+                        image: nil,
+                        handler: { [weak self] action in
+                            self?.selectAllItems(type: ASCFolder.self, roomTypes: [.custom])
+                        }
+                    ))
+                case .viewOnly:
+                    uiActions.append(UIAction(
+                        title: NSLocalizedString("View-only", comment: ""),
+                        image: nil,
+                        handler: { [weak self] action in
+                            self?.selectAllItems(type: ASCFolder.self, roomTypes: [.viewOnly])
+                        }
+                    ))
+                case .fillingForms:
+                    uiActions.append(UIAction(
+                        title: NSLocalizedString("Filling form", comment: ""),
+                        image: nil,
+                        handler: { [weak self] action in
+                            self?.selectAllItems(type: ASCFolder.self, roomTypes: [.fillingForm])
+                        }
+                    ))
                 }
             }
 
@@ -2441,7 +2473,7 @@ class ASCDocumentsViewController: ASCBaseTableViewController, UIGestureRecognize
         })
     }
 
-    private func selectAllItems<T>(type: T.Type, extensions: [String]? = nil) {
+    private func selectAllItems<T>(type: T.Type, extensions: [String]? = nil, roomTypes: [ASCRoomType]? = nil) {
         if type == ASCFile.self {
             var files: [ASCEntity] = []
             if let extensions = extensions {
@@ -2458,7 +2490,13 @@ class ASCDocumentsViewController: ASCBaseTableViewController, UIGestureRecognize
                 : Set(files.map { $0.uid }
                 )
         } else if type == ASCFolder.self {
-            let folders = tableData.filter { $0 is ASCFolder }
+            let folders = tableData.filter {
+                guard let folder = $0 as? ASCFolder else { return false }
+                guard let roomTypes = roomTypes, let roomType = folder.roomType else {
+                    return $0 is ASCFolder
+                }
+                return roomTypes.contains(roomType)
+            }
             let selectedFolders = folders.filter { selectedIds.contains($0.uid) }
             selectedIds = (
                 (selectedFolders.count == selectedIds.count)
@@ -2519,6 +2557,22 @@ class ASCDocumentsViewController: ASCBaseTableViewController, UIGestureRecognize
             case .images:
                 selectController.addAction(UIAlertAction(title: NSLocalizedString("Images", comment: ""), handler: { [weak self] action in
                     self?.selectAllItems(type: ASCFile.self, extensions: ASCConstants.FileExtensions.images)
+                }))
+            case .collaboration:
+                selectController.addAction(UIAlertAction(title: NSLocalizedString("Collaboration", comment: ""), handler: { [weak self] action in
+                    self?.selectAllItems(type: ASCFolder.self, roomTypes: [.colobaration])
+                }))
+            case .custom:
+                selectController.addAction(UIAlertAction(title: NSLocalizedString("Custom", comment: ""), handler: { [weak self] action in
+                    self?.selectAllItems(type: ASCFolder.self, roomTypes: [.custom])
+                }))
+            case .viewOnly:
+                selectController.addAction(UIAlertAction(title: NSLocalizedString("View-only", comment: ""), handler: { [weak self] action in
+                    self?.selectAllItems(type: ASCFolder.self, roomTypes: [.viewOnly])
+                }))
+            case .fillingForms:
+                selectController.addAction(UIAlertAction(title: NSLocalizedString("Filling form", comment: ""), handler: { [weak self] action in
+                    self?.selectAllItems(type: ASCFolder.self, roomTypes: [.fillingForm])
                 }))
             }
         }

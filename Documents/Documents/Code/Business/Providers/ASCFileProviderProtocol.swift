@@ -60,7 +60,7 @@ protocol FileProviderHolder: AnyObject {
 }
 
 enum ASCFiletProviderContentType {
-    case files, folders, documents, spreadsheets, presentations, images
+    case files, folders, documents, spreadsheets, presentations, images, collaboration, custom, viewOnly, fillingForms
 }
 
 protocol ASCFileProviderProtocol {

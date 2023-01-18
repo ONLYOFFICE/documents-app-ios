@@ -417,6 +417,7 @@
 		FCECDDD626430A35006CD7B9 /* NSAttributedString+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCECDDD526430A35006CD7B9 /* NSAttributedString+Extensions.swift */; };
 		FCECDDD826430B00006CD7B9 /* ASCPasswordRecoveryController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCECDDD726430B00006CD7B9 /* ASCPasswordRecoveryController.swift */; };
 		FCECDDDD26430B79006CD7B9 /* ASCResponsePassword.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCECDDDC26430B79006CD7B9 /* ASCResponsePassword.swift */; };
+		FCEF2585297818D400522A3A /* WhatsNew.bundle in Resources */ = {isa = PBXBuildFile; fileRef = FCEF2584297818D400522A3A /* WhatsNew.bundle */; };
 		FCEF9D1A1ED2C94300627BA5 /* PasscodeLock.strings in Resources */ = {isa = PBXBuildFile; fileRef = FCEF9D041ED2C94300627BA5 /* PasscodeLock.strings */; };
 		FCEF9D1B1ED2C94300627BA5 /* Functions.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCEF9D061ED2C94300627BA5 /* Functions.swift */; };
 		FCEF9D1D1ED2C94300627BA5 /* ChangePasscodeState.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCEF9D091ED2C94300627BA5 /* ChangePasscodeState.swift */; };
@@ -986,6 +987,7 @@
 		FCECDDD526430A35006CD7B9 /* NSAttributedString+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSAttributedString+Extensions.swift"; sourceTree = "<group>"; };
 		FCECDDD726430B00006CD7B9 /* ASCPasswordRecoveryController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASCPasswordRecoveryController.swift; sourceTree = "<group>"; };
 		FCECDDDC26430B79006CD7B9 /* ASCResponsePassword.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASCResponsePassword.swift; sourceTree = "<group>"; };
+		FCEF2584297818D400522A3A /* WhatsNew.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = WhatsNew.bundle; path = Resources/WhatsNew.bundle; sourceTree = "<group>"; };
 		FCEF9D061ED2C94300627BA5 /* Functions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Functions.swift; sourceTree = "<group>"; };
 		FCEF9D071ED2C94300627BA5 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		FCEF9D091ED2C94300627BA5 /* ChangePasscodeState.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChangePasscodeState.swift; sourceTree = "<group>"; };
@@ -2604,6 +2606,7 @@
 				FC7D9949272994BB00410795 /* Delegate */,
 				FCFDAA991E48A10C007A240C /* LaunchScreen.storyboard */,
 				FC7B37D51E929B46009C41AD /* Settings.bundle */,
+				FCEF2584297818D400522A3A /* WhatsNew.bundle */,
 				FCCB1930262AC66F007517BB /* Colors.xcassets */,
 				FCCB1932262AC678007517BB /* Images.xcassets */,
 				FCC62ADA1E8AA1F700D24BE2 /* Localizable.strings */,
@@ -2800,6 +2803,7 @@
 				FC55EFF3294741C600422170 /* ASCFileCell.xib in Resources */,
 				8A2EB080231FFA3200A12A4E /* ASCLoaderCell.xib in Resources */,
 				FC23FC5D2044018F003B3AE7 /* Other in Resources */,
+				FCEF2585297818D400522A3A /* WhatsNew.bundle in Resources */,
 				FCC62AD81E8AA1F700D24BE2 /* Localizable.strings in Resources */,
 				FC050F7E1ECB1F6800FD452C /* ConnectStorage.storyboard in Resources */,
 				FCE35DD61E9E7BC100BC2B68 /* Sort.storyboard in Resources */,

@@ -427,6 +427,7 @@
 		FCA464A029437DD200EC05C7 /* ASCDocumentOpenMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCA4649E29437DD200EC05C7 /* ASCDocumentOpenMode.swift */; };
 		FCC64FAD291A77D5004D9A47 /* OnlyofficeInviteItemRequestModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCC64FAB291A77D5004D9A47 /* OnlyofficeInviteItemRequestModel.swift */; };
 		FCEBA70728B362390009D50B /* ASCDocumentsViewController+Menu.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCEBA70528B362390009D50B /* ASCDocumentsViewController+Menu.swift */; };
+		FCEF258E2978190200522A3A /* WhatsNew.bundle in Resources */ = {isa = PBXBuildFile; fileRef = FCEF258D2978190200522A3A /* WhatsNew.bundle */; };
 		FCF8A2EE2939096800EA137A /* UIWindow+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCF8A2EC2939096700EA137A /* UIWindow+Extensions.swift */; };
 /* End PBXBuildFile section */
 
@@ -951,6 +952,7 @@
 		FCECDDD926430B28006CD7B9 /* ASCPasswordRecoveryController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASCPasswordRecoveryController.swift; sourceTree = "<group>"; };
 		FCECDDE026430BD3006CD7B9 /* ASCResponsePassword.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASCResponsePassword.swift; sourceTree = "<group>"; };
 		FCED8F4D23E8355500EC1DAC /* ASCFloatingLabelTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCFloatingLabelTextField.swift; sourceTree = "<group>"; };
+		FCEF258D2978190200522A3A /* WhatsNew.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = WhatsNew.bundle; path = Resources/WhatsNew.bundle; sourceTree = "<group>"; };
 		FCEF851D26C29A3100173DDF /* OnedriveTokenAdapter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnedriveTokenAdapter.swift; sourceTree = "<group>"; };
 		FCEF853526C3E3CF00173DDF /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		FCEF853B26C3E43000173DDF /* AppDelegate+Notifications.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AppDelegate+Notifications.swift"; sourceTree = "<group>"; };
@@ -2732,6 +2734,7 @@
 				FC584ED925BB4F40001C608E /* Entitlements */,
 				FCEF853426C3E3CF00173DDF /* Delegate */,
 				FC7B37D51E929B46009C41AD /* Settings.bundle */,
+				FCEF258D2978190200522A3A /* WhatsNew.bundle */,
 				FCC62ADA1E8AA1F700D24BE2 /* Localizable.strings */,
 				FCF916C81ED44F3A0032C135 /* Localizable.stringsdict */,
 			);
@@ -2832,6 +2835,7 @@
 				FC70822C2812E2260057FCD2 /* Debug.storyboard in Resources */,
 				FC70822E2812E2260057FCD2 /* Images.xcassets in Resources */,
 				FC70822F2812E2260057FCD2 /* sample in Resources */,
+				FCEF258E2978190200522A3A /* WhatsNew.bundle in Resources */,
 				FC7082302812E2260057FCD2 /* Settings.bundle in Resources */,
 				FC7082312812E2260057FCD2 /* PasscodeLock.strings in Resources */,
 				FC7082332812E2260057FCD2 /* UserProfile.storyboard in Resources */,

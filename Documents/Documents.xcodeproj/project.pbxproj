@@ -440,6 +440,7 @@
 		FCECDDEE2643DD1B006CD7B9 /* Documents.plist in Resources */ = {isa = PBXBuildFile; fileRef = FCF3AAC21EF9483100DF63BA /* Documents.plist */; };
 		FCECDDF12643DF1B006CD7B9 /* Documents-InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = FCECDDEF2643DF1A006CD7B9 /* Documents-InfoPlist.strings */; };
 		FCED8F4E23E8355500EC1DAC /* ASCFloatingLabelTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCED8F4D23E8355500EC1DAC /* ASCFloatingLabelTextField.swift */; };
+		FCEF257C2976DD5100522A3A /* WhatsNew.bundle in Resources */ = {isa = PBXBuildFile; fileRef = FCEF257B2976DD5100522A3A /* WhatsNew.bundle */; };
 		FCEF851E26C29A3100173DDF /* OnedriveTokenAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCEF851D26C29A3100173DDF /* OnedriveTokenAdapter.swift */; };
 		FCEF853626C3E3CF00173DDF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCEF853526C3E3CF00173DDF /* AppDelegate.swift */; };
 		FCEF853C26C3E43000173DDF /* AppDelegate+Notifications.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCEF853B26C3E43000173DDF /* AppDelegate+Notifications.swift */; };
@@ -1069,6 +1070,7 @@
 		FCECDDF52643DF2B006CD7B9 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = "de.lproj/Documents-InfoPlist.strings"; sourceTree = "<group>"; };
 		FCECDDF62643DF2E006CD7B9 /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = "es.lproj/Documents-InfoPlist.strings"; sourceTree = "<group>"; };
 		FCED8F4D23E8355500EC1DAC /* ASCFloatingLabelTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCFloatingLabelTextField.swift; sourceTree = "<group>"; };
+		FCEF257B2976DD5100522A3A /* WhatsNew.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = WhatsNew.bundle; path = Resources/WhatsNew.bundle; sourceTree = "<group>"; };
 		FCEF851D26C29A3100173DDF /* OnedriveTokenAdapter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnedriveTokenAdapter.swift; sourceTree = "<group>"; };
 		FCEF853526C3E3CF00173DDF /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		FCEF853B26C3E43000173DDF /* AppDelegate+Notifications.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AppDelegate+Notifications.swift"; sourceTree = "<group>"; };
@@ -2879,6 +2881,7 @@
 				FC584ED925BB4F40001C608E /* Entitlements */,
 				FCEF853426C3E3CF00173DDF /* Delegate */,
 				FC7B37D51E929B46009C41AD /* Settings.bundle */,
+				FCEF257B2976DD5100522A3A /* WhatsNew.bundle */,
 				FCC62ADA1E8AA1F700D24BE2 /* Localizable.strings */,
 				FCF916C81ED44F3A0032C135 /* Localizable.stringsdict */,
 				FCECDDEF2643DF1A006CD7B9 /* Documents-InfoPlist.strings */,
@@ -3041,6 +3044,7 @@
 				FC786FBC1EB8771700181D62 /* Intro.storyboard in Resources */,
 				FC23FC5D2044018F003B3AE7 /* Other in Resources */,
 				FCC62AD81E8AA1F700D24BE2 /* Localizable.strings in Resources */,
+				FCEF257C2976DD5100522A3A /* WhatsNew.bundle in Resources */,
 				FC050F7E1ECB1F6800FD452C /* ConnectStorage.storyboard in Resources */,
 				FCE35DD61E9E7BC100BC2B68 /* Sort.storyboard in Resources */,
 				FCE35DDB1E9E7BCA00BC2B68 /* Transfer.storyboard in Resources */,

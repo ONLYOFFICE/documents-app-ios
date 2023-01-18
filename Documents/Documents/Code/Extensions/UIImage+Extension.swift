@@ -57,4 +57,29 @@ public extension UIImage {
         let data = try Data(contentsOf: url)
         self.init(data: data, scale: scale)
     }
+
+    /// Create a new image from a pdf file at URL
+    /// - Parameter pdfUrl: a `URL`, representing the pdf location
+    convenience init?(pdfUrl: URL) {
+        guard
+            let document = CGPDFDocument(pdfUrl as CFURL),
+            let page = document.page(at: 1)
+        else { return nil }
+
+        let pageRect = page.getBoxRect(.mediaBox)
+        let renderer = UIGraphicsImageRenderer(size: pageRect.size)
+        let imgage = renderer.image { ctx in
+            UIColor.clear.set()
+            ctx.fill(pageRect)
+            ctx.cgContext.translateBy(x: 0.0, y: pageRect.size.height)
+            ctx.cgContext.scaleBy(x: 1.0, y: -1.0)
+            ctx.cgContext.drawPDFPage(page)
+        }
+
+        if let cgImage = imgage.cgImage {
+            self.init(cgImage: cgImage)
+        } else {
+            return nil
+        }
+    }
 }

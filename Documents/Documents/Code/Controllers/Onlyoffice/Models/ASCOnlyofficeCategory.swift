@@ -131,18 +131,8 @@ class ASCOnlyofficeCategory: ASCCategory {
         }
     }
 
-    static func hasDocSpaceRooms(type: ASCFolderType) -> Bool {
+    static func hasDocSpaceRootRoomsList(type: ASCFolderType) -> Bool {
         guard isDocSpace(type: type), ASCFileManager.onlyofficeProvider?.apiClient.serverVersion?.docSpace != nil else { return false }
-        switch type {
-        case .onlyofficeRoomShared, .onlyofficeRoomArchived:
-            return true
-        default:
-            return false
-        }
-    }
-
-    static func hasRootRooms(type: ASCFolderType) -> Bool {
-        guard ASCFileManager.onlyofficeProvider?.apiClient.serverVersion?.docSpace != nil else { return false }
         switch type {
         case .onlyofficeRoomShared, .onlyofficeRoomArchived:
             return true

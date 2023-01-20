@@ -798,12 +798,15 @@ class ASCDocumentsViewController: ASCBaseTableViewController, UIGestureRecognize
         }
 
         let isRoot = folder.parentId == nil || folder.parentId == "0"
+        let isRoomList = folder.isRoomListFolder
         let isDevice = (provider?.id == ASCFileManager.localProvider.id)
         let isShared = folder.rootFolderType == .onlyofficeShare
         let isTrash = self.isTrash(folder)
         let isRecent = categoryIsRecent
         let isProjectRoot = (folder.rootFolderType == .onlyofficeBunch || folder.rootFolderType == .onlyofficeProjects) && isRoot
         let isGuest = ASCFileManager.onlyofficeProvider?.user?.isVisitor ?? false
+        let isDocSpaceArchive = isRoomList && folder.rootFolderType == .onlyofficeRoomArchived
+        let isDocSpaceRoomShared = isRoomList && folder.rootFolderType == .onlyofficeRoomShared
 
         events.removeListeners(eventNameToRemoveOrNil: "item:didSelect")
         events.removeListeners(eventNameToRemoveOrNil: "item:didDeselect")
@@ -835,13 +838,13 @@ class ASCDocumentsViewController: ASCBaseTableViewController, UIGestureRecognize
         }
 
         // Copy
-        if !isTrash {
+        if !isTrash, !isRoomList {
             items.append(createBarButton(Asset.Images.barCopy.image, #selector(onCopySelected)))
             items.append(barFlexSpacer)
         }
 
         // Restore
-        if isTrash {
+        if isTrash, isDocSpaceArchive {
             items.append(createBarButton(Asset.Images.barRecover.image, #selector(onMoveSelected)))
             items.append(barFlexSpacer)
         }
@@ -853,13 +856,13 @@ class ASCDocumentsViewController: ASCBaseTableViewController, UIGestureRecognize
         }
 
         // Remove
-        if isDevice || !(isShared || isProjectRoot || isGuest || isRecent) {
+        if isDevice || !(isShared || isProjectRoot || isGuest || isRecent || isDocSpaceRoomShared) {
             items.append(createBarButton(Asset.Images.barDelete.image, #selector(onTrashSelected)))
             items.append(barFlexSpacer)
         }
 
         // Remove all
-        if isTrash {
+        if isTrash, isDocSpaceArchive {
             items.append(UIBarButtonItem(image: Asset.Images.barDeleteAll.image, style: .plain, target: self, action: #selector(onEmptyTrashSelected)))
             items.append(barFlexSpacer)
         }

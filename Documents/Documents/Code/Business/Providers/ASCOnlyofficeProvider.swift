@@ -108,7 +108,7 @@ class ASCOnlyofficeProvider: ASCFileProviderProtocol & ASCSortableFileProviderPr
     }
 
     fileprivate func filterControllerType(forFolder folder: ASCFolder) -> FilterControllerType {
-        guard isRoot(folder: folder), ASCOnlyofficeCategory.hasDocSpaceRooms(type: folder.rootFolderType) else {
+        guard folder.isRoomListFolder else {
             return .documents
         }
         return .rooms
@@ -326,11 +326,7 @@ class ASCOnlyofficeProvider: ASCFileProviderProtocol & ASCSortableFileProviderPr
             }
 
             let endpoint: Endpoint<OnlyofficeResponse<OnlyofficePath>> = {
-                guard hasFilters,
-                      strongSelf.isRoot(folder: folder),
-                      ASCOnlyofficeCategory.isDocSpace(type: folder.rootFolderType),
-                      ASCOnlyofficeCategory.hasRootRooms(type: folder.rootFolderType)
-                else {
+                guard hasFilters, folder.isRoomListFolder else {
                     return OnlyofficeAPI.Endpoints.Folders.path(of: folder)
                 }
                 return OnlyofficeAPI.Endpoints.Folders.roomsPath()
@@ -915,7 +911,7 @@ class ASCOnlyofficeProvider: ASCFileProviderProtocol & ASCSortableFileProviderPr
                 return false
             }
 
-            if isRoot(folder: folder), ASCOnlyofficeCategory.hasRootRooms(type: folder.rootFolderType) {
+            if folder.isRoomListFolder {
                 return false
             }
         }

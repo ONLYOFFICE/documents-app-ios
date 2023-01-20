@@ -143,6 +143,24 @@ class OnlyofficeApiClient: NetworkingClient {
             ]
         }
 
+        let redirectHandler: Redirector = {
+            Redirector(
+                behavior:
+                Redirector.Behavior.modify { task, request, response in
+                    var redirectedRequest = request
+
+                    if let originalRequest = task.originalRequest,
+                       let headers = originalRequest.allHTTPHeaderFields,
+                       let authorizationHeaderValue = headers["Authorization"]
+                    {
+                        redirectedRequest.setValue(authorizationHeaderValue, forHTTPHeaderField: "Authorization")
+                    }
+
+                    return redirectedRequest
+                }
+            )
+        }()
+
         manager.download(
             url,
             headers: headers,
@@ -154,6 +172,7 @@ class OnlyofficeApiClient: NetworkingClient {
                 processing(nil, progress.fractionCompleted, nil)
             }
         }
+        .redirect(using: redirectHandler)
         .responseData(queue: queue) { response in
             switch response.result {
             case let .success(data):

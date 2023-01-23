@@ -921,6 +921,10 @@ class ASCOnlyofficeProvider: ASCFileProviderProtocol & ASCSortableFileProviderPr
             if isRoot(folder: folder), ASCOnlyofficeCategory.hasRootRooms(type: folder.rootFolderType) {
                 return false
             }
+
+            if folder.rootFolderType == .onlyofficeRoomArchived {
+                return false
+            }
         }
 
         var access: ASCEntityAccess = ((file != nil) ? file?.access : folder?.access)!

@@ -832,7 +832,7 @@ class ASCDocumentsViewController: ASCBaseTableViewController, UIGestureRecognize
         var items: [UIBarButtonItem] = []
 
         // Move
-        if !isTrash && (isDevice || !(isShared || isProjectRoot || isGuest)) {
+        if !isTrash && !isDocSpaceArchive && (isDevice || !(isShared || isProjectRoot || isGuest)) {
             items.append(createBarButton(Asset.Images.barMove.image, #selector(onMoveSelected)))
             items.append(barFlexSpacer)
         }
@@ -844,8 +844,14 @@ class ASCDocumentsViewController: ASCBaseTableViewController, UIGestureRecognize
         }
 
         // Restore
-        if isTrash, isDocSpaceArchive {
+        if isTrash {
             items.append(createBarButton(Asset.Images.barRecover.image, #selector(onMoveSelected)))
+            items.append(barFlexSpacer)
+        }
+
+        // Restore room
+        if isDocSpaceArchive {
+            items.append(createBarButton(Asset.Images.barRecover.image, #selector(onRoomRestore)))
             items.append(barFlexSpacer)
         }
 
@@ -862,7 +868,7 @@ class ASCDocumentsViewController: ASCBaseTableViewController, UIGestureRecognize
         }
 
         // Remove all
-        if isTrash, isDocSpaceArchive {
+        if isTrash || isDocSpaceArchive {
             items.append(UIBarButtonItem(image: Asset.Images.barDeleteAll.image, style: .plain, target: self, action: #selector(onEmptyTrashSelected)))
             items.append(barFlexSpacer)
         }
@@ -2545,6 +2551,16 @@ class ASCDocumentsViewController: ASCBaseTableViewController, UIGestureRecognize
 
     @objc func onMoveSelected(_ sender: Any) {
         transfer(indexes: selectedIds, move: true)
+    }
+
+    @objc func onRoomRestore(_ sender: Any) {
+        guard selectedIds.count > 0 else { return }
+        tableData.filter { selectedIds.contains($0.uid) }
+            .compactMap { $0 as? ASCFolder }
+            .forEach {
+                guard let indexPath = indexPath(by: $0), let cell = tableView.cellForRow(at: indexPath) else { return }
+                unarchive(cell: cell)
+            }
     }
 
     @objc func onTrashSelected(_ sender: Any) {

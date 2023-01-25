@@ -484,6 +484,11 @@ class ASCOnlyofficeProvider: ASCFileProviderProtocol & ASCSortableFileProviderPr
 
         var parameters: [String: Any] = [:]
 
+        if folder.isRoot, folder.rootFolderType == .onlyofficeRoomArchived {
+            parameters["deleteAfter"] = true
+            parameters["immediately"] = true
+        }
+
         for entity in entities {
             if let file = entity as? ASCFile {
                 fileIds.append(file.id)
@@ -547,7 +552,7 @@ class ASCOnlyofficeProvider: ASCFileProviderProtocol & ASCSortableFileProviderPr
                                             Thread.sleep(forTimeInterval: 1)
                                             checkOperation?()
                                         }
-                                    } else {
+                                    } else if !(folder.rootFolderType == .onlyofficeRoomArchived && response?.statusCode == 200) {
                                         lastError = ASCProviderError(msg: NetworkingError.invalidData.localizedDescription)
                                     }
                                 }

@@ -868,8 +868,14 @@ class ASCDocumentsViewController: ASCBaseTableViewController, UIGestureRecognize
         }
 
         // Remove all
-        if isTrash || isDocSpaceArchive {
+        if isTrash {
             items.append(UIBarButtonItem(image: Asset.Images.barDeleteAll.image, style: .plain, target: self, action: #selector(onEmptyTrashSelected)))
+            items.append(barFlexSpacer)
+        }
+
+        // Remove all rooms
+        if isDocSpaceArchive {
+            items.append(UIBarButtonItem(image: Asset.Images.barDeleteAll.image, style: .plain, target: self, action: #selector(onRemoveAllArchivedRooms)))
             items.append(barFlexSpacer)
         }
 
@@ -2438,7 +2444,7 @@ class ASCDocumentsViewController: ASCBaseTableViewController, UIGestureRecognize
                 hud?.setSuccessState()
                 hud?.hide(animated: false, afterDelay: 1.3)
 
-                if self.isTrash(self.folder) {
+                if self.isTrash(self.folder) || self.folder?.rootFolderType == .onlyofficeRoomArchived {
                     self.provider?.reset()
                     self.tableView.reloadData()
                 }
@@ -2561,13 +2567,24 @@ class ASCDocumentsViewController: ASCBaseTableViewController, UIGestureRecognize
                 guard let indexPath = indexPath(by: $0), let cell = tableView.cellForRow(at: indexPath) else { return }
                 unarchive(cell: cell)
             }
+        showEmptyView(total < 1)
+        updateNavBar()
+        setEditMode(false)
+    }
+
+    @objc func onRemoveAllArchivedRooms(_ sender: Any) {
+        onTrash(ids: Set<String>(tableData.map { $0.uid }), sender)
     }
 
     @objc func onTrashSelected(_ sender: Any) {
+        onTrash(ids: selectedIds, sender)
+    }
+
+    private func onTrash(ids: Set<String>, _ sender: Any) {
         guard view.isUserInteractionEnabled else { return }
 
-        if selectedIds.count > 0 {
-            let selectetItems = tableData.filter { selectedIds.contains($0.uid) }
+        if ids.count > 0 {
+            let selectetItems = tableData.filter { ids.contains($0.uid) }
             let folderCount = selectetItems.filter { $0 is ASCFolder }.count
             let fileCount = selectetItems.filter { $0 is ASCFile }.count
 
@@ -2592,7 +2609,7 @@ class ASCDocumentsViewController: ASCBaseTableViewController, UIGestureRecognize
                     title: message,
                     style: .destructive,
                     handler: { [unowned self] action in
-                        self.removerActionController.delete(indexes: self.selectedIds)
+                        self.removerActionController.delete(indexes: ids)
                     }
                 )
             )

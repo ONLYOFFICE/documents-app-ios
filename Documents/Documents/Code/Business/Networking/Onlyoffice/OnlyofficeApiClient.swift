@@ -45,7 +45,7 @@ class OnlyofficeApiClient: NetworkingClient {
         return serverVersion?.community?.isVersion(greaterThanOrEqualTo: "10.0") ?? false
     }
 
-    private let queue = DispatchQueue(label: "asc.networking.client.\(String(describing: type(of: self)))")
+    private let queue = DispatchQueue(label: "asc.networking.client.\(String(describing: type(of: OnlyofficeApiClient.self)))")
 
     // MARK: - Lifecycle
 
@@ -64,7 +64,7 @@ class OnlyofficeApiClient: NetworkingClient {
         // Initialize session manager
         let configuration = URLSessionConfiguration.default
         configuration.timeoutIntervalForRequest = 30 // seconds
-        configuration.timeoutIntervalForResource = 30
+        configuration.timeoutIntervalForResource = defaultTimeoutIntervalForResource
         configuration.headers = .default
 
         let adapter = OnlyofficeTokenAdapter(accessToken: token ?? "")
@@ -151,13 +151,17 @@ class OnlyofficeApiClient: NetworkingClient {
                    let headers = originalRequest.allHTTPHeaderFields,
                    let authorizationHeaderValue = headers["Authorization"]
                 {
-                    redirectedRequest.setValue(authorizationHeaderValue, forHTTPHeaderField: "Authorization")
+                    let token = authorizationHeaderValue.replacingOccurrences(of: "Bearer ", with: "")
+                    var cookies = redirectedRequest.value(forHTTPHeaderField: "Cookie") ?? ""
+                    cookies.append("\(cookies.isEmpty ? "" : ";")asc_auth_key=\(token)")
+                    redirectedRequest.setValue(cookies, forHTTPHeaderField: "Cookie")
                 }
 
                 return redirectedRequest
             }
         )
 
+        manager.session.configuration.timeoutIntervalForResource = 600
         manager.download(
             url,
             headers: headers,
@@ -171,6 +175,8 @@ class OnlyofficeApiClient: NetworkingClient {
         }
         .redirect(using: redirectHandler)
         .responseData(queue: queue) { response in
+            self.manager.session.configuration.timeoutIntervalForResource = self.defaultTimeoutIntervalForResource
+
             switch response.result {
             case let .success(data):
                 DispatchQueue.main.async {
@@ -220,6 +226,8 @@ class OnlyofficeApiClient: NetworkingClient {
             urlComponents.queryItems = queryItems
 
             if let uploadUrl = urlComponents.url {
+                manager.session.configuration.timeoutIntervalForResource = 600
+
                 manager.upload(
                     data,
                     to: uploadUrl,
@@ -234,6 +242,8 @@ class OnlyofficeApiClient: NetworkingClient {
                 }
                 .validate(statusCode: 200 ..< 300)
                 .responseData(queue: queue) { response in
+                    self.manager.session.configuration.timeoutIntervalForResource = self.defaultTimeoutIntervalForResource
+
                     switch response.result {
                     case let .success(value):
                         do {

@@ -147,14 +147,13 @@ class OnlyofficeApiClient: NetworkingClient {
             behavior: Redirector.Behavior.modify { task, request, response in
                 var redirectedRequest = request
 
-                if let originalRequest = task.originalRequest,
+                // Set Authorization in header if redirect to same host
+                if redirectedRequest.url?.host == url.host,
+                   let originalRequest = task.originalRequest,
                    let headers = originalRequest.allHTTPHeaderFields,
                    let authorizationHeaderValue = headers["Authorization"]
                 {
-                    let token = authorizationHeaderValue.replacingOccurrences(of: "Bearer ", with: "")
-                    var cookies = redirectedRequest.value(forHTTPHeaderField: "Cookie") ?? ""
-                    cookies.append("\(cookies.isEmpty ? "" : ";")asc_auth_key=\(token)")
-                    redirectedRequest.setValue(cookies, forHTTPHeaderField: "Cookie")
+                    redirectedRequest.setValue(authorizationHeaderValue, forHTTPHeaderField: "Authorization")
                 }
 
                 return redirectedRequest

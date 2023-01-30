@@ -1167,6 +1167,7 @@ extension ASCEditorManager {
             let isSpreadsheet = (["xlsx"] + ASCConstants.FileExtensions.editorImportSpreadsheets).contains(fileExt)
             let isPresentation = (["pptx"] + ASCConstants.FileExtensions.editorImportPresentations).contains(fileExt)
             let isForm = ASCConstants.FileExtensions.forms.contains(fileExt)
+            let protalType = ASCPortalTypeDefinderByCurrentConnection().definePortalType()
 
             var cancel = false
             var editorNavigationController: UIViewController?
@@ -1224,12 +1225,19 @@ extension ASCEditorManager {
                 "license": licenseUrl,
             ]
 
-            // Enabling the Favorite function only on portals version 11 and higher
+            /// Enabling the Favorite function only on portals version 11 and higher
+            /// and not DocSpace
             if let communityServerVersion = OnlyofficeApiClient.shared.serverVersion?.community,
-               communityServerVersion.isVersion(greaterThanOrEqualTo: "11.0")
+               communityServerVersion.isVersion(greaterThanOrEqualTo: "11.0"),
+               protalType != .docSpace
             {
                 documentInfo["favorite"] = file.isFavorite && !user.isVisitor
                 documentInfo["denyDownload"] = file.denyDownload
+            }
+
+            /// Turn off share from editors for the DocSpace
+            if protalType == .docSpace {
+                documentInfo["supportShare"] = false
             }
 
             if !(openMode == .view || !sdkCheck) {

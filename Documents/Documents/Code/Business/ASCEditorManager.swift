@@ -120,10 +120,10 @@ class ASCEditorManager: NSObject {
         return ""
     }()
 
-    private let licenseUrl = Bundle.main.url(
+    private let licensePath = Bundle.main.url(
         forResource: ASCConstants.Keys.licenseName,
         withExtension: "lic"
-    ) ?? URL(fileURLWithPath: "")
+    )?.path ?? ""
 
     override required init() {
         super.init()
@@ -1068,7 +1068,7 @@ extension ASCEditorManager {
                 documentPermissions["fillForms"] = true
             }
 
-            var documentInfo = [
+            var documentInfo: [String: Any] = [
                 "title": file.title,
                 "viewMode": openMode == .view || !UIDevice.allowEditor,
                 "newDocument": openMode == .create,
@@ -1082,13 +1082,9 @@ extension ASCEditorManager {
                 "locallyEditing": locallyEditing,
                 "appFonts": editorFontsPaths,
                 "dataFontsPath": dataFontsPath,
-                "license": licenseUrl,
+                "license": licensePath,
                 "documentPermissions": documentPermissions.jsonString() ?? "",
-            ] as [String: Any]
-
-            if openMode != .view {
-                documentInfo["license"] = (documentInfo["license"] as? URL)?.absoluteString
-            }
+            ]
 
             documentInfo = localEditor(config: documentInfo)
             UserDefaults.standard.set(documentInfo, forKey: ASCConstants.SettingsKeys.openedDocument)
@@ -1223,7 +1219,7 @@ extension ASCEditorManager {
                 "appFonts": editorFontsPaths,
                 "dataFontsPath": dataFontsPath,
                 "supportShare": file.access == .readWrite || file.access == .none,
-                "license": licenseUrl,
+                "license": licensePath,
             ]
 
             /// Enabling the Favorite function only on portals version 11 and higher
@@ -1239,10 +1235,6 @@ extension ASCEditorManager {
             /// Turn off share from editors for the DocSpace
             if protalType == .docSpace {
                 documentInfo["supportShare"] = false
-            }
-
-            if !(openMode == .view || !sdkCheck) {
-                documentInfo["license"] = (documentInfo["license"] as? URL)?.absoluteString
             }
 
             documentInfo = cloudEditor(config: documentInfo)
@@ -1628,7 +1620,7 @@ extension ASCEditorManager {
                     "chartData": chartData,
                     "appFonts": editorFontsPaths,
                     "dataFontsPath": dataFontsPath,
-                    "license": licenseUrl,
+                    "license": licensePath,
                 ]
 
                 editor.delegate = self
@@ -1652,7 +1644,7 @@ extension ASCEditorManager {
                     "chartData": chartData,
                     "appFonts": editorFontsPaths,
                     "dataFontsPath": dataFontsPath,
-                    "license": licenseUrl,
+                    "license": licensePath,
                 ]
 
                 editor.delegate = self

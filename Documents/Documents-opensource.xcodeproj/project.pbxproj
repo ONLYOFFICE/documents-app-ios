@@ -82,6 +82,8 @@
 		FC416100290911E5006B5E4A /* ASCLinkTableViewHeaderFooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC4160FE290911E4006B5E4A /* ASCLinkTableViewHeaderFooterView.swift */; };
 		FC4DC3E6282BFB2F001060D6 /* ASCOAuthCredential.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC4DC3E4282BFB2F001060D6 /* ASCOAuthCredential.swift */; };
 		FC4DC3E9282BFBE7001060D6 /* DropBoxRequestInterceptor.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC4DC3E7282BFBE7001060D6 /* DropBoxRequestInterceptor.swift */; };
+		FC53ACF129896F9A004528D7 /* ASCEditorManagerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC53ACF029896F99004528D7 /* ASCEditorManagerProtocol.swift */; };
+		FC53ACF329896FB0004528D7 /* ASCEditorManagerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC53ACF229896FB0004528D7 /* ASCEditorManagerExtension.swift */; };
 		FC7080D32812E2260057FCD2 /* EventManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCAE8B8C1E717B84004FC332 /* EventManager.swift */; };
 		FC7080D52812E2260057FCD2 /* ASCSharingSettingsAccessViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DC43EE926A0978D00373D5A /* ASCSharingSettingsAccessViewModel.swift */; };
 		FC7080D62812E2260057FCD2 /* ASCNavigator.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCF694B12631C10400808644 /* ASCNavigator.swift */; };
@@ -685,6 +687,8 @@
 		FC4D0A2C24950503001EF1B5 /* ASCDebugManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCDebugManager.swift; sourceTree = "<group>"; };
 		FC4DC3E4282BFB2F001060D6 /* ASCOAuthCredential.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASCOAuthCredential.swift; sourceTree = "<group>"; };
 		FC4DC3E7282BFBE7001060D6 /* DropBoxRequestInterceptor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DropBoxRequestInterceptor.swift; sourceTree = "<group>"; };
+		FC53ACF029896F99004528D7 /* ASCEditorManagerProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASCEditorManagerProtocol.swift; sourceTree = "<group>"; };
+		FC53ACF229896FB0004528D7 /* ASCEditorManagerExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASCEditorManagerExtension.swift; sourceTree = "<group>"; };
 		FC54E803271F04BE00195CFD /* ASCCreatePortal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCCreatePortal.swift; sourceTree = "<group>"; };
 		FC56B5C520C017C300557C1F /* ASCStyles.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASCStyles.swift; sourceTree = "<group>"; };
 		FC56B5C920C03F3400557C1F /* ASCSortViewCellTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCSortViewCellTableViewCell.swift; sourceTree = "<group>"; };
@@ -2029,6 +2033,14 @@
 			path = Debug;
 			sourceTree = "<group>";
 		};
+		FC53ACEF29896F99004528D7 /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				FC53ACF029896F99004528D7 /* ASCEditorManagerProtocol.swift */,
+			);
+			path = Protocols;
+			sourceTree = "<group>";
+		};
 		FC54E802271F04AB00195CFD /* Model */ = {
 			isa = PBXGroup;
 			children = (
@@ -2469,6 +2481,7 @@
 			children = (
 				1D299150274FB3B300A06F3B /* PortalDefinders */,
 				FC41D8002265D6C900A155C2 /* Enums */,
+				FC53ACEF29896F99004528D7 /* Protocols */,
 				FC0F01DD216F43FF008D79A5 /* Providers */,
 				1D1A2E262660F97900D0335B /* LoadedViewControllersFinders */,
 				FC68524326837B7300D830EC /* Networking */,
@@ -2480,6 +2493,7 @@
 				FC65B6B51EB9F23800AE73BB /* ASCDocumentService.swift */,
 				FC28F2C51E8D1BB200A8F985 /* ASCEntityManager.swift */,
 				FCA4D5A91E79728800ADD842 /* ASCEditorManager.swift */,
+				FC53ACF229896FB0004528D7 /* ASCEditorManagerExtension.swift */,
 				FCC39FE91E6ECB3400DECB8D /* ASCLocalFileHelper.swift */,
 				FC3AF6BC21709259004A96FD /* ASCFileManager.swift */,
 				FCDB31A51E7BD46800907FC0 /* ASCViewControllerManager.swift */,
@@ -3170,6 +3184,7 @@
 				FC142A7728981A1F00EDE7CE /* ASCNotificationSettingsViewController.swift in Sources */,
 				FC7081242812E2260057FCD2 /* NetworkingServerError.swift in Sources */,
 				FC7081252812E2260057FCD2 /* PasscodeLockConfigurationType.swift in Sources */,
+				FC53ACF129896F9A004528D7 /* ASCEditorManagerProtocol.swift in Sources */,
 				FC7081262812E2260057FCD2 /* ASCSharingSettingsAccessViewController.swift in Sources */,
 				FC7081272812E2260057FCD2 /* ASCShareSettingsAPIWorker.swift in Sources */,
 				FC7081292812E2260057FCD2 /* ASCConnectStorageOAuth2Google.swift in Sources */,
@@ -3302,6 +3317,7 @@
 				FC70819C2812E2260057FCD2 /* ASCGoogleDriveProvider.swift in Sources */,
 				FC70819D2812E2260057FCD2 /* OnlyofficeShare.swift in Sources */,
 				FC70819E2812E2260057FCD2 /* ASCSharingSettingsAccessDocumentFormProvider.swift in Sources */,
+				FC53ACF329896FB0004528D7 /* ASCEditorManagerExtension.swift in Sources */,
 				FC70819F2812E2260057FCD2 /* ASCSharingAddRightHoldersModels.swift in Sources */,
 				FC7081A02812E2260057FCD2 /* ASCDebugNavigationController.swift in Sources */,
 				FC7081A12812E2260057FCD2 /* AppDelegate+Notifications.swift in Sources */,

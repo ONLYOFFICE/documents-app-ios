@@ -2573,14 +2573,14 @@ class ASCDocumentsViewController: ASCBaseTableViewController, UIGestureRecognize
     }
 
     @objc func onRemoveAllArchivedRooms(_ sender: Any) {
-        onTrash(ids: Set<String>(tableData.map { $0.uid }), sender)
+        onTrash(ids: Set<String>(tableData.map { $0.uid }), sender, notificationType: .alert)
     }
 
     @objc func onTrashSelected(_ sender: Any) {
-        onTrash(ids: selectedIds, sender)
+        onTrash(ids: selectedIds, sender, notificationType: .default)
     }
 
-    private func onTrash(ids: Set<String>, _ sender: Any) {
+    private func onTrash(ids: Set<String>, _ sender: Any, notificationType: NotificationType) {
         guard view.isUserInteractionEnabled else { return }
 
         if ids.count > 0 {
@@ -2588,49 +2588,85 @@ class ASCDocumentsViewController: ASCBaseTableViewController, UIGestureRecognize
             let folderCount = selectetItems.filter { $0 is ASCFolder }.count
             let fileCount = selectetItems.filter { $0 is ASCFile }.count
 
-            var message = NSLocalizedString("Delete", comment: "")
-            if folderCount > 0, fileCount > 0 {
-                message = String(format: NSLocalizedString("Delete %lu Folder and %lu File", comment: ""), folderCount, fileCount)
-            } else if folderCount > 0 {
-                message = String(format: NSLocalizedString("Delete %lu Folder", comment: ""), folderCount)
-            } else if fileCount > 0 {
-                message = String(format: NSLocalizedString("Delete %lu File", comment: ""), fileCount)
+            switch notificationType {
+            case .default:
+                showDeafultRomoveNotification(folderCount: folderCount, fileCount: fileCount, sender: sender) { [unowned self] in
+                    self.removerActionController.delete(indexes: ids)
+                }
+            case .alert:
+                showRemoveAlert { [unowned self] in
+                    self.removerActionController.delete(indexes: ids)
+                }
             }
+        }
+    }
 
-            let deleteController = UIAlertController(
-                title: nil,
-                message: nil,
-                preferredStyle: .actionSheet,
-                tintColor: nil
+    private func showDeafultRomoveNotification(folderCount: Int, fileCount: Int, sender: Any, handler: @escaping () -> Void) {
+        var message = NSLocalizedString("Delete", comment: "")
+        if folderCount > 0, fileCount > 0 {
+            message = String(format: NSLocalizedString("Delete %lu Folder and %lu File", comment: ""), folderCount, fileCount)
+        } else if folderCount > 0 {
+            message = String(format: NSLocalizedString("Delete %lu Folder", comment: ""), folderCount)
+        } else if fileCount > 0 {
+            message = String(format: NSLocalizedString("Delete %lu File", comment: ""), fileCount)
+        }
+
+        let deleteController = UIAlertController(
+            title: nil,
+            message: nil,
+            preferredStyle: .actionSheet,
+            tintColor: nil
+        )
+
+        deleteController.addAction(
+            UIAlertAction(
+                title: message,
+                style: .destructive,
+                handler: { _ in
+                    handler()
+                }
             )
+        )
 
+        if UIDevice.phone {
             deleteController.addAction(
                 UIAlertAction(
-                    title: message,
-                    style: .destructive,
-                    handler: { [unowned self] action in
-                        self.removerActionController.delete(indexes: ids)
-                    }
+                    title: ASCLocalization.Common.cancel,
+                    style: .cancel,
+                    handler: nil
                 )
             )
-
-            if UIDevice.phone {
-                deleteController.addAction(
-                    UIAlertAction(
-                        title: ASCLocalization.Common.cancel,
-                        style: .cancel,
-                        handler: nil
-                    )
-                )
-            } else if UIDevice.pad, let button = sender as? UIButton {
-                deleteController.modalPresentationStyle = .popover
-                deleteController.popoverPresentationController?.sourceView = button
-                deleteController.popoverPresentationController?.sourceRect = button.bounds
-                flashBlockInteration()
-            }
-
-            present(deleteController, animated: true, completion: nil)
+        } else if UIDevice.pad, let button = sender as? UIButton {
+            deleteController.modalPresentationStyle = .popover
+            deleteController.popoverPresentationController?.sourceView = button
+            deleteController.popoverPresentationController?.sourceRect = button.bounds
+            flashBlockInteration()
         }
+
+        present(deleteController, animated: true, completion: nil)
+    }
+
+    private func showRemoveAlert(handler: @escaping () -> Void) {
+        let alertDelete = UIAlertController(
+            title: NSLocalizedString("Delete", comment: ""),
+            message: NSLocalizedString("All items from Archived will be deleted forever. You won’t be able to restore them.", comment: ""),
+            preferredStyle: .alert,
+            tintColor: nil
+        )
+
+        alertDelete.addCancel()
+
+        alertDelete.addAction(
+            UIAlertAction(
+                title: NSLocalizedString("Delete forever", comment: ""),
+                style: .destructive,
+                handler: { _ in
+                    handler()
+                }
+            )
+        )
+
+        present(alertDelete, animated: true, completion: nil)
     }
 
     @objc func onEmptyTrashSelected(_ sender: UIBarButtonItem) {
@@ -3440,6 +3476,10 @@ extension ASCDocumentsViewController {
 // MARK: - Help funcs
 
 extension ASCDocumentsViewController {
+    enum NotificationType {
+        case `default`, alert
+    }
+
     func getLocalAndCloudItems(indexes: Set<String>) -> (localItems: [ASCEntity], cloudItems: [ASCEntity]) {
         var localItems: [ASCEntity] = []
         var cloudItems: [ASCEntity] = []

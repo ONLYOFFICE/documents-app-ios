@@ -120,10 +120,10 @@ class ASCEditorManager: NSObject {
         return ""
     }()
 
-    private let licenseUrl = Bundle.main.url(
+    private let licensePath = Bundle.main.url(
         forResource: ASCConstants.Keys.licenseName,
         withExtension: "lic"
-    ) ?? URL(fileURLWithPath: "")
+    )?.path ?? ""
 
     override required init() {
         super.init()
@@ -1064,11 +1064,11 @@ extension ASCEditorManager {
             ]
 
             // FillForms mode
-            if isForm, fileExt == "oform" {
+            if isForm, allowForm, fileExt == "oform" {
                 documentPermissions["fillForms"] = true
             }
 
-            let documentInfo = [
+            var documentInfo: [String: Any] = [
                 "title": file.title,
                 "viewMode": openMode == .view || !UIDevice.allowEditor,
                 "newDocument": openMode == .create,
@@ -1082,15 +1082,12 @@ extension ASCEditorManager {
                 "locallyEditing": locallyEditing,
                 "appFonts": editorFontsPaths,
                 "dataFontsPath": dataFontsPath,
-                "license": licenseUrl,
+                "license": licensePath,
                 "documentPermissions": documentPermissions.jsonString() ?? "",
-            ] as [String: Any]
+            ]
 
-            if openMode != .view {
-                var documentInfoCopy = documentInfo
-                documentInfoCopy["license"] = (documentInfoCopy["license"] as? URL)?.absoluteString
-                UserDefaults.standard.set(documentInfoCopy, forKey: ASCConstants.SettingsKeys.openedDocument)
-            }
+            documentInfo = localEditor(config: documentInfo)
+            UserDefaults.standard.set(documentInfo, forKey: ASCConstants.SettingsKeys.openedDocument)
 
             if #available(iOS 13.0, *) {
                 documentEditorNavigation.modalPresentationStyle = .fullScreen
@@ -1167,6 +1164,7 @@ extension ASCEditorManager {
             let isSpreadsheet = (["xlsx"] + ASCConstants.FileExtensions.editorImportSpreadsheets).contains(fileExt)
             let isPresentation = (["pptx"] + ASCConstants.FileExtensions.editorImportPresentations).contains(fileExt)
             let isForm = ASCConstants.FileExtensions.forms.contains(fileExt)
+            let protalType = ASCPortalTypeDefinderByCurrentConnection().definePortalType()
 
             var cancel = false
             var editorNavigationController: UIViewController?
@@ -1221,22 +1219,26 @@ extension ASCEditorManager {
                 "appFonts": editorFontsPaths,
                 "dataFontsPath": dataFontsPath,
                 "supportShare": file.access == .readWrite || file.access == .none,
-                "license": licenseUrl,
+                "license": licensePath,
             ]
 
-            // Enabling the Favorite function only on portals version 11 and higher
+            /// Enabling the Favorite function only on portals version 11 and higher
+            /// and not DocSpace
             if let communityServerVersion = OnlyofficeApiClient.shared.serverVersion?.community,
-               communityServerVersion.isVersion(greaterThanOrEqualTo: "11.0")
+               communityServerVersion.isVersion(greaterThanOrEqualTo: "11.0"),
+               protalType != .docSpace
             {
                 documentInfo["favorite"] = file.isFavorite && !user.isVisitor
                 documentInfo["denyDownload"] = file.denyDownload
             }
 
-            if !(openMode == .view || !sdkCheck) {
-                var documentInfoCopy = documentInfo
-                documentInfoCopy["license"] = (documentInfoCopy["license"] as? URL)?.absoluteString
-                UserDefaults.standard.set(documentInfoCopy, forKey: ASCConstants.SettingsKeys.openedDocument)
+            /// Turn off share from editors for the DocSpace
+            if protalType == .docSpace {
+                documentInfo["supportShare"] = false
             }
+
+            documentInfo = cloudEditor(config: documentInfo)
+            UserDefaults.standard.set(documentInfo, forKey: ASCConstants.SettingsKeys.openedDocument)
 
             if #available(iOS 13.0, *) {
                 documentEditorNavigation.modalPresentationStyle = .fullScreen
@@ -1322,8 +1324,10 @@ extension ASCEditorManager {
             var conversionDirection = ConversionDirection.CD_ERROR
 
             switch fileExtension {
-            case "docx", "doc", "rtf", "mht", "html", "htm", "epub", "fb2", "docxf", "oform":
+            case "docx", "doc", "rtf", "mht", "html", "htm", "epub", "fb2":
                 conversionDirection = ConversionDirection.CD_DOCX2DOCT_BIN
+            case "docxf", "oform":
+                conversionDirection = allowForm ? ConversionDirection.CD_DOCX2DOCT_BIN : ConversionDirection.CD_ERROR
             case "xlsx", "xls":
                 conversionDirection = ConversionDirection.CD_XSLX2XSLT_BIN
             case "pptx", "ppt":
@@ -1440,8 +1444,10 @@ extension ASCEditorManager {
             var conversionDirection = ConversionDirection.CD_ERROR
 
             switch fileExtension {
-            case "docx", "docxf", "oform":
+            case "docx":
                 conversionDirection = ConversionDirection.CD_DOCT_BIN2DOCX
+            case "docxf", "oform":
+                conversionDirection = allowForm ? ConversionDirection.CD_DOCT_BIN2DOCX : ConversionDirection.CD_ERROR
             case "xlsx":
                 conversionDirection = ConversionDirection.CD_XSLT_BIN2XSLX
             case "pptx":
@@ -1540,8 +1546,10 @@ extension ASCEditorManager {
             var conversionDirection = ConversionDirection.CD_ERROR
 
             switch fileExt {
-            case "docx", "docxf", "oform":
+            case "docx":
                 conversionDirection = ConversionDirection.CD_DOCT_BIN2DOCX
+            case "docxf", "oform":
+                conversionDirection = allowForm ? ConversionDirection.CD_DOCT_BIN2DOCX : ConversionDirection.CD_ERROR
             case "xlsx":
                 conversionDirection = ConversionDirection.CD_XSLT_BIN2XSLX
             case "pptx":
@@ -1612,7 +1620,7 @@ extension ASCEditorManager {
                     "chartData": chartData,
                     "appFonts": editorFontsPaths,
                     "dataFontsPath": dataFontsPath,
-                    "license": licenseUrl,
+                    "license": licensePath,
                 ]
 
                 editor.delegate = self
@@ -1636,7 +1644,7 @@ extension ASCEditorManager {
                     "chartData": chartData,
                     "appFonts": editorFontsPaths,
                     "dataFontsPath": dataFontsPath,
-                    "license": licenseUrl,
+                    "license": licensePath,
                 ]
 
                 editor.delegate = self
@@ -2154,30 +2162,7 @@ extension ASCEditorManager {
         func documentEditorSettings(_ controller: DEEditorViewController!) -> [AnyHashable: Any]! {
             setenv("APPLICATION_NAME", ASCConstants.Name.appNameShort, 1)
             setenv("COMPANY_NAME", ASCConstants.Name.copyright, 1)
-
-            return [
-                "asc.de.external.appname": ASCConstants.Name.appNameShort,
-                "asc.de.external.helpurl": "https://helpcenter.onlyoffice.com/%@%@mobile-applications/documents/document-editor/index.aspx",
-                "asc.de.external.page.formats": [
-                    [
-                        "description": "A6",
-                        "size": "10.5 x 14.8",
-                        "value": [105, 148], // 105 × 148
-                    ], [
-                        "description": "A2",
-                        "size": "42 x 59.4",
-                        "value": [420, 594], // 420 × 594
-                    ], [
-                        "description": "A1",
-                        "size": "59.4 x 84.1",
-                        "value": [594, 841], // 594 × 841
-                    ], [
-                        "description": "A0",
-                        "size": "84.1 x 118.9",
-                        "value": [841, 1189], // 841 × 1189
-                    ],
-                ],
-            ]
+            return documentEditorExternalSettings
         }
 
         func documentShare(_ complation: DEDocumentProcessingComplate!) {
@@ -2215,7 +2200,10 @@ extension ASCEditorManager {
         func spreadsheetLoading(_ controller: SEEditorViewController!, progress value: CGFloat) {
             log.info("SEEditorDelegate:documentLoading \(value)")
 
-            if let file = openedFile, !file.device {
+            if let file = openedFile,
+               !file.device,
+               provider?.allowEdit(entity: file) ?? false
+            {
                 OnlyofficeApiClient.request(OnlyofficeAPI.Endpoints.Files.startEdit(file: file)) { response, error in
                     if let error = error {
                         log.error(error)
@@ -2463,31 +2451,7 @@ extension ASCEditorManager {
         func spreadsheetEditorSettings(_ controller: SEEditorViewController!) -> [AnyHashable: Any]! {
             setenv("APPLICATION_NAME", ASCConstants.Name.appNameShort, 1)
             setenv("COMPANY_NAME", ASCConstants.Name.copyright, 1)
-
-            let shortCm = NSLocalizedString("cm", comment: "Cut from centimeters")
-            return [
-                "asc.se.external.appname": ASCConstants.Name.appNameShort,
-                "asc.se.external.helpurl": "https://helpcenter.onlyoffice.com/%@%@mobile-applications/documents/spreadsheet-editor/index.aspx",
-                "asc.se.external.page.formats": [
-                    [
-                        "width": 105,
-                        "height": 148,
-                        "display": String(format: NSLocalizedString("A6 (10,5%@ x 14,8%@)", comment: "Format info"), shortCm, shortCm),
-                    ], [
-                        "width": 420,
-                        "height": 594,
-                        "display": String(format: NSLocalizedString("A2 (42%@ x 59,4%@)", comment: "Format info"), shortCm, shortCm),
-                    ], [
-                        "width": 594,
-                        "height": 841,
-                        "display": String(format: NSLocalizedString("A1 (59,4%@ x 84,1%@)", comment: "Format info"), shortCm, shortCm),
-                    ], [
-                        "width": 841,
-                        "height": 1189,
-                        "display": String(format: NSLocalizedString("A0 (84,1%@ x 119,9%@)", comment: "Format info"), shortCm, shortCm),
-                    ],
-                ],
-            ]
+            return spreadsheetEditorExternalSettings
         }
 
         func spreadsheetShare(_ complation: DEDocumentProcessingComplate!) {
@@ -2525,7 +2489,10 @@ extension ASCEditorManager {
         func presentationLoading(_ controller: PEEditorViewController!, progress value: CGFloat) {
             log.info("PEEditorDelegate:documentLoading \(value)")
 
-            if let file = openedFile, !file.device {
+            if let file = openedFile,
+               !file.device,
+               provider?.allowEdit(entity: file) ?? false
+            {
                 OnlyofficeApiClient.request(OnlyofficeAPI.Endpoints.Files.startEdit(file: file)) { response, error in
                     if let error = error {
                         log.error(error)
@@ -2768,11 +2735,7 @@ extension ASCEditorManager {
         func presentationEditorSettings(_ controller: PEEditorViewController!) -> [AnyHashable: Any]! {
             setenv("APPLICATION_NAME", ASCConstants.Name.appNameShort, 1)
             setenv("COMPANY_NAME", ASCConstants.Name.copyright, 1)
-
-            return [
-                "asc.pe.external.appname": ASCConstants.Name.appNameShort,
-                "asc.pe.external.helpurl": "https://helpcenter.onlyoffice.com/%@%@mobile-applications/documents/presentation-editor/index.aspx",
-            ]
+            return presentationEditorExternalSettings
         }
 
         func presentationShare(_ complation: PEDocumentProcessingComplate!) {

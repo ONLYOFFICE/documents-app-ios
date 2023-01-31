@@ -66,6 +66,9 @@ class ASCOnlyofficeProvider: ASCFileProviderProtocol & ASCSortableFileProviderPr
 
     var contentTypes: [ASCFiletProviderContentType] {
         let defaultTypes: [ASCFiletProviderContentType] = [.files, .folders, .documents, .spreadsheets, .presentations, .images]
+        if let folder = folder, isRoot(folder: folder), ASCOnlyofficeCategory.hasDocSpaceRooms(type: folder.rootFolderType) {
+            return [.collaboration, .custom, .viewOnly, .fillingForms]
+        }
         return isRecentCategory ? defaultTypes.filter { $0 != .folders } : defaultTypes
     }
 
@@ -916,6 +919,10 @@ class ASCOnlyofficeProvider: ASCFileProviderProtocol & ASCSortableFileProviderPr
             }
 
             if isRoot(folder: folder), ASCOnlyofficeCategory.hasRootRooms(type: folder.rootFolderType) {
+                return false
+            }
+
+            if folder.rootFolderType == .onlyofficeRoomArchived {
                 return false
             }
         }

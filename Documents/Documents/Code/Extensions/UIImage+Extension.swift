@@ -60,7 +60,7 @@ public extension UIImage {
 
     /// Create a new image from a pdf file at URL
     /// - Parameter pdfUrl: a `URL`, representing the pdf location
-    convenience init?(pdfUrl: URL) {
+    convenience init?(pdfUrl: URL, backgroundColor: UIColor = .clear) {
         guard
             let document = CGPDFDocument(pdfUrl as CFURL),
             let page = document.page(at: 1)
@@ -69,7 +69,7 @@ public extension UIImage {
         let pageRect = page.getBoxRect(.mediaBox)
         let renderer = UIGraphicsImageRenderer(size: pageRect.size)
         let imgage = renderer.image { ctx in
-            UIColor.clear.set()
+            backgroundColor.set()
             ctx.fill(pageRect)
             ctx.cgContext.translateBy(x: 0.0, y: pageRect.size.height)
             ctx.cgContext.scaleBy(x: 1.0, y: -1.0)

@@ -290,6 +290,7 @@ DEPENDENCIES
   fastlane
   fastlane-plugin-badge
   fastlane-plugin-telegram
+  xcpretty
 
 BUNDLED WITH
    1.17.2

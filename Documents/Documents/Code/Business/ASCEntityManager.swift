@@ -630,7 +630,7 @@ class ASCEntityManager: NSObject, UITextFieldDelegate {
         } else {
             let parameters: [String: Any] = [
                 "destFolderId": folder.id,
-                "fileIds": file.id,
+                "fileIds": [file.id],
                 "conflictResolveType": 2,
             ]
 

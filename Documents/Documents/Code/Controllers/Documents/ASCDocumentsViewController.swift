@@ -2093,6 +2093,8 @@ class ASCDocumentsViewController: ASCBaseTableViewController, UIGestureRecognize
                     if let newCell = self.tableView.cellForRow(at: indexPath) {
                         self.highlight(cell: newCell)
                     }
+                } else {
+                    loadFirstPage()
                 }
             }
         }

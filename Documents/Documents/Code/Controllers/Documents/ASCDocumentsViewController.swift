@@ -798,12 +798,15 @@ class ASCDocumentsViewController: ASCBaseTableViewController, UIGestureRecognize
         }
 
         let isRoot = folder.parentId == nil || folder.parentId == "0"
+        let isRoomList = folder.isRoomListFolder
         let isDevice = (provider?.id == ASCFileManager.localProvider.id)
         let isShared = folder.rootFolderType == .onlyofficeShare
         let isTrash = self.isTrash(folder)
         let isRecent = categoryIsRecent
         let isProjectRoot = (folder.rootFolderType == .onlyofficeBunch || folder.rootFolderType == .onlyofficeProjects) && isRoot
         let isGuest = ASCFileManager.onlyofficeProvider?.user?.isVisitor ?? false
+        let isDocSpaceArchive = isRoomList && folder.rootFolderType == .onlyofficeRoomArchived
+        let isDocSpaceRoomShared = isRoomList && folder.rootFolderType == .onlyofficeRoomShared
 
         events.removeListeners(eventNameToRemoveOrNil: "item:didSelect")
         events.removeListeners(eventNameToRemoveOrNil: "item:didDeselect")
@@ -829,13 +832,13 @@ class ASCDocumentsViewController: ASCBaseTableViewController, UIGestureRecognize
         var items: [UIBarButtonItem] = []
 
         // Move
-        if !isTrash && (isDevice || !(isShared || isProjectRoot || isGuest)) {
+        if !isTrash && !isDocSpaceArchive && (isDevice || !(isShared || isProjectRoot || isGuest)) {
             items.append(createBarButton(Asset.Images.barMove.image, #selector(onMoveSelected)))
             items.append(barFlexSpacer)
         }
 
         // Copy
-        if !isTrash {
+        if !isTrash, !isRoomList {
             items.append(createBarButton(Asset.Images.barCopy.image, #selector(onCopySelected)))
             items.append(barFlexSpacer)
         }
@@ -846,6 +849,12 @@ class ASCDocumentsViewController: ASCBaseTableViewController, UIGestureRecognize
             items.append(barFlexSpacer)
         }
 
+        // Restore room
+        if isDocSpaceArchive {
+            items.append(createBarButton(Asset.Images.barRecover.image, #selector(onRoomRestore)))
+            items.append(barFlexSpacer)
+        }
+
         // Remove from list
         if isShared {
             items.append(createBarButton(Asset.Images.barDeleteLink.image, #selector(onTrashSelected)))
@@ -853,7 +862,7 @@ class ASCDocumentsViewController: ASCBaseTableViewController, UIGestureRecognize
         }
 
         // Remove
-        if isDevice || !(isShared || isProjectRoot || isGuest || isRecent) {
+        if isDevice || !(isShared || isProjectRoot || isGuest || isRecent || isDocSpaceRoomShared) {
             items.append(createBarButton(Asset.Images.barDelete.image, #selector(onTrashSelected)))
             items.append(barFlexSpacer)
         }
@@ -861,6 +870,12 @@ class ASCDocumentsViewController: ASCBaseTableViewController, UIGestureRecognize
         // Remove all
         if isTrash {
             items.append(UIBarButtonItem(image: Asset.Images.barDeleteAll.image, style: .plain, target: self, action: #selector(onEmptyTrashSelected)))
+            items.append(barFlexSpacer)
+        }
+
+        // Remove all rooms
+        if isDocSpaceArchive {
+            items.append(UIBarButtonItem(image: Asset.Images.barDeleteAll.image, style: .plain, target: self, action: #selector(onRemoveAllArchivedRooms)))
             items.append(barFlexSpacer)
         }
 
@@ -2461,7 +2476,7 @@ class ASCDocumentsViewController: ASCBaseTableViewController, UIGestureRecognize
                 hud?.setSuccessState()
                 hud?.hide(animated: false, afterDelay: 1.3)
 
-                if self.isTrash(self.folder) {
+                if self.isTrash(self.folder) || self.folder?.rootFolderType == .onlyofficeRoomArchived {
                     self.provider?.reset()
                     self.tableView.reloadData()
                 }
@@ -2598,57 +2613,114 @@ class ASCDocumentsViewController: ASCBaseTableViewController, UIGestureRecognize
         transfer(indexes: selectedIds, move: true)
     }
 
+    @objc func onRoomRestore(_ sender: Any) {
+        guard selectedIds.count > 0 else { return }
+        tableData.filter { selectedIds.contains($0.uid) }
+            .compactMap { $0 as? ASCFolder }
+            .forEach {
+                guard let indexPath = indexPath(by: $0), let cell = tableView.cellForRow(at: indexPath) else { return }
+                unarchive(cell: cell)
+            }
+        showEmptyView(total < 1)
+        updateNavBar()
+        setEditMode(false)
+    }
+
+    @objc func onRemoveAllArchivedRooms(_ sender: Any) {
+        onTrash(ids: Set<String>(tableData.map { $0.uid }), sender, notificationType: .alert)
+    }
+
     @objc func onTrashSelected(_ sender: Any) {
+        onTrash(ids: selectedIds, sender, notificationType: .default)
+    }
+
+    private func onTrash(ids: Set<String>, _ sender: Any, notificationType: NotificationType) {
         guard view.isUserInteractionEnabled else { return }
 
-        if selectedIds.count > 0 {
-            let selectetItems = tableData.filter { selectedIds.contains($0.uid) }
+        if ids.count > 0 {
+            let selectetItems = tableData.filter { ids.contains($0.uid) }
             let folderCount = selectetItems.filter { $0 is ASCFolder }.count
             let fileCount = selectetItems.filter { $0 is ASCFile }.count
 
-            var message = NSLocalizedString("Delete", comment: "")
-            if folderCount > 0, fileCount > 0 {
-                message = String(format: NSLocalizedString("Delete %lu Folder and %lu File", comment: ""), folderCount, fileCount)
-            } else if folderCount > 0 {
-                message = String(format: NSLocalizedString("Delete %lu Folder", comment: ""), folderCount)
-            } else if fileCount > 0 {
-                message = String(format: NSLocalizedString("Delete %lu File", comment: ""), fileCount)
+            switch notificationType {
+            case .default:
+                showDeafultRomoveNotification(folderCount: folderCount, fileCount: fileCount, sender: sender) { [unowned self] in
+                    self.removerActionController.delete(indexes: ids)
+                }
+            case .alert:
+                showRemoveAlert { [unowned self] in
+                    self.removerActionController.delete(indexes: ids)
+                }
             }
+        }
+    }
 
-            let deleteController = UIAlertController(
-                title: nil,
-                message: nil,
-                preferredStyle: .actionSheet,
-                tintColor: nil
+    private func showDeafultRomoveNotification(folderCount: Int, fileCount: Int, sender: Any, handler: @escaping () -> Void) {
+        var message = NSLocalizedString("Delete", comment: "")
+        if folderCount > 0, fileCount > 0 {
+            message = String(format: NSLocalizedString("Delete %lu Folder and %lu File", comment: ""), folderCount, fileCount)
+        } else if folderCount > 0 {
+            message = String(format: NSLocalizedString("Delete %lu Folder", comment: ""), folderCount)
+        } else if fileCount > 0 {
+            message = String(format: NSLocalizedString("Delete %lu File", comment: ""), fileCount)
+        }
+
+        let deleteController = UIAlertController(
+            title: nil,
+            message: nil,
+            preferredStyle: .actionSheet,
+            tintColor: nil
+        )
+
+        deleteController.addAction(
+            UIAlertAction(
+                title: message,
+                style: .destructive,
+                handler: { _ in
+                    handler()
+                }
             )
+        )
 
+        if UIDevice.phone {
             deleteController.addAction(
                 UIAlertAction(
-                    title: message,
-                    style: .destructive,
-                    handler: { [unowned self] action in
-                        self.removerActionController.delete(indexes: self.selectedIds)
-                    }
+                    title: ASCLocalization.Common.cancel,
+                    style: .cancel,
+                    handler: nil
                 )
             )
-
-            if UIDevice.phone {
-                deleteController.addAction(
-                    UIAlertAction(
-                        title: ASCLocalization.Common.cancel,
-                        style: .cancel,
-                        handler: nil
-                    )
-                )
-            } else if UIDevice.pad, let button = sender as? UIButton {
-                deleteController.modalPresentationStyle = .popover
-                deleteController.popoverPresentationController?.sourceView = button
-                deleteController.popoverPresentationController?.sourceRect = button.bounds
-                flashBlockInteration()
-            }
-
-            present(deleteController, animated: true, completion: nil)
+        } else if UIDevice.pad, let button = sender as? UIButton {
+            deleteController.modalPresentationStyle = .popover
+            deleteController.popoverPresentationController?.sourceView = button
+            deleteController.popoverPresentationController?.sourceRect = button.bounds
+            flashBlockInteration()
         }
+
+        present(deleteController, animated: true, completion: nil)
+    }
+
+    private func showRemoveAlert(handler: @escaping () -> Void) {
+        let alertDelete = UIAlertController(
+            title: NSLocalizedString("Delete", comment: ""),
+            message: NSLocalizedString("All items from Archived will be deleted forever. You won’t be able to restore them.", comment: ""),
+            preferredStyle: .alert,
+            tintColor: nil
+        )
+
+        alertDelete.addCancel()
+
+        alertDelete.addAction(
+            UIAlertAction(
+                title: NSLocalizedString("Delete forever", comment: ""),
+                style: .destructive,
+                handler: { _ in
+                    handler()
+                }
+            )
+        )
+
+        present(alertDelete, animated: true, completion: nil)
     }
 
     @objc func onEmptyTrashSelected(_ sender: UIBarButtonItem) {
@@ -3458,6 +3530,10 @@ extension ASCDocumentsViewController {
 // MARK: - Help funcs
 
 extension ASCDocumentsViewController {
+    enum NotificationType {
+        case `default`, alert
+    }
+
     func getLocalAndCloudItems(indexes: Set<String>) -> (localItems: [ASCEntity], cloudItems: [ASCEntity]) {
         var localItems: [ASCEntity] = []
         var cloudItems: [ASCEntity] = []

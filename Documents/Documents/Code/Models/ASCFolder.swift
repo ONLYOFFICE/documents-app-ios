@@ -101,9 +101,25 @@ class ASCFolder: ASCEntity {
     }
 }
 
+extension ASCFolder {
+    var isRoot: Bool {
+        parentId == nil || parentId == "0"
+    }
+}
+
+// MARK: - ASCEntity extension for DocSpace
+
 extension ASCEntity {
     var isRoom: Bool {
         guard let folder = self as? ASCFolder, folder.roomType != nil else { return false }
         return true
+    }
+}
+
+// MARK: - ASCFolder extension for DocSpace
+
+extension ASCFolder {
+    var isRoomListFolder: Bool {
+        isRoot && ASCOnlyofficeCategory.hasDocSpaceRootRoomsList(type: rootFolderType)
     }
 }

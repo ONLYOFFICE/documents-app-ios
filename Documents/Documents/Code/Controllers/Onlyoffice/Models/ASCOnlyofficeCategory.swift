@@ -161,6 +161,8 @@ class ASCOnlyofficeCategory: ASCCategory {
             return true
         case .onlyofficeBunch, .onlyofficeProjects:
             return true
+        case .onlyofficeRoomShared:
+            return true
         default:
             return false
         }

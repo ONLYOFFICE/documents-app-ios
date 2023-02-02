@@ -167,6 +167,7 @@ extension ASCConnectStorageWebDavController {
     private func htmlInjection(string: String) -> String {
         let html = """
         <html>
+          <meta charset="utf-8">
           <head>
             <style>
               p {

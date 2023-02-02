@@ -20,6 +20,15 @@
 "© Ascensio System SIA %d" = "© Ascensio System SIA %d";
 
 /* No comment provided by engineer. */
+"<p>Use the password created in <a href=\"https://yandex.ru/id/about\">Yandex ID</a>.</br>More detailed connection instructions can be found in the <a href=\"https://yandex.ru/support/disk-desktop/webdav-app-passwords.html?lang=ru\">help</a>.</p>" = "<p>Utilice la contraseña creada en <a href=\"https://yandex.ru/id/about\">Yandex ID</a>.</br>Puede encontrar instrucciones de conexión más detalladas en la <a href=\"https://yandex.ru/support/disk-desktop/webdav-app-passwords.html?lang=ru\">ayuda</a>.</p>";
+
+/* No comment provided by engineer. */
+"<p>Use the password created in <a href=\"https://yandex.ru/id/about\">Yandex ID</a>.</p><p>More detailed connection instructions can be found in the <a href=\"https://yandex.ru/support/disk-desktop/webdav-app-passwords.html?lang=ru\">help</a>.</p>" = "<p>Utilice la contraseña creada en <a href=\"https://yandex.ru/id/about\">Yandex ID</a>.</p><p>Puede encontrar instrucciones de conexión más detalladas en la <a href=\"https://yandex.ru/support/disk-desktop/webdav-app-passwords.html?lang=ru\">ayuda</a>.</p>";
+
+/* No comment provided by engineer. */
+"<p>You must have a paid version of the player to use this service.</p><p>If you have activated double authentication, please generate a CDM application from the Infomaniak manager. <a href=\"https://www.infomaniak.com/en/support/faq/1940/enable-two-step-verification\">More...</a></p>" = "<p>Debe disponer de una versión de pago del reproductor para utilizar este servicio.</p><p>Si usted activó la autenticación doble, genere una aplicación CDM desde el gestor de Infomaniak. <a href=\"https://www.infomaniak.com/en/support/faq/1940/enable-two-step-verification\">Más...</a></p>";
+
+/* No comment provided by engineer. */
 "A file with a similar name already exists in the document directory on the device." = "Un archivo con un nombre similar ya existe en el directorio de documentos en el dispositivo.";
 
 /* No comment provided by engineer. */
@@ -70,6 +79,9 @@
 /* Sharing settings add notification message */
 "Add message" = "Añadir mensaje";
 
+/* Button title */
+"Add users" = "Añadir usuarios";
+
 /* No comment provided by engineer. */
 "Add users or groups and allow them to \n read, review or edit documents." = "Añada usuarios o grupos y concédales permiso para\nleer, revisar o editar documentos.";
 
@@ -100,8 +112,17 @@
 /* Caption of the process */
 "Applying" = "Aplicando";
 
+/* Button title */
+"Archive" = "Archivo";
+
 /* No comment provided by engineer. */
 "Archives" = "Archivos";
+
+/* Caption of the processing */
+"Archiving" = "Archivando";
+
+/* No comment provided by engineer. */
+"Archiving failed." = "Error al archivar.";
 
 /* No comment provided by engineer. */
 "Are you sure you want to delete the account %@ from this device?" = "¿Está seguro de que desea eliminar la cuenta %@ de este dispositivo?";
@@ -111,6 +132,12 @@
 
 /* No comment provided by engineer. */
 "Author" = "Autor";
+
+/* No comment provided by engineer. */
+"Back" = "Atrás";
+
+/* No comment provided by engineer. */
+"Box" = "Box";
 
 /* No comment provided by engineer. */
 "Box directory" = "Directorio de Box";
@@ -143,6 +170,9 @@
 "Cancel" = "Cancelar";
 
 /* No comment provided by engineer. */
+"Cancel invitation?" = "¿Cancelar la invitación?";
+
+/* No comment provided by engineer. */
 "Check your internet connection" = "Compruebe la conexión a Internet";
 
 /* No comment provided by engineer. */
@@ -159,6 +189,9 @@
 
 /* Button title */
 "Clear Cache?" = "¿Borrar caché?";
+
+/* No comment provided by engineer. */
+"Clear selection?" = "¿Borrar la selección?";
 
 /* Caption of the processing */
 "Clearing" = "Borrando";
@@ -177,6 +210,9 @@
 
 /* Introduction Step Five - Title */
 "Collaborate with your team" = "Colabore con su equipo";
+
+/* No comment provided by engineer. */
+"Collaboration" = "Colaboración";
 
 /* Share status */
 "Comment" = "Comentario";
@@ -331,6 +367,9 @@
 /* Caption of the process */
 "Creating" = "Creando";
 
+/* No comment provided by engineer. */
+"Custom" = "Personalizada";
+
 /* Share status */
 "Custom filter" = "Filtro personalizado";
 
@@ -382,9 +421,6 @@
 /* No comment provided by engineer. */
 "Document" = "Documento";
 
-/* No comment provided by engineer. */
-"Document protection" = "Protección de documentos";
-
 /* Default title of sample document */
 "Document Sample" = "Ejemplo de documento";
 
@@ -422,6 +458,9 @@
 /* Introduction Step Four - Title */
 "Edit documents locally" = "Editar documentos localmente";
 
+/* Share status */
+"Editor" = "Editor";
+
 /* No comment provided by engineer. */
 "Email" = "Correo electrónico";
 
@@ -450,13 +489,13 @@
 "End Slide Show" = "Finalizar presentación";
 
 /* No comment provided by engineer. */
-"Enter a password to open the file." = "Escribir la contraseña para abrir el archive.";
+"Enter a password to open the file." = "Escriba la contraseña para abrir el archive.";
+
+/* placeholder */
+"Enter email" = "Introduzca el correo electrónico";
 
 /* No comment provided by engineer. */
-"Enter Portal Address" = "Introducir la dirección del portal";
-
-/* No comment provided by engineer. */
-"Enter text using handwriting instead of device keyboard. ONLYOFFICE will recognize text and insert it in the document. The feature is available for English only." = "Introduzca el texto utilizando la escritura a mano en lugar de utilizar el teclado del dispositivo. ONLYOFFICE reconocerá el texto y lo insertará en el documento. Esta característica solo está disponible para el inglés.";
+"Enter Portal Address" = "Introduzca la dirección del portal";
 
 /* No comment provided by engineer. */
 "Error" = "Error";
@@ -534,16 +573,13 @@
 "File does not exist" = "El archivo no existe";
 
 /* No comment provided by engineer. */
-"File search became easier with filtering options: by type for local files and by type and author for cloud files." = "La búsqueda de archivos es ahora más fácil con nuevas opciones de filtrado: por tipo para los archivos locales y por tipo y autor para los archivos en la nube.";
-
-/* No comment provided by engineer. */
 "Files" = "Archivos";
 
 /* No comment provided by engineer. */
 "Files Preview" = "Vista previa de archivos";
 
 /* No comment provided by engineer. */
-"Filtering in search" = "Filtrado en la búsqueda";
+"Filling form" = "Relleno del formularios";
 
 /* No comment provided by engineer. */
 "Filters" = "Filtros";
@@ -588,9 +624,6 @@
 "Groups" = "Grupos";
 
 /* No comment provided by engineer. */
-"Handwriting recognition" = "Reconocimiento de escritura a mano";
-
-/* No comment provided by engineer. */
 "iCloud" = "iCloud";
 
 /* No comment provided by engineer. */
@@ -608,6 +641,9 @@
 /* No comment provided by engineer. */
 "Incorrect portal address" = "Dirección de portal incorrecta";
 
+/* Button title */
+"Info" = "Información";
+
 /* No comment provided by engineer. */
 "Information" = "Información";
 
@@ -622,6 +658,15 @@
 
 /* No comment provided by engineer. */
 "Invalid Url" = "URL no válida";
+
+/* No comment provided by engineer. */
+"Invite" = "Invitar";
+
+/* No comment provided by engineer. */
+"Invite people" = "Invitar a personas";
+
+/* No comment provided by engineer. */
+"Invite people by email" = "Invitar a personas por correo electrónico";
 
 /* Data units */
 "Kb" = "Kb";
@@ -640,6 +685,9 @@
 
 /* No comment provided by engineer. */
 "Link copied\nto the clipboard" = "El enlace se ha copiado al portapapeles";
+
+/* No comment provided by engineer. */
+"Link with the invitation has been sent to the mail" = "Se ha enviado al correo electrónico el enlace con la invitación";
 
 /* Caption of the process */
 "Logging in" = "Iniciando sesión";
@@ -675,11 +723,17 @@
 /* No comment provided by engineer. */
 "Media" = "Medios";
 
+/* No comment provided by engineer. */
+"Member" = "Miembro";
+
 /* Button title */
 "More" = "Más";
 
 /* Button title */
 "Move" = "Mover";
+
+/* Button title */
+"Move from archive" = "Mover desde archivo";
 
 /* Button title */
 "Move here" = "Mover aquí";
@@ -690,6 +744,12 @@
 /* Caption of the processing */
 "Moving" = "Moviendo";
 
+/* Caption of the processing */
+"Moving from archive" = "Moviendo desde archivo";
+
+/* Category title */
+"My archived" = "Mis archivos";
+
 /* No comment provided by engineer. */
 "My Clouds" = "Mis Nubes";
 
@@ -698,6 +758,9 @@
 
 /* No comment provided by engineer. */
 "My Drive" = "Mi Drive";
+
+/* Category title */
+"My rooms" = "Mis salas";
 
 /* No comment provided by engineer. */
 "Name is empty" = "El nombre está vacío";
@@ -718,10 +781,13 @@
 "New Folder" = "Nueva carpeta";
 
 /* No comment provided by engineer. */
-"New Presentation" = "Crear presentación";
+"New Presentation" = "Nueva presentación";
 
 /* No comment provided by engineer. */
 "New Spreadsheet" = "Nueva hoja de cálculo";
+
+/* No comment provided by engineer. */
+"New users" = "Nuevos usuarios";
 
 /* Next step */
 "Next" = "Siguiente";
@@ -872,6 +938,15 @@
 /* Used in the context: '3 photos' */
 "photos" = "fotos";
 
+/* Button title */
+"Pin to top" = "Anclar al principio";
+
+/* No comment provided by engineer. */
+"Pinned failed." = "Error al anclar.";
+
+/* Caption of the processing */
+"Pinning" = "Anclando";
+
 /* No comment provided by engineer. */
 "Please go to Settings and enable the camera for this app to use this feature." = "Por favor vaya a Ajustes y active la cámara para que la aplicación use esta característica.";
 
@@ -922,9 +997,6 @@
 
 /* Category title */
 "Project Documents" = "Documentos de proyecto";
-
-/* No comment provided by engineer. */
-"Protect documents with passwords to share them securely with trusted collaborators." = "Proteja sus documentos con contraseñas para poder compartirlos de forma segura con otros usuarios.";
 
 /* No comment provided by engineer. */
 "Protected File" = "Archivo protegido";
@@ -986,6 +1058,12 @@
 /* Share status */
 "Review" = "Revisar";
 
+/* Share status */
+"Room admin" = "Administrador de sala";
+
+/* DocSpace rooms */
+"Rooms" = "Salas";
+
 /* Caption of the processing */
 "Saving" = "Guardando";
 
@@ -1022,6 +1100,9 @@
 
 /* No comment provided by engineer. */
 "Selected provider is not available" = "El proveedor seleccionado no está disponible";
+
+/* No comment provided by engineer. */
+"Selected users will not be invited to the room" = "Los usuarios seleccionados no serán invitados a la sala";
 
 /* No comment provided by engineer. */
 "Selected: %ld" = "Seleccionado: %ld";
@@ -1174,6 +1255,9 @@
 "The portal name must be between 6 and 50 characters long" = "El nombre de portal debe tener entre 6 y 50 caracteres de longitud";
 
 /* No comment provided by engineer. */
+"The quota of users is almost exhausted. Сontact the portal administrator" = "La cuota de usuarios está casi agotada. Сontacte con el administrador del portal";
+
+/* No comment provided by engineer. */
 "The request timed out." = "La solicitud ha agotado el tiempo de espera.";
 
 /* No comment provided by engineer. */
@@ -1184,6 +1268,12 @@
 
 /* No comment provided by engineer. */
 "The trash is empty" = "La papelera está vacía";
+
+/* No comment provided by engineer. */
+"The user limit has been reached. Сontact the portal administrator" = "Se ha alcanzado el límite de usuarios. Сontacte con el administrador del portal";
+
+/* No comment provided by engineer. */
+"Third party resource" = "Recurso de terceros";
 
 /* Introduction Step Three - Title */
 "Third-party storage" = "Almacenamiento de terceros";
@@ -1261,6 +1351,9 @@
 "Unable to get information about the user." = "Incapaz de obtener información sobre el usuario.";
 
 /* No comment provided by engineer. */
+"Unarchiving failed." = "Error al desarchivar.";
+
+/* No comment provided by engineer. */
 "Unauthorized users will be able only to view the document and add comments, as well as manage them." = "Los usuarios no autorizados sólo podrán ver el documento y añadir comentarios, así como administrarlos.";
 
 /* No comment provided by engineer. */
@@ -1299,6 +1392,15 @@
 /* No comment provided by engineer. */
 "Unlock with Touch ID" = "Desbloquear con Touch ID";
 
+/* Button title */
+"Unpin" = "Desanclar";
+
+/* No comment provided by engineer. */
+"Unpinned failed." = "Error al desanclar.";
+
+/* Caption of the processing */
+"Unpning" = "Desanclando";
+
 /* No comment provided by engineer. */
 "Unsupported format." = "Formato no compatible.";
 
@@ -1323,6 +1425,9 @@
 /* No comment provided by engineer. */
 "Users" = "Usuarios";
 
+/* No comment provided by engineer. */
+"Users in room" = "Usuarios en la sala";
+
 /* Caption of the process */
 "Validation" = "Validación";
 
@@ -1331,6 +1436,9 @@
 
 /* No comment provided by engineer. */
 "Version" = "Versión";
+
+/* No comment provided by engineer. */
+"View-Only" = "Solo lectura";
 
 /* No comment provided by engineer. */
 "Warning" = "Advertencia";

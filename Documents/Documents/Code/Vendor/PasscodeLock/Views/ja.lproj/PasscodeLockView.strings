@@ -5,7 +5,7 @@
 "0Ph-dj-v7R.normalTitle" = "Touch ID を使用する";
 
 /* Class = "UILabel"; text = "Title"; ObjectID = "1wK-Ol-7mm"; Note = "Do not translate"; */
-"1wK-Ol-7mm.text" = "タイトル:";
+"1wK-Ol-7mm.text" = "タイトル";
 
 /* Class = "UIButton"; normalTitle = "5"; ObjectID = "C9Z-3u-ohd"; Note = "Do not translate"; */
 "C9Z-3u-ohd.normalTitle" = "5";

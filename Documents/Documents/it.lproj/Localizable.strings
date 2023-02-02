@@ -20,6 +20,15 @@
 "© Ascensio System SIA %d" = "© Ascensio System SIA %d";
 
 /* No comment provided by engineer. */
+"<p>Use the password created in <a href=\"https://yandex.ru/id/about\">Yandex ID</a>.</br>More detailed connection instructions can be found in the <a href=\"https://yandex.ru/support/disk-desktop/webdav-app-passwords.html?lang=ru\">help</a>.</p>" = "<p>Utilizza la password creata in <a href=\"https://yandex.ru/id/about\">ID Yandex</a>.</br>Istruzioni di connessione più dettagliate sono disponibili in <a href= \"https://yandex.ru/support/disk-desktop/webdav-app-passwords.html?lang=ru\">aiuto</a>.</p>";
+
+/* No comment provided by engineer. */
+"<p>Use the password created in <a href=\"https://yandex.ru/id/about\">Yandex ID</a>.</p><p>More detailed connection instructions can be found in the <a href=\"https://yandex.ru/support/disk-desktop/webdav-app-passwords.html?lang=ru\">help</a>.</p>" = "<p>Utilizza la password creata in <a href=\"https://yandex.ru/id/about\">ID Yandex</a>.</p><p>Istruzioni di connessione più dettagliate sono disponibili nella < a href=\"https://yandex.ru/support/disk-desktop/webdav-app-passwords.html?lang=ru\">aiuto</a>.</p>";
+
+/* No comment provided by engineer. */
+"<p>You must have a paid version of the player to use this service.</p><p>If you have activated double authentication, please generate a CDM application from the Infomaniak manager. <a href=\"https://www.infomaniak.com/en/support/faq/1940/enable-two-step-verification\">More...</a></p>" = "<p>Devi avere una versione a pagamento del lettore per utilizzare questo servizio.</p><p>Se hai attivato la doppia autenticazione, genera un'applicazione CDM dal gestore di Infomaniak. <a href=\"https://www.infomaniak.com/en/support/faq/1940/enable-two-step-verification\">Altro...</a></p>";
+
+/* No comment provided by engineer. */
 "A file with a similar name already exists in the document directory on the device." = "Un file con un nome simile esiste già nella directory dei documenti sul dispositivo.";
 
 /* No comment provided by engineer. */
@@ -70,6 +79,9 @@
 /* Sharing settings add notification message */
 "Add message" = "Aggiungere messaggio";
 
+/* Button title */
+"Add users" = "Aggiungere utenti";
+
 /* No comment provided by engineer. */
 "Add users or groups and allow them to \n read, review or edit documents." = "Aggiungi utenti o gruppi e assegna le loro\npossibilità di leggere, rivedere o modificare i documenti.";
 
@@ -100,8 +112,17 @@
 /* Caption of the process */
 "Applying" = "Applicare";
 
+/* Button title */
+"Archive" = "Archivio";
+
 /* No comment provided by engineer. */
 "Archives" = "Archivi";
+
+/* Caption of the processing */
+"Archiving" = "Archiviazione";
+
+/* No comment provided by engineer. */
+"Archiving failed." = "Archiviazione non riuscita.";
 
 /* No comment provided by engineer. */
 "Are you sure you want to delete the account %@ from this device?" = "Sei sicuro che vuoi eliminare l'account %@ da questo dispositivo?";
@@ -111,6 +132,12 @@
 
 /* No comment provided by engineer. */
 "Author" = "Autore";
+
+/* No comment provided by engineer. */
+"Back" = "Indietro";
+
+/* No comment provided by engineer. */
+"Box" = "Casella";
 
 /* No comment provided by engineer. */
 "Box directory" = "Cartella di Box";
@@ -143,6 +170,9 @@
 "Cancel" = "Eliminare";
 
 /* No comment provided by engineer. */
+"Cancel invitation?" = "Annullare l'invito?";
+
+/* No comment provided by engineer. */
 "Check your internet connection" = "Controlla la tua connessione Internet";
 
 /* No comment provided by engineer. */
@@ -159,6 +189,9 @@
 
 /* Button title */
 "Clear Cache?" = "Eliminare cache?";
+
+/* No comment provided by engineer. */
+"Clear selection?" = "Cancellare la selezione?";
 
 /* Caption of the processing */
 "Clearing" = "Pulizia";
@@ -177,6 +210,9 @@
 
 /* Introduction Step Five - Title */
 "Collaborate with your team" = "Collabora con il tuo team";
+
+/* No comment provided by engineer. */
+"Collaboration" = "Collaborazione";
 
 /* Share status */
 "Comment" = "Commento";
@@ -331,6 +367,9 @@
 /* Caption of the process */
 "Creating" = "Creazione";
 
+/* No comment provided by engineer. */
+"Custom" = "Personalizzata";
+
 /* Share status */
 "Custom filter" = "Filtro personalizzato";
 
@@ -382,9 +421,6 @@
 /* No comment provided by engineer. */
 "Document" = "Documento";
 
-/* No comment provided by engineer. */
-"Document protection" = "Protezione di documenti";
-
 /* Default title of sample document */
 "Document Sample" = "Esempio di documento";
 
@@ -422,6 +458,9 @@
 /* Introduction Step Four - Title */
 "Edit documents locally" = "Modificare i documenti a livello locale";
 
+/* Share status */
+"Editor" = "Editore";
+
 /* No comment provided by engineer. */
 "Email" = "Email";
 
@@ -452,11 +491,11 @@
 /* No comment provided by engineer. */
 "Enter a password to open the file." = "Immettere la password per aprire il file.";
 
-/* No comment provided by engineer. */
-"Enter Portal Address" = "Inserire l'indirizzo del portale";
+/* placeholder */
+"Enter email" = "Inserire l'email";
 
 /* No comment provided by engineer. */
-"Enter text using handwriting instead of device keyboard. ONLYOFFICE will recognize text and insert it in the document. The feature is available for English only." = "Inserisci i contenuti utilizzando la scrittura a mano anziché la tastiera del dispositivo. ONLYOFFICE riconoscerà il testo e lo inserirà nel documento. La funzione è disponibile solo per l'inglese.";
+"Enter Portal Address" = "Inserire l'indirizzo del portale";
 
 /* No comment provided by engineer. */
 "Error" = "Errore";
@@ -534,16 +573,13 @@
 "File does not exist" = "Il file non esiste";
 
 /* No comment provided by engineer. */
-"File search became easier with filtering options: by type for local files and by type and author for cloud files." = "La ricerca dei file è diventata più semplice con le opzioni di filtro: per tipo applicabile ai file locali e per tipo e autore applicabile ai file cloud.";
-
-/* No comment provided by engineer. */
 "Files" = "File";
 
 /* No comment provided by engineer. */
 "Files Preview" = "Anteprima dei file";
 
 /* No comment provided by engineer. */
-"Filtering in search" = "Filtri di ricerca";
+"Filling form" = "Compilazione del modulo";
 
 /* No comment provided by engineer. */
 "Filters" = "Filtri";
@@ -588,9 +624,6 @@
 "Groups" = "Gruppi";
 
 /* No comment provided by engineer. */
-"Handwriting recognition" = "Scrittura a mano";
-
-/* No comment provided by engineer. */
 "iCloud" = "iCloud";
 
 /* No comment provided by engineer. */
@@ -608,6 +641,9 @@
 /* No comment provided by engineer. */
 "Incorrect portal address" = "Indirizzo del portale non corretto";
 
+/* Button title */
+"Info" = "Informazioni";
+
 /* No comment provided by engineer. */
 "Information" = "Informazioni";
 
@@ -622,6 +658,15 @@
 
 /* No comment provided by engineer. */
 "Invalid Url" = "URL non valido";
+
+/* No comment provided by engineer. */
+"Invite" = "Invitare";
+
+/* No comment provided by engineer. */
+"Invite people" = "Invitare persone";
+
+/* No comment provided by engineer. */
+"Invite people by email" = "Invitare persone via e-mail";
 
 /* Data units */
 "Kb" = "Kb";
@@ -640,6 +685,9 @@
 
 /* No comment provided by engineer. */
 "Link copied\nto the clipboard" = "Link copiato negli appunti";
+
+/* No comment provided by engineer. */
+"Link with the invitation has been sent to the mail" = "Il link con l'invito è stato inviato alla posta";
 
 /* Caption of the process */
 "Logging in" = "Accesso in corso";
@@ -675,11 +723,17 @@
 /* No comment provided by engineer. */
 "Media" = "Multimedia";
 
+/* No comment provided by engineer. */
+"Member" = "Membro";
+
 /* Button title */
 "More" = "Altro";
 
 /* Button title */
 "Move" = "Spostare";
+
+/* Button title */
+"Move from archive" = "Spostare dall'archivio";
 
 /* Button title */
 "Move here" = "Spostare qui";
@@ -690,6 +744,12 @@
 /* Caption of the processing */
 "Moving" = "Spostamento";
 
+/* Caption of the processing */
+"Moving from archive" = "Spostamento dall'archivio";
+
+/* Category title */
+"My archived" = "I miei archivi";
+
 /* No comment provided by engineer. */
 "My Clouds" = "I miei cloud";
 
@@ -698,6 +758,9 @@
 
 /* No comment provided by engineer. */
 "My Drive" = "My Drive";
+
+/* Category title */
+"My rooms" = "Le mie stanze";
 
 /* No comment provided by engineer. */
 "Name is empty" = "Il nome è vuoto";
@@ -722,6 +785,9 @@
 
 /* No comment provided by engineer. */
 "New Spreadsheet" = "Nuovo foglio di calcolo";
+
+/* No comment provided by engineer. */
+"New users" = "Nuovi utenti";
 
 /* Next step */
 "Next" = "Successivo";
@@ -872,6 +938,15 @@
 /* Used in the context: '3 photos' */
 "photos" = "foto";
 
+/* Button title */
+"Pin to top" = "Fissare in alto";
+
+/* No comment provided by engineer. */
+"Pinned failed." = "Impossibile bloccare";
+
+/* Caption of the processing */
+"Pinning" = "Bloccaggio";
+
 /* No comment provided by engineer. */
 "Please go to Settings and enable the camera for this app to use this feature." = "Per utilizzare questa funzione, vai su Impostazioni e attiva la fotocamera per quest'applicazione per poter utilizzarla.";
 
@@ -922,9 +997,6 @@
 
 /* Category title */
 "Project Documents" = "Documenti del progetto";
-
-/* No comment provided by engineer. */
-"Protect documents with passwords to share them securely with trusted collaborators." = "Proteggi i documenti con password per condividerli in modo sicuro con collaboratori fidati.";
 
 /* No comment provided by engineer. */
 "Protected File" = "File protetto";
@@ -986,6 +1058,12 @@
 /* Share status */
 "Review" = "Revisione";
 
+/* Share status */
+"Room admin" = "Amministratore della stanza";
+
+/* DocSpace rooms */
+"Rooms" = "Stanze";
+
 /* Caption of the processing */
 "Saving" = "Salvataggio";
 
@@ -1003,7 +1081,7 @@
 "Select another cloud to connect to Nextcloud, ownCloud and others are supported." = "Seleziona un altro cloud per connettersi a Nextcloud; sono supportati ownCloud e altri.";
 
 /* No comment provided by engineer. */
-"Select group" = " Selezionare gruppo";
+"Select group" = "Selezionare gruppo";
 
 /* No comment provided by engineer. */
 "Select Photos" = "Selezionare foto";
@@ -1018,10 +1096,13 @@
 "Select the folder to recover the items" = "Selezionare la cartella per recuperare gli elementi";
 
 /* No comment provided by engineer. */
-"Select user" = " Selezionare utente";
+"Select user" = "Selezionare utente";
 
 /* No comment provided by engineer. */
 "Selected provider is not available" = "Il provider selezionato non è disponibile";
+
+/* No comment provided by engineer. */
+"Selected users will not be invited to the room" = "Gli utenti selezionati non saranno invitati alla stanza";
 
 /* No comment provided by engineer. */
 "Selected: %ld" = "Selezionato: %ld";
@@ -1174,6 +1255,9 @@
 "The portal name must be between 6 and 50 characters long" = "Il nome del portale deve avere una lunghezza compresa tra 6 e 50 caratteri";
 
 /* No comment provided by engineer. */
+"The quota of users is almost exhausted. Сontact the portal administrator" = "La quota di utenti è quasi esaurita. Contatta l'amministratore del portale";
+
+/* No comment provided by engineer. */
 "The request timed out." = "La richiesta è scaduta.";
 
 /* No comment provided by engineer. */
@@ -1184,6 +1268,12 @@
 
 /* No comment provided by engineer. */
 "The trash is empty" = "Il cestino è vuoto";
+
+/* No comment provided by engineer. */
+"The user limit has been reached. Сontact the portal administrator" = "Il limite di utenti è stato raggiunto. Contatta l'amministratore del portale";
+
+/* No comment provided by engineer. */
+"Third party resource" = "Risorsa di terze parti";
 
 /* Introduction Step Three - Title */
 "Third-party storage" = "Spazio di archiviazione di terze parti";
@@ -1261,6 +1351,9 @@
 "Unable to get information about the user." = "Impossibile ottenere informazioni sull'utente.";
 
 /* No comment provided by engineer. */
+"Unarchiving failed." = "Disarchiviazione fallita.";
+
+/* No comment provided by engineer. */
 "Unauthorized users will be able only to view the document and add comments, as well as manage them." = "Gli utenti non autorizzati potranno solo visualizzare il documento e aggiungere commenti, oltre che gestirli.";
 
 /* No comment provided by engineer. */
@@ -1299,6 +1392,15 @@
 /* No comment provided by engineer. */
 "Unlock with Touch ID" = "Sbloccare con Touch ID";
 
+/* Button title */
+"Unpin" = "Rimuovere";
+
+/* No comment provided by engineer. */
+"Unpinned failed." = "Impossibile rimuovere.";
+
+/* Caption of the processing */
+"Unpning" = "Rimuovere";
+
 /* No comment provided by engineer. */
 "Unsupported format." = "Formato non supportato.";
 
@@ -1323,6 +1425,9 @@
 /* No comment provided by engineer. */
 "Users" = "Utenti";
 
+/* No comment provided by engineer. */
+"Users in room" = "Utenti in stanza";
+
 /* Caption of the process */
 "Validation" = "Validazione";
 
@@ -1331,6 +1436,9 @@
 
 /* No comment provided by engineer. */
 "Version" = "Versione";
+
+/* No comment provided by engineer. */
+"View-Only" = "Solo visualizzazione";
 
 /* No comment provided by engineer. */
 "Warning" = "Avvertimento";
@@ -1351,7 +1459,7 @@
 "Welcome to %@ mobile editing suite!\nSwipe to learn more about the app." = "Benvenuto alla suite mobile %@!\nScorri per saperne di più.";
 
 /* No comment provided by engineer. */
-"What's New" = " Novità";
+"What's New" = "Novità";
 
 /* Introduction Step Four - Description */
 "Work with documents offline.\nCreated files can later be uploaded to online portal and\nthen accessed from any other device." = "Lavora con i documenti offline.\nI file creati si può caricare sul portale online e\npoi accedergli da qualsiasi dispositivo.";

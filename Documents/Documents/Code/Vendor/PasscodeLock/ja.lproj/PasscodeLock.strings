@@ -1,38 +1,38 @@
 /* (No Comment) */
-"PasscodeLockChangeDescription" = "古いパスコードを入力する";
+"PasscodeLockChangeDescription" = "旧パスコードを入力してください。";
 
 /* Change Passcode State */
-"PasscodeLockChangeTitle" = "古いパスコードを入力する";
+"PasscodeLockChangeTitle" = "旧パスコードを入力してください";
 
 /* (No Comment) */
-"PasscodeLockConfirmDescription" = "もう一度パスコードを入力する";
+"PasscodeLockConfirmDescription" = "パスコードをもう一度入力してください。";
 
 /* Confirm Passcode State */
-"PasscodeLockConfirmTitle" = "パスコードを確定";
+"PasscodeLockConfirmTitle" = "パスコードを確認する";
 
 /* (No Comment) */
-"PasscodeLockEnterDescription" = "パスコードを入力して、進行します。";
+"PasscodeLockEnterDescription" = "パスコードを入力して、進行する";
 
 /* Enter Passcode State */
-"PasscodeLockEnterTitle" = "パスコードを入力する";
+"PasscodeLockEnterTitle" = "パスコードを入力してください";
 
 /* (No Comment) */
-"PasscodeLockFaceIDButton" = "パスコードを入力する";
+"PasscodeLockFaceIDButton" = "パスコードを入力してください";
 
 /* (No Comment) */
-"PasscodeLockMismatchDescription" = "パスコードが合いません。";
+"PasscodeLockMismatchDescription" = "パスコードが一致していません。";
 
 /* Passcode Mismatch State */
 "PasscodeLockMismatchTitle" = "もう一度お試しください";
 
 /* (No Comment) */
-"PasscodeLockSetDescription" = "パスコードを選択";
+"PasscodeLockSetDescription" = "パスコードを選択してください。";
 
 /* Set Passcode State */
-"PasscodeLockSetTitle" = "パスコードを入力する";
+"PasscodeLockSetTitle" = "パスコードを入力してください";
 
 /* Touch ID Fallback Button */
-"PasscodeLockTouchIDButton" = "パスコードを入力する";
+"PasscodeLockTouchIDButton" = "パスコードを入力してください";
 
 /* Touch ID Reason */
 "PasscodeLockTouchIDReason" = "続けるには、承認が必要です";

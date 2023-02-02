@@ -20,6 +20,15 @@
 "© Ascensio System SIA %d" = "© Ascensio System SIA %d";
 
 /* No comment provided by engineer. */
+"<p>Use the password created in <a href=\"https://yandex.ru/id/about\">Yandex ID</a>.</br>More detailed connection instructions can be found in the <a href=\"https://yandex.ru/support/disk-desktop/webdav-app-passwords.html?lang=ru\">help</a>.</p>" = "<p>Използвайте паролата, създадена в <a href=\"https://yandex.ru/id/about\">Yandex ID</a>.</br>По-подробни инструкции за свързване можете да намерите в <a href=\"https://yandex.ru/support/disk-desktop/webdav-app-passwords.html?lang=ru\">help</a>.</p>";
+
+/* No comment provided by engineer. */
+"<p>Use the password created in <a href=\"https://yandex.ru/id/about\">Yandex ID</a>.</p><p>More detailed connection instructions can be found in the <a href=\"https://yandex.ru/support/disk-desktop/webdav-app-passwords.html?lang=ru\">help</a>.</p>" = "<p>Използвайте паролата, създадена в <a href=\"https://yandex.ru/id/about\">Yandex ID</a>.</p><p>По-подробни инструкции за свързване можете да намерите в <a href=\"https://yandex.ru/support/disk-desktop/webdav-app-passwords.html?lang=ru\">help</a>.</p>";
+
+/* No comment provided by engineer. */
+"<p>You must have a paid version of the player to use this service.</p><p>If you have activated double authentication, please generate a CDM application from the Infomaniak manager. <a href=\"https://www.infomaniak.com/en/support/faq/1940/enable-two-step-verification\">More...</a></p>" = "<p>Трябва да имате платена версия на плейъра, за да използвате тази услуга.</p><p>Ако сте активирали двойно удостоверяване, моля, генерирайте CDM приложение от мениджъра на Infomaniak. <a href=\"https://www.infomaniak.com/en/support/faq/1940/enable-two-step-verification\">Повече...</a></p>";
+
+/* No comment provided by engineer. */
 "A file with a similar name already exists in the document directory on the device." = "Файл с подобно име вече съществува в директорията на документа на устройството.";
 
 /* No comment provided by engineer. */
@@ -70,8 +79,11 @@
 /* Sharing settings add notification message */
 "Add message" = "Добавяне на съобщение";
 
+/* Button title */
+"Add users" = "Добавяне на потребители";
+
 /* No comment provided by engineer. */
-"Add users or groups and allow them to \n read, review or edit documents." = "Add users or groups and allow them to \n read, review or edit documents.";
+"Add users or groups and allow them to \n read, review or edit documents." = "Добавяне на потребители и групи и им позволете\nда четат, преглеждат или редактират документи.";
 
 /* No comment provided by engineer. */
 "Address is empty" = "Адресът е празен";
@@ -100,8 +112,17 @@
 /* Caption of the process */
 "Applying" = "Прилагане";
 
+/* Button title */
+"Archive" = "Архив";
+
 /* No comment provided by engineer. */
 "Archives" = "Архиви";
+
+/* Caption of the processing */
+"Archiving" = "Архивиране";
+
+/* No comment provided by engineer. */
+"Archiving failed." = "Архивирането не беше успешно.";
 
 /* No comment provided by engineer. */
 "Are you sure you want to delete the account %@ from this device?" = "Наистина ли искате да изтриете профила %@ от това устройство?";
@@ -111,6 +132,12 @@
 
 /* No comment provided by engineer. */
 "Author" = "Автор";
+
+/* No comment provided by engineer. */
+"Back" = "Обратно";
+
+/* No comment provided by engineer. */
+"Box" = "Кутия";
 
 /* No comment provided by engineer. */
 "Box directory" = "Поле за директория";
@@ -143,6 +170,9 @@
 "Cancel" = "Отказ";
 
 /* No comment provided by engineer. */
+"Cancel invitation?" = "Отмяна на поканата?";
+
+/* No comment provided by engineer. */
 "Check your internet connection" = "Проверете връзката си с интернет";
 
 /* No comment provided by engineer. */
@@ -159,6 +189,9 @@
 
 /* Button title */
 "Clear Cache?" = "Изтрий кеш-памет?";
+
+/* No comment provided by engineer. */
+"Clear selection?" = "Изчистване на избора?";
 
 /* Caption of the processing */
 "Clearing" = "Клиринг";
@@ -177,6 +210,9 @@
 
 /* Introduction Step Five - Title */
 "Collaborate with your team" = "Сътрудничество с екипа си";
+
+/* No comment provided by engineer. */
+"Collaboration" = "Сътрудничество";
 
 /* Share status */
 "Comment" = "Коментар";
@@ -212,7 +248,7 @@
 "Connect Clouds" = "Свържете се с облака";
 
 /* Introduction Step Three - Description */
-"Connect third-party storage\nlike Nextcloud, ownCloud, Yandex Disk and\nothers which use WebDAV protocol." = "Свържете съхранение на трети страни като Nextcloud, ownCloud, Yandex Disk и други, които използват WebDAV протокол.";
+"Connect third-party storage\nlike Nextcloud, ownCloud, Yandex Disk and\nothers which use WebDAV protocol." = "Свържете съхранение на трети страни\nкато Nextcloud, ownCloud, Yandex Disk и\nдруги, които използват WebDAV протокол.";
 
 /* Footer text */
 "Connect to your %@ cloud to store files online and collaborate on documents in real time" = "Свържете се с вашия облак %@, за да съхранявате файлове онлайн и да си сътрудничите по документи в реално време";
@@ -331,6 +367,9 @@
 /* Caption of the process */
 "Creating" = "Създаване";
 
+/* No comment provided by engineer. */
+"Custom" = "Персонализиран";
+
 /* Share status */
 "Custom filter" = "Персонализиран филтър";
 
@@ -382,9 +421,6 @@
 /* No comment provided by engineer. */
 "Document" = "Документ";
 
-/* No comment provided by engineer. */
-"Document protection" = "Защита на документи";
-
 /* Default title of sample document */
 "Document Sample" = "Пример за документ";
 
@@ -422,6 +458,9 @@
 /* Introduction Step Four - Title */
 "Edit documents locally" = "Редактирайте документи на местно ниво";
 
+/* Share status */
+"Editor" = "Редактор";
+
 /* No comment provided by engineer. */
 "Email" = "Електронна поща";
 
@@ -452,11 +491,11 @@
 /* No comment provided by engineer. */
 "Enter a password to open the file." = "Въведете парола, за да отворите файла.";
 
-/* No comment provided by engineer. */
-"Enter Portal Address" = "Въведете Адрес на портал";
+/* placeholder */
+"Enter email" = "Въведете имейл";
 
 /* No comment provided by engineer. */
-"Enter text using handwriting instead of device keyboard. ONLYOFFICE will recognize text and insert it in the document. The feature is available for English only." = "Въведете текст, като използвате ръкописен текст вместо клавиатурата на устройството. ONLYOFFICE ще разпознае текста и ще го вмъкне в документа. Функцията е налична само за английски език.";
+"Enter Portal Address" = "Въведете Адрес на портал";
 
 /* No comment provided by engineer. */
 "Error" = "Грешка";
@@ -534,16 +573,13 @@
 "File does not exist" = "Файлът не съществува";
 
 /* No comment provided by engineer. */
-"File search became easier with filtering options: by type for local files and by type and author for cloud files." = "Търсенето на файлове стана по-лесно с опциите за филтриране: по тип за локални файлове и по тип и автор за файлове в облак.";
-
-/* No comment provided by engineer. */
 "Files" = "Файлове";
 
 /* No comment provided by engineer. */
 "Files Preview" = "Преглед на файлове";
 
 /* No comment provided by engineer. */
-"Filtering in search" = "Филтриране в търсенето";
+"Filling form" = "Формуляр за попълване";
 
 /* No comment provided by engineer. */
 "Filters" = "Филтри";
@@ -588,9 +624,6 @@
 "Groups" = "Групи";
 
 /* No comment provided by engineer. */
-"Handwriting recognition" = "Разпознаване на почерк";
-
-/* No comment provided by engineer. */
 "iCloud" = "iCloud";
 
 /* No comment provided by engineer. */
@@ -608,6 +641,9 @@
 /* No comment provided by engineer. */
 "Incorrect portal address" = "Неправилен адрес на портала";
 
+/* Button title */
+"Info" = "Информация";
+
 /* No comment provided by engineer. */
 "Information" = "Информация";
 
@@ -622,6 +658,15 @@
 
 /* No comment provided by engineer. */
 "Invalid Url" = "Невалиден URL адрес";
+
+/* No comment provided by engineer. */
+"Invite" = "Покани";
+
+/* No comment provided by engineer. */
+"Invite people" = "Поканете хора";
+
+/* No comment provided by engineer. */
+"Invite people by email" = "Поканете хора по имейл";
 
 /* Data units */
 "Kb" = "Кб";
@@ -640,6 +685,9 @@
 
 /* No comment provided by engineer. */
 "Link copied\nto the clipboard" = "Връзката е копирана\nв клипборда";
+
+/* No comment provided by engineer. */
+"Link with the invitation has been sent to the mail" = "Връзката с поканата е изпратена на пощата";
 
 /* Caption of the process */
 "Logging in" = "Влизане в системата";
@@ -675,11 +723,17 @@
 /* No comment provided by engineer. */
 "Media" = "Мултимедия";
 
+/* No comment provided by engineer. */
+"Member" = "Член";
+
 /* Button title */
 "More" = "Повече";
 
 /* Button title */
 "Move" = "Ход";
+
+/* Button title */
+"Move from archive" = "Преместете от архив";
 
 /* Button title */
 "Move here" = "Премести се тук";
@@ -690,6 +744,12 @@
 /* Caption of the processing */
 "Moving" = "Движещ се";
 
+/* Caption of the processing */
+"Moving from archive" = "Преместване от архив";
+
+/* Category title */
+"My archived" = "Моите архиви";
+
 /* No comment provided by engineer. */
 "My Clouds" = "Моите облачни хранилища";
 
@@ -698,6 +758,9 @@
 
 /* No comment provided by engineer. */
 "My Drive" = "My Drive";
+
+/* Category title */
+"My rooms" = "Моите стаи";
 
 /* No comment provided by engineer. */
 "Name is empty" = "Името е празно";
@@ -722,6 +785,9 @@
 
 /* No comment provided by engineer. */
 "New Spreadsheet" = "Нова електронна таблица";
+
+/* No comment provided by engineer. */
+"New users" = "Нови потребители";
 
 /* Next step */
 "Next" = "Следващ";
@@ -872,6 +938,15 @@
 /* Used in the context: '3 photos' */
 "photos" = "снимки";
 
+/* Button title */
+"Pin to top" = "Закачете отгоре";
+
+/* No comment provided by engineer. */
+"Pinned failed." = "Закачането не бе успешно.";
+
+/* Caption of the processing */
+"Pinning" = "Закачане";
+
 /* No comment provided by engineer. */
 "Please go to Settings and enable the camera for this app to use this feature." = "Моля, отворете „Настройки“ и активирайте камерата за това приложение, за да използва тази функция.";
 
@@ -922,9 +997,6 @@
 
 /* Category title */
 "Project Documents" = "Документи по проекта";
-
-/* No comment provided by engineer. */
-"Protect documents with passwords to share them securely with trusted collaborators." = "Защитете документите с пароли, за да ги споделяте сигурно с доверени сътрудници.";
 
 /* No comment provided by engineer. */
 "Protected File" = "Защитен файл";
@@ -986,6 +1058,12 @@
 /* Share status */
 "Review" = "Преглед";
 
+/* Share status */
+"Room admin" = "Администратор на стаята";
+
+/* DocSpace rooms */
+"Rooms" = "Стаи";
+
 /* Caption of the processing */
 "Saving" = "Спестяване";
 
@@ -1022,6 +1100,9 @@
 
 /* No comment provided by engineer. */
 "Selected provider is not available" = "Избраният доставчик не е наличен";
+
+/* No comment provided by engineer. */
+"Selected users will not be invited to the room" = "Избраните потребители няма да бъдат поканени в стаята";
 
 /* No comment provided by engineer. */
 "Selected: %ld" = "Избрано: %ld";
@@ -1174,6 +1255,9 @@
 "The portal name must be between 6 and 50 characters long" = "Име на портала трябва да е между 6 и 50 символа";
 
 /* No comment provided by engineer. */
+"The quota of users is almost exhausted. Сontact the portal administrator" = "Квотата от потребители е почти изчерпана. Свържете се с администратора на портала";
+
+/* No comment provided by engineer. */
 "The request timed out." = "Времето на заявката изтече.";
 
 /* No comment provided by engineer. */
@@ -1184,6 +1268,12 @@
 
 /* No comment provided by engineer. */
 "The trash is empty" = "Кошчето е празно";
+
+/* No comment provided by engineer. */
+"The user limit has been reached. Сontact the portal administrator" = "Потребителският лимит е достигнат. Свържете се с администратора на портала";
+
+/* No comment provided by engineer. */
+"Third party resource" = "Ресурс на трета страна";
 
 /* Introduction Step Three - Title */
 "Third-party storage" = "Памет за трети страни";
@@ -1261,6 +1351,9 @@
 "Unable to get information about the user." = "Не може да се получи информация за потребителя.";
 
 /* No comment provided by engineer. */
+"Unarchiving failed." = "Разархивирането беше неуспешно.";
+
+/* No comment provided by engineer. */
 "Unauthorized users will be able only to view the document and add comments, as well as manage them." = "Неоторизираните потребители ще могат само да преглеждат документа и да добавят коментари, както и да ги управляват.";
 
 /* No comment provided by engineer. */
@@ -1299,6 +1392,15 @@
 /* No comment provided by engineer. */
 "Unlock with Touch ID" = "Отключване с Touch ID";
 
+/* Button title */
+"Unpin" = "Откачи";
+
+/* No comment provided by engineer. */
+"Unpinned failed." = "Откачването беше неуспешно.";
+
+/* Caption of the processing */
+"Unpning" = "Откачване";
+
 /* No comment provided by engineer. */
 "Unsupported format." = "Неподдържан формат.";
 
@@ -1323,6 +1425,9 @@
 /* No comment provided by engineer. */
 "Users" = "Потребители";
 
+/* No comment provided by engineer. */
+"Users in room" = "Потребители в стая";
+
 /* Caption of the process */
 "Validation" = "Утвърждаване";
 
@@ -1331,6 +1436,9 @@
 
 /* No comment provided by engineer. */
 "Version" = "Версия";
+
+/* No comment provided by engineer. */
+"View-Only" = "Само за преглеждане";
 
 /* No comment provided by engineer. */
 "Warning" = "Внимание";
@@ -1354,7 +1462,7 @@
 "What's New" = "Какво е новото";
 
 /* Introduction Step Four - Description */
-"Work with documents offline.\nCreated files can later be uploaded to online portal and\nthen accessed from any other device." = "Работа с документи офлайн.\nСъздадените файлове по-късно могат да бъдат качени в онлайн портала и след това достъпни от всяко друго устройство.";
+"Work with documents offline.\nCreated files can later be uploaded to online portal and\nthen accessed from any other device." = "Работа с документи офлайн.\nСъздадените файлове по-късно могат да бъдат качени в онлайн портала и\nслед това достъпни от всяко друго устройство.";
 
 /* Introduction Step Two - Title */
 "Work with office files" = "Работа с офис файлове";

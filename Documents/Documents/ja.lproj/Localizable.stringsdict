@@ -5,7 +5,7 @@
 	<key>%d selected</key>
 	<dict>
 		<key>NSStringLocalizedFormatKey</key>
-		<string>%#@items@</string>
+		<string>%#@アイテム@</string>
 		<key>items</key>
 		<dict>
 			<key>NSStringFormatSpecTypeKey</key>
@@ -13,13 +13,13 @@
 			<key>NSStringFormatValueTypeKey</key>
 			<string>d</string>
 			<key>other</key>
-			<string>%d selected</string>
+			<string>%d が選択されました</string>
 		</dict>
 	</dict>
 	<key>%lu File selected</key>
 	<dict>
 		<key>NSStringLocalizedFormatKey</key>
-		<string>%#@files@</string>
+		<string>%#@ファイル@</string>
 		<key>files</key>
 		<dict>
 			<key>NSStringFormatSpecTypeKey</key>
@@ -50,7 +50,7 @@
 			<key>NSStringFormatValueTypeKey</key>
 			<string>lu</string>
 			<key>other</key>
-			<string>%lu ファルダー %2$#@lu_files@</string>
+			<string>%lu フォルダー %2$#@lu_files@</string>
 			<key>zero</key>
 			<string>%2$#@lu_files@</string>
 		</dict>
@@ -58,7 +58,7 @@
 	<key>%lu Folder selected</key>
 	<dict>
 		<key>NSStringLocalizedFormatKey</key>
-		<string>%#@folders@</string>
+		<string>%#@フォルダー@</string>
 		<key>folders</key>
 		<dict>
 			<key>NSStringFormatSpecTypeKey</key>
@@ -66,13 +66,13 @@
 			<key>NSStringFormatValueTypeKey</key>
 			<string>lu</string>
 			<key>other</key>
-			<string>%lu ファルダーが選択されました</string>
+			<string>%lu フォルダーが選択されました</string>
 		</dict>
 	</dict>
 	<key>Delete %lu File</key>
 	<dict>
 		<key>NSStringLocalizedFormatKey</key>
-		<string>%#@files@</string>
+		<string>%#@ファイル@</string>
 		<key>files</key>
 		<dict>
 			<key>NSStringFormatSpecTypeKey</key>
@@ -86,7 +86,7 @@
 	<key>Delete %lu Folder</key>
 	<dict>
 		<key>NSStringLocalizedFormatKey</key>
-		<string>%#@folders@</string>
+		<string>%#@フォルダー@</string>
 		<key>folders</key>
 		<dict>
 			<key>NSStringFormatSpecTypeKey</key>

@@ -2,7 +2,7 @@
 "amC-Ph-cGL.text" = "Etiqueta";
 
 /* Class = "UIButton"; normalTitle = "Continue"; ObjectID = "BMv-HP-hD2"; */
-"BMv-HP-hD2.normalTitle" = "Continuar ";
+"BMv-HP-hD2.normalTitle" = "Continuar";
 
 /* Class = "UILabel"; text = "By creating the portal you agree with our\nTerms of service"; ObjectID = "cHX-qo-kcu"; */
 "cHX-qo-kcu.text" = "Ao criar o portal, você concorda com nossos\nTermos de serviço";

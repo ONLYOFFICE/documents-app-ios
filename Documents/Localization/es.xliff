@@ -165,7 +165,7 @@ start using your office</source>
     <body>
       <trans-unit id="De8-tD-APT.text" xml:space="preserve">
         <source>Here at DESIGN, we sometimes talk about web design, and we’re always talking about print design, but one thing we don’t often write about are mobile design interfaces. </source>
-        <target>En DISEÑO a veces hablamos del diseño web y siempre pensamos en el diseño gráfico, pero una cosa sobre la que no escribimos muy a menudo son las interfaces de diseño móvil.</target>
+        <target state="translated">En DISEÑO a veces hablamos del diseño web y siempre pensamos en el diseño gráfico, pero una cosa sobre la que no escribimos muy a menudo son las interfaces de diseño móvil. </target>
         <note>Class = "UILabel"; text = "Here at DESIGN, we sometimes talk about web design, and we’re always talking about print design, but one thing we don’t often write about are mobile design interfaces. "; ObjectID = "De8-tD-APT"; Note = "Do not translate";</note>
       </trans-unit>
       <trans-unit id="JV9-d9-sJs.normalTitle" xml:space="preserve">
@@ -292,7 +292,7 @@ start using your office</source>
       </trans-unit>
       <trans-unit id="/Delete %lu Folder and %lu File:dict/lu_files:dict/zero:dict/:string" xml:space="preserve">
         <source/>
-        <target/>
+        <target state="translated"> </target>
         <note/>
       </trans-unit>
       <trans-unit id="/Delete %lu Folder and %lu File:dict/lu_folders:dict/one:dict/:string" xml:space="preserve">
@@ -1220,16 +1220,19 @@ Nota: Si Usted olvida el código de acceso, necesitará eliminar e instalar la a
         <target>%1$lu objetos con el mismo nombre ya existen en la carpeta '%2$@'. ¿Sobrescribir los objetos?</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
-      <trans-unit id="&lt;p&gt;Use the password created in &lt;a href=&quot;https://yandex.ru/id/about&quot;&gt;Yandex ID&lt;/a&gt;.&lt;/br&gt;More detailed connection instructions can be found in the &lt;a href=&quot;https://yandex.ru/support/disk-desktop/webdav-app-passwords.html?lang=ru&quot;&gt;help&lt;/a&gt;.&lt;/p&gt;" xml:space="preserve">
+      <trans-unit id="&lt;p>Use the password created in &lt;a href=&quot;https://yandex.ru/id/about&quot;>Yandex ID&lt;/a>.&lt;/br>More detailed connection instructions can be found in the &lt;a href=&quot;https://yandex.ru/support/disk-desktop/webdav-app-passwords.html?lang=ru&quot;>help&lt;/a>.&lt;/p>" xml:space="preserve">
         <source>&lt;p&gt;Use the password created in &lt;a href="https://yandex.ru/id/about"&gt;Yandex ID&lt;/a&gt;.&lt;/br&gt;More detailed connection instructions can be found in the &lt;a href="https://yandex.ru/support/disk-desktop/webdav-app-passwords.html?lang=ru"&gt;help&lt;/a&gt;.&lt;/p&gt;</source>
+        <target state="translated">&lt;p&gt;Utilice la contraseña creada en &lt;a href="https://yandex.ru/id/about"&gt;Yandex ID&lt;/a&gt;.&lt;/br&gt;Puede encontrar instrucciones de conexión más detalladas en la &lt;a href="https://yandex.ru/support/disk-desktop/webdav-app-passwords.html?lang=ru"&gt;ayuda&lt;/a&gt;.&lt;/p&gt;</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
-      <trans-unit id="&lt;p&gt;Use the password created in &lt;a href=&quot;https://yandex.ru/id/about&quot;&gt;Yandex ID&lt;/a&gt;.&lt;/p&gt;&lt;p&gt;More detailed connection instructions can be found in the &lt;a href=&quot;https://yandex.ru/support/disk-desktop/webdav-app-passwords.html?lang=ru&quot;&gt;help&lt;/a&gt;.&lt;/p&gt;" xml:space="preserve">
+      <trans-unit id="&lt;p>Use the password created in &lt;a href=&quot;https://yandex.ru/id/about&quot;>Yandex ID&lt;/a>.&lt;/p>&lt;p>More detailed connection instructions can be found in the &lt;a href=&quot;https://yandex.ru/support/disk-desktop/webdav-app-passwords.html?lang=ru&quot;>help&lt;/a>.&lt;/p>" xml:space="preserve">
         <source>&lt;p&gt;Use the password created in &lt;a href="https://yandex.ru/id/about"&gt;Yandex ID&lt;/a&gt;.&lt;/p&gt;&lt;p&gt;More detailed connection instructions can be found in the &lt;a href="https://yandex.ru/support/disk-desktop/webdav-app-passwords.html?lang=ru"&gt;help&lt;/a&gt;.&lt;/p&gt;</source>
+        <target state="translated">&lt;p&gt;Utilice la contraseña creada en &lt;a href="https://yandex.ru/id/about"&gt;Yandex ID&lt;/a&gt;.&lt;/p&gt;&lt;p&gt;Puede encontrar instrucciones de conexión más detalladas en la &lt;a href="https://yandex.ru/support/disk-desktop/webdav-app-passwords.html?lang=ru"&gt;ayuda&lt;/a&gt;.&lt;/p&gt;</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
-      <trans-unit id="&lt;p&gt;You must have a paid version of the player to use this service.&lt;/p&gt;&lt;p&gt;If you have activated double authentication, please generate a CDM application from the Infomaniak manager. &lt;a href=&quot;https://www.infomaniak.com/en/support/faq/1940/enable-two-step-verification&quot;&gt;More...&lt;/a&gt;&lt;/p&gt;" xml:space="preserve">
+      <trans-unit id="&lt;p>You must have a paid version of the player to use this service.&lt;/p>&lt;p>If you have activated double authentication, please generate a CDM application from the Infomaniak manager. &lt;a href=&quot;https://www.infomaniak.com/en/support/faq/1940/enable-two-step-verification&quot;>More...&lt;/a>&lt;/p>" xml:space="preserve">
         <source>&lt;p&gt;You must have a paid version of the player to use this service.&lt;/p&gt;&lt;p&gt;If you have activated double authentication, please generate a CDM application from the Infomaniak manager. &lt;a href="https://www.infomaniak.com/en/support/faq/1940/enable-two-step-verification"&gt;More...&lt;/a&gt;&lt;/p&gt;</source>
+        <target state="translated">&lt;p&gt;Debe disponer de una versión de pago del reproductor para utilizar este servicio.&lt;/p&gt;&lt;p&gt;Si usted activó la autenticación doble, genere una aplicación CDM desde el gestor de Infomaniak. &lt;a href="https://www.infomaniak.com/en/support/faq/1940/enable-two-step-verification"&gt;Más...&lt;/a&gt;&lt;/p&gt;</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="A file with a similar name already exists in the document directory on the device." xml:space="preserve">
@@ -1319,6 +1322,7 @@ Nota: Si Usted olvida el código de acceso, necesitará eliminar e instalar la a
       </trans-unit>
       <trans-unit id="Add users" xml:space="preserve">
         <source>Add users</source>
+        <target state="translated">Añadir usuarios</target>
         <note>Button title</note>
       </trans-unit>
       <trans-unit id="Add users or groups and allow them to &#10; read, review or edit documents." xml:space="preserve">
@@ -1375,6 +1379,7 @@ leer, revisar o editar documentos.</target>
       </trans-unit>
       <trans-unit id="Archive" xml:space="preserve">
         <source>Archive</source>
+        <target state="translated">Archivo</target>
         <note>Button title</note>
       </trans-unit>
       <trans-unit id="Archives" xml:space="preserve">
@@ -1384,10 +1389,12 @@ leer, revisar o editar documentos.</target>
       </trans-unit>
       <trans-unit id="Archiving" xml:space="preserve">
         <source>Archiving</source>
+        <target state="translated">Archivando</target>
         <note>Caption of the processing</note>
       </trans-unit>
       <trans-unit id="Archiving failed." xml:space="preserve">
         <source>Archiving failed.</source>
+        <target state="translated">Error al archivar.</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Are you sure you want to delete the account %@ from this device?" xml:space="preserve">
@@ -1407,10 +1414,12 @@ leer, revisar o editar documentos.</target>
       </trans-unit>
       <trans-unit id="Back" xml:space="preserve">
         <source>Back</source>
+        <target state="translated">Atrás</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Box" xml:space="preserve">
         <source>Box</source>
+        <target state="translated">Box</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Box directory" xml:space="preserve">
@@ -1460,6 +1469,7 @@ leer, revisar o editar documentos.</target>
       </trans-unit>
       <trans-unit id="Cancel invitation?" xml:space="preserve">
         <source>Cancel invitation?</source>
+        <target state="translated">¿Cancelar la invitación?</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Check your internet connection" xml:space="preserve">
@@ -1494,6 +1504,7 @@ leer, revisar o editar documentos.</target>
       </trans-unit>
       <trans-unit id="Clear selection?" xml:space="preserve">
         <source>Clear selection?</source>
+        <target state="translated">¿Borrar la selección?</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Clearing" xml:space="preserve">
@@ -1523,6 +1534,7 @@ leer, revisar o editar documentos.</target>
       </trans-unit>
       <trans-unit id="Collaboration" xml:space="preserve">
         <source>Collaboration</source>
+        <target state="translated">Colaboración</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Comment" xml:space="preserve">
@@ -1756,6 +1768,7 @@ otros que utilizan el protocolo WebDAV.</target>
       </trans-unit>
       <trans-unit id="Custom" xml:space="preserve">
         <source>Custom</source>
+        <target state="translated">Personalizada</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Custom filter" xml:space="preserve">
@@ -1911,6 +1924,7 @@ otros que utilizan el protocolo WebDAV.</target>
       </trans-unit>
       <trans-unit id="Editor" xml:space="preserve">
         <source>Editor</source>
+        <target state="translated">Editor</target>
         <note>Share status</note>
       </trans-unit>
       <trans-unit id="Email" xml:space="preserve">
@@ -1960,16 +1974,17 @@ otros que utilizan el protocolo WebDAV.</target>
       </trans-unit>
       <trans-unit id="Enter Portal Address" xml:space="preserve">
         <source>Enter Portal Address</source>
-        <target>Introducir la dirección del portal</target>
+        <target state="translated">Introduzca la dirección del portal</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Enter a password to open the file." xml:space="preserve">
         <source>Enter a password to open the file.</source>
-        <target>Escribir la contraseña para abrir el archive.</target>
+        <target state="translated">Escriba la contraseña para abrir el archive.</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Enter email" xml:space="preserve">
         <source>Enter email</source>
+        <target state="translated">Introduzca el correo electrónico</target>
         <note>placeholder</note>
       </trans-unit>
       <trans-unit id="Enter text using handwriting instead of device keyboard. ONLYOFFICE will recognize text and insert it in the document. The feature is available for English only." xml:space="preserve">
@@ -2099,6 +2114,7 @@ otros que utilizan el protocolo WebDAV.</target>
       </trans-unit>
       <trans-unit id="Filling form" xml:space="preserve">
         <source>Filling form</source>
+        <target state="translated">Relleno del formularios</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Filtering in search" xml:space="preserve">
@@ -2203,6 +2219,7 @@ otros que utilizan el protocolo WebDAV.</target>
       </trans-unit>
       <trans-unit id="Info" xml:space="preserve">
         <source>Info</source>
+        <target state="translated">Información</target>
         <note>Button title</note>
       </trans-unit>
       <trans-unit id="Information" xml:space="preserve">
@@ -2232,14 +2249,17 @@ otros que utilizan el protocolo WebDAV.</target>
       </trans-unit>
       <trans-unit id="Invite" xml:space="preserve">
         <source>Invite</source>
+        <target state="translated">Invitar</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Invite people" xml:space="preserve">
         <source>Invite people</source>
+        <target state="translated">Invitar a personas</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Invite people by email" xml:space="preserve">
         <source>Invite people by email</source>
+        <target state="translated">Invitar a personas por correo electrónico</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Kb" xml:space="preserve">
@@ -2265,6 +2285,7 @@ to the clipboard</source>
       </trans-unit>
       <trans-unit id="Link with the invitation has been sent to the mail" xml:space="preserve">
         <source>Link with the invitation has been sent to the mail</source>
+        <target state="translated">Se ha enviado al correo electrónico el enlace con la invitación</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Logging in" xml:space="preserve">
@@ -2325,6 +2346,7 @@ to the clipboard</source>
       </trans-unit>
       <trans-unit id="Member" xml:space="preserve">
         <source>Member</source>
+        <target state="translated">Miembro</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="More" xml:space="preserve">
@@ -2339,6 +2361,7 @@ to the clipboard</source>
       </trans-unit>
       <trans-unit id="Move from archive" xml:space="preserve">
         <source>Move from archive</source>
+        <target state="translated">Mover desde archivo</target>
         <note>Button title</note>
       </trans-unit>
       <trans-unit id="Move here" xml:space="preserve">
@@ -2358,6 +2381,7 @@ to the clipboard</source>
       </trans-unit>
       <trans-unit id="Moving from archive" xml:space="preserve">
         <source>Moving from archive</source>
+        <target state="translated">Moviendo desde archivo</target>
         <note>Caption of the processing</note>
       </trans-unit>
       <trans-unit id="My Clouds" xml:space="preserve">
@@ -2377,10 +2401,12 @@ to the clipboard</source>
       </trans-unit>
       <trans-unit id="My archived" xml:space="preserve">
         <source>My archived</source>
+        <target state="translated">Mis archivos</target>
         <note>Category title</note>
       </trans-unit>
       <trans-unit id="My rooms" xml:space="preserve">
         <source>My rooms</source>
+        <target state="translated">Mis salas</target>
         <note>Category title</note>
       </trans-unit>
       <trans-unit id="Name is empty" xml:space="preserve">
@@ -2410,7 +2436,7 @@ to the clipboard</source>
       </trans-unit>
       <trans-unit id="New Presentation" xml:space="preserve">
         <source>New Presentation</source>
-        <target>Crear presentación</target>
+        <target state="translated">Nueva presentación</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="New Spreadsheet" xml:space="preserve">
@@ -2420,6 +2446,7 @@ to the clipboard</source>
       </trans-unit>
       <trans-unit id="New users" xml:space="preserve">
         <source>New users</source>
+        <target state="translated">Nuevos usuarios</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Next" xml:space="preserve">
@@ -2640,14 +2667,17 @@ to the clipboard</source>
       </trans-unit>
       <trans-unit id="Pin to top" xml:space="preserve">
         <source>Pin to top</source>
+        <target state="translated">Anclar al principio</target>
         <note>Button title</note>
       </trans-unit>
       <trans-unit id="Pinned failed." xml:space="preserve">
         <source>Pinned failed.</source>
+        <target state="translated">Error al anclar.</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Pinning" xml:space="preserve">
         <source>Pinning</source>
+        <target state="translated">Anclando</target>
         <note>Caption of the processing</note>
       </trans-unit>
       <trans-unit id="Please go to Settings and enable the camera for this app to use this feature." xml:space="preserve">
@@ -2859,10 +2889,12 @@ Si el problema persiste, póngase en contacto con nosotros y mencione este códi
       </trans-unit>
       <trans-unit id="Room admin" xml:space="preserve">
         <source>Room admin</source>
+        <target state="translated">Administrador de sala</target>
         <note>Share status</note>
       </trans-unit>
       <trans-unit id="Rooms" xml:space="preserve">
         <source>Rooms</source>
+        <target state="translated">Salas</target>
         <note>DocSpace rooms</note>
       </trans-unit>
       <trans-unit id="SKIP" xml:space="preserve">
@@ -2933,6 +2965,7 @@ Si el problema persiste, póngase en contacto con nosotros y mencione este códi
       </trans-unit>
       <trans-unit id="Selected users will not be invited to the room" xml:space="preserve">
         <source>Selected users will not be invited to the room</source>
+        <target state="translated">Los usuarios seleccionados no serán invitados a la sala</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Selected: %ld" xml:space="preserve">
@@ -3184,6 +3217,7 @@ to the clipboard</source>
       </trans-unit>
       <trans-unit id="The quota of users is almost exhausted. Сontact the portal administrator" xml:space="preserve">
         <source>The quota of users is almost exhausted. Сontact the portal administrator</source>
+        <target state="translated">La cuota de usuarios está casi agotada. Сontacte con el administrador del portal</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="The request timed out." xml:space="preserve">
@@ -3208,10 +3242,12 @@ to the clipboard</source>
       </trans-unit>
       <trans-unit id="The user limit has been reached. Сontact the portal administrator" xml:space="preserve">
         <source>The user limit has been reached. Сontact the portal administrator</source>
+        <target state="translated">Se ha alcanzado el límite de usuarios. Сontacte con el administrador del portal</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Third party resource" xml:space="preserve">
         <source>Third party resource</source>
+        <target state="translated">Recurso de terceros</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Third-party storage" xml:space="preserve">
@@ -3341,6 +3377,7 @@ to the clipboard</source>
       </trans-unit>
       <trans-unit id="Unarchiving failed." xml:space="preserve">
         <source>Unarchiving failed.</source>
+        <target state="translated">Error al desarchivar.</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Unauthorized users will be able only to view the document and add comments, as well as manage them." xml:space="preserve">
@@ -3410,14 +3447,17 @@ to the clipboard</source>
       </trans-unit>
       <trans-unit id="Unpin" xml:space="preserve">
         <source>Unpin</source>
+        <target state="translated">Desanclar</target>
         <note>Button title</note>
       </trans-unit>
       <trans-unit id="Unpinned failed." xml:space="preserve">
         <source>Unpinned failed.</source>
+        <target state="translated">Error al desanclar.</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Unpning" xml:space="preserve">
         <source>Unpning</source>
+        <target state="translated">Desanclando</target>
         <note>Caption of the processing</note>
       </trans-unit>
       <trans-unit id="Unsupported format." xml:space="preserve">
@@ -3462,6 +3502,7 @@ to the clipboard</source>
       </trans-unit>
       <trans-unit id="Users in room" xml:space="preserve">
         <source>Users in room</source>
+        <target state="translated">Usuarios en la sala</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Validation" xml:space="preserve">
@@ -3481,6 +3522,7 @@ to the clipboard</source>
       </trans-unit>
       <trans-unit id="View-Only" xml:space="preserve">
         <source>View-Only</source>
+        <target state="translated">Solo lectura</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Warning" xml:space="preserve">

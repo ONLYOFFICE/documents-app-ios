@@ -20,6 +20,15 @@
 "© Ascensio System SIA %d" = "© Ascensio System SIA %d";
 
 /* No comment provided by engineer. */
+"<p>Use the password created in <a href=\"https://yandex.ru/id/about\">Yandex ID</a>.</br>More detailed connection instructions can be found in the <a href=\"https://yandex.ru/support/disk-desktop/webdav-app-passwords.html?lang=ru\">help</a>.</p>" = "<p>Используйте пароль, созданный в <a href=\"https://yandex.ru/id/about\">Яндекс ID</a>.</br>Более подробные инструкции по подключению можно найти в разделе <a href=\"https://yandex.ru/support/disk-desktop/webdav-app-passwords.html?lang=ru\">\"Справка\"</a>.</p>";
+
+/* No comment provided by engineer. */
+"<p>Use the password created in <a href=\"https://yandex.ru/id/about\">Yandex ID</a>.</p><p>More detailed connection instructions can be found in the <a href=\"https://yandex.ru/support/disk-desktop/webdav-app-passwords.html?lang=ru\">help</a>.</p>" = "<p>Используйте пароль, созданный в <a href=\"https://yandex.ru/id/about\">Яндекс ID</a>.</p><p>Более подробные инструкции по подключению можно найти в разделе <a href=\"https://yandex.ru/support/disk-desktop/webdav-app-passwords.html?lang=ru\">\"Справка\"</a>.</p>";
+
+/* No comment provided by engineer. */
+"<p>You must have a paid version of the player to use this service.</p><p>If you have activated double authentication, please generate a CDM application from the Infomaniak manager. <a href=\"https://www.infomaniak.com/en/support/faq/1940/enable-two-step-verification\">More...</a></p>" = "<p>Чтобы воспользоваться этим сервисом, необходимо приобрести платную версию плеера.</p><p>Если вы активировали двухфакторную аутентификацию, пожалуйста, установите приложение CDM из учетной записи Infomaniak (Менеджер).<a href=\"https://www.infomaniak.com/en/support/faq/1940/enable-two-step-verification\">Подробнее...</a></p>";
+
+/* No comment provided by engineer. */
 "A file with a similar name already exists in the document directory on the device." = "Файл с таким именем уже существует в папке с документами на этом устройстве.";
 
 /* No comment provided by engineer. */
@@ -70,6 +79,9 @@
 /* Sharing settings add notification message */
 "Add message" = "Добавить сообщение";
 
+/* Button title */
+"Add users" = "Добавьте пользователей";
+
 /* No comment provided by engineer. */
 "Add users or groups and allow them to \n read, review or edit documents." = "Добавьте пользователей или группы и дайте им\n возможность читать, просматривать или редактировать документы.";
 
@@ -100,8 +112,17 @@
 /* Caption of the process */
 "Applying" = "Применение";
 
+/* Button title */
+"Archive" = "Архив";
+
 /* No comment provided by engineer. */
 "Archives" = "Архивы";
+
+/* Caption of the processing */
+"Archiving" = "Архивирование";
+
+/* No comment provided by engineer. */
+"Archiving failed." = "Не удалось выполнить архивирование.";
 
 /* No comment provided by engineer. */
 "Are you sure you want to delete the account %@ from this device?" = "Вы действительно хотите удалить аккаунт %@ с этого устройства?";
@@ -111,6 +132,12 @@
 
 /* No comment provided by engineer. */
 "Author" = "Автор";
+
+/* No comment provided by engineer. */
+"Back" = "Назад";
+
+/* No comment provided by engineer. */
+"Box" = "Box";
 
 /* No comment provided by engineer. */
 "Box directory" = "Папка Box";
@@ -143,6 +170,9 @@
 "Cancel" = "Отмена";
 
 /* No comment provided by engineer. */
+"Cancel invitation?" = "Отменить приглашение?";
+
+/* No comment provided by engineer. */
 "Check your internet connection" = "Проверьте интернет-соединение";
 
 /* No comment provided by engineer. */
@@ -159,6 +189,9 @@
 
 /* Button title */
 "Clear Cache?" = "Очистить кэш?";
+
+/* No comment provided by engineer. */
+"Clear selection?" = "Очистить выделенный фрагмент?";
 
 /* Caption of the processing */
 "Clearing" = "Очистка";
@@ -177,6 +210,9 @@
 
 /* Introduction Step Five - Title */
 "Collaborate with your team" = "Совместная работа с командой";
+
+/* No comment provided by engineer. */
+"Collaboration" = "Совместная работа";
 
 /* Share status */
 "Comment" = "Комментирование";
@@ -331,6 +367,9 @@
 /* Caption of the process */
 "Creating" = "Создание";
 
+/* No comment provided by engineer. */
+"Custom" = "Пользовательская";
+
 /* Share status */
 "Custom filter" = "Пользовательский фильтр";
 
@@ -382,9 +421,6 @@
 /* No comment provided by engineer. */
 "Document" = "Документ";
 
-/* No comment provided by engineer. */
-"Document protection" = "Защита документов";
-
 /* Default title of sample document */
 "Document Sample" = "Образец документа";
 
@@ -422,6 +458,9 @@
 /* Introduction Step Four - Title */
 "Edit documents locally" = "Редактируйте документ локально";
 
+/* Share status */
+"Editor" = "Редактор";
+
 /* No comment provided by engineer. */
 "Email" = "Email";
 
@@ -452,11 +491,11 @@
 /* No comment provided by engineer. */
 "Enter a password to open the file." = "Введите пароль, чтобы открыть файл.";
 
-/* No comment provided by engineer. */
-"Enter Portal Address" = "Введите адрес портала";
+/* placeholder */
+"Enter email" = "Введите адрес электронной почты";
 
 /* No comment provided by engineer. */
-"Enter text using handwriting instead of device keyboard. ONLYOFFICE will recognize text and insert it in the document. The feature is available for English only." = "Используйте рукописный ввод в редакторе документов вместо клавиатуры. ONLYOFFICE распознает текст и вставит его в документ. Доступно только для английского языка.";
+"Enter Portal Address" = "Введите адрес портала";
 
 /* No comment provided by engineer. */
 "Error" = "Ошибка";
@@ -534,16 +573,13 @@
 "File does not exist" = "Файл не существует";
 
 /* No comment provided by engineer. */
-"File search became easier with filtering options: by type for local files and by type and author for cloud files." = "Поиск по файлам стал проще с фильтрами: по типу для локальных файлов и по типу и автору для документов в облаке.";
-
-/* No comment provided by engineer. */
 "Files" = "Файлы";
 
 /* No comment provided by engineer. */
 "Files Preview" = "Предпросмотр файлов";
 
 /* No comment provided by engineer. */
-"Filtering in search" = "Фильтрация поиска";
+"Filling form" = "Заполнение форм";
 
 /* No comment provided by engineer. */
 "Filters" = "Фильтры";
@@ -588,9 +624,6 @@
 "Groups" = "Группы";
 
 /* No comment provided by engineer. */
-"Handwriting recognition" = "Рукописный ввод";
-
-/* No comment provided by engineer. */
 "iCloud" = "iCloud";
 
 /* No comment provided by engineer. */
@@ -608,6 +641,9 @@
 /* No comment provided by engineer. */
 "Incorrect portal address" = "Неверный адрес портала";
 
+/* Button title */
+"Info" = "Информация";
+
 /* No comment provided by engineer. */
 "Information" = "Информация";
 
@@ -622,6 +658,15 @@
 
 /* No comment provided by engineer. */
 "Invalid Url" = "Неверный URL";
+
+/* No comment provided by engineer. */
+"Invite" = "Пригласить";
+
+/* No comment provided by engineer. */
+"Invite people" = "Пригласить пользователей";
+
+/* No comment provided by engineer. */
+"Invite people by email" = "Пригласить пользователей по электронной почте";
 
 /* Data units */
 "Kb" = "Кб";
@@ -640,6 +685,9 @@
 
 /* No comment provided by engineer. */
 "Link copied\nto the clipboard" = "Ссылка скопирована\nв буфер обмена";
+
+/* No comment provided by engineer. */
+"Link with the invitation has been sent to the mail" = "Ссылка с приглашением отправлена на почту";
 
 /* Caption of the process */
 "Logging in" = "Выполняется вход";
@@ -675,11 +723,17 @@
 /* No comment provided by engineer. */
 "Media" = "Медиа";
 
+/* No comment provided by engineer. */
+"Member" = "Участник";
+
 /* Button title */
 "More" = "Еще";
 
 /* Button title */
 "Move" = "Переместить";
+
+/* Button title */
+"Move from archive" = "Переместить из архива";
 
 /* Button title */
 "Move here" = "Переместить сюда";
@@ -690,6 +744,12 @@
 /* Caption of the processing */
 "Moving" = "Перемещение";
 
+/* Caption of the processing */
+"Moving from archive" = "Перемещение из архива";
+
+/* Category title */
+"My archived" = "Мои архивы";
+
 /* No comment provided by engineer. */
 "My Clouds" = "Мои облака";
 
@@ -698,6 +758,9 @@
 
 /* No comment provided by engineer. */
 "My Drive" = "Мой диск";
+
+/* Category title */
+"My rooms" = "Мои комнаты";
 
 /* No comment provided by engineer. */
 "Name is empty" = "Имя не заполнено";
@@ -722,6 +785,9 @@
 
 /* No comment provided by engineer. */
 "New Spreadsheet" = "Новая таблица";
+
+/* No comment provided by engineer. */
+"New users" = "Новые пользователи";
 
 /* Next step */
 "Next" = "Далее";
@@ -872,6 +938,15 @@
 /* Used in the context: '3 photos' */
 "photos" = "фото";
 
+/* Button title */
+"Pin to top" = "Закрепить вверху";
+
+/* No comment provided by engineer. */
+"Pinned failed." = "Не удалось закрепить.";
+
+/* Caption of the processing */
+"Pinning" = "Закрепление";
+
 /* No comment provided by engineer. */
 "Please go to Settings and enable the camera for this app to use this feature." = "Перейдите в Настройки и включите камеру для этого приложения, чтобы использовать эту функцию.";
 
@@ -922,9 +997,6 @@
 
 /* Category title */
 "Project Documents" = "В проектах";
-
-/* No comment provided by engineer. */
-"Protect documents with passwords to share them securely with trusted collaborators." = "Защищайте документы с помощью паролей чтобы безопасно делиться файлами с другими пользователями.";
 
 /* No comment provided by engineer. */
 "Protected File" = "Защищенный файл";
@@ -986,6 +1058,12 @@
 /* Share status */
 "Review" = "Рецензирование";
 
+/* Share status */
+"Room admin" = "Администратор группы";
+
+/* DocSpace rooms */
+"Rooms" = "Комнаты";
+
 /* Caption of the processing */
 "Saving" = "Сохранение";
 
@@ -1022,6 +1100,9 @@
 
 /* No comment provided by engineer. */
 "Selected provider is not available" = "Выбранный провайдер недоступен";
+
+/* No comment provided by engineer. */
+"Selected users will not be invited to the room" = "Выбранные пользователи не будут приглашены в комнату";
 
 /* No comment provided by engineer. */
 "Selected: %ld" = "Выбрано: %ld";
@@ -1174,6 +1255,9 @@
 "The portal name must be between 6 and 50 characters long" = "Имя портала должно быть длиной от 6 до 50 символов";
 
 /* No comment provided by engineer. */
+"The quota of users is almost exhausted. Сontact the portal administrator" = "Ограничение на количество пользователей почти достигнуто. Свяжитесь с администратором портала";
+
+/* No comment provided by engineer. */
 "The request timed out." = "Время ожидания запроса истекло.";
 
 /* No comment provided by engineer. */
@@ -1184,6 +1268,12 @@
 
 /* No comment provided by engineer. */
 "The trash is empty" = "Корзина пуста";
+
+/* No comment provided by engineer. */
+"The user limit has been reached. Сontact the portal administrator" = "Достигнуто ограничение на количество пользователей. Свяжитесь с администратором портала";
+
+/* No comment provided by engineer. */
+"Third party resource" = "Сторонний ресурс";
 
 /* Introduction Step Three - Title */
 "Third-party storage" = "Стороннее хранилище";
@@ -1261,6 +1351,9 @@
 "Unable to get information about the user." = "Ошибка получения информации о пользователе.";
 
 /* No comment provided by engineer. */
+"Unarchiving failed." = "Не удалось разархивировать.";
+
+/* No comment provided by engineer. */
 "Unauthorized users will be able only to view the document and add comments, as well as manage them." = "Неавторизованные пользователи смогут только просматривать документ и добавлять комментарии, а также управлять ими.";
 
 /* No comment provided by engineer. */
@@ -1299,6 +1392,15 @@
 /* No comment provided by engineer. */
 "Unlock with Touch ID" = "Разблокировать с помощью Touch ID";
 
+/* Button title */
+"Unpin" = "Открепить";
+
+/* No comment provided by engineer. */
+"Unpinned failed." = "Не удалось открепить.";
+
+/* Caption of the processing */
+"Unpning" = "Открепление";
+
 /* No comment provided by engineer. */
 "Unsupported format." = "Неподдерживаемый формат.";
 
@@ -1323,6 +1425,9 @@
 /* No comment provided by engineer. */
 "Users" = "Пользователи";
 
+/* No comment provided by engineer. */
+"Users in room" = "Пользователей в комнате";
+
 /* Caption of the process */
 "Validation" = "Проверка";
 
@@ -1331,6 +1436,9 @@
 
 /* No comment provided by engineer. */
 "Version" = "Версия";
+
+/* No comment provided by engineer. */
+"View-Only" = "Только на просмотр";
 
 /* No comment provided by engineer. */
 "Warning" = "Предупреждение";
@@ -1354,7 +1462,7 @@
 "What's New" = "Что нового";
 
 /* Introduction Step Four - Description */
-"Work with documents offline.\nCreated files can later be uploaded to online portal and\nthen accessed from any other device." = "Работайте с документами без интернета.\nСозданные файлы можно загрузить позднее на портал и получить доступ к ним с любого устройства.";
+"Work with documents offline.\nCreated files can later be uploaded to online portal and\nthen accessed from any other device." = "Работайте с документами без интернета.\nСозданные файлы можно загрузить позднее на портал и\nполучить доступ к ним с любого устройства.";
 
 /* Introduction Step Two - Title */
 "Work with office files" = "Работайте с файлами документов";

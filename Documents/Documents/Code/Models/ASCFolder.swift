@@ -33,6 +33,7 @@ class ASCFolder: ASCEntity {
     var providerType: ASCFolderProviderType?
     var device: Bool = false
     var parent: ASCFolder?
+    var smallLogo: String?
     var providerId: String? {
         if isThirdParty {
             return id.components(separatedBy: CharacterSet.decimalDigits.inverted).joined()
@@ -67,6 +68,7 @@ class ASCFolder: ASCEntity {
         createdBy <- map["createdBy"]
         new <- map["new"]
         isThirdParty <- map["providerItem"]
+        smallLogo <- (map["logo.small"], ASCStringTransform())
         providerType <- (map["providerKey"], EnumTransform())
 
         // Internal

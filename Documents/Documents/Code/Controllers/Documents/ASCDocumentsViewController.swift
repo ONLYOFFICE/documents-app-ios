@@ -2767,6 +2767,7 @@ extension ASCDocumentsViewController {
                     // Folder cell
 
                     if let folderCell = ASCFolderCell.createForTableView(tableView) as? ASCFolderCell {
+                        folderCell.provider = provider
                         folderCell.folder = folder
                         folderCell.delegate = self
 

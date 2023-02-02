@@ -6,6 +6,7 @@
 //  Copyright © 2019 Ascensio System SIA. All rights reserved.
 //
 
+import Kingfisher
 import MGSwipeTableCell
 import UIKit
 
@@ -25,6 +26,8 @@ class ASCFolderCell: MGSwipeTableCell {
             updateData()
         }
     }
+
+    var provider: ASCFileProviderProtocol?
 
     fileprivate lazy var dateFormatter: DateFormatter = {
         let formatter = DateFormatter()
@@ -114,7 +117,7 @@ class ASCFolderCell: MGSwipeTableCell {
         if folder?.roomType != nil, folder?.rootFolderType == .onlyofficeRoomArchived {
             icon.image = Asset.Images.roomArchived.image
         } else if let roomType = folder?.roomType {
-            icon.image = roomType.image
+            setRoomIcon(roomType: roomType)
         } else {
             icon.image = Asset.Images.listFolder.image
         }
@@ -164,5 +167,23 @@ class ASCFolderCell: MGSwipeTableCell {
     override func prepareForReuse() {
         super.prepareForReuse()
         titleImage.image = nil
+    }
+
+    private func setRoomIcon(roomType: ASCRoomType) {
+        guard let provider = provider else { return }
+        icon?.kf.setProviderImage(
+            with: provider.absoluteUrl(from: folder?.smallLogo ?? ""),
+            for: provider,
+            placeholder: nil,
+            completionHandler: { [weak self] result in
+                switch result {
+                case .success:
+                    self?.icon?.contentMode = .scaleAspectFit
+                default:
+                    self?.icon?.contentMode = .center
+                    self?.icon?.image = roomType.image
+                }
+            }
+        )
     }
 }

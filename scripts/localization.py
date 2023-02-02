@@ -17,7 +17,7 @@ options = vars(options)
 abspath = os.path.abspath(__file__)
 basepath = os.path.dirname(abspath)
 
-localizations = {
+projects = {
     "DocumentsApp": {
         "project": "../Documents/Documents.xcodeproj",
         "localizations": "../Documents/Localization"
@@ -27,7 +27,7 @@ localizations = {
 support_langs = ["bg", "cs", "de", "en", "es", "fr", "hy-AM", "it", "ja", "pt-BR", "ru", "si-DE", "zh-Hans", "zh-Hant"]
 
 def import_localization():
-    for key, value in localizations.items():
+    for key, value in projects.items():
         print("Import localization for {}".format(key))
         os.chdir(basepath)
         project = os.path.abspath(value["project"])
@@ -38,7 +38,7 @@ def import_localization():
         print("")
 
 def export_localization():
-    for key, value in localizations.items():
+    for key, value in projects.items():
         print("Export localization for {}".format(key))
         os.chdir(basepath)
         project = os.path.abspath(value["project"])

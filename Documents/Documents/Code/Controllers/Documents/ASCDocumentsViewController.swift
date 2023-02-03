@@ -806,6 +806,7 @@ class ASCDocumentsViewController: ASCBaseTableViewController, UIGestureRecognize
         let isProjectRoot = (folder.rootFolderType == .onlyofficeBunch || folder.rootFolderType == .onlyofficeProjects) && isRoot
         let isGuest = ASCFileManager.onlyofficeProvider?.user?.isVisitor ?? false
         let isDocSpaceArchive = isRoomList && folder.rootFolderType == .onlyofficeRoomArchived
+        let isDocSpaceArchiveRoomContent = folder.rootFolderType == .onlyofficeRoomArchived && !isRoot
         let isDocSpaceRoomShared = isRoomList && folder.rootFolderType == .onlyofficeRoomShared
 
         events.removeListeners(eventNameToRemoveOrNil: "item:didSelect")
@@ -832,7 +833,7 @@ class ASCDocumentsViewController: ASCBaseTableViewController, UIGestureRecognize
         var items: [UIBarButtonItem] = []
 
         // Move
-        if !isTrash && !isDocSpaceArchive && (isDevice || !(isShared || isProjectRoot || isGuest)) {
+        if !isTrash && !isDocSpaceArchive && !isDocSpaceArchiveRoomContent && (isDevice || !(isShared || isProjectRoot || isGuest)) {
             items.append(createBarButton(Asset.Images.barMove.image, #selector(onMoveSelected)))
             items.append(barFlexSpacer)
         }
@@ -862,7 +863,7 @@ class ASCDocumentsViewController: ASCBaseTableViewController, UIGestureRecognize
         }
 
         // Remove
-        if isDevice || !(isShared || isProjectRoot || isGuest || isRecent || isDocSpaceRoomShared) {
+        if isDevice || !(isShared || isProjectRoot || isGuest || isRecent || isDocSpaceRoomShared || isDocSpaceArchiveRoomContent) {
             items.append(createBarButton(Asset.Images.barDelete.image, #selector(onTrashSelected)))
             items.append(barFlexSpacer)
         }

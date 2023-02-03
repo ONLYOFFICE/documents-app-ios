@@ -894,6 +894,10 @@ class ASCOnlyofficeProvider: ASCFileProviderProtocol & ASCSortableFileProviderPr
             return false
         }
 
+        if let folder = self.folder, folder.rootFolderType == .onlyofficeRoomArchived, !isRoot(folder: folder) {
+            return false
+        }
+
         if let folder = folder {
             if isRoot(folder: folder), folder.rootFolderType == .onlyofficeCommon, !user.isAdmin {
                 return false
@@ -964,6 +968,10 @@ class ASCOnlyofficeProvider: ASCFileProviderProtocol & ASCSortableFileProviderPr
         }
 
         if user.isVisitor {
+            return false
+        }
+
+        if let folder = self.folder, folder.rootFolderType == .onlyofficeRoomArchived, !isRoot(folder: folder) {
             return false
         }
 

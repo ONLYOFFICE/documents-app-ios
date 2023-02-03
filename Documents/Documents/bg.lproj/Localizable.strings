@@ -507,7 +507,7 @@
 "error.errorForbiddenMsg" = "Свържете се с администратора на портала за достъп до модула Проекти.";
 
 /* Access is Forbidden title */
-"error.errorForbiddenTitle" = "Достъпът до модула „Проекти“ е забранен";
+"error.errorForbiddenTitle" = "Достъпът до модула \"Проекти\" е забранен";
 
 /* The resource can not be found Title */
 "error.errorNotFoundMsg" = "Ресурсът не може да бъде намерен";
@@ -948,7 +948,7 @@
 "Pinning" = "Закачане";
 
 /* No comment provided by engineer. */
-"Please go to Settings and enable the camera for this app to use this feature." = "Моля, отворете „Настройки“ и активирайте камерата за това приложение, за да използва тази функция.";
+"Please go to Settings and enable the camera for this app to use this feature." = "Моля, отворете \"Настройки\" и активирайте камерата за това приложение, за да използва тази функция.";
 
 /* No comment provided by engineer. */
 "Please re-login to renew your session." = "Моля, влезте отново, за да подновите сесията си.";
@@ -1231,7 +1231,7 @@
 "The folder in the Trash can not be opened." = "Папката в КОшчето не може да бъде отворена.";
 
 /* No comment provided by engineer. */
-"The item with the name '%@' already exists in the folder '%@'." = "Елементът с името „%1$@“ вече съществува в папката „%2$@“.";
+"The item with the name '%@' already exists in the folder '%@'." = "Елементът с името \"%1$@\" вече съществува в папката \"%2$@\".";
 
 /* No comment provided by engineer. */
 "The link for external\naccess is copied\nto the clipboard" = "Линкът за външен\nдостъп е копиран\nв клипборда";

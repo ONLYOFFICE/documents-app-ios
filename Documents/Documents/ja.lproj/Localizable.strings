@@ -20,13 +20,13 @@
 "© Ascensio System SIA %d" = "© Ascensio System SIA %d";
 
 /* No comment provided by engineer. */
-"<p>Use the password created in <a href=\"https://yandex.ru/id/about\">Yandex ID</a>.</br>More detailed connection instructions can be found in the <a href=\"https://yandex.ru/support/disk-desktop/webdav-app-passwords.html?lang=ru\">help</a>.</p>" = "<p><a href=“https://yandex.ru/id/about”>Yandex ID</a>で作成されたパスワードを入力してください。</br>詳しくは<a href=“https://yandex.ru/support/disk-desktop/webdav-app-passwords.html?lang=ru”>ヘルプ</a>でご覧いただけます。</p>";
+"<p>Use the password created in <a href=\"https://yandex.ru/id/about\">Yandex ID</a>.</br>More detailed connection instructions can be found in the <a href=\"https://yandex.ru/support/disk-desktop/webdav-app-passwords.html?lang=ru\">help</a>.</p>" = "<p><a href=\"\"https://yandex.ru/id/about\">Yandex ID</a>で作成されたパスワードを入力してください。</br>詳しくは<a href=\"https://yandex.ru/support/disk-desktop/webdav-app-passwords.html?lang=ru\">ヘルプ</a>でご覧いただけます。</p>";
 
 /* No comment provided by engineer. */
-"<p>Use the password created in <a href=\"https://yandex.ru/id/about\">Yandex ID</a>.</p><p>More detailed connection instructions can be found in the <a href=\"https://yandex.ru/support/disk-desktop/webdav-app-passwords.html?lang=ru\">help</a>.</p>" = "<p><a href=“https://yandex.ru/id/about”>Yandex ID</a>で作成されたパスワードを入力してください。</p><p>詳しくは<a href=“https://yandex.ru/support/disk-desktop/webdav-app-passwords.html?lang=ru”>ヘルプ</a>でご覧いただけます。</p>";
+"<p>Use the password created in <a href=\"https://yandex.ru/id/about\">Yandex ID</a>.</p><p>More detailed connection instructions can be found in the <a href=\"https://yandex.ru/support/disk-desktop/webdav-app-passwords.html?lang=ru\">help</a>.</p>" = "<p><a href=\"https://yandex.ru/id/about\">Yandex ID</a>で作成されたパスワードを入力してください。</p><p>詳しくは<a href=\"https://yandex.ru/support/disk-desktop/webdav-app-passwords.html?lang=ru\">ヘルプ</a>でご覧いただけます。</p>";
 
 /* No comment provided by engineer. */
-"<p>You must have a paid version of the player to use this service.</p><p>If you have activated double authentication, please generate a CDM application from the Infomaniak manager. <a href=\"https://www.infomaniak.com/en/support/faq/1940/enable-two-step-verification\">More...</a></p>" = "<p>本サービスをご利用いただくには、有償版のプレーヤーが必要です。</p><p>二重認証を有効にしている場合は、InfomaniakマネージャからCDMアプリケーションを生成してください。 <a href=“https://www.infomaniak.com/en/support/faq/1940/enable-two-step-verification”>詳細情報</a></p>";
+"<p>You must have a paid version of the player to use this service.</p><p>If you have activated double authentication, please generate a CDM application from the Infomaniak manager. <a href=\"https://www.infomaniak.com/en/support/faq/1940/enable-two-step-verification\">More...</a></p>" = "<p>本サービスをご利用いただくには、有償版のプレーヤーが必要です。</p><p>二重認証を有効にしている場合は、InfomaniakマネージャからCDMアプリケーションを生成してください。 <a href=\"https://www.infomaniak.com/en/support/faq/1940/enable-two-step-verification\">詳細情報</a></p>";
 
 /* No comment provided by engineer. */
 "A file with a similar name already exists in the document directory on the device." = "同名のファイルがすでに端末のドキュメントディレクトリに存在します。";

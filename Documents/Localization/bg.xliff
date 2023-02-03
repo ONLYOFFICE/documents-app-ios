@@ -2668,7 +2668,7 @@ to the clipboard</source>
       </trans-unit>
       <trans-unit id="Please go to Settings and enable the camera for this app to use this feature." xml:space="preserve">
         <source>Please go to Settings and enable the camera for this app to use this feature.</source>
-        <target>Моля, отворете „Настройки“ и активирайте камерата за това приложение, за да използва тази функция.</target>
+        <target>Моля, отворете "Настройки" и активирайте камерата за това приложение, за да използва тази функция.</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Please re-login to renew your session." xml:space="preserve">
@@ -3168,7 +3168,7 @@ to the clipboard</source>
       </trans-unit>
       <trans-unit id="The item with the name '%@' already exists in the folder '%@'." xml:space="preserve">
         <source>The item with the name '%1$@' already exists in the folder '%2$@'.</source>
-        <target>Елементът с името „%1$@“ вече съществува в папката „%2$@“.</target>
+        <target>Елементът с името "%1$@" вече съществува в папката "%2$@".</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="The link for external&#10;access is copied&#10;to the clipboard" xml:space="preserve">
@@ -3667,7 +3667,7 @@ then accessed from any other device.</source>
       </trans-unit>
       <trans-unit id="error.errorForbiddenTitle" xml:space="preserve">
         <source>Access is Forbidden</source>
-        <target>Достъпът до модула „Проекти“ е забранен</target>
+        <target>Достъпът до модула "Проекти" е забранен</target>
         <note>Access is Forbidden title</note>
       </trans-unit>
       <trans-unit id="error.errorNotFoundMsg" xml:space="preserve">

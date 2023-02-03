@@ -1179,17 +1179,17 @@ Note: if you forget the passcode, you'll need to delete and reinstall the app. A
       </trans-unit>
       <trans-unit id="&lt;p&gt;Use the password created in &lt;a href=&quot;https://yandex.ru/id/about&quot;&gt;Yandex ID&lt;/a&gt;.&lt;/br&gt;More detailed connection instructions can be found in the &lt;a href=&quot;https://yandex.ru/support/disk-desktop/webdav-app-passwords.html?lang=ru&quot;&gt;help&lt;/a&gt;.&lt;/p&gt;" xml:space="preserve">
         <source>&lt;p&gt;Use the password created in &lt;a href="https://yandex.ru/id/about"&gt;Yandex ID&lt;/a&gt;.&lt;/br&gt;More detailed connection instructions can be found in the &lt;a href="https://yandex.ru/support/disk-desktop/webdav-app-passwords.html?lang=ru"&gt;help&lt;/a&gt;.&lt;/p&gt;</source>
-        <target>&lt;p&gt;&lt;a href=“https://yandex.ru/id/about”&gt;Yandex ID&lt;/a&gt;で作成されたパスワードを入力してください。&lt;/br&gt;詳しくは&lt;a href=“https://yandex.ru/support/disk-desktop/webdav-app-passwords.html?lang=ru”&gt;ヘルプ&lt;/a&gt;でご覧いただけます。&lt;/p&gt;</target>
+        <target>&lt;p&gt;&lt;a href=""https://yandex.ru/id/about"&gt;Yandex ID&lt;/a&gt;で作成されたパスワードを入力してください。&lt;/br&gt;詳しくは&lt;a href="https://yandex.ru/support/disk-desktop/webdav-app-passwords.html?lang=ru"&gt;ヘルプ&lt;/a&gt;でご覧いただけます。&lt;/p&gt;</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="&lt;p&gt;Use the password created in &lt;a href=&quot;https://yandex.ru/id/about&quot;&gt;Yandex ID&lt;/a&gt;.&lt;/p&gt;&lt;p&gt;More detailed connection instructions can be found in the &lt;a href=&quot;https://yandex.ru/support/disk-desktop/webdav-app-passwords.html?lang=ru&quot;&gt;help&lt;/a&gt;.&lt;/p&gt;" xml:space="preserve">
         <source>&lt;p&gt;Use the password created in &lt;a href="https://yandex.ru/id/about"&gt;Yandex ID&lt;/a&gt;.&lt;/p&gt;&lt;p&gt;More detailed connection instructions can be found in the &lt;a href="https://yandex.ru/support/disk-desktop/webdav-app-passwords.html?lang=ru"&gt;help&lt;/a&gt;.&lt;/p&gt;</source>
-        <target>&lt;p&gt;&lt;a href=“https://yandex.ru/id/about”&gt;Yandex ID&lt;/a&gt;で作成されたパスワードを入力してください。&lt;/p&gt;&lt;p&gt;詳しくは&lt;a href=“https://yandex.ru/support/disk-desktop/webdav-app-passwords.html?lang=ru”&gt;ヘルプ&lt;/a&gt;でご覧いただけます。&lt;/p&gt;</target>
+        <target>&lt;p&gt;&lt;a href="https://yandex.ru/id/about"&gt;Yandex ID&lt;/a&gt;で作成されたパスワードを入力してください。&lt;/p&gt;&lt;p&gt;詳しくは&lt;a href="https://yandex.ru/support/disk-desktop/webdav-app-passwords.html?lang=ru"&gt;ヘルプ&lt;/a&gt;でご覧いただけます。&lt;/p&gt;</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="&lt;p&gt;You must have a paid version of the player to use this service.&lt;/p&gt;&lt;p&gt;If you have activated double authentication, please generate a CDM application from the Infomaniak manager. &lt;a href=&quot;https://www.infomaniak.com/en/support/faq/1940/enable-two-step-verification&quot;&gt;More...&lt;/a&gt;&lt;/p&gt;" xml:space="preserve">
         <source>&lt;p&gt;You must have a paid version of the player to use this service.&lt;/p&gt;&lt;p&gt;If you have activated double authentication, please generate a CDM application from the Infomaniak manager. &lt;a href="https://www.infomaniak.com/en/support/faq/1940/enable-two-step-verification"&gt;More...&lt;/a&gt;&lt;/p&gt;</source>
-        <target>&lt;p&gt;本サービスをご利用いただくには、有償版のプレーヤーが必要です。&lt;/p&gt;&lt;p&gt;二重認証を有効にしている場合は、InfomaniakマネージャからCDMアプリケーションを生成してください。 &lt;a href=“https://www.infomaniak.com/en/support/faq/1940/enable-two-step-verification”&gt;詳細情報&lt;/a&gt;&lt;/p&gt;</target>
+        <target>&lt;p&gt;本サービスをご利用いただくには、有償版のプレーヤーが必要です。&lt;/p&gt;&lt;p&gt;二重認証を有効にしている場合は、InfomaniakマネージャからCDMアプリケーションを生成してください。 &lt;a href="https://www.infomaniak.com/en/support/faq/1940/enable-two-step-verification"&gt;詳細情報&lt;/a&gt;&lt;/p&gt;</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="A file with a similar name already exists in the document directory on the device." xml:space="preserve">

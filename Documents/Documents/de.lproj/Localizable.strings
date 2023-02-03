@@ -1483,7 +1483,7 @@
 "You can connect the following accounts to the %@." = "Sie können die folgenden Konten mit %@ verbinden.";
 
 /* No comment provided by engineer. */
-"You can connect the following accounts to the %@. They will be displayed in 'My Documents' folder and you will be able to edit and save them right on the portal all in one place." = "Sie können die folgenden Konten mit %@ verbinden. Sie werden im Ordner „Meine Dokumente“ angezeigt und können diese direkt auf dem Portal an einem Ort bearbeiten und speichern.";
+"You can connect the following accounts to the %@. They will be displayed in 'My Documents' folder and you will be able to edit and save them right on the portal all in one place." = "Sie können die folgenden Konten mit %@ verbinden. Sie werden im Ordner \"Meine Dokumente\" angezeigt und können diese direkt auf dem Portal an einem Ort bearbeiten und speichern.";
 
 /* No comment provided by engineer. */
 "You have read-only access to this folder. You cannot create files or folders here." = "Sie haben nur Lesezugriff auf diesen Ordner. Sie können hier keine Dateien oder Ordner erstellen.";

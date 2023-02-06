@@ -6,6 +6,9 @@
 //  Copyright © 2020 Ascensio System SIA. All rights reserved.
 //
 
+import Pulse
+import PulseUI
+import SwiftUI
 import UIKit
 
 class ASCDebugManager: NSObject {
@@ -47,6 +50,10 @@ class ASCDebugManager: NSObject {
         if #available(iOS 13.0, *) {
             debugNV.presentationController?.delegate = self
         }
+
+        debugNV.viewControllers = [
+            UIHostingController(rootView: ConsoleView()),
+        ]
 
         presentingViewController?.present(debugNV, animated: true, completion: nil)
 

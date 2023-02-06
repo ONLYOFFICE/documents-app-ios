@@ -8,6 +8,7 @@
 
 import Foundation
 import os.log
+import Pulse
 
 var log = ASCLogger()
 
@@ -34,12 +35,20 @@ struct ASCLogger {
             }
         }
 
-        @available(iOS 10.0, *)
         var osLogType: OSLogType {
             switch self {
             case .debug: return .debug
             case .info: return .info
             case .warning: return .default
+            case .error: return .error
+            }
+        }
+
+        var pulsaLoggerLevel: LoggerStore.Level {
+            switch self {
+            case .debug: return .debug
+            case .info: return .info
+            case .warning: return .warning
             case .error: return .error
             }
         }
@@ -54,6 +63,7 @@ struct ASCLogger {
 
     fileprivate init() {
         osLog = OSLog(subsystem: "\(Bundle.main.bundleIdentifier ?? "asc.onlyoffice.app")", category: "Documents")
+        URLSessionProxyDelegate.enableAutomaticRegistration()
     }
 
     private func log(_ level: Level, _ message: Any, _ arguments: [Any], function: String, line: UInt) {
@@ -73,6 +83,17 @@ struct ASCLogger {
         hook?(log, level)
 
         os_log("%@", log: osLog, type: level.osLogType, log)
+
+        // Store in Pulse framework
+        LoggerStore.shared.storeMessage(
+            label: "Documents",
+            level: level.pulsaLoggerLevel,
+            message: "\(message) \(extraMessage)",
+            metadata: [
+                "function": .string(function),
+                "line": .string("\(line)"),
+            ]
+        )
     }
 
     private func getPrettyFunction(_ function: String, _ file: String) -> String {

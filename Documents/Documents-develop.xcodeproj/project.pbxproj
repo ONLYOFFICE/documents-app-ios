@@ -190,6 +190,9 @@
 		FC6852182683572600D830EC /* ASCOneDriveFileProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC6852162683572600D830EC /* ASCOneDriveFileProvider.swift */; };
 		FC6852192683572600D830EC /* ASCOneDriveProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC6852172683572600D830EC /* ASCOneDriveProvider.swift */; };
 		FC6A691125C83C1D007F1FD6 /* ASCFileProviderProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC6A691025C83C1D007F1FD6 /* ASCFileProviderProtocol.swift */; };
+		FC6A756229915B530056262F /* Pulse in Frameworks */ = {isa = PBXBuildFile; productRef = FC6A756129915B530056262F /* Pulse */; };
+		FC6A756429915B530056262F /* PulseLogHandler in Frameworks */ = {isa = PBXBuildFile; productRef = FC6A756329915B530056262F /* PulseLogHandler */; };
+		FC6A756629915B530056262F /* PulseUI in Frameworks */ = {isa = PBXBuildFile; productRef = FC6A756529915B530056262F /* PulseUI */; };
 		FC6DD4E61EDD59330095B16C /* ParkedTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC6DD4E51EDD59330095B16C /* ParkedTextField.swift */; };
 		FC6F0CD71F542E7E002D33D9 /* ASCSSOSignInController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC6F0CD61F542E7E002D33D9 /* ASCSSOSignInController.swift */; };
 		FC707C4325AC5DAF004CB85B /* UILabel+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC707C4225AC5DAF004CB85B /* UILabel+Extension.swift */; };
@@ -1094,8 +1097,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FC6A756629915B530056262F /* PulseUI in Frameworks */,
 				FC4293B0294A684200DC3932 /* doctrenderer.xcframework in Frameworks */,
 				FC53690024EB1C3D0092765B /* SpreadsheetEditor.framework in Frameworks */,
+				FC6A756229915B530056262F /* Pulse in Frameworks */,
 				FC4293B6294A684900DC3932 /* Fb2File.xcframework in Frameworks */,
 				FC5368FF24EB1C390092765B /* PresentationEditor.framework in Frameworks */,
 				FC4293C0294A684B00DC3932 /* kernel.xcframework in Frameworks */,
@@ -1104,6 +1109,7 @@
 				FC5368FE24EB1C330092765B /* DocumentEditor.framework in Frameworks */,
 				FC4293BA294A684A00DC3932 /* HtmlFile2.xcframework in Frameworks */,
 				FC4293C2294A684C00DC3932 /* PdfFile.xcframework in Frameworks */,
+				FC6A756429915B530056262F /* PulseLogHandler in Frameworks */,
 				FC4293BE294A684B00DC3932 /* kernel_network.xcframework in Frameworks */,
 				FC4293B4294A684900DC3932 /* EpubFile.xcframework in Frameworks */,
 				FC5368FD24EB1C2F0092765B /* DocumentConverter.framework in Frameworks */,
@@ -2686,6 +2692,11 @@
 				FC5368F224EB1C040092765B /* PBXTargetDependency */,
 			);
 			name = "Documents-develop";
+			packageProductDependencies = (
+				FC6A756129915B530056262F /* Pulse */,
+				FC6A756329915B530056262F /* PulseLogHandler */,
+				FC6A756529915B530056262F /* PulseUI */,
+			);
 			productName = "Documents-Swift";
 			productReference = FCFDAA8D1E48A10C007A240C /* Documents-dev.app */;
 			productType = "com.apple.product-type.application";
@@ -2734,6 +2745,9 @@
 				cs,
 			);
 			mainGroup = FCFDAA841E48A10C007A240C;
+			packageReferences = (
+				FC6A756029915B530056262F /* XCRemoteSwiftPackageReference "Pulse" */,
+			);
 			productRefGroup = FCFDAA8E1E48A10C007A240C /* Products */;
 			projectDirPath = "";
 			projectReferences = (
@@ -3972,6 +3986,35 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		FC6A756029915B530056262F /* XCRemoteSwiftPackageReference "Pulse" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/kean/Pulse/";
+			requirement = {
+				kind = exactVersion;
+				version = 2.1.4;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		FC6A756129915B530056262F /* Pulse */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = FC6A756029915B530056262F /* XCRemoteSwiftPackageReference "Pulse" */;
+			productName = Pulse;
+		};
+		FC6A756329915B530056262F /* PulseLogHandler */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = FC6A756029915B530056262F /* XCRemoteSwiftPackageReference "Pulse" */;
+			productName = PulseLogHandler;
+		};
+		FC6A756529915B530056262F /* PulseUI */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = FC6A756029915B530056262F /* XCRemoteSwiftPackageReference "Pulse" */;
+			productName = PulseUI;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = FCFDAA851E48A10C007A240C /* Project object */;
 }

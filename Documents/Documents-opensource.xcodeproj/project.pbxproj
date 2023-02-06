@@ -84,6 +84,9 @@
 		FC4DC3E9282BFBE7001060D6 /* DropBoxRequestInterceptor.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC4DC3E7282BFBE7001060D6 /* DropBoxRequestInterceptor.swift */; };
 		FC53ACF129896F9A004528D7 /* ASCEditorManagerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC53ACF029896F99004528D7 /* ASCEditorManagerProtocol.swift */; };
 		FC53ACF329896FB0004528D7 /* ASCEditorManagerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC53ACF229896FB0004528D7 /* ASCEditorManagerExtension.swift */; };
+		FC6A757029915CE10056262F /* Pulse in Frameworks */ = {isa = PBXBuildFile; productRef = FC6A756F29915CE10056262F /* Pulse */; };
+		FC6A757229915CE10056262F /* PulseLogHandler in Frameworks */ = {isa = PBXBuildFile; productRef = FC6A757129915CE10056262F /* PulseLogHandler */; };
+		FC6A757429915CE10056262F /* PulseUI in Frameworks */ = {isa = PBXBuildFile; productRef = FC6A757329915CE10056262F /* PulseUI */; };
 		FC7080D32812E2260057FCD2 /* EventManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCAE8B8C1E717B84004FC332 /* EventManager.swift */; };
 		FC7080D52812E2260057FCD2 /* ASCSharingSettingsAccessViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DC43EE926A0978D00373D5A /* ASCSharingSettingsAccessViewModel.swift */; };
 		FC7080D62812E2260057FCD2 /* ASCNavigator.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCF694B12631C10400808644 /* ASCNavigator.swift */; };
@@ -1068,9 +1071,12 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FC6A757429915CE10056262F /* PulseUI in Frameworks */,
+				FC6A757229915CE10056262F /* PulseLogHandler in Frameworks */,
 				FC0BBF1B296C25B80060F49E /* DocumentEditor in Frameworks */,
 				FC7082242812E2260057FCD2 /* CloudKit.framework in Frameworks */,
 				FC0BBF1F296C25B80060F49E /* SpreadsheetEditor in Frameworks */,
+				FC6A757029915CE10056262F /* Pulse in Frameworks */,
 				FC0BBF1D296C25B80060F49E /* PresentationEditor in Frameworks */,
 				FC0BBF19296C25B80060F49E /* DocumentConverter in Frameworks */,
 				86E2AD2B387DF62F19D0CB36 /* Pods_Documents_opensource.framework in Frameworks */,
@@ -2782,6 +2788,9 @@
 				FC0BBF1A296C25B80060F49E /* DocumentEditor */,
 				FC0BBF1C296C25B80060F49E /* PresentationEditor */,
 				FC0BBF1E296C25B80060F49E /* SpreadsheetEditor */,
+				FC6A756F29915CE10056262F /* Pulse */,
+				FC6A757129915CE10056262F /* PulseLogHandler */,
+				FC6A757329915CE10056262F /* PulseUI */,
 			);
 			productName = "Documents-Swift";
 			productReference = FC70824C2812E2270057FCD2 /* Documents.app */;
@@ -2825,6 +2834,7 @@
 			mainGroup = FCFDAA841E48A10C007A240C;
 			packageReferences = (
 				FC0BBF17296C25B80060F49E /* XCRemoteSwiftPackageReference "editors-ios-sp" */,
+				FC6A756E29915CE10056262F /* XCRemoteSwiftPackageReference "Pulse" */,
 			);
 			productRefGroup = FCFDAA8E1E48A10C007A240C /* Products */;
 			projectDirPath = "";
@@ -3939,6 +3949,14 @@
 				kind = branch;
 			};
 		};
+		FC6A756E29915CE10056262F /* XCRemoteSwiftPackageReference "Pulse" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/kean/Pulse/";
+			requirement = {
+				kind = exactVersion;
+				version = 2.1.4;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -3961,6 +3979,21 @@
 			isa = XCSwiftPackageProductDependency;
 			package = FC0BBF17296C25B80060F49E /* XCRemoteSwiftPackageReference "editors-ios-sp" */;
 			productName = SpreadsheetEditor;
+		};
+		FC6A756F29915CE10056262F /* Pulse */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = FC6A756E29915CE10056262F /* XCRemoteSwiftPackageReference "Pulse" */;
+			productName = Pulse;
+		};
+		FC6A757129915CE10056262F /* PulseLogHandler */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = FC6A756E29915CE10056262F /* XCRemoteSwiftPackageReference "Pulse" */;
+			productName = PulseLogHandler;
+		};
+		FC6A757329915CE10056262F /* PulseUI */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = FC6A756E29915CE10056262F /* XCRemoteSwiftPackageReference "Pulse" */;
+			productName = PulseUI;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

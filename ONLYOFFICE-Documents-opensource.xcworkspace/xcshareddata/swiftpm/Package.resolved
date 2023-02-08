@@ -5,8 +5,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/ONLYOFFICE/editors-ios-sp.git",
       "state" : {
-        "branch" : "release/v7.3.0",
-        "revision" : "0d5c792566efba87cf214be5cf7f5758dc6c8d10"
+        "branch" : "hotfix/v7.3.3",
+        "revision" : "1c92f28da6ec8449e78c889b747ca2be8a0569d0"
       }
     },
     {

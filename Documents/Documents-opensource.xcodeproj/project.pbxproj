@@ -3945,7 +3945,7 @@
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/ONLYOFFICE/editors-ios-sp.git";
 			requirement = {
-				branch = release/v7.3.0;
+				branch = hotfix/v7.3.3;
 				kind = branch;
 			};
 		};

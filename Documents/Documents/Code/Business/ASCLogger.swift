@@ -6,6 +6,7 @@
 //  Copyright © 2020 Ascensio System SIA. All rights reserved.
 //
 
+import Alamofire
 import Foundation
 import os.log
 import Pulse
@@ -63,7 +64,9 @@ struct ASCLogger {
 
     fileprivate init() {
         osLog = OSLog(subsystem: "\(Bundle.main.bundleIdentifier ?? "asc.onlyoffice.app")", category: "Documents")
-        URLSessionProxyDelegate.enableAutomaticRegistration()
+
+        /// TODO: Turn on after fix GTMSessionFetcher handle
+        /// URLSessionProxyDelegate.enableAutomaticRegistration()
     }
 
     private func log(_ level: Level, _ message: Any, _ arguments: [Any], function: String, line: UInt) {
@@ -84,16 +87,7 @@ struct ASCLogger {
 
         os_log("%@", log: osLog, type: level.osLogType, log)
 
-        // Store in Pulse framework
-        LoggerStore.shared.storeMessage(
-            label: "Documents",
-            level: level.pulsaLoggerLevel,
-            message: "\(message) \(extraMessage)",
-            metadata: [
-                "function": .string(function),
-                "line": .string("\(line)"),
-            ]
-        )
+        pulseLog(level, "\(message)", arguments, function: function, line: line)
     }
 
     private func getPrettyFunction(_ function: String, _ file: String) -> String {
@@ -118,5 +112,44 @@ struct ASCLogger {
 
     func error(_ log: Any, _ arguments: Any..., function: String = #function, file: String = #file, line: UInt = #line) {
         self.log(.error, log, arguments, function: getPrettyFunction(function, file), line: line)
+    }
+}
+
+extension ASCLogger {
+    private func pulseLog(_ level: Level, _ message: Any, _ arguments: [Any], function: String, line: UInt) {
+        LoggerStore.shared.storeMessage(
+            label: "Documents",
+            level: level.pulsaLoggerLevel,
+            message: "\(message)",
+            metadata: [
+                "function": .string(function),
+                "line": .string("\(line)"),
+                "arguments": .string(arguments.map { String(describing: $0) }.joined(separator: " ")),
+            ]
+        )
+    }
+
+    struct NetworkLoggerEventMonitor: EventMonitor {
+        private let networkLogger = NetworkLogger()
+
+        func request(_ request: Request, didCreateTask task: URLSessionTask) {
+            networkLogger.logTaskCreated(task)
+        }
+
+        func urlSession(_ session: URLSession, dataTask: URLSessionDataTask, didReceive data: Data) {
+            networkLogger.logDataTask(dataTask, didReceive: data)
+        }
+
+        func urlSession(_ session: URLSession, task: URLSessionTask, didFinishCollecting metrics: URLSessionTaskMetrics) {
+            networkLogger.logTask(task, didFinishCollecting: metrics)
+        }
+
+        func urlSession(_ session: URLSession, task: URLSessionTask, didCompleteWithError error: Error?) {
+            networkLogger.logTask(task, didCompleteWithError: error)
+        }
+
+        func urlSession(_ session: URLSession, dataTask: URLSessionDataTask, willCacheResponse proposedResponse: CachedURLResponse) {
+            networkLogger.logDataTask(dataTask, didReceive: proposedResponse.data)
+        }
     }
 }

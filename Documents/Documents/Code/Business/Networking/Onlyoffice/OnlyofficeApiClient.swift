@@ -72,7 +72,8 @@ class OnlyofficeApiClient: NetworkingClient {
         manager = Session(
             configuration: configuration,
             interceptor: Interceptor(adapters: [adapter]),
-            serverTrustManager: ServerTrustPolicyManager(evaluators: [:])
+            serverTrustManager: ServerTrustPolicyManager(evaluators: [:]),
+            eventMonitors: [ASCLogger.NetworkLoggerEventMonitor()]
         )
 
         // Fetch server version

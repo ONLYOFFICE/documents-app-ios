@@ -868,6 +868,12 @@ class ASCDocumentsViewController: ASCBaseTableViewController, UIGestureRecognize
             items.append(barFlexSpacer)
         }
 
+        // Archive
+        if isDocSpaceRoomShared {
+            items.append(createBarButton(Asset.Images.categoryArchived.image, #selector(onArchiveSelected)))
+            items.append(barFlexSpacer)
+        }
+
         // Remove all
         if isTrash {
             items.append(UIBarButtonItem(image: Asset.Images.barDeleteAll.image, style: .plain, target: self, action: #selector(onEmptyTrashSelected)))
@@ -2658,6 +2664,39 @@ class ASCDocumentsViewController: ASCBaseTableViewController, UIGestureRecognize
         }
     }
 
+    @objc func onArchiveSelected(_ sender: Any) {
+        guard let provider = provider, selectedIds.count > 0 else { return }
+
+        let dispatchGroup = DispatchGroup()
+        var indexPathes: [IndexPath] = []
+        let hud = MBProgressHUD.showTopMost()
+
+        hud?.label.text = NSLocalizedString("Archiving", comment: "Caption of the processing")
+        tableData.filter { selectedIds.contains($0.uid) }
+            .compactMap { $0 as? ASCFolder }
+            .forEach {
+                guard let indexPath = indexPath(by: $0) else { return }
+                dispatchGroup.enter()
+                provider.handle(action: .archive, folder: $0) { status, _, _ in
+                    if status == .end {
+                        indexPathes.append(indexPath)
+                    }
+                    if status == .end || status == .error {
+                        dispatchGroup.leave()
+                    }
+                }
+            }
+
+        dispatchGroup.notify(queue: .main) { [weak self] in
+            guard let self = self else { return }
+            self.handleRemovedItems(deleteIndexes: indexPathes)
+            self.showEmptyView(self.total < 1)
+            self.updateNavBar()
+            self.setEditMode(false)
+            hud?.hide(animated: true, afterDelay: 1)
+        }
+    }
+
     private func showDeafultRomoveNotification(folderCount: Int, fileCount: Int, sender: Any, handler: @escaping () -> Void) {
         var message = NSLocalizedString("Delete", comment: "")
         if folderCount > 0, fileCount > 0 {
@@ -3454,10 +3493,11 @@ extension ASCDocumentsViewController {
                                     message: error ?? NSLocalizedString("Could not delete.", comment: ""))
     }
 
-    func handleRemovedItems(deteteIndexes: [IndexPath]) {
+    func handleRemovedItems(deleteIndexes: [IndexPath]) {
+        guard !deleteIndexes.isEmpty else { return }
         // Remove cells
         tableView.beginUpdates()
-        tableView.deleteRows(at: deteteIndexes, with: .fade)
+        tableView.deleteRows(at: deleteIndexes, with: .fade)
         tableView.endUpdates()
 
         showEmptyView(total < 1)

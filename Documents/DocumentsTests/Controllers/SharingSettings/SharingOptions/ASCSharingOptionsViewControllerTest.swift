@@ -59,7 +59,7 @@ class ASCSharingOptionsViewControllerTest: XCTestCase {
         sut.setup(entity: folder)
 
         let interactor = InteractorMock()
-        let presenter = ASCSharingOptionsPresenter()
+        let presenter = ASCSharingOptionsPresenter(entity: folder)
         presenter.viewController = sut
         interactor.presenter = presenter
         sut.interactor = interactor

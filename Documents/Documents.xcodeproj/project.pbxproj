@@ -113,6 +113,7 @@
 		1DC43EEC26A1EDF700373D5A /* ASCSharingSettingsVerifyRightHoldersInteractorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DC43EEB26A1EDF700373D5A /* ASCSharingSettingsVerifyRightHoldersInteractorTests.swift */; };
 		1DCCEC05268CC6A700692167 /* ASCSharingOptionsSectionProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DCCEC04268CC6A600692167 /* ASCSharingOptionsSectionProtocol.swift */; };
 		1DCCEC0A268DBD9C00692167 /* ASCSharingOptionsViewControllerTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DCCEC09268DBD9C00692167 /* ASCSharingOptionsViewControllerTest.swift */; };
+		1DD1DC42299350F4005879E9 /* ASCAccessToAddRightHoldersRoomChecker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DD1DC41299350F4005879E9 /* ASCAccessToAddRightHoldersRoomChecker.swift */; };
 		1DD2FF21275A9EB000676010 /* ASCSharingSettingsAccessOFormProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DD2FF20275A9B2D00676010 /* ASCSharingSettingsAccessOFormProvider.swift */; };
 		1DDA03B72949D428005E6857 /* ASCDocSpaceFiltersController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DDA03B62949D428005E6857 /* ASCDocSpaceFiltersController.swift */; };
 		1DDC7B29280ED1D300287109 /* ASCSharingAddRightHoldersInteractorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DDC7B28280ED1D300287109 /* ASCSharingAddRightHoldersInteractorTests.swift */; };
@@ -615,6 +616,7 @@
 		1DC43EEB26A1EDF700373D5A /* ASCSharingSettingsVerifyRightHoldersInteractorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCSharingSettingsVerifyRightHoldersInteractorTests.swift; sourceTree = "<group>"; };
 		1DCCEC04268CC6A600692167 /* ASCSharingOptionsSectionProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCSharingOptionsSectionProtocol.swift; sourceTree = "<group>"; };
 		1DCCEC09268DBD9C00692167 /* ASCSharingOptionsViewControllerTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCSharingOptionsViewControllerTest.swift; sourceTree = "<group>"; };
+		1DD1DC41299350F4005879E9 /* ASCAccessToAddRightHoldersRoomChecker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCAccessToAddRightHoldersRoomChecker.swift; sourceTree = "<group>"; };
 		1DD2FF20275A9B2D00676010 /* ASCSharingSettingsAccessOFormProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCSharingSettingsAccessOFormProvider.swift; sourceTree = "<group>"; };
 		1DDA03B62949D428005E6857 /* ASCDocSpaceFiltersController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCDocSpaceFiltersController.swift; sourceTree = "<group>"; };
 		1DDC7B28280ED1D300287109 /* ASCSharingAddRightHoldersInteractorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCSharingAddRightHoldersInteractorTests.swift; sourceTree = "<group>"; };
@@ -1234,6 +1236,7 @@
 			children = (
 				1D14AAC32694F07C009E48AD /* ASCOnlyofficeFileInternalLinkMaker.swift */,
 				1D299158274FBF2100A06F3B /* ASCAccessToAddRightHoldersCheckerByPortalDefinder.swift */,
+				1DD1DC41299350F4005879E9 /* ASCAccessToAddRightHoldersRoomChecker.swift */,
 			);
 			path = Workers;
 			sourceTree = "<group>";
@@ -3690,6 +3693,7 @@
 				FCEF9D2A1ED2C94300627BA5 /* PasscodeSignPlaceholderView.swift in Sources */,
 				FC8BBC9E22BA5D6200761152 /* ASCCreatePortalStatus.swift in Sources */,
 				FCF2761E22C0FA5E00984E83 /* ASCShadowRadiusView.swift in Sources */,
+				1DD1DC42299350F4005879E9 /* ASCAccessToAddRightHoldersRoomChecker.swift in Sources */,
 				FC68527126837B7300D830EC /* NextcloudStorageStats.swift in Sources */,
 				FC41D7FB2265B4AF00A155C2 /* ASC2FACodeViewController.swift in Sources */,
 				FC19849A2805559D002057B2 /* ASCLeftAlignedCollectionViewFlowLayout.swift in Sources */,

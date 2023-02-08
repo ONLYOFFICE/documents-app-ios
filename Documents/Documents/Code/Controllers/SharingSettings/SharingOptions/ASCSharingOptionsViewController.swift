@@ -20,6 +20,11 @@ class ASCSharingOptionsViewController: ASCBaseTableViewController {
         return folder.roomType != nil
     }
 
+    private var roomSecurity: ASCEntittySecurity {
+        guard let folder = entity as? ASCFolder else { return ASCEntittySecurity() }
+        return folder.security
+    }
+
     var interactor: (ASCSharingOptionsBusinessLogic & ASCSharingOptionsDataStore)?
     var router: (NSObjectProtocol & ASCSharingOptionsRoutingLogic & ASCSharingOptionsDataPassing)?
     var viewConfigurator: ASCSharingView?
@@ -27,7 +32,11 @@ class ASCSharingOptionsViewController: ASCBaseTableViewController {
     var rightHolderCurrentlyLoading = false
 
     lazy var portalDefinder: ASCPortalTypeDefinderProtocol = ASCPortalTypeDefinderByCurrentConnection()
-    lazy var accessToAddRightHoldersChecker: ASCAccessToAddRightHoldersCheckerProtocol = ASCAccessToAddRightHoldersCheckerByPortalDefinder(portalType: portalDefinder.definePortalType())
+    lazy var accessToAddRightHoldersChecker: ASCAccessToAddRightHoldersCheckerProtocol = {
+        let defaultChecker = ASCAccessToAddRightHoldersCheckerByPortalDefinder(portalType: portalDefinder.definePortalType())
+        guard isRoomFolder, let folder = entity as? ASCFolder else { return defaultChecker }
+        return ASCAccessToAddRightHoldersRoomChecker(room: folder)
+    }()
 
     private var internalLink: String?
     private var externalLink: ASCSharingOprionsExternalLink?
@@ -53,9 +62,9 @@ class ASCSharingOptionsViewController: ASCBaseTableViewController {
         guard isSharingViaExternalLinkPossible() else {
             return .base
         }
-        return isRoomFolder
-            ? .room
-            : .baseWithLink
+        guard isRoomFolder else { return .baseWithLink }
+
+        return roomSecurity.editAccess ? .room : .base
     }
 
     private weak var sourceViewController: UIViewController?
@@ -83,6 +92,7 @@ class ASCSharingOptionsViewController: ASCBaseTableViewController {
         viewConfigurator.configureNavigationBar(navigationController)
         viewConfigurator.configureNavigationItem(navigationItem, allowAddRightHoders: accessToAddRightHoldersChecker.checkAccessToAddRightHolders(),
                                                  allowLinkBarButton: !isRoomFolder)
+
         viewConfigurator.configureTableView(tableView)
 
         if rightHolderCurrentlyLoading, !viewConfigurator.loadingTableActivityIndicator.isAnimating {
@@ -100,7 +110,7 @@ class ASCSharingOptionsViewController: ASCBaseTableViewController {
                                                          entity: entity,
                                                          apiWorker: ASCShareSettingsAPIWorkerFactory().get(by: portalDefinder.definePortalType()),
                                                          networkingRequestManager: OnlyofficeApiClient.shared)
-            let presenter = ASCSharingOptionsPresenter()
+            let presenter = ASCSharingOptionsPresenter(entity: entity)
             let router = ASCSharingOptionsRouter()
             viewController.interactor = interactor
             viewController.router = router

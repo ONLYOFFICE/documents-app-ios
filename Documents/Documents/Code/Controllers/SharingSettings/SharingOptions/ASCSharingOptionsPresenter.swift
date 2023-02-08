@@ -15,6 +15,12 @@ protocol ASCSharingOptionsPresentationLogic {
 class ASCSharingOptionsPresenter: ASCSharingOptionsPresentationLogic {
     weak var viewController: ASCSharingOptionsDisplayLogic?
 
+    let entity: ASCEntity
+
+    init(entity: ASCEntity) {
+        self.entity = entity
+    }
+
     func presentData(response: ASCSharingOptions.Model.Response.ResponseType) {
         switch response {
         case let .presentRightHolders(rightHoldersResponse: rightHoldersResult):
@@ -36,6 +42,10 @@ class ASCSharingOptionsPresenter: ASCSharingOptionsPresentationLogic {
                 var otherRightHolders: [ASCSharingRightHolderViewModel] = []
 
                 sharedInfoItems.forEach { sharedInfo in
+                    var sharedInfo = sharedInfo
+                    if !sharedInfo.locked, let folder = entity as? ASCFolder, folder.isRoom {
+                        sharedInfo.locked = !folder.security.editAccess
+                    }
                     if var viewModel = makeRightHolderViewModel(fromShareInfo: sharedInfo) {
                         if isImportant(sharedInfo) {
                             viewModel.isImportant = true

@@ -1178,9 +1178,13 @@ class ASCOnlyofficeProvider: ASCFileProviderProtocol & ASCSortableFileProviderPr
 
             if isRoomFolder, !isArchiveCategory {
                 entityActions.insert(folder.pinned ? .unpin : .pin)
-                entityActions.insert(.addUsers)
                 entityActions.insert(.info)
-                entityActions.insert(.archive)
+                if folder.security.editAccess {
+                    entityActions.insert(.addUsers)
+                }
+                if folder.security.move {
+                    entityActions.insert(.archive)
+                }
             }
 
             if isRoomFolder, isArchiveCategory {

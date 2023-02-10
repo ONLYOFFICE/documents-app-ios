@@ -258,6 +258,7 @@ class ASCEditorManager: NSObject {
         shareHandler = nil
         self.renameHandler = nil
         self.lockedHandler = lockedHandler
+        documentPermissions = nil
 
         if provider is ASCOnlyofficeProvider {
             fetchDocumentInfo(file, viewMode: !canEdit, handler: { canEdit, error in
@@ -559,6 +560,7 @@ class ASCEditorManager: NSObject {
         self.favoriteHandler = nil
         self.shareHandler = nil
         self.renameHandler = nil
+        documentPermissions = nil
 
         func fetchAndOpen() {
             fetchDocumentInfo(file, viewMode: openMode == .view, handler: { canEdit, error in
@@ -831,6 +833,7 @@ class ASCEditorManager: NSObject {
     // MARK: - Utils
 
     func checkSDKVersion() -> Bool {
+        return false
         if let version = UserDefaults.standard.value(forKey: ASCConstants.SettingsKeys.sdkVersion) as? String {
             let webSDK = version.components(separatedBy: ".")
             let localSDK = localSDKVersion()
@@ -1056,16 +1059,22 @@ extension ASCEditorManager {
             openedCopy = locallyEditing
 
             let password = UserDefaults.standard.object(forKey: ASCConstants.SettingsKeys.passwordOpenedDocument) as? String ?? ""
-            var documentPermissions: [String: Any] = [
-                "onDevice": true,
-                "fileType": fileExt,
-                "fillForms": false,
-                "edit": canEdit && UIDevice.allowEditor,
-            ]
 
-            // FillForms mode
-            if isForm, allowForm, fileExt == "oform" {
-                documentPermissions["fillForms"] = true
+            var documentPermissions: [String: Any] = [:]
+
+            if let originalDocumentPermissions = self.documentPermissions?.toDictionary() {
+                documentPermissions = originalDocumentPermissions
+            }
+
+            documentPermissions["onDevice"] = true
+            documentPermissions["fileType"] = fileExt
+
+            if !documentPermissions.keys.contains("edit") {
+                documentPermissions["edit"] = canEdit && UIDevice.allowEditor
+            }
+
+            if !documentPermissions.keys.contains("fillForms") {
+                documentPermissions["fillForms"] = isForm && allowForm && fileExt == "oform"
             }
 
             var documentInfo: [String: Any] = [

@@ -47,9 +47,7 @@ class NetworkingClient: NSObject, NetworkingRequestingProtocol {
 
     // MARK: - Internal Properties
 
-    internal var manager = Alamofire.Session(
-        eventMonitors: [ASCLogger.NetworkLoggerEventMonitor()]
-    )
+    internal var manager = Alamofire.Session()
     private let queue = DispatchQueue(label: "asc.networking.client.\(String(describing: type(of: NetworkingClient.self)))")
 
     private lazy var configuration: URLSessionConfiguration = {
@@ -72,8 +70,7 @@ class NetworkingClient: NSObject, NetworkingRequestingProtocol {
         manager = Alamofire.Session(
             configuration: configuration,
             serverTrustManager: ServerTrustManager(allHostsMustBeEvaluated: false,
-                                                   evaluators: [:]),
-            eventMonitors: [ASCLogger.NetworkLoggerEventMonitor()]
+                                                   evaluators: [:])
         )
     }
 

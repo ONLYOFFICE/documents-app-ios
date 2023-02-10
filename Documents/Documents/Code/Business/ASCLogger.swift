@@ -64,9 +64,7 @@ struct ASCLogger {
 
     fileprivate init() {
         osLog = OSLog(subsystem: "\(Bundle.main.bundleIdentifier ?? "asc.onlyoffice.app")", category: "Documents")
-
-        /// TODO: Turn on after fix GTMSessionFetcher handle
-        /// URLSessionProxyDelegate.enableAutomaticRegistration()
+        URLSessionProxyDelegate.ascEnableAutomaticRegistration()
     }
 
     private func log(_ level: Level, _ message: Any, _ arguments: [Any], function: String, line: UInt) {
@@ -115,6 +113,8 @@ struct ASCLogger {
     }
 }
 
+// MARK: - Pulse Logger extensions
+
 extension ASCLogger {
     private func pulseLog(_ level: Level, _ message: Any, _ arguments: [Any], function: String, line: UInt) {
         LoggerStore.shared.storeMessage(
@@ -128,28 +128,28 @@ extension ASCLogger {
             ]
         )
     }
+}
 
-    struct NetworkLoggerEventMonitor: EventMonitor {
-        private let networkLogger = NetworkLogger()
+private var sharedNetworkLogger: NetworkLogger!
 
-        func request(_ request: Request, didCreateTask task: URLSessionTask) {
-            networkLogger.logTaskCreated(task)
+private extension URLSession {
+    @objc class func asc_pulse_init(configuration: URLSessionConfiguration, delegate: URLSessionDelegate?, delegateQueue: OperationQueue?) -> URLSession {
+        // TODO: Fix [#155](https://github.com/kean/Pulse/issues/155)
+        guard !String(describing: delegate).contains("GTMSessionFetcher") else {
+            return asc_pulse_init(configuration: configuration, delegate: delegate, delegateQueue: delegateQueue)
         }
+        let delegate = URLSessionProxyDelegate(logger: sharedNetworkLogger, delegate: delegate)
+        return asc_pulse_init(configuration: configuration, delegate: delegate, delegateQueue: delegateQueue)
+    }
+}
 
-        func urlSession(_ session: URLSession, dataTask: URLSessionDataTask, didReceive data: Data) {
-            networkLogger.logDataTask(dataTask, didReceive: data)
-        }
-
-        func urlSession(_ session: URLSession, task: URLSessionTask, didFinishCollecting metrics: URLSessionTaskMetrics) {
-            networkLogger.logTask(task, didFinishCollecting: metrics)
-        }
-
-        func urlSession(_ session: URLSession, task: URLSessionTask, didCompleteWithError error: Error?) {
-            networkLogger.logTask(task, didCompleteWithError: error)
-        }
-
-        func urlSession(_ session: URLSession, dataTask: URLSessionDataTask, willCacheResponse proposedResponse: CachedURLResponse) {
-            networkLogger.logDataTask(dataTask, didReceive: proposedResponse.data)
+extension URLSessionProxyDelegate {
+    static func ascEnableAutomaticRegistration(logger: NetworkLogger = .init()) {
+        sharedNetworkLogger = logger
+        if let lhs = class_getClassMethod(URLSession.self, #selector(URLSession.init(configuration:delegate:delegateQueue:))),
+           let rhs = class_getClassMethod(URLSession.self, #selector(URLSession.asc_pulse_init(configuration:delegate:delegateQueue:)))
+        {
+            method_exchangeImplementations(lhs, rhs)
         }
     }
 }

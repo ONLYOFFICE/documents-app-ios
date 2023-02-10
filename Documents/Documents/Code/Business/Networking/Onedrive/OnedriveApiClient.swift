@@ -36,8 +36,7 @@ class OnedriveApiClient: NetworkingClient {
         manager = Session(
             configuration: configuration,
             interceptor: interceptor,
-            serverTrustManager: ServerTrustPolicyManager(evaluators: [:]),
-            eventMonitors: [ASCLogger.NetworkLoggerEventMonitor()]
+            serverTrustManager: ServerTrustPolicyManager(evaluators: [:])
         )
     }
 }

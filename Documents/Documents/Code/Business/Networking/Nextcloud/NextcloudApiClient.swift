@@ -38,9 +38,7 @@ class NextcloudApiClient: NetworkingClient {
 
     public func configure(url: String, user: String? = nil, password: String? = nil) {
         guard let user = user, let password = password else {
-            manager = Session(
-                eventMonitors: [ASCLogger.NetworkLoggerEventMonitor()]
-            )
+            manager = Session()
             return
         }
 
@@ -56,8 +54,7 @@ class NextcloudApiClient: NetworkingClient {
         manager = Session(
             configuration: configuration,
             interceptor: Interceptor(adapters: [adapter]),
-            serverTrustManager: ServerTrustPolicyManager(evaluators: [:]),
-            eventMonitors: [ASCLogger.NetworkLoggerEventMonitor()]
+            serverTrustManager: ServerTrustPolicyManager(evaluators: [:])
         )
     }
 

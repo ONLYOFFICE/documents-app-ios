@@ -130,7 +130,7 @@ extension ASCLogger {
     }
 }
 
-private var sharedNetworkLogger: NetworkLogger!
+private let sharedNetworkLogger = NetworkLogger()
 
 private extension URLSession {
     @objc class func asc_pulse_init(configuration: URLSessionConfiguration, delegate: URLSessionDelegate?, delegateQueue: OperationQueue?) -> URLSession {
@@ -144,8 +144,7 @@ private extension URLSession {
 }
 
 extension URLSessionProxyDelegate {
-    static func ascEnableAutomaticRegistration(logger: NetworkLogger = .init()) {
-        sharedNetworkLogger = logger
+    static func ascEnableAutomaticRegistration() {
         if let lhs = class_getClassMethod(URLSession.self, #selector(URLSession.init(configuration:delegate:delegateQueue:))),
            let rhs = class_getClassMethod(URLSession.self, #selector(URLSession.asc_pulse_init(configuration:delegate:delegateQueue:)))
         {

@@ -833,7 +833,7 @@ class ASCDocumentsViewController: ASCBaseTableViewController, UIGestureRecognize
         var items: [UIBarButtonItem] = []
 
         // Move
-        if !isTrash && !isDocSpaceArchive && !isDocSpaceArchiveRoomContent && (isDevice || !(isShared || isProjectRoot || isGuest)) {
+        if !isTrash && !isDocSpaceArchive && !isDocSpaceArchiveRoomContent && !isDocSpaceRoomShared && (isDevice || !(isShared || isProjectRoot || isGuest)) {
             items.append(createBarButton(Asset.Images.barMove.image, #selector(onMoveSelected)))
             items.append(barFlexSpacer)
         }
@@ -865,6 +865,12 @@ class ASCDocumentsViewController: ASCBaseTableViewController, UIGestureRecognize
         // Remove
         if isDevice || !(isShared || isProjectRoot || isGuest || isRecent || isDocSpaceRoomShared || isDocSpaceArchiveRoomContent) {
             items.append(createBarButton(Asset.Images.barDelete.image, #selector(onTrashSelected)))
+            items.append(barFlexSpacer)
+        }
+
+        // Pin
+        if isDocSpaceRoomShared {
+            items.append(createBarButton(Asset.Images.pin.image, #selector(onPinSelected)))
             items.append(barFlexSpacer)
         }
 
@@ -2661,6 +2667,38 @@ class ASCDocumentsViewController: ASCBaseTableViewController, UIGestureRecognize
                     self.removerActionController.delete(indexes: ids)
                 }
             }
+        }
+    }
+
+    @objc func onPinSelected(_ sender: Any) {
+        guard let provider = provider, selectedIds.count > 0 else { return }
+
+        let dispatchGroup = DispatchGroup()
+        var indexPathes: [IndexPath] = []
+        let hud = MBProgressHUD.showTopMost()
+
+        hud?.label.text = NSLocalizedString("Pinning", comment: "Caption of the processing")
+        tableData.filter { selectedIds.contains($0.uid) }
+            .compactMap { $0 as? ASCFolder }
+            .forEach {
+                guard let indexPath = indexPath(by: $0) else { return }
+                dispatchGroup.enter()
+                provider.handle(action: .pin, folder: $0) { status, _, _ in
+                    if status == .end {
+                        indexPathes.append(indexPath)
+                    }
+                    if status == .end || status == .error {
+                        dispatchGroup.leave()
+                    }
+                }
+            }
+
+        dispatchGroup.notify(queue: .main) { [weak self] in
+            guard let self = self else { return }
+            self.updateNavBar()
+            self.setEditMode(false)
+            hud?.hide(animated: true, afterDelay: 1)
+            self.loadFirstPage()
         }
     }
 

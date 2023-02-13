@@ -14,13 +14,11 @@ import UIKit
 class ASCDebugManager: NSObject {
     public static let shared = ASCDebugManager()
 
+    // MARK: - Properties
+    
     public var enabled: Bool {
-        get {
-            return UserDefaults.standard.bool(forKey: isDebugModeKey)
-        }
-        set {
-            UserDefaults.standard.set(newValue, forKey: isDebugModeKey)
-        }
+        get { UserDefaults.standard.bool(forKey: isDebugModeKey) }
+        set { UserDefaults.standard.set(newValue, forKey: isDebugModeKey) }
     }
 
     fileprivate let isDebugModeKey = "asc.debug.mode"
@@ -33,10 +31,8 @@ class ASCDebugManager: NSObject {
         return rootViewController
     }
 
-    fileprivate func toggleDebugMenu() {
-        presented ? hideDebugMenu() : showDebugMenu()
-    }
-
+    // MARK: - Public
+    
     public func showDebugMenu() {
         if presented {
             return
@@ -58,6 +54,12 @@ class ASCDebugManager: NSObject {
         presentingViewController?.present(debugNV, animated: true, completion: nil)
 
         presented = true
+    }
+    
+    // MARK: - Private
+    
+    fileprivate func toggleDebugMenu() {
+        presented ? hideDebugMenu() : showDebugMenu()
     }
 
     fileprivate func hideDebugMenu() {
@@ -86,7 +88,6 @@ extension UIWindow {
         if ASCDebugManager.shared.enabled {
             if event!.type == .motion && event!.subtype == .motionShake {
                 ASCDebugManager.shared.toggleDebugMenu()
-                return
             }
         }
         super.motionEnded(motion, with: event)

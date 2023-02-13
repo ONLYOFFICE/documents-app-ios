@@ -15,7 +15,7 @@ class ASCDebugManager: NSObject {
     public static let shared = ASCDebugManager()
 
     // MARK: - Properties
-    
+
     public var enabled: Bool {
         get { UserDefaults.standard.bool(forKey: isDebugModeKey) }
         set { UserDefaults.standard.set(newValue, forKey: isDebugModeKey) }
@@ -32,7 +32,7 @@ class ASCDebugManager: NSObject {
     }
 
     // MARK: - Public
-    
+
     public func showDebugMenu() {
         if presented {
             return
@@ -55,9 +55,9 @@ class ASCDebugManager: NSObject {
 
         presented = true
     }
-    
+
     // MARK: - Private
-    
+
     fileprivate func toggleDebugMenu() {
         presented ? hideDebugMenu() : showDebugMenu()
     }

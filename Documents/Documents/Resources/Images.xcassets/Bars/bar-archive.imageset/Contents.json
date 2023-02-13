@@ -1,7 +1,7 @@
 {
   "images" : [
     {
-      "filename" : "bar-delete-light.pdf",
+      "filename" : "bar-archive-light.pdf",
       "idiom" : "universal"
     },
     {
@@ -11,7 +11,7 @@
           "value" : "dark"
         }
       ],
-      "filename" : "bar-delete-dark.pdf",
+      "filename" : "bar-archive-dark.pdf",
       "idiom" : "universal"
     }
   ],

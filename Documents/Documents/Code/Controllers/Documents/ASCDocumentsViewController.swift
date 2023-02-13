@@ -808,10 +808,15 @@ class ASCDocumentsViewController: ASCBaseTableViewController, UIGestureRecognize
         let isDocSpaceArchive = isRoomList && folder.rootFolderType == .onlyofficeRoomArchived
         let isDocSpaceArchiveRoomContent = folder.rootFolderType == .onlyofficeRoomArchived && !isRoot
         let isDocSpaceRoomShared = isRoomList && folder.rootFolderType == .onlyofficeRoomShared
+        let isInfoShowing = isDocSpaceRoomShared && selectedIds.count <= 1
+        let isNeededUpdateToolBarOnSelection = isDocSpaceRoomShared
+        let isNeededUpdateToolBarOnDeselection = isDocSpaceRoomShared
 
         events.removeListeners(eventNameToRemoveOrNil: "item:didSelect")
         events.removeListeners(eventNameToRemoveOrNil: "item:didDeselect")
 
+        let fixedWidthButton = UIButton(frame: CGRect(x: 0, y: 0, width: 44, height: 44))
+        let barIconSpacer = UIBarButtonItem(customView: fixedWidthButton)
         let barFlexSpacer: UIBarButtonItem = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
 
         let createBarButton: (_ image: UIImage, _ selector: Selector) -> UIBarButtonItem = { [weak self] image, selector in
@@ -868,15 +873,25 @@ class ASCDocumentsViewController: ASCBaseTableViewController, UIGestureRecognize
             items.append(barFlexSpacer)
         }
 
+        // Info
+        if isInfoShowing {
+            items.append(createBarButton(Asset.Images.barInfo.image, #selector(onInfoSelected)))
+            items.append(barFlexSpacer)
+        }
+
         // Pin
         if isDocSpaceRoomShared {
-            items.append(createBarButton(Asset.Images.pin.image, #selector(onPinSelected)))
+            if !isInfoShowing {
+                items.append(barIconSpacer)
+                items.append(barFlexSpacer)
+            }
+            items.append(createBarButton(Asset.Images.barPin.image, #selector(onPinSelected)))
             items.append(barFlexSpacer)
         }
 
         // Archive
         if isDocSpaceRoomShared {
-            items.append(createBarButton(Asset.Images.categoryArchived.image, #selector(onArchiveSelected)))
+            items.append(createBarButton(Asset.Images.barArchive.image, #selector(onArchiveSelected)))
             items.append(barFlexSpacer)
         }
 
@@ -898,9 +913,15 @@ class ASCDocumentsViewController: ASCBaseTableViewController, UIGestureRecognize
 
         events.listenTo(eventName: "item:didSelect") { [weak self] in
             self?.updateSelectedInfo()
+            if isNeededUpdateToolBarOnSelection {
+                self?.configureToolBar()
+            }
         }
         events.listenTo(eventName: "item:didDeselect") { [weak self] in
             self?.updateSelectedInfo()
+            if isNeededUpdateToolBarOnDeselection {
+                self?.configureToolBar()
+            }
         }
 
         setToolbarItems(items, animated: false)
@@ -2668,6 +2689,11 @@ class ASCDocumentsViewController: ASCBaseTableViewController, UIGestureRecognize
                 }
             }
         }
+    }
+
+    @objc func onInfoSelected(_ sender: Any) {
+        guard let provider = provider, let folder = folder, selectedIds.count == 1 else { return }
+        presentShareController(provider: provider, entity: folder)
     }
 
     @objc func onPinSelected(_ sender: Any) {

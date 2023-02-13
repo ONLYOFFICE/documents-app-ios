@@ -64,6 +64,10 @@ class ASCOnlyOfficeFiltersController: ASCFiltersControllerProtocol {
     private var currentSelectedAuthorFilterType: ApiFilterType?
     private let builder: ASCFiltersCollectionViewModelBuilder
     private var currentLoading = false
+    private var resetButtonTapped = false
+    private var isReseting: Bool {
+        resetButtonTapped && !hasSelectedFilter(state: tempState)
+    }
 
     private lazy var selectUserViewController: ASCSelectUserViewController = {
         let controller = ASCSelectUserViewController()
@@ -148,6 +152,7 @@ class ASCOnlyOfficeFiltersController: ASCFiltersControllerProtocol {
     }
 
     private func makeFilterParams(state: State) -> [String: Any] {
+        guard !isReseting else { return [:] }
         var params: [String: Any] = ["withSubfolders": "true"]
         guard hasSelectedFilter(state: state) else { return params }
 
@@ -216,15 +221,16 @@ class ASCOnlyOfficeFiltersController: ASCFiltersControllerProtocol {
             }
         }
         builder.actionButtonClosure = { [weak self] in
-            self?.appliedState = self?.tempState
-            self?.onAction()
+            guard let self = self else { return }
+            self.appliedState = self.isReseting ? nil : self.tempState
+            self.resetButtonTapped = false
+            self.onAction()
         }
     }
 
     private func buildDidSelectedClosure() {
         builder.didSelectedClosure = { [weak self] filterViewModel in
             guard let self = self else { return }
-
             State.DataType.allCases.forEach { type in
                 switch type {
                 case .extensionFilters:
@@ -293,7 +299,7 @@ class ASCOnlyOfficeFiltersController: ASCFiltersControllerProtocol {
                     self.resetModels(models: &self.tempState.searchFilterModels)
                 }
             }
-
+            self.resetButtonTapped = true
             self.runPreload()
         }
     }

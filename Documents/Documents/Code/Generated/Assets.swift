@@ -53,6 +53,7 @@ internal enum Asset {
     internal static let barPin = ImageAsset(name: "bar-pin")
     internal static let barRecover = ImageAsset(name: "bar-recover")
     internal static let barSelect = ImageAsset(name: "bar-select")
+    internal static let barUnpin = ImageAsset(name: "bar-unpin")
     internal static let navAddUser = ImageAsset(name: "nav-add-user")
     internal static let navAdd = ImageAsset(name: "nav-add")
     internal static let navBack = ImageAsset(name: "nav-back")

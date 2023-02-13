@@ -885,7 +885,8 @@ class ASCDocumentsViewController: ASCBaseTableViewController, UIGestureRecognize
                 items.append(barIconSpacer)
                 items.append(barFlexSpacer)
             }
-            items.append(createBarButton(Asset.Images.barPin.image, #selector(onPinSelected)))
+            let icon = isSelectedItemsPinned() ? Asset.Images.barUnpin.image : Asset.Images.barPin.image
+            items.append(createBarButton(icon, #selector(onPinSelected)))
             items.append(barFlexSpacer)
         }
 
@@ -954,6 +955,16 @@ class ASCDocumentsViewController: ASCBaseTableViewController, UIGestureRecognize
         } else {
             title = folder?.title
         }
+    }
+
+    private func isSelectedItemsPinned() -> Bool {
+        guard selectedIds.count > 0 else { return false }
+        return tableData
+            .filter { selectedIds.contains($0.uid) }
+            .compactMap { $0 as? ASCFolder }
+            .reduce(true) { partialResult, folder in
+                partialResult && folder.pinned
+            }
     }
 
     private func updateTitle() {
@@ -2702,14 +2713,17 @@ class ASCDocumentsViewController: ASCBaseTableViewController, UIGestureRecognize
         let dispatchGroup = DispatchGroup()
         var indexPathes: [IndexPath] = []
         let hud = MBProgressHUD.showTopMost()
-
-        hud?.label.text = NSLocalizedString("Pinning", comment: "Caption of the processing")
+        let isSelectedItemsPinned = isSelectedItemsPinned()
+        let action: ASCEntityActions = isSelectedItemsPinned ? .unpin : .pin
+        hud?.label.text = isSelectedItemsPinned
+            ? NSLocalizedString("Unpinning", comment: "Caption of the processing")
+            : NSLocalizedString("Pinning", comment: "Caption of the processing")
         tableData.filter { selectedIds.contains($0.uid) }
             .compactMap { $0 as? ASCFolder }
             .forEach {
                 guard let indexPath = indexPath(by: $0) else { return }
                 dispatchGroup.enter()
-                provider.handle(action: .pin, folder: $0) { status, _, _ in
+                provider.handle(action: action, folder: $0) { status, _, _ in
                     if status == .end {
                         indexPathes.append(indexPath)
                     }

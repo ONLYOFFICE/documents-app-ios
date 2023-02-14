@@ -160,6 +160,7 @@ class ASCSharingInviteRightHoldersViewController: UIViewController, ASCSharingAd
 
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
+        sharingAddRightHoldersView?.saveCurrentPreferredSizeAsDefault()
         if UIDevice.pad || !(sharingAddRightHoldersView?.searchController.isActive ?? false) {
             navigationController?.isToolbarHidden = false
         }

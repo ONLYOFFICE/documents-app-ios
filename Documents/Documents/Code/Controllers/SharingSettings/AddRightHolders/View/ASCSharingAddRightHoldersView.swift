@@ -160,7 +160,6 @@ class ASCSharingAddRightHoldersView {
         notificationsRegister()
         configureNavigationBar()
         configureToolBar()
-        saveCurrentPreferredSizeAsDefault()
         configureTables()
     }
 
@@ -541,48 +540,38 @@ extension ASCSharingAddRightHoldersView {
 
 extension ASCSharingAddRightHoldersView {
     func saveCurrentPreferredSizeAsDefault() {
-        if UIDevice.pad, let presentingViewSize = navigationController?.viewControllers[0].view.size {
+        if UIDevice.pad, let presentingViewSize = ASCViewControllerManager.shared.topViewController?.view.size {
             let navBarHeight = navigationController?.navigationBar.height ?? 0
             let toolbarHeigh = navigationController?.toolbar.height ?? 0
-
             defaultPresentingViewSize = CGSize(width: presentingViewSize.width, height: presentingViewSize.height - toolbarHeigh - navBarHeight)
         }
     }
 
     func changeModalHeightIfNeeded(keyboardSize: CGRect) {
-        if UIDevice.pad {
-            let presentingViewHeight = navigationController?.presentingViewController?.view.size.height ?? 0
+        guard UIDevice.pad else { return }
 
-            let modalHeigh = presentingViewHeight > 0 && presentingViewHeight < UIScreen.main.bounds.height
-                ? presentingViewHeight
-                : defaultPresentingViewSize.height
+        let presentingViewHeight = navigationController?.presentingViewController?.view.size.height ?? 0
 
-            let spaceAroundModalHeight: CGFloat = 150
-            var freeSpace = UIScreen.main.bounds.height - modalHeigh - spaceAroundModalHeight
+        let modalHeigh = presentingViewHeight > 0 && presentingViewHeight < UIScreen.main.bounds.height
+            ? presentingViewHeight
+            : defaultPresentingViewSize.height
 
-            if freeSpace < 0 {
-                freeSpace = 0
-            }
+        let spaceAroundModalHeight: CGFloat = 150
+        let freeSpace = max(0, UIScreen.main.bounds.height - modalHeigh - spaceAroundModalHeight)
 
-            if keyboardSize.height > freeSpace {
-                let differance = keyboardSize.height - freeSpace
-                let minModalHeight: CGFloat = 150
-                var newModelHeight = defaultPresentingViewSize.height - differance
+        if keyboardSize.height > freeSpace {
+            let differance = keyboardSize.height - freeSpace
+            let minModalHeight: CGFloat = 150
+            let newModelHeight = max(defaultPresentingViewSize.height - differance, minModalHeight)
 
-                if newModelHeight < minModalHeight {
-                    newModelHeight = minModalHeight
-                }
+            let preferredContentSize = CGSize(width: defaultPresentingViewSize.width, height: newModelHeight)
 
-                let preferredContentSize = CGSize(width: defaultPresentingViewSize.width, height: newModelHeight)
-
-                log.info("new model size", preferredContentSize)
-
-                navigationController?.preferredContentSize = preferredContentSize
-                viewController?.preferredContentSize = preferredContentSize
-            } else {
-                log.info("new model size is default")
-                resetModalSizeIfNeeded()
-            }
+            log.info("new model size", preferredContentSize)
+            navigationController?.preferredContentSize = preferredContentSize
+            viewController?.preferredContentSize = preferredContentSize
+        } else {
+            log.info("new model size is default")
+            resetModalSizeIfNeeded()
         }
     }
 

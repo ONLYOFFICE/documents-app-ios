@@ -808,10 +808,15 @@ class ASCDocumentsViewController: ASCBaseTableViewController, UIGestureRecognize
         let isDocSpaceArchive = isRoomList && folder.rootFolderType == .onlyofficeRoomArchived
         let isDocSpaceArchiveRoomContent = folder.rootFolderType == .onlyofficeRoomArchived && !isRoot
         let isDocSpaceRoomShared = isRoomList && folder.rootFolderType == .onlyofficeRoomShared
+        let isInfoShowing = isDocSpaceRoomShared && selectedIds.count <= 1
+        let isNeededUpdateToolBarOnSelection = isDocSpaceRoomShared
+        let isNeededUpdateToolBarOnDeselection = isDocSpaceRoomShared
 
         events.removeListeners(eventNameToRemoveOrNil: "item:didSelect")
         events.removeListeners(eventNameToRemoveOrNil: "item:didDeselect")
 
+        let fixedWidthButton = UIButton(frame: CGRect(x: 0, y: 0, width: 44, height: 44))
+        let barIconSpacer = UIBarButtonItem(customView: fixedWidthButton)
         let barFlexSpacer: UIBarButtonItem = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
 
         let createBarButton: (_ image: UIImage, _ selector: Selector) -> UIBarButtonItem = { [weak self] image, selector in
@@ -833,7 +838,7 @@ class ASCDocumentsViewController: ASCBaseTableViewController, UIGestureRecognize
         var items: [UIBarButtonItem] = []
 
         // Move
-        if !isTrash && !isDocSpaceArchive && !isDocSpaceArchiveRoomContent && (isDevice || !(isShared || isProjectRoot || isGuest)) {
+        if !isTrash && !isDocSpaceArchive && !isDocSpaceArchiveRoomContent && !isDocSpaceRoomShared && (isDevice || !(isShared || isProjectRoot || isGuest)) {
             items.append(createBarButton(Asset.Images.barMove.image, #selector(onMoveSelected)))
             items.append(barFlexSpacer)
         }
@@ -868,6 +873,29 @@ class ASCDocumentsViewController: ASCBaseTableViewController, UIGestureRecognize
             items.append(barFlexSpacer)
         }
 
+        // Info
+        if isInfoShowing {
+            items.append(createBarButton(Asset.Images.barInfo.image, #selector(onInfoSelected)))
+            items.append(barFlexSpacer)
+        }
+
+        // Pin
+        if isDocSpaceRoomShared {
+            if !isInfoShowing {
+                items.append(barIconSpacer)
+                items.append(barFlexSpacer)
+            }
+            let icon = isSelectedItemsPinned() ? Asset.Images.barUnpin.image : Asset.Images.barPin.image
+            items.append(createBarButton(icon, #selector(onPinSelected)))
+            items.append(barFlexSpacer)
+        }
+
+        // Archive
+        if isDocSpaceRoomShared {
+            items.append(createBarButton(Asset.Images.barArchive.image, #selector(onArchiveSelected)))
+            items.append(barFlexSpacer)
+        }
+
         // Remove all
         if isTrash {
             items.append(UIBarButtonItem(image: Asset.Images.barDeleteAll.image, style: .plain, target: self, action: #selector(onEmptyTrashSelected)))
@@ -886,9 +914,15 @@ class ASCDocumentsViewController: ASCBaseTableViewController, UIGestureRecognize
 
         events.listenTo(eventName: "item:didSelect") { [weak self] in
             self?.updateSelectedInfo()
+            if isNeededUpdateToolBarOnSelection {
+                self?.configureToolBar()
+            }
         }
         events.listenTo(eventName: "item:didDeselect") { [weak self] in
             self?.updateSelectedInfo()
+            if isNeededUpdateToolBarOnDeselection {
+                self?.configureToolBar()
+            }
         }
 
         setToolbarItems(items, animated: false)
@@ -921,6 +955,16 @@ class ASCDocumentsViewController: ASCBaseTableViewController, UIGestureRecognize
         } else {
             title = folder?.title
         }
+    }
+
+    private func isSelectedItemsPinned() -> Bool {
+        guard selectedIds.count > 0 else { return false }
+        return tableData
+            .filter { selectedIds.contains($0.uid) }
+            .compactMap { $0 as? ASCFolder }
+            .reduce(true) { partialResult, folder in
+                partialResult && folder.pinned
+            }
     }
 
     private func updateTitle() {
@@ -2658,6 +2702,79 @@ class ASCDocumentsViewController: ASCBaseTableViewController, UIGestureRecognize
         }
     }
 
+    @objc func onInfoSelected(_ sender: Any) {
+        guard let provider = provider, let folder = folder, selectedIds.count == 1 else { return }
+        presentShareController(provider: provider, entity: folder)
+    }
+
+    @objc func onPinSelected(_ sender: Any) {
+        guard let provider = provider, selectedIds.count > 0 else { return }
+
+        let dispatchGroup = DispatchGroup()
+        var indexPathes: [IndexPath] = []
+        let hud = MBProgressHUD.showTopMost()
+        let isSelectedItemsPinned = isSelectedItemsPinned()
+        let action: ASCEntityActions = isSelectedItemsPinned ? .unpin : .pin
+        hud?.label.text = isSelectedItemsPinned
+            ? NSLocalizedString("Unpinning", comment: "Caption of the processing")
+            : NSLocalizedString("Pinning", comment: "Caption of the processing")
+        tableData.filter { selectedIds.contains($0.uid) }
+            .compactMap { $0 as? ASCFolder }
+            .forEach {
+                guard let indexPath = indexPath(by: $0) else { return }
+                dispatchGroup.enter()
+                provider.handle(action: action, folder: $0) { status, _, _ in
+                    if status == .end {
+                        indexPathes.append(indexPath)
+                    }
+                    if status == .end || status == .error {
+                        dispatchGroup.leave()
+                    }
+                }
+            }
+
+        dispatchGroup.notify(queue: .main) { [weak self] in
+            guard let self = self else { return }
+            self.updateNavBar()
+            self.setEditMode(false)
+            hud?.hide(animated: true, afterDelay: 1)
+            self.loadFirstPage()
+        }
+    }
+
+    @objc func onArchiveSelected(_ sender: Any) {
+        guard let provider = provider, selectedIds.count > 0 else { return }
+
+        let dispatchGroup = DispatchGroup()
+        var indexPathes: [IndexPath] = []
+        let hud = MBProgressHUD.showTopMost()
+
+        hud?.label.text = NSLocalizedString("Archiving", comment: "Caption of the processing")
+        tableData.filter { selectedIds.contains($0.uid) }
+            .compactMap { $0 as? ASCFolder }
+            .forEach {
+                guard let indexPath = indexPath(by: $0) else { return }
+                dispatchGroup.enter()
+                provider.handle(action: .archive, folder: $0) { status, _, _ in
+                    if status == .end {
+                        indexPathes.append(indexPath)
+                    }
+                    if status == .end || status == .error {
+                        dispatchGroup.leave()
+                    }
+                }
+            }
+
+        dispatchGroup.notify(queue: .main) { [weak self] in
+            guard let self = self else { return }
+            self.handleRemovedItems(deleteIndexes: indexPathes)
+            self.showEmptyView(self.total < 1)
+            self.updateNavBar()
+            self.setEditMode(false)
+            hud?.hide(animated: true, afterDelay: 1)
+        }
+    }
+
     private func showDeafultRomoveNotification(folderCount: Int, fileCount: Int, sender: Any, handler: @escaping () -> Void) {
         var message = NSLocalizedString("Delete", comment: "")
         if folderCount > 0, fileCount > 0 {
@@ -3454,10 +3571,11 @@ extension ASCDocumentsViewController {
                                     message: error ?? NSLocalizedString("Could not delete.", comment: ""))
     }
 
-    func handleRemovedItems(deteteIndexes: [IndexPath]) {
+    func handleRemovedItems(deleteIndexes: [IndexPath]) {
+        guard !deleteIndexes.isEmpty else { return }
         // Remove cells
         tableView.beginUpdates()
-        tableView.deleteRows(at: deteteIndexes, with: .fade)
+        tableView.deleteRows(at: deleteIndexes, with: .fade)
         tableView.endUpdates()
 
         showEmptyView(total < 1)

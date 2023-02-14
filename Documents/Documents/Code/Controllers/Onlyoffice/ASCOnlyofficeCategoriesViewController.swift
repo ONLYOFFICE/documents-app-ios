@@ -294,7 +294,12 @@ class ASCOnlyofficeCategoriesViewController: UITableViewController {
                 self.loadedCategories = categories
                 completion()
             case let .failure(error):
-                UIAlertController.showError(in: self, message: error.localizedDescription)
+                guard
+                    let error = error as? NetworkingError, case .cancelled = error
+                else {
+                    UIAlertController.showError(in: self, message: error.localizedDescription)
+                    return
+                }
             }
         }
     }

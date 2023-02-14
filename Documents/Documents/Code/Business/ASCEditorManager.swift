@@ -2001,6 +2001,12 @@ extension ASCEditorManager {
                                             } else if status == .progress {
                                                 self.closeHandler?(.progress, progress, file, nil, &cancel)
                                             } else if status == .end || status == .error {
+                                                let dateFormatter = DateFormatter()
+                                                dateFormatter.dateFormat = "yyyyMMddHHmmss"
+
+                                                let nowString = dateFormatter.string(from: Date())
+                                                let backupFileName = "\(file.title.fileName())-Backup-\(nowString).\(file.title.fileExtension())"
+
                                                 if status == .end {
                                                     if let resultFile = result as? ASCFile {
                                                         self.closeHandler?(.end, 1, resultFile, nil, &cancel)
@@ -2008,18 +2014,16 @@ extension ASCEditorManager {
                                                         self.closeHandler?(.end, 1, file, nil, &cancel)
                                                     }
                                                 } else {
-                                                    self.closeHandler?(.error, 1, file, nil, &cancel)
+                                                    log.error("Couldn't save changes at server. Error: \(error ?? "")")
+                                                    let errorMsg = String(format: NSLocalizedString("Couldn't save changes at server. Your modified document is saved in local storage as %@", comment: ""), backupFileName)
+                                                    self.closeHandler?(.error, 1, file, ASCProviderError(msg: errorMsg), &cancel)
                                                 }
                                                 self.stopLocallyEditing()
 
                                                 // Store backup
                                                 if status == .error {
                                                     // Backup on Device file
-                                                    let dateFormatter = DateFormatter()
-                                                    dateFormatter.dateFormat = "yyyyMMddHHmmss"
-
-                                                    let nowString = dateFormatter.string(from: Date())
-                                                    let backupPath = Path.userDocuments + Path("\(file.title.fileName())-Backup-\(nowString).\(file.title.fileExtension())")
+                                                    let backupPath = Path.userDocuments + Path(backupFileName)
 
                                                     ASCLocalFileHelper.shared.copy(from: filePath,
                                                                                    to: backupPath)

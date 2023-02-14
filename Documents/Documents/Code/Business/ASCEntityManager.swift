@@ -690,8 +690,8 @@ class ASCEntityManager: NSObject, UITextFieldDelegate {
             let path = originalFile.id
 
             provider.modify(path, data: data, params: params) { result, progress, error in
-                if let _ = error {
-                    handler?(.error, Float(progress), nil, NSLocalizedString("The server is not available.", comment: ""), &cancel)
+                if let error {
+                    handler?(.error, Float(progress), nil, error.localizedDescription, &cancel)
                 } else {
                     if let file = result as? ASCFile {
                         handler?(.end, 1, file, nil, &cancel)

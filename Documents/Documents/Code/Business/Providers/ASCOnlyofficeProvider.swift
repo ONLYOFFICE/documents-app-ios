@@ -892,7 +892,7 @@ class ASCOnlyofficeProvider: ASCFileProviderProtocol & ASCSortableFileProviderPr
 
         if user.isVisitor {
             // And the parent folder is not DocSpace type
-            if let folder = self.folder, folder.roomType == nil {
+            if !(self.folder?.isRoom ?? false) {
                 return false
             }
         }

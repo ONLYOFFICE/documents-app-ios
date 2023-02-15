@@ -891,7 +891,9 @@ class ASCOnlyofficeProvider: ASCFileProviderProtocol & ASCSortableFileProviderPr
         }
 
         if user.isVisitor {
-            return false
+            if let currentFolder = self.folder, isFolderInRoom(folder: currentFolder) {} else {
+                return false
+            }
         }
 
         if let folder = self.folder, folder.rootFolderType == .onlyofficeRoomArchived, !isRoot(folder: folder) {

@@ -891,8 +891,7 @@ class ASCOnlyofficeProvider: ASCFileProviderProtocol & ASCSortableFileProviderPr
         }
 
         if user.isVisitor {
-            // And the parent folder is not DocSpace type
-            if !(self.folder?.isRoom ?? false) {
+            if let currentFolder = self.folder, isFolderInRoom(folder: currentFolder) {} else {
                 return false
             }
         }

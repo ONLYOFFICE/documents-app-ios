@@ -25,6 +25,7 @@ class ASCFile: ASCEntity {
     var createdBy: ASCUser?
     var device: Bool = false
     var parent: ASCFolder?
+    var security: ASCEntittySecurity = .init()
     var denyDownload: Bool = false
 
     override init() {

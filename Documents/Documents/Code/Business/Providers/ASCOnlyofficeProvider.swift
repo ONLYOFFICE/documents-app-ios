@@ -72,6 +72,11 @@ class ASCOnlyofficeProvider: ASCFileProviderProtocol & ASCSortableFileProviderPr
         return isRecentCategory ? defaultTypes.filter { $0 != .folders } : defaultTypes
     }
 
+    var isInRoom: Bool {
+        guard let folder = folder else { return false }
+        return isFolderInRoom(folder: folder)
+    }
+
     init() {
         reset()
         OnlyofficeApiClient.reset()
@@ -934,6 +939,15 @@ class ASCOnlyofficeProvider: ASCFileProviderProtocol & ASCSortableFileProviderPr
             }
         }
 
+        let security: ASCEntittySecurity = {
+            guard let file = file else { return folder?.security ?? .init() }
+            return file.security
+        }()
+
+        if isInRoom, !security.editAccess {
+            return false
+        }
+
         var access: ASCEntityAccess = ((file != nil) ? file?.access : folder?.access)!
 
         if let parentFolder = parentFolder, let folder = folder, folder.id == parentFolder.id {
@@ -1070,6 +1084,7 @@ class ASCOnlyofficeProvider: ASCFileProviderProtocol & ASCSortableFileProviderPr
             let isTrash = file.rootFolderType == .onlyofficeTrash
             let isShared = file.rootFolderType == .onlyofficeShare
             let isProjects = file.rootFolderType == .onlyofficeBunch || file.rootFolderType == .onlyofficeProjects
+
             let canOpenEditor = ASCConstants.FileExtensions.documents.contains(fileExtension) ||
                 ASCConstants.FileExtensions.spreadsheets.contains(fileExtension) ||
                 ASCConstants.FileExtensions.forms.contains(fileExtension)

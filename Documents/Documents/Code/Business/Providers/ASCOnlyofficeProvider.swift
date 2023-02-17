@@ -882,6 +882,18 @@ class ASCOnlyofficeProvider: ASCFileProviderProtocol & ASCSortableFileProviderPr
         return false
     }
 
+    func allowDuplicate(entity: AnyObject?) -> Bool {
+        guard let file = entity as? ASCFile, allowEdit(entity: entity) else { return false }
+        guard isInRoom else { return true }
+        return file.security.duplicate
+    }
+
+    func allowCopy(entity: AnyObject?) -> Bool {
+        guard let entity = entity as? ASCEntity, allowRead(entity: entity) else { return false }
+        guard isInRoom else { return true }
+        return entity.entitySecurity.copyTo
+    }
+
     func allowEdit(entity: AnyObject?) -> Bool {
         let file = entity as? ASCFile
         let folder = entity as? ASCFolder
@@ -1078,6 +1090,8 @@ class ASCOnlyofficeProvider: ASCFileProviderProtocol & ASCSortableFileProviderPr
             let fileExtension = file.title.fileExtension().lowercased()
             let canRead = allowRead(entity: file)
             let canEdit = allowEdit(entity: file)
+            let canDuplicate = allowDuplicate(entity: file)
+            let canCopy = allowCopy(entity: file)
             let canDelete = allowDelete(entity: file)
             let canShare = allowShare(entity: file)
             let canDownload = !file.denyDownload
@@ -1104,6 +1118,10 @@ class ASCOnlyofficeProvider: ASCFileProviderProtocol & ASCSortableFileProviderPr
             }
 
             if canRead, canDownload {
+                entityActions.insert([.export])
+            }
+
+            if canCopy {
                 entityActions.insert([.copy, .export])
             }
 
@@ -1135,7 +1153,7 @@ class ASCOnlyofficeProvider: ASCFileProviderProtocol & ASCSortableFileProviderPr
                 entityActions.insert(.share)
             }
 
-            if canEdit, !isShared, !isFavoriteCategory, !isRecentCategory, !(file.parent?.isThirdParty ?? false), canDownload {
+            if canDuplicate, !isShared, !isFavoriteCategory, !isRecentCategory, !(file.parent?.isThirdParty ?? false), canDownload {
                 entityActions.insert(.duplicate)
             }
 
@@ -1153,6 +1171,7 @@ class ASCOnlyofficeProvider: ASCFileProviderProtocol & ASCSortableFileProviderPr
         if let folder = folder, apiClient.active {
             let canRead = allowRead(entity: folder)
             let canEdit = allowEdit(entity: folder)
+            let canCopy = allowCopy(entity: folder)
             let canDelete = allowDelete(entity: folder)
             let canShare = allowShare(entity: folder)
             let isProjects = folder.rootFolderType == .onlyofficeBunch || folder.rootFolderType == .onlyofficeProjects
@@ -1169,7 +1188,7 @@ class ASCOnlyofficeProvider: ASCFileProviderProtocol & ASCSortableFileProviderPr
                 entityActions.insert(.rename)
             }
 
-            if canRead, !isRoomFolder {
+            if canCopy, !isRoomFolder {
                 entityActions.insert(.copy)
             }
 
@@ -1567,5 +1586,16 @@ private extension ASCFiltersControllerProtocol {
             return .documents
         }
         return .rooms
+    }
+}
+
+private extension ASCEntity {
+    var entitySecurity: ASCEntittySecurity {
+        if let file = self as? ASCFile {
+            return file.security
+        } else if let folder = self as? ASCFolder {
+            return folder.security
+        }
+        return .init()
     }
 }

@@ -16,6 +16,7 @@ var log = ASCLogger()
 struct ASCLogger {
     private let osLog: OSLog
     private let s = DispatchSemaphore(value: 1)
+    private let loggerInterceptor = ASCLoggerInterceptor()
 
     enum Level: Int, Comparable {
         case debug = 0
@@ -63,6 +64,7 @@ struct ASCLogger {
     var hook: Hook?
 
     fileprivate init() {
+        ASCLogIntercepter.shared.delegate = loggerInterceptor
         osLog = OSLog(subsystem: "\(Bundle.main.bundleIdentifier ?? "asc.onlyoffice.app")", category: "Documents")
         URLSessionProxyDelegate.ascEnableAutomaticRegistration()
     }
@@ -110,6 +112,17 @@ struct ASCLogger {
 
     func error(_ log: Any, _ arguments: Any..., function: String = #function, file: String = #file, line: UInt = #line) {
         self.log(.error, log, arguments, function: getPrettyFunction(function, file), line: line)
+    }
+}
+
+class ASCLoggerInterceptor: ASCLogInterceptorDelegate {
+    func log(message: String) {
+        LoggerStore.shared.storeMessage(
+            label: "Documents",
+            level: .trace,
+            message: "\(message)",
+            metadata: nil
+        )
     }
 }
 

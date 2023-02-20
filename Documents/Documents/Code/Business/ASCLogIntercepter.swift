@@ -50,6 +50,9 @@ class ASCLogIntercepter {
     }
 
     private func openConsolePipe() {
+        setvbuf(stdout, nil, _IONBF, 0)
+        setvbuf(stderr, nil, _IONBF, 0)
+
         // open a new Pipe to consume the messages on STDOUT and STDERR
         inputPipe = Pipe()
 
@@ -91,13 +94,12 @@ class ASCLogIntercepter {
         log.hook = { [weak self] message, level in
             guard let self else { return }
             if let logUrl = self.logUrl {
-                self.queue.async(flags: .barrier) {
+                self.queue.async(flags: .barrier) { [weak self] in
                     do {
                         try message.appendLineToURL(logUrl)
+                        self?.delegate?.log(message: message)
                     } catch {}
                 }
-
-                self.delegate?.log(message: message)
             }
         }
     }
@@ -115,13 +117,12 @@ class ASCLogIntercepter {
             /// on the xcode console
             outputPipe?.fileHandleForWriting.write(data)
 
-            queue.async(flags: .barrier) {
+            queue.async(flags: .barrier) { [weak self] in
                 do {
                     try str.appendLineToURL(logUrl)
+                    self?.delegate?.log(message: str)
                 } catch {}
             }
-
-            delegate?.log(message: str)
         }
     }
 }

@@ -942,7 +942,11 @@ class ASCOnlyofficeProvider: ASCFileProviderProtocol & ASCSortableFileProviderPr
 
         switch access {
         case .none, .readWrite, .review, .comment, .fillforms:
-            return true
+            if let folder = folder, isFolderInRoom(folder: folder) || ASCOnlyofficeCategory.isDocSpace(type: folder.rootFolderType) {
+                return folder.security.editAccess
+            } else {
+                return true
+            }
         default:
             return false
         }

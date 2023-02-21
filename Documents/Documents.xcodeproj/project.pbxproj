@@ -366,6 +366,7 @@
 		FC9150F21EC35D850076A855 /* UIView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC9150F11EC35D850076A855 /* UIView+Extension.swift */; };
 		FC9749951EE04A1E00D00DDB /* ASCConnectPortalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC9749941EE04A1E00D00DDB /* ASCConnectPortalViewController.swift */; };
 		FC9749971EE04FB300D00DDB /* ASCSignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC9749961EE04FB300D00DDB /* ASCSignInViewController.swift */; };
+		FC98A53329A4D6CC003A3A8D /* ASCLogIntercepter.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC4D0A232494F8B2001EF1B5 /* ASCLogIntercepter.swift */; };
 		FC99FAF1226460F2000F1464 /* ASC2FAViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC99FAF0226460F2000F1464 /* ASC2FAViewController.swift */; };
 		FC9E28BF2244E88C000D315E /* ASCDocumentsEmptyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC9E28BE2244E88C000D315E /* ASCDocumentsEmptyView.swift */; };
 		FCA0AD271EBC90AC00AA53EB /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FCA0AD291EBC90AC00AA53EB /* Login.storyboard */; };
@@ -3473,6 +3474,7 @@
 				FC56B5C720C017C300557C1F /* ASCStyles.swift in Sources */,
 				FC4D864E20C50AE00047B871 /* NSLayoutConstraint+Extensions.swift in Sources */,
 				FC7765972926063D00ABAB5C /* ASCGlobalTest.swift in Sources */,
+				FC98A53329A4D6CC003A3A8D /* ASCLogIntercepter.swift in Sources */,
 				FCCF2EFA2922853000E2C647 /* ASCStringTransform.swift in Sources */,
 				FC77846D24756CDB005ED631 /* ASCFileProviderType.swift in Sources */,
 				FC4D864120C50AC00047B871 /* ASCConstants.swift in Sources */,

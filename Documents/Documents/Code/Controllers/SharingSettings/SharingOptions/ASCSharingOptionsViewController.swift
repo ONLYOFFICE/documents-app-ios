@@ -293,8 +293,12 @@ extension ASCSharingOptionsViewController: ASCSharingOptionsDisplayLogic {
                 case .room: return SharingRoomOptinosSection.roomUsers.rawValue
                 }
             }()
+            let rowIndex: Int = {
+                guard sectionStructType == .room, !importantRightHolders.isEmpty else { return indexOfOther }
+                return indexOfOther + importantRightHolders.count
+            }()
 
-            tableView.reloadRows(at: [IndexPath(row: indexOfOther, section: sectionIndex)], with: .automatic)
+            tableView.reloadRows(at: [IndexPath(row: rowIndex, section: sectionIndex)], with: .automatic)
         }
     }
 }

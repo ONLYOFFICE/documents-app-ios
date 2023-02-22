@@ -94,12 +94,12 @@ class ASCLogIntercepter {
         log.hook = { [weak self] message, level in
             guard let self else { return }
             if let logUrl = self.logUrl {
-                self.queue.async(flags: .barrier) { [weak self] in
+                self.queue.async(flags: .barrier) {
                     do {
                         try message.appendLineToURL(logUrl)
-                        self?.delegate?.log(message: message)
                     } catch {}
                 }
+                self.delegate?.log(message: message)
             }
         }
     }
@@ -117,12 +117,13 @@ class ASCLogIntercepter {
             /// on the xcode console
             outputPipe?.fileHandleForWriting.write(data)
 
-            queue.async(flags: .barrier) { [weak self] in
+            queue.async(flags: .barrier) {
                 do {
                     try str.appendLineToURL(logUrl)
-                    self?.delegate?.log(message: str)
                 } catch {}
             }
+
+            delegate?.log(message: str)
         }
     }
 }

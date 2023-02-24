@@ -101,8 +101,12 @@ class ASCOnlyofficeProvider: ASCFileProviderProtocol & ASCSortableFileProviderPr
                 filtersViewController: ASCFiltersViewController(),
                 itemsCount: 0
             )
-        case .rooms:
-            return ASCDocSpaceFiltersController(
+        case .docspace:
+            return ASCDocSpaceFiltersController(builder: ASCFiltersCollectionViewModelBuilder(),
+                                                filtersViewController: ASCFiltersViewController(),
+                                                itemsCount: 0)
+        case .docspaceRooms:
+            return ASCDocSpaceRoomsFiltersController(
                 builder: ASCFiltersCollectionViewModelBuilder(),
                 filtersViewController: ASCFiltersViewController(),
                 itemsCount: 0
@@ -111,10 +115,9 @@ class ASCOnlyofficeProvider: ASCFileProviderProtocol & ASCSortableFileProviderPr
     }
 
     fileprivate func filterControllerType(forFolder folder: ASCFolder) -> FilterControllerType {
-        guard folder.isRoomListFolder else {
-            return .documents
-        }
-        return .rooms
+        guard ASCOnlyofficeCategory.isDocSpace(type: folder.rootFolderType) else { return .documents }
+        guard folder.isRoomListFolder else { return .docspace }
+        return .docspaceRooms
     }
 
     func copy() -> ASCFileProviderProtocol {
@@ -1546,7 +1549,8 @@ class ASCOnlyofficeProvider: ASCFileProviderProtocol & ASCSortableFileProviderPr
 private extension ASCOnlyofficeProvider {
     enum FilterControllerType: Equatable {
         case documents
-        case rooms
+        case docspaceRooms
+        case docspace
     }
 }
 
@@ -1554,7 +1558,11 @@ private extension ASCFiltersControllerProtocol {
     var type: ASCOnlyofficeProvider.FilterControllerType {
         if self is ASCOnlyOfficeFiltersController {
             return .documents
+        } else if self is ASCDocSpaceRoomsFiltersController {
+            return .docspaceRooms
+        } else if self is ASCDocSpaceFiltersController {
+            return .docspace
         }
-        return .rooms
+        return .documents
     }
 }

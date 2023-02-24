@@ -17,46 +17,72 @@ class ASCDocSpaceFiltersController: ASCFiltersControllerProtocol {
             case thirdPartyResourceFilters
         }
 
-        var memberFilters: [ActionFilterModel]
+        var meFilter: ASCDocumentsFilterModel
+        var memberFilter: ActionFilterModel
+        var hasSelectedMember: Bool { memberFilter.selectedName != nil && memberFilter.selectedName?.isEmpty == false }
         var roomTypeFilters: [ASCDocumentsFilterModel]
         var thirdPartyResourceFilters: [ASCDocumentsFilterModel]
 
         var itemsCount: Int
 
-        static var defaultState: (Int) -> State = { count in
-            State(memberFilters: [ActionFilterModel(defaultName: FiltersName.users.localizedString(), selectedName: nil, filterType: .user)],
-                  roomTypeFilters: [
-                      ASCDocumentsFilterModel(filterName: FiltersName.customRoom.localizedString(), isSelected: false, filterType: .customRoom),
-                      ASCDocumentsFilterModel(filterName: FiltersName.fillingFormRoom.localizedString(), isSelected: false, filterType: .fillingFormRoom),
-                      ASCDocumentsFilterModel(filterName: FiltersName.collaborationRoom.localizedString(), isSelected: false, filterType: .collaborationRoom),
-                      ASCDocumentsFilterModel(filterName: FiltersName.reviewRoom.localizedString(), isSelected: false, filterType: .reviewRoom),
-                      ASCDocumentsFilterModel(filterName: FiltersName.viewOnlyRoom.localizedString(), isSelected: false, filterType: .viewOnlyRoom),
-                  ],
-                  thirdPartyResourceFilters: [
-                      ASCDocumentsFilterModel(filterName: FiltersName.dropBox.localizedString(), isSelected: false, filterType: .dropBox),
-                      ASCDocumentsFilterModel(filterName: FiltersName.googleDrive.localizedString(), isSelected: false, filterType: .googleDrive),
-                      ASCDocumentsFilterModel(filterName: FiltersName.oneDrive.localizedString(), isSelected: false, filterType: .oneDrive),
-                      ASCDocumentsFilterModel(filterName: FiltersName.box.localizedString(), isSelected: false, filterType: .box),
-                  ],
+        static var defaultDocSpaceState: (Int) -> State = { count in
+            State(meFilter: meFilter,
+                  memberFilter: memberFilter,
+                  roomTypeFilters: docTypeFilters,
+                  thirdPartyResourceFilters: [],
                   itemsCount: count)
         }
 
-        static let defaultAuthorsModels = [
-            ActionFilterModel(defaultName: FiltersName.users.localizedString(), selectedName: nil, filterType: .user),
-            ActionFilterModel(defaultName: FiltersName.groups.localizedString(), selectedName: nil, filterType: .group),
+        static var defaultDocSpaceRoomsState: (Int) -> State = { count in
+            State(meFilter: meFilter,
+                  memberFilter: memberFilter,
+                  roomTypeFilters: roomTypeFilters,
+                  thirdPartyResourceFilters: thirdPartyResourceFilters,
+                  itemsCount: count)
+        }
+
+        private static let meFilter = ASCDocumentsFilterModel(filterName: FiltersName.me.localizedString(), isSelected: false, filterType: .me)
+        private static let memberFilter = ActionFilterModel(defaultName: FiltersName.users.localizedString(), selectedName: nil, filterType: .user)
+
+        private static let roomTypeFilters = [
+            ASCDocumentsFilterModel(filterName: FiltersName.customRoom.localizedString(), isSelected: false, filterType: .customRoom),
+            ASCDocumentsFilterModel(filterName: FiltersName.fillingFormRoom.localizedString(), isSelected: false, filterType: .fillingFormRoom),
+            ASCDocumentsFilterModel(filterName: FiltersName.collaborationRoom.localizedString(), isSelected: false, filterType: .collaborationRoom),
+            ASCDocumentsFilterModel(filterName: FiltersName.reviewRoom.localizedString(), isSelected: false, filterType: .reviewRoom),
+            ASCDocumentsFilterModel(filterName: FiltersName.viewOnlyRoom.localizedString(), isSelected: false, filterType: .viewOnlyRoom),
+        ]
+
+        private static let docTypeFilters = [
+            ASCDocumentsFilterModel(filterName: FiltersName.folders.localizedString(), isSelected: false, filterType: .folders),
+            ASCDocumentsFilterModel(filterName: FiltersName.documents.localizedString(), isSelected: false, filterType: .documents),
+            ASCDocumentsFilterModel(filterName: FiltersName.presentations.localizedString(), isSelected: false, filterType: .presentations),
+            ASCDocumentsFilterModel(filterName: FiltersName.spreadsheets.localizedString(), isSelected: false, filterType: .spreadsheets),
+            ASCDocumentsFilterModel(filterName: FiltersName.images.localizedString(), isSelected: false, filterType: .images),
+            ASCDocumentsFilterModel(filterName: FiltersName.media.localizedString(), isSelected: false, filterType: .media),
+            ASCDocumentsFilterModel(filterName: FiltersName.archives.localizedString(), isSelected: false, filterType: .archive),
+            ASCDocumentsFilterModel(filterName: FiltersName.allFiles.localizedString(), isSelected: false, filterType: .files),
+        ]
+
+        private static let thirdPartyResourceFilters = [
+            ASCDocumentsFilterModel(filterName: FiltersName.dropBox.localizedString(), isSelected: false, filterType: .dropBox),
+            ASCDocumentsFilterModel(filterName: FiltersName.googleDrive.localizedString(), isSelected: false, filterType: .googleDrive),
+            ASCDocumentsFilterModel(filterName: FiltersName.oneDrive.localizedString(), isSelected: false, filterType: .oneDrive),
+            ASCDocumentsFilterModel(filterName: FiltersName.box.localizedString(), isSelected: false, filterType: .box),
         ]
     }
 
     // MARK: -  state
 
-    private var tempState: State
-    private var appliedState: State?
+    internal var tempState: State
+    internal var appliedState: State?
 
     // MARK: -  properties
 
-    private var currentSelectedAuthorFilterType: ApiFilterType?
-    private let builder: ASCFiltersCollectionViewModelBuilder
-    private var currentLoading = false
+    internal var currentSelectedAuthorFilterType: ApiFilterType?
+    internal var builder: ASCFiltersCollectionViewModelBuilder
+    internal var currentLoading = false
+
+    internal var usersSectionTitle = FiltersSection.author.localizedString()
 
     private lazy var selectUserViewController: ASCSelectUserViewController = {
         let controller = ASCSelectUserViewController()
@@ -96,7 +122,7 @@ class ASCDocSpaceFiltersController: ASCFiltersControllerProtocol {
     ) {
         self.builder = builder
         self.filtersViewController = filtersViewController
-        tempState = .defaultState(itemsCount)
+        tempState = .defaultDocSpaceState(itemsCount)
         buildActions()
     }
 
@@ -104,7 +130,7 @@ class ASCDocSpaceFiltersController: ASCFiltersControllerProtocol {
         if let appliedState = appliedState {
             tempState = appliedState
         } else {
-            tempState = .defaultState(total)
+            tempState = .defaultDocSpaceState(total)
         }
         runPreload()
     }
@@ -114,7 +140,7 @@ class ASCDocSpaceFiltersController: ASCFiltersControllerProtocol {
             guard !hasSelected else { return hasSelected }
             switch dataType {
             case .memberFilters:
-                return state.memberFilters.compactMap { $0.selectedName }.count > 0
+                return state.memberFilter.selectedName?.isEmpty == false || state.meFilter.isSelected
             case .roomTypeFilters:
                 return state.roomTypeFilters.map { $0.isSelected }.contains(true)
             case .thirdPartyResourceFilters:
@@ -123,33 +149,37 @@ class ASCDocSpaceFiltersController: ASCFiltersControllerProtocol {
         }
     }
 
-    private func makeFilterParams(state: State) -> [String: Any] {
+    internal func makeFilterParams(state: State) -> [String: Any] {
         return State.DataType.allCases.reduce([String: Any]()) { params, dataType in
             var params = params
             switch dataType {
             case .memberFilters:
-                guard let model = state.memberFilters.first(where: { $0.selectedName != nil }), let id = model.id else { return params }
+                let userId: String? = {
+                    guard let id = state.memberFilter.id else {
+                        return state.meFilter.isSelected ? ASCFileManager.onlyofficeProvider?.user?.userId : nil
+                    }
+                    return id
+                }()
+                guard let id = userId else { return params }
                 params["userIdOrGroupId"] = id
                 return params
             case .roomTypeFilters:
                 guard let model = state.roomTypeFilters.first(where: { $0.isSelected }) else { return params }
-                params["type"] = model.filterType.filterValue
+                params["filterType"] = model.filterType.filterValue
                 return params
-            case .thirdPartyResourceFilters:
-                guard let model = state.thirdPartyResourceFilters.first(where: { $0.isSelected }) else { return params }
-                params["provider"] = model.filterType.filterValue
-                return params
+            case .thirdPartyResourceFilters: return params
             }
         }
     }
 
-    private func updateViewModel() {
+    internal func updateViewModel() {
+        let usersFilters: [FilterTypeConvirtable] = tempState.hasSelectedMember ? [tempState.memberFilter] : [tempState.meFilter, tempState.memberFilter]
         let viewModel = builder.buildViewModel(
             state: currentLoading ? .loading : .normal,
             filtersContainers: [
-                .init(sectionName: FiltersSection.member.localizedString(), elements: tempState.memberFilters),
+                .init(sectionName: usersSectionTitle, elements: usersFilters),
                 .init(sectionName: FiltersSection.type.localizedString(), elements: tempState.roomTypeFilters),
-                .init(sectionName: FiltersSection.thirdPartyResource.localizedString(), elements: tempState.thirdPartyResourceFilters),
+                tempState.thirdPartyResourceFilters.isEmpty ? nil : .init(sectionName: FiltersSection.thirdPartyResource.localizedString(), elements: tempState.thirdPartyResourceFilters),
             ].compactMap { $0 },
             actionButtonViewModel: tempState.itemsCount > 0
                 ? ActionButtonViewModel(text: String.localizedStringWithFormat(NSLocalizedString("Show %d results", comment: ""), tempState.itemsCount),
@@ -164,7 +194,7 @@ class ASCDocSpaceFiltersController: ASCFiltersControllerProtocol {
         filtersViewController.viewModel = viewModel
     }
 
-    private func buildActions() {
+    internal func buildActions() {
         buildDidSelectedClosure()
         buildCommonResetButtonClosureBuilder()
         builder.didFilterResetBtnTapped = { [weak self] filterViewModel in
@@ -173,10 +203,8 @@ class ASCDocSpaceFiltersController: ASCFiltersControllerProtocol {
                 switch type {
                 case .roomTypeFilters, .thirdPartyResourceFilters: break
                 case .memberFilters:
-                    if let index = self.tempState.memberFilters.firstIndex(where: { $0.filterType.rawValue == filterViewModel.id }) {
-                        self.resetAuthorModel(index: index)
-                        self.runPreload()
-                    }
+                    self.resetAuthorModels()
+                    self.runPreload()
                 }
             }
         }
@@ -203,13 +231,12 @@ class ASCDocSpaceFiltersController: ASCFiltersControllerProtocol {
                         self.runPreload()
                     }
                 case .memberFilters:
-                    let isAthorModelsContainsSelectedId: Bool = self.tempState.memberFilters.map { $0.filterType.rawValue }.contains(filterViewModel.id)
+                    let isAthorModelsContainsSelectedId: Bool = self.tempState.memberFilter.filterType.rawValue == filterViewModel.id
 
                     if isAthorModelsContainsSelectedId {
                         let selectedIdClosure: (ApiFilterType?) -> String? = { [weak self] type in
                             switch type {
-                            case .user: return self?.tempState.memberFilters.first(where: { $0.filterType == .user })?.id
-                            case .group: return self?.tempState.memberFilters.first(where: { $0.filterType == .group })?.id
+                            case .user: return self?.tempState.memberFilter.id
                             default: return nil
                             }
                         }
@@ -223,6 +250,9 @@ class ASCDocSpaceFiltersController: ASCFiltersControllerProtocol {
                         default: return
                         }
                         self.updateViewModel()
+                    } else if self.tempState.meFilter.filterType.rawValue == filterViewModel.id {
+                        self.tempState.meFilter.isSelected.toggle()
+                        self.runPreload()
                     }
                 case .thirdPartyResourceFilters:
                     let isFilterModelsContainsSelectedId: Bool = self.tempState.thirdPartyResourceFilters.map { $0.filterType.rawValue }.contains(filterViewModel.id)
@@ -258,7 +288,7 @@ class ASCDocSpaceFiltersController: ASCFiltersControllerProtocol {
         }
     }
 
-    private func runPreload() {
+    internal func runPreload() {
         guard let provider = provider, let folder = folder else { return }
 
         currentLoading = true
@@ -281,14 +311,13 @@ class ASCDocSpaceFiltersController: ASCFiltersControllerProtocol {
     }
 
     private func resetAuthorModels() {
-        tempState.memberFilters.enumerated().forEach { index, _ in
-            resetAuthorModel(index: index)
-        }
+        tempState.meFilter.isSelected = false
+        resetAuthorModel()
     }
 
-    private func resetAuthorModel(index: Int) {
-        tempState.memberFilters[index].selectedName = nil
-        tempState.memberFilters[index].id = nil
+    private func resetAuthorModel() {
+        tempState.memberFilter.selectedName = nil
+        tempState.memberFilter.id = nil
     }
 
     private func resetModels(models: inout [ASCDocumentsFilterModel]) {
@@ -303,10 +332,8 @@ extension ASCDocSpaceFiltersController: ASCFiltersViewControllerDelegate {
         resetAuthorModels()
         switch currentSelectedAuthorFilterType {
         case .user:
-            if let index = tempState.memberFilters.firstIndex(where: { $0.filterType == currentSelectedAuthorFilterType }) {
-                tempState.memberFilters[index].selectedName = itemText
-                tempState.memberFilters[index].id = id
-            }
+            tempState.memberFilter.selectedName = itemText
+            tempState.memberFilter.id = id
         default: break
         }
 

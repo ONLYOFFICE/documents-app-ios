@@ -95,6 +95,7 @@
 		1D9B808F2674001D0020B5ED /* ASCAccessRowTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D9B808E2674001C0020B5ED /* ASCAccessRowTableViewCell.swift */; };
 		1D9B8094267400670020B5ED /* ASCAccessRowViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D9B8093267400670020B5ED /* ASCAccessRowViewModel.swift */; };
 		1D9B8099267403650020B5ED /* ASCCopyLinkTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D9B8098267403650020B5ED /* ASCCopyLinkTableViewCell.swift */; };
+		1D9BBE9629A8831400513D52 /* ASCDocSpaceRoomsFiltersController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D9BBE9529A8831400513D52 /* ASCDocSpaceRoomsFiltersController.swift */; };
 		1DA5E666269DA2E8005F59E1 /* ASCSharingAddRightHoldersRAMDataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DA5E665269DA2E8005F59E1 /* ASCSharingAddRightHoldersRAMDataStore.swift */; };
 		1DA5E669269DBABC005F59E1 /* ASCSharingAddRightHoldersDataStoreTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DA5E668269DBABC005F59E1 /* ASCSharingAddRightHoldersDataStoreTests.swift */; };
 		1DA5E66B269E10DF005F59E1 /* ASCSharingSettingsVerifyRightHoldersView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DA5E66A269E10DF005F59E1 /* ASCSharingSettingsVerifyRightHoldersView.swift */; };
@@ -602,6 +603,7 @@
 		1D9B808E2674001C0020B5ED /* ASCAccessRowTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCAccessRowTableViewCell.swift; sourceTree = "<group>"; };
 		1D9B8093267400670020B5ED /* ASCAccessRowViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCAccessRowViewModel.swift; sourceTree = "<group>"; };
 		1D9B8098267403650020B5ED /* ASCCopyLinkTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCCopyLinkTableViewCell.swift; sourceTree = "<group>"; };
+		1D9BBE9529A8831400513D52 /* ASCDocSpaceRoomsFiltersController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCDocSpaceRoomsFiltersController.swift; sourceTree = "<group>"; };
 		1DA5E665269DA2E8005F59E1 /* ASCSharingAddRightHoldersRAMDataStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCSharingAddRightHoldersRAMDataStore.swift; sourceTree = "<group>"; };
 		1DA5E668269DBABC005F59E1 /* ASCSharingAddRightHoldersDataStoreTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCSharingAddRightHoldersDataStoreTests.swift; sourceTree = "<group>"; };
 		1DA5E66A269E10DF005F59E1 /* ASCSharingSettingsVerifyRightHoldersView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCSharingSettingsVerifyRightHoldersView.swift; sourceTree = "<group>"; };
@@ -1890,6 +1892,7 @@
 			isa = PBXGroup;
 			children = (
 				1DDA03B62949D428005E6857 /* ASCDocSpaceFiltersController.swift */,
+				1D9BBE9529A8831400513D52 /* ASCDocSpaceRoomsFiltersController.swift */,
 				F3AAEFC428241917008ED772 /* ASCOnlyOfficeFiltersController.swift */,
 				F3F0F6AD284502CE0083370A /* ASCLocalFilterController.swift */,
 				F3AAEFC228241178008ED772 /* ASCFiltersCollectionViewModelBuilder.swift */,
@@ -3600,6 +3603,7 @@
 				1D76B04E275B935400389C61 /* ASCUniqNameFinder.swift in Sources */,
 				FC5E2D8D1E8A4C8B0079626B /* ASCImageViewController.swift in Sources */,
 				1D9B8099267403650020B5ED /* ASCCopyLinkTableViewCell.swift in Sources */,
+				1D9BBE9629A8831400513D52 /* ASCDocSpaceRoomsFiltersController.swift in Sources */,
 				FC41D8062265D99C00A155C2 /* ASCFileStatus.swift in Sources */,
 				FCEF9D331ED2D18500627BA5 /* ASCPasscodeLockConfiguration.swift in Sources */,
 				1D5DB0352658086C006B4757 /* ASCOnlyofficeCacheCategoriesProvider.swift in Sources */,

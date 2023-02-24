@@ -18,7 +18,7 @@ struct ASCDocumentsFilterModel: FilterTypeConvirtable {
     var filterType: ApiFilterType
 
     func convert() -> FilterViewModel {
-        FilterViewModel(id: filterType.rawValue, isSelected: isSelected, filterName: filterName, isFilterResetBtnShowen: false)
+        FilterViewModel(id: filterType.rawValue, isSelected: isSelected, filterName: filterName, isFilterResetBtnShowen: false, defaultTextColor: .black)
     }
 }
 
@@ -90,6 +90,7 @@ enum ApiFilterType: String {
     case presentations
     case spreadsheets
     case images
+    case me
     case user
     case group
     case archive
@@ -124,7 +125,7 @@ enum ApiFilterType: String {
             return "SpreadsheetsOnly"
         case .images:
             return "ImagesOnly"
-        case .user:
+        case .me, .user:
             return "ByUser"
         case .group:
             return "ByDepartment"
@@ -190,6 +191,7 @@ enum FiltersName: String, CaseIterable {
     case media
     case archives
     case allFiles
+    case me
     case users
     case groups
     case search
@@ -224,6 +226,8 @@ enum FiltersName: String, CaseIterable {
             return NSLocalizedString("Archives", comment: "")
         case .allFiles:
             return NSLocalizedString("All files", comment: "")
+        case .me:
+            return NSLocalizedString("Me", comment: "Author or member of a document")
         case .users:
             return NSLocalizedString("Users", comment: "")
         case .groups:

@@ -151,6 +151,7 @@ class ASCLocalProvider: ASCFileProviderProtocol & ASCSortableFileProviderProtoco
                 case .media:
                     return filter(list: list, byFileExtensions: ASCConstants.FileExtensions.videos)
                 case .none,
+                     .me,
                      .user,
                      .group,
                      .byExtension,

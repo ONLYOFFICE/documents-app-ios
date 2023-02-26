@@ -306,6 +306,7 @@
 		FC8667D421C7941C0020D797 /* ASCOnlyofficeSplitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC8667D321C7941C0020D797 /* ASCOnlyofficeSplitViewController.swift */; };
 		FC8667D621C799160020D797 /* ASCCloudsSplitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC8667D521C799160020D797 /* ASCCloudsSplitViewController.swift */; };
 		FC872B281EC44925001636CB /* ASCSMSCodeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC872B271EC44925001636CB /* ASCSMSCodeViewController.swift */; };
+		FC881E7729AB61800006C202 /* ASCDocSpaceRoomsFiltersController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC881E7629AB61800006C202 /* ASCDocSpaceRoomsFiltersController.swift */; };
 		FC8A137B22686B5D006D8C6E /* OnlyofficeCapabilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC8A137A22686B5D006D8C6E /* OnlyofficeCapabilities.swift */; };
 		FC8A137D226878C0006D8C6E /* Sequence+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC8A137C226878C0006D8C6E /* Sequence+Extensions.swift */; };
 		FC8A137F2268B57F006D8C6E /* URL+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC8A137E2268B57F006D8C6E /* URL+Extensions.swift */; };
@@ -855,6 +856,7 @@
 		FC8667D321C7941C0020D797 /* ASCOnlyofficeSplitViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCOnlyofficeSplitViewController.swift; sourceTree = "<group>"; };
 		FC8667D521C799160020D797 /* ASCCloudsSplitViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCCloudsSplitViewController.swift; sourceTree = "<group>"; };
 		FC872B271EC44925001636CB /* ASCSMSCodeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASCSMSCodeViewController.swift; sourceTree = "<group>"; };
+		FC881E7629AB61800006C202 /* ASCDocSpaceRoomsFiltersController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASCDocSpaceRoomsFiltersController.swift; sourceTree = "<group>"; };
 		FC8A137A22686B5D006D8C6E /* OnlyofficeCapabilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnlyofficeCapabilities.swift; sourceTree = "<group>"; };
 		FC8A137C226878C0006D8C6E /* Sequence+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Sequence+Extensions.swift"; sourceTree = "<group>"; };
 		FC8A137E2268B57F006D8C6E /* URL+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "URL+Extensions.swift"; sourceTree = "<group>"; };
@@ -2066,6 +2068,7 @@
 				FC7DC867285A2D3400E61C69 /* View */,
 				FC7DC86C285A2D3400E61C69 /* Protocols */,
 				FC42948E294C964500DC3932 /* ASCDocSpaceFiltersController.swift */,
+				FC881E7629AB61800006C202 /* ASCDocSpaceRoomsFiltersController.swift */,
 				FC7DC85F285A2D3400E61C69 /* ASCFiltersCollectionViewModelBuilder.swift */,
 				FC7DC860285A2D3400E61C69 /* ASCFiltersViewController.swift */,
 				FC7DC861285A2D3400E61C69 /* ASCLocalFilterController.swift */,
@@ -3342,6 +3345,7 @@
 				8ADB2DE1234369BE0009FD4E /* MGSwipeButton+Extensions.swift in Sources */,
 				FC7D996B2729952400410795 /* ASCSharingSettingsAccessForExternalLinkNotesProvider.swift in Sources */,
 				FC4BCA3F274FA3C100C91403 /* ASCPersonalShareSettingsAPIWorker.swift in Sources */,
+				FC881E7729AB61800006C202 /* ASCDocSpaceRoomsFiltersController.swift in Sources */,
 				FC41D80C2265DA8700A155C2 /* ASCFilterType.swift in Sources */,
 				FCCC527220ADB68E000BD819 /* ASCSignInController.swift in Sources */,
 				FC8C697D1ECC6163005B68D7 /* ASCConnectStorageOAuth2OneDrive.swift in Sources */,

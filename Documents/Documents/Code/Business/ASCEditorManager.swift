@@ -2102,7 +2102,7 @@ extension ASCEditorManager {
 
                         // No changes
                         ASCLocalFileHelper.shared.removeDirectory(Path.userAutosavedInformation + file.title)
-                        closeHandler?(.end, 1, nil, nil, &cancel)
+                        closeHandler?(.end, 1, openedCopy ? openedlocallyFile : openedFile, nil, &cancel)
 
                         UserDefaults.standard.removeObject(forKey: ASCConstants.SettingsKeys.openedDocument)
                         UserDefaults.standard.removeObject(forKey: ASCConstants.SettingsKeys.passwordOpenedDocument)
@@ -2193,15 +2193,22 @@ extension ASCEditorManager {
         }
 
         func documentRename(_ title: String!, complation: DEDocumentProcessingWithResultComplate!) {
-            if let file = openedFile {
+            if
+                let file = openedCopy ? openedlocallyFile : openedFile,
+                let renameHandler
+            {
                 let fileExtension = file.title.fileExtension()
 
-                renameHandler?(file, title) { success in
+                renameHandler(file, title) { success in
                     if success {
-                        self.openedFile?.title = title + (fileExtension.length < 1 ? "" : ".\(fileExtension)")
+                        [self.openedlocallyFile, self.openedFile].forEach { file in
+                            file?.title = title + (fileExtension.length < 1 ? "" : ".\(fileExtension)")
+                        }
                     }
                     complation(success)
                 }
+            } else {
+                complation(false)
             }
         }
     }
@@ -2387,7 +2394,7 @@ extension ASCEditorManager {
 
                         // Don't save changes
                         ASCLocalFileHelper.shared.removeDirectory(Path.userAutosavedInformation + file.title)
-                        closeHandler?(.end, 1, nil, nil, &cancel)
+                        closeHandler?(.end, 1, openedCopy ? openedlocallyFile : openedFile, nil, &cancel)
 
                         UserDefaults.standard.removeObject(forKey: ASCConstants.SettingsKeys.openedDocument)
                         UserDefaults.standard.removeObject(forKey: ASCConstants.SettingsKeys.passwordOpenedDocument)
@@ -2482,15 +2489,22 @@ extension ASCEditorManager {
         }
 
         func spreadsheetRename(_ title: String!, complation: SEDocumentProcessingWithResultComplate!) {
-            if let file = openedFile {
+            if
+                let file = openedCopy ? openedlocallyFile : openedFile,
+                let renameHandler
+            {
                 let fileExtension = file.title.fileExtension()
 
-                renameHandler?(file, title) { success in
+                renameHandler(file, title) { success in
                     if success {
-                        self.openedFile?.title = title + (fileExtension.length < 1 ? "" : ".\(fileExtension)")
+                        [self.openedlocallyFile, self.openedFile].forEach { file in
+                            file?.title = title + (fileExtension.length < 1 ? "" : ".\(fileExtension)")
+                        }
                     }
                     complation(success)
                 }
+            } else {
+                complation(false)
             }
         }
     }
@@ -2676,7 +2690,7 @@ extension ASCEditorManager {
 
                         // Don't save changes
                         ASCLocalFileHelper.shared.removeDirectory(Path.userAutosavedInformation + file.title)
-                        closeHandler?(.end, 1, nil, nil, &cancel)
+                        closeHandler?(.end, 1, openedCopy ? openedlocallyFile : openedFile, nil, &cancel)
 
                         UserDefaults.standard.removeObject(forKey: ASCConstants.SettingsKeys.openedDocument)
                         UserDefaults.standard.removeObject(forKey: ASCConstants.SettingsKeys.passwordOpenedDocument)
@@ -2766,15 +2780,22 @@ extension ASCEditorManager {
         }
 
         func presentationRename(_ title: String!, complation: PEDocumentProcessingWithResultComplate!) {
-            if let file = openedFile {
+            if
+                let file = openedCopy ? openedlocallyFile : openedFile,
+                let renameHandler
+            {
                 let fileExtension = file.title.fileExtension()
 
-                renameHandler?(file, title) { success in
+                renameHandler(file, title) { success in
                     if success {
-                        self.openedFile?.title = title + (fileExtension.length < 1 ? "" : ".\(fileExtension)")
+                        [self.openedlocallyFile, self.openedFile].forEach { file in
+                            file?.title = title + (fileExtension.length < 1 ? "" : ".\(fileExtension)")
+                        }
                     }
                     complation(success)
                 }
+            } else {
+                complation(false)
             }
         }
     }

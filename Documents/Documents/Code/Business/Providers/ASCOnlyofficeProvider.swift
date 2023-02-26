@@ -1474,7 +1474,7 @@ class ASCOnlyofficeProvider: ASCFileProviderProtocol & ASCSortableFileProviderPr
                     canEdit: canEdit,
                     handler: openHandler,
                     closeHandler: closeHandler,
-//                    renameHandler: renameHandler,
+                    renameHandler: renameHandler,
                     lockedHandler: {
                         delay(seconds: 0.3) {
                             let isSpreadsheet = file.title.fileExtension() == "xlsx"

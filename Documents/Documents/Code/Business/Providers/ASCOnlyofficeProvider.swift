@@ -1274,11 +1274,8 @@ class ASCOnlyofficeProvider: ASCFileProviderProtocol & ASCSortableFileProviderPr
 
     private func archiveRoom(folder: ASCFolder, handler: ASCEntityHandler?) {
         handler?(.begin, nil, nil)
-        apiClient.request(OnlyofficeAPI.Endpoints.Rooms.archive(folder: folder), ["deleteAfter": true]) { [weak self] response, error in
+        apiClient.request(OnlyofficeAPI.Endpoints.Rooms.archive(folder: folder), ["deleteAfter": true]) { response, error in
             if let responseFolder = response?.result {
-                if let self = self, let index = self.items.firstIndex(where: { $0.id == folder.id }) {
-                    self.remove(at: index)
-                }
                 handler?(.end, responseFolder, nil)
             } else {
                 handler?(.error, nil, NSLocalizedString("Archiving failed.", comment: ""))

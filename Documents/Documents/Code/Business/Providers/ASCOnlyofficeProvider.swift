@@ -959,7 +959,14 @@ class ASCOnlyofficeProvider: ASCFileProviderProtocol & ASCSortableFileProviderPr
             return file.security
         }()
 
-        if isInRoom, !security.editAccess {
+        let securityAllowEdit: Bool = {
+            guard folder != nil else {
+                return security.editAccess
+            }
+            return security.read && security.rename && security.create
+        }()
+
+        if isInRoom, !securityAllowEdit, folder?.rootFolderType != .onlyofficeUser {
             return false
         }
 
@@ -972,7 +979,7 @@ class ASCOnlyofficeProvider: ASCFileProviderProtocol & ASCSortableFileProviderPr
         switch access {
         case .none, .readWrite, .review, .comment, .fillforms:
             if let folder = folder, isFolderInRoom(folder: folder) || ASCOnlyofficeCategory.isDocSpace(type: folder.rootFolderType) {
-                return folder.security.editAccess
+                return securityAllowEdit || (isRoot(folder: folder) && folder.security.create)
             } else {
                 return true
             }

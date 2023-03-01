@@ -57,6 +57,8 @@ class ASCDocSpaceFiltersController: ASCFiltersControllerProtocol {
             ASCDocumentsFilterModel(filterName: FiltersName.documents.localizedString(), isSelected: false, filterType: .documents),
             ASCDocumentsFilterModel(filterName: FiltersName.presentations.localizedString(), isSelected: false, filterType: .presentations),
             ASCDocumentsFilterModel(filterName: FiltersName.spreadsheets.localizedString(), isSelected: false, filterType: .spreadsheets),
+            ASCDocumentsFilterModel(filterName: FiltersName.formTemplates.localizedString(), isSelected: false, filterType: .formTemplates),
+            ASCDocumentsFilterModel(filterName: FiltersName.forms.localizedString(), isSelected: false, filterType: .forms),
             ASCDocumentsFilterModel(filterName: FiltersName.images.localizedString(), isSelected: false, filterType: .images),
             ASCDocumentsFilterModel(filterName: FiltersName.media.localizedString(), isSelected: false, filterType: .media),
             ASCDocumentsFilterModel(filterName: FiltersName.archives.localizedString(), isSelected: false, filterType: .archive),

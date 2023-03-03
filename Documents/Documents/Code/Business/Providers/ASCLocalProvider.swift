@@ -144,6 +144,10 @@ class ASCLocalProvider: ASCFileProviderProtocol & ASCSortableFileProviderProtoco
                     return filter(list: list, byFileExtensions: ASCConstants.FileExtensions.presentations)
                 case .spreadsheets:
                     return filter(list: list, byFileExtensions: ASCConstants.FileExtensions.spreadsheets)
+                case .formTemplates:
+                    return filter(list: list, byFileExtensions: ASCConstants.FileExtensions.formTemplates)
+                case .forms:
+                    return filter(list: list, byFileExtensions: ASCConstants.FileExtensions.forms)
                 case .images:
                     return filter(list: list, byFileExtensions: ASCConstants.FileExtensions.images)
                 case .archive:

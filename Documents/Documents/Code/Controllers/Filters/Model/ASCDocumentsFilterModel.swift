@@ -89,6 +89,8 @@ enum ApiFilterType: String {
     case documents
     case presentations
     case spreadsheets
+    case formTemplates
+    case forms
     case images
     case me
     case user
@@ -123,6 +125,10 @@ enum ApiFilterType: String {
             return "PresentationsOnly"
         case .spreadsheets:
             return "SpreadsheetsOnly"
+        case .formTemplates:
+            return "18"
+        case .forms:
+            return "19"
         case .images:
             return "ImagesOnly"
         case .me, .user:
@@ -187,6 +193,8 @@ enum FiltersName: String, CaseIterable {
     case documents
     case presentations
     case spreadsheets
+    case formTemplates
+    case forms
     case images
     case media
     case archives
@@ -218,6 +226,10 @@ enum FiltersName: String, CaseIterable {
             return NSLocalizedString("Presentations", comment: "")
         case .spreadsheets:
             return NSLocalizedString("Spreadsheets", comment: "")
+        case .formTemplates:
+            return NSLocalizedString("Form templates", comment: "")
+        case .forms:
+            return NSLocalizedString("Forms", comment: "")
         case .images:
             return NSLocalizedString("Images", comment: "")
         case .media:

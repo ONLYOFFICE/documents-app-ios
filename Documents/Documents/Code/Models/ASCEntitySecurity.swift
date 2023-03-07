@@ -9,7 +9,45 @@
 import Foundation
 import ObjectMapper
 
-class ASCEntittySecurity: Mappable {
+class ASCFileSecurity: Mappable {
+    var read: Bool = false
+    var comment: Bool = false
+    var fillForms: Bool = false
+    var review: Bool = false
+    var edit: Bool = false
+    var delete: Bool = false
+    var customFilter: Bool = false
+    var rename: Bool = false
+    var readHistory: Bool = false
+    var lock: Bool = false
+    var editHistory: Bool = false
+    var copy: Bool = false
+    var move: Bool = false
+    var duplicate: Bool = false
+
+    init() {}
+
+    required init?(map: Map) {}
+
+    func mapping(map: Map) {
+        read <- map["Read"]
+        comment <- map["Comment"]
+        fillForms <- map["FillForms"]
+        review <- map["Review"]
+        edit <- map["Edit"]
+        delete <- map["Delete"]
+        customFilter <- map["CustomFilter"]
+        rename <- map["Rename"]
+        readHistory <- map["ReadHistory"]
+        lock <- map["Lock"]
+        editHistory <- map["EditHistory"]
+        copy <- map["Copy"]
+        move <- map["Move"]
+        duplicate <- map["Duplicate"]
+    }
+}
+
+class ASCFolderSecurity: Mappable {
     var read: Bool = false
     var create: Bool = false
     var delete: Bool = false

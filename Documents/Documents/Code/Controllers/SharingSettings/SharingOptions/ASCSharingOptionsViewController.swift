@@ -20,8 +20,8 @@ class ASCSharingOptionsViewController: ASCBaseTableViewController {
         return folder.roomType != nil
     }
 
-    private var roomSecurity: ASCEntittySecurity {
-        guard let folder = entity as? ASCFolder else { return ASCEntittySecurity() }
+    private var roomSecurity: ASCFolderSecurity {
+        guard let folder = entity as? ASCFolder else { return ASCFolderSecurity() }
         return folder.security
     }
 

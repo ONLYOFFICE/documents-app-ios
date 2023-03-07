@@ -892,7 +892,12 @@ class ASCOnlyofficeProvider: ASCFileProviderProtocol & ASCSortableFileProviderPr
     func allowCopy(entity: AnyObject?) -> Bool {
         guard let entity = entity as? ASCEntity, allowRead(entity: entity) else { return false }
         guard isInRoom else { return true }
-        return entity.entitySecurity.copyTo
+        if let folder = entity as? ASCFolder {
+            return folder.security.copyTo
+        } else if let file = entity as? ASCFile {
+            return file.security.copy
+        }
+        return false
     }
 
     func allowEdit(entity: AnyObject?) -> Bool {
@@ -952,16 +957,16 @@ class ASCOnlyofficeProvider: ASCFileProviderProtocol & ASCSortableFileProviderPr
             }
         }
 
-        let security: ASCEntittySecurity = {
-            guard let file = file else { return folder?.security ?? .init() }
-            return file.security
-        }()
+        let folderSecurity = folder?.security
+        let fileSecurity = file?.security
 
         let securityAllowEdit: Bool = {
             guard folder != nil else {
-                return security.editAccess
+                return fileSecurity?.edit == true
             }
-            return security.read && security.rename && security.create
+            return folderSecurity?.read == true
+                && folderSecurity?.rename == true
+                && folderSecurity?.create == true
         }()
 
         if isInRoom, !securityAllowEdit, folder?.rootFolderType != .onlyofficeUser {
@@ -1600,16 +1605,5 @@ private extension ASCFiltersControllerProtocol {
             return .docspace
         }
         return .documents
-    }
-}
-
-private extension ASCEntity {
-    var entitySecurity: ASCEntittySecurity {
-        if let file = self as? ASCFile {
-            return file.security
-        } else if let folder = self as? ASCFolder {
-            return folder.security
-        }
-        return .init()
     }
 }

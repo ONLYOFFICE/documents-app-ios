@@ -34,7 +34,7 @@ class ASCFolder: ASCEntity {
     var device: Bool = false
     var parent: ASCFolder?
     var smallLogo: String?
-    var security: ASCEntittySecurity = .init()
+    var security: ASCFolderSecurity = .init()
     var providerId: String? {
         if isThirdParty {
             return id.components(separatedBy: CharacterSet.decimalDigits.inverted).joined()

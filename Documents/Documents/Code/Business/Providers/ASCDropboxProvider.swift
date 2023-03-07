@@ -101,8 +101,6 @@ class ASCDropboxProvider: ASCFileProviderProtocol & ASCSortableFileProviderProto
     }
 
     func reset() {
-        cancel()
-
         page = 0
         total = 0
         items.removeAll()

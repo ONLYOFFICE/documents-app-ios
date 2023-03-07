@@ -397,6 +397,7 @@ class ASCDocumentsViewController: ASCBaseTableViewController, UIGestureRecognize
     func reset() {
         ASCFileManager.reset()
 
+        provider?.cancel()
         provider?.reset()
         folder = nil
         title = nil
@@ -2524,6 +2525,7 @@ class ASCDocumentsViewController: ASCBaseTableViewController, UIGestureRecognize
                 hud?.hide(animated: false, afterDelay: 1.3)
 
                 if self.isTrash(self.folder) || self.folder?.rootFolderType == .onlyofficeRoomArchived {
+                    self.provider?.cancel()
                     self.provider?.reset()
                     self.tableView.reloadData()
                 }
@@ -2949,6 +2951,7 @@ extension ASCDocumentsViewController {
             navigationController?.pushViewController(controller, animated: true)
 
             controller.provider = provider?.copy()
+            controller.provider?.cancel()
             controller.provider?.reset()
             controller.folder = folder
             controller.title = folder.title
@@ -3082,8 +3085,6 @@ extension ASCDocumentsViewController: UISearchControllerDelegate {
     }
 
     func didDismissSearchController(_ searchController: UISearchController) {
-        OnlyofficeApiClient.shared.cancelAll()
-
         provider?.reset()
         tableView.reloadData()
 

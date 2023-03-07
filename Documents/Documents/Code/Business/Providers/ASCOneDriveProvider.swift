@@ -142,8 +142,6 @@ extension ASCOneDriveProvider: ASCFileProviderProtocol {
     }
 
     func reset() {
-        cancel()
-
         page = 0
         total = 0
         items.removeAll()

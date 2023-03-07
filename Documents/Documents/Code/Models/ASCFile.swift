@@ -25,7 +25,7 @@ class ASCFile: ASCEntity {
     var createdBy: ASCUser?
     var device: Bool = false
     var parent: ASCFolder?
-    var security: ASCEntittySecurity = .init()
+    var security: ASCFileSecurity = .init()
     var denyDownload: Bool = false
 
     override init() {
@@ -99,6 +99,7 @@ class ASCFile: ASCEntity {
         createdBy <- map["createdBy"]
         device <- map["device"]
         denyDownload <- map["denyDownload"]
+        security <- map["security"]
 
         // Internal
         device <- map["device"]

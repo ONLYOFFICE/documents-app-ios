@@ -948,6 +948,10 @@ class ASCOnlyofficeProvider: ASCFileProviderProtocol & ASCSortableFileProviderPr
                 return false
             }
 
+            if isRoot(folder: folder), folder.rootFolderType == .onlyofficeUser, ASCOnlyofficeCategory.isDocSpace(type: folder.rootFolderType) {
+                return true
+            }
+
             if folder.isRoomListFolder {
                 return false
             }

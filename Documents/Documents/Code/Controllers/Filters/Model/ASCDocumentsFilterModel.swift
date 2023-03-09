@@ -18,7 +18,13 @@ struct ASCDocumentsFilterModel: FilterTypeConvirtable {
     var filterType: ApiFilterType
 
     func convert() -> FilterViewModel {
-        FilterViewModel(id: filterType.rawValue, isSelected: isSelected, filterName: filterName, isFilterResetBtnShowen: false, defaultTextColor: .black)
+        FilterViewModel(
+            id: filterType.rawValue,
+            isSelected: isSelected,
+            filterName: filterName,
+            isFilterResetBtnShowen: false,
+            defaultTextColor: Asset.Colors.textSubtitle.color
+        )
     }
 }
 
@@ -33,7 +39,7 @@ struct ActionFilterModel: FilterTypeConvirtable {
                         isSelected: selectedName != nil,
                         filterName: selectedName ?? defaultName,
                         isFilterResetBtnShowen: selectedName != nil,
-                        defaultTextColor: Asset.Colors.brend.color)
+                        defaultTextColor: Asset.Colors.textSubtitle.color)
     }
 }
 

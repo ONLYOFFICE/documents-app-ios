@@ -900,6 +900,19 @@ class ASCOnlyofficeProvider: ASCFileProviderProtocol & ASCSortableFileProviderPr
         return false
     }
 
+    func allowRename(entity: AnyObject?) -> Bool {
+        guard let parentFolder = folder, ASCOnlyofficeCategory.isDocSpace(type: parentFolder.rootFolderType) else {
+            return allowEdit(entity: entity)
+        }
+        if let file = entity as? ASCFile {
+            return file.security.rename
+        }
+        if let folder = entity as? ASCFolder {
+            return folder.security.rename
+        }
+        return false
+    }
+
     func allowAdd(toFolder folder: ASCFolder?) -> Bool {
         guard let folder = folder, ASCOnlyofficeCategory.isDocSpace(type: folder.rootFolderType) else { return allowEdit(entity: folder) }
         if folder.rootFolderType == .onlyofficeUser {
@@ -1028,11 +1041,19 @@ class ASCOnlyofficeProvider: ASCFileProviderProtocol & ASCSortableFileProviderPr
             return false
         }
 
+        if let file = file, let folder = self.folder, ASCOnlyofficeCategory.isDocSpace(type: folder.rootFolderType) {
+            return file.security.delete
+        }
+
         if let folder = self.folder, folder.rootFolderType == .onlyofficeRoomArchived, !isRoot(folder: folder) {
             return false
         }
 
         if isRoot(folder: parentFolder), let folder = folder, folder.rootFolderType == .onlyofficeRoomArchived {
+            return folder.security.delete
+        }
+
+        if let folder = self.folder, ASCOnlyofficeCategory.isDocSpace(type: folder.rootFolderType) {
             return folder.security.delete
         }
 
@@ -1128,6 +1149,7 @@ class ASCOnlyofficeProvider: ASCFileProviderProtocol & ASCSortableFileProviderPr
             let canDelete = allowDelete(entity: file)
             let canShare = allowShare(entity: file)
             let canDownload = !file.denyDownload
+            let canRename = allowRename(entity: file)
             let isTrash = file.rootFolderType == .onlyofficeTrash
             let isShared = file.rootFolderType == .onlyofficeShare
             let isProjects = file.rootFolderType == .onlyofficeBunch || file.rootFolderType == .onlyofficeProjects
@@ -1166,7 +1188,7 @@ class ASCOnlyofficeProvider: ASCFileProviderProtocol & ASCSortableFileProviderPr
                 }
             }
 
-            if canEdit {
+            if canRename {
                 entityActions.insert(.rename)
             }
 
@@ -1207,6 +1229,7 @@ class ASCOnlyofficeProvider: ASCFileProviderProtocol & ASCSortableFileProviderPr
             let canCopy = allowCopy(entity: folder)
             let canDelete = allowDelete(entity: folder)
             let canShare = allowShare(entity: folder)
+            let canRename = allowRename(entity: folder)
             let isProjects = folder.rootFolderType == .onlyofficeBunch || folder.rootFolderType == .onlyofficeProjects
             let isRoomFolder = isFolderInRoom(folder: folder) && folder.roomType != nil
 
@@ -1217,7 +1240,7 @@ class ASCOnlyofficeProvider: ASCFileProviderProtocol & ASCSortableFileProviderPr
                 return [.delete, .restore]
             }
 
-            if canEdit, !isRoomFolder {
+            if canRename, !isRoomFolder {
                 entityActions.insert(.rename)
             }
 

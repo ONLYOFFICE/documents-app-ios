@@ -913,6 +913,14 @@ class ASCOnlyofficeProvider: ASCFileProviderProtocol & ASCSortableFileProviderPr
         return false
     }
 
+    func allowAdd(toFolder folder: ASCFolder?) -> Bool {
+        guard let folder = folder, ASCOnlyofficeCategory.isDocSpace(type: folder.rootFolderType) else { return allowEdit(entity: folder) }
+        if folder.rootFolderType == .onlyofficeUser {
+            return true
+        }
+        return !folder.isRoomListFolder && folder.security.create
+    }
+
     func allowEdit(entity: AnyObject?) -> Bool {
         let file = entity as? ASCFile
         let folder = entity as? ASCFolder
@@ -1039,6 +1047,10 @@ class ASCOnlyofficeProvider: ASCFileProviderProtocol & ASCSortableFileProviderPr
 
         if let folder = self.folder, folder.rootFolderType == .onlyofficeRoomArchived, !isRoot(folder: folder) {
             return false
+        }
+
+        if isRoot(folder: parentFolder), let folder = folder, folder.rootFolderType == .onlyofficeRoomArchived {
+            return folder.security.delete
         }
 
         if let folder = self.folder, ASCOnlyofficeCategory.isDocSpace(type: folder.rootFolderType) {
@@ -1267,7 +1279,7 @@ class ASCOnlyofficeProvider: ASCFileProviderProtocol & ASCSortableFileProviderPr
                 }
             }
 
-            if isRoomFolder, isArchiveCategory {
+            if isRoomFolder, isArchiveCategory, folder.security.move {
                 entityActions.insert(.unarchive)
             }
         }

@@ -728,9 +728,7 @@ class ASCDocumentsViewController: ASCBaseTableViewController, UIGestureRecognize
     }
 
     private func createAddBarButton() -> UIBarButtonItem? {
-        let showAddButton = provider?.allowEdit(entity: folder) ?? false
-
-        guard showAddButton else { return nil }
+        guard provider?.allowAdd(toFolder: folder) == true else { return nil }
 
         if #available(iOS 13.0, *) {
             let config = UIImage.SymbolConfiguration(pointSize: 22, weight: .regular)
@@ -839,7 +837,7 @@ class ASCDocumentsViewController: ASCBaseTableViewController, UIGestureRecognize
         var items: [UIBarButtonItem] = []
 
         // Move
-        if !isTrash && !isDocSpaceArchive && !isDocSpaceArchiveRoomContent && !isDocSpaceRoomShared && (isDevice || !(isShared || isProjectRoot || isGuest)) {
+        if !isTrash, !isDocSpaceArchive, !isDocSpaceArchiveRoomContent, !isDocSpaceRoomShared, isDevice || !(isShared || isProjectRoot || isGuest) {
             items.append(createBarButton(Asset.Images.barMove.image, #selector(onMoveSelected)))
             items.append(barFlexSpacer)
         }
@@ -857,7 +855,7 @@ class ASCDocumentsViewController: ASCBaseTableViewController, UIGestureRecognize
         }
 
         // Restore room
-        if isDocSpaceArchive {
+        if isDocSpaceArchive, folder.security.move {
             items.append(createBarButton(Asset.Images.barRecover.image, #selector(onRoomRestore)))
             items.append(barFlexSpacer)
         }
@@ -869,7 +867,7 @@ class ASCDocumentsViewController: ASCBaseTableViewController, UIGestureRecognize
         }
 
         // Remove
-        if isDevice || !(isShared || isProjectRoot || isGuest || isRecent || isDocSpaceRoomShared || isDocSpaceArchiveRoomContent) {
+        if isDevice || !(isShared || isProjectRoot || isGuest || isRecent || isDocSpaceRoomShared || isDocSpaceArchiveRoomContent || isDocSpaceArchive) || (isDocSpaceArchive && canRemoveLeastOneItem()) {
             items.append(createBarButton(Asset.Images.barDelete.image, #selector(onTrashSelected)))
             items.append(barFlexSpacer)
         }
@@ -904,7 +902,7 @@ class ASCDocumentsViewController: ASCBaseTableViewController, UIGestureRecognize
         }
 
         // Remove all rooms
-        if isDocSpaceArchive {
+        if isDocSpaceArchive, canRemoveAllItems() {
             items.append(UIBarButtonItem(image: Asset.Images.barDeleteAll.image, style: .plain, target: self, action: #selector(onRemoveAllArchivedRooms)))
             items.append(barFlexSpacer)
         }
@@ -1358,7 +1356,7 @@ class ASCDocumentsViewController: ASCBaseTableViewController, UIGestureRecognize
     private func updateNavBar() {
         let hasError = errorView?.superview != nil
 
-        addBarButton?.isEnabled = !hasError && provider?.allowEdit(entity: folder) ?? false
+        addBarButton?.isEnabled = !hasError && provider?.allowAdd(toFolder: folder) ?? false
         sortSelectBarButton?.isEnabled = !hasError && total > 0
         sortBarButton?.isEnabled = !hasError && total > 0
         selectBarButton?.isEnabled = !hasError && total > 0
@@ -2681,6 +2679,22 @@ class ASCDocumentsViewController: ASCBaseTableViewController, UIGestureRecognize
 
     @objc func onTrashSelected(_ sender: Any) {
         onTrash(ids: selectedIds, sender, notificationType: .default)
+    }
+
+    private func canRemoveLeastOneItem() -> Bool {
+        let folders = tableData.compactMap { $0 as? ASCFolder }
+        let files = tableData.compactMap { $0 as? ASCFile }
+        return folders.contains(where: { $0.security.delete }) || files.contains(where: { $0.security.delete })
+    }
+
+    private func canRemoveAllItems() -> Bool {
+        let canRemoveAllFolders: Bool = tableData.compactMap { $0 as? ASCFolder }.reduce(true) { partialResult, folder in
+            partialResult && folder.security.delete
+        }
+        let canRemoveAllFiles = tableData.compactMap { $0 as? ASCFile }.reduce(true) { partialResult, file in
+            partialResult && file.security.delete
+        }
+        return canRemoveAllFolders && canRemoveAllFiles
     }
 
     private func onTrash(ids: Set<String>, _ sender: Any, notificationType: NotificationType) {

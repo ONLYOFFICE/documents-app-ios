@@ -728,9 +728,7 @@ class ASCDocumentsViewController: ASCBaseTableViewController, UIGestureRecognize
     }
 
     private func createAddBarButton() -> UIBarButtonItem? {
-        let showAddButton = provider?.allowEdit(entity: folder) ?? false
-
-        guard showAddButton else { return nil }
+        guard provider?.allowAdd(toFolder: folder) == true else { return nil }
 
         if #available(iOS 13.0, *) {
             let config = UIImage.SymbolConfiguration(pointSize: 22, weight: .regular)
@@ -1358,7 +1356,7 @@ class ASCDocumentsViewController: ASCBaseTableViewController, UIGestureRecognize
     private func updateNavBar() {
         let hasError = errorView?.superview != nil
 
-        addBarButton?.isEnabled = !hasError && provider?.allowEdit(entity: folder) ?? false
+        addBarButton?.isEnabled = !hasError && provider?.allowAdd(toFolder: folder) ?? false
         sortSelectBarButton?.isEnabled = !hasError && total > 0
         sortBarButton?.isEnabled = !hasError && total > 0
         selectBarButton?.isEnabled = !hasError && total > 0

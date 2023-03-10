@@ -900,6 +900,14 @@ class ASCOnlyofficeProvider: ASCFileProviderProtocol & ASCSortableFileProviderPr
         return false
     }
 
+    func allowAdd(toFolder folder: ASCFolder?) -> Bool {
+        guard let folder = folder, ASCOnlyofficeCategory.isDocSpace(type: folder.rootFolderType) else { return allowEdit(entity: folder) }
+        if folder.rootFolderType == .onlyofficeUser {
+            return true
+        }
+        return !folder.isRoomListFolder && folder.security.create
+    }
+
     func allowEdit(entity: AnyObject?) -> Bool {
         let file = entity as? ASCFile
         let folder = entity as? ASCFolder

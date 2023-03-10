@@ -1024,6 +1024,10 @@ class ASCOnlyofficeProvider: ASCFileProviderProtocol & ASCSortableFileProviderPr
             return false
         }
 
+        if isRoot(folder: parentFolder), let folder = folder, folder.rootFolderType == .onlyofficeRoomArchived {
+            return folder.security.delete
+        }
+
         var access = (file != nil) ? file?.access : folder?.access
 
         if folder != nil, folder?.id == parentFolder?.id {
@@ -1244,7 +1248,7 @@ class ASCOnlyofficeProvider: ASCFileProviderProtocol & ASCSortableFileProviderPr
                 }
             }
 
-            if isRoomFolder, isArchiveCategory {
+            if isRoomFolder, isArchiveCategory, folder.security.move {
                 entityActions.insert(.unarchive)
             }
         }

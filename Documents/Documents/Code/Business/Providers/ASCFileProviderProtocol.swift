@@ -122,6 +122,7 @@ protocol ASCFileProviderProtocol {
     func allowAdd(toFolder folder: ASCFolder?) -> Bool
     func allowRead(entity: AnyObject?) -> Bool
     func allowEdit(entity: AnyObject?) -> Bool
+    func allowComment(entity: AnyObject?) -> Bool
     func allowDelete(entity: AnyObject?) -> Bool
     func actions(for entity: ASCEntity?) -> ASCEntityActions
 
@@ -168,6 +169,7 @@ extension ASCFileProviderProtocol {
     func transfer(items: [ASCEntity], to folder: ASCFolder, move: Bool, overwrite: Bool, handler: ASCEntityProgressHandler?) { var cancel = false; handler?(.end, 1, nil, nil, &cancel) }
 
     func allowAdd(toFolder folder: ASCFolder?) -> Bool { return allowEdit(entity: folder) }
+    func allowComment(entity: AnyObject?) -> Bool { return allowEdit(entity: entity) }
     func allowRead(entity: AnyObject?) -> Bool { return false }
     func allowEdit(entity: AnyObject?) -> Bool { return false }
     func allowDelete(entity: AnyObject?) -> Bool { return false }

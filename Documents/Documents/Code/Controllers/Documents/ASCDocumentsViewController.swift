@@ -2977,7 +2977,7 @@ extension ASCDocumentsViewController {
                 if ASCConstants.FileExtensions.documents.contains(fileExt) {
                     open(file: file, viewMode: true)
                 } else {
-                    open(file: file, viewMode: !provider.allowEdit(entity: file))
+                    open(file: file, viewMode: !(provider.allowEdit(entity: file) || provider.allowComment(entity: file)))
                 }
             } else {
                 open(file: file, viewMode: !provider.allowEdit(entity: file))

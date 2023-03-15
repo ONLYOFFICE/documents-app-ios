@@ -921,6 +921,11 @@ class ASCOnlyofficeProvider: ASCFileProviderProtocol & ASCSortableFileProviderPr
         return !folder.isRoomListFolder && folder.security.create
     }
 
+    func allowComment(entity: AnyObject?) -> Bool {
+        guard let file = entity as? ASCFile else { return allowEdit(entity: entity) }
+        return file.security.comment
+    }
+
     func allowEdit(entity: AnyObject?) -> Bool {
         let file = entity as? ASCFile
         let folder = entity as? ASCFolder

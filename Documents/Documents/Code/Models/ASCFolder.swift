@@ -125,4 +125,8 @@ extension ASCFolder {
     var isRoomListFolder: Bool {
         isRoot && ASCOnlyofficeCategory.hasDocSpaceRootRoomsList(type: rootFolderType)
     }
+
+    var isRoomListSubfolder: Bool {
+        ASCOnlyofficeCategory.hasDocSpaceRootRoomsList(type: rootFolderType) && !isRoomListFolder
+    }
 }

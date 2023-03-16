@@ -808,8 +808,8 @@ class ASCDocumentsViewController: ASCBaseTableViewController, UIGestureRecognize
         let isDocSpaceArchiveRoomContent = folder.rootFolderType == .onlyofficeRoomArchived && !isRoot
         let isDocSpaceRoomShared = isRoomList && folder.rootFolderType == .onlyofficeRoomShared
         let isInfoShowing = isDocSpaceRoomShared && selectedIds.count <= 1
-        let isNeededUpdateToolBarOnSelection = isDocSpaceRoomShared
-        let isNeededUpdateToolBarOnDeselection = isDocSpaceRoomShared
+        let isNeededUpdateToolBarOnSelection = isDocSpaceRoomShared || folder.isRoomListSubfolder
+        let isNeededUpdateToolBarOnDeselection = isDocSpaceRoomShared || folder.isRoomListSubfolder
 
         events.removeListeners(eventNameToRemoveOrNil: "item:didSelect")
         events.removeListeners(eventNameToRemoveOrNil: "item:didDeselect")
@@ -838,14 +838,28 @@ class ASCDocumentsViewController: ASCBaseTableViewController, UIGestureRecognize
 
         // Move
         if !isTrash, !isDocSpaceArchive, !isDocSpaceArchiveRoomContent, !isDocSpaceRoomShared, isDevice || !(isShared || isProjectRoot || isGuest) {
-            items.append(createBarButton(Asset.Images.barMove.image, #selector(onMoveSelected)))
-            items.append(barFlexSpacer)
+            let addMoveBtnCompletion: () -> Void = { [self] in
+                items.append(createBarButton(Asset.Images.barMove.image, #selector(onMoveSelected)))
+                items.append(barFlexSpacer)
+            }
+            if folder.isRoomListSubfolder {
+                canMoveAllSelectedItems() ? addMoveBtnCompletion() : nil
+            } else {
+                addMoveBtnCompletion()
+            }
         }
 
         // Copy
         if !isTrash, !isRoomList {
-            items.append(createBarButton(Asset.Images.barCopy.image, #selector(onCopySelected)))
-            items.append(barFlexSpacer)
+            let addCopyBtnCompletion: () -> Void = { [self] in
+                items.append(createBarButton(Asset.Images.barCopy.image, #selector(onCopySelected)))
+                items.append(barFlexSpacer)
+            }
+            if folder.isRoomListSubfolder {
+                canCopyAllSelectedItems() ? addCopyBtnCompletion() : nil
+            } else {
+                addCopyBtnCompletion()
+            }
         }
 
         // Restore
@@ -868,8 +882,16 @@ class ASCDocumentsViewController: ASCBaseTableViewController, UIGestureRecognize
 
         // Remove
         if isDevice || !(isShared || isProjectRoot || isGuest || isRecent || isDocSpaceRoomShared || isDocSpaceArchiveRoomContent || isDocSpaceArchive) || (isDocSpaceArchive && canRemoveLeastOneItem()) {
-            items.append(createBarButton(Asset.Images.barDelete.image, #selector(onTrashSelected)))
-            items.append(barFlexSpacer)
+            let addRemoveBtnCompletion: () -> Void = { [self] in
+                items.append(createBarButton(Asset.Images.barDelete.image, #selector(onTrashSelected)))
+                items.append(barFlexSpacer)
+            }
+
+            if folder.isRoomListSubfolder {
+                canRemoveAllSelectedItems() ? addRemoveBtnCompletion() : nil
+            } else {
+                addRemoveBtnCompletion()
+            }
         }
 
         // Info
@@ -2682,9 +2704,24 @@ class ASCDocumentsViewController: ASCBaseTableViewController, UIGestureRecognize
     }
 
     private func canRemoveLeastOneItem() -> Bool {
+        canPerformActionOnLeastOneItem(fileKeyPathSecurity: \.delete, folderKeyPathSecurity: \.delete)
+    }
+
+    private func canCopyLeastOneItem() -> Bool {
+        canPerformActionOnLeastOneItem(fileKeyPathSecurity: \.copy, folderKeyPathSecurity: \.copy)
+    }
+
+    private func canMoveLeastOneItem() -> Bool {
+        canPerformActionOnLeastOneItem(fileKeyPathSecurity: \.move, folderKeyPathSecurity: \.move)
+    }
+
+    private func canPerformActionOnLeastOneItem(fileKeyPathSecurity: KeyPath<ASCFileSecurity, Bool>,
+                                                folderKeyPathSecurity: KeyPath<ASCFolderSecurity, Bool>) -> Bool
+    {
         let folders = tableData.compactMap { $0 as? ASCFolder }
         let files = tableData.compactMap { $0 as? ASCFile }
-        return folders.contains(where: { $0.security.delete }) || files.contains(where: { $0.security.delete })
+        return folders.contains(where: { $0.security[keyPath: folderKeyPathSecurity] })
+            || files.contains(where: { $0.security[keyPath: fileKeyPathSecurity] })
     }
 
     private func canRemoveAllItems() -> Bool {
@@ -2695,6 +2732,38 @@ class ASCDocumentsViewController: ASCBaseTableViewController, UIGestureRecognize
             partialResult && file.security.delete
         }
         return canRemoveAllFolders && canRemoveAllFiles
+    }
+
+    private func canRemoveAllSelectedItems() -> Bool {
+        guard selectedIds.count > 0 else { return canRemoveLeastOneItem() }
+        return canPerformActionOnSelectedItems(fileKeyPathSecurity: \.delete, folderKeyPathSecurity: \.delete)
+    }
+
+    private func canCopyAllSelectedItems() -> Bool {
+        guard selectedIds.count > 0 else { return canCopyLeastOneItem() }
+        return canPerformActionOnSelectedItems(fileKeyPathSecurity: \.copy, folderKeyPathSecurity: \.copy)
+    }
+
+    private func canMoveAllSelectedItems() -> Bool {
+        guard selectedIds.count > 0 else { return canMoveLeastOneItem() }
+        return canPerformActionOnSelectedItems(fileKeyPathSecurity: \.move, folderKeyPathSecurity: \.move)
+    }
+
+    private func canPerformActionOnSelectedItems(fileKeyPathSecurity: KeyPath<ASCFileSecurity, Bool>,
+                                                 folderKeyPathSecurity: KeyPath<ASCFolderSecurity, Bool>) -> Bool
+    {
+        guard selectedIds.count > 0 else { return true }
+        let canPerformActionOnFolders = tableData.filter { selectedIds.contains($0.uid) }
+            .compactMap { $0 as? ASCFolder }
+            .reduce(true) { partialResult, folder in
+                folder.security[keyPath: folderKeyPathSecurity] && partialResult
+            }
+        let canPerformActionOnFiles = tableData.filter { selectedIds.contains($0.uid) }
+            .compactMap { $0 as? ASCFile }
+            .reduce(true) { partialResult, file in
+                file.security[keyPath: fileKeyPathSecurity] && partialResult
+            }
+        return canPerformActionOnFolders && canPerformActionOnFiles
     }
 
     private func onTrash(ids: Set<String>, _ sender: Any, notificationType: NotificationType) {

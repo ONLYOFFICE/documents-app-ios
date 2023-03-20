@@ -144,13 +144,31 @@ class ASCLocalProvider: ASCFileProviderProtocol & ASCSortableFileProviderProtoco
                     return filter(list: list, byFileExtensions: ASCConstants.FileExtensions.presentations)
                 case .spreadsheets:
                     return filter(list: list, byFileExtensions: ASCConstants.FileExtensions.spreadsheets)
+                case .formTemplates:
+                    return filter(list: list, byFileExtensions: ASCConstants.FileExtensions.formTemplates)
+                case .forms:
+                    return filter(list: list, byFileExtensions: ASCConstants.FileExtensions.forms)
                 case .images:
                     return filter(list: list, byFileExtensions: ASCConstants.FileExtensions.images)
                 case .archive:
                     return filter(list: list, byFileExtensions: ASCConstants.FileExtensions.archives)
                 case .media:
                     return filter(list: list, byFileExtensions: ASCConstants.FileExtensions.videos)
-                case .none, .user, .group, .byExtension, .excludeSubfolders:
+                case .none,
+                     .me,
+                     .user,
+                     .group,
+                     .byExtension,
+                     .excludeSubfolders,
+                     .customRoom,
+                     .fillingFormRoom,
+                     .collaborationRoom,
+                     .reviewRoom,
+                     .viewOnlyRoom,
+                     .dropBox,
+                     .googleDrive,
+                     .oneDrive,
+                     .box:
                     return list
                 }
             }(commonList)
@@ -767,22 +785,33 @@ class ASCLocalProvider: ASCFileProviderProtocol & ASCSortableFileProviderProtoco
 
     // MARK: - Open file
 
-    func open(file: ASCFile, openViewMode: Bool, canEdit: Bool) {
+    func open(file: ASCFile, openMode: ASCDocumentOpenMode, canEdit: Bool) {
         let title = file.title
         let fileExt = title.fileExtension().lowercased()
         let allowOpen = ASCConstants.FileExtensions.allowEdit.contains(fileExt)
 
         if allowOpen {
-            let editMode = !openViewMode && UIDevice.allowEditor
             let openHandler = delegate?.openProgress(file: file, title: NSLocalizedString("Processing", comment: "Caption of the processing") + "...", 0.15)
             let closeHandler = delegate?.closeProgress(file: file, title: NSLocalizedString("Saving", comment: "Caption of the processing"))
+            let renameHandler: ASCEditorManagerRenameHandler = { file, title, complation in
+                guard let file = file else { complation(false); return }
+
+                self.rename(file, to: title) { provider, result, success, error in
+                    if let file = result as? ASCFile {
+                        complation(file.title.fileName() == title)
+                    } else {
+                        complation(false)
+                    }
+                }
+            }
 
             ASCEditorManager.shared.editLocal(
                 file,
-                openViewMode: !editMode,
+                openMode: openMode,
                 canEdit: canEdit && UIDevice.allowEditor,
                 openHandler: openHandler,
-                closeHandler: closeHandler
+                closeHandler: closeHandler,
+                renameHandler: renameHandler
             )
         }
     }

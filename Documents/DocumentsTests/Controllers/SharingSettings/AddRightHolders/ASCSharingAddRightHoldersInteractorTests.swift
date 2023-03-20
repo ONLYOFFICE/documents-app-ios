@@ -11,6 +11,8 @@ import XCTest
 
 class ASCSharingAddRightHoldersInteractorTests: XCTestCase {
     var sut: ASCSharingAddRightHoldersInteractor!
+    var apiWorker: MockShareSettingsAPIWorker!
+    var networkingRequestManager: NetworkingRequestingProtocol!
     var dataStore: ASCSharingAddRightHoldersRAMDataStore! {
         didSet {
             sut.dataStore = dataStore
@@ -19,7 +21,10 @@ class ASCSharingAddRightHoldersInteractorTests: XCTestCase {
 
     override func setUpWithError() throws {
         try? super.setUpWithError()
-        sut = ASCSharingAddRightHoldersInteractor()
+
+        apiWorker = MockShareSettingsAPIWorker()
+        networkingRequestManager = MockNetworkRequesting()
+        sut = ASCSharingAddRightHoldersInteractor(apiWorker: apiWorker, networkingRequestManager: networkingRequestManager)
         dataStore = ASCSharingAddRightHoldersRAMDataStore()
     }
 
@@ -27,6 +32,8 @@ class ASCSharingAddRightHoldersInteractorTests: XCTestCase {
         dataStore = nil
         sut.dataStore = nil
         sut = nil
+        apiWorker = nil
+        networkingRequestManager = nil
         try? super.tearDownWithError()
     }
 
@@ -79,5 +86,49 @@ class ASCSharingAddRightHoldersInteractorTests: XCTestCase {
         group.id = id
         group.name = name
         return group
+    }
+}
+
+extension ASCSharingAddRightHoldersInteractorTests {
+    class MockSharingOptionsPresentationLogic: ASCSharingOptionsPresentationLogic {
+        func presentData(response: ASCSharingOptions.Model.Response.ResponseType) {}
+    }
+
+    class MockShareSettingsAPIWorker: ASCShareSettingsAPIWorkerProtocol {
+        func convertToParams(shareItems: [OnlyofficeShare]) -> [OnlyofficeShareItemRequestModel] {
+            []
+        }
+
+        func convertToParams(items: [(rightHolderId: String, access: ASCShareAccess)]) -> [OnlyofficeShareItemRequestModel] {
+            []
+        }
+
+        func convertToParams(entities: [ASCEntity]) -> [String: [String]]? {
+            nil
+        }
+
+        func makeApiRequest(entity: ASCEntity, for reason: ShareSettingsAPIWorkerReason) -> Endpoint<OnlyofficeResponseArray<OnlyofficeShare>>? {
+            let file = ASCFile()
+            file.id = "Foo"
+            return Endpoint<OnlyofficeResponseArray<OnlyofficeShare>>(path: String(format: OnlyofficeAPI.Path.shareFile, file.id), decode: { _ in
+                OnlyofficeResponseArray<OnlyofficeShare>()
+            })
+        }
+    }
+
+    class MockLinkMaker: ASCEntityLinkMakerProtocol {
+        func make(entity: ASCEntity) -> String? {
+            nil
+        }
+    }
+
+    class MockNetworkRequesting: NetworkingRequestingProtocol {
+        func request<Response>(_ endpoint: Endpoint<Response>, _ parameters: Parameters?, _ completion: ((Response?, NetworkingError?) -> Void)?) {
+            completion?(nil, nil)
+        }
+
+        func request<Response>(_ endpoint: Endpoint<Response>, _ parameters: Parameters?, _ apply: ((MultipartFormData) -> Void)?, _ completion: ((Response?, Double, NetworkingError?) -> Void)?) {
+            completion?(nil, 0, nil)
+        }
     }
 }

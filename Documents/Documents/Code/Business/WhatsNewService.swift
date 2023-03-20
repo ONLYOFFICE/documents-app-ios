@@ -11,23 +11,39 @@ import WhatsNewKit
 final class WhatsNewService {
     class _WhatsNewService {
         class var news: [WhatsNew.Item] {
-            return [
-                WhatsNew.Item(
-                    title: NSLocalizedString("Handwriting recognition", comment: ""),
-                    subtitle: NSLocalizedString("Enter text using handwriting instead of device keyboard. ONLYOFFICE will recognize text and insert it in the document. The feature is available for English only.", comment: ""),
-                    image: Asset.Images.whatsnewFuture2.image
-                ),
-                WhatsNew.Item(
-                    title: NSLocalizedString("Filtering in search", comment: ""),
-                    subtitle: NSLocalizedString("File search became easier with filtering options: by type for local files and by type and author for cloud files.", comment: ""),
-                    image: Asset.Images.whatsnewFuture1.image
-                ),
-                WhatsNew.Item(
-                    title: NSLocalizedString("Document protection", comment: ""),
-                    subtitle: NSLocalizedString("Protect documents with passwords to share them securely with trusted collaborators.", comment: ""),
-                    image: Asset.Images.whatsnewFuture3.image
-                ),
-            ]
+            var whatsNewItems = [WhatsNew.Item]()
+
+            if
+                let fileUrl = Bundle.main.url(forResource: "WhatsNew", withExtension: "bundle"),
+                let whatsNewBundle = Bundle(url: fileUrl)
+            {
+                if
+                    let fileUrl = whatsNewBundle.url(forResource: "WhatsNew", withExtension: "plist"),
+                    let data = try? Data(contentsOf: fileUrl),
+                    let whatsNew = (try? PropertyListSerialization.propertyList(from: data, options: [], format: nil) as? [String: Any]),
+                    let tableName = whatsNew["TableName"] as? String,
+                    let items = whatsNew["Items"] as? [[String: Any]]
+                {
+                    items.forEach { item in
+                        guard
+                            let title = item["Title"] as? String,
+                            let subtitle = item["Subtitle"] as? String,
+                            let imageName = item["Image"] as? String,
+                            let assetPath = whatsNewBundle.path(forResource: imageName, ofType: "pdf", inDirectory: "Assets"),
+                            let image = UIImage(pdfUrl: URL(fileURLWithPath: assetPath))
+                        else { return }
+
+                        whatsNewItems.append(
+                            WhatsNew.Item(
+                                title: NSLocalizedString(title, tableName: tableName, bundle: whatsNewBundle, comment: ""),
+                                subtitle: NSLocalizedString(subtitle, tableName: tableName, bundle: whatsNewBundle, comment: ""),
+                                image: image
+                            )
+                        )
+                    }
+                }
+            }
+            return whatsNewItems
         }
 
         class func presentWhatsNew() {

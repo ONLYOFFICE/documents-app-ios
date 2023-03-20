@@ -6,14 +6,17 @@
 //  Copyright © 2020 Ascensio System SIA. All rights reserved.
 //
 
+import Alamofire
 import Foundation
 import os.log
+import Pulse
 
 var log = ASCLogger()
 
 struct ASCLogger {
     private let osLog: OSLog
     private let s = DispatchSemaphore(value: 1)
+    private let loggerInterceptor = ASCLoggerInterceptor()
 
     enum Level: Int, Comparable {
         case debug = 0
@@ -34,12 +37,20 @@ struct ASCLogger {
             }
         }
 
-        @available(iOS 10.0, *)
         var osLogType: OSLogType {
             switch self {
             case .debug: return .debug
             case .info: return .info
             case .warning: return .default
+            case .error: return .error
+            }
+        }
+
+        var pulsaLoggerLevel: LoggerStore.Level {
+            switch self {
+            case .debug: return .debug
+            case .info: return .info
+            case .warning: return .warning
             case .error: return .error
             }
         }
@@ -53,7 +64,9 @@ struct ASCLogger {
     var hook: Hook?
 
     fileprivate init() {
+        ASCLogIntercepter.shared.delegate = loggerInterceptor
         osLog = OSLog(subsystem: "\(Bundle.main.bundleIdentifier ?? "asc.onlyoffice.app")", category: "Documents")
+        URLSessionProxyDelegate.ascEnableAutomaticRegistration()
     }
 
     private func log(_ level: Level, _ message: Any, _ arguments: [Any], function: String, line: UInt) {
@@ -73,6 +86,8 @@ struct ASCLogger {
         hook?(log, level)
 
         os_log("%@", log: osLog, type: level.osLogType, log)
+
+        pulseLog(level, "\(message)", arguments, function: function, line: line)
     }
 
     private func getPrettyFunction(_ function: String, _ file: String) -> String {
@@ -97,5 +112,56 @@ struct ASCLogger {
 
     func error(_ log: Any, _ arguments: Any..., function: String = #function, file: String = #file, line: UInt = #line) {
         self.log(.error, log, arguments, function: getPrettyFunction(function, file), line: line)
+    }
+}
+
+class ASCLoggerInterceptor: ASCLogInterceptorDelegate {
+    func log(message: String) {
+        LoggerStore.shared.storeMessage(
+            label: "Documents",
+            level: .trace,
+            message: "\(message)",
+            metadata: nil
+        )
+    }
+}
+
+// MARK: - Pulse Logger extensions
+
+extension ASCLogger {
+    private func pulseLog(_ level: Level, _ message: Any, _ arguments: [Any], function: String, line: UInt) {
+        LoggerStore.shared.storeMessage(
+            label: "Documents",
+            level: level.pulsaLoggerLevel,
+            message: "\(message)",
+            metadata: [
+                "function": .string(function),
+                "line": .string("\(line)"),
+                "arguments": .string(arguments.map { String(describing: $0) }.joined(separator: " ")),
+            ]
+        )
+    }
+}
+
+private let sharedNetworkLogger = NetworkLogger()
+
+private extension URLSession {
+    @objc class func asc_pulse_init(configuration: URLSessionConfiguration, delegate: URLSessionDelegate?, delegateQueue: OperationQueue?) -> URLSession {
+        // TODO: Fix [#155](https://github.com/kean/Pulse/issues/155)
+        guard !String(describing: delegate).contains("GTMSessionFetcher") else {
+            return asc_pulse_init(configuration: configuration, delegate: delegate, delegateQueue: delegateQueue)
+        }
+        let delegate = URLSessionProxyDelegate(logger: sharedNetworkLogger, delegate: delegate)
+        return asc_pulse_init(configuration: configuration, delegate: delegate, delegateQueue: delegateQueue)
+    }
+}
+
+extension URLSessionProxyDelegate {
+    static func ascEnableAutomaticRegistration() {
+        if let lhs = class_getClassMethod(URLSession.self, #selector(URLSession.init(configuration:delegate:delegateQueue:))),
+           let rhs = class_getClassMethod(URLSession.self, #selector(URLSession.asc_pulse_init(configuration:delegate:delegateQueue:)))
+        {
+            method_exchangeImplementations(lhs, rhs)
+        }
     }
 }

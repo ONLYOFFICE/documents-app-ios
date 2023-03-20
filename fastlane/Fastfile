@@ -48,7 +48,7 @@ platform :ios do
     scan(
       scheme: "Documents",
       workspace: "ONLYOFFICE-Documents.xcworkspace",
-      devices: ["iPhone 11 Pro"],
+      devices: ["iPhone 14 Pro"],
       clean: true
     )
   end
@@ -96,9 +96,13 @@ platform :ios do
 
     # creates a bump version commit 
     commit_version_bump(
+        xcodeproj: "Documents/Documents.xcodeproj",
         message: "Version bumped to v#{version_number}(#{build_number})",
         settings: true,
-        xcodeproj: "Documents/Documents.xcodeproj"
+        include: [
+          "Documents/Documents/Documents.plist",
+          "Documents/Settings.bundle/Root.plist"
+        ]
     )
 
     # create a local tag with the new version

@@ -20,11 +20,17 @@ class ASCSharingSettingsVerifyRightHoldersView {
     weak var navigationItem: UINavigationItem?
     weak var delegate: ASCSharingSettingsVerifyRightHoldersViewDelegate?
 
-    private lazy var doneBarBtn: UIBarButtonItem = UIBarButtonItem(title: NSLocalizedString("Done", comment: ""), style: .done, target: self, action: #selector(onDoneBarBtnTapped))
+    var isRoom: Bool
 
-    init(view: UIView, tableView: UITableView) {
+    private lazy var doneBarBtn: UIBarButtonItem = {
+        let title = isRoom ? NSLocalizedString("Invite", comment: "") : NSLocalizedString("Done", comment: "")
+        return UIBarButtonItem(title: title, style: .done, target: self, action: #selector(onDoneBarBtnTapped))
+    }()
+
+    init(view: UIView, tableView: UITableView, isRoom: Bool = false) {
         self.view = view
         self.tableView = tableView
+        self.isRoom = isRoom
     }
 
     func configure() {

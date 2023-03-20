@@ -2,13 +2,13 @@
 "Acknowledgements" = "Лицензии";
 
 /* (No Comment) */
-"Enabled" = "Enabled";
+"Enabled" = "Включено";
 
 /* A single strings file, whose title is specified in your preferences schema. The strings files provide the localized content to display to the user for each of your preferences. */
-"Group" = "Group";
+"Group" = "Группа";
 
 /* (No Comment) */
-"Name" = "Name";
+"Name" = "Имя";
 
 /* (No Comment) */
 "none given" = "не предоставлено";
@@ -16,11 +16,3 @@
 /* (No Comment) */
 "Version" = "Версия";
 
-/* (No Comment) */
-"Help improve the product" = "Помочь улучшить продукт";
-
-/* (No Comment) */
-"Help improve the application by automatically sending statistic data." = "Помогите улучшить приложение, автоматически отправив статистические данные.";
-
-/* (No Comment) */
-"Share App Analytics" = "Поделиться аналитикой приложения";

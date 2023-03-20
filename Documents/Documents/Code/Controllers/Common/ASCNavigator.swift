@@ -13,6 +13,7 @@ enum Destination {
 
     case sort(types: [ASCDocumentSortStateType], ascending: Bool, complation: ASCSortViewController.ASCSortComplation?)
     case shareSettings(entity: ASCEntity)
+    case addUsers(entity: ASCEntity)
 
     // MARK: - Login
 
@@ -71,6 +72,17 @@ final class ASCNavigator {
                 sharedViewController.setup(entity: entity)
                 sharedViewController.requestToLoadRightHolders()
             }
+        case let .addUsers(entity):
+            if let addUsersViewController = viewController as? ASCSharingInviteRightHoldersViewController {
+                let addUsersNavigationVC = ASCBaseNavigationController(rootASCViewController: addUsersViewController)
+                if UIDevice.pad {
+                    addUsersNavigationVC.modalPresentationStyle = .formSheet
+                }
+                navigationController?.present(addUsersNavigationVC, animated: true, completion: nil)
+                addUsersViewController.dataStore?.entity = entity
+                addUsersViewController.dataStore?.currentUser = ASCFileManager.onlyofficeProvider?.user
+                addUsersViewController.accessProvider = ASCSharingSettingsAccessProviderFactory().get(entity: entity, isAccessExternal: false)
+            }
         case .onlyofficeConnectPortal:
             navigationController?.viewControllers = [viewController]
         default:
@@ -87,7 +99,11 @@ final class ASCNavigator {
         case .sort:
             return ASCSortViewController.instance()
         case .shareSettings:
-            return ASCSharingOptionsViewController()
+            return ASCSharingOptionsViewController(sourceViewController: navigationController?.viewControllers.last)
+        case .addUsers:
+            let vc = ASCSharingInviteRightHoldersViewController()
+            vc.sourceViewController = navigationController?.viewControllers.last
+            return vc
         case .onlyofficeConnectPortal:
             return ASCConnectPortalViewController.instance()
         case let .onlyofficeSignIn(portal):

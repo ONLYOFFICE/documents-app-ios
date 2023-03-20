@@ -110,7 +110,7 @@
 			<key>other</key>
 			<string>和 %lu 文件</string>
 			<key>zero</key>
-			<string></string>
+			<string> </string>
 		</dict>
 		<key>lu_folders</key>
 		<dict>

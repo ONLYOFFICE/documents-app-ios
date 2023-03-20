@@ -50,6 +50,9 @@ class ASCLogIntercepter {
     }
 
     private func openConsolePipe() {
+        setvbuf(stdout, nil, _IONBF, 0)
+        setvbuf(stderr, nil, _IONBF, 0)
+
         // open a new Pipe to consume the messages on STDOUT and STDERR
         inputPipe = Pipe()
 
@@ -87,6 +90,18 @@ class ASCLogIntercepter {
 
         // state that you want to be notified of any data coming across the pipe
         pipeReadHandle.readInBackgroundAndNotify()
+
+        log.hook = { [weak self] message, level in
+            guard let self else { return }
+            if let logUrl = self.logUrl {
+                self.queue.async(flags: .barrier) {
+                    do {
+                        try message.appendLineToURL(logUrl)
+                    } catch {}
+                }
+                self.delegate?.log(message: message)
+            }
+        }
     }
 
     @objc

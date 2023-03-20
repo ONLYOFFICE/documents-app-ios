@@ -15,23 +15,25 @@ protocol ASCSharingAddRightHoldersBusinessLogic {
 class ASCSharingAddRightHoldersInteractor: ASCSharingAddRightHoldersBusinessLogic {
     var dataStore: ASCSharingAddRightHoldersDataStore?
     var presenter: ASCSharingAddRightHoldersPresentationLogic?
+    var apiWorker: ASCShareSettingsAPIWorkerProtocol
+    var networkingRequestManager: NetworkingRequestingProtocol
+
+    init(apiWorker: ASCShareSettingsAPIWorkerProtocol,
+         networkingRequestManager: NetworkingRequestingProtocol)
+    {
+        self.apiWorker = apiWorker
+        self.networkingRequestManager = networkingRequestManager
+    }
 
     func makeRequest(requestType: ASCSharingAddRightHolders.Model.Request.RequestType) {
         switch requestType {
-        case .loadUsers:
-            OnlyofficeApiClient.request(OnlyofficeAPI.Endpoints.People.all) { [unowned self] response, error in
-
-                if let error = error {
-                    log.error(error)
-                } else if let users = response?.result {
-                    self.dataStore?.users = users
-                    self.dataStore?.users = users
-                    let sharedInfoItems = self.dataStore?.sharedInfoItems ?? []
-                    self.presenter?.presentData(responseType: .presentUsers(.init(users: users,
-                                                                                  sharedEntities: sharedInfoItems,
-                                                                                  entityOwner: self.dataStore?.entityOwner,
-                                                                                  currentUser: self.dataStore?.currentUser)))
-                }
+        case let .loadUsers(preloadRightHolders, hideUsersWhoHasRights):
+            guard preloadRightHolders else {
+                loadUsers(hideUsersWhoHasRights: hideUsersWhoHasRights)
+                return
+            }
+            loadRightHolders { [weak self] in
+                self?.loadUsers(hideUsersWhoHasRights: hideUsersWhoHasRights)
             }
         case .loadGroups: return
             OnlyofficeApiClient.request(OnlyofficeAPI.Endpoints.People.groups) { [unowned self] response, error in
@@ -65,6 +67,41 @@ class ASCSharingAddRightHoldersInteractor: ASCSharingAddRightHoldersBusinessLogi
                 updatedItems.append(item)
             }
             dataStore?.itemsForSharingAdd = updatedItems
+        }
+    }
+
+    private func loadUsers(hideUsersWhoHasRights: Bool) {
+        OnlyofficeApiClient.request(OnlyofficeAPI.Endpoints.People.all) { [unowned self] response, error in
+            if let error = error {
+                log.error(error)
+            } else if let users = response?.result {
+                let users = users.filter { user in
+                    !(self.dataStore?.sharedInfoItems.contains(where: { $0.user?.userId == user.userId }) ?? false)
+                }
+                self.dataStore?.users = users
+                let sharedInfoItems = self.dataStore?.sharedInfoItems ?? []
+                self.presenter?.presentData(responseType: .presentUsers(.init(users: users,
+                                                                              sharedEntities: sharedInfoItems,
+                                                                              entityOwner: self.dataStore?.entityOwner,
+                                                                              currentUser: self.dataStore?.currentUser)))
+            }
+        }
+    }
+
+    private func loadRightHolders(completion: @escaping () -> Void) {
+        guard let entity = dataStore?.entity, let apiRequest = apiWorker.makeApiRequest(entity: entity, for: .get) else {
+            completion()
+            return
+        }
+
+        let params = apiWorker.convertToParams(entities: [entity])
+
+        networkingRequestManager.request(apiRequest, params) { [weak self] response, error in
+            defer { completion() }
+            guard let self = self, error == nil else { return }
+            if let sharedItems = response?.result {
+                self.dataStore?.sharedInfoItems = sharedItems.filter { $0.user != nil || $0.group != nil }
+            }
         }
     }
 

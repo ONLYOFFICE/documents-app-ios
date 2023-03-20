@@ -15,7 +15,7 @@ protocol ASCSharingSettingsVerifyRightHoldersBusinessLogic {
 
 protocol ASCSharingSettingsVerifyRightHoldersDataStore {
     var entity: ASCEntity? { get set }
-    var doneComplerion: () -> Void { get set }
+    var doneCompletion: () -> Void { get set }
 
     var sharedInfoItems: [OnlyofficeShare] { get set }
     var itemsForSharingAdd: [OnlyofficeShare] { get set }
@@ -35,7 +35,7 @@ class ASCSharingSettingsVerifyRightHoldersInteractor: ASCSharingSettingsVerifyRi
         }
     }
 
-    var doneComplerion: () -> Void = {}
+    var doneCompletion: () -> Void = {}
 
     var sharedInfoItems: [OnlyofficeShare] = []
     var itemsForSharingAdd: [OnlyofficeShare] = []
@@ -59,7 +59,7 @@ class ASCSharingSettingsVerifyRightHoldersInteractor: ASCSharingSettingsVerifyRi
 
     func clearData() {
         entity = nil
-        doneComplerion = {}
+        doneCompletion = {}
         sharedInfoItems = []
         itemsForSharingAdd = []
         itemsForSharingRemove = []
@@ -91,19 +91,16 @@ class ASCSharingSettingsVerifyRightHoldersInteractor: ASCSharingSettingsVerifyRi
                 return
             }
 
-            guard let apiRequest = apiWorker.makeApiRequest(entity: entity) else {
+            guard let apiRequest = apiWorker.makeApiRequest(entity: entity, for: .set) else {
                 log.error("Couldn't make an api request on entity")
                 presenter?.presentData(responseType: .presentApplyingShareSettings(.init(error: NSLocalizedString("Something wrong", comment: ""))))
                 return
             }
 
             let itemsForRequest = (itemsForSharingAdd + itemsForSharingRemove + itemsForSharedAccessChange).filter { !$0.locked }
-            let shareRequestModel = OnlyofficeShareRequestModel()
-            shareRequestModel.notify = request.notify ? true : false
-            shareRequestModel.sharingMessage = request.notifyMessage ?? ""
-            shareRequestModel.share = apiWorker.convertToParams(shareItems: itemsForRequest)
+            let json = makeJsonParams(entity: entity, items: itemsForRequest, message: request.notifyMessage)
 
-            OnlyofficeApiClient.request(apiRequest, shareRequestModel.toJSON()) { [weak self] _, error in
+            OnlyofficeApiClient.request(apiRequest, json) { [weak self] _, error in
                 if error == nil {
                     self?.presenter?.presentData(responseType: .presentApplyingShareSettings(.init()))
                 } else {
@@ -126,6 +123,28 @@ class ASCSharingSettingsVerifyRightHoldersInteractor: ASCSharingSettingsVerifyRi
             let errorMessage = successUpdate ? nil : NSLocalizedString("Something wrong", comment: "")
             presenter?.presentData(responseType: .presentAccessRemove(.init(indexPath: request.indexPath, errorMessage: errorMessage)))
         }
+    }
+
+    private func makeJsonParams(entity: ASCEntity, items: [OnlyofficeShare], message: String?) -> [String: Any] {
+        guard entity.isRoom else {
+            let shareRequestModel = OnlyofficeShareRequestModel()
+            shareRequestModel.notify = message != nil
+            shareRequestModel.sharingMessage = message
+            shareRequestModel.share = apiWorker.convertToParams(shareItems: items)
+            return shareRequestModel.toJSON()
+        }
+        let inviteRequestModel = OnlyofficeInviteRequestModel()
+        inviteRequestModel.notify = true
+        inviteRequestModel.inviteMessage = message
+        inviteRequestModel.invitations = items.compactMap {
+            if let id = $0.user?.userId {
+                return .init(id: id, access: $0.access)
+            } else if let email = $0.email {
+                return .init(email: email, access: $0.access)
+            }
+            return nil
+        }
+        return inviteRequestModel.toJSON()
     }
 
     private func update(access: ASCShareAccess, byModel model: ASCSharingRightHolderViewModel) -> Bool {
@@ -188,6 +207,6 @@ class ASCSharingSettingsVerifyRightHoldersInteractor: ASCSharingSettingsVerifyRi
     }
 
     private func getItemIndex(byId id: String, in items: [OnlyofficeShare]) -> Int? {
-        items.firstIndex(where: { $0.user?.userId == id || $0.group?.id == id })
+        items.firstIndex(where: { $0.user?.userId == id || $0.group?.id == id || $0.email == id })
     }
 }

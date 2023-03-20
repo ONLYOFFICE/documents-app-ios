@@ -104,7 +104,8 @@ class ASCSharingAddRightHoldersViewController: UIViewController, ASCSharingAddRi
 
     private func setup() {
         let viewController = self
-        let interactor = ASCSharingAddRightHoldersInteractor()
+        let interactor = ASCSharingAddRightHoldersInteractor(apiWorker: ASCShareSettingsAPIWorkerFactory().get(by: ASCPortalTypeDefinderByCurrentConnection().definePortalType()),
+                                                             networkingRequestManager: OnlyofficeApiClient.shared)
         let presenter = ASCSharingAddRightHoldersPresenter()
         let router = ASCSharingAddRightHoldersRouter()
         let dataStore = ASCSharingAddRightHoldersRAMDataStore()
@@ -129,7 +130,8 @@ class ASCSharingAddRightHoldersViewController: UIViewController, ASCSharingAddRi
             navigationController: navigationController,
             searchControllerDelegate: self,
             searchResultsUpdating: self,
-            searchBarDelegate: self
+            searchBarDelegate: self,
+            showsScopeBar: true
         )
         sharingAddRightHoldersView?.viewController = self
         sharingAddRightHoldersView?.delegate = self
@@ -165,6 +167,7 @@ class ASCSharingAddRightHoldersViewController: UIViewController, ASCSharingAddRi
 
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
+        sharingAddRightHoldersView?.saveCurrentPreferredSizeAsDefault()
         if UIDevice.pad || !(sharingAddRightHoldersView?.searchController.isActive ?? false) {
             navigationController?.isToolbarHidden = false
         }
@@ -228,7 +231,7 @@ class ASCSharingAddRightHoldersViewController: UIViewController, ASCSharingAddRi
     func loadData() {
         if !usersCurrentlyLoading {
             usersCurrentlyLoading = true
-            interactor?.makeRequest(requestType: .loadUsers)
+            interactor?.makeRequest(requestType: .loadUsers(preloadRightHolders: false, hideUsersWhoHasRights: false))
         }
 
         if !groupsCurrentlyLoading {
@@ -459,18 +462,16 @@ extension ASCSharingAddRightHoldersViewController: UISearchControllerDelegate, U
 
 // MARK: - Describe uses tables in enum
 
-extension ASCSharingAddRightHoldersViewController {
-    enum RightHoldersTableType: Int, CaseIterable {
-        case users
-        case groups
+enum RightHoldersTableType: Int, CaseIterable {
+    case users
+    case groups
 
-        func getTitle() -> String {
-            switch self {
-            case .users:
-                return NSLocalizedString("Users", comment: "")
-            case .groups:
-                return NSLocalizedString("Groups", comment: "")
-            }
+    func getTitle() -> String {
+        switch self {
+        case .users:
+            return NSLocalizedString("Users", comment: "")
+        case .groups:
+            return NSLocalizedString("Groups", comment: "")
         }
     }
 }

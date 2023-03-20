@@ -22,23 +22,36 @@ class ASCOnlyOfficeFiltersController: ASCFiltersControllerProtocol {
         var itemsCount: Int
 
         static var defaultState: (Int) -> State = { count in
-            State(filterModels: [
-                ASCDocumentsFilterModel(filterName: FiltersName.folders.localizedString(), isSelected: false, filterType: .folders),
-                ASCDocumentsFilterModel(filterName: FiltersName.documents.localizedString(), isSelected: false, filterType: .documents),
-                ASCDocumentsFilterModel(filterName: FiltersName.presentations.localizedString(), isSelected: false, filterType: .presentations),
-                ASCDocumentsFilterModel(filterName: FiltersName.spreadsheets.localizedString(), isSelected: false, filterType: .spreadsheets),
-                ASCDocumentsFilterModel(filterName: FiltersName.images.localizedString(), isSelected: false, filterType: .images),
-                ASCDocumentsFilterModel(filterName: FiltersName.media.localizedString(), isSelected: false, filterType: .media),
-                ASCDocumentsFilterModel(filterName: FiltersName.archives.localizedString(), isSelected: false, filterType: .archive),
-                ASCDocumentsFilterModel(filterName: FiltersName.allFiles.localizedString(), isSelected: false, filterType: .files),
-            ],
-            authorsModels: [
-                ActionFilterModel(defaultName: FiltersName.users.localizedString(), selectedName: nil, filterType: .user),
-                ActionFilterModel(defaultName: FiltersName.groups.localizedString(), selectedName: nil, filterType: .group),
-            ],
-            searchFilterModels: [ASCDocumentsFilterModel(filterName: FiltersName.excludeSubfolders.localizedString(), isSelected: false, filterType: .excludeSubfolders)],
-            itemsCount: count)
+            State(filterModels: defaultFilterModel,
+                  authorsModels: defaultAuthorsModels,
+                  searchFilterModels: searchFilterModels,
+                  itemsCount: count)
         }
+
+        static var recentlyCategoryDefaultState: (Int) -> State = { count in
+            State(filterModels: defaultFilterModel.filter { $0.filterType != .folders },
+                  authorsModels: defaultAuthorsModels,
+                  searchFilterModels: searchFilterModels,
+                  itemsCount: count)
+        }
+
+        static let defaultFilterModel = [
+            ASCDocumentsFilterModel(filterName: FiltersName.folders.localizedString(), isSelected: false, filterType: .folders),
+            ASCDocumentsFilterModel(filterName: FiltersName.documents.localizedString(), isSelected: false, filterType: .documents),
+            ASCDocumentsFilterModel(filterName: FiltersName.presentations.localizedString(), isSelected: false, filterType: .presentations),
+            ASCDocumentsFilterModel(filterName: FiltersName.spreadsheets.localizedString(), isSelected: false, filterType: .spreadsheets),
+            ASCDocumentsFilterModel(filterName: FiltersName.images.localizedString(), isSelected: false, filterType: .images),
+            ASCDocumentsFilterModel(filterName: FiltersName.media.localizedString(), isSelected: false, filterType: .media),
+            ASCDocumentsFilterModel(filterName: FiltersName.archives.localizedString(), isSelected: false, filterType: .archive),
+            ASCDocumentsFilterModel(filterName: FiltersName.allFiles.localizedString(), isSelected: false, filterType: .files),
+        ]
+
+        static let defaultAuthorsModels = [
+            ActionFilterModel(defaultName: FiltersName.users.localizedString(), selectedName: nil, filterType: .user),
+            ActionFilterModel(defaultName: FiltersName.groups.localizedString(), selectedName: nil, filterType: .group),
+        ]
+
+        static let searchFilterModels = [ASCDocumentsFilterModel(filterName: FiltersName.excludeSubfolders.localizedString(), isSelected: false, filterType: .excludeSubfolders)]
     }
 
     // MARK: -  state
@@ -51,6 +64,10 @@ class ASCOnlyOfficeFiltersController: ASCFiltersControllerProtocol {
     private var currentSelectedAuthorFilterType: ApiFilterType?
     private let builder: ASCFiltersCollectionViewModelBuilder
     private var currentLoading = false
+    private var resetButtonTapped = false
+    private var isReseting: Bool {
+        resetButtonTapped && !hasSelectedFilter(state: tempState)
+    }
 
     private lazy var selectUserViewController: ASCSelectUserViewController = {
         let controller = ASCSelectUserViewController()
@@ -64,11 +81,15 @@ class ASCOnlyOfficeFiltersController: ASCFiltersControllerProtocol {
         return controller
     }()
 
+    private var isRecentCategory: Bool {
+        folder?.rootFolderType == .onlyofficeRecent
+    }
+
     private var allowSearchFilter: Bool {
-        if let onlyofficeProvider = provider as? ASCOnlyofficeProvider {
-            return onlyofficeProvider.apiClient.serverVersion?.isVersion(greaterThanOrEqualTo: "12.0.1") ?? false
-        }
-        return false
+        guard let onlyofficeProvider = provider as? ASCOnlyofficeProvider else { return false }
+        let isRecentCategory = folder?.rootFolderType == .onlyofficeRecent
+        let isServerVersionCorrect = onlyofficeProvider.apiClient.serverVersion?.community?.isVersion(greaterThanOrEqualTo: "12.0.1") == true
+        return !isRecentCategory && isServerVersionCorrect
     }
 
     // MARK: - public properties
@@ -82,7 +103,8 @@ class ASCOnlyOfficeFiltersController: ASCFiltersControllerProtocol {
     }
 
     var isReset: Bool {
-        !tempState.filterModels.map { $0.isSelected }.contains(true)
+        guard let appliedState = appliedState else { return true }
+        return !hasSelectedFilter(state: appliedState)
     }
 
     var onAction: () -> Void = {}
@@ -104,9 +126,14 @@ class ASCOnlyOfficeFiltersController: ASCFiltersControllerProtocol {
         if let appliedState = appliedState {
             tempState = appliedState
         } else {
-            tempState = .defaultState(total)
+            tempState = getDefaultState(total)
         }
         runPreload()
+    }
+
+    func getDefaultState(_ total: Int) -> State {
+        guard !isRecentCategory else { return .recentlyCategoryDefaultState(total) }
+        return .defaultState(total)
     }
 
     private func hasSelectedFilter(state: State) -> Bool {
@@ -125,6 +152,7 @@ class ASCOnlyOfficeFiltersController: ASCFiltersControllerProtocol {
     }
 
     private func makeFilterParams(state: State) -> [String: Any] {
+        guard !isReseting else { return [:] }
         var params: [String: Any] = ["withSubfolders": "true"]
         guard hasSelectedFilter(state: state) else { return params }
 
@@ -132,7 +160,7 @@ class ASCOnlyOfficeFiltersController: ASCFiltersControllerProtocol {
             switch type {
             case .extensionFilters:
                 if let model = state.filterModels.first(where: { $0.isSelected }) {
-                    params["filterType"] = model.filterType.rawValue
+                    params["filterType"] = model.filterType.filterValue
                 }
             case .searchFilters:
                 if let model = state.searchFilterModels.first(where: { $0.isSelected }) {
@@ -193,15 +221,16 @@ class ASCOnlyOfficeFiltersController: ASCFiltersControllerProtocol {
             }
         }
         builder.actionButtonClosure = { [weak self] in
-            self?.appliedState = self?.tempState
-            self?.onAction()
+            guard let self = self else { return }
+            self.appliedState = self.isReseting ? nil : self.tempState
+            self.resetButtonTapped = false
+            self.onAction()
         }
     }
 
     private func buildDidSelectedClosure() {
         builder.didSelectedClosure = { [weak self] filterViewModel in
             guard let self = self else { return }
-
             State.DataType.allCases.forEach { type in
                 switch type {
                 case .extensionFilters:
@@ -270,7 +299,7 @@ class ASCOnlyOfficeFiltersController: ASCFiltersControllerProtocol {
                     self.resetModels(models: &self.tempState.searchFilterModels)
                 }
             }
-
+            self.resetButtonTapped = true
             self.runPreload()
         }
     }

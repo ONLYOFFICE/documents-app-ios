@@ -20,6 +20,15 @@
 "© Ascensio System SIA %d" = "© Ascensio System SIA %d";
 
 /* No comment provided by engineer. */
+"<p>Use the password created in <a href=\"https://yandex.ru/id/about\">Yandex ID</a>.</br>More detailed connection instructions can be found in the <a href=\"https://yandex.ru/support/disk-desktop/webdav-app-passwords.html?lang=ru\">help</a>.</p>" = "<p>Použijte heslo vytvořené v <a href=\"https://yandex.ru/id/about\">Yandex ID</a>.</br>Podrobnější pokyny k připojení najdete v <a href=\"https://yandex.ru/support/disk-desktop/webdav-app-passwords.html?lang=ru\">nápovědě</a>.</p>";
+
+/* No comment provided by engineer. */
+"<p>Use the password created in <a href=\"https://yandex.ru/id/about\">Yandex ID</a>.</p><p>More detailed connection instructions can be found in the <a href=\"https://yandex.ru/support/disk-desktop/webdav-app-passwords.html?lang=ru\">help</a>.</p>" = "<p>Použijte heslo vytvořené v <a href=\"https://yandex.ru/id/about\">Yandex ID</a>.</p><p>Podrobnější pokyny k připojení najdete v <a href=\"https://yandex.ru/support/disk-desktop/webdav-app-passwords.html?lang=ru\">nápovědě</a>.</p>";
+
+/* No comment provided by engineer. */
+"<p>You must have a paid version of the player to use this service.</p><p>If you have activated double authentication, please generate a CDM application from the Infomaniak manager. <a href=\"https://www.infomaniak.com/en/support/faq/1940/enable-two-step-verification\">More...</a></p>" = "<p>Pro použití této služby musíte používat placenou verzi přehrávače.</p><p>Pokud máte aktivované dvojité ověřování, vygenerujte si žádost CDM ze správce Infomaniak. <a href=\"https://www.infomaniak.com/en/support/faq/1940/enable-two-step-verification\">Další...</a></p>";
+
+/* No comment provided by engineer. */
 "A file with a similar name already exists in the document directory on the device." = "Soubor s podobným názvem již existuje v adresáři dokumentů v zařízení.";
 
 /* No comment provided by engineer. */
@@ -70,8 +79,11 @@
 /* Sharing settings add notification message */
 "Add message" = "Přidat zprávu";
 
+/* Button title */
+"Add users" = "Přidat uživatele";
+
 /* No comment provided by engineer. */
-"Add users or groups and allow them to \n read, review or edit documents." = "Přidejte uživatele nebo skupiny a dejte jim právo číst, prohlížet nebo upravovat dokumenty.";
+"Add users or groups and allow them to \n read, review or edit documents." = "Přidejte uživatele nebo skupiny a dejte jim právo \nčíst, prohlížet nebo upravovat dokumenty.";
 
 /* No comment provided by engineer. */
 "Address is empty" = "Adresa je prázdná";
@@ -100,8 +112,17 @@
 /* Caption of the process */
 "Applying" = "Použití stránky";
 
+/* Button title */
+"Archive" = "Archiv";
+
 /* No comment provided by engineer. */
 "Archives" = "Archivy";
+
+/* Caption of the processing */
+"Archiving" = "Archivace";
+
+/* No comment provided by engineer. */
+"Archiving failed." = "Archivace se nezdařila.";
 
 /* No comment provided by engineer. */
 "Are you sure you want to delete the account %@ from this device?" = "Opravdu chcete smazat účet account %@ z tohoto zařízení?";
@@ -111,6 +132,12 @@
 
 /* No comment provided by engineer. */
 "Author" = "Autor";
+
+/* No comment provided by engineer. */
+"Back" = "Zpět";
+
+/* No comment provided by engineer. */
+"Box" = "Schránka";
 
 /* No comment provided by engineer. */
 "Box directory" = "Adresář schránky";
@@ -143,6 +170,9 @@
 "Cancel" = "Zrušit";
 
 /* No comment provided by engineer. */
+"Cancel invitation?" = "Zrušit pozvánku?";
+
+/* No comment provided by engineer. */
 "Check your internet connection" = "Zkontrolujte vaše připojení k internetu";
 
 /* No comment provided by engineer. */
@@ -159,6 +189,9 @@
 
 /* Button title */
 "Clear Cache?" = "Vyčistit cache?";
+
+/* No comment provided by engineer. */
+"Clear selection?" = "Zrušit výběr?";
 
 /* Caption of the processing */
 "Clearing" = "Čištění";
@@ -177,6 +210,9 @@
 
 /* Introduction Step Five - Title */
 "Collaborate with your team" = "Spolupracujte s vaším týmem";
+
+/* No comment provided by engineer. */
+"Collaboration" = "Spolupráce";
 
 /* Share status */
 "Comment" = "Komentář";
@@ -331,6 +367,9 @@
 /* Caption of the process */
 "Creating" = "Vytváření";
 
+/* No comment provided by engineer. */
+"Custom" = "Vlastní";
+
 /* Share status */
 "Custom filter" = "Vlastní filtr";
 
@@ -382,9 +421,6 @@
 /* No comment provided by engineer. */
 "Document" = "Dokument";
 
-/* No comment provided by engineer. */
-"Document protection" = "Ochrana dokumentů";
-
 /* Default title of sample document */
 "Document Sample" = "Vzorek dokumentu";
 
@@ -422,6 +458,9 @@
 /* Introduction Step Four - Title */
 "Edit documents locally" = "Upravujte dokumenty lokálně";
 
+/* Share status */
+"Editor" = "Editor";
+
 /* No comment provided by engineer. */
 "Email" = "E-mail";
 
@@ -452,11 +491,11 @@
 /* No comment provided by engineer. */
 "Enter a password to open the file." = "Zadejte heslo pro otevření souboru.";
 
-/* No comment provided by engineer. */
-"Enter Portal Address" = "Zadejte adresu portálu";
+/* placeholder */
+"Enter email" = "Zadejte e-mail";
 
 /* No comment provided by engineer. */
-"Enter text using handwriting instead of device keyboard. ONLYOFFICE will recognize text and insert it in the document. The feature is available for English only." = "Zadávejte text ručně místo klávesnice zařízení. ONLYOFFICE rozpozná text a vloží jej do dokumentu.Tato funkce je dostupná pouze pro angličtinu.";
+"Enter Portal Address" = "Zadejte adresu portálu";
 
 /* No comment provided by engineer. */
 "Error" = "Chyba";
@@ -534,16 +573,13 @@
 "File does not exist" = "Soubor neexistuje";
 
 /* No comment provided by engineer. */
-"File search became easier with filtering options: by type for local files and by type and author for cloud files." = "Vyhledávání souborů se stalo jednodušší díky možnostem filtrování: podle typu pro místní soubory a podle typu a autora pro soubory v cloudu.";
-
-/* No comment provided by engineer. */
 "Files" = "Soubory";
 
 /* No comment provided by engineer. */
 "Files Preview" = "Náhled souborů";
 
 /* No comment provided by engineer. */
-"Filtering in search" = "Filtrování ve vyhledávání";
+"Filling form" = "Vyplnění formuláře";
 
 /* No comment provided by engineer. */
 "Filters" = "Filtry";
@@ -588,9 +624,6 @@
 "Groups" = "Skupiny";
 
 /* No comment provided by engineer. */
-"Handwriting recognition" = "Rozpoznávání rukou psaného textu";
-
-/* No comment provided by engineer. */
 "iCloud" = "iCloud";
 
 /* No comment provided by engineer. */
@@ -608,6 +641,9 @@
 /* No comment provided by engineer. */
 "Incorrect portal address" = "Nesprávná adresa portálu";
 
+/* Button title */
+"Info" = "Informace";
+
 /* No comment provided by engineer. */
 "Information" = "Informace";
 
@@ -622,6 +658,15 @@
 
 /* No comment provided by engineer. */
 "Invalid Url" = "Neplatná URL adresa";
+
+/* No comment provided by engineer. */
+"Invite" = "Pozvat";
+
+/* No comment provided by engineer. */
+"Invite people" = "Pozvat uživatele";
+
+/* No comment provided by engineer. */
+"Invite people by email" = "Pozvat uživatele e-mailem";
 
 /* Data units */
 "Kb" = "Kb";
@@ -640,6 +685,9 @@
 
 /* No comment provided by engineer. */
 "Link copied\nto the clipboard" = "Odkaz zkopírován do schránky";
+
+/* No comment provided by engineer. */
+"Link with the invitation has been sent to the mail" = "Odkaz s pozvánkou byl zaslán na mail";
 
 /* Caption of the process */
 "Logging in" = "Přihlášení v";
@@ -675,11 +723,17 @@
 /* No comment provided by engineer. */
 "Media" = "Média";
 
+/* No comment provided by engineer. */
+"Member" = "Člen";
+
 /* Button title */
 "More" = "Více";
 
 /* Button title */
 "Move" = "Přesunout";
+
+/* Button title */
+"Move from archive" = "Přesun z archivu";
 
 /* Button title */
 "Move here" = "Přesunout zde";
@@ -690,6 +744,12 @@
 /* Caption of the processing */
 "Moving" = "Přesouvání";
 
+/* Caption of the processing */
+"Moving from archive" = "Přesun z archivu";
+
+/* Category title */
+"My archived" = "Moje archivy";
+
 /* No comment provided by engineer. */
 "My Clouds" = "Moje cloudy";
 
@@ -698,6 +758,9 @@
 
 /* No comment provided by engineer. */
 "My Drive" = "My Drive";
+
+/* Category title */
+"My rooms" = "Moje pokoje";
 
 /* No comment provided by engineer. */
 "Name is empty" = "Název je prázdný";
@@ -722,6 +785,9 @@
 
 /* No comment provided by engineer. */
 "New Spreadsheet" = "Nová tabulka";
+
+/* No comment provided by engineer. */
+"New users" = "Noví uživatelé";
 
 /* Next step */
 "Next" = "Další";
@@ -872,6 +938,15 @@
 /* Used in the context: '3 photos' */
 "photos" = "fotky";
 
+/* Button title */
+"Pin to top" = "Připnout na začátek";
+
+/* No comment provided by engineer. */
+"Pinned failed." = "Připnutí se nezdařilo.";
+
+/* Caption of the processing */
+"Pinning" = "Připnutí";
+
 /* No comment provided by engineer. */
 "Please go to Settings and enable the camera for this app to use this feature." = "Přejděte do části Nastavení a povolte, aby tato aplikace využívala kameru. ";
 
@@ -879,7 +954,7 @@
 "Please re-login to renew your session." = "Pro obnovení relace se prosím znovu přihlaste.";
 
 /* No comment provided by engineer. */
-"Please retry. \n\n If the problem persists contact us and mention this error code: Box - %@" = "Pokud problém přetrvává, kontaktujte nás a uveďte tento kód chyby: Box - %@ ";
+"Please retry. \n\n If the problem persists contact us and mention this error code: Box - %@" = "Zkuste to prosím znovu.\n\nPokud problém přetrvává, kontaktujte nás a uveďte tento kód chyby: Box - %@ ";
 
 /* No comment provided by engineer. */
 "Please retry. \n\n If the problem persists contact us and mention this error code: Dropbox - %@" = "Zkuste to prosím znovu.\n\n Pokud problém přetrvává, kontaktujte nás a zmiňte tento kód chyby: Dropbox -% @";
@@ -922,9 +997,6 @@
 
 /* Category title */
 "Project Documents" = "Projektové dokumenty";
-
-/* No comment provided by engineer. */
-"Protect documents with passwords to share them securely with trusted collaborators." = "Chraňte dokumenty hesly, abyste je mohli bezpečně sdílet s důvěryhodnými spolupracovníky.";
 
 /* No comment provided by engineer. */
 "Protected File" = "Chráněný soubor";
@@ -986,6 +1058,12 @@
 /* Share status */
 "Review" = "Prohlédnout";
 
+/* Share status */
+"Room admin" = "Správce místnosti";
+
+/* DocSpace rooms */
+"Rooms" = "Místnosti";
+
 /* Caption of the processing */
 "Saving" = "Uložení";
 
@@ -1022,6 +1100,9 @@
 
 /* No comment provided by engineer. */
 "Selected provider is not available" = "Vybraný poskytovatel není dostupný";
+
+/* No comment provided by engineer. */
+"Selected users will not be invited to the room" = "Vybraní uživatelé nebudou do místnosti pozváni";
 
 /* No comment provided by engineer. */
 "Selected: %ld" = "Vybráno: %ld";
@@ -1174,6 +1255,9 @@
 "The portal name must be between 6 and 50 characters long" = "Název portálu musí mít délku od 6 do 50 znaků";
 
 /* No comment provided by engineer. */
+"The quota of users is almost exhausted. Сontact the portal administrator" = "Kvóta uživatelů je téměř vyčerpána. Kontaktujte správce portálu";
+
+/* No comment provided by engineer. */
 "The request timed out." = "Požadavek byl časově omezen.";
 
 /* No comment provided by engineer. */
@@ -1184,6 +1268,12 @@
 
 /* No comment provided by engineer. */
 "The trash is empty" = "Koš je prázdný";
+
+/* No comment provided by engineer. */
+"The user limit has been reached. Сontact the portal administrator" = "Limit uživatelů byl vyčerpán. Kontaktujte správce portálu";
+
+/* No comment provided by engineer. */
+"Third party resource" = "Zdroj třetí strany";
 
 /* Introduction Step Three - Title */
 "Third-party storage" = "Úložiště třetí strany";
@@ -1261,6 +1351,9 @@
 "Unable to get information about the user." = "Nelze získat informace o uživateli.";
 
 /* No comment provided by engineer. */
+"Unarchiving failed." = "Zrušení archivace se nezdařilo.";
+
+/* No comment provided by engineer. */
 "Unauthorized users will be able only to view the document and add comments, as well as manage them." = "Neoprávnění uživatelé budou moci dokument pouze prohlížet a přidávat k němu komentáře a také jej spravovat.";
 
 /* No comment provided by engineer. */
@@ -1299,6 +1392,15 @@
 /* No comment provided by engineer. */
 "Unlock with Touch ID" = "Odemknout pomocí otisku";
 
+/* Button title */
+"Unpin" = "Zrušení připnutí";
+
+/* No comment provided by engineer. */
+"Unpinned failed." = "Zrušení připnutí se nezdařilo.";
+
+/* Caption of the processing */
+"Unpning" = "Odpojení";
+
 /* No comment provided by engineer. */
 "Unsupported format." = "Nepodporovaný formát.";
 
@@ -1323,6 +1425,9 @@
 /* No comment provided by engineer. */
 "Users" = "Uživatelé";
 
+/* No comment provided by engineer. */
+"Users in room" = "Uživatelé v místnosti";
+
 /* Caption of the process */
 "Validation" = "Validace";
 
@@ -1331,6 +1436,9 @@
 
 /* No comment provided by engineer. */
 "Version" = "Verze";
+
+/* No comment provided by engineer. */
+"View-Only" = "Pouze k zobrazení";
 
 /* No comment provided by engineer. */
 "Warning" = "Varování";
@@ -1354,7 +1462,7 @@
 "What's New" = "Novinky";
 
 /* Introduction Step Four - Description */
-"Work with documents offline.\nCreated files can later be uploaded to online portal and\nthen accessed from any other device." = "Pracujte s dokumenty offline.\nVytvořené soubory mohou být později nahrány do online portálu. Poté k nim lze přistoupit z jakéhokoli jiného zařízení.";
+"Work with documents offline.\nCreated files can later be uploaded to online portal and\nthen accessed from any other device." = "Pracujte s dokumenty offline.\nVytvořené soubory mohou být později nahrány do online portálu.\nPoté k nim lze přistoupit z jakéhokoli jiného zařízení.";
 
 /* Introduction Step Two - Title */
 "Work with office files" = "Pracujte s kancelářskými soubory";

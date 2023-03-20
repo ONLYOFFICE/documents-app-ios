@@ -454,6 +454,7 @@
                         <outlet property="doneCell" destination="h1L-db-uwh" id="21Y-co-WhI"/>
                         <outlet property="doneLabel" destination="1hg-GO-WNq" id="eZb-rR-Kea"/>
                         <outlet property="loginField" destination="2MJ-bj-ZpN" id="vKh-wh-ZhX"/>
+                        <outlet property="loginTitleLabel" destination="8QU-S0-L4O" id="ld1-xE-RcJ"/>
                         <outlet property="logoView" destination="3e0-95-dHW" id="5a6-2X-8WQ"/>
                         <outlet property="passwordField" destination="gp7-l6-arn" id="fp5-fS-FH2"/>
                         <outlet property="serverCell" destination="BFU-Z4-4wX" id="B6O-Tb-nKF"/>

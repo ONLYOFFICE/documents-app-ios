@@ -11,7 +11,7 @@
 "POc-L2-pZq.text" = "サブフォルダーはありません";
 
 /* Class = "UINavigationItem"; prompt = "Move items to the selected folder"; ObjectID = "xZh-ES-1Gb"; */
-"xZh-ES-1Gb.prompt" = "アイテムを選択されたファルダーに移動";
+"xZh-ES-1Gb.prompt" = "アイテムを選択されたファルダーに移動する";
 
 /* Class = "UINavigationItem"; title = "Root Folders"; ObjectID = "xZh-ES-1Gb"; */
 "xZh-ES-1Gb.title" = "ルーツフォルダー";

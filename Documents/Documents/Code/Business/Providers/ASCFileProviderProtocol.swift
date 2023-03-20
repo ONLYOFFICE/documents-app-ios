@@ -26,6 +26,12 @@ struct ASCEntityActions: OptionSet {
     static let duplicate = ASCEntityActions(rawValue: 1 << 12)
     static let favarite = ASCEntityActions(rawValue: 1 << 13)
     static let new = ASCEntityActions(rawValue: 1 << 14)
+    static let archive = ASCEntityActions(rawValue: 1 << 15)
+    static let info = ASCEntityActions(rawValue: 1 << 16)
+    static let addUsers = ASCEntityActions(rawValue: 1 << 17)
+    static let pin = ASCEntityActions(rawValue: 1 << 18)
+    static let unpin = ASCEntityActions(rawValue: 1 << 19)
+    static let unarchive = ASCEntityActions(rawValue: 1 << 20)
 }
 
 typealias ASCProviderUserInfoHandler = (_ success: Bool, _ error: Error?) -> Void
@@ -49,6 +55,14 @@ extension ASCProviderDelegate {
 
 // MARK: - ASCBaseFileProvider protocol
 
+protocol FileProviderHolder: AnyObject {
+    var provider: ASCFileProviderProtocol? { get set }
+}
+
+enum ASCFiletProviderContentType {
+    case files, folders, documents, spreadsheets, presentations, images, collaboration, custom, viewOnly, fillingForms
+}
+
 protocol ASCFileProviderProtocol {
     // Information
     var id: String? { get }
@@ -64,6 +78,7 @@ protocol ASCFileProviderProtocol {
 
     var delegate: ASCProviderDelegate? { get set }
     var filterController: ASCFiltersControllerProtocol? { get set }
+    var contentTypes: [ASCFiletProviderContentType] { get }
 
     // Methods
     func copy() -> ASCFileProviderProtocol
@@ -104,19 +119,28 @@ protocol ASCFileProviderProtocol {
     func transfer(items: [ASCEntity], to folder: ASCFolder, move: Bool, overwrite: Bool, handler: ASCEntityProgressHandler?)
 
     // Access
+    func allowAdd(toFolder folder: ASCFolder?) -> Bool
     func allowRead(entity: AnyObject?) -> Bool
     func allowEdit(entity: AnyObject?) -> Bool
+    func allowComment(entity: AnyObject?) -> Bool
     func allowDelete(entity: AnyObject?) -> Bool
     func actions(for entity: ASCEntity?) -> ASCEntityActions
 
     // Open files
-    func open(file: ASCFile, openViewMode: Bool, canEdit: Bool)
+    func open(file: ASCFile, openMode: ASCDocumentOpenMode, canEdit: Bool)
     func preview(file: ASCFile, files: [ASCFile]?, in view: UIView?)
+
+    // Action Handlers
+    func handle(action: ASCEntityActions, folder: ASCFolder, handler: ASCEntityHandler?)
 }
 
 // MARK: - ASCFileProvider protocol
 
 extension ASCFileProviderProtocol {
+    var contentTypes: [ASCFiletProviderContentType] {
+        [.files, .folders, .documents, .spreadsheets, .presentations, .images]
+    }
+
     func cancel() {}
     func userInfo(completeon: ASCProviderUserInfoHandler?) {}
     func updateSort(completeon: ASCProviderCompletionHandler?) {}
@@ -144,10 +168,16 @@ extension ASCFileProviderProtocol {
     func chechTransfer(items: [ASCEntity], to folder: ASCFolder, handler: ASCEntityHandler?) { handler?(.end, nil, nil) }
     func transfer(items: [ASCEntity], to folder: ASCFolder, move: Bool, overwrite: Bool, handler: ASCEntityProgressHandler?) { var cancel = false; handler?(.end, 1, nil, nil, &cancel) }
 
+    func allowAdd(toFolder folder: ASCFolder?) -> Bool { return allowEdit(entity: folder) }
+    func allowComment(entity: AnyObject?) -> Bool { return allowEdit(entity: entity) }
     func allowRead(entity: AnyObject?) -> Bool { return false }
     func allowEdit(entity: AnyObject?) -> Bool { return false }
     func allowDelete(entity: AnyObject?) -> Bool { return false }
     func actions(for entity: ASCEntity?) -> ASCEntityActions { return [] }
+    func handle(action: ASCEntityActions, folder: ASCFolder, handler: ASCEntityHandler? = nil) {
+        log.error("Handle action \(action.rawValue) for folder \(folder.title) doesn't supported")
+        handler?(.error, folder, "Unsupported handle action")
+    }
 }
 
 // MARK: - ASCSortableFileProvider protocol

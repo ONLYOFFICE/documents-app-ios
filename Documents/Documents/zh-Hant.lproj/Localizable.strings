@@ -20,6 +20,15 @@
 "© Ascensio System SIA %d" = "© Ascensio System SIA %d";
 
 /* No comment provided by engineer. */
+"<p>Use the password created in <a href=\"https://yandex.ru/id/about\">Yandex ID</a>.</br>More detailed connection instructions can be found in the <a href=\"https://yandex.ru/support/disk-desktop/webdav-app-passwords.html?lang=ru\">help</a>.</p>" = "<p>使用建立好的密碼在<a href=\"https://yandex.ru/id/about\">Yandex ID</a>.</br>更詳細的連接說明可參閱<a href=\"https://yandex.ru/support/disk-desktop/webdav-app-passwords.html?lang=ru\">幫助</a>。</p>";
+
+/* No comment provided by engineer. */
+"<p>Use the password created in <a href=\"https://yandex.ru/id/about\">Yandex ID</a>.</p><p>More detailed connection instructions can be found in the <a href=\"https://yandex.ru/support/disk-desktop/webdav-app-passwords.html?lang=ru\">help</a>.</p>" = "<p>使用建立好的密碼在<a href=\"https://yandex.ru/id/about\">Yandex ID</a>.</p><p>更詳細的連接說明可參閱<a href=\"https://yandex.ru/support/disk-desktop/webdav-app-passwords.html?lang=ru\">幫助</a>。</p>";
+
+/* No comment provided by engineer. */
+"<p>You must have a paid version of the player to use this service.</p><p>If you have activated double authentication, please generate a CDM application from the Infomaniak manager. <a href=\"https://www.infomaniak.com/en/support/faq/1940/enable-two-step-verification\">More...</a></p>" = "<p>您必須擁有付費版本的播放器才能使用此服務。</p><p>若您啟動了雙重身份驗證，請從Infomaniak管理器生成CDM應用程序。<a href=\"https://www.infomaniak.com/en/support/faq/1940/enable-two-step-verification\">更多...</a></p>";
+
+/* No comment provided by engineer. */
 "A file with a similar name already exists in the document directory on the device." = "在设备的文档目录中已存在名称相似的文件。";
 
 /* No comment provided by engineer. */
@@ -70,6 +79,9 @@
 /* Sharing settings add notification message */
 "Add message" = "添加消息";
 
+/* Button title */
+"Add users" = "增加使用者";
+
 /* No comment provided by engineer. */
 "Add users or groups and allow them to \n read, review or edit documents." = "添加用户或团队允许他们 \n阅读、审查或编辑文件。";
 
@@ -100,8 +112,17 @@
 /* Caption of the process */
 "Applying" = "正在应用中";
 
+/* Button title */
+"Archive" = "備份";
+
 /* No comment provided by engineer. */
 "Archives" = "封存檔案";
+
+/* Caption of the processing */
+"Archiving" = "存檔中";
+
+/* No comment provided by engineer. */
+"Archiving failed." = "存檔失敗。";
 
 /* No comment provided by engineer. */
 "Are you sure you want to delete the account %@ from this device?" = "您确定要删除设备上%@ 账户吗？";
@@ -111,6 +132,12 @@
 
 /* No comment provided by engineer. */
 "Author" = "作者";
+
+/* No comment provided by engineer. */
+"Back" = "返回";
+
+/* No comment provided by engineer. */
+"Box" = "Box";
 
 /* No comment provided by engineer. */
 "Box directory" = "箱子目录";
@@ -143,6 +170,9 @@
 "Cancel" = "取消";
 
 /* No comment provided by engineer. */
+"Cancel invitation?" = "取消邀請？";
+
+/* No comment provided by engineer. */
 "Check your internet connection" = "请检查您的网络连接并重试";
 
 /* No comment provided by engineer. */
@@ -159,6 +189,9 @@
 
 /* Button title */
 "Clear Cache?" = "清除缓存吗？";
+
+/* No comment provided by engineer. */
+"Clear selection?" = "清除選擇？";
 
 /* Caption of the processing */
 "Clearing" = "清除";
@@ -177,6 +210,9 @@
 
 /* Introduction Step Five - Title */
 "Collaborate with your team" = "与您的团队协作";
+
+/* No comment provided by engineer. */
+"Collaboration" = "协作";
 
 /* Share status */
 "Comment" = "评论";
@@ -331,6 +367,9 @@
 /* Caption of the process */
 "Creating" = "正在创建";
 
+/* No comment provided by engineer. */
+"Custom" = "自訂";
+
 /* Share status */
 "Custom filter" = "自定义筛选器";
 
@@ -382,9 +421,6 @@
 /* No comment provided by engineer. */
 "Document" = "文档";
 
-/* No comment provided by engineer. */
-"Document protection" = "文件保护";
-
 /* Default title of sample document */
 "Document Sample" = "文档示例";
 
@@ -422,6 +458,9 @@
 /* Introduction Step Four - Title */
 "Edit documents locally" = "在本地编辑文档";
 
+/* Share status */
+"Editor" = "編輯";
+
 /* No comment provided by engineer. */
 "Email" = "邮箱";
 
@@ -452,11 +491,11 @@
 /* No comment provided by engineer. */
 "Enter a password to open the file." = "輸入檔案密碼";
 
-/* No comment provided by engineer. */
-"Enter Portal Address" = "输入门户地址";
+/* placeholder */
+"Enter email" = "輸入電子郵件";
 
 /* No comment provided by engineer. */
-"Enter text using handwriting instead of device keyboard. ONLYOFFICE will recognize text and insert it in the document. The feature is available for English only." = "使用手写输入文字，ONLYOFFICE将识别文本并将其插入到文档中。该功能仅支持英语。";
+"Enter Portal Address" = "输入门户地址";
 
 /* No comment provided by engineer. */
 "Error" = "错误";
@@ -534,16 +573,13 @@
 "File does not exist" = "文件不存在";
 
 /* No comment provided by engineer. */
-"File search became easier with filtering options: by type for local files and by type and author for cloud files." = "通过过滤选项，文件搜索变得更加容易：本地文件可以按类型搜索，云文件可以按类型和作者搜索。";
-
-/* No comment provided by engineer. */
 "Files" = "文件";
 
 /* No comment provided by engineer. */
 "Files Preview" = "文件预览";
 
 /* No comment provided by engineer. */
-"Filtering in search" = "搜索中的过滤功能";
+"Filling form" = "填寫表格";
 
 /* No comment provided by engineer. */
 "Filters" = "過濾器";
@@ -588,9 +624,6 @@
 "Groups" = "团队";
 
 /* No comment provided by engineer. */
-"Handwriting recognition" = "手写识别";
-
-/* No comment provided by engineer. */
 "iCloud" = "iCloud";
 
 /* No comment provided by engineer. */
@@ -608,6 +641,9 @@
 /* No comment provided by engineer. */
 "Incorrect portal address" = "门户地址不正确";
 
+/* Button title */
+"Info" = "資訊";
+
 /* No comment provided by engineer. */
 "Information" = "信息";
 
@@ -622,6 +658,15 @@
 
 /* No comment provided by engineer. */
 "Invalid Url" = "URL无效";
+
+/* No comment provided by engineer. */
+"Invite" = "邀請";
+
+/* No comment provided by engineer. */
+"Invite people" = "邀請他人";
+
+/* No comment provided by engineer. */
+"Invite people by email" = "以電子郵件邀請他人";
 
 /* Data units */
 "Kb" = "Kb";
@@ -640,6 +685,9 @@
 
 /* No comment provided by engineer. */
 "Link copied\nto the clipboard" = "链接已复制\n到剪贴板";
+
+/* No comment provided by engineer. */
+"Link with the invitation has been sent to the mail" = "邀請連結已發送到郵件";
 
 /* Caption of the process */
 "Logging in" = "正在登录";
@@ -675,11 +723,17 @@
 /* No comment provided by engineer. */
 "Media" = "媒體";
 
+/* No comment provided by engineer. */
+"Member" = "成員";
+
 /* Button title */
 "More" = "更多";
 
 /* Button title */
 "Move" = "移动";
+
+/* Button title */
+"Move from archive" = "從存檔移動";
 
 /* Button title */
 "Move here" = "移到此处";
@@ -690,6 +744,12 @@
 /* Caption of the processing */
 "Moving" = "正在移动";
 
+/* Caption of the processing */
+"Moving from archive" = "從存檔移動";
+
+/* Category title */
+"My archived" = "我的存檔";
+
 /* No comment provided by engineer. */
 "My Clouds" = "我的云";
 
@@ -698,6 +758,9 @@
 
 /* No comment provided by engineer. */
 "My Drive" = "我的Drive";
+
+/* Category title */
+"My rooms" = "我的房間";
 
 /* No comment provided by engineer. */
 "Name is empty" = "名称为空";
@@ -722,6 +785,9 @@
 
 /* No comment provided by engineer. */
 "New Spreadsheet" = "新建电子表格";
+
+/* No comment provided by engineer. */
+"New users" = "新使用者";
 
 /* Next step */
 "Next" = "下一个";
@@ -872,6 +938,15 @@
 /* Used in the context: '3 photos' */
 "photos" = "照片";
 
+/* Button title */
+"Pin to top" = "固定到頂部";
+
+/* No comment provided by engineer. */
+"Pinned failed." = "固定失敗。";
+
+/* Caption of the processing */
+"Pinning" = "固定中";
+
 /* No comment provided by engineer. */
 "Please go to Settings and enable the camera for this app to use this feature." = "请转到\"设置\"并为此应用程序的相机启用此功能。";
 
@@ -922,9 +997,6 @@
 
 /* Category title */
 "Project Documents" = "项目文档";
-
-/* No comment provided by engineer. */
-"Protect documents with passwords to share them securely with trusted collaborators." = "用密码保护文件，与受信任的协作者安全地分享内容。";
 
 /* No comment provided by engineer. */
 "Protected File" = "受保护的文件";
@@ -986,6 +1058,12 @@
 /* Share status */
 "Review" = "审查";
 
+/* Share status */
+"Room admin" = "會議室管理員";
+
+/* DocSpace rooms */
+"Rooms" = "會議室";
+
 /* Caption of the processing */
 "Saving" = "正在保存";
 
@@ -1022,6 +1100,9 @@
 
 /* No comment provided by engineer. */
 "Selected provider is not available" = "选定的提供程序不可用";
+
+/* No comment provided by engineer. */
+"Selected users will not be invited to the room" = "所選使用者將不會被邀請至會議室";
 
 /* No comment provided by engineer. */
 "Selected: %ld" = "选定的：%ld";
@@ -1174,6 +1255,9 @@
 "The portal name must be between 6 and 50 characters long" = "门户名称的长度必须在6到50个字符之间";
 
 /* No comment provided by engineer. */
+"The quota of users is almost exhausted. Сontact the portal administrator" = "使用者配額將用盡，聯繫入口網站管理員";
+
+/* No comment provided by engineer. */
 "The request timed out." = "请求已超时。";
 
 /* No comment provided by engineer. */
@@ -1184,6 +1268,12 @@
 
 /* No comment provided by engineer. */
 "The trash is empty" = "垃圾桶为空";
+
+/* No comment provided by engineer. */
+"The user limit has been reached. Сontact the portal administrator" = "已達到使用者限制。 聯繫入口網站管理員";
+
+/* No comment provided by engineer. */
+"Third party resource" = "第三方資源";
 
 /* Introduction Step Three - Title */
 "Third-party storage" = "第三方存储";
@@ -1261,6 +1351,9 @@
 "Unable to get information about the user." = "无法获取有关用户的信息。";
 
 /* No comment provided by engineer. */
+"Unarchiving failed." = "取消存檔失敗。";
+
+/* No comment provided by engineer. */
 "Unauthorized users will be able only to view the document and add comments, as well as manage them." = "未经授权的用户将只能查看文件并添加评论，以及管理它们。";
 
 /* No comment provided by engineer. */
@@ -1299,6 +1392,15 @@
 /* No comment provided by engineer. */
 "Unlock with Touch ID" = "用Touch ID解锁";
 
+/* Button title */
+"Unpin" = "取消固定";
+
+/* No comment provided by engineer. */
+"Unpinned failed." = "取消固定失敗。";
+
+/* Caption of the processing */
+"Unpning" = "取消固定中";
+
 /* No comment provided by engineer. */
 "Unsupported format." = "不支持的格式。";
 
@@ -1323,6 +1425,9 @@
 /* No comment provided by engineer. */
 "Users" = "用户";
 
+/* No comment provided by engineer. */
+"Users in room" = "會議室中的使用者";
+
 /* Caption of the process */
 "Validation" = "验证";
 
@@ -1331,6 +1436,9 @@
 
 /* No comment provided by engineer. */
 "Version" = "版本";
+
+/* No comment provided by engineer. */
+"View-Only" = "僅檢視";
 
 /* No comment provided by engineer. */
 "Warning" = "警告";

@@ -1,5 +1,5 @@
 /* Class = "UILabel"; text = "Connect to Cloud"; ObjectID = "0Hf-aP-smp"; */
-"0Hf-aP-smp.text" = "クラウドに接続";
+"0Hf-aP-smp.text" = "クラウドに接続する";
 
 /* Class = "UITabBarItem"; title = "Clouds"; ObjectID = "6qd-Sb-ejT"; */
 "6qd-Sb-ejT.title" = "クラウド";
@@ -11,7 +11,7 @@
 "cGA-Zo-QiU.title" = "ONLYOFFICE";
 
 /* Class = "UITabBarItem"; title = "On iPad"; ObjectID = "d8B-af-U9v"; */
-"d8B-af-U9v.title" = "iPad で";
+"d8B-af-U9v.title" = "iPad上";
 
 /* Class = "UILabel"; text = "Name"; ObjectID = "EbX-7l-0KP"; Note = "Do not translate"; */
 "EbX-7l-0KP.text" = "名前";
@@ -29,7 +29,7 @@
 "gTQ-Nt-RDQ.text" = "名前";
 
 /* Class = "UINavigationController"; title = "On iPad"; ObjectID = "gvd-UQ-EFI"; */
-"gvd-UQ-EFI.title" = "iPad で";
+"gvd-UQ-EFI.title" = "iPad上";
 
 /* Class = "UINavigationItem"; title = "Documents"; ObjectID = "iQZ-4u-7mL"; */
 "iQZ-4u-7mL.title" = "ドキュメント";
@@ -41,7 +41,7 @@
 "jRC-an-McY.text" = "住所";
 
 /* Class = "UITableViewController"; title = "On iPad"; ObjectID = "Kfl-YE-c7u"; */
-"Kfl-YE-c7u.title" = "iPad で";
+"Kfl-YE-c7u.title" = "iPad上";
 
 /* Class = "UITabBarItem"; title = "Settings"; ObjectID = "Ksc-pZ-Sdz"; */
 "Ksc-pZ-Sdz.title" = "設定";
@@ -59,7 +59,7 @@
 "oRP-oW-6D9.title" = "ONLYOFFICE";
 
 /* Class = "UIViewController"; title = "Choose Cloud"; ObjectID = "pM4-zR-Xil"; */
-"pM4-zR-Xil.title" = "クラウドを選択";
+"pM4-zR-Xil.title" = "クラウドを選択してください";
 
 /* Class = "UINavigationItem"; title = "ONLYOFFICE"; ObjectID = "rZi-T5-tyI"; */
 "rZi-T5-tyI.title" = "ONLYOFFICE";
@@ -68,13 +68,13 @@
 "s1a-WZ-ro9.text" = "名前";
 
 /* Class = "UINavigationItem"; title = "On iPad"; ObjectID = "w18-Ta-54p"; */
-"w18-Ta-54p.title" = "iPad で";
+"w18-Ta-54p.title" = "iPad上";
 
 /* Class = "UITabBarItem"; title = "Clouds"; ObjectID = "wcS-gn-5AV"; */
 "wcS-gn-5AV.title" = "クラウド";
 
 /* Class = "UINavigationItem"; title = "Choose Cloud"; ObjectID = "WIL-sg-dk2"; */
-"WIL-sg-dk2.title" = "クラウドを選択";
+"WIL-sg-dk2.title" = "クラウドの選択";
 
 /* Class = "UITabBarItem"; title = "ONLYOFFICE"; ObjectID = "WLM-Ff-ccz"; */
 "WLM-Ff-ccz.title" = "ONLYOFFICE";
@@ -83,5 +83,5 @@
 "WM5-Ng-sRj.title" = "クラウド";
 
 /* Class = "UILabel"; text = "Select another cloud to connect to Nextcloud, ownCloud and others are supported."; ObjectID = "WQV-WX-BW2"; */
-"WQV-WX-BW2.text" = "もう1つのクラウドを選択して、Nextcloud、ownCloud、サポートされている他のクラウドに接続";
+"WQV-WX-BW2.text" = "Nextcloud、ownCloud、その他の対応サービスに接続するための別のクラウドを選択してください。";
 

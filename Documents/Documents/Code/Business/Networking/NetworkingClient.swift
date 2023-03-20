@@ -48,15 +48,16 @@ class NetworkingClient: NSObject, NetworkingRequestingProtocol {
     // MARK: - Internal Properties
 
     internal var manager = Alamofire.Session()
-    private let queue = DispatchQueue(label: "asc.networking.client.\(String(describing: type(of: self)))")
+    private let queue = DispatchQueue(label: "asc.networking.client.\(String(describing: type(of: NetworkingClient.self)))")
 
     private lazy var configuration: URLSessionConfiguration = {
         $0.timeoutIntervalForRequest = 30
-        $0.timeoutIntervalForResource = 30
+        $0.timeoutIntervalForResource = defaultTimeoutIntervalForResource
         return $0
     }(URLSessionConfiguration.default)
 
     public var headers: HTTPHeaders = .default
+    internal let defaultTimeoutIntervalForResource: TimeInterval = 30
 
     // MARK: - init
 
@@ -155,6 +156,7 @@ class NetworkingClient: NSObject, NetworkingRequestingProtocol {
 
         let params: Parameters = [:]
 
+        manager.session.configuration.timeoutIntervalForResource = 600
         manager.upload(multipartFormData: { data in
             for (key, value) in params {
                 if let valueData = (value as? String)?.data(using: String.Encoding.utf8) {
@@ -172,6 +174,8 @@ class NetworkingClient: NSObject, NetworkingRequestingProtocol {
                 }
             }
             .responseData(queue: queue) { response in
+                self.manager.session.configuration.timeoutIntervalForResource = self.defaultTimeoutIntervalForResource
+
                 switch response.result {
                 case let .success(value):
                     do {
@@ -207,6 +211,7 @@ class NetworkingClient: NSObject, NetworkingRequestingProtocol {
             (to, [.removePreviousFile, .createIntermediateDirectories])
         }
 
+        manager.session.configuration.timeoutIntervalForResource = 600
         manager.download(url, to: destination)
             .downloadProgress { progress in
                 log.debug("Download Progress: \(progress.fractionCompleted)")
@@ -215,6 +220,8 @@ class NetworkingClient: NSObject, NetworkingRequestingProtocol {
                 }
             }
             .responseData { response in
+                self.manager.session.configuration.timeoutIntervalForResource = self.defaultTimeoutIntervalForResource
+
                 switch response.result {
                 case let .success(data):
                     DispatchQueue.main.async {

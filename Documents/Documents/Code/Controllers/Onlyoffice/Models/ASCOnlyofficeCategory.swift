@@ -11,6 +11,10 @@ import UIKit
 class ASCOnlyofficeCategory: ASCCategory {
     var sortWeight = 500
 
+    var isDocSpaceRoom: Bool {
+        Self.isDocSpace(type: folder?.rootFolderType ?? .unknown)
+    }
+
     convenience init(folder: ASCFolder) {
         let folder = folder.copy()
         self.init()
@@ -29,6 +33,10 @@ class ASCOnlyofficeCategory: ASCCategory {
             return NSLocalizedString("My Documents", comment: "Category title")
         case .onlyofficeShare:
             return NSLocalizedString("Shared with Me", comment: "Category title")
+        case .onlyofficeRoomShared:
+            return NSLocalizedString("My rooms", comment: "Category title")
+        case .onlyofficeRoomArchived:
+            return NSLocalizedString("My archived", comment: "Category title")
         case .onlyofficeCommon:
             return NSLocalizedString("Common Documents", comment: "Category title")
         case .onlyofficeBunch, .onlyofficeProjects:
@@ -50,6 +58,10 @@ class ASCOnlyofficeCategory: ASCCategory {
             return Asset.Images.categoryMy.image
         case .onlyofficeShare:
             return Asset.Images.categoryShare.image
+        case .onlyofficeRoomShared:
+            return Asset.Images.categoryFolder.image
+        case .onlyofficeRoomArchived:
+            return Asset.Images.categoryArchived.image
         case .onlyofficeBunch, .onlyofficeProjects:
             return Asset.Images.categoryProjects.image
         case .onlyofficeFavorites:
@@ -65,8 +77,10 @@ class ASCOnlyofficeCategory: ASCCategory {
         switch type {
         case .onlyofficeUser:
             return 10
-        case .onlyofficeShare:
+        case .onlyofficeShare, .onlyofficeRoomShared:
             return 20
+        case .onlyofficeRoomArchived:
+            return 25
         case .onlyofficeFavorites:
             return 30
         case .onlyofficeRecent:
@@ -88,6 +102,10 @@ class ASCOnlyofficeCategory: ASCCategory {
             return OnlyofficeAPI.Path.Forlder.my
         case .onlyofficeShare:
             return OnlyofficeAPI.Path.Forlder.share
+        case .onlyofficeRoomShared:
+            return OnlyofficeAPI.Path.Forlder.room
+        case .onlyofficeRoomArchived:
+            return OnlyofficeAPI.Path.Forlder.room
         case .onlyofficeFavorites:
             return OnlyofficeAPI.Path.Forlder.favorites
         case .onlyofficeRecent:
@@ -103,6 +121,36 @@ class ASCOnlyofficeCategory: ASCCategory {
         }
     }
 
+    static func isDocSpace(type: ASCFolderType) -> Bool {
+        guard ASCFileManager.onlyofficeProvider?.apiClient.serverVersion?.docSpace != nil else { return false }
+        switch type {
+        case .onlyofficeRoomShared, .onlyofficeRoomArchived, .onlyofficeUser:
+            return true
+        default:
+            return false
+        }
+    }
+
+    static func hasDocSpaceRootRoomsList(type: ASCFolderType) -> Bool {
+        guard isDocSpace(type: type), ASCFileManager.onlyofficeProvider?.apiClient.serverVersion?.docSpace != nil else { return false }
+        switch type {
+        case .onlyofficeRoomShared, .onlyofficeRoomArchived:
+            return true
+        default:
+            return false
+        }
+    }
+
+    static func searchArea(of type: ASCFolderType) -> String? {
+        switch type {
+        case .onlyofficeRoomShared:
+            return "Active"
+        case .onlyofficeRoomArchived:
+            return "Archive"
+        default: return nil
+        }
+    }
+
     static func allowToMoveAndCopy(of type: ASCFolderType) -> Bool {
         switch type {
         case .onlyofficeUser:
@@ -112,6 +160,8 @@ class ASCOnlyofficeCategory: ASCCategory {
         case .onlyofficeCommon:
             return true
         case .onlyofficeBunch, .onlyofficeProjects:
+            return true
+        case .onlyofficeRoomShared:
             return true
         default:
             return false

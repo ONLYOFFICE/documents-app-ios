@@ -28,8 +28,6 @@ class ASCDebugConsoleViewController: ASCBaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         initView()
-
-        ASCLogIntercepter.shared.delegate = self
     }
 
     fileprivate func initView() {

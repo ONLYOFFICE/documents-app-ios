@@ -68,7 +68,7 @@ extension ASCSharingOprionsInteractorTests {
             nil
         }
 
-        func makeApiRequest(entity: ASCEntity) -> Endpoint<OnlyofficeResponseArray<OnlyofficeShare>>? {
+        func makeApiRequest(entity: ASCEntity, for reason: ShareSettingsAPIWorkerReason) -> Endpoint<OnlyofficeResponseArray<OnlyofficeShare>>? {
             let file = ASCFile()
             file.id = "Foo"
             return Endpoint<OnlyofficeResponseArray<OnlyofficeShare>>(path: String(format: OnlyofficeAPI.Path.shareFile, file.id), decode: { _ in

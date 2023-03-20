@@ -12,6 +12,11 @@ class ASCPortalTypeDefinderByCurrentConnection: ASCPortalTypeDefinderProtocol {
     func definePortalType() -> ASCPortalType {
         let url: URL? = ASCFileManager.onlyofficeProvider?.apiClient.baseURL
         let definderByUrl = ASCPortalTypeDefinderByUrl(url: url)
-        return definderByUrl.definePortalType()
+        let type = definderByUrl.definePortalType()
+        if case .unknown = type, ASCFileManager.onlyofficeProvider?.apiClient.serverVersion?.docSpace != nil {
+            return .docSpace
+        } else {
+            return type
+        }
     }
 }

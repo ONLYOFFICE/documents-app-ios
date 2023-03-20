@@ -1,0 +1,15 @@
+//
+//  Release.xcconfig
+//  Documents
+//
+//  Created by Alexander Yuzhin on 10.11.2022.
+//  Copyright © 2022 Ascensio System SIA. All rights reserved.
+//
+
+// Configuration settings file format documentation can be found at:
+// https://help.apple.com/xcode/#/dev745c5c974
+
+PRODUCT_BUNDLE_IDENTIFIER = com.onlyoffice.Documents
+PRODUCT_NAME = Documents
+INFOPLIST_FILE = Documents/Documents.plist
+CODE_SIGN_ENTITLEMENTS = Documents/Entitlements/Documents.entitlements

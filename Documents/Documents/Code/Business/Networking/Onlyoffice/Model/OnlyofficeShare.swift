@@ -42,6 +42,8 @@ struct OnlyofficeShare: Mappable {
         return ASCGroup(JSON: sharedTo)
     }
 
+    var email: String?
+
     var link: String? {
         guard
             let sharedTo = sharedTo
@@ -60,6 +62,11 @@ struct OnlyofficeShare: Mappable {
     init(access: ASCShareAccess, group: ASCGroup) {
         self.access = access
         innerGroup = group
+    }
+
+    init(access: ASCShareAccess, email: String) {
+        self.access = access
+        self.email = email
     }
 
     init() {}

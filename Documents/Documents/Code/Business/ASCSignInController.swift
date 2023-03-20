@@ -165,8 +165,8 @@ class ASCSignInController {
                                 return
                             }
 
-                            if let communityVersion = response?.result?.community {
-                                api.serverVersion = communityVersion
+                            if let versions = response?.result {
+                                api.serverVersion = versions
 
                                 // Init ONLYOFFICE provider
                                 ASCFileManager.onlyofficeProvider = ASCOnlyofficeProvider(baseUrl: baseUrl, token: token)

@@ -26,7 +26,12 @@ class ASCCreateEntity: NSObject, UIImagePickerControllerDelegate, UINavigationCo
 
         do {
             createEntityView = try SwiftMessages.viewFromNib()
-            createEntityView.allowConnectClouds = (provider as? ASCOnlyofficeProvider)?.apiClient.active ?? false
+            createEntityView.allowConnectClouds = {
+                guard let provider = provider as? ASCOnlyofficeProvider,
+                      provider.apiClient.serverVersion?.docSpace == nil
+                else { return false }
+                return provider.apiClient.active
+            }()
         } catch {
             log.error("File: \(#file), Function: \(#function), Line: \(#line) - Could not load xib of ASCCreateEntityView")
             return

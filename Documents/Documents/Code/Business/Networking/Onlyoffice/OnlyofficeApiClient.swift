@@ -35,17 +35,17 @@ class OnlyofficeApiClient: NetworkingClient {
     // MARK: - Properties
 
     public var expires: Date?
-    public var serverVersion: String?
+    public var serverVersion: OnlyofficeVersion?
     public var capabilities: OnlyofficeCapabilities?
     public var active: Bool {
         return baseURL != nil && token != nil
     }
 
     public var isHttp2: Bool {
-        return serverVersion?.isVersion(greaterThanOrEqualTo: "10.0") ?? false
+        return serverVersion?.community?.isVersion(greaterThanOrEqualTo: "10.0") ?? false
     }
 
-    private let queue = DispatchQueue(label: "asc.networking.client.\(String(describing: type(of: self)))")
+    private let queue = DispatchQueue(label: "asc.networking.client.\(String(describing: type(of: OnlyofficeApiClient.self)))")
 
     // MARK: - Lifecycle
 
@@ -64,7 +64,7 @@ class OnlyofficeApiClient: NetworkingClient {
         // Initialize session manager
         let configuration = URLSessionConfiguration.default
         configuration.timeoutIntervalForRequest = 30 // seconds
-        configuration.timeoutIntervalForResource = 30
+        configuration.timeoutIntervalForResource = defaultTimeoutIntervalForResource
         configuration.headers = .default
 
         let adapter = OnlyofficeTokenAdapter(accessToken: token ?? "")
@@ -143,6 +143,24 @@ class OnlyofficeApiClient: NetworkingClient {
             ]
         }
 
+        let redirectHandler = Redirector(
+            behavior: Redirector.Behavior.modify { task, request, response in
+                var redirectedRequest = request
+
+                // Set Authorization in header if redirect to same host
+                if redirectedRequest.url?.host == url.host,
+                   let originalRequest = task.originalRequest,
+                   let headers = originalRequest.allHTTPHeaderFields,
+                   let authorizationHeaderValue = headers["Authorization"]
+                {
+                    redirectedRequest.setValue(authorizationHeaderValue, forHTTPHeaderField: "Authorization")
+                }
+
+                return redirectedRequest
+            }
+        )
+
+        manager.session.configuration.timeoutIntervalForResource = 600
         manager.download(
             url,
             headers: headers,
@@ -154,7 +172,10 @@ class OnlyofficeApiClient: NetworkingClient {
                 processing(nil, progress.fractionCompleted, nil)
             }
         }
+        .redirect(using: redirectHandler)
         .responseData(queue: queue) { response in
+            self.manager.session.configuration.timeoutIntervalForResource = self.defaultTimeoutIntervalForResource
+
             switch response.result {
             case let .success(data):
                 DispatchQueue.main.async {
@@ -204,6 +225,8 @@ class OnlyofficeApiClient: NetworkingClient {
             urlComponents.queryItems = queryItems
 
             if let uploadUrl = urlComponents.url {
+                manager.session.configuration.timeoutIntervalForResource = 600
+
                 manager.upload(
                     data,
                     to: uploadUrl,
@@ -218,6 +241,8 @@ class OnlyofficeApiClient: NetworkingClient {
                 }
                 .validate(statusCode: 200 ..< 300)
                 .responseData(queue: queue) { response in
+                    self.manager.session.configuration.timeoutIntervalForResource = self.defaultTimeoutIntervalForResource
+
                     switch response.result {
                     case let .success(value):
                         do {
@@ -253,7 +278,7 @@ class OnlyofficeApiClient: NetworkingClient {
             }
 
             if let versions = response?.result {
-                self?.serverVersion = versions.community
+                self?.serverVersion = versions
             }
         }
     }

@@ -47,11 +47,18 @@ class OnlyofficeAPI {
         public static let groups = "api/\(version)/group"
         public static let shareFile = "api/\(version)/files/file/%@/share"
         public static let shareFolder = "api/\(version)/files/folder/%@/share"
+        public static let shareRoom = "api/\(version)/files/rooms/%@/share"
         public static let forgotPassword = "api/\(version)/people/password"
         public static let deleteAccount = "api/\(version)/people/self/delete"
         public static let pushRegisterDevice = "/api/\(version)/settings/push/docregisterdevice"
         public static let pushSubscribe = "/api/\(version)/settings/push/docsubscribe"
         public static let markAsRead = "api/\(version)/files/fileops/markasread"
+        public static let paymentQuota = "api/\(version)/portal/payment/quota"
+        public static let room = "api/\(version)/files/rooms/%@"
+        public static let roomPin = room.appendingPathComponent("pin")
+        public static let roomUnpin = room.appendingPathComponent("unpin")
+        public static let roomArchive = room.appendingPathComponent("archive")
+        public static let roomUnarchive = room.appendingPathComponent("unarchive")
 
         enum Forlder {
             public static let root = "@root"
@@ -62,6 +69,7 @@ class OnlyofficeAPI {
             public static let trash = "@trash"
             public static let favorites = "@favorites"
             public static let recent = "@recent"
+            public static let room = "rooms"
         }
     }
 
@@ -103,6 +111,10 @@ class OnlyofficeAPI {
                 return Endpoint<OnlyofficeResponse<OnlyofficePath>>.make(String(format: Path.files, folder.id), .get, URLEncoding.default)
             }
 
+            static func roomsPath() -> Endpoint<OnlyofficeResponse<OnlyofficePath>> {
+                return Endpoint<OnlyofficeResponse<OnlyofficePath>>.make(String(format: Path.room, ""), .get, URLEncoding.default)
+            }
+
             static func info(folder: ASCFolder) -> Endpoint<OnlyofficeResponse<ASCFolder>> {
                 return Endpoint<OnlyofficeResponse<ASCFolder>>.make(String(format: Path.folder, folder.id))
             }
@@ -121,6 +133,26 @@ class OnlyofficeAPI {
 
             static func filter(folderId: String) -> Endpoint<OnlyofficeResponse<ASCFolder>> {
                 return Endpoint<OnlyofficeResponse<ASCFile>>.make(String(format: Path.files, folderId), .get, URLEncoding.queryString)
+            }
+        }
+
+        enum Rooms {
+            static let paymentQuota: Endpoint<OnlyofficeResponse<ASCPaymentQuota>> = Endpoint<OnlyofficeResponse<ASCPaymentQuota>>.make(Path.paymentQuota, .get)
+
+            static func pin(folder: ASCFolder) -> Endpoint<OnlyofficeResponse<ASCFolder>> {
+                return Endpoint<OnlyofficeResponse<ASCFolder>>.make(String(format: Path.roomPin, folder.id), .put)
+            }
+
+            static func unpin(folder: ASCFolder) -> Endpoint<OnlyofficeResponse<ASCFolder>> {
+                return Endpoint<OnlyofficeResponse<ASCFolder>>.make(String(format: Path.roomUnpin, folder.id), .put)
+            }
+
+            static func archive(folder: ASCFolder) -> Endpoint<OnlyofficeResponse<ASCFolder>> {
+                return Endpoint<OnlyofficeResponse<ASCFolder>>.make(String(format: Path.roomArchive, folder.id), .put)
+            }
+
+            static func unarchive(folder: ASCFolder) -> Endpoint<OnlyofficeResponse<ASCFolder>> {
+                return Endpoint<OnlyofficeResponse<ASCFolder>>.make(String(format: Path.roomUnarchive, folder.id), .put)
             }
         }
 
@@ -171,12 +203,16 @@ class OnlyofficeAPI {
                 Endpoint<OnlyofficeResponseArray<OnlyofficeShare>>.make(Path.filesShare, .post)
             }
 
-            static func file(file: ASCFile) -> Endpoint<OnlyofficeResponseArray<OnlyofficeShare>> {
-                return Endpoint<OnlyofficeResponseArray<OnlyofficeShare>>.make(String(format: Path.shareFile, file.id), .put)
+            static func file(file: ASCFile, method: HTTPMethod) -> Endpoint<OnlyofficeResponseArray<OnlyofficeShare>> {
+                return Endpoint<OnlyofficeResponseArray<OnlyofficeShare>>.make(String(format: Path.shareFile, file.id), method)
             }
 
-            static func folder(folder: ASCFolder) -> Endpoint<OnlyofficeResponseArray<OnlyofficeShare>> {
-                return Endpoint<OnlyofficeResponseArray<OnlyofficeShare>>.make(String(format: Path.shareFolder, folder.id), .put)
+            static func folder(folder: ASCFolder, method: HTTPMethod) -> Endpoint<OnlyofficeResponseArray<OnlyofficeShare>> {
+                return Endpoint<OnlyofficeResponseArray<OnlyofficeShare>>.make(String(format: Path.shareFolder, folder.id), method)
+            }
+
+            static func room(folder: ASCFolder, method: HTTPMethod) -> Endpoint<OnlyofficeResponseArray<OnlyofficeShare>> {
+                return Endpoint<OnlyofficeResponseArray<OnlyofficeShare>>.make(String(format: Path.shareRoom, folder.id), method)
             }
         }
 

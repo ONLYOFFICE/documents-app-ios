@@ -1,17 +1,17 @@
 /* Count of seclected rows: count + selected */
-"%d selected" = "%d selected";
+"%d selected" = "%d が選択されました";
 
 /* Presentation Viewer */
-"%i of %i" = "%2$i の %1$i ";
+"%i of %i" = "%2$i の %1$i";
 
 /* No comment provided by engineer. */
 "%lu File selected" = "%lu ファイルが選択されました";
 
 /* No comment provided by engineer. */
-"%lu Folder and %lu File selected" = "%1$lu ファルダーと %2$lu ファイルを選択 ";
+"%lu Folder and %lu File selected" = "%1$lu フォルダーと %2$lu ファイルが選択された";
 
 /* No comment provided by engineer. */
-"%lu Folder selected" = "%lu ファルダーが選択されました";
+"%lu Folder selected" = "%lu フォルダーが選択されました";
 
 /* No comment provided by engineer. */
 "%lu items with the same name already exist in the folder '%@'. Overwrite the items?" = "同じ名前の %1$lu 個のアイテムがフォルダー '%2$@’ に存在します。このアイテムを上書きしますか?";
@@ -20,7 +20,16 @@
 "© Ascensio System SIA %d" = "© Ascensio System SIA %d";
 
 /* No comment provided by engineer. */
-"A file with a similar name already exists in the document directory on the device." = "デバイスにはドキュメントディレクトリに類似した名前のファイルが存在します。";
+"<p>Use the password created in <a href=\"https://yandex.ru/id/about\">Yandex ID</a>.</br>More detailed connection instructions can be found in the <a href=\"https://yandex.ru/support/disk-desktop/webdav-app-passwords.html?lang=ru\">help</a>.</p>" = "<p><a href=\"\"https://yandex.ru/id/about\">Yandex ID</a>で作成されたパスワードを入力してください。</br>詳しくは<a href=\"https://yandex.ru/support/disk-desktop/webdav-app-passwords.html?lang=ru\">ヘルプ</a>でご覧いただけます。</p>";
+
+/* No comment provided by engineer. */
+"<p>Use the password created in <a href=\"https://yandex.ru/id/about\">Yandex ID</a>.</p><p>More detailed connection instructions can be found in the <a href=\"https://yandex.ru/support/disk-desktop/webdav-app-passwords.html?lang=ru\">help</a>.</p>" = "<p><a href=\"https://yandex.ru/id/about\">Yandex ID</a>で作成されたパスワードを入力してください。</p><p>詳しくは<a href=\"https://yandex.ru/support/disk-desktop/webdav-app-passwords.html?lang=ru\">ヘルプ</a>でご覧いただけます。</p>";
+
+/* No comment provided by engineer. */
+"<p>You must have a paid version of the player to use this service.</p><p>If you have activated double authentication, please generate a CDM application from the Infomaniak manager. <a href=\"https://www.infomaniak.com/en/support/faq/1940/enable-two-step-verification\">More...</a></p>" = "<p>本サービスをご利用いただくには、有償版のプレーヤーが必要です。</p><p>二重認証を有効にしている場合は、InfomaniakマネージャからCDMアプリケーションを生成してください。 <a href=\"https://www.infomaniak.com/en/support/faq/1940/enable-two-step-verification\">詳細情報</a></p>";
+
+/* No comment provided by engineer. */
+"A file with a similar name already exists in the document directory on the device." = "同名のファイルがすでに端末のドキュメントディレクトリに存在します。";
 
 /* No comment provided by engineer. */
 "A user or group will be able only to view the document and add comments, as well as manage them." = "ユーザーまたはグループは、文書の閲覧とコメントの追加、およびその管理のみが可能になります。";
@@ -70,8 +79,11 @@
 /* Sharing settings add notification message */
 "Add message" = "メッセージを追加";
 
+/* Button title */
+"Add users" = "ユーザーを追加する";
+
 /* No comment provided by engineer. */
-"Add users or groups and allow them to \n read, review or edit documents." = "ユーザーまたはグループを追加して、\n文書の閲覧、レビュー、編集を許可する";
+"Add users or groups and allow them to \n read, review or edit documents." = "ユーザーやグループを追加して、\n文書の閲覧、レビュー、編集を許可することができます。";
 
 /* No comment provided by engineer. */
 "Address is empty" = "住所が空白です";
@@ -100,23 +112,38 @@
 /* Caption of the process */
 "Applying" = "適用";
 
+/* Button title */
+"Archive" = "アーカイブ";
+
 /* No comment provided by engineer. */
 "Archives" = "アーカイブ";
 
-/* No comment provided by engineer. */
-"Are you sure you want to delete the account %@ from this device?" = "本当にデバイスからアカウンド %@ を削除しますか?";
+/* Caption of the processing */
+"Archiving" = "アーカイブ";
 
 /* No comment provided by engineer. */
-"Are you sure you want to leave this account?" = "本当にこのアカウントから移動しますか?";
+"Archiving failed." = "アーカイブに失敗しました。";
+
+/* No comment provided by engineer. */
+"Are you sure you want to delete the account %@ from this device?" = "本当にデバイスから %@ アカウンドを削除しますか?";
+
+/* No comment provided by engineer. */
+"Are you sure you want to leave this account?" = "本当にこのアカウントからサインアウトしますか?";
 
 /* No comment provided by engineer. */
 "Author" = "著者";
 
 /* No comment provided by engineer. */
+"Back" = "戻る";
+
+/* No comment provided by engineer. */
+"Box" = "Box";
+
+/* No comment provided by engineer. */
 "Box directory" = "Box ディレクトリ";
 
 /* No comment provided by engineer. */
-"By creating the portal you agree with our Privacy Policy and Terms of Service" = "ポータルを作成することにより、当社のプライバシーポリシーおよび利用規約に同意されたものとします。";
+"By creating the portal you agree with our Privacy Policy and Terms of Service" = "ポータルを作成することにより、お客様は当社のプライバシーポリシーおよび利用規約に同意されたものとします";
 
 /* Data units */
 "bytes" = "バイト";
@@ -125,7 +152,7 @@
 "Cache" = "キャッシュ";
 
 /* No comment provided by engineer. */
-"Camera Unavailable" = "カメラが使用できます";
+"Camera Unavailable" = "カメラが使用できません";
 
 /* No comment provided by engineer. */
 "Can not create file in the folder." = "このフォルダーにはファイルを作成できません。";
@@ -143,31 +170,37 @@
 "Cancel" = "キャンセル";
 
 /* No comment provided by engineer. */
-"Check your internet connection" = "お使いのインターネットの接続を確認";
+"Cancel invitation?" = "招待をキャンセルしますか？";
 
 /* No comment provided by engineer. */
-"Choose Code Page" = "コードページを選択";
+"Check your internet connection" = "お使いのインターネット接続をご確認ください";
 
 /* No comment provided by engineer. */
-"Choose CSV Options" = "CSV オプションを選択";
+"Choose Code Page" = "コードページを選択してください";
+
+/* No comment provided by engineer. */
+"Choose CSV Options" = "CSVオプションを選択してください";
 
 /* Caption of the processing */
-"Cleanup" = "クリーン";
+"Cleanup" = "クリーンアップ";
 
 /* Button title */
-"Clear Cache" = "キャッシュをクリア";
+"Clear Cache" = "キャッシュをクリアする";
 
 /* Button title */
-"Clear Cache?" = "キャッシュをクリア?";
+"Clear Cache?" = "キャッシュをクリアしますか？";
+
+/* No comment provided by engineer. */
+"Clear selection?" = "選択を解除しますか？";
 
 /* Caption of the processing */
-"Clearing" = "クリーン";
+"Clearing" = "クリア中";
 
 /* Close view */
 "Close" = "閉じる";
 
 /* No comment provided by engineer. */
-"Close the document before opening a new one." = "このドキュメントを閉じてから、新しいドキュメントを開始する";
+"Close the document before opening a new one." = "新しいドキュメントを開く前に、このドキュメントを閉じてください。";
 
 /* Default external storage name */
 "Cloud directory" = "クラウドディレクトリ";
@@ -176,13 +209,16 @@
 "cm" = "センチメートル";
 
 /* Introduction Step Five - Title */
-"Collaborate with your team" = "チームと共同編集";
+"Collaborate with your team" = "チームとコラボレーションする";
+
+/* No comment provided by engineer. */
+"Collaboration" = "コラボレーション";
 
 /* Share status */
 "Comment" = "コメント";
 
 /* Category title */
-"Common Documents" = "通常のドキュメント";
+"Common Documents" = "共通ドキュメント";
 
 /* Cancel */
 "common.cancel" = "キャンセル";
@@ -191,31 +227,31 @@
 "common.error" = "エラー";
 
 /* Myself */
-"common.me" = "わたし";
+"common.me" = "私";
 
 /* OK */
 "common.ok" = "ОК";
 
 /* Payment required message */
-"common.paymentRequiredMsg" = "支払い済み期間が終了しました";
+"common.paymentRequiredMsg" = "有料期間が終了しました";
 
 /* Payment required title */
-"common.paymentRequiredTitle" = "支払いが必要です";
+"common.paymentRequiredTitle" = "お支払いが必要です";
 
 /* No comment provided by engineer. */
-"Compress Images" = "イメージを圧縮";
+"Compress Images" = "イメージを圧縮する";
 
 /* Button title */
 "Connect" = "接続";
 
 /* No comment provided by engineer. */
-"Connect Clouds" = "クラウドを接続";
+"Connect Clouds" = "クラウドに接続する";
 
 /* Introduction Step Three - Description */
-"Connect third-party storage\nlike Nextcloud, ownCloud, Yandex Disk and\nothers which use WebDAV protocol." = "サードパーティーのストレージを接続\nNextcloud、ownCloud, Yandex Disk などのように\n及び\nWebDAV プロトコールを使用する他のクラウド";
+"Connect third-party storage\nlike Nextcloud, ownCloud, Yandex Disk and\nothers which use WebDAV protocol." = "Nextcloud、ownCloud、Yandex Diskなど、\nWebDAVプロトコルを使用する\nサードパーティストレージを接続します。";
 
 /* Footer text */
-"Connect to your %@ cloud to store files online and collaborate on documents in real time" = "%@ クラウドに接続して、オンラインでファイルを保存。リアルタイムでドキュメントを共同編集";
+"Connect to your %@ cloud to store files online and collaborate on documents in real time" = "%@ クラウドに接続して、オンラインでファイルを保存し、リアルタイムでドキュメントを共同編集します。";
 
 /* Caption of the process */
 "Connecting" = "接続中";
@@ -227,7 +263,7 @@
 "Continue anyway" = "強制的に続ける";
 
 /* No comment provided by engineer. */
-"Converter" = "コンバーター";
+"Converter" = "変換ツール";
 
 /* Button title */
 "Copy" = "コピー";
@@ -326,10 +362,13 @@
 "Create and edit documents with our comprehensive toolbar: work with complex objects in text documents, perform extensive calculations in spreadsheets, create stunning presentations and view PDF files with no formatting loss." = "当社の総合ツールバーでドキュメントを作成、編集: テキストドキュメントにある複雑なオブジェクトを編集。スプレッドシートで広範囲の計算を実行。美しいプレゼンテーションを作成して、書式を変更することなく PDF ファイルで閲覧。";
 
 /* No comment provided by engineer. */
-"Create new documents, spreadsheets or presentations. Create new folders to organize your files." = "新規ドキュメント、スプレッドシートまたはプレゼンテーションを作成。新規フォルダーを作成して、ファイルを整理";
+"Create new documents, spreadsheets or presentations. Create new folders to organize your files." = "新しい文書、スプレッドシート、プレゼンテーションを作成します。新しいフォルダーを作成して、ファイルを整理することができます。";
 
 /* Caption of the process */
 "Creating" = "作成中";
+
+/* No comment provided by engineer. */
+"Custom" = "ユーザー設定";
 
 /* Share status */
 "Custom filter" = "ユーザー設定のフィルター";
@@ -365,10 +404,10 @@
 "Delimiter" = "区切り文字";
 
 /* Share status */
-"Deny Access" = "アクセスを拒否";
+"Deny Access" = "アクセスを拒否する";
 
 /* No comment provided by engineer. */
-"Deselect all" = "すべて選択解除";
+"Deselect all" = "すべての選択を解除する";
 
 /* No comment provided by engineer. */
 "Developer options" = "開発者のオプション";
@@ -377,23 +416,20 @@
 "Disable if you do not want to receive notifications from the %@" = "%@からの通知を受け取りたくない場合は、無効にしてください";
 
 /* Button title */
-"Disconnect third party" = "サードパーティーの接続をやめる";
+"Disconnect third party" = "サードパーティーの接続を解除する";
 
 /* No comment provided by engineer. */
 "Document" = "ドキュメント";
 
-/* No comment provided by engineer. */
-"Document protection" = "ドキュメントの保護";
-
 /* Default title of sample document */
-"Document Sample" = "ドキュメントのサンプル";
+"Document Sample" = "サンプルのドキュメント";
 
 /* Category title */
 "Documents" = "ドキュメント";
 
 /* Button title
    Operation completed */
-"Done" = "終了しました";
+"Done" = "完了";
 
 /* Button title */
 "Download" = "ダウンロード";
@@ -408,7 +444,7 @@
 "Dropbox directory" = "Dropbox ディレクトリ";
 
 /* Button title */
-"Duplicate" = "コピー";
+"Duplicate" = "複製";
 
 /* Caption of the processing */
 "Duplication" = "複製";
@@ -422,6 +458,9 @@
 /* Introduction Step Four - Title */
 "Edit documents locally" = "ドキュメントをローカルで編集する";
 
+/* Share status */
+"Editor" = "エディタ";
+
 /* No comment provided by engineer. */
 "Email" = "メール";
 
@@ -429,7 +468,7 @@
 "Email is empty" = "メールが入力されていません";
 
 /* No comment provided by engineer. */
-"Email is incorrect." = "メールアドレスが正しくありません";
+"Email is incorrect." = "メールアドレスが正しくありません。";
 
 /* No comment provided by engineer. */
 "Email is not valid" = "メールが無効です";
@@ -452,11 +491,11 @@
 /* No comment provided by engineer. */
 "Enter a password to open the file." = "ファイルを開くためにパスワードを入力してください。";
 
-/* No comment provided by engineer. */
-"Enter Portal Address" = "ポータルのアドレスを入力する";
+/* placeholder */
+"Enter email" = "メールアドレスを入力してください";
 
 /* No comment provided by engineer. */
-"Enter text using handwriting instead of device keyboard. ONLYOFFICE will recognize text and insert it in the document. The feature is available for English only." = "デバイスのキーボードではなく、手書きでテキストを入力することができます。ONLYOFFICEは、テキストを認識し、ドキュメントに挿入します。現在、英語のみでご利用いただけます。";
+"Enter Portal Address" = "ポータルのアドレスを入力する";
 
 /* No comment provided by engineer. */
 "Error" = "エラー";
@@ -465,7 +504,7 @@
 "Error code: %ld" = "エラーコード：%ld";
 
 /* Access is Forbidden message */
-"error.errorForbiddenMsg" = "ポータルの管理者に連絡して、このリソースにアクセスできるようにする。";
+"error.errorForbiddenMsg" = "このリソースにアクセスするには、ポータル管理者に連絡してください。";
 
 /* Access is Forbidden title */
 "error.errorForbiddenTitle" = "アクセスできません";
@@ -483,7 +522,7 @@
 "Export" = "エクスポート";
 
 /* No comment provided by engineer. */
-"Failed online conversion service." = "オンライン変換サービス失敗";
+"Failed online conversion service." = "オンライン変換サービスのエラーが発生しました。";
 
 /* No comment provided by engineer. */
 "Failed to check portal availability." = "ポータルの可用性を確認できませんでした。";
@@ -516,7 +555,7 @@
 "Failed to send feedback by mail. Try to write your request on our forum." = "メールでのフィードバック送信に失敗しました。フォーラムに要望を書き込んでみてください。";
 
 /* No comment provided by engineer. */
-"Failed upload source file to conversion online service." = "ソースファイルを変換オンラインサービスにアップロードできませんでした";
+"Failed upload source file to conversion online service." = "オンライン変換サービスへのソースファイルのアップロードに失敗しました。";
 
 /* No comment provided by engineer. */
 "Failure to download file from portal." = "ポータルからファイルをダウンロードできませんでした。";
@@ -534,16 +573,13 @@
 "File does not exist" = "ファイルが存在しません";
 
 /* No comment provided by engineer. */
-"File search became easier with filtering options: by type for local files and by type and author for cloud files." = "ローカルファイルは種類で、クラウドファイルは種類と作者でフィルタリングできるようになり、ファイル検索がより簡単になりました。";
-
-/* No comment provided by engineer. */
 "Files" = "ファイル";
 
 /* No comment provided by engineer. */
 "Files Preview" = "ファイルのプレビュー";
 
 /* No comment provided by engineer. */
-"Filtering in search" = "検索フィルタリング";
+"Filling form" = "入力フォーム";
 
 /* No comment provided by engineer. */
 "Filters" = "フィルタ";
@@ -558,13 +594,13 @@
 "Folders" = "フォルダー";
 
 /* Share status */
-"Form filling" = "フォーム入力";
+"Form filling" = "フォームへの入力";
 
 /* Share status */
 "Full Access" = "フルアクセス";
 
 /* Data units */
-"Gb" = "ギガバイト";
+"Gb" = "Gb";
 
 /* No comment provided by engineer. */
 "Get started" = "開始する";
@@ -588,9 +624,6 @@
 "Groups" = "グループ";
 
 /* No comment provided by engineer. */
-"Handwriting recognition" = "手書き文字認識";
-
-/* No comment provided by engineer. */
 "iCloud" = "iCloud";
 
 /* No comment provided by engineer. */
@@ -608,14 +641,17 @@
 /* No comment provided by engineer. */
 "Incorrect portal address" = "ポータルのアドレスが正しくありません";
 
+/* Button title */
+"Info" = "詳細情報";
+
 /* No comment provided by engineer. */
 "Information" = "情報";
 
 /* No comment provided by engineer. */
-"Instructions had been sent to your email" = "指示書をメールアドレスに送りました。";
+"Instructions had been sent to your email" = "メールにてご案内状をお送りしました。";
 
 /* No comment provided by engineer. */
-"Invalid Country Code" = "国コードが無効です";
+"Invalid Country Code" = "無効な国コード";
 
 /* No comment provided by engineer. */
 "Invalid Data" = "無効なデータ";
@@ -623,8 +659,17 @@
 /* No comment provided by engineer. */
 "Invalid Url" = "無効なURL";
 
+/* No comment provided by engineer. */
+"Invite" = "招待する";
+
+/* No comment provided by engineer. */
+"Invite people" = "人物を招待する";
+
+/* No comment provided by engineer. */
+"Invite people by email" = "メールで人物を招待する";
+
 /* Data units */
-"Kb" = "キガバイト";
+"Kb" = "Kb";
 
 /* No comment provided by engineer. */
 "kDrive" = "kDrive";
@@ -641,14 +686,17 @@
 /* No comment provided by engineer. */
 "Link copied\nto the clipboard" = "クリップボードに\nコピーされたリンク";
 
+/* No comment provided by engineer. */
+"Link with the invitation has been sent to the mail" = "メールに招待リンクが送信されました";
+
 /* Caption of the process */
-"Logging in" = "ログインしました";
+"Logging in" = "ログイン中";
 
 /* No comment provided by engineer. */
 "Login" = "ログイン";
 
 /* No comment provided by engineer. */
-"Login by %@" = "%@ がログイン";
+"Login by %@" = "%@ としてログイン";
 
 /* No comment provided by engineer. */
 "Login is empty" = "ログインが空です";
@@ -664,16 +712,19 @@
 "Mark as Read" = "既読にする";
 
 /* No comment provided by engineer. */
-"Mark as Read failed." = "既読にすることに失敗しました";
+"Mark as Read failed." = "既読にすることに失敗しました。";
 
 /* Data units */
-"Mb" = "メガバイト";
+"Mb" = "Mb";
 
 /* If current user name is not set */
-"Me" = "わたし";
+"Me" = "私";
 
 /* No comment provided by engineer. */
 "Media" = "メディア";
+
+/* No comment provided by engineer. */
+"Member" = "メンバー";
 
 /* Button title */
 "More" = "もっと";
@@ -682,7 +733,10 @@
 "Move" = "移動";
 
 /* Button title */
-"Move here" = "ここに移動";
+"Move from archive" = "アーカイブから移動する";
+
+/* Button title */
+"Move here" = "ここに移動する";
 
 /* Button title */
 "Move or Copy" = "移動またはコピー";
@@ -690,14 +744,23 @@
 /* Caption of the processing */
 "Moving" = "移動中";
 
-/* No comment provided by engineer. */
-"My Clouds" = "マイクラウド";
+/* Caption of the processing */
+"Moving from archive" = "アーカイブから移動中";
 
 /* Category title */
-"My Documents" = "マイドキュメント";
+"My archived" = "私のアーカイブ";
 
 /* No comment provided by engineer. */
-"My Drive" = "マイドライブ";
+"My Clouds" = "私のクラウド";
+
+/* Category title */
+"My Documents" = "私の文書";
+
+/* No comment provided by engineer. */
+"My Drive" = "私のドライブ";
+
+/* Category title */
+"My rooms" = "私のルーム";
 
 /* No comment provided by engineer. */
 "Name is empty" = "名前が空です";
@@ -706,10 +769,10 @@
 "Needs additional params." = "追加のパラミーターが必要です。";
 
 /* Badge of file in file list */
-"new" = "新しい";
+"new" = "新規";
 
 /* No comment provided by engineer. */
-"New" = "新しい";
+"New" = "新規";
 
 /* No comment provided by engineer. */
 "New Document" = "新規ドキュメント";
@@ -718,10 +781,13 @@
 "New Folder" = "新規フォルダー";
 
 /* No comment provided by engineer. */
-"New Presentation" = "新しいプレゼンテーション";
+"New Presentation" = "新規プレゼンテーション";
 
 /* No comment provided by engineer. */
 "New Spreadsheet" = "新規スプレッドシート";
+
+/* No comment provided by engineer. */
+"New users" = "新規ユーザー";
 
 /* Next step */
 "Next" = "次へ";
@@ -730,7 +796,7 @@
 "Nextcloud" = "Nextcloud";
 
 /* No comment provided by engineer. */
-"Nextcloud directory" = "Nextcloudのディレクトリ";
+"Nextcloud directory" = "Nextcloud ディレクトリ";
 
 /* No comment provided by engineer. */
 "No client IDs of application" = "アプリのクライエントIDがありません";
@@ -739,10 +805,10 @@
 "No connection" = "接続がありません";
 
 /* No comment provided by engineer. */
-"No information about the user profile." = "このユーザーのプロファイルの情報がありません。";
+"No information about the user profile." = "このユーザーのプロファイル情報がありません。";
 
 /* No comment provided by engineer. */
-"No Internet connection" = "インターネットの接続がありません";
+"No Internet connection" = "インターネット接続がありません";
 
 /* No comment provided by engineer. */
 "No network" = "ネットワークがありません";
@@ -754,7 +820,7 @@
 "No results matching your search could be found. Please try another phrase." = "検索に合う結果は見つかりませんでした。他のフレーズを試してください。";
 
 /* No comment provided by engineer. */
-"No search result" = "検索結果はありません。";
+"No search result" = "検索結果はありません";
 
 /* No comment provided by engineer. */
 "No Search Result" = "検索結果は見つかりませんでした";
@@ -786,10 +852,10 @@
 "OK" = "ОК";
 
 /* Category title */
-"On iPad" = "iPad で";
+"On iPad" = "iPad上";
 
 /* Category title */
-"On iPhone" = "iPhone で";
+"On iPhone" = "iPhone上";
 
 /* No comment provided by engineer. */
 "OneDrive" = "OneDrive";
@@ -798,7 +864,7 @@
 "OneDrive directory" = "OneDrive ディレクトリ";
 
 /* No comment provided by engineer. */
-"OneDrive for Business" = "業務用 OneDrive ";
+"OneDrive for Business" = "OneDrive for Business";
 
 /* Short App Name */
 "ONLYOFFICE" = "ONLYOFFICE";
@@ -810,7 +876,7 @@
 "ONLYOFFICE portal" = "ONLYOFFICEのポータル";
 
 /* No comment provided by engineer. */
-"Oops!" = "申し訳ございません。";
+"Oops!" = "問題が発生しました";
 
 /* No comment provided by engineer. */
 "Open Document" = "ドキュメントを開く";
@@ -825,10 +891,10 @@
 "Options" = "設定";
 
 /* No comment provided by engineer. */
-"Order" = "命令";
+"Order" = "並び順";
 
 /* No comment provided by engineer. */
-"Other" = "他の";
+"Other" = "他";
 
 /* Button title */
 "Overwrite" = "上書き";
@@ -872,32 +938,41 @@
 /* Used in the context: '3 photos' */
 "photos" = "写真";
 
-/* No comment provided by engineer. */
-"Please go to Settings and enable the camera for this app to use this feature." = "［設定］へ移動して、このアプリ用のカメラを有効にして、この機能を使用します。";
+/* Button title */
+"Pin to top" = "先頭にピン留め";
 
 /* No comment provided by engineer. */
-"Please re-login to renew your session." = "ログインし直して、セッションをリニューします。";
+"Pinned failed." = "ピン留めに失敗しました。";
+
+/* Caption of the processing */
+"Pinning" = "ピン留め中";
 
 /* No comment provided by engineer. */
-"Please retry. \n\n If the problem persists contact us and mention this error code: Box - %@" = "もう一度お試しください。 \n\n問題が続く場合は、当社にお問い合わせになり、このエラーコード (Box - %@) を知らせてください。";
+"Please go to Settings and enable the camera for this app to use this feature." = "この機能を使用するには、「設定」へ移動し、このアプリ用のカメラを有効にしてください。";
 
 /* No comment provided by engineer. */
-"Please retry. \n\n If the problem persists contact us and mention this error code: Dropbox - %@" = "もう一度お試しください。\n\n問題が続く場合は、当社にお問い合わせになり、このエラーコード (Dropbox - %@) を知らせてください。";
+"Please re-login to renew your session." = "セッションを更新するには、再ログインしてください。";
 
 /* No comment provided by engineer. */
-"Please retry. \n\n If the problem persists contact us and mention this error code: Google - %@" = "もう一度お試しください。\n\n問題が続く場合は、当社にお問い合わせになり、このエラーコード  (Google - %@) を知らせてください。";
+"Please retry. \n\n If the problem persists contact us and mention this error code: Box - %@" = "もう一度お試しください。 \n\n問題が続く場合は、当社にお問い合わせになり、このエラーコード (Box - %@) をお知らせください。";
 
 /* No comment provided by engineer. */
-"Please retry. \n\n If the problem persists contact us and mention this error code: Microsoft - %@" = "もう一度お試しください。\n\n問題が続く場合は、当社にお問い合わせになり、このエラーコード  (Microsoft - %@) を知らせてください。";
+"Please retry. \n\n If the problem persists contact us and mention this error code: Dropbox - %@" = "もう一度お試しください。 \n\n問題が続く場合は、当社にお問い合わせになり、このエラーコード (Dropbox - %@) をお知らせください。";
 
 /* No comment provided by engineer. */
-"Please retry. \n\n If the problem persists contact us and mention this error code: OneDrive - %@" = "もう一度お試しください。\n\n問題が続く場合は、当社にお問い合わせになり、このエラーコード  (OneDrive - %) を知らせてください。";
+"Please retry. \n\n If the problem persists contact us and mention this error code: Google - %@" = "もう一度お試しください。 \n\n問題が続く場合は、当社にお問い合わせになり、このエラーコード (Google - %@) をお知らせください。";
 
 /* No comment provided by engineer. */
-"Please retry. \n\n If the problem persists contact us and mention this error code: SSO - %@" = "もう一度お試しください。\n\n問題が続く場合は、当社にお問い合わせになり、このエラーコード  (SSO - %@) を知らせてください。";
+"Please retry. \n\n If the problem persists contact us and mention this error code: Microsoft - %@" = "もう一度お試しください。 \n\n問題が続く場合は、当社にお問い合わせになり、このエラーコード (Microsoft - %@) をお知らせください。";
 
 /* No comment provided by engineer. */
-"Portal Address" = "ポータルのアドレス:";
+"Please retry. \n\n If the problem persists contact us and mention this error code: OneDrive - %@" = "もう一度お試しください。 \n\n問題が続く場合は、当社にお問い合わせになり、このエラーコード (OneDrive - %@) をお知らせください。";
+
+/* No comment provided by engineer. */
+"Please retry. \n\n If the problem persists contact us and mention this error code: SSO - %@" = "もう一度お試しください。 \n\n問題が続く場合は、当社にお問い合わせになり、このエラーコード (SSO - %@) をお知らせください。";
+
+/* No comment provided by engineer. */
+"Portal Address" = "ポータルアドレス";
 
 /* No comment provided by engineer. */
 "Portal is unavailable." = "ポータルは使用できません。";
@@ -912,7 +987,7 @@
 "Presentations" = "プレゼンテーション";
 
 /* Button title */
-"Preview" = "下見";
+"Preview" = "プレビュー";
 
 /* Part of phrases - By creating the portal you agree with our Privacy Policy and Terms of Service */
 "Privacy Policy" = "プライバシーポリシー";
@@ -921,22 +996,19 @@
 "Processing" = "処理中";
 
 /* Category title */
-"Project Documents" = "プロジェクトドキュメント";
+"Project Documents" = "プロジェクトの文書";
 
 /* No comment provided by engineer. */
-"Protect documents with passwords to share them securely with trusted collaborators." = "ドキュメントをパスワードで保護し、信頼できる共同作業者と安全に共有するのが可能です。";
+"Protected File" = "保護されたファイル";
 
 /* No comment provided by engineer. */
-"Protected File" = "保護ファイル";
-
-/* No comment provided by engineer. */
-"Push notifications disabled" = "プッシュ通知無効";
+"Push notifications disabled" = "プッシュ通知が無効";
 
 /* Share status */
 "Read Only" = "閲覧のみ";
 
 /* Button title */
-"Recover here" = "ここで回復する";
+"Recover here" = "回復する";
 
 /* Caption of the processing */
 "Recovery" = "回復";
@@ -945,25 +1017,25 @@
 "Registration" = "登録";
 
 /* No comment provided by engineer. */
-"Reload" = "リロードする";
+"Reload" = "再読み込み";
 
 /* Button title */
-"Remove from Favorites" = "お気に入りから削除";
+"Remove from Favorites" = "お気に入りから削除する";
 
 /* Caption of the process */
 "Removing" = "削除中";
 
 /* Button title */
-"Rename" = "再度名前を付ける";
+"Rename" = "名前の変更";
 
 /* No comment provided by engineer. */
-"Rename failed." = "名前を付け直すことができませんでした。";
+"Rename failed." = "名前の変更に失敗しました。";
 
 /* No comment provided by engineer. */
-"Rename failed. An object with such a similar name exists." = "名前を付け直すことができませんでした。類似する名前のオブジェクトが存在します。";
+"Rename failed. An object with such a similar name exists." = "名前の変更に失敗しました。類似する名前のオブジェクトが存在します。";
 
 /* Caption of the processing */
-"Renaming" = "名前を付け直しています";
+"Renaming" = "名前の変更中";
 
 /* No comment provided by engineer. */
 "Renewal" = "リニューアル";
@@ -978,13 +1050,19 @@
 "Reset" = "リセット";
 
 /* Button title */
-"Restore" = "戻す";
+"Restore" = "復元";
 
 /* Caption of the processing */
-"Restoring" = "戻しています";
+"Restoring" = "復元中";
 
 /* Share status */
 "Review" = "見直し";
+
+/* Share status */
+"Room admin" = "ルームの管理者";
+
+/* DocSpace rooms */
+"Rooms" = "ルーム";
 
 /* Caption of the processing */
 "Saving" = "保存中";
@@ -997,31 +1075,34 @@
 "Select" = "選択";
 
 /* No comment provided by engineer. */
-"Select all" = "すべてを選択";
+"Select all" = "すべてを選択する";
 
 /* No comment provided by engineer. */
-"Select another cloud to connect to Nextcloud, ownCloud and others are supported." = "もう1つのクラウドを選択して、Nextcloud、ownCloud、サポートされている他のクラウドに接続";
+"Select another cloud to connect to Nextcloud, ownCloud and others are supported." = "Nextcloud、ownCloud、その他の対応サービスに接続するための別のクラウドを選択してください。";
 
 /* No comment provided by engineer. */
 "Select group" = "グループを選択する";
 
 /* No comment provided by engineer. */
-"Select Photos" = "画像を選択";
+"Select Photos" = "画像を選択する";
 
 /* One line. Max 50 charasters */
-"Select the folder to copy the items" = "フォルダーを選択して、アイテムをコピーする";
+"Select the folder to copy the items" = "アイテムをコピーするには、フォルダーを選択してください";
 
 /* One line. Max 50 charasters */
-"Select the folder to move the items" = "フォルダーを選択して、アイテムを移動する";
+"Select the folder to move the items" = "アイテムを移動するには、フォルダーを選択してください";
 
 /* One line. Max 50 charasters */
-"Select the folder to recover the items" = "フォルダーを選択して、アイテムを回復する";
+"Select the folder to recover the items" = "アイテムを回復するには、フォルダーを選択してください";
 
 /* No comment provided by engineer. */
 "Select user" = "ユーザーを選択する";
 
 /* No comment provided by engineer. */
 "Selected provider is not available" = "選択したプロバイダーはご利用できません";
+
+/* No comment provided by engineer. */
+"Selected users will not be invited to the room" = "選択されたユーザーはルームに招待されません";
 
 /* No comment provided by engineer. */
 "Selected: %ld" = "選択済み: %ld";
@@ -1039,7 +1120,7 @@
 "Sending" = "送信中";
 
 /* No comment provided by engineer. */
-"Set favorite failed." = "お気に入りの設定に失敗しました";
+"Set favorite failed." = "お気に入りの設定に失敗しました。";
 
 /* No comment provided by engineer. */
 "Settings" = "設定";
@@ -1051,7 +1132,7 @@
 "Shared access" = "共有アクセス";
 
 /* Category title */
-"Shared with Me" = "わたしと共有";
+"Shared with Me" = "私と共有";
 
 /* No comment provided by engineer. */
 "SharePoint directory" = "SharePoint ディレクトリ";
@@ -1078,16 +1159,16 @@
 "Size" = "サイズ";
 
 /* Button title */
-"Skip" = "［スキップ］";
+"Skip" = "スキップ";
 
 /* No comment provided by engineer. */
-"SKIP" = "［スキップ］";
+"SKIP" = "スキップ";
 
 /* Presentation Viewer */
-"Slide %i of %i" = "%2$i の %1$i スライド";
+"Slide %i of %i" = "%1$i/%2$iスライド";
 
 /* No comment provided by engineer. */
-"Something went wrong, try again" = "問題が発生しました。しばらくしてからもう一度やり直してください";
+"Something went wrong, try again" = "問題が発生しました。しばらくしてからもう一度お試しください";
 
 /* No comment provided by engineer. */
 "Something wrong" = "問題が発生しました";
@@ -1123,16 +1204,16 @@
 "Tb" = "Tb";
 
 /* No comment provided by engineer. */
-"Terminate account" = "アカウントを停止";
+"Terminate account" = "アカウントを停止する";
 
 /* Part of phrases - By creating the portal you agree with our Privacy Policy and Terms of Service */
-"Terms of Service" = "利用規約";
+"Terms of Service" = "サービス使用条件";
 
 /* Notification title */
 "Text copied" = "テキストをコピーしました";
 
 /* No comment provided by engineer. */
-"The %@ server is not available." = "%@サーバーは利用できません";
+"The %@ server is not available." = "%@サーバーは利用できません。";
 
 /* No comment provided by engineer. */
 "The account name must be between 6 and 50 characters long" = "アカウント名は 6 字から 50 字で入力してください";
@@ -1147,7 +1228,7 @@
 "The file will be irretrievably deleted. This action is irreversible." = "ファイルは永久に削除されます。このアクションは取り止めできません。";
 
 /* No comment provided by engineer. */
-"The folder in the Trash can not be opened." = "ゴミ箱のフォルダを開くことができません";
+"The folder in the Trash can not be opened." = "ゴミ箱のフォルダを開くことができません。";
 
 /* No comment provided by engineer. */
 "The item with the name '%@' already exists in the folder '%@'." = "‘%1$@’ という名前のファイルは既にフォルダー '%2$@’ に存在します。";
@@ -1156,13 +1237,13 @@
 "The link for external\naccess is copied\nto the clipboard" = "外部アクセス用の\nリンクがクリップボードに\nコピーされた";
 
 /* No comment provided by engineer. */
-"The ONLYOFFICE Editors module is missing. Please contact support@onlyoffice.com for more information." = "ONLYOFFICEエディタのモジュールがありません。詳しくは、support@onlyoffice.com までお問い合わせください";
+"The ONLYOFFICE Editors module is missing. Please contact support@onlyoffice.com for more information." = "ONLYOFFICEエディタのモジュールがありません。詳しくは、support@onlyoffice.com までお問い合わせください。";
 
 /* No comment provided by engineer. */
-"The parameters are incorrect." = "パラメータが正しくありません";
+"The parameters are incorrect." = "パラメータが正しくありません。";
 
 /* No comment provided by engineer. */
-"The password is incorrect. It must contain 8 characters" = "パスワードが正しくありません。8文字を含む必要があります。";
+"The password is incorrect. It must contain 8 characters" = "パスワードが正しくありません。8文字を含む必要があります";
 
 /* No comment provided by engineer. */
 "The portal address is invalid" = "このポータルのアドレスは無効です";
@@ -1174,16 +1255,25 @@
 "The portal name must be between 6 and 50 characters long" = "アカウント名は 6 字から 50 字で入力してください";
 
 /* No comment provided by engineer. */
-"The request timed out." = "要求がタイムアウトしました";
+"The quota of users is almost exhausted. Сontact the portal administrator" = "ユーザーの割り当て数が残り少なくなっています。ポータル管理者に連絡してください";
+
+/* No comment provided by engineer. */
+"The request timed out." = "要求がタイムアウトしました。";
 
 /* No comment provided by engineer. */
 "The server is not available." = "このサーバーは利用できません。";
 
 /* No comment provided by engineer. */
-"The setting will be available upon authorization on the %@." = "設定は、%@で認証されると可能になります";
+"The setting will be available upon authorization on the %@." = "この設定は、%@で認証されると可能になります。";
 
 /* No comment provided by engineer. */
 "The trash is empty" = "ごみ箱は空です";
+
+/* No comment provided by engineer. */
+"The user limit has been reached. Сontact the portal administrator" = "ユーザー数の上限に達しています。ポータル管理者に連絡してください";
+
+/* No comment provided by engineer. */
+"Third party resource" = "サードパーティーのリソース";
 
 /* Introduction Step Three - Title */
 "Third-party storage" = "サードパーティーのストレージ";
@@ -1207,16 +1297,16 @@
 "This spreadsheet is being edited. Do you want open %@ to view only?" = "このスプレッドシートは編集中です。%@ を開いて閲覧だけしますか?";
 
 /* No comment provided by engineer. */
-"Title" = "タイトル:";
+"Title" = "タイトル";
 
 /* No comment provided by engineer. */
 "To open a document, you must go to portal %@ under your account." = "ドキュメントを開くには、専用のアカウントでポータル %@ に移動してください。";
 
 /* No comment provided by engineer. */
-"To open a folder, you must exit the current document." = "フォルダを開くには、現在のドキュメントを終了する必要があります";
+"To open a folder, you must exit the current document." = "フォルダを開くには、このドキュメントを終了する必要があります。";
 
 /* No comment provided by engineer. */
-"To open a folder, you must go to portal %@ under your account." = "フォルダを開くには、自分のアカウントにあるポータルサイト %@ にアクセスする必要があります";
+"To open a folder, you must go to portal %@ under your account." = "フォルダを開くには、自分のアカウントにあるポータルサイト %@ にアクセスする必要があります。";
 
 /* No comment provided by engineer. */
 "To open a new document, you must exit the current document." = "新規ドキュメントを開くには、現在のドキュメントを中止してください。";
@@ -1258,16 +1348,19 @@
 "Unable to get information about the portal" = "このポータルについての情報を取得できません";
 
 /* No comment provided by engineer. */
-"Unable to get information about the user." = "このユーザーについての情報を取得できません";
+"Unable to get information about the user." = "このユーザーについての情報を取得できません。";
 
 /* No comment provided by engineer. */
-"Unauthorized users will be able only to view the document and add comments, as well as manage them." = "未承認ユーザーは、ドキュメントの閲覧やコメントの追加、管理のみができます";
+"Unarchiving failed." = "アーカイブ解除に失敗しました。";
 
 /* No comment provided by engineer. */
-"Unauthorized users will be able only to view the document and fill in the forms inserted into the document." = "未承認ユーザーは、文書の閲覧と文書に挿入されたフォームへの入力のみができます";
+"Unauthorized users will be able only to view the document and add comments, as well as manage them." = "未承認ユーザーは、ドキュメントの閲覧やコメントの追加、管理のみができます。";
 
 /* No comment provided by engineer. */
-"Unauthorized users will be able only to view the document." = "未承認ユーザーは、文書の閲覧のみができます";
+"Unauthorized users will be able only to view the document and fill in the forms inserted into the document." = "未承認ユーザーは、文書の閲覧と文書に挿入されたフォームへの入力のみができます。";
+
+/* No comment provided by engineer. */
+"Unauthorized users will be able only to view the document." = "未承認ユーザーは、文書の閲覧のみができます。";
 
 /* No comment provided by engineer. */
 "Unauthorized users will be able to view and change the document without actually editing it, but all the changes made by a reviewer will be recorded and shown to the file owner (or a person who has full access to the file) so that he/she will be able to accept or reject them." = "未承認ユーザーは、実際に編集することなく文書を閲覧し変更することができますが、レビュアーが行ったすべての変更は記録され、ファイル所有者（またはファイルへのフルアクセス権を持つ人）に示され、ファイル所有者が受け入れまたは拒否することができるようになります。";
@@ -1276,13 +1369,13 @@
 "Unauthorized users will be able to view and edit the document as well as to share this document." = "未承認ユーザーは、このドキュメントを閲覧・編集、共有することが可能になります。";
 
 /* No comment provided by engineer. */
-"Unauthorized users will not have access to the document." = "未承認ユーザーは、ドキュメントへのアクセスができません";
+"Unauthorized users will not have access to the document." = "未承認ユーザーは、ドキュメントへのアクセスができません。";
 
 /* No comment provided by engineer. */
-"Unexpected response from the service." = "サーバーからの予期せぬ応答";
+"Unexpected response from the service." = "サーバーからの予期しない応答を受信しました。";
 
 /* Invalid entity name */
-"Unknown" = "未知の";
+"Unknown" = "未知";
 
 /* No comment provided by engineer. */
 "Unknown error" = "不明なエラー";
@@ -1291,22 +1384,31 @@
 "Unknown file provider" = "未知のファイルプロバイダー";
 
 /* No comment provided by engineer. */
-"Unknown item type." = "未知のアイテムの種類";
+"Unknown item type." = "未知のアイテム種類。";
 
 /* No comment provided by engineer. */
-"Unlock with Face ID" = "顔認証でロックを解除";
+"Unlock with Face ID" = "Face IDでロックを解除する";
 
 /* No comment provided by engineer. */
-"Unlock with Touch ID" = "Touch ID でロックを解除";
+"Unlock with Touch ID" = "Touch ID でロックを解除する";
+
+/* Button title */
+"Unpin" = "ピン留めを外す";
 
 /* No comment provided by engineer. */
-"Unsupported format." = "サポートされていない書式";
+"Unpinned failed." = "ピン留めを外すことに失敗しました。";
+
+/* Caption of the processing */
+"Unpning" = "ピン留めを外す中";
+
+/* No comment provided by engineer. */
+"Unsupported format." = "サポートされていない書式。";
 
 /* Caption of the process */
 "Uploading" = "アップロード中";
 
 /* Button title */
-"Use Face ID" = "顔認証を使用する";
+"Use Face ID" = "Face IDを使用する";
 
 /* Button title */
 "Use Touch ID" = "Touch ID を使用する";
@@ -1318,19 +1420,25 @@
 "User authentication required" = "ユーザーの承認が必要";
 
 /* No comment provided by engineer. */
-"User undefined" = "ユーザーによる定義";
+"User undefined" = "ユーザー未定義";
 
 /* No comment provided by engineer. */
 "Users" = "ユーザー";
+
+/* No comment provided by engineer. */
+"Users in room" = "ルーム内のユーザー";
 
 /* Caption of the process */
 "Validation" = "確認";
 
 /* Share status */
-"Varies" = "異なります";
+"Varies" = "曜日ごと";
 
 /* No comment provided by engineer. */
 "Version" = "バージョン";
+
+/* No comment provided by engineer. */
+"View-Only" = "閲覧のみ";
 
 /* No comment provided by engineer. */
 "Warning" = "警告";
@@ -1360,7 +1468,7 @@
 "Work with office files" = "オフラインファイルを編集する";
 
 /* No comment provided by engineer. */
-"Wrong server, login or password." = "サーバー、ログイン、パスワードのいずれか間違いがあります";
+"Wrong server, login or password." = "サーバー、ログイン、パスワードのいずれか間違いがあります。";
 
 /* No comment provided by engineer. */
 "Yandex directory" = "Yandex ディレクトリ";
@@ -1375,7 +1483,7 @@
 "You can connect the following accounts to the %@." = "次のアカウントを %@ に接続できます。";
 
 /* No comment provided by engineer. */
-"You can connect the following accounts to the %@. They will be displayed in 'My Documents' folder and you will be able to edit and save them right on the portal all in one place." = "次のアカウントを %@ に接続できます。これらのアカウントは ‘My Documents’ フォルダーで表示され、すべて一か所でポータルから編集、保存できます。’";
+"You can connect the following accounts to the %@. They will be displayed in 'My Documents' folder and you will be able to edit and save them right on the portal all in one place." = "次のアカウントを %@ に接続できます。これらのアカウントは「私の文書」フォルダーで表示され、すべて一か所でポータルから編集、保存できます。’";
 
 /* No comment provided by engineer. */
 "You have read-only access to this folder. You cannot create files or folders here." = "このフォルダーへは閲覧のみ権限があります。ここでは、ファイルやフォルダーを作成できません。";

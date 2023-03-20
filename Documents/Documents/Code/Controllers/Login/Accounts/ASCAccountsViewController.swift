@@ -197,8 +197,8 @@ class ASCAccountsViewController: ASCBaseViewController {
                 log.error(error)
             }
 
-            if let communityVersion = response?.result?.community {
-                OnlyofficeApiClient.shared.serverVersion = communityVersion
+            if let versions = response?.result {
+                OnlyofficeApiClient.shared.serverVersion = versions
             }
 
             completion(true, nil)

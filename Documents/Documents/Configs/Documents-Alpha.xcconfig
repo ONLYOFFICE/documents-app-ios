@@ -1,0 +1,16 @@
+//
+//  Documents-Alpha.xcconfig
+//  Documents
+//
+//  Created by Alexander Yuzhin on 10.11.2022.
+//  Copyright © 2022 Ascensio System SIA. All rights reserved.
+//
+
+// Configuration settings file format documentation can be found at:
+// https://help.apple.com/xcode/#/dev745c5c974
+
+PRODUCT_BUNDLE_IDENTIFIER = com.onlyoffice.Documents.dev
+PRODUCT_NAME = Documents α
+INFOPLIST_FILE = Documents/Documents.alpha.plist
+CODE_SIGN_ENTITLEMENTS = Documents/Entitlements/Documents.dev.entitlements
+VERSION_MODE = alpha

@@ -162,6 +162,7 @@ class ASCConstants {
         static let documents = ["docx", "doc", "odt", "rtf", "mht", "html", "htm", "epub", "fb2", "txt"]
         static let spreadsheets = ["xlsx", "xls", "csv", "ods"]
         static let presentations = ["pptx", "ppt", "odp"]
+        static let formTemplates = ["docxf"]
         static let forms = ["docxf", "oform"]
         static let images = ["jpg", "jpeg", "png", "gif", "bmp", "tif", "tiff", "ico"]
         static let videos = ["mpg", "mpeg", "mpg4", "mp4", "m4v", "mov", "avi", "vfw", "m75", "m15", "3g2", "3gp2", "3gp", "3gpp"]
@@ -302,7 +303,7 @@ class ASCConstants {
     }
 
     enum CacheKeys {
-        static let onlyofficeCategoriesPrefix = "onlyoffice_categories"
+        static let onlyofficeCategoriesPrefix = "onlyoffice_categories_v2"
     }
 }
 

@@ -8,37 +8,88 @@
 
 import Foundation
 
+protocol ASCOnlyofficeCategoriesProviderFactoryProtocol {
+    func get() -> ASCOnlyofficeCategoriesProviderProtocol
+    func getCategoriesGrouper() -> ASCOnlyofficeCategoriesGrouper
+}
+
+private protocol CategoriesProviderMaker {
+    func make() -> ASCOnlyofficeCategoriesProviderProtocol?
+}
+
 class ASCOnlyofficeCategoriesProviderFactory {
-    private var isServerVersionEstablished = false
-    private lazy var provider: ASCOnlyofficeCategoriesProviderProtocol = ASCOnlyofficeAppBasedCategoriesProvider()
-
-    func get() -> ASCOnlyofficeCategoriesProviderProtocol {
-        guard isServerVersionEstablished else {
-            guard let communityServerVersion = OnlyofficeApiClient.shared.serverVersion else {
-                return provider
-            }
-            isServerVersionEstablished = true
-            guard communityServerVersion.isVersion(greaterThanOrEqualTo: "11.5") else {
-                return provider
-            }
-            provider = makeAPICategoriesProvider()
-            return provider
-        }
-
-        return provider
+    var onlyofficeApiClientGetter: () -> OnlyofficeApiClient = {
+        OnlyofficeApiClient.shared
     }
 
-    private func makeAPICategoriesProvider() -> ASCOnlyofficeCategoriesProviderProtocol {
-        let apiCategoriesProvider = ASCOnlyofficeAPICategoriesProvider()
-        let filtredApiCategoriesProvider = ASCOnlyofficeCategoriesProviderFilterProxy(
-            categoriesProvider: apiCategoriesProvider,
-            filter: { $0.folder?.rootFolderType != .unknown }
+    // MARK: - private vars
+
+    private lazy var categoriesProvidersMakers: [() -> ASCOnlyofficeCategoriesProviderProtocol?] = [
+        makeDocSpaceCategoriesProvider,
+        makeCommuntityCategoriesProvider,
+    ]
+
+    // MARK: - private funcs
+
+    private func getFirstMakedCategoriesProvider() -> ASCOnlyofficeCategoriesProviderProtocol? {
+        for maker in categoriesProvidersMakers {
+            if let provider = maker() {
+                return provider
+            }
+        }
+        return nil
+    }
+
+    private func makeDocSpaceCategoriesProvider() -> ASCOnlyofficeCategoriesProviderProtocol? {
+        guard onlyofficeApiClientGetter().serverVersion?.docSpace != nil else { return nil }
+
+        return ASCOnlyofficeCategoriesProviderFilterProxy(
+            categoriesProvider: ASCOnlyofficeAPICategoriesProvider(),
+            filter: {
+                guard let folderType = $0.folder?.rootFolderType else { return false }
+                return folderType != .unknown
+            }
         )
-        let applicationCategoriesProvider = ASCOnlyofficeAppBasedCategoriesProvider()
+    }
 
-        let firstTryCategoriesProvider = filtredApiCategoriesProvider
-        let nextTryCategoriesProvider = applicationCategoriesProvider
+    private func makeCommuntityCategoriesProvider() -> ASCOnlyofficeCategoriesProviderProtocol? {
+        guard let communityServerVersion = onlyofficeApiClientGetter().serverVersion?.community,
+              communityServerVersion.isVersion(greaterThanOrEqualTo: "11.5")
+        else { return nil }
 
-        return ASCOnlyofficeCategoriesChainContainerFailureToNext(base: firstTryCategoriesProvider, next: nextTryCategoriesProvider)
+        return ASCOnlyofficeCategoriesProviderFilterProxy(
+            categoriesProvider: ASCOnlyofficeAPICategoriesProvider(),
+            filter: {
+                guard let folderType = $0.folder?.rootFolderType else { return false }
+                return folderType != .unknown && !$0.isDocSpaceRoom
+            }
+        )
+    }
+
+    private func makeDefaultCategoriesProvider() -> ASCOnlyofficeCategoriesProviderProtocol {
+        ASCOnlyofficeAppBasedCategoriesProvider()
+    }
+
+    private func makeSafeProvider(provider: ASCOnlyofficeCategoriesProviderProtocol) -> ASCOnlyofficeCategoriesProviderProtocol {
+        ASCOnlyofficeCategoriesChainContainerFailureToNext(base: provider,
+                                                           next: makeDefaultCategoriesProvider())
+    }
+}
+
+// MARK: - ASCOnlyofficeCategoriesProviderFactoryProtocol
+
+extension ASCOnlyofficeCategoriesProviderFactory: ASCOnlyofficeCategoriesProviderFactoryProtocol {
+    func get() -> ASCOnlyofficeCategoriesProviderProtocol {
+        guard let firstMakedProvider = getFirstMakedCategoriesProvider() else {
+            return makeDefaultCategoriesProvider()
+        }
+        return makeSafeProvider(provider: firstMakedProvider)
+    }
+
+    func getCategoriesGrouper() -> ASCOnlyofficeCategoriesGrouper {
+        if onlyofficeApiClientGetter().serverVersion?.docSpace != nil {
+            return ASCOnlyofficeDocSpaceCategoriesGroper()
+        }
+        return ASCOnlyofficeCategoriesDefaultGrouper()
     }
 }

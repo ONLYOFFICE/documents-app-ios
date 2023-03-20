@@ -9,22 +9,28 @@
 import UIKit
 
 protocol ASCSharingAddRightHoldersRoutingLogic {
-    func routeToVerifyRightHoldersViewController(segue: UIStoryboardSegue?)
+    func routeToVerifyRightHoldersViewController(segue: UIStoryboardSegue?, clearSharedInfoItems: Bool)
+}
+
+extension ASCSharingAddRightHoldersRoutingLogic {
+    func routeToVerifyRightHoldersViewController(segue: UIStoryboardSegue?, clearSharedInfoItems: Bool = false) {
+        routeToVerifyRightHoldersViewController(segue: segue, clearSharedInfoItems: clearSharedInfoItems)
+    }
 }
 
 protocol ASCSharingAddRightHoldersDataPassing {
-    var dataStore: ASCSharingAddRightHoldersDataStore? { get }
+    var dataStore: ASCSharingAddRightHoldersBaseDataStore? { get }
 }
 
 class ASCSharingAddRightHoldersRouter: NSObject, ASCSharingAddRightHoldersRoutingLogic, ASCSharingAddRightHoldersDataPassing {
-    var dataStore: ASCSharingAddRightHoldersDataStore?
+    var dataStore: ASCSharingAddRightHoldersBaseDataStore?
 
-    weak var viewController: ASCSharingAddRightHoldersViewController?
+    weak var viewController: UIViewController?
     var verifyRightHoldersViewController: ASCSharingSettingsVerifyRightHoldersViewController?
 
     // MARK: Routing
 
-    func routeToVerifyRightHoldersViewController(segue: UIStoryboardSegue?) {
+    func routeToVerifyRightHoldersViewController(segue: UIStoryboardSegue?, clearSharedInfoItems: Bool = false) {
         let isDestinationAlreadyInit = verifyRightHoldersViewController != nil
 
         if isDestinationAlreadyInit {
@@ -39,23 +45,27 @@ class ASCSharingAddRightHoldersRouter: NSObject, ASCSharingAddRightHoldersRoutin
             var destinationDataStore = destinationViewController.router?.dataStore
         else { return }
 
-        passDataToAddRightHoldersViewController(source: sourceDataStore, destination: &destinationDataStore)
+        passDataToAddRightHoldersViewController(source: sourceDataStore, destination: &destinationDataStore, clearSharedInfoItems: clearSharedInfoItems)
         navigateToVerifyRightHoldersViewController(source: viewController, destination: destinationViewController)
         if isDestinationAlreadyInit {
             destinationViewController.load()
         }
     }
 
-    private func navigateToVerifyRightHoldersViewController(source: ASCSharingAddRightHoldersViewController, destination: ASCSharingSettingsVerifyRightHoldersViewController) {
+    private func navigateToVerifyRightHoldersViewController(source: UIViewController, destination: ASCSharingSettingsVerifyRightHoldersViewController) {
         source.navigationController?.pushViewController(destination, animated: true)
     }
 
-    private func passDataToAddRightHoldersViewController(source: ASCSharingAddRightHoldersDataStore, destination: inout ASCSharingSettingsVerifyRightHoldersDataStore) {
+    private func passDataToAddRightHoldersViewController(source: ASCSharingAddRightHoldersBaseDataStore, destination: inout ASCSharingSettingsVerifyRightHoldersDataStore, clearSharedInfoItems: Bool) {
         destination.clearData()
-        destination.sharedInfoItems = source.sharedInfoItems
+        if clearSharedInfoItems {
+            destination.sharedInfoItems = []
+        } else {
+            destination.sharedInfoItems = source.sharedInfoItems
+        }
         destination.itemsForSharingAdd = source.itemsForSharingAdd
         destination.itemsForSharingRemove = source.itemsForSharingRemove
         destination.entity = source.entity
-        destination.doneComplerion = source.doneComplerion
+        destination.doneCompletion = source.doneCompletion
     }
 }

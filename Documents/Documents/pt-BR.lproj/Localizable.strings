@@ -20,6 +20,15 @@
 "© Ascensio System SIA %d" = "© Ascensio System SIA %d";
 
 /* No comment provided by engineer. */
+"<p>Use the password created in <a href=\"https://yandex.ru/id/about\">Yandex ID</a>.</br>More detailed connection instructions can be found in the <a href=\"https://yandex.ru/support/disk-desktop/webdav-app-passwords.html?lang=ru\">help</a>.</p>" = "<p>Use a senha criada em <a href=\"https://yandex.com/id/about\">Yandex ID</a>.</br>Instruções de conexão mais detalhadas podem ser encontradas no <a href= \"https://yandex.ru/support/disk-desktop/webdav-app-passwords.html?lang=ru\">ajuda</a>.</p>";
+
+/* No comment provided by engineer. */
+"<p>Use the password created in <a href=\"https://yandex.ru/id/about\">Yandex ID</a>.</p><p>More detailed connection instructions can be found in the <a href=\"https://yandex.ru/support/disk-desktop/webdav-app-passwords.html?lang=ru\">help</a>.</p>" = "<p>Use a senha criada em <a href=\"https://yandex.com/id/about\">Yandex ID</a>.</p><p>Instruções de conexão mais detalhadas podem ser encontradas em < a href=\"https://yandex.ru/support/disk-desktop/webdav-app-passwords.html?lang=ru\">ajuda</a>.</p>";
+
+/* No comment provided by engineer. */
+"<p>You must have a paid version of the player to use this service.</p><p>If you have activated double authentication, please generate a CDM application from the Infomaniak manager. <a href=\"https://www.infomaniak.com/en/support/faq/1940/enable-two-step-verification\">More...</a></p>" = "<p>Você deve ter uma versão paga do player para usar este serviço.</p><p>Se você ativou a autenticação dupla, gere um aplicativo CDM a partir do gerenciador Infomaniak. <a href=\"https://www.infomaniak.com/en/support/faq/1940/enable-two-step-verification\">Mais...</a></p>";
+
+/* No comment provided by engineer. */
 "A file with a similar name already exists in the document directory on the device." = "Já existe um arquivo com um nome semelhante no diretório de documentos do dispositivo.";
 
 /* No comment provided by engineer. */
@@ -70,6 +79,9 @@
 /* Sharing settings add notification message */
 "Add message" = "Adicionar mensagem";
 
+/* Button title */
+"Add users" = "Adicionar usuários";
+
 /* No comment provided by engineer. */
 "Add users or groups and allow them to \n read, review or edit documents." = "Adicione usuários ou grupos e conceda a eles permissão para ler, revisar ou editar documentos.";
 
@@ -100,8 +112,17 @@
 /* Caption of the process */
 "Applying" = "Aplicar";
 
+/* Button title */
+"Archive" = "Arquivos";
+
 /* No comment provided by engineer. */
-"Archives" = "Arquivos ";
+"Archives" = "Arquivos";
+
+/* Caption of the processing */
+"Archiving" = "Arquivamento";
+
+/* No comment provided by engineer. */
+"Archiving failed." = "O arquivamento falhou.";
 
 /* No comment provided by engineer. */
 "Are you sure you want to delete the account %@ from this device?" = "Você tem certeza de que deseja excluir a conta %@ deste dispositivo?";
@@ -111,6 +132,12 @@
 
 /* No comment provided by engineer. */
 "Author" = "Autor";
+
+/* No comment provided by engineer. */
+"Back" = "Voltar";
+
+/* No comment provided by engineer. */
+"Box" = "Caixa";
 
 /* No comment provided by engineer. */
 "Box directory" = "Diretório de Box";
@@ -143,6 +170,9 @@
 "Cancel" = "Cancelar";
 
 /* No comment provided by engineer. */
+"Cancel invitation?" = "Cancelar convite?";
+
+/* No comment provided by engineer. */
 "Check your internet connection" = "Checar sua conexão de Internet";
 
 /* No comment provided by engineer. */
@@ -159,6 +189,9 @@
 
 /* Button title */
 "Clear Cache?" = "Limpar cache?";
+
+/* No comment provided by engineer. */
+"Clear selection?" = "Seleção clara?";
 
 /* Caption of the processing */
 "Clearing" = "Limpar";
@@ -177,6 +210,9 @@
 
 /* Introduction Step Five - Title */
 "Collaborate with your team" = "Colabore com sua equipe";
+
+/* No comment provided by engineer. */
+"Collaboration" = "Colaboração";
 
 /* Share status */
 "Comment" = "Comentário";
@@ -331,6 +367,9 @@
 /* Caption of the process */
 "Creating" = "Criando";
 
+/* No comment provided by engineer. */
+"Custom" = "Personalizado";
+
 /* Share status */
 "Custom filter" = "Filtro personalizado";
 
@@ -382,9 +421,6 @@
 /* No comment provided by engineer. */
 "Document" = "Documento";
 
-/* No comment provided by engineer. */
-"Document protection" = "Proteção de documentos";
-
 /* Default title of sample document */
 "Document Sample" = "Amostra do documento";
 
@@ -422,6 +458,9 @@
 /* Introduction Step Four - Title */
 "Edit documents locally" = "Editar documentos localmente";
 
+/* Share status */
+"Editor" = "Editor";
+
 /* No comment provided by engineer. */
 "Email" = "Email";
 
@@ -452,11 +491,11 @@
 /* No comment provided by engineer. */
 "Enter a password to open the file." = "Inserir a Senha para Abrir o Arquivo.";
 
-/* No comment provided by engineer. */
-"Enter Portal Address" = "Digite o endereço do portal";
+/* placeholder */
+"Enter email" = "Digite o e-mail";
 
 /* No comment provided by engineer. */
-"Enter text using handwriting instead of device keyboard. ONLYOFFICE will recognize text and insert it in the document. The feature is available for English only." = "Insira texto usando o manuscrito em vez do teclado do dispositivo. O ONLYOFFICE reconhecerá o texto e o inserirá no documento. O recurso está disponível somente para inglês.";
+"Enter Portal Address" = "Digite o endereço do portal";
 
 /* No comment provided by engineer. */
 "Error" = "Erro";
@@ -534,16 +573,13 @@
 "File does not exist" = "O arquivo não existe";
 
 /* No comment provided by engineer. */
-"File search became easier with filtering options: by type for local files and by type and author for cloud files." = "A pesquisa de arquivos está mais fácil com as opções de filtragem: por tipo para arquivos locais; e por tipo e autor para arquivos na nuvem.";
-
-/* No comment provided by engineer. */
 "Files" = "Arquivos";
 
 /* No comment provided by engineer. */
 "Files Preview" = "Visualização de arquivos";
 
 /* No comment provided by engineer. */
-"Filtering in search" = "Filtragem na pesquisa";
+"Filling form" = "Preenchimento de formulário";
 
 /* No comment provided by engineer. */
 "Filters" = "Filtros";
@@ -579,16 +615,13 @@
 "Go to forum" = "Vá para o fórum";
 
 /* No comment provided by engineer. */
-"Google directory" = "Папка Google";
+"Google directory" = "Diretório do Google";
 
 /* No comment provided by engineer. */
 "Google Drive" = "Google Drive";
 
 /* No comment provided by engineer. */
 "Groups" = "Grupos";
-
-/* No comment provided by engineer. */
-"Handwriting recognition" = "Reconhecimento de manuscrito";
 
 /* No comment provided by engineer. */
 "iCloud" = "iCloud";
@@ -608,6 +641,9 @@
 /* No comment provided by engineer. */
 "Incorrect portal address" = "Endereço do portal incorreto";
 
+/* Button title */
+"Info" = "Informação";
+
 /* No comment provided by engineer. */
 "Information" = "Informações";
 
@@ -623,6 +659,15 @@
 /* No comment provided by engineer. */
 "Invalid Url" = "URL inválida";
 
+/* No comment provided by engineer. */
+"Invite" = "Convidar";
+
+/* No comment provided by engineer. */
+"Invite people" = "Convidar pessoas";
+
+/* No comment provided by engineer. */
+"Invite people by email" = "Convidar pessoas por e-mail";
+
 /* Data units */
 "Kb" = "Kb";
 
@@ -630,7 +675,7 @@
 "kDrive" = "kDrive";
 
 /* No comment provided by engineer. */
-"kDrive directory" = "Diretório do kDrive";
+"kDrive directory" = "diretório do kDrive";
 
 /* No comment provided by engineer. */
 "Last name is empty" = "Sobrenome vazio";
@@ -640,6 +685,9 @@
 
 /* No comment provided by engineer. */
 "Link copied\nto the clipboard" = "Link copiado para a área de transferência";
+
+/* No comment provided by engineer. */
+"Link with the invitation has been sent to the mail" = "O link com o convite foi enviado para o e-mail";
 
 /* Caption of the process */
 "Logging in" = "Login em";
@@ -675,11 +723,17 @@
 /* No comment provided by engineer. */
 "Media" = "Média";
 
+/* No comment provided by engineer. */
+"Member" = "Membro";
+
 /* Button title */
 "More" = "Mais";
 
 /* Button title */
 "Move" = "Mover";
+
+/* Button title */
+"Move from archive" = "Mover do arquivo";
 
 /* Button title */
 "Move here" = "Mover aqui";
@@ -690,6 +744,12 @@
 /* Caption of the processing */
 "Moving" = "Movendo";
 
+/* Caption of the processing */
+"Moving from archive" = "Movendo do arquivo";
+
+/* Category title */
+"My archived" = "Meus arquivos";
+
 /* No comment provided by engineer. */
 "My Clouds" = "Minhas nuvens";
 
@@ -698,6 +758,9 @@
 
 /* No comment provided by engineer. */
 "My Drive" = "Minha unidade";
+
+/* Category title */
+"My rooms" = "Minhas salas";
 
 /* No comment provided by engineer. */
 "Name is empty" = "Nome está vazio";
@@ -722,6 +785,9 @@
 
 /* No comment provided by engineer. */
 "New Spreadsheet" = "Nova planilha";
+
+/* No comment provided by engineer. */
+"New users" = "Novos usuários";
 
 /* Next step */
 "Next" = "Próximo";
@@ -840,7 +906,7 @@
 "ownCloud" = "ownCloud";
 
 /* No comment provided by engineer. */
-"ownCloud directory" = "Diretório do ownCloud";
+"ownCloud directory" = "diretório do ownCloud";
 
 /* Table cell right holder acces text */
 "Owner" = "Proprietário";
@@ -871,6 +937,15 @@
 
 /* Used in the context: '3 photos' */
 "photos" = "fotos";
+
+/* Button title */
+"Pin to top" = "Fixar no topo";
+
+/* No comment provided by engineer. */
+"Pinned failed." = "Fixado falhou.";
+
+/* Caption of the processing */
+"Pinning" = "Fixando";
 
 /* No comment provided by engineer. */
 "Please go to Settings and enable the camera for this app to use this feature." = "Vá para Configurações e habilite a câmera para este aplicativo para usar este recurso.";
@@ -922,9 +997,6 @@
 
 /* Category title */
 "Project Documents" = "Documentos do projeto";
-
-/* No comment provided by engineer. */
-"Protect documents with passwords to share them securely with trusted collaborators." = "Proteja documentos com senhas para compartilhá-los de forma segura com colaboradores confiáveis.";
 
 /* No comment provided by engineer. */
 "Protected File" = "Arquivo protegido";
@@ -986,6 +1058,12 @@
 /* Share status */
 "Review" = "Rever";
 
+/* Share status */
+"Room admin" = "Administrador da sala";
+
+/* DocSpace rooms */
+"Rooms" = "Salas";
+
 /* Caption of the processing */
 "Saving" = "Salvando";
 
@@ -1022,6 +1100,9 @@
 
 /* No comment provided by engineer. */
 "Selected provider is not available" = "O provedor selecionado não está disponível";
+
+/* No comment provided by engineer. */
+"Selected users will not be invited to the room" = "Os usuários selecionados não serão convidados para a sala";
 
 /* No comment provided by engineer. */
 "Selected: %ld" = "Selecionado: %ld";
@@ -1153,7 +1234,7 @@
 "The item with the name '%@' already exists in the folder '%@'." = "O item com o nome '%1$@' já existe na pasta '%2$@'.";
 
 /* No comment provided by engineer. */
-"The link for external\naccess is copied\nto the clipboard" = "O link para acesso externo é copiado para a área de transferência";
+"The link for external\naccess is copied\nto the clipboard" = "O link para acesso externo\né copiado\npara a área de transferência";
 
 /* No comment provided by engineer. */
 "The ONLYOFFICE Editors module is missing. Please contact support@onlyoffice.com for more information." = "O módulo do ONLYOFFICE Editors está ausente. Entre em contato com support@onlyoffice.com para mais informações.";
@@ -1174,6 +1255,9 @@
 "The portal name must be between 6 and 50 characters long" = "O nome do portal deve ter entre 6 e 50 caracteres";
 
 /* No comment provided by engineer. */
+"The quota of users is almost exhausted. Сontact the portal administrator" = "A cota de usuários está quase esgotada. Entre em contato com o administrador do portal";
+
+/* No comment provided by engineer. */
 "The request timed out." = "A solicitação excedeu o tempo limite.";
 
 /* No comment provided by engineer. */
@@ -1184,6 +1268,12 @@
 
 /* No comment provided by engineer. */
 "The trash is empty" = "O lixo está vazio";
+
+/* No comment provided by engineer. */
+"The user limit has been reached. Сontact the portal administrator" = "O limite de usuários foi atingido. Entre em contato com o administrador do portal";
+
+/* No comment provided by engineer. */
+"Third party resource" = "Recurso de terceiros";
 
 /* Introduction Step Three - Title */
 "Third-party storage" = "Armazenamento de terceiros";
@@ -1222,7 +1312,7 @@
 "To open a new document, you must exit the current document." = "Para abrir um novo documento, você deve sair do documento atual.";
 
 /* No comment provided by engineer. */
-"To receive push notifications from the %@ application, you need to allow receiving notifications for this application in the iOS settings" = "Para receber notificações por push do aplicativo %@, você precisa permitir o recebimento de notificações deste aplicativo nas configurações do iOS.";
+"To receive push notifications from the %@ application, you need to allow receiving notifications for this application in the iOS settings" = "Para receber notificações por push do aplicativo %@, você precisa permitir o recebimento de notificações deste aplicativo nas configurações do iOS";
 
 /* Category title */
 "Trash" = "Lixo";
@@ -1259,6 +1349,9 @@
 
 /* No comment provided by engineer. */
 "Unable to get information about the user." = "Não foi possível obter informações sobre o usuário.";
+
+/* No comment provided by engineer. */
+"Unarchiving failed." = "Falha ao desarquivar.";
 
 /* No comment provided by engineer. */
 "Unauthorized users will be able only to view the document and add comments, as well as manage them." = "Usuários não autorizados poderão apenas visualizar o documento e preencher os formulários integrados ao documento.";
@@ -1299,6 +1392,15 @@
 /* No comment provided by engineer. */
 "Unlock with Touch ID" = "Desbloquear com Touch ID";
 
+/* Button title */
+"Unpin" = "Desafixar";
+
+/* No comment provided by engineer. */
+"Unpinned failed." = "Falha ao desafixar.";
+
+/* Caption of the processing */
+"Unpning" = "Desafixar";
+
 /* No comment provided by engineer. */
 "Unsupported format." = "Formato não suportado.";
 
@@ -1323,6 +1425,9 @@
 /* No comment provided by engineer. */
 "Users" = "Usuários";
 
+/* No comment provided by engineer. */
+"Users in room" = "Usuários na sala";
+
 /* Caption of the process */
 "Validation" = "Validação";
 
@@ -1331,6 +1436,9 @@
 
 /* No comment provided by engineer. */
 "Version" = "Versão";
+
+/* No comment provided by engineer. */
+"View-Only" = "Somente visualização";
 
 /* No comment provided by engineer. */
 "Warning" = "Aviso";

@@ -17,7 +17,7 @@
 "gp7-l6-arn.placeholder" = "Necessário";
 
 /* Class = "UITextField"; placeholder = "example.com"; ObjectID = "i2t-Xh-reL"; */
-"i2t-Xh-reL.placeholder" = "example.com";
+"i2t-Xh-reL.placeholder" = "exemplo.com";
 
 /* Class = "UILabel"; text = "Server"; ObjectID = "idC-C3-Fpx"; */
 "idC-C3-Fpx.text" = "Servidor";
@@ -29,7 +29,7 @@
 "muA-mV-bS6.footerTitle" = "Você pode conectar as seguintes contas ao ONLYOFFICE™ Documents.";
 
 /* Class = "UITextField"; placeholder = "example.com"; ObjectID = "njA-lI-fvY"; */
-"njA-lI-fvY.placeholder" = "example.com";
+"njA-lI-fvY.placeholder" = "exemplo.com";
 
 /* Class = "UILabel"; text = "Server"; ObjectID = "q9H-LF-Uc2"; */
 "q9H-LF-Uc2.text" = "Servidor";

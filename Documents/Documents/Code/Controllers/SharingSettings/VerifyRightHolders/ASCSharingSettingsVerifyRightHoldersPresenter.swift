@@ -35,6 +35,10 @@ class ASCSharingSettingsVerifyRightHoldersPresenter: ASCSharingSettingsVerifyRig
                     id = group.id
                     name = group.name ?? ""
                     rightHolderType = .group
+                } else if let email = sharedInfo.email {
+                    id = email
+                    name = email
+                    rightHolderType = .email
                 }
 
                 let access = ASCSharingRightHolderViewModelAccess(entityAccess: sharedInfo.access,
@@ -52,6 +56,8 @@ class ASCSharingSettingsVerifyRightHoldersPresenter: ASCSharingSettingsVerifyRig
                         users.append(viewModel)
                     case .group:
                         groups.append(viewModel)
+                    case .email:
+                        users.append(viewModel)
                     default:
                         _ = viewModel
                     }

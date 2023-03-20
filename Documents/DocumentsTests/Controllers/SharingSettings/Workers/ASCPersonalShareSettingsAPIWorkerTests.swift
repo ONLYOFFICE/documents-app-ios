@@ -30,7 +30,7 @@ class ASCPersonalShareSettingsAPIWorkerTests: XCTestCase {
         let file = ASCFile()
         file.id = "Foo"
 
-        let request = sut.makeApiRequest(entity: file)
+        let request = sut.makeApiRequest(entity: file, for: .set)
 
         XCTAssertNotNil(request)
         XCTAssertFalse(request?.path.contains(file.id) ?? true)
@@ -40,7 +40,7 @@ class ASCPersonalShareSettingsAPIWorkerTests: XCTestCase {
         let folder = ASCFolder()
         folder.id = "Foo"
 
-        let request = sut.makeApiRequest(entity: folder)
+        let request = sut.makeApiRequest(entity: folder, for: .set)
 
         XCTAssertNotNil(request)
         XCTAssertFalse(request?.path.contains(folder.id) ?? true)
@@ -50,7 +50,7 @@ class ASCPersonalShareSettingsAPIWorkerTests: XCTestCase {
         let entity = ASCEntity()
         entity.id = "Foo"
 
-        let request = sut.makeApiRequest(entity: entity)
+        let request = sut.makeApiRequest(entity: entity, for: .set)
 
         XCTAssertNotNil(request)
     }

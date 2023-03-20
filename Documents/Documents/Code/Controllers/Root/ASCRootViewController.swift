@@ -224,7 +224,7 @@ class ASCRootViewController: ASCBaseTabBarController {
         if let appDelegate = UIApplication.shared.delegate as? AppDelegate {
             let createFile: () -> Void = {
                 if ASCEditorManager.shared.isOpenedFile,
-                   let rootKeyWindowVC = UIApplication.shared.keyWindow?.rootViewController
+                   let rootKeyWindowVC = UIWindow.keyWindow?.rootViewController
                 {
                     UIAlertController.showWarning(
                         in: rootKeyWindowVC.topMostViewController(),

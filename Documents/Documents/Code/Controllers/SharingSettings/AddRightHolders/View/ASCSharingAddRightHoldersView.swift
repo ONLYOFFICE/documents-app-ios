@@ -8,8 +8,6 @@
 
 import UIKit
 
-typealias RightHoldersTableType = ASCSharingAddRightHoldersViewController.RightHoldersTableType
-
 protocol ASCSharingAddRightHoldersViewDelegate: AnyObject {
     func getAccessList() -> ([ASCShareAccess])
     func getCurrentAccess() -> ASCShareAccess
@@ -38,10 +36,11 @@ class ASCSharingAddRightHoldersView {
     var searchControllerDelegate: UISearchControllerDelegate!
     var searchResultsUpdating: UISearchResultsUpdating!
     var searchBarDelegate: UISearchBarDelegate!
+    var showsScopeBar: Bool
 
-    lazy var usersTableView = UITableView()
-    lazy var groupsTableView = UITableView()
-    lazy var searchResultsTable = UITableView()
+    lazy var usersTableView = UITableView(frame: .zero, style: .insetGrouped)
+    lazy var groupsTableView = UITableView(frame: .zero, style: .insetGrouped)
+    lazy var searchResultsTable = UITableView(frame: .zero, style: .insetGrouped)
 
     // MARK: - Activity indicators
 
@@ -52,9 +51,19 @@ class ASCSharingAddRightHoldersView {
 
     let title = NSLocalizedString("Shared access", comment: "")
 
-    private lazy var selectAllBarBtn: UIBarButtonItem = UIBarButtonItem(title: NSLocalizedString("Select all", comment: ""), style: .plain, target: self, action: #selector(onSelectAllButtonTapped))
+    private lazy var selectAllBarBtn: UIBarButtonItem = UIBarButtonItem(
+        title: NSLocalizedString("Select all", comment: ""),
+        style: .plain,
+        target: self,
+        action: #selector(onSelectAllButtonTapped)
+    )
 
-    private lazy var deselectAllBarBtn: UIBarButtonItem = UIBarButtonItem(title: NSLocalizedString("Deselect all", comment: ""), style: .plain, target: self, action: #selector(onDeselectAllButtonTapped))
+    private lazy var deselectAllBarBtn: UIBarButtonItem = UIBarButtonItem(
+        title: NSLocalizedString("Deselect all", comment: ""),
+        style: .plain,
+        target: self,
+        action: #selector(onDeselectAllButtonTapped)
+    )
 
     // MARK: - Darken screen props
 
@@ -123,7 +132,8 @@ class ASCSharingAddRightHoldersView {
         navigationController: UINavigationController?,
         searchControllerDelegate: UISearchControllerDelegate,
         searchResultsUpdating: UISearchResultsUpdating,
-        searchBarDelegate: UISearchBarDelegate
+        searchBarDelegate: UISearchBarDelegate,
+        showsScopeBar: Bool
     ) {
         self.view = view
         self.navigationController = navigationController
@@ -131,6 +141,7 @@ class ASCSharingAddRightHoldersView {
         self.searchControllerDelegate = searchControllerDelegate
         self.searchResultsUpdating = searchResultsUpdating
         self.searchBarDelegate = searchBarDelegate
+        self.showsScopeBar = showsScopeBar
     }
 
     // MARK: - Deinit
@@ -149,7 +160,6 @@ class ASCSharingAddRightHoldersView {
         notificationsRegister()
         configureNavigationBar()
         configureToolBar()
-        saveCurrentPreferredSizeAsDefault()
         configureTables()
     }
 
@@ -284,8 +294,10 @@ extension ASCSharingAddRightHoldersView {
         searchController.searchBar.delegate = searchBarDelegate
         searchController.obscuresBackgroundDuringPresentation = false
         searchController.searchBar.placeholder = NSLocalizedString("Search", comment: "")
-        searchController.searchBar.showsScopeBar = true
-        searchController.searchBar.scopeButtonTitles = RightHoldersTableType.allCases.map { $0.getTitle() }
+        searchController.searchBar.showsScopeBar = showsScopeBar
+        if showsScopeBar {
+            searchController.searchBar.scopeButtonTitles = RightHoldersTableType.allCases.map { $0.getTitle() }
+        }
         if UIDevice.phone {
             searchController.searchBar.inputAccessoryView = keyboardToolbar
         }
@@ -528,48 +540,38 @@ extension ASCSharingAddRightHoldersView {
 
 extension ASCSharingAddRightHoldersView {
     func saveCurrentPreferredSizeAsDefault() {
-        if UIDevice.pad, let presentingViewSize = navigationController?.viewControllers[0].view.size {
+        if UIDevice.pad, let presentingViewSize = ASCViewControllerManager.shared.topViewController?.view.size {
             let navBarHeight = navigationController?.navigationBar.height ?? 0
             let toolbarHeigh = navigationController?.toolbar.height ?? 0
-
             defaultPresentingViewSize = CGSize(width: presentingViewSize.width, height: presentingViewSize.height - toolbarHeigh - navBarHeight)
         }
     }
 
     func changeModalHeightIfNeeded(keyboardSize: CGRect) {
-        if UIDevice.pad {
-            let presentingViewHeight = navigationController?.presentingViewController?.view.size.height ?? 0
+        guard UIDevice.pad else { return }
 
-            let modalHeigh = presentingViewHeight > 0 && presentingViewHeight < UIScreen.main.bounds.height
-                ? presentingViewHeight
-                : defaultPresentingViewSize.height
+        let presentingViewHeight = navigationController?.presentingViewController?.view.size.height ?? 0
 
-            let spaceAroundModalHeight: CGFloat = 150
-            var freeSpace = UIScreen.main.bounds.height - modalHeigh - spaceAroundModalHeight
+        let modalHeigh = presentingViewHeight > 0 && presentingViewHeight < UIScreen.main.bounds.height
+            ? presentingViewHeight
+            : defaultPresentingViewSize.height
 
-            if freeSpace < 0 {
-                freeSpace = 0
-            }
+        let spaceAroundModalHeight: CGFloat = 150
+        let freeSpace = max(0, UIScreen.main.bounds.height - modalHeigh - spaceAroundModalHeight)
 
-            if keyboardSize.height > freeSpace {
-                let differance = keyboardSize.height - freeSpace
-                let minModalHeight: CGFloat = 150
-                var newModelHeight = defaultPresentingViewSize.height - differance
+        if keyboardSize.height > freeSpace {
+            let differance = keyboardSize.height - freeSpace
+            let minModalHeight: CGFloat = 150
+            let newModelHeight = max(defaultPresentingViewSize.height - differance, minModalHeight)
 
-                if newModelHeight < minModalHeight {
-                    newModelHeight = minModalHeight
-                }
+            let preferredContentSize = CGSize(width: defaultPresentingViewSize.width, height: newModelHeight)
 
-                let preferredContentSize = CGSize(width: defaultPresentingViewSize.width, height: newModelHeight)
-
-                log.info("new model size", preferredContentSize)
-
-                navigationController?.preferredContentSize = preferredContentSize
-                viewController?.preferredContentSize = preferredContentSize
-            } else {
-                log.info("new model size is default")
-                resetModalSizeIfNeeded()
-            }
+            log.info("new model size", preferredContentSize)
+            navigationController?.preferredContentSize = preferredContentSize
+            viewController?.preferredContentSize = preferredContentSize
+        } else {
+            log.info("new model size is default")
+            resetModalSizeIfNeeded()
         }
     }
 

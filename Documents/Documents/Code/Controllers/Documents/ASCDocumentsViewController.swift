@@ -807,7 +807,7 @@ class ASCDocumentsViewController: ASCBaseTableViewController, UIGestureRecognize
         let isDocSpaceArchive = isRoomList && folder.rootFolderType == .onlyofficeRoomArchived
         let isDocSpaceArchiveRoomContent = folder.rootFolderType == .onlyofficeRoomArchived && !isRoot
         let isDocSpaceRoomShared = isRoomList && folder.rootFolderType == .onlyofficeRoomShared
-        let isInfoShowing = isDocSpaceRoomShared && selectedIds.count <= 1
+        let isInfoShowing = (isDocSpaceRoomShared || isDocSpaceArchive) && selectedIds.count <= 1
         let isNeededUpdateToolBarOnSelection = isDocSpaceRoomShared || folder.isRoomListSubfolder
         let isNeededUpdateToolBarOnDeselection = isDocSpaceRoomShared || folder.isRoomListSubfolder
 

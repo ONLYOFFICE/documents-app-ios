@@ -20,6 +20,11 @@ class ASCSharingOptionsViewController: ASCBaseTableViewController {
         return folder.roomType != nil
     }
 
+    private var isArchivedRoom: Bool {
+        guard let folder = entity as? ASCFolder else { return false }
+        return isRoomFolder && folder.rootFolderType == .onlyofficeRoomArchived
+    }
+
     private var roomSecurity: ASCFolderSecurity {
         guard let folder = entity as? ASCFolder else { return ASCFolderSecurity() }
         return folder.security
@@ -64,7 +69,7 @@ class ASCSharingOptionsViewController: ASCBaseTableViewController {
         }
         guard isRoomFolder else { return .baseWithLink }
 
-        return roomSecurity.editAccess ? .room : .base
+        return roomSecurity.editAccess ? .room : isArchivedRoom ? .roomArchived : .base
     }
 
     private weak var sourceViewController: UIViewController?
@@ -89,9 +94,13 @@ class ASCSharingOptionsViewController: ASCBaseTableViewController {
         super.viewDidLoad()
         let viewConfigurator = ASCSharingView(delegate: self)
         self.viewConfigurator = viewConfigurator
+        let title = sectionStructType == .room || sectionStructType == .roomArchived
+            ? (entity as? ASCFolder)?.title ?? NSLocalizedString("Sharing settings", comment: "")
+            : NSLocalizedString("Sharing settings", comment: "")
         viewConfigurator.configureNavigationBar(navigationController)
         viewConfigurator.configureNavigationItem(navigationItem, allowAddRightHoders: accessToAddRightHoldersChecker.checkAccessToAddRightHolders(),
-                                                 allowLinkBarButton: !isRoomFolder)
+                                                 allowLinkBarButton: !isRoomFolder,
+                                                 title: title)
 
         viewConfigurator.configureTableView(tableView)
 
@@ -145,6 +154,7 @@ class ASCSharingOptionsViewController: ASCBaseTableViewController {
         case .baseWithLink: return .baseWithLink(.init(rawValue: section)!)
         case .base: return .base(.init(rawValue: section)!)
         case .room: return .room(.init(rawValue: section)!)
+        case .roomArchived: return .roomUsers(.init(rawValue: section)!)
         }
     }
 
@@ -262,6 +272,12 @@ extension ASCSharingOptionsViewController: ASCSharingOptionsDisplayLogic {
                         ? importantRightHolders.insert(rightHolderViewModel, at: viewModel.indexPath.row)
                         : otherRightHolders.insert(rightHolderViewModel, at: viewModel.indexPath.row)
                     }
+                case let .roomUsers(sectionStruct):
+                    switch sectionStruct {
+                    case .roomUsers: rightHolderViewModel.isImportant
+                        ? importantRightHolders.insert(rightHolderViewModel, at: viewModel.indexPath.row)
+                        : otherRightHolders.insert(rightHolderViewModel, at: viewModel.indexPath.row)
+                    }
                 }
             }
         case let .displayError(errorMessage):
@@ -280,6 +296,7 @@ extension ASCSharingOptionsViewController: ASCSharingOptionsDisplayLogic {
                 case .baseWithLink: return SharingOptionsSection.importantRightHolders.rawValue
                 case .base: return SharingFolderOptinosSection.importantRightHolders.rawValue
                 case .room: return SharingRoomOptinosSection.roomUsers.rawValue
+                case .roomArchived: return SharingRoomUsersSection.roomUsers.rawValue
                 }
             }()
             tableView.reloadRows(at: [IndexPath(row: indexOfImportant, section: sectionIndex)], with: .automatic)
@@ -291,10 +308,11 @@ extension ASCSharingOptionsViewController: ASCSharingOptionsDisplayLogic {
                 case .baseWithLink: return SharingOptionsSection.otherRightHolders.rawValue
                 case .base: return SharingFolderOptinosSection.otherRightHolders.rawValue
                 case .room: return SharingRoomOptinosSection.roomUsers.rawValue
+                case .roomArchived: return SharingRoomUsersSection.roomUsers.rawValue
                 }
             }()
             let rowIndex: Int = {
-                guard sectionStructType == .room, !importantRightHolders.isEmpty else { return indexOfOther }
+                guard sectionStructType == .roomArchived || sectionStructType == .room, !importantRightHolders.isEmpty else { return indexOfOther }
                 return indexOfOther + importantRightHolders.count
             }()
 
@@ -330,6 +348,7 @@ extension ASCSharingOptionsViewController {
         case .baseWithLink: return SharingOptionsSection.allCases.count
         case .base: return SharingFolderOptinosSection.allCases.count
         case .room: return SharingRoomOptinosSection.allCases.count
+        case .roomArchived: return SharingRoomUsersSection.allCases.count
         }
     }
 
@@ -349,6 +368,10 @@ extension ASCSharingOptionsViewController {
         case let .room(sectionStruct):
             switch sectionStruct {
             case .externalLink: return externalLinkCell(cellForRowAt: indexPath)
+            case .roomUsers: return usersInRoomRightHoldersCell(cellForRowAt: indexPath)
+            }
+        case let .roomUsers(sectionStruct):
+            switch sectionStruct {
             case .roomUsers: return usersInRoomRightHoldersCell(cellForRowAt: indexPath)
             }
         }
@@ -409,6 +432,10 @@ extension ASCSharingOptionsViewController {
         case let .room(sectionStruct):
             switch sectionStruct {
             case .externalLink: return isSwitchActive ? 3 : 1
+            case .roomUsers: return usersInRoom.count
+            }
+        case let .roomUsers(sectionStruct):
+            switch sectionStruct {
             case .roomUsers: return usersInRoom.count
             }
         }
@@ -507,6 +534,10 @@ extension ASCSharingOptionsViewController {
             case .externalLink: selectLinkAction()
             case .roomUsers: viewModel = usersInRoom[indexPath.row]
             }
+        case let .roomUsers(sectionStruct):
+            switch sectionStruct {
+            case .roomUsers: viewModel = usersInRoom[indexPath.row]
+            }
         }
 
         guard let unwrapedViewModel = viewModel else { return }
@@ -589,6 +620,10 @@ extension ASCSharingOptionsViewController {
             case .externalLink: viewModel = nil
             case .roomUsers: viewModel = usersInRoom[indexPath.row]
             }
+        case let .roomUsers(sectionStruct):
+            switch sectionStruct {
+            case .roomUsers: viewModel = usersInRoom[indexPath.row]
+            }
         }
         return viewModel
     }
@@ -605,6 +640,7 @@ extension ASCSharingOptionsViewController {
         case let .baseWithLink(sectionStruct): return sectionStruct
         case let .base(sectionStruct): return sectionStruct
         case let .room(sectionStruct): return sectionStruct
+        case let .roomUsers(sectionStruct): return sectionStruct
         }
     }
 }
@@ -630,12 +666,14 @@ extension ASCSharingOptionsViewController {
         case baseWithLink
         case base
         case room
+        case roomArchived
     }
 
     enum SectionStruct {
         case baseWithLink(SharingOptionsSection)
         case base(SharingFolderOptinosSection)
         case room(SharingRoomOptinosSection)
+        case roomUsers(SharingRoomUsersSection)
     }
 
     enum SharingOptionsSection: Int, CaseIterable, ASCSharingOptionsSectionProtocol {
@@ -690,6 +728,28 @@ extension ASCSharingOptionsViewController {
         }
     }
 
+    enum SharingRoomUsersSection: Int, CaseIterable, ASCSharingOptionsSectionProtocol {
+        case roomUsers
+
+        func title() -> String {
+            switch self {
+            case .roomUsers: return NSLocalizedString("Users in room", comment: "")
+            }
+        }
+
+        func heightForRow() -> CGFloat {
+            switch self {
+            case .roomUsers: return 60
+            }
+        }
+
+        func heightForSectionHeader() -> CGFloat {
+            switch self {
+            case .roomUsers: return 38
+            }
+        }
+    }
+
     enum SharingRoomOptinosSection: Int, CaseIterable, ASCSharingOptionsSectionProtocol {
         case externalLink
         case roomUsers
@@ -697,21 +757,21 @@ extension ASCSharingOptionsViewController {
         func title() -> String {
             switch self {
             case .externalLink: return ""
-            case .roomUsers: return NSLocalizedString("Users in room", comment: "")
+            case .roomUsers: return SharingRoomUsersSection.roomUsers.title()
             }
         }
 
         func heightForRow() -> CGFloat {
             switch self {
             case .externalLink: return 44
-            case .roomUsers: return 60
+            case .roomUsers: return SharingRoomUsersSection.roomUsers.heightForRow()
             }
         }
 
         func heightForSectionHeader() -> CGFloat {
             switch self {
             case .externalLink: return 18
-            case .roomUsers: return 38
+            case .roomUsers: return SharingRoomUsersSection.roomUsers.heightForSectionHeader()
             }
         }
     }

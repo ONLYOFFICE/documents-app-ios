@@ -9,11 +9,10 @@
 import Foundation
 
 struct ASCMultiAccountScreenModel {
-    
     struct TableData {
         enum Cell {
-            case account(AccountCellModel)
             case addAccount(AddAccountCellModel)
+            case account(AccountCellModel)
         }
 
         enum Section {

@@ -7,11 +7,14 @@
 //
 
 import Foundation
+import Kingfisher
 
 protocol ASCMultiAccountPresenterProtocol: AnyObject {
     var view: ASCMultiAccountViewProtocol? { get }
     func setup()
-    func accountDidSelected(accountId: Int)
+    func showProfile(viewController: ASCMultiAccountViewProtocol, account: ASCAccount?)
+    func deleteFromDevice()
+    func renewal(account: ASCAccount)
 }
 
 class ASCMultiAccountPresenter: ASCMultiAccountPresenterProtocol {
@@ -40,11 +43,53 @@ class ASCMultiAccountPresenter: ASCMultiAccountPresenterProtocol {
         render()
     }
 
-    func accountDidSelected(accountId: Int) {
-        // MARK: - todo
+    func showProfile(viewController: ASCMultiAccountViewProtocol, account: ASCAccount?) {
+        let userProfileVC = ASCUserProfileViewController.instantiate(from: Storyboard.userProfile)
+        guard let account else { return }
+
+        let userProfileNavigationVC = ASCBaseNavigationController(rootASCViewController: userProfileVC)
+        userProfileNavigationVC.preferredContentSize = ASCConstants.Size.defaultPreferredContentSize
+        userProfileNavigationVC.modalPresentationStyle = .formSheet
+        viewController.present(userProfileNavigationVC, animated: true, completion: { [weak self] in
+            guard let self = self else { return }
+            let avatarUrl = self.absoluteUrl(from: URL(string: account.avatar ?? ""), for: account.portal ?? "")
+            userProfileVC.avatarView.kf.apiSetImage(with: avatarUrl, placeholder: Asset.Images.avatarDefault.image)
+            userProfileVC.userNameLabel.text = account.displayName
+            userProfileVC.portalLabel.text = account.portal
+            userProfileVC.emailLabel.text = account.email
+        })
+    }
+
+    func deleteFromDevice() {
+        if let currentAccout = ASCAccountsManager.shared.get(by: ASCFileManager.onlyofficeProvider?.apiClient.baseURL?.absoluteString ?? "", email: ASCFileManager.onlyofficeProvider?.user?.email ?? "") {
+            logout()
+            ASCAccountsManager.shared.remove(currentAccout)
+        }
+    }
+
+    func renewal(account: ASCAccount) {
+        let accountsVC = ASCAccountsViewController.instantiate(from: Storyboard.login)
+        accountsVC.login(by: account) {
+            // MARK: - todo
+        }
     }
 
     // MARK: - Private methods
+
+    private func absoluteUrl(from url: URL?, for portal: String) -> URL? {
+        if let url = url {
+            if let _ = url.host {
+                return url
+            } else {
+                return URL(string: portal + url.absoluteString)
+            }
+        }
+        return nil
+    }
+
+    private func logout() {
+        ASCUserProfileViewController.logout()
+    }
 
     private func buildMultiAccountScreenModel() -> ASCMultiAccountScreenModel {
         let tableData: TableData = .init(sections: [.simple(getAddAccountCellModels() + getAccountCellModels())])

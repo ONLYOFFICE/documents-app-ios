@@ -6,17 +6,17 @@
 //  Copyright © 2023 Ascensio System SIA. All rights reserved.
 //
 
+import MBProgressHUD
 import UIKit
 
-protocol ASCMultiAccountViewProtocol: AnyObject {
+protocol ASCMultiAccountViewProtocol: UIViewController {
     func desplayData(data: ASCMultiAccountScreenModel)
 }
 
 class ASCMultiAccountsController: UITableViewController {
-    
     typealias Cell = ASCMultiAccountScreenModel.TableData.Cell
     typealias Section = ASCMultiAccountScreenModel.TableData.Section
-    
+
     private var account: ASCAccount?
     private var rowHeight: CGFloat = 60
 
@@ -42,6 +42,8 @@ class ASCMultiAccountsController: UITableViewController {
         presenter?.setup()
     }
 
+    // MARK: - private methods
+
     private func setupNavigationBar() {
         let title = NSLocalizedString("Cancel", comment: "")
         let backButton = UIBarButtonItem(title: title, style: .plain, target: self, action: #selector(backAction))
@@ -51,7 +53,25 @@ class ASCMultiAccountsController: UITableViewController {
     private func setup() {
         title = screenModel.title
         tableView.separatorInset.left = 65
-        tableView.register(DetailImageStyleTabelViewCell.self, forCellReuseIdentifier: "DetailImageStyleTabelViewCell")
+        tableView.register(DetailImageStyleTabelViewCell.self, forCellReuseIdentifier: DetailImageStyleTabelViewCell.reuseIdentifier)
+    }
+
+    private func showDeleteAccountFromDeviceAlert() {
+        guard let user = ASCFileManager.onlyofficeProvider?.user,
+              let email = user.email
+
+        else { return }
+
+        let message = String(format: NSLocalizedString("Are you sure you want to delete the account  %@ from this devce?", comment: ""), email)
+
+        let deleteAlertAction = UIAlertAction(title: NSLocalizedString("Delete", comment: ""),
+                                              style: .default) { [weak self] _ in
+            guard let self = self else { return }
+            self.presenter?.deleteFromDevice()
+        }
+
+        let alertController = UIAlertController.alert("", message: message, actions: [deleteAlertAction]).cancelable()
+        present(alertController, animated: true, completion: nil)
     }
 
     @objc private func backAction() {
@@ -71,6 +91,17 @@ extension ASCMultiAccountsController {
         }
     }
 
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let index = indexPath.row
+        switch tableDataCell(indexPath: indexPath) {
+        case .addAccount:
+            // MARK: - todo
+            return
+        case .account:
+            // MARK: - todo
+            presenter?.renewal(account: ASCAccountsManager.shared.accounts[index - 1])
+        }
+    }
 
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return rowHeight
@@ -84,10 +115,34 @@ extension ASCMultiAccountsController {
             return cell
 
         case let .account(model):
-            guard let cell = tableView.dequeueReusableCell(withIdentifier: "DetailImageStyleTabelViewCell") as? DetailImageStyleTabelViewCell else { return UITableViewCell() }
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: DetailImageStyleTabelViewCell.reuseIdentifier) as? DetailImageStyleTabelViewCell else { return UITableViewCell() }
             cell.setup(model: model)
             return cell
         }
+    }
+
+    override func tableView(_ tableView: UITableView, contextMenuConfigurationForRowAt indexPath: IndexPath, point: CGPoint) -> UIContextMenuConfiguration? {
+        let configuration = UIContextMenuConfiguration(identifier: nil, previewProvider: nil) { _ in
+
+            let profileActionTitle = NSLocalizedString("Profile", comment: "")
+            let profileAction = UIAction(title: profileActionTitle, image: UIImage(systemName: "person")) { [weak self] _ in
+                guard let self = self else { return }
+
+                // MARK: - todo show
+
+                self.presenter?.showProfile(viewController: self, account: ASCAccountsManager.shared.accounts[indexPath.row - 1])
+            }
+
+            let deleteFromDeviceTitle = NSLocalizedString("Delete from device", comment: "")
+            let deleteFromDeviceAction = UIAction(title: deleteFromDeviceTitle, image: UIImage(systemName: "trash"), attributes: .destructive) { [weak self] _ in
+                guard let self = self else { return }
+                self.showDeleteAccountFromDeviceAlert()
+            }
+
+            return UIMenu(title: "", children: [profileAction, deleteFromDeviceAction])
+        }
+
+        return configuration
     }
 
     private func tableDataCell(indexPath: IndexPath) -> Cell {

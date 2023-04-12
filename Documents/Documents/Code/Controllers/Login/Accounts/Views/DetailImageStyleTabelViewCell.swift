@@ -10,6 +10,8 @@ import Kingfisher
 import UIKit
 
 class DetailImageStyleTabelViewCell: UITableViewCell {
+    static var reuseIdentifier: String = "DetailImageStyleTabelViewCell"
+
     let titleLabel: UILabel = {
         let label = UILabel()
         label.font = label.font.withSize(15)

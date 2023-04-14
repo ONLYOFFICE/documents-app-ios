@@ -56,18 +56,17 @@ class ASCMultiAccountsController: UITableViewController {
         tableView.register(DetailImageStyleTabelViewCell.self, forCellReuseIdentifier: DetailImageStyleTabelViewCell.reuseIdentifier)
     }
 
-    private func showDeleteAccountFromDeviceAlert() {
-        guard let user = ASCFileManager.onlyofficeProvider?.user,
-              let email = user.email
-
-        else { return }
+    private func showDeleteAccountFromDeviceAlert(account: ASCAccount?) {
+        guard let account = account,
+              let email = account.email else { return }
 
         let message = String(format: NSLocalizedString("Are you sure you want to delete the account  %@ from this devce?", comment: ""), email)
 
         let deleteAlertAction = UIAlertAction(title: NSLocalizedString("Delete", comment: ""),
                                               style: .default) { [weak self] _ in
             guard let self = self else { return }
-            self.presenter?.deleteFromDevice()
+
+            self.presenter?.deleteFromDevice(account: account)
         }
 
         let alertController = UIAlertController.alert("", message: message, actions: [deleteAlertAction]).cancelable()
@@ -95,10 +94,11 @@ extension ASCMultiAccountsController {
         let index = indexPath.row
         switch tableDataCell(indexPath: indexPath) {
         case .addAccount:
-            // MARK: - todo
-            return
+            navigationController?.pushViewController(ASCConnectPortalViewController.instance(), animated: true, completion: {})
         case .account:
+
             // MARK: - todo
+
             presenter?.renewal(account: ASCAccountsManager.shared.accounts[index - 1])
         }
     }
@@ -136,7 +136,8 @@ extension ASCMultiAccountsController {
             let deleteFromDeviceTitle = NSLocalizedString("Delete from device", comment: "")
             let deleteFromDeviceAction = UIAction(title: deleteFromDeviceTitle, image: UIImage(systemName: "trash"), attributes: .destructive) { [weak self] _ in
                 guard let self = self else { return }
-                self.showDeleteAccountFromDeviceAlert()
+
+                self.showDeleteAccountFromDeviceAlert(account: ASCAccountsManager.shared.accounts[indexPath.row - 1])
             }
 
             return UIMenu(title: "", children: [profileAction, deleteFromDeviceAction])

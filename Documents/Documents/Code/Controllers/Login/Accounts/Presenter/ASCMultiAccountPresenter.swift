@@ -13,7 +13,7 @@ protocol ASCMultiAccountPresenterProtocol: AnyObject {
     var view: ASCMultiAccountViewProtocol? { get }
     func setup()
     func showProfile(viewController: ASCMultiAccountViewProtocol, account: ASCAccount?)
-    func deleteFromDevice()
+    func deleteFromDevice(account: ASCAccount?)
     func renewal(account: ASCAccount)
 }
 
@@ -24,17 +24,10 @@ class ASCMultiAccountPresenter: ASCMultiAccountPresenterProtocol {
 
     var view: ASCMultiAccountViewProtocol?
 
-    private var accounts: [ASCAccount] = [] {
-        didSet {
-            render()
-        }
-    }
-
     // MARK: - Initialization
 
     init(view: ASCMultiAccountViewProtocol) {
         self.view = view
-        accounts = ASCAccountsManager.shared.accounts
     }
 
     // MARK: - Public methods
@@ -60,11 +53,17 @@ class ASCMultiAccountPresenter: ASCMultiAccountPresenterProtocol {
         })
     }
 
-    func deleteFromDevice() {
-        if let currentAccout = ASCAccountsManager.shared.get(by: ASCFileManager.onlyofficeProvider?.apiClient.baseURL?.absoluteString ?? "", email: ASCFileManager.onlyofficeProvider?.user?.email ?? "") {
+    func deleteFromDevice(account: ASCAccount?) {
+        
+        guard let account = account else { return }
+
+        let currentAccount = ASCAccountsManager.shared.get(by: ASCFileManager.onlyofficeProvider?.apiClient.baseURL?.absoluteString ?? "", email: ASCFileManager.onlyofficeProvider?.user?.email ?? "")
+        
+        if account.email == currentAccount?.email {
             logout()
-            ASCAccountsManager.shared.remove(currentAccout)
         }
+        ASCAccountsManager.shared.remove(account)
+        render()
     }
 
     func renewal(account: ASCAccount) {
@@ -106,7 +105,7 @@ class ASCMultiAccountPresenter: ASCMultiAccountPresenterProtocol {
     }
 
     private func getAccountCellModels() -> [TableData.Cell] {
-        accounts.map { account in
+        ASCAccountsManager.shared.accounts.map { account in
             AccountCellModel(avatarUrlString: account.avatar ?? "",
                              name: account.displayName ?? "",
                              email: account.email ?? "")

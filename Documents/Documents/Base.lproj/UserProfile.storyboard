@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Gp4-u5-CQk">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Gp4-u5-CQk">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -14,7 +14,7 @@
             <objects>
                 <navigationController id="Gp4-u5-CQk" customClass="ASCBaseNavigationController" customModule="Documents" customModuleProvider="target" sceneMemberID="viewController">
                     <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" largeTitles="YES" id="qeq-nA-YG3">
-                        <rect key="frame" x="0.0" y="44" width="414" height="96"/>
+                        <rect key="frame" x="0.0" y="48" width="414" height="96"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>
@@ -25,7 +25,7 @@
             </objects>
             <point key="canvasLocation" x="-1060" y="134"/>
         </scene>
-        <!--Account-->
+        <!--Profile-->
         <scene sceneID="sxp-86-KaN">
             <objects>
                 <tableViewController storyboardIdentifier="ASCUserProfileViewController" id="qbo-o2-I5w" customClass="ASCUserProfileViewController" customModule="Documents" customModuleProvider="target" sceneMemberID="viewController">
@@ -37,7 +37,7 @@
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <subviews>
                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="d4L-ix-DM4">
-                                    <rect key="frame" x="20" y="92" width="374" height="270"/>
+                                    <rect key="frame" x="20" y="87" width="374" height="280"/>
                                     <subviews>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="KNu-GC-K92">
                                             <rect key="frame" x="47" y="0.0" width="280" height="82"/>
@@ -65,7 +65,7 @@
                                             </constraints>
                                         </view>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Me" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="9" translatesAutoresizingMaskIntoConstraints="NO" id="Yw3-6O-7aD">
-                                            <rect key="frame" x="174" y="92" width="26.5" height="60"/>
+                                            <rect key="frame" x="172" y="92" width="30.5" height="60"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="60" id="55F-Dx-Xcu"/>
                                             </constraints>
@@ -82,13 +82,13 @@
                                             </attributedString>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Portal" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KZx-zY-eVz">
-                                            <rect key="frame" x="170.5" y="162" width="33.5" height="14.5"/>
+                                            <rect key="frame" x="169" y="162" width="36" height="16"/>
                                             <fontDescription key="fontDescription" style="UICTFontTextStyleFootnote"/>
                                             <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="-" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="9" translatesAutoresizingMaskIntoConstraints="NO" id="9Yi-42-22H">
-                                            <rect key="frame" x="184" y="186.5" width="6" height="14.5"/>
+                                            <rect key="frame" x="183.5" y="188" width="7" height="18"/>
                                             <fontDescription key="fontDescription" style="UICTFontTextStyleSubhead"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
@@ -102,19 +102,19 @@
                                             </attributedString>
                                         </label>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="T57-Eh-6wf">
-                                            <rect key="frame" x="162" y="211" width="50" height="10"/>
+                                            <rect key="frame" x="162" y="216" width="50" height="10"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="10" id="mhn-O9-Upg"/>
                                             </constraints>
                                         </view>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Email" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HaW-jI-GJW">
-                                            <rect key="frame" x="172" y="231" width="30.5" height="14.5"/>
+                                            <rect key="frame" x="171" y="236" width="32.5" height="16"/>
                                             <fontDescription key="fontDescription" style="UICTFontTextStyleFootnote"/>
                                             <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="-" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="9" translatesAutoresizingMaskIntoConstraints="NO" id="osE-70-cXT">
-                                            <rect key="frame" x="184" y="255.5" width="6" height="14.5"/>
+                                            <rect key="frame" x="183.5" y="262" width="7" height="18"/>
                                             <fontDescription key="fontDescription" style="UICTFontTextStyleSubhead"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
@@ -195,7 +195,7 @@
                             <outlet property="delegate" destination="qbo-o2-I5w" id="WsA-Rk-ivw"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Account" id="BXA-IE-d8z">
+                    <navigationItem key="navigationItem" title="Profile" id="BXA-IE-d8z">
                         <barButtonItem key="rightBarButtonItem" style="done" systemItem="done" id="R5D-ks-KrG">
                             <connections>
                                 <action selector="onDone:" destination="qbo-o2-I5w" id="QXZ-jV-Emv"/>

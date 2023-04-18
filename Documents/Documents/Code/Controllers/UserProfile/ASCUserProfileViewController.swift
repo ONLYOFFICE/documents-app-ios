@@ -21,6 +21,8 @@ class ASCUserProfileViewController: UITableViewController {
     @IBOutlet var emailLabel: UILabel!
     @IBOutlet var logoutCell: UITableViewCell!
     @IBOutlet var deleteAccountCell: UITableViewCell!
+    @IBOutlet var profileTypeTitleLabel: UILabel!
+    @IBOutlet var profileTypeLabel: UILabel!
 
     let heightForHeaderInSection: CGFloat = 7
     let heightForFooterInSection: CGFloat = 7

@@ -38,8 +38,30 @@ class ASCMultiAccountsController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+
+        if ASCAccountsManager.shared.accounts.count < 1 {
+            switchVCSingle()
+            return
+        }
+
         setupNavigationBar()
         presenter?.setup()
+    }
+
+    deinit {
+        NotificationCenter.default.removeObserver(self)
+    }
+
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+    }
+
+    override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
+        return UIDevice.phone ? .portrait : [.portrait, .landscape]
+    }
+
+    override var preferredInterfaceOrientationForPresentation: UIInterfaceOrientation {
+        return UIDevice.phone ? .portrait : super.preferredInterfaceOrientationForPresentation
     }
 
     // MARK: - private methods
@@ -66,11 +88,27 @@ class ASCMultiAccountsController: UITableViewController {
                                               style: .default) { [weak self] _ in
             guard let self = self else { return }
 
-            self.presenter?.deleteFromDevice(account: account)
+            self.presenter?.deleteFromDevice(account: account) {
+                if ASCAccountsManager.shared.accounts.count < 1 {
+                    self.switchVCSingle()
+                }
+            }
         }
 
         let alertController = UIAlertController.alert("", message: message, actions: [deleteAlertAction]).cancelable()
         present(alertController, animated: true, completion: nil)
+    }
+
+    func switchVCSingle() {
+        if ASCAccountsManager.shared.accounts.count < 1 {
+            let connectPortalVC = ASCConnectPortalViewController.instance()
+            connectPortalVC.modalPresentationStyle = .fullScreen
+            connectPortalVC.navigationItem.leftBarButtonItem = UIBarButtonItem(title: NSLocalizedString("Close", comment: ""), style: .plain, closure: { [weak self] in
+                guard let self = self else { return }
+                self.dismiss(animated: true)
+            })
+            navigationController?.pushViewController(connectPortalVC, animated: true)
+        }
     }
 
     @objc private func backAction() {
@@ -94,12 +132,11 @@ extension ASCMultiAccountsController {
         let index = indexPath.row
         switch tableDataCell(indexPath: indexPath) {
         case .addAccount:
-            navigationController?.pushViewController(ASCConnectPortalViewController.instance(), animated: true, completion: {})
+            let connectPortalVC = ASCConnectPortalViewController.instance()
+            navigationController?.pushViewController(connectPortalVC, animated: true, completion: {})
+
         case .account:
-
-            // MARK: - todo
-
-            presenter?.renewal(account: ASCAccountsManager.shared.accounts[index - 1])
+            presenter?.login(by: ASCAccountsManager.shared.accounts[index - 1], completion: {})
         }
     }
 

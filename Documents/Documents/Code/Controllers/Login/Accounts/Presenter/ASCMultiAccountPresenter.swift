@@ -8,13 +8,15 @@
 
 import Foundation
 import Kingfisher
+import MBProgressHUD
 
 protocol ASCMultiAccountPresenterProtocol: AnyObject {
     var view: ASCMultiAccountViewProtocol? { get }
     func setup()
     func showProfile(viewController: ASCMultiAccountViewProtocol, account: ASCAccount?)
-    func deleteFromDevice(account: ASCAccount?)
-    func renewal(account: ASCAccount)
+    func deleteFromDevice(account: ASCAccount?, completion: () -> Void)
+    func renewal(by account: ASCAccount, animated: Bool)
+    func login(by account: ASCAccount, completion: @escaping () -> Void)
 }
 
 class ASCMultiAccountPresenter: ASCMultiAccountPresenterProtocol {
@@ -53,12 +55,11 @@ class ASCMultiAccountPresenter: ASCMultiAccountPresenterProtocol {
         })
     }
 
-    func deleteFromDevice(account: ASCAccount?) {
-        
+    func deleteFromDevice(account: ASCAccount?, completion: () -> Void) {
         guard let account = account else { return }
 
         let currentAccount = ASCAccountsManager.shared.get(by: ASCFileManager.onlyofficeProvider?.apiClient.baseURL?.absoluteString ?? "", email: ASCFileManager.onlyofficeProvider?.user?.email ?? "")
-        
+
         if account.email == currentAccount?.email {
             logout()
         }
@@ -66,10 +67,127 @@ class ASCMultiAccountPresenter: ASCMultiAccountPresenterProtocol {
         render()
     }
 
-    func renewal(account: ASCAccount) {
-        let accountsVC = ASCAccountsViewController.instantiate(from: Storyboard.login)
-        accountsVC.login(by: account) {
-            // MARK: - todo
+    func renewal(by account: ASCAccount, animated: Bool = true) {
+        let signinViewController = ASCSignInViewController.instantiate(from: Storyboard.login)
+        signinViewController.renewal = true
+        signinViewController.portal = account.portal
+        signinViewController.email = account.email
+        view?.navigationController?.pushViewController(signinViewController, animated: animated)
+    }
+
+    func login(by account: ASCAccount, completion: @escaping () -> Void) {
+        OnlyofficeApiClient.shared.cancelAll()
+
+        if let baseUrl = account.portal, let token = account.token {
+            let dummyOnlyofficeProvider = ASCOnlyofficeProvider(baseUrl: baseUrl, token: token)
+
+            let hud = MBProgressHUD.showTopMost()
+
+            // Synchronize api calls
+            let requestQueue = OperationQueue()
+            requestQueue.maxConcurrentOperationCount = 1
+
+            var lastErrorMsg: String?
+            var allowPortal = false
+
+            // Check portal if exist
+            requestQueue.addOperation {
+                let semaphore = DispatchSemaphore(value: 0)
+                self.checkPortalExist(baseUrl, completion: { success, errorMessage in
+                    defer { semaphore.signal() }
+
+                    allowPortal = success
+
+                    if !success {
+                        lastErrorMsg = errorMessage ?? NSLocalizedString("Failed to check portal availability.", comment: "")
+                    }
+                })
+                semaphore.wait()
+            }
+
+            // Check portal version
+            requestQueue.addOperation {
+                let semaphore = DispatchSemaphore(value: 0)
+                self.checkServersVersion(baseUrl, completion: { success, errorMessage in
+                    semaphore.signal()
+                })
+                semaphore.wait()
+            }
+
+            // Check read user info
+            requestQueue.addOperation {
+                if lastErrorMsg == nil {
+                    let semaphore = DispatchSemaphore(value: 0)
+
+                    dummyOnlyofficeProvider.userInfo { success, error in
+                        if !success {
+                            lastErrorMsg = error?.localizedDescription ?? NSLocalizedString("Failed to check portal availability.", comment: "")
+                        }
+                        semaphore.signal()
+                    }
+                    semaphore.wait()
+                }
+            }
+
+            DispatchQueue.global(qos: .background).async { [weak self] in
+                requestQueue.waitUntilAllOperationsAreFinished()
+
+                DispatchQueue.main.async { [weak self] in
+                    guard let self = self
+                    else {
+                        OnlyofficeApiClient.reset()
+                        hud?.hide(animated: true)
+                        completion()
+                        return
+                    }
+
+                    if !allowPortal {
+                        hud?.hide(animated: false)
+
+                        if let view = self.view, let errorMessage = lastErrorMsg {
+                            UIAlertController.showError(
+                                in: view,
+                                message: NSLocalizedString("Portal is unavailable.", comment: "") + " " + errorMessage
+                            )
+                        }
+                    } else if let _ = lastErrorMsg {
+                        hud?.hide(animated: false)
+                        self.renewal(by: account)
+                    } else {
+                        hud?.setSuccessState()
+
+                        // Init ONLYOFFICE provider
+                        ASCFileManager.onlyofficeProvider = ASCOnlyofficeProvider(baseUrl: baseUrl, token: token)
+                        ASCFileManager.onlyofficeProvider?.user = dummyOnlyofficeProvider.user
+                        ASCFileManager.provider = ASCFileManager.onlyofficeProvider
+                        ASCFileManager.storeProviders()
+
+                        // Notify
+                        NotificationCenter.default.post(name: ASCConstants.Notifications.loginOnlyofficeCompleted, object: nil)
+
+                        // Registration device into the portal
+                        OnlyofficeApiClient.request(
+                            OnlyofficeAPI.Endpoints.Auth.deviceRegistration,
+                            ["type": OnlyofficeApplicationType.documents.rawValue]
+                        )
+
+                        // Registration for push notification
+                        ASCPushNotificationManager.requestRegister()
+
+                        ASCAnalytics.logEvent(ASCConstants.Analytics.Event.switchAccount, parameters: [
+                            ASCAnalytics.Event.Key.portal: baseUrl,
+                        ])
+
+                        ASCEditorManager.shared.fetchDocumentService { _, _, _ in }
+
+                        self.view?.dismiss(animated: true, completion: nil)
+
+                        hud?.hide(animated: true, afterDelay: 0.3)
+                    }
+
+                    completion()
+                }
+            }
         }
     }
 
@@ -84,6 +202,38 @@ class ASCMultiAccountPresenter: ASCMultiAccountPresenterProtocol {
             }
         }
         return nil
+    }
+
+    private func checkPortalExist(_ portal: String, completion: @escaping (Bool, String?) -> Void) {
+        OnlyofficeApiClient.shared.baseURL = URL(string: portal)
+        OnlyofficeApiClient.request(OnlyofficeAPI.Endpoints.Settings.capabilities) { response, error in
+            if let error = error {
+                log.error(error)
+                OnlyofficeApiClient.shared.baseURL = nil
+                completion(false, error.localizedDescription)
+            } else if let capabilities = response?.result {
+                OnlyofficeApiClient.shared.capabilities = capabilities
+                completion(true, nil)
+            } else {
+                OnlyofficeApiClient.shared.baseURL = nil
+                completion(false, NSLocalizedString("Failed to check portal availability.", comment: ""))
+            }
+        }
+    }
+
+    private func checkServersVersion(_ portal: String, completion: @escaping (Bool, String?) -> Void) {
+        OnlyofficeApiClient.shared.baseURL = URL(string: portal)
+        OnlyofficeApiClient.request(OnlyofficeAPI.Endpoints.Settings.versions) { response, error in
+            if let error = error {
+                log.error(error)
+            }
+
+            if let versions = response?.result {
+                OnlyofficeApiClient.shared.serverVersion = versions
+            }
+
+            completion(true, nil)
+        }
     }
 
     private func logout() {

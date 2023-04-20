@@ -11,6 +11,13 @@ import MBProgressHUD
 import UIKit
 
 class ASCUserProfileViewController: UITableViewController {
+    struct ViewModel {
+        let userName: String
+        let email: String
+        let portal: String
+        let avatarUrl: URL?
+    }
+
     // MARK: - Properties
 
     @IBOutlet var canvasView: UIView!
@@ -23,9 +30,12 @@ class ASCUserProfileViewController: UITableViewController {
     @IBOutlet var deleteAccountCell: UITableViewCell!
     @IBOutlet var profileTypeTitleLabel: UILabel!
     @IBOutlet var profileTypeLabel: UILabel!
+    @IBOutlet var logoutCellLabel: UILabel!
 
     let heightForHeaderInSection: CGFloat = 7
     let heightForFooterInSection: CGFloat = 7
+
+    lazy var viewModel: ViewModel = .init(userName: "-", email: "-", portal: "-", avatarUrl: nil)
 
     // MARK: - Lifecycle Methods
 
@@ -55,25 +65,10 @@ class ASCUserProfileViewController: UITableViewController {
             ? NSLocalizedString("Login", comment: "")
             : NSLocalizedString("Email", comment: "")
 
-        if let user = ASCFileManager.onlyofficeProvider?.user {
-            userNameLabel.text = user.displayName
-            portalLabel.text = OnlyofficeApiClient.shared.baseURL?.absoluteString
-            emailLabel.text = user.email
-
-            if let avatar = user.avatarRetina ?? user.avatar,
-               let avatarUrl = OnlyofficeApiClient.absoluteUrl(from: URL(string: avatar))
-            {
-                avatarView.kf.apiSetImage(with: avatarUrl,
-                                          placeholder: Asset.Images.avatarDefault.image)
-            } else {
-                avatarView.image = Asset.Images.avatarDefault.image
-            }
-        } else {
-            userNameLabel.text = "-"
-            portalLabel.text = "-"
-            emailLabel.text = "-"
-            avatarView.image = Asset.Images.avatarDefault.image
-        }
+        userNameLabel.text = viewModel.userName
+        portalLabel.text = viewModel.portal
+        emailLabel.text = viewModel.email
+        avatarView.kf.apiSetImage(with: viewModel.avatarUrl, placeholder: Asset.Images.avatarDefault.image)
     }
 
     deinit {
@@ -194,11 +189,24 @@ class ASCUserProfileViewController: UITableViewController {
             hud.hide(animated: true, afterDelay: 2)
         }
 
-        dismiss(animated: true) {
-//            if let parent = self.presentingViewController {
-//                parent.viewWillAppear(false)
-//            }
+        guard let navigationController = navigationController else {
+            if let presentingViewController = presentingViewController as? UINavigationController,
+               let splitVC = splitViewController as? ASCBaseSplitViewController
+            {
+                presentingViewController.dismiss(animated: true) {
+                    if #available(iOS 14.0, *) {
+                        splitVC.show(.primary)
+                    } else {
+                        let primaryVC = ASCMultiAccountsController() // ASCAccountsViewController()
+                        var viewControllers = splitVC.viewControllers
+                        viewControllers.insert(primaryVC, at: 0)
+                        splitVC.viewControllers = viewControllers
+                    }
+                }
+            }
+            return
         }
+        navigationController.popToRootViewController(animated: true)
     }
 
     private func showDeleteAccountAlert() {

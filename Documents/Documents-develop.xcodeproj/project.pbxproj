@@ -4005,7 +4005,7 @@
 			repositoryURL = "https://github.com/kean/Pulse/";
 			requirement = {
 				kind = exactVersion;
-				version = 2.1.4;
+				version = 2.1.5;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */

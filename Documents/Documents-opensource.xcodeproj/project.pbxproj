@@ -3993,8 +3993,8 @@
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/ONLYOFFICE/editors-ios-sp.git";
 			requirement = {
-				branch = hotfix/v7.3.3;
-				kind = branch;
+				kind = exactVersion;
+				version = 7.3.3;
 			};
 		};
 		FC6A756E29915CE10056262F /* XCRemoteSwiftPackageReference "Pulse" */ = {
@@ -4002,7 +4002,7 @@
 			repositoryURL = "https://github.com/kean/Pulse/";
 			requirement = {
 				kind = exactVersion;
-				version = 2.1.4;
+				version = 2.1.5;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */

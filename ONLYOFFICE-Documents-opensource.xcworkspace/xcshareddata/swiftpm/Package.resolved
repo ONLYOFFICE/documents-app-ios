@@ -5,8 +5,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/ONLYOFFICE/editors-ios-sp.git",
       "state" : {
-        "branch" : "hotfix/v7.3.3",
-        "revision" : "839555a9ba6dc77f98d4fbf4477edc8b88453abc"
+        "revision" : "0b379aed3419daf67e9f7b67b75f8fa0aadc8ab8",
+        "version" : "7.3.3"
       }
     },
     {
@@ -14,8 +14,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/kean/Pulse/",
       "state" : {
-        "revision" : "7d19ce3bf443e620619dd99aea2a1c6d9b853fa1",
-        "version" : "2.1.4"
+        "revision" : "2303a867926ba4d2f328d9237027b3ec95b6f189",
+        "version" : "2.1.5"
       }
     },
     {

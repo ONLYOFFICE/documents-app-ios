@@ -164,7 +164,7 @@ PODS:
     - GTMSessionFetcher/Core
   - IQKeyboardManagerSwift (6.5.10)
   - KeychainSwift (20.0.0)
-  - Kingfisher (7.3.2)
+  - Kingfisher (7.6.2)
   - MBProgressHUD (1.2.0)
   - MediaBrowser (2.1.2):
     - SDWebImage
@@ -237,9 +237,9 @@ DEPENDENCIES:
   - Siren
   - SkyFloatingLabelTextField (from `https://github.com/Skyscanner/SkyFloatingLabelTextField.git`)
   - SpreadsheetEditor (from `../editors-ios/SpreadsheetEditor.podspec`)
-  - SwiftFormat/CLI (~> 0.49)
-  - SwiftGen (~> 6.4.0)
-  - SwiftMessages (= 9.0.4)
+  - SwiftFormat/CLI
+  - SwiftGen
+  - SwiftMessages
   - SwiftRater
   - SwiftyDropbox (from `https://github.com/ayuzhin/SwiftyDropbox.git`)
   - SwiftyJSON
@@ -360,7 +360,7 @@ SPEC CHECKSUMS:
   GTMSessionFetcher: ffbb25ec00ebcb5201adab0a56d808f6f1902d9f
   IQKeyboardManagerSwift: 52962c76ab33532f15ad9f3ff4e5715eda5335bb
   KeychainSwift: 0ce6a4d13f7228054d1a71bb1b500448fb2ab837
-  Kingfisher: 0086ad83719761ba9b2cdaf6ef4d5b4878cbae23
+  Kingfisher: 6c5449c6450c5239166510ba04afe374a98afc4f
   MBProgressHUD: 3ee5efcc380f6a79a7cc9b363dd669c5e1ae7406
   MediaBrowser: 6d830e6aff5446dbe8d002738abf4daa498e2ae7
   MGSwipeTableCell: d99ed6466f393b71cd488c6f798ba112ff5d1d01
@@ -385,6 +385,6 @@ SPEC CHECKSUMS:
   WhatsNewKit: c87028c4059dccd113495422801914cc53f6aab0
   WSTagsField: a4e91b7d866e8c9755332ebcf8123f42f2abd4a0
 
-PODFILE CHECKSUM: 2c53da7ba5d751571e4df18fe00a19b4289798a8
+PODFILE CHECKSUM: d848ca181bb33fa2163090a0aade7c176179d594
 
-COCOAPODS: 1.11.3
+COCOAPODS: 1.12.1

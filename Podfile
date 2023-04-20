@@ -44,7 +44,7 @@ def common_pods
   pod 'Siren'
   pod 'WhatsNewKit'
   pod 'PhoneNumberKit'
-  pod 'SwiftMessages', '9.0.4'
+  pod 'SwiftMessages'
   pod 'MGSwipeTableCell'
   pod 'ReCaptcha'
   pod "WSTagsField"
@@ -55,8 +55,8 @@ def common_pods
   pod 'FileKit'
   pod 'IQKeyboardManagerSwift'
   pod 'KeychainSwift'
-  pod 'SwiftGen', '~> 6.4.0'
-  pod 'SwiftFormat/CLI', '~> 0.49', :configurations => ['Debug']
+  pod 'SwiftGen'
+  pod 'SwiftFormat/CLI', :configurations => ['Debug']
 
 end
 

@@ -229,6 +229,7 @@
                         <outlet property="emailLabel" destination="osE-70-cXT" id="4c9-i0-TI4"/>
                         <outlet property="emailTitleLabel" destination="HaW-jI-GJW" id="O0e-tR-gHK"/>
                         <outlet property="logoutCell" destination="sxs-f6-Aem" id="nsB-eW-6hf"/>
+                        <outlet property="logoutCellLabel" destination="1S2-Q7-5vL" id="9c6-q7-wNl"/>
                         <outlet property="portalLabel" destination="9Yi-42-22H" id="qZj-Rn-732"/>
                         <outlet property="profileTypeLabel" destination="JOt-DG-crS" id="dz6-TH-qeg"/>
                         <outlet property="profileTypeTitleLabel" destination="vyA-jq-VvH" id="00F-6F-Tjl"/>

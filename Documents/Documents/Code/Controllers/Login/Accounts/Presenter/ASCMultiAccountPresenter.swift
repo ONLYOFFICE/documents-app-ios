@@ -45,14 +45,11 @@ class ASCMultiAccountPresenter: ASCMultiAccountPresenterProtocol {
         let userProfileNavigationVC = ASCBaseNavigationController(rootASCViewController: userProfileVC)
         userProfileNavigationVC.preferredContentSize = ASCConstants.Size.defaultPreferredContentSize
         userProfileNavigationVC.modalPresentationStyle = .formSheet
-        viewController.present(userProfileNavigationVC, animated: true, completion: { [weak self] in
-            guard let self = self else { return }
-            let avatarUrl = self.absoluteUrl(from: URL(string: account.avatar ?? ""), for: account.portal ?? "")
-            userProfileVC.avatarView.kf.apiSetImage(with: avatarUrl, placeholder: Asset.Images.avatarDefault.image)
-            userProfileVC.userNameLabel.text = account.displayName
-            userProfileVC.portalLabel.text = account.portal
-            userProfileVC.emailLabel.text = account.email
-        })
+
+        // MARK: - todo generate model by account in VC
+        let avatarUrl = absoluteUrl(from: URL(string: account.avatar ?? ""), for: account.portal ?? "")
+        userProfileVC.viewModel = .init(userName: account.displayName ?? "-", email: account.email ?? "-", portal: account.portal ?? "-", avatarUrl: avatarUrl)
+        viewController.navigationController?.pushViewController(userProfileVC, animated: true)
     }
 
     func deleteFromDevice(account: ASCAccount?, completion: () -> Void) {

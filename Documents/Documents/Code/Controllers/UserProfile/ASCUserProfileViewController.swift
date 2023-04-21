@@ -16,6 +16,8 @@ class ASCUserProfileViewController: UITableViewController {
         let email: String
         let portal: String
         let avatarUrl: URL?
+
+        var onLogin: () -> Void
     }
 
     // MARK: - Properties
@@ -35,7 +37,7 @@ class ASCUserProfileViewController: UITableViewController {
     let heightForHeaderInSection: CGFloat = 7
     let heightForFooterInSection: CGFloat = 7
 
-    lazy var viewModel: ViewModel = .init(userName: "-", email: "-", portal: "-", avatarUrl: nil)
+    lazy var viewModel: ViewModel = .init(userName: "-", email: "-", portal: "-", avatarUrl: nil, onLogin: {})
 
     // MARK: - Lifecycle Methods
 
@@ -87,6 +89,10 @@ class ASCUserProfileViewController: UITableViewController {
         navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
         navigationController?.navigationBar.shadowImage = UIImage()
         navigationController?.navigationBar.isTranslucent = true
+
+        if !isCurrentUser() {
+            logoutCellLabel.text = NSLocalizedString("Sign in", comment: "")
+        }
 
         tableView.alwaysBounceVertical = false
     }
@@ -159,7 +165,11 @@ class ASCUserProfileViewController: UITableViewController {
 
         let cell = super.tableView(tableView, cellForRowAt: indexPath)
         if cell == logoutCell {
-            showLogoutAlert()
+            if !isCurrentUser() {
+                viewModel.onLogin()
+            } else {
+                showLogoutAlert()
+            }
         } else if cell == deleteAccountCell {
             showDeleteAccountAlert()
         }
@@ -207,6 +217,15 @@ class ASCUserProfileViewController: UITableViewController {
             return
         }
         navigationController.popToRootViewController(animated: true)
+    }
+
+    private func isCurrentUser() -> Bool {
+        guard let portal = ASCFileManager.onlyofficeProvider?.apiClient.baseURL?.absoluteString,
+              let user = ASCFileManager.onlyofficeProvider?.user,
+              user.email == viewModel.email,
+              portal == viewModel.portal
+        else { return false }
+        return true
     }
 
     private func showDeleteAccountAlert() {

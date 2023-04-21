@@ -49,7 +49,11 @@ class ASCMultiAccountPresenter: ASCMultiAccountPresenterProtocol {
         // MARK: - todo generate model by account in VC
 
         let avatarUrl = absoluteUrl(from: URL(string: account.avatar ?? ""), for: account.portal ?? "")
-        userProfileVC.viewModel = .init(userName: account.displayName ?? "-", email: account.email ?? "-", portal: account.portal ?? "-", avatarUrl: avatarUrl)
+        userProfileVC.viewModel = .init(userName: account.displayName ?? "-", email: account.email ?? "-", portal: account.portal ?? "-", avatarUrl: avatarUrl) { [weak self] in
+            guard let self = self else { return }
+            self.login(by: account, completion: {})
+        }
+
         viewController.navigationController?.pushViewController(userProfileVC, animated: true)
     }
 

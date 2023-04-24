@@ -25,12 +25,14 @@ struct AccountCellModel {
     let avatarUrlString: String?
     let name: String
     let email: String
+    let isActiveUser: Bool
 
-    init(style: Style = .init(), avatarUrlString: String, name: String, email: String) {
+    init(style: Style = .init(), avatarUrlString: String, name: String, email: String, isActiveUser: Bool) {
         self.style = style
         self.avatarUrlString = avatarUrlString
         self.name = name
         self.email = email
+        self.isActiveUser = isActiveUser
     }
 }
 

@@ -256,11 +256,23 @@ class ASCMultiAccountPresenter: ASCMultiAccountPresenterProtocol {
         }
     }
 
+    private func isActiveUser(account: ASCAccount) -> Bool {
+        guard let onlyOfficeProvider = ASCFileManager.onlyofficeProvider,
+              let authorizedUserPortal = onlyOfficeProvider.apiClient.baseURL?.absoluteString,
+              let authorizedUser = onlyOfficeProvider.user
+        else {
+            return false
+        }
+
+        return account.portal == authorizedUserPortal && account.email == authorizedUser.email
+    }
+
     private func getAccountCellModels() -> [TableData.Cell] {
         ASCAccountsManager.shared.accounts.map { account in
             AccountCellModel(avatarUrlString: account.avatar ?? "",
                              name: account.displayName ?? "",
-                             email: account.email ?? "")
+                             email: account.email ?? "",
+                             isActiveUser: isActiveUser(account: account))
         }.map { model in
             .account(model)
         }

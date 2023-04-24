@@ -167,6 +167,7 @@ internal enum Asset {
     internal static let avatarDefaultGroup = ImageAsset(name: "avatar-default-group")
     internal static let avatarDefault = ImageAsset(name: "avatar-default")
     internal static let pin = ImageAsset(name: "pin")
+    internal static let select = ImageAsset(name: "select")
     internal static let tagClose = ImageAsset(name: "tag-close")
     internal static let passcodeLockSplash = ImageAsset(name: "passcode-lock-splash")
     internal static let roomArchived = ImageAsset(name: "room-archived")

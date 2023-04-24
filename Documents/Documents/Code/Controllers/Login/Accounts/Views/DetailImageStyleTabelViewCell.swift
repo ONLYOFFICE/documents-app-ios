@@ -30,6 +30,12 @@ class DetailImageStyleTabelViewCell: UITableViewCell {
         return image
     }()
 
+    let selectedMark: UIImageView = {
+        let image = UIImageView()
+        image.image = UIImage(named: Asset.Images.select.name)
+        return image
+    }()
+
     let stack: UIStackView = {
         let stack = UIStackView()
         stack.axis = .vertical
@@ -53,23 +59,29 @@ class DetailImageStyleTabelViewCell: UITableViewCell {
     private func setupView() {
         addSubview(image)
         addSubview(stack)
+        addSubview(selectedMark)
         stack.addArrangedSubview(titleLabel)
         stack.addArrangedSubview(detailLabel)
 
         image.translatesAutoresizingMaskIntoConstraints = false
         stack.translatesAutoresizingMaskIntoConstraints = false
+        selectedMark.translatesAutoresizingMaskIntoConstraints = false
 
         NSLayoutConstraint.activate([
             image.centerYAnchor.constraint(equalTo: centerYAnchor),
             image.leadingAnchor.constraint(equalTo: leadingAnchor, constant: metrics.insets),
-            image.widthAnchor.constraint(equalToConstant: height - metrics.insets / 2),
-            image.heightAnchor.constraint(equalToConstant: height - metrics.insets / 2),
+            image.widthAnchor.constraint(equalToConstant: height),
+            image.heightAnchor.constraint(equalToConstant: height),
             stack.centerYAnchor.constraint(equalTo: centerYAnchor),
             stack.heightAnchor.constraint(equalToConstant: height),
             stack.leadingAnchor.constraint(equalTo: image.trailingAnchor, constant: metrics.insets),
+            selectedMark.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -metrics.markInsets),
+            selectedMark.trailingAnchor.constraint(equalTo: image.trailingAnchor, constant: metrics.markInsets),
+            selectedMark.widthAnchor.constraint(equalToConstant: height / 2),
+            selectedMark.heightAnchor.constraint(equalToConstant: height / 2),
         ])
 
-        image.layer.cornerRadius = (height - metrics.insets / 2) / 2
+        image.layer.cornerRadius = height / 2
         image.clipsToBounds = true
     }
 }
@@ -77,9 +89,11 @@ class DetailImageStyleTabelViewCell: UITableViewCell {
 extension DetailImageStyleTabelViewCell {
     struct Metrics {
         let insets: CGFloat
+        let markInsets: CGFloat
 
-        init(insets: CGFloat = 20) {
+        init(insets: CGFloat = 20, markInsets: CGFloat = 5) {
             self.insets = insets
+            self.markInsets = markInsets
         }
     }
 }
@@ -91,6 +105,7 @@ extension DetailImageStyleTabelViewCell {
         detailLabel.text = model.email
         titleLabel.font = model.style.nameFont
         detailLabel.font = model.style.emailFont
+        selectedMark.isHidden = !model.isActiveUser
 
         if let avatarUrlString = model.avatarUrlString,
            !avatarUrlString.contains("/skins/default/images/default_user_photo_size_"),

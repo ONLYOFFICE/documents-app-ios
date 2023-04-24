@@ -11,6 +11,7 @@ import UIKit
 
 protocol ASCMultiAccountViewProtocol: UIViewController {
     func desplayData(data: ASCMultiAccountScreenModel)
+    func showDeleteAccountFromDeviceAlert(account: ASCAccount)
 }
 
 class ASCMultiAccountsController: UITableViewController {
@@ -78,9 +79,8 @@ class ASCMultiAccountsController: UITableViewController {
         tableView.register(DetailImageStyleTabelViewCell.self, forCellReuseIdentifier: DetailImageStyleTabelViewCell.reuseIdentifier)
     }
 
-    private func showDeleteAccountFromDeviceAlert(account: ASCAccount?) {
-        guard let account = account,
-              let email = account.email else { return }
+    func showDeleteAccountFromDeviceAlert(account: ASCAccount) {
+        guard let email = account.email else { return }
 
         let message = String(format: NSLocalizedString("Are you sure you want to delete the account  %@ from this devce?", comment: ""), email)
 

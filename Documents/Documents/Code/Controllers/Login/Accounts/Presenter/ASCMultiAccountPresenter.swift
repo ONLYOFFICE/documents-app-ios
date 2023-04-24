@@ -267,12 +267,21 @@ class ASCMultiAccountPresenter: ASCMultiAccountPresenterProtocol {
         return account.portal == authorizedUserPortal && account.email == authorizedUser.email
     }
 
+    private lazy var deleteCallback: (ASCAccount) -> Void = { [weak self] account in
+        guard let self = self else { return }
+        self.view?.showDeleteAccountFromDeviceAlert(account: account)
+    }
+
     private func getAccountCellModels() -> [TableData.Cell] {
         ASCAccountsManager.shared.accounts.map { account in
             AccountCellModel(avatarUrlString: account.avatar ?? "",
                              name: account.displayName ?? "",
                              email: account.email ?? "",
-                             isActiveUser: isActiveUser(account: account))
+                             isActiveUser: isActiveUser(account: account),
+                             deleteCallback: { [weak self] in
+                                 guard let self = self else { return }
+                                 self.deleteCallback(account)
+                             })
         }.map { model in
             .account(model)
         }

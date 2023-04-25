@@ -120,8 +120,9 @@ class ASCMultiAccountPresenter: ASCMultiAccountPresenterProtocol {
             requestQueue.addOperation {
                 if lastErrorMsg == nil {
                     let semaphore = DispatchSemaphore(value: 0)
-
+                    ASCAccountsManager.shared.onUpdateUserInfoEnabled = false
                     dummyOnlyofficeProvider.userInfo { success, error in
+                        ASCAccountsManager.shared.onUpdateUserInfoEnabled = true
                         if !success {
                             lastErrorMsg = error?.localizedDescription ?? NSLocalizedString("Failed to check portal availability.", comment: "")
                         }
@@ -273,7 +274,7 @@ class ASCMultiAccountPresenter: ASCMultiAccountPresenterProtocol {
     }
 
     private func getAccountCellModels() -> [TableData.Cell] {
-        ASCAccountsManager.shared.accounts.map { account in
+        return ASCAccountsManager.shared.accounts.map { account in
             AccountCellModel(avatarUrlString: account.avatar ?? "",
                              name: account.displayName ?? "",
                              email: account.email ?? "",

@@ -12,6 +12,8 @@ import UIKit
 class ASCAccountsManager {
     public static let shared = ASCAccountsManager()
 
+    var onUpdateUserInfoEnabled = true
+
     private(set) var accounts: [ASCAccount] = []
     private let keychain = KeychainSwift()
 
@@ -63,6 +65,7 @@ class ASCAccountsManager {
     }
 
     @objc func onUpdateUserInfo() {
+        guard onUpdateUserInfoEnabled else { return }
         if
             let user = ASCFileManager.onlyofficeProvider?.user,
             let provider = ASCFileManager.onlyofficeProvider,

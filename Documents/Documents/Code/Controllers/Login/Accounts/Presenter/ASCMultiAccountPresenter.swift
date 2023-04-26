@@ -49,7 +49,7 @@ class ASCMultiAccountPresenter: ASCMultiAccountPresenterProtocol {
         // MARK: - todo generate model by account in VC
 
         let avatarUrl = absoluteUrl(from: URL(string: account.avatar ?? ""), for: account.portal ?? "")
-        userProfileVC.viewModel = .init(userName: account.displayName ?? "-", email: account.email ?? "-", portal: account.portal ?? "-", avatarUrl: avatarUrl) { [weak self] in
+        userProfileVC.viewModel = .init(userName: account.displayName ?? "-", email: account.email ?? "-", portal: account.portal ?? "-", avatarUrl: avatarUrl, userType: account.userType?.description ?? "") { [weak self] in
             guard let self = self else { return }
             self.login(by: account, completion: {})
         }
@@ -62,7 +62,7 @@ class ASCMultiAccountPresenter: ASCMultiAccountPresenterProtocol {
 
         let currentAccount = ASCAccountsManager.shared.get(by: ASCFileManager.onlyofficeProvider?.apiClient.baseURL?.absoluteString ?? "", email: ASCFileManager.onlyofficeProvider?.user?.email ?? "")
 
-        if account.email == currentAccount?.email, account.portal == currentAccount?.portal { 
+        if account.email == currentAccount?.email, account.portal == currentAccount?.portal {
             logout()
         }
         ASCAccountsManager.shared.remove(account)

@@ -80,6 +80,7 @@ class ASCAccountsManager {
                 "portal": portal,
                 "token": token,
                 "expires": dateTransform.transformToJSON(provider.apiClient.expires) ?? "",
+                "userType": user.userType.rawValue,
             ]) {
                 add(account)
             }

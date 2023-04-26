@@ -16,6 +16,7 @@ class ASCUserProfileViewController: UITableViewController {
         let email: String
         let portal: String
         let avatarUrl: URL?
+        let userType: String
 
         var onLogin: () -> Void
     }
@@ -37,7 +38,7 @@ class ASCUserProfileViewController: UITableViewController {
     let heightForHeaderInSection: CGFloat = 7
     let heightForFooterInSection: CGFloat = 7
 
-    lazy var viewModel: ViewModel = .init(userName: "-", email: "-", portal: "-", avatarUrl: nil, onLogin: {})
+    lazy var viewModel: ViewModel = .init(userName: "-", email: "-", portal: "-", avatarUrl: nil, userType: "-", onLogin: {})
 
     // MARK: - Lifecycle Methods
 
@@ -70,6 +71,7 @@ class ASCUserProfileViewController: UITableViewController {
         userNameLabel.text = viewModel.userName
         portalLabel.text = viewModel.portal
         emailLabel.text = viewModel.email
+        profileTypeLabel.text = viewModel.userType
         avatarView.kf.apiSetImage(with: viewModel.avatarUrl, placeholder: Asset.Images.avatarDefault.image)
     }
 

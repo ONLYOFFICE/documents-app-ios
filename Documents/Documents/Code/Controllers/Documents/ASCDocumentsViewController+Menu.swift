@@ -646,6 +646,17 @@ extension ASCDocumentsViewController {
             return false
         }
 
+        // Info
+        let info = MGSwipeButton(
+            title: NSLocalizedString("Info", comment: "Button title"),
+            icon: Asset.Images.barInfo.image.withTintColor(ASCConstants.Colors.grey),
+            backgroundColor: ASCConstants.Colors.lightGrey
+        ) { [unowned self] cell -> Bool in
+            cell.hideSwipe(animated: true)
+            navigator.navigate(to: .shareSettings(entity: folder))
+            return true
+        }
+
         cell.swipeBackgroundColor = ASCConstants.Colors.lighterGrey
 
         var items: [MGSwipeButton] = []
@@ -655,6 +666,7 @@ extension ASCDocumentsViewController {
         if actions.contains(.rename) { items.append(rename) }
         if actions.contains(.copy) { items.append(copy) }
         if actions.contains(.archive) { items.append(archive) }
+        if actions.contains(.info) { items.append(info) }
 
         if items.count > 2 {
             items = Array(items[..<2])

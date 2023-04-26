@@ -43,7 +43,7 @@ class ASCGoogleDriveProvider: ASCFileProviderProtocol & ASCSortableFileProviderP
     var total: Int = 0
     var authorization: String? {
         guard let googleUser = googleUser else { return nil }
-        return "Bearer \(googleUser.authentication.accessToken)"
+        return "Bearer \(googleUser.accessToken.tokenString)"
     }
 
     var delegate: ASCProviderDelegate?
@@ -137,7 +137,7 @@ class ASCGoogleDriveProvider: ASCFileProviderProtocol & ASCSortableFileProviderP
 //        let string2data = Data(base64Encoded: data2string, options: NSData.Base64DecodingOptions())
 
         googleUser = NSKeyedUnarchiver.unarchiveObject(with: userData) as? GIDGoogleUser
-        googleDriveService.authorizer = googleUser?.authentication.fetcherAuthorizer()
+        googleDriveService.authorizer = googleUser?.fetcherAuthorizer
     }
 
     func copy() -> ASCFileProviderProtocol {
@@ -193,7 +193,7 @@ class ASCGoogleDriveProvider: ASCFileProviderProtocol & ASCSortableFileProviderP
                let userData = Data(base64Encoded: userString, options: NSData.Base64DecodingOptions())
             {
                 googleUser = NSKeyedUnarchiver.unarchiveObject(with: userData) as? GIDGoogleUser
-                googleDriveService.authorizer = googleUser?.authentication.fetcherAuthorizer()
+                googleDriveService.authorizer = googleUser?.fetcherAuthorizer
             }
 
             if let userJson = json["user"] as? [String: Any] {

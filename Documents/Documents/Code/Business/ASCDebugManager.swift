@@ -86,7 +86,7 @@ extension ASCDebugManager: UIAdaptivePresentationControllerDelegate {
 extension UIWindow {
     override open func motionEnded(_ motion: UIEvent.EventSubtype, with event: UIEvent?) {
         if ASCDebugManager.shared.enabled {
-            if event!.type == .motion && event!.subtype == .motionShake {
+            if event!.type == .motion, event!.subtype == .motionShake {
                 ASCDebugManager.shared.toggleDebugMenu()
             }
         }

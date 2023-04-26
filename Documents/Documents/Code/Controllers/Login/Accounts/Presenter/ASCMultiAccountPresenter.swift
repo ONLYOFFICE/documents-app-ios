@@ -62,7 +62,7 @@ class ASCMultiAccountPresenter: ASCMultiAccountPresenterProtocol {
 
         let currentAccount = ASCAccountsManager.shared.get(by: ASCFileManager.onlyofficeProvider?.apiClient.baseURL?.absoluteString ?? "", email: ASCFileManager.onlyofficeProvider?.user?.email ?? "")
 
-        if account.email == currentAccount?.email {
+        if account.email == currentAccount?.email, account.portal == currentAccount?.portal { 
             logout()
         }
         ASCAccountsManager.shared.remove(account)

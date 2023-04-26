@@ -1939,6 +1939,8 @@ extension ASCEditorManager {
         func documentWorkCompleted(_ controller: DEEditorViewController!, document: DEDocument!) {
             log.info("DEEditorDelegate:documentWorkCompleted")
 
+            documentPermissions = nil
+
             cleanupEditorWindow()
 
             if let file = openedFile {
@@ -2233,6 +2235,8 @@ extension ASCEditorManager {
 
         func spreadsheetWorkCompleted(_ controller: SEEditorViewController!, document: SEDocument!) {
             log.info("SEEditorDelegate:documentWorkCompleted")
+
+            documentPermissions = nil
 
             cleanupEditorWindow()
 
@@ -2529,6 +2533,8 @@ extension ASCEditorManager {
 
         func presentationWorkCompleted(_ controller: PEEditorViewController!, document: PEDocument!) {
             log.info("PEEditorDelegate:documentWorkCompleted")
+
+            documentPermissions = nil
 
             cleanupEditorWindow()
 

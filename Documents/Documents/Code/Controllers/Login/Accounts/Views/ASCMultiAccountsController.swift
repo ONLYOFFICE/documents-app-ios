@@ -183,6 +183,17 @@ extension ASCMultiAccountsController {
         return configuration
     }
 
+    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+        guard let _ = tableView.dequeueReusableCell(withIdentifier: DetailImageStyleTabelViewCell.reuseIdentifier) as? DetailImageStyleTabelViewCell else { return false }
+        return true
+    }
+
+    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            showDeleteAccountFromDeviceAlert(account: ASCAccountsManager.shared.accounts[indexPath.row - 1])
+        }
+    }
+
     private func tableDataCell(indexPath: IndexPath) -> Cell {
         let section = screenModel.tableData.sections[indexPath.section]
         switch section {

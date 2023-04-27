@@ -7,10 +7,9 @@
 //
 
 import Kingfisher
-import MGSwipeTableCell
 import UIKit
 
-class DetailImageStyleTabelViewCell: MGSwipeTableCell {
+class DetailImageStyleTabelViewCell: UITableViewCell {
     static var reuseIdentifier: String = "DetailImageStyleTabelViewCell"
 
     let titleLabel: UILabel = {
@@ -115,32 +114,5 @@ extension DetailImageStyleTabelViewCell {
         } else {
             image.image = Asset.Images.avatarDefault.image
         }
-
-        var cellButtons: [MGSwipeButton] = []
-
-        let delete = MGSwipeButton(
-            title: NSLocalizedString("Delete", comment: "Button title"),
-            icon: Asset.Images.listMenuTrash.image,
-            backgroundColor: ASCConstants.Colors.red
-        )
-        delete.callback = { cell -> Bool in
-
-            cell.hideSwipe(animated: true)
-            model.deleteCallback()
-            return true
-        }
-
-        cellButtons.append(delete)
-        rightButtons = decorate(menu: cellButtons)
-    }
-
-    private func decorate(menu buttons: [MGSwipeButton]) -> [MGSwipeButton] {
-        for button in buttons {
-            button.buttonWidth = 75
-            button.titleLabel?.font = UIFont.systemFont(ofSize: 12)
-            button.horizontalCenterIconOverText()
-        }
-
-        return buttons
     }
 }

@@ -46,10 +46,17 @@ class ASCUserProfileViewController: UITableViewController {
 
     lazy var viewModel: ViewModel = .empty
 
+    private var isUserTypeExists: Bool {
+        viewModel.userType == "" || viewModel.userType == "-" ? false : true
+    }
+
     // MARK: - Lifecycle Methods
 
     override func viewDidLoad() {
         super.viewDidLoad()
+
+        profileTypeLabel.isHidden = !isUserTypeExists
+        profileTypeTitleLabel.isHidden = !isUserTypeExists
 
         NotificationCenter.default.addObserver(
             self,
@@ -100,6 +107,7 @@ class ASCUserProfileViewController: UITableViewController {
 
         if !isCurrentUser() {
             logoutCellLabel.text = NSLocalizedString("Sign in", comment: "")
+            logoutCellLabel.textColor = view.tintColor
         }
 
         tableView.alwaysBounceVertical = false

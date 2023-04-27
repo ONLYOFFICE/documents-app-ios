@@ -187,8 +187,12 @@ extension ASCMultiAccountsViewController {
     }
 
     override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        guard let _ = tableView.dequeueReusableCell(withIdentifier: DetailImageStyleTabelViewCell.reuseIdentifier) as? DetailImageStyleTabelViewCell else { return false }
-        return true
+        switch tableDataCell(indexPath: indexPath) {
+        case .addAccount:
+            return false
+        case .account:
+            return true
+        }
     }
 
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {

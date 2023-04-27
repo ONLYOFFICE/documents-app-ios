@@ -35,6 +35,17 @@ class ASCAccount: NSObject, NSCoding, Mappable {
     var expires: Date?
 
     var userType: UserType?
+    var avatarAbsoluteUrl: URL? {
+        guard let avatarUrlString = self.avatar,
+              let portal = portal,
+              let portalUrl = URL(string: portal),
+              !avatarUrlString.contains("/skins/default/images/default_user_photo_size_"),
+              let avatarUrl = URL(string: avatarUrlString)
+        else {
+            return nil
+        }
+        return URL(string: (portalUrl.absoluteString) + avatarUrl.absoluteString)
+    }
 
     required init?(map: Map) {
         //

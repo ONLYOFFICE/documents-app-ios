@@ -275,7 +275,7 @@ class ASCMultiAccountPresenter: ASCMultiAccountPresenterProtocol {
 
     private func getAccountCellModels() -> [TableData.Cell] {
         return ASCAccountsManager.shared.accounts.map { account in
-            AccountCellModel(avatarUrlString: account.avatar ?? "",
+            AccountCellModel(avatarUrl: account.avatarAbsoluteUrl,
                              name: account.displayName ?? "",
                              email: account.email ?? "",
                              isActiveUser: isActiveUser(account: account),

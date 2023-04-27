@@ -33,7 +33,7 @@ class DetailImageStyleTabelViewCell: MGSwipeTableCell {
 
     let selectedMark: UIImageView = {
         let image = UIImageView()
-        image.image = UIImage(named: Asset.Images.select.name)
+        image.image = Asset.Images.select.image
         return image
     }()
 
@@ -108,10 +108,7 @@ extension DetailImageStyleTabelViewCell {
         detailLabel.font = model.style.emailFont
         selectedMark.isHidden = !model.isActiveUser
 
-        if let avatarUrlString = model.avatarUrlString,
-           !avatarUrlString.contains("/skins/default/images/default_user_photo_size_"),
-           let avatarUrl = OnlyofficeApiClient.absoluteUrl(from: URL(string: avatarUrlString))
-        {
+        if let avatarUrl = model.avatarUrl {
             image.kf.indicatorType = .activity
             image.kf.apiSetImage(with: avatarUrl,
                                  placeholder: Asset.Images.avatarDefault.image)

@@ -22,15 +22,15 @@ struct AccountCellModel {
     }
 
     let style: Style
-    let avatarUrlString: String?
+    let avatarUrl: URL?
     let name: String
     let email: String
     let isActiveUser: Bool
     let deleteCallback: () -> Void
 
-    init(style: Style = .init(), avatarUrlString: String, name: String, email: String, isActiveUser: Bool, deleteCallback: @escaping () -> Void) {
+    init(style: Style = .init(), avatarUrl: URL?, name: String, email: String, isActiveUser: Bool, deleteCallback: @escaping () -> Void) {
         self.style = style
-        self.avatarUrlString = avatarUrlString
+        self.avatarUrl = avatarUrl
         self.name = name
         self.email = email
         self.isActiveUser = isActiveUser

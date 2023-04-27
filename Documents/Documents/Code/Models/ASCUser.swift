@@ -26,6 +26,10 @@ class ASCUser: Mappable {
     var isShareOwner: Bool = false
     var accessValue: ASCShareAccess = .none
 
+    var userType: UserType {
+        return isAdmin ? .admin : isShareOwner ? .owner : .user
+    }
+
     init() {
         //
     }

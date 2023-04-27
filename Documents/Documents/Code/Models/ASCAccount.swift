@@ -9,6 +9,23 @@
 import ObjectMapper
 import UIKit
 
+enum UserType: String {
+    case admin
+    case user
+    case owner
+
+    var description: String {
+        switch self {
+        case .admin:
+            return NSLocalizedString("Admin", comment: "")
+        case .user:
+            return NSLocalizedString("User", comment: "")
+        case .owner:
+            return NSLocalizedString("Owner", comment: "")
+        }
+    }
+}
+
 class ASCAccount: NSObject, NSCoding, Mappable {
     var email: String?
     var displayName: String?
@@ -16,6 +33,19 @@ class ASCAccount: NSObject, NSCoding, Mappable {
     var portal: String?
     var token: String?
     var expires: Date?
+
+    var userType: UserType?
+    var avatarAbsoluteUrl: URL? {
+        guard let avatarUrlString = self.avatar,
+              let portal = portal,
+              let portalUrl = URL(string: portal),
+              !avatarUrlString.contains("/skins/default/images/default_user_photo_size_"),
+              let avatarUrl = URL(string: avatarUrlString)
+        else {
+            return nil
+        }
+        return URL(string: (portalUrl.absoluteString) + avatarUrl.absoluteString)
+    }
 
     required init?(map: Map) {
         //
@@ -28,6 +58,7 @@ class ASCAccount: NSObject, NSCoding, Mappable {
         portal = aDecoder.decodeObject(forKey: "portal") as? String
         token = aDecoder.decodeObject(forKey: "token") as? String
         expires = aDecoder.decodeObject(forKey: "expires") as? Date
+        userType = UserType(rawValue: (aDecoder.decodeObject(forKey: "userType") as? String) ?? "-")
     }
 
     func encode(with aCoder: NSCoder) {
@@ -37,6 +68,7 @@ class ASCAccount: NSObject, NSCoding, Mappable {
         aCoder.encode(portal, forKey: "portal")
         aCoder.encode(token, forKey: "token")
         aCoder.encode(expires, forKey: "expires")
+        aCoder.encode(userType?.rawValue ?? "", forKey: "userType")
     }
 
     func mapping(map: Map) {
@@ -46,5 +78,6 @@ class ASCAccount: NSObject, NSCoding, Mappable {
         portal <- map["portal"]
         token <- map["token"]
         expires <- (map["expires"], ASCDateTransform())
+        userType <- (map["userType"], EnumTransform())
     }
 }

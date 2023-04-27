@@ -360,14 +360,17 @@ class ASCOnlyofficeCategoriesViewController: UITableViewController {
     @IBAction func onUserAction(_ sender: UIButton) {
         if let splitVC = splitViewController {
             if let _ = ASCFileManager.onlyofficeProvider?.user {
-                let userProfileVC = ASCUserProfileViewController.instantiate(from: Storyboard.userProfile)
-                let userProfileNavigationVC = ASCBaseNavigationController(rootASCViewController: userProfileVC)
-
-                userProfileNavigationVC.preferredContentSize = ASCConstants.Size.defaultPreferredContentSize
-                userProfileNavigationVC.modalPresentationStyle = .formSheet
+                let multiProfileVC = ASCMultiAccountsViewController(style: .insetGrouped)
+                let presenter = ASCMultiAccountPresenter(view: multiProfileVC)
+                multiProfileVC.presenter = presenter
+                let multiProfileNavigationVC = ASCBaseNavigationController(rootASCViewController: multiProfileVC)
+                if UIDevice.phone {
+                    multiProfileNavigationVC.modalPresentationStyle = .fullScreen
+                }
 
                 splitVC.hideMasterController()
-                splitVC.present(userProfileNavigationVC, animated: true, completion: nil)
+                splitVC.present(multiProfileNavigationVC, animated: true, completion: nil)
+
             } else {
                 let alertController = UIAlertController(
                     title: ASCLocalization.Common.error,

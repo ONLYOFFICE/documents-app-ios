@@ -24,6 +24,11 @@
 		1D8CFC5E290FEF6200F71071 /* ASCSharingInviteRightHoldersTableViewDataSourceAndDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D8CFC5D290FEDCC00F71071 /* ASCSharingInviteRightHoldersTableViewDataSourceAndDelegate.swift */; };
 		1D939F0B291C0DF500221F75 /* ASCPaymentQuota.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D939F09291C0DF500221F75 /* ASCPaymentQuota.swift */; };
 		86E2AD2B387DF62F19D0CB36 /* Pods_Documents_opensource.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A7DBE3A94B4934AA87B956D4 /* Pods_Documents_opensource.framework */; };
+		F378023929D732B10020B453 /* ASCMultiAccountsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F378023829D732B10020B453 /* ASCMultiAccountsViewController.swift */; };
+		F378023D29D743AF0020B453 /* DetailImageStyleTabelViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F378023C29D743AF0020B453 /* DetailImageStyleTabelViewCell.swift */; };
+		F378024229DAE05B0020B453 /* ASCMultiAccountScreenModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F378024129DAE05B0020B453 /* ASCMultiAccountScreenModel.swift */; };
+		F378024429DAE3720020B453 /* AccountCellModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F378024329DAE3720020B453 /* AccountCellModel.swift */; };
+		F378024629DAE5020020B453 /* ASCMultiAccountPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F378024529DAE5020020B453 /* ASCMultiAccountPresenter.swift */; };
 		FC0BBF19296C25B80060F49E /* DocumentConverter in Frameworks */ = {isa = PBXBuildFile; productRef = FC0BBF18296C25B80060F49E /* DocumentConverter */; };
 		FC0BBF1B296C25B80060F49E /* DocumentEditor in Frameworks */ = {isa = PBXBuildFile; productRef = FC0BBF1A296C25B80060F49E /* DocumentEditor */; };
 		FC0BBF1D296C25B80060F49E /* PresentationEditor in Frameworks */ = {isa = PBXBuildFile; productRef = FC0BBF1C296C25B80060F49E /* PresentationEditor */; };
@@ -567,6 +572,11 @@
 		F33E473A27AD9BC200EFF6D9 /* ASCWebKitViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCWebKitViewController.swift; sourceTree = "<group>"; };
 		F377689427CFCF2D0044EDA6 /* ASCConnectStorageNextCloudServerController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCConnectStorageNextCloudServerController.swift; sourceTree = "<group>"; };
 		F377689727D273B20044EDA6 /* ASCNextCloudConnectStorageDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCNextCloudConnectStorageDelegate.swift; sourceTree = "<group>"; };
+		F378023829D732B10020B453 /* ASCMultiAccountsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCMultiAccountsViewController.swift; sourceTree = "<group>"; };
+		F378023C29D743AF0020B453 /* DetailImageStyleTabelViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailImageStyleTabelViewCell.swift; sourceTree = "<group>"; };
+		F378024129DAE05B0020B453 /* ASCMultiAccountScreenModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCMultiAccountScreenModel.swift; sourceTree = "<group>"; };
+		F378024329DAE3720020B453 /* AccountCellModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountCellModel.swift; sourceTree = "<group>"; };
+		F378024529DAE5020020B453 /* ASCMultiAccountPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCMultiAccountPresenter.swift; sourceTree = "<group>"; };
 		F37F0A2827C12B9E00371183 /* ASCMicrosoftSignInController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCMicrosoftSignInController.swift; sourceTree = "<group>"; };
 		FA2E5A74B4F3D80D563D242D /* Pods-Documents-opensource.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Documents-opensource.release.xcconfig"; path = "../Pods/Target Support Files/Pods-Documents-opensource/Pods-Documents-opensource.release.xcconfig"; sourceTree = "<group>"; };
 		FC029A3B27BCF2FC00E5341B /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Localizable.strings"; sourceTree = "<group>"; };
@@ -1698,6 +1708,23 @@
 			path = WebKit;
 			sourceTree = "<group>";
 		};
+		F378023E29DA90580020B453 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				F378024129DAE05B0020B453 /* ASCMultiAccountScreenModel.swift */,
+				F378024329DAE3720020B453 /* AccountCellModel.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		F378024029DA90710020B453 /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+				F378024529DAE5020020B453 /* ASCMultiAccountPresenter.swift */,
+			);
+			path = Presenter;
+			sourceTree = "<group>";
+		};
 		FC059D961E82581D00BC2F5E /* Transforms */ = {
 			isa = PBXGroup;
 			children = (
@@ -2120,6 +2147,8 @@
 		FC6106F81F9E2948002A25C8 /* Accounts */ = {
 			isa = PBXGroup;
 			children = (
+				F378023E29DA90580020B453 /* Model */,
+				F378024029DA90710020B453 /* Presenter */,
 				FC6106FB1F9E3091002A25C8 /* Views */,
 				FC6106F91F9E2ED6002A25C8 /* ASCAccountsViewController.swift */,
 			);
@@ -2129,7 +2158,9 @@
 		FC6106FB1F9E3091002A25C8 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				F378023C29D743AF0020B453 /* DetailImageStyleTabelViewCell.swift */,
 				FC6106FC1F9E30B9002A25C8 /* ASCAvatarCollectionViewCell.swift */,
+				F378023829D732B10020B453 /* ASCMultiAccountsViewController.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -3122,6 +3153,7 @@
 				FC7080E12812E2260057FCD2 /* ASCAnalytics.swift in Sources */,
 				FC7080E22812E2260057FCD2 /* ASCIntroViewController.swift in Sources */,
 				FC7080E32812E2260057FCD2 /* UITableViewCell+Extensions.swift in Sources */,
+				F378023929D732B10020B453 /* ASCMultiAccountsViewController.swift in Sources */,
 				FC7080E42812E2260057FCD2 /* ASCAccessRowViewModel.swift in Sources */,
 				FC7080E62812E2260057FCD2 /* ASCBaseNavigationController.swift in Sources */,
 				FC7080E72812E2260057FCD2 /* ASCOnlyofficeUserDefaultsCacheCategoriesProvider.swift in Sources */,
@@ -3155,6 +3187,7 @@
 				FC7080FD2812E2260057FCD2 /* ASCProviderError.swift in Sources */,
 				FC142A1A289818B800EDE7CE /* ASCSelectUserViewController.swift in Sources */,
 				FC7080FE2812E2260057FCD2 /* UIButton+Style.swift in Sources */,
+				F378024229DAE05B0020B453 /* ASCMultiAccountScreenModel.swift in Sources */,
 				FC7080FF2812E2260057FCD2 /* ASCPortalType.swift in Sources */,
 				FC7081002812E2260057FCD2 /* ASCViewModelSetter.swift in Sources */,
 				FC142A26289818B800EDE7CE /* ASCLeftAlignedCollectionViewFlowLayout.swift in Sources */,
@@ -3232,6 +3265,7 @@
 				FC142A6728981A1F00EDE7CE /* ASCDevelopOptionsViewController.swift in Sources */,
 				FC70813E2812E2260057FCD2 /* ASCNextCloudConnectStorageDelegate.swift in Sources */,
 				FC70813F2812E2260057FCD2 /* ASCSharingSettingsAccessTableProvider.swift in Sources */,
+				F378024629DAE5020020B453 /* ASCMultiAccountPresenter.swift in Sources */,
 				FC7081402812E2260057FCD2 /* NSString+HTMLString.swift in Sources */,
 				FC7081412812E2260057FCD2 /* ASCSharingSettingsAccessProviderFactory.swift in Sources */,
 				FC7081422812E2260057FCD2 /* ASCOnlyofficeCategoriesViewController.swift in Sources */,
@@ -3250,6 +3284,7 @@
 				FC70814F2812E2260057FCD2 /* ASCAppleIdSignInController.swift in Sources */,
 				FC7081502812E2260057FCD2 /* ASCCentredLabelHeaderFooterView.swift in Sources */,
 				FC7081512812E2260057FCD2 /* ASCSortViewController.swift in Sources */,
+				F378024429DAE3720020B453 /* AccountCellModel.swift in Sources */,
 				1D8CFC5A290D85E600F71071 /* ASCDocumentsCellContextMenu.swift in Sources */,
 				FC7081532812E2260057FCD2 /* OnlyofficeApplicationType.swift in Sources */,
 				FC7081542812E2260057FCD2 /* Scenes.swift in Sources */,
@@ -3475,6 +3510,7 @@
 				FC7082132812E2260057FCD2 /* ASCOnlyofficeSplitViewController.swift in Sources */,
 				FC7082142812E2260057FCD2 /* ASCSwitchTableViewCell.swift in Sources */,
 				FC7082152812E2260057FCD2 /* Assets.swift in Sources */,
+				F378023D29D743AF0020B453 /* DetailImageStyleTabelViewCell.swift in Sources */,
 				FC7082162812E2260057FCD2 /* ASCFacebookSignInController.swift in Sources */,
 				FC7082172812E2260057FCD2 /* KeyboardManagerHelper.swift in Sources */,
 				FC7082182812E2260057FCD2 /* UILabel+Style.swift in Sources */,
@@ -3957,8 +3993,8 @@
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/ONLYOFFICE/editors-ios-sp.git";
 			requirement = {
-				branch = hotfix/v7.3.3;
-				kind = branch;
+				kind = exactVersion;
+				version = 7.3.3;
 			};
 		};
 		FC6A756E29915CE10056262F /* XCRemoteSwiftPackageReference "Pulse" */ = {
@@ -3966,7 +4002,7 @@
 			repositoryURL = "https://github.com/kean/Pulse/";
 			requirement = {
 				kind = exactVersion;
-				version = 2.1.4;
+				version = 2.1.5;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */

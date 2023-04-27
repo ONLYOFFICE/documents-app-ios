@@ -85,7 +85,7 @@ class ASCMultiAccountsController: UITableViewController {
         let message = String(format: NSLocalizedString("Are you sure you want to delete the account  %@ from this devce?", comment: ""), email)
 
         let deleteAlertAction = UIAlertAction(title: NSLocalizedString("Delete", comment: ""),
-                                              style: .default) { [weak self] _ in
+                                              style: .destructive) { [weak self] _ in
             guard let self = self else { return }
 
             self.presenter?.deleteFromDevice(account: account) {

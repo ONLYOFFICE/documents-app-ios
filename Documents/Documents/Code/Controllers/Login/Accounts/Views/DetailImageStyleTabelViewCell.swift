@@ -14,13 +14,13 @@ class DetailImageStyleTabelViewCell: UITableViewCell {
 
     let titleLabel: UILabel = {
         let label = UILabel()
-        label.font = label.font.withSize(15)
+        label.font = UIFont.preferredFont(forTextStyle: .body)
         return label
     }()
 
     let detailLabel: UILabel = {
         let label = UILabel()
-        label.font = label.font.withSize(13)
+        label.font = UIFont.preferredFont(forTextStyle: .footnote)
         label.textColor = .systemGray
         return label
     }()

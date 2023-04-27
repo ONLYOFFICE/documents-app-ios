@@ -1,5 +1,5 @@
 //
-//  ASCMultiAccountsController.swift
+//  ASCMultiAccountsViewController.swift
 //  Documents-opensource
 //
 //  Created by Лолита Чернышева on 31.03.2023.
@@ -14,12 +14,17 @@ protocol ASCMultiAccountViewProtocol: UIViewController {
     func showDeleteAccountFromDeviceAlert(account: ASCAccount)
 }
 
-class ASCMultiAccountsController: UITableViewController {
+class ASCMultiAccountsViewController: UITableViewController {
+    enum Constants {
+        static var rowHeight: CGFloat = 60
+        static var separatorInset: CGFloat = 65
+    }
+
     typealias Cell = ASCMultiAccountScreenModel.TableData.Cell
     typealias Section = ASCMultiAccountScreenModel.TableData.Section
 
     private var account: ASCAccount?
-    private var rowHeight: CGFloat = 60
+    private var rowHeight: CGFloat = Constants.rowHeight
 
     var screenModel: ASCMultiAccountScreenModel = .empty {
         didSet {
@@ -29,6 +34,14 @@ class ASCMultiAccountsController: UITableViewController {
     }
 
     var presenter: ASCMultiAccountPresenterProtocol?
+
+    override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
+        return UIDevice.phone ? .portrait : [.portrait, .landscape]
+    }
+
+    override var preferredInterfaceOrientationForPresentation: UIInterfaceOrientation {
+        return UIDevice.phone ? .portrait : super.preferredInterfaceOrientationForPresentation
+    }
 
     // MARK: - life cycle
 
@@ -57,14 +70,6 @@ class ASCMultiAccountsController: UITableViewController {
         super.didReceiveMemoryWarning()
     }
 
-    override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
-        return UIDevice.phone ? .portrait : [.portrait, .landscape]
-    }
-
-    override var preferredInterfaceOrientationForPresentation: UIInterfaceOrientation {
-        return UIDevice.phone ? .portrait : super.preferredInterfaceOrientationForPresentation
-    }
-
     // MARK: - private methods
 
     private func setupNavigationBar() {
@@ -75,7 +80,7 @@ class ASCMultiAccountsController: UITableViewController {
 
     private func setup() {
         title = screenModel.title
-        tableView.separatorInset.left = 65
+        tableView.separatorInset.left = Constants.separatorInset
         tableView.register(DetailImageStyleTabelViewCell.self, forCellReuseIdentifier: DetailImageStyleTabelViewCell.reuseIdentifier)
     }
 
@@ -116,7 +121,7 @@ class ASCMultiAccountsController: UITableViewController {
     }
 }
 
-extension ASCMultiAccountsController {
+extension ASCMultiAccountsViewController {
     override func numberOfSections(in tableView: UITableView) -> Int {
         screenModel.tableData.sections.count
     }
@@ -129,14 +134,12 @@ extension ASCMultiAccountsController {
     }
 
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let index = indexPath.row
         switch tableDataCell(indexPath: indexPath) {
         case .addAccount:
             let connectPortalVC = ASCConnectPortalViewController.instance()
             navigationController?.pushViewController(connectPortalVC, animated: true, completion: {})
-
-        case .account:
-            presenter?.login(by: ASCAccountsManager.shared.accounts[index - 1], completion: {})
+        case let .account(model):
+            model.selectCallback()
         }
     }
 
@@ -159,28 +162,28 @@ extension ASCMultiAccountsController {
     }
 
     override func tableView(_ tableView: UITableView, contextMenuConfigurationForRowAt indexPath: IndexPath, point: CGPoint) -> UIContextMenuConfiguration? {
-        let configuration = UIContextMenuConfiguration(identifier: nil, previewProvider: nil) { _ in
+        let index = indexPath.row
+        switch tableDataCell(indexPath: indexPath) {
+        case .addAccount:
+            return nil
+        case let .account(model):
+            let configuration = UIContextMenuConfiguration(identifier: nil, previewProvider: nil) { _ in
 
-            let profileActionTitle = NSLocalizedString("Profile", comment: "")
-            let profileAction = UIAction(title: profileActionTitle, image: UIImage(systemName: "person")) { [weak self] _ in
-                guard let self = self else { return }
+                let profileActionTitle = NSLocalizedString("Profile", comment: "")
+                let profileAction = UIAction(title: profileActionTitle, image: UIImage(systemName: "person")) { _ in
+                    model.showProfileCallback()
+                }
 
-                // MARK: - todo show
+                let deleteFromDeviceTitle = NSLocalizedString("Delete from device", comment: "")
+                let deleteFromDeviceAction = UIAction(title: deleteFromDeviceTitle, image: UIImage(systemName: "trash"), attributes: .destructive) { _ in
+                    model.deleteCallback()
+                }
 
-                self.presenter?.showProfile(viewController: self, account: ASCAccountsManager.shared.accounts[indexPath.row - 1])
+                return UIMenu(title: "", children: [profileAction, deleteFromDeviceAction])
             }
 
-            let deleteFromDeviceTitle = NSLocalizedString("Delete from device", comment: "")
-            let deleteFromDeviceAction = UIAction(title: deleteFromDeviceTitle, image: UIImage(systemName: "trash"), attributes: .destructive) { [weak self] _ in
-                guard let self = self else { return }
-
-                self.showDeleteAccountFromDeviceAlert(account: ASCAccountsManager.shared.accounts[indexPath.row - 1])
-            }
-
-            return UIMenu(title: "", children: [profileAction, deleteFromDeviceAction])
+            return configuration
         }
-
-        return configuration
     }
 
     override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
@@ -189,8 +192,13 @@ extension ASCMultiAccountsController {
     }
 
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == .delete {
-            showDeleteAccountFromDeviceAlert(account: ASCAccountsManager.shared.accounts[indexPath.row - 1])
+        switch tableDataCell(indexPath: indexPath) {
+        case .addAccount:
+            return
+        case let .account(model):
+            if editingStyle == .delete {
+                model.deleteCallback()
+            }
         }
     }
 
@@ -203,7 +211,7 @@ extension ASCMultiAccountsController {
     }
 }
 
-extension ASCMultiAccountsController: ASCMultiAccountViewProtocol {
+extension ASCMultiAccountsViewController: ASCMultiAccountViewProtocol {
     func desplayData(data: ASCMultiAccountScreenModel) {
         screenModel = data
     }

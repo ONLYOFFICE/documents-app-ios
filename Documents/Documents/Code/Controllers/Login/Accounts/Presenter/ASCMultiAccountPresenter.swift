@@ -13,10 +13,8 @@ import MBProgressHUD
 protocol ASCMultiAccountPresenterProtocol: AnyObject {
     var view: ASCMultiAccountViewProtocol? { get }
     func setup()
-    func showProfile(viewController: ASCMultiAccountViewProtocol, account: ASCAccount?)
     func deleteFromDevice(account: ASCAccount?, completion: () -> Void)
     func renewal(by account: ASCAccount, animated: Bool)
-    func login(by account: ASCAccount, completion: @escaping () -> Void)
 }
 
 class ASCMultiAccountPresenter: ASCMultiAccountPresenterProtocol {
@@ -32,6 +30,11 @@ class ASCMultiAccountPresenter: ASCMultiAccountPresenterProtocol {
         self.view = view
     }
 
+    private lazy var deleteCallback: (ASCAccount) -> Void = { [weak self] account in
+        guard let self = self else { return }
+        self.view?.showDeleteAccountFromDeviceAlert(account: account)
+    }
+
     // MARK: - Public methods
 
     func setup() {
@@ -39,14 +42,13 @@ class ASCMultiAccountPresenter: ASCMultiAccountPresenterProtocol {
     }
 
     func showProfile(viewController: ASCMultiAccountViewProtocol, account: ASCAccount?) {
-        let userProfileVC = ASCUserProfileViewController.instantiate(from: Storyboard.userProfile)
         guard let account else { return }
+
+        let userProfileVC = ASCUserProfileViewController.instantiate(from: Storyboard.userProfile)
 
         let userProfileNavigationVC = ASCBaseNavigationController(rootASCViewController: userProfileVC)
         userProfileNavigationVC.preferredContentSize = ASCConstants.Size.defaultPreferredContentSize
         userProfileNavigationVC.modalPresentationStyle = .formSheet
-
-        // MARK: - todo generate model by account in VC
 
         let avatarUrl = absoluteUrl(from: URL(string: account.avatar ?? ""), for: account.portal ?? "")
         userProfileVC.viewModel = .init(userName: account.displayName ?? "-", email: account.email ?? "-", portal: account.portal ?? "-", avatarUrl: avatarUrl, userType: account.userType?.description ?? "") { [weak self] in
@@ -268,17 +270,20 @@ class ASCMultiAccountPresenter: ASCMultiAccountPresenterProtocol {
         return account.portal == authorizedUserPortal && account.email == authorizedUser.email
     }
 
-    private lazy var deleteCallback: (ASCAccount) -> Void = { [weak self] account in
-        guard let self = self else { return }
-        self.view?.showDeleteAccountFromDeviceAlert(account: account)
-    }
-
     private func getAccountCellModels() -> [TableData.Cell] {
         return ASCAccountsManager.shared.accounts.map { account in
             AccountCellModel(avatarUrl: account.avatarAbsoluteUrl,
                              name: account.displayName ?? "",
                              email: account.email ?? "",
                              isActiveUser: isActiveUser(account: account),
+                             showProfileCallback: { [weak self] in
+                                 guard let self = self, let view = self.view else { return }
+                                 self.showProfile(viewController: view, account: account)
+                             },
+                             selectCallback: { [weak self] in
+                                 guard let self = self else { return }
+                                 self.login(by: account, completion: {})
+                             },
                              deleteCallback: { [weak self] in
                                  guard let self = self else { return }
                                  self.deleteCallback(account)

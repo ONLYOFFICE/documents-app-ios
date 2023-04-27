@@ -360,7 +360,7 @@ class ASCOnlyofficeCategoriesViewController: UITableViewController {
     @IBAction func onUserAction(_ sender: UIButton) {
         if let splitVC = splitViewController {
             if let _ = ASCFileManager.onlyofficeProvider?.user {
-                let multiProfileVC = ASCMultiAccountsController(style: .insetGrouped)
+                let multiProfileVC = ASCMultiAccountsViewController(style: .insetGrouped)
                 let presenter = ASCMultiAccountPresenter(view: multiProfileVC)
                 multiProfileVC.presenter = presenter
                 let multiProfileNavigationVC = ASCBaseNavigationController(rootASCViewController: multiProfileVC)

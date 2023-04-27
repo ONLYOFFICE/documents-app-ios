@@ -11,6 +11,10 @@ import MBProgressHUD
 import UIKit
 
 class ASCUserProfileViewController: UITableViewController {
+    enum Constants {
+        static var sectionInsets: CGFloat = 7
+    }
+
     struct ViewModel {
         let userName: String
         let email: String
@@ -19,6 +23,8 @@ class ASCUserProfileViewController: UITableViewController {
         let userType: String
 
         var onLogin: () -> Void
+
+        static let empty = ViewModel(userName: "-", email: "-", portal: "-", avatarUrl: nil, userType: "-", onLogin: {})
     }
 
     // MARK: - Properties
@@ -35,10 +41,10 @@ class ASCUserProfileViewController: UITableViewController {
     @IBOutlet var profileTypeLabel: UILabel!
     @IBOutlet var logoutCellLabel: UILabel!
 
-    let heightForHeaderInSection: CGFloat = 7
-    let heightForFooterInSection: CGFloat = 7
+    let heightForHeaderInSection: CGFloat = Constants.sectionInsets
+    let heightForFooterInSection: CGFloat = Constants.sectionInsets
 
-    lazy var viewModel: ViewModel = .init(userName: "-", email: "-", portal: "-", avatarUrl: nil, userType: "-", onLogin: {})
+    lazy var viewModel: ViewModel = .empty
 
     // MARK: - Lifecycle Methods
 
@@ -209,7 +215,7 @@ class ASCUserProfileViewController: UITableViewController {
                     if #available(iOS 14.0, *) {
                         splitVC.show(.primary)
                     } else {
-                        let primaryVC = ASCMultiAccountsController() // ASCAccountsViewController()
+                        let primaryVC = ASCMultiAccountsViewController()
                         var viewControllers = splitVC.viewControllers
                         viewControllers.insert(primaryVC, at: 0)
                         splitVC.viewControllers = viewControllers

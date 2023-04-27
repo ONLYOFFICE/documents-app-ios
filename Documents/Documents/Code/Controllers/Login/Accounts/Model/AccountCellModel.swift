@@ -13,8 +13,8 @@ struct AccountCellModel {
         let nameFont: UIFont
         let emailFont: UIFont
 
-        init(nameFont: UIFont = UIFont.systemFont(ofSize: 15),
-             emailFont: UIFont = UIFont.systemFont(ofSize: 13))
+        init(nameFont: UIFont = UIFont.preferredFont(forTextStyle: .body),
+             emailFont: UIFont = UIFont.preferredFont(forTextStyle: .footnote))
         {
             self.nameFont = nameFont
             self.emailFont = emailFont
@@ -26,14 +26,26 @@ struct AccountCellModel {
     let name: String
     let email: String
     let isActiveUser: Bool
+    let showProfileCallback: () -> Void
+    let selectCallback: () -> Void
     let deleteCallback: () -> Void
 
-    init(style: Style = .init(), avatarUrl: URL?, name: String, email: String, isActiveUser: Bool, deleteCallback: @escaping () -> Void) {
+    init(style: Style = .init(),
+         avatarUrl: URL?,
+         name: String,
+         email: String,
+         isActiveUser: Bool,
+         showProfileCallback: @escaping () -> Void,
+         selectCallback: @escaping () -> Void,
+         deleteCallback: @escaping () -> Void)
+    {
         self.style = style
         self.avatarUrl = avatarUrl
         self.name = name
         self.email = email
         self.isActiveUser = isActiveUser
+        self.showProfileCallback = showProfileCallback
+        self.selectCallback = selectCallback
         self.deleteCallback = deleteCallback
     }
 }

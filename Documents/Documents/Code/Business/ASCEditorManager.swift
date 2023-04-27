@@ -737,11 +737,11 @@ class ASCEditorManager: NSObject {
             .compactMap { $0 as? ASCFile }
             .filter { folderFile -> Bool in
                 let fileExtension = folderFile.title.fileExtension().lowercased()
-                return (
+                return
                     (ASCConstants.FileExtensions.images.contains(fileExtension) ||
                         ASCConstants.FileExtensions.videos.contains(fileExtension)) &&
-                        folderFile.title != file.title
-                )
+                    folderFile.title != file.title
+
             } ?? [ASCFile]()
 
         for otherMedia in otherMedias {

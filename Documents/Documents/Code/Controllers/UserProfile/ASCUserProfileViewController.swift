@@ -251,7 +251,8 @@ class ASCUserProfileViewController: UITableViewController {
         let title = NSLocalizedString("Terminate account", comment: "")
         let message = String(format: NSLocalizedString("Send the profile deletion instructions to the email address %@?", comment: ""), email)
         let sendAlertAction = UIAlertAction(title: NSLocalizedString("Send", comment: ""),
-                                            style: .default) { _ in
+                                            style: .default)
+        { _ in
             let hud = MBProgressHUD.showTopMost()
             hud?.label.text = NSLocalizedString("Sending", comment: "")
 

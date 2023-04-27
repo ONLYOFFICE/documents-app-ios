@@ -1598,7 +1598,7 @@ class ASCDocumentsViewController: ASCBaseTableViewController, UIGestureRecognize
     }
 
     private func isTrash(_ folder: ASCFolder?) -> Bool {
-        return (folder?.rootFolderType == .onlyofficeTrash || folder?.rootFolderType == .deviceTrash)
+        return folder?.rootFolderType == .onlyofficeTrash || folder?.rootFolderType == .deviceTrash
     }
 
     private func configureSwipeGesture() {

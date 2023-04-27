@@ -72,8 +72,6 @@ internal enum StoryboardScene {
 
     internal static let asc2FAViewController = SceneType<Documents.ASC2FAViewController>(storyboard: Self.self, identifier: "ASC2FAViewController")
 
-    internal static let ascAccountsViewController = SceneType<Documents.ASCAccountsViewController>(storyboard: Self.self, identifier: "ASCAccountsViewController")
-
     internal static let ascConnectPortalViewController = SceneType<Documents.ASCConnectPortalViewController>(storyboard: Self.self, identifier: "ASCConnectPortalViewController")
 
     internal static let ascCountryCodeViewController = SceneType<Documents.ASCCountryCodeViewController>(storyboard: Self.self, identifier: "ASCCountryCodeViewController")

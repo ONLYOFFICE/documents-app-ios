@@ -163,8 +163,6 @@
 		FC5F47861F04E7E000F045DD /* PasscodeLockView.xib in Resources */ = {isa = PBXBuildFile; fileRef = FC5F47881F04E7E000F045DD /* PasscodeLockView.xib */; };
 		FC60A6441E9F5FB2000598C2 /* ASCTransferViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC60A6431E9F5FB2000598C2 /* ASCTransferViewController.swift */; };
 		FC6106F71F9E28EE002A25C8 /* UPCarouselFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC6106F61F9E28EE002A25C8 /* UPCarouselFlowLayout.swift */; };
-		FC6106FA1F9E2ED6002A25C8 /* ASCAccountsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC6106F91F9E2ED6002A25C8 /* ASCAccountsViewController.swift */; };
-		FC6106FD1F9E30B9002A25C8 /* ASCAvatarCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC6106FC1F9E30B9002A25C8 /* ASCAvatarCollectionViewCell.swift */; };
 		FC64B2EB1EE56C5500920FDD /* ASCFacebookSignInController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC64B2E91EE56C5500920FDD /* ASCFacebookSignInController.swift */; };
 		FC64B2EC1EE56C5500920FDD /* ASCGoogleSignInController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC64B2EA1EE56C5500920FDD /* ASCGoogleSignInController.swift */; };
 		FC65B18021F9AF5300AD5114 /* ASCEntityItemProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC65B17F21F9AF5300AD5114 /* ASCEntityItemProvider.swift */; };
@@ -343,6 +341,11 @@
 		FCAE8B8D1E717B84004FC332 /* EventManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCAE8B8C1E717B84004FC332 /* EventManager.swift */; };
 		FCB1BEC11E8E4368004C7967 /* UIAlertController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCB1BEC01E8E4368004C7967 /* UIAlertController+Extension.swift */; };
 		FCB1BEC31E8E5E55004C7967 /* MBProgressHUD+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCB1BEC21E8E5E55004C7967 /* MBProgressHUD+Extension.swift */; };
+		FCB4CE7F29FAC88C009C1E2E /* ASCMultiAccountPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCB4CE7829FAC88A009C1E2E /* ASCMultiAccountPresenter.swift */; };
+		FCB4CE8029FAC88C009C1E2E /* AccountCellModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCB4CE7A29FAC88A009C1E2E /* AccountCellModel.swift */; };
+		FCB4CE8129FAC88C009C1E2E /* ASCMultiAccountScreenModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCB4CE7B29FAC88A009C1E2E /* ASCMultiAccountScreenModel.swift */; };
+		FCB4CE8329FAC88C009C1E2E /* ASCMultiAccountsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCB4CE7E29FAC88B009C1E2E /* ASCMultiAccountsViewController.swift */; };
+		FCB4CE8529FACBB2009C1E2E /* DetailImageStyleTabelViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCB4CE8429FACBB2009C1E2E /* DetailImageStyleTabelViewCell.swift */; };
 		FCB839661EB8948D0065EC25 /* ASCIntroPageController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCB839651EB8948D0065EC25 /* ASCIntroPageController.swift */; };
 		FCB8A39221C27EE000CF74FA /* ASCDeviceCategoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCB8A39121C27EE000CF74FA /* ASCDeviceCategoryViewController.swift */; };
 		FCB8A39521C2881100CF74FA /* ASCDeviceCategoryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCB8A39421C2881100CF74FA /* ASCDeviceCategoryCell.swift */; };
@@ -714,8 +717,6 @@
 		FC5F47901F04E7E900F045DD /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/PasscodeLockView.strings; sourceTree = "<group>"; };
 		FC60A6431E9F5FB2000598C2 /* ASCTransferViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASCTransferViewController.swift; sourceTree = "<group>"; };
 		FC6106F61F9E28EE002A25C8 /* UPCarouselFlowLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UPCarouselFlowLayout.swift; sourceTree = "<group>"; };
-		FC6106F91F9E2ED6002A25C8 /* ASCAccountsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCAccountsViewController.swift; sourceTree = "<group>"; };
-		FC6106FC1F9E30B9002A25C8 /* ASCAvatarCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCAvatarCollectionViewCell.swift; sourceTree = "<group>"; };
 		FC64B2E91EE56C5500920FDD /* ASCFacebookSignInController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASCFacebookSignInController.swift; sourceTree = "<group>"; };
 		FC64B2EA1EE56C5500920FDD /* ASCGoogleSignInController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASCGoogleSignInController.swift; sourceTree = "<group>"; };
 		FC65B17F21F9AF5300AD5114 /* ASCEntityItemProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCEntityItemProvider.swift; sourceTree = "<group>"; };
@@ -894,6 +895,11 @@
 		FCAE8B8C1E717B84004FC332 /* EventManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventManager.swift; sourceTree = "<group>"; };
 		FCB1BEC01E8E4368004C7967 /* UIAlertController+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIAlertController+Extension.swift"; sourceTree = "<group>"; };
 		FCB1BEC21E8E5E55004C7967 /* MBProgressHUD+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "MBProgressHUD+Extension.swift"; sourceTree = "<group>"; };
+		FCB4CE7829FAC88A009C1E2E /* ASCMultiAccountPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASCMultiAccountPresenter.swift; sourceTree = "<group>"; };
+		FCB4CE7A29FAC88A009C1E2E /* AccountCellModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccountCellModel.swift; sourceTree = "<group>"; };
+		FCB4CE7B29FAC88A009C1E2E /* ASCMultiAccountScreenModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASCMultiAccountScreenModel.swift; sourceTree = "<group>"; };
+		FCB4CE7E29FAC88B009C1E2E /* ASCMultiAccountsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASCMultiAccountsViewController.swift; sourceTree = "<group>"; };
+		FCB4CE8429FACBB2009C1E2E /* DetailImageStyleTabelViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailImageStyleTabelViewCell.swift; sourceTree = "<group>"; };
 		FCB839651EB8948D0065EC25 /* ASCIntroPageController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASCIntroPageController.swift; sourceTree = "<group>"; };
 		FCB8A39121C27EE000CF74FA /* ASCDeviceCategoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCDeviceCategoryViewController.swift; sourceTree = "<group>"; };
 		FCB8A39421C2881100CF74FA /* ASCDeviceCategoryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCDeviceCategoryCell.swift; sourceTree = "<group>"; };
@@ -1600,8 +1606,10 @@
 		FC6106F81F9E2948002A25C8 /* Accounts */ = {
 			isa = PBXGroup;
 			children = (
+				FCB4CE7929FAC88A009C1E2E /* Model */,
+				FCB4CE7729FAC88A009C1E2E /* Presenter */,
 				FC6106FB1F9E3091002A25C8 /* Views */,
-				FC6106F91F9E2ED6002A25C8 /* ASCAccountsViewController.swift */,
+				FCB4CE7E29FAC88B009C1E2E /* ASCMultiAccountsViewController.swift */,
 			);
 			path = Accounts;
 			sourceTree = "<group>";
@@ -1609,7 +1617,7 @@
 		FC6106FB1F9E3091002A25C8 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				FC6106FC1F9E30B9002A25C8 /* ASCAvatarCollectionViewCell.swift */,
+				FCB4CE8429FACBB2009C1E2E /* DetailImageStyleTabelViewCell.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -2217,6 +2225,23 @@
 				FCE2B41B2930CCA700E50429 /* ASCUser.swift */,
 			);
 			path = Models;
+			sourceTree = "<group>";
+		};
+		FCB4CE7729FAC88A009C1E2E /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+				FCB4CE7829FAC88A009C1E2E /* ASCMultiAccountPresenter.swift */,
+			);
+			path = Presenter;
+			sourceTree = "<group>";
+		};
+		FCB4CE7929FAC88A009C1E2E /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				FCB4CE7A29FAC88A009C1E2E /* AccountCellModel.swift */,
+				FCB4CE7B29FAC88A009C1E2E /* ASCMultiAccountScreenModel.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 		FCB8A39321C287E400CF74FA /* Views */ = {
@@ -3119,9 +3144,11 @@
 				FCEF9D251ED2C94300627BA5 /* PasscodeLockStateType.swift in Sources */,
 				FC239982267A2E0F00B82EAC /* ASCOneDriveFileProvider.swift in Sources */,
 				FC7DC86F285A2D3400E61C69 /* ASCFiltersCollectionViewModelBuilder.swift in Sources */,
+				FCB4CE8329FAC88C009C1E2E /* ASCMultiAccountsViewController.swift in Sources */,
 				FCC552B61EC3196B00F645EE /* ASCCountryCodeViewController.swift in Sources */,
 				FC7D992E2729942700410795 /* ASCSharingOprionsExternalLink.swift in Sources */,
 				FC28F2C41E8D131800A8F985 /* ASCCreateEntity.swift in Sources */,
+				FCB4CE8029FAC88C009C1E2E /* AccountCellModel.swift in Sources */,
 				FCECDDCA26430978006CD7B9 /* ASCPasswordRecoveryViewController.swift in Sources */,
 				FCAE114026A836EC0013B475 /* UIImage+Extension.swift in Sources */,
 				FC7D992A2729942700410795 /* ASCSwitchRowViewModel.swift in Sources */,
@@ -3190,7 +3217,6 @@
 				FCC552B41EC2F96600F645EE /* ASCPhoneNumberViewController.swift in Sources */,
 				FC7D9990272997FF00410795 /* UINavigationItem+Extensions.swift in Sources */,
 				69EBD4CA1EF2AB9D00D3C685 /* UINavigationController+Extension.swift in Sources */,
-				FC6106FA1F9E2ED6002A25C8 /* ASCAccountsViewController.swift in Sources */,
 				FC7CF5181EF3EFF300C0A64F /* Mappings.swift in Sources */,
 				FC7F71FE2994112B0004F274 /* ASCAccessToAddRightHoldersRoomChecker.swift in Sources */,
 				FC7DC873285A2D3400E61C69 /* ASCGroupTableViewDataModelItem.swift in Sources */,
@@ -3264,6 +3290,7 @@
 				FCECDDD426430A18006CD7B9 /* UIFont+Extensions.swift in Sources */,
 				FCC38BD422D37A2A00F500C3 /* UISplitViewController+Extensions.swift in Sources */,
 				FC67072C252DC4A600DFD268 /* ObservableChainingProxy.swift in Sources */,
+				FCB4CE8529FACBB2009C1E2E /* DetailImageStyleTabelViewCell.swift in Sources */,
 				FCA6946B2057ED9900ED8D8E /* Data+Extension.swift in Sources */,
 				FC09996F281921890063BB08 /* ASCOAuthCredential.swift in Sources */,
 				FC2B0CC8264146C100969DB9 /* OnlyofficeAuthRequest.swift in Sources */,
@@ -3289,6 +3316,7 @@
 				FC08F8751ECB399900988DDE /* ASCConnectStorageOAuth2ViewController.swift in Sources */,
 				FC7D99392729942700410795 /* ASCShareSettingsAPIWorker.swift in Sources */,
 				FC2B0CCF2642C6F400969DB9 /* NextcloudServerError.swift in Sources */,
+				FCB4CE7F29FAC88C009C1E2E /* ASCMultiAccountPresenter.swift in Sources */,
 				FC41D7FD2265B72E00A155C2 /* UIStoryboard+Extensions.swift in Sources */,
 				FC6852192683572600D830EC /* ASCOneDriveProvider.swift in Sources */,
 				FCEF9D1F1ED2C94300627BA5 /* EnterPasscodeState.swift in Sources */,
@@ -3361,6 +3389,7 @@
 				FCF6185F268E0A1A00CD8D84 /* ASCOnlyofficeAppBasedCategoriesProvider.swift in Sources */,
 				FCC64F6329191CE4004D9A47 /* InviteRigthHoldersByEmailsViewModel.swift in Sources */,
 				FC7D991D2729942700410795 /* ASCSharingAddRightHoldersRAMDataStore.swift in Sources */,
+				FCB4CE8129FAC88C009C1E2E /* ASCMultiAccountScreenModel.swift in Sources */,
 				FC7D99282729942700410795 /* ASCSharingRightHolder.swift in Sources */,
 				FC9E28BF2244E88C000D315E /* ASCDocumentsEmptyView.swift in Sources */,
 				8A79BCD62080DD5C00998DA7 /* ASConverterOptionsAlert.swift in Sources */,
@@ -3443,7 +3472,6 @@
 				FC7D994D272994BB00410795 /* AppDelegate+Helpers.swift in Sources */,
 				FC41FE6A28C789020049F20F /* ASCConnectStorageWebDavControllerConfiguration.swift in Sources */,
 				FCEF9D1D1ED2C94300627BA5 /* ChangePasscodeState.swift in Sources */,
-				FC6106FD1F9E30B9002A25C8 /* ASCAvatarCollectionViewCell.swift in Sources */,
 				FC6839A221B81B1D00251CEA /* ASCOwnCloudProvider.swift in Sources */,
 				FC67072A252DC4A600DFD268 /* OwningEventReference.swift in Sources */,
 				FC7D99372729942700410795 /* ASCSharingView.swift in Sources */,

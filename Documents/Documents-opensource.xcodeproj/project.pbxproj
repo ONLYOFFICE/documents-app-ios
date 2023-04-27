@@ -24,7 +24,6 @@
 		1D8CFC5E290FEF6200F71071 /* ASCSharingInviteRightHoldersTableViewDataSourceAndDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D8CFC5D290FEDCC00F71071 /* ASCSharingInviteRightHoldersTableViewDataSourceAndDelegate.swift */; };
 		1D939F0B291C0DF500221F75 /* ASCPaymentQuota.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D939F09291C0DF500221F75 /* ASCPaymentQuota.swift */; };
 		86E2AD2B387DF62F19D0CB36 /* Pods_Documents_opensource.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A7DBE3A94B4934AA87B956D4 /* Pods_Documents_opensource.framework */; };
-		F378023929D732B10020B453 /* ASCMultiAccountsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F378023829D732B10020B453 /* ASCMultiAccountsViewController.swift */; };
 		F378023D29D743AF0020B453 /* DetailImageStyleTabelViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F378023C29D743AF0020B453 /* DetailImageStyleTabelViewCell.swift */; };
 		F378024229DAE05B0020B453 /* ASCMultiAccountScreenModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F378024129DAE05B0020B453 /* ASCMultiAccountScreenModel.swift */; };
 		F378024429DAE3720020B453 /* AccountCellModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F378024329DAE3720020B453 /* AccountCellModel.swift */; };
@@ -154,7 +153,6 @@
 		FC7081112812E2260057FCD2 /* UINavigationController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69EBD4C91EF2AB9D00D3C685 /* UINavigationController+Extension.swift */; };
 		FC7081122812E2260057FCD2 /* ASCSharingAddRightHoldersRAMDataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DA5E665269DA2E8005F59E1 /* ASCSharingAddRightHoldersRAMDataStore.swift */; };
 		FC7081132812E2260057FCD2 /* ASCBaseSplitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCB8A39621C29D4900CF74FA /* ASCBaseSplitViewController.swift */; };
-		FC7081142812E2260057FCD2 /* ASCAccountsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC6106F91F9E2ED6002A25C8 /* ASCAccountsViewController.swift */; };
 		FC7081152812E2260057FCD2 /* ASCPasswordRecoveryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCECDDCD264309D7006CD7B9 /* ASCPasswordRecoveryViewController.swift */; };
 		FC7081162812E2260057FCD2 /* Mappings.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC7CF5141EF3EFF300C0A64F /* Mappings.swift */; };
 		FC7081172812E2260057FCD2 /* NextcloudApiClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC68524626837B7300D830EC /* NextcloudApiClient.swift */; };
@@ -354,7 +352,6 @@
 		FC7081ED2812E2260057FCD2 /* UILabel+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC707C3C25AC5691004CB85B /* UILabel+Extension.swift */; };
 		FC7081EE2812E2260057FCD2 /* ASCLoadedViewControllerFinderProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D1A2E312660FE6E00D0335B /* ASCLoadedViewControllerFinderProtocol.swift */; };
 		FC7081EF2812E2260057FCD2 /* ASCConnectStorageGoogleController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC7F786A236ACBB00026E260 /* ASCConnectStorageGoogleController.swift */; };
-		FC7081F12812E2260057FCD2 /* ASCAvatarCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC6106FC1F9E30B9002A25C8 /* ASCAvatarCollectionViewCell.swift */; };
 		FC7081F22812E2260057FCD2 /* ASCOwnCloudProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC6839A121B81B1D00251CEA /* ASCOwnCloudProvider.swift */; };
 		FC7081F32812E2260057FCD2 /* ASC2FAViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC99FAF0226460F2000F1464 /* ASC2FAViewController.swift */; };
 		FC7081F42812E2260057FCD2 /* ASCFileProviderType.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC41D80D2265DADC00A155C2 /* ASCFileProviderType.swift */; };
@@ -438,6 +435,7 @@
 		FC881E7929AB882A0006C202 /* ASCDocSpaceRoomsFiltersController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC881E7829AB882A0006C202 /* ASCDocSpaceRoomsFiltersController.swift */; };
 		FC8D71A42952F2DD005CA466 /* ASCDocSpaceFiltersController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC8D71A22952F2DD005CA466 /* ASCDocSpaceFiltersController.swift */; };
 		FCA464A029437DD200EC05C7 /* ASCDocumentOpenMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCA4649E29437DD200EC05C7 /* ASCDocumentOpenMode.swift */; };
+		FCB4CE7629FAC5E8009C1E2E /* ASCMultiAccountsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCB4CE7529FAC5E8009C1E2E /* ASCMultiAccountsViewController.swift */; };
 		FCC64FAD291A77D5004D9A47 /* OnlyofficeInviteItemRequestModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCC64FAB291A77D5004D9A47 /* OnlyofficeInviteItemRequestModel.swift */; };
 		FCEBA70728B362390009D50B /* ASCDocumentsViewController+Menu.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCEBA70528B362390009D50B /* ASCDocumentsViewController+Menu.swift */; };
 		FCEF258E2978190200522A3A /* WhatsNew.bundle in Resources */ = {isa = PBXBuildFile; fileRef = FCEF258D2978190200522A3A /* WhatsNew.bundle */; };
@@ -572,7 +570,6 @@
 		F33E473A27AD9BC200EFF6D9 /* ASCWebKitViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCWebKitViewController.swift; sourceTree = "<group>"; };
 		F377689427CFCF2D0044EDA6 /* ASCConnectStorageNextCloudServerController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCConnectStorageNextCloudServerController.swift; sourceTree = "<group>"; };
 		F377689727D273B20044EDA6 /* ASCNextCloudConnectStorageDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCNextCloudConnectStorageDelegate.swift; sourceTree = "<group>"; };
-		F378023829D732B10020B453 /* ASCMultiAccountsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCMultiAccountsViewController.swift; sourceTree = "<group>"; };
 		F378023C29D743AF0020B453 /* DetailImageStyleTabelViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailImageStyleTabelViewCell.swift; sourceTree = "<group>"; };
 		F378024129DAE05B0020B453 /* ASCMultiAccountScreenModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCMultiAccountScreenModel.swift; sourceTree = "<group>"; };
 		F378024329DAE3720020B453 /* AccountCellModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountCellModel.swift; sourceTree = "<group>"; };
@@ -719,8 +716,6 @@
 		FC5F47901F04E7E900F045DD /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/PasscodeLockView.strings; sourceTree = "<group>"; };
 		FC60A6431E9F5FB2000598C2 /* ASCTransferViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASCTransferViewController.swift; sourceTree = "<group>"; };
 		FC6106F61F9E28EE002A25C8 /* UPCarouselFlowLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UPCarouselFlowLayout.swift; sourceTree = "<group>"; };
-		FC6106F91F9E2ED6002A25C8 /* ASCAccountsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCAccountsViewController.swift; sourceTree = "<group>"; };
-		FC6106FC1F9E30B9002A25C8 /* ASCAvatarCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCAvatarCollectionViewCell.swift; sourceTree = "<group>"; };
 		FC6396CB29548BA200B6816A /* Documents-opensource.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = "Documents-opensource.xcconfig"; sourceTree = "<group>"; };
 		FC64B2E91EE56C5500920FDD /* ASCFacebookSignInController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASCFacebookSignInController.swift; sourceTree = "<group>"; };
 		FC64B2EA1EE56C5500920FDD /* ASCGoogleSignInController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASCGoogleSignInController.swift; sourceTree = "<group>"; };
@@ -860,6 +855,7 @@
 		FCAE8B8C1E717B84004FC332 /* EventManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventManager.swift; sourceTree = "<group>"; };
 		FCB1BEC01E8E4368004C7967 /* UIAlertController+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIAlertController+Extension.swift"; sourceTree = "<group>"; };
 		FCB1BEC21E8E5E55004C7967 /* MBProgressHUD+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "MBProgressHUD+Extension.swift"; sourceTree = "<group>"; };
+		FCB4CE7529FAC5E8009C1E2E /* ASCMultiAccountsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASCMultiAccountsViewController.swift; sourceTree = "<group>"; };
 		FCB839651EB8948D0065EC25 /* ASCIntroPageController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASCIntroPageController.swift; sourceTree = "<group>"; };
 		FCB844542768B7B000A3F918 /* pt-BR.xliff */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = "pt-BR.xliff"; sourceTree = "<group>"; };
 		FCB844552768B7B000A3F918 /* ja.xliff */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = ja.xliff; sourceTree = "<group>"; };
@@ -2150,7 +2146,7 @@
 				F378023E29DA90580020B453 /* Model */,
 				F378024029DA90710020B453 /* Presenter */,
 				FC6106FB1F9E3091002A25C8 /* Views */,
-				FC6106F91F9E2ED6002A25C8 /* ASCAccountsViewController.swift */,
+				FCB4CE7529FAC5E8009C1E2E /* ASCMultiAccountsViewController.swift */,
 			);
 			path = Accounts;
 			sourceTree = "<group>";
@@ -2159,8 +2155,6 @@
 			isa = PBXGroup;
 			children = (
 				F378023C29D743AF0020B453 /* DetailImageStyleTabelViewCell.swift */,
-				FC6106FC1F9E30B9002A25C8 /* ASCAvatarCollectionViewCell.swift */,
-				F378023829D732B10020B453 /* ASCMultiAccountsViewController.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -2873,7 +2867,7 @@
 			);
 			mainGroup = FCFDAA841E48A10C007A240C;
 			packageReferences = (
-				FC0BBF17296C25B80060F49E /* XCRemoteSwiftPackageReference "editors-ios-sp.git" */,
+				FC0BBF17296C25B80060F49E /* XCRemoteSwiftPackageReference "editors-ios-sp" */,
 				FC6A756E29915CE10056262F /* XCRemoteSwiftPackageReference "Pulse" */,
 			);
 			productRefGroup = FCFDAA8E1E48A10C007A240C /* Products */;
@@ -3157,9 +3151,9 @@
 				FC7080E12812E2260057FCD2 /* ASCAnalytics.swift in Sources */,
 				FC7080E22812E2260057FCD2 /* ASCIntroViewController.swift in Sources */,
 				FC7080E32812E2260057FCD2 /* UITableViewCell+Extensions.swift in Sources */,
-				F378023929D732B10020B453 /* ASCMultiAccountsViewController.swift in Sources */,
 				FC7080E42812E2260057FCD2 /* ASCAccessRowViewModel.swift in Sources */,
 				FC7080E62812E2260057FCD2 /* ASCBaseNavigationController.swift in Sources */,
+				FCB4CE7629FAC5E8009C1E2E /* ASCMultiAccountsViewController.swift in Sources */,
 				FC7080E72812E2260057FCD2 /* ASCOnlyofficeUserDefaultsCacheCategoriesProvider.swift in Sources */,
 				FC7080E82812E2260057FCD2 /* OnlyofficeAuthRequest.swift in Sources */,
 				FC7080E92812E2260057FCD2 /* ASCCloudsEmptyViewController.swift in Sources */,
@@ -3219,7 +3213,6 @@
 				FC142A3B289819B400EDE7CE /* ASCFile.swift in Sources */,
 				FC7081122812E2260057FCD2 /* ASCSharingAddRightHoldersRAMDataStore.swift in Sources */,
 				FC7081132812E2260057FCD2 /* ASCBaseSplitViewController.swift in Sources */,
-				FC7081142812E2260057FCD2 /* ASCAccountsViewController.swift in Sources */,
 				FC4DC3E6282BFB2F001060D6 /* ASCOAuthCredential.swift in Sources */,
 				FC142A6928981A1F00EDE7CE /* ASCAboutViewController.swift in Sources */,
 				FC7081152812E2260057FCD2 /* ASCPasswordRecoveryViewController.swift in Sources */,
@@ -3469,7 +3462,6 @@
 				FC7081ED2812E2260057FCD2 /* UILabel+Extension.swift in Sources */,
 				FC7081EE2812E2260057FCD2 /* ASCLoadedViewControllerFinderProtocol.swift in Sources */,
 				FC7081EF2812E2260057FCD2 /* ASCConnectStorageGoogleController.swift in Sources */,
-				FC7081F12812E2260057FCD2 /* ASCAvatarCollectionViewCell.swift in Sources */,
 				FC142A8C28981B6000EDE7CE /* ASCDropboxSDKWrapper.swift in Sources */,
 				FC7081F22812E2260057FCD2 /* ASCOwnCloudProvider.swift in Sources */,
 				FC142A6D28981A1F00EDE7CE /* ASCPasscodeLockViewController.swift in Sources */,
@@ -3993,7 +3985,7 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		FC0BBF17296C25B80060F49E /* XCRemoteSwiftPackageReference "editors-ios-sp.git" */ = {
+		FC0BBF17296C25B80060F49E /* XCRemoteSwiftPackageReference "editors-ios-sp" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/ONLYOFFICE/editors-ios-sp.git";
 			requirement = {
@@ -4014,22 +4006,22 @@
 /* Begin XCSwiftPackageProductDependency section */
 		FC0BBF18296C25B80060F49E /* DocumentConverter */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = FC0BBF17296C25B80060F49E /* XCRemoteSwiftPackageReference "editors-ios-sp.git" */;
+			package = FC0BBF17296C25B80060F49E /* XCRemoteSwiftPackageReference "editors-ios-sp" */;
 			productName = DocumentConverter;
 		};
 		FC0BBF1A296C25B80060F49E /* DocumentEditor */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = FC0BBF17296C25B80060F49E /* XCRemoteSwiftPackageReference "editors-ios-sp.git" */;
+			package = FC0BBF17296C25B80060F49E /* XCRemoteSwiftPackageReference "editors-ios-sp" */;
 			productName = DocumentEditor;
 		};
 		FC0BBF1C296C25B80060F49E /* PresentationEditor */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = FC0BBF17296C25B80060F49E /* XCRemoteSwiftPackageReference "editors-ios-sp.git" */;
+			package = FC0BBF17296C25B80060F49E /* XCRemoteSwiftPackageReference "editors-ios-sp" */;
 			productName = PresentationEditor;
 		};
 		FC0BBF1E296C25B80060F49E /* SpreadsheetEditor */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = FC0BBF17296C25B80060F49E /* XCRemoteSwiftPackageReference "editors-ios-sp.git" */;
+			package = FC0BBF17296C25B80060F49E /* XCRemoteSwiftPackageReference "editors-ios-sp" */;
 			productName = SpreadsheetEditor;
 		};
 		FC6A756F29915CE10056262F /* Pulse */ = {

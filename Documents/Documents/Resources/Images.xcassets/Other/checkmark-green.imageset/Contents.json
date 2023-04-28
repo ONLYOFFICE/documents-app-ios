@@ -2,11 +2,11 @@
     "images" : [
         {
             "idiom" : "universal",
-            "filename" : "nav-sort-light.pdf"
+            "filename" : "checkmark-green-light.pdf"
         },
         {
             "idiom" : "universal",
-            "filename" : "nav-sort-dark.pdf",
+            "filename" : "checkmark-green-dark.pdf",
             "appearances" : [
                 {
                     "appearance" : "luminosity",

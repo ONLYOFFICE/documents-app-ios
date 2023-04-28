@@ -32,7 +32,7 @@ class DetailImageStyleTabelViewCell: UITableViewCell {
 
     let selectedMark: UIImageView = {
         let image = UIImageView()
-        image.image = Asset.Images.select.image
+        image.image = Asset.Images.checkmarkGreen.image
         return image
     }()
 

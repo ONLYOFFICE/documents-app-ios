@@ -507,19 +507,8 @@ extension ASCOnlyofficeCategoriesViewController {
 
     override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         switch groupedCategroies {
-        case .notGroupd:
+        case .notGroupd, .titledGroups:
             return .leastNonzeroMagnitude
-        case .titledGroups:
-            return 38
-        }
-    }
-
-    override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        switch groupedCategroies {
-        case .notGroupd:
-            return nil
-        case let .titledGroups(groups):
-            return groups[section].title
         }
     }
 

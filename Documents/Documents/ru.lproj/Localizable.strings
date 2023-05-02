@@ -29,6 +29,12 @@
 "<p>You must have a paid version of the player to use this service.</p><p>If you have activated double authentication, please generate a CDM application from the Infomaniak manager. <a href=\"https://www.infomaniak.com/en/support/faq/1940/enable-two-step-verification\">More...</a></p>" = "<p>Чтобы воспользоваться этим сервисом, необходимо приобрести платную версию плеера.</p><p>Если вы активировали двухфакторную аутентификацию, пожалуйста, установите приложение CDM из учетной записи Infomaniak (Менеджер).<a href=\"https://www.infomaniak.com/en/support/faq/1940/enable-two-step-verification\">Подробнее...</a></p>";
 
 /* No comment provided by engineer. */
+"Сould not download file." = "Не удалось скачать файл.";
+
+/* No comment provided by engineer. */
+"Сould not upload file." = "Не удалось загрузить файл.";
+
+/* No comment provided by engineer. */
 "A file with a similar name already exists in the document directory on the device." = "Файл с таким именем уже существует в папке с документами на этом устройстве.";
 
 /* No comment provided by engineer. */
@@ -76,6 +82,12 @@
 /* No comment provided by engineer. */
 "Account name is not valid" = "Имя учетной записи некорректное";
 
+/* No comment provided by engineer. */
+"Accounts" = "Учетные записи";
+
+/* No comment provided by engineer. */
+"Add account" = "Добавить аккаунт";
+
 /* Sharing settings add notification message */
 "Add message" = "Добавить сообщение";
 
@@ -87,6 +99,9 @@
 
 /* No comment provided by engineer. */
 "Address is empty" = "Адрес не заполнен";
+
+/* No comment provided by engineer. */
+"Admin" = "Администратор";
 
 /* No comment provided by engineer. */
 "All" = "Все";
@@ -125,7 +140,7 @@
 "Archiving failed." = "Не удалось выполнить архивирование.";
 
 /* No comment provided by engineer. */
-"Are you sure you want to delete the account %@ from this device?" = "Вы действительно хотите удалить аккаунт %@ с этого устройства?";
+"Are you sure you want to delete the account  %@ from this devce?" = "Вы уверены, что хотите удалить учетную запись %@ с этого устройства?";
 
 /* No comment provided by engineer. */
 "Are you sure you want to leave this account?" = "Вы уверены, что хотите выйти из этой учетной записи?";
@@ -213,6 +228,9 @@
 
 /* No comment provided by engineer. */
 "Collaboration" = "Совместная работа";
+
+/* Share status */
+"Collaborator" = "Совместная работа";
 
 /* Share status */
 "Comment" = "Комментирование";
@@ -388,14 +406,17 @@
 /* No comment provided by engineer. */
 "Delete %lu Folder and %lu File" = "Удалить %1$lu папок и %2$lu файлов";
 
-/* No comment provided by engineer. */
-"Delete account" = "Удалить аккаунт";
-
 /* Button title */
 "Delete File" = "Удалить файл";
 
 /* No comment provided by engineer. */
 "Delete Folder" = "Удалить папку";
+
+/* No comment provided by engineer. */
+"Delete forever" = "Удалить навсегда";
+
+/* No comment provided by engineer. */
+"Delete from device" = "Удалить с устройства";
 
 /* Caption of the processing */
 "Deleting" = "Удаление";
@@ -717,7 +738,8 @@
 /* Data units */
 "Mb" = "Мб";
 
-/* If current user name is not set */
+/* Author or member of a document
+   If current user name is not set */
 "Me" = "Я";
 
 /* No comment provided by engineer. */
@@ -995,6 +1017,9 @@
 /* Caption of the processing */
 "Processing" = "Обработка";
 
+/* No comment provided by engineer. */
+"Profile" = "Профиль";
+
 /* Category title */
 "Project Documents" = "В проектах";
 
@@ -1151,6 +1176,9 @@
 
 /* No comment provided by engineer. */
 "Show notifications" = "Показать уведомления";
+
+/* No comment provided by engineer. */
+"Sign in" = "Вход";
 
 /* No comment provided by engineer. */
 "Single Sign-on" = "Единая точка входа";
@@ -1414,6 +1442,9 @@
 "Use Touch ID" = "Использовать Touch ID";
 
 /* No comment provided by engineer. */
+"User" = "Пользователь";
+
+/* No comment provided by engineer. */
 "User authentication failed" = "Не удалось выполнить проверку подлинности пользователя";
 
 /* No comment provided by engineer. */
@@ -1436,9 +1467,6 @@
 
 /* No comment provided by engineer. */
 "Version" = "Версия";
-
-/* No comment provided by engineer. */
-"View-Only" = "Только на просмотр";
 
 /* No comment provided by engineer. */
 "Warning" = "Предупреждение";
@@ -1496,10 +1524,4 @@
 
 /* Data units */
 "Zero bytes" = "Ноль байт";
-
-/* No comment provided by engineer. */
-"Сould not download file." = "Не удалось скачать файл.";
-
-/* No comment provided by engineer. */
-"Сould not upload file." = "Не удалось загрузить файл.";
 

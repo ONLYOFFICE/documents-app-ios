@@ -37,7 +37,7 @@ class ASCDocSpaceFiltersController: ASCFiltersControllerProtocol {
             State(meFilter: meFilter,
                   memberFilter: memberFilter,
                   roomTypeFilters: roomTypeFilters,
-                  thirdPartyResourceFilters: thirdPartyResourceFilters,
+                  thirdPartyResourceFilters: [],
                   itemsCount: count)
         }
 
@@ -46,10 +46,7 @@ class ASCDocSpaceFiltersController: ASCFiltersControllerProtocol {
 
         private static let roomTypeFilters = [
             ASCDocumentsFilterModel(filterName: FiltersName.customRoom.localizedString(), isSelected: false, filterType: .customRoom),
-            ASCDocumentsFilterModel(filterName: FiltersName.fillingFormRoom.localizedString(), isSelected: false, filterType: .fillingFormRoom),
             ASCDocumentsFilterModel(filterName: FiltersName.collaborationRoom.localizedString(), isSelected: false, filterType: .collaborationRoom),
-            ASCDocumentsFilterModel(filterName: FiltersName.reviewRoom.localizedString(), isSelected: false, filterType: .reviewRoom),
-            ASCDocumentsFilterModel(filterName: FiltersName.viewOnlyRoom.localizedString(), isSelected: false, filterType: .viewOnlyRoom),
         ]
 
         private static let docTypeFilters = [

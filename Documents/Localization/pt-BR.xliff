@@ -2,7 +2,7 @@
 <xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="1.2" xsi:schemaLocation="urn:oasis:names:tc:xliff:document:1.2 http://docs.oasis-open.org/xliff/v1.2/os/xliff-core-1.2-strict.xsd">
   <file original="Documents/Base.lproj/ConnectStorage.storyboard" source-language="en" target-language="pt-BR" datatype="plaintext">
     <header>
-      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="14.2" build-num="14C18"/>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="14.3" build-num="14E222b"/>
     </header>
     <body>
       <trans-unit id="1hg-GO-WNq.text" xml:space="preserve">
@@ -74,7 +74,7 @@
   </file>
   <file original="Documents/Base.lproj/CreatePortal.storyboard" source-language="en" target-language="pt-BR" datatype="plaintext">
     <header>
-      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="14.2" build-num="14C18"/>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="14.3" build-num="14E222b"/>
     </header>
     <body>
       <trans-unit id="BMv-HP-hD2.normalTitle" xml:space="preserve">
@@ -162,7 +162,7 @@ comece a usar seu office</target>
   </file>
   <file original="Documents/Base.lproj/Intro.storyboard" source-language="en" target-language="pt-BR" datatype="plaintext">
     <header>
-      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="14.2" build-num="14C18"/>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="14.3" build-num="14E222b"/>
     </header>
     <body>
       <trans-unit id="De8-tD-APT.text" xml:space="preserve">
@@ -184,7 +184,7 @@ comece a usar seu office</target>
   </file>
   <file original="Documents/Base.lproj/Localizable.stringsdict" source-language="en" target-language="pt-BR" datatype="plaintext">
     <header>
-      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="14.2" build-num="14C18"/>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="14.3" build-num="14E222b"/>
     </header>
     <body>
       <trans-unit id="/%d selected:dict/NSStringLocalizedFormatKey:dict/:string" xml:space="preserve">
@@ -331,7 +331,7 @@ comece a usar seu office</target>
   </file>
   <file original="Documents/Base.lproj/Login.storyboard" source-language="en" target-language="pt-BR" datatype="plaintext">
     <header>
-      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="14.2" build-num="14C18"/>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="14.3" build-num="14E222b"/>
     </header>
     <body>
       <trans-unit id="0X2-Xg-z5B.text" xml:space="preserve">
@@ -374,11 +374,6 @@ comece a usar seu office</target>
         <target>Esqueceu?</target>
         <note>Class = "UIButton"; normalTitle = "Forgot?"; ObjectID = "78r-Ca-NKv";</note>
       </trans-unit>
-      <trans-unit id="AkN-p0-Mzy.text" xml:space="preserve">
-        <source>Account</source>
-        <target>Conta</target>
-        <note>Class = "UILabel"; text = "Account"; ObjectID = "AkN-p0-Mzy";</note>
-      </trans-unit>
       <trans-unit id="AqB-m0-2UQ.text" xml:space="preserve">
         <source>If a user with the email exists, the password change instruction has been sent to this email address.</source>
         <target>Caso exista um usuário com o e-mail, as instruções de alteração de senha foram enviadas para este endereço de e-mail.</target>
@@ -408,11 +403,6 @@ Authentication</source>
 dois fatores</target>
         <note>Class = "UILabel"; text = "Two-Factor\nAuthentication"; ObjectID = "Eb4-3w-0Jf";</note>
       </trans-unit>
-      <trans-unit id="Fso-pj-304.text" xml:space="preserve">
-        <source>Address</source>
-        <target>Endereço</target>
-        <note>Class = "UILabel"; text = "Address"; ObjectID = "Fso-pj-304";</note>
-      </trans-unit>
       <trans-unit id="G99-FE-uk4.normalTitle" xml:space="preserve">
         <source>Create cloud</source>
         <target>Criar nuvem</target>
@@ -422,11 +412,6 @@ dois fatores</target>
         <source>Connect to your ONLYOFFICE cloud to store files online and collaborate on documents in real time</source>
         <target>Conecte-se à sua nuvem do ONLYOFFICE para armazenar arquivos online e colaborar em documentos em tempo real</target>
         <note>Class = "UILabel"; text = "Connect to your ONLYOFFICE cloud to store files online and collaborate on documents in real time"; ObjectID = "GFx-Ry-9GC";</note>
-      </trans-unit>
-      <trans-unit id="Gkv-tP-6EM.text" xml:space="preserve">
-        <source>Select an account to sign in</source>
-        <target>Selecione uma conta para fazer login</target>
-        <note>Class = "UILabel"; text = "Select an account to sign in"; ObjectID = "Gkv-tP-6EM";</note>
       </trans-unit>
       <trans-unit id="K5M-Of-QAk.text" xml:space="preserve">
         <source>Copy the key and paste it to the Google Authenticator application</source>
@@ -533,20 +518,10 @@ dois fatores</target>
         <target>Enviar</target>
         <note>Class = "UIButton"; normalTitle = "Send"; ObjectID = "ePY-rM-AOE";</note>
       </trans-unit>
-      <trans-unit id="gzc-cW-NPT.title" xml:space="preserve">
-        <source>Accounts</source>
-        <target>Contas</target>
-        <note>Class = "UINavigationItem"; title = "Accounts"; ObjectID = "gzc-cW-NPT";</note>
-      </trans-unit>
       <trans-unit id="hRN-W6-nA0.title" xml:space="preserve">
         <source>SSO Login</source>
         <target>Login SSO</target>
         <note>Class = "UINavigationItem"; title = "SSO Login"; ObjectID = "hRN-W6-nA0";</note>
-      </trans-unit>
-      <trans-unit id="peP-Hz-Lai.normalTitle" xml:space="preserve">
-        <source>Select another account</source>
-        <target>Selecionar outra conta</target>
-        <note>Class = "UIButton"; normalTitle = "Select another account"; ObjectID = "peP-Hz-Lai";</note>
       </trans-unit>
       <trans-unit id="qEs-UQ-wWd.placeholder" xml:space="preserve">
         <source>Code</source>
@@ -593,16 +568,11 @@ dois fatores</target>
         <target>+</target>
         <note>Class = "UITextField"; text = "+"; ObjectID = "x6G-qW-5Pq";</note>
       </trans-unit>
-      <trans-unit id="yjY-PY-41s.normalTitle" xml:space="preserve">
-        <source>Continue</source>
-        <target>Continuar</target>
-        <note>Class = "UIButton"; normalTitle = "Continue"; ObjectID = "yjY-PY-41s";</note>
-      </trans-unit>
     </body>
   </file>
   <file original="Documents/Base.lproj/Main.storyboard" source-language="en" target-language="pt-BR" datatype="plaintext">
     <header>
-      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="14.2" build-num="14C18"/>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="14.3" build-num="14E222b"/>
     </header>
     <body>
       <trans-unit id="0Hf-aP-smp.text" xml:space="preserve">
@@ -754,7 +724,7 @@ dois fatores</target>
   </file>
   <file original="Documents/Base.lproj/Settings.storyboard" source-language="en" target-language="pt-BR" datatype="plaintext">
     <header>
-      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="14.2" build-num="14C18"/>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="14.3" build-num="14E222b"/>
     </header>
     <body>
       <trans-unit id="0DJ-uV-iju.title" xml:space="preserve">
@@ -835,7 +805,7 @@ Observação: se você se esquecer do código de acesso, será necessário exclu
   </file>
   <file original="Documents/Base.lproj/Sort.storyboard" source-language="en" target-language="pt-BR" datatype="plaintext">
     <header>
-      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="14.2" build-num="14C18"/>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="14.3" build-num="14E222b"/>
     </header>
     <body>
       <trans-unit id="HjM-la-pDc.text" xml:space="preserve">
@@ -862,7 +832,7 @@ Observação: se você se esquecer do código de acesso, será necessário exclu
   </file>
   <file original="Documents/Base.lproj/Transfer.storyboard" source-language="en" target-language="pt-BR" datatype="plaintext">
     <header>
-      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="14.2" build-num="14C18"/>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="14.3" build-num="14E222b"/>
     </header>
     <body>
       <trans-unit id="9YY-0H-nww.text" xml:space="preserve">
@@ -899,13 +869,13 @@ Observação: se você se esquecer do código de acesso, será necessário exclu
   </file>
   <file original="Documents/Base.lproj/UserProfile.storyboard" source-language="en" target-language="pt-BR" datatype="plaintext">
     <header>
-      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="14.2" build-num="14C18"/>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="14.3" build-num="14E222b"/>
     </header>
     <body>
       <trans-unit id="1S2-Q7-5vL.text" xml:space="preserve">
-        <source>Logout</source>
+        <source>Log out</source>
         <target>Sair</target>
-        <note>Class = "UILabel"; text = "Logout"; ObjectID = "1S2-Q7-5vL";</note>
+        <note>Class = "UILabel"; text = "Log out"; ObjectID = "1S2-Q7-5vL";</note>
       </trans-unit>
       <trans-unit id="9Yi-42-22H.text" xml:space="preserve">
         <source>-</source>
@@ -913,19 +883,23 @@ Observação: se você se esquecer do código de acesso, será necessário exclu
         <note>Class = "UILabel"; text = "-"; ObjectID = "9Yi-42-22H"; Note = "Do not translate";</note>
       </trans-unit>
       <trans-unit id="708-fR-i2H.text" xml:space="preserve">
-        <source>Delete account</source>
+        <source>Delete forever</source>
         <target>Excluir conta</target>
-        <note>Class = "UILabel"; text = "Delete account"; ObjectID = "708-fR-i2H";</note>
+        <note>Class = "UILabel"; text = "Delete forever"; ObjectID = "708-fR-i2H";</note>
       </trans-unit>
       <trans-unit id="BXA-IE-d8z.title" xml:space="preserve">
-        <source>Account</source>
+        <source>Profile</source>
         <target>Conta</target>
-        <note>Class = "UINavigationItem"; title = "Account"; ObjectID = "BXA-IE-d8z";</note>
+        <note>Class = "UINavigationItem"; title = "Profile"; ObjectID = "BXA-IE-d8z";</note>
       </trans-unit>
       <trans-unit id="HaW-jI-GJW.text" xml:space="preserve">
         <source>Email</source>
         <target>Email</target>
         <note>Class = "UILabel"; text = "Email"; ObjectID = "HaW-jI-GJW";</note>
+      </trans-unit>
+      <trans-unit id="JOt-DG-crS.text" xml:space="preserve">
+        <source>-</source>
+        <note>Class = "UILabel"; text = "-"; ObjectID = "JOt-DG-crS"; Note = "Do not translate";</note>
       </trans-unit>
       <trans-unit id="KZx-zY-eVz.text" xml:space="preserve">
         <source>Portal</source>
@@ -942,11 +916,15 @@ Observação: se você se esquecer do código de acesso, será necessário exclu
         <target>-</target>
         <note>Class = "UILabel"; text = "-"; ObjectID = "osE-70-cXT"; Note = "Do not translate";</note>
       </trans-unit>
+      <trans-unit id="vyA-jq-VvH.text" xml:space="preserve">
+        <source>Type</source>
+        <note>Class = "UILabel"; text = "Type"; ObjectID = "vyA-jq-VvH";</note>
+      </trans-unit>
     </body>
   </file>
   <file original="Documents/Code/Controllers/CreateEntity/Views/Base.lproj/ASCCreateEntityView.xib" source-language="en" target-language="pt-BR" datatype="plaintext">
     <header>
-      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="14.2" build-num="14C18"/>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="14.3" build-num="14E222b"/>
     </header>
     <body>
       <trans-unit id="0TH-k4-z5u.normalTitle" xml:space="preserve">
@@ -978,7 +956,7 @@ Observação: se você se esquecer do código de acesso, será necessário exclu
   </file>
   <file original="Documents/Code/Vendor/PasscodeLock/Base.lproj/PasscodeLock.strings" source-language="en" target-language="pt-BR" datatype="plaintext">
     <header>
-      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="14.2" build-num="14C18"/>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="14.3" build-num="14E222b"/>
     </header>
     <body>
       <trans-unit id="PasscodeLockChangeDescription" xml:space="preserve">
@@ -1050,7 +1028,7 @@ Observação: se você se esquecer do código de acesso, será necessário exclu
   </file>
   <file original="Documents/Code/Vendor/PasscodeLock/Views/Base.lproj/PasscodeLockView.xib" source-language="en" target-language="pt-BR" datatype="plaintext">
     <header>
-      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="14.2" build-num="14C18"/>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="14.3" build-num="14E222b"/>
     </header>
     <body>
       <trans-unit id="0CR-0R-0Nr.normalTitle" xml:space="preserve">
@@ -1130,66 +1108,60 @@ Observação: se você se esquecer do código de acesso, será necessário exclu
       </trans-unit>
     </body>
   </file>
-  <file original="Documents/en.lproj/Documents-InfoPlist.strings" source-language="en" target-language="pt-BR" datatype="plaintext">
+  <file original="Documents/en.lproj/Documents.opensource-InfoPlist.strings" datatype="plaintext" source-language="en" target-language="pt-BR">
     <header>
-      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="14.2" build-num="14C18"/>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="14.3" build-num="14E222b"/>
     </header>
     <body>
       <trans-unit id="CFBundleName" xml:space="preserve">
         <source>Documents</source>
-        <target>Documentos</target>
         <note>Bundle name</note>
       </trans-unit>
       <trans-unit id="NSCameraUsageDescription" xml:space="preserve">
         <source>This app requires access to the camera, so that you can take photo and upload it in the app.</source>
-        <target>Este aplicativo requer acesso à câmera, para que você possa tirar fotos e carregá-la no aplicativo.</target>
         <note>Privacy - Camera Usage Description</note>
       </trans-unit>
       <trans-unit id="NSFaceIDUsageDescription" xml:space="preserve">
         <source>This app requires Face ID permission to authenticate using Face recognition.</source>
-        <target>Este aplicativo requer permissão de identificação facial para autenticar usando o reconhecimento facial.</target>
         <note>Privacy - Face ID Usage Description</note>
+      </trans-unit>
+      <trans-unit id="NSLocalNetworkUsageDescription" xml:space="preserve">
+        <source>Network access required</source>
+        <note>Privacy - Local Network Usage Description</note>
       </trans-unit>
       <trans-unit id="NSPhotoLibraryAddUsageDescription" xml:space="preserve">
         <source>This app requires access to the photo library, so that you can upload your photos in the app.</source>
-        <target>Este aplicativo requer acesso à biblioteca de fotos, para que você possa carregar suas fotos no aplicativo.</target>
         <note>Privacy - Photo Library Additions Usage Description</note>
       </trans-unit>
       <trans-unit id="NSPhotoLibraryUsageDescription" xml:space="preserve">
         <source>This app requires access to the photo library, so that you can upload your photos in the app.</source>
-        <target>Este aplicativo requer acesso à biblioteca de fotos, para que você possa carregar suas fotos no aplicativo.</target>
         <note>Privacy - Photo Library Usage Description</note>
       </trans-unit>
       <trans-unit id="New Document" xml:space="preserve">
         <source>New Document</source>
-        <target>Novo Documento</target>
         <note/>
       </trans-unit>
       <trans-unit id="New Presentation" xml:space="preserve">
         <source>New Presentation</source>
-        <target>Nova apresentação</target>
         <note/>
       </trans-unit>
       <trans-unit id="New Spreadsheet" xml:space="preserve">
         <source>New Spreadsheet</source>
-        <target>Nova planilha</target>
         <note/>
       </trans-unit>
       <trans-unit id="ONLYOFFICE fillable form (.oform)" xml:space="preserve">
         <source>ONLYOFFICE fillable form (.oform)</source>
-        <target>Formulário preenchível do ONLYOFFICE (.oform)</target>
         <note/>
       </trans-unit>
       <trans-unit id="ONLYOFFICE form template (.docxf)" xml:space="preserve">
         <source>ONLYOFFICE form template (.docxf)</source>
-        <target>Modelo de formulário do ONLYOFFICE (.docxf)</target>
         <note/>
       </trans-unit>
     </body>
   </file>
   <file original="Documents/en.lproj/Localizable.strings" source-language="en" target-language="pt-BR" datatype="plaintext">
     <header>
-      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="14.2" build-num="14C18"/>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="14.3" build-num="14E222b"/>
     </header>
     <body>
       <trans-unit id="%d selected" xml:space="preserve">
@@ -1317,6 +1289,14 @@ Observação: se você se esquecer do código de acesso, será necessário exclu
         <target>Nome de conta não é válido</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
+      <trans-unit id="Accounts" xml:space="preserve">
+        <source>Accounts</source>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Add account" xml:space="preserve">
+        <source>Add account</source>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
       <trans-unit id="Add message" xml:space="preserve">
         <source>Add message</source>
         <target>Adicionar mensagem</target>
@@ -1336,6 +1316,10 @@ Observação: se você se esquecer do código de acesso, será necessário exclu
       <trans-unit id="Address is empty" xml:space="preserve">
         <source>Address is empty</source>
         <target>Endereço está vazio</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Admin" xml:space="preserve">
+        <source>Admin</source>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="All" xml:space="preserve">
@@ -1402,14 +1386,13 @@ Observação: se você se esquecer do código de acesso, será necessário exclu
         <target>O arquivamento falhou.</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
-      <trans-unit id="Are you sure you want to delete the account %@ from this device?" xml:space="preserve">
-        <source>Are you sure you want to delete the account %@ from this device?</source>
-        <target>Você tem certeza de que deseja excluir a conta %@ deste dispositivo?</target>
-        <note>No comment provided by engineer.</note>
-      </trans-unit>
       <trans-unit id="Are you sure you want to leave this account?" xml:space="preserve">
         <source>Are you sure you want to leave this account?</source>
         <target>Você tem certeza de que deseja sair desta conta?</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Are you sure you want to delete the account  %@ from this devce?" xml:space="preserve">
+        <source>Are you sure you want to delete the account  %@ from this devce?</source>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Author" xml:space="preserve">
@@ -1541,6 +1524,10 @@ Observação: se você se esquecer do código de acesso, será necessário exclu
         <source>Collaboration</source>
         <target>Colaboração</target>
         <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Collaborator" xml:space="preserve">
+        <source>Collaborator</source>
+        <note>Share status</note>
       </trans-unit>
       <trans-unit id="Comment" xml:space="preserve">
         <source>Comment</source>
@@ -1751,6 +1738,10 @@ outros que usam o protocolo WebDAV.</target>
         <target>Não foi possível abrir o arquivo</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
+      <trans-unit id="Couldn't save changes at server. Your modified document is saved in local storage as %@" xml:space="preserve">
+        <source>Couldn't save changes at server. Your modified document is saved in local storage as %@</source>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
       <trans-unit id="Create" xml:space="preserve">
         <source>Create</source>
         <target>Criar</target>
@@ -1816,13 +1807,12 @@ outros que usam o protocolo WebDAV.</target>
         <target>Excluir pasta</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
-      <trans-unit id="Delete account" xml:space="preserve">
-        <source>Delete account</source>
-        <target>Excluir conta</target>
-        <note>No comment provided by engineer.</note>
-      </trans-unit>
       <trans-unit id="Delete forever" xml:space="preserve">
         <source>Delete forever</source>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Delete from device" xml:space="preserve">
+        <source>Delete from device</source>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Deleting" xml:space="preserve">
@@ -2136,6 +2126,14 @@ outros que usam o protocolo WebDAV.</target>
         <target>Preenchimento Do Formulário</target>
         <note>Share status</note>
       </trans-unit>
+      <trans-unit id="Form templates" xml:space="preserve">
+        <source>Form templates</source>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Forms" xml:space="preserve">
+        <source>Forms</source>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
       <trans-unit id="Full Access" xml:space="preserve">
         <source>Full Access</source>
         <target>Acesso completo</target>
@@ -2321,7 +2319,8 @@ to the clipboard</source>
       <trans-unit id="Me" xml:space="preserve">
         <source>Me</source>
         <target>Me</target>
-        <note>If current user name is not set</note>
+        <note>Author or member of a document
+   If current user name is not set</note>
       </trans-unit>
       <trans-unit id="Media" xml:space="preserve">
         <source>Media</source>
@@ -2384,7 +2383,7 @@ to the clipboard</source>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="My archived" xml:space="preserve">
-        <source>My archives</source>
+        <source>My archived</source>
         <target>Meus arquivos</target>
         <note>Category title</note>
       </trans-unit>
@@ -2768,6 +2767,10 @@ Se o problema persistir, entre em contato conosco e mencione este código de err
         <target>Processando</target>
         <note>Caption of the processing</note>
       </trans-unit>
+      <trans-unit id="Profile" xml:space="preserve">
+        <source>Profile</source>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
       <trans-unit id="Project Documents" xml:space="preserve">
         <source>Project Documents</source>
         <target>Documentos do projeto</target>
@@ -3032,6 +3035,10 @@ Se o problema persistir, entre em contato conosco e mencione este código de err
       <trans-unit id="Show notifications" xml:space="preserve">
         <source>Show notifications</source>
         <target>Exibir notificações</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Sign in" xml:space="preserve">
+        <source>Sign in</source>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Single Sign-on" xml:space="preserve">
@@ -3443,8 +3450,12 @@ para a área de transferência</target>
         <target>Falha ao desafixar.</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
-      <trans-unit id="Unpning" xml:space="preserve">
+      <trans-unit id="Unpinning" xml:space="preserve">
         <source>Unpinning</source>
+        <note>Caption of the processing</note>
+      </trans-unit>
+      <trans-unit id="Unpning" xml:space="preserve">
+        <source>Unpning</source>
         <target>Desafixar</target>
         <note>Caption of the processing</note>
       </trans-unit>
@@ -3467,6 +3478,10 @@ para a área de transferência</target>
         <source>Use Touch ID</source>
         <target>Usar Touch ID</target>
         <note>Button title</note>
+      </trans-unit>
+      <trans-unit id="User" xml:space="preserve">
+        <source>User</source>
+        <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="User authentication failed" xml:space="preserve">
         <source>User authentication failed</source>
@@ -3506,11 +3521,6 @@ para a área de transferência</target>
       <trans-unit id="Version" xml:space="preserve">
         <source>Version</source>
         <target>Versão</target>
-        <note>No comment provided by engineer.</note>
-      </trans-unit>
-      <trans-unit id="View-Only" xml:space="preserve">
-        <source>View-Only</source>
-        <target>Somente visualização</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="View-only" xml:space="preserve">
@@ -3753,7 +3763,7 @@ a seguir, acessados a partir de qualquer outro dispositivo.</target>
   </file>
   <file original="Settings.bundle/en.lproj/Root.strings" source-language="en" target-language="pt-BR" datatype="plaintext">
     <header>
-      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="14.2" build-num="14C18"/>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="14.3" build-num="14E222b"/>
     </header>
     <body>
       <trans-unit id="Acknowledgements" xml:space="preserve">

@@ -102,9 +102,9 @@ extension DetailImageStyleTabelViewCell {
     func setup(model: AccountCellModel?) {
         guard let model = model else { return }
         titleLabel.text = model.name
-        detailLabel.text = model.email
+        detailLabel.text = model.portal
         titleLabel.font = model.style.nameFont
-        detailLabel.font = model.style.emailFont
+        detailLabel.font = model.style.portalFont
         selectedMark.isHidden = !model.isActiveUser
 
         if let avatarUrl = model.avatarUrl {

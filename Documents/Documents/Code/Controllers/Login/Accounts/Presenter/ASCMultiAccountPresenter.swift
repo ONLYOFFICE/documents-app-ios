@@ -272,25 +272,34 @@ class ASCMultiAccountPresenter: ASCMultiAccountPresenterProtocol {
 
     private func getAccountCellModels() -> [TableData.Cell] {
         return ASCAccountsManager.shared.accounts.map { account in
-            AccountCellModel(avatarUrl: account.avatarAbsoluteUrl,
-                             name: account.displayName ?? "",
-                             email: account.email ?? "",
-                             isActiveUser: isActiveUser(account: account),
-                             showProfileCallback: { [weak self] in
-                                 guard let self = self, let view = self.view else { return }
-                                 self.showProfile(viewController: view, account: account)
-                             },
-                             selectCallback: { [weak self] in
-                                 guard let self = self else { return }
-                                 self.login(by: account, completion: {})
-                             },
-                             deleteCallback: { [weak self] in
-                                 guard let self = self else { return }
-                                 self.deleteCallback(account)
-                             })
+            let portal = removeScheme(from: account.portal ?? "")
+            return AccountCellModel(avatarUrl: account.avatarAbsoluteUrl,
+                                    name: account.displayName ?? "",
+                                    portal: portal ?? "",
+                                    isActiveUser: isActiveUser(account: account),
+                                    showProfileCallback: { [weak self] in
+                                        guard let self = self, let view = self.view else { return }
+                                        self.showProfile(viewController: view, account: account)
+                                    },
+                                    selectCallback: { [weak self] in
+                                        guard let self = self else { return }
+                                        self.login(by: account, completion: {})
+                                    },
+                                    deleteCallback: { [weak self] in
+                                        guard let self = self else { return }
+                                        self.deleteCallback(account)
+                                    })
         }.map { model in
             .account(model)
         }
+    }
+
+    private func removeScheme(from urlString: String) -> String? {
+        guard !urlString.isEmpty,
+              var url = URLComponents(string: urlString) else { return nil }
+        url.scheme = nil
+        let cleanedUrlString = url.string?.replacingOccurrences(of: "//", with: "")
+        return cleanedUrlString
     }
 
     private func render() {

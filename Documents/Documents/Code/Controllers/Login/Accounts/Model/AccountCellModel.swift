@@ -11,20 +11,20 @@ import UIKit
 struct AccountCellModel {
     struct Style {
         let nameFont: UIFont
-        let emailFont: UIFont
+        let portalFont: UIFont
 
         init(nameFont: UIFont = UIFont.preferredFont(forTextStyle: .body),
-             emailFont: UIFont = UIFont.preferredFont(forTextStyle: .footnote))
+             portalFont: UIFont = UIFont.preferredFont(forTextStyle: .footnote))
         {
             self.nameFont = nameFont
-            self.emailFont = emailFont
+            self.portalFont = portalFont
         }
     }
 
     let style: Style
     let avatarUrl: URL?
     let name: String
-    let email: String
+    let portal: String
     let isActiveUser: Bool
     let showProfileCallback: () -> Void
     let selectCallback: () -> Void
@@ -33,7 +33,7 @@ struct AccountCellModel {
     init(style: Style = .init(),
          avatarUrl: URL?,
          name: String,
-         email: String,
+         portal: String,
          isActiveUser: Bool,
          showProfileCallback: @escaping () -> Void,
          selectCallback: @escaping () -> Void,
@@ -42,7 +42,7 @@ struct AccountCellModel {
         self.style = style
         self.avatarUrl = avatarUrl
         self.name = name
-        self.email = email
+        self.portal = portal
         self.isActiveUser = isActiveUser
         self.showProfileCallback = showProfileCallback
         self.selectCallback = selectCallback

@@ -529,8 +529,16 @@ extension ASCOnlyofficeCategoriesViewController {
     private func getCategory(by indexPath: IndexPath) -> ASCOnlyofficeCategory {
         switch groupedCategroies {
         case let .notGroupd(categories):
+            guard categories.count > indexPath.row else {
+                return .init()
+            }
             return categories[indexPath.row]
         case let .titledGroups(groups):
+            guard groups.count > indexPath.section,
+                  groups[indexPath.section].categories.count > indexPath.row
+            else {
+                return .init()
+            }
             return groups[indexPath.section].categories[indexPath.row]
         }
     }

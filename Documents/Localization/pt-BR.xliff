@@ -1525,13 +1525,8 @@ Observação: se você se esquecer do código de acesso, será necessário exclu
         <target>Colaboração</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
-      <trans-unit id="Collaborator" xml:space="preserve">
-        <source>Collaborator</source>
-        <note>Share status</note>
-      </trans-unit>
-      <trans-unit id="Comment" xml:space="preserve">
-        <source>Comment</source>
-        <target>Comentário</target>
+      <trans-unit id="Commentator" xml:space="preserve">
+        <source>Commentator</source>
         <note>Share status</note>
       </trans-unit>
       <trans-unit id="Common Documents" xml:space="preserve">
@@ -2121,9 +2116,8 @@ outros que usam o protocolo WebDAV.</target>
         <target>Pastas</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
-      <trans-unit id="Form filling" xml:space="preserve">
-        <source>Form filling</source>
-        <target>Preenchimento Do Formulário</target>
+      <trans-unit id="Form Filler" xml:space="preserve">
+        <source>Form Filler</source>
         <note>Share status</note>
       </trans-unit>
       <trans-unit id="Form templates" xml:space="preserve">
@@ -2737,6 +2731,10 @@ Se o problema persistir, entre em contato conosco e mencione este código de err
         <target>Portal não está disponível.</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
+      <trans-unit id="Pover user" xml:space="preserve">
+        <source>Pover user</source>
+        <note>Share status</note>
+      </trans-unit>
       <trans-unit id="Presentation" xml:space="preserve">
         <source>Presentation</source>
         <target>Apresentação</target>
@@ -2785,11 +2783,6 @@ Se o problema persistir, entre em contato conosco e mencione este código de err
         <source>Push notifications disabled</source>
         <target>Notificações por push desativadas</target>
         <note>No comment provided by engineer.</note>
-      </trans-unit>
-      <trans-unit id="Read Only" xml:space="preserve">
-        <source>Read Only</source>
-        <target>Somente leitura</target>
-        <note>Share status</note>
       </trans-unit>
       <trans-unit id="Recover here" xml:space="preserve">
         <source>Recover here</source>
@@ -2871,9 +2864,8 @@ Se o problema persistir, entre em contato conosco e mencione este código de err
         <target>Restaurando</target>
         <note>Caption of the processing</note>
       </trans-unit>
-      <trans-unit id="Review" xml:space="preserve">
-        <source>Review</source>
-        <target>Rever</target>
+      <trans-unit id="Reviewer" xml:space="preserve">
+        <source>Reviewer</source>
         <note>Share status</note>
       </trans-unit>
       <trans-unit id="Room admin" xml:space="preserve">
@@ -3526,6 +3518,10 @@ para a área de transferência</target>
       <trans-unit id="View-only" xml:space="preserve">
         <source>View-only</source>
         <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Viewer" xml:space="preserve">
+        <source>Viewer</source>
+        <note>Share status</note>
       </trans-unit>
       <trans-unit id="Warning" xml:space="preserve">
         <source>Warning</source>

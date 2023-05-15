@@ -1622,13 +1622,8 @@ Note: if you forget the passcode, you'll need to delete and reinstall the app. A
         <target>Совместная работа</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
-      <trans-unit id="Collaborator" xml:space="preserve">
-        <source>Collaborator</source>
-        <target>Совместная работа</target>
-        <note>Share status</note>
-      </trans-unit>
-      <trans-unit id="Comment" xml:space="preserve">
-        <source>Comment</source>
+      <trans-unit id="Commentator" xml:space="preserve">
+        <source>Commentator</source>
         <target>Комментирование</target>
         <note>Share status</note>
       </trans-unit>
@@ -2221,8 +2216,8 @@ others which use WebDAV protocol.</source>
         <target>Папки</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
-      <trans-unit id="Form filling" xml:space="preserve">
-        <source>Form filling</source>
+      <trans-unit id="Form Filler" xml:space="preserve">
+        <source>Form Filler</source>
         <target>Заполнение форм</target>
         <note>Share status</note>
       </trans-unit>
@@ -2838,6 +2833,11 @@ to the clipboard</source>
         <target>Портал недоступен</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
+      <trans-unit id="Pover user" xml:space="preserve">
+        <source>Pover user</source>
+        <target>Совместная работа</target>
+        <note>Share status</note>
+      </trans-unit>
       <trans-unit id="Presentation" xml:space="preserve">
         <source>Presentation</source>
         <target>Презентация</target>
@@ -2887,11 +2887,6 @@ to the clipboard</source>
         <source>Push notifications disabled</source>
         <target>Push-уведомления отключены</target>
         <note>No comment provided by engineer.</note>
-      </trans-unit>
-      <trans-unit id="Read Only" xml:space="preserve">
-        <source>Read Only</source>
-        <target>Только чтение</target>
-        <note>Share status</note>
       </trans-unit>
       <trans-unit id="Recover here" xml:space="preserve">
         <source>Recover here</source>
@@ -2973,8 +2968,8 @@ to the clipboard</source>
         <target>Восстановление</target>
         <note>Caption of the processing</note>
       </trans-unit>
-      <trans-unit id="Review" xml:space="preserve">
-        <source>Review</source>
+      <trans-unit id="Reviewer" xml:space="preserve">
+        <source>Reviewer</source>
         <target>Рецензирование</target>
         <note>Share status</note>
       </trans-unit>
@@ -3630,6 +3625,11 @@ to the clipboard</source>
       <trans-unit id="View-only" xml:space="preserve">
         <source>View-only</source>
         <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Viewer" xml:space="preserve">
+        <source>Viewer</source>
+        <target>Только чтение</target>
+        <note>Share status</note>
       </trans-unit>
       <trans-unit id="Warning" xml:space="preserve">
         <source>Warning</source>

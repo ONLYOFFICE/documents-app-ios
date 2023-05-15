@@ -1529,13 +1529,8 @@ Hinweis: Wenn Sie das Kennwort vergessen haben, müssen Sie die App löschen und
         <target>Zusammenarbeit</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
-      <trans-unit id="Collaborator" xml:space="preserve">
-        <source>Collaborator</source>
-        <note>Share status</note>
-      </trans-unit>
-      <trans-unit id="Comment" xml:space="preserve">
-        <source>Comment</source>
-        <target>Kommentar</target>
+      <trans-unit id="Commentator" xml:space="preserve">
+        <source>Commentator</source>
         <note>Share status</note>
       </trans-unit>
       <trans-unit id="Common Documents" xml:space="preserve">
@@ -2125,9 +2120,8 @@ die das WebDAV-Protokoll verwenden.</target>
         <target>Ordner</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
-      <trans-unit id="Form filling" xml:space="preserve">
-        <source>Form filling</source>
-        <target>Ausfüllen von Formularen</target>
+      <trans-unit id="Form Filler" xml:space="preserve">
+        <source>Form Filler</source>
         <note>Share status</note>
       </trans-unit>
       <trans-unit id="Form templates" xml:space="preserve">
@@ -2742,6 +2736,10 @@ in die Zwischenablage kopiert</target>
         <target>Das Portal ist nicht verfügbar.</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
+      <trans-unit id="Pover user" xml:space="preserve">
+        <source>Pover user</source>
+        <note>Share status</note>
+      </trans-unit>
       <trans-unit id="Presentation" xml:space="preserve">
         <source>Presentation</source>
         <target>Präsentation</target>
@@ -2790,11 +2788,6 @@ in die Zwischenablage kopiert</target>
         <source>Push notifications disabled</source>
         <target>Push-Benachrichtigungen deaktiviert</target>
         <note>No comment provided by engineer.</note>
-      </trans-unit>
-      <trans-unit id="Read Only" xml:space="preserve">
-        <source>Read Only</source>
-        <target>Schreibgeschützt</target>
-        <note>Share status</note>
       </trans-unit>
       <trans-unit id="Recover here" xml:space="preserve">
         <source>Recover here</source>
@@ -2876,9 +2869,8 @@ in die Zwischenablage kopiert</target>
         <target>Wird wiederhergestellt</target>
         <note>Caption of the processing</note>
       </trans-unit>
-      <trans-unit id="Review" xml:space="preserve">
-        <source>Review</source>
-        <target>Überprüfen</target>
+      <trans-unit id="Reviewer" xml:space="preserve">
+        <source>Reviewer</source>
         <note>Share status</note>
       </trans-unit>
       <trans-unit id="Room admin" xml:space="preserve">
@@ -3531,6 +3523,10 @@ kopiert</target>
       <trans-unit id="View-only" xml:space="preserve">
         <source>View-only</source>
         <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Viewer" xml:space="preserve">
+        <source>Viewer</source>
+        <note>Share status</note>
       </trans-unit>
       <trans-unit id="Warning" xml:space="preserve">
         <source>Warning</source>

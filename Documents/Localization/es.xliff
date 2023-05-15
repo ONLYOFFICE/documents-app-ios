@@ -1524,13 +1524,8 @@ leer, revisar o editar documentos.</target>
         <target>Colaboración</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
-      <trans-unit id="Collaborator" xml:space="preserve">
-        <source>Collaborator</source>
-        <note>Share status</note>
-      </trans-unit>
-      <trans-unit id="Comment" xml:space="preserve">
-        <source>Comment</source>
-        <target>Comentario</target>
+      <trans-unit id="Commentator" xml:space="preserve">
+        <source>Commentator</source>
         <note>Share status</note>
       </trans-unit>
       <trans-unit id="Common Documents" xml:space="preserve">
@@ -2120,9 +2115,8 @@ otros que utilizan el protocolo WebDAV.</target>
         <target>Carpetas</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
-      <trans-unit id="Form filling" xml:space="preserve">
-        <source>Form filling</source>
-        <target>Relleno de formulario</target>
+      <trans-unit id="Form Filler" xml:space="preserve">
+        <source>Form Filler</source>
         <note>Share status</note>
       </trans-unit>
       <trans-unit id="Form templates" xml:space="preserve">
@@ -2729,6 +2723,10 @@ Si el problema persiste, póngase en contacto con nosotros y mencione este códi
         <target>El portal no está disponible.</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
+      <trans-unit id="Pover user" xml:space="preserve">
+        <source>Pover user</source>
+        <note>Share status</note>
+      </trans-unit>
       <trans-unit id="Presentation" xml:space="preserve">
         <source>Presentation</source>
         <target>Presentación</target>
@@ -2777,11 +2775,6 @@ Si el problema persiste, póngase en contacto con nosotros y mencione este códi
         <source>Push notifications disabled</source>
         <target>Notificaciones push desactivadas</target>
         <note>No comment provided by engineer.</note>
-      </trans-unit>
-      <trans-unit id="Read Only" xml:space="preserve">
-        <source>Read Only</source>
-        <target>Sólo lectura</target>
-        <note>Share status</note>
       </trans-unit>
       <trans-unit id="Recover here" xml:space="preserve">
         <source>Recover here</source>
@@ -2863,9 +2856,8 @@ Si el problema persiste, póngase en contacto con nosotros y mencione este códi
         <target>Restaurando</target>
         <note>Caption of the processing</note>
       </trans-unit>
-      <trans-unit id="Review" xml:space="preserve">
-        <source>Review</source>
-        <target>Revisar</target>
+      <trans-unit id="Reviewer" xml:space="preserve">
+        <source>Reviewer</source>
         <note>Share status</note>
       </trans-unit>
       <trans-unit id="Room admin" xml:space="preserve">
@@ -3516,6 +3508,10 @@ to the clipboard</source>
       <trans-unit id="View-only" xml:space="preserve">
         <source>View-only</source>
         <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Viewer" xml:space="preserve">
+        <source>Viewer</source>
+        <note>Share status</note>
       </trans-unit>
       <trans-unit id="Warning" xml:space="preserve">
         <source>Warning</source>

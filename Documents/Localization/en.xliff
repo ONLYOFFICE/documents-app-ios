@@ -1544,14 +1544,9 @@ Note: if you forget the passcode, you'll need to delete and reinstall the app. A
         <target>Collaboration</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
-      <trans-unit id="Collaborator" xml:space="preserve">
-        <source>Collaborator</source>
-        <target>Collaborator</target>
-        <note>Share status</note>
-      </trans-unit>
-      <trans-unit id="Comment" xml:space="preserve">
-        <source>Comment</source>
-        <target>Comment</target>
+      <trans-unit id="Commentator" xml:space="preserve">
+        <source>Commentator</source>
+        <target>Commentator</target>
         <note>Share status</note>
       </trans-unit>
       <trans-unit id="Common Documents" xml:space="preserve">
@@ -2144,9 +2139,9 @@ others which use WebDAV protocol.</target>
         <target>Folders</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
-      <trans-unit id="Form filling" xml:space="preserve">
-        <source>Form filling</source>
-        <target>Form filling</target>
+      <trans-unit id="Form Filler" xml:space="preserve">
+        <source>Form Filler</source>
+        <target>Form Filler</target>
         <note>Share status</note>
       </trans-unit>
       <trans-unit id="Form templates" xml:space="preserve">
@@ -2763,6 +2758,11 @@ to the clipboard</target>
         <target>Portal is unavailable.</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
+      <trans-unit id="Pover user" xml:space="preserve">
+        <source>Pover user</source>
+        <target>Pover user</target>
+        <note>Share status</note>
+      </trans-unit>
       <trans-unit id="Presentation" xml:space="preserve">
         <source>Presentation</source>
         <target>Presentation</target>
@@ -2812,11 +2812,6 @@ to the clipboard</target>
         <source>Push notifications disabled</source>
         <target>Push notifications disabled</target>
         <note>No comment provided by engineer.</note>
-      </trans-unit>
-      <trans-unit id="Read Only" xml:space="preserve">
-        <source>Read Only</source>
-        <target>Read Only</target>
-        <note>Share status</note>
       </trans-unit>
       <trans-unit id="Recover here" xml:space="preserve">
         <source>Recover here</source>
@@ -2898,9 +2893,9 @@ to the clipboard</target>
         <target>Restoring</target>
         <note>Caption of the processing</note>
       </trans-unit>
-      <trans-unit id="Review" xml:space="preserve">
-        <source>Review</source>
-        <target>Review</target>
+      <trans-unit id="Reviewer" xml:space="preserve">
+        <source>Reviewer</source>
+        <target>Reviewer</target>
         <note>Share status</note>
       </trans-unit>
       <trans-unit id="Room admin" xml:space="preserve">
@@ -3557,6 +3552,11 @@ to the clipboard</target>
         <source>View-only</source>
         <target>View-only</target>
         <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Viewer" xml:space="preserve">
+        <source>Viewer</source>
+        <target>Viewer</target>
+        <note>Share status</note>
       </trans-unit>
       <trans-unit id="Warning" xml:space="preserve">
         <source>Warning</source>

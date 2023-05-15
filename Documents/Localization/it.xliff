@@ -1526,13 +1526,8 @@ possibilità di leggere, rivedere o modificare i documenti.</target>
         <target>Collaborazione</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
-      <trans-unit id="Collaborator" xml:space="preserve">
-        <source>Collaborator</source>
-        <note>Share status</note>
-      </trans-unit>
-      <trans-unit id="Comment" xml:space="preserve">
-        <source>Comment</source>
-        <target>Commento</target>
+      <trans-unit id="Commentator" xml:space="preserve">
+        <source>Commentator</source>
         <note>Share status</note>
       </trans-unit>
       <trans-unit id="Common Documents" xml:space="preserve">
@@ -2122,9 +2117,8 @@ altri che utilizzano il protocollo WebDAV.</target>
         <target>Cartelle</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
-      <trans-unit id="Form filling" xml:space="preserve">
-        <source>Form filling</source>
-        <target>Compilare un modulo</target>
+      <trans-unit id="Form Filler" xml:space="preserve">
+        <source>Form Filler</source>
         <note>Share status</note>
       </trans-unit>
       <trans-unit id="Form templates" xml:space="preserve">
@@ -2738,6 +2732,10 @@ Se il problema persiste, contattaci menzionando questo codice di errore: SSO - %
         <target>Il portale non è disponibile.</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
+      <trans-unit id="Pover user" xml:space="preserve">
+        <source>Pover user</source>
+        <note>Share status</note>
+      </trans-unit>
       <trans-unit id="Presentation" xml:space="preserve">
         <source>Presentation</source>
         <target>Presentazione</target>
@@ -2786,11 +2784,6 @@ Se il problema persiste, contattaci menzionando questo codice di errore: SSO - %
         <source>Push notifications disabled</source>
         <target>Notifiche push disabilitate</target>
         <note>No comment provided by engineer.</note>
-      </trans-unit>
-      <trans-unit id="Read Only" xml:space="preserve">
-        <source>Read Only</source>
-        <target>Sola lettura</target>
-        <note>Share status</note>
       </trans-unit>
       <trans-unit id="Recover here" xml:space="preserve">
         <source>Recover here</source>
@@ -2872,9 +2865,8 @@ Se il problema persiste, contattaci menzionando questo codice di errore: SSO - %
         <target>Recupero</target>
         <note>Caption of the processing</note>
       </trans-unit>
-      <trans-unit id="Review" xml:space="preserve">
-        <source>Review</source>
-        <target>Revisione</target>
+      <trans-unit id="Reviewer" xml:space="preserve">
+        <source>Reviewer</source>
         <note>Share status</note>
       </trans-unit>
       <trans-unit id="Room admin" xml:space="preserve">
@@ -3525,6 +3517,10 @@ to the clipboard</source>
       <trans-unit id="View-only" xml:space="preserve">
         <source>View-only</source>
         <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Viewer" xml:space="preserve">
+        <source>Viewer</source>
+        <note>Share status</note>
       </trans-unit>
       <trans-unit id="Warning" xml:space="preserve">
         <source>Warning</source>

@@ -230,10 +230,7 @@
 "Collaboration" = "Совместная работа";
 
 /* Share status */
-"Collaborator" = "Совместная работа";
-
-/* Share status */
-"Comment" = "Комментирование";
+"Commentator" = "Комментирование";
 
 /* Category title */
 "Common Documents" = "Общие документы";
@@ -615,7 +612,7 @@
 "Folders" = "Папки";
 
 /* Share status */
-"Form filling" = "Заполнение форм";
+"Form Filler" = "Заполнение форм";
 
 /* Share status */
 "Full Access" = "Полный доступ";
@@ -999,6 +996,9 @@
 /* No comment provided by engineer. */
 "Portal is unavailable." = "Портал недоступен";
 
+/* Share status */
+"Pover user" = "Совместная работа";
+
 /* No comment provided by engineer. */
 "Presentation" = "Презентация";
 
@@ -1028,9 +1028,6 @@
 
 /* No comment provided by engineer. */
 "Push notifications disabled" = "Push-уведомления отключены";
-
-/* Share status */
-"Read Only" = "Только чтение";
 
 /* Button title */
 "Recover here" = "Восстановить сюда";
@@ -1081,7 +1078,7 @@
 "Restoring" = "Восстановление";
 
 /* Share status */
-"Review" = "Рецензирование";
+"Reviewer" = "Рецензирование";
 
 /* Share status */
 "Room admin" = "Администратор группы";
@@ -1467,6 +1464,9 @@
 
 /* No comment provided by engineer. */
 "Version" = "Версия";
+
+/* Share status */
+"Viewer" = "Только чтение";
 
 /* No comment provided by engineer. */
 "Warning" = "Предупреждение";

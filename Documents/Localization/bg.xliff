@@ -1526,13 +1526,8 @@ Note: if you forget the passcode, you'll need to delete and reinstall the app. A
         <target>Сътрудничество</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
-      <trans-unit id="Collaborator" xml:space="preserve">
-        <source>Collaborator</source>
-        <note>Share status</note>
-      </trans-unit>
-      <trans-unit id="Comment" xml:space="preserve">
-        <source>Comment</source>
-        <target>Коментар</target>
+      <trans-unit id="Commentator" xml:space="preserve">
+        <source>Commentator</source>
         <note>Share status</note>
       </trans-unit>
       <trans-unit id="Common Documents" xml:space="preserve">
@@ -2122,9 +2117,8 @@ others which use WebDAV protocol.</source>
         <target>Папки</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
-      <trans-unit id="Form filling" xml:space="preserve">
-        <source>Form filling</source>
-        <target>Попълване на формуляр</target>
+      <trans-unit id="Form Filler" xml:space="preserve">
+        <source>Form Filler</source>
         <note>Share status</note>
       </trans-unit>
       <trans-unit id="Form templates" xml:space="preserve">
@@ -2739,6 +2733,10 @@ to the clipboard</source>
         <target>Порталът не е наличен.</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
+      <trans-unit id="Pover user" xml:space="preserve">
+        <source>Pover user</source>
+        <note>Share status</note>
+      </trans-unit>
       <trans-unit id="Presentation" xml:space="preserve">
         <source>Presentation</source>
         <target>Презентация</target>
@@ -2787,11 +2785,6 @@ to the clipboard</source>
         <source>Push notifications disabled</source>
         <target>Push известията са деактивиран</target>
         <note>No comment provided by engineer.</note>
-      </trans-unit>
-      <trans-unit id="Read Only" xml:space="preserve">
-        <source>Read Only</source>
-        <target>Само за четене</target>
-        <note>Share status</note>
       </trans-unit>
       <trans-unit id="Recover here" xml:space="preserve">
         <source>Recover here</source>
@@ -2873,9 +2866,8 @@ to the clipboard</source>
         <target>Възстановяване</target>
         <note>Caption of the processing</note>
       </trans-unit>
-      <trans-unit id="Review" xml:space="preserve">
-        <source>Review</source>
-        <target>Преглед</target>
+      <trans-unit id="Reviewer" xml:space="preserve">
+        <source>Reviewer</source>
         <note>Share status</note>
       </trans-unit>
       <trans-unit id="Room admin" xml:space="preserve">
@@ -3528,6 +3520,10 @@ to the clipboard</source>
       <trans-unit id="View-only" xml:space="preserve">
         <source>View-only</source>
         <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Viewer" xml:space="preserve">
+        <source>Viewer</source>
+        <note>Share status</note>
       </trans-unit>
       <trans-unit id="Warning" xml:space="preserve">
         <source>Warning</source>

@@ -163,6 +163,8 @@ internal enum Asset {
     internal static let menuFormFilling = ImageAsset(name: "menu-form-filling")
     internal static let menuFullAccess = ImageAsset(name: "menu-full-access")
     internal static let menuOwner = ImageAsset(name: "menu-owner")
+    internal static let menuPersonStar = ImageAsset(name: "menu-person-star")
+    internal static let menuPerson = ImageAsset(name: "menu-person")
     internal static let menuPresentation = ImageAsset(name: "menu-presentation")
     internal static let menuReview = ImageAsset(name: "menu-review")
     internal static let menuSpreadsheet = ImageAsset(name: "menu-spreadsheet")

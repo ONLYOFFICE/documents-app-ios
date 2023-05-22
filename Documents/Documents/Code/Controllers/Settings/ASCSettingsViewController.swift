@@ -115,7 +115,7 @@ class ASCSettingsViewController: ASCBaseTableViewController {
     }
 
     private func configureTableView() {
-        view.backgroundColor = .groupTableViewBackground
+        view.backgroundColor = .systemGroupedBackground
 
         tableView.register(
             ASCSettingsNotificationCell.self,

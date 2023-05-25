@@ -1553,17 +1553,9 @@
 			path = Menu;
 			sourceTree = "<group>";
 		};
-		1D667A4D28D3A98F009BD85D /* Folder */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Folder;
-			sourceTree = "<group>";
-		};
 		1D667A5028D3AA66009BD85D /* CellSwipe */ = {
 			isa = PBXGroup;
 			children = (
-				1D667A4D28D3A98F009BD85D /* Folder */,
 				1D667A4E28D3AA5F009BD85D /* ASCDocumentsCellSwipeMenu.swift */,
 			);
 			path = CellSwipe;

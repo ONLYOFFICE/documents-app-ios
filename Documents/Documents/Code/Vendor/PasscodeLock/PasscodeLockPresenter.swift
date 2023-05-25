@@ -52,6 +52,10 @@ open class PasscodeLockPresenter {
            keyboardWindow.description.hasPrefix("<UIRemoteKeyboardWindow")
         {
             keyboardWindow.alpha = hide ? 0.0 : 1.0
+        } else {
+            UIApplication.shared.windows
+                .first { $0.isKeyWindow }?
+                .endEditing(true)
         }
     }
 

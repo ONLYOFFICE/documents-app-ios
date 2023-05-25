@@ -228,6 +228,7 @@ class ASCDocumentsViewController: ASCBaseTableViewController, UIGestureRecognize
         addObserver(ASCConstants.Notifications.appDidBecomeActive, #selector(onAppDidBecomeActive(_:)))
         addObserver(ASCConstants.Notifications.reloadData, #selector(onReloadData(_:)))
         addObserver(UIApplication.willResignActiveNotification, #selector(onAppMovedToBackground))
+        addObserver(UIApplication.didEnterBackgroundNotification, #selector(onAppDidEnterBackground))
 
         UserDefaults.standard.addObserver(self, forKeyPath: ASCConstants.SettingsKeys.sortDocuments, options: [.new], context: nil)
 
@@ -1373,6 +1374,11 @@ class ASCDocumentsViewController: ASCBaseTableViewController, UIGestureRecognize
         if !(UIDevice.phone || ASCViewControllerManager.shared.currentSizeClass == .compact) {
             setEditMode(false)
         }
+    }
+
+    @objc
+    private func onAppDidEnterBackground() {
+        searchController.isActive = false
     }
 
     private func updateNavBar() {

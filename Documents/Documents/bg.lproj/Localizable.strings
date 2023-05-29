@@ -125,9 +125,6 @@
 "Archiving failed." = "Архивирането не беше успешно.";
 
 /* No comment provided by engineer. */
-"Are you sure you want to delete the account %@ from this device?" = "Наистина ли искате да изтриете профила %@ от това устройство?";
-
-/* No comment provided by engineer. */
 "Are you sure you want to leave this account?" = "Наистина ли искате да напуснете този профил?";
 
 /* No comment provided by engineer. */
@@ -213,9 +210,6 @@
 
 /* No comment provided by engineer. */
 "Collaboration" = "Сътрудничество";
-
-/* Share status */
-"Comment" = "Коментар";
 
 /* Category title */
 "Common Documents" = "Общи документи";
@@ -387,9 +381,6 @@
 
 /* No comment provided by engineer. */
 "Delete %lu Folder and %lu File" = "Изтриване на папката %1$lu и %2$lu";
-
-/* No comment provided by engineer. */
-"Delete account" = "Изтриване на профил";
 
 /* Button title */
 "Delete File" = "Изтрий файла";
@@ -594,9 +585,6 @@
 "Folders" = "Папки";
 
 /* Share status */
-"Form filling" = "Попълване на формуляр";
-
-/* Share status */
 "Full Access" = "Пълен достъп";
 
 /* Data units */
@@ -717,7 +705,8 @@
 /* Data units */
 "Mb" = "Мб";
 
-/* If current user name is not set */
+/* Author or member of a document
+   If current user name is not set */
 "Me" = "Аз";
 
 /* No comment provided by engineer. */
@@ -1004,9 +993,6 @@
 /* No comment provided by engineer. */
 "Push notifications disabled" = "Push известията са деактивиран";
 
-/* Share status */
-"Read Only" = "Само за четене";
-
 /* Button title */
 "Recover here" = "Възстановяване тук";
 
@@ -1054,9 +1040,6 @@
 
 /* Caption of the processing */
 "Restoring" = "Възстановяване";
-
-/* Share status */
-"Review" = "Преглед";
 
 /* Share status */
 "Room admin" = "Администратор на стаята";
@@ -1436,9 +1419,6 @@
 
 /* No comment provided by engineer. */
 "Version" = "Версия";
-
-/* No comment provided by engineer. */
-"View-Only" = "Само за преглеждане";
 
 /* No comment provided by engineer. */
 "Warning" = "Внимание";

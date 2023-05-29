@@ -125,9 +125,6 @@
 "Archiving failed." = "Die Archivierung ist fehlgeschlagen.";
 
 /* No comment provided by engineer. */
-"Are you sure you want to delete the account %@ from this device?" = "Sind Sie sicher, dass Sie das Konto %@ von diesem Gerät löschen möchten?";
-
-/* No comment provided by engineer. */
 "Are you sure you want to leave this account?" = "Sind Sie sicher, dass Sie dieses Konto verlassen möchten?";
 
 /* No comment provided by engineer. */
@@ -213,9 +210,6 @@
 
 /* No comment provided by engineer. */
 "Collaboration" = "Zusammenarbeit";
-
-/* Share status */
-"Comment" = "Kommentar";
 
 /* Category title */
 "Common Documents" = "Gemeinsame Dokumente";
@@ -387,9 +381,6 @@
 
 /* No comment provided by engineer. */
 "Delete %lu Folder and %lu File" = "%1$lu Ordner und %2$lu Datei löschen";
-
-/* No comment provided by engineer. */
-"Delete account" = "Konto löschen";
 
 /* Button title */
 "Delete File" = "Datei löschen";
@@ -594,9 +585,6 @@
 "Folders" = "Ordner";
 
 /* Share status */
-"Form filling" = "Ausfüllen von Formularen";
-
-/* Share status */
 "Full Access" = "Vollständiger Zugriff";
 
 /* Data units */
@@ -717,7 +705,8 @@
 /* Data units */
 "Mb" = "Mb";
 
-/* If current user name is not set */
+/* Author or member of a document
+   If current user name is not set */
 "Me" = "Ich";
 
 /* No comment provided by engineer. */
@@ -1004,9 +993,6 @@
 /* No comment provided by engineer. */
 "Push notifications disabled" = "Push-Benachrichtigungen deaktiviert";
 
-/* Share status */
-"Read Only" = "Schreibgeschützt";
-
 /* Button title */
 "Recover here" = "Hier wiederherstellen";
 
@@ -1054,9 +1040,6 @@
 
 /* Caption of the processing */
 "Restoring" = "Wird wiederhergestellt";
-
-/* Share status */
-"Review" = "Überprüfen";
 
 /* Share status */
 "Room admin" = "Admin des Raums";
@@ -1436,9 +1419,6 @@
 
 /* No comment provided by engineer. */
 "Version" = "Version";
-
-/* No comment provided by engineer. */
-"View-Only" = "Schreibgeschützt";
 
 /* No comment provided by engineer. */
 "Warning" = "Warnung";

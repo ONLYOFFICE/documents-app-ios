@@ -1110,7 +1110,7 @@ Note: if you forget the passcode, you'll need to delete and reinstall the app. A
       </trans-unit>
     </body>
   </file>
-  <file original="Documents/en.lproj/Documents.opensource-InfoPlist.strings" source-language="en" target-language="en" datatype="plaintext">
+  <file original="Documents/en.lproj/Documents-InfoPlist.strings" source-language="en" target-language="en" datatype="plaintext">
     <header>
       <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="14.3" build-num="14E222b"/>
     </header>
@@ -1129,11 +1129,6 @@ Note: if you forget the passcode, you'll need to delete and reinstall the app. A
         <source>This app requires Face ID permission to authenticate using Face recognition.</source>
         <target>This app requires Face ID permission to authenticate using Face recognition.</target>
         <note>Privacy - Face ID Usage Description</note>
-      </trans-unit>
-      <trans-unit id="NSLocalNetworkUsageDescription" xml:space="preserve">
-        <source>Network access required</source>
-        <target>Network access required</target>
-        <note>Privacy - Local Network Usage Description</note>
       </trans-unit>
       <trans-unit id="NSPhotoLibraryAddUsageDescription" xml:space="preserve">
         <source>This app requires access to the photo library, so that you can upload your photos in the app.</source>
@@ -1788,6 +1783,11 @@ others which use WebDAV protocol.</target>
         <target>Custom filter</target>
         <note>Share status</note>
       </trans-unit>
+      <trans-unit id="Dark" xml:space="preserve">
+        <source>Dark</source>
+        <target>Dark</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
       <trans-unit id="Date" xml:space="preserve">
         <source>Date</source>
         <target>Date</target>
@@ -2279,6 +2279,11 @@ others which use WebDAV protocol.</target>
         <target>Last name is incorrect</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
+      <trans-unit id="Light" xml:space="preserve">
+        <source>Light</source>
+        <target>Light</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
       <trans-unit id="Link copied&#10;to the clipboard" xml:space="preserve">
         <source>Link copied
 to the clipboard</source>
@@ -2404,7 +2409,7 @@ to the clipboard</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="My archived" xml:space="preserve">
-        <source>My archived</source>
+        <source>My archives</source>
         <target>My archives</target>
         <note>Category title</note>
       </trans-unit>
@@ -2913,6 +2918,11 @@ to the clipboard</target>
         <target>SKIP</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
+      <trans-unit id="Same as system" xml:space="preserve">
+        <source>Same as system</source>
+        <target>Same as system</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
       <trans-unit id="Saving" xml:space="preserve">
         <source>Saving</source>
         <target>Saving</target>
@@ -3263,6 +3273,11 @@ to the clipboard</target>
         <target>The user limit has been reached. Сontact the portal administrator</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
+      <trans-unit id="Theme" xml:space="preserve">
+        <source>Theme</source>
+        <target>Theme</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
       <trans-unit id="Third party resource" xml:space="preserve">
         <source>Third party resource</source>
         <target>Third party resource</target>
@@ -3479,7 +3494,7 @@ to the clipboard</target>
         <note>Caption of the processing</note>
       </trans-unit>
       <trans-unit id="Unpning" xml:space="preserve">
-        <source>Unpning</source>
+        <source>Unpinning</source>
         <target>Unpinning</target>
         <note>Caption of the processing</note>
       </trans-unit>

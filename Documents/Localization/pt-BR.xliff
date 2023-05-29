@@ -1108,53 +1108,59 @@ Observação: se você se esquecer do código de acesso, será necessário exclu
       </trans-unit>
     </body>
   </file>
-  <file original="Documents/en.lproj/Documents.opensource-InfoPlist.strings" datatype="plaintext" source-language="en" target-language="pt-BR">
+  <file original="Documents/en.lproj/Documents-InfoPlist.strings" source-language="en" target-language="pt-BR" datatype="plaintext">
     <header>
       <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="14.3" build-num="14E222b"/>
     </header>
     <body>
       <trans-unit id="CFBundleName" xml:space="preserve">
         <source>Documents</source>
+        <target>Documentos</target>
         <note>Bundle name</note>
       </trans-unit>
       <trans-unit id="NSCameraUsageDescription" xml:space="preserve">
         <source>This app requires access to the camera, so that you can take photo and upload it in the app.</source>
+        <target>Este aplicativo requer acesso à câmera, para que você possa tirar fotos e carregá-la no aplicativo.</target>
         <note>Privacy - Camera Usage Description</note>
       </trans-unit>
       <trans-unit id="NSFaceIDUsageDescription" xml:space="preserve">
         <source>This app requires Face ID permission to authenticate using Face recognition.</source>
+        <target>Este aplicativo requer permissão de identificação facial para autenticar usando o reconhecimento facial.</target>
         <note>Privacy - Face ID Usage Description</note>
-      </trans-unit>
-      <trans-unit id="NSLocalNetworkUsageDescription" xml:space="preserve">
-        <source>Network access required</source>
-        <note>Privacy - Local Network Usage Description</note>
       </trans-unit>
       <trans-unit id="NSPhotoLibraryAddUsageDescription" xml:space="preserve">
         <source>This app requires access to the photo library, so that you can upload your photos in the app.</source>
+        <target>Este aplicativo requer acesso à biblioteca de fotos, para que você possa carregar suas fotos no aplicativo.</target>
         <note>Privacy - Photo Library Additions Usage Description</note>
       </trans-unit>
       <trans-unit id="NSPhotoLibraryUsageDescription" xml:space="preserve">
         <source>This app requires access to the photo library, so that you can upload your photos in the app.</source>
+        <target>Este aplicativo requer acesso à biblioteca de fotos, para que você possa carregar suas fotos no aplicativo.</target>
         <note>Privacy - Photo Library Usage Description</note>
       </trans-unit>
       <trans-unit id="New Document" xml:space="preserve">
         <source>New Document</source>
+        <target>Novo Documento</target>
         <note/>
       </trans-unit>
       <trans-unit id="New Presentation" xml:space="preserve">
         <source>New Presentation</source>
+        <target>Nova apresentação</target>
         <note/>
       </trans-unit>
       <trans-unit id="New Spreadsheet" xml:space="preserve">
         <source>New Spreadsheet</source>
+        <target>Nova planilha</target>
         <note/>
       </trans-unit>
       <trans-unit id="ONLYOFFICE fillable form (.oform)" xml:space="preserve">
         <source>ONLYOFFICE fillable form (.oform)</source>
+        <target>Formulário preenchível do ONLYOFFICE (.oform)</target>
         <note/>
       </trans-unit>
       <trans-unit id="ONLYOFFICE form template (.docxf)" xml:space="preserve">
         <source>ONLYOFFICE form template (.docxf)</source>
+        <target>Modelo de formulário do ONLYOFFICE (.docxf)</target>
         <note/>
       </trans-unit>
     </body>
@@ -1767,6 +1773,10 @@ outros que usam o protocolo WebDAV.</target>
         <target>Filtro personalizado</target>
         <note>Share status</note>
       </trans-unit>
+      <trans-unit id="Dark" xml:space="preserve">
+        <source>Dark</source>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
       <trans-unit id="Date" xml:space="preserve">
         <source>Date</source>
         <target>Data</target>
@@ -2253,6 +2263,10 @@ outros que usam o protocolo WebDAV.</target>
         <target>O sobrenome está incorreto</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
+      <trans-unit id="Light" xml:space="preserve">
+        <source>Light</source>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
       <trans-unit id="Link copied&#10;to the clipboard" xml:space="preserve">
         <source>Link copied
 to the clipboard</source>
@@ -2377,7 +2391,7 @@ to the clipboard</source>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="My archived" xml:space="preserve">
-        <source>My archived</source>
+        <source>My archives</source>
         <target>Meus arquivos</target>
         <note>Category title</note>
       </trans-unit>
@@ -2883,6 +2897,10 @@ Se o problema persistir, entre em contato conosco e mencione este código de err
         <target>PULAR</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
+      <trans-unit id="Same as system" xml:space="preserve">
+        <source>Same as system</source>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
       <trans-unit id="Saving" xml:space="preserve">
         <source>Saving</source>
         <target>Salvando</target>
@@ -3232,6 +3250,10 @@ para a área de transferência</target>
         <target>O limite de usuários foi atingido. Entre em contato com o administrador do portal</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
+      <trans-unit id="Theme" xml:space="preserve">
+        <source>Theme</source>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
       <trans-unit id="Third party resource" xml:space="preserve">
         <source>Third party resource</source>
         <target>Recurso de terceiros</target>
@@ -3447,7 +3469,7 @@ para a área de transferência</target>
         <note>Caption of the processing</note>
       </trans-unit>
       <trans-unit id="Unpning" xml:space="preserve">
-        <source>Unpning</source>
+        <source>Unpinning</source>
         <target>Desafixar</target>
         <note>Caption of the processing</note>
       </trans-unit>

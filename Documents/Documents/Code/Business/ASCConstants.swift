@@ -66,6 +66,7 @@ class ASCConstants {
         static let passwordOpenedDocument = "asc-opened-document-password"
         static let lastCloudIndex = "asc-last-cloud-index"
         static let pushAllNotification = "asc-push-all"
+        static let appTheme = "asc-app-theme"
 
         // Debug
         static let debugHideSearchbarIfEmpty = "asc-debug-hidesearchbarifempty"
@@ -230,38 +231,6 @@ class ASCConstants {
     enum Locale {
         static let defaultLangCode = "EN"
         static let avalibleLangCodes = ["EN", "RU", "FR", "DE", "ES", "CS"]
-    }
-
-    enum Feature {
-        // Hide the searchbar in the navigationbar if the list of documents is empty
-        static var hideSearchbarIfEmpty: Bool {
-            get { UserDefaults.standard.bool(forKey: ASCConstants.SettingsKeys.debugHideSearchbarIfEmpty) }
-            set { UserDefaults.standard.set(newValue, forKey: ASCConstants.SettingsKeys.debugHideSearchbarIfEmpty) }
-        }
-
-        // Allow iCloud provider
-        static var allowiCloud: Bool {
-            get { UserDefaults.standard.bool(forKey: ASCConstants.SettingsKeys.debugAllowiCloud) }
-            set { UserDefaults.standard.set(newValue, forKey: ASCConstants.SettingsKeys.debugAllowiCloud) }
-        }
-
-        // Allow skeleton animation for ONLYOFFICE categories on load
-        static var allowCategoriesSkeleton: Bool {
-            get { UserDefaults.standard.bool(forKey: ASCConstants.SettingsKeys.debugAllowCategoriesSkeleton) }
-            set { UserDefaults.standard.set(newValue, forKey: ASCConstants.SettingsKeys.debugAllowCategoriesSkeleton) }
-        }
-
-        // Connect Dropbox Cloud via SDK
-        static var dropboxSDKLogin: Bool {
-            get { UserDefaults.standard.bool(forKey: ASCConstants.SettingsKeys.debugDropboxSDKLogin) }
-            set { UserDefaults.standard.set(newValue, forKey: ASCConstants.SettingsKeys.debugDropboxSDKLogin) }
-        }
-
-        // Open editors in view mode
-        static var openViewModeByDefault: Bool {
-            get { UserDefaults.standard.bool(forKey: ASCConstants.SettingsKeys.debugOpenEditorViewModeDefault) }
-            set { UserDefaults.standard.set(newValue, forKey: ASCConstants.SettingsKeys.debugOpenEditorViewModeDefault) }
-        }
     }
 
     static func remoteConfigValue(forKey key: String) -> RemoteConfigValue? {

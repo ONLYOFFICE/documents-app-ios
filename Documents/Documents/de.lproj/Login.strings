@@ -22,9 +22,6 @@
 /* Class = "UIButton"; normalTitle = "Forgot?"; ObjectID = "78r-Ca-NKv"; */
 "78r-Ca-NKv.normalTitle" = "Vergessen?";
 
-/* Class = "UILabel"; text = "Account"; ObjectID = "AkN-p0-Mzy"; */
-"AkN-p0-Mzy.text" = "Konto";
-
 /* Class = "UILabel"; text = "If a user with the email exists, the password change instruction has been sent to this email address."; ObjectID = "AqB-m0-2UQ"; Note = "Do not translate"; */
 "AqB-m0-2UQ.text" = "Wenn eine solche E-Mail existiert, wurden die Anweisungen zum Ändern des Passworts daran verschickt.";
 
@@ -55,20 +52,11 @@
 /* Class = "UIButton"; normalTitle = "Send"; ObjectID = "ePY-rM-AOE"; */
 "ePY-rM-AOE.normalTitle" = "Senden";
 
-/* Class = "UILabel"; text = "Address"; ObjectID = "Fso-pj-304"; */
-"Fso-pj-304.text" = "Adresse";
-
 /* Class = "UIButton"; normalTitle = "Create cloud"; ObjectID = "G99-FE-uk4"; */
 "G99-FE-uk4.normalTitle" = "Cloud erstellen";
 
 /* Class = "UILabel"; text = "Connect to your ONLYOFFICE cloud to store files online and collaborate on documents in real time"; ObjectID = "GFx-Ry-9GC"; */
 "GFx-Ry-9GC.text" = "Verbinden Sie Ihre ONLYOFFICE-Cloud, um Dateien online zu speichern und Dokumente in Echtzeit zu bearbeiten";
-
-/* Class = "UILabel"; text = "Select an account to sign in"; ObjectID = "Gkv-tP-6EM"; */
-"Gkv-tP-6EM.text" = "Wählen Sie ein Konto aus, um sich anzumelden";
-
-/* Class = "UINavigationItem"; title = "Accounts"; ObjectID = "gzc-cW-NPT"; */
-"gzc-cW-NPT.title" = "Konten";
 
 /* Class = "UINavigationItem"; title = "SSO Login"; ObjectID = "hRN-W6-nA0"; */
 "hRN-W6-nA0.title" = "SSO-Anmeldung";
@@ -96,9 +84,6 @@
 
 /* Class = "UITextField"; placeholder = "Code"; ObjectID = "OnI-QD-xeI"; */
 "OnI-QD-xeI.placeholder" = "Code";
-
-/* Class = "UIButton"; normalTitle = "Select another account"; ObjectID = "peP-Hz-Lai"; */
-"peP-Hz-Lai.normalTitle" = "Anderes Konto auswählen";
 
 /* Class = "UIButton"; normalTitle = "Sign in"; ObjectID = "QAn-vu-xMR"; */
 "QAn-vu-xMR.normalTitle" = "Anmelden";
@@ -147,9 +132,6 @@
 
 /* Class = "UILabel"; text = "Connection to cloud"; ObjectID = "XsM-aD-o1I"; */
 "XsM-aD-o1I.text" = "Verbindung mit der Cloud herstellen";
-
-/* Class = "UIButton"; normalTitle = "Continue"; ObjectID = "yjY-PY-41s"; */
-"yjY-PY-41s.normalTitle" = "Fortsetzen";
 
 /* Class = "UITextField"; placeholder = "Code"; ObjectID = "ZWV-Q1-HY9"; */
 "ZWV-Q1-HY9.placeholder" = "Code";

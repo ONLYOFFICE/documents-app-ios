@@ -79,12 +79,12 @@ class ASCSettingsViewController: ASCBaseTableViewController {
             navigationController?.navigationBar.shadowImage = UIImage()
             navigationController?.navigationBar.isTranslucent = true
         }
+
+        build()
     }
 
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-
-        build()
 
         calcCacheSize()
 
@@ -129,13 +129,6 @@ class ASCSettingsViewController: ASCBaseTableViewController {
         // Settings and Security section
         let settingsSecuritySection = SettingsSection(
             items: [
-                .standart(viewModel: ASCStandartCellViewModel(
-                    title: NSLocalizedString("Passcode Lock", comment: ""),
-                    action: {
-                        self.navigator.navigate(to: .passcodeLockSettings)
-                    },
-                    accessoryType: .disclosureIndicator
-                )),
                 .notifications(
                     viewModel: ASCStandartCellViewModel(
                         title: NSLocalizedString("Notifications", comment: ""),
@@ -145,6 +138,25 @@ class ASCSettingsViewController: ASCBaseTableViewController {
                         accessoryType: .disclosureIndicator
                     ),
                     displayError: authorizationStatus != .authorized
+                ),
+                .detail(
+                    viewModel: ASCDetailTabelViewCellViewModel(
+                        title: NSLocalizedString("Theme", comment: ""),
+                        detail: ASCAppSettings.appTheme.description,
+                        accessoryType: .disclosureIndicator,
+                        action: {
+                            self.navigator.navigate(to: .themeOptions)
+                        }
+                    )
+                ),
+                .standart(
+                    viewModel: ASCStandartCellViewModel(
+                        title: NSLocalizedString("Passcode Lock", comment: ""),
+                        action: {
+                            self.navigator.navigate(to: .passcodeLockSettings)
+                        },
+                        accessoryType: .disclosureIndicator
+                    )
                 ),
             ],
             header: NSLocalizedString("Settings and Security", comment: "")
@@ -166,17 +178,17 @@ class ASCSettingsViewController: ASCBaseTableViewController {
                 ),
                 .switchControl(viewModel: ASCSwitchCellViewModel(
                     title: NSLocalizedString("Files Preview", comment: ""),
-                    isOn: UserDefaults.standard.bool(forKey: ASCConstants.SettingsKeys.previewFiles),
+                    isOn: ASCAppSettings.previewFiles,
                     valueChanged: { isOn in
-                        UserDefaults.standard.set(isOn, forKey: ASCConstants.SettingsKeys.previewFiles)
+                        ASCAppSettings.previewFiles = isOn
                         NotificationCenter.default.post(name: ASCConstants.Notifications.reloadData, object: nil)
                     }
                 )),
                 .switchControl(viewModel: ASCSwitchCellViewModel(
                     title: NSLocalizedString("Compress Images", comment: ""),
-                    isOn: UserDefaults.standard.bool(forKey: ASCConstants.SettingsKeys.compressImage),
+                    isOn: ASCAppSettings.compressImage,
                     valueChanged: { isOn in
-                        UserDefaults.standard.set(isOn, forKey: ASCConstants.SettingsKeys.compressImage)
+                        ASCAppSettings.compressImage = isOn
                     }
                 )),
             ],
@@ -501,6 +513,8 @@ extension ASCSettingsViewController {
              let .notifications(model, _),
              let .cache(model, _, _):
             model.action?()
+        case let .detail(model):
+            model.action?()
         default:
             break
         }
@@ -516,6 +530,7 @@ extension ASCSettingsViewController {
 extension ASCSettingsViewController {
     enum CellType {
         case standart(viewModel: ASCStandartCellViewModel)
+        case detail(viewModel: ASCDetailTabelViewCellViewModel)
         case switchControl(viewModel: ASCSwitchCellViewModel)
         case cache(viewModel: ASCStandartCellViewModel, processing: Bool, detailText: String?)
         case notifications(viewModel: ASCStandartCellViewModel, displayError: Bool)
@@ -523,6 +538,8 @@ extension ASCSettingsViewController {
         public func viewModel() -> Any {
             switch self {
             case let .standart(viewModel):
+                return viewModel
+            case let .detail(viewModel):
                 return viewModel
             case let .switchControl(viewModel):
                 return viewModel
@@ -537,6 +554,8 @@ extension ASCSettingsViewController {
             switch self {
             case let .standart(viewModel):
                 return makeStandartCell(viewModel, for: tableView) ?? makeDefaultCell()
+            case let .detail(viewModel):
+                return makeDetailCell(viewModel, for: tableView) ?? makeDefaultCell()
             case let .switchControl(viewModel):
                 return makeSwitchCell(viewModel, for: tableView) ?? makeDefaultCell()
             case let .cache(viewModel, processing, detailText):
@@ -548,6 +567,12 @@ extension ASCSettingsViewController {
 
         private func makeStandartCell(_ viewModel: ASCStandartCellViewModel, for tableView: UITableView) -> UITableViewCell? {
             guard let cell = ASCStandartCell.createForTableView(tableView) as? ASCStandartCell else { return nil }
+            cell.viewModel = viewModel
+            return cell
+        }
+
+        private func makeDetailCell(_ viewModel: ASCDetailTabelViewCellViewModel, for tableView: UITableView) -> UITableViewCell? {
+            guard let cell = ASCDetailCell.createForTableView(tableView) as? ASCDetailCell else { return nil }
             cell.viewModel = viewModel
             return cell
         }
@@ -570,7 +595,7 @@ extension ASCSettingsViewController {
             let cacheSize = parentVC?.cacheSize ?? 0
 
             if processing {
-                let activityView = UIActivityIndicatorView(style: .gray)
+                let activityView = UIActivityIndicatorView(style: .medium)
                 activityView.color = tableView.tintColor
                 activityView.startAnimating()
 

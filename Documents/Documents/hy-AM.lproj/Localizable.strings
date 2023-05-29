@@ -125,9 +125,6 @@
 "Archiving failed." = "Չհաջողվեց արխիվացնել:";
 
 /* No comment provided by engineer. */
-"Are you sure you want to delete the account %@ from this device?" = "Իսկապե՞ս ուզում եք ջնջել %@ հաշիվն այս սարքից:";
-
-/* No comment provided by engineer. */
 "Are you sure you want to leave this account?" = "Իսկապե՞ս ուզում եք լքել այս հաշիվը:";
 
 /* No comment provided by engineer. */
@@ -213,9 +210,6 @@
 
 /* No comment provided by engineer. */
 "Collaboration" = "Համագործակցում";
-
-/* Share status */
-"Comment" = "Մեկնաբանություն";
 
 /* Category title */
 "Common Documents" = "Ընդհանուր փաստաթղթեր";
@@ -387,9 +381,6 @@
 
 /* No comment provided by engineer. */
 "Delete %lu Folder and %lu File" = "Ջնջել %1$lu թղթապանակը և %2$lu ֆայլը";
-
-/* No comment provided by engineer. */
-"Delete account" = "Հաշիվը ջնջել";
 
 /* Button title */
 "Delete File" = "Ջնջել Ֆայլը";
@@ -594,9 +585,6 @@
 "Folders" = "Թղթապանակներ";
 
 /* Share status */
-"Form filling" = "Ձևաթղթի լրացում";
-
-/* Share status */
 "Full Access" = "Ամբողջական մուտք";
 
 /* Data units */
@@ -717,7 +705,8 @@
 /* Data units */
 "Mb" = "Mb";
 
-/* If current user name is not set */
+/* Author or member of a document
+   If current user name is not set */
 "Me" = "Ես";
 
 /* No comment provided by engineer. */
@@ -1004,9 +993,6 @@
 /* No comment provided by engineer. */
 "Push notifications disabled" = "Push ծանուցումներն անջատված են";
 
-/* Share status */
-"Read Only" = "Միայն կարդալու համար";
-
 /* Button title */
 "Recover here" = "Վերականգնել այստեղ";
 
@@ -1054,9 +1040,6 @@
 
 /* Caption of the processing */
 "Restoring" = "Վերականգնում";
-
-/* Share status */
-"Review" = "Վերանայում";
 
 /* Share status */
 "Room admin" = "Սենյակի ադմին";
@@ -1436,9 +1419,6 @@
 
 /* No comment provided by engineer. */
 "Version" = "Տարբերակ";
-
-/* No comment provided by engineer. */
-"View-Only" = "Միայն դիտել";
 
 /* No comment provided by engineer. */
 "Warning" = "Զգուշացում";

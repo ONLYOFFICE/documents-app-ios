@@ -445,7 +445,7 @@ class ASCDocumentsViewController: ASCBaseTableViewController, UIGestureRecognize
                 self.showEmptyView(self.total < 1)
 
                 if let index = self.tableData.firstIndex(where: { $0.id == file.id }) {
-                    if ASCConstants.Feature.hideSearchbarIfEmpty {
+                    if ASCAppSettings.Feature.hideSearchbarIfEmpty {
                         self.searchController.searchBar.isHidden = false
                     }
                     self.tableView.scrollToRow(at: IndexPath(row: index, section: 0), at: .middle, animated: true)
@@ -479,7 +479,7 @@ class ASCDocumentsViewController: ASCBaseTableViewController, UIGestureRecognize
                 self.showEmptyView(self.total < 1)
 
                 if let index = self.tableData.firstIndex(where: { $0.uid == folder.uid }) {
-                    if ASCConstants.Feature.hideSearchbarIfEmpty {
+                    if ASCAppSettings.Feature.hideSearchbarIfEmpty {
                         self.searchController.searchBar.isHidden = false
                     }
 
@@ -1155,7 +1155,7 @@ class ASCDocumentsViewController: ASCBaseTableViewController, UIGestureRecognize
             searchController.isActive = false
         }
 
-        if ASCConstants.Feature.hideSearchbarIfEmpty {
+        if ASCAppSettings.Feature.hideSearchbarIfEmpty {
             searchController.searchBar.isHidden = true
         }
 
@@ -1220,7 +1220,7 @@ class ASCDocumentsViewController: ASCBaseTableViewController, UIGestureRecognize
     }
 
     private func showEmptyView(_ show: Bool) {
-        if ASCConstants.Feature.hideSearchbarIfEmpty {
+        if ASCAppSettings.Feature.hideSearchbarIfEmpty {
             if !searchController.isActive {
                 searchController.searchBar.isHidden = show
             }
@@ -3045,7 +3045,7 @@ extension ASCDocumentsViewController {
             controller.folder = folder
             controller.title = folder.title
         } else if let file = tableData[indexPath.row] as? ASCFile, let provider = provider {
-            if ASCConstants.Feature.openViewModeByDefault {
+            if ASCAppSettings.Feature.openViewModeByDefault {
                 let title = file.title,
                     fileExt = title.fileExtension().lowercased()
 

@@ -1108,53 +1108,59 @@ Note: if you forget the passcode, you'll need to delete and reinstall the app. A
       </trans-unit>
     </body>
   </file>
-  <file original="Documents/en.lproj/Documents.opensource-InfoPlist.strings" datatype="plaintext" source-language="en" target-language="bg">
+  <file original="Documents/en.lproj/Documents-InfoPlist.strings" source-language="en" target-language="bg" datatype="plaintext">
     <header>
       <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="14.3" build-num="14E222b"/>
     </header>
     <body>
       <trans-unit id="CFBundleName" xml:space="preserve">
         <source>Documents</source>
+        <target>Документи</target>
         <note>Bundle name</note>
       </trans-unit>
       <trans-unit id="NSCameraUsageDescription" xml:space="preserve">
         <source>This app requires access to the camera, so that you can take photo and upload it in the app.</source>
+        <target>Това приложение изисква достъп до камерата, за да можете да правите снимки.</target>
         <note>Privacy - Camera Usage Description</note>
       </trans-unit>
       <trans-unit id="NSFaceIDUsageDescription" xml:space="preserve">
         <source>This app requires Face ID permission to authenticate using Face recognition.</source>
+        <target>Това приложение изисква разрешението за идентификация на лицето, за да се удостовери с помощта на функцията за разпознаване на лица .</target>
         <note>Privacy - Face ID Usage Description</note>
-      </trans-unit>
-      <trans-unit id="NSLocalNetworkUsageDescription" xml:space="preserve">
-        <source>Network access required</source>
-        <note>Privacy - Local Network Usage Description</note>
       </trans-unit>
       <trans-unit id="NSPhotoLibraryAddUsageDescription" xml:space="preserve">
         <source>This app requires access to the photo library, so that you can upload your photos in the app.</source>
+        <target>Това приложение изисква достъп до галерията със снимки, за да можете да качвате Вашите снимки в приложението.</target>
         <note>Privacy - Photo Library Additions Usage Description</note>
       </trans-unit>
       <trans-unit id="NSPhotoLibraryUsageDescription" xml:space="preserve">
         <source>This app requires access to the photo library, so that you can upload your photos in the app.</source>
+        <target>Това приложение изисква достъп до библиотеката с снимки, за да можете да качвате снимките си в приложението.</target>
         <note>Privacy - Photo Library Usage Description</note>
       </trans-unit>
       <trans-unit id="New Document" xml:space="preserve">
         <source>New Document</source>
+        <target>Нов документ</target>
         <note/>
       </trans-unit>
       <trans-unit id="New Presentation" xml:space="preserve">
         <source>New Presentation</source>
+        <target>Нова презентация</target>
         <note/>
       </trans-unit>
       <trans-unit id="New Spreadsheet" xml:space="preserve">
         <source>New Spreadsheet</source>
+        <target>Нова електронна таблица</target>
         <note/>
       </trans-unit>
       <trans-unit id="ONLYOFFICE fillable form (.oform)" xml:space="preserve">
         <source>ONLYOFFICE fillable form (.oform)</source>
+        <target>ONLYOFFICE Онлайн формуляр за попълване</target>
         <note/>
       </trans-unit>
       <trans-unit id="ONLYOFFICE form template (.docxf)" xml:space="preserve">
         <source>ONLYOFFICE form template (.docxf)</source>
+        <target>ONLYOFFICE Шаблон на формуляр</target>
         <note/>
       </trans-unit>
     </body>
@@ -1768,6 +1774,10 @@ others which use WebDAV protocol.</source>
         <target>Персонализиран филтър</target>
         <note>Share status</note>
       </trans-unit>
+      <trans-unit id="Dark" xml:space="preserve">
+        <source>Dark</source>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
       <trans-unit id="Date" xml:space="preserve">
         <source>Date</source>
         <target>Дата</target>
@@ -2254,6 +2264,10 @@ others which use WebDAV protocol.</source>
         <target>Фамилията е неправилна</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
+      <trans-unit id="Light" xml:space="preserve">
+        <source>Light</source>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
       <trans-unit id="Link copied&#10;to the clipboard" xml:space="preserve">
         <source>Link copied
 to the clipboard</source>
@@ -2379,7 +2393,7 @@ to the clipboard</source>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="My archived" xml:space="preserve">
-        <source>My archived</source>
+        <source>My archives</source>
         <target>Моите архиви</target>
         <note>Category title</note>
       </trans-unit>
@@ -2885,6 +2899,10 @@ to the clipboard</source>
         <target>ПРОПУСКАНЕ</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
+      <trans-unit id="Same as system" xml:space="preserve">
+        <source>Same as system</source>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
       <trans-unit id="Saving" xml:space="preserve">
         <source>Saving</source>
         <target>Спестяване</target>
@@ -3234,6 +3252,10 @@ to the clipboard</source>
         <target>Потребителският лимит е достигнат. Свържете се с администратора на портала</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
+      <trans-unit id="Theme" xml:space="preserve">
+        <source>Theme</source>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
       <trans-unit id="Third party resource" xml:space="preserve">
         <source>Third party resource</source>
         <target>Ресурс на трета страна</target>
@@ -3449,7 +3471,7 @@ to the clipboard</source>
         <note>Caption of the processing</note>
       </trans-unit>
       <trans-unit id="Unpning" xml:space="preserve">
-        <source>Unpning</source>
+        <source>Unpinning</source>
         <target>Откачване</target>
         <note>Caption of the processing</note>
       </trans-unit>

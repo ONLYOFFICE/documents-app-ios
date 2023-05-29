@@ -125,9 +125,6 @@
 "Archiving failed." = "Archivace se nezdařila.";
 
 /* No comment provided by engineer. */
-"Are you sure you want to delete the account %@ from this device?" = "Opravdu chcete smazat účet account %@ z tohoto zařízení?";
-
-/* No comment provided by engineer. */
 "Are you sure you want to leave this account?" = "Opravdu chcete tento účet opustit?";
 
 /* No comment provided by engineer. */
@@ -213,9 +210,6 @@
 
 /* No comment provided by engineer. */
 "Collaboration" = "Spolupráce";
-
-/* Share status */
-"Comment" = "Komentář";
 
 /* Category title */
 "Common Documents" = "Společné dokumenty";
@@ -387,9 +381,6 @@
 
 /* No comment provided by engineer. */
 "Delete %lu Folder and %lu File" = "Vymazat %1$lu složku a %2$lu soubor";
-
-/* No comment provided by engineer. */
-"Delete account" = "Smazat účet ";
 
 /* Button title */
 "Delete File" = "Vymazat soubor";
@@ -594,9 +585,6 @@
 "Folders" = "Složky";
 
 /* Share status */
-"Form filling" = "Vyplnění formuláře";
-
-/* Share status */
 "Full Access" = "Plný přístup";
 
 /* Data units */
@@ -717,7 +705,8 @@
 /* Data units */
 "Mb" = "Mb";
 
-/* If current user name is not set */
+/* Author or member of a document
+   If current user name is not set */
 "Me" = "Já";
 
 /* No comment provided by engineer. */
@@ -1004,9 +993,6 @@
 /* No comment provided by engineer. */
 "Push notifications disabled" = "Push oznámení jsou vypnuta";
 
-/* Share status */
-"Read Only" = "Pouze pro čtení";
-
 /* Button title */
 "Recover here" = "Obnovit zde";
 
@@ -1054,9 +1040,6 @@
 
 /* Caption of the processing */
 "Restoring" = "Obnovení";
-
-/* Share status */
-"Review" = "Prohlédnout";
 
 /* Share status */
 "Room admin" = "Správce místnosti";
@@ -1436,9 +1419,6 @@
 
 /* No comment provided by engineer. */
 "Version" = "Verze";
-
-/* No comment provided by engineer. */
-"View-Only" = "Pouze k zobrazení";
 
 /* No comment provided by engineer. */
 "Warning" = "Varování";

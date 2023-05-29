@@ -125,9 +125,6 @@
 "Archiving failed." = "O arquivamento falhou.";
 
 /* No comment provided by engineer. */
-"Are you sure you want to delete the account %@ from this device?" = "Você tem certeza de que deseja excluir a conta %@ deste dispositivo?";
-
-/* No comment provided by engineer. */
 "Are you sure you want to leave this account?" = "Você tem certeza de que deseja sair desta conta?";
 
 /* No comment provided by engineer. */
@@ -213,9 +210,6 @@
 
 /* No comment provided by engineer. */
 "Collaboration" = "Colaboração";
-
-/* Share status */
-"Comment" = "Comentário";
 
 /* Category title */
 "Common Documents" = "Documentos comuns";
@@ -387,9 +381,6 @@
 
 /* No comment provided by engineer. */
 "Delete %lu Folder and %lu File" = "Excluir %1$lu pasta e %2$lu arquivo";
-
-/* No comment provided by engineer. */
-"Delete account" = "Excluir conta";
 
 /* Button title */
 "Delete File" = "Excluir arquivo";
@@ -594,9 +585,6 @@
 "Folders" = "Pastas";
 
 /* Share status */
-"Form filling" = "Preenchimento Do Formulário";
-
-/* Share status */
 "Full Access" = "Acesso completo";
 
 /* Data units */
@@ -717,7 +705,8 @@
 /* Data units */
 "Mb" = "Mb";
 
-/* If current user name is not set */
+/* Author or member of a document
+   If current user name is not set */
 "Me" = "Me";
 
 /* No comment provided by engineer. */
@@ -1004,9 +993,6 @@
 /* No comment provided by engineer. */
 "Push notifications disabled" = "Notificações por push desativadas";
 
-/* Share status */
-"Read Only" = "Somente leitura";
-
 /* Button title */
 "Recover here" = "Recupere aqui";
 
@@ -1054,9 +1040,6 @@
 
 /* Caption of the processing */
 "Restoring" = "Restaurando";
-
-/* Share status */
-"Review" = "Rever";
 
 /* Share status */
 "Room admin" = "Administrador da sala";
@@ -1436,9 +1419,6 @@
 
 /* No comment provided by engineer. */
 "Version" = "Versão";
-
-/* No comment provided by engineer. */
-"View-Only" = "Somente visualização";
 
 /* No comment provided by engineer. */
 "Warning" = "Aviso";

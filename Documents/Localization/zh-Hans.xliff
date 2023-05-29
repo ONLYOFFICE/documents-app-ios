@@ -1063,53 +1063,59 @@ Note: if you forget the passcode, you'll need to delete and reinstall the app. A
       </trans-unit>
     </body>
   </file>
-  <file original="Documents/en.lproj/Documents.opensource-InfoPlist.strings" datatype="plaintext" source-language="en" target-language="zh-Hans">
+  <file original="Documents/en.lproj/Documents-InfoPlist.strings" source-language="en" target-language="zh-Hans" datatype="plaintext">
     <header>
       <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="14.3" build-num="14E222b"/>
     </header>
     <body>
       <trans-unit id="CFBundleName" xml:space="preserve">
         <source>Documents</source>
+        <target>文档</target>
         <note>Bundle name</note>
       </trans-unit>
       <trans-unit id="NSCameraUsageDescription" xml:space="preserve">
         <source>This app requires access to the camera, so that you can take photo and upload it in the app.</source>
+        <target>该应用程序需要访问相机，这样您就可以拍照并将照片上传到应用程序中。</target>
         <note>Privacy - Camera Usage Description</note>
       </trans-unit>
       <trans-unit id="NSFaceIDUsageDescription" xml:space="preserve">
         <source>This app requires Face ID permission to authenticate using Face recognition.</source>
+        <target>这个应用程序需要Face ID权限，以使用人脸识别进行验证。</target>
         <note>Privacy - Face ID Usage Description</note>
-      </trans-unit>
-      <trans-unit id="NSLocalNetworkUsageDescription" xml:space="preserve">
-        <source>Network access required</source>
-        <note>Privacy - Local Network Usage Description</note>
       </trans-unit>
       <trans-unit id="NSPhotoLibraryAddUsageDescription" xml:space="preserve">
         <source>This app requires access to the photo library, so that you can upload your photos in the app.</source>
+        <target>该应用程序需要访问图片库，这样您就可以将照片上传到应用程序中。</target>
         <note>Privacy - Photo Library Additions Usage Description</note>
       </trans-unit>
       <trans-unit id="NSPhotoLibraryUsageDescription" xml:space="preserve">
         <source>This app requires access to the photo library, so that you can upload your photos in the app.</source>
+        <target>该应用程序需要访问图片库，这样您就可以将照片上传到应用程序中。</target>
         <note>Privacy - Photo Library Usage Description</note>
       </trans-unit>
       <trans-unit id="New Document" xml:space="preserve">
         <source>New Document</source>
+        <target>新建文档</target>
         <note/>
       </trans-unit>
       <trans-unit id="New Presentation" xml:space="preserve">
         <source>New Presentation</source>
+        <target>新建演示文稿</target>
         <note/>
       </trans-unit>
       <trans-unit id="New Spreadsheet" xml:space="preserve">
         <source>New Spreadsheet</source>
+        <target>新建电子表格</target>
         <note/>
       </trans-unit>
       <trans-unit id="ONLYOFFICE fillable form (.oform)" xml:space="preserve">
         <source>ONLYOFFICE fillable form (.oform)</source>
+        <target>ONLYOFFICE可填写的表单 (.oform)</target>
         <note/>
       </trans-unit>
       <trans-unit id="ONLYOFFICE form template (.docxf)" xml:space="preserve">
         <source>ONLYOFFICE form template (.docxf)</source>
+        <target>ONLYOFFICE表单模板 (.docxf)</target>
         <note/>
       </trans-unit>
     </body>
@@ -1723,6 +1729,10 @@ others which use WebDAV protocol.</source>
         <target>自定义筛选器</target>
         <note>Share status</note>
       </trans-unit>
+      <trans-unit id="Dark" xml:space="preserve">
+        <source>Dark</source>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
       <trans-unit id="Date" xml:space="preserve">
         <source>Date</source>
         <target>日期</target>
@@ -2209,6 +2219,10 @@ others which use WebDAV protocol.</source>
         <target>姓不正确</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
+      <trans-unit id="Light" xml:space="preserve">
+        <source>Light</source>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
       <trans-unit id="Link copied&#10;to the clipboard" xml:space="preserve">
         <source>Link copied
 to the clipboard</source>
@@ -2334,7 +2348,7 @@ to the clipboard</source>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="My archived" xml:space="preserve">
-        <source>My archived</source>
+        <source>My archives</source>
         <target>我的存档</target>
         <note>Category title</note>
       </trans-unit>
@@ -2840,6 +2854,10 @@ to the clipboard</source>
         <target>跳过</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
+      <trans-unit id="Same as system" xml:space="preserve">
+        <source>Same as system</source>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
       <trans-unit id="Saving" xml:space="preserve">
         <source>Saving</source>
         <target>正在保存</target>
@@ -3189,6 +3207,10 @@ to the clipboard</source>
         <target>已达到了用户数限制。请联系门户网站的管理员</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
+      <trans-unit id="Theme" xml:space="preserve">
+        <source>Theme</source>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
       <trans-unit id="Third party resource" xml:space="preserve">
         <source>Third party resource</source>
         <target>第三方资源</target>
@@ -3404,7 +3426,7 @@ to the clipboard</source>
         <note>Caption of the processing</note>
       </trans-unit>
       <trans-unit id="Unpning" xml:space="preserve">
-        <source>Unpning</source>
+        <source>Unpinning</source>
         <target>取消置顶</target>
         <note>Caption of the processing</note>
       </trans-unit>

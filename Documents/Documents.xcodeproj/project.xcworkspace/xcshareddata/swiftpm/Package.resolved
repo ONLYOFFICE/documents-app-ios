@@ -1,15 +1,6 @@
 {
   "pins" : [
     {
-      "identity" : "editors-ios-sp",
-      "kind" : "remoteSourceControl",
-      "location" : "https://github.com/ONLYOFFICE/editors-ios-sp.git",
-      "state" : {
-        "branch" : "release/v7.4.0",
-        "revision" : "f40b8394141341956a825cba4a5c60cc16810614"
-      }
-    },
-    {
       "identity" : "pulse",
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/kean/Pulse/",

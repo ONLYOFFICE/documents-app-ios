@@ -125,9 +125,6 @@
 "Archiving failed." = "存檔失敗。";
 
 /* No comment provided by engineer. */
-"Are you sure you want to delete the account %@ from this device?" = "您确定要删除设备上%@ 账户吗？";
-
-/* No comment provided by engineer. */
 "Are you sure you want to leave this account?" = "您确定要离开此账户吗？";
 
 /* No comment provided by engineer. */
@@ -213,9 +210,6 @@
 
 /* No comment provided by engineer. */
 "Collaboration" = "协作";
-
-/* Share status */
-"Comment" = "评论";
 
 /* Category title */
 "Common Documents" = "常用文件";
@@ -387,9 +381,6 @@
 
 /* No comment provided by engineer. */
 "Delete %lu Folder and %lu File" = "删除 %1$lu 文件夹和 %2$lu 文件";
-
-/* No comment provided by engineer. */
-"Delete account" = "删除账户";
 
 /* Button title */
 "Delete File" = "删除文件";
@@ -594,9 +585,6 @@
 "Folders" = "文件夹";
 
 /* Share status */
-"Form filling" = "表单填写";
-
-/* Share status */
 "Full Access" = "完全访问权限";
 
 /* Data units */
@@ -717,7 +705,8 @@
 /* Data units */
 "Mb" = "Mb";
 
-/* If current user name is not set */
+/* Author or member of a document
+   If current user name is not set */
 "Me" = "我";
 
 /* No comment provided by engineer. */
@@ -1004,9 +993,6 @@
 /* No comment provided by engineer. */
 "Push notifications disabled" = "推送通知已禁用";
 
-/* Share status */
-"Read Only" = "只读";
-
 /* Button title */
 "Recover here" = "在此恢复";
 
@@ -1054,9 +1040,6 @@
 
 /* Caption of the processing */
 "Restoring" = "正在还原";
-
-/* Share status */
-"Review" = "审查";
 
 /* Share status */
 "Room admin" = "會議室管理員";
@@ -1436,9 +1419,6 @@
 
 /* No comment provided by engineer. */
 "Version" = "版本";
-
-/* No comment provided by engineer. */
-"View-Only" = "僅檢視";
 
 /* No comment provided by engineer. */
 "Warning" = "警告";

@@ -275,7 +275,7 @@ class ASCOnlyofficeCategoriesViewController: UITableViewController {
     }
 
     @objc func onOnlyofficeLogoutCompleted(_ notification: Notification) {
-        if ASCConstants.Feature.allowCategoriesSkeleton {
+        if ASCAppSettings.Feature.allowCategoriesSkeleton {
             loadedCategories = []
             skeleton(show: true)
         } else {
@@ -403,7 +403,7 @@ class ASCOnlyofficeCategoriesViewController: UITableViewController {
         tableView.reloadData()
         selectCurrentlyRow()
 
-        if ASCConstants.Feature.allowCategoriesSkeleton {
+        if ASCAppSettings.Feature.allowCategoriesSkeleton {
             skeleton(show: categoriesCurrentlyLoading)
         }
     }

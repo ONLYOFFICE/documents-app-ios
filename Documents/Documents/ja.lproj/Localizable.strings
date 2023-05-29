@@ -125,9 +125,6 @@
 "Archiving failed." = "アーカイブに失敗しました。";
 
 /* No comment provided by engineer. */
-"Are you sure you want to delete the account %@ from this device?" = "本当にデバイスから %@ アカウンドを削除しますか?";
-
-/* No comment provided by engineer. */
 "Are you sure you want to leave this account?" = "本当にこのアカウントからサインアウトしますか?";
 
 /* No comment provided by engineer. */
@@ -213,9 +210,6 @@
 
 /* No comment provided by engineer. */
 "Collaboration" = "コラボレーション";
-
-/* Share status */
-"Comment" = "コメント";
 
 /* Category title */
 "Common Documents" = "共通ドキュメント";
@@ -387,9 +381,6 @@
 
 /* No comment provided by engineer. */
 "Delete %lu Folder and %lu File" = "%1$lu ファルダーと %2$lu ファイルを削除する";
-
-/* No comment provided by engineer. */
-"Delete account" = "アカウントを削除する";
 
 /* Button title */
 "Delete File" = "ファイルを削除する";
@@ -594,9 +585,6 @@
 "Folders" = "フォルダー";
 
 /* Share status */
-"Form filling" = "フォームへの入力";
-
-/* Share status */
 "Full Access" = "フルアクセス";
 
 /* Data units */
@@ -717,7 +705,8 @@
 /* Data units */
 "Mb" = "Mb";
 
-/* If current user name is not set */
+/* Author or member of a document
+   If current user name is not set */
 "Me" = "私";
 
 /* No comment provided by engineer. */
@@ -1004,9 +993,6 @@
 /* No comment provided by engineer. */
 "Push notifications disabled" = "プッシュ通知が無効";
 
-/* Share status */
-"Read Only" = "閲覧のみ";
-
 /* Button title */
 "Recover here" = "回復する";
 
@@ -1054,9 +1040,6 @@
 
 /* Caption of the processing */
 "Restoring" = "復元中";
-
-/* Share status */
-"Review" = "見直し";
 
 /* Share status */
 "Room admin" = "ルームの管理者";
@@ -1436,9 +1419,6 @@
 
 /* No comment provided by engineer. */
 "Version" = "バージョン";
-
-/* No comment provided by engineer. */
-"View-Only" = "閲覧のみ";
 
 /* No comment provided by engineer. */
 "Warning" = "警告";

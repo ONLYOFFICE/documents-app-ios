@@ -68,6 +68,7 @@ class ASCProgressAlert {
             controller.present(actionController!, animated: true, completion: nil)
         } else {
             alertWindow = UIWindow(frame: UIScreen.main.bounds)
+            alertWindow?.overrideUserInterfaceStyle = ASCAppSettings.appTheme.overrideUserInterfaceStyle
             alertWindow?.rootViewController = ASCBaseViewController()
 
             if let delegate = UIApplication.shared.delegate {

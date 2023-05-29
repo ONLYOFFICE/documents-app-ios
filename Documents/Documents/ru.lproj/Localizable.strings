@@ -29,12 +29,6 @@
 "<p>You must have a paid version of the player to use this service.</p><p>If you have activated double authentication, please generate a CDM application from the Infomaniak manager. <a href=\"https://www.infomaniak.com/en/support/faq/1940/enable-two-step-verification\">More...</a></p>" = "<p>Чтобы воспользоваться этим сервисом, необходимо приобрести платную версию плеера.</p><p>Если вы активировали двухфакторную аутентификацию, пожалуйста, установите приложение CDM из учетной записи Infomaniak (Менеджер).<a href=\"https://www.infomaniak.com/en/support/faq/1940/enable-two-step-verification\">Подробнее...</a></p>";
 
 /* No comment provided by engineer. */
-"Сould not download file." = "Не удалось скачать файл.";
-
-/* No comment provided by engineer. */
-"Сould not upload file." = "Не удалось загрузить файл.";
-
-/* No comment provided by engineer. */
 "A file with a similar name already exists in the document directory on the device." = "Файл с таким именем уже существует в папке с документами на этом устройстве.";
 
 /* No comment provided by engineer. */
@@ -111,6 +105,9 @@
 
 /* Category title */
 "All Files" = "Все файлы";
+
+/* No comment provided by engineer. */
+"All items from Archived will be deleted forever. You won’t be able to restore them." = "Все элементы из архива будут удалены навсегда. Вы не сможете их восстановить.";
 
 /* No comment provided by engineer. */
 "All notifications" = "Все уведомления";
@@ -371,6 +368,9 @@
 "Couldn't open file" = "Не удалось открыть файл";
 
 /* No comment provided by engineer. */
+"Couldn't save changes at server. Your modified document is saved in local storage as %@" = "Не удалось сохранить изменения на сервере. Ваш измененный документ сохранен в локальном хранилище под именем %@";
+
+/* No comment provided by engineer. */
 "Create" = "Создать";
 
 /* Introduction Step Two - Description */
@@ -387,6 +387,9 @@
 
 /* Share status */
 "Custom filter" = "Пользовательский фильтр";
+
+/* No comment provided by engineer. */
+"Dark" = "Темная";
 
 /* No comment provided by engineer. */
 "Date" = "Дата";
@@ -614,6 +617,12 @@
 /* Share status */
 "Form Filler" = "Заполнение форм";
 
+/* No comment provided by engineer. */
+"Form templates" = "Шаблоны форм";
+
+/* No comment provided by engineer. */
+"Forms" = "Формы";
+
 /* Share status */
 "Full Access" = "Полный доступ";
 
@@ -700,6 +709,9 @@
 
 /* No comment provided by engineer. */
 "Last name is incorrect" = "Некорректное поле Фамилия";
+
+/* No comment provided by engineer. */
+"Light" = "Светлая";
 
 /* No comment provided by engineer. */
 "Link copied\nto the clipboard" = "Ссылка скопирована\nв буфер обмена";
@@ -1086,6 +1098,9 @@
 /* DocSpace rooms */
 "Rooms" = "Комнаты";
 
+/* No comment provided by engineer. */
+"Same as system" = "То же, что и система";
+
 /* Caption of the processing */
 "Saving" = "Сохранение";
 
@@ -1298,6 +1313,9 @@
 "The user limit has been reached. Сontact the portal administrator" = "Достигнуто ограничение на количество пользователей. Свяжитесь с администратором портала";
 
 /* No comment provided by engineer. */
+"Theme" = "Тема";
+
+/* No comment provided by engineer. */
 "Third party resource" = "Сторонний ресурс";
 
 /* Introduction Step Three - Title */
@@ -1424,6 +1442,9 @@
 "Unpinned failed." = "Не удалось открепить.";
 
 /* Caption of the processing */
+"Unpinning" = "Открепление";
+
+/* Caption of the processing */
 "Unpning" = "Открепление";
 
 /* No comment provided by engineer. */
@@ -1464,6 +1485,9 @@
 
 /* No comment provided by engineer. */
 "Version" = "Версия";
+
+/* No comment provided by engineer. */
+"View-only" = "Только на просмотр";
 
 /* Share status */
 "Viewer" = "Только чтение";
@@ -1524,4 +1548,10 @@
 
 /* Data units */
 "Zero bytes" = "Ноль байт";
+
+/* No comment provided by engineer. */
+"Сould not download file." = "Не удалось скачать файл.";
+
+/* No comment provided by engineer. */
+"Сould not upload file." = "Не удалось загрузить файл.";
 

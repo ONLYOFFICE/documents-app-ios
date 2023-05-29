@@ -32,6 +32,7 @@ enum Destination {
     case about
     case passcodeLockSettings
     case developerOptions
+    case themeOptions
 }
 
 final class ASCNavigator {
@@ -126,6 +127,8 @@ final class ASCNavigator {
             return ASCPasscodeLockViewController.instance()
         case .developerOptions:
             return ASCDevelopOptionsViewController()
+        case .themeOptions:
+            return ASCAppThemeViewController()
         }
     }
 }

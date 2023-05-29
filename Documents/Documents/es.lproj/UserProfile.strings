@@ -1,13 +1,13 @@
-/* Class = "UILabel"; text = "Logout"; ObjectID = "1S2-Q7-5vL"; */
+/* Class = "UILabel"; text = "Log out"; ObjectID = "1S2-Q7-5vL"; */
 "1S2-Q7-5vL.text" = "Cerrar sesión";
 
 /* Class = "UILabel"; text = "-"; ObjectID = "9Yi-42-22H"; Note = "Do not translate"; */
 "9Yi-42-22H.text" = "-";
 
-/* Class = "UILabel"; text = "Delete account"; ObjectID = "708-fR-i2H"; */
+/* Class = "UILabel"; text = "Delete forever"; ObjectID = "708-fR-i2H"; */
 "708-fR-i2H.text" = "Eliminar cuenta";
 
-/* Class = "UINavigationItem"; title = "Account"; ObjectID = "BXA-IE-d8z"; */
+/* Class = "UINavigationItem"; title = "Profile"; ObjectID = "BXA-IE-d8z"; */
 "BXA-IE-d8z.title" = "Cuenta";
 
 /* Class = "UILabel"; text = "Email"; ObjectID = "HaW-jI-GJW"; */

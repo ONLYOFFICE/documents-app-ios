@@ -175,6 +175,12 @@
 		FC156CEF261708A00015835A /* sample in Resources */ = {isa = PBXBuildFile; fileRef = FC156CEE261708A00015835A /* sample */; };
 		FC156CF526170A660015835A /* new in Resources */ = {isa = PBXBuildFile; fileRef = FC156CF426170A660015835A /* new */; };
 		FC1755971E9CAFDB00D73D8E /* ASCSortViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC1755961E9CAFDB00D73D8E /* ASCSortViewController.swift */; };
+		FC1828F32A24E606005D9220 /* ASCAppSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC1828F22A24E606005D9220 /* ASCAppSettings.swift */; };
+		FC1828F52A24E622005D9220 /* AppTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC1828F42A24E621005D9220 /* AppTheme.swift */; };
+		FC1828F72A24E638005D9220 /* ASCAppThemeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC1828F62A24E638005D9220 /* ASCAppThemeViewController.swift */; };
+		FC1828FA2A24E65B005D9220 /* ASCDetailCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC1828F82A24E65B005D9220 /* ASCDetailCell.swift */; };
+		FC1828FB2A24E65B005D9220 /* ASCDetailCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FC1828F92A24E65B005D9220 /* ASCDetailCell.xib */; };
+		FC1828FD2A24E6DA005D9220 /* AppThemeService.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC1828FC2A24E6DA005D9220 /* AppThemeService.swift */; };
 		FC1984982805559D002057B2 /* ASCFiltersCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC1984952805559D002057B2 /* ASCFiltersCollectionViewCell.swift */; };
 		FC19849A2805559D002057B2 /* ASCLeftAlignedCollectionViewFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC1984962805559D002057B2 /* ASCLeftAlignedCollectionViewFlowLayout.swift */; };
 		FC19849C2805559D002057B2 /* ASCFiltersCollectionViewHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC1984972805559D002057B2 /* ASCFiltersCollectionViewHeader.swift */; };
@@ -715,6 +721,12 @@
 		FC156CEE261708A00015835A /* sample */ = {isa = PBXFileReference; lastKnownFileType = folder; name = sample; path = "../../../../document-templates/sample"; sourceTree = "<group>"; };
 		FC156CF426170A660015835A /* new */ = {isa = PBXFileReference; lastKnownFileType = folder; name = new; path = "../../../../document-templates/new"; sourceTree = "<group>"; };
 		FC1755961E9CAFDB00D73D8E /* ASCSortViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASCSortViewController.swift; sourceTree = "<group>"; };
+		FC1828F22A24E606005D9220 /* ASCAppSettings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASCAppSettings.swift; sourceTree = "<group>"; };
+		FC1828F42A24E621005D9220 /* AppTheme.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppTheme.swift; sourceTree = "<group>"; };
+		FC1828F62A24E638005D9220 /* ASCAppThemeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASCAppThemeViewController.swift; sourceTree = "<group>"; };
+		FC1828F82A24E65B005D9220 /* ASCDetailCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASCDetailCell.swift; sourceTree = "<group>"; };
+		FC1828F92A24E65B005D9220 /* ASCDetailCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ASCDetailCell.xib; sourceTree = "<group>"; };
+		FC1828FC2A24E6DA005D9220 /* AppThemeService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppThemeService.swift; sourceTree = "<group>"; };
 		FC1984952805559D002057B2 /* ASCFiltersCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASCFiltersCollectionViewCell.swift; sourceTree = "<group>"; };
 		FC1984962805559D002057B2 /* ASCLeftAlignedCollectionViewFlowLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASCLeftAlignedCollectionViewFlowLayout.swift; sourceTree = "<group>"; };
 		FC1984972805559D002057B2 /* ASCFiltersCollectionViewHeader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASCFiltersCollectionViewHeader.swift; sourceTree = "<group>"; };
@@ -2024,6 +2036,7 @@
 				FC25B447284F67F70075D6C2 /* Cell */,
 				FCEF9D2F1ED2D12000627BA5 /* PasscodeLock */,
 				FC8650391ED3232B00C73AEF /* ASCAboutViewController.swift */,
+				FC1828F62A24E638005D9220 /* ASCAppThemeViewController.swift */,
 				FCCD8CA62859B80700ECD606 /* ASCDevelopOptionsViewController.swift */,
 				FC25B457284F68AB0075D6C2 /* ASCNotificationSettingsViewController.swift */,
 				FC1EA5D11ECF2A6D008FEE2E /* ASCSettingsViewController.swift */,
@@ -2034,8 +2047,10 @@
 		FC25B447284F67F70075D6C2 /* Cell */ = {
 			isa = PBXGroup;
 			children = (
-				FC25B448284F67F70075D6C2 /* ASCNotificationWarningCell.xib */,
+				FC1828F82A24E65B005D9220 /* ASCDetailCell.swift */,
+				FC1828F92A24E65B005D9220 /* ASCDetailCell.xib */,
 				FC25B449284F67F70075D6C2 /* ASCNotificationWarningCell.swift */,
+				FC25B448284F67F70075D6C2 /* ASCNotificationWarningCell.xib */,
 				FC25B44B284F67F70075D6C2 /* ASCSettingsNotificationCell.swift */,
 				FC25B44A284F67F70075D6C2 /* ASCSwitchCell.xib */,
 				FC25B44C284F67F70075D6C2 /* ASCSwitchCell.swift */,
@@ -2154,6 +2169,7 @@
 		FC41D8002265D6C900A155C2 /* Enums */ = {
 			isa = PBXGroup;
 			children = (
+				FC1828F42A24E621005D9220 /* AppTheme.swift */,
 				FC8BBC9D22BA5D6100761152 /* ASCCreatePortalStatus.swift */,
 				FCA464A129437F5000EC05C7 /* ASCDocumentOpenMode.swift */,
 				FC41D8012265D6EF00A155C2 /* ASCLoginType.swift */,
@@ -2643,6 +2659,8 @@
 				FC0F01DD216F43FF008D79A5 /* Providers */,
 				1D1A2E262660F97900D0335B /* LoadedViewControllersFinders */,
 				FC68524326837B7300D830EC /* Networking */,
+				FC1828FC2A24E6DA005D9220 /* AppThemeService.swift */,
+				FC1828F22A24E606005D9220 /* ASCAppSettings.swift */,
 				FCDB31A71E7C116E00907FC0 /* ASCConstants.swift */,
 				FC56B5C520C017C300557C1F /* ASCStyles.swift */,
 				FCC3E9BD214006B1001B216C /* ASCLocalization.swift */,
@@ -3085,6 +3103,7 @@
 				FCFDAA981E48A10C007A240C /* Images.xcassets in Resources */,
 				FC156CEF261708A00015835A /* sample in Resources */,
 				FC7B37D61E929B46009C41AD /* Settings.bundle in Resources */,
+				FC1828FB2A24E65B005D9220 /* ASCDetailCell.xib in Resources */,
 				FCEF9D1A1ED2C94300627BA5 /* PasscodeLock.strings in Resources */,
 				FCCD8C92285782EB00ECD606 /* ASCStandartCell.xib in Resources */,
 				FC25B451284F67F70075D6C2 /* ASCSwitchCell.xib in Resources */,
@@ -3542,6 +3561,7 @@
 				F3F0F6AE284502CE0083370A /* ASCLocalFilterController.swift in Sources */,
 				FC53AD5E298970E3004528D7 /* ASCEditorManagerExtension.swift in Sources */,
 				FC7E457129226A35006C4CA1 /* ASCFile.swift in Sources */,
+				FC1828FD2A24E6DA005D9220 /* AppThemeService.swift in Sources */,
 				FCC552B61EC3196B00F645EE /* ASCCountryCodeViewController.swift in Sources */,
 				1D1A2E282660F99800D0335B /* ASCLoadedDocumentViewControllerByProviderAndFolderFinder.swift in Sources */,
 				1D71107826A5A78100E00421 /* ASCShareSettingsAPIWorkerProtocol.swift in Sources */,
@@ -3665,6 +3685,7 @@
 				1D81EBA92811AB7000EDFB86 /* DropBoxRequestInterceptor.swift in Sources */,
 				FCC64FEB291D1576004D9A47 /* ASCSharingInviteRightHoldersTableViewDataSourceAndDelegate.swift in Sources */,
 				1D14AAD626962E6F009E48AD /* ASCSharingSettingsAccessTableProvider.swift in Sources */,
+				FC1828F32A24E606005D9220 /* ASCAppSettings.swift in Sources */,
 				FC7CF5191EF3EFF300C0A64F /* NSString+HTMLString.swift in Sources */,
 				1D14AADD26964995009E48AD /* ASCSharingSettingsAccessProviderFactory.swift in Sources */,
 				FC68399221B7ED6700251CEA /* ASCOnlyofficeCategoriesViewController.swift in Sources */,
@@ -3703,6 +3724,7 @@
 				FC68527326837B7300D830EC /* NetworkingError.swift in Sources */,
 				FC68527B26837B7300D830EC /* KingfisherWrapper+Onlyoffice.swift in Sources */,
 				FCEF855726C405FB00173DDF /* ASCBaseTabBarController.swift in Sources */,
+				FC1828F72A24E638005D9220 /* ASCAppThemeViewController.swift in Sources */,
 				FCFB36071EDF0AB00001597E /* ASCBanner.swift in Sources */,
 				FCEF9D391ED2D34400627BA5 /* ASCPasscodeLockSplashView.swift in Sources */,
 				FCD2DD7327031DF400D31BD5 /* ASCCloudsViewController+ManagedAppConfig.swift in Sources */,
@@ -3839,6 +3861,7 @@
 				FC7E456529226A35006C4CA1 /* ASCPaymentQuota.swift in Sources */,
 				F3B17C2327FC82D50021E03A /* ASCDocumentsFilterModel.swift in Sources */,
 				1D299153274FB46300A06F3B /* ASCPortalTypeDefinderProtocol.swift in Sources */,
+				FC1828FA2A24E65B005D9220 /* ASCDetailCell.swift in Sources */,
 				FC19849C2805559D002057B2 /* ASCFiltersCollectionViewHeader.swift in Sources */,
 				F377689527CFCF2D0044EDA6 /* ASCConnectStorageNextCloudServerController.swift in Sources */,
 				1DF505242641867300B78496 /* ASCOneDriveFileProvider.swift in Sources */,
@@ -3921,6 +3944,7 @@
 				1D667A5328D3AB50009BD85D /* ASCDocumentsCellContextMenu.swift in Sources */,
 				FCA7500622BB91DE00991682 /* UIButton+Extensions.swift in Sources */,
 				FCB8A39521C2881100CF74FA /* ASCDeviceCategoryCell.swift in Sources */,
+				FC1828F52A24E622005D9220 /* AppTheme.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -9,17 +9,20 @@
 import UIKit
 
 enum AppThemeService {
-    static func set(theme: AppTheme) {
-        ASCAppSettings.appTheme = theme
-        AppThemeService.check()
+    static var theme: AppTheme {
+        get { AppTheme(rawValue: UserDefaults.standard.string(forKey: ASCConstants.SettingsKeys.appTheme) ?? "") ?? .automatic }
+        set {
+            UserDefaults.standard.set(newValue.rawValue, forKey: ASCConstants.SettingsKeys.appTheme)
+            AppThemeService.update()
+        }
     }
 
-    static func check() {
+    private static func update() {
         guard
             let sharedAppWindow = UIApplication.shared.delegate?.window
         else { return }
 
-        switch ASCAppSettings.appTheme {
+        switch AppThemeService.theme {
         case .automatic:
             sharedAppWindow?.overrideUserInterfaceStyle = .unspecified
         case .light:

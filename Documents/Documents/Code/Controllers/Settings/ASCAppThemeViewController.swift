@@ -44,7 +44,7 @@ class ASCAppThemeViewController: ASCBaseTableViewController {
                     action: {
                         self.setTheme(theme: theme)
                     },
-                    accessoryType: ASCAppSettings.appTheme == theme
+                    accessoryType: AppThemeService.theme == theme
                         ? UITableViewCell.AccessoryType.checkmark
                         : UITableViewCell.AccessoryType.none
                 )
@@ -54,7 +54,7 @@ class ASCAppThemeViewController: ASCBaseTableViewController {
     }
 
     private func setTheme(theme: AppTheme) {
-        AppThemeService.set(theme: theme)
+        AppThemeService.theme = theme
         build()
     }
 }

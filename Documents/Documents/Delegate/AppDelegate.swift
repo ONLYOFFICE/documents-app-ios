@@ -60,7 +60,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         #endif
 
         window = UIWindow()
-        window?.overrideUserInterfaceStyle = ASCAppSettings.appTheme.overrideUserInterfaceStyle
+        window?.overrideUserInterfaceStyle = AppThemeService.theme.overrideUserInterfaceStyle
         window?.rootViewController = ASCRootViewController.instance()
         window?.makeKeyAndVisible()
 

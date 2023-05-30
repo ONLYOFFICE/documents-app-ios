@@ -141,7 +141,7 @@ class ASCEditorManager: NSObject {
         cleanupEditorWindow()
 
         editorWindow = UIWindow(frame: UIScreen.main.bounds)
-        editorWindow?.overrideUserInterfaceStyle = ASCAppSettings.appTheme.overrideUserInterfaceStyle
+        editorWindow?.overrideUserInterfaceStyle = AppThemeService.theme.overrideUserInterfaceStyle
         editorWindow?.rootViewController = UIViewController()
 
         if let delegate = UIApplication.shared.delegate {

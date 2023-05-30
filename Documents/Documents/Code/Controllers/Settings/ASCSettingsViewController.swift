@@ -142,7 +142,7 @@ class ASCSettingsViewController: ASCBaseTableViewController {
                 .detail(
                     viewModel: ASCDetailTabelViewCellViewModel(
                         title: NSLocalizedString("Theme", comment: ""),
-                        detail: ASCAppSettings.appTheme.description,
+                        detail: AppThemeService.theme.description,
                         accessoryType: .disclosureIndicator,
                         action: {
                             self.navigator.navigate(to: .themeOptions)

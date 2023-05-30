@@ -19,11 +19,6 @@ enum ASCAppSettings {
         set { UserDefaults.standard.set(newValue, forKey: ASCConstants.SettingsKeys.compressImage) }
     }
 
-    static var appTheme: AppTheme {
-        get { AppTheme(rawValue: UserDefaults.standard.string(forKey: ASCConstants.SettingsKeys.appTheme) ?? "") ?? .automatic }
-        set { UserDefaults.standard.set(newValue.rawValue, forKey: ASCConstants.SettingsKeys.appTheme) }
-    }
-
     enum Feature {
         // Hide the searchbar in the navigationbar if the list of documents is empty
         static var hideSearchbarIfEmpty: Bool {

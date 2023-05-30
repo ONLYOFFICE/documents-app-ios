@@ -31,8 +31,8 @@ class ASCConstants {
     enum Urls {
         static let personalPortals = ["://personal.onlyoffice.com", "://personal.teamlab.info"]
         static let apiSystemUrl = "https://api-system.%@"
-        static let apiValidatePortalName = "api/portal/validateportalname"
-        static let apiRegistrationPortal = "api/portal/register"
+        static let apiValidatePortalName = "apisystem/portal/validateportalname"
+        static let apiRegistrationPortal = "apisystem/portal/register"
         static let apiForgetPassword = "%@/auth.aspx#passrecovery"
         static let supportMailTo = "support@onlyoffice.com"
         static let legalTerms = "https://www.onlyoffice.com/legalterms.aspx"
@@ -278,5 +278,5 @@ class ASCConstants {
 
 extension ASCConstants.Urls {
     static let defaultDomainRegions = "onlyoffice.com"
-    static let domainRegions: [String: String] = ASCConstants.internalConstants["DomainRegions"] as? [String: String] ?? [:]
+    static let domainRegions: [String: String] = ASCConstants.internalConstants["DomainRegionsDocSpace"] as? [String: String] ?? [:]
 }

@@ -49,6 +49,7 @@ class ASCCreateEntity: NSObject, UIImagePickerControllerDelegate, UINavigationCo
             config.duration = .forever
             config.presentationStyle = .bottom
             config.dimMode = .gray(interactive: true)
+            config.overrideUserInterfaceStyle = AppThemeService.theme.overrideUserInterfaceStyle
 
             SwiftMessages.show(config: config, view: createEntityView)
         } else {

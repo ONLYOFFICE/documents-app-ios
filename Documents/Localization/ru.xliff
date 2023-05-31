@@ -1441,7 +1441,7 @@ Note: if you forget the passcode, you'll need to delete and reinstall the app. A
       </trans-unit>
       <trans-unit id="All items from Archived will be deleted forever. You won’t be able to restore them." xml:space="preserve">
         <source>All items from Archived will be deleted forever. You won’t be able to restore them.</source>
-        <target state="translated">Все элементы из архива будут удалены навсегда. Вы не сможете их восстановить.</target>
+        <target>Все элементы из архива будут удалены навсегда. Вы не сможете их восстановить.</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="All notifications" xml:space="preserve">
@@ -1509,6 +1509,16 @@ Note: if you forget the passcode, you'll need to delete and reinstall the app. A
         <target>Назад</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
+      <trans-unit id="Being an owner of this DocSpace, you must transfer the ownership to another user before you can delete your account. Please choose a new owner to proceed." xml:space="preserve">
+        <source>Being an owner of this DocSpace, you must transfer the ownership to another user before you can delete your account. Please choose a new owner to proceed.</source>
+        <target state="translated">Поскольку вы являетесь владельцем данного DocSpace, вы должны передать права владельца другому пользователю, прежде чем сможете удалить свой аккаунт. Чтобы продолжить, выберите нового владельца.</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Being an owner of this portal, you must transfer the ownership to another user before you can delete your account. Please choose a new owner to proceed." xml:space="preserve">
+        <source>Being an owner of this portal, you must transfer the ownership to another user before you can delete your account. Please choose a new owner to proceed.</source>
+        <target state="translated">Поскольку вы являетесь владельцем данного портала, вы должны передать права владельца другому пользователю, прежде чем сможете удалить свой аккаунт. Чтобы продолжить, выберите нового владельца.</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
       <trans-unit id="Box" xml:space="preserve">
         <source>Box</source>
         <target>Box</target>
@@ -1562,6 +1572,11 @@ Note: if you forget the passcode, you'll need to delete and reinstall the app. A
       <trans-unit id="Cancel invitation?" xml:space="preserve">
         <source>Cancel invitation?</source>
         <target>Отменить приглашение?</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Change owner" xml:space="preserve">
+        <source>Change owner</source>
+        <target state="translated">Сменить владельца</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Check your internet connection" xml:space="preserve">
@@ -1840,7 +1855,7 @@ others which use WebDAV protocol.</source>
       </trans-unit>
       <trans-unit id="Couldn't save changes at server. Your modified document is saved in local storage as %@" xml:space="preserve">
         <source>Couldn't save changes at server. Your modified document is saved in local storage as %@</source>
-        <target state="translated">Не удалось сохранить изменения на сервере. Ваш измененный документ сохранен в локальном хранилище под именем %@</target>
+        <target>Не удалось сохранить изменения на сервере. Ваш измененный документ сохранен в локальном хранилище под именем %@</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Create" xml:space="preserve">
@@ -1875,7 +1890,7 @@ others which use WebDAV protocol.</source>
       </trans-unit>
       <trans-unit id="Dark" xml:space="preserve">
         <source>Dark</source>
-        <target state="translated">Темная</target>
+        <target>Темная</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Date" xml:space="preserve">
@@ -2236,12 +2251,12 @@ others which use WebDAV protocol.</source>
       </trans-unit>
       <trans-unit id="Form templates" xml:space="preserve">
         <source>Form templates</source>
-        <target state="translated">Шаблоны форм</target>
+        <target>Шаблоны форм</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Forms" xml:space="preserve">
         <source>Forms</source>
-        <target state="translated">Формы</target>
+        <target>Формы</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Full Access" xml:space="preserve">
@@ -2371,7 +2386,7 @@ others which use WebDAV protocol.</source>
       </trans-unit>
       <trans-unit id="Light" xml:space="preserve">
         <source>Light</source>
-        <target state="translated">Светлая</target>
+        <target>Светлая</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Link copied&#10;to the clipboard" xml:space="preserve">
@@ -3365,7 +3380,7 @@ to the clipboard</source>
       </trans-unit>
       <trans-unit id="Theme" xml:space="preserve">
         <source>Theme</source>
-        <target state="translated">Тема</target>
+        <target>Тема</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Third party resource" xml:space="preserve">
@@ -3580,7 +3595,7 @@ to the clipboard</source>
       </trans-unit>
       <trans-unit id="Unpinning" xml:space="preserve">
         <source>Unpinning</source>
-        <target state="translated">Открепление</target>
+        <target>Открепление</target>
         <note>Caption of the processing</note>
       </trans-unit>
       <trans-unit id="Unpning" xml:space="preserve">
@@ -3655,7 +3670,7 @@ to the clipboard</source>
       </trans-unit>
       <trans-unit id="View-only" xml:space="preserve">
         <source>View-only</source>
-        <target state="translated">Только на просмотр</target>
+        <target>Только на просмотр</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Viewer" xml:space="preserve">

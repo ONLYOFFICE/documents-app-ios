@@ -236,43 +236,90 @@ class ASCUserProfileViewController: UITableViewController {
     }
 
     private func isCurrentUser() -> Bool {
-        guard let portal = ASCFileManager.onlyofficeProvider?.apiClient.baseURL?.absoluteString,
-              let user = ASCFileManager.onlyofficeProvider?.user,
-              user.email == viewModel.email,
-              portal == viewModel.portal
+        guard
+            let portal = ASCFileManager.onlyofficeProvider?.apiClient.baseURL?.absoluteString,
+            let user = ASCFileManager.onlyofficeProvider?.user,
+            user.email == viewModel.email,
+            portal == viewModel.portal
         else { return false }
         return true
     }
 
     private func showDeleteAccountAlert() {
-        guard let user = ASCFileManager.onlyofficeProvider?.user,
-              let email = user.email else { return }
+        guard let user = ASCFileManager.onlyofficeProvider?.user else { return }
+
+        if user.isOwner {
+            showDeleteAccountOwnerAlert()
+        } else {
+            showDeleteAccountUserAlert()
+        }
+    }
+
+    private func showDeleteAccountUserAlert() {
+        guard
+            let user = ASCFileManager.onlyofficeProvider?.user,
+            let email = user.email
+        else { return }
 
         let title = NSLocalizedString("Terminate account", comment: "")
         let message = String(format: NSLocalizedString("Send the profile deletion instructions to the email address %@?", comment: ""), email)
-        let sendAlertAction = UIAlertAction(title: NSLocalizedString("Send", comment: ""),
-                                            style: .default)
-        { _ in
-            let hud = MBProgressHUD.showTopMost()
-            hud?.label.text = NSLocalizedString("Sending", comment: "")
 
-            self.deleteAccountMailRequest { result in
-                DispatchQueue.main.async {
-                    hud?.hide(animated: true)
-                    switch result {
-                    case .success:
-                        self.showSendAlert()
-                    case let .failure(errorMessage):
-                        print(errorMessage)
-                        self.showErrorAlert(message: errorMessage)
+        showAlert(
+            title: title,
+            message: message,
+            buttonTitles: [
+                NSLocalizedString("Send", comment: ""),
+                NSLocalizedString("Cancel", comment: ""),
+            ],
+            highlightedButtonIndex: 0,
+            completion: { index in
+                if index == 0 {
+                    let hud = MBProgressHUD.showTopMost()
+                    hud?.label.text = NSLocalizedString("Sending", comment: "")
+
+                    self.deleteAccountMailRequest { result in
+                        DispatchQueue.main.async {
+                            hud?.hide(animated: true)
+                            switch result {
+                            case .success:
+                                self.showSendAlert()
+                            case let .failure(errorMessage):
+                                print(errorMessage)
+                                self.showErrorAlert(message: errorMessage)
+                            }
+                        }
                     }
                 }
             }
-        }
+        )
+    }
 
-        let alertController = UIAlertController.alert(title, message: message, actions: [sendAlertAction])
-            .cancelable()
-        present(alertController, animated: true, completion: nil)
+    private func showDeleteAccountOwnerAlert() {
+        let protalType = ASCPortalTypeDefinderByCurrentConnection().definePortalType()
+
+        let title = NSLocalizedString("Terminate account", comment: "")
+        let message = protalType == .docSpace
+            ? NSLocalizedString("Being an owner of this DocSpace, you must transfer the ownership to another user before you can delete your account. Please choose a new owner to proceed.", comment: "")
+            : NSLocalizedString("Being an owner of this portal, you must transfer the ownership to another user before you can delete your account. Please choose a new owner to proceed.", comment: "")
+
+        showAlert(
+            title: title,
+            message: message,
+            buttonTitles: [
+                NSLocalizedString("Change owner", comment: ""),
+                NSLocalizedString("Cancel", comment: ""),
+            ],
+            highlightedButtonIndex: 0,
+            completion: { index in
+                if index == 0 {
+                    if let url = OnlyofficeApiClient.shared.baseURL,
+                       UIApplication.shared.canOpenURL(url)
+                    {
+                        UIApplication.shared.open(url, options: [:], completionHandler: nil)
+                    }
+                }
+            }
+        )
     }
 
     private func showLogoutAlert() {

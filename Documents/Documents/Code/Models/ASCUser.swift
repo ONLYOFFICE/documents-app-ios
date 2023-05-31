@@ -23,11 +23,11 @@ class ASCUser: Mappable {
     var avatarRetina: String?
     var isAdmin: Bool = false
     var isVisitor: Bool = false
-    var isShareOwner: Bool = false
+    var isOwner: Bool = false
     var accessValue: ASCShareAccess = .none
 
     var userType: UserType {
-        return isAdmin ? .admin : isShareOwner ? .owner : .user
+        return isAdmin ? .admin : isOwner ? .owner : .user
     }
 
     init() {
@@ -52,7 +52,7 @@ class ASCUser: Mappable {
         avatarRetina <- map["avatarRetina"]
         isAdmin <- map["isAdmin"]
         isVisitor <- map["isVisitor"]
-        isShareOwner <- map["isOwner"]
+        isOwner <- map["isOwner"]
         accessValue <- (map["access"], EnumTransform())
 
         if let _ = map.JSON["sharedTo"] {

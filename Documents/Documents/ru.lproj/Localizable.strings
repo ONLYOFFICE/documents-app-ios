@@ -149,6 +149,12 @@
 "Back" = "Назад";
 
 /* No comment provided by engineer. */
+"Being an owner of this DocSpace, you must transfer the ownership to another user before you can delete your account. Please choose a new owner to proceed." = "Поскольку вы являетесь владельцем данного DocSpace, вы должны передать права владельца другому пользователю, прежде чем сможете удалить свой аккаунт. Чтобы продолжить, выберите нового владельца.";
+
+/* No comment provided by engineer. */
+"Being an owner of this portal, you must transfer the ownership to another user before you can delete your account. Please choose a new owner to proceed." = "Поскольку вы являетесь владельцем данного портала, вы должны передать права владельца другому пользователю, прежде чем сможете удалить свой аккаунт. Чтобы продолжить, выберите нового владельца.";
+
+/* No comment provided by engineer. */
 "Box" = "Box";
 
 /* No comment provided by engineer. */
@@ -183,6 +189,9 @@
 
 /* No comment provided by engineer. */
 "Cancel invitation?" = "Отменить приглашение?";
+
+/* No comment provided by engineer. */
+"Change owner" = "Сменить владельца";
 
 /* No comment provided by engineer. */
 "Check your internet connection" = "Проверьте интернет-соединение";

@@ -65,6 +65,7 @@ open class PasscodeLockPresenter {
 
         isPasscodePresented = true
         passcodeLockWindow.windowLevel = UIWindow.Level.statusBar - 1
+        passcodeLockWindow.overrideUserInterfaceStyle = AppThemeService.theme.overrideUserInterfaceStyle
 
         toggleKeyboardVisibility(hide: true)
 

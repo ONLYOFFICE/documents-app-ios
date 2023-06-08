@@ -343,6 +343,8 @@
 		FCAE8B8D1E717B84004FC332 /* EventManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCAE8B8C1E717B84004FC332 /* EventManager.swift */; };
 		FCB1BEC11E8E4368004C7967 /* UIAlertController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCB1BEC01E8E4368004C7967 /* UIAlertController+Extension.swift */; };
 		FCB1BEC31E8E5E55004C7967 /* MBProgressHUD+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCB1BEC21E8E5E55004C7967 /* MBProgressHUD+Extension.swift */; };
+		FCB4CE3029F93B04009C1E2E /* ASCEditorManager+DocumentEditorViewControllerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCB4CE2F29F93B04009C1E2E /* ASCEditorManager+DocumentEditorViewControllerDelegate.swift */; };
+		FCB4CE9D29FBCDF8009C1E2E /* UserDefaultsExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCB4CE9C29FBCDF8009C1E2E /* UserDefaultsExtensions.swift */; };
 		FCB839661EB8948D0065EC25 /* ASCIntroPageController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCB839651EB8948D0065EC25 /* ASCIntroPageController.swift */; };
 		FCB8A39221C27EE000CF74FA /* ASCDeviceCategoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCB8A39121C27EE000CF74FA /* ASCDeviceCategoryViewController.swift */; };
 		FCB8A39521C2881100CF74FA /* ASCDeviceCategoryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCB8A39421C2881100CF74FA /* ASCDeviceCategoryCell.swift */; };
@@ -894,6 +896,8 @@
 		FCAE8B8C1E717B84004FC332 /* EventManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventManager.swift; sourceTree = "<group>"; };
 		FCB1BEC01E8E4368004C7967 /* UIAlertController+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIAlertController+Extension.swift"; sourceTree = "<group>"; };
 		FCB1BEC21E8E5E55004C7967 /* MBProgressHUD+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "MBProgressHUD+Extension.swift"; sourceTree = "<group>"; };
+		FCB4CE2F29F93B04009C1E2E /* ASCEditorManager+DocumentEditorViewControllerDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ASCEditorManager+DocumentEditorViewControllerDelegate.swift"; sourceTree = "<group>"; };
+		FCB4CE9C29FBCDF8009C1E2E /* UserDefaultsExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsExtensions.swift; sourceTree = "<group>"; };
 		FCB839651EB8948D0065EC25 /* ASCIntroPageController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASCIntroPageController.swift; sourceTree = "<group>"; };
 		FCB8A39121C27EE000CF74FA /* ASCDeviceCategoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCDeviceCategoryViewController.swift; sourceTree = "<group>"; };
 		FCB8A39421C2881100CF74FA /* ASCDeviceCategoryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCDeviceCategoryCell.swift; sourceTree = "<group>"; };
@@ -1409,6 +1413,7 @@
 				FC2EEA3721BAB05F00CB85A3 /* UIViewController+Extensions.swift */,
 				FCF8A2CC2938FD4C00EA137A /* UIWindow+Extensions.swift */,
 				FC8A137E2268B57F006D8C6E /* URL+Extensions.swift */,
+				FCB4CE9C29FBCDF8009C1E2E /* UserDefaultsExtensions.swift */,
 				8ADB2DE0234369BE0009FD4E /* MGSwipeButton+Extensions.swift */,
 			);
 			path = Extensions;
@@ -2277,6 +2282,7 @@
 				FC65B6B51EB9F23800AE73BB /* ASCDocumentService.swift */,
 				FC28F2C51E8D1BB200A8F985 /* ASCEntityManager.swift */,
 				FCA4D5A91E79728800ADD842 /* ASCEditorManager.swift */,
+				FCB4CE2F29F93B04009C1E2E /* ASCEditorManager+DocumentEditorViewControllerDelegate.swift */,
 				FC53AC732988F117004528D7 /* ASCEditorManagerExtension.swift */,
 				FCC39FE91E6ECB3400DECB8D /* ASCLocalFileHelper.swift */,
 				FC3AF6BC21709259004A96FD /* ASCFileManager.swift */,
@@ -2695,10 +2701,10 @@
 			buildRules = (
 			);
 			dependencies = (
+				FC5368F224EB1C040092765B /* PBXTargetDependency */,
 				FC5368FC24EB1C100092765B /* PBXTargetDependency */,
 				FC5368FA24EB1C0C0092765B /* PBXTargetDependency */,
 				FC5368F824EB1C070092765B /* PBXTargetDependency */,
-				FC5368F224EB1C040092765B /* PBXTargetDependency */,
 			);
 			name = "Documents-develop";
 			packageProductDependencies = (
@@ -3414,12 +3420,14 @@
 				FC41D8082265D9DD00A155C2 /* ASCEntityAccess.swift in Sources */,
 				FC53AC742988F117004528D7 /* ASCEditorManagerExtension.swift in Sources */,
 				FC6106F71F9E28EE002A25C8 /* UPCarouselFlowLayout.swift in Sources */,
+				FCB4CE3029F93B04009C1E2E /* ASCEditorManager+DocumentEditorViewControllerDelegate.swift in Sources */,
 				FCC3964B1ECDD9A10016BB10 /* ASCUserProfileViewController.swift in Sources */,
 				FCA4649629435CA100EC05C7 /* ASCDocumentOpenMode.swift in Sources */,
 				FC56B5C620C017C300557C1F /* ASCStyles.swift in Sources */,
 				FC0F01E1216F46B7008D79A5 /* ASCOnlyofficeProvider.swift in Sources */,
 				FCE2B4242930CCA700E50429 /* ASCPaymentQuota.swift in Sources */,
 				FC8C69791ECC2990005B68D7 /* Date+Extension.swift in Sources */,
+				FCB4CE9D29FBCDF8009C1E2E /* UserDefaultsExtensions.swift in Sources */,
 				FC7D99262729942700410795 /* ASCSharingSettingsAccessViewModel.swift in Sources */,
 				FC308D9B283E2FDA00FFE16E /* ASCNotificationSettingsViewController.swift in Sources */,
 				FCEF9D351ED2D1D600627BA5 /* ASCUserDefaultsPasscodeRepository.swift in Sources */,

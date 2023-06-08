@@ -1643,11 +1643,14 @@ class ASCDocumentsViewController: ASCBaseTableViewController, UIGestureRecognize
     }
 
     func checkUnsuccessfullyOpenedFile() {
-        if let documentInfo = UserDefaults.standard.object(forKey: ASCConstants.SettingsKeys.openedDocument) as? [String: Any] {
+        ASCEditorManager.shared.checkUnsuccessfullyOpenedFile(parent: self)
+        return
+
+        if let documentInfo = UserDefaults.standard.object(forKey: ASCConstants.SettingsKeys.openedDocumentConfiguration) as? [String: Any] {
             if let file = ASCFile(JSONString: documentInfo["file"] as! String) {
-                if !UserDefaults.standard.bool(forKey: ASCConstants.SettingsKeys.openedDocumentModifity) {
-                    UserDefaults.standard.removeObject(forKey: ASCConstants.SettingsKeys.openedDocumentModifity)
-                    UserDefaults.standard.removeObject(forKey: ASCConstants.SettingsKeys.openedDocument)
+                if !UserDefaults.standard.bool(forKey: ASCConstants.SettingsKeys.openedDocumentModified) {
+                    UserDefaults.standard.removeObject(forKey: ASCConstants.SettingsKeys.openedDocumentModified)
+                    UserDefaults.standard.removeObject(forKey: ASCConstants.SettingsKeys.openedDocumentConfiguration)
 
                     ASCLocalFileHelper.shared.removeDirectory(Path.userTemporary + file.title)
 
@@ -1655,7 +1658,7 @@ class ASCDocumentsViewController: ASCBaseTableViewController, UIGestureRecognize
                 }
 
                 // Force reset open recover version
-                UserDefaults.standard.removeObject(forKey: ASCConstants.SettingsKeys.openedDocumentModifity)
+                UserDefaults.standard.removeObject(forKey: ASCConstants.SettingsKeys.openedDocumentModified)
 
                 let closeHandler = closeProgress(
                     file: file,
@@ -1683,7 +1686,7 @@ class ASCDocumentsViewController: ASCBaseTableViewController, UIGestureRecognize
                     if forceCancel {
                         timer.invalidate()
 
-                        UserDefaults.standard.removeObject(forKey: ASCConstants.SettingsKeys.openedDocument)
+                        UserDefaults.standard.removeObject(forKey: ASCConstants.SettingsKeys.openedDocumentConfiguration)
                         ASCLocalFileHelper.shared.removeDirectory(Path.userTemporary + file.title)
                     } else {
                         deadTime += interval

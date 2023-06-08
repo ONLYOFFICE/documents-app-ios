@@ -6,6 +6,7 @@
 //  Copyright © 2023 Ascensio System SIA. All rights reserved.
 //
 
+import DocumentEditor
 import Foundation
 
 extension ASCEditorManager: ASCEditorManagerProtocol {
@@ -88,6 +89,10 @@ extension ASCEditorManager: ASCEditorManagerProtocol {
     }
 
     func cloudEditor(config: [String: Any]) -> [String: Any] {
+        return config
+    }
+
+    func localEditor(config: EditorConfiguration) -> EditorConfiguration {
         return config
     }
 }

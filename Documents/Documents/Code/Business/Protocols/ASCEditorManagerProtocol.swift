@@ -6,6 +6,7 @@
 //  Copyright © 2023 Ascensio System SIA. All rights reserved.
 //
 
+import DocumentEditor
 import Foundation
 
 protocol ASCEditorManagerProtocol {
@@ -16,4 +17,6 @@ protocol ASCEditorManagerProtocol {
 
     func localEditor(config: [String: Any]) -> [String: Any]
     func cloudEditor(config: [String: Any]) -> [String: Any]
+
+    func localEditor(config: EditorConfiguration) -> EditorConfiguration
 }

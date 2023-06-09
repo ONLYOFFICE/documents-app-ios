@@ -3005,22 +3005,27 @@ extension ASCEditorManager {
 #endif
 
 extension ASCEditorManager: DocumentEditorViewControllerDelegate {
-    func documentDidOpen(_ controller: DocumentEditor.DocumentEditorViewController, document: DocumentEditor.EditorDocument) {
+    func documentDidOpen(_ controller: DocumentEditorViewController, result: Result<DocumentEditor.EditorDocument, Error>) {
         log.info("DocumentEditorViewControllerDelegate:documentDidOpen")
 
-        if let file = openedFile,
-           !file.device,
-           provider?.allowEdit(entity: file) ?? false
-        {
-            OnlyofficeApiClient.request(OnlyofficeAPI.Endpoints.Files.startEdit(file: file)) { response, error in
-                if let error = error {
-                    log.error(error)
+        switch result {
+        case .success:
+            if let file = openedFile,
+               !file.device,
+               provider?.allowEdit(entity: file) ?? false
+            {
+                OnlyofficeApiClient.request(OnlyofficeAPI.Endpoints.Files.startEdit(file: file)) { response, error in
+                    if let error = error {
+                        log.error(error)
+                    }
                 }
             }
+        case let .failure(error):
+            log.error("Failure to open document: \(error)")
         }
     }
 
-    func documentDidClose(_ controller: DocumentEditor.DocumentEditorViewController, document: DocumentEditor.EditorDocument, error: Error?) {
+    func documentDidClose(_ controller: DocumentEditorViewController, result: Result<DocumentEditor.EditorDocument, Error>) {
         log.info("DocumentEditorViewControllerDelegate:documentDidClose")
 
         documentPermissions = nil
@@ -3030,8 +3035,8 @@ extension ASCEditorManager: DocumentEditorViewControllerDelegate {
         if let file = openedFile {
             var cancel = false
 
-            if let error {
-                print(error)
+            if case .failure(let error) = result {
+                log.error(error)
 
                 stopLocallyEditing()
 

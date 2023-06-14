@@ -233,7 +233,9 @@ class ASCOnlyofficeCategoriesViewController: UITableViewController {
                    let account = ASCAccount(JSON: ["email": accountEmail, "portal": accountPortalUnwraped])
                 {
                     self.account = account
-                    loadCachedCategories(provider: onlyofficeProvider)
+                    
+                    // MARK: - turn off cache 
+                    // loadCachedCategories(provider: onlyofficeProvider)
                 }
             } else {
                 hasInfo = false

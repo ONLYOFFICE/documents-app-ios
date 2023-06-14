@@ -176,6 +176,11 @@ class ASCConstants {
         static let editorExportSpreadsheets = ["xlsx", "ods", "xltx", "ots"]
         static let editorExportPresentations = ["pptx", "odp", "potx", "otp"]
         static let editorExportFormats = editorExportDocuments + editorExportSpreadsheets + editorExportPresentations
+
+        static let docx = "docx"
+        static let xlsx = "xlsx"
+        static let pptx = "pptx"
+        static let oform = "oform"
     }
 
     enum Clouds {

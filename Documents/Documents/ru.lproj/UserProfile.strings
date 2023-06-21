@@ -13,6 +13,9 @@
 /* Class = "UILabel"; text = "Email"; ObjectID = "HaW-jI-GJW"; */
 "HaW-jI-GJW.text" = "Email";
 
+/* Class = "UILabel"; text = "-"; ObjectID = "JOt-DG-crS"; Note = "Do not translate"; */
+"JOt-DG-crS.text" = "-";
+
 /* Class = "UILabel"; text = "Portal"; ObjectID = "KZx-zY-eVz"; */
 "KZx-zY-eVz.text" = "Портал";
 

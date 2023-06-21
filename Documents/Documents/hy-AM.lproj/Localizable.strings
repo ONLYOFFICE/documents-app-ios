@@ -76,6 +76,12 @@
 /* No comment provided by engineer. */
 "Account name is not valid" = "Հաշվի անունը վավեր չէ";
 
+/* No comment provided by engineer. */
+"Accounts" = "Հաշիվներ";
+
+/* No comment provided by engineer. */
+"Add account" = "Հավելել հաշիվ";
+
 /* Sharing settings add notification message */
 "Add message" = "Ավելացնել հաղորդագրություն";
 
@@ -89,6 +95,9 @@
 "Address is empty" = "Հասցեն դատարկ է";
 
 /* No comment provided by engineer. */
+"Admin" = "Ադմինիստրատոր";
+
+/* No comment provided by engineer. */
 "All" = "Բոլորը";
 
 /* No comment provided by engineer. */
@@ -96,6 +105,9 @@
 
 /* Category title */
 "All Files" = "Բոլոր Ֆայլերը";
+
+/* No comment provided by engineer. */
+"All items from Archived will be deleted forever. You won’t be able to restore them." = "Արխիվացված բոլոր տարրերը ընդմիշտ կջնջվեն: Դուք չեք կարողանա վերականգնել դրանք:";
 
 /* No comment provided by engineer. */
 "All notifications" = "Բոլոր ծանուցումները";
@@ -125,6 +137,9 @@
 "Archiving failed." = "Չհաջողվեց արխիվացնել:";
 
 /* No comment provided by engineer. */
+"Are you sure you want to delete the account  %@ from this devce?" = "Իսկապե՞ս ուզում եք ջնջել %@ հաշիվն այս սարքից:";
+
+/* No comment provided by engineer. */
 "Are you sure you want to leave this account?" = "Իսկապե՞ս ուզում եք լքել այս հաշիվը:";
 
 /* No comment provided by engineer. */
@@ -132,6 +147,12 @@
 
 /* No comment provided by engineer. */
 "Back" = "Հետ";
+
+/* No comment provided by engineer. */
+"Being an owner of this DocSpace, you must transfer the ownership to another user before you can delete your account. Please choose a new owner to proceed." = "Լինելով այս DocSpace-ի սեփականատերը՝ դուք պետք է սեփականության իրավունքը փոխանցեք մեկ այլ օգտատիրոջ՝ նախքան ձեր հաշիվը ջնջելը: Շարունակելու համար խնդրում ենք ընտրել նոր սեփականատեր:";
+
+/* No comment provided by engineer. */
+"Being an owner of this portal, you must transfer the ownership to another user before you can delete your account. Please choose a new owner to proceed." = "Լինելով այս պորտալի սեփականատեր՝ դուք պետք է սեփականության իրավունքը փոխանցեք մեկ այլ օգտատիրոջ՝ նախքան ձեր հաշիվը ջնջելը: Շարունակելու համար խնդրում ենք ընտրել նոր սեփականատեր:";
 
 /* No comment provided by engineer. */
 "Box" = "Տուփ";
@@ -168,6 +189,9 @@
 
 /* No comment provided by engineer. */
 "Cancel invitation?" = "Չեղարկե՞լ հրավերը";
+
+/* No comment provided by engineer. */
+"Change owner" = "Փոխել սեփականատիրոջը";
 
 /* No comment provided by engineer. */
 "Check your internet connection" = "Ստուգեք ձեր ինտերնետային կապը";
@@ -210,6 +234,9 @@
 
 /* No comment provided by engineer. */
 "Collaboration" = "Համագործակցում";
+
+/* Share status */
+"Commentator" = "Մեկնաբան";
 
 /* Category title */
 "Common Documents" = "Ընդհանուր փաստաթղթեր";
@@ -350,6 +377,9 @@
 "Couldn't open file" = "Չհաջողվեց բացել ֆայլը";
 
 /* No comment provided by engineer. */
+"Couldn't save changes at server. Your modified document is saved in local storage as %@" = "Չհաջողվեց պահպանել փոփոխությունները սերվերում: Ձեր փոփոխված փաստաթուղթը պահվում է տեղական պահեստում որպես %@";
+
+/* No comment provided by engineer. */
 "Create" = "Ստեղծել";
 
 /* Introduction Step Two - Description */
@@ -366,6 +396,9 @@
 
 /* Share status */
 "Custom filter" = "Պատվերով զտիչ";
+
+/* No comment provided by engineer. */
+"Dark" = "Մուգ";
 
 /* No comment provided by engineer. */
 "Date" = "Ամսաթիվ";
@@ -387,6 +420,12 @@
 
 /* No comment provided by engineer. */
 "Delete Folder" = "Ջնջել թղթապանակը";
+
+/* No comment provided by engineer. */
+"Delete forever" = "Ջնջել ընդմիշտ";
+
+/* No comment provided by engineer. */
+"Delete from device" = "Ջնջել սարքից";
 
 /* Caption of the processing */
 "Deleting" = "Ջնջվում է";
@@ -585,6 +624,15 @@
 "Folders" = "Թղթապանակներ";
 
 /* Share status */
+"Form Filler" = "Ձևի լցոնիչ";
+
+/* No comment provided by engineer. */
+"Form templates" = "Ձևի ձևանմուշներ";
+
+/* No comment provided by engineer. */
+"Forms" = "Ձևաթղթեր";
+
+/* Share status */
 "Full Access" = "Ամբողջական մուտք";
 
 /* Data units */
@@ -670,6 +718,9 @@
 
 /* No comment provided by engineer. */
 "Last name is incorrect" = "Ազգանունը սխալ է";
+
+/* No comment provided by engineer. */
+"Light" = "Լույս";
 
 /* No comment provided by engineer. */
 "Link copied\nto the clipboard" = "Հղումը պատճենված է\nդեպի clipboard ";
@@ -966,6 +1017,9 @@
 /* No comment provided by engineer. */
 "Portal is unavailable." = "Պորտալն անհասանելի է:";
 
+/* Share status */
+"Pover user" = "Փորձառու օգտագործող";
+
 /* No comment provided by engineer. */
 "Presentation" = "Պրեզենտացիա";
 
@@ -983,6 +1037,9 @@
 
 /* Caption of the processing */
 "Processing" = "Մշակում";
+
+/* No comment provided by engineer. */
+"Profile" = "Պրոֆիլ";
 
 /* Category title */
 "Project Documents" = "Ծրագրի փաստաթղթեր";
@@ -1042,10 +1099,16 @@
 "Restoring" = "Վերականգնում";
 
 /* Share status */
+"Reviewer" = "Վերանայող";
+
+/* Share status */
 "Room admin" = "Սենյակի ադմին";
 
 /* DocSpace rooms */
 "Rooms" = "Սսենյակներ";
+
+/* No comment provided by engineer. */
+"Same as system" = "Նույնը, ինչ համակարգը";
 
 /* Caption of the processing */
 "Saving" = "Խնայողություն";
@@ -1134,6 +1197,9 @@
 
 /* No comment provided by engineer. */
 "Show notifications" = "Ցույց տալ ծանուցումները";
+
+/* No comment provided by engineer. */
+"Sign in" = "Մուտք գործել";
 
 /* No comment provided by engineer. */
 "Single Sign-on" = "Single Sign-on";
@@ -1254,6 +1320,9 @@
 
 /* No comment provided by engineer. */
 "The user limit has been reached. Сontact the portal administrator" = "Օգտագործողների քանակը հասել է սահմանաչափին : Կապվեք պորտալի ադմինիստրատորի հետ։";
+
+/* No comment provided by engineer. */
+"Theme" = "Ոճ";
 
 /* No comment provided by engineer. */
 "Third party resource" = "Երրորդ կողմի ռեսուրս";
@@ -1382,6 +1451,9 @@
 "Unpinned failed." = "Ապամրացման ձախողում։";
 
 /* Caption of the processing */
+"Unpinning" = "Ապամրացում";
+
+/* Caption of the processing */
 "Unpning" = "Ապամրացում";
 
 /* No comment provided by engineer. */
@@ -1395,6 +1467,9 @@
 
 /* Button title */
 "Use Touch ID" = "Օգտագործեք Touch ID";
+
+/* No comment provided by engineer. */
+"User" = "Օգտատեր";
 
 /* No comment provided by engineer. */
 "User authentication failed" = "Օգտատիրոջ նույնականացումը ձախողվեց";
@@ -1419,6 +1494,12 @@
 
 /* No comment provided by engineer. */
 "Version" = "Տարբերակ";
+
+/* No comment provided by engineer. */
+"View-only" = "Դիտել միայն";
+
+/* Share status */
+"Viewer" = "Դիտող";
 
 /* No comment provided by engineer. */
 "Warning" = "Զգուշացում";

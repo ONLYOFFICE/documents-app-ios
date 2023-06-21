@@ -76,6 +76,12 @@
 /* No comment provided by engineer. */
 "Account name is not valid" = "Nome de conta não é válido";
 
+/* No comment provided by engineer. */
+"Accounts" = "Contas";
+
+/* No comment provided by engineer. */
+"Add account" = "Adicionar conta";
+
 /* Sharing settings add notification message */
 "Add message" = "Adicionar mensagem";
 
@@ -89,6 +95,9 @@
 "Address is empty" = "Endereço está vazio";
 
 /* No comment provided by engineer. */
+"Admin" = "Administrador";
+
+/* No comment provided by engineer. */
 "All" = "Tudo";
 
 /* No comment provided by engineer. */
@@ -96,6 +105,9 @@
 
 /* Category title */
 "All Files" = "Todos os arquivos";
+
+/* No comment provided by engineer. */
+"All items from Archived will be deleted forever. You won’t be able to restore them." = "Todos os itens arquivados serão excluídos para sempre. Você não poderá restaurá-los.";
 
 /* No comment provided by engineer. */
 "All notifications" = "Todas as notificações";
@@ -125,6 +137,9 @@
 "Archiving failed." = "O arquivamento falhou.";
 
 /* No comment provided by engineer. */
+"Are you sure you want to delete the account  %@ from this devce?" = "Tem certeza de que deseja excluir a conta %@ deste dispositivo?";
+
+/* No comment provided by engineer. */
 "Are you sure you want to leave this account?" = "Você tem certeza de que deseja sair desta conta?";
 
 /* No comment provided by engineer. */
@@ -132,6 +147,12 @@
 
 /* No comment provided by engineer. */
 "Back" = "Voltar";
+
+/* No comment provided by engineer. */
+"Being an owner of this DocSpace, you must transfer the ownership to another user before you can delete your account. Please choose a new owner to proceed." = "Sendo proprietário deste DocSpace, você deve transferir a propriedade para outro usuário antes de excluir sua conta. Escolha um novo proprietário para continuar.";
+
+/* No comment provided by engineer. */
+"Being an owner of this portal, you must transfer the ownership to another user before you can delete your account. Please choose a new owner to proceed." = "Sendo proprietário deste portal, você deve transferir a propriedade para outro usuário antes de excluir sua conta. Escolha um novo proprietário para continuar.";
 
 /* No comment provided by engineer. */
 "Box" = "Caixa";
@@ -168,6 +189,9 @@
 
 /* No comment provided by engineer. */
 "Cancel invitation?" = "Cancelar convite?";
+
+/* No comment provided by engineer. */
+"Change owner" = "Alterar proprietário";
 
 /* No comment provided by engineer. */
 "Check your internet connection" = "Checar sua conexão de Internet";
@@ -210,6 +234,9 @@
 
 /* No comment provided by engineer. */
 "Collaboration" = "Colaboração";
+
+/* Share status */
+"Commentator" = "Comentarista";
 
 /* Category title */
 "Common Documents" = "Documentos comuns";
@@ -350,6 +377,9 @@
 "Couldn't open file" = "Não foi possível abrir o arquivo";
 
 /* No comment provided by engineer. */
+"Couldn't save changes at server. Your modified document is saved in local storage as %@" = "Não foi possível salvar as alterações no servidor. Seu documento modificado é salvo no armazenamento local como %@";
+
+/* No comment provided by engineer. */
 "Create" = "Criar";
 
 /* Introduction Step Two - Description */
@@ -366,6 +396,9 @@
 
 /* Share status */
 "Custom filter" = "Filtro personalizado";
+
+/* No comment provided by engineer. */
+"Dark" = "Escuro";
 
 /* No comment provided by engineer. */
 "Date" = "Data";
@@ -387,6 +420,12 @@
 
 /* No comment provided by engineer. */
 "Delete Folder" = "Excluir pasta";
+
+/* No comment provided by engineer. */
+"Delete forever" = "Excluir definitivamente";
+
+/* No comment provided by engineer. */
+"Delete from device" = "Excluir do dispositivo";
 
 /* Caption of the processing */
 "Deleting" = "Excluindo";
@@ -585,6 +624,15 @@
 "Folders" = "Pastas";
 
 /* Share status */
+"Form Filler" = "Preenchedor de formulário";
+
+/* No comment provided by engineer. */
+"Form templates" = "Modelos de formulário";
+
+/* No comment provided by engineer. */
+"Forms" = "Formulários";
+
+/* Share status */
 "Full Access" = "Acesso completo";
 
 /* Data units */
@@ -670,6 +718,9 @@
 
 /* No comment provided by engineer. */
 "Last name is incorrect" = "O sobrenome está incorreto";
+
+/* No comment provided by engineer. */
+"Light" = "Claro";
 
 /* No comment provided by engineer. */
 "Link copied\nto the clipboard" = "Link copiado para a área de transferência";
@@ -966,6 +1017,9 @@
 /* No comment provided by engineer. */
 "Portal is unavailable." = "Portal não está disponível.";
 
+/* Share status */
+"Pover user" = "Usuário avançado";
+
 /* No comment provided by engineer. */
 "Presentation" = "Apresentação";
 
@@ -983,6 +1037,9 @@
 
 /* Caption of the processing */
 "Processing" = "Processando";
+
+/* No comment provided by engineer. */
+"Profile" = "Perfil";
 
 /* Category title */
 "Project Documents" = "Documentos do projeto";
@@ -1042,10 +1099,16 @@
 "Restoring" = "Restaurando";
 
 /* Share status */
+"Reviewer" = "Revisor";
+
+/* Share status */
 "Room admin" = "Administrador da sala";
 
 /* DocSpace rooms */
 "Rooms" = "Salas";
+
+/* No comment provided by engineer. */
+"Same as system" = "O mesmo que sistema";
 
 /* Caption of the processing */
 "Saving" = "Salvando";
@@ -1134,6 +1197,9 @@
 
 /* No comment provided by engineer. */
 "Show notifications" = "Exibir notificações";
+
+/* No comment provided by engineer. */
+"Sign in" = "Entrar";
 
 /* No comment provided by engineer. */
 "Single Sign-on" = "Login único (SSO)";
@@ -1254,6 +1320,9 @@
 
 /* No comment provided by engineer. */
 "The user limit has been reached. Сontact the portal administrator" = "O limite de usuários foi atingido. Entre em contato com o administrador do portal";
+
+/* No comment provided by engineer. */
+"Theme" = "Tema";
 
 /* No comment provided by engineer. */
 "Third party resource" = "Recurso de terceiros";
@@ -1382,6 +1451,9 @@
 "Unpinned failed." = "Falha ao desafixar.";
 
 /* Caption of the processing */
+"Unpinning" = "Desafixar";
+
+/* Caption of the processing */
 "Unpning" = "Desafixar";
 
 /* No comment provided by engineer. */
@@ -1395,6 +1467,9 @@
 
 /* Button title */
 "Use Touch ID" = "Usar Touch ID";
+
+/* No comment provided by engineer. */
+"User" = "Usuário";
 
 /* No comment provided by engineer. */
 "User authentication failed" = "Autenticação do usuário falhou";
@@ -1419,6 +1494,12 @@
 
 /* No comment provided by engineer. */
 "Version" = "Versão";
+
+/* No comment provided by engineer. */
+"View-only" = "Somente visualização";
+
+/* Share status */
+"Viewer" = "Visualizador";
 
 /* No comment provided by engineer. */
 "Warning" = "Aviso";

@@ -76,6 +76,12 @@
 /* No comment provided by engineer. */
 "Account name is not valid" = "アカウント名は無効です";
 
+/* No comment provided by engineer. */
+"Accounts" = "アカウント";
+
+/* No comment provided by engineer. */
+"Add account" = "アカウントを追加する";
+
 /* Sharing settings add notification message */
 "Add message" = "メッセージを追加";
 
@@ -89,6 +95,9 @@
 "Address is empty" = "住所が空白です";
 
 /* No comment provided by engineer. */
+"Admin" = "管理者";
+
+/* No comment provided by engineer. */
 "All" = "すべて";
 
 /* No comment provided by engineer. */
@@ -96,6 +105,9 @@
 
 /* Category title */
 "All Files" = "すべてのファイル";
+
+/* No comment provided by engineer. */
+"All items from Archived will be deleted forever. You won’t be able to restore them." = "アーカイブに登録された項目は、すべて永久に削除されます。復元することができなくなります。";
 
 /* No comment provided by engineer. */
 "All notifications" = "すべての通知";
@@ -125,6 +137,9 @@
 "Archiving failed." = "アーカイブに失敗しました。";
 
 /* No comment provided by engineer. */
+"Are you sure you want to delete the account  %@ from this devce?" = "このデバイスから「%@」アカウントを削除してよろしいですか？";
+
+/* No comment provided by engineer. */
 "Are you sure you want to leave this account?" = "本当にこのアカウントからサインアウトしますか?";
 
 /* No comment provided by engineer. */
@@ -132,6 +147,12 @@
 
 /* No comment provided by engineer. */
 "Back" = "戻る";
+
+/* No comment provided by engineer. */
+"Being an owner of this DocSpace, you must transfer the ownership to another user before you can delete your account. Please choose a new owner to proceed." = "このDocSpaceの所有者であるあなたは、自分のアカウントを削除する前に、他のユーザーに所有権を譲渡する必要があります。新しい所有者を選択してください。";
+
+/* No comment provided by engineer. */
+"Being an owner of this portal, you must transfer the ownership to another user before you can delete your account. Please choose a new owner to proceed." = "このポータルの所有者であるあなたは、自分のアカウントを削除する前に、他のユーザーに所有権を譲渡する必要があります。新しいオーナーを選択してください。";
 
 /* No comment provided by engineer. */
 "Box" = "Box";
@@ -168,6 +189,9 @@
 
 /* No comment provided by engineer. */
 "Cancel invitation?" = "招待をキャンセルしますか？";
+
+/* No comment provided by engineer. */
+"Change owner" = "所有者の変更する";
 
 /* No comment provided by engineer. */
 "Check your internet connection" = "お使いのインターネット接続をご確認ください";
@@ -210,6 +234,9 @@
 
 /* No comment provided by engineer. */
 "Collaboration" = "コラボレーション";
+
+/* Share status */
+"Commentator" = "コメント";
 
 /* Category title */
 "Common Documents" = "共通ドキュメント";
@@ -350,6 +377,9 @@
 "Couldn't open file" = "ファイルを開始できませんでした";
 
 /* No comment provided by engineer. */
+"Couldn't save changes at server. Your modified document is saved in local storage as %@" = "サーバーで変更を保存できませんでした。変更したドキュメントはローカルストレージに %@ として保存されます。";
+
+/* No comment provided by engineer. */
 "Create" = "作成";
 
 /* Introduction Step Two - Description */
@@ -366,6 +396,9 @@
 
 /* Share status */
 "Custom filter" = "ユーザー設定のフィルター";
+
+/* No comment provided by engineer. */
+"Dark" = "ダーク";
 
 /* No comment provided by engineer. */
 "Date" = "日付";
@@ -387,6 +420,12 @@
 
 /* No comment provided by engineer. */
 "Delete Folder" = "フォルダーを削除する";
+
+/* No comment provided by engineer. */
+"Delete forever" = "完全に削除する";
+
+/* No comment provided by engineer. */
+"Delete from device" = "デバイスから削除する";
 
 /* Caption of the processing */
 "Deleting" = "削除中";
@@ -585,6 +624,15 @@
 "Folders" = "フォルダー";
 
 /* Share status */
+"Form Filler" = "フォームへの入力";
+
+/* No comment provided by engineer. */
+"Form templates" = "フォームテンプレート";
+
+/* No comment provided by engineer. */
+"Forms" = "フォーム";
+
+/* Share status */
 "Full Access" = "フルアクセス";
 
 /* Data units */
@@ -670,6 +718,9 @@
 
 /* No comment provided by engineer. */
 "Last name is incorrect" = "名字が正しくありません";
+
+/* No comment provided by engineer. */
+"Light" = "明るい";
 
 /* No comment provided by engineer. */
 "Link copied\nto the clipboard" = "クリップボードに\nコピーされたリンク";
@@ -966,6 +1017,9 @@
 /* No comment provided by engineer. */
 "Portal is unavailable." = "ポータルは使用できません。";
 
+/* Share status */
+"Pover user" = "パワーユーザー";
+
 /* No comment provided by engineer. */
 "Presentation" = "プレゼンテーション";
 
@@ -983,6 +1037,9 @@
 
 /* Caption of the processing */
 "Processing" = "処理中";
+
+/* No comment provided by engineer. */
+"Profile" = "プロフィール";
 
 /* Category title */
 "Project Documents" = "プロジェクトの文書";
@@ -1042,10 +1099,16 @@
 "Restoring" = "復元中";
 
 /* Share status */
+"Reviewer" = "レビュー";
+
+/* Share status */
 "Room admin" = "ルームの管理者";
 
 /* DocSpace rooms */
 "Rooms" = "ルーム";
+
+/* No comment provided by engineer. */
+"Same as system" = "システム設定と同じ";
 
 /* Caption of the processing */
 "Saving" = "保存中";
@@ -1134,6 +1197,9 @@
 
 /* No comment provided by engineer. */
 "Show notifications" = "通知を表示する";
+
+/* No comment provided by engineer. */
+"Sign in" = "サインイン";
 
 /* No comment provided by engineer. */
 "Single Sign-on" = "シングルサインオン";
@@ -1254,6 +1320,9 @@
 
 /* No comment provided by engineer. */
 "The user limit has been reached. Сontact the portal administrator" = "ユーザー数の上限に達しています。ポータル管理者に連絡してください";
+
+/* No comment provided by engineer. */
+"Theme" = "テーマ";
 
 /* No comment provided by engineer. */
 "Third party resource" = "サードパーティーのリソース";
@@ -1382,6 +1451,9 @@
 "Unpinned failed." = "ピン留めを外すことに失敗しました。";
 
 /* Caption of the processing */
+"Unpinning" = "ピン留めを外す中";
+
+/* Caption of the processing */
 "Unpning" = "ピン留めを外す中";
 
 /* No comment provided by engineer. */
@@ -1395,6 +1467,9 @@
 
 /* Button title */
 "Use Touch ID" = "Touch ID を使用する";
+
+/* No comment provided by engineer. */
+"User" = "ユーザー";
 
 /* No comment provided by engineer. */
 "User authentication failed" = "ユーザーの承認に失敗しました";
@@ -1419,6 +1494,12 @@
 
 /* No comment provided by engineer. */
 "Version" = "バージョン";
+
+/* No comment provided by engineer. */
+"View-only" = "閲覧のみ";
+
+/* Share status */
+"Viewer" = "閲覧用";
 
 /* No comment provided by engineer. */
 "Warning" = "警告";

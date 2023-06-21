@@ -1,0 +1,1566 @@
+/* Count of seclected rows: count + selected */
+"%d selected" = "%d ක් තෝරා ඇත";
+
+/* Presentation Viewer */
+"%i of %i" = "%2$i න් %1$i";
+
+/* No comment provided by engineer. */
+"%lu File selected" = "ගොනු %lu ක් තෝරා ඇත";
+
+/* No comment provided by engineer. */
+"%lu Folder and %lu File selected" = "බහාලුම් %1$lu ක් හා ගොනු %2$lu ක් තෝරා ඇත";
+
+/* No comment provided by engineer. */
+"%lu Folder selected" = "බහාලුම් %lu ක් තෝරා ඇත";
+
+/* No comment provided by engineer. */
+"%lu items with the same name already exist in the folder '%@'. Overwrite the items?" = "සමාන නමක් සහිත අථක %1$lu ක් දැනටමත් '%2$@' බහාලුමේ පවතී. උඩින් ලියන්නද?";
+
+/* No comment provided by engineer. */
+"© Ascensio System SIA %d" = "© Ascensio System SIA %d";
+
+/* No comment provided by engineer. */
+"<p>Use the password created in <a href=\"https://yandex.ru/id/about\">Yandex ID</a>.</br>More detailed connection instructions can be found in the <a href=\"https://yandex.ru/support/disk-desktop/webdav-app-passwords.html?lang=ru\">help</a>.</p>" = "<p><a href=\"https://yandex.ru/id/about\">යාන්ඩෙක්ස් හැඳු.</a> හි සාදන ලද මුරපදය භාවිතා කරන්න.</br>තවත් විස්තර <a href=\"https://yandex.ru/support/disk-desktop/webdav-app-passwords.html?lang=en\">උපකාර</a> පිටුවෙහි සොයා ගැනීමට හැකිය.</p>";
+
+/* No comment provided by engineer. */
+"<p>Use the password created in <a href=\"https://yandex.ru/id/about\">Yandex ID</a>.</p><p>More detailed connection instructions can be found in the <a href=\"https://yandex.ru/support/disk-desktop/webdav-app-passwords.html?lang=ru\">help</a>.</p>" = "<p><a href=\"https://yandex.ru/id/about\">යාන්ඩෙක්ස් හැඳු.</a> හි සාදන ලද මුරපදය භාවිතා කරන්න.</br>තවත් විස්තර <a href=\"https://yandex.ru/support/disk-desktop/webdav-app-passwords.html?lang=en\">උපකාර</a> පිටුවෙහි සොයා ගැනීමට හැකිය.</p>";
+
+/* No comment provided by engineer. */
+"<p>You must have a paid version of the player to use this service.</p><p>If you have activated double authentication, please generate a CDM application from the Infomaniak manager. <a href=\"https://www.infomaniak.com/en/support/faq/1940/enable-two-step-verification\">More...</a></p>" = "<p>මෙම සේවාව භාවිතයට ඔබ සතුව වාදකයේ ගෙවන අනුවාදයක් තිබිය යුතුය.</p><p>ඔබ ද්විත්ව සත්‍යාපනය සක්‍රිය කර ඇත්නම්, කරුණාකර Infomaniak කළමනාකරණය හරහා CDM යෙදුමක් උත්පාදනය කරන්න. <a href=\"https://www.infomaniak.com/en/support/faq/1940/enable-two-step-verification\">තවත්...</a></p>";
+
+/* No comment provided by engineer. */
+"A file with a similar name already exists in the document directory on the device." = "උපාංගයේ ලේඛන නාමාවලියෙහි සමාන නමක් සහිත ගොනුවක් දැනටමත් පවතී.";
+
+/* No comment provided by engineer. */
+"A user or group will be able only to view the document and add comments, as well as manage them." = "පරිශ්‍රීලකයෙක්ට හෝ සමූහයකට ලේඛනය දැකීමට සහ අදහස් එක් කිරීමට මෙන්ම ඒවා කළමනාකරණයට පමණක් හැකි වනු ඇත.";
+
+/* No comment provided by engineer. */
+"A user or group will be able only to view the document and fill in the forms inserted into the document." = "පරිශ්‍රීලකයෙක්ට හෝ සමූහයකට ලේඛනය දැකීමට සහ ලේඛනයට ඇතුළු කර තිබෙන ආකෘතිපත්‍ර පිරවීමට පමණක් හැකි වනු ඇත.";
+
+/* No comment provided by engineer. */
+"A user or group will be able only to view the document." = "පරිශ්‍රීලකයෙක්ට හෝ සමූහයකට ලේඛනය දැකීමට පමණක් හැකි වනු ඇත.";
+
+/* No comment provided by engineer. */
+"A user or group will be able to view and change the document without actually editing it, but all the changes made by a reviewer will be recorded and shown to the file owner (or a person who has full access to the file) so that he/she will be able to accept or reject them." = "පරිශ්‍රීලකයෙක්ට හෝ සමූහයකට ලේඛනය සත්‍ය වශයෙන් සංස්කරණය නොකර දැකීමට සහ වෙනස් කිරීමට හැකි වනු ඇත, නමුත් සමාලෝචකයෙක් සිදු කරන සියළුම වෙනස්කම් පටිගත වී ගොනුවේ හිමිකරුට (හෝ ගොනුවට පූර්ණ ප්‍රවේශය තිබෙන අයෙක්ට) දිස්වනු ඇත. එමගින් ඔහු/ඇයට ඒවා පිළිගැනීමට හෝ ප්‍රතික්‍ෂේප කිරීමට හැකිය.";
+
+/* No comment provided by engineer. */
+"A user or group will be able to view and edit the document as well as to share this document." = "පරිශ්‍රීලකයෙක්ට හෝ සමූහයකට ලේඛනය දැකීමට සහ සංස්කරණයට මෙන්ම බෙදාගැනීමට හැකි වනු ඇත.";
+
+/* Format info */
+"A0 (84,1%@ x 119,9%@)" = "ඒ0 (84,1%1$@ x 119,9%2$@)";
+
+/* Format info */
+"A1 (59,4%@ x 84,1%@)" = "ඒ1 (59,4%1$@ x 84,1%2$@)";
+
+/* Format info */
+"A2 (42%@ x 59,4%@)" = "ඒ2 (42%1$@ x 59,4%2$@)";
+
+/* Format info */
+"A6 (10,5%@ x 14,8%@)" = "ඒ6 (10,5%1$@ x 14,8%2$@)";
+
+/* No comment provided by engineer. */
+"About" = "පිළිබඳව";
+
+/* No comment provided by engineer. */
+"Access by external link" = "බාහිර සබැඳියකින් ප්‍රවේශය";
+
+/* No comment provided by engineer. */
+"Access rights" = "ප්‍රවේශ අයිතීන්";
+
+/* No comment provided by engineer. */
+"Access settings" = "ප්‍රවේශ සැකසුම්";
+
+/* No comment provided by engineer. */
+"Account name is empty" = "ගිණුමේ නම හිස්ය";
+
+/* No comment provided by engineer. */
+"Account name is not valid" = "ගිණුමේ නම වලංගු නොවේ";
+
+/* No comment provided by engineer. */
+"Accounts" = "ගිණුම්";
+
+/* No comment provided by engineer. */
+"Add account" = "ගිණුමක් යොදන්න";
+
+/* Sharing settings add notification message */
+"Add message" = "පණිවිඩයක් යොදන්න";
+
+/* Button title */
+"Add users" = "පරිශ්‍රීලකයින් යොදන්න";
+
+/* No comment provided by engineer. */
+"Add users or groups and allow them to \n read, review or edit documents." = "පරිශ්‍රීලකයින් හෝ සමූහ එක් කර ලේඛන කියවීමට, \n සමාලෝචනයට හෝ සංස්කරණයට ඉඩ දෙන්න.";
+
+/* No comment provided by engineer. */
+"Address is empty" = "ලිපිනය හිස්ය";
+
+/* No comment provided by engineer. */
+"Admin" = "පරිපාලක";
+
+/* No comment provided by engineer. */
+"All" = "සියල්ල";
+
+/* No comment provided by engineer. */
+"All files" = "සියළු ගොනු";
+
+/* Category title */
+"All Files" = "සියළු ගොනු";
+
+/* No comment provided by engineer. */
+"All items from Archived will be deleted forever. You won’t be able to restore them." = "සංරක්‍ෂිතයේ තිබෙන සියළුම අථක සදහටම මැකෙනු ඇත. ඔබට ඒවා ප්‍රත්‍යර්පණයට ද නොහැකි වනු ඇත.";
+
+/* No comment provided by engineer. */
+"All notifications" = "සියළු දැනුම්දීම්";
+
+/* No comment provided by engineer. */
+"Allow access via external link" = "බාහිර සබැඳියකින් ප්‍රවේශයට ඉඩදෙන්න";
+
+/* No comment provided by engineer. */
+"An unexpected error has occurred. Please try again later. Sorry for inconvenience." = "අනපේක්‍ෂිත දෝෂයක් මතු විය, කරුණාකර පසුව නැවත උත්සාහ කරන්න.";
+
+/* No comment provided by engineer. */
+"AppleId authentication failed" = "ඇපල්හැඳු. සත්‍යාපනයට අසමත් විය";
+
+/* Caption of the process */
+"Applying" = "යෙදෙමින්";
+
+/* Button title */
+"Archive" = "සංරක්‍ෂණය";
+
+/* No comment provided by engineer. */
+"Archives" = "සංරක්‍ෂිත";
+
+/* Caption of the processing */
+"Archiving" = "සංරක්‍ෂණය වෙමින්";
+
+/* No comment provided by engineer. */
+"Archiving failed." = "සංරක්‍ෂණයට අසමත් විය.";
+
+/* No comment provided by engineer. */
+"Are you sure you want to delete the account  %@ from this devce?" = "ඔබට මෙම උපාංගයෙන් %@ ගිණුම මැකීමට වුවමනා ද?";
+
+/* No comment provided by engineer. */
+"Are you sure you want to leave this account?" = "ඔබට මෙම ගිණුම හැරයාමට වුවමනා ද?";
+
+/* No comment provided by engineer. */
+"Author" = "කර්තෘ";
+
+/* No comment provided by engineer. */
+"Back" = "ආපසු";
+
+/* No comment provided by engineer. */
+"Being an owner of this DocSpace, you must transfer the ownership to another user before you can delete your account. Please choose a new owner to proceed." = "මෙම DocSpace හි හිමිකරුවෙකු නිසා, ඔබගේ ගිණුම මකා දැමීමට පෙර අයිතිය වෙනත් පරිශ්‍රීලකයෙකුට පැවරිය යුතුය. කරුණාකර ඉදිරියට යාමට නව අයිතිකරුවෙකු තෝරන්න.";
+
+/* No comment provided by engineer. */
+"Being an owner of this portal, you must transfer the ownership to another user before you can delete your account. Please choose a new owner to proceed." = "මෙම ද්වාරයෙහි හිමිකරුවෙකු නිසා, ඔබගේ ගිණුම මකා දැමීමට පෙර අයිතිය වෙනත් පරිශ්‍රීලකයෙකුට පැවරිය යුතුය. කරුණාකර ඉදිරියට යාමට නව අයිතිකරුවෙකු තෝරන්න.";
+
+/* No comment provided by engineer. */
+"Box" = "බොක්ස්";
+
+/* No comment provided by engineer. */
+"Box directory" = "බොක්ස් නාමාවලිය";
+
+/* No comment provided by engineer. */
+"By creating the portal you agree with our Privacy Policy and Terms of Service" = "ද්වාරය සෑදීමෙන් ඔබ අපගේ රහස්‍යතා ප්‍රතිපත්තියට හා සේවා නියම සමඟ එකඟ වේ";
+
+/* Data units */
+"bytes" = "බයිට";
+
+/* No comment provided by engineer. */
+"Cache" = "නිහිතය";
+
+/* No comment provided by engineer. */
+"Camera Unavailable" = "රූගතය නොතිබේ";
+
+/* No comment provided by engineer. */
+"Can not create file in the folder." = "බහාලුම තුළ ගොනුව සෑදීමට නොහැකිය.";
+
+/* No comment provided by engineer. */
+"Can not create file with this name." = "මෙම නමින් ගොනුවක් සෑදීමට නොහැකිය.";
+
+/* No comment provided by engineer. */
+"Can not create folder with this name." = "මෙම නමින් බහාලුමක් සෑදීමට නොහැකිය.";
+
+/* No comment provided by engineer. */
+"Can not duplicate the file." = "ගොනුවෙහි අනුපිටපත් සෑදීමට නොහැකිය.";
+
+/* No comment provided by engineer. */
+"Cancel" = "අවලංගු";
+
+/* No comment provided by engineer. */
+"Cancel invitation?" = "ඇරයුම ඉවතලන්නද?";
+
+/* No comment provided by engineer. */
+"Change owner" = "හිමිකරු සංශෝධනය";
+
+/* No comment provided by engineer. */
+"Check your internet connection" = "ඔබගේ අන්තර්ජාල සම්බන්ධතාවය පරීක්‍ෂා කරන්න";
+
+/* No comment provided by engineer. */
+"Choose Code Page" = "කේත පිටුව තෝරන්න";
+
+/* No comment provided by engineer. */
+"Choose CSV Options" = "CSV විකල්ප තෝරන්න";
+
+/* Caption of the processing */
+"Cleanup" = "ශුද්ධ කිරීම";
+
+/* Button title */
+"Clear Cache" = "නිහිතය මකන්න";
+
+/* Button title */
+"Clear Cache?" = "නිහිතය මකන්නද?";
+
+/* No comment provided by engineer. */
+"Clear selection?" = "තේරීම ඉවතලන්නද?";
+
+/* Caption of the processing */
+"Clearing" = "මැකෙමින්";
+
+/* Close view */
+"Close" = "වසන්න";
+
+/* No comment provided by engineer. */
+"Close the document before opening a new one." = "නව එකක් විවෘත කිරීමට පෙර ලේඛනය වසන්න.";
+
+/* Default external storage name */
+"Cloud directory" = "මේඝ නාමාවලිය";
+
+/* Cut from centimeters */
+"cm" = "සෙ.මී.";
+
+/* Introduction Step Five - Title */
+"Collaborate with your team" = "කණ්ඩායම සමඟ සහයෝගයෙන් වැඩ කරන්න";
+
+/* No comment provided by engineer. */
+"Collaboration" = "සහයෝගිත්‍වය";
+
+/* Share status */
+"Commentator" = "අදහස් දක්වන්නා";
+
+/* Category title */
+"Common Documents" = "සාමාන්‍ය ලේඛන";
+
+/* Cancel */
+"common.cancel" = "අවලංගු";
+
+/* Error */
+"common.error" = "දෝෂයකි";
+
+/* Myself */
+"common.me" = "මට";
+
+/* OK */
+"common.ok" = "හරි";
+
+/* Payment required message */
+"common.paymentRequiredMsg" = "ගෙවන කාල සීමාව අහවරයි";
+
+/* Payment required title */
+"common.paymentRequiredTitle" = "ගෙවීමක් අවශ්‍යයි";
+
+/* No comment provided by engineer. */
+"Compress Images" = "රූප සම්පීඩනය";
+
+/* Button title */
+"Connect" = "සබඳින්න";
+
+/* No comment provided by engineer. */
+"Connect Clouds" = "මේඝවලට සබඳින්න";
+
+/* Introduction Step Three - Description */
+"Connect third-party storage\nlike Nextcloud, ownCloud, Yandex Disk and\nothers which use WebDAV protocol." = "නෙක්ස්ක්ලවුඩ්, ඔව්න්කලවුඩ්, යාන්ඩෙක්ස් ඩිස්ක්\nසහ වෙබ්DAV කෙටුම්පත භාවිතා වන අනෙකුත්\nතෙවන පාර්ශ්ව ආචයන සම්බන්ධ කරන්න.";
+
+/* Footer text */
+"Connect to your %@ cloud to store files online and collaborate on documents in real time" = "ගොනු මාර්ගගතව ගබඩා කිරීමට සහ තථ්‍ය කාලීනව සහයෝගයෙන් ලේඛන කටයුතු \nසිදු කිරීමට ඔබගේ %@ මේඝයට සම්බන්ධ වන්න";
+
+/* Caption of the process */
+"Connecting" = "සම්බන්ධ වෙමින්";
+
+/* No comment provided by engineer. */
+"Console" = "හසුරුව";
+
+/* No comment provided by engineer. */
+"Continue anyway" = "කෙසේ වුවද ඉදිරියට";
+
+/* No comment provided by engineer. */
+"Converter" = "පරිවර්තකය";
+
+/* Button title */
+"Copy" = "පිටපතක්";
+
+/* Button title */
+"Copy here" = "මෙතනට පිටපතක්";
+
+/* Caption of the processing */
+"Copying" = "පිටපත් වෙමින්";
+
+/* Description of file operation error */
+"Could not change file attributes" = "උපලක්‍ෂණ වෙනස් කිරීමට නොහැකි විය";
+
+/* Description of file operation error */
+"Could not change the directory" = "නාමාවලිය වෙනස් කිරීමට නොහැකි විය";
+
+/* No comment provided by engineer. */
+"Could not convert file to export." = "නිර්යාතය සඳහා ගොනුව පරිවර්තනයට නොහැකි විය.";
+
+/* Description of file operation error */
+"Could not copy file" = "ගොනුව පිටපත් කිරීමට නොහැකි විය";
+
+/* No comment provided by engineer. */
+"Could not copy." = "පිටපත් කිරීමට නොහැකි විය.";
+
+/* Description of file operation error */
+"Could not create a directory" = "නාමාවලියක් සෑදීමට නොහැකි විය";
+
+/* Description of file operation error */
+"Could not create a hard link" = "දෘඩ සබැඳියක් සෑදීමට නොහැකි විය";
+
+/* Description of file operation error */
+"Could not create file" = "ගොනුව සෑදීමට නොහැකි විය";
+
+/* Description of file operation error */
+"Could not create symlink from" = "මෙයින් නෛමිත්තික සබැඳියක් සෑදීමට නොහැකි විය";
+
+/* Description of file operation error */
+"Could not delete file" = "ගොනුව මැකීමට නොහැකි විය";
+
+/* No comment provided by engineer. */
+"Could not delete the file." = "ගොනුව මැකීමට නොහැකි විය.";
+
+/* No comment provided by engineer. */
+"Could not delete the folder." = "බහාලුම මැකීමට නොහැකි විය.";
+
+/* No comment provided by engineer. */
+"Could not delete." = "මැකීමට නොහැකි විය.";
+
+/* No comment provided by engineer. */
+"Could not download file." = "ගොනුව බාගැනීමට නොහැකි විය.";
+
+/* No comment provided by engineer. */
+"Could not download object." = "වස්තුව බාගැනීමට නොහැකි විය.";
+
+/* No comment provided by engineer. */
+"Could not download the file." = "ගොනුව බාගැනීමට නොහැකි විය.";
+
+/* No comment provided by engineer. */
+"Could not duplicate the file." = "ගොනුවෙහි අනුපිටපත් සෑදීමට නොහැකි විය.";
+
+/* No comment provided by engineer. */
+"Could not export the file." = "ගොනුව නිර්යාතයට නොහැකි විය.";
+
+/* Description of file operation error */
+"Could not move file" = "ගොනුව ගෙනයාමට නොහැකි විය";
+
+/* No comment provided by engineer. */
+"Could not open editor." = "සංස්කරකය ඇරීමට නොහැකි විය.";
+
+/* No comment provided by engineer. */
+"Could not open file." = "ගොනුව ඇරීමට නොහැකි විය.";
+
+/* No comment provided by engineer. */
+"Could not read data from file." = "ගොනුවෙන් දත්ත කියවීමට නොහැකි විය.";
+
+/* No comment provided by engineer. */
+"Could not read data from the file." = "ගොනුවෙන් දත්ත කියවීමට නොහැකි විය.";
+
+/* Description of file operation error */
+"Could not read from file" = "ගොනුවෙන් කියවීමට නොහැකි විය";
+
+/* No comment provided by engineer. */
+"Could not save the file." = "ගොනුව සුරැකීමට නොහැකි විය.";
+
+/* Description of file operation error */
+"Could not write to file" = "ගොනුවට ලිවීමට නොහැකි විය";
+
+/* No comment provided by engineer. */
+"Couldn't open file" = "ගොනුව ඇරීමට නොහැකි විය";
+
+/* No comment provided by engineer. */
+"Couldn't save changes at server. Your modified document is saved in local storage as %@" = "වෙනස්කම් සේවාදායකයෙහි සුරැකීමට නොහැකි විය. %@ ලෙස ඔබගේ සංශෝධිත ලේඛනය ස්ථානීය ආචයනයේ සුරකිනු ලැබේ";
+
+/* No comment provided by engineer. */
+"Create" = "සාදන්න";
+
+/* Introduction Step Two - Description */
+"Create and edit documents with our comprehensive toolbar: work with complex objects in text documents, perform extensive calculations in spreadsheets, create stunning presentations and view PDF files with no formatting loss." = "අපගේ විස්තීර්ණ මෙවලම් තීරුව සමඟ ලේඛන සාදන්න සහ සංස්කරණය කරන්න: වදන් ලේඛනවල සංකීර්ණ වස්තූන් සමඟ වැඩ කරන්න, පැතුරුම්පත්වල පුළුල් ගණනය කිරීම් සිදු කරන්න, සිත් ඇදගන්නා සමර්පණ සාදන්න සහ කිසිදු ආකෘතිකරණ දෝෂයකින් තොරව පීඩීඑෆ් ගොනු බලන්න.";
+
+/* No comment provided by engineer. */
+"Create new documents, spreadsheets or presentations. Create new folders to organize your files." = "නව ලේඛන, පැතුරුම්පත් හෝ සමර්පණ සාදන්න. ඔබගේ ගොනු සංවිධානය කිරීමට නව බහාලුම් සාදන්න.";
+
+/* Caption of the process */
+"Creating" = "සෑදෙමින්";
+
+/* No comment provided by engineer. */
+"Custom" = "අභිරුචි";
+
+/* Share status */
+"Custom filter" = "අභිරුචි පෙරහන";
+
+/* No comment provided by engineer. */
+"Dark" = "අඳුරු";
+
+/* No comment provided by engineer. */
+"Date" = "දිනය";
+
+/* Button title */
+"Delete" = "මකන්න";
+
+/* No comment provided by engineer. */
+"Delete %lu File" = "ගොනු %lu ක් මකන්න";
+
+/* No comment provided by engineer. */
+"Delete %lu Folder" = "බහාලුම් %lu ක් මකන්න";
+
+/* No comment provided by engineer. */
+"Delete %lu Folder and %lu File" = "බහාලුම් %1$lu ක් හා ගොනු %2$lu ක් මකන්න";
+
+/* Button title */
+"Delete File" = "ගොනුව මකන්න";
+
+/* No comment provided by engineer. */
+"Delete Folder" = "බහාලුම මකන්න";
+
+/* No comment provided by engineer. */
+"Delete forever" = "සදහටම මකන්න";
+
+/* No comment provided by engineer. */
+"Delete from device" = "උපාංගයෙන් මකන්න";
+
+/* Caption of the processing */
+"Deleting" = "මැකෙමින්";
+
+/* No comment provided by engineer. */
+"Delimiter" = "පරිසීමකය";
+
+/* Share status */
+"Deny Access" = "ප්‍රවේශය ප්‍රතික්‍ෂේපය";
+
+/* No comment provided by engineer. */
+"Deselect all" = "සියල්ල නොතෝරන්න";
+
+/* No comment provided by engineer. */
+"Developer options" = "සංවර්ධක විකල්ප";
+
+/* No comment provided by engineer. */
+"Disable if you do not want to receive notifications from the %@" = "%@ වෙතින් දැනුම්දීම් ලැබීමට අවශ්‍ය නැතිනම් අබල කරන්න";
+
+/* Button title */
+"Disconnect third party" = "තෙවන පාර්ශ්වය විසන්ධිය";
+
+/* No comment provided by engineer. */
+"Document" = "ලේඛනය";
+
+/* Default title of sample document */
+"Document Sample" = "උදාහරණ ලේඛනය";
+
+/* Category title */
+"Documents" = "ලේඛන";
+
+/* Button title
+   Operation completed */
+"Done" = "අහවරයි";
+
+/* Button title */
+"Download" = "බාගන්න";
+
+/* Caption of the processing */
+"Downloading" = "බාගැනෙමින්";
+
+/* No comment provided by engineer. */
+"Dropbox" = "ඩ්‍රොප්බොක්ස්";
+
+/* No comment provided by engineer. */
+"Dropbox directory" = "ඩ්‍රොප්බොක්ස් නාමාවලිය";
+
+/* Button title */
+"Duplicate" = "අනුපිටපතක්";
+
+/* Caption of the processing */
+"Duplication" = "අනුපිටපත්";
+
+/* Data units */
+"Eb" = "එ.බ.";
+
+/* Button title */
+"Edit" = "සංස්කරණය";
+
+/* Introduction Step Four - Title */
+"Edit documents locally" = "ස්ථානීයව ලේඛන සංස්කරණය";
+
+/* Share status */
+"Editor" = "සංස්කරකය";
+
+/* No comment provided by engineer. */
+"Email" = "වි-තැපෑල";
+
+/* No comment provided by engineer. */
+"Email is empty" = "වි-තැපෑල හිස්ය";
+
+/* No comment provided by engineer. */
+"Email is incorrect." = "වි-තැපෑල වැරදිය.";
+
+/* No comment provided by engineer. */
+"Email is not valid" = "වි-තැපෑල වලංගු නොවේ";
+
+/* No comment provided by engineer. */
+"Empty file." = "හිස් ගොනුවකි.";
+
+/* No comment provided by engineer. */
+"Empty name." = "හිස් නමකි.";
+
+/* No comment provided by engineer. */
+"Enable if you want to receive notifications from the %@" = "%@ වෙතින් දැනුම්දීම් ලැබීමට අවශ්‍ය නැතිනම් සබල කරන්න";
+
+/* No comment provided by engineer. */
+"Encoding" = "ආකේතනය";
+
+/* Presentation Viewer */
+"End Slide Show" = "චිත්‍රකාඩ දැක්ම නිමාව";
+
+/* No comment provided by engineer. */
+"Enter a password to open the file." = "ගොනුව ඇරීමට මුරපදයක් යොදන්න.";
+
+/* placeholder */
+"Enter email" = "වි-තැපෑල යොදන්න";
+
+/* No comment provided by engineer. */
+"Enter Portal Address" = "ද්වාරයේ ලිපිනය යොදන්න";
+
+/* No comment provided by engineer. */
+"Error" = "දෝෂයකි";
+
+/* No comment provided by engineer. */
+"Error code: %ld" = "දෝෂ කේතය: %ld";
+
+/* Access is Forbidden message */
+"error.errorForbiddenMsg" = "සම්පත වෙත ප්‍රවේශය සඳහා ද්වාරයේ පරිපාලක අමතන්න.";
+
+/* Access is Forbidden title */
+"error.errorForbiddenTitle" = "ප්‍රවේශය තහනම්ය";
+
+/* The resource can not be found Title */
+"error.errorNotFoundMsg" = "සම්පත හමු නොවිණි";
+
+/* Unknown Server Error */
+"error.errorServerTitle" = "සේවාදායකයේ දෝෂයකි";
+
+/* No comment provided by engineer. */
+"Exclude subfolders" = "අනුබහාලුම් බැහැරව";
+
+/* Button title */
+"Export" = "නිර්යාතය";
+
+/* No comment provided by engineer. */
+"Failed online conversion service." = "මාර්ගගත අනුවර්තන සේවාව අසාර්ථක විය.";
+
+/* No comment provided by engineer. */
+"Failed to check portal availability." = "ද්වාරය තිබේදැයි පරීක්‍ෂා කිරීමට අසමත් විය.";
+
+/* No comment provided by engineer. */
+"Failed to check the name of the portal" = "ද්වාරයෙහි නම පරීක්‍ෂා කිරීමට අසමත් විය";
+
+/* No comment provided by engineer. */
+"Failed to connect folder." = "බහාලුමට සබැඳීමට අසමත් විය.";
+
+/* No comment provided by engineer. */
+"Failed to copy: %@" = "පිටපත් වීමට අසමත්: %@";
+
+/* No comment provided by engineer. */
+"Failed to get file information from the server." = "සේවාදායකයෙන් ගොනුවේ තොරතුරු ගැනීමට අසමත් විය.";
+
+/* No comment provided by engineer. */
+"Failed to get file list." = "ගොනු ලේඛනය ගැනීමට අසමත් විය.";
+
+/* No comment provided by engineer. */
+"Failed to get information about the file." = "ගොනුවේ තොරතුරු ගැනීමට අසමත් විය.";
+
+/* No comment provided by engineer. */
+"Failed to get the address of the document server." = "ලේඛන සේවාදායකයේ ලිපිනය ගැනීමට අසමත් විය.";
+
+/* No comment provided by engineer. */
+"Failed to move: %@" = "ගෙන යාමට අසමත්: %@";
+
+/* No comment provided by engineer. */
+"Failed to send feedback by mail. Try to write your request on our forum." = "තැපෑලෙන් ප්‍රතිපෝෂණ යැවීමට අසමත් විය. ඔබගේ ඉල්ලීම අපගේ සංසදයේ ලිවීමට උත්සාහ කරන්න.";
+
+/* No comment provided by engineer. */
+"Failed upload source file to conversion online service." = "මූලාශ්‍ර ගොනුව මාර්ගගත අනුවර්තන සේවාවට උඩුගත කිරීමට අසමත් විය.";
+
+/* No comment provided by engineer. */
+"Failure to download file from portal." = "ද්වාරයෙන් ගොනුව බාගැනීමට අසමත් විය.";
+
+/* No comment provided by engineer. */
+"Failure to download result from conversion online service." = "මාර්ගගත අනුවර්තන සේවාවෙන් ප්‍රතිඵල බාගැනීමට අසමත් විය.";
+
+/* No comment provided by engineer. */
+"Features" = "විශේෂාංග";
+
+/* Description of file operation error */
+"File already exists" = "ගොනුව දැනටමත් පවතී";
+
+/* Description of file operation error */
+"File does not exist" = "ගොනුව නොපවතී";
+
+/* No comment provided by engineer. */
+"Files" = "ගොනු";
+
+/* No comment provided by engineer. */
+"Files Preview" = "ගොනුවල පෙරදසුන";
+
+/* No comment provided by engineer. */
+"Filling form" = "පුරවන ආකෘතිපත්‍රය";
+
+/* No comment provided by engineer. */
+"Filters" = "පෙරහන්";
+
+/* No comment provided by engineer. */
+"First name is incorrect" = "පළමු නම වැරදිය";
+
+/* No comment provided by engineer. */
+"Folder title" = "බහාලුමේ සිරැසිය";
+
+/* No comment provided by engineer. */
+"Folders" = "බහාලුම්";
+
+/* Share status */
+"Form Filler" = "ආකෘතිපත්‍ර පිරවුම";
+
+/* No comment provided by engineer. */
+"Form templates" = "ආකෘතිපත්‍ර අච්චු";
+
+/* No comment provided by engineer. */
+"Forms" = "ආකෘතිපත්‍ර";
+
+/* Share status */
+"Full Access" = "පූර්ණ ප්‍රවේශය";
+
+/* Data units */
+"Gb" = "ගි.බ.";
+
+/* No comment provided by engineer. */
+"Get started" = "පටන් ගන්න";
+
+/* No comment provided by engineer. */
+"GET STARTED!" = "පටන් ගන්න!";
+
+/* Introduction Step One - Title */
+"Getting started" = "පටන් ගන්න";
+
+/* No comment provided by engineer. */
+"Go to forum" = "සංසදයට යන්න";
+
+/* No comment provided by engineer. */
+"Google directory" = "ගූගල් නාමාවලිය";
+
+/* No comment provided by engineer. */
+"Google Drive" = "ගූගල් ඩ්‍රයිව්";
+
+/* No comment provided by engineer. */
+"Groups" = "සමූහ";
+
+/* No comment provided by engineer. */
+"iCloud" = "අයික්ලවුඩ්";
+
+/* No comment provided by engineer. */
+"iCloud Drive" = "අයික්ලවුඩ් ඩ්‍රයිව්";
+
+/* Email sent instructions */
+"If a user with the mail %@ exists, then an instruction to change the password was sent to this address." = "%@ තැපෑල සහිත පරිශ්‍රීලකයෙක් සිටියි නම්, මුරපදය වෙනස් කිරීමට උපදෙස් මෙම ලිපිනයට යවා ඇත.";
+
+/* No comment provided by engineer. */
+"Images" = "රූප";
+
+/* Introduction Step Five - Description */
+"In online mode, use real-time co-editing features of %@ to work on documents together with your portal members, share documents and create common storage folders." = "මාර්ගගත ප්‍රකාරයේදී, ඔබගේ ද්වාරයේ සාමාජිකයින් සමඟ එක්ව ලේඛනවල වැඩ කිරීමට, ලේඛන බෙදා ගැනීමට සහ පොදු ආචයන බාහාලුම් සෑදීමට %@ හි තත්‍ය කාලීන සම-සංස්කරණ විශේෂාංග භාවිතා කරන්න.";
+
+/* No comment provided by engineer. */
+"Incorrect portal address" = "ද්වාරයේ ලිපිනය වැරදිය";
+
+/* Button title */
+"Info" = "තොරතුරු";
+
+/* No comment provided by engineer. */
+"Information" = "තොරතුරු";
+
+/* No comment provided by engineer. */
+"Instructions had been sent to your email" = "උපදෙස් ඔබගේ වි-තැපෑලට යවා ඇත";
+
+/* No comment provided by engineer. */
+"Invalid Country Code" = "රටෙහි කේතය වලංගු නොවේ";
+
+/* No comment provided by engineer. */
+"Invalid Data" = "දත්ත වලංගු නොවේ";
+
+/* No comment provided by engineer. */
+"Invalid Url" = "ඒ.ස.නි. වලංගු නොවේ";
+
+/* No comment provided by engineer. */
+"Invite" = "ආරාධනය";
+
+/* No comment provided by engineer. */
+"Invite people" = "පුද්ගලයින්ට ආරාධනය";
+
+/* No comment provided by engineer. */
+"Invite people by email" = "වි-තැපෑලෙන් ඇරයුම";
+
+/* Data units */
+"Kb" = "කි.බ.";
+
+/* No comment provided by engineer. */
+"kDrive" = "කේඩ්‍රයිව්";
+
+/* No comment provided by engineer. */
+"kDrive directory" = "කේඩ්‍රයිව් නාමාවලිය";
+
+/* No comment provided by engineer. */
+"Last name is empty" = "අග නම හිස්ය";
+
+/* No comment provided by engineer. */
+"Last name is incorrect" = "අග නම වැරදිය";
+
+/* No comment provided by engineer. */
+"Light" = "දීප්ත";
+
+/* No comment provided by engineer. */
+"Link copied\nto the clipboard" = "සබැඳිය පසුරු පුවරුවට\nපිටපත් විය";
+
+/* No comment provided by engineer. */
+"Link with the invitation has been sent to the mail" = "ආරාධනය සමඟ සබැඳිය තැපෑලට යවා ඇත";
+
+/* Caption of the process */
+"Logging in" = "පිවිසීමට";
+
+/* No comment provided by engineer. */
+"Login" = "පිවිසෙන්න";
+
+/* No comment provided by engineer. */
+"Login by %@" = "%@ මගින් පිවිසෙන්න";
+
+/* No comment provided by engineer. */
+"Login is empty" = "පිවිසීම හිස්ය";
+
+/* Button title
+   Caption of the process */
+"Logout" = "නික්මෙන්න";
+
+/* Button title */
+"Mark as Favorite" = "ප්‍රියතම බව යොදන්න";
+
+/* Button title */
+"Mark as Read" = "කියවූ බව යොදන්න";
+
+/* No comment provided by engineer. */
+"Mark as Read failed." = "කියවූ බව යෙදීමට අසමත් විය.";
+
+/* Data units */
+"Mb" = "මෙ.බ.";
+
+/* Author or member of a document
+   If current user name is not set */
+"Me" = "මට";
+
+/* No comment provided by engineer. */
+"Media" = "මාධ්‍ය";
+
+/* No comment provided by engineer. */
+"Member" = "සාමාජික";
+
+/* Button title */
+"More" = "තවත්";
+
+/* Button title */
+"Move" = "ගෙනයන්න";
+
+/* Button title */
+"Move from archive" = "සංරක්‍ෂිතයෙන් ගෙනයන්න";
+
+/* Button title */
+"Move here" = "මෙතනට ගෙනඑන්න";
+
+/* Button title */
+"Move or Copy" = "ගෙනයන්න හෝ පිටපතක්";
+
+/* Caption of the processing */
+"Moving" = "ගෙනයමින්";
+
+/* Caption of the processing */
+"Moving from archive" = "සංරක්‍ෂිතයෙන් ගෙනයන්න";
+
+/* Category title */
+"My archived" = "මාගේ සංරක්‍ෂණ";
+
+/* No comment provided by engineer. */
+"My Clouds" = "මාගේ මේඝ";
+
+/* Category title */
+"My Documents" = "මාගේ ලේඛන";
+
+/* No comment provided by engineer. */
+"My Drive" = "මාගේ ධාවකය";
+
+/* Category title */
+"My rooms" = "මාගේ කාමර";
+
+/* No comment provided by engineer. */
+"Name is empty" = "නම හිස්ය";
+
+/* No comment provided by engineer. */
+"Needs additional params." = "අතිරේක පරාමිතීන් අවශ්‍යයි.";
+
+/* Badge of file in file list */
+"new" = "නව";
+
+/* No comment provided by engineer. */
+"New" = "නව";
+
+/* No comment provided by engineer. */
+"New Document" = "නව ලේඛනයක්";
+
+/* No comment provided by engineer. */
+"New Folder" = "නව බහාලුම";
+
+/* No comment provided by engineer. */
+"New Presentation" = "නව සමර්පණයක්";
+
+/* No comment provided by engineer. */
+"New Spreadsheet" = "නව පැතුරුම්පතක්";
+
+/* No comment provided by engineer. */
+"New users" = "නව පරිශ්‍රීලකයින්";
+
+/* Next step */
+"Next" = "ඊළඟ";
+
+/* No comment provided by engineer. */
+"Nextcloud" = "නෙක්ස්ක්ලවුඩ්";
+
+/* No comment provided by engineer. */
+"Nextcloud directory" = "නෙක්ස්ක්ලවුඩ් නාමාවලිය";
+
+/* No comment provided by engineer. */
+"No client IDs of application" = "යෙදුමේ අනුග්‍රාකහ හැඳු. නැත";
+
+/* No comment provided by engineer. */
+"No connection" = "සම්බන්ධතාවයක් නැත";
+
+/* No comment provided by engineer. */
+"No information about the user profile." = "පරිශ්‍රීලක පැතිකඩ පිළිබඳව තොරතුරු නැත.";
+
+/* No comment provided by engineer. */
+"No Internet connection" = "අන්තර්ජාල සම්බන්ධතාවයක් නැත";
+
+/* No comment provided by engineer. */
+"No network" = "ජාලයක් නැත";
+
+/* No comment provided by engineer. */
+"No network connection can be found. Please check the connection and reload the page." = "ජාල සම්බන්ධතාවයක් හමු නොවිණි. කරුණාකර සම්බන්ධතාවය පරීක්‍ෂා කර පිටුව නැවත පූරණය කරන්න.";
+
+/* No comment provided by engineer. */
+"No results matching your search could be found. Please try another phrase." = "ඔබගේ සෙවුමට ගැළපෙන ප්‍රතිඵල කිසිවක් හමු නොවිණි. වෙනත් වාක්‍ය ඛණ්ඩයක් බලන්න.";
+
+/* No comment provided by engineer. */
+"No search result" = "සෙවුම් ප්‍රතිඵල නැත";
+
+/* No comment provided by engineer. */
+"No Search Result" = "සෙවුම් ප්‍රතිඵල නැත";
+
+/* Invalid entity date
+   Invalid entity owner */
+"none" = "කිසිත් නැත";
+
+/* If the cache is empty
+   Share status */
+"None" = "කිසිත් නැත";
+
+/* No comment provided by engineer. */
+"Note: removal from your account can not be undone." = "සටහන: ඔබගේ ගිණුමෙන් ඉවත් කිරීම අප්‍රතිවර්ත්‍යයි.";
+
+/* No comment provided by engineer. */
+"Nothing to show" = "පෙන්වීමට කිසිවක් නැත";
+
+/* No comment provided by engineer. */
+"Notifications" = "දැනුම්දීම්";
+
+/* Sharing settings switcher */
+"Notify by Email" = "වි-තැපෑලෙන් දන්වන්න";
+
+/* Used in the context: 'Showing 1 of 3 items' */
+"of" = "ගේ";
+
+/* No comment provided by engineer. */
+"OK" = "හරි";
+
+/* Category title */
+"On iPad" = "අයිපෑඩ් හි";
+
+/* Category title */
+"On iPhone" = "අයිපෝන් හි";
+
+/* No comment provided by engineer. */
+"OneDrive" = "වන්ඩ්‍රයිව්";
+
+/* No comment provided by engineer. */
+"OneDrive directory" = "වන්ඩ්‍රයිව් නාමාවලිය";
+
+/* No comment provided by engineer. */
+"OneDrive for Business" = "ව්‍යාපාර සඳහා වන්ඩ්‍රයිව්";
+
+/* Short App Name */
+"ONLYOFFICE" = "ඔන්ලිඔෆිස්";
+
+/* Full App Name */
+"ONLYOFFICE Documents" = "ඔන්ලිඔෆිස් ලේඛන";
+
+/* Full App Name */
+"ONLYOFFICE portal" = "ඔන්ලිඔෆිස් ද්වාරය";
+
+/* No comment provided by engineer. */
+"Oops!" = "අපොයි!";
+
+/* No comment provided by engineer. */
+"Open Document" = "ලේඛනය අරින්න";
+
+/* No comment provided by engineer. */
+"Open Folder" = "බහාලුම අරින්න";
+
+/* Caption of the processing */
+"Opening" = "විවෘත වෙමින්";
+
+/* No comment provided by engineer. */
+"Options" = "විකල්ප";
+
+/* No comment provided by engineer. */
+"Order" = "ඇණවුම";
+
+/* No comment provided by engineer. */
+"Other" = "වෙනත්";
+
+/* Button title */
+"Overwrite" = "උඩින් ලියන්න";
+
+/* Button title */
+"Overwrite confirmation" = "උඩින් ලිවීම තහවුරුව";
+
+/* No comment provided by engineer. */
+"ownCloud" = "ඔව්න්ක්ලවුඩ්";
+
+/* No comment provided by engineer. */
+"ownCloud directory" = "ඔව්න්ක්ලවුඩ් නාමාවලිය";
+
+/* Table cell right holder acces text */
+"Owner" = "හිමිකරු";
+
+/* No comment provided by engineer. */
+"Passcode Lock" = "මුරකේත අගුල";
+
+/* No comment provided by engineer. */
+"Password" = "මුරපදය";
+
+/* No comment provided by engineer. */
+"Password is empty" = "මුරපදය හිස්ය";
+
+/* No comment provided by engineer. */
+"Passwords do not match" = "මුරපද නොගැළපේ";
+
+/* Data units */
+"Pb" = "පෙ.බ.";
+
+/* No comment provided by engineer. */
+"Phone" = "දුරකථනය";
+
+/* No comment provided by engineer. */
+"Phone is incorrect" = "දුරකථනය වැරදිය";
+
+/* Used in the context: '1 photo' */
+"photo" = "අනුරූපය";
+
+/* Used in the context: '3 photos' */
+"photos" = "අනුරූප";
+
+/* Button title */
+"Pin to top" = "මුදුනට අමුණන්න";
+
+/* No comment provided by engineer. */
+"Pinned failed." = "ඇමිණීමට අසමත් විය.";
+
+/* Caption of the processing */
+"Pinning" = "අමුණමින්";
+
+/* No comment provided by engineer. */
+"Please go to Settings and enable the camera for this app to use this feature." = "කරුණාකර සැකසුම් වෙත ගොස් මෙම විශේෂාංගය භාවිතය සඳහා මෙම යෙදුමට රූගතය සබල කරන්න.";
+
+/* No comment provided by engineer. */
+"Please re-login to renew your session." = "ඔබගේ වාරය නැවත අළුත් කිරීමට පිවිසෙන්න.";
+
+/* No comment provided by engineer. */
+"Please retry. \n\n If the problem persists contact us and mention this error code: Box - %@" = "යළි උත්සාහ කරන්න. \n\n ගැටළුව පවතී නම් දෝෂයේ කේතය සඳහන් කර අප අමතන්න: බොක්ස් - %@";
+
+/* No comment provided by engineer. */
+"Please retry. \n\n If the problem persists contact us and mention this error code: Dropbox - %@" = "යළි උත්සාහ කරන්න. \n\n ගැටළුව පවතී නම් දෝෂයේ කේතය සඳහන් කර අප අමතන්න: ඩ්‍රොප්බොක්ස් - %@";
+
+/* No comment provided by engineer. */
+"Please retry. \n\n If the problem persists contact us and mention this error code: Google - %@" = "යළි උත්සාහ කරන්න. \n\n ගැටළුව පවතී නම් දෝෂයේ කේතය සඳහන් කර අප අමතන්න: ගූගල් - %@";
+
+/* No comment provided by engineer. */
+"Please retry. \n\n If the problem persists contact us and mention this error code: Microsoft - %@" = "යළි උත්සාහ කරන්න. \n\n ගැටළුව පවතී නම් දෝෂයේ කේතය සඳහන් කර අප අමතන්න: මයික්‍රොසොෆ්ට් - %@";
+
+/* No comment provided by engineer. */
+"Please retry. \n\n If the problem persists contact us and mention this error code: OneDrive - %@" = "යළි උත්සාහ කරන්න. \n\n ගැටළුව පවතී නම් දෝෂයේ කේතය සඳහන් කර අප අමතන්න: වන්ඩ්‍රයිව් - %@";
+
+/* No comment provided by engineer. */
+"Please retry. \n\n If the problem persists contact us and mention this error code: SSO - %@" = "යළි උත්සාහ කරන්න. \n\n ගැටළුව පවතී නම් දෝෂයේ කේතය සඳහන් කර අප අමතන්න: SSO - %@";
+
+/* No comment provided by engineer. */
+"Portal Address" = "ද්වාරයේ ලිපිනය";
+
+/* No comment provided by engineer. */
+"Portal is unavailable." = "ද්වාරය නොතිබේ.";
+
+/* Share status */
+"Pover user" = "බලවත් පරිශ්‍රීලක";
+
+/* No comment provided by engineer. */
+"Presentation" = "සමර්පණය";
+
+/* Default title of sample document */
+"Presentation Sample" = "උදාහරණ සමර්පණය";
+
+/* No comment provided by engineer. */
+"Presentations" = "සමර්පණ";
+
+/* Button title */
+"Preview" = "පෙරදසුන";
+
+/* Part of phrases - By creating the portal you agree with our Privacy Policy and Terms of Service */
+"Privacy Policy" = "රහස්‍යතා ප්‍රතිපත්තිය";
+
+/* Caption of the processing */
+"Processing" = "සැකසෙමින්";
+
+/* No comment provided by engineer. */
+"Profile" = "පැතිකඩ";
+
+/* Category title */
+"Project Documents" = "ව්‍යාපෘති ලේඛන";
+
+/* No comment provided by engineer. */
+"Protected File" = "රක්‍ෂිත ගොනුවකි";
+
+/* No comment provided by engineer. */
+"Push notifications disabled" = "තල්ලු දැනුම්දීම් අබලයි";
+
+/* Button title */
+"Recover here" = "මෙතනට ප්‍රතිසාධනය";
+
+/* Caption of the processing */
+"Recovery" = "ප්‍රතිසාධනය";
+
+/* No comment provided by engineer. */
+"Registration" = "ලියාපදිංචිය";
+
+/* No comment provided by engineer. */
+"Reload" = "යළි පූරණය";
+
+/* Button title */
+"Remove from Favorites" = "ප්‍රියතම වෙතින් ඉවත් කරන්න";
+
+/* Caption of the process */
+"Removing" = "ඉවත් වෙමින්";
+
+/* Button title */
+"Rename" = "නම් කරන්න";
+
+/* No comment provided by engineer. */
+"Rename failed." = "යළි නම් කිරීමට අසමත්.";
+
+/* No comment provided by engineer. */
+"Rename failed. An object with such a similar name exists." = "යළි නම් කිරීමට අසමත් විය. සමාන නමක් සහිත වස්තුවක් පවතී.";
+
+/* Caption of the processing */
+"Renaming" = "නම්ග කෙරෙමින්";
+
+/* No comment provided by engineer. */
+"Renewal" = "අළුත් කිරීම";
+
+/* No comment provided by engineer. */
+"Request canceled" = "ඉල්ලීම අවලංගු කෙරිණි";
+
+/* No comment provided by engineer. */
+"Request had insufficient authentication scopes" = "ඉල්ලීමට ප්‍රමාණවත් සත්‍යාපන අවකාශයක් තිබුණේ නැත";
+
+/* No comment provided by engineer. */
+"Reset" = "යළි සකසන්න";
+
+/* Button title */
+"Restore" = "ප්‍රත්‍යර්පණය";
+
+/* Caption of the processing */
+"Restoring" = "ප්‍රත්‍යර්පණය වෙමින්";
+
+/* Share status */
+"Reviewer" = "සමාලෝචක";
+
+/* Share status */
+"Room admin" = "කාමරයේ පරිපාලක";
+
+/* DocSpace rooms */
+"Rooms" = "කාමර";
+
+/* No comment provided by engineer. */
+"Same as system" = "පද්ධතියේ ලෙස";
+
+/* Caption of the processing */
+"Saving" = "සුරැකෙමින්";
+
+/* No comment provided by engineer. */
+"Search" = "සොයන්න";
+
+/* Button title
+   Navigation bar button title */
+"Select" = "තෝරන්න";
+
+/* No comment provided by engineer. */
+"Select all" = "සියල්ල තෝරන්න";
+
+/* No comment provided by engineer. */
+"Select another cloud to connect to Nextcloud, ownCloud and others are supported." = "නෙක්ස්ක්ලවුඩ් වෙත සම්බන්ධ වීමට වෙනත් මේඝයක් තෝරන්න, ඔවින්ක්ලවුඩ් සහ වෙනත් සේවා සහාය දක්වයි.";
+
+/* No comment provided by engineer. */
+"Select group" = "සමූහයක් තෝරන්න";
+
+/* No comment provided by engineer. */
+"Select Photos" = "ඡායාරූප තෝරන්න";
+
+/* One line. Max 50 charasters */
+"Select the folder to copy the items" = "අථක පිටපත් කිරීමට බහාලුමක් තෝරන්න";
+
+/* One line. Max 50 charasters */
+"Select the folder to move the items" = "අථක ගෙන යාමට බහාලුමක් තෝරන්න";
+
+/* One line. Max 50 charasters */
+"Select the folder to recover the items" = "අථක ප්‍රතිසාධනයට බහාලුමක් තෝරන්න";
+
+/* No comment provided by engineer. */
+"Select user" = "පරිශ්‍රීලකයෙක් තෝරන්න";
+
+/* No comment provided by engineer. */
+"Selected provider is not available" = "තෝරාගත් සැපයුම්කරු නොතිබේ";
+
+/* No comment provided by engineer. */
+"Selected users will not be invited to the room" = "තේරූ පරිශ්‍රීලකයින් කාමරයට ආරාධනා නොකෙරේ";
+
+/* No comment provided by engineer. */
+"Selected: %ld" = "තෝරා ඇත: %ld";
+
+/* No comment provided by engineer. */
+"Selecting access rights" = "ප්‍රවේශ අයිතීන් තෝරමින්";
+
+/* No comment provided by engineer. */
+"Send" = "යවන්න";
+
+/* No comment provided by engineer. */
+"Send the profile deletion instructions to the email address %@?" = "පැතිකඩ මකාදැමීමේ උපදෙස් %@ වි-තැපැල් ලිපිනයට යවන්නද?";
+
+/* Caption of the process */
+"Sending" = "යැවෙමින්";
+
+/* No comment provided by engineer. */
+"Set favorite failed." = "ප්‍රියතමය සැකසීමට අසමත්.";
+
+/* No comment provided by engineer. */
+"Settings" = "සැකසුම්";
+
+/* No comment provided by engineer. */
+"Settings and Security" = "සැකසුම් හා ආරක්‍ෂාව";
+
+/* No comment provided by engineer. */
+"Shared access" = "බෙදාගත් ප්‍රවේශය";
+
+/* Category title */
+"Shared with Me" = "මා සමඟ බෙදාගත්";
+
+/* No comment provided by engineer. */
+"SharePoint directory" = "ෂෙයාර්පොයින්ට් නාමාවලිය";
+
+/* Caption of the process */
+"Sharing" = "බෙදාගැනීම";
+
+/* No comment provided by engineer. */
+"Sharing settings" = "බෙදාගැනීමේ සැකසුම්";
+
+/* Button title */
+"Sharing Settings" = "බෙදාගැනීමේ සැකසුම්";
+
+/* No comment provided by engineer. */
+"Show %d results" = "ප්‍රතිඵල %d ක් පෙන්වන්න";
+
+/* No comment provided by engineer. */
+"Show notifications" = "දැනුම්දීම් පෙන්වන්න";
+
+/* No comment provided by engineer. */
+"Sign in" = "පිවිසෙන්න";
+
+/* No comment provided by engineer. */
+"Single Sign-on" = "තනි පිවිසුම";
+
+/* No comment provided by engineer. */
+"Size" = "ප්‍රමාණය";
+
+/* Button title */
+"Skip" = "මඟහරින්න";
+
+/* No comment provided by engineer. */
+"SKIP" = "මඟහරින්න";
+
+/* Presentation Viewer */
+"Slide %i of %i" = "චිත්‍රකාච %2$i න් %1$i";
+
+/* No comment provided by engineer. */
+"Something went wrong, try again" = "යම් වරදක් සිදු වී ඇත, නැවත උත්සාහ කරන්න";
+
+/* No comment provided by engineer. */
+"Something wrong" = "යමක් වැරදී ඇත";
+
+/* Button title */
+"Sort" = "වර්ගනය";
+
+/* No comment provided by engineer. */
+"Space" = "පරතරය";
+
+/* No comment provided by engineer. */
+"Spreadsheet" = "පැතුරුම්පත";
+
+/* Default title of sample document */
+"Spreadsheet Sample" = "උදාහරණ පැතුරුම්පත";
+
+/* No comment provided by engineer. */
+"Spreadsheets" = "පැතුරුම්පත්";
+
+/* No comment provided by engineer. */
+"Storage" = "ආචයනය";
+
+/* No comment provided by engineer. */
+"Support" = "සහාය";
+
+/* No comment provided by engineer. */
+"Switch" = "මාරුව";
+
+/* No comment provided by engineer. */
+"Tab" = "පටිත්ත";
+
+/* Data units */
+"Tb" = "ටෙ.බ.";
+
+/* No comment provided by engineer. */
+"Terminate account" = "ගිණුම මකන්න";
+
+/* Part of phrases - By creating the portal you agree with our Privacy Policy and Terms of Service */
+"Terms of Service" = "සේවාවේ නියම";
+
+/* Notification title */
+"Text copied" = "පෙළ පිටපත් විය";
+
+/* No comment provided by engineer. */
+"The %@ server is not available." = "%@ සේවාදායකය නොතිබේ.";
+
+/* No comment provided by engineer. */
+"The account name must be between 6 and 50 characters long" = "ගිණුමේ නම අකුරු 6 සහ 50 අතර විය යුතුය";
+
+/* No comment provided by engineer. */
+"The deleted files go to the trash. You can either restore or delete them forever." = "මකා දැමූ ගොනු කුණු කූඩයට යයි. ඔබට ඒවා ප්‍රතිසාධනයට හෝ සදහටම මකා දැමීමට හැකිය.";
+
+/* No comment provided by engineer. */
+"The file in the Trash can not be viewed." = "කුණු කූඩයේ තිබෙන ගොනුව නැරඹීමට නොහැකිය.";
+
+/* No comment provided by engineer. */
+"The file will be irretrievably deleted. This action is irreversible." = "ගොනුව නැවත ලද නොහැකි ලෙස මකා දැමෙනු ඇත. මෙම ක්‍රියාමාර්ගය අප්‍රතිවර්ත්‍යයි.";
+
+/* No comment provided by engineer. */
+"The folder in the Trash can not be opened." = "කුණු කූඩයේ තිබෙන ගොනුව ඇරීමට නොහැකිය.";
+
+/* No comment provided by engineer. */
+"The item with the name '%@' already exists in the folder '%@'." = "'%1$@' නම සහිත අථකය දැනටමත් '%2$@' බහාලුමෙහි පවතී.";
+
+/* No comment provided by engineer. */
+"The link for external\naccess is copied\nto the clipboard" = "බාහිර ප්‍රවේශය සඳහා\nසබැඳිය පසුරු පුවරුවට\nපිටපත් කර ඇත";
+
+/* No comment provided by engineer. */
+"The ONLYOFFICE Editors module is missing. Please contact support@onlyoffice.com for more information." = "ඔන්ලිඔෆිස් සංස්කරක ඒකකය දක්නට නැත. වැඩි විස්තර සඳහා කරුණාකර support@onlyoffice.com අමතන්න.";
+
+/* No comment provided by engineer. */
+"The parameters are incorrect." = "පරාමිතීන් වැරදිය.";
+
+/* No comment provided by engineer. */
+"The password is incorrect. It must contain 8 characters" = "මුරපදය වැරදියි. එහි අකුරු 8 ක් අඩංගු විය යුතුය";
+
+/* No comment provided by engineer. */
+"The portal address is invalid" = "ද්වාරයේ ලිපිනය වලංගු නොවේ";
+
+/* No comment provided by engineer. */
+"The portal is not available" = "ද්වාරය නොතිබේ";
+
+/* No comment provided by engineer. */
+"The portal name must be between 6 and 50 characters long" = "ද්වාරයේ නම අකුරු 6 සහ 50 අතර විය යුතුය";
+
+/* No comment provided by engineer. */
+"The quota of users is almost exhausted. Сontact the portal administrator" = "පරිශ්‍රීලකයින්ගේ සලාක බොහෝ දුරට අවසන් වී ඇත. ද්වාරයේ පරිපාලක අමතන්න";
+
+/* No comment provided by engineer. */
+"The request timed out." = "ඉල්ලීම කල් ඉකුත් විය.";
+
+/* No comment provided by engineer. */
+"The server is not available." = "සේවාදායකය නොතිබේ.";
+
+/* No comment provided by engineer. */
+"The setting will be available upon authorization on the %@." = "%@ හි සත්‍යාපනය මත සැකසුමට ප්‍රවේශය ලැබෙනු ඇත.";
+
+/* No comment provided by engineer. */
+"The trash is empty" = "කුණුකූඩය හිස්ය";
+
+/* No comment provided by engineer. */
+"The user limit has been reached. Сontact the portal administrator" = "පරිශ්‍රීලක සීමාවට ළඟා වී ඇත. ද්වාරයේ පරිපාලක අමතන්න";
+
+/* No comment provided by engineer. */
+"Theme" = "තේමාව";
+
+/* No comment provided by engineer. */
+"Third party resource" = "තෙවන පාර්ශ්ව සම්පත";
+
+/* Introduction Step Three - Title */
+"Third-party storage" = "තෙවන පාර්ශ්ව ආචයනය";
+
+/* No comment provided by engineer. */
+"This document is being edited. Do you want open %@ to view only?" = "මෙම ලේඛනය සංස්කරණය වෙමින් පවතී. දැකීමට පමණක් %@ විවෘත කිරීමට අවශ්‍යද?";
+
+/* No comment provided by engineer. */
+"This folder is empty" = "බහාලුම හිස්ය";
+
+/* No comment provided by engineer. */
+"This operation will free up space on your device by deleting temporary files. Your offline files and personal data won't be removed." = "මෙම මෙහෙයුම තාවකාලික ගොනු මකා දැමීමෙන් ඔබගේ උපාංගයේ ඉඩ ලබා ගනු ඇත. ඔබගේ මාර්ගඅපගත ගොනු සහ පෞද්ගලික දත්ත ඉවත් නොකෙරේ.";
+
+/* No comment provided by engineer. */
+"This option is used to block access previously granted to a user or group." = "මෙම විකල්පය පරිශ්‍රීලකයෙක්ට හෝ සමූහයකට කලින් ලබා දී තිබුණු ප්‍රවේශය අවහිර කිරීමට භාවිතා කරයි.";
+
+/* No comment provided by engineer. */
+"This presentation is being edited. Do you want open %@ to view only?" = "මෙම සමර්පණය සංස්කරණය වෙමින් පවතී. දැකීමට පමණක් %@ විවෘත කිරීමට අවශ්‍යද?";
+
+/* No comment provided by engineer. */
+"This spreadsheet is being edited. Do you want open %@ to view only?" = "මෙම පැතුරුම්පත සංස්කරණය වෙමින් පවතී. දැකීමට පමණක් %@ විවෘත කිරීමට අවශ්‍යද?";
+
+/* No comment provided by engineer. */
+"Title" = "සිරැසිය";
+
+/* No comment provided by engineer. */
+"To open a document, you must go to portal %@ under your account." = "ලේඛනයක් විවෘත කිරීමට, ඔබගේ ගිණුම යටතේ %@ ද්වාරය වෙත යා යුතුය.";
+
+/* No comment provided by engineer. */
+"To open a folder, you must exit the current document." = "බහාලුමක් විවෘත කිරීමට, ඔබ වත්මන් ලේඛනයෙන් පිටවිය යුතුය.";
+
+/* No comment provided by engineer. */
+"To open a folder, you must go to portal %@ under your account." = "බහාලුමක් විවෘත කිරීමට, ඔබගේ ගිණුම යටතේ %@ ද්වාරය වෙත යා යුතුය.";
+
+/* No comment provided by engineer. */
+"To open a new document, you must exit the current document." = "නව ලේඛනයක් විවෘත කිරීමට, ඔබ වත්මන් ලේඛනයෙන් පිටවිය යුතුය.";
+
+/* No comment provided by engineer. */
+"To receive push notifications from the %@ application, you need to allow receiving notifications for this application in the iOS settings" = "%@ යෙදුමෙන් තල්ලු දැනුම්දීම් ලබා ගැනීමට, ඔබ අයිඕඑස් සැකසුම් තුළ මෙම යෙදුම සඳහා දැනුම්දීම් ලැබීමට ඉඩ දිය යුතුය";
+
+/* Category title */
+"Trash" = "කුණු කූඩය";
+
+/* No comment provided by engineer. */
+"Try again" = "යළි උත්සාහය";
+
+/* No comment provided by engineer. */
+"Try Again" = "යළි උත්සාහය";
+
+/* No comment provided by engineer. */
+"Try to connect via another protocol?" = "වෙනත් කෙටුම්පතක් හරහා සම්බන්ධ වීමට තැත් කරන්නද?";
+
+/* No comment provided by engineer. */
+"Turn ON in Settings" = "සැකසුම් තුළ සක්‍රිය කරන්න";
+
+/* No comment provided by engineer. */
+"Turn Passcode Off" = "මුරකේතය අක්‍රිය කරන්න";
+
+/* No comment provided by engineer. */
+"Turn Passcode On" = "මුරකේතය සක්‍රිය කරන්න";
+
+/* No comment provided by engineer. */
+"Type" = "වර්ගය";
+
+/* No comment provided by engineer. */
+"Unable delete items" = "අථක මැකීමට නොහැකිය";
+
+/* No comment provided by engineer. */
+"Unable disconnect third party" = "තෙවන පාර්ශ්වය විසන්ධි කිරීමට නොහැකිය";
+
+/* No comment provided by engineer. */
+"Unable to get information about the portal" = "ද්වාරයේ තොරතුරු ගැනීමට නොහැකිය";
+
+/* No comment provided by engineer. */
+"Unable to get information about the user." = "පරිශ්‍රීලකයා පිළිබඳව තොරතුරු ගැනීමට නොහැකිය.";
+
+/* No comment provided by engineer. */
+"Unarchiving failed." = "අසංරක්‍ෂණයට අසමත් විය.";
+
+/* No comment provided by engineer. */
+"Unauthorized users will be able only to view the document and add comments, as well as manage them." = "බලය නොලත් පරිශ්‍රීලකයින්ට ලේඛනය දැකීමට සහ අදහස් එක් කිරීමට මෙන්ම ඒවා කළමනාකරණයට පමණක් හැකි වනු ඇත.";
+
+/* No comment provided by engineer. */
+"Unauthorized users will be able only to view the document and fill in the forms inserted into the document." = "බලය නොලත් පරිශ්‍රීලකයින්ට ලේඛනය දැකීමට සහ ලේඛනයට ඇතුළු කර තිබෙන ආකෘතිපත්‍ර පිරවීමට පමණක් හැකි වනු ඇත.";
+
+/* No comment provided by engineer. */
+"Unauthorized users will be able only to view the document." = "බලය නොලත් පරිශ්‍රීලකයින්ට ලේඛනය දැකීමට පමණක් හැකි වනු ඇත.";
+
+/* No comment provided by engineer. */
+"Unauthorized users will be able to view and change the document without actually editing it, but all the changes made by a reviewer will be recorded and shown to the file owner (or a person who has full access to the file) so that he/she will be able to accept or reject them." = "බලය නොලත් පරිශ්‍රීලකයින්ට ලේඛනය සත්‍ය වශයෙන් සංස්කරණය නොකර දැකීමට සහ වෙනස් කිරීමට හැකි වනු ඇත, නමුත් සමාලෝචකයෙක් සිදු කරන සියළුම වෙනස්කම් පටිගත වී ගොනුවේ හිමිකරුට (හෝ ගොනුවට පූර්ණ ප්‍රවේශය තිබෙන අයෙක්ට) දිස්වනු ඇත. එමගින් ඔහුට/ඇයට ඒවා පිළිගැනීමට හෝ ප්‍රතික්‍ෂේප කිරීමට හැකිය.";
+
+/* No comment provided by engineer. */
+"Unauthorized users will be able to view and edit the document as well as to share this document." = "බලය නොලත් පරිශ්‍රීලකයින්ට ලේඛනය දැකීමට සහ සංස්කරණයට මෙන්ම බෙදාගැනීමට හැකි වනු ඇත.";
+
+/* No comment provided by engineer. */
+"Unauthorized users will not have access to the document." = "බලය නොලත් පරිශ්‍රීලකයින්ට ලේඛනය වෙත ප්‍රවේශය නොලැබේ.";
+
+/* No comment provided by engineer. */
+"Unexpected response from the service." = "සේවාවෙන් අනපේක්‍ෂිත ප්‍රතිචාරයකි.";
+
+/* Invalid entity name */
+"Unknown" = "නොදන්නා";
+
+/* No comment provided by engineer. */
+"Unknown error" = "නොදන්නා දෝෂයකි";
+
+/* No comment provided by engineer. */
+"Unknown file provider" = "නොදන්නා ගොනු සැපයුම්කරුවෙකි";
+
+/* No comment provided by engineer. */
+"Unknown item type." = "නොදන්නා අථක වර්ගයකි.";
+
+/* No comment provided by engineer. */
+"Unlock with Face ID" = "මුහුණු හැඳු. මඟින් හරින්න";
+
+/* No comment provided by engineer. */
+"Unlock with Touch ID" = "ස්පර්ශ හැඳු. මඟින් හරින්න";
+
+/* Button title */
+"Unpin" = "ගළවන්න";
+
+/* No comment provided by engineer. */
+"Unpinned failed." = "ගැළවීමට අසමත් විය.";
+
+/* Caption of the processing */
+"Unpinning" = "ගැළවෙමින්";
+
+/* Caption of the processing */
+"Unpning" = "ගැළවෙමින්";
+
+/* No comment provided by engineer. */
+"Unsupported format." = "සහාය නොදක්වන ආකෘතියකි.";
+
+/* Caption of the process */
+"Uploading" = "උඩුගත වෙමින්";
+
+/* Button title */
+"Use Face ID" = "මුහුණු හැඳු. භාවිතය";
+
+/* Button title */
+"Use Touch ID" = "ස්පර්ශ හැඳු. භාවිතය";
+
+/* No comment provided by engineer. */
+"User" = "පරිශ්‍රීලක";
+
+/* No comment provided by engineer. */
+"User authentication failed" = "පරිශ්‍රීලක සත්‍යාපනයට අසමත් විය";
+
+/* No comment provided by engineer. */
+"User authentication required" = "පරිශ්‍රීලක සත්‍යාපනය අවශ්‍යයි";
+
+/* No comment provided by engineer. */
+"User undefined" = "පරිශ්‍රීලක දක්වා නැත";
+
+/* No comment provided by engineer. */
+"Users" = "පරිශ්‍රීලකයින්";
+
+/* No comment provided by engineer. */
+"Users in room" = "කාමරයේ පරිශ්‍රීලකයින්";
+
+/* Caption of the process */
+"Validation" = "වලංගුකරණය";
+
+/* Share status */
+"Varies" = "විවිධ";
+
+/* No comment provided by engineer. */
+"Version" = "අනුවාදය";
+
+/* No comment provided by engineer. */
+"View-only" = "දැකීමට පමණි";
+
+/* Share status */
+"Viewer" = "දකින්නා";
+
+/* No comment provided by engineer. */
+"Warning" = "අවවාදය";
+
+/* No comment provided by engineer. */
+"We are sorry, this portal name is already taken" = "කණගාටුයි, මෙම නම දැනටමත් ද්වාරයකට ගෙන ඇත";
+
+/* No comment provided by engineer. */
+"We have sent you an SMS with a code to the number %@" = "ඔබගේ %@ අංකයට කේතයක් සහිත කෙටි පණිවුඩයක් එවා ඇත";
+
+/* No comment provided by engineer. */
+"WebDAV" = "වෙබ්DAV";
+
+/* No comment provided by engineer. */
+"WebDAV directory" = "වෙබ්DAV නාමාවලිය";
+
+/* Introduction Step One - Description */
+"Welcome to %@ mobile editing suite!\nSwipe to learn more about the app." = "%@ ජංගම සංස්කරණ කට්ටලයට පිළිගනිමු!\nයෙදුම ගැන තව දැන ගැනීමට තල්ලු කරන්න.";
+
+/* No comment provided by engineer. */
+"What's New" = "මොනවාද අළුත්";
+
+/* Introduction Step Four - Description */
+"Work with documents offline.\nCreated files can later be uploaded to online portal and\nthen accessed from any other device." = "ලේඛන සමඟ මාර්ගඅපගතව වැඩ කරන්න.\nසාදන ලද ගොනු පසුව මාර්ගගත ද්වාරයට උඩුගත කර\nවෙනත් ඕනෑම උපාංගයකින් ප්‍රවේශ වීමට හැකිය.";
+
+/* Introduction Step Two - Title */
+"Work with office files" = "කාර්යාල ගොනු සමඟ වැඩ කරන්න";
+
+/* No comment provided by engineer. */
+"Wrong server, login or password." = "සේවාදායකය, පිවිසුම හෝ මුරපදය වැරදිය.";
+
+/* No comment provided by engineer. */
+"Yandex directory" = "යාන්ඩෙක්ස් නාමාවලිය";
+
+/* No comment provided by engineer. */
+"Yandex Disk" = "යාන්ඩෙක්ස් ඩිස්ක්";
+
+/* Data units */
+"Yb" = "යො.බ.";
+
+/* No comment provided by engineer. */
+"You can connect the following accounts to the %@." = "ඔබට පහත ගිණුම් %@ වෙත සම්බන්ධ කිරීමට හැකිය.";
+
+/* No comment provided by engineer. */
+"You can connect the following accounts to the %@. They will be displayed in 'My Documents' folder and you will be able to edit and save them right on the portal all in one place." = "ඔබට පහත ගිණුම් %@ වෙත සම්බන්ධ කිරීමට හැකිය. ඒවා 'මාගේ ලේඛන' බහාලුම තුළ දිස්වන අතර සියල්ලම ද්වාරයේ උපකාරයෙන් එකම ස්ථානයකදී සංස්කරණයට මෙන්ම සුරැකීමට ද හැකි වනු ඇත.";
+
+/* No comment provided by engineer. */
+"You have read-only access to this folder. You cannot create files or folders here." = "ඔබට කියවීමට පමණක් මෙම බහාලුමට ප්‍රවේශය ඇත. ඔබට මෙහි ගොනු හෝ බහාලුම් සෑදීමට නොහැකිය.";
+
+/* No comment provided by engineer. */
+"Your session has expired" = "වාරය ඉකුත් වී ඇත";
+
+/* Data units */
+"Zb" = "සෙ.බ.";
+
+/* Data units */
+"Zero bytes" = "බයිට ශූන්‍යයි";
+
+/* No comment provided by engineer. */
+"Сould not download file." = "ගොනුව බාගැනීමට නොහැකි විය.";
+
+/* No comment provided by engineer. */
+"Сould not upload file." = "උඩුගත කිරීමට නොහැකි විය.";
+

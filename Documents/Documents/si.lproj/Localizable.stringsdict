@@ -13,9 +13,11 @@
 			<key>NSStringFormatValueTypeKey</key>
 			<string>d</string>
 			<key>one</key>
-			<string>%d seleccionado</string>
+			<string>%d ක් තෝරා ඇත</string>
 			<key>other</key>
-			<string>%d seleccionado</string>
+			<string>%d ක් තෝරා ඇත</string>
+			<key>zero</key>
+			<string>%d ක් තෝරා ඇත</string>
 		</dict>
 	</dict>
 	<key>%lu File selected</key>
@@ -29,9 +31,11 @@
 			<key>NSStringFormatValueTypeKey</key>
 			<string>lu</string>
 			<key>one</key>
-			<string>%lu archivo seleccionado</string>
+			<string>ගොනු %lu ක් තෝරා ඇත</string>
 			<key>other</key>
-			<string>%lu archivos seleccionados</string>
+			<string>ගොනු %lu ක් තෝරා ඇත</string>
+			<key>zero</key>
+			<string>ගොනු %lu ක් තෝරා ඇත</string>
 		</dict>
 	</dict>
 	<key>%lu Folder and %lu File selected</key>
@@ -45,9 +49,11 @@
 			<key>NSStringFormatValueTypeKey</key>
 			<string>lu</string>
 			<key>one</key>
-			<string>y %lu archivo seleccionado</string>
+			<string>සහ ගොනු %lu ක් තෝරා ඇත</string>
 			<key>other</key>
-			<string>y %lu archivos seleccionados</string>
+			<string>ගොනු %lu ක් තෝරා ඇත</string>
+			<key>zero</key>
+			<string>ගොනු %lu ක් තෝරා ඇත</string>
 		</dict>
 		<key>lu_folders</key>
 		<dict>
@@ -56,9 +62,9 @@
 			<key>NSStringFormatValueTypeKey</key>
 			<string>lu</string>
 			<key>one</key>
-			<string>%lu carpeta %2$#@lu_files@</string>
+			<string>බහාලුම් %lu %2$#@lu_files@</string>
 			<key>other</key>
-			<string>%lu carpetas %2$#@lu_files@</string>
+			<string>බහාලුම් %lu %2$#@lu_files@</string>
 			<key>zero</key>
 			<string>%2$#@lu_files@</string>
 		</dict>
@@ -74,9 +80,11 @@
 			<key>NSStringFormatValueTypeKey</key>
 			<string>lu</string>
 			<key>one</key>
-			<string>%lu carpeta seleccionada</string>
+			<string>බහාලුම් %lu ක් තෝරා ඇත</string>
 			<key>other</key>
-			<string>%lu carpetas seleccionadas</string>
+			<string>බහාලුම් %lu ක් තෝරා ඇත</string>
+			<key>zero</key>
+			<string>බහාලුම් %lu ක් තෝරා ඇත</string>
 		</dict>
 	</dict>
 	<key>Delete %lu File</key>
@@ -90,9 +98,11 @@
 			<key>NSStringFormatValueTypeKey</key>
 			<string>lu</string>
 			<key>one</key>
-			<string>Borrar %lu archivo</string>
+			<string>ගොනු %lu ක් මකන්න</string>
 			<key>other</key>
-			<string>Borrar %lu archivos</string>
+			<string>ගොනු %lu ක් මකන්න</string>
+			<key>zero</key>
+			<string>ගොනු %lu ක් මකන්න</string>
 		</dict>
 	</dict>
 	<key>Delete %lu Folder</key>
@@ -106,9 +116,11 @@
 			<key>NSStringFormatValueTypeKey</key>
 			<string>lu</string>
 			<key>one</key>
-			<string>Borrar %lu carpeta</string>
+			<string>බහාලුම් %lu ක් මකන්න</string>
 			<key>other</key>
-			<string>Borrar %lu carpetas</string>
+			<string>බහාලුම් %lu ක් මකන්න</string>
+			<key>zero</key>
+			<string>බහාලුම් %lu ක් මකන්න</string>
 		</dict>
 	</dict>
 	<key>Delete %lu Folder and %lu File</key>
@@ -122,9 +134,9 @@
 			<key>NSStringFormatValueTypeKey</key>
 			<string>lu</string>
 			<key>one</key>
-			<string>y %lu archivo</string>
+			<string>සහ ගොනු %lu</string>
 			<key>other</key>
-			<string>y %lu archivos</string>
+			<string>සහ ගොනු %lu</string>
 			<key>zero</key>
 			<string></string>
 		</dict>
@@ -135,11 +147,11 @@
 			<key>NSStringFormatValueTypeKey</key>
 			<string>lu</string>
 			<key>one</key>
-			<string>Borrar %lu carpeta %2$#@lu_files@</string>
+			<string>බහාලුම් %lu ක් %2$#@lu_files@ මකන්න</string>
 			<key>other</key>
-			<string>Borrar %lu carpetas %2$#@lu_files@</string>
+			<string>බහාලුම් %lu ක් %2$#@lu_files@ මකන්න</string>
 			<key>zero</key>
-			<string>Borrar %2$#@lu_files@</string>
+			<string>%2$#@lu_files@ මකන්න</string>
 		</dict>
 	</dict>
 </dict>

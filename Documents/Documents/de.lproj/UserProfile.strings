@@ -13,11 +13,17 @@
 /* Class = "UILabel"; text = "Email"; ObjectID = "HaW-jI-GJW"; */
 "HaW-jI-GJW.text" = "E-Mail";
 
+/* Class = "UILabel"; text = "-"; ObjectID = "JOt-DG-crS"; Note = "Do not translate"; */
+"JOt-DG-crS.text" = "-";
+
 /* Class = "UILabel"; text = "Portal"; ObjectID = "KZx-zY-eVz"; */
 "KZx-zY-eVz.text" = "Portal";
 
 /* Class = "UILabel"; text = "-"; ObjectID = "osE-70-cXT"; Note = "Do not translate"; */
 "osE-70-cXT.text" = "-";
+
+/* Class = "UILabel"; text = "Type"; ObjectID = "vyA-jq-VvH"; */
+"vyA-jq-VvH.text" = "Typ";
 
 /* Class = "UILabel"; text = "Me"; ObjectID = "Yw3-6O-7aD"; Note = "Do not translate"; */
 "Yw3-6O-7aD.text" = "Ich";

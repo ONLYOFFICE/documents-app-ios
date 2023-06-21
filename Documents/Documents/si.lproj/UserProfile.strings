@@ -1,30 +1,30 @@
 /* Class = "UILabel"; text = "Log out"; ObjectID = "1S2-Q7-5vL"; */
-"1S2-Q7-5vL.text" = "Déconnexion";
+"1S2-Q7-5vL.text" = "නික්මෙන්න";
 
 /* Class = "UILabel"; text = "-"; ObjectID = "9Yi-42-22H"; Note = "Do not translate"; */
 "9Yi-42-22H.text" = "-";
 
 /* Class = "UILabel"; text = "Delete forever"; ObjectID = "708-fR-i2H"; */
-"708-fR-i2H.text" = "Supprimer le compte";
+"708-fR-i2H.text" = "සදහටම මකන්න";
 
 /* Class = "UINavigationItem"; title = "Profile"; ObjectID = "BXA-IE-d8z"; */
-"BXA-IE-d8z.title" = "Compte";
+"BXA-IE-d8z.title" = "පැතිකඩ";
 
 /* Class = "UILabel"; text = "Email"; ObjectID = "HaW-jI-GJW"; */
-"HaW-jI-GJW.text" = "E-mail";
+"HaW-jI-GJW.text" = "වි-තැපෑල";
 
 /* Class = "UILabel"; text = "-"; ObjectID = "JOt-DG-crS"; Note = "Do not translate"; */
 "JOt-DG-crS.text" = "-";
 
 /* Class = "UILabel"; text = "Portal"; ObjectID = "KZx-zY-eVz"; */
-"KZx-zY-eVz.text" = "Portail";
+"KZx-zY-eVz.text" = "ද්වාරය";
 
 /* Class = "UILabel"; text = "-"; ObjectID = "osE-70-cXT"; Note = "Do not translate"; */
 "osE-70-cXT.text" = "-";
 
 /* Class = "UILabel"; text = "Type"; ObjectID = "vyA-jq-VvH"; */
-"vyA-jq-VvH.text" = "Type";
+"vyA-jq-VvH.text" = "වර්ගය";
 
 /* Class = "UILabel"; text = "Me"; ObjectID = "Yw3-6O-7aD"; Note = "Do not translate"; */
-"Yw3-6O-7aD.text" = "Moi";
+"Yw3-6O-7aD.text" = "මට";
 

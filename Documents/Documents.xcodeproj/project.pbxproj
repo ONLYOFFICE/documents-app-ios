@@ -745,6 +745,7 @@
 		FC25B457284F68AB0075D6C2 /* ASCNotificationSettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASCNotificationSettingsViewController.swift; sourceTree = "<group>"; };
 		FC25B461284FAD720075D6C2 /* UITableView+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableView+Extensions.swift"; sourceTree = "<group>"; };
 		FC25B469285116CB0075D6C2 /* ASCFiltersControllerProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASCFiltersControllerProtocol.swift; sourceTree = "<group>"; };
+		FC2660F72A4318670036F5BA /* si */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = si; path = "si.lproj/Documents-InfoPlist.strings"; sourceTree = "<group>"; };
 		FC28021425B9B8C5000E9D99 /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = System/Library/Frameworks/CloudKit.framework; sourceTree = SDKROOT; };
 		FC2882B828EC6A850034E732 /* ASCConnectStorageWebDavControllerConfiguration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASCConnectStorageWebDavControllerConfiguration.swift; sourceTree = "<group>"; };
 		FC28F2C01E8CF4B900A8F985 /* UIColor+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColor+Extension.swift"; sourceTree = "<group>"; };
@@ -4222,6 +4223,7 @@
 				FC029A3C27BCF8E800E5341B /* ja */,
 				FC7DC87E285B3AB800E61C69 /* zh-Hant */,
 				FCE4225428A104490073E2BB /* hy-AM */,
+				FC2660F72A4318670036F5BA /* si */,
 			);
 			name = "Documents-InfoPlist.strings";
 			sourceTree = "<group>";

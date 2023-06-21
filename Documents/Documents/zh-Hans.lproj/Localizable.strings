@@ -76,6 +76,12 @@
 /* No comment provided by engineer. */
 "Account name is not valid" = "帐户名称无效";
 
+/* No comment provided by engineer. */
+"Accounts" = "帐户";
+
+/* No comment provided by engineer. */
+"Add account" = "添加账户";
+
 /* Sharing settings add notification message */
 "Add message" = "添加消息";
 
@@ -89,6 +95,9 @@
 "Address is empty" = "地址为空";
 
 /* No comment provided by engineer. */
+"Admin" = "管理员";
+
+/* No comment provided by engineer. */
 "All" = "全部";
 
 /* No comment provided by engineer. */
@@ -96,6 +105,9 @@
 
 /* Category title */
 "All Files" = "所有文件";
+
+/* No comment provided by engineer. */
+"All items from Archived will be deleted forever. You won’t be able to restore them." = "存档中的所有项目将被永久删除。 您将无法恢复它们。";
 
 /* No comment provided by engineer. */
 "All notifications" = "所有通知";
@@ -125,6 +137,9 @@
 "Archiving failed." = "存档失败。";
 
 /* No comment provided by engineer. */
+"Are you sure you want to delete the account  %@ from this devce?" = "您确定要从此设备中删除帐户 %@ 吗？";
+
+/* No comment provided by engineer. */
 "Are you sure you want to leave this account?" = "您确定要离开此账户吗？";
 
 /* No comment provided by engineer. */
@@ -132,6 +147,12 @@
 
 /* No comment provided by engineer. */
 "Back" = "返回";
+
+/* No comment provided by engineer. */
+"Being an owner of this DocSpace, you must transfer the ownership to another user before you can delete your account. Please choose a new owner to proceed." = "作为该协作空间的所有者，您必须先将所有权转让给其他用户，然后才能删除您的帐户。 请先选择一个新的所有者。";
+
+/* No comment provided by engineer. */
+"Being an owner of this portal, you must transfer the ownership to another user before you can delete your account. Please choose a new owner to proceed." = "作为此门户的所有者，您必须先将所有权转让给其他用户，然后才能删除您的帐户。先选择一个新的所有者。";
 
 /* No comment provided by engineer. */
 "Box" = "箱子";
@@ -168,6 +189,9 @@
 
 /* No comment provided by engineer. */
 "Cancel invitation?" = "取消邀请？";
+
+/* No comment provided by engineer. */
+"Change owner" = "更改所有者";
 
 /* No comment provided by engineer. */
 "Check your internet connection" = "请检查您的网络连接并重试";
@@ -210,6 +234,9 @@
 
 /* No comment provided by engineer. */
 "Collaboration" = "协作";
+
+/* Share status */
+"Commentator" = "评论者";
 
 /* Category title */
 "Common Documents" = "常用文件";
@@ -350,6 +377,9 @@
 "Couldn't open file" = "无法打开文件";
 
 /* No comment provided by engineer. */
+"Couldn't save changes at server. Your modified document is saved in local storage as %@" = "无法在服务器上保存更改。 您修改后的文档以 %@ 保存在本地存储中";
+
+/* No comment provided by engineer. */
 "Create" = "创建";
 
 /* Introduction Step Two - Description */
@@ -366,6 +396,9 @@
 
 /* Share status */
 "Custom filter" = "自定义筛选器";
+
+/* No comment provided by engineer. */
+"Dark" = "深色的";
 
 /* No comment provided by engineer. */
 "Date" = "日期";
@@ -387,6 +420,12 @@
 
 /* No comment provided by engineer. */
 "Delete Folder" = "删除文件夹";
+
+/* No comment provided by engineer. */
+"Delete forever" = "永久删除";
+
+/* No comment provided by engineer. */
+"Delete from device" = "从设备中删除";
 
 /* Caption of the processing */
 "Deleting" = "正在删除";
@@ -585,6 +624,15 @@
 "Folders" = "文件夹";
 
 /* Share status */
+"Form Filler" = "表单填写者";
+
+/* No comment provided by engineer. */
+"Form templates" = "表单模板";
+
+/* No comment provided by engineer. */
+"Forms" = "表单";
+
+/* Share status */
 "Full Access" = "完全访问权限";
 
 /* Data units */
@@ -670,6 +718,9 @@
 
 /* No comment provided by engineer. */
 "Last name is incorrect" = "姓不正确";
+
+/* No comment provided by engineer. */
+"Light" = "浅颜色";
 
 /* No comment provided by engineer. */
 "Link copied\nto the clipboard" = "链接已复制\n到剪贴板";
@@ -966,6 +1017,9 @@
 /* No comment provided by engineer. */
 "Portal is unavailable." = "门户网站不可用。";
 
+/* Share status */
+"Pover user" = "高级用户";
+
 /* No comment provided by engineer. */
 "Presentation" = "演示文稿";
 
@@ -983,6 +1037,9 @@
 
 /* Caption of the processing */
 "Processing" = "处理中";
+
+/* No comment provided by engineer. */
+"Profile" = "档案";
 
 /* Category title */
 "Project Documents" = "项目文档";
@@ -1042,10 +1099,16 @@
 "Restoring" = "正在还原";
 
 /* Share status */
+"Reviewer" = "审阅者";
+
+/* Share status */
 "Room admin" = "房间管理员";
 
 /* DocSpace rooms */
 "Rooms" = "房间";
+
+/* No comment provided by engineer. */
+"Same as system" = "和系统一致";
 
 /* Caption of the processing */
 "Saving" = "正在保存";
@@ -1134,6 +1197,9 @@
 
 /* No comment provided by engineer. */
 "Show notifications" = "顯示通知";
+
+/* No comment provided by engineer. */
+"Sign in" = "登录";
 
 /* No comment provided by engineer. */
 "Single Sign-on" = "单一登录";
@@ -1254,6 +1320,9 @@
 
 /* No comment provided by engineer. */
 "The user limit has been reached. Сontact the portal administrator" = "已达到了用户数限制。请联系门户网站的管理员";
+
+/* No comment provided by engineer. */
+"Theme" = "主题";
 
 /* No comment provided by engineer. */
 "Third party resource" = "第三方资源";
@@ -1382,6 +1451,9 @@
 "Unpinned failed." = "取消置顶失败。";
 
 /* Caption of the processing */
+"Unpinning" = "取消置顶";
+
+/* Caption of the processing */
 "Unpning" = "取消置顶";
 
 /* No comment provided by engineer. */
@@ -1395,6 +1467,9 @@
 
 /* Button title */
 "Use Touch ID" = "使用Touch ID";
+
+/* No comment provided by engineer. */
+"User" = "用户";
 
 /* No comment provided by engineer. */
 "User authentication failed" = "用户验证失败";
@@ -1419,6 +1494,12 @@
 
 /* No comment provided by engineer. */
 "Version" = "版本";
+
+/* No comment provided by engineer. */
+"View-only" = "只读";
+
+/* Share status */
+"Viewer" = "查看者";
 
 /* No comment provided by engineer. */
 "Warning" = "警告";

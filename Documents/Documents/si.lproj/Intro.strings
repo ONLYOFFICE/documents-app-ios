@@ -1,9 +1,9 @@
-
 /* Class = "UILabel"; text = "Here at DESIGN, we sometimes talk about web design, and we’re always talking about print design, but one thing we don’t often write about are mobile design interfaces. "; ObjectID = "De8-tD-APT"; Note = "Do not translate"; */
-"De8-tD-APT.text" = "Here at DESIGN, we sometimes talk about web design, and we’re always talking about print design, but one thing we don’t often write about are mobile design interfaces. ";
+"De8-tD-APT.text" = "නිර්මාණයේ දී, අපි සමහර විට වියමන නිර්මාණය ගැන කතා කරනවා, අපි හැම විටම මුද්‍රණ නිර්මාණය ගැන කතා කරනවා, නමුත් අපි බොහෝ විට ලියන්නේ නැති දෙයක් ජංගම අතුරුමුහුණත් නිර්මාණය. ";
 
 /* Class = "UIButton"; normalTitle = "SKIP"; ObjectID = "JV9-d9-sJs"; */
-"JV9-d9-sJs.normalTitle" = "SKIP";
+"JV9-d9-sJs.normalTitle" = "මඟහරින්න";
 
 /* Class = "UILabel"; text = "App Onboarding Design"; ObjectID = "KAF-Bt-8qi"; Note = "Do not translate"; */
-"KAF-Bt-8qi.text" = "App Onboarding Design";
+"KAF-Bt-8qi.text" = "යෙදුමට ගොඩවීම නිර්මාණය";
+

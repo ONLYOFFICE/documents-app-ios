@@ -1,34 +1,39 @@
-/* 
-  PasscodeLock.strings
-  PasscodeLock
-
-  Created by Yanko Dimitrov on 8/28/15.
-  Copyright (c) 2015 Yanko Dimitrov. All rights reserved.
-*/
-
-/* Enter Passcode State */
-"PasscodeLockEnterTitle" = "Enter Passcode";
-"PasscodeLockEnterDescription" = "Enter your passcode to proceed.";
-
-/* Set Passcode State */
-"PasscodeLockSetTitle" = "Enter a Passcode";
-"PasscodeLockSetDescription" = "Choose your passcode.";
-
-/* Confirm Passcode State */
-"PasscodeLockConfirmTitle" = "Confirm Passcode";
-"PasscodeLockConfirmDescription" = "Enter the passcode again.";
+/* (No Comment) */
+"PasscodeLockChangeDescription" = "පරණ මුරකේතය යොදන්න.";
 
 /* Change Passcode State */
-"PasscodeLockChangeTitle" = "Enter Old Passcode";
-"PasscodeLockChangeDescription" = "Enter your old passcode.";
+"PasscodeLockChangeTitle" = "පරණ මුරකේතය යොදන්න";
+
+/* (No Comment) */
+"PasscodeLockConfirmDescription" = "මුරකේතය නැවත යොදන්න.";
+
+/* Confirm Passcode State */
+"PasscodeLockConfirmTitle" = "මුරකේතය තහවුරු කරන්න";
+
+/* (No Comment) */
+"PasscodeLockEnterDescription" = "ඉදිරියට යාමට මුරකේතය යොදන්න.";
+
+/* Enter Passcode State */
+"PasscodeLockEnterTitle" = "මුරකේතය යොදන්න";
+
+/* (No Comment) */
+"PasscodeLockFaceIDButton" = "මුරකේතය යොදන්න";
+
+/* (No Comment) */
+"PasscodeLockMismatchDescription" = "මුරකේත නොගැළපේ.";
 
 /* Passcode Mismatch State */
-"PasscodeLockMismatchTitle" = "Try again";
-"PasscodeLockMismatchDescription" = "Passcodes didn\'t match.";
+"PasscodeLockMismatchTitle" = "යළි උත්සාහය";
 
-/* Touch ID Reason */
-"PasscodeLockTouchIDReason" = "Authentication required to proceed";
+/* (No Comment) */
+"PasscodeLockSetDescription" = "ඔබගේ මුරකේතය තෝරන්න.";
+
+/* Set Passcode State */
+"PasscodeLockSetTitle" = "මුරකේතයක් යොදන්න";
 
 /* Touch ID Fallback Button */
-"PasscodeLockTouchIDButton" = "Enter Passcode";
-"PasscodeLockFaceIDButton" = "Enter Passcode";
+"PasscodeLockTouchIDButton" = "මුරකේතය යොදන්න";
+
+/* Touch ID Reason */
+"PasscodeLockTouchIDReason" = "ඉදිරියට යාමට සත්‍යාපනය අවශ්‍යයි";
+

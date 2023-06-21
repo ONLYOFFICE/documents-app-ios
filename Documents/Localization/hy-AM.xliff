@@ -294,7 +294,7 @@ start using your office</source>
       </trans-unit>
       <trans-unit id="/Delete %lu Folder and %lu File:dict/lu_files:dict/zero:dict/:string" xml:space="preserve">
         <source/>
-        <target/>
+        <target state="needs-translation"/>
         <note/>
       </trans-unit>
       <trans-unit id="/Delete %lu Folder and %lu File:dict/lu_folders:dict/one:dict/:string" xml:space="preserve">
@@ -899,6 +899,7 @@ Note: if you forget the passcode, you'll need to delete and reinstall the app. A
       </trans-unit>
       <trans-unit id="JOt-DG-crS.text" xml:space="preserve">
         <source>-</source>
+        <target state="translated">-</target>
         <note>Class = "UILabel"; text = "-"; ObjectID = "JOt-DG-crS"; Note = "Do not translate";</note>
       </trans-unit>
       <trans-unit id="KZx-zY-eVz.text" xml:space="preserve">
@@ -918,6 +919,7 @@ Note: if you forget the passcode, you'll need to delete and reinstall the app. A
       </trans-unit>
       <trans-unit id="vyA-jq-VvH.text" xml:space="preserve">
         <source>Type</source>
+        <target state="translated">Տիպ</target>
         <note>Class = "UILabel"; text = "Type"; ObjectID = "vyA-jq-VvH";</note>
       </trans-unit>
     </body>
@@ -1200,17 +1202,17 @@ Note: if you forget the passcode, you'll need to delete and reinstall the app. A
         <target>Նույն անունով %1$lu տարր արդեն գոյություն ունի «%2$@» պանակում: Վերագրե՞լ տարրերը:</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
-      <trans-unit id="&lt;p&gt;Use the password created in &lt;a href=&quot;https://yandex.ru/id/about&quot;&gt;Yandex ID&lt;/a&gt;.&lt;/br&gt;More detailed connection instructions can be found in the &lt;a href=&quot;https://yandex.ru/support/disk-desktop/webdav-app-passwords.html?lang=ru&quot;&gt;help&lt;/a&gt;.&lt;/p&gt;" xml:space="preserve">
+      <trans-unit id="&lt;p>Use the password created in &lt;a href=&quot;https://yandex.ru/id/about&quot;>Yandex ID&lt;/a>.&lt;/br>More detailed connection instructions can be found in the &lt;a href=&quot;https://yandex.ru/support/disk-desktop/webdav-app-passwords.html?lang=ru&quot;>help&lt;/a>.&lt;/p>" xml:space="preserve">
         <source>&lt;p&gt;Use the password created in &lt;a href="https://yandex.ru/id/about"&gt;Yandex ID&lt;/a&gt;.&lt;/br&gt;More detailed connection instructions can be found in the &lt;a href="https://yandex.ru/support/disk-desktop/webdav-app-passwords.html?lang=ru"&gt;help&lt;/a&gt;.&lt;/p&gt;</source>
         <target>&lt;p&gt;Օգտագործեք &lt;a href="https://yandex.ru/id/about"&gt;Yandex ID-&lt;/a&gt; ում ստեղծված գաղտնաբառը:&lt;/br&gt; Միացման ավելի մանրամասն հրահանգները կարող եք գտնել &lt;a href="https://yandex.ru/support/disk-desktop/webdav-app-passwords.html?lang=ru"&gt;օգնությունում&lt;/a&gt; :&lt;/p&gt;</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
-      <trans-unit id="&lt;p&gt;Use the password created in &lt;a href=&quot;https://yandex.ru/id/about&quot;&gt;Yandex ID&lt;/a&gt;.&lt;/p&gt;&lt;p&gt;More detailed connection instructions can be found in the &lt;a href=&quot;https://yandex.ru/support/disk-desktop/webdav-app-passwords.html?lang=ru&quot;&gt;help&lt;/a&gt;.&lt;/p&gt;" xml:space="preserve">
+      <trans-unit id="&lt;p>Use the password created in &lt;a href=&quot;https://yandex.ru/id/about&quot;>Yandex ID&lt;/a>.&lt;/p>&lt;p>More detailed connection instructions can be found in the &lt;a href=&quot;https://yandex.ru/support/disk-desktop/webdav-app-passwords.html?lang=ru&quot;>help&lt;/a>.&lt;/p>" xml:space="preserve">
         <source>&lt;p&gt;Use the password created in &lt;a href="https://yandex.ru/id/about"&gt;Yandex ID&lt;/a&gt;.&lt;/p&gt;&lt;p&gt;More detailed connection instructions can be found in the &lt;a href="https://yandex.ru/support/disk-desktop/webdav-app-passwords.html?lang=ru"&gt;help&lt;/a&gt;.&lt;/p&gt;</source>
         <target>&lt;p&gt;Օգտագործեք &lt;a href="https://yandex.ru/id/about"&gt;Yandex ID-&lt;/a&gt; ում ստեղծված գաղտնաբառը:&lt;/p&gt;&lt;p&gt; Միացման ավելի մանրամասն հրահանգները կարող եք գտնել &lt;a href="https://yandex.ru/support/disk-desktop/webdav-app-passwords.html?lang=ru"&gt;օգնությունում&lt;/a&gt; :&lt;/p&gt;</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
-      <trans-unit id="&lt;p&gt;You must have a paid version of the player to use this service.&lt;/p&gt;&lt;p&gt;If you have activated double authentication, please generate a CDM application from the Infomaniak manager. &lt;a href=&quot;https://www.infomaniak.com/en/support/faq/1940/enable-two-step-verification&quot;&gt;More...&lt;/a&gt;&lt;/p&gt;" xml:space="preserve">
+      <trans-unit id="&lt;p>You must have a paid version of the player to use this service.&lt;/p>&lt;p>If you have activated double authentication, please generate a CDM application from the Infomaniak manager. &lt;a href=&quot;https://www.infomaniak.com/en/support/faq/1940/enable-two-step-verification&quot;>More...&lt;/a>&lt;/p>" xml:space="preserve">
         <source>&lt;p&gt;You must have a paid version of the player to use this service.&lt;/p&gt;&lt;p&gt;If you have activated double authentication, please generate a CDM application from the Infomaniak manager. &lt;a href="https://www.infomaniak.com/en/support/faq/1940/enable-two-step-verification"&gt;More...&lt;/a&gt;&lt;/p&gt;</source>
         <target>&lt;p&gt;Այս ծառայությունից օգտվելու համար դուք պետք է ունենաք նվագարկչի վճարովի տարբերակ:&lt;/p&gt;&lt;p&gt; Եթե դուք ակտիվացրել եք կրկնակի նույնականացում, խնդրում ենք ստեղծել CDM հավելված Infomaniak մենեջերից: &lt;a href="https://www.infomaniak.com/en/support/faq/1940/enable-two-step-verification"&gt;Ավելին...&lt;/a&gt;&lt;/p&gt;</target>
         <note>No comment provided by engineer.</note>
@@ -1297,10 +1299,12 @@ Note: if you forget the passcode, you'll need to delete and reinstall the app. A
       </trans-unit>
       <trans-unit id="Accounts" xml:space="preserve">
         <source>Accounts</source>
+        <target state="translated">Հաշիվներ</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Add account" xml:space="preserve">
         <source>Add account</source>
+        <target state="translated">Հավելել հաշիվ</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Add message" xml:space="preserve">
@@ -1327,6 +1331,7 @@ Note: if you forget the passcode, you'll need to delete and reinstall the app. A
       </trans-unit>
       <trans-unit id="Admin" xml:space="preserve">
         <source>Admin</source>
+        <target state="translated">Ադմինիստրատոր</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="All" xml:space="preserve">
@@ -1346,6 +1351,7 @@ Note: if you forget the passcode, you'll need to delete and reinstall the app. A
       </trans-unit>
       <trans-unit id="All items from Archived will be deleted forever. You won’t be able to restore them." xml:space="preserve">
         <source>All items from Archived will be deleted forever. You won’t be able to restore them.</source>
+        <target state="translated">Արխիվացված բոլոր տարրերը ընդմիշտ կջնջվեն: Դուք չեք կարողանա վերականգնել դրանք:</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="All notifications" xml:space="preserve">
@@ -1400,6 +1406,7 @@ Note: if you forget the passcode, you'll need to delete and reinstall the app. A
       </trans-unit>
       <trans-unit id="Are you sure you want to delete the account  %@ from this devce?" xml:space="preserve">
         <source>Are you sure you want to delete the account  %@ from this devce?</source>
+        <target state="translated">Իսկապե՞ս ուզում եք ջնջել %@ հաշիվն այս սարքից:</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Author" xml:space="preserve">
@@ -1414,10 +1421,12 @@ Note: if you forget the passcode, you'll need to delete and reinstall the app. A
       </trans-unit>
       <trans-unit id="Being an owner of this DocSpace, you must transfer the ownership to another user before you can delete your account. Please choose a new owner to proceed." xml:space="preserve">
         <source>Being an owner of this DocSpace, you must transfer the ownership to another user before you can delete your account. Please choose a new owner to proceed.</source>
+        <target state="translated">Լինելով այս DocSpace-ի սեփականատերը՝ դուք պետք է սեփականության իրավունքը փոխանցեք մեկ այլ օգտատիրոջ՝ նախքան ձեր հաշիվը ջնջելը: Շարունակելու համար խնդրում ենք ընտրել նոր սեփականատեր:</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Being an owner of this portal, you must transfer the ownership to another user before you can delete your account. Please choose a new owner to proceed." xml:space="preserve">
         <source>Being an owner of this portal, you must transfer the ownership to another user before you can delete your account. Please choose a new owner to proceed.</source>
+        <target state="translated">Լինելով այս պորտալի սեփականատեր՝ դուք պետք է սեփականության իրավունքը փոխանցեք մեկ այլ օգտատիրոջ՝ նախքան ձեր հաշիվը ջնջելը: Շարունակելու համար խնդրում ենք ընտրել նոր սեփականատեր:</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Box" xml:space="preserve">
@@ -1477,6 +1486,7 @@ Note: if you forget the passcode, you'll need to delete and reinstall the app. A
       </trans-unit>
       <trans-unit id="Change owner" xml:space="preserve">
         <source>Change owner</source>
+        <target state="translated">Փոխել սեփականատիրոջը</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Check your internet connection" xml:space="preserve">
@@ -1546,6 +1556,7 @@ Note: if you forget the passcode, you'll need to delete and reinstall the app. A
       </trans-unit>
       <trans-unit id="Commentator" xml:space="preserve">
         <source>Commentator</source>
+        <target state="translated">Մեկնաբան</target>
         <note>Share status</note>
       </trans-unit>
       <trans-unit id="Common Documents" xml:space="preserve">
@@ -1754,6 +1765,7 @@ others which use WebDAV protocol.</source>
       </trans-unit>
       <trans-unit id="Couldn't save changes at server. Your modified document is saved in local storage as %@" xml:space="preserve">
         <source>Couldn't save changes at server. Your modified document is saved in local storage as %@</source>
+        <target state="translated">Չհաջողվեց պահպանել փոփոխությունները սերվերում: Ձեր փոփոխված փաստաթուղթը պահվում է տեղական պահեստում որպես %@</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Create" xml:space="preserve">
@@ -1788,6 +1800,7 @@ others which use WebDAV protocol.</source>
       </trans-unit>
       <trans-unit id="Dark" xml:space="preserve">
         <source>Dark</source>
+        <target state="translated">Մուգ</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Date" xml:space="preserve">
@@ -1827,10 +1840,12 @@ others which use WebDAV protocol.</source>
       </trans-unit>
       <trans-unit id="Delete forever" xml:space="preserve">
         <source>Delete forever</source>
+        <target state="translated">Ջնջել ընդմիշտ</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Delete from device" xml:space="preserve">
         <source>Delete from device</source>
+        <target state="translated">Ջնջել սարքից</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Deleting" xml:space="preserve">
@@ -2141,14 +2156,17 @@ others which use WebDAV protocol.</source>
       </trans-unit>
       <trans-unit id="Form Filler" xml:space="preserve">
         <source>Form Filler</source>
+        <target state="translated">Ձևի լցոնիչ</target>
         <note>Share status</note>
       </trans-unit>
       <trans-unit id="Form templates" xml:space="preserve">
         <source>Form templates</source>
+        <target state="translated">Ձևի ձևանմուշներ</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Forms" xml:space="preserve">
         <source>Forms</source>
+        <target state="translated">Ձևաթղթեր</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Full Access" xml:space="preserve">
@@ -2278,6 +2296,7 @@ others which use WebDAV protocol.</source>
       </trans-unit>
       <trans-unit id="Light" xml:space="preserve">
         <source>Light</source>
+        <target state="translated">Լույս</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Link copied&#10;to the clipboard" xml:space="preserve">
@@ -2763,6 +2782,7 @@ to the clipboard</source>
       </trans-unit>
       <trans-unit id="Pover user" xml:space="preserve">
         <source>Pover user</source>
+        <target state="translated">Փորձառու օգտագործող</target>
         <note>Share status</note>
       </trans-unit>
       <trans-unit id="Presentation" xml:space="preserve">
@@ -2797,6 +2817,7 @@ to the clipboard</source>
       </trans-unit>
       <trans-unit id="Profile" xml:space="preserve">
         <source>Profile</source>
+        <target state="translated">Պրոֆիլ</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Project Documents" xml:space="preserve">
@@ -2896,6 +2917,7 @@ to the clipboard</source>
       </trans-unit>
       <trans-unit id="Reviewer" xml:space="preserve">
         <source>Reviewer</source>
+        <target state="translated">Վերանայող</target>
         <note>Share status</note>
       </trans-unit>
       <trans-unit id="Room admin" xml:space="preserve">
@@ -2915,6 +2937,7 @@ to the clipboard</source>
       </trans-unit>
       <trans-unit id="Same as system" xml:space="preserve">
         <source>Same as system</source>
+        <target state="translated">Նույնը, ինչ համակարգը</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Saving" xml:space="preserve">
@@ -3065,6 +3088,7 @@ to the clipboard</source>
       </trans-unit>
       <trans-unit id="Sign in" xml:space="preserve">
         <source>Sign in</source>
+        <target state="translated">Մուտք գործել</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Single Sign-on" xml:space="preserve">
@@ -3268,6 +3292,7 @@ to the clipboard</source>
       </trans-unit>
       <trans-unit id="Theme" xml:space="preserve">
         <source>Theme</source>
+        <target state="translated">Ոճ</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Third party resource" xml:space="preserve">
@@ -3482,6 +3507,7 @@ to the clipboard</source>
       </trans-unit>
       <trans-unit id="Unpinning" xml:space="preserve">
         <source>Unpinning</source>
+        <target state="translated">Ապամրացում</target>
         <note>Caption of the processing</note>
       </trans-unit>
       <trans-unit id="Unpning" xml:space="preserve">
@@ -3511,6 +3537,7 @@ to the clipboard</source>
       </trans-unit>
       <trans-unit id="User" xml:space="preserve">
         <source>User</source>
+        <target state="translated">Օգտատեր</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="User authentication failed" xml:space="preserve">
@@ -3555,10 +3582,12 @@ to the clipboard</source>
       </trans-unit>
       <trans-unit id="View-only" xml:space="preserve">
         <source>View-only</source>
+        <target state="translated">Դիտել միայն</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Viewer" xml:space="preserve">
         <source>Viewer</source>
+        <target state="translated">Դիտող</target>
         <note>Share status</note>
       </trans-unit>
       <trans-unit id="Warning" xml:space="preserve">

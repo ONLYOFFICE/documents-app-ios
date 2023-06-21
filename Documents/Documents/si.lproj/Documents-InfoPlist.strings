@@ -1,0 +1,30 @@
+/* Bundle name */
+"CFBundleName" = "ලේඛන";
+
+/* (No Comment) */
+"New Document" = "නව ලේඛනයක්";
+
+/* (No Comment) */
+"New Presentation" = "නව සමර්පණයක්";
+
+/* (No Comment) */
+"New Spreadsheet" = "නව පැතුරුම්පතක්";
+
+/* Privacy - Camera Usage Description */
+"NSCameraUsageDescription" = "මෙම යෙදුමට රූගතය වෙත ප්‍රවේශය වුවමනාය, එමගින් ඔබට ඡායාරූප ගෙන ඒවා යෙදුමට උඩුගත කිරීමට හැකිය.";
+
+/* Privacy - Face ID Usage Description */
+"NSFaceIDUsageDescription" = "මුහුණ හඳුනාගැනීම භාවිතයෙන් සත්‍යාපනයට මෙම යෙදුම සඳහා මුහුණු හැඳු. අවසරය වුවමනාය.";
+
+/* Privacy - Photo Library Additions Usage Description */
+"NSPhotoLibraryAddUsageDescription" = "මෙම යෙදුමට ඡායාරූප පුස්තකාලය වෙත ප්‍රවේශය වුවමනාය, එමගින් ඔබට යෙදුම හරහා ඡායාරූප උඩුගත කිරීමට හැකිය.";
+
+/* Privacy - Photo Library Usage Description */
+"NSPhotoLibraryUsageDescription" = "මෙම යෙදුමට ඡායාරූප පුස්තකාලය වෙත ප්‍රවේශය වුවමනාය, එමගින් ඔබට යෙදුම හරහා ඡායාරූප උඩුගත කිරීමට හැකිය.";
+
+/* (No Comment) */
+"ONLYOFFICE fillable form (.oform)" = "ඔන්ලිඔෆිස් පිරවිය හැකි ආකෘතිපත්‍රය (*.oform)";
+
+/* (No Comment) */
+"ONLYOFFICE form template (.docxf)" = "ඔන්ලිඔෆිස් ආකෘතිපත්‍ර අච්චුව (*.docxf)";
+

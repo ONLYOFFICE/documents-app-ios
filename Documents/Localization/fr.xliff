@@ -294,7 +294,7 @@ lancez votre office</target>
       </trans-unit>
       <trans-unit id="/Delete %lu Folder and %lu File:dict/lu_files:dict/zero:dict/:string" xml:space="preserve">
         <source/>
-        <target state="needs-translation"/>
+        <target/>
         <note/>
       </trans-unit>
       <trans-unit id="/Delete %lu Folder and %lu File:dict/lu_folders:dict/one:dict/:string" xml:space="preserve">
@@ -899,7 +899,7 @@ Remarque: si vous avez oublié le mot de passe, vous avez besoin de supprimer et
       </trans-unit>
       <trans-unit id="JOt-DG-crS.text" xml:space="preserve">
         <source>-</source>
-        <target state="translated">-</target>
+        <target>-</target>
         <note>Class = "UILabel"; text = "-"; ObjectID = "JOt-DG-crS"; Note = "Do not translate";</note>
       </trans-unit>
       <trans-unit id="KZx-zY-eVz.text" xml:space="preserve">
@@ -919,7 +919,7 @@ Remarque: si vous avez oublié le mot de passe, vous avez besoin de supprimer et
       </trans-unit>
       <trans-unit id="vyA-jq-VvH.text" xml:space="preserve">
         <source>Type</source>
-        <target state="translated">Type</target>
+        <target>Type</target>
         <note>Class = "UILabel"; text = "Type"; ObjectID = "vyA-jq-VvH";</note>
       </trans-unit>
     </body>
@@ -1202,17 +1202,17 @@ Remarque: si vous avez oublié le mot de passe, vous avez besoin de supprimer et
         <target>Les éléments %1$lu portant le même nom existent déjà dans le dossier '%2$@'. Remplacer les éléments ?</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
-      <trans-unit id="&lt;p>Use the password created in &lt;a href=&quot;https://yandex.ru/id/about&quot;>Yandex ID&lt;/a>.&lt;/br>More detailed connection instructions can be found in the &lt;a href=&quot;https://yandex.ru/support/disk-desktop/webdav-app-passwords.html?lang=ru&quot;>help&lt;/a>.&lt;/p>" xml:space="preserve">
+      <trans-unit id="&lt;p&gt;Use the password created in &lt;a href=&quot;https://yandex.ru/id/about&quot;&gt;Yandex ID&lt;/a&gt;.&lt;/br&gt;More detailed connection instructions can be found in the &lt;a href=&quot;https://yandex.ru/support/disk-desktop/webdav-app-passwords.html?lang=ru&quot;&gt;help&lt;/a&gt;.&lt;/p&gt;" xml:space="preserve">
         <source>&lt;p&gt;Use the password created in &lt;a href="https://yandex.ru/id/about"&gt;Yandex ID&lt;/a&gt;.&lt;/br&gt;More detailed connection instructions can be found in the &lt;a href="https://yandex.ru/support/disk-desktop/webdav-app-passwords.html?lang=ru"&gt;help&lt;/a&gt;.&lt;/p&gt;</source>
         <target>&lt;p&gt;Utilisez le mot de passe créé dans &lt;a href="https://yandex.ru/id/about"&gt;Yandex ID&lt;/a&gt;.&lt;/br&gt;Des instructions de connexion plus détaillées peuvent être trouvées dans le &lt;a href="https://yandex.ru/support/disk-desktop/webdav-app-passwords.html?lang=ru"&gt;centre d'aide&lt;/a&gt;.&lt;/p&gt;</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
-      <trans-unit id="&lt;p>Use the password created in &lt;a href=&quot;https://yandex.ru/id/about&quot;>Yandex ID&lt;/a>.&lt;/p>&lt;p>More detailed connection instructions can be found in the &lt;a href=&quot;https://yandex.ru/support/disk-desktop/webdav-app-passwords.html?lang=ru&quot;>help&lt;/a>.&lt;/p>" xml:space="preserve">
+      <trans-unit id="&lt;p&gt;Use the password created in &lt;a href=&quot;https://yandex.ru/id/about&quot;&gt;Yandex ID&lt;/a&gt;.&lt;/p&gt;&lt;p&gt;More detailed connection instructions can be found in the &lt;a href=&quot;https://yandex.ru/support/disk-desktop/webdav-app-passwords.html?lang=ru&quot;&gt;help&lt;/a&gt;.&lt;/p&gt;" xml:space="preserve">
         <source>&lt;p&gt;Use the password created in &lt;a href="https://yandex.ru/id/about"&gt;Yandex ID&lt;/a&gt;.&lt;/p&gt;&lt;p&gt;More detailed connection instructions can be found in the &lt;a href="https://yandex.ru/support/disk-desktop/webdav-app-passwords.html?lang=ru"&gt;help&lt;/a&gt;.&lt;/p&gt;</source>
         <target>&lt;p&gt;Utilisez le mot de passe créé dans &lt;a href="https://yandex.ru/id/about"&gt;Yandex ID&lt;/a&gt;.&lt;/p&gt;&lt;p&gt;Des instructions de connexion plus détaillées peuvent être trouvées dans le &lt;a href="https://yandex.ru/support/disk-desktop/webdav-app-passwords.html?lang=ru"&gt;centre d'aide&lt;/a&gt;.&lt;/p&gt;</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
-      <trans-unit id="&lt;p>You must have a paid version of the player to use this service.&lt;/p>&lt;p>If you have activated double authentication, please generate a CDM application from the Infomaniak manager. &lt;a href=&quot;https://www.infomaniak.com/en/support/faq/1940/enable-two-step-verification&quot;>More...&lt;/a>&lt;/p>" xml:space="preserve">
+      <trans-unit id="&lt;p&gt;You must have a paid version of the player to use this service.&lt;/p&gt;&lt;p&gt;If you have activated double authentication, please generate a CDM application from the Infomaniak manager. &lt;a href=&quot;https://www.infomaniak.com/en/support/faq/1940/enable-two-step-verification&quot;&gt;More...&lt;/a&gt;&lt;/p&gt;" xml:space="preserve">
         <source>&lt;p&gt;You must have a paid version of the player to use this service.&lt;/p&gt;&lt;p&gt;If you have activated double authentication, please generate a CDM application from the Infomaniak manager. &lt;a href="https://www.infomaniak.com/en/support/faq/1940/enable-two-step-verification"&gt;More...&lt;/a&gt;&lt;/p&gt;</source>
         <target>&lt;p&gt;Pour utiliser ce service, il faut disposer d'une version payante du lecteur.&lt;/p&gt;&lt;p&gt;Si vous avez activé l'authentification à deux facteurs, veuillez générer une demande MDP à partir du gestionnaire Infomaniak. &lt;a href="https://www.infomaniak.com/en/support/faq/1940/enable-two-step-verification"&gt;En savoir plus...&lt;/a&gt;&lt;/p&gt;</target>
         <note>No comment provided by engineer.</note>
@@ -1299,12 +1299,12 @@ Remarque: si vous avez oublié le mot de passe, vous avez besoin de supprimer et
       </trans-unit>
       <trans-unit id="Accounts" xml:space="preserve">
         <source>Accounts</source>
-        <target state="translated">Comptes</target>
+        <target>Comptes</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Add account" xml:space="preserve">
         <source>Add account</source>
-        <target state="translated">Ajouter le compte</target>
+        <target>Ajouter le compte</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Add message" xml:space="preserve">
@@ -1331,7 +1331,7 @@ Remarque: si vous avez oublié le mot de passe, vous avez besoin de supprimer et
       </trans-unit>
       <trans-unit id="Admin" xml:space="preserve">
         <source>Admin</source>
-        <target state="translated">Administrateur</target>
+        <target>Administrateur</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="All" xml:space="preserve">
@@ -1351,7 +1351,7 @@ Remarque: si vous avez oublié le mot de passe, vous avez besoin de supprimer et
       </trans-unit>
       <trans-unit id="All items from Archived will be deleted forever. You won’t be able to restore them." xml:space="preserve">
         <source>All items from Archived will be deleted forever. You won’t be able to restore them.</source>
-        <target state="translated">Tous les éléments archivés seront supprimés définitivement. Vous ne pourrez pas les restaurer.</target>
+        <target>Tous les éléments archivés seront supprimés définitivement. Vous ne pourrez pas les restaurer.</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="All notifications" xml:space="preserve">
@@ -1405,8 +1405,8 @@ Remarque: si vous avez oublié le mot de passe, vous avez besoin de supprimer et
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Are you sure you want to delete the account  %@ from this devce?" xml:space="preserve">
-        <source>Are you sure you want to delete the account  %@ from this devce?</source>
-        <target state="translated">Êtes-vous sûr de vouloir supprimer le compte %@ de cet appareil ?</target>
+        <source>Are you sure you want to delete the account %@ from this device?</source>
+        <target>Êtes-vous sûr de vouloir supprimer le compte %@ de cet appareil ?</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Author" xml:space="preserve">
@@ -1421,12 +1421,12 @@ Remarque: si vous avez oublié le mot de passe, vous avez besoin de supprimer et
       </trans-unit>
       <trans-unit id="Being an owner of this DocSpace, you must transfer the ownership to another user before you can delete your account. Please choose a new owner to proceed." xml:space="preserve">
         <source>Being an owner of this DocSpace, you must transfer the ownership to another user before you can delete your account. Please choose a new owner to proceed.</source>
-        <target state="translated">Étant propriétaire de ce DocSpace, vous devez transférer la propriété à un autre utilisateur avant de pouvoir supprimer votre compte. Veuillez choisir un nouveau propriétaire pour continuer.</target>
+        <target>Étant propriétaire de ce DocSpace, vous devez transférer la propriété à un autre utilisateur avant de pouvoir supprimer votre compte. Veuillez choisir un nouveau propriétaire pour continuer.</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Being an owner of this portal, you must transfer the ownership to another user before you can delete your account. Please choose a new owner to proceed." xml:space="preserve">
         <source>Being an owner of this portal, you must transfer the ownership to another user before you can delete your account. Please choose a new owner to proceed.</source>
-        <target state="translated">En tant que propriétaire de ce portail, vous devez transférer la propriété à un autre utilisateur avant de pouvoir supprimer votre compte. Veuillez choisir un nouveau propriétaire pour continuer.</target>
+        <target>En tant que propriétaire de ce portail, vous devez transférer la propriété à un autre utilisateur avant de pouvoir supprimer votre compte. Veuillez choisir un nouveau propriétaire pour continuer.</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Box" xml:space="preserve">
@@ -1486,7 +1486,7 @@ Remarque: si vous avez oublié le mot de passe, vous avez besoin de supprimer et
       </trans-unit>
       <trans-unit id="Change owner" xml:space="preserve">
         <source>Change owner</source>
-        <target state="translated">Changer de propriétaire</target>
+        <target>Changer de propriétaire</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Check your internet connection" xml:space="preserve">
@@ -1556,7 +1556,7 @@ Remarque: si vous avez oublié le mot de passe, vous avez besoin de supprimer et
       </trans-unit>
       <trans-unit id="Commentator" xml:space="preserve">
         <source>Commentator</source>
-        <target state="translated">Commentateur</target>
+        <target>Commentateur</target>
         <note>Share status</note>
       </trans-unit>
       <trans-unit id="Common Documents" xml:space="preserve">
@@ -1765,7 +1765,7 @@ d'autres via le protocole WebDAV.</target>
       </trans-unit>
       <trans-unit id="Couldn't save changes at server. Your modified document is saved in local storage as %@" xml:space="preserve">
         <source>Couldn't save changes at server. Your modified document is saved in local storage as %@</source>
-        <target state="translated">Impossible de sauvegarder les modifications sur le serveur. Votre document modifié est enregistré dans le stockage local sous le nom de %@</target>
+        <target>Impossible de sauvegarder les modifications sur le serveur. Votre document modifié est enregistré dans le stockage local sous le nom de %@</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Create" xml:space="preserve">
@@ -1800,7 +1800,7 @@ d'autres via le protocole WebDAV.</target>
       </trans-unit>
       <trans-unit id="Dark" xml:space="preserve">
         <source>Dark</source>
-        <target state="translated">Sombre</target>
+        <target>Sombre</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Date" xml:space="preserve">
@@ -1840,12 +1840,12 @@ d'autres via le protocole WebDAV.</target>
       </trans-unit>
       <trans-unit id="Delete forever" xml:space="preserve">
         <source>Delete forever</source>
-        <target state="translated">Supprimer pour toujours</target>
+        <target>Supprimer pour toujours</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Delete from device" xml:space="preserve">
         <source>Delete from device</source>
-        <target state="translated">Supprimer de l'appareil</target>
+        <target>Supprimer de l'appareil</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Deleting" xml:space="preserve">
@@ -2156,17 +2156,17 @@ d'autres via le protocole WebDAV.</target>
       </trans-unit>
       <trans-unit id="Form Filler" xml:space="preserve">
         <source>Form Filler</source>
-        <target state="translated">Remplisseur de formulaires</target>
+        <target>Remplisseur de formulaires</target>
         <note>Share status</note>
       </trans-unit>
       <trans-unit id="Form templates" xml:space="preserve">
         <source>Form templates</source>
-        <target state="translated">Modèles de formulaire</target>
+        <target>Modèles de formulaire</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Forms" xml:space="preserve">
         <source>Forms</source>
-        <target state="translated">Formulaires</target>
+        <target>Formulaires</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Full Access" xml:space="preserve">
@@ -2296,7 +2296,7 @@ d'autres via le protocole WebDAV.</target>
       </trans-unit>
       <trans-unit id="Light" xml:space="preserve">
         <source>Light</source>
-        <target state="translated">Clair</target>
+        <target>Clair</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Link copied&#10;to the clipboard" xml:space="preserve">
@@ -2779,8 +2779,8 @@ est copié dans le Presse-papiers</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Pover user" xml:space="preserve">
-        <source>Pover user</source>
-        <target state="translated">Utilisateur avancé</target>
+        <source>Power user</source>
+        <target>Utilisateur avancé</target>
         <note>Share status</note>
       </trans-unit>
       <trans-unit id="Presentation" xml:space="preserve">
@@ -2815,7 +2815,7 @@ est copié dans le Presse-papiers</target>
       </trans-unit>
       <trans-unit id="Profile" xml:space="preserve">
         <source>Profile</source>
-        <target state="translated">Profil</target>
+        <target>Profil</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Project Documents" xml:space="preserve">
@@ -2915,7 +2915,7 @@ est copié dans le Presse-papiers</target>
       </trans-unit>
       <trans-unit id="Reviewer" xml:space="preserve">
         <source>Reviewer</source>
-        <target state="translated">Réviseur</target>
+        <target>Réviseur</target>
         <note>Share status</note>
       </trans-unit>
       <trans-unit id="Room admin" xml:space="preserve">
@@ -2935,7 +2935,7 @@ est copié dans le Presse-papiers</target>
       </trans-unit>
       <trans-unit id="Same as system" xml:space="preserve">
         <source>Same as system</source>
-        <target state="translated">Identique à système</target>
+        <target>Identique à système</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Saving" xml:space="preserve">
@@ -3086,7 +3086,7 @@ est copié dans le Presse-papiers</target>
       </trans-unit>
       <trans-unit id="Sign in" xml:space="preserve">
         <source>Sign in</source>
-        <target state="translated">Se connecter</target>
+        <target>Se connecter</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Single Sign-on" xml:space="preserve">
@@ -3290,7 +3290,7 @@ dans le presse-papiers</target>
       </trans-unit>
       <trans-unit id="Theme" xml:space="preserve">
         <source>Theme</source>
-        <target state="translated">Thème</target>
+        <target>Thème</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Third party resource" xml:space="preserve">
@@ -3505,7 +3505,7 @@ dans le presse-papiers</target>
       </trans-unit>
       <trans-unit id="Unpinning" xml:space="preserve">
         <source>Unpinning</source>
-        <target state="translated">Désépinglage</target>
+        <target>Désépinglage</target>
         <note>Caption of the processing</note>
       </trans-unit>
       <trans-unit id="Unpning" xml:space="preserve">
@@ -3535,7 +3535,7 @@ dans le presse-papiers</target>
       </trans-unit>
       <trans-unit id="User" xml:space="preserve">
         <source>User</source>
-        <target state="translated">Utilisateur</target>
+        <target>Utilisateur</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="User authentication failed" xml:space="preserve">
@@ -3580,12 +3580,12 @@ dans le presse-papiers</target>
       </trans-unit>
       <trans-unit id="View-only" xml:space="preserve">
         <source>View-only</source>
-        <target state="translated">Lecture seule</target>
+        <target>Lecture seule</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Viewer" xml:space="preserve">
         <source>Viewer</source>
-        <target state="translated">Lecteur</target>
+        <target>Lecteur</target>
         <note>Share status</note>
       </trans-unit>
       <trans-unit id="Warning" xml:space="preserve">

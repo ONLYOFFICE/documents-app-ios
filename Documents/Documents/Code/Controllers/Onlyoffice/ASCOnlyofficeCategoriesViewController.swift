@@ -234,9 +234,7 @@ class ASCOnlyofficeCategoriesViewController: UITableViewController {
                 {
                     self.account = account
 
-                    // MARK: - turn off cache
-
-                    // loadCachedCategories(provider: onlyofficeProvider)
+                    loadCachedCategories(provider: onlyofficeProvider)
                 }
             } else {
                 hasInfo = false
@@ -267,6 +265,10 @@ class ASCOnlyofficeCategoriesViewController: UITableViewController {
     }
 
     @objc func onOnlyofficeLogInCompleted(_ notification: Notification) {
+        loadedCategories = []
+        cachedCategories = []
+        updateTableView()
+        showActivityIndicator()
         loadCategories { [self] in
             updateTableView()
 

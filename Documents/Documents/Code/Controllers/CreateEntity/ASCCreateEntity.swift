@@ -49,10 +49,11 @@ class ASCCreateEntity: NSObject, UIImagePickerControllerDelegate, UINavigationCo
             config.duration = .forever
             config.presentationStyle = .bottom
             config.dimMode = .gray(interactive: true)
+            config.overrideUserInterfaceStyle = AppThemeService.theme.overrideUserInterfaceStyle
 
             SwiftMessages.show(config: config, view: createEntityView)
         } else {
-            var senderView: UIView? = sender as? UIView
+            var senderView = sender as? UIView
 
             if let barButton = sender as? UIBarButtonItem {
                 senderView = barButton.customView
@@ -81,7 +82,7 @@ class ASCCreateEntity: NSObject, UIImagePickerControllerDelegate, UINavigationCo
                 })
             }
 
-            if let senderView = senderView {
+            if let senderView {
                 createController.modalPresentationStyle = .popover
                 createController.preferredContentSize = createController.view.frame.size
 
@@ -132,14 +133,14 @@ class ASCCreateEntity: NSObject, UIImagePickerControllerDelegate, UINavigationCo
     }
 
     func createFile(_ fileExtension: String, for provider: ASCFileProviderProtocol?, in viewController: ASCDocumentsViewController) {
-        guard let provider = provider else { return }
+        guard let provider else { return }
         self.provider = provider
 
         createFile(fileExtension, viewController: viewController)
     }
 
     func createFile(_ fileExtension: String, viewController: ASCDocumentsViewController) {
-        guard let provider = provider else { return }
+        guard let provider else { return }
         var hud: MBProgressHUD?
 
         ASCEntityManager.shared.createFile(for: provider, fileExtension, in: viewController.folder, handler: { status, entity, error in
@@ -149,13 +150,13 @@ class ASCCreateEntity: NSObject, UIImagePickerControllerDelegate, UINavigationCo
             } else if status == .error {
                 hud?.hide(animated: true)
 
-                if error != nil {
-                    self.showError(message: error!)
+                if let error {
+                    self.showError(message: error)
                 }
             } else if status == .end {
                 hud?.hide(animated: false)
 
-                if let entity = entity {
+                if let entity {
                     viewController.add(entity: entity)
                 }
             }
@@ -163,7 +164,7 @@ class ASCCreateEntity: NSObject, UIImagePickerControllerDelegate, UINavigationCo
     }
 
     func createFolder(viewController: ASCDocumentsViewController) {
-        guard let provider = provider else { return }
+        guard let provider else { return }
         var hud: MBProgressHUD?
 
         ASCEntityManager.shared.createFolder(for: provider, in: viewController.folder, handler: { status, entity, error in
@@ -173,14 +174,14 @@ class ASCCreateEntity: NSObject, UIImagePickerControllerDelegate, UINavigationCo
             } else if status == .error {
                 hud?.hide(animated: true)
 
-                if error != nil {
-                    self.showError(message: error!)
+                if let error {
+                    self.showError(message: error)
                 }
             } else if status == .end {
-                if entity != nil {
+                if let entity {
                     hud?.setSuccessState()
                     hud?.hide(animated: false, afterDelay: 1.3)
-                    viewController.add(entity: entity!)
+                    viewController.add(entity: entity)
                 } else {
                     hud?.hide(animated: false)
                 }
@@ -250,10 +251,9 @@ class ASCCreateEntity: NSObject, UIImagePickerControllerDelegate, UINavigationCo
             )
 
             let settingsAction = UIAlertAction(title: NSLocalizedString("Settings", comment: ""), style: .cancel, handler: { alert in
-                let settingsUrl = NSURL(string: UIApplication.openSettingsURLString)
-                if let url = settingsUrl {
+                if let settingsUrl = NSURL(string: UIApplication.openSettingsURLString) {
                     DispatchQueue.main.async {
-                        UIApplication.shared.open(url as URL, options: [:], completionHandler: nil)
+                        UIApplication.shared.open(settingsUrl as URL, options: [:], completionHandler: nil)
                     }
                 }
             })
@@ -339,13 +339,13 @@ class ASCCreateEntityDocumentDelegate: NSObject, UIDocumentPickerDelegate {
                             } else if status == .error {
                                 openingAlert.hide()
 
-                                if let error = error {
+                                if let error {
                                     self.showError(message: error)
                                 }
                             } else if status == .end {
                                 openingAlert.hide()
 
-                                if let entity = entity {
+                                if let entity {
                                     self.documentsViewController?.add(entity: entity, open: false)
                                 }
                             }

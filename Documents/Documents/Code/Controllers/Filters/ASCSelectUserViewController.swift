@@ -150,7 +150,7 @@ class ASCSelectUserViewController: UIViewController {
                         userName: $0.displayName,
                         userPosition: $0.displayName,
                         isSelected: false,
-                        isOwner: $0.isShareOwner
+                        isOwner: $0.isOwner
                     )
                 }
                 .sorted { $0.userName ?? "" < $1.userName ?? "" }

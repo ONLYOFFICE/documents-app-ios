@@ -32,11 +32,14 @@ class ASCOnlyofficeSplitViewController: ASCBaseSplitViewController {
         tabBarItem.title = ASCConstants.Name.appNameShort
 
         if ASCFileManager.onlyofficeProvider == nil {
-            let accountsVC = ASCAccountsViewController.instantiate(from: Storyboard.login)
+            let accountsVC = ASCMultiAccountsViewController(style: .insetGrouped)
+            let presenter = ASCMultiAccountPresenter(view: accountsVC)
+            accountsVC.presenter = presenter
+
             let accountsNavigationVC = ASCBaseNavigationController(rootASCViewController: accountsVC)
 
             if let account = renewAccount {
-                accountsVC.renewal(by: account, animated: false)
+                accountsVC.presenter?.renewal(by: account, animated: true)
                 renewAccount = nil
             }
 

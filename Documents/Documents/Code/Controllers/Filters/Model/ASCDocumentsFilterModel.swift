@@ -212,10 +212,7 @@ enum FiltersName: String, CaseIterable {
     case excludeSubfolders
     /// rooms
     case customRoom
-    case fillingFormRoom
     case collaborationRoom
-    case reviewRoom
-    case viewOnlyRoom
     /// third party resource
     case dropBox
     case googleDrive
@@ -256,14 +253,8 @@ enum FiltersName: String, CaseIterable {
             return NSLocalizedString("Exclude subfolders", comment: "")
         case .customRoom:
             return NSLocalizedString("Custom", comment: "")
-        case .fillingFormRoom:
-            return NSLocalizedString("Filling form", comment: "")
         case .collaborationRoom:
             return NSLocalizedString("Collaboration", comment: "")
-        case .reviewRoom:
-            return NSLocalizedString("Review", comment: "")
-        case .viewOnlyRoom:
-            return NSLocalizedString("View-Only", comment: "")
         case .dropBox:
             return NSLocalizedString("Dropbox", comment: "")
         case .googleDrive:

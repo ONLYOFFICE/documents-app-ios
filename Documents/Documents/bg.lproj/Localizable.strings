@@ -76,6 +76,12 @@
 /* No comment provided by engineer. */
 "Account name is not valid" = "Името на профила не е валидно";
 
+/* No comment provided by engineer. */
+"Accounts" = "Профили";
+
+/* No comment provided by engineer. */
+"Add account" = "Добавяне на профил";
+
 /* Sharing settings add notification message */
 "Add message" = "Добавяне на съобщение";
 
@@ -89,6 +95,9 @@
 "Address is empty" = "Адресът е празен";
 
 /* No comment provided by engineer. */
+"Admin" = "Администратор";
+
+/* No comment provided by engineer. */
 "All" = "Всички";
 
 /* No comment provided by engineer. */
@@ -96,6 +105,9 @@
 
 /* Category title */
 "All Files" = "Всички файлове";
+
+/* No comment provided by engineer. */
+"All items from Archived will be deleted forever. You won’t be able to restore them." = "Всички елементи от Архивирани ще бъдат изтрити завинаги. Няма да можете да ги възстановите.";
 
 /* No comment provided by engineer. */
 "All notifications" = "Всички известия";
@@ -125,7 +137,7 @@
 "Archiving failed." = "Архивирането не беше успешно.";
 
 /* No comment provided by engineer. */
-"Are you sure you want to delete the account %@ from this device?" = "Наистина ли искате да изтриете профила %@ от това устройство?";
+"Are you sure you want to delete the account  %@ from this devce?" = "Сигурни ли сте, че искате да изтриете акаунта %@ от това устройство?";
 
 /* No comment provided by engineer. */
 "Are you sure you want to leave this account?" = "Наистина ли искате да напуснете този профил?";
@@ -135,6 +147,12 @@
 
 /* No comment provided by engineer. */
 "Back" = "Обратно";
+
+/* No comment provided by engineer. */
+"Being an owner of this DocSpace, you must transfer the ownership to another user before you can delete your account. Please choose a new owner to proceed." = "Като собственик на този DocSpace, трябва да прехвърлите собствеността на друг потребител, преди да можете да изтриете акаунта си. Моля, изберете нов собственик, за да продължите.";
+
+/* No comment provided by engineer. */
+"Being an owner of this portal, you must transfer the ownership to another user before you can delete your account. Please choose a new owner to proceed." = "Като собственик на този портал, трябва да прехвърлите собствеността на друг потребител, преди да можете да изтриете акаунта си. Моля, изберете нов собственик, за да продължите.";
 
 /* No comment provided by engineer. */
 "Box" = "Кутия";
@@ -171,6 +189,9 @@
 
 /* No comment provided by engineer. */
 "Cancel invitation?" = "Отмяна на поканата?";
+
+/* No comment provided by engineer. */
+"Change owner" = "Смяна на собственика";
 
 /* No comment provided by engineer. */
 "Check your internet connection" = "Проверете връзката си с интернет";
@@ -215,7 +236,7 @@
 "Collaboration" = "Сътрудничество";
 
 /* Share status */
-"Comment" = "Коментар";
+"Commentator" = "Коментатор";
 
 /* Category title */
 "Common Documents" = "Общи документи";
@@ -356,6 +377,9 @@
 "Couldn't open file" = "Файлът не можа да се отвори.";
 
 /* No comment provided by engineer. */
+"Couldn't save changes at server. Your modified document is saved in local storage as %@" = "Промените в сървъра не можаха да бъдат запазени. Вашият модифициран документ се записва в локално хранилище като %@";
+
+/* No comment provided by engineer. */
 "Create" = "Създай";
 
 /* Introduction Step Two - Description */
@@ -374,6 +398,9 @@
 "Custom filter" = "Персонализиран филтър";
 
 /* No comment provided by engineer. */
+"Dark" = "Тъмна";
+
+/* No comment provided by engineer. */
 "Date" = "Дата";
 
 /* Button title */
@@ -388,14 +415,17 @@
 /* No comment provided by engineer. */
 "Delete %lu Folder and %lu File" = "Изтриване на папката %1$lu и %2$lu";
 
-/* No comment provided by engineer. */
-"Delete account" = "Изтриване на профил";
-
 /* Button title */
 "Delete File" = "Изтрий файла";
 
 /* No comment provided by engineer. */
 "Delete Folder" = "Изтриване на папка";
+
+/* No comment provided by engineer. */
+"Delete forever" = "Изтрийте завинаги";
+
+/* No comment provided by engineer. */
+"Delete from device" = "Изтриване от устройството";
 
 /* Caption of the processing */
 "Deleting" = "Изтриване";
@@ -594,7 +624,13 @@
 "Folders" = "Папки";
 
 /* Share status */
-"Form filling" = "Попълване на формуляр";
+"Form Filler" = "Попълващ формулярa";
+
+/* No comment provided by engineer. */
+"Form templates" = "Шаблони за формуляри";
+
+/* No comment provided by engineer. */
+"Forms" = "Формуляри";
 
 /* Share status */
 "Full Access" = "Пълен достъп";
@@ -684,6 +720,9 @@
 "Last name is incorrect" = "Фамилията е неправилна";
 
 /* No comment provided by engineer. */
+"Light" = "Светла";
+
+/* No comment provided by engineer. */
 "Link copied\nto the clipboard" = "Връзката е копирана\nв клипборда";
 
 /* No comment provided by engineer. */
@@ -717,7 +756,8 @@
 /* Data units */
 "Mb" = "Мб";
 
-/* If current user name is not set */
+/* Author or member of a document
+   If current user name is not set */
 "Me" = "Аз";
 
 /* No comment provided by engineer. */
@@ -977,6 +1017,9 @@
 /* No comment provided by engineer. */
 "Portal is unavailable." = "Порталът не е наличен.";
 
+/* Share status */
+"Pover user" = "Опитен потребител";
+
 /* No comment provided by engineer. */
 "Presentation" = "Презентация";
 
@@ -995,6 +1038,9 @@
 /* Caption of the processing */
 "Processing" = "Обработване";
 
+/* No comment provided by engineer. */
+"Profile" = "Профил";
+
 /* Category title */
 "Project Documents" = "Документи по проекта";
 
@@ -1003,9 +1049,6 @@
 
 /* No comment provided by engineer. */
 "Push notifications disabled" = "Push известията са деактивиран";
-
-/* Share status */
-"Read Only" = "Само за четене";
 
 /* Button title */
 "Recover here" = "Възстановяване тук";
@@ -1056,13 +1099,16 @@
 "Restoring" = "Възстановяване";
 
 /* Share status */
-"Review" = "Преглед";
+"Reviewer" = "Рецензент";
 
 /* Share status */
 "Room admin" = "Администратор на стаята";
 
 /* DocSpace rooms */
 "Rooms" = "Стаи";
+
+/* No comment provided by engineer. */
+"Same as system" = "Същото като системата";
 
 /* Caption of the processing */
 "Saving" = "Спестяване";
@@ -1151,6 +1197,9 @@
 
 /* No comment provided by engineer. */
 "Show notifications" = "Показване на известия";
+
+/* No comment provided by engineer. */
+"Sign in" = "Впиши се";
 
 /* No comment provided by engineer. */
 "Single Sign-on" = "Единично влезне";
@@ -1271,6 +1320,9 @@
 
 /* No comment provided by engineer. */
 "The user limit has been reached. Сontact the portal administrator" = "Потребителският лимит е достигнат. Свържете се с администратора на портала";
+
+/* No comment provided by engineer. */
+"Theme" = "Тема";
 
 /* No comment provided by engineer. */
 "Third party resource" = "Ресурс на трета страна";
@@ -1399,6 +1451,9 @@
 "Unpinned failed." = "Откачването беше неуспешно.";
 
 /* Caption of the processing */
+"Unpinning" = "Откачване";
+
+/* Caption of the processing */
 "Unpning" = "Откачване";
 
 /* No comment provided by engineer. */
@@ -1412,6 +1467,9 @@
 
 /* Button title */
 "Use Touch ID" = "Използвайте Touch ID";
+
+/* No comment provided by engineer. */
+"User" = "Потребител";
 
 /* No comment provided by engineer. */
 "User authentication failed" = "Неуспешна идентификация";
@@ -1438,7 +1496,10 @@
 "Version" = "Версия";
 
 /* No comment provided by engineer. */
-"View-Only" = "Само за преглеждане";
+"View-only" = "Само за преглед";
+
+/* Share status */
+"Viewer" = "Зрител";
 
 /* No comment provided by engineer. */
 "Warning" = "Внимание";

@@ -62,10 +62,10 @@ class ASCGoogleSignInController: NSObject {
             let semaphore = DispatchSemaphore(value: 0)
 
             DispatchQueue.main.async {
-                let signInConfig = GIDConfiguration(clientID: clientId)
-                googleSignIn.signIn(with: signInConfig, presenting: controller) { user, error in
+                googleSignIn.configuration = GIDConfiguration(clientID: clientId)
+                googleSignIn.signIn(withPresenting: controller) { result, error in
                     defer { semaphore.signal() }
-                    googleUser = user
+                    googleUser = result?.user
                     googleError = error
                 }
             }
@@ -86,9 +86,9 @@ class ASCGoogleSignInController: NSObject {
 
             let semaphore = DispatchSemaphore(value: 0)
             DispatchQueue.main.async {
-                googleSignIn.addScopes(requestScopes, presenting: controller) { user, error in
+                user.addScopes(requestScopes, presenting: controller) { result, error in
                     defer { semaphore.signal() }
-                    googleUser = user
+                    googleUser = result?.user
                     googleError = error
                 }
             }
@@ -118,7 +118,7 @@ class ASCGoogleSignInController: NSObject {
                     }
                 }
 
-                strongSelf.signInHandler?(user.authentication.accessToken, NSKeyedArchiver.archivedData(withRootObject: user), nil)
+                strongSelf.signInHandler?(user.accessToken.tokenString, NSKeyedArchiver.archivedData(withRootObject: user), nil)
             }
         }
     }

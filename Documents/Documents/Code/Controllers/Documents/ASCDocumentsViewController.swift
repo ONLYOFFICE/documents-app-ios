@@ -228,6 +228,7 @@ class ASCDocumentsViewController: ASCBaseTableViewController, UIGestureRecognize
         addObserver(ASCConstants.Notifications.appDidBecomeActive, #selector(onAppDidBecomeActive(_:)))
         addObserver(ASCConstants.Notifications.reloadData, #selector(onReloadData(_:)))
         addObserver(UIApplication.willResignActiveNotification, #selector(onAppMovedToBackground))
+        addObserver(UIApplication.didEnterBackgroundNotification, #selector(onAppDidEnterBackground))
 
         UserDefaults.standard.addObserver(self, forKeyPath: ASCConstants.SettingsKeys.sortDocuments, options: [.new], context: nil)
 
@@ -444,7 +445,7 @@ class ASCDocumentsViewController: ASCBaseTableViewController, UIGestureRecognize
                 self.showEmptyView(self.total < 1)
 
                 if let index = self.tableData.firstIndex(where: { $0.id == file.id }) {
-                    if ASCConstants.Feature.hideSearchbarIfEmpty {
+                    if ASCAppSettings.Feature.hideSearchbarIfEmpty {
                         self.searchController.searchBar.isHidden = false
                     }
                     self.tableView.scrollToRow(at: IndexPath(row: index, section: 0), at: .middle, animated: true)
@@ -478,7 +479,7 @@ class ASCDocumentsViewController: ASCBaseTableViewController, UIGestureRecognize
                 self.showEmptyView(self.total < 1)
 
                 if let index = self.tableData.firstIndex(where: { $0.uid == folder.uid }) {
-                    if ASCConstants.Feature.hideSearchbarIfEmpty {
+                    if ASCAppSettings.Feature.hideSearchbarIfEmpty {
                         self.searchController.searchBar.isHidden = false
                     }
 
@@ -1154,7 +1155,7 @@ class ASCDocumentsViewController: ASCBaseTableViewController, UIGestureRecognize
             searchController.isActive = false
         }
 
-        if ASCConstants.Feature.hideSearchbarIfEmpty {
+        if ASCAppSettings.Feature.hideSearchbarIfEmpty {
             searchController.searchBar.isHidden = true
         }
 
@@ -1219,7 +1220,7 @@ class ASCDocumentsViewController: ASCBaseTableViewController, UIGestureRecognize
     }
 
     private func showEmptyView(_ show: Bool) {
-        if ASCConstants.Feature.hideSearchbarIfEmpty {
+        if ASCAppSettings.Feature.hideSearchbarIfEmpty {
             if !searchController.isActive {
                 searchController.searchBar.isHidden = show
             }
@@ -1373,6 +1374,11 @@ class ASCDocumentsViewController: ASCBaseTableViewController, UIGestureRecognize
         if !(UIDevice.phone || ASCViewControllerManager.shared.currentSizeClass == .compact) {
             setEditMode(false)
         }
+    }
+
+    @objc
+    private func onAppDidEnterBackground() {
+        searchController.isActive = false
     }
 
     private func updateNavBar() {
@@ -1598,7 +1604,7 @@ class ASCDocumentsViewController: ASCBaseTableViewController, UIGestureRecognize
     }
 
     private func isTrash(_ folder: ASCFolder?) -> Bool {
-        return (folder?.rootFolderType == .onlyofficeTrash || folder?.rootFolderType == .deviceTrash)
+        return folder?.rootFolderType == .onlyofficeTrash || folder?.rootFolderType == .deviceTrash
     }
 
     private func configureSwipeGesture() {
@@ -3039,7 +3045,7 @@ extension ASCDocumentsViewController {
             controller.folder = folder
             controller.title = folder.title
         } else if let file = tableData[indexPath.row] as? ASCFile, let provider = provider {
-            if ASCConstants.Feature.openViewModeByDefault {
+            if ASCAppSettings.Feature.openViewModeByDefault {
                 let title = file.title,
                     fileExt = title.fileExtension().lowercased()
 

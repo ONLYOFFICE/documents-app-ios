@@ -220,7 +220,7 @@ class ASCConnectCloudViewController: UITableViewController {
                 googleConnectController.signIn(parentVC: self)
             }
         case .dropbox:
-            if ASCConstants.Feature.dropboxSDKLogin {
+            if ASCAppSettings.Feature.dropboxSDKLogin {
                 ASCDropboxSDKWrapper.shared.login(at: self) { info in
                     self.authComplation(info: info)
                 }

@@ -24,7 +24,7 @@ projects = {
     },
 }
 
-support_langs = ["bg", "cs", "de", "en", "es", "fr", "hy-AM", "it", "ja", "pt-BR", "ru", "si-DE", "zh-Hans", "zh-Hant"]
+support_langs = ["bg", "cs", "de", "en", "es", "fr", "hy-AM", "it", "ja", "pt-BR", "ru", "si", "zh-Hans", "zh-Hant"]
 
 def import_localization():
     for key, value in projects.items():

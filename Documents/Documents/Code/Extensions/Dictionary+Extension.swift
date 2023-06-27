@@ -6,6 +6,8 @@
 //  Copyright © 2017 Ascensio System SIA. All rights reserved.
 //
 
+// swiftformat:disable all
+
 import Foundation
 
 public extension Dictionary {
@@ -105,3 +107,5 @@ public extension Dictionary {
         return String(data: jsonData, encoding: .utf8)
     }
 }
+
+// swiftformat:enable all

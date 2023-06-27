@@ -76,6 +76,12 @@
 /* No comment provided by engineer. */
 "Account name is not valid" = "帐户名称无效";
 
+/* No comment provided by engineer. */
+"Accounts" = "帳號";
+
+/* No comment provided by engineer. */
+"Add account" = "新增帳戶";
+
 /* Sharing settings add notification message */
 "Add message" = "添加消息";
 
@@ -89,6 +95,9 @@
 "Address is empty" = "地址为空";
 
 /* No comment provided by engineer. */
+"Admin" = "管理者";
+
+/* No comment provided by engineer. */
 "All" = "全部";
 
 /* No comment provided by engineer. */
@@ -96,6 +105,9 @@
 
 /* Category title */
 "All Files" = "所有文件";
+
+/* No comment provided by engineer. */
+"All items from Archived will be deleted forever. You won’t be able to restore them." = "存檔中的所有項目將被永久刪除。您將無法恢復它們。";
 
 /* No comment provided by engineer. */
 "All notifications" = "所有通知";
@@ -125,7 +137,7 @@
 "Archiving failed." = "存檔失敗。";
 
 /* No comment provided by engineer. */
-"Are you sure you want to delete the account %@ from this device?" = "您确定要删除设备上%@ 账户吗？";
+"Are you sure you want to delete the account  %@ from this devce?" = "您確定要從此設備中删除帳戶%@嗎？";
 
 /* No comment provided by engineer. */
 "Are you sure you want to leave this account?" = "您确定要离开此账户吗？";
@@ -135,6 +147,12 @@
 
 /* No comment provided by engineer. */
 "Back" = "返回";
+
+/* No comment provided by engineer. */
+"Being an owner of this DocSpace, you must transfer the ownership to another user before you can delete your account. Please choose a new owner to proceed." = "作為此 DocSpace 的所有人，您必須將所有權轉移給另一位用戶，然後才能刪除您的帳戶。請選擇新的所有人後繼續。";
+
+/* No comment provided by engineer. */
+"Being an owner of this portal, you must transfer the ownership to another user before you can delete your account. Please choose a new owner to proceed." = "作為此入口網站的所有人，您必須將所有權轉移給另一位用戶，然後才能删除您的帳戶。 請選擇一個新的所有人後繼續。";
 
 /* No comment provided by engineer. */
 "Box" = "Box";
@@ -171,6 +189,9 @@
 
 /* No comment provided by engineer. */
 "Cancel invitation?" = "取消邀請？";
+
+/* No comment provided by engineer. */
+"Change owner" = "變更擁有者";
 
 /* No comment provided by engineer. */
 "Check your internet connection" = "请检查您的网络连接并重试";
@@ -215,7 +236,7 @@
 "Collaboration" = "协作";
 
 /* Share status */
-"Comment" = "评论";
+"Commentator" = "評論員";
 
 /* Category title */
 "Common Documents" = "常用文件";
@@ -356,6 +377,9 @@
 "Couldn't open file" = "无法打开文件";
 
 /* No comment provided by engineer. */
+"Couldn't save changes at server. Your modified document is saved in local storage as %@" = "無法在伺服器上儲存變更。您修改後的檔案將作為%@儲存在本機儲存中";
+
+/* No comment provided by engineer. */
 "Create" = "创建";
 
 /* Introduction Step Two - Description */
@@ -374,6 +398,9 @@
 "Custom filter" = "自定义筛选器";
 
 /* No comment provided by engineer. */
+"Dark" = "暗";
+
+/* No comment provided by engineer. */
 "Date" = "日期";
 
 /* Button title */
@@ -388,14 +415,17 @@
 /* No comment provided by engineer. */
 "Delete %lu Folder and %lu File" = "删除 %1$lu 文件夹和 %2$lu 文件";
 
-/* No comment provided by engineer. */
-"Delete account" = "删除账户";
-
 /* Button title */
 "Delete File" = "删除文件";
 
 /* No comment provided by engineer. */
 "Delete Folder" = "删除文件夹";
+
+/* No comment provided by engineer. */
+"Delete forever" = "永久删除";
+
+/* No comment provided by engineer. */
+"Delete from device" = "從裝置中刪除";
 
 /* Caption of the processing */
 "Deleting" = "正在删除";
@@ -594,7 +624,13 @@
 "Folders" = "文件夹";
 
 /* Share status */
-"Form filling" = "表单填写";
+"Form Filler" = "填表人";
+
+/* No comment provided by engineer. */
+"Form templates" = "表格範本";
+
+/* No comment provided by engineer. */
+"Forms" = "表格";
 
 /* Share status */
 "Full Access" = "完全访问权限";
@@ -684,6 +720,9 @@
 "Last name is incorrect" = "姓不正确";
 
 /* No comment provided by engineer. */
+"Light" = "淺色主題";
+
+/* No comment provided by engineer. */
 "Link copied\nto the clipboard" = "链接已复制\n到剪贴板";
 
 /* No comment provided by engineer. */
@@ -717,7 +756,8 @@
 /* Data units */
 "Mb" = "Mb";
 
-/* If current user name is not set */
+/* Author or member of a document
+   If current user name is not set */
 "Me" = "我";
 
 /* No comment provided by engineer. */
@@ -977,6 +1017,9 @@
 /* No comment provided by engineer. */
 "Portal is unavailable." = "门户网站不可用。";
 
+/* Share status */
+"Pover user" = "高級用戶";
+
 /* No comment provided by engineer. */
 "Presentation" = "演示文稿";
 
@@ -995,6 +1038,9 @@
 /* Caption of the processing */
 "Processing" = "处理中";
 
+/* No comment provided by engineer. */
+"Profile" = "個人資料";
+
 /* Category title */
 "Project Documents" = "项目文档";
 
@@ -1003,9 +1049,6 @@
 
 /* No comment provided by engineer. */
 "Push notifications disabled" = "推送通知已禁用";
-
-/* Share status */
-"Read Only" = "只读";
 
 /* Button title */
 "Recover here" = "在此恢复";
@@ -1056,13 +1099,16 @@
 "Restoring" = "正在还原";
 
 /* Share status */
-"Review" = "审查";
+"Reviewer" = "檢閱者";
 
 /* Share status */
 "Room admin" = "會議室管理員";
 
 /* DocSpace rooms */
 "Rooms" = "會議室";
+
+/* No comment provided by engineer. */
+"Same as system" = "和系統一致";
 
 /* Caption of the processing */
 "Saving" = "正在保存";
@@ -1151,6 +1197,9 @@
 
 /* No comment provided by engineer. */
 "Show notifications" = "顯示通知";
+
+/* No comment provided by engineer. */
+"Sign in" = "登入";
 
 /* No comment provided by engineer. */
 "Single Sign-on" = "单一登录";
@@ -1271,6 +1320,9 @@
 
 /* No comment provided by engineer. */
 "The user limit has been reached. Сontact the portal administrator" = "已達到使用者限制。 聯繫入口網站管理員";
+
+/* No comment provided by engineer. */
+"Theme" = "主題";
 
 /* No comment provided by engineer. */
 "Third party resource" = "第三方資源";
@@ -1399,6 +1451,9 @@
 "Unpinned failed." = "取消固定失敗。";
 
 /* Caption of the processing */
+"Unpinning" = "取消固定中";
+
+/* Caption of the processing */
 "Unpning" = "取消固定中";
 
 /* No comment provided by engineer. */
@@ -1412,6 +1467,9 @@
 
 /* Button title */
 "Use Touch ID" = "使用Touch ID";
+
+/* No comment provided by engineer. */
+"User" = "使用者";
 
 /* No comment provided by engineer. */
 "User authentication failed" = "用户验证失败";
@@ -1438,7 +1496,10 @@
 "Version" = "版本";
 
 /* No comment provided by engineer. */
-"View-Only" = "僅檢視";
+"View-only" = "僅可檢視";
+
+/* Share status */
+"Viewer" = "察看者";
 
 /* No comment provided by engineer. */
 "Warning" = "警告";

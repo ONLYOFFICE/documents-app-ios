@@ -123,7 +123,7 @@ class ASCFileManager {
             }
         }
 
-        if ASCConstants.Feature.allowiCloud {
+        if ASCAppSettings.Feature.allowiCloud {
             // iCloud Setup
             iCloudUpdate()
         }

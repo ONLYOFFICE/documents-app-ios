@@ -18,15 +18,15 @@ class ASCSharingSettingsAccessRoomsProvider: ASCSharingSettingsAccessProvider {
     func get() -> [ASCShareAccess] {
         switch roomType {
         case .fillingForm:
-            return [.roomManager, .collaborator, .fillForms, .read]
+            return [.roomManager, .powerUser, .fillForms, .read]
         case .colobaration:
-            return [.roomManager, .collaborator, .editing, .read]
+            return [.roomManager, .powerUser, .editing, .read]
         case .review:
-            return [.roomManager, .collaborator, .review, .comment, .read]
+            return [.roomManager, .powerUser, .review, .comment, .read]
         case .viewOnly:
-            return [.roomManager, .collaborator, .read]
+            return [.roomManager, .powerUser, .read]
         case .custom:
-            return [.roomManager, .collaborator, .editing, .fillForms, .review, .comment, .read, .deny]
+            return [.roomManager, .powerUser, .editing, .fillForms, .review, .comment, .read]
         }
     }
 }

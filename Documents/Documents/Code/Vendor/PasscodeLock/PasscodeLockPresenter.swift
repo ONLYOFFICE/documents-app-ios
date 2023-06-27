@@ -13,7 +13,7 @@ open class PasscodeLockPresenter {
 
     private lazy var passcodeLockWindow: UIWindow = {
         let window = UIWindow(frame: UIScreen.main.bounds)
-
+        window.overrideUserInterfaceStyle = AppThemeService.theme.overrideUserInterfaceStyle
         window.windowLevel = UIWindow.Level(rawValue: 0)
         window.makeKeyAndVisible()
 
@@ -52,6 +52,10 @@ open class PasscodeLockPresenter {
            keyboardWindow.description.hasPrefix("<UIRemoteKeyboardWindow")
         {
             keyboardWindow.alpha = hide ? 0.0 : 1.0
+        } else {
+            UIApplication.shared.windows
+                .first { $0.isKeyWindow }?
+                .endEditing(true)
         }
     }
 
@@ -61,6 +65,7 @@ open class PasscodeLockPresenter {
 
         isPasscodePresented = true
         passcodeLockWindow.windowLevel = UIWindow.Level.statusBar - 1
+        passcodeLockWindow.overrideUserInterfaceStyle = AppThemeService.theme.overrideUserInterfaceStyle
 
         toggleKeyboardVisibility(hide: true)
 

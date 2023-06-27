@@ -22,9 +22,6 @@
 /* Class = "UIButton"; normalTitle = "Forgot?"; ObjectID = "78r-Ca-NKv"; */
 "78r-Ca-NKv.normalTitle" = "お忘れですか?";
 
-/* Class = "UILabel"; text = "Account"; ObjectID = "AkN-p0-Mzy"; */
-"AkN-p0-Mzy.text" = "アカウント";
-
 /* Class = "UILabel"; text = "If a user with the email exists, the password change instruction has been sent to this email address."; ObjectID = "AqB-m0-2UQ"; Note = "Do not translate"; */
 "AqB-m0-2UQ.text" = "記入されたメールアドレスをお持ちのユーザーが存在する場合、パスワード変更指示はこのメールアドレスに送信されました。";
 
@@ -55,20 +52,11 @@
 /* Class = "UIButton"; normalTitle = "Send"; ObjectID = "ePY-rM-AOE"; */
 "ePY-rM-AOE.normalTitle" = "送信";
 
-/* Class = "UILabel"; text = "Address"; ObjectID = "Fso-pj-304"; */
-"Fso-pj-304.text" = "住所";
-
 /* Class = "UIButton"; normalTitle = "Create cloud"; ObjectID = "G99-FE-uk4"; */
 "G99-FE-uk4.normalTitle" = "クラウドを作成する";
 
 /* Class = "UILabel"; text = "Connect to your ONLYOFFICE cloud to store files online and collaborate on documents in real time"; ObjectID = "GFx-Ry-9GC"; */
 "GFx-Ry-9GC.text" = "ONLYOFFICEクラウドに接続し、オンライン上でファイルを保存し、リアルタイムでドキュメントをコラボレーションすることが可能になります";
-
-/* Class = "UILabel"; text = "Select an account to sign in"; ObjectID = "Gkv-tP-6EM"; */
-"Gkv-tP-6EM.text" = "アカウントを選択して、サインインする";
-
-/* Class = "UINavigationItem"; title = "Accounts"; ObjectID = "gzc-cW-NPT"; */
-"gzc-cW-NPT.title" = "アカウント";
 
 /* Class = "UINavigationItem"; title = "SSO Login"; ObjectID = "hRN-W6-nA0"; */
 "hRN-W6-nA0.title" = "シングルサインオンでログインする";
@@ -96,9 +84,6 @@
 
 /* Class = "UITextField"; placeholder = "Code"; ObjectID = "OnI-QD-xeI"; */
 "OnI-QD-xeI.placeholder" = "コード";
-
-/* Class = "UIButton"; normalTitle = "Select another account"; ObjectID = "peP-Hz-Lai"; */
-"peP-Hz-Lai.normalTitle" = "他のアカウントを選択する";
 
 /* Class = "UIButton"; normalTitle = "Sign in"; ObjectID = "QAn-vu-xMR"; */
 "QAn-vu-xMR.normalTitle" = "サインイン";
@@ -147,9 +132,6 @@
 
 /* Class = "UILabel"; text = "Connection to cloud"; ObjectID = "XsM-aD-o1I"; */
 "XsM-aD-o1I.text" = "クラウドへの接続";
-
-/* Class = "UIButton"; normalTitle = "Continue"; ObjectID = "yjY-PY-41s"; */
-"yjY-PY-41s.normalTitle" = "続ける";
 
 /* Class = "UITextField"; placeholder = "Code"; ObjectID = "ZWV-Q1-HY9"; */
 "ZWV-Q1-HY9.placeholder" = "コード";

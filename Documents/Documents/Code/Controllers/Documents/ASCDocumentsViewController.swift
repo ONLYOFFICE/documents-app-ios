@@ -1346,7 +1346,7 @@ class ASCDocumentsViewController: ASCBaseTableViewController, UIGestureRecognize
         SwiftMessages.hide()
 
         if let topVC = ASCViewControllerManager.shared.rootController?.topMostViewController(),
-           let _ = topVC.view as? ASCCreateEntityView
+           topVC is ASCCreateEntityUIViewController
         {
             topVC.dismiss(animated: false, completion: nil)
         }

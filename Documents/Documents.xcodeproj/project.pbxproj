@@ -308,7 +308,6 @@
 		FC68529B26837B7300D830EC /* DropboxAccount.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC68526626837B7300D830EC /* DropboxAccount.swift */; };
 		FC68529D26837B7300D830EC /* NetworkingClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC68526726837B7300D830EC /* NetworkingClient.swift */; };
 		FC68529F26837B7300D830EC /* Endpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC68526826837B7300D830EC /* Endpoint.swift */; };
-		FC68626422E84DDE00AD03D2 /* ASCCreateEntityView.xib in Resources */ = {isa = PBXBuildFile; fileRef = FC68626622E84DDE00AD03D2 /* ASCCreateEntityView.xib */; };
 		FC6A754D29910FB80056262F /* Pulse in Frameworks */ = {isa = PBXBuildFile; productRef = FC6A754C29910FB80056262F /* Pulse */; };
 		FC6A754F29910FB80056262F /* PulseLogHandler in Frameworks */ = {isa = PBXBuildFile; productRef = FC6A754E29910FB80056262F /* PulseLogHandler */; };
 		FC6A755129910FB80056262F /* PulseUI in Frameworks */ = {isa = PBXBuildFile; productRef = FC6A755029910FB80056262F /* PulseUI */; };
@@ -382,7 +381,6 @@
 		FCA6946B2057ED9900ED8D8E /* Data+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCA6946A2057ED9800ED8D8E /* Data+Extension.swift */; };
 		FCA7500622BB91DE00991682 /* UIButton+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCA7500522BB91DE00991682 /* UIButton+Extensions.swift */; };
 		FCA7500822BB9CD500991682 /* UITableViewCell+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCA7500722BB9CD500991682 /* UITableViewCell+Extensions.swift */; };
-		FCA7501122BBD65A00991682 /* ASCCreateEntityView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCA7501022BBD65A00991682 /* ASCCreateEntityView.swift */; };
 		FCADF37A1EC9DA9A001CA4A9 /* NSLayoutConstraint+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCADF3791EC9DA9A001CA4A9 /* NSLayoutConstraint+Extensions.swift */; };
 		FCAE112E26A800E60013B475 /* ASCKdriveFileProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCAE112D26A800E60013B475 /* ASCKdriveFileProvider.swift */; };
 		FCAE113126A817370013B475 /* UIImage+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCAE113026A817370013B475 /* UIImage+Extension.swift */; };
@@ -449,6 +447,10 @@
 		FCE1F6461EDC456700D9DE17 /* ASCCreatePortalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCE1F6451EDC456700D9DE17 /* ASCCreatePortalViewController.swift */; };
 		FCE35DD61E9E7BC100BC2B68 /* Sort.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FCE35DD81E9E7BC100BC2B68 /* Sort.storyboard */; };
 		FCE35DDB1E9E7BCA00BC2B68 /* Transfer.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FCE35DDD1E9E7BCA00BC2B68 /* Transfer.storyboard */; };
+		FCE835192A84CAF100EFA839 /* CreateEntityViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCE835002A84CAF100EFA839 /* CreateEntityViewModel.swift */; };
+		FCE8351A2A84CAF100EFA839 /* CreateEntityUIType.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCE835022A84CAF100EFA839 /* CreateEntityUIType.swift */; };
+		FCE8351E2A84CAF100EFA839 /* ASCCreateEntityUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCE835152A84CAF100EFA839 /* ASCCreateEntityUI.swift */; };
+		FCE8351F2A84CAF100EFA839 /* ASCCreateEntityUIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCE835182A84CAF100EFA839 /* ASCCreateEntityUIViewController.swift */; };
 		FCEA68232264733A0055926A /* ASC2FAPageController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCEA68222264733A0055926A /* ASC2FAPageController.swift */; };
 		FCEBA72028B3ADBB0009D50B /* ASCDocumentsViewController+Menu.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCEBA71F28B3ADBB0009D50B /* ASCDocumentsViewController+Menu.swift */; };
 		FCECDDCF264309D7006CD7B9 /* ASCPasswordRecoveryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCECDDCD264309D7006CD7B9 /* ASCPasswordRecoveryViewController.swift */; };
@@ -708,7 +710,6 @@
 		FC09998D28195EF10063BB08 /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/Sort.strings"; sourceTree = "<group>"; };
 		FC09998E28195EF10063BB08 /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/Transfer.strings"; sourceTree = "<group>"; };
 		FC09998F28195EF10063BB08 /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/UserProfile.strings"; sourceTree = "<group>"; };
-		FC09999028195EF10063BB08 /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/ASCCreateEntityView.strings"; sourceTree = "<group>"; };
 		FC09999128195EF20063BB08 /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/PasscodeLock.strings"; sourceTree = "<group>"; };
 		FC09999228195EF20063BB08 /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/PasscodeLockView.strings"; sourceTree = "<group>"; };
 		FC09999328195EF20063BB08 /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/Localizable.strings"; sourceTree = "<group>"; };
@@ -845,14 +846,6 @@
 		FC68526626837B7300D830EC /* DropboxAccount.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DropboxAccount.swift; sourceTree = "<group>"; };
 		FC68526726837B7300D830EC /* NetworkingClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkingClient.swift; sourceTree = "<group>"; };
 		FC68526826837B7300D830EC /* Endpoint.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Endpoint.swift; sourceTree = "<group>"; };
-		FC68626522E84DDE00AD03D2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/ASCCreateEntityView.xib; sourceTree = "<group>"; };
-		FC68626822E84DE700AD03D2 /* bg */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = bg; path = bg.lproj/ASCCreateEntityView.strings; sourceTree = "<group>"; };
-		FC68626A22E84DF800AD03D2 /* cs */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = cs; path = cs.lproj/ASCCreateEntityView.strings; sourceTree = "<group>"; };
-		FC68626C22E84DF800AD03D2 /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/ASCCreateEntityView.strings; sourceTree = "<group>"; };
-		FC68626E22E84DFA00AD03D2 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/ASCCreateEntityView.strings; sourceTree = "<group>"; };
-		FC68627022E84E0000AD03D2 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/ASCCreateEntityView.strings; sourceTree = "<group>"; };
-		FC68627222E84E1500AD03D2 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/ASCCreateEntityView.strings; sourceTree = "<group>"; };
-		FC68627422E84E1800AD03D2 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/ASCCreateEntityView.strings; sourceTree = "<group>"; };
 		FC6D9A502355CDC100A970C6 /* ASCDropboxProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCDropboxProvider.swift; sourceTree = "<group>"; };
 		FC6DD4E51EDD59330095B16C /* ParkedTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ParkedTextField.swift; sourceTree = "<group>"; };
 		FC6E84C82775CDE700028965 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/ConnectStorage.strings; sourceTree = "<group>"; };
@@ -865,7 +858,6 @@
 		FC6E84CF2775CDE700028965 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/Sort.strings; sourceTree = "<group>"; };
 		FC6E84D02775CDE700028965 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/Transfer.strings; sourceTree = "<group>"; };
 		FC6E84D12775CDE700028965 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/UserProfile.strings; sourceTree = "<group>"; };
-		FC6E84D22775CDE700028965 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/ASCCreateEntityView.strings; sourceTree = "<group>"; };
 		FC6E84D32775CDE700028965 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/PasscodeLock.strings; sourceTree = "<group>"; };
 		FC6E84D42775CDE700028965 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/PasscodeLockView.strings; sourceTree = "<group>"; };
 		FC6E84D52775CDE700028965 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/Localizable.strings; sourceTree = "<group>"; };
@@ -879,7 +871,6 @@
 		FC6E84DE2775CE0300028965 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Sort.strings"; sourceTree = "<group>"; };
 		FC6E84DF2775CE0300028965 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Transfer.strings"; sourceTree = "<group>"; };
 		FC6E84E02775CE0300028965 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/UserProfile.strings"; sourceTree = "<group>"; };
-		FC6E84E12775CE0300028965 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/ASCCreateEntityView.strings"; sourceTree = "<group>"; };
 		FC6E84E22775CE0300028965 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/PasscodeLock.strings"; sourceTree = "<group>"; };
 		FC6E84E32775CE0300028965 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/PasscodeLockView.strings"; sourceTree = "<group>"; };
 		FC6F0CD61F542E7E002D33D9 /* ASCSSOSignInController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASCSSOSignInController.swift; sourceTree = "<group>"; };
@@ -909,7 +900,6 @@
 		FC7DC8D52860B2D700E61C69 /* hy-AM */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "hy-AM"; path = "hy-AM.lproj/Settings.strings"; sourceTree = "<group>"; };
 		FC7DC8D62860B2D800E61C69 /* hy-AM */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "hy-AM"; path = "hy-AM.lproj/UserProfile.strings"; sourceTree = "<group>"; };
 		FC7DC8D72860B2D800E61C69 /* hy-AM */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "hy-AM"; path = "hy-AM.lproj/CreatePortal.strings"; sourceTree = "<group>"; };
-		FC7DC8D82860B2D800E61C69 /* hy-AM */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "hy-AM"; path = "hy-AM.lproj/ASCCreateEntityView.strings"; sourceTree = "<group>"; };
 		FC7DC8D92860B2D800E61C69 /* hy-AM */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "hy-AM"; path = "hy-AM.lproj/PasscodeLockView.strings"; sourceTree = "<group>"; };
 		FC7DC8DA2860B2D800E61C69 /* hy-AM */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "hy-AM"; path = "hy-AM.lproj/PasscodeLock.strings"; sourceTree = "<group>"; };
 		FC7DC8DB2860B2D900E61C69 /* hy-AM */ = {isa = PBXFileReference; lastKnownFileType = text.plist.stringsdict; name = "hy-AM"; path = "hy-AM.lproj/Localizable.stringsdict"; sourceTree = "<group>"; };
@@ -946,7 +936,6 @@
 		FC8A5B7A2A41E35500998EB6 /* si */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = si; path = si.lproj/Settings.strings; sourceTree = "<group>"; };
 		FC8A5B7B2A41E35500998EB6 /* si */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = si; path = si.lproj/UserProfile.strings; sourceTree = "<group>"; };
 		FC8A5B7C2A41E35600998EB6 /* si */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = si; path = si.lproj/CreatePortal.strings; sourceTree = "<group>"; };
-		FC8A5B7D2A41E35600998EB6 /* si */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = si; path = si.lproj/ASCCreateEntityView.strings; sourceTree = "<group>"; };
 		FC8A5B7E2A41E35600998EB6 /* si */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = si; path = si.lproj/PasscodeLockView.strings; sourceTree = "<group>"; };
 		FC8A5B7F2A41E35600998EB6 /* si */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = si; path = si.lproj/PasscodeLock.strings; sourceTree = "<group>"; };
 		FC8A5B802A41E35600998EB6 /* si */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = si; path = si.lproj/Localizable.strings; sourceTree = "<group>"; };
@@ -972,7 +961,6 @@
 		FCA6946A2057ED9800ED8D8E /* Data+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Data+Extension.swift"; sourceTree = "<group>"; };
 		FCA7500522BB91DE00991682 /* UIButton+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton+Extensions.swift"; sourceTree = "<group>"; };
 		FCA7500722BB9CD500991682 /* UITableViewCell+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableViewCell+Extensions.swift"; sourceTree = "<group>"; };
-		FCA7501022BBD65A00991682 /* ASCCreateEntityView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCCreateEntityView.swift; sourceTree = "<group>"; };
 		FCADF3791EC9DA9A001CA4A9 /* NSLayoutConstraint+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSLayoutConstraint+Extensions.swift"; sourceTree = "<group>"; };
 		FCAE112D26A800E60013B475 /* ASCKdriveFileProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCKdriveFileProvider.swift; sourceTree = "<group>"; };
 		FCAE113026A817370013B475 /* UIImage+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Extension.swift"; sourceTree = "<group>"; };
@@ -1084,7 +1072,6 @@
 		FCE6246C26F874A100EFAE7C /* it */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = it; path = it.lproj/Localizable.strings; sourceTree = "<group>"; };
 		FCE6246D26F874A100EFAE7C /* it */ = {isa = PBXFileReference; lastKnownFileType = text.plist.stringsdict; name = it; path = it.lproj/Localizable.stringsdict; sourceTree = "<group>"; };
 		FCE6246E26F874A200EFAE7C /* it */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = it; path = "it.lproj/Documents-InfoPlist.strings"; sourceTree = "<group>"; };
-		FCE6246F26F874A200EFAE7C /* it */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = it; path = it.lproj/ASCCreateEntityView.strings; sourceTree = "<group>"; };
 		FCE6247026F874A200EFAE7C /* it */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = it; path = it.lproj/PasscodeLockView.strings; sourceTree = "<group>"; };
 		FCE6247126F874A200EFAE7C /* it */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = it; path = it.lproj/PasscodeLock.strings; sourceTree = "<group>"; };
 		FCE6247226F874A200EFAE7C /* it */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = it; path = it.lproj/Localizable.strings; sourceTree = "<group>"; };
@@ -1099,7 +1086,6 @@
 		FCE6247B26F874B300EFAE7C /* pt-BR */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "pt-BR"; path = "pt-BR.lproj/Settings.strings"; sourceTree = "<group>"; };
 		FCE6247C26F874B300EFAE7C /* pt-BR */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "pt-BR"; path = "pt-BR.lproj/UserProfile.strings"; sourceTree = "<group>"; };
 		FCE6247D26F874B300EFAE7C /* pt-BR */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "pt-BR"; path = "pt-BR.lproj/CreatePortal.strings"; sourceTree = "<group>"; };
-		FCE6247F26F874B300EFAE7C /* pt-BR */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "pt-BR"; path = "pt-BR.lproj/ASCCreateEntityView.strings"; sourceTree = "<group>"; };
 		FCE6248026F874B300EFAE7C /* pt-BR */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "pt-BR"; path = "pt-BR.lproj/PasscodeLockView.strings"; sourceTree = "<group>"; };
 		FCE6248126F874B300EFAE7C /* pt-BR */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "pt-BR"; path = "pt-BR.lproj/PasscodeLock.strings"; sourceTree = "<group>"; };
 		FCE6248226F874B300EFAE7C /* pt-BR */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "pt-BR"; path = "pt-BR.lproj/Localizable.strings"; sourceTree = "<group>"; };
@@ -1107,6 +1093,10 @@
 		FCE6248426F874B400EFAE7C /* pt-BR */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "pt-BR"; path = "pt-BR.lproj/Documents-InfoPlist.strings"; sourceTree = "<group>"; };
 		FCE6248526F874B400EFAE7C /* pt-BR */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "pt-BR"; path = "pt-BR.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		FCE6248626F874B400EFAE7C /* pt-BR */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "pt-BR"; path = "pt-BR.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
+		FCE835002A84CAF100EFA839 /* CreateEntityViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateEntityViewModel.swift; sourceTree = "<group>"; };
+		FCE835022A84CAF100EFA839 /* CreateEntityUIType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateEntityUIType.swift; sourceTree = "<group>"; };
+		FCE835152A84CAF100EFA839 /* ASCCreateEntityUI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASCCreateEntityUI.swift; sourceTree = "<group>"; };
+		FCE835182A84CAF100EFA839 /* ASCCreateEntityUIViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASCCreateEntityUIViewController.swift; sourceTree = "<group>"; };
 		FCEA68222264733A0055926A /* ASC2FAPageController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASC2FAPageController.swift; sourceTree = "<group>"; };
 		FCEBA71F28B3ADBB0009D50B /* ASCDocumentsViewController+Menu.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ASCDocumentsViewController+Menu.swift"; sourceTree = "<group>"; };
 		FCECDDCD264309D7006CD7B9 /* ASCPasswordRecoveryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASCPasswordRecoveryViewController.swift; sourceTree = "<group>"; };
@@ -2087,7 +2077,10 @@
 		FC28F2C21E8D12BE00A8F985 /* CreateEntity */ = {
 			isa = PBXGroup;
 			children = (
-				FCA74FF822BB7D6B00991682 /* Views */,
+				FCE835172A84CAF100EFA839 /* Controllers */,
+				FCE835012A84CAF100EFA839 /* Enums */,
+				FCE834FF2A84CAF100EFA839 /* Models */,
+				FCE835032A84CAF100EFA839 /* Views */,
 				FC28F2C31E8D131800A8F985 /* ASCCreateEntity.swift */,
 			);
 			path = CreateEntity;
@@ -2579,15 +2572,6 @@
 			path = Documents;
 			sourceTree = "<group>";
 		};
-		FCA74FF822BB7D6B00991682 /* Views */ = {
-			isa = PBXGroup;
-			children = (
-				FCA7501022BBD65A00991682 /* ASCCreateEntityView.swift */,
-				FC68626622E84DDE00AD03D2 /* ASCCreateEntityView.xib */,
-			);
-			path = Views;
-			sourceTree = "<group>";
-		};
 		FCAE8B891E71671C004FC332 /* Models */ = {
 			isa = PBXGroup;
 			children = (
@@ -2788,6 +2772,38 @@
 			name = CreatePortal;
 			path = Documents/Code/Controllers/CreatePortal;
 			sourceTree = SOURCE_ROOT;
+		};
+		FCE834FF2A84CAF100EFA839 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				FCE835002A84CAF100EFA839 /* CreateEntityViewModel.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		FCE835012A84CAF100EFA839 /* Enums */ = {
+			isa = PBXGroup;
+			children = (
+				FCE835022A84CAF100EFA839 /* CreateEntityUIType.swift */,
+			);
+			path = Enums;
+			sourceTree = "<group>";
+		};
+		FCE835032A84CAF100EFA839 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				FCE835152A84CAF100EFA839 /* ASCCreateEntityUI.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		FCE835172A84CAF100EFA839 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				FCE835182A84CAF100EFA839 /* ASCCreateEntityUIViewController.swift */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
 		};
 		FCECDDCC264309D7006CD7B9 /* PasswordRecover */ = {
 			isa = PBXGroup;
@@ -3114,7 +3130,6 @@
 				FC301A22230D6D4600DC25CA /* ASCFolderCell.xib in Resources */,
 				FCFDAA9B1E48A10C007A240C /* LaunchScreen.storyboard in Resources */,
 				FC301A26230D6F1F00DC25CA /* ASCFileCell.xib in Resources */,
-				FC68626422E84DDE00AD03D2 /* ASCCreateEntityView.xib in Resources */,
 				FC4D0A1D2494F5EA001EF1B5 /* Debug.storyboard in Resources */,
 				FCECDDF12643DF1B006CD7B9 /* Documents-InfoPlist.strings in Resources */,
 				FCFDAA981E48A10C007A240C /* Images.xcassets in Resources */,
@@ -3620,6 +3635,7 @@
 				FCF694C92632C9A600808644 /* ASCButtonStyle.swift in Sources */,
 				1D14AAD826962EE2009E48AD /* ASCSharingSettingsAccessPresentationProvider.swift in Sources */,
 				1D14AACF26962BF7009E48AD /* ASCSharingSettingsAccessProvider.swift in Sources */,
+				FCE8351E2A84CAF100EFA839 /* ASCCreateEntityUI.swift in Sources */,
 				FCB4CE7329FAC5B5009C1E2E /* ASCMultiAccountScreenModel.swift in Sources */,
 				FC25B453284F67F70075D6C2 /* ASCSettingsNotificationCell.swift in Sources */,
 				FC41D80A2265DA5E00A155C2 /* ASCFolderType.swift in Sources */,
@@ -3699,6 +3715,7 @@
 				FC65B18021F9AF5300AD5114 /* ASCEntityItemProvider.swift in Sources */,
 				FC65B6B61EB9F23800AE73BB /* ASCDocumentService.swift in Sources */,
 				F377689827D273B20044EDA6 /* ASCNextCloudConnectStorageDelegate.swift in Sources */,
+				FCE8351A2A84CAF100EFA839 /* CreateEntityUIType.swift in Sources */,
 				1D81EBA92811AB7000EDFB86 /* DropBoxRequestInterceptor.swift in Sources */,
 				FCC64FEB291D1576004D9A47 /* ASCSharingInviteRightHoldersTableViewDataSourceAndDelegate.swift in Sources */,
 				1D14AAD626962E6F009E48AD /* ASCSharingSettingsAccessTableProvider.swift in Sources */,
@@ -3754,6 +3771,7 @@
 				FC41D7FF2265CFA600A155C2 /* UITextField+Extensions.swift in Sources */,
 				FCEBA72028B3ADBB0009D50B /* ASCDocumentsViewController+Menu.swift in Sources */,
 				FCDB31A81E7C116E00907FC0 /* ASCConstants.swift in Sources */,
+				FCE8351F2A84CAF100EFA839 /* ASCCreateEntityUIViewController.swift in Sources */,
 				1D2E3B8F26BB2A7400BEBE9D /* ASCSharingSettingsAccessForUserOrGroupNotesProvider.swift in Sources */,
 				1D9B807E2673EBEC0020B5ED /* ASCSwitchRowViewModel.swift in Sources */,
 				FC8540C41E83A582000C2436 /* ASCProgressAlert.swift in Sources */,
@@ -3818,6 +3836,7 @@
 				FC0946B0249776D4005D54E6 /* ASCLogger.swift in Sources */,
 				1D8DF02F2639B6B10054B2F9 /* ASCOneDriveProvider.swift in Sources */,
 				FC301A29230D70B500DC25CA /* ASCLoaderCell.swift in Sources */,
+				FCE835192A84CAF100EFA839 /* CreateEntityViewModel.swift in Sources */,
 				1D2E3B8A26BB290700BEBE9D /* ASCSharingSettingsAccessNotesProviderProtocol.swift in Sources */,
 				FCE18669262AB4AB0086D21B /* Segues.swift in Sources */,
 				1D14AAE426976E19009E48AD /* ASCSharingAddRightHoldersView.swift in Sources */,
@@ -3911,7 +3930,6 @@
 				1DEB9976274E46480071C1DB /* ASCShareSettingsAPIWorkerFactory.swift in Sources */,
 				FC4D0A242494F8B2001EF1B5 /* ASCLogIntercepter.swift in Sources */,
 				FC82827F21C3CC01005AF726 /* ASCDeviceSplitViewController.swift in Sources */,
-				FCA7501122BBD65A00991682 /* ASCCreateEntityView.swift in Sources */,
 				1DCCEC05268CC6A700692167 /* ASCSharingOptionsSectionProtocol.swift in Sources */,
 				FC6D9A512355CDC100A970C6 /* ASCDropboxProvider.swift in Sources */,
 				FC7E457729226A35006C4CA1 /* ASCRoomType.swift in Sources */,
@@ -4016,28 +4034,6 @@
 				FC8A5B7E2A41E35600998EB6 /* si */,
 			);
 			name = PasscodeLockView.xib;
-			sourceTree = "<group>";
-		};
-		FC68626622E84DDE00AD03D2 /* ASCCreateEntityView.xib */ = {
-			isa = PBXVariantGroup;
-			children = (
-				FC68626522E84DDE00AD03D2 /* Base */,
-				FC68626822E84DE700AD03D2 /* bg */,
-				FC68626A22E84DF800AD03D2 /* cs */,
-				FC68626C22E84DF800AD03D2 /* es */,
-				FC68626E22E84DFA00AD03D2 /* de */,
-				FC68627022E84E0000AD03D2 /* fr */,
-				FC68627222E84E1500AD03D2 /* ru */,
-				FC68627422E84E1800AD03D2 /* en */,
-				FCE6246F26F874A200EFAE7C /* it */,
-				FCE6247F26F874B300EFAE7C /* pt-BR */,
-				FC6E84D22775CDE700028965 /* ja */,
-				FC6E84E12775CE0300028965 /* zh-Hans */,
-				FC09999028195EF10063BB08 /* zh-Hant */,
-				FC7DC8D82860B2D800E61C69 /* hy-AM */,
-				FC8A5B7D2A41E35600998EB6 /* si */,
-			);
-			name = ASCCreateEntityView.xib;
 			sourceTree = "<group>";
 		};
 		FC786FBE1EB8771700181D62 /* Intro.storyboard */ = {

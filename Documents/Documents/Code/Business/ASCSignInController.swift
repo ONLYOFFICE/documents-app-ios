@@ -215,6 +215,17 @@ class ASCSignInController {
                                     completion?(true)
                                 } else {
                                     lastError = NetworkingError.apiError(error: OnlyofficeServerError.unauthorized)
+
+                                    if let error = error as? NetworkingError {
+                                        switch error {
+                                        case let .apiError(error):
+                                            if let onlyofficeError = error as? OnlyofficeServerError {
+                                                lastError = NetworkingError.apiError(error: onlyofficeError)
+                                            }
+                                        default:
+                                            break
+                                        }
+                                    }
                                 }
                             }
                         }

@@ -28,6 +28,7 @@ internal enum Asset {
     internal static let action = ColorAsset(name: "action")
     internal static let badge = ColorAsset(name: "badge")
     internal static let brend = ColorAsset(name: "brend")
+    internal static let createPanel = ColorAsset(name: "create-panel")
     internal static let debug = ColorAsset(name: "debug")
     internal static let documentEditor = ColorAsset(name: "document-editor")
     internal static let filterCapsule = ColorAsset(name: "filter-capsule")

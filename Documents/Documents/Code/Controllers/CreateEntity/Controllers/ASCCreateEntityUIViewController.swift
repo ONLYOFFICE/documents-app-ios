@@ -25,10 +25,6 @@ class ASCCreateEntityUIViewController: UIHostingController<ASCCreateEntityUI> {
                 onAction: .constant(onAction)
             )
         )
-        view?.backgroundColor = .systemGroupedBackground
+        view?.backgroundColor = Asset.Colors.createPanel.color
     }
-//
-//    func setAllowClouds(_ allow: Bool) {
-//        rootView.allowClouds = allow
-//    }
 }

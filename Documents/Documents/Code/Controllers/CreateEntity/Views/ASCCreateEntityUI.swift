@@ -134,7 +134,7 @@ struct ASCCreateEntityUI: View {
             .cornerRadius(14)
             .padding([.leading, .trailing, .bottom], 16)
         }
-        .background(Color(UIColor.systemGroupedBackground))
+        .background(Color(Asset.Colors.createPanel.color))
     }
 }
 
@@ -171,6 +171,7 @@ struct CreateEntityButtonStyle: ButtonStyle {
         VStack(alignment: .leading, spacing: 0) {
             HStack {
                 configuration.label
+                    .font(Font(UIFont.preferredFont(forTextStyle: .body)))
                     .lineLimit(1)
                     .minimumScaleFactor(0.5)
                     .padding(16)

@@ -18,15 +18,11 @@ extension ASCEditorManager: ASCEditorManagerProtocol {
 
     // MARK: - Methods
 
-    func localEditor(config: [String: Any]) -> [String: Any] {
-        return config
-    }
-
-    func cloudEditor(config: [String: Any]) -> [String: Any] {
-        return config
-    }
-
     func localEditor(config: EditorConfiguration) -> EditorConfiguration {
+        return config
+    }
+
+    func cloudEditor(config: EditorConfiguration) -> EditorConfiguration {
         return config
     }
 }

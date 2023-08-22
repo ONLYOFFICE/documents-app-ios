@@ -12,7 +12,6 @@ import Foundation
 protocol ASCEditorManagerProtocol {
     var allowForm: Bool { get }
 
-    func localEditor(config: [String: Any]) -> [String: Any]
-    func cloudEditor(config: [String: Any]) -> [String: Any]
     func localEditor(config: EditorConfiguration) -> EditorConfiguration
+    func cloudEditor(config: EditorConfiguration) -> EditorConfiguration
 }

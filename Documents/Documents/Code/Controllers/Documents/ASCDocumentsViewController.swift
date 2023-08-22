@@ -1644,87 +1644,85 @@ class ASCDocumentsViewController: ASCBaseTableViewController, UIGestureRecognize
 
     func checkUnsuccessfullyOpenedFile() {
         ASCEditorManager.shared.checkUnsuccessfullyOpenedFile(parent: self)
-        return
-
-        if let documentInfo = UserDefaults.standard.object(forKey: ASCConstants.SettingsKeys.openedDocumentConfiguration) as? [String: Any] {
-            if let file = ASCFile(JSONString: documentInfo["file"] as! String) {
-                if !UserDefaults.standard.bool(forKey: ASCConstants.SettingsKeys.openedDocumentModified) {
-                    UserDefaults.standard.removeObject(forKey: ASCConstants.SettingsKeys.openedDocumentModified)
-                    UserDefaults.standard.removeObject(forKey: ASCConstants.SettingsKeys.openedDocumentConfiguration)
-
-                    ASCLocalFileHelper.shared.removeDirectory(Path.userTemporary + file.title)
-
-                    return
-                }
-
-                // Force reset open recover version
-                UserDefaults.standard.removeObject(forKey: ASCConstants.SettingsKeys.openedDocumentModified)
-
-                let closeHandler = closeProgress(
-                    file: file,
-                    title: NSLocalizedString("Saving", comment: "Caption of the processing")
-                )
-
-                var forceCancel = false
-                let progressAlert = ASCProgressAlert(
-                    title: NSLocalizedString("Restoring", comment: "Caption of the processing") + "...",
-                    message: nil,
-                    handler: { cancel in
-                        forceCancel = cancel
-                    }
-                )
-
-                progressAlert.show()
-
-                let fullTime = 3.0
-                let interval = 0.01
-
-                var deadTime = 0.0
-                var timer: Timer!
-
-                timer = Timer.scheduledTimer(timeInterval: interval, target: BlockOperation(block: { [weak self] in
-                    if forceCancel {
-                        timer.invalidate()
-
-                        UserDefaults.standard.removeObject(forKey: ASCConstants.SettingsKeys.openedDocumentConfiguration)
-                        ASCLocalFileHelper.shared.removeDirectory(Path.userTemporary + file.title)
-                    } else {
-                        deadTime += interval
-                        progressAlert.progress = Float(deadTime / fullTime)
-
-                        if deadTime >= fullTime {
-                            timer.invalidate()
-
-                            progressAlert.hide(completion: {
-                                if file.device {
-                                    let locallyEditing = documentInfo["locallyEditing"] as? Bool ?? false
-
-                                    if locallyEditing {
-                                        // Switch category to 'On Device'
-                                        ASCViewControllerManager.shared.rootController?.display(provider: ASCFileManager.localProvider, folder: nil)
-                                    } else {
-                                        let localeId = file.id.substring(from: Path.userDocuments.rawValue.length)
-                                        file.id = (Path.userDocuments + localeId).rawValue
-                                    }
-
-                                    ASCEditorManager.shared.openEditorLocalCopy(
-                                        file: file,
-                                        openMode: .edit,
-                                        canEdit: true,
-                                        autosave: true,
-                                        locallyEditing: locallyEditing,
-                                        handler: nil,
-                                        closeHandler: closeHandler
-                                    )
-                                } else {
-                                    self?.provider?.open(file: file, openMode: .edit, canEdit: true)
-                                }
-                            })
-                        }
-                    }
-                }), selector: #selector(Operation.main), userInfo: nil, repeats: true)
-            }
-        }
+        //        if let documentInfo = UserDefaults.standard.object(forKey: ASCConstants.SettingsKeys.openedDocumentConfiguration) as? [String: Any] {
+//            if let file = ASCFile(JSONString: documentInfo["file"] as! String) {
+//                if !UserDefaults.standard.bool(forKey: ASCConstants.SettingsKeys.openedDocumentModified) {
+//                    UserDefaults.standard.removeObject(forKey: ASCConstants.SettingsKeys.openedDocumentModified)
+//                    UserDefaults.standard.removeObject(forKey: ASCConstants.SettingsKeys.openedDocumentConfiguration)
+//
+//                    ASCLocalFileHelper.shared.removeDirectory(Path.userTemporary + file.title)
+//
+//                    return
+//                }
+//
+//                // Force reset open recover version
+//                UserDefaults.standard.removeObject(forKey: ASCConstants.SettingsKeys.openedDocumentModified)
+//
+//                let closeHandler = closeProgress(
+//                    file: file,
+//                    title: NSLocalizedString("Saving", comment: "Caption of the processing")
+//                )
+//
+//                var forceCancel = false
+//                let progressAlert = ASCProgressAlert(
+//                    title: NSLocalizedString("Restoring", comment: "Caption of the processing") + "...",
+//                    message: nil,
+//                    handler: { cancel in
+//                        forceCancel = cancel
+//                    }
+//                )
+//
+//                progressAlert.show()
+//
+//                let fullTime = 3.0
+//                let interval = 0.01
+//
+//                var deadTime = 0.0
+//                var timer: Timer!
+//
+//                timer = Timer.scheduledTimer(timeInterval: interval, target: BlockOperation(block: { [weak self] in
+//                    if forceCancel {
+//                        timer.invalidate()
+//
+//                        UserDefaults.standard.removeObject(forKey: ASCConstants.SettingsKeys.openedDocumentConfiguration)
+//                        ASCLocalFileHelper.shared.removeDirectory(Path.userTemporary + file.title)
+//                    } else {
+//                        deadTime += interval
+//                        progressAlert.progress = Float(deadTime / fullTime)
+//
+//                        if deadTime >= fullTime {
+//                            timer.invalidate()
+//
+//                            progressAlert.hide(completion: {
+//                                if file.device {
+//                                    let locallyEditing = documentInfo["locallyEditing"] as? Bool ?? false
+//
+//                                    if locallyEditing {
+//                                        // Switch category to 'On Device'
+//                                        ASCViewControllerManager.shared.rootController?.display(provider: ASCFileManager.localProvider, folder: nil)
+//                                    } else {
+//                                        let localeId = file.id.substring(from: Path.userDocuments.rawValue.length)
+//                                        file.id = (Path.userDocuments + localeId).rawValue
+//                                    }
+//
+//                                    ASCEditorManager.shared.openEditorLocalCopy(
+//                                        file: file,
+//                                        openMode: .edit,
+//                                        canEdit: true,
+//                                        autosave: true,
+//                                        locallyEditing: locallyEditing,
+//                                        handler: nil,
+//                                        closeHandler: closeHandler
+//                                    )
+//                                } else {
+//                                    self?.provider?.open(file: file, openMode: .edit, canEdit: true)
+//                                }
+//                            })
+//                        }
+//                    }
+//                }), selector: #selector(Operation.main), userInfo: nil, repeats: true)
+//            }
+//        }
     }
 
     // MARK: - Entity actions
@@ -3260,10 +3258,10 @@ extension ASCDocumentsViewController: ASCProviderDelegate {
                 openingAlert.hide()
 
                 if status == .error {
-                    guard let strongSelf = self else { return }
+                    guard let self else { return }
 
                     UIAlertController.showError(
-                        in: strongSelf,
+                        in: self,
                         message: error?.localizedDescription ?? NSLocalizedString("Could not open file.", comment: "")
                     )
                 }

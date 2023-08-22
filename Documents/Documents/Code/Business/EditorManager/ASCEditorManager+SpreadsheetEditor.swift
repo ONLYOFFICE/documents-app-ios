@@ -49,14 +49,14 @@ extension ASCEditorManager {
             viewMode: openMode == .view || !UIDevice.allowEditor,
             newDocument: openMode == .create,
             date: file.updated ?? Date(),
-            userId: UIDevice.current.identifierForVendor?.uuidString ?? UUID().uuidString,
-            userName: file.updatedBy?.displayName ?? (
-                UIDevice.current.name.count > 0
-                    ? UIDevice.current.name
-                    : NSLocalizedString("Me", comment: "If current user name is not set")
+            user: EditorUserConfiguration(
+                id: UIDevice.current.identifierForVendor?.uuidString ?? UUID().uuidString,
+                displayName: file.updatedBy?.displayName ?? (
+                    UIDevice.current.name.count > 0
+                        ? UIDevice.current.name
+                        : NSLocalizedString("Me", comment: "If current user name is not set")
+                )
             ),
-//                "autosave": true,
-//                "file": file.toJSONString()!,
             appFonts: editorFontsPaths,
             dataFontsPath: dataFontsPath,
             license: licensePath,

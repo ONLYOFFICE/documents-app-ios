@@ -57,7 +57,6 @@ class ASCConstants {
         static let forceCreateNewSpreadsheet = "asc-shortcut-new-spreadsheet"
         static let forceCreateNewPresentation = "asc-shortcut-new-presentation"
         static let openedDocumentFile = "asc-opened-document-file"
-        static let openedDocumentConfiguration = "asc-opened-document-configuration"
         static let openedDocumentModified = "asc-opened-document-modified"
         static let pushAllow = "asc-push-allow"
         static let pushDeviceToken = "asc-push-device-token"

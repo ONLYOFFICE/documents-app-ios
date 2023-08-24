@@ -76,6 +76,12 @@
 /* No comment provided by engineer. */
 "Account name is not valid" = "Der Kontoname ist ungültig";
 
+/* No comment provided by engineer. */
+"Accounts" = "Konten";
+
+/* No comment provided by engineer. */
+"Add account" = "Konto hinzufügen";
+
 /* Sharing settings add notification message */
 "Add message" = "Nachricht hinzufügen";
 
@@ -89,6 +95,9 @@
 "Address is empty" = "Das Feld Adresse ist leer";
 
 /* No comment provided by engineer. */
+"Admin" = "Admin";
+
+/* No comment provided by engineer. */
 "All" = "Alle";
 
 /* No comment provided by engineer. */
@@ -96,6 +105,9 @@
 
 /* Category title */
 "All Files" = "Alle Dateien";
+
+/* No comment provided by engineer. */
+"All items from Archived will be deleted forever. You won’t be able to restore them." = "Alle Objekte aus Archiviert werden endgültig gelöscht. Sie können sie nicht mehr wiederherstellen.";
 
 /* No comment provided by engineer. */
 "All notifications" = "Alle Benachrichtigungen";
@@ -125,7 +137,7 @@
 "Archiving failed." = "Die Archivierung ist fehlgeschlagen.";
 
 /* No comment provided by engineer. */
-"Are you sure you want to delete the account %@ from this device?" = "Sind Sie sicher, dass Sie das Konto %@ von diesem Gerät löschen möchten?";
+"Are you sure you want to delete the account  %@ from this devce?" = "Sind Sie sicher, dass Sie das Konto %@ von diesem Gerät löschen möchten?";
 
 /* No comment provided by engineer. */
 "Are you sure you want to leave this account?" = "Sind Sie sicher, dass Sie dieses Konto verlassen möchten?";
@@ -135,6 +147,12 @@
 
 /* No comment provided by engineer. */
 "Back" = "Zurück";
+
+/* No comment provided by engineer. */
+"Being an owner of this DocSpace, you must transfer the ownership to another user before you can delete your account. Please choose a new owner to proceed." = "Als Besitzer dieses DocSpace müssen Sie den Besitz an einen anderen Benutzer übertragen, bevor Sie Ihr Konto löschen können. Bitte wählen Sie einen neuen Eigentümer aus, um fortzufahren.";
+
+/* No comment provided by engineer. */
+"Being an owner of this portal, you must transfer the ownership to another user before you can delete your account. Please choose a new owner to proceed." = "Als Eigentümer dieses Portals müssen Sie die Eigentümerschaft an einen anderen Benutzer übertragen, bevor Sie Ihr Konto löschen können. Bitte wählen Sie einen neuen Eigentümer aus, um fortzufahren.";
 
 /* No comment provided by engineer. */
 "Box" = "Box";
@@ -171,6 +189,9 @@
 
 /* No comment provided by engineer. */
 "Cancel invitation?" = "Einladung stornieren?";
+
+/* No comment provided by engineer. */
+"Change owner" = "Besitzer ändern";
 
 /* No comment provided by engineer. */
 "Check your internet connection" = "Bitte überprüfen Sie Ihre Internetverbindung";
@@ -215,7 +236,7 @@
 "Collaboration" = "Zusammenarbeit";
 
 /* Share status */
-"Comment" = "Kommentar";
+"Commentator" = "Kommentator";
 
 /* Category title */
 "Common Documents" = "Gemeinsame Dokumente";
@@ -356,6 +377,9 @@
 "Couldn't open file" = "Die Datei konnte nicht geöffnet werden";
 
 /* No comment provided by engineer. */
+"Couldn't save changes at server. Your modified document is saved in local storage as %@" = "Die Änderungen konnten nicht auf dem Server gespeichert werden. Ihr geändertes Dokument ist im lokalen Speicher als %@ gespeichert.";
+
+/* No comment provided by engineer. */
 "Create" = "Erstellen";
 
 /* Introduction Step Two - Description */
@@ -374,6 +398,9 @@
 "Custom filter" = "Benutzerdefinierter Filter";
 
 /* No comment provided by engineer. */
+"Dark" = "Dunkel";
+
+/* No comment provided by engineer. */
 "Date" = "Datum";
 
 /* Button title */
@@ -388,14 +415,17 @@
 /* No comment provided by engineer. */
 "Delete %lu Folder and %lu File" = "%1$lu Ordner und %2$lu Datei löschen";
 
-/* No comment provided by engineer. */
-"Delete account" = "Konto löschen";
-
 /* Button title */
 "Delete File" = "Datei löschen";
 
 /* No comment provided by engineer. */
 "Delete Folder" = "Ordner löschen";
+
+/* No comment provided by engineer. */
+"Delete forever" = "Endgültig löschen";
+
+/* No comment provided by engineer. */
+"Delete from device" = "Vom Gerät löschen";
 
 /* Caption of the processing */
 "Deleting" = "Wird gelöscht";
@@ -594,7 +624,13 @@
 "Folders" = "Ordner";
 
 /* Share status */
-"Form filling" = "Ausfüllen von Formularen";
+"Form Filler" = "Formularausfüller";
+
+/* No comment provided by engineer. */
+"Form templates" = "Formularvorlagen";
+
+/* No comment provided by engineer. */
+"Forms" = "Formulare";
 
 /* Share status */
 "Full Access" = "Vollständiger Zugriff";
@@ -684,6 +720,9 @@
 "Last name is incorrect" = "Nachname ist falsch";
 
 /* No comment provided by engineer. */
+"Light" = "Hell";
+
+/* No comment provided by engineer. */
 "Link copied\nto the clipboard" = "Der Link wurde\nin die Zwischenablage kopiert";
 
 /* No comment provided by engineer. */
@@ -717,7 +756,8 @@
 /* Data units */
 "Mb" = "Mb";
 
-/* If current user name is not set */
+/* Author or member of a document
+   If current user name is not set */
 "Me" = "Ich";
 
 /* No comment provided by engineer. */
@@ -977,6 +1017,9 @@
 /* No comment provided by engineer. */
 "Portal is unavailable." = "Das Portal ist nicht verfügbar.";
 
+/* Share status */
+"Pover user" = "Power-Benutzer";
+
 /* No comment provided by engineer. */
 "Presentation" = "Präsentation";
 
@@ -995,6 +1038,9 @@
 /* Caption of the processing */
 "Processing" = "Wird verarbeitet";
 
+/* No comment provided by engineer. */
+"Profile" = "Profil";
+
 /* Category title */
 "Project Documents" = "Projektdokumente";
 
@@ -1003,9 +1049,6 @@
 
 /* No comment provided by engineer. */
 "Push notifications disabled" = "Push-Benachrichtigungen deaktiviert";
-
-/* Share status */
-"Read Only" = "Schreibgeschützt";
 
 /* Button title */
 "Recover here" = "Hier wiederherstellen";
@@ -1056,13 +1099,16 @@
 "Restoring" = "Wird wiederhergestellt";
 
 /* Share status */
-"Review" = "Überprüfen";
+"Reviewer" = "Überprüfer";
 
 /* Share status */
 "Room admin" = "Admin des Raums";
 
 /* DocSpace rooms */
 "Rooms" = "Räume";
+
+/* No comment provided by engineer. */
+"Same as system" = "Wie im System";
 
 /* Caption of the processing */
 "Saving" = "Wird gespeichert";
@@ -1151,6 +1197,9 @@
 
 /* No comment provided by engineer. */
 "Show notifications" = "Benachrichtigungen anzeigen";
+
+/* No comment provided by engineer. */
+"Sign in" = "Anmelden";
 
 /* No comment provided by engineer. */
 "Single Sign-on" = "Einmalige Anmeldung";
@@ -1271,6 +1320,9 @@
 
 /* No comment provided by engineer. */
 "The user limit has been reached. Сontact the portal administrator" = "Die Benutzeranzahl wurde erreicht. Kontaktieren Sie den Administrator des Portals";
+
+/* No comment provided by engineer. */
+"Theme" = "Thema";
 
 /* No comment provided by engineer. */
 "Third party resource" = "Ressource von Dritten";
@@ -1399,6 +1451,9 @@
 "Unpinned failed." = "Entpinnen ist fehlgeschlagen.";
 
 /* Caption of the processing */
+"Unpinning" = "Entrinnen";
+
+/* Caption of the processing */
 "Unpning" = "Entrinnen";
 
 /* No comment provided by engineer. */
@@ -1412,6 +1467,9 @@
 
 /* Button title */
 "Use Touch ID" = "Touch-ID verwenden";
+
+/* No comment provided by engineer. */
+"User" = "Benutzer";
 
 /* No comment provided by engineer. */
 "User authentication failed" = "Benutzerauthentifizierung fehlgeschlagen";
@@ -1438,7 +1496,10 @@
 "Version" = "Version";
 
 /* No comment provided by engineer. */
-"View-Only" = "Schreibgeschützt";
+"View-only" = "Schreibgeschützt";
+
+/* Share status */
+"Viewer" = "Betrachter";
 
 /* No comment provided by engineer. */
 "Warning" = "Warnung";

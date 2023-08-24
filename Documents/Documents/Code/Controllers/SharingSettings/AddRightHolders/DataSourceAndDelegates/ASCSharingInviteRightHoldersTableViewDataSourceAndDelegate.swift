@@ -53,6 +53,7 @@ class ASCSharingInviteRightHoldersTableViewDataSourceAndDelegate<T: UITableViewC
         } else {
             let cell = UITableViewCell()
             cell.textLabel?.text = NSLocalizedString("Invite people by email", comment: "")
+            cell.textLabel?.numberOfLines = 0
             cell.accessoryType = .disclosureIndicator
             return cell
         }

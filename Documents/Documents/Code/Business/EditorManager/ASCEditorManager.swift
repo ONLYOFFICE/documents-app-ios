@@ -444,70 +444,6 @@ class ASCEditorManager: NSObject {
         }
     }
 
-//    func editOnlineFileLocallyLegacy(_ file: ASCFile, openMode: ASCDocumentOpenMode, canEdit: Bool) {
-//        var cancel = false
-//
-//        openHandler?(.begin, 0.15, nil, &cancel)
-//
-//        convertToEdit(file: file, processing: { status, progress, error, resultPath in
-//            if cancel {
-//                self.openHandler?(.end, 1, nil, &cancel)
-//                return
-//            }
-//
-//            log.info("Local file convertering. Status: \(status)")
-//            self.openHandler?(.progress, 0.15 + progress * 0.75, error, &cancel)
-//
-//            if status == .end {
-//                if cancel {
-//                    self.openHandler?(.end, 1, nil, &cancel)
-//                    return
-//                }
-//
-//                let editorOpenHandler: ASCEditorManagerOpenHandler = { status, progress, error, cancel in
-//                    log.info("Local file open editor. Status: \(status), progress: \(progress), error: \(String(describing: error))")
-//                }
-//
-//                self.openEditorLocalLegacy(
-//                    file: file,
-//                    openMode: openMode,
-//                    canEdit: canEdit,
-//                    locallyEditing: true,
-//                    handler: editorOpenHandler
-//                )
-//
-//                self.openHandler?(.end, 1, nil, &cancel)
-//            } else if status == .error {
-//                self.openHandler?(.error, 1, error, &cancel)
-//            } else if status == .silentError {
-//                self.openHandler?(.silentError, 1, error, &cancel)
-//            }
-//        })
-//    }
-//
-//    func openEditorLocalCopy(
-//        file: ASCFile,
-//        openMode: ASCDocumentOpenMode = .edit,
-//        canEdit: Bool = true,
-//        autosave: Bool = false,
-//        locallyEditing: Bool = false,
-//        handler: ASCEditorManagerOpenHandler? = nil,
-//        closeHandler: ASCEditorManagerCloseHandler? = nil,
-//        renameHandler: ASCEditorManagerRenameHandler? = nil
-//    ) {
-//        self.closeHandler = closeHandler
-//        self.renameHandler = renameHandler
-//
-//        openEditorLocalLegacy(
-//            file: file,
-//            openMode: openMode,
-//            canEdit: canEdit,
-//            autosave: autosave,
-//            locallyEditing: locallyEditing,
-//            handler: handler
-//        )
-//    }
-
     // MARK: - Public
 
     func editLocal(
@@ -537,45 +473,6 @@ class ASCEditorManager: NSObject {
             canEdit: canEdit,
             autosave: true
         )
-
-//
-//
-//        convertToEdit(file: file, processing: { status, progress, error, resultPath in
-//            if cancel {
-//                openHandler?(.end, 1, nil, &cancel)
-//                return
-//            }
-//
-//            log.info("Local file convertering. Status: \(status)")
-//            openHandler?(.progress, progress, error, &cancel)
-//
-//            if status == .end {
-//                if cancel {
-//                    openHandler?(.end, 1, nil, &cancel)
-//                    return
-//                }
-//
-//                let editorOpenHandler: ASCEditorManagerOpenHandler = { status, progress, error, cancel in
-//                    log.info("Local file open editor. Status: \(status), progress: \(progress), error: \(String(describing: error))")
-//                }
-//
-//                self.closeHandler = closeHandler
-//                self.renameHandler = renameHandler
-//
-//                self.openEditorLocalLegacy(
-//                    file: file,
-//                    openMode: openMode,
-//                    canEdit: canEdit,
-//                    handler: editorOpenHandler
-//                )
-//
-//                openHandler?(.end, 1, nil, &cancel)
-//            } else if status == .error {
-//                openHandler?(.error, 1, error, &cancel)
-//            } else if status == .silentError {
-//                openHandler?(.silentError, 1, error, &cancel)
-//            }
-//        })
     }
 
     func editCloud(
@@ -595,50 +492,6 @@ class ASCEditorManager: NSObject {
         self.shareHandler = nil
         self.renameHandler = nil
         documentPermissions = nil
-
-//        var config =
-//        var documentInfo: [String: Any] = [
-//            "title": file.title,
-//            "date": file.created!,
-//            "author": file.createdBy?.displayName ?? "",
-//            "viewMode": openMode == .view || !sdkCheck || !UIDevice.allowEditor,
-//            "newDocument": openMode == .create,
-//            "coauthoring": true,
-//            "docUserId": userId,
-//            "docUserName": userName,
-//            "docUserFirstName": firstName,
-//            "docUserLastName": lastName,
-//            "docKey": documentKeyForTrack ?? "",
-//            "docURL": documentURLForTrack ?? "",
-//            "docService": documentServiceURL ?? "",
-//            "documentToken": documentToken ?? "",
-//            "documentPermissions": documentPermissions ?? "",
-//            "documentCommonConfig": documentCommonConfig ?? "",
-//            "file": file.toJSONString()!,
-//            "sdkCheck": sdkCheck,
-//            "appFonts": editorFontsPaths,
-//            "dataFontsPath": dataFontsPath,
-//            "supportShare": file.access == .readWrite || file.access == .none,
-//            "license": licensePath,
-//        ]
-//
-//        /// Enabling the Favorite function only on portals version 11 and higher
-//        /// and not DocSpace
-//        if let communityServerVersion = OnlyofficeApiClient.shared.serverVersion?.community,
-//           communityServerVersion.isVersion(greaterThanOrEqualTo: "11.0"),
-//           protalType != .docSpace
-//        {
-//            documentInfo["favorite"] = file.isFavorite && !user.isVisitor
-//            documentInfo["denyDownload"] = file.denyDownload
-//        }
-//
-//        /// Turn off share from editors for the DocSpace
-//        if protalType == .docSpace {
-//            documentInfo["supportShare"] = false
-//        }
-//
-//        documentInfo = cloudEditor(config: documentInfo)
-//
 
         let fetchAndOpen = { [weak self] in
             guard let self else { return }
@@ -1257,55 +1110,6 @@ extension ASCEditorManager {
         private func prepareFonts() {
             log.info("Prepare application fonts cache is not supported")
         }
-
-//        /// Open local file
-//        /// - Parameters:
-//        ///   - file: The file object located on the device
-//        ///   - viewMode: Open in preview mode
-//        ///   - autosave: Autosave
-//        ///   - locallyEditing: Local editing of an external file
-//        ///   - handler: File open process handler
-//        func openEditorLocalLegacy(
-//            file: ASCFile,
-//            openMode: ASCDocumentOpenMode = .edit,
-//            canEdit: Bool = true,
-//            autosave: Bool = false,
-//            locallyEditing: Bool = false,
-//            handler: ASCEditorManagerOpenHandler? = nil
-//        ) {
-//            var cancel = false
-//            handler?(.error, 1, ASCEditorManagerError(
-//                msg: NSLocalizedString("The ONLYOFFICE Editors module is missing. Please contact support@onlyoffice.com for more information.", comment: "")), &cancel)
-//        }
-//
-//        /// Open file from Document Server in collaboration mode
-//        /// - Parameters:
-//        ///   - file: The file object
-//        ///   - openMode: Force open in mode
-//        ///   - handler: File open process handler
-//        func openEditorInCollaborationLegacy(
-//            file: ASCFile,
-//            openMode: ASCDocumentOpenMode = .edit,
-//            handler: ASCEditorManagerOpenHandler? = nil
-//        ) {
-//            var cancel = false
-//            handler?(.error, 1, ASCEditorManagerError(
-//                msg: NSLocalizedString("The ONLYOFFICE Editors module is missing. Please contact support@onlyoffice.com for more information.", comment: "")), &cancel)
-//        }
-
-//        /// Converting a file to an internal format for opening in an editor
-//        /// - Parameters:
-//        ///   - file: File object
-//        ///   - processing: File convertation process handler
-//        private func convertToEdit(file: ASCFile, processing: ASCFileManagerConverterHandler? = nil) {
-//            processing?(.error, 1, ASCEditorManagerError(msg: NSLocalizedString("The ONLYOFFICE Editors module is missing. Please contact support@onlyoffice.com for more information.", comment: "")), nil)
-//        }
-
-//        /// Version of local converter
-//        /// - Returns: Array of numbers of version
-//        func localSDKVersion() -> [String] {
-//            return ["0", "0", "0"]
-//        }
 
     #endif
 }

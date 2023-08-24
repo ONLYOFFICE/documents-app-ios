@@ -11,6 +11,22 @@ import MBProgressHUD
 import UIKit
 
 class ASCUserProfileViewController: UITableViewController {
+    enum Constants {
+        static var sectionInsets: CGFloat = 7
+    }
+
+    struct ViewModel {
+        let userName: String
+        let email: String
+        let portal: String
+        let avatarUrl: URL?
+        let userType: String
+
+        var onLogin: () -> Void
+
+        static let empty = ViewModel(userName: "-", email: "-", portal: "-", avatarUrl: nil, userType: "-", onLogin: {})
+    }
+
     // MARK: - Properties
 
     @IBOutlet var canvasView: UIView!
@@ -21,14 +37,26 @@ class ASCUserProfileViewController: UITableViewController {
     @IBOutlet var emailLabel: UILabel!
     @IBOutlet var logoutCell: UITableViewCell!
     @IBOutlet var deleteAccountCell: UITableViewCell!
+    @IBOutlet var profileTypeTitleLabel: UILabel!
+    @IBOutlet var profileTypeLabel: UILabel!
+    @IBOutlet var logoutCellLabel: UILabel!
 
-    let heightForHeaderInSection: CGFloat = 7
-    let heightForFooterInSection: CGFloat = 7
+    let heightForHeaderInSection: CGFloat = Constants.sectionInsets
+    let heightForFooterInSection: CGFloat = Constants.sectionInsets
+
+    lazy var viewModel: ViewModel = .empty
+
+    private var isUserTypeExists: Bool {
+        viewModel.userType == "" || viewModel.userType == "-" ? false : true
+    }
 
     // MARK: - Lifecycle Methods
 
     override func viewDidLoad() {
         super.viewDidLoad()
+
+        profileTypeLabel.isHidden = !isUserTypeExists
+        profileTypeTitleLabel.isHidden = !isUserTypeExists
 
         NotificationCenter.default.addObserver(
             self,
@@ -53,25 +81,11 @@ class ASCUserProfileViewController: UITableViewController {
             ? NSLocalizedString("Login", comment: "")
             : NSLocalizedString("Email", comment: "")
 
-        if let user = ASCFileManager.onlyofficeProvider?.user {
-            userNameLabel.text = user.displayName
-            portalLabel.text = OnlyofficeApiClient.shared.baseURL?.absoluteString
-            emailLabel.text = user.email
-
-            if let avatar = user.avatarRetina ?? user.avatar,
-               let avatarUrl = OnlyofficeApiClient.absoluteUrl(from: URL(string: avatar))
-            {
-                avatarView.kf.apiSetImage(with: avatarUrl,
-                                          placeholder: Asset.Images.avatarDefault.image)
-            } else {
-                avatarView.image = Asset.Images.avatarDefault.image
-            }
-        } else {
-            userNameLabel.text = "-"
-            portalLabel.text = "-"
-            emailLabel.text = "-"
-            avatarView.image = Asset.Images.avatarDefault.image
-        }
+        userNameLabel.text = viewModel.userName
+        portalLabel.text = viewModel.portal
+        emailLabel.text = viewModel.email
+        profileTypeLabel.text = viewModel.userType
+        avatarView.kf.apiSetImage(with: viewModel.avatarUrl, placeholder: Asset.Images.avatarDefault.image)
     }
 
     deinit {
@@ -90,6 +104,11 @@ class ASCUserProfileViewController: UITableViewController {
         navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
         navigationController?.navigationBar.shadowImage = UIImage()
         navigationController?.navigationBar.isTranslucent = true
+
+        if !isCurrentUser() {
+            logoutCellLabel.text = NSLocalizedString("Sign in", comment: "")
+            logoutCellLabel.textColor = view.tintColor
+        }
 
         tableView.alwaysBounceVertical = false
     }
@@ -162,7 +181,11 @@ class ASCUserProfileViewController: UITableViewController {
 
         let cell = super.tableView(tableView, cellForRowAt: indexPath)
         if cell == logoutCell {
-            showLogoutAlert()
+            if !isCurrentUser() {
+                viewModel.onLogin()
+            } else {
+                showLogoutAlert()
+            }
         } else if cell == deleteAccountCell {
             showDeleteAccountAlert()
         }
@@ -192,42 +215,111 @@ class ASCUserProfileViewController: UITableViewController {
             hud.hide(animated: true, afterDelay: 2)
         }
 
-        dismiss(animated: true) {
-//            if let parent = self.presentingViewController {
-//                parent.viewWillAppear(false)
-//            }
-        }
-    }
-
-    private func showDeleteAccountAlert() {
-        guard let user = ASCFileManager.onlyofficeProvider?.user,
-              let email = user.email else { return }
-
-        let title = NSLocalizedString("Terminate account", comment: "")
-        let message = String(format: NSLocalizedString("Send the profile deletion instructions to the email address %@?", comment: ""), email)
-        let sendAlertAction = UIAlertAction(title: NSLocalizedString("Send", comment: ""),
-                                            style: .default)
-        { _ in
-            let hud = MBProgressHUD.showTopMost()
-            hud?.label.text = NSLocalizedString("Sending", comment: "")
-
-            self.deleteAccountMailRequest { result in
-                DispatchQueue.main.async {
-                    hud?.hide(animated: true)
-                    switch result {
-                    case .success:
-                        self.showSendAlert()
-                    case let .failure(errorMessage):
-                        print(errorMessage)
-                        self.showErrorAlert(message: errorMessage)
+        guard let navigationController = navigationController else {
+            if let presentingViewController = presentingViewController as? UINavigationController,
+               let splitVC = splitViewController as? ASCBaseSplitViewController
+            {
+                presentingViewController.dismiss(animated: true) {
+                    if #available(iOS 14.0, *) {
+                        splitVC.show(.primary)
+                    } else {
+                        let primaryVC = ASCMultiAccountsViewController()
+                        var viewControllers = splitVC.viewControllers
+                        viewControllers.insert(primaryVC, at: 0)
+                        splitVC.viewControllers = viewControllers
                     }
                 }
             }
+            return
         }
+        navigationController.popToRootViewController(animated: true)
+    }
 
-        let alertController = UIAlertController.alert(title, message: message, actions: [sendAlertAction])
-            .cancelable()
-        present(alertController, animated: true, completion: nil)
+    private func isCurrentUser() -> Bool {
+        guard
+            let portal = ASCFileManager.onlyofficeProvider?.apiClient.baseURL?.absoluteString,
+            let user = ASCFileManager.onlyofficeProvider?.user,
+            user.email == viewModel.email,
+            portal == viewModel.portal
+        else { return false }
+        return true
+    }
+
+    private func showDeleteAccountAlert() {
+        guard let user = ASCFileManager.onlyofficeProvider?.user else { return }
+
+        if user.isOwner {
+            showDeleteAccountOwnerAlert()
+        } else {
+            showDeleteAccountUserAlert()
+        }
+    }
+
+    private func showDeleteAccountUserAlert() {
+        guard
+            let user = ASCFileManager.onlyofficeProvider?.user,
+            let email = user.email
+        else { return }
+
+        let title = NSLocalizedString("Terminate account", comment: "")
+        let message = String(format: NSLocalizedString("Send the profile deletion instructions to the email address %@?", comment: ""), email)
+
+        showAlert(
+            title: title,
+            message: message,
+            buttonTitles: [
+                NSLocalizedString("Send", comment: ""),
+                NSLocalizedString("Cancel", comment: ""),
+            ],
+            highlightedButtonIndex: 0,
+            completion: { index in
+                if index == 0 {
+                    let hud = MBProgressHUD.showTopMost()
+                    hud?.label.text = NSLocalizedString("Sending", comment: "")
+
+                    self.deleteAccountMailRequest { result in
+                        DispatchQueue.main.async {
+                            hud?.hide(animated: true)
+                            switch result {
+                            case .success:
+                                self.showSendAlert()
+                            case let .failure(errorMessage):
+                                print(errorMessage)
+                                self.showErrorAlert(message: errorMessage)
+                            }
+                        }
+                    }
+                }
+            }
+        )
+    }
+
+    private func showDeleteAccountOwnerAlert() {
+        let protalType = ASCPortalTypeDefinderByCurrentConnection().definePortalType()
+
+        let title = NSLocalizedString("Terminate account", comment: "")
+        let message = protalType == .docSpace
+            ? NSLocalizedString("Being an owner of this DocSpace, you must transfer the ownership to another user before you can delete your account. Please choose a new owner to proceed.", comment: "")
+            : NSLocalizedString("Being an owner of this portal, you must transfer the ownership to another user before you can delete your account. Please choose a new owner to proceed.", comment: "")
+
+        showAlert(
+            title: title,
+            message: message,
+            buttonTitles: [
+                NSLocalizedString("Change owner", comment: ""),
+                NSLocalizedString("Cancel", comment: ""),
+            ],
+            highlightedButtonIndex: 0,
+            completion: { index in
+                if index == 0 {
+                    if let url = OnlyofficeApiClient.shared.baseURL,
+                       UIApplication.shared.canOpenURL(url)
+                    {
+                        UIApplication.shared.open(url, options: [:], completionHandler: nil)
+                    }
+                }
+            }
+        )
     }
 
     private func showLogoutAlert() {

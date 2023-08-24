@@ -20,7 +20,7 @@ enum ASCShareAccess: Int, CaseIterable {
     case userFilter = 8
     case roomManager = 9
     case editing = 10
-    case collaborator = 11
+    case powerUser = 11
 
     init() {
         self = .none
@@ -38,7 +38,7 @@ enum ASCShareAccess: Int, CaseIterable {
         case 8: self = .userFilter
         case 9: self = .roomManager
         case 10: self = .editing
-        case 11: self = .collaborator
+        case 11: self = .powerUser
         default: self = .none
         }
     }
@@ -47,7 +47,7 @@ enum ASCShareAccess: Int, CaseIterable {
         switch self {
         case .none: return 5
         case .roomManager: return 7
-        case .collaborator: return 8
+        case .powerUser: return 8
         case .editing: return 9
         case .full: return 10
         case .varies: return 20
@@ -67,25 +67,25 @@ enum ASCShareAccess: Int, CaseIterable {
         case .full:
             return NSLocalizedString("Full Access", comment: "Share status")
         case .read:
-            return NSLocalizedString("Read Only", comment: "Share status")
+            return NSLocalizedString("Viewer", comment: "Share status")
         case .deny:
             return NSLocalizedString("Deny Access", comment: "Share status")
         case .varies:
             return NSLocalizedString("Varies", comment: "Share status")
         case .review:
-            return NSLocalizedString("Review", comment: "Share status")
+            return NSLocalizedString("Reviewer", comment: "Share status")
         case .comment:
-            return NSLocalizedString("Comment", comment: "Share status")
+            return NSLocalizedString("Commentator", comment: "Share status")
         case .fillForms:
-            return NSLocalizedString("Form filling", comment: "Share status")
+            return NSLocalizedString("Form Filler", comment: "Share status")
         case .userFilter:
             return NSLocalizedString("Custom filter", comment: "Share status")
         case .roomManager:
             return NSLocalizedString("Room admin", comment: "Share status")
         case .editing:
             return NSLocalizedString("Editor", comment: "Share status")
-        case .collaborator:
-            return NSLocalizedString("Collaborator", comment: "Share status")
+        case .powerUser:
+            return NSLocalizedString("Pover user", comment: "Share status")
         }
     }
 
@@ -113,9 +113,11 @@ enum ASCShareAccess: Int, CaseIterable {
             case .userFilter:
                 return Asset.Images.menuCustomFilter.image
             case .roomManager:
-                return Asset.Images.menuOwner.image
-            case .editing, .collaborator:
+                return Asset.Images.menuPerson.image
+            case .editing:
                 return Asset.Images.menuFullAccess.image
+            case .powerUser:
+                return Asset.Images.menuPersonStar.image
             }
         }
         return nil

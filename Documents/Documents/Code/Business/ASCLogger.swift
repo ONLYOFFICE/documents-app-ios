@@ -27,13 +27,13 @@ struct ASCLogger {
         var displayName: String {
             switch self {
             case .debug:
-                return "🟣 DEBUG:"
+                return "💬 DEBUG:"
             case .info:
-                return "🔵 INFO:"
+                return "ℹ️ INFO:"
             case .warning:
-                return "🟡 WARNING:"
+                return "⚠️ WARNING:"
             case .error:
-                return "🔴 ERROR:"
+                return "⛔ ERROR:"
             }
         }
 

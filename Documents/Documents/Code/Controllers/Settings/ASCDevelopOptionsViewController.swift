@@ -82,7 +82,7 @@ class ASCDevelopOptionsViewController: ASCBaseTableViewController {
     }
 
     private func configureTableView() {
-        view.backgroundColor = .groupTableViewBackground
+        view.backgroundColor = .systemGroupedBackground
 
         tableView.cellLayoutMarginsFollowReadableWidth = true
         tableView.register(
@@ -99,37 +99,37 @@ class ASCDevelopOptionsViewController: ASCBaseTableViewController {
             items: [
                 .switchControl(viewModel: ASCSwitchCellViewModel(
                     title: "Skeleton of categories (false)",
-                    isOn: ASCConstants.Feature.allowCategoriesSkeleton,
+                    isOn: ASCAppSettings.Feature.allowCategoriesSkeleton,
                     valueChanged: { isOn in
-                        ASCConstants.Feature.allowCategoriesSkeleton = isOn
+                        ASCAppSettings.Feature.allowCategoriesSkeleton = isOn
                     }
                 )),
                 .switchControl(viewModel: ASCSwitchCellViewModel(
                     title: "Allow iCloud (true)",
-                    isOn: ASCConstants.Feature.allowiCloud,
+                    isOn: ASCAppSettings.Feature.allowiCloud,
                     valueChanged: { isOn in
-                        ASCConstants.Feature.allowiCloud = isOn
+                        ASCAppSettings.Feature.allowiCloud = isOn
                     }
                 )),
                 .switchControl(viewModel: ASCSwitchCellViewModel(
                     title: "Hide Searchbar if empty screen (false)",
-                    isOn: ASCConstants.Feature.hideSearchbarIfEmpty,
+                    isOn: ASCAppSettings.Feature.hideSearchbarIfEmpty,
                     valueChanged: { isOn in
-                        ASCConstants.Feature.hideSearchbarIfEmpty = isOn
+                        ASCAppSettings.Feature.hideSearchbarIfEmpty = isOn
                     }
                 )),
                 .switchControl(viewModel: ASCSwitchCellViewModel(
                     title: "Connect Dropbox via SDK (true)",
-                    isOn: ASCConstants.Feature.dropboxSDKLogin,
+                    isOn: ASCAppSettings.Feature.dropboxSDKLogin,
                     valueChanged: { isOn in
-                        ASCConstants.Feature.dropboxSDKLogin = isOn
+                        ASCAppSettings.Feature.dropboxSDKLogin = isOn
                     }
                 )),
                 .switchControl(viewModel: ASCSwitchCellViewModel(
                     title: "Open DE in view mode (true)",
-                    isOn: ASCConstants.Feature.openViewModeByDefault,
+                    isOn: ASCAppSettings.Feature.openViewModeByDefault,
                     valueChanged: { isOn in
-                        ASCConstants.Feature.openViewModeByDefault = isOn
+                        ASCAppSettings.Feature.openViewModeByDefault = isOn
                     }
                 )),
             ],

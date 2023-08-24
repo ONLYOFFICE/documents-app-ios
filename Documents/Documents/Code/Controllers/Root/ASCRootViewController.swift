@@ -278,7 +278,8 @@ class ASCRootViewController: ASCBaseTabBarController {
         }
     }
 
-    @objc func checkPushInfo() {
+    @objc
+    private func checkPushInfo() {
         if let appDelegate = UIApplication.shared.delegate as? AppDelegate {
             let handlePushInfo: () -> Void = {
                 if let userInfo = UserDefaults.standard.dictionary(forKey: ASCConstants.SettingsKeys.pushUserInfo) {
@@ -319,7 +320,8 @@ class ASCRootViewController: ASCBaseTabBarController {
 //        display(provider: ASCFileManager.localProvider, folder: nil)
 //    }
 
-    @objc func networkStatusChanged() {
+    @objc
+    private func networkStatusChanged() {
         if !ASCNetworkReachability.shared.isReachable {
             ASCBanner.shared.showError(
                 title: NSLocalizedString("No network", comment: ""),

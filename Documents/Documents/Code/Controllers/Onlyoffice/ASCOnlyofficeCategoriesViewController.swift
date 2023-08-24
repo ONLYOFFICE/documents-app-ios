@@ -233,6 +233,7 @@ class ASCOnlyofficeCategoriesViewController: UITableViewController {
                    let account = ASCAccount(JSON: ["email": accountEmail, "portal": accountPortalUnwraped])
                 {
                     self.account = account
+
                     loadCachedCategories(provider: onlyofficeProvider)
                 }
             } else {
@@ -264,6 +265,10 @@ class ASCOnlyofficeCategoriesViewController: UITableViewController {
     }
 
     @objc func onOnlyofficeLogInCompleted(_ notification: Notification) {
+        loadedCategories = []
+        cachedCategories = []
+        updateTableView()
+        showActivityIndicator()
         loadCategories { [self] in
             updateTableView()
 
@@ -275,7 +280,7 @@ class ASCOnlyofficeCategoriesViewController: UITableViewController {
     }
 
     @objc func onOnlyofficeLogoutCompleted(_ notification: Notification) {
-        if ASCConstants.Feature.allowCategoriesSkeleton {
+        if ASCAppSettings.Feature.allowCategoriesSkeleton {
             loadedCategories = []
             skeleton(show: true)
         } else {
@@ -360,14 +365,17 @@ class ASCOnlyofficeCategoriesViewController: UITableViewController {
     @IBAction func onUserAction(_ sender: UIButton) {
         if let splitVC = splitViewController {
             if let _ = ASCFileManager.onlyofficeProvider?.user {
-                let userProfileVC = ASCUserProfileViewController.instantiate(from: Storyboard.userProfile)
-                let userProfileNavigationVC = ASCBaseNavigationController(rootASCViewController: userProfileVC)
-
-                userProfileNavigationVC.preferredContentSize = ASCConstants.Size.defaultPreferredContentSize
-                userProfileNavigationVC.modalPresentationStyle = .formSheet
+                let multiProfileVC = ASCMultiAccountsViewController(style: .insetGrouped)
+                let presenter = ASCMultiAccountPresenter(view: multiProfileVC)
+                multiProfileVC.presenter = presenter
+                let multiProfileNavigationVC = ASCBaseNavigationController(rootASCViewController: multiProfileVC)
+                if UIDevice.phone {
+                    multiProfileNavigationVC.modalPresentationStyle = .fullScreen
+                }
 
                 splitVC.hideMasterController()
-                splitVC.present(userProfileNavigationVC, animated: true, completion: nil)
+                splitVC.present(multiProfileNavigationVC, animated: true, completion: nil)
+
             } else {
                 let alertController = UIAlertController(
                     title: ASCLocalization.Common.error,
@@ -400,7 +408,7 @@ class ASCOnlyofficeCategoriesViewController: UITableViewController {
         tableView.reloadData()
         selectCurrentlyRow()
 
-        if ASCConstants.Feature.allowCategoriesSkeleton {
+        if ASCAppSettings.Feature.allowCategoriesSkeleton {
             skeleton(show: categoriesCurrentlyLoading)
         }
     }
@@ -504,19 +512,8 @@ extension ASCOnlyofficeCategoriesViewController {
 
     override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         switch groupedCategroies {
-        case .notGroupd:
+        case .notGroupd, .titledGroups:
             return .leastNonzeroMagnitude
-        case .titledGroups:
-            return 38
-        }
-    }
-
-    override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        switch groupedCategroies {
-        case .notGroupd:
-            return nil
-        case let .titledGroups(groups):
-            return groups[section].title
         }
     }
 
@@ -537,8 +534,16 @@ extension ASCOnlyofficeCategoriesViewController {
     private func getCategory(by indexPath: IndexPath) -> ASCOnlyofficeCategory {
         switch groupedCategroies {
         case let .notGroupd(categories):
+            guard categories.count > indexPath.row else {
+                return .init()
+            }
             return categories[indexPath.row]
         case let .titledGroups(groups):
+            guard groups.count > indexPath.section,
+                  groups[indexPath.section].categories.count > indexPath.row
+            else {
+                return .init()
+            }
             return groups[indexPath.section].categories[indexPath.row]
         }
     }

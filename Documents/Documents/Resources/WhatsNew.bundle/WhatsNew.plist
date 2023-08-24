@@ -8,27 +8,11 @@
 	<array>
 		<dict>
 			<key>Image</key>
-			<string>whatsnew-footnotes</string>
+			<string>wahtsnew-logo</string>
 			<key>Title</key>
-			<string>Footnotes</string>
+			<string>Under construction</string>
 			<key>Subtitle</key>
-			<string>Create, configure, and manage footnotes and endnotes in text documents to add on-page references for texts.</string>
-		</dict>
-		<dict>
-			<key>Image</key>
-			<string>whatsnew-draw</string>
-			<key>Title</key>
-			<string>Graphic annotations</string>
-			<key>Subtitle</key>
-			<string>Use the Drawing mode to add graphic annotations and drawings in documents. Configure brush type, color and line thickness.</string>
-		</dict>
-		<dict>
-			<key>Image</key>
-			<string>whatsnew-autofill</string>
-			<key>Title</key>
-			<string>Autofill in spreadsheets</string>
-			<key>Subtitle</key>
-			<string>Populate cells automatically based on сurrent selection’s data and format by using Autofill.</string>
+			<string>Under construction</string>
 		</dict>
 	</array>
 </dict>

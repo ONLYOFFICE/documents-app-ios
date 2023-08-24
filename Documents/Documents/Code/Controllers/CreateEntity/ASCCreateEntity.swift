@@ -22,101 +22,89 @@ class ASCCreateEntity: NSObject, UIImagePickerControllerDelegate, UINavigationCo
     func showCreateController(for provider: ASCFileProviderProtocol, in viewController: ASCDocumentsViewController, sender: Any? = nil) {
         self.provider = provider
 
-        let createEntityView: ASCCreateEntityView!
+        let allowClouds = {
+            guard let provider = provider as? ASCOnlyofficeProvider,
+                  provider.apiClient.serverVersion?.docSpace == nil
+            else { return false }
+            return provider.apiClient.active
+        }()
 
-        do {
-            createEntityView = try SwiftMessages.viewFromNib()
-            createEntityView.allowConnectClouds = {
-                guard let provider = provider as? ASCOnlyofficeProvider,
-                      provider.apiClient.serverVersion?.docSpace == nil
-                else { return false }
-                return provider.apiClient.active
-            }()
-        } catch {
-            log.error("File: \(#file), Function: \(#function), Line: \(#line) - Could not load xib of ASCCreateEntityView")
-            return
-        }
+        var createEntityVC: ASCCreateEntityUIViewController!
 
         if UIDevice.phone || ASCViewControllerManager.shared.currentSizeClass == .compact {
-            createEntityView.configureDropShadow()
-            createEntityView.onCreate = { restorationIdentifier in
-                SwiftMessages.hide()
-                self.createEntity(by: restorationIdentifier, in: viewController)
-            }
+            createEntityVC = ASCCreateEntityUIViewController(
+                allowClouds: allowClouds,
+                onAction: { type in
+                    SwiftMessages.hide()
+                    self.createEntity(type, in: viewController)
+                }
+            )
 
             var config = SwiftMessages.defaultConfig
             config.presentationContext = .window(windowLevel: UIWindow.Level.statusBar)
             config.duration = .forever
             config.presentationStyle = .bottom
             config.dimMode = .gray(interactive: true)
+            config.overrideUserInterfaceStyle = AppThemeService.theme.overrideUserInterfaceStyle
+
+            let windowViewController = WindowViewController(config: config)
+
+            config.windowViewController = { config in
+                windowViewController
+            }
+
+            windowViewController.addChild(createEntityVC)
+            guard let createEntityView = createEntityVC.view else { return }
+            createEntityVC.didMove(toParent: windowViewController)
+
+            createEntityView.layerCornerRadius = 10
 
             SwiftMessages.show(config: config, view: createEntityView)
         } else {
-            var senderView: UIView? = sender as? UIView
+            var senderView = sender as? UIView
 
             if let barButton = sender as? UIBarButtonItem {
                 senderView = barButton.customView
             }
 
-            if let contentView = createEntityView.subviews.first {
-//                (contentView as? CornerRoundingView)?.cornerRadius = 0
-
-                for constraint in contentView.superview?.constraints ?? [] {
-                    if let _ = constraint.firstItem as? ASCCreateEntityView ?? constraint.firstItem as? CornerRoundingView,
-                       let _ = constraint.secondItem as? ASCCreateEntityView ?? constraint.secondItem as? CornerRoundingView
-                    {
-                        constraint.constant = 0
+            createEntityVC = ASCCreateEntityUIViewController(
+                allowClouds: allowClouds,
+                onAction: { type in
+                    createEntityVC.dismiss(animated: true) {
+                        self.createEntity(type, in: viewController)
                     }
                 }
+            )
 
-                createEntityView.topConstraints.constant = 20
+            if let senderView {
+                createEntityVC.modalPresentationStyle = .popover
+                createEntityVC.preferredContentSize = CGSize(width: 375, height: 420 - (allowClouds ? 0 : 50))
+                createEntityVC.popoverPresentationController?.backgroundColor = .systemGroupedBackground
+                createEntityVC.popoverPresentationController?.sourceView = senderView
+                createEntityVC.popoverPresentationController?.sourceRect = senderView.bounds
             }
 
-            let createController = UIViewController()
-            createController.view = createEntityView
-
-            createEntityView.onCreate = { restorationIdentifier in
-                createController.dismiss(animated: true, completion: {
-                    self.createEntity(by: restorationIdentifier, in: viewController)
-                })
-            }
-
-            if let senderView = senderView {
-                createController.modalPresentationStyle = .popover
-                createController.preferredContentSize = createController.view.frame.size
-
-                if #available(iOS 13.0, *) {
-                    if viewController.traitCollection.userInterfaceStyle == .light {
-                        createController.popoverPresentationController?.backgroundColor = .white
-                    }
-                } else {
-                    createController.popoverPresentationController?.backgroundColor = .white
-                }
-                createController.popoverPresentationController?.sourceView = senderView
-                createController.popoverPresentationController?.sourceRect = senderView.bounds
-            }
-
-            viewController.present(createController, animated: true, completion: nil)
+            viewController.present(createEntityVC, animated: true, completion: nil)
         }
     }
 
-    private func createEntity(by restorationIdentifier: String, in viewController: ASCDocumentsViewController) {
-        switch restorationIdentifier {
-        case "create-document":
+    private func createEntity(_ type: CreateEntityUIType, in viewController: ASCDocumentsViewController) {
+        switch type {
+        case .document:
             createFile("docx", viewController: viewController)
-        case "create-spreadsheet":
+        case .spreadsheet:
             createFile("xlsx", viewController: viewController)
-        case "create-presentation":
+        case .presentation:
             createFile("pptx", viewController: viewController)
-        case "create-new-folder":
+        case .folder:
             createFolder(viewController: viewController)
-        case "create-load-file":
+        case .importFile:
             loadFile(viewController: viewController)
-        case "create-load-image":
+        case .importImage:
             loadImage(viewController: viewController)
-        case "create-take-image":
+        case .makePicture:
             takePhoto(viewController: viewController)
-        case "create-cloud":
+        case .connectCloud:
             let connectStorageVC = ASCConnectPortalThirdPartyViewController.instantiate(from: Storyboard.connectStorage)
             let connectStorageNavigationVC = ASCBaseNavigationController(rootASCViewController: connectStorageVC)
 
@@ -126,20 +114,18 @@ class ASCCreateEntity: NSObject, UIImagePickerControllerDelegate, UINavigationCo
             }
 
             viewController.present(connectStorageNavigationVC, animated: true, completion: nil)
-        default:
-            break
         }
     }
 
     func createFile(_ fileExtension: String, for provider: ASCFileProviderProtocol?, in viewController: ASCDocumentsViewController) {
-        guard let provider = provider else { return }
+        guard let provider else { return }
         self.provider = provider
 
         createFile(fileExtension, viewController: viewController)
     }
 
     func createFile(_ fileExtension: String, viewController: ASCDocumentsViewController) {
-        guard let provider = provider else { return }
+        guard let provider else { return }
         var hud: MBProgressHUD?
 
         ASCEntityManager.shared.createFile(for: provider, fileExtension, in: viewController.folder, handler: { status, entity, error in
@@ -149,13 +135,13 @@ class ASCCreateEntity: NSObject, UIImagePickerControllerDelegate, UINavigationCo
             } else if status == .error {
                 hud?.hide(animated: true)
 
-                if error != nil {
-                    self.showError(message: error!)
+                if let error {
+                    self.showError(message: error)
                 }
             } else if status == .end {
                 hud?.hide(animated: false)
 
-                if let entity = entity {
+                if let entity {
                     viewController.add(entity: entity)
                 }
             }
@@ -163,7 +149,7 @@ class ASCCreateEntity: NSObject, UIImagePickerControllerDelegate, UINavigationCo
     }
 
     func createFolder(viewController: ASCDocumentsViewController) {
-        guard let provider = provider else { return }
+        guard let provider else { return }
         var hud: MBProgressHUD?
 
         ASCEntityManager.shared.createFolder(for: provider, in: viewController.folder, handler: { status, entity, error in
@@ -173,14 +159,14 @@ class ASCCreateEntity: NSObject, UIImagePickerControllerDelegate, UINavigationCo
             } else if status == .error {
                 hud?.hide(animated: true)
 
-                if error != nil {
-                    self.showError(message: error!)
+                if let error {
+                    self.showError(message: error)
                 }
             } else if status == .end {
-                if entity != nil {
+                if let entity {
                     hud?.setSuccessState()
                     hud?.hide(animated: false, afterDelay: 1.3)
-                    viewController.add(entity: entity!)
+                    viewController.add(entity: entity)
                 } else {
                     hud?.hide(animated: false)
                 }
@@ -250,10 +236,9 @@ class ASCCreateEntity: NSObject, UIImagePickerControllerDelegate, UINavigationCo
             )
 
             let settingsAction = UIAlertAction(title: NSLocalizedString("Settings", comment: ""), style: .cancel, handler: { alert in
-                let settingsUrl = NSURL(string: UIApplication.openSettingsURLString)
-                if let url = settingsUrl {
+                if let settingsUrl = NSURL(string: UIApplication.openSettingsURLString) {
                     DispatchQueue.main.async {
-                        UIApplication.shared.open(url as URL, options: [:], completionHandler: nil)
+                        UIApplication.shared.open(settingsUrl as URL, options: [:], completionHandler: nil)
                     }
                 }
             })
@@ -339,13 +324,13 @@ class ASCCreateEntityDocumentDelegate: NSObject, UIDocumentPickerDelegate {
                             } else if status == .error {
                                 openingAlert.hide()
 
-                                if let error = error {
+                                if let error {
                                     self.showError(message: error)
                                 }
                             } else if status == .end {
                                 openingAlert.hide()
 
-                                if let entity = entity {
+                                if let entity {
                                     self.documentsViewController?.add(entity: entity, open: false)
                                 }
                             }

@@ -31,8 +31,8 @@ class ASCConstants {
     enum Urls {
         static let personalPortals = ["://personal.onlyoffice.com", "://personal.teamlab.info"]
         static let apiSystemUrl = "https://api-system.%@"
-        static let apiValidatePortalName = "api/portal/validateportalname"
-        static let apiRegistrationPortal = "api/portal/register"
+        static let apiValidatePortalName = "apisystem/portal/validateportalname"
+        static let apiRegistrationPortal = "apisystem/portal/register"
         static let apiForgetPassword = "%@/auth.aspx#passrecovery"
         static let supportMailTo = "support@onlyoffice.com"
         static let legalTerms = "https://www.onlyoffice.com/legalterms.aspx"
@@ -66,6 +66,7 @@ class ASCConstants {
         static let openedDocumentPassword = "asc-opened-document-password"
         static let lastCloudIndex = "asc-last-cloud-index"
         static let pushAllNotification = "asc-push-all"
+        static let appTheme = "asc-app-theme"
 
         // Debug
         static let debugHideSearchbarIfEmpty = "asc-debug-hidesearchbarifempty"
@@ -237,38 +238,6 @@ class ASCConstants {
         static let avalibleLangCodes = ["EN", "RU", "FR", "DE", "ES", "CS"]
     }
 
-    enum Feature {
-        // Hide the searchbar in the navigationbar if the list of documents is empty
-        static var hideSearchbarIfEmpty: Bool {
-            get { UserDefaults.standard.bool(forKey: ASCConstants.SettingsKeys.debugHideSearchbarIfEmpty) }
-            set { UserDefaults.standard.set(newValue, forKey: ASCConstants.SettingsKeys.debugHideSearchbarIfEmpty) }
-        }
-
-        // Allow iCloud provider
-        static var allowiCloud: Bool {
-            get { UserDefaults.standard.bool(forKey: ASCConstants.SettingsKeys.debugAllowiCloud) }
-            set { UserDefaults.standard.set(newValue, forKey: ASCConstants.SettingsKeys.debugAllowiCloud) }
-        }
-
-        // Allow skeleton animation for ONLYOFFICE categories on load
-        static var allowCategoriesSkeleton: Bool {
-            get { UserDefaults.standard.bool(forKey: ASCConstants.SettingsKeys.debugAllowCategoriesSkeleton) }
-            set { UserDefaults.standard.set(newValue, forKey: ASCConstants.SettingsKeys.debugAllowCategoriesSkeleton) }
-        }
-
-        // Connect Dropbox Cloud via SDK
-        static var dropboxSDKLogin: Bool {
-            get { UserDefaults.standard.bool(forKey: ASCConstants.SettingsKeys.debugDropboxSDKLogin) }
-            set { UserDefaults.standard.set(newValue, forKey: ASCConstants.SettingsKeys.debugDropboxSDKLogin) }
-        }
-
-        // Open editors in view mode
-        static var openViewModeByDefault: Bool {
-            get { UserDefaults.standard.bool(forKey: ASCConstants.SettingsKeys.debugOpenEditorViewModeDefault) }
-            set { UserDefaults.standard.set(newValue, forKey: ASCConstants.SettingsKeys.debugOpenEditorViewModeDefault) }
-        }
-    }
-
     static func remoteConfigValue(forKey key: String) -> RemoteConfigValue? {
         return RemoteConfig.remoteConfig().configValue(forKey: key)
     }
@@ -314,5 +283,5 @@ class ASCConstants {
 
 extension ASCConstants.Urls {
     static let defaultDomainRegions = "onlyoffice.com"
-    static let domainRegions: [String: String] = ASCConstants.internalConstants["DomainRegions"] as? [String: String] ?? [:]
+    static let domainRegions: [String: String] = ASCConstants.internalConstants["DomainRegionsDocSpace"] as? [String: String] ?? [:]
 }

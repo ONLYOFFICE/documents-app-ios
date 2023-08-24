@@ -1,23 +1,29 @@
-/* Class = "UILabel"; text = "Logout"; ObjectID = "1S2-Q7-5vL"; */
+/* Class = "UILabel"; text = "Log out"; ObjectID = "1S2-Q7-5vL"; */
 "1S2-Q7-5vL.text" = "Выход";
 
 /* Class = "UILabel"; text = "-"; ObjectID = "9Yi-42-22H"; Note = "Do not translate"; */
 "9Yi-42-22H.text" = "-";
 
-/* Class = "UILabel"; text = "Delete account"; ObjectID = "708-fR-i2H"; */
-"708-fR-i2H.text" = "Удалить аккаунт";
+/* Class = "UILabel"; text = "Delete forever"; ObjectID = "708-fR-i2H"; */
+"708-fR-i2H.text" = "Удалить навсегда";
 
-/* Class = "UINavigationItem"; title = "Account"; ObjectID = "BXA-IE-d8z"; */
+/* Class = "UINavigationItem"; title = "Profile"; ObjectID = "BXA-IE-d8z"; */
 "BXA-IE-d8z.title" = "Учетная запись";
 
 /* Class = "UILabel"; text = "Email"; ObjectID = "HaW-jI-GJW"; */
 "HaW-jI-GJW.text" = "Email";
+
+/* Class = "UILabel"; text = "-"; ObjectID = "JOt-DG-crS"; Note = "Do not translate"; */
+"JOt-DG-crS.text" = "-";
 
 /* Class = "UILabel"; text = "Portal"; ObjectID = "KZx-zY-eVz"; */
 "KZx-zY-eVz.text" = "Портал";
 
 /* Class = "UILabel"; text = "-"; ObjectID = "osE-70-cXT"; Note = "Do not translate"; */
 "osE-70-cXT.text" = "-";
+
+/* Class = "UILabel"; text = "Type"; ObjectID = "vyA-jq-VvH"; */
+"vyA-jq-VvH.text" = "Тип";
 
 /* Class = "UILabel"; text = "Me"; ObjectID = "Yw3-6O-7aD"; Note = "Do not translate"; */
 "Yw3-6O-7aD.text" = "Я";

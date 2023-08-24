@@ -76,6 +76,12 @@
 /* No comment provided by engineer. */
 "Account name is not valid" = "Název účtu není platný";
 
+/* No comment provided by engineer. */
+"Accounts" = "Účty";
+
+/* No comment provided by engineer. */
+"Add account" = "Přidat účet";
+
 /* Sharing settings add notification message */
 "Add message" = "Přidat zprávu";
 
@@ -89,6 +95,9 @@
 "Address is empty" = "Adresa je prázdná";
 
 /* No comment provided by engineer. */
+"Admin" = "Administrátor";
+
+/* No comment provided by engineer. */
 "All" = "Vše";
 
 /* No comment provided by engineer. */
@@ -96,6 +105,9 @@
 
 /* Category title */
 "All Files" = "Všechny soubory";
+
+/* No comment provided by engineer. */
+"All items from Archived will be deleted forever. You won’t be able to restore them." = "Všechny položky z archivu budou navždy odstraněny. Nebudete je moci obnovit.";
 
 /* No comment provided by engineer. */
 "All notifications" = "Všechna oznámení";
@@ -125,7 +137,7 @@
 "Archiving failed." = "Archivace se nezdařila.";
 
 /* No comment provided by engineer. */
-"Are you sure you want to delete the account %@ from this device?" = "Opravdu chcete smazat účet account %@ z tohoto zařízení?";
+"Are you sure you want to delete the account  %@ from this devce?" = "Opravdu chcete z tohoto zařízení odstranit účet %@?";
 
 /* No comment provided by engineer. */
 "Are you sure you want to leave this account?" = "Opravdu chcete tento účet opustit?";
@@ -135,6 +147,12 @@
 
 /* No comment provided by engineer. */
 "Back" = "Zpět";
+
+/* No comment provided by engineer. */
+"Being an owner of this DocSpace, you must transfer the ownership to another user before you can delete your account. Please choose a new owner to proceed." = "Jako vlastník tohoto prostoru DocSpace musíte před odstraněním účtu převést vlastnictví na jiného uživatele. Chcete-li pokračovat, zvolte prosím nového vlastníka.";
+
+/* No comment provided by engineer. */
+"Being an owner of this portal, you must transfer the ownership to another user before you can delete your account. Please choose a new owner to proceed." = "Jste-li vlastníkem tohoto portálu, musíte před odstraněním účtu převést vlastnictví na jiného uživatele. Pro pokračování prosím zvolte nového vlastníka.";
 
 /* No comment provided by engineer. */
 "Box" = "Schránka";
@@ -171,6 +189,9 @@
 
 /* No comment provided by engineer. */
 "Cancel invitation?" = "Zrušit pozvánku?";
+
+/* No comment provided by engineer. */
+"Change owner" = "Změna vlastníka";
 
 /* No comment provided by engineer. */
 "Check your internet connection" = "Zkontrolujte vaše připojení k internetu";
@@ -215,7 +236,7 @@
 "Collaboration" = "Spolupráce";
 
 /* Share status */
-"Comment" = "Komentář";
+"Commentator" = "Komentátor";
 
 /* Category title */
 "Common Documents" = "Společné dokumenty";
@@ -356,6 +377,9 @@
 "Couldn't open file" = "Nebylo možné otevřít lokální soubor v adresářové struktuře.";
 
 /* No comment provided by engineer. */
+"Couldn't save changes at server. Your modified document is saved in local storage as %@" = "Nepodařilo se uložit změny na serveru. Váš změněný dokument je uložen v místním úložišti jako %@";
+
+/* No comment provided by engineer. */
 "Create" = "Vytvořit";
 
 /* Introduction Step Two - Description */
@@ -374,6 +398,9 @@
 "Custom filter" = "Vlastní filtr";
 
 /* No comment provided by engineer. */
+"Dark" = "Tmavé";
+
+/* No comment provided by engineer. */
 "Date" = "Datum";
 
 /* Button title */
@@ -388,14 +415,17 @@
 /* No comment provided by engineer. */
 "Delete %lu Folder and %lu File" = "Vymazat %1$lu složku a %2$lu soubor";
 
-/* No comment provided by engineer. */
-"Delete account" = "Smazat účet ";
-
 /* Button title */
 "Delete File" = "Vymazat soubor";
 
 /* No comment provided by engineer. */
 "Delete Folder" = "Vymazat složku";
+
+/* No comment provided by engineer. */
+"Delete forever" = "Smazat navždy";
+
+/* No comment provided by engineer. */
+"Delete from device" = "Odstranit ze zařízení";
 
 /* Caption of the processing */
 "Deleting" = "Smazání";
@@ -594,7 +624,13 @@
 "Folders" = "Složky";
 
 /* Share status */
-"Form filling" = "Vyplnění formuláře";
+"Form Filler" = "Vyplňovač formulářů";
+
+/* No comment provided by engineer. */
+"Form templates" = "Šablony formulářů";
+
+/* No comment provided by engineer. */
+"Forms" = "Formuláře";
 
 /* Share status */
 "Full Access" = "Plný přístup";
@@ -684,6 +720,9 @@
 "Last name is incorrect" = "Příjmení je nesprávné";
 
 /* No comment provided by engineer. */
+"Light" = "Světlé";
+
+/* No comment provided by engineer. */
 "Link copied\nto the clipboard" = "Odkaz zkopírován do schránky";
 
 /* No comment provided by engineer. */
@@ -717,7 +756,8 @@
 /* Data units */
 "Mb" = "Mb";
 
-/* If current user name is not set */
+/* Author or member of a document
+   If current user name is not set */
 "Me" = "Já";
 
 /* No comment provided by engineer. */
@@ -977,6 +1017,9 @@
 /* No comment provided by engineer. */
 "Portal is unavailable." = "Portál není k dispozici.";
 
+/* Share status */
+"Pover user" = "Mocný uživatel";
+
 /* No comment provided by engineer. */
 "Presentation" = "Prezentace";
 
@@ -995,6 +1038,9 @@
 /* Caption of the processing */
 "Processing" = "Zpracování";
 
+/* No comment provided by engineer. */
+"Profile" = "Profil";
+
 /* Category title */
 "Project Documents" = "Projektové dokumenty";
 
@@ -1003,9 +1049,6 @@
 
 /* No comment provided by engineer. */
 "Push notifications disabled" = "Push oznámení jsou vypnuta";
-
-/* Share status */
-"Read Only" = "Pouze pro čtení";
 
 /* Button title */
 "Recover here" = "Obnovit zde";
@@ -1056,13 +1099,16 @@
 "Restoring" = "Obnovení";
 
 /* Share status */
-"Review" = "Prohlédnout";
+"Reviewer" = "Recenzent";
 
 /* Share status */
 "Room admin" = "Správce místnosti";
 
 /* DocSpace rooms */
 "Rooms" = "Místnosti";
+
+/* No comment provided by engineer. */
+"Same as system" = "Stejné jako systémové";
 
 /* Caption of the processing */
 "Saving" = "Uložení";
@@ -1151,6 +1197,9 @@
 
 /* No comment provided by engineer. */
 "Show notifications" = "Zobrazit oznámení";
+
+/* No comment provided by engineer. */
+"Sign in" = "Zapsat se";
 
 /* No comment provided by engineer. */
 "Single Sign-on" = "Jednorázové přihlášení";
@@ -1271,6 +1320,9 @@
 
 /* No comment provided by engineer. */
 "The user limit has been reached. Сontact the portal administrator" = "Limit uživatelů byl vyčerpán. Kontaktujte správce portálu";
+
+/* No comment provided by engineer. */
+"Theme" = "Téma";
 
 /* No comment provided by engineer. */
 "Third party resource" = "Zdroj třetí strany";
@@ -1399,6 +1451,9 @@
 "Unpinned failed." = "Zrušení připnutí se nezdařilo.";
 
 /* Caption of the processing */
+"Unpinning" = "Odpojení";
+
+/* Caption of the processing */
 "Unpning" = "Odpojení";
 
 /* No comment provided by engineer. */
@@ -1412,6 +1467,9 @@
 
 /* Button title */
 "Use Touch ID" = "Použít odemykání pomocí otisku";
+
+/* No comment provided by engineer. */
+"User" = "Uživatel";
 
 /* No comment provided by engineer. */
 "User authentication failed" = "Ověření uživatele selhalo";
@@ -1438,7 +1496,10 @@
 "Version" = "Verze";
 
 /* No comment provided by engineer. */
-"View-Only" = "Pouze k zobrazení";
+"View-only" = "Pouze k zobrazení";
+
+/* Share status */
+"Viewer" = "Prohlížející";
 
 /* No comment provided by engineer. */
 "Warning" = "Varování";

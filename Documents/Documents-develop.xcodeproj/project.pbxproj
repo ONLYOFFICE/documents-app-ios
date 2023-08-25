@@ -1550,13 +1550,6 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		FC53AC752988FB39004528D7 /* Protocols */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Protocols;
-			sourceTree = "<group>";
-		};
 		FC56A36E2A3870A6000EA058 /* EditorManager */ = {
 			isa = PBXGroup;
 			children = (
@@ -2346,7 +2339,6 @@
 		FCC39FE81E6ECB0400DECB8D /* Business */ = {
 			isa = PBXGroup;
 			children = (
-				FC53AC752988FB39004528D7 /* Protocols */,
 				FC2C73DD2754BCDF008E9063 /* PortalDefinders */,
 				FC41D8002265D6C900A155C2 /* Enums */,
 				FC0F01DD216F43FF008D79A5 /* Providers */,

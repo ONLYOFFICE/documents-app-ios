@@ -36,9 +36,9 @@ class ASCEntityManager: NSObject, UITextFieldDelegate {
 
         var fileName = NSLocalizedString("New Document", comment: "")
 
-        if fileExtension == "xlsx" {
+        if fileExtension == ASCConstants.FileExtensions.xlsx {
             fileName = NSLocalizedString("New Spreadsheet", comment: "")
-        } else if fileExtension == "pptx" {
+        } else if fileExtension == ASCConstants.FileExtensions.pptx {
             fileName = NSLocalizedString("New Presentation", comment: "")
         }
 

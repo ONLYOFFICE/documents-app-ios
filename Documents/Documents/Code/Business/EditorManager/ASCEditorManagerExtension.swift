@@ -6,7 +6,6 @@
 //  Copyright © 2023 Ascensio System SIA. All rights reserved.
 //
 
-import DocumentEditor
 import Foundation
 
 extension ASCEditorManager: ASCEditorManagerProtocol {
@@ -14,15 +13,5 @@ extension ASCEditorManager: ASCEditorManagerProtocol {
 
     var allowForm: Bool {
         true
-    }
-
-    // MARK: - Methods
-
-    func localEditor(config: EditorConfiguration) -> EditorConfiguration {
-        return config
-    }
-
-    func cloudEditor(config: EditorConfiguration) -> EditorConfiguration {
-        return config
     }
 }

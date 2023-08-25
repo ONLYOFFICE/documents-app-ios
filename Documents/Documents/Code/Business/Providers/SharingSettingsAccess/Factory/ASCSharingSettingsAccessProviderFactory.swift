@@ -13,11 +13,11 @@ class ASCSharingSettingsAccessProviderFactory {
     typealias ProviderContainer = () -> ASCSharingSettingsAccessProvider
 
     private let providerContainersByExtension: [FileExtension: ProviderContainer] = [
-        "docx": { ASCSharingSettingsAccessDocumentProvider() },
-        "docxf": { ASCSharingSettingsAccessDocumentFormProvider() },
-        "xlsx": { ASCSharingSettingsAccessTableProvider() },
-        "pptx": { ASCSharingSettingsAccessPresentationProvider() },
-        "oform": { ASCSharingSettingsAccessOFormProvider() },
+        ASCConstants.FileExtensions.docx: { ASCSharingSettingsAccessDocumentProvider() },
+        ASCConstants.FileExtensions.docxf: { ASCSharingSettingsAccessDocumentFormProvider() },
+        ASCConstants.FileExtensions.xlsx: { ASCSharingSettingsAccessTableProvider() },
+        ASCConstants.FileExtensions.pptx: { ASCSharingSettingsAccessPresentationProvider() },
+        ASCConstants.FileExtensions.oform: { ASCSharingSettingsAccessOFormProvider() },
     ]
 
     func get(entity: ASCEntity, isAccessExternal: Bool) -> ASCSharingSettingsAccessProvider {

@@ -8,7 +8,9 @@ PODS:
     - AppAuth/Core
   - atlantis-proxyman (1.22.0)
   - DocumentConverter (7.5.0)
-  - DocumentEditor (7.5.0)
+  - DocumentEditor (7.5.0):
+    - DocumentConverter (= 7.5.0)
+    - SpreadsheetEditor (= 7.5.0)
   - FacebookCore (0.9.0):
     - FBSDKCoreKit (~> 5.0)
   - FacebookLogin (0.9.0):
@@ -187,7 +189,9 @@ PODS:
   - PhoneNumberKit/PhoneNumberKitCore (3.6.7)
   - PhoneNumberKit/UIKit (3.6.7):
     - PhoneNumberKit/PhoneNumberKitCore
-  - PresentationEditor (7.5.0)
+  - PresentationEditor (7.5.0):
+    - DocumentConverter (= 7.5.0)
+    - SpreadsheetEditor (= 7.5.0)
   - PromisesObjC (2.3.1)
   - PromisesSwift (2.3.1):
     - PromisesObjC (= 2.3.1)
@@ -199,7 +203,8 @@ PODS:
   - SDWebImage/Core (5.17.0)
   - Siren (6.1.2)
   - SkyFloatingLabelTextField (4.0.0)
-  - SpreadsheetEditor (7.5.0)
+  - SpreadsheetEditor (7.5.0):
+    - DocumentConverter (= 7.5.0)
   - SwiftFormat/CLI (0.51.15)
   - SwiftGen (6.6.2)
   - SwiftMessages (9.0.6):
@@ -343,7 +348,7 @@ SPEC CHECKSUMS:
   AppAuth: 3bb1d1cd9340bd09f5ed189fb00b1cc28e1e8570
   atlantis-proxyman: 9a90620999a83ac35f71cbd332fa083ba7505f5e
   DocumentConverter: f7579951f1d9cf4296aa6cefac3501d108e7723f
-  DocumentEditor: a13fb5257ab3915a027daeb23dbf00fc6c18f773
+  DocumentEditor: b39a0deeddb85a11354a8248998d657ef985d30f
   FacebookCore: ba86524b66cfa86d0f8e65d08faa8504a9f732dd
   FacebookLogin: 6cee9fd6e1fe976fe8f7eec199e27b28b14f5d63
   FBSDKCoreKit: 1d5acf7c9d7a2f92bb1a242dc60cae5b7adb91df
@@ -377,14 +382,14 @@ SPEC CHECKSUMS:
   nanopb: b552cce312b6c8484180ef47159bc0f65a1f0431
   ObjectMapper: 1eb41f610210777375fa806bf161dc39fb832b81
   PhoneNumberKit: 43b5169526cc417398c8f13f77c97552c1c6ed76
-  PresentationEditor: ba7f7444240c58696e413508f9c29212ae263184
+  PresentationEditor: 9d6266e84156995ce9ecb3c19bb6468d7a1fd539
   PromisesObjC: c50d2056b5253dadbd6c2bea79b0674bd5a52fa4
   PromisesSwift: 28dca69a9c40779916ac2d6985a0192a5cb4a265
   ReCaptcha: d493ed256054a7b6a7eabcaf0b47ec9a8f42a16e
   SDWebImage: 750adf017a315a280c60fde706ab1e552a3ae4e9
   Siren: c951ae243b57160629fb2e4d2f630cbfc5d5452b
   SkyFloatingLabelTextField: 79ddc40e4ad59707fedbb48d605417aee48bb78a
-  SpreadsheetEditor: f532c6fa39a1199a8be64592581f3eced4f59ce3
+  SpreadsheetEditor: 9c8fe6589eb478b30b26cbf9ee8e9e5607017fca
   SwiftFormat: 9bb35148209f3e809e920037f9b95c4c889c3612
   SwiftGen: 1366a7f71aeef49954ca5a63ba4bef6b0f24138c
   SwiftMessages: f0c7ef4705a570ad6c5e208b611f4333e660ed92

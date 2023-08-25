@@ -181,6 +181,8 @@ class ASCConstants {
         static let xlsx = "xlsx"
         static let pptx = "pptx"
         static let oform = "oform"
+        static let docxf = "docxf"
+        static let pdf = "pdf"
     }
 
     enum Clouds {

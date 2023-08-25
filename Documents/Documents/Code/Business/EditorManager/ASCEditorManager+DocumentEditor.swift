@@ -130,6 +130,18 @@ extension ASCEditorManager {
     }
 }
 
+// MARK: - Methods
+
+extension ASCEditorManager {
+    func localEditor(config: EditorConfiguration) -> EditorConfiguration {
+        return config
+    }
+
+    func cloudEditor(config: EditorConfiguration) -> EditorConfiguration {
+        return config
+    }
+}
+
 extension ASCEditorManager: DocumentEditorViewControllerDelegate {
     func documentDidOpen(_ controller: DocumentEditor.DocumentEditorViewController, result: Result<DocumentEditor.EditorDocument, Error>) {
         switch result {

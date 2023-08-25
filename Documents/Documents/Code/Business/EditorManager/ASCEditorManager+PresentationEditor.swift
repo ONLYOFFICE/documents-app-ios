@@ -21,32 +21,78 @@ extension ASCEditorManager {
 
     func createPresentationEditorViewController(
         for file: ASCFile,
-        openMode: ASCDocumentOpenMode,
-        documentPermissions: [String: Any]
+        config: OnlyofficeDocumentConfig,
+        openMode: ASCDocumentOpenMode
     ) -> UIViewController? {
-        let configuration = EditorConfiguration(
+        let title = file.title
+        let isCoauthoring = !(config.document?.key?.isEmpty ?? true) && !(config.document?.url?.isEmpty ?? true)
+        let sdkCheck = compareCloudSdk(with: PresentationEditorViewController.sdkVersionString)
+
+        var editorUser = EditorUserConfiguration(
+            id: UIDevice.current.identifierForVendor?.uuidString ?? UUID().uuidString,
+            displayName: file.updatedBy?.displayName ?? (
+                UIDevice.current.name.count > 0
+                    ? UIDevice.current.name
+                    : NSLocalizedString("Me", comment: "If current user name is not set")
+            )
+        )
+
+        if isCoauthoring, let onlyofficeUser = ASCFileManager.onlyofficeProvider?.user {
+            editorUser = EditorUserConfiguration(
+                id: onlyofficeUser.userId,
+                firstName: onlyofficeUser.firstName,
+                lastName: onlyofficeUser.lastName,
+                displayName: onlyofficeUser.userName ?? file.createdBy?.displayName
+            )
+        }
+
+        var configuration = EditorConfiguration(
             title: file.title,
-            viewMode: openMode == .view || !UIDevice.allowEditor,
+            viewMode: openMode == .view || !UIDevice.allowEditor || (isCoauthoring && !sdkCheck),
             newDocument: openMode == .create,
+            coauthoring: isCoauthoring,
+            docKey: config.document?.key,
+            docURL: config.document?.url,
+            docService: documentServiceURL ?? "",
+            documentToken: config.token,
+            sdkCheck: sdkCheck,
             date: file.updated ?? Date(),
-            user: EditorUserConfiguration(
-                id: UIDevice.current.identifierForVendor?.uuidString ?? UUID().uuidString,
-                displayName: file.updatedBy?.displayName ?? (
-                    UIDevice.current.name.count > 0
-                        ? UIDevice.current.name
-                        : NSLocalizedString("Me", comment: "If current user name is not set")
-                )
-            ),
+            user: editorUser,
             appFonts: editorFontsPaths,
             dataFontsPath: dataFontsPath,
             license: licensePath,
-            documentPermissions: documentPermissions.jsonString() ?? ""
+            documentPermissions: config.document?.permissions?.dictionary?.jsonString() ?? "",
+            documentCommonConfig: config.dictionary?.jsonString() ?? ""
         )
 
-//        configuration = localEditor(config: configuration)
+        if isCoauthoring {
+            let protalType = ASCPortalTypeDefinderByCurrentConnection().definePortalType()
+
+            configuration.supportShare = file.access == .readWrite || file.access == .none
+
+            /// Enabling the Favorite function only on portals version 11 and higher
+            /// and not DocSpace
+            if let communityServerVersion = OnlyofficeApiClient.shared.serverVersion?.community,
+               communityServerVersion.isVersion(greaterThanOrEqualTo: "11.0"),
+               let user = ASCFileManager.onlyofficeProvider?.user,
+               protalType != .docSpace
+            {
+                configuration.favorite = file.isFavorite && !user.isVisitor
+                configuration.denyDownload = file.denyDownload
+            }
+
+            /// Turn off share from editors for the DocSpace
+            if protalType == .docSpace {
+                configuration.supportShare = false
+            }
+
+            configuration = cloudEditor(config: configuration)
+        } else {
+            configuration = localEditor(config: configuration)
+        }
 
         let document = EditorDocument(
-            url: URL(fileURLWithPath: file.id),
+            url: isCoauthoring ? URL(string: config.document?.url ?? file.id)! : URL(fileURLWithPath: file.id),
             autosaveUrl: URL(fileURLWithPath: (Path.userAutosavedInformation + file.title).rawValue, isDirectory: true)
         )
 
@@ -54,6 +100,16 @@ extension ASCEditorManager {
         editorViewController.delegate = self
 
         return editorViewController
+    }
+}
+
+extension ASCEditorManager {
+    func localEditor(config: EditorConfiguration) -> EditorConfiguration {
+        return config
+    }
+
+    func cloudEditor(config: EditorConfiguration) -> EditorConfiguration {
+        return config
     }
 }
 

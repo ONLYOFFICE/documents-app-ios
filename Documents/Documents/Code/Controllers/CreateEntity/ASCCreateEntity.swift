@@ -91,11 +91,11 @@ class ASCCreateEntity: NSObject, UIImagePickerControllerDelegate, UINavigationCo
     private func createEntity(_ type: CreateEntityUIType, in viewController: ASCDocumentsViewController) {
         switch type {
         case .document:
-            createFile("docx", viewController: viewController)
+            createFile(ASCConstants.FileExtensions.docx, viewController: viewController)
         case .spreadsheet:
-            createFile("xlsx", viewController: viewController)
+            createFile(ASCConstants.FileExtensions.xlsx, viewController: viewController)
         case .presentation:
-            createFile("pptx", viewController: viewController)
+            createFile(ASCConstants.FileExtensions.pptx, viewController: viewController)
         case .folder:
             createFolder(viewController: viewController)
         case .importFile:

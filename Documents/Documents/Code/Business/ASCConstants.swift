@@ -56,14 +56,14 @@ class ASCConstants {
         static let forceCreateNewDocument = "asc-shortcut-new-document"
         static let forceCreateNewSpreadsheet = "asc-shortcut-new-spreadsheet"
         static let forceCreateNewPresentation = "asc-shortcut-new-presentation"
-        static let openedDocument = "asc-opened-document"
-        static let openedDocumentModifity = "asc-opened-document-modifity"
+        static let openedDocumentFile = "asc-opened-document-file"
+        static let openedDocumentModified = "asc-opened-document-modified"
         static let pushAllow = "asc-push-allow"
         static let pushDeviceToken = "asc-push-device-token"
         static let pushFCMToken = "asc-push-fcm-token"
         static let pushUserInfo = "asc-push-user-info"
         static let sdkVersion = "asc-sdk-version"
-        static let passwordOpenedDocument = "asc-opened-document-password"
+        static let openedDocumentPassword = "asc-opened-document-password"
         static let lastCloudIndex = "asc-last-cloud-index"
         static let pushAllNotification = "asc-push-all"
         static let appTheme = "asc-app-theme"
@@ -176,6 +176,13 @@ class ASCConstants {
         static let editorExportSpreadsheets = ["xlsx", "ods", "xltx", "ots"]
         static let editorExportPresentations = ["pptx", "odp", "potx", "otp"]
         static let editorExportFormats = editorExportDocuments + editorExportSpreadsheets + editorExportPresentations
+
+        static let docx = "docx"
+        static let xlsx = "xlsx"
+        static let pptx = "pptx"
+        static let oform = "oform"
+        static let docxf = "docxf"
+        static let pdf = "pdf"
     }
 
     enum Clouds {

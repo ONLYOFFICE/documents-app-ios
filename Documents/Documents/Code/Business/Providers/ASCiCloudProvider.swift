@@ -1048,7 +1048,7 @@ class ASCiCloudProvider: ASCFileProviderProtocol & ASCSortableFileProviderProtoc
                 ASCConstants.FileExtensions.forms.contains(fileExtension)
             let canPreview = canOpenEditor ||
                 ASCConstants.FileExtensions.images.contains(fileExtension) ||
-                fileExtension == "pdf"
+                fileExtension == ASCConstants.FileExtensions.pdf
 
             if canRead {
                 entityActions.insert([.copy, .export])
@@ -1139,7 +1139,7 @@ class ASCiCloudProvider: ASCFileProviderProtocol & ASCSortableFileProviderProtoc
     func preview(file: ASCFile, files: [ASCFile]?, in view: UIView?) {
         let title = file.title
         let fileExt = title.fileExtension().lowercased()
-        let isPdf = fileExt == "pdf"
+        let isPdf = fileExt == ASCConstants.FileExtensions.pdf
         let isImage = ASCConstants.FileExtensions.images.contains(fileExt)
         let isVideo = ASCConstants.FileExtensions.videos.contains(fileExt)
 

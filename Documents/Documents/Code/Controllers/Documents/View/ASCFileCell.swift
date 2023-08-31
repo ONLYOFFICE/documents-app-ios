@@ -199,14 +199,14 @@ class ASCFileCell: MGSwipeTableCell {
         } else if ASCConstants.FileExtensions.videos.contains(fileExt) {
             icon?.image = Asset.Images.listFormatVideo.image
         } else if ASCConstants.FileExtensions.forms.contains(fileExt) {
-            if fileExt == "docxf" {
+            if fileExt == ASCConstants.FileExtensions.docxf {
                 icon?.image = Asset.Images.listFormatDocxf.image
-            } else if fileExt == "oform" {
+            } else if fileExt == ASCConstants.FileExtensions.oform {
                 icon?.image = Asset.Images.listFormatOform.image
             } else {
                 icon?.image = Asset.Images.listFormatUnknown.image
             }
-        } else if fileExt == "pdf" {
+        } else if fileExt == ASCConstants.FileExtensions.pdf {
             icon?.image = Asset.Images.listFormatPdf.image
         } else {
             icon?.image = Asset.Images.listFormatUnknown.image

@@ -1140,7 +1140,7 @@ extension ASCOneDriveProvider: ASCFileProviderProtocol {
                 ASCConstants.FileExtensions.forms.contains(fileExtension)
             let canPreview = canOpenEditor ||
                 ASCConstants.FileExtensions.images.contains(fileExtension) ||
-                fileExtension == "pdf"
+                fileExtension == ASCConstants.FileExtensions.pdf
 
             if canRead {
                 entityActions.insert([.copy, .export])
@@ -1229,7 +1229,7 @@ extension ASCOneDriveProvider: ASCFileProviderProtocol {
     func preview(file: ASCFile, files: [ASCFile]? = nil, in view: UIView? = nil) {
         let title = file.title
         let fileExt = title.fileExtension().lowercased()
-        let isPdf = fileExt == "pdf"
+        let isPdf = fileExt == ASCConstants.FileExtensions.pdf
         let isImage = ASCConstants.FileExtensions.images.contains(fileExt)
         let isVideo = ASCConstants.FileExtensions.videos.contains(fileExt)
 

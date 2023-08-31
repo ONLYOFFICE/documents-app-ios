@@ -275,7 +275,6 @@
 		FC4D0A222494F807001EF1B5 /* ASCDebugConsoleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC4D0A212494F807001EF1B5 /* ASCDebugConsoleViewController.swift */; };
 		FC4D0A242494F8B2001EF1B5 /* ASCLogIntercepter.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC4D0A232494F8B2001EF1B5 /* ASCLogIntercepter.swift */; };
 		FC4D0A2D24950503001EF1B5 /* ASCDebugManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC4D0A2C24950503001EF1B5 /* ASCDebugManager.swift */; };
-		FC4D864120C50AC00047B871 /* ASCConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCDB31A71E7C116E00907FC0 /* ASCConstants.swift */; };
 		FC54E804271F04BE00195CFD /* ASCCreatePortal.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC54E803271F04BE00195CFD /* ASCCreatePortal.swift */; };
 		FC56B5C620C017C300557C1F /* ASCStyles.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC56B5C520C017C300557C1F /* ASCStyles.swift */; };
 		FC56B5C720C017C300557C1F /* ASCStyles.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC56B5C520C017C300557C1F /* ASCStyles.swift */; };
@@ -339,23 +338,16 @@
 		FC7DC881285B3C5000E61C69 /* ASCOAuthCredential.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC7DC880285B3C4F00E61C69 /* ASCOAuthCredential.swift */; };
 		FC7DC88A285F631100E61C69 /* ASCDropboxSDKWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC7DC889285F631100E61C69 /* ASCDropboxSDKWrapper.swift */; };
 		FC7E456329226A35006C4CA1 /* ASCAccount.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC7E455829226A34006C4CA1 /* ASCAccount.swift */; };
-		FC7E456429226A35006C4CA1 /* ASCAccount.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC7E455829226A34006C4CA1 /* ASCAccount.swift */; };
 		FC7E456529226A35006C4CA1 /* ASCPaymentQuota.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC7E455929226A34006C4CA1 /* ASCPaymentQuota.swift */; };
-		FC7E456629226A35006C4CA1 /* ASCPaymentQuota.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC7E455929226A34006C4CA1 /* ASCPaymentQuota.swift */; };
 		FC7E456729226A35006C4CA1 /* ASCCategory.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC7E455A29226A34006C4CA1 /* ASCCategory.swift */; };
 		FC7E456929226A35006C4CA1 /* ASCGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC7E455B29226A34006C4CA1 /* ASCGroup.swift */; };
-		FC7E456A29226A35006C4CA1 /* ASCGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC7E455B29226A34006C4CA1 /* ASCGroup.swift */; };
 		FC7E456B29226A35006C4CA1 /* ASCEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC7E455C29226A34006C4CA1 /* ASCEntity.swift */; };
-		FC7E456C29226A35006C4CA1 /* ASCEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC7E455C29226A34006C4CA1 /* ASCEntity.swift */; };
 		FC7E456D29226A35006C4CA1 /* ASCFolder.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC7E455D29226A35006C4CA1 /* ASCFolder.swift */; };
 		FC7E456F29226A35006C4CA1 /* ASCDeepLink.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC7E455E29226A35006C4CA1 /* ASCDeepLink.swift */; };
 		FC7E457129226A35006C4CA1 /* ASCFile.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC7E455F29226A35006C4CA1 /* ASCFile.swift */; };
 		FC7E457329226A35006C4CA1 /* ASCPushSubscribed.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC7E456029226A35006C4CA1 /* ASCPushSubscribed.swift */; };
-		FC7E457429226A35006C4CA1 /* ASCPushSubscribed.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC7E456029226A35006C4CA1 /* ASCPushSubscribed.swift */; };
 		FC7E457529226A35006C4CA1 /* ASCUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC7E456129226A35006C4CA1 /* ASCUser.swift */; };
-		FC7E457629226A35006C4CA1 /* ASCUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC7E456129226A35006C4CA1 /* ASCUser.swift */; };
 		FC7E457729226A35006C4CA1 /* ASCRoomType.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC7E456229226A35006C4CA1 /* ASCRoomType.swift */; };
-		FC7E457829226A35006C4CA1 /* ASCRoomType.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC7E456229226A35006C4CA1 /* ASCRoomType.swift */; };
 		FC7F786B236ACBB00026E260 /* ASCConnectStorageGoogleController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC7F786A236ACBB00026E260 /* ASCConnectStorageGoogleController.swift */; };
 		FC81C67D22C5041600A7D104 /* ASCCustomHighlightButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC81C67C22C5041600A7D104 /* ASCCustomHighlightButton.swift */; };
 		FC82827F21C3CC01005AF726 /* ASCDeviceSplitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC82827E21C3CC01005AF726 /* ASCDeviceSplitViewController.swift */; };
@@ -411,9 +403,6 @@
 		FCCD8CA72859B80700ECD606 /* ASCDevelopOptionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCCD8CA62859B80700ECD606 /* ASCDevelopOptionsViewController.swift */; };
 		FCCDE680204973F500CFC653 /* ASCDocumentConverterTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCCDE67F204973F500CFC653 /* ASCDocumentConverterTest.swift */; };
 		FCCDE68220497C0D00CFC653 /* documents in Resources */ = {isa = PBXBuildFile; fileRef = FCCDE68120497C0D00CFC653 /* documents */; };
-		FCCF2EF92922852900E2C647 /* ASCIndexTransform.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC059D9B1E82657F00BC2F5E /* ASCIndexTransform.swift */; };
-		FCCF2EFA2922853000E2C647 /* ASCStringTransform.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC7CF50F1EF3E76F00C0A64F /* ASCStringTransform.swift */; };
-		FCCF2EFB2922856E00E2C647 /* ASCDateTransform.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC059D971E82584400BC2F5E /* ASCDateTransform.swift */; };
 		FCCF2EFC2922857500E2C647 /* ASCEntityAccess.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC41D8072265D9DD00A155C2 /* ASCEntityAccess.swift */; };
 		FCCF2EFD2922857C00E2C647 /* ASCFolderType.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC41D8092265DA5E00A155C2 /* ASCFolderType.swift */; };
 		FCCF2EFE292285DD00E2C647 /* ASCShareAccess.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC41D8032265D8DA00A155C2 /* ASCShareAccess.swift */; };
@@ -3547,8 +3536,6 @@
 				FC2882BB28EC6A850034E732 /* ASCConnectStorageWebDavControllerConfiguration.swift in Sources */,
 				1D1A2E412661018100D0335B /* Assets.swift in Sources */,
 				1DEB9971274E2EF90071C1DB /* ASCPersonalShareSettingsAPIWorkerTests.swift in Sources */,
-				FC7E456629226A35006C4CA1 /* ASCPaymentQuota.swift in Sources */,
-				FC7E456C29226A35006C4CA1 /* ASCEntity.swift in Sources */,
 				1D5DB04F265850B3006B4757 /* ASCOnlyofficeUserDefaultsCacheCategoriesProviderTests.swift in Sources */,
 				1D1A2E46266103AE00D0335B /* ASCLoadedViewControllerFinderProtocolTests.swift in Sources */,
 				1DA5E670269E2293005F59E1 /* ASCASCSharingSettingsVerifyRightHoldersTests.swift in Sources */,
@@ -3556,29 +3543,20 @@
 				1DA5E669269DBABC005F59E1 /* ASCSharingAddRightHoldersDataStoreTests.swift in Sources */,
 				FCCF2EFD2922857C00E2C647 /* ASCFolderType.swift in Sources */,
 				FCD2DD71270302B500D31BD5 /* ManagedAppConfigTest.swift in Sources */,
-				FC7E456A29226A35006C4CA1 /* ASCGroup.swift in Sources */,
 				FC56B5C720C017C300557C1F /* ASCStyles.swift in Sources */,
 				FC7765972926063D00ABAB5C /* ASCGlobalTest.swift in Sources */,
 				FC98A53329A4D6CC003A3A8D /* ASCLogIntercepter.swift in Sources */,
-				FCCF2EFA2922853000E2C647 /* ASCStringTransform.swift in Sources */,
 				FC77846D24756CDB005ED631 /* ASCFileProviderType.swift in Sources */,
-				FC4D864120C50AC00047B871 /* ASCConstants.swift in Sources */,
-				FC7E457429226A35006C4CA1 /* ASCPushSubscribed.swift in Sources */,
 				1D29915C274FC12600A06F3B /* ASCPortalTypeDefinderByUrlTests.swift in Sources */,
 				1D1A2E1F2660F93600D0335B /* ASCLoadedViewControllerByProviderAndFolderFinderTests.swift in Sources */,
 				FC77846C24756CC2005ED631 /* ASCFolderProviderType.swift in Sources */,
-				FC7E457629226A35006C4CA1 /* ASCUser.swift in Sources */,
 				1D9B7FEA26FA5A0000D06E9B /* ASCSharingOprionsInteractorTests.swift in Sources */,
 				FCD31F4524BDF2E200774ACD /* ASCLogger.swift in Sources */,
 				1DF6E0A926D5323B00FB42CE /* ASCOneDriveProviderTests.swift in Sources */,
 				1DCCEC0A268DBD9C00692167 /* ASCSharingOptionsViewControllerTest.swift in Sources */,
-				FC7E457829226A35006C4CA1 /* ASCRoomType.swift in Sources */,
 				1D29915E274FC38300A06F3B /* ASCAccessToAddRightHoldersCheckerByPortalDefinderTests.swift in Sources */,
 				1D2E3B9526BB338D00BEBE9D /* ASCSharingSettingsAccessViewControllerTests.swift in Sources */,
-				FCCF2EFB2922856E00E2C647 /* ASCDateTransform.swift in Sources */,
 				1D71107D26A5A9A000E00421 /* ASCShareSettingsAPIWorkerTests.swift in Sources */,
-				FCCF2EF92922852900E2C647 /* ASCIndexTransform.swift in Sources */,
-				FC7E456429226A35006C4CA1 /* ASCAccount.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

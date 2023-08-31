@@ -520,7 +520,7 @@ extension ASCOnlyofficeCategoriesViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if let cell = tableView.dequeueReusableCell(withIdentifier: ASCOnlyofficeCategoryCell.identifier, for: indexPath) as? ASCOnlyofficeCategoryCell {
             cell.category = getCategory(by: indexPath)
-            cell.accessoryType = (UIDevice.phone || ASCViewControllerManager.shared.currentSizeClass == .compact) ? .disclosureIndicator : .none
+            cell.accessoryType = ASCViewControllerManager.shared.phoneLayout ? .disclosureIndicator : .none
             return cell
         }
 

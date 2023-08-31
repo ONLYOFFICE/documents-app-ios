@@ -1,6 +1,6 @@
 //
 //  ASCCreateEntityUI.swift
-//  Documents-opensource
+//  Documents
 //
 //  Created by Alexander Yuzhin on 08.08.2023.
 //  Copyright © 2023 Ascensio System SIA. All rights reserved.
@@ -174,7 +174,7 @@ struct CreateEntityButtonStyle: ButtonStyle {
                     .font(Font(UIFont.preferredFont(forTextStyle: .body)))
                     .lineLimit(1)
                     .minimumScaleFactor(0.5)
-                    .padding(16)
+                    .padding([.leading, .trailing], 16)
 
                 Spacer()
 

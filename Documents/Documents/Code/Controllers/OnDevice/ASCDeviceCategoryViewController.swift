@@ -134,7 +134,7 @@ extension ASCDeviceCategoryViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if let cell = tableView.dequeueReusableCell(withIdentifier: ASCDeviceCategoryCell.identifier, for: indexPath) as? ASCDeviceCategoryCell {
             cell.category = categories[indexPath.row]
-            cell.accessoryType = (UIDevice.phone || ASCViewControllerManager.shared.currentSizeClass == .compact) ? .disclosureIndicator : .none
+            cell.accessoryType = ASCViewControllerManager.shared.phoneLayout ? .disclosureIndicator : .none
 
             return cell
         }

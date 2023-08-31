@@ -31,7 +31,7 @@ class ASCCreateEntity: NSObject, UIImagePickerControllerDelegate, UINavigationCo
 
         var createEntityVC: ASCCreateEntityUIViewController!
 
-        if UIDevice.phone || ASCViewControllerManager.shared.currentSizeClass == .compact {
+        if ASCViewControllerManager.shared.phoneLayout {
             createEntityVC = ASCCreateEntityUIViewController(
                 allowClouds: allowClouds,
                 onAction: { type in

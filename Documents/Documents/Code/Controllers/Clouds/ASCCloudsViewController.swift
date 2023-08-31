@@ -306,7 +306,7 @@ class ASCCloudsViewController: UITableViewController {
             } else {
                 UserDefaults.standard.removeObject(forKey: ASCConstants.SettingsKeys.lastCloudIndex)
 
-                if UIDevice.phone || ASCViewControllerManager.shared.currentSizeClass == .compact {
+                if ASCViewControllerManager.shared.phoneLayout {
                     if let splitVC = splitViewController as? ASCBaseSplitViewController,
                        let documentsNC = splitVC.primaryViewController as? ASCCloudsNavigationController ?? splitVC.detailViewController as? ASCCloudsNavigationController
                     {
@@ -401,7 +401,7 @@ extension ASCCloudsViewController {
             cell.cellType = type
 
             if cellIdentifier == cellConnectedIdentifier {
-                cell.accessoryType = (UIDevice.phone || ASCViewControllerManager.shared.currentSizeClass == .compact) ? .disclosureIndicator : .none
+                cell.accessoryType = ASCViewControllerManager.shared.phoneLayout ? .disclosureIndicator : .none
             }
 
             return cell

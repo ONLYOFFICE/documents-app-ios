@@ -23,6 +23,10 @@ class ASCViewControllerManager {
         return .compact
     }
 
+    var phoneLayout: Bool {
+        UIDevice.phone || ASCViewControllerManager.shared.currentSizeClass == .compact
+    }
+
     var rootController: ASCRootViewController? {
         didSet {
             if oldValue == nil {

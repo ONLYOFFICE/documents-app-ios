@@ -1371,7 +1371,7 @@ class ASCDocumentsViewController: ASCBaseTableViewController, UIGestureRecognize
     }
 
     @objc func onAppMovedToBackground() {
-        if !(UIDevice.phone || ASCViewControllerManager.shared.currentSizeClass == .compact) {
+        if !ASCViewControllerManager.shared.phoneLayout {
             setEditMode(false)
         }
     }

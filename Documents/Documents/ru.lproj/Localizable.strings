@@ -268,6 +268,9 @@
 /* No comment provided by engineer. */
 "Connect Clouds" = "Подключить облака";
 
+/* No comment provided by engineer. */
+"Connect Storage" = "Подключить хранилище";
+
 /* Introduction Step Three - Description */
 "Connect third-party storage\nlike Nextcloud, ownCloud, Yandex Disk and\nothers which use WebDAV protocol." = "Подключите стороннее хранилище,\nтакое как Nextcloud, ownCloud, Яндекс.Диск и\nдругие, использующие протокол WebDAV.";
 
@@ -300,9 +303,6 @@
 
 /* Description of file operation error */
 "Could not change the directory" = "Не удалось изменить каталог";
-
-/* No comment provided by engineer. */
-"Could not convert file to export." = "Невозможно преобразовать файл для экспорта.";
 
 /* Description of file operation error */
 "Could not copy file" = "Не удалось скопировать файл";
@@ -353,9 +353,6 @@
 "Could not move file" = "Не удалось переместить файл";
 
 /* No comment provided by engineer. */
-"Could not open editor." = "Невозможно открыть редактор.";
-
-/* No comment provided by engineer. */
 "Could not open file." = "Невозможно открыть файл.";
 
 /* No comment provided by engineer. */
@@ -374,7 +371,7 @@
 "Could not write to file" = "Не удалось записать в файл";
 
 /* No comment provided by engineer. */
-"Couldn't open file" = "Не удалось открыть файл";
+"Couldn't rename the file" = "Не удалось переименовать файл";
 
 /* No comment provided by engineer. */
 "Couldn't save changes at server. Your modified document is saved in local storage as %@" = "Не удалось сохранить изменения на сервере. Ваш измененный документ сохранен в локальном хранилище под именем %@";
@@ -517,9 +514,6 @@
 
 /* Presentation Viewer */
 "End Slide Show" = "Завершить";
-
-/* No comment provided by engineer. */
-"Enter a password to open the file." = "Введите пароль, чтобы открыть файл.";
 
 /* placeholder */
 "Enter email" = "Введите адрес электронной почты";
@@ -671,6 +665,12 @@
 /* No comment provided by engineer. */
 "Images" = "Изображения";
 
+/* No comment provided by engineer. */
+"Import File" = "Загрузить файл";
+
+/* No comment provided by engineer. */
+"Import Image" = "Загрузить изображение";
+
 /* Introduction Step Five - Description */
 "In online mode, use real-time co-editing features of %@ to work on documents together with your portal members, share documents and create common storage folders." = "В онлайн-режиме используйте функции совместного редактирования в режиме реального времени %@, чтобы работать над документами вместе с участниками портала, делиться документами и создавать общие папки для хранения.";
 
@@ -804,9 +804,6 @@
 
 /* No comment provided by engineer. */
 "Name is empty" = "Имя не заполнено";
-
-/* No comment provided by engineer. */
-"Needs additional params." = "Нужны дополнительные параметры.";
 
 /* Badge of file in file list */
 "new" = "новое";
@@ -1045,9 +1042,6 @@
 "Project Documents" = "В проектах";
 
 /* No comment provided by engineer. */
-"Protected File" = "Защищенный файл";
-
-/* No comment provided by engineer. */
 "Push notifications disabled" = "Push-уведомления отключены";
 
 /* Button title */
@@ -1249,6 +1243,9 @@
 /* No comment provided by engineer. */
 "Tab" = "Табуляция";
 
+/* No comment provided by engineer. */
+"Take a Picture" = "Сделать снимок";
+
 /* Data units */
 "Tb" = "Тб";
 
@@ -1284,9 +1281,6 @@
 
 /* No comment provided by engineer. */
 "The link for external\naccess is copied\nto the clipboard" = "Ссылка для внешнего\nдоступа скопирована\nв буфер обмена";
-
-/* No comment provided by engineer. */
-"The ONLYOFFICE Editors module is missing. Please contact support@onlyoffice.com for more information." = "Модуль ONLYOFFICE Editors отсутствует. Пожалуйста, свяжитесь с support@onlyoffice.com для получения дополнительной информации.";
 
 /* No comment provided by engineer. */
 "The parameters are incorrect." = "Некорректные параметры";
@@ -1455,9 +1449,6 @@
 
 /* Caption of the processing */
 "Unpning" = "Открепление";
-
-/* No comment provided by engineer. */
-"Unsupported format." = "Неподдерживаемый формат.";
 
 /* Caption of the process */
 "Uploading" = "Загрузка";

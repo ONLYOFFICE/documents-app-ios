@@ -127,8 +127,6 @@ def fix_xcworkspaces
 end
 
 post_install do | installer |
-  fix_xcworkspaces
-
   require 'fileutils'
   FileUtils.cp_r(
     'Pods/Target Support Files/Pods-Documents/Pods-Documents-acknowledgements.plist',
@@ -153,4 +151,8 @@ post_install do | installer |
     end
   end
 
+end
+
+post_integrate do |installer|
+  fix_xcworkspaces
 end

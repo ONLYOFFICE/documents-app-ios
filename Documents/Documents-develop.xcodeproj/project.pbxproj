@@ -554,6 +554,34 @@
 			remoteGlobalIDString = FC8C45C51B4BEDE700A3331C;
 			remoteInfo = SpreadsheetEditor;
 		};
+		FCBD2E042AA5DC0A00159B70 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 8AE79DB322E8AB40004E76CF /* DocumentConverter.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = FC055F1F2A9DE9F400E4A001;
+			remoteInfo = "DocumentConverter-spm";
+		};
+		FCBD2E072AA5DC0A00159B70 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 8A46167422C361B800595CE4 /* DocumentEditor.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = FC0561AC2A9DEC9200E4A001;
+			remoteInfo = "DocumentEditor-spm";
+		};
+		FCBD2E0A2AA5DC0A00159B70 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 8A46165A22C361B200595CE4 /* PresentationEditor.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = FC0564682A9DEDD000E4A001;
+			remoteInfo = "PresentationEditor-spm";
+		};
+		FCBD2E0D2AA5DC0A00159B70 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 8A46164022C361A400595CE4 /* SpreadsheetEditor.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = FC055EFD2A9DE7BA00E4A001;
+			remoteInfo = "SpreadsheetEditor-spm";
+		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -1522,6 +1550,7 @@
 			isa = PBXGroup;
 			children = (
 				FC5368D124EB1AD60092765B /* DocumentConverter.framework */,
+				FCBD2E052AA5DC0A00159B70 /* DocumentConverter.framework */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -1530,6 +1559,7 @@
 			isa = PBXGroup;
 			children = (
 				FC5368D824EB1AE10092765B /* DocumentEditor.framework */,
+				FCBD2E082AA5DC0A00159B70 /* DocumentEditor.framework */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -1538,6 +1568,7 @@
 			isa = PBXGroup;
 			children = (
 				FC5368DF24EB1AED0092765B /* PresentationEditor.framework */,
+				FCBD2E0B2AA5DC0A00159B70 /* PresentationEditor.framework */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -1546,6 +1577,7 @@
 			isa = PBXGroup;
 			children = (
 				FC5368E624EB1AF80092765B /* SpreadsheetEditor.framework */,
+				FCBD2E0E2AA5DC0A00159B70 /* SpreadsheetEditor.framework */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -2919,6 +2951,34 @@
 			fileType = wrapper.framework;
 			path = SpreadsheetEditor.framework;
 			remoteRef = FC5368E524EB1AF80092765B /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		FCBD2E052AA5DC0A00159B70 /* DocumentConverter.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = DocumentConverter.framework;
+			remoteRef = FCBD2E042AA5DC0A00159B70 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		FCBD2E082AA5DC0A00159B70 /* DocumentEditor.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = DocumentEditor.framework;
+			remoteRef = FCBD2E072AA5DC0A00159B70 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		FCBD2E0B2AA5DC0A00159B70 /* PresentationEditor.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = PresentationEditor.framework;
+			remoteRef = FCBD2E0A2AA5DC0A00159B70 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		FCBD2E0E2AA5DC0A00159B70 /* SpreadsheetEditor.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = SpreadsheetEditor.framework;
+			remoteRef = FCBD2E0D2AA5DC0A00159B70 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 /* End PBXReferenceProxy section */

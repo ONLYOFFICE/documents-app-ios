@@ -66,7 +66,11 @@ class OnlyofficeResponseCodable<T: Codable>: OnlyofficeResponseBase {
         if let response = map["response"].currentValue,
            let data = try? JSONSerialization.data(withJSONObject: response, options: .prettyPrinted)
         {
-            result = try? JSONDecoder().decode(T.self, from: data)
+            do {
+                result = try JSONDecoder().decode(T.self, from: data)
+            } catch {
+                log.error(error)
+            }
         }
     }
 }

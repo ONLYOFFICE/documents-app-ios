@@ -52,6 +52,22 @@ struct OnlyofficeDocumentReferenceData: Codable {
         case fileKey
         case instanceID = "instanceId"
     }
+
+    init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+
+        do {
+            fileKey = try String(container.decode(Int.self, forKey: .fileKey))
+        } catch DecodingError.typeMismatch {
+            fileKey = try container.decode(String.self, forKey: .fileKey)
+        }
+
+        do {
+            instanceID = try String(container.decode(Int.self, forKey: .instanceID))
+        } catch DecodingError.typeMismatch {
+            instanceID = try container.decode(String.self, forKey: .instanceID)
+        }
+    }
 }
 
 // MARK: - OnlyofficeDocumentEditorConfig

@@ -2,7 +2,7 @@
 //  ASCOneDriveProviderTests.swift
 //  DocumentsTests
 //
-//  Created by Павел Чернышев on 24.08.2021.
+//  Created by Pavel Chernyshev on 24.08.2021.
 //  Copyright © 2021 Ascensio System SIA. All rights reserved.
 //
 

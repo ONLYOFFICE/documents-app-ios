@@ -2,7 +2,7 @@
 //  ASCSharingAddRightHoldersSearchResultsTableViewDataSourceAndDelegate.swift
 //  Documents
 //
-//  Created by Павел Чернышев on 09.07.2021.
+//  Created by Pavel Chernyshev on 09.07.2021.
 //  Copyright © 2021 Ascensio System SIA. All rights reserved.
 //
 

@@ -2,7 +2,7 @@
 //  ASCOneDriveFileProvider.swift
 //  Documents
 //
-//  Created by Павел Чернышев on 04.05.2021.
+//  Created by Pavel Chernyshev on 04.05.2021.
 //  Copyright © 2021 Ascensio System SIA. All rights reserved.
 //
 

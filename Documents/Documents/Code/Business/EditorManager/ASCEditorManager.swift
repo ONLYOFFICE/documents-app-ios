@@ -907,6 +907,7 @@ extension ASCEditorManager {
         editorViewController.modalTransitionStyle = .crossDissolve
         editorViewController.modalPresentationStyle = .fullScreen
 
+        editorWindow.overrideUserInterfaceStyle = AppThemeService.theme.overrideUserInterfaceStyle
         editorWindow.rootViewController?.present(editorViewController, animated: true, completion: {
             self.openedFile = file
 
@@ -986,6 +987,7 @@ extension ASCEditorManager {
         editorViewController.modalTransitionStyle = .crossDissolve
         editorViewController.modalPresentationStyle = .fullScreen
 
+        editorWindow.overrideUserInterfaceStyle = AppThemeService.theme.overrideUserInterfaceStyle
         editorWindow.rootViewController?.present(editorViewController, animated: true, completion: {
             self.openedFile = file
             self.provider = ASCFileManager.onlyofficeProvider

@@ -348,7 +348,7 @@ SPEC CHECKSUMS:
   AppAuth: 3bb1d1cd9340bd09f5ed189fb00b1cc28e1e8570
   atlantis-proxyman: 9a90620999a83ac35f71cbd332fa083ba7505f5e
   DocumentConverter: f7579951f1d9cf4296aa6cefac3501d108e7723f
-  DocumentEditor: 33a51f8fc2c90fbbcbd4f22eb5dbaf766b016ead
+  DocumentEditor: f69584df8ac49c4330c1931942db64636ba4d6c3
   FacebookCore: ba86524b66cfa86d0f8e65d08faa8504a9f732dd
   FacebookLogin: 6cee9fd6e1fe976fe8f7eec199e27b28b14f5d63
   FBSDKCoreKit: 1d5acf7c9d7a2f92bb1a242dc60cae5b7adb91df

@@ -1,5 +1,5 @@
 //
-//  ASCShareSettingsAPIWorker.swift
+//  ASCShareSettingsAPIWorkerTests.swift
 //  DocumentsTests
 //
 //  Created by Pavel Chernyshev on 19.07.2021.

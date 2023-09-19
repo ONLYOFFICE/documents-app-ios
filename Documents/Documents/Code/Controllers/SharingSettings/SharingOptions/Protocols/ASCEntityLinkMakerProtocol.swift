@@ -1,5 +1,5 @@
 //
-//  EntityLinkMakerProtocol.swift
+//  ASCEntityLinkMakerProtocol.swift
 //  Documents
 //
 //  Created by Pavel Chernyshev on 06.07.2021.

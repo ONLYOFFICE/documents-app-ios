@@ -13,8 +13,8 @@ import Foundation
 class ASCOneDriveProvider: ASCSortableFileProviderProtocol {
     // MARK: - ASCSortableFileProviderProtocol variables
 
-    internal var folder: ASCFolder?
-    internal var fetchInfo: [String: Any?]?
+    var folder: ASCFolder?
+    var fetchInfo: [String: Any?]?
 
     // MARK: - ASCFileProviderProtocol variables
 

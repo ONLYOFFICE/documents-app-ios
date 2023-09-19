@@ -1,5 +1,5 @@
 //
-//  ASCEditorManager+SpreadsheetEditorViewControllerDelegate.swift
+//  ASCEditorManager+SpreadsheetEditor.swift
 //  Documents
 //
 //  Created by Alexander Yuzhin on 13.06.2023.

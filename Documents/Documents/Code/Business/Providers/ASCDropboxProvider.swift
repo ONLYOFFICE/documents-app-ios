@@ -52,10 +52,10 @@ class ASCDropboxProvider: ASCFileProviderProtocol & ASCSortableFileProviderProto
     var filterController: ASCFiltersControllerProtocol?
 
     private var apiClient: DropboxApiClient?
-    internal var provider: DropboxFileProvider?
+    var provider: DropboxFileProvider?
 
-    internal var folder: ASCFolder?
-    internal var fetchInfo: [String: Any?]?
+    var folder: ASCFolder?
+    var fetchInfo: [String: Any?]?
 
     fileprivate lazy var providerOperationDelegate = ASCDropboxProviderDelegate()
     private var operationProcess: Progress?

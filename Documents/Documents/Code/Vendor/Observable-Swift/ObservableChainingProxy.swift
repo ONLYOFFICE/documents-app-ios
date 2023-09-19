@@ -1,5 +1,5 @@
 //
-//  Chaining.swift
+//  ObservableChainingProxy.swift
 //  Observable-Swift
 //
 //  Created by Leszek Ślażyński on 23/06/14.

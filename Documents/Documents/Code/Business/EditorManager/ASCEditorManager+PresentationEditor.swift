@@ -1,5 +1,5 @@
 //
-//  ASCEditorManager+PresentationEditorViewControllerDelegate.swift
+//  ASCEditorManager+PresentationEditor.swift
 //  Documents
 //
 //  Created by Alexander Yuzhin on 13.06.2023.

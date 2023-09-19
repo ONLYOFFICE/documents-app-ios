@@ -66,10 +66,10 @@ class ASCWebDAVProvider: ASCFileProviderProtocol & ASCSortableFileProviderProtoc
     var delegate: ASCProviderDelegate?
     var filterController: ASCFiltersControllerProtocol?
 
-    internal var provider: WebDAVFileProvider?
+    var provider: WebDAVFileProvider?
 
-    internal var folder: ASCFolder?
-    internal var fetchInfo: [String: Any?]?
+    var folder: ASCFolder?
+    var fetchInfo: [String: Any?]?
 
     fileprivate lazy var providerOperationDelegate = ASCWebDAVProviderDelegate()
     private var operationProcess: Progress?

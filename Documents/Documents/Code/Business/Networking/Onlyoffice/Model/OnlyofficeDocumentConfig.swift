@@ -1,5 +1,5 @@
 //
-//  OnlyofficeDocument.swift
+//  OnlyofficeDocumentConfig.swift
 //  Documents
 //
 //  Created by Alexander Yuzhin on 17.08.2023.

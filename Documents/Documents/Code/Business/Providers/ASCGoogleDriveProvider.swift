@@ -49,8 +49,8 @@ class ASCGoogleDriveProvider: ASCFileProviderProtocol & ASCSortableFileProviderP
     var delegate: ASCProviderDelegate?
     var filterController: ASCFiltersControllerProtocol?
 
-    internal var folder: ASCFolder?
-    internal var fetchInfo: [String: Any?]?
+    var folder: ASCFolder?
+    var fetchInfo: [String: Any?]?
 
     private let googleDriveService = GTLRDriveService()
     private var googleUser: GIDGoogleUser?

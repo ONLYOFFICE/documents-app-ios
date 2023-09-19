@@ -35,8 +35,8 @@ class ASCLocalProvider: ASCFileProviderProtocol & ASCSortableFileProviderProtoco
         itemsCount: 0
     )
 
-    internal var folder: ASCFolder?
-    internal var fetchInfo: [String: Any?]?
+    var folder: ASCFolder?
+    var fetchInfo: [String: Any?]?
 
     fileprivate lazy var deviceUser: ASCUser = {
         let owner = ASCUser()

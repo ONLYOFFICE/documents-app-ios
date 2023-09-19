@@ -1,5 +1,5 @@
 //
-//  ASCSharingSettingsAccessForLinkNotesProvider.swift
+//  ASCSharingSettingsAccessForExternalLinkNotesProvider.swift
 //  Documents
 //
 //  Created by Pavel Chernyshev on 04.08.2021.

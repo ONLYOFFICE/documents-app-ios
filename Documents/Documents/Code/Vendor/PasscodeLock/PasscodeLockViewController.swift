@@ -39,9 +39,9 @@ open class PasscodeLockViewController: UIViewController, PasscodeLockTypeDelegat
     open var animateOnDismiss: Bool
     open var notificationCenter: NotificationCenter?
 
-    internal let passcodeConfiguration: PasscodeLockConfigurationType
-    internal var passcodeLock: PasscodeLockType
-    internal var isPlaceholdersAnimationCompleted = true
+    let passcodeConfiguration: PasscodeLockConfigurationType
+    var passcodeLock: PasscodeLockType
+    var isPlaceholdersAnimationCompleted = true
 
     fileprivate var shouldTryToAuthenticateWithBiometrics = true
 
@@ -116,7 +116,7 @@ open class PasscodeLockViewController: UIViewController, PasscodeLockTypeDelegat
         return UIDevice.phone ? .portrait : super.preferredInterfaceOrientationForPresentation
     }
 
-    internal func updatePasscodeView() {
+    func updatePasscodeView() {
         titleLabel?.text = passcodeLock.state.title
         descriptionLabel?.text = passcodeLock.state.description
         cancelButton?.isHidden = !passcodeLock.state.isCancellableAction
@@ -186,7 +186,7 @@ open class PasscodeLockViewController: UIViewController, PasscodeLockTypeDelegat
         }
     }
 
-    internal func dismissPasscodeLock(_ lock: PasscodeLockType, completionHandler: (() -> Void)? = nil) {
+    func dismissPasscodeLock(_ lock: PasscodeLockType, completionHandler: (() -> Void)? = nil) {
         // if presented as modal
         if presentingViewController?.presentedViewController == self {
             dismiss(animated: animateOnDismiss, completion: { [weak self] in
@@ -210,7 +210,7 @@ open class PasscodeLockViewController: UIViewController, PasscodeLockTypeDelegat
 
     // MARK: - Animations
 
-    internal func animateWrongPassword() {
+    func animateWrongPassword() {
         deleteSignButton?.isEnabled = false
         isPlaceholdersAnimationCompleted = false
 
@@ -237,7 +237,7 @@ open class PasscodeLockViewController: UIViewController, PasscodeLockTypeDelegat
         )
     }
 
-    internal func animatePlaceholders(_ placeholders: [PasscodeSignPlaceholderView], toState state: PasscodeSignPlaceholderView.State) {
+    func animatePlaceholders(_ placeholders: [PasscodeSignPlaceholderView], toState state: PasscodeSignPlaceholderView.State) {
         for placeholder in placeholders {
             placeholder.animateState(state)
         }

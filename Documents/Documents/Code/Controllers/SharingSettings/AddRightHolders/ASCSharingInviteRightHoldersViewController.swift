@@ -1,5 +1,5 @@
 //
-//  ASCSharingAddRightHoldersViewController.swift
+//  ASCSharingInviteRightHoldersViewController.swift
 //  Documents
 //
 //  Created by Pavel Chernyshev on 09.07.2021.

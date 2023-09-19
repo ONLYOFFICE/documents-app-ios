@@ -47,7 +47,7 @@ class NetworkingClient: NSObject, NetworkingRequestingProtocol {
 
     // MARK: - Internal Properties
 
-    internal var manager = Alamofire.Session()
+    var manager = Alamofire.Session()
     private let queue = DispatchQueue(label: "asc.networking.client.\(String(describing: type(of: NetworkingClient.self)))")
 
     private lazy var configuration: URLSessionConfiguration = {
@@ -57,7 +57,7 @@ class NetworkingClient: NSObject, NetworkingRequestingProtocol {
     }(URLSessionConfiguration.default)
 
     public var headers: HTTPHeaders = .default
-    internal let defaultTimeoutIntervalForResource: TimeInterval = 30
+    let defaultTimeoutIntervalForResource: TimeInterval = 30
 
     // MARK: - init
 

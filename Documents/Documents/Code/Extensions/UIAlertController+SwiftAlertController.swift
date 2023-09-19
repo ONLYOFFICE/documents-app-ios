@@ -1,5 +1,5 @@
 //
-// SwiftAlertController.swift
+// UIAlertController+SwiftAlertController.swift
 // Copyright (c) 2016, zahlz
 // All rights reserved.
 //

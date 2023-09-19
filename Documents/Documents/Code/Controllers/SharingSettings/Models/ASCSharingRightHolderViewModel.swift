@@ -1,5 +1,5 @@
 //
-//  ASCSharingOptionsRightHolderViewModel.swift
+//  ASCSharingRightHolderViewModel.swift
 //  Documents
 //
 //  Created by Pavel Chernyshev on 10.06.2021.

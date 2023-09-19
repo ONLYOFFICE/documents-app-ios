@@ -68,7 +68,7 @@ class ASCEditorManager: NSObject {
     private var shareHandler: ASCEditorManagerShareHandler?
     private var renameHandler: ASCEditorManagerRenameHandler?
     private var documentInteractionController: UIDocumentInteractionController?
-    internal var documentServiceURL: String?
+    var documentServiceURL: String?
     private var documentKeyForTrack: String?
     private var documentURLForTrack: String?
     private var documentToken: String?

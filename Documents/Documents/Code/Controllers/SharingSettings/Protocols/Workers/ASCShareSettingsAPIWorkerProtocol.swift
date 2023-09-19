@@ -1,5 +1,5 @@
 //
-//  ShareSettingsAPIWorkerProtocol.swift
+//  ASCShareSettingsAPIWorkerProtocol.swift
 //  Documents
 //
 //  Created by Pavel Chernyshev on 19.07.2021.

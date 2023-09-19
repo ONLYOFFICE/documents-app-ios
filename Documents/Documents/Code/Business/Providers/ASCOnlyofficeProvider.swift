@@ -50,13 +50,13 @@ class ASCOnlyofficeProvider: ASCFileProviderProtocol & ASCSortableFileProviderPr
     var delegate: ASCProviderDelegate?
     var filterController: ASCFiltersControllerProtocol?
 
-    internal var folder: ASCFolder? {
+    var folder: ASCFolder? {
         didSet {
             setFiltersController()
         }
     }
 
-    internal var fetchInfo: [String: Any?]?
+    var fetchInfo: [String: Any?]?
 
     var apiClient: OnlyofficeApiClient {
         return OnlyofficeApiClient.shared

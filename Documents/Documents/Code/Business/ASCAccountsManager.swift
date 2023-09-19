@@ -1,5 +1,5 @@
 //
-//  ASCAccountsManage.swift
+//  ASCAccountsManager.swift
 //  Documents
 //
 //  Created by Alexander Yuzhin on 10/24/17.

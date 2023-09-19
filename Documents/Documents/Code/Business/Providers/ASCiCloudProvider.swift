@@ -46,9 +46,9 @@ class ASCiCloudProvider: ASCFileProviderProtocol & ASCSortableFileProviderProtoc
     var delegate: ASCProviderDelegate?
     var filterController: ASCFiltersControllerProtocol?
 
-    internal var folder: ASCFolder?
-    internal var fetchInfo: [String: Any?]?
-    internal var provider: CloudFileProvider?
+    var folder: ASCFolder?
+    var fetchInfo: [String: Any?]?
+    var provider: CloudFileProvider?
 
     fileprivate let identifier: String? = (Bundle.main.bundleIdentifier != nil) ? ("iCloud." + Bundle.main.bundleIdentifier!) : nil
     fileprivate lazy var providerOperationDelegate = ASCiCloudProviderDelegate()

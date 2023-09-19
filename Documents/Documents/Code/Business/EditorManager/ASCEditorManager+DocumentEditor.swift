@@ -1,5 +1,5 @@
 //
-//  ASCEditorManager+DocumentEditorViewControllerDelegate.swift
+//  ASCEditorManager+DocumentEditor.swift
 //  Documents-develop
 //
 //  Created by Alexander Yuzhin on 26.04.2023.

@@ -10,18 +10,21 @@ import ObjectMapper
 import UIKit
 
 enum UserType: String {
-    case admin
+    case docspaseAdmin
     case user
-    case owner
+    case powerUser
+    case roomAdmin
 
     var description: String {
         switch self {
-        case .admin:
-            return NSLocalizedString("Admin", comment: "")
+        case .docspaseAdmin:
+            return NSLocalizedString("DocSpace admin", comment: "")
         case .user:
             return NSLocalizedString("User", comment: "")
-        case .owner:
-            return NSLocalizedString("Owner", comment: "")
+        case .powerUser:
+            return NSLocalizedString("Power user", comment: "")
+        case .roomAdmin:
+            return NSLocalizedString("Room admin", comment: "")
         }
     }
 }

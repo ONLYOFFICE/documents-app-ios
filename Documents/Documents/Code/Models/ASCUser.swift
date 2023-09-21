@@ -23,11 +23,12 @@ class ASCUser: Mappable {
     var avatarRetina: String?
     var isAdmin: Bool = false
     var isVisitor: Bool = false
+    var isCollaborator: Bool = false
     var isOwner: Bool = false
     var accessValue: ASCShareAccess = .none
 
     var userType: UserType {
-        return isAdmin ? .admin : isOwner ? .owner : .user
+        return isAdmin ? .docspaseAdmin : isVisitor ? .user : isCollaborator ? .powerUser : .roomAdmin
     }
 
     init() {
@@ -52,6 +53,7 @@ class ASCUser: Mappable {
         avatarRetina <- map["avatarRetina"]
         isAdmin <- map["isAdmin"]
         isVisitor <- map["isVisitor"]
+        isCollaborator <- map["isCollaborator"]
         isOwner <- map["isOwner"]
         accessValue <- (map["access"], EnumTransform())
 

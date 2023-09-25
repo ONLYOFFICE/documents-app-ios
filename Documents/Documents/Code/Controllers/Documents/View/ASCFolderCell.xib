@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="21701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21679"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -32,8 +32,9 @@
                         </constraints>
                     </view>
                     <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="list-folder" translatesAutoresizingMaskIntoConstraints="NO" id="PR2-Y6-y52">
-                        <rect key="frame" x="15" y="16.5" width="45" height="44"/>
+                        <rect key="frame" x="15" y="16" width="45" height="45"/>
                         <constraints>
+                            <constraint firstAttribute="width" secondItem="PR2-Y6-y52" secondAttribute="height" multiplier="1:1" id="0jL-C6-ZIP"/>
                             <constraint firstAttribute="width" constant="45" id="7cH-WA-tOs"/>
                         </constraints>
                     </imageView>
@@ -123,6 +124,8 @@
                 <outlet property="date" destination="NxY-4m-846" id="Jha-8A-fSC"/>
                 <outlet property="dateRight" destination="oRS-8K-VdB" id="7sp-83-KCb"/>
                 <outlet property="icon" destination="PR2-Y6-y52" id="341-FS-DgZ"/>
+                <outlet property="imageAspectRatioConstraint" destination="0jL-C6-ZIP" id="ooF-yh-DnO"/>
+                <outlet property="imageWidthConstraint" destination="7cH-WA-tOs" id="sc8-Xq-48E"/>
                 <outlet property="owner" destination="ez1-hI-WEL" id="G7y-uu-dcG"/>
                 <outlet property="title" destination="BSO-Bd-Qea" id="sGa-R1-dEE"/>
                 <outlet property="titleImage" destination="mJh-Db-ug6" id="QLE-tQ-SlV"/>

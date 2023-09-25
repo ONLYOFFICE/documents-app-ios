@@ -21,6 +21,9 @@ class ASCFolderCell: MGSwipeTableCell {
     @IBOutlet var titleStackView: UIStackView!
     @IBOutlet var dateRight: UILabel!
 
+    @IBOutlet var imageAspectRatioConstraint: NSLayoutConstraint!
+    @IBOutlet var imageWidthConstraint: NSLayoutConstraint!
+
     var folder: ASCFolder? {
         didSet {
             updateData()
@@ -52,7 +55,7 @@ class ASCFolderCell: MGSwipeTableCell {
 
     override func awakeFromNib() {
         super.awakeFromNib()
-
+        imageAspectRatioConstraint.isActive = false
         contentView.clipsToBounds = false
     }
 
@@ -172,18 +175,29 @@ class ASCFolderCell: MGSwipeTableCell {
     private func setRoomIcon(roomType: ASCRoomType) {
         guard let provider = provider else { return }
         icon?.kf.setProviderImage(
-            with: provider.absoluteUrl(from: folder?.smallLogo ?? ""),
+            with: provider.absoluteUrl(from: folder?.largeLogo ?? ""),
             for: provider,
             placeholder: nil,
             completionHandler: { [weak self] result in
                 switch result {
                 case .success:
                     self?.icon?.contentMode = .scaleAspectFit
+                    self?.imageAspectRatioConstraint.isActive = true
+                    self?.imageWidthConstraint.constant = roomType.image.size.width
+                    self?.icon?.layer.cornerRadius = Constants.cornerRadius
+                    self?.icon?.clipsToBounds = true
                 default:
-                    self?.icon?.contentMode = .center
+                    self?.icon?.contentMode = .left
+                    self?.imageAspectRatioConstraint.isActive = false
+                    self?.imageWidthConstraint.constant = Constants.imageWidthConstraint
                     self?.icon?.image = roomType.image
                 }
             }
         )
     }
+}
+
+private enum Constants {
+    static let imageWidthConstraint: CGFloat = 45
+    static let cornerRadius: CGFloat = 6
 }

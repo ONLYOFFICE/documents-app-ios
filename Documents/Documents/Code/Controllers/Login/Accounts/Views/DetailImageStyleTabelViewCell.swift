@@ -10,7 +10,7 @@ import Kingfisher
 import UIKit
 
 class DetailImageStyleTabelViewCell: UITableViewCell {
-    static var reuseIdentifier: String = "DetailImageStyleTabelViewCell"
+    static let reuseIdentifier = String(describing: DetailImageStyleTabelViewCell.self)
 
     let titleLabel: UILabel = {
         let label = UILabel()
@@ -100,7 +100,7 @@ extension DetailImageStyleTabelViewCell {
 
 extension DetailImageStyleTabelViewCell {
     func setup(model: AccountCellModel?) {
-        guard let model = model else { return }
+        guard let model else { return }
         titleLabel.text = model.name
         detailLabel.text = model.portal
         titleLabel.font = model.style.nameFont

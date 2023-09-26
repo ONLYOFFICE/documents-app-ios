@@ -19,7 +19,7 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zsv-AQ-fXv">
-                        <rect key="frame" x="70" y="76" width="699.5" height="1"/>
+                        <rect key="frame" x="60" y="76" width="709.5" height="1"/>
                         <color key="backgroundColor" systemColor="separatorColor"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="1" id="ozk-8w-1zr">
@@ -32,17 +32,13 @@
                         </constraints>
                     </view>
                     <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="list-folder" translatesAutoresizingMaskIntoConstraints="NO" id="PR2-Y6-y52">
-                        <rect key="frame" x="15" y="16" width="45" height="45"/>
-                        <constraints>
-                            <constraint firstAttribute="width" secondItem="PR2-Y6-y52" secondAttribute="height" multiplier="1:1" id="0jL-C6-ZIP"/>
-                            <constraint firstAttribute="width" constant="45" id="7cH-WA-tOs"/>
-                        </constraints>
+                        <rect key="frame" x="15" y="16.5" width="35" height="44"/>
                     </imageView>
                     <stackView opaque="NO" contentMode="scaleToFill" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="rjE-BW-CqC">
-                        <rect key="frame" x="70" y="14.5" width="591.5" height="48"/>
+                        <rect key="frame" x="60" y="14.5" width="601.5" height="48"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="2" translatesAutoresizingMaskIntoConstraints="NO" id="HwK-NL-VyC">
-                                <rect key="frame" x="0.0" y="0.0" width="460.5" height="48"/>
+                                <rect key="frame" x="0.0" y="0.0" width="470.5" height="48"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacing="2" translatesAutoresizingMaskIntoConstraints="NO" id="qzY-SM-JLf">
                                         <rect key="frame" x="0.0" y="0.0" width="63" height="18"/>
@@ -100,7 +96,7 @@
                                 </subviews>
                             </stackView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="00.00.2000, 12:00" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="8" translatesAutoresizingMaskIntoConstraints="NO" id="oRS-8K-VdB">
-                                <rect key="frame" x="465.5" y="0.0" width="126" height="48"/>
+                                <rect key="frame" x="475.5" y="0.0" width="126" height="48"/>
                                 <fontDescription key="fontDescription" style="UICTFontTextStyleSubhead"/>
                                 <color key="textColor" systemColor="secondaryLabelColor"/>
                                 <nil key="highlightedColor"/>
@@ -124,8 +120,6 @@
                 <outlet property="date" destination="NxY-4m-846" id="Jha-8A-fSC"/>
                 <outlet property="dateRight" destination="oRS-8K-VdB" id="7sp-83-KCb"/>
                 <outlet property="icon" destination="PR2-Y6-y52" id="341-FS-DgZ"/>
-                <outlet property="imageAspectRatioConstraint" destination="0jL-C6-ZIP" id="ooF-yh-DnO"/>
-                <outlet property="imageWidthConstraint" destination="7cH-WA-tOs" id="sc8-Xq-48E"/>
                 <outlet property="owner" destination="ez1-hI-WEL" id="G7y-uu-dcG"/>
                 <outlet property="title" destination="BSO-Bd-Qea" id="sGa-R1-dEE"/>
                 <outlet property="titleImage" destination="mJh-Db-ug6" id="QLE-tQ-SlV"/>

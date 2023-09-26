@@ -21,9 +21,6 @@ class ASCFolderCell: MGSwipeTableCell {
     @IBOutlet var titleStackView: UIStackView!
     @IBOutlet var dateRight: UILabel!
 
-    @IBOutlet var imageAspectRatioConstraint: NSLayoutConstraint!
-    @IBOutlet var imageWidthConstraint: NSLayoutConstraint!
-
     var folder: ASCFolder? {
         didSet {
             updateData()
@@ -55,7 +52,6 @@ class ASCFolderCell: MGSwipeTableCell {
 
     override func awakeFromNib() {
         super.awakeFromNib()
-        imageAspectRatioConstraint.isActive = false
         contentView.clipsToBounds = false
     }
 
@@ -179,25 +175,55 @@ class ASCFolderCell: MGSwipeTableCell {
             for: provider,
             placeholder: nil,
             completionHandler: { [weak self] result in
+                guard let self else { return }
                 switch result {
-                case .success:
-                    self?.icon?.contentMode = .scaleAspectFit
-                    self?.imageAspectRatioConstraint.isActive = true
-                    self?.imageWidthConstraint.constant = roomType.image.size.width
-                    self?.icon?.layer.cornerRadius = Constants.cornerRadius
-                    self?.icon?.clipsToBounds = true
+                case let .success(imageResult):
+                    guard let image = imageResult.image.kf
+                        .resize(to: .init(width: Constants.imageSize, height: Constants.imageSize), for: .aspectFill)
+                        .applyCorenerRadious(Constants.cornerRadius)
+                    else {
+                        self.setDefaultIcon(roomType.image)
+                        return
+                    }
+                    self.icon?.image = image
+                    self.icon?.contentMode = .scaleAspectFit
                 default:
-                    self?.icon?.contentMode = .left
-                    self?.imageAspectRatioConstraint.isActive = false
-                    self?.imageWidthConstraint.constant = Constants.imageWidthConstraint
-                    self?.icon?.image = roomType.image
+                    self.setDefaultIcon(roomType.image)
                 }
             }
         )
     }
+
+    private func setDefaultIcon(_ image: UIImage) {
+        icon?.contentMode = .center
+        icon?.image = image
+    }
+
+    private func applyRoundedCorners(to image: UIImage, cornerRadius: CGFloat) -> UIImage? {
+        UIGraphicsBeginImageContextWithOptions(image.size, false, image.scale)
+        defer { UIGraphicsEndImageContext() }
+
+        let rect = CGRect(origin: .zero, size: image.size)
+        UIBezierPath(roundedRect: rect, cornerRadius: cornerRadius).addClip()
+
+        image.draw(in: rect)
+
+        return UIGraphicsGetImageFromCurrentImageContext()
+    }
 }
 
-private enum Constants {
-    static let imageWidthConstraint: CGFloat = 45
-    static let cornerRadius: CGFloat = 6
+private struct Constants {
+    static let imageSize: CGFloat = 36
+    static let cornerRadius: CGFloat = 8
+}
+
+private extension UIImage {
+    func applyCorenerRadious(_ cornerRadius: CGFloat) -> UIImage? {
+        UIGraphicsBeginImageContextWithOptions(size, false, scale)
+        defer { UIGraphicsEndImageContext() }
+        let rect = CGRect(origin: .zero, size: size)
+        UIBezierPath(roundedRect: rect, cornerRadius: cornerRadius).addClip()
+        draw(in: rect)
+        return UIGraphicsGetImageFromCurrentImageContext()
+    }
 }

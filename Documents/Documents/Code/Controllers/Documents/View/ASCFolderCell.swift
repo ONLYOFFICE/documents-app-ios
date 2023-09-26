@@ -52,7 +52,6 @@ class ASCFolderCell: MGSwipeTableCell {
 
     override func awakeFromNib() {
         super.awakeFromNib()
-
         contentView.clipsToBounds = false
     }
 
@@ -172,18 +171,59 @@ class ASCFolderCell: MGSwipeTableCell {
     private func setRoomIcon(roomType: ASCRoomType) {
         guard let provider = provider else { return }
         icon?.kf.setProviderImage(
-            with: provider.absoluteUrl(from: folder?.smallLogo ?? ""),
+            with: provider.absoluteUrl(from: folder?.largeLogo ?? ""),
             for: provider,
             placeholder: nil,
             completionHandler: { [weak self] result in
+                guard let self else { return }
                 switch result {
-                case .success:
-                    self?.icon?.contentMode = .scaleAspectFit
+                case let .success(imageResult):
+                    guard let image = imageResult.image.kf
+                        .resize(to: .init(width: Constants.imageSize, height: Constants.imageSize), for: .aspectFill)
+                        .applyCorenerRadious(Constants.cornerRadius)
+                    else {
+                        self.setDefaultIcon(roomType.image)
+                        return
+                    }
+                    self.icon?.image = image
+                    self.icon?.contentMode = .scaleAspectFit
                 default:
-                    self?.icon?.contentMode = .center
-                    self?.icon?.image = roomType.image
+                    self.setDefaultIcon(roomType.image)
                 }
             }
         )
+    }
+
+    private func setDefaultIcon(_ image: UIImage) {
+        icon?.contentMode = .center
+        icon?.image = image
+    }
+
+    private func applyRoundedCorners(to image: UIImage, cornerRadius: CGFloat) -> UIImage? {
+        UIGraphicsBeginImageContextWithOptions(image.size, false, image.scale)
+        defer { UIGraphicsEndImageContext() }
+
+        let rect = CGRect(origin: .zero, size: image.size)
+        UIBezierPath(roundedRect: rect, cornerRadius: cornerRadius).addClip()
+
+        image.draw(in: rect)
+
+        return UIGraphicsGetImageFromCurrentImageContext()
+    }
+}
+
+private struct Constants {
+    static let imageSize: CGFloat = 36
+    static let cornerRadius: CGFloat = 8
+}
+
+private extension UIImage {
+    func applyCorenerRadious(_ cornerRadius: CGFloat) -> UIImage? {
+        UIGraphicsBeginImageContextWithOptions(size, false, scale)
+        defer { UIGraphicsEndImageContext() }
+        let rect = CGRect(origin: .zero, size: size)
+        UIBezierPath(roundedRect: rect, cornerRadius: cornerRadius).addClip()
+        draw(in: rect)
+        return UIGraphicsGetImageFromCurrentImageContext()
     }
 }

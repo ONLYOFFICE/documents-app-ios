@@ -2,7 +2,7 @@
 //  ASCMultiAccountsViewController.swift
 //  Documents-opensource
 //
-//  Created by Лолита Чернышева on 31.03.2023.
+//  Created by Lolita Chernysheva on 31.03.2023.
 //  Copyright © 2023 Ascensio System SIA. All rights reserved.
 //
 

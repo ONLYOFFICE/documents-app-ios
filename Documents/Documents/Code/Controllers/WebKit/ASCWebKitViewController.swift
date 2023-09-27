@@ -2,7 +2,7 @@
 //  ASCWebKitViewController.swift
 //  Documents
 //
-//  Created by Лолита Чернышева on 04.02.2022.
+//  Created by Lolita Chernysheva on 04.02.2022.
 //  Copyright © 2022 Ascensio System SIA. All rights reserved.
 //
 

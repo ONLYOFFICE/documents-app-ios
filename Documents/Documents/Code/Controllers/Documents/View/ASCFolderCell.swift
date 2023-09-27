@@ -175,7 +175,7 @@ class ASCFolderCell: MGSwipeTableCell {
 
     private func setRoomIcon(roomType: ASCRoomType) {
         guard let provider else { return }
-        
+
         let processor = RoundCornerImageProcessor(
             cornerRadius: Constants.cornerRadius,
             targetSize: CGSizeMake(Constants.imageSize, Constants.imageSize)

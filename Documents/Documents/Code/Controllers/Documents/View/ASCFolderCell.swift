@@ -212,7 +212,7 @@ class ASCFolderCell: MGSwipeTableCell {
     }
 }
 
-private struct Constants {
+private enum Constants {
     static let imageSize: CGFloat = 36
     static let cornerRadius: CGFloat = 8
 }

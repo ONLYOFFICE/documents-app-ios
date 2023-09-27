@@ -46,6 +46,11 @@ class ASCFolderCell: MGSwipeTableCell {
         return $0
     }(ASCPaddingLabel(frame: .zero))
 
+    private lazy var roomPlaceholderImage = UIImage(
+        color: .clear,
+        size: CGSize(width: Constants.imageSize, height: Constants.imageSize)
+    )
+
     fileprivate let transformWidth = 450.0
 
     // MARK: - Lifecycle Methods
@@ -169,26 +174,26 @@ class ASCFolderCell: MGSwipeTableCell {
     }
 
     private func setRoomIcon(roomType: ASCRoomType) {
-        guard let provider = provider else { return }
+        guard let provider else { return }
+        
+        let processor = RoundCornerImageProcessor(
+            cornerRadius: Constants.cornerRadius,
+            targetSize: CGSizeMake(Constants.imageSize, Constants.imageSize)
+        )
+
         icon?.kf.setProviderImage(
             with: provider.absoluteUrl(from: folder?.largeLogo ?? ""),
             for: provider,
-            placeholder: nil,
+            placeholder: roomPlaceholderImage,
+            options: [
+                .processor(processor),
+            ],
             completionHandler: { [weak self] result in
-                guard let self else { return }
                 switch result {
-                case let .success(imageResult):
-                    guard let image = imageResult.image.kf
-                        .resize(to: .init(width: Constants.imageSize, height: Constants.imageSize), for: .aspectFill)
-                        .applyCorenerRadious(Constants.cornerRadius)
-                    else {
-                        self.setDefaultIcon(roomType.image)
-                        return
-                    }
-                    self.icon?.image = image
-                    self.icon?.contentMode = .scaleAspectFit
+                case .failure:
+                    self?.setDefaultIcon(roomType.image)
                 default:
-                    self.setDefaultIcon(roomType.image)
+                    break
                 }
             }
         )
@@ -198,32 +203,9 @@ class ASCFolderCell: MGSwipeTableCell {
         icon?.contentMode = .center
         icon?.image = image
     }
-
-    private func applyRoundedCorners(to image: UIImage, cornerRadius: CGFloat) -> UIImage? {
-        UIGraphicsBeginImageContextWithOptions(image.size, false, image.scale)
-        defer { UIGraphicsEndImageContext() }
-
-        let rect = CGRect(origin: .zero, size: image.size)
-        UIBezierPath(roundedRect: rect, cornerRadius: cornerRadius).addClip()
-
-        image.draw(in: rect)
-
-        return UIGraphicsGetImageFromCurrentImageContext()
-    }
 }
 
 private enum Constants {
     static let imageSize: CGFloat = 36
     static let cornerRadius: CGFloat = 8
-}
-
-private extension UIImage {
-    func applyCorenerRadious(_ cornerRadius: CGFloat) -> UIImage? {
-        UIGraphicsBeginImageContextWithOptions(size, false, scale)
-        defer { UIGraphicsEndImageContext() }
-        let rect = CGRect(origin: .zero, size: size)
-        UIBezierPath(roundedRect: rect, cornerRadius: cornerRadius).addClip()
-        draw(in: rect)
-        return UIGraphicsGetImageFromCurrentImageContext()
-    }
 }

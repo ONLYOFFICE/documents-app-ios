@@ -63,7 +63,6 @@ class ASCConstants {
         static let pushFCMToken = "asc-push-fcm-token"
         static let pushUserInfo = "asc-push-user-info"
         static let sdkVersion = "asc-sdk-version"
-        static let openedDocumentPassword = "asc-opened-document-password"
         static let lastCloudIndex = "asc-last-cloud-index"
         static let pushAllNotification = "asc-push-all"
         static let appTheme = "asc-app-theme"

@@ -824,6 +824,12 @@ class ASCEditorManager: NSObject {
         return false
     }
 
+    private func removeAutosave(at path: Path) {
+        ASCLocalFileHelper.shared.removeDirectory(path)
+        UserDefaults.standard.removeObject(forKey: ASCConstants.SettingsKeys.openedDocumentModified)
+        UserDefaults.standard.removeObject(forKey: ASCConstants.SettingsKeys.openedDocumentFile)
+    }
+
     // MARK: - Dialog Utils
 }
 
@@ -1033,11 +1039,7 @@ extension ASCEditorManager {
            let file = ASCFile(JSONString: openedDocumentFile)
         {
             if !UserDefaults.standard.bool(forKey: ASCConstants.SettingsKeys.openedDocumentModified) {
-                UserDefaults.standard.removeObject(forKey: ASCConstants.SettingsKeys.openedDocumentModified)
-                UserDefaults.standard.removeObject(forKey: ASCConstants.SettingsKeys.openedDocumentFile)
-
-                ASCLocalFileHelper.shared.removeDirectory(Path.userTemporary + file.title)
-
+                removeAutosave(at: Path.userTemporary + file.title)
                 return
             }
 
@@ -1066,8 +1068,7 @@ extension ASCEditorManager {
                 if forceCancel {
                     timer.invalidate()
 
-                    UserDefaults.standard.removeObject(forKey: ASCConstants.SettingsKeys.openedDocumentFile)
-                    ASCLocalFileHelper.shared.removeDirectory(Path.userTemporary + file.title)
+                    self?.removeAutosave(at: Path.userTemporary + file.title)
                 } else {
                     deadTime += interval
                     progressAlert.progress = Float(deadTime / fullTime)
@@ -1111,9 +1112,7 @@ extension ASCEditorManager {
         case let .failure(error):
             log.error("Failure to open document: \(error)")
             cleanupEditorWindow()
-
-            UserDefaults.standard.removeObject(forKey: ASCConstants.SettingsKeys.openedDocumentPassword)
-            ASCLocalFileHelper.shared.removeDirectory(Path.userAutosavedInformation + (openedFile?.title ?? ""))
+            removeAutosave(at: Path.userAutosavedInformation + (openedFile?.title ?? ""))
 
             openedFile = nil
         }
@@ -1139,12 +1138,8 @@ extension ASCEditorManager {
                 log.error(error)
 
                 stopLocallyEditing()
-
-                // No changes
-                ASCLocalFileHelper.shared.removeDirectory(Path.userAutosavedInformation + file.title)
+                removeAutosave(at: Path.userAutosavedInformation + file.title)
                 closeHandler?(.end, 1, openedCopy ? openedlocallyFile : openedFile, nil, &cancel)
-
-                UserDefaults.standard.removeObject(forKey: ASCConstants.SettingsKeys.openedDocumentPassword)
 
                 return
             }
@@ -1227,9 +1222,7 @@ extension ASCEditorManager {
                                 ASCLocalFileHelper.shared.removeDirectory(lastTempFile)
 
                                 // Remove original
-                                ASCLocalFileHelper.shared.removeFile(autosaveFile)
-
-                                UserDefaults.standard.removeObject(forKey: ASCConstants.SettingsKeys.openedDocumentPassword)
+                                removeAutosave(at: autosaveFile)
                             }
                         }
                     )
@@ -1268,17 +1261,13 @@ extension ASCEditorManager {
                     ASCLocalFileHelper.shared.removeDirectory(Path.userTemporary + file.title)
 
                     // Remove original
-                    ASCLocalFileHelper.shared.removeFile(Path.userAutosavedInformation + file.title)
-
-                    UserDefaults.standard.removeObject(forKey: ASCConstants.SettingsKeys.openedDocumentPassword)
+                    removeAutosave(at: Path.userAutosavedInformation + file.title)
                 }
 
             } else {
                 if let closeHandler = closeHandler {
                     closeHandler(.begin, 0, file, nil, &cancel)
-
-                    ASCLocalFileHelper.shared.removeDirectory(Path.userAutosavedInformation + file.title)
-                    UserDefaults.standard.removeObject(forKey: ASCConstants.SettingsKeys.openedDocumentPassword)
+                    removeAutosave(at: Path.userAutosavedInformation + file.title)
 
                     OnlyofficeApiClient.request(OnlyofficeAPI.Endpoints.Files.info(file: file)) { response, error in
                         if let newFile = response?.result {

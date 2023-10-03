@@ -13,6 +13,7 @@ enum OnlyofficeServerError: NetworkingServerError {
     case paymentRequired
     case forbidden
     case notFound
+    case requestTooLarge
     case unknown(message: String?)
 
     init(rawValue: String) {
@@ -40,6 +41,8 @@ enum OnlyofficeServerError: NetworkingServerError {
             return ASCLocalization.Error.forbiddenTitle
         case .notFound:
             return ASCLocalization.Error.notFoundTitle
+        case .requestTooLarge:
+            return NSLocalizedString("Request Entity Too Large", comment: "")
         }
     }
 }

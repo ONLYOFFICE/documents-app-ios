@@ -167,6 +167,7 @@ class NetworkingClient: NSObject, NetworkingRequestingProtocol {
         }, to: url,
         method: endpoint.method,
         headers: headers)
+            .validate()
             .uploadProgress { progress in
                 log.debug("Upload Progress: \(progress.fractionCompleted)")
                 DispatchQueue.main.async {

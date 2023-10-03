@@ -82,13 +82,18 @@ class OnlyofficeApiClient: NetworkingClient {
     override func parseError(_ data: Data?, _ error: AFError? = nil) -> NetworkingError {
         let networkingError = super.parseError(data, error)
 
-        if let error = error {
+        if let error {
             switch error {
             case let .responseValidationFailed(reason):
                 switch reason {
                 case let .unacceptableStatusCode(code):
-                    if code == 401 {
+                    switch code {
+                    case 401:
                         return .apiError(error: OnlyofficeServerError.unauthorized)
+                    case 413:
+                        return .apiError(error: OnlyofficeServerError.requestTooLarge)
+                    default:
+                        break
                     }
                 default:
                     break
@@ -98,7 +103,7 @@ class OnlyofficeApiClient: NetworkingClient {
             }
         }
 
-        if let data = data {
+        if let data {
             do {
                 let json = try JSON(data: data)
                 // TODO: extend custom error

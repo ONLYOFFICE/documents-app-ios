@@ -52,7 +52,13 @@ class ASCOnlyofficeProvider: ASCFileProviderProtocol & ASCSortableFileProviderPr
 
     var folder: ASCFolder? {
         didSet {
-            setFiltersController()
+            if Thread.current.isMainThread {
+                setFiltersController()
+            } else {
+                DispatchQueue.main.sync {
+                    setFiltersController()
+                }
+            }
         }
     }
 

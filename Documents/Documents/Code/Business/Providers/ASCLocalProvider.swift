@@ -29,11 +29,23 @@ class ASCLocalProvider: ASCFileProviderProtocol & ASCSortableFileProviderProtoco
     }
 
     var delegate: ASCProviderDelegate?
-    var filterController: ASCFiltersControllerProtocol? = ASCLocalFilterController(
-        builder: ASCFiltersCollectionViewModelBuilder(),
-        filtersViewController: ASCFiltersViewController(),
-        itemsCount: 0
-    )
+    var filterController: ASCFiltersControllerProtocol? = {
+        if Thread.current.isMainThread {
+            return ASCLocalFilterController(
+                builder: ASCFiltersCollectionViewModelBuilder(),
+                filtersViewController: ASCFiltersViewController(),
+                itemsCount: 0
+            )
+        } else {
+            return DispatchQueue.main.sync {
+                ASCLocalFilterController(
+                    builder: ASCFiltersCollectionViewModelBuilder(),
+                    filtersViewController: ASCFiltersViewController(),
+                    itemsCount: 0
+                )
+            }
+        }
+    }()
 
     var folder: ASCFolder?
     var fetchInfo: [String: Any?]?

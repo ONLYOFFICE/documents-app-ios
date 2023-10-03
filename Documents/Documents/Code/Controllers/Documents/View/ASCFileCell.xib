@@ -39,10 +39,10 @@
                         </constraints>
                     </imageView>
                     <stackView opaque="NO" contentMode="scaleToFill" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="jom-7M-mOT">
-                        <rect key="frame" x="70" y="12.5" width="590" height="52.5"/>
+                        <rect key="frame" x="70" y="13.5" width="590" height="50.5"/>
                         <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="2" translatesAutoresizingMaskIntoConstraints="NO" id="IGo-bB-cRp">
-                                <rect key="frame" x="0.0" y="0.0" width="459" height="52.5"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="1" translatesAutoresizingMaskIntoConstraints="NO" id="IGo-bB-cRp">
+                                <rect key="frame" x="0.0" y="0.0" width="459" height="50.5"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacing="2" translatesAutoresizingMaskIntoConstraints="NO" id="UC6-Nl-hZX">
                                         <rect key="frame" x="0.0" y="0.0" width="29.5" height="19.5"/>
@@ -66,7 +66,7 @@
                                         </subviews>
                                     </stackView>
                                     <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Owner" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BRD-Rb-Syg">
-                                        <rect key="frame" x="0.0" y="21.5" width="37" height="14.5"/>
+                                        <rect key="frame" x="0.0" y="20.5" width="37" height="14.5"/>
                                         <fontDescription key="fontDescription" style="UICTFontTextStyleCaption1"/>
                                         <color key="textColor" systemColor="secondaryLabelColor"/>
                                         <nil key="highlightedColor"/>
@@ -80,7 +80,7 @@
                                         </attributedString>
                                     </label>
                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="hiZ-bO-dia">
-                                        <rect key="frame" x="0.0" y="38" width="62" height="14.5"/>
+                                        <rect key="frame" x="0.0" y="36" width="62" height="14.5"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Date" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iGf-HE-VZA">
                                                 <rect key="frame" x="0.0" y="0.0" width="26.5" height="14.5"/>
@@ -121,7 +121,7 @@
                                 </subviews>
                             </stackView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="00.00.2000, 12:00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="8" translatesAutoresizingMaskIntoConstraints="NO" id="9dQ-cT-qbH">
-                                <rect key="frame" x="464" y="0.0" width="126" height="52.5"/>
+                                <rect key="frame" x="464" y="0.0" width="126" height="50.5"/>
                                 <fontDescription key="fontDescription" style="UICTFontTextStyleSubhead"/>
                                 <color key="textColor" systemColor="secondaryLabelColor"/>
                                 <nil key="highlightedColor"/>

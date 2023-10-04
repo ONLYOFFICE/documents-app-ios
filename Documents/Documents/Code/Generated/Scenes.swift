@@ -15,40 +15,40 @@ internal enum StoryboardScene {
   internal enum ConnectStorage: StoryboardType {
     internal static let storyboardName = "ConnectStorage"
 
-    internal static let ascConnectCloudViewController = SceneType<Documents.ASCConnectCloudViewController>(storyboard: Self.self, identifier: "ASCConnectCloudViewController")
+    internal static let ascConnectCloudViewController = SceneType<Documents_dev.ASCConnectCloudViewController>(storyboard: Self.self, identifier: "ASCConnectCloudViewController")
 
-    internal static let ascConnectPortalThirdPartyViewController = SceneType<Documents.ASCConnectPortalThirdPartyViewController>(storyboard: Self.self, identifier: "ASCConnectPortalThirdPartyViewController")
+    internal static let ascConnectPortalThirdPartyViewController = SceneType<Documents_dev.ASCConnectPortalThirdPartyViewController>(storyboard: Self.self, identifier: "ASCConnectPortalThirdPartyViewController")
 
-    internal static let ascConnectStorageNextCloudServerController = SceneType<Documents.ASCConnectStorageNextCloudServerController>(storyboard: Self.self, identifier: "ASCConnectStorageNextCloudServerController")
+    internal static let ascConnectStorageNextCloudServerController = SceneType<Documents_dev.ASCConnectStorageNextCloudServerController>(storyboard: Self.self, identifier: "ASCConnectStorageNextCloudServerController")
 
-    internal static let ascConnectStorageOAuth2ViewController = SceneType<Documents.ASCConnectStorageOAuth2ViewController>(storyboard: Self.self, identifier: "ASCConnectStorageOAuth2ViewController")
+    internal static let ascConnectStorageOAuth2ViewController = SceneType<Documents_dev.ASCConnectStorageOAuth2ViewController>(storyboard: Self.self, identifier: "ASCConnectStorageOAuth2ViewController")
 
-    internal static let ascConnectStorageWebDavController = SceneType<Documents.ASCConnectStorageWebDavController>(storyboard: Self.self, identifier: "ASCConnectStorageWebDavController")
+    internal static let ascConnectStorageWebDavController = SceneType<Documents_dev.ASCConnectStorageWebDavController>(storyboard: Self.self, identifier: "ASCConnectStorageWebDavController")
   }
   internal enum CreatePortal: StoryboardType {
     internal static let storyboardName = "CreatePortal"
 
-    internal static let initialScene = InitialSceneType<Documents.ASCCreatePortalViewController>(storyboard: Self.self)
+    internal static let initialScene = InitialSceneType<Documents_dev.ASCCreatePortalViewController>(storyboard: Self.self)
 
-    internal static let createPortalStepOneController = SceneType<Documents.ASCCreatePortalViewController>(storyboard: Self.self, identifier: "createPortalStepOneController")
+    internal static let createPortalStepOneController = SceneType<Documents_dev.ASCCreatePortalViewController>(storyboard: Self.self, identifier: "createPortalStepOneController")
 
-    internal static let createPortalStepTwoController = SceneType<Documents.ASCCreatePortalViewController>(storyboard: Self.self, identifier: "createPortalStepTwoController")
+    internal static let createPortalStepTwoController = SceneType<Documents_dev.ASCCreatePortalViewController>(storyboard: Self.self, identifier: "createPortalStepTwoController")
   }
   internal enum Debug: StoryboardType {
     internal static let storyboardName = "Debug"
 
-    internal static let ascDebugConsoleViewController = SceneType<Documents.ASCDebugConsoleViewController>(storyboard: Self.self, identifier: "ASCDebugConsoleViewController")
+    internal static let ascDebugConsoleViewController = SceneType<Documents_dev.ASCDebugConsoleViewController>(storyboard: Self.self, identifier: "ASCDebugConsoleViewController")
 
-    internal static let ascDebugNavigationController = SceneType<Documents.ASCDebugNavigationController>(storyboard: Self.self, identifier: "ASCDebugNavigationController")
+    internal static let ascDebugNavigationController = SceneType<Documents_dev.ASCDebugNavigationController>(storyboard: Self.self, identifier: "ASCDebugNavigationController")
   }
   internal enum Intro: StoryboardType {
     internal static let storyboardName = "Intro"
 
-    internal static let initialScene = InitialSceneType<Documents.ASCIntroViewController>(storyboard: Self.self)
+    internal static let initialScene = InitialSceneType<Documents_dev.ASCIntroViewController>(storyboard: Self.self)
 
-    internal static let ascIntroPageController = SceneType<Documents.ASCIntroPageController>(storyboard: Self.self, identifier: "ASCIntroPageController")
+    internal static let ascIntroPageController = SceneType<Documents_dev.ASCIntroPageController>(storyboard: Self.self, identifier: "ASCIntroPageController")
 
-    internal static let ascIntroViewController = SceneType<Documents.ASCIntroViewController>(storyboard: Self.self, identifier: "ASCIntroViewController")
+    internal static let ascIntroViewController = SceneType<Documents_dev.ASCIntroViewController>(storyboard: Self.self, identifier: "ASCIntroViewController")
   }
   internal enum LaunchScreen: StoryboardType {
     internal static let storyboardName = "LaunchScreen"
@@ -58,80 +58,80 @@ internal enum StoryboardScene {
   internal enum Login: StoryboardType {
     internal static let storyboardName = "Login"
 
-    internal static let initialScene = InitialSceneType<Documents.ASCBaseNavigationController>(storyboard: Self.self)
+    internal static let initialScene = InitialSceneType<Documents_dev.ASCBaseNavigationController>(storyboard: Self.self)
 
-    internal static let asc2FACodeViewController = SceneType<Documents.ASC2FACodeViewController>(storyboard: Self.self, identifier: "ASC2FACodeViewController")
+    internal static let asc2FACodeViewController = SceneType<Documents_dev.ASC2FACodeViewController>(storyboard: Self.self, identifier: "ASC2FACodeViewController")
 
-    internal static let asc2FAStepCodePageController = SceneType<Documents.ASC2FACodeViewController>(storyboard: Self.self, identifier: "ASC2FAStepCodePageController")
+    internal static let asc2FAStepCodePageController = SceneType<Documents_dev.ASC2FACodeViewController>(storyboard: Self.self, identifier: "ASC2FAStepCodePageController")
 
-    internal static let asc2FAStepInstallAppPageController = SceneType<Documents.ASC2FAPageController>(storyboard: Self.self, identifier: "ASC2FAStepInstallAppPageController")
+    internal static let asc2FAStepInstallAppPageController = SceneType<Documents_dev.ASC2FAPageController>(storyboard: Self.self, identifier: "ASC2FAStepInstallAppPageController")
 
-    internal static let asc2FAStepRunAppPageController = SceneType<Documents.ASC2FAPageController>(storyboard: Self.self, identifier: "ASC2FAStepRunAppPageController")
+    internal static let asc2FAStepRunAppPageController = SceneType<Documents_dev.ASC2FAPageController>(storyboard: Self.self, identifier: "ASC2FAStepRunAppPageController")
 
-    internal static let asc2FAStepSecretPageController = SceneType<Documents.ASC2FAPageController>(storyboard: Self.self, identifier: "ASC2FAStepSecretPageController")
+    internal static let asc2FAStepSecretPageController = SceneType<Documents_dev.ASC2FAPageController>(storyboard: Self.self, identifier: "ASC2FAStepSecretPageController")
 
-    internal static let asc2FAViewController = SceneType<Documents.ASC2FAViewController>(storyboard: Self.self, identifier: "ASC2FAViewController")
+    internal static let asc2FAViewController = SceneType<Documents_dev.ASC2FAViewController>(storyboard: Self.self, identifier: "ASC2FAViewController")
 
-    internal static let ascConnectPortalViewController = SceneType<Documents.ASCConnectPortalViewController>(storyboard: Self.self, identifier: "ASCConnectPortalViewController")
+    internal static let ascConnectPortalViewController = SceneType<Documents_dev.ASCConnectPortalViewController>(storyboard: Self.self, identifier: "ASCConnectPortalViewController")
 
-    internal static let ascCountryCodeViewController = SceneType<Documents.ASCCountryCodeViewController>(storyboard: Self.self, identifier: "ASCCountryCodeViewController")
+    internal static let ascCountryCodeViewController = SceneType<Documents_dev.ASCCountryCodeViewController>(storyboard: Self.self, identifier: "ASCCountryCodeViewController")
 
-    internal static let ascEmailSentViewController = SceneType<Documents.ASCEmailSentViewController>(storyboard: Self.self, identifier: "ASCEmailSentViewController")
+    internal static let ascEmailSentViewController = SceneType<Documents_dev.ASCEmailSentViewController>(storyboard: Self.self, identifier: "ASCEmailSentViewController")
 
-    internal static let ascPasswordRecoveryViewController = SceneType<Documents.ASCPasswordRecoveryViewController>(storyboard: Self.self, identifier: "ASCPasswordRecoveryViewController")
+    internal static let ascPasswordRecoveryViewController = SceneType<Documents_dev.ASCPasswordRecoveryViewController>(storyboard: Self.self, identifier: "ASCPasswordRecoveryViewController")
 
-    internal static let ascPhoneNumberViewController = SceneType<Documents.ASCPhoneNumberViewController>(storyboard: Self.self, identifier: "ASCPhoneNumberViewController")
+    internal static let ascPhoneNumberViewController = SceneType<Documents_dev.ASCPhoneNumberViewController>(storyboard: Self.self, identifier: "ASCPhoneNumberViewController")
 
-    internal static let ascsmsCodeViewController = SceneType<Documents.ASCSMSCodeViewController>(storyboard: Self.self, identifier: "ASCSMSCodeViewController")
+    internal static let ascsmsCodeViewController = SceneType<Documents_dev.ASCSMSCodeViewController>(storyboard: Self.self, identifier: "ASCSMSCodeViewController")
 
-    internal static let ascssoSignInNavigationController = SceneType<Documents.ASCBaseNavigationController>(storyboard: Self.self, identifier: "ASCSSOSignInNavigationController")
+    internal static let ascssoSignInNavigationController = SceneType<Documents_dev.ASCBaseNavigationController>(storyboard: Self.self, identifier: "ASCSSOSignInNavigationController")
 
-    internal static let ascSignInViewController = SceneType<Documents.ASCSignInViewController>(storyboard: Self.self, identifier: "ASCSignInViewController")
+    internal static let ascSignInViewController = SceneType<Documents_dev.ASCSignInViewController>(storyboard: Self.self, identifier: "ASCSignInViewController")
   }
   internal enum Main: StoryboardType {
     internal static let storyboardName = "Main"
 
-    internal static let ascCloudsEmptyViewController = SceneType<Documents.ASCCloudsEmptyViewController>(storyboard: Self.self, identifier: "ASCCloudsEmptyViewController")
+    internal static let ascCloudsEmptyViewController = SceneType<Documents_dev.ASCCloudsEmptyViewController>(storyboard: Self.self, identifier: "ASCCloudsEmptyViewController")
 
-    internal static let ascDocumentsNavigationController = SceneType<Documents.ASCDocumentsNavigationController>(storyboard: Self.self, identifier: "ASCDocumentsNavigationController")
+    internal static let ascDocumentsNavigationController = SceneType<Documents_dev.ASCDocumentsNavigationController>(storyboard: Self.self, identifier: "ASCDocumentsNavigationController")
 
-    internal static let ascDocumentsViewController = SceneType<Documents.ASCDocumentsViewController>(storyboard: Self.self, identifier: "ASCDocumentsViewController")
+    internal static let ascDocumentsViewController = SceneType<Documents_dev.ASCDocumentsViewController>(storyboard: Self.self, identifier: "ASCDocumentsViewController")
 
-    internal static let ascRootViewController = SceneType<Documents.ASCRootViewController>(storyboard: Self.self, identifier: "ASCRootViewController")
+    internal static let ascRootViewController = SceneType<Documents_dev.ASCRootViewController>(storyboard: Self.self, identifier: "ASCRootViewController")
 
     internal static let ascSplashViewController = SceneType<UIKit.UIViewController>(storyboard: Self.self, identifier: "ASCSplashViewController")
   }
   internal enum Settings: StoryboardType {
     internal static let storyboardName = "Settings"
 
-    internal static let initialScene = InitialSceneType<Documents.ASCBaseNavigationController>(storyboard: Self.self)
+    internal static let initialScene = InitialSceneType<Documents_dev.ASCBaseNavigationController>(storyboard: Self.self)
 
-    internal static let ascAboutViewController = SceneType<Documents.ASCAboutViewController>(storyboard: Self.self, identifier: "ASCAboutViewController")
+    internal static let ascAboutViewController = SceneType<Documents_dev.ASCAboutViewController>(storyboard: Self.self, identifier: "ASCAboutViewController")
 
-    internal static let ascPasscodeLockViewController = SceneType<Documents.ASCPasscodeLockViewController>(storyboard: Self.self, identifier: "ASCPasscodeLockViewController")
+    internal static let ascPasscodeLockViewController = SceneType<Documents_dev.ASCPasscodeLockViewController>(storyboard: Self.self, identifier: "ASCPasscodeLockViewController")
   }
   internal enum Sort: StoryboardType {
     internal static let storyboardName = "Sort"
 
-    internal static let initialScene = InitialSceneType<Documents.ASCSortViewController>(storyboard: Self.self)
+    internal static let initialScene = InitialSceneType<Documents_dev.ASCSortViewController>(storyboard: Self.self)
 
-    internal static let ascSortViewController = SceneType<Documents.ASCSortViewController>(storyboard: Self.self, identifier: "ASCSortViewController")
+    internal static let ascSortViewController = SceneType<Documents_dev.ASCSortViewController>(storyboard: Self.self, identifier: "ASCSortViewController")
   }
   internal enum Transfer: StoryboardType {
     internal static let storyboardName = "Transfer"
 
-    internal static let initialScene = InitialSceneType<Documents.ASCTransferNavigationController>(storyboard: Self.self)
+    internal static let initialScene = InitialSceneType<Documents_dev.ASCTransferNavigationController>(storyboard: Self.self)
 
-    internal static let ascTransferNavigationController = SceneType<Documents.ASCTransferNavigationController>(storyboard: Self.self, identifier: "ASCTransferNavigationController")
+    internal static let ascTransferNavigationController = SceneType<Documents_dev.ASCTransferNavigationController>(storyboard: Self.self, identifier: "ASCTransferNavigationController")
 
-    internal static let ascTransferViewController = SceneType<Documents.ASCTransferViewController>(storyboard: Self.self, identifier: "ASCTransferViewController")
+    internal static let ascTransferViewController = SceneType<Documents_dev.ASCTransferViewController>(storyboard: Self.self, identifier: "ASCTransferViewController")
   }
   internal enum UserProfile: StoryboardType {
     internal static let storyboardName = "UserProfile"
 
-    internal static let initialScene = InitialSceneType<Documents.ASCBaseNavigationController>(storyboard: Self.self)
+    internal static let initialScene = InitialSceneType<Documents_dev.ASCBaseNavigationController>(storyboard: Self.self)
 
-    internal static let ascUserProfileViewController = SceneType<Documents.ASCUserProfileViewController>(storyboard: Self.self, identifier: "ASCUserProfileViewController")
+    internal static let ascUserProfileViewController = SceneType<Documents_dev.ASCUserProfileViewController>(storyboard: Self.self, identifier: "ASCUserProfileViewController")
   }
 }
 // swiftlint:enable explicit_type_interface identifier_name line_length type_body_length type_name

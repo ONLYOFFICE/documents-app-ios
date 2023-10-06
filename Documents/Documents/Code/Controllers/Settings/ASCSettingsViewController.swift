@@ -337,12 +337,14 @@ class ASCSettingsViewController: ASCBaseTableViewController {
 
             var commonSize: UInt64 = 0
 
-            _ = Path.userTemporary.find(searchDepth: 5) { path in
-                if path.isRegular {
-                    commonSize += path.fileSize ?? 0
-                }
+            [Path.userTemporary, Path.userAutosavedInformation].forEach { path in
+                _ = path.find(searchDepth: 5) { path in
+                    if path.isRegular {
+                        commonSize += path.fileSize ?? 0
+                    }
 
-                return path.isRegular
+                    return path.isRegular
+                }
             }
 
             strongSelf.cacheSize = commonSize
@@ -392,9 +394,12 @@ class ASCSettingsViewController: ASCBaseTableViewController {
             hud.label.text = NSLocalizedString("Clearing", comment: "Caption of the processing")
 
             DispatchQueue.global().async { [weak self] in
-                _ = Path.userTemporary.find(searchDepth: 1) { path in
-                    ASCLocalFileHelper.shared.removeFile(path)
-                    return true
+                [Path.userTemporary, Path.userAutosavedInformation].forEach { path in
+
+                    _ = path.find(searchDepth: 1) { path in
+                        ASCLocalFileHelper.shared.removeFile(path)
+                        return true
+                    }
                 }
 
                 DispatchQueue.main.async { [weak self] in

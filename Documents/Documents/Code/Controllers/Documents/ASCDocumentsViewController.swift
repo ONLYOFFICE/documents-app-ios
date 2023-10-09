@@ -1762,7 +1762,7 @@ class ASCDocumentsViewController: ASCBaseTableViewController, UIGestureRecognize
         hud?.isHidden = false
         let action: ASCEntityActions = folder.pinned ? .unpin : .pin
         let processLabel: String = folder.pinned
-            ? NSLocalizedString("Unpning", comment: "Caption of the processing")
+            ? NSLocalizedString("Unpinning", comment: "Caption of the processing")
             : NSLocalizedString("Pinning", comment: "Caption of the processing")
         provider.handle(action: action, folder: folder) { [weak self] status, entity, error in
             guard let self = self else {

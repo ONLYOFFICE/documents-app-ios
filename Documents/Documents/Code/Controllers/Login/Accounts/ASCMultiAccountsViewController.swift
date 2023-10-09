@@ -113,7 +113,7 @@ class ASCMultiAccountsViewController: UITableViewController {
     func showDeleteAccountFromDeviceAlert(account: ASCAccount) {
         guard let email = account.email else { return }
 
-        let message = String(format: NSLocalizedString("Are you sure you want to delete the account  %@ from this devce?", comment: ""), email)
+        let message = String(format: NSLocalizedString("Are you sure you want to delete the account %@ from this devce?", comment: ""), email)
 
         let deleteAlertAction = UIAlertAction(title: NSLocalizedString("Delete", comment: ""),
                                               style: .destructive)

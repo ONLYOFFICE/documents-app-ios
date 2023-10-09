@@ -95,9 +95,6 @@
 "Address is empty" = "Հասցեն դատարկ է";
 
 /* No comment provided by engineer. */
-"Admin" = "Ադմինիստրատոր";
-
-/* No comment provided by engineer. */
 "All" = "Բոլորը";
 
 /* No comment provided by engineer. */
@@ -124,7 +121,8 @@
 /* Caption of the process */
 "Applying" = "Դիմում";
 
-/* Button title */
+/* Button title
+   Category title */
 "Archive" = "Արխիվ";
 
 /* No comment provided by engineer. */
@@ -301,9 +299,6 @@
 /* Description of file operation error */
 "Could not change the directory" = "Չհաջողվեց փոխել գրացուցակը";
 
-/* No comment provided by engineer. */
-"Could not convert file to export." = "Չհաջողվեց ֆայլը փոխարկել արտահանման:";
-
 /* Description of file operation error */
 "Could not copy file" = "Չհաջողվեց պատճենել ֆայլը";
 
@@ -353,9 +348,6 @@
 "Could not move file" = "Չհաջողվեց տեղափոխել ֆայլը";
 
 /* No comment provided by engineer. */
-"Could not open editor." = "Չհաջողվեց բացել խմբագրիչը:";
-
-/* No comment provided by engineer. */
 "Could not open file." = "Չհաջողվեց բացել ֆայլը:";
 
 /* No comment provided by engineer. */
@@ -372,9 +364,6 @@
 
 /* Description of file operation error */
 "Could not write to file" = "Չհաջողվեց գրել ֆայլին";
-
-/* No comment provided by engineer. */
-"Couldn't open file" = "Չհաջողվեց բացել ֆայլը";
 
 /* No comment provided by engineer. */
 "Couldn't save changes at server. Your modified document is saved in local storage as %@" = "Չհաջողվեց պահպանել փոփոխությունները սերվերում: Ձեր փոփոխված փաստաթուղթը պահվում է տեղական պահեստում որպես %@";
@@ -517,9 +506,6 @@
 
 /* Presentation Viewer */
 "End Slide Show" = "Ավարտել սլայդ շոուն";
-
-/* No comment provided by engineer. */
-"Enter a password to open the file." = "Մուտքագրեք գաղտնաբառ՝ ֆայլը բացելու համար:";
 
 /* placeholder */
 "Enter email" = "Անվավեր էլ․ հասցեն";
@@ -799,14 +785,8 @@
 /* No comment provided by engineer. */
 "My Drive" = "Իմ դրայվը";
 
-/* Category title */
-"My rooms" = "\n\nԻմ սենյակները ";
-
 /* No comment provided by engineer. */
 "Name is empty" = "Անունը դատարկ է";
-
-/* No comment provided by engineer. */
-"Needs additional params." = "Լրացուցիչ պարամետրերի կարիք կա:";
 
 /* Badge of file in file list */
 "new" = "նոր";
@@ -1045,9 +1025,6 @@
 "Project Documents" = "Ծրագրի փաստաթղթեր";
 
 /* No comment provided by engineer. */
-"Protected File" = "Պաշտպանված ֆայլ";
-
-/* No comment provided by engineer. */
 "Push notifications disabled" = "Push ծանուցումներն անջատված են";
 
 /* Button title */
@@ -1104,7 +1081,8 @@
 /* Share status */
 "Room admin" = "Սենյակի ադմին";
 
-/* DocSpace rooms */
+/* Category title
+   DocSpace rooms */
 "Rooms" = "Սսենյակներ";
 
 /* No comment provided by engineer. */
@@ -1286,9 +1264,6 @@
 "The link for external\naccess is copied\nto the clipboard" = "Հղում արտաքինի համար\nմուտքը պատճենված է\nդեպի clipboard";
 
 /* No comment provided by engineer. */
-"The ONLYOFFICE Editors module is missing. Please contact support@onlyoffice.com for more information." = "ONLYOFFICE Editors մոդուլը բացակայում է: Լրացուցիչ տեղեկությունների համար խնդրում ենք կապվել support@onlyoffice.com-ի հետ:";
-
-/* No comment provided by engineer. */
 "The parameters are incorrect." = "Պարամետրերը սխալ են։";
 
 /* No comment provided by engineer. */
@@ -1455,9 +1430,6 @@
 
 /* Caption of the processing */
 "Unpning" = "Ապամրացում";
-
-/* No comment provided by engineer. */
-"Unsupported format." = "Չաջակցվող ձևաչափ:";
 
 /* Caption of the process */
 "Uploading" = "Վերբեռնում";

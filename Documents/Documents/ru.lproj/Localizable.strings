@@ -95,9 +95,6 @@
 "Address is empty" = "Адрес не заполнен";
 
 /* No comment provided by engineer. */
-"Admin" = "Администратор";
-
-/* No comment provided by engineer. */
 "All" = "Все";
 
 /* No comment provided by engineer. */
@@ -124,7 +121,8 @@
 /* Caption of the process */
 "Applying" = "Применение";
 
-/* Button title */
+/* Button title
+   Category title */
 "Archive" = "Архив";
 
 /* No comment provided by engineer. */
@@ -138,6 +136,9 @@
 
 /* No comment provided by engineer. */
 "Are you sure you want to delete the account  %@ from this devce?" = "Вы уверены, что хотите удалить учетную запись %@ с этого устройства?";
+
+/* No comment provided by engineer. */
+"Are you sure you want to delete the account %@ from this devce?" = "Вы уверены, что хотите удалить учетную запись %@ с этого устройства?";
 
 /* No comment provided by engineer. */
 "Are you sure you want to leave this account?" = "Вы уверены, что хотите выйти из этой учетной записи?";
@@ -362,7 +363,7 @@
 "Could not read data from the file." = "Невозможно прочитать данные из файла.";
 
 /* Description of file operation error */
-"Could not read from file" = "Невозможно прочитать из файла.";
+"Could not read from file" = "Невозможно прочитать из файла";
 
 /* No comment provided by engineer. */
 "Could not save the file." = "Невозможно сохранить файл.";
@@ -446,6 +447,9 @@
 "Disconnect third party" = "Отсоединить сторонние сервисы";
 
 /* No comment provided by engineer. */
+"DocSpace admin" = "Администратор DocSpace";
+
+/* No comment provided by engineer. */
 "Document" = "Документ";
 
 /* Default title of sample document */
@@ -495,7 +499,7 @@
 "Email is empty" = "Поле Email не заполнено";
 
 /* No comment provided by engineer. */
-"Email is incorrect." = "Некорректный e-mail";
+"Email is incorrect." = "Некорректный e-mail.";
 
 /* No comment provided by engineer. */
 "Email is not valid" = "Некорректный e-mail";
@@ -546,7 +550,7 @@
 "Export" = "Экспорт";
 
 /* No comment provided by engineer. */
-"Failed online conversion service." = "Ошибка службы онлайн-конвертации";
+"Failed online conversion service." = "Ошибка службы онлайн-конвертации.";
 
 /* No comment provided by engineer. */
 "Failed to check portal availability." = "Не удалось проверить доступность портала.";
@@ -799,9 +803,6 @@
 /* No comment provided by engineer. */
 "My Drive" = "Мой диск";
 
-/* Category title */
-"My rooms" = "Мои комнаты";
-
 /* No comment provided by engineer. */
 "Name is empty" = "Имя не заполнено";
 
@@ -842,7 +843,7 @@
 "No connection" = "Нет подключения";
 
 /* No comment provided by engineer. */
-"No information about the user profile." = "Нет информации о профиле пользователя";
+"No information about the user profile." = "Нет информации о профиле пользователя.";
 
 /* No comment provided by engineer. */
 "No Internet connection" = "Нет соединения с интернетом";
@@ -1012,10 +1013,10 @@
 "Portal Address" = "Адрес портала";
 
 /* No comment provided by engineer. */
-"Portal is unavailable." = "Портал недоступен";
+"Portal is unavailable." = "Портал недоступен.";
 
 /* Share status */
-"Pover user" = "Совместная работа";
+"Power user" = "Опытный пользователь";
 
 /* No comment provided by engineer. */
 "Presentation" = "Презентация";
@@ -1066,7 +1067,7 @@
 "Rename" = "Переименовать";
 
 /* No comment provided by engineer. */
-"Rename failed." = "Ошибка переименования";
+"Rename failed." = "Ошибка переименования.";
 
 /* No comment provided by engineer. */
 "Rename failed. An object with such a similar name exists." = "Ошибка переименования. Объект с таким именем уже существует.";
@@ -1079,6 +1080,9 @@
 
 /* No comment provided by engineer. */
 "Request canceled" = "Запрос отменен";
+
+/* No comment provided by engineer. */
+"Request Entity Too Large" = "Объект запроса слишком велик";
 
 /* No comment provided by engineer. */
 "Request had insufficient authentication scopes" = "Запрос имеет недостаточные области аутентификации";
@@ -1098,7 +1102,8 @@
 /* Share status */
 "Room admin" = "Администратор группы";
 
-/* DocSpace rooms */
+/* Category title
+   DocSpace rooms */
 "Rooms" = "Комнаты";
 
 /* No comment provided by engineer. */

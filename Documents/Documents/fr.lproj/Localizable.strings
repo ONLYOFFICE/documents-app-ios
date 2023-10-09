@@ -95,9 +95,6 @@
 "Address is empty" = "Adresse est vide";
 
 /* No comment provided by engineer. */
-"Admin" = "Administrateur";
-
-/* No comment provided by engineer. */
 "All" = "Tout";
 
 /* No comment provided by engineer. */
@@ -124,7 +121,8 @@
 /* Caption of the process */
 "Applying" = "Application";
 
-/* Button title */
+/* Button title
+   Category title */
 "Archive" = "Archive";
 
 /* No comment provided by engineer. */
@@ -301,9 +299,6 @@
 /* Description of file operation error */
 "Could not change the directory" = "Impossible de modifier le répertoire";
 
-/* No comment provided by engineer. */
-"Could not convert file to export." = "Impossible de convertir un fichier pour l'exportation.";
-
 /* Description of file operation error */
 "Could not copy file" = "Impossible de copier le fichier";
 
@@ -353,9 +348,6 @@
 "Could not move file" = "Impossible de déplacer le fichier";
 
 /* No comment provided by engineer. */
-"Could not open editor." = "Impossible d’ouvrir l'éditeur.";
-
-/* No comment provided by engineer. */
 "Could not open file." = "Impossible d’ouvrir le fichier.";
 
 /* No comment provided by engineer. */
@@ -372,9 +364,6 @@
 
 /* Description of file operation error */
 "Could not write to file" = "Impossible d'écrire dans le fichier";
-
-/* No comment provided by engineer. */
-"Couldn't open file" = "Impossible d'ouvrir le fichier";
 
 /* No comment provided by engineer. */
 "Couldn't save changes at server. Your modified document is saved in local storage as %@" = "Impossible de sauvegarder les modifications sur le serveur. Votre document modifié est enregistré dans le stockage local sous le nom de %@";
@@ -517,9 +506,6 @@
 
 /* Presentation Viewer */
 "End Slide Show" = "Arrêter le diaporama";
-
-/* No comment provided by engineer. */
-"Enter a password to open the file." = "Saisissez un mot de passe pour ouvrir le fichier.";
 
 /* placeholder */
 "Enter email" = "Saisissez l'email";
@@ -799,14 +785,8 @@
 /* No comment provided by engineer. */
 "My Drive" = "Mon Drive";
 
-/* Category title */
-"My rooms" = "Mes salles";
-
 /* No comment provided by engineer. */
 "Name is empty" = "Le nom est vide";
-
-/* No comment provided by engineer. */
-"Needs additional params." = "Besoins de paramètres supplémentaires.";
 
 /* Badge of file in file list */
 "new" = "nouveau";
@@ -1045,9 +1025,6 @@
 "Project Documents" = "Documents de projet";
 
 /* No comment provided by engineer. */
-"Protected File" = "Fichier protégé";
-
-/* No comment provided by engineer. */
 "Push notifications disabled" = "Notifications push désactivées";
 
 /* Button title */
@@ -1104,7 +1081,8 @@
 /* Share status */
 "Room admin" = "Administrateur de salle";
 
-/* DocSpace rooms */
+/* Category title
+   DocSpace rooms */
 "Rooms" = "Salles";
 
 /* No comment provided by engineer. */
@@ -1286,9 +1264,6 @@
 "The link for external\naccess is copied\nto the clipboard" = "Le lien d'accès externe\nest copié\ndans le presse-papiers";
 
 /* No comment provided by engineer. */
-"The ONLYOFFICE Editors module is missing. Please contact support@onlyoffice.com for more information." = "Le module des éditeurs ONLYOFFICE est manquant. Veuillez contacter support@onlyoffice.com pour plus d'informations.";
-
-/* No comment provided by engineer. */
 "The parameters are incorrect." = "Les paramètres sont incorrects.";
 
 /* No comment provided by engineer. */
@@ -1455,9 +1430,6 @@
 
 /* Caption of the processing */
 "Unpning" = "Désépinglage";
-
-/* No comment provided by engineer. */
-"Unsupported format." = "Format non pris en charge.";
 
 /* Caption of the process */
 "Uploading" = "Téléchargement";

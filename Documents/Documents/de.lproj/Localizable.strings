@@ -95,9 +95,6 @@
 "Address is empty" = "Das Feld Adresse ist leer";
 
 /* No comment provided by engineer. */
-"Admin" = "Admin";
-
-/* No comment provided by engineer. */
 "All" = "Alle";
 
 /* No comment provided by engineer. */
@@ -124,7 +121,8 @@
 /* Caption of the process */
 "Applying" = "Anwenden";
 
-/* Button title */
+/* Button title
+   Category title */
 "Archive" = "Archiv";
 
 /* No comment provided by engineer. */
@@ -301,9 +299,6 @@
 /* Description of file operation error */
 "Could not change the directory" = "Ordner kann nicht geändert werden";
 
-/* No comment provided by engineer. */
-"Could not convert file to export." = "Konvertierung der Datei zum Exportieren ist fehlgeschlagen.";
-
 /* Description of file operation error */
 "Could not copy file" = "Datei kann nicht kopiert werden";
 
@@ -353,9 +348,6 @@
 "Could not move file" = "Datei kann nicht verschoben werden";
 
 /* No comment provided by engineer. */
-"Could not open editor." = "Der Editor konnte nicht geöffnet werden.";
-
-/* No comment provided by engineer. */
 "Could not open file." = "Die Datei konnte nicht geöffnet werden.";
 
 /* No comment provided by engineer. */
@@ -372,9 +364,6 @@
 
 /* Description of file operation error */
 "Could not write to file" = "Schreiben an Datei unmöglich";
-
-/* No comment provided by engineer. */
-"Couldn't open file" = "Die Datei konnte nicht geöffnet werden";
 
 /* No comment provided by engineer. */
 "Couldn't save changes at server. Your modified document is saved in local storage as %@" = "Die Änderungen konnten nicht auf dem Server gespeichert werden. Ihr geändertes Dokument ist im lokalen Speicher als %@ gespeichert.";
@@ -517,9 +506,6 @@
 
 /* Presentation Viewer */
 "End Slide Show" = "Diashow beenden";
-
-/* No comment provided by engineer. */
-"Enter a password to open the file." = "Kennwort zum Öffnen der Datei eingeben.";
 
 /* placeholder */
 "Enter email" = "E-Mail eingeben";
@@ -799,14 +785,8 @@
 /* No comment provided by engineer. */
 "My Drive" = "My Drive";
 
-/* Category title */
-"My rooms" = "Meine Räume";
-
 /* No comment provided by engineer. */
 "Name is empty" = "Das Feld Name ist leer";
-
-/* No comment provided by engineer. */
-"Needs additional params." = "Zusätzliche Parameter erforderlich.";
 
 /* Badge of file in file list */
 "new" = "neu";
@@ -1045,9 +1025,6 @@
 "Project Documents" = "Projektdokumente";
 
 /* No comment provided by engineer. */
-"Protected File" = "Geschützte Datei";
-
-/* No comment provided by engineer. */
 "Push notifications disabled" = "Push-Benachrichtigungen deaktiviert";
 
 /* Button title */
@@ -1104,7 +1081,8 @@
 /* Share status */
 "Room admin" = "Admin des Raums";
 
-/* DocSpace rooms */
+/* Category title
+   DocSpace rooms */
 "Rooms" = "Räume";
 
 /* No comment provided by engineer. */
@@ -1286,9 +1264,6 @@
 "The link for external\naccess is copied\nto the clipboard" = "Der Link für den externen\nZugriff wird in die Zwischenablage\nkopiert";
 
 /* No comment provided by engineer. */
-"The ONLYOFFICE Editors module is missing. Please contact support@onlyoffice.com for more information." = "Das Modul mit ONLYOFFICE-Editoren fehlt. Bitte kontaktieren Sie support@onlyoffice.com für weitere Informationen.";
-
-/* No comment provided by engineer. */
 "The parameters are incorrect." = "Die Parameter sind falsch.";
 
 /* No comment provided by engineer. */
@@ -1455,9 +1430,6 @@
 
 /* Caption of the processing */
 "Unpning" = "Entrinnen";
-
-/* No comment provided by engineer. */
-"Unsupported format." = "Nicht unterstütztes Dateiformat.";
 
 /* Caption of the process */
 "Uploading" = "Wird hochgeladen";

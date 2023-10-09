@@ -95,9 +95,6 @@
 "Address is empty" = "地址为空";
 
 /* No comment provided by engineer. */
-"Admin" = "管理员";
-
-/* No comment provided by engineer. */
 "All" = "全部";
 
 /* No comment provided by engineer. */
@@ -124,7 +121,8 @@
 /* Caption of the process */
 "Applying" = "正在应用中";
 
-/* Button title */
+/* Button title
+   Category title */
 "Archive" = "備份";
 
 /* No comment provided by engineer. */
@@ -301,9 +299,6 @@
 /* Description of file operation error */
 "Could not change the directory" = "无法改变目录";
 
-/* No comment provided by engineer. */
-"Could not convert file to export." = "无法转换文件以进行导出。";
-
 /* Description of file operation error */
 "Could not copy file" = "无法复制文件";
 
@@ -353,9 +348,6 @@
 "Could not move file" = "无法移动文件";
 
 /* No comment provided by engineer. */
-"Could not open editor." = "无法打开编辑器。";
-
-/* No comment provided by engineer. */
 "Could not open file." = "无法打开文件。";
 
 /* No comment provided by engineer. */
@@ -372,9 +364,6 @@
 
 /* Description of file operation error */
 "Could not write to file" = "无法写入文件";
-
-/* No comment provided by engineer. */
-"Couldn't open file" = "无法打开文件";
 
 /* No comment provided by engineer. */
 "Couldn't save changes at server. Your modified document is saved in local storage as %@" = "无法在服务器上保存更改。 您修改后的文档以 %@ 保存在本地存储中";
@@ -517,9 +506,6 @@
 
 /* Presentation Viewer */
 "End Slide Show" = "结束幻灯片放映";
-
-/* No comment provided by engineer. */
-"Enter a password to open the file." = "输入密码以打开文件。";
 
 /* placeholder */
 "Enter email" = "输入电邮";
@@ -799,14 +785,8 @@
 /* No comment provided by engineer. */
 "My Drive" = "我的Drive";
 
-/* Category title */
-"My rooms" = "我的房间";
-
 /* No comment provided by engineer. */
 "Name is empty" = "名称为空";
-
-/* No comment provided by engineer. */
-"Needs additional params." = "需要额外的参数。";
 
 /* Badge of file in file list */
 "new" = "新";
@@ -1045,9 +1025,6 @@
 "Project Documents" = "项目文档";
 
 /* No comment provided by engineer. */
-"Protected File" = "受保护的文件";
-
-/* No comment provided by engineer. */
 "Push notifications disabled" = "推送通知已禁用";
 
 /* Button title */
@@ -1104,7 +1081,8 @@
 /* Share status */
 "Room admin" = "房间管理员";
 
-/* DocSpace rooms */
+/* Category title
+   DocSpace rooms */
 "Rooms" = "房间";
 
 /* No comment provided by engineer. */
@@ -1286,9 +1264,6 @@
 "The link for external\naccess is copied\nto the clipboard" = "用于外部访问的链接\n已复制\n到剪贴板上";
 
 /* No comment provided by engineer. */
-"The ONLYOFFICE Editors module is missing. Please contact support@onlyoffice.com for more information." = "缺少ONLYOFFICE編輯器模塊。 請聯繫 support@onlyoffice.com 瞭解更多資訊。";
-
-/* No comment provided by engineer. */
 "The parameters are incorrect." = "参数不正确。";
 
 /* No comment provided by engineer. */
@@ -1455,9 +1430,6 @@
 
 /* Caption of the processing */
 "Unpning" = "取消置顶";
-
-/* No comment provided by engineer. */
-"Unsupported format." = "不支持的格式。";
 
 /* Caption of the process */
 "Uploading" = "正在上转";

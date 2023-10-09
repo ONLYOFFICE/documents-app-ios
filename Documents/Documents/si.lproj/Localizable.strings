@@ -95,9 +95,6 @@
 "Address is empty" = "ලිපිනය හිස්ය";
 
 /* No comment provided by engineer. */
-"Admin" = "පරිපාලක";
-
-/* No comment provided by engineer. */
 "All" = "සියල්ල";
 
 /* No comment provided by engineer. */
@@ -124,7 +121,8 @@
 /* Caption of the process */
 "Applying" = "යෙදෙමින්";
 
-/* Button title */
+/* Button title
+   Category title */
 "Archive" = "සංරක්‍ෂණය";
 
 /* No comment provided by engineer. */
@@ -301,9 +299,6 @@
 /* Description of file operation error */
 "Could not change the directory" = "නාමාවලිය වෙනස් කිරීමට නොහැකි විය";
 
-/* No comment provided by engineer. */
-"Could not convert file to export." = "නිර්යාතය සඳහා ගොනුව පරිවර්තනයට නොහැකි විය.";
-
 /* Description of file operation error */
 "Could not copy file" = "ගොනුව පිටපත් කිරීමට නොහැකි විය";
 
@@ -353,9 +348,6 @@
 "Could not move file" = "ගොනුව ගෙනයාමට නොහැකි විය";
 
 /* No comment provided by engineer. */
-"Could not open editor." = "සංස්කරකය ඇරීමට නොහැකි විය.";
-
-/* No comment provided by engineer. */
 "Could not open file." = "ගොනුව ඇරීමට නොහැකි විය.";
 
 /* No comment provided by engineer. */
@@ -372,9 +364,6 @@
 
 /* Description of file operation error */
 "Could not write to file" = "ගොනුවට ලිවීමට නොහැකි විය";
-
-/* No comment provided by engineer. */
-"Couldn't open file" = "ගොනුව ඇරීමට නොහැකි විය";
 
 /* No comment provided by engineer. */
 "Couldn't save changes at server. Your modified document is saved in local storage as %@" = "වෙනස්කම් සේවාදායකයෙහි සුරැකීමට නොහැකි විය. %@ ලෙස ඔබගේ සංශෝධිත ලේඛනය ස්ථානීය ආචයනයේ සුරකිනු ලැබේ";
@@ -517,9 +506,6 @@
 
 /* Presentation Viewer */
 "End Slide Show" = "චිත්‍රකාඩ දැක්ම නිමාව";
-
-/* No comment provided by engineer. */
-"Enter a password to open the file." = "ගොනුව ඇරීමට මුරපදයක් යොදන්න.";
 
 /* placeholder */
 "Enter email" = "වි-තැපෑල යොදන්න";
@@ -799,14 +785,8 @@
 /* No comment provided by engineer. */
 "My Drive" = "මාගේ ධාවකය";
 
-/* Category title */
-"My rooms" = "මාගේ කාමර";
-
 /* No comment provided by engineer. */
 "Name is empty" = "නම හිස්ය";
-
-/* No comment provided by engineer. */
-"Needs additional params." = "අතිරේක පරාමිතීන් අවශ්‍යයි.";
 
 /* Badge of file in file list */
 "new" = "නව";
@@ -1045,9 +1025,6 @@
 "Project Documents" = "ව්‍යාපෘති ලේඛන";
 
 /* No comment provided by engineer. */
-"Protected File" = "රක්‍ෂිත ගොනුවකි";
-
-/* No comment provided by engineer. */
 "Push notifications disabled" = "තල්ලු දැනුම්දීම් අබලයි";
 
 /* Button title */
@@ -1104,7 +1081,8 @@
 /* Share status */
 "Room admin" = "කාමරයේ පරිපාලක";
 
-/* DocSpace rooms */
+/* Category title
+   DocSpace rooms */
 "Rooms" = "කාමර";
 
 /* No comment provided by engineer. */
@@ -1286,9 +1264,6 @@
 "The link for external\naccess is copied\nto the clipboard" = "බාහිර ප්‍රවේශය සඳහා\nසබැඳිය පසුරු පුවරුවට\nපිටපත් කර ඇත";
 
 /* No comment provided by engineer. */
-"The ONLYOFFICE Editors module is missing. Please contact support@onlyoffice.com for more information." = "ඔන්ලිඔෆිස් සංස්කරක ඒකකය දක්නට නැත. වැඩි විස්තර සඳහා කරුණාකර support@onlyoffice.com අමතන්න.";
-
-/* No comment provided by engineer. */
 "The parameters are incorrect." = "පරාමිතීන් වැරදිය.";
 
 /* No comment provided by engineer. */
@@ -1455,9 +1430,6 @@
 
 /* Caption of the processing */
 "Unpning" = "ගැළවෙමින්";
-
-/* No comment provided by engineer. */
-"Unsupported format." = "සහාය නොදක්වන ආකෘතියකි.";
 
 /* Caption of the process */
 "Uploading" = "උඩුගත වෙමින්";

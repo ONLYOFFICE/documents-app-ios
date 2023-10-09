@@ -1347,6 +1347,10 @@ extension ASCEditorManager {
                 if success {
                     [self.openedlocallyFile, self.openedFile].forEach { file in
                         file?.title = title
+
+                        if !fileExtension.isEmpty {
+                            file?.title = "\(title).\(fileExtension)"
+                        }
                     }
                 }
                 complation(.success(true))

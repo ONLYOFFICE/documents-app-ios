@@ -136,7 +136,7 @@ class ASCCreateEntity: NSObject, UIImagePickerControllerDelegate, UINavigationCo
                 hud?.hide(animated: true)
 
                 if let error {
-                    self.showError(message: error)
+                    self.showError(message: error.localizedDescription)
                 }
             } else if status == .end {
                 hud?.hide(animated: false)
@@ -160,7 +160,7 @@ class ASCCreateEntity: NSObject, UIImagePickerControllerDelegate, UINavigationCo
                 hud?.hide(animated: true)
 
                 if let error {
-                    self.showError(message: error)
+                    self.showError(message: error.localizedDescription)
                 }
             } else if status == .end {
                 if let entity {
@@ -325,7 +325,7 @@ class ASCCreateEntityDocumentDelegate: NSObject, UIDocumentPickerDelegate {
                                 openingAlert.hide()
 
                                 if let error {
-                                    self.showError(message: error)
+                                    self.showError(message: error.localizedDescription)
                                 }
                             } else if status == .end {
                                 openingAlert.hide()
@@ -412,8 +412,8 @@ class ASCCreateEntityImageDelegate: NSObject, UIImagePickerControllerDelegate, U
                     } else if status == .error {
                         openingAlert.hide()
 
-                        if let error = error {
-                            self.showError(message: error)
+                        if let error {
+                            self.showError(message: error.localizedDescription)
                         }
                     } else if status == .end {
                         openingAlert.hide()

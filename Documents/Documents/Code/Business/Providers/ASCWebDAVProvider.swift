@@ -864,7 +864,7 @@ class ASCWebDAVProvider: ASCFileProviderProtocol & ASCSortableFileProviderProtoc
 
     func chechTransfer(items: [ASCEntity], to folder: ASCFolder, handler: ASCEntityHandler? = nil) {
         guard let provider = provider else {
-            handler?(.error, nil, ASCProviderError(msg: errorProviderUndefined).localizedDescription)
+            handler?(.error, nil, ASCProviderError(msg: errorProviderUndefined))
             return
         }
 
@@ -903,7 +903,7 @@ class ASCWebDAVProvider: ASCFileProviderProtocol & ASCSortableFileProviderProtoc
         var cancel = false
 
         guard let provider = provider else {
-            handler?(.end, 1, nil, ASCProviderError(msg: errorProviderUndefined).localizedDescription, &cancel)
+            handler?(.end, 1, nil, ASCProviderError(msg: errorProviderUndefined), &cancel)
             return
         }
 
@@ -919,7 +919,7 @@ class ASCWebDAVProvider: ASCFileProviderProtocol & ASCSortableFileProviderProtoc
             operationQueue.addOperation {
                 if cancel {
                     DispatchQueue.main.async {
-                        handler?(.end, 1, results, lastError?.localizedDescription, &cancel)
+                        handler?(.end, 1, results, lastError, &cancel)
                     }
                     return
                 }
@@ -937,7 +937,7 @@ class ASCWebDAVProvider: ASCFileProviderProtocol & ASCSortableFileProviderProtoc
                             results.append(entity)
                         }
                         DispatchQueue.main.async {
-                            handler?(.progress, Float(index) / Float(items.count), entity, error?.localizedDescription, &cancel)
+                            handler?(.progress, Float(index) / Float(items.count), entity, error, &cancel)
                         }
                         semaphore.signal()
                     })
@@ -949,7 +949,7 @@ class ASCWebDAVProvider: ASCFileProviderProtocol & ASCSortableFileProviderProtoc
                             results.append(entity)
                         }
                         DispatchQueue.main.async {
-                            handler?(.progress, Float(index + 1) / Float(items.count), entity, error?.localizedDescription, &cancel)
+                            handler?(.progress, Float(index + 1) / Float(items.count), entity, error, &cancel)
                         }
                         semaphore.signal()
                     })
@@ -963,7 +963,7 @@ class ASCWebDAVProvider: ASCFileProviderProtocol & ASCSortableFileProviderProtoc
                 if items.count == results.count {
                     handler?(.end, 1, results, nil, &cancel)
                 } else {
-                    handler?(.end, 1, results, lastError?.localizedDescription, &cancel)
+                    handler?(.end, 1, results, lastError, &cancel)
                 }
             }
         }

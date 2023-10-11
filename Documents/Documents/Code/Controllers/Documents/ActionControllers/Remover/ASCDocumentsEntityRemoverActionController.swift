@@ -86,7 +86,7 @@ final class ASCDocumentsEntityRemoverActionController: ASCEntityRemoverActionCon
             } else if status == .error {
                 hud?.hide(animated: true)
                 hud = nil
-                errorHandeler(error)
+                errorHandeler(error?.localizedDescription ?? "")
                 completion?(nil)
             } else if status == .end {
                 hud?.setSuccessState()

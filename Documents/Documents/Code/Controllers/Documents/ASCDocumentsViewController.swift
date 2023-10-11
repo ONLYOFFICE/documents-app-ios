@@ -1684,8 +1684,8 @@ class ASCDocumentsViewController: ASCBaseTableViewController, UIGestureRecognize
             } else if status == .error {
                 hud?.hide(animated: true)
 
-                if error != nil {
-                    UIAlertController.showError(in: self, message: error!)
+                if let error {
+                    UIAlertController.showError(in: self, message: error.localizedDescription)
                 }
             } else if status == .end {
                 if entity != nil {
@@ -1785,7 +1785,7 @@ class ASCDocumentsViewController: ASCBaseTableViewController, UIGestureRecognize
                             processingMessage: String,
                             _ status: ASCEntityProcessStatus,
                             _ result: Any?,
-                            _ error: String?,
+                            _ error: Error?,
                             completion: () -> Void)
     {
         if status == .begin {
@@ -1794,8 +1794,8 @@ class ASCDocumentsViewController: ASCBaseTableViewController, UIGestureRecognize
             hud?.label.text = processingMessage
         } else if status == .error {
             hud?.hide(animated: true)
-            if error != nil {
-                UIAlertController.showError(in: self, message: error!)
+            if let error {
+                UIAlertController.showError(in: self, message: error.localizedDescription)
             }
         } else if status == .end {
             completion()
@@ -1842,7 +1842,7 @@ class ASCDocumentsViewController: ASCBaseTableViewController, UIGestureRecognize
                     openingAlert.hide()
                     UIAlertController.showError(
                         in: self,
-                        message: error ?? NSLocalizedString("Could not download file.", comment: "")
+                        message: error?.localizedDescription ?? NSLocalizedString("Could not download file.", comment: "")
                     )
                 } else {
                     if let newFile = result as? ASCFile, let rootVC = ASCViewControllerManager.shared.rootController {
@@ -1898,8 +1898,8 @@ class ASCDocumentsViewController: ASCBaseTableViewController, UIGestureRecognize
             } else if status == .error {
                 hud?.hide(animated: true)
 
-                if let error = error {
-                    UIAlertController.showError(in: self, message: error)
+                if let error {
+                    UIAlertController.showError(in: self, message: error.localizedDescription)
                 }
             } else if status == .end {
                 if entity != nil {
@@ -1945,8 +1945,8 @@ class ASCDocumentsViewController: ASCBaseTableViewController, UIGestureRecognize
             } else if status == .error {
                 hud?.hide(animated: true)
 
-                if let error = error {
-                    UIAlertController.showError(in: self, message: error)
+                if let error {
+                    UIAlertController.showError(in: self, message: error.localizedDescription)
                 }
             } else if status == .end {
                 if let entities = result as? [AnyObject], let entity = entities.first {
@@ -2074,7 +2074,7 @@ class ASCDocumentsViewController: ASCBaseTableViewController, UIGestureRecognize
                 hud?.hide(animated: true)
                 UIAlertController.showError(
                     in: self,
-                    message: error ?? NSLocalizedString("Could not duplicate the file.", comment: "")
+                    message: error?.localizedDescription ?? NSLocalizedString("Could not duplicate the file.", comment: "")
                 )
             } else if status == .end {
                 hud?.setSuccessState()
@@ -2158,7 +2158,7 @@ class ASCDocumentsViewController: ASCBaseTableViewController, UIGestureRecognize
                     hud?.hide(animated: false)
                     UIAlertController.showError(
                         in: self,
-                        message: error ?? NSLocalizedString("Could not copy.", comment: "")
+                        message: error?.localizedDescription ?? NSLocalizedString("Could not copy.", comment: "")
                     )
                     completion?(nil)
                 } else if status == .end {
@@ -2195,7 +2195,7 @@ class ASCDocumentsViewController: ASCBaseTableViewController, UIGestureRecognize
                 hud?.hide(animated: false)
                 UIAlertController.showError(
                     in: self,
-                    message: error ?? NSLocalizedString("Could not copy.", comment: "")
+                    message: error?.localizedDescription ?? NSLocalizedString("Could not copy.", comment: "")
                 )
             } else if status == .end {
                 hud?.hide(animated: false)

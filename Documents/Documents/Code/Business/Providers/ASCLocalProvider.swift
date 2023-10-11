@@ -642,13 +642,13 @@ class ASCLocalProvider: ASCFileProviderProtocol & ASCSortableFileProviderProtoco
 
                 if move {
                     if let error = ASCLocalFileHelper.shared.move(from: srcPath, to: destPath) {
-                        handler?(.error, 1, transfers, ASCProviderError(error).localizedDescription, &cancel)
+                        handler?(.error, 1, transfers, error, &cancel)
                     } else {
                         transfers.append(entity)
                     }
                 } else {
                     if let error = ASCLocalFileHelper.shared.copy(from: srcPath, to: destPath) {
-                        handler?(.error, 1, transfers, ASCProviderError(error).localizedDescription, &cancel)
+                        handler?(.error, 1, transfers, error, &cancel)
                     } else {
                         transfers.append(entity)
                     }

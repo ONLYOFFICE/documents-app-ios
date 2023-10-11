@@ -369,7 +369,7 @@ class ASCEditorManager: NSObject {
             if status == .end || status == .error {
                 if status == .error {
                     self.stopLocallyEditing()
-                    self.openHandler?(.error, 1, nil, &cancel)
+                    self.openHandler?(.error, 1, error, &cancel)
                 } else {
                     self.openHandler?(.end, 1, nil, &cancel)
 
@@ -1201,7 +1201,7 @@ extension ASCEditorManager {
                                         self.closeHandler?(.end, 1, file, nil, &cancel)
                                     }
                                 } else {
-                                    log.error("Couldn't save changes at server. Error: \(error ?? "")")
+                                    log.error("Couldn't save changes at server. Error: \(String(describing: error))")
                                     let errorMsg = String(format: NSLocalizedString("Couldn't save changes at server. Your modified document is saved in local storage as %@", comment: ""), backupFileName)
                                     self.closeHandler?(.error, 1, file, ASCProviderError(msg: errorMsg), &cancel)
                                 }

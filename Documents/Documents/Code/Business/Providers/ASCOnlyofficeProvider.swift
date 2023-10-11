@@ -795,11 +795,11 @@ class ASCOnlyofficeProvider: ASCFileProviderProtocol & ASCSortableFileProviderPr
 
         apiClient.request(OnlyofficeAPI.Endpoints.Operations.check, parameters) { result, error in
             if let error = error {
-                handler?(.error, nil, error.localizedDescription)
+                handler?(.error, nil, error)
             } else if let files = result?.result {
                 handler?(.end, files, nil)
             } else {
-                handler?(.error, nil, NetworkingError.invalidData.localizedDescription)
+                handler?(.error, nil, NetworkingError.invalidData)
             }
         }
     }
@@ -841,13 +841,13 @@ class ASCOnlyofficeProvider: ASCFileProviderProtocol & ASCSortableFileProviderPr
 
         apiClient.request(move ? OnlyofficeAPI.Endpoints.Operations.move : OnlyofficeAPI.Endpoints.Operations.copy, parameters) { [weak apiClient] result, error in
             if let error = error {
-                handler?(.error, 1, nil, error.localizedDescription, &cancel)
+                handler?(.error, 1, nil, error, &cancel)
             } else {
                 var checkOperation: (() -> Void)?
                 checkOperation = {
                     apiClient?.request(OnlyofficeAPI.Endpoints.Operations.list) { result, error in
                         if let error = error {
-                            handler?(.error, 1, nil, error.localizedDescription, &cancel)
+                            handler?(.error, 1, nil, error, &cancel)
                         } else if let operation = result?.result?.first, let progress = operation.progress {
                             if progress >= 100 {
                                 handler?(.end, 1, nil, nil, &cancel)
@@ -856,7 +856,7 @@ class ASCOnlyofficeProvider: ASCFileProviderProtocol & ASCSortableFileProviderPr
                                 checkOperation?()
                             }
                         } else {
-                            handler?(.error, 1, nil, NetworkingError.invalidData.localizedDescription, &cancel)
+                            handler?(.error, 1, nil, NetworkingError.invalidData, &cancel)
                         }
                     }
                 }
@@ -1320,7 +1320,7 @@ class ASCOnlyofficeProvider: ASCFileProviderProtocol & ASCSortableFileProviderPr
             if let folder = response?.result {
                 handler?(.end, folder, nil)
             } else {
-                handler?(.error, nil, NSLocalizedString("Pinned failed.", comment: ""))
+                handler?(.error, nil, ASCProviderError(msg: NSLocalizedString("Pinned failed.", comment: "")))
             }
         }
     }
@@ -1331,7 +1331,7 @@ class ASCOnlyofficeProvider: ASCFileProviderProtocol & ASCSortableFileProviderPr
             if let folder = response?.result {
                 handler?(.end, folder, nil)
             } else {
-                handler?(.error, nil, NSLocalizedString("Unpinned failed.", comment: ""))
+                handler?(.error, nil, ASCProviderError(msg: NSLocalizedString("Unpinned failed.", comment: "")))
             }
         }
     }
@@ -1342,7 +1342,7 @@ class ASCOnlyofficeProvider: ASCFileProviderProtocol & ASCSortableFileProviderPr
             if let responseFolder = response?.result {
                 handler?(.end, responseFolder, nil)
             } else {
-                handler?(.error, nil, NSLocalizedString("Archiving failed.", comment: ""))
+                handler?(.error, nil, ASCProviderError(msg: NSLocalizedString("Archiving failed.", comment: "")))
             }
         }
     }
@@ -1353,14 +1353,14 @@ class ASCOnlyofficeProvider: ASCFileProviderProtocol & ASCSortableFileProviderPr
             if let folder = response?.result {
                 handler?(.end, folder, nil)
             } else {
-                handler?(.error, nil, NSLocalizedString("Unarchiving failed.", comment: ""))
+                handler?(.error, nil, ASCProviderError(msg: NSLocalizedString("Unarchiving failed.", comment: "")))
             }
         }
     }
 
     private func unsupportedActionHandler(action: ASCEntityActions, handler: ASCEntityHandler?) {
         log.error("Unsupported action \(action.rawValue)")
-        handler?(.error, nil, "Unsupported action")
+        handler?(.error, nil, ASCProviderError(msg: "Unsupported action"))
     }
 
     private func updateItem(_ item: ASCEntity) {

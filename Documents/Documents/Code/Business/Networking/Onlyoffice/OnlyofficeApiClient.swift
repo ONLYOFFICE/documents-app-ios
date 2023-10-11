@@ -166,9 +166,14 @@ class OnlyofficeApiClient: NetworkingClient {
         )
 
         manager.session.configuration.timeoutIntervalForResource = 600
+        manager.session.configuration.timeoutIntervalForRequest = 600
+
         manager.download(
             url,
             headers: headers,
+            requestModifier: {
+                $0.timeoutInterval = 600
+            },
             to: destination
         )
         .downloadProgress(queue: queue) { progress in
@@ -178,8 +183,10 @@ class OnlyofficeApiClient: NetworkingClient {
             }
         }
         .redirect(using: redirectHandler)
+        .validate()
         .responseData(queue: queue) { response in
             self.manager.session.configuration.timeoutIntervalForResource = self.defaultTimeoutIntervalForResource
+            self.manager.session.configuration.timeoutIntervalForRequest = self.defaultTimeoutIntervalForResource
 
             switch response.result {
             case let .success(data):

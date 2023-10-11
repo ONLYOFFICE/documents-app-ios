@@ -213,28 +213,38 @@ class NetworkingClient: NSObject, NetworkingRequestingProtocol {
         }
 
         manager.session.configuration.timeoutIntervalForResource = 600
-        manager.download(url, to: destination)
-            .downloadProgress { progress in
-                log.debug("Download Progress: \(progress.fractionCompleted)")
-                DispatchQueue.main.async {
-                    completion?(nil, progress.fractionCompleted, nil)
-                }
-            }
-            .responseData { response in
-                self.manager.session.configuration.timeoutIntervalForResource = self.defaultTimeoutIntervalForResource
+        manager.session.configuration.timeoutIntervalForRequest = 600
 
-                switch response.result {
-                case let .success(data):
-                    DispatchQueue.main.async {
-                        completion?(data, 1, nil)
-                    }
-                case let .failure(error):
-                    let err = self.parseError(response.value, error)
-                    DispatchQueue.main.async {
-                        completion?(nil, 1, err)
-                    }
+        manager.download(
+            url,
+            requestModifier: {
+                $0.timeoutInterval = 600
+            },
+            to: destination
+        )
+        .downloadProgress { progress in
+            log.debug("Download Progress: \(progress.fractionCompleted)")
+            DispatchQueue.main.async {
+                completion?(nil, progress.fractionCompleted, nil)
+            }
+        }
+        .validate()
+        .responseData { response in
+            self.manager.session.configuration.timeoutIntervalForResource = self.defaultTimeoutIntervalForResource
+            self.manager.session.configuration.timeoutIntervalForRequest = self.defaultTimeoutIntervalForResource
+
+            switch response.result {
+            case let .success(data):
+                DispatchQueue.main.async {
+                    completion?(data, 1, nil)
+                }
+            case let .failure(error):
+                let err = self.parseError(response.value, error)
+                DispatchQueue.main.async {
+                    completion?(nil, 1, err)
                 }
             }
+        }
     }
 
     func parseError(_ data: Data?, _ error: AFError? = nil) -> NetworkingError {

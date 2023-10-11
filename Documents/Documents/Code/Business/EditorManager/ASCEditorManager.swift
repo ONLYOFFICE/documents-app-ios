@@ -1139,7 +1139,7 @@ extension ASCEditorManager {
 
                 stopLocallyEditing()
                 removeAutosave(at: Path.userAutosavedInformation + file.title)
-                closeHandler?(.end, 1, openedCopy ? openedlocallyFile : openedFile, nil, &cancel)
+                closeHandler?(.end, 1, nil, nil, &cancel)
 
                 return
             }

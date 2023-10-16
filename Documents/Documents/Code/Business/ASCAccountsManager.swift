@@ -129,6 +129,13 @@ class ASCAccountsManager {
     ///
     /// - Returns: An account record
     func get(by portal: String, email: String) -> ASCAccount? {
-        return accounts.first(where: { ($0.email == email) && ($0.portal == portal) })
+        let host: (String?) -> String? = { host in
+            host?
+                .replacingOccurrences(of: "https://", with: "")
+                .replacingOccurrences(of: "http://", with: "")
+        }
+        return accounts.first(where: {
+            ($0.email == email) && (host($0.portal) == host(portal))
+        })
     }
 }

@@ -463,10 +463,16 @@ class ASCViewControllerManager {
                 introViewController.dismiss(animated: true, completion: nil)
             }
 
+            let withoutScheme: (String?) -> String? = { domain in
+                domain?
+                    .replacingOccurrences(of: "https://", with: "")
+                    .replacingOccurrences(of: "http://", with: "")
+            }
+
             let onlyofficeProvider = ASCFileManager.onlyofficeProvider
 
             if onlyofficeProvider == nil ||
-                !(onlyofficeProvider?.apiClient.baseURL?.absoluteString ?? "").contains(portal) ||
+                !(withoutScheme(onlyofficeProvider?.apiClient.baseURL?.absoluteString) ?? "").contains(withoutScheme(portal) ?? "") ||
                 email != onlyofficeProvider?.user?.email
             {
                 let account = ASCAccountsManager.shared.get(by: portal, email: email)

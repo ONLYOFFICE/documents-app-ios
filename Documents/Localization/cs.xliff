@@ -364,7 +364,7 @@ začněte používat vaší kancelář</target>
       </trans-unit>
       <trans-unit id="/Delete %lu Folder and %lu File:dict/lu_files:dict/zero:dict/:string" xml:space="preserve">
         <source/>
-        <target/>
+        <target state="needs-translation"/>
         <note/>
       </trans-unit>
       <trans-unit id="/Delete %lu Folder and %lu File:dict/lu_folders:dict/few:dict/:string" xml:space="preserve">
@@ -1260,17 +1260,17 @@ Poznámka: Pokud zapomenete přístupový kód, budete muset aplikaci smazat a p
         <target>%1$lu položek se stejným názvem již ve složce existuj '%2$@'. Přepsat položky?</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
-      <trans-unit id="&lt;p&gt;Use the password created in &lt;a href=&quot;https://yandex.ru/id/about&quot;&gt;Yandex ID&lt;/a&gt;.&lt;/br&gt;More detailed connection instructions can be found in the &lt;a href=&quot;https://yandex.ru/support/disk-desktop/webdav-app-passwords.html?lang=ru&quot;&gt;help&lt;/a&gt;.&lt;/p&gt;" xml:space="preserve">
+      <trans-unit id="&lt;p>Use the password created in &lt;a href=&quot;https://yandex.ru/id/about&quot;>Yandex ID&lt;/a>.&lt;/br>More detailed connection instructions can be found in the &lt;a href=&quot;https://yandex.ru/support/disk-desktop/webdav-app-passwords.html?lang=ru&quot;>help&lt;/a>.&lt;/p>" xml:space="preserve">
         <source>&lt;p&gt;Use the password created in &lt;a href="https://yandex.ru/id/about"&gt;Yandex ID&lt;/a&gt;.&lt;/br&gt;More detailed connection instructions can be found in the &lt;a href="https://yandex.ru/support/disk-desktop/webdav-app-passwords.html?lang=ru"&gt;help&lt;/a&gt;.&lt;/p&gt;</source>
         <target>&lt;p&gt;Použijte heslo vytvořené v &lt;a href="https://yandex.ru/id/about"&gt;Yandex ID&lt;/a&gt;.&lt;/br&gt;Podrobnější pokyny k připojení najdete v &lt;a href="https://yandex.ru/support/disk-desktop/webdav-app-passwords.html?lang=ru"&gt;nápovědě&lt;/a&gt;.&lt;/p&gt;</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
-      <trans-unit id="&lt;p&gt;Use the password created in &lt;a href=&quot;https://yandex.ru/id/about&quot;&gt;Yandex ID&lt;/a&gt;.&lt;/p&gt;&lt;p&gt;More detailed connection instructions can be found in the &lt;a href=&quot;https://yandex.ru/support/disk-desktop/webdav-app-passwords.html?lang=ru&quot;&gt;help&lt;/a&gt;.&lt;/p&gt;" xml:space="preserve">
+      <trans-unit id="&lt;p>Use the password created in &lt;a href=&quot;https://yandex.ru/id/about&quot;>Yandex ID&lt;/a>.&lt;/p>&lt;p>More detailed connection instructions can be found in the &lt;a href=&quot;https://yandex.ru/support/disk-desktop/webdav-app-passwords.html?lang=ru&quot;>help&lt;/a>.&lt;/p>" xml:space="preserve">
         <source>&lt;p&gt;Use the password created in &lt;a href="https://yandex.ru/id/about"&gt;Yandex ID&lt;/a&gt;.&lt;/p&gt;&lt;p&gt;More detailed connection instructions can be found in the &lt;a href="https://yandex.ru/support/disk-desktop/webdav-app-passwords.html?lang=ru"&gt;help&lt;/a&gt;.&lt;/p&gt;</source>
         <target>&lt;p&gt;Použijte heslo vytvořené v &lt;a href="https://yandex.ru/id/about"&gt;Yandex ID&lt;/a&gt;.&lt;/p&gt;&lt;p&gt;Podrobnější pokyny k připojení najdete v &lt;a href="https://yandex.ru/support/disk-desktop/webdav-app-passwords.html?lang=ru"&gt;nápovědě&lt;/a&gt;.&lt;/p&gt;</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
-      <trans-unit id="&lt;p&gt;You must have a paid version of the player to use this service.&lt;/p&gt;&lt;p&gt;If you have activated double authentication, please generate a CDM application from the Infomaniak manager. &lt;a href=&quot;https://www.infomaniak.com/en/support/faq/1940/enable-two-step-verification&quot;&gt;More...&lt;/a&gt;&lt;/p&gt;" xml:space="preserve">
+      <trans-unit id="&lt;p>You must have a paid version of the player to use this service.&lt;/p>&lt;p>If you have activated double authentication, please generate a CDM application from the Infomaniak manager. &lt;a href=&quot;https://www.infomaniak.com/en/support/faq/1940/enable-two-step-verification&quot;>More...&lt;/a>&lt;/p>" xml:space="preserve">
         <source>&lt;p&gt;You must have a paid version of the player to use this service.&lt;/p&gt;&lt;p&gt;If you have activated double authentication, please generate a CDM application from the Infomaniak manager. &lt;a href="https://www.infomaniak.com/en/support/faq/1940/enable-two-step-verification"&gt;More...&lt;/a&gt;&lt;/p&gt;</source>
         <target>&lt;p&gt;Pro použití této služby musíte používat placenou verzi přehrávače.&lt;/p&gt;&lt;p&gt;Pokud máte aktivované dvojité ověřování, vygenerujte si žádost CDM ze správce Infomaniak. &lt;a href="https://www.infomaniak.com/en/support/faq/1940/enable-two-step-verification"&gt;Další...&lt;/a&gt;&lt;/p&gt;</target>
         <note>No comment provided by engineer.</note>
@@ -1465,6 +1465,7 @@ Poznámka: Pokud zapomenete přístupový kód, budete muset aplikaci smazat a p
       </trans-unit>
       <trans-unit id="Are you sure you want to delete the account %@ from this devce?" xml:space="preserve">
         <source>Are you sure you want to delete the account %@ from this devce?</source>
+        <target state="translated">Opravdu chcete z tohoto zařízení odstranit účet %@?</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Author" xml:space="preserve">
@@ -1639,6 +1640,7 @@ Poznámka: Pokud zapomenete přístupový kód, budete muset aplikaci smazat a p
       </trans-unit>
       <trans-unit id="Connect Storage" xml:space="preserve">
         <source>Connect Storage</source>
+        <target state="translated">Připojit úložiště</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Connect third-party storage&#10;like Nextcloud, ownCloud, Yandex Disk and&#10;others which use WebDAV protocol." xml:space="preserve">
@@ -1812,6 +1814,7 @@ jiné, které používají protokol WebDAV.</target>
       </trans-unit>
       <trans-unit id="Couldn't rename the file" xml:space="preserve">
         <source>Couldn't rename the file</source>
+        <target state="translated">Soubor se nepodařilo přejmenovat</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Couldn't save changes at server. Your modified document is saved in local storage as %@" xml:space="preserve">
@@ -1936,6 +1939,7 @@ jiné, které používají protokol WebDAV.</target>
       </trans-unit>
       <trans-unit id="DocSpace admin" xml:space="preserve">
         <source>DocSpace admin</source>
+        <target state="translated">Správce DocSpace</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Document" xml:space="preserve">
@@ -2276,10 +2280,12 @@ jiné, které používají protokol WebDAV.</target>
       </trans-unit>
       <trans-unit id="Import File" xml:space="preserve">
         <source>Import File</source>
+        <target state="translated">Importovat soubor</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Import Image" xml:space="preserve">
         <source>Import Image</source>
+        <target state="translated">Importovat obrázek</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="In online mode, use real-time co-editing features of %@ to work on documents together with your portal members, share documents and create common storage folders." xml:space="preserve">
@@ -2832,6 +2838,7 @@ Pokud problém přetrvává, kontaktujte nás a uveďte tento kód chyby: Box - 
       </trans-unit>
       <trans-unit id="Power user" xml:space="preserve">
         <source>Power user</source>
+        <target state="translated">Mocný uživatel</target>
         <note>Share status</note>
       </trans-unit>
       <trans-unit id="Presentation" xml:space="preserve">
@@ -2936,6 +2943,7 @@ Pokud problém přetrvává, kontaktujte nás a uveďte tento kód chyby: Box - 
       </trans-unit>
       <trans-unit id="Request Entity Too Large" xml:space="preserve">
         <source>Request Entity Too Large</source>
+        <target state="translated">Příliš velká entita požadavku</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Request canceled" xml:space="preserve">
@@ -3217,6 +3225,7 @@ Pokud problém přetrvává, kontaktujte nás a uveďte tento kód chyby: Box - 
       </trans-unit>
       <trans-unit id="Take a Picture" xml:space="preserve">
         <source>Take a Picture</source>
+        <target state="translated">Vyfotit</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Tb" xml:space="preserve">

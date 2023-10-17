@@ -138,6 +138,9 @@
 "Are you sure you want to delete the account  %@ from this devce?" = "Opravdu chcete z tohoto zařízení odstranit účet %@?";
 
 /* No comment provided by engineer. */
+"Are you sure you want to delete the account %@ from this devce?" = "Opravdu chcete z tohoto zařízení odstranit účet %@?";
+
+/* No comment provided by engineer. */
 "Are you sure you want to leave this account?" = "Opravdu chcete tento účet opustit?";
 
 /* No comment provided by engineer. */
@@ -266,6 +269,9 @@
 /* No comment provided by engineer. */
 "Connect Clouds" = "Připojit cloud";
 
+/* No comment provided by engineer. */
+"Connect Storage" = "Připojit úložiště";
+
 /* Introduction Step Three - Description */
 "Connect third-party storage\nlike Nextcloud, ownCloud, Yandex Disk and\nothers which use WebDAV protocol." = "Připojte úložiště třetích stran\njako Nextcloud, ownCloud, Yandex Disk a\njiné, které používají protokol WebDAV.";
 
@@ -366,6 +372,9 @@
 "Could not write to file" = "Nelze zapisovat do souboru";
 
 /* No comment provided by engineer. */
+"Couldn't rename the file" = "Soubor se nepodařilo přejmenovat";
+
+/* No comment provided by engineer. */
 "Couldn't save changes at server. Your modified document is saved in local storage as %@" = "Nepodařilo se uložit změny na serveru. Váš změněný dokument je uložen v místním úložišti jako %@";
 
 /* No comment provided by engineer. */
@@ -436,6 +445,9 @@
 
 /* Button title */
 "Disconnect third party" = "Odpojit třetí stranu";
+
+/* No comment provided by engineer. */
+"DocSpace admin" = "Správce DocSpace";
 
 /* No comment provided by engineer. */
 "Document" = "Dokument";
@@ -656,6 +668,12 @@
 
 /* No comment provided by engineer. */
 "Images" = "Obrázky";
+
+/* No comment provided by engineer. */
+"Import File" = "Importovat soubor";
+
+/* No comment provided by engineer. */
+"Import Image" = "Importovat obrázek";
 
 /* Introduction Step Five - Description */
 "In online mode, use real-time co-editing features of %@ to work on documents together with your portal members, share documents and create common storage folders." = "V režimu online můžete v nástrojích %@ společně se členy portálu pracovat na dokumentech, sdílet je a vytvářet složky pro ukládání souborů.";
@@ -1000,6 +1018,9 @@
 /* Share status */
 "Pover user" = "Mocný uživatel";
 
+/* Share status */
+"Power user" = "Mocný uživatel";
+
 /* No comment provided by engineer. */
 "Presentation" = "Prezentace";
 
@@ -1062,6 +1083,9 @@
 
 /* No comment provided by engineer. */
 "Request canceled" = "Požadavek zrušen";
+
+/* No comment provided by engineer. */
+"Request Entity Too Large" = "Příliš velká entita požadavku";
 
 /* No comment provided by engineer. */
 "Request had insufficient authentication scopes" = "Požadavek neměl dostatečné rozsahy ověřování";
@@ -1226,6 +1250,9 @@
 
 /* No comment provided by engineer. */
 "Tab" = "Tabulátor";
+
+/* No comment provided by engineer. */
+"Take a Picture" = "Vyfotit";
 
 /* Data units */
 "Tb" = "Tb";

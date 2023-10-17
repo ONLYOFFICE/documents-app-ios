@@ -138,6 +138,9 @@
 "Are you sure you want to delete the account  %@ from this devce?" = "このデバイスから「%@」アカウントを削除してよろしいですか？";
 
 /* No comment provided by engineer. */
+"Are you sure you want to delete the account %@ from this devce?" = "このデバイスから「%@」アカウントを削除してよろしいですか？";
+
+/* No comment provided by engineer. */
 "Are you sure you want to leave this account?" = "本当にこのアカウントからサインアウトしますか?";
 
 /* No comment provided by engineer. */
@@ -266,6 +269,9 @@
 /* No comment provided by engineer. */
 "Connect Clouds" = "クラウドに接続する";
 
+/* No comment provided by engineer. */
+"Connect Storage" = "ストレージに接続する";
+
 /* Introduction Step Three - Description */
 "Connect third-party storage\nlike Nextcloud, ownCloud, Yandex Disk and\nothers which use WebDAV protocol." = "Nextcloud、ownCloud、Yandex Diskなど、\nWebDAVプロトコルを使用する\nサードパーティストレージを接続します。";
 
@@ -366,6 +372,9 @@
 "Could not write to file" = "ファイルへの書き込みに失敗しました";
 
 /* No comment provided by engineer. */
+"Couldn't rename the file" = "ファイル名を変更できませんでした";
+
+/* No comment provided by engineer. */
 "Couldn't save changes at server. Your modified document is saved in local storage as %@" = "サーバーで変更を保存できませんでした。変更したドキュメントはローカルストレージに %@ として保存されます。";
 
 /* No comment provided by engineer. */
@@ -436,6 +445,9 @@
 
 /* Button title */
 "Disconnect third party" = "サードパーティーの接続を解除する";
+
+/* No comment provided by engineer. */
+"DocSpace admin" = "DocSpaceの管理者";
 
 /* No comment provided by engineer. */
 "Document" = "ドキュメント";
@@ -656,6 +668,12 @@
 
 /* No comment provided by engineer. */
 "Images" = "イメージ";
+
+/* No comment provided by engineer. */
+"Import File" = "ファイルをインポートする";
+
+/* No comment provided by engineer. */
+"Import Image" = "イメージをインポートする";
 
 /* Introduction Step Five - Description */
 "In online mode, use real-time co-editing features of %@ to work on documents together with your portal members, share documents and create common storage folders." = "オンラインモードでは、リアルタイム共同編集機能の %@ を使用して、ポータルのメンバーと一緒にドキュメントを編集。さらにドキュメントを共有して、一般ストレージフォルダーを作成。";
@@ -1000,6 +1018,9 @@
 /* Share status */
 "Pover user" = "パワーユーザー";
 
+/* Share status */
+"Power user" = "パワーユーザー";
+
 /* No comment provided by engineer. */
 "Presentation" = "プレゼンテーション";
 
@@ -1062,6 +1083,9 @@
 
 /* No comment provided by engineer. */
 "Request canceled" = "リクエストがキャンセルされました";
+
+/* No comment provided by engineer. */
+"Request Entity Too Large" = "リクエストエンティティが大きすぎます";
 
 /* No comment provided by engineer. */
 "Request had insufficient authentication scopes" = "リクエストの認証スコープが不十分でした";
@@ -1226,6 +1250,9 @@
 
 /* No comment provided by engineer. */
 "Tab" = "タブ";
+
+/* No comment provided by engineer. */
+"Take a Picture" = "写真を撮る";
 
 /* Data units */
 "Tb" = "Tb";

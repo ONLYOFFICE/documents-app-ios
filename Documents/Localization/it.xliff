@@ -294,7 +294,7 @@ inizia a usare il tuo office</target>
       </trans-unit>
       <trans-unit id="/Delete %lu Folder and %lu File:dict/lu_files:dict/zero:dict/:string" xml:space="preserve">
         <source/>
-        <target/>
+        <target state="needs-translation"/>
         <note/>
       </trans-unit>
       <trans-unit id="/Delete %lu Folder and %lu File:dict/lu_folders:dict/one:dict/:string" xml:space="preserve">
@@ -1170,17 +1170,17 @@ Nota: se dimentichi il codice di accesso, dovrai disinstallare e reinstallare l'
         <target>%1$lu elementi con lo stesso nome esistono già nella cartella '%2$@'. Sovrascrivere gli elementi?</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
-      <trans-unit id="&lt;p&gt;Use the password created in &lt;a href=&quot;https://yandex.ru/id/about&quot;&gt;Yandex ID&lt;/a&gt;.&lt;/br&gt;More detailed connection instructions can be found in the &lt;a href=&quot;https://yandex.ru/support/disk-desktop/webdav-app-passwords.html?lang=ru&quot;&gt;help&lt;/a&gt;.&lt;/p&gt;" xml:space="preserve">
+      <trans-unit id="&lt;p>Use the password created in &lt;a href=&quot;https://yandex.ru/id/about&quot;>Yandex ID&lt;/a>.&lt;/br>More detailed connection instructions can be found in the &lt;a href=&quot;https://yandex.ru/support/disk-desktop/webdav-app-passwords.html?lang=ru&quot;>help&lt;/a>.&lt;/p>" xml:space="preserve">
         <source>&lt;p&gt;Use the password created in &lt;a href="https://yandex.ru/id/about"&gt;Yandex ID&lt;/a&gt;.&lt;/br&gt;More detailed connection instructions can be found in the &lt;a href="https://yandex.ru/support/disk-desktop/webdav-app-passwords.html?lang=ru"&gt;help&lt;/a&gt;.&lt;/p&gt;</source>
         <target>&lt;p&gt;Utilizza la password creata in &lt;a href="https://yandex.ru/id/about"&gt;ID Yandex&lt;/a&gt;.&lt;/br&gt;Istruzioni di connessione più dettagliate sono disponibili in &lt;a href= "https://yandex.ru/support/disk-desktop/webdav-app-passwords.html?lang=ru"&gt;aiuto&lt;/a&gt;.&lt;/p&gt;</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
-      <trans-unit id="&lt;p&gt;Use the password created in &lt;a href=&quot;https://yandex.ru/id/about&quot;&gt;Yandex ID&lt;/a&gt;.&lt;/p&gt;&lt;p&gt;More detailed connection instructions can be found in the &lt;a href=&quot;https://yandex.ru/support/disk-desktop/webdav-app-passwords.html?lang=ru&quot;&gt;help&lt;/a&gt;.&lt;/p&gt;" xml:space="preserve">
+      <trans-unit id="&lt;p>Use the password created in &lt;a href=&quot;https://yandex.ru/id/about&quot;>Yandex ID&lt;/a>.&lt;/p>&lt;p>More detailed connection instructions can be found in the &lt;a href=&quot;https://yandex.ru/support/disk-desktop/webdav-app-passwords.html?lang=ru&quot;>help&lt;/a>.&lt;/p>" xml:space="preserve">
         <source>&lt;p&gt;Use the password created in &lt;a href="https://yandex.ru/id/about"&gt;Yandex ID&lt;/a&gt;.&lt;/p&gt;&lt;p&gt;More detailed connection instructions can be found in the &lt;a href="https://yandex.ru/support/disk-desktop/webdav-app-passwords.html?lang=ru"&gt;help&lt;/a&gt;.&lt;/p&gt;</source>
         <target>&lt;p&gt;Utilizza la password creata in &lt;a href="https://yandex.ru/id/about"&gt;ID Yandex&lt;/a&gt;.&lt;/p&gt;&lt;p&gt;Istruzioni di connessione più dettagliate sono disponibili nella &lt; a href="https://yandex.ru/support/disk-desktop/webdav-app-passwords.html?lang=ru"&gt;aiuto&lt;/a&gt;.&lt;/p&gt;</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
-      <trans-unit id="&lt;p&gt;You must have a paid version of the player to use this service.&lt;/p&gt;&lt;p&gt;If you have activated double authentication, please generate a CDM application from the Infomaniak manager. &lt;a href=&quot;https://www.infomaniak.com/en/support/faq/1940/enable-two-step-verification&quot;&gt;More...&lt;/a&gt;&lt;/p&gt;" xml:space="preserve">
+      <trans-unit id="&lt;p>You must have a paid version of the player to use this service.&lt;/p>&lt;p>If you have activated double authentication, please generate a CDM application from the Infomaniak manager. &lt;a href=&quot;https://www.infomaniak.com/en/support/faq/1940/enable-two-step-verification&quot;>More...&lt;/a>&lt;/p>" xml:space="preserve">
         <source>&lt;p&gt;You must have a paid version of the player to use this service.&lt;/p&gt;&lt;p&gt;If you have activated double authentication, please generate a CDM application from the Infomaniak manager. &lt;a href="https://www.infomaniak.com/en/support/faq/1940/enable-two-step-verification"&gt;More...&lt;/a&gt;&lt;/p&gt;</source>
         <target>&lt;p&gt;Devi avere una versione a pagamento del lettore per utilizzare questo servizio.&lt;/p&gt;&lt;p&gt;Se hai attivato la doppia autenticazione, genera un'applicazione CDM dal gestore di Infomaniak. &lt;a href="https://www.infomaniak.com/en/support/faq/1940/enable-two-step-verification"&gt;Altro...&lt;/a&gt;&lt;/p&gt;</target>
         <note>No comment provided by engineer.</note>
@@ -1375,6 +1375,7 @@ possibilità di leggere, rivedere o modificare i documenti.</target>
       </trans-unit>
       <trans-unit id="Are you sure you want to delete the account %@ from this devce?" xml:space="preserve">
         <source>Are you sure you want to delete the account %@ from this devce?</source>
+        <target state="translated">Sei sicuro di voler eliminare l'account %@ da questo dispositivo?</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Author" xml:space="preserve">
@@ -1549,6 +1550,7 @@ possibilità di leggere, rivedere o modificare i documenti.</target>
       </trans-unit>
       <trans-unit id="Connect Storage" xml:space="preserve">
         <source>Connect Storage</source>
+        <target state="translated">Connettere spazio di archiviazione</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Connect third-party storage&#10;like Nextcloud, ownCloud, Yandex Disk and&#10;others which use WebDAV protocol." xml:space="preserve">
@@ -1722,6 +1724,7 @@ altri che utilizzano il protocollo WebDAV.</target>
       </trans-unit>
       <trans-unit id="Couldn't rename the file" xml:space="preserve">
         <source>Couldn't rename the file</source>
+        <target state="translated">Impossibile rinominare il file</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Couldn't save changes at server. Your modified document is saved in local storage as %@" xml:space="preserve">
@@ -1846,6 +1849,7 @@ altri che utilizzano il protocollo WebDAV.</target>
       </trans-unit>
       <trans-unit id="DocSpace admin" xml:space="preserve">
         <source>DocSpace admin</source>
+        <target state="translated">Amministratore di DocSpace</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Document" xml:space="preserve">
@@ -2186,10 +2190,12 @@ altri che utilizzano il protocollo WebDAV.</target>
       </trans-unit>
       <trans-unit id="Import File" xml:space="preserve">
         <source>Import File</source>
+        <target state="translated">Importare file</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Import Image" xml:space="preserve">
         <source>Import Image</source>
+        <target state="translated">Importare immagine</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="In online mode, use real-time co-editing features of %@ to work on documents together with your portal members, share documents and create common storage folders." xml:space="preserve">
@@ -2742,6 +2748,7 @@ Se il problema persiste, contattaci menzionando questo codice di errore: SSO - %
       </trans-unit>
       <trans-unit id="Power user" xml:space="preserve">
         <source>Power user</source>
+        <target state="translated">Utente esperto</target>
         <note>Share status</note>
       </trans-unit>
       <trans-unit id="Presentation" xml:space="preserve">
@@ -2846,6 +2853,7 @@ Se il problema persiste, contattaci menzionando questo codice di errore: SSO - %
       </trans-unit>
       <trans-unit id="Request Entity Too Large" xml:space="preserve">
         <source>Request Entity Too Large</source>
+        <target state="translated">Richiesta entità troppo grande</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Request canceled" xml:space="preserve">
@@ -3127,6 +3135,7 @@ Se il problema persiste, contattaci menzionando questo codice di errore: SSO - %
       </trans-unit>
       <trans-unit id="Take a Picture" xml:space="preserve">
         <source>Take a Picture</source>
+        <target state="translated">Scatta una foto</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Tb" xml:space="preserve">

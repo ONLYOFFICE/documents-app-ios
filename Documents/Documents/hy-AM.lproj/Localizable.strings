@@ -138,6 +138,9 @@
 "Are you sure you want to delete the account  %@ from this devce?" = "Իսկապե՞ս ուզում եք ջնջել %@ հաշիվն այս սարքից:";
 
 /* No comment provided by engineer. */
+"Are you sure you want to delete the account %@ from this devce?" = "Իսկապե՞ս ուզում եք ջնջել %@ հաշիվն այս սարքից:";
+
+/* No comment provided by engineer. */
 "Are you sure you want to leave this account?" = "Իսկապե՞ս ուզում եք լքել այս հաշիվը:";
 
 /* No comment provided by engineer. */
@@ -266,6 +269,9 @@
 /* No comment provided by engineer. */
 "Connect Clouds" = "Միացրեք ամպերը";
 
+/* No comment provided by engineer. */
+"Connect Storage" = "Միացնել պահեստ";
+
 /* Introduction Step Three - Description */
 "Connect third-party storage\nlike Nextcloud, ownCloud, Yandex Disk and\nothers which use WebDAV protocol." = "Միացրեք երրորդ կողմի պահեստը\nինչպես Nextcloud-ը, ownCloud-ը, Yandex Disk-ը և\nմյուսները, որոնք օգտագործում են WebDAV արձանագրությունը:";
 
@@ -366,6 +372,9 @@
 "Could not write to file" = "Չհաջողվեց գրել ֆայլին";
 
 /* No comment provided by engineer. */
+"Couldn't rename the file" = "Չհաջողվեց վերանվանել ֆայլը";
+
+/* No comment provided by engineer. */
 "Couldn't save changes at server. Your modified document is saved in local storage as %@" = "Չհաջողվեց պահպանել փոփոխությունները սերվերում: Ձեր փոփոխված փաստաթուղթը պահվում է տեղական պահեստում որպես %@";
 
 /* No comment provided by engineer. */
@@ -436,6 +445,9 @@
 
 /* Button title */
 "Disconnect third party" = "Անջատեք երրորդ կողմը";
+
+/* No comment provided by engineer. */
+"DocSpace admin" = "DocSpace-ի ադմինիստրատոր";
 
 /* No comment provided by engineer. */
 "Document" = "Փաստաթուղթ";
@@ -656,6 +668,12 @@
 
 /* No comment provided by engineer. */
 "Images" = "Պատկերներ";
+
+/* No comment provided by engineer. */
+"Import File" = "Ներմուծել ֆայլ";
+
+/* No comment provided by engineer. */
+"Import Image" = "Ներմուծել պատկեր";
 
 /* Introduction Step Five - Description */
 "In online mode, use real-time co-editing features of %@ to work on documents together with your portal members, share documents and create common storage folders." = "Առցանց ռեժիմում օգտագործեք %@-ի իրական ժամանակում համատեղ խմբագրման հնարավորությունները՝ ձեր պորտալի անդամների հետ փաստաթղթերի վրա աշխատելու, փաստաթղթերը կիսելու և ընդհանուր պահեստային թղթապանակներ ստեղծելու համար:";
@@ -1000,6 +1018,9 @@
 /* Share status */
 "Pover user" = "Փորձառու օգտագործող";
 
+/* Share status */
+"Power user" = "Փորձառու օգտագործող";
+
 /* No comment provided by engineer. */
 "Presentation" = "Պրեզենտացիա";
 
@@ -1062,6 +1083,9 @@
 
 /* No comment provided by engineer. */
 "Request canceled" = "Հայցը չեղարկվել է";
+
+/* No comment provided by engineer. */
+"Request Entity Too Large" = "Հայցվող սուբյեկտը չափազանց մեծ է";
 
 /* No comment provided by engineer. */
 "Request had insufficient authentication scopes" = "Հարցումն ուներ նույնականացման բավարար շրջանակներ";
@@ -1226,6 +1250,9 @@
 
 /* No comment provided by engineer. */
 "Tab" = "Ներդիր";
+
+/* No comment provided by engineer. */
+"Take a Picture" = "Լուսանկարել";
 
 /* Data units */
 "Tb" = "Tb";

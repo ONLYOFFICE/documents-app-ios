@@ -259,7 +259,7 @@ start using your office</source>
       </trans-unit>
       <trans-unit id="/Delete %lu Folder and %lu File:dict/lu_files:dict/zero:dict/:string" xml:space="preserve">
         <source/>
-        <target> </target>
+        <target state="needs-translation"/>
         <note/>
       </trans-unit>
       <trans-unit id="/Delete %lu Folder and %lu File:dict/lu_folders:dict/other:dict/:string" xml:space="preserve">
@@ -1125,17 +1125,17 @@ Note: if you forget the passcode, you'll need to delete and reinstall the app. A
         <target>在 '%2$@' 文件夹中已经存在同名的 %1$lu 项目。覆盖这些项目？</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
-      <trans-unit id="&lt;p&gt;Use the password created in &lt;a href=&quot;https://yandex.ru/id/about&quot;&gt;Yandex ID&lt;/a&gt;.&lt;/br&gt;More detailed connection instructions can be found in the &lt;a href=&quot;https://yandex.ru/support/disk-desktop/webdav-app-passwords.html?lang=ru&quot;&gt;help&lt;/a&gt;.&lt;/p&gt;" xml:space="preserve">
+      <trans-unit id="&lt;p>Use the password created in &lt;a href=&quot;https://yandex.ru/id/about&quot;>Yandex ID&lt;/a>.&lt;/br>More detailed connection instructions can be found in the &lt;a href=&quot;https://yandex.ru/support/disk-desktop/webdav-app-passwords.html?lang=ru&quot;>help&lt;/a>.&lt;/p>" xml:space="preserve">
         <source>&lt;p&gt;Use the password created in &lt;a href="https://yandex.ru/id/about"&gt;Yandex ID&lt;/a&gt;.&lt;/br&gt;More detailed connection instructions can be found in the &lt;a href="https://yandex.ru/support/disk-desktop/webdav-app-passwords.html?lang=ru"&gt;help&lt;/a&gt;.&lt;/p&gt;</source>
         <target>&lt;p&gt;使用在&lt;a href="https://yandex.ru/id/about"&gt;Yandex ID&lt;/a&gt;中创建的密码。&lt;/br&gt;更详细的连接说明可以在&lt;a href="https://yandex.ru/support/disk-desktop/webdav-app-passwords.html?lang=ru"&gt;帮助中心&lt;/a&gt;找到。&lt;/p&gt;</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
-      <trans-unit id="&lt;p&gt;Use the password created in &lt;a href=&quot;https://yandex.ru/id/about&quot;&gt;Yandex ID&lt;/a&gt;.&lt;/p&gt;&lt;p&gt;More detailed connection instructions can be found in the &lt;a href=&quot;https://yandex.ru/support/disk-desktop/webdav-app-passwords.html?lang=ru&quot;&gt;help&lt;/a&gt;.&lt;/p&gt;" xml:space="preserve">
+      <trans-unit id="&lt;p>Use the password created in &lt;a href=&quot;https://yandex.ru/id/about&quot;>Yandex ID&lt;/a>.&lt;/p>&lt;p>More detailed connection instructions can be found in the &lt;a href=&quot;https://yandex.ru/support/disk-desktop/webdav-app-passwords.html?lang=ru&quot;>help&lt;/a>.&lt;/p>" xml:space="preserve">
         <source>&lt;p&gt;Use the password created in &lt;a href="https://yandex.ru/id/about"&gt;Yandex ID&lt;/a&gt;.&lt;/p&gt;&lt;p&gt;More detailed connection instructions can be found in the &lt;a href="https://yandex.ru/support/disk-desktop/webdav-app-passwords.html?lang=ru"&gt;help&lt;/a&gt;.&lt;/p&gt;</source>
         <target>&lt;p&gt;使用在&lt;a href="https://yandex.ru/id/about"&gt;Yandex ID&lt;/a&gt;中创建的密码。&lt;/p&gt;&lt;p&gt;更详细的连接说明可以在&lt;a href="https://yandex.ru/support/disk-desktop/webdav-app-passwords.html?lang=ru"&gt;帮助中心&lt;/a&gt;找到。&lt;/p&gt;</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
-      <trans-unit id="&lt;p&gt;You must have a paid version of the player to use this service.&lt;/p&gt;&lt;p&gt;If you have activated double authentication, please generate a CDM application from the Infomaniak manager. &lt;a href=&quot;https://www.infomaniak.com/en/support/faq/1940/enable-two-step-verification&quot;&gt;More...&lt;/a&gt;&lt;/p&gt;" xml:space="preserve">
+      <trans-unit id="&lt;p>You must have a paid version of the player to use this service.&lt;/p>&lt;p>If you have activated double authentication, please generate a CDM application from the Infomaniak manager. &lt;a href=&quot;https://www.infomaniak.com/en/support/faq/1940/enable-two-step-verification&quot;>More...&lt;/a>&lt;/p>" xml:space="preserve">
         <source>&lt;p&gt;You must have a paid version of the player to use this service.&lt;/p&gt;&lt;p&gt;If you have activated double authentication, please generate a CDM application from the Infomaniak manager. &lt;a href="https://www.infomaniak.com/en/support/faq/1940/enable-two-step-verification"&gt;More...&lt;/a&gt;&lt;/p&gt;</source>
         <target>&lt;p&gt;您必须有播放器的付费版本才能使用这项服务。&lt;/p&gt;&lt;p&gt;如果您已经激活了双重认证，请从Infomaniak管理器中生成CDM应用程序。&lt;a href="https://www.infomaniak.com/en/support/faq/1940/enable-two-step-verification"&gt;了解更多&lt;/a&gt;&lt;/p&gt;</target>
         <note>No comment provided by engineer.</note>
@@ -1330,6 +1330,7 @@ Note: if you forget the passcode, you'll need to delete and reinstall the app. A
       </trans-unit>
       <trans-unit id="Are you sure you want to delete the account %@ from this devce?" xml:space="preserve">
         <source>Are you sure you want to delete the account %@ from this devce?</source>
+        <target state="translated">您确定要从此设备中删除帐户 %@ 吗？</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Author" xml:space="preserve">
@@ -1504,6 +1505,7 @@ Note: if you forget the passcode, you'll need to delete and reinstall the app. A
       </trans-unit>
       <trans-unit id="Connect Storage" xml:space="preserve">
         <source>Connect Storage</source>
+        <target state="translated">连接存储</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Connect third-party storage&#10;like Nextcloud, ownCloud, Yandex Disk and&#10;others which use WebDAV protocol." xml:space="preserve">
@@ -1677,6 +1679,7 @@ others which use WebDAV protocol.</source>
       </trans-unit>
       <trans-unit id="Couldn't rename the file" xml:space="preserve">
         <source>Couldn't rename the file</source>
+        <target state="translated">无法重命名文件</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Couldn't save changes at server. Your modified document is saved in local storage as %@" xml:space="preserve">
@@ -1801,6 +1804,7 @@ others which use WebDAV protocol.</source>
       </trans-unit>
       <trans-unit id="DocSpace admin" xml:space="preserve">
         <source>DocSpace admin</source>
+        <target state="translated">协作空间管理员</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Document" xml:space="preserve">
@@ -2141,10 +2145,12 @@ others which use WebDAV protocol.</source>
       </trans-unit>
       <trans-unit id="Import File" xml:space="preserve">
         <source>Import File</source>
+        <target state="translated">导入文件</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Import Image" xml:space="preserve">
         <source>Import Image</source>
+        <target state="translated">导入图像</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="In online mode, use real-time co-editing features of %@ to work on documents together with your portal members, share documents and create common storage folders." xml:space="preserve">
@@ -2698,6 +2704,7 @@ to the clipboard</source>
       </trans-unit>
       <trans-unit id="Power user" xml:space="preserve">
         <source>Power user</source>
+        <target state="translated">高级用户</target>
         <note>Share status</note>
       </trans-unit>
       <trans-unit id="Presentation" xml:space="preserve">
@@ -2802,6 +2809,7 @@ to the clipboard</source>
       </trans-unit>
       <trans-unit id="Request Entity Too Large" xml:space="preserve">
         <source>Request Entity Too Large</source>
+        <target state="translated">请求实体过大</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Request canceled" xml:space="preserve">
@@ -3083,6 +3091,7 @@ to the clipboard</source>
       </trans-unit>
       <trans-unit id="Take a Picture" xml:space="preserve">
         <source>Take a Picture</source>
+        <target state="translated">拍照</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Tb" xml:space="preserve">

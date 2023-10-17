@@ -138,6 +138,9 @@
 "Are you sure you want to delete the account  %@ from this devce?" = "Sei sicuro di voler eliminare l'account %@ da questo dispositivo?";
 
 /* No comment provided by engineer. */
+"Are you sure you want to delete the account %@ from this devce?" = "Sei sicuro di voler eliminare l'account %@ da questo dispositivo?";
+
+/* No comment provided by engineer. */
 "Are you sure you want to leave this account?" = "Sei sicuro di voler lasciare questo account?";
 
 /* No comment provided by engineer. */
@@ -266,6 +269,9 @@
 /* No comment provided by engineer. */
 "Connect Clouds" = "Connettere i cloud";
 
+/* No comment provided by engineer. */
+"Connect Storage" = "Connettere spazio di archiviazione";
+
 /* Introduction Step Three - Description */
 "Connect third-party storage\nlike Nextcloud, ownCloud, Yandex Disk and\nothers which use WebDAV protocol." = "Connettere uno spazio di archiviazione esterno\ncome Nextcloud, ownCloud, Yandex Disk e\naltri che utilizzano il protocollo WebDAV.";
 
@@ -366,6 +372,9 @@
 "Could not write to file" = "Impossibile salvare nel file";
 
 /* No comment provided by engineer. */
+"Couldn't rename the file" = "Impossibile rinominare il file";
+
+/* No comment provided by engineer. */
 "Couldn't save changes at server. Your modified document is saved in local storage as %@" = "Impossibile salvare le modifiche sul server. Il documento modificato viene salvato nell'archivio locale come %@";
 
 /* No comment provided by engineer. */
@@ -436,6 +445,9 @@
 
 /* Button title */
 "Disconnect third party" = "Disconnettere i servizi di terze parti";
+
+/* No comment provided by engineer. */
+"DocSpace admin" = "Amministratore di DocSpace";
 
 /* No comment provided by engineer. */
 "Document" = "Documento";
@@ -656,6 +668,12 @@
 
 /* No comment provided by engineer. */
 "Images" = "Immagini";
+
+/* No comment provided by engineer. */
+"Import File" = "Importare file";
+
+/* No comment provided by engineer. */
+"Import Image" = "Importare immagine";
 
 /* Introduction Step Five - Description */
 "In online mode, use real-time co-editing features of %@ to work on documents together with your portal members, share documents and create common storage folders." = "In modalità online, utilizza le funzionalità di co-editing in tempo reale di %@ per lavorare sui documenti insieme ai membri del tuo portale, condividere documenti e creare cartelle di archiviazione condivise.";
@@ -1000,6 +1018,9 @@
 /* Share status */
 "Pover user" = "Utente avanzato";
 
+/* Share status */
+"Power user" = "Utente esperto";
+
 /* No comment provided by engineer. */
 "Presentation" = "Presentazione";
 
@@ -1062,6 +1083,9 @@
 
 /* No comment provided by engineer. */
 "Request canceled" = "Richiesta annullata";
+
+/* No comment provided by engineer. */
+"Request Entity Too Large" = "Richiesta entità troppo grande";
 
 /* No comment provided by engineer. */
 "Request had insufficient authentication scopes" = "La richiesta aveva ambiti di autenticazione insufficienti";
@@ -1226,6 +1250,9 @@
 
 /* No comment provided by engineer. */
 "Tab" = "Tabulazione";
+
+/* No comment provided by engineer. */
+"Take a Picture" = "Scatta una foto";
 
 /* Data units */
 "Tb" = "Tb";

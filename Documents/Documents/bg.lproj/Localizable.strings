@@ -138,6 +138,9 @@
 "Are you sure you want to delete the account  %@ from this devce?" = "Сигурни ли сте, че искате да изтриете акаунта %@ от това устройство?";
 
 /* No comment provided by engineer. */
+"Are you sure you want to delete the account %@ from this devce?" = "Сигурни ли сте, че искате да изтриете акаунта %@ от това устройство?";
+
+/* No comment provided by engineer. */
 "Are you sure you want to leave this account?" = "Наистина ли искате да напуснете този профил?";
 
 /* No comment provided by engineer. */
@@ -266,6 +269,9 @@
 /* No comment provided by engineer. */
 "Connect Clouds" = "Свържете се с облака";
 
+/* No comment provided by engineer. */
+"Connect Storage" = "Свържете хранилището";
+
 /* Introduction Step Three - Description */
 "Connect third-party storage\nlike Nextcloud, ownCloud, Yandex Disk and\nothers which use WebDAV protocol." = "Свържете съхранение на трети страни\nкато Nextcloud, ownCloud, Yandex Disk и\nдруги, които използват WebDAV протокол.";
 
@@ -366,6 +372,9 @@
 "Could not write to file" = "Върху файлът не може да се пише";
 
 /* No comment provided by engineer. */
+"Couldn't rename the file" = "Неуспешно преименуване на файл";
+
+/* No comment provided by engineer. */
 "Couldn't save changes at server. Your modified document is saved in local storage as %@" = "Промените в сървъра не можаха да бъдат запазени. Вашият модифициран документ се записва в локално хранилище като %@";
 
 /* No comment provided by engineer. */
@@ -436,6 +445,9 @@
 
 /* Button title */
 "Disconnect third party" = "Преказнете връзката с трета страна";
+
+/* No comment provided by engineer. */
+"DocSpace admin" = "Администратор на DocSpace";
 
 /* No comment provided by engineer. */
 "Document" = "Документ";
@@ -656,6 +668,12 @@
 
 /* No comment provided by engineer. */
 "Images" = "Снимки";
+
+/* No comment provided by engineer. */
+"Import File" = "Импортиране на файл";
+
+/* No comment provided by engineer. */
+"Import Image" = "Импортиране на изображение";
 
 /* Introduction Step Five - Description */
 "In online mode, use real-time co-editing features of %@ to work on documents together with your portal members, share documents and create common storage folders." = "В онлайн режим използвайте в реално време функции за съвместно редактиране на %@, за да работите с документи заедно с членовете на портала, да споделяте документи и да създавате общи папки за съхранение.";
@@ -1000,6 +1018,9 @@
 /* Share status */
 "Pover user" = "Опитен потребител";
 
+/* Share status */
+"Power user" = "Опитен потребител";
+
 /* No comment provided by engineer. */
 "Presentation" = "Презентация";
 
@@ -1062,6 +1083,9 @@
 
 /* No comment provided by engineer. */
 "Request canceled" = "Заявката е отказана";
+
+/* No comment provided by engineer. */
+"Request Entity Too Large" = "Обектът на заявката е твърде голям";
 
 /* No comment provided by engineer. */
 "Request had insufficient authentication scopes" = "Заявката имаше недостатъчни обхвати за удостоверяване";
@@ -1226,6 +1250,9 @@
 
 /* No comment provided by engineer. */
 "Tab" = "Раздел";
+
+/* No comment provided by engineer. */
+"Take a Picture" = "Направи снимка";
 
 /* Data units */
 "Tb" = "Тб";

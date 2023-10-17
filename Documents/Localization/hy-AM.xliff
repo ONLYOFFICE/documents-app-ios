@@ -294,7 +294,7 @@ start using your office</source>
       </trans-unit>
       <trans-unit id="/Delete %lu Folder and %lu File:dict/lu_files:dict/zero:dict/:string" xml:space="preserve">
         <source/>
-        <target/>
+        <target state="needs-translation"/>
         <note/>
       </trans-unit>
       <trans-unit id="/Delete %lu Folder and %lu File:dict/lu_folders:dict/one:dict/:string" xml:space="preserve">
@@ -1170,17 +1170,17 @@ Note: if you forget the passcode, you'll need to delete and reinstall the app. A
         <target>Նույն անունով %1$lu տարր արդեն գոյություն ունի «%2$@» պանակում: Վերագրե՞լ տարրերը:</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
-      <trans-unit id="&lt;p&gt;Use the password created in &lt;a href=&quot;https://yandex.ru/id/about&quot;&gt;Yandex ID&lt;/a&gt;.&lt;/br&gt;More detailed connection instructions can be found in the &lt;a href=&quot;https://yandex.ru/support/disk-desktop/webdav-app-passwords.html?lang=ru&quot;&gt;help&lt;/a&gt;.&lt;/p&gt;" xml:space="preserve">
+      <trans-unit id="&lt;p>Use the password created in &lt;a href=&quot;https://yandex.ru/id/about&quot;>Yandex ID&lt;/a>.&lt;/br>More detailed connection instructions can be found in the &lt;a href=&quot;https://yandex.ru/support/disk-desktop/webdav-app-passwords.html?lang=ru&quot;>help&lt;/a>.&lt;/p>" xml:space="preserve">
         <source>&lt;p&gt;Use the password created in &lt;a href="https://yandex.ru/id/about"&gt;Yandex ID&lt;/a&gt;.&lt;/br&gt;More detailed connection instructions can be found in the &lt;a href="https://yandex.ru/support/disk-desktop/webdav-app-passwords.html?lang=ru"&gt;help&lt;/a&gt;.&lt;/p&gt;</source>
         <target>&lt;p&gt;Օգտագործեք &lt;a href="https://yandex.ru/id/about"&gt;Yandex ID-&lt;/a&gt; ում ստեղծված գաղտնաբառը:&lt;/br&gt; Միացման ավելի մանրամասն հրահանգները կարող եք գտնել &lt;a href="https://yandex.ru/support/disk-desktop/webdav-app-passwords.html?lang=ru"&gt;օգնությունում&lt;/a&gt; :&lt;/p&gt;</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
-      <trans-unit id="&lt;p&gt;Use the password created in &lt;a href=&quot;https://yandex.ru/id/about&quot;&gt;Yandex ID&lt;/a&gt;.&lt;/p&gt;&lt;p&gt;More detailed connection instructions can be found in the &lt;a href=&quot;https://yandex.ru/support/disk-desktop/webdav-app-passwords.html?lang=ru&quot;&gt;help&lt;/a&gt;.&lt;/p&gt;" xml:space="preserve">
+      <trans-unit id="&lt;p>Use the password created in &lt;a href=&quot;https://yandex.ru/id/about&quot;>Yandex ID&lt;/a>.&lt;/p>&lt;p>More detailed connection instructions can be found in the &lt;a href=&quot;https://yandex.ru/support/disk-desktop/webdav-app-passwords.html?lang=ru&quot;>help&lt;/a>.&lt;/p>" xml:space="preserve">
         <source>&lt;p&gt;Use the password created in &lt;a href="https://yandex.ru/id/about"&gt;Yandex ID&lt;/a&gt;.&lt;/p&gt;&lt;p&gt;More detailed connection instructions can be found in the &lt;a href="https://yandex.ru/support/disk-desktop/webdav-app-passwords.html?lang=ru"&gt;help&lt;/a&gt;.&lt;/p&gt;</source>
         <target>&lt;p&gt;Օգտագործեք &lt;a href="https://yandex.ru/id/about"&gt;Yandex ID-&lt;/a&gt; ում ստեղծված գաղտնաբառը:&lt;/p&gt;&lt;p&gt; Միացման ավելի մանրամասն հրահանգները կարող եք գտնել &lt;a href="https://yandex.ru/support/disk-desktop/webdav-app-passwords.html?lang=ru"&gt;օգնությունում&lt;/a&gt; :&lt;/p&gt;</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
-      <trans-unit id="&lt;p&gt;You must have a paid version of the player to use this service.&lt;/p&gt;&lt;p&gt;If you have activated double authentication, please generate a CDM application from the Infomaniak manager. &lt;a href=&quot;https://www.infomaniak.com/en/support/faq/1940/enable-two-step-verification&quot;&gt;More...&lt;/a&gt;&lt;/p&gt;" xml:space="preserve">
+      <trans-unit id="&lt;p>You must have a paid version of the player to use this service.&lt;/p>&lt;p>If you have activated double authentication, please generate a CDM application from the Infomaniak manager. &lt;a href=&quot;https://www.infomaniak.com/en/support/faq/1940/enable-two-step-verification&quot;>More...&lt;/a>&lt;/p>" xml:space="preserve">
         <source>&lt;p&gt;You must have a paid version of the player to use this service.&lt;/p&gt;&lt;p&gt;If you have activated double authentication, please generate a CDM application from the Infomaniak manager. &lt;a href="https://www.infomaniak.com/en/support/faq/1940/enable-two-step-verification"&gt;More...&lt;/a&gt;&lt;/p&gt;</source>
         <target>&lt;p&gt;Այս ծառայությունից օգտվելու համար դուք պետք է ունենաք նվագարկչի վճարովի տարբերակ:&lt;/p&gt;&lt;p&gt; Եթե դուք ակտիվացրել եք կրկնակի նույնականացում, խնդրում ենք ստեղծել CDM հավելված Infomaniak մենեջերից: &lt;a href="https://www.infomaniak.com/en/support/faq/1940/enable-two-step-verification"&gt;Ավելին...&lt;/a&gt;&lt;/p&gt;</target>
         <note>No comment provided by engineer.</note>
@@ -1375,6 +1375,7 @@ Note: if you forget the passcode, you'll need to delete and reinstall the app. A
       </trans-unit>
       <trans-unit id="Are you sure you want to delete the account %@ from this devce?" xml:space="preserve">
         <source>Are you sure you want to delete the account %@ from this devce?</source>
+        <target state="translated">Իսկապե՞ս ուզում եք ջնջել %@ հաշիվն այս սարքից:</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Author" xml:space="preserve">
@@ -1549,6 +1550,7 @@ Note: if you forget the passcode, you'll need to delete and reinstall the app. A
       </trans-unit>
       <trans-unit id="Connect Storage" xml:space="preserve">
         <source>Connect Storage</source>
+        <target state="translated">Միացնել պահեստ</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Connect third-party storage&#10;like Nextcloud, ownCloud, Yandex Disk and&#10;others which use WebDAV protocol." xml:space="preserve">
@@ -1722,6 +1724,7 @@ others which use WebDAV protocol.</source>
       </trans-unit>
       <trans-unit id="Couldn't rename the file" xml:space="preserve">
         <source>Couldn't rename the file</source>
+        <target state="translated">Չհաջողվեց վերանվանել ֆայլը</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Couldn't save changes at server. Your modified document is saved in local storage as %@" xml:space="preserve">
@@ -1846,6 +1849,7 @@ others which use WebDAV protocol.</source>
       </trans-unit>
       <trans-unit id="DocSpace admin" xml:space="preserve">
         <source>DocSpace admin</source>
+        <target state="translated">DocSpace-ի ադմինիստրատոր</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Document" xml:space="preserve">
@@ -2186,10 +2190,12 @@ others which use WebDAV protocol.</source>
       </trans-unit>
       <trans-unit id="Import File" xml:space="preserve">
         <source>Import File</source>
+        <target state="translated">Ներմուծել ֆայլ</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Import Image" xml:space="preserve">
         <source>Import Image</source>
+        <target state="translated">Ներմուծել պատկեր</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="In online mode, use real-time co-editing features of %@ to work on documents together with your portal members, share documents and create common storage folders." xml:space="preserve">
@@ -2743,6 +2749,7 @@ to the clipboard</source>
       </trans-unit>
       <trans-unit id="Power user" xml:space="preserve">
         <source>Power user</source>
+        <target state="translated">Փորձառու օգտագործող</target>
         <note>Share status</note>
       </trans-unit>
       <trans-unit id="Presentation" xml:space="preserve">
@@ -2847,6 +2854,7 @@ to the clipboard</source>
       </trans-unit>
       <trans-unit id="Request Entity Too Large" xml:space="preserve">
         <source>Request Entity Too Large</source>
+        <target state="translated">Հայցվող սուբյեկտը չափազանց մեծ է</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Request canceled" xml:space="preserve">
@@ -3128,6 +3136,7 @@ to the clipboard</source>
       </trans-unit>
       <trans-unit id="Take a Picture" xml:space="preserve">
         <source>Take a Picture</source>
+        <target state="translated">Լուսանկարել</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Tb" xml:space="preserve">

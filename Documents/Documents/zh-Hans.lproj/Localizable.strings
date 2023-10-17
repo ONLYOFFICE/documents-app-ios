@@ -138,6 +138,9 @@
 "Are you sure you want to delete the account  %@ from this devce?" = "您确定要从此设备中删除帐户 %@ 吗？";
 
 /* No comment provided by engineer. */
+"Are you sure you want to delete the account %@ from this devce?" = "您确定要从此设备中删除帐户 %@ 吗？";
+
+/* No comment provided by engineer. */
 "Are you sure you want to leave this account?" = "您确定要离开此账户吗？";
 
 /* No comment provided by engineer. */
@@ -266,6 +269,9 @@
 /* No comment provided by engineer. */
 "Connect Clouds" = "连接云";
 
+/* No comment provided by engineer. */
+"Connect Storage" = "连接存储";
+
 /* Introduction Step Three - Description */
 "Connect third-party storage\nlike Nextcloud, ownCloud, Yandex Disk and\nothers which use WebDAV protocol." = "连接第三方存储\n像Nextcloud、ownCloud、Yandex Disk和\n其他三方存储使用WebDAV协议。";
 
@@ -366,6 +372,9 @@
 "Could not write to file" = "无法写入文件";
 
 /* No comment provided by engineer. */
+"Couldn't rename the file" = "无法重命名文件";
+
+/* No comment provided by engineer. */
 "Couldn't save changes at server. Your modified document is saved in local storage as %@" = "无法在服务器上保存更改。 您修改后的文档以 %@ 保存在本地存储中";
 
 /* No comment provided by engineer. */
@@ -436,6 +445,9 @@
 
 /* Button title */
 "Disconnect third party" = "断开第三方的连接";
+
+/* No comment provided by engineer. */
+"DocSpace admin" = "协作空间管理员";
 
 /* No comment provided by engineer. */
 "Document" = "文档";
@@ -656,6 +668,12 @@
 
 /* No comment provided by engineer. */
 "Images" = "图像";
+
+/* No comment provided by engineer. */
+"Import File" = "导入文件";
+
+/* No comment provided by engineer. */
+"Import Image" = "导入图像";
 
 /* Introduction Step Five - Description */
 "In online mode, use real-time co-editing features of %@ to work on documents together with your portal members, share documents and create common storage folders." = "在线模式允许使用 %@ 的实时共同编辑功能，与您的门户成员一起处理并共享文件，创建共同的存储文件夹。";
@@ -1000,6 +1018,9 @@
 /* Share status */
 "Pover user" = "高级用户";
 
+/* Share status */
+"Power user" = "高级用户";
+
 /* No comment provided by engineer. */
 "Presentation" = "演示文稿";
 
@@ -1062,6 +1083,9 @@
 
 /* No comment provided by engineer. */
 "Request canceled" = "请求已取消";
+
+/* No comment provided by engineer. */
+"Request Entity Too Large" = "请求实体过大";
 
 /* No comment provided by engineer. */
 "Request had insufficient authentication scopes" = "请求的验证范围不足";
@@ -1226,6 +1250,9 @@
 
 /* No comment provided by engineer. */
 "Tab" = "选项卡";
+
+/* No comment provided by engineer. */
+"Take a Picture" = "拍照";
 
 /* Data units */
 "Tb" = "Tb";

@@ -138,6 +138,9 @@
 "Are you sure you want to delete the account  %@ from this devce?" = "ඔබට මෙම උපාංගයෙන් %@ ගිණුම මැකීමට වුවමනා ද?";
 
 /* No comment provided by engineer. */
+"Are you sure you want to delete the account %@ from this devce?" = "ඔබට මෙම උපාංගයෙන් %@ ගිණුම මැකීමට වුවමනා ද?";
+
+/* No comment provided by engineer. */
 "Are you sure you want to leave this account?" = "ඔබට මෙම ගිණුම හැරයාමට වුවමනා ද?";
 
 /* No comment provided by engineer. */
@@ -266,6 +269,9 @@
 /* No comment provided by engineer. */
 "Connect Clouds" = "මේඝවලට සබඳින්න";
 
+/* No comment provided by engineer. */
+"Connect Storage" = "ආචයනයට සබඳින්න";
+
 /* Introduction Step Three - Description */
 "Connect third-party storage\nlike Nextcloud, ownCloud, Yandex Disk and\nothers which use WebDAV protocol." = "නෙක්ස්ක්ලවුඩ්, ඔව්න්කලවුඩ්, යාන්ඩෙක්ස් ඩිස්ක්\nසහ වෙබ්DAV කෙටුම්පත භාවිතා වන අනෙකුත්\nතෙවන පාර්ශ්ව ආචයන සම්බන්ධ කරන්න.";
 
@@ -366,6 +372,9 @@
 "Could not write to file" = "ගොනුවට ලිවීමට නොහැකි විය";
 
 /* No comment provided by engineer. */
+"Couldn't rename the file" = "ගොනුව නම් කිරීමට නොහැකි විය";
+
+/* No comment provided by engineer. */
 "Couldn't save changes at server. Your modified document is saved in local storage as %@" = "වෙනස්කම් සේවාදායකයෙහි සුරැකීමට නොහැකි විය. %@ ලෙස ඔබගේ සංශෝධිත ලේඛනය ස්ථානීය ආචයනයේ සුරකිනු ලැබේ";
 
 /* No comment provided by engineer. */
@@ -436,6 +445,9 @@
 
 /* Button title */
 "Disconnect third party" = "තෙවන පාර්ශ්වය විසන්ධිය";
+
+/* No comment provided by engineer. */
+"DocSpace admin" = "DocSpace පරිපාලක";
 
 /* No comment provided by engineer. */
 "Document" = "ලේඛනය";
@@ -656,6 +668,12 @@
 
 /* No comment provided by engineer. */
 "Images" = "රූප";
+
+/* No comment provided by engineer. */
+"Import File" = "ගොනුවක් ආයාතය";
+
+/* No comment provided by engineer. */
+"Import Image" = "රූපයක් ආයාතය";
 
 /* Introduction Step Five - Description */
 "In online mode, use real-time co-editing features of %@ to work on documents together with your portal members, share documents and create common storage folders." = "මාර්ගගත ප්‍රකාරයේදී, ඔබගේ ද්වාරයේ සාමාජිකයින් සමඟ එක්ව ලේඛනවල වැඩ කිරීමට, ලේඛන බෙදා ගැනීමට සහ පොදු ආචයන බාහාලුම් සෑදීමට %@ හි තත්‍ය කාලීන සම-සංස්කරණ විශේෂාංග භාවිතා කරන්න.";
@@ -1000,6 +1018,9 @@
 /* Share status */
 "Pover user" = "බලවත් පරිශ්‍රීලක";
 
+/* Share status */
+"Power user" = "බලවත් පරිශ්‍රීලක";
+
 /* No comment provided by engineer. */
 "Presentation" = "සමර්පණය";
 
@@ -1062,6 +1083,9 @@
 
 /* No comment provided by engineer. */
 "Request canceled" = "ඉල්ලීම අවලංගු කෙරිණි";
+
+/* No comment provided by engineer. */
+"Request Entity Too Large" = "ඉල්ලන දෑ ඉතා විශාලයි";
 
 /* No comment provided by engineer. */
 "Request had insufficient authentication scopes" = "ඉල්ලීමට ප්‍රමාණවත් සත්‍යාපන අවකාශයක් තිබුණේ නැත";
@@ -1226,6 +1250,9 @@
 
 /* No comment provided by engineer. */
 "Tab" = "පටිත්ත";
+
+/* No comment provided by engineer. */
+"Take a Picture" = "ඡායාරූපයක් අරගන්න";
 
 /* Data units */
 "Tb" = "ටෙ.බ.";

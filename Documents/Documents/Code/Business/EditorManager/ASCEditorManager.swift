@@ -375,7 +375,7 @@ class ASCEditorManager: NSObject {
 
                     if let newFile = result as? ASCFile {
                         self.provider = provider
-                        self.openEditorLocal(file: newFile, openMode: openMode, canEdit: canEdit)
+                        self.openEditorLocal(file: newFile, openMode: openMode, canEdit: canEdit, locallyEditing: true)
                     } else {
                         self.stopLocallyEditing()
                         self.openHandler?(.error, 1, nil, &cancel)
@@ -1159,12 +1159,7 @@ extension ASCEditorManager {
                     // if not docx
                     if ASCConstants.FileExtensions.editorImportDocuments.contains(fileExtension) {
                         let fileTo = Path(Path(file.id).url.deletingPathExtension().path + ".\(outputFileExtension)")
-                        guard let filePath = ASCLocalFileHelper.shared.resolve(filePath: fileTo) else {
-                            closeHandler?(.error, 1, nil, nil, &cancel)
-                            return
-                        }
-
-                        resolvedFilePath = filePath
+                        resolvedFilePath = fileTo
                     }
                 }
 
@@ -1176,6 +1171,18 @@ extension ASCEditorManager {
                     if ASCConstants.FileExtensions.editorImportDocuments.contains(fileExtension) {
                         file.title = file.title.fileName() + ".\(outputFileExtension)"
                         file.id = resolvedFilePath.rawValue
+
+                        // Move autosave
+                        do {
+                            let fileName = file.title.fileName()
+                            let oldPath = Path.userAutosavedInformation + "\(fileName).\(fileExtension)"
+                            try FileManager.default.moveItem(
+                                atPath: (Path.userAutosavedInformation + "\(file.title.fileName()).\(fileExtension)").rawValue,
+                                toPath: (Path.userAutosavedInformation + file.title).rawValue
+                            )
+                        } catch {
+                            debugPrint(error)
+                        }
                     }
 
                     ASCEntityManager.shared.uploadEdit(

@@ -1039,7 +1039,7 @@ extension ASCEditorManager {
            let file = ASCFile(JSONString: openedDocumentFile)
         {
             if !UserDefaults.standard.bool(forKey: ASCConstants.SettingsKeys.openedDocumentModified) {
-                removeAutosave(at: Path.userTemporary + file.title)
+                removeAutosave(at: Path.userAutosavedInformation + file.title)
                 return
             }
 
@@ -1068,7 +1068,7 @@ extension ASCEditorManager {
                 if forceCancel {
                     timer.invalidate()
 
-                    self?.removeAutosave(at: Path.userTemporary + file.title)
+                    self?.removeAutosave(at: Path.userAutosavedInformation + file.title)
                 } else {
                     deadTime += interval
                     progressAlert.progress = Float(deadTime / fullTime)

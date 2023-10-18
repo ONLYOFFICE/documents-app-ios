@@ -1135,11 +1135,13 @@ extension ASCEditorManager {
             var cancel = false
 
             if case let .failure(error) = result {
-                log.error(error)
+                log.debug(error)
 
                 stopLocallyEditing()
                 removeAutosave(at: Path.userAutosavedInformation + file.title)
                 closeHandler?(.end, 1, nil, nil, &cancel)
+
+                openedFile = nil
 
                 return
             }

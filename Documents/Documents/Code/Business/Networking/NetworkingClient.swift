@@ -58,6 +58,7 @@ class NetworkingClient: NSObject, NetworkingRequestingProtocol {
 
     public var headers: HTTPHeaders = .default
     let defaultTimeoutIntervalForResource: TimeInterval = 30
+    var sessions: [Alamofire.Session] = []
 
     // MARK: - init
 
@@ -81,8 +82,10 @@ class NetworkingClient: NSObject, NetworkingRequestingProtocol {
     }
 
     public func cancelAll() {
-        manager.session.getAllTasks { tasks in
-            tasks.forEach { $0.cancel() }
+        (sessions + [manager]).forEach { manager in
+            manager.session.getAllTasks { tasks in
+                tasks.forEach { $0.cancel() }
+            }
         }
     }
 
@@ -156,8 +159,21 @@ class NetworkingClient: NSObject, NetworkingRequestingProtocol {
 
         let params: Parameters = [:]
 
-        manager.session.configuration.timeoutIntervalForResource = 600
-        manager.upload(multipartFormData: { data in
+        let uploadManager = Alamofire.Session(
+            configuration: {
+                $0.timeoutIntervalForRequest = 600
+                $0.timeoutIntervalForResource = 600
+                return $0
+            }(URLSessionConfiguration.default),
+            serverTrustManager: ServerTrustManager(
+                allHostsMustBeEvaluated: false,
+                evaluators: [:]
+            )
+        )
+
+        sessions.append(uploadManager)
+
+        uploadManager.upload(multipartFormData: { data in
             for (key, value) in params {
                 if let valueData = (value as? String)?.data(using: String.Encoding.utf8) {
                     data.append(valueData, withName: key)
@@ -175,8 +191,6 @@ class NetworkingClient: NSObject, NetworkingRequestingProtocol {
                 }
             }
             .responseData(queue: queue) { response in
-                self.manager.session.configuration.timeoutIntervalForResource = self.defaultTimeoutIntervalForResource
-
                 switch response.result {
                 case let .success(value):
                     do {
@@ -195,6 +209,9 @@ class NetworkingClient: NSObject, NetworkingRequestingProtocol {
                         completion?(nil, 1, err)
                     }
                 }
+                if let managerIndex = self.sessions.firstIndex(where: { $0 === uploadManager }) {
+                    self.sessions.remove(at: managerIndex)
+                }
             }
     }
 
@@ -212,14 +229,22 @@ class NetworkingClient: NSObject, NetworkingRequestingProtocol {
             (to, [.removePreviousFile, .createIntermediateDirectories])
         }
 
-        manager.session.configuration.timeoutIntervalForResource = 600
-        manager.session.configuration.timeoutIntervalForRequest = 600
+        let downloadManager = Alamofire.Session(
+            configuration: {
+                $0.timeoutIntervalForRequest = 600
+                $0.timeoutIntervalForResource = 600
+                return $0
+            }(URLSessionConfiguration.default),
+            serverTrustManager: ServerTrustManager(
+                allHostsMustBeEvaluated: false,
+                evaluators: [:]
+            )
+        )
 
-        manager.download(
+        sessions.append(downloadManager)
+
+        downloadManager.download(
             url,
-            requestModifier: {
-                $0.timeoutInterval = 600
-            },
             to: destination
         )
         .downloadProgress { progress in
@@ -230,9 +255,6 @@ class NetworkingClient: NSObject, NetworkingRequestingProtocol {
         }
         .validate()
         .responseData { response in
-            self.manager.session.configuration.timeoutIntervalForResource = self.defaultTimeoutIntervalForResource
-            self.manager.session.configuration.timeoutIntervalForRequest = self.defaultTimeoutIntervalForResource
-
             switch response.result {
             case let .success(data):
                 DispatchQueue.main.async {
@@ -243,6 +265,9 @@ class NetworkingClient: NSObject, NetworkingRequestingProtocol {
                 DispatchQueue.main.async {
                     completion?(nil, 1, err)
                 }
+            }
+            if let managerIndex = self.sessions.firstIndex(where: { $0 === downloadManager }) {
+                self.sessions.remove(at: managerIndex)
             }
         }
     }

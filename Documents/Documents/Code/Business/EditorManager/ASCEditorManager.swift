@@ -368,8 +368,8 @@ class ASCEditorManager: NSObject {
 
             if status == .end || status == .error {
                 if status == .error {
-                    self.stopLocallyEditing()
                     self.openHandler?(.error, 1, error, &cancel)
+                    self.stopLocallyEditing()
                 } else {
                     self.openHandler?(.end, 1, nil, &cancel)
 

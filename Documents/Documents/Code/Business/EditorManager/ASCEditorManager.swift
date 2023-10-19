@@ -1176,8 +1176,6 @@ extension ASCEditorManager {
 
                         // Move autosave
                         do {
-                            let fileName = file.title.fileName()
-                            let oldPath = Path.userAutosavedInformation + "\(fileName).\(fileExtension)"
                             try FileManager.default.moveItem(
                                 atPath: (Path.userAutosavedInformation + "\(file.title.fileName()).\(fileExtension)").rawValue,
                                 toPath: (Path.userAutosavedInformation + file.title).rawValue

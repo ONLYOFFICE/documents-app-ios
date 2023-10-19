@@ -165,7 +165,8 @@ class NetworkingClient: NSObject, NetworkingRequestingProtocol {
                 $0.timeoutIntervalForResource = 600
                 return $0
             }(URLSessionConfiguration.default),
-            serverTrustManager: ServerTrustManager(
+            interceptor: manager.interceptor,
+            serverTrustManager: manager.serverTrustManager ?? ServerTrustManager(
                 allHostsMustBeEvaluated: false,
                 evaluators: [:]
             )
@@ -235,7 +236,8 @@ class NetworkingClient: NSObject, NetworkingRequestingProtocol {
                 $0.timeoutIntervalForResource = 600
                 return $0
             }(URLSessionConfiguration.default),
-            serverTrustManager: ServerTrustManager(
+            interceptor: manager.interceptor,
+            serverTrustManager: manager.serverTrustManager ?? ServerTrustManager(
                 allHostsMustBeEvaluated: false,
                 evaluators: [:]
             )

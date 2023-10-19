@@ -46,7 +46,7 @@ def common_pods
   pod 'PhoneNumberKit'
   pod 'SwiftMessages'
   pod 'MGSwipeTableCell'
-  pod 'ReCaptcha'
+  pod 'ReCaptcha', :git => 'https://github.com/fjcaetano/ReCaptcha.git'
   pod "WSTagsField"
 
   # Utils

@@ -369,9 +369,7 @@ class ASCOnlyofficeCategoriesViewController: UITableViewController {
                 let presenter = ASCMultiAccountPresenter(view: multiProfileVC)
                 multiProfileVC.presenter = presenter
                 let multiProfileNavigationVC = ASCBaseNavigationController(rootASCViewController: multiProfileVC)
-                if UIDevice.phone {
-                    multiProfileNavigationVC.modalPresentationStyle = .fullScreen
-                }
+                multiProfileNavigationVC.modalPresentationStyle = .fullScreen
 
                 splitVC.hideMasterController()
                 splitVC.present(multiProfileNavigationVC, animated: true, completion: nil)

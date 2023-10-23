@@ -159,10 +159,7 @@ class ASCViewControllerManager {
                 let introController = ASCIntroViewController.instantiate(from: Storyboard.intro)
                 introController.complation = complation
                 introController.modalTransitionStyle = .crossDissolve
-
-                if #available(iOS 13.0, *) {
-                    introController.modalPresentationStyle = .fullScreen
-                }
+                introController.modalPresentationStyle = .fullScreen
 
                 topVC.present(introController, animated: true, completion: nil)
             }

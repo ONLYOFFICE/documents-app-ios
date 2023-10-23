@@ -87,6 +87,10 @@ class ASCEditorManager: NSObject {
     private var delimiter: Int?
     private var resolvedFilePath: Path!
 
+    var allowForm: Bool {
+        ASCDIContainer.shared.resolve(ASCEditorManagerOptionsProtocol.self)?.allowForm ?? false
+    }
+
     var isOpenedFile: Bool {
         return openedFile != nil
     }

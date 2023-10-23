@@ -13,10 +13,7 @@ extension PresentationEditor.EditorDocument: EditorDocumentProtocol {}
 
 extension ASCEditorManager {
     var presentationEditorExternalSettings: [AnyHashable: Any] {
-        [
-            "asc.pe.external.appname": ASCConstants.Name.appNameShort,
-            "asc.pe.external.helpurl": "https://helpcenter.onlyoffice.com/%@%@mobile-applications/documents/presentation-editor/index.aspx",
-        ]
+        ASCDIContainer.shared.resolve(type: ASCPresentationEditorExternalSettingsProtocol.self)?.editorExternalSettings ?? [:]
     }
 
     func createPresentationEditorViewController(
@@ -24,7 +21,6 @@ extension ASCEditorManager {
         config: OnlyofficeDocumentConfig,
         openMode: ASCDocumentOpenMode
     ) -> UIViewController? {
-        let title = file.title
         let isCoauthoring = !(config.document?.key?.isEmpty ?? true) && !(config.document?.url?.isEmpty ?? true)
         let sdkCheck = compareCloudSdk(with: PresentationEditorViewController.sdkVersionString)
 

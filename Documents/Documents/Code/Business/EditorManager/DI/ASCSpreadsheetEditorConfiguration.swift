@@ -1,5 +1,5 @@
 //
-//  ASCSpreadsheetEditorExternalSettings.swift
+//  ASCSpreadsheetEditorConfiguration.swift
 //  Documents
 //
 //  Created by Alexander Yuzhin on 23.10.2023.
@@ -7,8 +7,9 @@
 //
 
 import Foundation
+import SpreadsheetEditor
 
-final class ASCSpreadsheetEditorExternalSettings: ASCSpreadsheetEditorExternalSettingsProtocol {
+final class ASCSpreadsheetEditorConfiguration: ASCSpreadsheetEditorConfigurationProtocol {
     var editorExternalSettings: [AnyHashable: Any] {
         let shortCm = NSLocalizedString("cm", comment: "Cut from centimeters")
         return [
@@ -34,5 +35,13 @@ final class ASCSpreadsheetEditorExternalSettings: ASCSpreadsheetEditorExternalSe
                 ],
             ],
         ]
+    }
+
+    func localEditor(config: SpreadsheetEditor.EditorConfiguration) -> SpreadsheetEditor.EditorConfiguration {
+        config
+    }
+
+    func cloudEditor(config: SpreadsheetEditor.EditorConfiguration) -> SpreadsheetEditor.EditorConfiguration {
+        config
     }
 }

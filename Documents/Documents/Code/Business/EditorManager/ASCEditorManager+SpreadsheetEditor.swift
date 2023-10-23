@@ -13,7 +13,7 @@ extension SpreadsheetEditor.EditorDocument: EditorDocumentProtocol {}
 
 extension ASCEditorManager {
     var spreadsheetEditorExternalSettings: [AnyHashable: Any] {
-        ASCDIContainer.shared.resolve(type: ASCSpreadsheetEditorExternalSettingsProtocol.self)?.editorExternalSettings ?? [:]
+        ASCDIContainer.shared.resolve(type: ASCSpreadsheetEditorConfigurationProtocol.self)?.editorExternalSettings ?? [:]
     }
 
     func createSpreadsheetEditorViewController(
@@ -102,11 +102,13 @@ extension ASCEditorManager {
 
 extension ASCEditorManager {
     func localEditor(config: EditorConfiguration) -> EditorConfiguration {
-        return config
+        ASCDIContainer.shared.resolve(type: ASCSpreadsheetEditorConfigurationProtocol.self)?
+            .localEditor(config: config) ?? EditorConfiguration()
     }
 
     func cloudEditor(config: EditorConfiguration) -> EditorConfiguration {
-        return config
+        ASCDIContainer.shared.resolve(type: ASCSpreadsheetEditorConfigurationProtocol.self)?
+            .cloudEditor(config: config) ?? EditorConfiguration()
     }
 }
 

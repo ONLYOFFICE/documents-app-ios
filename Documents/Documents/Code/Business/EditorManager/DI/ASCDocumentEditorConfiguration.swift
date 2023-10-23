@@ -1,12 +1,14 @@
 //
-//  ASCDocumentEditorExternalSettings.swift
+//  ASCDocumentEditorConfiguration.swift
 //  Documents
 //
 //  Created by Alexander Yuzhin on 23.10.2023.
 //  Copyright © 2023 Ascensio System SIA. All rights reserved.
 //
 
-final class ASCDocumentEditorExternalSettings: ASCDocumentEditorExternalSettingsProtocol {
+import DocumentEditor
+
+final class ASCDocumentEditorConfiguration: ASCDocumentEditorConfigurationProtocol {
     var editorExternalSettings: [AnyHashable: Any] {
         [
             "asc.de.external.appname": ASCConstants.Name.appNameShort,
@@ -31,5 +33,13 @@ final class ASCDocumentEditorExternalSettings: ASCDocumentEditorExternalSettings
                 ],
             ],
         ]
+    }
+
+    func localEditor(config: DocumentEditor.EditorConfiguration) -> DocumentEditor.EditorConfiguration {
+        config
+    }
+
+    func cloudEditor(config: DocumentEditor.EditorConfiguration) -> DocumentEditor.EditorConfiguration {
+        config
     }
 }

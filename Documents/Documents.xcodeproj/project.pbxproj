@@ -289,10 +289,6 @@
 		FC5943632AE6816E001BA2F9 /* ASCEditorManager+PresentationEditor.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC5943552AE6816E001BA2F9 /* ASCEditorManager+PresentationEditor.swift */; };
 		FC5943642AE6816E001BA2F9 /* ASCEditorManager+DocumentEditor.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC5943562AE6816E001BA2F9 /* ASCEditorManager+DocumentEditor.swift */; };
 		FC5943652AE6816E001BA2F9 /* ASCEditorManagerOptions.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC5943582AE6816E001BA2F9 /* ASCEditorManagerOptions.swift */; };
-		FC5943662AE6816E001BA2F9 /* ASCPresentationEditorExternalSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC5943592AE6816E001BA2F9 /* ASCPresentationEditorExternalSettings.swift */; };
-		FC5943672AE6816E001BA2F9 /* ASCSpreadsheetEditorExternalSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC59435A2AE6816E001BA2F9 /* ASCSpreadsheetEditorExternalSettings.swift */; };
-		FC5943682AE6816E001BA2F9 /* ASCDocumentEditorExternalSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC59435B2AE6816E001BA2F9 /* ASCDocumentEditorExternalSettings.swift */; };
-		FC5943692AE6816E001BA2F9 /* ASCEditorExternalSettingsProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC59435D2AE6816E001BA2F9 /* ASCEditorExternalSettingsProtocol.swift */; };
 		FC59436A2AE6816E001BA2F9 /* ASCEditorManagerOptionsProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC59435E2AE6816E001BA2F9 /* ASCEditorManagerOptionsProtocol.swift */; };
 		FC59436B2AE6816E001BA2F9 /* ASCEditorManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC59435F2AE6816E001BA2F9 /* ASCEditorManager.swift */; };
 		FC5943C32AE6B422001BA2F9 /* ASCIntroPageStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC5943BC2AE6B421001BA2F9 /* ASCIntroPageStore.swift */; };
@@ -300,6 +296,10 @@
 		FC5943C52AE6B422001BA2F9 /* ASCIntroPageController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC5943BF2AE6B422001BA2F9 /* ASCIntroPageController.swift */; };
 		FC5943C62AE6B422001BA2F9 /* ASCIntroPageStoreProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC5943C12AE6B422001BA2F9 /* ASCIntroPageStoreProtocol.swift */; };
 		FC5943C72AE6B422001BA2F9 /* ASCIntroViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC5943C22AE6B422001BA2F9 /* ASCIntroViewController.swift */; };
+		FC5943E52AE6D328001BA2F9 /* ASCDocumentEditorConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC5943E22AE6D327001BA2F9 /* ASCDocumentEditorConfiguration.swift */; };
+		FC5943E62AE6D328001BA2F9 /* ASCPresentationEditorConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC5943E32AE6D328001BA2F9 /* ASCPresentationEditorConfiguration.swift */; };
+		FC5943E72AE6D328001BA2F9 /* ASCSpreadsheetEditorConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC5943E42AE6D328001BA2F9 /* ASCSpreadsheetEditorConfiguration.swift */; };
+		FC5943E92AE6D333001BA2F9 /* ASCEditorConfigurationProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC5943E82AE6D333001BA2F9 /* ASCEditorConfigurationProtocol.swift */; };
 		FC5E2D8D1E8A4C8B0079626B /* ASCImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC5E2D8C1E8A4C8B0079626B /* ASCImageViewController.swift */; };
 		FC5F47861F04E7E000F045DD /* PasscodeLockView.xib in Resources */ = {isa = PBXBuildFile; fileRef = FC5F47881F04E7E000F045DD /* PasscodeLockView.xib */; };
 		FC60A6441E9F5FB2000598C2 /* ASCTransferViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC60A6431E9F5FB2000598C2 /* ASCTransferViewController.swift */; };
@@ -830,10 +830,6 @@
 		FC5943552AE6816E001BA2F9 /* ASCEditorManager+PresentationEditor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ASCEditorManager+PresentationEditor.swift"; sourceTree = "<group>"; };
 		FC5943562AE6816E001BA2F9 /* ASCEditorManager+DocumentEditor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ASCEditorManager+DocumentEditor.swift"; sourceTree = "<group>"; };
 		FC5943582AE6816E001BA2F9 /* ASCEditorManagerOptions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASCEditorManagerOptions.swift; sourceTree = "<group>"; };
-		FC5943592AE6816E001BA2F9 /* ASCPresentationEditorExternalSettings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASCPresentationEditorExternalSettings.swift; sourceTree = "<group>"; };
-		FC59435A2AE6816E001BA2F9 /* ASCSpreadsheetEditorExternalSettings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASCSpreadsheetEditorExternalSettings.swift; sourceTree = "<group>"; };
-		FC59435B2AE6816E001BA2F9 /* ASCDocumentEditorExternalSettings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASCDocumentEditorExternalSettings.swift; sourceTree = "<group>"; };
-		FC59435D2AE6816E001BA2F9 /* ASCEditorExternalSettingsProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASCEditorExternalSettingsProtocol.swift; sourceTree = "<group>"; };
 		FC59435E2AE6816E001BA2F9 /* ASCEditorManagerOptionsProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASCEditorManagerOptionsProtocol.swift; sourceTree = "<group>"; };
 		FC59435F2AE6816E001BA2F9 /* ASCEditorManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASCEditorManager.swift; sourceTree = "<group>"; };
 		FC5943BC2AE6B421001BA2F9 /* ASCIntroPageStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASCIntroPageStore.swift; sourceTree = "<group>"; };
@@ -841,6 +837,10 @@
 		FC5943BF2AE6B422001BA2F9 /* ASCIntroPageController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASCIntroPageController.swift; sourceTree = "<group>"; };
 		FC5943C12AE6B422001BA2F9 /* ASCIntroPageStoreProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASCIntroPageStoreProtocol.swift; sourceTree = "<group>"; };
 		FC5943C22AE6B422001BA2F9 /* ASCIntroViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASCIntroViewController.swift; sourceTree = "<group>"; };
+		FC5943E22AE6D327001BA2F9 /* ASCDocumentEditorConfiguration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASCDocumentEditorConfiguration.swift; sourceTree = "<group>"; };
+		FC5943E32AE6D328001BA2F9 /* ASCPresentationEditorConfiguration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASCPresentationEditorConfiguration.swift; sourceTree = "<group>"; };
+		FC5943E42AE6D328001BA2F9 /* ASCSpreadsheetEditorConfiguration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASCSpreadsheetEditorConfiguration.swift; sourceTree = "<group>"; };
+		FC5943E82AE6D333001BA2F9 /* ASCEditorConfigurationProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASCEditorConfigurationProtocol.swift; sourceTree = "<group>"; };
 		FC5E2D8C1E8A4C8B0079626B /* ASCImageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASCImageViewController.swift; sourceTree = "<group>"; };
 		FC5F47871F04E7E000F045DD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/PasscodeLockView.xib; sourceTree = "<group>"; };
 		FC5F478A1F04E7E500F045DD /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/PasscodeLockView.strings; sourceTree = "<group>"; };
@@ -2273,9 +2273,9 @@
 			isa = PBXGroup;
 			children = (
 				FC5943582AE6816E001BA2F9 /* ASCEditorManagerOptions.swift */,
-				FC5943592AE6816E001BA2F9 /* ASCPresentationEditorExternalSettings.swift */,
-				FC59435A2AE6816E001BA2F9 /* ASCSpreadsheetEditorExternalSettings.swift */,
-				FC59435B2AE6816E001BA2F9 /* ASCDocumentEditorExternalSettings.swift */,
+				FC5943E22AE6D327001BA2F9 /* ASCDocumentEditorConfiguration.swift */,
+				FC5943E32AE6D328001BA2F9 /* ASCPresentationEditorConfiguration.swift */,
+				FC5943E42AE6D328001BA2F9 /* ASCSpreadsheetEditorConfiguration.swift */,
 				FC59435C2AE6816E001BA2F9 /* Protocols */,
 			);
 			path = DI;
@@ -2284,7 +2284,7 @@
 		FC59435C2AE6816E001BA2F9 /* Protocols */ = {
 			isa = PBXGroup;
 			children = (
-				FC59435D2AE6816E001BA2F9 /* ASCEditorExternalSettingsProtocol.swift */,
+				FC5943E82AE6D333001BA2F9 /* ASCEditorConfigurationProtocol.swift */,
 				FC59435E2AE6816E001BA2F9 /* ASCEditorManagerOptionsProtocol.swift */,
 			);
 			path = Protocols;
@@ -3750,9 +3750,7 @@
 				1D5DB0352658086C006B4757 /* ASCOnlyofficeCacheCategoriesProvider.swift in Sources */,
 				1D981FF32631A6AF00144B57 /* ASCOnlyofficeCategoriesProviderProtocol.swift in Sources */,
 				FC68527926837B7300D830EC /* NetworkingServerError.swift in Sources */,
-				FC5943662AE6816E001BA2F9 /* ASCPresentationEditorExternalSettings.swift in Sources */,
 				FCEF9D241ED2C94300627BA5 /* PasscodeLockConfigurationType.swift in Sources */,
-				FC5943692AE6816E001BA2F9 /* ASCEditorExternalSettingsProtocol.swift in Sources */,
 				1DAAFF3C2678992800023F39 /* ASCSharingSettingsAccessViewController.swift in Sources */,
 				1D71107A26A5A93000E00421 /* ASCShareSettingsAPIWorker.swift in Sources */,
 				FC7E457329226A35006C4CA1 /* ASCPushSubscribed.swift in Sources */,
@@ -3774,6 +3772,7 @@
 				FCC39FEA1E6ECB3400DECB8D /* ASCLocalFileHelper.swift in Sources */,
 				FC6F0CD71F542E7E002D33D9 /* ASCSSOSignInController.swift in Sources */,
 				1D4C6775268A2573000F2284 /* ASCSharingOptionsPresenter.swift in Sources */,
+				FC5943E52AE6D328001BA2F9 /* ASCDocumentEditorConfiguration.swift in Sources */,
 				FC35D4402A987DFB00C6383F /* UIDevice+Extension.swift in Sources */,
 				FCC826FC1F9F4B9700744F68 /* ASCAccountsManager.swift in Sources */,
 				1D14AACB269595C2009E48AD /* ASCSharingOprionsExternalLink.swift in Sources */,
@@ -3782,6 +3781,7 @@
 				FCA5B9291E48A2B500CD2EA9 /* ASCDocumentsViewController.swift in Sources */,
 				FC68526926837B7300D830EC /* NextcloudServerError.swift in Sources */,
 				FCB4CE7429FAC5B5009C1E2E /* DetailImageStyleTabelViewCell.swift in Sources */,
+				FC5943E92AE6D333001BA2F9 /* ASCEditorConfigurationProtocol.swift in Sources */,
 				FC65B18021F9AF5300AD5114 /* ASCEntityItemProvider.swift in Sources */,
 				FC65B6B61EB9F23800AE73BB /* ASCDocumentService.swift in Sources */,
 				FC35D4482A987DFB00C6383F /* UIStoryboard+Extensions.swift in Sources */,
@@ -3919,7 +3919,6 @@
 				1DEBFD7B2907BB72004CD353 /* InviteRigthHoldersByEmailsViewModel.swift in Sources */,
 				FCEF9D261ED2C94300627BA5 /* PasscodeLockType.swift in Sources */,
 				FCC64F5929191A5D004D9A47 /* OnlyofficeInviteItemRequestModel.swift in Sources */,
-				FC5943672AE6816E001BA2F9 /* ASCSpreadsheetEditorExternalSettings.swift in Sources */,
 				1D35FCC726B1B350000929B0 /* OnlyofficeShareItemRequestModel.swift in Sources */,
 				1DAC5661267B3B850078F95E /* ASCNamedProtocol.swift in Sources */,
 				1D863F1A26725BC7000BAC3C /* ASCSharingRightHolderViewModel.swift in Sources */,
@@ -3932,7 +3931,6 @@
 				1D14AAC12694EFE4009E48AD /* ASCEntityLinkMakerProtocol.swift in Sources */,
 				FC08F8771ECB402000988DDE /* ASCConnectStorageOAuth2Dropbox.swift in Sources */,
 				FC5943C32AE6B422001BA2F9 /* ASCIntroPageStore.swift in Sources */,
-				FC5943682AE6816E001BA2F9 /* ASCDocumentEditorExternalSettings.swift in Sources */,
 				FCB4CE7129FAC5B5009C1E2E /* ASCMultiAccountPresenter.swift in Sources */,
 				FCF6957D2632DBF600808644 /* ASCTextStyle.swift in Sources */,
 				1D667A5928D3B80C009BD85D /* ASCEntityRemoverActionController.swift in Sources */,
@@ -3964,6 +3962,7 @@
 				FC0F01E1216F46B7008D79A5 /* ASCOnlyofficeProvider.swift in Sources */,
 				FCD2DD6C2702F70400D31BD5 /* ManagedAppConfig.swift in Sources */,
 				FC35D40D2A987D1400C6383F /* OnlyofficeResponse.swift in Sources */,
+				FC5943E72AE6D328001BA2F9 /* ASCSpreadsheetEditorConfiguration.swift in Sources */,
 				1DE6D6C42631BE03001B825B /* ASCOnlyofficeCategoriesProviderFactory.swift in Sources */,
 				1D14AAF12698E85A009E48AD /* ASCSharingAddRightHoldersPresenter.swift in Sources */,
 				1D76B050275B957A00389C61 /* ASCEntityUniqNameFinder.swift in Sources */,
@@ -4031,6 +4030,7 @@
 				F391DE5F280968B700C93648 /* ASCSelectUserViewController.swift in Sources */,
 				FC7E456D29226A35006C4CA1 /* ASCFolder.swift in Sources */,
 				FC7CF5161EF3EFF300C0A64F /* Deprecated.swift in Sources */,
+				FC5943E62AE6D328001BA2F9 /* ASCPresentationEditorConfiguration.swift in Sources */,
 				FC1EA5CD1ECED0A0008FEE2E /* ASCBaseViewController.swift in Sources */,
 				1DA5E66B269E10DF005F59E1 /* ASCSharingSettingsVerifyRightHoldersView.swift in Sources */,
 				FC35D44F2A987DFB00C6383F /* UIWindow+Extensions.swift in Sources */,

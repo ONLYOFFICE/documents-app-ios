@@ -13,7 +13,7 @@ extension PresentationEditor.EditorDocument: EditorDocumentProtocol {}
 
 extension ASCEditorManager {
     var presentationEditorExternalSettings: [AnyHashable: Any] {
-        ASCDIContainer.shared.resolve(type: ASCPresentationEditorExternalSettingsProtocol.self)?.editorExternalSettings ?? [:]
+        ASCDIContainer.shared.resolve(type: ASCPresentationEditorConfigurationProtocol.self)?.editorExternalSettings ?? [:]
     }
 
     func createPresentationEditorViewController(
@@ -101,11 +101,13 @@ extension ASCEditorManager {
 
 extension ASCEditorManager {
     func localEditor(config: EditorConfiguration) -> EditorConfiguration {
-        return config
+        ASCDIContainer.shared.resolve(type: ASCPresentationEditorConfigurationProtocol.self)?
+            .localEditor(config: config) ?? EditorConfiguration()
     }
 
     func cloudEditor(config: EditorConfiguration) -> EditorConfiguration {
-        return config
+        ASCDIContainer.shared.resolve(type: ASCPresentationEditorConfigurationProtocol.self)?
+            .cloudEditor(config: config) ?? EditorConfiguration()
     }
 }
 

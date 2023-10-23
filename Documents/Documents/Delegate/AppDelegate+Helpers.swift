@@ -33,8 +33,8 @@ extension AppDelegate {
     func initializeDI() {
         ASCDIContainer.shared.register(type: ASCIntroPageStoreProtocol.self, service: ASCIntroPageStore())
         ASCDIContainer.shared.register(type: ASCEditorManagerOptionsProtocol.self, service: ASCEditorManagerOptions())
-        ASCDIContainer.shared.register(type: ASCDocumentEditorExternalSettingsProtocol.self, service: ASCDocumentEditorExternalSettings())
-        ASCDIContainer.shared.register(type: ASCSpreadsheetEditorExternalSettingsProtocol.self, service: ASCSpreadsheetEditorExternalSettings())
-        ASCDIContainer.shared.register(type: ASCPresentationEditorExternalSettingsProtocol.self, service: ASCPresentationEditorExternalSettings())
+        ASCDIContainer.shared.register(type: ASCDocumentEditorConfigurationProtocol.self, service: ASCDocumentEditorConfiguration())
+        ASCDIContainer.shared.register(type: ASCSpreadsheetEditorConfigurationProtocol.self, service: ASCSpreadsheetEditorConfiguration())
+        ASCDIContainer.shared.register(type: ASCPresentationEditorConfigurationProtocol.self, service: ASCPresentationEditorConfiguration())
     }
 }

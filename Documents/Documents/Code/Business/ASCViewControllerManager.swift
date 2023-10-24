@@ -23,6 +23,10 @@ class ASCViewControllerManager {
         return .compact
     }
 
+    var phoneLayout: Bool {
+        UIDevice.phone || ASCViewControllerManager.shared.currentSizeClass == .compact
+    }
+
     var rootController: ASCRootViewController? {
         didSet {
             if oldValue == nil {
@@ -155,10 +159,7 @@ class ASCViewControllerManager {
                 let introController = ASCIntroViewController.instantiate(from: Storyboard.intro)
                 introController.complation = complation
                 introController.modalTransitionStyle = .crossDissolve
-
-                if #available(iOS 13.0, *) {
-                    introController.modalPresentationStyle = .fullScreen
-                }
+                introController.modalPresentationStyle = .fullScreen
 
                 topVC.present(introController, animated: true, completion: nil)
             }
@@ -459,10 +460,16 @@ class ASCViewControllerManager {
                 introViewController.dismiss(animated: true, completion: nil)
             }
 
+            let withoutScheme: (String?) -> String? = { domain in
+                domain?
+                    .replacingOccurrences(of: "https://", with: "")
+                    .replacingOccurrences(of: "http://", with: "")
+            }
+
             let onlyofficeProvider = ASCFileManager.onlyofficeProvider
 
             if onlyofficeProvider == nil ||
-                !(onlyofficeProvider?.apiClient.baseURL?.absoluteString ?? "").contains(portal) ||
+                !(withoutScheme(onlyofficeProvider?.apiClient.baseURL?.absoluteString) ?? "").contains(withoutScheme(portal) ?? "") ||
                 email != onlyofficeProvider?.user?.email
             {
                 let account = ASCAccountsManager.shared.get(by: portal, email: email)

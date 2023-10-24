@@ -1,5 +1,5 @@
 //
-//  ASCLoadedViewControllerFinderModels.swift
+//  ASCLoadedVCFinderModels.swift
 //  Documents
 //
 //  Created by Pavel Chernyshev on 28.05.2021.

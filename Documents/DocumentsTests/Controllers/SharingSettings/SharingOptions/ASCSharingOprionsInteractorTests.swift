@@ -1,8 +1,8 @@
 //
-//  ASCASCSharingOprionsInteractorTests.swift
+//  ASCSharingOprionsInteractorTests.swift
 //  DocumentsTests
 //
-//  Created by Павел Чернышев on 21.09.2021.
+//  Created by Pavel Chernyshev on 21.09.2021.
 //  Copyright © 2021 Ascensio System SIA. All rights reserved.
 //
 

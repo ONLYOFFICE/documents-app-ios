@@ -95,9 +95,6 @@
 "Address is empty" = "住所が空白です";
 
 /* No comment provided by engineer. */
-"Admin" = "管理者";
-
-/* No comment provided by engineer. */
 "All" = "すべて";
 
 /* No comment provided by engineer. */
@@ -124,7 +121,8 @@
 /* Caption of the process */
 "Applying" = "適用";
 
-/* Button title */
+/* Button title
+   Category title */
 "Archive" = "アーカイブ";
 
 /* No comment provided by engineer. */
@@ -138,6 +136,9 @@
 
 /* No comment provided by engineer. */
 "Are you sure you want to delete the account  %@ from this devce?" = "このデバイスから「%@」アカウントを削除してよろしいですか？";
+
+/* No comment provided by engineer. */
+"Are you sure you want to delete the account %@ from this devce?" = "このデバイスから「%@」アカウントを削除してよろしいですか？";
 
 /* No comment provided by engineer. */
 "Are you sure you want to leave this account?" = "本当にこのアカウントからサインアウトしますか?";
@@ -268,6 +269,9 @@
 /* No comment provided by engineer. */
 "Connect Clouds" = "クラウドに接続する";
 
+/* No comment provided by engineer. */
+"Connect Storage" = "ストレージに接続する";
+
 /* Introduction Step Three - Description */
 "Connect third-party storage\nlike Nextcloud, ownCloud, Yandex Disk and\nothers which use WebDAV protocol." = "Nextcloud、ownCloud、Yandex Diskなど、\nWebDAVプロトコルを使用する\nサードパーティストレージを接続します。";
 
@@ -300,9 +304,6 @@
 
 /* Description of file operation error */
 "Could not change the directory" = "ディレクトリを変更できませんでした";
-
-/* No comment provided by engineer. */
-"Could not convert file to export." = "ファイルを転換して、エクスポートできませんでした。";
 
 /* Description of file operation error */
 "Could not copy file" = "ファイルをコピーできませんでした";
@@ -353,9 +354,6 @@
 "Could not move file" = "ファイルを移動できませんでした";
 
 /* No comment provided by engineer. */
-"Could not open editor." = "エディターを開始できませんでした。";
-
-/* No comment provided by engineer. */
 "Could not open file." = "ファイルを開始できませんでした。";
 
 /* No comment provided by engineer. */
@@ -374,7 +372,7 @@
 "Could not write to file" = "ファイルへの書き込みに失敗しました";
 
 /* No comment provided by engineer. */
-"Couldn't open file" = "ファイルを開始できませんでした";
+"Couldn't rename the file" = "ファイル名を変更できませんでした";
 
 /* No comment provided by engineer. */
 "Couldn't save changes at server. Your modified document is saved in local storage as %@" = "サーバーで変更を保存できませんでした。変更したドキュメントはローカルストレージに %@ として保存されます。";
@@ -449,6 +447,9 @@
 "Disconnect third party" = "サードパーティーの接続を解除する";
 
 /* No comment provided by engineer. */
+"DocSpace admin" = "DocSpaceの管理者";
+
+/* No comment provided by engineer. */
 "Document" = "ドキュメント";
 
 /* Default title of sample document */
@@ -517,9 +518,6 @@
 
 /* Presentation Viewer */
 "End Slide Show" = "スライドショーを終了する";
-
-/* No comment provided by engineer. */
-"Enter a password to open the file." = "ファイルを開くためにパスワードを入力してください。";
 
 /* placeholder */
 "Enter email" = "メールアドレスを入力してください";
@@ -671,6 +669,12 @@
 /* No comment provided by engineer. */
 "Images" = "イメージ";
 
+/* No comment provided by engineer. */
+"Import File" = "ファイルをインポートする";
+
+/* No comment provided by engineer. */
+"Import Image" = "イメージをインポートする";
+
 /* Introduction Step Five - Description */
 "In online mode, use real-time co-editing features of %@ to work on documents together with your portal members, share documents and create common storage folders." = "オンラインモードでは、リアルタイム共同編集機能の %@ を使用して、ポータルのメンバーと一緒にドキュメントを編集。さらにドキュメントを共有して、一般ストレージフォルダーを作成。";
 
@@ -799,14 +803,8 @@
 /* No comment provided by engineer. */
 "My Drive" = "私のドライブ";
 
-/* Category title */
-"My rooms" = "私のルーム";
-
 /* No comment provided by engineer. */
 "Name is empty" = "名前が空です";
-
-/* No comment provided by engineer. */
-"Needs additional params." = "追加のパラミーターが必要です。";
 
 /* Badge of file in file list */
 "new" = "新規";
@@ -1020,6 +1018,9 @@
 /* Share status */
 "Pover user" = "パワーユーザー";
 
+/* Share status */
+"Power user" = "パワーユーザー";
+
 /* No comment provided by engineer. */
 "Presentation" = "プレゼンテーション";
 
@@ -1043,9 +1044,6 @@
 
 /* Category title */
 "Project Documents" = "プロジェクトの文書";
-
-/* No comment provided by engineer. */
-"Protected File" = "保護されたファイル";
 
 /* No comment provided by engineer. */
 "Push notifications disabled" = "プッシュ通知が無効";
@@ -1087,6 +1085,9 @@
 "Request canceled" = "リクエストがキャンセルされました";
 
 /* No comment provided by engineer. */
+"Request Entity Too Large" = "リクエストエンティティが大きすぎます";
+
+/* No comment provided by engineer. */
 "Request had insufficient authentication scopes" = "リクエストの認証スコープが不十分でした";
 
 /* No comment provided by engineer. */
@@ -1104,7 +1105,8 @@
 /* Share status */
 "Room admin" = "ルームの管理者";
 
-/* DocSpace rooms */
+/* Category title
+   DocSpace rooms */
 "Rooms" = "ルーム";
 
 /* No comment provided by engineer. */
@@ -1249,6 +1251,9 @@
 /* No comment provided by engineer. */
 "Tab" = "タブ";
 
+/* No comment provided by engineer. */
+"Take a Picture" = "写真を撮る";
+
 /* Data units */
 "Tb" = "Tb";
 
@@ -1284,9 +1289,6 @@
 
 /* No comment provided by engineer. */
 "The link for external\naccess is copied\nto the clipboard" = "外部アクセス用の\nリンクがクリップボードに\nコピーされた";
-
-/* No comment provided by engineer. */
-"The ONLYOFFICE Editors module is missing. Please contact support@onlyoffice.com for more information." = "ONLYOFFICEエディタのモジュールがありません。詳しくは、support@onlyoffice.com までお問い合わせください。";
 
 /* No comment provided by engineer. */
 "The parameters are incorrect." = "パラメータが正しくありません。";
@@ -1455,9 +1457,6 @@
 
 /* Caption of the processing */
 "Unpning" = "ピン留めを外す中";
-
-/* No comment provided by engineer. */
-"Unsupported format." = "サポートされていない書式。";
 
 /* Caption of the process */
 "Uploading" = "アップロード中";

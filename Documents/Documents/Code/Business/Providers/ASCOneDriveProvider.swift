@@ -2,7 +2,7 @@
 //  ASCOneDriveProvider.swift
 //  Documents
 //
-//  Created by Павел Чернышев on 28.04.2021.
+//  Created by Pavel Chernyshev on 28.04.2021.
 //  Copyright © 2021 Ascensio System SIA. All rights reserved.
 //
 
@@ -13,8 +13,8 @@ import Foundation
 class ASCOneDriveProvider: ASCSortableFileProviderProtocol {
     // MARK: - ASCSortableFileProviderProtocol variables
 
-    internal var folder: ASCFolder?
-    internal var fetchInfo: [String: Any?]?
+    var folder: ASCFolder?
+    var fetchInfo: [String: Any?]?
 
     // MARK: - ASCFileProviderProtocol variables
 
@@ -798,12 +798,12 @@ extension ASCOneDriveProvider: ASCFileProviderProtocol {
         findUniqName(suggestedName: fileTitle, inFolder: folder) { fileTitle in
             let file = ASCFile()
             file.title = fileTitle
-            self.chechTransfer(items: [file], to: folder) { [self] status, items, message in
+            self.chechTransfer(items: [file], to: folder) { [self] status, items, error in
                 switch status {
                 case .end:
                     if let items = items as? [ASCEntity] {
                         guard items.isEmpty else {
-                            log.error(status, items, message ?? "")
+                            log.error(status, items, error?.localizedDescription ?? "")
                             completeon?(self, nil, false, nil)
                             return
                         }
@@ -855,9 +855,9 @@ extension ASCOneDriveProvider: ASCFileProviderProtocol {
                         }
                     }
                 case .error:
-                    completeon?(self, nil, false, ASCProviderError(msg: message ?? ""))
+                    completeon?(self, nil, false, error)
                 default:
-                    log.info(status, items ?? "", message ?? "")
+                    log.info(status, items ?? "", error)
                 }
             }
         }
@@ -993,7 +993,7 @@ extension ASCOneDriveProvider: ASCFileProviderProtocol {
 
     func chechTransfer(items: [ASCEntity], to folder: ASCFolder, handler: ASCEntityHandler?) {
         guard let provider = provider else {
-            handler?(.error, nil, ASCProviderError(msg: errorProviderUndefined).localizedDescription)
+            handler?(.error, nil, ASCProviderError(msg: errorProviderUndefined))
             return
         }
 
@@ -1047,7 +1047,7 @@ extension ASCOneDriveProvider: ASCFileProviderProtocol {
         var cancel = false
 
         guard let provider = provider else {
-            handler?(.end, 1, nil, ASCProviderError(msg: errorProviderUndefined).localizedDescription, &cancel)
+            handler?(.end, 1, nil, ASCProviderError(msg: errorProviderUndefined), &cancel)
             return
         }
 
@@ -1063,7 +1063,7 @@ extension ASCOneDriveProvider: ASCFileProviderProtocol {
             operationQueue.addOperation {
                 if cancel {
                     DispatchQueue.main.async {
-                        handler?(.end, 1, results, lastError?.localizedDescription, &cancel)
+                        handler?(.end, 1, results, lastError, &cancel)
                     }
                     return
                 }
@@ -1078,7 +1078,7 @@ extension ASCOneDriveProvider: ASCFileProviderProtocol {
                             results.append(entity)
                         }
                         DispatchQueue.main.async {
-                            handler?(.progress, Float(index) / Float(items.count), entity, error?.localizedDescription, &cancel)
+                            handler?(.progress, Float(index) / Float(items.count), entity, error, &cancel)
                         }
                         semaphore.signal()
                     })
@@ -1090,7 +1090,7 @@ extension ASCOneDriveProvider: ASCFileProviderProtocol {
                             results.append(entity)
                         }
                         DispatchQueue.main.async {
-                            handler?(.progress, Float(index + 1) / Float(items.count), entity, error?.localizedDescription, &cancel)
+                            handler?(.progress, Float(index + 1) / Float(items.count), entity, error, &cancel)
                         }
                         semaphore.signal()
                     })
@@ -1104,7 +1104,7 @@ extension ASCOneDriveProvider: ASCFileProviderProtocol {
                 if items.count == results.count {
                     handler?(.end, 1, results, nil, &cancel)
                 } else {
-                    handler?(.end, 1, results, lastError?.localizedDescription, &cancel)
+                    handler?(.end, 1, results, lastError, &cancel)
                 }
             }
         }
@@ -1140,7 +1140,7 @@ extension ASCOneDriveProvider: ASCFileProviderProtocol {
                 ASCConstants.FileExtensions.forms.contains(fileExtension)
             let canPreview = canOpenEditor ||
                 ASCConstants.FileExtensions.images.contains(fileExtension) ||
-                fileExtension == "pdf"
+                fileExtension == ASCConstants.FileExtensions.pdf
 
             if canRead {
                 entityActions.insert([.copy, .export])
@@ -1229,7 +1229,7 @@ extension ASCOneDriveProvider: ASCFileProviderProtocol {
     func preview(file: ASCFile, files: [ASCFile]? = nil, in view: UIView? = nil) {
         let title = file.title
         let fileExt = title.fileExtension().lowercased()
-        let isPdf = fileExt == "pdf"
+        let isPdf = fileExt == ASCConstants.FileExtensions.pdf
         let isImage = ASCConstants.FileExtensions.images.contains(fileExt)
         let isVideo = ASCConstants.FileExtensions.videos.contains(fileExt)
 

@@ -29,6 +29,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     ) -> Bool {
         self.launchOptions = launchOptions
 
+        initializeDI()
+
         if ASCCommon.isUnitTesting {
             return true
         }

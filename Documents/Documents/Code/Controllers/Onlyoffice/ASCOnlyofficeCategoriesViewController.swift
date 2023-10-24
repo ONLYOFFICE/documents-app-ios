@@ -369,9 +369,7 @@ class ASCOnlyofficeCategoriesViewController: UITableViewController {
                 let presenter = ASCMultiAccountPresenter(view: multiProfileVC)
                 multiProfileVC.presenter = presenter
                 let multiProfileNavigationVC = ASCBaseNavigationController(rootASCViewController: multiProfileVC)
-                if UIDevice.phone {
-                    multiProfileNavigationVC.modalPresentationStyle = .fullScreen
-                }
+                multiProfileNavigationVC.modalPresentationStyle = .fullScreen
 
                 splitVC.hideMasterController()
                 splitVC.present(multiProfileNavigationVC, animated: true, completion: nil)
@@ -520,7 +518,7 @@ extension ASCOnlyofficeCategoriesViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if let cell = tableView.dequeueReusableCell(withIdentifier: ASCOnlyofficeCategoryCell.identifier, for: indexPath) as? ASCOnlyofficeCategoryCell {
             cell.category = getCategory(by: indexPath)
-            cell.accessoryType = (UIDevice.phone || ASCViewControllerManager.shared.currentSizeClass == .compact) ? .disclosureIndicator : .none
+            cell.accessoryType = ASCViewControllerManager.shared.phoneLayout ? .disclosureIndicator : .none
             return cell
         }
 

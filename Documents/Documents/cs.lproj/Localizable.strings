@@ -95,9 +95,6 @@
 "Address is empty" = "Adresa je prázdná";
 
 /* No comment provided by engineer. */
-"Admin" = "Administrátor";
-
-/* No comment provided by engineer. */
 "All" = "Vše";
 
 /* No comment provided by engineer. */
@@ -124,7 +121,8 @@
 /* Caption of the process */
 "Applying" = "Použití stránky";
 
-/* Button title */
+/* Button title
+   Category title */
 "Archive" = "Archiv";
 
 /* No comment provided by engineer. */
@@ -138,6 +136,9 @@
 
 /* No comment provided by engineer. */
 "Are you sure you want to delete the account  %@ from this devce?" = "Opravdu chcete z tohoto zařízení odstranit účet %@?";
+
+/* No comment provided by engineer. */
+"Are you sure you want to delete the account %@ from this devce?" = "Opravdu chcete z tohoto zařízení odstranit účet %@?";
 
 /* No comment provided by engineer. */
 "Are you sure you want to leave this account?" = "Opravdu chcete tento účet opustit?";
@@ -268,6 +269,9 @@
 /* No comment provided by engineer. */
 "Connect Clouds" = "Připojit cloud";
 
+/* No comment provided by engineer. */
+"Connect Storage" = "Připojit úložiště";
+
 /* Introduction Step Three - Description */
 "Connect third-party storage\nlike Nextcloud, ownCloud, Yandex Disk and\nothers which use WebDAV protocol." = "Připojte úložiště třetích stran\njako Nextcloud, ownCloud, Yandex Disk a\njiné, které používají protokol WebDAV.";
 
@@ -300,9 +304,6 @@
 
 /* Description of file operation error */
 "Could not change the directory" = "Nepodařilo se změnit adresář";
-
-/* No comment provided by engineer. */
-"Could not convert file to export." = "Nelze konvertovat soubor k odeslání";
 
 /* Description of file operation error */
 "Could not copy file" = "Nepodařilo se zkopírovat soubor";
@@ -353,9 +354,6 @@
 "Could not move file" = "Nelze přesunout soubor";
 
 /* No comment provided by engineer. */
-"Could not open editor." = "Editor se nepodařilo otevřít.";
-
-/* No comment provided by engineer. */
 "Could not open file." = "Soubor se nepodařilo otevřít.";
 
 /* No comment provided by engineer. */
@@ -374,7 +372,7 @@
 "Could not write to file" = "Nelze zapisovat do souboru";
 
 /* No comment provided by engineer. */
-"Couldn't open file" = "Nebylo možné otevřít lokální soubor v adresářové struktuře.";
+"Couldn't rename the file" = "Soubor se nepodařilo přejmenovat";
 
 /* No comment provided by engineer. */
 "Couldn't save changes at server. Your modified document is saved in local storage as %@" = "Nepodařilo se uložit změny na serveru. Váš změněný dokument je uložen v místním úložišti jako %@";
@@ -449,6 +447,9 @@
 "Disconnect third party" = "Odpojit třetí stranu";
 
 /* No comment provided by engineer. */
+"DocSpace admin" = "Správce DocSpace";
+
+/* No comment provided by engineer. */
 "Document" = "Dokument";
 
 /* Default title of sample document */
@@ -517,9 +518,6 @@
 
 /* Presentation Viewer */
 "End Slide Show" = "Ukončit prezentaci";
-
-/* No comment provided by engineer. */
-"Enter a password to open the file." = "Zadejte heslo pro otevření souboru.";
 
 /* placeholder */
 "Enter email" = "Zadejte e-mail";
@@ -671,6 +669,12 @@
 /* No comment provided by engineer. */
 "Images" = "Obrázky";
 
+/* No comment provided by engineer. */
+"Import File" = "Importovat soubor";
+
+/* No comment provided by engineer. */
+"Import Image" = "Importovat obrázek";
+
 /* Introduction Step Five - Description */
 "In online mode, use real-time co-editing features of %@ to work on documents together with your portal members, share documents and create common storage folders." = "V režimu online můžete v nástrojích %@ společně se členy portálu pracovat na dokumentech, sdílet je a vytvářet složky pro ukládání souborů.";
 
@@ -799,14 +803,8 @@
 /* No comment provided by engineer. */
 "My Drive" = "My Drive";
 
-/* Category title */
-"My rooms" = "Moje pokoje";
-
 /* No comment provided by engineer. */
 "Name is empty" = "Název je prázdný";
-
-/* No comment provided by engineer. */
-"Needs additional params." = "Jsou zapotřebí další parametry.";
 
 /* Badge of file in file list */
 "new" = "nový";
@@ -1020,6 +1018,9 @@
 /* Share status */
 "Pover user" = "Mocný uživatel";
 
+/* Share status */
+"Power user" = "Mocný uživatel";
+
 /* No comment provided by engineer. */
 "Presentation" = "Prezentace";
 
@@ -1043,9 +1044,6 @@
 
 /* Category title */
 "Project Documents" = "Projektové dokumenty";
-
-/* No comment provided by engineer. */
-"Protected File" = "Chráněný soubor";
 
 /* No comment provided by engineer. */
 "Push notifications disabled" = "Push oznámení jsou vypnuta";
@@ -1087,6 +1085,9 @@
 "Request canceled" = "Požadavek zrušen";
 
 /* No comment provided by engineer. */
+"Request Entity Too Large" = "Příliš velká entita požadavku";
+
+/* No comment provided by engineer. */
 "Request had insufficient authentication scopes" = "Požadavek neměl dostatečné rozsahy ověřování";
 
 /* No comment provided by engineer. */
@@ -1104,7 +1105,8 @@
 /* Share status */
 "Room admin" = "Správce místnosti";
 
-/* DocSpace rooms */
+/* Category title
+   DocSpace rooms */
 "Rooms" = "Místnosti";
 
 /* No comment provided by engineer. */
@@ -1249,6 +1251,9 @@
 /* No comment provided by engineer. */
 "Tab" = "Tabulátor";
 
+/* No comment provided by engineer. */
+"Take a Picture" = "Vyfotit";
+
 /* Data units */
 "Tb" = "Tb";
 
@@ -1284,9 +1289,6 @@
 
 /* No comment provided by engineer. */
 "The link for external\naccess is copied\nto the clipboard" = "Odkaz pro externí\npřístup je zkopírován\ndo schránky";
-
-/* No comment provided by engineer. */
-"The ONLYOFFICE Editors module is missing. Please contact support@onlyoffice.com for more information." = "Chybí modul ONLYOFFICE Editors. Další informace získáte na adrese support@onlyoffice.com.";
 
 /* No comment provided by engineer. */
 "The parameters are incorrect." = "Parametry jsou nesprávné.";
@@ -1455,9 +1457,6 @@
 
 /* Caption of the processing */
 "Unpning" = "Odpojení";
-
-/* No comment provided by engineer. */
-"Unsupported format." = "Nepodporovaný formát.";
 
 /* Caption of the process */
 "Uploading" = "Nahrávání";

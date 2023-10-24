@@ -33,6 +33,7 @@ class ASCFolder: ASCEntity {
     var providerType: ASCFolderProviderType?
     var device: Bool = false
     var parent: ASCFolder?
+    var largeLogo: String?
     var smallLogo: String?
     var security: ASCFolderSecurity = .init()
     var providerId: String? {
@@ -69,6 +70,7 @@ class ASCFolder: ASCEntity {
         createdBy <- map["createdBy"]
         new <- map["new"]
         isThirdParty <- map["providerItem"]
+        largeLogo <- (map["logo.large"], ASCStringTransform())
         smallLogo <- (map["logo.small"], ASCStringTransform())
         providerType <- (map["providerKey"], EnumTransform())
         security <- map["security"]

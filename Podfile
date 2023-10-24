@@ -46,7 +46,7 @@ def common_pods
   pod 'PhoneNumberKit'
   pod 'SwiftMessages'
   pod 'MGSwipeTableCell'
-  pod 'ReCaptcha'
+  pod 'ReCaptcha', :git => 'https://github.com/fjcaetano/ReCaptcha.git'
   pod "WSTagsField"
 
   # Utils
@@ -67,6 +67,13 @@ class ::Pod::Generator::Acknowledgements
   def footnote_text
     ""
   end
+end
+
+target 'Documents-opensource' do
+  workspace 'ONLYOFFICE-Documents-opensource'
+  project 'Documents/Documents-opensource.xcodeproj'
+  
+  common_pods
 end
 
 target 'Documents' do
@@ -95,11 +102,28 @@ target 'Documents-develop' do
   common_pods
 end
 
-target 'Documents-opensource' do
-  workspace 'ONLYOFFICE-Documents-opensource'
-  project 'Documents/Documents-opensource.xcodeproj'
-  
-  common_pods
+def fix_xcworkspaces
+  puts "Fix xcworkspaces"
+
+  template = File.open("scripts/xcworkspace.template").read()
+
+  project_names = [
+    "Documents",
+    "Documents-opensource",
+    "Documents-develop"
+  ]
+
+  for project_name in project_names do
+    begin
+      file = File.open("ONLYOFFICE-#{project_name}.xcworkspace/contents.xcworkspacedata", "w")
+      file.write(template % { :project => "Documents/#{project_name}.xcodeproj" } ) 
+    rescue IOError => e
+      #some error occur, dir not writable etc.
+    ensure
+      file.close unless file.nil?
+    end
+  end
+
 end
 
 post_install do | installer |
@@ -109,6 +133,21 @@ post_install do | installer |
     'Documents/Settings.bundle/Acknowledgements.plist',
     :remove_destination => true
   )
+
+  installer.aggregate_targets.each do |target|
+    target.xcconfigs.each do |variant, xcconfig|
+      xcconfig_path = target.client_root + target.xcconfig_relative_path(variant)
+      IO.write(xcconfig_path, IO.read(xcconfig_path).gsub("DT_TOOLCHAIN_DIR", "TOOLCHAIN_DIR"))
+    end
+  end
+  installer.pods_project.targets.each do |target|
+    target.build_configurations.each do |config|
+      if config.base_configuration_reference.is_a? Xcodeproj::Project::Object::PBXFileReference
+        xcconfig_path = config.base_configuration_reference.real_path
+        IO.write(xcconfig_path, IO.read(xcconfig_path).gsub("DT_TOOLCHAIN_DIR", "TOOLCHAIN_DIR"))
+      end
+    end
+  end
 
   installer.pods_project.targets.each do |target|
     target.build_configurations.each do |config|
@@ -127,4 +166,8 @@ post_install do | installer |
     end
   end
 
+end
+
+post_integrate do |installer|
+  fix_xcworkspaces
 end

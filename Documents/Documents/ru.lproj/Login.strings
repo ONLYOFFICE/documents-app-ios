@@ -29,7 +29,7 @@
 "AqJ-b9-XQV.normalTitle" = "Продолжить";
 
 /* Class = "UILabel"; text = "Set up an application to generate the authentication codes"; ObjectID = "B8R-KD-Lml"; */
-"B8R-KD-Lml.text" = "Настройте приложение для генерации кодов аутентификации.";
+"B8R-KD-Lml.text" = "Настройте приложение для генерации кодов аутентификации";
 
 /* Class = "UILabel"; text = "Password recovery"; ObjectID = "bLE-8U-AOX"; */
 "bLE-8U-AOX.text" = "Восстановление пароля";

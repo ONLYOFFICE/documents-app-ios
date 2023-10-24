@@ -26,7 +26,7 @@ class EventManager {
         addListener(eventName: eventName, newEventListener: newListener)
     }
 
-    internal func addListener(eventName: String, newEventListener: EventListenerAction) {
+    func addListener(eventName: String, newEventListener: EventListenerAction) {
         if let listenerArray = listeners[eventName] {
             // action array exists for this event, add new action to it
             listenerArray.add(newEventListener)

@@ -1,8 +1,8 @@
 //
 //  DetailImageStyleTabelViewCell.swift
-//  Documents-opensource
+//  Documents
 //
-//  Created by Лолита Чернышева on 31.03.2023.
+//  Created by Lolita Chernysheva on 31.03.2023.
 //  Copyright © 2023 Ascensio System SIA. All rights reserved.
 //
 
@@ -10,7 +10,7 @@ import Kingfisher
 import UIKit
 
 class DetailImageStyleTabelViewCell: UITableViewCell {
-    static var reuseIdentifier: String = "DetailImageStyleTabelViewCell"
+    static let reuseIdentifier = String(describing: DetailImageStyleTabelViewCell.self)
 
     let titleLabel: UILabel = {
         let label = UILabel()
@@ -100,7 +100,7 @@ extension DetailImageStyleTabelViewCell {
 
 extension DetailImageStyleTabelViewCell {
     func setup(model: AccountCellModel?) {
-        guard let model = model else { return }
+        guard let model else { return }
         titleLabel.text = model.name
         detailLabel.text = model.portal
         titleLabel.font = model.style.nameFont

@@ -95,9 +95,6 @@
 "Address is empty" = "ලිපිනය හිස්ය";
 
 /* No comment provided by engineer. */
-"Admin" = "පරිපාලක";
-
-/* No comment provided by engineer. */
 "All" = "සියල්ල";
 
 /* No comment provided by engineer. */
@@ -124,7 +121,8 @@
 /* Caption of the process */
 "Applying" = "යෙදෙමින්";
 
-/* Button title */
+/* Button title
+   Category title */
 "Archive" = "සංරක්‍ෂණය";
 
 /* No comment provided by engineer. */
@@ -138,6 +136,9 @@
 
 /* No comment provided by engineer. */
 "Are you sure you want to delete the account  %@ from this devce?" = "ඔබට මෙම උපාංගයෙන් %@ ගිණුම මැකීමට වුවමනා ද?";
+
+/* No comment provided by engineer. */
+"Are you sure you want to delete the account %@ from this devce?" = "ඔබට මෙම උපාංගයෙන් %@ ගිණුම මැකීමට වුවමනා ද?";
 
 /* No comment provided by engineer. */
 "Are you sure you want to leave this account?" = "ඔබට මෙම ගිණුම හැරයාමට වුවමනා ද?";
@@ -268,6 +269,9 @@
 /* No comment provided by engineer. */
 "Connect Clouds" = "මේඝවලට සබඳින්න";
 
+/* No comment provided by engineer. */
+"Connect Storage" = "ආචයනයට සබඳින්න";
+
 /* Introduction Step Three - Description */
 "Connect third-party storage\nlike Nextcloud, ownCloud, Yandex Disk and\nothers which use WebDAV protocol." = "නෙක්ස්ක්ලවුඩ්, ඔව්න්කලවුඩ්, යාන්ඩෙක්ස් ඩිස්ක්\nසහ වෙබ්DAV කෙටුම්පත භාවිතා වන අනෙකුත්\nතෙවන පාර්ශ්ව ආචයන සම්බන්ධ කරන්න.";
 
@@ -300,9 +304,6 @@
 
 /* Description of file operation error */
 "Could not change the directory" = "නාමාවලිය වෙනස් කිරීමට නොහැකි විය";
-
-/* No comment provided by engineer. */
-"Could not convert file to export." = "නිර්යාතය සඳහා ගොනුව පරිවර්තනයට නොහැකි විය.";
 
 /* Description of file operation error */
 "Could not copy file" = "ගොනුව පිටපත් කිරීමට නොහැකි විය";
@@ -353,9 +354,6 @@
 "Could not move file" = "ගොනුව ගෙනයාමට නොහැකි විය";
 
 /* No comment provided by engineer. */
-"Could not open editor." = "සංස්කරකය ඇරීමට නොහැකි විය.";
-
-/* No comment provided by engineer. */
 "Could not open file." = "ගොනුව ඇරීමට නොහැකි විය.";
 
 /* No comment provided by engineer. */
@@ -374,7 +372,7 @@
 "Could not write to file" = "ගොනුවට ලිවීමට නොහැකි විය";
 
 /* No comment provided by engineer. */
-"Couldn't open file" = "ගොනුව ඇරීමට නොහැකි විය";
+"Couldn't rename the file" = "ගොනුව නම් කිරීමට නොහැකි විය";
 
 /* No comment provided by engineer. */
 "Couldn't save changes at server. Your modified document is saved in local storage as %@" = "වෙනස්කම් සේවාදායකයෙහි සුරැකීමට නොහැකි විය. %@ ලෙස ඔබගේ සංශෝධිත ලේඛනය ස්ථානීය ආචයනයේ සුරකිනු ලැබේ";
@@ -449,6 +447,9 @@
 "Disconnect third party" = "තෙවන පාර්ශ්වය විසන්ධිය";
 
 /* No comment provided by engineer. */
+"DocSpace admin" = "DocSpace පරිපාලක";
+
+/* No comment provided by engineer. */
 "Document" = "ලේඛනය";
 
 /* Default title of sample document */
@@ -517,9 +518,6 @@
 
 /* Presentation Viewer */
 "End Slide Show" = "චිත්‍රකාඩ දැක්ම නිමාව";
-
-/* No comment provided by engineer. */
-"Enter a password to open the file." = "ගොනුව ඇරීමට මුරපදයක් යොදන්න.";
 
 /* placeholder */
 "Enter email" = "වි-තැපෑල යොදන්න";
@@ -671,6 +669,12 @@
 /* No comment provided by engineer. */
 "Images" = "රූප";
 
+/* No comment provided by engineer. */
+"Import File" = "ගොනුවක් ආයාතය";
+
+/* No comment provided by engineer. */
+"Import Image" = "රූපයක් ආයාතය";
+
 /* Introduction Step Five - Description */
 "In online mode, use real-time co-editing features of %@ to work on documents together with your portal members, share documents and create common storage folders." = "මාර්ගගත ප්‍රකාරයේදී, ඔබගේ ද්වාරයේ සාමාජිකයින් සමඟ එක්ව ලේඛනවල වැඩ කිරීමට, ලේඛන බෙදා ගැනීමට සහ පොදු ආචයන බාහාලුම් සෑදීමට %@ හි තත්‍ය කාලීන සම-සංස්කරණ විශේෂාංග භාවිතා කරන්න.";
 
@@ -799,14 +803,8 @@
 /* No comment provided by engineer. */
 "My Drive" = "මාගේ ධාවකය";
 
-/* Category title */
-"My rooms" = "මාගේ කාමර";
-
 /* No comment provided by engineer. */
 "Name is empty" = "නම හිස්ය";
-
-/* No comment provided by engineer. */
-"Needs additional params." = "අතිරේක පරාමිතීන් අවශ්‍යයි.";
 
 /* Badge of file in file list */
 "new" = "නව";
@@ -1020,6 +1018,9 @@
 /* Share status */
 "Pover user" = "බලවත් පරිශ්‍රීලක";
 
+/* Share status */
+"Power user" = "බලවත් පරිශ්‍රීලක";
+
 /* No comment provided by engineer. */
 "Presentation" = "සමර්පණය";
 
@@ -1043,9 +1044,6 @@
 
 /* Category title */
 "Project Documents" = "ව්‍යාපෘති ලේඛන";
-
-/* No comment provided by engineer. */
-"Protected File" = "රක්‍ෂිත ගොනුවකි";
 
 /* No comment provided by engineer. */
 "Push notifications disabled" = "තල්ලු දැනුම්දීම් අබලයි";
@@ -1087,6 +1085,9 @@
 "Request canceled" = "ඉල්ලීම අවලංගු කෙරිණි";
 
 /* No comment provided by engineer. */
+"Request Entity Too Large" = "ඉල්ලන දෑ ඉතා විශාලයි";
+
+/* No comment provided by engineer. */
 "Request had insufficient authentication scopes" = "ඉල්ලීමට ප්‍රමාණවත් සත්‍යාපන අවකාශයක් තිබුණේ නැත";
 
 /* No comment provided by engineer. */
@@ -1104,7 +1105,8 @@
 /* Share status */
 "Room admin" = "කාමරයේ පරිපාලක";
 
-/* DocSpace rooms */
+/* Category title
+   DocSpace rooms */
 "Rooms" = "කාමර";
 
 /* No comment provided by engineer. */
@@ -1249,6 +1251,9 @@
 /* No comment provided by engineer. */
 "Tab" = "පටිත්ත";
 
+/* No comment provided by engineer. */
+"Take a Picture" = "ඡායාරූපයක් අරගන්න";
+
 /* Data units */
 "Tb" = "ටෙ.බ.";
 
@@ -1284,9 +1289,6 @@
 
 /* No comment provided by engineer. */
 "The link for external\naccess is copied\nto the clipboard" = "බාහිර ප්‍රවේශය සඳහා\nසබැඳිය පසුරු පුවරුවට\nපිටපත් කර ඇත";
-
-/* No comment provided by engineer. */
-"The ONLYOFFICE Editors module is missing. Please contact support@onlyoffice.com for more information." = "ඔන්ලිඔෆිස් සංස්කරක ඒකකය දක්නට නැත. වැඩි විස්තර සඳහා කරුණාකර support@onlyoffice.com අමතන්න.";
 
 /* No comment provided by engineer. */
 "The parameters are incorrect." = "පරාමිතීන් වැරදිය.";
@@ -1455,9 +1457,6 @@
 
 /* Caption of the processing */
 "Unpning" = "ගැළවෙමින්";
-
-/* No comment provided by engineer. */
-"Unsupported format." = "සහාය නොදක්වන ආකෘතියකි.";
 
 /* Caption of the process */
 "Uploading" = "උඩුගත වෙමින්";

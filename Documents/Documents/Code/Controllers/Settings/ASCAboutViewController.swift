@@ -6,10 +6,7 @@
 //  Copyright © 2017 Ascensio System SIA. All rights reserved.
 //
 
-#if !NO_EDITORS
-    import DocumentConverter
-#endif
-
+import DocumentConverter
 import SwiftRater
 import UIKit
 
@@ -65,16 +62,11 @@ class ASCAboutViewController: ASCBaseTableViewController, UIGestureRecognizerDel
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        var versionInfo = [
+        let versionInfo = [
             [NSLocalizedString("Version", comment: ""), " \(ASCCommon.appVersion ?? "") (\(ASCCommon.appBuild ?? ""))"],
+            ["SDK", ASCEditorManager.shared.localSDKVersion().joined(separator: ".")],
+            [NSLocalizedString("Converter", comment: ""), DocumentLocalConverter.sdkVersion() ?? ""],
         ]
-
-        #if !NO_EDITORS
-            versionInfo += [
-                ["SDK", ASCEditorManager.shared.localSDKVersion().joined(separator: ".")],
-                [NSLocalizedString("Converter", comment: ""), DocumentLocalConverter.sdkVersion() ?? ""],
-            ]
-        #endif
 
         let versionInfoString = versionInfo
             .map { $0.joined(separator: " ") }

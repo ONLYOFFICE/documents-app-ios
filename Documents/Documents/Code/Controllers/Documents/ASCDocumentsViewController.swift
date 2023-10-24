@@ -462,9 +462,9 @@ class ASCDocumentsViewController: ASCBaseTableViewController, UIGestureRecognize
             if open {
                 let title = file.title
                 let fileExt = title.fileExtension().lowercased()
-                let isDocument = fileExt == "docx"
-                let isSpreadsheet = fileExt == "xlsx"
-                let isPresentation = fileExt == "pptx"
+                let isDocument = fileExt == ASCConstants.FileExtensions.docx
+                let isSpreadsheet = fileExt == ASCConstants.FileExtensions.xlsx
+                let isPresentation = fileExt == ASCConstants.FileExtensions.pptx
 
                 if isDocument || isSpreadsheet || isPresentation {
                     provider.open(file: file, openMode: .create, canEdit: true)
@@ -1346,7 +1346,7 @@ class ASCDocumentsViewController: ASCBaseTableViewController, UIGestureRecognize
         SwiftMessages.hide()
 
         if let topVC = ASCViewControllerManager.shared.rootController?.topMostViewController(),
-           let _ = topVC.view as? ASCCreateEntityView
+           topVC is ASCCreateEntityUIViewController
         {
             topVC.dismiss(animated: false, completion: nil)
         }
@@ -1371,7 +1371,7 @@ class ASCDocumentsViewController: ASCBaseTableViewController, UIGestureRecognize
     }
 
     @objc func onAppMovedToBackground() {
-        if !(UIDevice.phone || ASCViewControllerManager.shared.currentSizeClass == .compact) {
+        if !ASCViewControllerManager.shared.phoneLayout {
             setEditMode(false)
         }
     }
@@ -1649,85 +1649,7 @@ class ASCDocumentsViewController: ASCBaseTableViewController, UIGestureRecognize
     }
 
     func checkUnsuccessfullyOpenedFile() {
-        if let documentInfo = UserDefaults.standard.object(forKey: ASCConstants.SettingsKeys.openedDocument) as? [String: Any] {
-            if let file = ASCFile(JSONString: documentInfo["file"] as! String) {
-                if !UserDefaults.standard.bool(forKey: ASCConstants.SettingsKeys.openedDocumentModifity) {
-                    UserDefaults.standard.removeObject(forKey: ASCConstants.SettingsKeys.openedDocumentModifity)
-                    UserDefaults.standard.removeObject(forKey: ASCConstants.SettingsKeys.openedDocument)
-
-                    ASCLocalFileHelper.shared.removeDirectory(Path.userTemporary + file.title)
-
-                    return
-                }
-
-                // Force reset open recover version
-                UserDefaults.standard.removeObject(forKey: ASCConstants.SettingsKeys.openedDocumentModifity)
-
-                let closeHandler = closeProgress(
-                    file: file,
-                    title: NSLocalizedString("Saving", comment: "Caption of the processing")
-                )
-
-                var forceCancel = false
-                let progressAlert = ASCProgressAlert(
-                    title: NSLocalizedString("Restoring", comment: "Caption of the processing") + "...",
-                    message: nil,
-                    handler: { cancel in
-                        forceCancel = cancel
-                    }
-                )
-
-                progressAlert.show()
-
-                let fullTime = 3.0
-                let interval = 0.01
-
-                var deadTime = 0.0
-                var timer: Timer!
-
-                timer = Timer.scheduledTimer(timeInterval: interval, target: BlockOperation(block: { [weak self] in
-                    if forceCancel {
-                        timer.invalidate()
-
-                        UserDefaults.standard.removeObject(forKey: ASCConstants.SettingsKeys.openedDocument)
-                        ASCLocalFileHelper.shared.removeDirectory(Path.userTemporary + file.title)
-                    } else {
-                        deadTime += interval
-                        progressAlert.progress = Float(deadTime / fullTime)
-
-                        if deadTime >= fullTime {
-                            timer.invalidate()
-
-                            progressAlert.hide(completion: {
-                                if file.device {
-                                    let locallyEditing = documentInfo["locallyEditing"] as? Bool ?? false
-
-                                    if locallyEditing {
-                                        // Switch category to 'On Device'
-                                        ASCViewControllerManager.shared.rootController?.display(provider: ASCFileManager.localProvider, folder: nil)
-                                    } else {
-                                        let localeId = file.id.substring(from: Path.userDocuments.rawValue.length)
-                                        file.id = (Path.userDocuments + localeId).rawValue
-                                    }
-
-                                    ASCEditorManager.shared.openEditorLocalCopy(
-                                        file: file,
-                                        openMode: .edit,
-                                        canEdit: true,
-                                        autosave: true,
-                                        locallyEditing: locallyEditing,
-                                        handler: nil,
-                                        closeHandler: closeHandler
-                                    )
-                                } else {
-                                    self?.provider?.open(file: file, openMode: .edit, canEdit: true)
-                                }
-                            })
-                        }
-                    }
-                }), selector: #selector(Operation.main), userInfo: nil, repeats: true)
-            }
-        }
+        ASCEditorManager.shared.checkUnsuccessfullyOpenedFile(parent: self)
     }
 
     // MARK: - Entity actions
@@ -1762,8 +1684,8 @@ class ASCDocumentsViewController: ASCBaseTableViewController, UIGestureRecognize
             } else if status == .error {
                 hud?.hide(animated: true)
 
-                if error != nil {
-                    UIAlertController.showError(in: self, message: error!)
+                if let error {
+                    UIAlertController.showError(in: self, message: error.localizedDescription)
                 }
             } else if status == .end {
                 if entity != nil {
@@ -1840,7 +1762,7 @@ class ASCDocumentsViewController: ASCBaseTableViewController, UIGestureRecognize
         hud?.isHidden = false
         let action: ASCEntityActions = folder.pinned ? .unpin : .pin
         let processLabel: String = folder.pinned
-            ? NSLocalizedString("Unpning", comment: "Caption of the processing")
+            ? NSLocalizedString("Unpinning", comment: "Caption of the processing")
             : NSLocalizedString("Pinning", comment: "Caption of the processing")
         provider.handle(action: action, folder: folder) { [weak self] status, entity, error in
             guard let self = self else {
@@ -1863,7 +1785,7 @@ class ASCDocumentsViewController: ASCBaseTableViewController, UIGestureRecognize
                             processingMessage: String,
                             _ status: ASCEntityProcessStatus,
                             _ result: Any?,
-                            _ error: String?,
+                            _ error: Error?,
                             completion: () -> Void)
     {
         if status == .begin {
@@ -1872,8 +1794,8 @@ class ASCDocumentsViewController: ASCBaseTableViewController, UIGestureRecognize
             hud?.label.text = processingMessage
         } else if status == .error {
             hud?.hide(animated: true)
-            if error != nil {
-                UIAlertController.showError(in: self, message: error!)
+            if let error {
+                UIAlertController.showError(in: self, message: error.localizedDescription)
             }
         } else if status == .end {
             completion()
@@ -1920,7 +1842,7 @@ class ASCDocumentsViewController: ASCBaseTableViewController, UIGestureRecognize
                     openingAlert.hide()
                     UIAlertController.showError(
                         in: self,
-                        message: error ?? NSLocalizedString("Could not download file.", comment: "")
+                        message: error?.localizedDescription ?? NSLocalizedString("Could not download file.", comment: "")
                     )
                 } else {
                     if let newFile = result as? ASCFile, let rootVC = ASCViewControllerManager.shared.rootController {
@@ -1976,8 +1898,8 @@ class ASCDocumentsViewController: ASCBaseTableViewController, UIGestureRecognize
             } else if status == .error {
                 hud?.hide(animated: true)
 
-                if let error = error {
-                    UIAlertController.showError(in: self, message: error)
+                if let error {
+                    UIAlertController.showError(in: self, message: error.localizedDescription)
                 }
             } else if status == .end {
                 if entity != nil {
@@ -2023,8 +1945,8 @@ class ASCDocumentsViewController: ASCBaseTableViewController, UIGestureRecognize
             } else if status == .error {
                 hud?.hide(animated: true)
 
-                if let error = error {
-                    UIAlertController.showError(in: self, message: error)
+                if let error {
+                    UIAlertController.showError(in: self, message: error.localizedDescription)
                 }
             } else if status == .end {
                 if let entities = result as? [AnyObject], let entity = entities.first {
@@ -2152,7 +2074,7 @@ class ASCDocumentsViewController: ASCBaseTableViewController, UIGestureRecognize
                 hud?.hide(animated: true)
                 UIAlertController.showError(
                     in: self,
-                    message: error ?? NSLocalizedString("Could not duplicate the file.", comment: "")
+                    message: error?.localizedDescription ?? NSLocalizedString("Could not duplicate the file.", comment: "")
                 )
             } else if status == .end {
                 hud?.setSuccessState()
@@ -2236,7 +2158,7 @@ class ASCDocumentsViewController: ASCBaseTableViewController, UIGestureRecognize
                     hud?.hide(animated: false)
                     UIAlertController.showError(
                         in: self,
-                        message: error ?? NSLocalizedString("Could not copy.", comment: "")
+                        message: error?.localizedDescription ?? NSLocalizedString("Could not copy.", comment: "")
                     )
                     completion?(nil)
                 } else if status == .end {
@@ -2273,7 +2195,7 @@ class ASCDocumentsViewController: ASCBaseTableViewController, UIGestureRecognize
                 hud?.hide(animated: false)
                 UIAlertController.showError(
                     in: self,
-                    message: error ?? NSLocalizedString("Could not copy.", comment: "")
+                    message: error?.localizedDescription ?? NSLocalizedString("Could not copy.", comment: "")
                 )
             } else if status == .end {
                 hud?.hide(animated: false)
@@ -3263,10 +3185,10 @@ extension ASCDocumentsViewController: ASCProviderDelegate {
                 openingAlert.hide()
 
                 if status == .error {
-                    guard let strongSelf = self else { return }
+                    guard let self else { return }
 
                     UIAlertController.showError(
-                        in: strongSelf,
+                        in: self,
                         message: error?.localizedDescription ?? NSLocalizedString("Could not open file.", comment: "")
                     )
                 }

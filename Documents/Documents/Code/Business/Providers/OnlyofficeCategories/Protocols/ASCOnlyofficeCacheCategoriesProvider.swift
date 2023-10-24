@@ -1,5 +1,5 @@
 //
-//  ASCOnlyOfficeCacheCategoriesProvider.swift
+//  ASCOnlyofficeCacheCategoriesProvider.swift
 //  Documents
 //
 //  Created by Pavel Chernyshev on 21.05.2021.

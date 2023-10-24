@@ -2,7 +2,7 @@
 //  ASCSharingSettingsAccessProviderFactory.swift
 //  Documents
 //
-//  Created by Павел Чернышев on 07.07.2021.
+//  Created by Pavel Chernyshev on 07.07.2021.
 //  Copyright © 2021 Ascensio System SIA. All rights reserved.
 //
 
@@ -13,11 +13,11 @@ class ASCSharingSettingsAccessProviderFactory {
     typealias ProviderContainer = () -> ASCSharingSettingsAccessProvider
 
     private let providerContainersByExtension: [FileExtension: ProviderContainer] = [
-        "docx": { ASCSharingSettingsAccessDocumentProvider() },
-        "docxf": { ASCSharingSettingsAccessDocumentFormProvider() },
-        "xlsx": { ASCSharingSettingsAccessTableProvider() },
-        "pptx": { ASCSharingSettingsAccessPresentationProvider() },
-        "oform": { ASCSharingSettingsAccessOFormProvider() },
+        ASCConstants.FileExtensions.docx: { ASCSharingSettingsAccessDocumentProvider() },
+        ASCConstants.FileExtensions.docxf: { ASCSharingSettingsAccessDocumentFormProvider() },
+        ASCConstants.FileExtensions.xlsx: { ASCSharingSettingsAccessTableProvider() },
+        ASCConstants.FileExtensions.pptx: { ASCSharingSettingsAccessPresentationProvider() },
+        ASCConstants.FileExtensions.oform: { ASCSharingSettingsAccessOFormProvider() },
     ]
 
     func get(entity: ASCEntity, isAccessExternal: Bool) -> ASCSharingSettingsAccessProvider {

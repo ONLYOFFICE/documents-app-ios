@@ -1,5 +1,5 @@
 //
-//  ASCCloudViewController+ManagedAppConfig.swift
+//  ASCCloudsViewController+ManagedAppConfig.swift
 //  Documents
 //
 //  Created by Alexander Yuzhin on 28.09.2021.

@@ -29,4 +29,12 @@ extension AppDelegate {
     func initPasscodeLock() {
         _ = passcodeLockPresenter
     }
+
+    func initializeDI() {
+        ASCDIContainer.shared.register(type: ASCIntroPageStoreProtocol.self, service: ASCIntroPageStore())
+        ASCDIContainer.shared.register(type: ASCEditorManagerOptionsProtocol.self, service: ASCEditorManagerOptions())
+        ASCDIContainer.shared.register(type: ASCDocumentEditorConfigurationProtocol.self, service: ASCDocumentEditorConfiguration())
+        ASCDIContainer.shared.register(type: ASCSpreadsheetEditorConfigurationProtocol.self, service: ASCSpreadsheetEditorConfiguration())
+        ASCDIContainer.shared.register(type: ASCPresentationEditorConfigurationProtocol.self, service: ASCPresentationEditorConfiguration())
+    }
 }

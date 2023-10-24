@@ -10,7 +10,7 @@
 /// Additionally, the reference makes added events own itself.
 /// This retain cycle allows owned objects to live as long as valid subscriptions exist.
 public class OwningEventReference<T>: EventReference<T> {
-    internal var owned: AnyObject?
+    var owned: AnyObject?
 
     override public func add(_ subscription: SubscriptionType) -> SubscriptionType {
         let subscr = super.add(subscription)

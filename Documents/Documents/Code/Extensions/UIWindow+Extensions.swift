@@ -1,5 +1,5 @@
 //
-//  UIWindowExtensions.swift
+//  UIWindow+Extensions.swift
 //  Documents
 //
 //  Created by Alexander Yuzhin on 01.12.2022.

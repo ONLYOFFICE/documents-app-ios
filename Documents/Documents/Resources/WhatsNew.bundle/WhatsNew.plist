@@ -8,19 +8,35 @@
 	<array>
 		<dict>
 			<key>Image</key>
-			<string>wahtsnew-protect</string>
+			<string>whatsnew-hyphenation</string>
 			<key>Title</key>
-			<string>Document protection</string>
+			<string>Automatic hyphenation</string>
 			<key>Subtitle</key>
-			<string>Define allowed actions in documents and use passwords for enhanced security.</string>
+			<string>Author documents without having to manually hyphenate words at the end of the line.</string>
 		</dict>
 		<dict>
 			<key>Image</key>
-			<string>wahtsnew-vertical</string>
+			<string>whatsnew-multi-column</string>
 			<key>Title</key>
-			<string>Vertical text alignment</string>
+			<string>Multi-column layout</string>
 			<key>Subtitle</key>
-			<string>Align texts vertically to adjust their position in the desired way.</string>
+			<string>Divide your text into several columns choosing among available position options.</string>
+		</dict>
+		<dict>
+			<key>Image</key>
+			<string>whatsnew-formula-tips</string>
+			<key>Title</key>
+			<string>Formula tips</string>
+			<key>Subtitle</key>
+			<string>Easily enter formulas in spreadsheets checking the proper syntax in tips.</string>
+		</dict>
+		<dict>
+			<key>Image</key>
+			<string>whatsnew-header-footer-setting</string>
+			<key>Title</key>
+			<string>Header &amp; Footer advanced settings</string>
+			<key>Subtitle</key>
+			<string>Adjust headers and footers as you need it.</string>
 		</dict>
 	</array>
 </dict>

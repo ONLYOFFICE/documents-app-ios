@@ -95,9 +95,6 @@
 "Address is empty" = "Адрес не заполнен";
 
 /* No comment provided by engineer. */
-"Admin" = "Администратор";
-
-/* No comment provided by engineer. */
 "All" = "Все";
 
 /* No comment provided by engineer. */
@@ -124,7 +121,8 @@
 /* Caption of the process */
 "Applying" = "Применение";
 
-/* Button title */
+/* Button title
+   Category title */
 "Archive" = "Архив";
 
 /* No comment provided by engineer. */
@@ -138,6 +136,9 @@
 
 /* No comment provided by engineer. */
 "Are you sure you want to delete the account  %@ from this devce?" = "Вы уверены, что хотите удалить учетную запись %@ с этого устройства?";
+
+/* No comment provided by engineer. */
+"Are you sure you want to delete the account %@ from this devce?" = "Вы уверены, что хотите удалить учетную запись %@ с этого устройства?";
 
 /* No comment provided by engineer. */
 "Are you sure you want to leave this account?" = "Вы уверены, что хотите выйти из этой учетной записи?";
@@ -268,6 +269,9 @@
 /* No comment provided by engineer. */
 "Connect Clouds" = "Подключить облака";
 
+/* No comment provided by engineer. */
+"Connect Storage" = "Подключить хранилище";
+
 /* Introduction Step Three - Description */
 "Connect third-party storage\nlike Nextcloud, ownCloud, Yandex Disk and\nothers which use WebDAV protocol." = "Подключите стороннее хранилище,\nтакое как Nextcloud, ownCloud, Яндекс.Диск и\nдругие, использующие протокол WebDAV.";
 
@@ -300,9 +304,6 @@
 
 /* Description of file operation error */
 "Could not change the directory" = "Не удалось изменить каталог";
-
-/* No comment provided by engineer. */
-"Could not convert file to export." = "Невозможно преобразовать файл для экспорта.";
 
 /* Description of file operation error */
 "Could not copy file" = "Не удалось скопировать файл";
@@ -353,9 +354,6 @@
 "Could not move file" = "Не удалось переместить файл";
 
 /* No comment provided by engineer. */
-"Could not open editor." = "Невозможно открыть редактор.";
-
-/* No comment provided by engineer. */
 "Could not open file." = "Невозможно открыть файл.";
 
 /* No comment provided by engineer. */
@@ -365,7 +363,7 @@
 "Could not read data from the file." = "Невозможно прочитать данные из файла.";
 
 /* Description of file operation error */
-"Could not read from file" = "Невозможно прочитать из файла.";
+"Could not read from file" = "Невозможно прочитать из файла";
 
 /* No comment provided by engineer. */
 "Could not save the file." = "Невозможно сохранить файл.";
@@ -374,7 +372,7 @@
 "Could not write to file" = "Не удалось записать в файл";
 
 /* No comment provided by engineer. */
-"Couldn't open file" = "Не удалось открыть файл";
+"Couldn't rename the file" = "Не удалось переименовать файл";
 
 /* No comment provided by engineer. */
 "Couldn't save changes at server. Your modified document is saved in local storage as %@" = "Не удалось сохранить изменения на сервере. Ваш измененный документ сохранен в локальном хранилище под именем %@";
@@ -449,6 +447,9 @@
 "Disconnect third party" = "Отсоединить сторонние сервисы";
 
 /* No comment provided by engineer. */
+"DocSpace admin" = "Администратор DocSpace";
+
+/* No comment provided by engineer. */
 "Document" = "Документ";
 
 /* Default title of sample document */
@@ -498,7 +499,7 @@
 "Email is empty" = "Поле Email не заполнено";
 
 /* No comment provided by engineer. */
-"Email is incorrect." = "Некорректный e-mail";
+"Email is incorrect." = "Некорректный e-mail.";
 
 /* No comment provided by engineer. */
 "Email is not valid" = "Некорректный e-mail";
@@ -517,9 +518,6 @@
 
 /* Presentation Viewer */
 "End Slide Show" = "Завершить";
-
-/* No comment provided by engineer. */
-"Enter a password to open the file." = "Введите пароль, чтобы открыть файл.";
 
 /* placeholder */
 "Enter email" = "Введите адрес электронной почты";
@@ -552,7 +550,7 @@
 "Export" = "Экспорт";
 
 /* No comment provided by engineer. */
-"Failed online conversion service." = "Ошибка службы онлайн-конвертации";
+"Failed online conversion service." = "Ошибка службы онлайн-конвертации.";
 
 /* No comment provided by engineer. */
 "Failed to check portal availability." = "Не удалось проверить доступность портала.";
@@ -670,6 +668,12 @@
 
 /* No comment provided by engineer. */
 "Images" = "Изображения";
+
+/* No comment provided by engineer. */
+"Import File" = "Загрузить файл";
+
+/* No comment provided by engineer. */
+"Import Image" = "Загрузить изображение";
 
 /* Introduction Step Five - Description */
 "In online mode, use real-time co-editing features of %@ to work on documents together with your portal members, share documents and create common storage folders." = "В онлайн-режиме используйте функции совместного редактирования в режиме реального времени %@, чтобы работать над документами вместе с участниками портала, делиться документами и создавать общие папки для хранения.";
@@ -799,14 +803,8 @@
 /* No comment provided by engineer. */
 "My Drive" = "Мой диск";
 
-/* Category title */
-"My rooms" = "Мои комнаты";
-
 /* No comment provided by engineer. */
 "Name is empty" = "Имя не заполнено";
-
-/* No comment provided by engineer. */
-"Needs additional params." = "Нужны дополнительные параметры.";
 
 /* Badge of file in file list */
 "new" = "новое";
@@ -845,7 +843,7 @@
 "No connection" = "Нет подключения";
 
 /* No comment provided by engineer. */
-"No information about the user profile." = "Нет информации о профиле пользователя";
+"No information about the user profile." = "Нет информации о профиле пользователя.";
 
 /* No comment provided by engineer. */
 "No Internet connection" = "Нет соединения с интернетом";
@@ -1015,10 +1013,10 @@
 "Portal Address" = "Адрес портала";
 
 /* No comment provided by engineer. */
-"Portal is unavailable." = "Портал недоступен";
+"Portal is unavailable." = "Портал недоступен.";
 
 /* Share status */
-"Pover user" = "Совместная работа";
+"Power user" = "Опытный пользователь";
 
 /* No comment provided by engineer. */
 "Presentation" = "Презентация";
@@ -1045,9 +1043,6 @@
 "Project Documents" = "В проектах";
 
 /* No comment provided by engineer. */
-"Protected File" = "Защищенный файл";
-
-/* No comment provided by engineer. */
 "Push notifications disabled" = "Push-уведомления отключены";
 
 /* Button title */
@@ -1072,7 +1067,7 @@
 "Rename" = "Переименовать";
 
 /* No comment provided by engineer. */
-"Rename failed." = "Ошибка переименования";
+"Rename failed." = "Ошибка переименования.";
 
 /* No comment provided by engineer. */
 "Rename failed. An object with such a similar name exists." = "Ошибка переименования. Объект с таким именем уже существует.";
@@ -1085,6 +1080,9 @@
 
 /* No comment provided by engineer. */
 "Request canceled" = "Запрос отменен";
+
+/* No comment provided by engineer. */
+"Request Entity Too Large" = "Объект запроса слишком велик";
 
 /* No comment provided by engineer. */
 "Request had insufficient authentication scopes" = "Запрос имеет недостаточные области аутентификации";
@@ -1104,7 +1102,8 @@
 /* Share status */
 "Room admin" = "Администратор группы";
 
-/* DocSpace rooms */
+/* Category title
+   DocSpace rooms */
 "Rooms" = "Комнаты";
 
 /* No comment provided by engineer. */
@@ -1249,6 +1248,9 @@
 /* No comment provided by engineer. */
 "Tab" = "Табуляция";
 
+/* No comment provided by engineer. */
+"Take a Picture" = "Сделать снимок";
+
 /* Data units */
 "Tb" = "Тб";
 
@@ -1284,9 +1286,6 @@
 
 /* No comment provided by engineer. */
 "The link for external\naccess is copied\nto the clipboard" = "Ссылка для внешнего\nдоступа скопирована\nв буфер обмена";
-
-/* No comment provided by engineer. */
-"The ONLYOFFICE Editors module is missing. Please contact support@onlyoffice.com for more information." = "Модуль ONLYOFFICE Editors отсутствует. Пожалуйста, свяжитесь с support@onlyoffice.com для получения дополнительной информации.";
 
 /* No comment provided by engineer. */
 "The parameters are incorrect." = "Некорректные параметры";
@@ -1455,9 +1454,6 @@
 
 /* Caption of the processing */
 "Unpning" = "Открепление";
-
-/* No comment provided by engineer. */
-"Unsupported format." = "Неподдерживаемый формат.";
 
 /* Caption of the process */
 "Uploading" = "Загрузка";

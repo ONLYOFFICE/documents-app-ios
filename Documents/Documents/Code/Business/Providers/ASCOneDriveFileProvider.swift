@@ -2,7 +2,7 @@
 //  ASCOneDriveFileProvider.swift
 //  Documents
 //
-//  Created by Павел Чернышев on 04.05.2021.
+//  Created by Pavel Chernyshev on 04.05.2021.
 //  Copyright © 2021 Ascensio System SIA. All rights reserved.
 //
 
@@ -224,7 +224,7 @@ class ASCOneDriveFileProvider: OneDriveFileProvider {
     }
 }
 
-internal extension URLRequest {
+extension URLRequest {
     mutating func setValue(authentication credential: URLCredential?, with type: AuthenticationType) {
         func base64(_ str: String) -> String {
             let plainData = str.data(using: .utf8)
@@ -256,7 +256,7 @@ internal extension URLRequest {
     }
 }
 
-internal struct FileProviderOneDriveError: FileProviderHTTPError {
+struct FileProviderOneDriveError: FileProviderHTTPError {
     public let code: FileProviderHTTPErrorCode
     public let path: String
     public let serverDescription: String?

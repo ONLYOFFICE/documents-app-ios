@@ -237,13 +237,13 @@ class ASCRootViewController: ASCBaseTabBarController {
 
                 if UserDefaults.standard.bool(forKey: ASCConstants.SettingsKeys.forceCreateNewDocument) {
                     UserDefaults.standard.removeObject(forKey: ASCConstants.SettingsKeys.forceCreateNewDocument)
-                    fileExt = "docx"
+                    fileExt = ASCConstants.FileExtensions.docx
                 } else if UserDefaults.standard.bool(forKey: ASCConstants.SettingsKeys.forceCreateNewSpreadsheet) {
                     UserDefaults.standard.removeObject(forKey: ASCConstants.SettingsKeys.forceCreateNewSpreadsheet)
-                    fileExt = "xlsx"
+                    fileExt = ASCConstants.FileExtensions.xlsx
                 } else if UserDefaults.standard.bool(forKey: ASCConstants.SettingsKeys.forceCreateNewPresentation) {
                     UserDefaults.standard.removeObject(forKey: ASCConstants.SettingsKeys.forceCreateNewPresentation)
-                    fileExt = "pptx"
+                    fileExt = ASCConstants.FileExtensions.pptx
                 }
 
                 guard let fileExtension = fileExt else {

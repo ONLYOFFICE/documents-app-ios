@@ -95,9 +95,6 @@
 "Address is empty" = "Endereço está vazio";
 
 /* No comment provided by engineer. */
-"Admin" = "Administrador";
-
-/* No comment provided by engineer. */
 "All" = "Tudo";
 
 /* No comment provided by engineer. */
@@ -124,7 +121,8 @@
 /* Caption of the process */
 "Applying" = "Aplicar";
 
-/* Button title */
+/* Button title
+   Category title */
 "Archive" = "Arquivos";
 
 /* No comment provided by engineer. */
@@ -138,6 +136,9 @@
 
 /* No comment provided by engineer. */
 "Are you sure you want to delete the account  %@ from this devce?" = "Tem certeza de que deseja excluir a conta %@ deste dispositivo?";
+
+/* No comment provided by engineer. */
+"Are you sure you want to delete the account %@ from this devce?" = "Tem certeza de que deseja excluir a conta %@ deste dispositivo?";
 
 /* No comment provided by engineer. */
 "Are you sure you want to leave this account?" = "Você tem certeza de que deseja sair desta conta?";
@@ -268,6 +269,9 @@
 /* No comment provided by engineer. */
 "Connect Clouds" = "Conectar nuvens";
 
+/* No comment provided by engineer. */
+"Connect Storage" = "Conectar armazenamento";
+
 /* Introduction Step Three - Description */
 "Connect third-party storage\nlike Nextcloud, ownCloud, Yandex Disk and\nothers which use WebDAV protocol." = "Conectar-se a armazenamento de terceiros\ncomo Nextcloud, ownCloud, Yandex Disk e\noutros que usam o protocolo WebDAV.";
 
@@ -300,9 +304,6 @@
 
 /* Description of file operation error */
 "Could not change the directory" = "Não foi possível alterar o diretório";
-
-/* No comment provided by engineer. */
-"Could not convert file to export." = "Não foi possível converter o arquivo para exportação.";
 
 /* Description of file operation error */
 "Could not copy file" = "Não foi possível copiar arquivo";
@@ -353,9 +354,6 @@
 "Could not move file" = "Não foi possível mover o arquivo";
 
 /* No comment provided by engineer. */
-"Could not open editor." = "Não foi possível abrir o editor.";
-
-/* No comment provided by engineer. */
 "Could not open file." = "Não foi possível abrir o arquivo.";
 
 /* No comment provided by engineer. */
@@ -374,7 +372,7 @@
 "Could not write to file" = "Não foi possível gravar no arquivo";
 
 /* No comment provided by engineer. */
-"Couldn't open file" = "Não foi possível abrir o arquivo";
+"Couldn't rename the file" = "Não foi possível renomear o arquivo";
 
 /* No comment provided by engineer. */
 "Couldn't save changes at server. Your modified document is saved in local storage as %@" = "Não foi possível salvar as alterações no servidor. Seu documento modificado é salvo no armazenamento local como %@";
@@ -449,6 +447,9 @@
 "Disconnect third party" = "Desconectar terceiro";
 
 /* No comment provided by engineer. */
+"DocSpace admin" = "Administrador do DocSpace";
+
+/* No comment provided by engineer. */
 "Document" = "Documento";
 
 /* Default title of sample document */
@@ -517,9 +518,6 @@
 
 /* Presentation Viewer */
 "End Slide Show" = "Fim da apresentação de slides";
-
-/* No comment provided by engineer. */
-"Enter a password to open the file." = "Inserir a Senha para Abrir o Arquivo.";
 
 /* placeholder */
 "Enter email" = "Digite o e-mail";
@@ -671,6 +669,12 @@
 /* No comment provided by engineer. */
 "Images" = "Imagens";
 
+/* No comment provided by engineer. */
+"Import File" = "Importar arquivo";
+
+/* No comment provided by engineer. */
+"Import Image" = "Importar imagem";
+
 /* Introduction Step Five - Description */
 "In online mode, use real-time co-editing features of %@ to work on documents together with your portal members, share documents and create common storage folders." = "No modo online, use os recursos de coedição em tempo real do %@ para trabalhar em documentos junto com os membros do portal, compartilhar documentos e criar pastas de armazenamento comuns.";
 
@@ -799,14 +803,8 @@
 /* No comment provided by engineer. */
 "My Drive" = "Minha unidade";
 
-/* Category title */
-"My rooms" = "Minhas salas";
-
 /* No comment provided by engineer. */
 "Name is empty" = "Nome está vazio";
-
-/* No comment provided by engineer. */
-"Needs additional params." = "Precisa de parâmetros adicionais.";
 
 /* Badge of file in file list */
 "new" = "novo";
@@ -1020,6 +1018,9 @@
 /* Share status */
 "Pover user" = "Usuário avançado";
 
+/* Share status */
+"Power user" = "Usuário avançado";
+
 /* No comment provided by engineer. */
 "Presentation" = "Apresentação";
 
@@ -1043,9 +1044,6 @@
 
 /* Category title */
 "Project Documents" = "Documentos do projeto";
-
-/* No comment provided by engineer. */
-"Protected File" = "Arquivo protegido";
 
 /* No comment provided by engineer. */
 "Push notifications disabled" = "Notificações por push desativadas";
@@ -1087,6 +1085,9 @@
 "Request canceled" = "Solicitação cancelada";
 
 /* No comment provided by engineer. */
+"Request Entity Too Large" = "Solicitar entidade muito grande";
+
+/* No comment provided by engineer. */
 "Request had insufficient authentication scopes" = "A solicitação tinha escopos de autenticação insuficientes";
 
 /* No comment provided by engineer. */
@@ -1104,7 +1105,8 @@
 /* Share status */
 "Room admin" = "Administrador da sala";
 
-/* DocSpace rooms */
+/* Category title
+   DocSpace rooms */
 "Rooms" = "Salas";
 
 /* No comment provided by engineer. */
@@ -1249,6 +1251,9 @@
 /* No comment provided by engineer. */
 "Tab" = "Tab";
 
+/* No comment provided by engineer. */
+"Take a Picture" = "Tire uma foto";
+
 /* Data units */
 "Tb" = "Tb";
 
@@ -1284,9 +1289,6 @@
 
 /* No comment provided by engineer. */
 "The link for external\naccess is copied\nto the clipboard" = "O link para acesso externo\né copiado\npara a área de transferência";
-
-/* No comment provided by engineer. */
-"The ONLYOFFICE Editors module is missing. Please contact support@onlyoffice.com for more information." = "O módulo do ONLYOFFICE Editors está ausente. Entre em contato com support@onlyoffice.com para mais informações.";
 
 /* No comment provided by engineer. */
 "The parameters are incorrect." = "Os parâmetros estão incorretos.";
@@ -1455,9 +1457,6 @@
 
 /* Caption of the processing */
 "Unpning" = "Desafixar";
-
-/* No comment provided by engineer. */
-"Unsupported format." = "Formato não suportado.";
 
 /* Caption of the process */
 "Uploading" = "Fazendo upload";

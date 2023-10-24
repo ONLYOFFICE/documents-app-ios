@@ -85,7 +85,7 @@ enum ASCShareAccess: Int, CaseIterable {
         case .editing:
             return NSLocalizedString("Editor", comment: "Share status")
         case .powerUser:
-            return NSLocalizedString("Pover user", comment: "Share status")
+            return NSLocalizedString("Power user", comment: "Share status")
         }
     }
 

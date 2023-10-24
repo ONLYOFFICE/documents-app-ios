@@ -1,8 +1,8 @@
 //
 //  AccountCellModel.swift
-//  Documents-opensource
+//  Documents
 //
-//  Created by Лолита Чернышева on 03.04.2023.
+//  Created by Lolita Chernysheva on 03.04.2023.
 //  Copyright © 2023 Ascensio System SIA. All rights reserved.
 //
 

@@ -49,8 +49,8 @@ class ASCGoogleDriveProvider: ASCFileProviderProtocol & ASCSortableFileProviderP
     var delegate: ASCProviderDelegate?
     var filterController: ASCFiltersControllerProtocol?
 
-    internal var folder: ASCFolder?
-    internal var fetchInfo: [String: Any?]?
+    var folder: ASCFolder?
+    var fetchInfo: [String: Any?]?
 
     private let googleDriveService = GTLRDriveService()
     private var googleUser: GIDGoogleUser?
@@ -893,7 +893,7 @@ class ASCGoogleDriveProvider: ASCFileProviderProtocol & ASCSortableFileProviderP
         var cancel = false
 
         guard let _ = googleUser else {
-            handler?(.end, 1, nil, ErrorType.userUndefined.description, &cancel)
+            handler?(.end, 1, nil, ASCProviderError(msg: ErrorType.userUndefined.description), &cancel)
             return
         }
 
@@ -909,7 +909,7 @@ class ASCGoogleDriveProvider: ASCFileProviderProtocol & ASCSortableFileProviderP
             operationQueue.addOperation {
                 if cancel {
                     DispatchQueue.main.async {
-                        handler?(.end, 1, results, lastError?.localizedDescription, &cancel)
+                        handler?(.end, 1, results, lastError, &cancel)
                     }
                     return
                 }
@@ -927,13 +927,13 @@ class ASCGoogleDriveProvider: ASCFileProviderProtocol & ASCSortableFileProviderP
                         // Delete original
                         self.apiDelete(item: entity) { object, error in
                             DispatchQueue.main.async {
-                                handler?(.progress, Float(index + 1) / Float(items.count), entity, error?.localizedDescription, &cancel)
+                                handler?(.progress, Float(index + 1) / Float(items.count), entity, error, &cancel)
                             }
                             semaphore.signal()
                         }
                     } else {
                         DispatchQueue.main.async {
-                            handler?(.progress, Float(index + 1) / Float(items.count), entity, error?.localizedDescription, &cancel)
+                            handler?(.progress, Float(index + 1) / Float(items.count), entity, error, &cancel)
                         }
                         semaphore.signal()
                     }
@@ -948,7 +948,7 @@ class ASCGoogleDriveProvider: ASCFileProviderProtocol & ASCSortableFileProviderP
                 if items.count == results.count {
                     handler?(.end, 1, results, nil, &cancel)
                 } else {
-                    handler?(.end, 1, results, lastError?.localizedDescription, &cancel)
+                    handler?(.end, 1, results, lastError, &cancel)
                 }
             }
         }
@@ -1187,7 +1187,7 @@ class ASCGoogleDriveProvider: ASCFileProviderProtocol & ASCSortableFileProviderP
                 ASCConstants.FileExtensions.forms.contains(fileExtension)
             let canPreview = canOpenEditor ||
                 ASCConstants.FileExtensions.images.contains(fileExtension) ||
-                fileExtension == "pdf"
+                fileExtension == ASCConstants.FileExtensions.pdf
 
             if canRead {
                 entityActions.insert([.copy, .export])
@@ -1278,7 +1278,7 @@ class ASCGoogleDriveProvider: ASCFileProviderProtocol & ASCSortableFileProviderP
     func preview(file: ASCFile, files: [ASCFile]?, in view: UIView?) {
         let title = file.title
         let fileExt = title.fileExtension().lowercased()
-        let isPdf = fileExt == "pdf"
+        let isPdf = fileExt == ASCConstants.FileExtensions.pdf
         let isImage = ASCConstants.FileExtensions.images.contains(fileExt)
         let isVideo = ASCConstants.FileExtensions.videos.contains(fileExt)
 

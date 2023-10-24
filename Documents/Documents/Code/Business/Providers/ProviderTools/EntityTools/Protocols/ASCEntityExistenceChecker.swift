@@ -1,5 +1,5 @@
 //
-//  EntityExistChecker.swift
+//  ASCEntityExistenceChecker.swift
 //  Documents
 //
 //  Created by Pavel Chernyshev on 04.12.2021.

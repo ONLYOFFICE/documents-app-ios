@@ -34,9 +34,9 @@ class ASCOnlyofficeCategory: ASCCategory {
         case .onlyofficeShare:
             return NSLocalizedString("Shared with Me", comment: "Category title")
         case .onlyofficeRoomShared:
-            return NSLocalizedString("My rooms", comment: "Category title")
+            return NSLocalizedString("Rooms", comment: "Category title")
         case .onlyofficeRoomArchived:
-            return NSLocalizedString("My archived", comment: "Category title")
+            return NSLocalizedString("Archive", comment: "Category title")
         case .onlyofficeCommon:
             return NSLocalizedString("Common Documents", comment: "Category title")
         case .onlyofficeBunch, .onlyofficeProjects:

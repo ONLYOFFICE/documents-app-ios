@@ -1,5 +1,5 @@
 //
-//  ASCCategoriesProviderProtocol.swift
+//  ASCOnlyofficeCategoriesProviderProtocol.swift
 //  Documents
 //
 //  Created by Pavel Chernyshev on 22.04.2021.

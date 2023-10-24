@@ -1,5 +1,5 @@
 //
-//  ASCConnectStorageViewController.swift
+//  ASCConnectPortalThirdPartyViewController.swift
 //  Documents
 //
 //  Created by Alexander Yuzhin on 5/16/17.

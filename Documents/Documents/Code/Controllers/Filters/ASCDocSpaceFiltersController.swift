@@ -72,16 +72,16 @@ class ASCDocSpaceFiltersController: ASCFiltersControllerProtocol {
 
     // MARK: -  state
 
-    internal var tempState: State
-    internal var appliedState: State?
+    var tempState: State
+    var appliedState: State?
 
     // MARK: -  properties
 
-    internal var currentSelectedAuthorFilterType: ApiFilterType?
-    internal var builder: ASCFiltersCollectionViewModelBuilder
-    internal var currentLoading = false
+    var currentSelectedAuthorFilterType: ApiFilterType?
+    var builder: ASCFiltersCollectionViewModelBuilder
+    var currentLoading = false
 
-    internal var usersSectionTitle = FiltersSection.author.localizedString()
+    var usersSectionTitle = FiltersSection.author.localizedString()
 
     private lazy var selectUserViewController: ASCSelectUserViewController = {
         let controller = ASCSelectUserViewController()
@@ -148,7 +148,7 @@ class ASCDocSpaceFiltersController: ASCFiltersControllerProtocol {
         }
     }
 
-    internal func makeFilterParams(state: State) -> [String: Any] {
+    func makeFilterParams(state: State) -> [String: Any] {
         return State.DataType.allCases.reduce([String: Any]()) { params, dataType in
             var params = params
             switch dataType {
@@ -171,7 +171,7 @@ class ASCDocSpaceFiltersController: ASCFiltersControllerProtocol {
         }
     }
 
-    internal func updateViewModel() {
+    func updateViewModel() {
         let usersFilters: [FilterTypeConvirtable] = tempState.hasSelectedMember ? [tempState.memberFilter] : [tempState.meFilter, tempState.memberFilter]
         let viewModel = builder.buildViewModel(
             state: currentLoading ? .loading : .normal,
@@ -193,7 +193,7 @@ class ASCDocSpaceFiltersController: ASCFiltersControllerProtocol {
         filtersViewController.viewModel = viewModel
     }
 
-    internal func buildActions() {
+    func buildActions() {
         buildDidSelectedClosure()
         buildCommonResetButtonClosureBuilder()
         builder.didFilterResetBtnTapped = { [weak self] filterViewModel in
@@ -287,7 +287,7 @@ class ASCDocSpaceFiltersController: ASCFiltersControllerProtocol {
         }
     }
 
-    internal func runPreload() {
+    func runPreload() {
         guard let provider = provider, let folder = folder else { return }
 
         currentLoading = true

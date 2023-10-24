@@ -176,7 +176,7 @@ extension ASCFileProviderProtocol {
     func actions(for entity: ASCEntity?) -> ASCEntityActions { return [] }
     func handle(action: ASCEntityActions, folder: ASCFolder, handler: ASCEntityHandler? = nil) {
         log.error("Handle action \(action.rawValue) for folder \(folder.title) doesn't supported")
-        handler?(.error, folder, "Unsupported handle action")
+        handler?(.error, folder, ASCProviderError(msg: "Unsupported handle action"))
     }
 }
 

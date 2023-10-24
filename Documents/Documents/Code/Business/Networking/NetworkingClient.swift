@@ -47,7 +47,7 @@ class NetworkingClient: NSObject, NetworkingRequestingProtocol {
 
     // MARK: - Internal Properties
 
-    internal var manager = Alamofire.Session()
+    var manager = Alamofire.Session()
     private let queue = DispatchQueue(label: "asc.networking.client.\(String(describing: type(of: NetworkingClient.self)))")
 
     private lazy var configuration: URLSessionConfiguration = {
@@ -57,7 +57,8 @@ class NetworkingClient: NSObject, NetworkingRequestingProtocol {
     }(URLSessionConfiguration.default)
 
     public var headers: HTTPHeaders = .default
-    internal let defaultTimeoutIntervalForResource: TimeInterval = 30
+    let defaultTimeoutIntervalForResource: TimeInterval = 30
+    var sessions: [Alamofire.Session] = []
 
     // MARK: - init
 
@@ -81,8 +82,10 @@ class NetworkingClient: NSObject, NetworkingRequestingProtocol {
     }
 
     public func cancelAll() {
-        manager.session.getAllTasks { tasks in
-            tasks.forEach { $0.cancel() }
+        (sessions + [manager]).forEach { manager in
+            manager.session.getAllTasks { tasks in
+                tasks.forEach { $0.cancel() }
+            }
         }
     }
 
@@ -156,8 +159,22 @@ class NetworkingClient: NSObject, NetworkingRequestingProtocol {
 
         let params: Parameters = [:]
 
-        manager.session.configuration.timeoutIntervalForResource = 600
-        manager.upload(multipartFormData: { data in
+        let uploadManager = Alamofire.Session(
+            configuration: {
+                $0.timeoutIntervalForRequest = 600
+                $0.timeoutIntervalForResource = 600
+                return $0
+            }(URLSessionConfiguration.default),
+            interceptor: manager.interceptor,
+            serverTrustManager: manager.serverTrustManager ?? ServerTrustManager(
+                allHostsMustBeEvaluated: false,
+                evaluators: [:]
+            )
+        )
+
+        sessions.append(uploadManager)
+
+        uploadManager.upload(multipartFormData: { data in
             for (key, value) in params {
                 if let valueData = (value as? String)?.data(using: String.Encoding.utf8) {
                     data.append(valueData, withName: key)
@@ -167,6 +184,7 @@ class NetworkingClient: NSObject, NetworkingRequestingProtocol {
         }, to: url,
         method: endpoint.method,
         headers: headers)
+            .validate()
             .uploadProgress { progress in
                 log.debug("Upload Progress: \(progress.fractionCompleted)")
                 DispatchQueue.main.async {
@@ -174,8 +192,6 @@ class NetworkingClient: NSObject, NetworkingRequestingProtocol {
                 }
             }
             .responseData(queue: queue) { response in
-                self.manager.session.configuration.timeoutIntervalForResource = self.defaultTimeoutIntervalForResource
-
                 switch response.result {
                 case let .success(value):
                     do {
@@ -194,6 +210,9 @@ class NetworkingClient: NSObject, NetworkingRequestingProtocol {
                         completion?(nil, 1, err)
                     }
                 }
+                if let managerIndex = self.sessions.firstIndex(where: { $0 === uploadManager }) {
+                    self.sessions.remove(at: managerIndex)
+                }
             }
     }
 
@@ -211,29 +230,48 @@ class NetworkingClient: NSObject, NetworkingRequestingProtocol {
             (to, [.removePreviousFile, .createIntermediateDirectories])
         }
 
-        manager.session.configuration.timeoutIntervalForResource = 600
-        manager.download(url, to: destination)
-            .downloadProgress { progress in
-                log.debug("Download Progress: \(progress.fractionCompleted)")
-                DispatchQueue.main.async {
-                    completion?(nil, progress.fractionCompleted, nil)
-                }
-            }
-            .responseData { response in
-                self.manager.session.configuration.timeoutIntervalForResource = self.defaultTimeoutIntervalForResource
+        let downloadManager = Alamofire.Session(
+            configuration: {
+                $0.timeoutIntervalForRequest = 600
+                $0.timeoutIntervalForResource = 600
+                return $0
+            }(URLSessionConfiguration.default),
+            interceptor: manager.interceptor,
+            serverTrustManager: manager.serverTrustManager ?? ServerTrustManager(
+                allHostsMustBeEvaluated: false,
+                evaluators: [:]
+            )
+        )
 
-                switch response.result {
-                case let .success(data):
-                    DispatchQueue.main.async {
-                        completion?(data, 1, nil)
-                    }
-                case let .failure(error):
-                    let err = self.parseError(response.value, error)
-                    DispatchQueue.main.async {
-                        completion?(nil, 1, err)
-                    }
+        sessions.append(downloadManager)
+
+        downloadManager.download(
+            url,
+            to: destination
+        )
+        .downloadProgress { progress in
+            log.debug("Download Progress: \(progress.fractionCompleted)")
+            DispatchQueue.main.async {
+                completion?(nil, progress.fractionCompleted, nil)
+            }
+        }
+        .validate()
+        .responseData { response in
+            switch response.result {
+            case let .success(data):
+                DispatchQueue.main.async {
+                    completion?(data, 1, nil)
+                }
+            case let .failure(error):
+                let err = self.parseError(response.value, error)
+                DispatchQueue.main.async {
+                    completion?(nil, 1, err)
                 }
             }
+            if let managerIndex = self.sessions.firstIndex(where: { $0 === downloadManager }) {
+                self.sessions.remove(at: managerIndex)
+            }
+        }
     }
 
     func parseError(_ data: Data?, _ error: AFError? = nil) -> NetworkingError {

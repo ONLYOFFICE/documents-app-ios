@@ -1,6 +1,6 @@
 //
 //  ASCAppSettings.swift
-//  Documents-opensource
+//  Documents
 //
 //  Created by Alexander Yuzhin on 29.05.2023.
 //  Copyright © 2023 Ascensio System SIA. All rights reserved.

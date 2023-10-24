@@ -2,7 +2,7 @@
 //  ASCSelectGroupViewController.swift
 //  Documents
 //
-//  Created by Лолита Чернышева on 19.04.2022.
+//  Created by Lolita Chernysheva on 19.04.2022.
 //  Copyright © 2022 Ascensio System SIA. All rights reserved.
 //
 

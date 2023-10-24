@@ -82,13 +82,18 @@ class OnlyofficeApiClient: NetworkingClient {
     override func parseError(_ data: Data?, _ error: AFError? = nil) -> NetworkingError {
         let networkingError = super.parseError(data, error)
 
-        if let error = error {
+        if let error {
             switch error {
             case let .responseValidationFailed(reason):
                 switch reason {
                 case let .unacceptableStatusCode(code):
-                    if code == 401 {
+                    switch code {
+                    case 401:
                         return .apiError(error: OnlyofficeServerError.unauthorized)
+                    case 413:
+                        return .apiError(error: OnlyofficeServerError.requestTooLarge)
+                    default:
+                        break
                     }
                 default:
                     break
@@ -98,7 +103,7 @@ class OnlyofficeApiClient: NetworkingClient {
             }
         }
 
-        if let data = data {
+        if let data {
             do {
                 let json = try JSON(data: data)
                 // TODO: extend custom error
@@ -160,8 +165,24 @@ class OnlyofficeApiClient: NetworkingClient {
             }
         )
 
-        manager.session.configuration.timeoutIntervalForResource = 600
-        manager.download(
+        let adapter = OnlyofficeTokenAdapter(accessToken: token ?? "")
+        let downloadManager = Alamofire.Session(
+            configuration: {
+                $0.timeoutIntervalForRequest = 600
+                $0.timeoutIntervalForResource = 600
+                $0.headers = .default
+                return $0
+            }(URLSessionConfiguration.default),
+            interceptor: Interceptor(adapters: [adapter]),
+            serverTrustManager: ServerTrustManager(
+                allHostsMustBeEvaluated: false,
+                evaluators: [:]
+            )
+        )
+
+        sessions.append(downloadManager)
+
+        downloadManager.download(
             url,
             headers: headers,
             to: destination
@@ -173,9 +194,8 @@ class OnlyofficeApiClient: NetworkingClient {
             }
         }
         .redirect(using: redirectHandler)
+        .validate()
         .responseData(queue: queue) { response in
-            self.manager.session.configuration.timeoutIntervalForResource = self.defaultTimeoutIntervalForResource
-
             switch response.result {
             case let .success(data):
                 DispatchQueue.main.async {
@@ -186,6 +206,10 @@ class OnlyofficeApiClient: NetworkingClient {
                 DispatchQueue.main.async {
                     processing(nil, 1, err)
                 }
+            }
+
+            if let managerIndex = self.sessions.firstIndex(where: { $0 === downloadManager }) {
+                self.sessions.remove(at: managerIndex)
             }
         }
     }
@@ -225,9 +249,24 @@ class OnlyofficeApiClient: NetworkingClient {
             urlComponents.queryItems = queryItems
 
             if let uploadUrl = urlComponents.url {
-                manager.session.configuration.timeoutIntervalForResource = 600
+                let adapter = OnlyofficeTokenAdapter(accessToken: token ?? "")
+                let uploadManager = Alamofire.Session(
+                    configuration: {
+                        $0.timeoutIntervalForRequest = 600
+                        $0.timeoutIntervalForResource = 600
+                        $0.headers = .default
+                        return $0
+                    }(URLSessionConfiguration.default),
+                    interceptor: Interceptor(adapters: [adapter]),
+                    serverTrustManager: ServerTrustManager(
+                        allHostsMustBeEvaluated: false,
+                        evaluators: [:]
+                    )
+                )
 
-                manager.upload(
+                sessions.append(uploadManager)
+
+                uploadManager.upload(
                     data,
                     to: uploadUrl,
                     method: endpoint.method,
@@ -241,8 +280,6 @@ class OnlyofficeApiClient: NetworkingClient {
                 }
                 .validate(statusCode: 200 ..< 300)
                 .responseData(queue: queue) { response in
-                    self.manager.session.configuration.timeoutIntervalForResource = self.defaultTimeoutIntervalForResource
-
                     switch response.result {
                     case let .success(value):
                         do {
@@ -260,6 +297,10 @@ class OnlyofficeApiClient: NetworkingClient {
                         DispatchQueue.main.async {
                             processing(nil, 1, err)
                         }
+                    }
+
+                    if let managerIndex = self.sessions.firstIndex(where: { $0 === uploadManager }) {
+                        self.sessions.remove(at: managerIndex)
                     }
                 }
             }

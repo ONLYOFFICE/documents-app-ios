@@ -52,10 +52,10 @@ class ASCDropboxProvider: ASCFileProviderProtocol & ASCSortableFileProviderProto
     var filterController: ASCFiltersControllerProtocol?
 
     private var apiClient: DropboxApiClient?
-    internal var provider: DropboxFileProvider?
+    var provider: DropboxFileProvider?
 
-    internal var folder: ASCFolder?
-    internal var fetchInfo: [String: Any?]?
+    var folder: ASCFolder?
+    var fetchInfo: [String: Any?]?
 
     fileprivate lazy var providerOperationDelegate = ASCDropboxProviderDelegate()
     private var operationProcess: Progress?
@@ -889,7 +889,7 @@ class ASCDropboxProvider: ASCFileProviderProtocol & ASCSortableFileProviderProto
 
     func chechTransfer(items: [ASCEntity], to folder: ASCFolder, handler: ASCEntityHandler? = nil) {
         guard let provider = provider else {
-            handler?(.error, nil, ASCProviderError(msg: errorProviderUndefined).localizedDescription)
+            handler?(.error, nil, ASCProviderError(msg: errorProviderUndefined))
             return
         }
 
@@ -928,7 +928,7 @@ class ASCDropboxProvider: ASCFileProviderProtocol & ASCSortableFileProviderProto
         var cancel = false
 
         guard let provider = provider else {
-            handler?(.end, 1, nil, ASCProviderError(msg: errorProviderUndefined).localizedDescription, &cancel)
+            handler?(.end, 1, nil, ASCProviderError(msg: errorProviderUndefined), &cancel)
             return
         }
 
@@ -944,7 +944,7 @@ class ASCDropboxProvider: ASCFileProviderProtocol & ASCSortableFileProviderProto
             operationQueue.addOperation {
                 if cancel {
                     DispatchQueue.main.async {
-                        handler?(.end, 1, results, lastError?.localizedDescription, &cancel)
+                        handler?(.end, 1, results, lastError, &cancel)
                     }
                     return
                 }
@@ -962,7 +962,7 @@ class ASCDropboxProvider: ASCFileProviderProtocol & ASCSortableFileProviderProto
                             results.append(entity)
                         }
                         DispatchQueue.main.async {
-                            handler?(.progress, Float(index) / Float(items.count), entity, error?.localizedDescription, &cancel)
+                            handler?(.progress, Float(index) / Float(items.count), entity, error, &cancel)
                         }
                         semaphore.signal()
                     })
@@ -974,7 +974,7 @@ class ASCDropboxProvider: ASCFileProviderProtocol & ASCSortableFileProviderProto
                             results.append(entity)
                         }
                         DispatchQueue.main.async {
-                            handler?(.progress, Float(index + 1) / Float(items.count), entity, error?.localizedDescription, &cancel)
+                            handler?(.progress, Float(index + 1) / Float(items.count), entity, error, &cancel)
                         }
                         semaphore.signal()
                     })
@@ -988,7 +988,7 @@ class ASCDropboxProvider: ASCFileProviderProtocol & ASCSortableFileProviderProto
                 if items.count == results.count {
                     handler?(.end, 1, results, nil, &cancel)
                 } else {
-                    handler?(.end, 1, results, lastError?.localizedDescription, &cancel)
+                    handler?(.end, 1, results, lastError, &cancel)
                 }
             }
         }
@@ -1034,7 +1034,7 @@ class ASCDropboxProvider: ASCFileProviderProtocol & ASCSortableFileProviderProto
                 ASCConstants.FileExtensions.forms.contains(fileExtension)
             let canPreview = canOpenEditor ||
                 ASCConstants.FileExtensions.images.contains(fileExtension) ||
-                fileExtension == "pdf"
+                fileExtension == ASCConstants.FileExtensions.pdf
 
             if canRead {
                 entityActions.insert([.copy, .export])
@@ -1125,7 +1125,7 @@ class ASCDropboxProvider: ASCFileProviderProtocol & ASCSortableFileProviderProto
     func preview(file: ASCFile, files: [ASCFile]?, in view: UIView?) {
         let title = file.title
         let fileExt = title.fileExtension().lowercased()
-        let isPdf = fileExt == "pdf"
+        let isPdf = fileExt == ASCConstants.FileExtensions.pdf
         let isImage = ASCConstants.FileExtensions.images.contains(fileExt)
         let isVideo = ASCConstants.FileExtensions.videos.contains(fileExt)
 

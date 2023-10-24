@@ -1,0 +1,5 @@
+.idea/
+.svn
+.DS_Store
+Thumbs.db
+*.swift

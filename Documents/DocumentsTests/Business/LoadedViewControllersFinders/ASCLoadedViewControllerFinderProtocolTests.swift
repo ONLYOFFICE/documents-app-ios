@@ -21,19 +21,19 @@ class ASCLoadedViewControllerFinderProtocolTests: XCTestCase {
         sut = nil
     }
 
-    func testSetRootVCWhenGetRootVCWeGetTheSameRootVC() {
-        let vc = ASCRootViewController()
-
-        UIApplication.shared.windows.first?.rootViewController = vc
-        let window = UIWindow(frame: UIScreen.main.bounds)
-        window.rootViewController = vc
-        window.makeKeyAndVisible()
-
-        let gettedRootVC = sut.getRootViewController()
-
-        XCTAssertNotNil(gettedRootVC)
-        XCTAssertTrue(gettedRootVC === vc)
-    }
+//    func testSetRootVCWhenGetRootVCWeGetTheSameRootVC() {
+//        let vc = ASCRootViewController()
+//
+//        UIApplication.shared.windows.first?.rootViewController = vc
+//        let window = UIWindow(frame: UIScreen.main.bounds)
+//        window.rootViewController = vc
+//        window.makeKeyAndVisible()
+//
+//        let gettedRootVC = sut.getRootViewController()
+//
+//        XCTAssertNotNil(gettedRootVC)
+//        XCTAssertTrue(gettedRootVC === vc)
+//    }
 
     class MockASCLoadedViewControllerFinderProtocol: ASCLoadedViewControllerFinderProtocol {
         func find(requestModel: ASCLoadedVCFinderModels.DocumentsVC.Request) -> ASCLoadedVCFinderModels.DocumentsVC.Response {

@@ -2,7 +2,7 @@
 <xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="1.2" xsi:schemaLocation="urn:oasis:names:tc:xliff:document:1.2 http://docs.oasis-open.org/xliff/v1.2/os/xliff-core-1.2-strict.xsd">
   <file original="Documents/Base.lproj/ConnectStorage.storyboard" source-language="en" target-language="es" datatype="plaintext">
     <header>
-      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="14.3" build-num="14E222b"/>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="15.0" build-num="15A240d"/>
     </header>
     <body>
       <trans-unit id="1hg-GO-WNq.text" xml:space="preserve">
@@ -74,7 +74,7 @@
   </file>
   <file original="Documents/Base.lproj/CreatePortal.storyboard" source-language="en" target-language="es" datatype="plaintext">
     <header>
-      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="14.3" build-num="14E222b"/>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="15.0" build-num="15A240d"/>
     </header>
     <body>
       <trans-unit id="BMv-HP-hD2.normalTitle" xml:space="preserve">
@@ -160,7 +160,7 @@ start using your office</source>
   </file>
   <file original="Documents/Base.lproj/Intro.storyboard" source-language="en" target-language="es" datatype="plaintext">
     <header>
-      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="14.3" build-num="14E222b"/>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="15.0" build-num="15A240d"/>
     </header>
     <body>
       <trans-unit id="De8-tD-APT.text" xml:space="preserve">
@@ -182,7 +182,7 @@ start using your office</source>
   </file>
   <file original="Documents/Base.lproj/Localizable.stringsdict" source-language="en" target-language="es" datatype="plaintext">
     <header>
-      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="14.3" build-num="14E222b"/>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="15.0" build-num="15A240d"/>
     </header>
     <body>
       <trans-unit id="/%d selected:dict/NSStringLocalizedFormatKey:dict/:string" xml:space="preserve">
@@ -292,7 +292,7 @@ start using your office</source>
       </trans-unit>
       <trans-unit id="/Delete %lu Folder and %lu File:dict/lu_files:dict/zero:dict/:string" xml:space="preserve">
         <source/>
-        <target/>
+        <target state="needs-translation"/>
         <note/>
       </trans-unit>
       <trans-unit id="/Delete %lu Folder and %lu File:dict/lu_folders:dict/one:dict/:string" xml:space="preserve">
@@ -329,7 +329,7 @@ start using your office</source>
   </file>
   <file original="Documents/Base.lproj/Login.storyboard" source-language="en" target-language="es" datatype="plaintext">
     <header>
-      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="14.3" build-num="14E222b"/>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="15.0" build-num="15A240d"/>
     </header>
     <body>
       <trans-unit id="0X2-Xg-z5B.text" xml:space="preserve">
@@ -570,7 +570,7 @@ de dos factores</target>
   </file>
   <file original="Documents/Base.lproj/Main.storyboard" source-language="en" target-language="es" datatype="plaintext">
     <header>
-      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="14.3" build-num="14E222b"/>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="15.0" build-num="15A240d"/>
     </header>
     <body>
       <trans-unit id="0Hf-aP-smp.text" xml:space="preserve">
@@ -722,7 +722,7 @@ de dos factores</target>
   </file>
   <file original="Documents/Base.lproj/Settings.storyboard" source-language="en" target-language="es" datatype="plaintext">
     <header>
-      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="14.3" build-num="14E222b"/>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="15.0" build-num="15A240d"/>
     </header>
     <body>
       <trans-unit id="0DJ-uV-iju.title" xml:space="preserve">
@@ -803,7 +803,7 @@ Nota: Si Usted olvida el código de acceso, necesitará eliminar e instalar la a
   </file>
   <file original="Documents/Base.lproj/Sort.storyboard" source-language="en" target-language="es" datatype="plaintext">
     <header>
-      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="14.3" build-num="14E222b"/>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="15.0" build-num="15A240d"/>
     </header>
     <body>
       <trans-unit id="HjM-la-pDc.text" xml:space="preserve">
@@ -830,7 +830,7 @@ Nota: Si Usted olvida el código de acceso, necesitará eliminar e instalar la a
   </file>
   <file original="Documents/Base.lproj/Transfer.storyboard" source-language="en" target-language="es" datatype="plaintext">
     <header>
-      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="14.3" build-num="14E222b"/>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="15.0" build-num="15A240d"/>
     </header>
     <body>
       <trans-unit id="9YY-0H-nww.text" xml:space="preserve">
@@ -867,7 +867,7 @@ Nota: Si Usted olvida el código de acceso, necesitará eliminar e instalar la a
   </file>
   <file original="Documents/Base.lproj/UserProfile.storyboard" source-language="en" target-language="es" datatype="plaintext">
     <header>
-      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="14.3" build-num="14E222b"/>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="15.0" build-num="15A240d"/>
     </header>
     <body>
       <trans-unit id="1S2-Q7-5vL.text" xml:space="preserve">
@@ -922,41 +922,9 @@ Nota: Si Usted olvida el código de acceso, necesitará eliminar e instalar la a
       </trans-unit>
     </body>
   </file>
-  <file original="Documents/Code/Controllers/CreateEntity/Views/Base.lproj/ASCCreateEntityView.xib" source-language="en" target-language="es" datatype="plaintext">
-    <header>
-      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="14.3" build-num="14E222b"/>
-    </header>
-    <body>
-      <trans-unit id="0TH-k4-z5u.normalTitle" xml:space="preserve">
-        <source>New Folder</source>
-        <target>Nueva carpeta</target>
-        <note>Class = "UIButton"; normalTitle = "New Folder"; ObjectID = "0TH-k4-z5u";</note>
-      </trans-unit>
-      <trans-unit id="2aV-hB-7Nt.normalTitle" xml:space="preserve">
-        <source>Take a picture</source>
-        <target>Tomar una foto</target>
-        <note>Class = "UIButton"; normalTitle = "Take a picture"; ObjectID = "2aV-hB-7Nt";</note>
-      </trans-unit>
-      <trans-unit id="IU2-I1-b4Q.normalTitle" xml:space="preserve">
-        <source>Import Image</source>
-        <target>Importar imagen</target>
-        <note>Class = "UIButton"; normalTitle = "Import Image"; ObjectID = "IU2-I1-b4Q";</note>
-      </trans-unit>
-      <trans-unit id="wdt-5y-x9j.normalTitle" xml:space="preserve">
-        <source>Import File</source>
-        <target>Importar archivo</target>
-        <note>Class = "UIButton"; normalTitle = "Import File"; ObjectID = "wdt-5y-x9j";</note>
-      </trans-unit>
-      <trans-unit id="ziC-q7-ky6.normalTitle" xml:space="preserve">
-        <source>Connect Storage</source>
-        <target>Conectar almacenamiento</target>
-        <note>Class = "UIButton"; normalTitle = "Connect Storage"; ObjectID = "ziC-q7-ky6";</note>
-      </trans-unit>
-    </body>
-  </file>
   <file original="Documents/Code/Vendor/PasscodeLock/Base.lproj/PasscodeLock.strings" source-language="en" target-language="es" datatype="plaintext">
     <header>
-      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="14.3" build-num="14E222b"/>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="15.0" build-num="15A240d"/>
     </header>
     <body>
       <trans-unit id="PasscodeLockChangeDescription" xml:space="preserve">
@@ -1028,7 +996,7 @@ Nota: Si Usted olvida el código de acceso, necesitará eliminar e instalar la a
   </file>
   <file original="Documents/Code/Vendor/PasscodeLock/Views/Base.lproj/PasscodeLockView.xib" source-language="en" target-language="es" datatype="plaintext">
     <header>
-      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="14.3" build-num="14E222b"/>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="15.0" build-num="15A240d"/>
     </header>
     <body>
       <trans-unit id="0CR-0R-0Nr.normalTitle" xml:space="preserve">
@@ -1110,7 +1078,7 @@ Nota: Si Usted olvida el código de acceso, necesitará eliminar e instalar la a
   </file>
   <file original="Documents/en.lproj/Documents-InfoPlist.strings" source-language="en" target-language="es" datatype="plaintext">
     <header>
-      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="14.3" build-num="14E222b"/>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="15.0" build-num="15A240d"/>
     </header>
     <body>
       <trans-unit id="CFBundleName" xml:space="preserve">
@@ -1167,7 +1135,7 @@ Nota: Si Usted olvida el código de acceso, necesitará eliminar e instalar la a
   </file>
   <file original="Documents/en.lproj/Localizable.strings" source-language="en" target-language="es" datatype="plaintext">
     <header>
-      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="14.3" build-num="14E222b"/>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="15.0" build-num="15A240d"/>
     </header>
     <body>
       <trans-unit id="%d selected" xml:space="preserve">
@@ -1200,17 +1168,17 @@ Nota: Si Usted olvida el código de acceso, necesitará eliminar e instalar la a
         <target>%1$lu objetos con el mismo nombre ya existen en la carpeta '%2$@'. ¿Sobrescribir los objetos?</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
-      <trans-unit id="&lt;p&gt;Use the password created in &lt;a href=&quot;https://yandex.ru/id/about&quot;&gt;Yandex ID&lt;/a&gt;.&lt;/br&gt;More detailed connection instructions can be found in the &lt;a href=&quot;https://yandex.ru/support/disk-desktop/webdav-app-passwords.html?lang=ru&quot;&gt;help&lt;/a&gt;.&lt;/p&gt;" xml:space="preserve">
+      <trans-unit id="&lt;p>Use the password created in &lt;a href=&quot;https://yandex.ru/id/about&quot;>Yandex ID&lt;/a>.&lt;/br>More detailed connection instructions can be found in the &lt;a href=&quot;https://yandex.ru/support/disk-desktop/webdav-app-passwords.html?lang=ru&quot;>help&lt;/a>.&lt;/p>" xml:space="preserve">
         <source>&lt;p&gt;Use the password created in &lt;a href="https://yandex.ru/id/about"&gt;Yandex ID&lt;/a&gt;.&lt;/br&gt;More detailed connection instructions can be found in the &lt;a href="https://yandex.ru/support/disk-desktop/webdav-app-passwords.html?lang=ru"&gt;help&lt;/a&gt;.&lt;/p&gt;</source>
         <target>&lt;p&gt;Utilice la contraseña creada en &lt;a href="https://yandex.ru/id/about"&gt;Yandex ID&lt;/a&gt;.&lt;/br&gt;Puede encontrar instrucciones de conexión más detalladas en la &lt;a href="https://yandex.ru/support/disk-desktop/webdav-app-passwords.html?lang=ru"&gt;ayuda&lt;/a&gt;.&lt;/p&gt;</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
-      <trans-unit id="&lt;p&gt;Use the password created in &lt;a href=&quot;https://yandex.ru/id/about&quot;&gt;Yandex ID&lt;/a&gt;.&lt;/p&gt;&lt;p&gt;More detailed connection instructions can be found in the &lt;a href=&quot;https://yandex.ru/support/disk-desktop/webdav-app-passwords.html?lang=ru&quot;&gt;help&lt;/a&gt;.&lt;/p&gt;" xml:space="preserve">
+      <trans-unit id="&lt;p>Use the password created in &lt;a href=&quot;https://yandex.ru/id/about&quot;>Yandex ID&lt;/a>.&lt;/p>&lt;p>More detailed connection instructions can be found in the &lt;a href=&quot;https://yandex.ru/support/disk-desktop/webdav-app-passwords.html?lang=ru&quot;>help&lt;/a>.&lt;/p>" xml:space="preserve">
         <source>&lt;p&gt;Use the password created in &lt;a href="https://yandex.ru/id/about"&gt;Yandex ID&lt;/a&gt;.&lt;/p&gt;&lt;p&gt;More detailed connection instructions can be found in the &lt;a href="https://yandex.ru/support/disk-desktop/webdav-app-passwords.html?lang=ru"&gt;help&lt;/a&gt;.&lt;/p&gt;</source>
         <target>&lt;p&gt;Utilice la contraseña creada en &lt;a href="https://yandex.ru/id/about"&gt;Yandex ID&lt;/a&gt;.&lt;/p&gt;&lt;p&gt;Puede encontrar instrucciones de conexión más detalladas en la &lt;a href="https://yandex.ru/support/disk-desktop/webdav-app-passwords.html?lang=ru"&gt;ayuda&lt;/a&gt;.&lt;/p&gt;</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
-      <trans-unit id="&lt;p&gt;You must have a paid version of the player to use this service.&lt;/p&gt;&lt;p&gt;If you have activated double authentication, please generate a CDM application from the Infomaniak manager. &lt;a href=&quot;https://www.infomaniak.com/en/support/faq/1940/enable-two-step-verification&quot;&gt;More...&lt;/a&gt;&lt;/p&gt;" xml:space="preserve">
+      <trans-unit id="&lt;p>You must have a paid version of the player to use this service.&lt;/p>&lt;p>If you have activated double authentication, please generate a CDM application from the Infomaniak manager. &lt;a href=&quot;https://www.infomaniak.com/en/support/faq/1940/enable-two-step-verification&quot;>More...&lt;/a>&lt;/p>" xml:space="preserve">
         <source>&lt;p&gt;You must have a paid version of the player to use this service.&lt;/p&gt;&lt;p&gt;If you have activated double authentication, please generate a CDM application from the Infomaniak manager. &lt;a href="https://www.infomaniak.com/en/support/faq/1940/enable-two-step-verification"&gt;More...&lt;/a&gt;&lt;/p&gt;</source>
         <target>&lt;p&gt;Debe disponer de una versión de pago del reproductor para utilizar este servicio.&lt;/p&gt;&lt;p&gt;Si usted activó la autenticación doble, genere una aplicación CDM desde el gestor de Infomaniak. &lt;a href="https://www.infomaniak.com/en/support/faq/1940/enable-two-step-verification"&gt;Más...&lt;/a&gt;&lt;/p&gt;</target>
         <note>No comment provided by engineer.</note>
@@ -1327,11 +1295,6 @@ leer, revisar o editar documentos.</target>
         <target>La dirección está vacía</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
-      <trans-unit id="Admin" xml:space="preserve">
-        <source>Admin</source>
-        <target>Administrador</target>
-        <note>No comment provided by engineer.</note>
-      </trans-unit>
       <trans-unit id="All" xml:space="preserve">
         <source>All</source>
         <target>Todo</target>
@@ -1380,7 +1343,8 @@ leer, revisar o editar documentos.</target>
       <trans-unit id="Archive" xml:space="preserve">
         <source>Archive</source>
         <target>Archivo</target>
-        <note>Button title</note>
+        <note>Button title
+   Category title</note>
       </trans-unit>
       <trans-unit id="Archives" xml:space="preserve">
         <source>Archives</source>
@@ -1405,6 +1369,11 @@ leer, revisar o editar documentos.</target>
       <trans-unit id="Are you sure you want to delete the account  %@ from this devce?" xml:space="preserve">
         <source>Are you sure you want to delete the account %@ from this device?</source>
         <target>¿Está seguro de que desea eliminar la cuenta %@ de este dispositivo?</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Are you sure you want to delete the account %@ from this devce?" xml:space="preserve">
+        <source>Are you sure you want to delete the account %@ from this devce?</source>
+        <target state="translated">¿Está seguro de que desea eliminar la cuenta %@ de este dispositivo?</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Author" xml:space="preserve">
@@ -1577,6 +1546,11 @@ leer, revisar o editar documentos.</target>
         <target>Conectar nubes</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
+      <trans-unit id="Connect Storage" xml:space="preserve">
+        <source>Connect Storage</source>
+        <target state="translated">Conectar almacenamiento</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
       <trans-unit id="Connect third-party storage&#10;like Nextcloud, ownCloud, Yandex Disk and&#10;others which use WebDAV protocol." xml:space="preserve">
         <source>Connect third-party storage
 like Nextcloud, ownCloud, Yandex Disk and
@@ -1635,11 +1609,6 @@ otros que utilizan el protocolo WebDAV.</target>
         <source>Could not change the directory</source>
         <target>No se puede cambiar el directorio</target>
         <note>Description of file operation error</note>
-      </trans-unit>
-      <trans-unit id="Could not convert file to export." xml:space="preserve">
-        <source>Could not convert file to export.</source>
-        <target>No se puede convertir el archivo para exportar.</target>
-        <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Could not copy file" xml:space="preserve">
         <source>Could not copy file</source>
@@ -1721,11 +1690,6 @@ otros que utilizan el protocolo WebDAV.</target>
         <target>No se puede mover un archivo</target>
         <note>Description of file operation error</note>
       </trans-unit>
-      <trans-unit id="Could not open editor." xml:space="preserve">
-        <source>Could not open editor.</source>
-        <target>No se puede abrir el editor.</target>
-        <note>No comment provided by engineer.</note>
-      </trans-unit>
       <trans-unit id="Could not open file." xml:space="preserve">
         <source>Could not open file.</source>
         <target>No se puede abrir el archivo.</target>
@@ -1756,9 +1720,9 @@ otros que utilizan el protocolo WebDAV.</target>
         <target>No se puede escribir en el archivo</target>
         <note>Description of file operation error</note>
       </trans-unit>
-      <trans-unit id="Couldn't open file" xml:space="preserve">
-        <source>Couldn't open file</source>
-        <target>No se pudo abrir el archivo</target>
+      <trans-unit id="Couldn't rename the file" xml:space="preserve">
+        <source>Couldn't rename the file</source>
+        <target state="translated">No se ha podido renombrar el archivo</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Couldn't save changes at server. Your modified document is saved in local storage as %@" xml:space="preserve">
@@ -1881,6 +1845,11 @@ otros que utilizan el protocolo WebDAV.</target>
         <target>Desconectar el tercero</target>
         <note>Button title</note>
       </trans-unit>
+      <trans-unit id="DocSpace admin" xml:space="preserve">
+        <source>DocSpace admin</source>
+        <target state="translated">Administrador de DocSpace</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
       <trans-unit id="Document" xml:space="preserve">
         <source>Document</source>
         <target>Documento</target>
@@ -2000,11 +1969,6 @@ otros que utilizan el protocolo WebDAV.</target>
       <trans-unit id="Enter Portal Address" xml:space="preserve">
         <source>Enter Portal Address</source>
         <target>Introduzca la dirección del portal</target>
-        <note>No comment provided by engineer.</note>
-      </trans-unit>
-      <trans-unit id="Enter a password to open the file." xml:space="preserve">
-        <source>Enter a password to open the file.</source>
-        <target>Escriba la contraseña para abrir el archive.</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Enter email" xml:space="preserve">
@@ -2222,6 +2186,16 @@ otros que utilizan el protocolo WebDAV.</target>
         <target>Imágenes</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
+      <trans-unit id="Import File" xml:space="preserve">
+        <source>Import File</source>
+        <target state="translated">Importar archivo</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Import Image" xml:space="preserve">
+        <source>Import Image</source>
+        <target state="translated">Importar imagen</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
       <trans-unit id="In online mode, use real-time co-editing features of %@ to work on documents together with your portal members, share documents and create common storage folders." xml:space="preserve">
         <source>In online mode, use real-time co-editing features of %@ to work on documents together with your portal members, share documents and create common storage folders.</source>
         <target>Use las opciones de co-edición de %@ en el tiempo real en el modo en línea para trabajar con documentos junto con otros miembros de portal, comparta documentos y cree carpetas de almacenamiento.</target>
@@ -2425,19 +2399,9 @@ to the clipboard</source>
         <target>Mis archivos</target>
         <note>Category title</note>
       </trans-unit>
-      <trans-unit id="My rooms" xml:space="preserve">
-        <source>My rooms</source>
-        <target>Mis salas</target>
-        <note>Category title</note>
-      </trans-unit>
       <trans-unit id="Name is empty" xml:space="preserve">
         <source>Name is empty</source>
         <target>El nombre está vacío</target>
-        <note>No comment provided by engineer.</note>
-      </trans-unit>
-      <trans-unit id="Needs additional params." xml:space="preserve">
-        <source>Needs additional params.</source>
-        <target>Se necesitan parámetros adicionales.</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="New" xml:space="preserve">
@@ -2773,6 +2737,11 @@ Si el problema persiste, póngase en contacto con nosotros y mencione este códi
         <target>Usuario avanzado</target>
         <note>Share status</note>
       </trans-unit>
+      <trans-unit id="Power user" xml:space="preserve">
+        <source>Power user</source>
+        <target state="translated">Usuario avanzado</target>
+        <note>Share status</note>
+      </trans-unit>
       <trans-unit id="Presentation" xml:space="preserve">
         <source>Presentation</source>
         <target>Presentación</target>
@@ -2812,11 +2781,6 @@ Si el problema persiste, póngase en contacto con nosotros y mencione este códi
         <source>Project Documents</source>
         <target>Documentos de proyecto</target>
         <note>Category title</note>
-      </trans-unit>
-      <trans-unit id="Protected File" xml:space="preserve">
-        <source>Protected File</source>
-        <target>Archivo protegido</target>
-        <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Push notifications disabled" xml:space="preserve">
         <source>Push notifications disabled</source>
@@ -2878,6 +2842,11 @@ Si el problema persiste, póngase en contacto con nosotros y mencione este códi
         <target>Renovación</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
+      <trans-unit id="Request Entity Too Large" xml:space="preserve">
+        <source>Request Entity Too Large</source>
+        <target state="translated">Entidad solicitada demasiado grande</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
       <trans-unit id="Request canceled" xml:space="preserve">
         <source>Request canceled</source>
         <target>Solicitud cancelada</target>
@@ -2916,7 +2885,8 @@ Si el problema persiste, póngase en contacto con nosotros y mencione este códi
       <trans-unit id="Rooms" xml:space="preserve">
         <source>Rooms</source>
         <target>Salas</target>
-        <note>DocSpace rooms</note>
+        <note>Category title
+   DocSpace rooms</note>
       </trans-unit>
       <trans-unit id="SKIP" xml:space="preserve">
         <source>SKIP</source>
@@ -3154,6 +3124,11 @@ Si el problema persiste, póngase en contacto con nosotros y mencione este códi
         <target>Tabulación</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
+      <trans-unit id="Take a Picture" xml:space="preserve">
+        <source>Take a Picture</source>
+        <target state="translated">Tomar una foto</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
       <trans-unit id="Tb" xml:space="preserve">
         <source>Tb</source>
         <target>Tb</target>
@@ -3177,11 +3152,6 @@ Si el problema persiste, póngase en contacto con nosotros y mencione este códi
       <trans-unit id="The %@ server is not available." xml:space="preserve">
         <source>The %@ server is not available.</source>
         <target>El servidor %@ no está disponible.</target>
-        <note>No comment provided by engineer.</note>
-      </trans-unit>
-      <trans-unit id="The ONLYOFFICE Editors module is missing. Please contact support@onlyoffice.com for more information." xml:space="preserve">
-        <source>The ONLYOFFICE Editors module is missing. Please contact support@onlyoffice.com for more information.</source>
-        <target>El módulo de los editores de ONLYOFFICE no está disponible. Por favor, póngase en contacto con support@onlyoffice.com para obtener más información.</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="The account name must be between 6 and 50 characters long" xml:space="preserve">
@@ -3501,11 +3471,6 @@ to the clipboard</source>
         <target>Desanclando</target>
         <note>Caption of the processing</note>
       </trans-unit>
-      <trans-unit id="Unsupported format." xml:space="preserve">
-        <source>Unsupported format.</source>
-        <target>Formato no compatible.</target>
-        <note>No comment provided by engineer.</note>
-      </trans-unit>
       <trans-unit id="Uploading" xml:space="preserve">
         <source>Uploading</source>
         <target>Cargando</target>
@@ -3811,7 +3776,7 @@ Los archivos creados se puede cargar al portal en línea más tarde y luego acce
   </file>
   <file original="Settings.bundle/en.lproj/Root.strings" source-language="en" target-language="es" datatype="plaintext">
     <header>
-      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="14.3" build-num="14E222b"/>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="15.0" build-num="15A240d"/>
     </header>
     <body>
       <trans-unit id="Acknowledgements" xml:space="preserve">

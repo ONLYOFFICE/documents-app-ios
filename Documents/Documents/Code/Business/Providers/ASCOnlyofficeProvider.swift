@@ -50,13 +50,19 @@ class ASCOnlyofficeProvider: ASCFileProviderProtocol & ASCSortableFileProviderPr
     var delegate: ASCProviderDelegate?
     var filterController: ASCFiltersControllerProtocol?
 
-    internal var folder: ASCFolder? {
+    var folder: ASCFolder? {
         didSet {
-            setFiltersController()
+            if Thread.current.isMainThread {
+                setFiltersController()
+            } else {
+                DispatchQueue.main.sync {
+                    setFiltersController()
+                }
+            }
         }
     }
 
-    internal var fetchInfo: [String: Any?]?
+    var fetchInfo: [String: Any?]?
 
     var apiClient: OnlyofficeApiClient {
         return OnlyofficeApiClient.shared
@@ -789,11 +795,11 @@ class ASCOnlyofficeProvider: ASCFileProviderProtocol & ASCSortableFileProviderPr
 
         apiClient.request(OnlyofficeAPI.Endpoints.Operations.check, parameters) { result, error in
             if let error = error {
-                handler?(.error, nil, error.localizedDescription)
+                handler?(.error, nil, error)
             } else if let files = result?.result {
                 handler?(.end, files, nil)
             } else {
-                handler?(.error, nil, NetworkingError.invalidData.localizedDescription)
+                handler?(.error, nil, NetworkingError.invalidData)
             }
         }
     }
@@ -835,13 +841,13 @@ class ASCOnlyofficeProvider: ASCFileProviderProtocol & ASCSortableFileProviderPr
 
         apiClient.request(move ? OnlyofficeAPI.Endpoints.Operations.move : OnlyofficeAPI.Endpoints.Operations.copy, parameters) { [weak apiClient] result, error in
             if let error = error {
-                handler?(.error, 1, nil, error.localizedDescription, &cancel)
+                handler?(.error, 1, nil, error, &cancel)
             } else {
                 var checkOperation: (() -> Void)?
                 checkOperation = {
                     apiClient?.request(OnlyofficeAPI.Endpoints.Operations.list) { result, error in
                         if let error = error {
-                            handler?(.error, 1, nil, error.localizedDescription, &cancel)
+                            handler?(.error, 1, nil, error, &cancel)
                         } else if let operation = result?.result?.first, let progress = operation.progress {
                             if progress >= 100 {
                                 handler?(.end, 1, nil, nil, &cancel)
@@ -850,7 +856,7 @@ class ASCOnlyofficeProvider: ASCFileProviderProtocol & ASCSortableFileProviderPr
                                 checkOperation?()
                             }
                         } else {
-                            handler?(.error, 1, nil, NetworkingError.invalidData.localizedDescription, &cancel)
+                            handler?(.error, 1, nil, NetworkingError.invalidData, &cancel)
                         }
                     }
                 }
@@ -1165,7 +1171,7 @@ class ASCOnlyofficeProvider: ASCFileProviderProtocol & ASCSortableFileProviderPr
             let canPreview = canOpenEditor ||
                 ASCConstants.FileExtensions.presentations.contains(fileExtension) ||
                 ASCConstants.FileExtensions.images.contains(fileExtension) ||
-                fileExtension == "pdf"
+                fileExtension == ASCConstants.FileExtensions.pdf
 
             let isFavoriteCategory = category?.folder?.rootFolderType == .onlyofficeFavorites
 
@@ -1314,7 +1320,7 @@ class ASCOnlyofficeProvider: ASCFileProviderProtocol & ASCSortableFileProviderPr
             if let folder = response?.result {
                 handler?(.end, folder, nil)
             } else {
-                handler?(.error, nil, NSLocalizedString("Pinned failed.", comment: ""))
+                handler?(.error, nil, ASCProviderError(msg: NSLocalizedString("Pinned failed.", comment: "")))
             }
         }
     }
@@ -1325,7 +1331,7 @@ class ASCOnlyofficeProvider: ASCFileProviderProtocol & ASCSortableFileProviderPr
             if let folder = response?.result {
                 handler?(.end, folder, nil)
             } else {
-                handler?(.error, nil, NSLocalizedString("Unpinned failed.", comment: ""))
+                handler?(.error, nil, ASCProviderError(msg: NSLocalizedString("Unpinned failed.", comment: "")))
             }
         }
     }
@@ -1336,7 +1342,7 @@ class ASCOnlyofficeProvider: ASCFileProviderProtocol & ASCSortableFileProviderPr
             if let responseFolder = response?.result {
                 handler?(.end, responseFolder, nil)
             } else {
-                handler?(.error, nil, NSLocalizedString("Archiving failed.", comment: ""))
+                handler?(.error, nil, ASCProviderError(msg: NSLocalizedString("Archiving failed.", comment: "")))
             }
         }
     }
@@ -1347,14 +1353,14 @@ class ASCOnlyofficeProvider: ASCFileProviderProtocol & ASCSortableFileProviderPr
             if let folder = response?.result {
                 handler?(.end, folder, nil)
             } else {
-                handler?(.error, nil, NSLocalizedString("Unarchiving failed.", comment: ""))
+                handler?(.error, nil, ASCProviderError(msg: NSLocalizedString("Unarchiving failed.", comment: "")))
             }
         }
     }
 
     private func unsupportedActionHandler(action: ASCEntityActions, handler: ASCEntityHandler?) {
         log.error("Unsupported action \(action.rawValue)")
-        handler?(.error, nil, "Unsupported action")
+        handler?(.error, nil, ASCProviderError(msg: "Unsupported action"))
     }
 
     private func updateItem(_ item: ASCEntity) {
@@ -1566,8 +1572,8 @@ class ASCOnlyofficeProvider: ASCFileProviderProtocol & ASCSortableFileProviderPr
                     renameHandler: renameHandler,
                     lockedHandler: {
                         delay(seconds: 0.3) {
-                            let isSpreadsheet = file.title.fileExtension() == "xlsx"
-                            let isPresentation = file.title.fileExtension() == "pptx"
+                            let isSpreadsheet = file.title.fileExtension() == ASCConstants.FileExtensions.xlsx
+                            let isPresentation = file.title.fileExtension() == ASCConstants.FileExtensions.pptx
 
                             var message = String(format: NSLocalizedString("This document is being edited. Do you want open %@ to view only?", comment: ""), file.title)
 
@@ -1611,7 +1617,7 @@ class ASCOnlyofficeProvider: ASCFileProviderProtocol & ASCSortableFileProviderPr
     func preview(file: ASCFile, files: [ASCFile]?, in view: UIView?) {
         let title = file.title
         let fileExt = title.fileExtension().lowercased()
-        let isPdf = fileExt == "pdf"
+        let isPdf = fileExt == ASCConstants.FileExtensions.pdf
         let isImage = ASCConstants.FileExtensions.images.contains(fileExt)
         let isVideo = ASCConstants.FileExtensions.videos.contains(fileExt)
         let isAllowConvert =

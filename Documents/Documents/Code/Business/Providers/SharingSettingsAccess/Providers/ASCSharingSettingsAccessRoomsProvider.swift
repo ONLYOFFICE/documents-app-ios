@@ -2,7 +2,7 @@
 //  ASCSharingSettingsAccessRoomsProvider.swift
 //  Documents
 //
-//  Created by Павел Чернышев on 13.10.2022.
+//  Created by Pavel Chernyshev on 13.10.2022.
 //  Copyright © 2022 Ascensio System SIA. All rights reserved.
 //
 

@@ -29,14 +29,26 @@ class ASCLocalProvider: ASCFileProviderProtocol & ASCSortableFileProviderProtoco
     }
 
     var delegate: ASCProviderDelegate?
-    var filterController: ASCFiltersControllerProtocol? = ASCLocalFilterController(
-        builder: ASCFiltersCollectionViewModelBuilder(),
-        filtersViewController: ASCFiltersViewController(),
-        itemsCount: 0
-    )
+    var filterController: ASCFiltersControllerProtocol? = {
+        if Thread.current.isMainThread {
+            return ASCLocalFilterController(
+                builder: ASCFiltersCollectionViewModelBuilder(),
+                filtersViewController: ASCFiltersViewController(),
+                itemsCount: 0
+            )
+        } else {
+            return DispatchQueue.main.sync {
+                ASCLocalFilterController(
+                    builder: ASCFiltersCollectionViewModelBuilder(),
+                    filtersViewController: ASCFiltersViewController(),
+                    itemsCount: 0
+                )
+            }
+        }
+    }()
 
-    internal var folder: ASCFolder?
-    internal var fetchInfo: [String: Any?]?
+    var folder: ASCFolder?
+    var fetchInfo: [String: Any?]?
 
     fileprivate lazy var deviceUser: ASCUser = {
         let owner = ASCUser()
@@ -630,13 +642,13 @@ class ASCLocalProvider: ASCFileProviderProtocol & ASCSortableFileProviderProtoco
 
                 if move {
                     if let error = ASCLocalFileHelper.shared.move(from: srcPath, to: destPath) {
-                        handler?(.error, 1, transfers, ASCProviderError(error).localizedDescription, &cancel)
+                        handler?(.error, 1, transfers, error, &cancel)
                     } else {
                         transfers.append(entity)
                     }
                 } else {
                     if let error = ASCLocalFileHelper.shared.copy(from: srcPath, to: destPath) {
-                        handler?(.error, 1, transfers, ASCProviderError(error).localizedDescription, &cancel)
+                        handler?(.error, 1, transfers, error, &cancel)
                     } else {
                         transfers.append(entity)
                     }
@@ -711,7 +723,7 @@ class ASCLocalProvider: ASCFileProviderProtocol & ASCSortableFileProviderProtoco
                 ASCConstants.FileExtensions.forms.contains(fileExtension)
             let canPreview = canOpenEditor ||
                 ASCConstants.FileExtensions.images.contains(fileExtension) ||
-                fileExtension == "pdf"
+                fileExtension == ASCConstants.FileExtensions.pdf
 
             if isTrash {
                 return [.delete, .restore]
@@ -819,7 +831,7 @@ class ASCLocalProvider: ASCFileProviderProtocol & ASCSortableFileProviderProtoco
     func preview(file: ASCFile, files: [ASCFile]?, in view: UIView?) {
         let title = file.title
         let fileExt = title.fileExtension().lowercased()
-        let isPdf = fileExt == "pdf"
+        let isPdf = fileExt == ASCConstants.FileExtensions.pdf
         let isImage = ASCConstants.FileExtensions.images.contains(fileExt)
         let isVideo = ASCConstants.FileExtensions.videos.contains(fileExt)
 

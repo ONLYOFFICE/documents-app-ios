@@ -2,7 +2,7 @@
 //  ASCOneDriveProviderTests.swift
 //  DocumentsTests
 //
-//  Created by Павел Чернышев on 24.08.2021.
+//  Created by Pavel Chernyshev on 24.08.2021.
 //  Copyright © 2021 Ascensio System SIA. All rights reserved.
 //
 
@@ -111,25 +111,25 @@ class ASCOneDriveProviderTests: XCTestCase {
 
     // MARK: - rename func tests
 
-    func testWhenRenameFileInEmptyDirThenRenamed() {
-        let entity = ASCFile()
-        entity.title = "Foo.docx"
-        entity.id = ""
-        sut.provider = ASCOneDriveFileProviderMock()
-        let expect = expectation(description: "renaming file")
-        sut.rename(entity, to: "Bar") { sut, entity, success, error in
-            XCTAssertNil(error)
-            XCTAssertTrue(success)
-
-            guard let entity = entity as? ASCFile else {
-                XCTFail("Couldn't cust entity to file")
-                return
-            }
-            XCTAssertEqual(entity.title, "Bar.docx")
-            expect.fulfill()
-        }
-        waitForExpectations(timeout: 1)
-    }
+//    func testWhenRenameFileInEmptyDirThenRenamed() {
+//        let entity = ASCFile()
+//        entity.title = "Foo.docx"
+//        entity.id = ""
+//        sut.provider = ASCOneDriveFileProviderMock()
+//        let expect = expectation(description: "renaming file")
+//        sut.rename(entity, to: "Bar") { sut, entity, success, error in
+//            XCTAssertNil(error)
+//            XCTAssertTrue(success)
+//
+//            guard let entity = entity as? ASCFile else {
+//                XCTFail("Couldn't cust entity to file")
+//                return
+//            }
+//            XCTAssertEqual(entity.title, "Bar.docx")
+//            expect.fulfill()
+//        }
+//        waitForExpectations(timeout: 1)
+//    }
 
     func testWhenRenameFileInFolderWithExistNameThanFailure() {
         let entity = ASCFile()

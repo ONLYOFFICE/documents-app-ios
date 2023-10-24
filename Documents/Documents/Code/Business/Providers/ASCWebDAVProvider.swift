@@ -66,10 +66,10 @@ class ASCWebDAVProvider: ASCFileProviderProtocol & ASCSortableFileProviderProtoc
     var delegate: ASCProviderDelegate?
     var filterController: ASCFiltersControllerProtocol?
 
-    internal var provider: WebDAVFileProvider?
+    var provider: WebDAVFileProvider?
 
-    internal var folder: ASCFolder?
-    internal var fetchInfo: [String: Any?]?
+    var folder: ASCFolder?
+    var fetchInfo: [String: Any?]?
 
     fileprivate lazy var providerOperationDelegate = ASCWebDAVProviderDelegate()
     private var operationProcess: Progress?
@@ -864,7 +864,7 @@ class ASCWebDAVProvider: ASCFileProviderProtocol & ASCSortableFileProviderProtoc
 
     func chechTransfer(items: [ASCEntity], to folder: ASCFolder, handler: ASCEntityHandler? = nil) {
         guard let provider = provider else {
-            handler?(.error, nil, ASCProviderError(msg: errorProviderUndefined).localizedDescription)
+            handler?(.error, nil, ASCProviderError(msg: errorProviderUndefined))
             return
         }
 
@@ -903,7 +903,7 @@ class ASCWebDAVProvider: ASCFileProviderProtocol & ASCSortableFileProviderProtoc
         var cancel = false
 
         guard let provider = provider else {
-            handler?(.end, 1, nil, ASCProviderError(msg: errorProviderUndefined).localizedDescription, &cancel)
+            handler?(.end, 1, nil, ASCProviderError(msg: errorProviderUndefined), &cancel)
             return
         }
 
@@ -919,7 +919,7 @@ class ASCWebDAVProvider: ASCFileProviderProtocol & ASCSortableFileProviderProtoc
             operationQueue.addOperation {
                 if cancel {
                     DispatchQueue.main.async {
-                        handler?(.end, 1, results, lastError?.localizedDescription, &cancel)
+                        handler?(.end, 1, results, lastError, &cancel)
                     }
                     return
                 }
@@ -937,7 +937,7 @@ class ASCWebDAVProvider: ASCFileProviderProtocol & ASCSortableFileProviderProtoc
                             results.append(entity)
                         }
                         DispatchQueue.main.async {
-                            handler?(.progress, Float(index) / Float(items.count), entity, error?.localizedDescription, &cancel)
+                            handler?(.progress, Float(index) / Float(items.count), entity, error, &cancel)
                         }
                         semaphore.signal()
                     })
@@ -949,7 +949,7 @@ class ASCWebDAVProvider: ASCFileProviderProtocol & ASCSortableFileProviderProtoc
                             results.append(entity)
                         }
                         DispatchQueue.main.async {
-                            handler?(.progress, Float(index + 1) / Float(items.count), entity, error?.localizedDescription, &cancel)
+                            handler?(.progress, Float(index + 1) / Float(items.count), entity, error, &cancel)
                         }
                         semaphore.signal()
                     })
@@ -963,7 +963,7 @@ class ASCWebDAVProvider: ASCFileProviderProtocol & ASCSortableFileProviderProtoc
                 if items.count == results.count {
                     handler?(.end, 1, results, nil, &cancel)
                 } else {
-                    handler?(.end, 1, results, lastError?.localizedDescription, &cancel)
+                    handler?(.end, 1, results, lastError, &cancel)
                 }
             }
         }
@@ -1009,7 +1009,7 @@ class ASCWebDAVProvider: ASCFileProviderProtocol & ASCSortableFileProviderProtoc
                 ASCConstants.FileExtensions.forms.contains(fileExtension)
             let canPreview = canOpenEditor ||
                 ASCConstants.FileExtensions.images.contains(fileExtension) ||
-                fileExtension == "pdf"
+                fileExtension == ASCConstants.FileExtensions.pdf
 
             if canRead {
                 entityActions.insert([.copy, .export])
@@ -1100,7 +1100,7 @@ class ASCWebDAVProvider: ASCFileProviderProtocol & ASCSortableFileProviderProtoc
     func preview(file: ASCFile, files: [ASCFile]?, in view: UIView?) {
         let title = file.title
         let fileExt = title.fileExtension().lowercased()
-        let isPdf = fileExt == "pdf"
+        let isPdf = fileExt == ASCConstants.FileExtensions.pdf
         let isImage = ASCConstants.FileExtensions.images.contains(fileExt)
         let isVideo = ASCConstants.FileExtensions.videos.contains(fileExt)
 

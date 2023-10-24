@@ -46,13 +46,17 @@ class ASCFolderCell: MGSwipeTableCell {
         return $0
     }(ASCPaddingLabel(frame: .zero))
 
+    private lazy var roomPlaceholderImage = UIImage(
+        color: .clear,
+        size: CGSize(width: Constants.imageSize, height: Constants.imageSize)
+    )
+
     fileprivate let transformWidth = 450.0
 
     // MARK: - Lifecycle Methods
 
     override func awakeFromNib() {
         super.awakeFromNib()
-
         contentView.clipsToBounds = false
     }
 
@@ -170,20 +174,38 @@ class ASCFolderCell: MGSwipeTableCell {
     }
 
     private func setRoomIcon(roomType: ASCRoomType) {
-        guard let provider = provider else { return }
+        guard let provider else { return }
+
+        let processor = RoundCornerImageProcessor(
+            cornerRadius: Constants.cornerRadius,
+            targetSize: CGSizeMake(Constants.imageSize, Constants.imageSize)
+        )
+
         icon?.kf.setProviderImage(
-            with: provider.absoluteUrl(from: folder?.smallLogo ?? ""),
+            with: provider.absoluteUrl(from: folder?.largeLogo ?? ""),
             for: provider,
-            placeholder: nil,
+            placeholder: roomPlaceholderImage,
+            options: [
+                .processor(processor),
+            ],
             completionHandler: { [weak self] result in
                 switch result {
-                case .success:
-                    self?.icon?.contentMode = .scaleAspectFit
+                case .failure:
+                    self?.setDefaultIcon(roomType.image)
                 default:
-                    self?.icon?.contentMode = .center
-                    self?.icon?.image = roomType.image
+                    break
                 }
             }
         )
     }
+
+    private func setDefaultIcon(_ image: UIImage) {
+        icon?.contentMode = .center
+        icon?.image = image
+    }
+}
+
+private enum Constants {
+    static let imageSize: CGFloat = 36
+    static let cornerRadius: CGFloat = 8
 }

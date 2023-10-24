@@ -2,7 +2,7 @@
 //  ASCPasswordRecoveryViewController.swift
 //  Documents
 //
-//  Created by Иван Гришечко on 26.04.2021.
+//  Created by Ivan Grishechko on 26.04.2021.
 //  Copyright © 2021 Ascensio System SIA. All rights reserved.
 //
 

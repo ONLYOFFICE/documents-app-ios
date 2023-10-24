@@ -1,8 +1,8 @@
 //
 //  ASCMultiAccountsViewController.swift
-//  Documents-opensource
+//  Documents
 //
-//  Created by Лолита Чернышева on 31.03.2023.
+//  Created by Lolita Chernysheva on 31.03.2023.
 //  Copyright © 2023 Ascensio System SIA. All rights reserved.
 //
 
@@ -17,7 +17,7 @@ protocol ASCMultiAccountViewProtocol: UIViewController {
 class ASCMultiAccountsViewController: UITableViewController {
     enum Constants {
         static var rowHeight: CGFloat = 60
-        static var separatorInset: CGFloat = 65
+        static var separatorInset: CGFloat = 85
     }
 
     typealias Cell = ASCMultiAccountScreenModel.TableData.Cell
@@ -47,6 +47,17 @@ class ASCMultiAccountsViewController: UITableViewController {
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+
+        if UIDevice.pad {
+            navigationController?.navigationBar.prefersLargeTitles = false
+
+            navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
+            navigationController?.navigationBar.shadowImage = UIImage()
+            navigationController?.navigationBar.isTranslucent = true
+
+            scrollViewDidScroll(tableView)
+        }
+
         setup()
     }
 
@@ -70,6 +81,17 @@ class ASCMultiAccountsViewController: UITableViewController {
         super.didReceiveMemoryWarning()
     }
 
+    override func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        if UIDevice.pad {
+            guard let navigationBar = navigationController?.navigationBar else { return }
+
+            let transparent = (navigationBar.y + navigationBar.height + scrollView.contentOffset.y) > 0
+
+            navigationBar.setBackgroundImage(transparent ? nil : UIImage(), for: .default)
+            navigationBar.shadowImage = transparent ? nil : UIImage()
+        }
+    }
+
     // MARK: - private methods
 
     private func setupNavigationBar() {
@@ -81,13 +103,17 @@ class ASCMultiAccountsViewController: UITableViewController {
     private func setup() {
         title = screenModel.title
         tableView.separatorInset.left = Constants.separatorInset
-        tableView.register(DetailImageStyleTabelViewCell.self, forCellReuseIdentifier: DetailImageStyleTabelViewCell.reuseIdentifier)
+        tableView.cellLayoutMarginsFollowReadableWidth = true
+        tableView.register(
+            DetailImageStyleTabelViewCell.self,
+            forCellReuseIdentifier: DetailImageStyleTabelViewCell.reuseIdentifier
+        )
     }
 
     func showDeleteAccountFromDeviceAlert(account: ASCAccount) {
         guard let email = account.email else { return }
 
-        let message = String(format: NSLocalizedString("Are you sure you want to delete the account  %@ from this devce?", comment: ""), email)
+        let message = String(format: NSLocalizedString("Are you sure you want to delete the account %@ from this devce?", comment: ""), email)
 
         let deleteAlertAction = UIAlertAction(title: NSLocalizedString("Delete", comment: ""),
                                               style: .destructive)
@@ -109,10 +135,15 @@ class ASCMultiAccountsViewController: UITableViewController {
         if ASCAccountsManager.shared.accounts.count < 1 {
             let connectPortalVC = ASCConnectPortalViewController.instance()
             connectPortalVC.modalPresentationStyle = .fullScreen
-            connectPortalVC.navigationItem.leftBarButtonItem = UIBarButtonItem(title: NSLocalizedString("Close", comment: ""), style: .plain, closure: { [weak self] in
-                guard let self = self else { return }
-                self.dismiss(animated: true)
-            })
+            connectPortalVC.navigationItem.leftBarButtonItem =
+                UIBarButtonItem(
+                    title: NSLocalizedString("Close", comment: ""),
+                    style: .plain,
+                    closure: { [weak self] in
+                        guard let self else { return }
+                        self.dismiss(animated: true)
+                    }
+                )
             navigationController?.pushViewController(connectPortalVC, animated: true)
         }
     }
@@ -163,7 +194,6 @@ extension ASCMultiAccountsViewController {
     }
 
     override func tableView(_ tableView: UITableView, contextMenuConfigurationForRowAt indexPath: IndexPath, point: CGPoint) -> UIContextMenuConfiguration? {
-        let index = indexPath.row
         switch tableDataCell(indexPath: indexPath) {
         case .addAccount:
             return nil
@@ -227,5 +257,6 @@ private extension UITableViewCell {
         textLabel?.text = model.text
         textLabel?.textColor = model.style.textColor
         imageView?.image = UIImage(asset: Asset.Images.cloudAppend)
+        layoutMargins = UIEdgeInsets(top: 0, left: 25, bottom: 0, right: 0)
     }
 }

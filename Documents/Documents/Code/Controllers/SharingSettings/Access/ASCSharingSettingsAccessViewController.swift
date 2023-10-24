@@ -1,5 +1,5 @@
 //
-//  ASCSharingOptionsAccessViewController.swift
+//  ASCSharingSettingsAccessViewController.swift
 //  Documents
 //
 //  Created by Pavel Chernyshev on 15.06.2021.

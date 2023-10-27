@@ -300,6 +300,9 @@
 		FC5943E62AE6D328001BA2F9 /* ASCPresentationEditorConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC5943E32AE6D328001BA2F9 /* ASCPresentationEditorConfiguration.swift */; };
 		FC5943E72AE6D328001BA2F9 /* ASCSpreadsheetEditorConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC5943E42AE6D328001BA2F9 /* ASCSpreadsheetEditorConfiguration.swift */; };
 		FC5943E92AE6D333001BA2F9 /* ASCEditorConfigurationProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC5943E82AE6D333001BA2F9 /* ASCEditorConfigurationProtocol.swift */; };
+		FC5C45112AEB89E000DEE5ED /* ASCAppSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC1828F22A24E606005D9220 /* ASCAppSettings.swift */; };
+		FC5C45122AEB8A4200DEE5ED /* ASCConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCDB31A71E7C116E00907FC0 /* ASCConstants.swift */; };
+		FC5C45132AEB8AB400DEE5ED /* UIColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC35D4302A987DFA00C6383F /* UIColor+Extension.swift */; };
 		FC5E2D8D1E8A4C8B0079626B /* ASCImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC5E2D8C1E8A4C8B0079626B /* ASCImageViewController.swift */; };
 		FC5F47861F04E7E000F045DD /* PasscodeLockView.xib in Resources */ = {isa = PBXBuildFile; fileRef = FC5F47881F04E7E000F045DD /* PasscodeLockView.xib */; };
 		FC60A6441E9F5FB2000598C2 /* ASCTransferViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC60A6431E9F5FB2000598C2 /* ASCTransferViewController.swift */; };
@@ -3625,15 +3628,18 @@
 				FC56B5C720C017C300557C1F /* ASCStyles.swift in Sources */,
 				FC7765972926063D00ABAB5C /* ASCGlobalTest.swift in Sources */,
 				FC98A53329A4D6CC003A3A8D /* ASCLogIntercepter.swift in Sources */,
+				FC5C45122AEB8A4200DEE5ED /* ASCConstants.swift in Sources */,
 				FC77846D24756CDB005ED631 /* ASCFileProviderType.swift in Sources */,
 				1D29915C274FC12600A06F3B /* ASCPortalTypeDefinderByUrlTests.swift in Sources */,
 				1D1A2E1F2660F93600D0335B /* ASCLoadedViewControllerByProviderAndFolderFinderTests.swift in Sources */,
 				FC77846C24756CC2005ED631 /* ASCFolderProviderType.swift in Sources */,
 				1D9B7FEA26FA5A0000D06E9B /* ASCSharingOprionsInteractorTests.swift in Sources */,
+				FC5C45112AEB89E000DEE5ED /* ASCAppSettings.swift in Sources */,
 				FCD31F4524BDF2E200774ACD /* ASCLogger.swift in Sources */,
 				1DF6E0A926D5323B00FB42CE /* ASCOneDriveProviderTests.swift in Sources */,
 				1DCCEC0A268DBD9C00692167 /* ASCSharingOptionsViewControllerTest.swift in Sources */,
 				1D29915E274FC38300A06F3B /* ASCAccessToAddRightHoldersCheckerByPortalDefinderTests.swift in Sources */,
+				FC5C45132AEB8AB400DEE5ED /* UIColor+Extension.swift in Sources */,
 				1D2E3B9526BB338D00BEBE9D /* ASCSharingSettingsAccessViewControllerTests.swift in Sources */,
 				1D71107D26A5A9A000E00421 /* ASCShareSettingsAPIWorkerTests.swift in Sources */,
 			);

@@ -164,8 +164,7 @@ class ASCRootViewController: ASCBaseTabBarController {
                     /// Display stored folder if needed
                     delay(seconds: 0.01) {
                         if !(ASCFileManager.onlyofficeProvider?.isRoot(folder: folder) ?? false) {
-                            if let documentsNC = splitVC.detailViewController as? ASCBaseNavigationController ?? splitVC.primaryViewController as? ASCBaseNavigationController
-                            {
+                            if let documentsNC = splitVC.detailViewController as? ASCBaseNavigationController ?? splitVC.primaryViewController as? ASCBaseNavigationController {
                                 let documentsVC = ASCDocumentsViewController.instantiate(from: Storyboard.main)
                                 documentsNC.pushViewController(documentsVC, animated: false)
                                 documentsVC.provider = ASCFileManager.onlyofficeProvider

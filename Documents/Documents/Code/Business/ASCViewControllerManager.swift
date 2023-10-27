@@ -262,8 +262,7 @@ class ASCViewControllerManager {
                         let fileTitle = url.lastPathComponent
                         let filePath = Path(url.path)
 
-                        if let newFilePath = ASCLocalFileHelper.shared.resolve(filePath: Path.userDocuments + fileTitle)
-                        {
+                        if let newFilePath = ASCLocalFileHelper.shared.resolve(filePath: Path.userDocuments + fileTitle) {
                             if let error = ASCLocalFileHelper.shared.copy(from: filePath, to: newFilePath) {
                                 log.error("Can not import the file. \(error)")
                             } else {

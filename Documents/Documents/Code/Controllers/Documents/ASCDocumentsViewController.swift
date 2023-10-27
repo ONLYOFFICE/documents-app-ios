@@ -2333,8 +2333,7 @@ class ASCDocumentsViewController: ASCBaseTableViewController, UIGestureRecognize
                             from: (items: items, provider: srcProvider),
                             to: (folder: destFolder, provider: destProvider),
                             move: move,
-                            handler:
-                            { [weak self] progress, complate, success, newItems, error, cancel in
+                            handler: { [weak self] progress, complate, success, newItems, error, cancel in
                                 log.debug("Transfer procress: \(Int(progress * 100))%")
 
                                 if forceCancel {
@@ -2421,8 +2420,7 @@ class ASCDocumentsViewController: ASCBaseTableViewController, UIGestureRecognize
             self.setEditMode(false)
         }
 
-        func insert(transferedItems items: [ASCEntity], toLoadedViewController viewController: ASCDocumentsViewController)
-        {
+        func insert(transferedItems items: [ASCEntity], toLoadedViewController viewController: ASCDocumentsViewController) {
             guard !items.isEmpty, let provider = viewController.provider else { return }
 
             provider.add(items: items, at: 0)

@@ -242,9 +242,10 @@ class ASCConstants {
 
     static func remoteConfigValue(forKey key: String) -> RemoteConfigValue? {
         #if !OPEN_SOURCE
-            return RemoteConfig.remoteConfig().configValue(forKey: key)
+            RemoteConfig.remoteConfig().configValue(forKey: key)
+        #else
+            nil
         #endif
-        return nil
     }
 
     fileprivate static func fetchRemoteConfig() {

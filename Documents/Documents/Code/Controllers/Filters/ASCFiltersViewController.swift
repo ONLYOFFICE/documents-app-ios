@@ -98,10 +98,16 @@ private extension ASCFiltersViewController {
 
     func showSpinning() {
         showResultsButton.addSubview(activityIndicator)
-        activityIndicator.anchor(top: showResultsButton.topAnchor,
-                                 left: showResultsButton.leftAnchor,
-                                 bottom: showResultsButton.bottomAnchor,
-                                 right: showResultsButton.rightAnchor)
+        
+        activityIndicator.translatesAutoresizingMaskIntoConstraints = false
+        
+        let top = activityIndicator.topAnchor.constraint(equalTo: showResultsButton.topAnchor)
+        let left = activityIndicator.leadingAnchor.constraint(equalTo: showResultsButton.leadingAnchor)
+        let bottom = activityIndicator.bottomAnchor.constraint(equalTo: showResultsButton.bottomAnchor)
+        let right = activityIndicator.trailingAnchor.constraint(equalTo: showResultsButton.trailingAnchor)
+        
+        NSLayoutConstraint.activate([top, left, bottom, right])
+        
         activityIndicator.startAnimating()
     }
 
@@ -124,15 +130,14 @@ private extension ASCFiltersViewController {
 
     func showResultButtonConstraints() {
         view.addSubview(showResultsButton)
-        showResultsButton.anchor(
-            left: view.leftAnchor,
-            bottom: view.safeAreaLayoutGuide.bottomAnchor,
-            right: view.rightAnchor,
-            leftConstant: Constants.leftRightInserts,
-            bottomConstant: 10,
-            rightConstant: Constants.leftRightInserts,
-            heightConstant: Constants.buttonHeight
-        )
+        showResultsButton.translatesAutoresizingMaskIntoConstraints = false
+        
+        let left = showResultsButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: Constants.leftRightInserts)
+        let bottom = showResultsButton.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -10)
+        let right = showResultsButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -Constants.leftRightInserts)
+        let height = showResultsButton.heightAnchor.constraint(equalToConstant: Constants.buttonHeight)
+        
+        NSLayoutConstraint.activate([left, bottom, right, height])
     }
 
     func setupNavigationBar() {
@@ -173,14 +178,14 @@ private extension ASCFiltersViewController {
     }
 
     func setupCollectionViewConstraints() {
-        collectionView.anchor(
-            top: view.safeAreaLayoutGuide.topAnchor,
-            left: view.leftAnchor,
-            bottom: showResultsButton.topAnchor,
-            right: view.rightAnchor,
-            leftConstant: Constants.leftRightInserts,
-            rightConstant: Constants.leftRightInserts
-        )
+        collectionView.translatesAutoresizingMaskIntoConstraints = false
+        
+        let top = collectionView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor)
+        let left = collectionView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: Constants.leftRightInserts)
+        let bottom = collectionView.bottomAnchor.constraint(equalTo: showResultsButton.topAnchor)
+        let right = collectionView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -Constants.leftRightInserts)
+        
+        NSLayoutConstraint.activate([top, left, bottom, right])
     }
 
     func getFilterViewModel(indexPath: IndexPath) -> FilterViewModel {

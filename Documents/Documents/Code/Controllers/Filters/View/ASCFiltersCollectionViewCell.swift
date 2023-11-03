@@ -37,11 +37,14 @@ class ASCFiltersCollectionViewCell: UICollectionViewCell {
     func addDeselectFilterBtnToView() {
         addSubview(deselectFilterBtn)
         setFilterResetBtn()
-        labelText.anchor(top: topAnchor,
-                         left: leftAnchor,
-                         bottom: bottomAnchor,
-                         right: deselectFilterBtn.leftAnchor,
-                         leftConstant: 9)
+        
+        labelText.translatesAutoresizingMaskIntoConstraints = false
+        let top = labelText.topAnchor.constraint(equalTo: topAnchor)
+        let left = labelText.leadingAnchor.constraint(equalTo: leadingAnchor)
+        let bottom = labelText.bottomAnchor.constraint(equalTo: bottomAnchor)
+        let right = labelText.trailingAnchor.constraint(equalTo: deselectFilterBtn.leadingAnchor, constant: -9)
+        
+        NSLayoutConstraint.activate([top, left, bottom, right])
     }
 }
 
@@ -55,14 +58,16 @@ private extension ASCFiltersCollectionViewCell {
     }
 
     func setFilterResetBtn() {
-        deselectFilterBtn.anchor(top: topAnchor,
-                                 bottom: bottomAnchor,
-                                 right: rightAnchor,
-                                 topConstant: 8,
-                                 bottomConstant: 8,
-                                 rightConstant: 8,
-                                 widthConstant: 16,
-                                 heightConstant: 16)
+        
+        deselectFilterBtn.translatesAutoresizingMaskIntoConstraints = false
+        
+        let top = deselectFilterBtn.topAnchor.constraint(equalTo: topAnchor, constant: 8)
+        let bottom = deselectFilterBtn.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -8)
+        let right = deselectFilterBtn.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -8)
+        let width = deselectFilterBtn.widthAnchor.constraint(equalToConstant: 16)
+        let height = deselectFilterBtn.heightAnchor.constraint(equalToConstant: 16)
+        
+        NSLayoutConstraint.activate([top, bottom, right, width, height])
         deselectFilterBtn.setImage(Asset.Images.tagClose.image, for: .normal)
     }
 }

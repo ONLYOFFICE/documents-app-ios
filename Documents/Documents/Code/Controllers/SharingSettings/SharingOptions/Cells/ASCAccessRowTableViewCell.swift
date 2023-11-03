@@ -38,11 +38,18 @@ class ASCAccessRowTableViewCell: UITableViewCell, ASCReusedIdentifierProtocol {
 
         contentView.addSubview(title)
         contentView.addSubview(access)
+        
+        title.translatesAutoresizingMaskIntoConstraints = false
+        access.translatesAutoresizingMaskIntoConstraints = false
 
         title.anchorCenterYToSuperview()
         access.anchorCenterYToSuperview()
+        
+        let titleLeft = title.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: hSpacing)
+        let titleRight = title.trailingAnchor.constraint(equalTo: access.leadingAnchor)
 
-        title.anchor(left: contentView.leftAnchor, right: access.leftAnchor, leftConstant: hSpacing)
-        access.anchor(right: contentView.rightAnchor, rightConstant: 5)
+        let accessRight = access.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -5)
+        
+        NSLayoutConstraint.activate([titleLeft, titleRight, accessRight])
     }
 }

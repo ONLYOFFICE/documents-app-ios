@@ -45,10 +45,8 @@ class ASCSettingsNotificationCell: UITableViewCell {
                 errorIconView.anchor(
                     top: contentView.topAnchor,
                     bottom: contentView.bottomAnchor,
-                    right: contentView.rightAnchor,
-                    topConstant: 0,
-                    bottomConstant: 0,
-                    rightConstant: 10
+                    trailing: contentView.trailingAnchor,
+                    padding: UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 10)
                 )
             }
         } else {

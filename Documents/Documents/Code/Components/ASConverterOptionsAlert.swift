@@ -48,7 +48,7 @@ class ASCConverterOptionsAlert: NSObject, UIPickerViewDataSource, UIPickerViewDe
                                                       height: 20))
             encodingLabel.text = NSLocalizedString("Encoding", comment: "")
             encodingLabel.font = UIFont.systemFont(ofSize: 15)
-            encodingLabel.textAlignment = .left
+            encodingLabel.textAlignment = .natural
             encodingLabel.textColor = .gray
             if #available(iOS 13.0, *) {
                 encodingLabel.textColor = .secondaryLabel
@@ -63,7 +63,7 @@ class ASCConverterOptionsAlert: NSObject, UIPickerViewDataSource, UIPickerViewDe
                                                        height: 20))
             delimiterLabel.text = NSLocalizedString("Delimiter", comment: "")
             delimiterLabel.font = UIFont.systemFont(ofSize: 15)
-            delimiterLabel.textAlignment = .right
+            delimiterLabel.textAlignment = .natural
             delimiterLabel.textColor = .gray
             if #available(iOS 13.0, *) {
                 delimiterLabel.textColor = .secondaryLabel
@@ -123,7 +123,7 @@ class ASCConverterOptionsAlert: NSObject, UIPickerViewDataSource, UIPickerViewDe
         }
 
         if component == 0 {
-            label.textAlignment = .left
+            label.textAlignment = .natural
             label.text = encodings?[row] ?? ""
 
             if isOnlyCodePages {

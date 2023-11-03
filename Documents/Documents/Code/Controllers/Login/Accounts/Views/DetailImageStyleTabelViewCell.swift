@@ -15,6 +15,7 @@ class DetailImageStyleTabelViewCell: UITableViewCell {
     let titleLabel: UILabel = {
         let label = UILabel()
         label.font = UIFont.preferredFont(forTextStyle: .body)
+        label.textAlignment = .natural
         return label
     }()
 
@@ -22,6 +23,7 @@ class DetailImageStyleTabelViewCell: UITableViewCell {
         let label = UILabel()
         label.font = UIFont.preferredFont(forTextStyle: .footnote)
         label.textColor = .systemGray
+        label.textAlignment = .natural
         return label
     }()
 

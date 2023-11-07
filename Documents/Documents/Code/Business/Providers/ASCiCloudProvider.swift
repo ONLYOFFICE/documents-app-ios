@@ -719,6 +719,7 @@ class ASCiCloudProvider: ASCFileProviderProtocol & ASCSortableFileProviderProtoc
                                     completeon?(strongSelf, nil, false, ASCProviderError(msg: error.localizedDescription))
                                 } else if let fileObject = fileObject {
                                     let fileSize: UInt64 = (fileObject.size < 0) ? 0 : UInt64(fileObject.size)
+                                    print("123")
                                     let cloudFile = ASCFile()
                                     cloudFile.id = fileObject.path
                                     cloudFile.rootFolderType = .icloudAll
@@ -846,6 +847,7 @@ class ASCiCloudProvider: ASCFileProviderProtocol & ASCSortableFileProviderProtoc
         provider.moveItem(path: oldPath.rawValue, to: newPath.rawValue, overwrite: false) { [weak self] error in
             DispatchQueue.main.async { [weak self] in
                 guard let strongSelf = self else { return }
+                guard let rootFolder = strongSelf.folder else { return } // Основная папка iCloud
 
                 if let error = error {
                     completeon?(strongSelf, nil, false, ASCProviderError(msg: error.localizedDescription))
@@ -862,6 +864,14 @@ class ASCiCloudProvider: ASCFileProviderProtocol & ASCSortableFileProviderProtoc
                         completeon?(strongSelf, folder, true, nil)
                     } else {
                         completeon?(strongSelf, nil, false, ASCProviderError(msg: NSLocalizedString("Unknown item type.", comment: "")))
+                    }
+
+                    strongSelf.fetch(for: rootFolder, parameters: [:]) { provider, folder, success, error in
+                        if success {
+                            print("iCloud sync success")
+                        } else {
+                            print("ERROR: \(error?.localizedDescription ?? "Unknown ERROR")")
+                        }
                     }
                 }
             }

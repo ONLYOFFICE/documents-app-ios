@@ -650,10 +650,10 @@ class ASCCreatePortalViewController: ASCBaseViewController {
 
     private func presentCountryCodes() {
         if let countryCodeVC = navigator.navigate(to: .countryPhoneCodes) as? ASCCountryCodeViewController {
-            countryCodeVC.selectCountry = { [weak self] country, code, region in
-                guard let self = self else { return }
-                self.countryButton?.setAttributedTitle(self.flagTitleButton(by: region), for: .normal)
-                self.phoneCodeLabel.text = "+\(code) "
+            countryCodeVC.selectCountry = { [weak self] phoneCountry in
+                guard let self else { return }
+                self.countryButton?.setAttributedTitle(self.flagTitleButton(by: phoneCountry.region), for: .normal)
+                self.phoneCodeLabel.text = "+\(phoneCountry.code) "
                 self.phoneNumberField?.leftView = nil
                 self.phoneNumberField?.leftView = self.phoneCodeLabel
                 self.phoneNumberField?.placeholder = ""

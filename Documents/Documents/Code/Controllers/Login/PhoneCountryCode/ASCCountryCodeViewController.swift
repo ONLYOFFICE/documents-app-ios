@@ -12,28 +12,25 @@ import UIKit
 class ASCCountryCodeViewController: ASCBaseTableViewController {
     override class var storyboard: Storyboard { return Storyboard.login }
 
+    typealias PhoneCountresByLetter = (literal: Character, countries: [ASCPhoneCountryCode])
+
     // MARK: - Properties
 
-    var selectCountry: ((String, UInt64, String) -> Void)?
+    var selectCountry: ((ASCPhoneCountryCode) -> Void)?
 
     private let phoneNumberKit = PhoneNumberKit()
-    private var countries: [String: [[String: Any]]] = [:]
-    private var literals: [String] = []
+    private var countresByLetter: [PhoneCountresByLetter] = []
 
     // Search
     private lazy var searchController: UISearchController = {
         $0.delegate = self
         $0.searchResultsUpdater = self
         $0.hidesNavigationBarDuringPresentation = false
-        $0.dimsBackgroundDuringPresentation = false
         $0.searchBar.searchBarStyle = .minimal
 
-        if #available(iOS 11.0, *) {
-            navigationItem.searchController = $0
-            navigationItem.hidesSearchBarWhenScrolling = false
-        } else {
-            tableView.tableHeaderView = $0.searchBar
-        }
+        navigationItem.searchController = $0
+        navigationItem.hidesSearchBarWhenScrolling = false
+
         return $0
     }(UISearchController(searchResultsController: nil))
 
@@ -60,7 +57,7 @@ class ASCCountryCodeViewController: ASCBaseTableViewController {
         tableView.tableFooterView = UIView()
 
         // Prepare data
-        fillData()
+        fetchData()
 
         navigationItem.searchController = searchController
     }
@@ -87,13 +84,12 @@ class ASCCountryCodeViewController: ASCBaseTableViewController {
 
     // MARK: - Private
 
-    private func fillData() {
+    private func fetchData() {
         let allCountries = phoneNumberKit.allCountries()
-        var allCountriesSorted: [[String: Any]] = []
+        var phoneCountries: [ASCPhoneCountryCode] = []
         var search: String?
 
-        countries.removeAll()
-        literals.removeAll()
+        countresByLetter.removeAll()
 
         if searchController.isActive {
             if let searchText = searchController.searchBar.text?.trimmed.lowercased(), searchText.length > 0 {
@@ -108,39 +104,39 @@ class ASCCountryCodeViewController: ASCBaseTableViewController {
                let code = phoneNumberKit.countryCode(for: country)
             {
                 if let searchText = search {
-                    if let _ = countryName.lowercased().range(of: searchText) {
-                        allCountriesSorted.append([
-                            "country": countryName,
-                            "code": code,
-                            "region": country,
-                        ])
+                    if countryName.lowercased().contains(searchText) {
+                        phoneCountries.append(
+                            ASCPhoneCountryCode(
+                                country: countryName,
+                                code: code,
+                                region: country
+                            )
+                        )
                     }
                 } else {
-                    allCountriesSorted.append([
-                        "country": countryName,
-                        "code": code,
-                        "region": country,
-                    ])
+                    phoneCountries.append(
+                        ASCPhoneCountryCode(
+                            country: countryName,
+                            code: code,
+                            region: country
+                        )
+                    )
                 }
             }
         }
 
-        allCountriesSorted = allCountriesSorted.sorted(by: { ($0["country"] as! String).uppercased() < ($1["country"] as! String).uppercased() })
-
-        for country in allCountriesSorted {
-            if let countryName = country["country"] as? String {
-                let literal = countryName[0].uppercased()
-
-                if let _ = countries[literal] {
-                    countries[literal]?.append(country)
-                } else {
-                    countries[literal] = [country]
-                    literals.append(literal)
-                }
+        countresByLetter = Dictionary(
+            grouping: phoneCountries.sorted { $0.country.uppercased() < $1.country.uppercased() },
+            by: { phoneCountry in
+                phoneCountry.country.uppercased().first!
             }
+        )
+        .map { (key: String.Element, value: [ASCPhoneCountryCode]) in
+            (literal: key, countries: value)
         }
-
-        literals = literals.sorted(by: <)
+        .sorted { left, right -> Bool in
+            left.literal < right.literal
+        }
     }
 }
 
@@ -148,41 +144,29 @@ class ASCCountryCodeViewController: ASCBaseTableViewController {
 
 extension ASCCountryCodeViewController {
     override func numberOfSections(in tableView: UITableView) -> Int {
-        return literals.count
+        countresByLetter.count
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return countries[literals[section]]?.count ?? 0
+        countresByLetter[section].countries.count
     }
 
     override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        return literals[section]
+        String(countresByLetter[section].literal)
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cellCountryCode", for: indexPath)
+        let phoneCountry = countresByLetter[indexPath.section].countries[indexPath.row]
 
-        let literal = literals[indexPath.section]
-
-        if let info = countries[literal]?[indexPath.row] {
-            cell.textLabel?.text = info["country"] as? String ?? ""
-            cell.detailTextLabel?.text = "+\(info["code"] as? UInt64 ?? 0)"
-        }
+        cell.textLabel?.text = phoneCountry.country
+        cell.detailTextLabel?.text = "+\(phoneCountry.code)"
 
         return cell
     }
 
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let literal = literals[indexPath.section]
-
-        if let info = countries[literal]?[indexPath.row] {
-            selectCountry?(
-                info["country"] as? String ?? "",
-                info["code"] as? UInt64 ?? 0,
-                info["region"] as? String ?? ""
-            )
-        }
-
+        selectCountry?(countresByLetter[indexPath.section].countries[indexPath.row])
         navigationController?.popViewController(animated: true)
     }
 
@@ -196,7 +180,7 @@ extension ASCCountryCodeViewController {
     }
 
     override func sectionIndexTitles(for tableView: UITableView) -> [String]? {
-        var indexes = literals
+        var indexes = countresByLetter.map { String($0.literal) }
         indexes.insert(UITableView.indexSearch, at: 0)
         return indexes
     }
@@ -205,41 +189,8 @@ extension ASCCountryCodeViewController {
 // MARK: - UISearchController Delegate
 
 extension ASCCountryCodeViewController: UISearchControllerDelegate {
-    func didPresentSearchController(_ searchController: UISearchController) {
-        if #available(iOS 11.0, *) {
-            //
-        } else {
-            let statusbarHeight = UIApplication.shared.statusBarFrame.height
-            searchBackground.frame = CGRect(
-                x: 0,
-                y: 0,
-                width: searchController.searchBar.frame.size.width,
-                height: searchController.searchBar.frame.size.height + statusbarHeight
-            )
-            searchBackground.alpha = 1
-            searchController.view?.insertSubview(searchBackground, at: 0)
-
-            searchSeparator.frame = CGRect(
-                x: 0,
-                y: searchController.searchBar.frame.size.height + statusbarHeight,
-                width: searchController.searchBar.frame.size.width, height: 1.0 / UIScreen.main.scale
-            )
-            searchSeparator.alpha = 1
-            searchController.view?.insertSubview(searchSeparator, at: 0)
-        }
-    }
-
-    func willDismissSearchController(_ searchController: UISearchController) {
-        if #available(iOS 11.0, *) {
-            //
-        } else {
-            searchSeparator.alpha = 0
-            searchBackground.alpha = 0
-        }
-    }
-
     func didDismissSearchController(_ searchController: UISearchController) {
-        fillData()
+        fetchData()
         tableView.reloadData()
     }
 }
@@ -248,7 +199,7 @@ extension ASCCountryCodeViewController: UISearchControllerDelegate {
 
 extension ASCCountryCodeViewController: UISearchResultsUpdating {
     func updateSearchResults(for searchController: UISearchController) {
-        fillData()
+        fetchData()
         tableView.reloadData()
     }
 }

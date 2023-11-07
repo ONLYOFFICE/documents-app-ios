@@ -352,6 +352,8 @@
 		FC77846D24756CDB005ED631 /* ASCFileProviderType.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC41D80D2265DADC00A155C2 /* ASCFileProviderType.swift */; };
 		FC786FBC1EB8771700181D62 /* Intro.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FC786FBE1EB8771700181D62 /* Intro.storyboard */; };
 		FC7B37D61E929B46009C41AD /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = FC7B37D51E929B46009C41AD /* Settings.bundle */; };
+		FC7B80202AFA299D00C22C71 /* ASCPhoneCountryCode.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC7B801E2AFA299D00C22C71 /* ASCPhoneCountryCode.swift */; };
+		FC7B80212AFA299D00C22C71 /* ASCCountryCodeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC7B801F2AFA299D00C22C71 /* ASCCountryCodeViewController.swift */; };
 		FC7CF5101EF3E76F00C0A64F /* ASCStringTransform.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC7CF50F1EF3E76F00C0A64F /* ASCStringTransform.swift */; };
 		FC7CF5161EF3EFF300C0A64F /* Deprecated.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC7CF5121EF3EFF300C0A64F /* Deprecated.swift */; };
 		FC7CF5171EF3EFF300C0A64F /* HTMLString.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC7CF5131EF3EFF300C0A64F /* HTMLString.swift */; };
@@ -410,7 +412,6 @@
 		FCC39FEA1E6ECB3400DECB8D /* ASCLocalFileHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCC39FE91E6ECB3400DECB8D /* ASCLocalFileHelper.swift */; };
 		FCC3E9BE214006B1001B216C /* ASCLocalization.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCC3E9BD214006B1001B216C /* ASCLocalization.swift */; };
 		FCC552B41EC2F96600F645EE /* ASCPhoneNumberViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCC552B31EC2F96600F645EE /* ASCPhoneNumberViewController.swift */; };
-		FCC552B61EC3196B00F645EE /* ASCCountryCodeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCC552B51EC3196B00F645EE /* ASCCountryCodeViewController.swift */; };
 		FCC62AD81E8AA1F700D24BE2 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = FCC62ADA1E8AA1F700D24BE2 /* Localizable.strings */; };
 		FCC62AE31E8AA91100D24BE2 /* MWPhotoBrowser.bundle in Resources */ = {isa = PBXBuildFile; fileRef = FCC62AE21E8AA91100D24BE2 /* MWPhotoBrowser.bundle */; };
 		FCC64F5929191A5D004D9A47 /* OnlyofficeInviteItemRequestModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCC64F5829191A5D004D9A47 /* OnlyofficeInviteItemRequestModel.swift */; };
@@ -919,6 +920,8 @@
 		FC786FBD1EB8771700181D62 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Intro.storyboard; sourceTree = "<group>"; };
 		FC786FC01EB8771B00181D62 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Intro.strings; sourceTree = "<group>"; };
 		FC7B37D51E929B46009C41AD /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = SOURCE_ROOT; };
+		FC7B801E2AFA299D00C22C71 /* ASCPhoneCountryCode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASCPhoneCountryCode.swift; sourceTree = "<group>"; };
+		FC7B801F2AFA299D00C22C71 /* ASCCountryCodeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASCCountryCodeViewController.swift; sourceTree = "<group>"; };
 		FC7CF50F1EF3E76F00C0A64F /* ASCStringTransform.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASCStringTransform.swift; sourceTree = "<group>"; };
 		FC7CF5121EF3EFF300C0A64F /* Deprecated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Deprecated.swift; sourceTree = "<group>"; };
 		FC7CF5131EF3EFF300C0A64F /* HTMLString.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HTMLString.swift; sourceTree = "<group>"; };
@@ -1020,7 +1023,6 @@
 		FCC39FE91E6ECB3400DECB8D /* ASCLocalFileHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASCLocalFileHelper.swift; sourceTree = "<group>"; };
 		FCC3E9BD214006B1001B216C /* ASCLocalization.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCLocalization.swift; sourceTree = "<group>"; };
 		FCC552B31EC2F96600F645EE /* ASCPhoneNumberViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASCPhoneNumberViewController.swift; sourceTree = "<group>"; };
-		FCC552B51EC3196B00F645EE /* ASCCountryCodeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASCCountryCodeViewController.swift; sourceTree = "<group>"; };
 		FCC62AD31E8A9F0600D24BE2 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Main.strings; sourceTree = "<group>"; };
 		FCC62AD51E8A9F0600D24BE2 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
 		FCC62AD91E8AA1F700D24BE2 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Localizable.strings; sourceTree = "<group>"; };
@@ -2578,6 +2580,23 @@
 			path = Intro;
 			sourceTree = "<group>";
 		};
+		FC7B801C2AFA299D00C22C71 /* PhoneCountryCode */ = {
+			isa = PBXGroup;
+			children = (
+				FC7B801D2AFA299D00C22C71 /* Models */,
+				FC7B801F2AFA299D00C22C71 /* ASCCountryCodeViewController.swift */,
+			);
+			path = PhoneCountryCode;
+			sourceTree = "<group>";
+		};
+		FC7B801D2AFA299D00C22C71 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				FC7B801E2AFA299D00C22C71 /* ASCPhoneCountryCode.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
 		FC7CF5111EF3EFF300C0A64F /* HTMLString */ = {
 			isa = PBXGroup;
 			children = (
@@ -2725,10 +2744,10 @@
 				FC64B2E81EE56C5500920FDD /* Social */,
 				FC99FAEF22645F1D000F1464 /* 2FA */,
 				FCECDDCC264309D7006CD7B9 /* PasswordRecover */,
+				FC7B801C2AFA299D00C22C71 /* PhoneCountryCode */,
 				FC9749961EE04FB300D00DDB /* ASCSignInViewController.swift */,
 				FCC552B31EC2F96600F645EE /* ASCPhoneNumberViewController.swift */,
 				FC872B271EC44925001636CB /* ASCSMSCodeViewController.swift */,
-				FCC552B51EC3196B00F645EE /* ASCCountryCodeViewController.swift */,
 				FC9749941EE04A1E00D00DDB /* ASCConnectPortalViewController.swift */,
 			);
 			path = Login;
@@ -3653,6 +3672,7 @@
 				1D76B052275B9DC200389C61 /* ASCEntityExistenceCheckerByAttributes.swift in Sources */,
 				FC7E456F29226A35006C4CA1 /* ASCDeepLink.swift in Sources */,
 				FC25B46A285116CB0075D6C2 /* ASCFiltersControllerProtocol.swift in Sources */,
+				FC7B80202AFA299D00C22C71 /* ASCPhoneCountryCode.swift in Sources */,
 				1DC43EEA26A0978D00373D5A /* ASCSharingSettingsAccessViewModel.swift in Sources */,
 				FC5943642AE6816E001BA2F9 /* ASCEditorManager+DocumentEditor.swift in Sources */,
 				FCF694B42631C10400808644 /* ASCNavigator.swift in Sources */,
@@ -3662,7 +3682,6 @@
 				F3F0F6AE284502CE0083370A /* ASCLocalFilterController.swift in Sources */,
 				FC7E457129226A35006C4CA1 /* ASCFile.swift in Sources */,
 				FC1828FD2A24E6DA005D9220 /* AppThemeService.swift in Sources */,
-				FCC552B61EC3196B00F645EE /* ASCCountryCodeViewController.swift in Sources */,
 				1D1A2E282660F99800D0335B /* ASCLoadedDocumentViewControllerByProviderAndFolderFinder.swift in Sources */,
 				1D71107826A5A78100E00421 /* ASCShareSettingsAPIWorkerProtocol.swift in Sources */,
 				FC28F2C41E8D131800A8F985 /* ASCCreateEntity.swift in Sources */,
@@ -3912,6 +3931,7 @@
 				1D8DF02F2639B6B10054B2F9 /* ASCOneDriveProvider.swift in Sources */,
 				FC301A29230D70B500DC25CA /* ASCLoaderCell.swift in Sources */,
 				FCE835192A84CAF100EFA839 /* CreateEntityViewModel.swift in Sources */,
+				FC7B80212AFA299D00C22C71 /* ASCCountryCodeViewController.swift in Sources */,
 				1D2E3B8A26BB290700BEBE9D /* ASCSharingSettingsAccessNotesProviderProtocol.swift in Sources */,
 				FC5943C42AE6B422001BA2F9 /* ASCIntroPage.swift in Sources */,
 				FCE18669262AB4AB0086D21B /* Segues.swift in Sources */,

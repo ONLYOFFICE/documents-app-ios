@@ -202,6 +202,8 @@
 		FC786FBC1EB8771700181D62 /* Intro.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FC786FBE1EB8771700181D62 /* Intro.storyboard */; };
 		FC786FC31EB879F600181D62 /* ASCIntroViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC786FC21EB879F600181D62 /* ASCIntroViewController.swift */; };
 		FC7B37D61E929B46009C41AD /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = FC7B37D51E929B46009C41AD /* Settings.bundle */; };
+		FC7B801A2AFA294E00C22C71 /* ASCPhoneCountryCode.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC7B80182AFA294E00C22C71 /* ASCPhoneCountryCode.swift */; };
+		FC7B801B2AFA294E00C22C71 /* ASCCountryCodeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC7B80192AFA294E00C22C71 /* ASCCountryCodeViewController.swift */; };
 		FC7CF5101EF3E76F00C0A64F /* ASCStringTransform.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC7CF50F1EF3E76F00C0A64F /* ASCStringTransform.swift */; };
 		FC7CF5161EF3EFF300C0A64F /* Deprecated.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC7CF5121EF3EFF300C0A64F /* Deprecated.swift */; };
 		FC7CF5171EF3EFF300C0A64F /* HTMLString.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC7CF5131EF3EFF300C0A64F /* HTMLString.swift */; };
@@ -388,7 +390,6 @@
 		FCC39FEA1E6ECB3400DECB8D /* ASCLocalFileHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCC39FE91E6ECB3400DECB8D /* ASCLocalFileHelper.swift */; };
 		FCC3E9BE214006B1001B216C /* ASCLocalization.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCC3E9BD214006B1001B216C /* ASCLocalization.swift */; };
 		FCC552B41EC2F96600F645EE /* ASCPhoneNumberViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCC552B31EC2F96600F645EE /* ASCPhoneNumberViewController.swift */; };
-		FCC552B61EC3196B00F645EE /* ASCCountryCodeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCC552B51EC3196B00F645EE /* ASCCountryCodeViewController.swift */; };
 		FCC62AD81E8AA1F700D24BE2 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = FCC62ADA1E8AA1F700D24BE2 /* Localizable.strings */; };
 		FCC62AE31E8AA91100D24BE2 /* MWPhotoBrowser.bundle in Resources */ = {isa = PBXBuildFile; fileRef = FCC62AE21E8AA91100D24BE2 /* MWPhotoBrowser.bundle */; };
 		FCC64F5129191867004D9A47 /* ASCOnlyofficeCategoriesGrouper.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCC64F5029191867004D9A47 /* ASCOnlyofficeCategoriesGrouper.swift */; };
@@ -808,6 +809,8 @@
 		FC786FC01EB8771B00181D62 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Intro.strings; sourceTree = "<group>"; };
 		FC786FC21EB879F600181D62 /* ASCIntroViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASCIntroViewController.swift; sourceTree = "<group>"; };
 		FC7B37D51E929B46009C41AD /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = SOURCE_ROOT; };
+		FC7B80182AFA294E00C22C71 /* ASCPhoneCountryCode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASCPhoneCountryCode.swift; sourceTree = "<group>"; };
+		FC7B80192AFA294E00C22C71 /* ASCCountryCodeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASCCountryCodeViewController.swift; sourceTree = "<group>"; };
 		FC7CF50F1EF3E76F00C0A64F /* ASCStringTransform.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASCStringTransform.swift; sourceTree = "<group>"; };
 		FC7CF5121EF3EFF300C0A64F /* Deprecated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Deprecated.swift; sourceTree = "<group>"; };
 		FC7CF5131EF3EFF300C0A64F /* HTMLString.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HTMLString.swift; sourceTree = "<group>"; };
@@ -997,7 +1000,6 @@
 		FCC39FE91E6ECB3400DECB8D /* ASCLocalFileHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASCLocalFileHelper.swift; sourceTree = "<group>"; };
 		FCC3E9BD214006B1001B216C /* ASCLocalization.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCLocalization.swift; sourceTree = "<group>"; };
 		FCC552B31EC2F96600F645EE /* ASCPhoneNumberViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASCPhoneNumberViewController.swift; sourceTree = "<group>"; };
-		FCC552B51EC3196B00F645EE /* ASCCountryCodeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASCCountryCodeViewController.swift; sourceTree = "<group>"; };
 		FCC62AD31E8A9F0600D24BE2 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Main.strings; sourceTree = "<group>"; };
 		FCC62AD51E8A9F0600D24BE2 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
 		FCC62AD91E8AA1F700D24BE2 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Localizable.strings; sourceTree = "<group>"; };
@@ -1905,6 +1907,23 @@
 			path = Intro;
 			sourceTree = "<group>";
 		};
+		FC7B80162AFA294E00C22C71 /* PhoneCountryCode */ = {
+			isa = PBXGroup;
+			children = (
+				FC7B80172AFA294E00C22C71 /* Models */,
+				FC7B80192AFA294E00C22C71 /* ASCCountryCodeViewController.swift */,
+			);
+			path = PhoneCountryCode;
+			sourceTree = "<group>";
+		};
+		FC7B80172AFA294E00C22C71 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				FC7B80182AFA294E00C22C71 /* ASCPhoneCountryCode.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
 		FC7CF5111EF3EFF300C0A64F /* HTMLString */ = {
 			isa = PBXGroup;
 			children = (
@@ -2422,10 +2441,10 @@
 				FC99FAEF22645F1D000F1464 /* 2FA */,
 				FC9F497227F5D10E00D88936 /* Helpers */,
 				FCECDDCB26430982006CD7B9 /* PasswordRecover */,
+				FC7B80162AFA294E00C22C71 /* PhoneCountryCode */,
 				FC9749961EE04FB300D00DDB /* ASCSignInViewController.swift */,
 				FCC552B31EC2F96600F645EE /* ASCPhoneNumberViewController.swift */,
 				FC872B271EC44925001636CB /* ASCSMSCodeViewController.swift */,
-				FCC552B51EC3196B00F645EE /* ASCCountryCodeViewController.swift */,
 				FC9749941EE04A1E00D00DDB /* ASCConnectPortalViewController.swift */,
 			);
 			path = Login;
@@ -3356,7 +3375,6 @@
 				FC7DC86F285A2D3400E61C69 /* ASCFiltersCollectionViewModelBuilder.swift in Sources */,
 				FCB4CE8329FAC88C009C1E2E /* ASCMultiAccountsViewController.swift in Sources */,
 				FC1829062A24E9A0005D9220 /* ASCAppSettings.swift in Sources */,
-				FCC552B61EC3196B00F645EE /* ASCCountryCodeViewController.swift in Sources */,
 				FC7D992E2729942700410795 /* ASCSharingOprionsExternalLink.swift in Sources */,
 				FC28F2C41E8D131800A8F985 /* ASCCreateEntity.swift in Sources */,
 				FCB4CE8029FAC88C009C1E2E /* AccountCellModel.swift in Sources */,
@@ -3397,6 +3415,7 @@
 				FCE2B4282930CCA700E50429 /* ASCFile.swift in Sources */,
 				FC56A3752A389C9B000EA058 /* ASCEditorManager+PresentationEditor.swift in Sources */,
 				FC83D5492A973E2100C404CB /* UITableViewCell+Extensions.swift in Sources */,
+				FC7B801B2AFA294E00C22C71 /* ASCCountryCodeViewController.swift in Sources */,
 				FC7DC871285A2D3400E61C69 /* ASCLocalFilterController.swift in Sources */,
 				FC41D8042265D8DA00A155C2 /* ASCShareAccess.swift in Sources */,
 				FC56B5CA20C03F3400557C1F /* ASCSortViewCellTableViewCell.swift in Sources */,
@@ -3481,6 +3500,7 @@
 				FC31B2831E767CC7008699C3 /* ASCLoaderCell.swift in Sources */,
 				FC68398A21B7DF0C00251CEA /* ASCOnDeviceNavigationController.swift in Sources */,
 				FCC39FEA1E6ECB3400DECB8D /* ASCLocalFileHelper.swift in Sources */,
+				FC7B801A2AFA294E00C22C71 /* ASCPhoneCountryCode.swift in Sources */,
 				FC6F0CD71F542E7E002D33D9 /* ASCSSOSignInController.swift in Sources */,
 				FCC826FC1F9F4B9700744F68 /* ASCAccountsManager.swift in Sources */,
 				FC7D991B2729942700410795 /* ASCSwitchTableViewCell.swift in Sources */,

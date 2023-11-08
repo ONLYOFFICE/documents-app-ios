@@ -18,6 +18,8 @@ class ASCStyles {
 //
 //        UITableView.appearance().backgroundColor = ASCConstants.Colors.tableViewBackground
 //        UIView.appearance(whenContainedInInstancesOf: [UITableViewHeaderFooterView.self]).backgroundColor = ASCConstants.Colors.tableViewBackground
+
+        ASCStyles.updateSemanticContentAttribute()
     }()
 
     static var barFixedSpace: UIBarButtonItem = {
@@ -58,5 +60,13 @@ class ASCStyles {
     @available(iOS 14.0, *)
     static func createBarButton(title: String, menu: UIMenu?) -> UIBarButtonItem {
         return UIBarButtonItem(title: title, image: nil, primaryAction: nil, menu: menu)
+    }
+
+    static func updateSemanticContentAttribute() {
+        if ASCAppSettings.Feature.forceRtl {
+            UIView.appearance().semanticContentAttribute = .forceRightToLeft
+        } else {
+            UIView.appearance().semanticContentAttribute = .unspecified
+        }
     }
 }

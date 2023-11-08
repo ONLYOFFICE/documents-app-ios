@@ -350,6 +350,7 @@ extension ASCSharingAddRightHoldersView {
             tableView.allowsSelectionDuringEditing = true
             tableView.translatesAutoresizingMaskIntoConstraints = false
             tableView.allowsMultipleSelectionDuringEditing = true
+            tableView.keyboardDismissMode = .onDrag
         }
     }
 
@@ -549,9 +550,7 @@ extension ASCSharingAddRightHoldersView {
 
     func changeModalHeightIfNeeded(keyboardSize: CGRect) {
         guard UIDevice.pad else { return }
-
-        let presentingViewHeight = navigationController?.presentingViewController?.view.size.height ?? 0
-
+        let presentingViewHeight = view.size.height
         let modalHeigh = presentingViewHeight > 0 && presentingViewHeight < UIScreen.main.bounds.height
             ? presentingViewHeight
             : defaultPresentingViewSize.height
@@ -562,13 +561,10 @@ extension ASCSharingAddRightHoldersView {
         if keyboardSize.height > freeSpace {
             let differance = keyboardSize.height - freeSpace
             let minModalHeight: CGFloat = 150
-            let newModelHeight = max(defaultPresentingViewSize.height - differance, minModalHeight)
-
-            let preferredContentSize = CGSize(width: defaultPresentingViewSize.width, height: newModelHeight)
-
-            log.info("new model size", preferredContentSize)
-            navigationController?.preferredContentSize = preferredContentSize
-            viewController?.preferredContentSize = preferredContentSize
+            let newModelHeight = max(view.frame.height - differance, minModalHeight)
+            log.info("new model height", newModelHeight)
+            navigationController?.preferredContentSize.height = newModelHeight
+            viewController?.preferredContentSize.height = newModelHeight
         } else {
             log.info("new model size is default")
             resetModalSizeIfNeeded()

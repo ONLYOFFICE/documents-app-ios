@@ -334,20 +334,29 @@ extension UIView {
         heightAnchor.constraint(equalTo: view.heightAnchor).isActive = true
     }
 
-    func anchor(top: NSLayoutYAxisAnchor?, leading: NSLayoutXAxisAnchor?, bottom: NSLayoutYAxisAnchor?, trailing: NSLayoutXAxisAnchor?, padding: UIEdgeInsets = .zero, size: CGSize = .zero) {
-        if let top = top {
+    func anchor(
+        top: NSLayoutYAxisAnchor? = nil,
+        leading: NSLayoutXAxisAnchor? = nil,
+        bottom: NSLayoutYAxisAnchor? = nil,
+        trailing: NSLayoutXAxisAnchor? = nil,
+        padding: UIEdgeInsets = .zero,
+        size: CGSize = .zero
+    ) {
+        translatesAutoresizingMaskIntoConstraints = false
+
+        if let top {
             topAnchor.constraint(equalTo: top, constant: padding.top).isActive = true
         }
 
-        if let leading = leading {
+        if let leading {
             leadingAnchor.constraint(equalTo: leading, constant: padding.left).isActive = true
         }
 
-        if let bottom = bottom {
+        if let bottom {
             bottomAnchor.constraint(equalTo: bottom, constant: -padding.bottom).isActive = true
         }
 
-        if let trailing = trailing {
+        if let trailing {
             trailingAnchor.constraint(equalTo: trailing, constant: -padding.right).isActive = true
         }
 

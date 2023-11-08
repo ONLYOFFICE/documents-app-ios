@@ -2,7 +2,7 @@
 <xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="1.2" xsi:schemaLocation="urn:oasis:names:tc:xliff:document:1.2 http://docs.oasis-open.org/xliff/v1.2/os/xliff-core-1.2-strict.xsd">
   <file original="Documents/Base.lproj/ConnectStorage.storyboard" source-language="en" target-language="cs" datatype="plaintext">
     <header>
-      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="15.0" build-num="15A240d"/>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="14.3" build-num="14E222b"/>
     </header>
     <body>
       <trans-unit id="1hg-GO-WNq.text" xml:space="preserve">
@@ -74,7 +74,7 @@
   </file>
   <file original="Documents/Base.lproj/CreatePortal.storyboard" source-language="en" target-language="cs" datatype="plaintext">
     <header>
-      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="15.0" build-num="15A240d"/>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="14.3" build-num="14E222b"/>
     </header>
     <body>
       <trans-unit id="BMv-HP-hD2.normalTitle" xml:space="preserve">
@@ -162,7 +162,7 @@ začněte používat vaší kancelář</target>
   </file>
   <file original="Documents/Base.lproj/Intro.storyboard" source-language="en" target-language="cs" datatype="plaintext">
     <header>
-      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="15.0" build-num="15A240d"/>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="14.3" build-num="14E222b"/>
     </header>
     <body>
       <trans-unit id="De8-tD-APT.text" xml:space="preserve">
@@ -184,7 +184,7 @@ začněte používat vaší kancelář</target>
   </file>
   <file original="Documents/Base.lproj/Localizable.stringsdict" source-language="en" target-language="cs" datatype="plaintext">
     <header>
-      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="15.0" build-num="15A240d"/>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="14.3" build-num="14E222b"/>
     </header>
     <body>
       <trans-unit id="/%d selected:dict/NSStringLocalizedFormatKey:dict/:string" xml:space="preserve">
@@ -364,7 +364,7 @@ začněte používat vaší kancelář</target>
       </trans-unit>
       <trans-unit id="/Delete %lu Folder and %lu File:dict/lu_files:dict/zero:dict/:string" xml:space="preserve">
         <source/>
-        <target state="needs-translation"/>
+        <target/>
         <note/>
       </trans-unit>
       <trans-unit id="/Delete %lu Folder and %lu File:dict/lu_folders:dict/few:dict/:string" xml:space="preserve">
@@ -421,7 +421,7 @@ začněte používat vaší kancelář</target>
   </file>
   <file original="Documents/Base.lproj/Login.storyboard" source-language="en" target-language="cs" datatype="plaintext">
     <header>
-      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="15.0" build-num="15A240d"/>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="14.3" build-num="14E222b"/>
     </header>
     <body>
       <trans-unit id="0X2-Xg-z5B.text" xml:space="preserve">
@@ -662,7 +662,7 @@ ověření</target>
   </file>
   <file original="Documents/Base.lproj/Main.storyboard" source-language="en" target-language="cs" datatype="plaintext">
     <header>
-      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="15.0" build-num="15A240d"/>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="14.3" build-num="14E222b"/>
     </header>
     <body>
       <trans-unit id="0Hf-aP-smp.text" xml:space="preserve">
@@ -814,7 +814,7 @@ ověření</target>
   </file>
   <file original="Documents/Base.lproj/Settings.storyboard" source-language="en" target-language="cs" datatype="plaintext">
     <header>
-      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="15.0" build-num="15A240d"/>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="14.3" build-num="14E222b"/>
     </header>
     <body>
       <trans-unit id="0DJ-uV-iju.title" xml:space="preserve">
@@ -895,7 +895,7 @@ Poznámka: Pokud zapomenete přístupový kód, budete muset aplikaci smazat a p
   </file>
   <file original="Documents/Base.lproj/Sort.storyboard" source-language="en" target-language="cs" datatype="plaintext">
     <header>
-      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="15.0" build-num="15A240d"/>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="14.3" build-num="14E222b"/>
     </header>
     <body>
       <trans-unit id="HjM-la-pDc.text" xml:space="preserve">
@@ -922,7 +922,7 @@ Poznámka: Pokud zapomenete přístupový kód, budete muset aplikaci smazat a p
   </file>
   <file original="Documents/Base.lproj/Transfer.storyboard" source-language="en" target-language="cs" datatype="plaintext">
     <header>
-      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="15.0" build-num="15A240d"/>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="14.3" build-num="14E222b"/>
     </header>
     <body>
       <trans-unit id="9YY-0H-nww.text" xml:space="preserve">
@@ -959,7 +959,7 @@ Poznámka: Pokud zapomenete přístupový kód, budete muset aplikaci smazat a p
   </file>
   <file original="Documents/Base.lproj/UserProfile.storyboard" source-language="en" target-language="cs" datatype="plaintext">
     <header>
-      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="15.0" build-num="15A240d"/>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="14.3" build-num="14E222b"/>
     </header>
     <body>
       <trans-unit id="1S2-Q7-5vL.text" xml:space="preserve">
@@ -1016,7 +1016,7 @@ Poznámka: Pokud zapomenete přístupový kód, budete muset aplikaci smazat a p
   </file>
   <file original="Documents/Code/Vendor/PasscodeLock/Base.lproj/PasscodeLock.strings" source-language="en" target-language="cs" datatype="plaintext">
     <header>
-      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="15.0" build-num="15A240d"/>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="14.3" build-num="14E222b"/>
     </header>
     <body>
       <trans-unit id="PasscodeLockChangeDescription" xml:space="preserve">
@@ -1088,7 +1088,7 @@ Poznámka: Pokud zapomenete přístupový kód, budete muset aplikaci smazat a p
   </file>
   <file original="Documents/Code/Vendor/PasscodeLock/Views/Base.lproj/PasscodeLockView.xib" source-language="en" target-language="cs" datatype="plaintext">
     <header>
-      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="15.0" build-num="15A240d"/>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="14.3" build-num="14E222b"/>
     </header>
     <body>
       <trans-unit id="0CR-0R-0Nr.normalTitle" xml:space="preserve">
@@ -1170,7 +1170,7 @@ Poznámka: Pokud zapomenete přístupový kód, budete muset aplikaci smazat a p
   </file>
   <file original="Documents/en.lproj/Documents-InfoPlist.strings" source-language="en" target-language="cs" datatype="plaintext">
     <header>
-      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="15.0" build-num="15A240d"/>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="14.3" build-num="14E222b"/>
     </header>
     <body>
       <trans-unit id="CFBundleName" xml:space="preserve">
@@ -1227,7 +1227,7 @@ Poznámka: Pokud zapomenete přístupový kód, budete muset aplikaci smazat a p
   </file>
   <file original="Documents/en.lproj/Localizable.strings" source-language="en" target-language="cs" datatype="plaintext">
     <header>
-      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="15.0" build-num="15A240d"/>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="14.3" build-num="14E222b"/>
     </header>
     <body>
       <trans-unit id="%d selected" xml:space="preserve">
@@ -1260,17 +1260,17 @@ Poznámka: Pokud zapomenete přístupový kód, budete muset aplikaci smazat a p
         <target>%1$lu položek se stejným názvem již ve složce existuj '%2$@'. Přepsat položky?</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
-      <trans-unit id="&lt;p>Use the password created in &lt;a href=&quot;https://yandex.ru/id/about&quot;>Yandex ID&lt;/a>.&lt;/br>More detailed connection instructions can be found in the &lt;a href=&quot;https://yandex.ru/support/disk-desktop/webdav-app-passwords.html?lang=ru&quot;>help&lt;/a>.&lt;/p>" xml:space="preserve">
+      <trans-unit id="&lt;p&gt;Use the password created in &lt;a href=&quot;https://yandex.ru/id/about&quot;&gt;Yandex ID&lt;/a&gt;.&lt;/br&gt;More detailed connection instructions can be found in the &lt;a href=&quot;https://yandex.ru/support/disk-desktop/webdav-app-passwords.html?lang=ru&quot;&gt;help&lt;/a&gt;.&lt;/p&gt;" xml:space="preserve">
         <source>&lt;p&gt;Use the password created in &lt;a href="https://yandex.ru/id/about"&gt;Yandex ID&lt;/a&gt;.&lt;/br&gt;More detailed connection instructions can be found in the &lt;a href="https://yandex.ru/support/disk-desktop/webdav-app-passwords.html?lang=ru"&gt;help&lt;/a&gt;.&lt;/p&gt;</source>
         <target>&lt;p&gt;Použijte heslo vytvořené v &lt;a href="https://yandex.ru/id/about"&gt;Yandex ID&lt;/a&gt;.&lt;/br&gt;Podrobnější pokyny k připojení najdete v &lt;a href="https://yandex.ru/support/disk-desktop/webdav-app-passwords.html?lang=ru"&gt;nápovědě&lt;/a&gt;.&lt;/p&gt;</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
-      <trans-unit id="&lt;p>Use the password created in &lt;a href=&quot;https://yandex.ru/id/about&quot;>Yandex ID&lt;/a>.&lt;/p>&lt;p>More detailed connection instructions can be found in the &lt;a href=&quot;https://yandex.ru/support/disk-desktop/webdav-app-passwords.html?lang=ru&quot;>help&lt;/a>.&lt;/p>" xml:space="preserve">
+      <trans-unit id="&lt;p&gt;Use the password created in &lt;a href=&quot;https://yandex.ru/id/about&quot;&gt;Yandex ID&lt;/a&gt;.&lt;/p&gt;&lt;p&gt;More detailed connection instructions can be found in the &lt;a href=&quot;https://yandex.ru/support/disk-desktop/webdav-app-passwords.html?lang=ru&quot;&gt;help&lt;/a&gt;.&lt;/p&gt;" xml:space="preserve">
         <source>&lt;p&gt;Use the password created in &lt;a href="https://yandex.ru/id/about"&gt;Yandex ID&lt;/a&gt;.&lt;/p&gt;&lt;p&gt;More detailed connection instructions can be found in the &lt;a href="https://yandex.ru/support/disk-desktop/webdav-app-passwords.html?lang=ru"&gt;help&lt;/a&gt;.&lt;/p&gt;</source>
         <target>&lt;p&gt;Použijte heslo vytvořené v &lt;a href="https://yandex.ru/id/about"&gt;Yandex ID&lt;/a&gt;.&lt;/p&gt;&lt;p&gt;Podrobnější pokyny k připojení najdete v &lt;a href="https://yandex.ru/support/disk-desktop/webdav-app-passwords.html?lang=ru"&gt;nápovědě&lt;/a&gt;.&lt;/p&gt;</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
-      <trans-unit id="&lt;p>You must have a paid version of the player to use this service.&lt;/p>&lt;p>If you have activated double authentication, please generate a CDM application from the Infomaniak manager. &lt;a href=&quot;https://www.infomaniak.com/en/support/faq/1940/enable-two-step-verification&quot;>More...&lt;/a>&lt;/p>" xml:space="preserve">
+      <trans-unit id="&lt;p&gt;You must have a paid version of the player to use this service.&lt;/p&gt;&lt;p&gt;If you have activated double authentication, please generate a CDM application from the Infomaniak manager. &lt;a href=&quot;https://www.infomaniak.com/en/support/faq/1940/enable-two-step-verification&quot;&gt;More...&lt;/a&gt;&lt;/p&gt;" xml:space="preserve">
         <source>&lt;p&gt;You must have a paid version of the player to use this service.&lt;/p&gt;&lt;p&gt;If you have activated double authentication, please generate a CDM application from the Infomaniak manager. &lt;a href="https://www.infomaniak.com/en/support/faq/1940/enable-two-step-verification"&gt;More...&lt;/a&gt;&lt;/p&gt;</source>
         <target>&lt;p&gt;Pro použití této služby musíte používat placenou verzi přehrávače.&lt;/p&gt;&lt;p&gt;Pokud máte aktivované dvojité ověřování, vygenerujte si žádost CDM ze správce Infomaniak. &lt;a href="https://www.infomaniak.com/en/support/faq/1940/enable-two-step-verification"&gt;Další...&lt;/a&gt;&lt;/p&gt;</target>
         <note>No comment provided by engineer.</note>
@@ -1464,8 +1464,8 @@ Poznámka: Pokud zapomenete přístupový kód, budete muset aplikaci smazat a p
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Are you sure you want to delete the account %@ from this devce?" xml:space="preserve">
-        <source>Are you sure you want to delete the account %@ from this devce?</source>
-        <target state="translated">Opravdu chcete z tohoto zařízení odstranit účet %@?</target>
+        <source>Are you sure you want to delete the account %@ from this device?</source>
+        <target>Opravdu chcete z tohoto zařízení odstranit účet %@?</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Author" xml:space="preserve">
@@ -1640,7 +1640,7 @@ Poznámka: Pokud zapomenete přístupový kód, budete muset aplikaci smazat a p
       </trans-unit>
       <trans-unit id="Connect Storage" xml:space="preserve">
         <source>Connect Storage</source>
-        <target state="translated">Připojit úložiště</target>
+        <target>Připojit úložiště</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Connect third-party storage&#10;like Nextcloud, ownCloud, Yandex Disk and&#10;others which use WebDAV protocol." xml:space="preserve">
@@ -1814,7 +1814,7 @@ jiné, které používají protokol WebDAV.</target>
       </trans-unit>
       <trans-unit id="Couldn't rename the file" xml:space="preserve">
         <source>Couldn't rename the file</source>
-        <target state="translated">Soubor se nepodařilo přejmenovat</target>
+        <target>Soubor se nepodařilo přejmenovat</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Couldn't save changes at server. Your modified document is saved in local storage as %@" xml:space="preserve">
@@ -1939,7 +1939,7 @@ jiné, které používají protokol WebDAV.</target>
       </trans-unit>
       <trans-unit id="DocSpace admin" xml:space="preserve">
         <source>DocSpace admin</source>
-        <target state="translated">Správce DocSpace</target>
+        <target>Správce DocSpace</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Document" xml:space="preserve">
@@ -2158,6 +2158,10 @@ jiné, které používají protokol WebDAV.</target>
         <target>Stahování výsledku ze služby online konverze selhalo</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
+      <trans-unit id="Favorites" xml:space="preserve">
+        <source>Favorites</source>
+        <note>Category title</note>
+      </trans-unit>
       <trans-unit id="Features" xml:space="preserve">
         <source>Features</source>
         <target>Funkce</target>
@@ -2280,12 +2284,12 @@ jiné, které používají protokol WebDAV.</target>
       </trans-unit>
       <trans-unit id="Import File" xml:space="preserve">
         <source>Import File</source>
-        <target state="translated">Importovat soubor</target>
+        <target>Importovat soubor</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Import Image" xml:space="preserve">
         <source>Import Image</source>
-        <target state="translated">Importovat obrázek</target>
+        <target>Importovat obrázek</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="In online mode, use real-time co-editing features of %@ to work on documents together with your portal members, share documents and create common storage folders." xml:space="preserve">
@@ -2838,7 +2842,7 @@ Pokud problém přetrvává, kontaktujte nás a uveďte tento kód chyby: Box - 
       </trans-unit>
       <trans-unit id="Power user" xml:space="preserve">
         <source>Power user</source>
-        <target state="translated">Mocný uživatel</target>
+        <target>Mocný uživatel</target>
         <note>Share status</note>
       </trans-unit>
       <trans-unit id="Presentation" xml:space="preserve">
@@ -2885,6 +2889,10 @@ Pokud problém přetrvává, kontaktujte nás a uveďte tento kód chyby: Box - 
         <source>Push notifications disabled</source>
         <target>Push oznámení jsou vypnuta</target>
         <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Recent" xml:space="preserve">
+        <source>Recent</source>
+        <note>Category title</note>
       </trans-unit>
       <trans-unit id="Recover here" xml:space="preserve">
         <source>Recover here</source>
@@ -2943,7 +2951,7 @@ Pokud problém přetrvává, kontaktujte nás a uveďte tento kód chyby: Box - 
       </trans-unit>
       <trans-unit id="Request Entity Too Large" xml:space="preserve">
         <source>Request Entity Too Large</source>
-        <target state="translated">Příliš velká entita požadavku</target>
+        <target>Příliš velká entita požadavku</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Request canceled" xml:space="preserve">
@@ -3225,7 +3233,7 @@ Pokud problém přetrvává, kontaktujte nás a uveďte tento kód chyby: Box - 
       </trans-unit>
       <trans-unit id="Take a Picture" xml:space="preserve">
         <source>Take a Picture</source>
-        <target state="translated">Vyfotit</target>
+        <target>Vyfotit</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Tb" xml:space="preserve">
@@ -3878,7 +3886,7 @@ Poté k nim lze přistoupit z jakéhokoli jiného zařízení.</target>
   </file>
   <file original="Settings.bundle/en.lproj/Root.strings" source-language="en" target-language="cs" datatype="plaintext">
     <header>
-      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="15.0" build-num="15A240d"/>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="14.3" build-num="14E222b"/>
     </header>
     <body>
       <trans-unit id="Acknowledgements" xml:space="preserve">

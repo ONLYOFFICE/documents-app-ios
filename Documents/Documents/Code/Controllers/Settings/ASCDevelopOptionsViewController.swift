@@ -132,6 +132,14 @@ class ASCDevelopOptionsViewController: ASCBaseTableViewController {
                         ASCAppSettings.Feature.openViewModeByDefault = isOn
                     }
                 )),
+                .switchControl(viewModel: ASCSwitchCellViewModel(
+                    title: "Force RTL UI (false)",
+                    isOn: ASCAppSettings.Feature.forceRtl,
+                    valueChanged: { isOn in
+                        ASCAppSettings.Feature.forceRtl = isOn
+                        ASCStyles.updateSemanticContentAttribute()
+                    }
+                )),
             ],
             header: NSLocalizedString("Features", comment: "")
         )

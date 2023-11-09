@@ -37,14 +37,17 @@ class ASCFiltersCollectionViewCell: UICollectionViewCell {
     func addDeselectFilterBtnToView() {
         addSubview(deselectFilterBtn)
         setFilterResetBtn()
-        
-        labelText.translatesAutoresizingMaskIntoConstraints = false
-        let top = labelText.topAnchor.constraint(equalTo: topAnchor)
-        let left = labelText.leadingAnchor.constraint(equalTo: leadingAnchor)
-        let bottom = labelText.bottomAnchor.constraint(equalTo: bottomAnchor)
-        let right = labelText.trailingAnchor.constraint(equalTo: deselectFilterBtn.leadingAnchor, constant: -9)
-        
-        NSLayoutConstraint.activate([top, left, bottom, right])
+        labelText.anchor(
+            top: topAnchor,
+            leading: leadingAnchor,
+            bottom: bottomAnchor,
+            trailing: deselectFilterBtn.leadingAnchor,
+            padding: UIEdgeInsets(
+                top: 0,
+                left: 9,
+                bottom: 0,
+                right: 0)
+        )
     }
 }
 
@@ -58,16 +61,17 @@ private extension ASCFiltersCollectionViewCell {
     }
 
     func setFilterResetBtn() {
-        
-        deselectFilterBtn.translatesAutoresizingMaskIntoConstraints = false
-        
-        let top = deselectFilterBtn.topAnchor.constraint(equalTo: topAnchor, constant: 8)
-        let bottom = deselectFilterBtn.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -8)
-        let right = deselectFilterBtn.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -8)
-        let width = deselectFilterBtn.widthAnchor.constraint(equalToConstant: 16)
-        let height = deselectFilterBtn.heightAnchor.constraint(equalToConstant: 16)
-        
-        NSLayoutConstraint.activate([top, bottom, right, width, height])
+        deselectFilterBtn.anchor(
+            top: topAnchor,
+            bottom: bottomAnchor,
+            trailing: trailingAnchor,
+            padding: UIEdgeInsets(
+                top: 8,
+                left: 0,
+                bottom: 8,
+                right: 8),
+            size: CGSize(width: 16, height: 16)
+        )
         deselectFilterBtn.setImage(Asset.Images.tagClose.image, for: .normal)
     }
 }

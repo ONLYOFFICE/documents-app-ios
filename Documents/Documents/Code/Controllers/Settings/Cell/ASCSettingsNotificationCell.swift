@@ -42,13 +42,16 @@ class ASCSettingsNotificationCell: UITableViewCell {
         if displayError {
             if errorIconView.superview == nil {
                 contentView.addSubview(errorIconView)
-                errorIconView.translatesAutoresizingMaskIntoConstraints = false
-                
-                let top = errorIconView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 0)
-                let bottom = errorIconView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: 0)
-                let right = errorIconView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -10)
-                
-                NSLayoutConstraint.activate([top, bottom, right])
+                errorIconView.anchor(
+                    top: contentView.topAnchor,
+                    bottom: contentView.bottomAnchor,
+                    trailing: contentView.trailingAnchor,
+                    padding: UIEdgeInsets(
+                        top: 0,
+                        left: 0,
+                        bottom: 0,
+                        right: 10)
+                )
             }
         } else {
             errorIconView.removeFromSuperview()

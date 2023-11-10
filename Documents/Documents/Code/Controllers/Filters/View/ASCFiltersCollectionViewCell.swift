@@ -37,11 +37,18 @@ class ASCFiltersCollectionViewCell: UICollectionViewCell {
     func addDeselectFilterBtnToView() {
         addSubview(deselectFilterBtn)
         setFilterResetBtn()
-        labelText.anchor(top: topAnchor,
-                         left: leftAnchor,
-                         bottom: bottomAnchor,
-                         right: deselectFilterBtn.leftAnchor,
-                         leftConstant: 9)
+        labelText.anchor(
+            top: topAnchor,
+            leading: leadingAnchor,
+            bottom: bottomAnchor,
+            trailing: deselectFilterBtn.leadingAnchor,
+            padding: UIEdgeInsets(
+                top: 0,
+                left: 9,
+                bottom: 0,
+                right: 0
+            )
+        )
     }
 }
 
@@ -55,14 +62,18 @@ private extension ASCFiltersCollectionViewCell {
     }
 
     func setFilterResetBtn() {
-        deselectFilterBtn.anchor(top: topAnchor,
-                                 bottom: bottomAnchor,
-                                 right: rightAnchor,
-                                 topConstant: 8,
-                                 bottomConstant: 8,
-                                 rightConstant: 8,
-                                 widthConstant: 16,
-                                 heightConstant: 16)
+        deselectFilterBtn.anchor(
+            top: topAnchor,
+            bottom: bottomAnchor,
+            trailing: trailingAnchor,
+            padding: UIEdgeInsets(
+                top: 8,
+                left: 0,
+                bottom: 8,
+                right: 8
+            ),
+            size: CGSize(width: 16, height: 16)
+        )
         deselectFilterBtn.setImage(Asset.Images.tagClose.image, for: .normal)
     }
 }

@@ -36,8 +36,7 @@ class ASCProfileAvatarView: UIImageView {
         layer.cornerRadius = bounds.width * 0.5
         layer.masksToBounds = true
         layer.addSublayer(innerBorderLayer)
-
-        backgroundColor = .groupTableViewBackground
+        backgroundColor = .systemGroupedBackground
     }
 
     override func layoutSublayers(of layer: CALayer) {

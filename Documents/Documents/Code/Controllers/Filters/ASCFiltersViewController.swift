@@ -99,9 +99,9 @@ private extension ASCFiltersViewController {
     func showSpinning() {
         showResultsButton.addSubview(activityIndicator)
         activityIndicator.anchor(top: showResultsButton.topAnchor,
-                                 left: showResultsButton.leftAnchor,
+                                 leading: showResultsButton.leadingAnchor,
                                  bottom: showResultsButton.bottomAnchor,
-                                 right: showResultsButton.rightAnchor)
+                                 trailing: showResultsButton.trailingAnchor)
         activityIndicator.startAnimating()
     }
 
@@ -125,13 +125,19 @@ private extension ASCFiltersViewController {
     func showResultButtonConstraints() {
         view.addSubview(showResultsButton)
         showResultsButton.anchor(
-            left: view.leftAnchor,
+            leading: view.leadingAnchor,
             bottom: view.safeAreaLayoutGuide.bottomAnchor,
-            right: view.rightAnchor,
-            leftConstant: Constants.leftRightInserts,
-            bottomConstant: 10,
-            rightConstant: Constants.leftRightInserts,
-            heightConstant: Constants.buttonHeight
+            trailing: view.trailingAnchor,
+            padding: UIEdgeInsets(
+                top: 0,
+                left: Constants.leftRightInserts,
+                bottom: 10,
+                right: Constants.leftRightInserts
+            ),
+            size: CGSize(
+                width: 0,
+                height: Constants.buttonHeight
+            )
         )
     }
 
@@ -156,7 +162,10 @@ private extension ASCFiltersViewController {
     }
 
     func setupCollectionView() {
-        let layout = LeftAlignedCollectionViewFlowLayout()
+        let layout = ASCCommon.isRTL
+            ? ASCRightAlignedCollectionViewFlowLayout()
+            : ASCLeftAlignedCollectionViewFlowLayout()
+
         collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
         collectionView.backgroundColor = .clear
         guard let collectionView = collectionView else { return }
@@ -175,11 +184,10 @@ private extension ASCFiltersViewController {
     func setupCollectionViewConstraints() {
         collectionView.anchor(
             top: view.safeAreaLayoutGuide.topAnchor,
-            left: view.leftAnchor,
+            leading: view.leadingAnchor,
             bottom: showResultsButton.topAnchor,
-            right: view.rightAnchor,
-            leftConstant: Constants.leftRightInserts,
-            rightConstant: Constants.leftRightInserts
+            trailing: view.trailingAnchor,
+            padding: UIEdgeInsets(top: 0, left: Constants.leftRightInserts, bottom: 0, right: Constants.leftRightInserts)
         )
     }
 

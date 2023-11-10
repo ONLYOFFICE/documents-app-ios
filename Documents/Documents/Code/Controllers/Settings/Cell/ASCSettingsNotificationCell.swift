@@ -46,7 +46,12 @@ class ASCSettingsNotificationCell: UITableViewCell {
                     top: contentView.topAnchor,
                     bottom: contentView.bottomAnchor,
                     trailing: contentView.trailingAnchor,
-                    padding: UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 10)
+                    padding: UIEdgeInsets(
+                        top: 0,
+                        left: 0,
+                        bottom: 0,
+                        right: 10
+                    )
                 )
             }
         } else {

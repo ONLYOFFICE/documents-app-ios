@@ -681,6 +681,9 @@ extension ASCDocumentsViewController {
             button.buttonWidth = 75
             button.titleLabel?.font = UIFont.systemFont(ofSize: 12)
             button.horizontalCenterIconOverText()
+            if ASCCommon.isRTL {
+                button.semanticContentAttribute = .forceLeftToRight
+            }
         }
 
         return buttons
@@ -1112,7 +1115,7 @@ extension ASCDocumentsViewController: MGSwipeTableCellDelegate {
                         canSwipe direction: MGSwipeDirection,
                         from point: CGPoint) -> Bool
     {
-        return direction != .leftToRight
+        ASCCommon.isRTL ? direction == .leftToRight : direction == .rightToLeft
     }
 
     func swipeTableCell(_ cell: MGSwipeTableCell,
@@ -1122,12 +1125,10 @@ extension ASCDocumentsViewController: MGSwipeTableCellDelegate {
     {
         swipeSettings.transition = .border
 
-        if direction == .rightToLeft {
-            if let fileCell = cell as? ASCFileCell {
-                return buildFileCellMenu(for: fileCell)
-            } else if let folderCell = cell as? ASCFolderCell {
-                return buildFolderCellMenu(for: folderCell)
-            }
+        if let fileCell = cell as? ASCFileCell {
+            return buildFileCellMenu(for: fileCell)
+        } else if let folderCell = cell as? ASCFolderCell {
+            return buildFolderCellMenu(for: folderCell)
         }
 
         return nil

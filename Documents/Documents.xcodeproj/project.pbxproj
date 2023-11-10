@@ -129,7 +129,6 @@
 		1DF505242641867300B78496 /* ASCOneDriveFileProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DF505232641867300B78496 /* ASCOneDriveFileProvider.swift */; };
 		1DF6E0A926D5323B00FB42CE /* ASCOneDriveProviderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DF6E0A826D5323A00FB42CE /* ASCOneDriveProviderTests.swift */; };
 		7E7324B635B9B2D98E80FD03 /* Pods_Documents.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1B32667722AD980849E124F1 /* Pods_Documents.framework */; };
-		8A79BCD62080DD5C00998DA7 /* ASConverterOptionsAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A79BCD52080DD5C00998DA7 /* ASConverterOptionsAlert.swift */; };
 		9AC1D42040BBA923AD7D49C2 /* Pods_DocumentsTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C98C6D1CF16699DFAAAA3A64 /* Pods_DocumentsTests.framework */; };
 		F336546227E4903400ABBEB3 /* KeyboardManagerHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = F336546127E4903400ABBEB3 /* KeyboardManagerHelper.swift */; };
 		F33E473B27AD9BC200EFF6D9 /* ASCWebKitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F33E473A27AD9BC200EFF6D9 /* ASCWebKitViewController.swift */; };
@@ -347,6 +346,7 @@
 		FC6D9A512355CDC100A970C6 /* ASCDropboxProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC6D9A502355CDC100A970C6 /* ASCDropboxProvider.swift */; };
 		FC6DD4E61EDD59330095B16C /* ParkedTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC6DD4E51EDD59330095B16C /* ParkedTextField.swift */; };
 		FC6F0CD71F542E7E002D33D9 /* ASCSSOSignInController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC6F0CD61F542E7E002D33D9 /* ASCSSOSignInController.swift */; };
+		FC72B0C92AFE180900FDCD1D /* ASCRightAlignedCollectionViewFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC72B0C82AFE180900FDCD1D /* ASCRightAlignedCollectionViewFlowLayout.swift */; };
 		FC7765972926063D00ABAB5C /* ASCGlobalTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC7765962926063D00ABAB5C /* ASCGlobalTest.swift */; };
 		FC77846C24756CC2005ED631 /* ASCFolderProviderType.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCF8472C22CB4A5400ABC3B4 /* ASCFolderProviderType.swift */; };
 		FC77846D24756CDB005ED631 /* ASCFileProviderType.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC41D80D2265DADC00A155C2 /* ASCFileProviderType.swift */; };
@@ -649,7 +649,6 @@
 		3FCB9A5180DCB4B88DC1FAF4 /* Pods-Documents.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Documents.debug.xcconfig"; path = "../Pods/Target Support Files/Pods-Documents/Pods-Documents.debug.xcconfig"; sourceTree = "<group>"; };
 		6CBC0ED0667B3A2030713452 /* Pods-Documents-Dev.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Documents-Dev.debug.xcconfig"; path = "../Pods/Target Support Files/Pods-Documents-Dev/Pods-Documents-Dev.debug.xcconfig"; sourceTree = "<group>"; };
 		776605EDCAB83C1E517628AF /* Pods-Documents-DocumentsTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Documents-DocumentsTests.debug.xcconfig"; path = "../Pods/Target Support Files/Pods-Documents-DocumentsTests/Pods-Documents-DocumentsTests.debug.xcconfig"; sourceTree = "<group>"; };
-		8A79BCD52080DD5C00998DA7 /* ASConverterOptionsAlert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASConverterOptionsAlert.swift; sourceTree = "<group>"; };
 		92C4B2EE0CEF31DA5A45CD1A /* Pods_Documents_Alpha.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Documents_Alpha.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		97AF4777D687CAB5646E1F07 /* Pods-DocumentsTests.documents-alpha.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DocumentsTests.documents-alpha.xcconfig"; path = "../Pods/Target Support Files/Pods-DocumentsTests/Pods-DocumentsTests.documents-alpha.xcconfig"; sourceTree = "<group>"; };
 		B7CE7D158863590DD1A006AC /* Pods-Documents.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Documents.release.xcconfig"; path = "../Pods/Target Support Files/Pods-Documents/Pods-Documents.release.xcconfig"; sourceTree = "<group>"; };
@@ -916,6 +915,7 @@
 		FC6E84E22775CE0300028965 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/PasscodeLock.strings"; sourceTree = "<group>"; };
 		FC6E84E32775CE0300028965 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/PasscodeLockView.strings"; sourceTree = "<group>"; };
 		FC6F0CD61F542E7E002D33D9 /* ASCSSOSignInController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASCSSOSignInController.swift; sourceTree = "<group>"; };
+		FC72B0C82AFE180900FDCD1D /* ASCRightAlignedCollectionViewFlowLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASCRightAlignedCollectionViewFlowLayout.swift; sourceTree = "<group>"; };
 		FC7765962926063D00ABAB5C /* ASCGlobalTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCGlobalTest.swift; sourceTree = "<group>"; };
 		FC786FBD1EB8771700181D62 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Intro.storyboard; sourceTree = "<group>"; };
 		FC786FC01EB8771B00181D62 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Intro.strings; sourceTree = "<group>"; };
@@ -2041,8 +2041,9 @@
 			isa = PBXGroup;
 			children = (
 				FC1984952805559D002057B2 /* ASCFiltersCollectionViewCell.swift */,
-				FC1984962805559D002057B2 /* ASCLeftAlignedCollectionViewFlowLayout.swift */,
 				FC1984972805559D002057B2 /* ASCFiltersCollectionViewHeader.swift */,
+				FC1984962805559D002057B2 /* ASCLeftAlignedCollectionViewFlowLayout.swift */,
+				FC72B0C82AFE180900FDCD1D /* ASCRightAlignedCollectionViewFlowLayout.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -2621,7 +2622,6 @@
 			children = (
 				FCF6957B2632DBCF00808644 /* Style */,
 				FCFB36061EDF0AB00001597E /* ASCBanner.swift */,
-				8A79BCD52080DD5C00998DA7 /* ASConverterOptionsAlert.swift */,
 				FC8540C31E83A582000C2436 /* ASCProgressAlert.swift */,
 				FC142A9928992D6C00EDE7CE /* ASCPaddingLabel.swift */,
 				FCF2761B22C0E8E500984E83 /* ASCProfileAvatarView.swift */,
@@ -3849,6 +3849,7 @@
 				1D299157274FB66600A06F3B /* ASCPortalTypeDefinderByCurrentConnection.swift in Sources */,
 				1D7174A028F7D9F1007D6E4B /* ASCSharingSettingsAccessRoomsProvider.swift in Sources */,
 				FCEF9D1F1ED2C94300627BA5 /* EnterPasscodeState.swift in Sources */,
+				FC72B0C92AFE180900FDCD1D /* ASCRightAlignedCollectionViewFlowLayout.swift in Sources */,
 				FC3AF6BD21709259004A96FD /* ASCFileManager.swift in Sources */,
 				FC68527326837B7300D830EC /* NetworkingError.swift in Sources */,
 				FC68527B26837B7300D830EC /* KingfisherWrapper+Onlyoffice.swift in Sources */,
@@ -3911,7 +3912,6 @@
 				FC59436A2AE6816E001BA2F9 /* ASCEditorManagerOptionsProtocol.swift in Sources */,
 				FC9E28BF2244E88C000D315E /* ASCDocumentsEmptyView.swift in Sources */,
 				F33E473B27AD9BC200EFF6D9 /* ASCWebKitViewController.swift in Sources */,
-				8A79BCD62080DD5C00998DA7 /* ASConverterOptionsAlert.swift in Sources */,
 				FC89C39E2368450700705DE7 /* ASCGoogleDriveProvider.swift in Sources */,
 				1DBA4736298FDBA100244F30 /* ASCEntitySecurity.swift in Sources */,
 				1D1DB5562759023800FA0BEE /* ASCSharingSettingsAccessDocumentFormProvider.swift in Sources */,

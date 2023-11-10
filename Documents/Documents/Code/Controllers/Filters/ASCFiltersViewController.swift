@@ -132,10 +132,12 @@ private extension ASCFiltersViewController {
                 top: 0,
                 left: Constants.leftRightInserts,
                 bottom: 10,
-                right: Constants.leftRightInserts),
+                right: Constants.leftRightInserts
+            ),
             size: CGSize(
                 width: 0,
-                height: Constants.buttonHeight)
+                height: Constants.buttonHeight
+            )
         )
     }
 
@@ -160,7 +162,10 @@ private extension ASCFiltersViewController {
     }
 
     func setupCollectionView() {
-        let layout = LeftAlignedCollectionViewFlowLayout()
+        let layout = ASCCommon.isRTL
+            ? ASCRightAlignedCollectionViewFlowLayout()
+            : ASCLeftAlignedCollectionViewFlowLayout()
+
         collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
         collectionView.backgroundColor = .clear
         guard let collectionView = collectionView else { return }

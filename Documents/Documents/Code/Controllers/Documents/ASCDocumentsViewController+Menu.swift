@@ -681,7 +681,7 @@ extension ASCDocumentsViewController {
             button.buttonWidth = 75
             button.titleLabel?.font = UIFont.systemFont(ofSize: 12)
             button.horizontalCenterIconOverText()
-            if isRTL() {
+            if ASCCommon.isRTL {
                 button.semanticContentAttribute = .forceLeftToRight
             }
         }
@@ -1115,11 +1115,7 @@ extension ASCDocumentsViewController: MGSwipeTableCellDelegate {
                         canSwipe direction: MGSwipeDirection,
                         from point: CGPoint) -> Bool
     {
-        if isRTL() {
-            return direction == .leftToRight
-        } else {
-            return direction == .rightToLeft
-        }
+        ASCCommon.isRTL ? direction == .leftToRight : direction == .rightToLeft
     }
 
     func swipeTableCell(_ cell: MGSwipeTableCell,
@@ -1136,9 +1132,5 @@ extension ASCDocumentsViewController: MGSwipeTableCellDelegate {
         }
 
         return nil
-    }
-
-    private func isRTL() -> Bool {
-        return UIApplication.shared.userInterfaceLayoutDirection == .rightToLeft
     }
 }

@@ -46,7 +46,8 @@ class ASCFiltersCollectionViewCell: UICollectionViewCell {
                 top: 0,
                 left: 9,
                 bottom: 0,
-                right: 0)
+                right: 0
+            )
         )
     }
 }
@@ -69,7 +70,8 @@ private extension ASCFiltersCollectionViewCell {
                 top: 8,
                 left: 0,
                 bottom: 8,
-                right: 8),
+                right: 8
+            ),
             size: CGSize(width: 16, height: 16)
         )
         deselectFilterBtn.setImage(Asset.Images.tagClose.image, for: .normal)

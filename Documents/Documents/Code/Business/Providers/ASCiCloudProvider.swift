@@ -699,10 +699,15 @@ class ASCiCloudProvider: ASCFileProviderProtocol & ASCSortableFileProviderProtoc
         let fileTitle = resolve(fileTitle: name + "." + fileExtension, for: items.filter { $0 is ASCFile } as? [ASCFile] ?? [])
             ?? name + "." + fileExtension
 
+        guard let filePath = ASCLocalFileHelper.shared.resolve(filePath: Path(folder.id) + fileTitle) else {
+            completeon?(self, nil, false, ASCProviderError(msg: NSLocalizedString("Can not create file with this name.", comment: "")))
+            return
+        }
+
         // Copy empty template to desination path
         if let templatePath = ASCFileManager.documentTemplatePath(with: fileExtension) {
             let localUrl = Path(templatePath).url
-            let remotePath = (Path(folder.id) + fileTitle).rawValue
+            let remotePath = filePath.rawValue
 
             operationProcess = provider.copyItem(localFile: localUrl, to: remotePath) { [weak self] error in
                 DispatchQueue.main.async { [weak self] in
@@ -712,39 +717,34 @@ class ASCiCloudProvider: ASCFileProviderProtocol & ASCSortableFileProviderProtoc
                         completeon?(strongSelf, nil, false, ASCProviderError(msg: error.localizedDescription))
                     } else {
                         self?.attributesOfItem(path: remotePath, completionHandler: { [weak self] fileObject, error in
-                            DispatchQueue.main.async { [weak self] in
-                                guard let strongSelf = self else { return }
+                            guard let strongSelf = self else { return }
 
-                                if let error = error {
-                                    completeon?(strongSelf, nil, false, ASCProviderError(msg: error.localizedDescription))
-                                } else if let fileObject = fileObject {
-                                    let fileSize: UInt64 = (fileObject.size < 0) ? 0 : UInt64(fileObject.size)
-                                    print("123")
-                                    let cloudFile = ASCFile()
-                                    cloudFile.id = fileObject.path
-                                    cloudFile.rootFolderType = .icloudAll
-                                    cloudFile.title = fileObject.name
-                                    cloudFile.created = fileObject.creationDate ?? fileObject.modifiedDate
-                                    cloudFile.updated = fileObject.modifiedDate
-                                    cloudFile.createdBy = strongSelf.user
-                                    cloudFile.updatedBy = strongSelf.user
-                                    cloudFile.parent = folder
-                                    cloudFile.viewUrl = fileObject.path
-                                    cloudFile.displayContentLength = String.fileSizeToString(with: fileSize)
-                                    cloudFile.pureContentLength = Int(fileSize)
-
-                                    ASCAnalytics.logEvent(ASCConstants.Analytics.Event.createEntity, parameters: [
-                                        ASCAnalytics.Event.Key.portal: "icloud",
-                                        ASCAnalytics.Event.Key.onDevice: false,
-                                        ASCAnalytics.Event.Key.type: ASCAnalytics.Event.Value.file,
-                                        ASCAnalytics.Event.Key.fileExt: cloudFile.title.fileExtension().lowercased(),
-                                    ])
-
-                                    completeon?(strongSelf, cloudFile, true, nil)
-                                } else {
-                                    completeon?(strongSelf, nil, false, nil)
-                                }
+                            if let error = error {
+                                completeon?(strongSelf, nil, false, ASCProviderError(msg: error.localizedDescription))
                             }
+                            let fileSize: UInt64 = (filePath.fileSize ?? 0 < 0) ? 0 : UInt64(filePath.fileSize ?? 0)
+                            print("123")
+                            let cloudFile = ASCFile()
+                            cloudFile.id = filePath.rawValue
+                            cloudFile.rootFolderType = .icloudAll
+                            cloudFile.title = filePath.fileName
+                            cloudFile.created = filePath.creationDate ?? filePath.modificationDate
+                            cloudFile.updated = filePath.modificationDate
+                            cloudFile.createdBy = strongSelf.user
+                            cloudFile.updatedBy = strongSelf.user
+                            cloudFile.parent = folder
+                            cloudFile.viewUrl = filePath.rawValue
+                            cloudFile.displayContentLength = String.fileSizeToString(with: fileSize)
+                            cloudFile.pureContentLength = Int(fileSize)
+
+                            ASCAnalytics.logEvent(ASCConstants.Analytics.Event.createEntity, parameters: [
+                                ASCAnalytics.Event.Key.portal: "icloud",
+                                ASCAnalytics.Event.Key.onDevice: false,
+                                ASCAnalytics.Event.Key.type: ASCAnalytics.Event.Value.file,
+                                ASCAnalytics.Event.Key.fileExt: cloudFile.title.fileExtension().lowercased(),
+                            ])
+
+                            completeon?(strongSelf, cloudFile, true, nil)
                         })
                     }
                 }
@@ -847,14 +847,14 @@ class ASCiCloudProvider: ASCFileProviderProtocol & ASCSortableFileProviderProtoc
         provider.moveItem(path: oldPath.rawValue, to: newPath.rawValue, overwrite: false) { [weak self] error in
             DispatchQueue.main.async { [weak self] in
                 guard let strongSelf = self else { return }
-                guard let rootFolder = strongSelf.folder else { return } // Основная папка iCloud
 
                 if let error = error {
-                    completeon?(strongSelf, nil, false, ASCProviderError(msg: error.localizedDescription))
+                    completeon?(strongSelf, nil, false, ASCProviderError(error))
                 } else {
                     if let file = file {
                         file.id = newPath.rawValue
                         file.title = newPath.fileName
+                        file.viewUrl = newPath.rawValue
 
                         completeon?(strongSelf, file, true, nil)
                     } else if let folder = folder {
@@ -864,14 +864,6 @@ class ASCiCloudProvider: ASCFileProviderProtocol & ASCSortableFileProviderProtoc
                         completeon?(strongSelf, folder, true, nil)
                     } else {
                         completeon?(strongSelf, nil, false, ASCProviderError(msg: NSLocalizedString("Unknown item type.", comment: "")))
-                    }
-
-                    strongSelf.fetch(for: rootFolder, parameters: [:]) { provider, folder, success, error in
-                        if success {
-                            print("iCloud sync success")
-                        } else {
-                            print("ERROR: \(error?.localizedDescription ?? "Unknown ERROR")")
-                        }
                     }
                 }
             }

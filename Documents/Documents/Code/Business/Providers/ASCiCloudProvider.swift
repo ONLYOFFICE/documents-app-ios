@@ -723,7 +723,6 @@ class ASCiCloudProvider: ASCFileProviderProtocol & ASCSortableFileProviderProtoc
                                 completeon?(strongSelf, nil, false, ASCProviderError(msg: error.localizedDescription))
                             }
                             let fileSize: UInt64 = (filePath.fileSize ?? 0 < 0) ? 0 : UInt64(filePath.fileSize ?? 0)
-                            print("123")
                             let cloudFile = ASCFile()
                             cloudFile.id = filePath.rawValue
                             cloudFile.rootFolderType = .icloudAll
@@ -924,9 +923,10 @@ class ASCiCloudProvider: ASCFileProviderProtocol & ASCSortableFileProviderProtoc
             operationQueue.addOperation { [weak self] in
                 let semaphore = DispatchSemaphore(value: 0)
                 let destPath = NSString(string: folder.id).appendingPathComponent(NSString(string: entity.id).lastPathComponent)
+                let entityName = entity is ASCFile ? entity.id.fileName() + "." + entity.id.fileExtension() : entity.id.fileName()
 
                 self?.attributesOfItem(path: destPath, completionHandler: { object, error in
-                    if error == nil {
+                    if object?.name == entityName {
                         conflictItems.append(entity)
                     }
                     semaphore.signal()
@@ -970,30 +970,47 @@ class ASCiCloudProvider: ASCFileProviderProtocol & ASCSortableFileProviderProtoc
                 let semaphore = DispatchSemaphore(value: 0)
                 let destPath = NSString(string: folder.id).appendingPathComponent(NSString(string: entity.id).lastPathComponent)
 
-                if move {
-                    provider.moveItem(path: entity.id, to: destPath, overwrite: overwrite, completionHandler: { error in
-                        if let error = error {
-                            lastError = error
-                        } else {
-                            results.append(entity)
-                        }
+                func moveItemHandler(error: Error!) {
+                    if let error = error {
+                        lastError = error
+                        semaphore.signal()
+                    } else {
+                        results.append(entity)
                         DispatchQueue.main.async {
                             handler?(.progress, Float(index) / Float(items.count), entity, error, &cancel)
                         }
                         semaphore.signal()
-                    })
-                } else {
-                    provider.copyItem(path: entity.id, to: destPath, overwrite: overwrite, completionHandler: { error in
-                        if let error = error {
-                            lastError = error
+                    }
+                }
+
+                if overwrite {
+                    provider.contents(path: destPath) { data, error in
+                        if data != nil {
+                            provider.removeItem(path: destPath) { removeError in
+                                if let removeError = removeError {
+                                    lastError = removeError
+                                    semaphore.signal()
+                                    return
+                                } else {
+                                    provider.moveItem(path: entity.id, to: destPath, completionHandler: moveItemHandler)
+                                }
+                            }
+                            return
                         } else {
-                            results.append(entity)
+                            provider.moveItem(path: entity.id, to: destPath, completionHandler: moveItemHandler)
+                            return
                         }
-                        DispatchQueue.main.async {
-                            handler?(.progress, Float(index + 1) / Float(items.count), entity, error, &cancel)
+                    }
+                } else {
+                    provider.contents(path: destPath) { data, error in
+                        if data != nil {
+                            self.createNewPath(title: entity.id.fileName() + "." + entity.id.fileExtension(), in: folder) { newPath in
+                                provider.moveItem(path: entity.id, to: newPath, completionHandler: moveItemHandler)
+                            }
+                        } else {
+                            provider.moveItem(path: entity.id, to: destPath, completionHandler: moveItemHandler)
                         }
-                        semaphore.signal()
-                    })
+                    }
                 }
                 semaphore.wait()
             }
@@ -1008,6 +1025,25 @@ class ASCiCloudProvider: ASCFileProviderProtocol & ASCSortableFileProviderProtoc
                 }
             }
         }
+    }
+
+    func createNewPath(title: String, in folder: ASCFolder, completion: @escaping (String) -> Void) {
+        let query = NSPredicate(format: "TRUEPREDICATE")
+        var newName = title
+
+        provider?.searchFiles(path: folder.id, recursive: true, query: query, foundItemHandler: nil, completionHandler: { files, error in
+            guard error == nil else {
+                print("Error searching files: \(error!)")
+                completion("unknown")
+                return
+            }
+
+            let fileNames = files.map { $0.name }
+            newName = self.resolve(fileTitle: title, for: fileNames) ?? title
+
+            let newPath = NSString(string: folder.id).appendingPathComponent(newName)
+            completion(newPath)
+        })
     }
 
     // MARK: - Access
@@ -1202,6 +1238,30 @@ class ASCiCloudProvider: ASCFileProviderProtocol & ASCSortableFileProviderProtoc
         }
 
         return conflict(resolveTitle) ? nil : resolveTitle
+    }
+
+    private func resolve(fileTitle: String, for fileNames: [String]) -> String? {
+        let fileName = fileTitle.fileName()
+        let fileExtension = fileTitle.fileExtension()
+
+        let conflict: (String) -> Bool = { title in
+            fileNames.contains(title)
+        }
+
+        let resolveTitle = fileTitle
+
+        if conflict(resolveTitle) {
+            for index in 2 ... 100 {
+                let newTitle = fileName + "-\(index)" + (fileExtension.isEmpty ? "" : ".\(fileExtension)")
+                if !conflict(newTitle) {
+                    return newTitle
+                }
+            }
+
+            return nil
+        }
+
+        return resolveTitle
     }
 
     // MARK: - File watcher

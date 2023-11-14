@@ -716,35 +716,37 @@ class ASCiCloudProvider: ASCFileProviderProtocol & ASCSortableFileProviderProtoc
                         log.error(error.localizedDescription)
                         completeon?(strongSelf, nil, false, ASCProviderError(msg: error.localizedDescription))
                     } else {
-                        self?.attributesOfItem(path: remotePath, completionHandler: { [weak self] fileObject, error in
-                            guard let strongSelf = self else { return }
+                        DispatchQueue.main.async {
+                            self?.attributesOfItem(path: remotePath, completionHandler: { [weak self] fileObject, error in
+                                guard let strongSelf = self else { return }
 
-                            if let error = error {
-                                completeon?(strongSelf, nil, false, ASCProviderError(msg: error.localizedDescription))
-                            }
-                            let fileSize: UInt64 = (filePath.fileSize ?? 0 < 0) ? 0 : UInt64(filePath.fileSize ?? 0)
-                            let cloudFile = ASCFile()
-                            cloudFile.id = filePath.rawValue
-                            cloudFile.rootFolderType = .icloudAll
-                            cloudFile.title = filePath.fileName
-                            cloudFile.created = filePath.creationDate ?? filePath.modificationDate
-                            cloudFile.updated = filePath.modificationDate
-                            cloudFile.createdBy = strongSelf.user
-                            cloudFile.updatedBy = strongSelf.user
-                            cloudFile.parent = folder
-                            cloudFile.viewUrl = filePath.rawValue
-                            cloudFile.displayContentLength = String.fileSizeToString(with: fileSize)
-                            cloudFile.pureContentLength = Int(fileSize)
+                                if let error = error {
+                                    completeon?(strongSelf, nil, false, ASCProviderError(msg: error.localizedDescription))
+                                }
+                                let fileSize: UInt64 = (filePath.fileSize ?? 0 < 0) ? 0 : UInt64(filePath.fileSize ?? 0)
+                                let cloudFile = ASCFile()
+                                cloudFile.id = filePath.rawValue
+                                cloudFile.rootFolderType = .icloudAll
+                                cloudFile.title = filePath.fileName
+                                cloudFile.created = filePath.creationDate ?? filePath.modificationDate
+                                cloudFile.updated = filePath.modificationDate
+                                cloudFile.createdBy = strongSelf.user
+                                cloudFile.updatedBy = strongSelf.user
+                                cloudFile.parent = folder
+                                cloudFile.viewUrl = filePath.rawValue
+                                cloudFile.displayContentLength = String.fileSizeToString(with: fileSize)
+                                cloudFile.pureContentLength = Int(fileSize)
 
-                            ASCAnalytics.logEvent(ASCConstants.Analytics.Event.createEntity, parameters: [
-                                ASCAnalytics.Event.Key.portal: "icloud",
-                                ASCAnalytics.Event.Key.onDevice: false,
-                                ASCAnalytics.Event.Key.type: ASCAnalytics.Event.Value.file,
-                                ASCAnalytics.Event.Key.fileExt: cloudFile.title.fileExtension().lowercased(),
-                            ])
+                                ASCAnalytics.logEvent(ASCConstants.Analytics.Event.createEntity, parameters: [
+                                    ASCAnalytics.Event.Key.portal: "icloud",
+                                    ASCAnalytics.Event.Key.onDevice: false,
+                                    ASCAnalytics.Event.Key.type: ASCAnalytics.Event.Value.file,
+                                    ASCAnalytics.Event.Key.fileExt: cloudFile.title.fileExtension().lowercased(),
+                                ])
 
-                            completeon?(strongSelf, cloudFile, true, nil)
-                        })
+                                completeon?(strongSelf, cloudFile, true, nil)
+                            })
+                        }
                     }
                 }
             }

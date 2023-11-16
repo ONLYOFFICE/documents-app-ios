@@ -212,10 +212,9 @@ class ASCFolderCell: MGSwipeTableCell {
                 color = UIColor(hex: "#" + (folder?.logo.color ?? "FF6680"))
             }
 
-            icon.titleInitials = formatFolderName(folderName: folder?.title ?? "")
             icon.backgroundColor = color
+            icon.titleInitials = formatFolderName(folderName: folder?.title ?? "")
             icon.layerCornerRadius = Constants.cornerRadius
-            icon.updateAppearance()
         }
     }
 

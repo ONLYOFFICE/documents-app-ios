@@ -10,9 +10,12 @@ import Foundation
 import UIKit
 
 class ASCFolderLogoAvatarView: UIImageView {
+    // MARK: - Properties
+
     var titleInitials: String? {
         didSet {
             setupInitialsLabel()
+            updateAppearance()
         }
     }
 
@@ -23,6 +26,8 @@ class ASCFolderLogoAvatarView: UIImageView {
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
+
+    // MARK: - Lifecycle Methods
 
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -44,7 +49,7 @@ class ASCFolderLogoAvatarView: UIImageView {
         ])
     }
 
-    public func updateAppearance() {
+    private func updateAppearance() {
         if traitCollection.userInterfaceStyle == .dark {
             initialsLabel.textColor = backgroundColor
             backgroundColor = backgroundColor?.withAlphaComponent(0.2)

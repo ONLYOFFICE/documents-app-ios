@@ -895,6 +895,10 @@ class ASCOnlyofficeProvider: ASCFileProviderProtocol & ASCSortableFileProviderPr
         return file.security.duplicate
     }
 
+    func allowDownload(folder: ASCFolder?) -> Bool {
+        return true
+    }
+
     func allowCopy(entity: AnyObject?) -> Bool {
         guard let entity = entity as? ASCEntity, allowRead(entity: entity) else { return false }
         guard isInRoom else { return true }
@@ -1240,6 +1244,7 @@ class ASCOnlyofficeProvider: ASCFileProviderProtocol & ASCSortableFileProviderPr
             let canCopy = allowCopy(entity: folder)
             let canDelete = allowDelete(entity: folder)
             let canShare = allowShare(entity: folder)
+            let canDownload = allowDownload(folder: folder)
             let canRename = allowRename(entity: folder)
             let isProjects = folder.rootFolderType == .onlyofficeBunch || folder.rootFolderType == .onlyofficeProjects
             let isRoomFolder = isFolderInRoom(folder: folder) && folder.roomType != nil
@@ -1265,6 +1270,10 @@ class ASCOnlyofficeProvider: ASCFileProviderProtocol & ASCSortableFileProviderPr
 
             if canEdit, canShare, !isProjects, !isRoomFolder, !isFolderInRoom(folder: folder) {
                 entityActions.insert(.share)
+            }
+
+            if canDownload, isRoomFolder {
+                entityActions.insert(.download)
             }
 
             if canDelete {

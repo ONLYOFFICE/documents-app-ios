@@ -716,8 +716,8 @@ class ASCiCloudProvider: ASCFileProviderProtocol & ASCSortableFileProviderProtoc
                         log.error(error.localizedDescription)
                         completeon?(strongSelf, nil, false, ASCProviderError(msg: error.localizedDescription))
                     } else {
-                        DispatchQueue.main.async {
-                            self?.attributesOfItem(path: remotePath, completionHandler: { [weak self] fileObject, error in
+                        self?.attributesOfItem(path: remotePath, completionHandler: { [weak self] fileObject, error in
+                            DispatchQueue.main.async { [weak self] in
                                 guard let strongSelf = self else { return }
 
                                 if let error = error {
@@ -745,8 +745,8 @@ class ASCiCloudProvider: ASCFileProviderProtocol & ASCSortableFileProviderProtoc
                                 ])
 
                                 completeon?(strongSelf, cloudFile, true, nil)
-                            })
-                        }
+                            }
+                        })
                     }
                 }
             }

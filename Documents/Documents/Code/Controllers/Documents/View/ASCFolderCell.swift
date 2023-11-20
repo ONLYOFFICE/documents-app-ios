@@ -195,8 +195,6 @@ class ASCFolderCell: MGSwipeTableCell {
                     self?.icon?.titleInitials = ""
                 case .failure:
                     self?.setDefaultIcon()
-                default:
-                    break
                 }
             }
         )

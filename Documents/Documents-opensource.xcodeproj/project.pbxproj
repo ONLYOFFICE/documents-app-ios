@@ -28,6 +28,8 @@
 		F378024229DAE05B0020B453 /* ASCMultiAccountScreenModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F378024129DAE05B0020B453 /* ASCMultiAccountScreenModel.swift */; };
 		F378024429DAE3720020B453 /* AccountCellModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F378024329DAE3720020B453 /* AccountCellModel.swift */; };
 		F378024629DAE5020020B453 /* ASCMultiAccountPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F378024529DAE5020020B453 /* ASCMultiAccountPresenter.swift */; };
+		F38E5D432B0B463C00EDBCE3 /* CreateGeneralLinkView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F38E5D422B0B463C00EDBCE3 /* CreateGeneralLinkView.swift */; };
+		F38E5D452B0B46FE00EDBCE3 /* CreateGeneralLinkViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F38E5D442B0B46FE00EDBCE3 /* CreateGeneralLinkViewModel.swift */; };
 		FC0BBF19296C25B80060F49E /* DocumentConverter in Frameworks */ = {isa = PBXBuildFile; productRef = FC0BBF18296C25B80060F49E /* DocumentConverter */; };
 		FC0BBF1B296C25B80060F49E /* DocumentEditor in Frameworks */ = {isa = PBXBuildFile; productRef = FC0BBF1A296C25B80060F49E /* DocumentEditor */; };
 		FC0BBF1D296C25B80060F49E /* PresentationEditor in Frameworks */ = {isa = PBXBuildFile; productRef = FC0BBF1C296C25B80060F49E /* PresentationEditor */; };
@@ -600,6 +602,8 @@
 		F378024329DAE3720020B453 /* AccountCellModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountCellModel.swift; sourceTree = "<group>"; };
 		F378024529DAE5020020B453 /* ASCMultiAccountPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCMultiAccountPresenter.swift; sourceTree = "<group>"; };
 		F37F0A2827C12B9E00371183 /* ASCMicrosoftSignInController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCMicrosoftSignInController.swift; sourceTree = "<group>"; };
+		F38E5D422B0B463C00EDBCE3 /* CreateGeneralLinkView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateGeneralLinkView.swift; sourceTree = "<group>"; };
+		F38E5D442B0B46FE00EDBCE3 /* CreateGeneralLinkViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateGeneralLinkViewModel.swift; sourceTree = "<group>"; };
 		FA2E5A74B4F3D80D563D242D /* Pods-Documents-opensource.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Documents-opensource.release.xcconfig"; path = "../Pods/Target Support Files/Pods-Documents-opensource/Pods-Documents-opensource.release.xcconfig"; sourceTree = "<group>"; };
 		FC029A3B27BCF2FC00E5341B /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		FC050F7F1ECB1F6800FD452C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/ConnectStorage.storyboard; sourceTree = "<group>"; };
@@ -1765,6 +1769,23 @@
 			path = Presenter;
 			sourceTree = "<group>";
 		};
+		F38E5D402B0B45B500EDBCE3 /* Links */ = {
+			isa = PBXGroup;
+			children = (
+				F38E5D412B0B45EA00EDBCE3 /* CreateGeneralLink */,
+			);
+			path = Links;
+			sourceTree = "<group>";
+		};
+		F38E5D412B0B45EA00EDBCE3 /* CreateGeneralLink */ = {
+			isa = PBXGroup;
+			children = (
+				F38E5D422B0B463C00EDBCE3 /* CreateGeneralLinkView.swift */,
+				F38E5D442B0B46FE00EDBCE3 /* CreateGeneralLinkViewModel.swift */,
+			);
+			path = CreateGeneralLink;
+			sourceTree = "<group>";
+		};
 		FC059D961E82581D00BC2F5E /* Transforms */ = {
 			isa = PBXGroup;
 			children = (
@@ -2073,6 +2094,7 @@
 		FC31B2881E76C168008699C3 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				F38E5D402B0B45B500EDBCE3 /* Links */,
 				FC1EA5C91ECECB77008FEE2E /* Common */,
 				FC844391215E604000526974 /* Root */,
 				FC4D0A1E2494F78B001EF1B5 /* Debug */,
@@ -3421,6 +3443,7 @@
 				FC83D60F2A974E2300C404CB /* Sequence+Extensions.swift in Sources */,
 				FC83D6112A974E2300C404CB /* URL+Extensions.swift in Sources */,
 				FC7081372812E2260057FCD2 /* ASCSharingOprionsExternalLink.swift in Sources */,
+				F38E5D452B0B46FE00EDBCE3 /* CreateGeneralLinkViewModel.swift in Sources */,
 				FC83D60A2A974E2300C404CB /* MBProgressHUD+Extension.swift in Sources */,
 				FC83D61B2A974E2300C404CB /* UIDevice+DeviceKit.swift in Sources */,
 				FC83D6092A974E2200C404CB /* UITableView+Extensions.swift in Sources */,
@@ -3648,6 +3671,7 @@
 				FC142A6D28981A1F00EDE7CE /* ASCPasscodeLockViewController.swift in Sources */,
 				FCE886F12A83B7AF0064F79D /* CreateEntityViewModel.swift in Sources */,
 				FC7081F32812E2260057FCD2 /* ASC2FAViewController.swift in Sources */,
+				F38E5D432B0B463C00EDBCE3 /* CreateGeneralLinkView.swift in Sources */,
 				FC7081F42812E2260057FCD2 /* ASCFileProviderType.swift in Sources */,
 				FC83D5712A9742F000C404CB /* ASCPushNotificationManager.swift in Sources */,
 				FC7081F52812E2260057FCD2 /* ASCShareSettingsAPIWorkerFactory.swift in Sources */,

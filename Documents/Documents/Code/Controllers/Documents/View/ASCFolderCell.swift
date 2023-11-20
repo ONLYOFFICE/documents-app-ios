@@ -191,6 +191,8 @@ class ASCFolderCell: MGSwipeTableCell {
             ],
             completionHandler: { [weak self] result in
                 switch result {
+                case .success:
+                    self?.icon?.titleInitials = ""
                 case .failure:
                     self?.setDefaultIcon()
                 default:

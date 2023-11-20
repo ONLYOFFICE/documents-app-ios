@@ -1882,6 +1882,37 @@ class ASCDocumentsViewController: ASCBaseTableViewController, UIGestureRecognize
         }
     }
 
+    func downloadRoom(cell: UITableViewCell) {
+        guard let folderCell = cell as? ASCFolderCell,
+              let folder = folderCell.folder,
+              let provider = provider else { return }
+
+        var hud: MBProgressHUD?
+
+        let processLabel: String = NSLocalizedString("Downloading", comment: "Caption of the processing")
+
+        if let provider = provider as? ASCOnlyofficeProvider {
+            provider.handle(action: .download, folder: folder, handler: nil, progressHandler: { status, progress, result, error, cancel in
+                if status == .begin {
+                    hud = MBProgressHUD.showTopMost()
+                    hud?.mode = .determinate
+                    hud?.label.text = processLabel
+                } else if status == .progress {
+                    hud?.progress = progress
+                } else if status == .error {
+                    hud?.hide(animated: false)
+                    UIAlertController.showError(
+                        in: self,
+                        message: error?.localizedDescription ?? NSLocalizedString("Could not copy.", comment: "")
+                    )
+                } else if status == .end {
+                    hud?.setSuccessState()
+                    hud?.hide(animated: false, afterDelay: 1.3)
+                }
+            })
+        }
+    }
+
     func favorite(cell: UITableViewCell, favorite: Bool) {
         guard
             let provider = provider,

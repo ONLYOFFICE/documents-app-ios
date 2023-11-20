@@ -32,6 +32,7 @@ class OnlyofficeAPI {
         public static let operationCopy = "api/\(version)/files/fileops/copy"
         public static let operationMove = "api/\(version)/files/fileops/move"
         public static let operationDelete = "api/\(version)/files/fileops/delete"
+        public static let operationDownload = "api/\(version)/files/fileops/bulkdownload"
         public static let emptyTrash = "api/\(version)/files/fileops/emptytrash"
         public static let thirdParty = "api/\(version)/files/thirdparty"
         public static let thirdPartyCapabilities = "api/\(version)/files/thirdparty/capabilities"
@@ -226,6 +227,7 @@ class OnlyofficeAPI {
             static let move: Endpoint<OnlyofficeResponse<OnlyofficeFileOperation>> = Endpoint<OnlyofficeResponse<OnlyofficeFileOperation>>.make(Path.operationMove, .put)
             static let list: Endpoint<OnlyofficeResponseArray<OnlyofficeFileOperation>> = Endpoint<OnlyofficeResponseArray<OnlyofficeFileOperation>>.make(Path.operations)
             static let markAsRead: Endpoint<OnlyofficeResponse<OnlyofficeFileOperation>> = Endpoint<OnlyofficeResponse<OnlyofficeFileOperation>>.make(Path.markAsRead, .put)
+            static let download: Endpoint<OnlyofficeResponse<OnlyofficeFileOperation>> = Endpoint<OnlyofficeResponse<OnlyofficeFileOperation>>.make(Path.operationDownload, .put)
         }
 
         // MARK: Third-Party Integration

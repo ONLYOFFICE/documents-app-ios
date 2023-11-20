@@ -434,7 +434,7 @@ extension ASCDocumentsViewController {
                     image: UIImage(systemName: "square.and.arrow.down")
                 ) { [unowned self] action in
                     cell.hideSwipe(animated: true)
-                    self.recover(cell: cell)
+                    self.downloadRoom(cell: cell)
                 }
             )
         }

@@ -1313,12 +1313,13 @@ class ASCOnlyofficeProvider: ASCFileProviderProtocol & ASCSortableFileProviderPr
 
     // MARK: - Action handlers
 
-    func handle(action: ASCEntityActions, folder: ASCFolder, handler: ASCEntityHandler?) {
+    func handle(action: ASCEntityActions, folder: ASCFolder, handler: ASCEntityHandler?, progressHandler: ASCEntityProgressHandler?) {
         switch action {
         case .pin: pinRoom(folder: folder, handler: handler)
         case .unpin: unpinRoom(folder: folder, handler: handler)
         case .archive: archiveRoom(folder: folder, handler: handler)
         case .unarchive: unarchiveRoom(folder: folder, handler: handler)
+        case .download: downloadRoom(folder: folder, handler: progressHandler)
         default: unsupportedActionHandler(action: action, handler: handler)
         }
     }
@@ -1365,6 +1366,76 @@ class ASCOnlyofficeProvider: ASCFileProviderProtocol & ASCSortableFileProviderPr
                 handler?(.error, nil, ASCProviderError(msg: NSLocalizedString("Unarchiving failed.", comment: "")))
             }
         }
+    }
+
+    func downloadRoom(folder: ASCFolder, handler: ASCEntityProgressHandler?) {
+        var cancel = false
+
+        handler?(.begin, 0, nil, nil, &cancel)
+
+        let files: [String: Any] = [
+            "fileIds": [],
+            "folderIds": [folder.id],
+        ]
+
+        apiClient.request(OnlyofficeAPI.Endpoints.Operations.download, files) { result, error in
+            if let error = error {
+                handler?(.error, 1, nil, error, &cancel)
+            } else {
+                var checkOperation: (() -> Void)?
+                checkOperation = {
+                    self.apiClient.request(OnlyofficeAPI.Endpoints.Operations.list) { result, error in
+                        if let error = error {
+                            handler?(.error, 1, nil, error, &cancel)
+                        } else if let operation = result?.result?.first, let progress = operation.progress {
+                            if progress >= 100 {
+                                handler?(.end, 1, nil, error, &cancel)
+                                if let fileURL = result?.result?.first?.url {
+                                    self.downloadAndShareFile(url: fileURL)
+                                }
+                            } else {
+                                Thread.sleep(forTimeInterval: 1)
+                                checkOperation?()
+                            }
+                        } else {
+                            handler?(.error, 1, nil, NetworkingError.invalidData, &cancel)
+                        }
+                    }
+                }
+                checkOperation?()
+            }
+        }
+    }
+
+    func downloadAndShareFile(url: String) {
+        guard let fileURL = URL(string: url) else {
+            return
+        }
+
+        let task = URLSession.shared.downloadTask(with: fileURL) { localURL, _, error in
+            if let localURL = localURL {
+                let tempDirectory = FileManager.default.temporaryDirectory
+                let destinationURL = tempDirectory.appendingPathComponent(fileURL.lastPathComponent)
+
+                do {
+                    try FileManager.default.copyItem(at: localURL, to: destinationURL)
+
+                    DispatchQueue.main.async {
+                        let activityViewController = UIActivityViewController(activityItems: [destinationURL], applicationActivities: nil)
+
+                        UIApplication.shared.keyWindow?.rootViewController?.present(activityViewController, animated: true, completion: nil)
+                    }
+
+                } catch {
+                    print("Error copying file: \(error)")
+                }
+
+            } else if let error = error {
+                print("Error downloading file: \(error)")
+            }
+        }
+
+        task.resume()
     }
 
     private func unsupportedActionHandler(action: ASCEntityActions, handler: ASCEntityHandler?) {

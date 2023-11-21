@@ -1885,31 +1885,25 @@ class ASCDocumentsViewController: ASCBaseTableViewController, UIGestureRecognize
     func downloadRoom(cell: UITableViewCell) {
         guard let folderCell = cell as? ASCFolderCell,
               let folder = folderCell.folder,
-              let provider = provider else { return }
+              let provider = provider as? ASCOnlyofficeProvider else { return }
 
-        var hud: MBProgressHUD?
-
-        let processLabel: String = NSLocalizedString("Downloading", comment: "Caption of the processing")
-
-        if let provider = provider as? ASCOnlyofficeProvider {
-            provider.handle(action: .download, folder: folder, handler: nil, progressHandler: { status, progress, result, error, cancel in
-                if status == .begin {
-                    hud = MBProgressHUD.showTopMost()
-                    hud?.mode = .determinate
-                    hud?.label.text = processLabel
-                } else if status == .progress {
-                    hud?.progress = progress
-                } else if status == .error {
-                    hud?.hide(animated: false)
-                    UIAlertController.showError(
-                        in: self,
-                        message: error?.localizedDescription ?? NSLocalizedString("Could not copy.", comment: "")
-                    )
-                } else if status == .end {
-                    hud?.setSuccessState()
-                    hud?.hide(animated: false, afterDelay: 1.3)
+        let transferAlert = ASCProgressAlert(
+            title: NSLocalizedString("Downloading", comment: "Caption of the processing"),
+            message: nil,
+            handler: { cancel in
+                if cancel {
+                    provider.apiClient.request(OnlyofficeAPI.Endpoints.Operations.terminate)
+                    print("Active operations terminated")
                 }
-            })
+            }
+        )
+
+        transferAlert.progress = 0
+
+        provider.downloadRoom(folder: folder, handler: transferAlert) { activityViewController in
+            if let activityViewController = activityViewController {
+                self.present(activityViewController, animated: true, completion: nil)
+            }
         }
     }
 

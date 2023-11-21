@@ -29,6 +29,7 @@ class OnlyofficeAPI {
         public static let favorite = "api/\(version)/files/favorites"
         public static let filesShare = "api/\(version)/files/share"
         public static let operations = "api/\(version)/files/fileops"
+        public static let operationsTerminate = "api/\(version)/files/fileops/terminate"
         public static let operationCopy = "api/\(version)/files/fileops/copy"
         public static let operationMove = "api/\(version)/files/fileops/move"
         public static let operationDelete = "api/\(version)/files/fileops/delete"
@@ -226,6 +227,7 @@ class OnlyofficeAPI {
             static let copy: Endpoint<OnlyofficeResponse<OnlyofficeFileOperation>> = Endpoint<OnlyofficeResponse<OnlyofficeFileOperation>>.make(Path.operationCopy, .put)
             static let move: Endpoint<OnlyofficeResponse<OnlyofficeFileOperation>> = Endpoint<OnlyofficeResponse<OnlyofficeFileOperation>>.make(Path.operationMove, .put)
             static let list: Endpoint<OnlyofficeResponseArray<OnlyofficeFileOperation>> = Endpoint<OnlyofficeResponseArray<OnlyofficeFileOperation>>.make(Path.operations)
+            static let terminate: Endpoint<OnlyofficeResponseArray<OnlyofficeFileOperation>> = Endpoint<OnlyofficeResponseArray<OnlyofficeFileOperation>>.make(Path.operationsTerminate)
             static let markAsRead: Endpoint<OnlyofficeResponse<OnlyofficeFileOperation>> = Endpoint<OnlyofficeResponse<OnlyofficeFileOperation>>.make(Path.markAsRead, .put)
             static let download: Endpoint<OnlyofficeResponse<OnlyofficeFileOperation>> = Endpoint<OnlyofficeResponse<OnlyofficeFileOperation>>.make(Path.operationDownload, .put)
         }

@@ -1313,13 +1313,12 @@ class ASCOnlyofficeProvider: ASCFileProviderProtocol & ASCSortableFileProviderPr
 
     // MARK: - Action handlers
 
-    func handle(action: ASCEntityActions, folder: ASCFolder, handler: ASCEntityHandler?, progressHandler: ASCEntityProgressHandler?) {
+    func handle(action: ASCEntityActions, folder: ASCFolder, handler: ASCEntityHandler?) {
         switch action {
         case .pin: pinRoom(folder: folder, handler: handler)
         case .unpin: unpinRoom(folder: folder, handler: handler)
         case .archive: archiveRoom(folder: folder, handler: handler)
         case .unarchive: unarchiveRoom(folder: folder, handler: handler)
-        case .download: downloadRoom(folder: folder, handler: progressHandler)
         default: unsupportedActionHandler(action: action, handler: handler)
         }
     }
@@ -1368,74 +1367,88 @@ class ASCOnlyofficeProvider: ASCFileProviderProtocol & ASCSortableFileProviderPr
         }
     }
 
-    func downloadRoom(folder: ASCFolder, handler: ASCEntityProgressHandler?) {
-        var cancel = false
-
-        handler?(.begin, 0, nil, nil, &cancel)
-
+    // Downloading DocSpace room
+    func downloadRoom(folder: ASCFolder, handler: ASCProgressAlert?, completion: @escaping (UIActivityViewController?) -> Void) {
         let files: [String: Any] = [
             "fileIds": [],
             "folderIds": [folder.id],
         ]
 
-        apiClient.request(OnlyofficeAPI.Endpoints.Operations.download, files) { result, error in
-            if let error = error {
-                handler?(.error, 1, nil, error, &cancel)
+        // API request for file formation
+        apiClient.request(OnlyofficeAPI.Endpoints.Operations.download, files) { [weak self] result, error in
+            guard let strongSelf = self else { return }
+
+            if error != nil {
+                handler?.hide()
             } else {
-                var checkOperation: (() -> Void)?
-                checkOperation = {
-                    self.apiClient.request(OnlyofficeAPI.Endpoints.Operations.list) { result, error in
-                        if let error = error {
-                            handler?(.error, 1, nil, error, &cancel)
-                        } else if let operation = result?.result?.first, let progress = operation.progress {
-                            if progress >= 100 {
-                                handler?(.end, 1, nil, error, &cancel)
-                                if let fileURL = result?.result?.first?.url {
-                                    self.downloadAndShareFile(url: fileURL)
-                                }
-                            } else {
-                                Thread.sleep(forTimeInterval: 1)
-                                checkOperation?()
-                            }
-                        } else {
-                            handler?(.error, 1, nil, NetworkingError.invalidData, &cancel)
-                        }
-                    }
+                if let result = result {
+                    handler?.show()
+                    strongSelf.checkOperationForDownload(result: result, folder: folder, handler: handler, completion: completion)
+                } else {
+                    handler?.hide()
                 }
-                checkOperation?()
             }
         }
     }
 
-    func downloadAndShareFile(url: String) {
-        guard let fileURL = URL(string: url) else {
-            return
-        }
+    // API request for checking file formation progress
+    private func checkOperationForDownload(result: OnlyofficeResponse<OnlyofficeFileOperation>, folder: ASCFolder, handler: ASCProgressAlert?, completion: @escaping (UIActivityViewController?) -> Void) {
+        var checkOperation: (() -> Void)?
 
-        let task = URLSession.shared.downloadTask(with: fileURL) { localURL, _, error in
-            if let localURL = localURL {
-                let tempDirectory = FileManager.default.temporaryDirectory
-                let destinationURL = tempDirectory.appendingPathComponent(fileURL.lastPathComponent)
+        checkOperation = { [weak self] in
+            guard let strongSelf = self else { return }
 
-                do {
-                    try FileManager.default.copyItem(at: localURL, to: destinationURL)
+            strongSelf.apiClient.request(OnlyofficeAPI.Endpoints.Operations.list) { result, error in
+                if error != nil {
+                    handler?.hide()
+                } else if let operation = result?.result?.first, let progress = operation.progress {
+                    handler?.progress = Float(progress)
+                    if progress >= 100 {
+                        guard let fileURL = result?.result?.first?.url else {
+                            handler?.hide()
+                            return
+                        }
 
-                    DispatchQueue.main.async {
-                        let activityViewController = UIActivityViewController(activityItems: [destinationURL], applicationActivities: nil)
-
-                        UIApplication.shared.keyWindow?.rootViewController?.present(activityViewController, animated: true, completion: nil)
+                        strongSelf.downloadAndShareFile(urlString: fileURL, folderName: folder.title, handler: handler, completion: completion)
+                    } else {
+                        DispatchQueue.global().asyncAfter(deadline: .now() + 1) {
+                            checkOperation?()
+                        }
                     }
-
-                } catch {
-                    print("Error copying file: \(error)")
+                } else {
+                    handler?.hide()
                 }
-
-            } else if let error = error {
-                print("Error downloading file: \(error)")
             }
         }
 
-        task.resume()
+        checkOperation?()
+    }
+
+    // Downloading and sharing .zip file
+    func downloadAndShareFile(urlString: String, folderName: String, handler: ASCProgressAlert?, completion: @escaping (UIActivityViewController?) -> Void) {
+        // Temporary directory URL
+        let tempDirectoryURL = FileManager.default.temporaryDirectory
+
+        // Destination file URL in the temporary directory
+        let destinationURL = tempDirectoryURL.appendingPathComponent("\(folderName).zip")
+
+        // Download the file
+        download(urlString, to: destinationURL) { data, progress, error in
+            handler?.progress = Float(progress)
+
+            if let error = error {
+                print("Error downloading file: \(error)")
+                return
+            }
+
+            if progress == 1 {
+                handler?.hide {
+                    let activityViewController = UIActivityViewController(activityItems: [destinationURL], applicationActivities: nil)
+
+                    completion(activityViewController)
+                }
+            }
+        }
     }
 
     private func unsupportedActionHandler(action: ASCEntityActions, handler: ASCEntityHandler?) {

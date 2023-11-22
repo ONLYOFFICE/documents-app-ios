@@ -1380,12 +1380,14 @@ class ASCOnlyofficeProvider: ASCFileProviderProtocol & ASCSortableFileProviderPr
 
             if error != nil {
                 handler?.hide()
+                return
             } else {
                 if let result = result {
                     handler?.show()
                     strongSelf.checkOperationForDownload(result: result, folder: folder, handler: handler, completion: completion)
                 } else {
                     handler?.hide()
+                    return
                 }
             }
         }

@@ -1893,12 +1893,11 @@ class ASCDocumentsViewController: ASCBaseTableViewController, UIGestureRecognize
             handler: { cancel in
                 if cancel {
                     provider.apiClient.request(OnlyofficeAPI.Endpoints.Operations.terminate)
+                    provider.cancel()
                     print("Active operations terminated")
                 }
             }
         )
-
-        transferAlert.progress = 0
 
         provider.downloadRoom(folder: folder, handler: transferAlert) { activityViewController in
             if let activityViewController = activityViewController {

@@ -51,7 +51,7 @@ class ASCFolderLogoAvatarView: UIImageView {
 
     private func updateAppearance() {
         if traitCollection.userInterfaceStyle == .dark {
-            initialsLabel.textColor = backgroundColor
+            initialsLabel.textColor = backgroundColor?.withAlphaComponent(1.0)
             backgroundColor = backgroundColor?.withAlphaComponent(0.2)
         } else {
             initialsLabel.textColor = .white

@@ -83,6 +83,8 @@ class ASCOnlyofficeProvider: ASCFileProviderProtocol & ASCSortableFileProviderPr
         return isFolderInRoom(folder: folder)
     }
 
+    var isDownloadRoomCanceled: Bool = false
+
     init() {
         reset()
         OnlyofficeApiClient.reset()
@@ -1380,10 +1382,12 @@ class ASCOnlyofficeProvider: ASCFileProviderProtocol & ASCSortableFileProviderPr
 
             if error != nil {
                 handler?.hide()
+                completion(nil)
                 return
             } else {
                 if let result = result {
                     handler?.show()
+                    strongSelf.isDownloadRoomCanceled = false
                     strongSelf.checkOperationForDownload(result: result, folder: folder, handler: handler, completion: completion)
                 } else {
                     handler?.hide()
@@ -1412,7 +1416,7 @@ class ASCOnlyofficeProvider: ASCFileProviderProtocol & ASCSortableFileProviderPr
                         }
 
                         strongSelf.downloadAndShareFile(urlString: fileURL, folderName: folder.title, handler: handler, completion: completion)
-                    } else {
+                    } else if !strongSelf.isDownloadRoomCanceled {
                         DispatchQueue.global().asyncAfter(deadline: .now() + 1) {
                             checkOperation?()
                         }

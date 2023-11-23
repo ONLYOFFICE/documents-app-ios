@@ -17,7 +17,8 @@ class ASCFolderCell: MGSwipeTableCell {
     @IBOutlet var titleImage: UIImageView!
     @IBOutlet var owner: UILabel!
     @IBOutlet var date: UILabel!
-    @IBOutlet var icon: UIImageView!
+    @IBOutlet var icon: ASCFolderLogoAvatarView!
+    @IBOutlet var privateIcon: UIImageView!
     @IBOutlet var titleStackView: UIStackView!
     @IBOutlet var dateRight: UILabel!
 
@@ -119,7 +120,7 @@ class ASCFolderCell: MGSwipeTableCell {
 
         /// Thumb view
         if folder?.roomType != nil, folder?.rootFolderType == .onlyofficeRoomArchived {
-            icon.image = Asset.Images.roomArchived.image
+            setDefaultIcon()
         } else if let roomType = folder?.roomType {
             setRoomIcon(roomType: roomType)
         } else {
@@ -182,7 +183,7 @@ class ASCFolderCell: MGSwipeTableCell {
         )
 
         icon?.kf.setProviderImage(
-            with: provider.absoluteUrl(from: folder?.largeLogo ?? ""),
+            with: provider.absoluteUrl(from: folder?.logo?.large ?? ""),
             for: provider,
             placeholder: roomPlaceholderImage,
             options: [
@@ -190,18 +191,45 @@ class ASCFolderCell: MGSwipeTableCell {
             ],
             completionHandler: { [weak self] result in
                 switch result {
+                case .success:
+                    self?.icon?.titleInitials = ""
                 case .failure:
-                    self?.setDefaultIcon(roomType.image)
-                default:
-                    break
+                    self?.setDefaultIcon()
                 }
             }
         )
+
+        setPrivateIcon()
     }
 
-    private func setDefaultIcon(_ image: UIImage) {
-        icon?.contentMode = .center
-        icon?.image = image
+    private func setDefaultIcon() {
+        if let icon = icon {
+            icon.image = roomPlaceholderImage
+            var color = Asset.Colors.roomDefault.color
+
+            if folder?.rootFolderType == .onlyofficeRoomArchived {
+                color = Asset.Colors.roomArchive.color
+            } else if let hexColor = folder?.logo?.color {
+                color = UIColor(hex: "#\(hexColor)")
+            }
+
+            icon.backgroundColor = color
+            icon.titleInitials = formatFolderName(folderName: folder?.title ?? "")
+            icon.layerCornerRadius = Constants.cornerRadius
+        }
+    }
+
+    private func setPrivateIcon() {
+        if let folder {
+            privateIcon.isHidden = !folder.isPrivate
+        }
+    }
+
+    private func formatFolderName(folderName: String) -> String {
+        folderName.components(separatedBy: " ")
+            .filter { !$0.isEmpty }
+            .reduce("") { ($0 == "" ? "" : "\($0.first!)") + "\($1.first!)" }
+            .uppercased()
     }
 }
 

@@ -10,8 +10,7 @@ import Foundation
 import SwiftUI
 
 struct CreateRoomView: View {
-    @State private var roomName: String = ""
-    @State private var tags: String = ""
+    @ObservedObject private var viewModel = CreateRoomViewModel()
 
     var body: some View {
         NavigationView {
@@ -31,18 +30,18 @@ struct CreateRoomView: View {
                 }
 
                 Section {
-                    TextField("Room name", text: $roomName)
+                    TextField("Room name", text: $viewModel.roomName)
                         .textFieldStyle(RoundedBorderTextFieldStyle())
-                    TextField("Add tags", text: $tags)
+                    TextField("Add tags", text: $viewModel.tags)
                         .textFieldStyle(RoundedBorderTextFieldStyle())
                 }
             }
             .listStyle(GroupedListStyle())
             .navigationBarTitle("Create room", displayMode: .inline)
             .navigationBarItems(
-                leading: Button("Back") {
-                },
+                leading: Button("Back") {},
                 trailing: Button("Create") {
+                    viewModel.createRoom()
                 }
             )
         }

@@ -29,6 +29,7 @@
 		E8AC0F072B0D0B7500B8EEA2 /* View+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8AC0F062B0D0B7500B8EEA2 /* View+Extensions.swift */; };
 		E8AC0F092B0D0CF200B8EEA2 /* NavigationLink+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8AC0F082B0D0CF200B8EEA2 /* NavigationLink+Extensions.swift */; };
 		E8AC0F0C2B0E5EF800B8EEA2 /* CreateRoomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8AC0F0B2B0E5EF800B8EEA2 /* CreateRoomView.swift */; };
+		E8AC0F0E2B0FB8B000B8EEA2 /* CreateRoomViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8AC0F0D2B0FB8B000B8EEA2 /* CreateRoomViewModel.swift */; };
 		F378023D29D743AF0020B453 /* DetailImageStyleTabelViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F378023C29D743AF0020B453 /* DetailImageStyleTabelViewCell.swift */; };
 		F378024229DAE05B0020B453 /* ASCMultiAccountScreenModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F378024129DAE05B0020B453 /* ASCMultiAccountScreenModel.swift */; };
 		F378024429DAE3720020B453 /* AccountCellModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F378024329DAE3720020B453 /* AccountCellModel.swift */; };
@@ -601,6 +602,7 @@
 		E8AC0F062B0D0B7500B8EEA2 /* View+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+Extensions.swift"; sourceTree = "<group>"; };
 		E8AC0F082B0D0CF200B8EEA2 /* NavigationLink+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NavigationLink+Extensions.swift"; sourceTree = "<group>"; };
 		E8AC0F0B2B0E5EF800B8EEA2 /* CreateRoomView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateRoomView.swift; sourceTree = "<group>"; };
+		E8AC0F0D2B0FB8B000B8EEA2 /* CreateRoomViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateRoomViewModel.swift; sourceTree = "<group>"; };
 		F336546127E4903400ABBEB3 /* KeyboardManagerHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardManagerHelper.swift; sourceTree = "<group>"; };
 		F33E473A27AD9BC200EFF6D9 /* ASCWebKitViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCWebKitViewController.swift; sourceTree = "<group>"; };
 		F377689427CFCF2D0044EDA6 /* ASCConnectStorageNextCloudServerController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCConnectStorageNextCloudServerController.swift; sourceTree = "<group>"; };
@@ -1764,6 +1766,7 @@
 			isa = PBXGroup;
 			children = (
 				E8AC0F0B2B0E5EF800B8EEA2 /* CreateRoomView.swift */,
+				E8AC0F0D2B0FB8B000B8EEA2 /* CreateRoomViewModel.swift */,
 			);
 			path = CreateRoom;
 			sourceTree = "<group>";
@@ -3413,6 +3416,7 @@
 				FC1429FF2898183D00EDE7CE /* ASCUniqNameFinder.swift in Sources */,
 				FC70810E2812E2260057FCD2 /* ASCConnectStorageCell.swift in Sources */,
 				FC5943E12AE6D2F3001BA2F9 /* ASCEditorConfigurationProtocol.swift in Sources */,
+				E8AC0F0E2B0FB8B000B8EEA2 /* CreateRoomViewModel.swift in Sources */,
 				FC70810F2812E2260057FCD2 /* OnedriveTokenAdapter.swift in Sources */,
 				1D8CFC39290D7E7400F71071 /* InviteRigthHoldersByEmailsViewController.swift in Sources */,
 				FC7081102812E2260057FCD2 /* ASCSharingOptionsViewController.swift in Sources */,

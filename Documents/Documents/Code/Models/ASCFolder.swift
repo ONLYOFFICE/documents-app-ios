@@ -34,7 +34,7 @@ class ASCFolder: ASCEntity {
     var providerType: ASCFolderProviderType?
     var device: Bool = false
     var parent: ASCFolder?
-    var logo: ASCFolderLogo = .init()
+    var logo: ASCFolderLogo?
     var security: ASCFolderSecurity = .init()
     var providerId: String? {
         if isThirdParty {
@@ -96,6 +96,7 @@ class ASCFolder: ASCEntity {
             folder.createdBy = createdBy
             folder.new = new
             folder.isThirdParty = isThirdParty
+            folder.logo = logo
             folder.providerType = providerType
             folder.device = device
             folder.parent = parent

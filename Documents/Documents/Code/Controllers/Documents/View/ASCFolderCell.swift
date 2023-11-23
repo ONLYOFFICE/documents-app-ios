@@ -183,7 +183,7 @@ class ASCFolderCell: MGSwipeTableCell {
         )
 
         icon?.kf.setProviderImage(
-            with: provider.absoluteUrl(from: folder?.logo.large ?? ""),
+            with: provider.absoluteUrl(from: folder?.logo?.large ?? ""),
             for: provider,
             placeholder: roomPlaceholderImage,
             options: [
@@ -205,11 +205,12 @@ class ASCFolderCell: MGSwipeTableCell {
     private func setDefaultIcon() {
         if let icon = icon {
             icon.image = roomPlaceholderImage
-            var color = UIColor()
+            var color = Asset.Colors.roomDefault.color
+
             if folder?.rootFolderType == .onlyofficeRoomArchived {
-                color = UIColor(hex: "#A3A9AE")
-            } else {
-                color = UIColor(hex: "#" + (folder?.logo.color ?? "FF6680"))
+                color = Asset.Colors.roomArchive.color
+            } else if let hexColor = folder?.logo?.color {
+                color = UIColor(hex: "#\(hexColor)")
             }
 
             icon.backgroundColor = color
@@ -219,32 +220,16 @@ class ASCFolderCell: MGSwipeTableCell {
     }
 
     private func setPrivateIcon() {
-        if let folder = folder {
-            if !folder.isPrivate {
-                privateIcon.isHidden = true
-            } else {
-                privateIcon.isHidden = false
-            }
+        if let folder {
+            privateIcon.isHidden = !folder.isPrivate
         }
     }
 
     private func formatFolderName(folderName: String) -> String {
-        let nameComponents = folderName.split(separator: " ")
-
-        switch nameComponents.count {
-        case 0:
-            return ""
-        case 1:
-            if let firstInitial = nameComponents.first?.first {
-                return String(firstInitial).uppercased()
-            } else {
-                return ""
-            }
-        default:
-            let firstNameInitial = nameComponents.first?.first.map(String.init) ?? ""
-            let lastNameInitial = nameComponents.last?.first.map(String.init) ?? ""
-            return (firstNameInitial + lastNameInitial).uppercased()
-        }
+        folderName.components(separatedBy: " ")
+            .filter { !$0.isEmpty }
+            .reduce("") { ($0 == "" ? "" : "\($0.first!)") + "\($1.first!)" }
+            .uppercased()
     }
 }
 

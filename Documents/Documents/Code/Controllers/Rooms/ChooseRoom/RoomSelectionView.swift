@@ -16,38 +16,32 @@ struct Room {
 
 struct RoomSelectionView: View {
     @ObservedObject var viewModel = RoomSelectionViewModel()
+    @State private var isCreateRoomPresenting = false
 
     var body: some View {
-        NavigationView {
-            List(viewModel.rooms, id: \.name) { room in
-                HStack {
-                    Image(systemName: room.icon)
-                        .foregroundColor(.accentColor)
-                        .frame(width: 36, height: 36)
-                        .background(Color.gray.opacity(0.1))
-                        .cornerRadius(8)
+        List(viewModel.rooms, id: \.name) { room in
+            HStack {
+                Image(systemName: room.icon)
+                    .foregroundColor(.accentColor)
+                    .frame(width: 36, height: 36)
+                    .background(Color.gray.opacity(0.1))
+                    .cornerRadius(8)
 
-                    VStack(alignment: .leading) {
-                        Text(room.name)
-                            .font(.headline)
-                        Text(room.description)
-                            .font(.subheadline)
-                            .foregroundColor(.gray)
-                    }
-                }
-                .padding(.vertical, 4)
-                .onTapGesture {
-                    viewModel.selectRoom(room)
+                VStack(alignment: .leading) {
+                    Text(room.name)
+                        .font(.headline)
+                    Text(room.description)
+                        .font(.subheadline)
+                        .foregroundColor(.gray)
                 }
             }
-            // TODO: - localize
-//            .navigationTitle("Choose room type")
-//            .toolbar {
-//                // TODO: - localize
-//                Button("Cancel") {
-//                    // TODO: - handle
-//                }
-//            }
+            .padding(.vertical, 4)
+            .onTapGesture {
+                viewModel.selectRoom(room)
+            }
+        }
+        .navigation(isActive: $isCreateRoomPresenting) { 
+            CreateRoomView()
         }
     }
 }

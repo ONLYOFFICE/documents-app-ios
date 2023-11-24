@@ -39,7 +39,9 @@ struct CreateRoomView: View {
             .listStyle(GroupedListStyle())
             .navigationBarTitle("Create room", displayMode: .inline)
             .navigationBarItems(
-                leading: Button("Back") {},
+                leading: Button("Back") {
+                    
+                },
                 trailing: Button("Create") {
                     viewModel.createRoom()
                 }

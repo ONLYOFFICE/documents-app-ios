@@ -38,6 +38,7 @@ struct RoomSelectionView: View {
             .padding(.vertical, 4)
             .onTapGesture {
                 viewModel.selectRoom(room)
+                isCreateRoomPresenting = true
             }
         }
         .navigation(isActive: $isCreateRoomPresenting) { 

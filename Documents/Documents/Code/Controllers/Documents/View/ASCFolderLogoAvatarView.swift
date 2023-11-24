@@ -1,6 +1,6 @@
 //
 //  ASCFolderLogoAvatarView.swift
-//  Documents-develop
+//  Documents
 //
 //  Created by Victor Tihovodov on 15.11.2023.
 //  Copyright © 2023 Ascensio System SIA. All rights reserved.
@@ -51,7 +51,7 @@ class ASCFolderLogoAvatarView: UIImageView {
 
     private func updateAppearance() {
         if traitCollection.userInterfaceStyle == .dark {
-            initialsLabel.textColor = backgroundColor
+            initialsLabel.textColor = backgroundColor?.withAlphaComponent(1.0)
             backgroundColor = backgroundColor?.withAlphaComponent(0.2)
         } else {
             initialsLabel.textColor = .white

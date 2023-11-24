@@ -1,6 +1,6 @@
 //
 //  ASCFolderLogo.swift
-//  Documents-develop
+//  Documents
 //
 //  Created by Victor Tihovodov on 14.11.2023.
 //  Copyright © 2023 Ascensio System SIA. All rights reserved.

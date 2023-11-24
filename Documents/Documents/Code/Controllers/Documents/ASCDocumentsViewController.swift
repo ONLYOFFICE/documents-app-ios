@@ -1892,7 +1892,6 @@ class ASCDocumentsViewController: ASCBaseTableViewController, UIGestureRecognize
             message: nil,
             handler: { cancel in
                 if cancel {
-                    provider.isDownloadRoomCanceled = true
                     provider.apiClient.request(OnlyofficeAPI.Endpoints.Operations.terminate)
                     provider.cancel()
                     print("Active operations terminated")
@@ -1900,7 +1899,7 @@ class ASCDocumentsViewController: ASCBaseTableViewController, UIGestureRecognize
             }
         )
 
-        provider.downloadRoom(folder: folder, handler: transferAlert) { activityViewController in
+        provider.downloadRoom(items: [folder], handler: transferAlert) { activityViewController in
             if let activityViewController = activityViewController {
                 self.present(activityViewController, animated: true, completion: nil)
             } else {

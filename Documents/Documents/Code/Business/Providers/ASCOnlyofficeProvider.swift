@@ -83,8 +83,6 @@ class ASCOnlyofficeProvider: ASCFileProviderProtocol & ASCSortableFileProviderPr
         return isFolderInRoom(folder: folder)
     }
 
-    var isDownloadRoomCanceled: Bool = false
-
     init() {
         reset()
         OnlyofficeApiClient.reset()
@@ -1274,7 +1272,7 @@ class ASCOnlyofficeProvider: ASCFileProviderProtocol & ASCSortableFileProviderPr
                 entityActions.insert(.share)
             }
 
-            if canDownload, isRoomFolder {
+            if canDownload {
                 entityActions.insert(.download)
             }
 
@@ -1370,10 +1368,24 @@ class ASCOnlyofficeProvider: ASCFileProviderProtocol & ASCSortableFileProviderPr
     }
 
     // Downloading DocSpace room
-    func downloadRoom(folder: ASCFolder, handler: ASCProgressAlert?, completion: @escaping (UIActivityViewController?) -> Void) {
+    func downloadRoom(items: [ASCEntity], handler: ASCProgressAlert?, completion: @escaping (UIActivityViewController?) -> Void) {
+        var folderIds: [String] = []
+        var fileIds: [String] = []
+        var itemName: String = ""
+
+        for entity in items {
+            if let folder = entity as? ASCFolder {
+                folderIds.append(folder.id)
+                itemName = folder.title
+            } else if let file = entity as? ASCFile {
+                fileIds.append(file.id)
+                itemName = file.parent?.title ?? file.title
+            }
+        }
+
         let files: [String: Any] = [
-            "fileIds": [],
-            "folderIds": [folder.id],
+            "fileIds": fileIds,
+            "folderIds": folderIds,
         ]
 
         // API request for file formation
@@ -1387,8 +1399,7 @@ class ASCOnlyofficeProvider: ASCFileProviderProtocol & ASCSortableFileProviderPr
             } else {
                 if let result = result {
                     handler?.show()
-                    strongSelf.isDownloadRoomCanceled = false
-                    strongSelf.checkOperationForDownload(result: result, folder: folder, handler: handler, completion: completion)
+                    strongSelf.checkOperationForDownload(result: result, itemName: itemName, handler: handler, completion: completion)
                 } else {
                     handler?.hide()
                     return
@@ -1398,8 +1409,9 @@ class ASCOnlyofficeProvider: ASCFileProviderProtocol & ASCSortableFileProviderPr
     }
 
     // API request for checking file formation progress
-    private func checkOperationForDownload(result: OnlyofficeResponse<OnlyofficeFileOperation>, folder: ASCFolder, handler: ASCProgressAlert?, completion: @escaping (UIActivityViewController?) -> Void) {
+    private func checkOperationForDownload(result: OnlyofficeResponse<OnlyofficeFileOperation>, itemName: String, handler: ASCProgressAlert?, completion: @escaping (UIActivityViewController?) -> Void) {
         var checkOperation: (() -> Void)?
+        var isDownloadRoomCanceled: Bool = false
 
         checkOperation = { [weak self] in
             guard let strongSelf = self else { return }
@@ -1407,6 +1419,7 @@ class ASCOnlyofficeProvider: ASCFileProviderProtocol & ASCSortableFileProviderPr
             strongSelf.apiClient.request(OnlyofficeAPI.Endpoints.Operations.list) { result, error in
                 if error != nil {
                     handler?.hide()
+                    isDownloadRoomCanceled = true
                 } else if let operation = result?.result?.first, let progress = operation.progress {
                     handler?.progress = Float(progress)
                     if progress >= 100 {
@@ -1415,8 +1428,8 @@ class ASCOnlyofficeProvider: ASCFileProviderProtocol & ASCSortableFileProviderPr
                             return
                         }
 
-                        strongSelf.downloadAndShareFile(urlString: fileURL, folderName: folder.title, handler: handler, completion: completion)
-                    } else if !strongSelf.isDownloadRoomCanceled {
+                        strongSelf.downloadAndShareFile(urlString: fileURL, itemName: itemName, handler: handler, completion: completion)
+                    } else if !isDownloadRoomCanceled {
                         DispatchQueue.global().asyncAfter(deadline: .now() + 1) {
                             checkOperation?()
                         }
@@ -1431,12 +1444,12 @@ class ASCOnlyofficeProvider: ASCFileProviderProtocol & ASCSortableFileProviderPr
     }
 
     // Downloading and sharing .zip file
-    func downloadAndShareFile(urlString: String, folderName: String, handler: ASCProgressAlert?, completion: @escaping (UIActivityViewController?) -> Void) {
+    func downloadAndShareFile(urlString: String, itemName: String, handler: ASCProgressAlert?, completion: @escaping (UIActivityViewController?) -> Void) {
         // Temporary directory URL
         let tempDirectoryURL = FileManager.default.temporaryDirectory
 
         // Destination file URL in the temporary directory
-        let destinationURL = tempDirectoryURL.appendingPathComponent("\(folderName).zip")
+        let destinationURL = tempDirectoryURL.appendingPathComponent("\(itemName).zip")
 
         // Download the file
         download(urlString, to: destinationURL) { data, progress, error in

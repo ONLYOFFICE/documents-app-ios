@@ -1882,6 +1882,35 @@ class ASCDocumentsViewController: ASCBaseTableViewController, UIGestureRecognize
         }
     }
 
+    func downloadRoom(cell: UITableViewCell) {
+        guard let folderCell = cell as? ASCFolderCell,
+              let folder = folderCell.folder,
+              let provider = provider as? ASCOnlyofficeProvider else { return }
+
+        let transferAlert = ASCProgressAlert(
+            title: NSLocalizedString("Downloading", comment: "Caption of the processing"),
+            message: nil,
+            handler: { cancel in
+                if cancel {
+                    provider.apiClient.request(OnlyofficeAPI.Endpoints.Operations.terminate)
+                    provider.cancel()
+                    print("Active operations terminated")
+                }
+            }
+        )
+
+        provider.downloadRoom(items: [folder], handler: transferAlert) { activityViewController in
+            if let activityViewController = activityViewController {
+                self.present(activityViewController, animated: true, completion: nil)
+            } else {
+                UIAlertController.showError(
+                    in: self,
+                    message: NSLocalizedString("Could not download the file.", comment: "")
+                )
+            }
+        }
+    }
+
     func favorite(cell: UITableViewCell, favorite: Bool) {
         guard
             let provider = provider,

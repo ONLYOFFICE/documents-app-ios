@@ -895,6 +895,10 @@ class ASCOnlyofficeProvider: ASCFileProviderProtocol & ASCSortableFileProviderPr
         return file.security.duplicate
     }
 
+    func allowDownload(folder: ASCFolder?) -> Bool {
+        return true
+    }
+
     func allowCopy(entity: AnyObject?) -> Bool {
         guard let entity = entity as? ASCEntity, allowRead(entity: entity) else { return false }
         guard isInRoom else { return true }
@@ -1240,6 +1244,7 @@ class ASCOnlyofficeProvider: ASCFileProviderProtocol & ASCSortableFileProviderPr
             let canCopy = allowCopy(entity: folder)
             let canDelete = allowDelete(entity: folder)
             let canShare = allowShare(entity: folder)
+            let canDownload = allowDownload(folder: folder)
             let canRename = allowRename(entity: folder)
             let isProjects = folder.rootFolderType == .onlyofficeBunch || folder.rootFolderType == .onlyofficeProjects
             let isRoomFolder = isFolderInRoom(folder: folder) && folder.roomType != nil
@@ -1265,6 +1270,10 @@ class ASCOnlyofficeProvider: ASCFileProviderProtocol & ASCSortableFileProviderPr
 
             if canEdit, canShare, !isProjects, !isRoomFolder, !isFolderInRoom(folder: folder) {
                 entityActions.insert(.share)
+            }
+
+            if canDownload {
+                entityActions.insert(.download)
             }
 
             if canDelete {
@@ -1354,6 +1363,109 @@ class ASCOnlyofficeProvider: ASCFileProviderProtocol & ASCSortableFileProviderPr
                 handler?(.end, folder, nil)
             } else {
                 handler?(.error, nil, ASCProviderError(msg: NSLocalizedString("Unarchiving failed.", comment: "")))
+            }
+        }
+    }
+
+    // Downloading DocSpace room
+    func downloadRoom(items: [ASCEntity], handler: ASCProgressAlert?, completion: @escaping (UIActivityViewController?) -> Void) {
+        var folderIds: [String] = []
+        var fileIds: [String] = []
+        var itemName: String = ""
+
+        for entity in items {
+            if let folder = entity as? ASCFolder {
+                folderIds.append(folder.id)
+                itemName = folder.title
+            } else if let file = entity as? ASCFile {
+                fileIds.append(file.id)
+                itemName = file.parent?.title ?? file.title
+            }
+        }
+
+        let files: [String: Any] = [
+            "fileIds": fileIds,
+            "folderIds": folderIds,
+        ]
+
+        // API request for file formation
+        apiClient.request(OnlyofficeAPI.Endpoints.Operations.download, files) { [weak self] result, error in
+            guard let strongSelf = self else { return }
+
+            if error != nil {
+                handler?.hide()
+                completion(nil)
+                return
+            } else {
+                if let result = result {
+                    handler?.show()
+                    strongSelf.checkOperationForDownload(result: result, itemName: itemName, handler: handler, completion: completion)
+                } else {
+                    handler?.hide()
+                    return
+                }
+            }
+        }
+    }
+
+    // API request for checking file formation progress
+    private func checkOperationForDownload(result: OnlyofficeResponse<OnlyofficeFileOperation>, itemName: String, handler: ASCProgressAlert?, completion: @escaping (UIActivityViewController?) -> Void) {
+        var checkOperation: (() -> Void)?
+        var isDownloadRoomCanceled: Bool = false
+
+        checkOperation = { [weak self] in
+            guard let strongSelf = self else { return }
+
+            strongSelf.apiClient.request(OnlyofficeAPI.Endpoints.Operations.list) { result, error in
+                if error != nil {
+                    handler?.hide()
+                    isDownloadRoomCanceled = true
+                } else if let operation = result?.result?.first, let progress = operation.progress {
+                    handler?.progress = Float(progress)
+                    if progress >= 100 {
+                        guard let fileURL = result?.result?.first?.url else {
+                            handler?.hide()
+                            return
+                        }
+
+                        strongSelf.downloadAndShareFile(urlString: fileURL, itemName: itemName, handler: handler, completion: completion)
+                    } else if !isDownloadRoomCanceled {
+                        DispatchQueue.global().asyncAfter(deadline: .now() + 1) {
+                            checkOperation?()
+                        }
+                    }
+                } else {
+                    handler?.hide()
+                }
+            }
+        }
+
+        checkOperation?()
+    }
+
+    // Downloading and sharing .zip file
+    func downloadAndShareFile(urlString: String, itemName: String, handler: ASCProgressAlert?, completion: @escaping (UIActivityViewController?) -> Void) {
+        // Temporary directory URL
+        let tempDirectoryURL = FileManager.default.temporaryDirectory
+
+        // Destination file URL in the temporary directory
+        let destinationURL = tempDirectoryURL.appendingPathComponent("\(itemName).zip")
+
+        // Download the file
+        download(urlString, to: destinationURL) { data, progress, error in
+            handler?.progress = Float(progress)
+
+            if let error = error {
+                print("Error downloading file: \(error)")
+                return
+            }
+
+            if progress == 1 {
+                handler?.hide {
+                    let activityViewController = UIActivityViewController(activityItems: [destinationURL], applicationActivities: nil)
+
+                    completion(activityViewController)
+                }
             }
         }
     }

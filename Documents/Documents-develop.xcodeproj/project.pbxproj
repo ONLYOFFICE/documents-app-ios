@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0F48DC792B05370100F1C8E9 /* ASCFolderLogoAvatarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F48DC782B05370100F1C8E9 /* ASCFolderLogoAvatarView.swift */; };
+		0FA5C7A02B03B98300380510 /* ASCFolderLogo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FA5C79F2B03B98300380510 /* ASCFolderLogo.swift */; };
 		3A28005710D299F4507111B1 /* Pods_Documents_develop.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B8240F9FF6E2BAE3B0B4E416 /* Pods_Documents_develop.framework */; };
 		8A01844923A261540025BE85 /* ASCConnectStorageGoogleController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A01844523A261530025BE85 /* ASCConnectStorageGoogleController.swift */; };
 		8A01844A23A261540025BE85 /* ASCConnectPortalThirdPartyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A01844623A261530025BE85 /* ASCConnectPortalThirdPartyViewController.swift */; };
@@ -625,6 +627,8 @@
 
 /* Begin PBXFileReference section */
 		051F20752774A7A1DE291FB1 /* Pods-Documents-develop.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Documents-develop.release.xcconfig"; path = "Target Support Files/Pods-Documents-develop/Pods-Documents-develop.release.xcconfig"; sourceTree = "<group>"; };
+		0F48DC782B05370100F1C8E9 /* ASCFolderLogoAvatarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCFolderLogoAvatarView.swift; sourceTree = "<group>"; };
+		0FA5C79F2B03B98300380510 /* ASCFolderLogo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCFolderLogo.swift; sourceTree = "<group>"; };
 		8A01844523A261530025BE85 /* ASCConnectStorageGoogleController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASCConnectStorageGoogleController.swift; sourceTree = "<group>"; };
 		8A01844623A261530025BE85 /* ASCConnectPortalThirdPartyViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASCConnectPortalThirdPartyViewController.swift; sourceTree = "<group>"; };
 		8A01844723A261530025BE85 /* ASCConnectCloudViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASCConnectCloudViewController.swift; sourceTree = "<group>"; };
@@ -2306,6 +2310,7 @@
 				FC8540C31E83A582000C2436 /* ASCProgressAlert.swift */,
 				FC142A9728992D4E00EDE7CE /* ASCPaddingLabel.swift */,
 				FCF2761B22C0E8E500984E83 /* ASCProfileAvatarView.swift */,
+				0F48DC782B05370100F1C8E9 /* ASCFolderLogoAvatarView.swift */,
 				FCF2761D22C0FA5E00984E83 /* ASCShadowRadiusView.swift */,
 				FC23FC5A2043EEEF003B3AE7 /* ASCUserAvatarView.swift */,
 				FC6DD4E51EDD59330095B16C /* ParkedTextField.swift */,
@@ -2383,6 +2388,7 @@
 				FC7F71F729940FA00004F274 /* ASCEntitySecurity.swift */,
 				FCE2B41D2930CCA700E50429 /* ASCFile.swift */,
 				FCE2B4132930CCA700E50429 /* ASCFolder.swift */,
+				0FA5C79F2B03B98300380510 /* ASCFolderLogo.swift */,
 				FCE2B4182930CCA700E50429 /* ASCGroup.swift */,
 				FCE2B4192930CCA700E50429 /* ASCPaymentQuota.swift */,
 				FCE2B41A2930CCA700E50429 /* ASCPushSubscribed.swift */,
@@ -3547,6 +3553,7 @@
 				FC0F01E3216F4EA7008D79A5 /* ASCWebDAVProvider.swift in Sources */,
 				FC9F497127F5D0D100D88936 /* ASCMicrosoftSignInController.swift in Sources */,
 				FC83D53E2A973E2100C404CB /* Path+Extension.swift in Sources */,
+				0FA5C7A02B03B98300380510 /* ASCFolderLogo.swift in Sources */,
 				FCC64F5529191950004D9A47 /* ASCSharingInviteRightHoldersViewController.swift in Sources */,
 				FC5D0411263BE43A00D9DBCF /* NetworkingServerError.swift in Sources */,
 				FC7D99222729942700410795 /* ASCSharingAddRightHoldersViewController.swift in Sources */,
@@ -3711,6 +3718,7 @@
 				FC5943202AE664E9001BA2F9 /* ASCPresentationEditorConfiguration.swift in Sources */,
 				FCEF9D351ED2D1D600627BA5 /* ASCUserDefaultsPasscodeRepository.swift in Sources */,
 				FC43E70F2195B5FC002AAA32 /* ASCYandexFileProvider.swift in Sources */,
+				0F48DC792B05370100F1C8E9 /* ASCFolderLogoAvatarView.swift in Sources */,
 				FCC64F6229191CE4004D9A47 /* InviteRigthHoldersByEmailsViewController.swift in Sources */,
 				FC2B0CC22640518500969DB9 /* OnlyofficeEndpoints.swift in Sources */,
 				FC059D9C1E82657F00BC2F5E /* ASCIndexTransform.swift in Sources */,

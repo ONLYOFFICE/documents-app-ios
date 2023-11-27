@@ -18,27 +18,17 @@ struct CreateGeneralLinkView: View {
                     Section(header: Text(NSLocalizedString("General links", comment: "Header for general links section")),
                             footer: Text(NSLocalizedString("Provide general access to the document selecting the required permission level.", comment: "Footer text explaining what 'Create and copy' does")))
                     {
-                        Button(action: {
-                            viewModel.createAndCopyLink()
-                        }) {
-                            HStack {
-                                Text(NSLocalizedString("Create and copy", comment: ""))
-                                    .foregroundColor(.blue) //MARK: TODO - accent color
-                                Spacer()
-                                if let status = viewModel.linkCreationStatus {
-                                    Text(status)
-                                        .font(.footnote)
-                                        .foregroundColor(.gray) //MARK: - TODO color
-                                }
-                            }
-                        }
+                        ASCLabledCellView(viewModel: viewModel, textString: NSLocalizedString("Create and copy", comment: ""))
                     }
                 }
             }
             .navigationBarTitle(Text(NSLocalizedString("Sharing settings", comment: "")), displayMode: .inline)
-            .navigationBarItems(leading: Button(NSLocalizedString("Close", comment: "")) {
+            .navigationBarItems(leading: Button(action: {
                 // MARK: - TODO add close btn action
-            })
+            }, label: {
+                Text(NSLocalizedString("Close", comment: ""))
+                    .foregroundColor(Asset.Colors.brend.swiftUIColor)
+            }))
         }
     }
 }

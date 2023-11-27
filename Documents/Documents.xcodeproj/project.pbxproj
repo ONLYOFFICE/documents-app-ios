@@ -131,6 +131,11 @@
 		7E7324B635B9B2D98E80FD03 /* Pods_Documents.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1B32667722AD980849E124F1 /* Pods_Documents.framework */; };
 		9AC1D42040BBA923AD7D49C2 /* Pods_DocumentsTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C98C6D1CF16699DFAAAA3A64 /* Pods_DocumentsTests.framework */; };
 		F336546227E4903400ABBEB3 /* KeyboardManagerHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = F336546127E4903400ABBEB3 /* KeyboardManagerHelper.swift */; };
+		F33DDA312B14813C00E52F40 /* CreateGeneralLinkViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F33DDA2F2B14813B00E52F40 /* CreateGeneralLinkViewModel.swift */; };
+		F33DDA322B14813C00E52F40 /* CreateGeneralLinkView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F33DDA302B14813B00E52F40 /* CreateGeneralLinkView.swift */; };
+		F33DDA342B14852E00E52F40 /* ASCDocSpaceLinkView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F33DDA332B14852E00E52F40 /* ASCDocSpaceLinkView.swift */; };
+		F33DDA362B1485C100E52F40 /* ASCDocSpaceLinkViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F33DDA352B1485C100E52F40 /* ASCDocSpaceLinkViewModel.swift */; };
+		F33DDA392B14CB2A00E52F40 /* ASCLabledCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F33DDA382B14CB2A00E52F40 /* ASCLabledCellView.swift */; };
 		F33E473B27AD9BC200EFF6D9 /* ASCWebKitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F33E473A27AD9BC200EFF6D9 /* ASCWebKitViewController.swift */; };
 		F377689527CFCF2D0044EDA6 /* ASCConnectStorageNextCloudServerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F377689427CFCF2D0044EDA6 /* ASCConnectStorageNextCloudServerController.swift */; };
 		F377689827D273B20044EDA6 /* ASCNextCloudConnectStorageDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F377689727D273B20044EDA6 /* ASCNextCloudConnectStorageDelegate.swift */; };
@@ -657,6 +662,11 @@
 		DD1E00FB1DC7C04AB38894E0 /* Pods-Documents.documents-alpha.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Documents.documents-alpha.xcconfig"; path = "../Pods/Target Support Files/Pods-Documents/Pods-Documents.documents-alpha.xcconfig"; sourceTree = "<group>"; };
 		E44246600744D0821FA7F89D /* Pods-Documents-Alpha.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Documents-Alpha.release.xcconfig"; path = "../Pods/Target Support Files/Pods-Documents-Alpha/Pods-Documents-Alpha.release.xcconfig"; sourceTree = "<group>"; };
 		F336546127E4903400ABBEB3 /* KeyboardManagerHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardManagerHelper.swift; sourceTree = "<group>"; };
+		F33DDA2F2B14813B00E52F40 /* CreateGeneralLinkViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateGeneralLinkViewModel.swift; sourceTree = "<group>"; };
+		F33DDA302B14813B00E52F40 /* CreateGeneralLinkView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateGeneralLinkView.swift; sourceTree = "<group>"; };
+		F33DDA332B14852E00E52F40 /* ASCDocSpaceLinkView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCDocSpaceLinkView.swift; sourceTree = "<group>"; };
+		F33DDA352B1485C100E52F40 /* ASCDocSpaceLinkViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCDocSpaceLinkViewModel.swift; sourceTree = "<group>"; };
+		F33DDA382B14CB2A00E52F40 /* ASCLabledCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCLabledCellView.swift; sourceTree = "<group>"; };
 		F33E473A27AD9BC200EFF6D9 /* ASCWebKitViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCWebKitViewController.swift; sourceTree = "<group>"; };
 		F377689427CFCF2D0044EDA6 /* ASCConnectStorageNextCloudServerController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCConnectStorageNextCloudServerController.swift; sourceTree = "<group>"; };
 		F377689727D273B20044EDA6 /* ASCNextCloudConnectStorageDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCNextCloudConnectStorageDelegate.swift; sourceTree = "<group>"; };
@@ -1912,6 +1922,34 @@
 			path = Helpers;
 			sourceTree = "<group>";
 		};
+		F33DDA2D2B14813B00E52F40 /* Links */ = {
+			isa = PBXGroup;
+			children = (
+				F33DDA372B14CAD200E52F40 /* Views */,
+				F33DDA2E2B14813B00E52F40 /* CreateGeneralLink */,
+				F33DDA332B14852E00E52F40 /* ASCDocSpaceLinkView.swift */,
+				F33DDA352B1485C100E52F40 /* ASCDocSpaceLinkViewModel.swift */,
+			);
+			path = Links;
+			sourceTree = "<group>";
+		};
+		F33DDA2E2B14813B00E52F40 /* CreateGeneralLink */ = {
+			isa = PBXGroup;
+			children = (
+				F33DDA2F2B14813B00E52F40 /* CreateGeneralLinkViewModel.swift */,
+				F33DDA302B14813B00E52F40 /* CreateGeneralLinkView.swift */,
+			);
+			path = CreateGeneralLink;
+			sourceTree = "<group>";
+		};
+		F33DDA372B14CAD200E52F40 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				F33DDA382B14CB2A00E52F40 /* ASCLabledCellView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
 		F33E473927AD9A7200EFF6D9 /* WebKit */ = {
 			isa = PBXGroup;
 			children = (
@@ -2180,6 +2218,7 @@
 		FC31B2881E76C168008699C3 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				F33DDA2D2B14813B00E52F40 /* Links */,
 				F3B17C0927F4ADE30021E03A /* Filters */,
 				FC1EA5C91ECECB77008FEE2E /* Common */,
 				FC844391215E604000526974 /* Root */,
@@ -3674,6 +3713,7 @@
 				FC25B46A285116CB0075D6C2 /* ASCFiltersControllerProtocol.swift in Sources */,
 				FC7B80202AFA299D00C22C71 /* ASCPhoneCountryCode.swift in Sources */,
 				1DC43EEA26A0978D00373D5A /* ASCSharingSettingsAccessViewModel.swift in Sources */,
+				F33DDA342B14852E00E52F40 /* ASCDocSpaceLinkView.swift in Sources */,
 				FC5943642AE6816E001BA2F9 /* ASCEditorManager+DocumentEditor.swift in Sources */,
 				FCF694B42631C10400808644 /* ASCNavigator.swift in Sources */,
 				FC68529326837B7300D830EC /* OnlyofficeEndpoints.swift in Sources */,
@@ -3934,6 +3974,7 @@
 				FC7B80212AFA299D00C22C71 /* ASCCountryCodeViewController.swift in Sources */,
 				1D2E3B8A26BB290700BEBE9D /* ASCSharingSettingsAccessNotesProviderProtocol.swift in Sources */,
 				FC5943C42AE6B422001BA2F9 /* ASCIntroPage.swift in Sources */,
+				F33DDA312B14813C00E52F40 /* CreateGeneralLinkViewModel.swift in Sources */,
 				FCE18669262AB4AB0086D21B /* Segues.swift in Sources */,
 				FC35D45E2A987DFC00C6383F /* UINavigationItem+Extensions.swift in Sources */,
 				1D14AAE426976E19009E48AD /* ASCSharingAddRightHoldersView.swift in Sources */,
@@ -3994,8 +4035,10 @@
 				1D76B050275B957A00389C61 /* ASCEntityUniqNameFinder.swift in Sources */,
 				FC407FBC2191DC76009089EB /* ASCConnectCloudViewController.swift in Sources */,
 				FC5943622AE6816E001BA2F9 /* ASCEditorManager+SpreadsheetEditor.swift in Sources */,
+				F33DDA362B1485C100E52F40 /* ASCDocSpaceLinkViewModel.swift in Sources */,
 				FC35D45C2A987DFC00C6383F /* Encodable+Extensions.swift in Sources */,
 				FCEF9D351ED2D1D600627BA5 /* ASCUserDefaultsPasscodeRepository.swift in Sources */,
+				F33DDA392B14CB2A00E52F40 /* ASCLabledCellView.swift in Sources */,
 				FC43E70F2195B5FC002AAA32 /* ASCYandexFileProvider.swift in Sources */,
 				1DEB996F274E2C7C0071C1DB /* ASCPersonalShareSettingsAPIWorker.swift in Sources */,
 				F3B17C0827F374D90021E03A /* ASCFiltersViewController.swift in Sources */,
@@ -4022,6 +4065,7 @@
 				FC68529526837B7300D830EC /* OnlyofficeServerError.swift in Sources */,
 				FC3AF6B9217081DB004A96FD /* ASCNextCloudProvider.swift in Sources */,
 				FC35D4682A987DFC00C6383F /* UIViewController+Extensions.swift in Sources */,
+				F33DDA322B14813C00E52F40 /* CreateGeneralLinkView.swift in Sources */,
 				FCEF9D1D1ED2C94300627BA5 /* ChangePasscodeState.swift in Sources */,
 				FC7DC88A285F631100E61C69 /* ASCDropboxSDKWrapper.swift in Sources */,
 				FC35D4582A987DFC00C6383F /* MBProgressHUD+Extension.swift in Sources */,

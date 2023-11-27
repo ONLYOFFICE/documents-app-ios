@@ -41,7 +41,7 @@ struct RoomSelectionView: View {
                 isCreateRoomPresenting = true
             }
         }
-        .navigation(isActive: $isCreateRoomPresenting) { 
+        .navigation(isActive: $isCreateRoomPresenting) {
             CreateRoomView()
         }
     }

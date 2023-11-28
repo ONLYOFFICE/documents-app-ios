@@ -1,7 +1,7 @@
 {
   "images" : [
     {
-      "filename" : "room-collaboration-light.pdf",
+      "filename" : "room-public-light.pdf",
       "idiom" : "universal"
     },
     {
@@ -11,7 +11,7 @@
           "value" : "dark"
         }
       ],
-      "filename" : "room-collaboration-dark.pdf",
+      "filename" : "room-public-dark.pdf",
       "idiom" : "universal"
     }
   ],

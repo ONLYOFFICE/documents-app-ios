@@ -8,22 +8,36 @@
 
 import SwiftUI
 
+enum CellType {
+    case deletable, standard
+}
+
+enum TextAlignment {
+    case center, leading, trailing
+}
+
 struct ASCLabledCellView: View {
-    @ObservedObject var viewModel = CreateGeneralLinkViewModel()
     var textString: String
+    var cellType: CellType
+    var textAlignment: TextAlignment
+
     var body: some View {
-        Button(action: {
-            viewModel.createAndCopyLink()
-        }) {
-            HStack {
-                Text(textString)
-                    .foregroundColor(Asset.Colors.brend.swiftUIColor)
+//        HStack {
+//            Spacer()
+//            Text(textString)
+//                .foregroundColor(Asset.Colors.brend.swiftUIColor)
+//            Spacer()
+//        }
+        HStack {
+            if textAlignment == .trailing || textAlignment == .center {
                 Spacer()
-                if let status = viewModel.linkCreationStatus {
-                    Text(status)
-                        .font(.footnote)
-                        .foregroundColor(.gray) // MARK: - TODO color
-                }
+            }
+
+            Text(textString)
+                .foregroundColor(cellType == .deletable ? Color.red : Asset.Colors.brend.swiftUIColor)
+
+            if textAlignment == .leading || textAlignment == .center {
+                Spacer()
             }
         }
     }

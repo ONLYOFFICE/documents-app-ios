@@ -8,6 +8,28 @@
 
 import SwiftUI
 
+struct ASCCreateLinkCellView: View {
+    @ObservedObject var viewModel = CreateGeneralLinkViewModel()
+    var textString: String
+    var body: some View {
+        Button(action: {
+            viewModel.createAndCopyLink()
+        }) {
+            HStack {
+                Text(textString)
+                    .foregroundColor(Asset.Colors.brend.swiftUIColor)
+                Spacer()
+                if let status = viewModel.linkCreationStatus {
+                    Text(status)
+                        .font(.footnote)
+
+                        .foregroundColor(.gray) // MARK: - TODO color
+                }
+            }
+        }
+    }
+}
+
 struct CreateGeneralLinkView: View {
     @ObservedObject var viewModel = CreateGeneralLinkViewModel()
 
@@ -18,7 +40,7 @@ struct CreateGeneralLinkView: View {
                     Section(header: Text(NSLocalizedString("General links", comment: "Header for general links section")),
                             footer: Text(NSLocalizedString("Provide general access to the document selecting the required permission level.", comment: "Footer text explaining what 'Create and copy' does")))
                     {
-                        ASCLabledCellView(viewModel: viewModel, textString: NSLocalizedString("Create and copy", comment: ""))
+                        ASCCreateLinkCellView(viewModel: viewModel, textString: NSLocalizedString("Create and copy", comment: ""))
                     }
                 }
             }

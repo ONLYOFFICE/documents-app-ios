@@ -42,7 +42,7 @@ struct ASCDocSpaceLinkView: View {
             Section(header: Text(NSLocalizedString("Additional links", comment: "")),
                     footer: Text(NSLocalizedString("Create additional links to share the document with different access rights.", comment: "")))
             {
-                ASCLabledCellView(textString: NSLocalizedString("Create and copy", comment: ""))
+                ASCLabledCellView(textString: NSLocalizedString("Create and copy", comment: ""), cellType: .standard, textAlignment: .leading)
             }
         }
     }

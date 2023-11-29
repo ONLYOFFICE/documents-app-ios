@@ -15,6 +15,7 @@ enum ASCRoomType: Int {
     case review = 3
     case viewOnly = 4
     case custom = 5
+    case `public` = 6
 
     var image: UIImage {
         switch self {
@@ -28,6 +29,8 @@ enum ASCRoomType: Int {
             return Asset.Images.roomViewOnly.image
         case .custom:
             return Asset.Images.roomCustom.image
+        case .public:
+            return Asset.Images.roomDefault.image
         }
     }
 }

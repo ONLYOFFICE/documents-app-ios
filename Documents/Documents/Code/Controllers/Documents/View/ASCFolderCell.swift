@@ -119,10 +119,12 @@ class ASCFolderCell: MGSwipeTableCell {
         dateRight?.text = (folderInfo.created != nil) ? dateFormatter.string(from: folderInfo.created!) : nil
 
         /// Thumb view
-        if folder?.roomType != nil, folder?.rootFolderType == .onlyofficeRoomArchived {
-            setDefaultIcon()
-        } else if let roomType = folder?.roomType {
-            setRoomIcon(roomType: roomType)
+        if let roomType = folder?.roomType {
+            if folder?.rootFolderType == .onlyofficeRoomArchived {
+                setDefaultIcon()
+            } else {
+                setRoomIcon(roomType: roomType)
+            }
         } else {
             icon.image = Asset.Images.listFolder.image
         }

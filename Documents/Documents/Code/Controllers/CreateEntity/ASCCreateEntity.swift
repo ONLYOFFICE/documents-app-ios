@@ -22,6 +22,14 @@ class ASCCreateEntity: NSObject, UIImagePickerControllerDelegate, UINavigationCo
     func showCreateController(for provider: ASCFileProviderProtocol, in viewController: ASCDocumentsViewController, sender: Any? = nil) {
         self.provider = provider
 
+        if let provider = provider as? ASCOnlyofficeProvider,
+           provider.apiClient.serverVersion?.docSpace != nil,
+           provider.folder?.isRoomListFolder == true
+        {
+            showCreateRoomController(provider: provider, viewController: viewController)
+            return
+        }
+
         let allowClouds = {
             guard let provider = provider as? ASCOnlyofficeProvider,
                   provider.apiClient.serverVersion?.docSpace == nil
@@ -86,6 +94,11 @@ class ASCCreateEntity: NSObject, UIImagePickerControllerDelegate, UINavigationCo
 
             viewController.present(createEntityVC, animated: true, completion: nil)
         }
+    }
+
+    private func showCreateRoomController(provider: ASCOnlyofficeProvider, viewController: ASCDocumentsViewController) {
+        let vc = RoomSelectionViewViewController(onAction: { _ in })
+        viewController.present(vc, animated: true, completion: nil)
     }
 
     private func createEntity(_ type: CreateEntityUIType, in viewController: ASCDocumentsViewController) {

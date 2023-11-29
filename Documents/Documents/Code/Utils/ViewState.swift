@@ -13,16 +13,16 @@ enum ViewState<Content> {
     case loading
     case loaded(Content)
     case error(Error)
-    
+
     var content: Content? {
-        if case .loaded(let content) = self {
+        if case let .loaded(content) = self {
             return content
         }
         return nil
     }
-    
+
     var error: Error? {
-        if case .error(let error) = self {
+        if case let .error(error) = self {
             return error
         }
         return nil

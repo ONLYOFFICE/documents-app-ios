@@ -924,7 +924,7 @@ class ASCOnlyofficeProvider: ASCFileProviderProtocol & ASCSortableFileProviderPr
         if folder.rootFolderType == .onlyofficeUser {
             return true
         }
-        return !folder.isRoomListFolder && folder.security.create
+        return folder.security.create
     }
 
     func allowComment(entity: AnyObject?) -> Bool {

@@ -118,7 +118,7 @@
                     <constraint firstItem="zsv-AQ-fXv" firstAttribute="leading" secondItem="rjE-BW-CqC" secondAttribute="leading" id="FUI-CK-Urx"/>
                     <constraint firstAttribute="bottom" secondItem="zsv-AQ-fXv" secondAttribute="bottom" id="Vs0-2i-rER"/>
                     <constraint firstItem="PR2-Y6-y52" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="-2" id="gLI-20-uAv"/>
-                    <constraint firstItem="rjE-BW-CqC" firstAttribute="leading" relation="lessThanOrEqual" secondItem="PR2-Y6-y52" secondAttribute="trailing" constant="19" id="ikH-E9-2NI"/>
+                    <constraint firstItem="rjE-BW-CqC" firstAttribute="leading" secondItem="PR2-Y6-y52" secondAttribute="trailing" constant="19" id="ikH-E9-2NI"/>
                     <constraint firstItem="rjE-BW-CqC" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="ue4-cL-lNN"/>
                     <constraint firstAttribute="trailing" secondItem="rjE-BW-CqC" secondAttribute="trailing" constant="8" id="wTb-7n-ux9"/>
                 </constraints>
@@ -141,10 +141,10 @@
         <image name="list-folder" width="35" height="44"/>
         <image name="security" width="13" height="14"/>
         <systemColor name="secondaryLabelColor">
-            <color red="0.23529411764705882" green="0.23529411764705882" blue="0.2627450980392157" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.23529411759999999" green="0.23529411759999999" blue="0.26274509800000001" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="separatorColor">
-            <color red="0.23529411764705882" green="0.23529411764705882" blue="0.2627450980392157" alpha="0.28999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.23529411759999999" green="0.23529411759999999" blue="0.26274509800000001" alpha="0.28999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

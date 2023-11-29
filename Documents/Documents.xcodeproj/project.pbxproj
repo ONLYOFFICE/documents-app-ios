@@ -139,6 +139,7 @@
 		F33DDA3C2B15FC0000E52F40 /* ASCDocSpaceExternalLinkView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F33DDA3B2B15FC0000E52F40 /* ASCDocSpaceExternalLinkView.swift */; };
 		F33DDA3E2B15FC1F00E52F40 /* ASCDocSpaceExternalLinkViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F33DDA3D2B15FC1F00E52F40 /* ASCDocSpaceExternalLinkViewModel.swift */; };
 		F33E473B27AD9BC200EFF6D9 /* ASCWebKitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F33E473A27AD9BC200EFF6D9 /* ASCWebKitViewController.swift */; };
+		F368FD592B1628AB00BFBD20 /* ASCDocSpaceLinkLifeTimeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F368FD582B1628AB00BFBD20 /* ASCDocSpaceLinkLifeTimeView.swift */; };
 		F377689527CFCF2D0044EDA6 /* ASCConnectStorageNextCloudServerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F377689427CFCF2D0044EDA6 /* ASCConnectStorageNextCloudServerController.swift */; };
 		F377689827D273B20044EDA6 /* ASCNextCloudConnectStorageDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F377689727D273B20044EDA6 /* ASCNextCloudConnectStorageDelegate.swift */; };
 		F37F0A2927C12B9E00371183 /* ASCMicrosoftSignInController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F37F0A2827C12B9E00371183 /* ASCMicrosoftSignInController.swift */; };
@@ -153,6 +154,7 @@
 		F3B17C2327FC82D50021E03A /* ASCDocumentsFilterModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3B17C2227FC82D20021E03A /* ASCDocumentsFilterModel.swift */; };
 		F3DA8957280EC08A005456B5 /* ASCGroupTableViewDataModelItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3DA8956280EC08A005456B5 /* ASCGroupTableViewDataModelItem.swift */; };
 		F3DA8959280ECEA2005456B5 /* ASCSelectGroupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3DA8958280ECEA2005456B5 /* ASCSelectGroupViewController.swift */; };
+		F3E281D52B17024E0098FADE /* ASCDocSpaceLinkLifeTimeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3E281D42B17024E0098FADE /* ASCDocSpaceLinkLifeTimeViewModel.swift */; };
 		F3F0F6AE284502CE0083370A /* ASCLocalFilterController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3F0F6AD284502CE0083370A /* ASCLocalFilterController.swift */; };
 		FC050F7E1ECB1F6800FD452C /* ConnectStorage.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FC050F801ECB1F6800FD452C /* ConnectStorage.storyboard */; };
 		FC059D981E82584400BC2F5E /* ASCDateTransform.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC059D971E82584400BC2F5E /* ASCDateTransform.swift */; };
@@ -674,6 +676,7 @@
 		F33DDA3B2B15FC0000E52F40 /* ASCDocSpaceExternalLinkView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCDocSpaceExternalLinkView.swift; sourceTree = "<group>"; };
 		F33DDA3D2B15FC1F00E52F40 /* ASCDocSpaceExternalLinkViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCDocSpaceExternalLinkViewModel.swift; sourceTree = "<group>"; };
 		F33E473A27AD9BC200EFF6D9 /* ASCWebKitViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCWebKitViewController.swift; sourceTree = "<group>"; };
+		F368FD582B1628AB00BFBD20 /* ASCDocSpaceLinkLifeTimeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCDocSpaceLinkLifeTimeView.swift; sourceTree = "<group>"; };
 		F377689427CFCF2D0044EDA6 /* ASCConnectStorageNextCloudServerController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCConnectStorageNextCloudServerController.swift; sourceTree = "<group>"; };
 		F377689727D273B20044EDA6 /* ASCNextCloudConnectStorageDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCNextCloudConnectStorageDelegate.swift; sourceTree = "<group>"; };
 		F37F0A2827C12B9E00371183 /* ASCMicrosoftSignInController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCMicrosoftSignInController.swift; sourceTree = "<group>"; };
@@ -688,6 +691,7 @@
 		F3B17C2227FC82D20021E03A /* ASCDocumentsFilterModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCDocumentsFilterModel.swift; sourceTree = "<group>"; };
 		F3DA8956280EC08A005456B5 /* ASCGroupTableViewDataModelItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCGroupTableViewDataModelItem.swift; sourceTree = "<group>"; };
 		F3DA8958280ECEA2005456B5 /* ASCSelectGroupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCSelectGroupViewController.swift; sourceTree = "<group>"; };
+		F3E281D42B17024E0098FADE /* ASCDocSpaceLinkLifeTimeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCDocSpaceLinkLifeTimeViewModel.swift; sourceTree = "<group>"; };
 		F3F0F6AD284502CE0083370A /* ASCLocalFilterController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCLocalFilterController.swift; sourceTree = "<group>"; };
 		FC029A3927BCF2FC00E5341B /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Documents-InfoPlist.strings"; sourceTree = "<group>"; };
 		FC029A3B27BCF2FC00E5341B /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Localizable.strings"; sourceTree = "<group>"; };
@@ -1933,6 +1937,7 @@
 		F33DDA2D2B14813B00E52F40 /* Links */ = {
 			isa = PBXGroup;
 			children = (
+				F368FD572B16288400BFBD20 /* LinkLifeTime */,
 				F33DDA3A2B15FBDE00E52F40 /* ExternalLink */,
 				F33DDA372B14CAD200E52F40 /* Views */,
 				F33DDA2E2B14813B00E52F40 /* CreateGeneralLink */,
@@ -1974,6 +1979,15 @@
 				F33E473A27AD9BC200EFF6D9 /* ASCWebKitViewController.swift */,
 			);
 			path = WebKit;
+			sourceTree = "<group>";
+		};
+		F368FD572B16288400BFBD20 /* LinkLifeTime */ = {
+			isa = PBXGroup;
+			children = (
+				F368FD582B1628AB00BFBD20 /* ASCDocSpaceLinkLifeTimeView.swift */,
+				F3E281D42B17024E0098FADE /* ASCDocSpaceLinkLifeTimeViewModel.swift */,
+			);
+			path = LinkLifeTime;
 			sourceTree = "<group>";
 		};
 		F3A4E39A2ABC6E5A00001CB9 /* Models */ = {
@@ -3955,6 +3969,7 @@
 				FC19849A2805559D002057B2 /* ASCLeftAlignedCollectionViewFlowLayout.swift in Sources */,
 				FCEF9D271ED2C94300627BA5 /* PasscodeRepositoryType.swift in Sources */,
 				FC8667D621C799160020D797 /* ASCCloudsSplitViewController.swift in Sources */,
+				F3E281D52B17024E0098FADE /* ASCDocSpaceLinkLifeTimeViewModel.swift in Sources */,
 				FC6DD4E61EDD59330095B16C /* ParkedTextField.swift in Sources */,
 				1D14AAC926958F88009E48AD /* ASCSharingRightHolder.swift in Sources */,
 				FC066AB3252DB7C5007357F7 /* ObservableChainingProxy.swift in Sources */,
@@ -4145,6 +4160,7 @@
 				FCE1864A2628CFE70086D21B /* Assets.swift in Sources */,
 				FC64B2EB1EE56C5500920FDD /* ASCFacebookSignInController.swift in Sources */,
 				F336546227E4903400ABBEB3 /* KeyboardManagerHelper.swift in Sources */,
+				F368FD592B1628AB00BFBD20 /* ASCDocSpaceLinkLifeTimeView.swift in Sources */,
 				FCF695872632E3A300808644 /* UILabel+Style.swift in Sources */,
 				FC3AF6BB2170825B004A96FD /* ASCFileProviderProtocol.swift in Sources */,
 				FC08F8731ECB2FD600988DDE /* ASCConnectPortalThirdPartyViewController.swift in Sources */,

@@ -17,3 +17,11 @@ class RoomSelectionViewModel: ObservableObject {
 
     func selectRoom(_ room: Room) {}
 }
+
+// MARK: - CreatingRoomType extension
+
+extension CreatingRoomType {
+    func toRoom() -> Room {
+        return Room(name: name, description: description, icon: icon)
+    }
+}

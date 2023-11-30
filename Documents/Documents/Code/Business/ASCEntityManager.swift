@@ -939,7 +939,7 @@ class ASCEntityManager: NSObject, UITextFieldDelegate {
 
                             semaphore.signal()
                         } else {
-                            log.debug("Download progress: \(file.title) - \(Int(Float(progress) * 100))")
+//                            log.debug("Download progress: \(file.title) - \(Int(Float(progress) * 100))")
                         }
                     }
                     semaphore.wait()

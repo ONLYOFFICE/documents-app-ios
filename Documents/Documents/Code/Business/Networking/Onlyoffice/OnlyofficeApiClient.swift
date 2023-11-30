@@ -188,7 +188,7 @@ class OnlyofficeApiClient: NetworkingClient {
             to: destination
         )
         .downloadProgress(queue: queue) { progress in
-            log.debug("Download Progress: \(progress.fractionCompleted)")
+//            log.debug("Download Progress: \(progress.fractionCompleted)")
             DispatchQueue.main.async {
                 processing(nil, progress.fractionCompleted, nil)
             }

@@ -20,8 +20,7 @@ struct RoomSelectionView: View {
 
     var body: some View {
         List(viewModel.rooms, id: \.name) { room in
-            roomView(room)
-                .padding(.vertical, 4)
+            CreatingRoomViewRow(room: room)
                 .onTapGesture {
                     viewModel.selectRoom(room)
                     isCreateRoomPresenting = true
@@ -29,24 +28,6 @@ struct RoomSelectionView: View {
         }
         .navigation(isActive: $isCreateRoomPresenting) {
             CreateRoomView()
-        }
-    }
-
-    private func roomView(_ room: Room) -> some View {
-        HStack {
-            Image(systemName: room.icon)
-                .foregroundColor(.accentColor)
-                .frame(width: 36, height: 36)
-                .background(Color.gray.opacity(0.1))
-                .cornerRadius(8)
-
-            VStack(alignment: .leading) {
-                Text(room.name)
-                    .font(.headline)
-                Text(room.description)
-                    .font(.subheadline)
-                    .foregroundColor(.gray)
-            }
         }
     }
 }

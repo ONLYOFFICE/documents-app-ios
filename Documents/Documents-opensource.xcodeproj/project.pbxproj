@@ -25,6 +25,7 @@
 		1D939F0B291C0DF500221F75 /* ASCPaymentQuota.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D939F09291C0DF500221F75 /* ASCPaymentQuota.swift */; };
 		86E2AD2B387DF62F19D0CB36 /* Pods_Documents_opensource.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A7DBE3A94B4934AA87B956D4 /* Pods_Documents_opensource.framework */; };
 		E80574552B18EE5700AAFCF0 /* CreatingRoomType.swift in Sources */ = {isa = PBXBuildFile; fileRef = E80574542B18EE5700AAFCF0 /* CreatingRoomType.swift */; };
+		E80574582B1A5C8600AAFCF0 /* CreatingRoomViewRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = E80574572B1A5C8600AAFCF0 /* CreatingRoomViewRow.swift */; };
 		E8AC0F032B07D63600B8EEA2 /* RoomSelectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8AC0F022B07D63600B8EEA2 /* RoomSelectionView.swift */; };
 		E8AC0F052B07D77000B8EEA2 /* RoomSelectionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8AC0F042B07D77000B8EEA2 /* RoomSelectionViewModel.swift */; };
 		E8AC0F072B0D0B7500B8EEA2 /* View+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8AC0F062B0D0B7500B8EEA2 /* View+Extensions.swift */; };
@@ -601,6 +602,7 @@
 		A7DBE3A94B4934AA87B956D4 /* Pods_Documents_opensource.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Documents_opensource.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B7CE7D158863590DD1A006AC /* Pods-Documents.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Documents.release.xcconfig"; path = "../Pods/Target Support Files/Pods-Documents/Pods-Documents.release.xcconfig"; sourceTree = "<group>"; };
 		E80574542B18EE5700AAFCF0 /* CreatingRoomType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreatingRoomType.swift; sourceTree = "<group>"; };
+		E80574572B1A5C8600AAFCF0 /* CreatingRoomViewRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreatingRoomViewRow.swift; sourceTree = "<group>"; };
 		E8AC0F022B07D63600B8EEA2 /* RoomSelectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoomSelectionView.swift; sourceTree = "<group>"; };
 		E8AC0F042B07D77000B8EEA2 /* RoomSelectionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoomSelectionViewModel.swift; sourceTree = "<group>"; };
 		E8AC0F062B0D0B7500B8EEA2 /* View+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+Extensions.swift"; sourceTree = "<group>"; };
@@ -1758,9 +1760,18 @@
 			path = Models;
 			sourceTree = "<group>";
 		};
+		E80574562B1A5C6400AAFCF0 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				E80574572B1A5C8600AAFCF0 /* CreatingRoomViewRow.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
 		E8AC0EFF2B07D5CA00B8EEA2 /* Rooms */ = {
 			isa = PBXGroup;
 			children = (
+				E80574562B1A5C6400AAFCF0 /* Views */,
 				E80574532B18EE3100AAFCF0 /* Models */,
 				E8AC0F0A2B0E5ED800B8EEA2 /* CreateRoom */,
 				E8AC0F002B07D5EE00B8EEA2 /* ChooseRoom */,
@@ -3383,6 +3394,7 @@
 				FC7080E72812E2260057FCD2 /* ASCOnlyofficeUserDefaultsCacheCategoriesProvider.swift in Sources */,
 				FC7080E82812E2260057FCD2 /* OnlyofficeAuthRequest.swift in Sources */,
 				FC83D5FA2A974E2200C404CB /* UITableViewCell+Extensions.swift in Sources */,
+				E80574582B1A5C8600AAFCF0 /* CreatingRoomViewRow.swift in Sources */,
 				FC7080E92812E2260057FCD2 /* ASCCloudsEmptyViewController.swift in Sources */,
 				FC142A16289818B800EDE7CE /* ASCFiltersViewController.swift in Sources */,
 				FC7080EB2812E2260057FCD2 /* ASCDeviceCategoryViewController.swift in Sources */,

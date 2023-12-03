@@ -12,6 +12,7 @@ import SwiftUI
 
 struct ASCDocSpaceExternalLinkView: View {
     @State private var selectedDate: Date = Calendar.current.date(byAdding: .day, value: 7, to: Date()) ?? Date()
+    @State private var isLinkLifeTimeViewPresenting = false
 
     var body: some View {
         VStack {
@@ -45,6 +46,12 @@ struct ASCDocSpaceExternalLinkView: View {
                                 .foregroundColor(.gray)
                         }
                     }
+                    .onTapGesture {
+                        isLinkLifeTimeViewPresenting = true
+                    }
+                    .navigation(isActive: $isLinkLifeTimeViewPresenting) {
+                        ASCDocSpaceLinkLifeTimeView()
+                    }
                 }
 
                 Section(header: Text(NSLocalizedString("Time limit", comment: ""))) {
@@ -76,12 +83,6 @@ struct ASCDocSpaceExternalLinkView: View {
             }
         }
         .navigationBarTitle(Text(NSLocalizedString("External link", comment: "")), displayMode: .inline)
-        .navigationBarItems(leading: Button(action: {
-            // MARK: - TODO add back btn action
-        }, label: {
-            Text(NSLocalizedString("Back", comment: ""))
-                .foregroundColor(Asset.Colors.brend.swiftUIColor)
-        }))
         .navigationBarItems(trailing: Button(action: {
             // MARK: - TODO add share btn action
         }, label: {

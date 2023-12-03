@@ -22,16 +22,19 @@ struct ASCGeneralLinkCell: View {
                 Text(NSLocalizedString("Expires after \(daysToExpire) days", comment: "")) // MARK: - todo localize
             }
             Spacer()
-            Image(systemName: "square.and.arrow.up")
-                .foregroundColor(Asset.Colors.brend.swiftUIColor)
-            Image(systemName: "eye.fill")
-                .foregroundColor(Color.gray)
+            HStack {
+                Image(systemName: "square.and.arrow.up")
+                    .foregroundColor(Asset.Colors.brend.swiftUIColor)
+                Image(systemName: "eye.fill")
+                    .foregroundColor(Color.gray)
+            }
         }
     }
 }
 
 struct ASCDocSpaceLinkView: View {
-    @State var isDocSpaceExternalLinkViewPresenting = false
+    @State var isExternalLinkViewPresenting = false
+    @State var isLinkViewPresenting = false
     var body: some View {
         List {
             Section(header: Text(NSLocalizedString("General link", comment: "")),
@@ -39,9 +42,9 @@ struct ASCDocSpaceLinkView: View {
             {
                 ASCGeneralLinkCell(daysToExpire: 7) // MARK: - TODO
                     .onTapGesture {
-                        isDocSpaceExternalLinkViewPresenting = true
+                        isExternalLinkViewPresenting = true
                     }
-                    .navigation(isActive: $isDocSpaceExternalLinkViewPresenting) {
+                    .navigation(isActive: $isExternalLinkViewPresenting) {
                         ASCDocSpaceExternalLinkView()
                     }
             }
@@ -50,6 +53,12 @@ struct ASCDocSpaceLinkView: View {
                     footer: Text(NSLocalizedString("Create additional links to share the document with different access rights.", comment: "")))
             {
                 ASCLabledCellView(textString: NSLocalizedString("Create and copy", comment: ""), cellType: .standard, textAlignment: .leading)
+                    .onTapGesture {
+                        isLinkViewPresenting = true
+                    }
+                    .navigation(isActive: $isLinkViewPresenting) {
+                        ASCDocSpaceLinkView()
+                    }
             }
         }
     }

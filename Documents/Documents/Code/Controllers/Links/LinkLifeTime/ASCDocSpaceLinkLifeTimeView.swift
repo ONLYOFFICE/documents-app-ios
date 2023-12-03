@@ -12,15 +12,8 @@ struct ASCDocSpaceLinkLifeTimeView: View {
     @ObservedObject private var viewModel = ASCDocSpaceLinkLifeTimeViewModel()
 
     var body: some View {
-        NavigationView {
-            list
-                .navigationBarTitle(Text(NSLocalizedString("Link life time", comment: "")), displayMode: .inline)
-                .navigationBarItems(leading: Button(action: {
-                    // MARK: TODO add back btn action
-                }, label: {
-                    backButtom
-                }))
-        }
+        list
+            .navigationBarTitle(Text(NSLocalizedString("Link life time", comment: "")), displayMode: .inline)
     }
 
     private var list: some View {
@@ -28,15 +21,6 @@ struct ASCDocSpaceLinkLifeTimeView: View {
             LinkLifeOptionsCell(model: model) { item in
                 viewModel.select(linkLifeTimeModel: item)
             }
-        }
-    }
-
-    private var backButtom: some View {
-        HStack {
-            Image(systemName: "chevron.left")
-                .foregroundColor(Asset.Colors.brend.swiftUIColor)
-            Text(NSLocalizedString("Back", comment: ""))
-                .foregroundColor(Asset.Colors.brend.swiftUIColor)
         }
     }
 }

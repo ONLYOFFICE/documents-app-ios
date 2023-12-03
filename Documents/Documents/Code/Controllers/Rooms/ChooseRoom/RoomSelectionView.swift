@@ -16,20 +16,36 @@ struct Room {
 }
 
 struct RoomSelectionView: View {
+    @Environment(\.presentationMode) var presentationMode
+    
     @ObservedObject var viewModel = RoomSelectionViewModel()
+    
     @State private var isCreateRoomPresenting = false
+    @State private var isPresenting = true
 
     var body: some View {
-        List(viewModel.rooms, id: \.name) { room in
-            CreatingRoomViewRow(room: room)
-                .onTapGesture {
-                    viewModel.selectRoom(room)
-                    isCreateRoomPresenting = true
+        NavigationView {
+            List(viewModel.rooms, id: \.name) { room in
+                CreatingRoomViewRow(room: room)
+                    .onTapGesture {
+                        viewModel.selectRoom(room)
+                        isCreateRoomPresenting = true
+                    }
+            }
+            .navigation(isActive: $isCreateRoomPresenting, destination: {
+                if let roomType = viewModel.selectedRoom?.type {
+                    CreateRoomView(
+                        viewModel: CreateRoomViewModel(roomType: roomType),
+                        isParentPresenting: $isPresenting
+                    )
                 }
+            })
         }
-        .navigation(isActive: $isCreateRoomPresenting) {
-            CreateRoomView()
-        }
+        .onChange(of: isPresenting, perform: { isPresenting in
+            if !isPresenting {
+                presentationMode.wrappedValue.dismiss()
+            }
+        })
     }
 }
 

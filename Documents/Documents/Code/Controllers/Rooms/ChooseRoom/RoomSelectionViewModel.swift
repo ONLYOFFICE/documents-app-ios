@@ -29,6 +29,6 @@ class RoomSelectionViewModel: ObservableObject {
 
 extension CreatingRoomType {
     func toRoom() -> Room {
-        return Room(name: name, description: description, icon: icon)
+        return Room(type: self, name: name, description: description, icon: icon)
     }
 }

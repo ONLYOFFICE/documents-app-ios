@@ -6,12 +6,23 @@
 //  Copyright © 2023 Ascensio System SIA. All rights reserved.
 //
 
-import Foundation
+import UIKit
 
 enum CreatingRoomType: CaseIterable {
     case collaboration
     case publicRoom
     case custom
+    
+    var id: Int {
+        switch self {
+        case .collaboration:
+            return ASCRoomType.colobaration.rawValue
+        case .publicRoom:
+            return ASCRoomType.public.rawValue
+        case .custom:
+            return ASCRoomType.colobaration.rawValue
+        }
+    }
 
     var name: String {
         switch self {
@@ -35,14 +46,14 @@ enum CreatingRoomType: CaseIterable {
         }
     }
 
-    var icon: String {
+    var icon: UIImage {
         switch self {
         case .collaboration:
-            return Asset.Images.roomCollaboration.name
+            return Asset.Images.roomCollaboration.image
         case .publicRoom:
-            return Asset.Images.roomPublic.name
+            return Asset.Images.roomPublic.image
         case .custom:
-            return Asset.Images.roomCustom.name
+            return Asset.Images.roomCustom.image
         }
     }
 }

@@ -27,10 +27,18 @@ struct CreatingRoomViewRow: View {
     }
 
     private func roomImageView(for room: Room) -> some View {
-        Image(systemName: room.icon)
+        Image(uiImage: room.icon)
             .foregroundColor(.accentColor)
             .frame(width: 36, height: 36)
             .background(Color.gray.opacity(0.1))
             .cornerRadius(8)
+    }
+}
+
+struct CreatingRoomViewRow_Previews: PreviewProvider {
+    static var previews: some View {
+        CreatingRoomViewRow(
+            room: CreatingRoomType.publicRoom.toRoom()
+        )
     }
 }

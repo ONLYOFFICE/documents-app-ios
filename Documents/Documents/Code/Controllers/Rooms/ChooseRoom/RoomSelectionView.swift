@@ -9,9 +9,10 @@
 import SwiftUI
 
 struct Room {
+    var type: CreatingRoomType
     var name: String
     var description: String
-    var icon: String
+    var icon: UIImage
 }
 
 struct RoomSelectionView: View {

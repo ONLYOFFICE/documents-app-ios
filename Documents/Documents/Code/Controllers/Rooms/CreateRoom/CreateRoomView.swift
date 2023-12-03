@@ -42,6 +42,11 @@ struct CreateRoomView: View {
                 leading: Button("Back") {},
                 trailing: Button("Create") {
                     viewModel.createRoom()
+        .onChange(of: viewModel.dismissNavStack, perform: { dismissNavStack in
+            if dismissNavStack {
+                isParentPresenting = false
+            }
+        })
     private func creatingRoomActivityView() -> some View {
         Group {
             if viewModel.isCreatingRoom {

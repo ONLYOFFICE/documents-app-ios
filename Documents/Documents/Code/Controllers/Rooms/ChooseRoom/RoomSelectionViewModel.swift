@@ -10,7 +10,8 @@ import SwiftUI
 
 class RoomSelectionViewModel: ObservableObject {
     @Published var rooms: [Room] = []
-    @Published var selectedRoom: Room?
+    
+    var selectedRoom: Room?
 
     init() {
         initRooms()

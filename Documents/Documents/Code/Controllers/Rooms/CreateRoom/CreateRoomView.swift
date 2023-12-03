@@ -44,6 +44,13 @@ struct CreateRoomView: View {
                     viewModel.createRoom()
                 }
             )
+    private func errorMessage() -> some View {
+        Group {
+            if !viewModel.errorMessage.isEmpty {
+                Text(viewModel.errorMessage)
+                    .foregroundColor(.red)
+                
+            }
         }
     }
 }

@@ -42,8 +42,17 @@ struct CreateRoomView: View {
                 leading: Button("Back") {},
                 trailing: Button("Create") {
                     viewModel.createRoom()
+    private func creatingRoomActivityView() -> some View {
+        Group {
+            if viewModel.isCreatingRoom {
+                VStack {
+                    Text("Creating...")
+                    ActivityIndicatorView()
                 }
-            )
+            }
+        }
+    }
+    
     private func errorMessage() -> some View {
         Group {
             if !viewModel.errorMessage.isEmpty {

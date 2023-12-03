@@ -10,43 +10,45 @@ import Foundation
 import SwiftUI
 
 struct CreateRoomView: View {
-    @ObservedObject private var viewModel = CreateRoomViewModel()
+    @Environment(\.presentationMode) var presentationMode
+    
+    @ObservedObject var viewModel: CreateRoomViewModel
+    @Binding var isParentPresenting: Bool
 
     var body: some View {
-        NavigationView {
-            List {
-                Section {
-                    NavigationLink(destination: Text("Room Type Selection")) {
-                        HStack {
-                            Image(systemName: "person.crop.circle.fill.badge.plus")
-                                .foregroundColor(.green)
-                            Text("Public room")
-                            Spacer()
-                            Text("Invite users via shared links to view documents without registration. You can also embed this room into any web interface.")
-                                .font(.footnote)
-                                .foregroundColor(.gray)
-                        }
-                    }
-                }
-
-                Section {
-                    TextField("Room name", text: $viewModel.roomName)
-                        .textFieldStyle(RoundedBorderTextFieldStyle())
-                    TextField("Add tags", text: $viewModel.tags)
-                        .textFieldStyle(RoundedBorderTextFieldStyle())
-                }
+        List {
+            Section {
+                CreatingRoomViewRow(room: viewModel.roomType.toRoom())
             }
-            .listStyle(GroupedListStyle())
-            .navigationBarTitle("Create room", displayMode: .inline)
-            .navigationBarItems(
-                leading: Button("Back") {},
-                trailing: Button("Create") {
-                    viewModel.createRoom()
+            Section {
+                TextField("Room name", text: $viewModel.roomName)
+                    .textFieldStyle(RoundedBorderTextFieldStyle())
+                    .disabled(viewModel.isCreatingRoom)
+            }
+        }
+        .navigationBarTitle(Text(NSLocalizedString("Create room", comment: "")), displayMode: .inline)
+        .navigationBarItems(
+            leading: Button("Back") {
+                presentationMode.wrappedValue.dismiss()
+            },
+            trailing: Button("Create") {
+                viewModel.createRoom()
+            }
+            .disabled(viewModel.roomName.isEmpty)
+        )
+        .overlay(
+            creatingRoomActivityView()
+        )
+        .overlay(
+            errorMessage()
+        )
         .onChange(of: viewModel.dismissNavStack, perform: { dismissNavStack in
             if dismissNavStack {
                 isParentPresenting = false
             }
         })
+    }
+    
     private func creatingRoomActivityView() -> some View {
         Group {
             if viewModel.isCreatingRoom {
@@ -71,6 +73,9 @@ struct CreateRoomView: View {
 
 struct CreateRoomView_Previews: PreviewProvider {
     static var previews: some View {
-        CreateRoomView()
+        CreateRoomView(
+            viewModel: CreateRoomViewModel(roomType: .publicRoom),
+            isParentPresenting: .constant(true)
+        )
     }
 }

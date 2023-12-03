@@ -32,26 +32,32 @@ struct ASCCreateLinkCellView: View {
 
 struct CreateGeneralLinkView: View {
     @ObservedObject var viewModel = CreateGeneralLinkViewModel()
+    
+    @State var isDocSpaceLinkViewPresenting = false
 
     var body: some View {
-        NavigationView {
-            VStack {
-                List {
-                    Section(header: Text(NSLocalizedString("General links", comment: "Header for general links section")),
-                            footer: Text(NSLocalizedString("Provide general access to the document selecting the required permission level.", comment: "Footer text explaining what 'Create and copy' does")))
-                    {
-                        ASCCreateLinkCellView(viewModel: viewModel, textString: NSLocalizedString("Create and copy", comment: ""))
-                    }
+        VStack {
+            List {
+                Section(header: Text(NSLocalizedString("General links", comment: "Header for general links section")),
+                        footer: Text(NSLocalizedString("Provide general access to the document selecting the required permission level.", comment: "Footer text explaining what 'Create and copy' does")))
+                {
+                    ASCCreateLinkCellView(viewModel: viewModel, textString: NSLocalizedString("Create and copy", comment: ""))
+                        .onTapGesture {
+                            isDocSpaceLinkViewPresenting = true
+                        }
                 }
             }
-            .navigationBarTitle(Text(NSLocalizedString("Sharing settings", comment: "")), displayMode: .inline)
-            .navigationBarItems(leading: Button(action: {
-                // MARK: - TODO add close btn action
-            }, label: {
-                Text(NSLocalizedString("Close", comment: ""))
-                    .foregroundColor(Asset.Colors.brend.swiftUIColor)
-            }))
         }
+        .navigation(isActive: $isDocSpaceLinkViewPresenting, destination: {
+            ASCDocSpaceLinkView()
+        })
+        .navigationBarTitle(Text(NSLocalizedString("Sharing settings", comment: "")), displayMode: .inline)
+        .navigationBarItems(leading: Button(action: {
+            // MARK: - TODO add close btn action
+        }, label: {
+            Text(NSLocalizedString("Close", comment: ""))
+                .foregroundColor(Asset.Colors.brend.swiftUIColor)
+        }))
     }
 }
 

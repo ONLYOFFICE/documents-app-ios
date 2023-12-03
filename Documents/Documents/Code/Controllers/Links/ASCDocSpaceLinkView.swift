@@ -31,12 +31,19 @@ struct ASCGeneralLinkCell: View {
 }
 
 struct ASCDocSpaceLinkView: View {
+    @State var isDocSpaceExternalLinkViewPresenting = false
     var body: some View {
         List {
             Section(header: Text(NSLocalizedString("General link", comment: "")),
                     footer: Text(NSLocalizedString("Provide general access to the document selecting the required permission level.", comment: "")))
             {
                 ASCGeneralLinkCell(daysToExpire: 7) // MARK: - TODO
+                    .onTapGesture {
+                        isDocSpaceExternalLinkViewPresenting = true
+                    }
+                    .navigation(isActive: $isDocSpaceExternalLinkViewPresenting) {
+                        ASCDocSpaceExternalLinkView()
+                    }
             }
 
             Section(header: Text(NSLocalizedString("Additional links", comment: "")),

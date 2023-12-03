@@ -22,7 +22,7 @@ struct ASCDocSpaceLinkLifeTimeView: View {
                 }))
         }
     }
-    
+
     private var list: some View {
         List($viewModel.linkLifeTimeModels) { model in
             LinkLifeOptionsCell(model: model) { item in
@@ -30,7 +30,7 @@ struct ASCDocSpaceLinkLifeTimeView: View {
             }
         }
     }
-    
+
     private var backButtom: some View {
         HStack {
             Image(systemName: "chevron.left")
@@ -44,7 +44,7 @@ struct ASCDocSpaceLinkLifeTimeView: View {
 struct LinkLifeOptionsCell: View {
     @Binding var model: LinkLifeTimeModel
     var tapAction: (LinkLifeTimeModel) -> Void
-    
+
     var body: some View {
         HStack {
             Text(model.option.localized)

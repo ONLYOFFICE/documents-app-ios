@@ -8,6 +8,9 @@
 
 import Foundation
 import SwiftUI
+import Combine
+
+// MARK: - Navigation
 
 extension View {
     func onNavigation(_ action: @escaping () -> Void) -> some View {
@@ -55,5 +58,54 @@ extension View {
                 label: { EmptyView() }
             )
         )
+    }
+}
+
+// MARK: - OnChange
+
+@available(iOS, introduced: 13.0, deprecated: 14.0, message: "Use the native .onChange modifier in iOS 14 and later.")
+extension View {
+    func onChange<V: Equatable>(
+        of value: V,
+        perform action: @escaping (V) -> Void
+    ) -> some View {
+        modifier(OnChangeModifier(value: value, action: action))
+    }
+}
+
+@available(iOS, introduced: 13.0, deprecated: 14.0, message: "Use the native .onChange modifier in iOS 14 and later.")
+fileprivate struct OnChangeModifier<V: Equatable>: ViewModifier {
+    let value: V
+    let action: (V) -> Void
+
+    func body(content: Content) -> some View {
+        content.background(
+            OnChangeView(value: value, action: action)
+        )
+    }
+}
+
+fileprivate struct OnChangeView<V: Equatable>: View {
+    let value: V
+    let action: (V) -> Void
+
+    @State private var previousValue: V
+
+    init(value: V, action: @escaping (V) -> Void) {
+        self.value = value
+        self.action = action
+        _previousValue = State(initialValue: value)
+    }
+
+    var body: some View {
+        Color.clear.onAppear {
+            self.previousValue = self.value
+        }
+        .onReceive(Just(value)) { newValue in
+            if newValue != self.previousValue {
+                self.action(newValue)
+                self.previousValue = newValue
+            }
+        }
     }
 }

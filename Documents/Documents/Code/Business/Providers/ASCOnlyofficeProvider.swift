@@ -1295,6 +1295,7 @@ class ASCOnlyofficeProvider: ASCFileProviderProtocol & ASCSortableFileProviderPr
             if isRoomFolder, !isArchiveCategory {
                 entityActions.insert(folder.pinned ? .unpin : .pin)
                 entityActions.insert(.info)
+                entityActions.insert(.leave)
                 if folder.security.editAccess {
                     entityActions.insert(.addUsers)
                 }
@@ -1365,6 +1366,10 @@ class ASCOnlyofficeProvider: ASCFileProviderProtocol & ASCSortableFileProviderPr
                 handler?(.error, nil, ASCProviderError(msg: NSLocalizedString("Unarchiving failed.", comment: "")))
             }
         }
+    }
+
+    func checkRoomOwner(folder: ASCFolder) -> Bool {
+        return folder.createdBy?.userId == user?.userId
     }
 
     // Download

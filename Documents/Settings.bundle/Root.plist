@@ -6,7 +6,7 @@
 	<array>
 		<dict>
 			<key>DefaultValue</key>
-			<string>7.6 (936)</string>
+			<string>7.6 (937)</string>
 			<key>Key</key>
 			<string>version_preference</string>
 			<key>Title</key>

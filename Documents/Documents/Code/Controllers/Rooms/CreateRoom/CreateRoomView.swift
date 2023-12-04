@@ -14,11 +14,15 @@ struct CreateRoomView: View {
     
     @ObservedObject var viewModel: CreateRoomViewModel
     @Binding var isParentPresenting: Bool
+    @State var isRoomSelectionPresenting = false
 
     var body: some View {
         List {
             Section {
-                CreatingRoomViewRow(room: viewModel.roomType.toRoom())
+                CreatingRoomViewRow(room: viewModel.selectedRoom)
+                    .onTapGesture {
+                        isRoomSelectionPresenting = true
+                    }
             }
             Section {
                 TextField("Room name", text: $viewModel.roomName)
@@ -26,6 +30,9 @@ struct CreateRoomView: View {
                     .disabled(viewModel.isCreatingRoom)
             }
         }
+        .navigation(isActive: $isRoomSelectionPresenting, destination: {
+            RoomSelectionView(selectedRoom: $viewModel.selectedRoom, dismissOnSelection: true) 
+        })
         .navigationBarTitle(Text(NSLocalizedString("Create room", comment: "")), displayMode: .inline)
         .navigationBarItems(
             leading: Button("Back") {

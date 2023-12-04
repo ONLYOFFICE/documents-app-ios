@@ -1,5 +1,5 @@
 //
-//  RoomSelectionViewViewController.swift
+//  CreateRoomRouteViewViewController.swift
 //  Documents-opensource
 //
 //  Created by Pavel Chernyshev on 28.11.2023.
@@ -10,19 +10,19 @@ import Foundation
 
 import SwiftUI
 
-class RoomSelectionViewViewController: UIHostingController<RoomSelectionView> {
+class CreateRoomRouteViewViewController: UIHostingController<CreateRoomRouteView> {
     // MARK: - Lifecycle Methods
 
     required init?(coder aDecoder: NSCoder) {
         super.init(
             coder: aDecoder,
-            rootView: RoomSelectionView()
+            rootView: CreateRoomRouteView()
         )
     }
 
     init(onAction: @escaping (RoomSelectionView) -> Void) {
         super.init(
-            rootView: RoomSelectionView()
+            rootView: CreateRoomRouteView()
         )
     }
 }

@@ -15,43 +15,39 @@ struct Room {
     var icon: UIImage
 }
 
+extension Room: Equatable {}
+
 struct RoomSelectionView: View {
     @Environment(\.presentationMode) var presentationMode
     
     @ObservedObject var viewModel = RoomSelectionViewModel()
     
-    @State private var isCreateRoomPresenting = false
+    @Binding var selectedRoom: Room?
+    @State var dismissOnSelection = false
     @State private var isPresenting = true
 
     var body: some View {
-        NavigationView {
             List(viewModel.rooms, id: \.name) { room in
                 CreatingRoomViewRow(room: room)
                     .onTapGesture {
-                        viewModel.selectRoom(room)
-                        isCreateRoomPresenting = true
+                        selectedRoom = room
+                        if dismissOnSelection {
+                            presentationMode.wrappedValue.dismiss()
+                        }
                     }
             }
-            .navigation(isActive: $isCreateRoomPresenting, destination: {
-                if let roomType = viewModel.selectedRoom?.type {
-                    CreateRoomView(
-                        viewModel: CreateRoomViewModel(roomType: roomType),
-                        isParentPresenting: $isPresenting
-                    )
+            .navigationBarTitle(Text("Choose room type"), displayMode: .inline)
+            .navigationBarItems(
+                trailing: Button("Cancel") {
+                    presentationMode.wrappedValue.dismiss()
                 }
-            })
-        }
-        .onChange(of: isPresenting, perform: { isPresenting in
-            if !isPresenting {
-                presentationMode.wrappedValue.dismiss()
-            }
-        })
+            )
     }
 }
 
 struct RoomSelectionView_Previews: PreviewProvider {
     static var previews: some View {
-        let view = RoomSelectionView()
+        let view = RoomSelectionView(selectedRoom: .constant(nil))
         return view
     }
 }

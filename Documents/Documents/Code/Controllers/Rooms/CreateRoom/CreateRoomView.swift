@@ -25,9 +25,24 @@ struct CreateRoomView: View {
                     }
             }
             Section {
-                TextField("Room name", text: $viewModel.roomName)
-                    .textFieldStyle(RoundedBorderTextFieldStyle())
-                    .disabled(viewModel.isCreatingRoom)
+                HStack {
+                    RoundedRectangle(cornerRadius: 8)
+                        .frame(width: 48, height: 48)
+                        .foregroundColor(Color(Asset.Colors.fillEditorsDocs.color))
+                        .overlay(
+                            Image(systemName: "photo")
+                                .frame(width: 24, height: 24)
+                                .foregroundColor(.blue)
+                        )
+                        .onTapGesture {
+                            // MARK: TODO
+                        }
+                    
+                    TextField("Room name", text: $viewModel.roomName)
+                        .padding()
+                        .background(Color.white)
+                        .disabled(viewModel.isCreatingRoom)
+                }
             }
         }
         .navigation(isActive: $isRoomSelectionPresenting, destination: {
@@ -81,7 +96,7 @@ struct CreateRoomView: View {
 struct CreateRoomView_Previews: PreviewProvider {
     static var previews: some View {
         CreateRoomView(
-            viewModel: CreateRoomViewModel(roomType: .publicRoom),
+            viewModel: CreateRoomViewModel(selectedRoom: CreatingRoomType.publicRoom.toRoom()),
             isParentPresenting: .constant(true)
         )
     }

@@ -14,19 +14,18 @@ class CreateRoomViewModel: ObservableObject {
     @Published var isCreatingRoom = false
     @Published var errorMessage = ""
     @Published var dismissNavStack = false
-
-    var roomType: CreatingRoomType
+    @Published var selectedRoom: Room!
 
     private var networkService = OnlyofficeApiClient.shared
 
-    init(roomType: CreatingRoomType) {
-        self.roomType = roomType
+    init(selectedRoom: Room) {
+        self.selectedRoom = selectedRoom
     }
 
     func createRoom() {
         errorMessage = ""
         let params: [String: Any] = [
-            "roomType": roomType.id,
+            "roomType": selectedRoom.type.id,
             "title": roomName
         ]
         isCreatingRoom = true

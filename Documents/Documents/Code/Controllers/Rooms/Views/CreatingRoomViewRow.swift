@@ -12,15 +12,17 @@ struct CreatingRoomViewRow: View {
     let room: Room
 
     var body: some View {
-        HStack {
+        HStack(spacing: 14) {
             roomImageView(for: room)
+                .frame(width: 36, height: 36)
                 .padding(.vertical, 4)
 
-            VStack(alignment: .leading) {
+            VStack(alignment: .leading, spacing: 2) {
                 Text(room.name)
-                    .font(.headline)
-                Text(room.description)
                     .font(.subheadline)
+                    .fontWeight(.semibold)
+                Text(room.description)
+                    .font(.footnote)
                     .foregroundColor(.gray)
             }
         }

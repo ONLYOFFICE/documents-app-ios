@@ -1,5 +1,5 @@
 //
-//  CreateGeneralLinkView.swift
+//  ASCDocSpaceLinkView.swift
 //  Documents-opensource
 //
 //  Created by Lolita Chernysheva on 20.11.2023.
@@ -8,8 +8,8 @@
 
 import SwiftUI
 
-struct CreateGeneralLinkView: View {
-    @ObservedObject var viewModel: CreateGeneralLinkViewModel
+struct ASCDocSpaceLinkView: View {
+    @ObservedObject var viewModel: ASCDocSpaceLinkViewModel
     
     @State private var isGeneralLinkCreated = false
     @State private var isAdditionalLinkCreated = false //MARK: - TODO add constraint to 5 links
@@ -35,7 +35,7 @@ struct CreateGeneralLinkView: View {
         }
     }
     
-    func sectionView(_ section: CreateGeneralLinkStateModel.Section) -> some View {
+    func sectionView(_ section: ASCDocSpaceLinkStateModel.Section) -> some View {
         Section(header: sectionHeader(section.header),
                 footer: Text(section.footer))
         {
@@ -45,7 +45,7 @@ struct CreateGeneralLinkView: View {
         }
     }
     
-    func sectionHeader(_ header: CreateGeneralLinkStateModel.SectionHeader) -> some View {
+    func sectionHeader(_ header: ASCDocSpaceLinkStateModel.SectionHeader) -> some View {
         let hasSubtitle = header.subtitle != nil
         let hasIcon = header.icon != nil
         return HStack {
@@ -66,7 +66,7 @@ struct CreateGeneralLinkView: View {
         }
     }
     
-    private func cellView(_ cell: CreateGeneralLinkStateModel.Cell) -> some View {
+    private func cellView(_ cell: ASCDocSpaceLinkStateModel.Cell) -> some View {
         switch cell {
         case let .createLink(model):
             return AnyView(configureCreateLinkCellView(model: model))
@@ -95,19 +95,19 @@ struct CreateGeneralLinkView: View {
 struct CreateGeneralLinkView_Previews: PreviewProvider {
     static var previews: some View {
         Group {
-           CreateGeneralLinkView(
+           ASCDocSpaceLinkView(
                viewModel: .init(screenState: .noLinksState)
            )
            .previewLayout(.sizeThatFits)
            .previewDisplayName("No Links State")
 
-           CreateGeneralLinkView(
+           ASCDocSpaceLinkView(
             viewModel: .init(screenState: .generalLinkState)
            )
            .previewLayout(.sizeThatFits)
            .previewDisplayName("General link State")
             
-            CreateGeneralLinkView(
+            ASCDocSpaceLinkView(
                 viewModel: .init(screenState: .additionalLinkState)
             )
             .previewLayout(.sizeThatFits)

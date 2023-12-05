@@ -1,5 +1,5 @@
 //
-//  CreateGeneralLinkViewModel.swift
+//  ASCDocSpaceLinkViewModel.swift
 //  Documents-opensource
 //
 //  Created by Lolita Chernysheva on 20.11.2023.
@@ -9,12 +9,12 @@
 import Combine
 import SwiftUI
 
-struct CreateGeneralLinkStateModel {
+struct ASCDocSpaceLinkStateModel {
     var title = ""
     var leftNavButtonName = ""
     var tableData: TableData
     
-    static let empty = CreateGeneralLinkStateModel(tableData: .init(sections: []))
+    static let empty = ASCDocSpaceLinkStateModel(tableData: .init(sections: []))
     
     struct TableData {
         var sections: [Section]
@@ -41,11 +41,11 @@ struct CreateGeneralLinkStateModel {
     }
 }
 
-class CreateGeneralLinkViewModel: ObservableObject {
-    @Published var screenState: CreateGeneralLinkStateModel = .empty
+class ASCDocSpaceLinkViewModel: ObservableObject {
+    @Published var screenState: ASCDocSpaceLinkStateModel = .empty
     
     // MARK: temp
-    init(screenState: CreateGeneralLinkStateModel) {
+    init(screenState: ASCDocSpaceLinkStateModel) {
         self.screenState = screenState
     }
 
@@ -53,12 +53,12 @@ class CreateGeneralLinkViewModel: ObservableObject {
     func createAndCopyAdditionalLink() {}
 }
 
-extension CreateGeneralLinkStateModel {
+extension ASCDocSpaceLinkStateModel {
     
-    static var noLinksState = CreateGeneralLinkStateModel(
-        tableData: CreateGeneralLinkStateModel.TableData(
+    static var noLinksState = ASCDocSpaceLinkStateModel(
+        tableData: ASCDocSpaceLinkStateModel.TableData(
             sections: [
-                CreateGeneralLinkStateModel.Section(
+                ASCDocSpaceLinkStateModel.Section(
                     header: .init(title: "General links"),
                     cells: [
                         .createLink(.init(textString: "Create and copy", onTapAction: {}))
@@ -68,10 +68,10 @@ extension CreateGeneralLinkStateModel {
         )
     )
     
-    static var generalLinkState = CreateGeneralLinkStateModel(
-        tableData: CreateGeneralLinkStateModel.TableData(
+    static var generalLinkState = ASCDocSpaceLinkStateModel(
+        tableData: ASCDocSpaceLinkStateModel.TableData(
             sections: [
-                CreateGeneralLinkStateModel.Section(
+                ASCDocSpaceLinkStateModel.Section(
                     header: .init(title: "General links"),
                     cells: [
                         .link(.init(titleKey: "Anyone with the link", //TODO: -
@@ -80,7 +80,7 @@ extension CreateGeneralLinkStateModel {
                                     onShareAction: {}))
                     ],
                     footer: "Provide general access to the document selecting the required permission level."),
-                CreateGeneralLinkStateModel.Section(
+                ASCDocSpaceLinkStateModel.Section(
                     header: .init(title: "Additional links",
                                   subtitle: "(0/5)"), //TODO: -
                     cells: [
@@ -91,10 +91,10 @@ extension CreateGeneralLinkStateModel {
         )
     )
     
-    static var additionalLinkState = CreateGeneralLinkStateModel(
-        tableData: CreateGeneralLinkStateModel.TableData(
+    static var additionalLinkState = ASCDocSpaceLinkStateModel(
+        tableData: ASCDocSpaceLinkStateModel.TableData(
             sections: [
-                CreateGeneralLinkStateModel.Section(
+                ASCDocSpaceLinkStateModel.Section(
                     header: .init(title: "General links"),
                     cells: [
                         .link(.init(titleKey: "Anyone with the link", //TODO: -
@@ -103,7 +103,7 @@ extension CreateGeneralLinkStateModel {
                                     onShareAction: {}))
                     ],
                     footer: "Provide general access to the document selecting the required permission level."),
-                CreateGeneralLinkStateModel.Section(
+                ASCDocSpaceLinkStateModel.Section(
                     header: .init(title: "Additional links",
                                   subtitle: "(0/5)",
                                   icon: UIImage(systemName: "plus")

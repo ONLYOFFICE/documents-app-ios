@@ -122,7 +122,7 @@ extension ASCDocumentsViewController {
             title: NSLocalizedString("Copy general link", comment: ""),
             image: UIImage(systemName: "link")
         ) { [unowned self] action in
-            let vc = CreateGeneralLinkViewController(onAction: { _ in })
+            let vc = ASCDocSpaceLinkViewController(onAction: { _ in })
             let nc = UINavigationController(rootViewController: vc)
             self.present(nc, animated: true, completion: nil)
         }
@@ -908,7 +908,7 @@ extension ASCDocumentsViewController {
                 title: NSLocalizedString("Copy general link", comment: ""),
                 style: .default,
                 handler: { [unowned self] action in
-                    let vc = CreateGeneralLinkViewController(onAction: { _ in })
+                    let vc = ASCDocSpaceLinkViewController(onAction: { _ in })
                     let nc = UINavigationController(rootViewController: vc)
                     self.present(nc, animated: true, completion: nil)
                 }

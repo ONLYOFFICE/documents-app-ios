@@ -14,13 +14,13 @@ class CreateGeneralLinkViewController: UIHostingController<CreateGeneralLinkView
     required init?(coder aDecoder: NSCoder) {
         super.init(
             coder: aDecoder,
-            rootView: CreateGeneralLinkView()
+            rootView: CreateGeneralLinkView(viewModel: .init(screenState: .additionalLinkState))
         )
     }
 
     init(onAction: @escaping (CreateGeneralLinkView) -> Void) {
         super.init(
-            rootView: CreateGeneralLinkView()
+            rootView: CreateGeneralLinkView(viewModel: .init(screenState: .additionalLinkState))
         )
     }
 }

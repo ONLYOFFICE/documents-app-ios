@@ -115,6 +115,18 @@ extension ASCDocumentsViewController {
                 }
             )
         }
+        
+        ///  Copy general link action
+        
+        let copyGeneralLinkAction = UIAction(
+            title: NSLocalizedString("Copy general link", comment: ""),
+            image: UIImage(systemName: "link")
+        ) { [unowned self] action in
+            let vc = CreateGeneralLinkViewController(onAction: { _ in })
+            let nc = UINavigationController(rootViewController: vc)
+            self.present(nc, animated: true, completion: nil)
+        }
+        middleActions.append(copyGeneralLinkAction)
 
         /// Copy action
 
@@ -888,6 +900,20 @@ extension ASCDocumentsViewController {
                 )
             )
         }
+        
+        ///  Copy general link action
+        
+        actionAlertController.addAction(
+            UIAlertAction(
+                title: NSLocalizedString("Copy general link", comment: ""),
+                style: .default,
+                handler: { [unowned self] action in
+                    let vc = CreateGeneralLinkViewController(onAction: { _ in })
+                    let nc = UINavigationController(rootViewController: vc)
+                    self.present(nc, animated: true, completion: nil)
+                }
+            )
+        )
 
         if UIDevice.phone {
             actionAlertController.addAction(

@@ -186,7 +186,7 @@ extension ASCSharingChooseNewOwnerRightHoldersView {
     }
 
     @objc func onCancelButtonTapped() {
-        print("Cancelled")
+        viewController?.dismiss(animated: true)
     }
 }
 

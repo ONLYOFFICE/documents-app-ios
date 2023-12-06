@@ -1372,6 +1372,31 @@ class ASCOnlyofficeProvider: ASCFileProviderProtocol & ASCSortableFileProviderPr
         return folder.createdBy?.userId == user?.userId
     }
 
+    func leaveRoom(folder: ASCFolder, handler: ASCEntityHandler?) {
+        handler?(.begin, nil, nil)
+
+        let userId = user?.userId ?? ""
+        let access: Int = 0
+
+        let userAccess: [String: Any] = [
+            "id": userId,
+            "access": access,
+        ]
+
+        let invitations: [String: Any] = [
+            "invitations": [userAccess],
+        ]
+
+        apiClient.request(OnlyofficeAPI.Endpoints.Sharing.room(folder: folder, method: .put), invitations) {
+            result, error in
+            if error != nil {
+                handler?(.error, nil, ASCProviderError(msg: NSLocalizedString("Couldn't leave the room.", comment: "")))
+            } else {
+                handler?(.end, folder, nil)
+            }
+        }
+    }
+
     // Download
     func download(
         items: [ASCEntity],

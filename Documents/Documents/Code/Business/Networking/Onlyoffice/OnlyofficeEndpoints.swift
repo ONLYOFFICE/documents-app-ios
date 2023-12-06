@@ -50,6 +50,7 @@ class OnlyofficeAPI {
         public static let shareFile = "api/\(version)/files/file/%@/share"
         public static let shareFolder = "api/\(version)/files/folder/%@/share"
         public static let shareRoom = "api/\(version)/files/rooms/%@/share"
+        public static let changeOwner = "api/\(version)/files/owner"
         public static let forgotPassword = "api/\(version)/people/password"
         public static let deleteAccount = "api/\(version)/people/self/delete"
         public static let pushRegisterDevice = "/api/\(version)/settings/push/docregisterdevice"
@@ -203,6 +204,10 @@ class OnlyofficeAPI {
             static let removeSharingRights: Endpoint<OnlyofficeResponseType<Bool>> = Endpoint<OnlyofficeResponseType<Bool>>.make(Path.filesShare, .delete)
             static func entitiesShare() -> Endpoint<OnlyofficeResponseArray<OnlyofficeShare>> {
                 Endpoint<OnlyofficeResponseArray<OnlyofficeShare>>.make(Path.filesShare, .post)
+            }
+
+            static func changeOwner() -> Endpoint<OnlyofficeResponseArray<OnlyofficeShare>> {
+                Endpoint<OnlyofficeResponseArray<OnlyofficeShare>>.make(Path.changeOwner, .post)
             }
 
             static func file(file: ASCFile, method: HTTPMethod) -> Endpoint<OnlyofficeResponseArray<OnlyofficeShare>> {

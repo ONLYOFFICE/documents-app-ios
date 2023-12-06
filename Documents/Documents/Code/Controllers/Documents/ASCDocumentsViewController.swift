@@ -1945,6 +1945,8 @@ class ASCDocumentsViewController: ASCBaseTableViewController, UIGestureRecognize
               let provider = provider as? ASCOnlyofficeProvider
         else { return }
 
+        var hud: MBProgressHUD?
+
         let isOwner: Bool = provider.checkRoomOwner(folder: folder)
         let alertController = UIAlertController(title: NSLocalizedString("Leave the room", comment: ""), message: "", preferredStyle: .alert)
         let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
@@ -1959,7 +1961,29 @@ class ASCDocumentsViewController: ASCBaseTableViewController, UIGestureRecognize
 
         } else {
             let submitAction = UIAlertAction(title: NSLocalizedString("Ok", comment: ""), style: .default) { _ in
+                provider.leaveRoom(folder: folder) { status, result, error in
+                    if status == .begin {
+                        hud = MBProgressHUD.showTopMost()
+                    } else if status == .error {
+                        hud?.hide(animated: true)
+                        UIAlertController.showError(
+                            in: self,
+                            message: NSLocalizedString("Couldn't leave the room", comment: "")
+                        )
+                    } else if status == .end {
+                        hud?.setSuccessState()
+                        hud?.label.text = NSLocalizedString("You have left the room", comment: "")
+                        if let indexPath = self.tableView.indexPath(for: cell) {
+                            self.provider?.remove(at: indexPath.row)
+                            self.tableView.beginUpdates()
+                            self.tableView.deleteRows(at: [indexPath], with: .fade)
+                            self.tableView.endUpdates()
+                        }
+                        hud?.hide(animated: false, afterDelay: 1.3)
+                    }
+                }
             }
+
             alertController.message = NSLocalizedString("Do you really want to leave this room? You will be able to join it again via new invitation by a room admin.", comment: "")
 
             alertController.addAction(submitAction)

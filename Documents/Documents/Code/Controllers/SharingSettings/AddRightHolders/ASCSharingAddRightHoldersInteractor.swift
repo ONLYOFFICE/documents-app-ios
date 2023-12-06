@@ -67,6 +67,22 @@ class ASCSharingAddRightHoldersInteractor: ASCSharingAddRightHoldersBusinessLogi
                 updatedItems.append(item)
             }
             dataStore?.itemsForSharingAdd = updatedItems
+
+        case let .changeOwner(userId, _: handler):
+            handler?(.begin, nil, nil)
+
+            let parameters: [String: Any] = [
+                "userId": userId,
+                "folderIds": [dataStore?.entity?.id],
+            ]
+
+            OnlyofficeApiClient.request(OnlyofficeAPI.Endpoints.Sharing.changeOwner(), parameters) { response, error in
+                if error != nil {
+                    handler?(.error, nil, ASCProviderError(msg: NSLocalizedString("Couldn't leave the room.", comment: "")))
+                } else {
+                    handler?(.end, nil, nil)
+                }
+            }
         }
     }
 

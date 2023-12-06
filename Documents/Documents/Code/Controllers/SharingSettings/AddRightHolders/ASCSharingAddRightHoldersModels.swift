@@ -18,6 +18,7 @@ enum ASCSharingAddRightHolders {
                 case selectViewModel(_ request: ViewModelSelectedRequest)
                 case deselectViewModel(_ request: ViewModelDeselectedRequest)
                 case changeAccessForSelected(_ request: ASCShareAccess)
+                case changeOwner(_ userId: String, _ handler: ASCEntityHandler?)
             }
 
             struct ViewModelSelectedRequest {

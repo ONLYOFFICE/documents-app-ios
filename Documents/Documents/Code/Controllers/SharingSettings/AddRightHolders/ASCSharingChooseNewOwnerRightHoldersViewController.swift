@@ -12,7 +12,6 @@ import UIKit
 class ASCSharingChooseNewOwnerRightHoldersViewController: UIViewController, ASCSharingAddRightHoldersDisplayLogic {
     var interactor: ASCSharingAddRightHoldersBusinessLogic?
     var dataStore: ASCSharingAddRightHoldersRAMDataStore?
-    var hud: MBProgressHUD?
 
     var sharingChooseNewOwnerRightHoldersView: ASCSharingChooseNewOwnerRightHoldersView?
     var defaultSelectedTable: RightHoldersTableType = .users
@@ -46,7 +45,7 @@ class ASCSharingChooseNewOwnerRightHoldersViewController: UIViewController, ASCS
 
     private lazy var onCellTapped: (ASCSharingRightHolderViewModel, IsSelected) -> Void = { [weak self] model, isSelected in
         guard let self = self else { return }
-        self.selectRow()
+        self.selectRow(userId: model.id)
     }
 
     private var usersModels: [(model: ASCSharingRightHolderViewModel, isSelected: IsSelected)] = []
@@ -186,11 +185,27 @@ class ASCSharingChooseNewOwnerRightHoldersViewController: UIViewController, ASCS
         }
     }
 
-    func selectRow() {
-        print("Work")
-        hud = MBProgressHUD.showTopMost()
+    func selectRow(userId: String) {
+        var hud: MBProgressHUD?
         hud?.label.text = NSLocalizedString("Leaving...", comment: "Caption of the process")
-        interactor?.makeRequest(requestType: .loadGroups)
+
+        interactor?.makeRequest(requestType: .changeOwner(userId) { status, result, error in
+            if status == .begin {
+                hud = MBProgressHUD.showTopMost()
+            } else if status == .error {
+                hud?.hide(animated: true)
+                UIAlertController.showError(
+                    in: self,
+                    message: NSLocalizedString("Couldn't leave the room", comment: "")
+                )
+                self.dismiss(animated: true)
+            } else if status == .end {
+                hud?.setSuccessState()
+                hud?.label.text = NSLocalizedString("You have left the room and appointed a new owner", comment: "")
+                hud?.hide(animated: false, afterDelay: 1.3)
+                self.dismiss(animated: true)
+            }
+        })
     }
 
     // MARK: - Display logic

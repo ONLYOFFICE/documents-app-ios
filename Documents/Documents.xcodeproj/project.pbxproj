@@ -148,6 +148,7 @@
 		F388486C2B1ECF17001B9869 /* ASCCreateLinkCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F388486B2B1ECF17001B9869 /* ASCCreateLinkCellView.swift */; };
 		F388486E2B1F5CBF001B9869 /* ImagedDetailCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F388486D2B1F5CBF001B9869 /* ImagedDetailCellView.swift */; };
 		F38848702B1F5E50001B9869 /* SubTitledDetailCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F388486F2B1F5E50001B9869 /* SubTitledDetailCellView.swift */; };
+		F38848742B1F6E7B001B9869 /* TimeLimitCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F38848732B1F6E7B001B9869 /* TimeLimitCellView.swift */; };
 		F391DE5D280964AF00C93648 /* ASCUserTableViewDataModelItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = F391DE5C280964AF00C93648 /* ASCUserTableViewDataModelItem.swift */; };
 		F391DE5F280968B700C93648 /* ASCSelectUserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F391DE5E280968B700C93648 /* ASCSelectUserViewController.swift */; };
 		F39D2A0C2B17063800DB3C63 /* NavigationLink+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F39D2A0A2B17063800DB3C63 /* NavigationLink+Extensions.swift */; };
@@ -690,6 +691,7 @@
 		F388486B2B1ECF17001B9869 /* ASCCreateLinkCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCCreateLinkCellView.swift; sourceTree = "<group>"; };
 		F388486D2B1F5CBF001B9869 /* ImagedDetailCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagedDetailCellView.swift; sourceTree = "<group>"; };
 		F388486F2B1F5E50001B9869 /* SubTitledDetailCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubTitledDetailCellView.swift; sourceTree = "<group>"; };
+		F38848732B1F6E7B001B9869 /* TimeLimitCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeLimitCellView.swift; sourceTree = "<group>"; };
 		F391DE5C280964AF00C93648 /* ASCUserTableViewDataModelItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCUserTableViewDataModelItem.swift; sourceTree = "<group>"; };
 		F391DE5E280968B700C93648 /* ASCSelectUserViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCSelectUserViewController.swift; sourceTree = "<group>"; };
 		F39D2A0A2B17063800DB3C63 /* NavigationLink+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NavigationLink+Extensions.swift"; sourceTree = "<group>"; };
@@ -1974,6 +1976,7 @@
 				F388486B2B1ECF17001B9869 /* ASCCreateLinkCellView.swift */,
 				F388486D2B1F5CBF001B9869 /* ImagedDetailCellView.swift */,
 				F388486F2B1F5E50001B9869 /* SubTitledDetailCellView.swift */,
+				F38848732B1F6E7B001B9869 /* TimeLimitCellView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -3887,6 +3890,7 @@
 				FC059D981E82584400BC2F5E /* ASCDateTransform.swift in Sources */,
 				1D14AAF32698E85A009E48AD /* ASCSharingAddRightHoldersRouter.swift in Sources */,
 				1D667A4F28D3AA5F009BD85D /* ASCDocumentsCellSwipeMenu.swift in Sources */,
+				F38848742B1F6E7B001B9869 /* TimeLimitCellView.swift in Sources */,
 				1DE6D6BC2631AEE1001B825B /* ASCOnlyofficeAPICategoriesProvider.swift in Sources */,
 				FC25B455284F67F70075D6C2 /* ASCSwitchCell.swift in Sources */,
 				FC68398A21B7DF0C00251CEA /* ASCOnDeviceNavigationController.swift in Sources */,

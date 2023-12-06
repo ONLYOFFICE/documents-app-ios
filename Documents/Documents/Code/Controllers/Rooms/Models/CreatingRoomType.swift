@@ -20,7 +20,7 @@ enum CreatingRoomType: CaseIterable {
         case .publicRoom:
             return ASCRoomType.public.rawValue
         case .custom:
-            return ASCRoomType.colobaration.rawValue
+            return ASCRoomType.custom.rawValue
         }
     }
 

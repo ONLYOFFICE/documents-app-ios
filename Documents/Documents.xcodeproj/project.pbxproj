@@ -147,6 +147,7 @@
 		F388486A2B1DF389001B9869 /* ASCLinkCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F38848692B1DF389001B9869 /* ASCLinkCell.swift */; };
 		F388486C2B1ECF17001B9869 /* ASCCreateLinkCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F388486B2B1ECF17001B9869 /* ASCCreateLinkCellView.swift */; };
 		F388486E2B1F5CBF001B9869 /* ImagedDetailCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F388486D2B1F5CBF001B9869 /* ImagedDetailCellView.swift */; };
+		F38848702B1F5E50001B9869 /* SubTitledDetailCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F388486F2B1F5E50001B9869 /* SubTitledDetailCellView.swift */; };
 		F391DE5D280964AF00C93648 /* ASCUserTableViewDataModelItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = F391DE5C280964AF00C93648 /* ASCUserTableViewDataModelItem.swift */; };
 		F391DE5F280968B700C93648 /* ASCSelectUserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F391DE5E280968B700C93648 /* ASCSelectUserViewController.swift */; };
 		F39D2A0C2B17063800DB3C63 /* NavigationLink+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F39D2A0A2B17063800DB3C63 /* NavigationLink+Extensions.swift */; };
@@ -688,6 +689,7 @@
 		F38848692B1DF389001B9869 /* ASCLinkCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCLinkCell.swift; sourceTree = "<group>"; };
 		F388486B2B1ECF17001B9869 /* ASCCreateLinkCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCCreateLinkCellView.swift; sourceTree = "<group>"; };
 		F388486D2B1F5CBF001B9869 /* ImagedDetailCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagedDetailCellView.swift; sourceTree = "<group>"; };
+		F388486F2B1F5E50001B9869 /* SubTitledDetailCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubTitledDetailCellView.swift; sourceTree = "<group>"; };
 		F391DE5C280964AF00C93648 /* ASCUserTableViewDataModelItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCUserTableViewDataModelItem.swift; sourceTree = "<group>"; };
 		F391DE5E280968B700C93648 /* ASCSelectUserViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCSelectUserViewController.swift; sourceTree = "<group>"; };
 		F39D2A0A2B17063800DB3C63 /* NavigationLink+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NavigationLink+Extensions.swift"; sourceTree = "<group>"; };
@@ -1971,6 +1973,7 @@
 				F38848692B1DF389001B9869 /* ASCLinkCell.swift */,
 				F388486B2B1ECF17001B9869 /* ASCCreateLinkCellView.swift */,
 				F388486D2B1F5CBF001B9869 /* ImagedDetailCellView.swift */,
+				F388486F2B1F5E50001B9869 /* SubTitledDetailCellView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -4079,6 +4082,7 @@
 				FCF696412637E73000808644 /* ASCDocumentSortType.swift in Sources */,
 				FC68529926837B7300D830EC /* DropboxApiClient.swift in Sources */,
 				FC25B44F284F67F70075D6C2 /* ASCNotificationWarningCell.swift in Sources */,
+				F38848702B1F5E50001B9869 /* SubTitledDetailCellView.swift in Sources */,
 				FC41D8082265D9DD00A155C2 /* ASCEntityAccess.swift in Sources */,
 				FC35D4602A987DFC00C6383F /* UIButton+Extensions.swift in Sources */,
 				1D14AAC42694F07C009E48AD /* ASCOnlyofficeFileInternalLinkMaker.swift in Sources */,

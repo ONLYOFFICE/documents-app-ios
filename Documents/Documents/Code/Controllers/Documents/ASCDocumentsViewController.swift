@@ -1953,7 +1953,29 @@ class ASCDocumentsViewController: ASCBaseTableViewController, UIGestureRecognize
 
         if isOwner {
             let assignOwnerAction = UIAlertAction(title: NSLocalizedString("Assign Owner", comment: ""), style: .default) { _ in
-                self.navigator.navigate(to: .leaveRoom(entity: folder))
+                self.navigator.navigate(to: .leaveRoom(entity: folder) { status, result, error in
+                    if status == .begin {
+                        hud = MBProgressHUD.showTopMost()
+                    } else if status == .error {
+                        hud?.hide(animated: true)
+                        UIAlertController.showError(
+                            in: self,
+                            message: NSLocalizedString("Couldn't leave the room", comment: "")
+                        )
+                    } else if status == .end {
+                        hud?.setSuccessState()
+                        hud?.label.numberOfLines = 0
+                        hud?.label.text = NSLocalizedString("You have left the room and appointed a new owner", comment: "")
+                        if let indexPath = self.tableView.indexPath(for: cell) {
+                            self.provider?.remove(at: indexPath.row)
+                            self.tableView.beginUpdates()
+                            self.tableView.deleteRows(at: [indexPath], with: .fade)
+                            self.tableView.endUpdates()
+                            self.showEmptyView(self.total < 1)
+                        }
+                        hud?.hide(animated: false, afterDelay: 1.3)
+                    }
+                })
             }
             alertController.message = NSLocalizedString("You are the owner of this room. Before you leave the room, you must transfer the owner’s role to another user.", comment: "")
 
@@ -1978,6 +2000,7 @@ class ASCDocumentsViewController: ASCBaseTableViewController, UIGestureRecognize
                             self.tableView.beginUpdates()
                             self.tableView.deleteRows(at: [indexPath], with: .fade)
                             self.tableView.endUpdates()
+                            self.showEmptyView(self.total < 1)
                         }
                         hud?.hide(animated: false, afterDelay: 1.3)
                     }

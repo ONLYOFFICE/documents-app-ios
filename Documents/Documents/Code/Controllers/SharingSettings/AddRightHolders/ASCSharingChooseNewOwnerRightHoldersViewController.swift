@@ -12,6 +12,7 @@ import UIKit
 class ASCSharingChooseNewOwnerRightHoldersViewController: UIViewController, ASCSharingAddRightHoldersDisplayLogic {
     var interactor: ASCSharingAddRightHoldersBusinessLogic?
     var dataStore: ASCSharingAddRightHoldersRAMDataStore?
+    var handler: ASCEntityHandler?
 
     var sharingChooseNewOwnerRightHoldersView: ASCSharingChooseNewOwnerRightHoldersView?
     var defaultSelectedTable: RightHoldersTableType = .users
@@ -186,27 +187,8 @@ class ASCSharingChooseNewOwnerRightHoldersViewController: UIViewController, ASCS
     }
 
     func selectRow(userId: String) {
-        var hud: MBProgressHUD?
-        hud?.label.text = NSLocalizedString("Leaving...", comment: "Caption of the process")
-
-        interactor?.makeRequest(requestType: .changeOwner(userId) { status, result, error in
-            if status == .begin {
-                hud = MBProgressHUD.showTopMost()
-            } else if status == .error {
-                hud?.hide(animated: true)
-                UIAlertController.showError(
-                    in: self,
-                    message: NSLocalizedString("Couldn't leave the room", comment: "")
-                )
-                self.dismiss(animated: true)
-            } else if status == .end {
-                hud?.setSuccessState()
-                hud?.label.numberOfLines = 0
-                hud?.label.text = NSLocalizedString("You have left the room and appointed a new owner", comment: "")
-                hud?.hide(animated: false, afterDelay: 1.3)
-                self.dismiss(animated: true)
-            }
-        })
+        interactor?.makeRequest(requestType: .changeOwner(userId, handler))
+        dismiss(animated: true)
     }
 
     // MARK: - Display logic

@@ -14,7 +14,7 @@ enum Destination {
     case sort(types: [ASCDocumentSortStateType], ascending: Bool, complation: ASCSortViewController.ASCSortComplation?)
     case shareSettings(entity: ASCEntity)
     case addUsers(entity: ASCEntity)
-    case leaveRoom(entity: ASCEntity)
+    case leaveRoom(entity: ASCEntity, handler: ASCEntityHandler?)
 
     // MARK: - Login
 
@@ -85,7 +85,7 @@ final class ASCNavigator {
                 addUsersViewController.dataStore?.currentUser = ASCFileManager.onlyofficeProvider?.user
                 addUsersViewController.accessProvider = ASCSharingSettingsAccessProviderFactory().get(entity: entity, isAccessExternal: false)
             }
-        case let .leaveRoom(entity):
+        case let .leaveRoom(entity, handler):
             if let leaveRoomViewController = viewController as? ASCSharingChooseNewOwnerRightHoldersViewController {
                 let leaveRoomNavigationVC = ASCBaseNavigationController(rootASCViewController: leaveRoomViewController)
                 if UIDevice.pad {
@@ -94,6 +94,7 @@ final class ASCNavigator {
                 navigationController?.present(leaveRoomNavigationVC, animated: true, completion: nil)
                 leaveRoomViewController.dataStore?.entity = entity
                 leaveRoomViewController.dataStore?.currentUser = ASCFileManager.onlyofficeProvider?.user
+                leaveRoomViewController.handler = handler
             }
         case .onlyofficeConnectPortal:
             navigationController?.viewControllers = [viewController]

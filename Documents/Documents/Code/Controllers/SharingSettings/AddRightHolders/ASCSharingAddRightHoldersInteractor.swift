@@ -128,16 +128,39 @@ class ASCSharingAddRightHoldersInteractor: ASCSharingAddRightHoldersBusinessLogi
     private func changeOwner(_ userId: String, _ handler: ASCEntityHandler?) {
         handler?(.begin, nil, nil)
 
+        guard let folder = dataStore?.entity as? ASCFolder else {
+            handler?(.error, nil, ASCProviderError(msg: NSLocalizedString("Invalid folder ID.", comment: "")))
+            return
+        }
+        let access: Int = 0
+        let ownerUserId: String = folder.createdBy?.userId ?? ""
+
         let parameters: [String: Any] = [
             "userId": userId,
-            "folderIds": [dataStore?.entity?.id],
+            "folderIds": [folder.id],
+        ]
+
+        let userAccess: [String: Any] = [
+            "id": ownerUserId,
+            "access": access,
+        ]
+
+        let invitations: [String: Any] = [
+            "invitations": [userAccess],
         ]
 
         OnlyofficeApiClient.request(OnlyofficeAPI.Endpoints.Sharing.changeOwner(), parameters) { response, error in
             if error != nil {
-                handler?(.error, nil, ASCProviderError(msg: NSLocalizedString("Couldn't leave the room.", comment: "")))
+                handler?(.error, nil, ASCProviderError(msg: NSLocalizedString("Couldn't change the owner.", comment: "")))
+                return
             } else {
-                handler?(.end, nil, nil)
+                OnlyofficeApiClient.request(OnlyofficeAPI.Endpoints.Sharing.room(folder: folder, method: .put), invitations) { result, error in
+                    if error != nil {
+                        handler?(.error, nil, ASCProviderError(msg: NSLocalizedString("Couldn't leave the room.", comment: "")))
+                    } else {
+                        handler?(.end, folder, nil)
+                    }
+                }
             }
         }
     }

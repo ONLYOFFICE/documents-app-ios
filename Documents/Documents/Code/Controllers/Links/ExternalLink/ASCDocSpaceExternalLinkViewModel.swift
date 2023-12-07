@@ -59,8 +59,9 @@ extension ExternalLinkStateModel {
         let typeSection = configureTypeSection()
         let copySection = configureCopySection()
         let deleteSection = configureDeleteSection()
+        let timeLimitSection = configureTimeLimitSection()
         let tableData = ExternalLinkStateModel.TableData(sections: [
-            generalSection, typeSection, copySection, deleteSection
+            generalSection, typeSection, timeLimitSection, copySection, deleteSection
         ])
         return ExternalLinkStateModel(
             title: NSLocalizedString("External link", comment: ""),
@@ -71,7 +72,6 @@ extension ExternalLinkStateModel {
         
     }()
 
-    
     private static func configureGeneralSection() -> ExternalLinkStateModel.Section {
         .init(header: NSLocalizedString("General", comment: ""),
               cells: [
@@ -141,7 +141,19 @@ extension ExternalLinkStateModel {
 
 class ASCDocSpaceExternalLinkViewModel: ObservableObject {
     
+    @Published var screenState: ExternalLinkStateModel = .empty
     
+    // MARK: temp
+    init(screenState: ExternalLinkStateModel) {
+        self.screenState = screenState
+    }
+    
+    func onAccessRights() {}
+    func onLinkLifeCycle() {}
+    func onAnyoneWithLink() {}
+    func onDocSpaceOnly() {}
+    func onDelete() {}
+    func onCopyLink() {}
 }
 
 

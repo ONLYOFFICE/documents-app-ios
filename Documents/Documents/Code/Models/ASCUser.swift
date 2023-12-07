@@ -22,6 +22,7 @@ class ASCUser: Mappable {
     var avatar: String?
     var avatarRetina: String?
     var isAdmin: Bool = false
+    var isRoomAdmin: Bool = false
     var isVisitor: Bool = false
     var isCollaborator: Bool = false
     var isOwner: Bool = false
@@ -52,6 +53,7 @@ class ASCUser: Mappable {
         avatar <- map["avatar"]
         avatarRetina <- map["avatarRetina"]
         isAdmin <- map["isAdmin"]
+        isRoomAdmin <- map["isRoomAdmin"]
         isVisitor <- map["isVisitor"]
         isCollaborator <- map["isCollaborator"]
         isOwner <- map["isOwner"]

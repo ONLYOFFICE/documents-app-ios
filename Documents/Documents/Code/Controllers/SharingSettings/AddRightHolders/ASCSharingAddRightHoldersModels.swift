@@ -13,7 +13,7 @@ enum ASCSharingAddRightHolders {
     enum Model {
         enum Request {
             enum RequestType {
-                case loadUsers(preloadRightHolders: Bool, hideUsersWhoHasRights: Bool)
+                case loadUsers(preloadRightHolders: Bool, hideUsersWhoHasRights: Bool, showOnlyAdmins: Bool)
                 case loadGroups
                 case selectViewModel(_ request: ViewModelSelectedRequest)
                 case deselectViewModel(_ request: ViewModelDeselectedRequest)

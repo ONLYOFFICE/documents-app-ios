@@ -181,7 +181,7 @@ class ASCSharingChooseNewOwnerRightHoldersViewController: UIViewController, ASCS
     func loadData() {
         if !usersCurrentlyLoading {
             usersCurrentlyLoading = true
-            interactor?.makeRequest(requestType: .loadUsers(preloadRightHolders: true, hideUsersWhoHasRights: false))
+            interactor?.makeRequest(requestType: .loadUsers(preloadRightHolders: false, hideUsersWhoHasRights: false, showOnlyAdmins: true))
         }
     }
 
@@ -201,6 +201,7 @@ class ASCSharingChooseNewOwnerRightHoldersViewController: UIViewController, ASCS
                 self.dismiss(animated: true)
             } else if status == .end {
                 hud?.setSuccessState()
+                hud?.label.numberOfLines = 0
                 hud?.label.text = NSLocalizedString("You have left the room and appointed a new owner", comment: "")
                 hud?.hide(animated: false, afterDelay: 1.3)
                 self.dismiss(animated: true)

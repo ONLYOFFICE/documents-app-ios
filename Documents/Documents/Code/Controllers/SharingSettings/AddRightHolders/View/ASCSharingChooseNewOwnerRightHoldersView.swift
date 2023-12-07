@@ -143,7 +143,6 @@ extension ASCSharingChooseNewOwnerRightHoldersView {
     func configureNavigationBar() {
         configureSearchController()
         navigationItem.largeTitleDisplayMode = .never
-        navigationItem.hidesSearchBarWhenScrolling = false
         navigationItem.setTitle(title, subtitle: nil)
         navigationItem.rightBarButtonItem = cancelBarBtn
         guard let navigationController = navigationController else {

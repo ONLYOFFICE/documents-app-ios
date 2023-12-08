@@ -899,6 +899,30 @@ class ASCOnlyofficeProvider: ASCFileProviderProtocol & ASCSortableFileProviderPr
         return true
     }
 
+    func allowLeave(folder: ASCFolder, completion: @escaping (Bool) -> Void) {
+        var isOwnerInRoom: Bool = false
+        var isAllowLeave: Bool = true
+
+        apiClient.request(OnlyofficeAPI.Endpoints.Sharing.room(folder: folder, method: .get)) { result, error in
+            if let error = error {
+                print("Error: \(error)")
+            } else if let users = result?.result {
+                for entity in users {
+                    if entity.user?.userId == self.user?.userId {
+                        isOwnerInRoom = true
+                        break
+                    }
+                }
+
+                if !isOwnerInRoom, let userIsOwner = self.user?.isOwner, userIsOwner {
+                    isAllowLeave = false
+                }
+
+                completion(isAllowLeave)
+            }
+        }
+    }
+
     func allowCopy(entity: AnyObject?) -> Bool {
         guard let entity = entity as? ASCEntity, allowRead(entity: entity) else { return false }
         guard isInRoom else { return true }
@@ -1295,12 +1319,17 @@ class ASCOnlyofficeProvider: ASCFileProviderProtocol & ASCSortableFileProviderPr
             if isRoomFolder, !isArchiveCategory {
                 entityActions.insert(folder.pinned ? .unpin : .pin)
                 entityActions.insert(.info)
-                entityActions.insert(.leave)
                 if folder.security.editAccess {
                     entityActions.insert(.addUsers)
                 }
                 if folder.security.move {
                     entityActions.insert(.archive)
+                }
+
+                allowLeave(folder: folder) { isAllowed in
+                    if isAllowed {
+                        entityActions.insert(.leave)
+                    }
                 }
             }
 

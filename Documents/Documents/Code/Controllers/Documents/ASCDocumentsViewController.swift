@@ -1971,7 +1971,9 @@ class ASCDocumentsViewController: ASCBaseTableViewController, UIGestureRecognize
                             self.tableView.beginUpdates()
                             self.tableView.deleteRows(at: [indexPath], with: .fade)
                             self.tableView.endUpdates()
-                            self.showEmptyView(self.total < 1)
+                            if let refreshControl = self.refreshControl {
+                                self.refresh(refreshControl)
+                            }
                         }
                         hud?.hide(animated: false, afterDelay: 1.3)
                     }
@@ -2000,7 +2002,9 @@ class ASCDocumentsViewController: ASCBaseTableViewController, UIGestureRecognize
                             self.tableView.beginUpdates()
                             self.tableView.deleteRows(at: [indexPath], with: .fade)
                             self.tableView.endUpdates()
-                            self.showEmptyView(self.total < 1)
+                            if let refreshControl = self.refreshControl {
+                                self.refresh(refreshControl)
+                            }
                         }
                         hud?.hide(animated: false, afterDelay: 1.3)
                     }

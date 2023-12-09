@@ -11,7 +11,7 @@ import SwiftUI
 
 struct CreateRoomView: View {
     @Environment(\.presentationMode) var presentationMode
-    
+
     @ObservedObject var viewModel: CreateRoomViewModel
     @Binding var isParentPresenting: Bool
     @State var isRoomSelectionPresenting = false
@@ -26,27 +26,16 @@ struct CreateRoomView: View {
             }
             Section {
                 HStack {
-                    RoundedRectangle(cornerRadius: 8)
-                        .frame(width: 48, height: 48)
-                        .foregroundColor(Color(Asset.Colors.fillEditorsDocs.color))
-                        .overlay(
-                            Image(systemName: "photo")
-                                .frame(width: 24, height: 24)
-                                .foregroundColor(.blue)
-                        )
-                        .onTapGesture {
-                            // MARK: TODO
-                        }
-                    
-                    TextField("Room name", text: $viewModel.roomName)
-                        .padding()
-                        .background(Color.white)
-                        .disabled(viewModel.isCreatingRoom)
+                    MenuView(menuItems: viewModel.menuItems) {
+                        imagePicker
+                    }
+
+                    roomNameTextField
                 }
             }
         }
         .navigation(isActive: $isRoomSelectionPresenting, destination: {
-            RoomSelectionView(selectedRoom: $viewModel.selectedRoom, dismissOnSelection: true) 
+            RoomSelectionView(selectedRoom: $viewModel.selectedRoom, dismissOnSelection: true)
         })
         .navigationBarTitle(Text(NSLocalizedString("Create room", comment: "")), displayMode: .inline)
         .navigationBarItems(
@@ -70,7 +59,25 @@ struct CreateRoomView: View {
             }
         })
     }
-    
+
+    private var imagePicker: some View {
+        RoundedRectangle(cornerRadius: 8)
+            .frame(width: 48, height: 48)
+            .foregroundColor(Color(Asset.Colors.fillEditorsDocs.color))
+            .overlay(
+                Image(systemName: "photo")
+                    .frame(width: 24, height: 24)
+                    .foregroundColor(.blue)
+            )
+    }
+
+    private var roomNameTextField: some View {
+        TextField("Room name", text: $viewModel.roomName)
+            .padding()
+            .background(Color.white)
+            .disabled(viewModel.isCreatingRoom)
+    }
+
     private func creatingRoomActivityView() -> some View {
         Group {
             if viewModel.isCreatingRoom {
@@ -81,13 +88,12 @@ struct CreateRoomView: View {
             }
         }
     }
-    
+
     private func errorMessage() -> some View {
         Group {
             if !viewModel.errorMessage.isEmpty {
                 Text(viewModel.errorMessage)
                     .foregroundColor(.red)
-                
             }
         }
     }

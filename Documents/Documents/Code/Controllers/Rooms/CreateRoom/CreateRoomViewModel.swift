@@ -15,6 +15,7 @@ class CreateRoomViewModel: ObservableObject {
     @Published var errorMessage = ""
     @Published var dismissNavStack = false
     @Published var selectedRoom: Room!
+    lazy var menuItems: [MenuViewItem] = makeImageMenuItems()
 
     private var networkService = OnlyofficeApiClient.shared
 
@@ -26,7 +27,7 @@ class CreateRoomViewModel: ObservableObject {
         errorMessage = ""
         let params: [String: Any] = [
             "roomType": selectedRoom.type.id,
-            "title": roomName
+            "title": roomName,
         ]
         isCreatingRoom = true
         networkService.request(OnlyofficeAPI.Endpoints.Rooms.create(), params) { [weak self] response, error in
@@ -41,5 +42,25 @@ class CreateRoomViewModel: ObservableObject {
             }
             self.dismissNavStack = true
         }
+    }
+
+    func makeImageMenuItems() -> [MenuViewItem] {
+        [
+            .init(text: NSLocalizedString("Photo Library", comment: ""), systemImageName: "photo", action: imageFromLibraryAction),
+            .init(text: NSLocalizedString("Take Photo", comment: ""), systemImageName: "camera", action: imageFromCameraAction),
+            .init(text: NSLocalizedString("Choose Files", comment: ""), systemImageName: "folder", action: imageFromFilesAction),
+        ]
+    }
+
+    func imageFromLibraryAction() {
+        print(#function)
+    }
+
+    func imageFromCameraAction() {
+        print(#function)
+    }
+
+    func imageFromFilesAction() {
+        print(#function)
     }
 }

@@ -134,7 +134,7 @@ class ASCSharingChooseNewOwnerRightHoldersViewController: UIViewController, ASCS
         super.viewWillDisappear(animated)
         if UIDevice.pad {
             sharingChooseNewOwnerRightHoldersView?.resetModalSize()
-            sharingChooseNewOwnerRightHoldersView?.reloadEmptyViewIfNeeded()
+            sharingChooseNewOwnerRightHoldersView?.reloadEmptySearchViewIfNeeded()
         }
         navigationController?.isToolbarHidden = true
     }
@@ -197,6 +197,9 @@ class ASCSharingChooseNewOwnerRightHoldersViewController: UIViewController, ASCS
         switch viewModelType {
         case let .displayUsers(viewModel: viewModel):
             usersModels = viewModel.users
+            if usersModels.isEmpty {
+                sharingChooseNewOwnerRightHoldersView?.showUsersNotFoundView(true)
+            }
             usersTableViewDataSourceAndDelegate.set(models: viewModel.users)
             sharingChooseNewOwnerRightHoldersView?.usersTableView.reloadData()
             usersCurrentlyLoading = false
@@ -223,7 +226,7 @@ extension ASCSharingChooseNewOwnerRightHoldersViewController: UISearchController
 
         guard !searchText.isEmpty else {
             usersTableViewDataSourceAndDelegate.set(models: usersModels)
-            sharingChooseNewOwnerRightHoldersView?.showEmptyView(false)
+            sharingChooseNewOwnerRightHoldersView?.showEmptySearchView(false)
             sharingChooseNewOwnerRightHoldersView?.usersTableView.reloadData()
             sharingChooseNewOwnerRightHoldersView?.searchResultsTable.reloadData()
             return
@@ -243,9 +246,9 @@ extension ASCSharingChooseNewOwnerRightHoldersViewController: UISearchController
         sharingChooseNewOwnerRightHoldersView?.searchResultsTable.reloadData()
 
         if foundUsersModels.isEmpty {
-            sharingChooseNewOwnerRightHoldersView?.showEmptyView(true)
+            sharingChooseNewOwnerRightHoldersView?.showEmptySearchView(true)
         } else {
-            sharingChooseNewOwnerRightHoldersView?.showEmptyView(false)
+            sharingChooseNewOwnerRightHoldersView?.showEmptySearchView(false)
         }
     }
 
@@ -275,7 +278,7 @@ extension ASCSharingChooseNewOwnerRightHoldersViewController: UISearchController
 
         sharingChooseNewOwnerRightHoldersView?.showTablesSegmentedControl()
         sharingChooseNewOwnerRightHoldersView?.searchResultsTable.removeFromSuperview()
-        sharingChooseNewOwnerRightHoldersView?.showEmptyView(false)
+        sharingChooseNewOwnerRightHoldersView?.showEmptySearchView(false)
     }
 
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {

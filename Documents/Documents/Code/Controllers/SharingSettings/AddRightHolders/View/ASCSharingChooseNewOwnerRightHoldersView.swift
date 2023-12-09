@@ -58,9 +58,15 @@ class ASCSharingChooseNewOwnerRightHoldersView {
 
     // MARK: - Empty view props
 
-    private lazy var emptyView: ASCDocumentsEmptyView? = {
+    private lazy var emptySearchView: ASCDocumentsEmptyView? = {
         guard let view = UIView.loadFromNib(named: String(describing: ASCDocumentsEmptyView.self)) as? ASCDocumentsEmptyView else { return nil }
         view.type = .search
+        return view
+    }()
+
+    private lazy var usersNotFoundView: ASCDocumentsEmptyView? = {
+        guard let view = UIView.loadFromNib(named: String(describing: ASCDocumentsEmptyView.self)) as? ASCDocumentsEmptyView else { return nil }
+        view.type = .usersNotFound
         return view
     }()
 
@@ -288,8 +294,8 @@ extension ASCSharingChooseNewOwnerRightHoldersView {
 // MARK: - Empty view methods
 
 extension ASCSharingChooseNewOwnerRightHoldersView {
-    public func showEmptyView(_ show: Bool) {
-        guard let emptyView = emptyView else {
+    public func showEmptySearchView(_ show: Bool) {
+        guard let emptyView = emptySearchView else {
             return
         }
         if show {
@@ -317,9 +323,34 @@ extension ASCSharingChooseNewOwnerRightHoldersView {
         }
     }
 
-    func reloadEmptyViewIfNeeded() {
-        if emptyView?.superview != nil {
-            showEmptyView(true)
+    public func showUsersNotFoundView(_ show: Bool) {
+        guard let emptyView = usersNotFoundView else {
+            return
+        }
+        if show {
+            emptyView.removeFromSuperview()
+            emptyView.frame = usersTableView.frame
+
+            if UIDevice.pad,
+               let preferedContentHeight = viewController?.preferredContentSize.height,
+               preferedContentHeight > 0,
+               preferedContentHeight < 500
+            {
+                emptyView.imageView.image = nil
+                emptyView.frame = usersTableView.frame.offsetBy(dx: 0, dy: preferedContentHeight / 2 - 100)
+            } else if emptyView.imageView.image == nil {
+                emptyView.type = .usersNotFound
+            }
+
+            usersTableView.addSubview(emptyView)
+        } else {
+            emptyView.removeFromSuperview()
+        }
+    }
+
+    func reloadEmptySearchViewIfNeeded() {
+        if emptySearchView?.superview != nil {
+            showEmptySearchView(true)
         }
     }
 }
@@ -339,7 +370,7 @@ extension ASCSharingChooseNewOwnerRightHoldersView {
         if UIDevice.pad {
             DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
                 self.changeModalHeightIfNeeded(keyboardSize: keyboardFrame)
-                self.reloadEmptyViewIfNeeded()
+                self.reloadEmptySearchViewIfNeeded()
             }
         }
     }

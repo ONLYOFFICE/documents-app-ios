@@ -369,6 +369,11 @@ class ASCOnlyofficeProvider: ASCFileProviderProtocol & ASCSortableFileProviderPr
                     let entities: [ASCEntity] = (path.folders + path.files).map { entitie in
                         if let folder = entitie as? ASCFolder {
                             folder.parent = currentFolder
+                            strongSelf.allowLeave(folder: folder) { isAllowed in
+                                if isAllowed {
+                                    folder.isCanLeaveRoom = true
+                                }
+                            }
                             return folder
                         } else if let file = entitie as? ASCFile {
                             file.parent = currentFolder
@@ -1325,11 +1330,8 @@ class ASCOnlyofficeProvider: ASCFileProviderProtocol & ASCSortableFileProviderPr
                 if folder.security.move {
                     entityActions.insert(.archive)
                 }
-
-                allowLeave(folder: folder) { isAllowed in
-                    if isAllowed {
-                        entityActions.insert(.leave)
-                    }
+                if folder.isCanLeaveRoom {
+                    entityActions.insert(.leave)
                 }
             }
 

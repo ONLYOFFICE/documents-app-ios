@@ -136,14 +136,14 @@ class OnlyofficeAPI {
                 return Endpoint<OnlyofficeResponse<ASCFile>>.make(String(format: Path.files, folderId), .get, URLEncoding.queryString)
             }
         }
-        
+
         // MARK: Rooms
 
         enum Rooms {
             static let paymentQuota: Endpoint<OnlyofficeResponse<ASCPaymentQuota>> = Endpoint<OnlyofficeResponse<ASCPaymentQuota>>.make(Path.paymentQuota, .get)
-            
+
             static func create() -> Endpoint<OnlyofficeResponse<ASCFolder>> {
-                return  Endpoint<OnlyofficeResponse<ASCFolder>>.make(Path.rooms, .post)
+                return Endpoint<OnlyofficeResponse<ASCFolder>>.make(Path.rooms, .post)
             }
 
             static func pin(folder: ASCFolder) -> Endpoint<OnlyofficeResponse<ASCFolder>> {

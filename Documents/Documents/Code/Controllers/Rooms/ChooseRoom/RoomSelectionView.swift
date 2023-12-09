@@ -19,29 +19,29 @@ extension Room: Equatable {}
 
 struct RoomSelectionView: View {
     @Environment(\.presentationMode) var presentationMode
-    
+
     @ObservedObject var viewModel = RoomSelectionViewModel()
-    
+
     @Binding var selectedRoom: Room?
     @State var dismissOnSelection = false
     @State private var isPresenting = true
 
     var body: some View {
-            List(viewModel.rooms, id: \.name) { room in
-                CreatingRoomViewRow(room: room)
-                    .onTapGesture {
-                        selectedRoom = room
-                        if dismissOnSelection {
-                            presentationMode.wrappedValue.dismiss()
-                        }
+        List(viewModel.rooms, id: \.name) { room in
+            CreatingRoomViewRow(room: room)
+                .onTapGesture {
+                    selectedRoom = room
+                    if dismissOnSelection {
+                        presentationMode.wrappedValue.dismiss()
                     }
-            }
-            .navigationBarTitle(Text("Choose room type"), displayMode: .inline)
-            .navigationBarItems(
-                trailing: Button("Cancel") {
-                    presentationMode.wrappedValue.dismiss()
                 }
-            )
+        }
+        .navigationBarTitle(Text("Choose room type"), displayMode: .inline)
+        .navigationBarItems(
+            trailing: Button("Cancel") {
+                presentationMode.wrappedValue.dismiss()
+            }
+        )
     }
 }
 

@@ -6,9 +6,9 @@
 //  Copyright © 2023 Ascensio System SIA. All rights reserved.
 //
 
+import Combine
 import Foundation
 import SwiftUI
-import Combine
 
 // MARK: - Navigation
 
@@ -74,7 +74,7 @@ extension View {
 }
 
 @available(iOS, introduced: 13.0, deprecated: 14.0, message: "Use the native .onChange modifier in iOS 14 and later.")
-fileprivate struct OnChangeModifier<V: Equatable>: ViewModifier {
+private struct OnChangeModifier<V: Equatable>: ViewModifier {
     let value: V
     let action: (V) -> Void
 
@@ -85,7 +85,7 @@ fileprivate struct OnChangeModifier<V: Equatable>: ViewModifier {
     }
 }
 
-fileprivate struct OnChangeView<V: Equatable>: View {
+private struct OnChangeView<V: Equatable>: View {
     let value: V
     let action: (V) -> Void
 

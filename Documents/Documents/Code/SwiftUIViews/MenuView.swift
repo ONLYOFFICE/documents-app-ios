@@ -16,11 +16,10 @@ struct MenuViewItem: Identifiable {
 }
 
 struct MenuView<Content>: View where Content: View {
-    
     @State private var showingActionSheet = false
     let menuItems: [MenuViewItem]
     let content: () -> Content
-    
+
     private var actionSheetButtons: [ActionSheet.Button] {
         var btns: [ActionSheet.Button] = menuItems.map {
             .default(Text($0.text), action: $0.action)
@@ -28,7 +27,7 @@ struct MenuView<Content>: View where Content: View {
         btns.append(.cancel())
         return btns
     }
-    
+
     var body: some View {
         if #available(iOS 14.0, *) {
             menu
@@ -36,7 +35,7 @@ struct MenuView<Content>: View where Content: View {
             actionSheet
         }
     }
-    
+
     var actionSheet: some View {
         content()
             .onTapGesture {
@@ -49,7 +48,7 @@ struct MenuView<Content>: View where Content: View {
                 )
             }
     }
-    
+
     @available(iOS 14.0, *)
     var menu: some View {
         Menu {

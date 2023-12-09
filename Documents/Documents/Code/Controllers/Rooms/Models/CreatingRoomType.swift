@@ -12,7 +12,7 @@ enum CreatingRoomType: CaseIterable {
     case collaboration
     case publicRoom
     case custom
-    
+
     var id: Int {
         switch self {
         case .collaboration:

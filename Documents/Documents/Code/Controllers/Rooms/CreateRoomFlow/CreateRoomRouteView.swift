@@ -10,20 +10,19 @@ import SwiftUI
 
 struct CreateRoomRouteView: View {
     @Environment(\.presentationMode) var presentationMode
-    
+
     @State var selectedRoom: Room?
     @State private var isPresenting = true
-    
+
     private var isRoomSelected: Binding<Bool> {
-        Binding<Bool>( get: { self.selectedRoom != nil },
-            set: { isSelected in
-                if !isSelected {
-                    self.selectedRoom = nil
-                }
-            }
-        )
+        Binding<Bool>(get: { self.selectedRoom != nil },
+                      set: { isSelected in
+                          if !isSelected {
+                              self.selectedRoom = nil
+                          }
+                      })
     }
-    
+
     var body: some View {
         NavigationView {
             RoomSelectionView(selectedRoom: $selectedRoom)
@@ -40,5 +39,4 @@ struct CreateRoomRouteView: View {
             }
         })
     }
-
 }

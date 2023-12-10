@@ -60,7 +60,9 @@ class OnlyofficeAPI {
         public static let roomUnpin = room.appendingPathComponent("unpin")
         public static let roomArchive = room.appendingPathComponent("archive")
         public static let roomUnarchive = room.appendingPathComponent("unarchive")
-
+        public static let tags = "api/\(version)/files/tags"
+        public static let roomsTags = room.appendingPathComponent("tags")
+        
         enum Forlder {
             public static let root = "@root"
             public static let my = "@my"
@@ -134,6 +136,19 @@ class OnlyofficeAPI {
 
             static func filter(folderId: String) -> Endpoint<OnlyofficeResponse<ASCFolder>> {
                 return Endpoint<OnlyofficeResponse<ASCFile>>.make(String(format: Path.files, folderId), .get, URLEncoding.queryString)
+            }
+        }
+        
+        // MARK: Tags
+        
+        enum Tags {
+            
+            static func create() -> Endpoint<OnlyofficeResponse<ASCFolder>> {
+                return Endpoint<OnlyofficeResponse<OnlyofficeResponseBase>>.make(Path.tags, .post)
+            }
+            
+            static func addToRoom(folder: ASCFolder) -> Endpoint<OnlyofficeResponse<ASCFolder>> {
+                return Endpoint<OnlyofficeResponse<OnlyofficeResponseBase>>.make(String(format: Path.roomsTags, folder.id), .put)
             }
         }
 

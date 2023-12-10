@@ -33,15 +33,17 @@ struct CreateRoomView: View {
                     roomNameTextField
                 }
             }
+            Section() {
+                TagsFieldView(tags: $viewModel.tags)
+                    .listRowInsets(EdgeInsets())
+            }
+            .background(Color(UIColor.systemGray6))
         }
         .navigation(isActive: $isRoomSelectionPresenting, destination: {
             RoomSelectionView(selectedRoom: $viewModel.selectedRoom, dismissOnSelection: true)
         })
         .navigationBarTitle(Text(NSLocalizedString("Create room", comment: "")), displayMode: .inline)
         .navigationBarItems(
-            leading: Button("Back") {
-                presentationMode.wrappedValue.dismiss()
-            },
             trailing: Button("Create") {
                 viewModel.createRoom()
             }

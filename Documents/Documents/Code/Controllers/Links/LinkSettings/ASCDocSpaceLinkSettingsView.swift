@@ -8,49 +8,126 @@
 
 import SwiftUI
 
-//TODO: - if password assess isOn copy link -> copy link and password
-
 struct ASCDocSpaceLinkSettingsView: View {
-    @State private var isPasswordAccess = false //TODO: -
-    @State private var isRestrictCopyOn = false //TODO: -
-    @State private var isTimeLimitOn = false //TODO: -
+    
+    @ObservedObject var viewModel: ASCDocSpaceLinkSettingsViewModel
+   
     var body: some View {
+        content
+            .navigationBarItems(
+                leading: Button(NSLocalizedString("Back", comment: ""),
+                                action: {
+                                    
+                                }),
+                trailing: Button(NSLocalizedString("Share", comment: ""),
+                                 action: {
+                                     
+                                 })
+            )
+    }
+    
+    @ViewBuilder
+    private var content: some View {
+        switch viewModel.contentState {
+        case .general:
+            generalLinkView
+        case .additional:
+            additionalLinkView
+        }
+    }
+    
+    @ViewBuilder
+    var generalLinkView: some View {
         List {
-            Section(header: Text(NSLocalizedString("General", comment: ""))) {
-                Text(NSLocalizedString("Link name", comment: "")) //TODO: -
-            }
-            
-            Section(header: Text(NSLocalizedString("Protection", comment: ""))) {
-                HStack {
-                    Toggle(isOn: $isPasswordAccess) { //TODO: -
-                        Text(NSLocalizedString("Password access", comment: ""))
-                    }
+            generalSection
+            protectedSection
+            restrictionSection
+        }
+        .navigationBarTitle(Text(NSLocalizedString("General link", comment: "")))
+    }
+    
+    @ViewBuilder
+    var additionalLinkView: some View {
+        List {
+            generalSection
+            protectedSection
+            restrictionSection
+            timeLimitSection
+            copySection
+            deleteSection
+        }
+        .navigationBarTitle(Text(NSLocalizedString("Additional links", comment: "")))
+    }
+    
+    private var generalSection: some View {
+        Section(header: Text(NSLocalizedString("General", comment: ""))) {
+            Text(NSLocalizedString("Link name", comment: ""))
+        }
+    }
+    
+    private var protectedSection: some View {
+        Section(header: Text(NSLocalizedString("Protection", comment: ""))) {
+            VStack {
+                Toggle(isOn:  $viewModel.isProtected) {
+                    Text(NSLocalizedString("Password access", comment: ""))
                 }
-            }
-            
-            Section(footer: Text(NSLocalizedString("Enable this setting to disable downloads of files and folders from this room shared via a link", comment: ""))) {
-                Toggle(isOn: $isRestrictCopyOn) { //TODO: -
-                    Text(NSLocalizedString("Restrict file content copy, file download and printing", comment: ""))
+                
+                if viewModel.isProtected {
+                    PasswordCellView(model: .init(password: "123", isPasswordVisible: true))
                 }
-            }
-            
-            Section(header: Text(NSLocalizedString("Time limit", comment: ""))) {
-                Toggle(isOn: $isTimeLimitOn) {
-                    Text(NSLocalizedString("Enable time limit", comment: ""))
-                }
-            }
-            Section {
-                ASCLabledCellView(textString: NSLocalizedString("Copy link", comment: ""), cellType: .standard, textAlignment: .center)
-            }
-            Section {
-                ASCLabledCellView(textString: NSLocalizedString("Delete link", comment: ""), cellType: .deletable, textAlignment: .center)
             }
         }
+    }
+    
+    private var timeLimitSection: some View {
+        Section(header: Text(NSLocalizedString("Time limit", comment: ""))) {
+            Toggle(isOn: $viewModel.isTimeLimited) {
+                Text(NSLocalizedString("Enable time limit", comment: ""))
+            }
+            if viewModel.isTimeLimited {
+                TimeLimitCellView(model: .init(title: NSLocalizedString("Valid through", comment: "")))
+            }
+        }
+    }
+    
+    private var copySection: some View {
+        Section {
+            ASCLabledCellView(model: .init(
+                textString: NSLocalizedString(viewModel.isProtected ? "Copy link and password" : "Copy link", comment: ""),
+                cellType: .standard,
+                textAlignment: .center,
+                onTapAction: {
+                    
+                })
+            )
+        }
+    }
+    
+    private var restrictionSection: some View {
+        Section(footer: Text(NSLocalizedString("Enable this setting to disable downloads of files and folders from this room shared via a link", comment: ""))) {
+            Toggle(isOn: $viewModel.isRestrictCopyOn) {
+                Text(NSLocalizedString("Restrict file content copy, file download and printing", comment: ""))
+            }
+        }
+    }
+    
+    private var deleteSection: some View {
+        Section {
+            ASCLabledCellView(model: .init(
+                textString:  NSLocalizedString("Delete link", comment: ""),
+                cellType: .deletable,
+                textAlignment: .center,
+                onTapAction: {
+                    
+                })
+            )
+        }
+        
     }
 }
 
 struct ASCDocSpaceLinkSettingsView_Previews: PreviewProvider {
     static var previews: some View {
-        ASCDocSpaceLinkSettingsView()
+        ASCDocSpaceLinkSettingsView(viewModel: .init(contentState: .additional))
     }
 }

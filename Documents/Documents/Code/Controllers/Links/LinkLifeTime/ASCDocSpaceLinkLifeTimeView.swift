@@ -8,45 +8,38 @@
 
 import SwiftUI
 
-struct ASCDocSpaceLinkLifeTimeView: View {
-    @ObservedObject private var viewModel = ASCDocSpaceLinkLifeTimeViewModel()
+struct LinkLifeTimeView: View {
+    @ObservedObject var viewModel: LinkLifeTimeViewModel
 
     var body: some View {
-        list
+        NavigationView {
+            List(LinkLifeTimeOption.allCases, id: \.self) { option in
+                HStack {
+                    Text(option.localized)
+                    Spacer()
+                    if viewModel.selectedOption == option {
+                        Image(systemName: "checkmark")
+                            .foregroundColor(Asset.Colors.brend.swiftUIColor)
+                    }
+                }
+                .contentShape(Rectangle())
+                .onTapGesture {
+                    viewModel.selectedOption = option
+                }
+            }
             .navigationBarTitle(Text(NSLocalizedString("Link life time", comment: "")), displayMode: .inline)
-    }
-
-    private var list: some View {
-        List($viewModel.linkLifeTimeModels) { model in
-            LinkLifeOptionsCell(model: model) { item in
-                viewModel.select(linkLifeTimeModel: item)
+            .navigationBarItems(leading: Button(NSLocalizedString("Back", comment: "")) {
+                
             }
+                .foregroundColor(Asset.Colors.brend.swiftUIColor)
+            )
+            
         }
     }
 }
 
-struct LinkLifeOptionsCell: View {
-    @Binding var model: LinkLifeTimeModel
-    var tapAction: (LinkLifeTimeModel) -> Void
-
-    var body: some View {
-        HStack {
-            Text(model.option.localized)
-            Spacer()
-            if model.selected {
-                Image(systemName: "checkmark")
-                    .foregroundColor(Asset.Colors.brend.swiftUIColor)
-            }
-        }
-        .contentShape(Rectangle())
-        .onTapGesture {
-            tapAction(model)
-        }
-    }
-}
-
-struct ASCDocSpaceLinkLifeTimeView_Previews: PreviewProvider {
+struct LinkLifeTimeView_Previews: PreviewProvider {
     static var previews: some View {
-        ASCDocSpaceLinkLifeTimeView()
+        LinkLifeTimeView(viewModel: LinkLifeTimeViewModel())
     }
 }

@@ -21,25 +21,6 @@ enum LinkLifeTimeOption: String, CaseIterable {
     }
 }
 
-struct LinkLifeTimeModel: Identifiable {
-    var id: String { option.rawValue }
-    var option: LinkLifeTimeOption
-    var selected: Bool
-}
-
-final class ASCDocSpaceLinkLifeTimeViewModel: ObservableObject {
-    @Published var linkLifeTimeModels: [LinkLifeTimeModel] = []
-
-    init() {
-        linkLifeTimeModels = LinkLifeTimeOption.allCases.map {
-            // TODO: Check default selected
-            LinkLifeTimeModel(option: $0, selected: false)
-        }
-    }
-
-    func select(linkLifeTimeModel: LinkLifeTimeModel) {
-        linkLifeTimeModels.enumerated().forEach { index, item in
-            linkLifeTimeModels[index].selected = linkLifeTimeModel.id == item.id
-        }
-    }
+final class LinkLifeTimeViewModel: ObservableObject {
+    @Published var selectedOption: LinkLifeTimeOption = .sevenDays //TODO: -
 }

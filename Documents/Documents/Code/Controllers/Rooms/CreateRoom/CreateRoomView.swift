@@ -50,11 +50,17 @@ struct CreateRoomView: View {
             .disabled(viewModel.roomName.isEmpty)
         )
         .overlay(
-            creatingRoomActivityView()
+            creatingRoomActivityView
         )
-        .overlay(
-            errorMessage()
-        )
+        .alert(item: $viewModel.errorMessage) { errorMessage in
+            Alert(
+                title: Text("Error"),
+                message: Text(errorMessage),
+                dismissButton: .default(Text("OK"), action: {
+                    viewModel.errorMessage = nil
+                })
+            )
+        }
         .onChange(of: viewModel.dismissNavStack, perform: { dismissNavStack in
             if dismissNavStack {
                 isParentPresenting = false
@@ -80,23 +86,15 @@ struct CreateRoomView: View {
             .disabled(viewModel.isCreatingRoom)
     }
 
-    private func creatingRoomActivityView() -> some View {
-        Group {
-            if viewModel.isCreatingRoom {
-                VStack {
-                    Text("Creating...")
-                    ActivityIndicatorView()
-                }
-            }
-        }
-    }
-
-    private func errorMessage() -> some View {
-        Group {
-            if !viewModel.errorMessage.isEmpty {
-                Text(viewModel.errorMessage)
-                    .foregroundColor(.red)
-            }
+    @ViewBuilder
+    private var creatingRoomActivityView: some View {
+        if viewModel.isCreatingRoom {
+            MBProgressHUDView(
+                isLoading: $viewModel.isCreatingRoom,
+                text: NSLocalizedString("Creating...", comment: ""),
+                delay: 0.3,
+                successStatusText: viewModel.errorMessage == nil ? "" : nil
+            )
         }
     }
 }

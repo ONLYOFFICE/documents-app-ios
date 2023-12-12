@@ -9,10 +9,17 @@
 import SwiftUI
 import MBProgressHUD
 
+enum MBProgressHUDEndStatus {
+    case success
+    case failure
+}
+
 struct MBProgressHUDView: UIViewControllerRepresentable {
+    @State var hud: MBProgressHUD?
     @Binding var isLoading: Bool
     var text: String
-    var delay: TimeInterval 
+    var delay: TimeInterval
+    var successStatusText: String?
 
     func makeUIViewController(context: Context) -> UIViewController {
         UIViewController()
@@ -20,11 +27,13 @@ struct MBProgressHUDView: UIViewControllerRepresentable {
 
     func updateUIViewController(_ uiViewController: UIViewController, context: Context) {
         if isLoading {
-            let hud = MBProgressHUD.showAdded(to: uiViewController.view, animated: true)
-            hud.label.text = text
-            hud.hide(animated: true, afterDelay: delay)
+            hud = MBProgressHUD.showAdded(to: uiViewController.view, animated: true)
+            hud?.label.text = text
         } else {
-            MBProgressHUD.hide(for: uiViewController.view, animated: true)
+            if let successStatusText {
+                hud?.setSuccessState(title: successStatusText)
+            }
+            hud?.hide(animated: true, afterDelay: delay)
         }
     }
 }

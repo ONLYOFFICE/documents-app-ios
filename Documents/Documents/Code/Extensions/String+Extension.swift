@@ -384,6 +384,15 @@ extension String {
     }
 }
 
+// MARK: - Identifible
+
+extension String: Identifiable {
+    public var id: String {
+        get { self }
+        set { }
+    }
+}
+
 // MARK: - NSString extensions
 
 public extension String {

@@ -12,7 +12,7 @@ import Combine
 class CreateRoomViewModel: ObservableObject {
     @Published var roomName: String = ""
     @Published var isCreatingRoom = false
-    @Published var errorMessage = ""
+    @Published var errorMessage: String?
     @Published var dismissNavStack = false
     @Published var selectedRoom: Room!
     @Published var tags: Set<String> = []
@@ -28,7 +28,6 @@ class CreateRoomViewModel: ObservableObject {
     }
 
     func createRoom() {
-        errorMessage = ""
         let params: [String: Any] = [
             "roomType": selectedRoom.type.id,
             "title": roomName,
@@ -39,8 +38,7 @@ class CreateRoomViewModel: ObservableObject {
            
             guard let room = response?.result, error == nil else {
                 self.errorMessage = error!.localizedDescription
-                DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
-                    self.errorMessage = ""
+                DispatchQueue.main.async {
                     self.isCreatingRoom = false
                 }
                 return
@@ -51,13 +49,17 @@ class CreateRoomViewModel: ObservableObject {
                     guard let self else { return }
                     addTagsToRoom(room: room) { [weak self] in
                         guard let self else { return }
-                        self.isCreatingRoom = false
-                        self.dismissNavStack = true
+                        DispatchQueue.main.async {
+                            self.isCreatingRoom = false
+                            self.dismissNavStack = true
+                        }
                     }
                 }
             } else {
-                self.isCreatingRoom = false
-                self.dismissNavStack = true
+                DispatchQueue.main.async {
+                    self.isCreatingRoom = false
+                    self.dismissNavStack = true
+                }
             }
         }
     }

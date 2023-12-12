@@ -22,5 +22,27 @@ enum LinkLifeTimeOption: String, CaseIterable {
 }
 
 final class LinkLifeTimeViewModel: ObservableObject {
-    @Published var selectedOption: LinkLifeTimeOption = .sevenDays //TODO: -
+    @Published var cellModels: [SelectableLabledCellModel] = []
+    private var selectedOption: LinkLifeTimeOption = .sevenDays
+
+    init() {
+        updateCellModels()
+    }
+
+    private func updateCellModels() {
+        cellModels = LinkLifeTimeOption.allCases.map { option in
+            SelectableLabledCellModel(
+                title: option.localized,
+                isSelected: selectedOption == option,
+                onTapAction: { [weak self] in
+                    self?.selectOption(option)
+                }
+            )
+        }
+    }
+    
+    private func selectOption(_ option: LinkLifeTimeOption) {
+        selectedOption = option
+        updateCellModels()
+    }
 }

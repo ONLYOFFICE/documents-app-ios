@@ -68,15 +68,24 @@ struct CreateRoomView: View {
         })
     }
 
+    @ViewBuilder
     private var imagePicker: some View {
-        RoundedRectangle(cornerRadius: 8)
-            .frame(width: 48, height: 48)
-            .foregroundColor(Color(Asset.Colors.fillEditorsDocs.color))
-            .overlay(
-                Image(systemName: "photo")
-                    .frame(width: 24, height: 24)
-                    .foregroundColor(.blue)
-            )
+        if let image = viewModel.selectedImage {
+            Image(uiImage: image)
+                .resizable()
+                .aspectRatio(contentMode: .fill)
+                .frame(width: 48, height: 48)
+                .cornerRadius(8)
+        } else {
+            RoundedRectangle(cornerRadius: 8)
+                .frame(width: 48, height: 48)
+                .foregroundColor(Color(Asset.Colors.fillEditorsDocs.color))
+                .overlay(
+                    Image(systemName: "photo")
+                        .frame(width: 24, height: 24)
+                        .foregroundColor(.blue)
+                )
+        }
     }
 
     private var roomNameTextField: some View {

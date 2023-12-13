@@ -34,6 +34,7 @@ class OnlyofficeAPI {
         public static let operationDelete = "api/\(version)/files/fileops/delete"
         public static let emptyTrash = "api/\(version)/files/fileops/emptytrash"
         public static let thirdParty = "api/\(version)/files/thirdparty"
+        public static let logos = "api/\(version)/files/logos"
         public static let thirdPartyCapabilities = "api/\(version)/files/thirdparty/capabilities"
         public static let insertFile = "api/\(version)/files/%@/insert"
         public static let uploadFile = "api/\(version)/files/%@/upload"
@@ -62,6 +63,7 @@ class OnlyofficeAPI {
         public static let roomUnarchive = room.appendingPathComponent("unarchive")
         public static let tags = "api/\(version)/files/tags"
         public static let roomsTags = room.appendingPathComponent("tags")
+        public static let roomLogo = room.appendingPathComponent("logo")
         
         enum Forlder {
             public static let root = "@root"
@@ -176,6 +178,10 @@ class OnlyofficeAPI {
             static func unarchive(folder: ASCFolder) -> Endpoint<OnlyofficeResponse<ASCFolder>> {
                 return Endpoint<OnlyofficeResponse<ASCFolder>>.make(String(format: Path.roomUnarchive, folder.id), .put)
             }
+            
+            static func setLogo(folder: ASCFolder) -> Endpoint<OnlyofficeResponse<ASCFile>> {
+                return Endpoint<OnlyofficeResponse<ASCFolder>>.make(String(format: Path.roomLogo, folder.id), .post)
+            }
         }
 
         // MARK: Files
@@ -264,6 +270,11 @@ class OnlyofficeAPI {
         // MARK: Uploads
 
         enum Uploads {
+            
+            static func logos() -> Endpoint<OnlyofficeResponseCodable<LogoUploadResult>> {
+                Endpoint<OnlyofficeResponseBase>.make(Path.logos, .post)
+            }
+            
             static func upload(in path: String) -> Endpoint<OnlyofficeResponse<ASCFile>> {
                 return Endpoint<OnlyofficeResponse<ASCFile>>.make(String(format: Path.uploadFile, path), .post)
             }

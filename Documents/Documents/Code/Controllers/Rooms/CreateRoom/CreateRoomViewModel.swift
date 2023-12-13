@@ -8,6 +8,7 @@
 
 import Foundation
 import Combine
+import UIKit
 
 class CreateRoomViewModel: ObservableObject {
     @Published var roomName: String = ""
@@ -15,6 +16,7 @@ class CreateRoomViewModel: ObservableObject {
     @Published var errorMessage: String?
     @Published var dismissNavStack = false
     @Published var selectedRoom: Room!
+    @Published var selectedImage: UIImage?
     @Published var tags: Set<String> = []
     
     lazy var menuItems: [MenuViewItem] = makeImageMenuItems()
@@ -44,22 +46,28 @@ class CreateRoomViewModel: ObservableObject {
                 return
             }
             
+            let dispatchGroup = DispatchGroup()
+            
             if !tags.isEmpty {
-                createTags() { [weak self] in
-                    guard let self else { return }
-                    addTagsToRoom(room: room) { [weak self] in
+                dispatchGroup.enter()
+                createTags {
+                    self.addTagsToRoom(room: room) { [weak self] in
                         guard let self else { return }
-                        DispatchQueue.main.async {
-                            self.isCreatingRoom = false
-                            self.dismissNavStack = true
-                        }
+                        dispatchGroup.leave()
                     }
                 }
-            } else {
-                DispatchQueue.main.async {
-                    self.isCreatingRoom = false
-                    self.dismissNavStack = true
+            }
+            if selectedImage != nil {
+                dispatchGroup.enter()
+                uploadImage(room: room) {
+                    dispatchGroup.leave()
                 }
+            }
+            
+            dispatchGroup.notify(queue: .main) { [weak self] in
+                guard let self else { return }
+                self.isCreatingRoom = false
+                self.dismissNavStack = true
             }
         }
     }
@@ -90,16 +98,108 @@ class CreateRoomViewModel: ObservableObject {
             .init(text: NSLocalizedString("Choose Files", comment: ""), systemImageName: "folder", action: imageFromFilesAction),
         ]
     }
-
-    func imageFromLibraryAction() {
-        print(#function)
+    
+    private func uploadImage(room: ASCFolder, completion: @escaping () -> Void) {
+        guard let image = selectedImage,
+              let imageData = image.jpegData(compressionQuality: 0.95)
+        else { return }
+        
+        let imageWidth = Int(image.size.width)
+        let imageHeight = Int(image.size.height)
+        let fileName = "\(roomName).jpg"
+        let mimeType = "image/jpeg"
+        
+        networkService.request(OnlyofficeAPI.Endpoints.Uploads.logos()) { multipartFormData in
+            multipartFormData.append(imageData, withName: "file", fileName: fileName, mimeType: mimeType)
+        } _: { response, progress, error in
+            if let logoUpdateResult = response?.result {
+                self.setImage(to: room, logo: logoUpdateResult, imageSize: CGSize(width: imageWidth, height: imageHeight), completion: completion)
+            }
+            if error != nil {
+                completion()
+            }
+        }
     }
 
-    func imageFromCameraAction() {
-        print(#function)
+    private func setImage(to room: ASCFolder, logo: LogoUploadResult, imageSize: CGSize, completion: @escaping () -> Void) {
+        guard logo.success else {
+            completion()
+            return
+        }
+        
+        let params: [String: Any] = [
+            "tmpFile": logo.tmpFileUrl,
+            "x": 0,
+            "y": 0,
+            "width": imageSize.width,
+            "height": imageSize.height
+        ]
+        
+        networkService.request(OnlyofficeAPI.Endpoints.Rooms.setLogo(folder: room), params) { _, _ in
+            completion()
+        }
     }
 
-    func imageFromFilesAction() {
-        print(#function)
+    private func imageFromLibraryAction() {
+        let attachManager = ASCAttachmentManager()
+        let temporaryFolderName = UUID().uuidString
+        guard let topController = topController() else { return }
+        attachManager.storeFromLibrary(in: topController, to: temporaryFolderName) { [weak self] url, error in
+            guard
+                let self = self,
+                let url = url
+            else {
+                self?.errorMessage = error?.localizedDescription
+                return
+            }
+            self.selectedImage = UIImage(contentsOfFile: url.path)
+            attachManager.cleanup(for: temporaryFolderName)
+        }
+    }
+    
+    private func imageFromCameraAction() {
+        let attachManager = ASCAttachmentManager()
+        let temporaryFolderName = UUID().uuidString
+        guard let topController = topController() else { return }
+        attachManager.storeFromCamera(in: topController, to: temporaryFolderName) { [weak self] url, error in
+            guard
+                let self = self,
+                let url = url
+            else {
+                self?.errorMessage = error?.localizedDescription
+                return
+            }
+            
+            self.selectedImage = UIImage(contentsOfFile: url.path)
+            attachManager.cleanup(for: temporaryFolderName)
+        }
+    }
+    
+    private func imageFromFilesAction() {
+        let attachManager = ASCAttachmentManager()
+        let temporaryFolderName = UUID().uuidString
+        guard let topController = topController() else { return }
+        attachManager.storeFromFiles(in: topController, to: temporaryFolderName) { [weak self] url, error in
+            guard
+                let self = self,
+                let url = url
+            else {
+                self?.errorMessage = error?.localizedDescription
+                return
+            }
+            
+            self.selectedImage = UIImage(contentsOfFile: url.path)
+            attachManager.cleanup(for: temporaryFolderName)
+        }
+    }
+    
+    private func topController() -> UIViewController? {
+        if var topController = UIWindow.keyWindow?.rootViewController {
+            while let presentedViewController = topController.presentedViewController {
+                topController = presentedViewController
+            }
+            return topController
+        }
+        return nil
     }
 }

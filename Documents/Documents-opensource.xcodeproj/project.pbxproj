@@ -1796,10 +1796,6 @@
 		E8AC0EFF2B07D5CA00B8EEA2 /* Rooms */ = {
 			isa = PBXGroup;
 			children = (
-				E80574562B1A5C6400AAFCF0 /* Views */,
-				E80574532B18EE3100AAFCF0 /* Models */,
-				E8AC0F002B07D5EE00B8EEA2 /* ChooseRoom */,
-				E8AC0F0A2B0E5ED800B8EEA2 /* CreateRoom */,
 				E8BE285B2B1DE136007F5942 /* CreateRoomFlow */,
 			);
 			path = Rooms;
@@ -1847,6 +1843,10 @@
 		E8BE285B2B1DE136007F5942 /* CreateRoomFlow */ = {
 			isa = PBXGroup;
 			children = (
+				E80574562B1A5C6400AAFCF0 /* Views */,
+				E80574532B18EE3100AAFCF0 /* Models */,
+				E8AC0F002B07D5EE00B8EEA2 /* ChooseRoom */,
+				E8AC0F0A2B0E5ED800B8EEA2 /* CreateRoom */,
 				E8BE285C2B1DE181007F5942 /* CreateRoomRouteView.swift */,
 			);
 			path = CreateRoomFlow;

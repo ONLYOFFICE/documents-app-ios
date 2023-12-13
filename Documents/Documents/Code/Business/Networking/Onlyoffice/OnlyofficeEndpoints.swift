@@ -221,6 +221,10 @@ class OnlyofficeAPI {
             static func room(folder: ASCFolder, method: HTTPMethod) -> Endpoint<OnlyofficeResponseArray<OnlyofficeShare>> {
                 return Endpoint<OnlyofficeResponseArray<OnlyofficeShare>>.make(String(format: Path.shareRoom, folder.id), method)
             }
+
+            static func inviteRequest(folder: ASCFolder, method: HTTPMethod) -> Endpoint<OnlyofficeResponse<OnlyofficeInviteRequestModel>> {
+                return Endpoint<OnlyofficeResponse<OnlyofficeInviteRequestModel>>.make(String(format: Path.shareRoom, folder.id), method)
+            }
         }
 
         // MARK: Operations

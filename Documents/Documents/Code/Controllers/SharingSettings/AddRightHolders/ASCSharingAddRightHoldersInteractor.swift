@@ -132,7 +132,7 @@ class ASCSharingAddRightHoldersInteractor: ASCSharingAddRightHoldersBusinessLogi
             handler?(.error, nil, ASCProviderError(msg: NSLocalizedString("Invalid folder ID.", comment: "")))
             return
         }
-        let access: Int = 0
+        let access: ASCShareAccess = .none
         let ownerUserId: String = folder.createdBy?.userId ?? ""
 
         let parameters: [String: Any] = [
@@ -140,21 +140,16 @@ class ASCSharingAddRightHoldersInteractor: ASCSharingAddRightHoldersBusinessLogi
             "folderIds": [folder.id],
         ]
 
-        let userAccess: [String: Any] = [
-            "id": ownerUserId,
-            "access": access,
-        ]
-
-        let invitations: [String: Any] = [
-            "invitations": [userAccess],
-        ]
+        let inviteRequestModel = OnlyofficeInviteRequestModel()
+        inviteRequestModel.notify = false
+        inviteRequestModel.invitations = [.init(id: ownerUserId, access: access)]
 
         OnlyofficeApiClient.request(OnlyofficeAPI.Endpoints.Sharing.changeOwner(), parameters) { response, error in
             if error != nil {
                 handler?(.error, nil, ASCProviderError(msg: NSLocalizedString("Couldn't change the owner.", comment: "")))
                 return
             } else {
-                OnlyofficeApiClient.request(OnlyofficeAPI.Endpoints.Sharing.room(folder: folder, method: .put), invitations) { result, error in
+                OnlyofficeApiClient.request(OnlyofficeAPI.Endpoints.Sharing.inviteRequest(folder: folder, method: .put), inviteRequestModel.toJSON()) { result, error in
                     if error != nil {
                         handler?(.error, nil, ASCProviderError(msg: NSLocalizedString("Couldn't leave the room.", comment: "")))
                     } else {

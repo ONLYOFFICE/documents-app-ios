@@ -1407,18 +1407,13 @@ class ASCOnlyofficeProvider: ASCFileProviderProtocol & ASCSortableFileProviderPr
         handler?(.begin, nil, nil)
 
         let userId = user?.userId ?? ""
-        let access: Int = 0
+        let access: ASCShareAccess = .none
 
-        let userAccess: [String: Any] = [
-            "id": userId,
-            "access": access,
-        ]
+        let inviteRequestModel = OnlyofficeInviteRequestModel()
+        inviteRequestModel.notify = false
+        inviteRequestModel.invitations = [.init(id: userId, access: access)]
 
-        let invitations: [String: Any] = [
-            "invitations": [userAccess],
-        ]
-
-        apiClient.request(OnlyofficeAPI.Endpoints.Sharing.room(folder: folder, method: .put), invitations) {
+        apiClient.request(OnlyofficeAPI.Endpoints.Sharing.inviteRequest(folder: folder, method: .put), inviteRequestModel.toJSON()) {
             result, error in
             if error != nil {
                 handler?(.error, nil, ASCProviderError(msg: NSLocalizedString("Couldn't leave the room.", comment: "")))

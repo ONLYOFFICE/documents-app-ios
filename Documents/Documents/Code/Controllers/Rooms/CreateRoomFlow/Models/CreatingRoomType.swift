@@ -56,4 +56,15 @@ enum CreatingRoomType: CaseIterable {
             return Asset.Images.roomCustom.image
         }
     }
+    
+    var ascRoomType: ASCRoomType {
+        switch self {
+        case .collaboration:
+            return .colobaration
+        case .publicRoom:
+            return .public
+        case .custom:
+            return .custom
+        }
+    }
 }

@@ -31,6 +31,7 @@
 		E83125D22B276A7E006016F1 /* MBProgressHUDView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E83125D12B276A7E006016F1 /* MBProgressHUDView.swift */; };
 		E83125D42B28B20A006016F1 /* ASCAttachmentManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E83125D32B28B209006016F1 /* ASCAttachmentManager.swift */; };
 		E83125D62B29C2F4006016F1 /* LogoUploadResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = E83125D52B29C2F3006016F1 /* LogoUploadResult.swift */; };
+		E83125D92B29F160006016F1 /* NetworkCreatingRoomService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E83125D82B29F160006016F1 /* NetworkCreatingRoomService.swift */; };
 		E8AC0F032B07D63600B8EEA2 /* RoomSelectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8AC0F022B07D63600B8EEA2 /* RoomSelectionView.swift */; };
 		E8AC0F052B07D77000B8EEA2 /* RoomSelectionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8AC0F042B07D77000B8EEA2 /* RoomSelectionViewModel.swift */; };
 		E8AC0F072B0D0B7500B8EEA2 /* View+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8AC0F062B0D0B7500B8EEA2 /* View+Extensions.swift */; };
@@ -616,6 +617,7 @@
 		E83125D12B276A7E006016F1 /* MBProgressHUDView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MBProgressHUDView.swift; sourceTree = "<group>"; };
 		E83125D32B28B209006016F1 /* ASCAttachmentManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASCAttachmentManager.swift; sourceTree = "<group>"; };
 		E83125D52B29C2F3006016F1 /* LogoUploadResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogoUploadResult.swift; sourceTree = "<group>"; };
+		E83125D82B29F160006016F1 /* NetworkCreatingRoomService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkCreatingRoomService.swift; sourceTree = "<group>"; };
 		E8AC0F022B07D63600B8EEA2 /* RoomSelectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoomSelectionView.swift; sourceTree = "<group>"; };
 		E8AC0F042B07D77000B8EEA2 /* RoomSelectionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoomSelectionViewModel.swift; sourceTree = "<group>"; };
 		E8AC0F062B0D0B7500B8EEA2 /* View+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+Extensions.swift"; sourceTree = "<group>"; };
@@ -1793,6 +1795,14 @@
 			path = Representable;
 			sourceTree = "<group>";
 		};
+		E83125D72B29F13C006016F1 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				E83125D82B29F160006016F1 /* NetworkCreatingRoomService.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
 		E8AC0EFF2B07D5CA00B8EEA2 /* Rooms */ = {
 			isa = PBXGroup;
 			children = (
@@ -1843,6 +1853,7 @@
 		E8BE285B2B1DE136007F5942 /* CreateRoomFlow */ = {
 			isa = PBXGroup;
 			children = (
+				E83125D72B29F13C006016F1 /* Services */,
 				E80574562B1A5C6400AAFCF0 /* Views */,
 				E80574532B18EE3100AAFCF0 /* Models */,
 				E8AC0F002B07D5EE00B8EEA2 /* ChooseRoom */,
@@ -3505,6 +3516,7 @@
 				FC5943E12AE6D2F3001BA2F9 /* ASCEditorConfigurationProtocol.swift in Sources */,
 				E8AC0F0E2B0FB8B000B8EEA2 /* CreateRoomViewModel.swift in Sources */,
 				FC70810F2812E2260057FCD2 /* OnedriveTokenAdapter.swift in Sources */,
+				E83125D92B29F160006016F1 /* NetworkCreatingRoomService.swift in Sources */,
 				1D8CFC39290D7E7400F71071 /* InviteRigthHoldersByEmailsViewController.swift in Sources */,
 				FC7081102812E2260057FCD2 /* ASCSharingOptionsViewController.swift in Sources */,
 				E8AC0F112B14F2CF00B8EEA2 /* ViewState.swift in Sources */,

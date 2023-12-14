@@ -11,6 +11,9 @@ import Combine
 import UIKit
 
 class CreateRoomViewModel: ObservableObject {
+    
+    // MARK: - Published vars
+    
     @Published var roomName: String = ""
     @Published var isCreatingRoom = false
     @Published var errorMessage: String?
@@ -19,13 +22,21 @@ class CreateRoomViewModel: ObservableObject {
     @Published var selectedImage: UIImage?
     @Published var tags: Set<String> = []
     
+    // MARK: - Public vars
+    
     lazy var menuItems: [MenuViewItem] = makeImageMenuItems()
+    
+    // MARK: - Private var
 
     private lazy var creatingRoomService: CreatingRoomService = NetworkCreatingRoomServiceImp()
+    
+    // MARK: - Init
 
     init(selectedRoom: Room) {
         self.selectedRoom = selectedRoom
     }
+    
+    // MARK: - Public func
 
     func createRoom() {
         isCreatingRoom = true
@@ -45,8 +56,10 @@ class CreateRoomViewModel: ObservableObject {
             self?.isCreatingRoom = false
         }
     }
+    
+    // MARK: - Private func
 
-    func makeImageMenuItems() -> [MenuViewItem] {
+    private func makeImageMenuItems() -> [MenuViewItem] {
         [
             .init(text: NSLocalizedString("Photo Library", comment: ""), systemImageName: "photo", action: imageFromLibraryAction),
             .init(text: NSLocalizedString("Take Photo", comment: ""), systemImageName: "camera", action: imageFromCameraAction),
@@ -59,14 +72,7 @@ class CreateRoomViewModel: ObservableObject {
         let temporaryFolderName = UUID().uuidString
         guard let topController = topController() else { return }
         attachManager.storeFromLibrary(in: topController, to: temporaryFolderName) { [weak self] url, error in
-            guard
-                let self = self,
-                let url = url
-            else {
-                self?.errorMessage = error?.localizedDescription
-                return
-            }
-            self.selectedImage = UIImage(contentsOfFile: url.path)
+            self?.handleImageSelection(url, error)
             attachManager.cleanup(for: temporaryFolderName)
         }
     }
@@ -76,15 +82,7 @@ class CreateRoomViewModel: ObservableObject {
         let temporaryFolderName = UUID().uuidString
         guard let topController = topController() else { return }
         attachManager.storeFromCamera(in: topController, to: temporaryFolderName) { [weak self] url, error in
-            guard
-                let self = self,
-                let url = url
-            else {
-                self?.errorMessage = error?.localizedDescription
-                return
-            }
-            
-            self.selectedImage = UIImage(contentsOfFile: url.path)
+            self?.handleImageSelection(url, error)
             attachManager.cleanup(for: temporaryFolderName)
         }
     }
@@ -94,17 +92,17 @@ class CreateRoomViewModel: ObservableObject {
         let temporaryFolderName = UUID().uuidString
         guard let topController = topController() else { return }
         attachManager.storeFromFiles(in: topController, to: temporaryFolderName) { [weak self] url, error in
-            guard
-                let self = self,
-                let url = url
-            else {
-                self?.errorMessage = error?.localizedDescription
-                return
-            }
-            
-            self.selectedImage = UIImage(contentsOfFile: url.path)
+            self?.handleImageSelection(url, error)
             attachManager.cleanup(for: temporaryFolderName)
         }
+    }
+    
+    private func handleImageSelection(_ url: URL?, _ error: Error?) {
+        guard let url = url else {
+            errorMessage = error?.localizedDescription
+            return
+        }
+        selectedImage = UIImage(contentsOfFile: url.path)
     }
     
     private func topController() -> UIViewController? {

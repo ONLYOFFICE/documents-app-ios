@@ -56,7 +56,7 @@ enum CreatingRoomType: CaseIterable {
             return ascRoomType.image
         }
     }
-    
+
     var ascRoomType: ASCRoomType {
         switch self {
         case .collaboration:

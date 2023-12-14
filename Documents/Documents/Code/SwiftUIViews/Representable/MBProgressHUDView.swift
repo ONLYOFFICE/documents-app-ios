@@ -6,8 +6,8 @@
 //  Copyright © 2023 Ascensio System SIA. All rights reserved.
 //
 
-import SwiftUI
 import MBProgressHUD
+import SwiftUI
 
 enum MBProgressHUDEndStatus {
     case success

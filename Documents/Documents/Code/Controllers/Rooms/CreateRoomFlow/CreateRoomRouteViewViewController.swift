@@ -16,7 +16,7 @@ class CreateRoomRouteViewViewController: UIHostingController<CreateRoomRouteView
     required init?(coder aDecoder: NSCoder) {
         super.init(
             coder: aDecoder,
-            rootView: CreateRoomRouteView() { _ in }
+            rootView: CreateRoomRouteView { _ in }
         )
     }
 

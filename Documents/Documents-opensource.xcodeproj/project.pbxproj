@@ -3301,8 +3301,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "
-";
+			shellScript = "\"${PODS_ROOT}/SwiftFormat/CommandLineTool/swiftformat\" \"$SRCROOT\" \\\n--swiftversion ${SWIFT_VERSION} \\\n--exclude Pods,**/Generated \\\n--lintonly unusedArguments,redundantType\n";
 		};
 		FC7082462812E2260057FCD2 /* Increment Build Number */ = {
 			isa = PBXShellScriptBuildPhase;

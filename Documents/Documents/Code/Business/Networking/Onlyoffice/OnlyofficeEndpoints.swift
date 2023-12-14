@@ -66,7 +66,7 @@ class OnlyofficeAPI {
         public static let tags = "api/\(version)/files/tags"
         public static let roomsTags = room.appendingPathComponent("tags")
         public static let roomLogo = room.appendingPathComponent("logo")
-        
+
         enum Forlder {
             public static let root = "@root"
             public static let my = "@my"
@@ -142,15 +142,14 @@ class OnlyofficeAPI {
                 return Endpoint<OnlyofficeResponse<ASCFile>>.make(String(format: Path.files, folderId), .get, URLEncoding.queryString)
             }
         }
-        
+
         // MARK: Tags
-        
+
         enum Tags {
-            
             static func create() -> Endpoint<OnlyofficeResponse<ASCFolder>> {
                 return Endpoint<OnlyofficeResponse<OnlyofficeResponseBase>>.make(Path.tags, .post)
             }
-            
+
             static func addToRoom(folder: ASCFolder) -> Endpoint<OnlyofficeResponse<ASCFolder>> {
                 return Endpoint<OnlyofficeResponse<OnlyofficeResponseBase>>.make(String(format: Path.roomsTags, folder.id), .put)
             }
@@ -180,7 +179,7 @@ class OnlyofficeAPI {
             static func unarchive(folder: ASCFolder) -> Endpoint<OnlyofficeResponse<ASCFolder>> {
                 return Endpoint<OnlyofficeResponse<ASCFolder>>.make(String(format: Path.roomUnarchive, folder.id), .put)
             }
-            
+
             static func setLogo(folder: ASCFolder) -> Endpoint<OnlyofficeResponse<ASCFolder>> {
                 return Endpoint<OnlyofficeResponse<ASCFolder>>.make(String(format: Path.roomLogo, folder.id), .post)
             }
@@ -274,11 +273,10 @@ class OnlyofficeAPI {
         // MARK: Uploads
 
         enum Uploads {
-            
             static func logos() -> Endpoint<OnlyofficeResponseCodable<LogoUploadResult>> {
                 Endpoint<OnlyofficeResponseBase>.make(Path.logos, .post)
             }
-            
+
             static func upload(in path: String) -> Endpoint<OnlyofficeResponse<ASCFile>> {
                 return Endpoint<OnlyofficeResponse<ASCFile>>.make(String(format: Path.uploadFile, path), .post)
             }

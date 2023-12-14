@@ -11,7 +11,7 @@ import Foundation
 struct LogoUploadResult: Codable {
     var success: Bool
     var tmpFileUrl: String
-    
+
     enum CodingKeys: String, CodingKey {
         case success
         case tmpFileUrl = "data"

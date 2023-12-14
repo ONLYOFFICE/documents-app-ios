@@ -29,6 +29,12 @@
 "<p>You must have a paid version of the player to use this service.</p><p>If you have activated double authentication, please generate a CDM application from the Infomaniak manager. <a href=\"https://www.infomaniak.com/en/support/faq/1940/enable-two-step-verification\">More...</a></p>" = "<p>මෙම සේවාව භාවිතයට ඔබ සතුව වාදකයේ ගෙවන අනුවාදයක් තිබිය යුතුය.</p><p>ඔබ ද්විත්ව සත්‍යාපනය සක්‍රිය කර ඇත්නම්, කරුණාකර Infomaniak කළමනාකරණය හරහා CDM යෙදුමක් උත්පාදනය කරන්න. <a href=\"https://www.infomaniak.com/en/support/faq/1940/enable-two-step-verification\">තවත්...</a></p>";
 
 /* No comment provided by engineer. */
+"Сould not download file." = "ගොනුව බාගැනීමට නොහැකි විය.";
+
+/* No comment provided by engineer. */
+"Сould not upload file." = "උඩුගත කිරීමට නොහැකි විය.";
+
+/* No comment provided by engineer. */
 "A file with a similar name already exists in the document directory on the device." = "උපාංගයේ ලේඛන නාමාවලියෙහි සමාන නමක් සහිත ගොනුවක් දැනටමත් පවතී.";
 
 /* No comment provided by engineer. */
@@ -196,12 +202,6 @@
 
 /* No comment provided by engineer. */
 "Check your internet connection" = "ඔබගේ අන්තර්ජාල සම්බන්ධතාවය පරීක්‍ෂා කරන්න";
-
-/* No comment provided by engineer. */
-"Choose Code Page" = "කේත පිටුව තෝරන්න";
-
-/* No comment provided by engineer. */
-"Choose CSV Options" = "CSV විකල්ප තෝරන්න";
 
 /* Caption of the processing */
 "Cleanup" = "ශුද්ධ කිරීම";
@@ -428,9 +428,6 @@
 /* Caption of the processing */
 "Deleting" = "මැකෙමින්";
 
-/* No comment provided by engineer. */
-"Delimiter" = "පරිසීමකය";
-
 /* Share status */
 "Deny Access" = "ප්‍රවේශය ප්‍රතික්‍ෂේපය";
 
@@ -512,9 +509,6 @@
 
 /* No comment provided by engineer. */
 "Enable if you want to receive notifications from the %@" = "%@ වෙතින් දැනුම්දීම් ලැබීමට අවශ්‍ය නැතිනම් සබල කරන්න";
-
-/* No comment provided by engineer. */
-"Encoding" = "ආකේතනය";
 
 /* Presentation Viewer */
 "End Slide Show" = "චිත්‍රකාඩ දැක්ම නිමාව";
@@ -1228,9 +1222,6 @@
 "Sort" = "වර්ගනය";
 
 /* No comment provided by engineer. */
-"Space" = "පරතරය";
-
-/* No comment provided by engineer. */
 "Spreadsheet" = "පැතුරුම්පත";
 
 /* Default title of sample document */
@@ -1247,9 +1238,6 @@
 
 /* No comment provided by engineer. */
 "Switch" = "මාරුව";
-
-/* No comment provided by engineer. */
-"Tab" = "පටිත්ත";
 
 /* No comment provided by engineer. */
 "Take a Picture" = "ඡායාරූපයක් අරගන්න";
@@ -1556,10 +1544,4 @@
 
 /* Data units */
 "Zero bytes" = "බයිට ශූන්‍යයි";
-
-/* No comment provided by engineer. */
-"Сould not download file." = "ගොනුව බාගැනීමට නොහැකි විය.";
-
-/* No comment provided by engineer. */
-"Сould not upload file." = "උඩුගත කිරීමට නොහැකි විය.";
 

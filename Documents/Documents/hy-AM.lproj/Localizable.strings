@@ -29,6 +29,12 @@
 "<p>You must have a paid version of the player to use this service.</p><p>If you have activated double authentication, please generate a CDM application from the Infomaniak manager. <a href=\"https://www.infomaniak.com/en/support/faq/1940/enable-two-step-verification\">More...</a></p>" = "<p>Այս ծառայությունից օգտվելու համար դուք պետք է ունենաք նվագարկչի վճարովի տարբերակ:</p><p> Եթե դուք ակտիվացրել եք կրկնակի նույնականացում, խնդրում ենք ստեղծել CDM հավելված Infomaniak մենեջերից: <a href=\"https://www.infomaniak.com/en/support/faq/1940/enable-two-step-verification\">Ավելին...</a></p>";
 
 /* No comment provided by engineer. */
+"Сould not download file." = "Չհաջողվեց ներբեռնել ֆայլը:";
+
+/* No comment provided by engineer. */
+"Сould not upload file." = "Չհաջողվեց վերբեռնել ֆայլը:";
+
+/* No comment provided by engineer. */
 "A file with a similar name already exists in the document directory on the device." = "Նման անունով ֆայլ արդեն գոյություն ունի սարքի փաստաթղթերի գրացուցակում:";
 
 /* No comment provided by engineer. */
@@ -196,12 +202,6 @@
 
 /* No comment provided by engineer. */
 "Check your internet connection" = "Ստուգեք ձեր ինտերնետային կապը";
-
-/* No comment provided by engineer. */
-"Choose Code Page" = "Ընտրեք կոդի էջը";
-
-/* No comment provided by engineer. */
-"Choose CSV Options" = "Ընտրեք CSV Ընտրանքներ";
 
 /* Caption of the processing */
 "Cleanup" = "Մաքրում";
@@ -428,9 +428,6 @@
 /* Caption of the processing */
 "Deleting" = "Ջնջվում է";
 
-/* No comment provided by engineer. */
-"Delimiter" = "Սահմանազատող";
-
 /* Share status */
 "Deny Access" = "Մերժել մուտքը";
 
@@ -512,9 +509,6 @@
 
 /* No comment provided by engineer. */
 "Enable if you want to receive notifications from the %@" = "Միացնել, եթե ցանկանում եք ծանուցումներ ստանալ %@-ից";
-
-/* No comment provided by engineer. */
-"Encoding" = "Կոդավորում";
 
 /* Presentation Viewer */
 "End Slide Show" = "Ավարտել սլայդ շոուն";
@@ -1228,9 +1222,6 @@
 "Sort" = "Դասավորել";
 
 /* No comment provided by engineer. */
-"Space" = "Բացատ";
-
-/* No comment provided by engineer. */
 "Spreadsheet" = "Աղյուսակ";
 
 /* Default title of sample document */
@@ -1247,9 +1238,6 @@
 
 /* No comment provided by engineer. */
 "Switch" = "Անջատիչ";
-
-/* No comment provided by engineer. */
-"Tab" = "Ներդիր";
 
 /* No comment provided by engineer. */
 "Take a Picture" = "Լուսանկարել";
@@ -1556,10 +1544,4 @@
 
 /* Data units */
 "Zero bytes" = "Զրո բայթ";
-
-/* No comment provided by engineer. */
-"Сould not download file." = "Չհաջողվեց ներբեռնել ֆայլը:";
-
-/* No comment provided by engineer. */
-"Сould not upload file." = "Չհաջողվեց վերբեռնել ֆայլը:";
 

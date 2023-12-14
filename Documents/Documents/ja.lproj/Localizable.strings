@@ -29,6 +29,12 @@
 "<p>You must have a paid version of the player to use this service.</p><p>If you have activated double authentication, please generate a CDM application from the Infomaniak manager. <a href=\"https://www.infomaniak.com/en/support/faq/1940/enable-two-step-verification\">More...</a></p>" = "<p>本サービスをご利用いただくには、有償版のプレーヤーが必要です。</p><p>二重認証を有効にしている場合は、InfomaniakマネージャからCDMアプリケーションを生成してください。 <a href=\"https://www.infomaniak.com/en/support/faq/1940/enable-two-step-verification\">詳細情報</a></p>";
 
 /* No comment provided by engineer. */
+"Сould not download file." = "このファイルをダウンロードできませんでした。";
+
+/* No comment provided by engineer. */
+"Сould not upload file." = "ファイルをアップロードできませんでした。";
+
+/* No comment provided by engineer. */
 "A file with a similar name already exists in the document directory on the device." = "同名のファイルがすでに端末のドキュメントディレクトリに存在します。";
 
 /* No comment provided by engineer. */
@@ -196,12 +202,6 @@
 
 /* No comment provided by engineer. */
 "Check your internet connection" = "お使いのインターネット接続をご確認ください";
-
-/* No comment provided by engineer. */
-"Choose Code Page" = "コードページを選択してください";
-
-/* No comment provided by engineer. */
-"Choose CSV Options" = "CSVオプションを選択してください";
 
 /* Caption of the processing */
 "Cleanup" = "クリーンアップ";
@@ -428,9 +428,6 @@
 /* Caption of the processing */
 "Deleting" = "削除中";
 
-/* No comment provided by engineer. */
-"Delimiter" = "区切り文字";
-
 /* Share status */
 "Deny Access" = "アクセスを拒否する";
 
@@ -512,9 +509,6 @@
 
 /* No comment provided by engineer. */
 "Enable if you want to receive notifications from the %@" = "%@からの通知を受け取りたい場合は、有効にしてください";
-
-/* No comment provided by engineer. */
-"Encoding" = "符号化する";
 
 /* Presentation Viewer */
 "End Slide Show" = "スライドショーを終了する";
@@ -1228,9 +1222,6 @@
 "Sort" = "並べ替え";
 
 /* No comment provided by engineer. */
-"Space" = "間隔";
-
-/* No comment provided by engineer. */
 "Spreadsheet" = "スプレッドシート";
 
 /* Default title of sample document */
@@ -1247,9 +1238,6 @@
 
 /* No comment provided by engineer. */
 "Switch" = "スイッチ";
-
-/* No comment provided by engineer. */
-"Tab" = "タブ";
 
 /* No comment provided by engineer. */
 "Take a Picture" = "写真を撮る";
@@ -1556,10 +1544,4 @@
 
 /* Data units */
 "Zero bytes" = "0 バイト";
-
-/* No comment provided by engineer. */
-"Сould not download file." = "このファイルをダウンロードできませんでした。";
-
-/* No comment provided by engineer. */
-"Сould not upload file." = "ファイルをアップロードできませんでした。";
 

@@ -1466,16 +1466,6 @@ Hinweis: Wenn Sie das Kennwort vergessen haben, müssen Sie die App löschen und
         <target>Bitte überprüfen Sie Ihre Internetverbindung</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
-      <trans-unit id="Choose CSV Options" xml:space="preserve">
-        <source>Choose CSV Options</source>
-        <target>CSV-Optionen wählen</target>
-        <note>No comment provided by engineer.</note>
-      </trans-unit>
-      <trans-unit id="Choose Code Page" xml:space="preserve">
-        <source>Choose Code Page</source>
-        <target>Codeseite wählen</target>
-        <note>No comment provided by engineer.</note>
-      </trans-unit>
       <trans-unit id="Cleanup" xml:space="preserve">
         <source>Cleanup</source>
         <target>Bereinigung</target>
@@ -1820,11 +1810,6 @@ die das WebDAV-Protokoll verwenden.</target>
         <target>Wird gelöscht</target>
         <note>Caption of the processing</note>
       </trans-unit>
-      <trans-unit id="Delimiter" xml:space="preserve">
-        <source>Delimiter</source>
-        <target>Trennzeichen</target>
-        <note>No comment provided by engineer.</note>
-      </trans-unit>
       <trans-unit id="Deny Access" xml:space="preserve">
         <source>Deny Access</source>
         <target>Zugriff verweigern</target>
@@ -1959,11 +1944,6 @@ die das WebDAV-Protokoll verwenden.</target>
       <trans-unit id="Enable if you want to receive notifications from the %@" xml:space="preserve">
         <source>Enable if you want to receive notifications from the %@</source>
         <target> Aktivieren, wenn Sie Benachrichtigungen von %@ benötigen</target>
-        <note>No comment provided by engineer.</note>
-      </trans-unit>
-      <trans-unit id="Encoding" xml:space="preserve">
-        <source>Encoding</source>
-        <target>Codierung</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="End Slide Show" xml:space="preserve">
@@ -2290,6 +2270,10 @@ in die Zwischenablage kopiert</target>
       <trans-unit id="Link with the invitation has been sent to the mail" xml:space="preserve">
         <source>Link with the invitation has been sent to the mail</source>
         <target>Einladungslink wurde per E-Mail gesendet</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Loading..." xml:space="preserve">
+        <source>Loading...</source>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Logging in" xml:space="preserve">
@@ -3105,11 +3089,6 @@ in die Zwischenablage kopiert</target>
         <target>Sortieren</target>
         <note>Button title</note>
       </trans-unit>
-      <trans-unit id="Space" xml:space="preserve">
-        <source>Space</source>
-        <target>Leerzeichen</target>
-        <note>No comment provided by engineer.</note>
-      </trans-unit>
       <trans-unit id="Spreadsheet" xml:space="preserve">
         <source>Spreadsheet</source>
         <target>Tabelle</target>
@@ -3138,11 +3117,6 @@ in die Zwischenablage kopiert</target>
       <trans-unit id="Switch" xml:space="preserve">
         <source>Switch</source>
         <target>Umschalten</target>
-        <note>No comment provided by engineer.</note>
-      </trans-unit>
-      <trans-unit id="Tab" xml:space="preserve">
-        <source>Tab</source>
-        <target>Tab</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Take a Picture" xml:space="preserve">

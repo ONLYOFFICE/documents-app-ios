@@ -1462,16 +1462,6 @@ Observação: se você se esquecer do código de acesso, será necessário exclu
         <target>Checar sua conexão de Internet</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
-      <trans-unit id="Choose CSV Options" xml:space="preserve">
-        <source>Choose CSV Options</source>
-        <target>Escolher opções de CSV</target>
-        <note>No comment provided by engineer.</note>
-      </trans-unit>
-      <trans-unit id="Choose Code Page" xml:space="preserve">
-        <source>Choose Code Page</source>
-        <target>Escolher página do código</target>
-        <note>No comment provided by engineer.</note>
-      </trans-unit>
       <trans-unit id="Cleanup" xml:space="preserve">
         <source>Cleanup</source>
         <target>Limpar</target>
@@ -1816,11 +1806,6 @@ outros que usam o protocolo WebDAV.</target>
         <target>Excluindo</target>
         <note>Caption of the processing</note>
       </trans-unit>
-      <trans-unit id="Delimiter" xml:space="preserve">
-        <source>Delimiter</source>
-        <target>Delimitador</target>
-        <note>No comment provided by engineer.</note>
-      </trans-unit>
       <trans-unit id="Deny Access" xml:space="preserve">
         <source>Deny Access</source>
         <target>Negar acesso</target>
@@ -1955,11 +1940,6 @@ outros que usam o protocolo WebDAV.</target>
       <trans-unit id="Enable if you want to receive notifications from the %@" xml:space="preserve">
         <source>Enable if you want to receive notifications from the %@</source>
         <target>Ative se você quiser receber notificações do %@</target>
-        <note>No comment provided by engineer.</note>
-      </trans-unit>
-      <trans-unit id="Encoding" xml:space="preserve">
-        <source>Encoding</source>
-        <target>Codificação</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="End Slide Show" xml:space="preserve">
@@ -2285,6 +2265,10 @@ to the clipboard</source>
       <trans-unit id="Link with the invitation has been sent to the mail" xml:space="preserve">
         <source>Link with the invitation has been sent to the mail</source>
         <target>O link com o convite foi enviado para o e-mail</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Loading..." xml:space="preserve">
+        <source>Loading...</source>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Logging in" xml:space="preserve">
@@ -3100,11 +3084,6 @@ Se o problema persistir, entre em contato conosco e mencione este código de err
         <target>Ordenar por</target>
         <note>Button title</note>
       </trans-unit>
-      <trans-unit id="Space" xml:space="preserve">
-        <source>Space</source>
-        <target>Espaço</target>
-        <note>No comment provided by engineer.</note>
-      </trans-unit>
       <trans-unit id="Spreadsheet" xml:space="preserve">
         <source>Spreadsheet</source>
         <target>Planilha</target>
@@ -3133,11 +3112,6 @@ Se o problema persistir, entre em contato conosco e mencione este código de err
       <trans-unit id="Switch" xml:space="preserve">
         <source>Switch</source>
         <target>Alternar</target>
-        <note>No comment provided by engineer.</note>
-      </trans-unit>
-      <trans-unit id="Tab" xml:space="preserve">
-        <source>Tab</source>
-        <target>Tab</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Take a Picture" xml:space="preserve">

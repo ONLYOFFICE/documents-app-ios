@@ -26,7 +26,7 @@ struct CreateRoomView: View {
         })
         .navigationBarTitle(Text(NSLocalizedString("Create room", comment: "")), displayMode: .inline)
         .navigationBarItems(
-            trailing: Button("Create") {
+            trailing: Button(NSLocalizedString("Create", comment: "")) {
                 viewModel.createRoom()
             }
             .disabled(viewModel.roomName.isEmpty || viewModel.isCreatingRoom)
@@ -36,7 +36,7 @@ struct CreateRoomView: View {
         )
         .alert(item: $viewModel.errorMessage) { errorMessage in
             Alert(
-                title: Text("Error"),
+                title: Text(NSLocalizedString("Error", comment: "")),
                 message: Text(errorMessage),
                 dismissButton: .default(Text("OK"), action: {
                     viewModel.errorMessage = nil
@@ -95,7 +95,7 @@ struct CreateRoomView: View {
     }
 
     private var roomNameTextField: some View {
-        TextField("Room name", text: $viewModel.roomName)
+        TextField(NSLocalizedString("Room name", comment: ""), text: $viewModel.roomName)
             .padding()
             .background(Color.white)
             .disabled(viewModel.isCreatingRoom)

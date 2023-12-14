@@ -1,9 +1,6 @@
 /* Bundle name */
 "CFBundleName" = "Документы";
 
-/* (No Commment) */
-"CFBundleDisplayName" = "Документы";
-
 /* (No Comment) */
 "New Document" = "Новый документ";
 

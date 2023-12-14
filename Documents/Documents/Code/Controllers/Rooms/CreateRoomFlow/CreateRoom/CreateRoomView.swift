@@ -18,26 +18,9 @@ struct CreateRoomView: View {
 
     var body: some View {
         List {
-            Section {
-                CreatingRoomViewRow(room: viewModel.selectedRoom)
-                    .onTapGesture {
-                        isRoomSelectionPresenting = true
-                    }
-            }
-            Section {
-                HStack {
-                    MenuView(menuItems: viewModel.menuItems) {
-                        imagePicker
-                    }
-
-                    roomNameTextField
-                }
-            }
-            Section() {
-                TagsFieldView(tags: $viewModel.tags)
-                    .listRowInsets(EdgeInsets())
-            }
-            .background(Color(UIColor.systemGray6))
+            roomTypeSection
+            roomImageAndNameSection
+            roomTagsSection
         }
         .navigation(isActive: $isRoomSelectionPresenting, destination: {
             RoomSelectionView(selectedRoom: $viewModel.selectedRoom, dismissOnSelection: true)
@@ -47,7 +30,7 @@ struct CreateRoomView: View {
             trailing: Button("Create") {
                 viewModel.createRoom()
             }
-            .disabled(viewModel.roomName.isEmpty)
+            .disabled(viewModel.roomName.isEmpty || viewModel.isCreatingRoom)
         )
         .overlay(
             creatingRoomActivityView
@@ -66,6 +49,35 @@ struct CreateRoomView: View {
                 isParentPresenting = false
             }
         })
+    }
+    
+    private var roomTypeSection: some View {
+        Section {
+            CreatingRoomViewRow(room: viewModel.selectedRoom)
+                .onTapGesture {
+                    isRoomSelectionPresenting = true
+                }
+        }
+    }
+    
+    private var roomImageAndNameSection: some View {
+        Section {
+            HStack {
+                MenuView(menuItems: viewModel.menuItems) {
+                    imagePicker
+                }
+
+                roomNameTextField
+            }
+        }
+    }
+    
+    private var roomTagsSection: some View {
+        Section() {
+            TagsFieldView(tags: $viewModel.tags)
+                .listRowInsets(EdgeInsets())
+        }
+        .background(Color(UIColor.systemGray6))
     }
 
     @ViewBuilder

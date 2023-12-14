@@ -13,7 +13,6 @@ struct CreateRoomView: View {
     @Environment(\.presentationMode) var presentationMode
 
     @ObservedObject var viewModel: CreateRoomViewModel
-    @Binding var isParentPresenting: Bool
     @State var isRoomSelectionPresenting = false
 
     var body: some View {
@@ -44,11 +43,6 @@ struct CreateRoomView: View {
                 })
             )
         }
-        .onChange(of: viewModel.dismissNavStack, perform: { dismissNavStack in
-            if dismissNavStack {
-                isParentPresenting = false
-            }
-        })
     }
     
     private var roomTypeSection: some View {
@@ -123,8 +117,7 @@ struct CreateRoomView: View {
 struct CreateRoomView_Previews: PreviewProvider {
     static var previews: some View {
         CreateRoomView(
-            viewModel: CreateRoomViewModel(selectedRoom: CreatingRoomType.publicRoom.toRoom()),
-            isParentPresenting: .constant(true)
+            viewModel: CreateRoomViewModel(selectedRoom: CreatingRoomType.publicRoom.toRoom()) { _ in }
         )
     }
 }

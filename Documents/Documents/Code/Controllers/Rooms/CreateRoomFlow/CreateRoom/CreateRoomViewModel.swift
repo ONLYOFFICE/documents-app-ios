@@ -17,7 +17,6 @@ class CreateRoomViewModel: ObservableObject {
     @Published var roomName: String = ""
     @Published var isCreatingRoom = false
     @Published var errorMessage: String?
-    @Published var dismissNavStack = false
     @Published var selectedRoom: Room!
     @Published var selectedImage: UIImage?
     @Published var tags: Set<String> = []
@@ -29,11 +28,13 @@ class CreateRoomViewModel: ObservableObject {
     // MARK: - Private var
 
     private lazy var creatingRoomService: CreatingRoomService = NetworkCreatingRoomServiceImp()
+    private var onCreate: (ASCFolder) -> Void
     
     // MARK: - Init
 
-    init(selectedRoom: Room) {
+    init(selectedRoom: Room, onCreate: @escaping (ASCFolder) -> Void) {
         self.selectedRoom = selectedRoom
+        self.onCreate = onCreate
     }
     
     // MARK: - Public func
@@ -47,11 +48,12 @@ class CreateRoomViewModel: ObservableObject {
                 image: selectedImage,
                 tags: tags.map { $0 }
             )
-        ) { [weak self] error in
-            if let error {
+        ) { [weak self] result in
+            switch result {
+            case let .success(room):
+                self?.onCreate(room)
+            case let .failure(error):
                 self?.errorMessage = error.localizedDescription
-            } else {
-                self?.dismissNavStack = true
             }
             self?.isCreatingRoom = false
         }

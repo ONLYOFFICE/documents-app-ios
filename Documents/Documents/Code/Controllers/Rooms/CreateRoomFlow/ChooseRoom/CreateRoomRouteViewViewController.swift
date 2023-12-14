@@ -16,13 +16,13 @@ class CreateRoomRouteViewViewController: UIHostingController<CreateRoomRouteView
     required init?(coder aDecoder: NSCoder) {
         super.init(
             coder: aDecoder,
-            rootView: CreateRoomRouteView()
+            rootView: CreateRoomRouteView() { _ in }
         )
     }
 
-    init(onAction: @escaping (RoomSelectionView) -> Void) {
+    init(onAction: @escaping (ASCFolder) -> Void) {
         super.init(
-            rootView: CreateRoomRouteView()
+            rootView: CreateRoomRouteView(onCreate: onAction)
         )
     }
 }

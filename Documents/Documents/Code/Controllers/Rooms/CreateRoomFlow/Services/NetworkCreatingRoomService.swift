@@ -9,7 +9,7 @@
 import UIKit
 
 protocol CreatingRoomService {
-    func createRoom(model: CreatingRoomModel, completion: @escaping (Error?) -> Void)
+    func createRoom(model: CreatingRoomModel, completion: @escaping (Result<ASCFolder, Error>) -> Void)
 }
 
 struct CreatingRoomModel {
@@ -23,7 +23,7 @@ class NetworkCreatingRoomServiceImp: CreatingRoomService {
     
     private var networkService = OnlyofficeApiClient.shared
     
-    func createRoom(model: CreatingRoomModel, completion: @escaping (Error?) -> Void) {
+    func createRoom(model: CreatingRoomModel, completion: @escaping (Result<ASCFolder, Error>) -> Void) {
         createRoomNetwork(model: model) { result in
             switch result {
             case let .success(room):
@@ -37,10 +37,10 @@ class NetworkCreatingRoomServiceImp: CreatingRoomService {
                     group.leave()
                 }
                 group.notify(queue: .main) {
-                    completion(nil)
+                    completion(.success(room))
                 }
             case let .failure(error):
-                completion(error)
+                completion(.failure(error))
             }
         }
     }

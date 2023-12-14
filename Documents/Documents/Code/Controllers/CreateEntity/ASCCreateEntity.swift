@@ -97,7 +97,9 @@ class ASCCreateEntity: NSObject, UIImagePickerControllerDelegate, UINavigationCo
     }
 
     private func showCreateRoomController(provider: ASCOnlyofficeProvider, viewController: ASCDocumentsViewController) {
-        let vc = CreateRoomRouteViewViewController(onAction: { _ in })
+        let vc = CreateRoomRouteViewViewController(onAction: { [weak viewController] room in
+            viewController?.add(entity: room, open: true)
+        })
         viewController.present(vc, animated: true, completion: nil)
     }
 

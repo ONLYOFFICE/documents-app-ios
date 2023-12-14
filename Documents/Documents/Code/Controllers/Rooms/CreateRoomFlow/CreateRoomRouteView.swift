@@ -12,7 +12,7 @@ struct CreateRoomRouteView: View {
     @Environment(\.presentationMode) var presentationMode
 
     @State var selectedRoom: Room?
-    @State private var isPresenting = true
+    var onCreate: (ASCFolder) -> Void
 
     private var isRoomSelected: Binding<Bool> {
         Binding<Bool>(get: { self.selectedRoom != nil },
@@ -28,15 +28,12 @@ struct CreateRoomRouteView: View {
             RoomSelectionView(selectedRoom: $selectedRoom)
                 .navigation(item: $selectedRoom) { room in
                     CreateRoomView(
-                        viewModel: CreateRoomViewModel(selectedRoom: room),
-                        isParentPresenting: $isPresenting
+                        viewModel: CreateRoomViewModel(selectedRoom: room) { room in
+                            presentationMode.wrappedValue.dismiss()
+                            onCreate(room)
+                        }
                     )
                 }
         }
-        .onChange(of: isPresenting, perform: { isPresenting in
-            if !isPresenting {
-                presentationMode.wrappedValue.dismiss()
-            }
-        })
     }
 }

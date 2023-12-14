@@ -369,6 +369,11 @@ class ASCOnlyofficeProvider: ASCFileProviderProtocol & ASCSortableFileProviderPr
                     let entities: [ASCEntity] = (path.folders + path.files).map { entitie in
                         if let folder = entitie as? ASCFolder {
                             folder.parent = currentFolder
+                            strongSelf.allowLeave(folder: folder) { isAllowed in
+                                if isAllowed {
+                                    folder.isCanLeaveRoom = true
+                                }
+                            }
                             return folder
                         } else if let file = entitie as? ASCFile {
                             file.parent = currentFolder
@@ -899,6 +904,30 @@ class ASCOnlyofficeProvider: ASCFileProviderProtocol & ASCSortableFileProviderPr
         return true
     }
 
+    func allowLeave(folder: ASCFolder, completion: @escaping (Bool) -> Void) {
+        var isOwnerInRoom: Bool = false
+        var isAllowLeave: Bool = true
+
+        apiClient.request(OnlyofficeAPI.Endpoints.Sharing.room(folder: folder, method: .get)) { result, error in
+            if let error = error {
+                print("Error: \(error)")
+            } else if let users = result?.result {
+                for entity in users {
+                    if entity.user?.userId == self.user?.userId {
+                        isOwnerInRoom = true
+                        break
+                    }
+                }
+
+                if !isOwnerInRoom, let userIsOwner = self.user?.isOwner, userIsOwner {
+                    isAllowLeave = false
+                }
+
+                completion(isAllowLeave)
+            }
+        }
+    }
+
     func allowCopy(entity: AnyObject?) -> Bool {
         guard let entity = entity as? ASCEntity, allowRead(entity: entity) else { return false }
         guard isInRoom else { return true }
@@ -1301,6 +1330,9 @@ class ASCOnlyofficeProvider: ASCFileProviderProtocol & ASCSortableFileProviderPr
                 if folder.security.move {
                     entityActions.insert(.archive)
                 }
+                if folder.isCanLeaveRoom {
+                    entityActions.insert(.leave)
+                }
             }
 
             if isRoomFolder, isArchiveCategory, folder.security.move {
@@ -1363,6 +1395,30 @@ class ASCOnlyofficeProvider: ASCFileProviderProtocol & ASCSortableFileProviderPr
                 handler?(.end, folder, nil)
             } else {
                 handler?(.error, nil, ASCProviderError(msg: NSLocalizedString("Unarchiving failed.", comment: "")))
+            }
+        }
+    }
+
+    func checkRoomOwner(folder: ASCFolder) -> Bool {
+        return folder.createdBy?.userId == user?.userId
+    }
+
+    func leaveRoom(folder: ASCFolder, handler: ASCEntityHandler?) {
+        handler?(.begin, nil, nil)
+
+        let userId = user?.userId ?? ""
+        let access: ASCShareAccess = .none
+
+        let inviteRequestModel = OnlyofficeInviteRequestModel()
+        inviteRequestModel.notify = false
+        inviteRequestModel.invitations = [.init(id: userId, access: access)]
+
+        apiClient.request(OnlyofficeAPI.Endpoints.Sharing.inviteRequest(folder: folder, method: .put), inviteRequestModel.toJSON()) {
+            result, error in
+            if error != nil {
+                handler?(.error, nil, ASCProviderError(msg: NSLocalizedString("Couldn't leave the room.", comment: "")))
+            } else {
+                handler?(.end, folder, nil)
             }
         }
     }

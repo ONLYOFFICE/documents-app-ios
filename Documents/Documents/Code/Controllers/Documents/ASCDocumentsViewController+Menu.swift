@@ -439,6 +439,20 @@ extension ASCDocumentsViewController {
             )
         }
 
+        /// Leave the room action
+
+        if actions.contains(.leave) {
+            rootActions.append(
+                UIAction(
+                    title: NSLocalizedString("Leave the room", comment: "Button title"),
+                    image: UIImage(systemName: "arrow.right.square")
+                ) { [unowned self] action in
+                    cell.hideSwipe(animated: true)
+                    self.leaveRoom(cell: cell)
+                }
+            )
+        }
+
         /// Delete action
 
         if actions.contains(.delete) {

@@ -1,6 +1,6 @@
 //
 //  MenuView.swift
-//  Documents-opensource
+//  Documents
 //
 //  Created by Pavel Chernyshev on 07.12.2023.
 //  Copyright © 2023 Ascensio System SIA. All rights reserved.

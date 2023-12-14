@@ -250,7 +250,7 @@ class NetworkingClient: NSObject, NetworkingRequestingProtocol {
             to: destination
         )
         .downloadProgress { progress in
-            log.debug("Download Progress: \(progress.fractionCompleted)")
+//            log.debug("Download Progress: \(progress.fractionCompleted)")
             DispatchQueue.main.async {
                 completion?(nil, progress.fractionCompleted, nil)
             }

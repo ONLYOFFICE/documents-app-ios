@@ -1802,6 +1802,14 @@ class ASCDocumentsViewController: ASCBaseTableViewController, UIGestureRecognize
     }
 
     func download(cell: UITableViewCell) {
+        if cell is ASCFileCell {
+            downloadFile(cell: cell)
+        } else if cell is ASCFolderCell {
+            downloadFolder(cell: cell)
+        }
+    }
+
+    func downloadFile(cell: UITableViewCell) {
         guard
             let fileCell = cell as? ASCFileCell,
             let file = fileCell.file,
@@ -1876,6 +1884,55 @@ class ASCDocumentsViewController: ASCBaseTableViewController, UIGestureRecognize
                             }
                         }
                     }
+                }
+            }
+        }
+    }
+
+    func downloadFolder(cell: UITableViewCell) {
+        guard let folderCell = cell as? ASCFolderCell,
+              let folder = folderCell.folder,
+              let provider = provider as? ASCOnlyofficeProvider
+        else { return }
+
+        let transferAlert = ASCProgressAlert(
+            title: NSLocalizedString("Downloading", comment: "Caption of the processing"),
+            message: nil,
+            handler: { cancel in
+                if cancel {
+                    provider.apiClient.request(OnlyofficeAPI.Endpoints.Operations.terminate)
+                    provider.cancel()
+                    log.warning("Active operations canceled")
+                }
+            }
+        )
+
+        transferAlert.show()
+
+        provider.download(items: [folder]) { progress in
+            transferAlert.progress = progress
+        } completion: { [weak self] result in
+            switch result {
+            case let .success(url):
+                transferAlert.hide {
+                    let activityViewController = UIActivityViewController(activityItems: [url], applicationActivities: nil)
+
+                    if UIDevice.pad {
+                        activityViewController.popoverPresentationController?.sourceView = cell
+                        activityViewController.popoverPresentationController?.sourceRect = cell.bounds
+                    }
+
+                    self?.present(activityViewController, animated: true, completion: nil)
+                }
+            case let .failure(error):
+                transferAlert.hide()
+                log.error(error)
+
+                if let self {
+                    UIAlertController.showError(
+                        in: self,
+                        message: NSLocalizedString("Couldn't download the room.", comment: "")
+                    )
                 }
             }
         }

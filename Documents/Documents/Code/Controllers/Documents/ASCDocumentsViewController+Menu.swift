@@ -425,6 +425,20 @@ extension ASCDocumentsViewController {
             )
         }
 
+        /// Download action
+
+        if actions.contains(.download) {
+            rootActions.append(
+                UIAction(
+                    title: NSLocalizedString("Download", comment: "Button title"),
+                    image: UIImage(systemName: "square.and.arrow.down")
+                ) { [unowned self] action in
+                    cell.hideSwipe(animated: true)
+                    self.downloadFolder(cell: cell)
+                }
+            )
+        }
+
         /// Delete action
 
         if actions.contains(.delete) {

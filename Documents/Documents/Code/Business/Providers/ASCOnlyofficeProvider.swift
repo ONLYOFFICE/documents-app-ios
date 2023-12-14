@@ -895,6 +895,10 @@ class ASCOnlyofficeProvider: ASCFileProviderProtocol & ASCSortableFileProviderPr
         return file.security.duplicate
     }
 
+    func allowDownload(folder: ASCFolder?) -> Bool {
+        return true
+    }
+
     func allowCopy(entity: AnyObject?) -> Bool {
         guard let entity = entity as? ASCEntity, allowRead(entity: entity) else { return false }
         guard isInRoom else { return true }
@@ -1240,6 +1244,7 @@ class ASCOnlyofficeProvider: ASCFileProviderProtocol & ASCSortableFileProviderPr
             let canCopy = allowCopy(entity: folder)
             let canDelete = allowDelete(entity: folder)
             let canShare = allowShare(entity: folder)
+            let canDownload = allowDownload(folder: folder)
             let canRename = allowRename(entity: folder)
             let isProjects = folder.rootFolderType == .onlyofficeBunch || folder.rootFolderType == .onlyofficeProjects
             let isRoomFolder = isFolderInRoom(folder: folder) && folder.roomType != nil
@@ -1265,6 +1270,10 @@ class ASCOnlyofficeProvider: ASCFileProviderProtocol & ASCSortableFileProviderPr
 
             if canEdit, canShare, !isProjects, !isRoomFolder, !isFolderInRoom(folder: folder) {
                 entityActions.insert(.share)
+            }
+
+            if canDownload {
+                entityActions.insert(.download)
             }
 
             if canDelete {
@@ -1356,6 +1365,129 @@ class ASCOnlyofficeProvider: ASCFileProviderProtocol & ASCSortableFileProviderPr
                 handler?(.error, nil, ASCProviderError(msg: NSLocalizedString("Unarchiving failed.", comment: "")))
             }
         }
+    }
+
+    // Download
+    func download(
+        items: [ASCEntity],
+        process: @escaping (Float) -> Void,
+        completion: @escaping (Result<URL, Error>) -> Void
+    ) {
+        var folderIds: [String] = []
+        var fileIds: [String] = []
+        var itemName: String = ""
+
+        for entity in items {
+            if let folder = entity as? ASCFolder {
+                folderIds.append(folder.id)
+                itemName = folder.title
+            } else if let file = entity as? ASCFile {
+                fileIds.append(file.id)
+                itemName = file.parent?.title ?? file.title
+            }
+        }
+
+        let files: [String: Any] = [
+            "fileIds": fileIds,
+            "folderIds": folderIds,
+        ]
+
+        let prepareArchiveError = ASCProviderError(msg: NSLocalizedString("Failure to prepare the archive", comment: ""))
+
+        // API request for file formation
+        apiClient.request(OnlyofficeAPI.Endpoints.Operations.download, files) { [weak self] result, error in
+            guard let self else { return }
+
+            if let error {
+                completion(.failure(error))
+                return
+            }
+
+            if let operation = result?.result?.first {
+                self.checkOperation(operation: operation) { progress in
+                    let commonProgress = self.progress(progress, in: 0 ... 0.3)
+                    process(commonProgress)
+                } completion: { result in
+                    switch result {
+                    case let .success(url):
+                        guard let url else {
+                            completion(.failure(prepareArchiveError))
+                            return
+                        }
+
+                        // Download prepared archive
+                        let destinationURL = FileManager.default.temporaryDirectory.appendingPathComponent("\(itemName).zip")
+                        self.download(url.absoluteString, to: destinationURL) { data, progress, error in
+                            let commonProgress = self.progress(Float(progress), in: 0.3 ... 1)
+                            process(commonProgress)
+
+                            if let error {
+                                completion(.failure(error))
+                                return
+                            }
+
+                            if progress >= 1 {
+                                completion(.success(destinationURL))
+                            }
+                        }
+
+                    case let .failure(error):
+                        log.error(error)
+                        completion(.failure(prepareArchiveError))
+                    }
+                }
+            } else {
+                completion(.failure(prepareArchiveError))
+            }
+        }
+    }
+
+    private func checkOperation(
+        operation: OnlyofficeFileOperation,
+        timeInterval: TimeInterval = 0.5,
+        process: @escaping (Float) -> Void,
+        completion: @escaping (Result<URL?, Error>) -> Void
+    ) {
+        var doCheckOperation: (() -> Void)?
+        var preventCheck = false
+
+        doCheckOperation = { [weak self] in
+            self?.apiClient.request(OnlyofficeAPI.Endpoints.Operations.list) { result, error in
+                guard !preventCheck else { return }
+
+                if let error {
+                    preventCheck = true
+                    completion(.failure(error))
+                    return
+                }
+
+                if let operation = result?.result?.first(where: { $0.id == operation.id }),
+                   let progress = operation.progress
+                {
+                    process(Float(progress) / 100.0)
+
+                    if let operationError = operation.error, !operationError.isEmpty {
+                        completion(.failure(ASCProviderError(msg: operationError)))
+                        return
+                    }
+
+                    if operation.finished {
+                        completion(.success(URL(string: operation.url ?? "")))
+                        return
+                    }
+
+                    DispatchQueue.global().asyncAfter(deadline: .now() + timeInterval) {
+                        doCheckOperation?()
+                    }
+                }
+            }
+        }
+
+        doCheckOperation?()
+    }
+
+    private func progress(_ progress: Float, in range: ClosedRange<Float> = 0 ... 1) -> Float {
+        range.lowerBound + (range.upperBound - range.lowerBound) * progress
     }
 
     private func unsupportedActionHandler(action: ASCEntityActions, handler: ASCEntityHandler?) {

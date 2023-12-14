@@ -217,6 +217,8 @@
 		FC301A26230D6F1F00DC25CA /* ASCFileCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FC301A24230D6F1F00DC25CA /* ASCFileCell.xib */; };
 		FC301A29230D70B500DC25CA /* ASCLoaderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC301A27230D70B500DC25CA /* ASCLoaderCell.swift */; };
 		FC301A2A230D70B500DC25CA /* ASCLoaderCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FC301A28230D70B500DC25CA /* ASCLoaderCell.xib */; };
+		FC33FAA22B0F59E700688E17 /* ASCFolderLogoAvatarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC33FAA12B0F59E700688E17 /* ASCFolderLogoAvatarView.swift */; };
+		FC33FAA42B0F5A0B00688E17 /* ASCFolderLogo.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC33FAA32B0F5A0B00688E17 /* ASCFolderLogo.swift */; };
 		FC35D40D2A987D1400C6383F /* OnlyofficeResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC35D4042A987D1300C6383F /* OnlyofficeResponse.swift */; };
 		FC35D40E2A987D1400C6383F /* OnlyofficeCapabilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC35D4052A987D1300C6383F /* OnlyofficeCapabilities.swift */; };
 		FC35D40F2A987D1400C6383F /* OnlyofficeUserPhoto.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC35D4062A987D1300C6383F /* OnlyofficeUserPhoto.swift */; };
@@ -772,6 +774,8 @@
 		FC301A24230D6F1F00DC25CA /* ASCFileCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ASCFileCell.xib; sourceTree = "<group>"; };
 		FC301A27230D70B500DC25CA /* ASCLoaderCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCLoaderCell.swift; sourceTree = "<group>"; };
 		FC301A28230D70B500DC25CA /* ASCLoaderCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ASCLoaderCell.xib; sourceTree = "<group>"; };
+		FC33FAA12B0F59E700688E17 /* ASCFolderLogoAvatarView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASCFolderLogoAvatarView.swift; sourceTree = "<group>"; };
+		FC33FAA32B0F5A0B00688E17 /* ASCFolderLogo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASCFolderLogo.swift; sourceTree = "<group>"; };
 		FC35D4042A987D1300C6383F /* OnlyofficeResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OnlyofficeResponse.swift; sourceTree = "<group>"; };
 		FC35D4052A987D1300C6383F /* OnlyofficeCapabilities.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OnlyofficeCapabilities.swift; sourceTree = "<group>"; };
 		FC35D4062A987D1300C6383F /* OnlyofficeUserPhoto.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OnlyofficeUserPhoto.swift; sourceTree = "<group>"; };
@@ -2211,6 +2215,7 @@
 				FC9E28BE2244E88C000D315E /* ASCDocumentsEmptyView.swift */,
 				FCF694BF2631C3AA00808644 /* ASCDocumentsEmptyView.xib */,
 				FCA0E5332542EF97008DDE78 /* ASCDocumentsToolbar.swift */,
+				FC33FAA12B0F59E700688E17 /* ASCFolderLogoAvatarView.swift */,
 			);
 			name = Views;
 			path = View;
@@ -2777,6 +2782,7 @@
 				FC7E455C29226A34006C4CA1 /* ASCEntity.swift */,
 				FC7E455F29226A35006C4CA1 /* ASCFile.swift */,
 				FC7E455D29226A35006C4CA1 /* ASCFolder.swift */,
+				FC33FAA32B0F5A0B00688E17 /* ASCFolderLogo.swift */,
 				FC7E455B29226A34006C4CA1 /* ASCGroup.swift */,
 				FC7E455929226A34006C4CA1 /* ASCPaymentQuota.swift */,
 				FC7E456029226A35006C4CA1 /* ASCPushSubscribed.swift */,
@@ -3825,6 +3831,7 @@
 				FC35D44D2A987DFB00C6383F /* Sequence+Extensions.swift in Sources */,
 				1D29914F274FB37700A06F3B /* ASCPortalType.swift in Sources */,
 				1DAAFF492679063700023F39 /* ASCViewModelSetter.swift in Sources */,
+				FC33FAA42B0F5A0B00688E17 /* ASCFolderLogo.swift in Sources */,
 				FC68398D21B7DFCE00251CEA /* ASCOnlyofficeNavigationController.swift in Sources */,
 				FC5943652AE6816E001BA2F9 /* ASCEditorManagerOptions.swift in Sources */,
 				FC35D4662A987DFC00C6383F /* CALayer+Animate.swift in Sources */,
@@ -4086,6 +4093,7 @@
 				FC56B5C620C017C300557C1F /* ASCStyles.swift in Sources */,
 				FC5943632AE6816E001BA2F9 /* ASCEditorManager+PresentationEditor.swift in Sources */,
 				FC0F01E1216F46B7008D79A5 /* ASCOnlyofficeProvider.swift in Sources */,
+				FC33FAA22B0F59E700688E17 /* ASCFolderLogoAvatarView.swift in Sources */,
 				FCD2DD6C2702F70400D31BD5 /* ManagedAppConfig.swift in Sources */,
 				FC35D40D2A987D1400C6383F /* OnlyofficeResponse.swift in Sources */,
 				FC5943E72AE6D328001BA2F9 /* ASCSpreadsheetEditorConfiguration.swift in Sources */,

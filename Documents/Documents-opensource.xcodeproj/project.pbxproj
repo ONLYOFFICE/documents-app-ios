@@ -1820,7 +1820,6 @@
 			children = (
 				E8AC0F022B07D63600B8EEA2 /* RoomSelectionView.swift */,
 				E8AC0F042B07D77000B8EEA2 /* RoomSelectionViewModel.swift */,
-				E8AC0F122B15F6FD00B8EEA2 /* CreateRoomRouteViewViewController.swift */,
 			);
 			path = ChooseRoom;
 			sourceTree = "<group>";
@@ -1863,6 +1862,7 @@
 				E8AC0F002B07D5EE00B8EEA2 /* ChooseRoom */,
 				E8AC0F0A2B0E5ED800B8EEA2 /* CreateRoom */,
 				E8BE285C2B1DE181007F5942 /* CreateRoomRouteView.swift */,
+				E8AC0F122B15F6FD00B8EEA2 /* CreateRoomRouteViewViewController.swift */,
 			);
 			path = CreateRoomFlow;
 			sourceTree = "<group>";

@@ -150,13 +150,12 @@ class NetworkCreatingRoomServiceImp: CreatingRoomService {
             "height": imageSize.height
         ]
         
-        networkService.request(OnlyofficeAPI.Endpoints.Rooms.setLogo(folder: room), params) { result, _ in
+        networkService.request(OnlyofficeAPI.Endpoints.Rooms.setLogo(folder: room), params,  { result, _  in
             if let folder = result?.result {
-                room.largeLogo = folder.largeLogo
-                room.smallLogo = folder.smallLogo
+                room.logo = folder.logo
             }
             completion()
-        }
+        })
     }
 }
 

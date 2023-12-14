@@ -16,11 +16,11 @@ enum CreatingRoomType: CaseIterable {
     var id: Int {
         switch self {
         case .collaboration:
-            return ASCRoomType.colobaration.rawValue
+            return ascRoomType.rawValue
         case .publicRoom:
-            return ASCRoomType.public.rawValue
+            return ascRoomType.rawValue
         case .custom:
-            return ASCRoomType.custom.rawValue
+            return ascRoomType.rawValue
         }
     }
 
@@ -49,11 +49,11 @@ enum CreatingRoomType: CaseIterable {
     var icon: UIImage {
         switch self {
         case .collaboration:
-            return Asset.Images.roomCollaboration.image
+            return ascRoomType.image
         case .publicRoom:
-            return Asset.Images.roomPublic.image
+            return ascRoomType.image
         case .custom:
-            return Asset.Images.roomCustom.image
+            return ascRoomType.image
         }
     }
     

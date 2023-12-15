@@ -1261,6 +1261,10 @@ Note: if you forget the passcode, you'll need to delete and reinstall the app. A
         <target>%1$lu файлов с одинаковым именем находятся в папке '%2$@'. Перезаписать эти файлы?</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
+      <trans-unit id=": &quot;%@&quot;" xml:space="preserve">
+        <source>: "%@"</source>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
       <trans-unit id="&lt;p&gt;Use the password created in &lt;a href=&quot;https://yandex.ru/id/about&quot;&gt;Yandex ID&lt;/a&gt;.&lt;/br&gt;More detailed connection instructions can be found in the &lt;a href=&quot;https://yandex.ru/support/disk-desktop/webdav-app-passwords.html?lang=ru&quot;&gt;help&lt;/a&gt;.&lt;/p&gt;" xml:space="preserve">
         <source>&lt;p&gt;Use the password created in &lt;a href="https://yandex.ru/id/about"&gt;Yandex ID&lt;/a&gt;.&lt;/br&gt;More detailed connection instructions can be found in the &lt;a href="https://yandex.ru/support/disk-desktop/webdav-app-passwords.html?lang=ru"&gt;help&lt;/a&gt;.&lt;/p&gt;</source>
         <target>&lt;p&gt;Используйте пароль, созданный в &lt;a href="https://yandex.ru/id/about"&gt;Яндекс ID&lt;/a&gt;.&lt;/br&gt;Более подробные инструкции по подключению можно найти в разделе &lt;a href="https://yandex.ru/support/disk-desktop/webdav-app-passwords.html?lang=ru"&gt;"Справка"&lt;/a&gt;.&lt;/p&gt;</target>
@@ -1371,6 +1375,11 @@ Note: if you forget the passcode, you'll need to delete and reinstall the app. A
         <target>Добавить сообщение</target>
         <note>Sharing settings add notification message</note>
       </trans-unit>
+      <trans-unit id="Add tag" xml:space="preserve">
+        <source>Add tag</source>
+        <target>Добавить тег</target>
+        <note>placeholder</note>
+      </trans-unit>
       <trans-unit id="Add users" xml:space="preserve">
         <source>Add users</source>
         <target>Добавьте пользователей</target>
@@ -1426,6 +1435,11 @@ Note: if you forget the passcode, you'll need to delete and reinstall the app. A
       <trans-unit id="AppleId authentication failed" xml:space="preserve">
         <source>AppleId authentication failed</source>
         <target>Аутентификация через AppleId не удалась</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Apply your own settings to use this room for any custom purpose" xml:space="preserve">
+        <source>Apply your own settings to use this room for any custom purpose</source>
+        <target>Примените свои собственные настройки, чтобы использовать эту комнату для любых особых целей</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Applying" xml:space="preserve">
@@ -1554,6 +1568,16 @@ Note: if you forget the passcode, you'll need to delete and reinstall the app. A
         <target>Проверьте интернет-соединение</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
+      <trans-unit id="Choose Files" xml:space="preserve">
+        <source>Choose Files</source>
+        <target>Выберите файлы</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Choose room type" xml:space="preserve">
+        <source>Choose room type</source>
+        <target>Выберите тип комнаты</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
       <trans-unit id="Cleanup" xml:space="preserve">
         <source>Cleanup</source>
         <target>Очистка</target>
@@ -1594,6 +1618,11 @@ Note: if you forget the passcode, you'll need to delete and reinstall the app. A
         <target>Облачная папка</target>
         <note>Default external storage name</note>
       </trans-unit>
+      <trans-unit id="Collaborate on one or multiple documents with your team" xml:space="preserve">
+        <source>Collaborate on one or multiple documents with your team</source>
+        <target>Сотрудничайте над одним или несколькими документами со своей командой</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
       <trans-unit id="Collaborate with your team" xml:space="preserve">
         <source>Collaborate with your team</source>
         <target>Совместная работа с командой</target>
@@ -1602,6 +1631,11 @@ Note: if you forget the passcode, you'll need to delete and reinstall the app. A
       <trans-unit id="Collaboration" xml:space="preserve">
         <source>Collaboration</source>
         <target>Совместная работа</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Collaboration room" xml:space="preserve">
+        <source>Collaboration room</source>
+        <target>Комната сотрудничества</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Commentator" xml:space="preserve">
@@ -1803,6 +1837,11 @@ others which use WebDAV protocol.</source>
         <target>Не удалось записать в файл</target>
         <note>Description of file operation error</note>
       </trans-unit>
+      <trans-unit id="Couldn't download the room." xml:space="preserve">
+        <source>Couldn't download the room.</source>
+        <target>Не удалось загрузить комнату</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
       <trans-unit id="Couldn't rename the file" xml:space="preserve">
         <source>Couldn't rename the file</source>
         <target>Не удалось переименовать файл</target>
@@ -1828,10 +1867,20 @@ others which use WebDAV protocol.</source>
         <target>Создавайте новые документы, таблицы или презентации. Создавайте новые папки, чтобы упорядочивать файлы.</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
+      <trans-unit id="Create room" xml:space="preserve">
+        <source>Create room</source>
+        <target>Создать комнату</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
       <trans-unit id="Creating" xml:space="preserve">
         <source>Creating</source>
         <target>Создание</target>
         <note>Caption of the process</note>
+      </trans-unit>
+      <trans-unit id="Creating..." xml:space="preserve">
+        <source>Creating...</source>
+        <target>Создание...</target>
+        <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Custom" xml:space="preserve">
         <source>Custom</source>
@@ -1842,6 +1891,11 @@ others which use WebDAV protocol.</source>
         <source>Custom filter</source>
         <target>Пользовательский фильтр</target>
         <note>Share status</note>
+      </trans-unit>
+      <trans-unit id="Custom room" xml:space="preserve">
+        <source>Custom room</source>
+        <target>Персонализированная комната</target>
+        <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Dark" xml:space="preserve">
         <source>Dark</source>
@@ -2139,6 +2193,11 @@ others which use WebDAV protocol.</source>
         <target>Ошибка скачивания полученного файла из службы онлайн-конвертации.</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
+      <trans-unit id="Failure to prepare the archive" xml:space="preserve">
+        <source>Failure to prepare the archive</source>
+        <target>Ошибка подготовления к архивированию</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
       <trans-unit id="Favorites" xml:space="preserve">
         <source>Favorites</source>
         <target>Избранное</target>
@@ -2327,6 +2386,11 @@ others which use WebDAV protocol.</source>
       <trans-unit id="Invite people by email" xml:space="preserve">
         <source>Invite people by email</source>
         <target>Пригласить пользователей по электронной почте</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Invite users via shared links to view documents without registration. You can also embed this room into any web interface." xml:space="preserve">
+        <source>Invite users via shared links to view documents without registration. You can also embed this room into any web interface.</source>
+        <target>Пригласите пользователей по общим ссылкам для просмотра документов без регистрации. Также вы можете встроить эту комнату в любой веб-интерфейс</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Kb" xml:space="preserve">
@@ -2733,6 +2797,11 @@ to the clipboard</source>
         <target>Телефон неверный</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
+      <trans-unit id="Photo Library" xml:space="preserve">
+        <source>Photo Library</source>
+        <target>Библиотека изображений</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
       <trans-unit id="Pin to top" xml:space="preserve">
         <source>Pin to top</source>
         <target>Закрепить вверху</target>
@@ -2871,6 +2940,11 @@ to the clipboard</source>
         <target>В проектах</target>
         <note>Category title</note>
       </trans-unit>
+      <trans-unit id="Public room" xml:space="preserve">
+        <source>Public room</source>
+        <target>Общедоступная комната</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
       <trans-unit id="Push notifications disabled" xml:space="preserve">
         <source>Push notifications disabled</source>
         <target>Push-уведомления отключены</target>
@@ -2975,6 +3049,11 @@ to the clipboard</source>
         <source>Room admin</source>
         <target>Администратор группы</target>
         <note>Share status</note>
+      </trans-unit>
+      <trans-unit id="Room name" xml:space="preserve">
+        <source>Room name</source>
+        <target>Название комнаты</target>
+        <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Rooms" xml:space="preserve">
         <source>Rooms</source>
@@ -3206,6 +3285,11 @@ to the clipboard</source>
       <trans-unit id="Switch" xml:space="preserve">
         <source>Switch</source>
         <target>Переключить</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Take Photo" xml:space="preserve">
+        <source>Take Photo</source>
+        <target>Сделать фото</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Take a Picture" xml:space="preserve">

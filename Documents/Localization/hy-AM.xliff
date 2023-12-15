@@ -1170,6 +1170,10 @@ Note: if you forget the passcode, you'll need to delete and reinstall the app. A
         <target>Նույն անունով %1$lu տարր արդեն գոյություն ունի «%2$@» պանակում: Վերագրե՞լ տարրերը:</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
+      <trans-unit id=": &quot;%@&quot;" xml:space="preserve">
+        <source>: "%@"</source>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
       <trans-unit id="&lt;p&gt;Use the password created in &lt;a href=&quot;https://yandex.ru/id/about&quot;&gt;Yandex ID&lt;/a&gt;.&lt;/br&gt;More detailed connection instructions can be found in the &lt;a href=&quot;https://yandex.ru/support/disk-desktop/webdav-app-passwords.html?lang=ru&quot;&gt;help&lt;/a&gt;.&lt;/p&gt;" xml:space="preserve">
         <source>&lt;p&gt;Use the password created in &lt;a href="https://yandex.ru/id/about"&gt;Yandex ID&lt;/a&gt;.&lt;/br&gt;More detailed connection instructions can be found in the &lt;a href="https://yandex.ru/support/disk-desktop/webdav-app-passwords.html?lang=ru"&gt;help&lt;/a&gt;.&lt;/p&gt;</source>
         <target>&lt;p&gt;Օգտագործեք &lt;a href="https://yandex.ru/id/about"&gt;Yandex ID-&lt;/a&gt; ում ստեղծված գաղտնաբառը:&lt;/br&gt; Միացման ավելի մանրամասն հրահանգները կարող եք գտնել &lt;a href="https://yandex.ru/support/disk-desktop/webdav-app-passwords.html?lang=ru"&gt;օգնությունում&lt;/a&gt; :&lt;/p&gt;</target>
@@ -1280,6 +1284,10 @@ Note: if you forget the passcode, you'll need to delete and reinstall the app. A
         <target>Ավելացնել հաղորդագրություն</target>
         <note>Sharing settings add notification message</note>
       </trans-unit>
+      <trans-unit id="Add tag" xml:space="preserve">
+        <source>Add tag</source>
+        <note>placeholder</note>
+      </trans-unit>
       <trans-unit id="Add users" xml:space="preserve">
         <source>Add users</source>
         <target>Ավելացնել օգտվողներ</target>
@@ -1335,6 +1343,10 @@ Note: if you forget the passcode, you'll need to delete and reinstall the app. A
       <trans-unit id="AppleId authentication failed" xml:space="preserve">
         <source>AppleId authentication failed</source>
         <target>Apple Id-ի նույնականացումը ձախողվեց</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Apply your own settings to use this room for any custom purpose" xml:space="preserve">
+        <source>Apply your own settings to use this room for any custom purpose</source>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Applying" xml:space="preserve">
@@ -1463,6 +1475,14 @@ Note: if you forget the passcode, you'll need to delete and reinstall the app. A
         <target>Ստուգեք ձեր ինտերնետային կապը</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
+      <trans-unit id="Choose Files" xml:space="preserve">
+        <source>Choose Files</source>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Choose room type" xml:space="preserve">
+        <source>Choose room type</source>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
       <trans-unit id="Cleanup" xml:space="preserve">
         <source>Cleanup</source>
         <target>Մաքրում</target>
@@ -1503,6 +1523,10 @@ Note: if you forget the passcode, you'll need to delete and reinstall the app. A
         <target>Ամպային գրացուցակ</target>
         <note>Default external storage name</note>
       </trans-unit>
+      <trans-unit id="Collaborate on one or multiple documents with your team" xml:space="preserve">
+        <source>Collaborate on one or multiple documents with your team</source>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
       <trans-unit id="Collaborate with your team" xml:space="preserve">
         <source>Collaborate with your team</source>
         <target>Համագործակցեք ձեր թիմի հետ</target>
@@ -1511,6 +1535,10 @@ Note: if you forget the passcode, you'll need to delete and reinstall the app. A
       <trans-unit id="Collaboration" xml:space="preserve">
         <source>Collaboration</source>
         <target>Համագործակցում</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Collaboration room" xml:space="preserve">
+        <source>Collaboration room</source>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Commentator" xml:space="preserve">
@@ -1712,6 +1740,10 @@ others which use WebDAV protocol.</source>
         <target>Չհաջողվեց գրել ֆայլին</target>
         <note>Description of file operation error</note>
       </trans-unit>
+      <trans-unit id="Couldn't download the room." xml:space="preserve">
+        <source>Couldn't download the room.</source>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
       <trans-unit id="Couldn't rename the file" xml:space="preserve">
         <source>Couldn't rename the file</source>
         <target>Չհաջողվեց վերանվանել ֆայլը</target>
@@ -1737,10 +1769,18 @@ others which use WebDAV protocol.</source>
         <target>Ստեղծեք նոր փաստաթղթեր, աղյուսակներ կամ ներկայացումներ: Ստեղծեք նոր թղթապանակներ՝ ձեր ֆայլերը կազմակերպելու համար:</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
+      <trans-unit id="Create room" xml:space="preserve">
+        <source>Create room</source>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
       <trans-unit id="Creating" xml:space="preserve">
         <source>Creating</source>
         <target>Ստեղծելով</target>
         <note>Caption of the process</note>
+      </trans-unit>
+      <trans-unit id="Creating..." xml:space="preserve">
+        <source>Creating...</source>
+        <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Custom" xml:space="preserve">
         <source>Custom</source>
@@ -1751,6 +1791,10 @@ others which use WebDAV protocol.</source>
         <source>Custom filter</source>
         <target>Պատվերով զտիչ</target>
         <note>Share status</note>
+      </trans-unit>
+      <trans-unit id="Custom room" xml:space="preserve">
+        <source>Custom room</source>
+        <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Dark" xml:space="preserve">
         <source>Dark</source>
@@ -2048,6 +2092,10 @@ others which use WebDAV protocol.</source>
         <target>Չհաջողվեց ներբեռնել արդյունքը փոխակերպման առցանց ծառայությունից:</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
+      <trans-unit id="Failure to prepare the archive" xml:space="preserve">
+        <source>Failure to prepare the archive</source>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
       <trans-unit id="Favorites" xml:space="preserve">
         <source>Favorites</source>
         <note>Category title</note>
@@ -2235,6 +2283,10 @@ others which use WebDAV protocol.</source>
       <trans-unit id="Invite people by email" xml:space="preserve">
         <source>Invite people by email</source>
         <target>Հրավիրեք մարդկանց էլ․փոստով</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Invite users via shared links to view documents without registration. You can also embed this room into any web interface." xml:space="preserve">
+        <source>Invite users via shared links to view documents without registration. You can also embed this room into any web interface.</source>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Kb" xml:space="preserve">
@@ -2641,6 +2693,10 @@ to the clipboard</source>
         <target>Հեռախոսահամարը սխալ է</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
+      <trans-unit id="Photo Library" xml:space="preserve">
+        <source>Photo Library</source>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
       <trans-unit id="Pin to top" xml:space="preserve">
         <source>Pin to top</source>
         <target>Ամրացնել վերևում</target>
@@ -2780,6 +2836,10 @@ to the clipboard</source>
         <target>Ծրագրի փաստաթղթեր</target>
         <note>Category title</note>
       </trans-unit>
+      <trans-unit id="Public room" xml:space="preserve">
+        <source>Public room</source>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
       <trans-unit id="Push notifications disabled" xml:space="preserve">
         <source>Push notifications disabled</source>
         <target>Push ծանուցումներն անջատված են</target>
@@ -2883,6 +2943,10 @@ to the clipboard</source>
         <source>Room admin</source>
         <target>Սենյակի ադմին</target>
         <note>Share status</note>
+      </trans-unit>
+      <trans-unit id="Room name" xml:space="preserve">
+        <source>Room name</source>
+        <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Rooms" xml:space="preserve">
         <source>Rooms</source>
@@ -3114,6 +3178,10 @@ to the clipboard</source>
       <trans-unit id="Switch" xml:space="preserve">
         <source>Switch</source>
         <target>Անջատիչ</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Take Photo" xml:space="preserve">
+        <source>Take Photo</source>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Take a Picture" xml:space="preserve">

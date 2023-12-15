@@ -10,12 +10,11 @@ import SwiftUI
 import WSTagsField
 
 struct TagsFieldView: View {
-    
     @Binding var tags: Set<String>
     @State var text: String?
     @State var applyTag: Bool = false
     @State var addTagStr = NSLocalizedString("Add tag", comment: "placeholder")
-    
+
     var body: some View {
         VStack(spacing: 0) {
             WSTagsFieldRepresentable(
@@ -28,19 +27,19 @@ struct TagsFieldView: View {
             .padding(.horizontal, 16)
             .background(Color.white)
             .cornerRadius(8)
-            
+
             if text?.isEmpty == false {
                 applyingView
             }
         }
     }
-    
+
     @ViewBuilder
     private var applyingView: some View {
         Rectangle()
             .frame(height: 4)
             .foregroundColor(Color(UIColor.clear))
-        
+
         HStack {
             Text(addTagStr + ": \"\(text ?? "")\"")
                 .padding(.horizontal, 16)
@@ -54,12 +53,10 @@ struct TagsFieldView: View {
             applyTag = true
         }
     }
-    
-    private func onUpdate(_ tagsField: WSTagsField) -> Void {
-        
-    }
-    
-    private func settingApplyer(_ tagsField: WSTagsField) -> Void {
+
+    private func onUpdate(_ tagsField: WSTagsField) {}
+
+    private func settingApplyer(_ tagsField: WSTagsField) {
         tagsField.onShouldAcceptTag = { field in
             field.text?
                 .trimmingCharacters(in: .whitespacesAndNewlines)

@@ -66,7 +66,7 @@ class OnlyofficeAPI {
         public static let tags = "api/\(version)/files/tags"
         public static let roomsTags = room.appendingPathComponent("tags")
         public static let roomLogo = room.appendingPathComponent("logo")
-        
+
         enum Forlder {
             public static let root = "@root"
             public static let my = "@my"
@@ -142,17 +142,16 @@ class OnlyofficeAPI {
                 return Endpoint<OnlyofficeResponse<ASCFile>>.make(String(format: Path.files, folderId), .get, URLEncoding.queryString)
             }
         }
-        
+
         // MARK: Tags
-        
+
         enum Tags {
-            
-            static func create() -> Endpoint<OnlyofficeResponse<ASCFolder>> {
-                return Endpoint<OnlyofficeResponse<OnlyofficeResponseBase>>.make(Path.tags, .post)
+            static func create(requestModel: CreateTagRequestModel) -> Endpoint<OnlyofficeResponse<ASCFolder>> {
+                return Endpoint<OnlyofficeResponse<OnlyofficeResponseBase>>.make(Path.tags, .post, nil, requestModel.toDictionary())
             }
-            
-            static func addToRoom(folder: ASCFolder) -> Endpoint<OnlyofficeResponse<ASCFolder>> {
-                return Endpoint<OnlyofficeResponse<OnlyofficeResponseBase>>.make(String(format: Path.roomsTags, folder.id), .put)
+
+            static func attach(folder: ASCFolder, requestModel: AttachTagsRequestModel) -> Endpoint<OnlyofficeResponse<ASCFolder>> {
+                return Endpoint<OnlyofficeResponse<OnlyofficeResponseBase>>.make(String(format: Path.roomsTags, folder.id), .put, nil, requestModel.toDictionary())
             }
         }
 
@@ -161,8 +160,8 @@ class OnlyofficeAPI {
         enum Rooms {
             static let paymentQuota: Endpoint<OnlyofficeResponse<ASCPaymentQuota>> = Endpoint<OnlyofficeResponse<ASCPaymentQuota>>.make(Path.paymentQuota, .get)
 
-            static func create() -> Endpoint<OnlyofficeResponse<ASCFolder>> {
-                return Endpoint<OnlyofficeResponse<ASCFolder>>.make(Path.rooms, .post)
+            static func create(requestModel: CreateRoomRequestModel) -> Endpoint<OnlyofficeResponse<ASCFolder>> {
+                return Endpoint<OnlyofficeResponse<ASCFolder>>.make(Path.rooms, .post, nil, requestModel.toDictionary())
             }
 
             static func pin(folder: ASCFolder) -> Endpoint<OnlyofficeResponse<ASCFolder>> {
@@ -180,9 +179,9 @@ class OnlyofficeAPI {
             static func unarchive(folder: ASCFolder) -> Endpoint<OnlyofficeResponse<ASCFolder>> {
                 return Endpoint<OnlyofficeResponse<ASCFolder>>.make(String(format: Path.roomUnarchive, folder.id), .put)
             }
-            
-            static func setLogo(folder: ASCFolder) -> Endpoint<OnlyofficeResponse<ASCFolder>> {
-                return Endpoint<OnlyofficeResponse<ASCFolder>>.make(String(format: Path.roomLogo, folder.id), .post)
+
+            static func attachLogo(folder: ASCFolder, requestModel: AttachLogoRequestModel) -> Endpoint<OnlyofficeResponse<ASCFolder>> {
+                return Endpoint<OnlyofficeResponse<ASCFolder>>.make(String(format: Path.roomLogo, folder.id), .post, nil, requestModel.toDictionary())
             }
         }
 
@@ -274,11 +273,10 @@ class OnlyofficeAPI {
         // MARK: Uploads
 
         enum Uploads {
-            
             static func logos() -> Endpoint<OnlyofficeResponseCodable<LogoUploadResult>> {
                 Endpoint<OnlyofficeResponseBase>.make(Path.logos, .post)
             }
-            
+
             static func upload(in path: String) -> Endpoint<OnlyofficeResponse<ASCFile>> {
                 return Endpoint<OnlyofficeResponse<ASCFile>>.make(String(format: Path.uploadFile, path), .post)
             }

@@ -44,7 +44,7 @@ struct CreateRoomView: View {
             )
         }
     }
-    
+
     private var roomTypeSection: some View {
         Section {
             CreatingRoomViewRow(room: viewModel.selectedRoom)
@@ -53,7 +53,7 @@ struct CreateRoomView: View {
                 }
         }
     }
-    
+
     private var roomImageAndNameSection: some View {
         Section {
             HStack {
@@ -65,9 +65,9 @@ struct CreateRoomView: View {
             }
         }
     }
-    
+
     private var roomTagsSection: some View {
-        Section() {
+        Section {
             TagsFieldView(tags: $viewModel.tags)
                 .listRowInsets(EdgeInsets())
         }

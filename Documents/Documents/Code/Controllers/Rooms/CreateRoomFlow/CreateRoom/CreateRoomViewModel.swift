@@ -6,37 +6,36 @@
 //  Copyright © 2023 Ascensio System SIA. All rights reserved.
 //
 
-import Foundation
 import Combine
+import Foundation
 import UIKit
 
 class CreateRoomViewModel: ObservableObject {
-    
     // MARK: - Published vars
-    
+
     @Published var roomName: String = ""
     @Published var isCreatingRoom = false
     @Published var errorMessage: String?
     @Published var selectedRoom: Room!
     @Published var selectedImage: UIImage?
     @Published var tags: Set<String> = []
-    
+
     // MARK: - Public vars
-    
+
     lazy var menuItems: [MenuViewItem] = makeImageMenuItems()
-    
+
     // MARK: - Private var
 
     private lazy var creatingRoomService: CreatingRoomService = NetworkCreatingRoomServiceImp()
     private var onCreate: (ASCFolder) -> Void
-    
+
     // MARK: - Init
 
     init(selectedRoom: Room, onCreate: @escaping (ASCFolder) -> Void) {
         self.selectedRoom = selectedRoom
         self.onCreate = onCreate
     }
-    
+
     // MARK: - Public func
 
     func createRoom() {
@@ -58,7 +57,7 @@ class CreateRoomViewModel: ObservableObject {
             self?.isCreatingRoom = false
         }
     }
-    
+
     // MARK: - Private func
 
     private func makeImageMenuItems() -> [MenuViewItem] {
@@ -78,7 +77,7 @@ class CreateRoomViewModel: ObservableObject {
             attachManager.cleanup(for: temporaryFolderName)
         }
     }
-    
+
     private func imageFromCameraAction() {
         let attachManager = ASCAttachmentManager()
         let temporaryFolderName = UUID().uuidString
@@ -88,7 +87,7 @@ class CreateRoomViewModel: ObservableObject {
             attachManager.cleanup(for: temporaryFolderName)
         }
     }
-    
+
     private func imageFromFilesAction() {
         let attachManager = ASCAttachmentManager()
         let temporaryFolderName = UUID().uuidString
@@ -98,7 +97,7 @@ class CreateRoomViewModel: ObservableObject {
             attachManager.cleanup(for: temporaryFolderName)
         }
     }
-    
+
     private func handleImageSelection(_ url: URL?, _ error: Error?) {
         guard let url = url else {
             errorMessage = error?.localizedDescription
@@ -106,7 +105,7 @@ class CreateRoomViewModel: ObservableObject {
         }
         selectedImage = UIImage(contentsOfFile: url.path)
     }
-    
+
     private func topController() -> UIViewController? {
         if var topController = UIWindow.keyWindow?.rootViewController {
             while let presentedViewController = topController.presentedViewController {

@@ -20,9 +20,8 @@ struct CreatingRoomModel {
 }
 
 class NetworkCreatingRoomServiceImp: CreatingRoomService {
-    
     private var networkService = OnlyofficeApiClient.shared
-    
+
     func createRoom(model: CreatingRoomModel, completion: @escaping (Result<ASCFolder, Error>) -> Void) {
         createRoomNetwork(model: model) { result in
             switch result {
@@ -44,13 +43,10 @@ class NetworkCreatingRoomServiceImp: CreatingRoomService {
             }
         }
     }
-    
+
     private func createRoomNetwork(model: CreatingRoomModel, completion: @escaping (Result<ASCFolder, Error>) -> Void) {
-        let params: [String: Any] = [
-            "roomType": model.roomType.rawValue,
-            "title": model.name,
-        ]
-        networkService.request(OnlyofficeAPI.Endpoints.Rooms.create(), params) { response, error in
+        let requestModel = CreateRoomRequestModel(roomType: model.roomType.rawValue, title: model.name)
+        networkService.request(OnlyofficeAPI.Endpoints.Rooms.create(requestModel: requestModel)) { response, error in
             guard let room = response?.result, error == nil else {
                 completion(.failure(error!))
                 return
@@ -58,7 +54,7 @@ class NetworkCreatingRoomServiceImp: CreatingRoomService {
             completion(.success(room))
         }
     }
-    
+
     private func createAndAttachTags(tags: [String], room: ASCFolder, completion: @escaping () -> Void) {
         guard !tags.isEmpty else {
             completion()
@@ -75,12 +71,13 @@ class NetworkCreatingRoomServiceImp: CreatingRoomService {
             completion()
         }
     }
-    
+
     private func createTags(tags: [String], completion: @escaping () -> Void) {
         let group = DispatchGroup()
         for tag in tags {
             group.enter()
-            networkService.request(OnlyofficeAPI.Endpoints.Tags.create(), ["name": tag]) {  _, _ in
+            let requestModel = CreateTagRequestModel(name: tag)
+            networkService.request(OnlyofficeAPI.Endpoints.Tags.create(requestModel: requestModel)) { _, _ in
                 group.leave()
             }
         }
@@ -88,13 +85,14 @@ class NetworkCreatingRoomServiceImp: CreatingRoomService {
             completion()
         }
     }
-    
+
     private func attachTagsToRoom(tags: [String], room: ASCFolder, completion: @escaping () -> Void) {
-        networkService.request(OnlyofficeAPI.Endpoints.Tags.addToRoom(folder: room), ["names": tags]) { _, _ in
+        let requestModel = AttachTagsRequestModel(names: tags)
+        networkService.request(OnlyofficeAPI.Endpoints.Tags.attach(folder: room, requestModel: requestModel)) { _, _ in
             completion()
         }
     }
-    
+
     private func uploadAndAttachImage(image: UIImage?, room: ASCFolder, completion: @escaping () -> Void) {
         guard let image else {
             completion()
@@ -114,7 +112,7 @@ class NetworkCreatingRoomServiceImp: CreatingRoomService {
             }
         }
     }
-    
+
     private func uploadImage(image: UIImage, room: ASCFolder, completion: @escaping (Result<LogoUploadResult, Error>) -> Void) {
         guard let imageData = image.jpegData(compressionQuality: 0.7) else {
             completion(.failure(CreatingRoomServiceError.unableGetImageData))
@@ -123,7 +121,7 @@ class NetworkCreatingRoomServiceImp: CreatingRoomService {
 
         let fileName = "\(room.title).jpg"
         let mimeType = "image/jpeg"
-        
+
         networkService.request(OnlyofficeAPI.Endpoints.Uploads.logos()) { multipartFormData in
             multipartFormData.append(imageData, withName: "file", fileName: fileName, mimeType: mimeType)
         } _: { response, progress, error in
@@ -135,27 +133,20 @@ class NetworkCreatingRoomServiceImp: CreatingRoomService {
             }
         }
     }
-    
+
     private func attachImage(to room: ASCFolder, logo: LogoUploadResult, imageSize: CGSize, completion: @escaping () -> Void) {
         guard logo.success else {
             completion()
             return
         }
-        
-        let params: [String: Any] = [
-            "tmpFile": logo.tmpFileUrl,
-            "x": 0,
-            "y": 0,
-            "width": imageSize.width,
-            "height": imageSize.height
-        ]
-        
-        networkService.request(OnlyofficeAPI.Endpoints.Rooms.setLogo(folder: room), params,  { result, _  in
+        let requestModel = AttachLogoRequestModel(tmpFile: logo.tmpFileUrl, width: imageSize.width, height: imageSize.height)
+
+        networkService.request(OnlyofficeAPI.Endpoints.Rooms.attachLogo(folder: room, requestModel: requestModel)) { result, _ in
             if let folder = result?.result {
                 room.logo = folder.logo
             }
             completion()
-        })
+        }
     }
 }
 

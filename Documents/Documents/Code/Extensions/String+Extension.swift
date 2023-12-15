@@ -389,7 +389,7 @@ extension String {
 extension String: Identifiable {
     public var id: String {
         get { self }
-        set { }
+        set {}
     }
 }
 

@@ -99,7 +99,7 @@ class NetworkingClient: NSObject, NetworkingRequestingProtocol {
             return
         }
 
-        var params: Parameters = [:]
+        var params: Parameters = endpoint.params ?? [:]
 
         if let keys = parameters?.keys {
             for key in keys {
@@ -157,7 +157,7 @@ class NetworkingClient: NSObject, NetworkingRequestingProtocol {
             return
         }
 
-        let params: Parameters = [:]
+        let params: Parameters = endpoint.params ?? [:]
 
         let uploadManager = Alamofire.Session(
             configuration: {

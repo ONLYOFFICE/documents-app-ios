@@ -223,7 +223,7 @@ class ASCSharingInviteRightHoldersViewController: UIViewController, ASCSharingAd
     func loadData() {
         if !usersCurrentlyLoading {
             usersCurrentlyLoading = true
-            interactor?.makeRequest(requestType: .loadUsers(preloadRightHolders: true, hideUsersWhoHasRights: true))
+            interactor?.makeRequest(requestType: .loadUsers(preloadRightHolders: true, hideUsersWhoHasRights: true, showOnlyAdmins: false))
         }
     }
 

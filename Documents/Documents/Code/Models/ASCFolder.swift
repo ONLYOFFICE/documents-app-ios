@@ -24,6 +24,7 @@ class ASCFolder: ASCEntity {
     var pinned: Bool = false
     var roomType: ASCRoomType?
     var isPrivate: Bool = false
+    var isCanLeaveRoom: Bool = false
     var rootFolderType: ASCFolderType = .unknown
     var updated: Date?
     var updatedBy: ASCUser?

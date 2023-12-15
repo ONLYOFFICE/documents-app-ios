@@ -11,6 +11,7 @@ import SwiftUI
 extension Color {
     static let secondarySystemGroupedBackground = Color(UIColor.secondarySystemGroupedBackground)
     static let secondaryLabel = Color(UIColor.secondaryLabel)
+    static let separator = Color(UIColor.separator)
 
     init(hex: UInt, alpha: Double = 1) {
         self.init(

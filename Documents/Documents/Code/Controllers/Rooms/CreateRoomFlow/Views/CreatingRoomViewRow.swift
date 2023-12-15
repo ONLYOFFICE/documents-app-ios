@@ -33,6 +33,13 @@ struct CreatingRoomViewRow: View {
                     .font(subtitleFont)
                     .foregroundColor(Color.secondaryLabel)
             }
+
+            Spacer()
+
+            Image(systemName: "chevron.right")
+                .font(.subheadline)
+                .foregroundColor(Color.separator)
+                .flipsForRightToLeftLayoutDirection(true)
         }
     }
 

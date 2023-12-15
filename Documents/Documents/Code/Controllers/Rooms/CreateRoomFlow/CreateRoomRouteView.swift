@@ -37,3 +37,7 @@ struct CreateRoomRouteView: View {
         }
     }
 }
+
+#Preview {
+    CreateRoomRouteView { _ in }
+}

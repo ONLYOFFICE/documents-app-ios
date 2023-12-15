@@ -25,7 +25,7 @@ struct TagsFieldView: View {
             )
             .padding(.top, 8)
             .padding(.horizontal, 16)
-            .background(Color.white)
+            .background(Color.secondarySystemGroupedBackground)
             .cornerRadius(8)
 
             if text?.isEmpty == false {
@@ -46,7 +46,7 @@ struct TagsFieldView: View {
                 .padding(.vertical, 12)
             Spacer()
         }
-        .background(Color.white)
+        .background(Color.secondarySystemGroupedBackground)
         .cornerRadius(8)
         .contentShape(Rectangle())
         .onTapGesture {
@@ -100,4 +100,8 @@ private extension String {
         let regex = "^[A-Za-z0-9_ ]+$"
         return range(of: regex, options: .regularExpression) != nil
     }
+}
+
+#Preview {
+    TagsFieldView(tags: .constant([]))
 }

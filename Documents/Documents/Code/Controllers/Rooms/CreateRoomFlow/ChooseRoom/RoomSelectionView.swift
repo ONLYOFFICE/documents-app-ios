@@ -25,10 +25,25 @@ struct RoomSelectionView: View {
     @Binding var selectedRoom: Room?
     @State var dismissOnSelection = false
     @State private var isPresenting = true
+    @State private var maxHeights: CGFloat = 0
 
     var body: some View {
         List(viewModel.rooms, id: \.name) { room in
             CreatingRoomViewRow(room: room)
+                .frame(minHeight: maxHeights)
+                .background(
+                    GeometryReader { proxy in
+                        Color.clear
+                            .preference(
+                                key: SizePreferenceKey.self,
+                                value: proxy.size
+                            )
+                    })
+                .onPreferenceChange(SizePreferenceKey.self) { preferences in
+                    if preferences.height > maxHeights {
+                        maxHeights = preferences.height
+                    }
+                }
                 .onTapGesture {
                     selectedRoom = room
                     if dismissOnSelection {
@@ -45,9 +60,15 @@ struct RoomSelectionView: View {
     }
 }
 
-struct RoomSelectionView_Previews: PreviewProvider {
-    static var previews: some View {
-        let view = RoomSelectionView(selectedRoom: .constant(nil))
-        return view
+struct SizePreferenceKey: PreferenceKey {
+    typealias Value = CGSize
+    static var defaultValue: Value = .zero
+
+    static func reduce(value: inout Value, nextValue: () -> Value) {
+        _ = nextValue()
     }
+}
+
+#Preview {
+    RoomSelectionView(selectedRoom: .constant(nil))
 }

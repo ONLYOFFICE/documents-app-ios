@@ -11,19 +11,27 @@ import SwiftUI
 struct CreatingRoomViewRow: View {
     let room: Room
 
+    var subtitleFont: Font {
+        if #available(iOS 14.0, *) {
+            .caption2
+        } else {
+            .footnote
+        }
+    }
+
     var body: some View {
         HStack(spacing: 14) {
             roomImageView(for: room)
                 .frame(width: 36, height: 36)
                 .padding(.vertical, 4)
 
-            VStack(alignment: .leading, spacing: 2) {
+            VStack(alignment: .leading, spacing: 4) {
                 Text(room.name)
-                    .font(.subheadline)
+                    .font(.subheadline) // TODO: Look at design
                     .fontWeight(.semibold)
                 Text(room.description)
-                    .font(.footnote)
-                    .foregroundColor(.gray)
+                    .font(subtitleFont)
+                    .foregroundColor(Color.secondaryLabel)
             }
         }
     }
@@ -37,10 +45,8 @@ struct CreatingRoomViewRow: View {
     }
 }
 
-struct CreatingRoomViewRow_Previews: PreviewProvider {
-    static var previews: some View {
-        CreatingRoomViewRow(
-            room: CreatingRoomType.publicRoom.toRoom()
-        )
-    }
+#Preview {
+    CreatingRoomViewRow(
+        room: CreatingRoomType.publicRoom.toRoom()
+    )
 }

@@ -1,6 +1,6 @@
 //
 //  ASCAttachmentManager.swift
-//  DocumentEditor
+//  Documents
 //
 //  Created by Alexander Yuzhin on 09.02.2022.
 //  Copyright © 2022 Ascensio System SIA. All rights reserved.
@@ -10,10 +10,12 @@ import AVFoundation
 import MobileCoreServices
 import UIKit
 
-typealias ASCAttachmentHandler = (_ url: URL?, _ error: Error?) -> Void
+typealias ASCAttachmentHandler = (Result<URL, Error>) -> Void
 
-enum ASCAttachmentManagerError: LocalizedError {
+enum ASCAttachmentManagerError: LocalizedError, Equatable {
     case exist
+    case canceled
+    case convert
     case unknown(error: Error?)
 
     public var errorDescription: String? {
@@ -22,7 +24,15 @@ enum ASCAttachmentManagerError: LocalizedError {
             return "A file with a similar name already exist."
         case let .unknown(error):
             return error?.localizedDescription ?? "Unknown error"
+        case .canceled:
+            return "Canceled"
+        case .convert:
+            return "Сonversion error"
         }
+    }
+
+    static func == (lhs: ASCAttachmentManagerError, rhs: ASCAttachmentManagerError) -> Bool {
+        String(describing: lhs) == String(describing: rhs)
     }
 }
 
@@ -282,17 +292,23 @@ extension ASCAttachmentManager: UIImagePickerControllerDelegate, UINavigationCon
                 let folderURL = temporaryDirectoryURL.appendingPathComponent(temporaryFolderName)
                 debugPrint(folderURL)
                 store(fileData: imageData, for: imageName, in: folderURL) { file, error in
-                    self.handler?(file, error)
+                    if let error {
+                        self.handler?(.failure(error))
+                    } else if let file {
+                        self.handler?(.success(file))
+                    } else {
+                        self.handler?(.failure(ASCAttachmentManagerError.convert))
+                    }
                 }
             }
         } else {
-            handler?(nil, nil)
+            handler?(.failure(ASCAttachmentManagerError.convert))
         }
     }
 
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
         picker.dismiss(animated: true, completion: nil)
-        handler?(nil, nil)
+        handler?(.failure(ASCAttachmentManagerError.canceled))
     }
 }
 
@@ -313,11 +329,17 @@ extension ASCAttachmentManager: UIDocumentPickerDelegate {
                     let folderURL = temporaryDirectoryURL.appendingPathComponent(temporaryFolderName)
                     debugPrint(folderURL)
                     self.store(fileData: fileData, for: url.lastPathComponent, in: folderURL) { file, error in
-                        self.handler?(file, error)
+                        if let error {
+                            self.handler?(.failure(error))
+                        } else if let file {
+                            self.handler?(.success(file))
+                        } else {
+                            self.handler?(.failure(ASCAttachmentManagerError.convert))
+                        }
                     }
                 }
             } catch {
-                self.handler?(nil, error)
+                self.handler?(.failure(error))
             }
         }
 
@@ -325,6 +347,6 @@ extension ASCAttachmentManager: UIDocumentPickerDelegate {
     }
 
     func documentPickerWasCancelled(_ controller: UIDocumentPickerViewController) {
-        handler?(nil, nil)
+        handler?(.failure(ASCAttachmentManagerError.canceled))
     }
 }

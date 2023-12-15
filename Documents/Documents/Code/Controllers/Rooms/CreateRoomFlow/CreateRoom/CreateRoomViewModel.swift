@@ -1,6 +1,6 @@
 //
 //  CreateRoomViewModel.swift
-//  Documents-opensource
+//  Documents
 //
 //  Created by Pavel Chernyshev on 23.11.2023.
 //  Copyright © 2023 Ascensio System SIA. All rights reserved.
@@ -72,8 +72,8 @@ class CreateRoomViewModel: ObservableObject {
         let attachManager = ASCAttachmentManager()
         let temporaryFolderName = UUID().uuidString
         guard let topController = topController() else { return }
-        attachManager.storeFromLibrary(in: topController, to: temporaryFolderName) { [weak self] url, error in
-            self?.handleImageSelection(url, error)
+        attachManager.storeFromLibrary(in: topController, to: temporaryFolderName) { [weak self] result in
+            self?.handleImageSelection(result)
             attachManager.cleanup(for: temporaryFolderName)
         }
     }
@@ -82,8 +82,8 @@ class CreateRoomViewModel: ObservableObject {
         let attachManager = ASCAttachmentManager()
         let temporaryFolderName = UUID().uuidString
         guard let topController = topController() else { return }
-        attachManager.storeFromCamera(in: topController, to: temporaryFolderName) { [weak self] url, error in
-            self?.handleImageSelection(url, error)
+        attachManager.storeFromCamera(in: topController, to: temporaryFolderName) { [weak self] result in
+            self?.handleImageSelection(result)
             attachManager.cleanup(for: temporaryFolderName)
         }
     }
@@ -92,18 +92,22 @@ class CreateRoomViewModel: ObservableObject {
         let attachManager = ASCAttachmentManager()
         let temporaryFolderName = UUID().uuidString
         guard let topController = topController() else { return }
-        attachManager.storeFromFiles(in: topController, to: temporaryFolderName) { [weak self] url, error in
-            self?.handleImageSelection(url, error)
+        attachManager.storeFromFiles(in: topController, to: temporaryFolderName) { [weak self] result in
+            self?.handleImageSelection(result)
             attachManager.cleanup(for: temporaryFolderName)
         }
     }
 
-    private func handleImageSelection(_ url: URL?, _ error: Error?) {
-        guard let url = url else {
-            errorMessage = error?.localizedDescription
-            return
+    private func handleImageSelection(_ result: Result<URL, Error>) {
+        switch result {
+        case let .success(url):
+            selectedImage = UIImage(contentsOfFile: url.path)
+        case let .failure(error):
+            if let error = error as? ASCAttachmentManagerError, error == .canceled {
+                return
+            }
+            errorMessage = error.localizedDescription
         }
-        selectedImage = UIImage(contentsOfFile: url.path)
     }
 
     private func topController() -> UIViewController? {

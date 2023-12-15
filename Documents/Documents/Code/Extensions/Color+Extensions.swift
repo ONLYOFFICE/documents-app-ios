@@ -9,6 +9,9 @@
 import SwiftUI
 
 extension Color {
+    static let secondarySystemGroupedBackground = Color(UIColor.secondarySystemGroupedBackground)
+    static let secondaryLabel = Color(UIColor.secondaryLabel)
+
     init(hex: UInt, alpha: Double = 1) {
         self.init(
             .sRGB,

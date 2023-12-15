@@ -1,6 +1,6 @@
 //
 //  CreateRoomRouteView.swift
-//  Documents-opensource
+//  Documents
 //
 //  Created by Pavel Chernyshev on 04.12.2023.
 //  Copyright © 2023 Ascensio System SIA. All rights reserved.
@@ -36,4 +36,8 @@ struct CreateRoomRouteView: View {
                 }
         }
     }
+}
+
+#Preview {
+    CreateRoomRouteView { _ in }
 }

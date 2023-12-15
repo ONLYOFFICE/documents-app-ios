@@ -1,6 +1,6 @@
 //
 //  CreateRoomView.swift
-//  Documents-opensource
+//  Documents
 //
 //  Created by Pavel Chernyshev on 22.11.2023.
 //  Copyright © 2023 Ascensio System SIA. All rights reserved.
@@ -71,7 +71,7 @@ struct CreateRoomView: View {
             TagsFieldView(tags: $viewModel.tags)
                 .listRowInsets(EdgeInsets())
         }
-        .background(Color(UIColor.systemGray6))
+        .background(Color.secondarySystemGroupedBackground)
     }
 
     @ViewBuilder
@@ -97,7 +97,7 @@ struct CreateRoomView: View {
     private var roomNameTextField: some View {
         TextField(NSLocalizedString("Room name", comment: ""), text: $viewModel.roomName)
             .padding()
-            .background(Color.white)
+            .background(Color.secondarySystemGroupedBackground)
             .disabled(viewModel.isCreatingRoom)
     }
 
@@ -114,10 +114,8 @@ struct CreateRoomView: View {
     }
 }
 
-struct CreateRoomView_Previews: PreviewProvider {
-    static var previews: some View {
-        CreateRoomView(
-            viewModel: CreateRoomViewModel(selectedRoom: CreatingRoomType.publicRoom.toRoom()) { _ in }
-        )
-    }
+#Preview {
+    CreateRoomView(
+        viewModel: CreateRoomViewModel(selectedRoom: CreatingRoomType.publicRoom.toRoom()) { _ in }
+    )
 }

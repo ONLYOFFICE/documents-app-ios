@@ -30,7 +30,7 @@ enum ASCRoomType: Int {
         case .custom:
             return Asset.Images.roomCustom.image
         case .public:
-            return Asset.Images.roomDefault.image
+            return Asset.Images.roomPublic.image
         }
     }
 }

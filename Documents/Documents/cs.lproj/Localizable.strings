@@ -29,6 +29,12 @@
 "<p>You must have a paid version of the player to use this service.</p><p>If you have activated double authentication, please generate a CDM application from the Infomaniak manager. <a href=\"https://www.infomaniak.com/en/support/faq/1940/enable-two-step-verification\">More...</a></p>" = "<p>Pro použití této služby musíte používat placenou verzi přehrávače.</p><p>Pokud máte aktivované dvojité ověřování, vygenerujte si žádost CDM ze správce Infomaniak. <a href=\"https://www.infomaniak.com/en/support/faq/1940/enable-two-step-verification\">Další...</a></p>";
 
 /* No comment provided by engineer. */
+"Сould not download file." = "Nelze stáhnout soubor.";
+
+/* No comment provided by engineer. */
+"Сould not upload file." = "Nelze nahrát soubor.";
+
+/* No comment provided by engineer. */
 "A file with a similar name already exists in the document directory on the device." = "Soubor s podobným názvem již existuje v adresáři dokumentů v zařízení.";
 
 /* No comment provided by engineer. */
@@ -196,12 +202,6 @@
 
 /* No comment provided by engineer. */
 "Check your internet connection" = "Zkontrolujte vaše připojení k internetu";
-
-/* No comment provided by engineer. */
-"Choose Code Page" = "Zvolte stránku kódu";
-
-/* No comment provided by engineer. */
-"Choose CSV Options" = "Vyberte možnost CSV";
 
 /* Caption of the processing */
 "Cleanup" = "Vyštění";
@@ -428,9 +428,6 @@
 /* Caption of the processing */
 "Deleting" = "Smazání";
 
-/* No comment provided by engineer. */
-"Delimiter" = "Oddělovač";
-
 /* Share status */
 "Deny Access" = "Zamítnout přístup";
 
@@ -512,9 +509,6 @@
 
 /* No comment provided by engineer. */
 "Enable if you want to receive notifications from the %@" = "Povolit, pokud chcete dostávat oznámení z %@";
-
-/* No comment provided by engineer. */
-"Encoding" = "Kódování";
 
 /* Presentation Viewer */
 "End Slide Show" = "Ukončit prezentaci";
@@ -1228,9 +1222,6 @@
 "Sort" = "Seřadit";
 
 /* No comment provided by engineer. */
-"Space" = "Mezerník";
-
-/* No comment provided by engineer. */
 "Spreadsheet" = "Tabulka";
 
 /* Default title of sample document */
@@ -1247,9 +1238,6 @@
 
 /* No comment provided by engineer. */
 "Switch" = "Přepnutí";
-
-/* No comment provided by engineer. */
-"Tab" = "Tabulátor";
 
 /* No comment provided by engineer. */
 "Take a Picture" = "Vyfotit";
@@ -1556,10 +1544,4 @@
 
 /* Data units */
 "Zero bytes" = "Nulové bajty";
-
-/* No comment provided by engineer. */
-"Сould not download file." = "Nelze stáhnout soubor.";
-
-/* No comment provided by engineer. */
-"Сould not upload file." = "Nelze nahrát soubor.";
 

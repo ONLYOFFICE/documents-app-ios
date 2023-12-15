@@ -731,21 +731,20 @@ class ASCDocumentsViewController: ASCBaseTableViewController, UIGestureRecognize
     private func createAddBarButton() -> UIBarButtonItem? {
         guard provider?.allowAdd(toFolder: folder) == true else { return nil }
 
-        if #available(iOS 13.0, *) {
-            let config = UIImage.SymbolConfiguration(pointSize: 22, weight: .regular)
+        let config = UIImage.SymbolConfiguration(pointSize: 22, weight: .regular)
 
-            return ASCStyles.createBarButton(
-                image: UIImage(systemName: "plus", withConfiguration: config),
-                target: self,
-                action: #selector(onAddEntityAction)
-            )
-        } else {
-            return ASCStyles.createBarButton(
-                image: Asset.Images.navAdd.image,
-                target: self,
-                action: #selector(onAddEntityAction)
-            )
-        }
+        let icon: UIImage? = {
+            guard folder?.isRoomListFolder == true else {
+                return UIImage(systemName: "plus", withConfiguration: config)
+            }
+            return Asset.Images.barRectanglesAdd.image
+        }()
+
+        return ASCStyles.createBarButton(
+            image: icon,
+            target: self,
+            action: #selector(onAddEntityAction)
+        )
     }
 
     private func createFilterBarButton() -> UIBarButtonItem {

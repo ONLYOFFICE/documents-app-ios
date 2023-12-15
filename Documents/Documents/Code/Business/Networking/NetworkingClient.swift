@@ -157,7 +157,7 @@ class NetworkingClient: NSObject, NetworkingRequestingProtocol {
             return
         }
 
-        let params: Parameters = [:]
+        let params: Parameters = parameters ?? [:]
 
         let uploadManager = Alamofire.Session(
             configuration: {

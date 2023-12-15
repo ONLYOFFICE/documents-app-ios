@@ -1201,6 +1201,10 @@ Note: if you forget the passcode, you'll need to delete and reinstall the app. A
         <target>සමාන නමක් සහිත අථක %1$lu ක් දැනටමත් '%2$@' බහාලුමේ පවතී. උඩින් ලියන්නද?</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
+      <trans-unit id=": &quot;%@&quot;" xml:space="preserve">
+        <source>: "%@"</source>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
       <trans-unit id="&lt;p&gt;Use the password created in &lt;a href=&quot;https://yandex.ru/id/about&quot;&gt;Yandex ID&lt;/a&gt;.&lt;/br&gt;More detailed connection instructions can be found in the &lt;a href=&quot;https://yandex.ru/support/disk-desktop/webdav-app-passwords.html?lang=ru&quot;&gt;help&lt;/a&gt;.&lt;/p&gt;" xml:space="preserve">
         <source>&lt;p&gt;Use the password created in &lt;a href="https://yandex.ru/id/about"&gt;Yandex ID&lt;/a&gt;.&lt;/br&gt;More detailed connection instructions can be found in the &lt;a href="https://yandex.ru/support/disk-desktop/webdav-app-passwords.html?lang=ru"&gt;help&lt;/a&gt;.&lt;/p&gt;</source>
         <target>&lt;p&gt;&lt;a href="https://yandex.ru/id/about"&gt;යාන්ඩෙක්ස් හැඳු.&lt;/a&gt; හි සාදන ලද මුරපදය භාවිතා කරන්න.&lt;/br&gt;තවත් විස්තර &lt;a href="https://yandex.ru/support/disk-desktop/webdav-app-passwords.html?lang=en"&gt;උපකාර&lt;/a&gt; පිටුවෙහි සොයා ගැනීමට හැකිය.&lt;/p&gt;</target>
@@ -1311,6 +1315,10 @@ Note: if you forget the passcode, you'll need to delete and reinstall the app. A
         <target>පණිවිඩයක් යොදන්න</target>
         <note>Sharing settings add notification message</note>
       </trans-unit>
+      <trans-unit id="Add tag" xml:space="preserve">
+        <source>Add tag</source>
+        <note>placeholder</note>
+      </trans-unit>
       <trans-unit id="Add users" xml:space="preserve">
         <source>Add users</source>
         <target>පරිශ්‍රීලකයින් යොදන්න</target>
@@ -1366,6 +1374,10 @@ Note: if you forget the passcode, you'll need to delete and reinstall the app. A
       <trans-unit id="AppleId authentication failed" xml:space="preserve">
         <source>AppleId authentication failed</source>
         <target>ඇපල්හැඳු. සත්‍යාපනයට අසමත් විය</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Apply your own settings to use this room for any custom purpose" xml:space="preserve">
+        <source>Apply your own settings to use this room for any custom purpose</source>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Applying" xml:space="preserve">
@@ -1494,14 +1506,12 @@ Note: if you forget the passcode, you'll need to delete and reinstall the app. A
         <target>ඔබගේ අන්තර්ජාල සම්බන්ධතාවය පරීක්‍ෂා කරන්න</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
-      <trans-unit id="Choose CSV Options" xml:space="preserve">
-        <source>Choose CSV Options</source>
-        <target>CSV විකල්ප තෝරන්න</target>
+      <trans-unit id="Choose Files" xml:space="preserve">
+        <source>Choose Files</source>
         <note>No comment provided by engineer.</note>
       </trans-unit>
-      <trans-unit id="Choose Code Page" xml:space="preserve">
-        <source>Choose Code Page</source>
-        <target>කේත පිටුව තෝරන්න</target>
+      <trans-unit id="Choose room type" xml:space="preserve">
+        <source>Choose room type</source>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Cleanup" xml:space="preserve">
@@ -1544,6 +1554,10 @@ Note: if you forget the passcode, you'll need to delete and reinstall the app. A
         <target>මේඝ නාමාවලිය</target>
         <note>Default external storage name</note>
       </trans-unit>
+      <trans-unit id="Collaborate on one or multiple documents with your team" xml:space="preserve">
+        <source>Collaborate on one or multiple documents with your team</source>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
       <trans-unit id="Collaborate with your team" xml:space="preserve">
         <source>Collaborate with your team</source>
         <target>කණ්ඩායම සමඟ සහයෝගයෙන් වැඩ කරන්න</target>
@@ -1552,6 +1566,10 @@ Note: if you forget the passcode, you'll need to delete and reinstall the app. A
       <trans-unit id="Collaboration" xml:space="preserve">
         <source>Collaboration</source>
         <target>සහයෝගිත්‍වය</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Collaboration room" xml:space="preserve">
+        <source>Collaboration room</source>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Commentator" xml:space="preserve">
@@ -1754,6 +1772,10 @@ others which use WebDAV protocol.</source>
         <target>ගොනුවට ලිවීමට නොහැකි විය</target>
         <note>Description of file operation error</note>
       </trans-unit>
+      <trans-unit id="Couldn't download the room." xml:space="preserve">
+        <source>Couldn't download the room.</source>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
       <trans-unit id="Couldn't rename the file" xml:space="preserve">
         <source>Couldn't rename the file</source>
         <target>ගොනුව නම් කිරීමට නොහැකි විය</target>
@@ -1779,10 +1801,18 @@ others which use WebDAV protocol.</source>
         <target>නව ලේඛන, පැතුරුම්පත් හෝ සමර්පණ සාදන්න. ඔබගේ ගොනු සංවිධානය කිරීමට නව බහාලුම් සාදන්න.</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
+      <trans-unit id="Create room" xml:space="preserve">
+        <source>Create room</source>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
       <trans-unit id="Creating" xml:space="preserve">
         <source>Creating</source>
         <target>සෑදෙමින්</target>
         <note>Caption of the process</note>
+      </trans-unit>
+      <trans-unit id="Creating..." xml:space="preserve">
+        <source>Creating...</source>
+        <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Custom" xml:space="preserve">
         <source>Custom</source>
@@ -1793,6 +1823,10 @@ others which use WebDAV protocol.</source>
         <source>Custom filter</source>
         <target>අභිරුචි පෙරහන</target>
         <note>Share status</note>
+      </trans-unit>
+      <trans-unit id="Custom room" xml:space="preserve">
+        <source>Custom room</source>
+        <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Dark" xml:space="preserve">
         <source>Dark</source>
@@ -1848,11 +1882,6 @@ others which use WebDAV protocol.</source>
         <source>Deleting</source>
         <target>මැකෙමින්</target>
         <note>Caption of the processing</note>
-      </trans-unit>
-      <trans-unit id="Delimiter" xml:space="preserve">
-        <source>Delimiter</source>
-        <target>පරිසීමකය</target>
-        <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Deny Access" xml:space="preserve">
         <source>Deny Access</source>
@@ -1990,11 +2019,6 @@ others which use WebDAV protocol.</source>
         <target>%@ වෙතින් දැනුම්දීම් ලැබීමට අවශ්‍ය නැතිනම් සබල කරන්න</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
-      <trans-unit id="Encoding" xml:space="preserve">
-        <source>Encoding</source>
-        <target>ආකේතනය</target>
-        <note>No comment provided by engineer.</note>
-      </trans-unit>
       <trans-unit id="End Slide Show" xml:space="preserve">
         <source>End Slide Show</source>
         <target>චිත්‍රකාඩ දැක්ම නිමාව</target>
@@ -2098,6 +2122,10 @@ others which use WebDAV protocol.</source>
       <trans-unit id="Failure to download result from conversion online service." xml:space="preserve">
         <source>Failure to download result from conversion online service.</source>
         <target>මාර්ගගත අනුවර්තන සේවාවෙන් ප්‍රතිඵල බාගැනීමට අසමත් විය.</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Failure to prepare the archive" xml:space="preserve">
+        <source>Failure to prepare the archive</source>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Favorites" xml:space="preserve">
@@ -2289,6 +2317,10 @@ others which use WebDAV protocol.</source>
         <target>වි-තැපෑලෙන් ඇරයුම</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
+      <trans-unit id="Invite users via shared links to view documents without registration. You can also embed this room into any web interface." xml:space="preserve">
+        <source>Invite users via shared links to view documents without registration. You can also embed this room into any web interface.</source>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
       <trans-unit id="Kb" xml:space="preserve">
         <source>Kb</source>
         <target>කි.බ.</target>
@@ -2319,6 +2351,10 @@ to the clipboard</source>
       <trans-unit id="Link with the invitation has been sent to the mail" xml:space="preserve">
         <source>Link with the invitation has been sent to the mail</source>
         <target>ආරාධනය සමඟ සබැඳිය තැපෑලට යවා ඇත</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Loading..." xml:space="preserve">
+        <source>Loading...</source>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Logging in" xml:space="preserve">
@@ -2689,6 +2725,10 @@ to the clipboard</source>
         <target>දුරකථනය වැරදිය</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
+      <trans-unit id="Photo Library" xml:space="preserve">
+        <source>Photo Library</source>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
       <trans-unit id="Pin to top" xml:space="preserve">
         <source>Pin to top</source>
         <target>මුදුනට අමුණන්න</target>
@@ -2828,6 +2868,10 @@ to the clipboard</source>
         <target>ව්‍යාපෘති ලේඛන</target>
         <note>Category title</note>
       </trans-unit>
+      <trans-unit id="Public room" xml:space="preserve">
+        <source>Public room</source>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
       <trans-unit id="Push notifications disabled" xml:space="preserve">
         <source>Push notifications disabled</source>
         <target>තල්ලු දැනුම්දීම් අබලයි</target>
@@ -2931,6 +2975,10 @@ to the clipboard</source>
         <source>Room admin</source>
         <target>කාමරයේ පරිපාලක</target>
         <note>Share status</note>
+      </trans-unit>
+      <trans-unit id="Room name" xml:space="preserve">
+        <source>Room name</source>
+        <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Rooms" xml:space="preserve">
         <source>Rooms</source>
@@ -3134,11 +3182,6 @@ to the clipboard</source>
         <target>වර්ගනය</target>
         <note>Button title</note>
       </trans-unit>
-      <trans-unit id="Space" xml:space="preserve">
-        <source>Space</source>
-        <target>පරතරය</target>
-        <note>No comment provided by engineer.</note>
-      </trans-unit>
       <trans-unit id="Spreadsheet" xml:space="preserve">
         <source>Spreadsheet</source>
         <target>පැතුරුම්පත</target>
@@ -3169,9 +3212,8 @@ to the clipboard</source>
         <target>මාරුව</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
-      <trans-unit id="Tab" xml:space="preserve">
-        <source>Tab</source>
-        <target>පටිත්ත</target>
+      <trans-unit id="Take Photo" xml:space="preserve">
+        <source>Take Photo</source>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Take a Picture" xml:space="preserve">

@@ -46,7 +46,7 @@ class NetworkCreatingRoomServiceImp: CreatingRoomService {
 
     private func createRoomNetwork(model: CreatingRoomModel, completion: @escaping (Result<ASCFolder, Error>) -> Void) {
         let requestModel = CreateRoomRequestModel(roomType: model.roomType.rawValue, title: model.name)
-        networkService.request(OnlyofficeAPI.Endpoints.Rooms.create(requestModel: requestModel)) { response, error in
+        networkService.request(OnlyofficeAPI.Endpoints.Rooms.create(), requestModel.dictionary) { response, error in
             guard let room = response?.result, error == nil else {
                 completion(.failure(error!))
                 return
@@ -77,7 +77,7 @@ class NetworkCreatingRoomServiceImp: CreatingRoomService {
         for tag in tags {
             group.enter()
             let requestModel = CreateTagRequestModel(name: tag)
-            networkService.request(OnlyofficeAPI.Endpoints.Tags.create(requestModel: requestModel)) { _, _ in
+            networkService.request(OnlyofficeAPI.Endpoints.Tags.create(), requestModel.dictionary) { _, _ in
                 group.leave()
             }
         }
@@ -88,7 +88,7 @@ class NetworkCreatingRoomServiceImp: CreatingRoomService {
 
     private func attachTagsToRoom(tags: [String], room: ASCFolder, completion: @escaping () -> Void) {
         let requestModel = AttachTagsRequestModel(names: tags)
-        networkService.request(OnlyofficeAPI.Endpoints.Tags.attach(folder: room, requestModel: requestModel)) { _, _ in
+        networkService.request(OnlyofficeAPI.Endpoints.Tags.addToRoom(folder: room), requestModel.dictionary) { _, _ in
             completion()
         }
     }
@@ -141,7 +141,7 @@ class NetworkCreatingRoomServiceImp: CreatingRoomService {
         }
         let requestModel = AttachLogoRequestModel(tmpFile: logo.tmpFileUrl, width: imageSize.width, height: imageSize.height)
 
-        networkService.request(OnlyofficeAPI.Endpoints.Rooms.attachLogo(folder: room, requestModel: requestModel)) { result, _ in
+        networkService.request(OnlyofficeAPI.Endpoints.Rooms.setLogo(folder: room), requestModel.dictionary) { result, _ in
             if let folder = result?.result {
                 room.logo = folder.logo
             }

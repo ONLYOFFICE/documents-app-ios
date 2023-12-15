@@ -138,7 +138,6 @@
 		E8EEC4102B2C622000A0640D /* CreateRoomRequestModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8EEC40C2B2C622000A0640D /* CreateRoomRequestModel.swift */; };
 		E8EEC4112B2C622000A0640D /* AttachLogoRequestModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8EEC40D2B2C622000A0640D /* AttachLogoRequestModel.swift */; };
 		E8EEC4122B2C622000A0640D /* AttachTagsRequestModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8EEC40E2B2C622000A0640D /* AttachTagsRequestModel.swift */; };
-		E8EEC4152B2C62FA00A0640D /* DictionaryConvertible.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8EEC4142B2C62FA00A0640D /* DictionaryConvertible.swift */; };
 		F336546227E4903400ABBEB3 /* KeyboardManagerHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = F336546127E4903400ABBEB3 /* KeyboardManagerHelper.swift */; };
 		F33E473B27AD9BC200EFF6D9 /* ASCWebKitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F33E473A27AD9BC200EFF6D9 /* ASCWebKitViewController.swift */; };
 		F377689527CFCF2D0044EDA6 /* ASCConnectStorageNextCloudServerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F377689427CFCF2D0044EDA6 /* ASCConnectStorageNextCloudServerController.swift */; };
@@ -693,7 +692,6 @@
 		E8EEC40C2B2C622000A0640D /* CreateRoomRequestModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateRoomRequestModel.swift; sourceTree = "<group>"; };
 		E8EEC40D2B2C622000A0640D /* AttachLogoRequestModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AttachLogoRequestModel.swift; sourceTree = "<group>"; };
 		E8EEC40E2B2C622000A0640D /* AttachTagsRequestModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AttachTagsRequestModel.swift; sourceTree = "<group>"; };
-		E8EEC4142B2C62FA00A0640D /* DictionaryConvertible.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DictionaryConvertible.swift; sourceTree = "<group>"; };
 		F336546127E4903400ABBEB3 /* KeyboardManagerHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardManagerHelper.swift; sourceTree = "<group>"; };
 		F33E473A27AD9BC200EFF6D9 /* ASCWebKitViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCWebKitViewController.swift; sourceTree = "<group>"; };
 		F377689427CFCF2D0044EDA6 /* ASCConnectStorageNextCloudServerController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCConnectStorageNextCloudServerController.swift; sourceTree = "<group>"; };
@@ -1979,14 +1977,6 @@
 			path = SwiftUIViews;
 			sourceTree = "<group>";
 		};
-		E8EEC4132B2C62FA00A0640D /* Protocols */ = {
-			isa = PBXGroup;
-			children = (
-				E8EEC4142B2C62FA00A0640D /* DictionaryConvertible.swift */,
-			);
-			path = Protocols;
-			sourceTree = "<group>";
-		};
 		F336546027E48FF400ABBEB3 /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
@@ -2549,7 +2539,6 @@
 		FC68524326837B7300D830EC /* Networking */ = {
 			isa = PBXGroup;
 			children = (
-				E8EEC4132B2C62FA00A0640D /* Protocols */,
 				FC68524426837B7300D830EC /* Nextcloud */,
 				FC68524C26837B7300D830EC /* Onedrive */,
 				FC68525026837B7300D830EC /* Onlyoffice */,
@@ -4116,7 +4105,6 @@
 				1DBA4736298FDBA100244F30 /* ASCEntitySecurity.swift in Sources */,
 				1D1DB5562759023800FA0BEE /* ASCSharingSettingsAccessDocumentFormProvider.swift in Sources */,
 				1D14AAF42698E85A009E48AD /* ASCSharingAddRightHoldersModels.swift in Sources */,
-				E8EEC4152B2C62FA00A0640D /* DictionaryConvertible.swift in Sources */,
 				FC4D0A202494F7C9001EF1B5 /* ASCDebugNavigationController.swift in Sources */,
 				FC35D4642A987DFC00C6383F /* UIDevice+DeviceKit.swift in Sources */,
 				FC2882B928EC6A850034E732 /* ASCConnectStorageWebDavControllerConfiguration.swift in Sources */,

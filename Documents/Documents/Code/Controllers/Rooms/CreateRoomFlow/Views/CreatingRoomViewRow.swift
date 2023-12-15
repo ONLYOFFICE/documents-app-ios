@@ -45,7 +45,6 @@ struct CreatingRoomViewRow: View {
     }
 }
 
-
 #Preview {
     CreatingRoomViewRow(
         room: CreatingRoomType.publicRoom.toRoom()

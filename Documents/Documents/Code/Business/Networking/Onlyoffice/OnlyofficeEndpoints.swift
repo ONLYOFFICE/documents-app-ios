@@ -146,12 +146,12 @@ class OnlyofficeAPI {
         // MARK: Tags
 
         enum Tags {
-            static func create(requestModel: CreateTagRequestModel) -> Endpoint<OnlyofficeResponse<ASCFolder>> {
-                return Endpoint<OnlyofficeResponse<OnlyofficeResponseBase>>.make(Path.tags, .post, nil, requestModel.toDictionary())
+            static func create() -> Endpoint<OnlyofficeResponse<ASCFolder>> {
+                return Endpoint<OnlyofficeResponse<OnlyofficeResponseBase>>.make(Path.tags, .post)
             }
 
-            static func attach(folder: ASCFolder, requestModel: AttachTagsRequestModel) -> Endpoint<OnlyofficeResponse<ASCFolder>> {
-                return Endpoint<OnlyofficeResponse<OnlyofficeResponseBase>>.make(String(format: Path.roomsTags, folder.id), .put, nil, requestModel.toDictionary())
+            static func addToRoom(folder: ASCFolder) -> Endpoint<OnlyofficeResponse<ASCFolder>> {
+                return Endpoint<OnlyofficeResponse<OnlyofficeResponseBase>>.make(String(format: Path.roomsTags, folder.id), .put)
             }
         }
 
@@ -160,8 +160,8 @@ class OnlyofficeAPI {
         enum Rooms {
             static let paymentQuota: Endpoint<OnlyofficeResponse<ASCPaymentQuota>> = Endpoint<OnlyofficeResponse<ASCPaymentQuota>>.make(Path.paymentQuota, .get)
 
-            static func create(requestModel: CreateRoomRequestModel) -> Endpoint<OnlyofficeResponse<ASCFolder>> {
-                return Endpoint<OnlyofficeResponse<ASCFolder>>.make(Path.rooms, .post, nil, requestModel.toDictionary())
+            static func create() -> Endpoint<OnlyofficeResponse<ASCFolder>> {
+                return Endpoint<OnlyofficeResponse<ASCFolder>>.make(Path.rooms, .post)
             }
 
             static func pin(folder: ASCFolder) -> Endpoint<OnlyofficeResponse<ASCFolder>> {
@@ -180,8 +180,8 @@ class OnlyofficeAPI {
                 return Endpoint<OnlyofficeResponse<ASCFolder>>.make(String(format: Path.roomUnarchive, folder.id), .put)
             }
 
-            static func attachLogo(folder: ASCFolder, requestModel: AttachLogoRequestModel) -> Endpoint<OnlyofficeResponse<ASCFolder>> {
-                return Endpoint<OnlyofficeResponse<ASCFolder>>.make(String(format: Path.roomLogo, folder.id), .post, nil, requestModel.toDictionary())
+            static func setLogo(folder: ASCFolder) -> Endpoint<OnlyofficeResponse<ASCFolder>> {
+                return Endpoint<OnlyofficeResponse<ASCFolder>>.make(String(format: Path.roomLogo, folder.id), .post)
             }
         }
 

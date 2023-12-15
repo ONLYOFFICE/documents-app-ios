@@ -42,7 +42,6 @@
 		E8674B922B2B15D600CDA5DC /* CreatingRoomType.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8674B872B2B15D600CDA5DC /* CreatingRoomType.swift */; };
 		E8674B932B2B15D600CDA5DC /* CreatingRoomViewRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8674B892B2B15D600CDA5DC /* CreatingRoomViewRow.swift */; };
 		E8674B942B2B15D600CDA5DC /* NetworkCreatingRoomService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8674B8B2B2B15D600CDA5DC /* NetworkCreatingRoomService.swift */; };
-		E8674B972B2B15EF00CDA5DC /* DictionaryConvertible.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8674B962B2B15EE00CDA5DC /* DictionaryConvertible.swift */; };
 		E8674B9C2B2B163400CDA5DC /* AttachTagsRequestModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8674B982B2B163300CDA5DC /* AttachTagsRequestModel.swift */; };
 		E8674B9D2B2B163400CDA5DC /* CreateTagRequestModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8674B992B2B163300CDA5DC /* CreateTagRequestModel.swift */; };
 		E8674B9E2B2B163400CDA5DC /* CreateRoomRequestModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8674B9A2B2B163400CDA5DC /* CreateRoomRequestModel.swift */; };
@@ -709,7 +708,6 @@
 		E8674B872B2B15D600CDA5DC /* CreatingRoomType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreatingRoomType.swift; sourceTree = "<group>"; };
 		E8674B892B2B15D600CDA5DC /* CreatingRoomViewRow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreatingRoomViewRow.swift; sourceTree = "<group>"; };
 		E8674B8B2B2B15D600CDA5DC /* NetworkCreatingRoomService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkCreatingRoomService.swift; sourceTree = "<group>"; };
-		E8674B962B2B15EE00CDA5DC /* DictionaryConvertible.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DictionaryConvertible.swift; sourceTree = "<group>"; };
 		E8674B982B2B163300CDA5DC /* AttachTagsRequestModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AttachTagsRequestModel.swift; sourceTree = "<group>"; };
 		E8674B992B2B163300CDA5DC /* CreateTagRequestModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateTagRequestModel.swift; sourceTree = "<group>"; };
 		E8674B9A2B2B163400CDA5DC /* CreateRoomRequestModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateRoomRequestModel.swift; sourceTree = "<group>"; };
@@ -1439,14 +1437,6 @@
 			path = Services;
 			sourceTree = "<group>";
 		};
-		E8674B952B2B15EE00CDA5DC /* Protocols */ = {
-			isa = PBXGroup;
-			children = (
-				E8674B962B2B15EE00CDA5DC /* DictionaryConvertible.swift */,
-			);
-			path = Protocols;
-			sourceTree = "<group>";
-		};
 		E8674BAD2B2C4E5200CDA5DC /* Recovered References */ = {
 			isa = PBXGroup;
 			children = (
@@ -1905,7 +1895,6 @@
 		FC5D0409263AE01D00D9DBCF /* Networking */ = {
 			isa = PBXGroup;
 			children = (
-				E8674B952B2B15EE00CDA5DC /* Protocols */,
 				FC2B0CB92640302A00969DB9 /* Onlyoffice */,
 				FC68522B26835A1700D830EC /* Onedrive */,
 				FC5D0412263BE8B700D9DBCF /* Dropbox */,
@@ -3770,7 +3759,6 @@
 				FC7D993A2729942700410795 /* ASCReusedIdentifierProtocol.swift in Sources */,
 				FCC64F87291921D7004D9A47 /* ASCSharingSettingsAccessPresentationProvider.swift in Sources */,
 				FC7DC8F12861FE8E00E61C69 /* ASCStandartCell.swift in Sources */,
-				E8674B972B2B15EF00CDA5DC /* DictionaryConvertible.swift in Sources */,
 				E8674B9E2B2B163400CDA5DC /* CreateRoomRequestModel.swift in Sources */,
 				FC7CF5191EF3EFF300C0A64F /* NSString+HTMLString.swift in Sources */,
 				FC7D99922729985F00410795 /* ManagedAppConfig.swift in Sources */,

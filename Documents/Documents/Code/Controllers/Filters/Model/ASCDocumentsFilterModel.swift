@@ -109,6 +109,7 @@ enum ApiFilterType: String {
     case customRoom
     case fillingFormRoom
     case collaborationRoom
+    case publicRoom
     case reviewRoom
     case viewOnlyRoom
     /// third party resource
@@ -159,6 +160,8 @@ enum ApiFilterType: String {
             return "3"
         case .viewOnlyRoom:
             return "4"
+        case .publicRoom:
+            return "6"
         case .dropBox:
             return "2"
         case .googleDrive:
@@ -213,6 +216,7 @@ enum FiltersName: String, CaseIterable {
     /// rooms
     case customRoom
     case collaborationRoom
+    case publicRoom
     /// third party resource
     case dropBox
     case googleDrive
@@ -255,6 +259,8 @@ enum FiltersName: String, CaseIterable {
             return NSLocalizedString("Custom", comment: "")
         case .collaborationRoom:
             return NSLocalizedString("Collaboration", comment: "")
+        case .publicRoom:
+            return NSLocalizedString("Public", comment: "")
         case .dropBox:
             return NSLocalizedString("Dropbox", comment: "")
         case .googleDrive:

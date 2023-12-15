@@ -3080,6 +3080,8 @@
 				FCE9F7002B2B56EC0056E420 /* ASCAttachmentManager.swift */,
 			);
 			path = Utils;
+			sourceTree = "<group>";
+		};
 		FCE9F64F2B2B4BAC0056E420 /* DataSourceAndDelegates */ = {
 			isa = PBXGroup;
 			children = (

@@ -29,6 +29,12 @@
 "<p>You must have a paid version of the player to use this service.</p><p>If you have activated double authentication, please generate a CDM application from the Infomaniak manager. <a href=\"https://www.infomaniak.com/en/support/faq/1940/enable-two-step-verification\">More...</a></p>" = "<p>Чтобы воспользоваться этим сервисом, необходимо приобрести платную версию плеера.</p><p>Если вы активировали двухфакторную аутентификацию, пожалуйста, установите приложение CDM из учетной записи Infomaniak (Менеджер).<a href=\"https://www.infomaniak.com/en/support/faq/1940/enable-two-step-verification\">Подробнее...</a></p>";
 
 /* No comment provided by engineer. */
+"Сould not download file." = "Не удалось скачать файл.";
+
+/* No comment provided by engineer. */
+"Сould not upload file." = "Не удалось загрузить файл.";
+
+/* No comment provided by engineer. */
 "A file with a similar name already exists in the document directory on the device." = "Файл с таким именем уже существует в папке с документами на этом устройстве.";
 
 /* No comment provided by engineer. */
@@ -196,12 +202,6 @@
 
 /* No comment provided by engineer. */
 "Check your internet connection" = "Проверьте интернет-соединение";
-
-/* No comment provided by engineer. */
-"Choose Code Page" = "Выберите кодировку";
-
-/* No comment provided by engineer. */
-"Choose CSV Options" = "Выберите опции CSV";
 
 /* Caption of the processing */
 "Cleanup" = "Очистка";
@@ -428,9 +428,6 @@
 /* Caption of the processing */
 "Deleting" = "Удаление";
 
-/* No comment provided by engineer. */
-"Delimiter" = "Разделитель";
-
 /* Share status */
 "Deny Access" = "Запретить доступ";
 
@@ -513,9 +510,6 @@
 /* No comment provided by engineer. */
 "Enable if you want to receive notifications from the %@" = "Включите, если хотите получать уведомления от %@";
 
-/* No comment provided by engineer. */
-"Encoding" = "Кодировка";
-
 /* Presentation Viewer */
 "End Slide Show" = "Завершить";
 
@@ -590,6 +584,9 @@
 
 /* No comment provided by engineer. */
 "Failure to download result from conversion online service." = "Ошибка скачивания полученного файла из службы онлайн-конвертации.";
+
+/* Category title */
+"Favorites" = "Избранное";
 
 /* No comment provided by engineer. */
 "Features" = "Фичи";
@@ -1045,6 +1042,9 @@
 /* No comment provided by engineer. */
 "Push notifications disabled" = "Push-уведомления отключены";
 
+/* Category title */
+"Recent" = "Недавние";
+
 /* Button title */
 "Recover here" = "Восстановить сюда";
 
@@ -1225,9 +1225,6 @@
 "Sort" = "Сортировать";
 
 /* No comment provided by engineer. */
-"Space" = "Пробел";
-
-/* No comment provided by engineer. */
 "Spreadsheet" = "Таблица";
 
 /* Default title of sample document */
@@ -1244,9 +1241,6 @@
 
 /* No comment provided by engineer. */
 "Switch" = "Переключить";
-
-/* No comment provided by engineer. */
-"Tab" = "Табуляция";
 
 /* No comment provided by engineer. */
 "Take a Picture" = "Сделать снимок";
@@ -1553,10 +1547,4 @@
 
 /* Data units */
 "Zero bytes" = "Ноль байт";
-
-/* No comment provided by engineer. */
-"Сould not download file." = "Не удалось скачать файл.";
-
-/* No comment provided by engineer. */
-"Сould not upload file." = "Не удалось загрузить файл.";
 

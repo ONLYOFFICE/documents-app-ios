@@ -157,7 +157,7 @@ class NetworkingClient: NSObject, NetworkingRequestingProtocol {
             return
         }
 
-        let params: Parameters = [:]
+        let params: Parameters = parameters ?? [:]
 
         let uploadManager = Alamofire.Session(
             configuration: {
@@ -250,7 +250,7 @@ class NetworkingClient: NSObject, NetworkingRequestingProtocol {
             to: destination
         )
         .downloadProgress { progress in
-            log.debug("Download Progress: \(progress.fractionCompleted)")
+//            log.debug("Download Progress: \(progress.fractionCompleted)")
             DispatchQueue.main.async {
                 completion?(nil, progress.fractionCompleted, nil)
             }

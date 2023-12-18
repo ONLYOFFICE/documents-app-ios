@@ -369,6 +369,11 @@ class ASCOnlyofficeProvider: ASCFileProviderProtocol & ASCSortableFileProviderPr
                     let entities: [ASCEntity] = (path.folders + path.files).map { entitie in
                         if let folder = entitie as? ASCFolder {
                             folder.parent = currentFolder
+                            strongSelf.allowLeave(folder: folder) { isAllowed in
+                                if isAllowed {
+                                    folder.isCanLeaveRoom = true
+                                }
+                            }
                             return folder
                         } else if let file = entitie as? ASCFile {
                             file.parent = currentFolder
@@ -895,6 +900,34 @@ class ASCOnlyofficeProvider: ASCFileProviderProtocol & ASCSortableFileProviderPr
         return file.security.duplicate
     }
 
+    func allowDownload(folder: ASCFolder?) -> Bool {
+        return true
+    }
+
+    func allowLeave(folder: ASCFolder, completion: @escaping (Bool) -> Void) {
+        var isOwnerInRoom: Bool = false
+        var isAllowLeave: Bool = true
+
+        apiClient.request(OnlyofficeAPI.Endpoints.Sharing.room(folder: folder, method: .get)) { result, error in
+            if let error = error {
+                print("Error: \(error)")
+            } else if let users = result?.result {
+                for entity in users {
+                    if entity.user?.userId == self.user?.userId {
+                        isOwnerInRoom = true
+                        break
+                    }
+                }
+
+                if !isOwnerInRoom, let userIsOwner = self.user?.isOwner, userIsOwner {
+                    isAllowLeave = false
+                }
+
+                completion(isAllowLeave)
+            }
+        }
+    }
+
     func allowCopy(entity: AnyObject?) -> Bool {
         guard let entity = entity as? ASCEntity, allowRead(entity: entity) else { return false }
         guard isInRoom else { return true }
@@ -924,7 +957,7 @@ class ASCOnlyofficeProvider: ASCFileProviderProtocol & ASCSortableFileProviderPr
         if folder.rootFolderType == .onlyofficeUser {
             return true
         }
-        return !folder.isRoomListFolder && folder.security.create
+        return folder.security.create
     }
 
     func allowComment(entity: AnyObject?) -> Bool {
@@ -1240,6 +1273,7 @@ class ASCOnlyofficeProvider: ASCFileProviderProtocol & ASCSortableFileProviderPr
             let canCopy = allowCopy(entity: folder)
             let canDelete = allowDelete(entity: folder)
             let canShare = allowShare(entity: folder)
+            let canDownload = allowDownload(folder: folder)
             let canRename = allowRename(entity: folder)
             let isProjects = folder.rootFolderType == .onlyofficeBunch || folder.rootFolderType == .onlyofficeProjects
             let isRoomFolder = isFolderInRoom(folder: folder) && folder.roomType != nil
@@ -1267,6 +1301,10 @@ class ASCOnlyofficeProvider: ASCFileProviderProtocol & ASCSortableFileProviderPr
                 entityActions.insert(.share)
             }
 
+            if canDownload {
+                entityActions.insert(.download)
+            }
+
             if canDelete {
                 entityActions.insert(.delete)
             }
@@ -1291,6 +1329,9 @@ class ASCOnlyofficeProvider: ASCFileProviderProtocol & ASCSortableFileProviderPr
                 }
                 if folder.security.move {
                     entityActions.insert(.archive)
+                }
+                if folder.isCanLeaveRoom {
+                    entityActions.insert(.leave)
                 }
             }
 
@@ -1356,6 +1397,153 @@ class ASCOnlyofficeProvider: ASCFileProviderProtocol & ASCSortableFileProviderPr
                 handler?(.error, nil, ASCProviderError(msg: NSLocalizedString("Unarchiving failed.", comment: "")))
             }
         }
+    }
+
+    func checkRoomOwner(folder: ASCFolder) -> Bool {
+        return folder.createdBy?.userId == user?.userId
+    }
+
+    func leaveRoom(folder: ASCFolder, handler: ASCEntityHandler?) {
+        handler?(.begin, nil, nil)
+
+        let userId = user?.userId ?? ""
+        let access: ASCShareAccess = .none
+
+        let inviteRequestModel = OnlyofficeInviteRequestModel()
+        inviteRequestModel.notify = false
+        inviteRequestModel.invitations = [.init(id: userId, access: access)]
+
+        apiClient.request(OnlyofficeAPI.Endpoints.Sharing.inviteRequest(folder: folder, method: .put), inviteRequestModel.toJSON()) {
+            result, error in
+            if error != nil {
+                handler?(.error, nil, ASCProviderError(msg: NSLocalizedString("Couldn't leave the room.", comment: "")))
+            } else {
+                handler?(.end, folder, nil)
+            }
+        }
+    }
+
+    // Download
+    func download(
+        items: [ASCEntity],
+        process: @escaping (Float) -> Void,
+        completion: @escaping (Result<URL, Error>) -> Void
+    ) {
+        var folderIds: [String] = []
+        var fileIds: [String] = []
+        var itemName: String = ""
+
+        for entity in items {
+            if let folder = entity as? ASCFolder {
+                folderIds.append(folder.id)
+                itemName = folder.title
+            } else if let file = entity as? ASCFile {
+                fileIds.append(file.id)
+                itemName = file.parent?.title ?? file.title
+            }
+        }
+
+        let files: [String: Any] = [
+            "fileIds": fileIds,
+            "folderIds": folderIds,
+        ]
+
+        let prepareArchiveError = ASCProviderError(msg: NSLocalizedString("Failure to prepare the archive", comment: ""))
+
+        // API request for file formation
+        apiClient.request(OnlyofficeAPI.Endpoints.Operations.download, files) { [weak self] result, error in
+            guard let self else { return }
+
+            if let error {
+                completion(.failure(error))
+                return
+            }
+
+            if let operation = result?.result?.first {
+                self.checkOperation(operation: operation) { progress in
+                    let commonProgress = self.progress(progress, in: 0 ... 0.3)
+                    process(commonProgress)
+                } completion: { result in
+                    switch result {
+                    case let .success(url):
+                        guard let url else {
+                            completion(.failure(prepareArchiveError))
+                            return
+                        }
+
+                        // Download prepared archive
+                        let destinationURL = FileManager.default.temporaryDirectory.appendingPathComponent("\(itemName).zip")
+                        self.download(url.absoluteString, to: destinationURL) { data, progress, error in
+                            let commonProgress = self.progress(Float(progress), in: 0.3 ... 1)
+                            process(commonProgress)
+
+                            if let error {
+                                completion(.failure(error))
+                                return
+                            }
+
+                            if progress >= 1 {
+                                completion(.success(destinationURL))
+                            }
+                        }
+
+                    case let .failure(error):
+                        log.error(error)
+                        completion(.failure(prepareArchiveError))
+                    }
+                }
+            } else {
+                completion(.failure(prepareArchiveError))
+            }
+        }
+    }
+
+    private func checkOperation(
+        operation: OnlyofficeFileOperation,
+        timeInterval: TimeInterval = 0.5,
+        process: @escaping (Float) -> Void,
+        completion: @escaping (Result<URL?, Error>) -> Void
+    ) {
+        var doCheckOperation: (() -> Void)?
+        var preventCheck = false
+
+        doCheckOperation = { [weak self] in
+            self?.apiClient.request(OnlyofficeAPI.Endpoints.Operations.list) { result, error in
+                guard !preventCheck else { return }
+
+                if let error {
+                    preventCheck = true
+                    completion(.failure(error))
+                    return
+                }
+
+                if let operation = result?.result?.first(where: { $0.id == operation.id }),
+                   let progress = operation.progress
+                {
+                    process(Float(progress) / 100.0)
+
+                    if let operationError = operation.error, !operationError.isEmpty {
+                        completion(.failure(ASCProviderError(msg: operationError)))
+                        return
+                    }
+
+                    if operation.finished {
+                        completion(.success(URL(string: operation.url ?? "")))
+                        return
+                    }
+
+                    DispatchQueue.global().asyncAfter(deadline: .now() + timeInterval) {
+                        doCheckOperation?()
+                    }
+                }
+            }
+        }
+
+        doCheckOperation?()
+    }
+
+    private func progress(_ progress: Float, in range: ClosedRange<Float> = 0 ... 1) -> Float {
+        range.lowerBound + (range.upperBound - range.lowerBound) * progress
     }
 
     private func unsupportedActionHandler(action: ASCEntityActions, handler: ASCEntityHandler?) {

@@ -29,6 +29,12 @@
 "<p>You must have a paid version of the player to use this service.</p><p>If you have activated double authentication, please generate a CDM application from the Infomaniak manager. <a href=\"https://www.infomaniak.com/en/support/faq/1940/enable-two-step-verification\">More...</a></p>" = "<p>Pour utiliser ce service, il faut disposer d'une version payante du lecteur.</p><p>Si vous avez activé l'authentification à deux facteurs, veuillez générer une demande MDP à partir du gestionnaire Infomaniak. <a href=\"https://www.infomaniak.com/en/support/faq/1940/enable-two-step-verification\">En savoir plus...</a></p>";
 
 /* No comment provided by engineer. */
+"Сould not download file." = "Impossible de télécharger le fichier.";
+
+/* No comment provided by engineer. */
+"Сould not upload file." = "Impossible de charger le fichier.";
+
+/* No comment provided by engineer. */
 "A file with a similar name already exists in the document directory on the device." = "Un fichier avec un nom similaire existe déjà dans le répertoire de documents sur l'appareil.";
 
 /* No comment provided by engineer. */
@@ -196,12 +202,6 @@
 
 /* No comment provided by engineer. */
 "Check your internet connection" = "Vérifiez votre connexion internet";
-
-/* No comment provided by engineer. */
-"Choose Code Page" = "Choisir le code de page";
-
-/* No comment provided by engineer. */
-"Choose CSV Options" = "Choisir les options CSV";
 
 /* Caption of the processing */
 "Cleanup" = "Nettoyer";
@@ -428,9 +428,6 @@
 /* Caption of the processing */
 "Deleting" = "Suppression";
 
-/* No comment provided by engineer. */
-"Delimiter" = "Délimiteur";
-
 /* Share status */
 "Deny Access" = "Accès interdit";
 
@@ -512,9 +509,6 @@
 
 /* No comment provided by engineer. */
 "Enable if you want to receive notifications from the %@" = "Activez si vous voulez recevoir des notifications de la part de  %@";
-
-/* No comment provided by engineer. */
-"Encoding" = "Codage";
 
 /* Presentation Viewer */
 "End Slide Show" = "Arrêter le diaporama";
@@ -1228,9 +1222,6 @@
 "Sort" = "Trier";
 
 /* No comment provided by engineer. */
-"Space" = "Espace";
-
-/* No comment provided by engineer. */
 "Spreadsheet" = "Feuille de calcul";
 
 /* Default title of sample document */
@@ -1247,9 +1238,6 @@
 
 /* No comment provided by engineer. */
 "Switch" = "Basculer";
-
-/* No comment provided by engineer. */
-"Tab" = "Onglet";
 
 /* No comment provided by engineer. */
 "Take a Picture" = "Prendre une photo";
@@ -1556,10 +1544,4 @@
 
 /* Data units */
 "Zero bytes" = "Zéro octet";
-
-/* No comment provided by engineer. */
-"Сould not download file." = "Impossible de télécharger le fichier.";
-
-/* No comment provided by engineer. */
-"Сould not upload file." = "Impossible de charger le fichier.";
 

@@ -1170,6 +1170,10 @@ Remarque: si vous avez oublié le mot de passe, vous avez besoin de supprimer et
         <target>Les éléments %1$lu portant le même nom existent déjà dans le dossier '%2$@'. Remplacer les éléments ?</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
+      <trans-unit id=": &quot;%@&quot;" xml:space="preserve">
+        <source>: "%@"</source>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
       <trans-unit id="&lt;p&gt;Use the password created in &lt;a href=&quot;https://yandex.ru/id/about&quot;&gt;Yandex ID&lt;/a&gt;.&lt;/br&gt;More detailed connection instructions can be found in the &lt;a href=&quot;https://yandex.ru/support/disk-desktop/webdav-app-passwords.html?lang=ru&quot;&gt;help&lt;/a&gt;.&lt;/p&gt;" xml:space="preserve">
         <source>&lt;p&gt;Use the password created in &lt;a href="https://yandex.ru/id/about"&gt;Yandex ID&lt;/a&gt;.&lt;/br&gt;More detailed connection instructions can be found in the &lt;a href="https://yandex.ru/support/disk-desktop/webdav-app-passwords.html?lang=ru"&gt;help&lt;/a&gt;.&lt;/p&gt;</source>
         <target>&lt;p&gt;Utilisez le mot de passe créé dans &lt;a href="https://yandex.ru/id/about"&gt;Yandex ID&lt;/a&gt;.&lt;/br&gt;Des instructions de connexion plus détaillées peuvent être trouvées dans le &lt;a href="https://yandex.ru/support/disk-desktop/webdav-app-passwords.html?lang=ru"&gt;centre d'aide&lt;/a&gt;.&lt;/p&gt;</target>
@@ -1280,6 +1284,10 @@ Remarque: si vous avez oublié le mot de passe, vous avez besoin de supprimer et
         <target>Ajouter un message</target>
         <note>Sharing settings add notification message</note>
       </trans-unit>
+      <trans-unit id="Add tag" xml:space="preserve">
+        <source>Add tag</source>
+        <note>placeholder</note>
+      </trans-unit>
       <trans-unit id="Add users" xml:space="preserve">
         <source>Add users</source>
         <target>Ajouter des utilisateurs</target>
@@ -1335,6 +1343,10 @@ Remarque: si vous avez oublié le mot de passe, vous avez besoin de supprimer et
       <trans-unit id="AppleId authentication failed" xml:space="preserve">
         <source>AppleId authentication failed</source>
         <target>Authentification AppleId a échoué</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Apply your own settings to use this room for any custom purpose" xml:space="preserve">
+        <source>Apply your own settings to use this room for any custom purpose</source>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Applying" xml:space="preserve">
@@ -1463,14 +1475,12 @@ Remarque: si vous avez oublié le mot de passe, vous avez besoin de supprimer et
         <target>Vérifiez votre connexion internet</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
-      <trans-unit id="Choose CSV Options" xml:space="preserve">
-        <source>Choose CSV Options</source>
-        <target>Choisir les options CSV</target>
+      <trans-unit id="Choose Files" xml:space="preserve">
+        <source>Choose Files</source>
         <note>No comment provided by engineer.</note>
       </trans-unit>
-      <trans-unit id="Choose Code Page" xml:space="preserve">
-        <source>Choose Code Page</source>
-        <target>Choisir le code de page</target>
+      <trans-unit id="Choose room type" xml:space="preserve">
+        <source>Choose room type</source>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Cleanup" xml:space="preserve">
@@ -1513,6 +1523,10 @@ Remarque: si vous avez oublié le mot de passe, vous avez besoin de supprimer et
         <target>Répertoire cloud</target>
         <note>Default external storage name</note>
       </trans-unit>
+      <trans-unit id="Collaborate on one or multiple documents with your team" xml:space="preserve">
+        <source>Collaborate on one or multiple documents with your team</source>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
       <trans-unit id="Collaborate with your team" xml:space="preserve">
         <source>Collaborate with your team</source>
         <target>Collaborez avec votre équipe</target>
@@ -1521,6 +1535,10 @@ Remarque: si vous avez oublié le mot de passe, vous avez besoin de supprimer et
       <trans-unit id="Collaboration" xml:space="preserve">
         <source>Collaboration</source>
         <target>Collaboration</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Collaboration room" xml:space="preserve">
+        <source>Collaboration room</source>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Commentator" xml:space="preserve">
@@ -1722,6 +1740,10 @@ d'autres via le protocole WebDAV.</target>
         <target>Impossible d'écrire dans le fichier</target>
         <note>Description of file operation error</note>
       </trans-unit>
+      <trans-unit id="Couldn't download the room." xml:space="preserve">
+        <source>Couldn't download the room.</source>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
       <trans-unit id="Couldn't rename the file" xml:space="preserve">
         <source>Couldn't rename the file</source>
         <target>Impossible de renommer le fichier</target>
@@ -1747,10 +1769,18 @@ d'autres via le protocole WebDAV.</target>
         <target>Créez de nouveaux documents, feuilles de calcul ou présentations. Créez de nouveaux dossiers pour organiser vos fichiers.</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
+      <trans-unit id="Create room" xml:space="preserve">
+        <source>Create room</source>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
       <trans-unit id="Creating" xml:space="preserve">
         <source>Creating</source>
         <target>Création</target>
         <note>Caption of the process</note>
+      </trans-unit>
+      <trans-unit id="Creating..." xml:space="preserve">
+        <source>Creating...</source>
+        <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Custom" xml:space="preserve">
         <source>Custom</source>
@@ -1761,6 +1791,10 @@ d'autres via le protocole WebDAV.</target>
         <source>Custom filter</source>
         <target>Filtre personnalisé</target>
         <note>Share status</note>
+      </trans-unit>
+      <trans-unit id="Custom room" xml:space="preserve">
+        <source>Custom room</source>
+        <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Dark" xml:space="preserve">
         <source>Dark</source>
@@ -1816,11 +1850,6 @@ d'autres via le protocole WebDAV.</target>
         <source>Deleting</source>
         <target>Suppression</target>
         <note>Caption of the processing</note>
-      </trans-unit>
-      <trans-unit id="Delimiter" xml:space="preserve">
-        <source>Delimiter</source>
-        <target>Délimiteur</target>
-        <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Deny Access" xml:space="preserve">
         <source>Deny Access</source>
@@ -1958,11 +1987,6 @@ d'autres via le protocole WebDAV.</target>
         <target>Activez si vous voulez recevoir des notifications de la part de  %@</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
-      <trans-unit id="Encoding" xml:space="preserve">
-        <source>Encoding</source>
-        <target>Codage</target>
-        <note>No comment provided by engineer.</note>
-      </trans-unit>
       <trans-unit id="End Slide Show" xml:space="preserve">
         <source>End Slide Show</source>
         <target>Arrêter le diaporama</target>
@@ -2066,6 +2090,10 @@ d'autres via le protocole WebDAV.</target>
       <trans-unit id="Failure to download result from conversion online service." xml:space="preserve">
         <source>Failure to download result from conversion online service.</source>
         <target>Échec du téléchargement du résultat de la conversion du service en ligne.</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Failure to prepare the archive" xml:space="preserve">
+        <source>Failure to prepare the archive</source>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Favorites" xml:space="preserve">
@@ -2257,6 +2285,10 @@ d'autres via le protocole WebDAV.</target>
         <target>Inviter des personnes par e-mail</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
+      <trans-unit id="Invite users via shared links to view documents without registration. You can also embed this room into any web interface." xml:space="preserve">
+        <source>Invite users via shared links to view documents without registration. You can also embed this room into any web interface.</source>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
       <trans-unit id="Kb" xml:space="preserve">
         <source>Kb</source>
         <target>Ko</target>
@@ -2287,6 +2319,10 @@ est copié dans le Presse-papiers</target>
       <trans-unit id="Link with the invitation has been sent to the mail" xml:space="preserve">
         <source>Link with the invitation has been sent to the mail</source>
         <target>Le lien avec l'invitation a été envoyé par e-mail</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Loading..." xml:space="preserve">
+        <source>Loading...</source>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Logging in" xml:space="preserve">
@@ -2657,6 +2693,10 @@ est copié dans le Presse-papiers</target>
         <target>Téléphone est incorrect</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
+      <trans-unit id="Photo Library" xml:space="preserve">
+        <source>Photo Library</source>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
       <trans-unit id="Pin to top" xml:space="preserve">
         <source>Pin to top</source>
         <target>Épingler en haut</target>
@@ -2796,6 +2836,10 @@ est copié dans le Presse-papiers</target>
         <target>Documents de projet</target>
         <note>Category title</note>
       </trans-unit>
+      <trans-unit id="Public room" xml:space="preserve">
+        <source>Public room</source>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
       <trans-unit id="Push notifications disabled" xml:space="preserve">
         <source>Push notifications disabled</source>
         <target>Notifications push désactivées</target>
@@ -2899,6 +2943,10 @@ est copié dans le Presse-papiers</target>
         <source>Room admin</source>
         <target>Administrateur de salle</target>
         <note>Share status</note>
+      </trans-unit>
+      <trans-unit id="Room name" xml:space="preserve">
+        <source>Room name</source>
+        <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Rooms" xml:space="preserve">
         <source>Rooms</source>
@@ -3102,11 +3150,6 @@ est copié dans le Presse-papiers</target>
         <target>Trier</target>
         <note>Button title</note>
       </trans-unit>
-      <trans-unit id="Space" xml:space="preserve">
-        <source>Space</source>
-        <target>Espace</target>
-        <note>No comment provided by engineer.</note>
-      </trans-unit>
       <trans-unit id="Spreadsheet" xml:space="preserve">
         <source>Spreadsheet</source>
         <target>Feuille de calcul</target>
@@ -3137,9 +3180,8 @@ est copié dans le Presse-papiers</target>
         <target>Basculer</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
-      <trans-unit id="Tab" xml:space="preserve">
-        <source>Tab</source>
-        <target>Onglet</target>
+      <trans-unit id="Take Photo" xml:space="preserve">
+        <source>Take Photo</source>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Take a Picture" xml:space="preserve">

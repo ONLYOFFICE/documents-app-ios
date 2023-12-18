@@ -29,11 +29,14 @@ class OnlyofficeAPI {
         public static let favorite = "api/\(version)/files/favorites"
         public static let filesShare = "api/\(version)/files/share"
         public static let operations = "api/\(version)/files/fileops"
+        public static let operationsTerminate = "api/\(version)/files/fileops/terminate"
         public static let operationCopy = "api/\(version)/files/fileops/copy"
         public static let operationMove = "api/\(version)/files/fileops/move"
         public static let operationDelete = "api/\(version)/files/fileops/delete"
+        public static let operationDownload = "api/\(version)/files/fileops/bulkdownload"
         public static let emptyTrash = "api/\(version)/files/fileops/emptytrash"
         public static let thirdParty = "api/\(version)/files/thirdparty"
+        public static let logos = "api/\(version)/files/logos"
         public static let thirdPartyCapabilities = "api/\(version)/files/thirdparty/capabilities"
         public static let insertFile = "api/\(version)/files/%@/insert"
         public static let uploadFile = "api/\(version)/files/%@/upload"
@@ -48,17 +51,22 @@ class OnlyofficeAPI {
         public static let shareFile = "api/\(version)/files/file/%@/share"
         public static let shareFolder = "api/\(version)/files/folder/%@/share"
         public static let shareRoom = "api/\(version)/files/rooms/%@/share"
+        public static let changeOwner = "api/\(version)/files/owner"
         public static let forgotPassword = "api/\(version)/people/password"
         public static let deleteAccount = "api/\(version)/people/self/delete"
         public static let pushRegisterDevice = "/api/\(version)/settings/push/docregisterdevice"
         public static let pushSubscribe = "/api/\(version)/settings/push/docsubscribe"
         public static let markAsRead = "api/\(version)/files/fileops/markasread"
         public static let paymentQuota = "api/\(version)/portal/payment/quota"
-        public static let room = "api/\(version)/files/rooms/%@"
+        public static let rooms = "api/\(version)/files/rooms"
+        public static let room = "\(rooms)/%@"
         public static let roomPin = room.appendingPathComponent("pin")
         public static let roomUnpin = room.appendingPathComponent("unpin")
         public static let roomArchive = room.appendingPathComponent("archive")
         public static let roomUnarchive = room.appendingPathComponent("unarchive")
+        public static let tags = "api/\(version)/files/tags"
+        public static let roomsTags = room.appendingPathComponent("tags")
+        public static let roomLogo = room.appendingPathComponent("logo")
 
         enum Forlder {
             public static let root = "@root"
@@ -136,8 +144,26 @@ class OnlyofficeAPI {
             }
         }
 
+        // MARK: Tags
+
+        enum Tags {
+            static func create() -> Endpoint<OnlyofficeResponse<ASCFolder>> {
+                return Endpoint<OnlyofficeResponse<OnlyofficeResponseBase>>.make(Path.tags, .post)
+            }
+
+            static func addToRoom(folder: ASCFolder) -> Endpoint<OnlyofficeResponse<ASCFolder>> {
+                return Endpoint<OnlyofficeResponse<OnlyofficeResponseBase>>.make(String(format: Path.roomsTags, folder.id), .put)
+            }
+        }
+
+        // MARK: Rooms
+
         enum Rooms {
             static let paymentQuota: Endpoint<OnlyofficeResponse<ASCPaymentQuota>> = Endpoint<OnlyofficeResponse<ASCPaymentQuota>>.make(Path.paymentQuota, .get)
+
+            static func create() -> Endpoint<OnlyofficeResponse<ASCFolder>> {
+                return Endpoint<OnlyofficeResponse<ASCFolder>>.make(Path.rooms, .post)
+            }
 
             static func pin(folder: ASCFolder) -> Endpoint<OnlyofficeResponse<ASCFolder>> {
                 return Endpoint<OnlyofficeResponse<ASCFolder>>.make(String(format: Path.roomPin, folder.id), .put)
@@ -153,6 +179,10 @@ class OnlyofficeAPI {
 
             static func unarchive(folder: ASCFolder) -> Endpoint<OnlyofficeResponse<ASCFolder>> {
                 return Endpoint<OnlyofficeResponse<ASCFolder>>.make(String(format: Path.roomUnarchive, folder.id), .put)
+            }
+
+            static func setLogo(folder: ASCFolder) -> Endpoint<OnlyofficeResponse<ASCFolder>> {
+                return Endpoint<OnlyofficeResponse<ASCFolder>>.make(String(format: Path.roomLogo, folder.id), .post)
             }
         }
 
@@ -203,6 +233,10 @@ class OnlyofficeAPI {
                 Endpoint<OnlyofficeResponseArray<OnlyofficeShare>>.make(Path.filesShare, .post)
             }
 
+            static func changeOwner() -> Endpoint<OnlyofficeResponseArray<OnlyofficeShare>> {
+                Endpoint<OnlyofficeResponseArray<OnlyofficeShare>>.make(Path.changeOwner, .post)
+            }
+
             static func file(file: ASCFile, method: HTTPMethod) -> Endpoint<OnlyofficeResponseArray<OnlyofficeShare>> {
                 return Endpoint<OnlyofficeResponseArray<OnlyofficeShare>>.make(String(format: Path.shareFile, file.id), method)
             }
@@ -213,6 +247,10 @@ class OnlyofficeAPI {
 
             static func room(folder: ASCFolder, method: HTTPMethod) -> Endpoint<OnlyofficeResponseArray<OnlyofficeShare>> {
                 return Endpoint<OnlyofficeResponseArray<OnlyofficeShare>>.make(String(format: Path.shareRoom, folder.id), method)
+            }
+
+            static func inviteRequest(folder: ASCFolder, method: HTTPMethod) -> Endpoint<OnlyofficeResponse<OnlyofficeInviteRequestModel>> {
+                return Endpoint<OnlyofficeResponse<OnlyofficeInviteRequestModel>>.make(String(format: Path.shareRoom, folder.id), method)
             }
         }
 
@@ -225,7 +263,9 @@ class OnlyofficeAPI {
             static let copy: Endpoint<OnlyofficeResponse<OnlyofficeFileOperation>> = Endpoint<OnlyofficeResponse<OnlyofficeFileOperation>>.make(Path.operationCopy, .put)
             static let move: Endpoint<OnlyofficeResponse<OnlyofficeFileOperation>> = Endpoint<OnlyofficeResponse<OnlyofficeFileOperation>>.make(Path.operationMove, .put)
             static let list: Endpoint<OnlyofficeResponseArray<OnlyofficeFileOperation>> = Endpoint<OnlyofficeResponseArray<OnlyofficeFileOperation>>.make(Path.operations)
+            static let terminate: Endpoint<OnlyofficeResponseArray<OnlyofficeFileOperation>> = Endpoint<OnlyofficeResponseArray<OnlyofficeFileOperation>>.make(Path.operationsTerminate)
             static let markAsRead: Endpoint<OnlyofficeResponse<OnlyofficeFileOperation>> = Endpoint<OnlyofficeResponse<OnlyofficeFileOperation>>.make(Path.markAsRead, .put)
+            static let download: Endpoint<OnlyofficeResponseArray<OnlyofficeFileOperation>> = Endpoint<OnlyofficeResponseArray<OnlyofficeFileOperation>>.make(Path.operationDownload, .put)
         }
 
         // MARK: Third-Party Integration
@@ -242,6 +282,10 @@ class OnlyofficeAPI {
         // MARK: Uploads
 
         enum Uploads {
+            static func logos() -> Endpoint<OnlyofficeResponseCodable<LogoUploadResult>> {
+                Endpoint<OnlyofficeResponseBase>.make(Path.logos, .post)
+            }
+
             static func upload(in path: String) -> Endpoint<OnlyofficeResponse<ASCFile>> {
                 return Endpoint<OnlyofficeResponse<ASCFile>>.make(String(format: Path.uploadFile, path), .post)
             }

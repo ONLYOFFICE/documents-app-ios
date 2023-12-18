@@ -231,7 +231,7 @@ class ASCSharingAddRightHoldersViewController: UIViewController, ASCSharingAddRi
     func loadData() {
         if !usersCurrentlyLoading {
             usersCurrentlyLoading = true
-            interactor?.makeRequest(requestType: .loadUsers(preloadRightHolders: false, hideUsersWhoHasRights: false))
+            interactor?.makeRequest(requestType: .loadUsers(preloadRightHolders: false, hideUsersWhoHasRights: false, showOnlyAdmins: false))
         }
 
         if !groupsCurrentlyLoading {

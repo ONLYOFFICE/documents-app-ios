@@ -29,6 +29,12 @@
 "<p>You must have a paid version of the player to use this service.</p><p>If you have activated double authentication, please generate a CDM application from the Infomaniak manager. <a href=\"https://www.infomaniak.com/en/support/faq/1940/enable-two-step-verification\">More...</a></p>" = "<p>Você deve ter uma versão paga do player para usar este serviço.</p><p>Se você ativou a autenticação dupla, gere um aplicativo CDM a partir do gerenciador Infomaniak. <a href=\"https://www.infomaniak.com/en/support/faq/1940/enable-two-step-verification\">Mais...</a></p>";
 
 /* No comment provided by engineer. */
+"Сould not download file." = "Não baixou arquivo.";
+
+/* No comment provided by engineer. */
+"Сould not upload file." = "Não fez upload do arquivo.";
+
+/* No comment provided by engineer. */
 "A file with a similar name already exists in the document directory on the device." = "Já existe um arquivo com um nome semelhante no diretório de documentos do dispositivo.";
 
 /* No comment provided by engineer. */
@@ -196,12 +202,6 @@
 
 /* No comment provided by engineer. */
 "Check your internet connection" = "Checar sua conexão de Internet";
-
-/* No comment provided by engineer. */
-"Choose Code Page" = "Escolher página do código";
-
-/* No comment provided by engineer. */
-"Choose CSV Options" = "Escolher opções de CSV";
 
 /* Caption of the processing */
 "Cleanup" = "Limpar";
@@ -428,9 +428,6 @@
 /* Caption of the processing */
 "Deleting" = "Excluindo";
 
-/* No comment provided by engineer. */
-"Delimiter" = "Delimitador";
-
 /* Share status */
 "Deny Access" = "Negar acesso";
 
@@ -512,9 +509,6 @@
 
 /* No comment provided by engineer. */
 "Enable if you want to receive notifications from the %@" = "Ative se você quiser receber notificações do %@";
-
-/* No comment provided by engineer. */
-"Encoding" = "Codificação";
 
 /* Presentation Viewer */
 "End Slide Show" = "Fim da apresentação de slides";
@@ -1228,9 +1222,6 @@
 "Sort" = "Ordenar por";
 
 /* No comment provided by engineer. */
-"Space" = "Espaço";
-
-/* No comment provided by engineer. */
 "Spreadsheet" = "Planilha";
 
 /* Default title of sample document */
@@ -1247,9 +1238,6 @@
 
 /* No comment provided by engineer. */
 "Switch" = "Alternar";
-
-/* No comment provided by engineer. */
-"Tab" = "Tab";
 
 /* No comment provided by engineer. */
 "Take a Picture" = "Tire uma foto";
@@ -1556,10 +1544,4 @@
 
 /* Data units */
 "Zero bytes" = "Zero bytes";
-
-/* No comment provided by engineer. */
-"Сould not download file." = "Não baixou arquivo.";
-
-/* No comment provided by engineer. */
-"Сould not upload file." = "Não fez upload do arquivo.";
 

@@ -731,21 +731,20 @@ class ASCDocumentsViewController: ASCBaseTableViewController, UIGestureRecognize
     private func createAddBarButton() -> UIBarButtonItem? {
         guard provider?.allowAdd(toFolder: folder) == true else { return nil }
 
-        if #available(iOS 13.0, *) {
-            let config = UIImage.SymbolConfiguration(pointSize: 22, weight: .regular)
+        let config = UIImage.SymbolConfiguration(pointSize: 22, weight: .regular)
 
-            return ASCStyles.createBarButton(
-                image: UIImage(systemName: "plus", withConfiguration: config),
-                target: self,
-                action: #selector(onAddEntityAction)
-            )
-        } else {
-            return ASCStyles.createBarButton(
-                image: Asset.Images.navAdd.image,
-                target: self,
-                action: #selector(onAddEntityAction)
-            )
-        }
+        let icon: UIImage? = {
+            guard folder?.isRoomListFolder == true else {
+                return UIImage(systemName: "plus", withConfiguration: config)
+            }
+            return Asset.Images.barRectanglesAdd.image
+        }()
+
+        return ASCStyles.createBarButton(
+            image: icon,
+            target: self,
+            action: #selector(onAddEntityAction)
+        )
     }
 
     private func createFilterBarButton() -> UIBarButtonItem {
@@ -1803,6 +1802,14 @@ class ASCDocumentsViewController: ASCBaseTableViewController, UIGestureRecognize
     }
 
     func download(cell: UITableViewCell) {
+        if cell is ASCFileCell {
+            downloadFile(cell: cell)
+        } else if cell is ASCFolderCell {
+            downloadFolder(cell: cell)
+        }
+    }
+
+    func downloadFile(cell: UITableViewCell) {
         guard
             let fileCell = cell as? ASCFileCell,
             let file = fileCell.file,
@@ -1880,6 +1887,136 @@ class ASCDocumentsViewController: ASCBaseTableViewController, UIGestureRecognize
                 }
             }
         }
+    }
+
+    func downloadFolder(cell: UITableViewCell) {
+        guard let folderCell = cell as? ASCFolderCell,
+              let folder = folderCell.folder,
+              let provider = provider as? ASCOnlyofficeProvider
+        else { return }
+
+        let transferAlert = ASCProgressAlert(
+            title: NSLocalizedString("Downloading", comment: "Caption of the processing"),
+            message: nil,
+            handler: { cancel in
+                if cancel {
+                    provider.apiClient.request(OnlyofficeAPI.Endpoints.Operations.terminate)
+                    provider.cancel()
+                    log.warning("Active operations canceled")
+                }
+            }
+        )
+
+        transferAlert.show()
+
+        provider.download(items: [folder]) { progress in
+            transferAlert.progress = progress
+        } completion: { [weak self] result in
+            switch result {
+            case let .success(url):
+                transferAlert.hide {
+                    let activityViewController = UIActivityViewController(activityItems: [url], applicationActivities: nil)
+
+                    if UIDevice.pad {
+                        activityViewController.popoverPresentationController?.sourceView = cell
+                        activityViewController.popoverPresentationController?.sourceRect = cell.bounds
+                    }
+
+                    self?.present(activityViewController, animated: true, completion: nil)
+                }
+            case let .failure(error):
+                transferAlert.hide()
+                log.error(error)
+
+                if let self {
+                    UIAlertController.showError(
+                        in: self,
+                        message: NSLocalizedString("Couldn't download the room.", comment: "")
+                    )
+                }
+            }
+        }
+    }
+
+    func leaveRoom(cell: UITableViewCell) {
+        guard let folderCell = cell as? ASCFolderCell,
+              let folder = folderCell.folder,
+              let provider = provider as? ASCOnlyofficeProvider
+        else { return }
+
+        var hud: MBProgressHUD?
+
+        let isOwner: Bool = provider.checkRoomOwner(folder: folder)
+        let alertController = UIAlertController(title: NSLocalizedString("Leave the room", comment: ""), message: "", preferredStyle: .alert)
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+
+        if isOwner {
+            let assignOwnerAction = UIAlertAction(title: NSLocalizedString("Assign Owner", comment: ""), style: .default) { _ in
+                self.navigator.navigate(to: .leaveRoom(entity: folder) { status, result, error in
+                    if status == .begin {
+                        hud = MBProgressHUD.showTopMost()
+                    } else if status == .error {
+                        hud?.hide(animated: true)
+                        UIAlertController.showError(
+                            in: self,
+                            message: NSLocalizedString("Couldn't leave the room", comment: "")
+                        )
+                    } else if status == .end {
+                        hud?.setSuccessState()
+                        hud?.label.numberOfLines = 0
+                        hud?.label.text = NSLocalizedString("You have left the room and appointed a new owner", comment: "")
+                        if let indexPath = self.tableView.indexPath(for: cell) {
+                            self.provider?.remove(at: indexPath.row)
+                            self.tableView.beginUpdates()
+                            self.tableView.deleteRows(at: [indexPath], with: .fade)
+                            self.tableView.endUpdates()
+                            if let refreshControl = self.refreshControl {
+                                self.refresh(refreshControl)
+                            }
+                        }
+                        hud?.hide(animated: false, afterDelay: 1.3)
+                    }
+                })
+            }
+            alertController.message = NSLocalizedString("You are the owner of this room. Before you leave the room, you must transfer the owner’s role to another user.", comment: "")
+
+            alertController.addAction(assignOwnerAction)
+
+        } else {
+            let submitAction = UIAlertAction(title: NSLocalizedString("Ok", comment: ""), style: .default) { _ in
+                provider.leaveRoom(folder: folder) { status, result, error in
+                    if status == .begin {
+                        hud = MBProgressHUD.showTopMost()
+                    } else if status == .error {
+                        hud?.hide(animated: true)
+                        UIAlertController.showError(
+                            in: self,
+                            message: NSLocalizedString("Couldn't leave the room", comment: "")
+                        )
+                    } else if status == .end {
+                        hud?.setSuccessState()
+                        hud?.label.text = NSLocalizedString("You have left the room", comment: "")
+                        if let indexPath = self.tableView.indexPath(for: cell) {
+                            self.provider?.remove(at: indexPath.row)
+                            self.tableView.beginUpdates()
+                            self.tableView.deleteRows(at: [indexPath], with: .fade)
+                            self.tableView.endUpdates()
+                            if let refreshControl = self.refreshControl {
+                                self.refresh(refreshControl)
+                            }
+                        }
+                        hud?.hide(animated: false, afterDelay: 1.3)
+                    }
+                }
+            }
+
+            alertController.message = NSLocalizedString("Do you really want to leave this room? You will be able to join it again via new invitation by a room admin.", comment: "")
+
+            alertController.addAction(submitAction)
+        }
+
+        alertController.addAction(cancelAction)
+        present(alertController, animated: true)
     }
 
     func favorite(cell: UITableViewCell, favorite: Bool) {

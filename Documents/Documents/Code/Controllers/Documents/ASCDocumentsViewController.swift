@@ -557,11 +557,11 @@ class ASCDocumentsViewController: ASCBaseTableViewController, UIGestureRecognize
         ASCCreateEntity().showCreateController(for: provider, in: self, sender: addBarButton)
     }
 
-    @objc func onSortSelectAction(_ sender: Any) {
+    @objc func onActionSelect(_ sender: Any) {
         if #available(iOS 14.0, *) {
             if let button = sender as? UIButton {
                 button.showsMenuAsPrimaryAction = true
-                button.menu = sortSelectMenu(for: button)
+                button.menu = correntFolderActionMenu(for: button)
             }
         } else {
             let moreController = UIAlertController(
@@ -611,7 +611,7 @@ class ASCDocumentsViewController: ASCBaseTableViewController, UIGestureRecognize
         if #available(iOS 14.0, *) {
             if let button = sender as? UIButton {
                 button.showsMenuAsPrimaryAction = true
-                button.menu = sortSelectMenu(for: button)
+                button.menu = correntFolderActionMenu(for: button)
             }
         } else {
             var sortType: ASCDocumentSortType = .dateandtime
@@ -692,7 +692,7 @@ class ASCDocumentsViewController: ASCBaseTableViewController, UIGestureRecognize
             for barButton in [sortSelectBarButton, sortBarButton] {
                 if let button = barButton?.customView as? UIButton {
                     button.showsMenuAsPrimaryAction = true
-                    button.menu = sortSelectMenu(for: button)
+                    button.menu = correntFolderActionMenu(for: button)
                 }
             }
 
@@ -759,21 +759,13 @@ class ASCDocumentsViewController: ASCBaseTableViewController, UIGestureRecognize
 
     private func createSortSelectBarButton() -> UIBarButtonItem {
         guard categoryIsRecent else {
-            if #available(iOS 13.0, *) {
-                let config = UIImage.SymbolConfiguration(pointSize: 20, weight: .regular)
+            let config = UIImage.SymbolConfiguration(pointSize: 20, weight: .regular)
 
-                return ASCStyles.createBarButton(
-                    image: UIImage(systemName: "ellipsis.circle", withConfiguration: config),
-                    target: self,
-                    action: #selector(onSortSelectAction)
-                )
-            } else {
-                return ASCStyles.createBarButton(
-                    image: Asset.Images.navMore.image,
-                    target: self,
-                    action: #selector(onSortSelectAction)
-                )
-            }
+            return ASCStyles.createBarButton(
+                image: UIImage(systemName: "ellipsis.circle", withConfiguration: config),
+                target: self,
+                action: #selector(onActionSelect)
+            )
         }
 
         return ASCStyles.createBarButton(
@@ -1000,7 +992,7 @@ class ASCDocumentsViewController: ASCBaseTableViewController, UIGestureRecognize
         navigationController?.setToolbarHidden(!show, animated: animated)
     }
 
-    private func setEditMode(_ edit: Bool) {
+    func setEditMode(_ edit: Bool) {
         ASCViewControllerManager.shared.rootController?.tabBar.isHidden = edit
 
         tableView.setEditing(edit, animated: true)
@@ -1391,71 +1383,9 @@ class ASCDocumentsViewController: ASCBaseTableViewController, UIGestureRecognize
     }
 
     @available(iOS 14.0, *)
-    private func sortSelectMenu(for button: UIButton) -> UIMenu? {
-        var selectActions: [UIMenuElement] = []
-        var sortActions: [UIMenuElement] = []
-
-        selectActions.append(
-            UIAction(
-                title: NSLocalizedString("Select", comment: "Button title"),
-                image: UIImage(systemName: "checkmark.circle")
-            ) { action in
-                self.setEditMode(!self.tableView.isEditing)
-            }
-        )
-
-        var sortType: ASCDocumentSortType = .dateandtime
-        var sortAscending = false
-
-        if let sortInfo = UserDefaults.standard.value(forKey: ASCConstants.SettingsKeys.sortDocuments) as? [String: Any] {
-            if let sortBy = sortInfo["type"] as? String, !sortBy.isEmpty {
-                sortType = ASCDocumentSortType(sortBy)
-            }
-
-            if let sortOrder = sortInfo["order"] as? String, !sortOrder.isEmpty {
-                sortAscending = sortOrder == "ascending"
-            }
-        }
-
-        var sortStates: [ASCDocumentSortStateType] = defaultsSortTypes.map { ($0, $0 == sortType) }
-
-        if ![.deviceDocuments, .deviceTrash].contains(folder?.rootFolderType) {
-            sortStates.append((.author, sortType == .author))
-        }
-
-        for sort in sortStates {
-            sortActions.append(
-                UIAction(
-                    title: sort.type.description,
-                    image: sort.active ? (sortAscending ? UIImage(systemName: "chevron.up") : UIImage(systemName: "chevron.down")) : nil,
-                    state: sort.active ? .on : .off
-                ) { [weak self] action in
-                    var sortInfo = [
-                        "type": sortType.rawValue,
-                        "order": sortAscending ? "ascending" : "descending",
-                    ]
-
-                    if sortType != sort.type {
-                        sortInfo["type"] = sort.type.rawValue
-                    } else {
-                        sortAscending = !sortAscending
-                        sortInfo["order"] = sortAscending ? "ascending" : "descending"
-                    }
-
-                    UserDefaults.standard.set(sortInfo, forKey: ASCConstants.SettingsKeys.sortDocuments)
-
-                    button.menu = self?.sortSelectMenu(for: button)
-                }
-            )
-        }
-
-        let selectMenu = UIMenu(title: "", options: .displayInline, children: selectActions)
-        let sortMenu = UIMenu(title: "", options: .displayInline, children: sortActions)
-        var menus: [UIMenuElement] = [sortMenu]
-
-        menus.insert(selectMenu, at: 0)
-
-        return UIMenu(title: "", options: [.displayInline], children: menus)
+    private func correntFolderActionMenu(for button: UIButton) -> UIMenu? {
+        guard let folder else { return nil }
+        return CurrentFolderMenu().contextMenu(for: folder, in: self)
     }
 
     @available(iOS 14.0, *)

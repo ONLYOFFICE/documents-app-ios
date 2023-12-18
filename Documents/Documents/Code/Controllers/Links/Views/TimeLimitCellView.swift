@@ -8,7 +8,7 @@
 
 import SwiftUI
 
-struct TimeLimitCellView {
+struct TimeLimitCellView: View {
     @State var model: TimeLimitCellModel
     var body: some View {
         HStack {

@@ -8,37 +8,63 @@
 
 import SwiftUI
 
+struct ASCLabledCellView: View {
+    
+    @State var model: ASCLabledCellModel
+    
+    var body: some View {
+        Text(model.textString)
+            .frame(maxWidth: .infinity, alignment: frameAlignment(for: model.textAlignment))
+            .foregroundColor(textColor(for: model.cellType))
+            .multilineTextAlignment(convertToTextAlignment(model.textAlignment))
+            .onTapGesture {
+                model.onTapAction()
+            }
+    }
+
+    private func textColor(for cellType: CellType) -> Color {
+        switch cellType {
+        case .deletable:
+            return Color.red
+        case .standard:
+            return Asset.Colors.brend.swiftUIColor
+        }
+    }
+
+    private func convertToTextAlignment(_ alignment: TextAlignment) -> SwiftUI.TextAlignment {
+        switch alignment {
+        case .leading:
+            return .leading
+        case .center:
+            return .center
+        case .trailing:
+            return .trailing
+        }
+    }
+    
+    private func frameAlignment(for alignment: TextAlignment) -> Alignment {
+         switch alignment {
+         case .leading:
+             return .leading
+         case .center:
+             return .center
+         case .trailing:
+             return .trailing
+         }
+     }
+}
+
+struct ASCLabledCellModel {
+    var textString: String
+    var cellType: CellType
+    var textAlignment: TextAlignment
+    var onTapAction: () -> Void
+}
+
 enum CellType {
     case deletable, standard
 }
 
 enum TextAlignment {
     case center, leading, trailing
-}
-
-struct ASCLabledCellView: View {
-    var textString: String
-    var cellType: CellType
-    var textAlignment: TextAlignment
-
-    var body: some View {
-//        HStack {
-//            Spacer()
-//            Text(textString)
-//                .foregroundColor(Asset.Colors.brend.swiftUIColor)
-//            Spacer()
-//        }
-        HStack {
-            if textAlignment == .trailing || textAlignment == .center {
-                Spacer()
-            }
-
-            Text(textString)
-                .foregroundColor(cellType == .deletable ? Color.red : Asset.Colors.brend.swiftUIColor)
-
-            if textAlignment == .leading || textAlignment == .center {
-                Spacer()
-            }
-        }
-    }
 }

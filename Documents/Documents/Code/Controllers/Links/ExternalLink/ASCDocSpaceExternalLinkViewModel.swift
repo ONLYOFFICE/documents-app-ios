@@ -21,7 +21,7 @@ struct ExternalLinkStateModel {
         var sections: [Section]
     }
     
-    struct Section {
+    struct Section: Identifiable {
         var id = UUID()
         var header: String?
         var cells: [Cell]
@@ -93,16 +93,16 @@ extension ExternalLinkStateModel {
               cells: [
                 .selectable(.init(
                     title: NSLocalizedString("Anyone with the link", comment: ""),
+                    isSelected: true, //TODO: -
                     onTapAction: {
                         //TODO: -
-                    },
-                    isSelected: true)), //TODO: -
+                    })),
                 .selectable(.init(
                     title: NSLocalizedString("DoсSpace users only", comment: ""),
+                    isSelected: true, //TODO: -
                     onTapAction: {
                         //TODO: -
-                    },
-                    isSelected: true)) //TODO: -
+                    }))
               ])
     }
     
@@ -154,6 +154,7 @@ class ASCDocSpaceExternalLinkViewModel: ObservableObject {
     func onDocSpaceOnly() {}
     func onDelete() {}
     func onCopyLink() {}
+    func onShareAction() {}
 }
 
 

@@ -15,7 +15,7 @@ struct ImagedDetailCellModel {
     var onTapAction: () -> ()
 }
 
-struct ImagedDetailCellView {
+struct ImagedDetailCellView: View {
     
     @State var model: ImagedDetailCellModel
     

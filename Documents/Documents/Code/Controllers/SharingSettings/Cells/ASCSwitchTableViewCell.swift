@@ -56,3 +56,11 @@ class ASCSwitchTableViewCell: UITableViewCell, ASCReusedIdentifierProtocol {
         viewModel?.toggleHandler(uiSwitch.isOn)
     }
 }
+
+@available(iOS 17.0, *)
+#Preview("ASCSwitchTableViewCell", traits: .defaultLayout, body: {
+    let cell = ASCSwitchTableViewCell()
+    let viewModel = ASCSwitchRowViewModel(title: "Sample", isActive: false, toggleHandler: { _ in })
+    cell.viewModel = viewModel
+    return cell
+})

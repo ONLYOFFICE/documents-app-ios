@@ -71,4 +71,45 @@ final class CurrentRoomArchivesMenu: CurrentFolderMenuProtocol {
 
         return UIMenu(title: "", options: [.displayInline], children: menus)
     }
+
+    func actionSheet(for folder: ASCFolder, sender: UIView?, in viewController: ASCDocumentsViewController) -> UIAlertController {
+        let moreController = UIAlertController(
+            title: nil,
+            message: nil,
+            preferredStyle: .actionSheet,
+            tintColor: nil
+        )
+
+        moreController.addAction(
+            UIAlertAction(
+                title: NSLocalizedString("Select", comment: "Button title"),
+                style: .default,
+                handler: { [unowned viewController] action in
+                    viewController.setEditMode(!viewController.tableView.isEditing)
+                }
+            )
+        )
+
+        moreController.addAction(
+            UIAlertAction(
+                title: NSLocalizedString("Sort", comment: "Button title"),
+                style: .default,
+                handler: { [unowned viewController] action in
+                    if let sender {
+                        viewController.onSortAction(sender)
+                    }
+                }
+            )
+        )
+
+        moreController.addAction(
+            UIAlertAction(
+                title: ASCLocalization.Common.cancel,
+                style: .cancel,
+                handler: nil
+            )
+        )
+
+        return moreController
+    }
 }

@@ -564,42 +564,9 @@ class ASCDocumentsViewController: ASCBaseTableViewController, UIGestureRecognize
                 button.menu = correntFolderActionMenu(for: button)
             }
         } else {
-            let moreController = UIAlertController(
-                title: nil,
-                message: nil,
-                preferredStyle: .actionSheet,
-                tintColor: nil
-            )
-
-            moreController.addAction(
-                UIAlertAction(
-                    title: NSLocalizedString("Select", comment: "Button title"),
-                    style: .default,
-                    handler: { [unowned self] action in
-                        self.setEditMode(!self.tableView.isEditing)
-                    }
-                )
-            )
-
-            moreController.addAction(
-                UIAlertAction(
-                    title: NSLocalizedString("Sort", comment: "Button title"),
-                    style: .default,
-                    handler: { [unowned self] action in
-                        self.onSortAction(sender)
-                    }
-                )
-            )
-
-            moreController.addAction(
-                UIAlertAction(
-                    title: ASCLocalization.Common.cancel,
-                    style: .cancel,
-                    handler: nil
-                )
-            )
-
-            present(moreController, animated: true, completion: nil)
+            guard let folder, let sender = sender as? UIView else { return }
+            let actionSheet = CurrentFolderMenu().actionSheet(for: folder, sender: sender, in: self)
+            present(actionSheet, animated: true, completion: nil)
         }
     }
 

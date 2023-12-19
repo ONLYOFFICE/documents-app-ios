@@ -43,6 +43,14 @@ platform :ios do
     clean_build_artifacts
   end
 
+  desc "Unlock keychain"
+  lane :unlock_keystore do
+    unlock_keychain(
+      path: ENV["KEYSTORAGE_NAME"],
+      password: ENV["KEYSTORAGE_PASSWORD"],
+      set_default: true)
+  end
+
   desc "Runs all the tests"
   lane :test do
     scan(

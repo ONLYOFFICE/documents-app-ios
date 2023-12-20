@@ -123,6 +123,7 @@
 		7E7324B635B9B2D98E80FD03 /* Pods_Documents.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1B32667722AD980849E124F1 /* Pods_Documents.framework */; };
 		9AC1D42040BBA923AD7D49C2 /* Pods_DocumentsTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C98C6D1CF16699DFAAAA3A64 /* Pods_DocumentsTests.framework */; };
 		E80B7A722B33552100D48211 /* RoomLinkRequestModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E80B7A712B33552100D48211 /* RoomLinkRequestModel.swift */; };
+		E80B7A742B33595400D48211 /* RoomLinkResponceModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E80B7A732B33595400D48211 /* RoomLinkResponceModel.swift */; };
 		E8BE287C2B243BAE007F5942 /* ActivityIndicatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8BE287A2B243BAD007F5942 /* ActivityIndicatorView.swift */; };
 		E8BE287D2B243BAE007F5942 /* MenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8BE287B2B243BAD007F5942 /* MenuView.swift */; };
 		E8EEC40F2B2C622000A0640D /* CreateTagRequestModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8EEC40B2B2C622000A0640D /* CreateTagRequestModel.swift */; };
@@ -703,6 +704,7 @@
 		DD1E00FB1DC7C04AB38894E0 /* Pods-Documents.documents-alpha.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Documents.documents-alpha.xcconfig"; path = "../Pods/Target Support Files/Pods-Documents/Pods-Documents.documents-alpha.xcconfig"; sourceTree = "<group>"; };
 		E44246600744D0821FA7F89D /* Pods-Documents-Alpha.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Documents-Alpha.release.xcconfig"; path = "../Pods/Target Support Files/Pods-Documents-Alpha/Pods-Documents-Alpha.release.xcconfig"; sourceTree = "<group>"; };
 		E80B7A712B33552100D48211 /* RoomLinkRequestModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoomLinkRequestModel.swift; sourceTree = "<group>"; };
+		E80B7A732B33595400D48211 /* RoomLinkResponceModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoomLinkResponceModel.swift; sourceTree = "<group>"; };
 		E8BE287A2B243BAD007F5942 /* ActivityIndicatorView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActivityIndicatorView.swift; sourceTree = "<group>"; };
 		E8BE287B2B243BAD007F5942 /* MenuView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuView.swift; sourceTree = "<group>"; };
 		E8EEC40B2B2C622000A0640D /* CreateTagRequestModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateTagRequestModel.swift; sourceTree = "<group>"; };
@@ -2737,6 +2739,7 @@
 				FC35D4082A987D1400C6383F /* OnlyofficeShare.swift */,
 				FC35D4062A987D1300C6383F /* OnlyofficeUserPhoto.swift */,
 				FC35D40A2A987D1400C6383F /* OnlyofficeVersion.swift */,
+				E80B7A732B33595400D48211 /* RoomLinkResponceModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -4229,6 +4232,7 @@
 				1DD1DC42299350F4005879E9 /* ASCAccessToAddRightHoldersRoomChecker.swift in Sources */,
 				FC68527126837B7300D830EC /* NextcloudStorageStats.swift in Sources */,
 				FC41D7FB2265B4AF00A155C2 /* ASC2FACodeViewController.swift in Sources */,
+				E80B7A742B33595400D48211 /* RoomLinkResponceModel.swift in Sources */,
 				FC19849A2805559D002057B2 /* ASCLeftAlignedCollectionViewFlowLayout.swift in Sources */,
 				FCEF9D271ED2C94300627BA5 /* PasscodeRepositoryType.swift in Sources */,
 				FC8667D621C799160020D797 /* ASCCloudsSplitViewController.swift in Sources */,

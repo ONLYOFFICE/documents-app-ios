@@ -1,5 +1,5 @@
 //
-//  RoomLinkRepnceModel.swift
+//  RoomLinkResponceModel.swift
 //  Documents
 //
 //  Created by Pavel Chernyshev on 21.12.2023.
@@ -7,6 +7,24 @@
 //
 
 import Foundation
+
+struct RoomLinkResponceModel: Codable {
+    let access: Int
+    let sharedTo: SharedTo
+    let isLocked: Bool
+    let isOwner: Bool
+    let canEditAccess: Bool
+
+    enum CodingKeys: String, CodingKey {
+        case access
+        case sharedTo
+        case isLocked
+        case isOwner
+        case canEditAccess
+    }
+}
+
+extension RoomLinkResponceModel {
     struct SharedTo: Codable {
         let id: String
         let title: String
@@ -23,3 +41,4 @@ import Foundation
             case id, title, shareLink, expirationDate, linkType, password, denyDownload, isExpired, primary, requestToken
         }
     }
+}

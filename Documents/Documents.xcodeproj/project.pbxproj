@@ -3175,10 +3175,10 @@
 		FCE9F6E62B2B56C40056E420 /* CreateRoomFlow */ = {
 			isa = PBXGroup;
 			children = (
-				FCE9F6E72B2B56C40056E420 /* CreateRoom */,
 				FCE9F6EA2B2B56C40056E420 /* CreateRoomRouteViewViewController.swift */,
-				FCE9F6EB2B2B56C40056E420 /* ChooseRoom */,
 				FCE9F6EE2B2B56C40056E420 /* CreateRoomRouteView.swift */,
+				FCE9F6E72B2B56C40056E420 /* CreateRoom */,
+				FCE9F6EB2B2B56C40056E420 /* ChooseRoom */,
 				FCE9F6EF2B2B56C40056E420 /* Models */,
 				FCE9F6F12B2B56C40056E420 /* Views */,
 				FCE9F6F32B2B56C40056E420 /* Services */,

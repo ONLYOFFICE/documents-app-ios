@@ -59,14 +59,14 @@ class OnlyofficeAPI {
         public static let markAsRead = "api/\(version)/files/fileops/markasread"
         public static let paymentQuota = "api/\(version)/portal/payment/quota"
         public static let rooms = "api/\(version)/files/rooms"
-        public static let room = "\(rooms)/%@"
-        public static let roomPin = room.appendingPathComponent("pin")
-        public static let roomUnpin = room.appendingPathComponent("unpin")
-        public static let roomArchive = room.appendingPathComponent("archive")
-        public static let roomUnarchive = room.appendingPathComponent("unarchive")
+        public static let room = "api/\(version)/files/rooms/%@"
+        public static let roomPin = "api/\(version)/files/rooms/%@/pin"
+        public static let roomUnpin = "api/\(version)/files/rooms/%@/unpin"
+        public static let roomArchive = "api/\(version)/files/rooms/%@/archive"
+        public static let roomUnarchive = "api/\(version)/files/rooms/%@/unarchive"
         public static let tags = "api/\(version)/files/tags"
-        public static let roomsTags = room.appendingPathComponent("tags")
-        public static let roomLogo = room.appendingPathComponent("logo")
+        public static let roomsTags = "api/\(version)/files/rooms/%@/tags"
+        public static let roomLogo = "api/\(version)/files/rooms/%@/logo"
         public static let roomLinks = "api/\(version)/files/rooms/%@/links"
 
         enum Forlder {

@@ -18,33 +18,26 @@ import SwiftUI
 final class RoomSharingViewModel: ObservableObject {
     // MARK: - Published vars
 
-    @Published var roomName: String?
-    @Published var roomType: String?
-    @Published var additionalLinks: [ASCLink]
-    @Published var users: [ASCUser]
-    @Published var admins: [ASCUser]
-
-    // MARK: - Public vars
-
-    // var room: ASCFolder?
-
-    // MARK: - Private var
+    @Published var room: ASCFolder
+    @Published var admins: [ASCUser] = []
+    @Published var users: [ASCUser] = []
 
     // MARK: - Init
-
-    init(
-        roomName: String?,
-        roomType: String?,
-        additionalLinks: [ASCLink],
-        users: [ASCUser],
-        admins: [ASCUser]
-        // room: ASCFolder?
-    ) {
-        self.roomName = roomName
-        self.roomType = roomType
-        self.additionalLinks = additionalLinks
-        self.users = users
-        self.admins = admins
-        // self.room = room
+    
+    init(room: ASCFolder) {
+        self.room = room
     }
+    
+    func onTap() {
+        
+    }
+    
+    func shareButtonAction() {
+        
+    }
+    
+    func createAddLinkAction() {
+        
+    }
+
 }

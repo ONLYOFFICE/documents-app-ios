@@ -7,3 +7,20 @@
 //
 
 import Foundation
+import SwiftUI
+
+class RoomSharingRootViewController: UIHostingController<RoomSharingView> {
+    // MARK: - Lifecycle Methods
+    
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init?(coder aDecoder: NSCoder) is not implemented")
+    }
+
+    init(room: ASCFolder) {
+        super.init(
+            rootView: RoomSharingView(
+                viewModel: .init(room: room)
+            )
+        )
+    }
+}

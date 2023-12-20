@@ -115,18 +115,6 @@ extension ASCDocumentsViewController {
                 }
             )
         }
-        
-        ///  Copy general link action
-        
-        let copyGeneralLinkAction = UIAction(
-            title: NSLocalizedString("Copy general link", comment: ""),
-            image: UIImage(systemName: "link")
-        ) { [unowned self] action in
-            let vc = ASCDocSpaceLinkViewController(onAction: { _ in })
-            let nc = UINavigationController(rootViewController: vc)
-            self.present(nc, animated: true, completion: nil)
-        }
-        middleActions.append(copyGeneralLinkAction)
 
         /// Copy action
 
@@ -404,7 +392,11 @@ extension ASCDocumentsViewController {
                     image: UIImage(systemName: "person.2")
                 ) { [unowned self] action in
                     cell.hideSwipe(animated: true)
-                    navigator.navigate(to: .shareSettings(entity: folder))
+                    if folder.isRoom {
+                        navigator.navigate(to: .roomSharingLink(folder: folder))
+                    } else {
+                        navigator.navigate(to: .shareSettings(entity: folder))
+                    }
                 }
             )
         }
@@ -928,20 +920,6 @@ extension ASCDocumentsViewController {
                 )
             )
         }
-        
-        ///  Copy general link action
-        
-        actionAlertController.addAction(
-            UIAlertAction(
-                title: NSLocalizedString("Copy general link", comment: ""),
-                style: .default,
-                handler: { [unowned self] action in
-                    let vc = ASCDocSpaceLinkViewController(onAction: { _ in })
-                    let nc = UINavigationController(rootViewController: vc)
-                    self.present(nc, animated: true, completion: nil)
-                }
-            )
-        )
 
         if UIDevice.phone {
             actionAlertController.addAction(

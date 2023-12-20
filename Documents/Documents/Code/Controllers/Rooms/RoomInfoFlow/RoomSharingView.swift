@@ -12,6 +12,7 @@ struct RoomSharingView: View {
     @Environment(\.presentationMode) var presentationMode
     @ObservedObject var viewModel: RoomSharingViewModel
 
+
     var body: some View {
         List {
             generalLincSection
@@ -19,61 +20,95 @@ struct RoomSharingView: View {
             adminSection
             usersSection
         }
-        .navigationBarTitle(Text(NSLocalizedString("\(viewModel.roomName)", comment: ""))) // TODO: - add subtitle
+        .navigationBarTitle(Text(NSLocalizedString("\(viewModel.room.title)", comment: "")), displayMode: .inline)
+        .navigationBarItems(
+            leading: Button(action: {
+                self.presentationMode.wrappedValue.dismiss()
+            }) {
+                Text(NSLocalizedString("Close", comment: ""))
+                    .foregroundColor(Asset.Colors.brend.swiftUIColor)
+            },
+            trailing: Button(action: {
+            }) {
+                Image(systemName: "person.badge.plus")
+                    .foregroundColor(Asset.Colors.brend.swiftUIColor)
+                    .scaleEffect(x: -1, y: 1)
+            }
+        )
     }
 
     private var generalLincSection: some View {
         Section(header: Text(NSLocalizedString("General link", comment: ""))) {
-            RoomSharingLinkRow(title: "Shared link", images: []) {
-                print("action")
-            }
+            RoomSharingLinkRow(model: .init(titleKey: "Sharing link", subTitleKey: "", onTapAction: {
+                viewModel.onTap()
+            }, onShareAction: {
+                viewModel.shareButtonAction()
+            }))
         }
     }
 
     private var additionalLinksSection: some View {
-        Section(header: Text(NSLocalizedString("Additional links", comment: ""))) {}
+        Section(header: Text(NSLocalizedString("Additional links", comment: ""))) {
+            ASCCreateLinkCellView(model: ASCCreateLinkCellModel(textString: "Create and copy", onTapAction: {
+                viewModel.createAddLinkAction()
+            }))
+        }
     }
 
     private var adminSection: some View {
-        Section(header: Text(NSLocalizedString("Administration", comment: ""))) {}
+        Section(header: Text(NSLocalizedString("Administration", comment: ""))) {
+            ForEach(viewModel.admins, id: \.userId) { user in
+                ASCUserRow(
+                    model: ASCUserRowModel(
+                        image: user.avatar ?? "",
+                        title: user.displayName ?? "",
+                        subtitle: user.accessValue.title(),
+                        isOwner: user.isOwner)
+                )
+            }
+        }
     }
 
     private var usersSection: some View {
-        Section(header: Text(NSLocalizedString("Users", comment: ""))) {}
+        Section(header: Text(NSLocalizedString("Users", comment: ""))) {
+            ForEach(viewModel.users, id: \.userId) { user in
+                ASCUserRow(
+                    model: ASCUserRowModel(
+                        image: user.avatar ?? "",
+                        title: user.displayName ?? "",
+                        subtitle: user.accessValue.title(),
+                        isOwner: user.isOwner)
+                )
+            }
+        }
     }
 }
 
 struct RoomSharingView_Previews: PreviewProvider {
     static var previews: some View {
-        RoomSharingView(viewModel: .init(roomName: "1", roomType: "2", additionalLinks: [], users: [], admins: []))
+        RoomSharingView(
+            viewModel: RoomSharingViewModel(room: .init())
+            
+        )
     }
 }
 
-struct RoomSharingLinkRow: View {
+struct ASCUserRowModel {
+    var image: String
     var title: String
-    var images: [String]
-    var onShareAction: () -> Void
+    var subtitle: String
+    var isOwner: Bool
+}
 
+struct ASCUserRow: View {
+    var model: ASCUserRowModel
+    
     var body: some View {
         HStack {
-            Image(uiImage: Asset.Images.navLink.image)
-                .resizable()
-                .background(Color(asset: Asset.Colors.tableCellSelected))
-                .frame(width: 40, height: 40)
-                .cornerRadius(40)
-            VStack {
-                Text(title)
-                HStack {
-                    //
-                }
-            }
-            Spacer()
-            HStack(spacing: 16) {
-                Image(systemName: "square.and.arrow.up")
-                    .foregroundColor(Asset.Colors.brend.swiftUIColor)
-                    .onTapGesture {
-                        onShareAction()
-                    }
+            Image(model.image)
+            Text(NSLocalizedString("\(model.title)", comment: ""))
+            Text(NSLocalizedString("\(model.subtitle)", comment: ""))
+            if !model.isOwner {
                 Image(systemName: "chevron.right")
                     .font(.subheadline)
                     .foregroundColor(Color.separator)
@@ -82,3 +117,4 @@ struct RoomSharingLinkRow: View {
         }
     }
 }
+

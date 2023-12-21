@@ -10,23 +10,24 @@ import SwiftUI
 
 struct ASCDocSpaceLinkView: View {
     @ObservedObject var viewModel: ASCDocSpaceLinkViewModel
-    
+
     @State private var isGeneralLinkCreated = false
-    @State private var isAdditionalLinkCreated = false //MARK: - TODO add constraint to 5 links
-    
+
+    @State private var isAdditionalLinkCreated = false // MARK: - TODO add constraint to 5 links
+
     @State private var isExternalLinkViewPresenting = false
 
     var body: some View {
         list()
-        .navigationBarTitle(Text(NSLocalizedString("Sharing settings", comment: "")), displayMode: .inline)
-        .navigationBarItems(leading: Button(action: { //TODO: - get from model
-            // TODO:  add close btn action
-        }, label: {
-            Text(NSLocalizedString("Close", comment: "")) //TODO: - get from model
-                .foregroundColor(Asset.Colors.brend.swiftUIColor)
-        }))
+            .navigationBarTitle(Text(NSLocalizedString("Sharing settings", comment: "")), displayMode: .inline)
+            .navigationBarItems(leading: Button(action: { // TODO: - get from model
+                // TODO: add close btn action
+            }, label: {
+                Text(NSLocalizedString("Close", comment: "")) // TODO: - get from model
+                    .foregroundColor(Asset.Colors.brend.swiftUIColor)
+            }))
     }
-    
+
     func list() -> some View {
         List {
             ForEach(viewModel.screenState.tableData.sections) { section in
@@ -34,7 +35,7 @@ struct ASCDocSpaceLinkView: View {
             }
         }
     }
-    
+
     func sectionView(_ section: ASCDocSpaceLinkStateModel.Section) -> some View {
         Section(header: sectionHeader(section.header),
                 footer: Text(section.footer))
@@ -44,7 +45,7 @@ struct ASCDocSpaceLinkView: View {
             }
         }
     }
-    
+
     func sectionHeader(_ header: ASCDocSpaceLinkStateModel.SectionHeader) -> some View {
         let hasSubtitle = header.subtitle != nil
         let hasIcon = header.icon != nil
@@ -65,29 +66,29 @@ struct ASCDocSpaceLinkView: View {
             }
         }
     }
-    
+
     private func cellView(_ cell: ASCDocSpaceLinkStateModel.Cell) -> some View {
         switch cell {
         case let .createLink(model):
             return AnyView(configureCreateLinkCellView(model: model))
-            
+
         // TODO: handle new cases
         case let .link(model):
             return AnyView(configureLinkCellView(model: model))
         }
     }
-    
+
     private func configureCreateLinkCellView(model: ASCCreateLinkCellModel) -> some View {
         ASCCreateLinkCellView(model: model)
             .onTapGesture {
                 model.onTapAction()
             }
     }
-    
+
     private func configureLinkCellView(model: ASCLinkCellModel) -> some View {
         ASCLinkCellView(model: model)
             .onTapGesture {
-                model.onTapAction() //TODO: -
+                model.onTapAction() // TODO: -
             }
     }
 }
@@ -95,24 +96,23 @@ struct ASCDocSpaceLinkView: View {
 struct CreateGeneralLinkView_Previews: PreviewProvider {
     static var previews: some View {
         Group {
-           ASCDocSpaceLinkView(
-               viewModel: .init(screenState: .noLinksState)
-           )
-           .previewLayout(.sizeThatFits)
-           .previewDisplayName("No Links State")
+            ASCDocSpaceLinkView(
+                viewModel: .init(screenState: .noLinksState)
+            )
+            .previewLayout(.sizeThatFits)
+            .previewDisplayName("No Links State")
 
-           ASCDocSpaceLinkView(
-            viewModel: .init(screenState: .generalLinkState)
-           )
-           .previewLayout(.sizeThatFits)
-           .previewDisplayName("General link State")
-            
+            ASCDocSpaceLinkView(
+                viewModel: .init(screenState: .generalLinkState)
+            )
+            .previewLayout(.sizeThatFits)
+            .previewDisplayName("General link State")
+
             ASCDocSpaceLinkView(
                 viewModel: .init(screenState: .additionalLinkState)
             )
             .previewLayout(.sizeThatFits)
             .previewDisplayName("Additional link State")
-            
-       }
+        }
     }
 }

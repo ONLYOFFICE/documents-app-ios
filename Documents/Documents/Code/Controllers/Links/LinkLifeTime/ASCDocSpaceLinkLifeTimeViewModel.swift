@@ -40,7 +40,7 @@ final class LinkLifeTimeViewModel: ObservableObject {
             )
         }
     }
-    
+
     private func selectOption(_ option: LinkLifeTimeOption) {
         selectedOption = option
         updateCellModels()

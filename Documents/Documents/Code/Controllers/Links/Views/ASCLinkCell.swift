@@ -11,17 +11,17 @@ import SwiftUI
 struct ASCLinkCellModel {
     var titleString: String
     var subTitleString: String
-    
+
     var onTapAction: () -> Void
     var onShareAction: () -> Void
 
     init(titleKey: String,
          subTitleKey: String,
          onTapAction: @escaping () -> Void,
-         onShareAction: @escaping () -> Void
-    ) {
-        self.titleString = NSLocalizedString(titleKey, comment: "")
-        self.subTitleString = NSLocalizedString(subTitleKey, comment: "")
+         onShareAction: @escaping () -> Void)
+    {
+        titleString = NSLocalizedString(titleKey, comment: "")
+        subTitleString = NSLocalizedString(subTitleKey, comment: "")
         self.onTapAction = onTapAction
         self.onShareAction = onShareAction
     }
@@ -29,7 +29,7 @@ struct ASCLinkCellModel {
 
 struct ASCLinkCellView: View {
     @State var model: ASCLinkCellModel
-    
+
     var body: some View {
         HStack {
             Image(uiImage: Asset.Images.navLink.image)
@@ -38,7 +38,7 @@ struct ASCLinkCellView: View {
             VStack(alignment: .leading) {
                 Text(model.titleString)
                     .font(Font.subheadline)
-                //TODO: - add some space
+                // TODO: - add some space
                 Text(model.subTitleString)
                     .font(Font.footnote)
                     .foregroundColor(Asset.Colors.textSubtitle.swiftUIColor)
@@ -53,7 +53,7 @@ struct ASCLinkCellView: View {
                         model.onShareAction()
                     }
 
-                Image(systemName: "eye.fill") //TODO: - 
+                Image(systemName: "eye.fill") // TODO: -
                     .foregroundColor(Color.gray)
             }
         }
@@ -62,4 +62,3 @@ struct ASCLinkCellView: View {
         }
     }
 }
-

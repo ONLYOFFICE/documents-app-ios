@@ -14,9 +14,8 @@ struct ASCCreateLinkCellModel {
 }
 
 struct ASCCreateLinkCellView: View {
-    
     @State var model: ASCCreateLinkCellModel
-   
+
     var body: some View {
         Button(action: {
             model.onTapAction()
@@ -35,7 +34,7 @@ struct ASCCreateLinkCellView: View {
 struct ASCCreateLinkCellView_Previews: PreviewProvider {
     static var previews: some View {
         ASCCreateLinkCellView(
-            model: ASCCreateLinkCellModel(textString: "Create and copy", onTapAction: {  })
+            model: ASCCreateLinkCellModel(textString: "Create and copy", onTapAction: {})
         )
     }
 }

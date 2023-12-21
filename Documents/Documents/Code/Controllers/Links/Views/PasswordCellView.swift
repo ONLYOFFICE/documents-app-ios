@@ -6,8 +6,8 @@
 //  Copyright © 2023 Ascensio System SIA. All rights reserved.
 //
 
-import SwiftUI
 import Combine
+import SwiftUI
 
 struct PasswordCellModel {
     var password: String
@@ -30,11 +30,10 @@ struct PasswordCellView: View {
             Button(action: {
                 model.isPasswordVisible.toggle()
             }) {
-                Image(systemName: model.isPasswordVisible ? "eye.slash" : "eye" )
+                Image(systemName: model.isPasswordVisible ? "eye.slash" : "eye")
                     .foregroundColor(Asset.Colors.brend.swiftUIColor)
             }
         }
         .padding()
     }
 }
-

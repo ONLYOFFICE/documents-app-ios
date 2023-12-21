@@ -14,19 +14,19 @@ struct ExternalLinkStateModel {
     var leftBarButtonTitle = ""
     var rightBarButtonTitle = ""
     var tableData: TableData
-    
+
     static let empty: ExternalLinkStateModel = .init(tableData: .init(sections: []))
-    
+
     struct TableData {
         var sections: [Section]
     }
-    
+
     struct Section: Identifiable {
         var id = UUID()
         var header: String?
         var cells: [Cell]
     }
-    
+
     enum Cell: Identifiable {
         var id: UUID { UUID() }
         case accessRights(ImagedDetailCellModel)
@@ -44,7 +44,7 @@ extension ExternalLinkStateModel {
         let copySection = configureCopySection()
         let deleteSection = configureDeleteSection()
         let tableData = ExternalLinkStateModel.TableData(sections: [
-            generalSection, typeSection, copySection, deleteSection
+            generalSection, typeSection, copySection, deleteSection,
         ])
         return ExternalLinkStateModel(
             title: NSLocalizedString("External link", comment: ""),
@@ -53,7 +53,7 @@ extension ExternalLinkStateModel {
             tableData: tableData
         )
     }()
-    
+
     static var customLinkLifeTime: ExternalLinkStateModel = {
         let generalSection = configureGeneralSection()
         let typeSection = configureTypeSection()
@@ -61,7 +61,7 @@ extension ExternalLinkStateModel {
         let deleteSection = configureDeleteSection()
         let timeLimitSection = configureTimeLimitSection()
         let tableData = ExternalLinkStateModel.TableData(sections: [
-            generalSection, typeSection, timeLimitSection, copySection, deleteSection
+            generalSection, typeSection, timeLimitSection, copySection, deleteSection,
         ])
         return ExternalLinkStateModel(
             title: NSLocalizedString("External link", comment: ""),
@@ -69,43 +69,45 @@ extension ExternalLinkStateModel {
             rightBarButtonTitle: NSLocalizedString("Share", comment: ""),
             tableData: tableData
         )
-        
+
     }()
 
     private static func configureGeneralSection() -> ExternalLinkStateModel.Section {
         .init(header: NSLocalizedString("General", comment: ""),
               cells: [
-                .accessRights(.init(titleString: NSLocalizedString("Acces rights", comment: ""),
-                                    image: UIImage(systemName: "eye.fill") ?? UIImage(), //TODO: -
-                                    onTapAction: {
-                                        //TODO: -
-                                    })),
-                .linkLifeTime(.init(title: NSLocalizedString("Link life time", comment: ""),
-                                    subtitle: NSLocalizedString("", comment: "7 day"),
-                                    onTapAction: {
-                                        //TODO: -
-                                    }))
+                  .accessRights(.init(titleString: NSLocalizedString("Acces rights", comment: ""),
+                                      image: UIImage(systemName: "eye.fill") ?? UIImage(), // TODO: -
+                                      onTapAction: {
+                                          // TODO: -
+                                      })),
+                  .linkLifeTime(.init(title: NSLocalizedString("Link life time", comment: ""),
+                                      subtitle: NSLocalizedString("", comment: "7 day"),
+                                      onTapAction: {
+                                          // TODO: -
+                                      })),
               ])
     }
-    
+
     private static func configureTypeSection() -> ExternalLinkStateModel.Section {
         .init(header: NSLocalizedString("Type", comment: ""),
               cells: [
-                .selectable(.init(
-                    title: NSLocalizedString("Anyone with the link", comment: ""),
-                    isSelected: true, //TODO: -
-                    onTapAction: {
-                        //TODO: -
-                    })),
-                .selectable(.init(
-                    title: NSLocalizedString("DoсSpace users only", comment: ""),
-                    isSelected: true, //TODO: -
-                    onTapAction: {
-                        //TODO: -
-                    }))
+                  .selectable(.init(
+                      title: NSLocalizedString("Anyone with the link", comment: ""),
+                      isSelected: true, // TODO: -
+                      onTapAction: {
+                          // TODO: -
+                      }
+                  )),
+                  .selectable(.init(
+                      title: NSLocalizedString("DoсSpace users only", comment: ""),
+                      isSelected: true, // TODO: -
+                      onTapAction: {
+                          // TODO: -
+                      }
+                  )),
               ])
     }
-    
+
     private static func configureCopySection() -> ExternalLinkStateModel.Section {
         .init(cells: [
             .centeredLabled(.init(
@@ -113,11 +115,12 @@ extension ExternalLinkStateModel {
                 cellType: .standard,
                 textAlignment: .center,
                 onTapAction: {
-                //TODO: -
-            }))
+                    // TODO: -
+                }
+            )),
         ])
     }
-    
+
     private static func configureDeleteSection() -> ExternalLinkStateModel.Section {
         .init(cells: [
             .centeredLabled(.init(
@@ -125,29 +128,30 @@ extension ExternalLinkStateModel {
                 cellType: .deletable,
                 textAlignment: .center,
                 onTapAction: {
-                    //TODO: -
-                }))
+                    // TODO: -
+                }
+            )),
         ])
     }
-    
+
     private static func configureTimeLimitSection() -> ExternalLinkStateModel.Section {
         .init(header: NSLocalizedString("Time limit", comment: ""),
               cells: [
-                .datePicker(.init(
-                    title: NSLocalizedString("Valid through", comment: "")))
+                  .datePicker(.init(
+                      title: NSLocalizedString("Valid through", comment: ""))),
               ])
     }
 }
 
 class ASCDocSpaceExternalLinkViewModel: ObservableObject {
-    
     @Published var screenState: ExternalLinkStateModel = .empty
-    
+
     // MARK: temp
+
     init(screenState: ExternalLinkStateModel) {
         self.screenState = screenState
     }
-    
+
     func onAccessRights() {}
     func onLinkLifeCycle() {}
     func onAnyoneWithLink() {}
@@ -156,5 +160,3 @@ class ASCDocSpaceExternalLinkViewModel: ObservableObject {
     func onCopyLink() {}
     func onShareAction() {}
 }
-
-

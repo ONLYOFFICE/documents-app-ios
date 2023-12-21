@@ -9,9 +9,8 @@
 import SwiftUI
 
 struct ASCLabledCellView: View {
-    
     @State var model: ASCLabledCellModel
-    
+
     var body: some View {
         Text(model.textString)
             .frame(maxWidth: .infinity, alignment: frameAlignment(for: model.textAlignment))
@@ -41,17 +40,17 @@ struct ASCLabledCellView: View {
             return .trailing
         }
     }
-    
+
     private func frameAlignment(for alignment: TextAlignment) -> Alignment {
-         switch alignment {
-         case .leading:
-             return .leading
-         case .center:
-             return .center
-         case .trailing:
-             return .trailing
-         }
-     }
+        switch alignment {
+        case .leading:
+            return .leading
+        case .center:
+            return .center
+        case .trailing:
+            return .trailing
+        }
+    }
 }
 
 struct ASCLabledCellModel {

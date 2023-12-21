@@ -9,7 +9,6 @@
 import Foundation
 
 struct RoomLinkRequestModel: Codable {
-    
     var title: String
     var access: Int
     var expirationDate: String

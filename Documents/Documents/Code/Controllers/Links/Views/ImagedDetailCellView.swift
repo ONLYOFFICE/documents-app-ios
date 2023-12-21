@@ -11,14 +11,13 @@ import SwiftUI
 struct ImagedDetailCellModel {
     var titleString = ""
     var image: UIImage
-    
-    var onTapAction: () -> ()
+
+    var onTapAction: () -> Void
 }
 
 struct ImagedDetailCellView: View {
-    
     @State var model: ImagedDetailCellModel
-    
+
     var body: some View {
         HStack {
             Text(model.titleString)
@@ -34,4 +33,3 @@ struct ImagedDetailCellView: View {
         }
     }
 }
-

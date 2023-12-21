@@ -9,23 +9,18 @@
 import SwiftUI
 
 struct ASCDocSpaceLinkSettingsView: View {
-    
     @ObservedObject var viewModel: ASCDocSpaceLinkSettingsViewModel
-   
+
     var body: some View {
         content
             .navigationBarItems(
                 leading: Button(NSLocalizedString("Back", comment: ""),
-                                action: {
-                                    
-                                }),
+                                action: {}),
                 trailing: Button(NSLocalizedString("Share", comment: ""),
-                                 action: {
-                                     
-                                 })
+                                 action: {})
             )
     }
-    
+
     @ViewBuilder
     private var content: some View {
         switch viewModel.contentState {
@@ -35,7 +30,7 @@ struct ASCDocSpaceLinkSettingsView: View {
             additionalLinkView
         }
     }
-    
+
     @ViewBuilder
     var generalLinkView: some View {
         List {
@@ -45,7 +40,7 @@ struct ASCDocSpaceLinkSettingsView: View {
         }
         .navigationBarTitle(Text(NSLocalizedString("General link", comment: "")))
     }
-    
+
     @ViewBuilder
     var additionalLinkView: some View {
         List {
@@ -58,27 +53,27 @@ struct ASCDocSpaceLinkSettingsView: View {
         }
         .navigationBarTitle(Text(NSLocalizedString("Additional links", comment: "")))
     }
-    
+
     private var generalSection: some View {
         Section(header: Text(NSLocalizedString("General", comment: ""))) {
             Text(NSLocalizedString("Link name", comment: ""))
         }
     }
-    
+
     private var protectedSection: some View {
         Section(header: Text(NSLocalizedString("Protection", comment: ""))) {
             VStack {
-                Toggle(isOn:  $viewModel.isProtected) {
+                Toggle(isOn: $viewModel.isProtected) {
                     Text(NSLocalizedString("Password access", comment: ""))
                 }
-                
+
                 if viewModel.isProtected {
                     PasswordCellView(model: .init(password: "123", isPasswordVisible: true))
                 }
             }
         }
     }
-    
+
     private var timeLimitSection: some View {
         Section(header: Text(NSLocalizedString("Time limit", comment: ""))) {
             Toggle(isOn: $viewModel.isTimeLimited) {
@@ -89,20 +84,19 @@ struct ASCDocSpaceLinkSettingsView: View {
             }
         }
     }
-    
+
     private var copySection: some View {
         Section {
             ASCLabledCellView(model: .init(
                 textString: NSLocalizedString(viewModel.isProtected ? "Copy link and password" : "Copy link", comment: ""),
                 cellType: .standard,
                 textAlignment: .center,
-                onTapAction: {
-                    
-                })
+                onTapAction: {}
+            )
             )
         }
     }
-    
+
     private var restrictionSection: some View {
         Section(footer: Text(NSLocalizedString("Enable this setting to disable downloads of files and folders from this room shared via a link", comment: ""))) {
             Toggle(isOn: $viewModel.isRestrictCopyOn) {
@@ -110,19 +104,17 @@ struct ASCDocSpaceLinkSettingsView: View {
             }
         }
     }
-    
+
     private var deleteSection: some View {
         Section {
             ASCLabledCellView(model: .init(
-                textString:  NSLocalizedString("Delete link", comment: ""),
+                textString: NSLocalizedString("Delete link", comment: ""),
                 cellType: .deletable,
                 textAlignment: .center,
-                onTapAction: {
-                    
-                })
+                onTapAction: {}
+            )
             )
         }
-        
     }
 }
 

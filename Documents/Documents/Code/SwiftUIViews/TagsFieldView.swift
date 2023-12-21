@@ -23,7 +23,8 @@ struct TagsFieldView: View {
                 settingsApplyer: settingApplyer,
                 tagChecker: { !$0.isEmpty && $0.isValidTagString }
             )
-            .padding(.top, 8)
+            .padding(.top, 3)
+            .padding(.bottom, tags.count > 0 ? 0 : 8)
             .padding(.horizontal, 16)
             .background(Color.secondarySystemGroupedBackground)
             .cornerRadius(8)
@@ -38,7 +39,7 @@ struct TagsFieldView: View {
     private var applyingView: some View {
         Rectangle()
             .frame(height: 4)
-            .foregroundColor(Color(UIColor.clear))
+            .foregroundColor(.clear)
 
         HStack {
             Text(addTagStr + ": \"\(text ?? "")\"")
@@ -74,18 +75,18 @@ struct TagsFieldView: View {
                 tags.remove(tag.text)
             }
         }
-        tagsField.layer.cornerRadius = 10
+
         tagsField.backgroundColor = .secondarySystemGroupedBackground
-        tagsField.textField.returnKeyType = .go
+        tagsField.textField.returnKeyType = .continue
         tagsField.placeholder = addTagStr
-        tagsField.cornerRadius = 6.0
+        tagsField.cornerRadius = 6
         tagsField.spaceBetweenLines = 16
-        tagsField.spaceBetweenTags = 6
-        tagsField.layoutMargins = UIEdgeInsets(top: 8, left: 12, bottom: 8, right: 12)
-        tagsField.contentInset = UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
+        tagsField.spaceBetweenTags = 8
+        tagsField.layoutMargins = UIEdgeInsets(top: 6, left: 12, bottom: 6, right: 12)
+        tagsField.contentInset = UIEdgeInsets(top: 6, left: 0, bottom: 0, right: 0)
         tagsField.placeholderAlwaysVisible = true
         tagsField.tintColor = .systemGray6
-        tagsField.textField.tintColor = .black
+        tagsField.textField.tintColor = .label
         tagsField.textColor = .link
         tagsField.selectedColor = Asset.Colors.brend.color
         tagsField.selectedTextColor = .white

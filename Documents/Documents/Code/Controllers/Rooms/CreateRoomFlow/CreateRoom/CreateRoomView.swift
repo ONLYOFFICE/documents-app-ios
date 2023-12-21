@@ -70,6 +70,7 @@ struct CreateRoomView: View {
         Section {
             TagsFieldView(tags: $viewModel.tags)
                 .listRowInsets(EdgeInsets())
+                .background(Color.systemGroupedBackground)
         }
         .background(Color.secondarySystemGroupedBackground)
     }

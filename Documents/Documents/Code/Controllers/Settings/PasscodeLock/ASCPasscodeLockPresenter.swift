@@ -6,6 +6,7 @@
 //  Copyright © 2017 Ascensio System SIA. All rights reserved.
 //
 
+import PasscodeLock
 import UIKit
 
 class ASCPasscodeLockPresenter: PasscodeLockPresenter {
@@ -64,10 +65,13 @@ class ASCPasscodeLockPresenter: PasscodeLockPresenter {
             self?.isFreshAppLaunch = false
         }
 
+        PasscodeLockStyles.overrideUserInterfaceStyle = AppThemeService.theme.overrideUserInterfaceStyle
         presentPasscodeLock()
     }
 
     @objc dynamic func applicationDidEnterBackground() {
+        PasscodeLockStyles.overrideUserInterfaceStyle = AppThemeService.theme.overrideUserInterfaceStyle
+
         // present PIN lock
         presentPasscodeLock()
 

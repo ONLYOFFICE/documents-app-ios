@@ -12,6 +12,9 @@ final class CurrentRoomMenu: CurrentFolderMenuProtocol {
     private lazy var sortTypes: [ASCDocumentSortType] = [.az, .type, .tag, .author, .dateandtime]
 
     func contextMenu(for folder: ASCFolder, in viewController: ASCDocumentsViewController) -> UIMenu {
+        guard let provider = viewController.provider else { return UIMenu() }
+        let actions = provider.actions(for: folder)
+
         var selectGroup: [UIMenuElement] = []
 
         // Select
@@ -27,82 +30,100 @@ final class CurrentRoomMenu: CurrentFolderMenuProtocol {
         var entityActionsGroup: [UIMenuElement] = []
 
         // Edit room
-        entityActionsGroup.append(
-            UIAction(
-                title: NSLocalizedString("Edit room", comment: "Button title"),
-                image: UIImage(systemName: "gear")
-            ) { action in
-                print("Call Edit room")
-            }
-        )
+        if actions.contains(.edit) {
+            entityActionsGroup.append(
+                UIAction(
+                    title: NSLocalizedString("Edit room", comment: "Button title"),
+                    image: UIImage(systemName: "gear")
+                ) { action in
+                    print("Call Edit room")
+                }
+            )
+        }
 
         // Invite users
-        entityActionsGroup.append(
-            UIAction(
-                title: NSLocalizedString("Invite users", comment: "Button title"),
-                image: UIImage(systemName: "person.badge.plus")
-            ) { action in
-                print("Invite users")
-            }
-        )
+        if actions.contains(.addUsers) {
+            entityActionsGroup.append(
+                UIAction(
+                    title: NSLocalizedString("Invite users", comment: "Button title"),
+                    image: UIImage(systemName: "person.badge.plus")
+                ) { action in
+                    viewController.navigator.navigate(to: .addUsers(entity: folder))
+                }
+            )
+        }
 
         // Copy general link
-        entityActionsGroup.append(
-            UIAction(
-                title: NSLocalizedString("Copy general link", comment: "Button title"),
-                image: UIImage(systemName: "link")
-            ) { action in
-                print("Copy general link")
-            }
-        )
+        if actions.contains(.link) {
+            entityActionsGroup.append(
+                UIAction(
+                    title: NSLocalizedString("Copy general link", comment: "Button title"),
+                    image: UIImage(systemName: "link")
+                ) { action in
+                    print("Copy general link")
+                }
+            )
+        }
 
         // Info
-        entityActionsGroup.append(
-            UIAction(
-                title: NSLocalizedString("Info", comment: "Button title"),
-                image: UIImage(systemName: "info.circle")
-            ) { action in
-                print("Info")
-            }
-        )
+        if actions.contains(.info) {
+            entityActionsGroup.append(
+                UIAction(
+                    title: NSLocalizedString("Info", comment: "Button title"),
+                    image: UIImage(systemName: "info.circle")
+                ) { action in
+                    viewController.navigator.navigate(to: .shareSettings(entity: folder))
+                }
+            )
+        }
 
         var entityOperationsGroup: [UIMenuElement] = []
 
-        // Info
-        entityOperationsGroup.append(
-            UIAction(
-                title: NSLocalizedString("Download", comment: "Button title"),
-                image: UIImage(systemName: "square.and.arrow.down")
-            ) { action in
-                print("Download")
-            }
-        )
+        // Download
+        if actions.contains(.download) {
+            entityOperationsGroup.append(
+                UIAction(
+                    title: NSLocalizedString("Download", comment: "Button title"),
+                    image: UIImage(systemName: "square.and.arrow.down")
+                ) { action in
+                    viewController.downloadFolder(cell: nil, folder: folder)
+                }
+            )
+        }
 
         // Move to archive
-        entityOperationsGroup.append(
-            UIAction(
-                title: NSLocalizedString("Move to archive", comment: "Button title"),
-                image: UIImage(systemName: "archivebox")
-            ) { action in
-                print("Move to archive")
-            }
-        )
+        if actions.contains(.archive) {
+            entityOperationsGroup.append(
+                UIAction(
+                    title: NSLocalizedString("Move to archive", comment: "Button title"),
+                    image: UIImage(systemName: "archivebox")
+                ) { action in
+                    viewController.archive(cell: nil, folder: folder)
+                }
+            )
+        }
 
-        // Leave the room
-        entityOperationsGroup.append(
-            UIAction(
-                title: NSLocalizedString("Leave the room", comment: "Button title"),
-                image: UIImage(systemName: "arrow.right.square")
-            ) { action in
-                print("Leave the room")
-            }
-        )
+        if actions.contains(.leave) {
+            // Leave the room
+            entityOperationsGroup.append(
+                UIAction(
+                    title: NSLocalizedString("Leave the room", comment: "Button title"),
+                    image: UIImage(systemName: "arrow.right.square")
+                ) { action in
+                    viewController.leaveRoom(cell: nil, folder: folder)
+                }
+            )
+        }
 
         // Sort
         var sortGroup: [UIMenuElement] = []
 
         var sortType: ASCDocumentSortType = .dateandtime
         var sortAscending = false
+
+        if !folder.isRoot {
+            sortTypes = [.az, .size, .dateandtime]
+        }
 
         if let sortInfo = UserDefaults.standard.value(forKey: ASCConstants.SettingsKeys.sortDocuments) as? [String: Any] {
             if let sortBy = sortInfo["type"] as? String, !sortBy.isEmpty {

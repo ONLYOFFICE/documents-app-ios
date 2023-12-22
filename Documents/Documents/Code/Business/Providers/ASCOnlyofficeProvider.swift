@@ -1301,7 +1301,7 @@ class ASCOnlyofficeProvider: ASCFileProviderProtocol & ASCSortableFileProviderPr
                 entityActions.insert(.share)
             }
 
-            if canDownload {
+            if canDownload, !folder.isRoot {
                 entityActions.insert(.download)
             }
 

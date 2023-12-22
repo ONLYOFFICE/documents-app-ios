@@ -1608,11 +1608,13 @@ class ASCDocumentsViewController: ASCBaseTableViewController, UIGestureRecognize
         }
     }
 
-    func archive(cell: UITableViewCell) {
-        guard let folderCell = cell as? ASCFolderCell,
-              let folder = folderCell.folder else { return }
+    func archive(cell: UITableViewCell?, folder: ASCFolder) {
         let processLabel: String = NSLocalizedString("Archiving", comment: "Caption of the processing")
-        handleAction(folder: folder, action: .archive, processingLabel: processLabel, copmletionBehavior: .delete(cell))
+        if let cell = cell {
+            handleAction(folder: folder, action: .archive, processingLabel: processLabel, copmletionBehavior: .delete(cell))
+        } else {
+            handleAction(folder: folder, action: .archive, processingLabel: processLabel, copmletionBehavior: .archiveAction)
+        }
     }
 
     func unarchive(cell: UITableViewCell) {
@@ -1641,6 +1643,22 @@ class ASCDocumentsViewController: ASCBaseTableViewController, UIGestureRecognize
                             self.tableView.beginUpdates()
                             self.tableView.deleteRows(at: [indexPath], with: .fade)
                             self.tableView.endUpdates()
+                        }
+                    case .archiveAction:
+                        if let previousController = self.navigationController?.viewControllers[1] as? ASCDocumentsViewController,
+                           let folderItem = previousController.tableView.visibleCells.compactMap({ $0 as? ASCFolderCell }).first(where: { $0.folder?.title == folder.title }),
+                           let indexPath = previousController.tableView.indexPath(for: folderItem)
+                        {
+                            previousController.provider?.remove(at: indexPath.row)
+                            previousController.tableView.beginUpdates()
+                            previousController.tableView.deleteRows(at: [indexPath], with: .fade)
+                            previousController.tableView.endUpdates()
+
+                            if let refreshControl = previousController.refreshControl {
+                                previousController.refresh(refreshControl)
+                            }
+
+                            self.navigationController?.popViewController(animated: true)
                         }
                     }
                 } else {
@@ -1702,7 +1720,8 @@ class ASCDocumentsViewController: ASCBaseTableViewController, UIGestureRecognize
         if cell is ASCFileCell {
             downloadFile(cell: cell)
         } else if cell is ASCFolderCell {
-            downloadFolder(cell: cell)
+            let folderCell = cell as! ASCFolderCell
+            downloadFolder(cell: cell, folder: folderCell.folder!)
         }
     }
 
@@ -1786,10 +1805,8 @@ class ASCDocumentsViewController: ASCBaseTableViewController, UIGestureRecognize
         }
     }
 
-    func downloadFolder(cell: UITableViewCell) {
-        guard let folderCell = cell as? ASCFolderCell,
-              let folder = folderCell.folder,
-              let provider = provider as? ASCOnlyofficeProvider
+    func downloadFolder(cell: UITableViewCell?, folder: ASCFolder) {
+        guard let provider = provider as? ASCOnlyofficeProvider
         else { return }
 
         let transferAlert = ASCProgressAlert(
@@ -1815,8 +1832,13 @@ class ASCDocumentsViewController: ASCBaseTableViewController, UIGestureRecognize
                     let activityViewController = UIActivityViewController(activityItems: [url], applicationActivities: nil)
 
                     if UIDevice.pad {
-                        activityViewController.popoverPresentationController?.sourceView = cell
-                        activityViewController.popoverPresentationController?.sourceRect = cell.bounds
+                        if let cell = cell {
+                            activityViewController.popoverPresentationController?.sourceView = cell
+                            activityViewController.popoverPresentationController?.sourceRect = cell.bounds
+                        } else {
+                            activityViewController.popoverPresentationController?.sourceView = self?.sortSelectBarButton?.customView
+                            activityViewController.popoverPresentationController?.sourceRect = (self?.sortSelectBarButton?.customView!.bounds)!
+                        }
                     }
 
                     self?.present(activityViewController, animated: true, completion: nil)
@@ -1835,10 +1857,8 @@ class ASCDocumentsViewController: ASCBaseTableViewController, UIGestureRecognize
         }
     }
 
-    func leaveRoom(cell: UITableViewCell) {
-        guard let folderCell = cell as? ASCFolderCell,
-              let folder = folderCell.folder,
-              let provider = provider as? ASCOnlyofficeProvider
+    func leaveRoom(cell: UITableViewCell?, folder: ASCFolder) {
+        guard let provider = provider as? ASCOnlyofficeProvider
         else { return }
 
         var hud: MBProgressHUD?
@@ -1862,16 +1882,35 @@ class ASCDocumentsViewController: ASCBaseTableViewController, UIGestureRecognize
                         hud?.setSuccessState()
                         hud?.label.numberOfLines = 0
                         hud?.label.text = NSLocalizedString("You have left the room and appointed a new owner", comment: "")
-                        if let indexPath = self.tableView.indexPath(for: cell) {
-                            self.provider?.remove(at: indexPath.row)
-                            self.tableView.beginUpdates()
-                            self.tableView.deleteRows(at: [indexPath], with: .fade)
-                            self.tableView.endUpdates()
-                            if let refreshControl = self.refreshControl {
-                                self.refresh(refreshControl)
+                        if let cell = cell {
+                            if let indexPath = self.tableView.indexPath(for: cell) {
+                                self.provider?.remove(at: indexPath.row)
+                                self.tableView.beginUpdates()
+                                self.tableView.deleteRows(at: [indexPath], with: .fade)
+                                self.tableView.endUpdates()
+                                if let refreshControl = self.refreshControl {
+                                    self.refresh(refreshControl)
+                                }
                             }
+                        } else {
+                            if let previousController = self.navigationController?.viewControllers[1] as? ASCDocumentsViewController,
+                               let folderItem = previousController.tableView.visibleCells.compactMap({ $0 as? ASCFolderCell }).first(where: { $0.folder?.title == folder.title }),
+                               let indexPath = previousController.tableView.indexPath(for: folderItem)
+                            {
+                                previousController.provider?.remove(at: indexPath.row)
+                                previousController.tableView.beginUpdates()
+                                previousController.tableView.deleteRows(at: [indexPath], with: .fade)
+                                previousController.tableView.endUpdates()
+
+                                if let refreshControl = previousController.refreshControl {
+                                    previousController.refresh(refreshControl)
+                                }
+
+                                self.navigationController?.popViewController(animated: true)
+                            }
+
+                            hud?.hide(animated: false, afterDelay: 1.3)
                         }
-                        hud?.hide(animated: false, afterDelay: 1.3)
                     }
                 })
             }
@@ -1893,11 +1932,18 @@ class ASCDocumentsViewController: ASCBaseTableViewController, UIGestureRecognize
                     } else if status == .end {
                         hud?.setSuccessState()
                         hud?.label.text = NSLocalizedString("You have left the room", comment: "")
-                        if let indexPath = self.tableView.indexPath(for: cell) {
-                            self.provider?.remove(at: indexPath.row)
-                            self.tableView.beginUpdates()
-                            self.tableView.deleteRows(at: [indexPath], with: .fade)
-                            self.tableView.endUpdates()
+                        if let cell = cell {
+                            if let indexPath = self.tableView.indexPath(for: cell) {
+                                self.provider?.remove(at: indexPath.row)
+                                self.tableView.beginUpdates()
+                                self.tableView.deleteRows(at: [indexPath], with: .fade)
+                                self.tableView.endUpdates()
+                                if let refreshControl = self.refreshControl {
+                                    self.refresh(refreshControl)
+                                }
+                            }
+                        } else {
+                            self.navigationController?.popViewController(animated: true)
                             if let refreshControl = self.refreshControl {
                                 self.refresh(refreshControl)
                             }
@@ -3723,4 +3769,5 @@ extension ASCDocumentsViewController {
 
 private enum CompletionBehavior {
     case delete(UITableViewCell)
+    case archiveAction
 }

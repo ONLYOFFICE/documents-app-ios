@@ -1558,6 +1558,41 @@ class ASCDocumentsViewController: ASCBaseTableViewController, UIGestureRecognize
         }
     }
 
+    func deleteFolderAction(folder: ASCFolder) {
+        let alertController = UIAlertController(title: NSLocalizedString("Delete forever?", comment: ""), message: "", preferredStyle: .alert)
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+
+        var hud: MBProgressHUD?
+
+        hud?.mode = .indeterminate
+        hud?.label.text = NSLocalizedString("Deleting", comment: "Caption of the processing")
+
+        let deleteAction = UIAlertAction(title: NSLocalizedString("Delete", comment: ""), style: .destructive) { _ in
+            hud = MBProgressHUD.showTopMost()
+
+            self.provider?.delete([folder], from: folder, move: true, completeon: { provider, result, success, error in
+                if success {
+                    hud?.setSuccessState()
+                    hud?.hide(animated: false, afterDelay: 1.3)
+                    if let previousController = self.navigationController?.viewControllers[1] as? ASCDocumentsViewController {
+                        if let refreshControl = previousController.refreshControl {
+                            previousController.refresh(refreshControl)
+                        }
+                    }
+                    self.navigationController?.popViewController(animated: true)
+                } else if let error = error {
+                    hud?.hide(animated: true)
+                    UIAlertController.showError(in: self, message: error.localizedDescription)
+                }
+            })
+        }
+        alertController.message = NSLocalizedString("You are about to delete this room. You won’t be able to restore them.", comment: "")
+
+        alertController.addAction(deleteAction)
+        alertController.addAction(cancelAction)
+        present(alertController, animated: true)
+    }
+
     func rename(cell: UITableViewCell) {
         guard let provider = provider else { return }
 
@@ -1617,11 +1652,13 @@ class ASCDocumentsViewController: ASCBaseTableViewController, UIGestureRecognize
         }
     }
 
-    func unarchive(cell: UITableViewCell) {
-        guard let folderCell = cell as? ASCFolderCell,
-              let folder = folderCell.folder else { return }
+    func unarchive(cell: UITableViewCell?, folder: ASCFolder) {
         let processLabel: String = NSLocalizedString("Moving from archive", comment: "Caption of the processing")
-        handleAction(folder: folder, action: .unarchive, processingLabel: processLabel, copmletionBehavior: .delete(cell))
+        if let cell = cell {
+            handleAction(folder: folder, action: .unarchive, processingLabel: processLabel, copmletionBehavior: .delete(cell))
+        } else {
+            handleAction(folder: folder, action: .unarchive, processingLabel: processLabel, copmletionBehavior: .archiveAction)
+        }
     }
 
     private func handleAction(folder: ASCFolder, action: ASCEntityActions, processingLabel: String, copmletionBehavior: CompletionBehavior) {
@@ -1908,9 +1945,8 @@ class ASCDocumentsViewController: ASCBaseTableViewController, UIGestureRecognize
 
                                 self.navigationController?.popViewController(animated: true)
                             }
-
-                            hud?.hide(animated: false, afterDelay: 1.3)
                         }
+                        hud?.hide(animated: false, afterDelay: 1.3)
                     }
                 })
             }
@@ -2694,7 +2730,7 @@ class ASCDocumentsViewController: ASCBaseTableViewController, UIGestureRecognize
             .compactMap { $0 as? ASCFolder }
             .forEach {
                 guard let indexPath = indexPath(by: $0), let cell = tableView.cellForRow(at: indexPath) else { return }
-                unarchive(cell: cell)
+                unarchive(cell: cell, folder: $0)
             }
         showEmptyView(total < 1)
         updateNavBar()

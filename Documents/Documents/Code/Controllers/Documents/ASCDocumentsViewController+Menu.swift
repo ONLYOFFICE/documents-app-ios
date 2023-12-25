@@ -319,7 +319,7 @@ extension ASCDocumentsViewController {
                     image: UIImage(systemName: "arrow.up.bin")
                 ) { [unowned self] action in
                     cell.hideSwipe(animated: true)
-                    self.unarchive(cell: cell)
+                    self.unarchive(cell: cell, folder: folder)
                 }
             )
         }
@@ -369,6 +369,34 @@ extension ASCDocumentsViewController {
                 ) { [unowned self] action in
                     cell.hideSwipe(animated: true)
                     navigator.navigate(to: .shareSettings(entity: folder))
+                }
+            )
+        }
+
+        /// Edit the room action
+
+        if actions.contains(.edit) {
+            rootActions.append(
+                UIAction(
+                    title: NSLocalizedString("Edit", comment: "Button title"),
+                    image: UIImage(systemName: "gear")
+                ) { [unowned self] action in
+                    cell.hideSwipe(animated: true)
+                    print("Edit")
+                }
+            )
+        }
+
+        /// General link action
+
+        if actions.contains(.link) {
+            rootActions.append(
+                UIAction(
+                    title: NSLocalizedString("Copy general link", comment: "Button title"),
+                    image: UIImage(systemName: "link")
+                ) { [unowned self] action in
+                    cell.hideSwipe(animated: true)
+                    print("Copy general link")
                 }
             )
         }

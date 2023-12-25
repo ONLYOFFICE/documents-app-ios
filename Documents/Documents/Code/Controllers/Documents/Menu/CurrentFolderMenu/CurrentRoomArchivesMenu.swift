@@ -12,6 +12,9 @@ final class CurrentRoomArchivesMenu: CurrentFolderMenuProtocol {
     private lazy var sortTypes: [ASCDocumentSortType] = [.az, .type, .tag, .author, .dateandtime]
 
     func contextMenu(for folder: ASCFolder, in viewController: ASCDocumentsViewController) -> UIMenu {
+        guard let provider = viewController.provider else { return UIMenu() }
+        let actions = provider.actions(for: folder)
+
         var selectActions: [UIMenuElement] = []
         var sortActions: [UIMenuElement] = []
 
@@ -23,6 +26,60 @@ final class CurrentRoomArchivesMenu: CurrentFolderMenuProtocol {
                 viewController.setEditMode(!viewController.tableView.isEditing)
             }
         )
+
+        var entityActionsGroup: [UIMenuElement] = []
+
+        // Copy general link
+        if actions.contains(.link) {
+            entityActionsGroup.append(
+                UIAction(
+                    title: NSLocalizedString("Copy general link", comment: "Button title"),
+                    image: UIImage(systemName: "link")
+                ) { action in
+                    // TODO: sharing
+                    print("Copy general link")
+                }
+            )
+        }
+
+        // Info
+        if actions.contains(.info) {
+            entityActionsGroup.append(
+                UIAction(
+                    title: NSLocalizedString("Info", comment: "Button title"),
+                    image: UIImage(systemName: "info.circle")
+                ) { action in
+                    viewController.navigator.navigate(to: .shareSettings(entity: folder))
+                }
+            )
+        }
+
+        var entityOperationsGroup: [UIMenuElement] = []
+
+        if actions.contains(.unarchive) {
+            entityOperationsGroup.append(
+                UIAction(
+                    title: NSLocalizedString("Restore", comment: "Button title"),
+                    image: UIImage(systemName: "arrow.uturn.left.circle")
+                ) { action in
+                    viewController.unarchive(cell: nil, folder: folder)
+                }
+            )
+        }
+
+        if !folder.isRoot {
+            entityOperationsGroup.append(
+                UIAction(
+                    title: NSLocalizedString("Delete", comment: "Button title"),
+                    image: UIImage(systemName: "trash"),
+                    attributes: .destructive
+                ) { action in
+                    viewController.deleteFolderAction(folder: folder)
+                }
+            )
+
+            sortTypes = [.az, .size, .dateandtime]
+        }
 
         var sortType: ASCDocumentSortType = .dateandtime
         var sortAscending = false
@@ -64,8 +121,10 @@ final class CurrentRoomArchivesMenu: CurrentFolderMenuProtocol {
         }
 
         let selectMenu = UIMenu(title: "", options: .displayInline, children: selectActions)
+        let entityActionsMenu = UIMenu(title: "", options: .displayInline, children: entityActionsGroup)
+        let entityOperationsMenu = UIMenu(title: "", options: .displayInline, children: entityOperationsGroup)
         let sortMenu = UIMenu(title: "", options: .displayInline, children: sortActions)
-        var menus: [UIMenuElement] = [sortMenu]
+        var menus: [UIMenuElement] = [selectMenu, entityActionsMenu, entityOperationsMenu, sortMenu]
 
         menus.insert(selectMenu, at: 0)
 

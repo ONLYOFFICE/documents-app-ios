@@ -8,15 +8,19 @@
 
 import SwiftUI
 
-struct RoomSharingLinkRowModel {
+struct RoomSharingLinkRowModel: Identifiable {
+    var id = UUID()
+    
     var titleString: String
     var imagesNames: [String] = []
+    var isExpired: Bool
     var onTapAction: () -> Void
     var onShareAction: () -> Void
     
     static var empty = RoomSharingLinkRowModel(
         titleString: "",
         imagesNames: [],
+        isExpired: false,
         onTapAction: {},
         onShareAction: {}
     )
@@ -37,27 +41,30 @@ struct RoomSharingLinkRow: View {
                 .cornerRadius(40)
             VStack(alignment: .leading) {
                 Text(model.titleString)
-                    .font(Font.subheadline)
-                if !model.imagesNames.isEmpty {
+                if !model.imagesNames.isEmpty && !model.isExpired {
                     HStack {
                         ForEach(model.imagesNames) { imageName in
                             Image(systemName: imageName)
                                 .foregroundColor(Asset.Colors.brend.swiftUIColor)
                         }
                     }
+                } else if model.isExpired {
+                    Text(NSLocalizedString("The link has expired", comment: ""))
+                        .foregroundColor(.red)
+                        .font(.subheadline)
                 }
-                
             }
             
             Spacer()
 
             HStack {
-                Image(systemName: "square.and.arrow.up")
-                    .foregroundColor(Asset.Colors.brend.swiftUIColor)
-                    .onTapGesture {
-                        model.onShareAction()
-                    }
-                
+                if !model.isExpired {
+                    Image(systemName: "square.and.arrow.up")
+                        .foregroundColor(Asset.Colors.brend.swiftUIColor)
+                        .onTapGesture {
+                            model.onShareAction()
+                        }
+                }
                 Image(systemName: "chevron.right")
                     .font(.subheadline)
                     .foregroundColor(Color.separator)

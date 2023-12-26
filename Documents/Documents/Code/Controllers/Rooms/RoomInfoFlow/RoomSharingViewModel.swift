@@ -12,8 +12,6 @@ import SwiftUI
 
 // needed info for presentation:
 // 1. public or custom
-// 2. does general link exist
-// 3. additional links count
 
 struct RoomSharingFlowModel {
     var links: [RoomLinkResponceModel] = []
@@ -28,9 +26,9 @@ final class RoomSharingViewModel: ObservableObject {
     @Published var room: ASCFolder
     @Published var admins: [ASCUser] = []
     @Published var users: [ASCUser] = []
-    @Published var additionalLinks: [Rooms.LinkModel] = []
     @Published var errorMessage: String?
     @Published var generalLinkModel: RoomSharingLinkRowModel = .empty
+    @Published var additionalLinkModels: [RoomSharingLinkRowModel] = [RoomSharingLinkRowModel]()
     
     //MARK: - Private vars
     private lazy var sharingRoomService: NetworkSharingRoomServiceProtocol = NetworkSharingRoomService()
@@ -71,7 +69,7 @@ final class RoomSharingViewModel: ObservableObject {
                         if link.sharedTo.primary, !link.sharedTo.title.isEmpty {
                             generalLinkModel = mapToLinkViewModel(link: link)
                         } else {
-                            self.additionalLinks.append(Rooms.LinkModel(title: link.sharedTo.title, imagesNames: imagesNames))
+                            self.additionalLinkModels.append(mapToLinkViewModel(link: link))
                         }
                     }
                 }
@@ -92,13 +90,10 @@ final class RoomSharingViewModel: ObservableObject {
         return RoomSharingLinkRowModel(
             titleString: link.sharedTo.title,
             imagesNames: imagesNames,
+            isExpired: link.sharedTo.isExpired,
             onTapAction: onTap,
             onShareAction: shareButtonAction
         )
 
     }
-    
-    // flowModel.links = response.links
-   //  links = response.links.map {}
-
 }

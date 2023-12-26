@@ -24,8 +24,8 @@ final class RoomSharingViewModel: ObservableObject {
     var flowModel: RoomSharingFlowModel = .init()
 
     @Published var room: ASCFolder
-    @Published var admins: [ASCUser] = []
-    @Published var users: [ASCUser] = []
+    @Published var admins: [ASCUserRowModel] = []
+    @Published var users: [ASCUserRowModel] = []
     @Published var errorMessage: String?
     @Published var generalLinkModel: RoomSharingLinkRowModel = .empty
     @Published var additionalLinkModels: [RoomSharingLinkRowModel] = [RoomSharingLinkRowModel]()
@@ -38,6 +38,7 @@ final class RoomSharingViewModel: ObservableObject {
     init(room: ASCFolder, sharingRoomService: NetworkSharingRoomServiceProtocol) {
         self.room = room
         loadLinks()
+        loadUsers()
     }
 
     func onTap() {
@@ -50,6 +51,26 @@ final class RoomSharingViewModel: ObservableObject {
     
     func createAddLinkAction() {
         
+    }
+    
+    func loadUsers() {
+        sharingRoomService.fetchRoomUsers(room: room) { result in
+            switch result {
+            case let .success(users):
+                DispatchQueue.main.async { [weak self] in
+                    guard let self else { return }
+                    for user in users {
+                        if user.sharedTo.isAdmin {
+                            admins.append(mapToUserViewModel(user: user))
+                        } else {
+                            self.users.append(mapToUserViewModel(user: user))
+                        }
+                    }
+                }
+            case let .failure(error):
+                self.errorMessage = error.localizedDescription
+            }
+        }
     }
     
     func loadLinks() {
@@ -79,6 +100,10 @@ final class RoomSharingViewModel: ObservableObject {
         }
     }
     
+    private func mapToUserViewModel(user: RoomUsersResponceModel) -> ASCUserRowModel {
+        return ASCUserRowModel(image: user.sharedTo.avatar, title: user.sharedTo.displayName, subtitle: user.access.title(), isOwner: user.sharedTo.isOwner)
+    }
+    
     private func mapToLinkViewModel(link: RoomLinkResponceModel) -> RoomSharingLinkRowModel {
         var imagesNames: [String] = []
         if link.sharedTo.password != nil{
@@ -94,6 +119,5 @@ final class RoomSharingViewModel: ObservableObject {
             onTapAction: onTap,
             onShareAction: shareButtonAction
         )
-
     }
 }

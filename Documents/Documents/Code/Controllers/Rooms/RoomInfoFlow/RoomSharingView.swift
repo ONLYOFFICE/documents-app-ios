@@ -54,13 +54,9 @@ struct RoomSharingView: View {
 
     private var adminSection: some View {
         Section(header: Text(NSLocalizedString("Administration", comment: ""))) {
-            ForEach(viewModel.admins, id: \.userId) { user in
+            ForEach(viewModel.admins) { model in
                 ASCUserRow(
-                    model: ASCUserRowModel(
-                        image: user.avatar ?? "",
-                        title: user.displayName ?? "",
-                        subtitle: user.accessValue.title(),
-                        isOwner: user.isOwner)
+                    model: model
                 )
             }
         }
@@ -68,13 +64,8 @@ struct RoomSharingView: View {
 
     private var usersSection: some View {
         Section(header: Text(NSLocalizedString("Users", comment: ""))) {
-            ForEach(viewModel.users, id: \.userId) { user in
-                ASCUserRow(
-                    model: ASCUserRowModel(
-                        image: user.avatar ?? "",
-                        title: user.displayName ?? "",
-                        subtitle: user.accessValue.title(),
-                        isOwner: user.isOwner)
+            ForEach(viewModel.users) { model in
+                ASCUserRow(model: model
                 )
             }
         }
@@ -90,7 +81,8 @@ struct RoomSharingView: View {
 //    }
 //}
 
-struct ASCUserRowModel {
+struct ASCUserRowModel: Identifiable {
+    var id = UUID()
     var image: String
     var title: String
     var subtitle: String
@@ -102,9 +94,18 @@ struct ASCUserRow: View {
     
     var body: some View {
         HStack {
-            Image(model.image)
+            Image(asset: Asset.Images.avatarDefault)//(model.image)
+                .resizable()
+                .frame(width: 40, height: 40)
             Text(NSLocalizedString("\(model.title)", comment: ""))
+                .lineLimit(1)
+                .minimumScaleFactor(0.5)
+            Spacer()
             Text(NSLocalizedString("\(model.subtitle)", comment: ""))
+                .lineLimit(1)
+                .foregroundColor(.secondaryLabel)
+                .minimumScaleFactor(0.5)
+                .multilineTextAlignment(.trailing)
             if !model.isOwner {
                 Image(systemName: "chevron.right")
                     .font(.subheadline)

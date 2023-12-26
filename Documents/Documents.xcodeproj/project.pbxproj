@@ -137,6 +137,7 @@
 		F33DDA3C2B15FC0000E52F40 /* ASCDocSpaceExternalLinkView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F33DDA3B2B15FC0000E52F40 /* ASCDocSpaceExternalLinkView.swift */; };
 		F33DDA3E2B15FC1F00E52F40 /* ASCDocSpaceExternalLinkViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F33DDA3D2B15FC1F00E52F40 /* ASCDocSpaceExternalLinkViewModel.swift */; };
 		F33E473B27AD9BC200EFF6D9 /* ASCWebKitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F33E473A27AD9BC200EFF6D9 /* ASCWebKitViewController.swift */; };
+		F34DC2462B3B11730074E367 /* RoomUsersResponceModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F34DC2452B3B11730074E367 /* RoomUsersResponceModel.swift */; };
 		F35040472B330290008351A5 /* RoomSharingLinkRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = F35040462B330290008351A5 /* RoomSharingLinkRow.swift */; };
 		F35040492B345738008351A5 /* NetworkSharingRoomService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F35040482B345738008351A5 /* NetworkSharingRoomService.swift */; };
 		F350404C2B358CD8008351A5 /* RoomsNamespace.swift in Sources */ = {isa = PBXBuildFile; fileRef = F350404B2B358CD8008351A5 /* RoomsNamespace.swift */; };
@@ -722,6 +723,7 @@
 		F33DDA3B2B15FC0000E52F40 /* ASCDocSpaceExternalLinkView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCDocSpaceExternalLinkView.swift; sourceTree = "<group>"; };
 		F33DDA3D2B15FC1F00E52F40 /* ASCDocSpaceExternalLinkViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCDocSpaceExternalLinkViewModel.swift; sourceTree = "<group>"; };
 		F33E473A27AD9BC200EFF6D9 /* ASCWebKitViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCWebKitViewController.swift; sourceTree = "<group>"; };
+		F34DC2452B3B11730074E367 /* RoomUsersResponceModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoomUsersResponceModel.swift; sourceTree = "<group>"; };
 		F35040462B330290008351A5 /* RoomSharingLinkRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoomSharingLinkRow.swift; sourceTree = "<group>"; };
 		F35040482B345738008351A5 /* NetworkSharingRoomService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkSharingRoomService.swift; sourceTree = "<group>"; };
 		F350404B2B358CD8008351A5 /* RoomsNamespace.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoomsNamespace.swift; sourceTree = "<group>"; };
@@ -2768,6 +2770,7 @@
 				FC35D4062A987D1300C6383F /* OnlyofficeUserPhoto.swift */,
 				FC35D40A2A987D1400C6383F /* OnlyofficeVersion.swift */,
 				E80B7A732B33595400D48211 /* RoomLinkResponceModel.swift */,
+				F34DC2452B3B11730074E367 /* RoomUsersResponceModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -4195,6 +4198,7 @@
 				1D9B808F2674001D0020B5ED /* ASCAccessRowTableViewCell.swift in Sources */,
 				FCDA61001EA0ED6800A12E16 /* ASCTransferNavigationController.swift in Sources */,
 				1D2E3B8D26BB29DA00BEBE9D /* ASCSharingSettingsAccessForExternalLinkNotesProvider.swift in Sources */,
+				F34DC2462B3B11730074E367 /* RoomUsersResponceModel.swift in Sources */,
 				FCEF856F26C64B7A00173DDF /* WhatsNewService.swift in Sources */,
 				1D84F975273FC2EC00C94E74 /* ASCAppleIdSignInController.swift in Sources */,
 				1D128F9C26B3285300603B0F /* ASCCentredLabelHeaderFooterView.swift in Sources */,

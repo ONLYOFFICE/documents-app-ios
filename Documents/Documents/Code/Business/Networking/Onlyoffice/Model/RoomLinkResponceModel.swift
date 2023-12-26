@@ -9,7 +9,7 @@
 import Foundation
 
 struct RoomLinkResponceModel: Codable {
-    let access: Int
+    let access: ASCShareAccess
     let sharedTo: SharedTo
     let isLocked: Bool
     let isOwner: Bool

@@ -123,3 +123,5 @@ enum ASCShareAccess: Int, CaseIterable {
         return nil
     }
 }
+
+extension ASCShareAccess: Codable {}

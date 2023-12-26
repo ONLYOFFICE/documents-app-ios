@@ -10,23 +10,20 @@ import SwiftUI
 
 struct RoomSharingLinkRowModel {
     var titleString: String
-    
+    var imagesNames: [String] = []
     var onTapAction: () -> Void
     var onShareAction: () -> Void
-
-    init(titleKey: String,
-         subTitleKey: String,
-         onTapAction: @escaping () -> Void,
-         onShareAction: @escaping () -> Void
-    ) {
-        self.titleString = NSLocalizedString(titleKey, comment: "")
-        self.onTapAction = onTapAction
-        self.onShareAction = onShareAction
-    }
+    
+    static var empty = RoomSharingLinkRowModel(
+        titleString: "",
+        imagesNames: [],
+        onTapAction: {},
+        onShareAction: {}
+    )
 }
 
 struct RoomSharingLinkRow: View {
-    @State var model: ASCLinkCellModel
+    var model: RoomSharingLinkRowModel
     
     var body: some View {
         HStack {
@@ -38,8 +35,18 @@ struct RoomSharingLinkRow: View {
                 .padding(10)
                 .background(Color(asset: Asset.Colors.tableCellSelected))
                 .cornerRadius(40)
+            VStack(alignment: .leading) {
                 Text(model.titleString)
                     .font(Font.subheadline)
+                if !model.imagesNames.isEmpty {
+                    HStack {
+                        ForEach(model.imagesNames) { imageName in
+                            Image(systemName: imageName)
+                        }
+                    }
+                }
+                
+            }
             
             Spacer()
 

@@ -10,6 +10,7 @@ import SwiftUI
 
 struct ASCCreateLinkCellModel {
     var textString: String
+    var imageNames: [String]
     var onTapAction: () -> Void
 }
 
@@ -34,7 +35,7 @@ struct ASCCreateLinkCellView: View {
 struct ASCCreateLinkCellView_Previews: PreviewProvider {
     static var previews: some View {
         ASCCreateLinkCellView(
-            model: ASCCreateLinkCellModel(textString: "Create and copy", onTapAction: {})
+            model: ASCCreateLinkCellModel(textString: "Create and copy", imageNames: [], onTapAction: {})
         )
     }
 }

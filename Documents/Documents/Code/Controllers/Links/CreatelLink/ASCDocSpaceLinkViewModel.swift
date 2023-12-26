@@ -61,7 +61,7 @@ extension ASCDocSpaceLinkStateModel {
                 ASCDocSpaceLinkStateModel.Section(
                     header: .init(title: "General links"),
                     cells: [
-                        .createLink(.init(textString: "Create and copy", onTapAction: {})),
+                        .createLink(.init(textString: "Create and copy", imageNames: [], onTapAction: {})),
                     ],
                     footer: "Provide general access to the document selecting the required permission level."
                 ),
@@ -86,7 +86,7 @@ extension ASCDocSpaceLinkStateModel {
                     header: .init(title: "Additional links",
                                   subtitle: "(0/5)"), // TODO: -
                     cells: [
-                        .createLink(.init(textString: "Create and copy", onTapAction: {})),
+                        .createLink(.init(textString: "Create and copy", imageNames: [], onTapAction: {})),
                     ],
                     footer: "Create additional links to share the document with different access rights."
                 ),

@@ -146,7 +146,8 @@ final class ASCNavigator {
         case .themeOptions:
             return ASCAppThemeViewController()
         case let .roomSharingLink(folder):
-            return RoomSharingRootViewController(room: folder)
+            let sharingRoomService = NetworkSharingRoomService()
+            return RoomSharingRootViewController(room: folder, sharingRoomService: sharingRoomService)
         }
     }
 }

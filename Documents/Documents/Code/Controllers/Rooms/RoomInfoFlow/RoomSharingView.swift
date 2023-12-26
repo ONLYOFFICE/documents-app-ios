@@ -14,6 +14,7 @@ struct RoomSharingView: View {
 
 
     var body: some View {
+
         List {
             generalLincSection
             additionalLinksSection
@@ -22,12 +23,6 @@ struct RoomSharingView: View {
         }
         .navigationBarTitle(Text(NSLocalizedString("\(viewModel.room.title)", comment: "")), displayMode: .inline)
         .navigationBarItems(
-            leading: Button(action: {
-                self.presentationMode.wrappedValue.dismiss()
-            }) {
-                Text(NSLocalizedString("Close", comment: ""))
-                    .foregroundColor(Asset.Colors.brend.swiftUIColor)
-            },
             trailing: Button(action: {
             }) {
                 Image(systemName: "person.badge.plus")
@@ -39,19 +34,26 @@ struct RoomSharingView: View {
 
     private var generalLincSection: some View {
         Section(header: Text(NSLocalizedString("General link", comment: ""))) {
-            RoomSharingLinkRow(model: .init(titleKey: "Sharing link", subTitleKey: "", onTapAction: {
-                viewModel.onTap()
-            }, onShareAction: {
-                viewModel.shareButtonAction()
-            }))
+            //TODO: - default value
+            RoomSharingLinkRow(model: viewModel.generalLinkModel)
         }
     }
-
+    
     private var additionalLinksSection: some View {
         Section(header: Text(NSLocalizedString("Additional links", comment: ""))) {
-            ASCCreateLinkCellView(model: ASCCreateLinkCellModel(textString: "Create and copy", onTapAction: {
-                viewModel.createAddLinkAction()
-            }))
+            if viewModel.additionalLinks.isEmpty {
+                ASCCreateLinkCellView(model: ASCCreateLinkCellModel(textString: NSLocalizedString("Create and copy", comment: ""), imageNames: [], onTapAction: {
+                    viewModel.createAddLinkAction()
+                }))
+            } else {
+                ForEach(viewModel.additionalLinks) { link in
+                    RoomSharingLinkRow(model: .init(titleString: link.title, imagesNames: link.imagesNames, onTapAction: {
+                        viewModel.onTap()
+                    }, onShareAction: {
+                        viewModel.shareButtonAction()
+                    }))
+                }
+            }
         }
     }
 
@@ -84,14 +86,14 @@ struct RoomSharingView: View {
     }
 }
 
-struct RoomSharingView_Previews: PreviewProvider {
-    static var previews: some View {
-        RoomSharingView(
-            viewModel: RoomSharingViewModel(room: .init())
-            
-        )
-    }
-}
+//struct RoomSharingView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        RoomSharingView(
+//            viewModel: RoomSharingViewModel(room: .init())
+//
+//        )
+//    }
+//}
 
 struct ASCUserRowModel {
     var image: String

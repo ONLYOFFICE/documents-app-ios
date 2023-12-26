@@ -186,8 +186,8 @@ class OnlyofficeAPI {
                 return Endpoint<OnlyofficeResponse<ASCFolder>>.make(String(format: Path.roomLogo, folder.id), .post)
             }
 
-            static func links(folder: ASCFolder) -> Endpoint<OnlyofficeResponse<RoomLinkResponceModel>> {
-                return Endpoint<OnlyofficeResponse<RoomLinkResponceModel>>.make(String(format: Path.roomLinks, folder.id), .put)
+            static func setLinks(folder: ASCFolder) -> Endpoint<OnlyofficeResponseCodable<RoomLinkResponceModel>> {
+                return Endpoint<OnlyofficeResponseCodable<RoomLinkResponceModel>>.make(String(format: Path.roomLinks, folder.id), .put)
             }
         }
 
@@ -214,8 +214,8 @@ class OnlyofficeAPI {
                 return Endpoint<OnlyofficeResponse<ASCFile>>.make(String(format: Path.file, file.id), .delete)
             }
 
-            static func openEdit(file: ASCFile) -> Endpoint<OnlyofficeResponse<OnlyofficeDocumentConfig>> {
-                return Endpoint<OnlyofficeResponse<OnlyofficeDocumentConfig>>.make(String(format: Path.openEditFile, file.id))
+            static func openEdit(file: ASCFile) -> Endpoint<OnlyofficeResponseCodable<OnlyofficeDocumentConfig>> {
+                return Endpoint<OnlyofficeResponseCodable<OnlyofficeDocumentConfig>>.make(String(format: Path.openEditFile, file.id))
             }
 
             static func startEdit(file: ASCFile) -> Endpoint<OnlyofficeResponseType<String>> {
@@ -287,7 +287,7 @@ class OnlyofficeAPI {
         // MARK: Uploads
 
         enum Uploads {
-            static func logos() -> Endpoint<OnlyofficeResponse<LogoUploadResult>> {
+            static func logos() -> Endpoint<OnlyofficeResponseCodable<LogoUploadResult>> {
                 Endpoint<OnlyofficeResponseBase>.make(Path.logos, .post)
             }
 

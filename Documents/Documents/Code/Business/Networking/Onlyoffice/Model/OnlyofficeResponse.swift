@@ -25,35 +25,17 @@ class OnlyofficeResponseBase: Mappable {
     }
 }
 
-class OnlyofficeResponse<T>: OnlyofficeResponseBase {
+class OnlyofficeResponse<T: Mappable>: OnlyofficeResponseBase {
     var result: T?
 
     required convenience init?(map: Map) {
         self.init()
     }
-}
 
-extension OnlyofficeResponse where T: Mappable {
-    func mapping(map: Map) {
+    override func mapping(map: Map) {
         super.mapping(map: map)
 
         result <- map["response"]
-    }
-}
-
-extension OnlyofficeResponse where T: Codable {
-    func mapping(map: Map) {
-        super.mapping(map: map)
-
-        if let response = map["response"].currentValue,
-           let data = try? JSONSerialization.data(withJSONObject: response, options: .prettyPrinted)
-        {
-            do {
-                result = try JSONDecoder().decode(T.self, from: data)
-            } catch {
-                log.error(error)
-            }
-        }
     }
 }
 
@@ -71,6 +53,28 @@ class OnlyofficeResponseType<T>: OnlyofficeResponseBase {
     }
 }
 
+class OnlyofficeResponseCodable<T: Codable>: OnlyofficeResponseBase {
+    var result: T?
+
+    required convenience init?(map: Map) {
+        self.init()
+    }
+
+    override func mapping(map: Map) {
+        super.mapping(map: map)
+
+        if let response = map["response"].currentValue,
+           let data = try? JSONSerialization.data(withJSONObject: response, options: .prettyPrinted)
+        {
+            do {
+                result = try JSONDecoder().decode(T.self, from: data)
+            } catch {
+                log.error(error)
+            }
+        }
+    }
+}
+
 class OnlyofficeResponseArray<T: Mappable>: OnlyofficeResponseBase {
     var result: [T]?
 
@@ -82,6 +86,28 @@ class OnlyofficeResponseArray<T: Mappable>: OnlyofficeResponseBase {
         super.mapping(map: map)
 
         result <- map["response"]
+    }
+}
+
+class OnlyofficeResponseArrayCodable<T: Codable>: OnlyofficeResponseBase {
+    var result: [T]?
+
+    required convenience init?(map: Map) {
+        self.init()
+    }
+
+    override func mapping(map: Map) {
+        super.mapping(map: map)
+
+        if let response = map["response"].currentValue,
+           let data = try? JSONSerialization.data(withJSONObject: response, options: .prettyPrinted)
+        {
+            do {
+                result = try JSONDecoder().decode([T].self, from: data)
+            } catch {
+                log.error(error)
+            }
+        }
     }
 }
 

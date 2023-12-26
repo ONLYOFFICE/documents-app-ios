@@ -189,6 +189,14 @@ class OnlyofficeAPI {
             static func setLinks(folder: ASCFolder) -> Endpoint<OnlyofficeResponseCodable<RoomLinkResponceModel>> {
                 return Endpoint<OnlyofficeResponseCodable<RoomLinkResponceModel>>.make(String(format: Path.roomLinks, folder.id), .put)
             }
+            
+            static func getLinks(room: ASCFolder) -> Endpoint<OnlyofficeResponseArrayCodable<RoomLinkResponceModel>> {
+                return Endpoint<OnlyofficeResponseArrayCodable<RoomLinkResponceModel>>.make(String(format: Path.roomLinks, room.id), .get, URLEncoding.default)
+            }
+            
+            static func users(room: ASCFolder) -> Endpoint<OnlyofficeResponseArrayCodable<RoomUsersResponceModel>> {
+                return Endpoint<OnlyofficeResponseArrayCodable<RoomUsersResponceModel>>.make(String(format: Path.shareRoom, room.id), .get, URLEncoding.default)
+            }
         }
 
         // MARK: Files

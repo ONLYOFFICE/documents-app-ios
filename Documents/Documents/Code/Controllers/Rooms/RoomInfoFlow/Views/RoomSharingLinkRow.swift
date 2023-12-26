@@ -42,6 +42,7 @@ struct RoomSharingLinkRow: View {
                     HStack {
                         ForEach(model.imagesNames) { imageName in
                             Image(systemName: imageName)
+                                .foregroundColor(Asset.Colors.brend.swiftUIColor)
                         }
                     }
                 }

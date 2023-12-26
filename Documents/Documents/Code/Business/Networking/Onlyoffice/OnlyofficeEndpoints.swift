@@ -67,7 +67,9 @@ class OnlyofficeAPI {
         public static let tags = "api/\(version)/files/tags"
         public static let roomsTags = "api/\(version)/files/rooms/%@/tags"
         public static let roomLogo = "api/\(version)/files/rooms/%@/logo"
+        public static let roomLink = "api/\(version)/files/rooms/%@/link"
         public static let roomLinks = "api/\(version)/files/rooms/%@/links"
+        
 
         enum Forlder {
             public static let root = "@root"
@@ -184,6 +186,10 @@ class OnlyofficeAPI {
 
             static func setLogo(folder: ASCFolder) -> Endpoint<OnlyofficeResponse<ASCFolder>> {
                 return Endpoint<OnlyofficeResponse<ASCFolder>>.make(String(format: Path.roomLogo, folder.id), .post)
+            }
+            
+            static func getLink(folder: ASCFolder) -> Endpoint<OnlyofficeResponseCodable<RoomLinkResponceModel>> {
+                return Endpoint<OnlyofficeResponseCodable<RoomLinkResponceModel>>.make(String(format: Path.roomLink, folder.id), .get, URLEncoding.default)
             }
 
             static func setLinks(folder: ASCFolder) -> Endpoint<OnlyofficeResponseCodable<RoomLinkResponceModel>> {

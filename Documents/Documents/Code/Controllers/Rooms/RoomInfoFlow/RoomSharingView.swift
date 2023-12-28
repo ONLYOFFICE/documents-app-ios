@@ -47,22 +47,31 @@ struct RoomSharingView: View {
 
     @ViewBuilder
     private var generalLincSection: some View {
-        if let model = viewModel.generalLinkModel {
-            Section(header: Text(NSLocalizedString("General link", comment: ""))) {
+        Section(header: Text(NSLocalizedString("General link", comment: ""))) {
+            if let model = viewModel.generalLinkModel {
                 RoomSharingLinkRow(model: model)
+            }  else {
+                ASCCreateLinkCellView(model: .init(
+                    textString: NSLocalizedString("Create and copy", comment: ""),
+                    imageNames: [],
+                    onTapAction: { viewModel.createGeneralLink() })
+                )
             }
         }
     }
-
+    
+    @ViewBuilder
     private var additionalLinksSection: some View {
-        Section(header: additionLinksSectionHeader) {
-            if viewModel.additionalLinkModels.isEmpty {
-                ASCCreateLinkCellView(model: ASCCreateLinkCellModel(textString: NSLocalizedString("Create and copy", comment: ""), imageNames: [], onTapAction: {
-                    viewModel.createAddLinkAction()
-                }))
-            } else {
-                ForEach(viewModel.additionalLinkModels) { linkModel in
-                    RoomSharingLinkRow(model: linkModel)
+        if let generalLink = viewModel.generalLinkModel {
+            Section(header: additionLinksSectionHeader) {
+                if viewModel.additionalLinkModels.isEmpty {
+                    ASCCreateLinkCellView(model: ASCCreateLinkCellModel(textString: NSLocalizedString("Create and copy", comment: ""), imageNames: [], onTapAction: {
+                        viewModel.createAddLinkAction()
+                    }))
+                } else {
+                    ForEach(viewModel.additionalLinkModels) { linkModel in
+                        RoomSharingLinkRow(model: linkModel)
+                    }
                 }
             }
         }

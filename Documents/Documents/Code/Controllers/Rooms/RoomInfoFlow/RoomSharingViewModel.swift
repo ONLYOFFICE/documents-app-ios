@@ -23,6 +23,7 @@ final class RoomSharingViewModel: ObservableObject {
 
     private(set) var flowModel = RoomSharingFlowModel()
     let room: ASCFolder
+    let additionalLinksLimit = 5
 
     @Published var isInitializing: Bool = false
     @Published var admins: [ASCUserRowModel] = []

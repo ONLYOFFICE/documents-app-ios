@@ -24,7 +24,6 @@ struct RoomSharingView: View {
                 )
             }
             .onAppear {
-                print("viewModel.onAppear()")
                 viewModel.onAppear()
             }
     }
@@ -56,7 +55,7 @@ struct RoomSharingView: View {
     }
 
     private var additionalLinksSection: some View {
-        Section(header: Text(NSLocalizedString("Additional links", comment: ""))) {
+        Section(header: additionLinksSectionHeader) {
             if viewModel.additionalLinkModels.isEmpty {
                 ASCCreateLinkCellView(model: ASCCreateLinkCellModel(textString: NSLocalizedString("Create and copy", comment: ""), imageNames: [], onTapAction: {
                     viewModel.createAddLinkAction()
@@ -100,6 +99,44 @@ struct RoomSharingView: View {
                 ForEach(viewModel.invites) { model in
                     ASCUserRow(model: model)
                 }
+            }
+        }
+    }
+
+    private var additionLinksSectionHeader: some View {
+        HStack {
+            Text(NSLocalizedString("Additional links", comment: ""))
+                .foregroundColor(.primary)
+            Text("(\(viewModel.additionalLinkModels.count)/\(viewModel.additionalLinksLimit))")
+            Spacer()
+            if viewModel.additionalLinkModels.count < viewModel.additionalLinksLimit {
+                Button {
+                    viewModel.createAddLinkAction()
+                } label: {
+                    Image(systemName: "plus")
+                        .foregroundColor(Asset.Colors.brend.swiftUIColor)
+                }
+            }
+        }
+    }
+
+    func sectionHeader(_ header: ASCDocSpaceLinkStateModel.SectionHeader) -> some View {
+        let hasSubtitle = header.subtitle != nil
+        let hasIcon = header.icon != nil
+        return HStack {
+            switch (hasSubtitle, hasIcon) {
+            case (true, true):
+                Text(header.title)
+                Text(header.subtitle ?? "")
+                Spacer()
+                Image(uiImage: header.icon ?? UIImage())
+                    .foregroundColor(Asset.Colors.brend.swiftUIColor)
+            case (true, false):
+                Text(header.title)
+                Text(header.subtitle ?? "")
+            default:
+                Text(header.title)
+                Spacer()
             }
         }
     }

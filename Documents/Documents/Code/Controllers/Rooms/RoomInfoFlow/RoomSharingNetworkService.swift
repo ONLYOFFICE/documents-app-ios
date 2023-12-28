@@ -22,7 +22,7 @@ final class RoomSharingNetworkService: RoomSharingNetworkServiceProtocol {
                 if let error {
                     completion(.failure(error))
                 } else {
-                    completion(.failure(NetworkSharingRoomService.Errors.emptyResponse))
+                    completion(.failure(RoomSharingNetworkService.Errors.emptyResponse))
                 }
                 return
             }
@@ -41,7 +41,7 @@ final class RoomSharingNetworkService: RoomSharingNetworkServiceProtocol {
                 if let error {
                     completion(.failure(error))
                 } else {
-                    completion(.failure(NetworkSharingRoomService.Errors.emptyResponse))
+                    completion(.failure(RoomSharingNetworkService.Errors.emptyResponse))
                 }
                 return
             }

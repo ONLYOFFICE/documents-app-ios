@@ -50,14 +50,14 @@ final class RoomSharingViewModel: ObservableObject {
     func loadUsers() {
         sharingRoomService.fetchRoomUsers(room: room) { result in
             switch result {
-            case let .success(users):
+            case let .success(sharings):
                 DispatchQueue.main.async { [weak self] in
                     guard let self else { return }
-                    for user in users {
-                        if user.sharedTo.isAdmin {
-                            admins.append(mapToUserViewModel(user: user))
+                    for sharing in sharings {
+                        if sharing.user.isAdmin {
+                            admins.append(mapToUserViewModel(sharing: sharing))
                         } else {
-                            self.users.append(mapToUserViewModel(user: user))
+                            self.users.append(mapToUserViewModel(sharing: sharing))
                         }
                     }
                 }
@@ -94,8 +94,13 @@ final class RoomSharingViewModel: ObservableObject {
         }
     }
 
-    private func mapToUserViewModel(user: RoomUsersResponceModel) -> ASCUserRowModel {
-        return ASCUserRowModel(image: user.sharedTo.avatar, title: user.sharedTo.displayName, subtitle: user.access.title(), isOwner: user.sharedTo.isOwner)
+    private func mapToUserViewModel(sharing: RoomUsersResponceModel) -> ASCUserRowModel {
+        ASCUserRowModel(
+            image: sharing.user.avatar ?? "",
+            title: sharing.user.displayName ?? "",
+            subtitle: sharing.access.title(),
+            isOwner: sharing.user.isOwner
+        )
     }
 
     private func mapToLinkViewModel(link: RoomLinkResponceModel) -> RoomSharingLinkRowModel {

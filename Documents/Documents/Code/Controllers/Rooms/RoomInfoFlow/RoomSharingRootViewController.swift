@@ -17,7 +17,7 @@ class RoomSharingRootViewController: UIHostingController<RoomSharingView> {
         fatalError("init?(coder aDecoder: NSCoder) is not implemented")
     }
 
-    init(room: ASCFolder, sharingRoomService: NetworkSharingRoomServiceProtocol) {
+    init(room: ASCFolder, sharingRoomService: RoomSharingNetworkServiceProtocol) {
         super.init(
             rootView: RoomSharingView(
                 viewModel: .init(room: room, sharingRoomService: sharingRoomService)

@@ -1,5 +1,5 @@
 //
-//  NetworkSharingRoomService.swift
+//  RoomSharingNetworkService.swift
 //  Documents
 //
 //  Created by Lolita Chernysheva on 21.12.2023.
@@ -8,12 +8,12 @@
 
 import Foundation
 
-protocol NetworkSharingRoomServiceProtocol {
+protocol RoomSharingNetworkServiceProtocol {
     func fetchRoomLinks(room: ASCFolder, completion: @escaping (Result<[RoomLinkResponceModel], Error>) -> Void)
     func fetchRoomUsers(room: ASCFolder, completion: @escaping (Result<[RoomUsersResponceModel], Error>) -> Void)
 }
 
-final class NetworkSharingRoomService: NetworkSharingRoomServiceProtocol {
+final class RoomSharingNetworkService: RoomSharingNetworkServiceProtocol {
     private var networkService = OnlyofficeApiClient.shared
 
     func fetchRoomUsers(room: ASCFolder, completion: @escaping (Result<[RoomUsersResponceModel], Error>) -> Void) {
@@ -50,7 +50,7 @@ final class NetworkSharingRoomService: NetworkSharingRoomServiceProtocol {
     }
 }
 
-extension NetworkSharingRoomService {
+extension RoomSharingNetworkService {
     enum Errors: Error {
         case emptyResponse
     }

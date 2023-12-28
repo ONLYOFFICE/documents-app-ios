@@ -41,7 +41,7 @@
 		1DD3DCAB2B3D20AC0001D1B8 /* ASCDocSpaceExternalLinkView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DD3DC992B3D20AC0001D1B8 /* ASCDocSpaceExternalLinkView.swift */; };
 		1DD3DCB82B3D20C70001D1B8 /* RoomsNamespace.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DD3DCAD2B3D20C70001D1B8 /* RoomsNamespace.swift */; };
 		1DD3DCB92B3D20C70001D1B8 /* RoomSharingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DD3DCAF2B3D20C70001D1B8 /* RoomSharingView.swift */; };
-		1DD3DCBA2B3D20C70001D1B8 /* NetworkSharingRoomService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DD3DCB02B3D20C70001D1B8 /* NetworkSharingRoomService.swift */; };
+		1DD3DCBA2B3D20C70001D1B8 /* RoomSharingNetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DD3DCB02B3D20C70001D1B8 /* RoomSharingNetworkService.swift */; };
 		1DD3DCBB2B3D20C70001D1B8 /* RoomLinksResponceModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DD3DCB22B3D20C70001D1B8 /* RoomLinksResponceModel.swift */; };
 		1DD3DCBC2B3D20C70001D1B8 /* LinkModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DD3DCB32B3D20C70001D1B8 /* LinkModel.swift */; };
 		1DD3DCBD2B3D20C70001D1B8 /* RoomSharingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DD3DCB42B3D20C70001D1B8 /* RoomSharingViewModel.swift */; };
@@ -641,7 +641,7 @@
 		1DD3DC992B3D20AC0001D1B8 /* ASCDocSpaceExternalLinkView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASCDocSpaceExternalLinkView.swift; sourceTree = "<group>"; };
 		1DD3DCAD2B3D20C70001D1B8 /* RoomsNamespace.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoomsNamespace.swift; sourceTree = "<group>"; };
 		1DD3DCAF2B3D20C70001D1B8 /* RoomSharingView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoomSharingView.swift; sourceTree = "<group>"; };
-		1DD3DCB02B3D20C70001D1B8 /* NetworkSharingRoomService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkSharingRoomService.swift; sourceTree = "<group>"; };
+		1DD3DCB02B3D20C70001D1B8 /* RoomSharingNetworkService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoomSharingNetworkService.swift; sourceTree = "<group>"; };
 		1DD3DCB22B3D20C70001D1B8 /* RoomLinksResponceModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoomLinksResponceModel.swift; sourceTree = "<group>"; };
 		1DD3DCB32B3D20C70001D1B8 /* LinkModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LinkModel.swift; sourceTree = "<group>"; };
 		1DD3DCB42B3D20C70001D1B8 /* RoomSharingViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoomSharingViewModel.swift; sourceTree = "<group>"; };
@@ -1871,11 +1871,11 @@
 		1DD3DCAE2B3D20C70001D1B8 /* RoomInfoFlow */ = {
 			isa = PBXGroup;
 			children = (
-				1DD3DCAF2B3D20C70001D1B8 /* RoomSharingView.swift */,
-				1DD3DCB02B3D20C70001D1B8 /* NetworkSharingRoomService.swift */,
 				1DD3DCB12B3D20C70001D1B8 /* Models */,
-				1DD3DCB42B3D20C70001D1B8 /* RoomSharingViewModel.swift */,
 				1DD3DCB52B3D20C70001D1B8 /* Views */,
+				1DD3DCB02B3D20C70001D1B8 /* RoomSharingNetworkService.swift */,
+				1DD3DCAF2B3D20C70001D1B8 /* RoomSharingView.swift */,
+				1DD3DCB42B3D20C70001D1B8 /* RoomSharingViewModel.swift */,
 				1DD3DCB72B3D20C70001D1B8 /* RoomSharingRootViewController.swift */,
 			);
 			path = RoomInfoFlow;
@@ -3697,7 +3697,7 @@
 				FC142A26289818B800EDE7CE /* ASCLeftAlignedCollectionViewFlowLayout.swift in Sources */,
 				FC142A43289819B400EDE7CE /* ASCGroup.swift in Sources */,
 				FC7081012812E2260057FCD2 /* ASCOnlyofficeNavigationController.swift in Sources */,
-				1DD3DCBA2B3D20C70001D1B8 /* NetworkSharingRoomService.swift in Sources */,
+				1DD3DCBA2B3D20C70001D1B8 /* RoomSharingNetworkService.swift in Sources */,
 				FC83D6082A974E2200C404CB /* Encodable+Extensions.swift in Sources */,
 				FC33FA912B0F58B900688E17 /* ASCFolderLogo.swift in Sources */,
 				FC7081022812E2260057FCD2 /* Functions.swift in Sources */,

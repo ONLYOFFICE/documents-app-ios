@@ -9,6 +9,7 @@
 import Foundation
 
 protocol RoomSharingNetworkServiceProtocol {
+    func fetch(room: ASCFolder, completion: @escaping ([RoomLinkResponceModel], [RoomUsersResponceModel]) -> Void)
     func fetchRoomLinks(room: ASCFolder, completion: @escaping (Result<[RoomLinkResponceModel], Error>) -> Void)
     func fetchRoomUsers(room: ASCFolder, completion: @escaping (Result<[RoomUsersResponceModel], Error>) -> Void)
 }
@@ -16,17 +17,29 @@ protocol RoomSharingNetworkServiceProtocol {
 final class RoomSharingNetworkService: RoomSharingNetworkServiceProtocol {
     private var networkService = OnlyofficeApiClient.shared
 
-    func fetchRoomUsers(room: ASCFolder, completion: @escaping (Result<[RoomUsersResponceModel], Error>) -> Void) {
-        networkService.request(OnlyofficeAPI.Endpoints.Rooms.users(room: room)) { responce, error in
-            guard let users = responce?.result else {
-                if let error {
-                    completion(.failure(error))
-                } else {
-                    completion(.failure(RoomSharingNetworkService.Errors.emptyResponse))
-                }
-                return
+    func fetch(room: ASCFolder, completion: @escaping ([RoomLinkResponceModel], [RoomUsersResponceModel]) -> Void) {
+        let group = DispatchGroup()
+        var links = [RoomLinkResponceModel]()
+        var users = [RoomUsersResponceModel]()
+
+        group.enter()
+        fetchRoomLinks(room: room) { result in
+            if case let .success(loadedLinks) = result {
+                links = loadedLinks
             }
-            completion(.success(users))
+            group.leave()
+        }
+
+        group.enter()
+        fetchRoomUsers(room: room) { result in
+            if case let .success(loadedUsers) = result {
+                users = loadedUsers
+            }
+            group.leave()
+        }
+
+        group.notify(queue: .main) {
+            completion(links, users)
         }
     }
 
@@ -46,6 +59,20 @@ final class RoomSharingNetworkService: RoomSharingNetworkServiceProtocol {
                 return
             }
             completion(.success(links))
+        }
+    }
+
+    func fetchRoomUsers(room: ASCFolder, completion: @escaping (Result<[RoomUsersResponceModel], Error>) -> Void) {
+        networkService.request(OnlyofficeAPI.Endpoints.Rooms.users(room: room)) { responce, error in
+            guard let users = responce?.result else {
+                if let error {
+                    completion(.failure(error))
+                } else {
+                    completion(.failure(RoomSharingNetworkService.Errors.emptyResponse))
+                }
+                return
+            }
+            completion(.success(users))
         }
     }
 }

@@ -22,23 +22,25 @@ final class RoomSharingViewModel: ObservableObject {
 
     var flowModel: RoomSharingFlowModel = .init()
 
+    @Published var isInitializing: Bool = false
     @Published var room: ASCFolder
     @Published var admins: [ASCUserRowModel] = []
     @Published var users: [ASCUserRowModel] = []
+    @Published var invites: [ASCUserRowModel] = []
     @Published var errorMessage: String?
-    @Published var generalLinkModel: RoomSharingLinkRowModel = .empty
+    @Published var generalLinkModel: RoomSharingLinkRowModel?
     @Published var additionalLinkModels: [RoomSharingLinkRowModel] = [RoomSharingLinkRowModel]()
 
     // MARK: - Private vars
 
-    private lazy var sharingRoomService: RoomSharingNetworkServiceProtocol = RoomSharingNetworkService()
+    private lazy var sharingRoometworkService: RoomSharingNetworkServiceProtocol = RoomSharingNetworkService()
 
     // MARK: - Init
 
     init(room: ASCFolder, sharingRoomService: RoomSharingNetworkServiceProtocol) {
         self.room = room
-        loadLinks()
-        loadUsers()
+        isInitializing = true
+        loadData()
     }
 
     func onTap() {}
@@ -47,50 +49,17 @@ final class RoomSharingViewModel: ObservableObject {
 
     func createAddLinkAction() {}
 
-    func loadUsers() {
-        sharingRoomService.fetchRoomUsers(room: room) { result in
-            switch result {
-            case let .success(sharings):
-                DispatchQueue.main.async { [weak self] in
-                    guard let self else { return }
-                    for sharing in sharings {
-                        if sharing.user.isAdmin {
-                            admins.append(mapToUserViewModel(sharing: sharing))
-                        } else {
-                            self.users.append(mapToUserViewModel(sharing: sharing))
-                        }
-                    }
-                }
-            case let .failure(error):
-                self.errorMessage = error.localizedDescription
+    func loadData() {
+        sharingRoometworkService.fetch(room: room) { [weak self] links, sharings in
+            guard let self else { return }
+            if let generalLink = links.first(where: { $0.isGeneral }) {
+                generalLinkModel = mapToLinkViewModel(link: generalLink)
             }
-        }
-    }
-
-    func loadLinks() {
-        sharingRoomService.fetchRoomLinks(room: room) { result in
-            switch result {
-            case let .success(links):
-                DispatchQueue.main.async { [weak self] in
-                    guard let self else { return }
-                    for link in links {
-                        var imagesNames: [String] = []
-                        if link.sharedTo.password != nil {
-                            imagesNames.append("lock.circle.fill")
-                        }
-                        if link.sharedTo.expirationDate != nil {
-                            imagesNames.append("clock.fill")
-                        }
-                        if link.sharedTo.primary, !link.sharedTo.title.isEmpty {
-                            generalLinkModel = mapToLinkViewModel(link: link)
-                        } else {
-                            self.additionalLinkModels.append(mapToLinkViewModel(link: link))
-                        }
-                    }
-                }
-            case let .failure(error):
-                self.errorMessage = error.localizedDescription
-            }
+            additionalLinkModels = links.filter { !$0.isGeneral }.map { self.mapToLinkViewModel(link: $0) }
+            admins = sharings.filter { $0.user.isAdmin }.map { self.mapToUserViewModel(sharing: $0) }
+            users = sharings.filter { !$0.user.isAdmin && !$0.user.isUnaplyed }.map { self.mapToUserViewModel(sharing: $0) }
+            invites = sharings.filter { $0.user.isUnaplyed }.map { self.mapToUserViewModel(sharing: $0) }
+            isInitializing = false
         }
     }
 

@@ -72,6 +72,7 @@ final class RoomSharingNetworkService: RoomSharingNetworkServiceProtocol {
                 }
                 return
             }
+            users.forEach { $0.user.accessValue = $0.access }
             completion(.success(users))
         }
     }

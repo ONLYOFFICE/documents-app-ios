@@ -15,21 +15,23 @@ import SwiftUI
 
 struct RoomSharingFlowModel {
     var links: [RoomLinkResponceModel] = []
+    var sharings: [RoomUsersResponceModel] = []
 }
 
 final class RoomSharingViewModel: ObservableObject {
     // MARK: - Published vars
 
-    var flowModel: RoomSharingFlowModel = .init()
+    private(set) var flowModel = RoomSharingFlowModel()
+    let room: ASCFolder
 
     @Published var isInitializing: Bool = false
-    @Published var room: ASCFolder
     @Published var admins: [ASCUserRowModel] = []
     @Published var users: [ASCUserRowModel] = []
     @Published var invites: [ASCUserRowModel] = []
     @Published var errorMessage: String?
     @Published var generalLinkModel: RoomSharingLinkRowModel?
     @Published var additionalLinkModels: [RoomSharingLinkRowModel] = [RoomSharingLinkRowModel]()
+    @Published var selctedUser: ASCUser?
 
     // MARK: - Private vars
 
@@ -43,32 +45,50 @@ final class RoomSharingViewModel: ObservableObject {
         loadData()
     }
 
-    func onTap() {}
+    func loadData() {
+        sharingRoometworkService.fetch(room: room) { [weak self] links, sharings in
+            guard let self else { return }
+            flowModel.links = links
+            flowModel.sharings = sharings
+            buildViewModel()
+            isInitializing = false
+        }
+    }
+
+    // MARK: Handlers
 
     func shareButtonAction() {}
 
     func createAddLinkAction() {}
 
-    func loadData() {
-        sharingRoometworkService.fetch(room: room) { [weak self] links, sharings in
-            guard let self else { return }
-            if let generalLink = links.first(where: { $0.isGeneral }) {
-                generalLinkModel = mapToLinkViewModel(link: generalLink)
-            }
-            additionalLinkModels = links.filter { !$0.isGeneral }.map { self.mapToLinkViewModel(link: $0) }
-            admins = sharings.filter { $0.user.isAdmin }.map { self.mapToUserViewModel(sharing: $0) }
-            users = sharings.filter { !$0.user.isAdmin && !$0.user.isUnaplyed }.map { self.mapToUserViewModel(sharing: $0) }
-            invites = sharings.filter { $0.user.isUnaplyed }.map { self.mapToUserViewModel(sharing: $0) }
-            isInitializing = false
+    func onAppear() {
+        buildViewModel()
+    }
+}
+
+// MARK: Private
+
+private extension RoomSharingViewModel {
+    private func buildViewModel() {
+        if let generalLink = flowModel.links.first(where: { $0.isGeneral }) {
+            generalLinkModel = mapToLinkViewModel(link: generalLink)
         }
+        additionalLinkModels = flowModel.links.filter { !$0.isGeneral }.map { self.mapToLinkViewModel(link: $0) }
+        admins = flowModel.sharings.filter { $0.user.isAdmin }.map { self.mapToUserViewModel(sharing: $0) }
+        users = flowModel.sharings.filter { !$0.user.isAdmin && !$0.user.isUnaplyed }.map { self.mapToUserViewModel(sharing: $0) }
+        invites = flowModel.sharings.filter { $0.user.isUnaplyed }.map { self.mapToUserViewModel(sharing: $0) }
     }
 
     private func mapToUserViewModel(sharing: RoomUsersResponceModel) -> ASCUserRowModel {
         ASCUserRowModel(
             image: sharing.user.avatar ?? "",
             title: sharing.user.displayName ?? "",
-            subtitle: sharing.access.title(),
-            isOwner: sharing.user.isOwner
+            subtitle: sharing.user.accessValue.title(),
+            isOwner: sharing.user.isOwner,
+            onTapAction: { [weak self] in
+                guard !sharing.user.isOwner, let self else { return }
+                selctedUser = sharing.user
+            }
         )
     }
 
@@ -84,7 +104,7 @@ final class RoomSharingViewModel: ObservableObject {
             titleString: link.sharedTo.title,
             imagesNames: imagesNames,
             isExpired: link.sharedTo.isExpired,
-            onTapAction: onTap,
+            onTapAction: {},
             onShareAction: shareButtonAction
         )
     }

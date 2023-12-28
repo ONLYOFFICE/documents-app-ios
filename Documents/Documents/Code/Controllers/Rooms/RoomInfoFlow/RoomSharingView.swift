@@ -15,6 +15,18 @@ struct RoomSharingView: View {
     var body: some View {
         screenView
             .navigationBarTitle(Text(NSLocalizedString("\(viewModel.room.title)", comment: "")), displayMode: .inline)
+            .navigation(item: $viewModel.selctedUser) { user in
+                RoomSharingAccessTypeView(
+                    viewModel: RoomSharingAccessTypeViewModel(
+                        room: viewModel.room,
+                        user: user
+                    )
+                )
+            }
+            .onAppear {
+                print("viewModel.onAppear()")
+                viewModel.onAppear()
+            }
     }
 
     @ViewBuilder
@@ -107,6 +119,7 @@ struct ASCUserRowModel: Identifiable {
     var title: String
     var subtitle: String
     var isOwner: Bool
+    var onTapAction: () -> Void
 }
 
 struct ASCUserRow: View {
@@ -132,6 +145,10 @@ struct ASCUserRow: View {
                     .foregroundColor(Color.separator)
                     .flipsForRightToLeftLayoutDirection(true)
             }
+        }
+        .contentShape(Rectangle())
+        .onTapGesture {
+            model.onTapAction()
         }
     }
 }

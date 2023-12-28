@@ -14,10 +14,9 @@ struct SelectableLabledCellModel {
     var onTapAction: () -> Void
 }
 
-
 struct SelectableLabledCellView: View {
     var model: SelectableLabledCellModel
-    
+
     var body: some View {
         HStack {
             Text(model.title)

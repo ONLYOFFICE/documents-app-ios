@@ -18,9 +18,8 @@ struct RoomSharingFlowModel {
 }
 
 final class RoomSharingViewModel: ObservableObject {
-    
     // MARK: - Published vars
-    
+
     var flowModel: RoomSharingFlowModel = .init()
 
     @Published var room: ASCFolder
@@ -29,30 +28,25 @@ final class RoomSharingViewModel: ObservableObject {
     @Published var errorMessage: String?
     @Published var generalLinkModel: RoomSharingLinkRowModel = .empty
     @Published var additionalLinkModels: [RoomSharingLinkRowModel] = [RoomSharingLinkRowModel]()
-    
-    //MARK: - Private vars
+
+    // MARK: - Private vars
+
     private lazy var sharingRoomService: NetworkSharingRoomServiceProtocol = NetworkSharingRoomService()
 
     // MARK: - Init
-    
+
     init(room: ASCFolder, sharingRoomService: NetworkSharingRoomServiceProtocol) {
         self.room = room
         loadLinks()
         loadUsers()
     }
 
-    func onTap() {
-        
-    }
-    
-    func shareButtonAction() {
-        
-    }
-    
-    func createAddLinkAction() {
-        
-    }
-    
+    func onTap() {}
+
+    func shareButtonAction() {}
+
+    func createAddLinkAction() {}
+
     func loadUsers() {
         sharingRoomService.fetchRoomUsers(room: room) { result in
             switch result {
@@ -72,7 +66,7 @@ final class RoomSharingViewModel: ObservableObject {
             }
         }
     }
-    
+
     func loadLinks() {
         sharingRoomService.fetchRoomLinks(room: room) { result in
             switch result {
@@ -81,7 +75,7 @@ final class RoomSharingViewModel: ObservableObject {
                     guard let self else { return }
                     for link in links {
                         var imagesNames: [String] = []
-                        if link.sharedTo.password != nil{
+                        if link.sharedTo.password != nil {
                             imagesNames.append("lock.circle.fill")
                         }
                         if link.sharedTo.expirationDate != nil {
@@ -99,14 +93,14 @@ final class RoomSharingViewModel: ObservableObject {
             }
         }
     }
-    
+
     private func mapToUserViewModel(user: RoomUsersResponceModel) -> ASCUserRowModel {
         return ASCUserRowModel(image: user.sharedTo.avatar, title: user.sharedTo.displayName, subtitle: user.access.title(), isOwner: user.sharedTo.isOwner)
     }
-    
+
     private func mapToLinkViewModel(link: RoomLinkResponceModel) -> RoomSharingLinkRowModel {
         var imagesNames: [String] = []
-        if link.sharedTo.password != nil{
+        if link.sharedTo.password != nil {
             imagesNames.append("lock.circle.fill")
         }
         if link.sharedTo.expirationDate != nil {

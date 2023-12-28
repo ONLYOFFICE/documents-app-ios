@@ -8,8 +8,6 @@
 
 import Foundation
 
-//struct RoomLinksResponceModel: Codable {
+// struct RoomLinksResponceModel: Codable {
 //    let response: [RoomLinkResponceModel]
-//}
-
-
+// }

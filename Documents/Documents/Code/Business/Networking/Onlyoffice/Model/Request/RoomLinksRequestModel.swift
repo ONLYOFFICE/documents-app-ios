@@ -11,4 +11,3 @@ import Foundation
 struct RoomLinksRequestModel: Codable {
     var type: Int
 }
-

@@ -10,13 +10,13 @@ import SwiftUI
 
 struct RoomSharingLinkRowModel: Identifiable {
     var id = UUID()
-    
+
     var titleString: String
     var imagesNames: [String] = []
     var isExpired: Bool
     var onTapAction: () -> Void
     var onShareAction: () -> Void
-    
+
     static var empty = RoomSharingLinkRowModel(
         titleString: "",
         imagesNames: [],
@@ -28,7 +28,7 @@ struct RoomSharingLinkRowModel: Identifiable {
 
 struct RoomSharingLinkRow: View {
     var model: RoomSharingLinkRowModel
-    
+
     var body: some View {
         HStack {
             Image(systemName: "link")
@@ -54,7 +54,7 @@ struct RoomSharingLinkRow: View {
                         .font(.subheadline)
                 }
             }
-            
+
             Spacer()
 
             HStack {

@@ -11,13 +11,12 @@ import SwiftUI
 struct SubTitledDetailCellModel {
     var title = ""
     var subtitle = ""
-    var onTapAction: () -> ()
+    var onTapAction: () -> Void
 }
 
 struct SubTitledDetailCellView: View {
-    
     @State var model: SubTitledDetailCellModel
-    
+
     var body: some View {
         HStack {
             Text(model.title)

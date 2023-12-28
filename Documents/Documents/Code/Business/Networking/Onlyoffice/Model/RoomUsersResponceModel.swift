@@ -9,13 +9,14 @@
 import Foundation
 
 // MARK: - RoomUsersResponceModel
+
 struct RoomUsersResponceModel: Codable {
     let access: ASCShareAccess
     let sharedTo: SharedTo
     let isLocked: Bool
     let isOwner: Bool
     let canEditAccess: Bool
-    
+
     enum CodingKeys: String, CodingKey {
         case access
         case sharedTo
@@ -26,6 +27,7 @@ struct RoomUsersResponceModel: Codable {
 }
 
 // MARK: - SharedTo
+
 struct SharedTo: Codable {
     let firstName, lastName, userName, email: String
     let status, activationStatus: Int

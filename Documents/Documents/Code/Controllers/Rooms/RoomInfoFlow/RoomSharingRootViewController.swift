@@ -11,7 +11,8 @@ import SwiftUI
 
 class RoomSharingRootViewController: UIHostingController<RoomSharingView> {
     // MARK: - Lifecycle Methods
-    
+
+    @available(*, unavailable)
     required init?(coder aDecoder: NSCoder) {
         fatalError("init?(coder aDecoder: NSCoder) is not implemented")
     }

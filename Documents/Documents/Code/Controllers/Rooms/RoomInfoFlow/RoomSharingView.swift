@@ -12,9 +12,7 @@ struct RoomSharingView: View {
     @Environment(\.presentationMode) var presentationMode
     @ObservedObject var viewModel: RoomSharingViewModel
 
-
     var body: some View {
-
         List {
             generalLincSection
             additionalLinksSection
@@ -23,8 +21,7 @@ struct RoomSharingView: View {
         }
         .navigationBarTitle(Text(NSLocalizedString("\(viewModel.room.title)", comment: "")), displayMode: .inline)
         .navigationBarItems(
-            trailing: Button(action: {
-            }) {
+            trailing: Button(action: {}) {
                 Image(systemName: "person.badge.plus")
                     .foregroundColor(Asset.Colors.brend.swiftUIColor)
                     .scaleEffect(x: -1, y: 1)
@@ -37,7 +34,7 @@ struct RoomSharingView: View {
             RoomSharingLinkRow(model: viewModel.generalLinkModel)
         }
     }
-    
+
     private var additionalLinksSection: some View {
         Section(header: Text(NSLocalizedString("Additional links", comment: ""))) {
             if viewModel.additionalLinkModels.isEmpty {
@@ -72,14 +69,14 @@ struct RoomSharingView: View {
     }
 }
 
-//struct RoomSharingView_Previews: PreviewProvider {
+// struct RoomSharingView_Previews: PreviewProvider {
 //    static var previews: some View {
 //        RoomSharingView(
 //            viewModel: RoomSharingViewModel(room: .init())
 //
 //        )
 //    }
-//}
+// }
 
 struct ASCUserRowModel: Identifiable {
     var id = UUID()
@@ -91,10 +88,10 @@ struct ASCUserRowModel: Identifiable {
 
 struct ASCUserRow: View {
     var model: ASCUserRowModel
-    
+
     var body: some View {
         HStack {
-            Image(asset: Asset.Images.avatarDefault)//(model.image)
+            Image(asset: Asset.Images.avatarDefault) // (model.image)
                 .resizable()
                 .frame(width: 40, height: 40)
             Text(NSLocalizedString("\(model.title)", comment: ""))
@@ -115,4 +112,3 @@ struct ASCUserRow: View {
         }
     }
 }
-

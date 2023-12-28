@@ -27,5 +27,3 @@ struct TimeLimitCellModel {
     @State var selectedDate: Date = Calendar.current.date(byAdding: .day, value: 7, to: Date()) ?? Date()
     var title = ""
 }
-
-

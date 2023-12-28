@@ -13,25 +13,33 @@ struct RoomSharingView: View {
     @ObservedObject var viewModel: RoomSharingViewModel
 
     var body: some View {
-        List {
-            generalLincSection
-            additionalLinksSection
-            adminSection
-            usersSection
-        }
-        .navigationBarTitle(Text(NSLocalizedString("\(viewModel.room.title)", comment: "")), displayMode: .inline)
-        .navigationBarItems(
-            trailing: Button(action: {}) {
-                Image(systemName: "person.badge.plus")
-                    .foregroundColor(Asset.Colors.brend.swiftUIColor)
-                    .scaleEffect(x: -1, y: 1)
-            }
-        )
+        screenView
+            .navigationBarTitle(Text(NSLocalizedString("\(viewModel.room.title)", comment: "")), displayMode: .inline)
     }
 
+    @ViewBuilder
+    private var screenView: some View {
+        if !viewModel.isInitializing {
+            List {
+                generalLincSection
+                additionalLinksSection
+                adminSection
+                usersSection
+                invitesSection
+            }
+        } else {
+            VStack {
+                ActivityIndicatorView()
+            }
+        }
+    }
+
+    @ViewBuilder
     private var generalLincSection: some View {
-        Section(header: Text(NSLocalizedString("General link", comment: ""))) {
-            RoomSharingLinkRow(model: viewModel.generalLinkModel)
+        if let model = viewModel.generalLinkModel {
+            Section(header: Text(NSLocalizedString("General link", comment: ""))) {
+                RoomSharingLinkRow(model: model)
+            }
         }
     }
 
@@ -49,34 +57,49 @@ struct RoomSharingView: View {
         }
     }
 
+    @ViewBuilder
     private var adminSection: some View {
-        Section(header: Text(NSLocalizedString("Administration", comment: ""))) {
-            ForEach(viewModel.admins) { model in
-                ASCUserRow(
-                    model: model
-                )
+        if !viewModel.admins.isEmpty {
+            Section(header: Text(NSLocalizedString("Administration", comment: ""))) {
+                ForEach(viewModel.admins) { model in
+                    ASCUserRow(
+                        model: model
+                    )
+                }
             }
         }
     }
 
+    @ViewBuilder
     private var usersSection: some View {
-        Section(header: Text(NSLocalizedString("Users", comment: ""))) {
-            ForEach(viewModel.users) { model in
-                ASCUserRow(model: model
-                )
+        if !viewModel.users.isEmpty {
+            Section(header: Text(NSLocalizedString("Users", comment: ""))) {
+                ForEach(viewModel.users) { model in
+                    ASCUserRow(model: model)
+                }
+            }
+        }
+    }
+
+    @ViewBuilder
+    private var invitesSection: some View {
+        if !viewModel.invites.isEmpty {
+            Section(header: Text(NSLocalizedString("Expect users", comment: ""))) {
+                ForEach(viewModel.invites) { model in
+                    ASCUserRow(model: model)
+                }
             }
         }
     }
 }
 
-// struct RoomSharingView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        RoomSharingView(
-//            viewModel: RoomSharingViewModel(room: .init())
-//
-//        )
-//    }
-// }
+struct RoomSharingView_Previews: PreviewProvider {
+    static var previews: some View {
+        RoomSharingView(
+            viewModel: RoomSharingViewModel(room: .init(), sharingRoomService: RoomSharingNetworkService())
+        )
+    }
+}
 
 struct ASCUserRowModel: Identifiable {
     var id = UUID()

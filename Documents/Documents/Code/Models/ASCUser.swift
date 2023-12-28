@@ -74,6 +74,10 @@ extension ASCUser {
         case owner
         case unapplyed
     }
+
+    var isUnaplyed: Bool {
+        activationStatus == .unapplyed
+    }
 }
 
 extension ASCUser: Codable {

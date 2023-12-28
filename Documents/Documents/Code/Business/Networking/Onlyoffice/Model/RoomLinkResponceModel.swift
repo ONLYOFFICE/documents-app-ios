@@ -42,3 +42,9 @@ extension RoomLinkResponceModel {
         }
     }
 }
+
+extension RoomLinkResponceModel {
+    var isGeneral: Bool {
+        sharedTo.primary
+    }
+}

@@ -36,11 +36,11 @@ final class RoomSharingViewModel: ObservableObject {
 
     // MARK: - Private vars
 
-    private lazy var sharingRoometworkService: RoomSharingNetworkServiceProtocol = RoomSharingNetworkService()
+    private lazy var sharingRoometworkService = ServicesProvider.shared.roomSharingNetworkService
 
     // MARK: - Init
 
-    init(room: ASCFolder, sharingRoomService: RoomSharingNetworkServiceProtocol) {
+    init(room: ASCFolder) {
         self.room = room
         isInitializing = true
         loadData()

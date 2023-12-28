@@ -17,7 +17,7 @@ class RoomSharingAccessTypeViewModel: ObservableObject {
     private let room: ASCFolder
     private let user: ASCUser
 
-    let networkService: RoomUsersAccessNetworkService = RoomUsersAccessNetworkServiceImp()
+    private let networkService: RoomUsersAccessNetworkService = ServicesProvider.shared.roomUsersAccessNetworkService
 
     init(room: ASCFolder, user: ASCUser) {
         self.room = room

@@ -1,5 +1,5 @@
 //
-//  ASCDocSpaceLinkSettingsView.swift
+//  RoomSharingCustomizeLinkView.swift
 //  Documents
 //
 //  Created by Lolita Chernysheva on 03.12.2023.
@@ -8,8 +8,8 @@
 
 import SwiftUI
 
-struct ASCDocSpaceLinkSettingsView: View {
-    @ObservedObject var viewModel: ASCDocSpaceLinkSettingsViewModel
+struct RoomSharingCustomizeLinkView: View {
+    @ObservedObject var viewModel: RoomSharingCustomizeLinkViewModel
 
     var body: some View {
         content
@@ -120,6 +120,6 @@ struct ASCDocSpaceLinkSettingsView: View {
 
 struct ASCDocSpaceLinkSettingsView_Previews: PreviewProvider {
     static var previews: some View {
-        ASCDocSpaceLinkSettingsView(viewModel: .init(contentState: .additional))
+        RoomSharingCustomizeLinkView(viewModel: .init(contentState: .additional))
     }
 }

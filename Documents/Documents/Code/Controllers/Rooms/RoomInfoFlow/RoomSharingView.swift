@@ -145,7 +145,7 @@ struct RoomSharingView: View {
 struct RoomSharingView_Previews: PreviewProvider {
     static var previews: some View {
         RoomSharingView(
-            viewModel: RoomSharingViewModel(room: .init(), sharingRoomService: RoomSharingNetworkService())
+            viewModel: RoomSharingViewModel(room: .init())
         )
     }
 }

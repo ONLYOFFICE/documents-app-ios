@@ -1,5 +1,5 @@
 //
-//  ASCDocSpaceLinkSettingsViewModel.swift
+//  RoomSharingCustomizeLinkViewModel.swift
 //  Documents
 //
 //  Created by Lolita Chernysheva on 03.12.2023.
@@ -14,7 +14,7 @@ enum LinkSettingsContentState {
     case additional
 }
 
-final class ASCDocSpaceLinkSettingsViewModel: ObservableObject {
+final class RoomSharingCustomizeLinkViewModel: ObservableObject {
     @Published var isProtected: Bool = false
     @Published var isRestrictCopyOn: Bool = false
     @Published var isTimeLimited: Bool = false

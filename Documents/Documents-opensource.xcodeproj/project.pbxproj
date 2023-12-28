@@ -24,8 +24,8 @@
 		1D8CFC5A290D85E600F71071 /* ASCDocumentsCellContextMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D8CFC53290D85E600F71071 /* ASCDocumentsCellContextMenu.swift */; };
 		1D8CFC5C290D85E600F71071 /* ASCDocumentsCellSwipeMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D8CFC55290D85E600F71071 /* ASCDocumentsCellSwipeMenu.swift */; };
 		1D939F0B291C0DF500221F75 /* ASCPaymentQuota.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D939F09291C0DF500221F75 /* ASCPaymentQuota.swift */; };
-		1DD3DC9A2B3D20AC0001D1B8 /* ASCDocSpaceLinkSettingsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DD3DC842B3D20AC0001D1B8 /* ASCDocSpaceLinkSettingsViewModel.swift */; };
-		1DD3DC9B2B3D20AC0001D1B8 /* ASCDocSpaceLinkSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DD3DC852B3D20AC0001D1B8 /* ASCDocSpaceLinkSettingsView.swift */; };
+		1DD3DC9A2B3D20AC0001D1B8 /* RoomSharingCustomizeLinkViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DD3DC842B3D20AC0001D1B8 /* RoomSharingCustomizeLinkViewModel.swift */; };
+		1DD3DC9B2B3D20AC0001D1B8 /* RoomSharingCustomizeLinkView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DD3DC852B3D20AC0001D1B8 /* RoomSharingCustomizeLinkView.swift */; };
 		1DD3DC9C2B3D20AC0001D1B8 /* ASCLabledCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DD3DC872B3D20AC0001D1B8 /* ASCLabledCellView.swift */; };
 		1DD3DC9D2B3D20AC0001D1B8 /* SubTitledDetailCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DD3DC882B3D20AC0001D1B8 /* SubTitledDetailCellView.swift */; };
 		1DD3DC9E2B3D20AC0001D1B8 /* ASCToggledCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DD3DC892B3D20AC0001D1B8 /* ASCToggledCellView.swift */; };
@@ -54,6 +54,7 @@
 		1DD3DCC32B3D25EC0001D1B8 /* RoomLinksRequestModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DD3DCC12B3D25EC0001D1B8 /* RoomLinksRequestModel.swift */; };
 		1DD3DCC62B3D25FC0001D1B8 /* RoomLinkResponceModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DD3DCC42B3D25FC0001D1B8 /* RoomLinkResponceModel.swift */; };
 		1DD3DCC72B3D25FC0001D1B8 /* RoomUsersResponceModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DD3DCC52B3D25FC0001D1B8 /* RoomUsersResponceModel.swift */; };
+		1DFDA0032B3D9B75003A85EA /* ServicesProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DFDA0022B3D9B75003A85EA /* ServicesProvider.swift */; };
 		86E2AD2B387DF62F19D0CB36 /* Pods_Documents_opensource.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A7DBE3A94B4934AA87B956D4 /* Pods_Documents_opensource.framework */; };
 		E80574552B18EE5700AAFCF0 /* CreatingRoomType.swift in Sources */ = {isa = PBXBuildFile; fileRef = E80574542B18EE5700AAFCF0 /* CreatingRoomType.swift */; };
 		E80574582B1A5C8600AAFCF0 /* CreatingRoomViewRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = E80574572B1A5C8600AAFCF0 /* CreatingRoomViewRow.swift */; };
@@ -627,8 +628,8 @@
 		1DCCEC04268CC6A600692167 /* ASCSharingOptionsSectionProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCSharingOptionsSectionProtocol.swift; sourceTree = "<group>"; };
 		1DCCEC09268DBD9C00692167 /* ASCSharingOptionsViewControllerTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCSharingOptionsViewControllerTest.swift; sourceTree = "<group>"; };
 		1DD2FF20275A9B2D00676010 /* ASCSharingSettingsAccessOFormProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCSharingSettingsAccessOFormProvider.swift; sourceTree = "<group>"; };
-		1DD3DC842B3D20AC0001D1B8 /* ASCDocSpaceLinkSettingsViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASCDocSpaceLinkSettingsViewModel.swift; sourceTree = "<group>"; };
-		1DD3DC852B3D20AC0001D1B8 /* ASCDocSpaceLinkSettingsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASCDocSpaceLinkSettingsView.swift; sourceTree = "<group>"; };
+		1DD3DC842B3D20AC0001D1B8 /* RoomSharingCustomizeLinkViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoomSharingCustomizeLinkViewModel.swift; sourceTree = "<group>"; };
+		1DD3DC852B3D20AC0001D1B8 /* RoomSharingCustomizeLinkView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoomSharingCustomizeLinkView.swift; sourceTree = "<group>"; };
 		1DD3DC872B3D20AC0001D1B8 /* ASCLabledCellView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASCLabledCellView.swift; sourceTree = "<group>"; };
 		1DD3DC882B3D20AC0001D1B8 /* SubTitledDetailCellView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SubTitledDetailCellView.swift; sourceTree = "<group>"; };
 		1DD3DC892B3D20AC0001D1B8 /* ASCToggledCellView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASCToggledCellView.swift; sourceTree = "<group>"; };
@@ -667,6 +668,7 @@
 		1DEB9977274E4DC80071C1DB /* ASCAccessToAddRightHoldersCheckerProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCAccessToAddRightHoldersCheckerProtocol.swift; sourceTree = "<group>"; };
 		1DF505232641867300B78496 /* ASCOneDriveFileProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCOneDriveFileProvider.swift; sourceTree = "<group>"; };
 		1DF6E0A826D5323A00FB42CE /* ASCOneDriveProviderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCOneDriveProviderTests.swift; sourceTree = "<group>"; };
+		1DFDA0022B3D9B75003A85EA /* ServicesProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServicesProvider.swift; sourceTree = "<group>"; };
 		32E59E23DB58348D18FC0993 /* Pods-Documents-withouteditors.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Documents-withouteditors.release.xcconfig"; path = "../Pods/Target Support Files/Pods-Documents-withouteditors/Pods-Documents-withouteditors.release.xcconfig"; sourceTree = "<group>"; };
 		3591A05467A432968D686ECF /* Pods-DocumentsTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DocumentsTests.release.xcconfig"; path = "../Pods/Target Support Files/Pods-DocumentsTests/Pods-DocumentsTests.release.xcconfig"; sourceTree = "<group>"; };
 		3FCB9A5180DCB4B88DC1FAF4 /* Pods-Documents.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Documents.debug.xcconfig"; path = "../Pods/Target Support Files/Pods-Documents/Pods-Documents.debug.xcconfig"; sourceTree = "<group>"; };
@@ -1826,8 +1828,8 @@
 		1DD3DC832B3D20AC0001D1B8 /* LinkSettings */ = {
 			isa = PBXGroup;
 			children = (
-				1DD3DC842B3D20AC0001D1B8 /* ASCDocSpaceLinkSettingsViewModel.swift */,
-				1DD3DC852B3D20AC0001D1B8 /* ASCDocSpaceLinkSettingsView.swift */,
+				1DD3DC842B3D20AC0001D1B8 /* RoomSharingCustomizeLinkViewModel.swift */,
+				1DD3DC852B3D20AC0001D1B8 /* RoomSharingCustomizeLinkView.swift */,
 			);
 			path = LinkSettings;
 			sourceTree = "<group>";
@@ -1887,6 +1889,7 @@
 		1DD3DCAE2B3D20C70001D1B8 /* RoomInfoFlow */ = {
 			isa = PBXGroup;
 			children = (
+				1DD3DC832B3D20AC0001D1B8 /* LinkSettings */,
 				1D07FDD92B3D58210074DF96 /* RoomSharingAccessType */,
 				1DD3DCB12B3D20C70001D1B8 /* Models */,
 				1DD3DCB52B3D20C70001D1B8 /* Views */,
@@ -2093,7 +2096,6 @@
 				1DD3DC932B3D20AC0001D1B8 /* CreatelLink */,
 				1DD3DC972B3D20AC0001D1B8 /* ExternalLink */,
 				1DD3DC902B3D20AC0001D1B8 /* LinkLifeTime */,
-				1DD3DC832B3D20AC0001D1B8 /* LinkSettings */,
 				1DD3DC862B3D20AC0001D1B8 /* Views */,
 			);
 			path = Links;
@@ -2167,6 +2169,7 @@
 				FCAE112D26A800E60013B475 /* ASCKdriveFileProvider.swift */,
 				1D8DF02E2639B6B10054B2F9 /* ASCOneDriveProvider.swift */,
 				1DF505232641867300B78496 /* ASCOneDriveFileProvider.swift */,
+				1DFDA0022B3D9B75003A85EA /* ServicesProvider.swift */,
 			);
 			path = Providers;
 			sourceTree = "<group>";
@@ -3818,6 +3821,7 @@
 				1D8CFC58290D85E600F71071 /* ASCDocumentsFolderCellContextMenu.swift in Sources */,
 				FC59433C2AE67586001BA2F9 /* ASCEditorManager+SpreadsheetEditor.swift in Sources */,
 				FC83D5B32A9745A100C404CB /* OnlyofficePath.swift in Sources */,
+				1DFDA0032B3D9B75003A85EA /* ServicesProvider.swift in Sources */,
 				FC83D5812A9742F000C404CB /* ASCLocalization.swift in Sources */,
 				FC83D5762A9742F000C404CB /* ASCLogIntercepter.swift in Sources */,
 				FC142A6128981A1F00EDE7CE /* ASCSettingsNotificationCell.swift in Sources */,
@@ -4024,7 +4028,7 @@
 				FC7081E12812E2260057FCD2 /* DropboxAccount.swift in Sources */,
 				FC7081E22812E2260057FCD2 /* OnedriveApiClient.swift in Sources */,
 				E8AC0F132B15F6FD00B8EEA2 /* CreateRoomRouteViewViewController.swift in Sources */,
-				1DD3DC9B2B3D20AC0001D1B8 /* ASCDocSpaceLinkSettingsView.swift in Sources */,
+				1DD3DC9B2B3D20AC0001D1B8 /* RoomSharingCustomizeLinkView.swift in Sources */,
 				FC7081E32812E2260057FCD2 /* Protocols.swift in Sources */,
 				FC7081E42812E2260057FCD2 /* ASCCloudsViewController.swift in Sources */,
 				FC7081E62812E2260057FCD2 /* ASCSharingSettingsVerifyRightHoldersRouter.swift in Sources */,
@@ -4042,7 +4046,7 @@
 				FC142A8C28981B6000EDE7CE /* ASCDropboxSDKWrapper.swift in Sources */,
 				FC7081F22812E2260057FCD2 /* ASCOwnCloudProvider.swift in Sources */,
 				FC142A6D28981A1F00EDE7CE /* ASCPasscodeLockViewController.swift in Sources */,
-				1DD3DC9A2B3D20AC0001D1B8 /* ASCDocSpaceLinkSettingsViewModel.swift in Sources */,
+				1DD3DC9A2B3D20AC0001D1B8 /* RoomSharingCustomizeLinkViewModel.swift in Sources */,
 				FCE886F12A83B7AF0064F79D /* CreateEntityViewModel.swift in Sources */,
 				FC7081F32812E2260057FCD2 /* ASC2FAViewController.swift in Sources */,
 				FC7081F42812E2260057FCD2 /* ASCFileProviderType.swift in Sources */,

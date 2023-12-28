@@ -26,7 +26,7 @@ class CreateRoomViewModel: ObservableObject {
 
     // MARK: - Private var
 
-    private lazy var creatingRoomService: CreatingRoomService = NetworkCreatingRoomServiceImp()
+    private lazy var creatingRoomService = ServicesProvider.shared.roomCreateService
     private var onCreate: (ASCFolder) -> Void
 
     // MARK: - Init

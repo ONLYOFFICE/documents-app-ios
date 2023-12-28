@@ -76,15 +76,17 @@ struct RoomSharingView: View {
                     ForEach(viewModel.additionalLinkModels) { linkModel in
                         RoomSharingLinkRow(model: linkModel)
                     }
+                    .onDelete { indexSet in
+                        viewModel.additionalLinkModels.remove(atOffsets: indexSet)
+                    }
                 }
             }
         }
     }
-
     @ViewBuilder
     private var adminSection: some View {
         if !viewModel.admins.isEmpty {
-            Section(header: Text(NSLocalizedString("Administration", comment: ""))) {
+            Section(header: usersSectionHeader(title: NSLocalizedString("Administration", comment: ""), count: viewModel.admins.count)) {
                 ForEach(viewModel.admins) { model in
                     ASCUserRow(
                         model: model
@@ -97,7 +99,7 @@ struct RoomSharingView: View {
     @ViewBuilder
     private var usersSection: some View {
         if !viewModel.users.isEmpty {
-            Section(header: Text(NSLocalizedString("Users", comment: ""))) {
+            Section(header: usersSectionHeader(title: NSLocalizedString("Users", comment: ""), count: viewModel.users.count)) {
                 ForEach(viewModel.users) { model in
                     ASCUserRow(model: model)
                 }
@@ -119,7 +121,6 @@ struct RoomSharingView: View {
     private var additionLinksSectionHeader: some View {
         HStack {
             Text(NSLocalizedString("Additional links", comment: ""))
-                .foregroundColor(.primary)
             Text("(\(viewModel.additionalLinkModels.count)/\(viewModel.additionalLinksLimit))")
             Spacer()
             if viewModel.additionalLinkModels.count < viewModel.additionalLinksLimit {
@@ -130,6 +131,13 @@ struct RoomSharingView: View {
                         .foregroundColor(Asset.Colors.brend.swiftUIColor)
                 }
             }
+        }
+    }
+
+    private func usersSectionHeader(title: String, count: Int) -> some View {
+        HStack {
+            Text(title)
+            Text("(\(count))")
         }
     }
 }

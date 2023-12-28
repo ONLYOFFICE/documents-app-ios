@@ -68,6 +68,10 @@ final class RoomSharingViewModel: ObservableObject {
     func onAppear() {
         buildViewModel()
     }
+    
+    func deleteAdditionalLink() {}
+    
+    func deleteGeneralLink() {}
 }
 
 // MARK: Private

@@ -55,6 +55,7 @@
 		1DD3DCC62B3D25FC0001D1B8 /* RoomLinkResponceModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DD3DCC42B3D25FC0001D1B8 /* RoomLinkResponceModel.swift */; };
 		1DD3DCC72B3D25FC0001D1B8 /* RoomUsersResponceModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DD3DCC52B3D25FC0001D1B8 /* RoomUsersResponceModel.swift */; };
 		1DFDA0032B3D9B75003A85EA /* ServicesProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DFDA0022B3D9B75003A85EA /* ServicesProvider.swift */; };
+		1DFDA0052B3DA455003A85EA /* RoomSharingLinkAccessService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DFDA0042B3DA455003A85EA /* RoomSharingLinkAccessService.swift */; };
 		86E2AD2B387DF62F19D0CB36 /* Pods_Documents_opensource.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A7DBE3A94B4934AA87B956D4 /* Pods_Documents_opensource.framework */; };
 		E80574552B18EE5700AAFCF0 /* CreatingRoomType.swift in Sources */ = {isa = PBXBuildFile; fileRef = E80574542B18EE5700AAFCF0 /* CreatingRoomType.swift */; };
 		E80574582B1A5C8600AAFCF0 /* CreatingRoomViewRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = E80574572B1A5C8600AAFCF0 /* CreatingRoomViewRow.swift */; };
@@ -669,6 +670,7 @@
 		1DF505232641867300B78496 /* ASCOneDriveFileProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCOneDriveFileProvider.swift; sourceTree = "<group>"; };
 		1DF6E0A826D5323A00FB42CE /* ASCOneDriveProviderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCOneDriveProviderTests.swift; sourceTree = "<group>"; };
 		1DFDA0022B3D9B75003A85EA /* ServicesProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServicesProvider.swift; sourceTree = "<group>"; };
+		1DFDA0042B3DA455003A85EA /* RoomSharingLinkAccessService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoomSharingLinkAccessService.swift; sourceTree = "<group>"; };
 		32E59E23DB58348D18FC0993 /* Pods-Documents-withouteditors.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Documents-withouteditors.release.xcconfig"; path = "../Pods/Target Support Files/Pods-Documents-withouteditors/Pods-Documents-withouteditors.release.xcconfig"; sourceTree = "<group>"; };
 		3591A05467A432968D686ECF /* Pods-DocumentsTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DocumentsTests.release.xcconfig"; path = "../Pods/Target Support Files/Pods-DocumentsTests/Pods-DocumentsTests.release.xcconfig"; sourceTree = "<group>"; };
 		3FCB9A5180DCB4B88DC1FAF4 /* Pods-Documents.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Documents.debug.xcconfig"; path = "../Pods/Target Support Files/Pods-Documents/Pods-Documents.debug.xcconfig"; sourceTree = "<group>"; };
@@ -1269,9 +1271,9 @@
 		1D07FDD92B3D58210074DF96 /* RoomSharingAccessType */ = {
 			isa = PBXGroup;
 			children = (
+				1D07FDDE2B3D5FA20074DF96 /* RoomUsersAccessNetworkService.swift */,
 				1D07FDDA2B3D59480074DF96 /* RoomSharingAccessTypeView.swift */,
 				1D07FDDC2B3D59AF0074DF96 /* RoomSharingAccessTypeViewModel.swift */,
-				1D07FDDE2B3D5FA20074DF96 /* RoomUsersAccessNetworkService.swift */,
 			);
 			path = RoomSharingAccessType;
 			sourceTree = "<group>";
@@ -1828,8 +1830,9 @@
 		1DD3DC832B3D20AC0001D1B8 /* LinkSettings */ = {
 			isa = PBXGroup;
 			children = (
-				1DD3DC842B3D20AC0001D1B8 /* RoomSharingCustomizeLinkViewModel.swift */,
+				1DFDA0042B3DA455003A85EA /* RoomSharingLinkAccessService.swift */,
 				1DD3DC852B3D20AC0001D1B8 /* RoomSharingCustomizeLinkView.swift */,
+				1DD3DC842B3D20AC0001D1B8 /* RoomSharingCustomizeLinkViewModel.swift */,
 			);
 			path = LinkSettings;
 			sourceTree = "<group>";
@@ -3918,6 +3921,7 @@
 				FC7081942812E2260057FCD2 /* DropboxEndpoints.swift in Sources */,
 				FCE9F63D2B2B49D60056E420 /* ASCSharingAddRightHoldersPresenter.swift in Sources */,
 				FC142A35289819B400EDE7CE /* ASCEntity.swift in Sources */,
+				1DFDA0052B3DA455003A85EA /* RoomSharingLinkAccessService.swift in Sources */,
 				FC7081962812E2260057FCD2 /* ASCAccessToAddRightHoldersCheckerByPortalDefinder.swift in Sources */,
 				FC59433D2AE67586001BA2F9 /* EditorDocumentProtocol.swift in Sources */,
 				FC5943BA2AE6B3C4001BA2F9 /* ASCIntroPageController.swift in Sources */,

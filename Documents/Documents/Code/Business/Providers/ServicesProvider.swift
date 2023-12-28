@@ -18,4 +18,6 @@ final class ServicesProvider {
     private(set) lazy var roomUsersAccessNetworkService: RoomUsersAccessNetworkService = RoomUsersAccessNetworkServiceImp()
 
     private(set) lazy var roomSharingNetworkService: RoomSharingNetworkServiceProtocol = RoomSharingNetworkService()
+
+    private(set) lazy var roomSharingLinkAccesskService: RoomSharingLinkAccessService = RoomSharingLinkAccessNetworkService()
 }

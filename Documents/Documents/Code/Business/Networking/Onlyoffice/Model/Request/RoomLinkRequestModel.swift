@@ -9,6 +9,7 @@
 import Foundation
 
 struct RoomLinkRequestModel: Codable {
+    var linkId: String?
     var title: String
     var access: Int
     var expirationDate: String

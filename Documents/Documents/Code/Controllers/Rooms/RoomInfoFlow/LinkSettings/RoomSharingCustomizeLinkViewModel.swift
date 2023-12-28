@@ -18,42 +18,37 @@ final class RoomSharingCustomizeLinkViewModel: ObservableObject {
     @Published var isProtected: Bool = false
     @Published var isRestrictCopyOn: Bool = false
     @Published var isTimeLimited: Bool = false
+    @Published var password: String
     @Published var contentState: LinkSettingsContentState
+
+    private var isCurrentStateSave = true
 
     private var cancelable = Set<AnyCancellable>()
 
+    private var link: RoomSharingLinkModel?
+
+    private var linkAccessService = ServicesProvider.shared.roomSharingLinkAccesskService
+
     // MARK: temp
 
-    init(contentState: LinkSettingsContentState = .general) {
-        self.contentState = contentState
+    init(link: RoomSharingLinkModel?) {
+        contentState = link?.isGeneral == false ? .additional : .general
+        password = link?.linkInfo.password ?? ""
+        isProtected = !password.isEmpty
+        isRestrictCopyOn = link?.linkInfo.denyDownload == true
+        isTimeLimited = link?.linkInfo.expirationDate != nil
     }
 }
 
-//    private func setIsProtectedHandler() {
-//        $isProtected
-//            .sink { [weak self] value in
-//                guard let self else { return }
-//                switch contentState {
-//                case .general:
-//                    contentState = .general(protected: value)
-//                case let .additional(_, timeLimited):
-//                    contentState = .additional(protected: value, timeLimited: timeLimited)
-//                }
-//            }
-//            .store(in: &cancelable)
-//    }
-//
-//    private func setIsTmeLimitedHandler() {
-//        $isTimeLimited
-//            .sink { [weak self] value in
-//                print("isTimeLimited", value)
-//                guard let self else { return }
-//                switch contentState {
-//                case let .additional(protected, _):
-//                    contentState = .additional(protected: protected, timeLimited: value)
-//                default:
-//                    break
-//                }
-//            }
-//            .store(in: &cancelable)
-//    }
+// MARK: Private
+
+private extension RoomSharingCustomizeLinkViewModel {
+    func saveCurrentState() {}
+
+    func copyLinkAndNotify() {
+        copyLink()
+        // notify
+    }
+
+    func copyLink() {}
+}

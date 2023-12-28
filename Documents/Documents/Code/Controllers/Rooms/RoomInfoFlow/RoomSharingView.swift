@@ -23,6 +23,9 @@ struct RoomSharingView: View {
                     )
                 )
             }
+            .navigation(item: $viewModel.selectdLink, destination: { link in
+                RoomSharingCustomizeLinkView(viewModel: RoomSharingCustomizeLinkViewModel(link: link))
+            })
             .onAppear {
                 viewModel.onAppear()
             }
@@ -126,27 +129,6 @@ struct RoomSharingView: View {
                     Image(systemName: "plus")
                         .foregroundColor(Asset.Colors.brend.swiftUIColor)
                 }
-            }
-        }
-    }
-
-    func sectionHeader(_ header: ASCDocSpaceLinkStateModel.SectionHeader) -> some View {
-        let hasSubtitle = header.subtitle != nil
-        let hasIcon = header.icon != nil
-        return HStack {
-            switch (hasSubtitle, hasIcon) {
-            case (true, true):
-                Text(header.title)
-                Text(header.subtitle ?? "")
-                Spacer()
-                Image(uiImage: header.icon ?? UIImage())
-                    .foregroundColor(Asset.Colors.brend.swiftUIColor)
-            case (true, false):
-                Text(header.title)
-                Text(header.subtitle ?? "")
-            default:
-                Text(header.title)
-                Spacer()
             }
         }
     }

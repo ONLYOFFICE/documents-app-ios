@@ -8,16 +8,18 @@
 
 import Foundation
 
+typealias RoomSharingLinkModel = RoomLinkResponceModel
+
 struct RoomLinkResponceModel: Codable {
     let access: ASCShareAccess
-    let sharedTo: SharedTo
+    let linkInfo: SharingLinkInfo
     let isLocked: Bool
     let isOwner: Bool
     let canEditAccess: Bool
 
     enum CodingKeys: String, CodingKey {
         case access
-        case sharedTo
+        case linkInfo = "sharedTo"
         case isLocked
         case isOwner
         case canEditAccess
@@ -25,7 +27,7 @@ struct RoomLinkResponceModel: Codable {
 }
 
 extension RoomLinkResponceModel {
-    struct SharedTo: Codable {
+    struct SharingLinkInfo: Codable {
         let id: String
         let title: String
         let shareLink: String
@@ -45,6 +47,6 @@ extension RoomLinkResponceModel {
 
 extension RoomLinkResponceModel {
     var isGeneral: Bool {
-        sharedTo.primary
+        linkInfo.primary
     }
 }

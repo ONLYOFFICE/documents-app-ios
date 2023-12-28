@@ -120,6 +120,6 @@ struct RoomSharingCustomizeLinkView: View {
 
 struct ASCDocSpaceLinkSettingsView_Previews: PreviewProvider {
     static var previews: some View {
-        RoomSharingCustomizeLinkView(viewModel: .init(contentState: .additional))
+        RoomSharingCustomizeLinkView(viewModel: .init(link: nil))
     }
 }

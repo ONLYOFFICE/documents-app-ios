@@ -33,6 +33,7 @@ final class RoomSharingViewModel: ObservableObject {
     @Published var generalLinkModel: RoomSharingLinkRowModel?
     @Published var additionalLinkModels: [RoomSharingLinkRowModel] = [RoomSharingLinkRowModel]()
     @Published var selctedUser: ASCUser?
+    @Published var selectdLink: RoomSharingLinkModel?
 
     // MARK: - Private vars
 
@@ -97,17 +98,19 @@ private extension RoomSharingViewModel {
 
     private func mapToLinkViewModel(link: RoomLinkResponceModel) -> RoomSharingLinkRowModel {
         var imagesNames: [String] = []
-        if link.sharedTo.password != nil {
+        if link.linkInfo.password != nil {
             imagesNames.append("lock.circle.fill")
         }
-        if link.sharedTo.expirationDate != nil {
+        if link.linkInfo.expirationDate != nil {
             imagesNames.append("clock.fill")
         }
         return RoomSharingLinkRowModel(
-            titleString: link.sharedTo.title,
+            titleString: link.linkInfo.title,
             imagesNames: imagesNames,
-            isExpired: link.sharedTo.isExpired,
-            onTapAction: {},
+            isExpired: link.linkInfo.isExpired,
+            onTapAction: { [weak self] in
+                self?.selectdLink = link
+            },
             onShareAction: shareButtonAction
         )
     }

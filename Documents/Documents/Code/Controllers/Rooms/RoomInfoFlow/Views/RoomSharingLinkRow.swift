@@ -71,6 +71,7 @@ struct RoomSharingLinkRow: View {
                     .flipsForRightToLeftLayoutDirection(true)
             }
         }
+        .contentShape(Rectangle())
         .onTapGesture {
             model.onTapAction()
         }

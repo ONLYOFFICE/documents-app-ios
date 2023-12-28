@@ -13,6 +13,8 @@ protocol FolderHolder: AnyObject {
     var folder: ASCFolder? { get set }
 }
 
+typealias ASCRoom = ASCFolder
+
 class ASCFolder: ASCEntity {
     var parentId: String?
     var filesCount: Int = 0

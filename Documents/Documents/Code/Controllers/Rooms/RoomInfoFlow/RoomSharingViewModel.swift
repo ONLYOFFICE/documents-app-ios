@@ -36,7 +36,7 @@ final class RoomSharingViewModel: ObservableObject {
 
     // MARK: - Private vars
 
-    private lazy var sharingRoometworkService = ServicesProvider.shared.roomSharingNetworkService
+    private lazy var sharingRoomNetworkService = ServicesProvider.shared.roomSharingNetworkService
 
     // MARK: - Init
 
@@ -47,7 +47,7 @@ final class RoomSharingViewModel: ObservableObject {
     }
 
     func loadData() {
-        sharingRoometworkService.fetch(room: room) { [weak self] links, sharings in
+        sharingRoomNetworkService.fetch(room: room) { [weak self] links, sharings in
             guard let self else { return }
             flowModel.links = links
             flowModel.sharings = sharings
@@ -61,6 +61,8 @@ final class RoomSharingViewModel: ObservableObject {
     func shareButtonAction() {}
 
     func createAddLinkAction() {}
+
+    func createGeneralLink() {}
 
     func onAppear() {
         buildViewModel()

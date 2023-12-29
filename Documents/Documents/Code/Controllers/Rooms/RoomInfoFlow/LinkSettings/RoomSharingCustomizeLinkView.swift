@@ -14,10 +14,7 @@ struct RoomSharingCustomizeLinkView: View {
     var body: some View {
         content
             .navigationBarItems(
-                leading: Button(NSLocalizedString("Back", comment: ""),
-                                action: {}),
-                trailing: Button(NSLocalizedString("Share", comment: ""),
-                                 action: {})
+                trailing: Button(NSLocalizedString("Share", comment: ""), action: {})
             )
     }
 
@@ -56,7 +53,7 @@ struct RoomSharingCustomizeLinkView: View {
 
     private var generalSection: some View {
         Section(header: Text(NSLocalizedString("General", comment: ""))) {
-            Text(NSLocalizedString("Link name", comment: ""))
+            Text(viewModel.link?.linkInfo.title ?? "")
         }
     }
 
@@ -68,7 +65,8 @@ struct RoomSharingCustomizeLinkView: View {
                 }
 
                 if viewModel.isProtected {
-                    PasswordCellView(model: .init(password: "123", isPasswordVisible: true))
+                    Divider()
+                    PasswordCellView(model: .init(password: viewModel.password, isPasswordVisible: false))
                 }
             }
         }

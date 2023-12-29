@@ -25,7 +25,7 @@ final class RoomSharingCustomizeLinkViewModel: ObservableObject {
 
     private var cancelable = Set<AnyCancellable>()
 
-    private var link: RoomSharingLinkModel?
+    private (set) var link: RoomSharingLinkModel?
 
     private var linkAccessService = ServicesProvider.shared.roomSharingLinkAccesskService
 

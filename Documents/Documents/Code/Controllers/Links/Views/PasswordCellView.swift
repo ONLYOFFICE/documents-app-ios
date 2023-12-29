@@ -30,10 +30,10 @@ struct PasswordCellView: View {
             Button(action: {
                 model.isPasswordVisible.toggle()
             }) {
-                Image(systemName: model.isPasswordVisible ? "eye.slash" : "eye")
+                Image(systemName: model.isPasswordVisible ? "eye" : "eye.slash")
                     .foregroundColor(Asset.Colors.brend.swiftUIColor)
             }
         }
-        .padding()
+        .padding(.top, 2)
     }
 }

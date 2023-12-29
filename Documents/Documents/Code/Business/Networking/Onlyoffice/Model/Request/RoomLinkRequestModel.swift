@@ -12,7 +12,8 @@ struct RoomLinkRequestModel: Codable {
     var linkId: String?
     var title: String
     var access: Int
-    var expirationDate: String
+    var expirationDate: String?
     var linkType: Int
     var denyDownload: Bool
+    var password: String?
 }

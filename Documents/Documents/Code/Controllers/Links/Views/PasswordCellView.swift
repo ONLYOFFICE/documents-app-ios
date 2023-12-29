@@ -10,20 +10,20 @@ import Combine
 import SwiftUI
 
 struct PasswordCellModel {
-    var password: String
-    var isPasswordVisible: Bool
+    @Binding var password: String
+    @State var isPasswordVisible: Bool
 }
 
 struct PasswordCellView: View {
-    @State var model: PasswordCellModel
+    var model: PasswordCellModel
 
     var body: some View {
         HStack {
             if model.isPasswordVisible {
-                TextField(NSLocalizedString("Password", comment: ""), text: $model.password)
+                TextField(NSLocalizedString("Password", comment: ""), text: model.$password)
                     .textFieldStyle(.automatic)
             } else {
-                SecureField(NSLocalizedString("Password", comment: ""), text: $model.password)
+                SecureField(NSLocalizedString("Password", comment: ""), text: model.$password)
                     .textFieldStyle(.automatic)
             }
 

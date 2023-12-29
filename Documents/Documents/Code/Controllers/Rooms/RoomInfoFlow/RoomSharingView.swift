@@ -24,7 +24,10 @@ struct RoomSharingView: View {
                 )
             }
             .navigation(item: $viewModel.selectdLink, destination: { link in
-                RoomSharingCustomizeLinkView(viewModel: RoomSharingCustomizeLinkViewModel(link: link))
+                RoomSharingCustomizeLinkView(viewModel: RoomSharingCustomizeLinkViewModel(
+                    room: viewModel.room,
+                    link: link
+                ))
             })
             .onAppear {
                 viewModel.onAppear()
@@ -83,6 +86,7 @@ struct RoomSharingView: View {
             }
         }
     }
+
     @ViewBuilder
     private var adminSection: some View {
         if !viewModel.admins.isEmpty {

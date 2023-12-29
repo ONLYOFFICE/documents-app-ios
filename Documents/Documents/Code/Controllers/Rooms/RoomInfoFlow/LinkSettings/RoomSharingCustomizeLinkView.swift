@@ -66,7 +66,7 @@ struct RoomSharingCustomizeLinkView: View {
 
                 if viewModel.isProtected {
                     Divider()
-                    PasswordCellView(model: .init(password: viewModel.password, isPasswordVisible: false))
+                    PasswordCellView(model: .init(password: $viewModel.password, isPasswordVisible: false))
                 }
             }
         }
@@ -78,7 +78,10 @@ struct RoomSharingCustomizeLinkView: View {
                 Text(NSLocalizedString("Enable time limit", comment: ""))
             }
             if viewModel.isTimeLimited {
-                TimeLimitCellView(model: .init(title: NSLocalizedString("Valid through", comment: "")))
+                TimeLimitCellView(model: TimeLimitCellModel(
+                    selectedDate: $viewModel.selectedDate,
+                    title: NSLocalizedString("Valid through", comment: "")
+                ))
             }
         }
     }
@@ -118,6 +121,6 @@ struct RoomSharingCustomizeLinkView: View {
 
 struct ASCDocSpaceLinkSettingsView_Previews: PreviewProvider {
     static var previews: some View {
-        RoomSharingCustomizeLinkView(viewModel: .init(link: nil))
+        RoomSharingCustomizeLinkView(viewModel: .init(room: .init(), link: nil))
     }
 }

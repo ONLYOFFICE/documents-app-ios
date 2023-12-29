@@ -138,7 +138,8 @@ extension ExternalLinkStateModel {
         .init(header: NSLocalizedString("Time limit", comment: ""),
               cells: [
                   .datePicker(.init(
-                      title: NSLocalizedString("Valid through", comment: ""))),
+                      selectedDate: .constant(Date()), title: NSLocalizedString("Valid through", comment: "")
+                  )),
               ])
     }
 }

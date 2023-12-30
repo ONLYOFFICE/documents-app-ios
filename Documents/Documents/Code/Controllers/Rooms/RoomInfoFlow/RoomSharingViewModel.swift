@@ -35,9 +35,18 @@ final class RoomSharingViewModel: ObservableObject {
     @Published var selctedUser: ASCUser?
     @Published var selectdLink: RoomSharingLinkModel?
 
+    // MARK: var input
+
+    lazy var changedLink = CurrentValueSubject<RoomSharingLinkModel?, Never>(nil)
+    lazy var changedLinkBinding = Binding<RoomSharingLinkModel?>(
+        get: { self.changedLink.value },
+        set: { self.changedLink.send($0) }
+    )
+
     // MARK: - Private vars
 
     private lazy var sharingRoomNetworkService = ServicesProvider.shared.roomSharingNetworkService
+    private var cancelable = Set<AnyCancellable>()
 
     // MARK: - Init
 
@@ -45,6 +54,21 @@ final class RoomSharingViewModel: ObservableObject {
         self.room = room
         isInitializing = true
         loadData()
+
+        changedLink
+            .receive(on: RunLoop.main)
+            .sink(receiveValue: { [weak self] changedLink in
+                guard let self,
+                      let changedLink,
+                      let index = flowModel.links.firstIndex(where: { $0.linkInfo.id == changedLink.linkInfo.id })
+                else { return }
+                if changedLink.access == .deny {
+                    flowModel.links.remove(at: index)
+                } else {
+                    flowModel.links[index] = changedLink
+                }
+            })
+            .store(in: &cancelable)
     }
 
     func loadData() {

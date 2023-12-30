@@ -11,7 +11,7 @@ import SwiftUI
 
 struct PasswordCellModel {
     @Binding var password: String
-    @State var isPasswordVisible: Bool
+    @Binding var isPasswordVisible: Bool
 }
 
 struct PasswordCellView: View {

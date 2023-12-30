@@ -15,12 +15,19 @@ enum LinkSettingsContentState {
 }
 
 final class RoomSharingCustomizeLinkViewModel: ObservableObject {
+    @Published var contentState: LinkSettingsContentState
+
+    @Published var linkName: String
     @Published var isProtected: Bool = false
     @Published var isRestrictCopyOn: Bool = false
     @Published var isTimeLimited: Bool = false
     @Published var selectedDate: Date = Calendar.current.date(byAdding: .day, value: 7, to: Date()) ?? Date()
     @Published var password: String
-    @Published var contentState: LinkSettingsContentState
+
+    @Published var isPasswordVisible: Bool = false
+    @Published var isDeleting: Bool = false
+    @Published var isDeleted: Bool = false
+    @Published var errorMessage: String?
 
     lazy var dateFormatter: DateFormatter = {
         let formatter = DateFormatter()
@@ -31,22 +38,38 @@ final class RoomSharingCustomizeLinkViewModel: ObservableObject {
 
     private var cancelable = Set<AnyCancellable>()
 
-    private(set) var link: RoomSharingLinkModel?
+    private let linkId: String?
     private let room: ASCRoom
+
+    @Binding private var outputLink: RoomSharingLinkModel?
 
     private var linkAccessService = ServicesProvider.shared.roomSharingLinkAccesskService
 
     init(
         room: ASCRoom,
-        link: RoomSharingLinkModel? = nil
+        inputLink: RoomSharingLinkModel?,
+        outputLink: Binding<RoomSharingLinkModel?>
     ) {
+        linkId = inputLink?.linkInfo.id
         self.room = room
-        self.link = link
+        _outputLink = outputLink
+        let link = inputLink
+        let linkInfo = link?.linkInfo
+        linkName = linkInfo?.title ?? ""
         contentState = link?.isGeneral == false ? .additional : .general
-        password = link?.linkInfo.password ?? ""
+        password = linkInfo?.password ?? ""
         isProtected = !password.isEmpty
-        isRestrictCopyOn = link?.linkInfo.denyDownload == true
-        isTimeLimited = link?.linkInfo.expirationDate != nil
+        isRestrictCopyOn = linkInfo?.denyDownload == true
+        isTimeLimited = linkInfo?.expirationDate != nil
+
+        $linkName
+            .dropFirst()
+            .receive(on: RunLoop.main)
+            .debounce(for: .seconds(3), scheduler: DispatchQueue.main)
+            .sink(receiveValue: { [weak self] _ in
+                self?.saveCurrentState()
+            })
+            .store(in: &cancelable)
 
         $isProtected
             .dropFirst()
@@ -91,13 +114,38 @@ final class RoomSharingCustomizeLinkViewModel: ObservableObject {
     }
 }
 
+// MARK: Handlers
+
+extension RoomSharingCustomizeLinkViewModel {
+    func onCopyLinkAndNotify() {
+        copyLink()
+        notify()
+    }
+
+    func onDelete() {
+        guard let linkId else { return }
+        isDeleting = true
+        linkAccessService.removeLink(id: linkId, room: room) { [self] result in
+            isDeleting = false
+            switch result {
+            case let .success(link):
+                outputLink = link
+                isDeleted = true
+            case let .failure(error):
+                log.error(error.localizedDescription)
+                errorMessage = error.localizedDescription
+            }
+        }
+    }
+}
+
 // MARK: Private
 
 private extension RoomSharingCustomizeLinkViewModel {
     func saveCurrentState() {
         linkAccessService.changeOrCreateLink(
-            id: link?.linkInfo.id,
-            title: link?.linkInfo.title ?? "link",
+            id: linkId,
+            title: linkName,
 
             access: 2, // MARK: TODO
 
@@ -108,20 +156,18 @@ private extension RoomSharingCustomizeLinkViewModel {
             denyDownload: isRestrictCopyOn,
             password: isProtected ? password : nil,
             room: room
-        ) { result in
+        ) { [self] result in
             switch result {
             case let .success(link):
-                self.link = link
+                outputLink = link
             case let .failure(error):
                 log.error(error.localizedDescription)
+                errorMessage = error.localizedDescription
             }
         }
     }
 
-    func copyLinkAndNotify() {
-        copyLink()
-        // notify
-    }
-
     func copyLink() {}
+
+    func notify() {}
 }

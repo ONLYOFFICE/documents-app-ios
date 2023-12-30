@@ -26,7 +26,8 @@ struct RoomSharingView: View {
             .navigation(item: $viewModel.selectdLink, destination: { link in
                 RoomSharingCustomizeLinkView(viewModel: RoomSharingCustomizeLinkViewModel(
                     room: viewModel.room,
-                    link: link
+                    inputLink: link,
+                    outputLink: viewModel.changedLinkBinding
                 ))
             })
             .onAppear {
@@ -69,7 +70,7 @@ struct RoomSharingView: View {
 
     @ViewBuilder
     private var additionalLinksSection: some View {
-        if let generalLink = viewModel.generalLinkModel {
+        if viewModel.generalLinkModel != nil {
             Section(header: additionLinksSectionHeader) {
                 if viewModel.additionalLinkModels.isEmpty {
                     ASCCreateLinkCellView(model: ASCCreateLinkCellModel(textString: NSLocalizedString("Create and copy", comment: ""), imageNames: [], onTapAction: {

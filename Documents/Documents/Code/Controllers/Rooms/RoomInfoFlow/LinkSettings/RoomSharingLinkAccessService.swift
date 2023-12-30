@@ -9,7 +9,7 @@
 import Foundation
 
 protocol RoomSharingLinkAccessService {
-    func removeLink(id: String, room: ASCRoom, completion: @escaping (Error?) -> Void)
+    func removeLink(id: String, room: ASCRoom, completion: @escaping (Result<RoomLinkResponceModel, Error>) -> Void)
     func changeOrCreateLink(
         id: String?,
         title: String,
@@ -26,19 +26,23 @@ protocol RoomSharingLinkAccessService {
 final class RoomSharingLinkAccessNetworkService: RoomSharingLinkAccessService {
     private var networkService = OnlyofficeApiClient.shared
 
-    func removeLink(id: String, room: ASCRoom, completion: @escaping (Error?) -> Void) {
+    func removeLink(id: String, room: ASCRoom, completion: @escaping (Result<RoomLinkResponceModel, Error>) -> Void) {
         let requestModel = RoomLinkRequestModel(
             linkId: id,
             title: "",
-            access: 0,
-            expirationDate: "",
-            linkType: 0,
+            access: ASCShareAccess.deny.rawValue,
+            expirationDate: nil,
+            linkType: 1,
             denyDownload: true,
             password: nil
         )
 
         networkService.request(OnlyofficeAPI.Endpoints.Rooms.setLinks(folder: room), requestModel.dictionary) { response, error in
-            completion(error)
+            guard let result = response?.result else {
+                completion(.failure(error ?? RoomSharingLinkAccessNetworkService.Errors.emptyResponse))
+                return
+            }
+            completion(.success(result))
         }
     }
 

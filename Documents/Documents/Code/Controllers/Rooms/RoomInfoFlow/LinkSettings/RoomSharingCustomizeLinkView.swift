@@ -13,9 +13,22 @@ struct RoomSharingCustomizeLinkView: View {
 
     var body: some View {
         content
+            .disabled(viewModel.isDeleting)
+            .overlay(
+                deletingRoomActivityView
+            )
             .navigationBarItems(
                 trailing: Button(NSLocalizedString("Share", comment: ""), action: {})
             )
+            .alert(item: $viewModel.errorMessage) { errorMessage in
+                Alert(
+                    title: Text(NSLocalizedString("Error", comment: "")),
+                    message: Text(errorMessage),
+                    dismissButton: .default(Text("OK"), action: {
+                        viewModel.errorMessage = nil
+                    })
+                )
+            }
     }
 
     @ViewBuilder
@@ -53,7 +66,7 @@ struct RoomSharingCustomizeLinkView: View {
 
     private var generalSection: some View {
         Section(header: Text(NSLocalizedString("General", comment: ""))) {
-            Text(viewModel.link?.linkInfo.title ?? "")
+            TextField("Link name", text: $viewModel.linkName)
         }
     }
 
@@ -66,7 +79,12 @@ struct RoomSharingCustomizeLinkView: View {
 
                 if viewModel.isProtected {
                     Divider()
-                    PasswordCellView(model: .init(password: $viewModel.password, isPasswordVisible: false))
+                    PasswordCellView(
+                        model: PasswordCellModel(
+                            password: $viewModel.password,
+                            isPasswordVisible: $viewModel.isPasswordVisible
+                        )
+                    )
                 }
             }
         }
@@ -88,13 +106,15 @@ struct RoomSharingCustomizeLinkView: View {
 
     private var copySection: some View {
         Section {
-            ASCLabledCellView(model: .init(
-                textString: NSLocalizedString(viewModel.isProtected ? "Copy link and password" : "Copy link", comment: ""),
-                cellType: .standard,
-                textAlignment: .center,
-                onTapAction: {}
+            ASCLabledCellView(model:
+                .init(
+                    textString: NSLocalizedString(viewModel.isProtected ? "Copy link and password" : "Copy link", comment: ""),
+                    cellType: .standard,
+                    textAlignment: .center,
+                    onTapAction: {}
+                )
             )
-            )
+            .disabled(viewModel.linkName.isEmpty)
         }
     }
 
@@ -108,12 +128,27 @@ struct RoomSharingCustomizeLinkView: View {
 
     private var deleteSection: some View {
         Section {
-            ASCLabledCellView(model: .init(
-                textString: NSLocalizedString("Delete link", comment: ""),
-                cellType: .deletable,
-                textAlignment: .center,
-                onTapAction: {}
+            ASCLabledCellView(
+                model: ASCLabledCellModel(
+                    textString: NSLocalizedString("Delete link", comment: ""),
+                    cellType: .deletable,
+                    textAlignment: .center,
+                    onTapAction: {
+                        viewModel.onDelete()
+                    }
+                )
             )
+        }
+    }
+
+    @ViewBuilder
+    private var deletingRoomActivityView: some View {
+        if viewModel.isDeleting {
+            MBProgressHUDView(
+                isLoading: $viewModel.isDeleting,
+                text: NSLocalizedString("Removing...", comment: ""),
+                delay: 0.3,
+                successStatusText: viewModel.isDeleted ? NSLocalizedString("Deleted", comment: "") : nil
             )
         }
     }
@@ -121,6 +156,6 @@ struct RoomSharingCustomizeLinkView: View {
 
 struct ASCDocSpaceLinkSettingsView_Previews: PreviewProvider {
     static var previews: some View {
-        RoomSharingCustomizeLinkView(viewModel: .init(room: .init(), link: nil))
+        RoomSharingCustomizeLinkView(viewModel: .init(room: .init(), inputLink: nil, outputLink: .constant(nil)))
     }
 }

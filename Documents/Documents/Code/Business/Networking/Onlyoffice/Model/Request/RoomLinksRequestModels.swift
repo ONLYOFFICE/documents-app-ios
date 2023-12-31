@@ -1,12 +1,16 @@
 //
-//  RoomLinkRequestModel.swift
+//  RoomLinksRequestModels.swift
 //  Documents
 //
-//  Created by Pavel Chernyshev on 19.12.2023.
+//  Created by Lolita Chernysheva on 22.12.2023.
 //  Copyright © 2023 Ascensio System SIA. All rights reserved.
 //
 
 import Foundation
+
+struct RoomLinksRequestModel: Codable {
+    var type: Int
+}
 
 struct RoomLinkRequestModel: Codable {
     var linkId: String?
@@ -15,5 +19,13 @@ struct RoomLinkRequestModel: Codable {
     var expirationDate: String?
     var linkType: Int
     var denyDownload: Bool
+    var password: String?
+}
+
+struct RoomRemoveLinkRequestModel: Codable {
+    var linkId: String
+    var title: String
+    var access: Int
+    var linkType: Int
     var password: String?
 }

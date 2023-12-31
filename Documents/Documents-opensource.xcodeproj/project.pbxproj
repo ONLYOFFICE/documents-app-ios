@@ -50,8 +50,7 @@
 		1DD3DCBD2B3D20C70001D1B8 /* RoomSharingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DD3DCB42B3D20C70001D1B8 /* RoomSharingViewModel.swift */; };
 		1DD3DCBE2B3D20C70001D1B8 /* RoomSharingLinkRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DD3DCB62B3D20C70001D1B8 /* RoomSharingLinkRow.swift */; };
 		1DD3DCBF2B3D20C70001D1B8 /* RoomSharingRootViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DD3DCB72B3D20C70001D1B8 /* RoomSharingRootViewController.swift */; };
-		1DD3DCC22B3D25EC0001D1B8 /* RoomLinkRequestModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DD3DCC02B3D25EC0001D1B8 /* RoomLinkRequestModel.swift */; };
-		1DD3DCC32B3D25EC0001D1B8 /* RoomLinksRequestModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DD3DCC12B3D25EC0001D1B8 /* RoomLinksRequestModel.swift */; };
+		1DD3DCC32B3D25EC0001D1B8 /* RoomLinksRequestModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DD3DCC12B3D25EC0001D1B8 /* RoomLinksRequestModels.swift */; };
 		1DD3DCC62B3D25FC0001D1B8 /* RoomLinkResponceModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DD3DCC42B3D25FC0001D1B8 /* RoomLinkResponceModel.swift */; };
 		1DD3DCC72B3D25FC0001D1B8 /* RoomUsersResponceModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DD3DCC52B3D25FC0001D1B8 /* RoomUsersResponceModel.swift */; };
 		1DFDA0032B3D9B75003A85EA /* ServicesProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DFDA0022B3D9B75003A85EA /* ServicesProvider.swift */; };
@@ -655,8 +654,7 @@
 		1DD3DCB42B3D20C70001D1B8 /* RoomSharingViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoomSharingViewModel.swift; sourceTree = "<group>"; };
 		1DD3DCB62B3D20C70001D1B8 /* RoomSharingLinkRow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoomSharingLinkRow.swift; sourceTree = "<group>"; };
 		1DD3DCB72B3D20C70001D1B8 /* RoomSharingRootViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoomSharingRootViewController.swift; sourceTree = "<group>"; };
-		1DD3DCC02B3D25EC0001D1B8 /* RoomLinkRequestModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoomLinkRequestModel.swift; sourceTree = "<group>"; };
-		1DD3DCC12B3D25EC0001D1B8 /* RoomLinksRequestModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoomLinksRequestModel.swift; sourceTree = "<group>"; };
+		1DD3DCC12B3D25EC0001D1B8 /* RoomLinksRequestModels.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoomLinksRequestModels.swift; sourceTree = "<group>"; };
 		1DD3DCC42B3D25FC0001D1B8 /* RoomLinkResponceModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoomLinkResponceModel.swift; sourceTree = "<group>"; };
 		1DD3DCC52B3D25FC0001D1B8 /* RoomUsersResponceModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoomUsersResponceModel.swift; sourceTree = "<group>"; };
 		1DDC7B28280ED1D300287109 /* ASCSharingAddRightHoldersInteractorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCSharingAddRightHoldersInteractorTests.swift; sourceTree = "<group>"; };
@@ -2801,8 +2799,7 @@
 		FC68525D26837B7300D830EC /* Request */ = {
 			isa = PBXGroup;
 			children = (
-				1DD3DCC02B3D25EC0001D1B8 /* RoomLinkRequestModel.swift */,
-				1DD3DCC12B3D25EC0001D1B8 /* RoomLinksRequestModel.swift */,
+				1DD3DCC12B3D25EC0001D1B8 /* RoomLinksRequestModels.swift */,
 				FC68525E26837B7300D830EC /* OnlyofficeAuthRequest.swift */,
 				E83125DD2B2B080F006016F1 /* AttachLogoRequestModel.swift */,
 				E83125DF2B2B0B42006016F1 /* AttachTagsRequestModel.swift */,
@@ -3668,7 +3665,7 @@
 				E8BE285D2B1DE181007F5942 /* CreateRoomRouteView.swift in Sources */,
 				FC7080E42812E2260057FCD2 /* ASCAccessRowViewModel.swift in Sources */,
 				FC7080E62812E2260057FCD2 /* ASCBaseNavigationController.swift in Sources */,
-				1DD3DCC32B3D25EC0001D1B8 /* RoomLinksRequestModel.swift in Sources */,
+				1DD3DCC32B3D25EC0001D1B8 /* RoomLinksRequestModels.swift in Sources */,
 				FC83D5FD2A974E2200C404CB /* UITextField+Extensions.swift in Sources */,
 				1DD3DCA52B3D20AC0001D1B8 /* ASCDocSpaceLinkLifeTimeView.swift in Sources */,
 				FCB4CE7629FAC5E8009C1E2E /* ASCMultiAccountsViewController.swift in Sources */,
@@ -3892,7 +3889,6 @@
 				FC70817E2812E2260057FCD2 /* PasscodeSignPlaceholderView.swift in Sources */,
 				FC142A7528981A1F00EDE7CE /* ASCPasscodeLockSplashView.swift in Sources */,
 				1D07FDDF2B3D5FA20074DF96 /* RoomUsersAccessNetworkService.swift in Sources */,
-				1DD3DCC22B3D25EC0001D1B8 /* RoomLinkRequestModel.swift in Sources */,
 				FC70817F2812E2260057FCD2 /* ASCCreatePortalStatus.swift in Sources */,
 				FC7081802812E2260057FCD2 /* ASCShadowRadiusView.swift in Sources */,
 				FC7081812812E2260057FCD2 /* NextcloudStorageStats.swift in Sources */,

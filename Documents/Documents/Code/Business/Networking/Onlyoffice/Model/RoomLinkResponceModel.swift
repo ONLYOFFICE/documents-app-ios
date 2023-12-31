@@ -11,7 +11,7 @@ import Foundation
 typealias RoomSharingLinkModel = RoomLinkResponceModel
 
 struct RoomLinkResponceModel: Codable {
-    let access: ASCShareAccess
+    var access: ASCShareAccess
     let linkInfo: SharingLinkInfo
     let isLocked: Bool
     let isOwner: Bool

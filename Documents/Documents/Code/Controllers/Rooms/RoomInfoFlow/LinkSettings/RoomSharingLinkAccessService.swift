@@ -9,7 +9,15 @@
 import Foundation
 
 protocol RoomSharingLinkAccessService {
-    func removeLink(id: String, room: ASCRoom, completion: @escaping (Result<RoomLinkResponceModel, Error>) -> Void)
+    func removeLink(
+        id: String,
+        title: String,
+        linkType: Int,
+        password: String?,
+        room: ASCRoom,
+        completion: @escaping (Error?) -> Void
+    )
+
     func changeOrCreateLink(
         id: String?,
         title: String,
@@ -26,23 +34,30 @@ protocol RoomSharingLinkAccessService {
 final class RoomSharingLinkAccessNetworkService: RoomSharingLinkAccessService {
     private var networkService = OnlyofficeApiClient.shared
 
-    func removeLink(id: String, room: ASCRoom, completion: @escaping (Result<RoomLinkResponceModel, Error>) -> Void) {
-        let requestModel = RoomLinkRequestModel(
+    func removeLink(
+        id: String,
+        title: String,
+        linkType: Int,
+        password: String?,
+        room: ASCRoom,
+        completion: @escaping (Error?) -> Void
+    ) {
+        let requestModel = RoomRemoveLinkRequestModel(
             linkId: id,
-            title: "",
-            access: ASCShareAccess.deny.rawValue,
-            expirationDate: nil,
-            linkType: 1,
-            denyDownload: true,
-            password: nil
+            title: title,
+            access: ASCShareAccess.none.rawValue,
+            linkType: linkType,
+            password: password
         )
 
-        networkService.request(OnlyofficeAPI.Endpoints.Rooms.setLinks(folder: room), requestModel.dictionary) { response, error in
-            guard let result = response?.result else {
-                completion(.failure(error ?? RoomSharingLinkAccessNetworkService.Errors.emptyResponse))
-                return
+        networkService.request(OnlyofficeAPI.Endpoints.Rooms.removeLink(folder: room), requestModel.dictionary) { response, error in
+            DispatchQueue.main.async {
+                guard response != nil, error == nil else {
+                    completion(error ?? RoomSharingLinkAccessNetworkService.Errors.emptyResponse)
+                    return
+                }
+                completion(nil)
             }
-            completion(.success(result))
         }
     }
 
@@ -68,11 +83,14 @@ final class RoomSharingLinkAccessNetworkService: RoomSharingLinkAccessService {
         )
 
         networkService.request(OnlyofficeAPI.Endpoints.Rooms.setLinks(folder: room), requestModel.dictionary) { response, error in
-            guard let result = response?.result else {
-                completion(.failure(error ?? RoomSharingLinkAccessNetworkService.Errors.emptyResponse))
-                return
+            DispatchQueue.main.async {
+                guard let result = response?.result else {
+                    completion(.failure(error ?? RoomSharingLinkAccessNetworkService.Errors.emptyResponse))
+                    return
+                }
+
+                completion(.success(result))
             }
-            completion(.success(result))
         }
     }
 }

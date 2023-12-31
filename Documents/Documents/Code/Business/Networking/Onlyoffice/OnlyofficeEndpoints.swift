@@ -191,6 +191,10 @@ class OnlyofficeAPI {
                 return Endpoint<OnlyofficeResponseCodable<RoomLinkResponceModel>>.make(String(format: Path.roomLink, folder.id), .get, URLEncoding.default)
             }
 
+            static func removeLink(folder: ASCFolder) -> Endpoint<OnlyofficeResponseBase> {
+                return Endpoint<OnlyofficeResponseBase>.make(String(format: Path.roomLinks, folder.id), .put)
+            }
+
             static func setLinks(folder: ASCFolder) -> Endpoint<OnlyofficeResponseCodable<RoomLinkResponceModel>> {
                 return Endpoint<OnlyofficeResponseCodable<RoomLinkResponceModel>>.make(String(format: Path.roomLinks, folder.id), .put)
             }

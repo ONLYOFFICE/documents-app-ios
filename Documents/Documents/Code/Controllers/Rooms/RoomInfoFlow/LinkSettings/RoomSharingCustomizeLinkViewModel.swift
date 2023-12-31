@@ -15,19 +15,19 @@ enum LinkSettingsContentState {
 }
 
 final class RoomSharingCustomizeLinkViewModel: ObservableObject {
-    @Published var contentState: LinkSettingsContentState
+    let contentState: LinkSettingsContentState
 
-    @Published var linkName: String
+    @Published var linkName: String = ""
     @Published var isProtected: Bool = false
     @Published var isRestrictCopyOn: Bool = false
     @Published var isTimeLimited: Bool = false
     @Published var selectedDate: Date = Calendar.current.date(byAdding: .day, value: 7, to: Date()) ?? Date()
-    @Published var password: String
+    @Published var password: String = ""
 
     @Published var isPasswordVisible: Bool = false
     @Published var isDeleting: Bool = false
     @Published var isDeleted: Bool = false
-    @Published var errorMessage: String?
+    @Published var errorMessage: String? = nil
 
     lazy var dateFormatter: DateFormatter = {
         let formatter = DateFormatter()
@@ -38,7 +38,11 @@ final class RoomSharingCustomizeLinkViewModel: ObservableObject {
 
     private var cancelable = Set<AnyCancellable>()
 
-    private let linkId: String?
+    private var linkId: String? {
+        link?.linkInfo.id ?? outputLink?.linkInfo.id
+    }
+
+    private let link: RoomSharingLinkModel?
     private let room: ASCRoom
 
     @Binding private var outputLink: RoomSharingLinkModel?
@@ -50,10 +54,9 @@ final class RoomSharingCustomizeLinkViewModel: ObservableObject {
         inputLink: RoomSharingLinkModel?,
         outputLink: Binding<RoomSharingLinkModel?>
     ) {
-        linkId = inputLink?.linkInfo.id
+        link = inputLink
         self.room = room
         _outputLink = outputLink
-        let link = inputLink
         let linkInfo = link?.linkInfo
         linkName = linkInfo?.title ?? ""
         contentState = link?.isGeneral == false ? .additional : .general
@@ -65,7 +68,7 @@ final class RoomSharingCustomizeLinkViewModel: ObservableObject {
         $linkName
             .dropFirst()
             .receive(on: RunLoop.main)
-            .debounce(for: .seconds(3), scheduler: DispatchQueue.main)
+            .debounce(for: .seconds(.threeSeconds), scheduler: DispatchQueue.main)
             .sink(receiveValue: { [weak self] _ in
                 self?.saveCurrentState()
             })
@@ -106,7 +109,7 @@ final class RoomSharingCustomizeLinkViewModel: ObservableObject {
         $password
             .dropFirst()
             .receive(on: RunLoop.main)
-            .debounce(for: .seconds(3), scheduler: DispatchQueue.main)
+            .debounce(for: .seconds(.threeSeconds), scheduler: DispatchQueue.main)
             .sink(receiveValue: { [weak self] _ in
                 self?.saveCurrentState()
             })
@@ -123,18 +126,24 @@ extension RoomSharingCustomizeLinkViewModel {
     }
 
     func onDelete() {
-        guard let linkId else { return }
+        guard let linkId, var link = link ?? outputLink else { return }
         isDeleting = true
-        linkAccessService.removeLink(id: linkId, room: room) { [self] result in
+        linkAccessService.removeLink(
+            id: linkId,
+            title: link.linkInfo.title,
+            linkType: link.linkInfo.linkType,
+            password: link.linkInfo.password,
+            room: room
+        ) { [self] error in
             isDeleting = false
-            switch result {
-            case let .success(link):
-                outputLink = link
-                isDeleted = true
-            case let .failure(error):
-                log.error(error.localizedDescription)
-                errorMessage = error.localizedDescription
+            guard error == nil else {
+                log.error(error?.localizedDescription ?? "")
+                errorMessage = error?.localizedDescription
+                return
             }
+            link.access = .none
+            outputLink = link
+            isDeleted = true
         }
     }
 }
@@ -146,9 +155,7 @@ private extension RoomSharingCustomizeLinkViewModel {
         linkAccessService.changeOrCreateLink(
             id: linkId,
             title: linkName,
-
-            access: 2, // MARK: TODO
-
+            access: .defaultAccsessForLink,
             expirationDate: isTimeLimited ? dateFormatter.string(from: selectedDate) : nil,
 
             linkType: 1, // MARK: TODO
@@ -170,4 +177,9 @@ private extension RoomSharingCustomizeLinkViewModel {
     func copyLink() {}
 
     func notify() {}
+}
+
+private extension Int {
+    static let threeSeconds = 3
+    static let defaultAccsessForLink = ASCShareAccess.read.rawValue
 }

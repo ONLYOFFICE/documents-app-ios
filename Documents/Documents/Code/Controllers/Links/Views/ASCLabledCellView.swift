@@ -9,7 +9,7 @@
 import SwiftUI
 
 struct ASCLabledCellView: View {
-    @State var model: ASCLabledCellModel
+    var model: ASCLabledCellModel
 
     var body: some View {
         Text(model.textString)

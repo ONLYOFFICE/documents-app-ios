@@ -62,7 +62,7 @@ final class RoomSharingViewModel: ObservableObject {
                       let changedLink,
                       let index = flowModel.links.firstIndex(where: { $0.linkInfo.id == changedLink.linkInfo.id })
                 else { return }
-                if changedLink.access == .deny {
+                if [.deny, .none].contains(changedLink.access) {
                     flowModel.links.remove(at: index)
                 } else {
                     flowModel.links[index] = changedLink

@@ -32,12 +32,16 @@ final class RoomSharingViewModel: ObservableObject {
     @Published var errorMessage: String?
     @Published var generalLinkModel: RoomSharingLinkRowModel?
     @Published var additionalLinkModels: [RoomSharingLinkRowModel] = [RoomSharingLinkRowModel]()
+
+    // MARK: Navigation published vars
+
     @Published var selctedUser: ASCUser?
     @Published var selectdLink: RoomSharingLinkModel?
+    @Published var isCreatingLinkScreenDisplaing: Bool = false
 
     // MARK: var input
 
-    lazy var changedLink = CurrentValueSubject<RoomSharingLinkModel?, Never>(nil)
+    lazy var changedLink = CurrentValueSubject<RoomSharingLinkModel?, Never>(nil) // TODO: rename to inputLink
     lazy var changedLinkBinding = Binding<RoomSharingLinkModel?>(
         get: { self.changedLink.value },
         set: { self.changedLink.send($0) }
@@ -57,16 +61,8 @@ final class RoomSharingViewModel: ObservableObject {
 
         changedLink
             .receive(on: RunLoop.main)
-            .sink(receiveValue: { [weak self] changedLink in
-                guard let self,
-                      let changedLink,
-                      let index = flowModel.links.firstIndex(where: { $0.linkInfo.id == changedLink.linkInfo.id })
-                else { return }
-                if [.deny, .none].contains(changedLink.access) {
-                    flowModel.links.remove(at: index)
-                } else {
-                    flowModel.links[index] = changedLink
-                }
+            .sink(receiveValue: { [weak self] inputLink in
+                self?.handleInputLink(inputLink)
             })
             .store(in: &cancelable)
     }
@@ -85,7 +81,9 @@ final class RoomSharingViewModel: ObservableObject {
 
     func shareButtonAction() {}
 
-    func createAddLinkAction() {}
+    func createAddLinkAction() {
+        isCreatingLinkScreenDisplaing = true
+    }
 
     func createGeneralLink() {}
 
@@ -101,6 +99,19 @@ final class RoomSharingViewModel: ObservableObject {
 // MARK: Private
 
 private extension RoomSharingViewModel {
+    private func handleInputLink(_ inputLink: RoomSharingLinkModel?) {
+        guard let inputLink else { return }
+        if let index = flowModel.links.firstIndex(where: { $0.linkInfo.id == inputLink.linkInfo.id }) {
+            if [.deny, .none].contains(inputLink.access) {
+                flowModel.links.remove(at: index)
+            } else {
+                flowModel.links[index] = inputLink
+            }
+        } else {
+            flowModel.links.append(inputLink)
+        }
+    }
+
     private func buildViewModel() {
         if let generalLink = flowModel.links.first(where: { $0.isGeneral }) {
             generalLinkModel = mapToLinkViewModel(link: generalLink)

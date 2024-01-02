@@ -51,7 +51,7 @@ final class RoomSharingCustomizeLinkViewModel: ObservableObject {
 
     init(
         room: ASCRoom,
-        inputLink: RoomSharingLinkModel?,
+        inputLink: RoomSharingLinkModel? = nil,
         outputLink: Binding<RoomSharingLinkModel?>
     ) {
         link = inputLink
@@ -59,7 +59,7 @@ final class RoomSharingCustomizeLinkViewModel: ObservableObject {
         _outputLink = outputLink
         let linkInfo = link?.linkInfo
         linkName = linkInfo?.title ?? ""
-        contentState = link?.isGeneral == false ? .additional : .general
+        contentState = link?.isGeneral == true ? .general : .additional
         password = linkInfo?.password ?? ""
         isProtected = !password.isEmpty
         isRestrictCopyOn = linkInfo?.denyDownload == true
@@ -151,7 +151,12 @@ extension RoomSharingCustomizeLinkViewModel {
 // MARK: Private
 
 private extension RoomSharingCustomizeLinkViewModel {
+    var isPossibleToSave: Bool {
+        !linkName.isEmpty
+    }
+
     func saveCurrentState() {
+        guard isPossibleToSave else { return }
         linkAccessService.changeOrCreateLink(
             id: linkId,
             title: linkName,

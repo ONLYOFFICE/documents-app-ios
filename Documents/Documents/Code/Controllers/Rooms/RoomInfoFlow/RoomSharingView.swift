@@ -15,24 +15,10 @@ struct RoomSharingView: View {
     var body: some View {
         screenView
             .navigationBarTitle(Text(NSLocalizedString("\(viewModel.room.title)", comment: "")), displayMode: .inline)
-            .navigation(item: $viewModel.selctedUser) { user in
-                RoomSharingAccessTypeView(
-                    viewModel: RoomSharingAccessTypeViewModel(
-                        room: viewModel.room,
-                        user: user
-                    )
-                )
-            }
-            .navigation(item: $viewModel.selectdLink, destination: { link in
-                RoomSharingCustomizeLinkView(viewModel: RoomSharingCustomizeLinkViewModel(
-                    room: viewModel.room,
-                    inputLink: link,
-                    outputLink: viewModel.changedLinkBinding
-                ))
-            })
-            .onAppear {
-                viewModel.onAppear()
-            }
+            .navigateToChangeAccess(selectedUser: $viewModel.selctedUser, viewModel: viewModel)
+            .navigateToEditLink(selectedLink: $viewModel.selectdLink, viewModel: viewModel)
+            .navigateToCreateLink(isDisplaing: $viewModel.isCreatingLinkScreenDisplaing, viewModel: viewModel)
+            .onAppear { viewModel.onAppear() }
     }
 
     @ViewBuilder
@@ -144,6 +130,47 @@ struct RoomSharingView: View {
             Text(title)
             Text("(\(count))")
         }
+    }
+}
+
+private extension View {
+    func navigateToChangeAccess(
+        selectedUser: Binding<ASCUser?>,
+        viewModel: RoomSharingViewModel
+    ) -> some View {
+        navigation(item: selectedUser) { user in
+            RoomSharingAccessTypeView(
+                viewModel: RoomSharingAccessTypeViewModel(
+                    room: viewModel.room,
+                    user: user
+                )
+            )
+        }
+    }
+
+    func navigateToCreateLink(
+        isDisplaing: Binding<Bool>,
+        viewModel: RoomSharingViewModel
+    ) -> some View {
+        navigation(isActive: isDisplaing) {
+            RoomSharingCustomizeLinkView(viewModel: RoomSharingCustomizeLinkViewModel(
+                room: viewModel.room,
+                outputLink: viewModel.changedLinkBinding
+            ))
+        }
+    }
+
+    func navigateToEditLink(
+        selectedLink: Binding<RoomSharingLinkModel?>,
+        viewModel: RoomSharingViewModel
+    ) -> some View {
+        navigation(item: selectedLink, destination: { link in
+            RoomSharingCustomizeLinkView(viewModel: RoomSharingCustomizeLinkViewModel(
+                room: viewModel.room,
+                inputLink: link,
+                outputLink: viewModel.changedLinkBinding
+            ))
+        })
     }
 }
 

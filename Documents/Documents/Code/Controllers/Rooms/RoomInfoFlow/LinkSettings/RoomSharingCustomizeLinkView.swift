@@ -9,26 +9,17 @@
 import SwiftUI
 
 struct RoomSharingCustomizeLinkView: View {
+    @Environment(\.presentationMode) var presentationMode
+
     @ObservedObject var viewModel: RoomSharingCustomizeLinkViewModel
 
     var body: some View {
         content
-            .disabled(viewModel.isDeleting)
-            .overlay(
-                deletingRoomActivityView
-            )
-            .navigationBarItems(
-                trailing: Button(NSLocalizedString("Share", comment: ""), action: {})
-            )
-            .alert(item: $viewModel.errorMessage) { errorMessage in
-                Alert(
-                    title: Text(NSLocalizedString("Error", comment: "")),
-                    message: Text(errorMessage),
-                    dismissButton: .default(Text("OK"), action: {
-                        viewModel.errorMessage = nil
-                    })
-                )
-            }
+            .navigationBarItems()
+            .disabledIfDeleting(viewModel.isDeleting)
+            .overlay(deletingRoomActivityView)
+            .alertForErrorMessage($viewModel.errorMessage)
+            .dismissOnChange(of: viewModel.isDeleted, using: presentationMode)
     }
 
     @ViewBuilder
@@ -41,7 +32,6 @@ struct RoomSharingCustomizeLinkView: View {
         }
     }
 
-    @ViewBuilder
     var generalLinkView: some View {
         List {
             generalSection
@@ -51,7 +41,6 @@ struct RoomSharingCustomizeLinkView: View {
         .navigationBarTitle(Text(NSLocalizedString("General link", comment: "")))
     }
 
-    @ViewBuilder
     var additionalLinkView: some View {
         List {
             generalSection
@@ -150,6 +139,38 @@ struct RoomSharingCustomizeLinkView: View {
                 delay: 0.3,
                 successStatusText: viewModel.isDeleted ? NSLocalizedString("Deleted", comment: "") : nil
             )
+        }
+    }
+}
+
+// MARK: Modifiers
+
+private extension View {
+    func navigationBarItems() -> some View {
+        navigationBarItems(trailing: Button(NSLocalizedString("Share", comment: ""), action: {}))
+    }
+
+    func disabledIfDeleting(_ isDeleting: Bool) -> some View {
+        disabled(isDeleting)
+    }
+
+    func alertForErrorMessage(_ errorMessage: Binding<String?>) -> some View {
+        alert(item: errorMessage) { message in
+            Alert(
+                title: Text(NSLocalizedString("Error", comment: "")),
+                message: Text(message),
+                dismissButton: .default(Text("OK"), action: {
+                    errorMessage.wrappedValue = nil
+                })
+            )
+        }
+    }
+
+    func dismissOnChange(of value: Bool, using presentationMode: Binding<PresentationMode>) -> some View {
+        onChange(of: value) { newValue in
+            if newValue {
+                presentationMode.wrappedValue.dismiss()
+            }
         }
     }
 }

@@ -27,6 +27,7 @@ final class RoomSharingCustomizeLinkViewModel: ObservableObject {
     @Published var isPasswordVisible: Bool = false
     @Published var isDeleting: Bool = false
     @Published var isDeleted: Bool = false
+    @Published var resultModalModel: ResultModalView.Model?
     @Published var errorMessage: String? = nil
 
     lazy var dateFormatter: DateFormatter = {
@@ -121,8 +122,23 @@ final class RoomSharingCustomizeLinkViewModel: ObservableObject {
 
 extension RoomSharingCustomizeLinkViewModel {
     func onCopyLinkAndNotify() {
-        copyLink()
-        notify()
+        guard let link = link else { return }
+        if password.isEmpty {
+            UIPasteboard.general.string = link.linkInfo.shareLink
+            resultModalModel = .init(
+                result: .success,
+                message: .linkCopiedSuccessfull
+            )
+        } else {
+            UIPasteboard.general.string = """
+            \(link.linkInfo.shareLink)
+            \(password)
+            """
+            resultModalModel = .init(
+                result: .success,
+                message: .linkAndPasswordCopiedSuccessfull
+            )
+        }
     }
 
     func onDelete() {
@@ -178,13 +194,14 @@ private extension RoomSharingCustomizeLinkViewModel {
             }
         }
     }
-
-    func copyLink() {}
-
-    func notify() {}
 }
 
 private extension Int {
     static let threeSeconds = 3
     static let defaultAccsessForLink = ASCShareAccess.read.rawValue
+}
+
+private extension String {
+    static let linkCopiedSuccessfull = NSLocalizedString("Link successfully copied to clipboard", comment: "")
+    static let linkAndPasswordCopiedSuccessfull = NSLocalizedString("Link and password successfully copied to clipboard", comment: "")
 }

@@ -18,6 +18,7 @@ struct RoomSharingCustomizeLinkView: View {
             .navigationBarItems()
             .disabledIfDeleting(viewModel.isDeleting)
             .overlay(deletingRoomActivityView)
+            .overlay(resultModalView)
             .alertForErrorMessage($viewModel.errorMessage)
             .dismissOnChange(of: viewModel.isDeleted, using: presentationMode)
     }
@@ -100,7 +101,7 @@ struct RoomSharingCustomizeLinkView: View {
                     textString: NSLocalizedString(viewModel.isProtected ? "Copy link and password" : "Copy link", comment: ""),
                     cellType: .standard,
                     textAlignment: .center,
-                    onTapAction: {}
+                    onTapAction: viewModel.onCopyLinkAndNotify
                 )
             )
             .disabled(viewModel.linkName.isEmpty)
@@ -140,6 +141,10 @@ struct RoomSharingCustomizeLinkView: View {
                 successStatusText: viewModel.isDeleted ? NSLocalizedString("Deleted", comment: "") : nil
             )
         }
+    }
+
+    private var resultModalView: some View {
+        ResultModalView(model: $viewModel.resultModalModel)
     }
 }
 

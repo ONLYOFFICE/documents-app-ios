@@ -38,6 +38,7 @@ struct RoomSharingCustomizeLinkView: View {
             generalSection
             protectedSection
             restrictionSection
+            deleteSection
         }
         .navigationBarTitle(Text(NSLocalizedString("General link", comment: "")))
     }
@@ -116,18 +117,19 @@ struct RoomSharingCustomizeLinkView: View {
         }
     }
 
+    @ViewBuilder
     private var deleteSection: some View {
-        Section {
-            ASCLabledCellView(
-                model: ASCLabledCellModel(
-                    textString: NSLocalizedString("Delete link", comment: ""),
-                    cellType: .deletable,
-                    textAlignment: .center,
-                    onTapAction: {
-                        viewModel.onDelete()
-                    }
+        if viewModel.isDeletePossible {
+            Section {
+                ASCLabledCellView(
+                    model: ASCLabledCellModel(
+                        textString: NSLocalizedString("Delete link", comment: ""),
+                        cellType: .deletable,
+                        textAlignment: .center,
+                        onTapAction: viewModel.onDelete
+                    )
                 )
-            )
+            }
         }
     }
 

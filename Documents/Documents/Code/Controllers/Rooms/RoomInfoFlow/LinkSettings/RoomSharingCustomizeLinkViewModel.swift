@@ -30,6 +30,16 @@ final class RoomSharingCustomizeLinkViewModel: ObservableObject {
     @Published var resultModalModel: ResultModalView.Model?
     @Published var errorMessage: String? = nil
 
+    var isDeletePossible: Bool {
+        if room.roomType == .public, link?.isGeneral == true {
+            return false
+        }
+        if link == nil && outputLink == nil {
+            return false
+        }
+        return true
+    }
+
     lazy var dateFormatter: DateFormatter = {
         let formatter = DateFormatter()
         formatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSSSSSXXXXX"

@@ -26,10 +26,12 @@ final class RoomSharingViewModel: ObservableObject {
     let additionalLinksLimit = 5
 
     @Published var isInitializing: Bool = false
+    @Published var isActivitiIndicatorDisplaying = false
+    @Published var resultModalModel: ResultModalView.Model?
+    @Published var errorMessage: String?
     @Published var admins: [ASCUserRowModel] = []
     @Published var users: [ASCUserRowModel] = []
     @Published var invites: [ASCUserRowModel] = []
-    @Published var errorMessage: String?
     @Published var generalLinkModel: RoomSharingLinkRowModel?
     @Published var additionalLinkModels: [RoomSharingLinkRowModel] = [RoomSharingLinkRowModel]()
 
@@ -50,6 +52,7 @@ final class RoomSharingViewModel: ObservableObject {
     // MARK: - Private vars
 
     private lazy var sharingRoomNetworkService = ServicesProvider.shared.roomSharingNetworkService
+    private lazy var linkAccessService = ServicesProvider.shared.roomSharingLinkAccesskService
     private var cancelable = Set<AnyCancellable>()
 
     // MARK: - Init
@@ -85,7 +88,13 @@ final class RoomSharingViewModel: ObservableObject {
         isCreatingLinkScreenDisplaing = true
     }
 
-    func createGeneralLink() {}
+    func createAndCopyGeneralLink() {
+        createAndCopyLink(name: "Shared link")
+    }
+
+    func createAndCopyAdditionalLink() {
+        createAndCopyLink(name: "Link name (1)")
+    }
 
     func onAppear() {
         buildViewModel()
@@ -99,7 +108,28 @@ final class RoomSharingViewModel: ObservableObject {
 // MARK: Private
 
 private extension RoomSharingViewModel {
-    private func handleInputLink(_ inputLink: RoomSharingLinkModel?) {
+    func createAndCopyLink(name: String) {
+        isActivitiIndicatorDisplaying = true
+        linkAccessService.createLink(
+            title: name,
+            linkType: 1, // TODO:
+            room: room
+        ) { [weak self] result in
+            guard let self else { return }
+            switch result {
+            case let .success(link):
+                flowModel.links.append(link)
+                UIPasteboard.general.string = link.linkInfo.shareLink
+                resultModalModel = .init(result: .success, message: .linkCopiedSuccessfull)
+                buildViewModel()
+            case let .failure(error):
+                errorMessage = error.localizedDescription
+            }
+            isActivitiIndicatorDisplaying = false
+        }
+    }
+
+    func handleInputLink(_ inputLink: RoomSharingLinkModel?) {
         guard let inputLink else { return }
         if let index = flowModel.links.firstIndex(where: { $0.linkInfo.id == inputLink.linkInfo.id }) {
             if [.deny, .none].contains(inputLink.access) {
@@ -112,7 +142,7 @@ private extension RoomSharingViewModel {
         }
     }
 
-    private func buildViewModel() {
+    func buildViewModel() {
         if let generalLink = flowModel.links.first(where: { $0.isGeneral }) {
             generalLinkModel = mapToLinkViewModel(link: generalLink)
         }
@@ -122,7 +152,7 @@ private extension RoomSharingViewModel {
         invites = flowModel.sharings.filter { $0.user.isUnaplyed }.map { self.mapToUserViewModel(sharing: $0) }
     }
 
-    private func mapToUserViewModel(sharing: RoomUsersResponceModel) -> ASCUserRowModel {
+    func mapToUserViewModel(sharing: RoomUsersResponceModel) -> ASCUserRowModel {
         ASCUserRowModel(
             image: sharing.user.avatar ?? "",
             title: sharing.user.displayName ?? "",
@@ -135,7 +165,7 @@ private extension RoomSharingViewModel {
         )
     }
 
-    private func mapToLinkViewModel(link: RoomLinkResponceModel) -> RoomSharingLinkRowModel {
+    func mapToLinkViewModel(link: RoomLinkResponceModel) -> RoomSharingLinkRowModel {
         var imagesNames: [String] = []
         if link.linkInfo.password != nil {
             imagesNames.append("lock.circle.fill")
@@ -153,4 +183,8 @@ private extension RoomSharingViewModel {
             onShareAction: shareButtonAction
         )
     }
+}
+
+private extension String {
+    static let linkCopiedSuccessfull = NSLocalizedString("Link successfully copied to clipboard", comment: "")
 }

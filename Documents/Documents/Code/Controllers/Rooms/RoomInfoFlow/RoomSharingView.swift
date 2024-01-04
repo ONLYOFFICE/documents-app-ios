@@ -18,6 +18,8 @@ struct RoomSharingView: View {
             .navigateToChangeAccess(selectedUser: $viewModel.selctedUser, viewModel: viewModel)
             .navigateToEditLink(selectedLink: $viewModel.selectdLink, viewModel: viewModel)
             .navigateToCreateLink(isDisplaing: $viewModel.isCreatingLinkScreenDisplaing, viewModel: viewModel)
+            .overlay(activityIndicatorView)
+            .overlay(resultModalView)
             .onAppear { viewModel.onAppear() }
     }
 
@@ -44,11 +46,12 @@ struct RoomSharingView: View {
             if let model = viewModel.generalLinkModel {
                 RoomSharingLinkRow(model: model)
             } else {
-                ASCCreateLinkCellView(model: .init(
-                    textString: NSLocalizedString("Create and copy", comment: ""),
-                    imageNames: [],
-                    onTapAction: { viewModel.createGeneralLink() }
-                )
+                ASCCreateLinkCellView(
+                    model: .init(
+                        textString: NSLocalizedString("Create and copy", comment: ""),
+                        imageNames: [],
+                        onTapAction: viewModel.createAndCopyGeneralLink
+                    )
                 )
             }
         }
@@ -59,9 +62,13 @@ struct RoomSharingView: View {
         if viewModel.generalLinkModel != nil {
             Section(header: additionLinksSectionHeader) {
                 if viewModel.additionalLinkModels.isEmpty {
-                    ASCCreateLinkCellView(model: ASCCreateLinkCellModel(textString: NSLocalizedString("Create and copy", comment: ""), imageNames: [], onTapAction: {
-                        viewModel.createAddLinkAction()
-                    }))
+                    ASCCreateLinkCellView(
+                        model: ASCCreateLinkCellModel(
+                            textString: NSLocalizedString("Create and copy", comment: ""),
+                            imageNames: [],
+                            onTapAction: viewModel.createAndCopyAdditionalLink
+                        )
+                    )
                 } else {
                     ForEach(viewModel.additionalLinkModels) { linkModel in
                         RoomSharingLinkRow(model: linkModel)
@@ -130,6 +137,22 @@ struct RoomSharingView: View {
             Text(title)
             Text("(\(count))")
         }
+    }
+
+    @ViewBuilder
+    private var activityIndicatorView: some View {
+        if viewModel.isActivitiIndicatorDisplaying {
+            MBProgressHUDView(
+                isLoading: $viewModel.isActivitiIndicatorDisplaying,
+                text: "",
+                delay: 0.3,
+                successStatusText: nil
+            )
+        }
+    }
+
+    private var resultModalView: some View {
+        ResultModalView(model: $viewModel.resultModalModel)
     }
 }
 

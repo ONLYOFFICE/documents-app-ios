@@ -29,6 +29,42 @@ protocol RoomSharingLinkAccessService {
         room: ASCRoom,
         completion: @escaping (Result<RoomLinkResponceModel, Error>) -> Void
     )
+
+    func createLink(
+        title: String,
+        access: Int,
+        expirationDate: String?,
+        linkType: Int,
+        denyDownload: Bool,
+        password: String?,
+        room: ASCRoom,
+        completion: @escaping (Result<RoomLinkResponceModel, Error>) -> Void
+    )
+}
+
+extension RoomSharingLinkAccessService {
+    func createLink(
+        title: String,
+        access: Int = .defaultAccsessForLink,
+        expirationDate: String? = nil,
+        linkType: Int,
+        denyDownload: Bool = false,
+        password: String? = nil,
+        room: ASCRoom,
+        completion: @escaping (Result<RoomLinkResponceModel, Error>) -> Void
+    ) {
+        changeOrCreateLink(
+            id: nil,
+            title: title,
+            access: access,
+            expirationDate: expirationDate,
+            linkType: linkType,
+            denyDownload: denyDownload,
+            password: password,
+            room: room,
+            completion: completion
+        )
+    }
 }
 
 final class RoomSharingLinkAccessNetworkService: RoomSharingLinkAccessService {
@@ -99,4 +135,8 @@ extension RoomSharingLinkAccessNetworkService {
     enum Errors: Error {
         case emptyResponse
     }
+}
+
+private extension Int {
+    static let defaultAccsessForLink = ASCShareAccess.read.rawValue
 }

@@ -7,6 +7,8 @@
 //
 
 import SwiftUI
+import Kingfisher
+import Combine
 
 struct RoomSharingView: View {
     @Environment(\.presentationMode) var presentationMode
@@ -207,21 +209,42 @@ struct RoomSharingView_Previews: PreviewProvider {
 
 struct ASCUserRowModel: Identifiable {
     var id = UUID()
-    var image: String
+    var image: ImageSourceType
     var title: String
     var subtitle: String
     var isOwner: Bool
     var onTapAction: () -> Void
+    
+    enum ImageSourceType {
+        case url(String)
+        case asset(ImageAsset)
+    }
 }
 
 struct ASCUserRow: View {
     var model: ASCUserRowModel
-
+    
     var body: some View {
         HStack {
-            Image(asset: Asset.Images.avatarDefault) // (model.image)
-                .resizable()
-                .frame(width: 40, height: 40)
+            switch model.image {
+            case let .url(string):
+                if let onlyofficeProvider = ASCFileManager.onlyofficeProvider?.copy() as? ASCOnlyofficeProvider,
+                   let avatarURL = onlyofficeProvider.absoluteUrl(from: string),
+                   !string.contains("/default_user_photo_size_") {
+                    KFImageView(url: avatarURL)
+                        .frame(width: 40, height: 40)
+                        .cornerRadius(20)
+                        .clipped()
+                } else {
+                    Image(asset: Asset.Images.avatarDefault)
+                        .resizable()
+                        .frame(width: 40, height: 40)
+                }
+            case let .asset(asset):
+                Image(asset: asset)
+                    .resizable()
+                    .frame(width: 40, height: 40)
+            }
             Text(NSLocalizedString("\(model.title)", comment: ""))
                 .lineLimit(1)
                 .minimumScaleFactor(0.5)
@@ -242,5 +265,20 @@ struct ASCUserRow: View {
         .onTapGesture {
             model.onTapAction()
         }
+    }
+}
+
+struct KFImageView: UIViewRepresentable {
+    let url: URL
+    
+    func makeUIView(context: Context) -> UIImageView {
+        let imageView = UIImageView()
+        imageView.contentMode = .scaleToFill
+        return imageView
+    }
+    
+    func updateUIView(_ uiView: UIImageView, context: Context) {
+        uiView.kf.setImage(with: url)
+        uiView.contentMode = .scaleAspectFit
     }
 }

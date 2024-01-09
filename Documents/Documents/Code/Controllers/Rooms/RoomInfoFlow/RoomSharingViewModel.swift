@@ -149,12 +149,12 @@ private extension RoomSharingViewModel {
         additionalLinkModels = flowModel.links.filter { !$0.isGeneral }.map { self.mapToLinkViewModel(link: $0) }
         admins = flowModel.sharings.filter { $0.user.isAdmin }.map { self.mapToUserViewModel(sharing: $0) }
         users = flowModel.sharings.filter { !$0.user.isAdmin && !$0.user.isUnaplyed }.map { self.mapToUserViewModel(sharing: $0) }
-        invites = flowModel.sharings.filter { $0.user.isUnaplyed }.map { self.mapToUserViewModel(sharing: $0) }
+        invites = flowModel.sharings.filter { $0.user.isUnaplyed }.map { self.mapToUserViewModel(sharing: $0, isInvitation: true) }
     }
 
-    func mapToUserViewModel(sharing: RoomUsersResponceModel) -> ASCUserRowModel {
+    func mapToUserViewModel(sharing: RoomUsersResponceModel, isInvitation: Bool = false) -> ASCUserRowModel {
         ASCUserRowModel(
-            image: sharing.user.avatar ?? "",
+            image: isInvitation ? .asset(Asset.Images.at) :  .url(sharing.user.avatarRetina ?? ""),
             title: sharing.user.displayName ?? "",
             subtitle: sharing.user.accessValue.title(),
             isOwner: sharing.user.isOwner,

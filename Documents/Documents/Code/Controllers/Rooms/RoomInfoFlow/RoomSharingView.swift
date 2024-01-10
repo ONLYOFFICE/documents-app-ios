@@ -6,9 +6,9 @@
 //  Copyright © 2023 Ascensio System SIA. All rights reserved.
 //
 
-import SwiftUI
-import Kingfisher
 import Combine
+import Kingfisher
+import SwiftUI
 
 struct RoomSharingView: View {
     @Environment(\.presentationMode) var presentationMode
@@ -214,7 +214,7 @@ struct ASCUserRowModel: Identifiable {
     var subtitle: String
     var isOwner: Bool
     var onTapAction: () -> Void
-    
+
     enum ImageSourceType {
         case url(String)
         case asset(ImageAsset)
@@ -223,11 +223,10 @@ struct ASCUserRowModel: Identifiable {
 
 struct ASCUserRow: View {
     var model: ASCUserRowModel
-    
+
     var body: some View {
         HStack {
             imageView(for: model.image)
-            
             Text(NSLocalizedString("\(model.title)", comment: ""))
                 .lineLimit(1)
                 .minimumScaleFactor(0.5)
@@ -280,13 +279,13 @@ struct ASCUserRow: View {
 
 struct KFImageView: UIViewRepresentable {
     let url: URL
-    
+
     func makeUIView(context: Context) -> UIImageView {
         let imageView = UIImageView()
         imageView.contentMode = .scaleToFill
         return imageView
     }
-    
+
     func updateUIView(_ uiView: UIImageView, context: Context) {
         uiView.kf.setImage(with: url)
         uiView.contentMode = .scaleAspectFit

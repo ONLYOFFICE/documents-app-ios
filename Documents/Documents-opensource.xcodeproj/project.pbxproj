@@ -512,6 +512,7 @@
 		FCA464A029437DD200EC05C7 /* ASCDocumentOpenMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCA4649E29437DD200EC05C7 /* ASCDocumentOpenMode.swift */; };
 		FCB4CE7629FAC5E8009C1E2E /* ASCMultiAccountsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCB4CE7529FAC5E8009C1E2E /* ASCMultiAccountsViewController.swift */; };
 		FCC64FAD291A77D5004D9A47 /* OnlyofficeInviteItemRequestModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCC64FAB291A77D5004D9A47 /* OnlyofficeInviteItemRequestModel.swift */; };
+		FCC9E8D62B4EC59500012746 /* Toggle+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCC9E8D52B4EC59500012746 /* Toggle+Extension.swift */; };
 		FCE886D12A828B050064F79D /* ASCCreateEntityUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCE886D02A828B050064F79D /* ASCCreateEntityUI.swift */; };
 		FCE886EE2A83B76B0064F79D /* CreateEntityUIType.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCE886ED2A83B76B0064F79D /* CreateEntityUIType.swift */; };
 		FCE886F12A83B7AF0064F79D /* CreateEntityViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCE886F02A83B7AF0064F79D /* CreateEntityViewModel.swift */; };
@@ -1055,6 +1056,7 @@
 		FCC62AD91E8AA1F700D24BE2 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Localizable.strings; sourceTree = "<group>"; };
 		FCC62AE21E8AA91100D24BE2 /* MWPhotoBrowser.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = MWPhotoBrowser.bundle; sourceTree = "<group>"; };
 		FCC64FAB291A77D5004D9A47 /* OnlyofficeInviteItemRequestModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OnlyofficeInviteItemRequestModel.swift; sourceTree = "<group>"; };
+		FCC9E8D52B4EC59500012746 /* Toggle+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Toggle+Extension.swift"; sourceTree = "<group>"; };
 		FCCDE6792049734000CFC653 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		FCCDE67F204973F500CFC653 /* ASCDocumentConverterTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCDocumentConverterTest.swift; sourceTree = "<group>"; };
 		FCCDE68120497C0D00CFC653 /* documents */ = {isa = PBXFileReference; lastKnownFileType = folder; path = documents; sourceTree = "<group>"; };
@@ -2410,6 +2412,7 @@
 				FC83D5D92A974E1C00C404CB /* UserDefaultsExtensions.swift */,
 				E8AC0F062B0D0B7500B8EEA2 /* View+Extensions.swift */,
 				E8AC0F082B0D0CF200B8EEA2 /* NavigationLink+Extensions.swift */,
+				FCC9E8D52B4EC59500012746 /* Toggle+Extension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -4033,6 +4036,7 @@
 				FC7081E22812E2260057FCD2 /* OnedriveApiClient.swift in Sources */,
 				E8AC0F132B15F6FD00B8EEA2 /* CreateRoomRouteViewViewController.swift in Sources */,
 				1DD3DC9B2B3D20AC0001D1B8 /* RoomSharingCustomizeLinkView.swift in Sources */,
+				FCC9E8D62B4EC59500012746 /* Toggle+Extension.swift in Sources */,
 				FC7081E32812E2260057FCD2 /* Protocols.swift in Sources */,
 				FC7081E42812E2260057FCD2 /* ASCCloudsViewController.swift in Sources */,
 				FC7081E62812E2260057FCD2 /* ASCSharingSettingsVerifyRightHoldersRouter.swift in Sources */,

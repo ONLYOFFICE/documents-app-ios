@@ -67,6 +67,7 @@ struct RoomSharingCustomizeLinkView: View {
                 Toggle(isOn: $viewModel.isProtected) {
                     Text(NSLocalizedString("Password access", comment: ""))
                 }
+                .tintColor(Color(Asset.Colors.brend.color))
 
                 if viewModel.isProtected {
                     Divider()
@@ -86,6 +87,8 @@ struct RoomSharingCustomizeLinkView: View {
             Toggle(isOn: $viewModel.isTimeLimited) {
                 Text(NSLocalizedString("Enable time limit", comment: ""))
             }
+            .tintColor(Color(Asset.Colors.brend.color))
+
             if viewModel.isTimeLimited {
                 TimeLimitCellView(model: TimeLimitCellModel(
                     selectedDate: $viewModel.selectedDate,
@@ -114,6 +117,7 @@ struct RoomSharingCustomizeLinkView: View {
             Toggle(isOn: $viewModel.isRestrictCopyOn) {
                 Text(NSLocalizedString("Restrict file content copy, file download and printing", comment: ""))
             }
+            .tintColor(Color(Asset.Colors.brend.color))
         }
     }
 

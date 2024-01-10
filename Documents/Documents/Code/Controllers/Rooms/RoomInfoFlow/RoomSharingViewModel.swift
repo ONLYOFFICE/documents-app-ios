@@ -158,6 +158,10 @@ private extension RoomSharingViewModel {
         } else {
             flowModel.links.append(inputLink)
         }
+        // editing screen dismissed
+        if selectdLink == nil {
+            buildViewModel()
+        }
     }
 
     func buildViewModel() {

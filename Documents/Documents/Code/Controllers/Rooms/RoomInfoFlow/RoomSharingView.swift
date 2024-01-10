@@ -238,15 +238,15 @@ struct ASCUserRow: View {
             Text(NSLocalizedString("\(model.title)", comment: ""))
                 .lineLimit(1)
                 .minimumScaleFactor(0.5)
-            
+
             Spacer()
-            
+
             Text(NSLocalizedString("\(model.subtitle)", comment: ""))
                 .lineLimit(1)
                 .foregroundColor(.secondaryLabel)
                 .minimumScaleFactor(0.5)
                 .multilineTextAlignment(.trailing)
-            
+
             if !model.isOwner {
                 Image(systemName: "chevron.right")
                     .font(.subheadline)
@@ -259,14 +259,15 @@ struct ASCUserRow: View {
             model.onTapAction()
         }
     }
-    
+
     @ViewBuilder
     private func imageView(for imageType: ASCUserRowModel.ImageSourceType) -> some View {
         switch imageType {
         case let .url(string):
             if let portal = OnlyofficeApiClient.shared.baseURL?.absoluteString.trimmed,
                !string.contains("/default_user_photo_size_"),
-            let url = URL(string: (portal + string)) {
+               let url = URL(string: portal + string)
+            {
                 KFImageView(url: url)
                     .frame(width: 40, height: 40)
                     .cornerRadius(20)
@@ -283,7 +284,6 @@ struct ASCUserRow: View {
         }
     }
 }
-
 
 struct KFImageView: UIViewRepresentable {
     let url: URL

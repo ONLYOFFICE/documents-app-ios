@@ -105,16 +105,17 @@ final class RoomSharingViewModel: ObservableObject {
                     title: deletingLink.linkInfo.title,
                     linkType: deletingLink.linkInfo.linkType,
                     password: deletingLink.linkInfo.password,
-                    room: room) { [ weak self ] error in
-                        guard let self else { return }
-                        if let error {
-                            self.additionalLinkModels.append(mapToLinkViewModel(link: deletingLink))
-                            buildViewModel()
-                            self.errorMessage = error.localizedDescription
-                        } else {
-                            flowModel.links.removeAll(where: { $0.linkInfo.id == deletingLink.linkInfo.id })
-                        }
+                    room: room
+                ) { [weak self] error in
+                    guard let self else { return }
+                    if let error {
+                        self.additionalLinkModels.append(mapToLinkViewModel(link: deletingLink))
+                        buildViewModel()
+                        self.errorMessage = error.localizedDescription
+                    } else {
+                        flowModel.links.removeAll(where: { $0.linkInfo.id == deletingLink.linkInfo.id })
                     }
+                }
             }
         }
         additionalLinkModels.remove(atOffsets: indexSet)
@@ -176,7 +177,7 @@ private extension RoomSharingViewModel {
 
     func mapToUserViewModel(sharing: RoomUsersResponceModel, isInvitation: Bool = false) -> ASCUserRowModel {
         ASCUserRowModel(
-            image: isInvitation ? .asset(Asset.Images.at) :  .url(sharing.user.avatar ?? ""),
+            image: isInvitation ? .asset(Asset.Images.at) : .url(sharing.user.avatar ?? ""),
             title: sharing.user.displayName ?? "",
             subtitle: sharing.user.accessValue.title(),
             isOwner: sharing.user.isOwner,

@@ -64,21 +64,20 @@ struct RoomSharingCustomizeLinkView: View {
 
     private var protectedSection: some View {
         Section(header: Text(NSLocalizedString("Protection", comment: ""))) {
-            VStack {
-                Toggle(isOn: $viewModel.isProtected) {
-                    Text(NSLocalizedString("Password access", comment: ""))
-                }
-                .tintColor(Color(Asset.Colors.brend.color))
+            Toggle(isOn: $viewModel.isProtected) {
+                Text(NSLocalizedString("Password access", comment: ""))
+            }
+            .tintColor(Color(Asset.Colors.brend.color))
+            .foregroundColor(.primary)
 
-                if viewModel.isProtected {
-                    Divider()
-                    PasswordCellView(
-                        model: PasswordCellModel(
-                            password: $viewModel.password,
-                            isPasswordVisible: $viewModel.isPasswordVisible
-                        )
+            if viewModel.isProtected {
+                PasswordCellView(
+                    model: PasswordCellModel(
+                        password: $viewModel.password,
+                        isPasswordVisible: $viewModel.isPasswordVisible
                     )
-                }
+                )
+                .foregroundColor(.primary)
             }
         }
     }
@@ -195,8 +194,12 @@ private extension View {
     }
 }
 
-struct ASCDocSpaceLinkSettingsView_Previews: PreviewProvider {
-    static var previews: some View {
-        RoomSharingCustomizeLinkView(viewModel: .init(room: .init(), inputLink: nil, outputLink: .constant(nil)))
-    }
+#Preview {
+    RoomSharingCustomizeLinkView(
+        viewModel: .init(
+            room: .init(),
+            inputLink: nil,
+            outputLink: .constant(nil)
+        )
+    )
 }

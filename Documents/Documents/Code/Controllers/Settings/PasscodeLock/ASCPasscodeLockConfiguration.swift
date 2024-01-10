@@ -6,6 +6,7 @@
 //  Copyright © 2017 Ascensio System SIA. All rights reserved.
 //
 
+import PasscodeLock
 import UIKit
 
 class ASCPasscodeLockConfiguration: PasscodeLockConfigurationType {
@@ -33,6 +34,18 @@ class ASCPasscodeLockConfiguration: PasscodeLockConfigurationType {
     }
 
     init() {
+        PasscodeLockStyles.backgroundColor = Asset.Colors.viewBackground.color
+        PasscodeLockStyles.textColor = Asset.Colors.brend.color
+
+        PasscodeLockStyles.overrideUserInterfaceStyle = AppThemeService.theme.overrideUserInterfaceStyle
+        PasscodeLockStyles.SignPlaceholderViewStyles.activeColor = Asset.Colors.brend.color
+        PasscodeLockStyles.SignPlaceholderViewStyles.errorColor = Asset.Colors.error.color
+        PasscodeLockStyles.SignPlaceholderViewStyles.inactiveColor = Asset.Colors.viewBackground.color
+
+        PasscodeLockStyles.SignButtonStyles.textColor = Asset.Colors.brend.color
+        PasscodeLockStyles.SignButtonStyles.borderColor = Asset.Colors.brend.color
+        PasscodeLockStyles.SignButtonStyles.highlightBackgroundColor = Asset.Colors.brend.color
+
         repository = ASCUserDefaultsPasscodeRepository()
     }
 }

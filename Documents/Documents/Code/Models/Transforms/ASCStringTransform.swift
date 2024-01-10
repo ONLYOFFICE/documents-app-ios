@@ -6,6 +6,7 @@
 //  Copyright © 2017 Ascensio System SIA. All rights reserved.
 //
 
+import HTMLString
 import ObjectMapper
 
 class ASCStringTransform: TransformType {
@@ -16,7 +17,7 @@ class ASCStringTransform: TransformType {
 
     open func transformFromJSON(_ value: Any?) -> String? {
         if let string = value as? String {
-            return string.removingHTMLEntities
+            return string.removingHTMLEntities()
         }
         return nil
     }

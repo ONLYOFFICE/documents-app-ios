@@ -144,7 +144,6 @@
 		F35933212B305CAF00449F33 /* View+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F35933202B305CAF00449F33 /* View+Extensions.swift */; };
 		F35933232B305CB600449F33 /* NavigationLink+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F35933222B305CB600449F33 /* NavigationLink+Extensions.swift */; };
 		F368FD592B1628AB00BFBD20 /* ASCDocSpaceLinkLifeTimeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F368FD582B1628AB00BFBD20 /* ASCDocSpaceLinkLifeTimeView.swift */; };
-		F369502A2B4C3A6200A20FF2 /* ResultModalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F36950292B4C3A6200A20FF2 /* ResultModalView.swift */; };
 		F369502C2B4C3ACF00A20FF2 /* RoomLinksRequestModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = F369502B2B4C3ACF00A20FF2 /* RoomLinksRequestModels.swift */; };
 		F36E4D922B3D937300910772 /* RoomUsersAccessNetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F36E4D8F2B3D937300910772 /* RoomUsersAccessNetworkService.swift */; };
 		F36E4D932B3D937300910772 /* RoomSharingAccessTypeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F36E4D902B3D937300910772 /* RoomSharingAccessTypeViewModel.swift */; };
@@ -470,6 +469,8 @@
 		FCD31F4524BDF2E200774ACD /* ASCLogger.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC0946AF249776D4005D54E6 /* ASCLogger.swift */; };
 		FCD33B5921C9195000D52DAF /* ASCDocumentsNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCD33B5821C9195000D52DAF /* ASCDocumentsNavigationController.swift */; };
 		FCD33B5B21C93C2B00D52DAF /* ASCCloudsEmptyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCD33B5A21C93C2B00D52DAF /* ASCCloudsEmptyViewController.swift */; };
+		FCD5F46A2B4EF3DC00C04D91 /* ResultViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCD5F4692B4EF3DC00C04D91 /* ResultViewModel.swift */; };
+		FCD5F46C2B4EF4BA00C04D91 /* Toggle+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCD5F46B2B4EF4BA00C04D91 /* Toggle+Extension.swift */; };
 		FCDA61001EA0ED6800A12E16 /* ASCTransferNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCDA60FF1EA0ED6800A12E16 /* ASCTransferNavigationController.swift */; };
 		FCDB31A61E7BD46800907FC0 /* ASCViewControllerManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCDB31A51E7BD46800907FC0 /* ASCViewControllerManager.swift */; };
 		FCDB31A81E7C116E00907FC0 /* ASCConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCDB31A71E7C116E00907FC0 /* ASCConstants.swift */; };
@@ -502,7 +503,6 @@
 		FCE9F6D72B2B566D0056E420 /* LogoUploadResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCE9F6D62B2B566D0056E420 /* LogoUploadResult.swift */; };
 		FCE9F6E12B2B56A30056E420 /* TagsFieldView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCE9F6DB2B2B56A30056E420 /* TagsFieldView.swift */; };
 		FCE9F6E22B2B56A30056E420 /* WSTagsFieldRepresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCE9F6DD2B2B56A30056E420 /* WSTagsFieldRepresentable.swift */; };
-		FCE9F6E32B2B56A30056E420 /* MBProgressHUDView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCE9F6DE2B2B56A30056E420 /* MBProgressHUDView.swift */; };
 		FCE9F6E42B2B56A30056E420 /* ActivityIndicatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCE9F6DF2B2B56A30056E420 /* ActivityIndicatorView.swift */; };
 		FCE9F6E52B2B56A30056E420 /* MenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCE9F6E02B2B56A30056E420 /* MenuView.swift */; };
 		FCE9F6F52B2B56C40056E420 /* CreateRoomViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCE9F6E82B2B56C40056E420 /* CreateRoomViewModel.swift */; };
@@ -736,7 +736,6 @@
 		F35933202B305CAF00449F33 /* View+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "View+Extensions.swift"; sourceTree = "<group>"; };
 		F35933222B305CB600449F33 /* NavigationLink+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NavigationLink+Extensions.swift"; sourceTree = "<group>"; };
 		F368FD582B1628AB00BFBD20 /* ASCDocSpaceLinkLifeTimeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCDocSpaceLinkLifeTimeView.swift; sourceTree = "<group>"; };
-		F36950292B4C3A6200A20FF2 /* ResultModalView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResultModalView.swift; sourceTree = "<group>"; };
 		F369502B2B4C3ACF00A20FF2 /* RoomLinksRequestModels.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoomLinksRequestModels.swift; sourceTree = "<group>"; };
 		F36E4D8F2B3D937300910772 /* RoomUsersAccessNetworkService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoomUsersAccessNetworkService.swift; sourceTree = "<group>"; };
 		F36E4D902B3D937300910772 /* RoomSharingAccessTypeViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoomSharingAccessTypeViewModel.swift; sourceTree = "<group>"; };
@@ -1163,6 +1162,8 @@
 		FCD2DD7227031DF400D31BD5 /* ASCCloudsViewController+ManagedAppConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ASCCloudsViewController+ManagedAppConfig.swift"; sourceTree = "<group>"; };
 		FCD33B5821C9195000D52DAF /* ASCDocumentsNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCDocumentsNavigationController.swift; sourceTree = "<group>"; };
 		FCD33B5A21C93C2B00D52DAF /* ASCCloudsEmptyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCCloudsEmptyViewController.swift; sourceTree = "<group>"; };
+		FCD5F4692B4EF3DC00C04D91 /* ResultViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResultViewModel.swift; sourceTree = "<group>"; };
+		FCD5F46B2B4EF4BA00C04D91 /* Toggle+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Toggle+Extension.swift"; sourceTree = "<group>"; };
 		FCDA60FF1EA0ED6800A12E16 /* ASCTransferNavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASCTransferNavigationController.swift; sourceTree = "<group>"; };
 		FCDB31A51E7BD46800907FC0 /* ASCViewControllerManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASCViewControllerManager.swift; sourceTree = "<group>"; };
 		FCDB31A71E7C116E00907FC0 /* ASCConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASCConstants.swift; sourceTree = "<group>"; };
@@ -1234,7 +1235,6 @@
 		FCE9F6D62B2B566D0056E420 /* LogoUploadResult.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LogoUploadResult.swift; sourceTree = "<group>"; };
 		FCE9F6DB2B2B56A30056E420 /* TagsFieldView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TagsFieldView.swift; sourceTree = "<group>"; };
 		FCE9F6DD2B2B56A30056E420 /* WSTagsFieldRepresentable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WSTagsFieldRepresentable.swift; sourceTree = "<group>"; };
-		FCE9F6DE2B2B56A30056E420 /* MBProgressHUDView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MBProgressHUDView.swift; sourceTree = "<group>"; };
 		FCE9F6DF2B2B56A30056E420 /* ActivityIndicatorView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActivityIndicatorView.swift; sourceTree = "<group>"; };
 		FCE9F6E02B2B56A30056E420 /* MenuView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuView.swift; sourceTree = "<group>"; };
 		FCE9F6E82B2B56C40056E420 /* CreateRoomViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateRoomViewModel.swift; sourceTree = "<group>"; };
@@ -2032,7 +2032,6 @@
 		E8BE28792B243BAD007F5942 /* SwiftUIViews */ = {
 			isa = PBXGroup;
 			children = (
-				F36950292B4C3A6200A20FF2 /* ResultModalView.swift */,
 				E8BE287A2B243BAD007F5942 /* ActivityIndicatorView.swift */,
 				E8BE287B2B243BAD007F5942 /* MenuView.swift */,
 			);
@@ -2404,6 +2403,7 @@
 				FC35D4182A987DF700C6383F /* Path+Extension.swift */,
 				FC35D4232A987DF800C6383F /* Sequence+Extensions.swift */,
 				FC35D4282A987DF900C6383F /* String+Extension.swift */,
+				FCD5F46B2B4EF4BA00C04D91 /* Toggle+Extension.swift */,
 				FC35D4382A987DFB00C6383F /* UIAlertController+Extension.swift */,
 				FC35D4332A987DFA00C6383F /* UIAlertController+SwiftAlertController.swift */,
 				FC35D42A2A987DF900C6383F /* UIBarButtonItem+Extensions.swift */,
@@ -2960,6 +2960,7 @@
 				FC7E456229226A35006C4CA1 /* ASCRoomType.swift */,
 				FC7E456129226A35006C4CA1 /* ASCUser.swift */,
 				1DBA4735298FDBA100244F30 /* ASCEntitySecurity.swift */,
+				FCD5F4692B4EF3DC00C04D91 /* ResultViewModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -3213,8 +3214,8 @@
 		FCE9F6DA2B2B56A30056E420 /* SwiftUIViews */ = {
 			isa = PBXGroup;
 			children = (
-				FCE9F6DB2B2B56A30056E420 /* TagsFieldView.swift */,
 				FCE9F6DC2B2B56A30056E420 /* Representable */,
+				FCE9F6DB2B2B56A30056E420 /* TagsFieldView.swift */,
 				FCE9F6DF2B2B56A30056E420 /* ActivityIndicatorView.swift */,
 				FCE9F6E02B2B56A30056E420 /* MenuView.swift */,
 			);
@@ -3225,7 +3226,6 @@
 			isa = PBXGroup;
 			children = (
 				FCE9F6DD2B2B56A30056E420 /* WSTagsFieldRepresentable.swift */,
-				FCE9F6DE2B2B56A30056E420 /* MBProgressHUDView.swift */,
 			);
 			path = Representable;
 			sourceTree = "<group>";
@@ -4164,6 +4164,7 @@
 				1D9BBE9629A8831400513D52 /* ASCDocSpaceRoomsFiltersController.swift in Sources */,
 				FC41D8062265D99C00A155C2 /* ASCFileStatus.swift in Sources */,
 				FCEF9D331ED2D18500627BA5 /* ASCPasscodeLockConfiguration.swift in Sources */,
+				FCD5F46C2B4EF4BA00C04D91 /* Toggle+Extension.swift in Sources */,
 				1D5DB0352658086C006B4757 /* ASCOnlyofficeCacheCategoriesProvider.swift in Sources */,
 				FCE9F6E12B2B56A30056E420 /* TagsFieldView.swift in Sources */,
 				1D981FF32631A6AF00144B57 /* ASCOnlyofficeCategoriesProviderProtocol.swift in Sources */,
@@ -4215,7 +4216,6 @@
 				1D81EBA92811AB7000EDFB86 /* DropBoxRequestInterceptor.swift in Sources */,
 				1D14AAD626962E6F009E48AD /* ASCSharingSettingsAccessTableProvider.swift in Sources */,
 				FC1828F32A24E606005D9220 /* ASCAppSettings.swift in Sources */,
-				FCE9F6E32B2B56A30056E420 /* MBProgressHUDView.swift in Sources */,
 				FC7CF5191EF3EFF300C0A64F /* NSString+HTMLString.swift in Sources */,
 				F33DDA3C2B15FC0000E52F40 /* ASCDocSpaceExternalLinkView.swift in Sources */,
 				1D14AADD26964995009E48AD /* ASCSharingSettingsAccessProviderFactory.swift in Sources */,
@@ -4225,7 +4225,6 @@
 				FC35D4652A987DFC00C6383F /* Collection+Extensions.swift in Sources */,
 				FC35D45D2A987DFC00C6383F /* UIAlertController+SwiftAlertController.swift in Sources */,
 				1D9B808F2674001D0020B5ED /* ASCAccessRowTableViewCell.swift in Sources */,
-				F369502A2B4C3A6200A20FF2 /* ResultModalView.swift in Sources */,
 				FCDA61001EA0ED6800A12E16 /* ASCTransferNavigationController.swift in Sources */,
 				1D2E3B8D26BB29DA00BEBE9D /* ASCSharingSettingsAccessForExternalLinkNotesProvider.swift in Sources */,
 				F34DC2462B3B11730074E367 /* RoomUsersResponceModel.swift in Sources */,
@@ -4332,6 +4331,7 @@
 				FCEF853C26C3E43000173DDF /* AppDelegate+Notifications.swift in Sources */,
 				FC35D4102A987D1400C6383F /* OnlyofficePath.swift in Sources */,
 				FC68526F26837B7300D830EC /* NextcloudDataResult.swift in Sources */,
+				FCD5F46A2B4EF3DC00C04D91 /* ResultViewModel.swift in Sources */,
 				F38848722B1F6357001B9869 /* SelectableLabledCellView.swift in Sources */,
 				FC35D40E2A987D1400C6383F /* OnlyofficeCapabilities.swift in Sources */,
 				FCE9F7012B2B56EC0056E420 /* ViewState.swift in Sources */,

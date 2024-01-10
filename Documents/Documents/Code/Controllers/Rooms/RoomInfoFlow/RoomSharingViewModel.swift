@@ -10,9 +10,6 @@ import Combine
 import Foundation
 import SwiftUI
 
-// needed info for presentation:
-// 1. public or custom
-
 struct RoomSharingFlowModel {
     var links: [RoomLinkResponceModel] = []
     var sharings: [RoomUsersResponceModel] = []
@@ -22,7 +19,7 @@ final class RoomSharingViewModel: ObservableObject {
     // MARK: - Published vars
 
     private(set) var flowModel = RoomSharingFlowModel()
-    let room: ASCFolder
+    let room: ASCRoom
     let additionalLinksLimit = 5
 
     @Published var isInitializing: Bool = false
@@ -57,7 +54,7 @@ final class RoomSharingViewModel: ObservableObject {
 
     // MARK: - Init
 
-    init(room: ASCFolder) {
+    init(room: ASCRoom) {
         self.room = room
         isInitializing = true
         loadData()
@@ -100,7 +97,28 @@ final class RoomSharingViewModel: ObservableObject {
         buildViewModel()
     }
 
-    func deleteAdditionalLink() {}
+    func deleteAdditionalLink(indexSet: IndexSet) {
+        indexSet.forEach { index in
+            if let deletingLink = flowModel.links.first(where: { $0.linkInfo.id == additionalLinkModels[safe: index]?.id }) {
+                linkAccessService.removeLink(
+                    id: deletingLink.linkInfo.id,
+                    title: deletingLink.linkInfo.title,
+                    linkType: deletingLink.linkInfo.linkType,
+                    password: deletingLink.linkInfo.password,
+                    room: room) { [ weak self ] error in
+                        guard let self else { return }
+                        if let error {
+                            self.additionalLinkModels.append(mapToLinkViewModel(link: deletingLink))
+                            buildViewModel()
+                            self.errorMessage = error.localizedDescription
+                        } else {
+                            flowModel.links.removeAll(where: { $0.linkInfo.id == deletingLink.linkInfo.id })
+                        }
+                    }
+            }
+        }
+        additionalLinkModels.remove(atOffsets: indexSet)
+    }
 
     func deleteGeneralLink() {}
 }
@@ -112,7 +130,7 @@ private extension RoomSharingViewModel {
         isActivitiIndicatorDisplaying = true
         linkAccessService.createLink(
             title: name,
-            linkType: 1, // TODO:
+            linkType: 1, // TODO: -
             room: room
         ) { [weak self] result in
             guard let self else { return }
@@ -154,7 +172,7 @@ private extension RoomSharingViewModel {
 
     func mapToUserViewModel(sharing: RoomUsersResponceModel, isInvitation: Bool = false) -> ASCUserRowModel {
         ASCUserRowModel(
-            image: isInvitation ? .asset(Asset.Images.at) :  .url(sharing.user.avatarRetina ?? ""),
+            image: isInvitation ? .asset(Asset.Images.at) :  .url(sharing.user.avatar ?? ""),
             title: sharing.user.displayName ?? "",
             subtitle: sharing.user.accessValue.title(),
             isOwner: sharing.user.isOwner,
@@ -174,6 +192,7 @@ private extension RoomSharingViewModel {
             imagesNames.append("clock.fill")
         }
         return RoomSharingLinkRowModel(
+            id: link.linkInfo.id,
             titleString: link.linkInfo.title,
             imagesNames: imagesNames,
             isExpired: link.linkInfo.isExpired,

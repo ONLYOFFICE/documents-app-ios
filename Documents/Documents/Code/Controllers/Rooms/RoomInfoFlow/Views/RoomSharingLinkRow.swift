@@ -9,7 +9,7 @@
 import SwiftUI
 
 struct RoomSharingLinkRowModel: Identifiable {
-    var id = UUID()
+    var id: String
 
     var titleString: String
     var imagesNames: [String] = []
@@ -18,6 +18,7 @@ struct RoomSharingLinkRowModel: Identifiable {
     var onShareAction: () -> Void
 
     static var empty = RoomSharingLinkRowModel(
+        id: "",
         titleString: "",
         imagesNames: [],
         isExpired: false,

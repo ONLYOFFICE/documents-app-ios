@@ -13,11 +13,10 @@ struct ASCToggledCellView: View {
     @Binding var model: ASCToggledCellModel
 
     var body: some View {
-        Toggle(
-            isOn: $model.isOn)
-        {
+        Toggle(isOn: $model.isOn) {
             Text(NSLocalizedString(model.title, comment: ""))
         }
+        .tintColor(Color(Asset.Colors.brend.color))
     }
 }
 

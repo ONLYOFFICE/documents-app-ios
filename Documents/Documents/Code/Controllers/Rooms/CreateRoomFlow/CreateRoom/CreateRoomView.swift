@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import MBProgressHUD
 import SwiftUI
 
 struct CreateRoomView: View {
@@ -16,7 +17,9 @@ struct CreateRoomView: View {
     @State var isRoomSelectionPresenting = false
 
     var body: some View {
-        List {
+        handleHUD()
+
+        return List {
             roomTypeSection
             roomImageAndNameSection
             roomTagsSection
@@ -30,9 +33,6 @@ struct CreateRoomView: View {
                 viewModel.createRoom()
             }
             .disabled(viewModel.roomName.isEmpty || viewModel.isCreatingRoom)
-        )
-        .overlay(
-            creatingRoomActivityView
         )
         .alert(item: $viewModel.errorMessage) { errorMessage in
             Alert(
@@ -101,15 +101,21 @@ struct CreateRoomView: View {
             .disabled(viewModel.isCreatingRoom)
     }
 
-    @ViewBuilder
-    private var creatingRoomActivityView: some View {
+    private func handleHUD() {
         if viewModel.isCreatingRoom {
-            MBProgressHUDView(
-                isLoading: $viewModel.isCreatingRoom,
-                text: NSLocalizedString("Creating...", comment: ""),
-                delay: 0.3,
-                successStatusText: viewModel.errorMessage == nil ? "" : nil
-            )
+            MBProgressHUD.currentHUD?.hide(animated: false)
+            let hud = MBProgressHUD.showTopMost()
+            hud?.mode = .indeterminate
+            hud?.label.text = NSLocalizedString("Creating", comment: "Caption of the processing")
+        } else {
+            if let hud = MBProgressHUD.currentHUD {
+                if let errorMessage = viewModel.errorMessage {
+                    hud.hide(animated: true)
+                } else {
+                    hud.setSuccessState()
+                    hud.hide(animated: true, afterDelay: 1.3)
+                }
+            }
         }
     }
 }

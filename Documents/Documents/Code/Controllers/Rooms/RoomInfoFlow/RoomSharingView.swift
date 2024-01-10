@@ -77,7 +77,7 @@ struct RoomSharingView: View {
                         RoomSharingLinkRow(model: linkModel)
                     }
                     .onDelete { indexSet in
-                        viewModel.additionalLinkModels.remove(atOffsets: indexSet)
+                        viewModel.deleteAdditionalLink(indexSet: indexSet)
                     }
                 }
             }
@@ -234,35 +234,19 @@ struct ASCUserRow: View {
 
     var body: some View {
         HStack {
-            switch model.image {
-            case let .url(string):
-                if let onlyofficeProvider = ASCFileManager.onlyofficeProvider?.copy() as? ASCOnlyofficeProvider,
-                   let avatarURL = onlyofficeProvider.absoluteUrl(from: string),
-                   !string.contains("/default_user_photo_size_")
-                {
-                    KFImageView(url: avatarURL)
-                        .frame(width: 40, height: 40)
-                        .cornerRadius(20)
-                        .clipped()
-                } else {
-                    Image(asset: Asset.Images.avatarDefault)
-                        .resizable()
-                        .frame(width: 40, height: 40)
-                }
-            case let .asset(asset):
-                Image(asset: asset)
-                    .resizable()
-                    .frame(width: 40, height: 40)
-            }
+            imageView(for: model.image)
             Text(NSLocalizedString("\(model.title)", comment: ""))
                 .lineLimit(1)
                 .minimumScaleFactor(0.5)
+            
             Spacer()
+            
             Text(NSLocalizedString("\(model.subtitle)", comment: ""))
                 .lineLimit(1)
                 .foregroundColor(.secondaryLabel)
                 .minimumScaleFactor(0.5)
                 .multilineTextAlignment(.trailing)
+            
             if !model.isOwner {
                 Image(systemName: "chevron.right")
                     .font(.subheadline)
@@ -275,7 +259,31 @@ struct ASCUserRow: View {
             model.onTapAction()
         }
     }
+    
+    @ViewBuilder
+    private func imageView(for imageType: ASCUserRowModel.ImageSourceType) -> some View {
+        switch imageType {
+        case let .url(string):
+            if let portal = OnlyofficeApiClient.shared.baseURL?.absoluteString.trimmed,
+               !string.contains("/default_user_photo_size_"),
+            let url = URL(string: (portal + string)) {
+                KFImageView(url: url)
+                    .frame(width: 40, height: 40)
+                    .cornerRadius(20)
+                    .clipped()
+            } else {
+                Image(asset: Asset.Images.avatarDefault)
+                    .resizable()
+                    .frame(width: 40, height: 40)
+            }
+        case let .asset(asset):
+            Image(asset: asset)
+                .resizable()
+                .frame(width: 40, height: 40)
+        }
+    }
 }
+
 
 struct KFImageView: UIViewRepresentable {
     let url: URL

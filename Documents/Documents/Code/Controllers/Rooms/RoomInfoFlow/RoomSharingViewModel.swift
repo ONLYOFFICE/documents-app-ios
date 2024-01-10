@@ -120,7 +120,26 @@ final class RoomSharingViewModel: ObservableObject {
         additionalLinkModels.remove(atOffsets: indexSet)
     }
 
-    func deleteGeneralLink() {}
+    func deleteGeneralLink() {
+        if let generalLink = flowModel.links.first(where: { $0.linkInfo.id == generalLinkModel?.id }) {
+            linkAccessService.removeLink(
+                id: generalLink.linkInfo.id,
+                title: generalLink.linkInfo.title,
+                linkType: generalLink.linkInfo.linkType,
+                password: generalLink.linkInfo.password,
+                room: room) { [ weak self ] error in
+                    guard let self else { return }
+                    if let error {
+                        self.generalLinkModel = mapToLinkViewModel(link: generalLink)
+                        self.buildViewModel()
+                        self.errorMessage = error.localizedDescription
+                    } else {
+                        flowModel.links.removeAll(where: { $0.linkInfo.id == generalLink.linkInfo.id })
+                    }
+                }
+        }
+        generalLinkModel = nil
+    }
 }
 
 // MARK: Private

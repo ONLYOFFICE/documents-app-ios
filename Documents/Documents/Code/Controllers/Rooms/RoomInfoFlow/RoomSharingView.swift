@@ -41,12 +41,21 @@ struct RoomSharingView: View {
             }
         }
     }
-
+    
     @ViewBuilder
     private var generalLincSection: some View {
         Section(header: Text(NSLocalizedString("General link", comment: ""))) {
             if let model = viewModel.generalLinkModel {
-                RoomSharingLinkRow(model: model)
+                if viewModel.room.roomType == .custom {
+                    ForEach([model]) { _ in
+                        RoomSharingLinkRow(model: model)
+                    }
+                    .onDelete { _ in
+                        viewModel.deleteGeneralLink()
+                    }
+                } else {
+                    RoomSharingLinkRow(model: model)
+                }
             } else {
                 ASCCreateLinkCellView(
                     model: .init(
@@ -61,7 +70,7 @@ struct RoomSharingView: View {
 
     @ViewBuilder
     private var additionalLinksSection: some View {
-        if viewModel.generalLinkModel != nil {
+        if viewModel.generalLinkModel != nil || viewModel.room.roomType == .custom {
             Section(header: additionLinksSectionHeader) {
                 if viewModel.additionalLinkModels.isEmpty {
                     ASCCreateLinkCellView(

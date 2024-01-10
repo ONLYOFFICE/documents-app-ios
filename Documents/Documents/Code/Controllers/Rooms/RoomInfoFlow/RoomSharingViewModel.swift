@@ -154,7 +154,7 @@ private extension RoomSharingViewModel {
 
     func mapToUserViewModel(sharing: RoomUsersResponceModel, isInvitation: Bool = false) -> ASCUserRowModel {
         ASCUserRowModel(
-            image: isInvitation ? .asset(Asset.Images.at) :  .url(sharing.user.avatarRetina ?? ""),
+            image: isInvitation ? .asset(Asset.Images.at) : .url(sharing.user.avatarRetina ?? ""),
             title: sharing.user.displayName ?? "",
             subtitle: sharing.user.accessValue.title(),
             isOwner: sharing.user.isOwner,

@@ -21,6 +21,7 @@ final class RoomSharingViewModel: ObservableObject {
     private(set) var flowModel = RoomSharingFlowModel()
     let room: ASCRoom
     let additionalLinksLimit = 5
+    var isSharingPossible: Bool { room.rootFolderType != .onlyofficeRoomArchived }
 
     @Published var isInitializing: Bool = false
     @Published var isActivitiIndicatorDisplaying = false
@@ -201,8 +202,12 @@ private extension RoomSharingViewModel {
             titleString: link.linkInfo.title,
             imagesNames: imagesNames,
             isExpired: link.linkInfo.isExpired,
+            isSharingPossible: isSharingPossible,
             onTapAction: { [weak self] in
-                self?.selectdLink = link
+                guard let self else { return }
+                if isSharingPossible {
+                    selectdLink = link
+                }
             },
             onShareAction: shareButtonAction
         )

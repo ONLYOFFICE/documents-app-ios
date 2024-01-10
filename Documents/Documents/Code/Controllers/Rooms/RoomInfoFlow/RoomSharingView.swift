@@ -45,24 +45,26 @@ struct RoomSharingView: View {
 
     @ViewBuilder
     private var generalLincSection: some View {
-        Section(header: Text(NSLocalizedString("General link", comment: ""))) {
-            if let model = viewModel.generalLinkModel {
-                RoomSharingLinkRow(model: model)
-            } else {
-                ASCCreateLinkCellView(
-                    model: .init(
-                        textString: NSLocalizedString("Create and copy", comment: ""),
-                        imageNames: [],
-                        onTapAction: viewModel.createAndCopyGeneralLink
+        if viewModel.isSharingPossible || viewModel.generalLinkModel != nil {
+            Section(header: Text(NSLocalizedString("General link", comment: ""))) {
+                if let model = viewModel.generalLinkModel {
+                    RoomSharingLinkRow(model: model)
+                } else {
+                    ASCCreateLinkCellView(
+                        model: .init(
+                            textString: NSLocalizedString("Create and copy", comment: ""),
+                            imageNames: [],
+                            onTapAction: viewModel.createAndCopyGeneralLink
+                        )
                     )
-                )
+                }
             }
         }
     }
 
     @ViewBuilder
     private var additionalLinksSection: some View {
-        if viewModel.generalLinkModel != nil {
+        if viewModel.generalLinkModel != nil, (!viewModel.additionalLinkModels.isEmpty || viewModel.isSharingPossible) {
             Section(header: additionLinksSectionHeader) {
                 if viewModel.additionalLinkModels.isEmpty {
                     ASCCreateLinkCellView(
@@ -149,7 +151,7 @@ struct RoomSharingView: View {
             hud?.mode = .indeterminate
         } else {
             if let hud = MBProgressHUD.currentHUD {
-                if let resultModalModel = viewModel.resultModalModel {
+                if let resultModalModel = $viewModel.resultModalModel.wrappedValue {
                     switch resultModalModel.result {
                     case .success:
                         hud.setState(result: .success(resultModalModel.message))

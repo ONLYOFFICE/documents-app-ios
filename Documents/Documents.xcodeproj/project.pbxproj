@@ -2198,8 +2198,8 @@
 				F350404D2B3590D4008351A5 /* Models */,
 				F35040452B330281008351A5 /* Views */,
 				F3FA9AAC2B3D6AD1008D38EC /* RoomSharingNetworkService.swift */,
-				F3EF61CF2B317D9400B890B0 /* RoomSharingView.swift */,
 				F3EF61CD2B317D7700B890B0 /* RoomSharingViewModel.swift */,
+				F3EF61CF2B317D9400B890B0 /* RoomSharingView.swift */,
 				F3EF61D12B317DA500B890B0 /* RoomSharingRootViewController.swift */,
 			);
 			path = RoomInfoFlow;

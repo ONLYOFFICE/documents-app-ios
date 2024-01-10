@@ -27,7 +27,7 @@ final class RoomSharingCustomizeLinkViewModel: ObservableObject {
     @Published var isPasswordVisible: Bool = false
     @Published var isDeleting: Bool = false
     @Published var isDeleted: Bool = false
-    @Published var resultModalModel: ResultModalView.Model?
+    @Published var resultModalModel: ResultViewModel?
     @Published var errorMessage: String? = nil
 
     var isDeletePossible: Bool {

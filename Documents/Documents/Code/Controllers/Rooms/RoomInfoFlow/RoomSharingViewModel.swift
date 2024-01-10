@@ -27,7 +27,7 @@ final class RoomSharingViewModel: ObservableObject {
 
     @Published var isInitializing: Bool = false
     @Published var isActivitiIndicatorDisplaying = false
-    @Published var resultModalModel: ResultModalView.Model?
+    @Published var resultModalModel: ResultViewModel?
     @Published var errorMessage: String?
     @Published var admins: [ASCUserRowModel] = []
     @Published var users: [ASCUserRowModel] = []

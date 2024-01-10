@@ -8,6 +8,7 @@
 
 import Combine
 import Kingfisher
+import MBProgressHUD
 import SwiftUI
 
 struct RoomSharingView: View {
@@ -15,13 +16,13 @@ struct RoomSharingView: View {
     @ObservedObject var viewModel: RoomSharingViewModel
 
     var body: some View {
-        screenView
+        handleHUD()
+
+        return screenView
             .navigationBarTitle(Text(NSLocalizedString("\(viewModel.room.title)", comment: "")), displayMode: .inline)
             .navigateToChangeAccess(selectedUser: $viewModel.selctedUser, viewModel: viewModel)
             .navigateToEditLink(selectedLink: $viewModel.selectdLink, viewModel: viewModel)
             .navigateToCreateLink(isDisplaing: $viewModel.isCreatingLinkScreenDisplaing, viewModel: viewModel)
-            .overlay(activityIndicatorView)
-            .overlay(resultModalView)
             .onAppear { viewModel.onAppear() }
     }
 
@@ -141,20 +142,27 @@ struct RoomSharingView: View {
         }
     }
 
-    @ViewBuilder
-    private var activityIndicatorView: some View {
+    private func handleHUD() {
         if viewModel.isActivitiIndicatorDisplaying {
-            MBProgressHUDView(
-                isLoading: $viewModel.isActivitiIndicatorDisplaying,
-                text: "",
-                delay: 0.3,
-                successStatusText: nil
-            )
-        }
-    }
+            MBProgressHUD.currentHUD?.hide(animated: false)
+            let hud = MBProgressHUD.showTopMost()
+            hud?.mode = .indeterminate
+        } else {
+            if let hud = MBProgressHUD.currentHUD {
+                if let resultModalModel = viewModel.resultModalModel {
+                    switch resultModalModel.result {
+                    case .success:
+                        hud.setState(result: .success(resultModalModel.message))
+                    case .failure:
+                        hud.setState(result: .failure(resultModalModel.message))
+                    }
 
-    private var resultModalView: some View {
-        ResultModalView(model: $viewModel.resultModalModel)
+                    hud.hide(animated: true, afterDelay: resultModalModel.hideAfter)
+                } else {
+                    hud.hide(animated: true)
+                }
+            }
+        }
     }
 }
 

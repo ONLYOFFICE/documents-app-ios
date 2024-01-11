@@ -39,8 +39,6 @@
 		1DD3DCA72B3D20AC0001D1B8 /* ASCDocSpaceLinkViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DD3DC942B3D20AC0001D1B8 /* ASCDocSpaceLinkViewController.swift */; };
 		1DD3DCA82B3D20AC0001D1B8 /* ASCDocSpaceLinkView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DD3DC952B3D20AC0001D1B8 /* ASCDocSpaceLinkView.swift */; };
 		1DD3DCA92B3D20AC0001D1B8 /* ASCDocSpaceLinkViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DD3DC962B3D20AC0001D1B8 /* ASCDocSpaceLinkViewModel.swift */; };
-		1DD3DCAA2B3D20AC0001D1B8 /* ASCDocSpaceExternalLinkViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DD3DC982B3D20AC0001D1B8 /* ASCDocSpaceExternalLinkViewModel.swift */; };
-		1DD3DCAB2B3D20AC0001D1B8 /* ASCDocSpaceExternalLinkView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DD3DC992B3D20AC0001D1B8 /* ASCDocSpaceExternalLinkView.swift */; };
 		1DD3DCB82B3D20C70001D1B8 /* RoomsNamespace.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DD3DCAD2B3D20C70001D1B8 /* RoomsNamespace.swift */; };
 		1DD3DCB92B3D20C70001D1B8 /* RoomSharingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DD3DCAF2B3D20C70001D1B8 /* RoomSharingView.swift */; };
 		1DD3DCBA2B3D20C70001D1B8 /* RoomSharingNetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DD3DCB02B3D20C70001D1B8 /* RoomSharingNetworkService.swift */; };
@@ -643,8 +641,6 @@
 		1DD3DC942B3D20AC0001D1B8 /* ASCDocSpaceLinkViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASCDocSpaceLinkViewController.swift; sourceTree = "<group>"; };
 		1DD3DC952B3D20AC0001D1B8 /* ASCDocSpaceLinkView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASCDocSpaceLinkView.swift; sourceTree = "<group>"; };
 		1DD3DC962B3D20AC0001D1B8 /* ASCDocSpaceLinkViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASCDocSpaceLinkViewModel.swift; sourceTree = "<group>"; };
-		1DD3DC982B3D20AC0001D1B8 /* ASCDocSpaceExternalLinkViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASCDocSpaceExternalLinkViewModel.swift; sourceTree = "<group>"; };
-		1DD3DC992B3D20AC0001D1B8 /* ASCDocSpaceExternalLinkView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASCDocSpaceExternalLinkView.swift; sourceTree = "<group>"; };
 		1DD3DCAD2B3D20C70001D1B8 /* RoomsNamespace.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoomsNamespace.swift; sourceTree = "<group>"; };
 		1DD3DCAF2B3D20C70001D1B8 /* RoomSharingView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoomSharingView.swift; sourceTree = "<group>"; };
 		1DD3DCB02B3D20C70001D1B8 /* RoomSharingNetworkService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoomSharingNetworkService.swift; sourceTree = "<group>"; };
@@ -1869,15 +1865,6 @@
 			path = CreatelLink;
 			sourceTree = "<group>";
 		};
-		1DD3DC972B3D20AC0001D1B8 /* ExternalLink */ = {
-			isa = PBXGroup;
-			children = (
-				1DD3DC982B3D20AC0001D1B8 /* ASCDocSpaceExternalLinkViewModel.swift */,
-				1DD3DC992B3D20AC0001D1B8 /* ASCDocSpaceExternalLinkView.swift */,
-			);
-			path = ExternalLink;
-			sourceTree = "<group>";
-		};
 		1DD3DCAC2B3D20C70001D1B8 /* Protocols */ = {
 			isa = PBXGroup;
 			children = (
@@ -2093,7 +2080,6 @@
 			isa = PBXGroup;
 			children = (
 				1DD3DC932B3D20AC0001D1B8 /* CreatelLink */,
-				1DD3DC972B3D20AC0001D1B8 /* ExternalLink */,
 				1DD3DC902B3D20AC0001D1B8 /* LinkLifeTime */,
 				1DD3DC862B3D20AC0001D1B8 /* Views */,
 			);
@@ -3769,7 +3755,6 @@
 				FC83D5732A9742F000C404CB /* ASCLogger.swift in Sources */,
 				FC70811F2812E2260057FCD2 /* ASCCopyLinkTableViewCell.swift in Sources */,
 				FC83D56D2A9742F000C404CB /* WhatsNewService.swift in Sources */,
-				1DD3DCAA2B3D20AC0001D1B8 /* ASCDocSpaceExternalLinkViewModel.swift in Sources */,
 				FC7081202812E2260057FCD2 /* ASCFileStatus.swift in Sources */,
 				FC83D6202A974E2300C404CB /* NSLayoutConstraint+Extensions.swift in Sources */,
 				FC7081222812E2260057FCD2 /* ASCOnlyofficeCacheCategoriesProvider.swift in Sources */,
@@ -4104,7 +4089,6 @@
 				FC83D6102A974E2300C404CB /* UIAlertController+SwiftAlertController.swift in Sources */,
 				FC5943252AE67567001BA2F9 /* ASCDIProtocol.swift in Sources */,
 				FC5943DF2AE6D254001BA2F9 /* ASCPresentationEditorConfiguration.swift in Sources */,
-				1DD3DCAB2B3D20AC0001D1B8 /* ASCDocSpaceExternalLinkView.swift in Sources */,
 				FCE9F6402B2B49D60056E420 /* ASCSharingAddRightHoldersModels.swift in Sources */,
 				F378023D29D743AF0020B453 /* DetailImageStyleTabelViewCell.swift in Sources */,
 				FC7082162812E2260057FCD2 /* ASCFacebookSignInController.swift in Sources */,

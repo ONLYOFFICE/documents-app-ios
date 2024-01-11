@@ -9,7 +9,6 @@
 import Foundation
 
 protocol RoomSharingLinkAccessService {
-    
     func removeLink(
         id: String,
         title: String,
@@ -41,7 +40,7 @@ protocol RoomSharingLinkAccessService {
         room: ASCRoom,
         completion: @escaping (Result<RoomLinkResponceModel, Error>) -> Void
     )
-    
+
     func createGeneralLink(
         room: ASCRoom,
         completion: @escaping (Result<RoomLinkResponceModel, Error>) -> Void
@@ -135,7 +134,7 @@ final class RoomSharingLinkAccessNetworkService: RoomSharingLinkAccessService {
             }
         }
     }
-    
+
     func createGeneralLink(
         room: ASCRoom,
         completion: @escaping (Result<RoomLinkResponceModel, Error>) -> Void

@@ -178,7 +178,6 @@ final class RoomSharingViewModel: ObservableObject {
 // MARK: Private
 
 private extension RoomSharingViewModel {
-
     func handleInputLink(_ inputLink: RoomSharingLinkModel?) {
         guard let inputLink else { return }
         if let index = flowModel.links.firstIndex(where: { $0.linkInfo.id == inputLink.linkInfo.id }) {

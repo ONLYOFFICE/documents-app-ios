@@ -100,18 +100,18 @@ struct RoomSharingCustomizeLinkView: View {
             }
         }
     }
-    
+
     @ViewBuilder
     private var copySection: some View {
         if !viewModel.isExpired {
             Section {
                 ASCLabledCellView(model:
-                        .init(
-                            textString: NSLocalizedString(viewModel.isProtected ? "Copy link and password" : "Copy link", comment: ""),
-                            cellType: .standard,
-                            textAlignment: .center,
-                            onTapAction: viewModel.onCopyLinkAndNotify
-                        )
+                    .init(
+                        textString: NSLocalizedString(viewModel.isProtected ? "Copy link and password" : "Copy link", comment: ""),
+                        cellType: .standard,
+                        textAlignment: .center,
+                        onTapAction: viewModel.onCopyLinkAndNotify
+                    )
                 )
                 .disabled(viewModel.linkName.isEmpty)
             }

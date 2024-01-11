@@ -6,6 +6,7 @@
 //  Copyright © 2018 Ascensio System SIA. All rights reserved.
 //
 
+import ObservableSwift
 import UIKit
 
 class ASCCloudsViewController: UITableViewController {

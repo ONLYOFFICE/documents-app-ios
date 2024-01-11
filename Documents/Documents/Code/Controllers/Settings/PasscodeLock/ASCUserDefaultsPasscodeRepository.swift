@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import PasscodeLock
 
 class ASCUserDefaultsPasscodeRepository: PasscodeRepositoryType {
     // MARK: - Properties

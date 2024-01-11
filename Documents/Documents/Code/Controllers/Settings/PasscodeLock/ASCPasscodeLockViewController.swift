@@ -7,6 +7,7 @@
 //
 
 import LocalAuthentication
+import PasscodeLock
 import UIKit
 
 enum ASCBiometryType: Int {
@@ -41,7 +42,6 @@ class ASCPasscodeLockViewController: ASCBaseTableViewController {
 
         if UIDevice.pad {
             navigationController?.navigationBar.prefersLargeTitles = false
-
             navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
             navigationController?.navigationBar.shadowImage = UIImage()
             navigationController?.navigationBar.isTranslucent = true

@@ -6,6 +6,7 @@
 //  Copyright © 2021 Ascensio System SIA. All rights reserved.
 //
 
+import PasscodeLock
 import UIKit
 
 extension AppDelegate {

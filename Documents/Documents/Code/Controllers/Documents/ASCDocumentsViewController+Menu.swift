@@ -659,8 +659,8 @@ extension ASCDocumentsViewController {
         // Archive
         let archive = MGSwipeButton(
             title: NSLocalizedString("Archive", comment: "Button title"),
-            icon: Asset.Images.categoryArchived.image,
-            backgroundColor: ASCConstants.Colors.grey
+            icon: Asset.Images.categoryArchived.image.withTintColor(.white),
+            backgroundColor: Asset.Colors.brend.color
         ) { [unowned self] cell -> Bool in
             self.archive(cell: cell)
             return true
@@ -681,7 +681,7 @@ extension ASCDocumentsViewController {
         // Info
         let info = MGSwipeButton(
             title: NSLocalizedString("Info", comment: "Button title"),
-            icon: Asset.Images.barInfo.image.withTintColor(ASCConstants.Colors.grey),
+            icon: Asset.Images.barInfo.image.withTintColor(.white),
             backgroundColor: ASCConstants.Colors.lightGrey
         ) { [unowned self] cell -> Bool in
             cell.hideSwipe(animated: true)

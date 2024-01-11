@@ -29,7 +29,7 @@ struct RoomSelectionView: View {
 
     var body: some View {
         List(viewModel.rooms, id: \.name) { room in
-            CreatingRoomViewRow(room: room)
+            RoomViewRow(room: room)
                 .frame(minHeight: maxHeights)
                 .background(
                     GeometryReader { proxy in

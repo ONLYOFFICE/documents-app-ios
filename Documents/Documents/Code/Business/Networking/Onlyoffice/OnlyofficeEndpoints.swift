@@ -154,6 +154,10 @@ class OnlyofficeAPI {
             static func addToRoom(folder: ASCFolder) -> Endpoint<OnlyofficeResponse<ASCFolder>> {
                 return Endpoint<OnlyofficeResponse<OnlyofficeResponseBase>>.make(String(format: Path.roomsTags, folder.id), .put)
             }
+
+            static func deleteFromRoom(folder: ASCFolder) -> Endpoint<OnlyofficeResponse<ASCFolder>> {
+                return Endpoint<OnlyofficeResponse<OnlyofficeResponseBase>>.make(String(format: Path.roomsTags, folder.id), .delete)
+            }
         }
 
         // MARK: Rooms
@@ -183,6 +187,10 @@ class OnlyofficeAPI {
 
             static func setLogo(folder: ASCFolder) -> Endpoint<OnlyofficeResponse<ASCFolder>> {
                 return Endpoint<OnlyofficeResponse<ASCFolder>>.make(String(format: Path.roomLogo, folder.id), .post)
+            }
+
+            static func update(folder: ASCFolder) -> Endpoint<OnlyofficeResponse<ASCFolder>> {
+                return Endpoint<OnlyofficeResponse<ASCFolder>>.make(String(format: Path.room, folder.id), .put)
             }
         }
 

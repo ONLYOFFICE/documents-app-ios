@@ -36,6 +36,7 @@ class ASCFolder: ASCEntity {
     var device: Bool = false
     var parent: ASCFolder?
     var logo: ASCFolderLogo?
+    var tags: [String]?
     var security: ASCFolderSecurity = .init()
     var providerId: String? {
         if isThirdParty {
@@ -73,6 +74,7 @@ class ASCFolder: ASCEntity {
         new <- map["new"]
         isThirdParty <- map["providerItem"]
         logo <- map["logo"]
+        tags <- map["tags"]
         providerType <- (map["providerKey"], EnumTransform())
         security <- map["security"]
         // Internal
@@ -98,6 +100,7 @@ class ASCFolder: ASCEntity {
             folder.new = new
             folder.isThirdParty = isThirdParty
             folder.logo = logo
+            folder.tags = tags
             folder.providerType = providerType
             folder.device = device
             folder.parent = parent

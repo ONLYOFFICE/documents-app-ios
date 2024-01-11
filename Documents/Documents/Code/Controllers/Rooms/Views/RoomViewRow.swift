@@ -1,5 +1,5 @@
 //
-//  CreatingRoomViewRow.swift
+//  RoomViewRow.swift
 //  Documents
 //
 //  Created by Pavel Chernyshev on 02.12.2023.
@@ -8,8 +8,9 @@
 
 import SwiftUI
 
-struct CreatingRoomViewRow: View {
+struct RoomViewRow: View {
     let room: Room
+    @State var isEditRoom = false
 
     var subtitleFont: Font {
         if #available(iOS 14.0, *) {
@@ -35,11 +36,12 @@ struct CreatingRoomViewRow: View {
             }
 
             Spacer()
-
-            Image(systemName: "chevron.right")
-                .font(.subheadline)
-                .foregroundColor(Color.separator)
-                .flipsForRightToLeftLayoutDirection(true)
+            if !isEditRoom {
+                Image(systemName: "chevron.right")
+                    .font(.subheadline)
+                    .foregroundColor(Color.separator)
+                    .flipsForRightToLeftLayoutDirection(true)
+            }
         }
     }
 
@@ -53,7 +55,7 @@ struct CreatingRoomViewRow: View {
 }
 
 #Preview {
-    CreatingRoomViewRow(
+    RoomViewRow(
         room: CreatingRoomType.publicRoom.toRoom()
     )
 }

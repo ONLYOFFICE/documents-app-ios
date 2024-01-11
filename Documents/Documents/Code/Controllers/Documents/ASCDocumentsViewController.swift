@@ -1998,6 +1998,17 @@ class ASCDocumentsViewController: ASCBaseTableViewController, UIGestureRecognize
         present(alertController, animated: true)
     }
 
+    func editRoom(folder: ASCFolder) {
+        let previousController = navigationController?.viewControllers[1] as? ASCDocumentsViewController
+        let vc = EditRoomViewController(folder: folder) { _ in
+            if let refreshControl = self.refreshControl {
+                self.refresh(refreshControl)
+                previousController?.refresh(refreshControl)
+            }
+        }
+        present(vc, animated: true, completion: nil)
+    }
+
     func favorite(cell: UITableViewCell, favorite: Bool) {
         guard
             let provider = provider,

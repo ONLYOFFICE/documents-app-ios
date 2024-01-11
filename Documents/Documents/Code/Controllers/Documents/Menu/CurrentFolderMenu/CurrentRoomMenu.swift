@@ -36,7 +36,7 @@ final class CurrentRoomMenu: CurrentFolderMenuProtocol {
                     title: NSLocalizedString("Edit room", comment: "Button title"),
                     image: UIImage(systemName: "gear")
                 ) { action in
-                    print("Call Edit room")
+                    viewController.editRoom(folder: folder)
                 }
             )
         }

@@ -1,18 +1,18 @@
 //
-//  CreateRoomView.swift
-//  Documents
+//  EditRoomView.swift
+//  Documents-develop
 //
-//  Created by Pavel Chernyshev on 22.11.2023.
-//  Copyright © 2023 Ascensio System SIA. All rights reserved.
+//  Created by Victor Tihovodov on 10.01.2024.
+//  Copyright © 2024 Ascensio System SIA. All rights reserved.
 //
 
 import Foundation
 import SwiftUI
 
-struct CreateRoomView: View {
+struct EditRoomView: View {
     @Environment(\.presentationMode) var presentationMode
 
-    @ObservedObject var viewModel: CreateRoomViewModel
+    @ObservedObject var viewModel: EditRoomViewModel
     @State var isRoomSelectionPresenting = false
 
     var body: some View {
@@ -24,12 +24,12 @@ struct CreateRoomView: View {
         .navigation(isActive: $isRoomSelectionPresenting, destination: {
             RoomSelectionView(selectedRoom: $viewModel.selectedRoom, dismissOnSelection: true)
         })
-        .navigationBarTitle(Text(NSLocalizedString("Create room", comment: "")), displayMode: .inline)
+        .navigationBarTitle(Text(NSLocalizedString("Edit room", comment: "")), displayMode: .inline)
         .navigationBarItems(
-            trailing: Button(NSLocalizedString("Create", comment: "")) {
-                viewModel.createRoom()
+            trailing: Button(NSLocalizedString("Save", comment: "")) {
+                viewModel.editRoom(folder: viewModel.folder)
             }
-            .disabled(viewModel.roomName.isEmpty || viewModel.isCreatingRoom)
+            .disabled(viewModel.roomName.isEmpty || viewModel.isEditingRoom)
         )
         .overlay(
             creatingRoomActivityView
@@ -47,10 +47,7 @@ struct CreateRoomView: View {
 
     private var roomTypeSection: some View {
         Section {
-            RoomViewRow(room: viewModel.selectedRoom, isEditRoom: false)
-                .onTapGesture {
-                    isRoomSelectionPresenting = true
-                }
+            RoomViewRow(room: viewModel.selectedRoom, isEditRoom: true)
         }
     }
 
@@ -68,7 +65,7 @@ struct CreateRoomView: View {
 
     private var roomTagsSection: some View {
         Section {
-            TagsFieldView(tags: $viewModel.tags, deletedTags: $viewModel.tags)
+            TagsFieldView(tags: $viewModel.tags, deletedTags: $viewModel.deletedTags)
                 .listRowInsets(EdgeInsets())
         }
         .background(Color.secondarySystemGroupedBackground)
@@ -98,14 +95,14 @@ struct CreateRoomView: View {
         TextField(NSLocalizedString("Room name", comment: ""), text: $viewModel.roomName)
             .padding()
             .background(Color.secondarySystemGroupedBackground)
-            .disabled(viewModel.isCreatingRoom)
+            .disabled(viewModel.isEditingRoom)
     }
 
     @ViewBuilder
     private var creatingRoomActivityView: some View {
-        if viewModel.isCreatingRoom {
+        if viewModel.isEditingRoom {
             MBProgressHUDView(
-                isLoading: $viewModel.isCreatingRoom,
+                isLoading: $viewModel.isEditingRoom,
                 text: NSLocalizedString("Creating...", comment: ""),
                 delay: 0.3,
                 successStatusText: viewModel.errorMessage == nil ? "" : nil

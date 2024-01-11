@@ -382,7 +382,7 @@ extension ASCDocumentsViewController {
                     image: UIImage(systemName: "gear")
                 ) { [unowned self] action in
                     cell.hideSwipe(animated: true)
-                    print("Edit")
+                    self.editRoom(folder: folder)
                 }
             )
         }

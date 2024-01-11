@@ -32,7 +32,7 @@ extension RoomLinkResponceModel {
         let title: String
         let shareLink: String
         let expirationDate: String?
-        let linkType: Int
+        let linkType: ASCShareLinkType
         let password: String?
         let denyDownload: Bool
         let isExpired: Bool

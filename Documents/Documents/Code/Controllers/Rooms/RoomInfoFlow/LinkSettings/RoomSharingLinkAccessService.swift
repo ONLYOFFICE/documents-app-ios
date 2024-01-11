@@ -9,10 +9,11 @@
 import Foundation
 
 protocol RoomSharingLinkAccessService {
+    
     func removeLink(
         id: String,
         title: String,
-        linkType: Int,
+        linkType: ASCShareLinkType,
         password: String?,
         room: ASCRoom,
         completion: @escaping (Error?) -> Void
@@ -23,7 +24,7 @@ protocol RoomSharingLinkAccessService {
         title: String,
         access: Int,
         expirationDate: String?,
-        linkType: Int,
+        linkType: ASCShareLinkType,
         denyDownload: Bool,
         password: String?,
         room: ASCRoom,
@@ -34,7 +35,7 @@ protocol RoomSharingLinkAccessService {
         title: String,
         access: Int,
         expirationDate: String?,
-        linkType: Int,
+        linkType: ASCShareLinkType,
         denyDownload: Bool,
         password: String?,
         room: ASCRoom,
@@ -47,7 +48,7 @@ extension RoomSharingLinkAccessService {
         title: String,
         access: Int = .defaultAccsessForLink,
         expirationDate: String? = nil,
-        linkType: Int,
+        linkType: ASCShareLinkType,
         denyDownload: Bool = false,
         password: String? = nil,
         room: ASCRoom,
@@ -73,7 +74,7 @@ final class RoomSharingLinkAccessNetworkService: RoomSharingLinkAccessService {
     func removeLink(
         id: String,
         title: String,
-        linkType: Int,
+        linkType: ASCShareLinkType,
         password: String?,
         room: ASCRoom,
         completion: @escaping (Error?) -> Void
@@ -82,7 +83,7 @@ final class RoomSharingLinkAccessNetworkService: RoomSharingLinkAccessService {
             linkId: id,
             title: title,
             access: ASCShareAccess.none.rawValue,
-            linkType: linkType,
+            linkType: linkType.rawValue,
             password: password
         )
 
@@ -102,7 +103,7 @@ final class RoomSharingLinkAccessNetworkService: RoomSharingLinkAccessService {
         title: String,
         access: Int,
         expirationDate: String?,
-        linkType: Int,
+        linkType: ASCShareLinkType,
         denyDownload: Bool,
         password: String?,
         room: ASCRoom,
@@ -113,7 +114,7 @@ final class RoomSharingLinkAccessNetworkService: RoomSharingLinkAccessService {
             title: title,
             access: access,
             expirationDate: expirationDate,
-            linkType: linkType,
+            linkType: linkType.rawValue,
             denyDownload: denyDownload,
             password: password
         )

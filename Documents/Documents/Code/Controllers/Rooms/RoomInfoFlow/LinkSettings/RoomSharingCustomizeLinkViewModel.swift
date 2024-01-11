@@ -188,9 +188,7 @@ private extension RoomSharingCustomizeLinkViewModel {
             title: linkName,
             access: .defaultAccsessForLink,
             expirationDate: isTimeLimited ? dateFormatter.string(from: selectedDate) : nil,
-
-            linkType: 1, // MARK: TODO
-
+            linkType: ASCShareLinkType.external,
             denyDownload: isRestrictCopyOn,
             password: isProtected ? password : nil,
             room: room

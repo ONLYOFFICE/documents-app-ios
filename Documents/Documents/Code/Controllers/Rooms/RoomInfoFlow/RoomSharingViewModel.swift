@@ -129,16 +129,17 @@ final class RoomSharingViewModel: ObservableObject {
                 title: generalLink.linkInfo.title,
                 linkType: generalLink.linkInfo.linkType,
                 password: generalLink.linkInfo.password,
-                room: room) { [ weak self ] error in
-                    guard let self else { return }
-                    if let error {
-                        self.generalLinkModel = mapToLinkViewModel(link: generalLink)
-                        self.buildViewModel()
-                        self.errorMessage = error.localizedDescription
-                    } else {
-                        flowModel.links.removeAll(where: { $0.linkInfo.id == generalLink.linkInfo.id })
-                    }
+                room: room
+            ) { [weak self] error in
+                guard let self else { return }
+                if let error {
+                    self.generalLinkModel = mapToLinkViewModel(link: generalLink)
+                    self.buildViewModel()
+                    self.errorMessage = error.localizedDescription
+                } else {
+                    flowModel.links.removeAll(where: { $0.linkInfo.id == generalLink.linkInfo.id })
                 }
+            }
         }
         generalLinkModel = nil
     }

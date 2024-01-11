@@ -14,10 +14,10 @@ import SwiftUI
 struct RoomSharingView: View {
     @Environment(\.presentationMode) var presentationMode
     @ObservedObject var viewModel: RoomSharingViewModel
-    
+
     var body: some View {
         handleHUD()
-        
+
         return screenView
             .navigationBarTitle(Text(NSLocalizedString("\(viewModel.room.title)", comment: "")), displayMode: .inline)
             .navigateToChangeAccess(selectedUser: $viewModel.selctedUser, viewModel: viewModel)
@@ -25,7 +25,7 @@ struct RoomSharingView: View {
             .navigateToCreateLink(isDisplaing: $viewModel.isCreatingLinkScreenDisplaing, viewModel: viewModel)
             .onAppear { viewModel.onAppear() }
     }
-    
+
     @ViewBuilder
     private var screenView: some View {
         if !viewModel.isInitializing {
@@ -42,7 +42,7 @@ struct RoomSharingView: View {
             }
         }
     }
-    
+
     @ViewBuilder
     private var generalLincSection: some View {
         if viewModel.isSharingPossible || viewModel.generalLinkModel != nil {
@@ -70,7 +70,7 @@ struct RoomSharingView: View {
             }
         }
     }
-    
+
     @ViewBuilder
     private var additionalLinksSection: some View {
         if viewModel.generalLinkModel != nil || viewModel.room.roomType == .custom, !viewModel.additionalLinkModels.isEmpty || viewModel.isSharingPossible {
@@ -94,7 +94,7 @@ struct RoomSharingView: View {
             }
         }
     }
-    
+
     @ViewBuilder
     private var adminSection: some View {
         if !viewModel.admins.isEmpty {
@@ -107,7 +107,7 @@ struct RoomSharingView: View {
             }
         }
     }
-    
+
     @ViewBuilder
     private var usersSection: some View {
         if !viewModel.users.isEmpty {
@@ -118,7 +118,7 @@ struct RoomSharingView: View {
             }
         }
     }
-    
+
     @ViewBuilder
     private var invitesSection: some View {
         if !viewModel.invites.isEmpty {
@@ -129,7 +129,7 @@ struct RoomSharingView: View {
             }
         }
     }
-    
+
     private var additionLinksSectionHeader: some View {
         HStack {
             Text(NSLocalizedString("Additional links", comment: ""))
@@ -145,14 +145,14 @@ struct RoomSharingView: View {
             }
         }
     }
-    
+
     private func usersSectionHeader(title: String, count: Int) -> some View {
         HStack {
             Text(title)
             Text("(\(count))")
         }
     }
-    
+
     private func handleHUD() {
         if viewModel.isActivitiIndicatorDisplaying {
             MBProgressHUD.currentHUD?.hide(animated: false)
@@ -167,7 +167,7 @@ struct RoomSharingView: View {
                     case .failure:
                         hud.setState(result: .failure(resultModalModel.message))
                     }
-                    
+
                     hud.hide(animated: true, afterDelay: resultModalModel.hideAfter)
                 } else {
                     hud.hide(animated: true)

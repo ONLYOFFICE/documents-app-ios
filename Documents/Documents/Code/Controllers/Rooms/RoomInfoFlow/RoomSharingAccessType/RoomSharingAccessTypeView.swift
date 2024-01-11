@@ -6,13 +6,16 @@
 //  Copyright © 2023 Ascensio System SIA. All rights reserved.
 //
 
+import MBProgressHUD
 import SwiftUI
 
 struct RoomSharingAccessTypeView: View {
     @ObservedObject var viewModel: RoomSharingAccessTypeViewModel
 
     var body: some View {
-        List {
+        handleHUD()
+
+        return List {
             Section {
                 ForEach(viewModel.accessModels) { model in
                     RoomSharingAccessRowView(model: model)
@@ -20,7 +23,6 @@ struct RoomSharingAccessTypeView: View {
             }
         }
         .disabled(viewModel.isAccessChanging)
-        .overlay(creatingView)
         .navigationBarTitle(Text("Access type"))
         .alert(item: $viewModel.error) { errorMessage in
             Alert(
@@ -33,12 +35,20 @@ struct RoomSharingAccessTypeView: View {
         }
     }
 
-    @ViewBuilder
-    private var creatingView: some View {
+    private func handleHUD() {
         if viewModel.isAccessChanging {
-            VStack {
-                ActivityIndicatorView()
-                Text("Changing access")
+            MBProgressHUD.currentHUD?.hide(animated: false)
+            let hud = MBProgressHUD.showTopMost()
+            hud?.mode = .indeterminate
+            hud?.label.text = NSLocalizedString("Changing access", comment: "")
+        } else {
+            if let hud = MBProgressHUD.currentHUD {
+                if (viewModel.error ?? "").isEmpty {
+                    hud.setState(result: .success(nil))
+                    hud.hide(animated: true, afterDelay: 1.3)
+                } else {
+                    hud.hide(animated: true)
+                }
             }
         }
     }

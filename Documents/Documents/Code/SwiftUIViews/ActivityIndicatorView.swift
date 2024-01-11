@@ -19,11 +19,9 @@ struct ActivityIndicatorView: UIViewRepresentable {
     func updateUIView(_ uiView: UIActivityIndicatorView, context: Context) {}
 }
 
-struct ActivityIndicatorView_Preview: PreviewProvider {
-    static var previews: some View {
-        VStack {
-            Text("Loading...")
-            ActivityIndicatorView()
-        }
+#Preview {
+    VStack {
+        Text("Loading...")
+        ActivityIndicatorView()
     }
 }

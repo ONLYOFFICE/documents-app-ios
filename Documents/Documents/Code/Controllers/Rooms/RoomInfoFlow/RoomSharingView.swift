@@ -64,7 +64,7 @@ struct RoomSharingView: View {
 
     @ViewBuilder
     private var additionalLinksSection: some View {
-        if viewModel.generalLinkModel != nil, (!viewModel.additionalLinkModels.isEmpty || viewModel.isSharingPossible) {
+        if viewModel.generalLinkModel != nil, !viewModel.additionalLinkModels.isEmpty || viewModel.isSharingPossible {
             Section(header: additionLinksSectionHeader) {
                 if viewModel.additionalLinkModels.isEmpty {
                     ASCCreateLinkCellView(

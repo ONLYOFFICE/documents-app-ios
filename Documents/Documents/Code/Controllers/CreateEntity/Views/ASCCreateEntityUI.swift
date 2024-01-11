@@ -197,15 +197,11 @@ struct CreateEntityButtonStyle: ButtonStyle {
     }
 }
 
-#if DEBUG
-    struct ContentView_Previews: PreviewProvider {
-        static var previews: some View {
-            ASCCreateEntityUI(
-                allowClouds: .constant(true),
-                onAction: .constant { type in
-                    print("\(type)")
-                }
-            )
+#Preview {
+    ASCCreateEntityUI(
+        allowClouds: .constant(true),
+        onAction: .constant { type in
+            print("\(type)")
         }
-    }
-#endif
+    )
+}

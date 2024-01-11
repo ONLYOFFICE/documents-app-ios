@@ -21,8 +21,9 @@ final class RoomSharingCustomizeLinkViewModel: ObservableObject {
     @Published var isProtected: Bool = false
     @Published var isRestrictCopyOn: Bool = false
     @Published var isTimeLimited: Bool = false
-    @Published var selectedDate: Date = Calendar.current.date(byAdding: .day, value: 7, to: Date()) ?? Date()
+    @Published var selectedDate: Date
     @Published var password: String = ""
+    @Published var isExpired: Bool = false
 
     @Published var isPasswordVisible: Bool = false
     @Published var isDeleting: Bool = false
@@ -40,9 +41,9 @@ final class RoomSharingCustomizeLinkViewModel: ObservableObject {
         return true
     }
 
-    lazy var dateFormatter: DateFormatter = {
+    static let dateFormatter: DateFormatter = {
         let formatter = DateFormatter()
-        formatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSSSSSXXXXX"
+        formatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSSSSSZ"
         formatter.locale = Locale(identifier: "en_US_POSIX")
         return formatter
     }()
@@ -69,9 +70,16 @@ final class RoomSharingCustomizeLinkViewModel: ObservableObject {
         self.room = room
         _outputLink = outputLink
         let linkInfo = link?.linkInfo
+        selectedDate = {
+            guard let dateString = linkInfo?.expirationDate else {
+                return Calendar.current.date(byAdding: .day, value: 7, to: Date()) ?? Date()
+            }
+            return Self.dateFormatter.date(from: dateString) ?? Date()
+        }()
         linkName = linkInfo?.title ?? ""
         contentState = link?.isGeneral == true ? .general : .additional
         password = linkInfo?.password ?? ""
+        isExpired = linkInfo?.isExpired ?? false
         isProtected = !password.isEmpty
         isRestrictCopyOn = linkInfo?.denyDownload == true
         isTimeLimited = linkInfo?.expirationDate != nil
@@ -187,7 +195,7 @@ private extension RoomSharingCustomizeLinkViewModel {
             id: linkId,
             title: linkName,
             access: .defaultAccsessForLink,
-            expirationDate: isTimeLimited ? dateFormatter.string(from: selectedDate) : nil,
+            expirationDate: isTimeLimited ? Self.dateFormatter.string(from: selectedDate) : nil,
             linkType: ASCShareLinkType.external,
             denyDownload: isRestrictCopyOn,
             password: isProtected ? password : nil,

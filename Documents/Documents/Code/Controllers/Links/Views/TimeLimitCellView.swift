@@ -9,16 +9,16 @@
 import SwiftUI
 
 struct TimeLimitCellView: View {
-    @State var model: TimeLimitCellModel
+    var model: TimeLimitCellModel
     var body: some View {
         HStack {
             DatePicker(
                 model.title,
-                selection: $model.selectedDate,
+                selection: model.$selectedDate,
                 in: Date()...,
-                displayedComponents: .date
+                displayedComponents: [.date, .hourAndMinute]
             )
-            .datePickerStyle(.automatic)
+           // .datePickerStyle(.automatic)
         }
     }
 }

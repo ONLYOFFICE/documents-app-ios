@@ -11,6 +11,10 @@ import MBProgressHUD
 extension MBProgressHUD {
     weak static var currentHUD: MBProgressHUD?
 
+    enum Result {
+        case success(String?), failure(String?)
+    }
+
     static func showTopMost() -> MBProgressHUD? {
         if let topView = UIWindow.keyWindow?.rootViewController?.view {
             let hud = MBProgressHUD.showAdded(to: topView, animated: true)
@@ -26,5 +30,18 @@ extension MBProgressHUD {
         mode = .customView
         customView = UIImageView(image: Asset.Images.hudCheckmark.image)
         label.text = title ?? NSLocalizedString("Done", comment: "Operation completed")
+    }
+
+    func setState(result: Result) {
+        mode = .customView
+
+        switch result {
+        case let .success(title):
+            customView = UIImageView(image: Asset.Images.hudCheckmark.image)
+            label.text = title ?? NSLocalizedString("Done", comment: "Operation completed")
+        case let .failure(title):
+            customView = UIImageView(image: Asset.Images.hudCross.image)
+            label.text = title ?? NSLocalizedString("Error", comment: "Operation completed")
+        }
     }
 }

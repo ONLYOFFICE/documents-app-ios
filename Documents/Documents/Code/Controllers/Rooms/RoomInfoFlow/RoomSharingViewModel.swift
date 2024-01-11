@@ -21,10 +21,11 @@ final class RoomSharingViewModel: ObservableObject {
     private(set) var flowModel = RoomSharingFlowModel()
     let room: ASCRoom
     let additionalLinksLimit = 5
+    var isSharingPossible: Bool { room.rootFolderType != .onlyofficeRoomArchived }
 
     @Published var isInitializing: Bool = false
     @Published var isActivitiIndicatorDisplaying = false
-    @Published var resultModalModel: ResultModalView.Model?
+    @Published var resultModalModel: ResultViewModel?
     @Published var errorMessage: String?
     @Published var admins: [ASCUserRowModel] = []
     @Published var users: [ASCUserRowModel] = []
@@ -105,16 +106,17 @@ final class RoomSharingViewModel: ObservableObject {
                     title: deletingLink.linkInfo.title,
                     linkType: deletingLink.linkInfo.linkType,
                     password: deletingLink.linkInfo.password,
-                    room: room) { [ weak self ] error in
-                        guard let self else { return }
-                        if let error {
-                            self.additionalLinkModels.append(mapToLinkViewModel(link: deletingLink))
-                            buildViewModel()
-                            self.errorMessage = error.localizedDescription
-                        } else {
-                            flowModel.links.removeAll(where: { $0.linkInfo.id == deletingLink.linkInfo.id })
-                        }
+                    room: room
+                ) { [weak self] error in
+                    guard let self else { return }
+                    if let error {
+                        self.additionalLinkModels.append(mapToLinkViewModel(link: deletingLink))
+                        buildViewModel()
+                        self.errorMessage = error.localizedDescription
+                    } else {
+                        flowModel.links.removeAll(where: { $0.linkInfo.id == deletingLink.linkInfo.id })
                     }
+                }
             }
         }
         additionalLinkModels.remove(atOffsets: indexSet)
@@ -177,6 +179,10 @@ private extension RoomSharingViewModel {
         } else {
             flowModel.links.append(inputLink)
         }
+        // editing screen dismissed
+        if selectdLink == nil {
+            buildViewModel()
+        }
     }
 
     func buildViewModel() {
@@ -191,7 +197,7 @@ private extension RoomSharingViewModel {
 
     func mapToUserViewModel(sharing: RoomUsersResponceModel, isInvitation: Bool = false) -> ASCUserRowModel {
         ASCUserRowModel(
-            image: isInvitation ? .asset(Asset.Images.at) :  .url(sharing.user.avatar ?? ""),
+            image: isInvitation ? .asset(Asset.Images.at) : .url(sharing.user.avatar ?? ""),
             title: sharing.user.displayName ?? "",
             subtitle: sharing.user.accessValue.title(),
             isOwner: sharing.user.isOwner,
@@ -215,8 +221,12 @@ private extension RoomSharingViewModel {
             titleString: link.linkInfo.title,
             imagesNames: imagesNames,
             isExpired: link.linkInfo.isExpired,
+            isSharingPossible: isSharingPossible,
             onTapAction: { [weak self] in
-                self?.selectdLink = link
+                guard let self else { return }
+                if isSharingPossible {
+                    selectdLink = link
+                }
             },
             onShareAction: shareButtonAction
         )

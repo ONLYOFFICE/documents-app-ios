@@ -6,6 +6,7 @@
 //  Copyright © 2023 Ascensio System SIA. All rights reserved.
 //
 
+import MBProgressHUD
 import SwiftUI
 
 struct RoomSharingCustomizeLinkView: View {
@@ -14,11 +15,11 @@ struct RoomSharingCustomizeLinkView: View {
     @ObservedObject var viewModel: RoomSharingCustomizeLinkViewModel
 
     var body: some View {
-        content
+        handleHUD()
+
+        return content
             .navigationBarItems()
             .disabledIfDeleting(viewModel.isDeleting)
-            .overlay(deletingRoomActivityView)
-            .overlay(resultModalView)
             .alertForErrorMessage($viewModel.errorMessage)
             .dismissOnChange(of: viewModel.isDeleted, using: presentationMode)
     }
@@ -63,21 +64,20 @@ struct RoomSharingCustomizeLinkView: View {
 
     private var protectedSection: some View {
         Section(header: Text(NSLocalizedString("Protection", comment: ""))) {
-            VStack {
-                Toggle(isOn: $viewModel.isProtected) {
-                    Text(NSLocalizedString("Password access", comment: ""))
-                }
-                .tintColor(Color(Asset.Colors.brend.color))
+            Toggle(isOn: $viewModel.isProtected) {
+                Text(NSLocalizedString("Password access", comment: ""))
+            }
+            .tintColor(Color(Asset.Colors.brend.color))
+            .foregroundColor(.primary)
 
-                if viewModel.isProtected {
-                    Divider()
-                    PasswordCellView(
-                        model: PasswordCellModel(
-                            password: $viewModel.password,
-                            isPasswordVisible: $viewModel.isPasswordVisible
-                        )
+            if viewModel.isProtected {
+                PasswordCellView(
+                    model: PasswordCellModel(
+                        password: $viewModel.password,
+                        isPasswordVisible: $viewModel.isPasswordVisible
                     )
-                }
+                )
+                .foregroundColor(.primary)
             }
         }
     }
@@ -137,20 +137,28 @@ struct RoomSharingCustomizeLinkView: View {
         }
     }
 
-    @ViewBuilder
-    private var deletingRoomActivityView: some View {
+    private func handleHUD() {
         if viewModel.isDeleting {
-            MBProgressHUDView(
-                isLoading: $viewModel.isDeleting,
-                text: NSLocalizedString("Removing...", comment: ""),
-                delay: 0.3,
-                successStatusText: viewModel.isDeleted ? NSLocalizedString("Deleted", comment: "") : nil
-            )
-        }
-    }
+            MBProgressHUD.currentHUD?.hide(animated: false)
+            let hud = MBProgressHUD.showTopMost()
+            hud?.mode = .indeterminate
+            hud?.label.text = NSLocalizedString("Removing", comment: "") + "..."
+        } else {
+            if let hud = MBProgressHUD.currentHUD {
+                if let resultModalModel = viewModel.resultModalModel {
+                    switch resultModalModel.result {
+                    case .success:
+                        hud.setState(result: .success(NSLocalizedString("Deleted", comment: "")))
+                    case .failure:
+                        hud.setState(result: .failure(resultModalModel.message))
+                    }
 
-    private var resultModalView: some View {
-        ResultModalView(model: $viewModel.resultModalModel)
+                    hud.hide(animated: true, afterDelay: resultModalModel.hideAfter)
+                } else {
+                    hud.hide(animated: true)
+                }
+            }
+        }
     }
 }
 
@@ -186,8 +194,12 @@ private extension View {
     }
 }
 
-struct ASCDocSpaceLinkSettingsView_Previews: PreviewProvider {
-    static var previews: some View {
-        RoomSharingCustomizeLinkView(viewModel: .init(room: .init(), inputLink: nil, outputLink: .constant(nil)))
-    }
+#Preview {
+    RoomSharingCustomizeLinkView(
+        viewModel: .init(
+            room: .init(),
+            inputLink: nil,
+            outputLink: .constant(nil)
+        )
+    )
 }

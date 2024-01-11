@@ -27,7 +27,7 @@ final class RoomSharingCustomizeLinkViewModel: ObservableObject {
     @Published var isPasswordVisible: Bool = false
     @Published var isDeleting: Bool = false
     @Published var isDeleted: Bool = false
-    @Published var resultModalModel: ResultModalView.Model?
+    @Published var resultModalModel: ResultViewModel?
     @Published var errorMessage: String? = nil
 
     var isDeletePossible: Bool {
@@ -79,7 +79,7 @@ final class RoomSharingCustomizeLinkViewModel: ObservableObject {
         $linkName
             .dropFirst()
             .receive(on: RunLoop.main)
-            .debounce(for: .seconds(.threeSeconds), scheduler: DispatchQueue.main)
+            .debounce(for: .seconds(.textFiesldDeboundsSeconds), scheduler: DispatchQueue.main)
             .sink(receiveValue: { [weak self] _ in
                 self?.saveCurrentState()
             })
@@ -120,7 +120,7 @@ final class RoomSharingCustomizeLinkViewModel: ObservableObject {
         $password
             .dropFirst()
             .receive(on: RunLoop.main)
-            .debounce(for: .seconds(.threeSeconds), scheduler: DispatchQueue.main)
+            .debounce(for: .seconds(.textFiesldDeboundsSeconds), scheduler: DispatchQueue.main)
             .sink(receiveValue: { [weak self] _ in
                 self?.saveCurrentState()
             })
@@ -207,7 +207,7 @@ private extension RoomSharingCustomizeLinkViewModel {
 }
 
 private extension Int {
-    static let threeSeconds = 3
+    static let textFiesldDeboundsSeconds = 1
     static let defaultAccsessForLink = ASCShareAccess.read.rawValue
 }
 

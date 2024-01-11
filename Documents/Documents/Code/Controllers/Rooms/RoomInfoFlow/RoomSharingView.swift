@@ -8,23 +8,24 @@
 
 import Combine
 import Kingfisher
+import MBProgressHUD
 import SwiftUI
 
 struct RoomSharingView: View {
     @Environment(\.presentationMode) var presentationMode
     @ObservedObject var viewModel: RoomSharingViewModel
-
+    
     var body: some View {
-        screenView
+        handleHUD()
+        
+        return screenView
             .navigationBarTitle(Text(NSLocalizedString("\(viewModel.room.title)", comment: "")), displayMode: .inline)
             .navigateToChangeAccess(selectedUser: $viewModel.selctedUser, viewModel: viewModel)
             .navigateToEditLink(selectedLink: $viewModel.selectdLink, viewModel: viewModel)
             .navigateToCreateLink(isDisplaing: $viewModel.isCreatingLinkScreenDisplaing, viewModel: viewModel)
-            .overlay(activityIndicatorView)
-            .overlay(resultModalView)
             .onAppear { viewModel.onAppear() }
     }
-
+    
     @ViewBuilder
     private var screenView: some View {
         if !viewModel.isInitializing {
@@ -44,33 +45,35 @@ struct RoomSharingView: View {
     
     @ViewBuilder
     private var generalLincSection: some View {
-        Section(header: Text(NSLocalizedString("General link", comment: ""))) {
-            if let model = viewModel.generalLinkModel {
-                if viewModel.room.roomType == .custom {
-                    ForEach([model]) { _ in
+        if viewModel.isSharingPossible || viewModel.generalLinkModel != nil {
+            Section(header: Text(NSLocalizedString("General link", comment: ""))) {
+                if let model = viewModel.generalLinkModel {
+                    if viewModel.room.roomType == .custom {
+                        ForEach([model]) { _ in
+                            RoomSharingLinkRow(model: model)
+                        }
+                        .onDelete { _ in
+                            viewModel.deleteGeneralLink()
+                        }
+                    } else {
                         RoomSharingLinkRow(model: model)
                     }
-                    .onDelete { _ in
-                        viewModel.deleteGeneralLink()
-                    }
                 } else {
-                    RoomSharingLinkRow(model: model)
-                }
-            } else {
-                ASCCreateLinkCellView(
-                    model: .init(
-                        textString: NSLocalizedString("Create and copy", comment: ""),
-                        imageNames: [],
-                        onTapAction: viewModel.createAndCopyGeneralLink
+                    ASCCreateLinkCellView(
+                        model: .init(
+                            textString: NSLocalizedString("Create and copy", comment: ""),
+                            imageNames: [],
+                            onTapAction: viewModel.createAndCopyGeneralLink
+                        )
                     )
-                )
+                }
             }
         }
     }
-
+    
     @ViewBuilder
     private var additionalLinksSection: some View {
-        if viewModel.generalLinkModel != nil || viewModel.room.roomType == .custom {
+        if viewModel.generalLinkModel != nil || viewModel.room.roomType == .custom, !viewModel.additionalLinkModels.isEmpty || viewModel.isSharingPossible {
             Section(header: additionLinksSectionHeader) {
                 if viewModel.additionalLinkModels.isEmpty {
                     ASCCreateLinkCellView(
@@ -91,7 +94,7 @@ struct RoomSharingView: View {
             }
         }
     }
-
+    
     @ViewBuilder
     private var adminSection: some View {
         if !viewModel.admins.isEmpty {
@@ -104,7 +107,7 @@ struct RoomSharingView: View {
             }
         }
     }
-
+    
     @ViewBuilder
     private var usersSection: some View {
         if !viewModel.users.isEmpty {
@@ -115,7 +118,7 @@ struct RoomSharingView: View {
             }
         }
     }
-
+    
     @ViewBuilder
     private var invitesSection: some View {
         if !viewModel.invites.isEmpty {
@@ -126,7 +129,7 @@ struct RoomSharingView: View {
             }
         }
     }
-
+    
     private var additionLinksSectionHeader: some View {
         HStack {
             Text(NSLocalizedString("Additional links", comment: ""))
@@ -142,28 +145,35 @@ struct RoomSharingView: View {
             }
         }
     }
-
+    
     private func usersSectionHeader(title: String, count: Int) -> some View {
         HStack {
             Text(title)
             Text("(\(count))")
         }
     }
-
-    @ViewBuilder
-    private var activityIndicatorView: some View {
+    
+    private func handleHUD() {
         if viewModel.isActivitiIndicatorDisplaying {
-            MBProgressHUDView(
-                isLoading: $viewModel.isActivitiIndicatorDisplaying,
-                text: "",
-                delay: 0.3,
-                successStatusText: nil
-            )
+            MBProgressHUD.currentHUD?.hide(animated: false)
+            let hud = MBProgressHUD.showTopMost()
+            hud?.mode = .indeterminate
+        } else {
+            if let hud = MBProgressHUD.currentHUD {
+                if let resultModalModel = $viewModel.resultModalModel.wrappedValue {
+                    switch resultModalModel.result {
+                    case .success:
+                        hud.setState(result: .success(resultModalModel.message))
+                    case .failure:
+                        hud.setState(result: .failure(resultModalModel.message))
+                    }
+                    
+                    hud.hide(animated: true, afterDelay: resultModalModel.hideAfter)
+                } else {
+                    hud.hide(animated: true)
+                }
+            }
         }
-    }
-
-    private var resultModalView: some View {
-        ResultModalView(model: $viewModel.resultModalModel)
     }
 }
 
@@ -239,15 +249,15 @@ struct ASCUserRow: View {
             Text(NSLocalizedString("\(model.title)", comment: ""))
                 .lineLimit(1)
                 .minimumScaleFactor(0.5)
-            
+
             Spacer()
-            
+
             Text(NSLocalizedString("\(model.subtitle)", comment: ""))
                 .lineLimit(1)
                 .foregroundColor(.secondaryLabel)
                 .minimumScaleFactor(0.5)
                 .multilineTextAlignment(.trailing)
-            
+
             if !model.isOwner {
                 Image(systemName: "chevron.right")
                     .font(.subheadline)
@@ -260,14 +270,15 @@ struct ASCUserRow: View {
             model.onTapAction()
         }
     }
-    
+
     @ViewBuilder
     private func imageView(for imageType: ASCUserRowModel.ImageSourceType) -> some View {
         switch imageType {
         case let .url(string):
             if let portal = OnlyofficeApiClient.shared.baseURL?.absoluteString.trimmed,
                !string.contains("/default_user_photo_size_"),
-            let url = URL(string: (portal + string)) {
+               let url = URL(string: portal + string)
+            {
                 KFImageView(url: url)
                     .frame(width: 40, height: 40)
                     .cornerRadius(20)
@@ -284,7 +295,6 @@ struct ASCUserRow: View {
         }
     }
 }
-
 
 struct KFImageView: UIViewRepresentable {
     let url: URL

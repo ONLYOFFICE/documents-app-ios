@@ -110,9 +110,10 @@ struct CreateRoomView: View {
         } else {
             if let hud = MBProgressHUD.currentHUD {
                 if let errorMessage = viewModel.errorMessage {
+                    log.error(errorMessage)
                     hud.hide(animated: true)
                 } else {
-                    hud.setSuccessState()
+                    hud.setState(result: .success(nil))
                     hud.hide(animated: true, afterDelay: 1.3)
                 }
             }

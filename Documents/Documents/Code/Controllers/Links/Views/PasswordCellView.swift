@@ -34,6 +34,16 @@ struct PasswordCellView: View {
                     .foregroundColor(Asset.Colors.brend.swiftUIColor)
             }
         }
-        .padding(.top, 2)
+        .padding([.top, .bottom], 2)
     }
+}
+
+#Preview {
+    PasswordCellView(
+        model: PasswordCellModel(
+            password: .constant("Secret"),
+            isPasswordVisible: .constant(true)
+        )
+    )
+    .background(Color.red)
 }

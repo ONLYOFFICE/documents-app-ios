@@ -41,6 +41,11 @@ protocol RoomSharingLinkAccessService {
         room: ASCRoom,
         completion: @escaping (Result<RoomLinkResponceModel, Error>) -> Void
     )
+    
+    func createGeneralLink(
+        room: ASCRoom,
+        completion: @escaping (Result<RoomLinkResponceModel, Error>) -> Void
+    )
 }
 
 extension RoomSharingLinkAccessService {
@@ -126,6 +131,21 @@ final class RoomSharingLinkAccessNetworkService: RoomSharingLinkAccessService {
                     return
                 }
 
+                completion(.success(result))
+            }
+        }
+    }
+    
+    func createGeneralLink(
+        room: ASCRoom,
+        completion: @escaping (Result<RoomLinkResponceModel, Error>) -> Void
+    ) {
+        networkService.request(OnlyofficeAPI.Endpoints.Rooms.getLink(folder: room)) { response, error in
+            DispatchQueue.main.async {
+                guard let result = response?.result else {
+                    completion(.failure(error ?? RoomSharingLinkAccessNetworkService.Errors.emptyResponse))
+                    return
+                }
                 completion(.success(result))
             }
         }

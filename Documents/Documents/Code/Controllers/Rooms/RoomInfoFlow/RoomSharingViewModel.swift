@@ -87,11 +87,41 @@ final class RoomSharingViewModel: ObservableObject {
     }
 
     func createAndCopyGeneralLink() {
-        createAndCopyLink(name: "Shared link")
+        isActivitiIndicatorDisplaying = true
+        linkAccessService.createGeneralLink(room: room) { [weak self] result in
+            guard let self else { return }
+            switch result {
+            case let .success(link):
+                flowModel.links.append(link)
+                UIPasteboard.general.string = link.linkInfo.shareLink
+                resultModalModel = .init(result: .success, message: .linkCopiedSuccessfull)
+                buildViewModel()
+            case let .failure(error):
+                errorMessage = error.localizedDescription
+            }
+            isActivitiIndicatorDisplaying = false
+        }
     }
 
     func createAndCopyAdditionalLink() {
-        createAndCopyLink(name: "Link name (1)")
+        isActivitiIndicatorDisplaying = true
+        linkAccessService.createLink(
+            title: NSLocalizedString("Link name (1)", comment: ""),
+            linkType: ASCShareLinkType.external,
+            room: room
+        ) { [weak self] result in
+            guard let self else { return }
+            switch result {
+            case let .success(link):
+                flowModel.links.append(link)
+                UIPasteboard.general.string = link.linkInfo.shareLink
+                resultModalModel = .init(result: .success, message: .linkCopiedSuccessfull)
+                buildViewModel()
+            case let .failure(error):
+                errorMessage = error.localizedDescription
+            }
+            isActivitiIndicatorDisplaying = false
+        }
     }
 
     func onAppear() {
@@ -147,26 +177,6 @@ final class RoomSharingViewModel: ObservableObject {
 // MARK: Private
 
 private extension RoomSharingViewModel {
-    func createAndCopyLink(name: String) {
-        isActivitiIndicatorDisplaying = true
-        linkAccessService.createLink(
-            title: name,
-            linkType: 1, // TODO: -
-            room: room
-        ) { [weak self] result in
-            guard let self else { return }
-            switch result {
-            case let .success(link):
-                flowModel.links.append(link)
-                UIPasteboard.general.string = link.linkInfo.shareLink
-                resultModalModel = .init(result: .success, message: .linkCopiedSuccessfull)
-                buildViewModel()
-            case let .failure(error):
-                errorMessage = error.localizedDescription
-            }
-            isActivitiIndicatorDisplaying = false
-        }
-    }
 
     func handleInputLink(_ inputLink: RoomSharingLinkModel?) {
         guard let inputLink else { return }

@@ -64,7 +64,7 @@ struct RoomSharingCustomizeLinkView: View {
 
     private var protectedSection: some View {
         Section(header: Text(NSLocalizedString("Protection", comment: ""))) {
-            Toggle(isOn: $viewModel.isProtected) {
+            Toggle(isOn: $viewModel.isProtected.animation()) {
                 Text(NSLocalizedString("Password access", comment: ""))
             }
             .tintColor(Color(Asset.Colors.brend.color))
@@ -84,7 +84,7 @@ struct RoomSharingCustomizeLinkView: View {
 
     private var timeLimitSection: some View {
         Section(header: Text(NSLocalizedString("Time limit", comment: ""))) {
-            Toggle(isOn: $viewModel.isTimeLimited) {
+            Toggle(isOn: $viewModel.isTimeLimited.animation()) {
                 Text(NSLocalizedString("Enable time limit", comment: ""))
             }
             .tintColor(Color(Asset.Colors.brend.color))

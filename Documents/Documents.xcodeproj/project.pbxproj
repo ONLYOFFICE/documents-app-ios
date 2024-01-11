@@ -145,7 +145,6 @@
 		F35933232B305CB600449F33 /* NavigationLink+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F35933222B305CB600449F33 /* NavigationLink+Extensions.swift */; };
 		F368FD592B1628AB00BFBD20 /* ASCDocSpaceLinkLifeTimeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F368FD582B1628AB00BFBD20 /* ASCDocSpaceLinkLifeTimeView.swift */; };
 		F369502C2B4C3ACF00A20FF2 /* RoomLinksRequestModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = F369502B2B4C3ACF00A20FF2 /* RoomLinksRequestModels.swift */; };
-		F369502E2B4ECFBF00A20FF2 /* Toggle+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F369502D2B4ECFBF00A20FF2 /* Toggle+Extension.swift */; };
 		F36E4D922B3D937300910772 /* RoomUsersAccessNetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F36E4D8F2B3D937300910772 /* RoomUsersAccessNetworkService.swift */; };
 		F36E4D932B3D937300910772 /* RoomSharingAccessTypeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F36E4D902B3D937300910772 /* RoomSharingAccessTypeViewModel.swift */; };
 		F36E4D942B3D937300910772 /* RoomSharingAccessTypeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F36E4D912B3D937300910772 /* RoomSharingAccessTypeView.swift */; };
@@ -171,7 +170,6 @@
 		F3B17C0827F374D90021E03A /* ASCFiltersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3B17C0727F374D80021E03A /* ASCFiltersViewController.swift */; };
 		F3B17C2327FC82D50021E03A /* ASCDocumentsFilterModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3B17C2227FC82D20021E03A /* ASCDocumentsFilterModel.swift */; };
 		F3D5EC952B233A01003C7996 /* PasswordCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3D5EC942B233A01003C7996 /* PasswordCellView.swift */; };
-		F3D5EC972B233F50003C7996 /* ASCToggledCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3D5EC962B233F50003C7996 /* ASCToggledCellView.swift */; };
 		F3DA8957280EC08A005456B5 /* ASCGroupTableViewDataModelItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3DA8956280EC08A005456B5 /* ASCGroupTableViewDataModelItem.swift */; };
 		F3DA8959280ECEA2005456B5 /* ASCSelectGroupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3DA8958280ECEA2005456B5 /* ASCSelectGroupViewController.swift */; };
 		F3E281D52B17024E0098FADE /* ASCDocSpaceLinkLifeTimeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3E281D42B17024E0098FADE /* ASCDocSpaceLinkLifeTimeViewModel.swift */; };
@@ -738,7 +736,6 @@
 		F35933222B305CB600449F33 /* NavigationLink+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NavigationLink+Extensions.swift"; sourceTree = "<group>"; };
 		F368FD582B1628AB00BFBD20 /* ASCDocSpaceLinkLifeTimeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCDocSpaceLinkLifeTimeView.swift; sourceTree = "<group>"; };
 		F369502B2B4C3ACF00A20FF2 /* RoomLinksRequestModels.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoomLinksRequestModels.swift; sourceTree = "<group>"; };
-		F369502D2B4ECFBF00A20FF2 /* Toggle+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Toggle+Extension.swift"; sourceTree = "<group>"; };
 		F36E4D8F2B3D937300910772 /* RoomUsersAccessNetworkService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoomUsersAccessNetworkService.swift; sourceTree = "<group>"; };
 		F36E4D902B3D937300910772 /* RoomSharingAccessTypeViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoomSharingAccessTypeViewModel.swift; sourceTree = "<group>"; };
 		F36E4D912B3D937300910772 /* RoomSharingAccessTypeView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoomSharingAccessTypeView.swift; sourceTree = "<group>"; };
@@ -764,7 +761,6 @@
 		F3B17C0727F374D80021E03A /* ASCFiltersViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCFiltersViewController.swift; sourceTree = "<group>"; };
 		F3B17C2227FC82D20021E03A /* ASCDocumentsFilterModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCDocumentsFilterModel.swift; sourceTree = "<group>"; };
 		F3D5EC942B233A01003C7996 /* PasswordCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordCellView.swift; sourceTree = "<group>"; };
-		F3D5EC962B233F50003C7996 /* ASCToggledCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCToggledCellView.swift; sourceTree = "<group>"; };
 		F3DA8956280EC08A005456B5 /* ASCGroupTableViewDataModelItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCGroupTableViewDataModelItem.swift; sourceTree = "<group>"; };
 		F3DA8958280ECEA2005456B5 /* ASCSelectGroupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCSelectGroupViewController.swift; sourceTree = "<group>"; };
 		F3E281D42B17024E0098FADE /* ASCDocSpaceLinkLifeTimeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCDocSpaceLinkLifeTimeViewModel.swift; sourceTree = "<group>"; };
@@ -2080,7 +2076,6 @@
 				F38848712B1F6357001B9869 /* SelectableLabledCellView.swift */,
 				F38848732B1F6E7B001B9869 /* TimeLimitCellView.swift */,
 				F3D5EC942B233A01003C7996 /* PasswordCellView.swift */,
-				F3D5EC962B233F50003C7996 /* ASCToggledCellView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -4393,7 +4388,6 @@
 				FC066AB9252DB7C5007357F7 /* ObservableReference.swift in Sources */,
 				FC35D4612A987DFC00C6383F /* UITapGestureRecognizer+Extensions.swift in Sources */,
 				FC35D44B2A987DFB00C6383F /* UIView+Extension.swift in Sources */,
-				F3D5EC972B233F50003C7996 /* ASCToggledCellView.swift in Sources */,
 				FCF696412637E73000808644 /* ASCDocumentSortType.swift in Sources */,
 				FC68529926837B7300D830EC /* DropboxApiClient.swift in Sources */,
 				FC25B44F284F67F70075D6C2 /* ASCNotificationWarningCell.swift in Sources */,

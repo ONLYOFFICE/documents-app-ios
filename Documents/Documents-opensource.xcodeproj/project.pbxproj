@@ -28,7 +28,6 @@
 		1DD3DC9B2B3D20AC0001D1B8 /* RoomSharingCustomizeLinkView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DD3DC852B3D20AC0001D1B8 /* RoomSharingCustomizeLinkView.swift */; };
 		1DD3DC9C2B3D20AC0001D1B8 /* ASCLabledCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DD3DC872B3D20AC0001D1B8 /* ASCLabledCellView.swift */; };
 		1DD3DC9D2B3D20AC0001D1B8 /* SubTitledDetailCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DD3DC882B3D20AC0001D1B8 /* SubTitledDetailCellView.swift */; };
-		1DD3DC9E2B3D20AC0001D1B8 /* ASCToggledCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DD3DC892B3D20AC0001D1B8 /* ASCToggledCellView.swift */; };
 		1DD3DC9F2B3D20AC0001D1B8 /* ASCCreateLinkCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DD3DC8A2B3D20AC0001D1B8 /* ASCCreateLinkCellView.swift */; };
 		1DD3DCA02B3D20AC0001D1B8 /* ImagedDetailCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DD3DC8B2B3D20AC0001D1B8 /* ImagedDetailCellView.swift */; };
 		1DD3DCA12B3D20AC0001D1B8 /* PasswordCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DD3DC8C2B3D20AC0001D1B8 /* PasswordCellView.swift */; };
@@ -633,7 +632,6 @@
 		1DD3DC852B3D20AC0001D1B8 /* RoomSharingCustomizeLinkView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoomSharingCustomizeLinkView.swift; sourceTree = "<group>"; };
 		1DD3DC872B3D20AC0001D1B8 /* ASCLabledCellView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASCLabledCellView.swift; sourceTree = "<group>"; };
 		1DD3DC882B3D20AC0001D1B8 /* SubTitledDetailCellView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SubTitledDetailCellView.swift; sourceTree = "<group>"; };
-		1DD3DC892B3D20AC0001D1B8 /* ASCToggledCellView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASCToggledCellView.swift; sourceTree = "<group>"; };
 		1DD3DC8A2B3D20AC0001D1B8 /* ASCCreateLinkCellView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASCCreateLinkCellView.swift; sourceTree = "<group>"; };
 		1DD3DC8B2B3D20AC0001D1B8 /* ImagedDetailCellView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImagedDetailCellView.swift; sourceTree = "<group>"; };
 		1DD3DC8C2B3D20AC0001D1B8 /* PasswordCellView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PasswordCellView.swift; sourceTree = "<group>"; };
@@ -1842,7 +1840,6 @@
 			children = (
 				1DD3DC872B3D20AC0001D1B8 /* ASCLabledCellView.swift */,
 				1DD3DC882B3D20AC0001D1B8 /* SubTitledDetailCellView.swift */,
-				1DD3DC892B3D20AC0001D1B8 /* ASCToggledCellView.swift */,
 				1DD3DC8A2B3D20AC0001D1B8 /* ASCCreateLinkCellView.swift */,
 				1DD3DC8B2B3D20AC0001D1B8 /* ImagedDetailCellView.swift */,
 				1DD3DC8C2B3D20AC0001D1B8 /* PasswordCellView.swift */,
@@ -3770,7 +3767,6 @@
 				FCEBA70728B362390009D50B /* ASCDocumentsViewController+Menu.swift in Sources */,
 				FC70811E2812E2260057FCD2 /* ASCImageViewController.swift in Sources */,
 				FC83D5732A9742F000C404CB /* ASCLogger.swift in Sources */,
-				1DD3DC9E2B3D20AC0001D1B8 /* ASCToggledCellView.swift in Sources */,
 				FC70811F2812E2260057FCD2 /* ASCCopyLinkTableViewCell.swift in Sources */,
 				FC83D56D2A9742F000C404CB /* WhatsNewService.swift in Sources */,
 				1DD3DCAA2B3D20AC0001D1B8 /* ASCDocSpaceExternalLinkViewModel.swift in Sources */,

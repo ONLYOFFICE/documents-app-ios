@@ -406,7 +406,6 @@
 		FCA1D56F2B4FD34700904A30 /* ASCDocSpaceExternalLinkView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCA1D55E2B4FD34700904A30 /* ASCDocSpaceExternalLinkView.swift */; };
 		FCA1D5702B4FD34700904A30 /* ASCLabledCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCA1D5602B4FD34700904A30 /* ASCLabledCellView.swift */; };
 		FCA1D5712B4FD34700904A30 /* SubTitledDetailCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCA1D5612B4FD34700904A30 /* SubTitledDetailCellView.swift */; };
-		FCA1D5722B4FD34700904A30 /* ASCToggledCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCA1D5622B4FD34700904A30 /* ASCToggledCellView.swift */; };
 		FCA1D5732B4FD34700904A30 /* ASCCreateLinkCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCA1D5632B4FD34700904A30 /* ASCCreateLinkCellView.swift */; };
 		FCA1D5742B4FD34700904A30 /* ImagedDetailCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCA1D5642B4FD34700904A30 /* ImagedDetailCellView.swift */; };
 		FCA1D5752B4FD34700904A30 /* PasswordCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCA1D5652B4FD34700904A30 /* PasswordCellView.swift */; };
@@ -1080,7 +1079,6 @@
 		FCA1D55E2B4FD34700904A30 /* ASCDocSpaceExternalLinkView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASCDocSpaceExternalLinkView.swift; sourceTree = "<group>"; };
 		FCA1D5602B4FD34700904A30 /* ASCLabledCellView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASCLabledCellView.swift; sourceTree = "<group>"; };
 		FCA1D5612B4FD34700904A30 /* SubTitledDetailCellView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SubTitledDetailCellView.swift; sourceTree = "<group>"; };
-		FCA1D5622B4FD34700904A30 /* ASCToggledCellView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASCToggledCellView.swift; sourceTree = "<group>"; };
 		FCA1D5632B4FD34700904A30 /* ASCCreateLinkCellView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASCCreateLinkCellView.swift; sourceTree = "<group>"; };
 		FCA1D5642B4FD34700904A30 /* ImagedDetailCellView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImagedDetailCellView.swift; sourceTree = "<group>"; };
 		FCA1D5652B4FD34700904A30 /* PasswordCellView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PasswordCellView.swift; sourceTree = "<group>"; };
@@ -2649,7 +2647,6 @@
 			children = (
 				FCA1D5602B4FD34700904A30 /* ASCLabledCellView.swift */,
 				FCA1D5612B4FD34700904A30 /* SubTitledDetailCellView.swift */,
-				FCA1D5622B4FD34700904A30 /* ASCToggledCellView.swift */,
 				FCA1D5632B4FD34700904A30 /* ASCCreateLinkCellView.swift */,
 				FCA1D5642B4FD34700904A30 /* ImagedDetailCellView.swift */,
 				FCA1D5652B4FD34700904A30 /* PasswordCellView.swift */,
@@ -3838,7 +3835,6 @@
 				FC4160FD29090F42006B5E4A /* ASCLinkTableViewHeaderFooterView.swift in Sources */,
 				FC9749951EE04A1E00D00DDB /* ASCConnectPortalViewController.swift in Sources */,
 				FC9749971EE04FB300D00DDB /* ASCSignInViewController.swift in Sources */,
-				FCA1D5722B4FD34700904A30 /* ASCToggledCellView.swift in Sources */,
 				FCE835392A8514B700EFA839 /* ASCCreateEntityUIViewController.swift in Sources */,
 				FC7D99692729952400410795 /* ASCSharingSettingsAccessProviderFactory.swift in Sources */,
 				FC7D99322729942700410795 /* ASCSharingOptionsModels.swift in Sources */,

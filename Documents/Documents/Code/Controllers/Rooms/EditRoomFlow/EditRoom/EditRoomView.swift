@@ -26,6 +26,9 @@ struct EditRoomView: View {
         })
         .navigationBarTitle(Text(NSLocalizedString("Edit room", comment: "")), displayMode: .inline)
         .navigationBarItems(
+            leading: Button(NSLocalizedString("Close", comment: "")) {
+                viewModel.closeEdit()
+            },
             trailing: Button(NSLocalizedString("Save", comment: "")) {
                 viewModel.editRoom(folder: viewModel.folder)
             }

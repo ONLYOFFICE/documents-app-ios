@@ -36,12 +36,8 @@ class EditRoomViewModel: ObservableObject {
     init(folder: ASCFolder, onEdited: @escaping (ASCFolder) -> Void) {
         self.folder = folder
         self.onEdited = onEdited
-        roomName = folder.title
-        tags = Set<String>(folder.tags ?? [])
-        editRoomService.getRoomIcon(folder: folder) {
-            self.selectedImage = self.editRoomService.icon.image
-        }
-        selectedRoom = selectedFolderRoomType(folder: folder)
+
+        getInfoFromRoom()
     }
 
     // MARK: - Public func
@@ -69,7 +65,20 @@ class EditRoomViewModel: ObservableObject {
         }
     }
 
+    func closeEdit() {
+        topController()?.dismiss(animated: true)
+    }
+
     // MARK: - Private func
+
+    private func getInfoFromRoom() {
+        roomName = folder.title
+        tags = Set<String>(folder.tags ?? [])
+        editRoomService.getRoomIcon(folder: folder) {
+            self.selectedImage = self.editRoomService.icon.image
+        }
+        selectedRoom = selectedFolderRoomType(folder: folder)
+    }
 
     private func makeImageMenuItems() -> [MenuViewItem] {
         [

@@ -1304,11 +1304,10 @@
 		0F15D68A2B4EF2F1002BF52F /* EditRoomFlow */ = {
 			isa = PBXGroup;
 			children = (
+				0F9DB76E2B5113AA009C7D7B /* EditRoom */,
 				0F8372072B4FC2EC00C1C70C /* Services */,
-				0F15D68B2B4EF32E002BF52F /* EditRoomView.swift */,
 				0F15D68F2B4EF352002BF52F /* EditRoomViewController.swift */,
 				0F15D6912B4EF713002BF52F /* EditRoomRouteView.swift */,
-				0F15D6932B4F0034002BF52F /* EditRoomViewModel.swift */,
 			);
 			path = EditRoomFlow;
 			sourceTree = "<group>";
@@ -1319,6 +1318,15 @@
 				0F8372082B4FC30900C1C70C /* NetworkEditRoomServiceImp.swift */,
 			);
 			path = Services;
+			sourceTree = "<group>";
+		};
+		0F9DB76E2B5113AA009C7D7B /* EditRoom */ = {
+			isa = PBXGroup;
+			children = (
+				0F15D68B2B4EF32E002BF52F /* EditRoomView.swift */,
+				0F15D6932B4F0034002BF52F /* EditRoomViewModel.swift */,
+			);
+			path = EditRoom;
 			sourceTree = "<group>";
 		};
 		8A69B5B3249762DE00152BDE /* Debug */ = {

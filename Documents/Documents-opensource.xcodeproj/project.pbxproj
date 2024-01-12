@@ -47,6 +47,7 @@
 		E8187D892B514EF700DDCF49 /* EditRoomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8187D832B514EF600DDCF49 /* EditRoomView.swift */; };
 		E8187D8A2B514EF700DDCF49 /* EditRoomViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8187D842B514EF600DDCF49 /* EditRoomViewModel.swift */; };
 		E8187D8B2B514EF700DDCF49 /* NetworkEditRoomServiceImp.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8187D862B514EF600DDCF49 /* NetworkEditRoomServiceImp.swift */; };
+		E8187D8D2B5156BF00DDCF49 /* ActivityView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8187D8C2B5156BF00DDCF49 /* ActivityView.swift */; };
 		E83125CE2B249A4E006016F1 /* WSTagsFieldRepresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = E83125CD2B249A4E006016F1 /* WSTagsFieldRepresentable.swift */; };
 		E83125D02B249AC7006016F1 /* TagsFieldView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E83125CF2B249AC7006016F1 /* TagsFieldView.swift */; };
 		E83125D42B28B20A006016F1 /* ASCAttachmentManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E83125D32B28B209006016F1 /* ASCAttachmentManager.swift */; };
@@ -650,6 +651,7 @@
 		E8187D832B514EF600DDCF49 /* EditRoomView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditRoomView.swift; sourceTree = "<group>"; };
 		E8187D842B514EF600DDCF49 /* EditRoomViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditRoomViewModel.swift; sourceTree = "<group>"; };
 		E8187D862B514EF600DDCF49 /* NetworkEditRoomServiceImp.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkEditRoomServiceImp.swift; sourceTree = "<group>"; };
+		E8187D8C2B5156BF00DDCF49 /* ActivityView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityView.swift; sourceTree = "<group>"; };
 		E83125CD2B249A4E006016F1 /* WSTagsFieldRepresentable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WSTagsFieldRepresentable.swift; sourceTree = "<group>"; };
 		E83125CF2B249AC7006016F1 /* TagsFieldView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagsFieldView.swift; sourceTree = "<group>"; };
 		E83125D32B28B209006016F1 /* ASCAttachmentManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASCAttachmentManager.swift; sourceTree = "<group>"; };
@@ -1913,6 +1915,7 @@
 			isa = PBXGroup;
 			children = (
 				E83125CD2B249A4E006016F1 /* WSTagsFieldRepresentable.swift */,
+				E8187D8C2B5156BF00DDCF49 /* ActivityView.swift */,
 			);
 			path = Representable;
 			sourceTree = "<group>";
@@ -3685,6 +3688,7 @@
 				FC142A7728981A1F00EDE7CE /* ASCNotificationSettingsViewController.swift in Sources */,
 				E83125E42B2B0BBD006016F1 /* CreateRoomRequestModel.swift in Sources */,
 				FC7081242812E2260057FCD2 /* NetworkingServerError.swift in Sources */,
+				E8187D8D2B5156BF00DDCF49 /* ActivityView.swift in Sources */,
 				FC7081262812E2260057FCD2 /* ASCSharingSettingsAccessViewController.swift in Sources */,
 				FC7081272812E2260057FCD2 /* ASCShareSettingsAPIWorker.swift in Sources */,
 				FC7081292812E2260057FCD2 /* ASCConnectStorageOAuth2Google.swift in Sources */,

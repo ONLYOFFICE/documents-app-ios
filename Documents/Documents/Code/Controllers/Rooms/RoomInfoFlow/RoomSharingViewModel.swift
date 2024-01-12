@@ -22,6 +22,7 @@ final class RoomSharingViewModel: ObservableObject {
     let room: ASCRoom
     let additionalLinksLimit = 5
     var isSharingPossible: Bool { room.rootFolderType != .onlyofficeRoomArchived }
+    private(set) var sharingLink: URL?
 
     @Published var isInitializing: Bool = false
     @Published var isActivitiIndicatorDisplaying = false
@@ -38,6 +39,7 @@ final class RoomSharingViewModel: ObservableObject {
     @Published var selctedUser: ASCUser?
     @Published var selectdLink: RoomSharingLinkModel?
     @Published var isCreatingLinkScreenDisplaing: Bool = false
+    @Published var isSharingScreenPresenting: Bool = false
 
     // MARK: var input
 
@@ -238,7 +240,11 @@ private extension RoomSharingViewModel {
                     selectdLink = link
                 }
             },
-            onShareAction: shareButtonAction
+            onShareAction: { [weak self] in
+                guard let self, isSharingPossible else { return }
+                isSharingScreenPresenting = true
+                sharingLink = URL(string: link.linkInfo.shareLink)
+            }
         )
     }
 }

@@ -18,10 +18,11 @@ struct RoomSharingCustomizeLinkView: View {
         handleHUD()
 
         return content
-            .navigationBarItems()
+            .navigationBarItems(rightBtn: shareButton)
             .disabledIfDeleting(viewModel.isDeleting)
             .alertForErrorMessage($viewModel.errorMessage)
             .dismissOnChange(of: viewModel.isDeleted, using: presentationMode)
+            .sharingSheet(isPresented: $viewModel.isSharingScreenPresenting, link: viewModel.sharingLink)
     }
 
     @ViewBuilder
@@ -143,6 +144,18 @@ struct RoomSharingCustomizeLinkView: View {
         }
     }
 
+    @ViewBuilder
+    private var shareButton: some View {
+        if viewModel.sharingLink != nil {
+            Button(
+                NSLocalizedString("Share", comment: ""),
+                action: {
+                    viewModel.isSharingScreenPresenting = true
+                }
+            )
+        }
+    }
+
     private func handleHUD() {
         if viewModel.isDeleting {
             MBProgressHUD.currentHUD?.hide(animated: false)
@@ -171,8 +184,8 @@ struct RoomSharingCustomizeLinkView: View {
 // MARK: Modifiers
 
 private extension View {
-    func navigationBarItems() -> some View {
-        navigationBarItems(trailing: Button(NSLocalizedString("Share", comment: ""), action: {}))
+    func navigationBarItems(rightBtn: some View) -> some View {
+        navigationBarItems(trailing: rightBtn)
     }
 
     func disabledIfDeleting(_ isDeleting: Bool) -> some View {
@@ -195,6 +208,14 @@ private extension View {
         onChange(of: value) { newValue in
             if newValue {
                 presentationMode.wrappedValue.dismiss()
+            }
+        }
+    }
+
+    func sharingSheet(isPresented: Binding<Bool>, link: URL?) -> some View {
+        sheet(isPresented: isPresented) {
+            if let link {
+                ActivityView(activityItems: [link])
             }
         }
     }

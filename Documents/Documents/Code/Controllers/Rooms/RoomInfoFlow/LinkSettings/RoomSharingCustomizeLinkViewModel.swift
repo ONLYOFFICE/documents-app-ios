@@ -29,6 +29,7 @@ final class RoomSharingCustomizeLinkViewModel: ObservableObject {
     @Published var isDeleting: Bool = false
     @Published var isDeleted: Bool = false
     @Published var resultModalModel: ResultViewModel?
+    @Published var isSharingScreenPresenting: Bool = false
     @Published var errorMessage: String? = nil
 
     var isDeletePossible: Bool {
@@ -39,6 +40,13 @@ final class RoomSharingCustomizeLinkViewModel: ObservableObject {
             return false
         }
         return true
+    }
+
+    var sharingLink: URL? {
+        guard let strLink = link?.linkInfo.shareLink ?? outputLink?.linkInfo.shareLink,
+              link?.linkInfo.isExpired != true
+        else { return nil }
+        return URL(string: strLink)
     }
 
     static let dateFormatter: DateFormatter = {

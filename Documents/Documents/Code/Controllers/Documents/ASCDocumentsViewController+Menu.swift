@@ -6,6 +6,7 @@
 //  Copyright © 2022 Ascensio System SIA. All rights reserved.
 //
 
+import MBProgressHUD
 import MGSwipeTableCell
 import UIKit
 
@@ -258,12 +259,69 @@ extension ASCDocumentsViewController {
         }
         let actions = provider.actions(for: folder)
 
-        var rootActions: [UIMenuElement] = []
+        // Common actions
 
-        /// Rename action
+        var commonActions: [UIMenuElement] = []
+
+        commonActions.append(
+            UIAction(
+                title: NSLocalizedString("Select", comment: "Button title"),
+                image: UIImage(systemName: "checkmark.circle")
+            ) { [weak self] action in
+                cell.hideSwipe(animated: true)
+                self?.setEditMode(true)
+
+                if let index = self?.tableView.indexPath(for: cell) {
+                    self?.tableView.selectRow(
+                        at: index,
+                        animated: true,
+                        scrollPosition: .none
+                    )
+                }
+            }
+        )
+
+        if actions.contains(.open), !tableView.isEditing {
+            commonActions.append(
+                UIAction(
+                    title: NSLocalizedString("Open", comment: "Button title"),
+                    image: UIImage(systemName: "arrow.triangle.turn.up.right.circle")
+                ) { [weak self] action in
+                    cell.hideSwipe(animated: true)
+
+                    guard
+                        let self,
+                        let tableView = self.tableView,
+                        let index = tableView.indexPath(for: cell)
+                    else { return }
+
+                    self.tableView(tableView, didSelectRowAt: index)
+                }
+            )
+        }
+
+        // Basic actions
+
+        var basicActions: [UIMenuElement] = []
+
+        /// Mark as read action
+
+        if actions.contains(.new) {
+            basicActions.append(
+                UIAction(
+                    title: NSLocalizedString("Mark as Read", comment: "Button title"),
+                    image: UIImage(systemName: "envelope.open")
+                ) { [unowned self] action in
+                    cell.hideSwipe(animated: true)
+                    self.markAsRead(cell: cell)
+                }
+            )
+        }
+
+        /// Rename
 
         if actions.contains(.rename) {
-            rootActions.append(
+            basicActions.append(
                 UIAction(
                     title: NSLocalizedString("Rename", comment: "Button title"),
                     image: UIImage(systemName: "pencil.and.ellipsis.rectangle")
@@ -274,8 +332,70 @@ extension ASCDocumentsViewController {
             )
         }
 
+        /// Edit the room action
+
+        if actions.contains(.edit) {
+            basicActions.append(
+                UIAction(
+                    title: NSLocalizedString("Edit room", comment: "Button title"),
+                    image: UIImage(systemName: "gear")
+                ) { [unowned self] action in
+                    cell.hideSwipe(animated: true)
+                    self.editRoom(folder: folder)
+                }
+            )
+        }
+
+        /// Invite users
+
+        if actions.contains(.addUsers) {
+            basicActions.append(
+                UIAction(
+                    title: NSLocalizedString("Invite users", comment: "Button title"),
+                    image: UIImage(systemName: "person.badge.plus")
+                ) { [unowned self] action in
+                    cell.hideSwipe(animated: true)
+                    navigator.navigate(to: .addUsers(entity: folder))
+                }
+            )
+        }
+
+        /// Copy general link
+
+        if actions.contains(.link) {
+            basicActions.append(
+                UIAction(
+                    title: NSLocalizedString("Copy general link", comment: "Button title"),
+                    image: UIImage(systemName: "link")
+                ) { [unowned self] action in
+                    cell.hideSwipe(animated: true)
+                    self.copyGeneralLinkToClipboard(room: folder)
+                }
+            )
+        }
+
+        /// Info
+
+        if actions.contains(.info) {
+            basicActions.append(
+                UIAction(
+                    title: NSLocalizedString("Info", comment: "Button title"),
+                    image: UIImage(systemName: "info.circle")
+                ) { [unowned self] action in
+                    cell.hideSwipe(animated: true)
+                    if folder.isRoom {
+                        navigator.navigate(to: .roomSharingLink(folder: folder))
+                    } else {
+                        navigator.navigate(to: .shareSettings(entity: folder))
+                    }
+                }
+            )
+        }
+
+        /// Pin
+
         if actions.contains(.pin) {
-            rootActions.append(
+            basicActions.append(
                 UIAction(
                     title: NSLocalizedString("Pin to top", comment: "Button title"),
                     image: UIImage(systemName: "pin")
@@ -286,11 +406,13 @@ extension ASCDocumentsViewController {
             )
         }
 
+        /// Unpin
+
         if actions.contains(.unpin) {
-            rootActions.append(
+            basicActions.append(
                 UIAction(
                     title: NSLocalizedString("Unpin", comment: "Button title"),
-                    image: UIImage(systemName: "pin.slash")
+                    image: UIImage(systemName: "pin.fill")
                 ) { [unowned self] action in
                     cell.hideSwipe(animated: true)
                     self.pinToggle(cell: cell)
@@ -298,12 +420,44 @@ extension ASCDocumentsViewController {
             )
         }
 
+        /// Share action
+
+        if actions.contains(.share) {
+            basicActions.append(
+                UIAction(
+                    title: NSLocalizedString("Sharing Settings", comment: "Button title"),
+                    image: UIImage(systemName: "person.2")
+                ) { [unowned self] action in
+                    cell.hideSwipe(animated: true)
+                    navigator.navigate(to: .shareSettings(entity: folder))
+                }
+            )
+        }
+
+        // Transfer actions
+
+        var transferActions: [UIMenuElement] = []
+
+        /// Download action
+
+        if actions.contains(.download) {
+            transferActions.append(
+                UIAction(
+                    title: NSLocalizedString("Download", comment: "Button title"),
+                    image: UIImage(systemName: "square.and.arrow.down")
+                ) { [unowned self] action in
+                    cell.hideSwipe(animated: true)
+                    self.download(cell: cell)
+                }
+            )
+        }
+
         /// Archive
 
         if actions.contains(.archive) {
-            rootActions.append(
+            transferActions.append(
                 UIAction(
-                    title: NSLocalizedString("Archive", comment: "Button title"),
+                    title: NSLocalizedString("Move to Archive", comment: "Button title"),
                     image: UIImage(systemName: "archivebox")
                 ) { [unowned self] action in
                     cell.hideSwipe(animated: true)
@@ -313,7 +467,7 @@ extension ASCDocumentsViewController {
         }
 
         if actions.contains(.unarchive) {
-            rootActions.append(
+            transferActions.append(
                 UIAction(
                     title: NSLocalizedString("Move from archive", comment: "Button title"),
                     image: UIImage(systemName: "arrow.up.bin")
@@ -347,106 +501,22 @@ extension ASCDocumentsViewController {
         /// Transfer items
 
         if actions.contains(.copy), actions.contains(.move) {
-            rootActions.append(
+            transferActions.append(
                 UIMenu(title: NSLocalizedString("Move or Copy", comment: "Button title") + "...", children: [copy, move])
             )
         } else {
             if actions.contains(.copy) {
-                rootActions.append(copy)
+                transferActions.append(copy)
             }
             if actions.contains(.move) {
-                rootActions.append(move)
+                transferActions.append(move)
             }
-        }
-
-        /// Share action
-
-        if actions.contains(.share) {
-            rootActions.append(
-                UIAction(
-                    title: NSLocalizedString("Sharing Settings", comment: "Button title"),
-                    image: UIImage(systemName: "person.2")
-                ) { [unowned self] action in
-                    cell.hideSwipe(animated: true)
-                    navigator.navigate(to: .shareSettings(entity: folder))
-                }
-            )
-        }
-
-        /// Edit the room action
-
-        if actions.contains(.edit) {
-            rootActions.append(
-                UIAction(
-                    title: NSLocalizedString("Edit room", comment: "Button title"),
-                    image: UIImage(systemName: "gear")
-                ) { [unowned self] action in
-                    cell.hideSwipe(animated: true)
-                    self.editRoom(folder: folder)
-                }
-            )
-        }
-
-        /// General link action
-
-        if actions.contains(.link) {
-            rootActions.append(
-                UIAction(
-                    title: NSLocalizedString("Copy general link", comment: "Button title"),
-                    image: UIImage(systemName: "link")
-                ) { [unowned self] action in
-                    cell.hideSwipe(animated: true)
-                    print("Copy general link")
-                }
-            )
-        }
-
-        if actions.contains(.addUsers) {
-            rootActions.append(
-                UIAction(
-                    title: NSLocalizedString("Add users", comment: "Button title"),
-                    image: UIImage(systemName: "person.badge.plus")
-                ) { [unowned self] action in
-                    cell.hideSwipe(animated: true)
-                    navigator.navigate(to: .addUsers(entity: folder))
-                }
-            )
-        }
-
-        if actions.contains(.info) {
-            rootActions.append(
-                UIAction(
-                    title: NSLocalizedString("Info", comment: "Button title"),
-                    image: UIImage(systemName: "person.2")
-                ) { [unowned self] action in
-                    cell.hideSwipe(animated: true)
-                    if folder.isRoom {
-                        navigator.navigate(to: .roomSharingLink(folder: folder))
-                    } else {
-                        navigator.navigate(to: .shareSettings(entity: folder))
-                    }
-                }
-            )
-        }
-
-        /// Mark as read action
-
-        if actions.contains(.new) {
-            rootActions.append(
-                UIAction(
-                    title: NSLocalizedString("Mark as Read", comment: "Button title"),
-                    image: UIImage(systemName: "envelope.open")
-                ) { [unowned self] action in
-                    cell.hideSwipe(animated: true)
-                    self.markAsRead(cell: cell)
-                }
-            )
         }
 
         /// Restore action
 
         if actions.contains(.restore) {
-            rootActions.append(
+            transferActions.append(
                 UIAction(
                     title: NSLocalizedString("Restore", comment: "Button title"),
                     image: UIImage(systemName: "arrow.2.circlepath")
@@ -457,24 +527,10 @@ extension ASCDocumentsViewController {
             )
         }
 
-        /// Download action
-
-        if actions.contains(.download) {
-            rootActions.append(
-                UIAction(
-                    title: NSLocalizedString("Download", comment: "Button title"),
-                    image: UIImage(systemName: "square.and.arrow.down")
-                ) { [unowned self] action in
-                    cell.hideSwipe(animated: true)
-                    self.download(cell: cell)
-                }
-            )
-        }
-
         /// Leave the room action
 
         if actions.contains(.leave) {
-            rootActions.append(
+            transferActions.append(
                 UIAction(
                     title: NSLocalizedString("Leave the room", comment: "Button title"),
                     image: UIImage(systemName: "arrow.right.square")
@@ -488,7 +544,7 @@ extension ASCDocumentsViewController {
         /// Delete action
 
         if actions.contains(.delete) {
-            rootActions.append(
+            transferActions.append(
                 UIAction(
                     title: NSLocalizedString("Delete", comment: "Button title"),
                     image: UIImage(systemName: "trash"),
@@ -503,7 +559,7 @@ extension ASCDocumentsViewController {
         /// Unmount action
 
         if actions.contains(.unmount), !(self.folder?.isThirdParty ?? false) {
-            rootActions.append(
+            transferActions.append(
                 UIAction(
                     title: NSLocalizedString("Disconnect third party", comment: "Button title"),
                     image: UIImage(systemName: "trash"),
@@ -515,7 +571,13 @@ extension ASCDocumentsViewController {
             )
         }
 
-        return UIMenu(title: "", children: rootActions)
+        let commonMenu = UIMenu(title: "", options: .displayInline, children: commonActions)
+        let basicMenu = UIMenu(title: "", options: .displayInline, children: basicActions)
+        let transferMenu = UIMenu(title: "", options: .displayInline, children: transferActions)
+
+        let menus: [UIMenuElement] = [commonMenu, basicMenu, transferMenu]
+
+        return UIMenu(title: "", options: [.displayInline], children: menus)
     }
 
     // MARK: - Cell menu

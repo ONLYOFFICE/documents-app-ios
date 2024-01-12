@@ -1285,6 +1285,10 @@ class ASCOnlyofficeProvider: ASCFileProviderProtocol & ASCSortableFileProviderPr
                 return [.delete, .restore]
             }
 
+            if canRead, canEdit {
+                entityActions.insert(.open)
+            }
+
             if canRename, !isRoomFolder {
                 entityActions.insert(.rename)
             }
@@ -1827,6 +1831,35 @@ class ASCOnlyofficeProvider: ASCFileProviderProtocol & ASCSortableFileProviderPr
             if let view = view {
                 let openHandler = delegate?.openProgress(file: file, title: NSLocalizedString("Downloading", comment: "Caption of the processing") + "...", 0.15)
                 ASCEditorManager.shared.browseUnknownCloud(for: self, file, inView: view, handler: openHandler)
+            }
+        }
+    }
+}
+
+extension ASCOnlyofficeProvider {
+    func generalLink(for room: ASCFolder) async -> Result<String, Error> {
+        await withCheckedContinuation { continuation in
+            OnlyofficeApiClient.request(OnlyofficeAPI.Endpoints.Rooms.getLink(folder: room)) { response, error in
+                if let error {
+                    continuation.resume(returning: .failure(error))
+                    return
+                }
+
+                var urlComponets = URLComponents(string: OnlyofficeApiClient.shared.baseURL?.absoluteString ?? "")
+                urlComponets?.path = "/\(OnlyofficeAPI.Path.defaultGeneralLink)"
+                urlComponets?.queryItems = [
+                    URLQueryItem(name: "folder", value: room.id),
+                ]
+
+                var generalLink = urlComponets?.url?.absoluteString ?? ""
+
+                if let linkInfo = response?.result {
+                    generalLink = linkInfo.linkInfo.shareLink
+                }
+
+                continuation.resume(
+                    returning: .success(generalLink)
+                )
             }
         }
     }

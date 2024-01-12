@@ -60,8 +60,7 @@ final class CurrentRoomMenu: CurrentFolderMenuProtocol {
                     title: NSLocalizedString("Copy general link", comment: "Button title"),
                     image: UIImage(systemName: "link")
                 ) { action in
-                    // TODO: sharing
-                    print("Copy general link")
+                    viewController.copyGeneralLinkToClipboard(room: folder)
                 }
             )
         }

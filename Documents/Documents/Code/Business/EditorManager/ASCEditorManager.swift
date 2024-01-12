@@ -180,6 +180,7 @@ class ASCEditorManager: NSObject {
 
                     if !(config.document?.key?.isEmpty ?? true), !(config.document?.url?.isEmpty ?? true) {
                         continuation.resume(returning: .success(config))
+                        return
                     }
                 }
 

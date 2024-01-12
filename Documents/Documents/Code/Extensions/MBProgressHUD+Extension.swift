@@ -35,6 +35,8 @@ extension MBProgressHUD {
     func setState(result: Result) {
         mode = .customView
 
+        label.numberOfLines = 0
+
         switch result {
         case let .success(title):
             customView = UIImageView(image: Asset.Images.hudCheckmark.image)

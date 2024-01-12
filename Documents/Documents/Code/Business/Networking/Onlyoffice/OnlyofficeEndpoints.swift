@@ -70,6 +70,8 @@ class OnlyofficeAPI {
         public static let roomLink = "api/\(version)/files/rooms/%@/link"
         public static let roomLinks = "api/\(version)/files/rooms/%@/links"
 
+        public static let defaultGeneralLink = "rooms/shared/filter"
+
         enum Forlder {
             public static let root = "@root"
             public static let my = "@my"

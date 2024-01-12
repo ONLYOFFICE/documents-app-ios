@@ -770,6 +770,10 @@ class ASCLocalProvider: ASCFileProviderProtocol & ASCSortableFileProviderProtoco
                 return [.delete, .restore]
             }
 
+            if canRead, canEdit {
+                entityActions.insert(.open)
+            }
+
             if canEdit {
                 entityActions.insert(.rename)
             }

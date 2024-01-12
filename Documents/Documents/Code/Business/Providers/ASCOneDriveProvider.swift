@@ -1174,6 +1174,10 @@ extension ASCOneDriveProvider: ASCFileProviderProtocol {
             let canEdit = allowEdit(entity: folder)
             let canDelete = allowDelete(entity: folder)
 
+            if canRead, canEdit {
+                entityActions.insert(.open)
+            }
+
             if canEdit {
                 entityActions.insert(.rename)
             }

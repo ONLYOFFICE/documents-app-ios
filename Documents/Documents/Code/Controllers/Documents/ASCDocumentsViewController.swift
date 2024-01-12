@@ -2615,6 +2615,28 @@ class ASCDocumentsViewController: ASCBaseTableViewController, UIGestureRecognize
         })
     }
 
+    func copyGeneralLinkToClipboard(room: ASCFolder) {
+        if let onlyofficeProvider = provider as? ASCOnlyofficeProvider {
+            let hud = MBProgressHUD.showTopMost()
+            Task {
+                let generalLinkResult = await onlyofficeProvider.generalLink(for: room)
+
+                await MainActor.run {
+                    switch generalLinkResult {
+                    case let .success(link):
+                        UIPasteboard.general.string = link
+                        hud?.setState(result: .success(NSLocalizedString("Link successfully\ncopied to clipboard", comment: "Button title")))
+
+                    case .failure:
+                        hud?.setState(result: .failure(nil))
+                    }
+
+                    hud?.hide(animated: true, afterDelay: 1.3)
+                }
+            }
+        }
+    }
+
     private func selectAllItems<T>(type: T.Type, extensions: [String]? = nil, roomTypes: [ASCRoomType]? = nil) {
         if type == ASCFile.self {
             var files: [ASCEntity] = []

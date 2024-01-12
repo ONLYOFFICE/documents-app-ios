@@ -154,7 +154,7 @@ struct RoomSharingView: View {
             Text("(\(count))")
         }
     }
-    
+
     private func deleteAlert() -> Alert {
         Alert(
             title: Text(NSLocalizedString("Delete link", comment: "")),

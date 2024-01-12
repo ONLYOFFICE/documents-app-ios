@@ -307,7 +307,7 @@ extension ASCDocumentsViewController {
                     image: UIImage(systemName: "archivebox")
                 ) { [unowned self] action in
                     cell.hideSwipe(animated: true)
-                    self.archive(cell: cell)
+                    self.archive(cell: cell, folder: folder)
                 }
             )
         }
@@ -319,7 +319,7 @@ extension ASCDocumentsViewController {
                     image: UIImage(systemName: "arrow.up.bin")
                 ) { [unowned self] action in
                     cell.hideSwipe(animated: true)
-                    self.unarchive(cell: cell)
+                    self.unarchive(cell: cell, folder: folder)
                 }
             )
         }
@@ -369,6 +369,34 @@ extension ASCDocumentsViewController {
                 ) { [unowned self] action in
                     cell.hideSwipe(animated: true)
                     navigator.navigate(to: .shareSettings(entity: folder))
+                }
+            )
+        }
+
+        /// Edit the room action
+
+        if actions.contains(.edit) {
+            rootActions.append(
+                UIAction(
+                    title: NSLocalizedString("Edit room", comment: "Button title"),
+                    image: UIImage(systemName: "gear")
+                ) { [unowned self] action in
+                    cell.hideSwipe(animated: true)
+                    self.editRoom(folder: folder)
+                }
+            )
+        }
+
+        /// General link action
+
+        if actions.contains(.link) {
+            rootActions.append(
+                UIAction(
+                    title: NSLocalizedString("Copy general link", comment: "Button title"),
+                    image: UIImage(systemName: "link")
+                ) { [unowned self] action in
+                    cell.hideSwipe(animated: true)
+                    print("Copy general link")
                 }
             )
         }
@@ -438,7 +466,7 @@ extension ASCDocumentsViewController {
                     image: UIImage(systemName: "square.and.arrow.down")
                 ) { [unowned self] action in
                     cell.hideSwipe(animated: true)
-                    self.downloadFolder(cell: cell)
+                    self.download(cell: cell)
                 }
             )
         }
@@ -452,7 +480,7 @@ extension ASCDocumentsViewController {
                     image: UIImage(systemName: "arrow.right.square")
                 ) { [unowned self] action in
                     cell.hideSwipe(animated: true)
-                    self.leaveRoom(cell: cell)
+                    self.leaveRoom(cell: cell, folder: folder)
                 }
             )
         }
@@ -662,7 +690,7 @@ extension ASCDocumentsViewController {
             icon: Asset.Images.categoryArchived.image.withTintColor(.white),
             backgroundColor: Asset.Colors.brend.color
         ) { [unowned self] cell -> Bool in
-            self.archive(cell: cell)
+            self.archive(cell: cell, folder: folder)
             return true
         }
 
@@ -1001,7 +1029,7 @@ extension ASCDocumentsViewController {
                     style: .default,
                     handler: { [unowned self] action in
                         cell.hideSwipe(animated: true)
-                        self.archive(cell: cell)
+                        self.archive(cell: cell, folder: folder)
                     }
                 )
             )
@@ -1014,7 +1042,7 @@ extension ASCDocumentsViewController {
                     style: .default,
                     handler: { [unowned self] action in
                         cell.hideSwipe(animated: true)
-                        self.archive(cell: cell)
+                        self.archive(cell: cell, folder: folder)
                     }
                 )
             )

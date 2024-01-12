@@ -33,6 +33,7 @@ struct ASCEntityActions: OptionSet {
     static let unpin = ASCEntityActions(rawValue: 1 << 19)
     static let unarchive = ASCEntityActions(rawValue: 1 << 20)
     static let leave = ASCEntityActions(rawValue: 1 << 21)
+    static let link = ASCEntityActions(rawValue: 1 << 22)
 }
 
 typealias ASCProviderUserInfoHandler = (_ success: Bool, _ error: Error?) -> Void

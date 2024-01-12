@@ -1301,7 +1301,7 @@ class ASCOnlyofficeProvider: ASCFileProviderProtocol & ASCSortableFileProviderPr
                 entityActions.insert(.share)
             }
 
-            if canDownload {
+            if canDownload, !folder.isRoot {
                 entityActions.insert(.download)
             }
 
@@ -1317,7 +1317,8 @@ class ASCOnlyofficeProvider: ASCFileProviderProtocol & ASCSortableFileProviderPr
                 entityActions.insert(.new)
             }
 
-            if isArchiveCategory {
+            if isArchiveCategory, !folder.isRoot {
+                entityActions.insert(.link)
                 entityActions.insert(.info)
             }
 
@@ -1326,6 +1327,8 @@ class ASCOnlyofficeProvider: ASCFileProviderProtocol & ASCSortableFileProviderPr
                 entityActions.insert(.info)
                 if folder.security.editAccess {
                     entityActions.insert(.addUsers)
+                    entityActions.insert(.link)
+                    entityActions.insert(.edit)
                 }
                 if folder.security.move {
                     entityActions.insert(.archive)

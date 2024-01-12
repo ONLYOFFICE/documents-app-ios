@@ -1,56 +1,59 @@
 //
-//  CreateRoomView.swift
+//  EditRoomView.swift
 //  Documents
 //
-//  Created by Pavel Chernyshev on 22.11.2023.
-//  Copyright © 2023 Ascensio System SIA. All rights reserved.
+//  Created by Victor Tihovodov on 10.01.2024.
+//  Copyright © 2024 Ascensio System SIA. All rights reserved.
 //
 
 import Foundation
 import MBProgressHUD
 import SwiftUI
 
-struct CreateRoomView: View {
+struct EditRoomView: View {
     @Environment(\.presentationMode) var presentationMode
 
-    @ObservedObject var viewModel: CreateRoomViewModel
+    @ObservedObject var viewModel: EditRoomViewModel
     @State var isRoomSelectionPresenting = false
 
     var body: some View {
         handleHUD()
 
-        return List {
-            roomTypeSection
-            roomImageAndNameSection
-            roomTagsSection
-        }
-        .navigation(isActive: $isRoomSelectionPresenting, destination: {
-            RoomSelectionView(selectedRoom: $viewModel.selectedRoom, dismissOnSelection: true)
-        })
-        .navigationBarTitle(Text(NSLocalizedString("Create room", comment: "")), displayMode: .inline)
-        .navigationBarItems(
-            trailing: Button(NSLocalizedString("Create", comment: "")) {
-                viewModel.createRoom()
+        return NavigationView {
+            List {
+                roomTypeSection
+                roomImageAndNameSection
+                roomTagsSection
             }
-            .disabled(viewModel.roomName.isEmpty || viewModel.isCreatingRoom)
-        )
-        .alert(item: $viewModel.errorMessage) { errorMessage in
-            Alert(
-                title: Text(NSLocalizedString("Error", comment: "")),
-                message: Text(errorMessage),
-                dismissButton: .default(Text("OK"), action: {
-                    viewModel.errorMessage = nil
-                })
+            .navigation(isActive: $isRoomSelectionPresenting, destination: {
+                RoomSelectionView(selectedRoom: $viewModel.selectedRoom, dismissOnSelection: true)
+            })
+            .navigationBarTitle(Text(NSLocalizedString("Edit room", comment: "")), displayMode: .inline)
+            .navigationBarItems(
+                leading: Button(NSLocalizedString("Close", comment: "")) {
+                    viewModel.closeEdit()
+                },
+                trailing: Button(NSLocalizedString("Save", comment: "")) {
+                    viewModel.editRoom(folder: viewModel.folder)
+                }
+                .disabled(viewModel.roomName.isEmpty || viewModel.isEditingRoom)
             )
+            .alert(item: $viewModel.errorMessage) { errorMessage in
+                Alert(
+                    title: Text(NSLocalizedString("Error", comment: "")),
+                    message: Text(errorMessage),
+                    dismissButton: .default(Text("OK"), action: {
+                        viewModel.errorMessage = nil
+                    })
+                )
+            }
         }
+        .navigationViewStyle(StackNavigationViewStyle())
     }
 
     private var roomTypeSection: some View {
         Section {
-            RoomViewRow(room: viewModel.selectedRoom, isEditRoom: false)
-                .onTapGesture {
-                    isRoomSelectionPresenting = true
-                }
+            RoomViewRow(room: viewModel.selectedRoom, isEditRoom: true)
         }
     }
 
@@ -68,9 +71,8 @@ struct CreateRoomView: View {
 
     private var roomTagsSection: some View {
         Section {
-            TagsFieldView(tags: $viewModel.tags, deletedTags: $viewModel.tags)
+            TagsFieldView(tags: $viewModel.tags, deletedTags: $viewModel.deletedTags)
                 .listRowInsets(EdgeInsets())
-                .background(Color.systemGroupedBackground)
         }
         .background(Color.secondarySystemGroupedBackground)
     }
@@ -99,15 +101,15 @@ struct CreateRoomView: View {
         TextField(NSLocalizedString("Room name", comment: ""), text: $viewModel.roomName)
             .padding()
             .background(Color.secondarySystemGroupedBackground)
-            .disabled(viewModel.isCreatingRoom)
+            .disabled(viewModel.isEditingRoom)
     }
 
     private func handleHUD() {
-        if viewModel.isCreatingRoom {
+        if viewModel.isEditingRoom {
             MBProgressHUD.currentHUD?.hide(animated: false)
             let hud = MBProgressHUD.showTopMost()
             hud?.mode = .indeterminate
-            hud?.label.text = NSLocalizedString("Creating", comment: "Caption of the processing")
+            hud?.label.text = NSLocalizedString("Updateing", comment: "Caption of the processing")
         } else {
             if let hud = MBProgressHUD.currentHUD {
                 if let _ = viewModel.errorMessage {

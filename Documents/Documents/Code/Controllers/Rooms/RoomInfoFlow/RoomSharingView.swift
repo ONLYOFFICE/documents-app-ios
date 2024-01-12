@@ -23,6 +23,7 @@ struct RoomSharingView: View {
             .navigateToChangeAccess(selectedUser: $viewModel.selctedUser, viewModel: viewModel)
             .navigateToEditLink(selectedLink: $viewModel.selectdLink, viewModel: viewModel)
             .navigateToCreateLink(isDisplaing: $viewModel.isCreatingLinkScreenDisplaing, viewModel: viewModel)
+            .sharingSheet(isPresented: $viewModel.isSharingScreenPresenting, link: viewModel.sharingLink)
             .onAppear { viewModel.onAppear() }
     }
 
@@ -178,6 +179,14 @@ struct RoomSharingView: View {
 }
 
 private extension View {
+    func sharingSheet(isPresented: Binding<Bool>, link: URL?) -> some View {
+        sheet(isPresented: isPresented) {
+            if let link {
+                ActivityView(activityItems: [link])
+            }
+        }
+    }
+
     func navigateToChangeAccess(
         selectedUser: Binding<ASCUser?>,
         viewModel: RoomSharingViewModel

@@ -378,7 +378,7 @@ extension ASCDocumentsViewController {
         if actions.contains(.edit) {
             rootActions.append(
                 UIAction(
-                    title: NSLocalizedString("  ", comment: "Button title"),
+                    title: NSLocalizedString("Edit room", comment: "Button title"),
                     image: UIImage(systemName: "gear")
                 ) { [unowned self] action in
                     cell.hideSwipe(animated: true)

@@ -396,7 +396,7 @@ extension ASCDocumentsViewController {
                     image: UIImage(systemName: "link")
                 ) { [unowned self] action in
                     cell.hideSwipe(animated: true)
-                    print("Copy general link")
+                    self.copyGeneralLink()
                 }
             )
         }

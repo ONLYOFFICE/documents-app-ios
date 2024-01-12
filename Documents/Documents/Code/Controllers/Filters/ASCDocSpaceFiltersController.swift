@@ -47,6 +47,7 @@ class ASCDocSpaceFiltersController: ASCFiltersControllerProtocol {
         private static let roomTypeFilters = [
             ASCDocumentsFilterModel(filterName: FiltersName.customRoom.localizedString(), isSelected: false, filterType: .customRoom),
             ASCDocumentsFilterModel(filterName: FiltersName.collaborationRoom.localizedString(), isSelected: false, filterType: .collaborationRoom),
+            ASCDocumentsFilterModel(filterName: FiltersName.publicRoom.localizedString(), isSelected: false, filterType: .publicRoom),
         ]
 
         private static let docTypeFilters = [

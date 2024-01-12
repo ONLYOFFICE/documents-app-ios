@@ -16,11 +16,9 @@ struct EditRoomRouteView: View {
     var onEdited: (ASCFolder) -> Void
 
     var body: some View {
-        NavigationView {
-            EditRoomView(
-                viewModel: EditRoomViewModel(folder: folder, onEdited: onEdited)
-            )
-        }
+        EditRoomView(
+            viewModel: EditRoomViewModel(folder: folder, onEdited: onEdited)
+        )
     }
 }
 

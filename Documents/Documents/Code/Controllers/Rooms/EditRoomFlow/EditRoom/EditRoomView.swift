@@ -16,36 +16,39 @@ struct EditRoomView: View {
     @State var isRoomSelectionPresenting = false
 
     var body: some View {
-        List {
-            roomTypeSection
-            roomImageAndNameSection
-            roomTagsSection
-        }
-        .navigation(isActive: $isRoomSelectionPresenting, destination: {
-            RoomSelectionView(selectedRoom: $viewModel.selectedRoom, dismissOnSelection: true)
-        })
-        .navigationBarTitle(Text(NSLocalizedString("Edit room", comment: "")), displayMode: .inline)
-        .navigationBarItems(
-            leading: Button(NSLocalizedString("Close", comment: "")) {
-                viewModel.closeEdit()
-            },
-            trailing: Button(NSLocalizedString("Save", comment: "")) {
-                viewModel.editRoom(folder: viewModel.folder)
+        NavigationView {
+            List {
+                roomTypeSection
+                roomImageAndNameSection
+                roomTagsSection
             }
-            .disabled(viewModel.roomName.isEmpty || viewModel.isEditingRoom)
-        )
-        .overlay(
-            creatingRoomActivityView
-        )
-        .alert(item: $viewModel.errorMessage) { errorMessage in
-            Alert(
-                title: Text(NSLocalizedString("Error", comment: "")),
-                message: Text(errorMessage),
-                dismissButton: .default(Text("OK"), action: {
-                    viewModel.errorMessage = nil
-                })
+            .navigation(isActive: $isRoomSelectionPresenting, destination: {
+                RoomSelectionView(selectedRoom: $viewModel.selectedRoom, dismissOnSelection: true)
+            })
+            .navigationBarTitle(Text(NSLocalizedString("Edit room", comment: "")), displayMode: .inline)
+            .navigationBarItems(
+                leading: Button(NSLocalizedString("Close", comment: "")) {
+                    viewModel.closeEdit()
+                },
+                trailing: Button(NSLocalizedString("Save", comment: "")) {
+                    viewModel.editRoom(folder: viewModel.folder)
+                }
+                .disabled(viewModel.roomName.isEmpty || viewModel.isEditingRoom)
             )
+            .overlay(
+                creatingRoomActivityView
+            )
+            .alert(item: $viewModel.errorMessage) { errorMessage in
+                Alert(
+                    title: Text(NSLocalizedString("Error", comment: "")),
+                    message: Text(errorMessage),
+                    dismissButton: .default(Text("OK"), action: {
+                        viewModel.errorMessage = nil
+                    })
+                )
+            }
         }
+        .navigationViewStyle(StackNavigationViewStyle())
     }
 
     private var roomTypeSection: some View {

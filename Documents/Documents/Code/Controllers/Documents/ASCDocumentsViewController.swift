@@ -1999,11 +1999,16 @@ class ASCDocumentsViewController: ASCBaseTableViewController, UIGestureRecognize
     }
 
     func editRoom(folder: ASCFolder) {
-        let previousController = navigationController?.viewControllers[1] as? ASCDocumentsViewController
         let vc = EditRoomViewController(folder: folder) { _ in
             if let refreshControl = self.refreshControl {
                 self.refresh(refreshControl)
-                previousController?.refresh(refreshControl)
+                if let viewControllers = self.navigationController?.viewControllers,
+                   let index = viewControllers.firstIndex(of: self),
+                   index > 0
+                {
+                    let previousController = viewControllers[index - 1] as? ASCDocumentsViewController
+                    previousController?.refresh(refreshControl)
+                }
             }
         }
         present(vc, animated: true, completion: nil)

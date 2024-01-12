@@ -14,6 +14,7 @@ import SwiftUI
 struct RoomSharingView: View {
     @Environment(\.presentationMode) var presentationMode
     @ObservedObject var viewModel: RoomSharingViewModel
+    @State private var showDeleteAlert = false
 
     var body: some View {
         handleHUD()
@@ -53,8 +54,9 @@ struct RoomSharingView: View {
                             RoomSharingLinkRow(model: model)
                         }
                         .onDelete { _ in
-                            viewModel.deleteGeneralLink()
+                            showDeleteAlert = true
                         }
+                        .alert(isPresented: $showDeleteAlert, content: deleteAlert)
                     } else {
                         RoomSharingLinkRow(model: model)
                     }
@@ -151,6 +153,17 @@ struct RoomSharingView: View {
             Text(title)
             Text("(\(count))")
         }
+    }
+    
+    private func deleteAlert() -> Alert {
+        Alert(
+            title: Text(NSLocalizedString("Delete link", comment: "")),
+            message: Text(NSLocalizedString("The link will be deleted permanently. You will not be able to undo this action.", comment: "")),
+            primaryButton: .destructive(Text(NSLocalizedString("Delete", comment: "")), action: {
+                viewModel.deleteGeneralLink()
+            }),
+            secondaryButton: .cancel()
+        )
     }
 
     private func handleHUD() {

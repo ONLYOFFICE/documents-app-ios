@@ -2013,6 +2013,13 @@ class ASCDocumentsViewController: ASCBaseTableViewController, UIGestureRecognize
         }
         present(vc, animated: true, completion: nil)
     }
+    
+    func copyGeneralLink() {
+        let vc = ASCDocSpaceLinkViewController() {_ in 
+            
+        }
+        present(vc, animated: true, completion: nil)
+    }
 
     func favorite(cell: UITableViewCell, favorite: Bool) {
         guard

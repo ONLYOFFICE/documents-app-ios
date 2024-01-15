@@ -16,7 +16,7 @@ class EditRoomViewModel: ObservableObject {
     @Published var roomName: String = ""
     @Published var isEditingRoom = false
     @Published var errorMessage: String?
-    @Published var selectedRoom: Room!
+    @Published var selectedRoom: RoomTypeModel!
     @Published var folder: ASCFolder!
     @Published var selectedImage: UIImage?
     @Published var tags: Set<String> = []
@@ -140,16 +140,16 @@ class EditRoomViewModel: ObservableObject {
         return nil
     }
 
-    private func selectedFolderRoomType(folder: ASCFolder) -> Room {
+    private func selectedFolderRoomType(folder: ASCFolder) -> RoomTypeModel {
         switch folder.roomType {
         case .colobaration:
-            return Room(type: CreatingRoomType.collaboration, name: CreatingRoomType.collaboration.name, description: CreatingRoomType.collaboration.description, icon: CreatingRoomType.collaboration.icon)
+            return RoomTypeModel(type: CreatingRoomType.collaboration, name: CreatingRoomType.collaboration.name, description: CreatingRoomType.collaboration.description, icon: CreatingRoomType.collaboration.icon)
         case .custom:
-            return Room(type: CreatingRoomType.custom, name: CreatingRoomType.custom.name, description: CreatingRoomType.custom.description, icon: CreatingRoomType.custom.icon)
+            return RoomTypeModel(type: CreatingRoomType.custom, name: CreatingRoomType.custom.name, description: CreatingRoomType.custom.description, icon: CreatingRoomType.custom.icon)
         case .public:
-            return Room(type: CreatingRoomType.publicRoom, name: CreatingRoomType.publicRoom.name, description: CreatingRoomType.publicRoom.description, icon: CreatingRoomType.publicRoom.icon)
+            return RoomTypeModel(type: CreatingRoomType.publicRoom, name: CreatingRoomType.publicRoom.name, description: CreatingRoomType.publicRoom.description, icon: CreatingRoomType.publicRoom.icon)
         default:
-            return Room(type: CreatingRoomType.collaboration, name: CreatingRoomType.collaboration.name, description: CreatingRoomType.collaboration.description, icon: CreatingRoomType.collaboration.icon)
+            return RoomTypeModel(type: CreatingRoomType.collaboration, name: CreatingRoomType.collaboration.name, description: CreatingRoomType.collaboration.description, icon: CreatingRoomType.collaboration.icon)
         }
     }
 }

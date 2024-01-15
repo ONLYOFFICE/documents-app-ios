@@ -16,7 +16,7 @@ class CreateRoomViewModel: ObservableObject {
     @Published var roomName: String = ""
     @Published var isCreatingRoom = false
     @Published var errorMessage: String?
-    @Published var selectedRoom: Room!
+    @Published var selectedRoomType: RoomTypeModel
     @Published var selectedImage: UIImage?
     @Published var tags: Set<String> = []
 
@@ -31,8 +31,8 @@ class CreateRoomViewModel: ObservableObject {
 
     // MARK: - Init
 
-    init(selectedRoom: Room, onCreate: @escaping (ASCFolder) -> Void) {
-        self.selectedRoom = selectedRoom
+    init(selectedRoomType: RoomTypeModel, onCreate: @escaping (ASCFolder) -> Void) {
+        self.selectedRoomType = selectedRoomType
         self.onCreate = onCreate
     }
 
@@ -42,7 +42,7 @@ class CreateRoomViewModel: ObservableObject {
         isCreatingRoom = true
         creatingRoomService.createRoom(
             model: .init(
-                roomType: selectedRoom.type.ascRoomType,
+                roomType: selectedRoomType.type.ascRoomType,
                 name: roomName,
                 image: selectedImage,
                 tags: tags.map { $0 }

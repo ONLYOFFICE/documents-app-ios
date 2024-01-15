@@ -25,7 +25,17 @@ struct CreateRoomView: View {
             roomTagsSection
         }
         .navigation(isActive: $isRoomSelectionPresenting, destination: {
-            RoomSelectionView(selectedRoom: $viewModel.selectedRoom, dismissOnSelection: true)
+            RoomSelectionView(
+                selectedRoomType: Binding<RoomTypeModel?>(
+                    get: { viewModel.selectedRoomType },
+                    set: { newValue in
+                        if let newValue {
+                            viewModel.selectedRoomType = newValue
+                        }
+                    }
+                ),
+                dismissOnSelection: true
+            )
         })
         .navigationBarTitle(Text(NSLocalizedString("Create room", comment: "")), displayMode: .inline)
         .navigationBarItems(
@@ -47,7 +57,7 @@ struct CreateRoomView: View {
 
     private var roomTypeSection: some View {
         Section {
-            RoomViewRow(room: viewModel.selectedRoom, isEditRoom: false)
+            RoomTypeViewRow(roomTypeModel: viewModel.selectedRoomType)
                 .onTapGesture {
                     isRoomSelectionPresenting = true
                 }
@@ -123,6 +133,6 @@ struct CreateRoomView: View {
 
 #Preview {
     CreateRoomView(
-        viewModel: CreateRoomViewModel(selectedRoom: CreatingRoomType.publicRoom.toRoom()) { _ in }
+        viewModel: CreateRoomViewModel(selectedRoomType: CreatingRoomType.publicRoom.toRoomTypeModel()) { _ in }
     )
 }

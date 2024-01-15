@@ -26,7 +26,7 @@ struct EditRoomView: View {
                 roomTagsSection
             }
             .navigation(isActive: $isRoomSelectionPresenting, destination: {
-                RoomSelectionView(selectedRoom: $viewModel.selectedRoom, dismissOnSelection: true)
+                RoomSelectionView(selectedRoomType: $viewModel.selectedRoom, dismissOnSelection: true)
             })
             .navigationBarTitle(Text(NSLocalizedString("Edit room", comment: "")), displayMode: .inline)
             .navigationBarItems(
@@ -53,7 +53,7 @@ struct EditRoomView: View {
 
     private var roomTypeSection: some View {
         Section {
-            RoomViewRow(room: viewModel.selectedRoom, isEditRoom: true)
+            RoomTypeViewRow(roomTypeModel: viewModel.selectedRoom)
         }
     }
 
@@ -125,6 +125,6 @@ struct EditRoomView: View {
 
 #Preview {
     CreateRoomView(
-        viewModel: CreateRoomViewModel(selectedRoom: CreatingRoomType.publicRoom.toRoom()) { _ in }
+        viewModel: CreateRoomViewModel(selectedRoomType: CreatingRoomType.publicRoom.toRoomTypeModel()) { _ in }
     )
 }

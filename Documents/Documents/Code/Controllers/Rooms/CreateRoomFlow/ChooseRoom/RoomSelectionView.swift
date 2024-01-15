@@ -8,28 +8,29 @@
 
 import SwiftUI
 
-struct Room {
+struct RoomTypeModel {
     var type: CreatingRoomType
     var name: String
     var description: String
     var icon: UIImage
+    var showDisclosureIndicator: Bool = true
 }
 
-extension Room: Equatable {}
+extension RoomTypeModel: Equatable {}
 
 struct RoomSelectionView: View {
     @Environment(\.presentationMode) var presentationMode
 
     @ObservedObject var viewModel = RoomSelectionViewModel()
 
-    @Binding var selectedRoom: Room?
+    @Binding var selectedRoomType: RoomTypeModel?
     @State var dismissOnSelection = false
     @State private var isPresenting = true
     @State private var maxHeights: CGFloat = 0
 
     var body: some View {
-        List(viewModel.rooms, id: \.name) { room in
-            RoomViewRow(room: room)
+        List(viewModel.roomsTypeModels, id: \.name) { model in
+            RoomTypeViewRow(roomTypeModel: model)
                 .frame(minHeight: maxHeights)
                 .background(
                     GeometryReader { proxy in
@@ -45,7 +46,7 @@ struct RoomSelectionView: View {
                     }
                 }
                 .onTapGesture {
-                    selectedRoom = room
+                    selectedRoomType = model
                     if dismissOnSelection {
                         presentationMode.wrappedValue.dismiss()
                     }
@@ -70,5 +71,5 @@ struct SizePreferenceKey: PreferenceKey {
 }
 
 #Preview {
-    RoomSelectionView(selectedRoom: .constant(nil))
+    RoomSelectionView(selectedRoomType: .constant(nil))
 }

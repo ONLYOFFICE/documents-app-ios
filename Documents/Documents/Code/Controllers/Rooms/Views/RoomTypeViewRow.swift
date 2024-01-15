@@ -1,5 +1,5 @@
 //
-//  RoomViewRow.swift
+//  RoomTypeViewRow.swift
 //  Documents
 //
 //  Created by Pavel Chernyshev on 02.12.2023.
@@ -8,9 +8,8 @@
 
 import SwiftUI
 
-struct RoomViewRow: View {
-    let room: Room
-    @State var isEditRoom = false
+struct RoomTypeViewRow: View {
+    let roomTypeModel: RoomTypeModel
 
     var subtitleFont: Font {
         if #available(iOS 14.0, *) {
@@ -22,21 +21,21 @@ struct RoomViewRow: View {
 
     var body: some View {
         HStack(spacing: 14) {
-            roomImageView(for: room)
+            roomImageView(for: roomTypeModel)
                 .frame(width: 36, height: 36)
                 .padding(.vertical, 4)
 
             VStack(alignment: .leading, spacing: 4) {
-                Text(room.name)
+                Text(roomTypeModel.name)
                     .font(.subheadline) // TODO: Look at design
                     .fontWeight(.semibold)
-                Text(room.description)
+                Text(roomTypeModel.description)
                     .font(subtitleFont)
                     .foregroundColor(Color.secondaryLabel)
             }
 
             Spacer()
-            if !isEditRoom {
+            if roomTypeModel.showDisclosureIndicator {
                 Image(systemName: "chevron.right")
                     .font(.subheadline)
                     .foregroundColor(Color.separator)
@@ -45,8 +44,8 @@ struct RoomViewRow: View {
         }
     }
 
-    private func roomImageView(for room: Room) -> some View {
-        Image(uiImage: room.icon)
+    private func roomImageView(for roomTypeModel: RoomTypeModel) -> some View {
+        Image(uiImage: roomTypeModel.icon)
             .foregroundColor(.accentColor)
             .frame(width: 36, height: 36)
             .background(Color.gray.opacity(0.1))
@@ -55,7 +54,7 @@ struct RoomViewRow: View {
 }
 
 #Preview {
-    RoomViewRow(
-        room: CreatingRoomType.publicRoom.toRoom()
+    RoomTypeViewRow(
+        roomTypeModel: CreatingRoomType.publicRoom.toRoomTypeModel()
     )
 }

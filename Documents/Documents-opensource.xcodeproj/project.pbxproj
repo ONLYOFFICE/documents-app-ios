@@ -41,7 +41,7 @@
 		1DFDA0052B3DA455003A85EA /* RoomSharingLinkAccessService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DFDA0042B3DA455003A85EA /* RoomSharingLinkAccessService.swift */; };
 		86E2AD2B387DF62F19D0CB36 /* Pods_Documents_opensource.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A7DBE3A94B4934AA87B956D4 /* Pods_Documents_opensource.framework */; };
 		E80574552B18EE5700AAFCF0 /* CreatingRoomType.swift in Sources */ = {isa = PBXBuildFile; fileRef = E80574542B18EE5700AAFCF0 /* CreatingRoomType.swift */; };
-		E8187D7E2B514E0B00DDCF49 /* RoomViewRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8187D7D2B514E0B00DDCF49 /* RoomViewRow.swift */; };
+		E8187D7E2B514E0B00DDCF49 /* RoomTypeViewRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8187D7D2B514E0B00DDCF49 /* RoomTypeViewRow.swift */; };
 		E8187D872B514EF700DDCF49 /* EditRoomViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8187D802B514EF600DDCF49 /* EditRoomViewController.swift */; };
 		E8187D882B514EF700DDCF49 /* EditRoomRouteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8187D812B514EF600DDCF49 /* EditRoomRouteView.swift */; };
 		E8187D892B514EF700DDCF49 /* EditRoomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8187D832B514EF600DDCF49 /* EditRoomView.swift */; };
@@ -645,7 +645,7 @@
 		A7DBE3A94B4934AA87B956D4 /* Pods_Documents_opensource.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Documents_opensource.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B7CE7D158863590DD1A006AC /* Pods-Documents.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Documents.release.xcconfig"; path = "../Pods/Target Support Files/Pods-Documents/Pods-Documents.release.xcconfig"; sourceTree = "<group>"; };
 		E80574542B18EE5700AAFCF0 /* CreatingRoomType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreatingRoomType.swift; sourceTree = "<group>"; };
-		E8187D7D2B514E0B00DDCF49 /* RoomViewRow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoomViewRow.swift; sourceTree = "<group>"; };
+		E8187D7D2B514E0B00DDCF49 /* RoomTypeViewRow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoomTypeViewRow.swift; sourceTree = "<group>"; };
 		E8187D802B514EF600DDCF49 /* EditRoomViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditRoomViewController.swift; sourceTree = "<group>"; };
 		E8187D812B514EF600DDCF49 /* EditRoomRouteView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditRoomRouteView.swift; sourceTree = "<group>"; };
 		E8187D832B514EF600DDCF49 /* EditRoomView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditRoomView.swift; sourceTree = "<group>"; };
@@ -1878,7 +1878,7 @@
 		E8187D7C2B514E0B00DDCF49 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				E8187D7D2B514E0B00DDCF49 /* RoomViewRow.swift */,
+				E8187D7D2B514E0B00DDCF49 /* RoomTypeViewRow.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -3675,7 +3675,7 @@
 				FC7DD79A2B502F7E0037405B /* ASCCreateLinkCellView.swift in Sources */,
 				FC142A37289819B400EDE7CE /* ASCFolder.swift in Sources */,
 				FC83D6052A974E2200C404CB /* UIControl+Extension.swift in Sources */,
-				E8187D7E2B514E0B00DDCF49 /* RoomViewRow.swift in Sources */,
+				E8187D7E2B514E0B00DDCF49 /* RoomTypeViewRow.swift in Sources */,
 				FCEBA70728B362390009D50B /* ASCDocumentsViewController+Menu.swift in Sources */,
 				FC70811E2812E2260057FCD2 /* ASCImageViewController.swift in Sources */,
 				FC83D5732A9742F000C404CB /* ASCLogger.swift in Sources */,

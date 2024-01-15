@@ -10,6 +10,7 @@ import UIKit
 
 protocol CreatingRoomService {
     func createRoom(model: CreatingRoomModel, completion: @escaping (Result<ASCFolder, Error>) -> Void)
+    func editRoom(model: EditRoomModel, completion: @escaping (Result<ASCFolder, Error>) -> Void)
 }
 
 struct CreatingRoomModel {
@@ -17,6 +18,15 @@ struct CreatingRoomModel {
     var name: String
     var image: UIImage?
     var tags: [String]
+}
+
+struct EditRoomModel {
+    var roomType: ASCRoomType
+    var room: ASCRoom
+    var name: String
+    var image: UIImage?
+    var tagsToAdd: [String]
+    var tagsToDelete: [String]
 }
 
 class NetworkCreatingRoomServiceImp: CreatingRoomService {
@@ -43,7 +53,95 @@ class NetworkCreatingRoomServiceImp: CreatingRoomService {
             }
         }
     }
+}
 
+// MARK: - Edit
+
+extension NetworkCreatingRoomServiceImp {
+    func editRoom(model: EditRoomModel, completion: @escaping (Result<ASCFolder, Error>) -> Void) {
+        updateRoom(room: model.room, name: model.name, roomType: model.roomType.rawValue) { [self] result in
+            switch result {
+            case let .success(room):
+                let group = DispatchGroup()
+                group.enter()
+                self.editAndAttachTags(tagsToAdd: model.tagsToAdd, tagsToDelete: model.tagsToDelete, room: room) {
+                    group.leave()
+                }
+                group.enter()
+                self.uploadAndAttachImage(image: model.image, room: room) {
+                    group.leave()
+                }
+                group.notify(queue: .main) {
+                    completion(.success(room))
+                }
+            case let .failure(error):
+                completion(.failure(error))
+            }
+        }
+    }
+
+    private func updateRoom(room: ASCRoom, name: String, roomType: Int, completion: @escaping (Result<ASCRoom, Error>) -> Void) {
+        guard room.title != name else {
+            completion(.success(room))
+            return
+        }
+        let requestModel = CreateRoomRequestModel(roomType: roomType, title: name)
+        networkService.request(
+            OnlyofficeAPI.Endpoints.Rooms.update(folder: room),
+            requestModel.dictionary
+        ) { response, error in
+            guard let room = response?.result else {
+                if let error {
+                    completion(.failure(error))
+                } else {
+                    completion(.failure(CreatingRoomServiceError.unableGetImageData))
+                }
+                return
+            }
+            completion(.success(room))
+        }
+    }
+
+    private func editAndAttachTags(tagsToAdd: [String], tagsToDelete: [String], room: ASCFolder, completion: @escaping () -> Void) {
+        guard !tagsToAdd.isEmpty || tagsToDelete.isEmpty else {
+            completion()
+            return
+        }
+
+        let group = DispatchGroup()
+
+        group.enter()
+        removeTags(tags: tagsToDelete, room: room) {
+            group.leave()
+        }
+
+        group.enter()
+        createTags(tags: tagsToAdd) {
+            self.attachTagsToRoom(tags: tagsToAdd, room: room) {
+                group.leave()
+            }
+        }
+
+        group.notify(queue: .main) {
+            completion()
+        }
+    }
+
+    private func removeTags(tags: [String], room: ASCFolder, completion: @escaping () -> Void) {
+        guard !tags.isEmpty else {
+            completion()
+            return
+        }
+        let requestDeleteTagsModel = AttachTagsRequestModel(names: tags)
+        networkService.request(OnlyofficeAPI.Endpoints.Tags.deleteFromRoom(folder: room), requestDeleteTagsModel.dictionary) { _, _ in
+            completion()
+        }
+    }
+}
+
+// MARK: - Create
+
+extension NetworkCreatingRoomServiceImp {
     private func createRoomNetwork(model: CreatingRoomModel, completion: @escaping (Result<ASCFolder, Error>) -> Void) {
         let requestModel = CreateRoomRequestModel(roomType: model.roomType.rawValue, title: model.name)
         networkService.request(OnlyofficeAPI.Endpoints.Rooms.create(), requestModel.dictionary) { response, error in
@@ -73,6 +171,10 @@ class NetworkCreatingRoomServiceImp: CreatingRoomService {
     }
 
     private func createTags(tags: [String], completion: @escaping () -> Void) {
+        guard !tags.isEmpty else {
+            completion()
+            return
+        }
         let group = DispatchGroup()
         for tag in tags {
             group.enter()
@@ -87,6 +189,10 @@ class NetworkCreatingRoomServiceImp: CreatingRoomService {
     }
 
     private func attachTagsToRoom(tags: [String], room: ASCFolder, completion: @escaping () -> Void) {
+        guard !tags.isEmpty else {
+            completion()
+            return
+        }
         let requestModel = AttachTagsRequestModel(names: tags)
         networkService.request(OnlyofficeAPI.Endpoints.Tags.addToRoom(folder: room), requestModel.dictionary) { _, _ in
             completion()

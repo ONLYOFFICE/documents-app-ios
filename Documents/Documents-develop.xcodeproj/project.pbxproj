@@ -306,34 +306,35 @@
 		FC7DD7832B502DD70037405B /* ASCDocSpaceLinkViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC7DD7762B502DD60037405B /* ASCDocSpaceLinkViewController.swift */; };
 		FC7DD7842B502DD70037405B /* ASCDocSpaceLinkView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC7DD7772B502DD60037405B /* ASCDocSpaceLinkView.swift */; };
 		FC7DD7852B502DD70037405B /* ASCDocSpaceLinkViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC7DD7782B502DD60037405B /* ASCDocSpaceLinkViewModel.swift */; };
-		FC7DD7FD2B51542F0037405B /* EditRoomViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC7DD7D32B51542F0037405B /* EditRoomViewController.swift */; };
-		FC7DD7FE2B51542F0037405B /* EditRoomRouteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC7DD7D42B51542F0037405B /* EditRoomRouteView.swift */; };
-		FC7DD7FF2B51542F0037405B /* EditRoomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC7DD7D62B51542F0037405B /* EditRoomView.swift */; };
-		FC7DD8002B51542F0037405B /* EditRoomViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC7DD7D72B51542F0037405B /* EditRoomViewModel.swift */; };
-		FC7DD8012B51542F0037405B /* NetworkEditRoomServiceImp.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC7DD7D92B51542F0037405B /* NetworkEditRoomServiceImp.swift */; };
-		FC7DD8022B51542F0037405B /* RoomViewRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC7DD7DB2B51542F0037405B /* RoomViewRow.swift */; };
-		FC7DD8032B51542F0037405B /* CreateRoomViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC7DD7DE2B51542F0037405B /* CreateRoomViewModel.swift */; };
-		FC7DD8042B51542F0037405B /* CreateRoomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC7DD7DF2B51542F0037405B /* CreateRoomView.swift */; };
-		FC7DD8052B51542F0037405B /* CreateRoomRouteViewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC7DD7E02B51542F0037405B /* CreateRoomRouteViewViewController.swift */; };
-		FC7DD8062B51542F0037405B /* RoomSelectionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC7DD7E22B51542F0037405B /* RoomSelectionViewModel.swift */; };
-		FC7DD8072B51542F0037405B /* RoomSelectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC7DD7E32B51542F0037405B /* RoomSelectionView.swift */; };
-		FC7DD8082B51542F0037405B /* CreateRoomRouteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC7DD7E42B51542F0037405B /* CreateRoomRouteView.swift */; };
-		FC7DD8092B51542F0037405B /* CreatingRoomType.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC7DD7E62B51542F0037405B /* CreatingRoomType.swift */; };
-		FC7DD80A2B51542F0037405B /* NetworkCreatingRoomService.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC7DD7E82B51542F0037405B /* NetworkCreatingRoomService.swift */; };
-		FC7DD80B2B51542F0037405B /* RoomsNamespace.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC7DD7EA2B51542F0037405B /* RoomsNamespace.swift */; };
-		FC7DD80C2B51542F0037405B /* RoomSharingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC7DD7EC2B51542F0037405B /* RoomSharingView.swift */; };
-		FC7DD80D2B51542F0037405B /* RoomSharingNetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC7DD7ED2B51542F0037405B /* RoomSharingNetworkService.swift */; };
-		FC7DD80E2B51542F0037405B /* RoomLinksResponceModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC7DD7EF2B51542F0037405B /* RoomLinksResponceModel.swift */; };
-		FC7DD80F2B51542F0037405B /* LinkModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC7DD7F02B51542F0037405B /* LinkModel.swift */; };
-		FC7DD8102B51542F0037405B /* RoomSharingLinkAccessService.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC7DD7F22B51542F0037405B /* RoomSharingLinkAccessService.swift */; };
-		FC7DD8112B51542F0037405B /* RoomSharingCustomizeLinkViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC7DD7F32B51542F0037405B /* RoomSharingCustomizeLinkViewModel.swift */; };
-		FC7DD8122B51542F0037405B /* RoomSharingCustomizeLinkView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC7DD7F42B51542F0037405B /* RoomSharingCustomizeLinkView.swift */; };
-		FC7DD8132B51542F0037405B /* RoomSharingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC7DD7F52B51542F0037405B /* RoomSharingViewModel.swift */; };
-		FC7DD8142B51542F0037405B /* RoomUsersAccessNetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC7DD7F72B51542F0037405B /* RoomUsersAccessNetworkService.swift */; };
-		FC7DD8152B51542F0037405B /* RoomSharingAccessTypeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC7DD7F82B51542F0037405B /* RoomSharingAccessTypeViewModel.swift */; };
-		FC7DD8162B51542F0037405B /* RoomSharingAccessTypeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC7DD7F92B51542F0037405B /* RoomSharingAccessTypeView.swift */; };
-		FC7DD8172B51542F0037405B /* RoomSharingLinkRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC7DD7FB2B51542F0037405B /* RoomSharingLinkRow.swift */; };
-		FC7DD8182B51542F0037405B /* RoomSharingRootViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC7DD7FC2B51542F0037405B /* RoomSharingRootViewController.swift */; };
+		FC7DD8972B554A810037405B /* CreateRoomViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC7DD86E2B554A810037405B /* CreateRoomViewModel.swift */; };
+		FC7DD8982B554A810037405B /* CreateRoomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC7DD86F2B554A810037405B /* CreateRoomView.swift */; };
+		FC7DD8992B554A810037405B /* CreateRoomRouteViewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC7DD8702B554A810037405B /* CreateRoomRouteViewViewController.swift */; };
+		FC7DD89A2B554A810037405B /* RoomSelectionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC7DD8722B554A810037405B /* RoomSelectionViewModel.swift */; };
+		FC7DD89B2B554A810037405B /* RoomSelectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC7DD8732B554A810037405B /* RoomSelectionView.swift */; };
+		FC7DD89C2B554A810037405B /* CreateRoomRouteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC7DD8742B554A810037405B /* CreateRoomRouteView.swift */; };
+		FC7DD89D2B554A810037405B /* CreatingRoomType.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC7DD8762B554A810037405B /* CreatingRoomType.swift */; };
+		FC7DD89E2B554A810037405B /* NetworkCreatingRoomService.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC7DD8782B554A810037405B /* NetworkCreatingRoomService.swift */; };
+		FC7DD89F2B554A810037405B /* RoomSharingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC7DD87A2B554A810037405B /* RoomSharingView.swift */; };
+		FC7DD8A02B554A810037405B /* RoomSharingNetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC7DD87B2B554A810037405B /* RoomSharingNetworkService.swift */; };
+		FC7DD8A12B554A810037405B /* RoomLinksResponceModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC7DD87D2B554A810037405B /* RoomLinksResponceModel.swift */; };
+		FC7DD8A22B554A810037405B /* LinkModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC7DD87E2B554A810037405B /* LinkModel.swift */; };
+		FC7DD8A32B554A810037405B /* RoomSharingLinkAccessService.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC7DD8802B554A810037405B /* RoomSharingLinkAccessService.swift */; };
+		FC7DD8A42B554A810037405B /* RoomSharingCustomizeLinkViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC7DD8812B554A810037405B /* RoomSharingCustomizeLinkViewModel.swift */; };
+		FC7DD8A52B554A810037405B /* RoomSharingCustomizeLinkView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC7DD8822B554A810037405B /* RoomSharingCustomizeLinkView.swift */; };
+		FC7DD8A62B554A810037405B /* RoomSharingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC7DD8832B554A810037405B /* RoomSharingViewModel.swift */; };
+		FC7DD8A72B554A810037405B /* RoomUsersAccessNetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC7DD8852B554A810037405B /* RoomUsersAccessNetworkService.swift */; };
+		FC7DD8A82B554A810037405B /* RoomSharingAccessTypeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC7DD8862B554A810037405B /* RoomSharingAccessTypeViewModel.swift */; };
+		FC7DD8A92B554A810037405B /* RoomSharingAccessTypeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC7DD8872B554A810037405B /* RoomSharingAccessTypeView.swift */; };
+		FC7DD8AA2B554A810037405B /* RoomSharingLinkRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC7DD8892B554A810037405B /* RoomSharingLinkRow.swift */; };
+		FC7DD8AB2B554A810037405B /* RoomSharingRootViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC7DD88A2B554A810037405B /* RoomSharingRootViewController.swift */; };
+		FC7DD8AC2B554A810037405B /* EditRoomViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC7DD88C2B554A810037405B /* EditRoomViewController.swift */; };
+		FC7DD8AD2B554A810037405B /* EditRoomRouteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC7DD88D2B554A810037405B /* EditRoomRouteView.swift */; };
+		FC7DD8AE2B554A810037405B /* EditRoomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC7DD88F2B554A810037405B /* EditRoomView.swift */; };
+		FC7DD8AF2B554A810037405B /* EditRoomViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC7DD8902B554A810037405B /* EditRoomViewModel.swift */; };
+		FC7DD8B02B554A810037405B /* NetworkEditRoomServiceImp.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC7DD8922B554A810037405B /* NetworkEditRoomServiceImp.swift */; };
+		FC7DD8B12B554A810037405B /* RoomViewRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC7DD8942B554A810037405B /* RoomViewRow.swift */; };
+		FC7DD8B22B554A810037405B /* RoomsNamespace.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC7DD8962B554A810037405B /* RoomsNamespace.swift */; };
+		FC7DD8B42B554AE10037405B /* ActivityView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC7DD8B32B554AE10037405B /* ActivityView.swift */; };
 		FC7F71F829940FA00004F274 /* ASCEntitySecurity.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC7F71F729940FA00004F274 /* ASCEntitySecurity.swift */; };
 		FC7F71FE2994112B0004F274 /* ASCAccessToAddRightHoldersRoomChecker.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC7F71FD2994112B0004F274 /* ASCAccessToAddRightHoldersRoomChecker.swift */; };
 		FC82827F21C3CC01005AF726 /* ASCDeviceSplitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC82827E21C3CC01005AF726 /* ASCDeviceSplitViewController.swift */; };
@@ -956,34 +957,35 @@
 		FC7DD7762B502DD60037405B /* ASCDocSpaceLinkViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASCDocSpaceLinkViewController.swift; sourceTree = "<group>"; };
 		FC7DD7772B502DD60037405B /* ASCDocSpaceLinkView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASCDocSpaceLinkView.swift; sourceTree = "<group>"; };
 		FC7DD7782B502DD60037405B /* ASCDocSpaceLinkViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASCDocSpaceLinkViewModel.swift; sourceTree = "<group>"; };
-		FC7DD7D32B51542F0037405B /* EditRoomViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditRoomViewController.swift; sourceTree = "<group>"; };
-		FC7DD7D42B51542F0037405B /* EditRoomRouteView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditRoomRouteView.swift; sourceTree = "<group>"; };
-		FC7DD7D62B51542F0037405B /* EditRoomView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditRoomView.swift; sourceTree = "<group>"; };
-		FC7DD7D72B51542F0037405B /* EditRoomViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditRoomViewModel.swift; sourceTree = "<group>"; };
-		FC7DD7D92B51542F0037405B /* NetworkEditRoomServiceImp.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkEditRoomServiceImp.swift; sourceTree = "<group>"; };
-		FC7DD7DB2B51542F0037405B /* RoomViewRow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoomViewRow.swift; sourceTree = "<group>"; };
-		FC7DD7DE2B51542F0037405B /* CreateRoomViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateRoomViewModel.swift; sourceTree = "<group>"; };
-		FC7DD7DF2B51542F0037405B /* CreateRoomView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateRoomView.swift; sourceTree = "<group>"; };
-		FC7DD7E02B51542F0037405B /* CreateRoomRouteViewViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateRoomRouteViewViewController.swift; sourceTree = "<group>"; };
-		FC7DD7E22B51542F0037405B /* RoomSelectionViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoomSelectionViewModel.swift; sourceTree = "<group>"; };
-		FC7DD7E32B51542F0037405B /* RoomSelectionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoomSelectionView.swift; sourceTree = "<group>"; };
-		FC7DD7E42B51542F0037405B /* CreateRoomRouteView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateRoomRouteView.swift; sourceTree = "<group>"; };
-		FC7DD7E62B51542F0037405B /* CreatingRoomType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreatingRoomType.swift; sourceTree = "<group>"; };
-		FC7DD7E82B51542F0037405B /* NetworkCreatingRoomService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkCreatingRoomService.swift; sourceTree = "<group>"; };
-		FC7DD7EA2B51542F0037405B /* RoomsNamespace.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoomsNamespace.swift; sourceTree = "<group>"; };
-		FC7DD7EC2B51542F0037405B /* RoomSharingView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoomSharingView.swift; sourceTree = "<group>"; };
-		FC7DD7ED2B51542F0037405B /* RoomSharingNetworkService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoomSharingNetworkService.swift; sourceTree = "<group>"; };
-		FC7DD7EF2B51542F0037405B /* RoomLinksResponceModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoomLinksResponceModel.swift; sourceTree = "<group>"; };
-		FC7DD7F02B51542F0037405B /* LinkModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LinkModel.swift; sourceTree = "<group>"; };
-		FC7DD7F22B51542F0037405B /* RoomSharingLinkAccessService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoomSharingLinkAccessService.swift; sourceTree = "<group>"; };
-		FC7DD7F32B51542F0037405B /* RoomSharingCustomizeLinkViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoomSharingCustomizeLinkViewModel.swift; sourceTree = "<group>"; };
-		FC7DD7F42B51542F0037405B /* RoomSharingCustomizeLinkView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoomSharingCustomizeLinkView.swift; sourceTree = "<group>"; };
-		FC7DD7F52B51542F0037405B /* RoomSharingViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoomSharingViewModel.swift; sourceTree = "<group>"; };
-		FC7DD7F72B51542F0037405B /* RoomUsersAccessNetworkService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoomUsersAccessNetworkService.swift; sourceTree = "<group>"; };
-		FC7DD7F82B51542F0037405B /* RoomSharingAccessTypeViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoomSharingAccessTypeViewModel.swift; sourceTree = "<group>"; };
-		FC7DD7F92B51542F0037405B /* RoomSharingAccessTypeView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoomSharingAccessTypeView.swift; sourceTree = "<group>"; };
-		FC7DD7FB2B51542F0037405B /* RoomSharingLinkRow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoomSharingLinkRow.swift; sourceTree = "<group>"; };
-		FC7DD7FC2B51542F0037405B /* RoomSharingRootViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoomSharingRootViewController.swift; sourceTree = "<group>"; };
+		FC7DD86E2B554A810037405B /* CreateRoomViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateRoomViewModel.swift; sourceTree = "<group>"; };
+		FC7DD86F2B554A810037405B /* CreateRoomView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateRoomView.swift; sourceTree = "<group>"; };
+		FC7DD8702B554A810037405B /* CreateRoomRouteViewViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateRoomRouteViewViewController.swift; sourceTree = "<group>"; };
+		FC7DD8722B554A810037405B /* RoomSelectionViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoomSelectionViewModel.swift; sourceTree = "<group>"; };
+		FC7DD8732B554A810037405B /* RoomSelectionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoomSelectionView.swift; sourceTree = "<group>"; };
+		FC7DD8742B554A810037405B /* CreateRoomRouteView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateRoomRouteView.swift; sourceTree = "<group>"; };
+		FC7DD8762B554A810037405B /* CreatingRoomType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreatingRoomType.swift; sourceTree = "<group>"; };
+		FC7DD8782B554A810037405B /* NetworkCreatingRoomService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkCreatingRoomService.swift; sourceTree = "<group>"; };
+		FC7DD87A2B554A810037405B /* RoomSharingView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoomSharingView.swift; sourceTree = "<group>"; };
+		FC7DD87B2B554A810037405B /* RoomSharingNetworkService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoomSharingNetworkService.swift; sourceTree = "<group>"; };
+		FC7DD87D2B554A810037405B /* RoomLinksResponceModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoomLinksResponceModel.swift; sourceTree = "<group>"; };
+		FC7DD87E2B554A810037405B /* LinkModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LinkModel.swift; sourceTree = "<group>"; };
+		FC7DD8802B554A810037405B /* RoomSharingLinkAccessService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoomSharingLinkAccessService.swift; sourceTree = "<group>"; };
+		FC7DD8812B554A810037405B /* RoomSharingCustomizeLinkViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoomSharingCustomizeLinkViewModel.swift; sourceTree = "<group>"; };
+		FC7DD8822B554A810037405B /* RoomSharingCustomizeLinkView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoomSharingCustomizeLinkView.swift; sourceTree = "<group>"; };
+		FC7DD8832B554A810037405B /* RoomSharingViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoomSharingViewModel.swift; sourceTree = "<group>"; };
+		FC7DD8852B554A810037405B /* RoomUsersAccessNetworkService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoomUsersAccessNetworkService.swift; sourceTree = "<group>"; };
+		FC7DD8862B554A810037405B /* RoomSharingAccessTypeViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoomSharingAccessTypeViewModel.swift; sourceTree = "<group>"; };
+		FC7DD8872B554A810037405B /* RoomSharingAccessTypeView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoomSharingAccessTypeView.swift; sourceTree = "<group>"; };
+		FC7DD8892B554A810037405B /* RoomSharingLinkRow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoomSharingLinkRow.swift; sourceTree = "<group>"; };
+		FC7DD88A2B554A810037405B /* RoomSharingRootViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoomSharingRootViewController.swift; sourceTree = "<group>"; };
+		FC7DD88C2B554A810037405B /* EditRoomViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditRoomViewController.swift; sourceTree = "<group>"; };
+		FC7DD88D2B554A810037405B /* EditRoomRouteView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditRoomRouteView.swift; sourceTree = "<group>"; };
+		FC7DD88F2B554A810037405B /* EditRoomView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditRoomView.swift; sourceTree = "<group>"; };
+		FC7DD8902B554A810037405B /* EditRoomViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditRoomViewModel.swift; sourceTree = "<group>"; };
+		FC7DD8922B554A810037405B /* NetworkEditRoomServiceImp.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkEditRoomServiceImp.swift; sourceTree = "<group>"; };
+		FC7DD8942B554A810037405B /* RoomViewRow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoomViewRow.swift; sourceTree = "<group>"; };
+		FC7DD8962B554A810037405B /* RoomsNamespace.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoomsNamespace.swift; sourceTree = "<group>"; };
+		FC7DD8B32B554AE10037405B /* ActivityView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActivityView.swift; sourceTree = "<group>"; };
 		FC7F71F729940FA00004F274 /* ASCEntitySecurity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASCEntitySecurity.swift; sourceTree = "<group>"; };
 		FC7F71FD2994112B0004F274 /* ASCAccessToAddRightHoldersRoomChecker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASCAccessToAddRightHoldersRoomChecker.swift; sourceTree = "<group>"; };
 		FC82827E21C3CC01005AF726 /* ASCDeviceSplitViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCDeviceSplitViewController.swift; sourceTree = "<group>"; };
@@ -1357,6 +1359,7 @@
 		E8674B6D2B2B15C100CDA5DC /* Representable */ = {
 			isa = PBXGroup;
 			children = (
+				FC7DD8B32B554AE10037405B /* ActivityView.swift */,
 				E8674B6E2B2B15C100CDA5DC /* WSTagsFieldRepresentable.swift */,
 			);
 			path = Representable;
@@ -1615,7 +1618,7 @@
 		FC31B2881E76C168008699C3 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				FCE9F7582B2C87980056E420 /* Rooms */,
+				FC7DD86B2B554A810037405B /* Rooms */,
 				FC1EA5C91ECECB77008FEE2E /* Common */,
 				FC844391215E604000526974 /* Root */,
 				8A69B5B3249762DE00152BDE /* Debug */,
@@ -2404,147 +2407,159 @@
 			path = CreatelLink;
 			sourceTree = "<group>";
 		};
-		FC7DD7D22B51542F0037405B /* EditRoomFlow */ = {
+		FC7DD86B2B554A810037405B /* Rooms */ = {
 			isa = PBXGroup;
 			children = (
-				FC7DD7D32B51542F0037405B /* EditRoomViewController.swift */,
-				FC7DD7D42B51542F0037405B /* EditRoomRouteView.swift */,
-				FC7DD7D52B51542F0037405B /* EditRoom */,
-				FC7DD7D82B51542F0037405B /* Services */,
+				FC7DD86C2B554A810037405B /* CreateRoomFlow */,
+				FC7DD8792B554A810037405B /* RoomInfoFlow */,
+				FC7DD88B2B554A810037405B /* EditRoomFlow */,
+				FC7DD8932B554A810037405B /* Views */,
+				FC7DD8952B554A810037405B /* Protocols */,
 			);
-			path = EditRoomFlow;
+			path = Rooms;
 			sourceTree = "<group>";
 		};
-		FC7DD7D52B51542F0037405B /* EditRoom */ = {
+		FC7DD86C2B554A810037405B /* CreateRoomFlow */ = {
 			isa = PBXGroup;
 			children = (
-				FC7DD7D62B51542F0037405B /* EditRoomView.swift */,
-				FC7DD7D72B51542F0037405B /* EditRoomViewModel.swift */,
-			);
-			path = EditRoom;
-			sourceTree = "<group>";
-		};
-		FC7DD7D82B51542F0037405B /* Services */ = {
-			isa = PBXGroup;
-			children = (
-				FC7DD7D92B51542F0037405B /* NetworkEditRoomServiceImp.swift */,
-			);
-			path = Services;
-			sourceTree = "<group>";
-		};
-		FC7DD7DA2B51542F0037405B /* Views */ = {
-			isa = PBXGroup;
-			children = (
-				FC7DD7DB2B51542F0037405B /* RoomViewRow.swift */,
-			);
-			path = Views;
-			sourceTree = "<group>";
-		};
-		FC7DD7DC2B51542F0037405B /* CreateRoomFlow */ = {
-			isa = PBXGroup;
-			children = (
-				FC7DD7DD2B51542F0037405B /* CreateRoom */,
-				FC7DD7E02B51542F0037405B /* CreateRoomRouteViewViewController.swift */,
-				FC7DD7E12B51542F0037405B /* ChooseRoom */,
-				FC7DD7E42B51542F0037405B /* CreateRoomRouteView.swift */,
-				FC7DD7E52B51542F0037405B /* Models */,
-				FC7DD7E72B51542F0037405B /* Services */,
+				FC7DD86D2B554A810037405B /* CreateRoom */,
+				FC7DD8702B554A810037405B /* CreateRoomRouteViewViewController.swift */,
+				FC7DD8712B554A810037405B /* ChooseRoom */,
+				FC7DD8742B554A810037405B /* CreateRoomRouteView.swift */,
+				FC7DD8752B554A810037405B /* Models */,
+				FC7DD8772B554A810037405B /* Services */,
 			);
 			path = CreateRoomFlow;
 			sourceTree = "<group>";
 		};
-		FC7DD7DD2B51542F0037405B /* CreateRoom */ = {
+		FC7DD86D2B554A810037405B /* CreateRoom */ = {
 			isa = PBXGroup;
 			children = (
-				FC7DD7DE2B51542F0037405B /* CreateRoomViewModel.swift */,
-				FC7DD7DF2B51542F0037405B /* CreateRoomView.swift */,
+				FC7DD86E2B554A810037405B /* CreateRoomViewModel.swift */,
+				FC7DD86F2B554A810037405B /* CreateRoomView.swift */,
 			);
 			path = CreateRoom;
 			sourceTree = "<group>";
 		};
-		FC7DD7E12B51542F0037405B /* ChooseRoom */ = {
+		FC7DD8712B554A810037405B /* ChooseRoom */ = {
 			isa = PBXGroup;
 			children = (
-				FC7DD7E22B51542F0037405B /* RoomSelectionViewModel.swift */,
-				FC7DD7E32B51542F0037405B /* RoomSelectionView.swift */,
+				FC7DD8722B554A810037405B /* RoomSelectionViewModel.swift */,
+				FC7DD8732B554A810037405B /* RoomSelectionView.swift */,
 			);
 			path = ChooseRoom;
 			sourceTree = "<group>";
 		};
-		FC7DD7E52B51542F0037405B /* Models */ = {
+		FC7DD8752B554A810037405B /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				FC7DD7E62B51542F0037405B /* CreatingRoomType.swift */,
+				FC7DD8762B554A810037405B /* CreatingRoomType.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
 		};
-		FC7DD7E72B51542F0037405B /* Services */ = {
+		FC7DD8772B554A810037405B /* Services */ = {
 			isa = PBXGroup;
 			children = (
-				FC7DD7E82B51542F0037405B /* NetworkCreatingRoomService.swift */,
+				FC7DD8782B554A810037405B /* NetworkCreatingRoomService.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
 		};
-		FC7DD7E92B51542F0037405B /* Protocols */ = {
+		FC7DD8792B554A810037405B /* RoomInfoFlow */ = {
 			isa = PBXGroup;
 			children = (
-				FC7DD7EA2B51542F0037405B /* RoomsNamespace.swift */,
-			);
-			path = Protocols;
-			sourceTree = "<group>";
-		};
-		FC7DD7EB2B51542F0037405B /* RoomInfoFlow */ = {
-			isa = PBXGroup;
-			children = (
-				FC7DD7EC2B51542F0037405B /* RoomSharingView.swift */,
-				FC7DD7ED2B51542F0037405B /* RoomSharingNetworkService.swift */,
-				FC7DD7EE2B51542F0037405B /* Models */,
-				FC7DD7F12B51542F0037405B /* LinkSettings */,
-				FC7DD7F52B51542F0037405B /* RoomSharingViewModel.swift */,
-				FC7DD7F62B51542F0037405B /* RoomSharingAccessType */,
-				FC7DD7FA2B51542F0037405B /* Views */,
-				FC7DD7FC2B51542F0037405B /* RoomSharingRootViewController.swift */,
+				FC7DD87A2B554A810037405B /* RoomSharingView.swift */,
+				FC7DD87B2B554A810037405B /* RoomSharingNetworkService.swift */,
+				FC7DD87C2B554A810037405B /* Models */,
+				FC7DD87F2B554A810037405B /* LinkSettings */,
+				FC7DD8832B554A810037405B /* RoomSharingViewModel.swift */,
+				FC7DD8842B554A810037405B /* RoomSharingAccessType */,
+				FC7DD8882B554A810037405B /* Views */,
+				FC7DD88A2B554A810037405B /* RoomSharingRootViewController.swift */,
 			);
 			path = RoomInfoFlow;
 			sourceTree = "<group>";
 		};
-		FC7DD7EE2B51542F0037405B /* Models */ = {
+		FC7DD87C2B554A810037405B /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				FC7DD7EF2B51542F0037405B /* RoomLinksResponceModel.swift */,
-				FC7DD7F02B51542F0037405B /* LinkModel.swift */,
+				FC7DD87D2B554A810037405B /* RoomLinksResponceModel.swift */,
+				FC7DD87E2B554A810037405B /* LinkModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
 		};
-		FC7DD7F12B51542F0037405B /* LinkSettings */ = {
+		FC7DD87F2B554A810037405B /* LinkSettings */ = {
 			isa = PBXGroup;
 			children = (
-				FC7DD7F22B51542F0037405B /* RoomSharingLinkAccessService.swift */,
-				FC7DD7F32B51542F0037405B /* RoomSharingCustomizeLinkViewModel.swift */,
-				FC7DD7F42B51542F0037405B /* RoomSharingCustomizeLinkView.swift */,
+				FC7DD8802B554A810037405B /* RoomSharingLinkAccessService.swift */,
+				FC7DD8812B554A810037405B /* RoomSharingCustomizeLinkViewModel.swift */,
+				FC7DD8822B554A810037405B /* RoomSharingCustomizeLinkView.swift */,
 			);
 			path = LinkSettings;
 			sourceTree = "<group>";
 		};
-		FC7DD7F62B51542F0037405B /* RoomSharingAccessType */ = {
+		FC7DD8842B554A810037405B /* RoomSharingAccessType */ = {
 			isa = PBXGroup;
 			children = (
-				FC7DD7F72B51542F0037405B /* RoomUsersAccessNetworkService.swift */,
-				FC7DD7F82B51542F0037405B /* RoomSharingAccessTypeViewModel.swift */,
-				FC7DD7F92B51542F0037405B /* RoomSharingAccessTypeView.swift */,
+				FC7DD8852B554A810037405B /* RoomUsersAccessNetworkService.swift */,
+				FC7DD8862B554A810037405B /* RoomSharingAccessTypeViewModel.swift */,
+				FC7DD8872B554A810037405B /* RoomSharingAccessTypeView.swift */,
 			);
 			path = RoomSharingAccessType;
 			sourceTree = "<group>";
 		};
-		FC7DD7FA2B51542F0037405B /* Views */ = {
+		FC7DD8882B554A810037405B /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				FC7DD7FB2B51542F0037405B /* RoomSharingLinkRow.swift */,
+				FC7DD8892B554A810037405B /* RoomSharingLinkRow.swift */,
 			);
 			path = Views;
+			sourceTree = "<group>";
+		};
+		FC7DD88B2B554A810037405B /* EditRoomFlow */ = {
+			isa = PBXGroup;
+			children = (
+				FC7DD88C2B554A810037405B /* EditRoomViewController.swift */,
+				FC7DD88D2B554A810037405B /* EditRoomRouteView.swift */,
+				FC7DD88E2B554A810037405B /* EditRoom */,
+				FC7DD8912B554A810037405B /* Services */,
+			);
+			path = EditRoomFlow;
+			sourceTree = "<group>";
+		};
+		FC7DD88E2B554A810037405B /* EditRoom */ = {
+			isa = PBXGroup;
+			children = (
+				FC7DD88F2B554A810037405B /* EditRoomView.swift */,
+				FC7DD8902B554A810037405B /* EditRoomViewModel.swift */,
+			);
+			path = EditRoom;
+			sourceTree = "<group>";
+		};
+		FC7DD8912B554A810037405B /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				FC7DD8922B554A810037405B /* NetworkEditRoomServiceImp.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		FC7DD8932B554A810037405B /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				FC7DD8942B554A810037405B /* RoomViewRow.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		FC7DD8952B554A810037405B /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				FC7DD8962B554A810037405B /* RoomsNamespace.swift */,
+			);
+			path = Protocols;
 			sourceTree = "<group>";
 		};
 		FC844391215E604000526974 /* Root */ = {
@@ -2936,18 +2951,6 @@
 				FCE9F6AD2B2B54A10056E420 /* ASCAttachmentManager.swift */,
 			);
 			path = Utils;
-			sourceTree = "<group>";
-		};
-		FCE9F7582B2C87980056E420 /* Rooms */ = {
-			isa = PBXGroup;
-			children = (
-				FC7DD7DC2B51542F0037405B /* CreateRoomFlow */,
-				FC7DD7D22B51542F0037405B /* EditRoomFlow */,
-				FC7DD7E92B51542F0037405B /* Protocols */,
-				FC7DD7EB2B51542F0037405B /* RoomInfoFlow */,
-				FC7DD7DA2B51542F0037405B /* Views */,
-			);
-			path = Rooms;
 			sourceTree = "<group>";
 		};
 		FCE9F7922B3033750056E420 /* CurrentFolderMenu */ = {
@@ -3649,12 +3652,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				FC7DD80D2B51542F0037405B /* RoomSharingNetworkService.swift in Sources */,
 				FCFE46DA275E237E007C9AE0 /* ASCEntityExistenceCheckerByAttributes.swift in Sources */,
 				FC7D99942729997C00410795 /* ASCCloudsViewController+ManagedAppConfig.swift in Sources */,
 				FC7D99432729942700410795 /* ASCSharingSettingsVerifyRightHoldersPresenter.swift in Sources */,
 				FC7D996A2729952400410795 /* ASCSharingSettingsAccessForUserOrGroupNotesProvider.swift in Sources */,
-				FC7DD80A2B51542F0037405B /* NetworkCreatingRoomService.swift in Sources */,
+				FC7DD8A52B554A810037405B /* RoomSharingCustomizeLinkView.swift in Sources */,
 				FCAE8B8D1E717B84004FC332 /* EventManager.swift in Sources */,
 				FC7CF5101EF3E76F00C0A64F /* ASCStringTransform.swift in Sources */,
 				FC239982267A2E0F00B82EAC /* ASCOneDriveFileProvider.swift in Sources */,
@@ -3668,12 +3670,12 @@
 				FCECDDCA26430978006CD7B9 /* ASCPasswordRecoveryViewController.swift in Sources */,
 				FC83D5472A973E2100C404CB /* Data+Extension.swift in Sources */,
 				FC7D992A2729942700410795 /* ASCSwitchRowViewModel.swift in Sources */,
+				FC7DD8A32B554A810037405B /* RoomSharingLinkAccessService.swift in Sources */,
 				FC786FC31EB879F600181D62 /* ASCIntroViewController.swift in Sources */,
 				FC12ACF22567CF5E00FF1CBB /* ASCAnalytics.swift in Sources */,
 				FCA1D59C2B4FD3AC00904A30 /* CreateTagRequestModel.swift in Sources */,
 				FC7D992C2729942700410795 /* ASCCopyLinkTableViewCell.swift in Sources */,
 				FC83D54B2A973E2100C404CB /* UITextField+Extensions.swift in Sources */,
-				FC7DD80F2B51542F0037405B /* LinkModel.swift in Sources */,
 				FC7D99292729942700410795 /* ASCSharingRightHolderViewModel.swift in Sources */,
 				FC4BCA39274F92E300C91403 /* ASCAccessToAddRightHoldersCheckerProtocol.swift in Sources */,
 				FCC38BD222D379DE00F500C3 /* ASCFolderProviderType.swift in Sources */,
@@ -3691,7 +3693,7 @@
 				FC28F2C61E8D1BB200A8F985 /* ASCEntityManager.swift in Sources */,
 				FC42948F294C964600DC3932 /* ASCDocSpaceFiltersController.swift in Sources */,
 				FCF696222632FF3E00808644 /* ASCButtonStyle.swift in Sources */,
-				FC7DD8092B51542F0037405B /* CreatingRoomType.swift in Sources */,
+				FC7DD8B42B554AE10037405B /* ActivityView.swift in Sources */,
 				FCCB1939262AC68F007517BB /* Scenes.swift in Sources */,
 				FC6852182683572600D830EC /* ASCOneDriveFileProvider.swift in Sources */,
 				FC83D53D2A973E2100C404CB /* Date+Extension.swift in Sources */,
@@ -3701,11 +3703,14 @@
 				FCE2B4282930CCA700E50429 /* ASCFile.swift in Sources */,
 				FC56A3752A389C9B000EA058 /* ASCEditorManager+PresentationEditor.swift in Sources */,
 				FC83D5492A973E2100C404CB /* UITableViewCell+Extensions.swift in Sources */,
-				FC7DD8152B51542F0037405B /* RoomSharingAccessTypeViewModel.swift in Sources */,
+				FC7DD8AE2B554A810037405B /* EditRoomView.swift in Sources */,
 				FC7B801B2AFA294E00C22C71 /* ASCCountryCodeViewController.swift in Sources */,
 				FC7DC871285A2D3400E61C69 /* ASCLocalFilterController.swift in Sources */,
 				FC41D8042265D8DA00A155C2 /* ASCShareAccess.swift in Sources */,
 				FC56B5CA20C03F3400557C1F /* ASCSortViewCellTableViewCell.swift in Sources */,
+				FC7DD8972B554A810037405B /* CreateRoomViewModel.swift in Sources */,
+				FC7DD8A62B554A810037405B /* RoomSharingViewModel.swift in Sources */,
+				FC7DD8992B554A810037405B /* CreateRoomRouteViewViewController.swift in Sources */,
 				FCA1D58F2B4FD3AC00904A30 /* OnlyofficeCapabilities.swift in Sources */,
 				FC64B2EC1EE56C5500920FDD /* ASCGoogleSignInController.swift in Sources */,
 				FC41D80A2265DA5E00A155C2 /* ASCFolderType.swift in Sources */,
@@ -3713,14 +3718,13 @@
 				FC7D9982272996D600410795 /* UITextField+Style.swift in Sources */,
 				FC7DC876285A2D3400E61C69 /* ASCFiltersCollectionViewCell.swift in Sources */,
 				FCE835362A8514B700EFA839 /* ASCCreateEntityUI.swift in Sources */,
+				FC7DD8A22B554A810037405B /* LinkModel.swift in Sources */,
 				FCE2B4232930CCA700E50429 /* ASCGroup.swift in Sources */,
 				FC5D040F263AF06400D9DBCF /* NetworkingError.swift in Sources */,
 				FC83D53B2A973E2100C404CB /* UIAlertController+SwiftAlertController.swift in Sources */,
-				FC7DD8072B51542F0037405B /* RoomSelectionView.swift in Sources */,
 				FC83D5392A973E2100C404CB /* CALayer+Animate.swift in Sources */,
 				FC2C73D92754BC5F008E9063 /* ASCAccessToAddRightHoldersCheckerByPortalDefinder.swift in Sources */,
 				FC83D5322A973E2100C404CB /* UIButton+Extensions.swift in Sources */,
-				FC7DD8172B51542F0037405B /* RoomSharingLinkRow.swift in Sources */,
 				FC68398D21B7DFCE00251CEA /* ASCOnlyofficeNavigationController.swift in Sources */,
 				FC5D0437263C2BF800D9DBCF /* DropboxAccount.swift in Sources */,
 				FC9F496B27F5CFE100D88936 /* ASCConnectStorageNextCloudServerController.swift in Sources */,
@@ -3741,8 +3745,9 @@
 				FCE1F6461EDC456700D9DE17 /* ASCCreatePortalViewController.swift in Sources */,
 				FCE9F79D2B303E120056E420 /* CurrentRoomArchivesMenu.swift in Sources */,
 				FC4160FD29090F42006B5E4A /* ASCLinkTableViewHeaderFooterView.swift in Sources */,
-				FC7DD8052B51542F0037405B /* CreateRoomRouteViewViewController.swift in Sources */,
+				FC7DD8A92B554A810037405B /* RoomSharingAccessTypeView.swift in Sources */,
 				FC9749951EE04A1E00D00DDB /* ASCConnectPortalViewController.swift in Sources */,
+				FC7DD89B2B554A810037405B /* RoomSelectionView.swift in Sources */,
 				FC9749971EE04FB300D00DDB /* ASCSignInViewController.swift in Sources */,
 				FCE835392A8514B700EFA839 /* ASCCreateEntityUIViewController.swift in Sources */,
 				FC7D99692729952400410795 /* ASCSharingSettingsAccessProviderFactory.swift in Sources */,
@@ -3760,6 +3765,7 @@
 				FC7D99452729942700410795 /* ASCSharingSettingsVerifyRightHoldersModels.swift in Sources */,
 				FCE9F6AE2B2B54A10056E420 /* ViewState.swift in Sources */,
 				FC2C73DC2754BCA7008E9063 /* ASCPortalType.swift in Sources */,
+				FC7DD8982B554A810037405B /* CreateRoomView.swift in Sources */,
 				FCFE46DB275E237E007C9AE0 /* ASCEntityExistenceChecker.swift in Sources */,
 				E8674B762B2B15C200CDA5DC /* WSTagsFieldRepresentable.swift in Sources */,
 				FC7D99202729942700410795 /* ASCSharingAddRightHoldersView.swift in Sources */,
@@ -3767,7 +3773,7 @@
 				FCA1D5922B4FD3AC00904A30 /* RoomUsersResponceModel.swift in Sources */,
 				FC7D99412729942700410795 /* ASCSharingSettingsVerifyRightHoldersViewController.swift in Sources */,
 				FCE835372A8514B700EFA839 /* CreateEntityViewModel.swift in Sources */,
-				FC7DD8032B51542F0037405B /* CreateRoomViewModel.swift in Sources */,
+				FC7DD8B22B554A810037405B /* RoomsNamespace.swift in Sources */,
 				FC83D53F2A973E2100C404CB /* String+Extension.swift in Sources */,
 				FC83D5352A973E2100C404CB /* UINavigationController+Extension.swift in Sources */,
 				FCC64F85291921D7004D9A47 /* ASCSharingSettingsAccessDefaultProvider.swift in Sources */,
@@ -3787,6 +3793,7 @@
 				FC8C697B1ECC2F44005B68D7 /* ASCConnectStorageOAuth2Google.swift in Sources */,
 				FC059D981E82584400BC2F5E /* ASCDateTransform.swift in Sources */,
 				FC83D5252A973E2100C404CB /* UITapGestureRecognizer+Extensions.swift in Sources */,
+				FC7DD8B02B554A810037405B /* NetworkEditRoomServiceImp.swift in Sources */,
 				FC83D5462A973E2100C404CB /* Decodable+Extensions.swift in Sources */,
 				8A69B5B6249762DE00152BDE /* ASCDebugNavigationController.swift in Sources */,
 				FC7DD7802B502DD70037405B /* TimeLimitCellView.swift in Sources */,
@@ -3796,7 +3803,6 @@
 				FC53AC772988FB50004528D7 /* ASCEditorManagerOptionsProtocol.swift in Sources */,
 				FC31B2831E767CC7008699C3 /* ASCLoaderCell.swift in Sources */,
 				FC68398A21B7DF0C00251CEA /* ASCOnDeviceNavigationController.swift in Sources */,
-				FC7DD8142B51542F0037405B /* RoomUsersAccessNetworkService.swift in Sources */,
 				FCC39FEA1E6ECB3400DECB8D /* ASCLocalFileHelper.swift in Sources */,
 				FC7B801A2AFA294E00C22C71 /* ASCPhoneCountryCode.swift in Sources */,
 				FC6F0CD71F542E7E002D33D9 /* ASCSSOSignInController.swift in Sources */,
@@ -3820,6 +3826,7 @@
 				FC5D043A263C3EF300D9DBCF /* NextcloudApiClient.swift in Sources */,
 				FCF6186E268E0A9A00CD8D84 /* ASCLoadedViewControllerFinderProtocol.swift in Sources */,
 				FC68399221B7ED6700251CEA /* ASCOnlyofficeCategoriesViewController.swift in Sources */,
+				FC7DD8A42B554A810037405B /* RoomSharingCustomizeLinkViewModel.swift in Sources */,
 				FCEF9D371ED2D23400627BA5 /* ASCPasscodeLockPresenter.swift in Sources */,
 				FCA1D59B2B4FD3AC00904A30 /* OnlyofficeAuthRequest.swift in Sources */,
 				FC83D5402A973E2100C404CB /* UIBarButtonItem+Extensions.swift in Sources */,
@@ -3827,11 +3834,14 @@
 				FCE2B41E2930CCA700E50429 /* ASCFolder.swift in Sources */,
 				FC066B16252DC3CE007357F7 /* ASCiCloudProvider.swift in Sources */,
 				FC2B0CBD264031BE00969DB9 /* KingfisherWrapper+Onlyoffice.swift in Sources */,
+				FC7DD8AF2B554A810037405B /* EditRoomViewModel.swift in Sources */,
 				FC7D993F2729942700410795 /* ASCTextViewTableViewCell.swift in Sources */,
 				FCB4CE8529FACBB2009C1E2E /* DetailImageStyleTabelViewCell.swift in Sources */,
+				FC7DD89F2B554A810037405B /* RoomSharingView.swift in Sources */,
 				FC09996F281921890063BB08 /* ASCOAuthCredential.swift in Sources */,
 				FCDA61001EA0ED6800A12E16 /* ASCTransferNavigationController.swift in Sources */,
 				FC1755971E9CAFDB00D73D8E /* ASCSortViewController.swift in Sources */,
+				FC7DD8AB2B554A810037405B /* RoomSharingRootViewController.swift in Sources */,
 				FCEF9D2E1ED2D0DC00627BA5 /* ASCPasscodeLockViewController.swift in Sources */,
 				FC83D52A2A973E2100C404CB /* URL+Extensions.swift in Sources */,
 				FC7DC8F82861FF4900E61C69 /* ASCDevelopOptionsViewController.swift in Sources */,
@@ -3866,42 +3876,37 @@
 				FC83D5382A973E2100C404CB /* UIViewController+Extensions.swift in Sources */,
 				FC3AF6BD21709259004A96FD /* ASCFileManager.swift in Sources */,
 				FC7DC874285A2D3400E61C69 /* ASCDocumentsFilterModel.swift in Sources */,
-				FC7DD7FD2B51542F0037405B /* EditRoomViewController.swift in Sources */,
 				8A01844923A261540025BE85 /* ASCConnectStorageGoogleController.swift in Sources */,
 				8AFBA30D23E8727D0052F6E9 /* ASCFloatingLabelTextField.swift in Sources */,
 				FCE2B4212930CCA700E50429 /* ASCDeepLink.swift in Sources */,
 				FCFB36071EDF0AB00001597E /* ASCBanner.swift in Sources */,
 				0F5AFB4E2B1C9ECC009D916E /* ASCSharingChooseNewOwnerRightHoldersTableViewDataSourceAndDelegate.swift in Sources */,
-				FC7DD8112B51542F0037405B /* RoomSharingCustomizeLinkViewModel.swift in Sources */,
 				FC83D5292A973E2100C404CB /* UIWindow+Extensions.swift in Sources */,
 				FCEF9D391ED2D34400627BA5 /* ASCPasscodeLockSplashView.swift in Sources */,
-				FC7DD8022B51542F0037405B /* RoomViewRow.swift in Sources */,
 				FC7D998D272997B500410795 /* OnedriveTokenAdapter.swift in Sources */,
+				FC7DD8A72B554A810037405B /* RoomUsersAccessNetworkService.swift in Sources */,
 				FCA1D5952B4FD3AC00904A30 /* LogoUploadResult.swift in Sources */,
 				FCEA68232264733A0055926A /* ASC2FAPageController.swift in Sources */,
 				FCECDDC926430978006CD7B9 /* ASCEmailSentViewController.swift in Sources */,
-				FC7DD8122B51542F0037405B /* RoomSharingCustomizeLinkView.swift in Sources */,
 				FC7D993B2729942700410795 /* ASCSharingRightHolderViewModelProtocol.swift in Sources */,
 				FC83D5272A973E2100C404CB /* KingfisherWrapper+Extensions.swift in Sources */,
 				FC56A3732A3871EA000EA058 /* EditorDocumentProtocol.swift in Sources */,
 				FC7D998E272997B500410795 /* OnedriveApiClient.swift in Sources */,
 				FCF3AA8B1EF91A1B00DF63BA /* ASCTransferViewCell.swift in Sources */,
+				FC7DD8AC2B554A810037405B /* EditRoomViewController.swift in Sources */,
 				FC7DC870285A2D3400E61C69 /* ASCFiltersViewController.swift in Sources */,
 				FC7D99232729942700410795 /* ASCSharingAddRightHoldersRouter.swift in Sources */,
 				FC2B0CBB2640305700969DB9 /* OnlyofficeApiClient.swift in Sources */,
 				FCC64F6E2919201B004D9A47 /* ASCSharingAddRightHoldersTableViewDataSourceAndDelegate.swift in Sources */,
-				FC7DD7FE2B51542F0037405B /* EditRoomRouteView.swift in Sources */,
 				FC5D043C263C438400D9DBCF /* NextcloudEndpoints.swift in Sources */,
 				FC83D5332A973E2100C404CB /* MBProgressHUD+Extension.swift in Sources */,
-				FC7DD80C2B51542F0037405B /* RoomSharingView.swift in Sources */,
-				FC7DD7FF2B51542F0037405B /* EditRoomView.swift in Sources */,
 				FCE2B4252930CCA700E50429 /* ASCPushSubscribed.swift in Sources */,
 				FC7D99342729942700410795 /* ASCSharingOptionsPresenter.swift in Sources */,
 				E8674B7B2B2B15C200CDA5DC /* ASCAttachmentManager.swift in Sources */,
-				FC7DD8062B51542F0037405B /* RoomSelectionViewModel.swift in Sources */,
 				FCDB31A81E7C116E00907FC0 /* ASCConstants.swift in Sources */,
 				FC8540C41E83A582000C2436 /* ASCProgressAlert.swift in Sources */,
 				FCA1D59D2B4FD3AC00904A30 /* OnlyofficeDocumentConfig.swift in Sources */,
+				FC7DD8B12B554A810037405B /* RoomViewRow.swift in Sources */,
 				FC86503A1ED3232B00C73AEF /* ASCAboutViewController.swift in Sources */,
 				FCFE46D9275E237E007C9AE0 /* ASCEntityUniqNameFinder.swift in Sources */,
 				FCD33B5921C9195000D52DAF /* ASCDocumentsNavigationController.swift in Sources */,
@@ -3910,22 +3915,18 @@
 				FC7D997B2729966300410795 /* ASCBaseTableViewController.swift in Sources */,
 				E8674BA42B2B166800CDA5DC /* NavigationLink+Extensions.swift in Sources */,
 				FC83D5222A973E2100C404CB /* UserDefaultsExtensions.swift in Sources */,
-				FC7DD8182B51542F0037405B /* RoomSharingRootViewController.swift in Sources */,
 				FCF61860268E0A1A00CD8D84 /* ASCOnlyofficeAPICategoriesProvider.swift in Sources */,
 				FC8BBC9E22BA5D6200761152 /* ASCCreatePortalStatus.swift in Sources */,
 				FCE2B4222930CCA700E50429 /* ASCAccount.swift in Sources */,
 				FC7D99422729942700410795 /* ASCSharingSettingsVerifyRightHoldersInteractor.swift in Sources */,
 				FCF2761E22C0FA5E00984E83 /* ASCShadowRadiusView.swift in Sources */,
 				FC7DD77F2B502DD70037405B /* ASCLinkCell.swift in Sources */,
-				FC7DD8082B51542F0037405B /* CreateRoomRouteView.swift in Sources */,
 				FC41D7FB2265B4AF00A155C2 /* ASC2FACodeViewController.swift in Sources */,
-				FC7DD8132B51542F0037405B /* RoomSharingViewModel.swift in Sources */,
 				FC8667D621C799160020D797 /* ASCCloudsSplitViewController.swift in Sources */,
 				FCF6186C268E0A9A00CD8D84 /* ASCLoadedVCFinderModels.swift in Sources */,
 				FC7DC872285A2D3400E61C69 /* ASCSelectUserViewController.swift in Sources */,
 				FC7DD77D2B502DD70037405B /* PasswordCellView.swift in Sources */,
 				FC7D997D2729966300410795 /* ASCBaseViewController.swift in Sources */,
-				FC7DD8162B51542F0037405B /* RoomSharingAccessTypeView.swift in Sources */,
 				FC6DD4E61EDD59330095B16C /* ParkedTextField.swift in Sources */,
 				FC7DD77A2B502DD70037405B /* SubTitledDetailCellView.swift in Sources */,
 				FC23FC5B2043EEF0003B3AE7 /* ASCUserAvatarView.swift in Sources */,
@@ -3941,11 +3942,13 @@
 				FC881E7729AB61800006C202 /* ASCDocSpaceRoomsFiltersController.swift in Sources */,
 				FC41D80C2265DA8700A155C2 /* ASCFilterType.swift in Sources */,
 				FCCC527220ADB68E000BD819 /* ASCSignInController.swift in Sources */,
+				FC7DD8A02B554A810037405B /* RoomSharingNetworkService.swift in Sources */,
 				FC8C697D1ECC6163005B68D7 /* ASCConnectStorageOAuth2OneDrive.swift in Sources */,
 				FCC3E9BE214006B1001B216C /* ASCLocalization.swift in Sources */,
 				FCF61865268E0A1A00CD8D84 /* ASCOnlyofficeCategoriesProviderFactory.swift in Sources */,
 				FC83D5372A973E2100C404CB /* UIView+Extension.swift in Sources */,
 				FC7D99272729942700410795 /* OnlyofficeShareItemRequestModel.swift in Sources */,
+				FC7DD8AA2B554A810037405B /* RoomSharingLinkRow.swift in Sources */,
 				FC56A3772A389DB2000EA058 /* ASCEditorManager+SpreadsheetEditor.swift in Sources */,
 				FC5943AD2AE6B1F5001BA2F9 /* ASCIntroPageStore.swift in Sources */,
 				FCDB31A61E7BD46800907FC0 /* ASCViewControllerManager.swift in Sources */,
@@ -3981,13 +3984,12 @@
 				FCA1D5912B4FD3AC00904A30 /* OnlyofficeVersion.swift in Sources */,
 				FC5D0414263BE8F300D9DBCF /* DropboxApiClient.swift in Sources */,
 				FCC64F81291921D7004D9A47 /* ASCSharingSettingsAccessOFormProvider.swift in Sources */,
-				FC7DD80E2B51542F0037405B /* RoomLinksResponceModel.swift in Sources */,
 				FCC64F78291920F7004D9A47 /* ASCDocumentsCellSwipeMenu.swift in Sources */,
 				FC83D5282A973E2100C404CB /* UISplitViewController+Extensions.swift in Sources */,
 				FC7D99362729942700410795 /* ASCSharingOptionsSectionProtocol.swift in Sources */,
 				FCC64F5C29191B4C004D9A47 /* ASCOnlyofficeDocSpaceCategoriesGroper.swift in Sources */,
 				FCF696512637FD0F00808644 /* ASCDocumentSortType.swift in Sources */,
-				FC7DD8102B51542F0037405B /* RoomSharingLinkAccessService.swift in Sources */,
+				FC7DD8AD2B554A810037405B /* EditRoomRouteView.swift in Sources */,
 				FCA1D4F02B4FD18D00904A30 /* ResultViewModel.swift in Sources */,
 				FC83D53C2A973E2100C404CB /* Sequence+Extensions.swift in Sources */,
 				8A69B5A62497626E00152BDE /* ASCDebugManager.swift in Sources */,
@@ -4010,6 +4012,7 @@
 				FCEBA6FA28B361910009D50B /* ASCDocumentsViewController+Menu.swift in Sources */,
 				FC7D99352729942700410795 /* ASCEntityLinkMakerProtocol.swift in Sources */,
 				E8674B792B2B15C200CDA5DC /* MenuView.swift in Sources */,
+				FC7DD89A2B554A810037405B /* RoomSelectionViewModel.swift in Sources */,
 				FC6839A021B80BDF00251CEA /* ASCCloudCategoryCell.swift in Sources */,
 				FC83D52F2A973E2100C404CB /* Encodable+Extensions.swift in Sources */,
 				FC41D8082265D9DD00A155C2 /* ASCEntityAccess.swift in Sources */,
@@ -4036,7 +4039,6 @@
 				FC2C73E42754BCDF008E9063 /* ASCPortalTypeDefinderProtocol.swift in Sources */,
 				FC4BCA3D274FA3B000C91403 /* ASCShareSettingsAPIWorkerFactory.swift in Sources */,
 				FC5D043F263C444500D9DBCF /* NextcloudStorageStats.swift in Sources */,
-				FC7DD8012B51542F0037405B /* NetworkEditRoomServiceImp.swift in Sources */,
 				FCE9F6AF2B2B54A10056E420 /* ASCAttachmentManager.swift in Sources */,
 				FC68399A21B808AC00251CEA /* ASCCloudsViewController.swift in Sources */,
 				FCA1D5972B4FD3AC00904A30 /* AttachTagsRequestModel.swift in Sources */,
@@ -4058,13 +4060,13 @@
 				FC56A3712A38712D000EA058 /* EditorViewControllerProtocol.swift in Sources */,
 				FC83D5452A973E2100C404CB /* UIDevice+Extension.swift in Sources */,
 				FCA1D5992B4FD3AC00904A30 /* CreateRoomRequestModel.swift in Sources */,
+				FC7DD89C2B554A810037405B /* CreateRoomRouteView.swift in Sources */,
 				FC99FAF1226460F2000F1464 /* ASC2FAViewController.swift in Sources */,
 				FCA1D5962B4FD3AC00904A30 /* OnlyofficeResponse.swift in Sources */,
 				FC41D80E2265DADC00A155C2 /* ASCFileProviderType.swift in Sources */,
 				FC82827F21C3CC01005AF726 /* ASCDeviceSplitViewController.swift in Sources */,
 				FCA1D4F42B4FD2B000904A30 /* ServicesProvider.swift in Sources */,
 				FC59431C2AE663AA001BA2F9 /* ASCDocumentEditorConfiguration.swift in Sources */,
-				FC7DD8042B51542F0037405B /* CreateRoomView.swift in Sources */,
 				FC7D991A2729942700410795 /* ASCSharingRightHolderTableViewCell.swift in Sources */,
 				FC7D99252729942700410795 /* ASCSharingSettingsAccessViewController.swift in Sources */,
 				FC41D8022265D6EF00A155C2 /* ASCLoginType.swift in Sources */,
@@ -4072,7 +4074,9 @@
 				FCE9F6D32B2B55DD0056E420 /* View+Extensions.swift in Sources */,
 				FC68399621B7EF1000251CEA /* ASCOnlyofficeCategory.swift in Sources */,
 				FC83D5442A973E2100C404CB /* UIDevice+DeviceKit.swift in Sources */,
+				FC7DD89D2B554A810037405B /* CreatingRoomType.swift in Sources */,
 				FC7D99402729942700410795 /* ASCTextFieldCellViewModel.swift in Sources */,
+				FC7DD8A12B554A810037405B /* RoomLinksResponceModel.swift in Sources */,
 				FCB839661EB8948D0065EC25 /* ASCIntroPageController.swift in Sources */,
 				FC7D994F272994BB00410795 /* AppDelegate.swift in Sources */,
 				FC8C697F1ECC6755005B68D7 /* ASCConnectStorageOAuth2Box.swift in Sources */,
@@ -4080,12 +4084,11 @@
 				FCF61864268E0A1A00CD8D84 /* ASCOnlyofficeCategoriesProviderProtocol.swift in Sources */,
 				FC7D99702729959400410795 /* ASCCreatePortal.swift in Sources */,
 				FCECDDDD26430B79006CD7B9 /* ASCResponsePassword.swift in Sources */,
-				FC7DD80B2B51542F0037405B /* RoomsNamespace.swift in Sources */,
-				FC7DD8002B51542F0037405B /* EditRoomViewModel.swift in Sources */,
 				FC7D99242729942700410795 /* ASCSharingAddRightHoldersModels.swift in Sources */,
 				FC9F497427F5D10E00D88936 /* KeyboardManagerHelper.swift in Sources */,
 				FC7DD7812B502DD70037405B /* ASCDocSpaceLinkLifeTimeView.swift in Sources */,
 				FCA1D59E2B4FD3AC00904A30 /* OnlyofficeAuth.swift in Sources */,
+				FC7DD89E2B554A810037405B /* NetworkCreatingRoomService.swift in Sources */,
 				FC0F01DF216F443E008D79A5 /* ASCLocalProvider.swift in Sources */,
 				FC1829082A24E9B4005D9220 /* AppTheme.swift in Sources */,
 				FCE2B4262930CCA700E50429 /* ASCUser.swift in Sources */,
@@ -4096,6 +4099,7 @@
 				FCCB1938262AC68F007517BB /* Assets.swift in Sources */,
 				FC7DD77C2B502DD70037405B /* ImagedDetailCellView.swift in Sources */,
 				FC33FAA02B0F59AD00688E17 /* ASCFolderLogoAvatarView.swift in Sources */,
+				FC7DD8A82B554A810037405B /* RoomSharingAccessTypeViewModel.swift in Sources */,
 				FC7F71F829940FA00004F274 /* ASCEntitySecurity.swift in Sources */,
 				FCE2B4202930CCA700E50429 /* ASCEntity.swift in Sources */,
 				FCC64F76291920F7004D9A47 /* ASCDocumentsFolderCellContextMenu.swift in Sources */,

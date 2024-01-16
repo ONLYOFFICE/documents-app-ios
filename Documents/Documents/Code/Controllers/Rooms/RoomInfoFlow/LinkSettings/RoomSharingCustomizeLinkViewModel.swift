@@ -48,14 +48,6 @@ final class RoomSharingCustomizeLinkViewModel: ObservableObject {
         else { return nil }
         return URL(string: strLink)
     }
-
-    static let dateFormatter: DateFormatter = {
-        let formatter = DateFormatter()
-        formatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSSSSSZ"
-        formatter.locale = Locale(identifier: "en_US_POSIX")
-        return formatter
-    }()
-
     private var cancelable = Set<AnyCancellable>()
 
     private var linkId: String? {
@@ -203,7 +195,7 @@ private extension RoomSharingCustomizeLinkViewModel {
             id: linkId,
             title: linkName,
             access: .defaultAccsessForLink,
-            expirationDate: isTimeLimited ? Self.dateFormatter.string(from: selectedDate) : nil,
+            expirationDate: isTimeLimited ? Self.sendDateFormatter.string(from: selectedDate) : nil,
             linkType: ASCShareLinkType.external,
             denyDownload: isRestrictCopyOn,
             password: isProtected ? password : nil,
@@ -218,6 +210,25 @@ private extension RoomSharingCustomizeLinkViewModel {
             }
         }
     }
+}
+
+// MARK: Date formaters
+
+private extension RoomSharingCustomizeLinkViewModel {
+    
+    static let dateFormatter: DateFormatter = {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSSSSSZ"
+        formatter.locale = Locale(identifier: "en_US_POSIX")
+        return formatter
+    }()
+
+    static let sendDateFormatter: DateFormatter = {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSS'Z'"
+        formatter.locale = Locale(identifier: "en_US_POSIX")
+        return formatter
+    }()
 }
 
 private extension Int {

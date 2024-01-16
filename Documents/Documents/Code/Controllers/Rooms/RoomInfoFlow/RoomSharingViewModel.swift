@@ -192,7 +192,7 @@ private extension RoomSharingViewModel {
             flowModel.links.append(inputLink)
         }
         // editing screen dismissed
-        if selectdLink == nil {
+        if selectdLink == nil, !isCreatingLinkScreenDisplaing {
             buildViewModel()
         }
     }

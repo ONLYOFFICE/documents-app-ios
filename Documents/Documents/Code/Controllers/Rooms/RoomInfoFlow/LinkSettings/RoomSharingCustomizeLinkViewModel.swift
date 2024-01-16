@@ -25,6 +25,7 @@ final class RoomSharingCustomizeLinkViewModel: ObservableObject {
     @Published var password: String = ""
     @Published var isExpired: Bool = false
 
+    @Published var sharingLink: URL? = nil
     @Published var isPasswordVisible: Bool = false
     @Published var isDeleting: Bool = false
     @Published var isDeleted: Bool = false
@@ -36,18 +37,12 @@ final class RoomSharingCustomizeLinkViewModel: ObservableObject {
         if room.roomType == .public, link?.isGeneral == true {
             return false
         }
-        if link == nil && outputLink == nil {
+        if sharingLink == nil {
             return false
         }
         return true
     }
 
-    var sharingLink: URL? {
-        guard let strLink = link?.linkInfo.shareLink ?? outputLink?.linkInfo.shareLink,
-              link?.linkInfo.isExpired != true
-        else { return nil }
-        return URL(string: strLink)
-    }
     private var cancelable = Set<AnyCancellable>()
 
     private var linkId: String? {
@@ -83,6 +78,8 @@ final class RoomSharingCustomizeLinkViewModel: ObservableObject {
         isProtected = !password.isEmpty
         isRestrictCopyOn = linkInfo?.denyDownload == true
         isTimeLimited = linkInfo?.expirationDate != nil
+
+        defineSharingLink()
 
         $linkName
             .dropFirst()
@@ -203,12 +200,24 @@ private extension RoomSharingCustomizeLinkViewModel {
         ) { [self] result in
             switch result {
             case let .success(link):
-                outputLink = link
+                DispatchQueue.main.async { [self] in
+                    outputLink = link
+                    defineSharingLink()
+                }
             case let .failure(error):
-                log.error(error.localizedDescription)
-                errorMessage = error.localizedDescription
+                DispatchQueue.main.async { [self] in
+                    log.error(error.localizedDescription)
+                    errorMessage = error.localizedDescription
+                }
             }
         }
+    }
+
+    func defineSharingLink() {
+        guard let strLink = link?.linkInfo.shareLink ?? outputLink?.linkInfo.shareLink,
+              link?.linkInfo.isExpired != true
+        else { return }
+        sharingLink = URL(string: strLink)
     }
 }
 

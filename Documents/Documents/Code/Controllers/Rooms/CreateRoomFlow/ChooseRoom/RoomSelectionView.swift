@@ -70,6 +70,17 @@ struct SizePreferenceKey: PreferenceKey {
     }
 }
 
+extension RoomTypeModel {
+    static func make(fromRoomType roomType: CreatingRoomType) -> RoomTypeModel {
+        RoomTypeModel(
+            type: roomType,
+            name: roomType.name,
+            description: roomType.description,
+            icon: roomType.icon
+        )
+    }
+}
+
 #Preview {
     RoomSelectionView(selectedRoomType: .constant(nil))
 }

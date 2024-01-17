@@ -43,10 +43,6 @@
 		E80574552B18EE5700AAFCF0 /* CreatingRoomType.swift in Sources */ = {isa = PBXBuildFile; fileRef = E80574542B18EE5700AAFCF0 /* CreatingRoomType.swift */; };
 		E8187D7E2B514E0B00DDCF49 /* RoomTypeViewRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8187D7D2B514E0B00DDCF49 /* RoomTypeViewRow.swift */; };
 		E8187D872B514EF700DDCF49 /* EditRoomViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8187D802B514EF600DDCF49 /* EditRoomViewController.swift */; };
-		E8187D882B514EF700DDCF49 /* EditRoomRouteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8187D812B514EF600DDCF49 /* EditRoomRouteView.swift */; };
-		E8187D892B514EF700DDCF49 /* EditRoomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8187D832B514EF600DDCF49 /* EditRoomView.swift */; };
-		E8187D8A2B514EF700DDCF49 /* EditRoomViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8187D842B514EF600DDCF49 /* EditRoomViewModel.swift */; };
-		E8187D8B2B514EF700DDCF49 /* NetworkEditRoomServiceImp.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8187D862B514EF600DDCF49 /* NetworkEditRoomServiceImp.swift */; };
 		E8187D8D2B5156BF00DDCF49 /* ActivityView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8187D8C2B5156BF00DDCF49 /* ActivityView.swift */; };
 		E83125CE2B249A4E006016F1 /* WSTagsFieldRepresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = E83125CD2B249A4E006016F1 /* WSTagsFieldRepresentable.swift */; };
 		E83125D02B249AC7006016F1 /* TagsFieldView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E83125CF2B249AC7006016F1 /* TagsFieldView.swift */; };
@@ -647,10 +643,6 @@
 		E80574542B18EE5700AAFCF0 /* CreatingRoomType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreatingRoomType.swift; sourceTree = "<group>"; };
 		E8187D7D2B514E0B00DDCF49 /* RoomTypeViewRow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoomTypeViewRow.swift; sourceTree = "<group>"; };
 		E8187D802B514EF600DDCF49 /* EditRoomViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditRoomViewController.swift; sourceTree = "<group>"; };
-		E8187D812B514EF600DDCF49 /* EditRoomRouteView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditRoomRouteView.swift; sourceTree = "<group>"; };
-		E8187D832B514EF600DDCF49 /* EditRoomView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditRoomView.swift; sourceTree = "<group>"; };
-		E8187D842B514EF600DDCF49 /* EditRoomViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditRoomViewModel.swift; sourceTree = "<group>"; };
-		E8187D862B514EF600DDCF49 /* NetworkEditRoomServiceImp.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkEditRoomServiceImp.swift; sourceTree = "<group>"; };
 		E8187D8C2B5156BF00DDCF49 /* ActivityView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityView.swift; sourceTree = "<group>"; };
 		E83125CD2B249A4E006016F1 /* WSTagsFieldRepresentable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WSTagsFieldRepresentable.swift; sourceTree = "<group>"; };
 		E83125CF2B249AC7006016F1 /* TagsFieldView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagsFieldView.swift; sourceTree = "<group>"; };
@@ -1887,28 +1879,8 @@
 			isa = PBXGroup;
 			children = (
 				E8187D802B514EF600DDCF49 /* EditRoomViewController.swift */,
-				E8187D812B514EF600DDCF49 /* EditRoomRouteView.swift */,
-				E8187D822B514EF600DDCF49 /* EditRoom */,
-				E8187D852B514EF600DDCF49 /* Services */,
 			);
 			path = EditRoomFlow;
-			sourceTree = "<group>";
-		};
-		E8187D822B514EF600DDCF49 /* EditRoom */ = {
-			isa = PBXGroup;
-			children = (
-				E8187D832B514EF600DDCF49 /* EditRoomView.swift */,
-				E8187D842B514EF600DDCF49 /* EditRoomViewModel.swift */,
-			);
-			path = EditRoom;
-			sourceTree = "<group>";
-		};
-		E8187D852B514EF600DDCF49 /* Services */ = {
-			isa = PBXGroup;
-			children = (
-				E8187D862B514EF600DDCF49 /* NetworkEditRoomServiceImp.swift */,
-			);
-			path = Services;
 			sourceTree = "<group>";
 		};
 		E83125CC2B249A30006016F1 /* Representable */ = {
@@ -3590,7 +3562,6 @@
 				FCE9F6422B2B49D60056E420 /* ASCSharingAddRightHoldersViewController.swift in Sources */,
 				1DD3DCB92B3D20C70001D1B8 /* RoomSharingView.swift in Sources */,
 				FC7DD79C2B502F7E0037405B /* PasswordCellView.swift in Sources */,
-				E8187D882B514EF700DDCF49 /* EditRoomRouteView.swift in Sources */,
 				FC83D5FE2A974E2200C404CB /* UIViewController+Extensions.swift in Sources */,
 				FC142A7328981A1F00EDE7CE /* ASCPasscodeLockPresenter.swift in Sources */,
 				FC7080F02812E2260057FCD2 /* OnlyofficeApiClient.swift in Sources */,
@@ -3615,7 +3586,6 @@
 				FC142A1A289818B800EDE7CE /* ASCSelectUserViewController.swift in Sources */,
 				FC7080FE2812E2260057FCD2 /* UIButton+Style.swift in Sources */,
 				F378024229DAE05B0020B453 /* ASCMultiAccountScreenModel.swift in Sources */,
-				E8187D892B514EF700DDCF49 /* EditRoomView.swift in Sources */,
 				FC7B800A2AFA24D100C22C71 /* ASCCountryCodeViewController.swift in Sources */,
 				FC5943B62AE6B3C4001BA2F9 /* ASCIntroPageStoreProtocol.swift in Sources */,
 				FC83D6132A974E2300C404CB /* NSAttributedString+Extensions.swift in Sources */,
@@ -3624,7 +3594,6 @@
 				FC7080FF2812E2260057FCD2 /* ASCPortalType.swift in Sources */,
 				FC83D5F92A974E2200C404CB /* UINavigationItem+Extensions.swift in Sources */,
 				FC7081002812E2260057FCD2 /* ASCViewModelSetter.swift in Sources */,
-				E8187D8A2B514EF700DDCF49 /* EditRoomViewModel.swift in Sources */,
 				FC142A26289818B800EDE7CE /* ASCLeftAlignedCollectionViewFlowLayout.swift in Sources */,
 				FC142A43289819B400EDE7CE /* ASCGroup.swift in Sources */,
 				FC7081012812E2260057FCD2 /* ASCOnlyofficeNavigationController.swift in Sources */,
@@ -3953,7 +3922,6 @@
 				FC7081F92812E2260057FCD2 /* ASCSharingOptionsSectionProtocol.swift in Sources */,
 				FC83D61D2A974E2300C404CB /* UISplitViewController+Extensions.swift in Sources */,
 				1DD3DCBF2B3D20C70001D1B8 /* RoomSharingRootViewController.swift in Sources */,
-				E8187D8B2B514EF700DDCF49 /* NetworkEditRoomServiceImp.swift in Sources */,
 				1DD3DCC62B3D25FC0001D1B8 /* RoomLinkResponceModel.swift in Sources */,
 				FC7081FA2812E2260057FCD2 /* ASCDropboxProvider.swift in Sources */,
 				FC7081FB2812E2260057FCD2 /* ASCLoadedVCFinderModels.swift in Sources */,

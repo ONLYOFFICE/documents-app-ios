@@ -6,6 +6,8 @@
 //  Copyright © 2015 Yanko Dimitrov. All rights reserved.
 //
 
+#if os(iOS)
+
 import Foundation
 
 struct ConfirmPasscodeState: PasscodeLockStateType {
@@ -38,3 +40,5 @@ struct ConfirmPasscodeState: PasscodeLockStateType {
         }
     }
 }
+
+#endif

@@ -6,6 +6,8 @@
 //  Copyright © 2015 Yanko Dimitrov. All rights reserved.
 //
 
+#if os(iOS)
+
 import Foundation
 
 struct SetPasscodeState: PasscodeLockStateType {
@@ -30,3 +32,5 @@ struct SetPasscodeState: PasscodeLockStateType {
         lock.changeStateTo(nextState)
     }
 }
+
+#endif

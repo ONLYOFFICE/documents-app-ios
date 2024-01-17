@@ -6,6 +6,8 @@
 //  Copyright © 2015 Yanko Dimitrov. All rights reserved.
 //
 
+#if os(iOS)
+
 import Foundation
 
 public protocol PasscodeLockStateType {
@@ -16,3 +18,5 @@ public protocol PasscodeLockStateType {
 
     mutating func acceptPasscode(_ passcode: [String], fromLock lock: PasscodeLockType)
 }
+
+#endif

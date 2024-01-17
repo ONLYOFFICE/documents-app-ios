@@ -6,6 +6,8 @@
 //  Copyright © 2015 Yanko Dimitrov. All rights reserved.
 //
 
+#if os(iOS)
+
 import Foundation
 
 public protocol PasscodeLockType {
@@ -28,3 +30,5 @@ public protocol PasscodeLockTypeDelegate: AnyObject {
     func passcodeLock(_ lock: PasscodeLockType, addedSignAtIndex index: Int)
     func passcodeLock(_ lock: PasscodeLockType, removedSignAtIndex index: Int)
 }
+
+#endif

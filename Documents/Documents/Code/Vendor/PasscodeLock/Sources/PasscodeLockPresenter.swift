@@ -6,6 +6,8 @@
 //  Copyright © 2015 Yanko Dimitrov. All rights reserved.
 //
 
+#if os(iOS)
+
 import UIKit
 
 open class PasscodeLockPresenter {
@@ -112,3 +114,5 @@ open class PasscodeLockPresenter {
         }
     }
 }
+
+#endif

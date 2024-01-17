@@ -6,6 +6,8 @@
 //  Copyright © 2015 Yanko Dimitrov. All rights reserved.
 //
 
+#if os(iOS)
+
 import Foundation
 
 func localizedStringFor(_ key: String, comment: String) -> String {
@@ -26,3 +28,5 @@ func bundleForResource(_ name: String, ofType type: String) -> Bundle {
         return Bundle(for: PasscodeLock.self)
     #endif
 }
+
+#endif

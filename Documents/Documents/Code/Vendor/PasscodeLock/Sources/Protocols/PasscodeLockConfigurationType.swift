@@ -6,6 +6,8 @@
 //  Copyright © 2015 Yanko Dimitrov. All rights reserved.
 //
 
+#if os(iOS)
+
 import Foundation
 
 public protocol PasscodeLockConfigurationType {
@@ -16,3 +18,5 @@ public protocol PasscodeLockConfigurationType {
     var touchIdReason: String? { get set }
     var maximumInccorectPasscodeAttempts: Int { get }
 }
+
+#endif

@@ -6,6 +6,8 @@
 //  Copyright © 2015 Yanko Dimitrov. All rights reserved.
 //
 
+#if os(iOS)
+
 import LocalAuthentication
 import UIKit
 
@@ -287,3 +289,5 @@ open class PasscodeLockViewController: UIViewController, PasscodeLockTypeDelegat
         }
     }
 }
+
+#endif

@@ -6,6 +6,8 @@
 //  Copyright © 2015 Yanko Dimitrov. All rights reserved.
 //
 
+#if os(iOS)
+
 import Foundation
 
 public protocol PasscodeRepositoryType {
@@ -15,3 +17,5 @@ public protocol PasscodeRepositoryType {
     func savePasscode(_ passcode: [String])
     func deletePasscode()
 }
+
+#endif

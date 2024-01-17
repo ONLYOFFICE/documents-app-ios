@@ -2,6 +2,8 @@
 //  PasscodeLockStyles.swift
 //
 
+#if os(iOS)
+
 import UIKit
 
 public enum PasscodeLockStyles {
@@ -22,3 +24,5 @@ public enum PasscodeLockStyles {
         public static var highlightBackgroundColor: UIColor = .link
     }
 }
+
+#endif

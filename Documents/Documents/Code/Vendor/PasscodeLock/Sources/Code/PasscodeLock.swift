@@ -6,6 +6,8 @@
 //  Copyright © 2015 Yanko Dimitrov. All rights reserved.
 //
 
+#if os(iOS)
+
 import Foundation
 import LocalAuthentication
 
@@ -103,3 +105,5 @@ open class PasscodeLock: PasscodeLockType {
         return LAContext().canEvaluatePolicy(.deviceOwnerAuthenticationWithBiometrics, error: nil)
     }
 }
+
+#endif

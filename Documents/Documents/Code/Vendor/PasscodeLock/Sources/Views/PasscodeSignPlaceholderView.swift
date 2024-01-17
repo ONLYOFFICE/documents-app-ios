@@ -6,6 +6,8 @@
 //  Copyright © 2015 Yanko Dimitrov. All rights reserved.
 //
 
+#if os(iOS)
+
 import UIKit
 
 @IBDesignable
@@ -84,3 +86,5 @@ open class PasscodeSignPlaceholderView: UIView {
         )
     }
 }
+
+#endif

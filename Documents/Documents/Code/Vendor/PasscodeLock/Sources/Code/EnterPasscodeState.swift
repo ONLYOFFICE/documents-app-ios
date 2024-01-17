@@ -6,6 +6,8 @@
 //  Copyright © 2015 Yanko Dimitrov. All rights reserved.
 //
 
+#if os(iOS)
+
 import Foundation
 
 public let PasscodeLockIncorrectPasscodeNotification = "passcode.lock.incorrect.passcode.notification"
@@ -67,3 +69,5 @@ struct EnterPasscodeState: PasscodeLockStateType {
         isNotificationSent = true
     }
 }
+
+#endif

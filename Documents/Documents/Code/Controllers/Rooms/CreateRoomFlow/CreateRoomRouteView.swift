@@ -18,8 +18,8 @@ struct CreateRoomRouteView: View {
         NavigationView {
             RoomSelectionView(selectedRoomType: $selectedRoomType)
                 .navigation(item: $selectedRoomType) { type in
-                    CreateRoomView(
-                        viewModel: CreateRoomViewModel(selectedRoomType: type) { room in
+                    ManageRoomView(
+                        viewModel: ManageRoomViewModel(selectedRoomType: type) { room in
                             presentationMode.wrappedValue.dismiss()
                             onCreate(room)
                         }

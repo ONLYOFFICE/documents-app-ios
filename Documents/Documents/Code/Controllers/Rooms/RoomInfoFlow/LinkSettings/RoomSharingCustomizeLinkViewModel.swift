@@ -224,7 +224,6 @@ private extension RoomSharingCustomizeLinkViewModel {
 // MARK: Date formaters
 
 private extension RoomSharingCustomizeLinkViewModel {
-    
     static let dateFormatter: DateFormatter = {
         let formatter = DateFormatter()
         formatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSSSSSZ"

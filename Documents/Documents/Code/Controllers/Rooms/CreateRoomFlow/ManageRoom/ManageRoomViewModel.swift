@@ -1,5 +1,5 @@
 //
-//  CreateRoomViewModel.swift
+//  ManageRoomViewModel.swift
 //  Documents
 //
 //  Created by Pavel Chernyshev on 23.11.2023.
@@ -10,7 +10,7 @@ import Combine
 import Foundation
 import UIKit
 
-class CreateRoomViewModel: ObservableObject {
+class ManageRoomViewModel: ObservableObject {
     // MARK: - Published vars
 
     @Published var roomName: String = ""
@@ -77,7 +77,7 @@ class CreateRoomViewModel: ObservableObject {
 
 // MARK: - Private func
 
-private extension CreateRoomViewModel {
+private extension ManageRoomViewModel {
     func createRoom() {
         creatingRoomService.createRoom(
             model: .init(

@@ -13,7 +13,7 @@ final class ServicesProvider {
 
     private init() {}
 
-    private(set) lazy var roomCreateService: CreatingRoomService = NetworkCreatingRoomServiceImp()
+    private(set) lazy var roomCreateService: ManagingRoomService = NetworkManagingRoomServiceImp()
 
     private(set) lazy var roomUsersAccessNetworkService: RoomUsersAccessNetworkService = RoomUsersAccessNetworkServiceImp()
 

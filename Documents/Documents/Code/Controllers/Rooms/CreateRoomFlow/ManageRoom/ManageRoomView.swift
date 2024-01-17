@@ -1,5 +1,5 @@
 //
-//  CreateRoomView.swift
+//  ManageRoomView.swift
 //  Documents
 //
 //  Created by Pavel Chernyshev on 22.11.2023.
@@ -10,10 +10,10 @@ import Foundation
 import MBProgressHUD
 import SwiftUI
 
-struct CreateRoomView: View {
+struct ManageRoomView: View {
     @Environment(\.presentationMode) var presentationMode
 
-    @ObservedObject var viewModel: CreateRoomViewModel
+    @ObservedObject var viewModel: ManageRoomViewModel
 
     var body: some View {
         handleHUD()
@@ -115,7 +115,7 @@ struct CreateRoomView: View {
 
 private extension View {
     @ViewBuilder
-    func navigationBarItems(viewModel: CreateRoomViewModel) -> some View {
+    func navigationBarItems(viewModel: ManageRoomViewModel) -> some View {
         let closeButton = Button(NSLocalizedString("Close", comment: "")) {
             UIApplication.topViewController()?.dismiss(animated: true)
         }
@@ -146,7 +146,7 @@ private extension View {
             : navigationBarTitle(Text(NSLocalizedString("Create room", comment: "")), displayMode: .inline)
     }
 
-    func navigateToRoomTypeSelection(isActive: Binding<Bool>, viewModel: CreateRoomViewModel) -> some View {
+    func navigateToRoomTypeSelection(isActive: Binding<Bool>, viewModel: ManageRoomViewModel) -> some View {
         navigation(isActive: isActive, destination: {
             RoomSelectionView(
                 selectedRoomType: Binding<RoomTypeModel?>(
@@ -171,7 +171,7 @@ private extension CGFloat {
 }
 
 #Preview {
-    CreateRoomView(
-        viewModel: CreateRoomViewModel(selectedRoomType: CreatingRoomType.publicRoom.toRoomTypeModel()) { _ in }
+    ManageRoomView(
+        viewModel: ManageRoomViewModel(selectedRoomType: CreatingRoomType.publicRoom.toRoomTypeModel()) { _ in }
     )
 }

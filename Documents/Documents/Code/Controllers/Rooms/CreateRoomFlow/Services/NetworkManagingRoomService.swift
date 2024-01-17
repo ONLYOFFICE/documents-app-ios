@@ -1,5 +1,5 @@
 //
-//  NetworkCreatingRoomService.swift
+//  NetworkManagingRoomService.swift
 //  Documents
 //
 //  Created by Pavel Chernyshev on 13.12.2023.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-protocol CreatingRoomService {
+protocol ManagingRoomService {
     func createRoom(model: CreatingRoomModel, completion: @escaping (Result<ASCFolder, Error>) -> Void)
     func editRoom(model: EditRoomModel, completion: @escaping (Result<ASCFolder, Error>) -> Void)
 }
@@ -29,7 +29,7 @@ struct EditRoomModel {
     var tagsToDelete: [String]
 }
 
-class NetworkCreatingRoomServiceImp: CreatingRoomService {
+class NetworkManagingRoomServiceImp: ManagingRoomService {
     private var networkService = OnlyofficeApiClient.shared
 
     func createRoom(model: CreatingRoomModel, completion: @escaping (Result<ASCFolder, Error>) -> Void) {
@@ -57,7 +57,7 @@ class NetworkCreatingRoomServiceImp: CreatingRoomService {
 
 // MARK: - Edit
 
-extension NetworkCreatingRoomServiceImp {
+extension NetworkManagingRoomServiceImp {
     func editRoom(model: EditRoomModel, completion: @escaping (Result<ASCFolder, Error>) -> Void) {
         updateRoom(room: model.room, name: model.name, roomType: model.roomType.rawValue) { [self] result in
             switch result {
@@ -141,7 +141,7 @@ extension NetworkCreatingRoomServiceImp {
 
 // MARK: - Create
 
-extension NetworkCreatingRoomServiceImp {
+extension NetworkManagingRoomServiceImp {
     private func createRoomNetwork(model: CreatingRoomModel, completion: @escaping (Result<ASCFolder, Error>) -> Void) {
         let requestModel = CreateRoomRequestModel(roomType: model.roomType.rawValue, title: model.name)
         networkService.request(OnlyofficeAPI.Endpoints.Rooms.create(), requestModel.dictionary) { response, error in

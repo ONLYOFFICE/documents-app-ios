@@ -20,8 +20,8 @@ struct ASCLinkCellModel {
          onTapAction: @escaping () -> Void,
          onShareAction: @escaping () -> Void)
     {
-        titleString = NSLocalizedString(titleKey, comment: "")
-        subTitleString = NSLocalizedString(subTitleKey, comment: "")
+        titleString = titleKey
+        subTitleString = subTitleKey
         self.onTapAction = onTapAction
         self.onShareAction = onShareAction
     }

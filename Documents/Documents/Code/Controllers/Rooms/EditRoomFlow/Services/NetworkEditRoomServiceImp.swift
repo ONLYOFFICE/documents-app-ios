@@ -144,15 +144,8 @@ class NetworkEditRoomServiceImp {
             with: OnlyofficeApiClient.absoluteUrl(from: URL(string: folder.logo?.large ?? "")),
             placeholder: nil,
             options: [],
-            completionHandler: { result in
-                switch result {
-                case .success:
-                    print("success")
-                    completion()
-                case .failure:
-                    print("failed")
-                    completion()
-                }
+            completionHandler: { _ in
+                completion()
             }
         )
     }

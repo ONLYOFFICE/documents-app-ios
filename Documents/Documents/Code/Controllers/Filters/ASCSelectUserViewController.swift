@@ -104,7 +104,7 @@ class ASCSelectUserViewController: UIViewController {
         navigationItem.hidesSearchBarWhenScrolling = false
 
         let rightBarButton = UIBarButtonItem(
-            title: NSLocalizedString("Cancel", comment: ""),
+            title: ASCLocalization.Common.cancel,
             style: UIBarButtonItem.Style.plain,
             target: self,
             action: #selector(cancelBarButtonItemTapped)

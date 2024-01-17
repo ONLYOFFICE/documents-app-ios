@@ -10,14 +10,25 @@ import Combine
 import SwiftUI
 
 enum LinkLifeTimeOption: String, CaseIterable {
-    case twelveHours = "12 hours"
-    case oneDay = "1 day"
-    case sevenDays = "7 days"
-    case unlimited = "Unlimited"
-    case custom = "Custom"
+    case twelveHours
+    case oneDay
+    case sevenDays
+    case unlimited
+    case custom
 
     var localized: String {
-        NSLocalizedString(rawValue, comment: "")
+        switch self {
+        case .twelveHours:
+            NSLocalizedString("12 hours", comment: "")
+        case .oneDay:
+            NSLocalizedString("1 day", comment: "")
+        case .sevenDays:
+            NSLocalizedString("7 days", comment: "")
+        case .unlimited:
+            NSLocalizedString("Unlimited", comment: "")
+        case .custom:
+            NSLocalizedString("Custom", comment: "")
+        }
     }
 }
 

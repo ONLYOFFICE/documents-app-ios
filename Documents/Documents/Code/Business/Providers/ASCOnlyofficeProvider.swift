@@ -1423,7 +1423,7 @@ class ASCOnlyofficeProvider: ASCFileProviderProtocol & ASCSortableFileProviderPr
         apiClient.request(OnlyofficeAPI.Endpoints.Sharing.inviteRequest(folder: folder), inviteRequestModel.toJSON()) {
             result, error in
             if error != nil {
-                handler?(.error, nil, ASCProviderError(msg: NSLocalizedString("Couldn't leave the room.", comment: "")))
+                handler?(.error, nil, ASCProviderError(msg: NSLocalizedString("Couldn't leave the room", comment: "")))
             } else {
                 handler?(.end, folder, nil)
             }

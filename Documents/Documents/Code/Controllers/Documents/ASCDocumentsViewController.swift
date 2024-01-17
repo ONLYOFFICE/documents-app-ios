@@ -1560,7 +1560,7 @@ class ASCDocumentsViewController: ASCBaseTableViewController, UIGestureRecognize
 
     func deleteFolderAction(folder: ASCFolder) {
         let alertController = UIAlertController(title: NSLocalizedString("Delete forever?", comment: ""), message: "", preferredStyle: .alert)
-        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+        let cancelAction = UIAlertAction(title: ASCLocalization.Common.cancel, style: .cancel, handler: nil)
 
         var hud: MBProgressHUD?
 
@@ -1902,7 +1902,7 @@ class ASCDocumentsViewController: ASCBaseTableViewController, UIGestureRecognize
 
         let isOwner: Bool = provider.checkRoomOwner(folder: folder)
         let alertController = UIAlertController(title: NSLocalizedString("Leave the room", comment: ""), message: "", preferredStyle: .alert)
-        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+        let cancelAction = UIAlertAction(title: ASCLocalization.Common.cancel, style: .cancel, handler: nil)
 
         if isOwner {
             let assignOwnerAction = UIAlertAction(title: NSLocalizedString("Assign Owner", comment: ""), style: .default) { _ in
@@ -1955,7 +1955,7 @@ class ASCDocumentsViewController: ASCBaseTableViewController, UIGestureRecognize
             alertController.addAction(assignOwnerAction)
 
         } else {
-            let submitAction = UIAlertAction(title: NSLocalizedString("Ok", comment: ""), style: .default) { _ in
+            let submitAction = UIAlertAction(title: ASCLocalization.Common.ok, style: .default) { _ in
                 provider.leaveRoom(folder: folder) { status, result, error in
                     if status == .begin {
                         hud = MBProgressHUD.showTopMost()

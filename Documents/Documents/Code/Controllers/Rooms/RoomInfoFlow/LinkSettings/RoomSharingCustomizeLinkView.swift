@@ -86,9 +86,9 @@ struct RoomSharingCustomizeLinkView: View {
     private var timeLimitSection: some View {
         Section(
             header: Text(NSLocalizedString("Time limit", comment: "")),
-            footer: viewModel.isExpired 
+            footer: viewModel.isExpired
                 ? Text(NSLocalizedString("The link has expired and has been disabled", comment: ""))
-                    .foregroundColor(.red)
+                .foregroundColor(.red)
                 : nil
         ) {
             Toggle(isOn: $viewModel.isTimeLimited.animation()) {
@@ -111,7 +111,9 @@ struct RoomSharingCustomizeLinkView: View {
             Section {
                 ASCLabledCellView(model:
                     .init(
-                        textString: NSLocalizedString(viewModel.isProtected ? "Copy link and password" : "Copy link", comment: ""),
+                        textString: viewModel.isProtected 
+                        ? NSLocalizedString("Copy link and password", comment: "")
+                        : NSLocalizedString("Copy link", comment: ""),
                         cellType: .standard,
                         textAlignment: .center,
                         onTapAction: viewModel.onCopyLinkAndNotify
@@ -198,9 +200,9 @@ private extension View {
     func alertForErrorMessage(_ errorMessage: Binding<String?>) -> some View {
         alert(item: errorMessage) { message in
             Alert(
-                title: Text(NSLocalizedString("Error", comment: "")),
+                title: Text(ASCLocalization.Common.error),
                 message: Text(message),
-                dismissButton: .default(Text("OK"), action: {
+                dismissButton: .default(ASCLocalization.Common.ok, action: {
                     errorMessage.wrappedValue = nil
                 })
             )

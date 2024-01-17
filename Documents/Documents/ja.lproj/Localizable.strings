@@ -29,12 +29,6 @@
 "<p>You must have a paid version of the player to use this service.</p><p>If you have activated double authentication, please generate a CDM application from the Infomaniak manager. <a href=\"https://www.infomaniak.com/en/support/faq/1940/enable-two-step-verification\">More...</a></p>" = "<p>本サービスをご利用いただくには、有償版のプレーヤーが必要です。</p><p>二重認証を有効にしている場合は、InfomaniakマネージャからCDMアプリケーションを生成してください。 <a href=\"https://www.infomaniak.com/en/support/faq/1940/enable-two-step-verification\">詳細情報</a></p>";
 
 /* No comment provided by engineer. */
-"Сould not download file." = "このファイルをダウンロードできませんでした。";
-
-/* No comment provided by engineer. */
-"Сould not upload file." = "ファイルをアップロードできませんでした。";
-
-/* No comment provided by engineer. */
 "A file with a similar name already exists in the document directory on the device." = "同名のファイルがすでに端末のドキュメントディレクトリに存在します。";
 
 /* No comment provided by engineer. */
@@ -139,9 +133,6 @@
 
 /* No comment provided by engineer. */
 "Archiving failed." = "アーカイブに失敗しました。";
-
-/* No comment provided by engineer. */
-"Are you sure you want to delete the account  %@ from this devce?" = "このデバイスから「%@」アカウントを削除してよろしいですか？";
 
 /* No comment provided by engineer. */
 "Are you sure you want to delete the account %@ from this devce?" = "このデバイスから「%@」アカウントを削除してよろしいですか？";
@@ -386,7 +377,8 @@
 /* No comment provided by engineer. */
 "Create new documents, spreadsheets or presentations. Create new folders to organize your files." = "新しい文書、スプレッドシート、プレゼンテーションを作成します。新しいフォルダーを作成して、ファイルを整理することができます。";
 
-/* Caption of the process */
+/* Caption of the process
+   Caption of the processing */
 "Creating" = "作成中";
 
 /* No comment provided by engineer. */
@@ -1449,12 +1441,6 @@
 /* Caption of the process */
 "Uploading" = "アップロード中";
 
-/* Button title */
-"Use Face ID" = "Face IDを使用する";
-
-/* Button title */
-"Use Touch ID" = "Touch ID を使用する";
-
 /* No comment provided by engineer. */
 "User" = "ユーザー";
 
@@ -1544,4 +1530,10 @@
 
 /* Data units */
 "Zero bytes" = "0 バイト";
+
+/* No comment provided by engineer. */
+"Сould not download file." = "このファイルをダウンロードできませんでした。";
+
+/* No comment provided by engineer. */
+"Сould not upload file." = "ファイルをアップロードできませんでした。";
 

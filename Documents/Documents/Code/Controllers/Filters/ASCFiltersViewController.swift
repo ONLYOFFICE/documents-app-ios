@@ -152,7 +152,7 @@ private extension ASCFiltersViewController {
             action: #selector(resetBarButtonItemTapped)
         )
         let leftBarButton = UIBarButtonItem(
-            title: NSLocalizedString("Cancel", comment: ""),
+            title: ASCLocalization.Common.cancel,
             style: UIBarButtonItem.Style.plain,
             target: self,
             action: #selector(cancelBarButtonItemTapped)

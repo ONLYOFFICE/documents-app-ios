@@ -21,13 +21,13 @@ enum ASCAttachmentManagerError: LocalizedError, Equatable {
     public var errorDescription: String? {
         switch self {
         case .exist:
-            return "A file with a similar name already exist."
+            return NSLocalizedString("A file with a similar name already exist.", comment: "")
         case let .unknown(error):
-            return error?.localizedDescription ?? "Unknown error"
+            return error?.localizedDescription ?? NSLocalizedString("Unknown error", comment: "")
         case .canceled:
-            return "Canceled"
+            return NSLocalizedString("Canceled", comment: "")
         case .convert:
-            return "Сonversion error"
+            return NSLocalizedString("Сonversion error", comment: "")
         }
     }
 
@@ -40,12 +40,12 @@ class ASCAttachmentManager: NSObject {
     // MARK: - Properties
 
     public enum Text {
-        static var photoLibraryUnavailableTitle = "Photo Library Unavailable"
-        static var photoLibraryUnavailableMessage = "Please go to Settings and enable the photo library for this app to use this feature."
-        static var cameraUnavailableTitle = "Camera Unavailable"
-        static var cameraUnavailableMessage = "Please go to Settings and enable the camera for this app to use this feature."
-        static var settings = "Settings"
-        static var cancel = "Cancel"
+        static var photoLibraryUnavailableTitle = NSLocalizedString("Photo Library Unavailable", comment: "")
+        static var photoLibraryUnavailableMessage = NSLocalizedString("Please go to Settings and enable the photo library for this app to use this feature.", comment: "")
+        static var cameraUnavailableTitle = NSLocalizedString("Camera Unavailable", comment: "")
+        static var cameraUnavailableMessage = NSLocalizedString("Please go to Settings and enable the camera for this app to use this feature.", comment: "")
+        static var settings = NSLocalizedString("Settings", comment: "")
+        static var cancel = NSLocalizedString("Cancel", comment: "")
     }
 
     var photoQuality: CGFloat = 0.9

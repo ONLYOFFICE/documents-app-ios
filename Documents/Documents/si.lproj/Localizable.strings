@@ -29,12 +29,6 @@
 "<p>You must have a paid version of the player to use this service.</p><p>If you have activated double authentication, please generate a CDM application from the Infomaniak manager. <a href=\"https://www.infomaniak.com/en/support/faq/1940/enable-two-step-verification\">More...</a></p>" = "<p>මෙම සේවාව භාවිතයට ඔබ සතුව වාදකයේ ගෙවන අනුවාදයක් තිබිය යුතුය.</p><p>ඔබ ද්විත්ව සත්‍යාපනය සක්‍රිය කර ඇත්නම්, කරුණාකර Infomaniak කළමනාකරණය හරහා CDM යෙදුමක් උත්පාදනය කරන්න. <a href=\"https://www.infomaniak.com/en/support/faq/1940/enable-two-step-verification\">තවත්...</a></p>";
 
 /* No comment provided by engineer. */
-"Сould not download file." = "ගොනුව බාගැනීමට නොහැකි විය.";
-
-/* No comment provided by engineer. */
-"Сould not upload file." = "උඩුගත කිරීමට නොහැකි විය.";
-
-/* No comment provided by engineer. */
 "A file with a similar name already exists in the document directory on the device." = "උපාංගයේ ලේඛන නාමාවලියෙහි සමාන නමක් සහිත ගොනුවක් දැනටමත් පවතී.";
 
 /* No comment provided by engineer. */
@@ -139,9 +133,6 @@
 
 /* No comment provided by engineer. */
 "Archiving failed." = "සංරක්‍ෂණයට අසමත් විය.";
-
-/* No comment provided by engineer. */
-"Are you sure you want to delete the account  %@ from this devce?" = "ඔබට මෙම උපාංගයෙන් %@ ගිණුම මැකීමට වුවමනා ද?";
 
 /* No comment provided by engineer. */
 "Are you sure you want to delete the account %@ from this devce?" = "ඔබට මෙම උපාංගයෙන් %@ ගිණුම මැකීමට වුවමනා ද?";
@@ -386,7 +377,8 @@
 /* No comment provided by engineer. */
 "Create new documents, spreadsheets or presentations. Create new folders to organize your files." = "නව ලේඛන, පැතුරුම්පත් හෝ සමර්පණ සාදන්න. ඔබගේ ගොනු සංවිධානය කිරීමට නව බහාලුම් සාදන්න.";
 
-/* Caption of the process */
+/* Caption of the process
+   Caption of the processing */
 "Creating" = "සෑදෙමින්";
 
 /* No comment provided by engineer. */
@@ -1449,12 +1441,6 @@
 /* Caption of the process */
 "Uploading" = "උඩුගත වෙමින්";
 
-/* Button title */
-"Use Face ID" = "මුහුණු හැඳු. භාවිතය";
-
-/* Button title */
-"Use Touch ID" = "ස්පර්ශ හැඳු. භාවිතය";
-
 /* No comment provided by engineer. */
 "User" = "පරිශ්‍රීලක";
 
@@ -1544,4 +1530,10 @@
 
 /* Data units */
 "Zero bytes" = "බයිට ශූන්‍යයි";
+
+/* No comment provided by engineer. */
+"Сould not download file." = "ගොනුව බාගැනීමට නොහැකි විය.";
+
+/* No comment provided by engineer. */
+"Сould not upload file." = "උඩුගත කිරීමට නොහැකි විය.";
 

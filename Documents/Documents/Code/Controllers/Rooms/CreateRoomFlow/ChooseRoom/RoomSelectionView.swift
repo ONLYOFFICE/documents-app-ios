@@ -54,7 +54,7 @@ struct RoomSelectionView: View {
         }
         .navigationBarTitle(Text(NSLocalizedString("Choose room type", comment: "")), displayMode: .inline)
         .navigationBarItems(
-            trailing: Button(NSLocalizedString("Cancel", comment: "")) {
+            trailing: Button(ASCLocalization.Common.cancel) {
                 presentationMode.wrappedValue.dismiss()
             }
         )

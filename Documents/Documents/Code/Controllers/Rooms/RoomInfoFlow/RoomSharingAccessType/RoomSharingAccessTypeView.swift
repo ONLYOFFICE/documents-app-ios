@@ -23,12 +23,12 @@ struct RoomSharingAccessTypeView: View {
             }
         }
         .disabled(viewModel.isAccessChanging)
-        .navigationBarTitle(Text("Access type"))
+        .navigationBarTitle(Text(NSLocalizedString("Access type", comment: "")))
         .alert(item: $viewModel.error) { errorMessage in
             Alert(
-                title: Text(NSLocalizedString("Error", comment: "")),
+                title: Text(ASCLocalization.Common.error),
                 message: Text(errorMessage),
-                dismissButton: .default(Text("OK"), action: {
+                dismissButton: .default(Text(ASCLocalization.Common.ok), action: {
                     viewModel.error = nil
                 })
             )

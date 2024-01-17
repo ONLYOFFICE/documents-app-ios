@@ -29,12 +29,6 @@
 "<p>You must have a paid version of the player to use this service.</p><p>If you have activated double authentication, please generate a CDM application from the Infomaniak manager. <a href=\"https://www.infomaniak.com/en/support/faq/1940/enable-two-step-verification\">More...</a></p>" = "<p>您必須擁有付費版本的播放器才能使用此服務。</p><p>若您啟動了雙重身份驗證，請從Infomaniak管理器生成CDM應用程序。<a href=\"https://www.infomaniak.com/en/support/faq/1940/enable-two-step-verification\">更多...</a></p>";
 
 /* No comment provided by engineer. */
-"Сould not download file." = "无法下载文件。";
-
-/* No comment provided by engineer. */
-"Сould not upload file." = "无法上转文件。";
-
-/* No comment provided by engineer. */
 "A file with a similar name already exists in the document directory on the device." = "在设备的文档目录中已存在名称相似的文件。";
 
 /* No comment provided by engineer. */
@@ -139,9 +133,6 @@
 
 /* No comment provided by engineer. */
 "Archiving failed." = "存檔失敗。";
-
-/* No comment provided by engineer. */
-"Are you sure you want to delete the account  %@ from this devce?" = "您確定要從此設備中删除帳戶%@嗎？";
 
 /* No comment provided by engineer. */
 "Are you sure you want to delete the account %@ from this devce?" = "您確定要從此設備中删除帳戶%@嗎？";
@@ -386,7 +377,8 @@
 /* No comment provided by engineer. */
 "Create new documents, spreadsheets or presentations. Create new folders to organize your files." = "创建新的文档、电子表格或演示文稿。创建新的文件夹来管理您的文件。";
 
-/* Caption of the process */
+/* Caption of the process
+   Caption of the processing */
 "Creating" = "正在创建";
 
 /* No comment provided by engineer. */
@@ -1449,12 +1441,6 @@
 /* Caption of the process */
 "Uploading" = "正在上转";
 
-/* Button title */
-"Use Face ID" = "使用Face ID";
-
-/* Button title */
-"Use Touch ID" = "使用Touch ID";
-
 /* No comment provided by engineer. */
 "User" = "使用者";
 
@@ -1544,4 +1530,10 @@
 
 /* Data units */
 "Zero bytes" = "零字节";
+
+/* No comment provided by engineer. */
+"Сould not download file." = "无法下载文件。";
+
+/* No comment provided by engineer. */
+"Сould not upload file." = "无法上转文件。";
 

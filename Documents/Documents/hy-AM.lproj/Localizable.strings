@@ -29,12 +29,6 @@
 "<p>You must have a paid version of the player to use this service.</p><p>If you have activated double authentication, please generate a CDM application from the Infomaniak manager. <a href=\"https://www.infomaniak.com/en/support/faq/1940/enable-two-step-verification\">More...</a></p>" = "<p>Այս ծառայությունից օգտվելու համար դուք պետք է ունենաք նվագարկչի վճարովի տարբերակ:</p><p> Եթե դուք ակտիվացրել եք կրկնակի նույնականացում, խնդրում ենք ստեղծել CDM հավելված Infomaniak մենեջերից: <a href=\"https://www.infomaniak.com/en/support/faq/1940/enable-two-step-verification\">Ավելին...</a></p>";
 
 /* No comment provided by engineer. */
-"Сould not download file." = "Չհաջողվեց ներբեռնել ֆայլը:";
-
-/* No comment provided by engineer. */
-"Сould not upload file." = "Չհաջողվեց վերբեռնել ֆայլը:";
-
-/* No comment provided by engineer. */
 "A file with a similar name already exists in the document directory on the device." = "Նման անունով ֆայլ արդեն գոյություն ունի սարքի փաստաթղթերի գրացուցակում:";
 
 /* No comment provided by engineer. */
@@ -139,9 +133,6 @@
 
 /* No comment provided by engineer. */
 "Archiving failed." = "Չհաջողվեց արխիվացնել:";
-
-/* No comment provided by engineer. */
-"Are you sure you want to delete the account  %@ from this devce?" = "Իսկապե՞ս ուզում եք ջնջել %@ հաշիվն այս սարքից:";
 
 /* No comment provided by engineer. */
 "Are you sure you want to delete the account %@ from this devce?" = "Իսկապե՞ս ուզում եք ջնջել %@ հաշիվն այս սարքից:";
@@ -386,7 +377,8 @@
 /* No comment provided by engineer. */
 "Create new documents, spreadsheets or presentations. Create new folders to organize your files." = "Ստեղծեք նոր փաստաթղթեր, աղյուսակներ կամ ներկայացումներ: Ստեղծեք նոր թղթապանակներ՝ ձեր ֆայլերը կազմակերպելու համար:";
 
-/* Caption of the process */
+/* Caption of the process
+   Caption of the processing */
 "Creating" = "Ստեղծելով";
 
 /* No comment provided by engineer. */
@@ -1449,12 +1441,6 @@
 /* Caption of the process */
 "Uploading" = "Վերբեռնում";
 
-/* Button title */
-"Use Face ID" = "Օգտագործեք Face ID";
-
-/* Button title */
-"Use Touch ID" = "Օգտագործեք Touch ID";
-
 /* No comment provided by engineer. */
 "User" = "Օգտատեր";
 
@@ -1544,4 +1530,10 @@
 
 /* Data units */
 "Zero bytes" = "Զրո բայթ";
+
+/* No comment provided by engineer. */
+"Сould not download file." = "Չհաջողվեց ներբեռնել ֆայլը:";
+
+/* No comment provided by engineer. */
+"Сould not upload file." = "Չհաջողվեց վերբեռնել ֆայլը:";
 

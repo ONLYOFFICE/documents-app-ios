@@ -108,7 +108,7 @@ final class RoomSharingViewModel: ObservableObject {
     func createAndCopyAdditionalLink() {
         isActivitiIndicatorDisplaying = true
         linkAccessService.createLink(
-            title: NSLocalizedString("Link name (1)", comment: ""),
+            title: String(format: NSLocalizedString("Link name %@", comment: ""), "(1)"),
             linkType: ASCShareLinkType.external,
             room: room
         ) { [weak self] result in
@@ -250,5 +250,5 @@ private extension RoomSharingViewModel {
 }
 
 private extension String {
-    static let linkCopiedSuccessfull = NSLocalizedString("Link successfully copied to clipboard", comment: "")
+    static let linkCopiedSuccessfull = NSLocalizedString("Link successfully\ncopied to clipboard", comment: "")
 }

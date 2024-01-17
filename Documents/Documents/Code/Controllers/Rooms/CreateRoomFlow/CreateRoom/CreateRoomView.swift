@@ -46,9 +46,9 @@ struct CreateRoomView: View {
         )
         .alert(item: $viewModel.errorMessage) { errorMessage in
             Alert(
-                title: Text(NSLocalizedString("Error", comment: "")),
+                title: Text(ASCLocalization.Common.error),
                 message: Text(errorMessage),
-                dismissButton: .default(Text("OK"), action: {
+                dismissButton: .default(Text(ASCLocalization.Common.ok), action: {
                     viewModel.errorMessage = nil
                 })
             )

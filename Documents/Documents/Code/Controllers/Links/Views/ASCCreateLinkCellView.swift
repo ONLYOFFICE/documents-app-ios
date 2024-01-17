@@ -35,7 +35,7 @@ struct ASCCreateLinkCellView: View {
 struct ASCCreateLinkCellView_Previews: PreviewProvider {
     static var previews: some View {
         ASCCreateLinkCellView(
-            model: ASCCreateLinkCellModel(textString: "Create and copy", imageNames: [], onTapAction: {})
+            model: ASCCreateLinkCellModel(textString: NSLocalizedString("Create and copy", comment: ""), imageNames: [], onTapAction: {})
         )
     }
 }

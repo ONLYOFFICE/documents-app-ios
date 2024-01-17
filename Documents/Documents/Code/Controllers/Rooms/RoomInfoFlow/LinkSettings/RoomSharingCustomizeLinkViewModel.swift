@@ -233,7 +233,6 @@ private extension RoomSharingCustomizeLinkViewModel {
 // MARK: Date formaters
 
 private extension RoomSharingCustomizeLinkViewModel {
-    
     static let dateFormatter: DateFormatter = {
         let formatter = DateFormatter()
         formatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSSSSSZ"
@@ -255,6 +254,6 @@ private extension Int {
 }
 
 private extension String {
-    static let linkCopiedSuccessfull = NSLocalizedString("Link successfully copied to clipboard", comment: "")
-    static let linkAndPasswordCopiedSuccessfull = NSLocalizedString("Link and password successfully copied to clipboard", comment: "")
+    static let linkCopiedSuccessfull = NSLocalizedString("Link successfully\ncopied to clipboard", comment: "")
+    static let linkAndPasswordCopiedSuccessfull = NSLocalizedString("Link and password\nsuccessfully copied\nto clipboard", comment: "")
 }

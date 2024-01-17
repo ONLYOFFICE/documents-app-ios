@@ -40,9 +40,9 @@ struct EditRoomView: View {
             )
             .alert(item: $viewModel.errorMessage) { errorMessage in
                 Alert(
-                    title: Text(NSLocalizedString("Error", comment: "")),
+                    title: Text(ASCLocalization.Common.error),
                     message: Text(errorMessage),
-                    dismissButton: .default(Text("OK"), action: {
+                    dismissButton: .default(ASCLocalization.Common.ok, action: {
                         viewModel.errorMessage = nil
                     })
                 )
@@ -109,7 +109,7 @@ struct EditRoomView: View {
             MBProgressHUD.currentHUD?.hide(animated: false)
             let hud = MBProgressHUD.showTopMost()
             hud?.mode = .indeterminate
-            hud?.label.text = NSLocalizedString("Updateing", comment: "Caption of the processing")
+            hud?.label.text = NSLocalizedString("Updating", comment: "Caption of the processing")
         } else {
             if let hud = MBProgressHUD.currentHUD {
                 if let _ = viewModel.errorMessage {

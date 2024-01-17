@@ -14,32 +14,71 @@ class CreateRoomViewModel: ObservableObject {
     // MARK: - Published vars
 
     @Published var roomName: String = ""
-    @Published var isCreatingRoom = false
+    @Published var isSaving = false
     @Published var errorMessage: String?
     @Published var selectedRoomType: RoomTypeModel
     @Published var selectedImage: UIImage?
     @Published var tags: Set<String> = []
 
+    @Published var isRoomSelectionPresenting = false
+
     // MARK: - Public vars
 
     lazy var menuItems: [MenuViewItem] = makeImageMenuItems()
+    var isEditMode: Bool { editingRoom != nil }
+    var editingRoomImage: URL? {
+        if let urlStr = editingRoom?.logo?.small,
+           let portal = OnlyofficeApiClient.shared.baseURL?.absoluteString.trimmed
+        {
+            return URL(string: portal + urlStr)
+        }
+        return nil
+    }
+
+    var isSaveBtnEnabled: Bool {
+        roomName.isEmpty || isSaving
+    }
 
     // MARK: - Private var
 
     private lazy var creatingRoomService = ServicesProvider.shared.roomCreateService
     private var onCreate: (ASCFolder) -> Void
+    private let editingRoom: ASCRoom?
 
     // MARK: - Init
 
-    init(selectedRoomType: RoomTypeModel, onCreate: @escaping (ASCFolder) -> Void) {
+    init(
+        editingRoom: ASCRoom? = nil,
+        selectedRoomType: RoomTypeModel,
+        onCreate: @escaping (ASCFolder) -> Void
+    ) {
+        self.editingRoom = editingRoom
         self.selectedRoomType = selectedRoomType
         self.onCreate = onCreate
+
+        if let editingRoom {
+            self.selectedRoomType.showDisclosureIndicator = false
+            roomName = editingRoom.title
+            tags = Set(editingRoom.tags ?? [])
+        }
     }
 
     // MARK: - Public func
 
+    func save() {
+        isSaving = true
+        if isEditMode {
+            updateRoom()
+        } else {
+            createRoom()
+        }
+    }
+}
+
+// MARK: - Private func
+
+private extension CreateRoomViewModel {
     func createRoom() {
-        isCreatingRoom = true
         creatingRoomService.createRoom(
             model: .init(
                 roomType: selectedRoomType.type.ascRoomType,
@@ -54,13 +93,36 @@ class CreateRoomViewModel: ObservableObject {
             case let .failure(error):
                 self?.errorMessage = error.localizedDescription
             }
-            self?.isCreatingRoom = false
+            self?.isSaving = false
         }
     }
 
-    // MARK: - Private func
+    func updateRoom() {
+        guard let room = editingRoom else {
+            isSaving = false
+            return
+        }
+        creatingRoomService.editRoom(
+            model: EditRoomModel(
+                roomType: selectedRoomType.type.ascRoomType,
+                room: room,
+                name: roomName,
+                image: selectedImage,
+                tagsToAdd: Array(tags.subtracting(room.tags ?? [])),
+                tagsToDelete: Array(Set(room.tags ?? []).subtracting(tags))
+            )
+        ) { [weak self] result in
+            switch result {
+            case let .success(room):
+                self?.onCreate(room)
+            case let .failure(error):
+                self?.errorMessage = error.localizedDescription
+            }
+            self?.isSaving = false
+        }
+    }
 
-    private func makeImageMenuItems() -> [MenuViewItem] {
+    func makeImageMenuItems() -> [MenuViewItem] {
         [
             .init(text: NSLocalizedString("Photo Library", comment: ""), systemImageName: "photo", action: imageFromLibraryAction),
             .init(text: NSLocalizedString("Take Photo", comment: ""), systemImageName: "camera", action: imageFromCameraAction),
@@ -68,7 +130,7 @@ class CreateRoomViewModel: ObservableObject {
         ]
     }
 
-    private func imageFromLibraryAction() {
+    func imageFromLibraryAction() {
         let attachManager = ASCAttachmentManager()
         let temporaryFolderName = UUID().uuidString
         guard let topController = topController() else { return }
@@ -78,7 +140,7 @@ class CreateRoomViewModel: ObservableObject {
         }
     }
 
-    private func imageFromCameraAction() {
+    func imageFromCameraAction() {
         let attachManager = ASCAttachmentManager()
         let temporaryFolderName = UUID().uuidString
         guard let topController = topController() else { return }
@@ -88,7 +150,7 @@ class CreateRoomViewModel: ObservableObject {
         }
     }
 
-    private func imageFromFilesAction() {
+    func imageFromFilesAction() {
         let attachManager = ASCAttachmentManager()
         let temporaryFolderName = UUID().uuidString
         guard let topController = topController() else { return }
@@ -98,7 +160,7 @@ class CreateRoomViewModel: ObservableObject {
         }
     }
 
-    private func handleImageSelection(_ result: Result<URL, Error>) {
+    func handleImageSelection(_ result: Result<URL, Error>) {
         switch result {
         case let .success(url):
             selectedImage = UIImage(contentsOfFile: url.path)
@@ -110,7 +172,7 @@ class CreateRoomViewModel: ObservableObject {
         }
     }
 
-    private func topController() -> UIViewController? {
+    func topController() -> UIViewController? {
         if var topController = UIWindow.keyWindow?.rootViewController {
             while let presentedViewController = topController.presentedViewController {
                 topController = presentedViewController

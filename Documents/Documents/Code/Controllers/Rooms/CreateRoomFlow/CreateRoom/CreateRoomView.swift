@@ -33,7 +33,8 @@ struct CreateRoomView: View {
         Section {
             RoomTypeViewRow(roomTypeModel: viewModel.selectedRoomType)
                 .onTapGesture {
-                    isRoomSelectionPresenting = true
+                    guard !viewModel.isEditMode else { return }
+                    viewModel.isRoomSelectionPresenting = true
                 }
         }
     }
@@ -52,7 +53,7 @@ struct CreateRoomView: View {
 
     private var roomTagsSection: some View {
         Section {
-            TagsFieldView(tags: $viewModel.tags, deletedTags: $viewModel.tags)
+            TagsFieldView(tags: $viewModel.tags)
                 .listRowInsets(EdgeInsets())
                 .background(Color.systemGroupedBackground)
         }
@@ -65,11 +66,16 @@ struct CreateRoomView: View {
             Image(uiImage: image)
                 .resizable()
                 .aspectRatio(contentMode: .fill)
-                .frame(width: 48, height: 48)
-                .cornerRadius(8)
+                .frame(width: .imageSideSize, height: .imageSideSize)
+                .cornerRadius(.imageCornerRadious)
+        } else if let url = viewModel.editingRoomImage {
+            KFImageView(url: url)
+                .frame(width: .imageSideSize, height: .imageSideSize)
+                .cornerRadius(.imageCornerRadious)
+                .clipped()
         } else {
-            RoundedRectangle(cornerRadius: 8)
-                .frame(width: 48, height: 48)
+            RoundedRectangle(cornerRadius: .imageCornerRadious)
+                .frame(width: .imageSideSize, height: .imageSideSize)
                 .foregroundColor(Color(Asset.Colors.fillEditorsDocs.color))
                 .overlay(
                     Image(systemName: "photo")
@@ -83,11 +89,11 @@ struct CreateRoomView: View {
         TextField(NSLocalizedString("Room name", comment: ""), text: $viewModel.roomName)
             .padding()
             .background(Color.secondarySystemGroupedBackground)
-            .disabled(viewModel.isCreatingRoom)
+            .disabled(viewModel.isSaving)
     }
 
     private func handleHUD() {
-        if viewModel.isCreatingRoom {
+        if viewModel.isSaving {
             MBProgressHUD.currentHUD?.hide(animated: false)
             let hud = MBProgressHUD.showTopMost()
             hud?.mode = .indeterminate
@@ -156,6 +162,14 @@ private extension View {
         })
     }
 }
+
+// MARK: Constants
+
+private extension CGFloat {
+    static let imageSideSize: CGFloat = 48
+    static let imageCornerRadious: CGFloat = 8
+}
+
 #Preview {
     CreateRoomView(
         viewModel: CreateRoomViewModel(selectedRoomType: CreatingRoomType.publicRoom.toRoomTypeModel()) { _ in }

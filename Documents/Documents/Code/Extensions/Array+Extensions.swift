@@ -85,6 +85,26 @@ public extension Array where Element: Equatable {
         return self
     }
 
+    /// Remove items at indexes
+    ///
+    ///        [1, 2, 3, 4, 5].remove(indexes: [1, 3]) -> [1, 3, 5]
+    ///
+    /// - Parameter indexes: indexes to remove.
+    /// - Returns: self after removing all instances of all items in given indexes.
+    @discardableResult
+    mutating func remove(indexes: [Int]) -> [Element] {
+        guard !indexes.isEmpty else { return self }
+
+        let removeIndexes = indexes
+            .sorted(by: >)
+            .filter { $0 < self.count }
+            .withoutDuplicates()
+
+        return enumerated()
+            .filter { !removeIndexes.contains($0.offset) }
+            .map { $0.element }
+    }
+
     /// Remove all duplicate elements from Array.
     ///
     ///        [1, 2, 2, 3, 4, 5].removeDuplicates() -> [1, 2, 3, 4, 5]

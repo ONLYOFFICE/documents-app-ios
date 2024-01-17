@@ -66,7 +66,7 @@ class ASCDocumentsViewController: ASCBaseTableViewController, UIGestureRecognize
         folder: folder,
         itemsGetter: getLocalAndCloudItems,
         providerIndexesGetter: getProviderIndexes,
-        removedItemsHandler: handleRemovedItems,
+        removedItemsHandler: removedItems,
         errorHandeler: removeErrorHandler
     )
 
@@ -2932,7 +2932,7 @@ class ASCDocumentsViewController: ASCBaseTableViewController, UIGestureRecognize
 
         dispatchGroup.notify(queue: .main) { [weak self] in
             guard let self = self else { return }
-            self.handleRemovedItems(deleteIndexes: indexPathes)
+            self.removedItems(indexPaths: indexPathes)
             self.showEmptyView(self.total < 1)
             self.updateNavBar()
             self.setEditMode(false)
@@ -3735,11 +3735,17 @@ extension ASCDocumentsViewController {
                                     message: error ?? NSLocalizedString("Could not delete.", comment: ""))
     }
 
-    func handleRemovedItems(deleteIndexes: [IndexPath]) {
-        guard !deleteIndexes.isEmpty else { return }
-        // Remove cells
+    func removedItems(indexPaths: [IndexPath]) {
+        guard !indexPaths.isEmpty else { return }
+
         tableView.beginUpdates()
-        tableView.deleteRows(at: deleteIndexes, with: .fade)
+
+        // Remove data
+        var newItemsData = provider?.items ?? []
+        provider?.items = newItemsData.remove(indexes: indexPaths.map { $0.row })
+
+        // Remove cells
+        tableView.reloadSections([0], with: .fade)
         tableView.endUpdates()
 
         showEmptyView(total < 1)

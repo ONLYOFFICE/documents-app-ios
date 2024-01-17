@@ -86,7 +86,10 @@ struct RoomSharingCustomizeLinkView: View {
     private var timeLimitSection: some View {
         Section(
             header: Text(NSLocalizedString("Time limit", comment: "")),
-            footer: viewModel.isExpired ? Text(NSLocalizedString("The link has expired and has been disabled", comment: "")).foregroundColor(.red) : nil
+            footer: viewModel.isExpired 
+                ? Text(NSLocalizedString("The link has expired and has been disabled", comment: ""))
+                    .foregroundColor(.red)
+                : nil
         ) {
             Toggle(isOn: $viewModel.isTimeLimited.animation()) {
                 Text(NSLocalizedString("Enable time limit", comment: ""))

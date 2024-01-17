@@ -15,10 +15,9 @@ struct TimeLimitCellView: View {
             DatePicker(
                 model.title,
                 selection: model.$selectedDate,
-                in: Date()...,
+                in: min(model.selectedDate, Date())...,
                 displayedComponents: [.date, .hourAndMinute]
             )
-            // .datePickerStyle(.automatic)
         }
     }
 }

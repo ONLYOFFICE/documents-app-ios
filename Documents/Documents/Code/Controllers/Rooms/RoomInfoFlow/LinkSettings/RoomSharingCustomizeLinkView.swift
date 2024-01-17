@@ -192,18 +192,6 @@ private extension View {
         disabled(isDeleting)
     }
 
-    func alertForErrorMessage(_ errorMessage: Binding<String?>) -> some View {
-        alert(item: errorMessage) { message in
-            Alert(
-                title: Text(NSLocalizedString("Error", comment: "")),
-                message: Text(message),
-                dismissButton: .default(Text("OK"), action: {
-                    errorMessage.wrappedValue = nil
-                })
-            )
-        }
-    }
-
     func dismissOnChange(of value: Bool, using presentationMode: Binding<PresentationMode>) -> some View {
         onChange(of: value) { newValue in
             if newValue {

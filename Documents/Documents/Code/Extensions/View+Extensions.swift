@@ -60,6 +60,22 @@ extension View {
     }
 }
 
+// MARK: - Alert
+
+extension View {
+    func alertForErrorMessage(_ errorMessage: Binding<String?>) -> some View {
+        alert(item: errorMessage) { message in
+            Alert(
+                title: Text(NSLocalizedString("Error", comment: "")),
+                message: Text(message),
+                dismissButton: .default(Text("OK"), action: {
+                    errorMessage.wrappedValue = nil
+                })
+            )
+        }
+    }
+}
+
 // MARK: - OnChange
 
 @available(iOS, introduced: 13.0, deprecated: 14.0, message: "Use the native .onChange modifier in iOS 14 and later.")

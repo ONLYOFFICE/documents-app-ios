@@ -103,7 +103,7 @@ extension NetworkCreatingRoomServiceImp {
     }
 
     private func editAndAttachTags(tagsToAdd: [String], tagsToDelete: [String], room: ASCFolder, completion: @escaping () -> Void) {
-        guard !tagsToAdd.isEmpty || tagsToDelete.isEmpty else {
+        guard !tagsToAdd.isEmpty || !tagsToDelete.isEmpty else {
             completion()
             return
         }

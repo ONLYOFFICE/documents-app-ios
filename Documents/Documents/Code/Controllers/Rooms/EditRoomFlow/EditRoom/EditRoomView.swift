@@ -42,7 +42,7 @@ struct EditRoomView: View {
                 Alert(
                     title: Text(ASCLocalization.Common.error),
                     message: Text(errorMessage),
-                    dismissButton: .default(ASCLocalization.Common.ok, action: {
+                    dismissButton: .default(Text(ASCLocalization.Common.ok), action: {
                         viewModel.errorMessage = nil
                     })
                 )

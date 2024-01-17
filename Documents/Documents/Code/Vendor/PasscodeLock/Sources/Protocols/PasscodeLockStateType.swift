@@ -8,15 +8,15 @@
 
 #if os(iOS)
 
-import Foundation
+    import Foundation
 
-public protocol PasscodeLockStateType {
-    var title: String { get }
-    var description: String { get }
-    var isCancellableAction: Bool { get }
-    var isTouchIDAllowed: Bool { get }
+    public protocol PasscodeLockStateType {
+        var title: String { get }
+        var description: String { get }
+        var isCancellableAction: Bool { get }
+        var isTouchIDAllowed: Bool { get }
 
-    mutating func acceptPasscode(_ passcode: [String], fromLock lock: PasscodeLockType)
-}
+        mutating func acceptPasscode(_ passcode: [String], fromLock lock: PasscodeLockType)
+    }
 
 #endif

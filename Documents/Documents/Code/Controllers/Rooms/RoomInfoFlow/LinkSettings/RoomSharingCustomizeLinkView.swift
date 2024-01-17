@@ -111,9 +111,9 @@ struct RoomSharingCustomizeLinkView: View {
             Section {
                 ASCLabledCellView(model:
                     .init(
-                        textString: viewModel.isProtected 
-                        ? NSLocalizedString("Copy link and password", comment: "")
-                        : NSLocalizedString("Copy link", comment: ""),
+                        textString: viewModel.isProtected
+                            ? NSLocalizedString("Copy link and password", comment: "")
+                            : NSLocalizedString("Copy link", comment: ""),
                         cellType: .standard,
                         textAlignment: .center,
                         onTapAction: viewModel.onCopyLinkAndNotify
@@ -202,7 +202,7 @@ private extension View {
             Alert(
                 title: Text(ASCLocalization.Common.error),
                 message: Text(message),
-                dismissButton: .default(ASCLocalization.Common.ok, action: {
+                dismissButton: .default(Text(ASCLocalization.Common.ok), action: {
                     errorMessage.wrappedValue = nil
                 })
             )

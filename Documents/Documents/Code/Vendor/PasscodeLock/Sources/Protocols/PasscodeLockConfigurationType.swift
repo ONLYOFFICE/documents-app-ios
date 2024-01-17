@@ -8,15 +8,15 @@
 
 #if os(iOS)
 
-import Foundation
+    import Foundation
 
-public protocol PasscodeLockConfigurationType {
-    var repository: PasscodeRepositoryType { get }
-    var passcodeLength: Int { get }
-    var isTouchIDAllowed: Bool { get set }
-    var shouldRequestTouchIDImmediately: Bool { get }
-    var touchIdReason: String? { get set }
-    var maximumInccorectPasscodeAttempts: Int { get }
-}
+    public protocol PasscodeLockConfigurationType {
+        var repository: PasscodeRepositoryType { get }
+        var passcodeLength: Int { get }
+        var isTouchIDAllowed: Bool { get set }
+        var shouldRequestTouchIDImmediately: Bool { get }
+        var touchIdReason: String? { get set }
+        var maximumInccorectPasscodeAttempts: Int { get }
+    }
 
 #endif

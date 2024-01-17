@@ -8,14 +8,14 @@
 
 #if os(iOS)
 
-import Foundation
+    import Foundation
 
-public protocol PasscodeRepositoryType {
-    var hasPasscode: Bool { get }
-    var passcode: [String]? { get }
+    public protocol PasscodeRepositoryType {
+        var hasPasscode: Bool { get }
+        var passcode: [String]? { get }
 
-    func savePasscode(_ passcode: [String])
-    func deletePasscode()
-}
+        func savePasscode(_ passcode: [String])
+        func deletePasscode()
+    }
 
 #endif

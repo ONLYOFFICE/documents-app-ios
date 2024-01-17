@@ -14,7 +14,6 @@ struct CreateRoomView: View {
     @Environment(\.presentationMode) var presentationMode
 
     @ObservedObject var viewModel: CreateRoomViewModel
-    @State var isRoomSelectionPresenting = false
 
     var body: some View {
         handleHUD()
@@ -24,35 +23,10 @@ struct CreateRoomView: View {
             roomImageAndNameSection
             roomTagsSection
         }
-        .navigation(isActive: $isRoomSelectionPresenting, destination: {
-            RoomSelectionView(
-                selectedRoomType: Binding<RoomTypeModel?>(
-                    get: { viewModel.selectedRoomType },
-                    set: { newValue in
-                        if let newValue {
-                            viewModel.selectedRoomType = newValue
-                        }
-                    }
-                ),
-                dismissOnSelection: true
-            )
-        })
-        .navigationBarTitle(Text(NSLocalizedString("Create room", comment: "")), displayMode: .inline)
-        .navigationBarItems(
-            trailing: Button(NSLocalizedString("Create", comment: "")) {
-                viewModel.createRoom()
-            }
-            .disabled(viewModel.roomName.isEmpty || viewModel.isCreatingRoom)
-        )
-        .alert(item: $viewModel.errorMessage) { errorMessage in
-            Alert(
-                title: Text(NSLocalizedString("Error", comment: "")),
-                message: Text(errorMessage),
-                dismissButton: .default(Text("OK"), action: {
-                    viewModel.errorMessage = nil
-                })
-            )
-        }
+        .navigateToRoomTypeSelection(isActive: $viewModel.isRoomSelectionPresenting, viewModel: viewModel)
+        .navigationTitle(isEditMode: viewModel.isEditMode)
+        .navigationBarItems(viewModel: viewModel)
+        .alertForErrorMessage($viewModel.errorMessage)
     }
 
     private var roomTypeSection: some View {
@@ -131,6 +105,57 @@ struct CreateRoomView: View {
     }
 }
 
+// MARK: Modifiers
+
+private extension View {
+    @ViewBuilder
+    func navigationBarItems(viewModel: CreateRoomViewModel) -> some View {
+        let closeButton = Button(NSLocalizedString("Close", comment: "")) {
+            UIApplication.topViewController()?.dismiss(animated: true)
+        }
+        let saveButton = Button(
+            viewModel.isEditMode
+                ? NSLocalizedString("Save", comment: "")
+                : NSLocalizedString("Create", comment: "")
+        ) {
+            viewModel.save()
+        }
+        .disabled(viewModel.isSaveBtnEnabled)
+
+        if viewModel.isEditMode {
+            navigationBarItems(
+                leading: closeButton,
+                trailing: saveButton
+            )
+        } else {
+            navigationBarItems(
+                trailing: saveButton
+            )
+        }
+    }
+
+    func navigationTitle(isEditMode: Bool) -> some View {
+        isEditMode
+            ? navigationBarTitle(Text(NSLocalizedString("Edit room", comment: "")), displayMode: .inline)
+            : navigationBarTitle(Text(NSLocalizedString("Create room", comment: "")), displayMode: .inline)
+    }
+
+    func navigateToRoomTypeSelection(isActive: Binding<Bool>, viewModel: CreateRoomViewModel) -> some View {
+        navigation(isActive: isActive, destination: {
+            RoomSelectionView(
+                selectedRoomType: Binding<RoomTypeModel?>(
+                    get: { viewModel.selectedRoomType },
+                    set: { newValue in
+                        if let newValue {
+                            viewModel.selectedRoomType = newValue
+                        }
+                    }
+                ),
+                dismissOnSelection: true
+            )
+        })
+    }
+}
 #Preview {
     CreateRoomView(
         viewModel: CreateRoomViewModel(selectedRoomType: CreatingRoomType.publicRoom.toRoomTypeModel()) { _ in }

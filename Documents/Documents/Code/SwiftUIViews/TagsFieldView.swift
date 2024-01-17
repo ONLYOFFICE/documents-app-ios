@@ -11,7 +11,6 @@ import WSTagsField
 
 struct TagsFieldView: View {
     @Binding var tags: Set<String>
-    @Binding var deletedTags: Set<String>
     @State var text: String?
     @State var applyTag: Bool = false
     @State var addTagStr = NSLocalizedString("Add tag", comment: "placeholder")
@@ -77,7 +76,6 @@ struct TagsFieldView: View {
         tagsField.onDidRemoveTag = { _, tag in
             DispatchQueue.main.async {
                 tags.remove(tag.text)
-                deletedTags.formUnion([tag.text])
             }
         }
 
@@ -109,5 +107,5 @@ private extension String {
 }
 
 #Preview {
-    TagsFieldView(tags: .constant([]), deletedTags: .constant([]))
+    TagsFieldView(tags: .constant([]))
 }

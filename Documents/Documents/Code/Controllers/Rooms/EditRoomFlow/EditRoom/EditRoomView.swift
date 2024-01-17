@@ -71,7 +71,7 @@ struct EditRoomView: View {
 
     private var roomTagsSection: some View {
         Section {
-            TagsFieldView(tags: $viewModel.tags, deletedTags: $viewModel.deletedTags)
+            TagsFieldView(tags: $viewModel.tags)
                 .listRowInsets(EdgeInsets())
         }
         .background(Color.secondarySystemGroupedBackground)

@@ -9,7 +9,7 @@
 import Foundation
 import SwiftUI
 
-class EditRoomViewController: UIHostingController<EditRoomRouteView> {
+class EditRoomViewController: UIHostingController<EditRoomWrapperView> {
     // MARK: - Lifecycle Methods
 
     required init?(coder aDecoder: NSCoder) {
@@ -20,7 +20,42 @@ class EditRoomViewController: UIHostingController<EditRoomRouteView> {
 
     init(folder: ASCFolder, onAction: @escaping (ASCFolder) -> Void) {
         super.init(
-            rootView: EditRoomRouteView(folder: folder, onEdited: onAction)
+            rootView: EditRoomWrapperView(folder: folder) { value in
+                UIApplication.topViewController()?.dismiss(animated: true)
+                onAction(value)
+            }
         )
+    }
+}
+
+struct EditRoomWrapperView: View {
+    @State var folder: ASCFolder
+    @State var onAction: (ASCFolder) -> Void
+
+    var body: some View {
+        NavigationView {
+            CreateRoomView(
+                viewModel: CreateRoomViewModel(
+                    editingRoom: folder,
+                    selectedRoomType: folder.roomTypeModel,
+                    onCreate: onAction
+                )
+            )
+        }
+    }
+}
+
+private extension ASCFolder {
+    var roomTypeModel: RoomTypeModel {
+        switch roomType {
+        case .colobaration:
+            return RoomTypeModel.make(fromRoomType: .collaboration)
+        case .custom:
+            return RoomTypeModel.make(fromRoomType: .custom)
+        case .public:
+            return RoomTypeModel.make(fromRoomType: .publicRoom)
+        default:
+            return RoomTypeModel.make(fromRoomType: .collaboration)
+        }
     }
 }

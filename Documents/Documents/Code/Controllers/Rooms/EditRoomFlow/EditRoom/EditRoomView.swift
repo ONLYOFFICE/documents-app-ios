@@ -125,6 +125,6 @@ struct EditRoomView: View {
 
 #Preview {
     CreateRoomView(
-        viewModel: CreateRoomViewModel(selectedRoomType: CreatingRoomType.publicRoom.toRoomTypeModel()) { _ in }
+        viewModel: CreateRoomViewModel(editingRoom: nil, selectedRoomType: CreatingRoomType.publicRoom.toRoomTypeModel()) { _ in }
     )
 }

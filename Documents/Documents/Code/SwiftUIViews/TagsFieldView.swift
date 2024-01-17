@@ -103,7 +103,7 @@ struct TagsFieldView: View {
 
 private extension String {
     var isValidTagString: Bool {
-        let regex = "^[A-Za-z0-9_ ]+$"
+        let regex = "^[\\w0-9_ ]+$"
         return range(of: regex, options: .regularExpression) != nil
     }
 }

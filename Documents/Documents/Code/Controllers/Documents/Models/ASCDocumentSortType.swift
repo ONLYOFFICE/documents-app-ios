@@ -17,6 +17,7 @@ enum ASCDocumentSortType: String, CaseIterable {
     case author
     case type
     case new
+    case tag
     case unknown = ""
 
     init() {
@@ -37,6 +38,8 @@ enum ASCDocumentSortType: String, CaseIterable {
             self = .type
         case "new":
             self = .new
+        case "tag":
+            self = .tag
         default:
             self = .unknown
         }
@@ -56,6 +59,8 @@ enum ASCDocumentSortType: String, CaseIterable {
             return NSLocalizedString("Type", comment: "")
         case .new:
             return NSLocalizedString("New", comment: "")
+        case .tag:
+            return NSLocalizedString("Tag", comment: "")
         case .unknown:
             return ""
         }

@@ -6,31 +6,35 @@
 //  Copyright © 2015 Yanko Dimitrov. All rights reserved.
 //
 
-import Foundation
+#if os(iOS)
 
-struct ChangePasscodeState: PasscodeLockStateType {
-    let title: String
-    let description: String
-    let isCancellableAction = true
-    var isTouchIDAllowed = false
+    import Foundation
 
-    init() {
-        title = localizedStringFor("PasscodeLockChangeTitle", comment: "Change passcode title")
-        description = localizedStringFor("PasscodeLockChangeDescription", comment: "Change passcode description")
-    }
+    struct ChangePasscodeState: PasscodeLockStateType {
+        let title: String
+        let description: String
+        let isCancellableAction = true
+        var isTouchIDAllowed = false
 
-    func acceptPasscode(_ passcode: [String], fromLock lock: PasscodeLockType) {
-        guard let currentPasscode = lock.repository.passcode else {
-            return
+        init() {
+            title = localizedStringFor("PasscodeLockChangeTitle", comment: "Change passcode title")
+            description = localizedStringFor("PasscodeLockChangeDescription", comment: "Change passcode description")
         }
 
-        if passcode == currentPasscode {
-            let nextState = SetPasscodeState()
+        func acceptPasscode(_ passcode: [String], fromLock lock: PasscodeLockType) {
+            guard let currentPasscode = lock.repository.passcode else {
+                return
+            }
 
-            lock.changeStateTo(nextState)
+            if passcode == currentPasscode {
+                let nextState = SetPasscodeState()
 
-        } else {
-            lock.delegate?.passcodeLockDidFail(lock)
+                lock.changeStateTo(nextState)
+
+            } else {
+                lock.delegate?.passcodeLockDidFail(lock)
+            }
         }
     }
-}
+
+#endif

@@ -58,6 +58,9 @@ struct TagsFieldView: View {
     private func onUpdate(_ tagsField: WSTagsField) {}
 
     private func settingApplyer(_ tagsField: WSTagsField) {
+        let existingTagsArray: [String] = Array(tags)
+
+        tagsField.addTags(existingTagsArray)
         tagsField.onShouldAcceptTag = { field in
             field.text?
                 .trimmingCharacters(in: .whitespacesAndNewlines)
@@ -98,7 +101,7 @@ struct TagsFieldView: View {
 
 private extension String {
     var isValidTagString: Bool {
-        let regex = "^[A-Za-z0-9_ ]+$"
+        let regex = "^[\\w0-9_ ]+$"
         return range(of: regex, options: .regularExpression) != nil
     }
 }

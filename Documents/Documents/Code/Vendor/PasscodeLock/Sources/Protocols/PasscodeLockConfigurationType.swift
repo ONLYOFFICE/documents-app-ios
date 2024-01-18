@@ -6,13 +6,17 @@
 //  Copyright © 2015 Yanko Dimitrov. All rights reserved.
 //
 
-import Foundation
+#if os(iOS)
 
-public protocol PasscodeLockConfigurationType {
-    var repository: PasscodeRepositoryType { get }
-    var passcodeLength: Int { get }
-    var isTouchIDAllowed: Bool { get set }
-    var shouldRequestTouchIDImmediately: Bool { get }
-    var touchIdReason: String? { get set }
-    var maximumInccorectPasscodeAttempts: Int { get }
-}
+    import Foundation
+
+    public protocol PasscodeLockConfigurationType {
+        var repository: PasscodeRepositoryType { get }
+        var passcodeLength: Int { get }
+        var isTouchIDAllowed: Bool { get set }
+        var shouldRequestTouchIDImmediately: Bool { get }
+        var touchIdReason: String? { get set }
+        var maximumInccorectPasscodeAttempts: Int { get }
+    }
+
+#endif

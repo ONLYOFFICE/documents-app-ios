@@ -11,24 +11,15 @@ import SwiftUI
 struct CreateRoomRouteView: View {
     @Environment(\.presentationMode) var presentationMode
 
-    @State var selectedRoom: Room?
+    @State var selectedRoomType: RoomTypeModel?
     var onCreate: (ASCFolder) -> Void
-
-    private var isRoomSelected: Binding<Bool> {
-        Binding<Bool>(get: { self.selectedRoom != nil },
-                      set: { isSelected in
-                          if !isSelected {
-                              self.selectedRoom = nil
-                          }
-                      })
-    }
 
     var body: some View {
         NavigationView {
-            RoomSelectionView(selectedRoom: $selectedRoom)
-                .navigation(item: $selectedRoom) { room in
-                    CreateRoomView(
-                        viewModel: CreateRoomViewModel(selectedRoom: room) { room in
+            RoomSelectionView(selectedRoomType: $selectedRoomType)
+                .navigation(item: $selectedRoomType) { type in
+                    ManageRoomView(
+                        viewModel: ManageRoomViewModel(selectedRoomType: type) { room in
                             presentationMode.wrappedValue.dismiss()
                             onCreate(room)
                         }

@@ -129,7 +129,7 @@ class ASCSharingAddRightHoldersInteractor: ASCSharingAddRightHoldersBusinessLogi
         handler?(.begin, nil, nil)
 
         guard let folder = dataStore?.entity as? ASCFolder else {
-            handler?(.error, nil, ASCProviderError(msg: NSLocalizedString("Invalid folder ID.", comment: "")))
+            handler?(.error, nil, ASCProviderError(msg: NSLocalizedString("Invalid folder", comment: "")))
             return
         }
         let access: ASCShareAccess = .none
@@ -149,9 +149,9 @@ class ASCSharingAddRightHoldersInteractor: ASCSharingAddRightHoldersBusinessLogi
                 handler?(.error, nil, ASCProviderError(msg: NSLocalizedString("Couldn't change the owner.", comment: "")))
                 return
             } else {
-                OnlyofficeApiClient.request(OnlyofficeAPI.Endpoints.Sharing.inviteRequest(folder: folder, method: .put), inviteRequestModel.toJSON()) { result, error in
+                OnlyofficeApiClient.request(OnlyofficeAPI.Endpoints.Sharing.inviteRequest(folder: folder), inviteRequestModel.toJSON()) { result, error in
                     if error != nil {
-                        handler?(.error, nil, ASCProviderError(msg: NSLocalizedString("Couldn't leave the room.", comment: "")))
+                        handler?(.error, nil, ASCProviderError(msg: NSLocalizedString("Couldn't leave the room", comment: "")))
                     } else {
                         handler?(.end, folder, nil)
                     }

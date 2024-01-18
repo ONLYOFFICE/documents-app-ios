@@ -269,7 +269,7 @@ class ASCUserProfileViewController: UITableViewController {
             message: message,
             buttonTitles: [
                 NSLocalizedString("Send", comment: ""),
-                NSLocalizedString("Cancel", comment: ""),
+                ASCLocalization.Common.cancel,
             ],
             highlightedButtonIndex: 0,
             completion: { index in
@@ -307,7 +307,7 @@ class ASCUserProfileViewController: UITableViewController {
             message: message,
             buttonTitles: [
                 NSLocalizedString("Change owner", comment: ""),
-                NSLocalizedString("Cancel", comment: ""),
+                ASCLocalization.Common.cancel,
             ],
             highlightedButtonIndex: 0,
             completion: { index in

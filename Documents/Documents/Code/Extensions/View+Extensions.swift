@@ -5,7 +5,6 @@
 //  Created by Pavel Chernyshev on 20.11.2023.
 //  Copyright © 2023 Ascensio System SIA. All rights reserved.
 //
-
 import Combine
 import Foundation
 import SwiftUI
@@ -58,6 +57,22 @@ extension View {
                 label: { EmptyView() }
             )
         )
+    }
+}
+
+// MARK: - Alert
+
+extension View {
+    func alertForErrorMessage(_ errorMessage: Binding<String?>) -> some View {
+        alert(item: errorMessage) { message in
+            Alert(
+                title: Text(NSLocalizedString("Error", comment: "")),
+                message: Text(message),
+                dismissButton: .default(Text("OK"), action: {
+                    errorMessage.wrappedValue = nil
+                })
+            )
+        }
     }
 }
 

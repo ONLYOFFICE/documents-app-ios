@@ -1,6 +1,6 @@
 //
 //  ASCSharingChooseNewOwnerRightHoldersView.swift
-//  Documents-develop
+//  Documents
 //
 //  Created by Victor Tihovodov on 02.12.2023.
 //  Copyright © 2023 Ascensio System SIA. All rights reserved.
@@ -36,7 +36,7 @@ class ASCSharingChooseNewOwnerRightHoldersView {
     let title = NSLocalizedString("Change the Room Owner", comment: "")
 
     private lazy var cancelBarBtn: UIBarButtonItem = UIBarButtonItem(
-        title: NSLocalizedString("Cancel", comment: ""),
+        title: ASCLocalization.Common.cancel,
         style: .plain,
         target: self,
         action: #selector(onCancelButtonTapped)

@@ -1285,6 +1285,10 @@ class ASCOnlyofficeProvider: ASCFileProviderProtocol & ASCSortableFileProviderPr
                 return [.delete, .restore]
             }
 
+            if canRead, canEdit {
+                entityActions.insert(.open)
+            }
+
             if canRename, !isRoomFolder {
                 entityActions.insert(.rename)
             }
@@ -1301,7 +1305,7 @@ class ASCOnlyofficeProvider: ASCFileProviderProtocol & ASCSortableFileProviderPr
                 entityActions.insert(.share)
             }
 
-            if canDownload {
+            if canDownload, !folder.isRoot {
                 entityActions.insert(.download)
             }
 
@@ -1317,7 +1321,8 @@ class ASCOnlyofficeProvider: ASCFileProviderProtocol & ASCSortableFileProviderPr
                 entityActions.insert(.new)
             }
 
-            if isArchiveCategory {
+            if isArchiveCategory, !folder.isRoot {
+                entityActions.insert(.link)
                 entityActions.insert(.info)
             }
 
@@ -1326,6 +1331,8 @@ class ASCOnlyofficeProvider: ASCFileProviderProtocol & ASCSortableFileProviderPr
                 entityActions.insert(.info)
                 if folder.security.editAccess {
                     entityActions.insert(.addUsers)
+                    entityActions.insert(.link)
+                    entityActions.insert(.edit)
                 }
                 if folder.security.move {
                     entityActions.insert(.archive)
@@ -1413,10 +1420,10 @@ class ASCOnlyofficeProvider: ASCFileProviderProtocol & ASCSortableFileProviderPr
         inviteRequestModel.notify = false
         inviteRequestModel.invitations = [.init(id: userId, access: access)]
 
-        apiClient.request(OnlyofficeAPI.Endpoints.Sharing.inviteRequest(folder: folder, method: .put), inviteRequestModel.toJSON()) {
+        apiClient.request(OnlyofficeAPI.Endpoints.Sharing.inviteRequest(folder: folder), inviteRequestModel.toJSON()) {
             result, error in
             if error != nil {
-                handler?(.error, nil, ASCProviderError(msg: NSLocalizedString("Couldn't leave the room.", comment: "")))
+                handler?(.error, nil, ASCProviderError(msg: NSLocalizedString("Couldn't leave the room", comment: "")))
             } else {
                 handler?(.end, folder, nil)
             }
@@ -1824,6 +1831,35 @@ class ASCOnlyofficeProvider: ASCFileProviderProtocol & ASCSortableFileProviderPr
             if let view = view {
                 let openHandler = delegate?.openProgress(file: file, title: NSLocalizedString("Downloading", comment: "Caption of the processing") + "...", 0.15)
                 ASCEditorManager.shared.browseUnknownCloud(for: self, file, inView: view, handler: openHandler)
+            }
+        }
+    }
+}
+
+extension ASCOnlyofficeProvider {
+    func generalLink(for room: ASCFolder) async -> Result<String, Error> {
+        await withCheckedContinuation { continuation in
+            OnlyofficeApiClient.request(OnlyofficeAPI.Endpoints.Rooms.getLink(folder: room)) { response, error in
+                if let error {
+                    continuation.resume(returning: .failure(error))
+                    return
+                }
+
+                var urlComponets = URLComponents(string: OnlyofficeApiClient.shared.baseURL?.absoluteString ?? "")
+                urlComponets?.path = "/\(OnlyofficeAPI.Path.defaultGeneralLink)"
+                urlComponets?.queryItems = [
+                    URLQueryItem(name: "folder", value: room.id),
+                ]
+
+                var generalLink = urlComponets?.url?.absoluteString ?? ""
+
+                if let linkInfo = response?.result {
+                    generalLink = linkInfo.linkInfo.shareLink
+                }
+
+                continuation.resume(
+                    returning: .success(generalLink)
+                )
             }
         }
     }

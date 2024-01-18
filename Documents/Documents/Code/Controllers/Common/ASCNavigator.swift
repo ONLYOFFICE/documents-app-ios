@@ -15,6 +15,7 @@ enum Destination {
     case shareSettings(entity: ASCEntity)
     case addUsers(entity: ASCEntity)
     case leaveRoom(entity: ASCEntity, handler: ASCEntityHandler?)
+    case roomSharingLink(folder: ASCFolder)
 
     // MARK: - Login
 
@@ -144,6 +145,8 @@ final class ASCNavigator {
             return ASCDevelopOptionsViewController()
         case .themeOptions:
             return ASCAppThemeViewController()
+        case let .roomSharingLink(folder):
+            return RoomSharingRootViewController(room: folder)
         }
     }
 }

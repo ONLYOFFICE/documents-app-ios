@@ -9,13 +9,13 @@
 import SwiftUI
 
 class RoomSelectionViewModel: ObservableObject {
-    @Published var rooms: [Room] = CreatingRoomType.allCases.map { $0.toRoom() }
+    @Published var roomsTypeModels: [RoomTypeModel] = CreatingRoomType.allCases.map { $0.toRoomTypeModel() }
 }
 
 // MARK: - CreatingRoomType extension
 
 extension CreatingRoomType {
-    func toRoom() -> Room {
-        return Room(type: self, name: name, description: description, icon: icon)
+    func toRoomTypeModel() -> RoomTypeModel {
+        return RoomTypeModel(type: self, name: name, description: description, icon: icon)
     }
 }

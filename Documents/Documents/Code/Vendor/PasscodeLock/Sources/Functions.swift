@@ -6,23 +6,27 @@
 //  Copyright © 2015 Yanko Dimitrov. All rights reserved.
 //
 
-import Foundation
+#if os(iOS)
 
-func localizedStringFor(_ key: String, comment: String) -> String {
-    let name = "PasscodeLock"
-    let bundle = bundleForResource(name, ofType: "strings")
+    import Foundation
 
-    return NSLocalizedString(key, tableName: name, bundle: bundle, comment: comment)
-}
+    func localizedStringFor(_ key: String, comment: String) -> String {
+        let name = "PasscodeLock"
+        let bundle = bundleForResource(name, ofType: "strings")
 
-func bundleForResource(_ name: String, ofType type: String) -> Bundle {
-    #if SWIFT_PACKAGE
-        return Bundle.module
-    #else
-        if Bundle.main.path(forResource: name, ofType: type) != nil {
-            return Bundle.main
-        }
+        return NSLocalizedString(key, tableName: name, bundle: bundle, comment: comment)
+    }
 
-        return Bundle(for: PasscodeLock.self)
-    #endif
-}
+    func bundleForResource(_ name: String, ofType type: String) -> Bundle {
+        #if SWIFT_PACKAGE
+            return Bundle.module
+        #else
+            if Bundle.main.path(forResource: name, ofType: type) != nil {
+                return Bundle.main
+            }
+
+            return Bundle(for: PasscodeLock.self)
+        #endif
+    }
+
+#endif

@@ -6,12 +6,16 @@
 //  Copyright © 2015 Yanko Dimitrov. All rights reserved.
 //
 
-import Foundation
+#if os(iOS)
 
-public protocol PasscodeRepositoryType {
-    var hasPasscode: Bool { get }
-    var passcode: [String]? { get }
+    import Foundation
 
-    func savePasscode(_ passcode: [String])
-    func deletePasscode()
-}
+    public protocol PasscodeRepositoryType {
+        var hasPasscode: Bool { get }
+        var passcode: [String]? { get }
+
+        func savePasscode(_ passcode: [String])
+        func deletePasscode()
+    }
+
+#endif

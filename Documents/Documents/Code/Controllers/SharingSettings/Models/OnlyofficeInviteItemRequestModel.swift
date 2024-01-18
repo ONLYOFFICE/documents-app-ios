@@ -51,3 +51,15 @@ class OnlyofficeInviteRequestModel: Mappable {
         invitations <- map["invitations"]
     }
 }
+
+class OnlyofficeInviteResponseModel: Mappable {
+    var members: [ASCUser] = []
+
+    init() {}
+
+    required init?(map: Map) {}
+
+    func mapping(map: Map) {
+        members <- map["members"]
+    }
+}

@@ -1,5 +1,5 @@
 //
-//  RoomsNamespace.swift
+//  Rooms.swift
 //  Documents
 //
 //  Created by Lolita Chernysheva on 22.12.2023.

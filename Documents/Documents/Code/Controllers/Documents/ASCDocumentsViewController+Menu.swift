@@ -457,7 +457,7 @@ extension ASCDocumentsViewController {
         if actions.contains(.archive) {
             transferActions.append(
                 UIAction(
-                    title: NSLocalizedString("Move to Archive", comment: "Button title"),
+                    title: NSLocalizedString("Move to archive", comment: "Button title"),
                     image: UIImage(systemName: "archivebox")
                 ) { [unowned self] action in
                     cell.hideSwipe(animated: true)

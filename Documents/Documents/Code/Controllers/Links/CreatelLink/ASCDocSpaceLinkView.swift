@@ -100,19 +100,19 @@ struct CreateGeneralLinkView_Previews: PreviewProvider {
                 viewModel: .init(screenState: .noLinksState)
             )
             .previewLayout(.sizeThatFits)
-            .previewDisplayName("No Links State")
+            .previewDisplayName(NSLocalizedString("No Links State", comment: ""))
 
             ASCDocSpaceLinkView(
                 viewModel: .init(screenState: .generalLinkState)
             )
             .previewLayout(.sizeThatFits)
-            .previewDisplayName("General link State")
+            .previewDisplayName(NSLocalizedString("General link State", comment: ""))
 
             ASCDocSpaceLinkView(
                 viewModel: .init(screenState: .additionalLinkState)
             )
             .previewLayout(.sizeThatFits)
-            .previewDisplayName("Additional link State")
+            .previewDisplayName(NSLocalizedString("Additional link State", comment: ""))
         }
     }
 }

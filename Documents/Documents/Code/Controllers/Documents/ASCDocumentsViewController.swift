@@ -66,7 +66,7 @@ class ASCDocumentsViewController: ASCBaseTableViewController, UIGestureRecognize
         folder: folder,
         itemsGetter: getLocalAndCloudItems,
         providerIndexesGetter: getProviderIndexes,
-        removedItemsHandler: handleRemovedItems,
+        removedItemsHandler: removedItems,
         errorHandeler: removeErrorHandler
     )
 
@@ -1560,7 +1560,7 @@ class ASCDocumentsViewController: ASCBaseTableViewController, UIGestureRecognize
 
     func deleteFolderAction(folder: ASCFolder) {
         let alertController = UIAlertController(title: NSLocalizedString("Delete forever?", comment: ""), message: "", preferredStyle: .alert)
-        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+        let cancelAction = UIAlertAction(title: ASCLocalization.Common.cancel, style: .cancel, handler: nil)
 
         var hud: MBProgressHUD?
 
@@ -1902,7 +1902,7 @@ class ASCDocumentsViewController: ASCBaseTableViewController, UIGestureRecognize
 
         let isOwner: Bool = provider.checkRoomOwner(folder: folder)
         let alertController = UIAlertController(title: NSLocalizedString("Leave the room", comment: ""), message: "", preferredStyle: .alert)
-        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+        let cancelAction = UIAlertAction(title: ASCLocalization.Common.cancel, style: .cancel, handler: nil)
 
         if isOwner {
             let assignOwnerAction = UIAlertAction(title: NSLocalizedString("Assign Owner", comment: ""), style: .default) { _ in
@@ -1955,7 +1955,7 @@ class ASCDocumentsViewController: ASCBaseTableViewController, UIGestureRecognize
             alertController.addAction(assignOwnerAction)
 
         } else {
-            let submitAction = UIAlertAction(title: NSLocalizedString("Ok", comment: ""), style: .default) { _ in
+            let submitAction = UIAlertAction(title: ASCLocalization.Common.ok, style: .default) { _ in
                 provider.leaveRoom(folder: folder) { status, result, error in
                     if status == .begin {
                         hud = MBProgressHUD.showTopMost()
@@ -2932,7 +2932,7 @@ class ASCDocumentsViewController: ASCBaseTableViewController, UIGestureRecognize
 
         dispatchGroup.notify(queue: .main) { [weak self] in
             guard let self = self else { return }
-            self.handleRemovedItems(deleteIndexes: indexPathes)
+            self.removedItems(indexPaths: indexPathes)
             self.showEmptyView(self.total < 1)
             self.updateNavBar()
             self.setEditMode(false)
@@ -3735,11 +3735,17 @@ extension ASCDocumentsViewController {
                                     message: error ?? NSLocalizedString("Could not delete.", comment: ""))
     }
 
-    func handleRemovedItems(deleteIndexes: [IndexPath]) {
-        guard !deleteIndexes.isEmpty else { return }
-        // Remove cells
+    func removedItems(indexPaths: [IndexPath]) {
+        guard !indexPaths.isEmpty else { return }
+
         tableView.beginUpdates()
-        tableView.deleteRows(at: deleteIndexes, with: .fade)
+
+        // Remove data
+        var newItemsData = provider?.items ?? []
+        provider?.items = newItemsData.remove(indexes: indexPaths.map { $0.row })
+
+        // Remove cells
+        tableView.reloadSections([0], with: .fade)
         tableView.endUpdates()
 
         showEmptyView(total < 1)

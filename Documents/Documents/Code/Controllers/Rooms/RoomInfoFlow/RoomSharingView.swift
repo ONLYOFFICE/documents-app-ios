@@ -20,7 +20,7 @@ struct RoomSharingView: View {
         handleHUD()
 
         return screenView
-            .navigationBarTitle(Text(NSLocalizedString("\(viewModel.room.title)", comment: "")), displayMode: .inline)
+            .navigationBarTitle(Text(viewModel.room.title), displayMode: .inline)
             .navigateToChangeAccess(selectedUser: $viewModel.selctedUser, viewModel: viewModel)
             .navigateToEditLink(selectedLink: $viewModel.selectdLink, viewModel: viewModel)
             .navigateToCreateLink(isDisplaing: $viewModel.isCreatingLinkScreenDisplaing, viewModel: viewModel)
@@ -268,13 +268,13 @@ struct ASCUserRow: View {
     var body: some View {
         HStack {
             imageView(for: model.image)
-            Text(NSLocalizedString("\(model.title)", comment: ""))
+            Text(model.title)
                 .lineLimit(1)
                 .minimumScaleFactor(0.5)
 
             Spacer()
 
-            Text(NSLocalizedString("\(model.subtitle)", comment: ""))
+            Text(model.subtitle)
                 .lineLimit(1)
                 .foregroundColor(.secondaryLabel)
                 .minimumScaleFactor(0.5)

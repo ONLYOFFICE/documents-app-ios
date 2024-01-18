@@ -86,7 +86,10 @@ struct RoomSharingCustomizeLinkView: View {
     private var timeLimitSection: some View {
         Section(
             header: Text(NSLocalizedString("Time limit", comment: "")),
-            footer: viewModel.isExpired ? Text(NSLocalizedString("The link has expired and has been disabled", comment: "")).foregroundColor(.red) : nil
+            footer: viewModel.isExpired
+                ? Text(NSLocalizedString("The link has expired and has been disabled", comment: ""))
+                .foregroundColor(.red)
+                : nil
         ) {
             Toggle(isOn: $viewModel.isTimeLimited.animation()) {
                 Text(NSLocalizedString("Enable time limit", comment: ""))
@@ -108,7 +111,9 @@ struct RoomSharingCustomizeLinkView: View {
             Section {
                 ASCLabledCellView(model:
                     .init(
-                        textString: NSLocalizedString(viewModel.isProtected ? "Copy link and password" : "Copy link", comment: ""),
+                        textString: viewModel.isProtected
+                            ? NSLocalizedString("Copy link and password", comment: "")
+                            : NSLocalizedString("Copy link", comment: ""),
                         cellType: .standard,
                         textAlignment: .center,
                         onTapAction: viewModel.onCopyLinkAndNotify

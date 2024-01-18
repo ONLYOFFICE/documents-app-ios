@@ -117,8 +117,14 @@ final class RoomSharingCustomizeLinkViewModel: ObservableObject {
         $selectedDate
             .dropFirst()
             .receive(on: RunLoop.main)
-            .sink(receiveValue: { [weak self] _ in
+            .sink(receiveValue: { [weak self] selectedDate in
                 self?.saveCurrentState()
+                DispatchQueue.main.async { [weak self] in
+                    guard let self else { return }
+                    if isExpired, selectedDate > Date() {
+                        isExpired = false
+                    }
+                }
             })
             .store(in: &cancelable)
 
@@ -183,7 +189,7 @@ extension RoomSharingCustomizeLinkViewModel {
 
 private extension RoomSharingCustomizeLinkViewModel {
     var isPossibleToSave: Bool {
-        !linkName.isEmpty
+        !linkName.isEmpty && selectedDate > Date()
     }
 
     func saveCurrentState() {
@@ -203,6 +209,9 @@ private extension RoomSharingCustomizeLinkViewModel {
                 DispatchQueue.main.async { [self] in
                     outputLink = link
                     defineSharingLink()
+                    if isExpired, selectedDate > Date() {
+                        isExpired = false
+                    }
                 }
             case let .failure(error):
                 DispatchQueue.main.async { [self] in
@@ -245,6 +254,6 @@ private extension Int {
 }
 
 private extension String {
-    static let linkCopiedSuccessfull = NSLocalizedString("Link successfully copied to clipboard", comment: "")
-    static let linkAndPasswordCopiedSuccessfull = NSLocalizedString("Link and password successfully copied to clipboard", comment: "")
+    static let linkCopiedSuccessfull = NSLocalizedString("Link successfully\ncopied to clipboard", comment: "")
+    static let linkAndPasswordCopiedSuccessfull = NSLocalizedString("Link and password\nsuccessfully copied\nto clipboard", comment: "")
 }

@@ -29,12 +29,6 @@
 "<p>You must have a paid version of the player to use this service.</p><p>If you have activated double authentication, please generate a CDM application from the Infomaniak manager. <a href=\"https://www.infomaniak.com/en/support/faq/1940/enable-two-step-verification\">More...</a></p>" = "<p>Devi avere una versione a pagamento del lettore per utilizzare questo servizio.</p><p>Se hai attivato la doppia autenticazione, genera un'applicazione CDM dal gestore di Infomaniak. <a href=\"https://www.infomaniak.com/en/support/faq/1940/enable-two-step-verification\">Altro...</a></p>";
 
 /* No comment provided by engineer. */
-"Сould not download file." = "Impossibile scaricare il file.";
-
-/* No comment provided by engineer. */
-"Сould not upload file." = "Impossibile caricare il file.";
-
-/* No comment provided by engineer. */
 "A file with a similar name already exists in the document directory on the device." = "Un file con un nome simile esiste già nella directory dei documenti sul dispositivo.";
 
 /* No comment provided by engineer. */
@@ -139,9 +133,6 @@
 
 /* No comment provided by engineer. */
 "Archiving failed." = "Archiviazione non riuscita.";
-
-/* No comment provided by engineer. */
-"Are you sure you want to delete the account  %@ from this devce?" = "Sei sicuro di voler eliminare l'account %@ da questo dispositivo?";
 
 /* No comment provided by engineer. */
 "Are you sure you want to delete the account %@ from this devce?" = "Sei sicuro di voler eliminare l'account %@ da questo dispositivo?";
@@ -386,7 +377,8 @@
 /* No comment provided by engineer. */
 "Create new documents, spreadsheets or presentations. Create new folders to organize your files." = "Crea nuovi documenti, fogli di calcolo o presentazioni. Crea nuove cartelle per organizzare i tuoi file.";
 
-/* Caption of the process */
+/* Caption of the process
+   Caption of the processing */
 "Creating" = "Creazione";
 
 /* No comment provided by engineer. */
@@ -1449,12 +1441,6 @@
 /* Caption of the process */
 "Uploading" = "Caricamento";
 
-/* Button title */
-"Use Face ID" = "Utilizzare Face ID";
-
-/* Button title */
-"Use Touch ID" = "Utilizzare Touch ID";
-
 /* No comment provided by engineer. */
 "User" = "Utente";
 
@@ -1544,4 +1530,10 @@
 
 /* Data units */
 "Zero bytes" = "Zero byte";
+
+/* No comment provided by engineer. */
+"Сould not download file." = "Impossibile scaricare il file.";
+
+/* No comment provided by engineer. */
+"Сould not upload file." = "Impossibile caricare il file.";
 

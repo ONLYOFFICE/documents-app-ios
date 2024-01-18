@@ -29,12 +29,6 @@
 "<p>You must have a paid version of the player to use this service.</p><p>If you have activated double authentication, please generate a CDM application from the Infomaniak manager. <a href=\"https://www.infomaniak.com/en/support/faq/1940/enable-two-step-verification\">More...</a></p>" = "<p>Você deve ter uma versão paga do player para usar este serviço.</p><p>Se você ativou a autenticação dupla, gere um aplicativo CDM a partir do gerenciador Infomaniak. <a href=\"https://www.infomaniak.com/en/support/faq/1940/enable-two-step-verification\">Mais...</a></p>";
 
 /* No comment provided by engineer. */
-"Сould not download file." = "Não baixou arquivo.";
-
-/* No comment provided by engineer. */
-"Сould not upload file." = "Não fez upload do arquivo.";
-
-/* No comment provided by engineer. */
 "A file with a similar name already exists in the document directory on the device." = "Já existe um arquivo com um nome semelhante no diretório de documentos do dispositivo.";
 
 /* No comment provided by engineer. */
@@ -139,9 +133,6 @@
 
 /* No comment provided by engineer. */
 "Archiving failed." = "O arquivamento falhou.";
-
-/* No comment provided by engineer. */
-"Are you sure you want to delete the account  %@ from this devce?" = "Tem certeza de que deseja excluir a conta %@ deste dispositivo?";
 
 /* No comment provided by engineer. */
 "Are you sure you want to delete the account %@ from this devce?" = "Tem certeza de que deseja excluir a conta %@ deste dispositivo?";
@@ -386,7 +377,8 @@
 /* No comment provided by engineer. */
 "Create new documents, spreadsheets or presentations. Create new folders to organize your files." = "Crie novos documentos, planilhas ou apresentações. Crie novas pastas para organizar seus arquivos.";
 
-/* Caption of the process */
+/* Caption of the process
+   Caption of the processing */
 "Creating" = "Criando";
 
 /* No comment provided by engineer. */
@@ -1449,12 +1441,6 @@
 /* Caption of the process */
 "Uploading" = "Fazendo upload";
 
-/* Button title */
-"Use Face ID" = "Usar Face ID";
-
-/* Button title */
-"Use Touch ID" = "Usar Touch ID";
-
 /* No comment provided by engineer. */
 "User" = "Usuário";
 
@@ -1544,4 +1530,10 @@
 
 /* Data units */
 "Zero bytes" = "Zero bytes";
+
+/* No comment provided by engineer. */
+"Сould not download file." = "Não baixou arquivo.";
+
+/* No comment provided by engineer. */
+"Сould not upload file." = "Não fez upload do arquivo.";
 

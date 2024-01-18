@@ -43,7 +43,7 @@ extension MBProgressHUD {
             label.text = title ?? NSLocalizedString("Done", comment: "Operation completed")
         case let .failure(title):
             customView = UIImageView(image: Asset.Images.hudCross.image)
-            label.text = title ?? NSLocalizedString("Error", comment: "Operation completed")
+            label.text = title ?? ASCLocalization.Common.error
         }
     }
 }

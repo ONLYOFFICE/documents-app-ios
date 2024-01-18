@@ -29,12 +29,6 @@
 "<p>You must have a paid version of the player to use this service.</p><p>If you have activated double authentication, please generate a CDM application from the Infomaniak manager. <a href=\"https://www.infomaniak.com/en/support/faq/1940/enable-two-step-verification\">More...</a></p>" = "<p>Pro použití této služby musíte používat placenou verzi přehrávače.</p><p>Pokud máte aktivované dvojité ověřování, vygenerujte si žádost CDM ze správce Infomaniak. <a href=\"https://www.infomaniak.com/en/support/faq/1940/enable-two-step-verification\">Další...</a></p>";
 
 /* No comment provided by engineer. */
-"Сould not download file." = "Nelze stáhnout soubor.";
-
-/* No comment provided by engineer. */
-"Сould not upload file." = "Nelze nahrát soubor.";
-
-/* No comment provided by engineer. */
 "A file with a similar name already exists in the document directory on the device." = "Soubor s podobným názvem již existuje v adresáři dokumentů v zařízení.";
 
 /* No comment provided by engineer. */
@@ -139,9 +133,6 @@
 
 /* No comment provided by engineer. */
 "Archiving failed." = "Archivace se nezdařila.";
-
-/* No comment provided by engineer. */
-"Are you sure you want to delete the account  %@ from this devce?" = "Opravdu chcete z tohoto zařízení odstranit účet %@?";
 
 /* No comment provided by engineer. */
 "Are you sure you want to delete the account %@ from this devce?" = "Opravdu chcete z tohoto zařízení odstranit účet %@?";
@@ -386,7 +377,8 @@
 /* No comment provided by engineer. */
 "Create new documents, spreadsheets or presentations. Create new folders to organize your files." = "Vytvářejte nové dokumenty, tabulky nebo prezentace. Vytvořte nové složky pro uspořádání souborů.";
 
-/* Caption of the process */
+/* Caption of the process
+   Caption of the processing */
 "Creating" = "Vytváření";
 
 /* No comment provided by engineer. */
@@ -1449,12 +1441,6 @@
 /* Caption of the process */
 "Uploading" = "Nahrávání";
 
-/* Button title */
-"Use Face ID" = "Použít odemykání pomocí obličeje";
-
-/* Button title */
-"Use Touch ID" = "Použít odemykání pomocí otisku";
-
 /* No comment provided by engineer. */
 "User" = "Uživatel";
 
@@ -1544,4 +1530,10 @@
 
 /* Data units */
 "Zero bytes" = "Nulové bajty";
+
+/* No comment provided by engineer. */
+"Сould not download file." = "Nelze stáhnout soubor.";
+
+/* No comment provided by engineer. */
+"Сould not upload file." = "Nelze nahrát soubor.";
 

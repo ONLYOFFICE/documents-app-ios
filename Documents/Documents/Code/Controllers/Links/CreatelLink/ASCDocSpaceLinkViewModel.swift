@@ -59,11 +59,11 @@ extension ASCDocSpaceLinkStateModel {
         tableData: ASCDocSpaceLinkStateModel.TableData(
             sections: [
                 ASCDocSpaceLinkStateModel.Section(
-                    header: .init(title: "General links"),
+                    header: .init(title: NSLocalizedString("General links", comment: "")),
                     cells: [
-                        .createLink(.init(textString: "Create and copy", imageNames: [], onTapAction: {})),
+                        .createLink(.init(textString: NSLocalizedString("Create and copy", comment: ""), imageNames: [], onTapAction: {})),
                     ],
-                    footer: "Provide general access to the document selecting the required permission level."
+                    footer: NSLocalizedString("Provide general access to the document selecting the required permission level.", comment: "")
                 ),
             ]
         )
@@ -73,22 +73,22 @@ extension ASCDocSpaceLinkStateModel {
         tableData: ASCDocSpaceLinkStateModel.TableData(
             sections: [
                 ASCDocSpaceLinkStateModel.Section(
-                    header: .init(title: "General links"),
+                    header: .init(title: NSLocalizedString("General links", comment: "")),
                     cells: [
-                        .link(.init(titleKey: "Anyone with the link", // TODO: -
-                                    subTitleKey: "Expires after 7 days", // TODO: -
+                        .link(.init(titleKey: NSLocalizedString("Anyone with the link", comment: ""),
+                                    subTitleKey: NSLocalizedString("Expires after 7 days", comment: ""),
                                     onTapAction: {},
                                     onShareAction: {})),
                     ],
-                    footer: "Provide general access to the document selecting the required permission level."
+                    footer: NSLocalizedString("Provide general access to the document selecting the required permission level.", comment: "")
                 ),
                 ASCDocSpaceLinkStateModel.Section(
-                    header: .init(title: "Additional links",
-                                  subtitle: "(0/5)"), // TODO: -
+                    header: .init(title: NSLocalizedString("Additional links", comment: ""),
+                                  subtitle: "(0/5)"),
                     cells: [
-                        .createLink(.init(textString: "Create and copy", imageNames: [], onTapAction: {})),
+                        .createLink(.init(textString: NSLocalizedString("Create and copy", comment: ""), imageNames: [], onTapAction: {})),
                     ],
-                    footer: "Create additional links to share the document with different access rights."
+                    footer: NSLocalizedString("Create additional links to share the document with different access rights.", comment: "")
                 ),
             ]
         )
@@ -98,26 +98,26 @@ extension ASCDocSpaceLinkStateModel {
         tableData: ASCDocSpaceLinkStateModel.TableData(
             sections: [
                 ASCDocSpaceLinkStateModel.Section(
-                    header: .init(title: "General links"),
+                    header: .init(title: NSLocalizedString("General links", comment: "")),
                     cells: [
-                        .link(.init(titleKey: "Anyone with the link", // TODO: -
-                                    subTitleKey: "Expires after 7 days", // TODO: -
+                        .link(.init(titleKey: NSLocalizedString("Anyone with the link", comment: ""),
+                                    subTitleKey: NSLocalizedString("Expires after 7 days", comment: ""),
                                     onTapAction: {},
                                     onShareAction: {})),
                     ],
-                    footer: "Provide general access to the document selecting the required permission level."
+                    footer: NSLocalizedString("Provide general access to the document selecting the required permission level.", comment: "")
                 ),
                 ASCDocSpaceLinkStateModel.Section(
-                    header: .init(title: "Additional links",
+                    header: .init(title: NSLocalizedString("Additional links", comment: ""),
                                   subtitle: "(0/5)",
                                   icon: UIImage(systemName: "plus")),
                     cells: [
-                        .link(.init(titleKey: "Anyone with the link", // TODO: -
-                                    subTitleKey: "Expires after 7 days", // TODO: -
+                        .link(.init(titleKey: NSLocalizedString("Anyone with the link", comment: ""),
+                                    subTitleKey: NSLocalizedString("Expires after 7 days", comment: ""),
                                     onTapAction: {},
                                     onShareAction: {})),
                     ],
-                    footer: "Create additional links to share the document with different access rights."
+                    footer: NSLocalizedString("Create additional links to share the document with different access rights.", comment: "")
                 ),
             ]
         )

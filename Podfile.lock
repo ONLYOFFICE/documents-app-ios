@@ -257,7 +257,7 @@ DEPENDENCIES:
   - SwiftyJSON
   - SwiftyXMLParser
   - WhatsNewKit
-  - WSTagsField
+  - WSTagsField (from `https://github.com/ayuzhin/WSTagsField.git`)
 
 SPEC REPOS:
   https://github.com/CocoaPods/Specs.git:
@@ -307,7 +307,6 @@ SPEC REPOS:
     - SwiftyXMLParser
     - UICircularProgressRing
     - WhatsNewKit
-    - WSTagsField
 
 EXTERNAL SOURCES:
   DocumentConverter:
@@ -329,6 +328,8 @@ EXTERNAL SOURCES:
     :path: "../editors-ios/SpreadsheetEditor.podspec"
   SwiftyDropbox:
     :git: https://github.com/ayuzhin/SwiftyDropbox.git
+  WSTagsField:
+    :git: https://github.com/ayuzhin/WSTagsField.git
 
 CHECKOUT OPTIONS:
   FilesProvider:
@@ -346,6 +347,9 @@ CHECKOUT OPTIONS:
   SwiftyDropbox:
     :commit: 4fec7505076fa0ab0220f6dffe4d60cb3269157c
     :git: https://github.com/ayuzhin/SwiftyDropbox.git
+  WSTagsField:
+    :commit: 71caf6cfaa9bc2de9cd0b902311cb1326fb93040
+    :git: https://github.com/ayuzhin/WSTagsField.git
 
 SPEC CHECKSUMS:
   Alamofire: 0e92e751b3e9e66d7982db43919d01f313b8eb91
@@ -405,6 +409,6 @@ SPEC CHECKSUMS:
   WhatsNewKit: c87028c4059dccd113495422801914cc53f6aab0
   WSTagsField: a4e91b7d866e8c9755332ebcf8123f42f2abd4a0
 
-PODFILE CHECKSUM: 2badbdeeef509f5680a42fc845439dfcf54970e3
+PODFILE CHECKSUM: 01b51b030cf0ec43c3ad519d6e9fa33c3afbec69
 
 COCOAPODS: 1.13.0

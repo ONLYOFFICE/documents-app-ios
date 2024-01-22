@@ -23,6 +23,7 @@ struct ManageRoomView: View {
             roomImageAndNameSection
             roomTagsSection
         }
+        .insetGroupedListStyle()
         .navigateToRoomTypeSelection(isActive: $viewModel.isRoomSelectionPresenting, viewModel: viewModel)
         .navigationTitle(isEditMode: viewModel.isEditMode)
         .navigationBarItems(viewModel: viewModel)
@@ -160,6 +161,13 @@ private extension View {
                 dismissOnSelection: true
             )
         })
+    }
+    
+    @ViewBuilder
+    func insetGroupedListStyle() -> some View {
+        if #available(iOS 14.0, *) {
+            listStyle(InsetGroupedListStyle())
+        }
     }
 }
 

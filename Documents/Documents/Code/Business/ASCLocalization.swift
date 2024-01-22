@@ -11,6 +11,7 @@ import UIKit
 class ASCLocalization {
     enum Common {
         static let cancel = NSLocalizedString("common.cancel", tableName: nil, bundle: Bundle.main, value: "Cancel", comment: "Cancel")
+        static let close = NSLocalizedString("common.close", tableName: nil, bundle: Bundle.main, value: "Close", comment: "Close")
         static let ok = NSLocalizedString("common.ok", tableName: nil, bundle: Bundle.main, value: "OK", comment: "OK")
         static let error = NSLocalizedString("common.error", tableName: nil, bundle: Bundle.main, value: "Error", comment: "Error")
         static let me = NSLocalizedString("common.me", tableName: nil, bundle: Bundle.main, value: "Me", comment: "Myself")

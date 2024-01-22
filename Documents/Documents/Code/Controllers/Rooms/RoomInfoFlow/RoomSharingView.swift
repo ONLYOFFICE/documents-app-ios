@@ -326,19 +326,3 @@ struct ASCUserRow: View {
         }
     }
 }
-
-struct KFImageView: UIViewRepresentable {
-    let url: URL
-
-    func makeUIView(context: Context) -> UIImageView {
-        let imageView = UIImageView()
-        imageView.contentMode = .scaleAspectFill
-        return imageView
-    }
-
-    func updateUIView(_ uiView: UIImageView, context: Context) {
-        uiView.contentMode = .scaleAspectFill
-        uiView.kf.indicatorType = .activity
-        uiView.kf.apiSetImage(with: url)
-    }
-}

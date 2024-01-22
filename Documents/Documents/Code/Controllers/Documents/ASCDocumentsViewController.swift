@@ -2011,6 +2011,10 @@ class ASCDocumentsViewController: ASCBaseTableViewController, UIGestureRecognize
                 }
             }
         }
+
+        vc.modalPresentationStyle = .formSheet
+        vc.preferredContentSize = ASCConstants.Size.defaultPreferredContentSize
+
         present(vc, animated: true, completion: nil)
     }
 
@@ -3456,11 +3460,11 @@ extension ASCDocumentsViewController: ASCProviderDelegate {
         let sharedViewController = ASCSharingOptionsViewController(sourceViewController: self)
         let sharedNavigationVC = ASCBaseNavigationController(rootASCViewController: sharedViewController)
 
-        if UIDevice.pad {
-            sharedNavigationVC.modalPresentationStyle = .formSheet
-        }
+        sharedNavigationVC.modalPresentationStyle = .formSheet
+        sharedNavigationVC.preferredContentSize = ASCConstants.Size.defaultPreferredContentSize
 
         parent.present(sharedNavigationVC, animated: true, completion: nil)
+
         sharedViewController.setup(entity: entity)
         sharedViewController.requestToLoadRightHolders()
     }

@@ -68,9 +68,8 @@ final class ASCNavigator {
             if let sharedViewController = viewController as? ASCSharingOptionsViewController {
                 let sharedNavigationVC = ASCBaseNavigationController(rootASCViewController: sharedViewController)
 
-                if UIDevice.pad {
-                    sharedNavigationVC.modalPresentationStyle = .formSheet
-                }
+                sharedNavigationVC.modalPresentationStyle = .formSheet
+                sharedNavigationVC.preferredContentSize = ASCConstants.Size.defaultPreferredContentSize
 
                 navigationController?.present(sharedNavigationVC, animated: true, completion: nil)
                 sharedViewController.setup(entity: entity)
@@ -80,10 +79,12 @@ final class ASCNavigator {
         case let .addUsers(entity):
             if let addUsersViewController = viewController as? ASCSharingInviteRightHoldersViewController {
                 let addUsersNavigationVC = ASCBaseNavigationController(rootASCViewController: addUsersViewController)
-                if UIDevice.pad {
-                    addUsersNavigationVC.modalPresentationStyle = .formSheet
-                }
+
+                addUsersNavigationVC.modalPresentationStyle = .formSheet
+                addUsersNavigationVC.preferredContentSize = ASCConstants.Size.defaultPreferredContentSize
+
                 navigationController?.present(addUsersNavigationVC, animated: true, completion: nil)
+
                 addUsersViewController.dataStore?.entity = entity
                 addUsersViewController.dataStore?.currentUser = ASCFileManager.onlyofficeProvider?.user
                 addUsersViewController.accessProvider = ASCSharingSettingsAccessProviderFactory().get(entity: entity, isAccessExternal: false)
@@ -92,10 +93,12 @@ final class ASCNavigator {
         case let .leaveRoom(entity, handler):
             if let leaveRoomViewController = viewController as? ASCSharingChooseNewOwnerRightHoldersViewController {
                 let leaveRoomNavigationVC = ASCBaseNavigationController(rootASCViewController: leaveRoomViewController)
-                if UIDevice.pad {
-                    leaveRoomNavigationVC.modalPresentationStyle = .formSheet
-                }
+
+                leaveRoomNavigationVC.modalPresentationStyle = .formSheet
+                leaveRoomNavigationVC.preferredContentSize = ASCConstants.Size.defaultPreferredContentSize
+
                 navigationController?.present(leaveRoomNavigationVC, animated: true, completion: nil)
+
                 leaveRoomViewController.dataStore?.entity = entity
                 leaveRoomViewController.dataStore?.currentUser = ASCFileManager.onlyofficeProvider?.user
                 leaveRoomViewController.handler = handler
@@ -107,7 +110,10 @@ final class ASCNavigator {
         case .roomSharingLink:
             if let shareRoomViewController = viewController as? RoomSharingRootViewController {
                 let shareRoomNavigationVC = ASCBaseNavigationController(rootASCViewController: shareRoomViewController)
+
                 shareRoomNavigationVC.modalPresentationStyle = .formSheet
+                shareRoomNavigationVC.preferredContentSize = ASCConstants.Size.defaultPreferredContentSize
+
                 navigationController?.present(shareRoomNavigationVC, animated: true, completion: nil)
             }
 

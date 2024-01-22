@@ -129,10 +129,8 @@ class ASCCreateEntity: NSObject, UIImagePickerControllerDelegate, UINavigationCo
             let connectStorageVC = ASCConnectPortalThirdPartyViewController.instantiate(from: Storyboard.connectStorage)
             let connectStorageNavigationVC = ASCBaseNavigationController(rootASCViewController: connectStorageVC)
 
-            if UIDevice.pad {
-                connectStorageNavigationVC.modalPresentationStyle = .formSheet
-                connectStorageNavigationVC.preferredContentSize = ASCConstants.Size.defaultPreferredContentSize
-            }
+            connectStorageNavigationVC.modalPresentationStyle = .formSheet
+            connectStorageNavigationVC.preferredContentSize = ASCConstants.Size.defaultPreferredContentSize
 
             viewController.present(connectStorageNavigationVC, animated: true, completion: nil)
         }

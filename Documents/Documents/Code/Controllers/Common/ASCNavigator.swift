@@ -63,6 +63,7 @@ final class ASCNavigator {
                 let navigationVC = UINavigationController(rootASCViewController: sortViewController)
                 navigationController?.present(navigationVC, animated: true, completion: nil)
             }
+
         case let .shareSettings(entity):
             if let sharedViewController = viewController as? ASCSharingOptionsViewController {
                 let sharedNavigationVC = ASCBaseNavigationController(rootASCViewController: sharedViewController)
@@ -75,6 +76,7 @@ final class ASCNavigator {
                 sharedViewController.setup(entity: entity)
                 sharedViewController.requestToLoadRightHolders()
             }
+
         case let .addUsers(entity):
             if let addUsersViewController = viewController as? ASCSharingInviteRightHoldersViewController {
                 let addUsersNavigationVC = ASCBaseNavigationController(rootASCViewController: addUsersViewController)
@@ -86,6 +88,7 @@ final class ASCNavigator {
                 addUsersViewController.dataStore?.currentUser = ASCFileManager.onlyofficeProvider?.user
                 addUsersViewController.accessProvider = ASCSharingSettingsAccessProviderFactory().get(entity: entity, isAccessExternal: false)
             }
+
         case let .leaveRoom(entity, handler):
             if let leaveRoomViewController = viewController as? ASCSharingChooseNewOwnerRightHoldersViewController {
                 let leaveRoomNavigationVC = ASCBaseNavigationController(rootASCViewController: leaveRoomViewController)
@@ -97,8 +100,17 @@ final class ASCNavigator {
                 leaveRoomViewController.dataStore?.currentUser = ASCFileManager.onlyofficeProvider?.user
                 leaveRoomViewController.handler = handler
             }
+
         case .onlyofficeConnectPortal:
             navigationController?.viewControllers = [viewController]
+
+        case .roomSharingLink:
+            if let shareRoomViewController = viewController as? RoomSharingRootViewController {
+                let shareRoomNavigationVC = ASCBaseNavigationController(rootASCViewController: shareRoomViewController)
+                shareRoomNavigationVC.modalPresentationStyle = .formSheet
+                navigationController?.present(shareRoomNavigationVC, animated: true, completion: nil)
+            }
+
         default:
             navigationController?.pushViewController(viewController, animated: true)
         }

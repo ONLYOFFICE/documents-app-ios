@@ -100,6 +100,12 @@ class ASCCreateEntity: NSObject, UIImagePickerControllerDelegate, UINavigationCo
         let vc = CreateRoomRouteViewViewController(onAction: { [weak viewController] room in
             viewController?.add(entity: room, open: true)
         })
+
+        if UIDevice.pad {
+            vc.isModalInPresentation = true
+            vc.modalPresentationStyle = .formSheet
+        }
+
         viewController.present(vc, animated: true, completion: nil)
     }
 

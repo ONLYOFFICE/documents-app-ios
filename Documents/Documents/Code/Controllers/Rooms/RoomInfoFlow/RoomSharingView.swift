@@ -25,6 +25,11 @@ struct RoomSharingView: View {
             .navigateToEditLink(selectedLink: $viewModel.selectdLink, viewModel: viewModel)
             .navigateToCreateLink(isDisplaing: $viewModel.isCreatingLinkScreenDisplaing, viewModel: viewModel)
             .sharingSheet(isPresented: $viewModel.isSharingScreenPresenting, link: viewModel.sharingLink)
+            .navigationBarItems(
+                leading: Button(ASCLocalization.Common.cancel) {
+                    presentationMode.wrappedValue.dismiss()
+                }
+            )
             .onAppear { viewModel.onAppear() }
     }
 

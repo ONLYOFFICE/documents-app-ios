@@ -275,7 +275,7 @@ class NetworkingClient: NSObject, NetworkingRequestingProtocol {
     }
 
     func parseError(_ data: Data?, _ error: AFError? = nil) -> NetworkingError {
-        if let error = error {
+        if let error {
             switch error {
             case let .sessionTaskFailed(error):
                 if let urlError = error as? URLError {
@@ -287,7 +287,7 @@ class NetworkingClient: NSObject, NetworkingRequestingProtocol {
                     case .timedOut:
                         return .timeOut
                     default:
-                        break
+                        return .unknown(error: error)
                     }
                 }
             case .explicitlyCancelled:

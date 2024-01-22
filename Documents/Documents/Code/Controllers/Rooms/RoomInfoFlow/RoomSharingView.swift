@@ -332,12 +332,13 @@ struct KFImageView: UIViewRepresentable {
 
     func makeUIView(context: Context) -> UIImageView {
         let imageView = UIImageView()
-        imageView.contentMode = .scaleToFill
+        imageView.contentMode = .scaleAspectFill
         return imageView
     }
 
     func updateUIView(_ uiView: UIImageView, context: Context) {
-        uiView.kf.setImage(with: url)
-        uiView.contentMode = .scaleAspectFit
+        uiView.contentMode = .scaleAspectFill
+        uiView.kf.indicatorType = .activity
+        uiView.kf.apiSetImage(with: url)
     }
 }

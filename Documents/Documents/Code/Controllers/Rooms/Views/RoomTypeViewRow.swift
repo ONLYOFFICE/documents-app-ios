@@ -55,6 +55,6 @@ struct RoomTypeViewRow: View {
 
 #Preview {
     RoomTypeViewRow(
-        roomTypeModel: CreatingRoomType.publicRoom.toRoomTypeModel()
+        roomTypeModel: CreatingRoomType.publicRoom.toRoomTypeModel(showDisclosureIndicator: true)
     )
 }

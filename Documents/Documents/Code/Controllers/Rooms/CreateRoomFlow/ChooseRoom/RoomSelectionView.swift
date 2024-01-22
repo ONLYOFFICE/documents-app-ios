@@ -29,7 +29,7 @@ struct RoomSelectionView: View {
     @State private var maxHeights: CGFloat = 0
 
     var body: some View {
-        List(viewModel.roomsTypeModels, id: \.name) { model in
+        List(viewModel.roomTypeModel(showDisclosureIndicator: !dismissOnSelection), id: \.name) { model in
             RoomTypeViewRow(roomTypeModel: model)
                 .frame(minHeight: maxHeights)
                 .background(

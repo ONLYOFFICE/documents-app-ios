@@ -53,11 +53,7 @@ struct RoomSelectionView: View {
                 }
         }
         .navigationBarTitle(Text(NSLocalizedString("Choose room type", comment: "")), displayMode: .inline)
-        .navigationBarItems(
-            trailing: Button(ASCLocalization.Common.cancel) {
-                presentationMode.wrappedValue.dismiss()
-            }
-        )
+        .navigationBarItems(isLastInNCStack: dismissOnSelection, presentationMode: presentationMode)
     }
 }
 
@@ -77,6 +73,19 @@ extension RoomTypeModel {
             name: roomType.name,
             description: roomType.description,
             icon: roomType.icon
+        )
+    }
+}
+
+private extension View {
+    
+    func navigationBarItems(isLastInNCStack: Bool, presentationMode: Binding<PresentationMode>) -> some View {
+        navigationBarItems(
+            leading: isLastInNCStack 
+            ? Button("") {}
+            : Button(ASCLocalization.Common.close) {
+                presentationMode.wrappedValue.dismiss()
+            }
         )
     }
 }

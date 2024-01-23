@@ -51,7 +51,6 @@ struct RoomSharingCustomizeLinkView: View {
             protectedSection
             restrictionSection
             timeLimitSection
-            copySection
             deleteSection
         }
         .navigationBarTitle(Text(NSLocalizedString("Additional links", comment: "")))
@@ -101,25 +100,6 @@ struct RoomSharingCustomizeLinkView: View {
                     selectedDate: $viewModel.selectedDate,
                     title: NSLocalizedString("Valid through", comment: "")
                 ))
-            }
-        }
-    }
-
-    @ViewBuilder
-    private var copySection: some View {
-        if !viewModel.isExpired {
-            Section {
-                ASCLabledCellView(model:
-                    .init(
-                        textString: viewModel.isProtected
-                            ? NSLocalizedString("Copy link and password", comment: "")
-                            : NSLocalizedString("Copy link", comment: ""),
-                        cellType: .standard,
-                        textAlignment: .center,
-                        onTapAction: viewModel.onCopyLinkAndNotify
-                    )
-                )
-                .disabled(viewModel.linkName.isEmpty)
             }
         }
     }

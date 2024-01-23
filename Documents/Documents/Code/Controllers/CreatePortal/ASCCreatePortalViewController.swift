@@ -731,7 +731,9 @@ extension ASCCreatePortalViewController: UITextFieldDelegate {
 
 extension ASCCreatePortalViewController {
     func domain(by regin: String) -> String {
-        let domainRegion: [String: String] = ASCConstants.Urls.domainRegions
-        return domainRegion[regin] ?? ASCConstants.Urls.defaultDomainRegions
+        // TODO: Only one domain region for DocSpace (bug #66075)
+//        let domainRegion: [String: String] = ASCConstants.Urls.domainRegions
+//        return domainRegion[regin] ?? ASCConstants.Urls.defaultDomainRegions
+        ASCConstants.Urls.defaultDomainRegions
     }
 }

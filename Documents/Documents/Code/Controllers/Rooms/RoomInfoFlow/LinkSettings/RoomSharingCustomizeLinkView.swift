@@ -18,11 +18,10 @@ struct RoomSharingCustomizeLinkView: View {
         handleHUD()
 
         return content
-            .navigationBarItems(rightBtn: shareButton)
+            .navigationBarItems(rightBtn: doneButton)
             .disabledIfDeleting(viewModel.isDeleting)
             .alertForErrorMessage($viewModel.errorMessage)
-            .dismissOnChange(of: viewModel.isDeleted, using: presentationMode)
-            .sharingSheet(isPresented: $viewModel.isSharingScreenPresenting, link: viewModel.sharingLink)
+            .dismissOnChange(of: viewModel.isDeleted || viewModel.isSaved, using: presentationMode)
     }
 
     @ViewBuilder
@@ -130,37 +129,40 @@ struct RoomSharingCustomizeLinkView: View {
     }
 
     @ViewBuilder
-    private var shareButton: some View {
+    private var doneButton: some View {
         Button(
-            NSLocalizedString("Share", comment: ""),
+            NSLocalizedString("Done", comment: ""),
             action: {
-                viewModel.isSharingScreenPresenting = true
+                viewModel.onSave()
             }
         )
-        .disabled(viewModel.sharingLink == nil)
+        .disabled(!viewModel.isPossibleToSave)
     }
-
+    
     private func handleHUD() {
-        if viewModel.isDeleting {
-            MBProgressHUD.currentHUD?.hide(animated: false)
+        MBProgressHUD.currentHUD?.hide(animated: false)
+
+        if viewModel.isSaving || viewModel.isDeleting {
             let hud = MBProgressHUD.showTopMost()
             hud?.mode = .indeterminate
-            hud?.label.text = NSLocalizedString("Removing", comment: "") + "..."
-        } else {
-            if let hud = MBProgressHUD.currentHUD {
-                if let resultModalModel = viewModel.resultModalModel {
-                    switch resultModalModel.result {
-                    case .success:
-                        hud.setState(result: .success(NSLocalizedString("Deleted", comment: "")))
-                    case .failure:
-                        hud.setState(result: .failure(resultModalModel.message))
-                    }
-
-                    hud.hide(animated: true, afterDelay: resultModalModel.hideAfter)
-                } else {
-                    hud.hide(animated: true)
-                }
+            if viewModel.isDeleting {
+                hud?.label.text = NSLocalizedString("Removing", comment: "") + "..."
+            } else if viewModel.isSaving {
+                hud?.label.text = NSLocalizedString("Saving", comment: "") + "..."
             }
+        } else if let resultModalModel = viewModel.resultModalModel,
+            let hud = MBProgressHUD.showTopMost() {
+            switch resultModalModel.result {
+            case .success:
+                if viewModel.isDeleted {
+                    hud.setState(result: .success(NSLocalizedString("Deleted", comment: "")))
+                } else if viewModel.isSaved {
+                    hud.setState(result: .success(NSLocalizedString("Saved", comment: "")))
+                }
+            case .failure:
+                hud.setState(result: .failure(resultModalModel.message))
+            }
+            hud.hide(animated: true, afterDelay: resultModalModel.hideAfter)
         }
     }
 }
@@ -180,14 +182,6 @@ private extension View {
         onChange(of: value) { newValue in
             if newValue {
                 presentationMode.wrappedValue.dismiss()
-            }
-        }
-    }
-
-    func sharingSheet(isPresented: Binding<Bool>, link: URL?) -> some View {
-        sheet(isPresented: isPresented) {
-            if let link {
-                ActivityView(activityItems: [link])
             }
         }
     }

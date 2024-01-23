@@ -192,7 +192,6 @@ struct RoomSharingView: View {
 }
 
 private extension View {
-    
     func navigationBarItems() -> some View {
         navigationBarItems(
             leading: Button(ASCLocalization.Common.close) {
@@ -200,7 +199,7 @@ private extension View {
             }
         )
     }
-    
+
     func sharingSheet(isPresented: Binding<Bool>, link: URL?) -> some View {
         sheet(isPresented: isPresented) {
             if let link {

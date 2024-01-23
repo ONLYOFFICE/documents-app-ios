@@ -6,8 +6,8 @@
 //  Copyright © 2024 Ascensio System SIA. All rights reserved.
 //
 
-import SwiftUI
 import Kingfisher
+import SwiftUI
 
 struct KFImageView: UIViewRepresentable {
     let url: URL

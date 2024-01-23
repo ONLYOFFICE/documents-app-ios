@@ -131,14 +131,13 @@ struct RoomSharingCustomizeLinkView: View {
 
     @ViewBuilder
     private var shareButton: some View {
-        if viewModel.sharingLink != nil {
-            Button(
-                NSLocalizedString("Share", comment: ""),
-                action: {
-                    viewModel.isSharingScreenPresenting = true
-                }
-            )
-        }
+        Button(
+            NSLocalizedString("Share", comment: ""),
+            action: {
+                viewModel.isSharingScreenPresenting = true
+            }
+        )
+        .disabled(viewModel.sharingLink == nil)
     }
 
     private func handleHUD() {

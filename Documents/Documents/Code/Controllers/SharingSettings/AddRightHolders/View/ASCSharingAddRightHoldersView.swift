@@ -51,7 +51,7 @@ class ASCSharingAddRightHoldersView {
     // MARK: - Navigation bar props
 
     let title = NSLocalizedString("Shared access", comment: "")
-    
+
     private lazy var closeBarBtn: UIBarButtonItem = UIBarButtonItem(
         title: NSLocalizedString("Close", comment: ""),
         style: .plain,
@@ -255,7 +255,7 @@ extension ASCSharingAddRightHoldersView {
     @objc func onDeselectAllButtonTapped() {
         delegate?.onDeselectAllButtonTapped()
     }
-    
+
     @objc func onDismissButtonTapped() {
         delegate?.onDismissButtonTapped()
     }

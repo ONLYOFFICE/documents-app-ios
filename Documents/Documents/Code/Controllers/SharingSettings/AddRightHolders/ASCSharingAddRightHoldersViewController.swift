@@ -306,11 +306,10 @@ class ASCSharingAddRightHoldersViewController: UIViewController, ASCSharingAddRi
 // MARK: - View Delegate
 
 extension ASCSharingAddRightHoldersViewController: ASCSharingAddRightHoldersViewDelegate {
-    
     func onDismissButtonTapped() {
         navigationController?.dismiss(animated: true)
     }
-    
+
     func getAccessList() -> ([ASCShareAccess]) {
         return accessProvider.get()
     }

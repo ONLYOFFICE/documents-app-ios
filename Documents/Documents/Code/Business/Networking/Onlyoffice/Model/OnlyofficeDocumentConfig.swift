@@ -38,9 +38,17 @@ struct OnlyofficeDocumentInfo: Codable {
 // MARK: - OnlyofficeDocumentPermissions
 
 struct OnlyofficeDocumentPermissions: Codable {
-    var changeHistory, comment, download, edit: Bool?
-    var fillForms, print, modifyFilter, rename: Bool?
-    var review: Bool?
+    var changeHistory, chat, comment, download, edit, copy: Bool?
+    var fillForms, print, modifyFilter, rename, review: Bool?
+    var commentGroups: OnlyofficeDocumentCommentGroupsConfig?
+    var deleteCommentAuthorOnly, editCommentAuthorOnly, modifyContentControl,
+        protect: Bool?
+    var reviewGroups: [String]?
+    var userInfoGroups: [String]?
+}
+
+struct OnlyofficeDocumentCommentGroupsConfig: Codable {
+    var edit, remove, view: [String]?
 }
 
 // MARK: - OnlyofficeDocumentReferenceData

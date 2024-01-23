@@ -162,7 +162,7 @@ private extension View {
             )
         })
     }
-    
+
     @ViewBuilder
     func insetGroupedListStyle() -> some View {
         if #available(iOS 14.0, *) {

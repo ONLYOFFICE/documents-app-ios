@@ -51,7 +51,6 @@ struct RoomSharingCustomizeLinkView: View {
             protectedSection
             restrictionSection
             timeLimitSection
-            copySection
             deleteSection
         }
         .navigationBarTitle(Text(NSLocalizedString("Additional links", comment: "")))
@@ -105,25 +104,6 @@ struct RoomSharingCustomizeLinkView: View {
         }
     }
 
-    @ViewBuilder
-    private var copySection: some View {
-        if !viewModel.isExpired {
-            Section {
-                ASCLabledCellView(model:
-                    .init(
-                        textString: viewModel.isProtected
-                            ? NSLocalizedString("Copy link and password", comment: "")
-                            : NSLocalizedString("Copy link", comment: ""),
-                        cellType: .standard,
-                        textAlignment: .center,
-                        onTapAction: viewModel.onCopyLinkAndNotify
-                    )
-                )
-                .disabled(viewModel.linkName.isEmpty)
-            }
-        }
-    }
-
     private var restrictionSection: some View {
         Section(footer: Text(NSLocalizedString("Enable this setting to disable downloads of files and folders from this room shared via a link", comment: ""))) {
             Toggle(isOn: $viewModel.isRestrictCopyOn) {
@@ -151,14 +131,13 @@ struct RoomSharingCustomizeLinkView: View {
 
     @ViewBuilder
     private var shareButton: some View {
-        if viewModel.sharingLink != nil {
-            Button(
-                NSLocalizedString("Share", comment: ""),
-                action: {
-                    viewModel.isSharingScreenPresenting = true
-                }
-            )
-        }
+        Button(
+            NSLocalizedString("Share", comment: ""),
+            action: {
+                viewModel.isSharingScreenPresenting = true
+            }
+        )
+        .disabled(viewModel.sharingLink == nil)
     }
 
     private func handleHUD() {

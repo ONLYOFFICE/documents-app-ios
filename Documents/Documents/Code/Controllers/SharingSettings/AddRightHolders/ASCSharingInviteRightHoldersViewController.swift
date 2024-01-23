@@ -335,7 +335,7 @@ extension ASCSharingInviteRightHoldersViewController: ASCSharingAddRightHoldersV
 
         forEachRow(in: sharingAddRightHoldersView.usersTableView, applyAction: deselectAction(in:by:))
     }
-    
+
     func onDismissButtonTapped() {
         navigationController?.dismiss(animated: true)
     }

@@ -9,7 +9,6 @@
 import SwiftUI
 
 class RoomSelectionViewModel: ObservableObject {
-
     func roomTypeModel(showDisclosureIndicator: Bool) -> [RoomTypeModel] {
         CreatingRoomType.allCases.map { $0.toRoomTypeModel(showDisclosureIndicator: showDisclosureIndicator) }
     }

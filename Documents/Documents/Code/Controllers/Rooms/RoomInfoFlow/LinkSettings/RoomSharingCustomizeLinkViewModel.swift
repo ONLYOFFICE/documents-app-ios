@@ -142,25 +142,6 @@ final class RoomSharingCustomizeLinkViewModel: ObservableObject {
 // MARK: Handlers
 
 extension RoomSharingCustomizeLinkViewModel {
-    func onCopyLinkAndNotify() {
-        guard let link = link else { return }
-        if password.isEmpty {
-            UIPasteboard.general.string = link.linkInfo.shareLink
-            resultModalModel = .init(
-                result: .success,
-                message: .linkCopiedSuccessfull
-            )
-        } else {
-            UIPasteboard.general.string = """
-            \(link.linkInfo.shareLink)
-            \(password)
-            """
-            resultModalModel = .init(
-                result: .success,
-                message: .linkAndPasswordCopiedSuccessfull
-            )
-        }
-    }
 
     func onDelete() {
         guard let linkId, var link = link ?? outputLink else { return }

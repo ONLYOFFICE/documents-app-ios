@@ -63,17 +63,24 @@ final class ASCNavigator {
                 let navigationVC = UINavigationController(rootASCViewController: sortViewController)
                 navigationController?.present(navigationVC, animated: true, completion: nil)
             }
-
+            
         case let .shareSettings(entity):
-            if let sharedViewController = viewController as? ASCSharingOptionsViewController {
-                let sharedNavigationVC = ASCBaseNavigationController(rootASCViewController: sharedViewController)
-
-                sharedNavigationVC.modalPresentationStyle = .formSheet
-                sharedNavigationVC.preferredContentSize = ASCConstants.Size.defaultPreferredContentSize
-
-                navigationController?.present(sharedNavigationVC, animated: true, completion: nil)
+            var shareRoomNavigationVC: ASCBaseNavigationController?
+            if entity.isRoom {
+                if let room = entity as? ASCFolder {
+                    let shareRoomViewController = RoomSharingRootViewController(room: room)
+                    shareRoomNavigationVC = ASCBaseNavigationController(rootASCViewController: shareRoomViewController)
+                }
+            } else if let sharedViewController = viewController as? ASCSharingOptionsViewController {
+                shareRoomNavigationVC = ASCBaseNavigationController(rootASCViewController: sharedViewController)
                 sharedViewController.setup(entity: entity)
                 sharedViewController.requestToLoadRightHolders()
+            }
+            
+            if let shareRoomNavigationVC {
+                shareRoomNavigationVC.modalPresentationStyle = .formSheet
+                shareRoomNavigationVC.preferredContentSize = ASCConstants.Size.defaultPreferredContentSize
+                navigationController?.present(shareRoomNavigationVC, animated: true, completion: nil)
             }
 
         case let .addUsers(entity):

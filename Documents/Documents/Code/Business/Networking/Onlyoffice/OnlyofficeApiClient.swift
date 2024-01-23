@@ -20,10 +20,12 @@ class OnlyofficeTokenAdapter: RequestAdapter {
     func adapt(_ urlRequest: URLRequest, for session: Session, completion: @escaping (Result<URLRequest, Error>) -> Void) {
         var urlRequest = urlRequest
 
-        if OnlyofficeApiClient.shared.isHttp2 {
-            urlRequest.headers.update(.authorization(bearerToken: accessToken))
-        } else {
-            urlRequest.headers.update(.authorization(accessToken)) // Legacy portals
+        if !accessToken.isEmpty {
+            if OnlyofficeApiClient.shared.isHttp2 {
+                urlRequest.headers.update(.authorization(bearerToken: accessToken))
+            } else {
+                urlRequest.headers.update(.authorization(accessToken)) // Legacy portals
+            }
         }
         completion(.success(urlRequest))
     }
@@ -142,7 +144,7 @@ class OnlyofficeApiClient: NetworkingClient {
 
         var headers: HTTPHeaders?
 
-        if baseURL?.host == url.host, let token = token {
+        if baseURL?.host == url.host, let token, !token.isEmpty {
             headers = [
                 "Authorization": isHttp2 ? "Bearer \(token)" : token,
             ]

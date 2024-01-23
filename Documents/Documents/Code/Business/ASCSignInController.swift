@@ -78,6 +78,14 @@ class ASCSignInController {
             return
         }
 
+        OnlyofficeApiClient.shared.cancelAll()
+        ASCPushNotificationManager.requestClearRegister()
+        OnlyofficeApiClient.reset()
+        UserDefaults.standard.removeObject(forKey: ASCConstants.SettingsKeys.collaborationService)
+        ASCFileManager.onlyofficeProvider?.reset()
+        ASCFileManager.onlyofficeProvider = nil
+        OnlyofficeApiClient.reset()
+
         let api = OnlyofficeApiClient.shared
 
         var useProtocols: [String] = []

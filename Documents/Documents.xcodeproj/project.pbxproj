@@ -124,6 +124,7 @@
 		9AC1D42040BBA923AD7D49C2 /* Pods_DocumentsTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C98C6D1CF16699DFAAAA3A64 /* Pods_DocumentsTests.framework */; };
 		E800AD6C2B4ED9A600AE880D /* Toggle+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E800AD6B2B4ED9A600AE880D /* Toggle+Extension.swift */; };
 		E80B7A742B33595400D48211 /* RoomLinkResponceModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E80B7A732B33595400D48211 /* RoomLinkResponceModel.swift */; };
+		E82715772B5EBA66004137F3 /* KFImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E82715762B5EBA66004137F3 /* KFImageView.swift */; };
 		E856CEF62B5916F4003E4C3D /* CreateRoomRouteViewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E856CED32B5916F3003E4C3D /* CreateRoomRouteViewViewController.swift */; };
 		E856CEF72B5916F4003E4C3D /* RoomSelectionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E856CED52B5916F3003E4C3D /* RoomSelectionViewModel.swift */; };
 		E856CEF82B5916F4003E4C3D /* RoomSelectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E856CED62B5916F3003E4C3D /* RoomSelectionView.swift */; };
@@ -693,6 +694,7 @@
 		E44246600744D0821FA7F89D /* Pods-Documents-Alpha.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Documents-Alpha.release.xcconfig"; path = "../Pods/Target Support Files/Pods-Documents-Alpha/Pods-Documents-Alpha.release.xcconfig"; sourceTree = "<group>"; };
 		E800AD6B2B4ED9A600AE880D /* Toggle+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Toggle+Extension.swift"; sourceTree = "<group>"; };
 		E80B7A732B33595400D48211 /* RoomLinkResponceModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoomLinkResponceModel.swift; sourceTree = "<group>"; };
+		E82715762B5EBA66004137F3 /* KFImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KFImageView.swift; sourceTree = "<group>"; };
 		E856CED32B5916F3003E4C3D /* CreateRoomRouteViewViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateRoomRouteViewViewController.swift; sourceTree = "<group>"; };
 		E856CED52B5916F3003E4C3D /* RoomSelectionViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoomSelectionViewModel.swift; sourceTree = "<group>"; };
 		E856CED62B5916F3003E4C3D /* RoomSelectionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoomSelectionView.swift; sourceTree = "<group>"; };
@@ -3173,6 +3175,7 @@
 			children = (
 				FC7DD8B52B5556AD0037405B /* ActivityView.swift */,
 				FCE9F6DD2B2B56A30056E420 /* WSTagsFieldRepresentable.swift */,
+				E82715762B5EBA66004137F3 /* KFImageView.swift */,
 			);
 			path = Representable;
 			sourceTree = "<group>";
@@ -4118,6 +4121,7 @@
 				FCE8351F2A84CAF100EFA839 /* ASCCreateEntityUIViewController.swift in Sources */,
 				1D2E3B8F26BB2A7400BEBE9D /* ASCSharingSettingsAccessForUserOrGroupNotesProvider.swift in Sources */,
 				1D9B807E2673EBEC0020B5ED /* ASCSwitchRowViewModel.swift in Sources */,
+				E82715772B5EBA66004137F3 /* KFImageView.swift in Sources */,
 				FC8540C41E83A582000C2436 /* ASCProgressAlert.swift in Sources */,
 				FC35D4132A987D1400C6383F /* OnlyofficeVersion.swift in Sources */,
 				1D9B80842673F5D70020B5ED /* ASCReusedIdentifierProtocol.swift in Sources */,

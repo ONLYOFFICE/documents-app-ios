@@ -12,7 +12,6 @@ import MBProgressHUD
 import SwiftUI
 
 struct RoomSharingView: View {
-    @Environment(\.presentationMode) var presentationMode
     @ObservedObject var viewModel: RoomSharingViewModel
     @State private var showDeleteAlert = false
 
@@ -25,11 +24,7 @@ struct RoomSharingView: View {
             .navigateToEditLink(selectedLink: $viewModel.selectdLink, viewModel: viewModel)
             .navigateToCreateLink(isDisplaing: $viewModel.isCreatingLinkScreenDisplaing, viewModel: viewModel)
             .sharingSheet(isPresented: $viewModel.isSharingScreenPresenting, link: viewModel.sharingLink)
-            .navigationBarItems(
-                leading: Button(NSLocalizedString("Close", comment: "")) {
-                    presentationMode.wrappedValue.dismiss()
-                }
-            )
+            .navigationBarItems()
             .onAppear { viewModel.onAppear() }
     }
 
@@ -197,6 +192,15 @@ struct RoomSharingView: View {
 }
 
 private extension View {
+    
+    func navigationBarItems() -> some View {
+        navigationBarItems(
+            leading: Button(ASCLocalization.Common.close) {
+                UIApplication.topViewController()?.dismiss(animated: true)
+            }
+        )
+    }
+    
     func sharingSheet(isPresented: Binding<Bool>, link: URL?) -> some View {
         sheet(isPresented: isPresented) {
             if let link {
@@ -320,21 +324,5 @@ struct ASCUserRow: View {
                 .resizable()
                 .frame(width: 40, height: 40)
         }
-    }
-}
-
-struct KFImageView: UIViewRepresentable {
-    let url: URL
-
-    func makeUIView(context: Context) -> UIImageView {
-        let imageView = UIImageView()
-        imageView.contentMode = .scaleAspectFill
-        return imageView
-    }
-
-    func updateUIView(_ uiView: UIImageView, context: Context) {
-        uiView.contentMode = .scaleAspectFill
-        uiView.kf.indicatorType = .activity
-        uiView.kf.apiSetImage(with: url)
     }
 }

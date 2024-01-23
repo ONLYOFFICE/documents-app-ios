@@ -335,6 +335,10 @@ extension ASCSharingInviteRightHoldersViewController: ASCSharingAddRightHoldersV
 
         forEachRow(in: sharingAddRightHoldersView.usersTableView, applyAction: deselectAction(in:by:))
     }
+    
+    func onDismissButtonTapped() {
+        navigationController?.dismiss(animated: true)
+    }
 
     private func forEachRow(in tableView: UITableView, applyAction action: (UITableView, IndexPath) -> Void) {
         for section in 0 ..< tableView.numberOfSections {

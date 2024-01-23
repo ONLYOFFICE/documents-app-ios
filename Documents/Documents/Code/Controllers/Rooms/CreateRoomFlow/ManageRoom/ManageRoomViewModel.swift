@@ -28,6 +28,7 @@ class ManageRoomViewModel: ObservableObject {
     var isEditMode: Bool { editingRoom != nil }
     var editingRoomImage: URL? {
         if let urlStr = editingRoom?.logo?.small,
+           !urlStr.isEmpty,
            let portal = OnlyofficeApiClient.shared.baseURL?.absoluteString.trimmed
         {
             return URL(string: portal + urlStr)

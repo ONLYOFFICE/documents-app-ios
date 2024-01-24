@@ -23,11 +23,11 @@ extension ASCEditorManager {
     ) -> UIViewController? {
         let title = file.title
         let fileExt = title.fileExtension().lowercased()
-        let isForm = ASCConstants.FileExtensions.forms.contains(fileExt)
+        let isForm = ([ASCConstants.FileExtensions.pdf] + ASCConstants.FileExtensions.forms).contains(fileExt)
         var documentPermissions = config.document?.permissions.dictionary ?? [:]
 
         if !documentPermissions.keys.contains("fillForms") {
-            documentPermissions["fillForms"] = isForm && allowForm && fileExt == ASCConstants.FileExtensions.oform
+            documentPermissions["fillForms"] = isForm && allowForm && [ASCConstants.FileExtensions.oform, ASCConstants.FileExtensions.pdf].contains(fileExt)
         }
 
         let isCoauthoring = !(config.document?.key?.isEmpty ?? true) && !(config.document?.url?.isEmpty ?? true)

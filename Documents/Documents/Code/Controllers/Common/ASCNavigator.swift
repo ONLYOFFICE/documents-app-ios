@@ -63,7 +63,7 @@ final class ASCNavigator {
                 let navigationVC = UINavigationController(rootASCViewController: sortViewController)
                 navigationController?.present(navigationVC, animated: true, completion: nil)
             }
-            
+
         case let .shareSettings(entity):
             var shareRoomNavigationVC: ASCBaseNavigationController?
             if entity.isRoom {
@@ -76,7 +76,7 @@ final class ASCNavigator {
                 sharedViewController.setup(entity: entity)
                 sharedViewController.requestToLoadRightHolders()
             }
-            
+
             if let shareRoomNavigationVC {
                 shareRoomNavigationVC.modalPresentationStyle = .formSheet
                 shareRoomNavigationVC.preferredContentSize = ASCConstants.Size.defaultPreferredContentSize

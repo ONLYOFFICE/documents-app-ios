@@ -3327,7 +3327,7 @@ extension ASCDocumentsViewController: ASCProviderDelegate {
         openingAlert.progress = progress
 
         let openHandler: ASCEditorManagerOpenHandler = { [weak self] status, progress, error, cancel in
-            log.info("Open file progress. Status: \(status), progress: \(progress), error: \(String(describing: error))")
+//            log.info("Open file progress. Status: \(status), progress: \(progress), error: \(String(describing: error))")
 
             openingAlert.progress = progress
 

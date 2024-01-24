@@ -142,7 +142,6 @@ final class RoomSharingCustomizeLinkViewModel: ObservableObject {
 // MARK: Handlers
 
 extension RoomSharingCustomizeLinkViewModel {
-
     func onDelete() {
         guard let linkId, var link = link ?? outputLink else { return }
         isDeleting = true

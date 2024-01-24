@@ -32,7 +32,9 @@ struct RoomSharingView: View {
     private var screenView: some View {
         if !viewModel.isInitializing {
             List {
-                generalLincSection
+                if viewModel.room.roomType != .colobaration {
+                    generalLincSection
+                }
                 additionalLinksSection
                 adminSection
                 usersSection

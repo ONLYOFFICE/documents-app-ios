@@ -138,7 +138,7 @@ struct RoomSharingCustomizeLinkView: View {
         )
         .disabled(!viewModel.isPossibleToSave)
     }
-    
+
     private func handleHUD() {
         MBProgressHUD.currentHUD?.hide(animated: false)
 
@@ -151,7 +151,8 @@ struct RoomSharingCustomizeLinkView: View {
                 hud?.label.text = NSLocalizedString("Saving", comment: "") + "..."
             }
         } else if let resultModalModel = viewModel.resultModalModel,
-            let hud = MBProgressHUD.showTopMost() {
+                  let hud = MBProgressHUD.showTopMost()
+        {
             switch resultModalModel.result {
             case .success:
                 if viewModel.isDeleted {

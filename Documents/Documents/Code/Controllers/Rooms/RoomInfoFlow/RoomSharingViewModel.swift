@@ -43,7 +43,7 @@ final class RoomSharingViewModel: ObservableObject {
 
     // MARK: var input
 
-    lazy var changedLink = CurrentValueSubject<RoomSharingLinkModel?, Never>(nil) // TODO: rename to inputLink
+    lazy var changedLink = CurrentValueSubject<RoomSharingLinkModel?, Never>(nil)
     lazy var changedLinkBinding = Binding<RoomSharingLinkModel?>(
         get: { self.changedLink.value },
         set: { self.changedLink.send($0) }
@@ -195,6 +195,7 @@ private extension RoomSharingViewModel {
         if selectdLink == nil, !isCreatingLinkScreenDisplaing {
             buildViewModel()
         }
+        changedLink.send(nil)
     }
 
     func buildViewModel() {

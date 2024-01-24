@@ -33,7 +33,9 @@ final class CurrentRoomArchivesMenu: CurrentFolderMenuProtocol {
         if actions.contains(.link) {
             entityActionsGroup.append(
                 UIAction(
-                    title: NSLocalizedString("Copy general link", comment: "Button title"),
+                    title: folder.roomType == .colobaration
+                    ? NSLocalizedString("Copy link", comment: "Button title")
+                    : NSLocalizedString("Copy general link", comment: "Button title"),
                     image: UIImage(systemName: "link")
                 ) { action in
                     viewController.copyGeneralLinkToClipboard(room: folder)

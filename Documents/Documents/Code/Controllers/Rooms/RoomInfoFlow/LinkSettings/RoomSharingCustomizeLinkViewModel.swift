@@ -29,8 +29,9 @@ final class RoomSharingCustomizeLinkViewModel: ObservableObject {
     @Published var isPasswordVisible: Bool = false
     @Published var isDeleting: Bool = false
     @Published var isDeleted: Bool = false
+    @Published var isSaving: Bool = false
+    @Published var isSaved: Bool = false
     @Published var resultModalModel: ResultViewModel?
-    @Published var isSharingScreenPresenting: Bool = false
     @Published var errorMessage: String? = nil
 
     var isDeletePossible: Bool {
@@ -41,6 +42,10 @@ final class RoomSharingCustomizeLinkViewModel: ObservableObject {
             return false
         }
         return true
+    }
+    
+    var isPossibleToSave: Bool {
+        !linkName.isEmpty && selectedDate > Date() && !isSaving
     }
 
     private var cancelable = Set<AnyCancellable>()
@@ -80,62 +85,6 @@ final class RoomSharingCustomizeLinkViewModel: ObservableObject {
         isTimeLimited = linkInfo?.expirationDate != nil
 
         defineSharingLink()
-
-        $linkName
-            .dropFirst()
-            .receive(on: RunLoop.main)
-            .debounce(for: .seconds(.textFiesldDeboundsSeconds), scheduler: DispatchQueue.main)
-            .sink(receiveValue: { [weak self] _ in
-                self?.saveCurrentState()
-            })
-            .store(in: &cancelable)
-
-        $isProtected
-            .dropFirst()
-            .receive(on: RunLoop.main)
-            .sink(receiveValue: { [weak self] _ in
-                self?.saveCurrentState()
-            })
-            .store(in: &cancelable)
-
-        $isRestrictCopyOn
-            .dropFirst()
-            .receive(on: RunLoop.main)
-            .sink(receiveValue: { [weak self] _ in
-                self?.saveCurrentState()
-            })
-            .store(in: &cancelable)
-
-        $isTimeLimited
-            .dropFirst()
-            .receive(on: RunLoop.main)
-            .sink(receiveValue: { [weak self] _ in
-                self?.saveCurrentState()
-            })
-            .store(in: &cancelable)
-
-        $selectedDate
-            .dropFirst()
-            .receive(on: RunLoop.main)
-            .sink(receiveValue: { [weak self] selectedDate in
-                self?.saveCurrentState()
-                DispatchQueue.main.async { [weak self] in
-                    guard let self else { return }
-                    if isExpired, selectedDate > Date() {
-                        isExpired = false
-                    }
-                }
-            })
-            .store(in: &cancelable)
-
-        $password
-            .dropFirst()
-            .receive(on: RunLoop.main)
-            .debounce(for: .seconds(.textFiesldDeboundsSeconds), scheduler: DispatchQueue.main)
-            .sink(receiveValue: { [weak self] _ in
-                self?.saveCurrentState()
-            })
-            .store(in: &cancelable)
     }
 }
 
@@ -163,17 +112,19 @@ extension RoomSharingCustomizeLinkViewModel {
             isDeleted = true
         }
     }
+    
+    func onSave() {
+        guard isPossibleToSave else { return }
+        saveCurrentState()
+    }
 }
 
 // MARK: Private
 
 private extension RoomSharingCustomizeLinkViewModel {
-    var isPossibleToSave: Bool {
-        !linkName.isEmpty && selectedDate > Date()
-    }
 
     func saveCurrentState() {
-        guard isPossibleToSave else { return }
+        isSaving = true
         linkAccessService.changeOrCreateLink(
             id: linkId,
             title: linkName,
@@ -187,14 +138,17 @@ private extension RoomSharingCustomizeLinkViewModel {
             switch result {
             case let .success(link):
                 DispatchQueue.main.async { [self] in
+                    isSaving = false
                     outputLink = link
                     defineSharingLink()
                     if isExpired, selectedDate > Date() {
                         isExpired = false
                     }
+                    isSaved = true
                 }
             case let .failure(error):
                 DispatchQueue.main.async { [self] in
+                    isSaving = false
                     log.error(error.localizedDescription)
                     errorMessage = error.localizedDescription
                 }

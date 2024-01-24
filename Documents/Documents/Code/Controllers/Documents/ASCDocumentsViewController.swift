@@ -1417,6 +1417,14 @@ class ASCDocumentsViewController: ASCBaseTableViewController, UIGestureRecognize
                             self?.selectAllItems(type: ASCFile.self, extensions: ASCConstants.FileExtensions.images)
                         }
                     ))
+                case .public:
+                    uiActions.append(UIAction(
+                        title: NSLocalizedString("Public", comment: ""),
+                        image: nil,
+                        handler: { [weak self] action in
+                            self?.selectAllItems(type: ASCFolder.self, roomTypes: [.public])
+                        }
+                    ))
                 case .collaboration:
                     uiActions.append(UIAction(
                         title: NSLocalizedString("Collaboration", comment: ""),
@@ -2725,6 +2733,10 @@ class ASCDocumentsViewController: ASCBaseTableViewController, UIGestureRecognize
             case .images:
                 selectController.addAction(UIAlertAction(title: NSLocalizedString("Images", comment: ""), handler: { [weak self] action in
                     self?.selectAllItems(type: ASCFile.self, extensions: ASCConstants.FileExtensions.images)
+                }))
+            case .public:
+                selectController.addAction(UIAlertAction(title: NSLocalizedString("Public", comment: ""), handler: { [weak self] action in
+                    self?.selectAllItems(type: ASCFolder.self, roomTypes: [.public])
                 }))
             case .collaboration:
                 selectController.addAction(UIAlertAction(title: NSLocalizedString("Collaboration", comment: ""), handler: { [weak self] action in

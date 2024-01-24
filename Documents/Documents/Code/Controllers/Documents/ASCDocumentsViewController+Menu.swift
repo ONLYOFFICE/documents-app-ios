@@ -365,7 +365,9 @@ extension ASCDocumentsViewController {
         if actions.contains(.link) {
             basicActions.append(
                 UIAction(
-                    title: NSLocalizedString("Copy general link", comment: "Button title"),
+                    title: folder.roomType == .colobaration
+                    ? NSLocalizedString("Copy link", comment: "Button title")
+                    : NSLocalizedString("Copy general link", comment: "Button title"),
                     image: UIImage(systemName: "link")
                 ) { [unowned self] action in
                     cell.hideSwipe(animated: true)

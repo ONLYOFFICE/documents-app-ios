@@ -134,6 +134,9 @@ platform :ios do
     pilot(
       app_identifier: ENV["APP_IDENTIFIER"],
       changelog: appstore_change_log,
+      distribute_external: true,
+      groups: ['Company users'],
+      notify_external_testers: true,
       skip_waiting_for_build_processing: true
     )
 

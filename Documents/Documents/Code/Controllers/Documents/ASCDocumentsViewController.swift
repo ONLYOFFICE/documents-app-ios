@@ -492,10 +492,10 @@ class ASCDocumentsViewController: ASCBaseTableViewController, UIGestureRecognize
                         }
                     }
                 }
+            }
 
-                if success, open {
-                    self.openFolder(folder: folder)
-                }
+            if open {
+                openFolder(folder: folder)
             }
         }
 

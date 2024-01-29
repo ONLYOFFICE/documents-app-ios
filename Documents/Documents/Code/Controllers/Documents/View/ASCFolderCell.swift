@@ -111,7 +111,26 @@ class ASCFolderCell: MGSwipeTableCell {
 
         /// Display owner
 
-        owner?.text = folderInfo.createdBy?.displayName ?? NSLocalizedString("Unknown", comment: "Invalid entity name")
+        let roomTypeDescription: String?
+
+        switch folderInfo.roomType {
+        case .custom:
+            roomTypeDescription = CreatingRoomType.custom.name
+        case .public:
+            roomTypeDescription = CreatingRoomType.publicRoom.name
+        case .colobaration:
+            roomTypeDescription = CreatingRoomType.collaboration.name
+        default:
+            roomTypeDescription = nil
+        }
+        
+        owner?.text = [roomTypeDescription, folderInfo.createdBy?.displayName]
+            .compactMap { $0 }
+            .joined(separator: " | ")
+        
+        if owner?.text?.isEmpty == true {
+            owner?.text = NSLocalizedString("Unknown", comment: "Invalid entity name")
+        }
 
         /// Display date
 

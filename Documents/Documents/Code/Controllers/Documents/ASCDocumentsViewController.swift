@@ -653,7 +653,10 @@ class ASCDocumentsViewController: ASCBaseTableViewController, UIGestureRecognize
             ?? ASCStyles.createBarButton(title: ASCLocalization.Common.cancel, target: self, action: #selector(onCancelAction))
         selectAllBarButton = selectAllBarButton
             ?? ASCStyles.createBarButton(title: NSLocalizedString("Select", comment: "Button title"), target: self, action: #selector(onSelectAll))
-        sortSelectBarButton?.isEnabled = total > 0
+        if let folder = folder,
+           !folder.isRoom {
+            sortSelectBarButton?.isEnabled = total > 0
+        }
         sortBarButton?.isEnabled = total > 0
         selectBarButton?.isEnabled = total > 0
         selectAllBarButton?.isEnabled = total > 0
@@ -1347,10 +1350,13 @@ class ASCDocumentsViewController: ASCBaseTableViewController, UIGestureRecognize
         let hasError = errorView?.superview != nil
 
         addBarButton?.isEnabled = !hasError && provider?.allowAdd(toFolder: folder) ?? false
-        sortSelectBarButton?.isEnabled = !hasError && total > 0
+        if let folder = folder,
+           !folder.isRoom {
+            sortSelectBarButton?.isEnabled = !hasError && total > 0
+        }
         sortBarButton?.isEnabled = !hasError && total > 0
         selectBarButton?.isEnabled = !hasError && total > 0
-        filterBarButton?.isEnabled = !hasError
+        filterBarButton?.isEnabled = !hasError && total > 0
     }
 
     @available(iOS 14.0, *)

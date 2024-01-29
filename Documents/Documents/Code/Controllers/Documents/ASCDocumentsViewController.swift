@@ -493,6 +493,10 @@ class ASCDocumentsViewController: ASCBaseTableViewController, UIGestureRecognize
                     }
                 }
             }
+
+            if open {
+                openFolder(folder: folder)
+            }
         }
 
         updateNavBar()
@@ -1557,6 +1561,17 @@ class ASCDocumentsViewController: ASCBaseTableViewController, UIGestureRecognize
     }
 
     // MARK: - Entity actions
+
+    func openFolder(folder: ASCFolder) {
+        let controller = ASCDocumentsViewController.instantiate(from: Storyboard.main)
+        navigationController?.pushViewController(controller, animated: true)
+
+        controller.provider = provider?.copy()
+        controller.provider?.cancel()
+        controller.provider?.reset()
+        controller.folder = folder
+        controller.title = folder.title
+    }
 
     func delete(cell: UITableViewCell) {
         if let fileCell = cell as? ASCFileCell, let file = fileCell.file {
@@ -3126,14 +3141,7 @@ extension ASCDocumentsViewController {
                 return
             }
 
-            let controller = ASCDocumentsViewController.instantiate(from: Storyboard.main)
-            navigationController?.pushViewController(controller, animated: true)
-
-            controller.provider = provider?.copy()
-            controller.provider?.cancel()
-            controller.provider?.reset()
-            controller.folder = folder
-            controller.title = folder.title
+            openFolder(folder: folder)
         } else if let file = tableData[indexPath.row] as? ASCFile, let provider = provider {
             if ASCAppSettings.Feature.openViewModeByDefault {
                 let title = file.title,

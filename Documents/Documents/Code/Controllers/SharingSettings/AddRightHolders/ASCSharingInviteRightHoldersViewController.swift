@@ -43,6 +43,7 @@ class ASCSharingInviteRightHoldersViewController: UIViewController, ASCSharingAd
         }
         return .read
     }()
+
     var accessProvider: ASCSharingSettingsAccessProvider = ASCSharingSettingsAccessDefaultProvider() {
         didSet {
             sharingAddRightHoldersView?.updateToolbars()

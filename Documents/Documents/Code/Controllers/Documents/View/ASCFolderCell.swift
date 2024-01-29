@@ -123,11 +123,11 @@ class ASCFolderCell: MGSwipeTableCell {
         default:
             roomTypeDescription = nil
         }
-        
+
         owner?.text = [roomTypeDescription, folderInfo.createdBy?.displayName]
             .compactMap { $0 }
             .joined(separator: " | ")
-        
+
         if owner?.text?.isEmpty == true {
             owner?.text = NSLocalizedString("Unknown", comment: "Invalid entity name")
         }

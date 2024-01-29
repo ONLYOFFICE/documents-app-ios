@@ -654,7 +654,8 @@ class ASCDocumentsViewController: ASCBaseTableViewController, UIGestureRecognize
         selectAllBarButton = selectAllBarButton
             ?? ASCStyles.createBarButton(title: NSLocalizedString("Select", comment: "Button title"), target: self, action: #selector(onSelectAll))
         if let folder = folder,
-           !folder.isRoom {
+           !folder.isRoom
+        {
             sortSelectBarButton?.isEnabled = total > 0
         }
         sortBarButton?.isEnabled = total > 0
@@ -1351,7 +1352,8 @@ class ASCDocumentsViewController: ASCBaseTableViewController, UIGestureRecognize
 
         addBarButton?.isEnabled = !hasError && provider?.allowAdd(toFolder: folder) ?? false
         if let folder = folder,
-           !folder.isRoom {
+           !folder.isRoom
+        {
             sortSelectBarButton?.isEnabled = !hasError && total > 0
         }
         sortBarButton?.isEnabled = !hasError && total > 0

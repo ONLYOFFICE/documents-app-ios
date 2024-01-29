@@ -144,8 +144,10 @@ struct RoomSharingView: View {
                 Button {
                     viewModel.createAddLinkAction()
                 } label: {
-                    Image(systemName: "plus")
-                        .foregroundColor(Asset.Colors.brend.swiftUIColor)
+                    if !viewModel.additionalLinkModels.isEmpty {
+                        Image(systemName: "plus")
+                            .foregroundColor(Asset.Colors.brend.swiftUIColor)
+                    }
                 }
             }
         }

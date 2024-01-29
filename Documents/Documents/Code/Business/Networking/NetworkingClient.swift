@@ -219,6 +219,7 @@ class NetworkingClient: NSObject, NetworkingRequestingProtocol {
     func download(
         _ path: String,
         _ to: URL,
+        _ range: Range<Int64>? = nil,
         _ completion: ((_ result: Any?, _ progress: Double, _ error: NetworkingError?) -> Void)? = nil
     ) {
         guard let url = url(path: path) else {
@@ -245,12 +246,18 @@ class NetworkingClient: NSObject, NetworkingRequestingProtocol {
 
         sessions.append(downloadManager)
 
+        var headers: HTTPHeaders = []
+
+        if let range {
+            headers.add(name: "Range", value: "bytes=\(range.lowerBound)-\(range.upperBound)")
+        }
+
         downloadManager.download(
             url,
+            headers: headers.isEmpty ? nil : headers,
             to: destination
         )
         .downloadProgress { progress in
-//            log.debug("Download Progress: \(progress.fractionCompleted)")
             DispatchQueue.main.async {
                 completion?(nil, progress.fractionCompleted, nil)
             }

@@ -106,7 +106,7 @@ protocol ASCFileProviderProtocol {
 
     func modifyImageDownloader(request: URLRequest) -> URLRequest
     func modify(_ path: String, data: Data, params: [String: Any]?, processing: @escaping NetworkProgressHandler)
-    func download(_ path: String, to: URL, processing: @escaping NetworkProgressHandler)
+    func download(_ path: String, to: URL, range: Range<Int64>?, processing: @escaping NetworkProgressHandler)
     func upload(_ path: String, data: Data, overwrite: Bool, params: [String: Any]?, processing: @escaping NetworkProgressHandler)
     func rename(_ entity: ASCEntity, to newName: String, completeon: ASCProviderCompletionHandler?)
     func favorite(_ entity: ASCEntity, favorite: Bool, completeon: ASCProviderCompletionHandler?)
@@ -156,7 +156,7 @@ extension ASCFileProviderProtocol {
     func handleNetworkError(_ error: Error?) -> Bool { return false }
     func modifyImageDownloader(request: URLRequest) -> URLRequest { return request }
     func modify(_ path: String, data: Data, params: [String: Any]?, processing: @escaping NetworkProgressHandler) {}
-    func download(_ path: String, to: URL, processing: @escaping NetworkProgressHandler) {}
+    func download(_ path: String, to: URL, range: Range<Int64>?, processing: @escaping NetworkProgressHandler) {}
     func upload(_ path: String, data: Data, overwrite: Bool, params: [String: Any]?, processing: @escaping NetworkProgressHandler) {}
     func rename(_ entity: ASCEntity, to newName: String, completeon: ASCProviderCompletionHandler?) {}
     func favorite(_ entity: ASCEntity, favorite: Bool, completeon: ASCProviderCompletionHandler?) {}

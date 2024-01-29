@@ -510,14 +510,14 @@ class ASCEntityManager: NSObject, UITextFieldDelegate {
 
         handler?(.begin, 0, nil, nil, &cancel)
 
-        provider.download(file.viewUrl ?? "", to: URL(fileURLWithPath: destination.rawValue)) { result, progress, error in
+        provider.download(file.viewUrl ?? "", to: URL(fileURLWithPath: destination.rawValue), range: nil) { result, progress, error in
             if cancel {
                 ASCLocalFileHelper.shared.removeFile(destination)
                 handler?(.end, 1, nil, nil, &cancel)
                 return
             }
 
-            if let error = error {
+            if let error {
                 ASCLocalFileHelper.shared.removeFile(destination)
                 handler?(.error, Float(progress), nil, error, &cancel) // ?? ASCOnlyOfficeApi.errorMessage(by: response!)
             } else if result != nil {
@@ -564,7 +564,7 @@ class ASCEntityManager: NSObject, UITextFieldDelegate {
 
         handler?(.begin, 0, nil, nil, &cancel)
 
-        provider.download(file.viewUrl ?? "", to: URL(fileURLWithPath: destination.rawValue)) { result, progress, error in
+        provider.download(file.viewUrl ?? "", to: URL(fileURLWithPath: destination.rawValue), range: nil) { result, progress, error in
             if cancel {
                 handler?(.end, 1, nil, nil, &cancel)
                 return
@@ -906,7 +906,7 @@ class ASCEntityManager: NSObject, UITextFieldDelegate {
                 downloadQueue.addOperation {
                     let semaphore = DispatchSemaphore(value: 0)
 
-                    srcProvider.download(file.viewUrl ?? "", to: URL(fileURLWithPath: localPath.rawValue)) { result, progress, error in
+                    srcProvider.download(file.viewUrl ?? "", to: URL(fileURLWithPath: localPath.rawValue), range: nil) { result, progress, error in
                         if cancel {
                             forceExit()
                             semaphore.signal()

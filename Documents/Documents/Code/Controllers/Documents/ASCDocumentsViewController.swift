@@ -2144,7 +2144,7 @@ class ASCDocumentsViewController: ASCBaseTableViewController, UIGestureRecognize
 
             let destinationPath = Path.userTemporary + file.title
 
-            provider?.download(file.viewUrl ?? "", to: URL(fileURLWithPath: destinationPath.rawValue)) { [weak self] result, progress, error in
+            provider?.download(file.viewUrl ?? "", to: URL(fileURLWithPath: destinationPath.rawValue), range: nil) { [weak self] result, progress, error in
                 openingAlert.progress = Float(progress)
 
                 if forceCancel {

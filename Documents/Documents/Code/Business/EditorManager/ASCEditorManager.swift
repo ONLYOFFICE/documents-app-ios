@@ -785,7 +785,22 @@ class ASCEditorManager: NSObject {
         let documentServerVersion = documentServerVersionString.components(separatedBy: ".")
         let localVersion = localSdkString.components(separatedBy: ".")
 
-        let allowCoauthoring = ASCConstants.remoteConfigValue(forKey: ASCConstants.RemoteSettingsKeys.allowCoauthoring)?.boolValue ?? true
+        var allowCoauthoring = ASCConstants.remoteConfigValue(forKey: ASCConstants.RemoteSettingsKeys.allowCoauthoring)?.boolValue ?? true
+
+        // FIXME: REMOVE BELOW
+        /// BEGIN BLOCK
+
+        let expiryDate = "2024-02-04"
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd"
+
+        if Date() < dateFormatter.date(from: expiryDate) ?? Date() {
+            allowCoauthoring = true
+        }
+
+        /// BEGIN BLOCK
+
+//        let allowCoauthoring = ASCConstants.remoteConfigValue(forKey: ASCConstants.RemoteSettingsKeys.allowCoauthoring)?.boolValue ?? true
         let checkSdkFully = ASCConstants.remoteConfigValue(forKey: ASCConstants.RemoteSettingsKeys.checkSdkFully)?.boolValue ?? true
 
         if !allowCoauthoring {

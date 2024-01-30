@@ -180,6 +180,7 @@ class ASCOnlyofficeCategory: ASCCategory {
         switch type {
         case .onlyofficeUser,
              .onlyofficeShare,
+             .onlyofficeRoomShared,
              .onlyofficeCommon,
              .onlyofficeProjects,
              .onlyofficeTrash:

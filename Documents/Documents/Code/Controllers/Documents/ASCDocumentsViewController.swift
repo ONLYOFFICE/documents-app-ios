@@ -493,6 +493,10 @@ class ASCDocumentsViewController: ASCBaseTableViewController, UIGestureRecognize
                     }
                 }
             }
+
+            if open {
+                openFolder(folder: folder)
+            }
         }
 
         updateNavBar()
@@ -649,7 +653,11 @@ class ASCDocumentsViewController: ASCBaseTableViewController, UIGestureRecognize
             ?? ASCStyles.createBarButton(title: ASCLocalization.Common.cancel, target: self, action: #selector(onCancelAction))
         selectAllBarButton = selectAllBarButton
             ?? ASCStyles.createBarButton(title: NSLocalizedString("Select", comment: "Button title"), target: self, action: #selector(onSelectAll))
-        sortSelectBarButton?.isEnabled = total > 0
+        if let folder = folder,
+           !folder.isRoom
+        {
+            sortSelectBarButton?.isEnabled = total > 0
+        }
         sortBarButton?.isEnabled = total > 0
         selectBarButton?.isEnabled = total > 0
         selectAllBarButton?.isEnabled = total > 0
@@ -1343,10 +1351,14 @@ class ASCDocumentsViewController: ASCBaseTableViewController, UIGestureRecognize
         let hasError = errorView?.superview != nil
 
         addBarButton?.isEnabled = !hasError && provider?.allowAdd(toFolder: folder) ?? false
-        sortSelectBarButton?.isEnabled = !hasError && total > 0
+        if let folder = folder,
+           !folder.isRoom
+        {
+            sortSelectBarButton?.isEnabled = !hasError && total > 0
+        }
         sortBarButton?.isEnabled = !hasError && total > 0
         selectBarButton?.isEnabled = !hasError && total > 0
-        filterBarButton?.isEnabled = !hasError
+        filterBarButton?.isEnabled = !hasError && total > 0
     }
 
     @available(iOS 14.0, *)
@@ -1557,6 +1569,17 @@ class ASCDocumentsViewController: ASCBaseTableViewController, UIGestureRecognize
     }
 
     // MARK: - Entity actions
+
+    func openFolder(folder: ASCFolder) {
+        let controller = ASCDocumentsViewController.instantiate(from: Storyboard.main)
+        navigationController?.pushViewController(controller, animated: true)
+
+        controller.provider = provider?.copy()
+        controller.provider?.cancel()
+        controller.provider?.reset()
+        controller.folder = folder
+        controller.title = folder.title
+    }
 
     func delete(cell: UITableViewCell) {
         if let fileCell = cell as? ASCFileCell, let file = fileCell.file {
@@ -3126,14 +3149,7 @@ extension ASCDocumentsViewController {
                 return
             }
 
-            let controller = ASCDocumentsViewController.instantiate(from: Storyboard.main)
-            navigationController?.pushViewController(controller, animated: true)
-
-            controller.provider = provider?.copy()
-            controller.provider?.cancel()
-            controller.provider?.reset()
-            controller.folder = folder
-            controller.title = folder.title
+            openFolder(folder: folder)
         } else if let file = tableData[indexPath.row] as? ASCFile, let provider = provider {
             if ASCAppSettings.Feature.openViewModeByDefault {
                 let title = file.title,
@@ -3339,7 +3355,7 @@ extension ASCDocumentsViewController: ASCProviderDelegate {
         openingAlert.progress = progress
 
         let openHandler: ASCEditorManagerOpenHandler = { [weak self] status, progress, error, cancel in
-            log.info("Open file progress. Status: \(status), progress: \(progress), error: \(String(describing: error))")
+//            log.info("Open file progress. Status: \(status), progress: \(progress), error: \(String(describing: error))")
 
             openingAlert.progress = progress
 

@@ -78,14 +78,13 @@ extension RoomTypeModel {
 }
 
 private extension View {
-    
     func navigationBarItems(isLastInNCStack: Bool, presentationMode: Binding<PresentationMode>) -> some View {
         navigationBarItems(
-            leading: isLastInNCStack 
-            ? Button("") {}
-            : Button(ASCLocalization.Common.close) {
-                presentationMode.wrappedValue.dismiss()
-            }
+            leading: isLastInNCStack
+                ? Button("") {}
+                : Button(ASCLocalization.Common.close) {
+                    presentationMode.wrappedValue.dismiss()
+                }
         )
     }
 }

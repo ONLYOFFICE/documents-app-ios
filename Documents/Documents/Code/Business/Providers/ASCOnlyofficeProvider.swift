@@ -909,8 +909,8 @@ class ASCOnlyofficeProvider: ASCFileProviderProtocol & ASCSortableFileProviderPr
         var isAllowLeave: Bool = true
 
         apiClient.request(OnlyofficeAPI.Endpoints.Sharing.room(folder: folder, method: .get)) { result, error in
-            if let error = error {
-                print("Error: \(error)")
+            if let error {
+                log.error(error)
             } else if let users = result?.result {
                 for entity in users {
                     if entity.user?.userId == self.user?.userId {

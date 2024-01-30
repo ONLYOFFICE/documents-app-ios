@@ -43,7 +43,7 @@ final class RoomSharingCustomizeLinkViewModel: ObservableObject {
         }
         return true
     }
-    
+
     var isPossibleToSave: Bool {
         !linkName.isEmpty && selectedDate > Date() && !isSaving
     }
@@ -91,7 +91,6 @@ final class RoomSharingCustomizeLinkViewModel: ObservableObject {
 // MARK: Handlers
 
 extension RoomSharingCustomizeLinkViewModel {
-
     func onDelete() {
         guard let linkId, var link = link ?? outputLink else { return }
         isDeleting = true
@@ -113,7 +112,7 @@ extension RoomSharingCustomizeLinkViewModel {
             isDeleted = true
         }
     }
-    
+
     func onSave() {
         guard isPossibleToSave else { return }
         saveCurrentState()
@@ -123,7 +122,6 @@ extension RoomSharingCustomizeLinkViewModel {
 // MARK: Private
 
 private extension RoomSharingCustomizeLinkViewModel {
-
     func saveCurrentState() {
         isSaving = true
         linkAccessService.changeOrCreateLink(

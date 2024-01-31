@@ -259,7 +259,7 @@ start using your office</source>
       </trans-unit>
       <trans-unit id="/Delete %lu Folder and %lu File:dict/lu_files:dict/zero:dict/:string" xml:space="preserve">
         <source/>
-        <target state="needs-translation"/>
+        <target/>
         <note/>
       </trans-unit>
       <trans-unit id="/Delete %lu Folder and %lu File:dict/lu_folders:dict/other:dict/:string" xml:space="preserve">
@@ -587,7 +587,7 @@ Authentication</source>
       </trans-unit>
       <trans-unit id="Mcf-gv-2zL.text" xml:space="preserve">
         <source>Loading...</source>
-        <target state="translated">正在加载...</target>
+        <target>正在加载...</target>
         <note>Class = "UILabel"; text = "Loading..."; ObjectID = "Mcf-gv-2zL";</note>
       </trans-unit>
       <trans-unit id="WIL-sg-dk2.title" xml:space="preserve">
@@ -792,7 +792,7 @@ Note: if you forget the passcode, you'll need to delete and reinstall the app. A
     <body>
       <trans-unit id="9YY-0H-nww.text" xml:space="preserve">
         <source>Loading...</source>
-        <target state="translated">正在加载...</target>
+        <target>正在加载...</target>
         <note>Class = "UILabel"; text = "Loading..."; ObjectID = "9YY-0H-nww";</note>
       </trans-unit>
       <trans-unit id="POc-L2-pZq.text" xml:space="preserve">
@@ -876,23 +876,6 @@ Note: if you forget the passcode, you'll need to delete and reinstall the app. A
         <source>Type</source>
         <target>类型</target>
         <note>Class = "UILabel"; text = "Type"; ObjectID = "vyA-jq-VvH";</note>
-      </trans-unit>
-    </body>
-  </file>
-  <file original="Documents/Code/Vendor/PasscodeLock/Sources/Resources/Base.lproj/Localizable.strings" datatype="plaintext" source-language="en" target-language="zh-Hant">
-    <header>
-      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="15.2" build-num="15C500b"/>
-    </header>
-    <body>
-      <trans-unit id="Use Face ID" xml:space="preserve">
-        <source>Use Face ID</source>
-        <target state="translated">使用臉部辨識</target>
-        <note>Button title</note>
-      </trans-unit>
-      <trans-unit id="Use Touch ID" xml:space="preserve">
-        <source>Use Touch ID</source>
-        <target state="translated">使用觸控辨識</target>
-        <note>Button title</note>
       </trans-unit>
     </body>
   </file>
@@ -1144,32 +1127,32 @@ Note: if you forget the passcode, you'll need to delete and reinstall the app. A
       </trans-unit>
       <trans-unit id="(%@)" xml:space="preserve">
         <source>(%@)</source>
-        <target state="translated">(%@)</target>
+        <target>(%@)</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="(%@/%@)" xml:space="preserve">
         <source>(%1$@/%2$@)</source>
-        <target state="translated">(%1$@/%2$@)</target>
+        <target>(%1$@/%2$@)</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="1 day" xml:space="preserve">
         <source>1 day</source>
-        <target state="translated">1天</target>
+        <target>1天</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="7 days" xml:space="preserve">
         <source>7 days</source>
-        <target state="translated">7天</target>
+        <target>7天</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="12 hours" xml:space="preserve">
         <source>12 hours</source>
-        <target state="translated">12小時</target>
+        <target>12小時</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id=": &quot;%@&quot;" xml:space="preserve">
         <source>: "%@"</source>
-        <target state="translated">: "%@"</target>
+        <target>: "%@"</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="&lt;p>Use the password created in &lt;a href=&quot;https://yandex.ru/id/about&quot;>Yandex ID&lt;/a>.&lt;/br>More detailed connection instructions can be found in the &lt;a href=&quot;https://yandex.ru/support/disk-desktop/webdav-app-passwords.html?lang=ru&quot;>help&lt;/a>.&lt;/p>" xml:space="preserve">
@@ -1189,7 +1172,7 @@ Note: if you forget the passcode, you'll need to delete and reinstall the app. A
       </trans-unit>
       <trans-unit id="A file with a similar name already exist." xml:space="preserve">
         <source>A file with a similar name already exist.</source>
-        <target state="translated">已存在相似名稱的檔案。</target>
+        <target>已存在相似名稱的檔案。</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="A file with a similar name already exists in the document directory on the device." xml:space="preserve">
@@ -1264,7 +1247,7 @@ Note: if you forget the passcode, you'll need to delete and reinstall the app. A
       </trans-unit>
       <trans-unit id="Access type" xml:space="preserve">
         <source>Access type</source>
-        <target state="translated">存取類型</target>
+        <target>存取類型</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Account name is empty" xml:space="preserve">
@@ -1294,7 +1277,7 @@ Note: if you forget the passcode, you'll need to delete and reinstall the app. A
       </trans-unit>
       <trans-unit id="Add tag" xml:space="preserve">
         <source>Add tag</source>
-        <target state="translated">新增標籤</target>
+        <target>新增標籤</target>
         <note>placeholder</note>
       </trans-unit>
       <trans-unit id="Add users" xml:space="preserve">
@@ -1311,12 +1294,12 @@ Note: if you forget the passcode, you'll need to delete and reinstall the app. A
       </trans-unit>
       <trans-unit id="Additional link State" xml:space="preserve">
         <source>Additional link State</source>
-        <target state="translated">附加連結狀態</target>
+        <target>附加連結狀態</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Additional links" xml:space="preserve">
         <source>Additional links</source>
-        <target state="translated">附加連結</target>
+        <target>附加連結</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Address is empty" xml:space="preserve">
@@ -1326,7 +1309,7 @@ Note: if you forget the passcode, you'll need to delete and reinstall the app. A
       </trans-unit>
       <trans-unit id="Administration" xml:space="preserve">
         <source>Administration</source>
-        <target state="translated">管理</target>
+        <target>管理</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="All" xml:space="preserve">
@@ -1366,7 +1349,7 @@ Note: if you forget the passcode, you'll need to delete and reinstall the app. A
       </trans-unit>
       <trans-unit id="Anyone with the link" xml:space="preserve">
         <source>Anyone with the link</source>
-        <target state="translated">知道連結的任何人</target>
+        <target>知道連結的任何人</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="AppleId authentication failed" xml:space="preserve">
@@ -1376,7 +1359,7 @@ Note: if you forget the passcode, you'll need to delete and reinstall the app. A
       </trans-unit>
       <trans-unit id="Apply your own settings to use this room for any custom purpose" xml:space="preserve">
         <source>Apply your own settings to use this room for any custom purpose</source>
-        <target state="translated">套用您的個人設定，將此房間用於任何自訂用途</target>
+        <target>套用您的個人設定，將此房間用於任何自訂用途</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Applying" xml:space="preserve">
@@ -1417,7 +1400,7 @@ Note: if you forget the passcode, you'll need to delete and reinstall the app. A
       </trans-unit>
       <trans-unit id="Assign Owner" xml:space="preserve">
         <source>Assign Owner</source>
-        <target state="translated">指定擁有者</target>
+        <target>指定擁有者</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Author" xml:space="preserve">
@@ -1497,7 +1480,7 @@ Note: if you forget the passcode, you'll need to delete and reinstall the app. A
       </trans-unit>
       <trans-unit id="Canceled" xml:space="preserve">
         <source>Canceled</source>
-        <target state="translated">已取消</target>
+        <target>已取消</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Change owner" xml:space="preserve">
@@ -1507,12 +1490,12 @@ Note: if you forget the passcode, you'll need to delete and reinstall the app. A
       </trans-unit>
       <trans-unit id="Change the Room Owner" xml:space="preserve">
         <source>Change the Room Owner</source>
-        <target state="translated">變更房間擁有者</target>
+        <target>變更房間擁有者</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Changing access" xml:space="preserve">
         <source>Changing access</source>
-        <target state="translated">正在變更存取權限</target>
+        <target>正在變更存取權限</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Check your internet connection" xml:space="preserve">
@@ -1522,12 +1505,12 @@ Note: if you forget the passcode, you'll need to delete and reinstall the app. A
       </trans-unit>
       <trans-unit id="Choose Files" xml:space="preserve">
         <source>Choose Files</source>
-        <target state="translated">選擇檔案</target>
+        <target>選擇檔案</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Choose room type" xml:space="preserve">
         <source>Choose room type</source>
-        <target state="translated">選擇房間類型</target>
+        <target>選擇房間類型</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Cleanup" xml:space="preserve">
@@ -1572,7 +1555,7 @@ Note: if you forget the passcode, you'll need to delete and reinstall the app. A
       </trans-unit>
       <trans-unit id="Collaborate on one or multiple documents with your team" xml:space="preserve">
         <source>Collaborate on one or multiple documents with your team</source>
-        <target state="translated">與您的團隊共同協作一個或多個文件</target>
+        <target>與您的團隊共同協作一個或多個文件</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Collaborate with your team" xml:space="preserve">
@@ -1587,7 +1570,7 @@ Note: if you forget the passcode, you'll need to delete and reinstall the app. A
       </trans-unit>
       <trans-unit id="Collaboration room" xml:space="preserve">
         <source>Collaboration room</source>
-        <target state="translated">協作房間</target>
+        <target>協作房間</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Commentator" xml:space="preserve">
@@ -1661,7 +1644,7 @@ others which use WebDAV protocol.</source>
       </trans-unit>
       <trans-unit id="Copy general link" xml:space="preserve">
         <source>Copy general link</source>
-        <target state="translated">複製一般連結</target>
+        <target>複製一般連結</target>
         <note>Button title</note>
       </trans-unit>
       <trans-unit id="Copy here" xml:space="preserve">
@@ -1671,13 +1654,8 @@ others which use WebDAV protocol.</source>
       </trans-unit>
       <trans-unit id="Copy link" xml:space="preserve">
         <source>Copy link</source>
-        <target state="translated">複製連結</target>
-        <note>No comment provided by engineer.</note>
-      </trans-unit>
-      <trans-unit id="Copy link and password" xml:space="preserve">
-        <source>Copy link and password</source>
-        <target state="translated">複製連結和密碼</target>
-        <note>No comment provided by engineer.</note>
+        <target>複製連結</target>
+        <note>Button title</note>
       </trans-unit>
       <trans-unit id="Copying" xml:space="preserve">
         <source>Copying</source>
@@ -1806,22 +1784,17 @@ others which use WebDAV protocol.</source>
       </trans-unit>
       <trans-unit id="Couldn't change the owner." xml:space="preserve">
         <source>Couldn't change the owner.</source>
-        <target state="translated">無法變更擁有者。</target>
+        <target>無法變更擁有者。</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Couldn't download the room." xml:space="preserve">
         <source>Couldn't download the room.</source>
-        <target state="translated">無法下載此房間。</target>
+        <target>無法下載此房間。</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Couldn't leave the room" xml:space="preserve">
         <source>Couldn't leave the room</source>
-        <target state="translated">無法離開此房間</target>
-        <note>No comment provided by engineer.</note>
-      </trans-unit>
-      <trans-unit id="Couldn't leave the room." xml:space="preserve">
-        <source>Couldn't leave the room.</source>
-        <target state="translated">無法離開此房間。</target>
+        <target>無法離開此房間</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Couldn't rename the file" xml:space="preserve">
@@ -1841,12 +1814,12 @@ others which use WebDAV protocol.</source>
       </trans-unit>
       <trans-unit id="Create additional links to share the document with different access rights." xml:space="preserve">
         <source>Create additional links to share the document with different access rights.</source>
-        <target state="translated">建立附加連結，以不同存取權限共用該文件。</target>
+        <target>建立附加連結，以不同存取權限共用該文件。</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Create and copy" xml:space="preserve">
         <source>Create and copy</source>
-        <target state="translated">建立及複製</target>
+        <target>建立及複製</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Create and edit documents with our comprehensive toolbar: work with complex objects in text documents, perform extensive calculations in spreadsheets, create stunning presentations and view PDF files with no formatting loss." xml:space="preserve">
@@ -1861,7 +1834,7 @@ others which use WebDAV protocol.</source>
       </trans-unit>
       <trans-unit id="Create room" xml:space="preserve">
         <source>Create room</source>
-        <target state="translated">建立房間</target>
+        <target>建立房間</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Creating" xml:space="preserve">
@@ -1882,7 +1855,7 @@ others which use WebDAV protocol.</source>
       </trans-unit>
       <trans-unit id="Custom room" xml:space="preserve">
         <source>Custom room</source>
-        <target state="translated">自訂房間</target>
+        <target>自訂房間</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Dark" xml:space="preserve">
@@ -1932,7 +1905,7 @@ others which use WebDAV protocol.</source>
       </trans-unit>
       <trans-unit id="Delete forever?" xml:space="preserve">
         <source>Delete forever?</source>
-        <target state="translated">是否永久刪除？</target>
+        <target>是否永久刪除？</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Delete from device" xml:space="preserve">
@@ -1942,12 +1915,12 @@ others which use WebDAV protocol.</source>
       </trans-unit>
       <trans-unit id="Delete link" xml:space="preserve">
         <source>Delete link</source>
-        <target state="translated">刪除連結</target>
+        <target>刪除連結</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Deleted" xml:space="preserve">
         <source>Deleted</source>
-        <target state="translated">已刪除</target>
+        <target>已刪除</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Deleting" xml:space="preserve">
@@ -1982,7 +1955,7 @@ others which use WebDAV protocol.</source>
       </trans-unit>
       <trans-unit id="Do you really want to leave this room? You will be able to join it again via new invitation by a room admin." xml:space="preserve">
         <source>Do you really want to leave this room? You will be able to join it again via new invitation by a room admin.</source>
-        <target state="translated">您確定要離開此房間嗎？您可以透過由房間管理員發送的新邀請再次加入。</target>
+        <target>您確定要離開此房間嗎？您可以透過由房間管理員發送的新邀請再次加入。</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="DocSpace admin" xml:space="preserve">
@@ -2058,7 +2031,7 @@ others which use WebDAV protocol.</source>
       </trans-unit>
       <trans-unit id="Edit room" xml:space="preserve">
         <source>Edit room</source>
-        <target state="translated">編輯房間</target>
+        <target>編輯房間</target>
         <note>Button title</note>
       </trans-unit>
       <trans-unit id="Editor" xml:space="preserve">
@@ -2103,12 +2076,12 @@ others which use WebDAV protocol.</source>
       </trans-unit>
       <trans-unit id="Enable this setting to disable downloads of files and folders from this room shared via a link" xml:space="preserve">
         <source>Enable this setting to disable downloads of files and folders from this room shared via a link</source>
-        <target state="translated">啟用此設定以禁止透過此房間的共享連結來下載檔案和文件夾</target>
+        <target>啟用此設定以禁止透過此房間的共享連結來下載檔案和文件夾</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Enable time limit" xml:space="preserve">
         <source>Enable time limit</source>
-        <target state="translated">啟用時間限制</target>
+        <target>啟用時間限制</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="End Slide Show" xml:space="preserve">
@@ -2143,12 +2116,12 @@ others which use WebDAV protocol.</source>
       </trans-unit>
       <trans-unit id="Expect users" xml:space="preserve">
         <source>Expect users</source>
-        <target state="translated">預期使用者</target>
+        <target>預期使用者</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Expires after 7 days" xml:space="preserve">
         <source>Expires after 7 days</source>
-        <target state="translated">7天後到期</target>
+        <target>7天後到期</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Export" xml:space="preserve">
@@ -2228,12 +2201,12 @@ others which use WebDAV protocol.</source>
       </trans-unit>
       <trans-unit id="Failure to prepare the archive" xml:space="preserve">
         <source>Failure to prepare the archive</source>
-        <target state="translated">未能準備存檔</target>
+        <target>未能準備存檔</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Favorites" xml:space="preserve">
         <source>Favorites</source>
-        <target state="translated">最愛</target>
+        <target>最愛</target>
         <note>Category title</note>
       </trans-unit>
       <trans-unit id="Features" xml:space="preserve">
@@ -2318,22 +2291,22 @@ others which use WebDAV protocol.</source>
       </trans-unit>
       <trans-unit id="General" xml:space="preserve">
         <source>General</source>
-        <target state="translated">一般</target>
+        <target>一般</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="General link" xml:space="preserve">
         <source>General link</source>
-        <target state="translated">一般連結</target>
+        <target>一般連結</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="General link State" xml:space="preserve">
         <source>General link State</source>
-        <target state="translated">一般連結狀態</target>
+        <target>一般連結狀態</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="General links" xml:space="preserve">
         <source>General links</source>
-        <target state="translated">一般連結</target>
+        <target>一般連結</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Get started" xml:space="preserve">
@@ -2428,7 +2401,7 @@ others which use WebDAV protocol.</source>
       </trans-unit>
       <trans-unit id="Invalid folder" xml:space="preserve">
         <source>Invalid folder</source>
-        <target state="translated">無效的資料夾</target>
+        <target>無效的資料夾</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Invite" xml:space="preserve">
@@ -2448,12 +2421,12 @@ others which use WebDAV protocol.</source>
       </trans-unit>
       <trans-unit id="Invite users" xml:space="preserve">
         <source>Invite users</source>
-        <target state="translated">邀請使用者</target>
+        <target>邀請使用者</target>
         <note>Button title</note>
       </trans-unit>
       <trans-unit id="Invite users via shared links to view documents without registration. You can also embed this room into any web interface." xml:space="preserve">
         <source>Invite users via shared links to view documents without registration. You can also embed this room into any web interface.</source>
-        <target state="translated">透過共享連結邀請使用者查看文件，無需註冊。您還可將此房間嵌入任何網頁介面中。</target>
+        <target>透過共享連結邀請使用者查看文件，無需註冊。您還可將此房間嵌入任何網頁介面中。</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Kb" xml:space="preserve">
@@ -2473,7 +2446,7 @@ others which use WebDAV protocol.</source>
       </trans-unit>
       <trans-unit id="Leave the room" xml:space="preserve">
         <source>Leave the room</source>
-        <target state="translated">離開此房間</target>
+        <target>離開此房間</target>
         <note>Button title</note>
       </trans-unit>
       <trans-unit id="Light" xml:space="preserve">
@@ -2485,7 +2458,7 @@ others which use WebDAV protocol.</source>
         <source>Link and password
 successfully copied
 to clipboard</source>
-        <target state="translated">已將連結及密碼成功複製到剪貼簿</target>
+        <target>已將連結及密碼成功複製到剪貼簿</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Link copied&#10;to the clipboard" xml:space="preserve">
@@ -2497,18 +2470,18 @@ to the clipboard</source>
       </trans-unit>
       <trans-unit id="Link life time" xml:space="preserve">
         <source>Link life time</source>
-        <target state="translated">連結生命週期</target>
+        <target>連結生命週期</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Link name %@" xml:space="preserve">
         <source>Link name %@</source>
-        <target state="translated">連結名稱 %@</target>
+        <target>連結名稱 %@</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Link successfully&#10;copied to clipboard" xml:space="preserve">
         <source>Link successfully
 copied to clipboard</source>
-        <target state="translated">已將連結成功複製到剪貼簿</target>
+        <target>已將連結成功複製到剪貼簿</target>
         <note>Button title</note>
       </trans-unit>
       <trans-unit id="Link with the invitation has been sent to the mail" xml:space="preserve">
@@ -2518,7 +2491,7 @@ copied to clipboard</source>
       </trans-unit>
       <trans-unit id="Loading..." xml:space="preserve">
         <source>Loading...</source>
-        <target state="translated">載入中...</target>
+        <target>載入中...</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Logging in" xml:space="preserve">
@@ -2610,7 +2583,7 @@ copied to clipboard</source>
       </trans-unit>
       <trans-unit id="Move to archive" xml:space="preserve">
         <source>Move to archive</source>
-        <target state="translated">移至存檔</target>
+        <target>移至存檔</target>
         <note>Button title</note>
       </trans-unit>
       <trans-unit id="Moving" xml:space="preserve">
@@ -2700,7 +2673,7 @@ copied to clipboard</source>
       </trans-unit>
       <trans-unit id="No Links State" xml:space="preserve">
         <source>No Links State</source>
-        <target state="translated">無連結狀態</target>
+        <target>無連結狀態</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="No Search Result" xml:space="preserve">
@@ -2745,7 +2718,7 @@ copied to clipboard</source>
       </trans-unit>
       <trans-unit id="No users found" xml:space="preserve">
         <source>No users found</source>
-        <target state="translated">找不到使用者</target>
+        <target>找不到使用者</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="None" xml:space="preserve">
@@ -2826,7 +2799,7 @@ copied to clipboard</source>
       </trans-unit>
       <trans-unit id="Open" xml:space="preserve">
         <source>Open</source>
-        <target state="translated">開啟</target>
+        <target>開啟</target>
         <note>Button title</note>
       </trans-unit>
       <trans-unit id="Open Document" xml:space="preserve">
@@ -2886,7 +2859,7 @@ copied to clipboard</source>
       </trans-unit>
       <trans-unit id="Password access" xml:space="preserve">
         <source>Password access</source>
-        <target state="translated">密碼存取</target>
+        <target>密碼存取</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Password is empty" xml:space="preserve">
@@ -2916,12 +2889,12 @@ copied to clipboard</source>
       </trans-unit>
       <trans-unit id="Photo Library" xml:space="preserve">
         <source>Photo Library</source>
-        <target state="translated">相簿</target>
+        <target>相簿</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Photo Library Unavailable" xml:space="preserve">
         <source>Photo Library Unavailable</source>
-        <target state="translated">相簿無法使用</target>
+        <target>相簿無法使用</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Pin to top" xml:space="preserve">
@@ -2946,7 +2919,7 @@ copied to clipboard</source>
       </trans-unit>
       <trans-unit id="Please go to Settings and enable the photo library for this app to use this feature." xml:space="preserve">
         <source>Please go to Settings and enable the photo library for this app to use this feature.</source>
-        <target state="translated">請前往設定並啟用此應用程式的相簿，以使用此功能。</target>
+        <target>請前往設定並啟用此應用程式的相簿，以使用此功能。</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Please re-login to renew your session." xml:space="preserve">
@@ -3070,22 +3043,22 @@ copied to clipboard</source>
       </trans-unit>
       <trans-unit id="Protection" xml:space="preserve">
         <source>Protection</source>
-        <target state="translated">保護</target>
+        <target>保護</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Provide general access to the document selecting the required permission level." xml:space="preserve">
         <source>Provide general access to the document selecting the required permission level.</source>
-        <target state="translated">提供對文件的一般存取，選擇所需的權限級別。</target>
+        <target>提供對文件的一般存取，選擇所需的權限級別。</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Public" xml:space="preserve">
         <source>Public</source>
-        <target state="translated">公共</target>
+        <target>公共</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Public room" xml:space="preserve">
         <source>Public room</source>
-        <target state="translated">公共房間</target>
+        <target>公共房間</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Push notifications disabled" xml:space="preserve">
@@ -3095,7 +3068,7 @@ copied to clipboard</source>
       </trans-unit>
       <trans-unit id="Recent" xml:space="preserve">
         <source>Recent</source>
-        <target state="translated">近期</target>
+        <target>近期</target>
         <note>Category title</note>
       </trans-unit>
       <trans-unit id="Recover here" xml:space="preserve">
@@ -3185,7 +3158,7 @@ copied to clipboard</source>
       </trans-unit>
       <trans-unit id="Restrict file content copy, file download and printing" xml:space="preserve">
         <source>Restrict file content copy, file download and printing</source>
-        <target state="translated">限制檔案內容複製、檔案下載和列印</target>
+        <target>限制檔案內容複製、檔案下載和列印</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Reviewer" xml:space="preserve">
@@ -3200,7 +3173,7 @@ copied to clipboard</source>
       </trans-unit>
       <trans-unit id="Room name" xml:space="preserve">
         <source>Room name</source>
-        <target state="translated">房間名稱</target>
+        <target>房間名稱</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Rooms" xml:space="preserve">
@@ -3221,7 +3194,12 @@ copied to clipboard</source>
       </trans-unit>
       <trans-unit id="Save" xml:space="preserve">
         <source>Save</source>
-        <target state="translated">儲存</target>
+        <target>儲存</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Saved" xml:space="preserve">
+        <source>Saved</source>
+        <target state="translated">已儲存</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Saving" xml:space="preserve">
@@ -3328,11 +3306,6 @@ copied to clipboard</source>
       <trans-unit id="Settings and Security" xml:space="preserve">
         <source>Settings and Security</source>
         <target>設定及安全性</target>
-        <note>No comment provided by engineer.</note>
-      </trans-unit>
-      <trans-unit id="Share" xml:space="preserve">
-        <source>Share</source>
-        <target state="translated">分享</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="SharePoint directory" xml:space="preserve">
@@ -3447,12 +3420,12 @@ copied to clipboard</source>
       </trans-unit>
       <trans-unit id="Tag" xml:space="preserve">
         <source>Tag</source>
-        <target state="translated">標籤</target>
+        <target>標籤</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Take Photo" xml:space="preserve">
         <source>Take Photo</source>
-        <target state="translated">拍照</target>
+        <target>拍照</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Take a Picture" xml:space="preserve">
@@ -3526,22 +3499,22 @@ to the clipboard</source>
       </trans-unit>
       <trans-unit id="The link has expired" xml:space="preserve">
         <source>The link has expired</source>
-        <target state="translated">該連結已過期</target>
+        <target>該連結已過期</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="The link has expired and has been disabled" xml:space="preserve">
         <source>The link has expired and has been disabled</source>
-        <target state="translated">該連結已過期並已停用</target>
+        <target>該連結已過期並已停用</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="The link will be deleted permanently. You will not be able to undo this action." xml:space="preserve">
         <source>The link will be deleted permanently. You will not be able to undo this action.</source>
-        <target state="translated">連結將永久刪除。您將無法撤消此操作。</target>
+        <target>連結將永久刪除。您將無法撤消此操作。</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="The list of users previously invited to DocSpace or separate rooms will appear here." xml:space="preserve">
         <source>The list of users previously invited to DocSpace or separate rooms will appear here.</source>
-        <target state="translated">先前邀請到DocSpace或單獨房間的使用者清單將顯示在此處。</target>
+        <target>先前邀請到DocSpace或單獨房間的使用者清單將顯示在此處。</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="The parameters are incorrect." xml:space="preserve">
@@ -3646,7 +3619,7 @@ to the clipboard</source>
       </trans-unit>
       <trans-unit id="Time limit" xml:space="preserve">
         <source>Time limit</source>
-        <target state="translated">時間限制</target>
+        <target>時間限制</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Title" xml:space="preserve">
@@ -3801,7 +3774,7 @@ to the clipboard</source>
       </trans-unit>
       <trans-unit id="Unlimited" xml:space="preserve">
         <source>Unlimited</source>
-        <target state="translated">無限制</target>
+        <target>無限制</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Unlock with Face ID" xml:space="preserve">
@@ -3832,11 +3805,6 @@ to the clipboard</source>
       <trans-unit id="Unpning" xml:space="preserve">
         <source>Unpinning</source>
         <target>取消固定中</target>
-        <note>Caption of the processing</note>
-      </trans-unit>
-      <trans-unit id="Updating" xml:space="preserve">
-        <source>Updating</source>
-        <target state="translated">更新中</target>
         <note>Caption of the processing</note>
       </trans-unit>
       <trans-unit id="Uploading" xml:space="preserve">
@@ -3876,7 +3844,7 @@ to the clipboard</source>
       </trans-unit>
       <trans-unit id="Valid through" xml:space="preserve">
         <source>Valid through</source>
-        <target state="translated">有效期限至</target>
+        <target>有效期限至</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Validation" xml:space="preserve">
@@ -3977,12 +3945,12 @@ then accessed from any other device.</source>
       </trans-unit>
       <trans-unit id="You are about to delete this room. You won’t be able to restore them." xml:space="preserve">
         <source>You are about to delete this room. You won’t be able to restore them.</source>
-        <target state="translated">您即將刪除此房間。您將無法還原它們。</target>
+        <target>您即將刪除此房間。您將無法還原它們。</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="You are the owner of this room. Before you leave the room, you must transfer the owner’s role to another user." xml:space="preserve">
         <source>You are the owner of this room. Before you leave the room, you must transfer the owner’s role to another user.</source>
-        <target state="translated">您是此房間的擁有者。在離開房間之前，務必將擁有者角色轉移至另一位使用者。</target>
+        <target>您是此房間的擁有者。在離開房間之前，務必將擁有者角色轉移至另一位使用者。</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="You can connect the following accounts to the %@." xml:space="preserve">
@@ -3997,12 +3965,12 @@ then accessed from any other device.</source>
       </trans-unit>
       <trans-unit id="You have left the room" xml:space="preserve">
         <source>You have left the room</source>
-        <target state="translated">您已離開此房間</target>
+        <target>您已離開此房間</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="You have left the room and appointed a new owner" xml:space="preserve">
         <source>You have left the room and appointed a new owner</source>
-        <target state="translated">您已離開此房間，並已指定新的擁有者。</target>
+        <target>您已離開此房間，並已指定新的擁有者。</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="You have read-only access to this folder. You cannot create files or folders here." xml:space="preserve">
@@ -4039,6 +4007,11 @@ then accessed from any other device.</source>
         <source>Cancel</source>
         <target>取消</target>
         <note>Cancel</note>
+      </trans-unit>
+      <trans-unit id="common.close" xml:space="preserve">
+        <source>Close</source>
+        <target state="translated">關閉</target>
+        <note>Close</note>
       </trans-unit>
       <trans-unit id="common.error" xml:space="preserve">
         <source>Error</source>
@@ -4147,7 +4120,7 @@ then accessed from any other device.</source>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Сonversion error" xml:space="preserve">
-        <source>Conversion error</source>
+        <source>Сonversion error</source>
         <target state="translated">轉換錯誤</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>

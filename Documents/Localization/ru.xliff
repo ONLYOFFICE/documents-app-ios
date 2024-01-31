@@ -364,7 +364,7 @@ start using your office</source>
       </trans-unit>
       <trans-unit id="/Delete %lu Folder and %lu File:dict/lu_files:dict/zero:dict/:string" xml:space="preserve">
         <source/>
-        <target/>
+        <target state="needs-translation"/>
         <note/>
       </trans-unit>
       <trans-unit id="/Delete %lu Folder and %lu File:dict/lu_folders:dict/few:dict/:string" xml:space="preserve">
@@ -1280,10 +1280,12 @@ Note: if you forget the passcode, you'll need to delete and reinstall the app. A
       </trans-unit>
       <trans-unit id="(%@)" xml:space="preserve">
         <source>(%@)</source>
+        <target state="translated">(%@)</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="(%@/%@)" xml:space="preserve">
         <source>(%1$@/%2$@)</source>
+        <target state="translated">(%1$@/%2$@)</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="1 day" xml:space="preserve">
@@ -1303,6 +1305,7 @@ Note: if you forget the passcode, you'll need to delete and reinstall the app. A
       </trans-unit>
       <trans-unit id=": &quot;%@&quot;" xml:space="preserve">
         <source>: "%@"</source>
+        <target state="translated">: "%@"</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="&lt;p>Use the password created in &lt;a href=&quot;https://yandex.ru/id/about&quot;>Yandex ID&lt;/a>.&lt;/br>More detailed connection instructions can be found in the &lt;a href=&quot;https://yandex.ru/support/disk-desktop/webdav-app-passwords.html?lang=ru&quot;>help&lt;/a>.&lt;/p>" xml:space="preserve">
@@ -2461,7 +2464,7 @@ others which use WebDAV protocol.</source>
       </trans-unit>
       <trans-unit id="General link State" xml:space="preserve">
         <source>General link State</source>
-        <target state="translated">Общая ссылка</target>
+        <target state="translated">Статус общей ссылки</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="General links" xml:space="preserve">
@@ -2596,7 +2599,7 @@ others which use WebDAV protocol.</source>
       </trans-unit>
       <trans-unit id="Last name is empty" xml:space="preserve">
         <source>Last name is empty</source>
-        <target>Фамилия пуста</target>
+        <target state="translated">Пустое поле Фамилия</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Last name is incorrect" xml:space="preserve">
@@ -4283,7 +4286,7 @@ then accessed from any other device.</source>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Сonversion error" xml:space="preserve">
-        <source>Сonversion error</source>
+        <source>Conversion error</source>
         <target state="translated">Ошибка преобразования</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>

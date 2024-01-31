@@ -259,7 +259,7 @@ start using your office</source>
       </trans-unit>
       <trans-unit id="/Delete %lu Folder and %lu File:dict/lu_files:dict/zero:dict/:string" xml:space="preserve">
         <source/>
-        <target/>
+        <target state="needs-translation"/>
         <note/>
       </trans-unit>
       <trans-unit id="/Delete %lu Folder and %lu File:dict/lu_folders:dict/other:dict/:string" xml:space="preserve">
@@ -886,10 +886,12 @@ Note: if you forget the passcode, you'll need to delete and reinstall the app. A
     <body>
       <trans-unit id="Use Face ID" xml:space="preserve">
         <source>Use Face ID</source>
+        <target state="translated">Face IDを使用する</target>
         <note>Button title</note>
       </trans-unit>
       <trans-unit id="Use Touch ID" xml:space="preserve">
         <source>Use Touch ID</source>
+        <target state="translated">Touch ID を使用する</target>
         <note>Button title</note>
       </trans-unit>
     </body>
@@ -1142,45 +1144,52 @@ Note: if you forget the passcode, you'll need to delete and reinstall the app. A
       </trans-unit>
       <trans-unit id="(%@)" xml:space="preserve">
         <source>(%@)</source>
+        <target state="translated">(%@)</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="(%@/%@)" xml:space="preserve">
         <source>(%1$@/%2$@)</source>
+        <target state="translated">(%1$@/%2$@)</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="1 day" xml:space="preserve">
         <source>1 day</source>
+        <target state="translated">1日</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="7 days" xml:space="preserve">
         <source>7 days</source>
+        <target state="translated">7日</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="12 hours" xml:space="preserve">
         <source>12 hours</source>
+        <target state="translated">12時間</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id=": &quot;%@&quot;" xml:space="preserve">
         <source>: "%@"</source>
+        <target state="translated">: "%@"</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
-      <trans-unit id="&lt;p&gt;Use the password created in &lt;a href=&quot;https://yandex.ru/id/about&quot;&gt;Yandex ID&lt;/a&gt;.&lt;/br&gt;More detailed connection instructions can be found in the &lt;a href=&quot;https://yandex.ru/support/disk-desktop/webdav-app-passwords.html?lang=ru&quot;&gt;help&lt;/a&gt;.&lt;/p&gt;" xml:space="preserve">
+      <trans-unit id="&lt;p>Use the password created in &lt;a href=&quot;https://yandex.ru/id/about&quot;>Yandex ID&lt;/a>.&lt;/br>More detailed connection instructions can be found in the &lt;a href=&quot;https://yandex.ru/support/disk-desktop/webdav-app-passwords.html?lang=ru&quot;>help&lt;/a>.&lt;/p>" xml:space="preserve">
         <source>&lt;p&gt;Use the password created in &lt;a href="https://yandex.ru/id/about"&gt;Yandex ID&lt;/a&gt;.&lt;/br&gt;More detailed connection instructions can be found in the &lt;a href="https://yandex.ru/support/disk-desktop/webdav-app-passwords.html?lang=ru"&gt;help&lt;/a&gt;.&lt;/p&gt;</source>
-        <target>&lt;p&gt;&lt;a href=""https://yandex.ru/id/about"&gt;Yandex ID&lt;/a&gt;で作成されたパスワードを入力してください。&lt;/br&gt;詳しくは&lt;a href="https://yandex.ru/support/disk-desktop/webdav-app-passwords.html?lang=ru"&gt;ヘルプ&lt;/a&gt;でご覧いただけます。&lt;/p&gt;</target>
+        <target state="translated">&lt;p&gt;&lt;a href="https://yandex.ru/id/about"&gt;Yandex ID&lt;/a&gt;で作成されたパスワードを入力してください。&lt;/br&gt;詳しくは&lt;a href="https://yandex.ru/support/disk-desktop/webdav-app-passwords.html?lang=ru"&gt;ヘルプ&lt;/a&gt;でご覧いただけます。&lt;/p&gt;</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
-      <trans-unit id="&lt;p&gt;Use the password created in &lt;a href=&quot;https://yandex.ru/id/about&quot;&gt;Yandex ID&lt;/a&gt;.&lt;/p&gt;&lt;p&gt;More detailed connection instructions can be found in the &lt;a href=&quot;https://yandex.ru/support/disk-desktop/webdav-app-passwords.html?lang=ru&quot;&gt;help&lt;/a&gt;.&lt;/p&gt;" xml:space="preserve">
+      <trans-unit id="&lt;p>Use the password created in &lt;a href=&quot;https://yandex.ru/id/about&quot;>Yandex ID&lt;/a>.&lt;/p>&lt;p>More detailed connection instructions can be found in the &lt;a href=&quot;https://yandex.ru/support/disk-desktop/webdav-app-passwords.html?lang=ru&quot;>help&lt;/a>.&lt;/p>" xml:space="preserve">
         <source>&lt;p&gt;Use the password created in &lt;a href="https://yandex.ru/id/about"&gt;Yandex ID&lt;/a&gt;.&lt;/p&gt;&lt;p&gt;More detailed connection instructions can be found in the &lt;a href="https://yandex.ru/support/disk-desktop/webdav-app-passwords.html?lang=ru"&gt;help&lt;/a&gt;.&lt;/p&gt;</source>
         <target>&lt;p&gt;&lt;a href="https://yandex.ru/id/about"&gt;Yandex ID&lt;/a&gt;で作成されたパスワードを入力してください。&lt;/p&gt;&lt;p&gt;詳しくは&lt;a href="https://yandex.ru/support/disk-desktop/webdav-app-passwords.html?lang=ru"&gt;ヘルプ&lt;/a&gt;でご覧いただけます。&lt;/p&gt;</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
-      <trans-unit id="&lt;p&gt;You must have a paid version of the player to use this service.&lt;/p&gt;&lt;p&gt;If you have activated double authentication, please generate a CDM application from the Infomaniak manager. &lt;a href=&quot;https://www.infomaniak.com/en/support/faq/1940/enable-two-step-verification&quot;&gt;More...&lt;/a&gt;&lt;/p&gt;" xml:space="preserve">
+      <trans-unit id="&lt;p>You must have a paid version of the player to use this service.&lt;/p>&lt;p>If you have activated double authentication, please generate a CDM application from the Infomaniak manager. &lt;a href=&quot;https://www.infomaniak.com/en/support/faq/1940/enable-two-step-verification&quot;>More...&lt;/a>&lt;/p>" xml:space="preserve">
         <source>&lt;p&gt;You must have a paid version of the player to use this service.&lt;/p&gt;&lt;p&gt;If you have activated double authentication, please generate a CDM application from the Infomaniak manager. &lt;a href="https://www.infomaniak.com/en/support/faq/1940/enable-two-step-verification"&gt;More...&lt;/a&gt;&lt;/p&gt;</source>
         <target>&lt;p&gt;本サービスをご利用いただくには、有償版のプレーヤーが必要です。&lt;/p&gt;&lt;p&gt;二重認証を有効にしている場合は、InfomaniakマネージャからCDMアプリケーションを生成してください。 &lt;a href="https://www.infomaniak.com/en/support/faq/1940/enable-two-step-verification"&gt;詳細情報&lt;/a&gt;&lt;/p&gt;</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="A file with a similar name already exist." xml:space="preserve">
         <source>A file with a similar name already exist.</source>
+        <target state="translated">類似した名前のファイルが既に存在します。</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="A file with a similar name already exists in the document directory on the device." xml:space="preserve">
@@ -1255,6 +1264,7 @@ Note: if you forget the passcode, you'll need to delete and reinstall the app. A
       </trans-unit>
       <trans-unit id="Access type" xml:space="preserve">
         <source>Access type</source>
+        <target state="translated">アクセスタイプ</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Account name is empty" xml:space="preserve">
@@ -1284,6 +1294,7 @@ Note: if you forget the passcode, you'll need to delete and reinstall the app. A
       </trans-unit>
       <trans-unit id="Add tag" xml:space="preserve">
         <source>Add tag</source>
+        <target state="translated">タグの追加</target>
         <note>placeholder</note>
       </trans-unit>
       <trans-unit id="Add users" xml:space="preserve">
@@ -1300,10 +1311,12 @@ Note: if you forget the passcode, you'll need to delete and reinstall the app. A
       </trans-unit>
       <trans-unit id="Additional link State" xml:space="preserve">
         <source>Additional link State</source>
+        <target state="translated">追加リンクの状態</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Additional links" xml:space="preserve">
         <source>Additional links</source>
+        <target state="translated">追加リンク</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Address is empty" xml:space="preserve">
@@ -1313,6 +1326,7 @@ Note: if you forget the passcode, you'll need to delete and reinstall the app. A
       </trans-unit>
       <trans-unit id="Administration" xml:space="preserve">
         <source>Administration</source>
+        <target state="translated">管理</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="All" xml:space="preserve">
@@ -1352,6 +1366,7 @@ Note: if you forget the passcode, you'll need to delete and reinstall the app. A
       </trans-unit>
       <trans-unit id="Anyone with the link" xml:space="preserve">
         <source>Anyone with the link</source>
+        <target state="translated">このリンクを持っている人</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="AppleId authentication failed" xml:space="preserve">
@@ -1361,6 +1376,7 @@ Note: if you forget the passcode, you'll need to delete and reinstall the app. A
       </trans-unit>
       <trans-unit id="Apply your own settings to use this room for any custom purpose" xml:space="preserve">
         <source>Apply your own settings to use this room for any custom purpose</source>
+        <target state="translated">独自の設定を適用して、このルームを任意のカスタム目的に使用できます。</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Applying" xml:space="preserve">
@@ -1401,6 +1417,7 @@ Note: if you forget the passcode, you'll need to delete and reinstall the app. A
       </trans-unit>
       <trans-unit id="Assign Owner" xml:space="preserve">
         <source>Assign Owner</source>
+        <target state="translated">所有者の割り当て</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Author" xml:space="preserve">
@@ -1480,6 +1497,7 @@ Note: if you forget the passcode, you'll need to delete and reinstall the app. A
       </trans-unit>
       <trans-unit id="Canceled" xml:space="preserve">
         <source>Canceled</source>
+        <target state="translated">キャンセル</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Change owner" xml:space="preserve">
@@ -1489,10 +1507,12 @@ Note: if you forget the passcode, you'll need to delete and reinstall the app. A
       </trans-unit>
       <trans-unit id="Change the Room Owner" xml:space="preserve">
         <source>Change the Room Owner</source>
+        <target state="translated">ルーム所有者の変更</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Changing access" xml:space="preserve">
         <source>Changing access</source>
+        <target state="translated">アクセスの変更</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Check your internet connection" xml:space="preserve">
@@ -1502,10 +1522,12 @@ Note: if you forget the passcode, you'll need to delete and reinstall the app. A
       </trans-unit>
       <trans-unit id="Choose Files" xml:space="preserve">
         <source>Choose Files</source>
+        <target state="translated">ファイルの選択</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Choose room type" xml:space="preserve">
         <source>Choose room type</source>
+        <target state="translated">ルームタイプの選択</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Cleanup" xml:space="preserve">
@@ -1550,6 +1572,7 @@ Note: if you forget the passcode, you'll need to delete and reinstall the app. A
       </trans-unit>
       <trans-unit id="Collaborate on one or multiple documents with your team" xml:space="preserve">
         <source>Collaborate on one or multiple documents with your team</source>
+        <target state="translated">1つまたは複数のドキュメントをチームで共同作業</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Collaborate with your team" xml:space="preserve">
@@ -1564,6 +1587,7 @@ Note: if you forget the passcode, you'll need to delete and reinstall the app. A
       </trans-unit>
       <trans-unit id="Collaboration room" xml:space="preserve">
         <source>Collaboration room</source>
+        <target state="translated">コラボレーションルーム</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Commentator" xml:space="preserve">
@@ -1637,6 +1661,7 @@ WebDAVプロトコルを使用する
       </trans-unit>
       <trans-unit id="Copy general link" xml:space="preserve">
         <source>Copy general link</source>
+        <target state="translated">一般リンクをコピー</target>
         <note>Button title</note>
       </trans-unit>
       <trans-unit id="Copy here" xml:space="preserve">
@@ -1646,10 +1671,12 @@ WebDAVプロトコルを使用する
       </trans-unit>
       <trans-unit id="Copy link" xml:space="preserve">
         <source>Copy link</source>
+        <target state="translated">リンクをコピー</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Copy link and password" xml:space="preserve">
         <source>Copy link and password</source>
+        <target state="translated">リンクとパスワードをコピー</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Copying" xml:space="preserve">
@@ -1779,18 +1806,22 @@ WebDAVプロトコルを使用する
       </trans-unit>
       <trans-unit id="Couldn't change the owner." xml:space="preserve">
         <source>Couldn't change the owner.</source>
+        <target state="translated">所有者を変更できませんでした。</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Couldn't download the room." xml:space="preserve">
         <source>Couldn't download the room.</source>
+        <target state="translated">ルームをダウンロードできませんでした。</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Couldn't leave the room" xml:space="preserve">
         <source>Couldn't leave the room</source>
+        <target state="translated">退室できませんでした。</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Couldn't leave the room." xml:space="preserve">
         <source>Couldn't leave the room.</source>
+        <target state="translated">退室できませんでした。</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Couldn't rename the file" xml:space="preserve">
@@ -1810,10 +1841,12 @@ WebDAVプロトコルを使用する
       </trans-unit>
       <trans-unit id="Create additional links to share the document with different access rights." xml:space="preserve">
         <source>Create additional links to share the document with different access rights.</source>
+        <target state="translated">異なるアクセス権でドキュメントを共有するための追加リンクを作成します。</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Create and copy" xml:space="preserve">
         <source>Create and copy</source>
+        <target state="translated">作成とコピー</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Create and edit documents with our comprehensive toolbar: work with complex objects in text documents, perform extensive calculations in spreadsheets, create stunning presentations and view PDF files with no formatting loss." xml:space="preserve">
@@ -1828,6 +1861,7 @@ WebDAVプロトコルを使用する
       </trans-unit>
       <trans-unit id="Create room" xml:space="preserve">
         <source>Create room</source>
+        <target state="translated">ルームの作成</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Creating" xml:space="preserve">
@@ -1848,6 +1882,7 @@ WebDAVプロトコルを使用する
       </trans-unit>
       <trans-unit id="Custom room" xml:space="preserve">
         <source>Custom room</source>
+        <target state="translated">カスタムルーム</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Dark" xml:space="preserve">
@@ -1897,6 +1932,7 @@ WebDAVプロトコルを使用する
       </trans-unit>
       <trans-unit id="Delete forever?" xml:space="preserve">
         <source>Delete forever?</source>
+        <target state="translated">永久に削除しますか？</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Delete from device" xml:space="preserve">
@@ -1906,10 +1942,12 @@ WebDAVプロトコルを使用する
       </trans-unit>
       <trans-unit id="Delete link" xml:space="preserve">
         <source>Delete link</source>
+        <target state="translated">リンクの削除</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Deleted" xml:space="preserve">
         <source>Deleted</source>
+        <target state="translated">削除済み</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Deleting" xml:space="preserve">
@@ -1944,6 +1982,7 @@ WebDAVプロトコルを使用する
       </trans-unit>
       <trans-unit id="Do you really want to leave this room? You will be able to join it again via new invitation by a room admin." xml:space="preserve">
         <source>Do you really want to leave this room? You will be able to join it again via new invitation by a room admin.</source>
+        <target state="translated">本当にこのルームを退室しますか？退室してから、ルームの管理者からの新しい招待があれば、再び参加することができます。</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="DocSpace admin" xml:space="preserve">
@@ -2019,6 +2058,7 @@ WebDAVプロトコルを使用する
       </trans-unit>
       <trans-unit id="Edit room" xml:space="preserve">
         <source>Edit room</source>
+        <target state="translated">ルームの編集</target>
         <note>Button title</note>
       </trans-unit>
       <trans-unit id="Editor" xml:space="preserve">
@@ -2063,10 +2103,12 @@ WebDAVプロトコルを使用する
       </trans-unit>
       <trans-unit id="Enable this setting to disable downloads of files and folders from this room shared via a link" xml:space="preserve">
         <source>Enable this setting to disable downloads of files and folders from this room shared via a link</source>
+        <target state="translated">この設定を有効にすると、このルームからリンク経由で共有されたファイルやフォルダのダウンロードが無効になります。</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Enable time limit" xml:space="preserve">
         <source>Enable time limit</source>
+        <target state="translated">時間制限を無効にする</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="End Slide Show" xml:space="preserve">
@@ -2101,10 +2143,12 @@ WebDAVプロトコルを使用する
       </trans-unit>
       <trans-unit id="Expect users" xml:space="preserve">
         <source>Expect users</source>
+        <target state="translated">ユーザーの期待</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Expires after 7 days" xml:space="preserve">
         <source>Expires after 7 days</source>
+        <target state="translated">7日間のみ有効</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Export" xml:space="preserve">
@@ -2184,10 +2228,12 @@ WebDAVプロトコルを使用する
       </trans-unit>
       <trans-unit id="Failure to prepare the archive" xml:space="preserve">
         <source>Failure to prepare the archive</source>
+        <target state="translated">アーカイブの作成に失敗しました</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Favorites" xml:space="preserve">
         <source>Favorites</source>
+        <target state="translated">お気に入り</target>
         <note>Category title</note>
       </trans-unit>
       <trans-unit id="Features" xml:space="preserve">
@@ -2272,18 +2318,22 @@ WebDAVプロトコルを使用する
       </trans-unit>
       <trans-unit id="General" xml:space="preserve">
         <source>General</source>
+        <target state="translated">標準</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="General link" xml:space="preserve">
         <source>General link</source>
+        <target state="translated">一般リンク</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="General link State" xml:space="preserve">
         <source>General link State</source>
+        <target state="translated">一般リンクの状態</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="General links" xml:space="preserve">
         <source>General links</source>
+        <target state="translated">一般リンク</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Get started" xml:space="preserve">
@@ -2378,6 +2428,7 @@ WebDAVプロトコルを使用する
       </trans-unit>
       <trans-unit id="Invalid folder" xml:space="preserve">
         <source>Invalid folder</source>
+        <target state="translated">無効のフォルダー</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Invite" xml:space="preserve">
@@ -2397,10 +2448,12 @@ WebDAVプロトコルを使用する
       </trans-unit>
       <trans-unit id="Invite users" xml:space="preserve">
         <source>Invite users</source>
+        <target state="translated">ユーザーの招待</target>
         <note>Button title</note>
       </trans-unit>
       <trans-unit id="Invite users via shared links to view documents without registration. You can also embed this room into any web interface." xml:space="preserve">
         <source>Invite users via shared links to view documents without registration. You can also embed this room into any web interface.</source>
+        <target state="translated">共有リンクを介してユーザーを招待し、登録なしでドキュメントを閲覧できます。また、この部屋を任意のウェブインターフェイスに埋め込むこともできます。</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Kb" xml:space="preserve">
@@ -2420,6 +2473,7 @@ WebDAVプロトコルを使用する
       </trans-unit>
       <trans-unit id="Leave the room" xml:space="preserve">
         <source>Leave the room</source>
+        <target state="translated">退室する</target>
         <note>Button title</note>
       </trans-unit>
       <trans-unit id="Light" xml:space="preserve">
@@ -2431,6 +2485,9 @@ WebDAVプロトコルを使用する
         <source>Link and password
 successfully copied
 to clipboard</source>
+        <target state="translated">リンクとパスワードが
+クリップボードに
+コピーされました</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Link copied&#10;to the clipboard" xml:space="preserve">
@@ -2442,15 +2499,19 @@ to the clipboard</source>
       </trans-unit>
       <trans-unit id="Link life time" xml:space="preserve">
         <source>Link life time</source>
+        <target state="translated">リンクの寿命</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Link name %@" xml:space="preserve">
         <source>Link name %@</source>
+        <target state="translated">リンク名 %@</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Link successfully&#10;copied to clipboard" xml:space="preserve">
         <source>Link successfully
 copied to clipboard</source>
+        <target state="translated">リンクがクリップボードに
+コピーされました</target>
         <note>Button title</note>
       </trans-unit>
       <trans-unit id="Link with the invitation has been sent to the mail" xml:space="preserve">
@@ -2460,6 +2521,7 @@ copied to clipboard</source>
       </trans-unit>
       <trans-unit id="Loading..." xml:space="preserve">
         <source>Loading...</source>
+        <target state="translated">読み込み中...</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Logging in" xml:space="preserve">
@@ -2551,6 +2613,7 @@ copied to clipboard</source>
       </trans-unit>
       <trans-unit id="Move to archive" xml:space="preserve">
         <source>Move to archive</source>
+        <target state="translated">アーカイブに移動</target>
         <note>Button title</note>
       </trans-unit>
       <trans-unit id="Moving" xml:space="preserve">
@@ -2640,6 +2703,7 @@ copied to clipboard</source>
       </trans-unit>
       <trans-unit id="No Links State" xml:space="preserve">
         <source>No Links State</source>
+        <target state="translated">リンク状態なし</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="No Search Result" xml:space="preserve">
@@ -2684,6 +2748,7 @@ copied to clipboard</source>
       </trans-unit>
       <trans-unit id="No users found" xml:space="preserve">
         <source>No users found</source>
+        <target state="translated">該当するユーザーが見つかりません</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="None" xml:space="preserve">
@@ -2764,6 +2829,7 @@ copied to clipboard</source>
       </trans-unit>
       <trans-unit id="Open" xml:space="preserve">
         <source>Open</source>
+        <target state="translated">開く</target>
         <note>Button title</note>
       </trans-unit>
       <trans-unit id="Open Document" xml:space="preserve">
@@ -2823,6 +2889,7 @@ copied to clipboard</source>
       </trans-unit>
       <trans-unit id="Password access" xml:space="preserve">
         <source>Password access</source>
+        <target state="translated">パスワードによるアクセス</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Password is empty" xml:space="preserve">
@@ -2852,10 +2919,12 @@ copied to clipboard</source>
       </trans-unit>
       <trans-unit id="Photo Library" xml:space="preserve">
         <source>Photo Library</source>
+        <target state="translated">フォトライブラリ</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Photo Library Unavailable" xml:space="preserve">
         <source>Photo Library Unavailable</source>
+        <target state="translated">ライブラリー使用不可</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Pin to top" xml:space="preserve">
@@ -2880,6 +2949,7 @@ copied to clipboard</source>
       </trans-unit>
       <trans-unit id="Please go to Settings and enable the photo library for this app to use this feature." xml:space="preserve">
         <source>Please go to Settings and enable the photo library for this app to use this feature.</source>
+        <target state="translated">この機能を使用するには、設定からこのアプリのフォトライブラリを有効にしてください</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Please re-login to renew your session." xml:space="preserve">
@@ -3003,18 +3073,22 @@ copied to clipboard</source>
       </trans-unit>
       <trans-unit id="Protection" xml:space="preserve">
         <source>Protection</source>
+        <target state="translated">保護</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Provide general access to the document selecting the required permission level." xml:space="preserve">
         <source>Provide general access to the document selecting the required permission level.</source>
+        <target state="translated">必要な権限レベルを選択し、ドキュメントへの一般的なアクセスを提供します。</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Public" xml:space="preserve">
         <source>Public</source>
+        <target state="translated">パブリック</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Public room" xml:space="preserve">
         <source>Public room</source>
+        <target state="translated">パブリックルーム</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Push notifications disabled" xml:space="preserve">
@@ -3024,6 +3098,7 @@ copied to clipboard</source>
       </trans-unit>
       <trans-unit id="Recent" xml:space="preserve">
         <source>Recent</source>
+        <target state="translated">最近</target>
         <note>Category title</note>
       </trans-unit>
       <trans-unit id="Recover here" xml:space="preserve">
@@ -3113,6 +3188,7 @@ copied to clipboard</source>
       </trans-unit>
       <trans-unit id="Restrict file content copy, file download and printing" xml:space="preserve">
         <source>Restrict file content copy, file download and printing</source>
+        <target state="translated">ファイル内容のコピー、ファイルのダウンロード、印刷の制限</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Reviewer" xml:space="preserve">
@@ -3127,6 +3203,7 @@ copied to clipboard</source>
       </trans-unit>
       <trans-unit id="Room name" xml:space="preserve">
         <source>Room name</source>
+        <target state="translated">ルーム名</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Rooms" xml:space="preserve">
@@ -3147,6 +3224,7 @@ copied to clipboard</source>
       </trans-unit>
       <trans-unit id="Save" xml:space="preserve">
         <source>Save</source>
+        <target state="translated">保存</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Saving" xml:space="preserve">
@@ -3257,6 +3335,7 @@ copied to clipboard</source>
       </trans-unit>
       <trans-unit id="Share" xml:space="preserve">
         <source>Share</source>
+        <target state="translated">シェア</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="SharePoint directory" xml:space="preserve">
@@ -3371,10 +3450,12 @@ copied to clipboard</source>
       </trans-unit>
       <trans-unit id="Tag" xml:space="preserve">
         <source>Tag</source>
+        <target state="translated">タグ</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Take Photo" xml:space="preserve">
         <source>Take Photo</source>
+        <target state="translated">写真を撮る</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Take a Picture" xml:space="preserve">
@@ -3448,18 +3529,22 @@ to the clipboard</source>
       </trans-unit>
       <trans-unit id="The link has expired" xml:space="preserve">
         <source>The link has expired</source>
+        <target state="translated">リンクが無効になりました</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="The link has expired and has been disabled" xml:space="preserve">
         <source>The link has expired and has been disabled</source>
+        <target state="translated">リンクは期限切れで無効になっています。</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="The link will be deleted permanently. You will not be able to undo this action." xml:space="preserve">
         <source>The link will be deleted permanently. You will not be able to undo this action.</source>
+        <target state="translated">リンクは永久に削除されます。元に戻すことはできません。</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="The list of users previously invited to DocSpace or separate rooms will appear here." xml:space="preserve">
         <source>The list of users previously invited to DocSpace or separate rooms will appear here.</source>
+        <target state="translated">過去にDocSpaceや別ルームに招待したユーザーのリストはここに表示されます。</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="The parameters are incorrect." xml:space="preserve">
@@ -3564,6 +3649,7 @@ to the clipboard</source>
       </trans-unit>
       <trans-unit id="Time limit" xml:space="preserve">
         <source>Time limit</source>
+        <target state="translated">時間制限</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Title" xml:space="preserve">
@@ -3718,6 +3804,7 @@ to the clipboard</source>
       </trans-unit>
       <trans-unit id="Unlimited" xml:space="preserve">
         <source>Unlimited</source>
+        <target state="translated">無制限</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Unlock with Face ID" xml:space="preserve">
@@ -3752,6 +3839,7 @@ to the clipboard</source>
       </trans-unit>
       <trans-unit id="Updating" xml:space="preserve">
         <source>Updating</source>
+        <target state="translated">アップデート</target>
         <note>Caption of the processing</note>
       </trans-unit>
       <trans-unit id="Uploading" xml:space="preserve">
@@ -3791,6 +3879,7 @@ to the clipboard</source>
       </trans-unit>
       <trans-unit id="Valid through" xml:space="preserve">
         <source>Valid through</source>
+        <target state="translated">有効期限</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Validation" xml:space="preserve">
@@ -3888,10 +3977,12 @@ then accessed from any other device.</source>
       </trans-unit>
       <trans-unit id="You are about to delete this room. You won’t be able to restore them." xml:space="preserve">
         <source>You are about to delete this room. You won’t be able to restore them.</source>
+        <target state="translated">このルームを削除しようとしています。復元することはできません。</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="You are the owner of this room. Before you leave the room, you must transfer the owner’s role to another user." xml:space="preserve">
         <source>You are the owner of this room. Before you leave the room, you must transfer the owner’s role to another user.</source>
+        <target state="translated">あなたはこのルームの所有者です。退室する前に、所有者の役割を他のユーザーに割り当てなければなりません。</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="You can connect the following accounts to the %@." xml:space="preserve">
@@ -3906,10 +3997,12 @@ then accessed from any other device.</source>
       </trans-unit>
       <trans-unit id="You have left the room" xml:space="preserve">
         <source>You have left the room</source>
+        <target state="translated">退室しました</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="You have left the room and appointed a new owner" xml:space="preserve">
         <source>You have left the room and appointed a new owner</source>
+        <target state="translated">あなたはルームを退室し、新しい所有者を任命しました。</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="You have read-only access to this folder. You cannot create files or folders here." xml:space="preserve">
@@ -4054,7 +4147,8 @@ then accessed from any other device.</source>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Сonversion error" xml:space="preserve">
-        <source>Сonversion error</source>
+        <source>Conversion error</source>
+        <target state="translated">変換エラー</target>
         <note>No comment provided by engineer.</note>
       </trans-unit>
       <trans-unit id="Сould not download file." xml:space="preserve">
